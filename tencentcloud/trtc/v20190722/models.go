@@ -21,7 +21,6 @@ import (
 )
 
 type AbnormalEvent struct {
-
 	// 异常事件ID，具体值查看附录：异常体验ID映射表：https://cloud.tencent.com/document/product/647/44916
 	AbnormalEventId *uint64 `json:"AbnormalEventId,omitempty" name:"AbnormalEventId"`
 
@@ -31,7 +30,6 @@ type AbnormalEvent struct {
 }
 
 type AbnormalExperience struct {
-
 	// 用户ID
 	UserId *string `json:"UserId,omitempty" name:"UserId"`
 
@@ -49,7 +47,6 @@ type AbnormalExperience struct {
 }
 
 type AudioParams struct {
-
 	// 音频采样率:
 	// 1：48000Hz（默认）;
 	// 2：44100Hz
@@ -66,7 +63,6 @@ type AudioParams struct {
 }
 
 type CloudStorage struct {
-
 	// 第三方云储存的供应商:
 	// 0：腾讯云存储 COS，暂不支持其他家。
 	Vendor *uint64 `json:"Vendor,omitempty" name:"Vendor"`
@@ -88,14 +84,51 @@ type CloudStorage struct {
 }
 
 type CloudVod struct {
-
 	// 腾讯云点播相关参数。
 	TencentVod *TencentVod `json:"TencentVod,omitempty" name:"TencentVod"`
 }
 
+// Predefined struct for user
+type CreateCloudRecordingRequestParams struct {
+	// TRTC的[SdkAppId](https://cloud.tencent.com/document/product/647/46351#sdkappid)，和录制的房间所对应的SdkAppId相同。
+	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// TRTC的[RoomId](https://cloud.tencent.com/document/product/647/46351#roomid)，录制的TRTC房间所对应的RoomId。
+	RoomId *string `json:"RoomId,omitempty" name:"RoomId"`
+
+	// 录制服务在TRTC房间使用的[UserId](https://cloud.tencent.com/document/product/647/46351#userid)，注意这个userId不能与其他TRTC或者录制服务等已经使用的UserId重复，建议可以把房间ID作为userId的标识的一部分。
+	UserId *string `json:"UserId,omitempty" name:"UserId"`
+
+	// 云端录制加入房间的用户签名，当前 UserId 对应的验证签名，相当于登录密码，具体计算方法请参考TRTC计算[UserSig](https://cloud.tencent.com/document/product/647/45910#UserSig)的方案。
+	UserSig *string `json:"UserSig,omitempty" name:"UserSig"`
+
+	// 云端录制控制参数。
+	RecordParams *RecordParams `json:"RecordParams,omitempty" name:"RecordParams"`
+
+	// 云端录制文件上传到云存储的参数。
+	StorageParams *StorageParams `json:"StorageParams,omitempty" name:"StorageParams"`
+
+	// TRTC房间号的类型，必须和录制的房间所对应的RoomId类型相同:
+	// 0: 字符串类型的RoomId
+	// 1: 32位整型的RoomId（默认）
+	RoomIdType *uint64 `json:"RoomIdType,omitempty" name:"RoomIdType"`
+
+	// 混流的转码参数，录制模式为混流的时候可以设置。
+	MixTranscodeParams *MixTranscodeParams `json:"MixTranscodeParams,omitempty" name:"MixTranscodeParams"`
+
+	// 混流的布局参数，录制模式为混流的时候可以设置。
+	MixLayoutParams *MixLayoutParams `json:"MixLayoutParams,omitempty" name:"MixLayoutParams"`
+
+	// 接口可以调用的时效性，从成功开启录制并获得任务ID后开始计算，超时后无法调用查询、更新和停止等接口，但是录制任务不会停止。 参数的单位是小时，默认72小时（3天），最大可设置720小时（30天），最小设置6小时。举例说明：如果不设置该参数，那么开始录制成功后，查询、更新和停止录制的调用时效为72个小时。
+	ResourceExpiredHour *uint64 `json:"ResourceExpiredHour,omitempty" name:"ResourceExpiredHour"`
+
+	// TRTC房间权限加密串，只有在TRTC控制台启用了高级权限控制的时候需要携带，在TRTC控制台如果开启高级权限控制后，TRTC 的后台服务系统会校验一个叫做 [PrivateMapKey]（https://cloud.tencent.com/document/product/647/32240） 的“权限票据”，权限票据中包含了一个加密后的 RoomId 和一个加密后的“权限位列表”。由于 PrivateMapKey 中包含 RoomId，所以只提供了 UserSig 没有提供 PrivateMapKey 时，并不能进入指定的房间。
+	PrivateMapKey *string `json:"PrivateMapKey,omitempty" name:"PrivateMapKey"`
+}
+
 type CreateCloudRecordingRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// TRTC的[SdkAppId](https://cloud.tencent.com/document/product/647/46351#sdkappid)，和录制的房间所对应的SdkAppId相同。
 	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
 
@@ -161,16 +194,18 @@ func (r *CreateCloudRecordingRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateCloudRecordingResponseParams struct {
+	// 云录制服务分配的任务 ID。任务 ID 是对一次录制生命周期过程的唯一标识，结束录制时会失去意义。任务 ID需要业务保存下来，作为下次针对这个录制任务操作的参数。
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreateCloudRecordingResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 云录制服务分配的任务 ID。任务 ID 是对一次录制生命周期过程的唯一标识，结束录制时会失去意义。任务 ID需要业务保存下来，作为下次针对这个录制任务操作的参数。
-		TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreateCloudRecordingResponseParams `json:"Response"`
 }
 
 func (r *CreateCloudRecordingResponse) ToJsonString() string {
@@ -184,9 +219,33 @@ func (r *CreateCloudRecordingResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreatePictureRequestParams struct {
+	// 应用id
+	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 图片内容经base64编码后的string格式
+	Content *string `json:"Content,omitempty" name:"Content"`
+
+	// 图片后缀名
+	Suffix *string `json:"Suffix,omitempty" name:"Suffix"`
+
+	// 图片长度
+	Height *uint64 `json:"Height,omitempty" name:"Height"`
+
+	// 图片宽度
+	Width *uint64 `json:"Width,omitempty" name:"Width"`
+
+	// 显示位置x轴方向
+	XPosition *uint64 `json:"XPosition,omitempty" name:"XPosition"`
+
+	// 显示位置y轴方向
+	YPosition *uint64 `json:"YPosition,omitempty" name:"YPosition"`
+}
+
 type CreatePictureRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 应用id
 	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
 
@@ -234,16 +293,18 @@ func (r *CreatePictureRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreatePictureResponseParams struct {
+	// 图片id
+	PictureId *uint64 `json:"PictureId,omitempty" name:"PictureId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreatePictureResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 图片id
-		PictureId *uint64 `json:"PictureId,omitempty" name:"PictureId"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreatePictureResponseParams `json:"Response"`
 }
 
 func (r *CreatePictureResponse) ToJsonString() string {
@@ -257,9 +318,44 @@ func (r *CreatePictureResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateTroubleInfoRequestParams struct {
+	// 应用的ID
+	SdkAppId *string `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 房间ID
+	RoomId *string `json:"RoomId,omitempty" name:"RoomId"`
+
+	// 老师用户ID
+	TeacherUserId *string `json:"TeacherUserId,omitempty" name:"TeacherUserId"`
+
+	// 学生用户ID
+	StudentUserId *string `json:"StudentUserId,omitempty" name:"StudentUserId"`
+
+	// 体验异常端（老师或学生）的用户 ID。
+	TroubleUserId *string `json:"TroubleUserId,omitempty" name:"TroubleUserId"`
+
+	// 异常类型。
+	// 1. 仅视频异常
+	// 2. 仅声音异常
+	// 3. 音视频都异常
+	// 5. 进房异常
+	// 4. 切课
+	// 6. 求助
+	// 7. 问题反馈
+	// 8. 投诉
+	TroubleType *uint64 `json:"TroubleType,omitempty" name:"TroubleType"`
+
+	// 异常发生的UNIX 时间戳，单位为秒。
+	TroubleTime *uint64 `json:"TroubleTime,omitempty" name:"TroubleTime"`
+
+	// 异常详情
+	TroubleMsg *string `json:"TroubleMsg,omitempty" name:"TroubleMsg"`
+}
+
 type CreateTroubleInfoRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 应用的ID
 	SdkAppId *string `json:"SdkAppId,omitempty" name:"SdkAppId"`
 
@@ -319,13 +415,15 @@ func (r *CreateTroubleInfoRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateTroubleInfoResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreateTroubleInfoResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreateTroubleInfoResponseParams `json:"Response"`
 }
 
 func (r *CreateTroubleInfoResponse) ToJsonString() string {
@@ -339,9 +437,18 @@ func (r *CreateTroubleInfoResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteCloudRecordingRequestParams struct {
+	// TRTC的SDKAppId，和录制的房间所对应的SDKAppId相同。
+	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 录制任务的唯一Id，在启动录制成功后会返回。
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+}
+
 type DeleteCloudRecordingRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// TRTC的SDKAppId，和录制的房间所对应的SDKAppId相同。
 	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
 
@@ -369,16 +476,18 @@ func (r *DeleteCloudRecordingRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteCloudRecordingResponseParams struct {
+	// 云录制服务分配的任务 ID。任务 ID 是对一次录制生命周期过程的唯一标识，结束录制时会失去意义。
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DeleteCloudRecordingResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 云录制服务分配的任务 ID。任务 ID 是对一次录制生命周期过程的唯一标识，结束录制时会失去意义。
-		TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DeleteCloudRecordingResponseParams `json:"Response"`
 }
 
 func (r *DeleteCloudRecordingResponse) ToJsonString() string {
@@ -392,9 +501,18 @@ func (r *DeleteCloudRecordingResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeletePictureRequestParams struct {
+	// 图片id
+	PictureId *uint64 `json:"PictureId,omitempty" name:"PictureId"`
+
+	// 应用id
+	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+}
+
 type DeletePictureRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 图片id
 	PictureId *uint64 `json:"PictureId,omitempty" name:"PictureId"`
 
@@ -422,13 +540,15 @@ func (r *DeletePictureRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeletePictureResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DeletePictureResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DeletePictureResponseParams `json:"Response"`
 }
 
 func (r *DeletePictureResponse) ToJsonString() string {
@@ -442,9 +562,24 @@ func (r *DeletePictureResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeAbnormalEventRequestParams struct {
+	// 用户SDKAppID，查询SDKAppID下任意20条异常体验事件（可能不同房间）
+	SdkAppId *string `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 查询开始时间,本地unix时间戳（1592448600s）
+	StartTime *uint64 `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 查询结束时间,本地unix时间戳（1592449080s）
+	EndTime *uint64 `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 房间号，查询房间内任意20条以内异常体验事件
+	RoomId *string `json:"RoomId,omitempty" name:"RoomId"`
+}
+
 type DescribeAbnormalEventRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 用户SDKAppID，查询SDKAppID下任意20条异常体验事件（可能不同房间）
 	SdkAppId *string `json:"SdkAppId,omitempty" name:"SdkAppId"`
 
@@ -480,19 +615,21 @@ func (r *DescribeAbnormalEventRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeAbnormalEventResponseParams struct {
+	// 返回的数据总条数
+	Total *uint64 `json:"Total,omitempty" name:"Total"`
+
+	// 异常体验列表
+	AbnormalExperienceList []*AbnormalExperience `json:"AbnormalExperienceList,omitempty" name:"AbnormalExperienceList"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeAbnormalEventResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 返回的数据总条数
-		Total *uint64 `json:"Total,omitempty" name:"Total"`
-
-		// 异常体验列表
-		AbnormalExperienceList []*AbnormalExperience `json:"AbnormalExperienceList,omitempty" name:"AbnormalExperienceList"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeAbnormalEventResponseParams `json:"Response"`
 }
 
 func (r *DescribeAbnormalEventResponse) ToJsonString() string {
@@ -506,9 +643,49 @@ func (r *DescribeAbnormalEventResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeCallDetailRequestParams struct {
+	// 通话 ID（唯一标识一次通话）： sdkappid_roomgString（房间号_createTime（房间创建时间，unix时间戳，单位为s）例：1400353843_218695_1590065777。通过 DescribeRoomInformation（查询房间列表）接口获取（链接：https://cloud.tencent.com/document/product/647/44050）
+	CommId *string `json:"CommId,omitempty" name:"CommId"`
+
+	// 查询开始时间，14天内。本地unix时间戳（1590065777s），查询实时数据时，查询起止时间不超过1个小时。
+	StartTime *uint64 `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 查询结束时间，本地unix时间戳（1590065877s）
+	EndTime *uint64 `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 用户SDKAppID（1400353843）
+	SdkAppId *string `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 需查询的用户数组，不填默认返回6个用户,最多可填6个用户
+	UserIds []*string `json:"UserIds,omitempty" name:"UserIds"`
+
+	// 需查询的指标，不填则只返回用户列表，填all则返回所有指标。
+	// appCpu：APP CPU使用率；
+	// sysCpu：系统 CPU使用率；
+	// aBit：上/下行音频码率；单位：bps
+	// aBlock：音频卡顿时长；单位：ms
+	// bigvBit：上/下行视频码率；单位：bps
+	// bigvCapFps：视频采集帧率；
+	// bigvEncFps：视频发送帧率；
+	// bigvDecFps：渲染帧率；
+	// bigvBlock：视频卡顿时长；单位：ms
+	// aLoss：上/下行音频丢包率；
+	// bigvLoss：上/下行视频丢包率；
+	// bigvWidth：上/下行分辨率宽；
+	// bigvHeight：上/下行分辨率高
+	DataType []*string `json:"DataType,omitempty" name:"DataType"`
+
+	// 设置分页index，从0开始（PageNumber和PageSize 其中一个不填均默认返回6条数据）
+	PageNumber *string `json:"PageNumber,omitempty" name:"PageNumber"`
+
+	// 设置分页大小（PageNumber和PageSize 其中一个不填均默认返回6条数据,DataType，UserIds不为null，PageSize最大不超过6，DataType，UserIds为null，PageSize最大不超过100）
+	PageSize *string `json:"PageSize,omitempty" name:"PageSize"`
+}
+
 type DescribeCallDetailRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 通话 ID（唯一标识一次通话）： sdkappid_roomgString（房间号_createTime（房间创建时间，unix时间戳，单位为s）例：1400353843_218695_1590065777。通过 DescribeRoomInformation（查询房间列表）接口获取（链接：https://cloud.tencent.com/document/product/647/44050）
 	CommId *string `json:"CommId,omitempty" name:"CommId"`
 
@@ -573,24 +750,26 @@ func (r *DescribeCallDetailRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeCallDetailResponseParams struct {
+	// 返回的用户总条数
+	Total *uint64 `json:"Total,omitempty" name:"Total"`
+
+	// 用户信息列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserList []*UserInformation `json:"UserList,omitempty" name:"UserList"`
+
+	// 质量数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data []*QualityData `json:"Data,omitempty" name:"Data"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeCallDetailResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 返回的用户总条数
-		Total *uint64 `json:"Total,omitempty" name:"Total"`
-
-		// 用户信息列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		UserList []*UserInformation `json:"UserList,omitempty" name:"UserList"`
-
-		// 质量数据
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		Data []*QualityData `json:"Data,omitempty" name:"Data"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeCallDetailResponseParams `json:"Response"`
 }
 
 func (r *DescribeCallDetailResponse) ToJsonString() string {
@@ -604,9 +783,18 @@ func (r *DescribeCallDetailResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeCloudRecordingRequestParams struct {
+	// TRTC的SDKAppId，和录制的房间所对应的SDKAppId相同。
+	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 录制任务的唯一Id，在启动录制成功后会返回。
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+}
+
 type DescribeCloudRecordingRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// TRTC的SDKAppId，和录制的房间所对应的SDKAppId相同。
 	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
 
@@ -634,26 +822,28 @@ func (r *DescribeCloudRecordingRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-type DescribeCloudRecordingResponse struct {
-	*tchttp.BaseResponse
-	Response *struct {
+// Predefined struct for user
+type DescribeCloudRecordingResponseParams struct {
+	// 录制任务的唯一Id。
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
 
-		// 录制任务的唯一Id。
-		TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
-
-		// 云端录制任务的状态信息。
+	// 云端录制任务的状态信息。
 	// Idle：表示当前录制任务空闲中
 	// InProgress：表示当前录制任务正在进行中。
 	// Exited：表示当前录制任务正在退出的过程中。
-		Status *string `json:"Status,omitempty" name:"Status"`
+	Status *string `json:"Status,omitempty" name:"Status"`
 
-		// 录制文件信息。
+	// 录制文件信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		StorageFileList []*StorageFile `json:"StorageFileList,omitempty" name:"StorageFileList"`
+	StorageFileList []*StorageFile `json:"StorageFileList,omitempty" name:"StorageFileList"`
 
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeCloudRecordingResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeCloudRecordingResponseParams `json:"Response"`
 }
 
 func (r *DescribeCloudRecordingResponse) ToJsonString() string {
@@ -667,9 +857,27 @@ func (r *DescribeCloudRecordingResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeDetailEventRequestParams struct {
+	// 通话 ID（唯一标识一次通话）： sdkappid_roomgString（房间号_createTime（房间创建时间，unix时间戳，单位s）。通过 DescribeRoomInformation（查询房间列表）接口获取。（链接：https://cloud.tencent.com/document/product/647/44050）
+	CommId *string `json:"CommId,omitempty" name:"CommId"`
+
+	// 查询开始时间，14天内。本地unix时间戳（1588055615s）
+	StartTime *uint64 `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 查询结束时间，本地unix时间戳（1588058615s）
+	EndTime *uint64 `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 用户id
+	UserId *string `json:"UserId,omitempty" name:"UserId"`
+
+	// 房间号
+	RoomId *string `json:"RoomId,omitempty" name:"RoomId"`
+}
+
 type DescribeDetailEventRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 通话 ID（唯一标识一次通话）： sdkappid_roomgString（房间号_createTime（房间创建时间，unix时间戳，单位s）。通过 DescribeRoomInformation（查询房间列表）接口获取。（链接：https://cloud.tencent.com/document/product/647/44050）
 	CommId *string `json:"CommId,omitempty" name:"CommId"`
 
@@ -709,16 +917,18 @@ func (r *DescribeDetailEventRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeDetailEventResponseParams struct {
+	// 返回的事件列表，若没有数据，会返回空数组。
+	Data []*EventList `json:"Data,omitempty" name:"Data"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeDetailEventResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 返回的事件列表，若没有数据，会返回空数组。
-		Data []*EventList `json:"Data,omitempty" name:"Data"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeDetailEventResponseParams `json:"Response"`
 }
 
 func (r *DescribeDetailEventResponse) ToJsonString() string {
@@ -732,9 +942,21 @@ func (r *DescribeDetailEventResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeExternalTrtcMeasureRequestParams struct {
+	// 查询开始日期。
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 查询结束日期。
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 对应的应用。如果没有这个参数，表示获取用户名下全部实时音视频应用的汇总。
+	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+}
+
 type DescribeExternalTrtcMeasureRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 查询开始日期。
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
 
@@ -766,22 +988,24 @@ func (r *DescribeExternalTrtcMeasureRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeExternalTrtcMeasureResponseParams struct {
+	// 每个SdkAppId的时长使用信息
+	SdkAppIdTrtrTimeUsages []*SdkAppIdNewTrtcTimeUsage `json:"SdkAppIdTrtrTimeUsages,omitempty" name:"SdkAppIdTrtrTimeUsages"`
+
+	// 主播的用量统计方式。取值"InRoomTime":房间时长,"SubscribeTime":"订阅时长","Bandwidth":带宽
+	AnchorUsageMode *string `json:"AnchorUsageMode,omitempty" name:"AnchorUsageMode"`
+
+	// 观众的用量统计方式。取值"InRoomTime":在房间时长,"SubscribeTime":"订阅时长","Bandwidth":带宽,"MergeWithAnchor":"不区分麦上麦下"
+	AudienceUsageMode *string `json:"AudienceUsageMode,omitempty" name:"AudienceUsageMode"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeExternalTrtcMeasureResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 每个SdkAppId的时长使用信息
-		SdkAppIdTrtrTimeUsages []*SdkAppIdNewTrtcTimeUsage `json:"SdkAppIdTrtrTimeUsages,omitempty" name:"SdkAppIdTrtrTimeUsages"`
-
-		// 主播的用量统计方式。取值"InRoomTime":房间时长,"SubscribeTime":"订阅时长","Bandwidth":带宽
-		AnchorUsageMode *string `json:"AnchorUsageMode,omitempty" name:"AnchorUsageMode"`
-
-		// 观众的用量统计方式。取值"InRoomTime":在房间时长,"SubscribeTime":"订阅时长","Bandwidth":带宽,"MergeWithAnchor":"不区分麦上麦下"
-		AudienceUsageMode *string `json:"AudienceUsageMode,omitempty" name:"AudienceUsageMode"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeExternalTrtcMeasureResponseParams `json:"Response"`
 }
 
 func (r *DescribeExternalTrtcMeasureResponse) ToJsonString() string {
@@ -795,9 +1019,21 @@ func (r *DescribeExternalTrtcMeasureResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeHistoryScaleRequestParams struct {
+	// 用户sdkappid(1400188366)
+	SdkAppId *string `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 查询开始时间，5天内。本地unix时间戳（1587571000s）
+	StartTime *uint64 `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 查询结束时间，本地unix时间戳（1588034999s）
+	EndTime *uint64 `json:"EndTime,omitempty" name:"EndTime"`
+}
+
 type DescribeHistoryScaleRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 用户sdkappid(1400188366)
 	SdkAppId *string `json:"SdkAppId,omitempty" name:"SdkAppId"`
 
@@ -829,20 +1065,22 @@ func (r *DescribeHistoryScaleRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeHistoryScaleResponseParams struct {
+	// 返回的数据条数
+	Total *uint64 `json:"Total,omitempty" name:"Total"`
+
+	// 返回的数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ScaleList []*ScaleInfomation `json:"ScaleList,omitempty" name:"ScaleList"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeHistoryScaleResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 返回的数据条数
-		Total *uint64 `json:"Total,omitempty" name:"Total"`
-
-		// 返回的数据
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		ScaleList []*ScaleInfomation `json:"ScaleList,omitempty" name:"ScaleList"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeHistoryScaleResponseParams `json:"Response"`
 }
 
 func (r *DescribeHistoryScaleResponse) ToJsonString() string {
@@ -856,9 +1094,24 @@ func (r *DescribeHistoryScaleResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribePictureRequestParams struct {
+	// 应用ID
+	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 图片ID，不填时返回该应用下所有图片
+	PictureId *uint64 `json:"PictureId,omitempty" name:"PictureId"`
+
+	// 每页数量，不填时默认为10
+	PageSize *uint64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// 页码，不填时默认为1
+	PageNo *uint64 `json:"PageNo,omitempty" name:"PageNo"`
+}
+
 type DescribePictureRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 应用ID
 	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
 
@@ -894,19 +1147,21 @@ func (r *DescribePictureRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribePictureResponseParams struct {
+	// 返回的图片记录数
+	Total *uint64 `json:"Total,omitempty" name:"Total"`
+
+	// 图片信息列表
+	PictureInfo []*PictureInfo `json:"PictureInfo,omitempty" name:"PictureInfo"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribePictureResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 返回的图片记录数
-		Total *uint64 `json:"Total,omitempty" name:"Total"`
-
-		// 图片信息列表
-		PictureInfo []*PictureInfo `json:"PictureInfo,omitempty" name:"PictureInfo"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribePictureResponseParams `json:"Response"`
 }
 
 func (r *DescribePictureResponse) ToJsonString() string {
@@ -920,9 +1175,22 @@ func (r *DescribePictureResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeRecordStatisticRequestParams struct {
+	// 查询开始日期，格式为YYYY-MM-DD。
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 查询结束日期，格式为YYYY-MM-DD。
+	// 单次查询统计区间最多不能超过31天。
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 应用ID，可不传。传应用ID时返回的是该应用的用量，不传时返回多个应用的合计值。
+	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+}
+
 type DescribeRecordStatisticRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 查询开始日期，格式为YYYY-MM-DD。
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
 
@@ -955,16 +1223,18 @@ func (r *DescribeRecordStatisticRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeRecordStatisticResponseParams struct {
+	// 应用的用量信息数组。
+	SdkAppIdUsages []*SdkAppIdRecordUsage `json:"SdkAppIdUsages,omitempty" name:"SdkAppIdUsages"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeRecordStatisticResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 应用的用量信息数组。
-		SdkAppIdUsages []*SdkAppIdRecordUsage `json:"SdkAppIdUsages,omitempty" name:"SdkAppIdUsages"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeRecordStatisticResponseParams `json:"Response"`
 }
 
 func (r *DescribeRecordStatisticResponse) ToJsonString() string {
@@ -978,9 +1248,30 @@ func (r *DescribeRecordStatisticResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeRoomInformationRequestParams struct {
+	// 用户sdkappid
+	SdkAppId *string `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 查询开始时间，14天内。本地unix时间戳（1588031999）
+	StartTime *uint64 `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 查询结束时间，本地unix时间戳（1588034999）
+	EndTime *uint64 `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 字符串房间号
+	RoomId *string `json:"RoomId,omitempty" name:"RoomId"`
+
+	// 分页index，从0开始（PageNumber和PageSize 其中一个不填均默认返回10条数据）
+	PageNumber *string `json:"PageNumber,omitempty" name:"PageNumber"`
+
+	// 分页大小（PageNumber和PageSize 其中一个不填均默认返回10条数据,最大不超过100）
+	PageSize *string `json:"PageSize,omitempty" name:"PageSize"`
+}
+
 type DescribeRoomInformationRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 用户sdkappid
 	SdkAppId *string `json:"SdkAppId,omitempty" name:"SdkAppId"`
 
@@ -1024,19 +1315,21 @@ func (r *DescribeRoomInformationRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeRoomInformationResponseParams struct {
+	// 返回当页数据总数
+	Total *int64 `json:"Total,omitempty" name:"Total"`
+
+	// 房间信息列表
+	RoomList []*RoomState `json:"RoomList,omitempty" name:"RoomList"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeRoomInformationResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 返回当页数据总数
-		Total *int64 `json:"Total,omitempty" name:"Total"`
-
-		// 房间信息列表
-		RoomList []*RoomState `json:"RoomList,omitempty" name:"RoomList"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeRoomInformationResponseParams `json:"Response"`
 }
 
 func (r *DescribeRoomInformationResponse) ToJsonString() string {
@@ -1050,9 +1343,22 @@ func (r *DescribeRoomInformationResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeTrtcMcuTranscodeTimeRequestParams struct {
+	// 查询开始时间，格式为YYYY-MM-DD。
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 查询结束时间，格式为YYYY-MM-DD。
+	// 单次查询统计区间最多不能超过31天。
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 应用ID，可不传。传应用ID时返回的是该应用的用量，不传时返回多个应用的合计值。
+	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+}
+
 type DescribeTrtcMcuTranscodeTimeRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 查询开始时间，格式为YYYY-MM-DD。
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
 
@@ -1085,16 +1391,18 @@ func (r *DescribeTrtcMcuTranscodeTimeRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeTrtcMcuTranscodeTimeResponseParams struct {
+	// 应用的用量信息数组。
+	Usages []*OneSdkAppIdTranscodeTimeUsagesInfo `json:"Usages,omitempty" name:"Usages"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeTrtcMcuTranscodeTimeResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 应用的用量信息数组。
-		Usages []*OneSdkAppIdTranscodeTimeUsagesInfo `json:"Usages,omitempty" name:"Usages"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeTrtcMcuTranscodeTimeResponseParams `json:"Response"`
 }
 
 func (r *DescribeTrtcMcuTranscodeTimeResponse) ToJsonString() string {
@@ -1108,9 +1416,33 @@ func (r *DescribeTrtcMcuTranscodeTimeResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeUserInformationRequestParams struct {
+	// 通话 ID（唯一标识一次通话）： sdkappid_roomgString（房间号_createTime（房间创建时间，unix时间戳，单位为s）例：1400353843_218695_1590065777。通过 DescribeRoomInformation（查询房间列表）接口获取（链接：https://cloud.tencent.com/document/product/647/44050）
+	CommId *string `json:"CommId,omitempty" name:"CommId"`
+
+	// 查询开始时间，14天内。本地unix时间戳（1590065777）
+	StartTime *uint64 `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 查询结束时间，本地unix时间戳（1590065877）
+	EndTime *uint64 `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 用户SDKAppID（1400353843）
+	SdkAppId *string `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 需查询的用户数组，不填默认返回6个用户,最多可填6个用户
+	UserIds []*string `json:"UserIds,omitempty" name:"UserIds"`
+
+	// 设置分页index，从0开始（PageNumber和PageSize 其中一个不填均默认返回6条数据）
+	PageNumber *string `json:"PageNumber,omitempty" name:"PageNumber"`
+
+	// 设置分页大小（PageNumber和PageSize 其中一个不填均默认返回6条数据,PageSize最大不超过100）
+	PageSize *string `json:"PageSize,omitempty" name:"PageSize"`
+}
+
 type DescribeUserInformationRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 通话 ID（唯一标识一次通话）： sdkappid_roomgString（房间号_createTime（房间创建时间，unix时间戳，单位为s）例：1400353843_218695_1590065777。通过 DescribeRoomInformation（查询房间列表）接口获取（链接：https://cloud.tencent.com/document/product/647/44050）
 	CommId *string `json:"CommId,omitempty" name:"CommId"`
 
@@ -1158,20 +1490,22 @@ func (r *DescribeUserInformationRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeUserInformationResponseParams struct {
+	// 返回的用户总条数
+	Total *uint64 `json:"Total,omitempty" name:"Total"`
+
+	// 用户信息列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserList []*UserInformation `json:"UserList,omitempty" name:"UserList"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeUserInformationResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 返回的用户总条数
-		Total *uint64 `json:"Total,omitempty" name:"Total"`
-
-		// 用户信息列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		UserList []*UserInformation `json:"UserList,omitempty" name:"UserList"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeUserInformationResponseParams `json:"Response"`
 }
 
 func (r *DescribeUserInformationResponse) ToJsonString() string {
@@ -1185,9 +1519,18 @@ func (r *DescribeUserInformationResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DismissRoomByStrRoomIdRequestParams struct {
+	// TRTC的SDKAppId。
+	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 房间号。
+	RoomId *string `json:"RoomId,omitempty" name:"RoomId"`
+}
+
 type DismissRoomByStrRoomIdRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// TRTC的SDKAppId。
 	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
 
@@ -1215,13 +1558,15 @@ func (r *DismissRoomByStrRoomIdRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DismissRoomByStrRoomIdResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DismissRoomByStrRoomIdResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DismissRoomByStrRoomIdResponseParams `json:"Response"`
 }
 
 func (r *DismissRoomByStrRoomIdResponse) ToJsonString() string {
@@ -1235,9 +1580,18 @@ func (r *DismissRoomByStrRoomIdResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DismissRoomRequestParams struct {
+	// TRTC的SDKAppId。
+	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 房间号。
+	RoomId *uint64 `json:"RoomId,omitempty" name:"RoomId"`
+}
+
 type DismissRoomRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// TRTC的SDKAppId。
 	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
 
@@ -1265,13 +1619,15 @@ func (r *DismissRoomRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DismissRoomResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DismissRoomResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DismissRoomResponseParams `json:"Response"`
 }
 
 func (r *DismissRoomResponse) ToJsonString() string {
@@ -1286,7 +1642,6 @@ func (r *DismissRoomResponse) FromJsonString(s string) error {
 }
 
 type EncodeParams struct {
-
 	// 混流-输出流音频采样率。取值为[48000, 44100, 32000, 24000, 16000, 8000]，单位是Hz。
 	AudioSampleRate *uint64 `json:"AudioSampleRate,omitempty" name:"AudioSampleRate"`
 
@@ -1332,7 +1687,6 @@ type EncodeParams struct {
 }
 
 type EventList struct {
-
 	// 数据内容
 	Content []*EventMessage `json:"Content,omitempty" name:"Content"`
 
@@ -1341,7 +1695,6 @@ type EventList struct {
 }
 
 type EventMessage struct {
-
 	// 视频流类型：
 	// 0：与视频无关的事件；
 	// 2：视频为大画面；
@@ -1363,7 +1716,6 @@ type EventMessage struct {
 }
 
 type LayoutParams struct {
-
 	// 混流布局模板ID，0为悬浮模板(默认);1为九宫格模板;2为屏幕分享模板;3为画中画模板;4为自定义模板。
 	Template *uint64 `json:"Template,omitempty" name:"Template"`
 
@@ -1396,7 +1748,6 @@ type LayoutParams struct {
 }
 
 type MixLayout struct {
-
 	// 画布上该画面左上角的 y 轴坐标，取值范围 [0, 1920]，不能超过画布的高。
 	Top *uint64 `json:"Top,omitempty" name:"Top"`
 
@@ -1437,7 +1788,6 @@ type MixLayout struct {
 }
 
 type MixLayoutParams struct {
-
 	// 布局模式:
 	// 1：悬浮布局；
 	// 2：屏幕分享布局；
@@ -1485,7 +1835,6 @@ type MixLayoutParams struct {
 }
 
 type MixTranscodeParams struct {
-
 	// 录制视频转码参数，注意如果设置了这个参数，那么里面的字段都是必填的，没有默认值，如果不填这个参数，那么取值为默认值。
 	VideoParams *VideoParams `json:"VideoParams,omitempty" name:"VideoParams"`
 
@@ -1493,9 +1842,24 @@ type MixTranscodeParams struct {
 	AudioParams *AudioParams `json:"AudioParams,omitempty" name:"AudioParams"`
 }
 
+// Predefined struct for user
+type ModifyCloudRecordingRequestParams struct {
+	// TRTC的SDKAppId，和录制的房间所对应的SDKAppId相同。
+	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 录制任务的唯一Id，在启动录制成功后会返回。
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 需要更新的混流的布局参数。
+	MixLayoutParams *MixLayoutParams `json:"MixLayoutParams,omitempty" name:"MixLayoutParams"`
+
+	// 指定订阅流白名单或者黑名单。
+	SubscribeStreamUserIds *SubscribeStreamUserIds `json:"SubscribeStreamUserIds,omitempty" name:"SubscribeStreamUserIds"`
+}
+
 type ModifyCloudRecordingRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// TRTC的SDKAppId，和录制的房间所对应的SDKAppId相同。
 	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
 
@@ -1531,16 +1895,18 @@ func (r *ModifyCloudRecordingRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifyCloudRecordingResponseParams struct {
+	// 云录制服务分配的任务 ID。任务 ID 是对一次录制生命周期过程的唯一标识，结束录制时会失去意义。
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type ModifyCloudRecordingResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 云录制服务分配的任务 ID。任务 ID 是对一次录制生命周期过程的唯一标识，结束录制时会失去意义。
-		TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *ModifyCloudRecordingResponseParams `json:"Response"`
 }
 
 func (r *ModifyCloudRecordingResponse) ToJsonString() string {
@@ -1554,9 +1920,30 @@ func (r *ModifyCloudRecordingResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifyPictureRequestParams struct {
+	// 图片id
+	PictureId *uint64 `json:"PictureId,omitempty" name:"PictureId"`
+
+	// 应用id
+	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 图片长度
+	Height *uint64 `json:"Height,omitempty" name:"Height"`
+
+	// 图片宽度
+	Width *uint64 `json:"Width,omitempty" name:"Width"`
+
+	// 显示位置x轴方向
+	XPosition *uint64 `json:"XPosition,omitempty" name:"XPosition"`
+
+	// 显示位置y轴方向
+	YPosition *uint64 `json:"YPosition,omitempty" name:"YPosition"`
+}
+
 type ModifyPictureRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 图片id
 	PictureId *uint64 `json:"PictureId,omitempty" name:"PictureId"`
 
@@ -1600,13 +1987,15 @@ func (r *ModifyPictureRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifyPictureResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type ModifyPictureResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *ModifyPictureResponseParams `json:"Response"`
 }
 
 func (r *ModifyPictureResponse) ToJsonString() string {
@@ -1621,7 +2010,6 @@ func (r *ModifyPictureResponse) FromJsonString(s string) error {
 }
 
 type OneSdkAppIdTranscodeTimeUsagesInfo struct {
-
 	// 旁路转码时长查询结果数组
 	SdkAppIdTranscodeTimeUsages []*SdkAppIdTrtcMcuTranscodeTimeUsage `json:"SdkAppIdTranscodeTimeUsages,omitempty" name:"SdkAppIdTranscodeTimeUsages"`
 
@@ -1633,7 +2021,6 @@ type OneSdkAppIdTranscodeTimeUsagesInfo struct {
 }
 
 type OutputParams struct {
-
 	// 直播流 ID，由用户自定义设置，该流 ID 不能与用户旁路的流 ID 相同。
 	StreamId *string `json:"StreamId,omitempty" name:"StreamId"`
 
@@ -1648,7 +2035,6 @@ type OutputParams struct {
 }
 
 type PictureInfo struct {
-
 	// 图片长度
 	Height *uint64 `json:"Height,omitempty" name:"Height"`
 
@@ -1669,7 +2055,6 @@ type PictureInfo struct {
 }
 
 type PresetLayoutConfig struct {
-
 	// 指定显示在该画面上的用户ID。如果不指定用户ID，会按照用户加入房间的顺序自动匹配PresetLayoutConfig中的画面设置。
 	UserId *string `json:"UserId,omitempty" name:"UserId"`
 
@@ -1702,7 +2087,6 @@ type PresetLayoutConfig struct {
 }
 
 type PublishCdnParams struct {
-
 	// 腾讯云直播BizId。
 	BizId *uint64 `json:"BizId,omitempty" name:"BizId"`
 
@@ -1711,7 +2095,6 @@ type PublishCdnParams struct {
 }
 
 type QualityData struct {
-
 	// 数据内容
 	Content []*TimeValue `json:"Content,omitempty" name:"Content"`
 
@@ -1727,7 +2110,6 @@ type QualityData struct {
 }
 
 type RecordParams struct {
-
 	// 录制模式：
 	// 1：单流录制，分别录制房间的订阅UserId的音频和视频，将录制文件（M3U8/TS）上传至云存储；
 	// 2：混流录制，将房间内订阅UserId的音视频混录成一个音视频文件，将录制文件[M3U8/TS]上传至云存储；
@@ -1750,7 +2132,6 @@ type RecordParams struct {
 }
 
 type RecordUsage struct {
-
 	// 本组数据对应的时间点，格式如:2020-09-07或2020-09-07 00:05:05。
 	TimeKey *string `json:"TimeKey,omitempty" name:"TimeKey"`
 
@@ -1767,9 +2148,21 @@ type RecordUsage struct {
 	AudioTime *uint64 `json:"AudioTime,omitempty" name:"AudioTime"`
 }
 
+// Predefined struct for user
+type RemoveUserByStrRoomIdRequestParams struct {
+	// TRTC的SDKAppId。
+	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 房间号。
+	RoomId *string `json:"RoomId,omitempty" name:"RoomId"`
+
+	// 要移出的用户列表，最多10个。
+	UserIds []*string `json:"UserIds,omitempty" name:"UserIds"`
+}
+
 type RemoveUserByStrRoomIdRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// TRTC的SDKAppId。
 	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
 
@@ -1801,13 +2194,15 @@ func (r *RemoveUserByStrRoomIdRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type RemoveUserByStrRoomIdResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type RemoveUserByStrRoomIdResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *RemoveUserByStrRoomIdResponseParams `json:"Response"`
 }
 
 func (r *RemoveUserByStrRoomIdResponse) ToJsonString() string {
@@ -1821,9 +2216,21 @@ func (r *RemoveUserByStrRoomIdResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type RemoveUserRequestParams struct {
+	// TRTC的SDKAppId。
+	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 房间号。
+	RoomId *uint64 `json:"RoomId,omitempty" name:"RoomId"`
+
+	// 要移出的用户列表，最多10个。
+	UserIds []*string `json:"UserIds,omitempty" name:"UserIds"`
+}
+
 type RemoveUserRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// TRTC的SDKAppId。
 	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
 
@@ -1855,13 +2262,15 @@ func (r *RemoveUserRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type RemoveUserResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type RemoveUserResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *RemoveUserResponseParams `json:"Response"`
 }
 
 func (r *RemoveUserResponse) ToJsonString() string {
@@ -1876,7 +2285,6 @@ func (r *RemoveUserResponse) FromJsonString(s string) error {
 }
 
 type RoomState struct {
-
 	// 通话ID（唯一标识一次通话）
 	CommId *string `json:"CommId,omitempty" name:"CommId"`
 
@@ -1897,7 +2305,6 @@ type RoomState struct {
 }
 
 type ScaleInfomation struct {
-
 	// 每天开始的时间
 	Time *uint64 `json:"Time,omitempty" name:"Time"`
 
@@ -1915,7 +2322,6 @@ type ScaleInfomation struct {
 }
 
 type SdkAppIdNewTrtcTimeUsage struct {
-
 	// SdkAppId的值。
 	SdkAppId *string `json:"SdkAppId,omitempty" name:"SdkAppId"`
 
@@ -1927,7 +2333,6 @@ type SdkAppIdNewTrtcTimeUsage struct {
 }
 
 type SdkAppIdRecordUsage struct {
-
 	// SdkAppId的值。
 	SdkAppId *string `json:"SdkAppId,omitempty" name:"SdkAppId"`
 
@@ -1936,7 +2341,6 @@ type SdkAppIdRecordUsage struct {
 }
 
 type SdkAppIdTrtcMcuTranscodeTimeUsage struct {
-
 	// 本组数据对应的时间点，格式如：2020-09-07或2020-09-07 00:05:05。
 	TimeKey *string `json:"TimeKey,omitempty" name:"TimeKey"`
 
@@ -1954,7 +2358,6 @@ type SdkAppIdTrtcMcuTranscodeTimeUsage struct {
 }
 
 type SmallVideoLayoutParams struct {
-
 	// 代表小画面对应的用户ID。
 	UserId *string `json:"UserId,omitempty" name:"UserId"`
 
@@ -1974,9 +2377,30 @@ type SmallVideoLayoutParams struct {
 	LocationY *uint64 `json:"LocationY,omitempty" name:"LocationY"`
 }
 
+// Predefined struct for user
+type StartMCUMixTranscodeByStrRoomIdRequestParams struct {
+	// TRTC的SDKAppId。
+	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 字符串房间号。
+	StrRoomId *string `json:"StrRoomId,omitempty" name:"StrRoomId"`
+
+	// 混流输出控制参数。
+	OutputParams *OutputParams `json:"OutputParams,omitempty" name:"OutputParams"`
+
+	// 混流输出编码参数。
+	EncodeParams *EncodeParams `json:"EncodeParams,omitempty" name:"EncodeParams"`
+
+	// 混流输出布局参数。
+	LayoutParams *LayoutParams `json:"LayoutParams,omitempty" name:"LayoutParams"`
+
+	// 第三方CDN转推参数。
+	PublishCdnParams *PublishCdnParams `json:"PublishCdnParams,omitempty" name:"PublishCdnParams"`
+}
+
 type StartMCUMixTranscodeByStrRoomIdRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// TRTC的SDKAppId。
 	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
 
@@ -2020,13 +2444,15 @@ func (r *StartMCUMixTranscodeByStrRoomIdRequest) FromJsonString(s string) error 
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type StartMCUMixTranscodeByStrRoomIdResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type StartMCUMixTranscodeByStrRoomIdResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *StartMCUMixTranscodeByStrRoomIdResponseParams `json:"Response"`
 }
 
 func (r *StartMCUMixTranscodeByStrRoomIdResponse) ToJsonString() string {
@@ -2040,9 +2466,30 @@ func (r *StartMCUMixTranscodeByStrRoomIdResponse) FromJsonString(s string) error
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type StartMCUMixTranscodeRequestParams struct {
+	// TRTC的SDKAppId。
+	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 房间号。
+	RoomId *uint64 `json:"RoomId,omitempty" name:"RoomId"`
+
+	// 混流输出控制参数。
+	OutputParams *OutputParams `json:"OutputParams,omitempty" name:"OutputParams"`
+
+	// 混流输出编码参数。
+	EncodeParams *EncodeParams `json:"EncodeParams,omitempty" name:"EncodeParams"`
+
+	// 混流输出布局参数。
+	LayoutParams *LayoutParams `json:"LayoutParams,omitempty" name:"LayoutParams"`
+
+	// 第三方CDN转推参数。
+	PublishCdnParams *PublishCdnParams `json:"PublishCdnParams,omitempty" name:"PublishCdnParams"`
+}
+
 type StartMCUMixTranscodeRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// TRTC的SDKAppId。
 	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
 
@@ -2086,13 +2533,15 @@ func (r *StartMCUMixTranscodeRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type StartMCUMixTranscodeResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type StartMCUMixTranscodeResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *StartMCUMixTranscodeResponseParams `json:"Response"`
 }
 
 func (r *StartMCUMixTranscodeResponse) ToJsonString() string {
@@ -2106,9 +2555,18 @@ func (r *StartMCUMixTranscodeResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type StopMCUMixTranscodeByStrRoomIdRequestParams struct {
+	// TRTC的SDKAppId。
+	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 字符串房间号。
+	StrRoomId *string `json:"StrRoomId,omitempty" name:"StrRoomId"`
+}
+
 type StopMCUMixTranscodeByStrRoomIdRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// TRTC的SDKAppId。
 	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
 
@@ -2136,13 +2594,15 @@ func (r *StopMCUMixTranscodeByStrRoomIdRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type StopMCUMixTranscodeByStrRoomIdResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type StopMCUMixTranscodeByStrRoomIdResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *StopMCUMixTranscodeByStrRoomIdResponseParams `json:"Response"`
 }
 
 func (r *StopMCUMixTranscodeByStrRoomIdResponse) ToJsonString() string {
@@ -2156,9 +2616,18 @@ func (r *StopMCUMixTranscodeByStrRoomIdResponse) FromJsonString(s string) error 
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type StopMCUMixTranscodeRequestParams struct {
+	// TRTC的SDKAppId。
+	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 房间号。
+	RoomId *uint64 `json:"RoomId,omitempty" name:"RoomId"`
+}
+
 type StopMCUMixTranscodeRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// TRTC的SDKAppId。
 	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
 
@@ -2186,13 +2655,15 @@ func (r *StopMCUMixTranscodeRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type StopMCUMixTranscodeResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type StopMCUMixTranscodeResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *StopMCUMixTranscodeResponseParams `json:"Response"`
 }
 
 func (r *StopMCUMixTranscodeResponse) ToJsonString() string {
@@ -2207,7 +2678,6 @@ func (r *StopMCUMixTranscodeResponse) FromJsonString(s string) error {
 }
 
 type StorageFile struct {
-
 	// 录制文件对应的UserId，如果是混流的话的这里返回的是空串。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UserId *string `json:"UserId,omitempty" name:"UserId"`
@@ -2227,7 +2697,6 @@ type StorageFile struct {
 }
 
 type StorageParams struct {
-
 	// 第三方云存储的账号信息。
 	CloudStorage *CloudStorage `json:"CloudStorage,omitempty" name:"CloudStorage"`
 
@@ -2236,7 +2705,6 @@ type StorageParams struct {
 }
 
 type SubscribeStreamUserIds struct {
-
 	// 订阅音频流白名单，指定订阅哪几个UserId的音频流，例如["1", "2", "3"], 代表订阅UserId 1，2，3的音频流；["1.*$"], 代表订阅UserId前缀为1的音频流。默认不填订阅房间内所有的音频流，订阅列表用户数不超过32。
 	SubscribeAudioUserIds []*string `json:"SubscribeAudioUserIds,omitempty" name:"SubscribeAudioUserIds"`
 
@@ -2251,7 +2719,6 @@ type SubscribeStreamUserIds struct {
 }
 
 type TencentVod struct {
-
 	// 媒体后续任务处理操作，即完成媒体上传后，可自动发起任务流操作。参数值为任务流模板名，云点播支持 创建任务流模板 并为模板命名。
 	Procedure *string `json:"Procedure,omitempty" name:"Procedure"`
 
@@ -2276,7 +2743,6 @@ type TencentVod struct {
 }
 
 type TimeValue struct {
-
 	// 时间，unix时间戳（1590065877s)
 	Time *uint64 `json:"Time,omitempty" name:"Time"`
 
@@ -2285,7 +2751,6 @@ type TimeValue struct {
 }
 
 type TrtcTimeNewUsage struct {
-
 	// 时间点。
 	TimeKey *string `json:"TimeKey,omitempty" name:"TimeKey"`
 
@@ -2318,7 +2783,6 @@ type TrtcTimeNewUsage struct {
 }
 
 type UserInformation struct {
-
 	// 房间号
 	RoomStr *string `json:"RoomStr,omitempty" name:"RoomStr"`
 
@@ -2345,7 +2809,6 @@ type UserInformation struct {
 }
 
 type VideoParams struct {
-
 	// 视频的宽度值，单位为像素，默认值360。不能超过1920，与height的乘积不能超过1920*1080。
 	Width *uint64 `json:"Width,omitempty" name:"Width"`
 
@@ -2363,7 +2826,6 @@ type VideoParams struct {
 }
 
 type WaterMark struct {
-
 	// 水印类型，0为图片（默认），1为文字（暂不支持）。
 	WaterMarkType *uint64 `json:"WaterMarkType,omitempty" name:"WaterMarkType"`
 
@@ -2372,7 +2834,6 @@ type WaterMark struct {
 }
 
 type WaterMarkImage struct {
-
 	// 下载的url地址， 只支持jpg， png，大小限制不超过5M。
 	WaterMarkUrl *string `json:"WaterMarkUrl,omitempty" name:"WaterMarkUrl"`
 
@@ -2390,7 +2851,6 @@ type WaterMarkImage struct {
 }
 
 type WaterMarkParams struct {
-
 	// 混流-水印图片ID。取值为实时音视频控制台上传的图片ID。
 	WaterMarkId *uint64 `json:"WaterMarkId,omitempty" name:"WaterMarkId"`
 

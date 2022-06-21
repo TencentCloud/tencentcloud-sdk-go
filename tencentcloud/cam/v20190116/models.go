@@ -21,7 +21,6 @@ import (
 )
 
 type AccessKey struct {
-
 	// 访问密钥标识
 	AccessKeyId *string `json:"AccessKeyId,omitempty" name:"AccessKeyId"`
 
@@ -32,9 +31,39 @@ type AccessKey struct {
 	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
 }
 
+// Predefined struct for user
+type AddUserRequestParams struct {
+	// 子用户用户名
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 子用户备注
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 子用户是否可以登录控制台。传0子用户无法登录控制台，传1子用户可以登录控制台。
+	ConsoleLogin *uint64 `json:"ConsoleLogin,omitempty" name:"ConsoleLogin"`
+
+	// 是否生成子用户密钥。传0不生成子用户密钥，传1生成子用户密钥。
+	UseApi *uint64 `json:"UseApi,omitempty" name:"UseApi"`
+
+	// 子用户控制台登录密码，若未进行密码规则设置则默认密码规则为8位以上同时包含大小写字母、数字和特殊字符。只有可以登录控制台时才有效，如果传空并且上面指定允许登录控制台，则自动生成随机密码，随机密码规则为32位包含大小写字母、数字和特殊字符。
+	Password *string `json:"Password,omitempty" name:"Password"`
+
+	// 子用户是否要在下次登录时重置密码。传0子用户下次登录控制台不需重置密码，传1子用户下次登录控制台需要重置密码。
+	NeedResetPassword *uint64 `json:"NeedResetPassword,omitempty" name:"NeedResetPassword"`
+
+	// 手机号
+	PhoneNum *string `json:"PhoneNum,omitempty" name:"PhoneNum"`
+
+	// 区号
+	CountryCode *string `json:"CountryCode,omitempty" name:"CountryCode"`
+
+	// 邮箱
+	Email *string `json:"Email,omitempty" name:"Email"`
+}
+
 type AddUserRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 子用户用户名
 	Name *string `json:"Name,omitempty" name:"Name"`
 
@@ -90,31 +119,33 @@ func (r *AddUserRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type AddUserResponseParams struct {
+	// 子用户 UIN
+	Uin *uint64 `json:"Uin,omitempty" name:"Uin"`
+
+	// 子用户用户名
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 如果输入参数组合为自动生成随机密码，则返回生成的密码
+	Password *string `json:"Password,omitempty" name:"Password"`
+
+	// 子用户密钥 ID
+	SecretId *string `json:"SecretId,omitempty" name:"SecretId"`
+
+	// 子用户密钥 Key
+	SecretKey *string `json:"SecretKey,omitempty" name:"SecretKey"`
+
+	// 子用户 UID
+	Uid *uint64 `json:"Uid,omitempty" name:"Uid"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type AddUserResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 子用户 UIN
-		Uin *uint64 `json:"Uin,omitempty" name:"Uin"`
-
-		// 子用户用户名
-		Name *string `json:"Name,omitempty" name:"Name"`
-
-		// 如果输入参数组合为自动生成随机密码，则返回生成的密码
-		Password *string `json:"Password,omitempty" name:"Password"`
-
-		// 子用户密钥 ID
-		SecretId *string `json:"SecretId,omitempty" name:"SecretId"`
-
-		// 子用户密钥 Key
-		SecretKey *string `json:"SecretKey,omitempty" name:"SecretKey"`
-
-		// 子用户 UID
-		Uid *uint64 `json:"Uid,omitempty" name:"Uid"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *AddUserResponseParams `json:"Response"`
 }
 
 func (r *AddUserResponse) ToJsonString() string {
@@ -128,9 +159,15 @@ func (r *AddUserResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type AddUserToGroupRequestParams struct {
+	// 添加的子用户 UIN/UID 和用户组 ID 关联关系
+	Info []*GroupIdOfUidInfo `json:"Info,omitempty" name:"Info"`
+}
+
 type AddUserToGroupRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 添加的子用户 UIN/UID 和用户组 ID 关联关系
 	Info []*GroupIdOfUidInfo `json:"Info,omitempty" name:"Info"`
 }
@@ -154,13 +191,15 @@ func (r *AddUserToGroupRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type AddUserToGroupResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type AddUserToGroupResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *AddUserToGroupResponseParams `json:"Response"`
 }
 
 func (r *AddUserToGroupResponse) ToJsonString() string {
@@ -175,7 +214,6 @@ func (r *AddUserToGroupResponse) FromJsonString(s string) error {
 }
 
 type AttachEntityOfPolicy struct {
-
 	// 实体ID
 	Id *string `json:"Id,omitempty" name:"Id"`
 
@@ -195,9 +233,18 @@ type AttachEntityOfPolicy struct {
 	AttachmentTime *string `json:"AttachmentTime,omitempty" name:"AttachmentTime"`
 }
 
+// Predefined struct for user
+type AttachGroupPolicyRequestParams struct {
+	// 策略 id
+	PolicyId *uint64 `json:"PolicyId,omitempty" name:"PolicyId"`
+
+	// 用户组 id
+	AttachGroupId *uint64 `json:"AttachGroupId,omitempty" name:"AttachGroupId"`
+}
+
 type AttachGroupPolicyRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 策略 id
 	PolicyId *uint64 `json:"PolicyId,omitempty" name:"PolicyId"`
 
@@ -225,13 +272,15 @@ func (r *AttachGroupPolicyRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type AttachGroupPolicyResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type AttachGroupPolicyResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *AttachGroupPolicyResponseParams `json:"Response"`
 }
 
 func (r *AttachGroupPolicyResponse) ToJsonString() string {
@@ -246,7 +295,6 @@ func (r *AttachGroupPolicyResponse) FromJsonString(s string) error {
 }
 
 type AttachPolicyInfo struct {
-
 	// 策略id
 	PolicyId *uint64 `json:"PolicyId,omitempty" name:"PolicyId"`
 
@@ -291,9 +339,24 @@ type AttachPolicyInfo struct {
 	DeactivedDetail []*string `json:"DeactivedDetail,omitempty" name:"DeactivedDetail"`
 }
 
+// Predefined struct for user
+type AttachRolePolicyRequestParams struct {
+	// 策略ID，入参PolicyId与PolicyName二选一
+	PolicyId *uint64 `json:"PolicyId,omitempty" name:"PolicyId"`
+
+	// 角色ID，用于指定角色，入参 AttachRoleId 与 AttachRoleName 二选一
+	AttachRoleId *string `json:"AttachRoleId,omitempty" name:"AttachRoleId"`
+
+	// 角色名称，用于指定角色，入参 AttachRoleId 与 AttachRoleName 二选一
+	AttachRoleName *string `json:"AttachRoleName,omitempty" name:"AttachRoleName"`
+
+	// 策略名，入参PolicyId与PolicyName二选一
+	PolicyName *string `json:"PolicyName,omitempty" name:"PolicyName"`
+}
+
 type AttachRolePolicyRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 策略ID，入参PolicyId与PolicyName二选一
 	PolicyId *uint64 `json:"PolicyId,omitempty" name:"PolicyId"`
 
@@ -329,13 +392,15 @@ func (r *AttachRolePolicyRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type AttachRolePolicyResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type AttachRolePolicyResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *AttachRolePolicyResponseParams `json:"Response"`
 }
 
 func (r *AttachRolePolicyResponse) ToJsonString() string {
@@ -349,9 +414,18 @@ func (r *AttachRolePolicyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type AttachUserPolicyRequestParams struct {
+	// 策略 id
+	PolicyId *uint64 `json:"PolicyId,omitempty" name:"PolicyId"`
+
+	// 子账号 uin
+	AttachUin *uint64 `json:"AttachUin,omitempty" name:"AttachUin"`
+}
+
 type AttachUserPolicyRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 策略 id
 	PolicyId *uint64 `json:"PolicyId,omitempty" name:"PolicyId"`
 
@@ -379,13 +453,15 @@ func (r *AttachUserPolicyRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type AttachUserPolicyResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type AttachUserPolicyResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *AttachUserPolicyResponseParams `json:"Response"`
 }
 
 func (r *AttachUserPolicyResponse) ToJsonString() string {
@@ -400,7 +476,6 @@ func (r *AttachUserPolicyResponse) FromJsonString(s string) error {
 }
 
 type AttachedPolicyOfRole struct {
-
 	// 策略ID
 	PolicyId *uint64 `json:"PolicyId,omitempty" name:"PolicyId"`
 
@@ -431,7 +506,6 @@ type AttachedPolicyOfRole struct {
 }
 
 type AttachedUserPolicy struct {
-
 	// 策略ID
 	PolicyId *string `json:"PolicyId,omitempty" name:"PolicyId"`
 
@@ -464,7 +538,6 @@ type AttachedUserPolicy struct {
 }
 
 type AttachedUserPolicyGroupInfo struct {
-
 	// 分组ID
 	GroupId *uint64 `json:"GroupId,omitempty" name:"GroupId"`
 
@@ -472,9 +545,15 @@ type AttachedUserPolicyGroupInfo struct {
 	GroupName *string `json:"GroupName,omitempty" name:"GroupName"`
 }
 
+// Predefined struct for user
+type ConsumeCustomMFATokenRequestParams struct {
+	// 自定义多因子验证Token
+	MFAToken *string `json:"MFAToken,omitempty" name:"MFAToken"`
+}
+
 type ConsumeCustomMFATokenRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 自定义多因子验证Token
 	MFAToken *string `json:"MFAToken,omitempty" name:"MFAToken"`
 }
@@ -498,13 +577,15 @@ func (r *ConsumeCustomMFATokenRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ConsumeCustomMFATokenResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type ConsumeCustomMFATokenResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *ConsumeCustomMFATokenResponseParams `json:"Response"`
 }
 
 func (r *ConsumeCustomMFATokenResponse) ToJsonString() string {
@@ -518,9 +599,18 @@ func (r *ConsumeCustomMFATokenResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateGroupRequestParams struct {
+	// 用户组名
+	GroupName *string `json:"GroupName,omitempty" name:"GroupName"`
+
+	// 用户组描述
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+}
+
 type CreateGroupRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 用户组名
 	GroupName *string `json:"GroupName,omitempty" name:"GroupName"`
 
@@ -548,16 +638,18 @@ func (r *CreateGroupRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateGroupResponseParams struct {
+	// 用户组 ID
+	GroupId *uint64 `json:"GroupId,omitempty" name:"GroupId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreateGroupResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 用户组 ID
-		GroupId *uint64 `json:"GroupId,omitempty" name:"GroupId"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreateGroupResponseParams `json:"Response"`
 }
 
 func (r *CreateGroupResponse) ToJsonString() string {
@@ -571,9 +663,27 @@ func (r *CreateGroupResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateOIDCConfigRequestParams struct {
+	// 身份提供商URL
+	IdentityUrl *string `json:"IdentityUrl,omitempty" name:"IdentityUrl"`
+
+	// 签名公钥，需要base64
+	IdentityKey *string `json:"IdentityKey,omitempty" name:"IdentityKey"`
+
+	// 客户端ID
+	ClientId []*string `json:"ClientId,omitempty" name:"ClientId"`
+
+	// 名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 描述
+	Description *string `json:"Description,omitempty" name:"Description"`
+}
+
 type CreateOIDCConfigRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 身份提供商URL
 	IdentityUrl *string `json:"IdentityUrl,omitempty" name:"IdentityUrl"`
 
@@ -613,13 +723,15 @@ func (r *CreateOIDCConfigRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateOIDCConfigResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreateOIDCConfigResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreateOIDCConfigResponseParams `json:"Response"`
 }
 
 func (r *CreateOIDCConfigResponse) ToJsonString() string {
@@ -633,9 +745,21 @@ func (r *CreateOIDCConfigResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreatePolicyRequestParams struct {
+	// 策略名
+	PolicyName *string `json:"PolicyName,omitempty" name:"PolicyName"`
+
+	// 策略文档，示例：{"version":"2.0","statement":[{"action":"name/sts:AssumeRole","effect":"allow","principal":{"service":["cloudaudit.cloud.tencent.com","cls.cloud.tencent.com"]}}]}，principal用于指定角色的授权对象。获取该参数可参阅 获取角色详情（https://cloud.tencent.com/document/product/598/36221） 输出参数RoleInfo
+	PolicyDocument *string `json:"PolicyDocument,omitempty" name:"PolicyDocument"`
+
+	// 策略描述
+	Description *string `json:"Description,omitempty" name:"Description"`
+}
+
 type CreatePolicyRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 策略名
 	PolicyName *string `json:"PolicyName,omitempty" name:"PolicyName"`
 
@@ -667,16 +791,18 @@ func (r *CreatePolicyRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreatePolicyResponseParams struct {
+	// 新增策略ID
+	PolicyId *uint64 `json:"PolicyId,omitempty" name:"PolicyId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreatePolicyResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 新增策略ID
-		PolicyId *uint64 `json:"PolicyId,omitempty" name:"PolicyId"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreatePolicyResponseParams `json:"Response"`
 }
 
 func (r *CreatePolicyResponse) ToJsonString() string {
@@ -690,9 +816,21 @@ func (r *CreatePolicyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreatePolicyVersionRequestParams struct {
+	// 策略ID
+	PolicyId *uint64 `json:"PolicyId,omitempty" name:"PolicyId"`
+
+	// 策略文本信息
+	PolicyDocument *string `json:"PolicyDocument,omitempty" name:"PolicyDocument"`
+
+	// 是否设置为当前策略的版本
+	SetAsDefault *bool `json:"SetAsDefault,omitempty" name:"SetAsDefault"`
+}
+
 type CreatePolicyVersionRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 策略ID
 	PolicyId *uint64 `json:"PolicyId,omitempty" name:"PolicyId"`
 
@@ -724,17 +862,19 @@ func (r *CreatePolicyVersionRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreatePolicyVersionResponseParams struct {
+	// 策略版本号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VersionId *uint64 `json:"VersionId,omitempty" name:"VersionId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreatePolicyVersionResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 策略版本号
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		VersionId *uint64 `json:"VersionId,omitempty" name:"VersionId"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreatePolicyVersionResponseParams `json:"Response"`
 }
 
 func (r *CreatePolicyVersionResponse) ToJsonString() string {
@@ -748,9 +888,30 @@ func (r *CreatePolicyVersionResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateRoleRequestParams struct {
+	// 角色名称
+	RoleName *string `json:"RoleName,omitempty" name:"RoleName"`
+
+	// 策略文档，示例：{"version":"2.0","statement":[{"action":"name/sts:AssumeRole","effect":"allow","principal":{"service":["cloudaudit.cloud.tencent.com","cls.cloud.tencent.com"]}}]}，principal用于指定角色的授权对象。获取该参数可参阅 获取角色详情（https://cloud.tencent.com/document/product/598/36221） 输出参数RoleInfo
+	PolicyDocument *string `json:"PolicyDocument,omitempty" name:"PolicyDocument"`
+
+	// 角色描述
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 是否允许登录 1 为允许 0 为不允许
+	ConsoleLogin *uint64 `json:"ConsoleLogin,omitempty" name:"ConsoleLogin"`
+
+	// 申请角色临时密钥的最长有效期限制(范围：0~43200)
+	SessionDuration *uint64 `json:"SessionDuration,omitempty" name:"SessionDuration"`
+
+	// 角色绑定标签
+	Tags []*RoleTags `json:"Tags,omitempty" name:"Tags"`
+}
+
 type CreateRoleRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 角色名称
 	RoleName *string `json:"RoleName,omitempty" name:"RoleName"`
 
@@ -794,17 +955,19 @@ func (r *CreateRoleRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateRoleResponseParams struct {
+	// 角色ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RoleId *string `json:"RoleId,omitempty" name:"RoleId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreateRoleResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 角色ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		RoleId *string `json:"RoleId,omitempty" name:"RoleId"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreateRoleResponseParams `json:"Response"`
 }
 
 func (r *CreateRoleResponse) ToJsonString() string {
@@ -818,9 +981,21 @@ func (r *CreateRoleResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateSAMLProviderRequestParams struct {
+	// SAML身份提供商名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// SAML身份提供商描述
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// SAML身份提供商Base64编码的元数据文档
+	SAMLMetadataDocument *string `json:"SAMLMetadataDocument,omitempty" name:"SAMLMetadataDocument"`
+}
+
 type CreateSAMLProviderRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// SAML身份提供商名称
 	Name *string `json:"Name,omitempty" name:"Name"`
 
@@ -852,16 +1027,18 @@ func (r *CreateSAMLProviderRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateSAMLProviderResponseParams struct {
+	// SAML身份提供商资源描述符
+	ProviderArn *string `json:"ProviderArn,omitempty" name:"ProviderArn"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreateSAMLProviderResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// SAML身份提供商资源描述符
-		ProviderArn *string `json:"ProviderArn,omitempty" name:"ProviderArn"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreateSAMLProviderResponseParams `json:"Response"`
 }
 
 func (r *CreateSAMLProviderResponse) ToJsonString() string {
@@ -875,9 +1052,24 @@ func (r *CreateSAMLProviderResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateServiceLinkedRoleRequestParams struct {
+	// 授权服务，附加了此角色的腾讯云服务主体。
+	QCSServiceName []*string `json:"QCSServiceName,omitempty" name:"QCSServiceName"`
+
+	// 自定义后缀，根据您提供的字符串，与服务提供的前缀组合在一起以形成完整的角色名称。
+	CustomSuffix *string `json:"CustomSuffix,omitempty" name:"CustomSuffix"`
+
+	// 角色说明。
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 角色绑定标签。
+	Tags []*RoleTags `json:"Tags,omitempty" name:"Tags"`
+}
+
 type CreateServiceLinkedRoleRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 授权服务，附加了此角色的腾讯云服务主体。
 	QCSServiceName []*string `json:"QCSServiceName,omitempty" name:"QCSServiceName"`
 
@@ -913,16 +1105,18 @@ func (r *CreateServiceLinkedRoleRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateServiceLinkedRoleResponseParams struct {
+	// 角色ID
+	RoleId *string `json:"RoleId,omitempty" name:"RoleId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreateServiceLinkedRoleResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 角色ID
-		RoleId *string `json:"RoleId,omitempty" name:"RoleId"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreateServiceLinkedRoleResponseParams `json:"Response"`
 }
 
 func (r *CreateServiceLinkedRoleResponse) ToJsonString() string {
@@ -936,9 +1130,40 @@ func (r *CreateServiceLinkedRoleResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateUserOIDCConfigRequestParams struct {
+	// 身份提供商URL。OpenID Connect身份提供商标识。
+	// 对应企业IdP提供的Openid-configuration中"issuer"字段的值。
+	IdentityUrl *string `json:"IdentityUrl,omitempty" name:"IdentityUrl"`
+
+	// 签名公钥，需要base64_encode。验证OpenID Connect身份提供商ID Token签名的公钥。为了您的帐号安全，建议您定期轮换签名公钥。
+	IdentityKey *string `json:"IdentityKey,omitempty" name:"IdentityKey"`
+
+	// 客户端ID，在OpenID Connect身份提供商注册的客户端ID。
+	ClientId *string `json:"ClientId,omitempty" name:"ClientId"`
+
+	// 授权请求Endpoint，OpenID Connect身份提供商授权地址。对应企业IdP提供的Openid-configuration中"authorization_endpoint"字段的值。
+	AuthorizationEndpoint *string `json:"AuthorizationEndpoint,omitempty" name:"AuthorizationEndpoint"`
+
+	// 授权请求Response type，固定值id_token
+	ResponseType *string `json:"ResponseType,omitempty" name:"ResponseType"`
+
+	// 授权请求Response mode。授权请求返回模式，form_post和fragment两种可选模式，推荐选择form_post模式。
+	ResponseMode *string `json:"ResponseMode,omitempty" name:"ResponseMode"`
+
+	// 映射字段名称。IdP的id_token中哪一个字段映射到子用户的用户名，通常是sub或者name字段
+	MappingFiled *string `json:"MappingFiled,omitempty" name:"MappingFiled"`
+
+	// 授权请求Scope。openid; email;profile。授权请求信息范围。默认必选openid。
+	Scope []*string `json:"Scope,omitempty" name:"Scope"`
+
+	// 描述
+	Description *string `json:"Description,omitempty" name:"Description"`
+}
+
 type CreateUserOIDCConfigRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 身份提供商URL。OpenID Connect身份提供商标识。
 	// 对应企业IdP提供的Openid-configuration中"issuer"字段的值。
 	IdentityUrl *string `json:"IdentityUrl,omitempty" name:"IdentityUrl"`
@@ -995,13 +1220,15 @@ func (r *CreateUserOIDCConfigRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateUserOIDCConfigResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreateUserOIDCConfigResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreateUserOIDCConfigResponseParams `json:"Response"`
 }
 
 func (r *CreateUserOIDCConfigResponse) ToJsonString() string {
@@ -1015,9 +1242,15 @@ func (r *CreateUserOIDCConfigResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateUserSAMLConfigRequestParams struct {
+	// SAML元数据文档，需要base64 encode
+	SAMLMetadataDocument *string `json:"SAMLMetadataDocument,omitempty" name:"SAMLMetadataDocument"`
+}
+
 type CreateUserSAMLConfigRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// SAML元数据文档，需要base64 encode
 	SAMLMetadataDocument *string `json:"SAMLMetadataDocument,omitempty" name:"SAMLMetadataDocument"`
 }
@@ -1041,13 +1274,15 @@ func (r *CreateUserSAMLConfigRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateUserSAMLConfigResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreateUserSAMLConfigResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreateUserSAMLConfigResponseParams `json:"Response"`
 }
 
 func (r *CreateUserSAMLConfigResponse) ToJsonString() string {
@@ -1061,9 +1296,15 @@ func (r *CreateUserSAMLConfigResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteGroupRequestParams struct {
+	// 用户组 ID
+	GroupId *uint64 `json:"GroupId,omitempty" name:"GroupId"`
+}
+
 type DeleteGroupRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 用户组 ID
 	GroupId *uint64 `json:"GroupId,omitempty" name:"GroupId"`
 }
@@ -1087,13 +1328,15 @@ func (r *DeleteGroupRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteGroupResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DeleteGroupResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DeleteGroupResponseParams `json:"Response"`
 }
 
 func (r *DeleteGroupResponse) ToJsonString() string {
@@ -1107,9 +1350,15 @@ func (r *DeleteGroupResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteOIDCConfigRequestParams struct {
+	// OIDC身份提供商名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+}
+
 type DeleteOIDCConfigRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// OIDC身份提供商名称
 	Name *string `json:"Name,omitempty" name:"Name"`
 }
@@ -1133,13 +1382,15 @@ func (r *DeleteOIDCConfigRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteOIDCConfigResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DeleteOIDCConfigResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DeleteOIDCConfigResponseParams `json:"Response"`
 }
 
 func (r *DeleteOIDCConfigResponse) ToJsonString() string {
@@ -1153,9 +1404,15 @@ func (r *DeleteOIDCConfigResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeletePolicyRequestParams struct {
+	// 数组，数组成员是策略 id，支持批量删除策略
+	PolicyId []*uint64 `json:"PolicyId,omitempty" name:"PolicyId"`
+}
+
 type DeletePolicyRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 数组，数组成员是策略 id，支持批量删除策略
 	PolicyId []*uint64 `json:"PolicyId,omitempty" name:"PolicyId"`
 }
@@ -1179,13 +1436,15 @@ func (r *DeletePolicyRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeletePolicyResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DeletePolicyResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DeletePolicyResponseParams `json:"Response"`
 }
 
 func (r *DeletePolicyResponse) ToJsonString() string {
@@ -1199,9 +1458,18 @@ func (r *DeletePolicyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeletePolicyVersionRequestParams struct {
+	// 策略ID
+	PolicyId *uint64 `json:"PolicyId,omitempty" name:"PolicyId"`
+
+	// 策略版本号
+	VersionId []*uint64 `json:"VersionId,omitempty" name:"VersionId"`
+}
+
 type DeletePolicyVersionRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 策略ID
 	PolicyId *uint64 `json:"PolicyId,omitempty" name:"PolicyId"`
 
@@ -1229,13 +1497,15 @@ func (r *DeletePolicyVersionRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeletePolicyVersionResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DeletePolicyVersionResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DeletePolicyVersionResponseParams `json:"Response"`
 }
 
 func (r *DeletePolicyVersionResponse) ToJsonString() string {
@@ -1249,9 +1519,18 @@ func (r *DeletePolicyVersionResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteRolePermissionsBoundaryRequestParams struct {
+	// 角色ID（与角色名至少填一个）
+	RoleId *string `json:"RoleId,omitempty" name:"RoleId"`
+
+	// 角色名（与角色ID至少填一个）
+	RoleName *string `json:"RoleName,omitempty" name:"RoleName"`
+}
+
 type DeleteRolePermissionsBoundaryRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 角色ID（与角色名至少填一个）
 	RoleId *string `json:"RoleId,omitempty" name:"RoleId"`
 
@@ -1279,13 +1558,15 @@ func (r *DeleteRolePermissionsBoundaryRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteRolePermissionsBoundaryResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DeleteRolePermissionsBoundaryResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DeleteRolePermissionsBoundaryResponseParams `json:"Response"`
 }
 
 func (r *DeleteRolePermissionsBoundaryResponse) ToJsonString() string {
@@ -1299,9 +1580,18 @@ func (r *DeleteRolePermissionsBoundaryResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteRoleRequestParams struct {
+	// 角色ID，用于指定角色，入参 RoleId 与 RoleName 二选一
+	RoleId *string `json:"RoleId,omitempty" name:"RoleId"`
+
+	// 角色名称，用于指定角色，入参 RoleId 与 RoleName 二选一
+	RoleName *string `json:"RoleName,omitempty" name:"RoleName"`
+}
+
 type DeleteRoleRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 角色ID，用于指定角色，入参 RoleId 与 RoleName 二选一
 	RoleId *string `json:"RoleId,omitempty" name:"RoleId"`
 
@@ -1329,13 +1619,15 @@ func (r *DeleteRoleRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteRoleResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DeleteRoleResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DeleteRoleResponseParams `json:"Response"`
 }
 
 func (r *DeleteRoleResponse) ToJsonString() string {
@@ -1349,9 +1641,15 @@ func (r *DeleteRoleResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteSAMLProviderRequestParams struct {
+	// SAML身份提供商名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+}
+
 type DeleteSAMLProviderRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// SAML身份提供商名称
 	Name *string `json:"Name,omitempty" name:"Name"`
 }
@@ -1375,13 +1673,15 @@ func (r *DeleteSAMLProviderRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteSAMLProviderResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DeleteSAMLProviderResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DeleteSAMLProviderResponseParams `json:"Response"`
 }
 
 func (r *DeleteSAMLProviderResponse) ToJsonString() string {
@@ -1395,9 +1695,15 @@ func (r *DeleteSAMLProviderResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteServiceLinkedRoleRequestParams struct {
+	// 要删除的服务相关角色的名称。
+	RoleName *string `json:"RoleName,omitempty" name:"RoleName"`
+}
+
 type DeleteServiceLinkedRoleRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 要删除的服务相关角色的名称。
 	RoleName *string `json:"RoleName,omitempty" name:"RoleName"`
 }
@@ -1421,16 +1727,18 @@ func (r *DeleteServiceLinkedRoleRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteServiceLinkedRoleResponseParams struct {
+	// 删除任务ID，可用于检查删除服务相关角色状态。
+	DeletionTaskId *string `json:"DeletionTaskId,omitempty" name:"DeletionTaskId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DeleteServiceLinkedRoleResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 删除任务ID，可用于检查删除服务相关角色状态。
-		DeletionTaskId *string `json:"DeletionTaskId,omitempty" name:"DeletionTaskId"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DeleteServiceLinkedRoleResponseParams `json:"Response"`
 }
 
 func (r *DeleteServiceLinkedRoleResponse) ToJsonString() string {
@@ -1444,9 +1752,15 @@ func (r *DeleteServiceLinkedRoleResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteUserPermissionsBoundaryRequestParams struct {
+	// 子账号Uin
+	TargetUin *int64 `json:"TargetUin,omitempty" name:"TargetUin"`
+}
+
 type DeleteUserPermissionsBoundaryRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 子账号Uin
 	TargetUin *int64 `json:"TargetUin,omitempty" name:"TargetUin"`
 }
@@ -1470,13 +1784,15 @@ func (r *DeleteUserPermissionsBoundaryRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteUserPermissionsBoundaryResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DeleteUserPermissionsBoundaryResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DeleteUserPermissionsBoundaryResponseParams `json:"Response"`
 }
 
 func (r *DeleteUserPermissionsBoundaryResponse) ToJsonString() string {
@@ -1490,9 +1806,18 @@ func (r *DeleteUserPermissionsBoundaryResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteUserRequestParams struct {
+	// 子用户用户名
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 是否强制删除该子用户，默认入参为0。0：若该用户存在未删除API密钥，则不删除用户；1：若该用户存在未删除API密钥，则先删除密钥后删除用户。删除密钥需要您拥有cam:DeleteApiKey权限，您将可以删除该用户下启用或禁用状态的所有密钥，无权限则删除密钥和用户失败
+	Force *uint64 `json:"Force,omitempty" name:"Force"`
+}
+
 type DeleteUserRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 子用户用户名
 	Name *string `json:"Name,omitempty" name:"Name"`
 
@@ -1520,13 +1845,15 @@ func (r *DeleteUserRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteUserResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DeleteUserResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DeleteUserResponseParams `json:"Response"`
 }
 
 func (r *DeleteUserResponse) ToJsonString() string {
@@ -1540,9 +1867,15 @@ func (r *DeleteUserResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeOIDCConfigRequestParams struct {
+	// 名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+}
+
 type DescribeOIDCConfigRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 名称
 	Name *string `json:"Name,omitempty" name:"Name"`
 }
@@ -1566,34 +1899,36 @@ func (r *DescribeOIDCConfigRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeOIDCConfigResponseParams struct {
+	// 身份提供商类型 11角色身份提供商
+	ProviderType *uint64 `json:"ProviderType,omitempty" name:"ProviderType"`
+
+	// 身份提供商URL
+	IdentityUrl *string `json:"IdentityUrl,omitempty" name:"IdentityUrl"`
+
+	// 签名公钥
+	IdentityKey *string `json:"IdentityKey,omitempty" name:"IdentityKey"`
+
+	// 客户端id
+	ClientId []*string `json:"ClientId,omitempty" name:"ClientId"`
+
+	// 状态：0:未设置，11:已开启，2:已禁用
+	Status *uint64 `json:"Status,omitempty" name:"Status"`
+
+	// 描述
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeOIDCConfigResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 身份提供商类型 11角色身份提供商
-		ProviderType *uint64 `json:"ProviderType,omitempty" name:"ProviderType"`
-
-		// 身份提供商URL
-		IdentityUrl *string `json:"IdentityUrl,omitempty" name:"IdentityUrl"`
-
-		// 签名公钥
-		IdentityKey *string `json:"IdentityKey,omitempty" name:"IdentityKey"`
-
-		// 客户端id
-		ClientId []*string `json:"ClientId,omitempty" name:"ClientId"`
-
-		// 状态：0:未设置，11:已开启，2:已禁用
-		Status *uint64 `json:"Status,omitempty" name:"Status"`
-
-		// 描述
-		Description *string `json:"Description,omitempty" name:"Description"`
-
-		// 名称
-		Name *string `json:"Name,omitempty" name:"Name"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeOIDCConfigResponseParams `json:"Response"`
 }
 
 func (r *DescribeOIDCConfigResponse) ToJsonString() string {
@@ -1607,9 +1942,21 @@ func (r *DescribeOIDCConfigResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeRoleListRequestParams struct {
+	// 页码，从1开始
+	Page *uint64 `json:"Page,omitempty" name:"Page"`
+
+	// 每页行数，不能大于200
+	Rp *uint64 `json:"Rp,omitempty" name:"Rp"`
+
+	// 标签筛选
+	Tags []*RoleTags `json:"Tags,omitempty" name:"Tags"`
+}
+
 type DescribeRoleListRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 页码，从1开始
 	Page *uint64 `json:"Page,omitempty" name:"Page"`
 
@@ -1641,20 +1988,22 @@ func (r *DescribeRoleListRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeRoleListResponseParams struct {
+	// 角色详情列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	List []*RoleInfo `json:"List,omitempty" name:"List"`
+
+	// 角色总数
+	TotalNum *uint64 `json:"TotalNum,omitempty" name:"TotalNum"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeRoleListResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 角色详情列表。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		List []*RoleInfo `json:"List,omitempty" name:"List"`
-
-		// 角色总数
-		TotalNum *uint64 `json:"TotalNum,omitempty" name:"TotalNum"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeRoleListResponseParams `json:"Response"`
 }
 
 func (r *DescribeRoleListResponse) ToJsonString() string {
@@ -1668,9 +2017,15 @@ func (r *DescribeRoleListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeSafeAuthFlagCollRequestParams struct {
+	// 子账号
+	SubUin *uint64 `json:"SubUin,omitempty" name:"SubUin"`
+}
+
 type DescribeSafeAuthFlagCollRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 子账号
 	SubUin *uint64 `json:"SubUin,omitempty" name:"SubUin"`
 }
@@ -1694,22 +2049,24 @@ func (r *DescribeSafeAuthFlagCollRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeSafeAuthFlagCollResponseParams struct {
+	// 登录保护设置
+	LoginFlag *LoginActionFlag `json:"LoginFlag,omitempty" name:"LoginFlag"`
+
+	// 敏感操作保护设置
+	ActionFlag *LoginActionFlag `json:"ActionFlag,omitempty" name:"ActionFlag"`
+
+	// 异地登录保护设置
+	OffsiteFlag *OffsiteFlag `json:"OffsiteFlag,omitempty" name:"OffsiteFlag"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeSafeAuthFlagCollResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 登录保护设置
-		LoginFlag *LoginActionFlag `json:"LoginFlag,omitempty" name:"LoginFlag"`
-
-		// 敏感操作保护设置
-		ActionFlag *LoginActionFlag `json:"ActionFlag,omitempty" name:"ActionFlag"`
-
-		// 异地登录保护设置
-		OffsiteFlag *OffsiteFlag `json:"OffsiteFlag,omitempty" name:"OffsiteFlag"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeSafeAuthFlagCollResponseParams `json:"Response"`
 }
 
 func (r *DescribeSafeAuthFlagCollResponse) ToJsonString() string {
@@ -1723,8 +2080,14 @@ func (r *DescribeSafeAuthFlagCollResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeSafeAuthFlagIntlRequestParams struct {
+
+}
+
 type DescribeSafeAuthFlagIntlRequest struct {
 	*tchttp.BaseRequest
+	
 }
 
 func (r *DescribeSafeAuthFlagIntlRequest) ToJsonString() string {
@@ -1739,28 +2102,31 @@ func (r *DescribeSafeAuthFlagIntlRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSafeAuthFlagIntlRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeSafeAuthFlagIntlResponseParams struct {
+	// 登录保护设置
+	LoginFlag *LoginActionFlagIntl `json:"LoginFlag,omitempty" name:"LoginFlag"`
+
+	// 敏感操作保护设置
+	ActionFlag *LoginActionFlagIntl `json:"ActionFlag,omitempty" name:"ActionFlag"`
+
+	// 异地登录保护设置
+	OffsiteFlag *OffsiteFlag `json:"OffsiteFlag,omitempty" name:"OffsiteFlag"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeSafeAuthFlagIntlResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 登录保护设置
-		LoginFlag *LoginActionFlagIntl `json:"LoginFlag,omitempty" name:"LoginFlag"`
-
-		// 敏感操作保护设置
-		ActionFlag *LoginActionFlagIntl `json:"ActionFlag,omitempty" name:"ActionFlag"`
-
-		// 异地登录保护设置
-		OffsiteFlag *OffsiteFlag `json:"OffsiteFlag,omitempty" name:"OffsiteFlag"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeSafeAuthFlagIntlResponseParams `json:"Response"`
 }
 
 func (r *DescribeSafeAuthFlagIntlResponse) ToJsonString() string {
@@ -1774,8 +2140,14 @@ func (r *DescribeSafeAuthFlagIntlResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeSafeAuthFlagRequestParams struct {
+
+}
+
 type DescribeSafeAuthFlagRequest struct {
 	*tchttp.BaseRequest
+	
 }
 
 func (r *DescribeSafeAuthFlagRequest) ToJsonString() string {
@@ -1790,31 +2162,34 @@ func (r *DescribeSafeAuthFlagRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSafeAuthFlagRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeSafeAuthFlagResponseParams struct {
+	// 登录保护设置
+	LoginFlag *LoginActionFlag `json:"LoginFlag,omitempty" name:"LoginFlag"`
+
+	// 敏感操作保护设置
+	ActionFlag *LoginActionFlag `json:"ActionFlag,omitempty" name:"ActionFlag"`
+
+	// 异地登录保护设置
+	OffsiteFlag *OffsiteFlag `json:"OffsiteFlag,omitempty" name:"OffsiteFlag"`
+
+	// 1: 提示7天信任设备 0: 不提示
+	PromptTrust *uint64 `json:"PromptTrust,omitempty" name:"PromptTrust"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeSafeAuthFlagResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 登录保护设置
-		LoginFlag *LoginActionFlag `json:"LoginFlag,omitempty" name:"LoginFlag"`
-
-		// 敏感操作保护设置
-		ActionFlag *LoginActionFlag `json:"ActionFlag,omitempty" name:"ActionFlag"`
-
-		// 异地登录保护设置
-		OffsiteFlag *OffsiteFlag `json:"OffsiteFlag,omitempty" name:"OffsiteFlag"`
-
-		// 1: 提示7天信任设备 0: 不提示
-		PromptTrust *uint64 `json:"PromptTrust,omitempty" name:"PromptTrust"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeSafeAuthFlagResponseParams `json:"Response"`
 }
 
 func (r *DescribeSafeAuthFlagResponse) ToJsonString() string {
@@ -1828,9 +2203,15 @@ func (r *DescribeSafeAuthFlagResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeSubAccountsRequestParams struct {
+	// 子用户UIN列表，最多支持50个UIN
+	FilterSubAccountUin []*uint64 `json:"FilterSubAccountUin,omitempty" name:"FilterSubAccountUin"`
+}
+
 type DescribeSubAccountsRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 子用户UIN列表，最多支持50个UIN
 	FilterSubAccountUin []*uint64 `json:"FilterSubAccountUin,omitempty" name:"FilterSubAccountUin"`
 }
@@ -1854,16 +2235,18 @@ func (r *DescribeSubAccountsRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeSubAccountsResponseParams struct {
+	// 子用户列表
+	SubAccounts []*SubAccountUser `json:"SubAccounts,omitempty" name:"SubAccounts"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeSubAccountsResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 子用户列表
-		SubAccounts []*SubAccountUser `json:"SubAccounts,omitempty" name:"SubAccounts"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeSubAccountsResponseParams `json:"Response"`
 }
 
 func (r *DescribeSubAccountsResponse) ToJsonString() string {
@@ -1877,8 +2260,14 @@ func (r *DescribeSubAccountsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeUserOIDCConfigRequestParams struct {
+
+}
+
 type DescribeUserOIDCConfigRequest struct {
 	*tchttp.BaseRequest
+	
 }
 
 func (r *DescribeUserOIDCConfigRequest) ToJsonString() string {
@@ -1893,52 +2282,55 @@ func (r *DescribeUserOIDCConfigRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeUserOIDCConfigRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeUserOIDCConfigResponseParams struct {
+	// 身份提供商类型。 12：用户OIDC身份提供商
+	ProviderType *uint64 `json:"ProviderType,omitempty" name:"ProviderType"`
+
+	// 身份提供商URL
+	IdentityUrl *string `json:"IdentityUrl,omitempty" name:"IdentityUrl"`
+
+	// 签名公钥
+	IdentityKey *string `json:"IdentityKey,omitempty" name:"IdentityKey"`
+
+	// 客户端id
+	ClientId *string `json:"ClientId,omitempty" name:"ClientId"`
+
+	// 状态：0:未设置，11:已开启，2:已禁用
+	Status *uint64 `json:"Status,omitempty" name:"Status"`
+
+	// 授权请求Endpoint
+	AuthorizationEndpoint *string `json:"AuthorizationEndpoint,omitempty" name:"AuthorizationEndpoint"`
+
+	// 授权请求Scope
+	Scope []*string `json:"Scope,omitempty" name:"Scope"`
+
+	// 授权请求Response type
+	ResponseType *string `json:"ResponseType,omitempty" name:"ResponseType"`
+
+	// 授权请求Response mode
+	ResponseMode *string `json:"ResponseMode,omitempty" name:"ResponseMode"`
+
+	// 映射字段名称
+	MappingFiled *string `json:"MappingFiled,omitempty" name:"MappingFiled"`
+
+	// 描述
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeUserOIDCConfigResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 身份提供商类型。 12：用户OIDC身份提供商
-		ProviderType *uint64 `json:"ProviderType,omitempty" name:"ProviderType"`
-
-		// 身份提供商URL
-		IdentityUrl *string `json:"IdentityUrl,omitempty" name:"IdentityUrl"`
-
-		// 签名公钥
-		IdentityKey *string `json:"IdentityKey,omitempty" name:"IdentityKey"`
-
-		// 客户端id
-		ClientId *string `json:"ClientId,omitempty" name:"ClientId"`
-
-		// 状态：0:未设置，11:已开启，2:已禁用
-		Status *uint64 `json:"Status,omitempty" name:"Status"`
-
-		// 授权请求Endpoint
-		AuthorizationEndpoint *string `json:"AuthorizationEndpoint,omitempty" name:"AuthorizationEndpoint"`
-
-		// 授权请求Scope
-		Scope []*string `json:"Scope,omitempty" name:"Scope"`
-
-		// 授权请求Response type
-		ResponseType *string `json:"ResponseType,omitempty" name:"ResponseType"`
-
-		// 授权请求Response mode
-		ResponseMode *string `json:"ResponseMode,omitempty" name:"ResponseMode"`
-
-		// 映射字段名称
-		MappingFiled *string `json:"MappingFiled,omitempty" name:"MappingFiled"`
-
-		// 描述
-		Description *string `json:"Description,omitempty" name:"Description"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeUserOIDCConfigResponseParams `json:"Response"`
 }
 
 func (r *DescribeUserOIDCConfigResponse) ToJsonString() string {
@@ -1952,8 +2344,14 @@ func (r *DescribeUserOIDCConfigResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeUserSAMLConfigRequestParams struct {
+
+}
+
 type DescribeUserSAMLConfigRequest struct {
 	*tchttp.BaseRequest
+	
 }
 
 func (r *DescribeUserSAMLConfigRequest) ToJsonString() string {
@@ -1968,25 +2366,28 @@ func (r *DescribeUserSAMLConfigRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeUserSAMLConfigRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeUserSAMLConfigResponseParams struct {
+	// SAML元数据文档
+	SAMLMetadata *string `json:"SAMLMetadata,omitempty" name:"SAMLMetadata"`
+
+	// 状态：0:未设置，1:已开启，2:已禁用
+	Status *uint64 `json:"Status,omitempty" name:"Status"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeUserSAMLConfigResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// SAML元数据文档
-		SAMLMetadata *string `json:"SAMLMetadata,omitempty" name:"SAMLMetadata"`
-
-		// 状态：0:未设置，1:已开启，2:已禁用
-		Status *uint64 `json:"Status,omitempty" name:"Status"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeUserSAMLConfigResponseParams `json:"Response"`
 }
 
 func (r *DescribeUserSAMLConfigResponse) ToJsonString() string {
@@ -2000,9 +2401,18 @@ func (r *DescribeUserSAMLConfigResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DetachGroupPolicyRequestParams struct {
+	// 策略 id
+	PolicyId *uint64 `json:"PolicyId,omitempty" name:"PolicyId"`
+
+	// 用户组 id
+	DetachGroupId *uint64 `json:"DetachGroupId,omitempty" name:"DetachGroupId"`
+}
+
 type DetachGroupPolicyRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 策略 id
 	PolicyId *uint64 `json:"PolicyId,omitempty" name:"PolicyId"`
 
@@ -2030,13 +2440,15 @@ func (r *DetachGroupPolicyRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DetachGroupPolicyResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DetachGroupPolicyResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DetachGroupPolicyResponseParams `json:"Response"`
 }
 
 func (r *DetachGroupPolicyResponse) ToJsonString() string {
@@ -2050,9 +2462,24 @@ func (r *DetachGroupPolicyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DetachRolePolicyRequestParams struct {
+	// 策略ID，入参PolicyId与PolicyName二选一
+	PolicyId *uint64 `json:"PolicyId,omitempty" name:"PolicyId"`
+
+	// 角色ID，用于指定角色，入参 AttachRoleId 与 AttachRoleName 二选一
+	DetachRoleId *string `json:"DetachRoleId,omitempty" name:"DetachRoleId"`
+
+	// 角色名称，用于指定角色，入参 AttachRoleId 与 AttachRoleName 二选一
+	DetachRoleName *string `json:"DetachRoleName,omitempty" name:"DetachRoleName"`
+
+	// 策略名，入参PolicyId与PolicyName二选一
+	PolicyName *string `json:"PolicyName,omitempty" name:"PolicyName"`
+}
+
 type DetachRolePolicyRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 策略ID，入参PolicyId与PolicyName二选一
 	PolicyId *uint64 `json:"PolicyId,omitempty" name:"PolicyId"`
 
@@ -2088,13 +2515,15 @@ func (r *DetachRolePolicyRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DetachRolePolicyResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DetachRolePolicyResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DetachRolePolicyResponseParams `json:"Response"`
 }
 
 func (r *DetachRolePolicyResponse) ToJsonString() string {
@@ -2108,9 +2537,18 @@ func (r *DetachRolePolicyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DetachUserPolicyRequestParams struct {
+	// 策略 id
+	PolicyId *uint64 `json:"PolicyId,omitempty" name:"PolicyId"`
+
+	// 子账号 uin
+	DetachUin *uint64 `json:"DetachUin,omitempty" name:"DetachUin"`
+}
+
 type DetachUserPolicyRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 策略 id
 	PolicyId *uint64 `json:"PolicyId,omitempty" name:"PolicyId"`
 
@@ -2138,13 +2576,15 @@ func (r *DetachUserPolicyRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DetachUserPolicyResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DetachUserPolicyResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DetachUserPolicyResponseParams `json:"Response"`
 }
 
 func (r *DetachUserPolicyResponse) ToJsonString() string {
@@ -2158,8 +2598,14 @@ func (r *DetachUserPolicyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DisableUserSSORequestParams struct {
+
+}
+
 type DisableUserSSORequest struct {
 	*tchttp.BaseRequest
+	
 }
 
 func (r *DisableUserSSORequest) ToJsonString() string {
@@ -2174,19 +2620,22 @@ func (r *DisableUserSSORequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DisableUserSSORequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DisableUserSSOResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DisableUserSSOResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DisableUserSSOResponseParams `json:"Response"`
 }
 
 func (r *DisableUserSSOResponse) ToJsonString() string {
@@ -2200,8 +2649,14 @@ func (r *DisableUserSSOResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type GetAccountSummaryRequestParams struct {
+
+}
+
 type GetAccountSummaryRequest struct {
 	*tchttp.BaseRequest
+	
 }
 
 func (r *GetAccountSummaryRequest) ToJsonString() string {
@@ -2216,37 +2671,40 @@ func (r *GetAccountSummaryRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetAccountSummaryRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type GetAccountSummaryResponseParams struct {
+	// 策略数
+	Policies *uint64 `json:"Policies,omitempty" name:"Policies"`
+
+	// 角色数
+	Roles *uint64 `json:"Roles,omitempty" name:"Roles"`
+
+	// 身份提供商数
+	Idps *uint64 `json:"Idps,omitempty" name:"Idps"`
+
+	// 子账户数
+	User *uint64 `json:"User,omitempty" name:"User"`
+
+	// 分组数
+	Group *uint64 `json:"Group,omitempty" name:"Group"`
+
+	// 分组用户总数
+	Member *uint64 `json:"Member,omitempty" name:"Member"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type GetAccountSummaryResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 策略数
-		Policies *uint64 `json:"Policies,omitempty" name:"Policies"`
-
-		// 角色数
-		Roles *uint64 `json:"Roles,omitempty" name:"Roles"`
-
-		// 身份提供商数
-		Idps *uint64 `json:"Idps,omitempty" name:"Idps"`
-
-		// 子账户数
-		User *uint64 `json:"User,omitempty" name:"User"`
-
-		// 分组数
-		Group *uint64 `json:"Group,omitempty" name:"Group"`
-
-		// 分组用户总数
-		Member *uint64 `json:"Member,omitempty" name:"Member"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *GetAccountSummaryResponseParams `json:"Response"`
 }
 
 func (r *GetAccountSummaryResponse) ToJsonString() string {
@@ -2260,9 +2718,15 @@ func (r *GetAccountSummaryResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type GetCustomMFATokenInfoRequestParams struct {
+	// 自定义多因子验证Token
+	MFAToken *string `json:"MFAToken,omitempty" name:"MFAToken"`
+}
+
 type GetCustomMFATokenInfoRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 自定义多因子验证Token
 	MFAToken *string `json:"MFAToken,omitempty" name:"MFAToken"`
 }
@@ -2286,16 +2750,18 @@ func (r *GetCustomMFATokenInfoRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type GetCustomMFATokenInfoResponseParams struct {
+	// 自定义多因子验证Token对应的帐号Id
+	Uin *uint64 `json:"Uin,omitempty" name:"Uin"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type GetCustomMFATokenInfoResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 自定义多因子验证Token对应的帐号Id
-		Uin *uint64 `json:"Uin,omitempty" name:"Uin"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *GetCustomMFATokenInfoResponseParams `json:"Response"`
 }
 
 func (r *GetCustomMFATokenInfoResponse) ToJsonString() string {
@@ -2309,9 +2775,15 @@ func (r *GetCustomMFATokenInfoResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type GetGroupRequestParams struct {
+	// 用户组 ID
+	GroupId *uint64 `json:"GroupId,omitempty" name:"GroupId"`
+}
+
 type GetGroupRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 用户组 ID
 	GroupId *uint64 `json:"GroupId,omitempty" name:"GroupId"`
 }
@@ -2335,31 +2807,33 @@ func (r *GetGroupRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type GetGroupResponseParams struct {
+	// 用户组 ID
+	GroupId *uint64 `json:"GroupId,omitempty" name:"GroupId"`
+
+	// 用户组名称
+	GroupName *string `json:"GroupName,omitempty" name:"GroupName"`
+
+	// 用户组成员数量
+	GroupNum *uint64 `json:"GroupNum,omitempty" name:"GroupNum"`
+
+	// 用户组描述
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 用户组创建时间
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 用户组成员信息
+	UserInfo []*GroupMemberInfo `json:"UserInfo,omitempty" name:"UserInfo"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type GetGroupResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 用户组 ID
-		GroupId *uint64 `json:"GroupId,omitempty" name:"GroupId"`
-
-		// 用户组名称
-		GroupName *string `json:"GroupName,omitempty" name:"GroupName"`
-
-		// 用户组成员数量
-		GroupNum *uint64 `json:"GroupNum,omitempty" name:"GroupNum"`
-
-		// 用户组描述
-		Remark *string `json:"Remark,omitempty" name:"Remark"`
-
-		// 用户组创建时间
-		CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
-
-		// 用户组成员信息
-		UserInfo []*GroupMemberInfo `json:"UserInfo,omitempty" name:"UserInfo"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *GetGroupResponseParams `json:"Response"`
 }
 
 func (r *GetGroupResponse) ToJsonString() string {
@@ -2373,9 +2847,15 @@ func (r *GetGroupResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type GetPolicyRequestParams struct {
+	// 策略Id
+	PolicyId *uint64 `json:"PolicyId,omitempty" name:"PolicyId"`
+}
+
 type GetPolicyRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 策略Id
 	PolicyId *uint64 `json:"PolicyId,omitempty" name:"PolicyId"`
 }
@@ -2399,45 +2879,47 @@ func (r *GetPolicyRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type GetPolicyResponseParams struct {
+	// 策略名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PolicyName *string `json:"PolicyName,omitempty" name:"PolicyName"`
+
+	// 策略描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 1 表示自定义策略，2 表示预设策略
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *uint64 `json:"Type,omitempty" name:"Type"`
+
+	// 创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AddTime *string `json:"AddTime,omitempty" name:"AddTime"`
+
+	// 最近更新时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+
+	// 策略文档
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PolicyDocument *string `json:"PolicyDocument,omitempty" name:"PolicyDocument"`
+
+	// 备注
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PresetAlias *string `json:"PresetAlias,omitempty" name:"PresetAlias"`
+
+	// 是否服务相关策略
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsServiceLinkedRolePolicy *uint64 `json:"IsServiceLinkedRolePolicy,omitempty" name:"IsServiceLinkedRolePolicy"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type GetPolicyResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 策略名
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		PolicyName *string `json:"PolicyName,omitempty" name:"PolicyName"`
-
-		// 策略描述
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		Description *string `json:"Description,omitempty" name:"Description"`
-
-		// 1 表示自定义策略，2 表示预设策略
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		Type *uint64 `json:"Type,omitempty" name:"Type"`
-
-		// 创建时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		AddTime *string `json:"AddTime,omitempty" name:"AddTime"`
-
-		// 最近更新时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
-
-		// 策略文档
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		PolicyDocument *string `json:"PolicyDocument,omitempty" name:"PolicyDocument"`
-
-		// 备注
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		PresetAlias *string `json:"PresetAlias,omitempty" name:"PresetAlias"`
-
-		// 是否服务相关策略
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		IsServiceLinkedRolePolicy *uint64 `json:"IsServiceLinkedRolePolicy,omitempty" name:"IsServiceLinkedRolePolicy"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *GetPolicyResponseParams `json:"Response"`
 }
 
 func (r *GetPolicyResponse) ToJsonString() string {
@@ -2451,9 +2933,18 @@ func (r *GetPolicyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type GetPolicyVersionRequestParams struct {
+	// 策略ID
+	PolicyId *uint64 `json:"PolicyId,omitempty" name:"PolicyId"`
+
+	// 策略版本号，可由ListPolicyVersions获取
+	VersionId *uint64 `json:"VersionId,omitempty" name:"VersionId"`
+}
+
 type GetPolicyVersionRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 策略ID
 	PolicyId *uint64 `json:"PolicyId,omitempty" name:"PolicyId"`
 
@@ -2481,17 +2972,19 @@ func (r *GetPolicyVersionRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type GetPolicyVersionResponseParams struct {
+	// 策略版本详情
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PolicyVersion *PolicyVersionDetail `json:"PolicyVersion,omitempty" name:"PolicyVersion"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type GetPolicyVersionResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 策略版本详情
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		PolicyVersion *PolicyVersionDetail `json:"PolicyVersion,omitempty" name:"PolicyVersion"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *GetPolicyVersionResponseParams `json:"Response"`
 }
 
 func (r *GetPolicyVersionResponse) ToJsonString() string {
@@ -2505,9 +2998,15 @@ func (r *GetPolicyVersionResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type GetRolePermissionBoundaryRequestParams struct {
+	// 角色ID
+	RoleId *string `json:"RoleId,omitempty" name:"RoleId"`
+}
+
 type GetRolePermissionBoundaryRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 角色ID
 	RoleId *string `json:"RoleId,omitempty" name:"RoleId"`
 }
@@ -2531,33 +3030,35 @@ func (r *GetRolePermissionBoundaryRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type GetRolePermissionBoundaryResponseParams struct {
+	// 策略ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PolicyId *int64 `json:"PolicyId,omitempty" name:"PolicyId"`
+
+	// 策略名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PolicyName *string `json:"PolicyName,omitempty" name:"PolicyName"`
+
+	// 策略语法
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PolicyDocument *string `json:"PolicyDocument,omitempty" name:"PolicyDocument"`
+
+	// 策略类型：1.自定义策略，2.预设策略
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PolicyType *int64 `json:"PolicyType,omitempty" name:"PolicyType"`
+
+	// 创建方式：1.按产品功能或项目权限创建，2.按策略语法创建，3.按策略生成器创建，4.按标签授权创建，5.按权限边界规则创建
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateMode *int64 `json:"CreateMode,omitempty" name:"CreateMode"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type GetRolePermissionBoundaryResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 策略ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		PolicyId *int64 `json:"PolicyId,omitempty" name:"PolicyId"`
-
-		// 策略名
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		PolicyName *string `json:"PolicyName,omitempty" name:"PolicyName"`
-
-		// 策略语法
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		PolicyDocument *string `json:"PolicyDocument,omitempty" name:"PolicyDocument"`
-
-		// 策略类型：1.自定义策略，2.预设策略
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		PolicyType *int64 `json:"PolicyType,omitempty" name:"PolicyType"`
-
-		// 创建方式：1.按产品功能或项目权限创建，2.按策略语法创建，3.按策略生成器创建，4.按标签授权创建，5.按权限边界规则创建
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		CreateMode *int64 `json:"CreateMode,omitempty" name:"CreateMode"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *GetRolePermissionBoundaryResponseParams `json:"Response"`
 }
 
 func (r *GetRolePermissionBoundaryResponse) ToJsonString() string {
@@ -2571,9 +3072,18 @@ func (r *GetRolePermissionBoundaryResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type GetRoleRequestParams struct {
+	// 角色 ID，用于指定角色，入参 RoleId 与 RoleName 二选一
+	RoleId *string `json:"RoleId,omitempty" name:"RoleId"`
+
+	// 角色名，用于指定角色，入参 RoleId 与 RoleName 二选一
+	RoleName *string `json:"RoleName,omitempty" name:"RoleName"`
+}
+
 type GetRoleRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 角色 ID，用于指定角色，入参 RoleId 与 RoleName 二选一
 	RoleId *string `json:"RoleId,omitempty" name:"RoleId"`
 
@@ -2601,16 +3111,18 @@ func (r *GetRoleRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type GetRoleResponseParams struct {
+	// 角色详情
+	RoleInfo *RoleInfo `json:"RoleInfo,omitempty" name:"RoleInfo"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type GetRoleResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 角色详情
-		RoleInfo *RoleInfo `json:"RoleInfo,omitempty" name:"RoleInfo"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *GetRoleResponseParams `json:"Response"`
 }
 
 func (r *GetRoleResponse) ToJsonString() string {
@@ -2624,9 +3136,15 @@ func (r *GetRoleResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type GetSAMLProviderRequestParams struct {
+	// SAML身份提供商名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+}
+
 type GetSAMLProviderRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// SAML身份提供商名称
 	Name *string `json:"Name,omitempty" name:"Name"`
 }
@@ -2650,28 +3168,30 @@ func (r *GetSAMLProviderRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type GetSAMLProviderResponseParams struct {
+	// SAML身份提供商名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// SAML身份提供商描述
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// SAML身份提供商创建时间
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// SAML身份提供商上次修改时间
+	ModifyTime *string `json:"ModifyTime,omitempty" name:"ModifyTime"`
+
+	// SAML身份提供商元数据文档
+	SAMLMetadata *string `json:"SAMLMetadata,omitempty" name:"SAMLMetadata"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type GetSAMLProviderResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// SAML身份提供商名称
-		Name *string `json:"Name,omitempty" name:"Name"`
-
-		// SAML身份提供商描述
-		Description *string `json:"Description,omitempty" name:"Description"`
-
-		// SAML身份提供商创建时间
-		CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
-
-		// SAML身份提供商上次修改时间
-		ModifyTime *string `json:"ModifyTime,omitempty" name:"ModifyTime"`
-
-		// SAML身份提供商元数据文档
-		SAMLMetadata *string `json:"SAMLMetadata,omitempty" name:"SAMLMetadata"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *GetSAMLProviderResponseParams `json:"Response"`
 }
 
 func (r *GetSAMLProviderResponse) ToJsonString() string {
@@ -2685,9 +3205,15 @@ func (r *GetSAMLProviderResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type GetSecurityLastUsedRequestParams struct {
+	// 查询密钥ID列表。最多支持10个。
+	SecretIdList []*string `json:"SecretIdList,omitempty" name:"SecretIdList"`
+}
+
 type GetSecurityLastUsedRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 查询密钥ID列表。最多支持10个。
 	SecretIdList []*string `json:"SecretIdList,omitempty" name:"SecretIdList"`
 }
@@ -2711,16 +3237,18 @@ func (r *GetSecurityLastUsedRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type GetSecurityLastUsedResponseParams struct {
+	// 密钥ID最近访问列表
+	SecretIdLastUsedRows []*SecretIdLastUsed `json:"SecretIdLastUsedRows,omitempty" name:"SecretIdLastUsedRows"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type GetSecurityLastUsedResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 密钥ID最近访问列表
-		SecretIdLastUsedRows []*SecretIdLastUsed `json:"SecretIdLastUsedRows,omitempty" name:"SecretIdLastUsedRows"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *GetSecurityLastUsedResponseParams `json:"Response"`
 }
 
 func (r *GetSecurityLastUsedResponse) ToJsonString() string {
@@ -2734,9 +3262,15 @@ func (r *GetSecurityLastUsedResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type GetServiceLinkedRoleDeletionStatusRequestParams struct {
+	// 删除任务ID
+	DeletionTaskId *string `json:"DeletionTaskId,omitempty" name:"DeletionTaskId"`
+}
+
 type GetServiceLinkedRoleDeletionStatusRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 删除任务ID
 	DeletionTaskId *string `json:"DeletionTaskId,omitempty" name:"DeletionTaskId"`
 }
@@ -2760,27 +3294,29 @@ func (r *GetServiceLinkedRoleDeletionStatusRequest) FromJsonString(s string) err
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type GetServiceLinkedRoleDeletionStatusResponseParams struct {
+	// 状态：NOT_STARTED，IN_PROGRESS，SUCCEEDED，FAILED
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 失败原因
+	Reason *string `json:"Reason,omitempty" name:"Reason"`
+
+	// 服务类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ServiceType *string `json:"ServiceType,omitempty" name:"ServiceType"`
+
+	// 服务名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ServiceName *string `json:"ServiceName,omitempty" name:"ServiceName"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type GetServiceLinkedRoleDeletionStatusResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 状态：NOT_STARTED，IN_PROGRESS，SUCCEEDED，FAILED
-		Status *string `json:"Status,omitempty" name:"Status"`
-
-		// 失败原因
-		Reason *string `json:"Reason,omitempty" name:"Reason"`
-
-		// 服务类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		ServiceType *string `json:"ServiceType,omitempty" name:"ServiceType"`
-
-		// 服务名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		ServiceName *string `json:"ServiceName,omitempty" name:"ServiceName"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *GetServiceLinkedRoleDeletionStatusResponseParams `json:"Response"`
 }
 
 func (r *GetServiceLinkedRoleDeletionStatusResponse) ToJsonString() string {
@@ -2794,8 +3330,14 @@ func (r *GetServiceLinkedRoleDeletionStatusResponse) FromJsonString(s string) er
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type GetUserAppIdRequestParams struct {
+
+}
+
 type GetUserAppIdRequest struct {
 	*tchttp.BaseRequest
+	
 }
 
 func (r *GetUserAppIdRequest) ToJsonString() string {
@@ -2810,28 +3352,31 @@ func (r *GetUserAppIdRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetUserAppIdRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type GetUserAppIdResponseParams struct {
+	// 当前账号Uin
+	Uin *string `json:"Uin,omitempty" name:"Uin"`
+
+	// 当前账号OwnerUin
+	OwnerUin *string `json:"OwnerUin,omitempty" name:"OwnerUin"`
+
+	// 当前账号AppId
+	AppId *uint64 `json:"AppId,omitempty" name:"AppId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type GetUserAppIdResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 当前账号Uin
-		Uin *string `json:"Uin,omitempty" name:"Uin"`
-
-		// 当前账号OwnerUin
-		OwnerUin *string `json:"OwnerUin,omitempty" name:"OwnerUin"`
-
-		// 当前账号AppId
-		AppId *uint64 `json:"AppId,omitempty" name:"AppId"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *GetUserAppIdResponseParams `json:"Response"`
 }
 
 func (r *GetUserAppIdResponse) ToJsonString() string {
@@ -2845,9 +3390,15 @@ func (r *GetUserAppIdResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type GetUserPermissionBoundaryRequestParams struct {
+	// 子账号Uin
+	TargetUin *int64 `json:"TargetUin,omitempty" name:"TargetUin"`
+}
+
 type GetUserPermissionBoundaryRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 子账号Uin
 	TargetUin *int64 `json:"TargetUin,omitempty" name:"TargetUin"`
 }
@@ -2871,33 +3422,35 @@ func (r *GetUserPermissionBoundaryRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type GetUserPermissionBoundaryResponseParams struct {
+	// 策略ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PolicyId *int64 `json:"PolicyId,omitempty" name:"PolicyId"`
+
+	// 策略名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PolicyName *string `json:"PolicyName,omitempty" name:"PolicyName"`
+
+	// 策略语法
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PolicyDocument *string `json:"PolicyDocument,omitempty" name:"PolicyDocument"`
+
+	// 策略类型：1.自定义策略，2.预设策略
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PolicyType *int64 `json:"PolicyType,omitempty" name:"PolicyType"`
+
+	// 创建方式：1.按产品功能或项目权限创建，2.按策略语法创建，3.按策略生成器创建，4.按标签授权创建，5.按权限边界规则创建
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateMode *int64 `json:"CreateMode,omitempty" name:"CreateMode"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type GetUserPermissionBoundaryResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 策略ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		PolicyId *int64 `json:"PolicyId,omitempty" name:"PolicyId"`
-
-		// 策略名
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		PolicyName *string `json:"PolicyName,omitempty" name:"PolicyName"`
-
-		// 策略语法
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		PolicyDocument *string `json:"PolicyDocument,omitempty" name:"PolicyDocument"`
-
-		// 策略类型：1.自定义策略，2.预设策略
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		PolicyType *int64 `json:"PolicyType,omitempty" name:"PolicyType"`
-
-		// 创建方式：1.按产品功能或项目权限创建，2.按策略语法创建，3.按策略生成器创建，4.按标签授权创建，5.按权限边界规则创建
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		CreateMode *int64 `json:"CreateMode,omitempty" name:"CreateMode"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *GetUserPermissionBoundaryResponseParams `json:"Response"`
 }
 
 func (r *GetUserPermissionBoundaryResponse) ToJsonString() string {
@@ -2911,9 +3464,15 @@ func (r *GetUserPermissionBoundaryResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type GetUserRequestParams struct {
+	// 子用户用户名
+	Name *string `json:"Name,omitempty" name:"Name"`
+}
+
 type GetUserRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 子用户用户名
 	Name *string `json:"Name,omitempty" name:"Name"`
 }
@@ -2937,38 +3496,40 @@ func (r *GetUserRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type GetUserResponseParams struct {
+	// 子用户用户 UIN
+	Uin *uint64 `json:"Uin,omitempty" name:"Uin"`
+
+	// 子用户用户名
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 子用户 UID
+	Uid *uint64 `json:"Uid,omitempty" name:"Uid"`
+
+	// 子用户备注
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 子用户能否登录控制台 0-无法登录控制台，1-可以登录控制台
+	ConsoleLogin *uint64 `json:"ConsoleLogin,omitempty" name:"ConsoleLogin"`
+
+	// 手机号
+	PhoneNum *string `json:"PhoneNum,omitempty" name:"PhoneNum"`
+
+	// 区号
+	CountryCode *string `json:"CountryCode,omitempty" name:"CountryCode"`
+
+	// 邮箱
+	Email *string `json:"Email,omitempty" name:"Email"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type GetUserResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 子用户用户 UIN
-		Uin *uint64 `json:"Uin,omitempty" name:"Uin"`
-
-		// 子用户用户名
-		Name *string `json:"Name,omitempty" name:"Name"`
-
-		// 子用户 UID
-		Uid *uint64 `json:"Uid,omitempty" name:"Uid"`
-
-		// 子用户备注
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		Remark *string `json:"Remark,omitempty" name:"Remark"`
-
-		// 子用户能否登录控制台 0-无法登录控制台，1-可以登录控制台
-		ConsoleLogin *uint64 `json:"ConsoleLogin,omitempty" name:"ConsoleLogin"`
-
-		// 手机号
-		PhoneNum *string `json:"PhoneNum,omitempty" name:"PhoneNum"`
-
-		// 区号
-		CountryCode *string `json:"CountryCode,omitempty" name:"CountryCode"`
-
-		// 邮箱
-		Email *string `json:"Email,omitempty" name:"Email"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *GetUserResponseParams `json:"Response"`
 }
 
 func (r *GetUserResponse) ToJsonString() string {
@@ -2983,7 +3544,6 @@ func (r *GetUserResponse) FromJsonString(s string) error {
 }
 
 type GroupIdOfUidInfo struct {
-
 	// 用户组 ID
 	GroupId *uint64 `json:"GroupId,omitempty" name:"GroupId"`
 
@@ -2995,7 +3555,6 @@ type GroupIdOfUidInfo struct {
 }
 
 type GroupInfo struct {
-
 	// 用户组 ID。
 	GroupId *uint64 `json:"GroupId,omitempty" name:"GroupId"`
 
@@ -3010,7 +3569,6 @@ type GroupInfo struct {
 }
 
 type GroupMemberInfo struct {
-
 	// 子用户 Uid。
 	Uid *uint64 `json:"Uid,omitempty" name:"Uid"`
 
@@ -3045,9 +3603,15 @@ type GroupMemberInfo struct {
 	IsReceiverOwner *uint64 `json:"IsReceiverOwner,omitempty" name:"IsReceiverOwner"`
 }
 
+// Predefined struct for user
+type ListAccessKeysRequestParams struct {
+	// 指定用户Uin，不填默认列出当前用户访问密钥
+	TargetUin *uint64 `json:"TargetUin,omitempty" name:"TargetUin"`
+}
+
 type ListAccessKeysRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 指定用户Uin，不填默认列出当前用户访问密钥
 	TargetUin *uint64 `json:"TargetUin,omitempty" name:"TargetUin"`
 }
@@ -3071,17 +3635,19 @@ func (r *ListAccessKeysRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ListAccessKeysResponseParams struct {
+	// 访问密钥列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AccessKeys []*AccessKey `json:"AccessKeys,omitempty" name:"AccessKeys"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type ListAccessKeysResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 访问密钥列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		AccessKeys []*AccessKey `json:"AccessKeys,omitempty" name:"AccessKeys"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *ListAccessKeysResponseParams `json:"Response"`
 }
 
 func (r *ListAccessKeysResponse) ToJsonString() string {
@@ -3095,9 +3661,24 @@ func (r *ListAccessKeysResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ListAttachedGroupPoliciesRequestParams struct {
+	// 用户组ID
+	TargetGroupId *uint64 `json:"TargetGroupId,omitempty" name:"TargetGroupId"`
+
+	// 页码，默认值是 1，从 1 开始
+	Page *uint64 `json:"Page,omitempty" name:"Page"`
+
+	// 每页大小，默认值是 20
+	Rp *uint64 `json:"Rp,omitempty" name:"Rp"`
+
+	// 搜索关键字
+	Keyword *string `json:"Keyword,omitempty" name:"Keyword"`
+}
+
 type ListAttachedGroupPoliciesRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 用户组ID
 	TargetGroupId *uint64 `json:"TargetGroupId,omitempty" name:"TargetGroupId"`
 
@@ -3133,19 +3714,21 @@ func (r *ListAttachedGroupPoliciesRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ListAttachedGroupPoliciesResponseParams struct {
+	// 策略总数
+	TotalNum *uint64 `json:"TotalNum,omitempty" name:"TotalNum"`
+
+	// 策略列表
+	List []*AttachPolicyInfo `json:"List,omitempty" name:"List"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type ListAttachedGroupPoliciesResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 策略总数
-		TotalNum *uint64 `json:"TotalNum,omitempty" name:"TotalNum"`
-
-		// 策略列表
-		List []*AttachPolicyInfo `json:"List,omitempty" name:"List"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *ListAttachedGroupPoliciesResponseParams `json:"Response"`
 }
 
 func (r *ListAttachedGroupPoliciesResponse) ToJsonString() string {
@@ -3159,9 +3742,30 @@ func (r *ListAttachedGroupPoliciesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ListAttachedRolePoliciesRequestParams struct {
+	// 页码，从 1 开始
+	Page *uint64 `json:"Page,omitempty" name:"Page"`
+
+	// 每页行数，不能大于200
+	Rp *uint64 `json:"Rp,omitempty" name:"Rp"`
+
+	// 角色 ID。用于指定角色，入参 RoleId 与 RoleName 二选一
+	RoleId *string `json:"RoleId,omitempty" name:"RoleId"`
+
+	// 角色名。用于指定角色，入参 RoleId 与 RoleName 二选一
+	RoleName *string `json:"RoleName,omitempty" name:"RoleName"`
+
+	// 按策略类型过滤，User表示仅查询自定义策略，QCS表示仅查询预设策略
+	PolicyType *string `json:"PolicyType,omitempty" name:"PolicyType"`
+
+	// 搜索关键字
+	Keyword *string `json:"Keyword,omitempty" name:"Keyword"`
+}
+
 type ListAttachedRolePoliciesRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 页码，从 1 开始
 	Page *uint64 `json:"Page,omitempty" name:"Page"`
 
@@ -3205,19 +3809,21 @@ func (r *ListAttachedRolePoliciesRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ListAttachedRolePoliciesResponseParams struct {
+	// 角色关联的策略列表
+	List []*AttachedPolicyOfRole `json:"List,omitempty" name:"List"`
+
+	// 角色关联的策略总数
+	TotalNum *uint64 `json:"TotalNum,omitempty" name:"TotalNum"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type ListAttachedRolePoliciesResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 角色关联的策略列表
-		List []*AttachedPolicyOfRole `json:"List,omitempty" name:"List"`
-
-		// 角色关联的策略总数
-		TotalNum *uint64 `json:"TotalNum,omitempty" name:"TotalNum"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *ListAttachedRolePoliciesResponseParams `json:"Response"`
 }
 
 func (r *ListAttachedRolePoliciesResponse) ToJsonString() string {
@@ -3231,9 +3837,30 @@ func (r *ListAttachedRolePoliciesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ListAttachedUserAllPoliciesRequestParams struct {
+	// 目标用户ID
+	TargetUin *uint64 `json:"TargetUin,omitempty" name:"TargetUin"`
+
+	// 每页数量，必须大于 0 且小于或等于 200
+	Rp *uint64 `json:"Rp,omitempty" name:"Rp"`
+
+	// 页码，从 1开始，不能大于 200
+	Page *uint64 `json:"Page,omitempty" name:"Page"`
+
+	// 0:返回直接关联和随组关联策略，1:只返回直接关联策略，2:只返回随组关联策略
+	AttachType *uint64 `json:"AttachType,omitempty" name:"AttachType"`
+
+	// 策略类型
+	StrategyType *uint64 `json:"StrategyType,omitempty" name:"StrategyType"`
+
+	// 搜索关键字
+	Keyword *string `json:"Keyword,omitempty" name:"Keyword"`
+}
+
 type ListAttachedUserAllPoliciesRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 目标用户ID
 	TargetUin *uint64 `json:"TargetUin,omitempty" name:"TargetUin"`
 
@@ -3277,19 +3904,21 @@ func (r *ListAttachedUserAllPoliciesRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ListAttachedUserAllPoliciesResponseParams struct {
+	// 策略列表数据
+	PolicyList []*AttachedUserPolicy `json:"PolicyList,omitempty" name:"PolicyList"`
+
+	// 策略总数
+	TotalNum *uint64 `json:"TotalNum,omitempty" name:"TotalNum"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type ListAttachedUserAllPoliciesResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 策略列表数据
-		PolicyList []*AttachedUserPolicy `json:"PolicyList,omitempty" name:"PolicyList"`
-
-		// 策略总数
-		TotalNum *uint64 `json:"TotalNum,omitempty" name:"TotalNum"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *ListAttachedUserAllPoliciesResponseParams `json:"Response"`
 }
 
 func (r *ListAttachedUserAllPoliciesResponse) ToJsonString() string {
@@ -3303,9 +3932,21 @@ func (r *ListAttachedUserAllPoliciesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ListAttachedUserPoliciesRequestParams struct {
+	// 子账号 uin
+	TargetUin *uint64 `json:"TargetUin,omitempty" name:"TargetUin"`
+
+	// 页码，默认值是 1，从 1 开始
+	Page *uint64 `json:"Page,omitempty" name:"Page"`
+
+	// 每页大小，默认值是 20
+	Rp *uint64 `json:"Rp,omitempty" name:"Rp"`
+}
+
 type ListAttachedUserPoliciesRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 子账号 uin
 	TargetUin *uint64 `json:"TargetUin,omitempty" name:"TargetUin"`
 
@@ -3337,19 +3978,21 @@ func (r *ListAttachedUserPoliciesRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ListAttachedUserPoliciesResponseParams struct {
+	// 策略总数
+	TotalNum *uint64 `json:"TotalNum,omitempty" name:"TotalNum"`
+
+	// 策略列表
+	List []*AttachPolicyInfo `json:"List,omitempty" name:"List"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type ListAttachedUserPoliciesResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 策略总数
-		TotalNum *uint64 `json:"TotalNum,omitempty" name:"TotalNum"`
-
-		// 策略列表
-		List []*AttachPolicyInfo `json:"List,omitempty" name:"List"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *ListAttachedUserPoliciesResponseParams `json:"Response"`
 }
 
 func (r *ListAttachedUserPoliciesResponse) ToJsonString() string {
@@ -3363,9 +4006,18 @@ func (r *ListAttachedUserPoliciesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ListCollaboratorsRequestParams struct {
+	// 分页条数，缺省为20
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 分页起始值，缺省为0
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+}
+
 type ListCollaboratorsRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 分页条数，缺省为20
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
@@ -3393,19 +4045,21 @@ func (r *ListCollaboratorsRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ListCollaboratorsResponseParams struct {
+	// 总数
+	TotalNum *uint64 `json:"TotalNum,omitempty" name:"TotalNum"`
+
+	// 协作者信息
+	Data []*SubAccountInfo `json:"Data,omitempty" name:"Data"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type ListCollaboratorsResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 总数
-		TotalNum *uint64 `json:"TotalNum,omitempty" name:"TotalNum"`
-
-		// 协作者信息
-		Data []*SubAccountInfo `json:"Data,omitempty" name:"Data"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *ListCollaboratorsResponseParams `json:"Response"`
 }
 
 func (r *ListCollaboratorsResponse) ToJsonString() string {
@@ -3419,9 +4073,24 @@ func (r *ListCollaboratorsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ListEntitiesForPolicyRequestParams struct {
+	// 策略 id
+	PolicyId *uint64 `json:"PolicyId,omitempty" name:"PolicyId"`
+
+	// 页码，默认值是 1，从 1 开始
+	Page *uint64 `json:"Page,omitempty" name:"Page"`
+
+	// 每页大小，默认值是 20
+	Rp *uint64 `json:"Rp,omitempty" name:"Rp"`
+
+	// 可取值 'All'、'User'、'Group' 和 'Role'，'All' 表示获取所有实体类型，'User' 表示只获取子账号，'Group' 表示只获取用户组，'Role' 表示只获取角色，默认取 'All'
+	EntityFilter *string `json:"EntityFilter,omitempty" name:"EntityFilter"`
+}
+
 type ListEntitiesForPolicyRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 策略 id
 	PolicyId *uint64 `json:"PolicyId,omitempty" name:"PolicyId"`
 
@@ -3457,21 +4126,23 @@ func (r *ListEntitiesForPolicyRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ListEntitiesForPolicyResponseParams struct {
+	// 实体总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalNum *uint64 `json:"TotalNum,omitempty" name:"TotalNum"`
+
+	// 实体列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	List []*AttachEntityOfPolicy `json:"List,omitempty" name:"List"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type ListEntitiesForPolicyResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 实体总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		TotalNum *uint64 `json:"TotalNum,omitempty" name:"TotalNum"`
-
-		// 实体列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		List []*AttachEntityOfPolicy `json:"List,omitempty" name:"List"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *ListEntitiesForPolicyResponseParams `json:"Response"`
 }
 
 func (r *ListEntitiesForPolicyResponse) ToJsonString() string {
@@ -3486,7 +4157,6 @@ func (r *ListEntitiesForPolicyResponse) FromJsonString(s string) error {
 }
 
 type ListGrantServiceAccessActionNode struct {
-
 	// 接口名
 	Name *string `json:"Name,omitempty" name:"Name"`
 
@@ -3495,7 +4165,6 @@ type ListGrantServiceAccessActionNode struct {
 }
 
 type ListGrantServiceAccessNode struct {
-
 	// 服务
 	Service *ListGrantServiceAccessService `json:"Service,omitempty" name:"Service"`
 
@@ -3507,7 +4176,6 @@ type ListGrantServiceAccessNode struct {
 }
 
 type ListGrantServiceAccessPolicy struct {
-
 	// 策略ID
 	PolicyId *string `json:"PolicyId,omitempty" name:"PolicyId"`
 
@@ -3522,7 +4190,6 @@ type ListGrantServiceAccessPolicy struct {
 }
 
 type ListGrantServiceAccessService struct {
-
 	// 服务
 	ServiceType *string `json:"ServiceType,omitempty" name:"ServiceType"`
 
@@ -3530,9 +4197,24 @@ type ListGrantServiceAccessService struct {
 	ServiceName *string `json:"ServiceName,omitempty" name:"ServiceName"`
 }
 
+// Predefined struct for user
+type ListGroupsForUserRequestParams struct {
+	// 子用户 UID
+	Uid *uint64 `json:"Uid,omitempty" name:"Uid"`
+
+	// 每页数量。默认为20。
+	Rp *uint64 `json:"Rp,omitempty" name:"Rp"`
+
+	// 页码。默认为1。
+	Page *uint64 `json:"Page,omitempty" name:"Page"`
+
+	// 子账号UIN
+	SubUin *uint64 `json:"SubUin,omitempty" name:"SubUin"`
+}
+
 type ListGroupsForUserRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 子用户 UID
 	Uid *uint64 `json:"Uid,omitempty" name:"Uid"`
 
@@ -3568,19 +4250,21 @@ func (r *ListGroupsForUserRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ListGroupsForUserResponseParams struct {
+	// 子用户加入的用户组总数
+	TotalNum *uint64 `json:"TotalNum,omitempty" name:"TotalNum"`
+
+	// 用户组信息
+	GroupInfo []*GroupInfo `json:"GroupInfo,omitempty" name:"GroupInfo"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type ListGroupsForUserResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 子用户加入的用户组总数
-		TotalNum *uint64 `json:"TotalNum,omitempty" name:"TotalNum"`
-
-		// 用户组信息
-		GroupInfo []*GroupInfo `json:"GroupInfo,omitempty" name:"GroupInfo"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *ListGroupsForUserResponseParams `json:"Response"`
 }
 
 func (r *ListGroupsForUserResponse) ToJsonString() string {
@@ -3594,9 +4278,21 @@ func (r *ListGroupsForUserResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ListGroupsRequestParams struct {
+	// 页码。默认为1。
+	Page *uint64 `json:"Page,omitempty" name:"Page"`
+
+	// 每页数量。默认为20。
+	Rp *uint64 `json:"Rp,omitempty" name:"Rp"`
+
+	// 按用户组名称匹配。
+	Keyword *string `json:"Keyword,omitempty" name:"Keyword"`
+}
+
 type ListGroupsRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 页码。默认为1。
 	Page *uint64 `json:"Page,omitempty" name:"Page"`
 
@@ -3628,19 +4324,21 @@ func (r *ListGroupsRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ListGroupsResponseParams struct {
+	// 用户组总数。
+	TotalNum *uint64 `json:"TotalNum,omitempty" name:"TotalNum"`
+
+	// 用户组数组信息。
+	GroupInfo []*GroupInfo `json:"GroupInfo,omitempty" name:"GroupInfo"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type ListGroupsResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 用户组总数。
-		TotalNum *uint64 `json:"TotalNum,omitempty" name:"TotalNum"`
-
-		// 用户组数组信息。
-		GroupInfo []*GroupInfo `json:"GroupInfo,omitempty" name:"GroupInfo"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *ListGroupsResponseParams `json:"Response"`
 }
 
 func (r *ListGroupsResponse) ToJsonString() string {
@@ -3654,9 +4352,24 @@ func (r *ListGroupsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ListPoliciesGrantingServiceAccessRequestParams struct {
+	// 子账号uin，与RoleId、GroupId三选一必传
+	TargetUin *uint64 `json:"TargetUin,omitempty" name:"TargetUin"`
+
+	// 角色ID，与TargetUin、GroupId三选一必传
+	RoleId *uint64 `json:"RoleId,omitempty" name:"RoleId"`
+
+	// 用户组ID，与TargetUin、RoleId三选一必传
+	GroupId *uint64 `json:"GroupId,omitempty" name:"GroupId"`
+
+	// 服务名，查看服务授权接口详情时需传该字段
+	ServiceType *string `json:"ServiceType,omitempty" name:"ServiceType"`
+}
+
 type ListPoliciesGrantingServiceAccessRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 子账号uin，与RoleId、GroupId三选一必传
 	TargetUin *uint64 `json:"TargetUin,omitempty" name:"TargetUin"`
 
@@ -3692,16 +4405,18 @@ func (r *ListPoliciesGrantingServiceAccessRequest) FromJsonString(s string) erro
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ListPoliciesGrantingServiceAccessResponseParams struct {
+	// 列表
+	List []*ListGrantServiceAccessNode `json:"List,omitempty" name:"List"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type ListPoliciesGrantingServiceAccessResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 列表
-		List []*ListGrantServiceAccessNode `json:"List,omitempty" name:"List"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *ListPoliciesGrantingServiceAccessResponseParams `json:"Response"`
 }
 
 func (r *ListPoliciesGrantingServiceAccessResponse) ToJsonString() string {
@@ -3715,9 +4430,24 @@ func (r *ListPoliciesGrantingServiceAccessResponse) FromJsonString(s string) err
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ListPoliciesRequestParams struct {
+	// 每页数量，默认值是 20，必须大于 0 且小于或等于 200
+	Rp *uint64 `json:"Rp,omitempty" name:"Rp"`
+
+	// 页码，默认值是 1，从 1开始，不能大于 200
+	Page *uint64 `json:"Page,omitempty" name:"Page"`
+
+	// 可取值 'All'、'QCS' 和 'Local'，'All' 获取所有策略，'QCS' 只获取预设策略，'Local' 只获取自定义策略，默认取 'All'
+	Scope *string `json:"Scope,omitempty" name:"Scope"`
+
+	// 按策略名匹配
+	Keyword *string `json:"Keyword,omitempty" name:"Keyword"`
+}
+
 type ListPoliciesRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 每页数量，默认值是 20，必须大于 0 且小于或等于 200
 	Rp *uint64 `json:"Rp,omitempty" name:"Rp"`
 
@@ -3753,14 +4483,12 @@ func (r *ListPoliciesRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-type ListPoliciesResponse struct {
-	*tchttp.BaseResponse
-	Response *struct {
+// Predefined struct for user
+type ListPoliciesResponseParams struct {
+	// 策略总数
+	TotalNum *uint64 `json:"TotalNum,omitempty" name:"TotalNum"`
 
-		// 策略总数
-		TotalNum *uint64 `json:"TotalNum,omitempty" name:"TotalNum"`
-
-		// 策略数组，数组每个成员包括 policyId、policyName、addTime、type、description、 createMode 字段。其中： 
+	// 策略数组，数组每个成员包括 policyId、policyName、addTime、type、description、 createMode 字段。其中： 
 	// policyId：策略 id 
 	// policyName：策略名
 	// addTime：策略创建时间
@@ -3770,15 +4498,19 @@ type ListPoliciesResponse struct {
 	// Attachments: 关联的用户数
 	// ServiceType: 策略关联的产品
 	// IsAttached: 当需要查询标记实体是否已经关联策略时不为null。0表示未关联策略，1表示已关联策略
-		List []*StrategyInfo `json:"List,omitempty" name:"List"`
+	List []*StrategyInfo `json:"List,omitempty" name:"List"`
 
-		// 保留字段
+	// 保留字段
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		ServiceTypeList []*string `json:"ServiceTypeList,omitempty" name:"ServiceTypeList"`
+	ServiceTypeList []*string `json:"ServiceTypeList,omitempty" name:"ServiceTypeList"`
 
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ListPoliciesResponse struct {
+	*tchttp.BaseResponse
+	Response *ListPoliciesResponseParams `json:"Response"`
 }
 
 func (r *ListPoliciesResponse) ToJsonString() string {
@@ -3792,9 +4524,15 @@ func (r *ListPoliciesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ListPolicyVersionsRequestParams struct {
+	// 策略ID
+	PolicyId *uint64 `json:"PolicyId,omitempty" name:"PolicyId"`
+}
+
 type ListPolicyVersionsRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 策略ID
 	PolicyId *uint64 `json:"PolicyId,omitempty" name:"PolicyId"`
 }
@@ -3818,17 +4556,19 @@ func (r *ListPolicyVersionsRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ListPolicyVersionsResponseParams struct {
+	// 策略版本列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Versions []*PolicyVersionItem `json:"Versions,omitempty" name:"Versions"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type ListPolicyVersionsResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 策略版本列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		Versions []*PolicyVersionItem `json:"Versions,omitempty" name:"Versions"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *ListPolicyVersionsResponseParams `json:"Response"`
 }
 
 func (r *ListPolicyVersionsResponse) ToJsonString() string {
@@ -3842,8 +4582,14 @@ func (r *ListPolicyVersionsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ListSAMLProvidersRequestParams struct {
+
+}
+
 type ListSAMLProvidersRequest struct {
 	*tchttp.BaseRequest
+	
 }
 
 func (r *ListSAMLProvidersRequest) ToJsonString() string {
@@ -3858,25 +4604,28 @@ func (r *ListSAMLProvidersRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListSAMLProvidersRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ListSAMLProvidersResponseParams struct {
+	// SAML身份提供商总数
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// SAML身份提供商列表
+	SAMLProviderSet []*SAMLProviderInfo `json:"SAMLProviderSet,omitempty" name:"SAMLProviderSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type ListSAMLProvidersResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// SAML身份提供商总数
-		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// SAML身份提供商列表
-		SAMLProviderSet []*SAMLProviderInfo `json:"SAMLProviderSet,omitempty" name:"SAMLProviderSet"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *ListSAMLProvidersResponseParams `json:"Response"`
 }
 
 func (r *ListSAMLProvidersResponse) ToJsonString() string {
@@ -3890,9 +4639,21 @@ func (r *ListSAMLProvidersResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ListUsersForGroupRequestParams struct {
+	// 用户组 ID。
+	GroupId *uint64 `json:"GroupId,omitempty" name:"GroupId"`
+
+	// 页码。默认为1。
+	Page *uint64 `json:"Page,omitempty" name:"Page"`
+
+	// 每页数量。默认为20。
+	Rp *uint64 `json:"Rp,omitempty" name:"Rp"`
+}
+
 type ListUsersForGroupRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 用户组 ID。
 	GroupId *uint64 `json:"GroupId,omitempty" name:"GroupId"`
 
@@ -3924,19 +4685,21 @@ func (r *ListUsersForGroupRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ListUsersForGroupResponseParams struct {
+	// 用户组关联的用户总数。
+	TotalNum *uint64 `json:"TotalNum,omitempty" name:"TotalNum"`
+
+	// 子用户信息。
+	UserInfo []*GroupMemberInfo `json:"UserInfo,omitempty" name:"UserInfo"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type ListUsersForGroupResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 用户组关联的用户总数。
-		TotalNum *uint64 `json:"TotalNum,omitempty" name:"TotalNum"`
-
-		// 子用户信息。
-		UserInfo []*GroupMemberInfo `json:"UserInfo,omitempty" name:"UserInfo"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *ListUsersForGroupResponseParams `json:"Response"`
 }
 
 func (r *ListUsersForGroupResponse) ToJsonString() string {
@@ -3950,8 +4713,14 @@ func (r *ListUsersForGroupResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ListUsersRequestParams struct {
+
+}
+
 type ListUsersRequest struct {
 	*tchttp.BaseRequest
+	
 }
 
 func (r *ListUsersRequest) ToJsonString() string {
@@ -3966,22 +4735,25 @@ func (r *ListUsersRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListUsersRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ListUsersResponseParams struct {
+	// 子用户信息
+	Data []*SubAccountInfo `json:"Data,omitempty" name:"Data"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type ListUsersResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 子用户信息
-		Data []*SubAccountInfo `json:"Data,omitempty" name:"Data"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *ListUsersResponseParams `json:"Response"`
 }
 
 func (r *ListUsersResponse) ToJsonString() string {
@@ -3995,9 +4767,18 @@ func (r *ListUsersResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ListWeChatWorkSubAccountsRequestParams struct {
+	// 偏移量
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 限制数目
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+}
+
 type ListWeChatWorkSubAccountsRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 偏移量
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
@@ -4025,19 +4806,21 @@ func (r *ListWeChatWorkSubAccountsRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ListWeChatWorkSubAccountsResponseParams struct {
+	// 企业微信子用户列表。
+	Data []*WeChatWorkSubAccount `json:"Data,omitempty" name:"Data"`
+
+	// 总数目。
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type ListWeChatWorkSubAccountsResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 企业微信子用户列表。
-		Data []*WeChatWorkSubAccount `json:"Data,omitempty" name:"Data"`
-
-		// 总数目。
-		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *ListWeChatWorkSubAccountsResponseParams `json:"Response"`
 }
 
 func (r *ListWeChatWorkSubAccountsResponse) ToJsonString() string {
@@ -4052,7 +4835,6 @@ func (r *ListWeChatWorkSubAccountsResponse) FromJsonString(s string) error {
 }
 
 type LoginActionFlag struct {
-
 	// 手机
 	Phone *uint64 `json:"Phone,omitempty" name:"Phone"`
 
@@ -4070,7 +4852,6 @@ type LoginActionFlag struct {
 }
 
 type LoginActionFlagIntl struct {
-
 	// 手机
 	Phone *uint64 `json:"Phone,omitempty" name:"Phone"`
 
@@ -4091,7 +4872,6 @@ type LoginActionFlagIntl struct {
 }
 
 type LoginActionMfaFlag struct {
-
 	// 手机
 	Phone *uint64 `json:"Phone,omitempty" name:"Phone"`
 
@@ -4103,7 +4883,6 @@ type LoginActionMfaFlag struct {
 }
 
 type OffsiteFlag struct {
-
 	// 验证标识
 	VerifyFlag *uint64 `json:"VerifyFlag,omitempty" name:"VerifyFlag"`
 
@@ -4121,7 +4900,6 @@ type OffsiteFlag struct {
 }
 
 type PolicyVersionDetail struct {
-
 	// 策略版本号
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	VersionId *uint64 `json:"VersionId,omitempty" name:"VersionId"`
@@ -4140,7 +4918,6 @@ type PolicyVersionDetail struct {
 }
 
 type PolicyVersionItem struct {
-
 	// 策略版本号
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	VersionId *uint64 `json:"VersionId,omitempty" name:"VersionId"`
@@ -4154,9 +4931,21 @@ type PolicyVersionItem struct {
 	IsDefaultVersion *int64 `json:"IsDefaultVersion,omitempty" name:"IsDefaultVersion"`
 }
 
+// Predefined struct for user
+type PutRolePermissionsBoundaryRequestParams struct {
+	// 策略ID
+	PolicyId *int64 `json:"PolicyId,omitempty" name:"PolicyId"`
+
+	// 角色ID（与角色名至少填一个）
+	RoleId *string `json:"RoleId,omitempty" name:"RoleId"`
+
+	// 角色名（与角色ID至少填一个）
+	RoleName *string `json:"RoleName,omitempty" name:"RoleName"`
+}
+
 type PutRolePermissionsBoundaryRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 策略ID
 	PolicyId *int64 `json:"PolicyId,omitempty" name:"PolicyId"`
 
@@ -4188,13 +4977,15 @@ func (r *PutRolePermissionsBoundaryRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type PutRolePermissionsBoundaryResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type PutRolePermissionsBoundaryResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *PutRolePermissionsBoundaryResponseParams `json:"Response"`
 }
 
 func (r *PutRolePermissionsBoundaryResponse) ToJsonString() string {
@@ -4208,9 +4999,18 @@ func (r *PutRolePermissionsBoundaryResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type PutUserPermissionsBoundaryRequestParams struct {
+	// 子账号Uin
+	TargetUin *int64 `json:"TargetUin,omitempty" name:"TargetUin"`
+
+	// 策略ID
+	PolicyId *int64 `json:"PolicyId,omitempty" name:"PolicyId"`
+}
+
 type PutUserPermissionsBoundaryRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 子账号Uin
 	TargetUin *int64 `json:"TargetUin,omitempty" name:"TargetUin"`
 
@@ -4238,13 +5038,15 @@ func (r *PutUserPermissionsBoundaryRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type PutUserPermissionsBoundaryResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type PutUserPermissionsBoundaryResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *PutUserPermissionsBoundaryResponseParams `json:"Response"`
 }
 
 func (r *PutUserPermissionsBoundaryResponse) ToJsonString() string {
@@ -4258,9 +5060,15 @@ func (r *PutUserPermissionsBoundaryResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type RemoveUserFromGroupRequestParams struct {
+	// 要删除的用户 UIN/UID和用户组 ID对应数组
+	Info []*GroupIdOfUidInfo `json:"Info,omitempty" name:"Info"`
+}
+
 type RemoveUserFromGroupRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 要删除的用户 UIN/UID和用户组 ID对应数组
 	Info []*GroupIdOfUidInfo `json:"Info,omitempty" name:"Info"`
 }
@@ -4284,13 +5092,15 @@ func (r *RemoveUserFromGroupRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type RemoveUserFromGroupResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type RemoveUserFromGroupResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *RemoveUserFromGroupResponseParams `json:"Response"`
 }
 
 func (r *RemoveUserFromGroupResponse) ToJsonString() string {
@@ -4305,7 +5115,6 @@ func (r *RemoveUserFromGroupResponse) FromJsonString(s string) error {
 }
 
 type RoleInfo struct {
-
 	// 角色ID
 	RoleId *string `json:"RoleId,omitempty" name:"RoleId"`
 
@@ -4345,7 +5154,6 @@ type RoleInfo struct {
 }
 
 type RoleTags struct {
-
 	// 标签键
 	Key *string `json:"Key,omitempty" name:"Key"`
 
@@ -4354,7 +5162,6 @@ type RoleTags struct {
 }
 
 type SAMLProviderInfo struct {
-
 	// SAML身份提供商名称
 	Name *string `json:"Name,omitempty" name:"Name"`
 
@@ -4369,7 +5176,6 @@ type SAMLProviderInfo struct {
 }
 
 type SecretIdLastUsed struct {
-
 	// 密钥ID
 	SecretId *string `json:"SecretId,omitempty" name:"SecretId"`
 
@@ -4378,9 +5184,18 @@ type SecretIdLastUsed struct {
 	LastUsedDate *string `json:"LastUsedDate,omitempty" name:"LastUsedDate"`
 }
 
+// Predefined struct for user
+type SetDefaultPolicyVersionRequestParams struct {
+	// 策略ID
+	PolicyId *uint64 `json:"PolicyId,omitempty" name:"PolicyId"`
+
+	// 策略版本号，可由ListPolicyVersions获取
+	VersionId *uint64 `json:"VersionId,omitempty" name:"VersionId"`
+}
+
 type SetDefaultPolicyVersionRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 策略ID
 	PolicyId *uint64 `json:"PolicyId,omitempty" name:"PolicyId"`
 
@@ -4408,13 +5223,15 @@ func (r *SetDefaultPolicyVersionRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type SetDefaultPolicyVersionResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type SetDefaultPolicyVersionResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *SetDefaultPolicyVersionResponseParams `json:"Response"`
 }
 
 func (r *SetDefaultPolicyVersionResponse) ToJsonString() string {
@@ -4428,9 +5245,21 @@ func (r *SetDefaultPolicyVersionResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type SetMfaFlagRequestParams struct {
+	// 设置用户的uin
+	OpUin *uint64 `json:"OpUin,omitempty" name:"OpUin"`
+
+	// 登录保护设置
+	LoginFlag *LoginActionMfaFlag `json:"LoginFlag,omitempty" name:"LoginFlag"`
+
+	// 操作保护设置
+	ActionFlag *LoginActionMfaFlag `json:"ActionFlag,omitempty" name:"ActionFlag"`
+}
+
 type SetMfaFlagRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 设置用户的uin
 	OpUin *uint64 `json:"OpUin,omitempty" name:"OpUin"`
 
@@ -4462,13 +5291,15 @@ func (r *SetMfaFlagRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type SetMfaFlagResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type SetMfaFlagResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *SetMfaFlagResponseParams `json:"Response"`
 }
 
 func (r *SetMfaFlagResponse) ToJsonString() string {
@@ -4483,7 +5314,6 @@ func (r *SetMfaFlagResponse) FromJsonString(s string) error {
 }
 
 type StrategyInfo struct {
-
 	// 策略ID。
 	PolicyId *uint64 `json:"PolicyId,omitempty" name:"PolicyId"`
 
@@ -4541,7 +5371,6 @@ type StrategyInfo struct {
 }
 
 type SubAccountInfo struct {
-
 	// 子用户用户 ID
 	Uin *uint64 `json:"Uin,omitempty" name:"Uin"`
 
@@ -4576,7 +5405,6 @@ type SubAccountInfo struct {
 }
 
 type SubAccountUser struct {
-
 	// 子用户用户 ID
 	Uin *uint64 `json:"Uin,omitempty" name:"Uin"`
 
@@ -4604,9 +5432,21 @@ type SubAccountUser struct {
 	LastLoginTime *string `json:"LastLoginTime,omitempty" name:"LastLoginTime"`
 }
 
+// Predefined struct for user
+type TagRoleRequestParams struct {
+	// 标签
+	Tags []*RoleTags `json:"Tags,omitempty" name:"Tags"`
+
+	// 角色名，与角色ID至少输入一个
+	RoleName *string `json:"RoleName,omitempty" name:"RoleName"`
+
+	// 角色ID，与角色名至少输入一个
+	RoleId *string `json:"RoleId,omitempty" name:"RoleId"`
+}
+
 type TagRoleRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 标签
 	Tags []*RoleTags `json:"Tags,omitempty" name:"Tags"`
 
@@ -4638,13 +5478,15 @@ func (r *TagRoleRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type TagRoleResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type TagRoleResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *TagRoleResponseParams `json:"Response"`
 }
 
 func (r *TagRoleResponse) ToJsonString() string {
@@ -4658,9 +5500,21 @@ func (r *TagRoleResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type UntagRoleRequestParams struct {
+	// 标签键
+	TagKeys []*string `json:"TagKeys,omitempty" name:"TagKeys"`
+
+	// 角色名，与角色ID至少输入一个
+	RoleName *string `json:"RoleName,omitempty" name:"RoleName"`
+
+	// 角色ID，与角色名至少输入一个
+	RoleId *string `json:"RoleId,omitempty" name:"RoleId"`
+}
+
 type UntagRoleRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 标签键
 	TagKeys []*string `json:"TagKeys,omitempty" name:"TagKeys"`
 
@@ -4692,13 +5546,15 @@ func (r *UntagRoleRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type UntagRoleResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type UntagRoleResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *UntagRoleResponseParams `json:"Response"`
 }
 
 func (r *UntagRoleResponse) ToJsonString() string {
@@ -4712,9 +5568,21 @@ func (r *UntagRoleResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type UpdateAssumeRolePolicyRequestParams struct {
+	// 策略文档，示例：{"version":"2.0","statement":[{"action":"name/sts:AssumeRole","effect":"allow","principal":{"service":["cloudaudit.cloud.tencent.com","cls.cloud.tencent.com"]}}]}，principal用于指定角色的授权对象。获取该参数可参阅 获取角色详情（https://cloud.tencent.com/document/product/598/36221） 输出参数RoleInfo
+	PolicyDocument *string `json:"PolicyDocument,omitempty" name:"PolicyDocument"`
+
+	// 角色ID，用于指定角色，入参 RoleId 与 RoleName 二选一
+	RoleId *string `json:"RoleId,omitempty" name:"RoleId"`
+
+	// 角色名称，用于指定角色，入参 RoleId 与 RoleName 二选一
+	RoleName *string `json:"RoleName,omitempty" name:"RoleName"`
+}
+
 type UpdateAssumeRolePolicyRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 策略文档，示例：{"version":"2.0","statement":[{"action":"name/sts:AssumeRole","effect":"allow","principal":{"service":["cloudaudit.cloud.tencent.com","cls.cloud.tencent.com"]}}]}，principal用于指定角色的授权对象。获取该参数可参阅 获取角色详情（https://cloud.tencent.com/document/product/598/36221） 输出参数RoleInfo
 	PolicyDocument *string `json:"PolicyDocument,omitempty" name:"PolicyDocument"`
 
@@ -4746,13 +5614,15 @@ func (r *UpdateAssumeRolePolicyRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type UpdateAssumeRolePolicyResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type UpdateAssumeRolePolicyResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *UpdateAssumeRolePolicyResponseParams `json:"Response"`
 }
 
 func (r *UpdateAssumeRolePolicyResponse) ToJsonString() string {
@@ -4766,9 +5636,21 @@ func (r *UpdateAssumeRolePolicyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type UpdateGroupRequestParams struct {
+	// 用户组 ID
+	GroupId *uint64 `json:"GroupId,omitempty" name:"GroupId"`
+
+	// 用户组名
+	GroupName *string `json:"GroupName,omitempty" name:"GroupName"`
+
+	// 用户组描述
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+}
+
 type UpdateGroupRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 用户组 ID
 	GroupId *uint64 `json:"GroupId,omitempty" name:"GroupId"`
 
@@ -4800,13 +5682,15 @@ func (r *UpdateGroupRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type UpdateGroupResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type UpdateGroupResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *UpdateGroupResponseParams `json:"Response"`
 }
 
 func (r *UpdateGroupResponse) ToJsonString() string {
@@ -4820,9 +5704,27 @@ func (r *UpdateGroupResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type UpdateOIDCConfigRequestParams struct {
+	// 身份提供商URL
+	IdentityUrl *string `json:"IdentityUrl,omitempty" name:"IdentityUrl"`
+
+	// 签名公钥，需要base64
+	IdentityKey *string `json:"IdentityKey,omitempty" name:"IdentityKey"`
+
+	// 客户端ID
+	ClientId []*string `json:"ClientId,omitempty" name:"ClientId"`
+
+	// 名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 描述
+	Description *string `json:"Description,omitempty" name:"Description"`
+}
+
 type UpdateOIDCConfigRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 身份提供商URL
 	IdentityUrl *string `json:"IdentityUrl,omitempty" name:"IdentityUrl"`
 
@@ -4862,13 +5764,15 @@ func (r *UpdateOIDCConfigRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type UpdateOIDCConfigResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type UpdateOIDCConfigResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *UpdateOIDCConfigResponseParams `json:"Response"`
 }
 
 func (r *UpdateOIDCConfigResponse) ToJsonString() string {
@@ -4882,9 +5786,27 @@ func (r *UpdateOIDCConfigResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type UpdatePolicyRequestParams struct {
+	// 策略ID，与PolicyName二选一必填
+	PolicyId *uint64 `json:"PolicyId,omitempty" name:"PolicyId"`
+
+	// 策略名，与PolicyId二选一必填
+	PolicyName *string `json:"PolicyName,omitempty" name:"PolicyName"`
+
+	// 策略描述
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 策略文档，示例：{"version":"2.0","statement":[{"action":"name/sts:AssumeRole","effect":"allow","principal":{"service":["cloudaudit.cloud.tencent.com","cls.cloud.tencent.com"]}}]}，principal用于指定角色的授权对象。获取该参数可参阅 获取角色详情（https://cloud.tencent.com/document/product/598/36221） 输出参数RoleInfo
+	PolicyDocument *string `json:"PolicyDocument,omitempty" name:"PolicyDocument"`
+
+	// 预设策略备注
+	Alias *string `json:"Alias,omitempty" name:"Alias"`
+}
+
 type UpdatePolicyRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 策略ID，与PolicyName二选一必填
 	PolicyId *uint64 `json:"PolicyId,omitempty" name:"PolicyId"`
 
@@ -4924,17 +5846,19 @@ func (r *UpdatePolicyRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type UpdatePolicyResponseParams struct {
+	// 策略id，入参是PolicyName时，才会返回
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PolicyId *uint64 `json:"PolicyId,omitempty" name:"PolicyId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type UpdatePolicyResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 策略id，入参是PolicyName时，才会返回
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		PolicyId *uint64 `json:"PolicyId,omitempty" name:"PolicyId"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *UpdatePolicyResponseParams `json:"Response"`
 }
 
 func (r *UpdatePolicyResponse) ToJsonString() string {
@@ -4948,9 +5872,21 @@ func (r *UpdatePolicyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type UpdateRoleConsoleLoginRequestParams struct {
+	// 是否可登录，可登录：1，不可登录：0
+	ConsoleLogin *int64 `json:"ConsoleLogin,omitempty" name:"ConsoleLogin"`
+
+	// 角色ID，入参 RoleId 与 RoleName 二选一
+	RoleId *int64 `json:"RoleId,omitempty" name:"RoleId"`
+
+	// 角色名，入参 RoleId 与 RoleName 二选一
+	RoleName *string `json:"RoleName,omitempty" name:"RoleName"`
+}
+
 type UpdateRoleConsoleLoginRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 是否可登录，可登录：1，不可登录：0
 	ConsoleLogin *int64 `json:"ConsoleLogin,omitempty" name:"ConsoleLogin"`
 
@@ -4982,13 +5918,15 @@ func (r *UpdateRoleConsoleLoginRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type UpdateRoleConsoleLoginResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type UpdateRoleConsoleLoginResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *UpdateRoleConsoleLoginResponseParams `json:"Response"`
 }
 
 func (r *UpdateRoleConsoleLoginResponse) ToJsonString() string {
@@ -5002,9 +5940,21 @@ func (r *UpdateRoleConsoleLoginResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type UpdateRoleDescriptionRequestParams struct {
+	// 角色描述
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 角色ID，用于指定角色，入参 RoleId 与 RoleName 二选一
+	RoleId *string `json:"RoleId,omitempty" name:"RoleId"`
+
+	// 角色名称，用于指定角色，入参 RoleId 与 RoleName 二选一
+	RoleName *string `json:"RoleName,omitempty" name:"RoleName"`
+}
+
 type UpdateRoleDescriptionRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 角色描述
 	Description *string `json:"Description,omitempty" name:"Description"`
 
@@ -5036,13 +5986,15 @@ func (r *UpdateRoleDescriptionRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type UpdateRoleDescriptionResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type UpdateRoleDescriptionResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *UpdateRoleDescriptionResponseParams `json:"Response"`
 }
 
 func (r *UpdateRoleDescriptionResponse) ToJsonString() string {
@@ -5056,9 +6008,21 @@ func (r *UpdateRoleDescriptionResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type UpdateSAMLProviderRequestParams struct {
+	// SAML身份提供商名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// SAML身份提供商描述
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// SAML身份提供商Base64编码的元数据文档
+	SAMLMetadataDocument *string `json:"SAMLMetadataDocument,omitempty" name:"SAMLMetadataDocument"`
+}
+
 type UpdateSAMLProviderRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// SAML身份提供商名称
 	Name *string `json:"Name,omitempty" name:"Name"`
 
@@ -5090,13 +6054,15 @@ func (r *UpdateSAMLProviderRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type UpdateSAMLProviderResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type UpdateSAMLProviderResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *UpdateSAMLProviderResponseParams `json:"Response"`
 }
 
 func (r *UpdateSAMLProviderResponse) ToJsonString() string {
@@ -5110,9 +6076,40 @@ func (r *UpdateSAMLProviderResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type UpdateUserOIDCConfigRequestParams struct {
+	// 身份提供商URL。OpenID Connect身份提供商标识。
+	// 对应企业IdP提供的Openid-configuration中"issuer"字段的值。
+	IdentityUrl *string `json:"IdentityUrl,omitempty" name:"IdentityUrl"`
+
+	// 签名公钥，需要base64_encode。验证OpenID Connect身份提供商ID Token签名的公钥。为了您的帐号安全，建议您定期轮换签名公钥。
+	IdentityKey *string `json:"IdentityKey,omitempty" name:"IdentityKey"`
+
+	// 客户端ID，在OpenID Connect身份提供商注册的客户端ID。
+	ClientId *string `json:"ClientId,omitempty" name:"ClientId"`
+
+	// 授权请求Endpoint，OpenID Connect身份提供商授权地址。对应企业IdP提供的Openid-configuration中"authorization_endpoint"字段的值。
+	AuthorizationEndpoint *string `json:"AuthorizationEndpoint,omitempty" name:"AuthorizationEndpoint"`
+
+	// 授权请求Response type，固定值id_token。
+	ResponseType *string `json:"ResponseType,omitempty" name:"ResponseType"`
+
+	// 授权请求Response mode。授权请求返回模式，form_post和fragment两种可选模式，推荐选择form_post模式。
+	ResponseMode *string `json:"ResponseMode,omitempty" name:"ResponseMode"`
+
+	// 映射字段名称。IdP的id_token中哪一个字段映射到子用户的用户名，通常是sub或者name字段
+	MappingFiled *string `json:"MappingFiled,omitempty" name:"MappingFiled"`
+
+	// 授权请求Scope。openid; email;profile。授权请求信息范围。默认必选openid。
+	Scope []*string `json:"Scope,omitempty" name:"Scope"`
+
+	// 描述
+	Description *string `json:"Description,omitempty" name:"Description"`
+}
+
 type UpdateUserOIDCConfigRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 身份提供商URL。OpenID Connect身份提供商标识。
 	// 对应企业IdP提供的Openid-configuration中"issuer"字段的值。
 	IdentityUrl *string `json:"IdentityUrl,omitempty" name:"IdentityUrl"`
@@ -5169,13 +6166,15 @@ func (r *UpdateUserOIDCConfigRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type UpdateUserOIDCConfigResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type UpdateUserOIDCConfigResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *UpdateUserOIDCConfigResponseParams `json:"Response"`
 }
 
 func (r *UpdateUserOIDCConfigResponse) ToJsonString() string {
@@ -5189,9 +6188,36 @@ func (r *UpdateUserOIDCConfigResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type UpdateUserRequestParams struct {
+	// 子用户用户名
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 子用户备注
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 子用户是否可以登录控制台。传0子用户无法登录控制台，传1子用户可以登录控制台。
+	ConsoleLogin *uint64 `json:"ConsoleLogin,omitempty" name:"ConsoleLogin"`
+
+	// 子用户控制台登录密码，若未进行密码规则设置则默认密码规则为8位以上同时包含大小写字母、数字和特殊字符。只有可以登录控制台时才有效，如果传空并且上面指定允许登录控制台，则自动生成随机密码，随机密码规则为32位包含大小写字母、数字和特殊字符。
+	Password *string `json:"Password,omitempty" name:"Password"`
+
+	// 子用户是否要在下次登录时重置密码。传0子用户下次登录控制台不需重置密码，传1子用户下次登录控制台需要重置密码。
+	NeedResetPassword *uint64 `json:"NeedResetPassword,omitempty" name:"NeedResetPassword"`
+
+	// 手机号
+	PhoneNum *string `json:"PhoneNum,omitempty" name:"PhoneNum"`
+
+	// 区号
+	CountryCode *string `json:"CountryCode,omitempty" name:"CountryCode"`
+
+	// 邮箱
+	Email *string `json:"Email,omitempty" name:"Email"`
+}
+
 type UpdateUserRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 子用户用户名
 	Name *string `json:"Name,omitempty" name:"Name"`
 
@@ -5243,13 +6269,15 @@ func (r *UpdateUserRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type UpdateUserResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type UpdateUserResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *UpdateUserResponseParams `json:"Response"`
 }
 
 func (r *UpdateUserResponse) ToJsonString() string {
@@ -5263,9 +6291,18 @@ func (r *UpdateUserResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type UpdateUserSAMLConfigRequestParams struct {
+	// 修改的操作类型:enable:启用,disable:禁用,updateSAML:修改元数据文档
+	Operate *string `json:"Operate,omitempty" name:"Operate"`
+
+	// 元数据文档，需要base64 encode，仅当Operate为updateSAML时需要此参数
+	SAMLMetadataDocument *string `json:"SAMLMetadataDocument,omitempty" name:"SAMLMetadataDocument"`
+}
+
 type UpdateUserSAMLConfigRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 修改的操作类型:enable:启用,disable:禁用,updateSAML:修改元数据文档
 	Operate *string `json:"Operate,omitempty" name:"Operate"`
 
@@ -5293,13 +6330,15 @@ func (r *UpdateUserSAMLConfigRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type UpdateUserSAMLConfigResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type UpdateUserSAMLConfigResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *UpdateUserSAMLConfigResponseParams `json:"Response"`
 }
 
 func (r *UpdateUserSAMLConfigResponse) ToJsonString() string {
@@ -5314,7 +6353,6 @@ func (r *UpdateUserSAMLConfigResponse) FromJsonString(s string) error {
 }
 
 type WeChatWorkSubAccount struct {
-
 	// 子用户用户 ID
 	Uin *uint64 `json:"Uin,omitempty" name:"Uin"`
 

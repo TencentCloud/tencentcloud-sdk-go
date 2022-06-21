@@ -21,7 +21,6 @@ import (
 )
 
 type AlgorithmResult struct {
-
 	// 算法ID
 	AlgoId *string `json:"AlgoId,omitempty" name:"AlgoId"`
 
@@ -62,9 +61,15 @@ type AlgorithmResult struct {
 	AlgoType *int64 `json:"AlgoType,omitempty" name:"AlgoType"`
 }
 
+// Predefined struct for user
+type DescribeInvocationResultRequestParams struct {
+	// 调用id，为调用InvokeService接口返回的RequestId
+	InvokeId *string `json:"InvokeId,omitempty" name:"InvokeId"`
+}
+
 type DescribeInvocationResultRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 调用id，为调用InvokeService接口返回的RequestId
 	InvokeId *string `json:"InvokeId,omitempty" name:"InvokeId"`
 }
@@ -88,21 +93,23 @@ func (r *DescribeInvocationResultRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-type DescribeInvocationResultResponse struct {
-	*tchttp.BaseResponse
-	Response *struct {
+// Predefined struct for user
+type DescribeInvocationResultResponseParams struct {
+	// 服务的调用结果
+	Results []*AlgorithmResult `json:"Results,omitempty" name:"Results"`
 
-		// 服务的调用结果
-		Results []*AlgorithmResult `json:"Results,omitempty" name:"Results"`
-
-		// 0:获取结果失败
+	// 0:获取结果失败
 	// 1：结果还没有生成，继续轮询
 	// 2：获取结果成功
-		Status *int64 `json:"Status,omitempty" name:"Status"`
+	Status *int64 `json:"Status,omitempty" name:"Status"`
 
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeInvocationResultResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeInvocationResultResponseParams `json:"Response"`
 }
 
 func (r *DescribeInvocationResultResponse) ToJsonString() string {
@@ -116,9 +123,24 @@ func (r *DescribeInvocationResultResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type InvokeServiceRequestParams struct {
+	// 待调用的服务ID。
+	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+
+	// 要调用服务的状态：0表示调试版本，1表示上线版本
+	ServiceStatus *int64 `json:"ServiceStatus,omitempty" name:"ServiceStatus"`
+
+	// 用于测试的文档的URL。
+	FileUrl *string `json:"FileUrl,omitempty" name:"FileUrl"`
+
+	// 用于测试的文本，当此值不为空时，调用内容以此参数的值为准。
+	Input *string `json:"Input,omitempty" name:"Input"`
+}
+
 type InvokeServiceRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 待调用的服务ID。
 	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
 
@@ -154,13 +176,15 @@ func (r *InvokeServiceRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type InvokeServiceResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type InvokeServiceResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *InvokeServiceResponseParams `json:"Response"`
 }
 
 func (r *InvokeServiceResponse) ToJsonString() string {

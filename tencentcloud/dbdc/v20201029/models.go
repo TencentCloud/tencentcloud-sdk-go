@@ -21,7 +21,6 @@ import (
 )
 
 type DBInstanceDetail struct {
-
 	// DB实例Id
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
@@ -80,9 +79,27 @@ type DBInstanceDetail struct {
 	DbEngine *string `json:"DbEngine,omitempty" name:"DbEngine"`
 }
 
+// Predefined struct for user
+type DescribeDBInstancesRequestParams struct {
+	// 独享集群实例Id
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 独享集群主机Id
+	HostId *string `json:"HostId,omitempty" name:"HostId"`
+
+	// 分页返回数量
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 分页偏移量
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 实例类型,0:mariadb, 1:tdsql
+	ShardType []*int64 `json:"ShardType,omitempty" name:"ShardType"`
+}
+
 type DescribeDBInstancesRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 独享集群实例Id
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
@@ -122,19 +139,21 @@ func (r *DescribeDBInstancesRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeDBInstancesResponseParams struct {
+	// 独享集群内的DB实例列表
+	Instances []*DBInstanceDetail `json:"Instances,omitempty" name:"Instances"`
+
+	// 独享集群内的DB实例总数
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeDBInstancesResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 独享集群内的DB实例列表
-		Instances []*DBInstanceDetail `json:"Instances,omitempty" name:"Instances"`
-
-		// 独享集群内的DB实例总数
-		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeDBInstancesResponseParams `json:"Response"`
 }
 
 func (r *DescribeDBInstancesResponse) ToJsonString() string {
@@ -149,7 +168,6 @@ func (r *DescribeDBInstancesResponse) FromJsonString(s string) error {
 }
 
 type DescribeInstanceDetail struct {
-
 	// 独享集群实例Id
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
@@ -227,9 +245,15 @@ type DescribeInstanceDetail struct {
 	FenceId *string `json:"FenceId,omitempty" name:"FenceId"`
 }
 
+// Predefined struct for user
+type DescribeInstanceDetailRequestParams struct {
+	// 独享集群实例Id
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+}
+
 type DescribeInstanceDetailRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 独享集群实例Id
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 }
@@ -253,89 +277,91 @@ func (r *DescribeInstanceDetailRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeInstanceDetailResponseParams struct {
+	// 独享集群实例Id
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 独享集群实例名称
+	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
+
+	// 地域
+	Region *string `json:"Region,omitempty" name:"Region"`
+
+	// 产品ID, 0:CDB, 1:TDSQL
+	ProductId *int64 `json:"ProductId,omitempty" name:"ProductId"`
+
+	// 集群类型, 0:公有云, 1:金融围笼
+	Type *int64 `json:"Type,omitempty" name:"Type"`
+
+	// 主机类型, 0:物理机, 1:cvm本地盘, 2:cvm云盘
+	HostType *int64 `json:"HostType,omitempty" name:"HostType"`
+
+	// 自动续费标志, 0:未设置, 1:自动续费, 2:到期不续费
+	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitempty" name:"AutoRenewFlag"`
+
+	// 集群状态
+	Status *int64 `json:"Status,omitempty" name:"Status"`
+
+	// 集群状态描述
+	StatusDesc *string `json:"StatusDesc,omitempty" name:"StatusDesc"`
+
+	// 创建时间
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 到期时间
+	PeriodEndTime *string `json:"PeriodEndTime,omitempty" name:"PeriodEndTime"`
+
+	// 主机数
+	HostNum *int64 `json:"HostNum,omitempty" name:"HostNum"`
+
+	// Db实例数
+	DbNum *int64 `json:"DbNum,omitempty" name:"DbNum"`
+
+	// 分配策略, 0:紧凑, 1:均匀
+	AssignStrategy *int64 `json:"AssignStrategy,omitempty" name:"AssignStrategy"`
+
+	// 总主机CPU(单位:核)
+	CpuSpec *int64 `json:"CpuSpec,omitempty" name:"CpuSpec"`
+
+	// 总已分配CPU(单位:核)
+	CpuAssigned *int64 `json:"CpuAssigned,omitempty" name:"CpuAssigned"`
+
+	// 总可分配CPU(单位:核)
+	CpuAssignable *int64 `json:"CpuAssignable,omitempty" name:"CpuAssignable"`
+
+	// 总主机内存(单位:GB)
+	MemorySpec *int64 `json:"MemorySpec,omitempty" name:"MemorySpec"`
+
+	// 总已分配内存(单位:GB)
+	MemoryAssigned *int64 `json:"MemoryAssigned,omitempty" name:"MemoryAssigned"`
+
+	// 总可分配内存(单位:GB)
+	MemoryAssignable *int64 `json:"MemoryAssignable,omitempty" name:"MemoryAssignable"`
+
+	// 总机器磁盘(单位:GB)
+	DiskSpec *int64 `json:"DiskSpec,omitempty" name:"DiskSpec"`
+
+	// 总已分配磁盘(单位:GB)
+	DiskAssigned *int64 `json:"DiskAssigned,omitempty" name:"DiskAssigned"`
+
+	// 总可分配磁盘(单位:GB)
+	DiskAssignable *int64 `json:"DiskAssignable,omitempty" name:"DiskAssignable"`
+
+	// 可用区
+	Zone *string `json:"Zone,omitempty" name:"Zone"`
+
+	// 围笼ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FenceId *string `json:"FenceId,omitempty" name:"FenceId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeInstanceDetailResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 独享集群实例Id
-		InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
-
-		// 独享集群实例名称
-		InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
-
-		// 地域
-		Region *string `json:"Region,omitempty" name:"Region"`
-
-		// 产品ID, 0:CDB, 1:TDSQL
-		ProductId *int64 `json:"ProductId,omitempty" name:"ProductId"`
-
-		// 集群类型, 0:公有云, 1:金融围笼
-		Type *int64 `json:"Type,omitempty" name:"Type"`
-
-		// 主机类型, 0:物理机, 1:cvm本地盘, 2:cvm云盘
-		HostType *int64 `json:"HostType,omitempty" name:"HostType"`
-
-		// 自动续费标志, 0:未设置, 1:自动续费, 2:到期不续费
-		AutoRenewFlag *int64 `json:"AutoRenewFlag,omitempty" name:"AutoRenewFlag"`
-
-		// 集群状态
-		Status *int64 `json:"Status,omitempty" name:"Status"`
-
-		// 集群状态描述
-		StatusDesc *string `json:"StatusDesc,omitempty" name:"StatusDesc"`
-
-		// 创建时间
-		CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
-
-		// 到期时间
-		PeriodEndTime *string `json:"PeriodEndTime,omitempty" name:"PeriodEndTime"`
-
-		// 主机数
-		HostNum *int64 `json:"HostNum,omitempty" name:"HostNum"`
-
-		// Db实例数
-		DbNum *int64 `json:"DbNum,omitempty" name:"DbNum"`
-
-		// 分配策略, 0:紧凑, 1:均匀
-		AssignStrategy *int64 `json:"AssignStrategy,omitempty" name:"AssignStrategy"`
-
-		// 总主机CPU(单位:核)
-		CpuSpec *int64 `json:"CpuSpec,omitempty" name:"CpuSpec"`
-
-		// 总已分配CPU(单位:核)
-		CpuAssigned *int64 `json:"CpuAssigned,omitempty" name:"CpuAssigned"`
-
-		// 总可分配CPU(单位:核)
-		CpuAssignable *int64 `json:"CpuAssignable,omitempty" name:"CpuAssignable"`
-
-		// 总主机内存(单位:GB)
-		MemorySpec *int64 `json:"MemorySpec,omitempty" name:"MemorySpec"`
-
-		// 总已分配内存(单位:GB)
-		MemoryAssigned *int64 `json:"MemoryAssigned,omitempty" name:"MemoryAssigned"`
-
-		// 总可分配内存(单位:GB)
-		MemoryAssignable *int64 `json:"MemoryAssignable,omitempty" name:"MemoryAssignable"`
-
-		// 总机器磁盘(单位:GB)
-		DiskSpec *int64 `json:"DiskSpec,omitempty" name:"DiskSpec"`
-
-		// 总已分配磁盘(单位:GB)
-		DiskAssigned *int64 `json:"DiskAssigned,omitempty" name:"DiskAssigned"`
-
-		// 总可分配磁盘(单位:GB)
-		DiskAssignable *int64 `json:"DiskAssignable,omitempty" name:"DiskAssignable"`
-
-		// 可用区
-		Zone *string `json:"Zone,omitempty" name:"Zone"`
-
-		// 围笼ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		FenceId *string `json:"FenceId,omitempty" name:"FenceId"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeInstanceDetailResponseParams `json:"Response"`
 }
 
 func (r *DescribeInstanceDetailResponse) ToJsonString() string {
@@ -349,9 +375,39 @@ func (r *DescribeInstanceDetailResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeInstanceListRequestParams struct {
+	// 分页返回数量
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 分页偏移量
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 排序字段，createTime,instancename两者之一
+	OrderBy *string `json:"OrderBy,omitempty" name:"OrderBy"`
+
+	// 排序规则，desc,asc两者之一
+	SortBy *string `json:"SortBy,omitempty" name:"SortBy"`
+
+	// 按产品过滤，0:CDB, 1:TDSQL
+	ProductId []*int64 `json:"ProductId,omitempty" name:"ProductId"`
+
+	// 按实例ID过滤
+	InstanceId []*string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 按实例名称过滤
+	InstanceName []*string `json:"InstanceName,omitempty" name:"InstanceName"`
+
+	// 按金融围笼ID过滤
+	FenceId []*string `json:"FenceId,omitempty" name:"FenceId"`
+
+	// 按实例状态过滤, -1:已隔离, 0:创建中, 1:运行中, 2:扩容中, 3:删除中
+	Status []*int64 `json:"Status,omitempty" name:"Status"`
+}
+
 type DescribeInstanceListRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 分页返回数量
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
@@ -407,19 +463,21 @@ func (r *DescribeInstanceListRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeInstanceListResponseParams struct {
+	// 独享集群列表
+	Instances []*DescribeInstanceDetail `json:"Instances,omitempty" name:"Instances"`
+
+	// 独享集群实例总数
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeInstanceListResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 独享集群列表
-		Instances []*DescribeInstanceDetail `json:"Instances,omitempty" name:"Instances"`
-
-		// 独享集群实例总数
-		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeInstanceListResponseParams `json:"Response"`
 }
 
 func (r *DescribeInstanceListResponse) ToJsonString() string {
@@ -433,9 +491,42 @@ func (r *DescribeInstanceListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeInstancesRequestParams struct {
+	// 集群类型: 0 一主一备, 1 一主两备...N-1 一主N备
+	InstanceTypes []*int64 `json:"InstanceTypes,omitempty" name:"InstanceTypes"`
+
+	// 产品ID:  0 MYSQL，1 TDSQL
+	ProductIds []*int64 `json:"ProductIds,omitempty" name:"ProductIds"`
+
+	// 集群uuid: 如 dbdc-q810131s
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
+
+	// 是否按金融围笼标志搜索
+	FenceFlag *bool `json:"FenceFlag,omitempty" name:"FenceFlag"`
+
+	// 按实例名字模糊匹配
+	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
+
+	// 每页数目, 整型
+	PageSize *int64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// 页码, 整型
+	PageNumber *int64 `json:"PageNumber,omitempty" name:"PageNumber"`
+
+	// 排序字段，枚举：createtime,groupname
+	OrderBy *string `json:"OrderBy,omitempty" name:"OrderBy"`
+
+	// 排序方式: asc升序, desc降序
+	OrderByType *string `json:"OrderByType,omitempty" name:"OrderByType"`
+
+	// 集群状态: -2 已删除, -1 已隔离, 0 创建中, 1 运行中, 2 扩容中, 3 删除中
+	InstanceStatus *int64 `json:"InstanceStatus,omitempty" name:"InstanceStatus"`
+}
+
 type DescribeInstancesRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 集群类型: 0 一主一备, 1 一主两备...N-1 一主N备
 	InstanceTypes []*int64 `json:"InstanceTypes,omitempty" name:"InstanceTypes"`
 
@@ -495,19 +586,21 @@ func (r *DescribeInstancesRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeInstancesResponseParams struct {
+	// 集群数量
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 集群扩展信息
+	Instances []*InstanceExpand `json:"Instances,omitempty" name:"Instances"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeInstancesResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 集群数量
-		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 集群扩展信息
-		Instances []*InstanceExpand `json:"Instances,omitempty" name:"Instances"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeInstancesResponseParams `json:"Response"`
 }
 
 func (r *DescribeInstancesResponse) ToJsonString() string {
@@ -522,7 +615,6 @@ func (r *DescribeInstancesResponse) FromJsonString(s string) error {
 }
 
 type DeviceInfo struct {
-
 	// 设备ID
 	DeviceId *int64 `json:"DeviceId,omitempty" name:"DeviceId"`
 
@@ -552,7 +644,6 @@ type DeviceInfo struct {
 }
 
 type InstanceDetail struct {
-
 	// 集群状态，0：运行中，1：不在运行
 	Status *int64 `json:"Status,omitempty" name:"Status"`
 
@@ -585,7 +676,6 @@ type InstanceDetail struct {
 }
 
 type InstanceDeviceInfo struct {
-
 	// 集群ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
@@ -604,7 +694,6 @@ type InstanceDeviceInfo struct {
 }
 
 type InstanceExpand struct {
-
 	// 集群ID
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
@@ -645,9 +734,18 @@ type InstanceExpand struct {
 	Pid *int64 `json:"Pid,omitempty" name:"Pid"`
 }
 
+// Predefined struct for user
+type ModifyInstanceNameRequestParams struct {
+	// 独享集群实例Id
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 独享集群实例名称
+	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
+}
+
 type ModifyInstanceNameRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 独享集群实例Id
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
@@ -675,13 +773,15 @@ func (r *ModifyInstanceNameRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifyInstanceNameResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type ModifyInstanceNameResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *ModifyInstanceNameResponseParams `json:"Response"`
 }
 
 func (r *ModifyInstanceNameResponse) ToJsonString() string {

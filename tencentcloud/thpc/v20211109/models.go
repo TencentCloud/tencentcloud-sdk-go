@@ -20,9 +20,43 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+// Predefined struct for user
+type BindAutoScalingGroupRequestParams struct {
+	// 集群ID。
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 弹性伸缩启动配置ID。
+	LaunchConfigurationId *string `json:"LaunchConfigurationId,omitempty" name:"LaunchConfigurationId"`
+
+	// 弹性伸缩组ID。
+	AutoScalingGroupId *string `json:"AutoScalingGroupId,omitempty" name:"AutoScalingGroupId"`
+
+	// 队列名称。
+	QueueName *string `json:"QueueName,omitempty" name:"QueueName"`
+
+	// 任务连续等待时间，队列的任务处于连续等待的时间。单位秒。默认值120。
+	ExpansionBusyTime *int64 `json:"ExpansionBusyTime,omitempty" name:"ExpansionBusyTime"`
+
+	// 节点连续空闲（未运行作业）时间，一个节点连续处于空闲状态时间。单位秒。默认值300。
+	ShrinkIdleTime *int64 `json:"ShrinkIdleTime,omitempty" name:"ShrinkIdleTime"`
+
+	// 是否开启自动扩容，默认值true。
+	EnableAutoExpansion *bool `json:"EnableAutoExpansion,omitempty" name:"EnableAutoExpansion"`
+
+	// 是否开启自动缩容，默认值true。
+	EnableAutoShrink *bool `json:"EnableAutoShrink,omitempty" name:"EnableAutoShrink"`
+
+	// 是否只预检此次请求。
+	// true：发送检查请求，不会绑定弹性伸缩组。检查项包括是否填写了必需参数，请求格式，业务限制。
+	// 如果检查不通过，则返回对应错误码；
+	// 如果检查通过，则返回RequestId。
+	// false（默认）：发送正常请求，通过检查后直接绑定弹性伸缩组。
+	DryRun *bool `json:"DryRun,omitempty" name:"DryRun"`
+}
+
 type BindAutoScalingGroupRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 集群ID。
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 
@@ -82,13 +116,15 @@ func (r *BindAutoScalingGroupRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type BindAutoScalingGroupResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type BindAutoScalingGroupResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *BindAutoScalingGroupResponseParams `json:"Response"`
 }
 
 func (r *BindAutoScalingGroupResponse) ToJsonString() string {
@@ -103,7 +139,6 @@ func (r *BindAutoScalingGroupResponse) FromJsonString(s string) error {
 }
 
 type CFSOption struct {
-
 	// 文件系统本地挂载路径
 	LocalPath *string `json:"LocalPath,omitempty" name:"LocalPath"`
 
@@ -121,7 +156,6 @@ type CFSOption struct {
 }
 
 type ClusterOverview struct {
-
 	// 集群ID。
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 
@@ -160,7 +194,6 @@ type ClusterOverview struct {
 }
 
 type ComputeNode struct {
-
 	// 节点[计费类型](https://cloud.tencent.com/document/product/213/2180)。<br><li>PREPAID：预付费，即包年包月<br><li>POSTPAID_BY_HOUR：按小时后付费<br><li>SPOTPAID：竞价付费<br>默认值：POSTPAID_BY_HOUR。
 	InstanceChargeType *string `json:"InstanceChargeType,omitempty" name:"InstanceChargeType"`
 
@@ -187,15 +220,78 @@ type ComputeNode struct {
 }
 
 type ComputeNodeOverview struct {
-
 	// 计算节点ID。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	NodeId *string `json:"NodeId,omitempty" name:"NodeId"`
 }
 
+// Predefined struct for user
+type CreateClusterRequestParams struct {
+	// 集群中实例所在的位置。
+	Placement *Placement `json:"Placement,omitempty" name:"Placement"`
+
+	// 指定管理节点。
+	ManagerNode *ManagerNode `json:"ManagerNode,omitempty" name:"ManagerNode"`
+
+	// 指定管理节点的数量。默认取值：1。取值范围：1～2。
+	ManagerNodeCount *int64 `json:"ManagerNodeCount,omitempty" name:"ManagerNodeCount"`
+
+	// 指定计算节点。
+	ComputeNode *ComputeNode `json:"ComputeNode,omitempty" name:"ComputeNode"`
+
+	// 指定计算节点的数量。默认取值：0。
+	ComputeNodeCount *int64 `json:"ComputeNodeCount,omitempty" name:"ComputeNodeCount"`
+
+	// 调度器类型。<br><li>SGE：SGE调度器。<br><li>SLURM：SLURM调度器。
+	SchedulerType *string `json:"SchedulerType,omitempty" name:"SchedulerType"`
+
+	// 指定有效的[镜像](https://cloud.tencent.com/document/product/213/4940)ID，格式形如`img-xxx`。目前仅支持公有镜像。
+	ImageId *string `json:"ImageId,omitempty" name:"ImageId"`
+
+	// 私有网络相关信息配置。
+	VirtualPrivateCloud *VirtualPrivateCloud `json:"VirtualPrivateCloud,omitempty" name:"VirtualPrivateCloud"`
+
+	// 集群登录设置。
+	LoginSettings *LoginSettings `json:"LoginSettings,omitempty" name:"LoginSettings"`
+
+	// 集群中实例所属安全组。该参数可以通过调用 [DescribeSecurityGroups](https://cloud.tencent.com/document/api/215/15808) 的返回值中的sgId字段来获取。若不指定该参数，则绑定默认安全组。
+	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" name:"SecurityGroupIds"`
+
+	// 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。
+	ClientToken *string `json:"ClientToken,omitempty" name:"ClientToken"`
+
+	// 是否只预检此次请求。
+	// true：发送检查请求，不会创建实例。检查项包括是否填写了必需参数，请求格式，业务限制和云服务器库存。
+	// 如果检查不通过，则返回对应错误码；
+	// 如果检查通过，则返回RequestId.
+	// false（默认）：发送正常请求，通过检查后直接创建实例
+	DryRun *bool `json:"DryRun,omitempty" name:"DryRun"`
+
+	// 域名字服务类型。默认值：NIS
+	// <li>NIS：NIS域名字服务。
+	AccountType *string `json:"AccountType,omitempty" name:"AccountType"`
+
+	// 集群显示名称。
+	ClusterName *string `json:"ClusterName,omitempty" name:"ClusterName"`
+
+	// 集群存储选项
+	StorageOption *StorageOption `json:"StorageOption,omitempty" name:"StorageOption"`
+
+	// 已废弃。
+	// 指定登录节点。
+	LoginNode []*LoginNode `json:"LoginNode,omitempty" name:"LoginNode"`
+
+	// 已废弃。
+	// 指定登录节点的数量。默认取值：0。取值范围：0～10。
+	LoginNodeCount *int64 `json:"LoginNodeCount,omitempty" name:"LoginNodeCount"`
+
+	// 创建集群时同时绑定的标签对说明。
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
+}
+
 type CreateClusterRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 集群中实例所在的位置。
 	Placement *Placement `json:"Placement,omitempty" name:"Placement"`
 
@@ -294,17 +390,19 @@ func (r *CreateClusterRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateClusterResponseParams struct {
+	// 集群ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreateClusterResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 集群ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreateClusterResponseParams `json:"Response"`
 }
 
 func (r *CreateClusterResponse) ToJsonString() string {
@@ -319,7 +417,6 @@ func (r *CreateClusterResponse) FromJsonString(s string) error {
 }
 
 type DataDisk struct {
-
 	// 数据盘大小，单位：GB。最小调整步长为10G，不同数据盘类型取值范围不同，具体限制详见：[存储概述](https://cloud.tencent.com/document/product/213/4952)。默认值为0，表示不购买数据盘。更多限制详见产品文档。
 	DiskSize *int64 `json:"DiskSize,omitempty" name:"DiskSize"`
 
@@ -327,9 +424,15 @@ type DataDisk struct {
 	DiskType *string `json:"DiskType,omitempty" name:"DiskType"`
 }
 
+// Predefined struct for user
+type DeleteClusterRequestParams struct {
+	// 集群ID。
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+}
+
 type DeleteClusterRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 集群ID。
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 }
@@ -353,13 +456,15 @@ func (r *DeleteClusterRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteClusterResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DeleteClusterResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DeleteClusterResponseParams `json:"Response"`
 }
 
 func (r *DeleteClusterResponse) ToJsonString() string {
@@ -373,9 +478,21 @@ func (r *DeleteClusterResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeClustersRequestParams struct {
+	// 集群ID列表。通过该参数可以指定需要查询信息的集群列表。<br>如果您不指定该参数，则返回Limit数量以内的集群信息。
+	ClusterIds []*string `json:"ClusterIds,omitempty" name:"ClusterIds"`
+
+	// 偏移量，默认为0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回数量，默认为20，最大值为100。关于`Limit`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
 type DescribeClustersRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 集群ID列表。通过该参数可以指定需要查询信息的集群列表。<br>如果您不指定该参数，则返回Limit数量以内的集群信息。
 	ClusterIds []*string `json:"ClusterIds,omitempty" name:"ClusterIds"`
 
@@ -407,19 +524,21 @@ func (r *DescribeClustersRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeClustersResponseParams struct {
+	// 集群概览信息列表。
+	ClusterSet []*ClusterOverview `json:"ClusterSet,omitempty" name:"ClusterSet"`
+
+	// 集群数量。
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeClustersResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 集群概览信息列表。
-		ClusterSet []*ClusterOverview `json:"ClusterSet,omitempty" name:"ClusterSet"`
-
-		// 集群数量。
-		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeClustersResponseParams `json:"Response"`
 }
 
 func (r *DescribeClustersResponse) ToJsonString() string {
@@ -434,7 +553,6 @@ func (r *DescribeClustersResponse) FromJsonString(s string) error {
 }
 
 type GooseFSOption struct {
-
 	// 文件系统本地挂载路径
 	LocalPath *string `json:"LocalPath,omitempty" name:"LocalPath"`
 
@@ -446,7 +564,6 @@ type GooseFSOption struct {
 }
 
 type InstanceChargePrepaid struct {
-
 	// 购买实例的时长，单位：月。取值范围：1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36, 48, 60。
 	Period *int64 `json:"Period,omitempty" name:"Period"`
 
@@ -460,7 +577,6 @@ type InstanceChargePrepaid struct {
 }
 
 type InternetAccessible struct {
-
 	// 网络计费类型。取值范围：
 	// BANDWIDTH_PREPAID：预付费按带宽结算
 	// TRAFFIC_POSTPAID_BY_HOUR：流量按小时后付费
@@ -474,7 +590,6 @@ type InternetAccessible struct {
 }
 
 type LoginNode struct {
-
 	// 节点[计费类型](https://cloud.tencent.com/document/product/213/2180)。<br><li>PREPAID：预付费，即包年包月<br><li>POSTPAID_BY_HOUR：按小时后付费<br><li>SPOTPAID：竞价付费<br>默认值：POSTPAID_BY_HOUR。
 	InstanceChargeType *string `json:"InstanceChargeType,omitempty" name:"InstanceChargeType"`
 
@@ -501,19 +616,16 @@ type LoginNode struct {
 }
 
 type LoginNodeOverview struct {
-
 	// 登录节点ID。
 	NodeId *string `json:"NodeId,omitempty" name:"NodeId"`
 }
 
 type LoginSettings struct {
-
 	// 实例登录密码。不同操作系统类型密码复杂度限制不一样，具体如下：<br><li>Linux实例密码必须8到30位，至少包括两项[a-z]，[A-Z]、[0-9] 和 [( ) \` ~ ! @ # $ % ^ & *  - + = | { } [ ] : ; ' , . ? / ]中的特殊符号。<br><li>Windows实例密码必须12到30位，至少包括三项[a-z]，[A-Z]，[0-9] 和 [( ) \` ~ ! @ # $ % ^ & * - + = | { } [ ] : ; ' , . ? /]中的特殊符号。<br><br>若不指定该参数，则由系统随机生成密码，并通过站内信方式通知到用户。
 	Password *string `json:"Password,omitempty" name:"Password"`
 }
 
 type ManagerNode struct {
-
 	// 节点[计费类型](https://cloud.tencent.com/document/product/213/2180)。<br><li>PREPAID：预付费，即包年包月<br><li>POSTPAID_BY_HOUR：按小时后付费<br>默认值：POSTPAID_BY_HOUR。
 	InstanceChargeType *string `json:"InstanceChargeType,omitempty" name:"InstanceChargeType"`
 
@@ -542,20 +654,17 @@ type ManagerNode struct {
 }
 
 type ManagerNodeOverview struct {
-
 	// 管控节点ID。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	NodeId *string `json:"NodeId,omitempty" name:"NodeId"`
 }
 
 type Placement struct {
-
 	// 实例所属的可用区名称。该参数可以通过调用  [DescribeZones](https://cloud.tencent.com/document/product/213/15707) 的返回值中的Zone字段来获取。
 	Zone *string `json:"Zone,omitempty" name:"Zone"`
 }
 
 type StorageOption struct {
-
 	// 集群挂载CFS文件系统选项
 	CFSOptions []*CFSOption `json:"CFSOptions,omitempty" name:"CFSOptions"`
 
@@ -564,7 +673,6 @@ type StorageOption struct {
 }
 
 type SystemDisk struct {
-
 	// 系统盘类型。系统盘类型限制详见存储概述。取值范围：
 	// LOCAL_BASIC：本地硬盘
 	// LOCAL_SSD：本地SSD硬盘
@@ -580,7 +688,6 @@ type SystemDisk struct {
 }
 
 type Tag struct {
-
 	// 标签键
 	Key *string `json:"Key,omitempty" name:"Key"`
 
@@ -589,7 +696,6 @@ type Tag struct {
 }
 
 type VirtualPrivateCloud struct {
-
 	// 私有网络ID，形如`vpc-xxx`。有效的VpcId可通过登录[控制台](https://console.cloud.tencent.com/vpc/vpc?rid=1)查询；也可以调用接口 [DescribeVpcEx](/document/api/215/1372) ，从接口返回中的`unVpcId`字段获取。若在创建子机时VpcId与SubnetId同时传入`DEFAULT`，则强制使用默认vpc网络。
 	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
 

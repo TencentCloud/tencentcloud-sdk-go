@@ -21,7 +21,6 @@ import (
 )
 
 type DataSourceDetail struct {
-
 	// 数据源 ID
 	Id *string `json:"Id,omitempty" name:"Id"`
 
@@ -141,7 +140,6 @@ type DataSourceDetail struct {
 }
 
 type DataSourceDetailItems struct {
-
 	// 数据详情列表
 	Rows []*DataSourceDetail `json:"Rows,omitempty" name:"Rows"`
 
@@ -150,7 +148,6 @@ type DataSourceDetailItems struct {
 }
 
 type DataSourceLinkApp struct {
-
 	// 应用Id
 	Id *string `json:"Id,omitempty" name:"Id"`
 
@@ -172,7 +169,6 @@ type DataSourceLinkApp struct {
 }
 
 type DataSourceQueryOption struct {
-
 	// 数据源标识模糊匹配
 	LikeName *string `json:"LikeName,omitempty" name:"LikeName"`
 
@@ -180,9 +176,51 @@ type DataSourceQueryOption struct {
 	LikeTitle *string `json:"LikeTitle,omitempty" name:"LikeTitle"`
 }
 
+// Predefined struct for user
+type DescribeDataSourceListRequestParams struct {
+	// 每页条数
+	PageSize *int64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// 页码
+	PageIndex *int64 `json:"PageIndex,omitempty" name:"PageIndex"`
+
+	// 环境 id
+	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
+
+	// 应用id数组
+	Appids []*string `json:"Appids,omitempty" name:"Appids"`
+
+	// 数据源id数组
+	DataSourceIds []*string `json:"DataSourceIds,omitempty" name:"DataSourceIds"`
+
+	// 数据源名称数组
+	DataSourceNames []*string `json:"DataSourceNames,omitempty" name:"DataSourceNames"`
+
+	// 数据源类型 database-自建数据源；cloud-integration-自定义数据源
+	DataSourceType *string `json:"DataSourceType,omitempty" name:"DataSourceType"`
+
+	// 数据源模糊查询参数
+	QueryOption *DataSourceQueryOption `json:"QueryOption,omitempty" name:"QueryOption"`
+
+	// 数据源视图Id数组
+	ViewIds []*string `json:"ViewIds,omitempty" name:"ViewIds"`
+
+	// 查询未关联应用的数据源，0:未关联，该参数配合 AppIds 参数一块使用
+	AppLinkStatus *int64 `json:"AppLinkStatus,omitempty" name:"AppLinkStatus"`
+
+	// 查询应用绑定数据源: 0: 否,1: 是
+	QueryBindToApp *int64 `json:"QueryBindToApp,omitempty" name:"QueryBindToApp"`
+
+	// 查询连接器 0 数据模型 1 连接器 2 自定义连接器
+	QueryConnector *int64 `json:"QueryConnector,omitempty" name:"QueryConnector"`
+
+	// 查询数据源黑名单机制，比如不想要系统数据源["system"]
+	NotQuerySubTypeList []*string `json:"NotQuerySubTypeList,omitempty" name:"NotQuerySubTypeList"`
+}
+
 type DescribeDataSourceListRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 每页条数
 	PageSize *int64 `json:"PageSize,omitempty" name:"PageSize"`
 
@@ -254,16 +292,18 @@ func (r *DescribeDataSourceListRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeDataSourceListResponseParams struct {
+	// data 数据
+	Data *DataSourceDetailItems `json:"Data,omitempty" name:"Data"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeDataSourceListResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// data 数据
-		Data *DataSourceDetailItems `json:"Data,omitempty" name:"Data"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeDataSourceListResponseParams `json:"Response"`
 }
 
 func (r *DescribeDataSourceListResponse) ToJsonString() string {
@@ -278,7 +318,6 @@ func (r *DescribeDataSourceListResponse) FromJsonString(s string) error {
 }
 
 type TicketAuthInfo struct {
-
 	// 授权用户
 	AuthUser *string `json:"AuthUser,omitempty" name:"AuthUser"`
 }

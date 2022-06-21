@@ -20,9 +20,21 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+// Predefined struct for user
+type AddCustomPersonImageRequestParams struct {
+	// 自定义人物Id
+	PersonId *string `json:"PersonId,omitempty" name:"PersonId"`
+
+	// 自定义人物图片地址
+	ImageURL *string `json:"ImageURL,omitempty" name:"ImageURL"`
+
+	// 图片数据base64之后的结果
+	Image *string `json:"Image,omitempty" name:"Image"`
+}
+
 type AddCustomPersonImageRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 自定义人物Id
 	PersonId *string `json:"PersonId,omitempty" name:"PersonId"`
 
@@ -54,19 +66,21 @@ func (r *AddCustomPersonImageRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type AddCustomPersonImageResponseParams struct {
+	// 自定义人物Id
+	PersonId *string `json:"PersonId,omitempty" name:"PersonId"`
+
+	// 自定义人脸图片信息
+	ImageInfo *PersonImageInfo `json:"ImageInfo,omitempty" name:"ImageInfo"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type AddCustomPersonImageResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 自定义人物Id
-		PersonId *string `json:"PersonId,omitempty" name:"PersonId"`
-
-		// 自定义人脸图片信息
-		ImageInfo *PersonImageInfo `json:"ImageInfo,omitempty" name:"ImageInfo"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *AddCustomPersonImageResponseParams `json:"Response"`
 }
 
 func (r *AddCustomPersonImageResponse) ToJsonString() string {
@@ -81,7 +95,6 @@ func (r *AddCustomPersonImageResponse) FromJsonString(s string) error {
 }
 
 type AppearIndexPair struct {
-
 	// 出现信息，取值范围为[1，3]
 	AppearIndex *int64 `json:"AppearIndex,omitempty" name:"AppearIndex"`
 
@@ -90,7 +103,6 @@ type AppearIndexPair struct {
 }
 
 type AppearInfo struct {
-
 	// 关键词在音频文本结果中的出现位置数组
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AudioAppearSet []*TextAppearInfo `json:"AudioAppearSet,omitempty" name:"AudioAppearSet"`
@@ -105,7 +117,6 @@ type AppearInfo struct {
 }
 
 type AudioInfo struct {
-
 	// ASR提取的文字信息
 	Content *string `json:"Content,omitempty" name:"Content"`
 
@@ -120,7 +131,6 @@ type AudioInfo struct {
 }
 
 type ClassifiedPersonInfo struct {
-
 	// 人物分类名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClassifyName *string `json:"ClassifyName,omitempty" name:"ClassifyName"`
@@ -130,9 +140,18 @@ type ClassifiedPersonInfo struct {
 	PersonInfoSet []*PersonInfo `json:"PersonInfoSet,omitempty" name:"PersonInfoSet"`
 }
 
+// Predefined struct for user
+type CreateCustomCategoryRequestParams struct {
+	// 自定义一级类型
+	L1Category *string `json:"L1Category,omitempty" name:"L1Category"`
+
+	// 自定义二级类型
+	L2Category *string `json:"L2Category,omitempty" name:"L2Category"`
+}
+
 type CreateCustomCategoryRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 自定义一级类型
 	L1Category *string `json:"L1Category,omitempty" name:"L1Category"`
 
@@ -160,16 +179,18 @@ func (r *CreateCustomCategoryRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateCustomCategoryResponseParams struct {
+	// 自定义分类信息ID
+	CategoryId *string `json:"CategoryId,omitempty" name:"CategoryId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreateCustomCategoryResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 自定义分类信息ID
-		CategoryId *string `json:"CategoryId,omitempty" name:"CategoryId"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreateCustomCategoryResponseParams `json:"Response"`
 }
 
 func (r *CreateCustomCategoryResponse) ToJsonString() string {
@@ -183,9 +204,15 @@ func (r *CreateCustomCategoryResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateCustomGroupRequestParams struct {
+	// 人脸图片COS存储桶Host地址
+	Bucket *string `json:"Bucket,omitempty" name:"Bucket"`
+}
+
 type CreateCustomGroupRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 人脸图片COS存储桶Host地址
 	Bucket *string `json:"Bucket,omitempty" name:"Bucket"`
 }
@@ -209,13 +236,15 @@ func (r *CreateCustomGroupRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateCustomGroupResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreateCustomGroupResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreateCustomGroupResponseParams `json:"Response"`
 }
 
 func (r *CreateCustomGroupResponse) ToJsonString() string {
@@ -229,9 +258,27 @@ func (r *CreateCustomGroupResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateCustomPersonRequestParams struct {
+	// 自定义人物姓名
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 自定义人物简要信息(仅用于标记，不支持检索)
+	BasicInfo *string `json:"BasicInfo,omitempty" name:"BasicInfo"`
+
+	// 自定义分类ID，如不存在接口会报错
+	CategoryId *string `json:"CategoryId,omitempty" name:"CategoryId"`
+
+	// 自定义人物图片URL，可支持任意地址，推荐使用COS
+	ImageURL *string `json:"ImageURL,omitempty" name:"ImageURL"`
+
+	// 原始图片base64编码后的数据
+	Image *string `json:"Image,omitempty" name:"Image"`
+}
+
 type CreateCustomPersonRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 自定义人物姓名
 	Name *string `json:"Name,omitempty" name:"Name"`
 
@@ -271,19 +318,21 @@ func (r *CreateCustomPersonRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateCustomPersonResponseParams struct {
+	// 自定义人物Id
+	PersonId *string `json:"PersonId,omitempty" name:"PersonId"`
+
+	// 自定义人脸信息
+	ImageInfo *PersonImageInfo `json:"ImageInfo,omitempty" name:"ImageInfo"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreateCustomPersonResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 自定义人物Id
-		PersonId *string `json:"PersonId,omitempty" name:"PersonId"`
-
-		// 自定义人脸信息
-		ImageInfo *PersonImageInfo `json:"ImageInfo,omitempty" name:"ImageInfo"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreateCustomPersonResponseParams `json:"Response"`
 }
 
 func (r *CreateCustomPersonResponse) ToJsonString() string {
@@ -297,8 +346,14 @@ func (r *CreateCustomPersonResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateDefaultCategoriesRequestParams struct {
+
+}
+
 type CreateDefaultCategoriesRequest struct {
 	*tchttp.BaseRequest
+	
 }
 
 func (r *CreateDefaultCategoriesRequest) ToJsonString() string {
@@ -313,19 +368,22 @@ func (r *CreateDefaultCategoriesRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDefaultCategoriesRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateDefaultCategoriesResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreateDefaultCategoriesResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreateDefaultCategoriesResponseParams `json:"Response"`
 }
 
 func (r *CreateDefaultCategoriesResponse) ToJsonString() string {
@@ -339,9 +397,30 @@ func (r *CreateDefaultCategoriesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateTaskRequestParams struct {
+	// 媒资文件ID，最长32B
+	MediaId *string `json:"MediaId,omitempty" name:"MediaId"`
+
+	// 媒资素材先验知识，相关限制参考MediaPreknownInfo
+	MediaPreknownInfo *MediaPreknownInfo `json:"MediaPreknownInfo,omitempty" name:"MediaPreknownInfo"`
+
+	// 任务名称，最长100个中文字符
+	TaskName *string `json:"TaskName,omitempty" name:"TaskName"`
+
+	// 是否上传转码后的视频，仅设置true时上传，默认为false
+	UploadVideo *bool `json:"UploadVideo,omitempty" name:"UploadVideo"`
+
+	// 自定义标签，可用于查询
+	Label *string `json:"Label,omitempty" name:"Label"`
+
+	// 任务分析完成的回调地址，该设置优先级高于控制台全局的设置；
+	CallbackURL *string `json:"CallbackURL,omitempty" name:"CallbackURL"`
+}
+
 type CreateTaskRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 媒资文件ID，最长32B
 	MediaId *string `json:"MediaId,omitempty" name:"MediaId"`
 
@@ -385,16 +464,18 @@ func (r *CreateTaskRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateTaskResponseParams struct {
+	// 智能标签视频分析任务ID
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreateTaskResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 智能标签视频分析任务ID
-		TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreateTaskResponseParams `json:"Response"`
 }
 
 func (r *CreateTaskResponse) ToJsonString() string {
@@ -409,7 +490,6 @@ func (r *CreateTaskResponse) FromJsonString(s string) error {
 }
 
 type CustomCategory struct {
-
 	// 自定义分类ID
 	CategoryId *string `json:"CategoryId,omitempty" name:"CategoryId"`
 
@@ -421,7 +501,6 @@ type CustomCategory struct {
 }
 
 type CustomPersonFilter struct {
-
 	// 待查询的人物姓名
 	Name *string `json:"Name,omitempty" name:"Name"`
 
@@ -436,7 +515,6 @@ type CustomPersonFilter struct {
 }
 
 type CustomPersonInfo struct {
-
 	// 自定义人物Id
 	PersonId *string `json:"PersonId,omitempty" name:"PersonId"`
 
@@ -460,15 +538,20 @@ type CustomPersonInfo struct {
 }
 
 type Data struct {
-
 	// 节目粒度结构化结果
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ShowInfo *ShowInfo `json:"ShowInfo,omitempty" name:"ShowInfo"`
 }
 
+// Predefined struct for user
+type DeleteCustomCategoryRequestParams struct {
+	// 自定义分类ID
+	CategoryId *string `json:"CategoryId,omitempty" name:"CategoryId"`
+}
+
 type DeleteCustomCategoryRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 自定义分类ID
 	CategoryId *string `json:"CategoryId,omitempty" name:"CategoryId"`
 }
@@ -492,16 +575,18 @@ func (r *DeleteCustomCategoryRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteCustomCategoryResponseParams struct {
+	// 123
+	CategoryId *string `json:"CategoryId,omitempty" name:"CategoryId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DeleteCustomCategoryResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 123
-		CategoryId *string `json:"CategoryId,omitempty" name:"CategoryId"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DeleteCustomCategoryResponseParams `json:"Response"`
 }
 
 func (r *DeleteCustomCategoryResponse) ToJsonString() string {
@@ -515,9 +600,18 @@ func (r *DeleteCustomCategoryResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteCustomPersonImageRequestParams struct {
+	// 自定义人物Id
+	PersonId *string `json:"PersonId,omitempty" name:"PersonId"`
+
+	// 自定义人脸图片Id
+	ImageId *string `json:"ImageId,omitempty" name:"ImageId"`
+}
+
 type DeleteCustomPersonImageRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 自定义人物Id
 	PersonId *string `json:"PersonId,omitempty" name:"PersonId"`
 
@@ -545,19 +639,21 @@ func (r *DeleteCustomPersonImageRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteCustomPersonImageResponseParams struct {
+	// 自定义人物Id
+	PersonId *string `json:"PersonId,omitempty" name:"PersonId"`
+
+	// 已删除的人物图片Id
+	ImageId *string `json:"ImageId,omitempty" name:"ImageId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DeleteCustomPersonImageResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 自定义人物Id
-		PersonId *string `json:"PersonId,omitempty" name:"PersonId"`
-
-		// 已删除的人物图片Id
-		ImageId *string `json:"ImageId,omitempty" name:"ImageId"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DeleteCustomPersonImageResponseParams `json:"Response"`
 }
 
 func (r *DeleteCustomPersonImageResponse) ToJsonString() string {
@@ -571,9 +667,15 @@ func (r *DeleteCustomPersonImageResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteCustomPersonRequestParams struct {
+	// 待删除的自定义人物ID
+	PersonId *string `json:"PersonId,omitempty" name:"PersonId"`
+}
+
 type DeleteCustomPersonRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 待删除的自定义人物ID
 	PersonId *string `json:"PersonId,omitempty" name:"PersonId"`
 }
@@ -597,16 +699,18 @@ func (r *DeleteCustomPersonRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteCustomPersonResponseParams struct {
+	// 已删除的自定义人物Id
+	PersonId *string `json:"PersonId,omitempty" name:"PersonId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DeleteCustomPersonResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 已删除的自定义人物Id
-		PersonId *string `json:"PersonId,omitempty" name:"PersonId"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DeleteCustomPersonResponseParams `json:"Response"`
 }
 
 func (r *DeleteCustomPersonResponse) ToJsonString() string {
@@ -620,9 +724,15 @@ func (r *DeleteCustomPersonResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteMediaRequestParams struct {
+	// 媒资文件在系统中的ID
+	MediaId *string `json:"MediaId,omitempty" name:"MediaId"`
+}
+
 type DeleteMediaRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 媒资文件在系统中的ID
 	MediaId *string `json:"MediaId,omitempty" name:"MediaId"`
 }
@@ -646,13 +756,15 @@ func (r *DeleteMediaRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteMediaResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DeleteMediaResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DeleteMediaResponseParams `json:"Response"`
 }
 
 func (r *DeleteMediaResponse) ToJsonString() string {
@@ -666,9 +778,15 @@ func (r *DeleteMediaResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteTaskRequestParams struct {
+	// 任务Id
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+}
+
 type DeleteTaskRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 任务Id
 	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
 }
@@ -692,13 +810,15 @@ func (r *DeleteTaskRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteTaskResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DeleteTaskResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DeleteTaskResponseParams `json:"Response"`
 }
 
 func (r *DeleteTaskResponse) ToJsonString() string {
@@ -712,8 +832,14 @@ func (r *DeleteTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeCustomCategoriesRequestParams struct {
+
+}
+
 type DescribeCustomCategoriesRequest struct {
 	*tchttp.BaseRequest
+	
 }
 
 func (r *DescribeCustomCategoriesRequest) ToJsonString() string {
@@ -728,22 +854,25 @@ func (r *DescribeCustomCategoriesRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCustomCategoriesRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeCustomCategoriesResponseParams struct {
+	// 自定义人物类型数组
+	CategorySet []*CustomCategory `json:"CategorySet,omitempty" name:"CategorySet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeCustomCategoriesResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 自定义人物类型数组
-		CategorySet []*CustomCategory `json:"CategorySet,omitempty" name:"CategorySet"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeCustomCategoriesResponseParams `json:"Response"`
 }
 
 func (r *DescribeCustomCategoriesResponse) ToJsonString() string {
@@ -757,8 +886,14 @@ func (r *DescribeCustomCategoriesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeCustomGroupRequestParams struct {
+
+}
+
 type DescribeCustomGroupRequest struct {
 	*tchttp.BaseRequest
+	
 }
 
 func (r *DescribeCustomGroupRequest) ToJsonString() string {
@@ -773,25 +908,28 @@ func (r *DescribeCustomGroupRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCustomGroupRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeCustomGroupResponseParams struct {
+	// 自定义人物库所包含的人物个数
+	GroupSize *int64 `json:"GroupSize,omitempty" name:"GroupSize"`
+
+	// 自定义人物库图片后续所在的存储桶
+	Bucket *string `json:"Bucket,omitempty" name:"Bucket"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeCustomGroupResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 自定义人物库所包含的人物个数
-		GroupSize *int64 `json:"GroupSize,omitempty" name:"GroupSize"`
-
-		// 自定义人物库图片后续所在的存储桶
-		Bucket *string `json:"Bucket,omitempty" name:"Bucket"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeCustomGroupResponseParams `json:"Response"`
 }
 
 func (r *DescribeCustomGroupResponse) ToJsonString() string {
@@ -805,9 +943,15 @@ func (r *DescribeCustomGroupResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeCustomPersonDetailRequestParams struct {
+	// 自定义人物Id
+	PersonId *string `json:"PersonId,omitempty" name:"PersonId"`
+}
+
 type DescribeCustomPersonDetailRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 自定义人物Id
 	PersonId *string `json:"PersonId,omitempty" name:"PersonId"`
 }
@@ -831,20 +975,22 @@ func (r *DescribeCustomPersonDetailRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeCustomPersonDetailResponseParams struct {
+	// 自定义人物信息
+	PersonInfo *CustomPersonInfo `json:"PersonInfo,omitempty" name:"PersonInfo"`
+
+	// 出现该自定义人物的所有分析人物Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskIdSet []*string `json:"TaskIdSet,omitempty" name:"TaskIdSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeCustomPersonDetailResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 自定义人物信息
-		PersonInfo *CustomPersonInfo `json:"PersonInfo,omitempty" name:"PersonInfo"`
-
-		// 出现该自定义人物的所有分析人物Id
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		TaskIdSet []*string `json:"TaskIdSet,omitempty" name:"TaskIdSet"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeCustomPersonDetailResponseParams `json:"Response"`
 }
 
 func (r *DescribeCustomPersonDetailResponse) ToJsonString() string {
@@ -858,9 +1004,24 @@ func (r *DescribeCustomPersonDetailResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeCustomPersonsRequestParams struct {
+	// 分页序号，从1开始
+	PageNumber *int64 `json:"PageNumber,omitempty" name:"PageNumber"`
+
+	// 分页数据行数，最多50
+	PageSize *int64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// 排序信息，默认倒序
+	SortBy *SortBy `json:"SortBy,omitempty" name:"SortBy"`
+
+	// 自定义人物过滤条件
+	Filter *CustomPersonFilter `json:"Filter,omitempty" name:"Filter"`
+}
+
 type DescribeCustomPersonsRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 分页序号，从1开始
 	PageNumber *int64 `json:"PageNumber,omitempty" name:"PageNumber"`
 
@@ -896,19 +1057,21 @@ func (r *DescribeCustomPersonsRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeCustomPersonsResponseParams struct {
+	// 满足过滤条件的自定义人物数量
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 自定义人物信息
+	PersonInfoSet []*CustomPersonInfo `json:"PersonInfoSet,omitempty" name:"PersonInfoSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeCustomPersonsResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 满足过滤条件的自定义人物数量
-		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 自定义人物信息
-		PersonInfoSet []*CustomPersonInfo `json:"PersonInfoSet,omitempty" name:"PersonInfoSet"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeCustomPersonsResponseParams `json:"Response"`
 }
 
 func (r *DescribeCustomPersonsResponse) ToJsonString() string {
@@ -922,9 +1085,15 @@ func (r *DescribeCustomPersonsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeMediaRequestParams struct {
+	// 导入媒资返回的媒资ID，最长32B
+	MediaId *string `json:"MediaId,omitempty" name:"MediaId"`
+}
+
 type DescribeMediaRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 导入媒资返回的媒资ID，最长32B
 	MediaId *string `json:"MediaId,omitempty" name:"MediaId"`
 }
@@ -948,17 +1117,19 @@ func (r *DescribeMediaRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeMediaResponseParams struct {
+	// 媒资信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MediaInfo *MediaInfo `json:"MediaInfo,omitempty" name:"MediaInfo"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeMediaResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 媒资信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		MediaInfo *MediaInfo `json:"MediaInfo,omitempty" name:"MediaInfo"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeMediaResponseParams `json:"Response"`
 }
 
 func (r *DescribeMediaResponse) ToJsonString() string {
@@ -972,9 +1143,24 @@ func (r *DescribeMediaResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeMediasRequestParams struct {
+	// 分页序号，从1开始
+	PageNumber *int64 `json:"PageNumber,omitempty" name:"PageNumber"`
+
+	// 每个分页所包含的元素数量，最大为50
+	PageSize *int64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// 列举过滤条件，相关限制相见MediaFilter
+	MediaFilter *MediaFilter `json:"MediaFilter,omitempty" name:"MediaFilter"`
+
+	// 返回结果排序信息，By字段只支持CreateTime
+	SortBy *SortBy `json:"SortBy,omitempty" name:"SortBy"`
+}
+
 type DescribeMediasRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 分页序号，从1开始
 	PageNumber *int64 `json:"PageNumber,omitempty" name:"PageNumber"`
 
@@ -1010,20 +1196,22 @@ func (r *DescribeMediasRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeMediasResponseParams struct {
+	// 满足过滤条件的媒资视频总数量
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 满足过滤条件的媒资信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MediaInfoSet []*MediaInfo `json:"MediaInfoSet,omitempty" name:"MediaInfoSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeMediasResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 满足过滤条件的媒资视频总数量
-		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 满足过滤条件的媒资信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		MediaInfoSet []*MediaInfo `json:"MediaInfoSet,omitempty" name:"MediaInfoSet"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeMediasResponseParams `json:"Response"`
 }
 
 func (r *DescribeMediasResponse) ToJsonString() string {
@@ -1037,9 +1225,15 @@ func (r *DescribeMediasResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeTaskDetailRequestParams struct {
+	// 创建任务返回的TaskId
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+}
+
 type DescribeTaskDetailRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 创建任务返回的TaskId
 	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
 }
@@ -1063,20 +1257,22 @@ func (r *DescribeTaskDetailRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeTaskDetailResponseParams struct {
+	// 任务信息，不包含任务结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskInfo *TaskInfo `json:"TaskInfo,omitempty" name:"TaskInfo"`
+
+	// 任务结果数据，只在任务结束时返回
+	TaskData *Data `json:"TaskData,omitempty" name:"TaskData"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeTaskDetailResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 任务信息，不包含任务结果
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		TaskInfo *TaskInfo `json:"TaskInfo,omitempty" name:"TaskInfo"`
-
-		// 任务结果数据，只在任务结束时返回
-		TaskData *Data `json:"TaskData,omitempty" name:"TaskData"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeTaskDetailResponseParams `json:"Response"`
 }
 
 func (r *DescribeTaskDetailResponse) ToJsonString() string {
@@ -1090,9 +1286,15 @@ func (r *DescribeTaskDetailResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeTaskRequestParams struct {
+	// CreateTask返回的任务ID，最长32B
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+}
+
 type DescribeTaskRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// CreateTask返回的任务ID，最长32B
 	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
 }
@@ -1116,17 +1318,19 @@ func (r *DescribeTaskRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeTaskResponseParams struct {
+	// 任务信息，详情参见TaskInfo的定义
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskInfo *TaskInfo `json:"TaskInfo,omitempty" name:"TaskInfo"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeTaskResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 任务信息，详情参见TaskInfo的定义
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		TaskInfo *TaskInfo `json:"TaskInfo,omitempty" name:"TaskInfo"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeTaskResponseParams `json:"Response"`
 }
 
 func (r *DescribeTaskResponse) ToJsonString() string {
@@ -1140,9 +1344,24 @@ func (r *DescribeTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeTasksRequestParams struct {
+	// 分页序号，从1开始
+	PageNumber *int64 `json:"PageNumber,omitempty" name:"PageNumber"`
+
+	// 每个分页所包含的元素数量，最大为50
+	PageSize *int64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// 任务过滤条件，相关限制参见TaskFilter
+	TaskFilter *TaskFilter `json:"TaskFilter,omitempty" name:"TaskFilter"`
+
+	// 返回结果排序信息，By字段只支持CreateTimeStamp
+	SortBy *SortBy `json:"SortBy,omitempty" name:"SortBy"`
+}
+
 type DescribeTasksRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 分页序号，从1开始
 	PageNumber *int64 `json:"PageNumber,omitempty" name:"PageNumber"`
 
@@ -1178,20 +1397,22 @@ func (r *DescribeTasksRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeTasksResponseParams struct {
+	// 满足过滤条件的任务总数量
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 满足过滤条件的任务数组
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskInfoSet []*TaskInfo `json:"TaskInfoSet,omitempty" name:"TaskInfoSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeTasksResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 满足过滤条件的任务总数量
-		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 满足过滤条件的任务数组
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		TaskInfoSet []*TaskInfo `json:"TaskInfoSet,omitempty" name:"TaskInfoSet"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeTasksResponseParams `json:"Response"`
 }
 
 func (r *DescribeTasksResponse) ToJsonString() string {
@@ -1205,9 +1426,31 @@ func (r *DescribeTasksResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ImportMediaRequestParams struct {
+	// 待分析视频的URL，目前只支持*不带签名的*COS地址，长度最长1KB
+	URL *string `json:"URL,omitempty" name:"URL"`
+
+	// 待分析视频的MD5，为空时不做校验，否则会做MD5校验，长度必须为32B
+	MD5 *string `json:"MD5,omitempty" name:"MD5"`
+
+	// 待分析视频的名称，指定后可支持筛选，最多100个中文字符
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 当非本人外部视频地址导入时，该字段为转存的cos桶地址且不可为空; 示例：https://${Bucket}-${AppId}.cos.${Region}.myqcloud.com/${PathPrefix}/  (注意，cos路径需要以/分隔符结尾)。
+	// 推荐采用本主帐号COS桶，如果使用其他帐号COS桶，请确保COS桶可写，否则可导致分析失败
+	WriteBackCosPath *string `json:"WriteBackCosPath,omitempty" name:"WriteBackCosPath"`
+
+	// 自定义标签，可用于查询
+	Label *string `json:"Label,omitempty" name:"Label"`
+
+	// 媒资导入完成的回调地址，该设置优先级高于控制台全局的设置；
+	CallbackURL *string `json:"CallbackURL,omitempty" name:"CallbackURL"`
+}
+
 type ImportMediaRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 待分析视频的URL，目前只支持*不带签名的*COS地址，长度最长1KB
 	URL *string `json:"URL,omitempty" name:"URL"`
 
@@ -1252,16 +1495,18 @@ func (r *ImportMediaRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ImportMediaResponseParams struct {
+	// 媒资文件在系统中的ID
+	MediaId *string `json:"MediaId,omitempty" name:"MediaId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type ImportMediaResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 媒资文件在系统中的ID
-		MediaId *string `json:"MediaId,omitempty" name:"MediaId"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *ImportMediaResponseParams `json:"Response"`
 }
 
 func (r *ImportMediaResponse) ToJsonString() string {
@@ -1276,7 +1521,6 @@ func (r *ImportMediaResponse) FromJsonString(s string) error {
 }
 
 type L1Tag struct {
-
 	// 一级标签名
 	Name *string `json:"Name,omitempty" name:"Name"`
 
@@ -1294,7 +1538,6 @@ type L1Tag struct {
 }
 
 type L2Tag struct {
-
 	// 二级标签名
 	Name *string `json:"Name,omitempty" name:"Name"`
 
@@ -1312,7 +1555,6 @@ type L2Tag struct {
 }
 
 type L3Tag struct {
-
 	// 三级标签名
 	Name *string `json:"Name,omitempty" name:"Name"`
 
@@ -1326,7 +1568,6 @@ type L3Tag struct {
 }
 
 type MediaFilter struct {
-
 	// 媒资名称过滤条件
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MediaNameSet []*string `json:"MediaNameSet,omitempty" name:"MediaNameSet"`
@@ -1345,7 +1586,6 @@ type MediaFilter struct {
 }
 
 type MediaInfo struct {
-
 	// 媒资ID
 	MediaId *string `json:"MediaId,omitempty" name:"MediaId"`
 
@@ -1383,7 +1623,6 @@ type MediaInfo struct {
 }
 
 type MediaMetadata struct {
-
 	// 媒资视频文件大小
 	FileSize *int64 `json:"FileSize,omitempty" name:"FileSize"`
 
@@ -1416,7 +1655,6 @@ type MediaMetadata struct {
 }
 
 type MediaPreknownInfo struct {
-
 	// 媒资文件类型，参见MediaPreknownInfo结构体定义
 	MediaType *int64 `json:"MediaType,omitempty" name:"MediaType"`
 
@@ -1432,9 +1670,18 @@ type MediaPreknownInfo struct {
 	MediaLang *int64 `json:"MediaLang,omitempty" name:"MediaLang"`
 }
 
+// Predefined struct for user
+type ModifyCallbackRequestParams struct {
+	// 任务分析完成后回调地址
+	TaskFinishNotifyURL *string `json:"TaskFinishNotifyURL,omitempty" name:"TaskFinishNotifyURL"`
+
+	// 媒体导入完成后回调地址
+	MediaFinishNotifyURL *string `json:"MediaFinishNotifyURL,omitempty" name:"MediaFinishNotifyURL"`
+}
+
 type ModifyCallbackRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 任务分析完成后回调地址
 	TaskFinishNotifyURL *string `json:"TaskFinishNotifyURL,omitempty" name:"TaskFinishNotifyURL"`
 
@@ -1462,13 +1709,15 @@ func (r *ModifyCallbackRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifyCallbackResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type ModifyCallbackResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *ModifyCallbackResponseParams `json:"Response"`
 }
 
 func (r *ModifyCallbackResponse) ToJsonString() string {
@@ -1483,7 +1732,6 @@ func (r *ModifyCallbackResponse) FromJsonString(s string) error {
 }
 
 type MultiLevelTag struct {
-
 	// 树状标签信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TagSet []*L1Tag `json:"TagSet,omitempty" name:"TagSet"`
@@ -1494,7 +1742,6 @@ type MultiLevelTag struct {
 }
 
 type PersonImageInfo struct {
-
 	// 人脸图片ID
 	ImageId *string `json:"ImageId,omitempty" name:"ImageId"`
 
@@ -1509,7 +1756,6 @@ type PersonImageInfo struct {
 }
 
 type PersonInfo struct {
-
 	// 公众人物姓名
 	Name *string `json:"Name,omitempty" name:"Name"`
 
@@ -1523,8 +1769,14 @@ type PersonInfo struct {
 	AppearInfo *AppearInfo `json:"AppearInfo,omitempty" name:"AppearInfo"`
 }
 
+// Predefined struct for user
+type QueryCallbackRequestParams struct {
+
+}
+
 type QueryCallbackRequest struct {
 	*tchttp.BaseRequest
+	
 }
 
 func (r *QueryCallbackRequest) ToJsonString() string {
@@ -1539,25 +1791,28 @@ func (r *QueryCallbackRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryCallbackRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type QueryCallbackResponseParams struct {
+	// 任务分析完成后回调地址
+	TaskFinishNotifyURL *string `json:"TaskFinishNotifyURL,omitempty" name:"TaskFinishNotifyURL"`
+
+	// 媒体导入完成后回调地址
+	MediaFinishNotifyURL *string `json:"MediaFinishNotifyURL,omitempty" name:"MediaFinishNotifyURL"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type QueryCallbackResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 任务分析完成后回调地址
-		TaskFinishNotifyURL *string `json:"TaskFinishNotifyURL,omitempty" name:"TaskFinishNotifyURL"`
-
-		// 媒体导入完成后回调地址
-		MediaFinishNotifyURL *string `json:"MediaFinishNotifyURL,omitempty" name:"MediaFinishNotifyURL"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *QueryCallbackResponseParams `json:"Response"`
 }
 
 func (r *QueryCallbackResponse) ToJsonString() string {
@@ -1572,7 +1827,6 @@ func (r *QueryCallbackResponse) FromJsonString(s string) error {
 }
 
 type ShowInfo struct {
-
 	// 节目日期(只在新闻有效)
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Date *string `json:"Date,omitempty" name:"Date"`
@@ -1635,7 +1889,6 @@ type ShowInfo struct {
 }
 
 type SortBy struct {
-
 	// 排序字段，默认为CreateTime
 	By *string `json:"By,omitempty" name:"By"`
 
@@ -1644,7 +1897,6 @@ type SortBy struct {
 }
 
 type TaskFilter struct {
-
 	// 媒资文件类型
 	MediaTypeSet []*int64 `json:"MediaTypeSet,omitempty" name:"MediaTypeSet"`
 
@@ -1671,7 +1923,6 @@ type TaskFilter struct {
 }
 
 type TaskInfo struct {
-
 	// 任务ID
 	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
 
@@ -1721,7 +1972,6 @@ type TaskInfo struct {
 }
 
 type TextAppearInfo struct {
-
 	// 文本结果数组中的下标
 	Index *int64 `json:"Index,omitempty" name:"Index"`
 
@@ -1733,7 +1983,6 @@ type TextAppearInfo struct {
 }
 
 type TextInfo struct {
-
 	// OCR提取的内容
 	Content *string `json:"Content,omitempty" name:"Content"`
 
@@ -1747,9 +1996,21 @@ type TextInfo struct {
 	Tag *string `json:"Tag,omitempty" name:"Tag"`
 }
 
+// Predefined struct for user
+type UpdateCustomCategoryRequestParams struct {
+	// 自定义人物类型Id
+	CategoryId *string `json:"CategoryId,omitempty" name:"CategoryId"`
+
+	// 一级自定义人物类型
+	L1Category *string `json:"L1Category,omitempty" name:"L1Category"`
+
+	// 二级自定义人物类型
+	L2Category *string `json:"L2Category,omitempty" name:"L2Category"`
+}
+
 type UpdateCustomCategoryRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 自定义人物类型Id
 	CategoryId *string `json:"CategoryId,omitempty" name:"CategoryId"`
 
@@ -1781,16 +2042,18 @@ func (r *UpdateCustomCategoryRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type UpdateCustomCategoryResponseParams struct {
+	// 成功更新的自定义人物类型Id
+	CategoryId *string `json:"CategoryId,omitempty" name:"CategoryId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type UpdateCustomCategoryResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 成功更新的自定义人物类型Id
-		CategoryId *string `json:"CategoryId,omitempty" name:"CategoryId"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *UpdateCustomCategoryResponseParams `json:"Response"`
 }
 
 func (r *UpdateCustomCategoryResponse) ToJsonString() string {
@@ -1804,9 +2067,24 @@ func (r *UpdateCustomCategoryResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type UpdateCustomPersonRequestParams struct {
+	// 待更新的自定义人物Id
+	PersonId *string `json:"PersonId,omitempty" name:"PersonId"`
+
+	// 更新后的自定义人物名称，如为空则不更新
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 更新后的自定义人物简介，如为空则不更新
+	BasicInfo *string `json:"BasicInfo,omitempty" name:"BasicInfo"`
+
+	// 更新后的分类信息，如为空则不更新
+	CategoryId *string `json:"CategoryId,omitempty" name:"CategoryId"`
+}
+
 type UpdateCustomPersonRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 待更新的自定义人物Id
 	PersonId *string `json:"PersonId,omitempty" name:"PersonId"`
 
@@ -1842,16 +2120,18 @@ func (r *UpdateCustomPersonRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type UpdateCustomPersonResponseParams struct {
+	// 成功更新的自定义人物Id
+	PersonId *string `json:"PersonId,omitempty" name:"PersonId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type UpdateCustomPersonResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 成功更新的自定义人物Id
-		PersonId *string `json:"PersonId,omitempty" name:"PersonId"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *UpdateCustomPersonResponseParams `json:"Response"`
 }
 
 func (r *UpdateCustomPersonResponse) ToJsonString() string {
@@ -1866,7 +2146,6 @@ func (r *UpdateCustomPersonResponse) FromJsonString(s string) error {
 }
 
 type VideoAppearInfo struct {
-
 	// 视觉信息起始时间戳，从0开始
 	StartTimeStamp *float64 `json:"StartTimeStamp,omitempty" name:"StartTimeStamp"`
 

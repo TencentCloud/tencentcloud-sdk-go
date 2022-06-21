@@ -20,9 +20,18 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+// Predefined struct for user
+type ApplyStackRequestParams struct {
+	// 资源栈ID
+	StackId *string `json:"StackId,omitempty" name:"StackId"`
+
+	// 待执行apply事件的版本ID
+	VersionId *string `json:"VersionId,omitempty" name:"VersionId"`
+}
+
 type ApplyStackRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 资源栈ID
 	StackId *string `json:"StackId,omitempty" name:"StackId"`
 
@@ -50,16 +59,18 @@ func (r *ApplyStackRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ApplyStackResponseParams struct {
+	// 执行的事件ID
+	EventId *string `json:"EventId,omitempty" name:"EventId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type ApplyStackResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 执行的事件ID
-		EventId *string `json:"EventId,omitempty" name:"EventId"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *ApplyStackResponseParams `json:"Response"`
 }
 
 func (r *ApplyStackResponse) ToJsonString() string {
@@ -73,9 +84,24 @@ func (r *ApplyStackResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateStackRequestParams struct {
+	// 资源栈名称，不得超过60个字符
+	StackName *string `json:"StackName,omitempty" name:"StackName"`
+
+	// 资源栈所在地域
+	StackRegion *string `json:"StackRegion,omitempty" name:"StackRegion"`
+
+	// HCL模板URL，⽬前仅限 COS URL, ⽂件为zip压缩格式
+	TemplateUrl *string `json:"TemplateUrl,omitempty" name:"TemplateUrl"`
+
+	// 资源栈描述，不得超过200个字符
+	Description *string `json:"Description,omitempty" name:"Description"`
+}
+
 type CreateStackRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 资源栈名称，不得超过60个字符
 	StackName *string `json:"StackName,omitempty" name:"StackName"`
 
@@ -111,19 +137,21 @@ func (r *CreateStackRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateStackResponseParams struct {
+	// 创建得到的资源栈ID
+	StackId *string `json:"StackId,omitempty" name:"StackId"`
+
+	// 资源栈版本ID
+	VersionId *string `json:"VersionId,omitempty" name:"VersionId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreateStackResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 创建得到的资源栈ID
-		StackId *string `json:"StackId,omitempty" name:"StackId"`
-
-		// 资源栈版本ID
-		VersionId *string `json:"VersionId,omitempty" name:"VersionId"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreateStackResponseParams `json:"Response"`
 }
 
 func (r *CreateStackResponse) ToJsonString() string {
@@ -137,9 +165,24 @@ func (r *CreateStackResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateStackVersionRequestParams struct {
+	// 待增加版本的资源栈ID
+	StackId *string `json:"StackId,omitempty" name:"StackId"`
+
+	// 模板 URL，⽬前仅限 COS URL, ⽂件为zip压缩格式
+	TemplateUrl *string `json:"TemplateUrl,omitempty" name:"TemplateUrl"`
+
+	// 版本名称，不得超过60个字符
+	VersionName *string `json:"VersionName,omitempty" name:"VersionName"`
+
+	// 版本描述，不得超过200个字符
+	Description *string `json:"Description,omitempty" name:"Description"`
+}
+
 type CreateStackVersionRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 待增加版本的资源栈ID
 	StackId *string `json:"StackId,omitempty" name:"StackId"`
 
@@ -175,16 +218,18 @@ func (r *CreateStackVersionRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateStackVersionResponseParams struct {
+	// 新创建的版本ID
+	VersionId *string `json:"VersionId,omitempty" name:"VersionId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreateStackVersionResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 新创建的版本ID
-		VersionId *string `json:"VersionId,omitempty" name:"VersionId"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreateStackVersionResponseParams `json:"Response"`
 }
 
 func (r *CreateStackVersionResponse) ToJsonString() string {
@@ -198,9 +243,15 @@ func (r *CreateStackVersionResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteStackRequestParams struct {
+	// 待删除的资源栈ID
+	StackId *string `json:"StackId,omitempty" name:"StackId"`
+}
+
 type DeleteStackRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 待删除的资源栈ID
 	StackId *string `json:"StackId,omitempty" name:"StackId"`
 }
@@ -224,13 +275,15 @@ func (r *DeleteStackRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteStackResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DeleteStackResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DeleteStackResponseParams `json:"Response"`
 }
 
 func (r *DeleteStackResponse) ToJsonString() string {
@@ -244,9 +297,15 @@ func (r *DeleteStackResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteStackVersionRequestParams struct {
+	// 待删除的版本ID
+	VersionId *string `json:"VersionId,omitempty" name:"VersionId"`
+}
+
 type DeleteStackVersionRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 待删除的版本ID
 	VersionId *string `json:"VersionId,omitempty" name:"VersionId"`
 }
@@ -270,13 +329,15 @@ func (r *DeleteStackVersionRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteStackVersionResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DeleteStackVersionResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DeleteStackVersionResponseParams `json:"Response"`
 }
 
 func (r *DeleteStackVersionResponse) ToJsonString() string {
@@ -290,9 +351,15 @@ func (r *DeleteStackVersionResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeStackEventRequestParams struct {
+	// 事件ID
+	EventId *string `json:"EventId,omitempty" name:"EventId"`
+}
+
 type DescribeStackEventRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 事件ID
 	EventId *string `json:"EventId,omitempty" name:"EventId"`
 }
@@ -316,37 +383,39 @@ func (r *DescribeStackEventRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeStackEventResponseParams struct {
+	// 事件ID
+	EventId *string `json:"EventId,omitempty" name:"EventId"`
+
+	// 版本ID
+	VersionId *string `json:"VersionId,omitempty" name:"VersionId"`
+
+	// 资源栈ID
+	StackId *string `json:"StackId,omitempty" name:"StackId"`
+
+	// 事件类型
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 事件状态
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 状态信息
+	EventMessage *string `json:"EventMessage,omitempty" name:"EventMessage"`
+
+	// 创建时间
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 控制台输出文本
+	ConsoleLog *string `json:"ConsoleLog,omitempty" name:"ConsoleLog"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeStackEventResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 事件ID
-		EventId *string `json:"EventId,omitempty" name:"EventId"`
-
-		// 版本ID
-		VersionId *string `json:"VersionId,omitempty" name:"VersionId"`
-
-		// 资源栈ID
-		StackId *string `json:"StackId,omitempty" name:"StackId"`
-
-		// 事件类型
-		Type *string `json:"Type,omitempty" name:"Type"`
-
-		// 事件状态
-		Status *string `json:"Status,omitempty" name:"Status"`
-
-		// 状态信息
-		EventMessage *string `json:"EventMessage,omitempty" name:"EventMessage"`
-
-		// 创建时间
-		CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
-
-		// 控制台输出文本
-		ConsoleLog *string `json:"ConsoleLog,omitempty" name:"ConsoleLog"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeStackEventResponseParams `json:"Response"`
 }
 
 func (r *DescribeStackEventResponse) ToJsonString() string {
@@ -360,9 +429,38 @@ func (r *DescribeStackEventResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeStackEventsRequestParams struct {
+	// 按照⼀个或者多个事件ID查询
+	EventIds []*string `json:"EventIds,omitempty" name:"EventIds"`
+
+	// <li>**VersionId**</li>
+	// 按照【**版本ID**】过滤，VersionId形如 `ver-kg8hn58h`
+	// 类型：string
+	// 
+	// <li>**StackId**</li>
+	// 按照【**资源栈ID**】过滤，StackId形如 `stk-hz5vn3te`
+	// 类型：string
+	// 
+	// <li>**Type**</li>
+	// 按照【**事件类型**】过滤，Type 形如 plan, apply, destroy
+	// 类型：string
+	// 
+	// <li>**Status**</li>
+	// 按照【**事件状态**】过滤，Status形如 queueing, running, success, failed
+	// 类型：string
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 偏移量，默认为0。关于Offset的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回数量，默认为20，最大值为100。关于Limit的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
 type DescribeStackEventsRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 按照⼀个或者多个事件ID查询
 	EventIds []*string `json:"EventIds,omitempty" name:"EventIds"`
 
@@ -412,19 +510,21 @@ func (r *DescribeStackEventsRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeStackEventsResponseParams struct {
+	// 符合条件的事件数量
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 事件详细信息列表
+	Events []*EventInfo `json:"Events,omitempty" name:"Events"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeStackEventsResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 符合条件的事件数量
-		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 事件详细信息列表
-		Events []*EventInfo `json:"Events,omitempty" name:"Events"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeStackEventsResponseParams `json:"Response"`
 }
 
 func (r *DescribeStackEventsResponse) ToJsonString() string {
@@ -438,9 +538,34 @@ func (r *DescribeStackEventsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeStackVersionsRequestParams struct {
+	// 按照⼀个或者多个版本ID查询
+	VersionIds []*string `json:"VersionIds,omitempty" name:"VersionIds"`
+
+	// 偏移量，默认为0。关于Offset的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回数量，默认为20，最大值为100。关于Limit的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// <li>**Name**</li>
+	// 按照【**版本名称**】进行过滤
+	// 类型：string
+	// 
+	// <li>**Status**</li>
+	// 按照【**版本状态**】过滤，形如`VERSION_EDITING`，`PLAN_IN_PROGRESS`等
+	// 类型：string
+	// 
+	// <li>**StackId**</li>
+	// 按照版本所属的【**资源栈ID**】进行过滤，形如`stk-xxxxxx`
+	// 类型：string
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+}
+
 type DescribeStackVersionsRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 按照⼀个或者多个版本ID查询
 	VersionIds []*string `json:"VersionIds,omitempty" name:"VersionIds"`
 
@@ -486,19 +611,21 @@ func (r *DescribeStackVersionsRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeStackVersionsResponseParams struct {
+	// 符合条件的版本数量
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 版本详细信息列表
+	Versions []*VersionInfo `json:"Versions,omitempty" name:"Versions"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeStackVersionsResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 符合条件的版本数量
-		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 版本详细信息列表
-		Versions []*VersionInfo `json:"Versions,omitempty" name:"Versions"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeStackVersionsResponseParams `json:"Response"`
 }
 
 func (r *DescribeStackVersionsResponse) ToJsonString() string {
@@ -512,9 +639,21 @@ func (r *DescribeStackVersionsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeStacksRequestParams struct {
+	// 按照⼀个或者多个资源栈ID查询
+	StackIds []*string `json:"StackIds,omitempty" name:"StackIds"`
+
+	// 偏移量，默认为0。关于Offset的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回数量，默认为20，最大值为100。关于Limit的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
 type DescribeStacksRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 按照⼀个或者多个资源栈ID查询
 	StackIds []*string `json:"StackIds,omitempty" name:"StackIds"`
 
@@ -546,19 +685,21 @@ func (r *DescribeStacksRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeStacksResponseParams struct {
+	// 符合条件的资源栈数量
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 资源栈详细信息列表
+	Stacks []*StackInfo `json:"Stacks,omitempty" name:"Stacks"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeStacksResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 符合条件的资源栈数量
-		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 资源栈详细信息列表
-		Stacks []*StackInfo `json:"Stacks,omitempty" name:"Stacks"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeStacksResponseParams `json:"Response"`
 }
 
 func (r *DescribeStacksResponse) ToJsonString() string {
@@ -572,9 +713,18 @@ func (r *DescribeStacksResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DestroyStackRequestParams struct {
+	// 资源栈ID
+	StackId *string `json:"StackId,omitempty" name:"StackId"`
+
+	// 待执行destroy事件的版本ID
+	VersionId *string `json:"VersionId,omitempty" name:"VersionId"`
+}
+
 type DestroyStackRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 资源栈ID
 	StackId *string `json:"StackId,omitempty" name:"StackId"`
 
@@ -602,16 +752,18 @@ func (r *DestroyStackRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DestroyStackResponseParams struct {
+	// 事件ID
+	EventId *string `json:"EventId,omitempty" name:"EventId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DestroyStackResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 事件ID
-		EventId *string `json:"EventId,omitempty" name:"EventId"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DestroyStackResponseParams `json:"Response"`
 }
 
 func (r *DestroyStackResponse) ToJsonString() string {
@@ -626,7 +778,6 @@ func (r *DestroyStackResponse) FromJsonString(s string) error {
 }
 
 type EventInfo struct {
-
 	// 事件ID
 	EventId *string `json:"EventId,omitempty" name:"EventId"`
 
@@ -650,7 +801,6 @@ type EventInfo struct {
 }
 
 type Filter struct {
-
 	// 条件名字
 	Name *string `json:"Name,omitempty" name:"Name"`
 
@@ -658,9 +808,18 @@ type Filter struct {
 	Values []*string `json:"Values,omitempty" name:"Values"`
 }
 
+// Predefined struct for user
+type PlanStackRequestParams struct {
+	// 资源栈ID
+	StackId *string `json:"StackId,omitempty" name:"StackId"`
+
+	// 待执行plan事件的版本ID
+	VersionId *string `json:"VersionId,omitempty" name:"VersionId"`
+}
+
 type PlanStackRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 资源栈ID
 	StackId *string `json:"StackId,omitempty" name:"StackId"`
 
@@ -688,16 +847,18 @@ func (r *PlanStackRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type PlanStackResponseParams struct {
+	// 执行的事件ID
+	EventId *string `json:"EventId,omitempty" name:"EventId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type PlanStackResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 执行的事件ID
-		EventId *string `json:"EventId,omitempty" name:"EventId"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *PlanStackResponseParams `json:"Response"`
 }
 
 func (r *PlanStackResponse) ToJsonString() string {
@@ -712,7 +873,6 @@ func (r *PlanStackResponse) FromJsonString(s string) error {
 }
 
 type StackInfo struct {
-
 	// 资源栈ID
 	StackId *string `json:"StackId,omitempty" name:"StackId"`
 
@@ -732,9 +892,21 @@ type StackInfo struct {
 	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
 }
 
+// Predefined struct for user
+type UpdateStackRequestParams struct {
+	// 待更新的资源栈ID
+	StackId *string `json:"StackId,omitempty" name:"StackId"`
+
+	// 资源栈名称，不得超过60个字符
+	StackName *string `json:"StackName,omitempty" name:"StackName"`
+
+	// 资源栈描述，不得超过200个字符
+	Description *string `json:"Description,omitempty" name:"Description"`
+}
+
 type UpdateStackRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 待更新的资源栈ID
 	StackId *string `json:"StackId,omitempty" name:"StackId"`
 
@@ -766,13 +938,15 @@ func (r *UpdateStackRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type UpdateStackResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type UpdateStackResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *UpdateStackResponseParams `json:"Response"`
 }
 
 func (r *UpdateStackResponse) ToJsonString() string {
@@ -786,9 +960,24 @@ func (r *UpdateStackResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type UpdateStackVersionRequestParams struct {
+	// 待更新的版本ID
+	VersionId *string `json:"VersionId,omitempty" name:"VersionId"`
+
+	// 模板 URL，⽬前仅限 COS URL, ⽂件为zip压缩格式
+	TemplateUrl *string `json:"TemplateUrl,omitempty" name:"TemplateUrl"`
+
+	// 版本名称，不得超过60个字符
+	VersionName *string `json:"VersionName,omitempty" name:"VersionName"`
+
+	// 版本描述，不得超过200个字符
+	Description *string `json:"Description,omitempty" name:"Description"`
+}
+
 type UpdateStackVersionRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 待更新的版本ID
 	VersionId *string `json:"VersionId,omitempty" name:"VersionId"`
 
@@ -824,13 +1013,15 @@ func (r *UpdateStackVersionRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type UpdateStackVersionResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type UpdateStackVersionResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *UpdateStackVersionResponseParams `json:"Response"`
 }
 
 func (r *UpdateStackVersionResponse) ToJsonString() string {
@@ -845,7 +1036,6 @@ func (r *UpdateStackVersionResponse) FromJsonString(s string) error {
 }
 
 type VersionInfo struct {
-
 	// 版本ID
 	VersionId *string `json:"VersionId,omitempty" name:"VersionId"`
 

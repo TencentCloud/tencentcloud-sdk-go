@@ -20,9 +20,18 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+// Predefined struct for user
+type DetectFraudKOLRequestParams struct {
+	// 业务数据
+	BspData *InputKolBspData `json:"BspData,omitempty" name:"BspData"`
+
+	// 业务加密数据
+	BusinessEncryptData *InputBusinessEncryptData `json:"BusinessEncryptData,omitempty" name:"BusinessEncryptData"`
+}
+
 type DetectFraudKOLRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 业务数据
 	BspData *InputKolBspData `json:"BspData,omitempty" name:"BspData"`
 
@@ -50,17 +59,19 @@ func (r *DetectFraudKOLRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DetectFraudKOLResponseParams struct {
+	// 回包数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *OutputKolData `json:"Data,omitempty" name:"Data"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DetectFraudKOLResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 回包数据
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		Data *OutputKolData `json:"Data,omitempty" name:"Data"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DetectFraudKOLResponseParams `json:"Response"`
 }
 
 func (r *DetectFraudKOLResponse) ToJsonString() string {
@@ -75,7 +86,6 @@ func (r *DetectFraudKOLResponse) FromJsonString(s string) error {
 }
 
 type Device struct {
-
 	// 业务入参id
 	DeviceId *string `json:"DeviceId,omitempty" name:"DeviceId"`
 
@@ -83,9 +93,18 @@ type Device struct {
 	DeviceType *int64 `json:"DeviceType,omitempty" name:"DeviceType"`
 }
 
+// Predefined struct for user
+type EnhanceTaDegreeRequestParams struct {
+	// 业务数据
+	BspData *InputTaBspData `json:"BspData,omitempty" name:"BspData"`
+
+	// 业务加密数据
+	BusinessEncryptData *InputBusinessEncryptData `json:"BusinessEncryptData,omitempty" name:"BusinessEncryptData"`
+}
+
 type EnhanceTaDegreeRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 业务数据
 	BspData *InputTaBspData `json:"BspData,omitempty" name:"BspData"`
 
@@ -113,17 +132,19 @@ func (r *EnhanceTaDegreeRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type EnhanceTaDegreeResponseParams struct {
+	// 回包数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *OutputTaData `json:"Data,omitempty" name:"Data"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type EnhanceTaDegreeResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 回包数据
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		Data *OutputTaData `json:"Data,omitempty" name:"Data"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *EnhanceTaDegreeResponseParams `json:"Response"`
 }
 
 func (r *EnhanceTaDegreeResponse) ToJsonString() string {
@@ -138,16 +159,15 @@ func (r *EnhanceTaDegreeResponse) FromJsonString(s string) error {
 }
 
 type InputBusinessEncryptData struct {
+
 }
 
 type InputKolBspData struct {
-
 	// BspData
 	DataList []*InputKolDataList `json:"DataList,omitempty" name:"DataList"`
 }
 
 type InputKolDataList struct {
-
 	// 账号类型[1：微信；2：qq；3：微博]
 	Type *uint64 `json:"Type,omitempty" name:"Type"`
 
@@ -168,10 +188,10 @@ type InputKolDataList struct {
 }
 
 type InputRecognizeEffectiveFlow struct {
+
 }
 
 type InputRecognizeTargetAudience struct {
-
 	// 设备ID，AccountType指定的类型
 	Uid *string `json:"Uid,omitempty" name:"Uid"`
 
@@ -294,7 +314,6 @@ type InputRecognizeTargetAudience struct {
 }
 
 type InputSendTrafficSecuritySmsMsg struct {
-
 	// 投放任务ID
 	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
 
@@ -318,7 +337,6 @@ type InputSendTrafficSecuritySmsMsg struct {
 }
 
 type InputTaBspData struct {
-
 	// 请求序列号
 	Seq *int64 `json:"Seq,omitempty" name:"Seq"`
 
@@ -399,7 +417,6 @@ type InputTaBspData struct {
 }
 
 type OutputKolData struct {
-
 	// 错误码[0:成功；非0：失败的错误码]
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Code *int64 `json:"Code,omitempty" name:"Code"`
@@ -414,7 +431,6 @@ type OutputKolData struct {
 }
 
 type OutputKolValue struct {
-
 	// KOL账号ID[比如微信公众号ID]
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Id *string `json:"Id,omitempty" name:"Id"`
@@ -433,7 +449,6 @@ type OutputKolValue struct {
 }
 
 type OutputRecognizeEffectiveFlow struct {
-
 	// 返回码。0表示成功，非0标识失败错误码
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Code *int64 `json:"Code,omitempty" name:"Code"`
@@ -448,7 +463,6 @@ type OutputRecognizeEffectiveFlow struct {
 }
 
 type OutputRecognizeEffectiveFlowValue struct {
-
 	// 返回标签
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Lable *string `json:"Lable,omitempty" name:"Lable"`
@@ -459,7 +473,6 @@ type OutputRecognizeEffectiveFlowValue struct {
 }
 
 type OutputRecognizeTargetAudience struct {
-
 	// 返回码（0，成功，其他失败）
 	Code *int64 `json:"Code,omitempty" name:"Code"`
 
@@ -473,7 +486,6 @@ type OutputRecognizeTargetAudience struct {
 }
 
 type OutputRecognizeTargetAudienceValue struct {
-
 	// 模型ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ModelId *uint64 `json:"ModelId,omitempty" name:"ModelId"`
@@ -488,7 +500,6 @@ type OutputRecognizeTargetAudienceValue struct {
 }
 
 type OutputSendTrafficSecuritySmsMsg struct {
-
 	// 返回码（0：接口调用成功 非0：接口调用失败）
 	Code *int64 `json:"Code,omitempty" name:"Code"`
 
@@ -502,7 +513,6 @@ type OutputSendTrafficSecuritySmsMsg struct {
 }
 
 type OutputTaData struct {
-
 	// 错误码[0:成功；非0：失败的错误码]
 	Code *int64 `json:"Code,omitempty" name:"Code"`
 
@@ -516,7 +526,6 @@ type OutputTaData struct {
 }
 
 type OutputTaValue struct {
-
 	// 是否查得[0：未查得；1：查得]
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsCheck *int64 `json:"IsCheck,omitempty" name:"IsCheck"`
@@ -526,9 +535,15 @@ type OutputTaValue struct {
 	IsMatch *int64 `json:"IsMatch,omitempty" name:"IsMatch"`
 }
 
+// Predefined struct for user
+type RecognizeCustomizedAudienceRequestParams struct {
+	// 业务入参
+	BspData *InputRecognizeTargetAudience `json:"BspData,omitempty" name:"BspData"`
+}
+
 type RecognizeCustomizedAudienceRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 业务入参
 	BspData *InputRecognizeTargetAudience `json:"BspData,omitempty" name:"BspData"`
 }
@@ -552,17 +567,19 @@ func (r *RecognizeCustomizedAudienceRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type RecognizeCustomizedAudienceResponseParams struct {
+	// 业务出参
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *OutputRecognizeTargetAudience `json:"Data,omitempty" name:"Data"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type RecognizeCustomizedAudienceResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 业务出参
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		Data *OutputRecognizeTargetAudience `json:"Data,omitempty" name:"Data"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *RecognizeCustomizedAudienceResponseParams `json:"Response"`
 }
 
 func (r *RecognizeCustomizedAudienceResponse) ToJsonString() string {
@@ -576,9 +593,15 @@ func (r *RecognizeCustomizedAudienceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type RecognizeEffectiveFlowRequestParams struct {
+	// 业务入参
+	BusinessSecurityData *InputRecognizeEffectiveFlow `json:"BusinessSecurityData,omitempty" name:"BusinessSecurityData"`
+}
+
 type RecognizeEffectiveFlowRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 业务入参
 	BusinessSecurityData *InputRecognizeEffectiveFlow `json:"BusinessSecurityData,omitempty" name:"BusinessSecurityData"`
 }
@@ -602,16 +625,18 @@ func (r *RecognizeEffectiveFlowRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type RecognizeEffectiveFlowResponseParams struct {
+	// 业务出参
+	Data *OutputRecognizeEffectiveFlow `json:"Data,omitempty" name:"Data"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type RecognizeEffectiveFlowResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 业务出参
-		Data *OutputRecognizeEffectiveFlow `json:"Data,omitempty" name:"Data"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *RecognizeEffectiveFlowResponseParams `json:"Response"`
 }
 
 func (r *RecognizeEffectiveFlowResponse) ToJsonString() string {
@@ -625,9 +650,15 @@ func (r *RecognizeEffectiveFlowResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type RecognizePreciseTargetAudienceRequestParams struct {
+	// 业务数据
+	BspData *InputRecognizeTargetAudience `json:"BspData,omitempty" name:"BspData"`
+}
+
 type RecognizePreciseTargetAudienceRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 业务数据
 	BspData *InputRecognizeTargetAudience `json:"BspData,omitempty" name:"BspData"`
 }
@@ -651,17 +682,19 @@ func (r *RecognizePreciseTargetAudienceRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type RecognizePreciseTargetAudienceResponseParams struct {
+	// 回包数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *OutputRecognizeTargetAudience `json:"Data,omitempty" name:"Data"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type RecognizePreciseTargetAudienceResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 回包数据
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		Data *OutputRecognizeTargetAudience `json:"Data,omitempty" name:"Data"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *RecognizePreciseTargetAudienceResponseParams `json:"Response"`
 }
 
 func (r *RecognizePreciseTargetAudienceResponse) ToJsonString() string {
@@ -675,9 +708,18 @@ func (r *RecognizePreciseTargetAudienceResponse) FromJsonString(s string) error 
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type RecognizeTargetAudienceRequestParams struct {
+	// 业务数据
+	BspData *InputRecognizeTargetAudience `json:"BspData,omitempty" name:"BspData"`
+
+	// 业务加密数据
+	BusinessEncryptData *InputBusinessEncryptData `json:"BusinessEncryptData,omitempty" name:"BusinessEncryptData"`
+}
+
 type RecognizeTargetAudienceRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 业务数据
 	BspData *InputRecognizeTargetAudience `json:"BspData,omitempty" name:"BspData"`
 
@@ -705,17 +747,19 @@ func (r *RecognizeTargetAudienceRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type RecognizeTargetAudienceResponseParams struct {
+	// 回包数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *OutputRecognizeTargetAudience `json:"Data,omitempty" name:"Data"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type RecognizeTargetAudienceResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 回包数据
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		Data *OutputRecognizeTargetAudience `json:"Data,omitempty" name:"Data"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *RecognizeTargetAudienceResponseParams `json:"Response"`
 }
 
 func (r *RecognizeTargetAudienceResponse) ToJsonString() string {
@@ -729,9 +773,15 @@ func (r *RecognizeTargetAudienceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type SendTrafficSecuritySmsMessageRequestParams struct {
+	// 业务入参
+	BspData *InputSendTrafficSecuritySmsMsg `json:"BspData,omitempty" name:"BspData"`
+}
+
 type SendTrafficSecuritySmsMessageRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 业务入参
 	BspData *InputSendTrafficSecuritySmsMsg `json:"BspData,omitempty" name:"BspData"`
 }
@@ -755,17 +805,19 @@ func (r *SendTrafficSecuritySmsMessageRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type SendTrafficSecuritySmsMessageResponseParams struct {
+	// 返回结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *OutputSendTrafficSecuritySmsMsg `json:"Data,omitempty" name:"Data"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type SendTrafficSecuritySmsMessageResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 返回结果
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		Data *OutputSendTrafficSecuritySmsMsg `json:"Data,omitempty" name:"Data"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *SendTrafficSecuritySmsMessageResponseParams `json:"Response"`
 }
 
 func (r *SendTrafficSecuritySmsMessageResponse) ToJsonString() string {

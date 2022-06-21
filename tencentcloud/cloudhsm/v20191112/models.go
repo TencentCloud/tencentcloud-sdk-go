@@ -20,9 +20,15 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+// Predefined struct for user
+type DescribeHSMBySubnetIdRequestParams struct {
+	// Subnet标识符
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+}
+
 type DescribeHSMBySubnetIdRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// Subnet标识符
 	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
 }
@@ -46,19 +52,21 @@ func (r *DescribeHSMBySubnetIdRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeHSMBySubnetIdResponseParams struct {
+	// HSM数量
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 作为查询条件的SubnetId
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeHSMBySubnetIdResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// HSM数量
-		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 作为查询条件的SubnetId
-		SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeHSMBySubnetIdResponseParams `json:"Response"`
 }
 
 func (r *DescribeHSMBySubnetIdResponse) ToJsonString() string {
@@ -72,9 +80,15 @@ func (r *DescribeHSMBySubnetIdResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeHSMByVpcIdRequestParams struct {
+	// VPC标识符
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+}
+
 type DescribeHSMByVpcIdRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// VPC标识符
 	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
 }
@@ -98,19 +112,21 @@ func (r *DescribeHSMByVpcIdRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeHSMByVpcIdResponseParams struct {
+	// HSM数量
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 作为查询条件的VpcId
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeHSMByVpcIdResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// HSM数量
-		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 作为查询条件的VpcId
-		VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeHSMByVpcIdResponseParams `json:"Response"`
 }
 
 func (r *DescribeHSMByVpcIdResponse) ToJsonString() string {
@@ -124,9 +140,24 @@ func (r *DescribeHSMByVpcIdResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeSubnetRequestParams struct {
+	// 返回数量。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移量。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 查询指定VpcId下的子网信息。
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 查找关键字
+	SearchWord *string `json:"SearchWord,omitempty" name:"SearchWord"`
+}
+
 type DescribeSubnetRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 返回数量。
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
@@ -162,20 +193,22 @@ func (r *DescribeSubnetRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeSubnetResponseParams struct {
+	// 返回的子网数量。
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 返回的子网实例列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubnetList []*Subnet `json:"SubnetList,omitempty" name:"SubnetList"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeSubnetResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 返回的子网数量。
-		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 返回的子网实例列表。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		SubnetList []*Subnet `json:"SubnetList,omitempty" name:"SubnetList"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeSubnetResponseParams `json:"Response"`
 }
 
 func (r *DescribeSubnetResponse) ToJsonString() string {
@@ -189,9 +222,15 @@ func (r *DescribeSubnetResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeSupportedHsmRequestParams struct {
+	// Hsm类型，可选值all、virtulization、GHSM、EHSM、SHSM
+	HsmType *string `json:"HsmType,omitempty" name:"HsmType"`
+}
+
 type DescribeSupportedHsmRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// Hsm类型，可选值all、virtulization、GHSM、EHSM、SHSM
 	HsmType *string `json:"HsmType,omitempty" name:"HsmType"`
 }
@@ -215,17 +254,19 @@ func (r *DescribeSupportedHsmRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeSupportedHsmResponseParams struct {
+	// 当前地域所支持的设备列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeviceTypes []*DeviceInfo `json:"DeviceTypes,omitempty" name:"DeviceTypes"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeSupportedHsmResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 当前地域所支持的设备列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		DeviceTypes []*DeviceInfo `json:"DeviceTypes,omitempty" name:"DeviceTypes"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeSupportedHsmResponseParams `json:"Response"`
 }
 
 func (r *DescribeSupportedHsmResponse) ToJsonString() string {
@@ -239,9 +280,21 @@ func (r *DescribeSupportedHsmResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeUsgRequestParams struct {
+	// 偏移量，当Offset和Limit均为0时将一次性返回用户所有的安全组列表。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回量，当Offset和Limit均为0时将一次性返回用户所有的安全组列表。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 搜索关键字
+	SearchWord *string `json:"SearchWord,omitempty" name:"SearchWord"`
+}
+
 type DescribeUsgRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 偏移量，当Offset和Limit均为0时将一次性返回用户所有的安全组列表。
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
@@ -273,20 +326,22 @@ func (r *DescribeUsgRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeUsgResponseParams struct {
+	// 用户的安全组列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SgList []*SgUnit `json:"SgList,omitempty" name:"SgList"`
+
+	// 返回的安全组数量
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeUsgResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 用户的安全组列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		SgList []*SgUnit `json:"SgList,omitempty" name:"SgList"`
-
-		// 返回的安全组数量
-		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeUsgResponseParams `json:"Response"`
 }
 
 func (r *DescribeUsgResponse) ToJsonString() string {
@@ -300,9 +355,15 @@ func (r *DescribeUsgResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeUsgRuleRequestParams struct {
+	// 根据安全组Id获取安全组详情
+	SgIds []*string `json:"SgIds,omitempty" name:"SgIds"`
+}
+
 type DescribeUsgRuleRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 根据安全组Id获取安全组详情
 	SgIds []*string `json:"SgIds,omitempty" name:"SgIds"`
 }
@@ -326,21 +387,23 @@ func (r *DescribeUsgRuleRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeUsgRuleResponseParams struct {
+	// 安全组详情
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SgRules []*UsgRuleDetail `json:"SgRules,omitempty" name:"SgRules"`
+
+	// 安全组详情数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeUsgRuleResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 安全组详情
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		SgRules []*UsgRuleDetail `json:"SgRules,omitempty" name:"SgRules"`
-
-		// 安全组详情数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeUsgRuleResponseParams `json:"Response"`
 }
 
 func (r *DescribeUsgRuleResponse) ToJsonString() string {
@@ -354,9 +417,21 @@ func (r *DescribeUsgRuleResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeVpcRequestParams struct {
+	// 返回偏移量。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回数量。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 搜索关键字
+	SearchWord *string `json:"SearchWord,omitempty" name:"SearchWord"`
+}
+
 type DescribeVpcRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 返回偏移量。
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
@@ -388,20 +463,22 @@ func (r *DescribeVpcRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeVpcResponseParams struct {
+	// 可查询到的所有Vpc实例总数。
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// Vpc对象列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VpcList []*Vpc `json:"VpcList,omitempty" name:"VpcList"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeVpcResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 可查询到的所有Vpc实例总数。
-		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// Vpc对象列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		VpcList []*Vpc `json:"VpcList,omitempty" name:"VpcList"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeVpcResponseParams `json:"Response"`
 }
 
 func (r *DescribeVpcResponse) ToJsonString() string {
@@ -415,9 +492,15 @@ func (r *DescribeVpcResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeVsmAttributesRequestParams struct {
+	// 资源Id
+	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
+}
+
 type DescribeVsmAttributesRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 资源Id
 	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
 }
@@ -441,94 +524,96 @@ func (r *DescribeVsmAttributesRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeVsmAttributesResponseParams struct {
+	// 资源Id
+	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
+
+	// 资源名称
+	ResourceName *string `json:"ResourceName,omitempty" name:"ResourceName"`
+
+	// 资源状态，1表示资源为正常，2表示资源处于隔离状态
+	Status *int64 `json:"Status,omitempty" name:"Status"`
+
+	// 资源IP
+	Vip *string `json:"Vip,omitempty" name:"Vip"`
+
+	// 资源所属Vpc
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 资源所属子网
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+
+	// 资源所属HSM的规格
+	Model *string `json:"Model,omitempty" name:"Model"`
+
+	// 资源类型，17表示EVSM，33表示GVSM，49表示SVSM
+	VsmType *int64 `json:"VsmType,omitempty" name:"VsmType"`
+
+	// 地域Id，返回腾讯云地域代码，如广州为1，北京为8
+	RegionId *int64 `json:"RegionId,omitempty" name:"RegionId"`
+
+	// 区域Id，返回腾讯云每个地域的可用区代码
+	ZoneId *int64 `json:"ZoneId,omitempty" name:"ZoneId"`
+
+	// 过期时间
+	ExpireTime *int64 `json:"ExpireTime,omitempty" name:"ExpireTime"`
+
+	// 安全组详情信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SgList []*UsgRuleDetail `json:"SgList,omitempty" name:"SgList"`
+
+	// 子网名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubnetName *string `json:"SubnetName,omitempty" name:"SubnetName"`
+
+	// 地域名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RegionName *string `json:"RegionName,omitempty" name:"RegionName"`
+
+	// 区域名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ZoneName *string `json:"ZoneName,omitempty" name:"ZoneName"`
+
+	// 实例是否已经过期
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Expired *bool `json:"Expired,omitempty" name:"Expired"`
+
+	// 为正数表示实例距离过期时间剩余秒数，为负数表示实例已经过期多少秒
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RemainSeconds *int64 `json:"RemainSeconds,omitempty" name:"RemainSeconds"`
+
+	// 私有虚拟网络名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VpcName *string `json:"VpcName,omitempty" name:"VpcName"`
+
+	// VPC的IPv4 CIDR
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VpcCidrBlock *string `json:"VpcCidrBlock,omitempty" name:"VpcCidrBlock"`
+
+	// 子网的CIDR
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubnetCidrBlock *string `json:"SubnetCidrBlock,omitempty" name:"SubnetCidrBlock"`
+
+	// 资源所关联的Tag
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
+
+	// 资源续费标识，0表示默认状态(用户未设置，即初始状态)， 1表示自动续费，2表示明确不自动续费(用户设置)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RenewFlag *int64 `json:"RenewFlag,omitempty" name:"RenewFlag"`
+
+	// 厂商
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Manufacturer *string `json:"Manufacturer,omitempty" name:"Manufacturer"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeVsmAttributesResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 资源Id
-		ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
-
-		// 资源名称
-		ResourceName *string `json:"ResourceName,omitempty" name:"ResourceName"`
-
-		// 资源状态，1表示资源为正常，2表示资源处于隔离状态
-		Status *int64 `json:"Status,omitempty" name:"Status"`
-
-		// 资源IP
-		Vip *string `json:"Vip,omitempty" name:"Vip"`
-
-		// 资源所属Vpc
-		VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
-
-		// 资源所属子网
-		SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
-
-		// 资源所属HSM的规格
-		Model *string `json:"Model,omitempty" name:"Model"`
-
-		// 资源类型，17表示EVSM，33表示GVSM，49表示SVSM
-		VsmType *int64 `json:"VsmType,omitempty" name:"VsmType"`
-
-		// 地域Id，返回腾讯云地域代码，如广州为1，北京为8
-		RegionId *int64 `json:"RegionId,omitempty" name:"RegionId"`
-
-		// 区域Id，返回腾讯云每个地域的可用区代码
-		ZoneId *int64 `json:"ZoneId,omitempty" name:"ZoneId"`
-
-		// 过期时间
-		ExpireTime *int64 `json:"ExpireTime,omitempty" name:"ExpireTime"`
-
-		// 安全组详情信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		SgList []*UsgRuleDetail `json:"SgList,omitempty" name:"SgList"`
-
-		// 子网名
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		SubnetName *string `json:"SubnetName,omitempty" name:"SubnetName"`
-
-		// 地域名
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		RegionName *string `json:"RegionName,omitempty" name:"RegionName"`
-
-		// 区域名
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		ZoneName *string `json:"ZoneName,omitempty" name:"ZoneName"`
-
-		// 实例是否已经过期
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		Expired *bool `json:"Expired,omitempty" name:"Expired"`
-
-		// 为正数表示实例距离过期时间剩余秒数，为负数表示实例已经过期多少秒
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		RemainSeconds *int64 `json:"RemainSeconds,omitempty" name:"RemainSeconds"`
-
-		// 私有虚拟网络名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		VpcName *string `json:"VpcName,omitempty" name:"VpcName"`
-
-		// VPC的IPv4 CIDR
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		VpcCidrBlock *string `json:"VpcCidrBlock,omitempty" name:"VpcCidrBlock"`
-
-		// 子网的CIDR
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		SubnetCidrBlock *string `json:"SubnetCidrBlock,omitempty" name:"SubnetCidrBlock"`
-
-		// 资源所关联的Tag
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
-
-		// 资源续费标识，0表示默认状态(用户未设置，即初始状态)， 1表示自动续费，2表示明确不自动续费(用户设置)
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		RenewFlag *int64 `json:"RenewFlag,omitempty" name:"RenewFlag"`
-
-		// 厂商
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		Manufacturer *string `json:"Manufacturer,omitempty" name:"Manufacturer"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeVsmAttributesResponseParams `json:"Response"`
 }
 
 func (r *DescribeVsmAttributesResponse) ToJsonString() string {
@@ -542,9 +627,30 @@ func (r *DescribeVsmAttributesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeVsmsRequestParams struct {
+	// 偏移
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 最大数量
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 查询关键字
+	SearchWord *string `json:"SearchWord,omitempty" name:"SearchWord"`
+
+	// 标签过滤条件
+	TagFilters []*TagFilter `json:"TagFilters,omitempty" name:"TagFilters"`
+
+	// 设备所属的厂商名称，根据厂商来进行筛选
+	Manufacturer *string `json:"Manufacturer,omitempty" name:"Manufacturer"`
+
+	// Hsm服务类型，可选virtualization、physical、GHSM、EHSM、SHSM、all
+	HsmType *string `json:"HsmType,omitempty" name:"HsmType"`
+}
+
 type DescribeVsmsRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 偏移
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
@@ -588,20 +694,22 @@ func (r *DescribeVsmsRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeVsmsResponseParams struct {
+	// 获取实例的总个数
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 资源信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VsmList []*ResourceInfo `json:"VsmList,omitempty" name:"VsmList"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeVsmsResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 获取实例的总个数
-		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 资源信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		VsmList []*ResourceInfo `json:"VsmList,omitempty" name:"VsmList"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeVsmsResponseParams `json:"Response"`
 }
 
 func (r *DescribeVsmsResponse) ToJsonString() string {
@@ -616,7 +724,6 @@ func (r *DescribeVsmsResponse) FromJsonString(s string) error {
 }
 
 type DeviceInfo struct {
-
 	// 厂商名称
 	Manufacturer *string `json:"Manufacturer,omitempty" name:"Manufacturer"`
 
@@ -625,7 +732,6 @@ type DeviceInfo struct {
 }
 
 type HsmInfo struct {
-
 	// 加密机型号
 	Model *string `json:"Model,omitempty" name:"Model"`
 
@@ -633,9 +739,33 @@ type HsmInfo struct {
 	VsmTypes []*VsmInfo `json:"VsmTypes,omitempty" name:"VsmTypes"`
 }
 
+// Predefined struct for user
+type InquiryPriceBuyVsmRequestParams struct {
+	// 需购买实例的数量
+	GoodsNum *int64 `json:"GoodsNum,omitempty" name:"GoodsNum"`
+
+	// 付费模式：0表示按需计费/后付费，1表示预付费
+	PayMode *int64 `json:"PayMode,omitempty" name:"PayMode"`
+
+	// 商品的时间大小，整型参数，举例：当TimeSpan为1，TImeUnit为m时，表示询价购买时长为1个月时的价格
+	TimeSpan *string `json:"TimeSpan,omitempty" name:"TimeSpan"`
+
+	// 商品的时间单位，m表示月，y表示年
+	TimeUnit *string `json:"TimeUnit,omitempty" name:"TimeUnit"`
+
+	// 货币类型，默认为CNY
+	Currency *string `json:"Currency,omitempty" name:"Currency"`
+
+	// 默认为CREATE，可选RENEW
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// Hsm服务类型，可选值virtualization、physical、GHSM、EHSM、SHSM
+	HsmType *string `json:"HsmType,omitempty" name:"HsmType"`
+}
+
 type InquiryPriceBuyVsmRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 需购买实例的数量
 	GoodsNum *int64 `json:"GoodsNum,omitempty" name:"GoodsNum"`
 
@@ -683,33 +813,35 @@ func (r *InquiryPriceBuyVsmRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type InquiryPriceBuyVsmResponseParams struct {
+	// 原始总金额，浮点型参数，精确到小数点后两位，如：2000.99
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCost *float64 `json:"TotalCost,omitempty" name:"TotalCost"`
+
+	// 购买的实例数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GoodsNum *int64 `json:"GoodsNum,omitempty" name:"GoodsNum"`
+
+	// 商品的时间大小
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TimeSpan *string `json:"TimeSpan,omitempty" name:"TimeSpan"`
+
+	// 商品的时间单位
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TimeUnit *string `json:"TimeUnit,omitempty" name:"TimeUnit"`
+
+	// 应付总金额，浮点型参数，精确到小数点后两位，如：2000.99
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OriginalCost *float64 `json:"OriginalCost,omitempty" name:"OriginalCost"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type InquiryPriceBuyVsmResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 原始总金额，浮点型参数，精确到小数点后两位，如：2000.99
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		TotalCost *float64 `json:"TotalCost,omitempty" name:"TotalCost"`
-
-		// 购买的实例数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		GoodsNum *int64 `json:"GoodsNum,omitempty" name:"GoodsNum"`
-
-		// 商品的时间大小
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		TimeSpan *string `json:"TimeSpan,omitempty" name:"TimeSpan"`
-
-		// 商品的时间单位
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		TimeUnit *string `json:"TimeUnit,omitempty" name:"TimeUnit"`
-
-		// 应付总金额，浮点型参数，精确到小数点后两位，如：2000.99
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		OriginalCost *float64 `json:"OriginalCost,omitempty" name:"OriginalCost"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *InquiryPriceBuyVsmResponseParams `json:"Response"`
 }
 
 func (r *InquiryPriceBuyVsmResponse) ToJsonString() string {
@@ -723,9 +855,33 @@ func (r *InquiryPriceBuyVsmResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifyVsmAttributesRequestParams struct {
+	// 资源Id
+	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
+
+	// UpdateResourceName-修改资源名称,
+	// UpdateSgIds-修改安全组名称,
+	// UpdateNetWork-修改网络,
+	// Default-默认不修改
+	Type []*string `json:"Type,omitempty" name:"Type"`
+
+	// 资源名称
+	ResourceName *string `json:"ResourceName,omitempty" name:"ResourceName"`
+
+	// 安全组Id
+	SgIds []*string `json:"SgIds,omitempty" name:"SgIds"`
+
+	// 虚拟专网Id
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 子网Id
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+}
+
 type ModifyVsmAttributesRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 资源Id
 	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
 
@@ -772,13 +928,15 @@ func (r *ModifyVsmAttributesRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifyVsmAttributesResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type ModifyVsmAttributesResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *ModifyVsmAttributesResponseParams `json:"Response"`
 }
 
 func (r *ModifyVsmAttributesResponse) ToJsonString() string {
@@ -793,7 +951,6 @@ func (r *ModifyVsmAttributesResponse) FromJsonString(s string) error {
 }
 
 type ResourceInfo struct {
-
 	// 资源Id
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
@@ -884,7 +1041,6 @@ type ResourceInfo struct {
 }
 
 type SgUnit struct {
-
 	// 安全组Id
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SgId *string `json:"SgId,omitempty" name:"SgId"`
@@ -903,7 +1059,6 @@ type SgUnit struct {
 }
 
 type Subnet struct {
-
 	// VPC实例ID。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
@@ -942,7 +1097,6 @@ type Subnet struct {
 }
 
 type Tag struct {
-
 	// 标签键
 	TagKey *string `json:"TagKey,omitempty" name:"TagKey"`
 
@@ -951,7 +1105,6 @@ type Tag struct {
 }
 
 type TagFilter struct {
-
 	// 标签键
 	TagKey *string `json:"TagKey,omitempty" name:"TagKey"`
 
@@ -960,7 +1113,6 @@ type TagFilter struct {
 }
 
 type UsgPolicy struct {
-
 	// cidr格式地址
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Ip *string `json:"Ip,omitempty" name:"Ip"`
@@ -995,7 +1147,6 @@ type UsgPolicy struct {
 }
 
 type UsgRuleDetail struct {
-
 	// 入站规则
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InBound []*UsgPolicy `json:"InBound,omitempty" name:"InBound"`
@@ -1026,7 +1177,6 @@ type UsgRuleDetail struct {
 }
 
 type Vpc struct {
-
 	// Vpc名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	VpcName *string `json:"VpcName,omitempty" name:"VpcName"`
@@ -1045,7 +1195,6 @@ type Vpc struct {
 }
 
 type VsmInfo struct {
-
 	// VSM类型名称
 	TypeName *string `json:"TypeName,omitempty" name:"TypeName"`
 

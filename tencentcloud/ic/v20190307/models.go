@@ -21,7 +21,6 @@ import (
 )
 
 type AppInfo struct {
-
 	// 应用ID
 	Sdkappid *string `json:"Sdkappid,omitempty" name:"Sdkappid"`
 
@@ -49,7 +48,6 @@ type AppInfo struct {
 }
 
 type CardInfo struct {
-
 	// 卡片ID
 	Iccid *string `json:"Iccid,omitempty" name:"Iccid"`
 
@@ -155,7 +153,6 @@ type CardInfo struct {
 }
 
 type CardList struct {
-
 	// 卡片总数
 	Total *string `json:"Total,omitempty" name:"Total"`
 
@@ -164,9 +161,15 @@ type CardList struct {
 	List []*CardInfo `json:"List,omitempty" name:"List"`
 }
 
+// Predefined struct for user
+type DescribeAppRequestParams struct {
+	// 物联卡应用ID
+	Sdkappid *int64 `json:"Sdkappid,omitempty" name:"Sdkappid"`
+}
+
 type DescribeAppRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 物联卡应用ID
 	Sdkappid *int64 `json:"Sdkappid,omitempty" name:"Sdkappid"`
 }
@@ -190,17 +193,19 @@ func (r *DescribeAppRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeAppResponseParams struct {
+	// 应用信息详情
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *AppInfo `json:"Data,omitempty" name:"Data"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeAppResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 应用信息详情
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		Data *AppInfo `json:"Data,omitempty" name:"Data"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeAppResponseParams `json:"Response"`
 }
 
 func (r *DescribeAppResponse) ToJsonString() string {
@@ -214,9 +219,18 @@ func (r *DescribeAppResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeCardRequestParams struct {
+	// 应用ID
+	Sdkappid *int64 `json:"Sdkappid,omitempty" name:"Sdkappid"`
+
+	// 卡片ID
+	Iccid *string `json:"Iccid,omitempty" name:"Iccid"`
+}
+
 type DescribeCardRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 应用ID
 	Sdkappid *int64 `json:"Sdkappid,omitempty" name:"Sdkappid"`
 
@@ -244,17 +258,19 @@ func (r *DescribeCardRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeCardResponseParams struct {
+	// 卡片详细信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *CardInfo `json:"Data,omitempty" name:"Data"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeCardResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 卡片详细信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		Data *CardInfo `json:"Data,omitempty" name:"Data"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeCardResponseParams `json:"Response"`
 }
 
 func (r *DescribeCardResponse) ToJsonString() string {
@@ -268,9 +284,21 @@ func (r *DescribeCardResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeCardsRequestParams struct {
+	// 应用ID
+	Sdkappid *string `json:"Sdkappid,omitempty" name:"Sdkappid"`
+
+	// 偏移值
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 列表限制
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
 type DescribeCardsRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 应用ID
 	Sdkappid *string `json:"Sdkappid,omitempty" name:"Sdkappid"`
 
@@ -302,16 +330,18 @@ func (r *DescribeCardsRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeCardsResponseParams struct {
+	// 卡片列表信息
+	Data *CardList `json:"Data,omitempty" name:"Data"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeCardsResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 卡片列表信息
-		Data *CardList `json:"Data,omitempty" name:"Data"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeCardsResponseParams `json:"Response"`
 }
 
 func (r *DescribeCardsResponse) ToJsonString() string {
@@ -325,9 +355,21 @@ func (r *DescribeCardsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifyUserCardRemarkRequestParams struct {
+	// 应用ID
+	Sdkappid *int64 `json:"Sdkappid,omitempty" name:"Sdkappid"`
+
+	// 物联卡ICCID
+	Iccid *string `json:"Iccid,omitempty" name:"Iccid"`
+
+	// 备注信息，限50字
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+}
+
 type ModifyUserCardRemarkRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 应用ID
 	Sdkappid *int64 `json:"Sdkappid,omitempty" name:"Sdkappid"`
 
@@ -359,13 +401,15 @@ func (r *ModifyUserCardRemarkRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifyUserCardRemarkResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type ModifyUserCardRemarkResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *ModifyUserCardRemarkResponseParams `json:"Response"`
 }
 
 func (r *ModifyUserCardRemarkResponse) ToJsonString() string {
@@ -379,9 +423,21 @@ func (r *ModifyUserCardRemarkResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type RenewCardsRequestParams struct {
+	// 应用ID
+	Sdkappid *uint64 `json:"Sdkappid,omitempty" name:"Sdkappid"`
+
+	// 续费的iccid
+	Iccids []*string `json:"Iccids,omitempty" name:"Iccids"`
+
+	// 续费的周期（单位：月）
+	RenewNum *uint64 `json:"RenewNum,omitempty" name:"RenewNum"`
+}
+
 type RenewCardsRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 应用ID
 	Sdkappid *uint64 `json:"Sdkappid,omitempty" name:"Sdkappid"`
 
@@ -413,17 +469,19 @@ func (r *RenewCardsRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type RenewCardsResponseParams struct {
+	// 续费成功的订单id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *ResRenew `json:"Data,omitempty" name:"Data"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type RenewCardsResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 续费成功的订单id
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		Data *ResRenew `json:"Data,omitempty" name:"Data"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *RenewCardsResponseParams `json:"Response"`
 }
 
 func (r *RenewCardsResponse) ToJsonString() string {
@@ -438,15 +496,26 @@ func (r *RenewCardsResponse) FromJsonString(s string) error {
 }
 
 type ResRenew struct {
-
 	// 每一张续费卡片的订单ID数组
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OrderIds []*string `json:"OrderIds,omitempty" name:"OrderIds"`
 }
 
+// Predefined struct for user
+type SendMultiSmsRequestParams struct {
+	// 应用ID
+	Sdkappid *string `json:"Sdkappid,omitempty" name:"Sdkappid"`
+
+	// 卡片列表
+	Iccids []*string `json:"Iccids,omitempty" name:"Iccids"`
+
+	// 短信内容 长度限制 70
+	Content *string `json:"Content,omitempty" name:"Content"`
+}
+
 type SendMultiSmsRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 应用ID
 	Sdkappid *string `json:"Sdkappid,omitempty" name:"Sdkappid"`
 
@@ -478,17 +547,19 @@ func (r *SendMultiSmsRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type SendMultiSmsResponseParams struct {
+	// 短信流水数组
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data []*SmsRet `json:"Data,omitempty" name:"Data"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type SendMultiSmsResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 短信流水数组
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		Data []*SmsRet `json:"Data,omitempty" name:"Data"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *SendMultiSmsResponseParams `json:"Response"`
 }
 
 func (r *SendMultiSmsResponse) ToJsonString() string {
@@ -502,9 +573,21 @@ func (r *SendMultiSmsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type SendSmsRequestParams struct {
+	// 应用ID
+	Sdkappid *int64 `json:"Sdkappid,omitempty" name:"Sdkappid"`
+
+	// 卡片ID
+	Iccid *string `json:"Iccid,omitempty" name:"Iccid"`
+
+	// 短信内容长度70限制
+	Content *string `json:"Content,omitempty" name:"Content"`
+}
+
 type SendSmsRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 应用ID
 	Sdkappid *int64 `json:"Sdkappid,omitempty" name:"Sdkappid"`
 
@@ -536,17 +619,19 @@ func (r *SendSmsRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type SendSmsResponseParams struct {
+	// 短信流水信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *SmsSid `json:"Data,omitempty" name:"Data"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type SendSmsResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 短信流水信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		Data *SmsSid `json:"Data,omitempty" name:"Data"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *SendSmsResponseParams `json:"Response"`
 }
 
 func (r *SendSmsResponse) ToJsonString() string {
@@ -561,7 +646,6 @@ func (r *SendSmsResponse) FromJsonString(s string) error {
 }
 
 type SmsRet struct {
-
 	// 该iccid请求状态
 	Code *string `json:"Code,omitempty" name:"Code"`
 
@@ -576,7 +660,6 @@ type SmsRet struct {
 }
 
 type SmsSid struct {
-
 	// 卡片ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Iccid *string `json:"Iccid,omitempty" name:"Iccid"`

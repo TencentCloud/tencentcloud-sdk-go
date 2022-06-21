@@ -20,9 +20,15 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+// Predefined struct for user
+type AcceptOrganizationInvitationRequestParams struct {
+	// 邀请ID
+	Id *uint64 `json:"Id,omitempty" name:"Id"`
+}
+
 type AcceptOrganizationInvitationRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 邀请ID
 	Id *uint64 `json:"Id,omitempty" name:"Id"`
 }
@@ -46,13 +52,15 @@ func (r *AcceptOrganizationInvitationRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type AcceptOrganizationInvitationResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type AcceptOrganizationInvitationResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *AcceptOrganizationInvitationResponseParams `json:"Response"`
 }
 
 func (r *AcceptOrganizationInvitationResponse) ToJsonString() string {
@@ -66,9 +74,18 @@ func (r *AcceptOrganizationInvitationResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type AddOrganizationNodeRequestParams struct {
+	// 父组织单元ID
+	ParentNodeId *uint64 `json:"ParentNodeId,omitempty" name:"ParentNodeId"`
+
+	// 组织单元名字
+	Name *string `json:"Name,omitempty" name:"Name"`
+}
+
 type AddOrganizationNodeRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 父组织单元ID
 	ParentNodeId *uint64 `json:"ParentNodeId,omitempty" name:"ParentNodeId"`
 
@@ -96,16 +113,18 @@ func (r *AddOrganizationNodeRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type AddOrganizationNodeResponseParams struct {
+	// 组织单元ID
+	NodeId *uint64 `json:"NodeId,omitempty" name:"NodeId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type AddOrganizationNodeResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 组织单元ID
-		NodeId *uint64 `json:"NodeId,omitempty" name:"NodeId"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *AddOrganizationNodeResponseParams `json:"Response"`
 }
 
 func (r *AddOrganizationNodeResponse) ToJsonString() string {
@@ -119,9 +138,15 @@ func (r *AddOrganizationNodeResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CancelOrganizationInvitationRequestParams struct {
+	// 邀请ID
+	Id *uint64 `json:"Id,omitempty" name:"Id"`
+}
+
 type CancelOrganizationInvitationRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 邀请ID
 	Id *uint64 `json:"Id,omitempty" name:"Id"`
 }
@@ -145,13 +170,15 @@ func (r *CancelOrganizationInvitationRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CancelOrganizationInvitationResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CancelOrganizationInvitationResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CancelOrganizationInvitationResponseParams `json:"Response"`
 }
 
 func (r *CancelOrganizationInvitationResponse) ToJsonString() string {
@@ -165,9 +192,15 @@ func (r *CancelOrganizationInvitationResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateOrganizationRequestParams struct {
+	// 组织类型（目前固定为1）
+	OrgType *uint64 `json:"OrgType,omitempty" name:"OrgType"`
+}
+
 type CreateOrganizationRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 组织类型（目前固定为1）
 	OrgType *uint64 `json:"OrgType,omitempty" name:"OrgType"`
 }
@@ -191,25 +224,27 @@ func (r *CreateOrganizationRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateOrganizationResponseParams struct {
+	// 企业组织ID
+	OrgId *uint64 `json:"OrgId,omitempty" name:"OrgId"`
+
+	// 创建者昵称
+	Nickname *string `json:"Nickname,omitempty" name:"Nickname"`
+
+	// 创建者邮箱
+	Mail *string `json:"Mail,omitempty" name:"Mail"`
+
+	// 组织类型
+	OrgType *uint64 `json:"OrgType,omitempty" name:"OrgType"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreateOrganizationResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 企业组织ID
-		OrgId *uint64 `json:"OrgId,omitempty" name:"OrgId"`
-
-		// 创建者昵称
-		Nickname *string `json:"Nickname,omitempty" name:"Nickname"`
-
-		// 创建者邮箱
-		Mail *string `json:"Mail,omitempty" name:"Mail"`
-
-		// 组织类型
-		OrgType *uint64 `json:"OrgType,omitempty" name:"OrgType"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreateOrganizationResponseParams `json:"Response"`
 }
 
 func (r *CreateOrganizationResponse) ToJsonString() string {
@@ -223,9 +258,18 @@ func (r *CreateOrganizationResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteOrganizationMemberFromNodeRequestParams struct {
+	// 被删除成员UIN
+	MemberUin *uint64 `json:"MemberUin,omitempty" name:"MemberUin"`
+
+	// 组织单元ID
+	NodeId *uint64 `json:"NodeId,omitempty" name:"NodeId"`
+}
+
 type DeleteOrganizationMemberFromNodeRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 被删除成员UIN
 	MemberUin *uint64 `json:"MemberUin,omitempty" name:"MemberUin"`
 
@@ -253,13 +297,15 @@ func (r *DeleteOrganizationMemberFromNodeRequest) FromJsonString(s string) error
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteOrganizationMemberFromNodeResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DeleteOrganizationMemberFromNodeResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DeleteOrganizationMemberFromNodeResponseParams `json:"Response"`
 }
 
 func (r *DeleteOrganizationMemberFromNodeResponse) ToJsonString() string {
@@ -273,9 +319,15 @@ func (r *DeleteOrganizationMemberFromNodeResponse) FromJsonString(s string) erro
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteOrganizationMembersRequestParams struct {
+	// 被删除成员的UIN列表
+	Uins []*uint64 `json:"Uins,omitempty" name:"Uins"`
+}
+
 type DeleteOrganizationMembersRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 被删除成员的UIN列表
 	Uins []*uint64 `json:"Uins,omitempty" name:"Uins"`
 }
@@ -299,13 +351,15 @@ func (r *DeleteOrganizationMembersRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteOrganizationMembersResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DeleteOrganizationMembersResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DeleteOrganizationMembersResponseParams `json:"Response"`
 }
 
 func (r *DeleteOrganizationMembersResponse) ToJsonString() string {
@@ -319,9 +373,15 @@ func (r *DeleteOrganizationMembersResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteOrganizationNodesRequestParams struct {
+	// 组织单元ID列表
+	NodeIds []*uint64 `json:"NodeIds,omitempty" name:"NodeIds"`
+}
+
 type DeleteOrganizationNodesRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 组织单元ID列表
 	NodeIds []*uint64 `json:"NodeIds,omitempty" name:"NodeIds"`
 }
@@ -345,13 +405,15 @@ func (r *DeleteOrganizationNodesRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteOrganizationNodesResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DeleteOrganizationNodesResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DeleteOrganizationNodesResponseParams `json:"Response"`
 }
 
 func (r *DeleteOrganizationNodesResponse) ToJsonString() string {
@@ -365,8 +427,14 @@ func (r *DeleteOrganizationNodesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteOrganizationRequestParams struct {
+
+}
+
 type DeleteOrganizationRequest struct {
 	*tchttp.BaseRequest
+	
 }
 
 func (r *DeleteOrganizationRequest) ToJsonString() string {
@@ -381,19 +449,22 @@ func (r *DeleteOrganizationRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteOrganizationRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteOrganizationResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DeleteOrganizationResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DeleteOrganizationResponseParams `json:"Response"`
 }
 
 func (r *DeleteOrganizationResponse) ToJsonString() string {
@@ -407,9 +478,15 @@ func (r *DeleteOrganizationResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DenyOrganizationInvitationRequestParams struct {
+	// 邀请ID
+	Id *uint64 `json:"Id,omitempty" name:"Id"`
+}
+
 type DenyOrganizationInvitationRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 邀请ID
 	Id *uint64 `json:"Id,omitempty" name:"Id"`
 }
@@ -433,13 +510,15 @@ func (r *DenyOrganizationInvitationRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DenyOrganizationInvitationResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DenyOrganizationInvitationResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DenyOrganizationInvitationResponseParams `json:"Response"`
 }
 
 func (r *DenyOrganizationInvitationResponse) ToJsonString() string {
@@ -453,9 +532,15 @@ func (r *DenyOrganizationInvitationResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type GetOrganizationMemberRequestParams struct {
+	// 组织成员UIN
+	MemberUin *uint64 `json:"MemberUin,omitempty" name:"MemberUin"`
+}
+
 type GetOrganizationMemberRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 组织成员UIN
 	MemberUin *uint64 `json:"MemberUin,omitempty" name:"MemberUin"`
 }
@@ -479,34 +564,36 @@ func (r *GetOrganizationMemberRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type GetOrganizationMemberResponseParams struct {
+	// 组织成员UIN
+	Uin *uint64 `json:"Uin,omitempty" name:"Uin"`
+
+	// 组织成员名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 备注
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 加入时间
+	JoinTime *string `json:"JoinTime,omitempty" name:"JoinTime"`
+
+	// 组织单元ID
+	NodeId *uint64 `json:"NodeId,omitempty" name:"NodeId"`
+
+	// 组织单元名称
+	NodeName *string `json:"NodeName,omitempty" name:"NodeName"`
+
+	// 父组织单元ID
+	ParentNodeId *uint64 `json:"ParentNodeId,omitempty" name:"ParentNodeId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type GetOrganizationMemberResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 组织成员UIN
-		Uin *uint64 `json:"Uin,omitempty" name:"Uin"`
-
-		// 组织成员名称
-		Name *string `json:"Name,omitempty" name:"Name"`
-
-		// 备注
-		Remark *string `json:"Remark,omitempty" name:"Remark"`
-
-		// 加入时间
-		JoinTime *string `json:"JoinTime,omitempty" name:"JoinTime"`
-
-		// 组织单元ID
-		NodeId *uint64 `json:"NodeId,omitempty" name:"NodeId"`
-
-		// 组织单元名称
-		NodeName *string `json:"NodeName,omitempty" name:"NodeName"`
-
-		// 父组织单元ID
-		ParentNodeId *uint64 `json:"ParentNodeId,omitempty" name:"ParentNodeId"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *GetOrganizationMemberResponseParams `json:"Response"`
 }
 
 func (r *GetOrganizationMemberResponse) ToJsonString() string {
@@ -520,8 +607,14 @@ func (r *GetOrganizationMemberResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type GetOrganizationRequestParams struct {
+
+}
+
 type GetOrganizationRequest struct {
 	*tchttp.BaseRequest
+	
 }
 
 func (r *GetOrganizationRequest) ToJsonString() string {
@@ -536,37 +629,40 @@ func (r *GetOrganizationRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetOrganizationRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type GetOrganizationResponseParams struct {
+	// 企业组织ID
+	OrgId *uint64 `json:"OrgId,omitempty" name:"OrgId"`
+
+	// 创建者UIN
+	HostUin *uint64 `json:"HostUin,omitempty" name:"HostUin"`
+
+	// 创建者昵称
+	Nickname *string `json:"Nickname,omitempty" name:"Nickname"`
+
+	// 创建者邮箱
+	Mail *string `json:"Mail,omitempty" name:"Mail"`
+
+	// 企业组织类型
+	OrgType *uint64 `json:"OrgType,omitempty" name:"OrgType"`
+
+	// 是否为空
+	IsEmpty *uint64 `json:"IsEmpty,omitempty" name:"IsEmpty"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type GetOrganizationResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 企业组织ID
-		OrgId *uint64 `json:"OrgId,omitempty" name:"OrgId"`
-
-		// 创建者UIN
-		HostUin *uint64 `json:"HostUin,omitempty" name:"HostUin"`
-
-		// 创建者昵称
-		Nickname *string `json:"Nickname,omitempty" name:"Nickname"`
-
-		// 创建者邮箱
-		Mail *string `json:"Mail,omitempty" name:"Mail"`
-
-		// 企业组织类型
-		OrgType *uint64 `json:"OrgType,omitempty" name:"OrgType"`
-
-		// 是否为空
-		IsEmpty *uint64 `json:"IsEmpty,omitempty" name:"IsEmpty"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *GetOrganizationResponseParams `json:"Response"`
 }
 
 func (r *GetOrganizationResponse) ToJsonString() string {
@@ -580,9 +676,21 @@ func (r *GetOrganizationResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ListOrganizationInvitationsRequestParams struct {
+	// 是否被邀请。1：被邀请，0：发出的邀请
+	Invited *uint64 `json:"Invited,omitempty" name:"Invited"`
+
+	// 偏移量
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 限制数目
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+}
+
 type ListOrganizationInvitationsRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 是否被邀请。1：被邀请，0：发出的邀请
 	Invited *uint64 `json:"Invited,omitempty" name:"Invited"`
 
@@ -614,19 +722,21 @@ func (r *ListOrganizationInvitationsRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ListOrganizationInvitationsResponseParams struct {
+	// 邀请信息列表
+	Invitations []*OrgInvitation `json:"Invitations,omitempty" name:"Invitations"`
+
+	// 总数目
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type ListOrganizationInvitationsResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 邀请信息列表
-		Invitations []*OrgInvitation `json:"Invitations,omitempty" name:"Invitations"`
-
-		// 总数目
-		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *ListOrganizationInvitationsResponseParams `json:"Response"`
 }
 
 func (r *ListOrganizationInvitationsResponse) ToJsonString() string {
@@ -640,9 +750,18 @@ func (r *ListOrganizationInvitationsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ListOrganizationMembersRequestParams struct {
+	// 偏移量
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 限制数目
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+}
+
 type ListOrganizationMembersRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 偏移量
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
@@ -670,19 +789,21 @@ func (r *ListOrganizationMembersRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ListOrganizationMembersResponseParams struct {
+	// 成员列表
+	Members []*OrgMember `json:"Members,omitempty" name:"Members"`
+
+	// 总数目
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type ListOrganizationMembersResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 成员列表
-		Members []*OrgMember `json:"Members,omitempty" name:"Members"`
-
-		// 总数目
-		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *ListOrganizationMembersResponseParams `json:"Response"`
 }
 
 func (r *ListOrganizationMembersResponse) ToJsonString() string {
@@ -696,9 +817,21 @@ func (r *ListOrganizationMembersResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ListOrganizationNodeMembersRequestParams struct {
+	// 企业组织单元ID
+	NodeId *uint64 `json:"NodeId,omitempty" name:"NodeId"`
+
+	// 偏移量
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 限制数目
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+}
+
 type ListOrganizationNodeMembersRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 企业组织单元ID
 	NodeId *uint64 `json:"NodeId,omitempty" name:"NodeId"`
 
@@ -730,19 +863,21 @@ func (r *ListOrganizationNodeMembersRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ListOrganizationNodeMembersResponseParams struct {
+	// 总数目
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 成员列表
+	Members []*OrgMember `json:"Members,omitempty" name:"Members"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type ListOrganizationNodeMembersResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 总数目
-		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 成员列表
-		Members []*OrgMember `json:"Members,omitempty" name:"Members"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *ListOrganizationNodeMembersResponseParams `json:"Response"`
 }
 
 func (r *ListOrganizationNodeMembersResponse) ToJsonString() string {
@@ -756,8 +891,14 @@ func (r *ListOrganizationNodeMembersResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ListOrganizationNodesRequestParams struct {
+
+}
+
 type ListOrganizationNodesRequest struct {
 	*tchttp.BaseRequest
+	
 }
 
 func (r *ListOrganizationNodesRequest) ToJsonString() string {
@@ -772,22 +913,25 @@ func (r *ListOrganizationNodesRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListOrganizationNodesRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ListOrganizationNodesResponseParams struct {
+	// 企业组织单元列表
+	Nodes []*OrgNode `json:"Nodes,omitempty" name:"Nodes"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type ListOrganizationNodesResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 企业组织单元列表
-		Nodes []*OrgNode `json:"Nodes,omitempty" name:"Nodes"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *ListOrganizationNodesResponseParams `json:"Response"`
 }
 
 func (r *ListOrganizationNodesResponse) ToJsonString() string {
@@ -801,9 +945,18 @@ func (r *ListOrganizationNodesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type MoveOrganizationMembersToNodeRequestParams struct {
+	// 组织单元ID
+	NodeId *uint64 `json:"NodeId,omitempty" name:"NodeId"`
+
+	// 成员UIN列表
+	Uins []*uint64 `json:"Uins,omitempty" name:"Uins"`
+}
+
 type MoveOrganizationMembersToNodeRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 组织单元ID
 	NodeId *uint64 `json:"NodeId,omitempty" name:"NodeId"`
 
@@ -831,13 +984,15 @@ func (r *MoveOrganizationMembersToNodeRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type MoveOrganizationMembersToNodeResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type MoveOrganizationMembersToNodeResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *MoveOrganizationMembersToNodeResponseParams `json:"Response"`
 }
 
 func (r *MoveOrganizationMembersToNodeResponse) ToJsonString() string {
@@ -852,7 +1007,6 @@ func (r *MoveOrganizationMembersToNodeResponse) FromJsonString(s string) error {
 }
 
 type OrgInvitation struct {
-
 	// 邀请ID
 	Id *uint64 `json:"Id,omitempty" name:"Id"`
 
@@ -888,7 +1042,6 @@ type OrgInvitation struct {
 }
 
 type OrgMember struct {
-
 	// UIN
 	Uin *uint64 `json:"Uin,omitempty" name:"Uin"`
 
@@ -903,7 +1056,6 @@ type OrgMember struct {
 }
 
 type OrgNode struct {
-
 	// 组织单元ID
 	NodeId *uint64 `json:"NodeId,omitempty" name:"NodeId"`
 
@@ -917,9 +1069,15 @@ type OrgNode struct {
 	MemberCount *uint64 `json:"MemberCount,omitempty" name:"MemberCount"`
 }
 
+// Predefined struct for user
+type QuitOrganizationRequestParams struct {
+	// 企业组织ID
+	OrgId *uint64 `json:"OrgId,omitempty" name:"OrgId"`
+}
+
 type QuitOrganizationRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 企业组织ID
 	OrgId *uint64 `json:"OrgId,omitempty" name:"OrgId"`
 }
@@ -943,13 +1101,15 @@ func (r *QuitOrganizationRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type QuitOrganizationResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type QuitOrganizationResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *QuitOrganizationResponseParams `json:"Response"`
 }
 
 func (r *QuitOrganizationResponse) ToJsonString() string {
@@ -963,9 +1123,21 @@ func (r *QuitOrganizationResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type SendOrganizationInvitationRequestParams struct {
+	// 被邀请账户UIN
+	InviteUin *uint64 `json:"InviteUin,omitempty" name:"InviteUin"`
+
+	// 名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 备注
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+}
+
 type SendOrganizationInvitationRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 被邀请账户UIN
 	InviteUin *uint64 `json:"InviteUin,omitempty" name:"InviteUin"`
 
@@ -997,13 +1169,15 @@ func (r *SendOrganizationInvitationRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type SendOrganizationInvitationResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type SendOrganizationInvitationResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *SendOrganizationInvitationResponseParams `json:"Response"`
 }
 
 func (r *SendOrganizationInvitationResponse) ToJsonString() string {
@@ -1017,9 +1191,21 @@ func (r *SendOrganizationInvitationResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type UpdateOrganizationMemberRequestParams struct {
+	// 成员UIN
+	MemberUin *uint64 `json:"MemberUin,omitempty" name:"MemberUin"`
+
+	// 名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 备注
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+}
+
 type UpdateOrganizationMemberRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 成员UIN
 	MemberUin *uint64 `json:"MemberUin,omitempty" name:"MemberUin"`
 
@@ -1051,13 +1237,15 @@ func (r *UpdateOrganizationMemberRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type UpdateOrganizationMemberResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type UpdateOrganizationMemberResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *UpdateOrganizationMemberResponseParams `json:"Response"`
 }
 
 func (r *UpdateOrganizationMemberResponse) ToJsonString() string {
@@ -1071,9 +1259,21 @@ func (r *UpdateOrganizationMemberResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type UpdateOrganizationNodeRequestParams struct {
+	// 企业组织单元ID
+	NodeId *uint64 `json:"NodeId,omitempty" name:"NodeId"`
+
+	// 名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 父单元ID
+	ParentNodeId *uint64 `json:"ParentNodeId,omitempty" name:"ParentNodeId"`
+}
+
 type UpdateOrganizationNodeRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 企业组织单元ID
 	NodeId *uint64 `json:"NodeId,omitempty" name:"NodeId"`
 
@@ -1105,13 +1305,15 @@ func (r *UpdateOrganizationNodeRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type UpdateOrganizationNodeResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type UpdateOrganizationNodeResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *UpdateOrganizationNodeResponseParams `json:"Response"`
 }
 
 func (r *UpdateOrganizationNodeResponse) ToJsonString() string {

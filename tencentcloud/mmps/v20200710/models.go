@@ -21,7 +21,6 @@ import (
 )
 
 type AppInfoItem struct {
-
 	// 小程序apiiid
 	AppPackage *string `json:"AppPackage,omitempty" name:"AppPackage"`
 
@@ -54,7 +53,6 @@ type AppInfoItem struct {
 }
 
 type AppTaskData struct {
-
 	// 任务id
 	TaskID *string `json:"TaskID,omitempty" name:"TaskID"`
 
@@ -81,9 +79,27 @@ type AppTaskData struct {
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 }
 
+// Predefined struct for user
+type CreateAppScanTaskRepeatRequestParams struct {
+	// 任务类型, 0:基础版, 1:专家版, 2:本地化
+	TaskType *int64 `json:"TaskType,omitempty" name:"TaskType"`
+
+	// 任务来源, 0:默认值(私域), 1:灵犀, 2:灵鲲;
+	Source *int64 `json:"Source,omitempty" name:"Source"`
+
+	// 小程序AppID
+	AppPackage *string `json:"AppPackage,omitempty" name:"AppPackage"`
+
+	// 应用平台, 0:android, 1:ios, 2:小程序
+	Platform *int64 `json:"Platform,omitempty" name:"Platform"`
+
+	// 原诊断任务ID
+	OrgTaskID *string `json:"OrgTaskID,omitempty" name:"OrgTaskID"`
+}
+
 type CreateAppScanTaskRepeatRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 任务类型, 0:基础版, 1:专家版, 2:本地化
 	TaskType *int64 `json:"TaskType,omitempty" name:"TaskType"`
 
@@ -123,19 +139,21 @@ func (r *CreateAppScanTaskRepeatRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateAppScanTaskRepeatResponseParams struct {
+	// 返回值, 0:成功, 其他值请查看“返回值”定义
+	Result *int64 `json:"Result,omitempty" name:"Result"`
+
+	// 任务id
+	TaskID *string `json:"TaskID,omitempty" name:"TaskID"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreateAppScanTaskRepeatResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 返回值, 0:成功, 其他值请查看“返回值”定义
-		Result *int64 `json:"Result,omitempty" name:"Result"`
-
-		// 任务id
-		TaskID *string `json:"TaskID,omitempty" name:"TaskID"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreateAppScanTaskRepeatResponseParams `json:"Response"`
 }
 
 func (r *CreateAppScanTaskRepeatResponse) ToJsonString() string {
@@ -149,9 +167,45 @@ func (r *CreateAppScanTaskRepeatResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateAppScanTaskRequestParams struct {
+	// 任务类型, 0:基础版, 1:专家版, 2:本地化
+	TaskType *int64 `json:"TaskType,omitempty" name:"TaskType"`
+
+	// 任务来源, 0:默认值(私域), 1:灵犀, 2:灵鲲;
+	Source *int64 `json:"Source,omitempty" name:"Source"`
+
+	// 小程序AppID
+	AppPackage *string `json:"AppPackage,omitempty" name:"AppPackage"`
+
+	// 应用平台, 0:android, 1:ios, 2:小程序
+	Platform *int64 `json:"Platform,omitempty" name:"Platform"`
+
+	// 小程序名称
+	AppName *string `json:"AppName,omitempty" name:"AppName"`
+
+	// 小程序版本
+	AppVersion *string `json:"AppVersion,omitempty" name:"AppVersion"`
+
+	// 联系人信息
+	ContactName *string `json:"ContactName,omitempty" name:"ContactName"`
+
+	// 联系电话
+	TelNumber *string `json:"TelNumber,omitempty" name:"TelNumber"`
+
+	// 公司名称
+	CorpName *string `json:"CorpName,omitempty" name:"CorpName"`
+
+	// 商务对接人员
+	SalesPerson *string `json:"SalesPerson,omitempty" name:"SalesPerson"`
+
+	// 公司邮箱
+	Email *string `json:"Email,omitempty" name:"Email"`
+}
+
 type CreateAppScanTaskRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 任务类型, 0:基础版, 1:专家版, 2:本地化
 	TaskType *int64 `json:"TaskType,omitempty" name:"TaskType"`
 
@@ -215,19 +269,21 @@ func (r *CreateAppScanTaskRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateAppScanTaskResponseParams struct {
+	// 返回值, 0:成功, 其他值请查看“返回值”定义
+	Result *int64 `json:"Result,omitempty" name:"Result"`
+
+	// 任务id
+	TaskID *string `json:"TaskID,omitempty" name:"TaskID"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreateAppScanTaskResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 返回值, 0:成功, 其他值请查看“返回值”定义
-		Result *int64 `json:"Result,omitempty" name:"Result"`
-
-		// 任务id
-		TaskID *string `json:"TaskID,omitempty" name:"TaskID"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreateAppScanTaskResponseParams `json:"Response"`
 }
 
 func (r *CreateAppScanTaskResponse) ToJsonString() string {
@@ -241,9 +297,30 @@ func (r *CreateAppScanTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateFlySecMiniAppScanTaskRepeatRequestParams struct {
+	// 小程序AppID
+	MiniAppID *string `json:"MiniAppID,omitempty" name:"MiniAppID"`
+
+	// 诊断模式 1:基础诊断，2:深度诊断
+	Mode *int64 `json:"Mode,omitempty" name:"Mode"`
+
+	// 原任务id
+	OrgTaskID *string `json:"OrgTaskID,omitempty" name:"OrgTaskID"`
+
+	// 小程序测试账号(自有账号体系需提供,其他情况不需要)
+	MiniAppTestAccount *string `json:"MiniAppTestAccount,omitempty" name:"MiniAppTestAccount"`
+
+	// 小程序测试密码(自有账号体系需提供,其他情况不需要)
+	MiniAppTestPwd *string `json:"MiniAppTestPwd,omitempty" name:"MiniAppTestPwd"`
+
+	// 诊断扫描版本 0:正式版 1:体验版
+	ScanVersion *int64 `json:"ScanVersion,omitempty" name:"ScanVersion"`
+}
+
 type CreateFlySecMiniAppScanTaskRepeatRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 小程序AppID
 	MiniAppID *string `json:"MiniAppID,omitempty" name:"MiniAppID"`
 
@@ -287,19 +364,21 @@ func (r *CreateFlySecMiniAppScanTaskRepeatRequest) FromJsonString(s string) erro
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateFlySecMiniAppScanTaskRepeatResponseParams struct {
+	// 返回值, 0:成功, 其他值请查看“返回值”定义
+	Ret *int64 `json:"Ret,omitempty" name:"Ret"`
+
+	// 任务id
+	TaskID *string `json:"TaskID,omitempty" name:"TaskID"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreateFlySecMiniAppScanTaskRepeatResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 返回值, 0:成功, 其他值请查看“返回值”定义
-		Ret *int64 `json:"Ret,omitempty" name:"Ret"`
-
-		// 任务id
-		TaskID *string `json:"TaskID,omitempty" name:"TaskID"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreateFlySecMiniAppScanTaskRepeatResponseParams `json:"Response"`
 }
 
 func (r *CreateFlySecMiniAppScanTaskRepeatResponse) ToJsonString() string {
@@ -313,9 +392,42 @@ func (r *CreateFlySecMiniAppScanTaskRepeatResponse) FromJsonString(s string) err
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateFlySecMiniAppScanTaskRequestParams struct {
+	// 小程序AppID
+	MiniAppID *string `json:"MiniAppID,omitempty" name:"MiniAppID"`
+
+	// 诊断模式 1:基础诊断，2:深度诊断
+	Mode *int64 `json:"Mode,omitempty" name:"Mode"`
+
+	// 小程序测试账号(自有账号体系需提供,其他情况不需要)
+	MiniAppTestAccount *string `json:"MiniAppTestAccount,omitempty" name:"MiniAppTestAccount"`
+
+	// 小程序测试密码(自有账号体系需提供,其他情况不需要)
+	MiniAppTestPwd *string `json:"MiniAppTestPwd,omitempty" name:"MiniAppTestPwd"`
+
+	// 小程序所属行业
+	Industry *string `json:"Industry,omitempty" name:"Industry"`
+
+	// 小程序调查问卷json字符串
+	SurveyContent *string `json:"SurveyContent,omitempty" name:"SurveyContent"`
+
+	// 手机号码
+	Mobile *string `json:"Mobile,omitempty" name:"Mobile"`
+
+	// 邮箱地址
+	Email *string `json:"Email,omitempty" name:"Email"`
+
+	// 商务合作接口人
+	SalesPerson *string `json:"SalesPerson,omitempty" name:"SalesPerson"`
+
+	// 诊断扫描版本 0:正式版 1:体验版
+	ScanVersion *int64 `json:"ScanVersion,omitempty" name:"ScanVersion"`
+}
+
 type CreateFlySecMiniAppScanTaskRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 小程序AppID
 	MiniAppID *string `json:"MiniAppID,omitempty" name:"MiniAppID"`
 
@@ -375,19 +487,21 @@ func (r *CreateFlySecMiniAppScanTaskRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateFlySecMiniAppScanTaskResponseParams struct {
+	// 返回值, 0:成功, 其他值请查看“返回值”定义
+	Ret *int64 `json:"Ret,omitempty" name:"Ret"`
+
+	// 任务id
+	TaskID *string `json:"TaskID,omitempty" name:"TaskID"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreateFlySecMiniAppScanTaskResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 返回值, 0:成功, 其他值请查看“返回值”定义
-		Ret *int64 `json:"Ret,omitempty" name:"Ret"`
-
-		// 任务id
-		TaskID *string `json:"TaskID,omitempty" name:"TaskID"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreateFlySecMiniAppScanTaskResponseParams `json:"Response"`
 }
 
 func (r *CreateFlySecMiniAppScanTaskResponse) ToJsonString() string {
@@ -401,9 +515,15 @@ func (r *CreateFlySecMiniAppScanTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeBasicDiagnosisResourceUsageInfoRequestParams struct {
+	// 诊断模式 1:基础诊断，2:深度诊断
+	Mode *int64 `json:"Mode,omitempty" name:"Mode"`
+}
+
 type DescribeBasicDiagnosisResourceUsageInfoRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 诊断模式 1:基础诊断，2:深度诊断
 	Mode *int64 `json:"Mode,omitempty" name:"Mode"`
 }
@@ -427,25 +547,27 @@ func (r *DescribeBasicDiagnosisResourceUsageInfoRequest) FromJsonString(s string
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeBasicDiagnosisResourceUsageInfoResponseParams struct {
+	// 返回值, 0:成功, 其他值请查看“返回值”定义
+	Ret *int64 `json:"Ret,omitempty" name:"Ret"`
+
+	// 资源类型
+	ResourceName *string `json:"ResourceName,omitempty" name:"ResourceName"`
+
+	// 资源总数
+	Total *int64 `json:"Total,omitempty" name:"Total"`
+
+	// 资源未使用次数
+	UnusedCount *int64 `json:"UnusedCount,omitempty" name:"UnusedCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeBasicDiagnosisResourceUsageInfoResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 返回值, 0:成功, 其他值请查看“返回值”定义
-		Ret *int64 `json:"Ret,omitempty" name:"Ret"`
-
-		// 资源类型
-		ResourceName *string `json:"ResourceName,omitempty" name:"ResourceName"`
-
-		// 资源总数
-		Total *int64 `json:"Total,omitempty" name:"Total"`
-
-		// 资源未使用次数
-		UnusedCount *int64 `json:"UnusedCount,omitempty" name:"UnusedCount"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeBasicDiagnosisResourceUsageInfoResponseParams `json:"Response"`
 }
 
 func (r *DescribeBasicDiagnosisResourceUsageInfoResponse) ToJsonString() string {
@@ -459,9 +581,24 @@ func (r *DescribeBasicDiagnosisResourceUsageInfoResponse) FromJsonString(s strin
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeFlySecMiniAppReportUrlRequestParams struct {
+	// 任务id
+	TaskID *string `json:"TaskID,omitempty" name:"TaskID"`
+
+	// 小程序appid
+	MiniAppID *string `json:"MiniAppID,omitempty" name:"MiniAppID"`
+
+	// 诊断方式 1:基础诊断，2:深度诊断
+	Mode *int64 `json:"Mode,omitempty" name:"Mode"`
+
+	// 诊断报告类型 0:基础诊断报告, 1:总裁版诊断报告
+	ReportType *int64 `json:"ReportType,omitempty" name:"ReportType"`
+}
+
 type DescribeFlySecMiniAppReportUrlRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 任务id
 	TaskID *string `json:"TaskID,omitempty" name:"TaskID"`
 
@@ -497,20 +634,22 @@ func (r *DescribeFlySecMiniAppReportUrlRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeFlySecMiniAppReportUrlResponseParams struct {
+	// 返回值, 0:成功, 其他值请查看“返回值”定义
+	Ret *int64 `json:"Ret,omitempty" name:"Ret"`
+
+	// 诊断报告下载链接
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Url *string `json:"Url,omitempty" name:"Url"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeFlySecMiniAppReportUrlResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 返回值, 0:成功, 其他值请查看“返回值”定义
-		Ret *int64 `json:"Ret,omitempty" name:"Ret"`
-
-		// 诊断报告下载链接
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		Url *string `json:"Url,omitempty" name:"Url"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeFlySecMiniAppReportUrlResponseParams `json:"Response"`
 }
 
 func (r *DescribeFlySecMiniAppReportUrlResponse) ToJsonString() string {
@@ -524,9 +663,24 @@ func (r *DescribeFlySecMiniAppReportUrlResponse) FromJsonString(s string) error 
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeFlySecMiniAppScanTaskListRequestParams struct {
+	// 诊断方式 1:基础诊断，2:深度诊断
+	Mode *int64 `json:"Mode,omitempty" name:"Mode"`
+
+	// 诊断状态 -1:查询全部, 0:排队中, 1:成功, 2:失败, 3:进行中
+	Status *int64 `json:"Status,omitempty" name:"Status"`
+
+	// 查询数量, 0:查询所有, 其他值:最近几次的诊断数量
+	Size *int64 `json:"Size,omitempty" name:"Size"`
+
+	// 小程序appid(为空的时候,则查询当前用户诊断的所有小程序)
+	MiniAppID *string `json:"MiniAppID,omitempty" name:"MiniAppID"`
+}
+
 type DescribeFlySecMiniAppScanTaskListRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 诊断方式 1:基础诊断，2:深度诊断
 	Mode *int64 `json:"Mode,omitempty" name:"Mode"`
 
@@ -562,24 +716,26 @@ func (r *DescribeFlySecMiniAppScanTaskListRequest) FromJsonString(s string) erro
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeFlySecMiniAppScanTaskListResponseParams struct {
+	// 返回值, 0:成功, 其他值请查看“返回值”定义
+	Ret *int64 `json:"Ret,omitempty" name:"Ret"`
+
+	// 诊断任务数据列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data []*FlySecMiniAppTaskData `json:"Data,omitempty" name:"Data"`
+
+	// 诊断任务数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Total *int64 `json:"Total,omitempty" name:"Total"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeFlySecMiniAppScanTaskListResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 返回值, 0:成功, 其他值请查看“返回值”定义
-		Ret *int64 `json:"Ret,omitempty" name:"Ret"`
-
-		// 诊断任务数据列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		Data []*FlySecMiniAppTaskData `json:"Data,omitempty" name:"Data"`
-
-		// 诊断任务数
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		Total *int64 `json:"Total,omitempty" name:"Total"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeFlySecMiniAppScanTaskListResponseParams `json:"Response"`
 }
 
 func (r *DescribeFlySecMiniAppScanTaskListResponse) ToJsonString() string {
@@ -593,9 +749,15 @@ func (r *DescribeFlySecMiniAppScanTaskListResponse) FromJsonString(s string) err
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeFlySecMiniAppScanTaskParamRequestParams struct {
+	// 任务id
+	TaskID *string `json:"TaskID,omitempty" name:"TaskID"`
+}
+
 type DescribeFlySecMiniAppScanTaskParamRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 任务id
 	TaskID *string `json:"TaskID,omitempty" name:"TaskID"`
 }
@@ -619,34 +781,36 @@ func (r *DescribeFlySecMiniAppScanTaskParamRequest) FromJsonString(s string) err
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeFlySecMiniAppScanTaskParamResponseParams struct {
+	// 返回值, 0:成功, 其他值请查看“返回值”定义
+	Ret *int64 `json:"Ret,omitempty" name:"Ret"`
+
+	// 小程序AppID
+	MiniAppID *string `json:"MiniAppID,omitempty" name:"MiniAppID"`
+
+	// 诊断模式 1:基础诊断，2:深度诊断
+	Mode *int64 `json:"Mode,omitempty" name:"Mode"`
+
+	// 小程序测试账号(自有账号体系需提供,其他情况不需要)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MiniAppTestAccount *string `json:"MiniAppTestAccount,omitempty" name:"MiniAppTestAccount"`
+
+	// 小程序测试密码(自有账号体系需提供,其他情况不需要)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MiniAppTestPwd *string `json:"MiniAppTestPwd,omitempty" name:"MiniAppTestPwd"`
+
+	// 诊断扫描版本 0:正式版 1:体验版
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ScanVersion *int64 `json:"ScanVersion,omitempty" name:"ScanVersion"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeFlySecMiniAppScanTaskParamResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 返回值, 0:成功, 其他值请查看“返回值”定义
-		Ret *int64 `json:"Ret,omitempty" name:"Ret"`
-
-		// 小程序AppID
-		MiniAppID *string `json:"MiniAppID,omitempty" name:"MiniAppID"`
-
-		// 诊断模式 1:基础诊断，2:深度诊断
-		Mode *int64 `json:"Mode,omitempty" name:"Mode"`
-
-		// 小程序测试账号(自有账号体系需提供,其他情况不需要)
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		MiniAppTestAccount *string `json:"MiniAppTestAccount,omitempty" name:"MiniAppTestAccount"`
-
-		// 小程序测试密码(自有账号体系需提供,其他情况不需要)
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		MiniAppTestPwd *string `json:"MiniAppTestPwd,omitempty" name:"MiniAppTestPwd"`
-
-		// 诊断扫描版本 0:正式版 1:体验版
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		ScanVersion *int64 `json:"ScanVersion,omitempty" name:"ScanVersion"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeFlySecMiniAppScanTaskParamResponseParams `json:"Response"`
 }
 
 func (r *DescribeFlySecMiniAppScanTaskParamResponse) ToJsonString() string {
@@ -660,9 +824,15 @@ func (r *DescribeFlySecMiniAppScanTaskParamResponse) FromJsonString(s string) er
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeFlySecMiniAppScanTaskStatusRequestParams struct {
+	// 任务id
+	TaskID *string `json:"TaskID,omitempty" name:"TaskID"`
+}
+
 type DescribeFlySecMiniAppScanTaskStatusRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 任务id
 	TaskID *string `json:"TaskID,omitempty" name:"TaskID"`
 }
@@ -686,31 +856,33 @@ func (r *DescribeFlySecMiniAppScanTaskStatusRequest) FromJsonString(s string) er
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeFlySecMiniAppScanTaskStatusResponseParams struct {
+	// 返回值, 0:成功, 其他值请查看“返回值”定义
+	Ret *int64 `json:"Ret,omitempty" name:"Ret"`
+
+	// 诊断状态, 0:排队中, 1:成功, 2:失败, 3:进行中
+	Status *int64 `json:"Status,omitempty" name:"Status"`
+
+	// 诊断失败错误码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Errno *int64 `json:"Errno,omitempty" name:"Errno"`
+
+	// 小程序名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MiniAppName *string `json:"MiniAppName,omitempty" name:"MiniAppName"`
+
+	// 小程序版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MiniAppVersion *string `json:"MiniAppVersion,omitempty" name:"MiniAppVersion"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeFlySecMiniAppScanTaskStatusResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 返回值, 0:成功, 其他值请查看“返回值”定义
-		Ret *int64 `json:"Ret,omitempty" name:"Ret"`
-
-		// 诊断状态, 0:排队中, 1:成功, 2:失败, 3:进行中
-		Status *int64 `json:"Status,omitempty" name:"Status"`
-
-		// 诊断失败错误码
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		Errno *int64 `json:"Errno,omitempty" name:"Errno"`
-
-		// 小程序名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		MiniAppName *string `json:"MiniAppName,omitempty" name:"MiniAppName"`
-
-		// 小程序版本
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		MiniAppVersion *string `json:"MiniAppVersion,omitempty" name:"MiniAppVersion"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeFlySecMiniAppScanTaskStatusResponseParams `json:"Response"`
 }
 
 func (r *DescribeFlySecMiniAppScanTaskStatusResponse) ToJsonString() string {
@@ -724,8 +896,14 @@ func (r *DescribeFlySecMiniAppScanTaskStatusResponse) FromJsonString(s string) e
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeResourceUsageInfoRequestParams struct {
+
+}
+
 type DescribeResourceUsageInfoRequest struct {
 	*tchttp.BaseRequest
+	
 }
 
 func (r *DescribeResourceUsageInfoRequest) ToJsonString() string {
@@ -740,28 +918,31 @@ func (r *DescribeResourceUsageInfoRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeResourceUsageInfoRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeResourceUsageInfoResponseParams struct {
+	// 返回值, 0:成功, 其他值请查看“返回值”定义
+	Ret *int64 `json:"Ret,omitempty" name:"Ret"`
+
+	// 安全资源数据列表
+	Data []*ResourceUsageInfoData `json:"Data,omitempty" name:"Data"`
+
+	// 安全资源数量
+	Total *int64 `json:"Total,omitempty" name:"Total"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeResourceUsageInfoResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 返回值, 0:成功, 其他值请查看“返回值”定义
-		Ret *int64 `json:"Ret,omitempty" name:"Ret"`
-
-		// 安全资源数据列表
-		Data []*ResourceUsageInfoData `json:"Data,omitempty" name:"Data"`
-
-		// 安全资源数量
-		Total *int64 `json:"Total,omitempty" name:"Total"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeResourceUsageInfoResponseParams `json:"Response"`
 }
 
 func (r *DescribeResourceUsageInfoResponse) ToJsonString() string {
@@ -775,9 +956,39 @@ func (r *DescribeResourceUsageInfoResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeScanTaskListRequestParams struct {
+	// 任务来源, -1:所有, 0:默认值(私域), 1:灵犀, 2:灵鲲;
+	Source *int64 `json:"Source,omitempty" name:"Source"`
+
+	// 应用平台, 0:android, 1:ios, 2:小程序
+	Platform *int64 `json:"Platform,omitempty" name:"Platform"`
+
+	// 任务状态,可多值查询,例如:"1,2,3" 0:默认值(待检测/待咨询), 1.检测中, 2:待评估, 3:评估中, 4:任务完成/咨询完成, 5:任务失败, 6:咨询中;
+	TaskStatuses *string `json:"TaskStatuses,omitempty" name:"TaskStatuses"`
+
+	// 任务类型,可多值查询,采用逗号分隔,例如:"0,1" 0:基础版, 1:专家版, 2:本地化
+	TaskTypes *string `json:"TaskTypes,omitempty" name:"TaskTypes"`
+
+	// 页码
+	PageNo *int64 `json:"PageNo,omitempty" name:"PageNo"`
+
+	// 页码大小
+	PageSize *int64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// 应用名称或小程序名称(可选参数)
+	AppName *string `json:"AppName,omitempty" name:"AppName"`
+
+	// 查询时间范围, 查询开始时间(2021-09-30 或 2021-09-30 10:57:34)
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 查询时间范围, 查询结束时间(2021-09-30 或 2021-09-30 10:57:34)
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+}
+
 type DescribeScanTaskListRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 任务来源, -1:所有, 0:默认值(私域), 1:灵犀, 2:灵鲲;
 	Source *int64 `json:"Source,omitempty" name:"Source"`
 
@@ -833,24 +1044,26 @@ func (r *DescribeScanTaskListRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeScanTaskListResponseParams struct {
+	// 返回值, 0:成功, 其他值请查看“返回值”定义
+	Result *int64 `json:"Result,omitempty" name:"Result"`
+
+	// 诊断任务数据列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data []*AppTaskData `json:"Data,omitempty" name:"Data"`
+
+	// 任务总数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Total *int64 `json:"Total,omitempty" name:"Total"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeScanTaskListResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 返回值, 0:成功, 其他值请查看“返回值”定义
-		Result *int64 `json:"Result,omitempty" name:"Result"`
-
-		// 诊断任务数据列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		Data []*AppTaskData `json:"Data,omitempty" name:"Data"`
-
-		// 任务总数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		Total *int64 `json:"Total,omitempty" name:"Total"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeScanTaskListResponseParams `json:"Response"`
 }
 
 func (r *DescribeScanTaskListResponse) ToJsonString() string {
@@ -864,9 +1077,27 @@ func (r *DescribeScanTaskListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeScanTaskReportUrlRequestParams struct {
+	// 任务来源, 0:默认值(私域), 1:灵犀, 2:灵鲲;
+	Source *int64 `json:"Source,omitempty" name:"Source"`
+
+	// 任务id
+	TaskID *string `json:"TaskID,omitempty" name:"TaskID"`
+
+	// 应用平台, 0:android, 1:ios, 2:小程序
+	Platform *int64 `json:"Platform,omitempty" name:"Platform"`
+
+	// 报告类型, 0:诊断报告, 1:堆栈报告
+	ReportType *int64 `json:"ReportType,omitempty" name:"ReportType"`
+
+	// 任务类型, 0:基础版, 1:专家版, 2:本地化
+	TaskType *int64 `json:"TaskType,omitempty" name:"TaskType"`
+}
+
 type DescribeScanTaskReportUrlRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 任务来源, 0:默认值(私域), 1:灵犀, 2:灵鲲;
 	Source *int64 `json:"Source,omitempty" name:"Source"`
 
@@ -906,23 +1137,25 @@ func (r *DescribeScanTaskReportUrlRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeScanTaskReportUrlResponseParams struct {
+	// 返回值, 0:成功, 其他值请查看“返回值”定义
+	Result *int64 `json:"Result,omitempty" name:"Result"`
+
+	// 诊断报告/堆栈信息下载链接
+	ReportUrl *string `json:"ReportUrl,omitempty" name:"ReportUrl"`
+
+	// 诊断报告/堆栈名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReportTitle *string `json:"ReportTitle,omitempty" name:"ReportTitle"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeScanTaskReportUrlResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 返回值, 0:成功, 其他值请查看“返回值”定义
-		Result *int64 `json:"Result,omitempty" name:"Result"`
-
-		// 诊断报告/堆栈信息下载链接
-		ReportUrl *string `json:"ReportUrl,omitempty" name:"ReportUrl"`
-
-		// 诊断报告/堆栈名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		ReportTitle *string `json:"ReportTitle,omitempty" name:"ReportTitle"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeScanTaskReportUrlResponseParams `json:"Response"`
 }
 
 func (r *DescribeScanTaskReportUrlResponse) ToJsonString() string {
@@ -936,9 +1169,24 @@ func (r *DescribeScanTaskReportUrlResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeScanTaskStatusRequestParams struct {
+	// 任务类型, 0:基础版, 1:专家版, 2:本地化
+	TaskType *int64 `json:"TaskType,omitempty" name:"TaskType"`
+
+	// 任务来源, 0:默认值(私域), 1:灵犀, 2:灵鲲;
+	Source *int64 `json:"Source,omitempty" name:"Source"`
+
+	// 任务id
+	TaskID *string `json:"TaskID,omitempty" name:"TaskID"`
+
+	// 应用平台, 0:android, 1:ios, 2:小程序
+	Platform *int64 `json:"Platform,omitempty" name:"Platform"`
+}
+
 type DescribeScanTaskStatusRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 任务类型, 0:基础版, 1:专家版, 2:本地化
 	TaskType *int64 `json:"TaskType,omitempty" name:"TaskType"`
 
@@ -974,27 +1222,29 @@ func (r *DescribeScanTaskStatusRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeScanTaskStatusResponseParams struct {
+	// 返回值, 0:成功, 其他值请查看“返回值”定义
+	Result *int64 `json:"Result,omitempty" name:"Result"`
+
+	// 0:默认值(待检测/待咨询), 1.检测中,  4:任务完成/咨询完成, 5:任务失败, 6:咨询中;
+	Status *int64 `json:"Status,omitempty" name:"Status"`
+
+	// 诊断失败的错误信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrMsg *string `json:"ErrMsg,omitempty" name:"ErrMsg"`
+
+	// 任务流详情
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FlowSteps []*TaskFlowStepsInfo `json:"FlowSteps,omitempty" name:"FlowSteps"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeScanTaskStatusResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 返回值, 0:成功, 其他值请查看“返回值”定义
-		Result *int64 `json:"Result,omitempty" name:"Result"`
-
-		// 0:默认值(待检测/待咨询), 1.检测中,  4:任务完成/咨询完成, 5:任务失败, 6:咨询中;
-		Status *int64 `json:"Status,omitempty" name:"Status"`
-
-		// 诊断失败的错误信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		ErrMsg *string `json:"ErrMsg,omitempty" name:"ErrMsg"`
-
-		// 任务流详情
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		FlowSteps []*TaskFlowStepsInfo `json:"FlowSteps,omitempty" name:"FlowSteps"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeScanTaskStatusResponseParams `json:"Response"`
 }
 
 func (r *DescribeScanTaskStatusResponse) ToJsonString() string {
@@ -1009,7 +1259,6 @@ func (r *DescribeScanTaskStatusResponse) FromJsonString(s string) error {
 }
 
 type FlySecMiniAppTaskData struct {
-
 	// 任务id
 	TaskID *string `json:"TaskID,omitempty" name:"TaskID"`
 
@@ -1036,7 +1285,6 @@ type FlySecMiniAppTaskData struct {
 }
 
 type ResourceUsageInfoData struct {
-
 	// 资源名称, 具体名称请查看产品配置
 	ResourceName *string `json:"ResourceName,omitempty" name:"ResourceName"`
 
@@ -1048,7 +1296,6 @@ type ResourceUsageInfoData struct {
 }
 
 type TaskFlowStepsInfo struct {
-
 	// 流程编号
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FlowNo *string `json:"FlowNo,omitempty" name:"FlowNo"`

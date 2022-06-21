@@ -20,9 +20,18 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+// Predefined struct for user
+type DescribeImageStatRequestParams struct {
+	// 审核类型 1: 机器审核; 2: 人工审核
+	AuditType *int64 `json:"AuditType,omitempty" name:"AuditType"`
+
+	// 查询条件
+	Filters []*Filters `json:"Filters,omitempty" name:"Filters"`
+}
+
 type DescribeImageStatRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 审核类型 1: 机器审核; 2: 人工审核
 	AuditType *int64 `json:"AuditType,omitempty" name:"AuditType"`
 
@@ -50,23 +59,25 @@ func (r *DescribeImageStatRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeImageStatResponseParams struct {
+	// 识别结果统计
+	Overview *Overview `json:"Overview,omitempty" name:"Overview"`
+
+	// 识别量统计
+	TrendCount []*TrendCount `json:"TrendCount,omitempty" name:"TrendCount"`
+
+	// 违规数据分布
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EvilCount []*EvilCount `json:"EvilCount,omitempty" name:"EvilCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeImageStatResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 识别结果统计
-		Overview *Overview `json:"Overview,omitempty" name:"Overview"`
-
-		// 识别量统计
-		TrendCount []*TrendCount `json:"TrendCount,omitempty" name:"TrendCount"`
-
-		// 违规数据分布
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		EvilCount []*EvilCount `json:"EvilCount,omitempty" name:"EvilCount"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeImageStatResponseParams `json:"Response"`
 }
 
 func (r *DescribeImageStatResponse) ToJsonString() string {
@@ -80,9 +91,21 @@ func (r *DescribeImageStatResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeImsListRequestParams struct {
+	// 分页 页索引
+	PageIndex *int64 `json:"PageIndex,omitempty" name:"PageIndex"`
+
+	// 分页条数
+	PageSize *int64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// 过滤条件
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+}
+
 type DescribeImsListRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 分页 页索引
 	PageIndex *int64 `json:"PageIndex,omitempty" name:"PageIndex"`
 
@@ -114,20 +137,22 @@ func (r *DescribeImsListRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeImsListResponseParams struct {
+	// 返回列表数据----非必选，该参数暂未对外开放
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ImsDetailSet []*ImsDetail `json:"ImsDetailSet,omitempty" name:"ImsDetailSet"`
+
+	// 总条数
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeImsListResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 返回列表数据----非必选，该参数暂未对外开放
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		ImsDetailSet []*ImsDetail `json:"ImsDetailSet,omitempty" name:"ImsDetailSet"`
-
-		// 总条数
-		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeImsListResponseParams `json:"Response"`
 }
 
 func (r *DescribeImsListResponse) ToJsonString() string {
@@ -142,7 +167,6 @@ func (r *DescribeImsListResponse) FromJsonString(s string) error {
 }
 
 type Device struct {
-
 	// 发表消息设备IP
 	Ip *string `json:"Ip,omitempty" name:"Ip"`
 
@@ -169,7 +193,6 @@ type Device struct {
 }
 
 type EvilCount struct {
-
 	// ----非必选，该参数功能暂未对外开放
 	EvilType *string `json:"EvilType,omitempty" name:"EvilType"`
 
@@ -178,7 +201,6 @@ type EvilCount struct {
 }
 
 type Filter struct {
-
 	// 过滤键的名称。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
@@ -187,7 +209,6 @@ type Filter struct {
 }
 
 type Filters struct {
-
 	// 查询字段：
 	// 策略BizType
 	// 子账号SubUin
@@ -198,9 +219,36 @@ type Filters struct {
 	Values []*string `json:"Values,omitempty" name:"Values"`
 }
 
+// Predefined struct for user
+type ImageModerationRequestParams struct {
+	// 该字段用于标识业务场景。您可以在内容安全控制台创建对应的ID，配置不同的内容审核策略，通过接口调用，默认不填为0，后端使用默认策略。 -- 该字段暂未开放。
+	BizType *string `json:"BizType,omitempty" name:"BizType"`
+
+	// 数据ID，可以由英文字母、数字、下划线、-、@#组成，不超过64个字符
+	DataId *string `json:"DataId,omitempty" name:"DataId"`
+
+	// 数据Base64编码，图片检测接口为图片文件内容，大小不能超过5M
+	FileContent *string `json:"FileContent,omitempty" name:"FileContent"`
+
+	// 图片资源访问链接，__与FileContent参数必须二选一输入__
+	FileUrl *string `json:"FileUrl,omitempty" name:"FileUrl"`
+
+	// 截帧频率，GIF图/长图检测专用，默认值为0，表示只会检测GIF图/长图的第一帧
+	Interval *int64 `json:"Interval,omitempty" name:"Interval"`
+
+	// GIF图/长图检测专用，代表均匀最大截帧数量，默认值为1（即只取GIF第一张，或长图不做切分处理（可能会造成处理超时））。
+	MaxFrames *int64 `json:"MaxFrames,omitempty" name:"MaxFrames"`
+
+	// 账号相关信息字段，填入后可识别违规风险账号。
+	User *User `json:"User,omitempty" name:"User"`
+
+	// 设备相关信息字段，填入后可识别违规风险设备。
+	Device *Device `json:"Device,omitempty" name:"Device"`
+}
+
 type ImageModerationRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 该字段用于标识业务场景。您可以在内容安全控制台创建对应的ID，配置不同的内容审核策略，通过接口调用，默认不填为0，后端使用默认策略。 -- 该字段暂未开放。
 	BizType *string `json:"BizType,omitempty" name:"BizType"`
 
@@ -252,60 +300,62 @@ func (r *ImageModerationRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-type ImageModerationResponse struct {
-	*tchttp.BaseResponse
-	Response *struct {
-
-		// 数据是否属于恶意类型。
+// Predefined struct for user
+type ImageModerationResponseParams struct {
+	// 数据是否属于恶意类型。
 	// 0：正常，1：可疑；
-		HitFlag *int64 `json:"HitFlag,omitempty" name:"HitFlag"`
+	HitFlag *int64 `json:"HitFlag,omitempty" name:"HitFlag"`
 
-		// 建议您拿到判断结果后的执行操作。
+	// 建议您拿到判断结果后的执行操作。
 	// 建议值，Block：建议屏蔽，Review：建议复审，Pass：建议通过
-		Suggestion *string `json:"Suggestion,omitempty" name:"Suggestion"`
+	Suggestion *string `json:"Suggestion,omitempty" name:"Suggestion"`
 
-		// 恶意标签，Normal：正常，Porn：色情，Abuse：谩骂，Ad：广告，Custom：自定义图片。
+	// 恶意标签，Normal：正常，Porn：色情，Abuse：谩骂，Ad：广告，Custom：自定义图片。
 	// 以及令人反感、不安全或不适宜的内容类型。
-		Label *string `json:"Label,omitempty" name:"Label"`
+	Label *string `json:"Label,omitempty" name:"Label"`
 
-		// 子标签名称，如色情--性行为；当未命中子标签时，返回空字符串；
-		SubLabel *string `json:"SubLabel,omitempty" name:"SubLabel"`
+	// 子标签名称，如色情--性行为；当未命中子标签时，返回空字符串；
+	SubLabel *string `json:"SubLabel,omitempty" name:"SubLabel"`
 
-		// 机器判断当前分类的置信度，取值范围：0.00~100.00。分数越高，表示越有可能属于当前分类。
+	// 机器判断当前分类的置信度，取值范围：0.00~100.00。分数越高，表示越有可能属于当前分类。
 	// （如：色情 99.99，则该样本属于色情的置信度非常高。）
-		Score *int64 `json:"Score,omitempty" name:"Score"`
+	Score *int64 `json:"Score,omitempty" name:"Score"`
 
-		// 智能模型的识别结果，包括涉黄、广告等令人反感、不安全或不适宜的内容类型识别结果。
+	// 智能模型的识别结果，包括涉黄、广告等令人反感、不安全或不适宜的内容类型识别结果。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		LabelResults []*LabelResult `json:"LabelResults,omitempty" name:"LabelResults"`
+	LabelResults []*LabelResult `json:"LabelResults,omitempty" name:"LabelResults"`
 
-		// 物体检测模型的审核结果，包括实体、广告台标/二维码等物体坐标信息与内容审核信息。
+	// 物体检测模型的审核结果，包括实体、广告台标/二维码等物体坐标信息与内容审核信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		ObjectResults []*ObjectResult `json:"ObjectResults,omitempty" name:"ObjectResults"`
+	ObjectResults []*ObjectResult `json:"ObjectResults,omitempty" name:"ObjectResults"`
 
-		// OCR识别后的文本识别结果，包括文本所处图片的OCR坐标信息以及图片文本的识别结果。
+	// OCR识别后的文本识别结果，包括文本所处图片的OCR坐标信息以及图片文本的识别结果。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		OcrResults []*OcrResult `json:"OcrResults,omitempty" name:"OcrResults"`
+	OcrResults []*OcrResult `json:"OcrResults,omitempty" name:"OcrResults"`
 
-		// 基于图片风险库识别的结果。
+	// 基于图片风险库识别的结果。
 	// 风险库包括不安全黑库与正常白库的结果。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		LibResults []*LibResult `json:"LibResults,omitempty" name:"LibResults"`
+	LibResults []*LibResult `json:"LibResults,omitempty" name:"LibResults"`
 
-		// 请求参数中的DataId。
-		DataId *string `json:"DataId,omitempty" name:"DataId"`
+	// 请求参数中的DataId。
+	DataId *string `json:"DataId,omitempty" name:"DataId"`
 
-		// 您在入参时所填入的Biztype参数。 -- 该字段暂未开放。
-		BizType *string `json:"BizType,omitempty" name:"BizType"`
+	// 您在入参时所填入的Biztype参数。 -- 该字段暂未开放。
+	BizType *string `json:"BizType,omitempty" name:"BizType"`
 
-		// 扩展字段，用于特定信息返回，不同客户/Biztype下返回信息不同。
+	// 扩展字段，用于特定信息返回，不同客户/Biztype下返回信息不同。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		Extra *string `json:"Extra,omitempty" name:"Extra"`
+	Extra *string `json:"Extra,omitempty" name:"Extra"`
 
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ImageModerationResponse struct {
+	*tchttp.BaseResponse
+	Response *ImageModerationResponseParams `json:"Response"`
 }
 
 func (r *ImageModerationResponse) ToJsonString() string {
@@ -320,7 +370,6 @@ func (r *ImageModerationResponse) FromJsonString(s string) error {
 }
 
 type ImsDetail struct {
-
 	// 文本内容
 	Content *string `json:"Content,omitempty" name:"Content"`
 
@@ -347,7 +396,6 @@ type ImsDetail struct {
 }
 
 type LabelDetailItem struct {
-
 	// 序号
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Id *int64 `json:"Id,omitempty" name:"Id"`
@@ -362,7 +410,6 @@ type LabelDetailItem struct {
 }
 
 type LabelResult struct {
-
 	// 场景识别结果
 	Scene *string `json:"Scene,omitempty" name:"Scene"`
 
@@ -387,7 +434,6 @@ type LabelResult struct {
 }
 
 type LibDetail struct {
-
 	// 序号
 	Id *int64 `json:"Id,omitempty" name:"Id"`
 
@@ -414,7 +460,6 @@ type LibDetail struct {
 }
 
 type LibResult struct {
-
 	// 场景识别结果
 	Scene *string `json:"Scene,omitempty" name:"Scene"`
 
@@ -439,7 +484,6 @@ type LibResult struct {
 }
 
 type Location struct {
-
 	// 左上角横坐标
 	X *float64 `json:"X,omitempty" name:"X"`
 
@@ -457,7 +501,6 @@ type Location struct {
 }
 
 type ObjectDetail struct {
-
 	// 序号
 	Id *uint64 `json:"Id,omitempty" name:"Id"`
 
@@ -476,7 +519,6 @@ type ObjectDetail struct {
 }
 
 type ObjectResult struct {
-
 	// 场景识别结果
 	Scene *string `json:"Scene,omitempty" name:"Scene"`
 
@@ -505,7 +547,6 @@ type ObjectResult struct {
 }
 
 type OcrResult struct {
-
 	// 场景识别结果
 	Scene *string `json:"Scene,omitempty" name:"Scene"`
 
@@ -531,7 +572,6 @@ type OcrResult struct {
 }
 
 type OcrTextDetail struct {
-
 	// OCR文本内容
 	Text *string `json:"Text,omitempty" name:"Text"`
 
@@ -559,7 +599,6 @@ type OcrTextDetail struct {
 }
 
 type Overview struct {
-
 	// 总调用量
 	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
@@ -586,7 +625,6 @@ type Overview struct {
 }
 
 type TrendCount struct {
-
 	// 总调用量
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -625,7 +663,6 @@ type TrendCount struct {
 }
 
 type User struct {
-
 	// 业务用户ID 如填写，会根据账号历史恶意情况，判定消息有害结果，特别是有利于可疑恶意情况下的辅助判断。账号可以填写微信uin、QQ号、微信openid、QQopenid、字符串等。该字段和账号类别确定唯一账号。
 	UserId *string `json:"UserId,omitempty" name:"UserId"`
 

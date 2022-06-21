@@ -21,7 +21,6 @@ import (
 )
 
 type Attachment struct {
-
 	// 附件名称，最大支持255个字符长度，不支持部分附件类型，详情请参考[附件类型](https://cloud.tencent.com/document/product/1288/51951)。
 	FileName *string `json:"FileName,omitempty" name:"FileName"`
 
@@ -29,9 +28,50 @@ type Attachment struct {
 	Content *string `json:"Content,omitempty" name:"Content"`
 }
 
+// Predefined struct for user
+type BatchSendEmailRequestParams struct {
+	// 发信邮件地址。请填写发件人邮箱地址，例如：noreply@mail.qcloud.com。如需填写发件人说明，请按照
+	// 发信人 <邮件地址> 的方式填写，例如：
+	// 腾讯云团队 <noreply@mail.qcloud.com>
+	FromEmailAddress *string `json:"FromEmailAddress,omitempty" name:"FromEmailAddress"`
+
+	// 收件人列表ID
+	ReceiverId *uint64 `json:"ReceiverId,omitempty" name:"ReceiverId"`
+
+	// 邮件主题
+	Subject *string `json:"Subject,omitempty" name:"Subject"`
+
+	// 任务类型 1: 立即发送 2: 定时发送 3: 周期（频率）发送
+	TaskType *uint64 `json:"TaskType,omitempty" name:"TaskType"`
+
+	// 邮件的“回复”电子邮件地址。可以填写您能收到邮件的邮箱地址，可以是个人邮箱。如果不填，收件人的回复邮件将会发送失败。
+	ReplyToAddresses *string `json:"ReplyToAddresses,omitempty" name:"ReplyToAddresses"`
+
+	// 使用模板发送时，填写的模板相关参数
+	Template *Template `json:"Template,omitempty" name:"Template"`
+
+	// 已废弃
+	Simple *Simple `json:"Simple,omitempty" name:"Simple"`
+
+	// 需要发送附件时，填写附件相关参数（暂未支持）
+	Attachments []*Attachment `json:"Attachments,omitempty" name:"Attachments"`
+
+	// 周期发送任务的必要参数
+	CycleParam *CycleEmailParam `json:"CycleParam,omitempty" name:"CycleParam"`
+
+	// 定时发送任务的必要参数
+	TimedParam *TimedEmailParam `json:"TimedParam,omitempty" name:"TimedParam"`
+
+	// 退订选项 1: 加入退订链接 0: 不加入退订链接
+	Unsubscribe *string `json:"Unsubscribe,omitempty" name:"Unsubscribe"`
+
+	// 是否添加广告标识 0:不添加 1:添加到subject前面，2:添加到subject后面
+	ADLocation *uint64 `json:"ADLocation,omitempty" name:"ADLocation"`
+}
+
 type BatchSendEmailRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 发信邮件地址。请填写发件人邮箱地址，例如：noreply@mail.qcloud.com。如需填写发件人说明，请按照
 	// 发信人 <邮件地址> 的方式填写，例如：
 	// 腾讯云团队 <noreply@mail.qcloud.com>
@@ -101,16 +141,18 @@ func (r *BatchSendEmailRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type BatchSendEmailResponseParams struct {
+	// 发送任务ID
+	TaskId *uint64 `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type BatchSendEmailResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 发送任务ID
-		TaskId *uint64 `json:"TaskId,omitempty" name:"TaskId"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *BatchSendEmailResponseParams `json:"Response"`
 }
 
 func (r *BatchSendEmailResponse) ToJsonString() string {
@@ -125,7 +167,6 @@ func (r *BatchSendEmailResponse) FromJsonString(s string) error {
 }
 
 type BlackEmailAddress struct {
-
 	// 邮箱被拉黑时间
 	BounceTime *string `json:"BounceTime,omitempty" name:"BounceTime"`
 
@@ -133,9 +174,18 @@ type BlackEmailAddress struct {
 	EmailAddress *string `json:"EmailAddress,omitempty" name:"EmailAddress"`
 }
 
+// Predefined struct for user
+type CreateEmailAddressRequestParams struct {
+	// 您的发信地址（发信地址总数上限为10个）
+	EmailAddress *string `json:"EmailAddress,omitempty" name:"EmailAddress"`
+
+	// 发件人别名
+	EmailSenderName *string `json:"EmailSenderName,omitempty" name:"EmailSenderName"`
+}
+
 type CreateEmailAddressRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 您的发信地址（发信地址总数上限为10个）
 	EmailAddress *string `json:"EmailAddress,omitempty" name:"EmailAddress"`
 
@@ -163,13 +213,15 @@ func (r *CreateEmailAddressRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateEmailAddressResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreateEmailAddressResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreateEmailAddressResponseParams `json:"Response"`
 }
 
 func (r *CreateEmailAddressResponse) ToJsonString() string {
@@ -183,9 +235,15 @@ func (r *CreateEmailAddressResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateEmailIdentityRequestParams struct {
+	// 您的发信域名，建议使用三级以上域名。例如：mail.qcloud.com。
+	EmailIdentity *string `json:"EmailIdentity,omitempty" name:"EmailIdentity"`
+}
+
 type CreateEmailIdentityRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 您的发信域名，建议使用三级以上域名。例如：mail.qcloud.com。
 	EmailIdentity *string `json:"EmailIdentity,omitempty" name:"EmailIdentity"`
 }
@@ -209,22 +267,24 @@ func (r *CreateEmailIdentityRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateEmailIdentityResponseParams struct {
+	// 验证类型。固定值：DOMAIN
+	IdentityType *string `json:"IdentityType,omitempty" name:"IdentityType"`
+
+	// 是否已通过验证
+	VerifiedForSendingStatus *bool `json:"VerifiedForSendingStatus,omitempty" name:"VerifiedForSendingStatus"`
+
+	// 需要配置的DNS信息
+	Attributes []*DNSAttributes `json:"Attributes,omitempty" name:"Attributes"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreateEmailIdentityResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 验证类型。固定值：DOMAIN
-		IdentityType *string `json:"IdentityType,omitempty" name:"IdentityType"`
-
-		// 是否已通过验证
-		VerifiedForSendingStatus *bool `json:"VerifiedForSendingStatus,omitempty" name:"VerifiedForSendingStatus"`
-
-		// 需要配置的DNS信息
-		Attributes []*DNSAttributes `json:"Attributes,omitempty" name:"Attributes"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreateEmailIdentityResponseParams `json:"Response"`
 }
 
 func (r *CreateEmailIdentityResponse) ToJsonString() string {
@@ -238,9 +298,18 @@ func (r *CreateEmailIdentityResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateEmailTemplateRequestParams struct {
+	// 模板名称
+	TemplateName *string `json:"TemplateName,omitempty" name:"TemplateName"`
+
+	// 模板内容
+	TemplateContent *TemplateContent `json:"TemplateContent,omitempty" name:"TemplateContent"`
+}
+
 type CreateEmailTemplateRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 模板名称
 	TemplateName *string `json:"TemplateName,omitempty" name:"TemplateName"`
 
@@ -268,16 +337,18 @@ func (r *CreateEmailTemplateRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateEmailTemplateResponseParams struct {
+	// 模板id
+	TemplateID *uint64 `json:"TemplateID,omitempty" name:"TemplateID"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreateEmailTemplateResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 模板id
-		TemplateID *uint64 `json:"TemplateID,omitempty" name:"TemplateID"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreateEmailTemplateResponseParams `json:"Response"`
 }
 
 func (r *CreateEmailTemplateResponse) ToJsonString() string {
@@ -291,9 +362,18 @@ func (r *CreateEmailTemplateResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateReceiverDetailRequestParams struct {
+	// 收件人列表ID
+	ReceiverId *uint64 `json:"ReceiverId,omitempty" name:"ReceiverId"`
+
+	// 邮箱
+	Emails []*string `json:"Emails,omitempty" name:"Emails"`
+}
+
 type CreateReceiverDetailRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 收件人列表ID
 	ReceiverId *uint64 `json:"ReceiverId,omitempty" name:"ReceiverId"`
 
@@ -321,13 +401,15 @@ func (r *CreateReceiverDetailRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateReceiverDetailResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreateReceiverDetailResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreateReceiverDetailResponseParams `json:"Response"`
 }
 
 func (r *CreateReceiverDetailResponse) ToJsonString() string {
@@ -341,9 +423,18 @@ func (r *CreateReceiverDetailResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateReceiverDetailWithDataRequestParams struct {
+	// 收件人列表ID
+	ReceiverId *uint64 `json:"ReceiverId,omitempty" name:"ReceiverId"`
+
+	// 收信人邮箱以及模板参数，数组形式
+	Datas []*ReceiverInputData `json:"Datas,omitempty" name:"Datas"`
+}
+
 type CreateReceiverDetailWithDataRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 收件人列表ID
 	ReceiverId *uint64 `json:"ReceiverId,omitempty" name:"ReceiverId"`
 
@@ -371,13 +462,15 @@ func (r *CreateReceiverDetailWithDataRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateReceiverDetailWithDataResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreateReceiverDetailWithDataResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreateReceiverDetailWithDataResponseParams `json:"Response"`
 }
 
 func (r *CreateReceiverDetailWithDataResponse) ToJsonString() string {
@@ -391,9 +484,18 @@ func (r *CreateReceiverDetailWithDataResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateReceiverRequestParams struct {
+	// 收件人列表名称
+	ReceiversName *string `json:"ReceiversName,omitempty" name:"ReceiversName"`
+
+	// 收件人列表描述
+	Desc *string `json:"Desc,omitempty" name:"Desc"`
+}
+
 type CreateReceiverRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 收件人列表名称
 	ReceiversName *string `json:"ReceiversName,omitempty" name:"ReceiversName"`
 
@@ -421,16 +523,18 @@ func (r *CreateReceiverRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateReceiverResponseParams struct {
+	// 收件人列表id，后续根据收件人列表id上传收件人地址
+	ReceiverId *uint64 `json:"ReceiverId,omitempty" name:"ReceiverId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreateReceiverResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 收件人列表id，后续根据收件人列表id上传收件人地址
-		ReceiverId *uint64 `json:"ReceiverId,omitempty" name:"ReceiverId"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreateReceiverResponseParams `json:"Response"`
 }
 
 func (r *CreateReceiverResponse) ToJsonString() string {
@@ -445,7 +549,6 @@ func (r *CreateReceiverResponse) FromJsonString(s string) error {
 }
 
 type CycleEmailParam struct {
-
 	// 任务开始时间
 	BeginTime *string `json:"BeginTime,omitempty" name:"BeginTime"`
 
@@ -454,7 +557,6 @@ type CycleEmailParam struct {
 }
 
 type DNSAttributes struct {
-
 	// 记录类型 CNAME | A | TXT | MX
 	Type *string `json:"Type,omitempty" name:"Type"`
 
@@ -471,9 +573,15 @@ type DNSAttributes struct {
 	Status *bool `json:"Status,omitempty" name:"Status"`
 }
 
+// Predefined struct for user
+type DeleteBlackListRequestParams struct {
+	// 需要清除的黑名单邮箱列表，数组长度至少为1
+	EmailAddressList []*string `json:"EmailAddressList,omitempty" name:"EmailAddressList"`
+}
+
 type DeleteBlackListRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 需要清除的黑名单邮箱列表，数组长度至少为1
 	EmailAddressList []*string `json:"EmailAddressList,omitempty" name:"EmailAddressList"`
 }
@@ -497,13 +605,15 @@ func (r *DeleteBlackListRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteBlackListResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DeleteBlackListResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DeleteBlackListResponseParams `json:"Response"`
 }
 
 func (r *DeleteBlackListResponse) ToJsonString() string {
@@ -517,9 +627,15 @@ func (r *DeleteBlackListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteEmailAddressRequestParams struct {
+	// 发信地址
+	EmailAddress *string `json:"EmailAddress,omitempty" name:"EmailAddress"`
+}
+
 type DeleteEmailAddressRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 发信地址
 	EmailAddress *string `json:"EmailAddress,omitempty" name:"EmailAddress"`
 }
@@ -543,13 +659,15 @@ func (r *DeleteEmailAddressRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteEmailAddressResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DeleteEmailAddressResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DeleteEmailAddressResponseParams `json:"Response"`
 }
 
 func (r *DeleteEmailAddressResponse) ToJsonString() string {
@@ -563,9 +681,15 @@ func (r *DeleteEmailAddressResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteEmailIdentityRequestParams struct {
+	// 发信域名
+	EmailIdentity *string `json:"EmailIdentity,omitempty" name:"EmailIdentity"`
+}
+
 type DeleteEmailIdentityRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 发信域名
 	EmailIdentity *string `json:"EmailIdentity,omitempty" name:"EmailIdentity"`
 }
@@ -589,13 +713,15 @@ func (r *DeleteEmailIdentityRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteEmailIdentityResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DeleteEmailIdentityResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DeleteEmailIdentityResponseParams `json:"Response"`
 }
 
 func (r *DeleteEmailIdentityResponse) ToJsonString() string {
@@ -609,9 +735,15 @@ func (r *DeleteEmailIdentityResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteEmailTemplateRequestParams struct {
+	// 模板ID
+	TemplateID *uint64 `json:"TemplateID,omitempty" name:"TemplateID"`
+}
+
 type DeleteEmailTemplateRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 模板ID
 	TemplateID *uint64 `json:"TemplateID,omitempty" name:"TemplateID"`
 }
@@ -635,13 +767,15 @@ func (r *DeleteEmailTemplateRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteEmailTemplateResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DeleteEmailTemplateResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DeleteEmailTemplateResponseParams `json:"Response"`
 }
 
 func (r *DeleteEmailTemplateResponse) ToJsonString() string {
@@ -655,9 +789,15 @@ func (r *DeleteEmailTemplateResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteReceiverRequestParams struct {
+	// 收件人列表id，创建收件人列表时会返回
+	ReceiverId *uint64 `json:"ReceiverId,omitempty" name:"ReceiverId"`
+}
+
 type DeleteReceiverRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 收件人列表id，创建收件人列表时会返回
 	ReceiverId *uint64 `json:"ReceiverId,omitempty" name:"ReceiverId"`
 }
@@ -681,13 +821,15 @@ func (r *DeleteReceiverRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteReceiverResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DeleteReceiverResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DeleteReceiverResponseParams `json:"Response"`
 }
 
 func (r *DeleteReceiverResponse) ToJsonString() string {
@@ -702,7 +844,6 @@ func (r *DeleteReceiverResponse) FromJsonString(s string) error {
 }
 
 type EmailIdentity struct {
-
 	// 发信域名
 	IdentityName *string `json:"IdentityName,omitempty" name:"IdentityName"`
 
@@ -714,7 +855,6 @@ type EmailIdentity struct {
 }
 
 type EmailSender struct {
-
 	// 发信地址
 	EmailAddress *string `json:"EmailAddress,omitempty" name:"EmailAddress"`
 
@@ -727,9 +867,15 @@ type EmailSender struct {
 	CreatedTimestamp *uint64 `json:"CreatedTimestamp,omitempty" name:"CreatedTimestamp"`
 }
 
+// Predefined struct for user
+type GetEmailIdentityRequestParams struct {
+	// 发信域名
+	EmailIdentity *string `json:"EmailIdentity,omitempty" name:"EmailIdentity"`
+}
+
 type GetEmailIdentityRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 发信域名
 	EmailIdentity *string `json:"EmailIdentity,omitempty" name:"EmailIdentity"`
 }
@@ -753,22 +899,24 @@ func (r *GetEmailIdentityRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type GetEmailIdentityResponseParams struct {
+	// 验证类型。固定值：DOMAIN
+	IdentityType *string `json:"IdentityType,omitempty" name:"IdentityType"`
+
+	// 是否已通过验证
+	VerifiedForSendingStatus *bool `json:"VerifiedForSendingStatus,omitempty" name:"VerifiedForSendingStatus"`
+
+	// DNS配置详情
+	Attributes []*DNSAttributes `json:"Attributes,omitempty" name:"Attributes"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type GetEmailIdentityResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 验证类型。固定值：DOMAIN
-		IdentityType *string `json:"IdentityType,omitempty" name:"IdentityType"`
-
-		// 是否已通过验证
-		VerifiedForSendingStatus *bool `json:"VerifiedForSendingStatus,omitempty" name:"VerifiedForSendingStatus"`
-
-		// DNS配置详情
-		Attributes []*DNSAttributes `json:"Attributes,omitempty" name:"Attributes"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *GetEmailIdentityResponseParams `json:"Response"`
 }
 
 func (r *GetEmailIdentityResponse) ToJsonString() string {
@@ -782,9 +930,15 @@ func (r *GetEmailIdentityResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type GetEmailTemplateRequestParams struct {
+	// 模板ID
+	TemplateID *uint64 `json:"TemplateID,omitempty" name:"TemplateID"`
+}
+
 type GetEmailTemplateRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 模板ID
 	TemplateID *uint64 `json:"TemplateID,omitempty" name:"TemplateID"`
 }
@@ -808,16 +962,18 @@ func (r *GetEmailTemplateRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type GetEmailTemplateResponseParams struct {
+	// 模板内容数据
+	TemplateContent *TemplateContent `json:"TemplateContent,omitempty" name:"TemplateContent"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type GetEmailTemplateResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 模板内容数据
-		TemplateContent *TemplateContent `json:"TemplateContent,omitempty" name:"TemplateContent"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *GetEmailTemplateResponseParams `json:"Response"`
 }
 
 func (r *GetEmailTemplateResponse) ToJsonString() string {
@@ -831,9 +987,27 @@ func (r *GetEmailTemplateResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type GetSendEmailStatusRequestParams struct {
+	// 发送的日期，必填。仅支持查询某个日期，不支持范围查询。
+	RequestDate *string `json:"RequestDate,omitempty" name:"RequestDate"`
+
+	// 偏移量。默认为0
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 拉取最大条数，最多 100。
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// SendMail接口返回的MessageId字段。
+	MessageId *string `json:"MessageId,omitempty" name:"MessageId"`
+
+	// 收件人邮箱。
+	ToEmailAddress *string `json:"ToEmailAddress,omitempty" name:"ToEmailAddress"`
+}
+
 type GetSendEmailStatusRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 发送的日期，必填。仅支持查询某个日期，不支持范围查询。
 	RequestDate *string `json:"RequestDate,omitempty" name:"RequestDate"`
 
@@ -873,16 +1047,18 @@ func (r *GetSendEmailStatusRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type GetSendEmailStatusResponseParams struct {
+	// 邮件发送状态列表
+	EmailStatusList []*SendEmailStatus `json:"EmailStatusList,omitempty" name:"EmailStatusList"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type GetSendEmailStatusResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 邮件发送状态列表
-		EmailStatusList []*SendEmailStatus `json:"EmailStatusList,omitempty" name:"EmailStatusList"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *GetSendEmailStatusResponseParams `json:"Response"`
 }
 
 func (r *GetSendEmailStatusResponse) ToJsonString() string {
@@ -896,9 +1072,24 @@ func (r *GetSendEmailStatusResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type GetStatisticsReportRequestParams struct {
+	// 开始日期
+	StartDate *string `json:"StartDate,omitempty" name:"StartDate"`
+
+	// 结束日期
+	EndDate *string `json:"EndDate,omitempty" name:"EndDate"`
+
+	// 发信域名
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 收件方邮箱类型，例如gmail.com
+	ReceivingMailboxType *string `json:"ReceivingMailboxType,omitempty" name:"ReceivingMailboxType"`
+}
+
 type GetStatisticsReportRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 开始日期
 	StartDate *string `json:"StartDate,omitempty" name:"StartDate"`
 
@@ -934,19 +1125,21 @@ func (r *GetStatisticsReportRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type GetStatisticsReportResponseParams struct {
+	// 发信统计报告，按天
+	DailyVolumes []*Volume `json:"DailyVolumes,omitempty" name:"DailyVolumes"`
+
+	// 发信统计报告，总览
+	OverallVolume *Volume `json:"OverallVolume,omitempty" name:"OverallVolume"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type GetStatisticsReportResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 发信统计报告，按天
-		DailyVolumes []*Volume `json:"DailyVolumes,omitempty" name:"DailyVolumes"`
-
-		// 发信统计报告，总览
-		OverallVolume *Volume `json:"OverallVolume,omitempty" name:"OverallVolume"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *GetStatisticsReportResponseParams `json:"Response"`
 }
 
 func (r *GetStatisticsReportResponse) ToJsonString() string {
@@ -960,9 +1153,30 @@ func (r *GetStatisticsReportResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ListBlackEmailAddressRequestParams struct {
+	// 开始日期，格式为YYYY-MM-DD
+	StartDate *string `json:"StartDate,omitempty" name:"StartDate"`
+
+	// 结束日期，格式为YYYY-MM-DD
+	EndDate *string `json:"EndDate,omitempty" name:"EndDate"`
+
+	// 规范，配合Offset使用
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 规范，配合Limit使用，Limit最大取值为100
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 可以指定邮箱进行查询
+	EmailAddress *string `json:"EmailAddress,omitempty" name:"EmailAddress"`
+
+	// 可以指定任务ID进行查询
+	TaskID *string `json:"TaskID,omitempty" name:"TaskID"`
+}
+
 type ListBlackEmailAddressRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 开始日期，格式为YYYY-MM-DD
 	StartDate *string `json:"StartDate,omitempty" name:"StartDate"`
 
@@ -1006,19 +1220,21 @@ func (r *ListBlackEmailAddressRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ListBlackEmailAddressResponseParams struct {
+	// 黑名单列表
+	BlackList []*BlackEmailAddress `json:"BlackList,omitempty" name:"BlackList"`
+
+	// 黑名单总数
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type ListBlackEmailAddressResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 黑名单列表
-		BlackList []*BlackEmailAddress `json:"BlackList,omitempty" name:"BlackList"`
-
-		// 黑名单总数
-		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *ListBlackEmailAddressResponseParams `json:"Response"`
 }
 
 func (r *ListBlackEmailAddressResponse) ToJsonString() string {
@@ -1032,8 +1248,14 @@ func (r *ListBlackEmailAddressResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ListEmailAddressRequestParams struct {
+
+}
+
 type ListEmailAddressRequest struct {
 	*tchttp.BaseRequest
+	
 }
 
 func (r *ListEmailAddressRequest) ToJsonString() string {
@@ -1048,23 +1270,26 @@ func (r *ListEmailAddressRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListEmailAddressRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ListEmailAddressResponseParams struct {
+	// 发信地址列表详情
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EmailSenders []*EmailSender `json:"EmailSenders,omitempty" name:"EmailSenders"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type ListEmailAddressResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 发信地址列表详情
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		EmailSenders []*EmailSender `json:"EmailSenders,omitempty" name:"EmailSenders"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *ListEmailAddressResponseParams `json:"Response"`
 }
 
 func (r *ListEmailAddressResponse) ToJsonString() string {
@@ -1078,8 +1303,14 @@ func (r *ListEmailAddressResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ListEmailIdentitiesRequestParams struct {
+
+}
+
 type ListEmailIdentitiesRequest struct {
 	*tchttp.BaseRequest
+	
 }
 
 func (r *ListEmailIdentitiesRequest) ToJsonString() string {
@@ -1094,22 +1325,25 @@ func (r *ListEmailIdentitiesRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListEmailIdentitiesRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ListEmailIdentitiesResponseParams struct {
+	// 发信域名列表
+	EmailIdentities []*EmailIdentity `json:"EmailIdentities,omitempty" name:"EmailIdentities"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type ListEmailIdentitiesResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 发信域名列表
-		EmailIdentities []*EmailIdentity `json:"EmailIdentities,omitempty" name:"EmailIdentities"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *ListEmailIdentitiesResponseParams `json:"Response"`
 }
 
 func (r *ListEmailIdentitiesResponse) ToJsonString() string {
@@ -1123,9 +1357,18 @@ func (r *ListEmailIdentitiesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ListEmailTemplatesRequestParams struct {
+	// 获取模板数据量，用于分页
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 获取模板偏移值，用于分页
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+}
+
 type ListEmailTemplatesRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 获取模板数据量，用于分页
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
@@ -1153,19 +1396,21 @@ func (r *ListEmailTemplatesRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ListEmailTemplatesResponseParams struct {
+	// 邮件模板列表
+	TemplatesMetadata []*TemplatesMetadata `json:"TemplatesMetadata,omitempty" name:"TemplatesMetadata"`
+
+	// 模板总数量
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type ListEmailTemplatesResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 邮件模板列表
-		TemplatesMetadata []*TemplatesMetadata `json:"TemplatesMetadata,omitempty" name:"TemplatesMetadata"`
-
-		// 模板总数量
-		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *ListEmailTemplatesResponseParams `json:"Response"`
 }
 
 func (r *ListEmailTemplatesResponse) ToJsonString() string {
@@ -1179,9 +1424,24 @@ func (r *ListEmailTemplatesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ListReceiversRequestParams struct {
+	// 偏移量，整型，从0开始
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 限制数目，整型，不超过100
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 列表状态(1 待上传 2 上传中  3传完成)，若查询所有就不传这个字段
+	Status *uint64 `json:"Status,omitempty" name:"Status"`
+
+	// 列表名称的关键字，模糊查询
+	KeyWord *string `json:"KeyWord,omitempty" name:"KeyWord"`
+}
+
 type ListReceiversRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 偏移量，整型，从0开始
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
@@ -1217,19 +1477,21 @@ func (r *ListReceiversRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ListReceiversResponseParams struct {
+	// 总数
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 数据记录
+	Data []*ReceiverData `json:"Data,omitempty" name:"Data"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type ListReceiversResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 总数
-		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 数据记录
-		Data []*ReceiverData `json:"Data,omitempty" name:"Data"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *ListReceiversResponseParams `json:"Response"`
 }
 
 func (r *ListReceiversResponse) ToJsonString() string {
@@ -1243,9 +1505,27 @@ func (r *ListReceiversResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ListSendTasksRequestParams struct {
+	// 偏移量，整型，从0开始，0代表跳过0行
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 限制数目，整型,不超过100
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 任务状态 1 待开始 5 发送中 6 今日暂停发送  7 发信异常 10 发送完成。查询所有状态，则不传这个字段
+	Status *uint64 `json:"Status,omitempty" name:"Status"`
+
+	// 收件人列表ID
+	ReceiverId *uint64 `json:"ReceiverId,omitempty" name:"ReceiverId"`
+
+	// 任务类型 1即时 2定时 3周期，查询所有类型则不传这个字段
+	TaskType *uint64 `json:"TaskType,omitempty" name:"TaskType"`
+}
+
 type ListSendTasksRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 偏移量，整型，从0开始，0代表跳过0行
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
@@ -1285,19 +1565,21 @@ func (r *ListSendTasksRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ListSendTasksResponseParams struct {
+	// 总数
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 数据记录
+	Data []*SendTaskData `json:"Data,omitempty" name:"Data"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type ListSendTasksResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 总数
-		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 数据记录
-		Data []*SendTaskData `json:"Data,omitempty" name:"Data"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *ListSendTasksResponseParams `json:"Response"`
 }
 
 func (r *ListSendTasksResponse) ToJsonString() string {
@@ -1312,7 +1594,6 @@ func (r *ListSendTasksResponse) FromJsonString(s string) error {
 }
 
 type ReceiverData struct {
-
 	// 收件人列表ID
 	ReceiverId *uint64 `json:"ReceiverId,omitempty" name:"ReceiverId"`
 
@@ -1335,7 +1616,6 @@ type ReceiverData struct {
 }
 
 type ReceiverInputData struct {
-
 	// 收件人邮箱
 	Email *string `json:"Email,omitempty" name:"Email"`
 
@@ -1344,9 +1624,41 @@ type ReceiverInputData struct {
 	TemplateData *string `json:"TemplateData,omitempty" name:"TemplateData"`
 }
 
+// Predefined struct for user
+type SendEmailRequestParams struct {
+	// 发信邮件地址。请填写发件人邮箱地址，例如：noreply@mail.qcloud.com
+	// 如需填写发件人说明，请按照如下方式： 
+	// 别名 <邮箱地址>
+	FromEmailAddress *string `json:"FromEmailAddress,omitempty" name:"FromEmailAddress"`
+
+	// 收信人邮箱地址，最多支持群发50人。注意：邮件内容会显示所有收件人地址，非群发邮件请多次调用API发送。
+	Destination []*string `json:"Destination,omitempty" name:"Destination"`
+
+	// 邮件主题
+	Subject *string `json:"Subject,omitempty" name:"Subject"`
+
+	// 邮件的“回复”电子邮件地址。可以填写您能收到邮件的邮箱地址，可以是个人邮箱。如果不填，收件人的回复邮件将会发送失败。
+	ReplyToAddresses *string `json:"ReplyToAddresses,omitempty" name:"ReplyToAddresses"`
+
+	// 使用模板发送时，填写的模板相关参数
+	Template *Template `json:"Template,omitempty" name:"Template"`
+
+	// 已废弃
+	Simple *Simple `json:"Simple,omitempty" name:"Simple"`
+
+	// 需要发送附件时，填写附件相关参数。
+	Attachments []*Attachment `json:"Attachments,omitempty" name:"Attachments"`
+
+	// 退订选项 1: 加入退订链接 0: 不加入退订链接
+	Unsubscribe *string `json:"Unsubscribe,omitempty" name:"Unsubscribe"`
+
+	// 邮件触发类型 0:非触发类，默认类型，营销类邮件、非即时类邮件等选择此类型  1:触发类，验证码等即时发送类邮件，若邮件超过一定大小，系统会自动选择非触发类型通道
+	TriggerType *uint64 `json:"TriggerType,omitempty" name:"TriggerType"`
+}
+
 type SendEmailRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 发信邮件地址。请填写发件人邮箱地址，例如：noreply@mail.qcloud.com
 	// 如需填写发件人说明，请按照如下方式： 
 	// 别名 <邮箱地址>
@@ -1404,16 +1716,18 @@ func (r *SendEmailRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type SendEmailResponseParams struct {
+	// 接受消息生成的唯一消息标识符。
+	MessageId *string `json:"MessageId,omitempty" name:"MessageId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type SendEmailResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 接受消息生成的唯一消息标识符。
-		MessageId *string `json:"MessageId,omitempty" name:"MessageId"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *SendEmailResponseParams `json:"Response"`
 }
 
 func (r *SendEmailResponse) ToJsonString() string {
@@ -1428,7 +1742,6 @@ func (r *SendEmailResponse) FromJsonString(s string) error {
 }
 
 type SendEmailStatus struct {
-
 	// SendEmail返回的MessageId
 	MessageId *string `json:"MessageId,omitempty" name:"MessageId"`
 
@@ -1494,7 +1807,6 @@ type SendEmailStatus struct {
 }
 
 type SendTaskData struct {
-
 	// 任务id
 	TaskId *uint64 `json:"TaskId,omitempty" name:"TaskId"`
 
@@ -1549,7 +1861,6 @@ type SendTaskData struct {
 }
 
 type Simple struct {
-
 	// base64之后的Html代码。需要包含所有的代码信息，不要包含外部css，否则会导致显示格式错乱
 	Html *string `json:"Html,omitempty" name:"Html"`
 
@@ -1558,7 +1869,6 @@ type Simple struct {
 }
 
 type Template struct {
-
 	// 模板ID。如果没有模板，请先新建一个
 	TemplateID *uint64 `json:"TemplateID,omitempty" name:"TemplateID"`
 
@@ -1569,7 +1879,6 @@ type Template struct {
 }
 
 type TemplateContent struct {
-
 	// base64之后的Html代码
 	Html *string `json:"Html,omitempty" name:"Html"`
 
@@ -1578,7 +1887,6 @@ type TemplateContent struct {
 }
 
 type TemplatesMetadata struct {
-
 	// 创建时间
 	CreatedTimestamp *uint64 `json:"CreatedTimestamp,omitempty" name:"CreatedTimestamp"`
 
@@ -1596,14 +1904,19 @@ type TemplatesMetadata struct {
 }
 
 type TimedEmailParam struct {
-
 	// 定时发送邮件的开始时间
 	BeginTime *string `json:"BeginTime,omitempty" name:"BeginTime"`
 }
 
+// Predefined struct for user
+type UpdateEmailIdentityRequestParams struct {
+	// 请求验证的域名
+	EmailIdentity *string `json:"EmailIdentity,omitempty" name:"EmailIdentity"`
+}
+
 type UpdateEmailIdentityRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 请求验证的域名
 	EmailIdentity *string `json:"EmailIdentity,omitempty" name:"EmailIdentity"`
 }
@@ -1627,22 +1940,24 @@ func (r *UpdateEmailIdentityRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type UpdateEmailIdentityResponseParams struct {
+	// 验证类型。固定值：DOMAIN
+	IdentityType *string `json:"IdentityType,omitempty" name:"IdentityType"`
+
+	// 是否已通过验证
+	VerifiedForSendingStatus *bool `json:"VerifiedForSendingStatus,omitempty" name:"VerifiedForSendingStatus"`
+
+	// 需要配置的DNS信息
+	Attributes []*DNSAttributes `json:"Attributes,omitempty" name:"Attributes"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type UpdateEmailIdentityResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 验证类型。固定值：DOMAIN
-		IdentityType *string `json:"IdentityType,omitempty" name:"IdentityType"`
-
-		// 是否已通过验证
-		VerifiedForSendingStatus *bool `json:"VerifiedForSendingStatus,omitempty" name:"VerifiedForSendingStatus"`
-
-		// 需要配置的DNS信息
-		Attributes []*DNSAttributes `json:"Attributes,omitempty" name:"Attributes"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *UpdateEmailIdentityResponseParams `json:"Response"`
 }
 
 func (r *UpdateEmailIdentityResponse) ToJsonString() string {
@@ -1656,9 +1971,21 @@ func (r *UpdateEmailIdentityResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type UpdateEmailTemplateRequestParams struct {
+	// 模板内容
+	TemplateContent *TemplateContent `json:"TemplateContent,omitempty" name:"TemplateContent"`
+
+	// 模板ID
+	TemplateID *uint64 `json:"TemplateID,omitempty" name:"TemplateID"`
+
+	// 模板名字
+	TemplateName *string `json:"TemplateName,omitempty" name:"TemplateName"`
+}
+
 type UpdateEmailTemplateRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 模板内容
 	TemplateContent *TemplateContent `json:"TemplateContent,omitempty" name:"TemplateContent"`
 
@@ -1690,13 +2017,15 @@ func (r *UpdateEmailTemplateRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type UpdateEmailTemplateResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type UpdateEmailTemplateResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *UpdateEmailTemplateResponseParams `json:"Response"`
 }
 
 func (r *UpdateEmailTemplateResponse) ToJsonString() string {
@@ -1711,7 +2040,6 @@ func (r *UpdateEmailTemplateResponse) FromJsonString(s string) error {
 }
 
 type Volume struct {
-
 	// 日期
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SendDate *string `json:"SendDate,omitempty" name:"SendDate"`

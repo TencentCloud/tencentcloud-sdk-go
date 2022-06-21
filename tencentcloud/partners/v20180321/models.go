@@ -21,7 +21,6 @@ import (
 )
 
 type AgentAuditedClient struct {
-
 	// 代理商账号ID
 	Uin *string `json:"Uin,omitempty" name:"Uin"`
 
@@ -75,7 +74,6 @@ type AgentAuditedClient struct {
 }
 
 type AgentBillElem struct {
-
 	// 代理商账号ID
 	Uin *string `json:"Uin,omitempty" name:"Uin"`
 
@@ -120,7 +118,6 @@ type AgentBillElem struct {
 }
 
 type AgentClientElem struct {
-
 	// 代理商账号ID
 	Uin *string `json:"Uin,omitempty" name:"Uin"`
 
@@ -159,7 +156,6 @@ type AgentClientElem struct {
 }
 
 type AgentDealElem struct {
-
 	// 订单自增 ID【请勿依赖该字段作为唯一标识】
 	DealId *string `json:"DealId,omitempty" name:"DealId"`
 
@@ -270,7 +266,6 @@ type AgentDealElem struct {
 }
 
 type AgentDealNewElem struct {
-
 	// 订单自增 ID【请勿依赖该字段作为唯一标识】
 	DealId *string `json:"DealId,omitempty" name:"DealId"`
 
@@ -380,9 +375,21 @@ type AgentDealNewElem struct {
 	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
 }
 
+// Predefined struct for user
+type AgentPayDealsRequestParams struct {
+	// 订单所有者uin
+	OwnerUin *string `json:"OwnerUin,omitempty" name:"OwnerUin"`
+
+	// 代付标志，1：代付；0：自付
+	AgentPay *uint64 `json:"AgentPay,omitempty" name:"AgentPay"`
+
+	// 订单号数组
+	DealNames []*string `json:"DealNames,omitempty" name:"DealNames"`
+}
+
 type AgentPayDealsRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 订单所有者uin
 	OwnerUin *string `json:"OwnerUin,omitempty" name:"OwnerUin"`
 
@@ -414,13 +421,15 @@ func (r *AgentPayDealsRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type AgentPayDealsResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type AgentPayDealsResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *AgentPayDealsResponseParams `json:"Response"`
 }
 
 func (r *AgentPayDealsResponse) ToJsonString() string {
@@ -435,7 +444,6 @@ func (r *AgentPayDealsResponse) FromJsonString(s string) error {
 }
 
 type AgentSalesmanElem struct {
-
 	// 代理商账号ID
 	Uin *string `json:"Uin,omitempty" name:"Uin"`
 
@@ -449,9 +457,18 @@ type AgentSalesmanElem struct {
 	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
 }
 
+// Predefined struct for user
+type AgentTransferMoneyRequestParams struct {
+	// 客户账号ID
+	ClientUin *string `json:"ClientUin,omitempty" name:"ClientUin"`
+
+	// 转账金额，单位分
+	Amount *uint64 `json:"Amount,omitempty" name:"Amount"`
+}
+
 type AgentTransferMoneyRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 客户账号ID
 	ClientUin *string `json:"ClientUin,omitempty" name:"ClientUin"`
 
@@ -479,13 +496,15 @@ func (r *AgentTransferMoneyRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type AgentTransferMoneyResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type AgentTransferMoneyResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *AgentTransferMoneyResponseParams `json:"Response"`
 }
 
 func (r *AgentTransferMoneyResponse) ToJsonString() string {
@@ -499,9 +518,21 @@ func (r *AgentTransferMoneyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type AuditApplyClientRequestParams struct {
+	// 待审核客户账号ID
+	ClientUin *string `json:"ClientUin,omitempty" name:"ClientUin"`
+
+	// 审核结果，可能的取值：accept/reject
+	AuditResult *string `json:"AuditResult,omitempty" name:"AuditResult"`
+
+	// 申请理由，B类客户审核通过时必须填写申请理由
+	Note *string `json:"Note,omitempty" name:"Note"`
+}
+
 type AuditApplyClientRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 待审核客户账号ID
 	ClientUin *string `json:"ClientUin,omitempty" name:"ClientUin"`
 
@@ -533,25 +564,27 @@ func (r *AuditApplyClientRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type AuditApplyClientResponseParams struct {
+	// 代理商账号ID
+	Uin *string `json:"Uin,omitempty" name:"Uin"`
+
+	// 客户账号ID
+	ClientUin *string `json:"ClientUin,omitempty" name:"ClientUin"`
+
+	// 审核结果，包括accept/reject/qcloudaudit（腾讯云审核）
+	AuditResult *string `json:"AuditResult,omitempty" name:"AuditResult"`
+
+	// 关联时间对应的时间戳
+	AgentTime *uint64 `json:"AgentTime,omitempty" name:"AgentTime"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type AuditApplyClientResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 代理商账号ID
-		Uin *string `json:"Uin,omitempty" name:"Uin"`
-
-		// 客户账号ID
-		ClientUin *string `json:"ClientUin,omitempty" name:"ClientUin"`
-
-		// 审核结果，包括accept/reject/qcloudaudit（腾讯云审核）
-		AuditResult *string `json:"AuditResult,omitempty" name:"AuditResult"`
-
-		// 关联时间对应的时间戳
-		AgentTime *uint64 `json:"AgentTime,omitempty" name:"AgentTime"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *AuditApplyClientResponseParams `json:"Response"`
 }
 
 func (r *AuditApplyClientResponse) ToJsonString() string {
@@ -565,9 +598,15 @@ func (r *AuditApplyClientResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreatePayRelationForClientRequestParams struct {
+	// 客户账号ID
+	ClientUin *string `json:"ClientUin,omitempty" name:"ClientUin"`
+}
+
 type CreatePayRelationForClientRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 客户账号ID
 	ClientUin *string `json:"ClientUin,omitempty" name:"ClientUin"`
 }
@@ -591,13 +630,15 @@ func (r *CreatePayRelationForClientRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreatePayRelationForClientResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreatePayRelationForClientResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreatePayRelationForClientResponseParams `json:"Response"`
 }
 
 func (r *CreatePayRelationForClientResponse) ToJsonString() string {
@@ -612,7 +653,6 @@ func (r *CreatePayRelationForClientResponse) FromJsonString(s string) error {
 }
 
 type DealGoodsPriceElem struct {
-
 	// 实付金额（单位：分）
 	RealTotalCost *uint64 `json:"RealTotalCost,omitempty" name:"RealTotalCost"`
 
@@ -621,7 +661,6 @@ type DealGoodsPriceElem struct {
 }
 
 type DealGoodsPriceNewElem struct {
-
 	// 实付金额（单位：分）
 	RealTotalCost *int64 `json:"RealTotalCost,omitempty" name:"RealTotalCost"`
 
@@ -629,9 +668,51 @@ type DealGoodsPriceNewElem struct {
 	OriginalTotalCost *int64 `json:"OriginalTotalCost,omitempty" name:"OriginalTotalCost"`
 }
 
+// Predefined struct for user
+type DescribeAgentAuditedClientsRequestParams struct {
+	// 客户账号ID
+	ClientUin *string `json:"ClientUin,omitempty" name:"ClientUin"`
+
+	// 客户名称。由于涉及隐私，名称打码显示，故名称仅支持打码后的模糊搜索
+	ClientName *string `json:"ClientName,omitempty" name:"ClientName"`
+
+	// 客户类型，a/b，类型定义参考代理商相关政策文档
+	ClientFlag *string `json:"ClientFlag,omitempty" name:"ClientFlag"`
+
+	// ASC/DESC， 不区分大小写，按审核通过时间排序
+	OrderDirection *string `json:"OrderDirection,omitempty" name:"OrderDirection"`
+
+	// 客户账号ID列表
+	ClientUins []*string `json:"ClientUins,omitempty" name:"ClientUins"`
+
+	// 是否欠费。0：不欠费；1：欠费
+	HasOverdueBill *uint64 `json:"HasOverdueBill,omitempty" name:"HasOverdueBill"`
+
+	// 客户备注
+	ClientRemark *string `json:"ClientRemark,omitempty" name:"ClientRemark"`
+
+	// 偏移量
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 限制数目
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 可以为new(自拓)/assign(指派)/old(官网)/direct(直销)/direct_newopp(直销(新商机))/空
+	ClientType *string `json:"ClientType,omitempty" name:"ClientType"`
+
+	// 项目类型：可以为self(自拓项目)/platform(合作项目)/repeat(复算项目  )/空
+	ProjectType *string `json:"ProjectType,omitempty" name:"ProjectType"`
+
+	// 业务员ID
+	SalesUin *string `json:"SalesUin,omitempty" name:"SalesUin"`
+
+	// 业务员姓名（模糊查询）
+	SalesName *string `json:"SalesName,omitempty" name:"SalesName"`
+}
+
 type DescribeAgentAuditedClientsRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 客户账号ID
 	ClientUin *string `json:"ClientUin,omitempty" name:"ClientUin"`
 
@@ -703,19 +784,21 @@ func (r *DescribeAgentAuditedClientsRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeAgentAuditedClientsResponseParams struct {
+	// 已审核代客列表
+	AgentClientSet []*AgentAuditedClient `json:"AgentClientSet,omitempty" name:"AgentClientSet"`
+
+	// 符合条件的代客总数
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeAgentAuditedClientsResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 已审核代客列表
-		AgentClientSet []*AgentAuditedClient `json:"AgentClientSet,omitempty" name:"AgentClientSet"`
-
-		// 符合条件的代客总数
-		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeAgentAuditedClientsResponseParams `json:"Response"`
 }
 
 func (r *DescribeAgentAuditedClientsResponse) ToJsonString() string {
@@ -729,9 +812,33 @@ func (r *DescribeAgentAuditedClientsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeAgentBillsRequestParams struct {
+	// 支付月份，如2018-02
+	SettleMonth *string `json:"SettleMonth,omitempty" name:"SettleMonth"`
+
+	// 客户账号ID
+	ClientUin *string `json:"ClientUin,omitempty" name:"ClientUin"`
+
+	// 支付方式，prepay/postpay
+	PayMode *string `json:"PayMode,omitempty" name:"PayMode"`
+
+	// 预付费订单号
+	OrderId *string `json:"OrderId,omitempty" name:"OrderId"`
+
+	// 客户备注名称
+	ClientRemark *string `json:"ClientRemark,omitempty" name:"ClientRemark"`
+
+	// 偏移量
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 限制数目
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+}
+
 type DescribeAgentBillsRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 支付月份，如2018-02
 	SettleMonth *string `json:"SettleMonth,omitempty" name:"SettleMonth"`
 
@@ -779,19 +886,21 @@ func (r *DescribeAgentBillsRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeAgentBillsResponseParams struct {
+	// 符合查询条件列表总数量
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 业务明细列表
+	AgentBillSet []*AgentBillElem `json:"AgentBillSet,omitempty" name:"AgentBillSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeAgentBillsResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 符合查询条件列表总数量
-		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 业务明细列表
-		AgentBillSet []*AgentBillElem `json:"AgentBillSet,omitempty" name:"AgentBillSet"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeAgentBillsResponseParams `json:"Response"`
 }
 
 func (r *DescribeAgentBillsResponse) ToJsonString() string {
@@ -805,9 +914,15 @@ func (r *DescribeAgentBillsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeAgentClientGradeRequestParams struct {
+	// 代客uin
+	ClientUin *string `json:"ClientUin,omitempty" name:"ClientUin"`
+}
+
 type DescribeAgentClientGradeRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 代客uin
 	ClientUin *string `json:"ClientUin,omitempty" name:"ClientUin"`
 }
@@ -831,25 +946,27 @@ func (r *DescribeAgentClientGradeRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeAgentClientGradeResponseParams struct {
+	// 审核状态：0待审核，1，已审核
+	AuditStatus *uint64 `json:"AuditStatus,omitempty" name:"AuditStatus"`
+
+	// 实名认证状态：0，未实名认证，1实名认证
+	AuthState *uint64 `json:"AuthState,omitempty" name:"AuthState"`
+
+	// 客户级别
+	ClientGrade *string `json:"ClientGrade,omitempty" name:"ClientGrade"`
+
+	// 客户类型：1，个人；2，企业；3，其他
+	ClientType *uint64 `json:"ClientType,omitempty" name:"ClientType"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeAgentClientGradeResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 审核状态：0待审核，1，已审核
-		AuditStatus *uint64 `json:"AuditStatus,omitempty" name:"AuditStatus"`
-
-		// 实名认证状态：0，未实名认证，1实名认证
-		AuthState *uint64 `json:"AuthState,omitempty" name:"AuthState"`
-
-		// 客户级别
-		ClientGrade *string `json:"ClientGrade,omitempty" name:"ClientGrade"`
-
-		// 客户类型：1，个人；2，企业；3，其他
-		ClientType *uint64 `json:"ClientType,omitempty" name:"ClientType"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeAgentClientGradeResponseParams `json:"Response"`
 }
 
 func (r *DescribeAgentClientGradeResponse) ToJsonString() string {
@@ -863,9 +980,36 @@ func (r *DescribeAgentClientGradeResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeAgentClientsRequestParams struct {
+	// 客户账号ID
+	ClientUin *string `json:"ClientUin,omitempty" name:"ClientUin"`
+
+	// 客户名称。由于涉及隐私，名称打码显示，故名称仅支持打码后的模糊搜索
+	ClientName *string `json:"ClientName,omitempty" name:"ClientName"`
+
+	// 客户类型，a/b，类型定义参考代理商相关政策文档
+	ClientFlag *string `json:"ClientFlag,omitempty" name:"ClientFlag"`
+
+	// ASC/DESC， 不区分大小写，按申请时间排序
+	OrderDirection *string `json:"OrderDirection,omitempty" name:"OrderDirection"`
+
+	// 偏移量
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 限制数目
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 业务员ID
+	SalesUin *string `json:"SalesUin,omitempty" name:"SalesUin"`
+
+	// 业务员姓名（模糊查询）
+	SalesName *string `json:"SalesName,omitempty" name:"SalesName"`
+}
+
 type DescribeAgentClientsRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 客户账号ID
 	ClientUin *string `json:"ClientUin,omitempty" name:"ClientUin"`
 
@@ -917,19 +1061,21 @@ func (r *DescribeAgentClientsRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeAgentClientsResponseParams struct {
+	// 待审核代客列表
+	AgentClientSet []*AgentClientElem `json:"AgentClientSet,omitempty" name:"AgentClientSet"`
+
+	// 符合条件的代客总数
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeAgentClientsResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 待审核代客列表
-		AgentClientSet []*AgentClientElem `json:"AgentClientSet,omitempty" name:"AgentClientSet"`
-
-		// 符合条件的代客总数
-		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeAgentClientsResponseParams `json:"Response"`
 }
 
 func (r *DescribeAgentClientsResponse) ToJsonString() string {
@@ -943,9 +1089,42 @@ func (r *DescribeAgentClientsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeAgentDealsByCacheRequestParams struct {
+	// 偏移量
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 限制数目
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 下单时间范围起始点
+	CreatTimeRangeStart *string `json:"CreatTimeRangeStart,omitempty" name:"CreatTimeRangeStart"`
+
+	// 下单时间范围终止点
+	CreatTimeRangeEnd *string `json:"CreatTimeRangeEnd,omitempty" name:"CreatTimeRangeEnd"`
+
+	// 0:下单时间降序；其他：下单时间升序
+	Order *uint64 `json:"Order,omitempty" name:"Order"`
+
+	// 订单的状态(1：未支付;2：已支付;3：发货中;4：已发货;5：发货失败;6：已退款;7：已关单;8：订单过期;9：订单已失效;10：产品已失效;11：代付拒绝;12：支付中)
+	Status *uint64 `json:"Status,omitempty" name:"Status"`
+
+	// 下单人账号ID列表
+	OwnerUins []*string `json:"OwnerUins,omitempty" name:"OwnerUins"`
+
+	// 子订单号列表
+	DealNames []*string `json:"DealNames,omitempty" name:"DealNames"`
+
+	// 大订单号列表
+	BigDealIds []*string `json:"BigDealIds,omitempty" name:"BigDealIds"`
+
+	// 支付方式，0：自付；1：代付
+	PayerMode *uint64 `json:"PayerMode,omitempty" name:"PayerMode"`
+}
+
 type DescribeAgentDealsByCacheRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 偏移量
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
@@ -1005,19 +1184,21 @@ func (r *DescribeAgentDealsByCacheRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeAgentDealsByCacheResponseParams struct {
+	// 订单数组
+	AgentDealSet []*AgentDealNewElem `json:"AgentDealSet,omitempty" name:"AgentDealSet"`
+
+	// 符合条件的订单总数量
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeAgentDealsByCacheResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 订单数组
-		AgentDealSet []*AgentDealNewElem `json:"AgentDealSet,omitempty" name:"AgentDealSet"`
-
-		// 符合条件的订单总数量
-		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeAgentDealsByCacheResponseParams `json:"Response"`
 }
 
 func (r *DescribeAgentDealsByCacheResponse) ToJsonString() string {
@@ -1031,9 +1212,39 @@ func (r *DescribeAgentDealsByCacheResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeAgentDealsCacheRequestParams struct {
+	// 偏移量
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 限制数目
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 下单时间范围起始点
+	CreatTimeRangeStart *string `json:"CreatTimeRangeStart,omitempty" name:"CreatTimeRangeStart"`
+
+	// 下单时间范围终止点
+	CreatTimeRangeEnd *string `json:"CreatTimeRangeEnd,omitempty" name:"CreatTimeRangeEnd"`
+
+	// 0:下单时间降序；其他：下单时间升序
+	Order *uint64 `json:"Order,omitempty" name:"Order"`
+
+	// 订单的状态(1：未支付;2：已支付;3：发货中;4：已发货;5：发货失败;6：已退款;7：已关单;8：订单过期;9：订单已失效;10：产品已失效;11：代付拒绝;12：支付中)
+	Status *uint64 `json:"Status,omitempty" name:"Status"`
+
+	// 下单人账号ID列表
+	OwnerUins []*string `json:"OwnerUins,omitempty" name:"OwnerUins"`
+
+	// 订单号列表
+	DealNames []*string `json:"DealNames,omitempty" name:"DealNames"`
+
+	// 支付方式，0：自付；1：代付
+	PayerMode *uint64 `json:"PayerMode,omitempty" name:"PayerMode"`
+}
+
 type DescribeAgentDealsCacheRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 偏移量
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
@@ -1089,19 +1300,21 @@ func (r *DescribeAgentDealsCacheRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeAgentDealsCacheResponseParams struct {
+	// 订单数组
+	AgentDealSet []*AgentDealElem `json:"AgentDealSet,omitempty" name:"AgentDealSet"`
+
+	// 符合条件的订单总数量
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeAgentDealsCacheResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 订单数组
-		AgentDealSet []*AgentDealElem `json:"AgentDealSet,omitempty" name:"AgentDealSet"`
-
-		// 符合条件的订单总数量
-		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeAgentDealsCacheResponseParams `json:"Response"`
 }
 
 func (r *DescribeAgentDealsCacheResponse) ToJsonString() string {
@@ -1115,9 +1328,36 @@ func (r *DescribeAgentDealsCacheResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeAgentPayDealsRequestParams struct {
+	// 偏移量
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 限制数目
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 下单时间范围起始点(不传时会默认查15天内订单，传值时需要传15天内的起始时间)
+	CreatTimeRangeStart *string `json:"CreatTimeRangeStart,omitempty" name:"CreatTimeRangeStart"`
+
+	// 下单时间范围终止点
+	CreatTimeRangeEnd *string `json:"CreatTimeRangeEnd,omitempty" name:"CreatTimeRangeEnd"`
+
+	// 0:下单时间降序；其他：下单时间升序
+	Order *uint64 `json:"Order,omitempty" name:"Order"`
+
+	// 订单的状态(1：未支付;2：已支付;3：发货中;4：已发货;5：发货失败;6：已退款;7：已关单;8：订单过期;9：订单已失效;10：产品已失效;11：代付拒绝;12：支付中)
+	Status *uint64 `json:"Status,omitempty" name:"Status"`
+
+	// 下单人账号ID列表
+	OwnerUins []*string `json:"OwnerUins,omitempty" name:"OwnerUins"`
+
+	// 订单号列表
+	DealNames []*string `json:"DealNames,omitempty" name:"DealNames"`
+}
+
 type DescribeAgentPayDealsRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 偏移量
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
@@ -1169,19 +1409,21 @@ func (r *DescribeAgentPayDealsRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeAgentPayDealsResponseParams struct {
+	// 订单数组
+	AgentPayDealSet []*AgentDealElem `json:"AgentPayDealSet,omitempty" name:"AgentPayDealSet"`
+
+	// 符合条件的订单总数量
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeAgentPayDealsResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 订单数组
-		AgentPayDealSet []*AgentDealElem `json:"AgentPayDealSet,omitempty" name:"AgentPayDealSet"`
-
-		// 符合条件的订单总数量
-		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeAgentPayDealsResponseParams `json:"Response"`
 }
 
 func (r *DescribeAgentPayDealsResponse) ToJsonString() string {
@@ -1195,9 +1437,39 @@ func (r *DescribeAgentPayDealsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeAgentPayDealsV2RequestParams struct {
+	// 偏移量
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 限制数目
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 下单时间范围起始点(不传时会默认查15天内订单，传值时需要传15天内的起始时间)
+	CreatTimeRangeStart *string `json:"CreatTimeRangeStart,omitempty" name:"CreatTimeRangeStart"`
+
+	// 下单时间范围终止点
+	CreatTimeRangeEnd *string `json:"CreatTimeRangeEnd,omitempty" name:"CreatTimeRangeEnd"`
+
+	// 0:下单时间降序；其他：下单时间升序
+	Order *uint64 `json:"Order,omitempty" name:"Order"`
+
+	// 订单的状态(1：未支付;2：已支付;3：发货中;4：已发货;5：发货失败;6：已退款;7：已关单;8：订单过期;9：订单已失效;10：产品已失效;11：代付拒绝;12：支付中)
+	Status *uint64 `json:"Status,omitempty" name:"Status"`
+
+	// 下单人账号ID列表
+	OwnerUins []*string `json:"OwnerUins,omitempty" name:"OwnerUins"`
+
+	// 子订单号列表
+	DealNames []*string `json:"DealNames,omitempty" name:"DealNames"`
+
+	// 大订单号列表
+	BigDealIds []*string `json:"BigDealIds,omitempty" name:"BigDealIds"`
+}
+
 type DescribeAgentPayDealsV2Request struct {
 	*tchttp.BaseRequest
-
+	
 	// 偏移量
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
@@ -1253,19 +1525,21 @@ func (r *DescribeAgentPayDealsV2Request) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeAgentPayDealsV2ResponseParams struct {
+	// 订单数组
+	AgentPayDealSet []*AgentDealNewElem `json:"AgentPayDealSet,omitempty" name:"AgentPayDealSet"`
+
+	// 符合条件的订单总数量
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeAgentPayDealsV2Response struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 订单数组
-		AgentPayDealSet []*AgentDealNewElem `json:"AgentPayDealSet,omitempty" name:"AgentPayDealSet"`
-
-		// 符合条件的订单总数量
-		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeAgentPayDealsV2ResponseParams `json:"Response"`
 }
 
 func (r *DescribeAgentPayDealsV2Response) ToJsonString() string {
@@ -1279,9 +1553,36 @@ func (r *DescribeAgentPayDealsV2Response) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeAgentSelfPayDealsRequestParams struct {
+	// 下单人账号ID
+	OwnerUin *string `json:"OwnerUin,omitempty" name:"OwnerUin"`
+
+	// 偏移量
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 限制数目
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 下单时间范围起始点(不传时会默认查15天内订单，传值时需要传15天内的起始时间)
+	CreatTimeRangeStart *string `json:"CreatTimeRangeStart,omitempty" name:"CreatTimeRangeStart"`
+
+	// 下单时间范围终止点
+	CreatTimeRangeEnd *string `json:"CreatTimeRangeEnd,omitempty" name:"CreatTimeRangeEnd"`
+
+	// 0:下单时间降序；其他：下单时间升序
+	Order *uint64 `json:"Order,omitempty" name:"Order"`
+
+	// 订单的状态(1：未支付;2：已支付;3：发货中;4：已发货;5：发货失败;6：已退款;7：已关单;8：订单过期;9：订单已失效;10：产品已失效;11：代付拒绝;12：支付中)
+	Status *uint64 `json:"Status,omitempty" name:"Status"`
+
+	// 订单号列表
+	DealNames []*string `json:"DealNames,omitempty" name:"DealNames"`
+}
+
 type DescribeAgentSelfPayDealsRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 下单人账号ID
 	OwnerUin *string `json:"OwnerUin,omitempty" name:"OwnerUin"`
 
@@ -1333,19 +1634,21 @@ func (r *DescribeAgentSelfPayDealsRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeAgentSelfPayDealsResponseParams struct {
+	// 订单数组
+	AgentPayDealSet []*AgentDealElem `json:"AgentPayDealSet,omitempty" name:"AgentPayDealSet"`
+
+	// 符合条件的订单总数量
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeAgentSelfPayDealsResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 订单数组
-		AgentPayDealSet []*AgentDealElem `json:"AgentPayDealSet,omitempty" name:"AgentPayDealSet"`
-
-		// 符合条件的订单总数量
-		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeAgentSelfPayDealsResponseParams `json:"Response"`
 }
 
 func (r *DescribeAgentSelfPayDealsResponse) ToJsonString() string {
@@ -1359,9 +1662,39 @@ func (r *DescribeAgentSelfPayDealsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeAgentSelfPayDealsV2RequestParams struct {
+	// 下单人账号ID
+	OwnerUin *string `json:"OwnerUin,omitempty" name:"OwnerUin"`
+
+	// 偏移量
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 限制数目
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 下单时间范围起始点(不传时会默认查15天内订单，传值时需要传15天内的起始时间)
+	CreatTimeRangeStart *string `json:"CreatTimeRangeStart,omitempty" name:"CreatTimeRangeStart"`
+
+	// 下单时间范围终止点
+	CreatTimeRangeEnd *string `json:"CreatTimeRangeEnd,omitempty" name:"CreatTimeRangeEnd"`
+
+	// 0:下单时间降序；其他：下单时间升序
+	Order *uint64 `json:"Order,omitempty" name:"Order"`
+
+	// 订单的状态(1：未支付;2：已支付;3：发货中;4：已发货;5：发货失败;6：已退款;7：已关单;8：订单过期;9：订单已失效;10：产品已失效;11：代付拒绝;12：支付中)
+	Status *uint64 `json:"Status,omitempty" name:"Status"`
+
+	// 子订单号列表
+	DealNames []*string `json:"DealNames,omitempty" name:"DealNames"`
+
+	// 大订单号列表
+	BigDealIds []*string `json:"BigDealIds,omitempty" name:"BigDealIds"`
+}
+
 type DescribeAgentSelfPayDealsV2Request struct {
 	*tchttp.BaseRequest
-
+	
 	// 下单人账号ID
 	OwnerUin *string `json:"OwnerUin,omitempty" name:"OwnerUin"`
 
@@ -1417,19 +1750,21 @@ func (r *DescribeAgentSelfPayDealsV2Request) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeAgentSelfPayDealsV2ResponseParams struct {
+	// 订单数组
+	AgentPayDealSet []*AgentDealNewElem `json:"AgentPayDealSet,omitempty" name:"AgentPayDealSet"`
+
+	// 符合条件的订单总数量
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeAgentSelfPayDealsV2Response struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 订单数组
-		AgentPayDealSet []*AgentDealNewElem `json:"AgentPayDealSet,omitempty" name:"AgentPayDealSet"`
-
-		// 符合条件的订单总数量
-		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeAgentSelfPayDealsV2ResponseParams `json:"Response"`
 }
 
 func (r *DescribeAgentSelfPayDealsV2Response) ToJsonString() string {
@@ -1443,9 +1778,15 @@ func (r *DescribeAgentSelfPayDealsV2Response) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeClientBalanceNewRequestParams struct {
+	// 客户(代客)账号ID
+	ClientUin *string `json:"ClientUin,omitempty" name:"ClientUin"`
+}
+
 type DescribeClientBalanceNewRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 客户(代客)账号ID
 	ClientUin *string `json:"ClientUin,omitempty" name:"ClientUin"`
 }
@@ -1469,19 +1810,21 @@ func (r *DescribeClientBalanceNewRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeClientBalanceNewResponseParams struct {
+	// 账户可用余额，单位分 （可用余额 = 现金余额 + 赠送金余额 - 欠费金额 - 冻结金额）
+	Balance *int64 `json:"Balance,omitempty" name:"Balance"`
+
+	// 账户现金余额，单位分
+	Cash *int64 `json:"Cash,omitempty" name:"Cash"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeClientBalanceNewResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 账户可用余额，单位分 （可用余额 = 现金余额 + 赠送金余额 - 欠费金额 - 冻结金额）
-		Balance *int64 `json:"Balance,omitempty" name:"Balance"`
-
-		// 账户现金余额，单位分
-		Cash *int64 `json:"Cash,omitempty" name:"Cash"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeClientBalanceNewResponseParams `json:"Response"`
 }
 
 func (r *DescribeClientBalanceNewResponse) ToJsonString() string {
@@ -1495,9 +1838,15 @@ func (r *DescribeClientBalanceNewResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeClientBalanceRequestParams struct {
+	// 客户(代客)账号ID
+	ClientUin *string `json:"ClientUin,omitempty" name:"ClientUin"`
+}
+
 type DescribeClientBalanceRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 客户(代客)账号ID
 	ClientUin *string `json:"ClientUin,omitempty" name:"ClientUin"`
 }
@@ -1521,19 +1870,21 @@ func (r *DescribeClientBalanceRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeClientBalanceResponseParams struct {
+	// 账户可用余额，单位分 （可用余额 = 现金余额 - 冻结金额）
+	Balance *uint64 `json:"Balance,omitempty" name:"Balance"`
+
+	// 账户现金余额，单位分
+	Cash *int64 `json:"Cash,omitempty" name:"Cash"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeClientBalanceResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 账户可用余额，单位分 （可用余额 = 现金余额 - 冻结金额）
-		Balance *uint64 `json:"Balance,omitempty" name:"Balance"`
-
-		// 账户现金余额，单位分
-		Cash *int64 `json:"Cash,omitempty" name:"Cash"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeClientBalanceResponseParams `json:"Response"`
 }
 
 func (r *DescribeClientBalanceResponse) ToJsonString() string {
@@ -1547,9 +1898,21 @@ func (r *DescribeClientBalanceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeRebateInfosRequestParams struct {
+	// 返佣月份，如2018-02
+	RebateMonth *string `json:"RebateMonth,omitempty" name:"RebateMonth"`
+
+	// 偏移量
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 限制数目
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+}
+
 type DescribeRebateInfosRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 返佣月份，如2018-02
 	RebateMonth *string `json:"RebateMonth,omitempty" name:"RebateMonth"`
 
@@ -1581,19 +1944,21 @@ func (r *DescribeRebateInfosRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeRebateInfosResponseParams struct {
+	// 返佣信息列表
+	RebateInfoSet []*RebateInfoElem `json:"RebateInfoSet,omitempty" name:"RebateInfoSet"`
+
+	// 符合查询条件返佣信息数目
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeRebateInfosResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 返佣信息列表
-		RebateInfoSet []*RebateInfoElem `json:"RebateInfoSet,omitempty" name:"RebateInfoSet"`
-
-		// 符合查询条件返佣信息数目
-		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeRebateInfosResponseParams `json:"Response"`
 }
 
 func (r *DescribeRebateInfosResponse) ToJsonString() string {
@@ -1607,9 +1972,27 @@ func (r *DescribeRebateInfosResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeSalesmansRequestParams struct {
+	// 偏移量
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 限制数目
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 业务员姓名(模糊查询)
+	SalesName *string `json:"SalesName,omitempty" name:"SalesName"`
+
+	// 业务员ID
+	SalesUin *string `json:"SalesUin,omitempty" name:"SalesUin"`
+
+	// ASC/DESC， 不区分大小写，按创建通过时间排序
+	OrderDirection *string `json:"OrderDirection,omitempty" name:"OrderDirection"`
+}
+
 type DescribeSalesmansRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 偏移量
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
@@ -1649,19 +2032,21 @@ func (r *DescribeSalesmansRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeSalesmansResponseParams struct {
+	// 业务员列表
+	AgentSalesmanSet []*AgentSalesmanElem `json:"AgentSalesmanSet,omitempty" name:"AgentSalesmanSet"`
+
+	// 符合条件的代客总数
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeSalesmansResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 业务员列表
-		AgentSalesmanSet []*AgentSalesmanElem `json:"AgentSalesmanSet,omitempty" name:"AgentSalesmanSet"`
-
-		// 符合条件的代客总数
-		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeSalesmansResponseParams `json:"Response"`
 }
 
 func (r *DescribeSalesmansResponse) ToJsonString() string {
@@ -1675,9 +2060,33 @@ func (r *DescribeSalesmansResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeUnbindClientListRequestParams struct {
+	// 解绑状态：0:所有,1:审核中,2已解绑
+	Status *uint64 `json:"Status,omitempty" name:"Status"`
+
+	// 偏移量
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 限制数目
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 解绑账号ID
+	UnbindUin *string `json:"UnbindUin,omitempty" name:"UnbindUin"`
+
+	// 解绑申请时间范围起始点
+	ApplyTimeStart *string `json:"ApplyTimeStart,omitempty" name:"ApplyTimeStart"`
+
+	// 解绑申请时间范围终止点
+	ApplyTimeEnd *string `json:"ApplyTimeEnd,omitempty" name:"ApplyTimeEnd"`
+
+	// 对申请时间的升序降序，值：asc，desc
+	OrderDirection *string `json:"OrderDirection,omitempty" name:"OrderDirection"`
+}
+
 type DescribeUnbindClientListRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 解绑状态：0:所有,1:审核中,2已解绑
 	Status *uint64 `json:"Status,omitempty" name:"Status"`
 
@@ -1725,19 +2134,21 @@ func (r *DescribeUnbindClientListRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeUnbindClientListResponseParams struct {
+	// 符合条件的解绑客户数量
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 符合条件的解绑客户列表
+	UnbindClientList []*UnbindClientElem `json:"UnbindClientList,omitempty" name:"UnbindClientList"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeUnbindClientListResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 符合条件的解绑客户数量
-		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 符合条件的解绑客户列表
-		UnbindClientList []*UnbindClientElem `json:"UnbindClientList,omitempty" name:"UnbindClientList"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeUnbindClientListResponseParams `json:"Response"`
 }
 
 func (r *DescribeUnbindClientListResponse) ToJsonString() string {
@@ -1751,9 +2162,18 @@ func (r *DescribeUnbindClientListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifyClientRemarkRequestParams struct {
+	// 客户备注名称
+	ClientRemark *string `json:"ClientRemark,omitempty" name:"ClientRemark"`
+
+	// 客户账号ID
+	ClientUin *string `json:"ClientUin,omitempty" name:"ClientUin"`
+}
+
 type ModifyClientRemarkRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 客户备注名称
 	ClientRemark *string `json:"ClientRemark,omitempty" name:"ClientRemark"`
 
@@ -1781,13 +2201,15 @@ func (r *ModifyClientRemarkRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifyClientRemarkResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type ModifyClientRemarkResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *ModifyClientRemarkResponseParams `json:"Response"`
 }
 
 func (r *ModifyClientRemarkResponse) ToJsonString() string {
@@ -1802,7 +2224,6 @@ func (r *ModifyClientRemarkResponse) FromJsonString(s string) error {
 }
 
 type ProductInfoElem struct {
-
 	// 产品属性
 	Name *string `json:"Name,omitempty" name:"Name"`
 
@@ -1811,7 +2232,6 @@ type ProductInfoElem struct {
 }
 
 type RebateInfoElem struct {
-
 	// 代理商账号ID
 	Uin *string `json:"Uin,omitempty" name:"Uin"`
 
@@ -1831,9 +2251,15 @@ type RebateInfoElem struct {
 	ExceptionFlag *string `json:"ExceptionFlag,omitempty" name:"ExceptionFlag"`
 }
 
+// Predefined struct for user
+type RemovePayRelationForClientRequestParams struct {
+	// 客户账号ID
+	ClientUin *string `json:"ClientUin,omitempty" name:"ClientUin"`
+}
+
 type RemovePayRelationForClientRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 客户账号ID
 	ClientUin *string `json:"ClientUin,omitempty" name:"ClientUin"`
 }
@@ -1857,13 +2283,15 @@ func (r *RemovePayRelationForClientRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type RemovePayRelationForClientResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type RemovePayRelationForClientResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *RemovePayRelationForClientResponseParams `json:"Response"`
 }
 
 func (r *RemovePayRelationForClientResponse) ToJsonString() string {
@@ -1878,7 +2306,6 @@ func (r *RemovePayRelationForClientResponse) FromJsonString(s string) error {
 }
 
 type UnbindClientElem struct {
-
 	// 解绑账号ID
 	Uin *string `json:"Uin,omitempty" name:"Uin"`
 

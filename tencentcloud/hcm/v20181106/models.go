@@ -20,9 +20,51 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+// Predefined struct for user
+type EvaluationRequestParams struct {
+	// 图片唯一标识，一张图片一个SessionId；
+	SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
+
+	// 图片数据，需要使用base64对图片的二进制数据进行编码，与url参数二者填一即可；
+	Image *string `json:"Image,omitempty" name:"Image"`
+
+	// 业务应用ID，与账号应用APPID无关，是用来方便客户管理服务的参数，新的 HcmAppid 可以在[控制台](https://console.cloud.tencent.com/hcm)【应用管理】下新建。
+	HcmAppid *string `json:"HcmAppid,omitempty" name:"HcmAppid"`
+
+	// 图片url，与Image参数二者填一即可；
+	Url *string `json:"Url,omitempty" name:"Url"`
+
+	// 横屏拍摄开关，若开启则支持传输横屏拍摄的图片；
+	SupportHorizontalImage *bool `json:"SupportHorizontalImage,omitempty" name:"SupportHorizontalImage"`
+
+	// 拒绝非速算图（如风景图、人物图）开关，若开启，则遇到非速算图会快速返回拒绝的结果，但极端情况下可能会影响评估结果（比如算式截图贴到风景画里可能被判为非速算图直接返回了）。
+	RejectNonArithmeticImage *bool `json:"RejectNonArithmeticImage,omitempty" name:"RejectNonArithmeticImage"`
+
+	// 异步模式标识，0：同步模式，1：异步模式。默认为同步模式
+	IsAsync *int64 `json:"IsAsync,omitempty" name:"IsAsync"`
+
+	// 是否展开耦合算式中的竖式计算
+	EnableDispRelatedVertical *bool `json:"EnableDispRelatedVertical,omitempty" name:"EnableDispRelatedVertical"`
+
+	// 是否展示竖式算式的中间结果和格式控制字符
+	EnableDispMidresult *bool `json:"EnableDispMidresult,omitempty" name:"EnableDispMidresult"`
+
+	// 是否开启pdf识别，默认开启
+	EnablePdfRecognize *bool `json:"EnablePdfRecognize,omitempty" name:"EnablePdfRecognize"`
+
+	// pdf页码，从0开始，默认为0
+	PdfPageIndex *int64 `json:"PdfPageIndex,omitempty" name:"PdfPageIndex"`
+
+	// 是否返回LaTex，默认为0返回普通格式，设置成1返回LaTex格式
+	LaTex *int64 `json:"LaTex,omitempty" name:"LaTex"`
+
+	// 用于选择是否拒绝模糊题 目。打开则丢弃模糊题目， 不进行后续的判题返回结 果。
+	RejectVagueArithmetic *bool `json:"RejectVagueArithmetic,omitempty" name:"RejectVagueArithmetic"`
+}
+
 type EvaluationRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 图片唯一标识，一张图片一个SessionId；
 	SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
 
@@ -94,23 +136,25 @@ func (r *EvaluationRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type EvaluationResponseParams struct {
+	// 图片唯一标识，一张图片一个SessionId；
+	SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
+
+	// 识别出的算式信息；
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Items []*Item `json:"Items,omitempty" name:"Items"`
+
+	// 任务 id，用于查询接口
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type EvaluationResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 图片唯一标识，一张图片一个SessionId；
-		SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
-
-		// 识别出的算式信息；
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		Items []*Item `json:"Items,omitempty" name:"Items"`
-
-		// 任务 id，用于查询接口
-		TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *EvaluationResponseParams `json:"Response"`
 }
 
 func (r *EvaluationResponse) ToJsonString() string {
@@ -125,7 +169,6 @@ func (r *EvaluationResponse) FromJsonString(s string) error {
 }
 
 type Item struct {
-
 	// 识别的算式是否正确，算式运算结果: ‘YES’:正确 ‘NO’: 错误 ‘NA’: 非法参数
 	Item *string `json:"Item,omitempty" name:"Item"`
 
@@ -152,7 +195,6 @@ type Item struct {
 }
 
 type ItemCoord struct {
-
 	// 算式高度
 	Height *int64 `json:"Height,omitempty" name:"Height"`
 

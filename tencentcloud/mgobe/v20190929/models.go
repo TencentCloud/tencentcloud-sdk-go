@@ -20,9 +20,18 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+// Predefined struct for user
+type DismissRoomRequestParams struct {
+	// 表示游戏资源唯一 ID, 由后台自动分配, 无法修改。
+	GameId *string `json:"GameId,omitempty" name:"GameId"`
+
+	// 表示游戏房间唯一ID。
+	RoomId *string `json:"RoomId,omitempty" name:"RoomId"`
+}
+
 type DismissRoomRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 表示游戏资源唯一 ID, 由后台自动分配, 无法修改。
 	GameId *string `json:"GameId,omitempty" name:"GameId"`
 
@@ -50,13 +59,15 @@ func (r *DismissRoomRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DismissRoomResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DismissRoomResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DismissRoomResponseParams `json:"Response"`
 }
 
 func (r *DismissRoomResponse) ToJsonString() string {

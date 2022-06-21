@@ -21,7 +21,6 @@ import (
 )
 
 type Candidate struct {
-
 	// 识别出人脸对应的候选人数组。当前返回相似度最高的候选人。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
@@ -29,9 +28,15 @@ type Candidate struct {
 	Confidence *int64 `json:"Confidence,omitempty" name:"Confidence"`
 }
 
+// Predefined struct for user
+type DescribeVideoTaskRequestParams struct {
+	// 需要查询的视频审核的任务ID
+	VodTaskId *string `json:"VodTaskId,omitempty" name:"VodTaskId"`
+}
+
 type DescribeVideoTaskRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 需要查询的视频审核的任务ID
 	VodTaskId *string `json:"VodTaskId,omitempty" name:"VodTaskId"`
 }
@@ -55,49 +60,51 @@ func (r *DescribeVideoTaskRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-type DescribeVideoTaskResponse struct {
-	*tchttp.BaseResponse
-	Response *struct {
-
-		// 任务状态，取值：
+// Predefined struct for user
+type DescribeVideoTaskResponseParams struct {
+	// 任务状态，取值：
 	// WAITING：等待中；
 	// PROCESSING：处理中；
 	// FINISH：已完成。
-		Status *string `json:"Status,omitempty" name:"Status"`
+	Status *string `json:"Status,omitempty" name:"Status"`
 
-		// 任务开始执行的时间，采用 ISO 日期格式。
-		BeginProcessTime *string `json:"BeginProcessTime,omitempty" name:"BeginProcessTime"`
+	// 任务开始执行的时间，采用 ISO 日期格式。
+	BeginProcessTime *string `json:"BeginProcessTime,omitempty" name:"BeginProcessTime"`
 
-		// 任务执行完毕的时间，采用 ISO 日期格式。
-		FinishTime *string `json:"FinishTime,omitempty" name:"FinishTime"`
+	// 任务执行完毕的时间，采用 ISO 日期格式。
+	FinishTime *string `json:"FinishTime,omitempty" name:"FinishTime"`
 
-		// 视频内容审核智能画面鉴黄任务的查询结果。
-		PornResult *VodPornReviewResult `json:"PornResult,omitempty" name:"PornResult"`
+	// 视频内容审核智能画面鉴黄任务的查询结果。
+	PornResult *VodPornReviewResult `json:"PornResult,omitempty" name:"PornResult"`
 
-		// 视频内容审核智能画面鉴恐任务的查询结果。
-		TerrorismResult *VodTerrorismReviewResult `json:"TerrorismResult,omitempty" name:"TerrorismResult"`
+	// 视频内容审核智能画面鉴恐任务的查询结果。
+	TerrorismResult *VodTerrorismReviewResult `json:"TerrorismResult,omitempty" name:"TerrorismResult"`
 
-		// 视频内容审核智能画面鉴政任务的查询结果。
-		PoliticalResult *VodPoliticalReviewResult `json:"PoliticalResult,omitempty" name:"PoliticalResult"`
+	// 视频内容审核智能画面鉴政任务的查询结果。
+	PoliticalResult *VodPoliticalReviewResult `json:"PoliticalResult,omitempty" name:"PoliticalResult"`
 
-		// 视频内容审核 Ocr 文字鉴政任务的查询结果。
-		PoliticalOcrResult *VodPoliticalOcrReviewResult `json:"PoliticalOcrResult,omitempty" name:"PoliticalOcrResult"`
+	// 视频内容审核 Ocr 文字鉴政任务的查询结果。
+	PoliticalOcrResult *VodPoliticalOcrReviewResult `json:"PoliticalOcrResult,omitempty" name:"PoliticalOcrResult"`
 
-		// 视频内容审核 Asr 文字鉴黄任务的查询结果。
-		PornAsrResult *VodPornAsrReviewResult `json:"PornAsrResult,omitempty" name:"PornAsrResult"`
+	// 视频内容审核 Asr 文字鉴黄任务的查询结果。
+	PornAsrResult *VodPornAsrReviewResult `json:"PornAsrResult,omitempty" name:"PornAsrResult"`
 
-		// 视频内容审核 Asr 文字鉴政任务的查询结果。
-		PoliticalAsrResult *VodPoliticalAsrReviewResult `json:"PoliticalAsrResult,omitempty" name:"PoliticalAsrResult"`
+	// 视频内容审核 Asr 文字鉴政任务的查询结果。
+	PoliticalAsrResult *VodPoliticalAsrReviewResult `json:"PoliticalAsrResult,omitempty" name:"PoliticalAsrResult"`
 
-		// 视频内容审核 Ocr 文字鉴黄任务的查询结果。
-		PornOcrResult *VodPornOcrResult `json:"PornOcrResult,omitempty" name:"PornOcrResult"`
+	// 视频内容审核 Ocr 文字鉴黄任务的查询结果。
+	PornOcrResult *VodPornOcrResult `json:"PornOcrResult,omitempty" name:"PornOcrResult"`
 
-		// 原始视频的元信息。
-		MetaData *VodMetaData `json:"MetaData,omitempty" name:"MetaData"`
+	// 原始视频的元信息。
+	MetaData *VodMetaData `json:"MetaData,omitempty" name:"MetaData"`
 
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeVideoTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeVideoTaskResponseParams `json:"Response"`
 }
 
 func (r *DescribeVideoTaskResponse) ToJsonString() string {
@@ -112,7 +119,6 @@ func (r *DescribeVideoTaskResponse) FromJsonString(s string) error {
 }
 
 type DisgustResult struct {
-
 	// 该识别场景的错误码：
 	// 0表示成功，
 	// -1表示系统错误，
@@ -133,7 +139,6 @@ type DisgustResult struct {
 }
 
 type FaceRect struct {
-
 	// 人脸区域左上角横坐标。
 	X *int64 `json:"X,omitempty" name:"X"`
 
@@ -148,7 +153,6 @@ type FaceRect struct {
 }
 
 type FaceResult struct {
-
 	// 检测出的人脸框位置。
 	FaceRect *FaceRect `json:"FaceRect,omitempty" name:"FaceRect"`
 
@@ -156,9 +160,38 @@ type FaceResult struct {
 	Candidates []*Candidate `json:"Candidates,omitempty" name:"Candidates"`
 }
 
+// Predefined struct for user
+type ImageModerationRequestParams struct {
+	// 本次调用支持的识别场景，可选值如下：
+	// 1. PORN，即色情识别
+	// 2. TERRORISM，即暴恐识别
+	// 3. POLITICS，即政治敏感识别
+	// 
+	// 支持多场景（Scenes）一起检测。例如，使用 Scenes=["PORN", "TERRORISM"]，即对一张图片同时进行色情识别和暴恐识别。
+	Scenes []*string `json:"Scenes,omitempty" name:"Scenes"`
+
+	// 图片URL地址。 
+	// 图片限制： 
+	//  • 图片格式：PNG、JPG、JPEG。 
+	//  • 图片大小：所下载图片经Base64编码后不超过4M。图片下载时间不超过3秒。 
+	//  • 图片像素：大于50*50像素，否则影响识别效果； 
+	//  • 长宽比：长边：短边<5； 
+	// 接口响应时间会受到图片下载时间的影响，建议使用更可靠的存储服务，推荐将图片存储在腾讯云COS。
+	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
+
+	// 预留字段，后期用于展示更多识别信息。
+	Config *string `json:"Config,omitempty" name:"Config"`
+
+	// 透传字段，透传简单信息。
+	Extra *string `json:"Extra,omitempty" name:"Extra"`
+
+	// 图片经过base64编码的内容。最大不超过4M。与ImageUrl同时存在时优先使用ImageUrl字段。
+	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
+}
+
 type ImageModerationRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 本次调用支持的识别场景，可选值如下：
 	// 1. PORN，即色情识别
 	// 2. TERRORISM，即暴恐识别
@@ -209,38 +242,40 @@ func (r *ImageModerationRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-type ImageModerationResponse struct {
-	*tchttp.BaseResponse
-	Response *struct {
-
-		// 识别场景的审核结论：
+// Predefined struct for user
+type ImageModerationResponseParams struct {
+	// 识别场景的审核结论：
 	// PASS：正常
 	// REVIEW：疑似
 	// BLOCK：违规
-		Suggestion *string `json:"Suggestion,omitempty" name:"Suggestion"`
+	Suggestion *string `json:"Suggestion,omitempty" name:"Suggestion"`
 
-		// 色情识别结果。
+	// 色情识别结果。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		PornResult *PornResult `json:"PornResult,omitempty" name:"PornResult"`
+	PornResult *PornResult `json:"PornResult,omitempty" name:"PornResult"`
 
-		// 暴恐识别结果。
+	// 暴恐识别结果。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		TerrorismResult *TerrorismResult `json:"TerrorismResult,omitempty" name:"TerrorismResult"`
+	TerrorismResult *TerrorismResult `json:"TerrorismResult,omitempty" name:"TerrorismResult"`
 
-		// 政治敏感识别结果。
+	// 政治敏感识别结果。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		PoliticsResult *PoliticsResult `json:"PoliticsResult,omitempty" name:"PoliticsResult"`
+	PoliticsResult *PoliticsResult `json:"PoliticsResult,omitempty" name:"PoliticsResult"`
 
-		// 透传字段，透传简单信息。
-		Extra *string `json:"Extra,omitempty" name:"Extra"`
+	// 透传字段，透传简单信息。
+	Extra *string `json:"Extra,omitempty" name:"Extra"`
 
-		// 恶心内容识别结果。
+	// 恶心内容识别结果。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		DisgustResult *DisgustResult `json:"DisgustResult,omitempty" name:"DisgustResult"`
+	DisgustResult *DisgustResult `json:"DisgustResult,omitempty" name:"DisgustResult"`
 
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ImageModerationResponse struct {
+	*tchttp.BaseResponse
+	Response *ImageModerationResponseParams `json:"Response"`
 }
 
 func (r *ImageModerationResponse) ToJsonString() string {
@@ -255,7 +290,6 @@ func (r *ImageModerationResponse) FromJsonString(s string) error {
 }
 
 type PoliticsResult struct {
-
 	// 该识别场景的错误码：
 	// 0表示成功，
 	// -1表示系统错误，
@@ -295,7 +329,6 @@ type PoliticsResult struct {
 }
 
 type PornResult struct {
-
 	// 该识别场景的错误码：
 	// 0表示成功，
 	// -1表示系统错误，
@@ -323,7 +356,6 @@ type PornResult struct {
 }
 
 type TerrorismResult struct {
-
 	// 该识别场景的错误码：
 	// 0表示成功，
 	// -1表示系统错误，
@@ -361,9 +393,24 @@ type TerrorismResult struct {
 	Type *string `json:"Type,omitempty" name:"Type"`
 }
 
+// Predefined struct for user
+type VideoModerationRequestParams struct {
+	// 需要审核的视频的URL地址
+	VideoUrl *string `json:"VideoUrl,omitempty" name:"VideoUrl"`
+
+	// 开发者标识
+	DeveloperId *string `json:"DeveloperId,omitempty" name:"DeveloperId"`
+
+	// 审核完成后回调地址
+	CBUrl *string `json:"CBUrl,omitempty" name:"CBUrl"`
+
+	// 透传字段，透传简单信息。
+	Extra *string `json:"Extra,omitempty" name:"Extra"`
+}
+
 type VideoModerationRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 需要审核的视频的URL地址
 	VideoUrl *string `json:"VideoUrl,omitempty" name:"VideoUrl"`
 
@@ -399,16 +446,18 @@ func (r *VideoModerationRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type VideoModerationResponseParams struct {
+	// 视频审核任务ID
+	VodTaskId *string `json:"VodTaskId,omitempty" name:"VodTaskId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type VideoModerationResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 视频审核任务ID
-		VodTaskId *string `json:"VodTaskId,omitempty" name:"VodTaskId"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *VideoModerationResponseParams `json:"Response"`
 }
 
 func (r *VideoModerationResponse) ToJsonString() string {
@@ -423,7 +472,6 @@ func (r *VideoModerationResponse) FromJsonString(s string) error {
 }
 
 type VodAsrTextSegmentItem struct {
-
 	// 嫌疑片段起始的偏移时间，单位：秒。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	StartTimeOffset *float64 `json:"StartTimeOffset,omitempty" name:"StartTimeOffset"`
@@ -450,7 +498,6 @@ type VodAsrTextSegmentItem struct {
 }
 
 type VodAudioStreamItem struct {
-
 	// 音频流的码率，单位：bps。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Bitrate *int64 `json:"Bitrate,omitempty" name:"Bitrate"`
@@ -465,7 +512,6 @@ type VodAudioStreamItem struct {
 }
 
 type VodMetaData struct {
-
 	// 上传的媒体文件大小（视频为 HLS 时，大小是 m3u8 和 ts 文件大小的总和），单位：字节。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Size *int64 `json:"Size,omitempty" name:"Size"`
@@ -512,7 +558,6 @@ type VodMetaData struct {
 }
 
 type VodOcrTextSegmentItem struct {
-
 	// 嫌疑片段起始的偏移时间，单位：秒。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	StartTimeOffset *float64 `json:"StartTimeOffset,omitempty" name:"StartTimeOffset"`
@@ -543,7 +588,6 @@ type VodOcrTextSegmentItem struct {
 }
 
 type VodPoliticalAsrReviewResult struct {
-
 	// 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
 	Status *string `json:"Status,omitempty" name:"Status"`
 
@@ -578,7 +622,6 @@ type VodPoliticalAsrReviewResult struct {
 }
 
 type VodPoliticalOcrReviewResult struct {
-
 	// 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
 	Status *string `json:"Status,omitempty" name:"Status"`
 
@@ -605,7 +648,6 @@ type VodPoliticalOcrReviewResult struct {
 }
 
 type VodPoliticalReviewResult struct {
-
 	// 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
 	Status *string `json:"Status,omitempty" name:"Status"`
 
@@ -642,7 +684,6 @@ type VodPoliticalReviewResult struct {
 }
 
 type VodPoliticalReviewSegmentItem struct {
-
 	// 嫌疑片段起始的偏移时间，单位：秒。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	StartTimeOffset *float64 `json:"StartTimeOffset,omitempty" name:"StartTimeOffset"`
@@ -686,7 +727,6 @@ type VodPoliticalReviewSegmentItem struct {
 }
 
 type VodPornAsrReviewResult struct {
-
 	// 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
 	Status *string `json:"Status,omitempty" name:"Status"`
 
@@ -716,7 +756,6 @@ type VodPornAsrReviewResult struct {
 }
 
 type VodPornOcrResult struct {
-
 	// 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
 	Status *string `json:"Status,omitempty" name:"Status"`
 
@@ -746,7 +785,6 @@ type VodPornOcrResult struct {
 }
 
 type VodPornReviewResult struct {
-
 	// 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
 	Status *string `json:"Status,omitempty" name:"Status"`
 
@@ -785,7 +823,6 @@ type VodPornReviewResult struct {
 }
 
 type VodPornReviewSegmentItem struct {
-
 	// 嫌疑片段起始的偏移时间，单位：秒。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	StartTimeOffset *float64 `json:"StartTimeOffset,omitempty" name:"StartTimeOffset"`
@@ -821,7 +858,6 @@ type VodPornReviewSegmentItem struct {
 }
 
 type VodTerrorismReviewResult struct {
-
 	// 视频暴恐评分，分值为0到100。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Confidence *float64 `json:"Confidence,omitempty" name:"Confidence"`
@@ -864,7 +900,6 @@ type VodTerrorismReviewResult struct {
 }
 
 type VodVideoStreamItem struct {
-
 	// 视频流的码率，单位：bps。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Bitrate *int64 `json:"Bitrate,omitempty" name:"Bitrate"`

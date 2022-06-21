@@ -21,7 +21,6 @@ import (
 )
 
 type AgentShell struct {
-
 	// 鉴权token
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Token *string `json:"Token,omitempty" name:"Token"`
@@ -55,8 +54,14 @@ type AgentShell struct {
 	JaegerPort *string `json:"JaegerPort,omitempty" name:"JaegerPort"`
 }
 
+// Predefined struct for user
+type DescribeAgentShellRequestParams struct {
+
+}
+
 type DescribeAgentShellRequest struct {
 	*tchttp.BaseRequest
+	
 }
 
 func (r *DescribeAgentShellRequest) ToJsonString() string {
@@ -71,23 +76,26 @@ func (r *DescribeAgentShellRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAgentShellRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeAgentShellResponseParams struct {
+	// 接入信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Result *AgentShell `json:"Result,omitempty" name:"Result"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeAgentShellResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 接入信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		Result *AgentShell `json:"Result,omitempty" name:"Result"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeAgentShellResponseParams `json:"Response"`
 }
 
 func (r *DescribeAgentShellResponse) ToJsonString() string {

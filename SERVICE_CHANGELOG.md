@@ -1,10 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 应用性能观测(apm) 版本：2021-06-22
+## 企业收付平台(cpdp) 版本：2019-08-20
 
-### 第 11 次发布
+### 第 69 次发布
 
-发布时间：2022-06-21 06:01:15
+发布时间：2022-06-22 06:05:01
 
 本次发布包含了以下内容：
 
@@ -12,18 +12,30 @@
 
 修改数据结构：
 
-* [ApmInstanceDetail](https://cloud.tencent.com/document/api/1463/64927#ApmInstanceDetail)
+* [OpenBankGoodsInfo](https://cloud.tencent.com/document/api/1122/40683#OpenBankGoodsInfo)
 
-	* 新增成员：ClientCount, TotalCount
+	* 新增成员：GoodsBizType
+
+* [OpenBankPayerInfo](https://cloud.tencent.com/document/api/1122/40683#OpenBankPayerInfo)
+
+	* 新增成员：BankCardType
+
+* [OpenBankSceneInfo](https://cloud.tencent.com/document/api/1122/40683#OpenBankSceneInfo)
+
+	* 新增成员：DeviceType
+
+* [SupportBankInfo](https://cloud.tencent.com/document/api/1122/40683#SupportBankInfo)
+
+	* 新增成员：BankId, CardType
 
 
 
 
-## 数据湖计算(dlc) 版本：2021-01-25
+## 云直播(live) 版本：2018-08-01
 
-### 第 22 次发布
+### 第 79 次发布
 
-发布时间：2022-06-21 06:06:29
+发布时间：2022-06-22 06:10:05
 
 本次发布包含了以下内容：
 
@@ -31,58 +43,33 @@
 
 修改接口：
 
-* [DescribeSparkAppTasks](https://cloud.tencent.com/document/api/1342/74533)
+* [CreateLiveTranscodeTemplate](https://cloud.tencent.com/document/api/267/32646)
 
-	* 新增入参：TaskId
+	* 新增入参：DRMType, DRMTracks
 
+* [ModifyLiveTranscodeTemplate](https://cloud.tencent.com/document/api/267/32640)
 
+	* 新增入参：DRMType, DRMTracks
 
-
-## 容器安全服务(tcss) 版本：2020-11-01
-
-### 第 19 次发布
-
-发布时间：2022-06-21 06:13:45
-
-本次发布包含了以下内容：
-
-改善已有的文档。
 
 修改数据结构：
 
-* [ClusterCheckItem](https://cloud.tencent.com/document/api/1285/65614#ClusterCheckItem)
+* [TemplateInfo](https://cloud.tencent.com/document/api/267/20474#TemplateInfo)
 
-	* 新增成员：IgnoredAssetNum, IsIgnored, RiskAssessment
+	* 新增成员：DRMType, DRMTracks
 
+* [TimeShiftBillData](https://cloud.tencent.com/document/api/267/20474#TimeShiftBillData)
 
-
-
-## 实时音视频(trtc) 版本：2019-07-22
-
-### 第 32 次发布
-
-发布时间：2022-06-21 06:15:46
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-<font color="#dd0000">**删除接口**：</font>
-
-* MeasureTrtcMcuExternal
-
-<font color="#dd0000">**删除数据结构**：</font>
-
-* OneSdkAppIdTranscodeTimeUsagesNewInfo
-* SdkAppIdTrtcMcuTranscodeTimeNewUsage
+	* 新增成员：TotalDuration
 
 
 
-## 腾讯微服务平台 TSF(tsf) 版本：2018-03-26
 
-### 第 76 次发布
+## 云托管 CloudBase Run(tcbr) 版本：2022-02-17
 
-发布时间：2022-06-21 06:15:54
+### 第 2 次发布
+
+发布时间：2022-06-22 06:13:21
 
 本次发布包含了以下内容：
 
@@ -90,56 +77,35 @@
 
 新增接口：
 
-* [AssociateBusinessLogConfig](https://cloud.tencent.com/document/api/649/75781)
-* [AssociateConfigWithGroup](https://cloud.tencent.com/document/api/649/75780)
-* [DescribeApplicationBusinessLogConfig](https://cloud.tencent.com/document/api/649/75779)
-* [DescribeBusinessLogConfig](https://cloud.tencent.com/document/api/649/75778)
-* [DescribeBusinessLogConfigs](https://cloud.tencent.com/document/api/649/75777)
-* [DescribeDeliveryConfig](https://cloud.tencent.com/document/api/649/75776)
-* [DescribeDeliveryConfigByGroupId](https://cloud.tencent.com/document/api/649/75775)
-* [DescribeDeliveryConfigs](https://cloud.tencent.com/document/api/649/75774)
-* [DescribeGroupBusinessLogConfigs](https://cloud.tencent.com/document/api/649/75773)
-* [DisassociateBusinessLogConfig](https://cloud.tencent.com/document/api/649/75772)
-* [DisassociateKafkaConfig](https://cloud.tencent.com/document/api/649/75771)
-* [ReassociateBusinessLogConfig](https://cloud.tencent.com/document/api/649/75770)
+* [OperateServerManage](https://cloud.tencent.com/document/api/1243/75873)
+* [ReleaseGray](https://cloud.tencent.com/document/api/1243/75872)
 
 新增数据结构：
 
-* [BusinesLogConfigAssociatedGroup](https://cloud.tencent.com/document/api/649/36099#BusinesLogConfigAssociatedGroup)
-* [BusinessLogConfig](https://cloud.tencent.com/document/api/649/36099#BusinessLogConfig)
-* [BusinessLogConfigSchema](https://cloud.tencent.com/document/api/649/36099#BusinessLogConfigSchema)
-* [DeliveryConfigBindGroup](https://cloud.tencent.com/document/api/649/36099#DeliveryConfigBindGroup)
-* [DeliveryConfigBindGroups](https://cloud.tencent.com/document/api/649/36099#DeliveryConfigBindGroups)
-* [GroupInfo](https://cloud.tencent.com/document/api/649/36099#GroupInfo)
-* [KafkaDeliveryConfig](https://cloud.tencent.com/document/api/649/36099#KafkaDeliveryConfig)
-* [SimpleKafkaDeliveryConfig](https://cloud.tencent.com/document/api/649/36099#SimpleKafkaDeliveryConfig)
-* [TsfPageBusinessLogConfig](https://cloud.tencent.com/document/api/649/36099#TsfPageBusinessLogConfig)
+* [ObjectKV](https://cloud.tencent.com/document/api/1243/75713#ObjectKV)
+* [VersionFlowInfo](https://cloud.tencent.com/document/api/1243/75713#VersionFlowInfo)
 
 
 
-## 云点播(vod) 版本：2018-07-17
+## 私有网络(vpc) 版本：2017-03-12
 
-### 第 106 次发布
+### 第 115 次发布
 
-发布时间：2022-06-21 06:16:46
+发布时间：2022-06-22 06:16:12
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-新增数据结构：
+新增接口：
 
-* [TraceWatermarkInput](https://cloud.tencent.com/document/api/266/31773#TraceWatermarkInput)
+* [AdjustPublicAddress](https://cloud.tencent.com/document/api/215/75874)
 
-修改数据结构：
+修改接口：
 
-* [AdaptiveDynamicStreamingTaskInput](https://cloud.tencent.com/document/api/266/31773#AdaptiveDynamicStreamingTaskInput)
+* [CreateVpnGatewaySslServer](https://cloud.tencent.com/document/api/215/70289)
 
-	* 新增成员：TraceWatermark
-
-* [TranscodeTaskInput](https://cloud.tencent.com/document/api/266/31773#TranscodeTaskInput)
-
-	* 新增成员：TraceWatermark
+	* 新增入参：SsoEnabled, AccessPolicyEnabled, SamlData
 
 
 
@@ -21212,6 +21178,33 @@
 
 
 ## 企业收付平台(cpdp) 版本：2019-08-20
+
+### 第 69 次发布
+
+发布时间：2022-06-22 06:05:01
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [OpenBankGoodsInfo](https://cloud.tencent.com/document/api/1122/40683#OpenBankGoodsInfo)
+
+	* 新增成员：GoodsBizType
+
+* [OpenBankPayerInfo](https://cloud.tencent.com/document/api/1122/40683#OpenBankPayerInfo)
+
+	* 新增成员：BankCardType
+
+* [OpenBankSceneInfo](https://cloud.tencent.com/document/api/1122/40683#OpenBankSceneInfo)
+
+	* 新增成员：DeviceType
+
+* [SupportBankInfo](https://cloud.tencent.com/document/api/1122/40683#SupportBankInfo)
+
+	* 新增成员：BankId, CardType
+
 
 ### 第 68 次发布
 
@@ -44722,6 +44715,36 @@
 
 ## 云直播(live) 版本：2018-08-01
 
+### 第 79 次发布
+
+发布时间：2022-06-22 06:10:05
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateLiveTranscodeTemplate](https://cloud.tencent.com/document/api/267/32646)
+
+	* 新增入参：DRMType, DRMTracks
+
+* [ModifyLiveTranscodeTemplate](https://cloud.tencent.com/document/api/267/32640)
+
+	* 新增入参：DRMType, DRMTracks
+
+
+修改数据结构：
+
+* [TemplateInfo](https://cloud.tencent.com/document/api/267/20474#TemplateInfo)
+
+	* 新增成员：DRMType, DRMTracks
+
+* [TimeShiftBillData](https://cloud.tencent.com/document/api/267/20474#TimeShiftBillData)
+
+	* 新增成员：TotalDuration
+
+
 ### 第 78 次发布
 
 发布时间：2022-06-14 06:13:41
@@ -62795,6 +62818,24 @@
 
 ## 云托管 CloudBase Run(tcbr) 版本：2022-02-17
 
+### 第 2 次发布
+
+发布时间：2022-06-22 06:13:21
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[OperateServerManage](https://cloud.tencent.com/document/api/1243/75873)](https://cloud.tencent.com/document/api/#/#)
+* [[ReleaseGray](https://cloud.tencent.com/document/api/1243/75872)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[ObjectKV](https://cloud.tencent.com/document/api/1243/75713#ObjectKV)](https://cloud.tencent.com/document/api/1243/75713#[ObjectKV](https://cloud.tencent.com/document/api/1243/75713#ObjectKV))
+* [[VersionFlowInfo](https://cloud.tencent.com/document/api/1243/75713#VersionFlowInfo)](https://cloud.tencent.com/document/api/1243/75713#[VersionFlowInfo](https://cloud.tencent.com/document/api/1243/75713#VersionFlowInfo))
+
 ### 第 1 次发布
 
 发布时间：2022-06-16 14:56:04
@@ -72381,30 +72422,30 @@
 
 新增接口：
 
-* [[AssociateBusinessLogConfig](https://cloud.tencent.com/document/api/649/75781)](https://cloud.tencent.com/document/api/#/#)
-* [[AssociateConfigWithGroup](https://cloud.tencent.com/document/api/649/75780)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeApplicationBusinessLogConfig](https://cloud.tencent.com/document/api/649/75779)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeBusinessLogConfig](https://cloud.tencent.com/document/api/649/75778)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeBusinessLogConfigs](https://cloud.tencent.com/document/api/649/75777)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeDeliveryConfig](https://cloud.tencent.com/document/api/649/75776)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeDeliveryConfigByGroupId](https://cloud.tencent.com/document/api/649/75775)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeDeliveryConfigs](https://cloud.tencent.com/document/api/649/75774)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeGroupBusinessLogConfigs](https://cloud.tencent.com/document/api/649/75773)](https://cloud.tencent.com/document/api/#/#)
-* [[DisassociateBusinessLogConfig](https://cloud.tencent.com/document/api/649/75772)](https://cloud.tencent.com/document/api/#/#)
-* [[DisassociateKafkaConfig](https://cloud.tencent.com/document/api/649/75771)](https://cloud.tencent.com/document/api/#/#)
-* [[ReassociateBusinessLogConfig](https://cloud.tencent.com/document/api/649/75770)](https://cloud.tencent.com/document/api/#/#)
+* [AssociateBusinessLogConfig](https://cloud.tencent.com/document/api/649/75781)
+* [AssociateConfigWithGroup](https://cloud.tencent.com/document/api/649/75780)
+* [DescribeApplicationBusinessLogConfig](https://cloud.tencent.com/document/api/649/75779)
+* [DescribeBusinessLogConfig](https://cloud.tencent.com/document/api/649/75778)
+* [DescribeBusinessLogConfigs](https://cloud.tencent.com/document/api/649/75777)
+* [DescribeDeliveryConfig](https://cloud.tencent.com/document/api/649/75776)
+* [DescribeDeliveryConfigByGroupId](https://cloud.tencent.com/document/api/649/75775)
+* [DescribeDeliveryConfigs](https://cloud.tencent.com/document/api/649/75774)
+* [DescribeGroupBusinessLogConfigs](https://cloud.tencent.com/document/api/649/75773)
+* [DisassociateBusinessLogConfig](https://cloud.tencent.com/document/api/649/75772)
+* [DisassociateKafkaConfig](https://cloud.tencent.com/document/api/649/75771)
+* [ReassociateBusinessLogConfig](https://cloud.tencent.com/document/api/649/75770)
 
 新增数据结构：
 
-* [[BusinesLogConfigAssociatedGroup](https://cloud.tencent.com/document/api/649/36099#BusinesLogConfigAssociatedGroup)](https://cloud.tencent.com/document/api/649/36099#[BusinesLogConfigAssociatedGroup](https://cloud.tencent.com/document/api/649/36099#BusinesLogConfigAssociatedGroup))
-* [[BusinessLogConfig](https://cloud.tencent.com/document/api/649/36099#BusinessLogConfig)](https://cloud.tencent.com/document/api/649/36099#[BusinessLogConfig](https://cloud.tencent.com/document/api/649/36099#BusinessLogConfig))
-* [[BusinessLogConfigSchema](https://cloud.tencent.com/document/api/649/36099#BusinessLogConfigSchema)](https://cloud.tencent.com/document/api/649/36099#[BusinessLogConfigSchema](https://cloud.tencent.com/document/api/649/36099#BusinessLogConfigSchema))
-* [[DeliveryConfigBindGroup](https://cloud.tencent.com/document/api/649/36099#DeliveryConfigBindGroup)](https://cloud.tencent.com/document/api/649/36099#[DeliveryConfigBindGroup](https://cloud.tencent.com/document/api/649/36099#DeliveryConfigBindGroup))
-* [[DeliveryConfigBindGroups](https://cloud.tencent.com/document/api/649/36099#DeliveryConfigBindGroups)](https://cloud.tencent.com/document/api/649/36099#[DeliveryConfigBindGroups](https://cloud.tencent.com/document/api/649/36099#DeliveryConfigBindGroups))
-* [[GroupInfo](https://cloud.tencent.com/document/api/649/36099#GroupInfo)](https://cloud.tencent.com/document/api/649/36099#[GroupInfo](https://cloud.tencent.com/document/api/649/36099#GroupInfo))
-* [[KafkaDeliveryConfig](https://cloud.tencent.com/document/api/649/36099#KafkaDeliveryConfig)](https://cloud.tencent.com/document/api/649/36099#[KafkaDeliveryConfig](https://cloud.tencent.com/document/api/649/36099#KafkaDeliveryConfig))
-* [[SimpleKafkaDeliveryConfig](https://cloud.tencent.com/document/api/649/36099#SimpleKafkaDeliveryConfig)](https://cloud.tencent.com/document/api/649/36099#[SimpleKafkaDeliveryConfig](https://cloud.tencent.com/document/api/649/36099#SimpleKafkaDeliveryConfig))
-* [[TsfPageBusinessLogConfig](https://cloud.tencent.com/document/api/649/36099#TsfPageBusinessLogConfig)](https://cloud.tencent.com/document/api/649/36099#[TsfPageBusinessLogConfig](https://cloud.tencent.com/document/api/649/36099#TsfPageBusinessLogConfig))
+* [BusinesLogConfigAssociatedGroup](https://cloud.tencent.com/document/api/649/36099#BusinesLogConfigAssociatedGroup)
+* [BusinessLogConfig](https://cloud.tencent.com/document/api/649/36099#BusinessLogConfig)
+* [BusinessLogConfigSchema](https://cloud.tencent.com/document/api/649/36099#BusinessLogConfigSchema)
+* [DeliveryConfigBindGroup](https://cloud.tencent.com/document/api/649/36099#DeliveryConfigBindGroup)
+* [DeliveryConfigBindGroups](https://cloud.tencent.com/document/api/649/36099#DeliveryConfigBindGroups)
+* [GroupInfo](https://cloud.tencent.com/document/api/649/36099#GroupInfo)
+* [KafkaDeliveryConfig](https://cloud.tencent.com/document/api/649/36099#KafkaDeliveryConfig)
+* [SimpleKafkaDeliveryConfig](https://cloud.tencent.com/document/api/649/36099#SimpleKafkaDeliveryConfig)
+* [TsfPageBusinessLogConfig](https://cloud.tencent.com/document/api/649/36099#TsfPageBusinessLogConfig)
 
 ### 第 75 次发布
 
@@ -74894,7 +74935,7 @@
 
 新增数据结构：
 
-* [[TraceWatermarkInput](https://cloud.tencent.com/document/api/266/31773#TraceWatermarkInput)](https://cloud.tencent.com/document/api/266/31773#[TraceWatermarkInput](https://cloud.tencent.com/document/api/266/31773#TraceWatermarkInput))
+* [TraceWatermarkInput](https://cloud.tencent.com/document/api/266/31773#TraceWatermarkInput)
 
 修改数据结构：
 
@@ -77813,6 +77854,25 @@
 
 
 ## 私有网络(vpc) 版本：2017-03-12
+
+### 第 115 次发布
+
+发布时间：2022-06-22 06:16:12
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[AdjustPublicAddress](https://cloud.tencent.com/document/api/215/75874)](https://cloud.tencent.com/document/api/#/#)
+
+修改接口：
+
+* [CreateVpnGatewaySslServer](https://cloud.tencent.com/document/api/215/70289)
+
+	* 新增入参：SsoEnabled, AccessPolicyEnabled, SamlData
+
 
 ### 第 114 次发布
 

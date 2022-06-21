@@ -20,8 +20,14 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+// Predefined struct for user
+type DescribeSdkAppidRequestParams struct {
+
+}
+
 type DescribeSdkAppidRequest struct {
 	*tchttp.BaseRequest
+	
 }
 
 func (r *DescribeSdkAppidRequest) ToJsonString() string {
@@ -36,22 +42,25 @@ func (r *DescribeSdkAppidRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSdkAppidRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeSdkAppidResponseParams struct {
+	// 表示 appid 对应的 SdkAppid 的数据
+	SdkAppids []*int64 `json:"SdkAppids,omitempty" name:"SdkAppids"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeSdkAppidResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 表示 appid 对应的 SdkAppid 的数据
-		SdkAppids []*int64 `json:"SdkAppids,omitempty" name:"SdkAppids"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeSdkAppidResponseParams `json:"Response"`
 }
 
 func (r *DescribeSdkAppidResponse) ToJsonString() string {

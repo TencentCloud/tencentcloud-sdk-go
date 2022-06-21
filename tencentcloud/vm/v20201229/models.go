@@ -21,7 +21,6 @@ import (
 )
 
 type AudioResult struct {
-
 	// 该字段用于返回审核内容是否命中审核模型；取值：0（**未命中**）、1（**命中**）。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	HitFlag *int64 `json:"HitFlag,omitempty" name:"HitFlag"`
@@ -77,7 +76,6 @@ type AudioResult struct {
 }
 
 type AudioResultDetailLanguageResult struct {
-
 	// 该字段用于返回对应的语言种类信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Label *string `json:"Label,omitempty" name:"Label"`
@@ -100,7 +98,6 @@ type AudioResultDetailLanguageResult struct {
 }
 
 type AudioResultDetailMoanResult struct {
-
 	// 该字段用于返回检测结果需要检测的内容类型，此处固定为**Moan**（呻吟）以调用呻吟检测功能。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Label *string `json:"Label,omitempty" name:"Label"`
@@ -123,7 +120,6 @@ type AudioResultDetailMoanResult struct {
 }
 
 type AudioResultDetailTextResult struct {
-
 	// 该字段用于返回检测结果所对应的恶意标签。<br>返回值：**Normal**：正常，**Porn**：色情，**Abuse**：谩骂，**Ad**：广告，**Custom**：自定义违规；以及其他令人反感、不安全或不适宜的内容类型。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Label *string `json:"Label,omitempty" name:"Label"`
@@ -159,7 +155,6 @@ type AudioResultDetailTextResult struct {
 }
 
 type AudioSegments struct {
-
 	// 该字段用于返回音频片段的开始时间，单位为秒。对于点播文件，该参数代表对应音频相对于完整音轨的偏移时间，如0（代表不偏移），5（音轨开始后5秒），10（音轨开始后10秒）；对于直播文件，该参数则返回对应音频片段开始时的Unix时间戳，如：1594650717。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OffsetTime *string `json:"OffsetTime,omitempty" name:"OffsetTime"`
@@ -170,7 +165,6 @@ type AudioSegments struct {
 }
 
 type BucketInfo struct {
-
 	// 该字段用于标识腾讯云对象存储的存储桶名称,关于文件桶的详细信息敬请参考 [腾讯云存储相关说明](https://cloud.tencent.com/document/product/436/44352)。
 	Bucket *string `json:"Bucket,omitempty" name:"Bucket"`
 
@@ -181,9 +175,15 @@ type BucketInfo struct {
 	Object *string `json:"Object,omitempty" name:"Object"`
 }
 
+// Predefined struct for user
+type CancelTaskRequestParams struct {
+	// 该字段表示创建视频审核任务后返回的任务ID（在Results参数中），用于标识需要取消的审核任务。
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+}
+
 type CancelTaskRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 该字段表示创建视频审核任务后返回的任务ID（在Results参数中），用于标识需要取消的审核任务。
 	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
 }
@@ -207,13 +207,15 @@ func (r *CancelTaskRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CancelTaskResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CancelTaskResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CancelTaskResponseParams `json:"Response"`
 }
 
 func (r *CancelTaskResponse) ToJsonString() string {
@@ -227,9 +229,30 @@ func (r *CancelTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateVideoModerationTaskRequestParams struct {
+	// 该参数用于传入审核任务的任务类型，取值：**VIDEO**（点播视频），**LIVE_VIDEO**（直播视频）。
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 该字段表示输入的视频审核任务信息，具体输入内容请参见TaskInput数据结构的详细描述。<br> 备注：最多同时可创建**10个任务**。
+	Tasks []*TaskInput `json:"Tasks,omitempty" name:"Tasks"`
+
+	// 该字段表示策略的具体编号，用于接口调度，在内容安全控制台中可配置。若不传入Biztype参数（留空），则代表采用默认的识别策略；传入则会在审核时根据业务场景采取不同的审核策略。<br>备注：Biztype仅为数字、字母与下划线的组合，长度为3-32个字符；不同Biztype关联不同的业务场景与识别能力策略，调用前请确认正确的Biztype。
+	BizType *string `json:"BizType,omitempty" name:"BizType"`
+
+	// 可选参数，该字段表示回调签名的key信息，用于保证数据的安全性。 签名方法为在返回的HTTP头部添加 X-Signature 的字段，值为： seed + body 的 SHA256 编码和Hex字符串，在收到回调数据后，可以根据返回的body，用 **sha256(seed + body)**, 计算出 `X-Signature` 进行验证。<br>具体使用实例可参考 [回调签名示例](https://cloud.tencent.com/document/product/1265/51885)。
+	Seed *string `json:"Seed,omitempty" name:"Seed"`
+
+	// 可选参数，该字段表示接受审核信息回调的地址，格式为URL链接默认格式。配置成功后，审核过程中产生的违规音视频片段将通过此接口发送。回调返回内容格式请参考 [回调签名示例](https://cloud.tencent.com/document/product/1265/51879#.E7.A4.BA.E4.BE.8B2-.E5.9B.9E.E8.B0.83.E7.AD.BE.E5.90.8D.E7.A4.BA.E4.BE.8B) <br>备注：音频默认截取时长为**15秒**，视频截帧默认为**5秒**截取一张图片；若用户自行配置截取间隔，则按照用户配置返回相应片段。
+	CallbackUrl *string `json:"CallbackUrl,omitempty" name:"CallbackUrl"`
+
+	// 可选参数，该参数用于传入审核任务的优先级。当您有多个视频审核任务排队时，可以根据这个参数控制排队优先级，用于处理插队等逻辑；该参数**默认值为0**。
+	Priority *int64 `json:"Priority,omitempty" name:"Priority"`
+}
+
 type CreateVideoModerationTaskRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 该参数用于传入审核任务的任务类型，取值：**VIDEO**（点播视频），**LIVE_VIDEO**（直播视频）。
 	Type *string `json:"Type,omitempty" name:"Type"`
 
@@ -273,17 +296,19 @@ func (r *CreateVideoModerationTaskRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateVideoModerationTaskResponseParams struct {
+	// 该字段用于返回任务创建的结果，具体输出内容请参见TaskResult数据结构的详细描述。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Results []*TaskResult `json:"Results,omitempty" name:"Results"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreateVideoModerationTaskResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 该字段用于返回任务创建的结果，具体输出内容请参见TaskResult数据结构的详细描述。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		Results []*TaskResult `json:"Results,omitempty" name:"Results"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreateVideoModerationTaskResponseParams `json:"Response"`
 }
 
 func (r *CreateVideoModerationTaskResponse) ToJsonString() string {
@@ -297,9 +322,19 @@ func (r *CreateVideoModerationTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeTaskDetailRequestParams struct {
+	// 该字段表示创建视频审核任务后返回的任务ID（在Results参数中），用于标识需要查询任务详情的审核任务。
+	// <br>备注：查询接口单次最大查询量为**20条每次**。
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 该布尔字段表示是否展示全部的视频片段，取值：True(展示全部的视频分片)、False(只展示命中审核规则的视频分片)；默认值为False。
+	ShowAllSegments *bool `json:"ShowAllSegments,omitempty" name:"ShowAllSegments"`
+}
+
 type DescribeTaskDetailRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 该字段表示创建视频审核任务后返回的任务ID（在Results参数中），用于标识需要查询任务详情的审核任务。
 	// <br>备注：查询接口单次最大查询量为**20条每次**。
 	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
@@ -328,84 +363,86 @@ func (r *DescribeTaskDetailRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-type DescribeTaskDetailResponse struct {
-	*tchttp.BaseResponse
-	Response *struct {
-
-		// 该字段用于返回创建视频审核任务后返回的任务ID（在Results参数中），用于标识需要查询任务详情的审核任务。
+// Predefined struct for user
+type DescribeTaskDetailResponseParams struct {
+	// 该字段用于返回创建视频审核任务后返回的任务ID（在Results参数中），用于标识需要查询任务详情的审核任务。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
 
-		// 该字段用于返回调用视频审核接口时传入的数据ID参数，方便数据的辨别和管理。
+	// 该字段用于返回调用视频审核接口时传入的数据ID参数，方便数据的辨别和管理。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		DataId *string `json:"DataId,omitempty" name:"DataId"`
+	DataId *string `json:"DataId,omitempty" name:"DataId"`
 
-		// 该字段用于返回调用视频审核接口时传入的BizType参数，方便数据的辨别和管理。
+	// 该字段用于返回调用视频审核接口时传入的BizType参数，方便数据的辨别和管理。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		BizType *string `json:"BizType,omitempty" name:"BizType"`
+	BizType *string `json:"BizType,omitempty" name:"BizType"`
 
-		// 该字段用于返回调用视频审核接口时传入的TaskInput参数中的任务名称，方便任务的识别与管理。
+	// 该字段用于返回调用视频审核接口时传入的TaskInput参数中的任务名称，方便任务的识别与管理。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitempty" name:"Name"`
 
-		// 该字段用于返回所查询内容的任务状态。
+	// 该字段用于返回所查询内容的任务状态。
 	// <br>取值：**FINISH**（任务已完成）、**PENDING** （任务等待中）、**RUNNING** （任务进行中）、**ERROR** （任务出错）、**CANCELLED** （任务已取消）。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		Status *string `json:"Status,omitempty" name:"Status"`
+	Status *string `json:"Status,omitempty" name:"Status"`
 
-		// 该字段用于返回调用视频审核接口时输入的视频审核类型，取值为：**VIDEO**（点播视频）和**LIVE_VIDEO**（直播视频），默认值为VIDEO。
+	// 该字段用于返回调用视频审核接口时输入的视频审核类型，取值为：**VIDEO**（点播视频）和**LIVE_VIDEO**（直播视频），默认值为VIDEO。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		Type *string `json:"Type,omitempty" name:"Type"`
+	Type *string `json:"Type,omitempty" name:"Type"`
 
-		// 该字段用于返回基于恶意标签的后续操作建议。当您获取到判定结果后，返回值表示系统推荐的后续操作；建议您按照业务所需，对不同违规类型与建议值进行处理。<br>返回值：**Block**：建议屏蔽，**Review** ：建议人工复审，**Pass**：建议通过
+	// 该字段用于返回基于恶意标签的后续操作建议。当您获取到判定结果后，返回值表示系统推荐的后续操作；建议您按照业务所需，对不同违规类型与建议值进行处理。<br>返回值：**Block**：建议屏蔽，**Review** ：建议人工复审，**Pass**：建议通过
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		Suggestion *string `json:"Suggestion,omitempty" name:"Suggestion"`
+	Suggestion *string `json:"Suggestion,omitempty" name:"Suggestion"`
 
-		// 该字段用于返回检测结果所对应的恶意标签。<br>返回值：**Porn**：色情，**Abuse**：谩骂，**Ad**：广告，**Custom**：自定义违规；以及其他令人反感、不安全或不适宜的内容类型。
+	// 该字段用于返回检测结果所对应的恶意标签。<br>返回值：**Porn**：色情，**Abuse**：谩骂，**Ad**：广告，**Custom**：自定义违规；以及其他令人反感、不安全或不适宜的内容类型。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		Labels []*TaskLabel `json:"Labels,omitempty" name:"Labels"`
+	Labels []*TaskLabel `json:"Labels,omitempty" name:"Labels"`
 
-		// 该字段用于返回输入媒体文件的详细信息，包括编解码格式、分片时长等信息。详细内容敬请参考MediaInfo数据结构的描述。
+	// 该字段用于返回输入媒体文件的详细信息，包括编解码格式、分片时长等信息。详细内容敬请参考MediaInfo数据结构的描述。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		MediaInfo *MediaInfo `json:"MediaInfo,omitempty" name:"MediaInfo"`
+	MediaInfo *MediaInfo `json:"MediaInfo,omitempty" name:"MediaInfo"`
 
-		// 该字段用于返回审核服务的媒体内容信息，主要包括传入文件类型和访问地址。
+	// 该字段用于返回审核服务的媒体内容信息，主要包括传入文件类型和访问地址。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		InputInfo *InputInfo `json:"InputInfo,omitempty" name:"InputInfo"`
+	InputInfo *InputInfo `json:"InputInfo,omitempty" name:"InputInfo"`
 
-		// 该字段用于返回被查询任务创建的时间，格式采用 ISO 8601标准。
+	// 该字段用于返回被查询任务创建的时间，格式采用 ISO 8601标准。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		CreatedAt *string `json:"CreatedAt,omitempty" name:"CreatedAt"`
+	CreatedAt *string `json:"CreatedAt,omitempty" name:"CreatedAt"`
 
-		// 该字段用于返回被查询任务最后更新时间，格式采用 ISO 8601标准。
+	// 该字段用于返回被查询任务最后更新时间，格式采用 ISO 8601标准。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		UpdatedAt *string `json:"UpdatedAt,omitempty" name:"UpdatedAt"`
+	UpdatedAt *string `json:"UpdatedAt,omitempty" name:"UpdatedAt"`
 
-		// 该字段用于返回视频中截帧审核的结果，详细返回内容敬请参考ImageSegments数据结构的描述。<br>备注：数据有效期为24小时，如需要延长存储时间，请在已配置的COS储存桶中设置。
+	// 该字段用于返回视频中截帧审核的结果，详细返回内容敬请参考ImageSegments数据结构的描述。<br>备注：数据有效期为24小时，如需要延长存储时间，请在已配置的COS储存桶中设置。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		ImageSegments []*ImageSegments `json:"ImageSegments,omitempty" name:"ImageSegments"`
+	ImageSegments []*ImageSegments `json:"ImageSegments,omitempty" name:"ImageSegments"`
 
-		// 该字段用于返回视频中音频审核的结果，详细返回内容敬请参考AudioSegments数据结构的描述。<br>备注：数据有效期为24小时，如需要延长存储时间，请在已配置的COS储存桶中设置。
+	// 该字段用于返回视频中音频审核的结果，详细返回内容敬请参考AudioSegments数据结构的描述。<br>备注：数据有效期为24小时，如需要延长存储时间，请在已配置的COS储存桶中设置。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		AudioSegments []*AudioSegments `json:"AudioSegments,omitempty" name:"AudioSegments"`
+	AudioSegments []*AudioSegments `json:"AudioSegments,omitempty" name:"AudioSegments"`
 
-		// 当任务状态为Error时，返回对应错误的类型，取值：**DECODE_ERROR**: 解码失败。（输入资源中可能包含无法解码的视频）
+	// 当任务状态为Error时，返回对应错误的类型，取值：**DECODE_ERROR**: 解码失败。（输入资源中可能包含无法解码的视频）
 	// **URL_ERROR**：下载地址验证失败。
 	// **TIMEOUT_ERROR**：处理超时。任务状态非Error时默认返回为空。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		ErrorType *string `json:"ErrorType,omitempty" name:"ErrorType"`
+	ErrorType *string `json:"ErrorType,omitempty" name:"ErrorType"`
 
-		// 当任务状态为Error时，该字段用于返回对应错误的详细描述，任务状态非Error时默认返回为空。
+	// 当任务状态为Error时，该字段用于返回对应错误的详细描述，任务状态非Error时默认返回为空。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		ErrorDescription *string `json:"ErrorDescription,omitempty" name:"ErrorDescription"`
+	ErrorDescription *string `json:"ErrorDescription,omitempty" name:"ErrorDescription"`
 
-		// 该字段用于返回检测结果所对应的标签。如果未命中恶意，返回Normal，如果命中恶意，则返回Labels中优先级最高的标签
+	// 该字段用于返回检测结果所对应的标签。如果未命中恶意，返回Normal，如果命中恶意，则返回Labels中优先级最高的标签
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		Label *string `json:"Label,omitempty" name:"Label"`
+	Label *string `json:"Label,omitempty" name:"Label"`
 
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeTaskDetailResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeTaskDetailResponseParams `json:"Response"`
 }
 
 func (r *DescribeTaskDetailResponse) ToJsonString() string {
@@ -419,9 +456,27 @@ func (r *DescribeTaskDetailResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeTasksRequestParams struct {
+	// 该参数表示任务列表每页展示的任务条数，**默认值为10**（每页展示10条任务）。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 该参数表示任务筛选器的输入参数，可根据业务类型、审核文件类型、处理建议及任务状态筛选想要查看的审核任务，具体参数内容请参见TaskFilter数据结构的详细描述。
+	Filter *TaskFilter `json:"Filter,omitempty" name:"Filter"`
+
+	// 该参数表示翻页时使用的Token信息，由系统自动生成，并在翻页时向下一个生成的页面传递此参数，以方便快速翻页功能的实现。当到最后一页时，该字段为空。
+	PageToken *string `json:"PageToken,omitempty" name:"PageToken"`
+
+	// 该参数表示任务列表的开始时间，格式为ISO8601标准的时间戳。**默认值为最近3天**，若传入该参数，则在这一时间到EndTime之间的任务将会被筛选出来。<br>备注：该参数与Filter共同起到任务筛选作用，二者作用无先后顺序。
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 该参数表示任务列表的结束时间，格式为ISO8601标准的时间戳。**默认值为空**，若传入该参数，则在这StartTime到这一时间之间的任务将会被筛选出来。<br>备注：该参数与Filter共同起到任务筛选作用，二者作用无先后顺序。
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+}
+
 type DescribeTasksRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 该参数表示任务列表每页展示的任务条数，**默认值为10**（每页展示10条任务）。
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
@@ -461,25 +516,27 @@ func (r *DescribeTasksRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeTasksResponseParams struct {
+	// 该字段用于返回当前查询的任务总量，格式为int字符串。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Total *string `json:"Total,omitempty" name:"Total"`
+
+	// 该字段用于返回当前页的任务详细数据，具体输出内容请参见TaskData数据结构的详细描述。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data []*TaskData `json:"Data,omitempty" name:"Data"`
+
+	// 该字段用于返回翻页时使用的Token信息，由系统自动生成，并在翻页时向下一个生成的页面传递此参数，以方便快速翻页功能的实现。当到最后一页时，该字段为空。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PageToken *string `json:"PageToken,omitempty" name:"PageToken"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeTasksResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 该字段用于返回当前查询的任务总量，格式为int字符串。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		Total *string `json:"Total,omitempty" name:"Total"`
-
-		// 该字段用于返回当前页的任务详细数据，具体输出内容请参见TaskData数据结构的详细描述。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		Data []*TaskData `json:"Data,omitempty" name:"Data"`
-
-		// 该字段用于返回翻页时使用的Token信息，由系统自动生成，并在翻页时向下一个生成的页面传递此参数，以方便快速翻页功能的实现。当到最后一页时，该字段为空。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		PageToken *string `json:"PageToken,omitempty" name:"PageToken"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeTasksResponseParams `json:"Response"`
 }
 
 func (r *DescribeTasksResponse) ToJsonString() string {
@@ -494,7 +551,6 @@ func (r *DescribeTasksResponse) FromJsonString(s string) error {
 }
 
 type ImageResult struct {
-
 	// 该参数用于标识审核内容是否命中恶意标签，取值：0（**未命中**）和1（**命中**）。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	HitFlag *int64 `json:"HitFlag,omitempty" name:"HitFlag"`
@@ -530,7 +586,6 @@ type ImageResult struct {
 }
 
 type ImageResultResult struct {
-
 	// 该字段用于返回检测结果所对应的恶意场景。返回值：**Normal**：正常，**Porn**：色情，**Abuse**：谩骂，**AppLogo**：广告台标，**Custom**：自定义违规，以及其他令人反感、不安全或不适宜的内容类型。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Scene *string `json:"Scene,omitempty" name:"Scene"`
@@ -570,7 +625,6 @@ type ImageResultResult struct {
 }
 
 type ImageResultsResultDetail struct {
-
 	// 该字段用于返回调用视频审核接口时传入的TaskInput参数中的任务名称，方便任务的识别与管理。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitempty" name:"Name"`
@@ -614,7 +668,6 @@ type ImageResultsResultDetail struct {
 }
 
 type ImageResultsResultDetailLocation struct {
-
 	// 该参数用于标识OCR检测框左上角位置的**横坐标**（x）所在的像素位置，结合剩余参数可唯一确定检测框的大小和位置。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	X *float64 `json:"X,omitempty" name:"X"`
@@ -637,7 +690,6 @@ type ImageResultsResultDetailLocation struct {
 }
 
 type ImageSegments struct {
-
 	// 该字段用于返回视频片段的截帧时间，单位为秒。对于点播文件，该参数代表对应截取图片相对于视频的偏移时间，如0（代表不偏移），5（视频开始后5秒），10（视频开始后10秒）；对于直播文件，该参数则返回对应图片的Unix时间戳，如：1594650717。
 	OffsetTime *string `json:"OffsetTime,omitempty" name:"OffsetTime"`
 
@@ -646,7 +698,6 @@ type ImageSegments struct {
 }
 
 type InputInfo struct {
-
 	// 该字段表示文件访问类型，取值为**URL**（资源链接）和**COS** (腾讯云对象存储)。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Type *string `json:"Type,omitempty" name:"Type"`
@@ -661,13 +712,11 @@ type InputInfo struct {
 }
 
 type MediaInfo struct {
-
 	// 该字段用于返回对传入的视频流进行分片的片段时长，单位为秒。**默认值为5秒**，支持用户自定义配置。<br>备注：仅在审核文件为流媒体时生效；此字段返回0则代表未取到有效值。
 	Duration *int64 `json:"Duration,omitempty" name:"Duration"`
 }
 
 type RecognitionResult struct {
-
 	// 可能的取值有：Teenager 、Gender
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Label *string `json:"Label,omitempty" name:"Label"`
@@ -678,7 +727,6 @@ type RecognitionResult struct {
 }
 
 type StorageInfo struct {
-
 	// 该字段表示文件访问类型，取值为**URL**（资源链接）和**COS** (腾讯云对象存储)；该字段应当与传入的访问类型相对应，可用于强校验并方便系统快速识别访问地址；若不传入此参数，则默认值为URL，此时系统将自动判定访问地址类型。
 	Type *string `json:"Type,omitempty" name:"Type"`
 
@@ -690,7 +738,6 @@ type StorageInfo struct {
 }
 
 type Tag struct {
-
 	// 根据Label字段确定具体名称：
 	// 当Label 为Teenager 时 Name可能取值有：Teenager 
 	// 当Label 为Gender 时 Name可能取值有：Male 、Female
@@ -711,7 +758,6 @@ type Tag struct {
 }
 
 type TaskData struct {
-
 	// 该字段用于返回视频审核任务数据所对应的数据ID，方便后续查询和管理审核任务。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DataId *string `json:"DataId,omitempty" name:"DataId"`
@@ -756,7 +802,6 @@ type TaskData struct {
 }
 
 type TaskFilter struct {
-
 	// 该字段用于传入任务对应的业务类型供筛选器进行筛选。Biztype为策略的具体的编号，用于接口调度，在内容安全控制台中可配置。不同Biztype关联不同的业务场景与审核策略，调用前请确认正确的Biztype。Biztype仅为**数字、字母与下划线的组合**，长度为3-32个字符。<br>备注：在不传入该参数时筛选器默认不筛选业务类型。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BizType []*string `json:"BizType,omitempty" name:"BizType"`
@@ -772,7 +817,6 @@ type TaskFilter struct {
 }
 
 type TaskInput struct {
-
 	// 选填参数，该字段表示您为待检测对象分配的数据ID，传入后可方便您对文件进行标识和管理。<br>取值：由英文字母（大小写均可）、数字及四个特殊符号（_，-，@，#）组成，**长度不超过64个字符**。
 	DataId *string `json:"DataId,omitempty" name:"DataId"`
 
@@ -784,7 +828,6 @@ type TaskInput struct {
 }
 
 type TaskLabel struct {
-
 	// 该字段用于返回检测结果所对应的恶意标签。<br>返回值：**Normal**：正常，**Porn**：色情，**Abuse**：谩骂，**Ad**：广告，**Custom**：自定义违规；以及其他令人反感、不安全或不适宜的内容类型。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Label *string `json:"Label,omitempty" name:"Label"`
@@ -803,7 +846,6 @@ type TaskLabel struct {
 }
 
 type TaskResult struct {
-
 	// 该字段用于返回创建视频审核任务时在TaskInput结构内传入的DataId，用于标识具体审核任务。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DataId *string `json:"DataId,omitempty" name:"DataId"`

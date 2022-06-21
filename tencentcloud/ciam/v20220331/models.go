@@ -20,9 +20,18 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+// Predefined struct for user
+type CreateApiImportUserJobRequestParams struct {
+	// 用户目录ID
+	UserStoreId *string `json:"UserStoreId,omitempty" name:"UserStoreId"`
+
+	// 导入的用户数据
+	DataFlowUserCreateList []*ImportUser `json:"DataFlowUserCreateList,omitempty" name:"DataFlowUserCreateList"`
+}
+
 type CreateApiImportUserJobRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 用户目录ID
 	UserStoreId *string `json:"UserStoreId,omitempty" name:"UserStoreId"`
 
@@ -50,16 +59,18 @@ func (r *CreateApiImportUserJobRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateApiImportUserJobResponseParams struct {
+	// 数据流任务
+	Job *Job `json:"Job,omitempty" name:"Job"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreateApiImportUserJobResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 数据流任务
-		Job *Job `json:"Job,omitempty" name:"Job"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreateApiImportUserJobResponseParams `json:"Response"`
 }
 
 func (r *CreateApiImportUserJobResponse) ToJsonString() string {
@@ -73,9 +84,31 @@ func (r *CreateApiImportUserJobResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateFileExportUserJobRequestParams struct {
+	// 用户目录ID
+	UserStoreId *string `json:"UserStoreId,omitempty" name:"UserStoreId"`
+
+	// 导出的数据类型
+	// 
+	// <li> **JSON** </li>  JSON
+	// <li> **NDJSON** </li>  New-line Delimited JSON
+	// <li> **CSV** </li>  Comma-Separated Values
+	Format *string `json:"Format,omitempty" name:"Format"`
+
+	// Key可选值为condition、userGroupId
+	// 
+	// <li> **condition** </li>	Values = 查询条件，用户ID，用户名称，手机或邮箱
+	// <li> **userGroupId** </li>	Values = 用户组ID
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 导出用户包含的属性和映射名称，为空时包含所有的属性
+	ExportPropertyMaps []*ExportPropertyMap `json:"ExportPropertyMaps,omitempty" name:"ExportPropertyMaps"`
+}
+
 type CreateFileExportUserJobRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 用户目录ID
 	UserStoreId *string `json:"UserStoreId,omitempty" name:"UserStoreId"`
 
@@ -118,16 +151,18 @@ func (r *CreateFileExportUserJobRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateFileExportUserJobResponseParams struct {
+	// 数据流任务
+	Job *Job `json:"Job,omitempty" name:"Job"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreateFileExportUserJobResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 数据流任务
-		Job *Job `json:"Job,omitempty" name:"Job"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreateFileExportUserJobResponseParams `json:"Response"`
 }
 
 func (r *CreateFileExportUserJobResponse) ToJsonString() string {
@@ -141,9 +176,42 @@ func (r *CreateFileExportUserJobResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateUserRequestParams struct {
+	// 用户目录ID
+	UserStoreId *string `json:"UserStoreId,omitempty" name:"UserStoreId"`
+
+	// 手机号码
+	PhoneNumber *string `json:"PhoneNumber,omitempty" name:"PhoneNumber"`
+
+	// 邮箱
+	Email *string `json:"Email,omitempty" name:"Email"`
+
+	// 密码
+	Password *string `json:"Password,omitempty" name:"Password"`
+
+	// 用户名
+	UserName *string `json:"UserName,omitempty" name:"UserName"`
+
+	// 昵称
+	Nickname *string `json:"Nickname,omitempty" name:"Nickname"`
+
+	// 地址
+	Address *string `json:"Address,omitempty" name:"Address"`
+
+	// 用户组ID
+	UserGroup []*string `json:"UserGroup,omitempty" name:"UserGroup"`
+
+	// 生日
+	Birthdate *int64 `json:"Birthdate,omitempty" name:"Birthdate"`
+
+	// 自定义属性
+	CustomizationAttributes []*MemberMap `json:"CustomizationAttributes,omitempty" name:"CustomizationAttributes"`
+}
+
 type CreateUserRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 用户目录ID
 	UserStoreId *string `json:"UserStoreId,omitempty" name:"UserStoreId"`
 
@@ -203,17 +271,19 @@ func (r *CreateUserRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateUserResponseParams struct {
+	// 创建的用户信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	User *User `json:"User,omitempty" name:"User"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreateUserResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 创建的用户信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		User *User `json:"User,omitempty" name:"User"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreateUserResponseParams `json:"Response"`
 }
 
 func (r *CreateUserResponse) ToJsonString() string {
@@ -227,9 +297,18 @@ func (r *CreateUserResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteUsersRequestParams struct {
+	// 用户目录ID
+	UserStoreId *string `json:"UserStoreId,omitempty" name:"UserStoreId"`
+
+	// 用户ID数组
+	UserIds []*string `json:"UserIds,omitempty" name:"UserIds"`
+}
+
 type DeleteUsersRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 用户目录ID
 	UserStoreId *string `json:"UserStoreId,omitempty" name:"UserStoreId"`
 
@@ -257,13 +336,15 @@ func (r *DeleteUsersRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteUsersResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DeleteUsersResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DeleteUsersResponseParams `json:"Response"`
 }
 
 func (r *DeleteUsersResponse) ToJsonString() string {
@@ -277,9 +358,18 @@ func (r *DeleteUsersResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeUserByIdRequestParams struct {
+	// 用户目录ID
+	UserStoreId *string `json:"UserStoreId,omitempty" name:"UserStoreId"`
+
+	// 用户ID
+	UserId *string `json:"UserId,omitempty" name:"UserId"`
+}
+
 type DescribeUserByIdRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 用户目录ID
 	UserStoreId *string `json:"UserStoreId,omitempty" name:"UserStoreId"`
 
@@ -307,17 +397,19 @@ func (r *DescribeUserByIdRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeUserByIdResponseParams struct {
+	// 用户信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	User *User `json:"User,omitempty" name:"User"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeUserByIdResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 用户信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		User *User `json:"User,omitempty" name:"User"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeUserByIdResponseParams `json:"Response"`
 }
 
 func (r *DescribeUserByIdResponse) ToJsonString() string {
@@ -332,7 +424,6 @@ func (r *DescribeUserByIdResponse) FromJsonString(s string) error {
 }
 
 type ErrorDetails struct {
-
 	// 用户信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UserId *string `json:"UserId,omitempty" name:"UserId"`
@@ -342,7 +433,6 @@ type ErrorDetails struct {
 }
 
 type ExportPropertyMap struct {
-
 	// 用户属性code
 	UserPropertyCode *string `json:"UserPropertyCode,omitempty" name:"UserPropertyCode"`
 
@@ -351,7 +441,6 @@ type ExportPropertyMap struct {
 }
 
 type FailedUsers struct {
-
 	// 失败用户标识
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FailedUserIdentification *string `json:"FailedUserIdentification,omitempty" name:"FailedUserIdentification"`
@@ -362,7 +451,6 @@ type FailedUsers struct {
 }
 
 type Filter struct {
-
 	// key值
 	Key *string `json:"Key,omitempty" name:"Key"`
 
@@ -374,7 +462,6 @@ type Filter struct {
 }
 
 type ImportUser struct {
-
 	// 用户名
 	UserName *string `json:"UserName,omitempty" name:"UserName"`
 
@@ -455,7 +542,6 @@ type ImportUser struct {
 }
 
 type Job struct {
-
 	// 任务ID
 	Id *string `json:"Id,omitempty" name:"Id"`
 
@@ -497,9 +583,27 @@ type Job struct {
 	FailedUsers []*FailedUsers `json:"FailedUsers,omitempty" name:"FailedUsers"`
 }
 
+// Predefined struct for user
+type LinkAccountRequestParams struct {
+	// 用户目录ID
+	UserStoreId *string `json:"UserStoreId,omitempty" name:"UserStoreId"`
+
+	// 主用户ID
+	PrimaryUserId *string `json:"PrimaryUserId,omitempty" name:"PrimaryUserId"`
+
+	// 从用户ID
+	SecondaryUserId *string `json:"SecondaryUserId,omitempty" name:"SecondaryUserId"`
+
+	// 融合属性
+	// 
+	// <li> **PHONENUMBER** </li>	  手机号码
+	// <li> **EMAIL** </li>  邮箱
+	UserLinkedOnAttribute *string `json:"UserLinkedOnAttribute,omitempty" name:"UserLinkedOnAttribute"`
+}
+
 type LinkAccountRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 用户目录ID
 	UserStoreId *string `json:"UserStoreId,omitempty" name:"UserStoreId"`
 
@@ -538,13 +642,15 @@ func (r *LinkAccountRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type LinkAccountResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type LinkAccountResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *LinkAccountResponseParams `json:"Response"`
 }
 
 func (r *LinkAccountResponse) ToJsonString() string {
@@ -558,9 +664,18 @@ func (r *LinkAccountResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ListJobsRequestParams struct {
+	// 用户目录ID
+	UserStoreId *string `json:"UserStoreId,omitempty" name:"UserStoreId"`
+
+	// 任务ID列表，为空时返回全部任务
+	JobIds []*string `json:"JobIds,omitempty" name:"JobIds"`
+}
+
 type ListJobsRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 用户目录ID
 	UserStoreId *string `json:"UserStoreId,omitempty" name:"UserStoreId"`
 
@@ -588,17 +703,19 @@ func (r *ListJobsRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ListJobsResponseParams struct {
+	// 任务列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	JobSet []*Job `json:"JobSet,omitempty" name:"JobSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type ListJobsResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 任务列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		JobSet []*Job `json:"JobSet,omitempty" name:"JobSet"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *ListJobsResponseParams `json:"Response"`
 }
 
 func (r *ListJobsResponse) ToJsonString() string {
@@ -612,9 +729,24 @@ func (r *ListJobsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ListUserByPropertyRequestParams struct {
+	// 用户目录ID
+	UserStoreId *string `json:"UserStoreId,omitempty" name:"UserStoreId"`
+
+	// 查询的属性
+	// 
+	// <li> **phoneNumber** </li>	  手机号码
+	// <li> **email** </li>  邮箱
+	PropertyCode *string `json:"PropertyCode,omitempty" name:"PropertyCode"`
+
+	// 属性值
+	PropertyValue *string `json:"PropertyValue,omitempty" name:"PropertyValue"`
+}
+
 type ListUserByPropertyRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 用户目录ID
 	UserStoreId *string `json:"UserStoreId,omitempty" name:"UserStoreId"`
 
@@ -649,17 +781,19 @@ func (r *ListUserByPropertyRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ListUserByPropertyResponseParams struct {
+	// 用户列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Users []*User `json:"Users,omitempty" name:"Users"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type ListUserByPropertyResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 用户列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		Users []*User `json:"Users,omitempty" name:"Users"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *ListUserByPropertyResponseParams `json:"Response"`
 }
 
 func (r *ListUserByPropertyResponse) ToJsonString() string {
@@ -673,9 +807,24 @@ func (r *ListUserByPropertyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ListUserRequestParams struct {
+	// 用户目录ID
+	UserStoreId *string `json:"UserStoreId,omitempty" name:"UserStoreId"`
+
+	// 分页数据
+	Pageable *Pageable `json:"Pageable,omitempty" name:"Pageable"`
+
+	// Key可选值为condition、userGroupId
+	// 
+	// <li> **condition** </li>	Values = 查询条件，用户ID，用户名称，手机或邮箱
+	// <li> **userGroupId** </li>	Values = 用户组ID
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+}
+
 type ListUserRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 用户目录ID
 	UserStoreId *string `json:"UserStoreId,omitempty" name:"UserStoreId"`
 
@@ -710,25 +859,27 @@ func (r *ListUserRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ListUserResponseParams struct {
+	// 总条数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Total *int64 `json:"Total,omitempty" name:"Total"`
+
+	// 分页对象
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Pageable *Pageable `json:"Pageable,omitempty" name:"Pageable"`
+
+	// 用户列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Content []*User `json:"Content,omitempty" name:"Content"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type ListUserResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 总条数
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		Total *int64 `json:"Total,omitempty" name:"Total"`
-
-		// 分页对象
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		Pageable *Pageable `json:"Pageable,omitempty" name:"Pageable"`
-
-		// 用户列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		Content []*User `json:"Content,omitempty" name:"Content"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *ListUserResponseParams `json:"Response"`
 }
 
 func (r *ListUserResponse) ToJsonString() string {
@@ -743,7 +894,6 @@ func (r *ListUserResponse) FromJsonString(s string) error {
 }
 
 type MemberMap struct {
-
 	// 健
 	Name *string `json:"Name,omitempty" name:"Name"`
 
@@ -756,7 +906,6 @@ type MemberMap struct {
 }
 
 type Pageable struct {
-
 	// 每页数量
 	PageSize *int64 `json:"PageSize,omitempty" name:"PageSize"`
 
@@ -764,9 +913,18 @@ type Pageable struct {
 	PageNumber *int64 `json:"PageNumber,omitempty" name:"PageNumber"`
 }
 
+// Predefined struct for user
+type ResetPasswordRequestParams struct {
+	// 用户ID
+	UserId *string `json:"UserId,omitempty" name:"UserId"`
+
+	// 用户目录ID
+	UserStoreId *string `json:"UserStoreId,omitempty" name:"UserStoreId"`
+}
+
 type ResetPasswordRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 用户ID
 	UserId *string `json:"UserId,omitempty" name:"UserId"`
 
@@ -794,16 +952,18 @@ func (r *ResetPasswordRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ResetPasswordResponseParams struct {
+	// 重置后的用户密码
+	Password *string `json:"Password,omitempty" name:"Password"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type ResetPasswordResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 重置后的用户密码
-		Password *string `json:"Password,omitempty" name:"Password"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *ResetPasswordResponseParams `json:"Response"`
 }
 
 func (r *ResetPasswordResponse) ToJsonString() string {
@@ -818,7 +978,6 @@ func (r *ResetPasswordResponse) FromJsonString(s string) error {
 }
 
 type Salt struct {
-
 	// 盐值
 	SaltValue *string `json:"SaltValue,omitempty" name:"SaltValue"`
 
@@ -827,7 +986,6 @@ type Salt struct {
 }
 
 type SaltLocation struct {
-
 	// 密码加盐的类型（HEAD，TAIL，OTHER）
 	SaltLocationTypeEnum *string `json:"SaltLocationTypeEnum,omitempty" name:"SaltLocationTypeEnum"`
 
@@ -836,14 +994,25 @@ type SaltLocation struct {
 }
 
 type SaltLocationRule struct {
-
 	// 表达式
 	Regex *string `json:"Regex,omitempty" name:"Regex"`
 }
 
+// Predefined struct for user
+type SetPasswordRequestParams struct {
+	// 用户目录ID
+	UserStoreId *string `json:"UserStoreId,omitempty" name:"UserStoreId"`
+
+	// 用户ID
+	UserId *string `json:"UserId,omitempty" name:"UserId"`
+
+	// 密码
+	Password *string `json:"Password,omitempty" name:"Password"`
+}
+
 type SetPasswordRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 用户目录ID
 	UserStoreId *string `json:"UserStoreId,omitempty" name:"UserStoreId"`
 
@@ -875,13 +1044,15 @@ func (r *SetPasswordRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type SetPasswordResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type SetPasswordResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *SetPasswordResponseParams `json:"Response"`
 }
 
 func (r *SetPasswordResponse) ToJsonString() string {
@@ -895,9 +1066,42 @@ func (r *SetPasswordResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type UpdateUserRequestParams struct {
+	// 用户ID
+	UserId *string `json:"UserId,omitempty" name:"UserId"`
+
+	// 用户目录ID
+	UserStoreId *string `json:"UserStoreId,omitempty" name:"UserStoreId"`
+
+	// 用户名称
+	UserName *string `json:"UserName,omitempty" name:"UserName"`
+
+	// 手机号码
+	PhoneNumber *string `json:"PhoneNumber,omitempty" name:"PhoneNumber"`
+
+	// 邮箱
+	Email *string `json:"Email,omitempty" name:"Email"`
+
+	// 昵称
+	Nickname *string `json:"Nickname,omitempty" name:"Nickname"`
+
+	// 地址
+	Address *string `json:"Address,omitempty" name:"Address"`
+
+	// 用户组
+	UserGroup []*string `json:"UserGroup,omitempty" name:"UserGroup"`
+
+	// 生日
+	Birthdate *int64 `json:"Birthdate,omitempty" name:"Birthdate"`
+
+	// 自定义属性
+	CustomizationAttributes []*MemberMap `json:"CustomizationAttributes,omitempty" name:"CustomizationAttributes"`
+}
+
 type UpdateUserRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 用户ID
 	UserId *string `json:"UserId,omitempty" name:"UserId"`
 
@@ -957,17 +1161,19 @@ func (r *UpdateUserRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type UpdateUserResponseParams struct {
+	// 更新之后的用户信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	User *User `json:"User,omitempty" name:"User"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type UpdateUserResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 更新之后的用户信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		User *User `json:"User,omitempty" name:"User"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *UpdateUserResponseParams `json:"Response"`
 }
 
 func (r *UpdateUserResponse) ToJsonString() string {
@@ -981,9 +1187,25 @@ func (r *UpdateUserResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type UpdateUserStatusRequestParams struct {
+	// 用户目录ID
+	UserStoreId *string `json:"UserStoreId,omitempty" name:"UserStoreId"`
+
+	// 用户ID
+	UserId *string `json:"UserId,omitempty" name:"UserId"`
+
+	// 用户状态
+	// 
+	// <li> **NORMAL** </li>	  正常
+	// <li> **LOCK** </li>  锁定
+	// <li> **FREEZE** </li>	  冻结
+	Status *string `json:"Status,omitempty" name:"Status"`
+}
+
 type UpdateUserStatusRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 用户目录ID
 	UserStoreId *string `json:"UserStoreId,omitempty" name:"UserStoreId"`
 
@@ -1019,13 +1241,15 @@ func (r *UpdateUserStatusRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type UpdateUserStatusResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type UpdateUserStatusResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *UpdateUserStatusResponseParams `json:"Response"`
 }
 
 func (r *UpdateUserStatusResponse) ToJsonString() string {
@@ -1040,7 +1264,6 @@ func (r *UpdateUserStatusResponse) FromJsonString(s string) error {
 }
 
 type User struct {
-
 	// 用户ID
 	UserId *string `json:"UserId,omitempty" name:"UserId"`
 

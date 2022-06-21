@@ -20,9 +20,21 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+// Predefined struct for user
+type BindOrganizationMemberAuthAccountRequestParams struct {
+	// 成员Uin。
+	MemberUin *int64 `json:"MemberUin,omitempty" name:"MemberUin"`
+
+	// 策略ID。
+	PolicyId *int64 `json:"PolicyId,omitempty" name:"PolicyId"`
+
+	// 组织子账号Uin。
+	OrgSubAccountUins []*int64 `json:"OrgSubAccountUins,omitempty" name:"OrgSubAccountUins"`
+}
+
 type BindOrganizationMemberAuthAccountRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 成员Uin。
 	MemberUin *int64 `json:"MemberUin,omitempty" name:"MemberUin"`
 
@@ -54,13 +66,15 @@ func (r *BindOrganizationMemberAuthAccountRequest) FromJsonString(s string) erro
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type BindOrganizationMemberAuthAccountResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type BindOrganizationMemberAuthAccountResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *BindOrganizationMemberAuthAccountResponseParams `json:"Response"`
 }
 
 func (r *BindOrganizationMemberAuthAccountResponse) ToJsonString() string {
@@ -74,9 +88,24 @@ func (r *BindOrganizationMemberAuthAccountResponse) FromJsonString(s string) err
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateOrganizationMemberPolicyRequestParams struct {
+	// 成员Uin。
+	MemberUin *int64 `json:"MemberUin,omitempty" name:"MemberUin"`
+
+	// 策略名。
+	PolicyName *string `json:"PolicyName,omitempty" name:"PolicyName"`
+
+	// 身份ID。
+	IdentityId *int64 `json:"IdentityId,omitempty" name:"IdentityId"`
+
+	// 描述。
+	Description *string `json:"Description,omitempty" name:"Description"`
+}
+
 type CreateOrganizationMemberPolicyRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 成员Uin。
 	MemberUin *int64 `json:"MemberUin,omitempty" name:"MemberUin"`
 
@@ -112,17 +141,19 @@ func (r *CreateOrganizationMemberPolicyRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateOrganizationMemberPolicyResponseParams struct {
+	// 策略ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PolicyId *int64 `json:"PolicyId,omitempty" name:"PolicyId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreateOrganizationMemberPolicyResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 策略ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		PolicyId *int64 `json:"PolicyId,omitempty" name:"PolicyId"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreateOrganizationMemberPolicyResponseParams `json:"Response"`
 }
 
 func (r *CreateOrganizationMemberPolicyResponse) ToJsonString() string {
@@ -136,9 +167,39 @@ func (r *CreateOrganizationMemberPolicyResponse) FromJsonString(s string) error 
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateOrganizationMemberRequestParams struct {
+	// 名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 关系策略  取值：Financial
+	PolicyType *string `json:"PolicyType,omitempty" name:"PolicyType"`
+
+	// 关系权限 取值：1-查看账单、2-查看余额、3-资金划拨、4-合并出账、5-开票 ，1、2 默认必须
+	PermissionIds []*uint64 `json:"PermissionIds,omitempty" name:"PermissionIds"`
+
+	// 成员所属部门的节点ID
+	NodeId *int64 `json:"NodeId,omitempty" name:"NodeId"`
+
+	// 账号名
+	AccountName *string `json:"AccountName,omitempty" name:"AccountName"`
+
+	// 备注
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 重试创建传记录ID
+	RecordId *int64 `json:"RecordId,omitempty" name:"RecordId"`
+
+	// 代付者Uin
+	PayUin *string `json:"PayUin,omitempty" name:"PayUin"`
+
+	// 管理身份
+	IdentityRoleID []*uint64 `json:"IdentityRoleID,omitempty" name:"IdentityRoleID"`
+}
+
 type CreateOrganizationMemberRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 名称
 	Name *string `json:"Name,omitempty" name:"Name"`
 
@@ -194,17 +255,19 @@ func (r *CreateOrganizationMemberRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateOrganizationMemberResponseParams struct {
+	// 成员Uin
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Uin *int64 `json:"Uin,omitempty" name:"Uin"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreateOrganizationMemberResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 成员Uin
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		Uin *int64 `json:"Uin,omitempty" name:"Uin"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreateOrganizationMemberResponseParams `json:"Response"`
 }
 
 func (r *CreateOrganizationMemberResponse) ToJsonString() string {
@@ -218,9 +281,30 @@ func (r *CreateOrganizationMemberResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeOrganizationMembersRequestParams struct {
+	// 偏移量
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 限制数目
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 国际站：en，国内站：zh
+	Lang *string `json:"Lang,omitempty" name:"Lang"`
+
+	// 成员名或者成员ID搜索
+	SearchKey *string `json:"SearchKey,omitempty" name:"SearchKey"`
+
+	// 主体名称
+	AuthName *string `json:"AuthName,omitempty" name:"AuthName"`
+
+	// 集团服务（服务管理员查询时，必须指定）
+	Product *string `json:"Product,omitempty" name:"Product"`
+}
+
 type DescribeOrganizationMembersRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 偏移量
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
@@ -264,19 +348,21 @@ func (r *DescribeOrganizationMembersRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeOrganizationMembersResponseParams struct {
+	// 成员列表
+	Items []*OrgMember `json:"Items,omitempty" name:"Items"`
+
+	// 总数目
+	Total *uint64 `json:"Total,omitempty" name:"Total"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeOrganizationMembersResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 成员列表
-		Items []*OrgMember `json:"Items,omitempty" name:"Items"`
-
-		// 总数目
-		Total *uint64 `json:"Total,omitempty" name:"Total"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeOrganizationMembersResponseParams `json:"Response"`
 }
 
 func (r *DescribeOrganizationMembersResponse) ToJsonString() string {
@@ -290,9 +376,18 @@ func (r *DescribeOrganizationMembersResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeOrganizationRequestParams struct {
+	// 国际站：en，国内站：zh
+	Lang *string `json:"Lang,omitempty" name:"Lang"`
+
+	// 产品简称（查询是否集团服务委派管理员必须）
+	Product *string `json:"Product,omitempty" name:"Product"`
+}
+
 type DescribeOrganizationRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 国际站：en，国内站：zh
 	Lang *string `json:"Lang,omitempty" name:"Lang"`
 
@@ -320,73 +415,75 @@ func (r *DescribeOrganizationRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeOrganizationResponseParams struct {
+	// 企业组织ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OrgId *int64 `json:"OrgId,omitempty" name:"OrgId"`
+
+	// 创建者UIN
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HostUin *int64 `json:"HostUin,omitempty" name:"HostUin"`
+
+	// 创建者昵称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NickName *string `json:"NickName,omitempty" name:"NickName"`
+
+	// 企业组织类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OrgType *int64 `json:"OrgType,omitempty" name:"OrgType"`
+
+	// 组织管理员：true，组织成员：false
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsManager *bool `json:"IsManager,omitempty" name:"IsManager"`
+
+	// 策略类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OrgPolicyType *string `json:"OrgPolicyType,omitempty" name:"OrgPolicyType"`
+
+	// 策略名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OrgPolicyName *string `json:"OrgPolicyName,omitempty" name:"OrgPolicyName"`
+
+	// 策略权限
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OrgPermission []*OrgPermission `json:"OrgPermission,omitempty" name:"OrgPermission"`
+
+	// 根节点ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RootNodeId *int64 `json:"RootNodeId,omitempty" name:"RootNodeId"`
+
+	// 创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 成员加入时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	JoinTime *string `json:"JoinTime,omitempty" name:"JoinTime"`
+
+	// 是否允许退出。允许：Allow，不允许：Denied。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsAllowQuit *string `json:"IsAllowQuit,omitempty" name:"IsAllowQuit"`
+
+	// 代付者Uin
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PayUin *string `json:"PayUin,omitempty" name:"PayUin"`
+
+	// 代付者名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PayName *string `json:"PayName,omitempty" name:"PayName"`
+
+	// 是否集团服务委派管理员 true-是、false-否
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsAssignManager *bool `json:"IsAssignManager,omitempty" name:"IsAssignManager"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeOrganizationResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 企业组织ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		OrgId *int64 `json:"OrgId,omitempty" name:"OrgId"`
-
-		// 创建者UIN
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		HostUin *int64 `json:"HostUin,omitempty" name:"HostUin"`
-
-		// 创建者昵称
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		NickName *string `json:"NickName,omitempty" name:"NickName"`
-
-		// 企业组织类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		OrgType *int64 `json:"OrgType,omitempty" name:"OrgType"`
-
-		// 组织管理员：true，组织成员：false
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		IsManager *bool `json:"IsManager,omitempty" name:"IsManager"`
-
-		// 策略类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		OrgPolicyType *string `json:"OrgPolicyType,omitempty" name:"OrgPolicyType"`
-
-		// 策略名
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		OrgPolicyName *string `json:"OrgPolicyName,omitempty" name:"OrgPolicyName"`
-
-		// 策略权限
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		OrgPermission []*OrgPermission `json:"OrgPermission,omitempty" name:"OrgPermission"`
-
-		// 根节点ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		RootNodeId *int64 `json:"RootNodeId,omitempty" name:"RootNodeId"`
-
-		// 创建时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
-
-		// 成员加入时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		JoinTime *string `json:"JoinTime,omitempty" name:"JoinTime"`
-
-		// 是否允许退出。允许：Allow，不允许：Denied。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		IsAllowQuit *string `json:"IsAllowQuit,omitempty" name:"IsAllowQuit"`
-
-		// 代付者Uin
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		PayUin *string `json:"PayUin,omitempty" name:"PayUin"`
-
-		// 代付者名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		PayName *string `json:"PayName,omitempty" name:"PayName"`
-
-		// 是否集团服务委派管理员 true-是、false-否
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		IsAssignManager *bool `json:"IsAssignManager,omitempty" name:"IsAssignManager"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeOrganizationResponseParams `json:"Response"`
 }
 
 func (r *DescribeOrganizationResponse) ToJsonString() string {
@@ -401,7 +498,6 @@ func (r *DescribeOrganizationResponse) FromJsonString(s string) error {
 }
 
 type MemberIdentity struct {
-
 	// 身份ID。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IdentityId *int64 `json:"IdentityId,omitempty" name:"IdentityId"`
@@ -412,7 +508,6 @@ type MemberIdentity struct {
 }
 
 type OrgMember struct {
-
 	// 成员Uin
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MemberUin *int64 `json:"MemberUin,omitempty" name:"MemberUin"`
@@ -479,7 +574,6 @@ type OrgMember struct {
 }
 
 type OrgPermission struct {
-
 	// 权限Id
 	Id *uint64 `json:"Id,omitempty" name:"Id"`
 

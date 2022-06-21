@@ -20,9 +20,36 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+// Predefined struct for user
+type DescribeTransactionsRequestParams struct {
+	// 事务分组ID
+	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
+
+	// 事务开始时间查询起始时间戳，UTC，精确到毫秒
+	TransactionBeginFrom *int64 `json:"TransactionBeginFrom,omitempty" name:"TransactionBeginFrom"`
+
+	// 事务开始时间查询截止时间戳，UTC，精确到毫秒
+	TransactionBeginTo *int64 `json:"TransactionBeginTo,omitempty" name:"TransactionBeginTo"`
+
+	// 仅查询异常状态的事务，true：仅查询异常，false或不传入：查询所有
+	SearchError *bool `json:"SearchError,omitempty" name:"SearchError"`
+
+	// 主事务ID，不传入时查询全量，高优先级
+	TransactionId *int64 `json:"TransactionId,omitempty" name:"TransactionId"`
+
+	// 主事务ID列表，不传入时查询全量，低优先级
+	TransactionIdList []*int64 `json:"TransactionIdList,omitempty" name:"TransactionIdList"`
+
+	// 每页数量
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 起始偏移量
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+}
+
 type DescribeTransactionsRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 事务分组ID
 	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
 
@@ -74,16 +101,18 @@ func (r *DescribeTransactionsRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeTransactionsResponseParams struct {
+	// 主事务分页列表
+	Result *PagedTransaction `json:"Result,omitempty" name:"Result"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeTransactionsResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 主事务分页列表
-		Result *PagedTransaction `json:"Result,omitempty" name:"Result"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeTransactionsResponseParams `json:"Response"`
 }
 
 func (r *DescribeTransactionsResponse) ToJsonString() string {
@@ -98,7 +127,6 @@ func (r *DescribeTransactionsResponse) FromJsonString(s string) error {
 }
 
 type PagedTransaction struct {
-
 	// 总条数，特定在该接口中总是会返回null
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -108,7 +136,6 @@ type PagedTransaction struct {
 }
 
 type Transaction struct {
-
 	// 主事务ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TransactionId *int64 `json:"TransactionId,omitempty" name:"TransactionId"`

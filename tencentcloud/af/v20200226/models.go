@@ -21,7 +21,6 @@ import (
 )
 
 type AntiFraudCryptoFilter struct {
-
 	// 约定用入参，默认不涉及默认BusinessSecurityData 与BusinessCrptoData 不传
 	CryptoType *string `json:"CryptoType,omitempty" name:"CryptoType"`
 
@@ -30,7 +29,6 @@ type AntiFraudCryptoFilter struct {
 }
 
 type AntiFraudFilter struct {
-
 	// 业务方账号 ID
 	CustomerUin *string `json:"CustomerUin,omitempty" name:"CustomerUin"`
 
@@ -157,7 +155,6 @@ type AntiFraudFilter struct {
 }
 
 type AntiFraudRecord struct {
-
 	// 公共错误码
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Code *string `json:"Code,omitempty" name:"Code"`
@@ -206,9 +203,18 @@ type AntiFraudRecord struct {
 	ExtensionOut *string `json:"ExtensionOut,omitempty" name:"ExtensionOut"`
 }
 
+// Predefined struct for user
+type DescribeAntiFraudRequestParams struct {
+	// 原始业务入参(二选一）
+	BusinessSecurityData *FinanceAntiFraudFilter `json:"BusinessSecurityData,omitempty" name:"BusinessSecurityData"`
+
+	// 密文业务入参(二选一）
+	BusinessCryptoData *FinanceAntiFraudCryptoFilter `json:"BusinessCryptoData,omitempty" name:"BusinessCryptoData"`
+}
+
 type DescribeAntiFraudRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 原始业务入参(二选一）
 	BusinessSecurityData *FinanceAntiFraudFilter `json:"BusinessSecurityData,omitempty" name:"BusinessSecurityData"`
 
@@ -236,17 +242,19 @@ func (r *DescribeAntiFraudRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeAntiFraudResponseParams struct {
+	// 返回结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *FinanceAntiFraudRecord `json:"Data,omitempty" name:"Data"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeAntiFraudResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 返回结果
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		Data *FinanceAntiFraudRecord `json:"Data,omitempty" name:"Data"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeAntiFraudResponseParams `json:"Response"`
 }
 
 func (r *DescribeAntiFraudResponse) ToJsonString() string {
@@ -261,7 +269,6 @@ func (r *DescribeAntiFraudResponse) FromJsonString(s string) error {
 }
 
 type FinanceAntiFraudCryptoFilter struct {
-
 	// 值1定义：AES加密方式[加密模式ECB；填充格式pkcs7padding；秘钥16字节即128位
 	CryptoType *string `json:"CryptoType,omitempty" name:"CryptoType"`
 
@@ -270,7 +277,6 @@ type FinanceAntiFraudCryptoFilter struct {
 }
 
 type FinanceAntiFraudFilter struct {
-
 	// 电话号码(五选二)
 	PhoneNumber *string `json:"PhoneNumber,omitempty" name:"PhoneNumber"`
 
@@ -339,7 +345,6 @@ type FinanceAntiFraudFilter struct {
 }
 
 type FinanceAntiFraudRecord struct {
-
 	// 表示该条记录能否查到：1为能查到，-1为查不到
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Found *string `json:"Found,omitempty" name:"Found"`
@@ -371,7 +376,6 @@ type FinanceAntiFraudRecord struct {
 }
 
 type FinanceOtherModelScores struct {
-
 	// 模型ID序号
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ModelId *string `json:"ModelId,omitempty" name:"ModelId"`
@@ -381,9 +385,23 @@ type FinanceOtherModelScores struct {
 	ModelScore *string `json:"ModelScore,omitempty" name:"ModelScore"`
 }
 
+// Predefined struct for user
+type GetAntiFraudRequestParams struct {
+	// 默认不传，约定用原始业务
+	// 入参(二选一BusinessSecurityData 或
+	// BusinessCryptoData)。
+	BusinessSecurityData *AntiFraudFilter `json:"BusinessSecurityData,omitempty" name:"BusinessSecurityData"`
+
+	// 默认不传，约定用密文业务
+	// 入参(二选一
+	// BusinessSecurityData 或
+	// BusinessCryptoData)。
+	BusinessCryptoData *AntiFraudCryptoFilter `json:"BusinessCryptoData,omitempty" name:"BusinessCryptoData"`
+}
+
 type GetAntiFraudRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 默认不传，约定用原始业务
 	// 入参(二选一BusinessSecurityData 或
 	// BusinessCryptoData)。
@@ -416,16 +434,18 @@ func (r *GetAntiFraudRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type GetAntiFraudResponseParams struct {
+	// 反欺诈评分接口结果
+	Data *AntiFraudRecord `json:"Data,omitempty" name:"Data"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type GetAntiFraudResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 反欺诈评分接口结果
-		Data *AntiFraudRecord `json:"Data,omitempty" name:"Data"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *GetAntiFraudResponseParams `json:"Response"`
 }
 
 func (r *GetAntiFraudResponse) ToJsonString() string {
@@ -440,7 +460,6 @@ func (r *GetAntiFraudResponse) FromJsonString(s string) error {
 }
 
 type OtherModelScoresDetail struct {
-
 	// 模型版本号；默认顺序为 0、1、2、3、…其中：0=主模型，跟 RiskScore 保持一致；
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ModelId *string `json:"ModelId,omitempty" name:"ModelId"`
@@ -451,9 +470,92 @@ type OtherModelScoresDetail struct {
 	ModelScore *string `json:"ModelScore,omitempty" name:"ModelScore"`
 }
 
+// Predefined struct for user
+type QueryAntiFraudRequestParams struct {
+	// 电话号码(五选二)
+	PhoneNumber *string `json:"PhoneNumber,omitempty" name:"PhoneNumber"`
+
+	// Id(五选二)
+	IdNumber *string `json:"IdNumber,omitempty" name:"IdNumber"`
+
+	// 银行卡号(五选二)
+	BankCardNumber *string `json:"BankCardNumber,omitempty" name:"BankCardNumber"`
+
+	// 用户请求来源 IP(五选二)
+	UserIp *string `json:"UserIp,omitempty" name:"UserIp"`
+
+	// 国际移动设备识别码(五选二)
+	Imei *string `json:"Imei,omitempty" name:"Imei"`
+
+	// ios 系统广告标示符(五选二)
+	Idfa *string `json:"Idfa,omitempty" name:"Idfa"`
+
+	// 业务场景 ID，需要找技术对接
+	Scene *string `json:"Scene,omitempty" name:"Scene"`
+
+	// 姓名
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 用户邮箱地址
+	EmailAddress *string `json:"EmailAddress,omitempty" name:"EmailAddress"`
+
+	// 用户住址
+	Address *string `json:"Address,omitempty" name:"Address"`
+
+	// MAC 地址
+	Mac *string `json:"Mac,omitempty" name:"Mac"`
+
+	// 国际移动用户识别码
+	Imsi *string `json:"Imsi,omitempty" name:"Imsi"`
+
+	// 关联的腾讯帐号 QQ：1；
+	// 开放帐号微信： 2；
+	AccountType *string `json:"AccountType,omitempty" name:"AccountType"`
+
+	// 可选的 QQ 或微信 openid
+	Uid *string `json:"Uid,omitempty" name:"Uid"`
+
+	// qq 或微信分配给网站或应用的 appid，用来
+	// 唯一标识网站或应用
+	AppIdU *string `json:"AppIdU,omitempty" name:"AppIdU"`
+
+	// WIFI MAC
+	WifiMac *string `json:"WifiMac,omitempty" name:"WifiMac"`
+
+	// WIFI 服务集标识
+	WifiSSID *string `json:"WifiSSID,omitempty" name:"WifiSSID"`
+
+	// WIFI-BSSID
+	WifiBSSID *string `json:"WifiBSSID,omitempty" name:"WifiBSSID"`
+
+	// 业务 ID，在多个业务中使用此服务，通过此
+	// ID 区分统计数据
+	BusinessId *string `json:"BusinessId,omitempty" name:"BusinessId"`
+
+	// Id加密类型
+	// 0：不加密（默认值）
+	// 1：md5
+	// 2：sha256
+	// 3：SM3
+	IdCryptoType *string `json:"IdCryptoType,omitempty" name:"IdCryptoType"`
+
+	// 手机号加密类型
+	// 0：不加密（默认值）
+	// 1：md5, 2：sha256
+	// 3：SM3
+	PhoneCryptoType *string `json:"PhoneCryptoType,omitempty" name:"PhoneCryptoType"`
+
+	// 姓名加密类型
+	// 0：不加密（默认值）
+	// 1：md5
+	// 2：sha256
+	// 3：SM3
+	NameCryptoType *string `json:"NameCryptoType,omitempty" name:"NameCryptoType"`
+}
+
 type QueryAntiFraudRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 电话号码(五选二)
 	PhoneNumber *string `json:"PhoneNumber,omitempty" name:"PhoneNumber"`
 
@@ -575,29 +677,31 @@ func (r *QueryAntiFraudRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type QueryAntiFraudResponseParams struct {
+	// 表示该条记录能否查到：1为能查到，-1为查不到
+	Found *int64 `json:"Found,omitempty" name:"Found"`
+
+	// 表示该条Id能否查到：1为能查到，-1为查不到
+	IdFound *int64 `json:"IdFound,omitempty" name:"IdFound"`
+
+	// 0~100;值越高 欺诈可能性越大
+	RiskScore *uint64 `json:"RiskScore,omitempty" name:"RiskScore"`
+
+	// 扩展字段，对风险类型的说明
+	RiskInfo []*RiskDetail `json:"RiskInfo,omitempty" name:"RiskInfo"`
+
+	// 业务侧错误码。成功时返回Success，错误时返回具体业务错误原因。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CodeDesc *string `json:"CodeDesc,omitempty" name:"CodeDesc"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type QueryAntiFraudResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 表示该条记录能否查到：1为能查到，-1为查不到
-		Found *int64 `json:"Found,omitempty" name:"Found"`
-
-		// 表示该条Id能否查到：1为能查到，-1为查不到
-		IdFound *int64 `json:"IdFound,omitempty" name:"IdFound"`
-
-		// 0~100;值越高 欺诈可能性越大
-		RiskScore *uint64 `json:"RiskScore,omitempty" name:"RiskScore"`
-
-		// 扩展字段，对风险类型的说明
-		RiskInfo []*RiskDetail `json:"RiskInfo,omitempty" name:"RiskInfo"`
-
-		// 业务侧错误码。成功时返回Success，错误时返回具体业务错误原因。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		CodeDesc *string `json:"CodeDesc,omitempty" name:"CodeDesc"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *QueryAntiFraudResponseParams `json:"Response"`
 }
 
 func (r *QueryAntiFraudResponse) ToJsonString() string {
@@ -612,13 +716,11 @@ func (r *QueryAntiFraudResponse) FromJsonString(s string) error {
 }
 
 type RiskDetail struct {
-
 	// 风险码 参数详细定义请加微信：TYXGJ-01
 	RiskCode *uint64 `json:"RiskCode,omitempty" name:"RiskCode"`
 }
 
 type RiskDetailInfo struct {
-
 	// 风险码
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RiskCode *string `json:"RiskCode,omitempty" name:"RiskCode"`
@@ -629,7 +731,6 @@ type RiskDetailInfo struct {
 }
 
 type SimpleKindRiskDetail struct {
-
 	// 风险码
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RiskCode *string `json:"RiskCode,omitempty" name:"RiskCode"`

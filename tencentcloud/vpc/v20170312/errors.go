@@ -161,6 +161,9 @@ const (
 	// 目的网段不在对端VPC的CIDR范围内。
 	INVALIDPARAMETERVALUE_CIDRNOTINPEERVPC = "InvalidParameterValue.CidrNotInPeerVpc"
 
+	// 指定CIDR不在SSL-VPN所属私有网络CIDR内。
+	INVALIDPARAMETERVALUE_CIDRNOTINSSLVPNVPC = "InvalidParameterValue.CidrNotInSslVpnVpc"
+
 	// 非法入参组合。
 	INVALIDPARAMETERVALUE_COMBINATION = "InvalidParameterValue.Combination"
 
@@ -368,11 +371,17 @@ const (
 	// 带宽包配额超过限制。
 	LIMITEXCEEDED_BANDWIDTHPACKAGEQUOTA = "LimitExceeded.BandwidthPackageQuota"
 
+	// 超过更换IP配额。
+	LIMITEXCEEDED_CHANGEADDRESSQUOTA = "LimitExceeded.ChangeAddressQuota"
+
 	// VPC分配网段数量达到上限。
 	LIMITEXCEEDED_CIDRBLOCK = "LimitExceeded.CidrBlock"
 
 	// 租户每天申请的弹性IP超过上限。
 	LIMITEXCEEDED_DAILYALLOCATEADDRESSQUOTALIMITEXCEEDED = "LimitExceeded.DailyAllocateAddressQuotaLimitExceeded"
+
+	// 超过每日更换IP配额。
+	LIMITEXCEEDED_DAILYCHANGEADDRESSQUOTA = "LimitExceeded.DailyChangeAddressQuota"
 
 	// 实例绑定的弹性IP超过配额。
 	LIMITEXCEEDED_INSTANCEADDRESSQUOTA = "LimitExceeded.InstanceAddressQuota"

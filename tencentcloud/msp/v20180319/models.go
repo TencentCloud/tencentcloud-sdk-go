@@ -20,9 +20,15 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+// Predefined struct for user
+type DeregisterMigrationTaskRequestParams struct {
+	// 任务ID
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+}
+
 type DeregisterMigrationTaskRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 任务ID
 	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
 }
@@ -46,13 +52,15 @@ func (r *DeregisterMigrationTaskRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeregisterMigrationTaskResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DeregisterMigrationTaskResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DeregisterMigrationTaskResponseParams `json:"Response"`
 }
 
 func (r *DeregisterMigrationTaskResponse) ToJsonString() string {
@@ -66,9 +74,15 @@ func (r *DeregisterMigrationTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeMigrationTaskRequestParams struct {
+	// 任务ID，例如msp-jitoh33n
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+}
+
 type DescribeMigrationTaskRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 任务ID，例如msp-jitoh33n
 	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
 }
@@ -92,16 +106,18 @@ func (r *DescribeMigrationTaskRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeMigrationTaskResponseParams struct {
+	// 迁移详情列表
+	TaskStatus []*TaskStatus `json:"TaskStatus,omitempty" name:"TaskStatus"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeMigrationTaskResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 迁移详情列表
-		TaskStatus []*TaskStatus `json:"TaskStatus,omitempty" name:"TaskStatus"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeMigrationTaskResponseParams `json:"Response"`
 }
 
 func (r *DescribeMigrationTaskResponse) ToJsonString() string {
@@ -116,7 +132,6 @@ func (r *DescribeMigrationTaskResponse) FromJsonString(s string) error {
 }
 
 type DstInfo struct {
-
 	// 迁移目的地域
 	Region *string `json:"Region,omitempty" name:"Region"`
 
@@ -130,9 +145,18 @@ type DstInfo struct {
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 }
 
+// Predefined struct for user
+type ListMigrationProjectRequestParams struct {
+	// 记录起始数，默认值为0
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回条数，默认值为500
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+}
+
 type ListMigrationProjectRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 记录起始数，默认值为0
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
@@ -160,19 +184,21 @@ func (r *ListMigrationProjectRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ListMigrationProjectResponseParams struct {
+	// 项目列表
+	Projects []*Project `json:"Projects,omitempty" name:"Projects"`
+
+	// 项目总数
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type ListMigrationProjectResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 项目列表
-		Projects []*Project `json:"Projects,omitempty" name:"Projects"`
-
-		// 项目总数
-		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *ListMigrationProjectResponseParams `json:"Response"`
 }
 
 func (r *ListMigrationProjectResponse) ToJsonString() string {
@@ -186,9 +212,21 @@ func (r *ListMigrationProjectResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ListMigrationTaskRequestParams struct {
+	// 记录起始数，默认值为0
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 记录条数，默认值为10
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 项目ID，默认值为空
+	ProjectId *uint64 `json:"ProjectId,omitempty" name:"ProjectId"`
+}
+
 type ListMigrationTaskRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 记录起始数，默认值为0
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
@@ -220,19 +258,21 @@ func (r *ListMigrationTaskRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ListMigrationTaskResponseParams struct {
+	// 记录总条数
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 迁移任务列表
+	Tasks []*Task `json:"Tasks,omitempty" name:"Tasks"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type ListMigrationTaskResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 记录总条数
-		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 迁移任务列表
-		Tasks []*Task `json:"Tasks,omitempty" name:"Tasks"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *ListMigrationTaskResponseParams `json:"Response"`
 }
 
 func (r *ListMigrationTaskResponse) ToJsonString() string {
@@ -246,9 +286,18 @@ func (r *ListMigrationTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifyMigrationTaskBelongToProjectRequestParams struct {
+	// 任务ID，例如msp-jitoh33n
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 项目ID，例如10005
+	ProjectId *uint64 `json:"ProjectId,omitempty" name:"ProjectId"`
+}
+
 type ModifyMigrationTaskBelongToProjectRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 任务ID，例如msp-jitoh33n
 	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
 
@@ -276,13 +325,15 @@ func (r *ModifyMigrationTaskBelongToProjectRequest) FromJsonString(s string) err
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifyMigrationTaskBelongToProjectResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type ModifyMigrationTaskBelongToProjectResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *ModifyMigrationTaskBelongToProjectResponseParams `json:"Response"`
 }
 
 func (r *ModifyMigrationTaskBelongToProjectResponse) ToJsonString() string {
@@ -296,9 +347,18 @@ func (r *ModifyMigrationTaskBelongToProjectResponse) FromJsonString(s string) er
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifyMigrationTaskStatusRequestParams struct {
+	// 任务状态，取值为unstart，migrating，finish，fail之一，分别代表该迁移任务状态为迁移未开始，迁移中，迁移完成，迁移失败
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 任务ID，例如msp-jitoh33n
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+}
+
 type ModifyMigrationTaskStatusRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 任务状态，取值为unstart，migrating，finish，fail之一，分别代表该迁移任务状态为迁移未开始，迁移中，迁移完成，迁移失败
 	Status *string `json:"Status,omitempty" name:"Status"`
 
@@ -326,13 +386,15 @@ func (r *ModifyMigrationTaskStatusRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifyMigrationTaskStatusResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type ModifyMigrationTaskStatusResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *ModifyMigrationTaskStatusResponseParams `json:"Response"`
 }
 
 func (r *ModifyMigrationTaskStatusResponse) ToJsonString() string {
@@ -347,7 +409,6 @@ func (r *ModifyMigrationTaskStatusResponse) FromJsonString(s string) error {
 }
 
 type Project struct {
-
 	// 项目ID
 	ProjectId *uint64 `json:"ProjectId,omitempty" name:"ProjectId"`
 
@@ -355,9 +416,48 @@ type Project struct {
 	ProjectName *string `json:"ProjectName,omitempty" name:"ProjectName"`
 }
 
+// Predefined struct for user
+type RegisterMigrationTaskRequestParams struct {
+	// 任务类型，取值database（数据库迁移）、file（文件迁移）、host（主机迁移）
+	TaskType *string `json:"TaskType,omitempty" name:"TaskType"`
+
+	// 任务名称
+	TaskName *string `json:"TaskName,omitempty" name:"TaskName"`
+
+	// 服务提供商名称
+	ServiceSupplier *string `json:"ServiceSupplier,omitempty" name:"ServiceSupplier"`
+
+	// 迁移任务创建时间
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 迁移任务更新时间
+	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+
+	// 迁移类别，如数据库迁移中mysql:mysql代表从mysql迁移到mysql，文件迁移中oss:cos代表从阿里云oss迁移到腾讯云cos
+	MigrateClass *string `json:"MigrateClass,omitempty" name:"MigrateClass"`
+
+	// 迁移任务源信息
+	SrcInfo *SrcInfo `json:"SrcInfo,omitempty" name:"SrcInfo"`
+
+	// 迁移任务目的信息
+	DstInfo *DstInfo `json:"DstInfo,omitempty" name:"DstInfo"`
+
+	// 源实例接入类型，数据库迁移时填写值为：extranet(外网),cvm(cvm自建实例),dcg(专线接入的实例),vpncloud(云vpn接入的实例),vpnselfbuild(自建vpn接入的实例)，cdb(云上cdb实例)
+	SrcAccessType *string `json:"SrcAccessType,omitempty" name:"SrcAccessType"`
+
+	// 源实例数据库类型，数据库迁移时填写，取值为mysql,redis,percona,mongodb,postgresql,sqlserver,mariadb 之一
+	SrcDatabaseType *string `json:"SrcDatabaseType,omitempty" name:"SrcDatabaseType"`
+
+	// 目标实例接入类型，数据库迁移时填写值为：extranet(外网),cvm(cvm自建实例),dcg(专线接入的实例),vpncloud(云vpn接入的实例),vpnselfbuild(自建vpn接入的实例)，cdb(云上cdb实例)
+	DstAccessType *string `json:"DstAccessType,omitempty" name:"DstAccessType"`
+
+	// 目标实例数据库类型,数据库迁移时填写，取值为mysql,redis,percona,mongodb,postgresql,sqlserver,mariadb 之一
+	DstDatabaseType *string `json:"DstDatabaseType,omitempty" name:"DstDatabaseType"`
+}
+
 type RegisterMigrationTaskRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 任务类型，取值database（数据库迁移）、file（文件迁移）、host（主机迁移）
 	TaskType *string `json:"TaskType,omitempty" name:"TaskType"`
 
@@ -425,16 +525,18 @@ func (r *RegisterMigrationTaskRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type RegisterMigrationTaskResponseParams struct {
+	// 任务ID
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type RegisterMigrationTaskResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 任务ID
-		TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *RegisterMigrationTaskResponseParams `json:"Response"`
 }
 
 func (r *RegisterMigrationTaskResponse) ToJsonString() string {
@@ -449,7 +551,6 @@ func (r *RegisterMigrationTaskResponse) FromJsonString(s string) error {
 }
 
 type SrcInfo struct {
-
 	// 迁移源地域
 	Region *string `json:"Region,omitempty" name:"Region"`
 
@@ -464,7 +565,6 @@ type SrcInfo struct {
 }
 
 type Task struct {
-
 	// 任务Id
 	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
 
@@ -497,7 +597,6 @@ type Task struct {
 }
 
 type TaskStatus struct {
-
 	// 迁移状态
 	Status *string `json:"Status,omitempty" name:"Status"`
 
@@ -509,7 +608,6 @@ type TaskStatus struct {
 }
 
 type TimeObj struct {
-
 	// 创建时间
 	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
 

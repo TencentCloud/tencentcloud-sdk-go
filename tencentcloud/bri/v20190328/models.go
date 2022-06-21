@@ -21,7 +21,6 @@ import (
 )
 
 type BRIRequest struct {
-
 	// 业务名, 必须是以下六个业务名之一(bri_num,bri_dev,bri_ip_bri_apk,bri_url,bri_social)
 	Service *string `json:"Service,omitempty" name:"Service"`
 
@@ -67,7 +66,6 @@ type BRIRequest struct {
 }
 
 type BRIResponse struct {
-
 	// 风险分值，取值[0,100], 分值越高风险越高
 	Score *float64 `json:"Score,omitempty" name:"Score"`
 
@@ -99,9 +97,18 @@ type BRIResponse struct {
 	Tags []*string `json:"Tags,omitempty" name:"Tags"`
 }
 
+// Predefined struct for user
+type DescribeBRIRequestParams struct {
+	// 业务风险情报请求体
+	RequestData *BRIRequest `json:"RequestData,omitempty" name:"RequestData"`
+
+	// 客户用于计费的资源ID
+	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
+}
+
 type DescribeBRIRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 业务风险情报请求体
 	RequestData *BRIRequest `json:"RequestData,omitempty" name:"RequestData"`
 
@@ -129,16 +136,18 @@ func (r *DescribeBRIRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeBRIResponseParams struct {
+	// 业务风险情报响应体
+	ResponseData *BRIResponse `json:"ResponseData,omitempty" name:"ResponseData"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeBRIResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 业务风险情报响应体
-		ResponseData *BRIResponse `json:"ResponseData,omitempty" name:"ResponseData"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeBRIResponseParams `json:"Response"`
 }
 
 func (r *DescribeBRIResponse) ToJsonString() string {

@@ -21,7 +21,6 @@ import (
 )
 
 type Agent struct {
-
 	// 腾讯电子签颁发给渠道的应用ID，32位字符串
 	AppId *string `json:"AppId,omitempty" name:"AppId"`
 
@@ -39,7 +38,6 @@ type Agent struct {
 }
 
 type AuthFailMessage struct {
-
 	// 合作企业Id
 	ProxyOrganizationOpenId *string `json:"ProxyOrganizationOpenId,omitempty" name:"ProxyOrganizationOpenId"`
 
@@ -48,14 +46,26 @@ type AuthFailMessage struct {
 }
 
 type CcInfo struct {
-
 	// 被抄送人手机号
 	Mobile *string `json:"Mobile,omitempty" name:"Mobile"`
 }
 
+// Predefined struct for user
+type ChannelCancelMultiFlowSignQRCodeRequestParams struct {
+	// 应用信息
+	// 此接口Agent.ProxyOrganizationOpenId 和 Agent. ProxyOperator.OpenId 必填
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+
+	// 二维码id
+	QrCodeId *string `json:"QrCodeId,omitempty" name:"QrCodeId"`
+
+	// 用户信息
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+}
+
 type ChannelCancelMultiFlowSignQRCodeRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 应用信息
 	// 此接口Agent.ProxyOrganizationOpenId 和 Agent. ProxyOperator.OpenId 必填
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
@@ -88,13 +98,15 @@ func (r *ChannelCancelMultiFlowSignQRCodeRequest) FromJsonString(s string) error
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ChannelCancelMultiFlowSignQRCodeResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type ChannelCancelMultiFlowSignQRCodeResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *ChannelCancelMultiFlowSignQRCodeResponseParams `json:"Response"`
 }
 
 func (r *ChannelCancelMultiFlowSignQRCodeResponse) ToJsonString() string {
@@ -108,9 +120,45 @@ func (r *ChannelCancelMultiFlowSignQRCodeResponse) FromJsonString(s string) erro
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ChannelCreateFlowByFilesRequestParams struct {
+	// 渠道应用相关信息
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+
+	// 操作者的信息
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
+	// 签署文件资源Id列表，目前仅支持单个文件
+	FileIds []*string `json:"FileIds,omitempty" name:"FileIds"`
+
+	// 流程名称，长度不超过200个字符
+	FlowName *string `json:"FlowName,omitempty" name:"FlowName"`
+
+	// 流程截止时间，十位数时间戳，最大值为33162419560，即3020年
+	Deadline *int64 `json:"Deadline,omitempty" name:"Deadline"`
+
+	// 流程的描述，长度不超过1000个字符
+	FlowDescription *string `json:"FlowDescription,omitempty" name:"FlowDescription"`
+
+	// 流程的类型，长度不超过255个字符
+	FlowType *string `json:"FlowType,omitempty" name:"FlowType"`
+
+	// 流程回调地址，长度不超过255个字符
+	CallbackUrl *string `json:"CallbackUrl,omitempty" name:"CallbackUrl"`
+
+	// 流程签约方列表，最多不超过5个参与方
+	FlowApprovers []*FlowApproverInfo `json:"FlowApprovers,omitempty" name:"FlowApprovers"`
+
+	// 合同签署顺序类型(无序签,顺序签)，默认为false，即有序签署
+	Unordered *bool `json:"Unordered,omitempty" name:"Unordered"`
+
+	// 签署文件中的控件，如：填写控件等
+	Components []*Component `json:"Components,omitempty" name:"Components"`
+}
+
 type ChannelCreateFlowByFilesRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 渠道应用相关信息
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
@@ -174,17 +222,19 @@ func (r *ChannelCreateFlowByFilesRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ChannelCreateFlowByFilesResponseParams struct {
+	// 合同流程ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FlowId *string `json:"FlowId,omitempty" name:"FlowId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type ChannelCreateFlowByFilesResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 合同流程ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		FlowId *string `json:"FlowId,omitempty" name:"FlowId"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *ChannelCreateFlowByFilesResponseParams `json:"Response"`
 }
 
 func (r *ChannelCreateFlowByFilesResponse) ToJsonString() string {
@@ -198,9 +248,37 @@ func (r *ChannelCreateFlowByFilesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ChannelCreateMultiFlowSignQRCodeRequestParams struct {
+	// 应用信息
+	// 此接口Agent.ProxyOrganizationOpenId 和 Agent. ProxyOperator.OpenId 必填
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+
+	// 模版ID
+	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
+
+	// 合同名称
+	FlowName *string `json:"FlowName,omitempty" name:"FlowName"`
+
+	// 用户信息
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
+	// 合同有效天数 默认7天 最高设置不超过30天
+	FlowEffectiveDay *int64 `json:"FlowEffectiveDay,omitempty" name:"FlowEffectiveDay"`
+
+	// 二维码有效天数 默认7天 最高设置不超过90天
+	QrEffectiveDay *int64 `json:"QrEffectiveDay,omitempty" name:"QrEffectiveDay"`
+
+	// 最大合同份数，默认5份 超过此上限 二维码自动失效
+	MaxFlowNum *int64 `json:"MaxFlowNum,omitempty" name:"MaxFlowNum"`
+
+	// 回调地址
+	CallbackUrl *string `json:"CallbackUrl,omitempty" name:"CallbackUrl"`
+}
+
 type ChannelCreateMultiFlowSignQRCodeRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 应用信息
 	// 此接口Agent.ProxyOrganizationOpenId 和 Agent. ProxyOperator.OpenId 必填
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
@@ -253,16 +331,18 @@ func (r *ChannelCreateMultiFlowSignQRCodeRequest) FromJsonString(s string) error
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ChannelCreateMultiFlowSignQRCodeResponseParams struct {
+	// 签署二维码对象
+	QrCode *SignQrCode `json:"QrCode,omitempty" name:"QrCode"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type ChannelCreateMultiFlowSignQRCodeResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 签署二维码对象
-		QrCode *SignQrCode `json:"QrCode,omitempty" name:"QrCode"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *ChannelCreateMultiFlowSignQRCodeResponseParams `json:"Response"`
 }
 
 func (r *ChannelCreateMultiFlowSignQRCodeResponse) ToJsonString() string {
@@ -277,7 +357,6 @@ func (r *ChannelCreateMultiFlowSignQRCodeResponse) FromJsonString(s string) erro
 }
 
 type Component struct {
-
 	// 控件编号
 	// 
 	// 注：
@@ -356,9 +435,34 @@ type Component struct {
 	ComponentDescription *string `json:"ComponentDescription,omitempty" name:"ComponentDescription"`
 }
 
+// Predefined struct for user
+type CreateConsoleLoginUrlRequestParams struct {
+	// 应用信息
+	// 此接口Agent.ProxyOrganizationOpenId 和 Agent. ProxyOperator.OpenId 必填
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+
+	// 渠道侧合作企业名称
+	ProxyOrganizationName *string `json:"ProxyOrganizationName,omitempty" name:"ProxyOrganizationName"`
+
+	// 渠道侧合作企业统一社会信用代码
+	UniformSocialCreditCode *string `json:"UniformSocialCreditCode,omitempty" name:"UniformSocialCreditCode"`
+
+	// 渠道侧合作企业经办人的姓名
+	ProxyOperatorName *string `json:"ProxyOperatorName,omitempty" name:"ProxyOperatorName"`
+
+	// 操作者的信息
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
+	// 控制台指定模块，文件/合同管理:"DOCUMENT"，模板管理:"TEMPLATE"，印章管理:"SEAL"，组织架构/人员:"OPERATOR"，空字符串："账号信息"
+	Module *string `json:"Module,omitempty" name:"Module"`
+
+	// 控制台指定模块Id
+	ModuleId *string `json:"ModuleId,omitempty" name:"ModuleId"`
+}
+
 type CreateConsoleLoginUrlRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 应用信息
 	// 此接口Agent.ProxyOrganizationOpenId 和 Agent. ProxyOperator.OpenId 必填
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
@@ -407,20 +511,22 @@ func (r *CreateConsoleLoginUrlRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateConsoleLoginUrlResponseParams struct {
+	// 控制台url，此链接5分钟内有效，且只能访问一次
+	ConsoleUrl *string `json:"ConsoleUrl,omitempty" name:"ConsoleUrl"`
+
+	// 渠道合作企业是否认证开通腾讯电子签。
+	// 当渠道合作企业未完成认证开通腾讯电子签,建议先调用同步企业信息(SyncProxyOrganization)和同步经办人信息(SyncProxyOrganizationOperators)接口成功后再跳转到登录页面。
+	IsActivated *bool `json:"IsActivated,omitempty" name:"IsActivated"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreateConsoleLoginUrlResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 控制台url，此链接5分钟内有效，且只能访问一次
-		ConsoleUrl *string `json:"ConsoleUrl,omitempty" name:"ConsoleUrl"`
-
-		// 渠道合作企业是否认证开通腾讯电子签。
-	// 当渠道合作企业未完成认证开通腾讯电子签,建议先调用同步企业信息(SyncProxyOrganization)和同步经办人信息(SyncProxyOrganizationOperators)接口成功后再跳转到登录页面。
-		IsActivated *bool `json:"IsActivated,omitempty" name:"IsActivated"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreateConsoleLoginUrlResponseParams `json:"Response"`
 }
 
 func (r *CreateConsoleLoginUrlResponse) ToJsonString() string {
@@ -434,9 +540,24 @@ func (r *CreateConsoleLoginUrlResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateFlowsByTemplatesRequestParams struct {
+	// 渠道应用相关信息
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+
+	// 多个合同（流程）信息
+	FlowInfos []*FlowInfo `json:"FlowInfos,omitempty" name:"FlowInfos"`
+
+	// 操作者的信息
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
+	// 是否为预览模式；默认为false，即非预览模式，此时发起合同并返回FlowIds；若为预览模式，则返回PreviewUrls；
+	NeedPreview *bool `json:"NeedPreview,omitempty" name:"NeedPreview"`
+}
+
 type CreateFlowsByTemplatesRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 渠道应用相关信息
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
@@ -472,26 +593,28 @@ func (r *CreateFlowsByTemplatesRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateFlowsByTemplatesResponseParams struct {
+	// 多个合同ID
+	FlowIds []*string `json:"FlowIds,omitempty" name:"FlowIds"`
+
+	// 渠道的业务信息，限制1024字符
+	CustomerData []*string `json:"CustomerData,omitempty" name:"CustomerData"`
+
+	// 创建消息，对应多个合同ID，
+	// 成功为“”,创建失败则对应失败消息
+	ErrorMessages []*string `json:"ErrorMessages,omitempty" name:"ErrorMessages"`
+
+	// 预览模式下返回的预览文件url数组
+	PreviewUrls []*string `json:"PreviewUrls,omitempty" name:"PreviewUrls"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreateFlowsByTemplatesResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 多个合同ID
-		FlowIds []*string `json:"FlowIds,omitempty" name:"FlowIds"`
-
-		// 渠道的业务信息，限制1024字符
-		CustomerData []*string `json:"CustomerData,omitempty" name:"CustomerData"`
-
-		// 创建消息，对应多个合同ID，
-	// 成功为“”,创建失败则对应失败消息
-		ErrorMessages []*string `json:"ErrorMessages,omitempty" name:"ErrorMessages"`
-
-		// 预览模式下返回的预览文件url数组
-		PreviewUrls []*string `json:"PreviewUrls,omitempty" name:"PreviewUrls"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreateFlowsByTemplatesResponseParams `json:"Response"`
 }
 
 func (r *CreateFlowsByTemplatesResponse) ToJsonString() string {
@@ -505,9 +628,24 @@ func (r *CreateFlowsByTemplatesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateSealByImageRequestParams struct {
+	// 渠道应用相关信息
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+
+	// 印章名称
+	SealName *string `json:"SealName,omitempty" name:"SealName"`
+
+	// 印章图片base64
+	SealImage *string `json:"SealImage,omitempty" name:"SealImage"`
+
+	// 操作者的信息
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+}
+
 type CreateSealByImageRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 渠道应用相关信息
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
@@ -543,16 +681,18 @@ func (r *CreateSealByImageRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateSealByImageResponseParams struct {
+	// 印章id
+	SealId *string `json:"SealId,omitempty" name:"SealId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreateSealByImageResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 印章id
-		SealId *string `json:"SealId,omitempty" name:"SealId"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreateSealByImageResponseParams `json:"Response"`
 }
 
 func (r *CreateSealByImageResponse) ToJsonString() string {
@@ -566,9 +706,30 @@ func (r *CreateSealByImageResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateSignUrlsRequestParams struct {
+	// 渠道应用相关信息
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+
+	// 所签署合同ID数组
+	FlowIds []*string `json:"FlowIds,omitempty" name:"FlowIds"`
+
+	// 操作者的信息
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
+	// 签署链接类型，默认：“WEIXINAPP”-直接跳小程序; “CHANNEL”-跳转H5页面; “APP”-第三方APP或小程序跳转电子签小程序;
+	Endpoint *string `json:"Endpoint,omitempty" name:"Endpoint"`
+
+	// 签署完之后的H5页面的跳转链接，针对Endpoint为CHANNEL时有效
+	JumpUrl *string `json:"JumpUrl,omitempty" name:"JumpUrl"`
+
+	// Endpoint为"APP" 类型的签署链接，可以设置此值；支持调用方小程序打开签署链接，在电子签小程序完成签署后自动回跳至调用方小程序
+	AutoJumpBack *bool `json:"AutoJumpBack,omitempty" name:"AutoJumpBack"`
+}
+
 type CreateSignUrlsRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 渠道应用相关信息
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
@@ -612,19 +773,21 @@ func (r *CreateSignUrlsRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateSignUrlsResponseParams struct {
+	// 签署参与者签署H5链接信息数组
+	SignUrlInfos []*SignUrlInfo `json:"SignUrlInfos,omitempty" name:"SignUrlInfos"`
+
+	// 生成失败时的错误信息，成功返回”“，顺序和出参SignUrlInfos保持一致
+	ErrorMessages []*string `json:"ErrorMessages,omitempty" name:"ErrorMessages"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreateSignUrlsResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 签署参与者签署H5链接信息数组
-		SignUrlInfos []*SignUrlInfo `json:"SignUrlInfos,omitempty" name:"SignUrlInfos"`
-
-		// 生成失败时的错误信息，成功返回”“，顺序和出参SignUrlInfos保持一致
-		ErrorMessages []*string `json:"ErrorMessages,omitempty" name:"ErrorMessages"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreateSignUrlsResponseParams `json:"Response"`
 }
 
 func (r *CreateSignUrlsResponse) ToJsonString() string {
@@ -638,9 +801,21 @@ func (r *CreateSignUrlsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeFlowDetailInfoRequestParams struct {
+	// 应用信息
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+
+	// 合同(流程)编号数组
+	FlowIds []*string `json:"FlowIds,omitempty" name:"FlowIds"`
+
+	// 操作者的信息
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+}
+
 type DescribeFlowDetailInfoRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 应用信息
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
@@ -672,23 +847,25 @@ func (r *DescribeFlowDetailInfoRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeFlowDetailInfoResponseParams struct {
+	// 渠道侧应用号Id
+	ApplicationId *string `json:"ApplicationId,omitempty" name:"ApplicationId"`
+
+	// 渠道侧企业第三方Id
+	ProxyOrganizationOpenId *string `json:"ProxyOrganizationOpenId,omitempty" name:"ProxyOrganizationOpenId"`
+
+	// 合同(流程)的具体详细描述信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FlowInfo []*FlowDetailInfo `json:"FlowInfo,omitempty" name:"FlowInfo"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeFlowDetailInfoResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 渠道侧应用号Id
-		ApplicationId *string `json:"ApplicationId,omitempty" name:"ApplicationId"`
-
-		// 渠道侧企业第三方Id
-		ProxyOrganizationOpenId *string `json:"ProxyOrganizationOpenId,omitempty" name:"ProxyOrganizationOpenId"`
-
-		// 合同(流程)的具体详细描述信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		FlowInfo []*FlowDetailInfo `json:"FlowInfo,omitempty" name:"FlowInfo"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeFlowDetailInfoResponseParams `json:"Response"`
 }
 
 func (r *DescribeFlowDetailInfoResponse) ToJsonString() string {
@@ -702,9 +879,21 @@ func (r *DescribeFlowDetailInfoResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeResourceUrlsByFlowsRequestParams struct {
+	// 渠道应用相关信息
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+
+	// 操作者的信息
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
+	// 查询资源所对应的流程Id
+	FlowIds []*string `json:"FlowIds,omitempty" name:"FlowIds"`
+}
+
 type DescribeResourceUrlsByFlowsRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 渠道应用相关信息
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
@@ -736,20 +925,22 @@ func (r *DescribeResourceUrlsByFlowsRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeResourceUrlsByFlowsResponseParams struct {
+	// 流程资源对应链接信息
+	FlowResourceUrlInfos []*FlowResourceUrlInfo `json:"FlowResourceUrlInfos,omitempty" name:"FlowResourceUrlInfos"`
+
+	// 创建消息，对应多个合同ID，
+	// 成功为“”,创建失败则对应失败消息
+	ErrorMessages []*string `json:"ErrorMessages,omitempty" name:"ErrorMessages"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeResourceUrlsByFlowsResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 流程资源对应链接信息
-		FlowResourceUrlInfos []*FlowResourceUrlInfo `json:"FlowResourceUrlInfos,omitempty" name:"FlowResourceUrlInfos"`
-
-		// 创建消息，对应多个合同ID，
-	// 成功为“”,创建失败则对应失败消息
-		ErrorMessages []*string `json:"ErrorMessages,omitempty" name:"ErrorMessages"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeResourceUrlsByFlowsResponseParams `json:"Response"`
 }
 
 func (r *DescribeResourceUrlsByFlowsResponse) ToJsonString() string {
@@ -763,9 +954,30 @@ func (r *DescribeResourceUrlsByFlowsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeTemplatesRequestParams struct {
+	// 渠道应用相关信息
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+
+	// 操作者的信息
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
+	// 模板唯一标识
+	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
+
+	// 查询内容：0-模板列表及详情（默认），1-仅模板列表
+	ContentType *int64 `json:"ContentType,omitempty" name:"ContentType"`
+
+	// 查询个数，默认20，最大100
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 查询偏移位置，默认0
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+}
+
 type DescribeTemplatesRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 渠道应用相关信息
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
@@ -809,25 +1021,27 @@ func (r *DescribeTemplatesRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeTemplatesResponseParams struct {
+	// 模板详情
+	Templates []*TemplateInfo `json:"Templates,omitempty" name:"Templates"`
+
+	// 查询总数
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 查询数量
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 查询起始偏移
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeTemplatesResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 模板详情
-		Templates []*TemplateInfo `json:"Templates,omitempty" name:"Templates"`
-
-		// 查询总数
-		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 查询数量
-		Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
-
-		// 查询起始偏移
-		Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeTemplatesResponseParams `json:"Response"`
 }
 
 func (r *DescribeTemplatesResponse) ToJsonString() string {
@@ -841,9 +1055,36 @@ func (r *DescribeTemplatesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeUsageRequestParams struct {
+	// 应用信息
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+
+	// 开始时间 eg:2021-03-21
+	StartDate *string `json:"StartDate,omitempty" name:"StartDate"`
+
+	// 结束时间 eg:2021-06-21 
+	// 开始时间到结束时间的区间长度小于等于90天
+	EndDate *string `json:"EndDate,omitempty" name:"EndDate"`
+
+	// 操作者的信息
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
+	// 是否汇总数据，默认不汇总
+	// 不汇总:返回在统计区间内渠道下所有企业的每日明细，即每个企业N条数据，N为统计天数
+	// 汇总:返回在统计区间内渠道下所有企业的汇总后数据，即每个企业一条数据
+	NeedAggregate *bool `json:"NeedAggregate,omitempty" name:"NeedAggregate"`
+
+	// 单次返回的最多条目数量,默认为1000,且不能超过1000
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移量,默认是0
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+}
+
 type DescribeUsageRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 应用信息
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
@@ -894,20 +1135,22 @@ func (r *DescribeUsageRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeUsageResponseParams struct {
+	// 用量明细条数
+	Total *uint64 `json:"Total,omitempty" name:"Total"`
+
+	// 用量明细
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Details []*UsageDetail `json:"Details,omitempty" name:"Details"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeUsageResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 用量明细条数
-		Total *uint64 `json:"Total,omitempty" name:"Total"`
-
-		// 用量明细
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		Details []*UsageDetail `json:"Details,omitempty" name:"Details"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeUsageResponseParams `json:"Response"`
 }
 
 func (r *DescribeUsageResponse) ToJsonString() string {
@@ -922,7 +1165,6 @@ func (r *DescribeUsageResponse) FromJsonString(s string) error {
 }
 
 type DownloadFlowInfo struct {
-
 	// 文件夹名称
 	FileName *string `json:"FileName,omitempty" name:"FileName"`
 
@@ -931,7 +1173,6 @@ type DownloadFlowInfo struct {
 }
 
 type FlowApproverDetail struct {
-
 	// 模板配置时候的签署人id,与控件绑定
 	ReceiptId *string `json:"ReceiptId,omitempty" name:"ReceiptId"`
 
@@ -972,7 +1213,6 @@ type FlowApproverDetail struct {
 }
 
 type FlowApproverInfo struct {
-
 	// 签署人姓名
 	Name *string `json:"Name,omitempty" name:"Name"`
 
@@ -1023,7 +1263,6 @@ type FlowApproverInfo struct {
 }
 
 type FlowDetailInfo struct {
-
 	// 合同(流程)的Id
 	FlowId *string `json:"FlowId,omitempty" name:"FlowId"`
 
@@ -1053,7 +1292,6 @@ type FlowDetailInfo struct {
 }
 
 type FlowInfo struct {
-
 	// 合同名字
 	FlowName *string `json:"FlowName,omitempty" name:"FlowName"`
 
@@ -1090,7 +1328,6 @@ type FlowInfo struct {
 }
 
 type FlowResourceUrlInfo struct {
-
 	// 流程对应Id
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FlowId *string `json:"FlowId,omitempty" name:"FlowId"`
@@ -1101,7 +1338,6 @@ type FlowResourceUrlInfo struct {
 }
 
 type FormField struct {
-
 	// 表单域或控件的Value
 	ComponentValue *string `json:"ComponentValue,omitempty" name:"ComponentValue"`
 
@@ -1114,9 +1350,22 @@ type FormField struct {
 	ComponentName *string `json:"ComponentName,omitempty" name:"ComponentName"`
 }
 
+// Predefined struct for user
+type GetDownloadFlowUrlRequestParams struct {
+	// 应用信息
+	// 此接口Agent.ProxyOrganizationOpenId 和 Agent. ProxyOperator.OpenId 必填
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+
+	// 操作者的信息
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
+	// 文件夹数组，合同（流程）总数不能超过50个，一个文件夹下，不能超过20个合同（流程），
+	DownLoadFlows []*DownloadFlowInfo `json:"DownLoadFlows,omitempty" name:"DownLoadFlows"`
+}
+
 type GetDownloadFlowUrlRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 应用信息
 	// 此接口Agent.ProxyOrganizationOpenId 和 Agent. ProxyOperator.OpenId 必填
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
@@ -1149,16 +1398,18 @@ func (r *GetDownloadFlowUrlRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type GetDownloadFlowUrlResponseParams struct {
+	// 合同（流程）下载地址
+	DownLoadUrl *string `json:"DownLoadUrl,omitempty" name:"DownLoadUrl"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type GetDownloadFlowUrlResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 合同（流程）下载地址
-		DownLoadUrl *string `json:"DownLoadUrl,omitempty" name:"DownLoadUrl"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *GetDownloadFlowUrlResponseParams `json:"Response"`
 }
 
 func (r *GetDownloadFlowUrlResponse) ToJsonString() string {
@@ -1172,9 +1423,30 @@ func (r *GetDownloadFlowUrlResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type OperateChannelTemplateRequestParams struct {
+	// 应用信息
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+
+	// 渠道方模板库模板唯一标识
+	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
+
+	// 操作类型，查询:"SELECT"，删除:"DELETE"，更新:"UPDATE"
+	OperateType *string `json:"OperateType,omitempty" name:"OperateType"`
+
+	// 操作者的信息
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
+	// 模板可见性, 全部可见-"all", 部分可见-"part"
+	AuthTag *string `json:"AuthTag,omitempty" name:"AuthTag"`
+
+	// 合作企业方第三方机构唯一标识数据，支持多个， 用","进行分隔
+	ProxyOrganizationOpenIds *string `json:"ProxyOrganizationOpenIds,omitempty" name:"ProxyOrganizationOpenIds"`
+}
+
 type OperateChannelTemplateRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 应用信息
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
@@ -1218,37 +1490,39 @@ func (r *OperateChannelTemplateRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type OperateChannelTemplateResponseParams struct {
+	// 腾讯电子签颁发给渠道的应用ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AppId *string `json:"AppId,omitempty" name:"AppId"`
+
+	// 渠道方模板库模板唯一标识
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
+
+	// 全部成功-"all-success",部分成功-"part-success", 全部失败-"fail"失败的会在FailMessageList中展示
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OperateResult *string `json:"OperateResult,omitempty" name:"OperateResult"`
+
+	// 模板可见性, 全部可见-"all", 部分可见-"part"
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AuthTag *string `json:"AuthTag,omitempty" name:"AuthTag"`
+
+	// 合作企业方第三方机构唯一标识数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProxyOrganizationOpenIds []*string `json:"ProxyOrganizationOpenIds,omitempty" name:"ProxyOrganizationOpenIds"`
+
+	// 操作失败信息数组
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FailMessageList []*AuthFailMessage `json:"FailMessageList,omitempty" name:"FailMessageList"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type OperateChannelTemplateResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 腾讯电子签颁发给渠道的应用ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		AppId *string `json:"AppId,omitempty" name:"AppId"`
-
-		// 渠道方模板库模板唯一标识
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
-
-		// 全部成功-"all-success",部分成功-"part-success", 全部失败-"fail"失败的会在FailMessageList中展示
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		OperateResult *string `json:"OperateResult,omitempty" name:"OperateResult"`
-
-		// 模板可见性, 全部可见-"all", 部分可见-"part"
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		AuthTag *string `json:"AuthTag,omitempty" name:"AuthTag"`
-
-		// 合作企业方第三方机构唯一标识数据
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		ProxyOrganizationOpenIds []*string `json:"ProxyOrganizationOpenIds,omitempty" name:"ProxyOrganizationOpenIds"`
-
-		// 操作失败信息数组
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		FailMessageList []*AuthFailMessage `json:"FailMessageList,omitempty" name:"FailMessageList"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *OperateChannelTemplateResponseParams `json:"Response"`
 }
 
 func (r *OperateChannelTemplateResponse) ToJsonString() string {
@@ -1262,9 +1536,24 @@ func (r *OperateChannelTemplateResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type PrepareFlowsRequestParams struct {
+	// 渠道应用相关信息
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+
+	// 多个合同（流程）信息
+	FlowInfos []*FlowInfo `json:"FlowInfos,omitempty" name:"FlowInfos"`
+
+	// 操作完成后的跳转地址
+	JumpUrl *string `json:"JumpUrl,omitempty" name:"JumpUrl"`
+
+	// 操作者的信息
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+}
+
 type PrepareFlowsRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 渠道应用相关信息
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
@@ -1300,16 +1589,18 @@ func (r *PrepareFlowsRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type PrepareFlowsResponseParams struct {
+	// 待发起文件确认页
+	ConfirmUrl *string `json:"ConfirmUrl,omitempty" name:"ConfirmUrl"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type PrepareFlowsResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 待发起文件确认页
-		ConfirmUrl *string `json:"ConfirmUrl,omitempty" name:"ConfirmUrl"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *PrepareFlowsResponseParams `json:"Response"`
 }
 
 func (r *PrepareFlowsResponse) ToJsonString() string {
@@ -1324,7 +1615,6 @@ func (r *PrepareFlowsResponse) FromJsonString(s string) error {
 }
 
 type ProxyOrganizationOperator struct {
-
 	// 经办人ID（渠道颁发）
 	Id *string `json:"Id,omitempty" name:"Id"`
 
@@ -1346,7 +1636,6 @@ type ProxyOrganizationOperator struct {
 }
 
 type Recipient struct {
-
 	// 签署人唯一标识
 	RecipientId *string `json:"RecipientId,omitempty" name:"RecipientId"`
 
@@ -1376,7 +1665,6 @@ type Recipient struct {
 }
 
 type ResourceUrlInfo struct {
-
 	// 资源链接地址，过期时间5分钟
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Url *string `json:"Url,omitempty" name:"Url"`
@@ -1391,7 +1679,6 @@ type ResourceUrlInfo struct {
 }
 
 type SignQrCode struct {
-
 	// 二维码id
 	QrCodeId *string `json:"QrCodeId,omitempty" name:"QrCodeId"`
 
@@ -1403,7 +1690,6 @@ type SignQrCode struct {
 }
 
 type SignUrlInfo struct {
-
 	// 签署链接
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SignUrl *string `json:"SignUrl,omitempty" name:"SignUrl"`
@@ -1456,7 +1742,6 @@ type SignUrlInfo struct {
 }
 
 type SyncFailReason struct {
-
 	// 经办人Id
 	Id *string `json:"Id,omitempty" name:"Id"`
 
@@ -1466,9 +1751,24 @@ type SyncFailReason struct {
 	Message *string `json:"Message,omitempty" name:"Message"`
 }
 
+// Predefined struct for user
+type SyncProxyOrganizationOperatorsRequestParams struct {
+	// 操作类型，新增:"CREATE"，修改:"UPDATE"，离职:"RESIGN"
+	OperatorType *string `json:"OperatorType,omitempty" name:"OperatorType"`
+
+	// 应用信息
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+
+	// 经办人信息列表
+	ProxyOrganizationOperators []*ProxyOrganizationOperator `json:"ProxyOrganizationOperators,omitempty" name:"ProxyOrganizationOperators"`
+
+	// 操作者的信息
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+}
+
 type SyncProxyOrganizationOperatorsRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 操作类型，新增:"CREATE"，修改:"UPDATE"，离职:"RESIGN"
 	OperatorType *string `json:"OperatorType,omitempty" name:"OperatorType"`
 
@@ -1504,23 +1804,25 @@ func (r *SyncProxyOrganizationOperatorsRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-type SyncProxyOrganizationOperatorsResponse struct {
-	*tchttp.BaseResponse
-	Response *struct {
-
-		// Status 同步状态,全部同步失败接口会直接报错
+// Predefined struct for user
+type SyncProxyOrganizationOperatorsResponseParams struct {
+	// Status 同步状态,全部同步失败接口会直接报错
 	// 1-成功 
 	// 2-部分成功
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		Status *int64 `json:"Status,omitempty" name:"Status"`
+	Status *int64 `json:"Status,omitempty" name:"Status"`
 
-		// 同步失败经办人及其失败原因
+	// 同步失败经办人及其失败原因
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		FailedList []*SyncFailReason `json:"FailedList,omitempty" name:"FailedList"`
+	FailedList []*SyncFailReason `json:"FailedList,omitempty" name:"FailedList"`
 
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type SyncProxyOrganizationOperatorsResponse struct {
+	*tchttp.BaseResponse
+	Response *SyncProxyOrganizationOperatorsResponseParams `json:"Response"`
 }
 
 func (r *SyncProxyOrganizationOperatorsResponse) ToJsonString() string {
@@ -1534,9 +1836,28 @@ func (r *SyncProxyOrganizationOperatorsResponse) FromJsonString(s string) error 
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type SyncProxyOrganizationRequestParams struct {
+	// 应用信息
+	// 此接口Agent.ProxyOrganizationOpenId必填
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+
+	// 渠道侧合作企业名称
+	ProxyOrganizationName *string `json:"ProxyOrganizationName,omitempty" name:"ProxyOrganizationName"`
+
+	// 渠道侧合作企业统一社会信用代码
+	UniformSocialCreditCode *string `json:"UniformSocialCreditCode,omitempty" name:"UniformSocialCreditCode"`
+
+	// 营业执照正面照(PNG或JPG) base64格式, 大小不超过5M
+	BusinessLicense *string `json:"BusinessLicense,omitempty" name:"BusinessLicense"`
+
+	// 操作者的信息
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+}
+
 type SyncProxyOrganizationRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 应用信息
 	// 此接口Agent.ProxyOrganizationOpenId必填
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
@@ -1577,13 +1898,15 @@ func (r *SyncProxyOrganizationRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type SyncProxyOrganizationResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type SyncProxyOrganizationResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *SyncProxyOrganizationResponseParams `json:"Response"`
 }
 
 func (r *SyncProxyOrganizationResponse) ToJsonString() string {
@@ -1598,7 +1921,6 @@ func (r *SyncProxyOrganizationResponse) FromJsonString(s string) error {
 }
 
 type TemplateInfo struct {
-
 	// 模板ID
 	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
 
@@ -1631,7 +1953,6 @@ type TemplateInfo struct {
 }
 
 type UploadFile struct {
-
 	// Base64编码后的文件内容
 	FileBody *string `json:"FileBody,omitempty" name:"FileBody"`
 
@@ -1639,9 +1960,26 @@ type UploadFile struct {
 	FileName *string `json:"FileName,omitempty" name:"FileName"`
 }
 
+// Predefined struct for user
+type UploadFilesRequestParams struct {
+	// 文件对应业务类型，用于区分文件存储路径：
+	// 1. TEMPLATE - 模板； 文件类型：.pdf
+	// 2. DOCUMENT - 签署过程及签署后的合同文档/图片控件 文件类型：.pdf/.jpg/.png
+	BusinessType *string `json:"BusinessType,omitempty" name:"BusinessType"`
+
+	// 应用相关信息，若是渠道版调用 appid 和proxyappid 必填
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+
+	// 上传文件内容数组，最多支持20个文件
+	FileInfos []*UploadFile `json:"FileInfos,omitempty" name:"FileInfos"`
+
+	// 操作者的信息
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+}
+
 type UploadFilesRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 文件对应业务类型，用于区分文件存储路径：
 	// 1. TEMPLATE - 模板； 文件类型：.pdf
 	// 2. DOCUMENT - 签署过程及签署后的合同文档/图片控件 文件类型：.pdf/.jpg/.png
@@ -1679,22 +2017,24 @@ func (r *UploadFilesRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type UploadFilesResponseParams struct {
+	// 文件id数组
+	FileIds []*string `json:"FileIds,omitempty" name:"FileIds"`
+
+	// 上传成功文件数量
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 文件Url
+	FileUrls []*string `json:"FileUrls,omitempty" name:"FileUrls"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type UploadFilesResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 文件id数组
-		FileIds []*string `json:"FileIds,omitempty" name:"FileIds"`
-
-		// 上传成功文件数量
-		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 文件Url
-		FileUrls []*string `json:"FileUrls,omitempty" name:"FileUrls"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *UploadFilesResponseParams `json:"Response"`
 }
 
 func (r *UploadFilesResponse) ToJsonString() string {
@@ -1709,7 +2049,6 @@ func (r *UploadFilesResponse) FromJsonString(s string) error {
 }
 
 type UsageDetail struct {
-
 	// 渠道侧合作企业唯一标识
 	ProxyOrganizationOpenId *string `json:"ProxyOrganizationOpenId,omitempty" name:"ProxyOrganizationOpenId"`
 
@@ -1726,7 +2065,6 @@ type UsageDetail struct {
 }
 
 type UserInfo struct {
-
 	// 自定义用户编号
 	CustomUserId *string `json:"CustomUserId,omitempty" name:"CustomUserId"`
 

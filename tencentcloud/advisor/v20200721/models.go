@@ -21,7 +21,6 @@ import (
 )
 
 type DescribeStrategie struct {
-
 	// 评估项ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	StrategyId *uint64 `json:"StrategyId,omitempty" name:"StrategyId"`
@@ -60,7 +59,6 @@ type DescribeStrategie struct {
 }
 
 type DescribeStrategiesCondition struct {
-
 	// 警告条件ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ConditionId *uint64 `json:"ConditionId,omitempty" name:"ConditionId"`
@@ -77,8 +75,14 @@ type DescribeStrategiesCondition struct {
 	Desc *string `json:"Desc,omitempty" name:"Desc"`
 }
 
+// Predefined struct for user
+type DescribeStrategiesRequestParams struct {
+
+}
+
 type DescribeStrategiesRequest struct {
 	*tchttp.BaseRequest
+	
 }
 
 func (r *DescribeStrategiesRequest) ToJsonString() string {
@@ -93,23 +97,26 @@ func (r *DescribeStrategiesRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeStrategiesRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeStrategiesResponseParams struct {
+	// 评估项列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Strategies []*DescribeStrategie `json:"Strategies,omitempty" name:"Strategies"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeStrategiesResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 评估项列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		Strategies []*DescribeStrategie `json:"Strategies,omitempty" name:"Strategies"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeStrategiesResponseParams `json:"Response"`
 }
 
 func (r *DescribeStrategiesResponse) ToJsonString() string {
@@ -123,9 +130,27 @@ func (r *DescribeStrategiesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeTaskStrategyRisksRequestParams struct {
+	// 评估项ID
+	StrategyId *uint64 `json:"StrategyId,omitempty" name:"StrategyId"`
+
+	// 限制数量,默认100
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移量,默认0
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 环境
+	Env *string `json:"Env,omitempty" name:"Env"`
+
+	// 任务类型
+	TaskType *string `json:"TaskType,omitempty" name:"TaskType"`
+}
+
 type DescribeTaskStrategyRisksRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 评估项ID
 	StrategyId *uint64 `json:"StrategyId,omitempty" name:"StrategyId"`
 
@@ -165,34 +190,36 @@ func (r *DescribeTaskStrategyRisksRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-type DescribeTaskStrategyRisksResponse struct {
-	*tchttp.BaseResponse
-	Response *struct {
-
-		// 根据此配置，匹配风险实例列表（Risks）对应字段，例如:
+// Predefined struct for user
+type DescribeTaskStrategyRisksResponseParams struct {
+	// 根据此配置，匹配风险实例列表（Risks）对应字段，例如:
 	// {"Response":{"RequestId":"111","RiskFieldsDesc":[{"Field":"InstanceId","FieldName":"ID","FieldType":"string","FieldDict":{}},{"Field":"InstanceName","FieldName":"名称","FieldType":"string","FieldDict":{}},{"Field":"InstanceState","FieldName":"状态","FieldType":"string","FieldDict":{"LAUNCH_FAILED":"创建失败","PENDING":"创建中","REBOOTING":"重启中","RUNNING":"运行中","SHUTDOWN":"停止待销毁","STARTING":"开机中","STOPPED":"关机","STOPPING":"关机中","TERMINATING":"销毁中"}},{"Field":"Zone","FieldName":"可用区","FieldType":"string","FieldDict":{}},{"Field":"PrivateIPAddresses","FieldName":"IP地址(内)","FieldType":"stringSlice","FieldDict":{}},{"Field":"PublicIPAddresses","FieldName":"IP地址(公)","FieldType":"stringSlice","FieldDict":{}},{"Field":"Region","FieldName":"地域","FieldType":"string","FieldDict":{}},{"Field":"Tags","FieldName":"标签","FieldType":"tags","FieldDict":{}}],"RiskTotalCount":3,"Risks":"[{\"InstanceId\":\"ins-xxx1\",\"InstanceName\":\"xxx1\",\"InstanceState\":\"RUNNING\",\"PrivateIPAddresses\":[\"1.17.64.2\"],\"PublicIPAddresses\":null,\"Region\":\"ap-shanghai\",\"Tags\":null,\"Zone\":\"ap-shanghai-2\"},{\"InstanceId\":\"ins-xxx2\",\"InstanceName\":\"xxx2\",\"InstanceState\":\"RUNNING\",\"PrivateIPAddresses\":[\"1.17.64.11\"],\"PublicIPAddresses\":null,\"Region\":\"ap-shanghai\",\"Tags\":null,\"Zone\":\"ap-shanghai-2\"}]","StrategyId":9}}
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		RiskFieldsDesc []*RiskFieldsDesc `json:"RiskFieldsDesc,omitempty" name:"RiskFieldsDesc"`
+	RiskFieldsDesc []*RiskFieldsDesc `json:"RiskFieldsDesc,omitempty" name:"RiskFieldsDesc"`
 
-		// 评估项ID
+	// 评估项ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		StrategyId *uint64 `json:"StrategyId,omitempty" name:"StrategyId"`
+	StrategyId *uint64 `json:"StrategyId,omitempty" name:"StrategyId"`
 
-		// 风险实例个数
+	// 风险实例个数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		RiskTotalCount *uint64 `json:"RiskTotalCount,omitempty" name:"RiskTotalCount"`
+	RiskTotalCount *uint64 `json:"RiskTotalCount,omitempty" name:"RiskTotalCount"`
 
-		// 风险实例详情列表，需要json decode
+	// 风险实例详情列表，需要json decode
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		Risks *string `json:"Risks,omitempty" name:"Risks"`
+	Risks *string `json:"Risks,omitempty" name:"Risks"`
 
-		// 巡检资源数
+	// 巡检资源数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		ResourceCount *uint64 `json:"ResourceCount,omitempty" name:"ResourceCount"`
+	ResourceCount *uint64 `json:"ResourceCount,omitempty" name:"ResourceCount"`
 
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeTaskStrategyRisksResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeTaskStrategyRisksResponseParams `json:"Response"`
 }
 
 func (r *DescribeTaskStrategyRisksResponse) ToJsonString() string {
@@ -207,7 +234,6 @@ func (r *DescribeTaskStrategyRisksResponse) FromJsonString(s string) error {
 }
 
 type KeyValue struct {
-
 	// 键名
 	Key *string `json:"Key,omitempty" name:"Key"`
 
@@ -216,7 +242,6 @@ type KeyValue struct {
 }
 
 type RiskFieldsDesc struct {
-
 	// 字段ID
 	Field *string `json:"Field,omitempty" name:"Field"`
 

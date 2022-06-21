@@ -21,7 +21,6 @@ import (
 )
 
 type Device struct {
-
 	// 该字段表示业务用户对应设备的IP地址，同时**支持IPv4和IPv6**地址的记录；需要与IpType参数配合使用。
 	Ip *string `json:"Ip,omitempty" name:"Ip"`
 
@@ -48,9 +47,36 @@ type Device struct {
 	IpType *uint64 `json:"IpType,omitempty" name:"IpType"`
 }
 
+// Predefined struct for user
+type ImageModerationRequestParams struct {
+	// 该字段表示策略的具体编号，用于接口调度，在内容安全控制台中可配置。若不传入Biztype参数（留空），则代表采用默认的识别策略；传入则会在审核时根据业务场景采取不同的审核策略。<br>备注：Biztype仅为数字、字母与下划线的组合，长度为3-32个字符；不同Biztype关联不同的业务场景与识别能力策略，调用前请确认正确的Biztype。
+	BizType *string `json:"BizType,omitempty" name:"BizType"`
+
+	// 该字段表示您为待检测对象分配的数据ID，传入后可方便您对文件进行标识和管理。<br>取值：由英文字母（大小写均可）、数字及四个特殊符号（_，-，@，#）组成，**长度不超过64个字符**。
+	DataId *string `json:"DataId,omitempty" name:"DataId"`
+
+	// 该字段表示待检测图片文件内容的Base64编码，图片**大小不超过5MB**，建议**分辨率不低于256x256**，否则可能会影响识别效果。<br>备注： **该字段与FileUrl必须选择输入其中一个**。
+	FileContent *string `json:"FileContent,omitempty" name:"FileContent"`
+
+	// 该字段表示待检测图片文件的访问链接，图片支持PNG、JPG、JPEG、BMP、GIF、WEBP格式，**大小不超过5MB**，建议**分辨率不低于256x256**；图片下载时间限制为3秒，超过则会返回下载超时。<br>备注：**该字段与FileContent必须选择输入其中一个**。
+	FileUrl *string `json:"FileUrl,omitempty" name:"FileUrl"`
+
+	// **GIF/长图检测专用**，用于表示GIF截帧频率（每隔多少张图片抽取一帧进行检测），长图则按照长边：短边取整计算要切割的总图数；默认值为0，此时只会检测GIF的第一帧或对长图不进行切分处理。<br>备注：Interval与MaxFrames参数需要组合使用。例如，Interval=3, MaxFrames=400，则代表在检测GIF/长图时，将每间隔2帧检测一次且最多检测400帧。
+	Interval *int64 `json:"Interval,omitempty" name:"Interval"`
+
+	// **GIF/长图检测专用**，用于标识最大截帧数量；默认值为1，此时只会检测输入GIF的第一帧或对长图不进行切分处理（可能会造成处理超时）。<br>备注：Interval与MaxFrames参数需要组合使用。例如，Interval=3, MaxFrames=400，则代表在检测GIF/长图时，将每间隔2帧检测一次且最多检测400帧。
+	MaxFrames *int64 `json:"MaxFrames,omitempty" name:"MaxFrames"`
+
+	// 该字段表示待检测对象对应的用户相关信息，若填入则可甄别相应违规风险用户。
+	User *User `json:"User,omitempty" name:"User"`
+
+	// 该字段表示待检测对象对应的设备相关信息，若填入则可甄别相应违规风险设备。
+	Device *Device `json:"Device,omitempty" name:"Device"`
+}
+
 type ImageModerationRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 该字段表示策略的具体编号，用于接口调度，在内容安全控制台中可配置。若不传入Biztype参数（留空），则代表采用默认的识别策略；传入则会在审核时根据业务场景采取不同的审核策略。<br>备注：Biztype仅为数字、字母与下划线的组合，长度为3-32个字符；不同Biztype关联不同的业务场景与识别能力策略，调用前请确认正确的Biztype。
 	BizType *string `json:"BizType,omitempty" name:"BizType"`
 
@@ -102,54 +128,56 @@ func (r *ImageModerationRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ImageModerationResponseParams struct {
+	// 该字段用于返回Label标签下的后续操作建议。当您获取到判定结果后，返回值表示系统推荐的后续操作；建议您按照业务所需，对不同违规类型与建议值进行处理。<br>返回值：**Block**：建议屏蔽，**Review** ：建议人工复审，**Pass**：建议通过
+	Suggestion *string `json:"Suggestion,omitempty" name:"Suggestion"`
+
+	// 该字段用于返回检测结果（LabelResults）中所对应的**优先级最高的恶意标签**，表示模型推荐的审核结果，建议您按照业务所需，对不同违规类型与建议值进行处理。<br>返回值：**Normal**：正常，**Porn**：色情，**Abuse**：谩骂，**Ad**：广告，**Custom**：自定义违规；以及其他令人反感、不安全或不适宜的内容类型。
+	Label *string `json:"Label,omitempty" name:"Label"`
+
+	// 该字段用于返回检测结果所命中优先级最高的恶意标签下的子标签名称，如：*色情--性行为*；若未命中任何子标签则返回空字符串。
+	SubLabel *string `json:"SubLabel,omitempty" name:"SubLabel"`
+
+	// 该字段用于返回当前标签（Label）下的置信度，取值范围：0（**置信度最低**）-100（**置信度最高** ），越高代表图片越有可能属于当前返回的标签；如：*色情 99*，则表明该图片非常有可能属于色情内容；*色情 0*，则表明该图片不属于色情内容。
+	Score *int64 `json:"Score,omitempty" name:"Score"`
+
+	// 该字段用于返回分类模型命中的恶意标签的详细识别结果，包括涉黄、广告等令人反感、不安全或不适宜的内容类型识别结果。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LabelResults []*LabelResult `json:"LabelResults,omitempty" name:"LabelResults"`
+
+	// 该字段用于返回物体检测模型的详细检测结果；包括：实体、广告台标、二维码等内容命中的标签名称、标签分数、坐标信息、场景识别结果、建议操作等内容审核信息；详细返回值信息可参阅对应的数据结构（ObjectResults）描述。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ObjectResults []*ObjectResult `json:"ObjectResults,omitempty" name:"ObjectResults"`
+
+	// 该字段用于返回OCR文本识别的详细检测结果；包括：文本坐标信息、文本识别结果、建议操作等内容审核信息；详细返回值信息可参阅对应的数据结构（OcrResults）描述。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OcrResults []*OcrResult `json:"OcrResults,omitempty" name:"OcrResults"`
+
+	// 该字段用于返回基于图片风险库（风险黑库与正常白库）识别的结果,详细返回值信息可参阅对应的数据结构（LibResults）描述。<br>备注：图片风险库目前**暂不支持自定义库**。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LibResults []*LibResult `json:"LibResults,omitempty" name:"LibResults"`
+
+	// 该字段用于返回检测对象对应请求参数中的DataId。
+	DataId *string `json:"DataId,omitempty" name:"DataId"`
+
+	// 该字段用于返回检测对象对应请求参数中的BizType。
+	BizType *string `json:"BizType,omitempty" name:"BizType"`
+
+	// 该字段用于返回根据您的需求配置的额外附加信息（Extra），如未配置则默认返回值为空。<br>备注：不同客户或Biztype下返回信息不同，如需配置该字段请提交工单咨询或联系售后专员处理。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Extra *string `json:"Extra,omitempty" name:"Extra"`
+
+	// 该字段用于返回检测对象对应的MD5校验值，以方便校验文件完整性。
+	FileMD5 *string `json:"FileMD5,omitempty" name:"FileMD5"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type ImageModerationResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 该字段用于返回Label标签下的后续操作建议。当您获取到判定结果后，返回值表示系统推荐的后续操作；建议您按照业务所需，对不同违规类型与建议值进行处理。<br>返回值：**Block**：建议屏蔽，**Review** ：建议人工复审，**Pass**：建议通过
-		Suggestion *string `json:"Suggestion,omitempty" name:"Suggestion"`
-
-		// 该字段用于返回检测结果（LabelResults）中所对应的**优先级最高的恶意标签**，表示模型推荐的审核结果，建议您按照业务所需，对不同违规类型与建议值进行处理。<br>返回值：**Normal**：正常，**Porn**：色情，**Abuse**：谩骂，**Ad**：广告，**Custom**：自定义违规；以及其他令人反感、不安全或不适宜的内容类型。
-		Label *string `json:"Label,omitempty" name:"Label"`
-
-		// 该字段用于返回检测结果所命中优先级最高的恶意标签下的子标签名称，如：*色情--性行为*；若未命中任何子标签则返回空字符串。
-		SubLabel *string `json:"SubLabel,omitempty" name:"SubLabel"`
-
-		// 该字段用于返回当前标签（Label）下的置信度，取值范围：0（**置信度最低**）-100（**置信度最高** ），越高代表图片越有可能属于当前返回的标签；如：*色情 99*，则表明该图片非常有可能属于色情内容；*色情 0*，则表明该图片不属于色情内容。
-		Score *int64 `json:"Score,omitempty" name:"Score"`
-
-		// 该字段用于返回分类模型命中的恶意标签的详细识别结果，包括涉黄、广告等令人反感、不安全或不适宜的内容类型识别结果。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		LabelResults []*LabelResult `json:"LabelResults,omitempty" name:"LabelResults"`
-
-		// 该字段用于返回物体检测模型的详细检测结果；包括：实体、广告台标、二维码等内容命中的标签名称、标签分数、坐标信息、场景识别结果、建议操作等内容审核信息；详细返回值信息可参阅对应的数据结构（ObjectResults）描述。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		ObjectResults []*ObjectResult `json:"ObjectResults,omitempty" name:"ObjectResults"`
-
-		// 该字段用于返回OCR文本识别的详细检测结果；包括：文本坐标信息、文本识别结果、建议操作等内容审核信息；详细返回值信息可参阅对应的数据结构（OcrResults）描述。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		OcrResults []*OcrResult `json:"OcrResults,omitempty" name:"OcrResults"`
-
-		// 该字段用于返回基于图片风险库（风险黑库与正常白库）识别的结果,详细返回值信息可参阅对应的数据结构（LibResults）描述。<br>备注：图片风险库目前**暂不支持自定义库**。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		LibResults []*LibResult `json:"LibResults,omitempty" name:"LibResults"`
-
-		// 该字段用于返回检测对象对应请求参数中的DataId。
-		DataId *string `json:"DataId,omitempty" name:"DataId"`
-
-		// 该字段用于返回检测对象对应请求参数中的BizType。
-		BizType *string `json:"BizType,omitempty" name:"BizType"`
-
-		// 该字段用于返回根据您的需求配置的额外附加信息（Extra），如未配置则默认返回值为空。<br>备注：不同客户或Biztype下返回信息不同，如需配置该字段请提交工单咨询或联系售后专员处理。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		Extra *string `json:"Extra,omitempty" name:"Extra"`
-
-		// 该字段用于返回检测对象对应的MD5校验值，以方便校验文件完整性。
-		FileMD5 *string `json:"FileMD5,omitempty" name:"FileMD5"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *ImageModerationResponseParams `json:"Response"`
 }
 
 func (r *ImageModerationResponse) ToJsonString() string {
@@ -164,7 +192,6 @@ func (r *ImageModerationResponse) FromJsonString(s string) error {
 }
 
 type LabelDetailItem struct {
-
 	// 该字段用于返回识别对象的ID以方便识别和区分。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Id *int64 `json:"Id,omitempty" name:"Id"`
@@ -179,7 +206,6 @@ type LabelDetailItem struct {
 }
 
 type LabelResult struct {
-
 	// 该字段用于返回模型识别出的场景结果，如广告、色情、有害内容等场景。
 	Scene *string `json:"Scene,omitempty" name:"Scene"`
 
@@ -201,7 +227,6 @@ type LabelResult struct {
 }
 
 type LibDetail struct {
-
 	// 该字段用于返回识别对象的ID以方便识别和区分。
 	Id *int64 `json:"Id,omitempty" name:"Id"`
 
@@ -227,7 +252,6 @@ type LibDetail struct {
 }
 
 type LibResult struct {
-
 	// 该字段表示模型的场景识别结果，默认取值为Similar。
 	Scene *string `json:"Scene,omitempty" name:"Scene"`
 
@@ -250,7 +274,6 @@ type LibResult struct {
 }
 
 type Location struct {
-
 	// 该参数用于返回检测框**左上角位置的横坐标**（x）所在的像素位置，结合剩余参数可唯一确定检测框的大小和位置。
 	X *float64 `json:"X,omitempty" name:"X"`
 
@@ -268,7 +291,6 @@ type Location struct {
 }
 
 type ObjectDetail struct {
-
 	// 该参数用于返回识别对象的ID以方便识别和区分。
 	Id *uint64 `json:"Id,omitempty" name:"Id"`
 
@@ -289,7 +311,6 @@ type ObjectDetail struct {
 }
 
 type ObjectResult struct {
-
 	// 该字段用于返回实体识别出的实体场景结果，如二维码、logo、图片OCR等场景。
 	Scene *string `json:"Scene,omitempty" name:"Scene"`
 
@@ -316,7 +337,6 @@ type ObjectResult struct {
 }
 
 type OcrResult struct {
-
 	// 该字段表示识别场景，取值默认为OCR（图片OCR识别）。
 	Scene *string `json:"Scene,omitempty" name:"Scene"`
 
@@ -341,7 +361,6 @@ type OcrResult struct {
 }
 
 type OcrTextDetail struct {
-
 	// 该字段用于返回OCR识别出的文本内容。<br>备注：OCR文本识别上限在**5000字节内**。
 	Text *string `json:"Text,omitempty" name:"Text"`
 
@@ -371,7 +390,6 @@ type OcrTextDetail struct {
 }
 
 type User struct {
-
 	// 该字段表示业务用户ID,填写后，系统可根据账号过往违规历史优化审核结果判定，有利于存在可疑违规风险时的辅助判断。<br>
 	// 备注：该字段可传入微信openid、QQopenid、字符串等账号信息，与账号类别参数（AccountType）配合使用可确定唯一账号。
 	UserId *string `json:"UserId,omitempty" name:"UserId"`

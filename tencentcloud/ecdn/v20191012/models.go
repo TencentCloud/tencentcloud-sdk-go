@@ -20,9 +20,51 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+// Predefined struct for user
+type AddEcdnDomainRequestParams struct {
+	// 域名。
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 源站配置。
+	Origin *Origin `json:"Origin,omitempty" name:"Origin"`
+
+	// 域名加速区域，mainland，overseas或global，分别表示中国境内加速，海外加速或全球加速。
+	Area *string `json:"Area,omitempty" name:"Area"`
+
+	// 项目id，默认0。
+	ProjectId *int64 `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// IP黑白名单配置。
+	IpFilter *IpFilter `json:"IpFilter,omitempty" name:"IpFilter"`
+
+	// IP限频配置。
+	IpFreqLimit *IpFreqLimit `json:"IpFreqLimit,omitempty" name:"IpFreqLimit"`
+
+	// 源站响应头部配置。
+	ResponseHeader *ResponseHeader `json:"ResponseHeader,omitempty" name:"ResponseHeader"`
+
+	// 节点缓存配置。
+	CacheKey *CacheKey `json:"CacheKey,omitempty" name:"CacheKey"`
+
+	// 缓存规则配置。
+	Cache *Cache `json:"Cache,omitempty" name:"Cache"`
+
+	// Https配置。
+	Https *Https `json:"Https,omitempty" name:"Https"`
+
+	// 访问协议强制跳转配置。
+	ForceRedirect *ForceRedirect `json:"ForceRedirect,omitempty" name:"ForceRedirect"`
+
+	// 域名绑定的标签
+	Tag []*Tag `json:"Tag,omitempty" name:"Tag"`
+
+	// WebSocket配置
+	WebSocket *WebSocket `json:"WebSocket,omitempty" name:"WebSocket"`
+}
+
 type AddEcdnDomainRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 域名。
 	Domain *string `json:"Domain,omitempty" name:"Domain"`
 
@@ -94,13 +136,15 @@ func (r *AddEcdnDomainRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type AddEcdnDomainResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type AddEcdnDomainResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *AddEcdnDomainResponseParams `json:"Response"`
 }
 
 func (r *AddEcdnDomainResponse) ToJsonString() string {
@@ -115,7 +159,6 @@ func (r *AddEcdnDomainResponse) FromJsonString(s string) error {
 }
 
 type AdvanceHttps struct {
-
 	// 自定义Tls数据开关
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CustomTlsStatus *string `json:"CustomTlsStatus,omitempty" name:"CustomTlsStatus"`
@@ -145,7 +188,6 @@ type AdvanceHttps struct {
 }
 
 type Cache struct {
-
 	// 缓存配置规则数组。
 	CacheRules []*CacheRule `json:"CacheRules,omitempty" name:"CacheRules"`
 
@@ -158,13 +200,11 @@ type Cache struct {
 }
 
 type CacheKey struct {
-
 	// 是否开启全路径缓存，on或off。
 	FullUrlCache *string `json:"FullUrlCache,omitempty" name:"FullUrlCache"`
 }
 
 type CacheRule struct {
-
 	// 缓存类型，支持all，file，directory，path，index，分别表示全部文件，后缀类型，目录，完整路径，首页。
 	CacheType *string `json:"CacheType,omitempty" name:"CacheType"`
 
@@ -176,7 +216,6 @@ type CacheRule struct {
 }
 
 type ClientCert struct {
-
 	// 客户端证书，pem格式。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Certificate *string `json:"Certificate,omitempty" name:"Certificate"`
@@ -194,9 +233,15 @@ type ClientCert struct {
 	DeployTime *string `json:"DeployTime,omitempty" name:"DeployTime"`
 }
 
+// Predefined struct for user
+type CreateVerifyRecordRequestParams struct {
+	// 要取回的域名
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+}
+
 type CreateVerifyRecordRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 要取回的域名
 	Domain *string `json:"Domain,omitempty" name:"Domain"`
 }
@@ -220,22 +265,24 @@ func (r *CreateVerifyRecordRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateVerifyRecordResponseParams struct {
+	// 子解析
+	SubDomain *string `json:"SubDomain,omitempty" name:"SubDomain"`
+
+	// 解析值
+	Record *string `json:"Record,omitempty" name:"Record"`
+
+	// 解析类型
+	RecordType *string `json:"RecordType,omitempty" name:"RecordType"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreateVerifyRecordResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 子解析
-		SubDomain *string `json:"SubDomain,omitempty" name:"SubDomain"`
-
-		// 解析值
-		Record *string `json:"Record,omitempty" name:"Record"`
-
-		// 解析类型
-		RecordType *string `json:"RecordType,omitempty" name:"RecordType"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreateVerifyRecordResponseParams `json:"Response"`
 }
 
 func (r *CreateVerifyRecordResponse) ToJsonString() string {
@@ -249,9 +296,15 @@ func (r *CreateVerifyRecordResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteEcdnDomainRequestParams struct {
+	// 待删除域名。
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+}
+
 type DeleteEcdnDomainRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 待删除域名。
 	Domain *string `json:"Domain,omitempty" name:"Domain"`
 }
@@ -275,13 +328,15 @@ func (r *DeleteEcdnDomainRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteEcdnDomainResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DeleteEcdnDomainResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DeleteEcdnDomainResponseParams `json:"Response"`
 }
 
 func (r *DeleteEcdnDomainResponse) ToJsonString() string {
@@ -295,9 +350,24 @@ func (r *DeleteEcdnDomainResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeDomainsConfigRequestParams struct {
+	// 分页查询的偏移地址，默认0。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 分页查询的域名个数，默认100。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 查询条件过滤器。
+	Filters []*DomainFilter `json:"Filters,omitempty" name:"Filters"`
+
+	// 查询结果排序规则。
+	Sort *Sort `json:"Sort,omitempty" name:"Sort"`
+}
+
 type DescribeDomainsConfigRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 分页查询的偏移地址，默认0。
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
@@ -333,19 +403,21 @@ func (r *DescribeDomainsConfigRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeDomainsConfigResponseParams struct {
+	// 域名列表。
+	Domains []*DomainDetailInfo `json:"Domains,omitempty" name:"Domains"`
+
+	// 符合查询条件的域名总数，用于分页查询。
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeDomainsConfigResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 域名列表。
-		Domains []*DomainDetailInfo `json:"Domains,omitempty" name:"Domains"`
-
-		// 符合查询条件的域名总数，用于分页查询。
-		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeDomainsConfigResponseParams `json:"Response"`
 }
 
 func (r *DescribeDomainsConfigResponse) ToJsonString() string {
@@ -359,9 +431,21 @@ func (r *DescribeDomainsConfigResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeDomainsRequestParams struct {
+	// 分页查询的偏移地址，默认0。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 分页查询的域名个数，默认100，最大支持1000。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 查询条件过滤器。
+	Filters []*DomainFilter `json:"Filters,omitempty" name:"Filters"`
+}
+
 type DescribeDomainsRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 分页查询的偏移地址，默认0。
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
@@ -393,19 +477,21 @@ func (r *DescribeDomainsRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeDomainsResponseParams struct {
+	// 域名信息列表。
+	Domains []*DomainBriefInfo `json:"Domains,omitempty" name:"Domains"`
+
+	// 域名总个数。
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeDomainsResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 域名信息列表。
-		Domains []*DomainBriefInfo `json:"Domains,omitempty" name:"Domains"`
-
-		// 域名总个数。
-		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeDomainsResponseParams `json:"Response"`
 }
 
 func (r *DescribeDomainsResponse) ToJsonString() string {
@@ -419,9 +505,27 @@ func (r *DescribeDomainsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeEcdnDomainLogsRequestParams struct {
+	// 待查询域名。
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 日志起始时间。如：2019-10-01 00:00:00
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 日志结束时间，只支持最近30天内日志查询。2019-10-02 00:00:00
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 日志链接列表分页起始地址，默认0。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 日志链接列表分页记录条数，默认100，最大1000。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
 type DescribeEcdnDomainLogsRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 待查询域名。
 	Domain *string `json:"Domain,omitempty" name:"Domain"`
 
@@ -461,20 +565,22 @@ func (r *DescribeEcdnDomainLogsRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeEcdnDomainLogsResponseParams struct {
+	// 日志链接列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DomainLogs []*DomainLogs `json:"DomainLogs,omitempty" name:"DomainLogs"`
+
+	// 日志链接总条数。
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeEcdnDomainLogsResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 日志链接列表。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		DomainLogs []*DomainLogs `json:"DomainLogs,omitempty" name:"DomainLogs"`
-
-		// 日志链接总条数。
-		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeEcdnDomainLogsResponseParams `json:"Response"`
 }
 
 func (r *DescribeEcdnDomainLogsResponse) ToJsonString() string {
@@ -488,9 +594,46 @@ func (r *DescribeEcdnDomainLogsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeEcdnDomainStatisticsRequestParams struct {
+	// 查询起始时间，如：2019-12-13 00:00:00。
+	// 起止时间不超过90天。
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 查询结束时间，如：2019-12-13 23:59:59。
+	// 起止时间不超过90天。
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 统计指标名称:
+	// flux：流量，单位为 byte
+	// bandwidth：带宽，单位为 bps
+	// request：请求数，单位为 次
+	Metrics []*string `json:"Metrics,omitempty" name:"Metrics"`
+
+	// 指定查询域名列表
+	Domains []*string `json:"Domains,omitempty" name:"Domains"`
+
+	// 指定要查询的项目 ID，[前往查看项目 ID](https://console.cloud.tencent.com/project)
+	// 未填充域名情况下，指定项目查询，若填充了具体域名信息，以域名为主
+	Projects []*int64 `json:"Projects,omitempty" name:"Projects"`
+
+	// 列表分页起始地址，默认0。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 列表分页记录条数，默认1000，最大3000。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 统计区域:
+	// mainland: 境内
+	// oversea: 境外
+	// global: 全部
+	// 默认 global
+	Area *string `json:"Area,omitempty" name:"Area"`
+}
+
 type DescribeEcdnDomainStatisticsRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 查询起始时间，如：2019-12-13 00:00:00。
 	// 起止时间不超过90天。
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
@@ -552,19 +695,21 @@ func (r *DescribeEcdnDomainStatisticsRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeEcdnDomainStatisticsResponseParams struct {
+	// 域名数据
+	Data []*DomainData `json:"Data,omitempty" name:"Data"`
+
+	// 数量
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeEcdnDomainStatisticsResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 域名数据
-		Data []*DomainData `json:"Data,omitempty" name:"Data"`
-
-		// 数量
-		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeEcdnDomainStatisticsResponseParams `json:"Response"`
 }
 
 func (r *DescribeEcdnDomainStatisticsResponse) ToJsonString() string {
@@ -578,9 +723,51 @@ func (r *DescribeEcdnDomainStatisticsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeEcdnStatisticsRequestParams struct {
+	// 查询起始时间，如：2019-12-13 00:00:00
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 查询结束时间，如：2019-12-13 23:59:59
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 指定查询指标，支持的类型有：
+	// flux：流量，单位为 byte
+	// bandwidth：带宽，单位为 bps
+	// request：请求数，单位为 次
+	// 2xx：返回 2xx 状态码汇总或者 2 开头状态码数据，单位为 个
+	// 3xx：返回 3xx 状态码汇总或者 3 开头状态码数据，单位为 个
+	// 4xx：返回 4xx 状态码汇总或者 4 开头状态码数据，单位为 个
+	// 5xx：返回 5xx 状态码汇总或者 5 开头状态码数据，单位为 个
+	Metrics []*string `json:"Metrics,omitempty" name:"Metrics"`
+
+	// 时间粒度，支持以下几种模式：
+	// 1 天	 1，5，15，30，60，120，240，1440 
+	// 2 ~ 3 天	15，30，60，120，240，1440
+	// 4 ~ 7 天	30，60，120，240，1440
+	// 8 ~ 31 天	 60，120，240，1440
+	Interval *int64 `json:"Interval,omitempty" name:"Interval"`
+
+	// 指定查询域名列表
+	// 
+	// 最多可一次性查询30个加速域名。
+	Domains []*string `json:"Domains,omitempty" name:"Domains"`
+
+	// 指定要查询的项目 ID，[前往查看项目 ID](https://console.cloud.tencent.com/project)
+	// 未填充域名情况下，指定项目查询，若填充了具体域名信息，以域名为主
+	Projects []*int64 `json:"Projects,omitempty" name:"Projects"`
+
+	// 统计区域:
+	// mainland: 境内
+	// oversea: 境外
+	// global: 全部
+	// 默认 global
+	Area *string `json:"Area,omitempty" name:"Area"`
+}
+
 type DescribeEcdnStatisticsRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 查询起始时间，如：2019-12-13 00:00:00
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
 
@@ -646,16 +833,18 @@ func (r *DescribeEcdnStatisticsRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeEcdnStatisticsResponseParams struct {
+	// 指定条件查询得到的数据明细
+	Data []*ResourceData `json:"Data,omitempty" name:"Data"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeEcdnStatisticsResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 指定条件查询得到的数据明细
-		Data []*ResourceData `json:"Data,omitempty" name:"Data"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeEcdnStatisticsResponseParams `json:"Response"`
 }
 
 func (r *DescribeEcdnStatisticsResponse) ToJsonString() string {
@@ -669,9 +858,21 @@ func (r *DescribeEcdnStatisticsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeIpStatusRequestParams struct {
+	// 加速域名
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 查询区域：
+	// mainland: 国内节点
+	// overseas: 海外节点
+	// global: 全球节点
+	Area *string `json:"Area,omitempty" name:"Area"`
+}
+
 type DescribeIpStatusRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 加速域名
 	Domain *string `json:"Domain,omitempty" name:"Domain"`
 
@@ -702,19 +903,21 @@ func (r *DescribeIpStatusRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeIpStatusResponseParams struct {
+	// 节点列表
+	Ips []*IpStatus `json:"Ips,omitempty" name:"Ips"`
+
+	// 节点总个数
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeIpStatusResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 节点列表
-		Ips []*IpStatus `json:"Ips,omitempty" name:"Ips"`
-
-		// 节点总个数
-		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeIpStatusResponseParams `json:"Response"`
 }
 
 func (r *DescribeIpStatusResponse) ToJsonString() string {
@@ -728,8 +931,14 @@ func (r *DescribeIpStatusResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribePurgeQuotaRequestParams struct {
+
+}
+
 type DescribePurgeQuotaRequest struct {
 	*tchttp.BaseRequest
+	
 }
 
 func (r *DescribePurgeQuotaRequest) ToJsonString() string {
@@ -744,25 +953,28 @@ func (r *DescribePurgeQuotaRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePurgeQuotaRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribePurgeQuotaResponseParams struct {
+	// Url刷新用量及配额。
+	UrlPurge *Quota `json:"UrlPurge,omitempty" name:"UrlPurge"`
+
+	// 目录刷新用量及配额。
+	PathPurge *Quota `json:"PathPurge,omitempty" name:"PathPurge"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribePurgeQuotaResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// Url刷新用量及配额。
-		UrlPurge *Quota `json:"UrlPurge,omitempty" name:"UrlPurge"`
-
-		// 目录刷新用量及配额。
-		PathPurge *Quota `json:"PathPurge,omitempty" name:"PathPurge"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribePurgeQuotaResponseParams `json:"Response"`
 }
 
 func (r *DescribePurgeQuotaResponse) ToJsonString() string {
@@ -776,9 +988,36 @@ func (r *DescribePurgeQuotaResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribePurgeTasksRequestParams struct {
+	// 查询刷新类型。url：查询 url 刷新记录；path：查询目录刷新记录。
+	PurgeType *string `json:"PurgeType,omitempty" name:"PurgeType"`
+
+	// 开始时间，如2018-08-08 00:00:00。
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间，如2018-08-08 23:59:59。
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 提交时返回的任务 Id，查询时 TaskId 和起始时间必须指定一项。
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 分页查询偏移量，默认为0（从第0条开始）。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 分页查询限制数目，默认为20。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 查询关键字，请输入域名或 http(s):// 开头完整 URL。
+	Keyword *string `json:"Keyword,omitempty" name:"Keyword"`
+
+	// 查询指定任务状态，fail表示失败，done表示成功，process表示刷新中。
+	Status *string `json:"Status,omitempty" name:"Status"`
+}
+
 type DescribePurgeTasksRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 查询刷新类型。url：查询 url 刷新记录；path：查询目录刷新记录。
 	PurgeType *string `json:"PurgeType,omitempty" name:"PurgeType"`
 
@@ -830,19 +1069,21 @@ func (r *DescribePurgeTasksRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribePurgeTasksResponseParams struct {
+	// 刷新历史记录。
+	PurgeLogs []*PurgeTask `json:"PurgeLogs,omitempty" name:"PurgeLogs"`
+
+	// 任务总数，用于分页。
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribePurgeTasksResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 刷新历史记录。
-		PurgeLogs []*PurgeTask `json:"PurgeLogs,omitempty" name:"PurgeLogs"`
-
-		// 任务总数，用于分页。
-		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribePurgeTasksResponseParams `json:"Response"`
 }
 
 func (r *DescribePurgeTasksResponse) ToJsonString() string {
@@ -857,7 +1098,6 @@ func (r *DescribePurgeTasksResponse) FromJsonString(s string) error {
 }
 
 type DetailData struct {
-
 	// 数据类型的名称
 	Name *string `json:"Name,omitempty" name:"Name"`
 
@@ -866,7 +1106,6 @@ type DetailData struct {
 }
 
 type DomainBriefInfo struct {
-
 	// 域名ID。
 	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
 
@@ -909,7 +1148,6 @@ type DomainBriefInfo struct {
 }
 
 type DomainData struct {
-
 	// 域名
 	Resource *string `json:"Resource,omitempty" name:"Resource"`
 
@@ -918,7 +1156,6 @@ type DomainData struct {
 }
 
 type DomainDetailInfo struct {
-
 	// 域名ID。
 	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
 
@@ -997,7 +1234,6 @@ type DomainDetailInfo struct {
 }
 
 type DomainFilter struct {
-
 	// 过滤字段名，支持的列表如下：
 	// - origin：主源站。
 	// - domain：域名。
@@ -1020,7 +1256,6 @@ type DomainFilter struct {
 }
 
 type DomainLogs struct {
-
 	// 日志起始时间。
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
 
@@ -1032,7 +1267,6 @@ type DomainLogs struct {
 }
 
 type EcdnData struct {
-
 	// 查询指定的指标名称：Bandwidth，Flux，Request，Delay，状态码，LogBandwidth，LogFlux，LogRequest
 	Metrics []*string `json:"Metrics,omitempty" name:"Metrics"`
 
@@ -1041,7 +1275,6 @@ type EcdnData struct {
 }
 
 type ForceRedirect struct {
-
 	// 访问协议强制跳转配置开关，on或off。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
@@ -1056,7 +1289,6 @@ type ForceRedirect struct {
 }
 
 type Hsts struct {
-
 	// 是否开启，on或off。
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
 
@@ -1070,7 +1302,6 @@ type Hsts struct {
 }
 
 type HttpHeaderPathRule struct {
-
 	// http头部设置方式，支持add，set或del，分别表示新增，设置或删除头部。
 	// 请求头部暂不支持set。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -1094,7 +1325,6 @@ type HttpHeaderPathRule struct {
 }
 
 type Https struct {
-
 	// https配置开关，on或off。开启https配置的域名在部署中状态，开关保持off。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
@@ -1133,7 +1363,6 @@ type Https struct {
 }
 
 type IpFilter struct {
-
 	// IP黑白名单开关，on或off。
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
 
@@ -1147,7 +1376,6 @@ type IpFilter struct {
 }
 
 type IpFreqLimit struct {
-
 	// IP限频配置开关，on或off。
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
 
@@ -1157,7 +1385,6 @@ type IpFreqLimit struct {
 }
 
 type IpStatus struct {
-
 	// 节点 IP
 	Ip *string `json:"Ip,omitempty" name:"Ip"`
 
@@ -1180,7 +1407,6 @@ type IpStatus struct {
 }
 
 type Origin struct {
-
 	// 主源站列表，IP与域名源站不可混填。配置源站端口["origin1:port1", "origin2:port2"]，配置回源权重["origin1::weight1", "origin2::weight2"]，同时配置端口与权重 ["origin1:port1:weight1", "origin2:port2:weight2"]，权重值有效范围为0-100。
 	Origins []*string `json:"Origins,omitempty" name:"Origins"`
 
@@ -1211,9 +1437,18 @@ type Origin struct {
 	AdvanceHttps *AdvanceHttps `json:"AdvanceHttps,omitempty" name:"AdvanceHttps"`
 }
 
+// Predefined struct for user
+type PurgePathCacheRequestParams struct {
+	// 要刷新的目录列表，必须包含协议头部。
+	Paths []*string `json:"Paths,omitempty" name:"Paths"`
+
+	// 刷新类型，flush 代表刷新有更新的资源，delete 表示刷新全部资源。
+	FlushType *string `json:"FlushType,omitempty" name:"FlushType"`
+}
+
 type PurgePathCacheRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 要刷新的目录列表，必须包含协议头部。
 	Paths []*string `json:"Paths,omitempty" name:"Paths"`
 
@@ -1241,16 +1476,18 @@ func (r *PurgePathCacheRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type PurgePathCacheResponseParams struct {
+	// 刷新任务Id。
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type PurgePathCacheResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 刷新任务Id。
-		TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *PurgePathCacheResponseParams `json:"Response"`
 }
 
 func (r *PurgePathCacheResponse) ToJsonString() string {
@@ -1265,7 +1502,6 @@ func (r *PurgePathCacheResponse) FromJsonString(s string) error {
 }
 
 type PurgeTask struct {
-
 	// 刷新任务ID。
 	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
 
@@ -1285,9 +1521,15 @@ type PurgeTask struct {
 	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
 }
 
+// Predefined struct for user
+type PurgeUrlsCacheRequestParams struct {
+	// 要刷新的Url列表，必须包含协议头部。
+	Urls []*string `json:"Urls,omitempty" name:"Urls"`
+}
+
 type PurgeUrlsCacheRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 要刷新的Url列表，必须包含协议头部。
 	Urls []*string `json:"Urls,omitempty" name:"Urls"`
 }
@@ -1311,16 +1553,18 @@ func (r *PurgeUrlsCacheRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type PurgeUrlsCacheResponseParams struct {
+	// 刷新任务Id。
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type PurgeUrlsCacheResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 刷新任务Id。
-		TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *PurgeUrlsCacheResponseParams `json:"Response"`
 }
 
 func (r *PurgeUrlsCacheResponse) ToJsonString() string {
@@ -1335,7 +1579,6 @@ func (r *PurgeUrlsCacheResponse) FromJsonString(s string) error {
 }
 
 type Quota struct {
-
 	// 单次批量提交配额上限。
 	Batch *int64 `json:"Batch,omitempty" name:"Batch"`
 
@@ -1347,7 +1590,6 @@ type Quota struct {
 }
 
 type ResourceData struct {
-
 	// 资源名称，根据查询条件不同分为以下几类：
 	// 具体域名：表示该域名明细数据
 	// multiDomains：表示多域名汇总明细数据
@@ -1360,7 +1602,6 @@ type ResourceData struct {
 }
 
 type ResponseHeader struct {
-
 	// 自定义响应头开关，on或off。
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
 
@@ -1370,7 +1611,6 @@ type ResponseHeader struct {
 }
 
 type ServerCert struct {
-
 	// 服务器证书id，当证书为腾讯云托管证书时必填。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CertId *string `json:"CertId,omitempty" name:"CertId"`
@@ -1401,7 +1641,6 @@ type ServerCert struct {
 }
 
 type Sort struct {
-
 	// 排序字段，当前支持：
 	// createTime，域名创建时间
 	// certExpireTime，证书过期时间
@@ -1411,9 +1650,15 @@ type Sort struct {
 	Sequence *string `json:"Sequence,omitempty" name:"Sequence"`
 }
 
+// Predefined struct for user
+type StartEcdnDomainRequestParams struct {
+	// 待启用域名。
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+}
+
 type StartEcdnDomainRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 待启用域名。
 	Domain *string `json:"Domain,omitempty" name:"Domain"`
 }
@@ -1437,13 +1682,15 @@ func (r *StartEcdnDomainRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type StartEcdnDomainResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type StartEcdnDomainResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *StartEcdnDomainResponseParams `json:"Response"`
 }
 
 func (r *StartEcdnDomainResponse) ToJsonString() string {
@@ -1457,9 +1704,15 @@ func (r *StartEcdnDomainResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type StopEcdnDomainRequestParams struct {
+	// 待停用域名。
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+}
+
 type StopEcdnDomainRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 待停用域名。
 	Domain *string `json:"Domain,omitempty" name:"Domain"`
 }
@@ -1483,13 +1736,15 @@ func (r *StopEcdnDomainRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type StopEcdnDomainResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type StopEcdnDomainResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *StopEcdnDomainResponseParams `json:"Response"`
 }
 
 func (r *StopEcdnDomainResponse) ToJsonString() string {
@@ -1504,7 +1759,6 @@ func (r *StopEcdnDomainResponse) FromJsonString(s string) error {
 }
 
 type Tag struct {
-
 	// 标签键
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TagKey *string `json:"TagKey,omitempty" name:"TagKey"`
@@ -1515,7 +1769,6 @@ type Tag struct {
 }
 
 type TimestampData struct {
-
 	// 数据统计时间点，采用向前汇总模式
 	// 以 5 分钟粒度为例，13:35:00 时间点代表的统计数据区间为 13:35:00 至 13:39:59
 	Time *string `json:"Time,omitempty" name:"Time"`
@@ -1524,9 +1777,48 @@ type TimestampData struct {
 	Value []*float64 `json:"Value,omitempty" name:"Value"`
 }
 
+// Predefined struct for user
+type UpdateDomainConfigRequestParams struct {
+	// 域名。
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 源站配置。
+	Origin *Origin `json:"Origin,omitempty" name:"Origin"`
+
+	// 项目id。
+	ProjectId *int64 `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// IP黑白名单配置。
+	IpFilter *IpFilter `json:"IpFilter,omitempty" name:"IpFilter"`
+
+	// IP限频配置。
+	IpFreqLimit *IpFreqLimit `json:"IpFreqLimit,omitempty" name:"IpFreqLimit"`
+
+	// 源站响应头部配置。
+	ResponseHeader *ResponseHeader `json:"ResponseHeader,omitempty" name:"ResponseHeader"`
+
+	// 节点缓存配置。
+	CacheKey *CacheKey `json:"CacheKey,omitempty" name:"CacheKey"`
+
+	// 缓存规则配置。
+	Cache *Cache `json:"Cache,omitempty" name:"Cache"`
+
+	// Https配置。
+	Https *Https `json:"Https,omitempty" name:"Https"`
+
+	// 访问协议强制跳转配置。
+	ForceRedirect *ForceRedirect `json:"ForceRedirect,omitempty" name:"ForceRedirect"`
+
+	// 域名加速区域，mainland，overseas或global，分别表示中国境内加速，海外加速或全球加速。
+	Area *string `json:"Area,omitempty" name:"Area"`
+
+	// WebSocket配置
+	WebSocket *WebSocket `json:"WebSocket,omitempty" name:"WebSocket"`
+}
+
 type UpdateDomainConfigRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 域名。
 	Domain *string `json:"Domain,omitempty" name:"Domain"`
 
@@ -1594,13 +1886,15 @@ func (r *UpdateDomainConfigRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type UpdateDomainConfigResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type UpdateDomainConfigResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *UpdateDomainConfigResponseParams `json:"Response"`
 }
 
 func (r *UpdateDomainConfigResponse) ToJsonString() string {
@@ -1615,7 +1909,6 @@ func (r *UpdateDomainConfigResponse) FromJsonString(s string) error {
 }
 
 type WebSocket struct {
-
 	// WebSocket 超时配置开关, 开关为off时，平台仍支持WebSocket连接，此时超时时间默认为15秒，若需要调整超时时间，将开关置为on.
 	// 
 	// * WebSocket 为内测功能,如需使用,请联系腾讯云工程师开白.

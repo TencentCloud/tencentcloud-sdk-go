@@ -21,7 +21,6 @@ import (
 )
 
 type CVSSV2Info struct {
-
 	// CVE评分。
 	CVSS *float64 `json:"CVSS,omitempty" name:"CVSS"`
 
@@ -69,7 +68,6 @@ type CVSSV2Info struct {
 }
 
 type CVSSV3Info struct {
-
 	// CVE评分。
 	CVSS *float64 `json:"CVSS,omitempty" name:"CVSS"`
 
@@ -129,7 +127,6 @@ type CVSSV3Info struct {
 }
 
 type Component struct {
-
 	// 第三方组件的PURL
 	PURL *PURL `json:"PURL,omitempty" name:"PURL"`
 
@@ -152,7 +149,6 @@ type Component struct {
 }
 
 type ComponentVulnerabilitySummary struct {
-
 	// 用于匹配漏洞的PURL
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PURL *PURL `json:"PURL,omitempty" name:"PURL"`
@@ -178,7 +174,6 @@ type ComponentVulnerabilitySummary struct {
 }
 
 type ComponentVulnerabilityUnion struct {
-
 	// 漏洞概览信息
 	Summary *VulnerabilitySummary `json:"Summary,omitempty" name:"Summary"`
 
@@ -186,9 +181,15 @@ type ComponentVulnerabilityUnion struct {
 	SummaryInComponent *ComponentVulnerabilitySummary `json:"SummaryInComponent,omitempty" name:"SummaryInComponent"`
 }
 
+// Predefined struct for user
+type DescribeKBComponentRequestParams struct {
+	// 组件的PURL
+	PURL *PURL `json:"PURL,omitempty" name:"PURL"`
+}
+
 type DescribeKBComponentRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 组件的PURL
 	PURL *PURL `json:"PURL,omitempty" name:"PURL"`
 }
@@ -212,16 +213,18 @@ func (r *DescribeKBComponentRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeKBComponentResponseParams struct {
+	// 匹配的组件信息
+	Component *Component `json:"Component,omitempty" name:"Component"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeKBComponentResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 匹配的组件信息
-		Component *Component `json:"Component,omitempty" name:"Component"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeKBComponentResponseParams `json:"Response"`
 }
 
 func (r *DescribeKBComponentResponse) ToJsonString() string {
@@ -235,9 +238,15 @@ func (r *DescribeKBComponentResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeKBComponentVulnerabilityRequestParams struct {
+	// 组件的PURL，其中Name和Version为必填字段
+	PURL *PURL `json:"PURL,omitempty" name:"PURL"`
+}
+
 type DescribeKBComponentVulnerabilityRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 组件的PURL，其中Name和Version为必填字段
 	PURL *PURL `json:"PURL,omitempty" name:"PURL"`
 }
@@ -261,17 +270,19 @@ func (r *DescribeKBComponentVulnerabilityRequest) FromJsonString(s string) error
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeKBComponentVulnerabilityResponseParams struct {
+	// 漏洞信息列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VulnerabilityList []*ComponentVulnerabilityUnion `json:"VulnerabilityList,omitempty" name:"VulnerabilityList"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeKBComponentVulnerabilityResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 漏洞信息列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		VulnerabilityList []*ComponentVulnerabilityUnion `json:"VulnerabilityList,omitempty" name:"VulnerabilityList"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeKBComponentVulnerabilityResponseParams `json:"Response"`
 }
 
 func (r *DescribeKBComponentVulnerabilityResponse) ToJsonString() string {
@@ -285,9 +296,15 @@ func (r *DescribeKBComponentVulnerabilityResponse) FromJsonString(s string) erro
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeKBLicenseRequestParams struct {
+	// License表达式
+	LicenseExpression *string `json:"LicenseExpression,omitempty" name:"LicenseExpression"`
+}
+
 type DescribeKBLicenseRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// License表达式
 	LicenseExpression *string `json:"LicenseExpression,omitempty" name:"LicenseExpression"`
 }
@@ -311,20 +328,22 @@ func (r *DescribeKBLicenseRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeKBLicenseResponseParams struct {
+	// 许可证列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LicenseList []*LicenseUnion `json:"LicenseList,omitempty" name:"LicenseList"`
+
+	// 用于匹配的License表达式
+	NormalizedLicenseExpression *string `json:"NormalizedLicenseExpression,omitempty" name:"NormalizedLicenseExpression"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeKBLicenseResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 许可证列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		LicenseList []*LicenseUnion `json:"LicenseList,omitempty" name:"LicenseList"`
-
-		// 用于匹配的License表达式
-		NormalizedLicenseExpression *string `json:"NormalizedLicenseExpression,omitempty" name:"NormalizedLicenseExpression"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeKBLicenseResponseParams `json:"Response"`
 }
 
 func (r *DescribeKBLicenseResponse) ToJsonString() string {
@@ -338,9 +357,18 @@ func (r *DescribeKBLicenseResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeKBVulnerabilityRequestParams struct {
+	// CVE ID列表（不能与Vul ID同时存在）
+	CVEID []*string `json:"CVEID,omitempty" name:"CVEID"`
+
+	// Vul ID列表（不能与CVE ID 同时存在）
+	VulID []*string `json:"VulID,omitempty" name:"VulID"`
+}
+
 type DescribeKBVulnerabilityRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// CVE ID列表（不能与Vul ID同时存在）
 	CVEID []*string `json:"CVEID,omitempty" name:"CVEID"`
 
@@ -368,17 +396,19 @@ func (r *DescribeKBVulnerabilityRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeKBVulnerabilityResponseParams struct {
+	// 漏洞详细信息列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VulnerabilityDetailList []*VulnerabilityUnion `json:"VulnerabilityDetailList,omitempty" name:"VulnerabilityDetailList"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeKBVulnerabilityResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 漏洞详细信息列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		VulnerabilityDetailList []*VulnerabilityUnion `json:"VulnerabilityDetailList,omitempty" name:"VulnerabilityDetailList"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeKBVulnerabilityResponseParams `json:"Response"`
 }
 
 func (r *DescribeKBVulnerabilityResponse) ToJsonString() string {
@@ -393,7 +423,6 @@ func (r *DescribeKBVulnerabilityResponse) FromJsonString(s string) error {
 }
 
 type LicenseDetail struct {
-
 	// 许可证内容
 	Content *string `json:"Content,omitempty" name:"Content"`
 
@@ -408,7 +437,6 @@ type LicenseDetail struct {
 }
 
 type LicenseRestriction struct {
-
 	// license约束的名称。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
@@ -417,7 +445,6 @@ type LicenseRestriction struct {
 }
 
 type LicenseSummary struct {
-
 	// 许可证标识符
 	Key *string `json:"Key,omitempty" name:"Key"`
 
@@ -442,7 +469,6 @@ type LicenseSummary struct {
 }
 
 type LicenseUnion struct {
-
 	// 许可证概览信息
 	LicenseSummary *LicenseSummary `json:"LicenseSummary,omitempty" name:"LicenseSummary"`
 
@@ -450,9 +476,15 @@ type LicenseUnion struct {
 	LicenseDetail *LicenseDetail `json:"LicenseDetail,omitempty" name:"LicenseDetail"`
 }
 
+// Predefined struct for user
+type MatchKBPURLListRequestParams struct {
+	// SHA1。
+	SHA1 *string `json:"SHA1,omitempty" name:"SHA1"`
+}
+
 type MatchKBPURLListRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// SHA1。
 	SHA1 *string `json:"SHA1,omitempty" name:"SHA1"`
 }
@@ -476,16 +508,18 @@ func (r *MatchKBPURLListRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type MatchKBPURLListResponseParams struct {
+	// 组件列表。
+	PURLList []*PURL `json:"PURLList,omitempty" name:"PURLList"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type MatchKBPURLListResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 组件列表。
-		PURLList []*PURL `json:"PURLList,omitempty" name:"PURLList"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *MatchKBPURLListResponseParams `json:"Response"`
 }
 
 func (r *MatchKBPURLListResponse) ToJsonString() string {
@@ -500,7 +534,6 @@ func (r *MatchKBPURLListResponse) FromJsonString(s string) error {
 }
 
 type PURL struct {
-
 	// 组件名称
 	Name *string `json:"Name,omitempty" name:"Name"`
 
@@ -522,7 +555,6 @@ type PURL struct {
 }
 
 type Qualifier struct {
-
 	// 额外属性的名称。
 	Key *string `json:"Key,omitempty" name:"Key"`
 
@@ -531,7 +563,6 @@ type Qualifier struct {
 }
 
 type VulnerabilityDetail struct {
-
 	// 漏洞类别
 	Category *string `json:"Category,omitempty" name:"Category"`
 
@@ -572,7 +603,6 @@ type VulnerabilityDetail struct {
 }
 
 type VulnerabilitySummary struct {
-
 	// 漏洞ID
 	VulID *string `json:"VulID,omitempty" name:"VulID"`
 
@@ -600,7 +630,6 @@ type VulnerabilitySummary struct {
 }
 
 type VulnerabilityUnion struct {
-
 	// 漏洞概览信息
 	Summary *VulnerabilitySummary `json:"Summary,omitempty" name:"Summary"`
 

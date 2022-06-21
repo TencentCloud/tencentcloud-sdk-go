@@ -21,7 +21,6 @@ import (
 )
 
 type CallDetailItem struct {
-
 	// 数据类型 0 imei 1 qimei 2 qq 3 phone 7:IDFA 8:MD5(imei)
 	DataType *uint64 `json:"DataType,omitempty" name:"DataType"`
 
@@ -33,7 +32,6 @@ type CallDetailItem struct {
 }
 
 type CallDetails struct {
-
 	// 符合条件的总条数
 	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
@@ -42,7 +40,6 @@ type CallDetails struct {
 }
 
 type CallStatItem struct {
-
 	// 当前统计量的时间段
 	Date *string `json:"Date,omitempty" name:"Date"`
 
@@ -51,7 +48,6 @@ type CallStatItem struct {
 }
 
 type GeneralStat struct {
-
 	// 今日调用量
 	TodayAmount *uint64 `json:"TodayAmount,omitempty" name:"TodayAmount"`
 
@@ -65,9 +61,15 @@ type GeneralStat struct {
 	TotalAmount *uint64 `json:"TotalAmount,omitempty" name:"TotalAmount"`
 }
 
+// Predefined struct for user
+type GetTaskDetailRequestParams struct {
+	// 任务ID
+	Id *uint64 `json:"Id,omitempty" name:"Id"`
+}
+
 type GetTaskDetailRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 任务ID
 	Id *uint64 `json:"Id,omitempty" name:"Id"`
 }
@@ -91,16 +93,18 @@ func (r *GetTaskDetailRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type GetTaskDetailResponseParams struct {
+	// 画像洞察任务TAG详细数据列表
+	TaskDetailDataList []*TaskDetailData `json:"TaskDetailDataList,omitempty" name:"TaskDetailDataList"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type GetTaskDetailResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 画像洞察任务TAG详细数据列表
-		TaskDetailDataList []*TaskDetailData `json:"TaskDetailDataList,omitempty" name:"TaskDetailDataList"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *GetTaskDetailResponseParams `json:"Response"`
 }
 
 func (r *GetTaskDetailResponse) ToJsonString() string {
@@ -114,9 +118,30 @@ func (r *GetTaskDetailResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type GetTaskListRequestParams struct {
+	// 查询分页页码
+	PageNumber *uint64 `json:"PageNumber,omitempty" name:"PageNumber"`
+
+	// 查询分页大小
+	PageSize *uint64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// 查询起始时间（13位数字的UNIX时间戳，单位毫秒 ）
+	StartTime *uint64 `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 查询结束时间（13位数字的UNIX时间戳，单位毫秒 ）
+	EndTime *uint64 `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 任务名称
+	TaskName *string `json:"TaskName,omitempty" name:"TaskName"`
+
+	// 查询任务状态 0:默认状态 1:任务正在运行 2:任务运行成功 3:任务运行失败
+	TaskStatus *uint64 `json:"TaskStatus,omitempty" name:"TaskStatus"`
+}
+
 type GetTaskListRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 查询分页页码
 	PageNumber *uint64 `json:"PageNumber,omitempty" name:"PageNumber"`
 
@@ -160,16 +185,18 @@ func (r *GetTaskListRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type GetTaskListResponseParams struct {
+	// 任务列表对象
+	TaskListData *TaskListData `json:"TaskListData,omitempty" name:"TaskListData"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type GetTaskListResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 任务列表对象
-		TaskListData *TaskListData `json:"TaskListData,omitempty" name:"TaskListData"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *GetTaskListResponseParams `json:"Response"`
 }
 
 func (r *GetTaskListResponse) ToJsonString() string {
@@ -184,7 +211,6 @@ func (r *GetTaskListResponse) FromJsonString(s string) error {
 }
 
 type LabelDetailData struct {
-
 	// 标签数据对象
 	Value *LabelValue `json:"Value,omitempty" name:"Value"`
 
@@ -193,7 +219,6 @@ type LabelDetailData struct {
 }
 
 type LabelValue struct {
-
 	// 标签覆盖率占比（在整个上传的ID列表中的覆盖率）
 	Proportion *float64 `json:"Proportion,omitempty" name:"Proportion"`
 
@@ -205,7 +230,6 @@ type LabelValue struct {
 }
 
 type ListModel struct {
-
 	// 任务ID
 	ID *uint64 `json:"ID,omitempty" name:"ID"`
 
@@ -225,9 +249,18 @@ type ListModel struct {
 	ErrMsg *string `json:"ErrMsg,omitempty" name:"ErrMsg"`
 }
 
+// Predefined struct for user
+type PredictRatingRequestParams struct {
+	// ID标志的类型，0:IMEI 7:IDFA 8:MD5(imei) 100: 手机号明文 101: 手机号md5加密
+	Type *int64 `json:"Type,omitempty" name:"Type"`
+
+	// 请求唯一标志ID
+	Id *string `json:"Id,omitempty" name:"Id"`
+}
+
 type PredictRatingRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// ID标志的类型，0:IMEI 7:IDFA 8:MD5(imei) 100: 手机号明文 101: 手机号md5加密
 	Type *int64 `json:"Type,omitempty" name:"Type"`
 
@@ -255,16 +288,18 @@ func (r *PredictRatingRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type PredictRatingResponseParams struct {
+	// 意向评级
+	RatingData *RatingData `json:"RatingData,omitempty" name:"RatingData"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type PredictRatingResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 意向评级
-		RatingData *RatingData `json:"RatingData,omitempty" name:"RatingData"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *PredictRatingResponseParams `json:"Response"`
 }
 
 func (r *PredictRatingResponse) ToJsonString() string {
@@ -278,9 +313,27 @@ func (r *PredictRatingResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type QueryCallDetailsRequestParams struct {
+	// 请求类型 1:人群特征洞察统计 2:购车意向预测统计
+	Type *uint64 `json:"Type,omitempty" name:"Type"`
+
+	// 开始时间戳（毫秒）
+	StartTime *uint64 `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间戳（毫秒）
+	EndTime *uint64 `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 页数
+	PageNumber *uint64 `json:"PageNumber,omitempty" name:"PageNumber"`
+
+	// 每页个数
+	PageSize *uint64 `json:"PageSize,omitempty" name:"PageSize"`
+}
+
 type QueryCallDetailsRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 请求类型 1:人群特征洞察统计 2:购车意向预测统计
 	Type *uint64 `json:"Type,omitempty" name:"Type"`
 
@@ -320,16 +373,18 @@ func (r *QueryCallDetailsRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type QueryCallDetailsResponseParams struct {
+	// 调用明细
+	CallDetails *CallDetails `json:"CallDetails,omitempty" name:"CallDetails"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type QueryCallDetailsResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 调用明细
-		CallDetails *CallDetails `json:"CallDetails,omitempty" name:"CallDetails"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *QueryCallDetailsResponseParams `json:"Response"`
 }
 
 func (r *QueryCallDetailsResponse) ToJsonString() string {
@@ -343,9 +398,21 @@ func (r *QueryCallDetailsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type QueryCallStatRequestParams struct {
+	// 请求类型 1:人群特征洞察统计 2:购车意向预测统计
+	Type *uint64 `json:"Type,omitempty" name:"Type"`
+
+	// 开始时间戳（毫秒）
+	StartTime *uint64 `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间戳（毫秒）
+	EndTime *uint64 `json:"EndTime,omitempty" name:"EndTime"`
+}
+
 type QueryCallStatRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 请求类型 1:人群特征洞察统计 2:购车意向预测统计
 	Type *uint64 `json:"Type,omitempty" name:"Type"`
 
@@ -377,16 +444,18 @@ func (r *QueryCallStatRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type QueryCallStatResponseParams struct {
+	// 调用量数组
+	CallSet []*CallStatItem `json:"CallSet,omitempty" name:"CallSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type QueryCallStatResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 调用量数组
-		CallSet []*CallStatItem `json:"CallSet,omitempty" name:"CallSet"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *QueryCallStatResponseParams `json:"Response"`
 }
 
 func (r *QueryCallStatResponse) ToJsonString() string {
@@ -400,9 +469,15 @@ func (r *QueryCallStatResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type QueryGeneralStatRequestParams struct {
+	// 请求类型:1,人群特征洞察统计 2购车意向预测统计
+	Type *uint64 `json:"Type,omitempty" name:"Type"`
+}
+
 type QueryGeneralStatRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 请求类型:1,人群特征洞察统计 2购车意向预测统计
 	Type *uint64 `json:"Type,omitempty" name:"Type"`
 }
@@ -426,16 +501,18 @@ func (r *QueryGeneralStatRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type QueryGeneralStatResponseParams struct {
+	// 调用量信息
+	GeneralStat *GeneralStat `json:"GeneralStat,omitempty" name:"GeneralStat"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type QueryGeneralStatResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 调用量信息
-		GeneralStat *GeneralStat `json:"GeneralStat,omitempty" name:"GeneralStat"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *QueryGeneralStatResponseParams `json:"Response"`
 }
 
 func (r *QueryGeneralStatResponse) ToJsonString() string {
@@ -450,19 +527,16 @@ func (r *QueryGeneralStatResponse) FromJsonString(s string) error {
 }
 
 type RatingData struct {
-
 	// 线索评级（取值：0、1、2、3分别代表无、低、中、高意愿）
 	Rank *int64 `json:"Rank,omitempty" name:"Rank"`
 }
 
 type TaskData struct {
-
 	// 画像洞察任务ID
 	Id *uint64 `json:"Id,omitempty" name:"Id"`
 }
 
 type TaskDetailData struct {
-
 	// 画像TAG ID
 	TagId *uint64 `json:"TagId,omitempty" name:"TagId"`
 
@@ -474,7 +548,6 @@ type TaskDetailData struct {
 }
 
 type TaskListData struct {
-
 	// 查询分页页码
 	PageNumber *uint64 `json:"PageNumber,omitempty" name:"PageNumber"`
 
@@ -488,9 +561,21 @@ type TaskListData struct {
 	TaskList []*ListModel `json:"TaskList,omitempty" name:"TaskList"`
 }
 
+// Predefined struct for user
+type UploadIdRequestParams struct {
+	// id标志的类型: 0:imei 7:IDFA 8:MD5(imei)
+	Type *uint64 `json:"Type,omitempty" name:"Type"`
+
+	// 任务名称
+	TaskName *string `json:"TaskName,omitempty" name:"TaskName"`
+
+	// ID列表（ID间使用换行符分割、然后使用Base64编码）
+	IdListBase64 *string `json:"IdListBase64,omitempty" name:"IdListBase64"`
+}
+
 type UploadIdRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// id标志的类型: 0:imei 7:IDFA 8:MD5(imei)
 	Type *uint64 `json:"Type,omitempty" name:"Type"`
 
@@ -522,16 +607,18 @@ func (r *UploadIdRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type UploadIdResponseParams struct {
+	// 画像洞察任务ID等信息
+	TaskData *TaskData `json:"TaskData,omitempty" name:"TaskData"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type UploadIdResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 画像洞察任务ID等信息
-		TaskData *TaskData `json:"TaskData,omitempty" name:"TaskData"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *UploadIdResponseParams `json:"Response"`
 }
 
 func (r *UploadIdResponse) ToJsonString() string {

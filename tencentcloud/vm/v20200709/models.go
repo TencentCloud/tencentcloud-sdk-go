@@ -21,7 +21,6 @@ import (
 )
 
 type AudioResult struct {
-
 	// 是否命中
 	// 0 未命中
 	// 1 命中
@@ -80,7 +79,6 @@ type AudioResult struct {
 }
 
 type AudioResultDetailLanguageResult struct {
-
 	// 语种
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Label *string `json:"Label,omitempty" name:"Label"`
@@ -103,7 +101,6 @@ type AudioResultDetailLanguageResult struct {
 }
 
 type AudioResultDetailMoanResult struct {
-
 	// 固定为Moan
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Label *string `json:"Label,omitempty" name:"Label"`
@@ -122,7 +119,6 @@ type AudioResultDetailMoanResult struct {
 }
 
 type AudioResultDetailTextResult struct {
-
 	// 标签
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Label *string `json:"Label,omitempty" name:"Label"`
@@ -153,7 +149,6 @@ type AudioResultDetailTextResult struct {
 }
 
 type AudioSegments struct {
-
 	// 截帧时间。
 	// 点播文件：该值为相对于视频偏移时间，单位为秒，例如：0，5，10
 	// 直播流：该值为时间戳，例如：1594650717
@@ -166,7 +161,6 @@ type AudioSegments struct {
 }
 
 type BucketInfo struct {
-
 	// 腾讯云对象存储，存储桶名称
 	Bucket *string `json:"Bucket,omitempty" name:"Bucket"`
 
@@ -177,9 +171,15 @@ type BucketInfo struct {
 	Object *string `json:"Object,omitempty" name:"Object"`
 }
 
+// Predefined struct for user
+type CancelTaskRequestParams struct {
+	// 任务ID
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+}
+
 type CancelTaskRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 任务ID
 	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
 }
@@ -203,13 +203,15 @@ func (r *CancelTaskRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CancelTaskResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CancelTaskResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CancelTaskResponseParams `json:"Response"`
 }
 
 func (r *CancelTaskResponse) ToJsonString() string {
@@ -223,9 +225,24 @@ func (r *CancelTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateBizConfigRequestParams struct {
+	// 业务ID，仅限英文字母、数字和下划线（_）组成，长度不超过8位
+	BizType *string `json:"BizType,omitempty" name:"BizType"`
+
+	// 审核分类信息
+	MediaModeration *MediaModerationConfig `json:"MediaModeration,omitempty" name:"MediaModeration"`
+
+	// 业务名称，用于标识业务场景，长度不超过32位
+	BizName *string `json:"BizName,omitempty" name:"BizName"`
+
+	// 审核内容，可选：Polity (政治); Porn (色情); Illegal(违法);Abuse (谩骂); Terror (暴恐); Ad (广告); Custom (自定义);
+	ModerationCategories []*string `json:"ModerationCategories,omitempty" name:"ModerationCategories"`
+}
+
 type CreateBizConfigRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 业务ID，仅限英文字母、数字和下划线（_）组成，长度不超过8位
 	BizType *string `json:"BizType,omitempty" name:"BizType"`
 
@@ -261,13 +278,15 @@ func (r *CreateBizConfigRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateBizConfigResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreateBizConfigResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreateBizConfigResponseParams `json:"Response"`
 }
 
 func (r *CreateBizConfigResponse) ToJsonString() string {
@@ -281,9 +300,30 @@ func (r *CreateBizConfigResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateVideoModerationTaskRequestParams struct {
+	// 业务类型, 定义 模版策略，输出存储配置。如果没有BizType，可以先参考 【创建业务配置】接口进行创建
+	BizType *string `json:"BizType,omitempty" name:"BizType"`
+
+	// 任务类型：可选VIDEO（点播视频），LIVE_VIDEO（直播视频）
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 输入的任务信息，最多可以同时创建10个任务
+	Tasks []*TaskInput `json:"Tasks,omitempty" name:"Tasks"`
+
+	// 回调签名key，具体可以查看签名文档。
+	Seed *string `json:"Seed,omitempty" name:"Seed"`
+
+	// 接收审核信息回调地址，如果设置，则审核过程中产生的违规音频片段和画面截帧发送此接口
+	CallbackUrl *string `json:"CallbackUrl,omitempty" name:"CallbackUrl"`
+
+	// 审核排队优先级。当您有多个视频审核任务排队时，可以根据这个参数控制排队优先级。用于处理插队等逻辑。默认该参数为0
+	Priority *int64 `json:"Priority,omitempty" name:"Priority"`
+}
+
 type CreateVideoModerationTaskRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 业务类型, 定义 模版策略，输出存储配置。如果没有BizType，可以先参考 【创建业务配置】接口进行创建
 	BizType *string `json:"BizType,omitempty" name:"BizType"`
 
@@ -327,17 +367,19 @@ func (r *CreateVideoModerationTaskRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateVideoModerationTaskResponseParams struct {
+	// 任务创建结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Results []*TaskResult `json:"Results,omitempty" name:"Results"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreateVideoModerationTaskResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 任务创建结果
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		Results []*TaskResult `json:"Results,omitempty" name:"Results"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreateVideoModerationTaskResponseParams `json:"Response"`
 }
 
 func (r *CreateVideoModerationTaskResponse) ToJsonString() string {
@@ -351,9 +393,18 @@ func (r *CreateVideoModerationTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeTaskDetailRequestParams struct {
+	// 任务ID，创建任务后返回的TaskId字段
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 是否展示所有分片，默认只展示命中规则的分片
+	ShowAllSegments *bool `json:"ShowAllSegments,omitempty" name:"ShowAllSegments"`
+}
+
 type DescribeTaskDetailRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 任务ID，创建任务后返回的TaskId字段
 	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
 
@@ -381,94 +432,96 @@ func (r *DescribeTaskDetailRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-type DescribeTaskDetailResponse struct {
-	*tchttp.BaseResponse
-	Response *struct {
-
-		// 任务Id
+// Predefined struct for user
+type DescribeTaskDetailResponseParams struct {
+	// 任务Id
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
 
-		// 审核时传入的数据Id
+	// 审核时传入的数据Id
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		DataId *string `json:"DataId,omitempty" name:"DataId"`
+	DataId *string `json:"DataId,omitempty" name:"DataId"`
 
-		// 业务类型
+	// 业务类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		BizType *string `json:"BizType,omitempty" name:"BizType"`
+	BizType *string `json:"BizType,omitempty" name:"BizType"`
 
-		// 任务名称
+	// 任务名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitempty" name:"Name"`
 
-		// 状态，可选值：
+	// 状态，可选值：
 	// FINISH 已完成
 	// PENDING 等待中
 	// RUNNING 进行中
 	// ERROR 出错
 	// CANCELLED 已取消
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		Status *string `json:"Status,omitempty" name:"Status"`
+	Status *string `json:"Status,omitempty" name:"Status"`
 
-		// 类型
+	// 类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		Type *string `json:"Type,omitempty" name:"Type"`
+	Type *string `json:"Type,omitempty" name:"Type"`
 
-		// 审核建议
+	// 审核建议
 	// 可选：
 	// Pass 通过
 	// Reveiw 建议复审
 	// Block 确认违规
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		Suggestion *string `json:"Suggestion,omitempty" name:"Suggestion"`
+	Suggestion *string `json:"Suggestion,omitempty" name:"Suggestion"`
 
-		// 审核结果
+	// 审核结果
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		Labels []*TaskLabel `json:"Labels,omitempty" name:"Labels"`
+	Labels []*TaskLabel `json:"Labels,omitempty" name:"Labels"`
 
-		// 媒体解码信息
+	// 媒体解码信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		MediaInfo *MediaInfo `json:"MediaInfo,omitempty" name:"MediaInfo"`
+	MediaInfo *MediaInfo `json:"MediaInfo,omitempty" name:"MediaInfo"`
 
-		// 任务信息
+	// 任务信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		InputInfo *InputInfo `json:"InputInfo,omitempty" name:"InputInfo"`
+	InputInfo *InputInfo `json:"InputInfo,omitempty" name:"InputInfo"`
 
-		// 创建时间
+	// 创建时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		CreatedAt *string `json:"CreatedAt,omitempty" name:"CreatedAt"`
+	CreatedAt *string `json:"CreatedAt,omitempty" name:"CreatedAt"`
 
-		// 更新时间
+	// 更新时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		UpdatedAt *string `json:"UpdatedAt,omitempty" name:"UpdatedAt"`
+	UpdatedAt *string `json:"UpdatedAt,omitempty" name:"UpdatedAt"`
 
-		// 在秒后重试
+	// 在秒后重试
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		TryInSeconds *int64 `json:"TryInSeconds,omitempty" name:"TryInSeconds"`
+	TryInSeconds *int64 `json:"TryInSeconds,omitempty" name:"TryInSeconds"`
 
-		// 图片结果
+	// 图片结果
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		ImageSegments []*ImageSegments `json:"ImageSegments,omitempty" name:"ImageSegments"`
+	ImageSegments []*ImageSegments `json:"ImageSegments,omitempty" name:"ImageSegments"`
 
-		// 音频结果
+	// 音频结果
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		AudioSegments []*AudioSegments `json:"AudioSegments,omitempty" name:"AudioSegments"`
+	AudioSegments []*AudioSegments `json:"AudioSegments,omitempty" name:"AudioSegments"`
 
-		// 如果返回的状态为ERROR，该字段会标记错误类型。
+	// 如果返回的状态为ERROR，该字段会标记错误类型。
 	// 可选值：：
 	// DECODE_ERROR: 解码失败。（输入资源中可能包含无法解码的视频）
 	// URL_ERROR：下载地址验证失败。
 	// TIMEOUT_ERROR：处理超时。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		ErrorType *string `json:"ErrorType,omitempty" name:"ErrorType"`
+	ErrorType *string `json:"ErrorType,omitempty" name:"ErrorType"`
 
-		// 审核任务错误日志。当Error不为空时，会展示该字段
+	// 审核任务错误日志。当Error不为空时，会展示该字段
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		ErrorDescription *string `json:"ErrorDescription,omitempty" name:"ErrorDescription"`
+	ErrorDescription *string `json:"ErrorDescription,omitempty" name:"ErrorDescription"`
 
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeTaskDetailResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeTaskDetailResponseParams `json:"Response"`
 }
 
 func (r *DescribeTaskDetailResponse) ToJsonString() string {
@@ -482,9 +535,18 @@ func (r *DescribeTaskDetailResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeVideoStatRequestParams struct {
+	// 审核类型 1: 机器审核; 2: 人工审核
+	AuditType *int64 `json:"AuditType,omitempty" name:"AuditType"`
+
+	// 查询条件
+	Filters []*Filters `json:"Filters,omitempty" name:"Filters"`
+}
+
 type DescribeVideoStatRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 审核类型 1: 机器审核; 2: 人工审核
 	AuditType *int64 `json:"AuditType,omitempty" name:"AuditType"`
 
@@ -512,22 +574,24 @@ func (r *DescribeVideoStatRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeVideoStatResponseParams struct {
+	// 识别结果统计
+	Overview *Overview `json:"Overview,omitempty" name:"Overview"`
+
+	// 识别量统计
+	TrendCount []*TrendCount `json:"TrendCount,omitempty" name:"TrendCount"`
+
+	// 违规数据分布
+	EvilCount []*EvilCount `json:"EvilCount,omitempty" name:"EvilCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeVideoStatResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 识别结果统计
-		Overview *Overview `json:"Overview,omitempty" name:"Overview"`
-
-		// 识别量统计
-		TrendCount []*TrendCount `json:"TrendCount,omitempty" name:"TrendCount"`
-
-		// 违规数据分布
-		EvilCount []*EvilCount `json:"EvilCount,omitempty" name:"EvilCount"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeVideoStatResponseParams `json:"Response"`
 }
 
 func (r *DescribeVideoStatResponse) ToJsonString() string {
@@ -542,7 +606,6 @@ func (r *DescribeVideoStatResponse) FromJsonString(s string) error {
 }
 
 type EvilCount struct {
-
 	// 违规类型：
 	// Terror	24001
 	// Porn	20002
@@ -559,7 +622,6 @@ type EvilCount struct {
 }
 
 type FileOutput struct {
-
 	// 存储的Bucket
 	Bucket *string `json:"Bucket,omitempty" name:"Bucket"`
 
@@ -571,7 +633,6 @@ type FileOutput struct {
 }
 
 type Filters struct {
-
 	// 查询字段：
 	// 策略BizType
 	// 子账号SubUin
@@ -583,7 +644,6 @@ type Filters struct {
 }
 
 type ImageResult struct {
-
 	// 违规标志
 	// 0 未命中
 	// 1 命中
@@ -626,7 +686,6 @@ type ImageResult struct {
 }
 
 type ImageResultResult struct {
-
 	// 场景
 	// Porn 色情
 	// Sexy 性感
@@ -677,7 +736,6 @@ type ImageResultResult struct {
 }
 
 type ImageResultsResultDetail struct {
-
 	// 任务名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitempty" name:"Name"`
@@ -720,7 +778,6 @@ type ImageResultsResultDetail struct {
 }
 
 type ImageResultsResultDetailLocation struct {
-
 	// x坐标
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	X *float64 `json:"X,omitempty" name:"X"`
@@ -743,7 +800,6 @@ type ImageResultsResultDetailLocation struct {
 }
 
 type ImageSegments struct {
-
 	// 截帧时间。
 	// 点播文件：该值为相对于视频偏移时间，单位为秒，例如：0，5，10
 	// 直播流：该值为时间戳，例如：1594650717
@@ -754,7 +810,6 @@ type ImageSegments struct {
 }
 
 type InputInfo struct {
-
 	// 传入的类型可选：URL，COS
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Type *string `json:"Type,omitempty" name:"Type"`
@@ -769,7 +824,6 @@ type InputInfo struct {
 }
 
 type MediaInfo struct {
-
 	// 编码格式
 	Codecs *string `json:"Codecs,omitempty" name:"Codecs"`
 
@@ -785,7 +839,6 @@ type MediaInfo struct {
 }
 
 type MediaModerationConfig struct {
-
 	// 是否使用OCR，默认为true
 	UseOCR *bool `json:"UseOCR,omitempty" name:"UseOCR"`
 
@@ -806,7 +859,6 @@ type MediaModerationConfig struct {
 }
 
 type Overview struct {
-
 	// 总调用量
 	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
@@ -833,7 +885,6 @@ type Overview struct {
 }
 
 type StorageInfo struct {
-
 	// 类型 可选：
 	// URL 资源链接类型
 	// COS 腾讯云对象存储类型
@@ -847,7 +898,6 @@ type StorageInfo struct {
 }
 
 type TaskInput struct {
-
 	// 数据ID
 	DataId *string `json:"DataId,omitempty" name:"DataId"`
 
@@ -859,7 +909,6 @@ type TaskInput struct {
 }
 
 type TaskLabel struct {
-
 	// 命中的标签
 	// Porn 色情
 	// Sexy 性感
@@ -884,7 +933,6 @@ type TaskLabel struct {
 }
 
 type TaskResult struct {
-
 	// 请求时传入的DataId
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DataId *string `json:"DataId,omitempty" name:"DataId"`
@@ -903,7 +951,6 @@ type TaskResult struct {
 }
 
 type TrendCount struct {
-
 	// 总调用量
 	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 

@@ -21,7 +21,6 @@ import (
 )
 
 type ArtifactReduction struct {
-
 	// 去毛刺方式：weak,,strong
 	Type *string `json:"Type,omitempty" name:"Type"`
 
@@ -34,13 +33,11 @@ type ArtifactReduction struct {
 }
 
 type AudioEnhance struct {
-
 	// 音效增强种类，可选项：normal
 	Type *string `json:"Type,omitempty" name:"Type"`
 }
 
 type AudioInfo struct {
-
 	// 音频码率，取值范围：0 和 [26, 256]，单位：kbps。
 	// 注意：当取值为 0，表示音频码率和原始音频保持一致。
 	Bitrate *int64 `json:"Bitrate,omitempty" name:"Bitrate"`
@@ -77,7 +74,6 @@ type AudioInfo struct {
 }
 
 type AudioInfoResultItem struct {
-
 	// 音频流的流id。
 	Stream *int64 `json:"Stream,omitempty" name:"Stream"`
 
@@ -103,13 +99,11 @@ type AudioInfoResultItem struct {
 }
 
 type CallbackInfo struct {
-
 	// 回调URL。
 	Url *string `json:"Url,omitempty" name:"Url"`
 }
 
 type ClassificationEditingInfo struct {
-
 	// 是否开启视频分类识别。0为关闭，1为开启。其他非0非1值默认为0。
 	Switch *int64 `json:"Switch,omitempty" name:"Switch"`
 
@@ -118,7 +112,6 @@ type ClassificationEditingInfo struct {
 }
 
 type ClassificationTaskResult struct {
-
 	// 编辑任务状态。 
 	// 1：执行中；2：成功；3：失败。
 	Status *int64 `json:"Status,omitempty" name:"Status"`
@@ -136,7 +129,6 @@ type ClassificationTaskResult struct {
 }
 
 type ClassificationTaskResultItem struct {
-
 	// 分类名称。
 	Classification *string `json:"Classification,omitempty" name:"Classification"`
 
@@ -145,7 +137,6 @@ type ClassificationTaskResultItem struct {
 }
 
 type ColorEnhance struct {
-
 	// 颜色增强类型，可选项：
 	// 1.  tra；
 	// 2.  weak；
@@ -156,7 +147,6 @@ type ColorEnhance struct {
 }
 
 type CosAuthMode struct {
-
 	// 授权类型，可选值： 
 	// 0：bucket授权，需要将对应bucket授权给本服务帐号（3020447271和100012301793），否则会读写cos失败； 
 	// 1：key托管，把cos的账号id和key托管于本服务，本服务会提供一个托管id； 
@@ -178,7 +168,6 @@ type CosAuthMode struct {
 }
 
 type CosInfo struct {
-
 	// cos 区域值。例如：ap-beijing。
 	Region *string `json:"Region,omitempty" name:"Region"`
 
@@ -195,7 +184,6 @@ type CosInfo struct {
 }
 
 type CoverEditingInfo struct {
-
 	// 是否开启智能封面。0为关闭，1为开启。其他非0非1值默认为0。
 	Switch *int64 `json:"Switch,omitempty" name:"Switch"`
 
@@ -204,7 +192,6 @@ type CoverEditingInfo struct {
 }
 
 type CoverTaskResult struct {
-
 	// 编辑任务状态。 
 	// 1：执行中；2：成功；3：失败。
 	Status *int64 `json:"Status,omitempty" name:"Status"`
@@ -222,7 +209,6 @@ type CoverTaskResult struct {
 }
 
 type CoverTaskResultItem struct {
-
 	// 智能封面地址。
 	CoverUrl *string `json:"CoverUrl,omitempty" name:"CoverUrl"`
 
@@ -230,9 +216,24 @@ type CoverTaskResultItem struct {
 	Confidence *float64 `json:"Confidence,omitempty" name:"Confidence"`
 }
 
+// Predefined struct for user
+type CreateEditingTaskRequestParams struct {
+	// 智能编辑任务参数。
+	EditingInfo *EditingInfo `json:"EditingInfo,omitempty" name:"EditingInfo"`
+
+	// 视频源信息。
+	DownInfo *DownInfo `json:"DownInfo,omitempty" name:"DownInfo"`
+
+	// 结果存储信息。对于包含智能拆条、智能集锦或者智能封面的任务必选。
+	SaveInfo *SaveInfo `json:"SaveInfo,omitempty" name:"SaveInfo"`
+
+	// 任务结果回调地址信息。
+	CallbackInfo *CallbackInfo `json:"CallbackInfo,omitempty" name:"CallbackInfo"`
+}
+
 type CreateEditingTaskRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 智能编辑任务参数。
 	EditingInfo *EditingInfo `json:"EditingInfo,omitempty" name:"EditingInfo"`
 
@@ -268,16 +269,18 @@ func (r *CreateEditingTaskRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateEditingTaskResponseParams struct {
+	// 编辑任务 ID，可以通过该 ID 查询任务状态。
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreateEditingTaskResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 编辑任务 ID，可以通过该 ID 查询任务状态。
-		TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreateEditingTaskResponseParams `json:"Response"`
 }
 
 func (r *CreateEditingTaskResponse) ToJsonString() string {
@@ -291,9 +294,24 @@ func (r *CreateEditingTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateMediaProcessTaskRequestParams struct {
+	// 编辑处理任务参数。
+	MediaProcessInfo *MediaProcessInfo `json:"MediaProcessInfo,omitempty" name:"MediaProcessInfo"`
+
+	// 编辑处理任务输入源列表。
+	SourceInfoSet []*MediaSourceInfo `json:"SourceInfoSet,omitempty" name:"SourceInfoSet"`
+
+	// 结果存储信息，对于涉及存储的请求必选。部子任务支持数组备份写，具体以对应任务文档为准。
+	SaveInfoSet []*SaveInfo `json:"SaveInfoSet,omitempty" name:"SaveInfoSet"`
+
+	// 任务结果回调地址信息。部子任务支持数组备份回调，具体以对应任务文档为准。
+	CallbackInfoSet []*CallbackInfo `json:"CallbackInfoSet,omitempty" name:"CallbackInfoSet"`
+}
+
 type CreateMediaProcessTaskRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 编辑处理任务参数。
 	MediaProcessInfo *MediaProcessInfo `json:"MediaProcessInfo,omitempty" name:"MediaProcessInfo"`
 
@@ -329,17 +347,19 @@ func (r *CreateMediaProcessTaskRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateMediaProcessTaskResponseParams struct {
+	// 编辑任务 ID，可以通过该 ID 查询任务状态和结果。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreateMediaProcessTaskResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 编辑任务 ID，可以通过该 ID 查询任务状态和结果。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreateMediaProcessTaskResponseParams `json:"Response"`
 }
 
 func (r *CreateMediaProcessTaskResponse) ToJsonString() string {
@@ -353,9 +373,24 @@ func (r *CreateMediaProcessTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateMediaQualityRestorationTaskRequestParams struct {
+	// 源文件地址。
+	DownInfo *DownInfo `json:"DownInfo,omitempty" name:"DownInfo"`
+
+	// 画质重生任务参数信息。
+	TransInfo []*SubTaskTranscodeInfo `json:"TransInfo,omitempty" name:"TransInfo"`
+
+	// 任务结束后文件存储信息。
+	SaveInfo *SaveInfo `json:"SaveInfo,omitempty" name:"SaveInfo"`
+
+	// 任务结果回调地址信息。
+	CallbackInfo *CallbackInfo `json:"CallbackInfo,omitempty" name:"CallbackInfo"`
+}
+
 type CreateMediaQualityRestorationTaskRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 源文件地址。
 	DownInfo *DownInfo `json:"DownInfo,omitempty" name:"DownInfo"`
 
@@ -391,16 +426,18 @@ func (r *CreateMediaQualityRestorationTaskRequest) FromJsonString(s string) erro
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateMediaQualityRestorationTaskResponseParams struct {
+	// 画质重生任务ID，可以通过该ID查询任务状态。
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreateMediaQualityRestorationTaskResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 画质重生任务ID，可以通过该ID查询任务状态。
-		TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreateMediaQualityRestorationTaskResponseParams `json:"Response"`
 }
 
 func (r *CreateMediaQualityRestorationTaskResponse) ToJsonString() string {
@@ -414,9 +451,21 @@ func (r *CreateMediaQualityRestorationTaskResponse) FromJsonString(s string) err
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateQualityControlTaskRequestParams struct {
+	// 质检任务参数
+	QualityControlInfo *QualityControlInfo `json:"QualityControlInfo,omitempty" name:"QualityControlInfo"`
+
+	// 视频源信息
+	DownInfo *DownInfo `json:"DownInfo,omitempty" name:"DownInfo"`
+
+	// 任务结果回调地址信息
+	CallbackInfo *CallbackInfo `json:"CallbackInfo,omitempty" name:"CallbackInfo"`
+}
+
 type CreateQualityControlTaskRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 质检任务参数
 	QualityControlInfo *QualityControlInfo `json:"QualityControlInfo,omitempty" name:"QualityControlInfo"`
 
@@ -448,17 +497,19 @@ func (r *CreateQualityControlTaskRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateQualityControlTaskResponseParams struct {
+	// 质检任务 ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreateQualityControlTaskResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 质检任务 ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreateQualityControlTaskResponseParams `json:"Response"`
 }
 
 func (r *CreateQualityControlTaskResponse) ToJsonString() string {
@@ -473,7 +524,6 @@ func (r *CreateQualityControlTaskResponse) FromJsonString(s string) error {
 }
 
 type DarInfo struct {
-
 	// 填充模式，可选值：
 	// 1：留黑，保持视频宽高比不变，边缘剩余部分使用黑色填充。
 	// 2：拉伸，对每一帧进行拉伸，填满整个画面，可能导致转码后的视频被“压扁“或者“拉长“。
@@ -482,7 +532,6 @@ type DarInfo struct {
 }
 
 type Denoise struct {
-
 	// 音频降噪强度，可选项：
 	// 1. weak
 	// 2.normal，
@@ -492,7 +541,6 @@ type Denoise struct {
 }
 
 type Denoising struct {
-
 	// 去噪方式，可选项：
 	// templ：时域降噪；
 	// spatial：空域降噪,
@@ -509,9 +557,15 @@ type Denoising struct {
 	SpatialStrength *float64 `json:"SpatialStrength,omitempty" name:"SpatialStrength"`
 }
 
+// Predefined struct for user
+type DescribeEditingTaskResultRequestParams struct {
+	// 编辑任务 ID。
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+}
+
 type DescribeEditingTaskResultRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 编辑任务 ID。
 	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
 }
@@ -535,16 +589,18 @@ func (r *DescribeEditingTaskResultRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeEditingTaskResultResponseParams struct {
+	// 编辑任务结果信息。
+	TaskResult *EditingTaskResult `json:"TaskResult,omitempty" name:"TaskResult"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeEditingTaskResultResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 编辑任务结果信息。
-		TaskResult *EditingTaskResult `json:"TaskResult,omitempty" name:"TaskResult"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeEditingTaskResultResponseParams `json:"Response"`
 }
 
 func (r *DescribeEditingTaskResultResponse) ToJsonString() string {
@@ -558,9 +614,15 @@ func (r *DescribeEditingTaskResultResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeMediaProcessTaskResultRequestParams struct {
+	// 编辑处理任务ID。
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+}
+
 type DescribeMediaProcessTaskResultRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 编辑处理任务ID。
 	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
 }
@@ -584,17 +646,19 @@ func (r *DescribeMediaProcessTaskResultRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeMediaProcessTaskResultResponseParams struct {
+	// 任务处理结果。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskResult *MediaProcessTaskResult `json:"TaskResult,omitempty" name:"TaskResult"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeMediaProcessTaskResultResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 任务处理结果。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		TaskResult *MediaProcessTaskResult `json:"TaskResult,omitempty" name:"TaskResult"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeMediaProcessTaskResultResponseParams `json:"Response"`
 }
 
 func (r *DescribeMediaProcessTaskResultResponse) ToJsonString() string {
@@ -608,9 +672,15 @@ func (r *DescribeMediaProcessTaskResultResponse) FromJsonString(s string) error 
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeMediaQualityRestorationTaskRusultRequestParams struct {
+	// 画质重生任务ID
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+}
+
 type DescribeMediaQualityRestorationTaskRusultRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 画质重生任务ID
 	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
 }
@@ -634,16 +704,18 @@ func (r *DescribeMediaQualityRestorationTaskRusultRequest) FromJsonString(s stri
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeMediaQualityRestorationTaskRusultResponseParams struct {
+	// 画质重生任务结果信息
+	TaskResult *MediaQualityRestorationTaskResult `json:"TaskResult,omitempty" name:"TaskResult"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeMediaQualityRestorationTaskRusultResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 画质重生任务结果信息
-		TaskResult *MediaQualityRestorationTaskResult `json:"TaskResult,omitempty" name:"TaskResult"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeMediaQualityRestorationTaskRusultResponseParams `json:"Response"`
 }
 
 func (r *DescribeMediaQualityRestorationTaskRusultResponse) ToJsonString() string {
@@ -657,9 +729,15 @@ func (r *DescribeMediaQualityRestorationTaskRusultResponse) FromJsonString(s str
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeQualityControlTaskResultRequestParams struct {
+	// 质检任务 ID
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+}
+
 type DescribeQualityControlTaskResultRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 质检任务 ID
 	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
 }
@@ -683,16 +761,18 @@ func (r *DescribeQualityControlTaskResultRequest) FromJsonString(s string) error
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeQualityControlTaskResultResponseParams struct {
+	// 质检任务结果信息
+	TaskResult *QualityControlInfoTaskResult `json:"TaskResult,omitempty" name:"TaskResult"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeQualityControlTaskResultResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 质检任务结果信息
-		TaskResult *QualityControlInfoTaskResult `json:"TaskResult,omitempty" name:"TaskResult"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeQualityControlTaskResultResponseParams `json:"Response"`
 }
 
 func (r *DescribeQualityControlTaskResultResponse) ToJsonString() string {
@@ -707,7 +787,6 @@ func (r *DescribeQualityControlTaskResultResponse) FromJsonString(s string) erro
 }
 
 type DownInfo struct {
-
 	// 下载类型，可选值： 
 	// 0：UrlInfo； 
 	// 1：CosInfo。
@@ -721,7 +800,6 @@ type DownInfo struct {
 }
 
 type EditInfo struct {
-
 	// 剪辑开始时间，单位：ms。
 	StartTime *int64 `json:"StartTime,omitempty" name:"StartTime"`
 
@@ -730,7 +808,6 @@ type EditInfo struct {
 }
 
 type EditingInfo struct {
-
 	// 视频标签识别任务参数，不填则不开启。
 	TagEditingInfo *TagEditingInfo `json:"TagEditingInfo,omitempty" name:"TagEditingInfo"`
 
@@ -751,7 +828,6 @@ type EditingInfo struct {
 }
 
 type EditingTaskResult struct {
-
 	// 编辑任务 ID。
 	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
 
@@ -785,13 +861,11 @@ type EditingTaskResult struct {
 }
 
 type FaceProtect struct {
-
 	// 人脸区域增强强度，可选项：0.0-1.0。小于0.0的默认为0.0，大于1.0的默认为1.0。
 	FaceUsmRatio *float64 `json:"FaceUsmRatio,omitempty" name:"FaceUsmRatio"`
 }
 
 type FileInfo struct {
-
 	// 任务结束后生成的文件大小。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FileSize *int64 `json:"FileSize,omitempty" name:"FileSize"`
@@ -818,7 +892,6 @@ type FileInfo struct {
 }
 
 type FrameTagItem struct {
-
 	// 标签起始时间戳PTS(ms)
 	StartPts *uint64 `json:"StartPts,omitempty" name:"StartPts"`
 
@@ -833,7 +906,6 @@ type FrameTagItem struct {
 }
 
 type FrameTagRec struct {
-
 	// 标签类型：
 	// "Common": 通用类型
 	// "Game":游戏类型
@@ -850,13 +922,11 @@ type FrameTagRec struct {
 }
 
 type FrameTagResult struct {
-
 	// 帧标签结果数组
 	FrameTagItems []*FrameTagItem `json:"FrameTagItems,omitempty" name:"FrameTagItems"`
 }
 
 type HiddenMarkInfo struct {
-
 	// 数字水印路径,，如果不从Cos拉取水印，则必填
 	Path *string `json:"Path,omitempty" name:"Path"`
 
@@ -871,7 +941,6 @@ type HiddenMarkInfo struct {
 }
 
 type HighlightsEditingInfo struct {
-
 	// 是否开启智能集锦。0为关闭，1为开启。其他非0非1值默认为0。
 	Switch *int64 `json:"Switch,omitempty" name:"Switch"`
 
@@ -880,7 +949,6 @@ type HighlightsEditingInfo struct {
 }
 
 type HighlightsTaskResult struct {
-
 	// 编辑任务状态。 
 	// 1：执行中；2：成功；3：失败。
 	Status *int64 `json:"Status,omitempty" name:"Status"`
@@ -898,7 +966,6 @@ type HighlightsTaskResult struct {
 }
 
 type HighlightsTaskResultItem struct {
-
 	// 智能集锦地址。
 	HighlightUrl *string `json:"HighlightUrl,omitempty" name:"HighlightUrl"`
 
@@ -916,7 +983,6 @@ type HighlightsTaskResultItem struct {
 }
 
 type HighlightsTaskResultItemSegment struct {
-
 	// 置信度，取值范围是 0 到 100。
 	Confidence *float64 `json:"Confidence,omitempty" name:"Confidence"`
 
@@ -928,7 +994,6 @@ type HighlightsTaskResultItemSegment struct {
 }
 
 type IntervalTime struct {
-
 	// 间隔周期，单位ms
 	Interval *int64 `json:"Interval,omitempty" name:"Interval"`
 
@@ -937,7 +1002,6 @@ type IntervalTime struct {
 }
 
 type LoudnessInfo struct {
-
 	// 音频整体响度
 	Loudness *float64 `json:"Loudness,omitempty" name:"Loudness"`
 
@@ -946,13 +1010,11 @@ type LoudnessInfo struct {
 }
 
 type LowLightEnhance struct {
-
 	// 低光照增强类型，可选项：normal。
 	Type *string `json:"Type,omitempty" name:"Type"`
 }
 
 type MediaCuttingInfo struct {
-
 	// 截取时间信息。
 	TimeInfo *MediaCuttingTimeInfo `json:"TimeInfo,omitempty" name:"TimeInfo"`
 
@@ -969,7 +1031,6 @@ type MediaCuttingInfo struct {
 }
 
 type MediaCuttingOutForm struct {
-
 	// 输出类型，可选值：
 	// Static：静态图；
 	// Dynamic：动态图；
@@ -1001,7 +1062,6 @@ type MediaCuttingOutForm struct {
 }
 
 type MediaCuttingTaskResult struct {
-
 	// 如果ResultListType不为NoListFile时，结果（TaskResultFile）列表文件的存储位置。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ListFile *TaskResultFile `json:"ListFile,omitempty" name:"ListFile"`
@@ -1020,7 +1080,6 @@ type MediaCuttingTaskResult struct {
 }
 
 type MediaCuttingTimeInfo struct {
-
 	// 时间类型，可选值：
 	// PointSet：时间点集合；
 	// IntervalPoint：周期采样点；
@@ -1038,21 +1097,18 @@ type MediaCuttingTimeInfo struct {
 }
 
 type MediaJoiningInfo struct {
-
 	// 输出目标信息，拼接只采用FileName和Format，用于指定目标文件名和格式。
 	// 其中Format只支持mp4.
 	TargetInfo *MediaTargetInfo `json:"TargetInfo,omitempty" name:"TargetInfo"`
 }
 
 type MediaJoiningTaskResult struct {
-
 	// 拼接结果文件。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	File *TaskResultFile `json:"File,omitempty" name:"File"`
 }
 
 type MediaProcessInfo struct {
-
 	// 编辑处理任务类型，可选值：
 	// MediaEditing：媒体编辑（待上线）；
 	// MediaCutting：媒体剪切；
@@ -1071,7 +1127,6 @@ type MediaProcessInfo struct {
 }
 
 type MediaProcessTaskResult struct {
-
 	// 编辑处理任务ID。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
@@ -1118,7 +1173,6 @@ type MediaProcessTaskResult struct {
 }
 
 type MediaQualityRestorationTaskResult struct {
-
 	// 画质重生任务ID
 	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
 
@@ -1127,7 +1181,6 @@ type MediaQualityRestorationTaskResult struct {
 }
 
 type MediaRecognitionInfo struct {
-
 	// 帧标签识别
 	FrameTagRec *FrameTagRec `json:"FrameTagRec,omitempty" name:"FrameTagRec"`
 
@@ -1136,7 +1189,6 @@ type MediaRecognitionInfo struct {
 }
 
 type MediaRecognitionTaskResult struct {
-
 	// 帧标签识别结果
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FrameTagResults *FrameTagResult `json:"FrameTagResults,omitempty" name:"FrameTagResults"`
@@ -1147,7 +1199,6 @@ type MediaRecognitionTaskResult struct {
 }
 
 type MediaResultInfo struct {
-
 	// 媒体时长，单位：毫秒
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Duration *uint64 `json:"Duration,omitempty" name:"Duration"`
@@ -1162,7 +1213,6 @@ type MediaResultInfo struct {
 }
 
 type MediaSourceInfo struct {
-
 	// 媒体源资源下载信息。
 	DownInfo *DownInfo `json:"DownInfo,omitempty" name:"DownInfo"`
 
@@ -1178,7 +1228,6 @@ type MediaSourceInfo struct {
 }
 
 type MediaTargetInfo struct {
-
 	// 目标文件名，不能带特殊字符（如/等），无需后缀名，最长200字符。
 	// 
 	// 注1：部分子服务支持占位符，形式为： {parameter}
@@ -1199,7 +1248,6 @@ type MediaTargetInfo struct {
 }
 
 type MuxInfo struct {
-
 	// 删除流，可选项：video,audio。
 	DeleteStream *string `json:"DeleteStream,omitempty" name:"DeleteStream"`
 
@@ -1208,7 +1256,6 @@ type MuxInfo struct {
 }
 
 type OpeningEndingEditingInfo struct {
-
 	// 是否开启片头片尾识别。0为关闭，1为开启。其他非0非1值默认为0。
 	Switch *int64 `json:"Switch,omitempty" name:"Switch"`
 
@@ -1217,7 +1264,6 @@ type OpeningEndingEditingInfo struct {
 }
 
 type OpeningEndingTaskResult struct {
-
 	// 编辑任务状态。 
 	// 1：执行中；2：成功；3：失败。
 	Status *int64 `json:"Status,omitempty" name:"Status"`
@@ -1235,7 +1281,6 @@ type OpeningEndingTaskResult struct {
 }
 
 type OpeningEndingTaskResultItem struct {
-
 	// 视频片头的结束时间点，单位：秒。
 	OpeningTimeOffset *float64 `json:"OpeningTimeOffset,omitempty" name:"OpeningTimeOffset"`
 
@@ -1250,7 +1295,6 @@ type OpeningEndingTaskResultItem struct {
 }
 
 type PicMarkInfoItem struct {
-
 	// 图片水印的X坐标。
 	PosX *int64 `json:"PosX,omitempty" name:"PosX"`
 
@@ -1277,7 +1321,6 @@ type PicMarkInfoItem struct {
 }
 
 type QualityControlInfo struct {
-
 	// 对流进行截图的间隔ms，默认1000ms
 	Interval *uint64 `json:"Interval,omitempty" name:"Interval"`
 
@@ -1319,7 +1362,6 @@ type QualityControlInfo struct {
 }
 
 type QualityControlInfoTaskResult struct {
-
 	// 质检任务 ID
 	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
 
@@ -1398,7 +1440,6 @@ type QualityControlInfoTaskResult struct {
 }
 
 type QualityControlItem struct {
-
 	// 置信度，取值范围是 0 到 100
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Confidence *uint64 `json:"Confidence,omitempty" name:"Confidence"`
@@ -1415,7 +1456,6 @@ type QualityControlItem struct {
 }
 
 type QualityControlResultItems struct {
-
 	// 异常类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Id *string `json:"Id,omitempty" name:"Id"`
@@ -1425,13 +1465,11 @@ type QualityControlResultItems struct {
 }
 
 type RemoveReverb struct {
-
 	// 去混响类型，可选项：normal
 	Type *string `json:"Type,omitempty" name:"Type"`
 }
 
 type ResultAudioInfo struct {
-
 	// 流在媒体文件中的流ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	StreamId *int64 `json:"StreamId,omitempty" name:"StreamId"`
@@ -1442,7 +1480,6 @@ type ResultAudioInfo struct {
 }
 
 type ResultVideoInfo struct {
-
 	// 流在媒体文件中的流ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	StreamId *int64 `json:"StreamId,omitempty" name:"StreamId"`
@@ -1465,7 +1502,6 @@ type ResultVideoInfo struct {
 }
 
 type SaveInfo struct {
-
 	// 存储类型，可选值： 
 	// 1：CosInfo。
 	Type *int64 `json:"Type,omitempty" name:"Type"`
@@ -1475,7 +1511,6 @@ type SaveInfo struct {
 }
 
 type ScratchRepair struct {
-
 	// 去划痕方式，取值：normal。
 	Type *string `json:"Type,omitempty" name:"Type"`
 
@@ -1484,7 +1519,6 @@ type ScratchRepair struct {
 }
 
 type SectionTime struct {
-
 	// 开始时间点，单位ms
 	StartTime *int64 `json:"StartTime,omitempty" name:"StartTime"`
 
@@ -1493,7 +1527,6 @@ type SectionTime struct {
 }
 
 type SegmentInfo struct {
-
 	// 每个切片平均时长，默认10s。
 	FragmentTime *int64 `json:"FragmentTime,omitempty" name:"FragmentTime"`
 
@@ -1507,7 +1540,6 @@ type SegmentInfo struct {
 }
 
 type Sharp struct {
-
 	// 细节增强方式,取值：normal。
 	Type *string `json:"Type,omitempty" name:"Type"`
 
@@ -1515,9 +1547,15 @@ type Sharp struct {
 	Ratio *float64 `json:"Ratio,omitempty" name:"Ratio"`
 }
 
+// Predefined struct for user
+type StopMediaProcessTaskRequestParams struct {
+	// 编辑处理任务ID。
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+}
+
 type StopMediaProcessTaskRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 编辑处理任务ID。
 	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
 }
@@ -1541,13 +1579,15 @@ func (r *StopMediaProcessTaskRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type StopMediaProcessTaskResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type StopMediaProcessTaskResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *StopMediaProcessTaskResponseParams `json:"Response"`
 }
 
 func (r *StopMediaProcessTaskResponse) ToJsonString() string {
@@ -1561,9 +1601,15 @@ func (r *StopMediaProcessTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type StopMediaQualityRestorationTaskRequestParams struct {
+	// 要删除的画质重生任务ID。
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+}
+
 type StopMediaQualityRestorationTaskRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 要删除的画质重生任务ID。
 	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
 }
@@ -1587,13 +1633,15 @@ func (r *StopMediaQualityRestorationTaskRequest) FromJsonString(s string) error 
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type StopMediaQualityRestorationTaskResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type StopMediaQualityRestorationTaskResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *StopMediaQualityRestorationTaskResponseParams `json:"Response"`
 }
 
 func (r *StopMediaQualityRestorationTaskResponse) ToJsonString() string {
@@ -1608,7 +1656,6 @@ func (r *StopMediaQualityRestorationTaskResponse) FromJsonString(s string) error
 }
 
 type StripEditingInfo struct {
-
 	// 是否开启智能拆条。0为关闭，1为开启。其他非0非1值默认为0。
 	Switch *int64 `json:"Switch,omitempty" name:"Switch"`
 
@@ -1617,7 +1664,6 @@ type StripEditingInfo struct {
 }
 
 type StripTaskResult struct {
-
 	// 编辑任务状态。 
 	// 1：执行中；2：成功；3：失败。
 	Status *int64 `json:"Status,omitempty" name:"Status"`
@@ -1635,7 +1681,6 @@ type StripTaskResult struct {
 }
 
 type StripTaskResultItem struct {
-
 	// 视频拆条片段地址。
 	SegmentUrl *string `json:"SegmentUrl,omitempty" name:"SegmentUrl"`
 
@@ -1653,7 +1698,6 @@ type StripTaskResultItem struct {
 }
 
 type SubTaskResultItem struct {
-
 	// 子任务名称。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskName *string `json:"TaskName,omitempty" name:"TaskName"`
@@ -1685,7 +1729,6 @@ type SubTaskResultItem struct {
 }
 
 type SubTaskTranscodeInfo struct {
-
 	// 子任务名称。
 	TaskName *string `json:"TaskName,omitempty" name:"TaskName"`
 
@@ -1706,7 +1749,6 @@ type SubTaskTranscodeInfo struct {
 }
 
 type SubtitleItem struct {
-
 	// 语音识别结果
 	Id *string `json:"Id,omitempty" name:"Id"`
 
@@ -1739,7 +1781,6 @@ type SubtitleItem struct {
 }
 
 type SubtitleRec struct {
-
 	// 语音识别：
 	// zh：中文
 	// en：英文
@@ -1752,13 +1793,11 @@ type SubtitleRec struct {
 }
 
 type SubtitleResult struct {
-
 	// 语音字幕数组
 	SubtitleItems []*SubtitleItem `json:"SubtitleItems,omitempty" name:"SubtitleItems"`
 }
 
 type TagEditingInfo struct {
-
 	// 是否开启视频标签识别。0为关闭，1为开启。其他非0非1值默认为0。
 	Switch *int64 `json:"Switch,omitempty" name:"Switch"`
 
@@ -1767,7 +1806,6 @@ type TagEditingInfo struct {
 }
 
 type TagItem struct {
-
 	// 标签内容
 	Id *string `json:"Id,omitempty" name:"Id"`
 
@@ -1784,7 +1822,6 @@ type TagItem struct {
 }
 
 type TagTaskResult struct {
-
 	// 编辑任务状态。 
 	// 1：执行中；2：成功；3：失败。
 	Status *int64 `json:"Status,omitempty" name:"Status"`
@@ -1802,7 +1839,6 @@ type TagTaskResult struct {
 }
 
 type TagTaskResultItem struct {
-
 	// 标签名称。
 	Tag *string `json:"Tag,omitempty" name:"Tag"`
 
@@ -1811,7 +1847,6 @@ type TagTaskResultItem struct {
 }
 
 type TargetInfo struct {
-
 	// 目标文件名
 	FileName *string `json:"FileName,omitempty" name:"FileName"`
 
@@ -1820,7 +1855,6 @@ type TargetInfo struct {
 }
 
 type TargetVideoInfo struct {
-
 	// 视频宽度，单位像素
 	Width *int64 `json:"Width,omitempty" name:"Width"`
 
@@ -1832,7 +1866,6 @@ type TargetVideoInfo struct {
 }
 
 type TaskResultFile struct {
-
 	// 文件链接。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Url *string `json:"Url,omitempty" name:"Url"`
@@ -1847,7 +1880,6 @@ type TaskResultFile struct {
 }
 
 type TextMarkInfoItem struct {
-
 	// 文字内容。
 	Text *string `json:"Text,omitempty" name:"Text"`
 
@@ -1871,7 +1903,6 @@ type TextMarkInfoItem struct {
 }
 
 type UrlInfo struct {
-
 	// 视频 URL。
 	// 注意：编辑理解仅支持mp4、flv等格式的点播文件，不支持hls；
 	Url *string `json:"Url,omitempty" name:"Url"`
@@ -1887,7 +1918,6 @@ type UrlInfo struct {
 }
 
 type VideoEnhance struct {
-
 	// 去编码毛刺、伪影参数。
 	ArtifactReduction *ArtifactReduction `json:"ArtifactReduction,omitempty" name:"ArtifactReduction"`
 
@@ -1925,7 +1955,6 @@ type VideoEnhance struct {
 }
 
 type VideoInfo struct {
-
 	// 视频帧率，取值范围：[0, 60]，单位：Hz。
 	// 注意：当取值为 0，表示帧率和原始视频保持一致。
 	Fps *int64 `json:"Fps,omitempty" name:"Fps"`
@@ -2000,7 +2029,6 @@ type VideoInfo struct {
 }
 
 type VideoInfoResultItem struct {
-
 	// 视频流的流id。
 	Stream *int64 `json:"Stream,omitempty" name:"Stream"`
 
@@ -2038,14 +2066,12 @@ type VideoInfoResultItem struct {
 }
 
 type VideoRepair struct {
-
 	// 画质修复类型，可选值：weak，normal，strong;
 	// 默认值: weak
 	Type *string `json:"Type,omitempty" name:"Type"`
 }
 
 type VideoSuperResolution struct {
-
 	// 超分视频类型：可选值：lq,hq
 	// lq: 针对低清晰度有较多噪声视频的超分;
 	// hq: 针对高清晰度视频超分;

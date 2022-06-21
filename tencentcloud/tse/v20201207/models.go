@@ -21,7 +21,6 @@ import (
 )
 
 type ApolloEnvParam struct {
-
 	// 环境名称
 	Name *string `json:"Name,omitempty" name:"Name"`
 
@@ -42,7 +41,6 @@ type ApolloEnvParam struct {
 }
 
 type BoundK8SInfo struct {
-
 	// 绑定的kubernetes集群ID
 	BoundClusterId *string `json:"BoundClusterId,omitempty" name:"BoundClusterId"`
 
@@ -55,9 +53,108 @@ type BoundK8SInfo struct {
 	SyncMode *string `json:"SyncMode,omitempty" name:"SyncMode"`
 }
 
+// Predefined struct for user
+type CreateEngineRequestParams struct {
+	// 引擎类型。参考值：
+	// - zookeeper
+	// - nacos
+	// - consul
+	// - apollo
+	// - eureka
+	// - polaris
+	EngineType *string `json:"EngineType,omitempty" name:"EngineType"`
+
+	// 引擎的开源版本。每种引擎支持的开源版本不同，请参考产品文档或者控制台购买页
+	EngineVersion *string `json:"EngineVersion,omitempty" name:"EngineVersion"`
+
+	// 引擎的产品版本。参考值：
+	// - STANDARD： 标准版
+	// 
+	// 引擎各版本及可选择的规格、节点数说明：
+	// apollo - STANDARD版本
+	// 规格列表：spec-qcr53kf1t（1C2G）,spec-qdr53kf2w（2C4G）
+	// 节点数：1，2，3，4，5
+	// 
+	// eureka - STANDARD版本
+	// 规格列表：spec-qvj6k7t4q（1C2G）,spec-qcr53kfjt（2C4G）,spec-qvj6k7t4m（4G8G）,spec-qcr54kfjt（8C16G）,spec-qcr55kfjt（16C32G）
+	// 节点数：3，4，5
+	EngineProductVersion *string `json:"EngineProductVersion,omitempty" name:"EngineProductVersion"`
+
+	// 引擎所在地域。参考值说明：
+	// 中国区 参考值：
+	// - ap-guangzhou：广州
+	// - ap-beijing：北京
+	// - ap-chengdu：成都
+	// - ap-chongqing：重庆
+	// - ap-nanjing：南京
+	// - ap-shanghai：上海
+	// - ap-hongkong：香港
+	// - ap-taipei：台北
+	// 亚太区 参考值：
+	// - ap-jakarta：雅加达
+	// - ap-singapore：新加坡
+	// 北美区 参考值
+	// - na-toronto：多伦多
+	// 金融专区 参考值
+	// - ap-beijing-fsi：北京金融
+	// - ap-shanghai-fsi：上海金融
+	// - ap-shenzhen-fsi：深圳金融
+	EngineRegion *string `json:"EngineRegion,omitempty" name:"EngineRegion"`
+
+	// 引擎名称。参考值：
+	// - eurek-test
+	EngineName *string `json:"EngineName,omitempty" name:"EngineName"`
+
+	// 付费类型。参考值：
+	// - 0：后付费
+	// - 1：预付费
+	TradeType *int64 `json:"TradeType,omitempty" name:"TradeType"`
+
+	// 引擎的节点规格 ID。参见EngineProductVersion字段说明
+	EngineResourceSpec *string `json:"EngineResourceSpec,omitempty" name:"EngineResourceSpec"`
+
+	// 引擎的节点数量。参见EngineProductVersion字段说明
+	EngineNodeNum *int64 `json:"EngineNodeNum,omitempty" name:"EngineNodeNum"`
+
+	// VPC ID。在 VPC 的子网内分配一个 IP 作为引擎的访问地址。参考值：
+	// - vpc-conz6aix
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 子网 ID。在 VPC 的子网内分配一个 IP 作为引擎的访问地址。参考值：
+	// - subnet-ahde9me9
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+
+	// Apollo 环境配置参数列表。参数说明：
+	// 如果创建Apollo类型，此参数为必填的环境信息列表，最多可选4个环境。环境信息参数说明：
+	// - Name：环境名。参考值：prod, dev, fat, uat
+	// - EngineResourceSpec：环境内引擎的节点规格ID。参见EngineProductVersion参数说明
+	// - EngineNodeNum：环境内引擎的节点数量。参见EngineProductVersion参数说明，其中prod环境支持的节点数为2，3，4，5
+	// - StorageCapacity：配置存储空间大小，以GB为单位，步长为5.参考值：35
+	// - VpcId：VPC ID。参考值：vpc-conz6aix
+	// - SubnetId：子网 ID。参考值：subnet-ahde9me9
+	ApolloEnvParams []*ApolloEnvParam `json:"ApolloEnvParams,omitempty" name:"ApolloEnvParams"`
+
+	// 引擎的标签列表。用户自定义的key/value形式，无参考值
+	EngineTags []*InstanceTagInfo `json:"EngineTags,omitempty" name:"EngineTags"`
+
+	// 引擎的初始帐号信息。可设置参数：
+	// - Name：控制台初始用户名
+	// - Password：控制台初始密码
+	// - Token：引擎接口的管理员 Token
+	EngineAdmin *EngineAdmin `json:"EngineAdmin,omitempty" name:"EngineAdmin"`
+
+	// 预付费时长，以月为单位
+	PrepaidPeriod *int64 `json:"PrepaidPeriod,omitempty" name:"PrepaidPeriod"`
+
+	// 自动续费标记，仅预付费使用。参考值：
+	// - 0：不自动续费
+	// - 1：自动续费
+	PrepaidRenewFlag *int64 `json:"PrepaidRenewFlag,omitempty" name:"PrepaidRenewFlag"`
+}
+
 type CreateEngineRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 引擎类型。参考值：
 	// - zookeeper
 	// - nacos
@@ -188,16 +285,18 @@ func (r *CreateEngineRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateEngineResponseParams struct {
+	// 引擎实例 ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreateEngineResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 引擎实例 ID
-		InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreateEngineResponseParams `json:"Response"`
 }
 
 func (r *CreateEngineResponse) ToJsonString() string {
@@ -211,9 +310,15 @@ func (r *CreateEngineResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteEngineRequestParams struct {
+	// 引擎实例 ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+}
+
 type DeleteEngineRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 引擎实例 ID
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 }
@@ -237,13 +342,15 @@ func (r *DeleteEngineRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteEngineResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DeleteEngineResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DeleteEngineResponseParams `json:"Response"`
 }
 
 func (r *DeleteEngineResponse) ToJsonString() string {
@@ -257,9 +364,21 @@ func (r *DeleteEngineResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeSREInstanceAccessAddressRequestParams struct {
+	// 注册引擎实例Id
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// VPC ID
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 子网ID
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+}
+
 type DescribeSREInstanceAccessAddressRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 注册引擎实例Id
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
@@ -291,38 +410,40 @@ func (r *DescribeSREInstanceAccessAddressRequest) FromJsonString(s string) error
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeSREInstanceAccessAddressResponseParams struct {
+	// 内网访问地址
+	IntranetAddress *string `json:"IntranetAddress,omitempty" name:"IntranetAddress"`
+
+	// 公网访问地址
+	InternetAddress *string `json:"InternetAddress,omitempty" name:"InternetAddress"`
+
+	// apollo多环境公网ip
+	EnvAddressInfos []*EnvAddressInfo `json:"EnvAddressInfos,omitempty" name:"EnvAddressInfos"`
+
+	// 控制台公网访问地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConsoleInternetAddress *string `json:"ConsoleInternetAddress,omitempty" name:"ConsoleInternetAddress"`
+
+	// 控制台内网访问地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConsoleIntranetAddress *string `json:"ConsoleIntranetAddress,omitempty" name:"ConsoleIntranetAddress"`
+
+	// 客户端公网带宽
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InternetBandWidth *int64 `json:"InternetBandWidth,omitempty" name:"InternetBandWidth"`
+
+	// 控制台公网带宽
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConsoleInternetBandWidth *int64 `json:"ConsoleInternetBandWidth,omitempty" name:"ConsoleInternetBandWidth"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeSREInstanceAccessAddressResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 内网访问地址
-		IntranetAddress *string `json:"IntranetAddress,omitempty" name:"IntranetAddress"`
-
-		// 公网访问地址
-		InternetAddress *string `json:"InternetAddress,omitempty" name:"InternetAddress"`
-
-		// apollo多环境公网ip
-		EnvAddressInfos []*EnvAddressInfo `json:"EnvAddressInfos,omitempty" name:"EnvAddressInfos"`
-
-		// 控制台公网访问地址
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		ConsoleInternetAddress *string `json:"ConsoleInternetAddress,omitempty" name:"ConsoleInternetAddress"`
-
-		// 控制台内网访问地址
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		ConsoleIntranetAddress *string `json:"ConsoleIntranetAddress,omitempty" name:"ConsoleIntranetAddress"`
-
-		// 客户端公网带宽
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		InternetBandWidth *int64 `json:"InternetBandWidth,omitempty" name:"InternetBandWidth"`
-
-		// 控制台公网带宽
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		ConsoleInternetBandWidth *int64 `json:"ConsoleInternetBandWidth,omitempty" name:"ConsoleInternetBandWidth"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeSREInstanceAccessAddressResponseParams `json:"Response"`
 }
 
 func (r *DescribeSREInstanceAccessAddressResponse) ToJsonString() string {
@@ -336,9 +457,27 @@ func (r *DescribeSREInstanceAccessAddressResponse) FromJsonString(s string) erro
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeSREInstancesRequestParams struct {
+	// 请求过滤参数
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 翻页单页查询限制数量[0,1000], 默认值0
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 翻页单页偏移量，默认值0
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 查询类型
+	QueryType *string `json:"QueryType,omitempty" name:"QueryType"`
+
+	// 调用方来源
+	QuerySource *string `json:"QuerySource,omitempty" name:"QuerySource"`
+}
+
 type DescribeSREInstancesRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 请求过滤参数
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
@@ -378,19 +517,21 @@ func (r *DescribeSREInstancesRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeSREInstancesResponseParams struct {
+	// 总数量
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 实例记录
+	Content []*SREInstance `json:"Content,omitempty" name:"Content"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeSREInstancesResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 总数量
-		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 实例记录
-		Content []*SREInstance `json:"Content,omitempty" name:"Content"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeSREInstancesResponseParams `json:"Response"`
 }
 
 func (r *DescribeSREInstancesResponse) ToJsonString() string {
@@ -405,7 +546,6 @@ func (r *DescribeSREInstancesResponse) FromJsonString(s string) error {
 }
 
 type EngineAdmin struct {
-
 	// 控制台初始用户名
 	Name *string `json:"Name,omitempty" name:"Name"`
 
@@ -417,7 +557,6 @@ type EngineAdmin struct {
 }
 
 type EnvAddressInfo struct {
-
 	// 环境名
 	EnvName *string `json:"EnvName,omitempty" name:"EnvName"`
 
@@ -429,7 +568,6 @@ type EnvAddressInfo struct {
 }
 
 type EnvInfo struct {
-
 	// 环境名称
 	EnvName *string `json:"EnvName,omitempty" name:"EnvName"`
 
@@ -468,7 +606,6 @@ type EnvInfo struct {
 }
 
 type Filter struct {
-
 	// 过滤参数名
 	Name *string `json:"Name,omitempty" name:"Name"`
 
@@ -477,7 +614,6 @@ type Filter struct {
 }
 
 type InstanceTagInfo struct {
-
 	// 标签键
 	TagKey *string `json:"TagKey,omitempty" name:"TagKey"`
 
@@ -486,7 +622,6 @@ type InstanceTagInfo struct {
 }
 
 type KVPair struct {
-
 	// 键
 	Key *string `json:"Key,omitempty" name:"Key"`
 
@@ -495,7 +630,6 @@ type KVPair struct {
 }
 
 type SREInstance struct {
-
 	// 实例ID
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
@@ -606,7 +740,6 @@ type SREInstance struct {
 }
 
 type ServiceGovernanceInfo struct {
-
 	// 引擎所在的地域
 	EngineRegion *string `json:"EngineRegion,omitempty" name:"EngineRegion"`
 
@@ -627,7 +760,6 @@ type ServiceGovernanceInfo struct {
 }
 
 type VpcInfo struct {
-
 	// Vpc Id
 	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
 

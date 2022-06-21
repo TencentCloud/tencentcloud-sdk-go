@@ -1,3 +1,115 @@
+# Release v1.0.426
+
+## 企业收付平台(cpdp) 版本：2019-08-20
+
+### 第 69 次发布
+
+发布时间：2022-06-22 06:05:01
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [OpenBankGoodsInfo](https://cloud.tencent.com/document/api/1122/40683#OpenBankGoodsInfo)
+
+	* 新增成员：GoodsBizType
+
+* [OpenBankPayerInfo](https://cloud.tencent.com/document/api/1122/40683#OpenBankPayerInfo)
+
+	* 新增成员：BankCardType
+
+* [OpenBankSceneInfo](https://cloud.tencent.com/document/api/1122/40683#OpenBankSceneInfo)
+
+	* 新增成员：DeviceType
+
+* [SupportBankInfo](https://cloud.tencent.com/document/api/1122/40683#SupportBankInfo)
+
+	* 新增成员：BankId, CardType
+
+
+
+
+## 云直播(live) 版本：2018-08-01
+
+### 第 79 次发布
+
+发布时间：2022-06-22 06:10:05
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateLiveTranscodeTemplate](https://cloud.tencent.com/document/api/267/32646)
+
+	* 新增入参：DRMType, DRMTracks
+
+* [ModifyLiveTranscodeTemplate](https://cloud.tencent.com/document/api/267/32640)
+
+	* 新增入参：DRMType, DRMTracks
+
+
+修改数据结构：
+
+* [TemplateInfo](https://cloud.tencent.com/document/api/267/20474#TemplateInfo)
+
+	* 新增成员：DRMType, DRMTracks
+
+* [TimeShiftBillData](https://cloud.tencent.com/document/api/267/20474#TimeShiftBillData)
+
+	* 新增成员：TotalDuration
+
+
+
+
+## 云托管 CloudBase Run(tcbr) 版本：2022-02-17
+
+### 第 2 次发布
+
+发布时间：2022-06-22 06:13:21
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [OperateServerManage](https://cloud.tencent.com/document/api/1243/75873)
+* [ReleaseGray](https://cloud.tencent.com/document/api/1243/75872)
+
+新增数据结构：
+
+* [ObjectKV](https://cloud.tencent.com/document/api/1243/75713#ObjectKV)
+* [VersionFlowInfo](https://cloud.tencent.com/document/api/1243/75713#VersionFlowInfo)
+
+
+
+## 私有网络(vpc) 版本：2017-03-12
+
+### 第 115 次发布
+
+发布时间：2022-06-22 06:16:12
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [AdjustPublicAddress](https://cloud.tencent.com/document/api/215/75874)
+
+修改接口：
+
+* [CreateVpnGatewaySslServer](https://cloud.tencent.com/document/api/215/70289)
+
+	* 新增入参：SsoEnabled, AccessPolicyEnabled, SamlData
+
+
+
+
 # Release v1.0.425
 
 ## 应用性能观测(apm) 版本：2021-06-22

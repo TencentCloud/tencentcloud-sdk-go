@@ -21,7 +21,6 @@ import (
 )
 
 type ActivityDetail struct {
-
 	// 活动id
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ActivityId *int64 `json:"ActivityId,omitempty" name:"ActivityId"`
@@ -64,7 +63,6 @@ type ActivityDetail struct {
 }
 
 type ActivityJoinDetail struct {
-
 	// 活动id
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ActivityId *int64 `json:"ActivityId,omitempty" name:"ActivityId"`
@@ -131,7 +129,6 @@ type ActivityJoinDetail struct {
 }
 
 type ChannelCodeInnerDetail struct {
-
 	// 渠道活码id
 	Id *int64 `json:"Id,omitempty" name:"Id"`
 
@@ -182,7 +179,6 @@ type ChannelCodeInnerDetail struct {
 }
 
 type ChatArchivingDetail struct {
-
 	// 消息id
 	MsgId *string `json:"MsgId,omitempty" name:"MsgId"`
 
@@ -220,7 +216,6 @@ type ChatArchivingDetail struct {
 }
 
 type ChatArchivingMsgTypeVideo struct {
-
 	// 视频时长，单位秒
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PlayLength *uint64 `json:"PlayLength,omitempty" name:"PlayLength"`
@@ -234,7 +229,6 @@ type ChatArchivingMsgTypeVideo struct {
 }
 
 type ClueInfoDetail struct {
-
 	// 线索id，线索唯一识别编码
 	ClueId *string `json:"ClueId,omitempty" name:"ClueId"`
 
@@ -279,7 +273,6 @@ type ClueInfoDetail struct {
 }
 
 type CorpUserInfo struct {
-
 	// 企业成员UserId
 	UserId *uint64 `json:"UserId,omitempty" name:"UserId"`
 
@@ -319,9 +312,48 @@ type CorpUserInfo struct {
 	Status *int64 `json:"Status,omitempty" name:"Status"`
 }
 
+// Predefined struct for user
+type CreateChannelCodeRequestParams struct {
+	// 欢迎语类型:0普通欢迎语,1渠道欢迎语
+	Type *int64 `json:"Type,omitempty" name:"Type"`
+
+	// 使用成员用户id集
+	UseUserId []*int64 `json:"UseUserId,omitempty" name:"UseUserId"`
+
+	// 使用成员企微账号id集
+	UseUserOpenId []*string `json:"UseUserOpenId,omitempty" name:"UseUserOpenId"`
+
+	// 应用ID,字典表中的APP_TYPE值,多个已逗号分隔
+	AppIds *string `json:"AppIds,omitempty" name:"AppIds"`
+
+	// 渠道来源
+	Source *string `json:"Source,omitempty" name:"Source"`
+
+	// 渠道来源名称
+	SourceName *string `json:"SourceName,omitempty" name:"SourceName"`
+
+	// 二维码名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 标签
+	Tag []*WeComTagDetail `json:"Tag,omitempty" name:"Tag"`
+
+	// 自动通过好友：0开启 1关闭, 默认开启
+	SkipVerify *int64 `json:"SkipVerify,omitempty" name:"SkipVerify"`
+
+	// 欢迎语id（通过欢迎语新增返回的id）
+	MsgId *int64 `json:"MsgId,omitempty" name:"MsgId"`
+
+	// 备注
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 渠道类型 0 未知 1 公域 2私域
+	SourceType *int64 `json:"SourceType,omitempty" name:"SourceType"`
+}
+
 type CreateChannelCodeRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 欢迎语类型:0普通欢迎语,1渠道欢迎语
 	Type *int64 `json:"Type,omitempty" name:"Type"`
 
@@ -389,13 +421,15 @@ func (r *CreateChannelCodeRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateChannelCodeResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreateChannelCodeResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreateChannelCodeResponseParams `json:"Response"`
 }
 
 func (r *CreateChannelCodeResponse) ToJsonString() string {
@@ -409,9 +443,21 @@ func (r *CreateChannelCodeResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateCorpTagRequestParams struct {
+	// 标签组名称，最长为15个字符
+	GroupName *string `json:"GroupName,omitempty" name:"GroupName"`
+
+	// 标签信息数组
+	Tags []*TagInfo `json:"Tags,omitempty" name:"Tags"`
+
+	// 标签组次序值。sort值大的排序靠前。有效的值范围是[0, 2^32)
+	Sort *uint64 `json:"Sort,omitempty" name:"Sort"`
+}
+
 type CreateCorpTagRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 标签组名称，最长为15个字符
 	GroupName *string `json:"GroupName,omitempty" name:"GroupName"`
 
@@ -443,16 +489,18 @@ func (r *CreateCorpTagRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateCorpTagResponseParams struct {
+	// 标签组信息
+	TagGroup *TagGroup `json:"TagGroup,omitempty" name:"TagGroup"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreateCorpTagResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 标签组信息
-		TagGroup *TagGroup `json:"TagGroup,omitempty" name:"TagGroup"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreateCorpTagResponseParams `json:"Response"`
 }
 
 func (r *CreateCorpTagResponse) ToJsonString() string {
@@ -466,9 +514,57 @@ func (r *CreateCorpTagResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateLeadRequestParams struct {
+	// 来源ID
+	ChannelId *uint64 `json:"ChannelId,omitempty" name:"ChannelId"`
+
+	// 来源名称
+	ChannelName *string `json:"ChannelName,omitempty" name:"ChannelName"`
+
+	// 创建时间， 单位毫秒
+	CreateTime *uint64 `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 线索类型：1-400呼入，2-常规留资
+	SourceType *int64 `json:"SourceType,omitempty" name:"SourceType"`
+
+	// 经销商id
+	DealerId *uint64 `json:"DealerId,omitempty" name:"DealerId"`
+
+	// 品牌id
+	BrandId *uint64 `json:"BrandId,omitempty" name:"BrandId"`
+
+	// 车系id
+	SeriesId *uint64 `json:"SeriesId,omitempty" name:"SeriesId"`
+
+	// 客户姓名
+	CustomerName *string `json:"CustomerName,omitempty" name:"CustomerName"`
+
+	// 客户手机号
+	CustomerPhone *string `json:"CustomerPhone,omitempty" name:"CustomerPhone"`
+
+	// 车型id
+	ModelId *uint64 `json:"ModelId,omitempty" name:"ModelId"`
+
+	// 客户性别: 0-未知, 1-男, 2-女
+	CustomerSex *int64 `json:"CustomerSex,omitempty" name:"CustomerSex"`
+
+	// 销售姓名
+	SalesName *string `json:"SalesName,omitempty" name:"SalesName"`
+
+	// 销售手机号
+	SalesPhone *string `json:"SalesPhone,omitempty" name:"SalesPhone"`
+
+	// Cc坐席姓名
+	CcName *string `json:"CcName,omitempty" name:"CcName"`
+
+	// 备注
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+}
+
 type CreateLeadRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 来源ID
 	ChannelId *uint64 `json:"ChannelId,omitempty" name:"ChannelId"`
 
@@ -548,19 +644,21 @@ func (r *CreateLeadRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateLeadResponseParams struct {
+	// 线索处理状态码： 0-表示创建成功， 1-表示线索合并，2-表示线索重复
+	BusinessCode *int64 `json:"BusinessCode,omitempty" name:"BusinessCode"`
+
+	// 线索处理结果描述
+	BusinessMsg *string `json:"BusinessMsg,omitempty" name:"BusinessMsg"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreateLeadResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 线索处理状态码： 0-表示创建成功， 1-表示线索合并，2-表示线索重复
-		BusinessCode *int64 `json:"BusinessCode,omitempty" name:"BusinessCode"`
-
-		// 线索处理结果描述
-		BusinessMsg *string `json:"BusinessMsg,omitempty" name:"BusinessMsg"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreateLeadResponseParams `json:"Response"`
 }
 
 func (r *CreateLeadResponse) ToJsonString() string {
@@ -575,7 +673,6 @@ func (r *CreateLeadResponse) FromJsonString(s string) error {
 }
 
 type CrmStatisticsData struct {
-
 	// 新增线索
 	LeadCnt *uint64 `json:"LeadCnt,omitempty" name:"LeadCnt"`
 
@@ -602,7 +699,6 @@ type CrmStatisticsData struct {
 }
 
 type CustomerActionEventDetail struct {
-
 	// 事件码
 	EventCode *string `json:"EventCode,omitempty" name:"EventCode"`
 
@@ -629,7 +725,6 @@ type CustomerActionEventDetail struct {
 }
 
 type DealerInfo struct {
-
 	// 企微SaaS平台经销商id
 	DealerId *uint64 `json:"DealerId,omitempty" name:"DealerId"`
 
@@ -638,7 +733,6 @@ type DealerInfo struct {
 }
 
 type ExternalContact struct {
-
 	// 外部联系人的userId
 	ExternalUserId *string `json:"ExternalUserId,omitempty" name:"ExternalUserId"`
 
@@ -661,7 +755,6 @@ type ExternalContact struct {
 }
 
 type ExternalContactSimpleInfo struct {
-
 	// 外部联系人的userId
 	ExternalUserId *string `json:"ExternalUserId,omitempty" name:"ExternalUserId"`
 
@@ -677,7 +770,6 @@ type ExternalContactSimpleInfo struct {
 }
 
 type ExternalContactTag struct {
-
 	// 该成员添加此外部联系人所打标签的分组名称（标签功能需要企业微信升级到2.7.5及以上版本）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	GroupName *string `json:"GroupName,omitempty" name:"GroupName"`
@@ -696,7 +788,6 @@ type ExternalContactTag struct {
 }
 
 type ExternalUserEventInfo struct {
-
 	// 事件编码, 添加外部联系人(ADD_EXTERNAL_CUSTOMER)/成员删除外部联系人(DELETE_EXTERNAL_CUSTOMER)/外部联系人删除成员(DELETE_FOLLOW_USER)
 	EventCode *string `json:"EventCode,omitempty" name:"EventCode"`
 
@@ -711,7 +802,6 @@ type ExternalUserEventInfo struct {
 }
 
 type ExternalUserMappingInfo struct {
-
 	// 企业主体对应的外部联系人userId
 	CorpExternalUserId *string `json:"CorpExternalUserId,omitempty" name:"CorpExternalUserId"`
 
@@ -721,7 +811,6 @@ type ExternalUserMappingInfo struct {
 }
 
 type FollowUser struct {
-
 	// 添加了此外部联系人的企业成员userid
 	UserId *string `json:"UserId,omitempty" name:"UserId"`
 
@@ -748,7 +837,6 @@ type FollowUser struct {
 }
 
 type LicenseInfo struct {
-
 	// license编号
 	License *string `json:"License,omitempty" name:"License"`
 
@@ -778,7 +866,6 @@ type LicenseInfo struct {
 }
 
 type LiveCodeDetail struct {
-
 	// 活码id
 	LiveCodeId *uint64 `json:"LiveCodeId,omitempty" name:"LiveCodeId"`
 
@@ -814,7 +901,6 @@ type LiveCodeDetail struct {
 }
 
 type MaterialInfo struct {
-
 	// 素材id
 	MaterialId *uint64 `json:"MaterialId,omitempty" name:"MaterialId"`
 
@@ -827,7 +913,6 @@ type MaterialInfo struct {
 }
 
 type MiniAppCodeInfo struct {
-
 	// 主键id
 	Id *uint64 `json:"Id,omitempty" name:"Id"`
 
@@ -850,9 +935,21 @@ type MiniAppCodeInfo struct {
 	UpdateTime *uint64 `json:"UpdateTime,omitempty" name:"UpdateTime"`
 }
 
+// Predefined struct for user
+type QueryActivityJoinListRequestParams struct {
+	// 活动id
+	ActivityId *int64 `json:"ActivityId,omitempty" name:"ActivityId"`
+
+	// 分页游标，对应结果返回的NextCursor,首次请求保持为空
+	Cursor *string `json:"Cursor,omitempty" name:"Cursor"`
+
+	// 单页数据限制
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
 type QueryActivityJoinListRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 活动id
 	ActivityId *int64 `json:"ActivityId,omitempty" name:"ActivityId"`
 
@@ -884,21 +981,23 @@ func (r *QueryActivityJoinListRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type QueryActivityJoinListResponseParams struct {
+	// 分页游标
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NextCursor *string `json:"NextCursor,omitempty" name:"NextCursor"`
+
+	// 活码列表响应参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PageData []*ActivityJoinDetail `json:"PageData,omitempty" name:"PageData"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type QueryActivityJoinListResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 分页游标
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		NextCursor *string `json:"NextCursor,omitempty" name:"NextCursor"`
-
-		// 活码列表响应参数
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		PageData []*ActivityJoinDetail `json:"PageData,omitempty" name:"PageData"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *QueryActivityJoinListResponseParams `json:"Response"`
 }
 
 func (r *QueryActivityJoinListResponse) ToJsonString() string {
@@ -912,9 +1011,18 @@ func (r *QueryActivityJoinListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type QueryActivityListRequestParams struct {
+	// 分页游标，对应结果返回的NextCursor,首次请求保持为空
+	Cursor *string `json:"Cursor,omitempty" name:"Cursor"`
+
+	// 单页数据限制
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
 type QueryActivityListRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 分页游标，对应结果返回的NextCursor,首次请求保持为空
 	Cursor *string `json:"Cursor,omitempty" name:"Cursor"`
 
@@ -942,21 +1050,23 @@ func (r *QueryActivityListRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type QueryActivityListResponseParams struct {
+	// 分页游标
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NextCursor *string `json:"NextCursor,omitempty" name:"NextCursor"`
+
+	// 活码列表响应参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PageData []*ActivityDetail `json:"PageData,omitempty" name:"PageData"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type QueryActivityListResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 分页游标
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		NextCursor *string `json:"NextCursor,omitempty" name:"NextCursor"`
-
-		// 活码列表响应参数
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		PageData []*ActivityDetail `json:"PageData,omitempty" name:"PageData"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *QueryActivityListResponseParams `json:"Response"`
 }
 
 func (r *QueryActivityListResponse) ToJsonString() string {
@@ -970,9 +1080,18 @@ func (r *QueryActivityListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type QueryActivityLiveCodeListRequestParams struct {
+	// 用于分页查询的游标，字符串类型，由上一次调用返回，首次调用可不填
+	Cursor *string `json:"Cursor,omitempty" name:"Cursor"`
+
+	// 返回的最大记录数，整型，最大值100，默认值50，超过最大值时取最大值
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
 type QueryActivityLiveCodeListRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 用于分页查询的游标，字符串类型，由上一次调用返回，首次调用可不填
 	Cursor *string `json:"Cursor,omitempty" name:"Cursor"`
 
@@ -1000,21 +1119,23 @@ func (r *QueryActivityLiveCodeListRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type QueryActivityLiveCodeListResponseParams struct {
+	// 分页游标，再下次请求时填写以获取之后分页的记录，如果已经没有更多的数据则返回空
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NextCursor *string `json:"NextCursor,omitempty" name:"NextCursor"`
+
+	// 活码列表响应参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PageData []*LiveCodeDetail `json:"PageData,omitempty" name:"PageData"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type QueryActivityLiveCodeListResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 分页游标，再下次请求时填写以获取之后分页的记录，如果已经没有更多的数据则返回空
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		NextCursor *string `json:"NextCursor,omitempty" name:"NextCursor"`
-
-		// 活码列表响应参数
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		PageData []*LiveCodeDetail `json:"PageData,omitempty" name:"PageData"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *QueryActivityLiveCodeListResponseParams `json:"Response"`
 }
 
 func (r *QueryActivityLiveCodeListResponse) ToJsonString() string {
@@ -1028,9 +1149,18 @@ func (r *QueryActivityLiveCodeListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type QueryChannelCodeListRequestParams struct {
+	// 用于分页查询的游标，字符串类型，由上一次调用返回，首次调用可不填
+	Cursor *string `json:"Cursor,omitempty" name:"Cursor"`
+
+	// 返回的最大记录数，整型，最大值100，默认值50，超过最大值时取最大值
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
 type QueryChannelCodeListRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 用于分页查询的游标，字符串类型，由上一次调用返回，首次调用可不填
 	Cursor *string `json:"Cursor,omitempty" name:"Cursor"`
 
@@ -1058,21 +1188,23 @@ func (r *QueryChannelCodeListRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type QueryChannelCodeListResponseParams struct {
+	// 分页游标，再下次请求时填写以获取之后分页的记录，如果已经没有更多的数据则返回空
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NextCursor *string `json:"NextCursor,omitempty" name:"NextCursor"`
+
+	// 活码列表响应参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PageData []*ChannelCodeInnerDetail `json:"PageData,omitempty" name:"PageData"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type QueryChannelCodeListResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 分页游标，再下次请求时填写以获取之后分页的记录，如果已经没有更多的数据则返回空
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		NextCursor *string `json:"NextCursor,omitempty" name:"NextCursor"`
-
-		// 活码列表响应参数
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		PageData []*ChannelCodeInnerDetail `json:"PageData,omitempty" name:"PageData"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *QueryChannelCodeListResponseParams `json:"Response"`
 }
 
 func (r *QueryChannelCodeListResponse) ToJsonString() string {
@@ -1086,9 +1218,18 @@ func (r *QueryChannelCodeListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type QueryChatArchivingListRequestParams struct {
+	// 用于分页查询的游标，字符串类型，由上一次调用返回，首次调用可不填
+	Cursor *string `json:"Cursor,omitempty" name:"Cursor"`
+
+	// 返回的最大记录数，整型，最大值100，默认值50，超过最大值时取最大值
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
 type QueryChatArchivingListRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 用于分页查询的游标，字符串类型，由上一次调用返回，首次调用可不填
 	Cursor *string `json:"Cursor,omitempty" name:"Cursor"`
 
@@ -1116,21 +1257,23 @@ func (r *QueryChatArchivingListRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type QueryChatArchivingListResponseParams struct {
+	// 分页游标，再下次请求时填写以获取之后分页的记录，如果已经没有更多的数据则返回空
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NextCursor *string `json:"NextCursor,omitempty" name:"NextCursor"`
+
+	// 会话存档列表响应参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PageData []*ChatArchivingDetail `json:"PageData,omitempty" name:"PageData"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type QueryChatArchivingListResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 分页游标，再下次请求时填写以获取之后分页的记录，如果已经没有更多的数据则返回空
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		NextCursor *string `json:"NextCursor,omitempty" name:"NextCursor"`
-
-		// 会话存档列表响应参数
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		PageData []*ChatArchivingDetail `json:"PageData,omitempty" name:"PageData"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *QueryChatArchivingListResponseParams `json:"Response"`
 }
 
 func (r *QueryChatArchivingListResponse) ToJsonString() string {
@@ -1144,9 +1287,18 @@ func (r *QueryChatArchivingListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type QueryClueInfoListRequestParams struct {
+	// 用于分页查询的游标，字符串类型，由上一次调用返回，首次调用可不填
+	Cursor *string `json:"Cursor,omitempty" name:"Cursor"`
+
+	// 返回的最大记录数，整型，最大值100，默认值50，超过最大值时取最大值
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
 type QueryClueInfoListRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 用于分页查询的游标，字符串类型，由上一次调用返回，首次调用可不填
 	Cursor *string `json:"Cursor,omitempty" name:"Cursor"`
 
@@ -1174,25 +1326,27 @@ func (r *QueryClueInfoListRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type QueryClueInfoListResponseParams struct {
+	// 线索信息列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PageData []*ClueInfoDetail `json:"PageData,omitempty" name:"PageData"`
+
+	// 分页游标，下次调用带上该值，则从当前的位置继续往后拉，以实现增量拉取。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NextCursor *string `json:"NextCursor,omitempty" name:"NextCursor"`
+
+	// 是否还有更多数据。0-否；1-是。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HasMore *uint64 `json:"HasMore,omitempty" name:"HasMore"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type QueryClueInfoListResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 线索信息列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		PageData []*ClueInfoDetail `json:"PageData,omitempty" name:"PageData"`
-
-		// 分页游标，下次调用带上该值，则从当前的位置继续往后拉，以实现增量拉取。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		NextCursor *string `json:"NextCursor,omitempty" name:"NextCursor"`
-
-		// 是否还有更多数据。0-否；1-是。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		HasMore *uint64 `json:"HasMore,omitempty" name:"HasMore"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *QueryClueInfoListResponseParams `json:"Response"`
 }
 
 func (r *QueryClueInfoListResponse) ToJsonString() string {
@@ -1206,9 +1360,30 @@ func (r *QueryClueInfoListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type QueryCrmStatisticsRequestParams struct {
+	// 查询开始时间， 单位秒
+	BeginTime *uint64 `json:"BeginTime,omitempty" name:"BeginTime"`
+
+	// 查询结束时间， 单位秒
+	EndTime *uint64 `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 用于分页查询的游标，字符串类型，由上一次调用返回，首次调用可不填
+	Cursor *string `json:"Cursor,omitempty" name:"Cursor"`
+
+	// 返回的最大记录数，整型，最大值100，默认值50，超过最大值时取最大值
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 请求的企业成员id，为空时默认全租户
+	SalesId *string `json:"SalesId,omitempty" name:"SalesId"`
+
+	// 请求的部门id，为空时默认全租户
+	OrgId *uint64 `json:"OrgId,omitempty" name:"OrgId"`
+}
+
 type QueryCrmStatisticsRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 查询开始时间， 单位秒
 	BeginTime *uint64 `json:"BeginTime,omitempty" name:"BeginTime"`
 
@@ -1252,21 +1427,23 @@ func (r *QueryCrmStatisticsRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type QueryCrmStatisticsResponseParams struct {
+	// 分页游标，再下次请求时填写以获取之后分页的记录，如果已经没有更多的数据则返回空
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NextCursor *string `json:"NextCursor,omitempty" name:"NextCursor"`
+
+	// CRM统计响应数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PageData []*CrmStatisticsData `json:"PageData,omitempty" name:"PageData"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type QueryCrmStatisticsResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 分页游标，再下次请求时填写以获取之后分页的记录，如果已经没有更多的数据则返回空
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		NextCursor *string `json:"NextCursor,omitempty" name:"NextCursor"`
-
-		// CRM统计响应数据
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		PageData []*CrmStatisticsData `json:"PageData,omitempty" name:"PageData"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *QueryCrmStatisticsResponseParams `json:"Response"`
 }
 
 func (r *QueryCrmStatisticsResponse) ToJsonString() string {
@@ -1280,9 +1457,24 @@ func (r *QueryCrmStatisticsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type QueryCustomerEventDetailStatisticsRequestParams struct {
+	// 查询开始时间， 单位秒
+	BeginTime *uint64 `json:"BeginTime,omitempty" name:"BeginTime"`
+
+	// 查询结束时间， 单位秒
+	EndTime *uint64 `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 用于分页查询的游标，字符串类型，由上一次调用返回，首次调用可不填
+	Cursor *string `json:"Cursor,omitempty" name:"Cursor"`
+
+	// 返回的最大记录数，整型，最大值100，默认值50，超过最大值时取最大值
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
 type QueryCustomerEventDetailStatisticsRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 查询开始时间， 单位秒
 	BeginTime *uint64 `json:"BeginTime,omitempty" name:"BeginTime"`
 
@@ -1318,21 +1510,23 @@ func (r *QueryCustomerEventDetailStatisticsRequest) FromJsonString(s string) err
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type QueryCustomerEventDetailStatisticsResponseParams struct {
+	// 分页游标，再下次请求时填写以获取之后分页的记录，如果已经没有更多的数据则返回空
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NextCursor *string `json:"NextCursor,omitempty" name:"NextCursor"`
+
+	// 外部联系人SaaS使用明细统计响应数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PageData []*CustomerActionEventDetail `json:"PageData,omitempty" name:"PageData"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type QueryCustomerEventDetailStatisticsResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 分页游标，再下次请求时填写以获取之后分页的记录，如果已经没有更多的数据则返回空
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		NextCursor *string `json:"NextCursor,omitempty" name:"NextCursor"`
-
-		// 外部联系人SaaS使用明细统计响应数据
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		PageData []*CustomerActionEventDetail `json:"PageData,omitempty" name:"PageData"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *QueryCustomerEventDetailStatisticsResponseParams `json:"Response"`
 }
 
 func (r *QueryCustomerEventDetailStatisticsResponse) ToJsonString() string {
@@ -1346,9 +1540,18 @@ func (r *QueryCustomerEventDetailStatisticsResponse) FromJsonString(s string) er
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type QueryDealerInfoListRequestParams struct {
+	// 用于分页查询的游标，字符串类型，由上一次调用返回，首次调用可不填
+	Cursor *string `json:"Cursor,omitempty" name:"Cursor"`
+
+	// 返回的最大记录数，整型，最大值100，默认值50，超过最大值时取最大值
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
 type QueryDealerInfoListRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 用于分页查询的游标，字符串类型，由上一次调用返回，首次调用可不填
 	Cursor *string `json:"Cursor,omitempty" name:"Cursor"`
 
@@ -1376,25 +1579,27 @@ func (r *QueryDealerInfoListRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type QueryDealerInfoListResponseParams struct {
+	// 经销商信息列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PageData []*DealerInfo `json:"PageData,omitempty" name:"PageData"`
+
+	// 分页游标，下次调用带上该值，则从当前的位置继续往后拉取新增的数据，以实现增量拉取。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NextCursor *string `json:"NextCursor,omitempty" name:"NextCursor"`
+
+	// 是否还有更多数据。0-否；1-是。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HasMore *uint64 `json:"HasMore,omitempty" name:"HasMore"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type QueryDealerInfoListResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 经销商信息列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		PageData []*DealerInfo `json:"PageData,omitempty" name:"PageData"`
-
-		// 分页游标，下次调用带上该值，则从当前的位置继续往后拉取新增的数据，以实现增量拉取。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		NextCursor *string `json:"NextCursor,omitempty" name:"NextCursor"`
-
-		// 是否还有更多数据。0-否；1-是。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		HasMore *uint64 `json:"HasMore,omitempty" name:"HasMore"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *QueryDealerInfoListResponseParams `json:"Response"`
 }
 
 func (r *QueryDealerInfoListResponse) ToJsonString() string {
@@ -1408,9 +1613,21 @@ func (r *QueryDealerInfoListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type QueryExternalContactDetailRequestParams struct {
+	// 外部联系人的userid，注意不是企业成员的帐号
+	ExternalUserId *string `json:"ExternalUserId,omitempty" name:"ExternalUserId"`
+
+	// 用于分页查询的游标，字符串类型，由上一次调用返回，首次调用可不填。当客户在企业内的跟进人超过500人时需要使用cursor参数进行分页获取
+	Cursor *string `json:"Cursor,omitempty" name:"Cursor"`
+
+	// 当前接口Limit不需要传参， 保留Limit只是为了保持向后兼容性， Limit默认值为500，当返回结果超过500时， NextCursor才有返回值
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+}
+
 type QueryExternalContactDetailRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 外部联系人的userid，注意不是企业成员的帐号
 	ExternalUserId *string `json:"ExternalUserId,omitempty" name:"ExternalUserId"`
 
@@ -1442,25 +1659,27 @@ func (r *QueryExternalContactDetailRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type QueryExternalContactDetailResponseParams struct {
+	// 分页游标，再下次请求时填写以获取之后分页的记录，如果已经没有更多的数据则返回空
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NextCursor *string `json:"NextCursor,omitempty" name:"NextCursor"`
+
+	// 客户信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Customer *ExternalContact `json:"Customer,omitempty" name:"Customer"`
+
+	// 添加了此外部联系人的企业成员信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FollowUser []*FollowUser `json:"FollowUser,omitempty" name:"FollowUser"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type QueryExternalContactDetailResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 分页游标，再下次请求时填写以获取之后分页的记录，如果已经没有更多的数据则返回空
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		NextCursor *string `json:"NextCursor,omitempty" name:"NextCursor"`
-
-		// 客户信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		Customer *ExternalContact `json:"Customer,omitempty" name:"Customer"`
-
-		// 添加了此外部联系人的企业成员信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		FollowUser []*FollowUser `json:"FollowUser,omitempty" name:"FollowUser"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *QueryExternalContactDetailResponseParams `json:"Response"`
 }
 
 func (r *QueryExternalContactDetailResponse) ToJsonString() string {
@@ -1474,9 +1693,18 @@ func (r *QueryExternalContactDetailResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type QueryExternalContactListRequestParams struct {
+	// 用于分页查询的游标，字符串类型，由上一次调用返回，首次调用可不填
+	Cursor *string `json:"Cursor,omitempty" name:"Cursor"`
+
+	// 返回的最大记录数，整型，最大值100，默认值50，超过最大值时取最大值
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
 type QueryExternalContactListRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 用于分页查询的游标，字符串类型，由上一次调用返回，首次调用可不填
 	Cursor *string `json:"Cursor,omitempty" name:"Cursor"`
 
@@ -1504,21 +1732,23 @@ func (r *QueryExternalContactListRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type QueryExternalContactListResponseParams struct {
+	// 外部联系人信息列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PageData []*ExternalContactSimpleInfo `json:"PageData,omitempty" name:"PageData"`
+
+	// 分页游标，再下次请求时填写以获取之后分页的记录，如果已经没有更多的数据则返回空
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NextCursor *string `json:"NextCursor,omitempty" name:"NextCursor"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type QueryExternalContactListResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 外部联系人信息列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		PageData []*ExternalContactSimpleInfo `json:"PageData,omitempty" name:"PageData"`
-
-		// 分页游标，再下次请求时填写以获取之后分页的记录，如果已经没有更多的数据则返回空
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		NextCursor *string `json:"NextCursor,omitempty" name:"NextCursor"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *QueryExternalContactListResponseParams `json:"Response"`
 }
 
 func (r *QueryExternalContactListResponse) ToJsonString() string {
@@ -1532,9 +1762,24 @@ func (r *QueryExternalContactListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type QueryExternalUserEventListRequestParams struct {
+	// 查询开始时间， 单位秒
+	BeginTime *uint64 `json:"BeginTime,omitempty" name:"BeginTime"`
+
+	// 查询结束时间， 单位秒
+	EndTime *uint64 `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 用于分页查询的游标，字符串类型，由上一次调用返回，首次调用可不填
+	Cursor *string `json:"Cursor,omitempty" name:"Cursor"`
+
+	// 返回的最大记录数，整型，最大值100，默认值50，超过最大值时取最大值
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
 type QueryExternalUserEventListRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 查询开始时间， 单位秒
 	BeginTime *uint64 `json:"BeginTime,omitempty" name:"BeginTime"`
 
@@ -1570,21 +1815,23 @@ func (r *QueryExternalUserEventListRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type QueryExternalUserEventListResponseParams struct {
+	// 分页游标，再下次请求时填写以获取之后分页的记录，如果已经没有更多的数据则返回空
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NextCursor *string `json:"NextCursor,omitempty" name:"NextCursor"`
+
+	// 外部联系人事件信息响应数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PageData []*ExternalUserEventInfo `json:"PageData,omitempty" name:"PageData"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type QueryExternalUserEventListResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 分页游标，再下次请求时填写以获取之后分页的记录，如果已经没有更多的数据则返回空
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		NextCursor *string `json:"NextCursor,omitempty" name:"NextCursor"`
-
-		// 外部联系人事件信息响应数据
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		PageData []*ExternalUserEventInfo `json:"PageData,omitempty" name:"PageData"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *QueryExternalUserEventListResponseParams `json:"Response"`
 }
 
 func (r *QueryExternalUserEventListResponse) ToJsonString() string {
@@ -1598,9 +1845,15 @@ func (r *QueryExternalUserEventListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type QueryExternalUserMappingInfoRequestParams struct {
+	// 企业主体对应的外部联系人id列表，列表长度限制最大为50。
+	CorpExternalUserIdList []*string `json:"CorpExternalUserIdList,omitempty" name:"CorpExternalUserIdList"`
+}
+
 type QueryExternalUserMappingInfoRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 企业主体对应的外部联系人id列表，列表长度限制最大为50。
 	CorpExternalUserIdList []*string `json:"CorpExternalUserIdList,omitempty" name:"CorpExternalUserIdList"`
 }
@@ -1624,17 +1877,19 @@ func (r *QueryExternalUserMappingInfoRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type QueryExternalUserMappingInfoResponseParams struct {
+	// 外部联系人映射信息, 只返回映射成功的记录
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExternalUserIdMapping []*ExternalUserMappingInfo `json:"ExternalUserIdMapping,omitempty" name:"ExternalUserIdMapping"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type QueryExternalUserMappingInfoResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 外部联系人映射信息, 只返回映射成功的记录
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		ExternalUserIdMapping []*ExternalUserMappingInfo `json:"ExternalUserIdMapping,omitempty" name:"ExternalUserIdMapping"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *QueryExternalUserMappingInfoResponseParams `json:"Response"`
 }
 
 func (r *QueryExternalUserMappingInfoResponse) ToJsonString() string {
@@ -1648,9 +1903,15 @@ func (r *QueryExternalUserMappingInfoResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type QueryLicenseInfoRequestParams struct {
+	// license编号
+	License *string `json:"License,omitempty" name:"License"`
+}
+
 type QueryLicenseInfoRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// license编号
 	License *string `json:"License,omitempty" name:"License"`
 }
@@ -1674,17 +1935,19 @@ func (r *QueryLicenseInfoRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type QueryLicenseInfoResponseParams struct {
+	// license响应信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LicenseInfo *LicenseInfo `json:"LicenseInfo,omitempty" name:"LicenseInfo"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type QueryLicenseInfoResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// license响应信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		LicenseInfo *LicenseInfo `json:"LicenseInfo,omitempty" name:"LicenseInfo"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *QueryLicenseInfoResponseParams `json:"Response"`
 }
 
 func (r *QueryLicenseInfoResponse) ToJsonString() string {
@@ -1698,9 +1961,21 @@ func (r *QueryLicenseInfoResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type QueryMaterialListRequestParams struct {
+	// 素材类型：0-图片，1-视频，3-文章，10-车型，11-名片
+	MaterialType *int64 `json:"MaterialType,omitempty" name:"MaterialType"`
+
+	// 用于分页查询的游标，字符串类型，由上一次调用返回，首次调用可不填
+	Cursor *string `json:"Cursor,omitempty" name:"Cursor"`
+
+	// 返回的最大记录数，整型，最大值100，默认值50，超过最大值时取最大值
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
 type QueryMaterialListRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 素材类型：0-图片，1-视频，3-文章，10-车型，11-名片
 	MaterialType *int64 `json:"MaterialType,omitempty" name:"MaterialType"`
 
@@ -1732,21 +2007,23 @@ func (r *QueryMaterialListRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type QueryMaterialListResponseParams struct {
+	// 分页游标，再下次请求时填写以获取之后分页的记录，如果已经没有更多的数据则返回空
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NextCursor *string `json:"NextCursor,omitempty" name:"NextCursor"`
+
+	// 企业素材列表响应数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PageData []*MaterialInfo `json:"PageData,omitempty" name:"PageData"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type QueryMaterialListResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 分页游标，再下次请求时填写以获取之后分页的记录，如果已经没有更多的数据则返回空
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		NextCursor *string `json:"NextCursor,omitempty" name:"NextCursor"`
-
-		// 企业素材列表响应数据
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		PageData []*MaterialInfo `json:"PageData,omitempty" name:"PageData"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *QueryMaterialListResponseParams `json:"Response"`
 }
 
 func (r *QueryMaterialListResponse) ToJsonString() string {
@@ -1760,9 +2037,18 @@ func (r *QueryMaterialListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type QueryMiniAppCodeListRequestParams struct {
+	// 用于分页查询的游标，字符串类型，由上一次调用返回，首次调用可不填
+	Cursor *string `json:"Cursor,omitempty" name:"Cursor"`
+
+	// 返回的最大记录数，整型，最大值100，默认值50，超过最大值时取最大值
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
 type QueryMiniAppCodeListRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 用于分页查询的游标，字符串类型，由上一次调用返回，首次调用可不填
 	Cursor *string `json:"Cursor,omitempty" name:"Cursor"`
 
@@ -1790,21 +2076,23 @@ func (r *QueryMiniAppCodeListRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type QueryMiniAppCodeListResponseParams struct {
+	// 分页游标，再下次请求时填写以获取之后分页的记录，如果已经没有更多的数据则返回空
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NextCursor *string `json:"NextCursor,omitempty" name:"NextCursor"`
+
+	// 小程序码列表响应数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PageData []*MiniAppCodeInfo `json:"PageData,omitempty" name:"PageData"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type QueryMiniAppCodeListResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 分页游标，再下次请求时填写以获取之后分页的记录，如果已经没有更多的数据则返回空
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		NextCursor *string `json:"NextCursor,omitempty" name:"NextCursor"`
-
-		// 小程序码列表响应数据
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		PageData []*MiniAppCodeInfo `json:"PageData,omitempty" name:"PageData"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *QueryMiniAppCodeListResponseParams `json:"Response"`
 }
 
 func (r *QueryMiniAppCodeListResponse) ToJsonString() string {
@@ -1818,9 +2106,24 @@ func (r *QueryMiniAppCodeListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type QueryStaffEventDetailStatisticsRequestParams struct {
+	// 查询开始时间， 单位秒
+	BeginTime *uint64 `json:"BeginTime,omitempty" name:"BeginTime"`
+
+	// 查询结束时间， 单位秒
+	EndTime *uint64 `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 用于分页查询的游标，字符串类型，由上一次调用返回，首次调用可不填
+	Cursor *string `json:"Cursor,omitempty" name:"Cursor"`
+
+	// 返回的最大记录数，整型，最大值100，默认值50，超过最大值时取最大值
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
 type QueryStaffEventDetailStatisticsRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 查询开始时间， 单位秒
 	BeginTime *uint64 `json:"BeginTime,omitempty" name:"BeginTime"`
 
@@ -1856,21 +2159,23 @@ func (r *QueryStaffEventDetailStatisticsRequest) FromJsonString(s string) error 
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type QueryStaffEventDetailStatisticsResponseParams struct {
+	// 分页游标，再下次请求时填写以获取之后分页的记录，如果已经没有更多的数据则返回空
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NextCursor *string `json:"NextCursor,omitempty" name:"NextCursor"`
+
+	// 企业成员SaaS使用明细统计响应数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PageData []*SalesActionEventDetail `json:"PageData,omitempty" name:"PageData"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type QueryStaffEventDetailStatisticsResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 分页游标，再下次请求时填写以获取之后分页的记录，如果已经没有更多的数据则返回空
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		NextCursor *string `json:"NextCursor,omitempty" name:"NextCursor"`
-
-		// 企业成员SaaS使用明细统计响应数据
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		PageData []*SalesActionEventDetail `json:"PageData,omitempty" name:"PageData"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *QueryStaffEventDetailStatisticsResponseParams `json:"Response"`
 }
 
 func (r *QueryStaffEventDetailStatisticsResponse) ToJsonString() string {
@@ -1884,9 +2189,18 @@ func (r *QueryStaffEventDetailStatisticsResponse) FromJsonString(s string) error
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type QueryUserInfoListRequestParams struct {
+	// 用于分页查询的游标，字符串类型，由上一次调用返回，首次调用可不填
+	Cursor *string `json:"Cursor,omitempty" name:"Cursor"`
+
+	// 返回的最大记录数，整型，最大值100，默认值50，超过最大值时取最大值
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
 type QueryUserInfoListRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 用于分页查询的游标，字符串类型，由上一次调用返回，首次调用可不填
 	Cursor *string `json:"Cursor,omitempty" name:"Cursor"`
 
@@ -1914,21 +2228,23 @@ func (r *QueryUserInfoListRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type QueryUserInfoListResponseParams struct {
+	// 分页游标，再下次请求时填写以获取之后分页的记录，如果已经没有更多的数据则返回空
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NextCursor *string `json:"NextCursor,omitempty" name:"NextCursor"`
+
+	// 企业成员信息列表响应数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PageData []*CorpUserInfo `json:"PageData,omitempty" name:"PageData"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type QueryUserInfoListResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 分页游标，再下次请求时填写以获取之后分页的记录，如果已经没有更多的数据则返回空
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		NextCursor *string `json:"NextCursor,omitempty" name:"NextCursor"`
-
-		// 企业成员信息列表响应数据
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		PageData []*CorpUserInfo `json:"PageData,omitempty" name:"PageData"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *QueryUserInfoListResponseParams `json:"Response"`
 }
 
 func (r *QueryUserInfoListResponse) ToJsonString() string {
@@ -1942,9 +2258,18 @@ func (r *QueryUserInfoListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type QueryVehicleInfoListRequestParams struct {
+	// 用于分页查询的游标，字符串类型，由上一次调用返回，首次调用可不填
+	Cursor *string `json:"Cursor,omitempty" name:"Cursor"`
+
+	// 返回的最大记录数，整型，最大值100，默认值50，超过最大值时取最大值
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
 type QueryVehicleInfoListRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 用于分页查询的游标，字符串类型，由上一次调用返回，首次调用可不填
 	Cursor *string `json:"Cursor,omitempty" name:"Cursor"`
 
@@ -1972,25 +2297,27 @@ func (r *QueryVehicleInfoListRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type QueryVehicleInfoListResponseParams struct {
+	// 车系车型信息列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PageData []*VehicleInfo `json:"PageData,omitempty" name:"PageData"`
+
+	// 分页游标，下次调用带上该值，则从当前的位置继续往后拉取新增的数据，以实现增量拉取。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NextCursor *string `json:"NextCursor,omitempty" name:"NextCursor"`
+
+	// 是否还有更多数据。0-否；1-是。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HasMore *uint64 `json:"HasMore,omitempty" name:"HasMore"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type QueryVehicleInfoListResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 车系车型信息列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		PageData []*VehicleInfo `json:"PageData,omitempty" name:"PageData"`
-
-		// 分页游标，下次调用带上该值，则从当前的位置继续往后拉取新增的数据，以实现增量拉取。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		NextCursor *string `json:"NextCursor,omitempty" name:"NextCursor"`
-
-		// 是否还有更多数据。0-否；1-是。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		HasMore *uint64 `json:"HasMore,omitempty" name:"HasMore"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *QueryVehicleInfoListResponseParams `json:"Response"`
 }
 
 func (r *QueryVehicleInfoListResponse) ToJsonString() string {
@@ -2005,7 +2332,6 @@ func (r *QueryVehicleInfoListResponse) FromJsonString(s string) error {
 }
 
 type SalesActionEventDetail struct {
-
 	// 事件码
 	EventCode *string `json:"EventCode,omitempty" name:"EventCode"`
 
@@ -2029,7 +2355,6 @@ type SalesActionEventDetail struct {
 }
 
 type TagDetailInfo struct {
-
 	// 标签名称
 	TagName *string `json:"TagName,omitempty" name:"TagName"`
 
@@ -2047,7 +2372,6 @@ type TagDetailInfo struct {
 }
 
 type TagGroup struct {
-
 	// 企微标签组id
 	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
 
@@ -2068,7 +2392,6 @@ type TagGroup struct {
 }
 
 type TagInfo struct {
-
 	// 标签名称, 最大长度限制15个字符
 	TagName *string `json:"TagName,omitempty" name:"TagName"`
 
@@ -2077,7 +2400,6 @@ type TagInfo struct {
 }
 
 type VehicleInfo struct {
-
 	// 品牌id
 	BrandId *uint64 `json:"BrandId,omitempty" name:"BrandId"`
 
@@ -2098,7 +2420,6 @@ type VehicleInfo struct {
 }
 
 type WeComTagDetail struct {
-
 	// 标签分组名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	GroupName *string `json:"GroupName,omitempty" name:"GroupName"`

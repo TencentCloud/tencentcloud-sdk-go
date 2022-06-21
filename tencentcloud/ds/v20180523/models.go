@@ -20,9 +20,27 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+// Predefined struct for user
+type CheckVcodeRequestParams struct {
+	// 模块名VerifyCode
+	Module *string `json:"Module,omitempty" name:"Module"`
+
+	// 操作名CheckVcode
+	Operation *string `json:"Operation,omitempty" name:"Operation"`
+
+	// 帐号ID
+	AccountResId *string `json:"AccountResId,omitempty" name:"AccountResId"`
+
+	// 合同ID
+	ContractResId *string `json:"ContractResId,omitempty" name:"ContractResId"`
+
+	// 验证码
+	VerifyCode *string `json:"VerifyCode,omitempty" name:"VerifyCode"`
+}
+
 type CheckVcodeRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 模块名VerifyCode
 	Module *string `json:"Module,omitempty" name:"Module"`
 
@@ -62,13 +80,15 @@ func (r *CheckVcodeRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CheckVcodeResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CheckVcodeResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CheckVcodeResponseParams `json:"Response"`
 }
 
 func (r *CheckVcodeResponse) ToJsonString() string {
@@ -82,9 +102,36 @@ func (r *CheckVcodeResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateContractByUploadRequestParams struct {
+	// 模块名ContractMng
+	Module *string `json:"Module,omitempty" name:"Module"`
+
+	// 操作名CreateContractByUpload
+	Operation *string `json:"Operation,omitempty" name:"Operation"`
+
+	// 签署人信息
+	SignInfos []*SignInfo `json:"SignInfos,omitempty" name:"SignInfos"`
+
+	// 合同上传链接地址
+	ContractFile *string `json:"ContractFile,omitempty" name:"ContractFile"`
+
+	// 合同名称
+	ContractName *string `json:"ContractName,omitempty" name:"ContractName"`
+
+	// 备注
+	Remarks *string `json:"Remarks,omitempty" name:"Remarks"`
+
+	// 合同发起方腾讯云帐号ID（由平台自动填写）
+	Initiator *string `json:"Initiator,omitempty" name:"Initiator"`
+
+	// 合同长时间未签署的过期时间
+	ExpireTime *string `json:"ExpireTime,omitempty" name:"ExpireTime"`
+}
+
 type CreateContractByUploadRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 模块名ContractMng
 	Module *string `json:"Module,omitempty" name:"Module"`
 
@@ -136,16 +183,18 @@ func (r *CreateContractByUploadRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateContractByUploadResponseParams struct {
+	// 任务ID
+	TaskId *int64 `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreateContractByUploadResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 任务ID
-		TaskId *int64 `json:"TaskId,omitempty" name:"TaskId"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreateContractByUploadResponseParams `json:"Response"`
 }
 
 func (r *CreateContractByUploadResponse) ToJsonString() string {
@@ -159,9 +208,45 @@ func (r *CreateContractByUploadResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateEnterpriseAccountRequestParams struct {
+	// 模块名AccountMng
+	Module *string `json:"Module,omitempty" name:"Module"`
+
+	// 操作名CreateEnterpriseAccount
+	Operation *string `json:"Operation,omitempty" name:"Operation"`
+
+	// 企业用户名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 企业用户证件类型，8代表营业执照，详情请见常见问题
+	IdentType *int64 `json:"IdentType,omitempty" name:"IdentType"`
+
+	// 企业用户营业执照号码
+	IdentNo *string `json:"IdentNo,omitempty" name:"IdentNo"`
+
+	// 企业联系人手机号
+	MobilePhone *string `json:"MobilePhone,omitempty" name:"MobilePhone"`
+
+	// 经办人姓名
+	TransactorName *string `json:"TransactorName,omitempty" name:"TransactorName"`
+
+	// 经办人证件类型，0代表身份证
+	TransactorIdentType *int64 `json:"TransactorIdentType,omitempty" name:"TransactorIdentType"`
+
+	// 经办人证件号码
+	TransactorIdentNo *string `json:"TransactorIdentNo,omitempty" name:"TransactorIdentNo"`
+
+	// 经办人手机号
+	TransactorPhone *string `json:"TransactorPhone,omitempty" name:"TransactorPhone"`
+
+	// 企业联系人邮箱
+	Email *string `json:"Email,omitempty" name:"Email"`
+}
+
 type CreateEnterpriseAccountRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 模块名AccountMng
 	Module *string `json:"Module,omitempty" name:"Module"`
 
@@ -225,16 +310,18 @@ func (r *CreateEnterpriseAccountRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateEnterpriseAccountResponseParams struct {
+	// 帐号ID
+	AccountResId *string `json:"AccountResId,omitempty" name:"AccountResId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreateEnterpriseAccountResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 帐号ID
-		AccountResId *string `json:"AccountResId,omitempty" name:"AccountResId"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreateEnterpriseAccountResponseParams `json:"Response"`
 }
 
 func (r *CreateEnterpriseAccountResponse) ToJsonString() string {
@@ -248,9 +335,30 @@ func (r *CreateEnterpriseAccountResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreatePersonalAccountRequestParams struct {
+	// 模块名AccountMng
+	Module *string `json:"Module,omitempty" name:"Module"`
+
+	// 操作名CreatePersonalAccount
+	Operation *string `json:"Operation,omitempty" name:"Operation"`
+
+	// 个人用户姓名
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 个人用户证件类型，0代表身份证，详情请见常见问题
+	IdentType *int64 `json:"IdentType,omitempty" name:"IdentType"`
+
+	// 个人用户证件号码
+	IdentNo *string `json:"IdentNo,omitempty" name:"IdentNo"`
+
+	// 个人用户手机号
+	MobilePhone *string `json:"MobilePhone,omitempty" name:"MobilePhone"`
+}
+
 type CreatePersonalAccountRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 模块名AccountMng
 	Module *string `json:"Module,omitempty" name:"Module"`
 
@@ -294,16 +402,18 @@ func (r *CreatePersonalAccountRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreatePersonalAccountResponseParams struct {
+	// 账号ID
+	AccountResId *string `json:"AccountResId,omitempty" name:"AccountResId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreatePersonalAccountResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 账号ID
-		AccountResId *string `json:"AccountResId,omitempty" name:"AccountResId"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreatePersonalAccountResponseParams `json:"Response"`
 }
 
 func (r *CreatePersonalAccountResponse) ToJsonString() string {
@@ -317,9 +427,27 @@ func (r *CreatePersonalAccountResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateSealRequestParams struct {
+	// 模块名SealMng
+	Module *string `json:"Module,omitempty" name:"Module"`
+
+	// 操作名CreateSeal
+	Operation *string `json:"Operation,omitempty" name:"Operation"`
+
+	// 帐号ID
+	AccountResId *string `json:"AccountResId,omitempty" name:"AccountResId"`
+
+	// 签章链接，图片必须为png格式
+	ImgUrl *string `json:"ImgUrl,omitempty" name:"ImgUrl"`
+
+	// 图片数据，base64编码
+	ImgData *string `json:"ImgData,omitempty" name:"ImgData"`
+}
+
 type CreateSealRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 模块名SealMng
 	Module *string `json:"Module,omitempty" name:"Module"`
 
@@ -359,16 +487,18 @@ func (r *CreateSealRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateSealResponseParams struct {
+	// 签章ID
+	SealResId *string `json:"SealResId,omitempty" name:"SealResId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreateSealResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 签章ID
-		SealResId *string `json:"SealResId,omitempty" name:"SealResId"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreateSealResponseParams `json:"Response"`
 }
 
 func (r *CreateSealResponse) ToJsonString() string {
@@ -382,9 +512,21 @@ func (r *CreateSealResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteAccountRequestParams struct {
+	// 模块名AccountMng
+	Module *string `json:"Module,omitempty" name:"Module"`
+
+	// 操作名DeleteAccount
+	Operation *string `json:"Operation,omitempty" name:"Operation"`
+
+	// 帐号ID列表
+	AccountList []*string `json:"AccountList,omitempty" name:"AccountList"`
+}
+
 type DeleteAccountRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 模块名AccountMng
 	Module *string `json:"Module,omitempty" name:"Module"`
 
@@ -416,19 +558,21 @@ func (r *DeleteAccountRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteAccountResponseParams struct {
+	// 删除成功帐号ID列表
+	DelSuccessList []*string `json:"DelSuccessList,omitempty" name:"DelSuccessList"`
+
+	// 删除失败帐号ID列表
+	DelFailedList []*string `json:"DelFailedList,omitempty" name:"DelFailedList"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DeleteAccountResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 删除成功帐号ID列表
-		DelSuccessList []*string `json:"DelSuccessList,omitempty" name:"DelSuccessList"`
-
-		// 删除失败帐号ID列表
-		DelFailedList []*string `json:"DelFailedList,omitempty" name:"DelFailedList"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DeleteAccountResponseParams `json:"Response"`
 }
 
 func (r *DeleteAccountResponse) ToJsonString() string {
@@ -442,9 +586,24 @@ func (r *DeleteAccountResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteSealRequestParams struct {
+	// 模块名SealMng
+	Module *string `json:"Module,omitempty" name:"Module"`
+
+	// 操作名DeleteSeal
+	Operation *string `json:"Operation,omitempty" name:"Operation"`
+
+	// 帐号ID
+	AccountResId *string `json:"AccountResId,omitempty" name:"AccountResId"`
+
+	// 签章ID
+	SealResId *string `json:"SealResId,omitempty" name:"SealResId"`
+}
+
 type DeleteSealRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 模块名SealMng
 	Module *string `json:"Module,omitempty" name:"Module"`
 
@@ -480,16 +639,18 @@ func (r *DeleteSealRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteSealResponseParams struct {
+	// 签章ID
+	SealResId *string `json:"SealResId,omitempty" name:"SealResId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DeleteSealResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 签章ID
-		SealResId *string `json:"SealResId,omitempty" name:"SealResId"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DeleteSealResponseParams `json:"Response"`
 }
 
 func (r *DeleteSealResponse) ToJsonString() string {
@@ -503,9 +664,21 @@ func (r *DeleteSealResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeTaskStatusRequestParams struct {
+	// 模块名CommonMng
+	Module *string `json:"Module,omitempty" name:"Module"`
+
+	// 操作名DescribeTaskStatus
+	Operation *string `json:"Operation,omitempty" name:"Operation"`
+
+	// 任务ID
+	TaskId *uint64 `json:"TaskId,omitempty" name:"TaskId"`
+}
+
 type DescribeTaskStatusRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 模块名CommonMng
 	Module *string `json:"Module,omitempty" name:"Module"`
 
@@ -537,19 +710,21 @@ func (r *DescribeTaskStatusRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeTaskStatusResponseParams struct {
+	// 任务结果
+	TaskResult *string `json:"TaskResult,omitempty" name:"TaskResult"`
+
+	// 任务类型，010代表合同上传结果，020代表合同下载结果
+	TaskType *string `json:"TaskType,omitempty" name:"TaskType"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeTaskStatusResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 任务结果
-		TaskResult *string `json:"TaskResult,omitempty" name:"TaskResult"`
-
-		// 任务类型，010代表合同上传结果，020代表合同下载结果
-		TaskType *string `json:"TaskType,omitempty" name:"TaskType"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeTaskStatusResponseParams `json:"Response"`
 }
 
 func (r *DescribeTaskStatusResponse) ToJsonString() string {
@@ -563,9 +738,21 @@ func (r *DescribeTaskStatusResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DownloadContractRequestParams struct {
+	// 模块名ContractMng
+	Module *string `json:"Module,omitempty" name:"Module"`
+
+	// 操作名DownloadContract
+	Operation *string `json:"Operation,omitempty" name:"Operation"`
+
+	// 合同ID
+	ContractResId *string `json:"ContractResId,omitempty" name:"ContractResId"`
+}
+
 type DownloadContractRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 模块名ContractMng
 	Module *string `json:"Module,omitempty" name:"Module"`
 
@@ -597,16 +784,18 @@ func (r *DownloadContractRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DownloadContractResponseParams struct {
+	// 任务ID
+	TaskId *int64 `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DownloadContractResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 任务ID
-		TaskId *int64 `json:"TaskId,omitempty" name:"TaskId"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DownloadContractResponseParams `json:"Response"`
 }
 
 func (r *DownloadContractResponse) ToJsonString() string {
@@ -620,9 +809,24 @@ func (r *DownloadContractResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type SendVcodeRequestParams struct {
+	// 模块名VerifyCode
+	Module *string `json:"Module,omitempty" name:"Module"`
+
+	// 操作名SendVcode
+	Operation *string `json:"Operation,omitempty" name:"Operation"`
+
+	// 合同ID
+	ContractResId *string `json:"ContractResId,omitempty" name:"ContractResId"`
+
+	// 帐号ID
+	AccountResId *string `json:"AccountResId,omitempty" name:"AccountResId"`
+}
+
 type SendVcodeRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 模块名VerifyCode
 	Module *string `json:"Module,omitempty" name:"Module"`
 
@@ -658,13 +862,15 @@ func (r *SendVcodeRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type SendVcodeResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type SendVcodeResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *SendVcodeResponseParams `json:"Response"`
 }
 
 func (r *SendVcodeResponse) ToJsonString() string {
@@ -678,9 +884,42 @@ func (r *SendVcodeResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type SignContractByCoordinateRequestParams struct {
+	// 模块名ContractMng
+	Module *string `json:"Module,omitempty" name:"Module"`
+
+	// 操作名SignContractByCoordinate
+	Operation *string `json:"Operation,omitempty" name:"Operation"`
+
+	// 合同ID
+	ContractResId *string `json:"ContractResId,omitempty" name:"ContractResId"`
+
+	// 帐户ID
+	AccountResId *string `json:"AccountResId,omitempty" name:"AccountResId"`
+
+	// 签署坐标，坐标原点在文件左下角，坐标单位为磅，坐标不得超过合同文件边界
+	SignLocations []*SignLocation `json:"SignLocations,omitempty" name:"SignLocations"`
+
+	// 授权时间（由平台自动填充）
+	AuthorizationTime *string `json:"AuthorizationTime,omitempty" name:"AuthorizationTime"`
+
+	// 授权IP地址（由平台自动填充）
+	Position *string `json:"Position,omitempty" name:"Position"`
+
+	// 签章ID
+	SealResId *string `json:"SealResId,omitempty" name:"SealResId"`
+
+	// 选用证书类型：1  表示RSA证书， 2 表示国密证书， 参数不传时默认为1
+	CertType *int64 `json:"CertType,omitempty" name:"CertType"`
+
+	// 签名图片，base64编码
+	ImageData *string `json:"ImageData,omitempty" name:"ImageData"`
+}
+
 type SignContractByCoordinateRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 模块名ContractMng
 	Module *string `json:"Module,omitempty" name:"Module"`
 
@@ -740,13 +979,15 @@ func (r *SignContractByCoordinateRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type SignContractByCoordinateResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type SignContractByCoordinateResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *SignContractByCoordinateResponseParams `json:"Response"`
 }
 
 func (r *SignContractByCoordinateResponse) ToJsonString() string {
@@ -760,9 +1001,42 @@ func (r *SignContractByCoordinateResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type SignContractByKeywordRequestParams struct {
+	// 模块名ContractMng
+	Module *string `json:"Module,omitempty" name:"Module"`
+
+	// 操作名SignContractByKeyword
+	Operation *string `json:"Operation,omitempty" name:"Operation"`
+
+	// 合同ID
+	ContractResId *string `json:"ContractResId,omitempty" name:"ContractResId"`
+
+	// 账户ID
+	AccountResId *string `json:"AccountResId,omitempty" name:"AccountResId"`
+
+	// 签署关键字，偏移坐标原点为关键字中心
+	SignKeyword *SignKeyword `json:"SignKeyword,omitempty" name:"SignKeyword"`
+
+	// 授权时间（由平台自动填充）
+	AuthorizationTime *string `json:"AuthorizationTime,omitempty" name:"AuthorizationTime"`
+
+	// 授权IP地址（由平台自动填充）
+	Position *string `json:"Position,omitempty" name:"Position"`
+
+	// 签章ID
+	SealResId *string `json:"SealResId,omitempty" name:"SealResId"`
+
+	// 选用证书类型：1  表示RSA证书， 2 表示国密证书， 参数不传时默认为1
+	CertType *int64 `json:"CertType,omitempty" name:"CertType"`
+
+	// 签名图片，base64编码
+	ImageData *string `json:"ImageData,omitempty" name:"ImageData"`
+}
+
 type SignContractByKeywordRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 模块名ContractMng
 	Module *string `json:"Module,omitempty" name:"Module"`
 
@@ -822,13 +1096,15 @@ func (r *SignContractByKeywordRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type SignContractByKeywordResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type SignContractByKeywordResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *SignContractByKeywordResponseParams `json:"Response"`
 }
 
 func (r *SignContractByKeywordResponse) ToJsonString() string {
@@ -843,7 +1119,6 @@ func (r *SignContractByKeywordResponse) FromJsonString(s string) error {
 }
 
 type SignInfo struct {
-
 	// 账户ID
 	AccountResId *string `json:"AccountResId,omitempty" name:"AccountResId"`
 
@@ -867,7 +1142,6 @@ type SignInfo struct {
 }
 
 type SignKeyword struct {
-
 	// 关键字
 	Keyword *string `json:"Keyword,omitempty" name:"Keyword"`
 
@@ -885,7 +1159,6 @@ type SignKeyword struct {
 }
 
 type SignLocation struct {
-
 	// 签名域页数
 	SignOnPage *string `json:"SignOnPage,omitempty" name:"SignOnPage"`
 

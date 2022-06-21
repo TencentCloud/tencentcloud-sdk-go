@@ -21,7 +21,6 @@ import (
 )
 
 type CbsInfo struct {
-
 	// cbs存储大小，单位TB
 	Size *int64 `json:"Size,omitempty" name:"Size"`
 
@@ -30,7 +29,6 @@ type CbsInfo struct {
 }
 
 type CosCapacity struct {
-
 	// 已购cos的总容量大小，单位GB
 	TotalCapacity *float64 `json:"TotalCapacity,omitempty" name:"TotalCapacity"`
 
@@ -42,7 +40,6 @@ type CosCapacity struct {
 }
 
 type CosInfo struct {
-
 	// COS存储大小，单位TB
 	Size *int64 `json:"Size,omitempty" name:"Size"`
 
@@ -50,9 +47,30 @@ type CosInfo struct {
 	Type *string `json:"Type,omitempty" name:"Type"`
 }
 
+// Predefined struct for user
+type CreateDedicatedClusterOrderRequestParams struct {
+	// 专用集群id
+	DedicatedClusterId *string `json:"DedicatedClusterId,omitempty" name:"DedicatedClusterId"`
+
+	// order关联的专用集群类型数组
+	DedicatedClusterTypes []*DedicatedClusterTypeInfo `json:"DedicatedClusterTypes,omitempty" name:"DedicatedClusterTypes"`
+
+	// order关联的cos存储信息
+	CosInfo *CosInfo `json:"CosInfo,omitempty" name:"CosInfo"`
+
+	// order关联的cbs存储信息
+	CbsInfo *CbsInfo `json:"CbsInfo,omitempty" name:"CbsInfo"`
+
+	// 购买来源，默认为cloudApi
+	PurchaseSource *string `json:"PurchaseSource,omitempty" name:"PurchaseSource"`
+
+	// 当调用API接口提交订单时，需要提交DedicatedClusterOrderId
+	DedicatedClusterOrderId *string `json:"DedicatedClusterOrderId,omitempty" name:"DedicatedClusterOrderId"`
+}
+
 type CreateDedicatedClusterOrderRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 专用集群id
 	DedicatedClusterId *string `json:"DedicatedClusterId,omitempty" name:"DedicatedClusterId"`
 
@@ -96,17 +114,19 @@ func (r *CreateDedicatedClusterOrderRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateDedicatedClusterOrderResponseParams struct {
+	// 专用集群订单id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DedicatedClusterOrderId *string `json:"DedicatedClusterOrderId,omitempty" name:"DedicatedClusterOrderId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreateDedicatedClusterOrderResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 专用集群订单id
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		DedicatedClusterOrderId *string `json:"DedicatedClusterOrderId,omitempty" name:"DedicatedClusterOrderId"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreateDedicatedClusterOrderResponseParams `json:"Response"`
 }
 
 func (r *CreateDedicatedClusterOrderResponse) ToJsonString() string {
@@ -120,9 +140,24 @@ func (r *CreateDedicatedClusterOrderResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateDedicatedClusterRequestParams struct {
+	// 专用集群所属的SiteId
+	SiteId *string `json:"SiteId,omitempty" name:"SiteId"`
+
+	// 专用集群的名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 专用集群所属的可用区
+	Zone *string `json:"Zone,omitempty" name:"Zone"`
+
+	// 专用集群的描述
+	Description *string `json:"Description,omitempty" name:"Description"`
+}
+
 type CreateDedicatedClusterRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 专用集群所属的SiteId
 	SiteId *string `json:"SiteId,omitempty" name:"SiteId"`
 
@@ -158,16 +193,18 @@ func (r *CreateDedicatedClusterRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateDedicatedClusterResponseParams struct {
+	// 创建的专用集群id
+	DedicatedClusterId *string `json:"DedicatedClusterId,omitempty" name:"DedicatedClusterId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreateDedicatedClusterResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 创建的专用集群id
-		DedicatedClusterId *string `json:"DedicatedClusterId,omitempty" name:"DedicatedClusterId"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreateDedicatedClusterResponseParams `json:"Response"`
 }
 
 func (r *CreateDedicatedClusterResponse) ToJsonString() string {
@@ -181,9 +218,89 @@ func (r *CreateDedicatedClusterResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateSiteRequestParams struct {
+	// 站点名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 站点所在国家
+	Country *string `json:"Country,omitempty" name:"Country"`
+
+	// 站点所在省份
+	Province *string `json:"Province,omitempty" name:"Province"`
+
+	// 站点所在城市
+	City *string `json:"City,omitempty" name:"City"`
+
+	// 站点所在地区的详细地址信息
+	AddressLine *string `json:"AddressLine,omitempty" name:"AddressLine"`
+
+	// 站点描述
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 注意事项
+	Note *string `json:"Note,omitempty" name:"Note"`
+
+	// 您将使用光纤类型将CDC设备连接到网络。有单模和多模两种选项。
+	FiberType *string `json:"FiberType,omitempty" name:"FiberType"`
+
+	// 您将CDC连接到网络时采用的光学标准。此字段取决于上行链路速度、光纤类型和到上游设备的距离。
+	OpticalStandard *string `json:"OpticalStandard,omitempty" name:"OpticalStandard"`
+
+	// 电源连接器类型
+	PowerConnectors *string `json:"PowerConnectors,omitempty" name:"PowerConnectors"`
+
+	// 从机架上方还是下方供电。
+	PowerFeedDrop *string `json:"PowerFeedDrop,omitempty" name:"PowerFeedDrop"`
+
+	// 最大承重(KG)
+	MaxWeight *int64 `json:"MaxWeight,omitempty" name:"MaxWeight"`
+
+	// 功耗(KW)
+	PowerDrawKva *int64 `json:"PowerDrawKva,omitempty" name:"PowerDrawKva"`
+
+	// 网络到腾讯云Region区域的上行链路速度
+	UplinkSpeedGbps *int64 `json:"UplinkSpeedGbps,omitempty" name:"UplinkSpeedGbps"`
+
+	// 将CDC连接到网络时，每台CDC网络设备(每个机架 2 台设备)使用的上行链路数量。
+	UplinkCount *int64 `json:"UplinkCount,omitempty" name:"UplinkCount"`
+
+	// 是否满足下面环境条件：
+	// 1、场地没有材料要求或验收标准会影响 CDC 设备配送和安装。
+	// 2、确定的机架位置包含:
+	// 温度范围为 41 到 104°F (5 到 40°C)。
+	// 湿度范围为 10°F (-12°C)和 8% RH (相对湿度)到 70°F(21°C)和 80% RH。
+	// 机架位置的气流方向为从前向后，且应具有足够的 CFM (每分钟立方英尺)。CFM 必须是 CDC 配置的 kVA 功耗值的 145.8 倍。
+	ConditionRequirement *bool `json:"ConditionRequirement,omitempty" name:"ConditionRequirement"`
+
+	// 是否满足下面的尺寸条件：
+	// 您的装货站台可以容纳一个机架箱(高 x 宽 x 深 = 94" x 54" x 48")。
+	// 您可以提供从机架(高 x 宽 x 深 = 80" x 24" x 48")交货地点到机架最终安置位置的明确通道。测量深度时，应包括站台、走廊通道、门、转弯、坡道、货梯，并将其他通道限制考虑在内。
+	// 在最终的 CDC安置位置，前部间隙可以为 48" 或更大，后部间隙可以为 24" 或更大。
+	DimensionRequirement *bool `json:"DimensionRequirement,omitempty" name:"DimensionRequirement"`
+
+	// 是否提供冗余的上游设备(交换机或路由器)，以便两台  网络设备都能连接到网络设备。
+	RedundantNetworking *bool `json:"RedundantNetworking,omitempty" name:"RedundantNetworking"`
+
+	// 站点所在地区的邮编
+	PostalCode *int64 `json:"PostalCode,omitempty" name:"PostalCode"`
+
+	// 站点所在地区的详细地址信息（补充）
+	OptionalAddressLine *string `json:"OptionalAddressLine,omitempty" name:"OptionalAddressLine"`
+
+	// 是否需要腾讯云团队协助完成机架支撑工作
+	NeedHelp *bool `json:"NeedHelp,omitempty" name:"NeedHelp"`
+
+	// 是否电源冗余
+	RedundantPower *bool `json:"RedundantPower,omitempty" name:"RedundantPower"`
+
+	// 上游断路器是否具备
+	BreakerRequirement *bool `json:"BreakerRequirement,omitempty" name:"BreakerRequirement"`
+}
+
 type CreateSiteRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 站点名称
 	Name *string `json:"Name,omitempty" name:"Name"`
 
@@ -303,16 +420,18 @@ func (r *CreateSiteRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateSiteResponseParams struct {
+	// 创建Site生成的id
+	SiteId *string `json:"SiteId,omitempty" name:"SiteId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreateSiteResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 创建Site生成的id
-		SiteId *string `json:"SiteId,omitempty" name:"SiteId"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreateSiteResponseParams `json:"Response"`
 }
 
 func (r *CreateSiteResponse) ToJsonString() string {
@@ -327,7 +446,6 @@ func (r *CreateSiteResponse) FromJsonString(s string) error {
 }
 
 type DedicatedCluster struct {
-
 	// 专用集群id。如"cluster-xxxxx"。
 	DedicatedClusterId *string `json:"DedicatedClusterId,omitempty" name:"DedicatedClusterId"`
 
@@ -352,7 +470,6 @@ type DedicatedCluster struct {
 }
 
 type DedicatedClusterInstanceType struct {
-
 	// 可用区
 	Zone *string `json:"Zone,omitempty" name:"Zone"`
 
@@ -400,7 +517,6 @@ type DedicatedClusterInstanceType struct {
 }
 
 type DedicatedClusterOrder struct {
-
 	// 专用集群id
 	DedicatedClusterId *string `json:"DedicatedClusterId,omitempty" name:"DedicatedClusterId"`
 
@@ -456,7 +572,6 @@ type DedicatedClusterOrder struct {
 }
 
 type DedicatedClusterOrderItem struct {
-
 	// 专用集群类型id
 	DedicatedClusterTypeId *string `json:"DedicatedClusterTypeId,omitempty" name:"DedicatedClusterTypeId"`
 
@@ -511,7 +626,6 @@ type DedicatedClusterOrderItem struct {
 }
 
 type DedicatedClusterType struct {
-
 	// 配置id
 	DedicatedClusterTypeId *string `json:"DedicatedClusterTypeId,omitempty" name:"DedicatedClusterTypeId"`
 
@@ -545,7 +659,6 @@ type DedicatedClusterType struct {
 }
 
 type DedicatedClusterTypeInfo struct {
-
 	// 集群类型Id
 	Id *string `json:"Id,omitempty" name:"Id"`
 
@@ -553,9 +666,15 @@ type DedicatedClusterTypeInfo struct {
 	Count *int64 `json:"Count,omitempty" name:"Count"`
 }
 
+// Predefined struct for user
+type DeleteDedicatedClustersRequestParams struct {
+	// 要删除的专用集群id
+	DedicatedClusterIds []*string `json:"DedicatedClusterIds,omitempty" name:"DedicatedClusterIds"`
+}
+
 type DeleteDedicatedClustersRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 要删除的专用集群id
 	DedicatedClusterIds []*string `json:"DedicatedClusterIds,omitempty" name:"DedicatedClusterIds"`
 }
@@ -579,13 +698,15 @@ func (r *DeleteDedicatedClustersRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteDedicatedClustersResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DeleteDedicatedClustersResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DeleteDedicatedClustersResponseParams `json:"Response"`
 }
 
 func (r *DeleteDedicatedClustersResponse) ToJsonString() string {
@@ -599,9 +720,15 @@ func (r *DeleteDedicatedClustersResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteSitesRequestParams struct {
+	// 要删除的站点id列表
+	SiteIds []*string `json:"SiteIds,omitempty" name:"SiteIds"`
+}
+
 type DeleteSitesRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 要删除的站点id列表
 	SiteIds []*string `json:"SiteIds,omitempty" name:"SiteIds"`
 }
@@ -625,13 +752,15 @@ func (r *DeleteSitesRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteSitesResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DeleteSitesResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DeleteSitesResponseParams `json:"Response"`
 }
 
 func (r *DeleteSitesResponse) ToJsonString() string {
@@ -645,9 +774,15 @@ func (r *DeleteSitesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeDedicatedClusterCosCapacityRequestParams struct {
+	// 查询的专用集群id
+	DedicatedClusterId *string `json:"DedicatedClusterId,omitempty" name:"DedicatedClusterId"`
+}
+
 type DescribeDedicatedClusterCosCapacityRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 查询的专用集群id
 	DedicatedClusterId *string `json:"DedicatedClusterId,omitempty" name:"DedicatedClusterId"`
 }
@@ -671,16 +806,18 @@ func (r *DescribeDedicatedClusterCosCapacityRequest) FromJsonString(s string) er
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeDedicatedClusterCosCapacityResponseParams struct {
+	// 本集群内cos容量信息，单位：‘GB’
+	CosCapacity *CosCapacity `json:"CosCapacity,omitempty" name:"CosCapacity"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeDedicatedClusterCosCapacityResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 本集群内cos容量信息，单位：‘GB’
-		CosCapacity *CosCapacity `json:"CosCapacity,omitempty" name:"CosCapacity"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeDedicatedClusterCosCapacityResponseParams `json:"Response"`
 }
 
 func (r *DescribeDedicatedClusterCosCapacityResponse) ToJsonString() string {
@@ -694,9 +831,15 @@ func (r *DescribeDedicatedClusterCosCapacityResponse) FromJsonString(s string) e
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeDedicatedClusterHostStatisticsRequestParams struct {
+	// 查询的专用集群id
+	DedicatedClusterId *string `json:"DedicatedClusterId,omitempty" name:"DedicatedClusterId"`
+}
+
 type DescribeDedicatedClusterHostStatisticsRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 查询的专用集群id
 	DedicatedClusterId *string `json:"DedicatedClusterId,omitempty" name:"DedicatedClusterId"`
 }
@@ -720,16 +863,18 @@ func (r *DescribeDedicatedClusterHostStatisticsRequest) FromJsonString(s string)
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeDedicatedClusterHostStatisticsResponseParams struct {
+	// 该集群内宿主机的统计信息列表
+	HostStatisticSet []*HostStatistic `json:"HostStatisticSet,omitempty" name:"HostStatisticSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeDedicatedClusterHostStatisticsResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 该集群内宿主机的统计信息列表
-		HostStatisticSet []*HostStatistic `json:"HostStatisticSet,omitempty" name:"HostStatisticSet"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeDedicatedClusterHostStatisticsResponseParams `json:"Response"`
 }
 
 func (r *DescribeDedicatedClusterHostStatisticsResponse) ToJsonString() string {
@@ -743,9 +888,21 @@ func (r *DescribeDedicatedClusterHostStatisticsResponse) FromJsonString(s string
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeDedicatedClusterHostsRequestParams struct {
+	// 集群id
+	DedicatedClusterId *string `json:"DedicatedClusterId,omitempty" name:"DedicatedClusterId"`
+
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回数量，默认为20
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+}
+
 type DescribeDedicatedClusterHostsRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 集群id
 	DedicatedClusterId *string `json:"DedicatedClusterId,omitempty" name:"DedicatedClusterId"`
 
@@ -777,20 +934,22 @@ func (r *DescribeDedicatedClusterHostsRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeDedicatedClusterHostsResponseParams struct {
+	// 宿主机信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HostInfoSet []*HostInfo `json:"HostInfoSet,omitempty" name:"HostInfoSet"`
+
+	// 宿主机总数
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeDedicatedClusterHostsResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 宿主机信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		HostInfoSet []*HostInfo `json:"HostInfoSet,omitempty" name:"HostInfoSet"`
-
-		// 宿主机总数
-		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeDedicatedClusterHostsResponseParams `json:"Response"`
 }
 
 func (r *DescribeDedicatedClusterHostsResponse) ToJsonString() string {
@@ -804,9 +963,15 @@ func (r *DescribeDedicatedClusterHostsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeDedicatedClusterInstanceTypesRequestParams struct {
+	// 查询的专用集群id
+	DedicatedClusterId *string `json:"DedicatedClusterId,omitempty" name:"DedicatedClusterId"`
+}
+
 type DescribeDedicatedClusterInstanceTypesRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 查询的专用集群id
 	DedicatedClusterId *string `json:"DedicatedClusterId,omitempty" name:"DedicatedClusterId"`
 }
@@ -830,16 +995,18 @@ func (r *DescribeDedicatedClusterInstanceTypesRequest) FromJsonString(s string) 
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeDedicatedClusterInstanceTypesResponseParams struct {
+	// 支持的实例规格列表
+	DedicatedClusterInstanceTypeSet []*DedicatedClusterInstanceType `json:"DedicatedClusterInstanceTypeSet,omitempty" name:"DedicatedClusterInstanceTypeSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeDedicatedClusterInstanceTypesResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 支持的实例规格列表
-		DedicatedClusterInstanceTypeSet []*DedicatedClusterInstanceType `json:"DedicatedClusterInstanceTypeSet,omitempty" name:"DedicatedClusterInstanceTypeSet"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeDedicatedClusterInstanceTypesResponseParams `json:"Response"`
 }
 
 func (r *DescribeDedicatedClusterInstanceTypesResponse) ToJsonString() string {
@@ -853,9 +1020,30 @@ func (r *DescribeDedicatedClusterInstanceTypesResponse) FromJsonString(s string)
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeDedicatedClusterOrdersRequestParams struct {
+	// 按照专用集群id过滤
+	DedicatedClusterIds []*string `json:"DedicatedClusterIds,omitempty" name:"DedicatedClusterIds"`
+
+	// 按照专用集群订单id过滤
+	DedicatedClusterOrderIds *string `json:"DedicatedClusterOrderIds,omitempty" name:"DedicatedClusterOrderIds"`
+
+	// 偏移量，默认为0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回数量，默认为20，最大值为100。关于`Limit`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 订单状态为过滤条件：PENDING INCONSTRUCTION DELIVERING DELIVERED EXPIRED CANCELLED  OFFLINE
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 订单类型为过滤条件：CREATE  EXTEND
+	ActionType *string `json:"ActionType,omitempty" name:"ActionType"`
+}
+
 type DescribeDedicatedClusterOrdersRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 按照专用集群id过滤
 	DedicatedClusterIds []*string `json:"DedicatedClusterIds,omitempty" name:"DedicatedClusterIds"`
 
@@ -899,19 +1087,21 @@ func (r *DescribeDedicatedClusterOrdersRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeDedicatedClusterOrdersResponseParams struct {
+	// 专用集群订单列表
+	DedicatedClusterOrderSet []*DedicatedClusterOrder `json:"DedicatedClusterOrderSet,omitempty" name:"DedicatedClusterOrderSet"`
+
+	// 符合条件的专用集群订单总数
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeDedicatedClusterOrdersResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 专用集群订单列表
-		DedicatedClusterOrderSet []*DedicatedClusterOrder `json:"DedicatedClusterOrderSet,omitempty" name:"DedicatedClusterOrderSet"`
-
-		// 符合条件的专用集群订单总数
-		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeDedicatedClusterOrdersResponseParams `json:"Response"`
 }
 
 func (r *DescribeDedicatedClusterOrdersResponse) ToJsonString() string {
@@ -925,9 +1115,15 @@ func (r *DescribeDedicatedClusterOrdersResponse) FromJsonString(s string) error 
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeDedicatedClusterOverviewRequestParams struct {
+	// 集群id
+	DedicatedClusterId *string `json:"DedicatedClusterId,omitempty" name:"DedicatedClusterId"`
+}
+
 type DescribeDedicatedClusterOverviewRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 集群id
 	DedicatedClusterId *string `json:"DedicatedClusterId,omitempty" name:"DedicatedClusterId"`
 }
@@ -951,19 +1147,21 @@ func (r *DescribeDedicatedClusterOverviewRequest) FromJsonString(s string) error
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeDedicatedClusterOverviewResponseParams struct {
+	// 云服务器数量
+	CvmCount *uint64 `json:"CvmCount,omitempty" name:"CvmCount"`
+
+	// 宿主机数量
+	HostCount *uint64 `json:"HostCount,omitempty" name:"HostCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeDedicatedClusterOverviewResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 云服务器数量
-		CvmCount *uint64 `json:"CvmCount,omitempty" name:"CvmCount"`
-
-		// 宿主机数量
-		HostCount *uint64 `json:"HostCount,omitempty" name:"HostCount"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeDedicatedClusterOverviewResponseParams `json:"Response"`
 }
 
 func (r *DescribeDedicatedClusterOverviewResponse) ToJsonString() string {
@@ -977,9 +1175,27 @@ func (r *DescribeDedicatedClusterOverviewResponse) FromJsonString(s string) erro
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeDedicatedClusterTypesRequestParams struct {
+	// 模糊匹配专用集群配置名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 待查询的专用集群配置id列表
+	DedicatedClusterTypeIds []*string `json:"DedicatedClusterTypeIds,omitempty" name:"DedicatedClusterTypeIds"`
+
+	// 偏移量，默认为0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回数量，默认为20，最大值为100。关于`Limit`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 是否只查询计算规格类型
+	IsCompute *bool `json:"IsCompute,omitempty" name:"IsCompute"`
+}
+
 type DescribeDedicatedClusterTypesRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 模糊匹配专用集群配置名称
 	Name *string `json:"Name,omitempty" name:"Name"`
 
@@ -1019,19 +1235,21 @@ func (r *DescribeDedicatedClusterTypesRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeDedicatedClusterTypesResponseParams struct {
+	// 专用集群配置列表
+	DedicatedClusterTypeSet []*DedicatedClusterType `json:"DedicatedClusterTypeSet,omitempty" name:"DedicatedClusterTypeSet"`
+
+	// 符合条件的个数
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeDedicatedClusterTypesResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 专用集群配置列表
-		DedicatedClusterTypeSet []*DedicatedClusterType `json:"DedicatedClusterTypeSet,omitempty" name:"DedicatedClusterTypeSet"`
-
-		// 符合条件的个数
-		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeDedicatedClusterTypesResponseParams `json:"Response"`
 }
 
 func (r *DescribeDedicatedClusterTypesResponse) ToJsonString() string {
@@ -1045,9 +1263,33 @@ func (r *DescribeDedicatedClusterTypesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeDedicatedClustersRequestParams struct {
+	// 按照一个或者多个实例ID查询。实例ID形如：`cluster-xxxxxxxx`
+	DedicatedClusterIds []*string `json:"DedicatedClusterIds,omitempty" name:"DedicatedClusterIds"`
+
+	// 按照可用区名称过滤
+	Zones []*string `json:"Zones,omitempty" name:"Zones"`
+
+	// 按照站点id过滤
+	SiteIds []*string `json:"SiteIds,omitempty" name:"SiteIds"`
+
+	// 按照专用集群生命周期过滤
+	LifecycleStatuses []*string `json:"LifecycleStatuses,omitempty" name:"LifecycleStatuses"`
+
+	// 模糊匹配专用集群名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 偏移量，默认为0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回数量，默认为20，最大值为100。关于`Limit`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
 type DescribeDedicatedClustersRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 按照一个或者多个实例ID查询。实例ID形如：`cluster-xxxxxxxx`
 	DedicatedClusterIds []*string `json:"DedicatedClusterIds,omitempty" name:"DedicatedClusterIds"`
 
@@ -1095,19 +1337,21 @@ func (r *DescribeDedicatedClustersRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeDedicatedClustersResponseParams struct {
+	// 符合查询条件的专用集群列表
+	DedicatedClusterSet []*DedicatedCluster `json:"DedicatedClusterSet,omitempty" name:"DedicatedClusterSet"`
+
+	// 符合条件的专用集群数量。
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeDedicatedClustersResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 符合查询条件的专用集群列表
-		DedicatedClusterSet []*DedicatedCluster `json:"DedicatedClusterSet,omitempty" name:"DedicatedClusterSet"`
-
-		// 符合条件的专用集群数量。
-		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeDedicatedClustersResponseParams `json:"Response"`
 }
 
 func (r *DescribeDedicatedClustersResponse) ToJsonString() string {
@@ -1121,9 +1365,15 @@ func (r *DescribeDedicatedClustersResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeDedicatedSupportedZonesRequestParams struct {
+	// 传入region列表
+	Regions []*int64 `json:"Regions,omitempty" name:"Regions"`
+}
+
 type DescribeDedicatedSupportedZonesRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 传入region列表
 	Regions []*int64 `json:"Regions,omitempty" name:"Regions"`
 }
@@ -1147,16 +1397,18 @@ func (r *DescribeDedicatedSupportedZonesRequest) FromJsonString(s string) error 
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeDedicatedSupportedZonesResponseParams struct {
+	// 支持的可用区列表
+	ZoneSet []*RegionZoneInfo `json:"ZoneSet,omitempty" name:"ZoneSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeDedicatedSupportedZonesResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 支持的可用区列表
-		ZoneSet []*RegionZoneInfo `json:"ZoneSet,omitempty" name:"ZoneSet"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeDedicatedSupportedZonesResponseParams `json:"Response"`
 }
 
 func (r *DescribeDedicatedSupportedZonesResponse) ToJsonString() string {
@@ -1170,9 +1422,24 @@ func (r *DescribeDedicatedSupportedZonesResponse) FromJsonString(s string) error
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeSitesDetailRequestParams struct {
+	// 按照站点id过滤
+	SiteIds []*string `json:"SiteIds,omitempty" name:"SiteIds"`
+
+	// 偏移量，默认为0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回数量，默认为20，最大值为100。关于`Limit`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 按照站定名称模糊匹配
+	Name *string `json:"Name,omitempty" name:"Name"`
+}
+
 type DescribeSitesDetailRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 按照站点id过滤
 	SiteIds []*string `json:"SiteIds,omitempty" name:"SiteIds"`
 
@@ -1208,19 +1475,21 @@ func (r *DescribeSitesDetailRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeSitesDetailResponseParams struct {
+	// 站点详情
+	SiteDetailSet []*SiteDetail `json:"SiteDetailSet,omitempty" name:"SiteDetailSet"`
+
+	// 符合条件的站点总数
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeSitesDetailResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 站点详情
-		SiteDetailSet []*SiteDetail `json:"SiteDetailSet,omitempty" name:"SiteDetailSet"`
-
-		// 符合条件的站点总数
-		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeSitesDetailResponseParams `json:"Response"`
 }
 
 func (r *DescribeSitesDetailResponse) ToJsonString() string {
@@ -1234,9 +1503,24 @@ func (r *DescribeSitesDetailResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeSitesRequestParams struct {
+	// 按照站点id过滤
+	SiteIds []*string `json:"SiteIds,omitempty" name:"SiteIds"`
+
+	// 模糊匹配站点名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 偏移量，默认为0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回数量，默认为20，最大值为100。关于`Limit`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
 type DescribeSitesRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 按照站点id过滤
 	SiteIds []*string `json:"SiteIds,omitempty" name:"SiteIds"`
 
@@ -1272,19 +1556,21 @@ func (r *DescribeSitesRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeSitesResponseParams struct {
+	// 符合查询条件的站点列表
+	SiteSet []*Site `json:"SiteSet,omitempty" name:"SiteSet"`
+
+	// 符合条件的站点数量。
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeSitesResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 符合查询条件的站点列表
-		SiteSet []*Site `json:"SiteSet,omitempty" name:"SiteSet"`
-
-		// 符合条件的站点数量。
-		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeSitesResponseParams `json:"Response"`
 }
 
 func (r *DescribeSitesResponse) ToJsonString() string {
@@ -1299,7 +1585,6 @@ func (r *DescribeSitesResponse) FromJsonString(s string) error {
 }
 
 type HostInfo struct {
-
 	// 宿主机IP
 	HostIp *string `json:"HostIp,omitempty" name:"HostIp"`
 
@@ -1332,7 +1617,6 @@ type HostInfo struct {
 }
 
 type HostStatistic struct {
-
 	// 宿主机规格
 	HostType *string `json:"HostType,omitempty" name:"HostType"`
 
@@ -1349,9 +1633,27 @@ type HostStatistic struct {
 	Count *uint64 `json:"Count,omitempty" name:"Count"`
 }
 
+// Predefined struct for user
+type ModifyDedicatedClusterInfoRequestParams struct {
+	// 本地专用集群ID
+	DedicatedClusterId *string `json:"DedicatedClusterId,omitempty" name:"DedicatedClusterId"`
+
+	// 集群的新名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 集群的新可用区
+	Zone *string `json:"Zone,omitempty" name:"Zone"`
+
+	// 集群的新描述信息
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 集群所在站点
+	SiteId *string `json:"SiteId,omitempty" name:"SiteId"`
+}
+
 type ModifyDedicatedClusterInfoRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 本地专用集群ID
 	DedicatedClusterId *string `json:"DedicatedClusterId,omitempty" name:"DedicatedClusterId"`
 
@@ -1391,13 +1693,15 @@ func (r *ModifyDedicatedClusterInfoRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifyDedicatedClusterInfoResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type ModifyDedicatedClusterInfoResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *ModifyDedicatedClusterInfoResponseParams `json:"Response"`
 }
 
 func (r *ModifyDedicatedClusterInfoResponse) ToJsonString() string {
@@ -1411,9 +1715,21 @@ func (r *ModifyDedicatedClusterInfoResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifyOrderStatusRequestParams struct {
+	// 要更新成的状态
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 大订单ID
+	DedicatedClusterOrderId *string `json:"DedicatedClusterOrderId,omitempty" name:"DedicatedClusterOrderId"`
+
+	// 小订单ID
+	SubOrderIds []*string `json:"SubOrderIds,omitempty" name:"SubOrderIds"`
+}
+
 type ModifyOrderStatusRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 要更新成的状态
 	Status *string `json:"Status,omitempty" name:"Status"`
 
@@ -1445,13 +1761,15 @@ func (r *ModifyOrderStatusRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifyOrderStatusResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type ModifyOrderStatusResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *ModifyOrderStatusResponseParams `json:"Response"`
 }
 
 func (r *ModifyOrderStatusResponse) ToJsonString() string {
@@ -1465,9 +1783,65 @@ func (r *ModifyOrderStatusResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifySiteDeviceInfoRequestParams struct {
+	// 机房ID
+	SiteId *string `json:"SiteId,omitempty" name:"SiteId"`
+
+	// 您将使用光纤类型将CDC设备连接到网络。有单模和多模两种选项。
+	FiberType *string `json:"FiberType,omitempty" name:"FiberType"`
+
+	// 您将CDC连接到网络时采用的光学标准。此字段取决于上行链路速度、光纤类型和到上游设备的距离。
+	OpticalStandard *string `json:"OpticalStandard,omitempty" name:"OpticalStandard"`
+
+	// 电源连接器类型
+	PowerConnectors *string `json:"PowerConnectors,omitempty" name:"PowerConnectors"`
+
+	// 从机架上方还是下方供电。
+	PowerFeedDrop *string `json:"PowerFeedDrop,omitempty" name:"PowerFeedDrop"`
+
+	// 最大承重(KG)
+	MaxWeight *int64 `json:"MaxWeight,omitempty" name:"MaxWeight"`
+
+	// 功耗(KW)
+	PowerDrawKva *int64 `json:"PowerDrawKva,omitempty" name:"PowerDrawKva"`
+
+	// 网络到腾讯云Region区域的上行链路速度
+	UplinkSpeedGbps *int64 `json:"UplinkSpeedGbps,omitempty" name:"UplinkSpeedGbps"`
+
+	// 将CDC连接到网络时，每台CDC网络设备(每个机架 2 台设备)使用的上行链路数量。
+	UplinkCount *int64 `json:"UplinkCount,omitempty" name:"UplinkCount"`
+
+	// 是否满足下面环境条件：
+	// 1、场地没有材料要求或验收标准会影响 CDC 设备配送和安装。
+	// 2、确定的机架位置包含:
+	// 温度范围为 41 到 104°F (5 到 40°C)。
+	// 湿度范围为 10°F (-12°C)和 8% RH (相对湿度)到 70°F(21°C)和 80% RH。
+	// 机架位置的气流方向为从前向后，且应具有足够的 CFM (每分钟立方英尺)。CFM 必须是 CDC 配置的 kVA 功耗值的 145.8 倍。
+	ConditionRequirement *bool `json:"ConditionRequirement,omitempty" name:"ConditionRequirement"`
+
+	// 是否满足下面的尺寸条件：
+	// 您的装货站台可以容纳一个机架箱(高 x 宽 x 深 = 94" x 54" x 48")。
+	// 您可以提供从机架(高 x 宽 x 深 = 80" x 24" x 48")交货地点到机架最终安置位置的明确通道。测量深度时，应包括站台、走廊通道、门、转弯、坡道、货梯，并将其他通道限制考虑在内。
+	// 在最终的 CDC安置位置，前部间隙可以为 48" 或更大，后部间隙可以为 24" 或更大。
+	DimensionRequirement *bool `json:"DimensionRequirement,omitempty" name:"DimensionRequirement"`
+
+	// 是否提供冗余的上游设备(交换机或路由器)，以便两台  网络设备都能连接到网络设备。
+	RedundantNetworking *bool `json:"RedundantNetworking,omitempty" name:"RedundantNetworking"`
+
+	// 是否需要腾讯云团队协助完成机架支撑工作
+	NeedHelp *bool `json:"NeedHelp,omitempty" name:"NeedHelp"`
+
+	// 是否电源冗余
+	RedundantPower *bool `json:"RedundantPower,omitempty" name:"RedundantPower"`
+
+	// 上游断路器是否具备
+	BreakerRequirement *bool `json:"BreakerRequirement,omitempty" name:"BreakerRequirement"`
+}
+
 type ModifySiteDeviceInfoRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 机房ID
 	SiteId *string `json:"SiteId,omitempty" name:"SiteId"`
 
@@ -1555,13 +1929,15 @@ func (r *ModifySiteDeviceInfoRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifySiteDeviceInfoResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type ModifySiteDeviceInfoResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *ModifySiteDeviceInfoResponseParams `json:"Response"`
 }
 
 func (r *ModifySiteDeviceInfoResponse) ToJsonString() string {
@@ -1575,9 +1951,39 @@ func (r *ModifySiteDeviceInfoResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifySiteInfoRequestParams struct {
+	// 机房ID
+	SiteId *string `json:"SiteId,omitempty" name:"SiteId"`
+
+	// 站点名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 站点描述
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 注意事项
+	Note *string `json:"Note,omitempty" name:"Note"`
+
+	// 站点所在国家
+	Country *string `json:"Country,omitempty" name:"Country"`
+
+	// 站点所在省份
+	Province *string `json:"Province,omitempty" name:"Province"`
+
+	// 站点所在城市
+	City *string `json:"City,omitempty" name:"City"`
+
+	// 站点所在地区的邮编
+	PostalCode *string `json:"PostalCode,omitempty" name:"PostalCode"`
+
+	// 站点所在地区的详细地址信息
+	AddressLine *string `json:"AddressLine,omitempty" name:"AddressLine"`
+}
+
 type ModifySiteInfoRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 机房ID
 	SiteId *string `json:"SiteId,omitempty" name:"SiteId"`
 
@@ -1633,13 +2039,15 @@ func (r *ModifySiteInfoRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifySiteInfoResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type ModifySiteInfoResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *ModifySiteInfoResponseParams `json:"Response"`
 }
 
 func (r *ModifySiteInfoResponse) ToJsonString() string {
@@ -1654,7 +2062,6 @@ func (r *ModifySiteInfoResponse) FromJsonString(s string) error {
 }
 
 type RegionZoneInfo struct {
-
 	// Region id
 	RegionId *int64 `json:"RegionId,omitempty" name:"RegionId"`
 
@@ -1663,7 +2070,6 @@ type RegionZoneInfo struct {
 }
 
 type Site struct {
-
 	// 站点名称
 	Name *string `json:"Name,omitempty" name:"Name"`
 
@@ -1679,7 +2085,6 @@ type Site struct {
 }
 
 type SiteDetail struct {
-
 	// 站点id
 	SiteId *string `json:"SiteId,omitempty" name:"SiteId"`
 
@@ -1762,7 +2167,6 @@ type SiteDetail struct {
 }
 
 type ZoneInfo struct {
-
 	// 可用区名称
 	Zone *string `json:"Zone,omitempty" name:"Zone"`
 

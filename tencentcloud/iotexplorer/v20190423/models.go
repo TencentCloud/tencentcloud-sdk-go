@@ -21,7 +21,6 @@ import (
 )
 
 type AppDeviceInfo struct {
-
 	// 产品ID/设备名
 	DeviceId *string `json:"DeviceId,omitempty" name:"DeviceId"`
 
@@ -54,7 +53,6 @@ type AppDeviceInfo struct {
 }
 
 type BatchProductionInfo struct {
-
 	// 量产ID
 	BatchProductionId *string `json:"BatchProductionId,omitempty" name:"BatchProductionId"`
 
@@ -72,7 +70,6 @@ type BatchProductionInfo struct {
 }
 
 type BindDeviceInfo struct {
-
 	// 产品ID。
 	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
 
@@ -80,9 +77,24 @@ type BindDeviceInfo struct {
 	DeviceName *string `json:"DeviceName,omitempty" name:"DeviceName"`
 }
 
+// Predefined struct for user
+type BindDevicesRequestParams struct {
+	// 网关设备的产品ID。
+	GatewayProductId *string `json:"GatewayProductId,omitempty" name:"GatewayProductId"`
+
+	// 网关设备的设备名。
+	GatewayDeviceName *string `json:"GatewayDeviceName,omitempty" name:"GatewayDeviceName"`
+
+	// 被绑定设备的产品ID。
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+
+	// 被绑定的多个设备名。
+	DeviceNames []*string `json:"DeviceNames,omitempty" name:"DeviceNames"`
+}
+
 type BindDevicesRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 网关设备的产品ID。
 	GatewayProductId *string `json:"GatewayProductId,omitempty" name:"GatewayProductId"`
 
@@ -118,13 +130,15 @@ func (r *BindDevicesRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type BindDevicesResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type BindDevicesResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *BindDevicesResponseParams `json:"Response"`
 }
 
 func (r *BindDevicesResponse) ToJsonString() string {
@@ -139,7 +153,6 @@ func (r *BindDevicesResponse) FromJsonString(s string) error {
 }
 
 type BindProductInfo struct {
-
 	// 产品ID。
 	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
 
@@ -171,9 +184,18 @@ type BindProductInfo struct {
 	DevStatus *string `json:"DevStatus,omitempty" name:"DevStatus"`
 }
 
+// Predefined struct for user
+type BindProductsRequestParams struct {
+	// 网关产品ID。
+	GatewayProductId *string `json:"GatewayProductId,omitempty" name:"GatewayProductId"`
+
+	// 待绑定的子产品ID数组。
+	ProductIds []*string `json:"ProductIds,omitempty" name:"ProductIds"`
+}
+
 type BindProductsRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 网关产品ID。
 	GatewayProductId *string `json:"GatewayProductId,omitempty" name:"GatewayProductId"`
 
@@ -201,13 +223,15 @@ func (r *BindProductsRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type BindProductsResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type BindProductsResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *BindProductsResponseParams `json:"Response"`
 }
 
 func (r *BindProductsResponse) ToJsonString() string {
@@ -221,9 +245,24 @@ func (r *BindProductsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CallDeviceActionAsyncRequestParams struct {
+	// 产品Id
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+
+	// 设备名称
+	DeviceName *string `json:"DeviceName,omitempty" name:"DeviceName"`
+
+	// 产品数据模板中行为功能的标识符，由开发者自行根据设备的应用场景定义
+	ActionId *string `json:"ActionId,omitempty" name:"ActionId"`
+
+	// 输入参数
+	InputParams *string `json:"InputParams,omitempty" name:"InputParams"`
+}
+
 type CallDeviceActionAsyncRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 产品Id
 	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
 
@@ -259,19 +298,21 @@ func (r *CallDeviceActionAsyncRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CallDeviceActionAsyncResponseParams struct {
+	// 调用Id
+	ClientToken *string `json:"ClientToken,omitempty" name:"ClientToken"`
+
+	// 异步调用状态
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CallDeviceActionAsyncResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 调用Id
-		ClientToken *string `json:"ClientToken,omitempty" name:"ClientToken"`
-
-		// 异步调用状态
-		Status *string `json:"Status,omitempty" name:"Status"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CallDeviceActionAsyncResponseParams `json:"Response"`
 }
 
 func (r *CallDeviceActionAsyncResponse) ToJsonString() string {
@@ -285,9 +326,24 @@ func (r *CallDeviceActionAsyncResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CallDeviceActionSyncRequestParams struct {
+	// 产品Id
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+
+	// 设备名称
+	DeviceName *string `json:"DeviceName,omitempty" name:"DeviceName"`
+
+	// 产品数据模板中行为功能的标识符，由开发者自行根据设备的应用场景定义
+	ActionId *string `json:"ActionId,omitempty" name:"ActionId"`
+
+	// 输入参数
+	InputParams *string `json:"InputParams,omitempty" name:"InputParams"`
+}
+
 type CallDeviceActionSyncRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 产品Id
 	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
 
@@ -323,23 +379,25 @@ func (r *CallDeviceActionSyncRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CallDeviceActionSyncResponseParams struct {
+	// 调用Id
+	ClientToken *string `json:"ClientToken,omitempty" name:"ClientToken"`
+
+	// 输出参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OutputParams *string `json:"OutputParams,omitempty" name:"OutputParams"`
+
+	// 返回状态，当设备不在线等部分情况，会通过该 Status 返回。
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CallDeviceActionSyncResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 调用Id
-		ClientToken *string `json:"ClientToken,omitempty" name:"ClientToken"`
-
-		// 输出参数
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		OutputParams *string `json:"OutputParams,omitempty" name:"OutputParams"`
-
-		// 返回状态，当设备不在线等部分情况，会通过该 Status 返回。
-		Status *string `json:"Status,omitempty" name:"Status"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CallDeviceActionSyncResponseParams `json:"Response"`
 }
 
 func (r *CallDeviceActionSyncResponse) ToJsonString() string {
@@ -353,9 +411,30 @@ func (r *CallDeviceActionSyncResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ControlDeviceDataRequestParams struct {
+	// 产品ID
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+
+	// 设备名称
+	DeviceName *string `json:"DeviceName,omitempty" name:"DeviceName"`
+
+	// 属性数据, JSON格式字符串, 注意字段需要在物模型属性里定义
+	Data *string `json:"Data,omitempty" name:"Data"`
+
+	// 请求类型 , 不填该参数或者 desired 表示下发属性给设备,  reported 表示模拟设备上报属性
+	Method *string `json:"Method,omitempty" name:"Method"`
+
+	// 设备ID，该字段有值将代替 ProductId/DeviceName , 通常情况不需要填写
+	DeviceId *string `json:"DeviceId,omitempty" name:"DeviceId"`
+
+	// 上报数据UNIX时间戳(毫秒), 仅对Method:reported有效
+	DataTimestamp *int64 `json:"DataTimestamp,omitempty" name:"DataTimestamp"`
+}
+
 type ControlDeviceDataRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 产品ID
 	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
 
@@ -399,22 +478,24 @@ func (r *ControlDeviceDataRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-type ControlDeviceDataResponse struct {
-	*tchttp.BaseResponse
-	Response *struct {
+// Predefined struct for user
+type ControlDeviceDataResponseParams struct {
+	// 返回信息
+	Data *string `json:"Data,omitempty" name:"Data"`
 
-		// 返回信息
-		Data *string `json:"Data,omitempty" name:"Data"`
-
-		// JSON字符串， 返回下发控制的结果信息, 
+	// JSON字符串， 返回下发控制的结果信息, 
 	// Sent = 1 表示设备已经在线并且订阅了控制下发的mqtt topic.
 	// pushResult 是表示发送结果，其中 0 表示成功， 23101 表示设备未在线或没有订阅相关的 MQTT Topic。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		Result *string `json:"Result,omitempty" name:"Result"`
+	Result *string `json:"Result,omitempty" name:"Result"`
 
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ControlDeviceDataResponse struct {
+	*tchttp.BaseResponse
+	Response *ControlDeviceDataResponseParams `json:"Response"`
 }
 
 func (r *ControlDeviceDataResponse) ToJsonString() string {
@@ -428,9 +509,33 @@ func (r *ControlDeviceDataResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateBatchProductionRequestParams struct {
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 产品ID
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+
+	// 烧录方式，0为直接烧录，1为动态注册。
+	BurnMethod *int64 `json:"BurnMethod,omitempty" name:"BurnMethod"`
+
+	// 生成方式，0为系统生成，1为文件上传。
+	GenerationMethod *int64 `json:"GenerationMethod,omitempty" name:"GenerationMethod"`
+
+	// 文件上传URL，用于文件上传时填写。
+	UploadUrl *string `json:"UploadUrl,omitempty" name:"UploadUrl"`
+
+	// 量产数量，用于系统生成时填写。
+	BatchCnt *int64 `json:"BatchCnt,omitempty" name:"BatchCnt"`
+
+	// 是否生成二维码,0为不生成，1为生成。
+	GenerationQRCode *int64 `json:"GenerationQRCode,omitempty" name:"GenerationQRCode"`
+}
+
 type CreateBatchProductionRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 项目ID
 	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
 
@@ -478,22 +583,24 @@ func (r *CreateBatchProductionRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateBatchProductionResponseParams struct {
+	// 项目Id
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 产品Id
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+
+	// 量产id
+	BatchProductionId *string `json:"BatchProductionId,omitempty" name:"BatchProductionId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreateBatchProductionResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 项目Id
-		ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
-
-		// 产品Id
-		ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
-
-		// 量产id
-		BatchProductionId *string `json:"BatchProductionId,omitempty" name:"BatchProductionId"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreateBatchProductionResponseParams `json:"Response"`
 }
 
 func (r *CreateBatchProductionResponse) ToJsonString() string {
@@ -507,9 +614,36 @@ func (r *CreateBatchProductionResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateDeviceRequestParams struct {
+	// 产品ID。
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+
+	// 设备名称。命名规则：[a-zA-Z0-9:_-]{1,48}。
+	DeviceName *string `json:"DeviceName,omitempty" name:"DeviceName"`
+
+	// LoRaWAN 设备地址
+	DevAddr *string `json:"DevAddr,omitempty" name:"DevAddr"`
+
+	// LoRaWAN 应用密钥
+	AppKey *string `json:"AppKey,omitempty" name:"AppKey"`
+
+	// LoRaWAN 设备唯一标识
+	DevEUI *string `json:"DevEUI,omitempty" name:"DevEUI"`
+
+	// LoRaWAN 应用会话密钥
+	AppSKey *string `json:"AppSKey,omitempty" name:"AppSKey"`
+
+	// LoRaWAN 网络会话密钥
+	NwkSKey *string `json:"NwkSKey,omitempty" name:"NwkSKey"`
+
+	// 手动指定设备的PSK密钥
+	DefinedPsk *string `json:"DefinedPsk,omitempty" name:"DefinedPsk"`
+}
+
 type CreateDeviceRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 产品ID。
 	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
 
@@ -561,16 +695,18 @@ func (r *CreateDeviceRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateDeviceResponseParams struct {
+	// 设备参数描述。
+	Data *DeviceData `json:"Data,omitempty" name:"Data"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreateDeviceResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 设备参数描述。
-		Data *DeviceData `json:"Data,omitempty" name:"Data"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreateDeviceResponseParams `json:"Response"`
 }
 
 func (r *CreateDeviceResponse) ToJsonString() string {
@@ -584,9 +720,18 @@ func (r *CreateDeviceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateFenceBindRequestParams struct {
+	// 围栏Id
+	FenceId *int64 `json:"FenceId,omitempty" name:"FenceId"`
+
+	// 围栏绑定的产品列表
+	Items []*FenceBindProductItem `json:"Items,omitempty" name:"Items"`
+}
+
 type CreateFenceBindRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 围栏Id
 	FenceId *int64 `json:"FenceId,omitempty" name:"FenceId"`
 
@@ -614,13 +759,15 @@ func (r *CreateFenceBindRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateFenceBindResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreateFenceBindResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreateFenceBindResponseParams `json:"Response"`
 }
 
 func (r *CreateFenceBindResponse) ToJsonString() string {
@@ -634,9 +781,36 @@ func (r *CreateFenceBindResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateLoRaFrequencyRequestParams struct {
+	// 频点配置名称
+	FreqName *string `json:"FreqName,omitempty" name:"FreqName"`
+
+	// 数据上行信道
+	ChannelsDataUp []*uint64 `json:"ChannelsDataUp,omitempty" name:"ChannelsDataUp"`
+
+	// 数据下行RX1信道
+	ChannelsDataRX1 []*uint64 `json:"ChannelsDataRX1,omitempty" name:"ChannelsDataRX1"`
+
+	// 数据下行RX2信道
+	ChannelsDataRX2 []*uint64 `json:"ChannelsDataRX2,omitempty" name:"ChannelsDataRX2"`
+
+	// 入网上行信道
+	ChannelsJoinUp []*uint64 `json:"ChannelsJoinUp,omitempty" name:"ChannelsJoinUp"`
+
+	// 入网下行RX1信道
+	ChannelsJoinRX1 []*uint64 `json:"ChannelsJoinRX1,omitempty" name:"ChannelsJoinRX1"`
+
+	// 入网下行RX2信道
+	ChannelsJoinRX2 []*uint64 `json:"ChannelsJoinRX2,omitempty" name:"ChannelsJoinRX2"`
+
+	// 频点配置描述
+	Description *string `json:"Description,omitempty" name:"Description"`
+}
+
 type CreateLoRaFrequencyRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 频点配置名称
 	FreqName *string `json:"FreqName,omitempty" name:"FreqName"`
 
@@ -688,16 +862,18 @@ func (r *CreateLoRaFrequencyRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateLoRaFrequencyResponseParams struct {
+	// LoRa频点信息
+	Data *LoRaFrequencyEntry `json:"Data,omitempty" name:"Data"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreateLoRaFrequencyResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// LoRa频点信息
-		Data *LoRaFrequencyEntry `json:"Data,omitempty" name:"Data"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreateLoRaFrequencyResponseParams `json:"Response"`
 }
 
 func (r *CreateLoRaFrequencyResponse) ToJsonString() string {
@@ -711,9 +887,36 @@ func (r *CreateLoRaFrequencyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateLoRaGatewayRequestParams struct {
+	// LoRa 网关Id
+	GatewayId *string `json:"GatewayId,omitempty" name:"GatewayId"`
+
+	// 网关名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 详情描述
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 位置坐标
+	Location *LoRaGatewayLocation `json:"Location,omitempty" name:"Location"`
+
+	// 位置信息
+	Position *string `json:"Position,omitempty" name:"Position"`
+
+	// 位置详情
+	PositionDetails *string `json:"PositionDetails,omitempty" name:"PositionDetails"`
+
+	// 是否公开
+	IsPublic *bool `json:"IsPublic,omitempty" name:"IsPublic"`
+
+	// 频点ID
+	FrequencyId *string `json:"FrequencyId,omitempty" name:"FrequencyId"`
+}
+
 type CreateLoRaGatewayRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// LoRa 网关Id
 	GatewayId *string `json:"GatewayId,omitempty" name:"GatewayId"`
 
@@ -765,16 +968,18 @@ func (r *CreateLoRaGatewayRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateLoRaGatewayResponseParams struct {
+	// LoRa 网关信息
+	Gateway *LoRaGatewayItem `json:"Gateway,omitempty" name:"Gateway"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreateLoRaGatewayResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// LoRa 网关信息
-		Gateway *LoRaGatewayItem `json:"Gateway,omitempty" name:"Gateway"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreateLoRaGatewayResponseParams `json:"Response"`
 }
 
 func (r *CreateLoRaGatewayResponse) ToJsonString() string {
@@ -788,9 +993,24 @@ func (r *CreateLoRaGatewayResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreatePositionFenceRequestParams struct {
+	// 位置空间Id
+	SpaceId *string `json:"SpaceId,omitempty" name:"SpaceId"`
+
+	// 围栏名称
+	FenceName *string `json:"FenceName,omitempty" name:"FenceName"`
+
+	// 围栏区域信息，采用 GeoJSON 格式
+	FenceArea *string `json:"FenceArea,omitempty" name:"FenceArea"`
+
+	// 围栏描述
+	FenceDesc *string `json:"FenceDesc,omitempty" name:"FenceDesc"`
+}
+
 type CreatePositionFenceRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 位置空间Id
 	SpaceId *string `json:"SpaceId,omitempty" name:"SpaceId"`
 
@@ -826,13 +1046,15 @@ func (r *CreatePositionFenceRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreatePositionFenceResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreatePositionFenceResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreatePositionFenceResponseParams `json:"Response"`
 }
 
 func (r *CreatePositionFenceResponse) ToJsonString() string {
@@ -846,9 +1068,30 @@ func (r *CreatePositionFenceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreatePositionSpaceRequestParams struct {
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 空间名称
+	SpaceName *string `json:"SpaceName,omitempty" name:"SpaceName"`
+
+	// 授权类型，0：只读 1：读写
+	AuthorizeType *int64 `json:"AuthorizeType,omitempty" name:"AuthorizeType"`
+
+	// 产品列表
+	ProductIdList []*string `json:"ProductIdList,omitempty" name:"ProductIdList"`
+
+	// 描述
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 缩略图
+	Icon *string `json:"Icon,omitempty" name:"Icon"`
+}
+
 type CreatePositionSpaceRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 项目ID
 	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
 
@@ -892,17 +1135,19 @@ func (r *CreatePositionSpaceRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreatePositionSpaceResponseParams struct {
+	// 空间Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SpaceId *string `json:"SpaceId,omitempty" name:"SpaceId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreatePositionSpaceResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 空间Id
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		SpaceId *string `json:"SpaceId,omitempty" name:"SpaceId"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreatePositionSpaceResponseParams `json:"Response"`
 }
 
 func (r *CreatePositionSpaceResponse) ToJsonString() string {
@@ -916,9 +1161,21 @@ func (r *CreatePositionSpaceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateProjectRequestParams struct {
+	// 项目名称
+	ProjectName *string `json:"ProjectName,omitempty" name:"ProjectName"`
+
+	// 项目描述
+	ProjectDesc *string `json:"ProjectDesc,omitempty" name:"ProjectDesc"`
+
+	// 实例ID，不带实例ID，默认为公共实例
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+}
+
 type CreateProjectRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 项目名称
 	ProjectName *string `json:"ProjectName,omitempty" name:"ProjectName"`
 
@@ -950,16 +1207,18 @@ func (r *CreateProjectRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateProjectResponseParams struct {
+	// 返回信息
+	Project *ProjectEntry `json:"Project,omitempty" name:"Project"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreateProjectResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 返回信息
-		Project *ProjectEntry `json:"Project,omitempty" name:"Project"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreateProjectResponseParams `json:"Response"`
 }
 
 func (r *CreateProjectResponse) ToJsonString() string {
@@ -973,9 +1232,36 @@ func (r *CreateProjectResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateStudioProductRequestParams struct {
+	// 产品名称，名称不能和已经存在的产品名称重复。命名规则：[a-zA-Z0-9:_-]{1,32}
+	ProductName *string `json:"ProductName,omitempty" name:"ProductName"`
+
+	// 产品分组模板ID , ( 自定义模板填写1 , 控制台调用会使用预置的其他ID)
+	CategoryId *int64 `json:"CategoryId,omitempty" name:"CategoryId"`
+
+	// 产品类型 填写 ( 0 普通产品 )
+	ProductType *int64 `json:"ProductType,omitempty" name:"ProductType"`
+
+	// 加密类型 加密类型，1表示证书认证，2表示签名认证。
+	EncryptionType *string `json:"EncryptionType,omitempty" name:"EncryptionType"`
+
+	// 连接类型 可以填写 wifi cellular else
+	NetType *string `json:"NetType,omitempty" name:"NetType"`
+
+	// 数据协议 (1 使用物模型 2 为自定义)
+	DataProtocol *int64 `json:"DataProtocol,omitempty" name:"DataProtocol"`
+
+	// 产品描述
+	ProductDesc *string `json:"ProductDesc,omitempty" name:"ProductDesc"`
+
+	// 产品的项目ID
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+}
+
 type CreateStudioProductRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 产品名称，名称不能和已经存在的产品名称重复。命名规则：[a-zA-Z0-9:_-]{1,32}
 	ProductName *string `json:"ProductName,omitempty" name:"ProductName"`
 
@@ -1027,16 +1313,18 @@ func (r *CreateStudioProductRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateStudioProductResponseParams struct {
+	// 产品描述
+	Product *ProductEntry `json:"Product,omitempty" name:"Product"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreateStudioProductResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 产品描述
-		Product *ProductEntry `json:"Product,omitempty" name:"Product"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreateStudioProductResponseParams `json:"Response"`
 }
 
 func (r *CreateStudioProductResponse) ToJsonString() string {
@@ -1050,9 +1338,21 @@ func (r *CreateStudioProductResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateTopicPolicyRequestParams struct {
+	// 产品ID
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+
+	// Topic名称
+	TopicName *string `json:"TopicName,omitempty" name:"TopicName"`
+
+	// Topic权限，1发布，2订阅，3订阅和发布
+	Privilege *uint64 `json:"Privilege,omitempty" name:"Privilege"`
+}
+
 type CreateTopicPolicyRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 产品ID
 	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
 
@@ -1084,13 +1384,15 @@ func (r *CreateTopicPolicyRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateTopicPolicyResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreateTopicPolicyResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreateTopicPolicyResponseParams `json:"Response"`
 }
 
 func (r *CreateTopicPolicyResponse) ToJsonString() string {
@@ -1104,9 +1406,18 @@ func (r *CreateTopicPolicyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateTopicRuleRequestParams struct {
+	// 规则名称
+	RuleName *string `json:"RuleName,omitempty" name:"RuleName"`
+
+	// 规则内容
+	TopicRulePayload *TopicRulePayload `json:"TopicRulePayload,omitempty" name:"TopicRulePayload"`
+}
+
 type CreateTopicRuleRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 规则名称
 	RuleName *string `json:"RuleName,omitempty" name:"RuleName"`
 
@@ -1134,13 +1445,15 @@ func (r *CreateTopicRuleRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateTopicRuleResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreateTopicRuleResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreateTopicRuleResponseParams `json:"Response"`
 }
 
 func (r *CreateTopicRuleResponse) ToJsonString() string {
@@ -1154,9 +1467,21 @@ func (r *CreateTopicRuleResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteDeviceRequestParams struct {
+	// 产品ID。
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+
+	// 设备名称。
+	DeviceName *string `json:"DeviceName,omitempty" name:"DeviceName"`
+
+	// 是否删除绑定设备
+	ForceDelete *bool `json:"ForceDelete,omitempty" name:"ForceDelete"`
+}
+
 type DeleteDeviceRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 产品ID。
 	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
 
@@ -1188,21 +1513,23 @@ func (r *DeleteDeviceRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteDeviceResponseParams struct {
+	// 删除的结果代码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResultCode *string `json:"ResultCode,omitempty" name:"ResultCode"`
+
+	// 删除的结果信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResultMessage *string `json:"ResultMessage,omitempty" name:"ResultMessage"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DeleteDeviceResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 删除的结果代码
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		ResultCode *string `json:"ResultCode,omitempty" name:"ResultCode"`
-
-		// 删除的结果信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		ResultMessage *string `json:"ResultMessage,omitempty" name:"ResultMessage"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DeleteDeviceResponseParams `json:"Response"`
 }
 
 func (r *DeleteDeviceResponse) ToJsonString() string {
@@ -1216,9 +1543,15 @@ func (r *DeleteDeviceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteDevicesRequestParams struct {
+	// 多个设备标识
+	DevicesItems []*DevicesItem `json:"DevicesItems,omitempty" name:"DevicesItems"`
+}
+
 type DeleteDevicesRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 多个设备标识
 	DevicesItems []*DevicesItem `json:"DevicesItems,omitempty" name:"DevicesItems"`
 }
@@ -1242,21 +1575,23 @@ func (r *DeleteDevicesRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteDevicesResponseParams struct {
+	// 删除的结果代码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResultCode *string `json:"ResultCode,omitempty" name:"ResultCode"`
+
+	// 删除的结果信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResultMessage *string `json:"ResultMessage,omitempty" name:"ResultMessage"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DeleteDevicesResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 删除的结果代码
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		ResultCode *string `json:"ResultCode,omitempty" name:"ResultCode"`
-
-		// 删除的结果信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		ResultMessage *string `json:"ResultMessage,omitempty" name:"ResultMessage"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DeleteDevicesResponseParams `json:"Response"`
 }
 
 func (r *DeleteDevicesResponse) ToJsonString() string {
@@ -1270,9 +1605,18 @@ func (r *DeleteDevicesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteFenceBindRequestParams struct {
+	// 围栏Id
+	FenceId *int64 `json:"FenceId,omitempty" name:"FenceId"`
+
+	// 围栏绑定的产品信息
+	Items []*FenceBindProductItem `json:"Items,omitempty" name:"Items"`
+}
+
 type DeleteFenceBindRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 围栏Id
 	FenceId *int64 `json:"FenceId,omitempty" name:"FenceId"`
 
@@ -1300,13 +1644,15 @@ func (r *DeleteFenceBindRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteFenceBindResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DeleteFenceBindResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DeleteFenceBindResponseParams `json:"Response"`
 }
 
 func (r *DeleteFenceBindResponse) ToJsonString() string {
@@ -1320,9 +1666,15 @@ func (r *DeleteFenceBindResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteLoRaFrequencyRequestParams struct {
+	// 频点唯一ID
+	FreqId *string `json:"FreqId,omitempty" name:"FreqId"`
+}
+
 type DeleteLoRaFrequencyRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 频点唯一ID
 	FreqId *string `json:"FreqId,omitempty" name:"FreqId"`
 }
@@ -1346,13 +1698,15 @@ func (r *DeleteLoRaFrequencyRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteLoRaFrequencyResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DeleteLoRaFrequencyResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DeleteLoRaFrequencyResponseParams `json:"Response"`
 }
 
 func (r *DeleteLoRaFrequencyResponse) ToJsonString() string {
@@ -1366,9 +1720,15 @@ func (r *DeleteLoRaFrequencyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteLoRaGatewayRequestParams struct {
+	// LoRa 网关 Id
+	GatewayId *string `json:"GatewayId,omitempty" name:"GatewayId"`
+}
+
 type DeleteLoRaGatewayRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// LoRa 网关 Id
 	GatewayId *string `json:"GatewayId,omitempty" name:"GatewayId"`
 }
@@ -1392,13 +1752,15 @@ func (r *DeleteLoRaGatewayRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteLoRaGatewayResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DeleteLoRaGatewayResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DeleteLoRaGatewayResponseParams `json:"Response"`
 }
 
 func (r *DeleteLoRaGatewayResponse) ToJsonString() string {
@@ -1412,9 +1774,18 @@ func (r *DeleteLoRaGatewayResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeletePositionFenceRequestParams struct {
+	// 位置空间Id
+	SpaceId *string `json:"SpaceId,omitempty" name:"SpaceId"`
+
+	// 围栏Id
+	FenceId *int64 `json:"FenceId,omitempty" name:"FenceId"`
+}
+
 type DeletePositionFenceRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 位置空间Id
 	SpaceId *string `json:"SpaceId,omitempty" name:"SpaceId"`
 
@@ -1442,13 +1813,15 @@ func (r *DeletePositionFenceRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeletePositionFenceResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DeletePositionFenceResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DeletePositionFenceResponseParams `json:"Response"`
 }
 
 func (r *DeletePositionFenceResponse) ToJsonString() string {
@@ -1462,9 +1835,15 @@ func (r *DeletePositionFenceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeletePositionSpaceRequestParams struct {
+	// 位置空间Id
+	SpaceId *string `json:"SpaceId,omitempty" name:"SpaceId"`
+}
+
 type DeletePositionSpaceRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 位置空间Id
 	SpaceId *string `json:"SpaceId,omitempty" name:"SpaceId"`
 }
@@ -1488,13 +1867,15 @@ func (r *DeletePositionSpaceRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeletePositionSpaceResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DeletePositionSpaceResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DeletePositionSpaceResponseParams `json:"Response"`
 }
 
 func (r *DeletePositionSpaceResponse) ToJsonString() string {
@@ -1508,9 +1889,15 @@ func (r *DeletePositionSpaceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteProjectRequestParams struct {
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+}
+
 type DeleteProjectRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 项目ID
 	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
 }
@@ -1534,13 +1921,15 @@ func (r *DeleteProjectRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteProjectResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DeleteProjectResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DeleteProjectResponseParams `json:"Response"`
 }
 
 func (r *DeleteProjectResponse) ToJsonString() string {
@@ -1554,9 +1943,15 @@ func (r *DeleteProjectResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteStudioProductRequestParams struct {
+	// 产品ID
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+}
+
 type DeleteStudioProductRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 产品ID
 	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
 }
@@ -1580,13 +1975,15 @@ func (r *DeleteStudioProductRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteStudioProductResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DeleteStudioProductResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DeleteStudioProductResponseParams `json:"Response"`
 }
 
 func (r *DeleteStudioProductResponse) ToJsonString() string {
@@ -1600,9 +1997,18 @@ func (r *DeleteStudioProductResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteTopicPolicyRequestParams struct {
+	// 产品ID
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+
+	// Topic名称
+	TopicName *string `json:"TopicName,omitempty" name:"TopicName"`
+}
+
 type DeleteTopicPolicyRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 产品ID
 	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
 
@@ -1630,13 +2036,15 @@ func (r *DeleteTopicPolicyRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteTopicPolicyResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DeleteTopicPolicyResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DeleteTopicPolicyResponseParams `json:"Response"`
 }
 
 func (r *DeleteTopicPolicyResponse) ToJsonString() string {
@@ -1650,9 +2058,15 @@ func (r *DeleteTopicPolicyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteTopicRuleRequestParams struct {
+	// 规则名
+	RuleName *string `json:"RuleName,omitempty" name:"RuleName"`
+}
+
 type DeleteTopicRuleRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 规则名
 	RuleName *string `json:"RuleName,omitempty" name:"RuleName"`
 }
@@ -1676,13 +2090,15 @@ func (r *DeleteTopicRuleRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteTopicRuleResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DeleteTopicRuleResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DeleteTopicRuleResponseParams `json:"Response"`
 }
 
 func (r *DeleteTopicRuleResponse) ToJsonString() string {
@@ -1696,9 +2112,18 @@ func (r *DeleteTopicRuleResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeBatchProductionRequestParams struct {
+	// 产品ID
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+
+	// 量产ID
+	BatchProductionId *string `json:"BatchProductionId,omitempty" name:"BatchProductionId"`
+}
+
 type DescribeBatchProductionRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 产品ID
 	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
 
@@ -1726,31 +2151,33 @@ func (r *DescribeBatchProductionRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeBatchProductionResponseParams struct {
+	// 量产数量。
+	BatchCnt *int64 `json:"BatchCnt,omitempty" name:"BatchCnt"`
+
+	// 烧录方式。
+	BurnMethod *int64 `json:"BurnMethod,omitempty" name:"BurnMethod"`
+
+	// 创建时间。
+	CreateTime *int64 `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 下载URL。
+	DownloadUrl *string `json:"DownloadUrl,omitempty" name:"DownloadUrl"`
+
+	// 生成方式。
+	GenerationMethod *int64 `json:"GenerationMethod,omitempty" name:"GenerationMethod"`
+
+	// 上传URL。
+	UploadUrl *string `json:"UploadUrl,omitempty" name:"UploadUrl"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeBatchProductionResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 量产数量。
-		BatchCnt *int64 `json:"BatchCnt,omitempty" name:"BatchCnt"`
-
-		// 烧录方式。
-		BurnMethod *int64 `json:"BurnMethod,omitempty" name:"BurnMethod"`
-
-		// 创建时间。
-		CreateTime *int64 `json:"CreateTime,omitempty" name:"CreateTime"`
-
-		// 下载URL。
-		DownloadUrl *string `json:"DownloadUrl,omitempty" name:"DownloadUrl"`
-
-		// 生成方式。
-		GenerationMethod *int64 `json:"GenerationMethod,omitempty" name:"GenerationMethod"`
-
-		// 上传URL。
-		UploadUrl *string `json:"UploadUrl,omitempty" name:"UploadUrl"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeBatchProductionResponseParams `json:"Response"`
 }
 
 func (r *DescribeBatchProductionResponse) ToJsonString() string {
@@ -1764,9 +2191,21 @@ func (r *DescribeBatchProductionResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeBindedProductsRequestParams struct {
+	// 网关产品ID
+	GatewayProductId *string `json:"GatewayProductId,omitempty" name:"GatewayProductId"`
+
+	// 分页偏移量
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 分页大小
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
 type DescribeBindedProductsRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 网关产品ID
 	GatewayProductId *string `json:"GatewayProductId,omitempty" name:"GatewayProductId"`
 
@@ -1798,19 +2237,21 @@ func (r *DescribeBindedProductsRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeBindedProductsResponseParams struct {
+	// 当前分页的子产品数组
+	Products []*BindProductInfo `json:"Products,omitempty" name:"Products"`
+
+	// 绑定的子产品总数量
+	Total *int64 `json:"Total,omitempty" name:"Total"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeBindedProductsResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 当前分页的子产品数组
-		Products []*BindProductInfo `json:"Products,omitempty" name:"Products"`
-
-		// 绑定的子产品总数量
-		Total *int64 `json:"Total,omitempty" name:"Total"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeBindedProductsResponseParams `json:"Response"`
 }
 
 func (r *DescribeBindedProductsResponse) ToJsonString() string {
@@ -1824,9 +2265,18 @@ func (r *DescribeBindedProductsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeDeviceBindGatewayRequestParams struct {
+	// 产品Id
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+
+	// 设备名
+	DeviceName *string `json:"DeviceName,omitempty" name:"DeviceName"`
+}
+
 type DescribeDeviceBindGatewayRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 产品Id
 	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
 
@@ -1854,25 +2304,27 @@ func (r *DescribeDeviceBindGatewayRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeDeviceBindGatewayResponseParams struct {
+	// 网关产品ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GatewayProductId *string `json:"GatewayProductId,omitempty" name:"GatewayProductId"`
+
+	// 网关设备名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GatewayDeviceName *string `json:"GatewayDeviceName,omitempty" name:"GatewayDeviceName"`
+
+	// 网关产品名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GatewayName *string `json:"GatewayName,omitempty" name:"GatewayName"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeDeviceBindGatewayResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 网关产品ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		GatewayProductId *string `json:"GatewayProductId,omitempty" name:"GatewayProductId"`
-
-		// 网关设备名
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		GatewayDeviceName *string `json:"GatewayDeviceName,omitempty" name:"GatewayDeviceName"`
-
-		// 网关产品名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		GatewayName *string `json:"GatewayName,omitempty" name:"GatewayName"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeDeviceBindGatewayResponseParams `json:"Response"`
 }
 
 func (r *DescribeDeviceBindGatewayResponse) ToJsonString() string {
@@ -1886,9 +2338,33 @@ func (r *DescribeDeviceBindGatewayResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeDeviceDataHistoryRequestParams struct {
+	// 区间开始时间（Unix 时间戳，毫秒级）
+	MinTime *uint64 `json:"MinTime,omitempty" name:"MinTime"`
+
+	// 区间结束时间（Unix 时间戳，毫秒级）
+	MaxTime *uint64 `json:"MaxTime,omitempty" name:"MaxTime"`
+
+	// 产品ID
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+
+	// 设备名称
+	DeviceName *string `json:"DeviceName,omitempty" name:"DeviceName"`
+
+	// 属性字段名称，对应数据模板中功能属性的标识符
+	FieldName *string `json:"FieldName,omitempty" name:"FieldName"`
+
+	// 返回条数
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 检索上下文
+	Context *string `json:"Context,omitempty" name:"Context"`
+}
+
 type DescribeDeviceDataHistoryRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 区间开始时间（Unix 时间戳，毫秒级）
 	MinTime *uint64 `json:"MinTime,omitempty" name:"MinTime"`
 
@@ -1936,29 +2412,31 @@ func (r *DescribeDeviceDataHistoryRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeDeviceDataHistoryResponseParams struct {
+	// 属性字段名称，对应数据模板中功能属性的标识符
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FieldName *string `json:"FieldName,omitempty" name:"FieldName"`
+
+	// 数据是否已全部返回，true 表示数据全部返回，false 表示还有数据待返回，可将 Context 作为入参，继续查询返回结果。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Listover *bool `json:"Listover,omitempty" name:"Listover"`
+
+	// 检索上下文，当 ListOver 为false时，可以用此上下文，继续读取后续数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Context *string `json:"Context,omitempty" name:"Context"`
+
+	// 历史数据结果数组，返回对应时间点及取值。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Results []*DeviceDataHistoryItem `json:"Results,omitempty" name:"Results"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeDeviceDataHistoryResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 属性字段名称，对应数据模板中功能属性的标识符
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		FieldName *string `json:"FieldName,omitempty" name:"FieldName"`
-
-		// 数据是否已全部返回，true 表示数据全部返回，false 表示还有数据待返回，可将 Context 作为入参，继续查询返回结果。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		Listover *bool `json:"Listover,omitempty" name:"Listover"`
-
-		// 检索上下文，当 ListOver 为false时，可以用此上下文，继续读取后续数据
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		Context *string `json:"Context,omitempty" name:"Context"`
-
-		// 历史数据结果数组，返回对应时间点及取值。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		Results []*DeviceDataHistoryItem `json:"Results,omitempty" name:"Results"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeDeviceDataHistoryResponseParams `json:"Response"`
 }
 
 func (r *DescribeDeviceDataHistoryResponse) ToJsonString() string {
@@ -1972,9 +2450,21 @@ func (r *DescribeDeviceDataHistoryResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeDeviceDataRequestParams struct {
+	// 产品ID
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+
+	// 设备名称
+	DeviceName *string `json:"DeviceName,omitempty" name:"DeviceName"`
+
+	// 设备ID，该字段有值将代替 ProductId/DeviceName
+	DeviceId *string `json:"DeviceId,omitempty" name:"DeviceId"`
+}
+
 type DescribeDeviceDataRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 产品ID
 	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
 
@@ -2006,16 +2496,18 @@ func (r *DescribeDeviceDataRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeDeviceDataResponseParams struct {
+	// 设备数据
+	Data *string `json:"Data,omitempty" name:"Data"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeDeviceDataResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 设备数据
-		Data *string `json:"Data,omitempty" name:"Data"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeDeviceDataResponseParams `json:"Response"`
 }
 
 func (r *DescribeDeviceDataResponse) ToJsonString() string {
@@ -2029,9 +2521,24 @@ func (r *DescribeDeviceDataResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeDevicePositionListRequestParams struct {
+	// 产品标识列表
+	ProductIdList []*string `json:"ProductIdList,omitempty" name:"ProductIdList"`
+
+	// 坐标类型
+	CoordinateType *int64 `json:"CoordinateType,omitempty" name:"CoordinateType"`
+
+	// 分页偏移
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 分页的大小
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
 type DescribeDevicePositionListRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 产品标识列表
 	ProductIdList []*string `json:"ProductIdList,omitempty" name:"ProductIdList"`
 
@@ -2067,19 +2574,21 @@ func (r *DescribeDevicePositionListRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeDevicePositionListResponseParams struct {
+	// 产品设备位置信息列表
+	Positions []*ProductDevicesPositionItem `json:"Positions,omitempty" name:"Positions"`
+
+	// 产品设备位置信息的数目
+	Total *int64 `json:"Total,omitempty" name:"Total"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeDevicePositionListResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 产品设备位置信息列表
-		Positions []*ProductDevicesPositionItem `json:"Positions,omitempty" name:"Positions"`
-
-		// 产品设备位置信息的数目
-		Total *int64 `json:"Total,omitempty" name:"Total"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeDevicePositionListResponseParams `json:"Response"`
 }
 
 func (r *DescribeDevicePositionListResponse) ToJsonString() string {
@@ -2093,9 +2602,21 @@ func (r *DescribeDevicePositionListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeDeviceRequestParams struct {
+	// 产品ID
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+
+	// 设备名
+	DeviceName *string `json:"DeviceName,omitempty" name:"DeviceName"`
+
+	// 设备ID，该字段有值将代替 ProductId/DeviceName
+	DeviceId *string `json:"DeviceId,omitempty" name:"DeviceId"`
+}
+
 type DescribeDeviceRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 产品ID
 	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
 
@@ -2127,16 +2648,18 @@ func (r *DescribeDeviceRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeDeviceResponseParams struct {
+	// 设备信息
+	Device *DeviceInfo `json:"Device,omitempty" name:"Device"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeDeviceResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 设备信息
-		Device *DeviceInfo `json:"Device,omitempty" name:"Device"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeDeviceResponseParams `json:"Response"`
 }
 
 func (r *DescribeDeviceResponse) ToJsonString() string {
@@ -2150,9 +2673,21 @@ func (r *DescribeDeviceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeFenceBindListRequestParams struct {
+	// 围栏Id
+	FenceId *int64 `json:"FenceId,omitempty" name:"FenceId"`
+
+	// 翻页偏移量，0起始
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 最大返回结果数
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
 type DescribeFenceBindListRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 围栏Id
 	FenceId *int64 `json:"FenceId,omitempty" name:"FenceId"`
 
@@ -2184,19 +2719,21 @@ func (r *DescribeFenceBindListRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeFenceBindListResponseParams struct {
+	// 围栏绑定的产品设备列表
+	List []*FenceBindProductItem `json:"List,omitempty" name:"List"`
+
+	// 围栏绑定的设备总数
+	Total *int64 `json:"Total,omitempty" name:"Total"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeFenceBindListResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 围栏绑定的产品设备列表
-		List []*FenceBindProductItem `json:"List,omitempty" name:"List"`
-
-		// 围栏绑定的设备总数
-		Total *int64 `json:"Total,omitempty" name:"Total"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeFenceBindListResponseParams `json:"Response"`
 }
 
 func (r *DescribeFenceBindListResponse) ToJsonString() string {
@@ -2210,9 +2747,33 @@ func (r *DescribeFenceBindListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeFenceEventListRequestParams struct {
+	// 围栏告警信息的查询起始时间，Unix时间，单位为毫秒
+	StartTime *int64 `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 围栏告警信息的查询结束时间，Unix时间，单位为毫秒
+	EndTime *int64 `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 围栏Id
+	FenceId *int64 `json:"FenceId,omitempty" name:"FenceId"`
+
+	// 翻页偏移量，0起始
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 最大返回结果数
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 告警对应的产品Id
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+
+	// 告警对应的设备名称
+	DeviceName *string `json:"DeviceName,omitempty" name:"DeviceName"`
+}
+
 type DescribeFenceEventListRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 围栏告警信息的查询起始时间，Unix时间，单位为毫秒
 	StartTime *int64 `json:"StartTime,omitempty" name:"StartTime"`
 
@@ -2260,19 +2821,21 @@ func (r *DescribeFenceEventListRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeFenceEventListResponseParams struct {
+	// 围栏告警事件列表
+	List []*FenceEventItem `json:"List,omitempty" name:"List"`
+
+	// 围栏告警事件总数
+	Total *int64 `json:"Total,omitempty" name:"Total"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeFenceEventListResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 围栏告警事件列表
-		List []*FenceEventItem `json:"List,omitempty" name:"List"`
-
-		// 围栏告警事件总数
-		Total *int64 `json:"Total,omitempty" name:"Total"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeFenceEventListResponseParams `json:"Response"`
 }
 
 func (r *DescribeFenceEventListResponse) ToJsonString() string {
@@ -2286,9 +2849,21 @@ func (r *DescribeFenceEventListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeFirmwareTaskRequestParams struct {
+	// 产品ID
+	ProductID *string `json:"ProductID,omitempty" name:"ProductID"`
+
+	// 固件版本号
+	FirmwareVersion *string `json:"FirmwareVersion,omitempty" name:"FirmwareVersion"`
+
+	// 固件任务ID
+	TaskId *uint64 `json:"TaskId,omitempty" name:"TaskId"`
+}
+
 type DescribeFirmwareTaskRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 产品ID
 	ProductID *string `json:"ProductID,omitempty" name:"ProductID"`
 
@@ -2320,45 +2895,47 @@ func (r *DescribeFirmwareTaskRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeFirmwareTaskResponseParams struct {
+	// 固件任务ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskId *uint64 `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 固件任务状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *int64 `json:"Status,omitempty" name:"Status"`
+
+	// 固件任务创建时间，单位：秒
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *int64 `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 固件任务升级类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *int64 `json:"Type,omitempty" name:"Type"`
+
+	// 产品名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProductName *string `json:"ProductName,omitempty" name:"ProductName"`
+
+	// 固件任务升级模式。originalVersion（按版本号升级）、filename（提交文件升级）、devicenames（按设备名称升级）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpgradeMode *string `json:"UpgradeMode,omitempty" name:"UpgradeMode"`
+
+	// 产品ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+
+	// 原始固件版本号，在UpgradeMode是originalVersion升级模式下会返回
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OriginalVersion *string `json:"OriginalVersion,omitempty" name:"OriginalVersion"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeFirmwareTaskResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 固件任务ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		TaskId *uint64 `json:"TaskId,omitempty" name:"TaskId"`
-
-		// 固件任务状态
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		Status *int64 `json:"Status,omitempty" name:"Status"`
-
-		// 固件任务创建时间，单位：秒
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		CreateTime *int64 `json:"CreateTime,omitempty" name:"CreateTime"`
-
-		// 固件任务升级类型
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		Type *int64 `json:"Type,omitempty" name:"Type"`
-
-		// 产品名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		ProductName *string `json:"ProductName,omitempty" name:"ProductName"`
-
-		// 固件任务升级模式。originalVersion（按版本号升级）、filename（提交文件升级）、devicenames（按设备名称升级）
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		UpgradeMode *string `json:"UpgradeMode,omitempty" name:"UpgradeMode"`
-
-		// 产品ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
-
-		// 原始固件版本号，在UpgradeMode是originalVersion升级模式下会返回
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		OriginalVersion *string `json:"OriginalVersion,omitempty" name:"OriginalVersion"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeFirmwareTaskResponseParams `json:"Response"`
 }
 
 func (r *DescribeFirmwareTaskResponse) ToJsonString() string {
@@ -2372,9 +2949,27 @@ func (r *DescribeFirmwareTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeGatewayBindDevicesRequestParams struct {
+	// 网关设备的产品ID
+	GatewayProductId *string `json:"GatewayProductId,omitempty" name:"GatewayProductId"`
+
+	// 网关设备的设备名
+	GatewayDeviceName *string `json:"GatewayDeviceName,omitempty" name:"GatewayDeviceName"`
+
+	// 子产品的ID
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+
+	// 分页的偏移
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 分页的页大小
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
 type DescribeGatewayBindDevicesRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 网关设备的产品ID
 	GatewayProductId *string `json:"GatewayProductId,omitempty" name:"GatewayProductId"`
 
@@ -2414,22 +3009,24 @@ func (r *DescribeGatewayBindDevicesRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeGatewayBindDevicesResponseParams struct {
+	// 子设备信息。
+	Devices []*BindDeviceInfo `json:"Devices,omitempty" name:"Devices"`
+
+	// 子设备总数。
+	Total *int64 `json:"Total,omitempty" name:"Total"`
+
+	// 子设备所属的产品名。
+	ProductName *string `json:"ProductName,omitempty" name:"ProductName"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeGatewayBindDevicesResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 子设备信息。
-		Devices []*BindDeviceInfo `json:"Devices,omitempty" name:"Devices"`
-
-		// 子设备总数。
-		Total *int64 `json:"Total,omitempty" name:"Total"`
-
-		// 子设备所属的产品名。
-		ProductName *string `json:"ProductName,omitempty" name:"ProductName"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeGatewayBindDevicesResponseParams `json:"Response"`
 }
 
 func (r *DescribeGatewayBindDevicesResponse) ToJsonString() string {
@@ -2443,9 +3040,24 @@ func (r *DescribeGatewayBindDevicesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeGatewaySubDeviceListRequestParams struct {
+	// 网关产品ID
+	GatewayProductId *string `json:"GatewayProductId,omitempty" name:"GatewayProductId"`
+
+	// 网关设备名称
+	GatewayDeviceName *string `json:"GatewayDeviceName,omitempty" name:"GatewayDeviceName"`
+
+	// 分页偏移
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 分页的大小
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+}
+
 type DescribeGatewaySubDeviceListRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 网关产品ID
 	GatewayProductId *string `json:"GatewayProductId,omitempty" name:"GatewayProductId"`
 
@@ -2481,21 +3093,23 @@ func (r *DescribeGatewaySubDeviceListRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeGatewaySubDeviceListResponseParams struct {
+	// 设备的总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Total *int64 `json:"Total,omitempty" name:"Total"`
+
+	// 设备列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeviceList []*FamilySubDevice `json:"DeviceList,omitempty" name:"DeviceList"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeGatewaySubDeviceListResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 设备的总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		Total *int64 `json:"Total,omitempty" name:"Total"`
-
-		// 设备列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		DeviceList []*FamilySubDevice `json:"DeviceList,omitempty" name:"DeviceList"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeGatewaySubDeviceListResponseParams `json:"Response"`
 }
 
 func (r *DescribeGatewaySubDeviceListResponse) ToJsonString() string {
@@ -2509,9 +3123,24 @@ func (r *DescribeGatewaySubDeviceListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeGatewaySubProductsRequestParams struct {
+	// 网关产品ID
+	GatewayProductId *string `json:"GatewayProductId,omitempty" name:"GatewayProductId"`
+
+	// 分页的偏移量
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 分页的大小
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 项目Id
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+}
+
 type DescribeGatewaySubProductsRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 网关产品ID
 	GatewayProductId *string `json:"GatewayProductId,omitempty" name:"GatewayProductId"`
 
@@ -2547,19 +3176,21 @@ func (r *DescribeGatewaySubProductsRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeGatewaySubProductsResponseParams struct {
+	// 当前分页的可绑定或解绑的产品信息。
+	Products []*BindProductInfo `json:"Products,omitempty" name:"Products"`
+
+	// 可绑定或解绑的产品总数
+	Total *uint64 `json:"Total,omitempty" name:"Total"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeGatewaySubProductsResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 当前分页的可绑定或解绑的产品信息。
-		Products []*BindProductInfo `json:"Products,omitempty" name:"Products"`
-
-		// 可绑定或解绑的产品总数
-		Total *uint64 `json:"Total,omitempty" name:"Total"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeGatewaySubProductsResponseParams `json:"Response"`
 }
 
 func (r *DescribeGatewaySubProductsResponse) ToJsonString() string {
@@ -2573,9 +3204,15 @@ func (r *DescribeGatewaySubProductsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeLoRaFrequencyRequestParams struct {
+	// 频点唯一ID
+	FreqId *string `json:"FreqId,omitempty" name:"FreqId"`
+}
+
 type DescribeLoRaFrequencyRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 频点唯一ID
 	FreqId *string `json:"FreqId,omitempty" name:"FreqId"`
 }
@@ -2599,17 +3236,19 @@ func (r *DescribeLoRaFrequencyRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeLoRaFrequencyResponseParams struct {
+	// 返回详情项
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *LoRaFrequencyEntry `json:"Data,omitempty" name:"Data"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeLoRaFrequencyResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 返回详情项
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		Data *LoRaFrequencyEntry `json:"Data,omitempty" name:"Data"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeLoRaFrequencyResponseParams `json:"Response"`
 }
 
 func (r *DescribeLoRaFrequencyResponse) ToJsonString() string {
@@ -2623,9 +3262,15 @@ func (r *DescribeLoRaFrequencyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeModelDefinitionRequestParams struct {
+	// 产品ID
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+}
+
 type DescribeModelDefinitionRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 产品ID
 	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
 }
@@ -2649,16 +3294,18 @@ func (r *DescribeModelDefinitionRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeModelDefinitionResponseParams struct {
+	// 产品数据模板
+	Model *ProductModelDefinition `json:"Model,omitempty" name:"Model"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeModelDefinitionResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 产品数据模板
-		Model *ProductModelDefinition `json:"Model,omitempty" name:"Model"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeModelDefinitionResponseParams `json:"Response"`
 }
 
 func (r *DescribeModelDefinitionResponse) ToJsonString() string {
@@ -2672,9 +3319,21 @@ func (r *DescribeModelDefinitionResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribePositionFenceListRequestParams struct {
+	// 位置空间Id
+	SpaceId *string `json:"SpaceId,omitempty" name:"SpaceId"`
+
+	// 翻页偏移量，0起始
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 最大返回结果数
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
 type DescribePositionFenceListRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 位置空间Id
 	SpaceId *string `json:"SpaceId,omitempty" name:"SpaceId"`
 
@@ -2706,21 +3365,23 @@ func (r *DescribePositionFenceListRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribePositionFenceListResponseParams struct {
+	// 围栏列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	List []*PositionFenceInfo `json:"List,omitempty" name:"List"`
+
+	// 围栏数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Total *int64 `json:"Total,omitempty" name:"Total"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribePositionFenceListResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 围栏列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		List []*PositionFenceInfo `json:"List,omitempty" name:"List"`
-
-		// 围栏数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		Total *int64 `json:"Total,omitempty" name:"Total"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribePositionFenceListResponseParams `json:"Response"`
 }
 
 func (r *DescribePositionFenceListResponse) ToJsonString() string {
@@ -2734,9 +3395,15 @@ func (r *DescribePositionFenceListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeProjectRequestParams struct {
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+}
+
 type DescribeProjectRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 项目ID
 	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
 }
@@ -2760,16 +3427,18 @@ func (r *DescribeProjectRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeProjectResponseParams struct {
+	// 返回信息
+	Project *ProjectEntryEx `json:"Project,omitempty" name:"Project"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeProjectResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 返回信息
-		Project *ProjectEntryEx `json:"Project,omitempty" name:"Project"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeProjectResponseParams `json:"Response"`
 }
 
 func (r *DescribeProjectResponse) ToJsonString() string {
@@ -2783,9 +3452,27 @@ func (r *DescribeProjectResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeSpaceFenceEventListRequestParams struct {
+	// 位置空间Id
+	SpaceId *string `json:"SpaceId,omitempty" name:"SpaceId"`
+
+	// 围栏告警信息的查询起始时间，Unix时间，单位为毫秒
+	StartTime *int64 `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 围栏告警信息的查询结束时间，Unix时间，单位为毫秒
+	EndTime *int64 `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 翻页偏移量，0起始
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 最大返回结果数
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
 type DescribeSpaceFenceEventListRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 位置空间Id
 	SpaceId *string `json:"SpaceId,omitempty" name:"SpaceId"`
 
@@ -2825,20 +3512,22 @@ func (r *DescribeSpaceFenceEventListRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeSpaceFenceEventListResponseParams struct {
+	// 围栏告警事件列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	List []*FenceEventItem `json:"List,omitempty" name:"List"`
+
+	// 围栏告警事件总数
+	Total *int64 `json:"Total,omitempty" name:"Total"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeSpaceFenceEventListResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 围栏告警事件列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		List []*FenceEventItem `json:"List,omitempty" name:"List"`
-
-		// 围栏告警事件总数
-		Total *int64 `json:"Total,omitempty" name:"Total"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeSpaceFenceEventListResponseParams `json:"Response"`
 }
 
 func (r *DescribeSpaceFenceEventListResponse) ToJsonString() string {
@@ -2852,9 +3541,15 @@ func (r *DescribeSpaceFenceEventListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeStudioProductRequestParams struct {
+	// 产品ID
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+}
+
 type DescribeStudioProductRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 产品ID
 	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
 }
@@ -2878,16 +3573,18 @@ func (r *DescribeStudioProductRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeStudioProductResponseParams struct {
+	// 产品详情
+	Product *ProductEntry `json:"Product,omitempty" name:"Product"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeStudioProductResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 产品详情
-		Product *ProductEntry `json:"Product,omitempty" name:"Product"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeStudioProductResponseParams `json:"Response"`
 }
 
 func (r *DescribeStudioProductResponse) ToJsonString() string {
@@ -2901,9 +3598,18 @@ func (r *DescribeStudioProductResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeTopicPolicyRequestParams struct {
+	// 产品ID
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+
+	// Topic名字
+	TopicName *string `json:"TopicName,omitempty" name:"TopicName"`
+}
+
 type DescribeTopicPolicyRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 产品ID
 	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
 
@@ -2931,22 +3637,24 @@ func (r *DescribeTopicPolicyRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeTopicPolicyResponseParams struct {
+	// 产品ID
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+
+	// Topic名称
+	TopicName *string `json:"TopicName,omitempty" name:"TopicName"`
+
+	// Topic权限
+	Privilege *uint64 `json:"Privilege,omitempty" name:"Privilege"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeTopicPolicyResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 产品ID
-		ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
-
-		// Topic名称
-		TopicName *string `json:"TopicName,omitempty" name:"TopicName"`
-
-		// Topic权限
-		Privilege *uint64 `json:"Privilege,omitempty" name:"Privilege"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeTopicPolicyResponseParams `json:"Response"`
 }
 
 func (r *DescribeTopicPolicyResponse) ToJsonString() string {
@@ -2960,9 +3668,15 @@ func (r *DescribeTopicPolicyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeTopicRuleRequestParams struct {
+	// 规则名称。
+	RuleName *string `json:"RuleName,omitempty" name:"RuleName"`
+}
+
 type DescribeTopicRuleRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 规则名称。
 	RuleName *string `json:"RuleName,omitempty" name:"RuleName"`
 }
@@ -2986,17 +3700,19 @@ func (r *DescribeTopicRuleRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeTopicRuleResponseParams struct {
+	// 规则描述。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Rule *TopicRule `json:"Rule,omitempty" name:"Rule"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeTopicRuleResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 规则描述。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		Rule *TopicRule `json:"Rule,omitempty" name:"Rule"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeTopicRuleResponseParams `json:"Response"`
 }
 
 func (r *DescribeTopicRuleResponse) ToJsonString() string {
@@ -3011,7 +3727,6 @@ func (r *DescribeTopicRuleResponse) FromJsonString(s string) error {
 }
 
 type DeviceData struct {
-
 	// 设备证书，用于 TLS 建立链接时校验客户端身份。采用非对称加密时返回该参数。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeviceCert *string `json:"DeviceCert,omitempty" name:"DeviceCert"`
@@ -3030,7 +3745,6 @@ type DeviceData struct {
 }
 
 type DeviceDataHistoryItem struct {
-
 	// 时间点，毫秒时间戳
 	Time *string `json:"Time,omitempty" name:"Time"`
 
@@ -3039,7 +3753,6 @@ type DeviceDataHistoryItem struct {
 }
 
 type DeviceInfo struct {
-
 	// 设备名
 	DeviceName *string `json:"DeviceName,omitempty" name:"DeviceName"`
 
@@ -3120,7 +3833,6 @@ type DeviceInfo struct {
 }
 
 type DevicePositionItem struct {
-
 	// 设备名称
 	DeviceName *string `json:"DeviceName,omitempty" name:"DeviceName"`
 
@@ -3135,7 +3847,6 @@ type DevicePositionItem struct {
 }
 
 type DeviceSignatureInfo struct {
-
 	// 设备名
 	DeviceName *string `json:"DeviceName,omitempty" name:"DeviceName"`
 
@@ -3144,7 +3855,6 @@ type DeviceSignatureInfo struct {
 }
 
 type DeviceUser struct {
-
 	// 用户ID
 	UserId *string `json:"UserId,omitempty" name:"UserId"`
 
@@ -3153,7 +3863,6 @@ type DeviceUser struct {
 }
 
 type DevicesItem struct {
-
 	// 产品id
 	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
 
@@ -3161,9 +3870,30 @@ type DevicesItem struct {
 	DeviceName *string `json:"DeviceName,omitempty" name:"DeviceName"`
 }
 
+// Predefined struct for user
+type DirectBindDeviceInFamilyRequestParams struct {
+	// 小程序appid
+	IotAppID *string `json:"IotAppID,omitempty" name:"IotAppID"`
+
+	// 用户ID
+	UserID *string `json:"UserID,omitempty" name:"UserID"`
+
+	// 家庭ID
+	FamilyId *string `json:"FamilyId,omitempty" name:"FamilyId"`
+
+	// 产品ID
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+
+	// 设备名
+	DeviceName *string `json:"DeviceName,omitempty" name:"DeviceName"`
+
+	// 房间ID
+	RoomId *string `json:"RoomId,omitempty" name:"RoomId"`
+}
+
 type DirectBindDeviceInFamilyRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 小程序appid
 	IotAppID *string `json:"IotAppID,omitempty" name:"IotAppID"`
 
@@ -3207,16 +3937,18 @@ func (r *DirectBindDeviceInFamilyRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DirectBindDeviceInFamilyResponseParams struct {
+	// 返回设备信息
+	AppDeviceInfo *AppDeviceInfo `json:"AppDeviceInfo,omitempty" name:"AppDeviceInfo"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DirectBindDeviceInFamilyResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 返回设备信息
-		AppDeviceInfo *AppDeviceInfo `json:"AppDeviceInfo,omitempty" name:"AppDeviceInfo"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DirectBindDeviceInFamilyResponseParams `json:"Response"`
 }
 
 func (r *DirectBindDeviceInFamilyResponse) ToJsonString() string {
@@ -3230,9 +3962,15 @@ func (r *DirectBindDeviceInFamilyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DisableTopicRuleRequestParams struct {
+	// 规则名称
+	RuleName *string `json:"RuleName,omitempty" name:"RuleName"`
+}
+
 type DisableTopicRuleRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 规则名称
 	RuleName *string `json:"RuleName,omitempty" name:"RuleName"`
 }
@@ -3256,13 +3994,15 @@ func (r *DisableTopicRuleRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DisableTopicRuleResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DisableTopicRuleResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DisableTopicRuleResponseParams `json:"Response"`
 }
 
 func (r *DisableTopicRuleResponse) ToJsonString() string {
@@ -3276,9 +4016,15 @@ func (r *DisableTopicRuleResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type EnableTopicRuleRequestParams struct {
+	// 规则名称
+	RuleName *string `json:"RuleName,omitempty" name:"RuleName"`
+}
+
 type EnableTopicRuleRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 规则名称
 	RuleName *string `json:"RuleName,omitempty" name:"RuleName"`
 }
@@ -3302,13 +4048,15 @@ func (r *EnableTopicRuleRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type EnableTopicRuleResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type EnableTopicRuleResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *EnableTopicRuleResponseParams `json:"Response"`
 }
 
 func (r *EnableTopicRuleResponse) ToJsonString() string {
@@ -3323,7 +4071,6 @@ func (r *EnableTopicRuleResponse) FromJsonString(s string) error {
 }
 
 type EventHistoryItem struct {
-
 	// 事件的时间戳
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TimeStamp *int64 `json:"TimeStamp,omitempty" name:"TimeStamp"`
@@ -3350,7 +4097,6 @@ type EventHistoryItem struct {
 }
 
 type FamilySubDevice struct {
-
 	// 产品Id
 	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
 
@@ -3387,7 +4133,6 @@ type FamilySubDevice struct {
 }
 
 type FenceAlarmPoint struct {
-
 	// 围栏告警时间
 	AlarmTime *int64 `json:"AlarmTime,omitempty" name:"AlarmTime"`
 
@@ -3399,7 +4144,6 @@ type FenceAlarmPoint struct {
 }
 
 type FenceBindDeviceItem struct {
-
 	// 设备名称
 	DeviceName *string `json:"DeviceName,omitempty" name:"DeviceName"`
 
@@ -3414,7 +4158,6 @@ type FenceBindDeviceItem struct {
 }
 
 type FenceBindProductItem struct {
-
 	// 围栏绑定的设备信息
 	Devices []*FenceBindDeviceItem `json:"Devices,omitempty" name:"Devices"`
 
@@ -3423,7 +4166,6 @@ type FenceBindProductItem struct {
 }
 
 type FenceEventItem struct {
-
 	// 围栏事件的产品Id
 	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
 
@@ -3441,7 +4183,6 @@ type FenceEventItem struct {
 }
 
 type FirmwareInfo struct {
-
 	// 固件版本
 	Version *string `json:"Version,omitempty" name:"Version"`
 
@@ -3480,9 +4221,21 @@ type FirmwareInfo struct {
 	CreatorNickName *string `json:"CreatorNickName,omitempty" name:"CreatorNickName"`
 }
 
+// Predefined struct for user
+type GenSingleDeviceSignatureOfPublicRequestParams struct {
+	// 设备所属的产品ID
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+
+	// 需要绑定的设备
+	DeviceName *string `json:"DeviceName,omitempty" name:"DeviceName"`
+
+	// 设备绑定签名的有效时间,以秒为单位。取值范围：0 < Expire <= 86400，Expire == -1（十年）
+	Expire *int64 `json:"Expire,omitempty" name:"Expire"`
+}
+
 type GenSingleDeviceSignatureOfPublicRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 设备所属的产品ID
 	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
 
@@ -3514,16 +4267,18 @@ func (r *GenSingleDeviceSignatureOfPublicRequest) FromJsonString(s string) error
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type GenSingleDeviceSignatureOfPublicResponseParams struct {
+	// 设备签名
+	DeviceSignature *DeviceSignatureInfo `json:"DeviceSignature,omitempty" name:"DeviceSignature"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type GenSingleDeviceSignatureOfPublicResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 设备签名
-		DeviceSignature *DeviceSignatureInfo `json:"DeviceSignature,omitempty" name:"DeviceSignature"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *GenSingleDeviceSignatureOfPublicResponseParams `json:"Response"`
 }
 
 func (r *GenSingleDeviceSignatureOfPublicResponse) ToJsonString() string {
@@ -3537,9 +4292,21 @@ func (r *GenSingleDeviceSignatureOfPublicResponse) FromJsonString(s string) erro
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type GetBatchProductionsListRequestParams struct {
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 偏移量
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回数量限制
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
 type GetBatchProductionsListRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 项目ID
 	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
 
@@ -3571,20 +4338,22 @@ func (r *GetBatchProductionsListRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type GetBatchProductionsListResponseParams struct {
+	// 返回详情信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BatchProductions []*BatchProductionInfo `json:"BatchProductions,omitempty" name:"BatchProductions"`
+
+	// 返回数量。
+	TotalCnt *int64 `json:"TotalCnt,omitempty" name:"TotalCnt"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type GetBatchProductionsListResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 返回详情信息。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		BatchProductions []*BatchProductionInfo `json:"BatchProductions,omitempty" name:"BatchProductions"`
-
-		// 返回数量。
-		TotalCnt *int64 `json:"TotalCnt,omitempty" name:"TotalCnt"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *GetBatchProductionsListResponseParams `json:"Response"`
 }
 
 func (r *GetBatchProductionsListResponse) ToJsonString() string {
@@ -3598,9 +4367,21 @@ func (r *GetBatchProductionsListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type GetCOSURLRequestParams struct {
+	// 产品ID
+	ProductID *string `json:"ProductID,omitempty" name:"ProductID"`
+
+	// 固件版本
+	FirmwareVersion *string `json:"FirmwareVersion,omitempty" name:"FirmwareVersion"`
+
+	// 文件大小
+	FileSize *uint64 `json:"FileSize,omitempty" name:"FileSize"`
+}
+
 type GetCOSURLRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 产品ID
 	ProductID *string `json:"ProductID,omitempty" name:"ProductID"`
 
@@ -3632,16 +4413,18 @@ func (r *GetCOSURLRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type GetCOSURLResponseParams struct {
+	// 固件URL
+	Url *string `json:"Url,omitempty" name:"Url"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type GetCOSURLResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 固件URL
-		Url *string `json:"Url,omitempty" name:"Url"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *GetCOSURLResponseParams `json:"Response"`
 }
 
 func (r *GetCOSURLResponse) ToJsonString() string {
@@ -3655,9 +4438,30 @@ func (r *GetCOSURLResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type GetDeviceListRequestParams struct {
+	// 需要查看设备列表的产品ID, -1代表ProjectId来筛选
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+
+	// 分页偏移
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 分页的大小，数值范围 10-100
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 设备固件版本号，若不带此参数会返回所有固件版本的设备。传"None-FirmwareVersion"查询无版本号的设备
+	FirmwareVersion *string `json:"FirmwareVersion,omitempty" name:"FirmwareVersion"`
+
+	// 需要过滤的设备名称
+	DeviceName *string `json:"DeviceName,omitempty" name:"DeviceName"`
+
+	// 项目ID。产品 ID 为 -1 时，该参数必填
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+}
+
 type GetDeviceListRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 需要查看设备列表的产品ID, -1代表ProjectId来筛选
 	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
 
@@ -3701,21 +4505,23 @@ func (r *GetDeviceListRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type GetDeviceListResponseParams struct {
+	// 返回的设备列表, 注意列表设备的 DevicePsk 为空, 要获取设备的 DevicePsk 请使用 DescribeDevice
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Devices []*DeviceInfo `json:"Devices,omitempty" name:"Devices"`
+
+	// 产品下的设备总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Total *int64 `json:"Total,omitempty" name:"Total"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type GetDeviceListResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 返回的设备列表, 注意列表设备的 DevicePsk 为空, 要获取设备的 DevicePsk 请使用 DescribeDevice
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		Devices []*DeviceInfo `json:"Devices,omitempty" name:"Devices"`
-
-		// 产品下的设备总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		Total *int64 `json:"Total,omitempty" name:"Total"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *GetDeviceListResponseParams `json:"Response"`
 }
 
 func (r *GetDeviceListResponse) ToJsonString() string {
@@ -3729,9 +4535,27 @@ func (r *GetDeviceListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type GetDeviceLocationHistoryRequestParams struct {
+	// 产品Id
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+
+	// 设备名
+	DeviceName *string `json:"DeviceName,omitempty" name:"DeviceName"`
+
+	// 查询起始时间，Unix时间，单位为毫秒
+	StartTime *int64 `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 查询结束时间，Unix时间，单位为毫秒
+	EndTime *int64 `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 坐标类型
+	CoordinateType *int64 `json:"CoordinateType,omitempty" name:"CoordinateType"`
+}
+
 type GetDeviceLocationHistoryRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 产品Id
 	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
 
@@ -3771,16 +4595,18 @@ func (r *GetDeviceLocationHistoryRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type GetDeviceLocationHistoryResponseParams struct {
+	// 历史位置列表
+	Positions []*PositionItem `json:"Positions,omitempty" name:"Positions"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type GetDeviceLocationHistoryResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 历史位置列表
-		Positions []*PositionItem `json:"Positions,omitempty" name:"Positions"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *GetDeviceLocationHistoryResponseParams `json:"Response"`
 }
 
 func (r *GetDeviceLocationHistoryResponse) ToJsonString() string {
@@ -3794,9 +4620,18 @@ func (r *GetDeviceLocationHistoryResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type GetFamilyDeviceUserListRequestParams struct {
+	// 产品ID
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+
+	// 设备名称
+	DeviceName *string `json:"DeviceName,omitempty" name:"DeviceName"`
+}
+
 type GetFamilyDeviceUserListRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 产品ID
 	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
 
@@ -3824,17 +4659,19 @@ func (r *GetFamilyDeviceUserListRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type GetFamilyDeviceUserListResponseParams struct {
+	// 设备的用户列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserList []*DeviceUser `json:"UserList,omitempty" name:"UserList"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type GetFamilyDeviceUserListResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 设备的用户列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		UserList []*DeviceUser `json:"UserList,omitempty" name:"UserList"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *GetFamilyDeviceUserListResponseParams `json:"Response"`
 }
 
 func (r *GetFamilyDeviceUserListResponse) ToJsonString() string {
@@ -3848,9 +4685,24 @@ func (r *GetFamilyDeviceUserListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type GetGatewaySubDeviceListRequestParams struct {
+	// 网关产品ID
+	GatewayProductId *string `json:"GatewayProductId,omitempty" name:"GatewayProductId"`
+
+	// 网关设备名称
+	GatewayDeviceName *string `json:"GatewayDeviceName,omitempty" name:"GatewayDeviceName"`
+
+	// 分页偏移
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 分页的大小
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+}
+
 type GetGatewaySubDeviceListRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 网关产品ID
 	GatewayProductId *string `json:"GatewayProductId,omitempty" name:"GatewayProductId"`
 
@@ -3886,21 +4738,23 @@ func (r *GetGatewaySubDeviceListRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type GetGatewaySubDeviceListResponseParams struct {
+	// 设备的总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Total *int64 `json:"Total,omitempty" name:"Total"`
+
+	// 设备列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeviceList *FamilySubDevice `json:"DeviceList,omitempty" name:"DeviceList"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type GetGatewaySubDeviceListResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 设备的总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		Total *int64 `json:"Total,omitempty" name:"Total"`
-
-		// 设备列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		DeviceList *FamilySubDevice `json:"DeviceList,omitempty" name:"DeviceList"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *GetGatewaySubDeviceListResponseParams `json:"Response"`
 }
 
 func (r *GetGatewaySubDeviceListResponse) ToJsonString() string {
@@ -3914,9 +4768,21 @@ func (r *GetGatewaySubDeviceListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type GetLoRaGatewayListRequestParams struct {
+	// 是否是社区网关
+	IsCommunity *bool `json:"IsCommunity,omitempty" name:"IsCommunity"`
+
+	// 偏移量
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 限制个数
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+}
+
 type GetLoRaGatewayListRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 是否是社区网关
 	IsCommunity *bool `json:"IsCommunity,omitempty" name:"IsCommunity"`
 
@@ -3948,20 +4814,22 @@ func (r *GetLoRaGatewayListRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type GetLoRaGatewayListResponseParams struct {
+	// 返回总数
+	Total *uint64 `json:"Total,omitempty" name:"Total"`
+
+	// 返回详情项
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Gateways []*LoRaGatewayItem `json:"Gateways,omitempty" name:"Gateways"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type GetLoRaGatewayListResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 返回总数
-		Total *uint64 `json:"Total,omitempty" name:"Total"`
-
-		// 返回详情项
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		Gateways []*LoRaGatewayItem `json:"Gateways,omitempty" name:"Gateways"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *GetLoRaGatewayListResponseParams `json:"Response"`
 }
 
 func (r *GetLoRaGatewayListResponse) ToJsonString() string {
@@ -3975,9 +4843,21 @@ func (r *GetLoRaGatewayListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type GetPositionSpaceListRequestParams struct {
+	// 项目Id
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 翻页偏移量，0起始
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 最大返回结果数
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
 type GetPositionSpaceListRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 项目Id
 	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
 
@@ -4009,21 +4889,23 @@ func (r *GetPositionSpaceListRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type GetPositionSpaceListResponseParams struct {
+	// 位置空间列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	List []*PositionSpaceInfo `json:"List,omitempty" name:"List"`
+
+	// 位置空间数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Total *int64 `json:"Total,omitempty" name:"Total"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type GetPositionSpaceListResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 位置空间列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		List []*PositionSpaceInfo `json:"List,omitempty" name:"List"`
-
-		// 位置空间数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		Total *int64 `json:"Total,omitempty" name:"Total"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *GetPositionSpaceListResponseParams `json:"Response"`
 }
 
 func (r *GetPositionSpaceListResponse) ToJsonString() string {
@@ -4037,9 +4919,33 @@ func (r *GetPositionSpaceListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type GetProjectListRequestParams struct {
+	// 偏移量
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 个数限制
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 按项目ID搜索
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 按产品ID搜索
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+
+	// 加载 ProductCount、DeviceCount、ApplicationCount，可选值：ProductCount、DeviceCount、ApplicationCount，可多选
+	Includes []*string `json:"Includes,omitempty" name:"Includes"`
+
+	// 按项目名称搜索
+	ProjectName *string `json:"ProjectName,omitempty" name:"ProjectName"`
+}
+
 type GetProjectListRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 偏移量
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
@@ -4087,21 +4993,23 @@ func (r *GetProjectListRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type GetProjectListResponseParams struct {
+	// 项目列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Projects []*ProjectEntryEx `json:"Projects,omitempty" name:"Projects"`
+
+	// 列表项个数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Total *int64 `json:"Total,omitempty" name:"Total"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type GetProjectListResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 项目列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		Projects []*ProjectEntryEx `json:"Projects,omitempty" name:"Projects"`
-
-		// 列表项个数
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		Total *int64 `json:"Total,omitempty" name:"Total"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *GetProjectListResponseParams `json:"Response"`
 }
 
 func (r *GetProjectListResponse) ToJsonString() string {
@@ -4115,9 +5023,24 @@ func (r *GetProjectListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type GetStudioProductListRequestParams struct {
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 产品DevStatus
+	DevStatus *string `json:"DevStatus,omitempty" name:"DevStatus"`
+
+	// 偏移量
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 数量限制
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+}
+
 type GetStudioProductListRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 项目ID
 	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
 
@@ -4153,19 +5076,21 @@ func (r *GetStudioProductListRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type GetStudioProductListResponseParams struct {
+	// 产品列表
+	Products []*ProductEntry `json:"Products,omitempty" name:"Products"`
+
+	// 产品数量
+	Total *int64 `json:"Total,omitempty" name:"Total"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type GetStudioProductListResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 产品列表
-		Products []*ProductEntry `json:"Products,omitempty" name:"Products"`
-
-		// 产品数量
-		Total *int64 `json:"Total,omitempty" name:"Total"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *GetStudioProductListResponseParams `json:"Response"`
 }
 
 func (r *GetStudioProductListResponse) ToJsonString() string {
@@ -4179,9 +5104,18 @@ func (r *GetStudioProductListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type GetTopicRuleListRequestParams struct {
+	// 请求的页数
+	PageNum *int64 `json:"PageNum,omitempty" name:"PageNum"`
+
+	// 分页的大小
+	PageSize *int64 `json:"PageSize,omitempty" name:"PageSize"`
+}
+
 type GetTopicRuleListRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 请求的页数
 	PageNum *int64 `json:"PageNum,omitempty" name:"PageNum"`
 
@@ -4209,19 +5143,21 @@ func (r *GetTopicRuleListRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type GetTopicRuleListResponseParams struct {
+	// 规则总数量
+	TotalCnt *int64 `json:"TotalCnt,omitempty" name:"TotalCnt"`
+
+	// 规则列表
+	Rules []*TopicRuleInfo `json:"Rules,omitempty" name:"Rules"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type GetTopicRuleListResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 规则总数量
-		TotalCnt *int64 `json:"TotalCnt,omitempty" name:"TotalCnt"`
-
-		// 规则列表
-		Rules []*TopicRuleInfo `json:"Rules,omitempty" name:"Rules"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *GetTopicRuleListResponseParams `json:"Response"`
 }
 
 func (r *GetTopicRuleListResponse) ToJsonString() string {
@@ -4235,9 +5171,36 @@ func (r *GetTopicRuleListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ListEventHistoryRequestParams struct {
+	// 产品ID
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+
+	// 设备名称
+	DeviceName *string `json:"DeviceName,omitempty" name:"DeviceName"`
+
+	// 搜索的事件类型：alert 表示告警，fault 表示故障，info 表示信息，为空则表示查询上述所有类型事件
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 起始时间（Unix 时间戳，秒级）, 为0 表示 当前时间 - 24h
+	StartTime *int64 `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间（Unix 时间戳，秒级）, 为0 表示当前时间
+	EndTime *uint64 `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 搜索上下文, 用作查询游标
+	Context *string `json:"Context,omitempty" name:"Context"`
+
+	// 单次获取的历史数据项目的最大数量, 缺省10
+	Size *int64 `json:"Size,omitempty" name:"Size"`
+
+	// 事件标识符，可以用来指定查询特定的事件，如果不指定，则查询所有事件。
+	EventId *string `json:"EventId,omitempty" name:"EventId"`
+}
+
 type ListEventHistoryRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 产品ID
 	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
 
@@ -4289,29 +5252,31 @@ func (r *ListEventHistoryRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ListEventHistoryResponseParams struct {
+	// 搜索上下文, 用作查询游标
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Context *string `json:"Context,omitempty" name:"Context"`
+
+	// 搜索结果数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Total *int64 `json:"Total,omitempty" name:"Total"`
+
+	// 搜索结果是否已经结束
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Listover *bool `json:"Listover,omitempty" name:"Listover"`
+
+	// 搜集结果集
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EventHistory []*EventHistoryItem `json:"EventHistory,omitempty" name:"EventHistory"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type ListEventHistoryResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 搜索上下文, 用作查询游标
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		Context *string `json:"Context,omitempty" name:"Context"`
-
-		// 搜索结果数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		Total *int64 `json:"Total,omitempty" name:"Total"`
-
-		// 搜索结果是否已经结束
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		Listover *bool `json:"Listover,omitempty" name:"Listover"`
-
-		// 搜集结果集
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		EventHistory []*EventHistoryItem `json:"EventHistory,omitempty" name:"EventHistory"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *ListEventHistoryResponseParams `json:"Response"`
 }
 
 func (r *ListEventHistoryResponse) ToJsonString() string {
@@ -4325,9 +5290,24 @@ func (r *ListEventHistoryResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ListFirmwaresRequestParams struct {
+	// 获取的页数
+	PageNum *uint64 `json:"PageNum,omitempty" name:"PageNum"`
+
+	// 分页的大小
+	PageSize *uint64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// 产品ID
+	ProductID *string `json:"ProductID,omitempty" name:"ProductID"`
+
+	// 搜索过滤条件
+	Filters []*SearchKeyword `json:"Filters,omitempty" name:"Filters"`
+}
+
 type ListFirmwaresRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 获取的页数
 	PageNum *uint64 `json:"PageNum,omitempty" name:"PageNum"`
 
@@ -4363,19 +5343,21 @@ func (r *ListFirmwaresRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ListFirmwaresResponseParams struct {
+	// 固件总数
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 固件列表
+	Firmwares []*FirmwareInfo `json:"Firmwares,omitempty" name:"Firmwares"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type ListFirmwaresResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 固件总数
-		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 固件列表
-		Firmwares []*FirmwareInfo `json:"Firmwares,omitempty" name:"Firmwares"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *ListFirmwaresResponseParams `json:"Response"`
 }
 
 func (r *ListFirmwaresResponse) ToJsonString() string {
@@ -4389,9 +5371,15 @@ func (r *ListFirmwaresResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ListTopicPolicyRequestParams struct {
+	// 产品ID
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+}
+
 type ListTopicPolicyRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 产品ID
 	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
 }
@@ -4415,16 +5403,18 @@ func (r *ListTopicPolicyRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ListTopicPolicyResponseParams struct {
+	// Topic列表
+	Topics []*TopicItem `json:"Topics,omitempty" name:"Topics"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type ListTopicPolicyResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// Topic列表
-		Topics []*TopicItem `json:"Topics,omitempty" name:"Topics"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *ListTopicPolicyResponseParams `json:"Response"`
 }
 
 func (r *ListTopicPolicyResponse) ToJsonString() string {
@@ -4439,7 +5429,6 @@ func (r *ListTopicPolicyResponse) FromJsonString(s string) error {
 }
 
 type LoRaFrequencyEntry struct {
-
 	// 频点唯一ID
 	FreqId *string `json:"FreqId,omitempty" name:"FreqId"`
 
@@ -4472,7 +5461,6 @@ type LoRaFrequencyEntry struct {
 }
 
 type LoRaGatewayItem struct {
-
 	// LoRa 网关Id
 	GatewayId *string `json:"GatewayId,omitempty" name:"GatewayId"`
 
@@ -4508,7 +5496,6 @@ type LoRaGatewayItem struct {
 }
 
 type LoRaGatewayLocation struct {
-
 	// 纬度
 	Latitude *float64 `json:"Latitude,omitempty" name:"Latitude"`
 
@@ -4522,9 +5509,18 @@ type LoRaGatewayLocation struct {
 	Altitude *float64 `json:"Altitude,omitempty" name:"Altitude"`
 }
 
+// Predefined struct for user
+type ModifyFenceBindRequestParams struct {
+	// 围栏Id
+	FenceId *int64 `json:"FenceId,omitempty" name:"FenceId"`
+
+	// 围栏绑定的产品列表
+	Items []*FenceBindProductItem `json:"Items,omitempty" name:"Items"`
+}
+
 type ModifyFenceBindRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 围栏Id
 	FenceId *int64 `json:"FenceId,omitempty" name:"FenceId"`
 
@@ -4552,13 +5548,15 @@ func (r *ModifyFenceBindRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifyFenceBindResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type ModifyFenceBindResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *ModifyFenceBindResponseParams `json:"Response"`
 }
 
 func (r *ModifyFenceBindResponse) ToJsonString() string {
@@ -4572,9 +5570,39 @@ func (r *ModifyFenceBindResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifyLoRaFrequencyRequestParams struct {
+	// 频点唯一ID
+	FreqId *string `json:"FreqId,omitempty" name:"FreqId"`
+
+	// 频点名称
+	FreqName *string `json:"FreqName,omitempty" name:"FreqName"`
+
+	// 频点描述
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 数据上行信道
+	ChannelsDataUp []*uint64 `json:"ChannelsDataUp,omitempty" name:"ChannelsDataUp"`
+
+	// 数据下行信道RX1
+	ChannelsDataRX1 []*uint64 `json:"ChannelsDataRX1,omitempty" name:"ChannelsDataRX1"`
+
+	// 数据下行信道RX2
+	ChannelsDataRX2 []*uint64 `json:"ChannelsDataRX2,omitempty" name:"ChannelsDataRX2"`
+
+	// 入网上行信道
+	ChannelsJoinUp []*uint64 `json:"ChannelsJoinUp,omitempty" name:"ChannelsJoinUp"`
+
+	// 入网下行信道RX1
+	ChannelsJoinRX1 []*uint64 `json:"ChannelsJoinRX1,omitempty" name:"ChannelsJoinRX1"`
+
+	// 入网下行信道RX2
+	ChannelsJoinRX2 []*uint64 `json:"ChannelsJoinRX2,omitempty" name:"ChannelsJoinRX2"`
+}
+
 type ModifyLoRaFrequencyRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 频点唯一ID
 	FreqId *string `json:"FreqId,omitempty" name:"FreqId"`
 
@@ -4630,16 +5658,18 @@ func (r *ModifyLoRaFrequencyRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifyLoRaFrequencyResponseParams struct {
+	// 频点信息
+	Data *LoRaFrequencyEntry `json:"Data,omitempty" name:"Data"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type ModifyLoRaFrequencyResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 频点信息
-		Data *LoRaFrequencyEntry `json:"Data,omitempty" name:"Data"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *ModifyLoRaFrequencyResponseParams `json:"Response"`
 }
 
 func (r *ModifyLoRaFrequencyResponse) ToJsonString() string {
@@ -4653,9 +5683,36 @@ func (r *ModifyLoRaFrequencyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifyLoRaGatewayRequestParams struct {
+	// 描述信息
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// LoRa网关Id
+	GatewayId *string `json:"GatewayId,omitempty" name:"GatewayId"`
+
+	// LoRa网关位置坐标
+	Location *LoRaGatewayLocation `json:"Location,omitempty" name:"Location"`
+
+	// LoRa网关名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 是否公开可见
+	IsPublic *bool `json:"IsPublic,omitempty" name:"IsPublic"`
+
+	// 位置信息
+	Position *string `json:"Position,omitempty" name:"Position"`
+
+	// 位置详情
+	PositionDetails *string `json:"PositionDetails,omitempty" name:"PositionDetails"`
+
+	// 频点ID
+	FrequencyId *string `json:"FrequencyId,omitempty" name:"FrequencyId"`
+}
+
 type ModifyLoRaGatewayRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 描述信息
 	Description *string `json:"Description,omitempty" name:"Description"`
 
@@ -4707,16 +5764,18 @@ func (r *ModifyLoRaGatewayRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifyLoRaGatewayResponseParams struct {
+	// 返回网关数据
+	Gateway *LoRaGatewayItem `json:"Gateway,omitempty" name:"Gateway"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type ModifyLoRaGatewayResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 返回网关数据
-		Gateway *LoRaGatewayItem `json:"Gateway,omitempty" name:"Gateway"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *ModifyLoRaGatewayResponseParams `json:"Response"`
 }
 
 func (r *ModifyLoRaGatewayResponse) ToJsonString() string {
@@ -4730,9 +5789,18 @@ func (r *ModifyLoRaGatewayResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifyModelDefinitionRequestParams struct {
+	// 产品ID
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+
+	// 数据模板定义
+	ModelSchema *string `json:"ModelSchema,omitempty" name:"ModelSchema"`
+}
+
 type ModifyModelDefinitionRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 产品ID
 	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
 
@@ -4760,13 +5828,15 @@ func (r *ModifyModelDefinitionRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifyModelDefinitionResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type ModifyModelDefinitionResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *ModifyModelDefinitionResponseParams `json:"Response"`
 }
 
 func (r *ModifyModelDefinitionResponse) ToJsonString() string {
@@ -4780,8 +5850,14 @@ func (r *ModifyModelDefinitionResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifyPositionFenceRequestParams struct {
+
+}
+
 type ModifyPositionFenceRequest struct {
 	*tchttp.BaseRequest
+	
 }
 
 func (r *ModifyPositionFenceRequest) ToJsonString() string {
@@ -4796,19 +5872,22 @@ func (r *ModifyPositionFenceRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyPositionFenceRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifyPositionFenceResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type ModifyPositionFenceResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *ModifyPositionFenceResponseParams `json:"Response"`
 }
 
 func (r *ModifyPositionFenceResponse) ToJsonString() string {
@@ -4822,9 +5901,30 @@ func (r *ModifyPositionFenceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifyPositionSpaceRequestParams struct {
+	// 位置空间Id
+	SpaceId *string `json:"SpaceId,omitempty" name:"SpaceId"`
+
+	// 位置空间名称
+	SpaceName *string `json:"SpaceName,omitempty" name:"SpaceName"`
+
+	// 授权类型
+	AuthorizeType *int64 `json:"AuthorizeType,omitempty" name:"AuthorizeType"`
+
+	// 产品列表
+	ProductIdList []*string `json:"ProductIdList,omitempty" name:"ProductIdList"`
+
+	// 位置空间描述
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 缩略图
+	Icon *string `json:"Icon,omitempty" name:"Icon"`
+}
+
 type ModifyPositionSpaceRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 位置空间Id
 	SpaceId *string `json:"SpaceId,omitempty" name:"SpaceId"`
 
@@ -4868,13 +5968,15 @@ func (r *ModifyPositionSpaceRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifyPositionSpaceResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type ModifyPositionSpaceResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *ModifyPositionSpaceResponseParams `json:"Response"`
 }
 
 func (r *ModifyPositionSpaceResponse) ToJsonString() string {
@@ -4888,9 +5990,21 @@ func (r *ModifyPositionSpaceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifyProjectRequestParams struct {
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 项目名称
+	ProjectName *string `json:"ProjectName,omitempty" name:"ProjectName"`
+
+	// 项目描述
+	ProjectDesc *string `json:"ProjectDesc,omitempty" name:"ProjectDesc"`
+}
+
 type ModifyProjectRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 项目ID
 	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
 
@@ -4922,16 +6036,18 @@ func (r *ModifyProjectRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifyProjectResponseParams struct {
+	// 项目详情
+	Project *ProjectEntry `json:"Project,omitempty" name:"Project"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type ModifyProjectResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 项目详情
-		Project *ProjectEntry `json:"Project,omitempty" name:"Project"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *ModifyProjectResponseParams `json:"Response"`
 }
 
 func (r *ModifyProjectResponse) ToJsonString() string {
@@ -4945,9 +6061,21 @@ func (r *ModifyProjectResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifySpacePropertyRequestParams struct {
+	// 位置空间Id
+	SpaceId *string `json:"SpaceId,omitempty" name:"SpaceId"`
+
+	// 产品Id
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+
+	// 产品属性
+	Data *string `json:"Data,omitempty" name:"Data"`
+}
+
 type ModifySpacePropertyRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 位置空间Id
 	SpaceId *string `json:"SpaceId,omitempty" name:"SpaceId"`
 
@@ -4979,13 +6107,15 @@ func (r *ModifySpacePropertyRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifySpacePropertyResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type ModifySpacePropertyResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *ModifySpacePropertyResponseParams `json:"Response"`
 }
 
 func (r *ModifySpacePropertyResponse) ToJsonString() string {
@@ -4999,9 +6129,27 @@ func (r *ModifySpacePropertyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifyStudioProductRequestParams struct {
+	// 产品ID
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+
+	// 产品名称
+	ProductName *string `json:"ProductName,omitempty" name:"ProductName"`
+
+	// 产品描述
+	ProductDesc *string `json:"ProductDesc,omitempty" name:"ProductDesc"`
+
+	// 模型ID
+	ModuleId *int64 `json:"ModuleId,omitempty" name:"ModuleId"`
+
+	// 是否打开二进制转Json功能, 取值为字符串 true/false
+	EnableProductScript *string `json:"EnableProductScript,omitempty" name:"EnableProductScript"`
+}
+
 type ModifyStudioProductRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 产品ID
 	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
 
@@ -5041,16 +6189,18 @@ func (r *ModifyStudioProductRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifyStudioProductResponseParams struct {
+	// 产品描述
+	Product *ProductEntry `json:"Product,omitempty" name:"Product"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type ModifyStudioProductResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 产品描述
-		Product *ProductEntry `json:"Product,omitempty" name:"Product"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *ModifyStudioProductResponseParams `json:"Response"`
 }
 
 func (r *ModifyStudioProductResponse) ToJsonString() string {
@@ -5064,9 +6214,24 @@ func (r *ModifyStudioProductResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifyTopicPolicyRequestParams struct {
+	// 产品ID
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+
+	// 更新前Topic名
+	TopicName *string `json:"TopicName,omitempty" name:"TopicName"`
+
+	// 更新后Topic名
+	NewTopicName *string `json:"NewTopicName,omitempty" name:"NewTopicName"`
+
+	// Topic权限
+	Privilege *uint64 `json:"Privilege,omitempty" name:"Privilege"`
+}
+
 type ModifyTopicPolicyRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 产品ID
 	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
 
@@ -5102,13 +6267,15 @@ func (r *ModifyTopicPolicyRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifyTopicPolicyResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type ModifyTopicPolicyResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *ModifyTopicPolicyResponseParams `json:"Response"`
 }
 
 func (r *ModifyTopicPolicyResponse) ToJsonString() string {
@@ -5122,9 +6289,18 @@ func (r *ModifyTopicPolicyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifyTopicRuleRequestParams struct {
+	// 规则名称
+	RuleName *string `json:"RuleName,omitempty" name:"RuleName"`
+
+	// 替换的规则包体
+	TopicRulePayload *TopicRulePayload `json:"TopicRulePayload,omitempty" name:"TopicRulePayload"`
+}
+
 type ModifyTopicRuleRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 规则名称
 	RuleName *string `json:"RuleName,omitempty" name:"RuleName"`
 
@@ -5152,13 +6328,15 @@ func (r *ModifyTopicRuleRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifyTopicRuleResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type ModifyTopicRuleResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *ModifyTopicRuleResponseParams `json:"Response"`
 }
 
 func (r *ModifyTopicRuleResponse) ToJsonString() string {
@@ -5173,7 +6351,6 @@ func (r *ModifyTopicRuleResponse) FromJsonString(s string) error {
 }
 
 type PositionFenceInfo struct {
-
 	// 围栏信息
 	GeoFence *PositionFenceItem `json:"GeoFence,omitempty" name:"GeoFence"`
 
@@ -5185,7 +6362,6 @@ type PositionFenceInfo struct {
 }
 
 type PositionFenceItem struct {
-
 	// 围栏Id
 	FenceId *int64 `json:"FenceId,omitempty" name:"FenceId"`
 
@@ -5203,7 +6379,6 @@ type PositionFenceItem struct {
 }
 
 type PositionItem struct {
-
 	// 位置点的时间
 	CreateTime *int64 `json:"CreateTime,omitempty" name:"CreateTime"`
 
@@ -5223,7 +6398,6 @@ type PositionItem struct {
 }
 
 type PositionSpaceInfo struct {
-
 	// 项目Id
 	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
 
@@ -5257,7 +6431,6 @@ type PositionSpaceInfo struct {
 }
 
 type ProductDevicesPositionItem struct {
-
 	// 设备位置列表
 	Items []*DevicePositionItem `json:"Items,omitempty" name:"Items"`
 
@@ -5269,7 +6442,6 @@ type ProductDevicesPositionItem struct {
 }
 
 type ProductEntry struct {
-
 	// 产品ID
 	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
 
@@ -5326,7 +6498,6 @@ type ProductEntry struct {
 }
 
 type ProductModelDefinition struct {
-
 	// 产品ID
 	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
 
@@ -5349,7 +6520,6 @@ type ProductModelDefinition struct {
 }
 
 type ProjectEntry struct {
-
 	// 项目ID
 	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
 
@@ -5367,7 +6537,6 @@ type ProjectEntry struct {
 }
 
 type ProjectEntryEx struct {
-
 	// 项目ID
 	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
 
@@ -5405,9 +6574,24 @@ type ProjectEntryEx struct {
 	DeviceCount *uint64 `json:"DeviceCount,omitempty" name:"DeviceCount"`
 }
 
+// Predefined struct for user
+type PublishBroadcastMessageRequestParams struct {
+	// 产品ID
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+
+	// 消息内容
+	Payload *string `json:"Payload,omitempty" name:"Payload"`
+
+	// 消息质量等级
+	Qos *int64 `json:"Qos,omitempty" name:"Qos"`
+
+	// ayload内容的编码格式，取值为base64或空。base64表示云端将收到的请求数据进行base64解码后下发到设备，空则直接将原始内容下发到设备
+	PayloadEncoding *string `json:"PayloadEncoding,omitempty" name:"PayloadEncoding"`
+}
+
 type PublishBroadcastMessageRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 产品ID
 	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
 
@@ -5443,16 +6627,18 @@ func (r *PublishBroadcastMessageRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type PublishBroadcastMessageResponseParams struct {
+	// 广播消息任务Id
+	TaskId *int64 `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type PublishBroadcastMessageResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 广播消息任务Id
-		TaskId *int64 `json:"TaskId,omitempty" name:"TaskId"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *PublishBroadcastMessageResponseParams `json:"Response"`
 }
 
 func (r *PublishBroadcastMessageResponse) ToJsonString() string {
@@ -5466,9 +6652,30 @@ func (r *PublishBroadcastMessageResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type PublishMessageRequestParams struct {
+	// 产品ID
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+
+	// 设备名称
+	DeviceName *string `json:"DeviceName,omitempty" name:"DeviceName"`
+
+	// 消息发往的主题
+	Topic *string `json:"Topic,omitempty" name:"Topic"`
+
+	// 云端下发到设备的控制报文
+	Payload *string `json:"Payload,omitempty" name:"Payload"`
+
+	// 消息服务质量等级，取值为0或1
+	Qos *uint64 `json:"Qos,omitempty" name:"Qos"`
+
+	// Payload的内容编码格式，取值为base64或空。base64表示云端将接收到的base64编码后的报文再转换成二进制报文下发至设备，为空表示不作转换，透传下发至设备
+	PayloadEncoding *string `json:"PayloadEncoding,omitempty" name:"PayloadEncoding"`
+}
+
 type PublishMessageRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 产品ID
 	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
 
@@ -5512,13 +6719,15 @@ func (r *PublishMessageRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type PublishMessageResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type PublishMessageResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *PublishMessageResponseParams `json:"Response"`
 }
 
 func (r *PublishMessageResponse) ToJsonString() string {
@@ -5532,9 +6741,21 @@ func (r *PublishMessageResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type PublishRRPCMessageRequestParams struct {
+	// 产品ID
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+
+	// 设备名称
+	DeviceName *string `json:"DeviceName,omitempty" name:"DeviceName"`
+
+	// 消息内容，utf8编码
+	Payload *string `json:"Payload,omitempty" name:"Payload"`
+}
+
 type PublishRRPCMessageRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 产品ID
 	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
 
@@ -5566,21 +6787,23 @@ func (r *PublishRRPCMessageRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type PublishRRPCMessageResponseParams struct {
+	// RRPC消息ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MessageId *int64 `json:"MessageId,omitempty" name:"MessageId"`
+
+	// 设备回复的消息内容，采用base64编码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PayloadBase64 *string `json:"PayloadBase64,omitempty" name:"PayloadBase64"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type PublishRRPCMessageResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// RRPC消息ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		MessageId *int64 `json:"MessageId,omitempty" name:"MessageId"`
-
-		// 设备回复的消息内容，采用base64编码
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		PayloadBase64 *string `json:"PayloadBase64,omitempty" name:"PayloadBase64"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *PublishRRPCMessageResponseParams `json:"Response"`
 }
 
 func (r *PublishRRPCMessageResponse) ToJsonString() string {
@@ -5594,9 +6817,18 @@ func (r *PublishRRPCMessageResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ReleaseStudioProductRequestParams struct {
+	// 产品ID
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+
+	// 产品DevStatus
+	DevStatus *string `json:"DevStatus,omitempty" name:"DevStatus"`
+}
+
 type ReleaseStudioProductRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 产品ID
 	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
 
@@ -5624,13 +6856,15 @@ func (r *ReleaseStudioProductRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ReleaseStudioProductResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type ReleaseStudioProductResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *ReleaseStudioProductResponseParams `json:"Response"`
 }
 
 func (r *ReleaseStudioProductResponse) ToJsonString() string {
@@ -5645,7 +6879,6 @@ func (r *ReleaseStudioProductResponse) FromJsonString(s string) error {
 }
 
 type SearchKeyword struct {
-
 	// 搜索条件的Key
 	Key *string `json:"Key,omitempty" name:"Key"`
 
@@ -5653,9 +6886,24 @@ type SearchKeyword struct {
 	Value *string `json:"Value,omitempty" name:"Value"`
 }
 
+// Predefined struct for user
+type SearchPositionSpaceRequestParams struct {
+	// 项目Id
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 位置空间名字
+	SpaceName *string `json:"SpaceName,omitempty" name:"SpaceName"`
+
+	// 偏移量，从0开始
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 最大获取数量
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
 type SearchPositionSpaceRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 项目Id
 	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
 
@@ -5691,21 +6939,23 @@ func (r *SearchPositionSpaceRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type SearchPositionSpaceResponseParams struct {
+	// 位置空间列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	List []*PositionSpaceInfo `json:"List,omitempty" name:"List"`
+
+	// 符合条件的位置空间个数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Total *int64 `json:"Total,omitempty" name:"Total"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type SearchPositionSpaceResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 位置空间列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		List []*PositionSpaceInfo `json:"List,omitempty" name:"List"`
-
-		// 符合条件的位置空间个数
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		Total *int64 `json:"Total,omitempty" name:"Total"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *SearchPositionSpaceResponseParams `json:"Response"`
 }
 
 func (r *SearchPositionSpaceResponse) ToJsonString() string {
@@ -5719,9 +6969,30 @@ func (r *SearchPositionSpaceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type SearchStudioProductRequestParams struct {
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 产品名称
+	ProductName *string `json:"ProductName,omitempty" name:"ProductName"`
+
+	// 列表Limit
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 列表Offset
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 产品Status
+	DevStatus *string `json:"DevStatus,omitempty" name:"DevStatus"`
+
+	// 产品ID
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+}
+
 type SearchStudioProductRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 项目ID
 	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
 
@@ -5765,19 +7036,21 @@ func (r *SearchStudioProductRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type SearchStudioProductResponseParams struct {
+	// 产品列表
+	Products []*ProductEntry `json:"Products,omitempty" name:"Products"`
+
+	// 产品数量
+	Total *int64 `json:"Total,omitempty" name:"Total"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type SearchStudioProductResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 产品列表
-		Products []*ProductEntry `json:"Products,omitempty" name:"Products"`
-
-		// 产品数量
-		Total *int64 `json:"Total,omitempty" name:"Total"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *SearchStudioProductResponseParams `json:"Response"`
 }
 
 func (r *SearchStudioProductResponse) ToJsonString() string {
@@ -5791,9 +7064,15 @@ func (r *SearchStudioProductResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type SearchTopicRuleRequestParams struct {
+	// 规则名
+	RuleName *string `json:"RuleName,omitempty" name:"RuleName"`
+}
+
 type SearchTopicRuleRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 规则名
 	RuleName *string `json:"RuleName,omitempty" name:"RuleName"`
 }
@@ -5817,19 +7096,21 @@ func (r *SearchTopicRuleRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type SearchTopicRuleResponseParams struct {
+	// 搜索到的规则总数
+	TotalCnt *int64 `json:"TotalCnt,omitempty" name:"TotalCnt"`
+
+	// 规则信息列表
+	Rules []*TopicRuleInfo `json:"Rules,omitempty" name:"Rules"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type SearchTopicRuleResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 搜索到的规则总数
-		TotalCnt *int64 `json:"TotalCnt,omitempty" name:"TotalCnt"`
-
-		// 规则信息列表
-		Rules []*TopicRuleInfo `json:"Rules,omitempty" name:"Rules"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *SearchTopicRuleResponseParams `json:"Response"`
 }
 
 func (r *SearchTopicRuleResponse) ToJsonString() string {
@@ -5844,7 +7125,6 @@ func (r *SearchTopicRuleResponse) FromJsonString(s string) error {
 }
 
 type TopicItem struct {
-
 	// Topic名称
 	TopicName *string `json:"TopicName,omitempty" name:"TopicName"`
 
@@ -5853,7 +7133,6 @@ type TopicItem struct {
 }
 
 type TopicRule struct {
-
 	// 规则名称。
 	RuleName *string `json:"RuleName,omitempty" name:"RuleName"`
 
@@ -5874,7 +7153,6 @@ type TopicRule struct {
 }
 
 type TopicRuleInfo struct {
-
 	// 规则名称
 	RuleName *string `json:"RuleName,omitempty" name:"RuleName"`
 
@@ -5889,7 +7167,6 @@ type TopicRuleInfo struct {
 }
 
 type TopicRulePayload struct {
-
 	// 规则的SQL语句，如： SELECT * FROM 'pid/dname/event'，然后对其进行base64编码，得：U0VMRUNUICogRlJPTSAncGlkL2RuYW1lL2V2ZW50Jw==
 	Sql *string `json:"Sql,omitempty" name:"Sql"`
 
@@ -5951,9 +7228,24 @@ type TopicRulePayload struct {
 	RuleDisabled *bool `json:"RuleDisabled,omitempty" name:"RuleDisabled"`
 }
 
+// Predefined struct for user
+type UnbindDevicesRequestParams struct {
+	// 网关设备的产品ID
+	GatewayProductId *string `json:"GatewayProductId,omitempty" name:"GatewayProductId"`
+
+	// 网关设备的设备名
+	GatewayDeviceName *string `json:"GatewayDeviceName,omitempty" name:"GatewayDeviceName"`
+
+	// 产品ID
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+
+	// 设备名列表
+	DeviceNames []*string `json:"DeviceNames,omitempty" name:"DeviceNames"`
+}
+
 type UnbindDevicesRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 网关设备的产品ID
 	GatewayProductId *string `json:"GatewayProductId,omitempty" name:"GatewayProductId"`
 
@@ -5989,13 +7281,15 @@ func (r *UnbindDevicesRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type UnbindDevicesResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type UnbindDevicesResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *UnbindDevicesResponseParams `json:"Response"`
 }
 
 func (r *UnbindDevicesResponse) ToJsonString() string {
@@ -6009,9 +7303,18 @@ func (r *UnbindDevicesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type UnbindProductsRequestParams struct {
+	// 网关产品ID
+	GatewayProductId *string `json:"GatewayProductId,omitempty" name:"GatewayProductId"`
+
+	// 待解绑的子产品ID数组
+	ProductIds []*string `json:"ProductIds,omitempty" name:"ProductIds"`
+}
+
 type UnbindProductsRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 网关产品ID
 	GatewayProductId *string `json:"GatewayProductId,omitempty" name:"GatewayProductId"`
 
@@ -6039,16 +7342,18 @@ func (r *UnbindProductsRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type UnbindProductsResponseParams struct {
+	// 绑定了待解绑的LoRa产品下的设备的网关设备列表
+	GatewayDeviceNames []*string `json:"GatewayDeviceNames,omitempty" name:"GatewayDeviceNames"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type UnbindProductsResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 绑定了待解绑的LoRa产品下的设备的网关设备列表
-		GatewayDeviceNames []*string `json:"GatewayDeviceNames,omitempty" name:"GatewayDeviceNames"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *UnbindProductsResponseParams `json:"Response"`
 }
 
 func (r *UnbindProductsResponse) ToJsonString() string {
@@ -6062,9 +7367,18 @@ func (r *UnbindProductsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type UpdateDevicesEnableStateRequestParams struct {
+	// 多个设备标识
+	DevicesItems []*DevicesItem `json:"DevicesItems,omitempty" name:"DevicesItems"`
+
+	// 1：启用；0：禁用
+	Status *int64 `json:"Status,omitempty" name:"Status"`
+}
+
 type UpdateDevicesEnableStateRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 多个设备标识
 	DevicesItems []*DevicesItem `json:"DevicesItems,omitempty" name:"DevicesItems"`
 
@@ -6092,21 +7406,23 @@ func (r *UpdateDevicesEnableStateRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type UpdateDevicesEnableStateResponseParams struct {
+	// 删除的结果代码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResultCode *string `json:"ResultCode,omitempty" name:"ResultCode"`
+
+	// 删除的结果信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResultMessage *string `json:"ResultMessage,omitempty" name:"ResultMessage"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type UpdateDevicesEnableStateResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 删除的结果代码
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		ResultCode *string `json:"ResultCode,omitempty" name:"ResultCode"`
-
-		// 删除的结果信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		ResultMessage *string `json:"ResultMessage,omitempty" name:"ResultMessage"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *UpdateDevicesEnableStateResponseParams `json:"Response"`
 }
 
 func (r *UpdateDevicesEnableStateResponse) ToJsonString() string {
@@ -6120,9 +7436,27 @@ func (r *UpdateDevicesEnableStateResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type UpdateFirmwareRequestParams struct {
+	// 产品ID
+	ProductID *string `json:"ProductID,omitempty" name:"ProductID"`
+
+	// 设备名
+	DeviceName *string `json:"DeviceName,omitempty" name:"DeviceName"`
+
+	// 固件新的版本号
+	FirmwareVersion *string `json:"FirmwareVersion,omitempty" name:"FirmwareVersion"`
+
+	// 固件原版本号
+	FirmwareOriVersion *string `json:"FirmwareOriVersion,omitempty" name:"FirmwareOriVersion"`
+
+	// 固件升级方式；0 静默升级 1 用户确认升级   不填默认静默升级
+	UpgradeMethod *uint64 `json:"UpgradeMethod,omitempty" name:"UpgradeMethod"`
+}
+
 type UpdateFirmwareRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 产品ID
 	ProductID *string `json:"ProductID,omitempty" name:"ProductID"`
 
@@ -6162,13 +7496,15 @@ func (r *UpdateFirmwareRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type UpdateFirmwareResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type UpdateFirmwareResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *UpdateFirmwareResponseParams `json:"Response"`
 }
 
 func (r *UpdateFirmwareResponse) ToJsonString() string {
@@ -6182,9 +7518,33 @@ func (r *UpdateFirmwareResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type UploadFirmwareRequestParams struct {
+	// 产品ID
+	ProductID *string `json:"ProductID,omitempty" name:"ProductID"`
+
+	// 固件版本号
+	FirmwareVersion *string `json:"FirmwareVersion,omitempty" name:"FirmwareVersion"`
+
+	// 固件的MD5值
+	Md5sum *string `json:"Md5sum,omitempty" name:"Md5sum"`
+
+	// 固件的大小
+	FileSize *uint64 `json:"FileSize,omitempty" name:"FileSize"`
+
+	// 固件名称
+	FirmwareName *string `json:"FirmwareName,omitempty" name:"FirmwareName"`
+
+	// 固件描述
+	FirmwareDescription *string `json:"FirmwareDescription,omitempty" name:"FirmwareDescription"`
+
+	// 固件升级模块；可选值 mcu|moudule
+	FwType *string `json:"FwType,omitempty" name:"FwType"`
+}
+
 type UploadFirmwareRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 产品ID
 	ProductID *string `json:"ProductID,omitempty" name:"ProductID"`
 
@@ -6232,13 +7592,15 @@ func (r *UploadFirmwareRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type UploadFirmwareResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type UploadFirmwareResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *UploadFirmwareResponseParams `json:"Response"`
 }
 
 func (r *UploadFirmwareResponse) ToJsonString() string {

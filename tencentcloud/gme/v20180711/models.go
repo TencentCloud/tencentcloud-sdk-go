@@ -21,7 +21,6 @@ import (
 )
 
 type AgeDetectTask struct {
-
 	// 数据唯一ID
 	DataId *string `json:"DataId,omitempty" name:"DataId"`
 
@@ -30,7 +29,6 @@ type AgeDetectTask struct {
 }
 
 type AgeDetectTaskResult struct {
-
 	// 数据唯一ID
 	DataId *string `json:"DataId,omitempty" name:"DataId"`
 
@@ -45,7 +43,6 @@ type AgeDetectTaskResult struct {
 }
 
 type AppStatisticsItem struct {
-
 	// 实时语音统计数据
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RealtimeSpeechStatisticsItem *RealTimeSpeechStatisticsItem `json:"RealtimeSpeechStatisticsItem,omitempty" name:"RealtimeSpeechStatisticsItem"`
@@ -63,7 +60,6 @@ type AppStatisticsItem struct {
 }
 
 type ApplicationDataStatistics struct {
-
 	// 应用ID
 	BizId *uint64 `json:"BizId,omitempty" name:"BizId"`
 
@@ -104,9 +100,23 @@ type ApplicationDataStatistics struct {
 	PcuDataSum []*StatisticsItem `json:"PcuDataSum,omitempty" name:"PcuDataSum"`
 }
 
+// Predefined struct for user
+type CreateAgeDetectTaskRequestParams struct {
+	// 应用id
+	BizId *int64 `json:"BizId,omitempty" name:"BizId"`
+
+	// 语音检测子任务列表，列表最多支持100个检测子任务。结构体中包含：
+	// <li>DataId：数据的唯一ID</li>
+	// <li>Url：数据文件的url，为 urlencode 编码，流式则为拉流地址</li>
+	Tasks []*AgeDetectTask `json:"Tasks,omitempty" name:"Tasks"`
+
+	// 任务结束时gme后台会自动触发回调
+	Callback *string `json:"Callback,omitempty" name:"Callback"`
+}
+
 type CreateAgeDetectTaskRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 应用id
 	BizId *int64 `json:"BizId,omitempty" name:"BizId"`
 
@@ -140,16 +150,18 @@ func (r *CreateAgeDetectTaskRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateAgeDetectTaskResponseParams struct {
+	// 本次任务提交后唯一id，用于获取任务运行结果
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreateAgeDetectTaskResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 本次任务提交后唯一id，用于获取任务运行结果
-		TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreateAgeDetectTaskResponseParams `json:"Response"`
 }
 
 func (r *CreateAgeDetectTaskResponse) ToJsonString() string {
@@ -163,9 +175,36 @@ func (r *CreateAgeDetectTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateAppRequestParams struct {
+	// 应用名称
+	AppName *string `json:"AppName,omitempty" name:"AppName"`
+
+	// 腾讯云项目ID，默认为0，表示默认项目
+	ProjectId *uint64 `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 需要支持的引擎列表，默认全选。
+	EngineList []*string `json:"EngineList,omitempty" name:"EngineList"`
+
+	// 服务区域列表，默认全选。
+	RegionList []*string `json:"RegionList,omitempty" name:"RegionList"`
+
+	// 实时语音服务配置数据
+	RealtimeSpeechConf *RealtimeSpeechConf `json:"RealtimeSpeechConf,omitempty" name:"RealtimeSpeechConf"`
+
+	// 语音消息及转文本服务配置数据
+	VoiceMessageConf *VoiceMessageConf `json:"VoiceMessageConf,omitempty" name:"VoiceMessageConf"`
+
+	// 语音分析服务配置数据
+	VoiceFilterConf *VoiceFilterConf `json:"VoiceFilterConf,omitempty" name:"VoiceFilterConf"`
+
+	// 需要添加的标签列表
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
+}
+
 type CreateAppRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 应用名称
 	AppName *string `json:"AppName,omitempty" name:"AppName"`
 
@@ -218,7 +257,6 @@ func (r *CreateAppRequest) FromJsonString(s string) error {
 }
 
 type CreateAppResp struct {
-
 	// 应用ID，由后台自动生成。
 	BizId *uint64 `json:"BizId,omitempty" name:"BizId"`
 
@@ -244,16 +282,18 @@ type CreateAppResp struct {
 	VoiceFilterConf *VoiceFilterConf `json:"VoiceFilterConf,omitempty" name:"VoiceFilterConf"`
 }
 
+// Predefined struct for user
+type CreateAppResponseParams struct {
+	// 创建应用返回数据
+	Data *CreateAppResp `json:"Data,omitempty" name:"Data"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreateAppResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 创建应用返回数据
-		Data *CreateAppResp `json:"Data,omitempty" name:"Data"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreateAppResponseParams `json:"Response"`
 }
 
 func (r *CreateAppResponse) ToJsonString() string {
@@ -267,9 +307,18 @@ func (r *CreateAppResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateScanUserRequestParams struct {
+	// 应用ID，登录控制台 - 服务管理创建应用得到的AppID
+	BizId *uint64 `json:"BizId,omitempty" name:"BizId"`
+
+	// 需要新增送检的用户号。示例：1234
+	UserId *uint64 `json:"UserId,omitempty" name:"UserId"`
+}
+
 type CreateScanUserRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 应用ID，登录控制台 - 服务管理创建应用得到的AppID
 	BizId *uint64 `json:"BizId,omitempty" name:"BizId"`
 
@@ -297,16 +346,18 @@ func (r *CreateScanUserRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateScanUserResponseParams struct {
+	// 返回结果码
+	ErrorCode *int64 `json:"ErrorCode,omitempty" name:"ErrorCode"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreateScanUserResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 返回结果码
-		ErrorCode *int64 `json:"ErrorCode,omitempty" name:"ErrorCode"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreateScanUserResponseParams `json:"Response"`
 }
 
 func (r *CreateScanUserResponse) ToJsonString() string {
@@ -320,9 +371,18 @@ func (r *CreateScanUserResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteScanUserRequestParams struct {
+	// 应用ID，登录控制台 - 服务管理创建应用得到的AppID
+	BizId *uint64 `json:"BizId,omitempty" name:"BizId"`
+
+	// 需要删除送检的用户号。示例：1234
+	UserId *uint64 `json:"UserId,omitempty" name:"UserId"`
+}
+
 type DeleteScanUserRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 应用ID，登录控制台 - 服务管理创建应用得到的AppID
 	BizId *uint64 `json:"BizId,omitempty" name:"BizId"`
 
@@ -350,16 +410,18 @@ func (r *DeleteScanUserRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteScanUserResponseParams struct {
+	// 返回结果码
+	ErrorCode *int64 `json:"ErrorCode,omitempty" name:"ErrorCode"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DeleteScanUserResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 返回结果码
-		ErrorCode *int64 `json:"ErrorCode,omitempty" name:"ErrorCode"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DeleteScanUserResponseParams `json:"Response"`
 }
 
 func (r *DeleteScanUserResponse) ToJsonString() string {
@@ -373,9 +435,18 @@ func (r *DeleteScanUserResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeAgeDetectTaskRequestParams struct {
+	// 应用id
+	BizId *int64 `json:"BizId,omitempty" name:"BizId"`
+
+	// 创建年龄语音识别任务时返回的taskid
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+}
+
 type DescribeAgeDetectTaskRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 应用id
 	BizId *int64 `json:"BizId,omitempty" name:"BizId"`
 
@@ -403,23 +474,25 @@ func (r *DescribeAgeDetectTaskRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-type DescribeAgeDetectTaskResponse struct {
-	*tchttp.BaseResponse
-	Response *struct {
+// Predefined struct for user
+type DescribeAgeDetectTaskResponseParams struct {
+	// 任务ID
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
 
-		// 任务ID
-		TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
-
-		// 语音检测返回。Results 字段是 JSON 数组，每一个元素包含：
+	// 语音检测返回。Results 字段是 JSON 数组，每一个元素包含：
 	// DataId： 请求中对应的 DataId。
 	// Url ：该请求中对应的 Url。
 	// Status ：子任务状态，0:已创建，1:运行中，2:已完成，3:任务异常，4:任务超时。
 	// Age ：子任务完成后的结果，0:成年人，1:未成年人，100:未知结果。
-		Results []*AgeDetectTaskResult `json:"Results,omitempty" name:"Results"`
+	Results []*AgeDetectTaskResult `json:"Results,omitempty" name:"Results"`
 
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeAgeDetectTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAgeDetectTaskResponseParams `json:"Response"`
 }
 
 func (r *DescribeAgeDetectTaskResponse) ToJsonString() string {
@@ -433,9 +506,24 @@ func (r *DescribeAgeDetectTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeAppStatisticsRequestParams struct {
+	// GME应用ID
+	BizId *uint64 `json:"BizId,omitempty" name:"BizId"`
+
+	// 数据开始时间，东八区时间，格式: 年-月-日，如: 2018-07-13
+	StartDate *string `json:"StartDate,omitempty" name:"StartDate"`
+
+	// 数据结束时间，东八区时间，格式: 年-月-日，如: 2018-07-13
+	EndDate *string `json:"EndDate,omitempty" name:"EndDate"`
+
+	// 要查询的服务列表，取值：RealTimeSpeech/VoiceMessage/VoiceFilter
+	Services []*string `json:"Services,omitempty" name:"Services"`
+}
+
 type DescribeAppStatisticsRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// GME应用ID
 	BizId *uint64 `json:"BizId,omitempty" name:"BizId"`
 
@@ -472,21 +560,22 @@ func (r *DescribeAppStatisticsRequest) FromJsonString(s string) error {
 }
 
 type DescribeAppStatisticsResp struct {
-
 	// 应用用量统计数据
 	AppStatistics []*AppStatisticsItem `json:"AppStatistics,omitempty" name:"AppStatistics"`
 }
 
+// Predefined struct for user
+type DescribeAppStatisticsResponseParams struct {
+	// 应用用量统计数据
+	Data *DescribeAppStatisticsResp `json:"Data,omitempty" name:"Data"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeAppStatisticsResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 应用用量统计数据
-		Data *DescribeAppStatisticsResp `json:"Data,omitempty" name:"Data"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeAppStatisticsResponseParams `json:"Response"`
 }
 
 func (r *DescribeAppStatisticsResponse) ToJsonString() string {
@@ -500,9 +589,21 @@ func (r *DescribeAppStatisticsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeApplicationDataRequestParams struct {
+	// 应用ID
+	BizId *uint64 `json:"BizId,omitempty" name:"BizId"`
+
+	// 数据开始时间，格式为 年-月-日，如: 2018-07-13
+	StartDate *string `json:"StartDate,omitempty" name:"StartDate"`
+
+	// 数据结束时间，格式为 年-月-日，如: 2018-07-13
+	EndDate *string `json:"EndDate,omitempty" name:"EndDate"`
+}
+
 type DescribeApplicationDataRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 应用ID
 	BizId *uint64 `json:"BizId,omitempty" name:"BizId"`
 
@@ -534,16 +635,18 @@ func (r *DescribeApplicationDataRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeApplicationDataResponseParams struct {
+	// 应用统计数据
+	Data *ApplicationDataStatistics `json:"Data,omitempty" name:"Data"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeApplicationDataResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 应用统计数据
-		Data *ApplicationDataStatistics `json:"Data,omitempty" name:"Data"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeApplicationDataResponseParams `json:"Response"`
 }
 
 func (r *DescribeApplicationDataResponse) ToJsonString() string {
@@ -557,9 +660,27 @@ func (r *DescribeApplicationDataResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeFilterResultListRequestParams struct {
+	// 应用ID
+	BizId *uint64 `json:"BizId,omitempty" name:"BizId"`
+
+	// 开始时间，格式为 年-月-日，如: 2018-07-11
+	StartDate *string `json:"StartDate,omitempty" name:"StartDate"`
+
+	// 结束时间，格式为 年-月-日，如: 2018-07-11
+	EndDate *string `json:"EndDate,omitempty" name:"EndDate"`
+
+	// 偏移量，默认值为0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回数量，默认值为10，最大值为100。
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+}
+
 type DescribeFilterResultListRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 应用ID
 	BizId *uint64 `json:"BizId,omitempty" name:"BizId"`
 
@@ -599,21 +720,23 @@ func (r *DescribeFilterResultListRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeFilterResultListResponseParams struct {
+	// 过滤结果总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 当前分页过滤结果列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data []*VoiceFilterInfo `json:"Data,omitempty" name:"Data"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeFilterResultListResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 过滤结果总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 当前分页过滤结果列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		Data []*VoiceFilterInfo `json:"Data,omitempty" name:"Data"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeFilterResultListResponseParams `json:"Response"`
 }
 
 func (r *DescribeFilterResultListResponse) ToJsonString() string {
@@ -627,9 +750,18 @@ func (r *DescribeFilterResultListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeFilterResultRequestParams struct {
+	// 应用ID
+	BizId *uint64 `json:"BizId,omitempty" name:"BizId"`
+
+	// 文件ID
+	FileId *string `json:"FileId,omitempty" name:"FileId"`
+}
+
 type DescribeFilterResultRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 应用ID
 	BizId *uint64 `json:"BizId,omitempty" name:"BizId"`
 
@@ -657,17 +789,19 @@ func (r *DescribeFilterResultRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeFilterResultResponseParams struct {
+	// 过滤结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *VoiceFilterInfo `json:"Data,omitempty" name:"Data"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeFilterResultResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 过滤结果
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		Data *VoiceFilterInfo `json:"Data,omitempty" name:"Data"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeFilterResultResponseParams `json:"Response"`
 }
 
 func (r *DescribeFilterResultResponse) ToJsonString() string {
@@ -681,9 +815,15 @@ func (r *DescribeFilterResultResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeRealtimeScanConfigRequestParams struct {
+	// 应用ID
+	BizId *uint64 `json:"BizId,omitempty" name:"BizId"`
+}
+
 type DescribeRealtimeScanConfigRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 应用ID
 	BizId *uint64 `json:"BizId,omitempty" name:"BizId"`
 }
@@ -707,34 +847,36 @@ func (r *DescribeRealtimeScanConfigRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeRealtimeScanConfigResponseParams struct {
+	// 返回结果码，0正常，非0失败
+	ErrorCode *int64 `json:"ErrorCode,omitempty" name:"ErrorCode"`
+
+	// 应用ID
+	BizId *uint64 `json:"BizId,omitempty" name:"BizId"`
+
+	// 送检类型，0: 全量送审，1: 自定义送审
+	AuditType *int64 `json:"AuditType,omitempty" name:"AuditType"`
+
+	// 用户号正则表达式
+	UserIdRegex []*string `json:"UserIdRegex,omitempty" name:"UserIdRegex"`
+
+	// 房间号正则表达式
+	RoomIdRegex []*string `json:"RoomIdRegex,omitempty" name:"RoomIdRegex"`
+
+	// 用户号字符串，逗号分隔，示例："0001,0002,0003"
+	UserIdString *string `json:"UserIdString,omitempty" name:"UserIdString"`
+
+	// 房间号字符串，逗号分隔，示例："0001,0002,0003"
+	RoomIdString *string `json:"RoomIdString,omitempty" name:"RoomIdString"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeRealtimeScanConfigResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 返回结果码，0正常，非0失败
-		ErrorCode *int64 `json:"ErrorCode,omitempty" name:"ErrorCode"`
-
-		// 应用ID
-		BizId *uint64 `json:"BizId,omitempty" name:"BizId"`
-
-		// 送检类型，0: 全量送审，1: 自定义送审
-		AuditType *int64 `json:"AuditType,omitempty" name:"AuditType"`
-
-		// 用户号正则表达式
-		UserIdRegex []*string `json:"UserIdRegex,omitempty" name:"UserIdRegex"`
-
-		// 房间号正则表达式
-		RoomIdRegex []*string `json:"RoomIdRegex,omitempty" name:"RoomIdRegex"`
-
-		// 用户号字符串，逗号分隔，示例："0001,0002,0003"
-		UserIdString *string `json:"UserIdString,omitempty" name:"UserIdString"`
-
-		// 房间号字符串，逗号分隔，示例："0001,0002,0003"
-		RoomIdString *string `json:"RoomIdString,omitempty" name:"RoomIdString"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeRealtimeScanConfigResponseParams `json:"Response"`
 }
 
 func (r *DescribeRealtimeScanConfigResponse) ToJsonString() string {
@@ -748,9 +890,21 @@ func (r *DescribeRealtimeScanConfigResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeRoomInfoRequestParams struct {
+	// 应用ID，登录[控制台 - 服务管理](https://console.cloud.tencent.com/gamegme)创建应用得到的AppID
+	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 房间号列表，最大不能超过10个（RoomIds、StrRoomIds必须填一个）
+	RoomIds []*uint64 `json:"RoomIds,omitempty" name:"RoomIds"`
+
+	// 字符串类型房间号列表，最大不能超过10个（RoomIds、StrRoomIds必须填一个）
+	StrRoomIds []*string `json:"StrRoomIds,omitempty" name:"StrRoomIds"`
+}
+
 type DescribeRoomInfoRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 应用ID，登录[控制台 - 服务管理](https://console.cloud.tencent.com/gamegme)创建应用得到的AppID
 	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
 
@@ -782,21 +936,23 @@ func (r *DescribeRoomInfoRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeRoomInfoResponseParams struct {
+	// 操作结果, 0成功, 非0失败
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Result *uint64 `json:"Result,omitempty" name:"Result"`
+
+	// 房间用户信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RoomUsers []*RoomUser `json:"RoomUsers,omitempty" name:"RoomUsers"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeRoomInfoResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 操作结果, 0成功, 非0失败
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		Result *uint64 `json:"Result,omitempty" name:"Result"`
-
-		// 房间用户信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		RoomUsers []*RoomUser `json:"RoomUsers,omitempty" name:"RoomUsers"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeRoomInfoResponseParams `json:"Response"`
 }
 
 func (r *DescribeRoomInfoResponse) ToJsonString() string {
@@ -811,7 +967,6 @@ func (r *DescribeRoomInfoResponse) FromJsonString(s string) error {
 }
 
 type DescribeScanResult struct {
-
 	// 业务返回码
 	Code *int64 `json:"Code,omitempty" name:"Code"`
 
@@ -857,9 +1012,21 @@ type DescribeScanResult struct {
 	BizId *uint64 `json:"BizId,omitempty" name:"BizId"`
 }
 
+// Predefined struct for user
+type DescribeScanResultListRequestParams struct {
+	// 应用 ID，登录[控制台](https://console.cloud.tencent.com/gamegme)创建应用得到的AppID
+	BizId *uint64 `json:"BizId,omitempty" name:"BizId"`
+
+	// 查询的任务 ID 列表，任务 ID 列表最多支持 100 个。
+	TaskIdList []*string `json:"TaskIdList,omitempty" name:"TaskIdList"`
+
+	// 任务返回结果数量，默认10，上限500。大文件任务忽略此参数，返回全量结果
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+}
+
 type DescribeScanResultListRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 应用 ID，登录[控制台](https://console.cloud.tencent.com/gamegme)创建应用得到的AppID
 	BizId *uint64 `json:"BizId,omitempty" name:"BizId"`
 
@@ -891,17 +1058,19 @@ func (r *DescribeScanResultListRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeScanResultListResponseParams struct {
+	// 要查询的语音检测任务的结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data []*DescribeScanResult `json:"Data,omitempty" name:"Data"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeScanResultListResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 要查询的语音检测任务的结果
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		Data []*DescribeScanResult `json:"Data,omitempty" name:"Data"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeScanResultListResponseParams `json:"Response"`
 }
 
 func (r *DescribeScanResultListResponse) ToJsonString() string {
@@ -915,9 +1084,21 @@ func (r *DescribeScanResultListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeUserInAndOutTimeRequestParams struct {
+	// 应用ID
+	BizId *int64 `json:"BizId,omitempty" name:"BizId"`
+
+	// 房间ID
+	RoomId *int64 `json:"RoomId,omitempty" name:"RoomId"`
+
+	// 用户ID
+	UserId *int64 `json:"UserId,omitempty" name:"UserId"`
+}
+
 type DescribeUserInAndOutTimeRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 应用ID
 	BizId *int64 `json:"BizId,omitempty" name:"BizId"`
 
@@ -949,19 +1130,21 @@ func (r *DescribeUserInAndOutTimeRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeUserInAndOutTimeResponseParams struct {
+	// 用户在房间得进出时间列表
+	InOutList []*InOutTimeInfo `json:"InOutList,omitempty" name:"InOutList"`
+
+	// 用户在房间中总时长
+	Duration *int64 `json:"Duration,omitempty" name:"Duration"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeUserInAndOutTimeResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 用户在房间得进出时间列表
-		InOutList []*InOutTimeInfo `json:"InOutList,omitempty" name:"InOutList"`
-
-		// 用户在房间中总时长
-		Duration *int64 `json:"Duration,omitempty" name:"Duration"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeUserInAndOutTimeResponseParams `json:"Response"`
 }
 
 func (r *DescribeUserInAndOutTimeResponse) ToJsonString() string {
@@ -976,7 +1159,6 @@ func (r *DescribeUserInAndOutTimeResponse) FromJsonString(s string) error {
 }
 
 type InOutTimeInfo struct {
-
 	// 进入房间时间
 	StartTime *int64 `json:"StartTime,omitempty" name:"StartTime"`
 
@@ -984,9 +1166,18 @@ type InOutTimeInfo struct {
 	EndTime *int64 `json:"EndTime,omitempty" name:"EndTime"`
 }
 
+// Predefined struct for user
+type ModifyAppStatusRequestParams struct {
+	// 应用ID，创建应用后由后台生成并返回。
+	BizId *uint64 `json:"BizId,omitempty" name:"BizId"`
+
+	// 应用状态，取值：open/close
+	Status *string `json:"Status,omitempty" name:"Status"`
+}
+
 type ModifyAppStatusRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 应用ID，创建应用后由后台生成并返回。
 	BizId *uint64 `json:"BizId,omitempty" name:"BizId"`
 
@@ -1015,7 +1206,6 @@ func (r *ModifyAppStatusRequest) FromJsonString(s string) error {
 }
 
 type ModifyAppStatusResp struct {
-
 	// GME应用ID
 	BizId *uint64 `json:"BizId,omitempty" name:"BizId"`
 
@@ -1023,16 +1213,18 @@ type ModifyAppStatusResp struct {
 	Status *string `json:"Status,omitempty" name:"Status"`
 }
 
+// Predefined struct for user
+type ModifyAppStatusResponseParams struct {
+	// 修改应用开关状态返回数据
+	Data *ModifyAppStatusResp `json:"Data,omitempty" name:"Data"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type ModifyAppStatusResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 修改应用开关状态返回数据
-		Data *ModifyAppStatusResp `json:"Data,omitempty" name:"Data"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *ModifyAppStatusResponseParams `json:"Response"`
 }
 
 func (r *ModifyAppStatusResponse) ToJsonString() string {
@@ -1046,9 +1238,23 @@ func (r *ModifyAppStatusResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifyRoomInfoRequestParams struct {
+	// 应用ID，登录[控制台 - 服务管理](https://console.cloud.tencent.com/gamegme)创建应用得到的AppID
+	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 房间id
+	RoomId *uint64 `json:"RoomId,omitempty" name:"RoomId"`
+
+	// 301 启动推流
+	// 302 停止推流
+	// 303 重置RTMP连接
+	OperationType *int64 `json:"OperationType,omitempty" name:"OperationType"`
+}
+
 type ModifyRoomInfoRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 应用ID，登录[控制台 - 服务管理](https://console.cloud.tencent.com/gamegme)创建应用得到的AppID
 	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
 
@@ -1082,21 +1288,23 @@ func (r *ModifyRoomInfoRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifyRoomInfoResponseParams struct {
+	// 操作结果, 0成功, 非0失败
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Result *uint64 `json:"Result,omitempty" name:"Result"`
+
+	// 错误信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrMsg *string `json:"ErrMsg,omitempty" name:"ErrMsg"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type ModifyRoomInfoResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 操作结果, 0成功, 非0失败
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		Result *uint64 `json:"Result,omitempty" name:"Result"`
-
-		// 错误信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		ErrMsg *string `json:"ErrMsg,omitempty" name:"ErrMsg"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *ModifyRoomInfoResponseParams `json:"Response"`
 }
 
 func (r *ModifyRoomInfoResponse) ToJsonString() string {
@@ -1111,7 +1319,6 @@ func (r *ModifyRoomInfoResponse) FromJsonString(s string) error {
 }
 
 type RealTimeSpeechStatisticsItem struct {
-
 	// 大陆地区DAU
 	MainLandDau *uint64 `json:"MainLandDau,omitempty" name:"MainLandDau"`
 
@@ -1132,7 +1339,6 @@ type RealTimeSpeechStatisticsItem struct {
 }
 
 type RealtimeSpeechConf struct {
-
 	// 实时语音服务开关，取值：open/close
 	Status *string `json:"Status,omitempty" name:"Status"`
 
@@ -1141,7 +1347,6 @@ type RealtimeSpeechConf struct {
 }
 
 type RoomUser struct {
-
 	// 房间id
 	RoomId *uint64 `json:"RoomId,omitempty" name:"RoomId"`
 
@@ -1155,7 +1360,6 @@ type RoomUser struct {
 }
 
 type ScanDetail struct {
-
 	// 违规场景，参照<a href="https://cloud.tencent.com/document/product/607/37622#Label_Value">Label</a>定义
 	Label *string `json:"Label,omitempty" name:"Label"`
 
@@ -1173,7 +1377,6 @@ type ScanDetail struct {
 }
 
 type ScanPiece struct {
-
 	// 流检测时返回，音频转存地址，保留30min
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DumpUrl *string `json:"DumpUrl,omitempty" name:"DumpUrl"`
@@ -1213,9 +1416,32 @@ type ScanPiece struct {
 	PieceStartTime *uint64 `json:"PieceStartTime,omitempty" name:"PieceStartTime"`
 }
 
+// Predefined struct for user
+type ScanVoiceRequestParams struct {
+	// 应用ID，登录[控制台 - 服务管理](https://console.cloud.tencent.com/gamegme)创建应用得到的AppID
+	BizId *uint64 `json:"BizId,omitempty" name:"BizId"`
+
+	// 语音检测场景，参数值目前要求为 default。 预留场景设置： 谩骂、色情、广告、违禁等场景，<a href="#Label_Value">具体取值见上述 Label 说明。</a>
+	Scenes []*string `json:"Scenes,omitempty" name:"Scenes"`
+
+	// 是否为直播流。值为 false 时表示普通语音文件检测；为 true 时表示语音流检测。
+	Live *bool `json:"Live,omitempty" name:"Live"`
+
+	// 语音检测任务列表，列表最多支持100个检测任务。结构体中包含：
+	// <li>DataId：数据的唯一ID</li>
+	// <li>Url：数据文件的url，为 urlencode 编码，流式则为拉流地址</li>
+	Tasks []*Task `json:"Tasks,omitempty" name:"Tasks"`
+
+	// 异步检测结果回调地址，具体见上述<a href="#Callback_Declare">回调相关说明</a>。（说明：该字段为空时，必须通过接口(查询语音检测结果)获取检测结果）。
+	Callback *string `json:"Callback,omitempty" name:"Callback"`
+
+	// 语言，目前jp代表日语
+	Lang *string `json:"Lang,omitempty" name:"Lang"`
+}
+
 type ScanVoiceRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 应用ID，登录[控制台 - 服务管理](https://console.cloud.tencent.com/gamegme)创建应用得到的AppID
 	BizId *uint64 `json:"BizId,omitempty" name:"BizId"`
 
@@ -1261,17 +1487,19 @@ func (r *ScanVoiceRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ScanVoiceResponseParams struct {
+	// 语音检测返回。Data 字段是 JSON 数组，每一个元素包含：<li>DataId： 请求中对应的 DataId。</li>
+	// <li>TaskID ：该检测任务的 ID，用于轮询语音检测结果。</li>
+	Data []*ScanVoiceResult `json:"Data,omitempty" name:"Data"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type ScanVoiceResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 语音检测返回。Data 字段是 JSON 数组，每一个元素包含：<li>DataId： 请求中对应的 DataId。</li>
-	// <li>TaskID ：该检测任务的 ID，用于轮询语音检测结果。</li>
-		Data []*ScanVoiceResult `json:"Data,omitempty" name:"Data"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *ScanVoiceResponseParams `json:"Response"`
 }
 
 func (r *ScanVoiceResponse) ToJsonString() string {
@@ -1286,7 +1514,6 @@ func (r *ScanVoiceResponse) FromJsonString(s string) error {
 }
 
 type ScanVoiceResult struct {
-
 	// 数据ID
 	DataId *string `json:"DataId,omitempty" name:"DataId"`
 
@@ -1295,7 +1522,6 @@ type ScanVoiceResult struct {
 }
 
 type StatisticsItem struct {
-
 	// 日期，格式为年-月-日，如2018-07-13
 	StatDate *string `json:"StatDate,omitempty" name:"StatDate"`
 
@@ -1304,7 +1530,6 @@ type StatisticsItem struct {
 }
 
 type Tag struct {
-
 	// 标签键
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TagKey *string `json:"TagKey,omitempty" name:"TagKey"`
@@ -1315,7 +1540,6 @@ type Tag struct {
 }
 
 type Task struct {
-
 	// 数据的唯一ID
 	DataId *string `json:"DataId,omitempty" name:"DataId"`
 
@@ -1329,9 +1553,21 @@ type Task struct {
 	OpenId *string `json:"OpenId,omitempty" name:"OpenId"`
 }
 
+// Predefined struct for user
+type UpdateScanRoomsRequestParams struct {
+	// 应用ID
+	BizId *uint64 `json:"BizId,omitempty" name:"BizId"`
+
+	// 需要送检的所有房间号。多个房间号之间用","分隔。示例："0001,0002,0003"
+	RoomIdString *string `json:"RoomIdString,omitempty" name:"RoomIdString"`
+
+	// 符合此正则表达式规则的房间号将被送检。示例：["^6.*"] 表示所有以6开头的房间号将被送检
+	RoomIdRegex []*string `json:"RoomIdRegex,omitempty" name:"RoomIdRegex"`
+}
+
 type UpdateScanRoomsRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 应用ID
 	BizId *uint64 `json:"BizId,omitempty" name:"BizId"`
 
@@ -1363,17 +1599,19 @@ func (r *UpdateScanRoomsRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type UpdateScanRoomsResponseParams struct {
+	// 返回结果码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrorCode *int64 `json:"ErrorCode,omitempty" name:"ErrorCode"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type UpdateScanRoomsResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 返回结果码
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		ErrorCode *int64 `json:"ErrorCode,omitempty" name:"ErrorCode"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *UpdateScanRoomsResponseParams `json:"Response"`
 }
 
 func (r *UpdateScanRoomsResponse) ToJsonString() string {
@@ -1387,9 +1625,21 @@ func (r *UpdateScanRoomsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type UpdateScanUsersRequestParams struct {
+	// 应用ID
+	BizId *uint64 `json:"BizId,omitempty" name:"BizId"`
+
+	// 需要送检的所有用户号。多个用户号之间用","分隔。示例："0001,0002,0003"
+	UserIdString *string `json:"UserIdString,omitempty" name:"UserIdString"`
+
+	// 符合此正则表达式规则的用户号将被送检。示例：["^6.*"] 表示所有以6开头的用户号将被送检
+	UserIdRegex []*string `json:"UserIdRegex,omitempty" name:"UserIdRegex"`
+}
+
 type UpdateScanUsersRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 应用ID
 	BizId *uint64 `json:"BizId,omitempty" name:"BizId"`
 
@@ -1421,16 +1671,18 @@ func (r *UpdateScanUsersRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type UpdateScanUsersResponseParams struct {
+	// 返回结果码
+	ErrorCode *int64 `json:"ErrorCode,omitempty" name:"ErrorCode"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type UpdateScanUsersResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 返回结果码
-		ErrorCode *int64 `json:"ErrorCode,omitempty" name:"ErrorCode"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *UpdateScanUsersResponseParams `json:"Response"`
 }
 
 func (r *UpdateScanUsersResponse) ToJsonString() string {
@@ -1445,7 +1697,6 @@ func (r *UpdateScanUsersResponse) FromJsonString(s string) error {
 }
 
 type VoiceFilter struct {
-
 	// 过滤类型，1：色情，2：涉毒，3：谩骂
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Type *uint64 `json:"Type,omitempty" name:"Type"`
@@ -1456,13 +1707,11 @@ type VoiceFilter struct {
 }
 
 type VoiceFilterConf struct {
-
 	// 语音过滤服务开关，取值：open/close
 	Status *string `json:"Status,omitempty" name:"Status"`
 }
 
 type VoiceFilterInfo struct {
-
 	// 应用ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BizId *uint64 `json:"BizId,omitempty" name:"BizId"`
@@ -1488,9 +1737,30 @@ type VoiceFilterInfo struct {
 	Data []*VoiceFilter `json:"Data,omitempty" name:"Data"`
 }
 
+// Predefined struct for user
+type VoiceFilterRequestParams struct {
+	// 应用ID，登录[控制台](https://console.cloud.tencent.com/gamegme)创建应用得到的AppID
+	BizId *uint64 `json:"BizId,omitempty" name:"BizId"`
+
+	// 文件ID，表示文件唯一ID
+	FileId *string `json:"FileId,omitempty" name:"FileId"`
+
+	// 文件名
+	FileName *string `json:"FileName,omitempty" name:"FileName"`
+
+	// 文件url，urlencode编码，FileUrl和FileContent二选一
+	FileUrl *string `json:"FileUrl,omitempty" name:"FileUrl"`
+
+	// 文件内容，base64编码，FileUrl和FileContent二选一
+	FileContent *string `json:"FileContent,omitempty" name:"FileContent"`
+
+	// 用户ID
+	OpenId *string `json:"OpenId,omitempty" name:"OpenId"`
+}
+
 type VoiceFilterRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 应用ID，登录[控制台](https://console.cloud.tencent.com/gamegme)创建应用得到的AppID
 	BizId *uint64 `json:"BizId,omitempty" name:"BizId"`
 
@@ -1534,13 +1804,15 @@ func (r *VoiceFilterRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type VoiceFilterResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type VoiceFilterResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *VoiceFilterResponseParams `json:"Response"`
 }
 
 func (r *VoiceFilterResponse) ToJsonString() string {
@@ -1555,13 +1827,11 @@ func (r *VoiceFilterResponse) FromJsonString(s string) error {
 }
 
 type VoiceFilterStatisticsItem struct {
-
 	// 语音过滤总时长
 	Duration *uint64 `json:"Duration,omitempty" name:"Duration"`
 }
 
 type VoiceMessageConf struct {
-
 	// 离线语音服务开关，取值：open/close
 	Status *string `json:"Status,omitempty" name:"Status"`
 
@@ -1570,7 +1840,6 @@ type VoiceMessageConf struct {
 }
 
 type VoiceMessageStatisticsItem struct {
-
 	// 离线语音DAU
 	Dau *uint64 `json:"Dau,omitempty" name:"Dau"`
 }

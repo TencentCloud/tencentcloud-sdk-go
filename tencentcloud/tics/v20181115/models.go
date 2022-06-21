@@ -20,9 +20,18 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+// Predefined struct for user
+type DescribeDomainInfoRequestParams struct {
+	// 要查询的域名
+	Key *string `json:"Key,omitempty" name:"Key"`
+
+	// 附加字段，是否返回上下文。当为0时不返回上下文，当为1时返回上下文。
+	Option *uint64 `json:"Option,omitempty" name:"Option"`
+}
+
 type DescribeDomainInfoRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 要查询的域名
 	Key *string `json:"Key,omitempty" name:"Key"`
 
@@ -50,20 +59,18 @@ func (r *DescribeDomainInfoRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-type DescribeDomainInfoResponse struct {
-	*tchttp.BaseResponse
-	Response *struct {
+// Predefined struct for user
+type DescribeDomainInfoResponseParams struct {
+	// 是否有数据，0代表有数据，1代表没有数据
+	ReturnCode *uint64 `json:"ReturnCode,omitempty" name:"ReturnCode"`
 
-		// 是否有数据，0代表有数据，1代表没有数据
-		ReturnCode *uint64 `json:"ReturnCode,omitempty" name:"ReturnCode"`
+	// 判定结果，如：black、white、grey
+	Result *string `json:"Result,omitempty" name:"Result"`
 
-		// 判定结果，如：black、white、grey
-		Result *string `json:"Result,omitempty" name:"Result"`
+	// 置信度，取值0-100
+	Confidence *uint64 `json:"Confidence,omitempty" name:"Confidence"`
 
-		// 置信度，取值0-100
-		Confidence *uint64 `json:"Confidence,omitempty" name:"Confidence"`
-
-		// 威胁类型。
+	// 威胁类型。
 	// botnet = 僵尸网络
 	// trojan = 木马
 	// ransomware = 勒索软件
@@ -80,20 +87,24 @@ type DescribeDomainInfoResponse struct {
 	// maleware site = 恶意站点
 	// malware IP = 恶意IP
 	// 等等
-		ThreatTypes []*string `json:"ThreatTypes,omitempty" name:"ThreatTypes"`
+	ThreatTypes []*string `json:"ThreatTypes,omitempty" name:"ThreatTypes"`
 
-		// 恶意标签，对应的团伙，家族等信息。
-		Tags []*TagType `json:"Tags,omitempty" name:"Tags"`
+	// 恶意标签，对应的团伙，家族等信息。
+	Tags []*TagType `json:"Tags,omitempty" name:"Tags"`
 
-		// 对应的历史上的威胁情报事件
-		Intelligences []*IntelligenceType `json:"Intelligences,omitempty" name:"Intelligences"`
+	// 对应的历史上的威胁情报事件
+	Intelligences []*IntelligenceType `json:"Intelligences,omitempty" name:"Intelligences"`
 
-		// 情报相关的上下文
-		Context *string `json:"Context,omitempty" name:"Context"`
+	// 情报相关的上下文
+	Context *string `json:"Context,omitempty" name:"Context"`
 
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeDomainInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDomainInfoResponseParams `json:"Response"`
 }
 
 func (r *DescribeDomainInfoResponse) ToJsonString() string {
@@ -107,9 +118,18 @@ func (r *DescribeDomainInfoResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeFileInfoRequestParams struct {
+	// 要查询文件的MD5
+	Key *string `json:"Key,omitempty" name:"Key"`
+
+	// 附加字段，是否返回上下文。当为0时不返回上下文，当为1时返回上下文。
+	Option *uint64 `json:"Option,omitempty" name:"Option"`
+}
+
 type DescribeFileInfoRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 要查询文件的MD5
 	Key *string `json:"Key,omitempty" name:"Key"`
 
@@ -137,36 +157,38 @@ func (r *DescribeFileInfoRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-type DescribeFileInfoResponse struct {
-	*tchttp.BaseResponse
-	Response *struct {
+// Predefined struct for user
+type DescribeFileInfoResponseParams struct {
+	// 是否有数据，0代表有数据，1代表没有数据
+	ReturnCode *uint64 `json:"ReturnCode,omitempty" name:"ReturnCode"`
 
-		// 是否有数据，0代表有数据，1代表没有数据
-		ReturnCode *uint64 `json:"ReturnCode,omitempty" name:"ReturnCode"`
+	// 判定结果，如：black、white、grey
+	Result *string `json:"Result,omitempty" name:"Result"`
 
-		// 判定结果，如：black、white、grey
-		Result *string `json:"Result,omitempty" name:"Result"`
+	// 置信度，取值0-100
+	Confidence *uint64 `json:"Confidence,omitempty" name:"Confidence"`
 
-		// 置信度，取值0-100
-		Confidence *uint64 `json:"Confidence,omitempty" name:"Confidence"`
-
-		// 文件类型，文件hash
+	// 文件类型，文件hash
 	// （md5,sha1,sha256）,文件大小等等文件
 	// 基础信息
-		FileInfo []*FileInfoType `json:"FileInfo,omitempty" name:"FileInfo"`
+	FileInfo []*FileInfoType `json:"FileInfo,omitempty" name:"FileInfo"`
 
-		// 恶意标签，对应的团伙，家族等信息。
-		Tags []*TagType `json:"Tags,omitempty" name:"Tags"`
+	// 恶意标签，对应的团伙，家族等信息。
+	Tags []*TagType `json:"Tags,omitempty" name:"Tags"`
 
-		// 对应的历史上的威胁情报事件
-		Intelligences []*IntelligenceType `json:"Intelligences,omitempty" name:"Intelligences"`
+	// 对应的历史上的威胁情报事件
+	Intelligences []*IntelligenceType `json:"Intelligences,omitempty" name:"Intelligences"`
 
-		// 情报相关的上下文
-		Context *string `json:"Context,omitempty" name:"Context"`
+	// 情报相关的上下文
+	Context *string `json:"Context,omitempty" name:"Context"`
 
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeFileInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeFileInfoResponseParams `json:"Response"`
 }
 
 func (r *DescribeFileInfoResponse) ToJsonString() string {
@@ -180,9 +202,18 @@ func (r *DescribeFileInfoResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeIpInfoRequestParams struct {
+	// 要查询的IP
+	Key *string `json:"Key,omitempty" name:"Key"`
+
+	// 附加字段，是否返回上下文。当为0时不返回上下文，当为1时返回上下文。
+	Option *uint64 `json:"Option,omitempty" name:"Option"`
+}
+
 type DescribeIpInfoRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 要查询的IP
 	Key *string `json:"Key,omitempty" name:"Key"`
 
@@ -210,20 +241,18 @@ func (r *DescribeIpInfoRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-type DescribeIpInfoResponse struct {
-	*tchttp.BaseResponse
-	Response *struct {
+// Predefined struct for user
+type DescribeIpInfoResponseParams struct {
+	// 是否有数据，0代表有数据，1代表没有数据
+	ReturnCode *uint64 `json:"ReturnCode,omitempty" name:"ReturnCode"`
 
-		// 是否有数据，0代表有数据，1代表没有数据
-		ReturnCode *uint64 `json:"ReturnCode,omitempty" name:"ReturnCode"`
+	// 判定结果，如：black、white、grey
+	Result *string `json:"Result,omitempty" name:"Result"`
 
-		// 判定结果，如：black、white、grey
-		Result *string `json:"Result,omitempty" name:"Result"`
+	// 置信度，取值0-100
+	Confidence *uint64 `json:"Confidence,omitempty" name:"Confidence"`
 
-		// 置信度，取值0-100
-		Confidence *uint64 `json:"Confidence,omitempty" name:"Confidence"`
-
-		// 威胁类型。
+	// 威胁类型。
 	// botnet = 僵尸网络
 	// trojan = 木马
 	// ransomware = 勒索软件
@@ -240,20 +269,24 @@ type DescribeIpInfoResponse struct {
 	// maleware site = 恶意站点
 	// malware IP = 恶意IP
 	// 等等
-		ThreatTypes []*string `json:"ThreatTypes,omitempty" name:"ThreatTypes"`
+	ThreatTypes []*string `json:"ThreatTypes,omitempty" name:"ThreatTypes"`
 
-		// 恶意标签，对应的团伙，家族等信息。
-		Tags []*TagType `json:"Tags,omitempty" name:"Tags"`
+	// 恶意标签，对应的团伙，家族等信息。
+	Tags []*TagType `json:"Tags,omitempty" name:"Tags"`
 
-		// 对应的历史上的威胁情报事件
-		Intelligences []*IntelligenceType `json:"Intelligences,omitempty" name:"Intelligences"`
+	// 对应的历史上的威胁情报事件
+	Intelligences []*IntelligenceType `json:"Intelligences,omitempty" name:"Intelligences"`
 
-		// 情报相关的上下文
-		Context *string `json:"Context,omitempty" name:"Context"`
+	// 情报相关的上下文
+	Context *string `json:"Context,omitempty" name:"Context"`
 
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeIpInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeIpInfoResponseParams `json:"Response"`
 }
 
 func (r *DescribeIpInfoResponse) ToJsonString() string {
@@ -267,9 +300,21 @@ func (r *DescribeIpInfoResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeThreatInfoRequestParams struct {
+	// 查询对象，域名或IP
+	Key *string `json:"Key,omitempty" name:"Key"`
+
+	// 查询类型，当前取值为domain或ip
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 附加字段，是否返回上下文。当为0时不返回上下文，当为1时返回上下文。
+	Option *uint64 `json:"Option,omitempty" name:"Option"`
+}
+
 type DescribeThreatInfoRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 查询对象，域名或IP
 	Key *string `json:"Key,omitempty" name:"Key"`
 
@@ -301,20 +346,18 @@ func (r *DescribeThreatInfoRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-type DescribeThreatInfoResponse struct {
-	*tchttp.BaseResponse
-	Response *struct {
+// Predefined struct for user
+type DescribeThreatInfoResponseParams struct {
+	// 是否有数据，0代表有数据，1代表没有数据
+	ReturnCode *uint64 `json:"ReturnCode,omitempty" name:"ReturnCode"`
 
-		// 是否有数据，0代表有数据，1代表没有数据
-		ReturnCode *uint64 `json:"ReturnCode,omitempty" name:"ReturnCode"`
+	// 判定结果，如：black、white、grey
+	Result *string `json:"Result,omitempty" name:"Result"`
 
-		// 判定结果，如：black、white、grey
-		Result *string `json:"Result,omitempty" name:"Result"`
+	// 置信度，取值0-100
+	Confidence *uint64 `json:"Confidence,omitempty" name:"Confidence"`
 
-		// 置信度，取值0-100
-		Confidence *uint64 `json:"Confidence,omitempty" name:"Confidence"`
-
-		// 威胁类型。
+	// 威胁类型。
 	// botnet = 僵尸网络
 	// trojan = 木马
 	// ransomware = 勒索软件
@@ -331,26 +374,30 @@ type DescribeThreatInfoResponse struct {
 	// maleware site = 恶意站点
 	// malware IP = 恶意IP
 	// 等等
-		ThreatTypes []*string `json:"ThreatTypes,omitempty" name:"ThreatTypes"`
+	ThreatTypes []*string `json:"ThreatTypes,omitempty" name:"ThreatTypes"`
 
-		// 恶意标签，对应的团伙，家族等信息。
-		Tags []*string `json:"Tags,omitempty" name:"Tags"`
+	// 恶意标签，对应的团伙，家族等信息。
+	Tags []*string `json:"Tags,omitempty" name:"Tags"`
 
-		// 当前状态
+	// 当前状态
 	// active = 活跃
 	// sinkholed = sinkholed
 	// inactive = 不活跃
 	// unknown = 未知
 	// expired = 过期
-		Status *string `json:"Status,omitempty" name:"Status"`
+	Status *string `json:"Status,omitempty" name:"Status"`
 
-		// 情报相关的上下文，参数option=1 的时候提供
+	// 情报相关的上下文，参数option=1 的时候提供
 	// 每个数据默认为3 条
-		Context *string `json:"Context,omitempty" name:"Context"`
+	Context *string `json:"Context,omitempty" name:"Context"`
 
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeThreatInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeThreatInfoResponseParams `json:"Response"`
 }
 
 func (r *DescribeThreatInfoResponse) ToJsonString() string {
@@ -365,7 +412,6 @@ func (r *DescribeThreatInfoResponse) FromJsonString(s string) error {
 }
 
 type FileInfoType struct {
-
 	// 判定渠道
 	DetectId *string `json:"DetectId,omitempty" name:"DetectId"`
 
@@ -422,7 +468,6 @@ type FileInfoType struct {
 }
 
 type IntelligenceType struct {
-
 	// 来源
 	Source *string `json:"Source,omitempty" name:"Source"`
 
@@ -434,7 +479,6 @@ type IntelligenceType struct {
 }
 
 type TagType struct {
-
 	// 标签
 	Tag *string `json:"Tag,omitempty" name:"Tag"`
 

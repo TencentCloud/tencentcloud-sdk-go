@@ -20,9 +20,24 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+// Predefined struct for user
+type DescribeMaterialListRequestParams struct {
+	// 活动Id
+	ActivityId *int64 `json:"ActivityId,omitempty" name:"ActivityId"`
+
+	// 素材Id
+	MaterialId *string `json:"MaterialId,omitempty" name:"MaterialId"`
+
+	// 每次拉取条数
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移量
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+}
+
 type DescribeMaterialListRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 活动Id
 	ActivityId *int64 `json:"ActivityId,omitempty" name:"ActivityId"`
 
@@ -58,19 +73,21 @@ func (r *DescribeMaterialListRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeMaterialListResponseParams struct {
+	// 素材列表数据
+	MaterialInfos []*PublicMaterialInfos `json:"MaterialInfos,omitempty" name:"MaterialInfos"`
+
+	// 素材条数
+	Count *int64 `json:"Count,omitempty" name:"Count"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeMaterialListResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 素材列表数据
-		MaterialInfos []*PublicMaterialInfos `json:"MaterialInfos,omitempty" name:"MaterialInfos"`
-
-		// 素材条数
-		Count *int64 `json:"Count,omitempty" name:"Count"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeMaterialListResponseParams `json:"Response"`
 }
 
 func (r *DescribeMaterialListResponse) ToJsonString() string {
@@ -84,9 +101,30 @@ func (r *DescribeMaterialListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type FaceFusionLiteRequestParams struct {
+	// 活动 ID，请在人脸融合控制台查看。
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 素材 ID，请在人脸融合控制台查看。
+	ModelId *string `json:"ModelId,omitempty" name:"ModelId"`
+
+	// 用户人脸图片、素材模板图的人脸位置信息。
+	MergeInfos []*MergeInfo `json:"MergeInfos,omitempty" name:"MergeInfos"`
+
+	// 返回图像方式（url 或 base64) ，二选一。默认url, url有效期为30天。
+	RspImgType *string `json:"RspImgType,omitempty" name:"RspImgType"`
+
+	// 请注意，鉴政服务开启后，您需要根据返回结果自行判断是否调整您的业务逻辑。例如提示您的用户图片非法，请更换图片。
+	CelebrityIdentify *int64 `json:"CelebrityIdentify,omitempty" name:"CelebrityIdentify"`
+
+	// 算法引擎参数:  1）选脸版 - youturecreat; 2）优享版 - youtu1vN； 3）畅享版 - ptu； 4）随机 - ALL;  默认为活动选择的算法
+	Engine *string `json:"Engine,omitempty" name:"Engine"`
+}
+
 type FaceFusionLiteRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 活动 ID，请在人脸融合控制台查看。
 	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
 
@@ -130,20 +168,22 @@ func (r *FaceFusionLiteRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type FaceFusionLiteResponseParams struct {
+	// RspImgType 为 url 时，返回结果的 url， RspImgType 为 base64 时返回 base64 数据。
+	Image *string `json:"Image,omitempty" name:"Image"`
+
+	// 鉴政结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReviewResultSet []*FuseFaceReviewResult `json:"ReviewResultSet,omitempty" name:"ReviewResultSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type FaceFusionLiteResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// RspImgType 为 url 时，返回结果的 url， RspImgType 为 base64 时返回 base64 数据。
-		Image *string `json:"Image,omitempty" name:"Image"`
-
-		// 鉴政结果
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		ReviewResultSet []*FuseFaceReviewResult `json:"ReviewResultSet,omitempty" name:"ReviewResultSet"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *FaceFusionLiteResponseParams `json:"Response"`
 }
 
 func (r *FaceFusionLiteResponse) ToJsonString() string {
@@ -157,9 +197,34 @@ func (r *FaceFusionLiteResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type FaceFusionRequestParams struct {
+	// 活动 ID，请在人脸融合控制台查看。
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 素材 ID，请在人脸融合控制台查看。
+	ModelId *string `json:"ModelId,omitempty" name:"ModelId"`
+
+	// 返回图像方式（url 或 base64) ，二选一。url有效期为7天。
+	RspImgType *string `json:"RspImgType,omitempty" name:"RspImgType"`
+
+	// 图片 base64 数据。请确保人脸为正脸，无旋转。若某些手机拍摄后人脸被旋转，请使用图片的 EXIF 信息对图片进行旋转处理；请勿在 base64 数据中包含头部，如“data:image/jpeg;base64,”。
+	Image *string `json:"Image,omitempty" name:"Image"`
+
+	// 历史遗留字段，无需填写。因为融合只需提取人脸特征，不需要鉴黄。
+	PornDetect *int64 `json:"PornDetect,omitempty" name:"PornDetect"`
+
+	// 0表示不需要不适宜内容识别，1表示需要不适宜内容识别。默认值为0。
+	// 请注意，不适宜内容识别服务开启后，您需要根据返回结果自行判断是否调整您的业务逻辑。例如提示您的用户图片非法，请更换图片。
+	CelebrityIdentify *int64 `json:"CelebrityIdentify,omitempty" name:"CelebrityIdentify"`
+
+	// 图片Url地址
+	Url *string `json:"Url,omitempty" name:"Url"`
+}
+
 type FaceFusionRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 活动 ID，请在人脸融合控制台查看。
 	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
 
@@ -208,19 +273,21 @@ func (r *FaceFusionRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type FaceFusionResponseParams struct {
+	// RspImgType 为 url 时，返回结果的 url， RspImgType 为 base64 时返回 base64 数据。
+	Image *string `json:"Image,omitempty" name:"Image"`
+
+	// 不适宜内容识别结果
+	ReviewResultSet []*FuseFaceReviewResult `json:"ReviewResultSet,omitempty" name:"ReviewResultSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type FaceFusionResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// RspImgType 为 url 时，返回结果的 url， RspImgType 为 base64 时返回 base64 数据。
-		Image *string `json:"Image,omitempty" name:"Image"`
-
-		// 不适宜内容识别结果
-		ReviewResultSet []*FuseFaceReviewResult `json:"ReviewResultSet,omitempty" name:"ReviewResultSet"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *FaceFusionResponseParams `json:"Response"`
 }
 
 func (r *FaceFusionResponse) ToJsonString() string {
@@ -235,7 +302,6 @@ func (r *FaceFusionResponse) FromJsonString(s string) error {
 }
 
 type FaceInfo struct {
-
 	// 人脸框的横坐标
 	X *int64 `json:"X,omitempty" name:"X"`
 
@@ -250,7 +316,6 @@ type FaceInfo struct {
 }
 
 type FaceRect struct {
-
 	// 人脸框左上角横坐标。
 	X *int64 `json:"X,omitempty" name:"X"`
 
@@ -264,9 +329,36 @@ type FaceRect struct {
 	Height *int64 `json:"Height,omitempty" name:"Height"`
 }
 
+// Predefined struct for user
+type FuseFaceRequestParams struct {
+	// 活动 ID，请在人脸融合控制台查看。
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 素材 ID，请在人脸融合控制台查看。
+	ModelId *string `json:"ModelId,omitempty" name:"ModelId"`
+
+	// 返回图像方式（url 或 base64) ，二选一。url有效期为7天。
+	RspImgType *string `json:"RspImgType,omitempty" name:"RspImgType"`
+
+	// 用户人脸图片、素材模板图的人脸位置信息。
+	MergeInfos []*MergeInfo `json:"MergeInfos,omitempty" name:"MergeInfos"`
+
+	// 脸型融合比例，数值越高，融合后的脸型越像素材人物。取值范围[0,100] 
+	// 若此参数不填写，则使用人脸融合控制台中脸型参数数值。（换脸版算法暂不支持此参数调整）
+	FuseProfileDegree *int64 `json:"FuseProfileDegree,omitempty" name:"FuseProfileDegree"`
+
+	// 五官融合比例，数值越高，融合后的五官越像素材人物。取值范围[0,100] 
+	// 若此参数不填写，则使用人脸融合控制台中五官参数数值。（换脸版算法暂不支持此参数调整）
+	FuseFaceDegree *int64 `json:"FuseFaceDegree,omitempty" name:"FuseFaceDegree"`
+
+	// 0表示不需要不适宜内容识别，1表示需要不适宜内容识别。默认值为0。
+	// 请注意，不适宜内容识别服务开启后，您需要根据返回结果自行判断是否调整您的业务逻辑。例如提示您的用户图片非法，请更换图片。
+	CelebrityIdentify *int64 `json:"CelebrityIdentify,omitempty" name:"CelebrityIdentify"`
+}
+
 type FuseFaceRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 活动 ID，请在人脸融合控制台查看。
 	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
 
@@ -317,20 +409,22 @@ func (r *FuseFaceRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type FuseFaceResponseParams struct {
+	// RspImgType 为 url 时，返回结果的 url， RspImgType 为 base64 时返回 base64 数据。
+	FusedImage *string `json:"FusedImage,omitempty" name:"FusedImage"`
+
+	// 不适宜内容识别结果。该数组的顺序和请求中mergeinfo的顺序一致，一一对应
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReviewResultSet []*FuseFaceReviewResult `json:"ReviewResultSet,omitempty" name:"ReviewResultSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type FuseFaceResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// RspImgType 为 url 时，返回结果的 url， RspImgType 为 base64 时返回 base64 数据。
-		FusedImage *string `json:"FusedImage,omitempty" name:"FusedImage"`
-
-		// 不适宜内容识别结果。该数组的顺序和请求中mergeinfo的顺序一致，一一对应
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		ReviewResultSet []*FuseFaceReviewResult `json:"ReviewResultSet,omitempty" name:"ReviewResultSet"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *FuseFaceResponseParams `json:"Response"`
 }
 
 func (r *FuseFaceResponse) ToJsonString() string {
@@ -345,7 +439,6 @@ func (r *FuseFaceResponse) FromJsonString(s string) error {
 }
 
 type FuseFaceReviewDetail struct {
-
 	// 保留字段
 	Field *string `json:"Field,omitempty" name:"Field"`
 
@@ -366,7 +459,6 @@ type FuseFaceReviewDetail struct {
 }
 
 type FuseFaceReviewResult struct {
-
 	// 保留字段
 	Category *string `json:"Category,omitempty" name:"Category"`
 
@@ -387,7 +479,6 @@ type FuseFaceReviewResult struct {
 }
 
 type MaterialFaceList struct {
-
 	// 人脸序号
 	FaceId *string `json:"FaceId,omitempty" name:"FaceId"`
 
@@ -396,7 +487,6 @@ type MaterialFaceList struct {
 }
 
 type MergeInfo struct {
-
 	// 输入图片base64
 	Image *string `json:"Image,omitempty" name:"Image"`
 
@@ -411,7 +501,6 @@ type MergeInfo struct {
 }
 
 type PublicMaterialInfos struct {
-
 	// 素材Id
 	MaterialId *string `json:"MaterialId,omitempty" name:"MaterialId"`
 

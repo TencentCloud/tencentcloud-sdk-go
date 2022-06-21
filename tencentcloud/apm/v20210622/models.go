@@ -21,7 +21,6 @@ import (
 )
 
 type APMKVItem struct {
-
 	// Key值定义
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Key *string `json:"Key,omitempty" name:"Key"`
@@ -32,7 +31,6 @@ type APMKVItem struct {
 }
 
 type ApmAgentInfo struct {
-
 	// Agent下载地址
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AgentDownloadURL *string `json:"AgentDownloadURL,omitempty" name:"AgentDownloadURL"`
@@ -59,7 +57,6 @@ type ApmAgentInfo struct {
 }
 
 type ApmField struct {
-
 	// 昨日同比指标值，已弃用，不建议使用
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CompareVal *string `json:"CompareVal,omitempty" name:"CompareVal"`
@@ -81,7 +78,6 @@ type ApmField struct {
 }
 
 type ApmInstanceDetail struct {
-
 	// 存储使用量(MB)
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AmountOfUsedStorage *float64 `json:"AmountOfUsedStorage,omitempty" name:"AmountOfUsedStorage"`
@@ -178,7 +174,6 @@ type ApmInstanceDetail struct {
 }
 
 type ApmMetricRecord struct {
-
 	// field数组
 	Fields []*ApmField `json:"Fields,omitempty" name:"Fields"`
 
@@ -187,7 +182,6 @@ type ApmMetricRecord struct {
 }
 
 type ApmTag struct {
-
 	// 维度Key(列名，标签Key)
 	Key *string `json:"Key,omitempty" name:"Key"`
 
@@ -195,9 +189,27 @@ type ApmTag struct {
 	Value *string `json:"Value,omitempty" name:"Value"`
 }
 
+// Predefined struct for user
+type CreateApmInstanceRequestParams struct {
+	// 实例名
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 实例描述信息
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// Trace数据保存时长
+	TraceDuration *int64 `json:"TraceDuration,omitempty" name:"TraceDuration"`
+
+	// 标签列表
+	Tags []*ApmTag `json:"Tags,omitempty" name:"Tags"`
+
+	// 实例上报额度值
+	SpanDailyCounters *uint64 `json:"SpanDailyCounters,omitempty" name:"SpanDailyCounters"`
+}
+
 type CreateApmInstanceRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 实例名
 	Name *string `json:"Name,omitempty" name:"Name"`
 
@@ -237,17 +249,19 @@ func (r *CreateApmInstanceRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateApmInstanceResponseParams struct {
+	// 实例ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreateApmInstanceResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 实例ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreateApmInstanceResponseParams `json:"Response"`
 }
 
 func (r *CreateApmInstanceResponse) ToJsonString() string {
@@ -261,9 +275,27 @@ func (r *CreateApmInstanceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeApmAgentRequestParams struct {
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 接入方式
+	AgentType *string `json:"AgentType,omitempty" name:"AgentType"`
+
+	// 环境
+	NetworkMode *string `json:"NetworkMode,omitempty" name:"NetworkMode"`
+
+	// 语言
+	LanguageEnvironment *string `json:"LanguageEnvironment,omitempty" name:"LanguageEnvironment"`
+
+	// 上报方式
+	ReportMethod *string `json:"ReportMethod,omitempty" name:"ReportMethod"`
+}
+
 type DescribeApmAgentRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 实例ID
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
@@ -303,17 +335,19 @@ func (r *DescribeApmAgentRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeApmAgentResponseParams struct {
+	// Agent信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApmAgent *ApmAgentInfo `json:"ApmAgent,omitempty" name:"ApmAgent"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeApmAgentResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// Agent信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		ApmAgent *ApmAgentInfo `json:"ApmAgent,omitempty" name:"ApmAgent"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeApmAgentResponseParams `json:"Response"`
 }
 
 func (r *DescribeApmAgentResponse) ToJsonString() string {
@@ -327,9 +361,24 @@ func (r *DescribeApmAgentResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeApmInstancesRequestParams struct {
+	// Tag列表
+	Tags []*ApmTag `json:"Tags,omitempty" name:"Tags"`
+
+	// 搜索实例名
+	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
+
+	// 过滤实例ID
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
+
+	// 是否查询官方demo实例
+	DemoInstanceFlag *int64 `json:"DemoInstanceFlag,omitempty" name:"DemoInstanceFlag"`
+}
+
 type DescribeApmInstancesRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// Tag列表
 	Tags []*ApmTag `json:"Tags,omitempty" name:"Tags"`
 
@@ -365,17 +414,19 @@ func (r *DescribeApmInstancesRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeApmInstancesResponseParams struct {
+	// apm实例列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Instances []*ApmInstanceDetail `json:"Instances,omitempty" name:"Instances"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeApmInstancesResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// apm实例列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		Instances []*ApmInstanceDetail `json:"Instances,omitempty" name:"Instances"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeApmInstancesResponseParams `json:"Response"`
 }
 
 func (r *DescribeApmInstancesResponse) ToJsonString() string {
@@ -389,9 +440,43 @@ func (r *DescribeApmInstancesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeGeneralMetricDataRequestParams struct {
+	// 要过滤的维度信息，支持：service.name（服务名）、span.kind（客户端/服务端视角）为维度进行过滤。
+	// 
+	// span.kind:
+	// 
+	//        server:服务端视角
+	//        client:客户端视角
+	// 
+	// 默认为服务端视角进行查询。
+	Filters []*GeneralFilter `json:"Filters,omitempty" name:"Filters"`
+
+	// 需要查询的指标，不可自定义输入。支持：service_request_count（总请求）、service_duration（平均响应时间）的指标数据。
+	Metrics []*string `json:"Metrics,omitempty" name:"Metrics"`
+
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 视图名称，不可自定义输入。支持：service_metric
+	ViewName *string `json:"ViewName,omitempty" name:"ViewName"`
+
+	// 聚合维度，支持：service.name（服务名）、span.kind （客户端/服务端视角）维度进行聚合。
+	GroupBy []*string `json:"GroupBy,omitempty" name:"GroupBy"`
+
+	// 起始时间的时间戳，单位为秒，只支持查询2天内最多1小时的指标数据。
+	StartTime *int64 `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间的时间戳，单位为秒，只支持查询2天内最多1小时的指标数据。
+	EndTime *int64 `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 聚合粒度，单位为秒，最小为60s，即一分钟的聚合粒度；如果为空或0则计算开始时间到截止时间的指标数据，上报其他值会报错。
+	Period *int64 `json:"Period,omitempty" name:"Period"`
+}
+
 type DescribeGeneralMetricDataRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 要过滤的维度信息，支持：service.name（服务名）、span.kind（客户端/服务端视角）为维度进行过滤。
 	// 
 	// span.kind:
@@ -450,17 +535,19 @@ func (r *DescribeGeneralMetricDataRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeGeneralMetricDataResponseParams struct {
+	// 指标结果集
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Records []*Line `json:"Records,omitempty" name:"Records"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeGeneralMetricDataResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 指标结果集
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		Records []*Line `json:"Records,omitempty" name:"Records"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeGeneralMetricDataResponseParams `json:"Response"`
 }
 
 func (r *DescribeGeneralMetricDataResponse) ToJsonString() string {
@@ -474,9 +561,42 @@ func (r *DescribeGeneralMetricDataResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeMetricRecordsRequestParams struct {
+	// 过滤条件
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 指标列表
+	Metrics []*QueryMetricItem `json:"Metrics,omitempty" name:"Metrics"`
+
+	// 聚合维度
+	GroupBy []*string `json:"GroupBy,omitempty" name:"GroupBy"`
+
+	// 排序
+	OrderBy *OrderBy `json:"OrderBy,omitempty" name:"OrderBy"`
+
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 每页大小
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 开始时间
+	StartTime *uint64 `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 分页起始点
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 结束时间
+	EndTime *uint64 `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 业务名称（默认值：taw）
+	BusinessName *string `json:"BusinessName,omitempty" name:"BusinessName"`
+}
+
 type DescribeMetricRecordsRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 过滤条件
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
@@ -536,17 +656,19 @@ func (r *DescribeMetricRecordsRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeMetricRecordsResponseParams struct {
+	// 指标结果集
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Records []*ApmMetricRecord `json:"Records,omitempty" name:"Records"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeMetricRecordsResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 指标结果集
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		Records []*ApmMetricRecord `json:"Records,omitempty" name:"Records"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeMetricRecordsResponseParams `json:"Response"`
 }
 
 func (r *DescribeMetricRecordsResponse) ToJsonString() string {
@@ -560,9 +682,39 @@ func (r *DescribeMetricRecordsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeServiceOverviewRequestParams struct {
+	// 过滤条件
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 指标列表
+	Metrics []*QueryMetricItem `json:"Metrics,omitempty" name:"Metrics"`
+
+	// 聚合维度
+	GroupBy []*string `json:"GroupBy,omitempty" name:"GroupBy"`
+
+	// 排序
+	OrderBy *OrderBy `json:"OrderBy,omitempty" name:"OrderBy"`
+
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 每页大小
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 开始时间
+	StartTime *uint64 `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 分页起始点
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 结束时间
+	EndTime *uint64 `json:"EndTime,omitempty" name:"EndTime"`
+}
+
 type DescribeServiceOverviewRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 过滤条件
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
@@ -618,17 +770,19 @@ func (r *DescribeServiceOverviewRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeServiceOverviewResponseParams struct {
+	// 指标结果集
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Records []*ApmMetricRecord `json:"Records,omitempty" name:"Records"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeServiceOverviewResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 指标结果集
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		Records []*ApmMetricRecord `json:"Records,omitempty" name:"Records"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeServiceOverviewResponseParams `json:"Response"`
 }
 
 func (r *DescribeServiceOverviewResponse) ToJsonString() string {
@@ -643,7 +797,6 @@ func (r *DescribeServiceOverviewResponse) FromJsonString(s string) error {
 }
 
 type Filter struct {
-
 	// 过滤方式（=, !=, in）
 	Type *string `json:"Type,omitempty" name:"Type"`
 
@@ -655,7 +808,6 @@ type Filter struct {
 }
 
 type GeneralFilter struct {
-
 	// 过滤维度名
 	Key *string `json:"Key,omitempty" name:"Key"`
 
@@ -664,7 +816,6 @@ type GeneralFilter struct {
 }
 
 type Line struct {
-
 	// 指标名
 	MetricName *string `json:"MetricName,omitempty" name:"MetricName"`
 
@@ -684,7 +835,6 @@ type Line struct {
 }
 
 type OrderBy struct {
-
 	// 需要排序的字段
 	Key *string `json:"Key,omitempty" name:"Key"`
 
@@ -693,7 +843,6 @@ type OrderBy struct {
 }
 
 type QueryMetricItem struct {
-
 	// 指标名
 	MetricName *string `json:"MetricName,omitempty" name:"MetricName"`
 

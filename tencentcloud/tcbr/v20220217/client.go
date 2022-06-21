@@ -345,6 +345,104 @@ func (c *Client) DescribeEnvBaseInfoWithContext(ctx context.Context, request *De
     return
 }
 
+func NewOperateServerManageRequest() (request *OperateServerManageRequest) {
+    request = &OperateServerManageRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tcbr", APIVersion, "OperateServerManage")
+    
+    
+    return
+}
+
+func NewOperateServerManageResponse() (response *OperateServerManageResponse) {
+    response = &OperateServerManageResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// OperateServerManage
+// 操作发布单
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) OperateServerManage(request *OperateServerManageRequest) (response *OperateServerManageResponse, err error) {
+    return c.OperateServerManageWithContext(context.Background(), request)
+}
+
+// OperateServerManage
+// 操作发布单
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) OperateServerManageWithContext(ctx context.Context, request *OperateServerManageRequest) (response *OperateServerManageResponse, err error) {
+    if request == nil {
+        request = NewOperateServerManageRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("OperateServerManage require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewOperateServerManageResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewReleaseGrayRequest() (request *ReleaseGrayRequest) {
+    request = &ReleaseGrayRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tcbr", APIVersion, "ReleaseGray")
+    
+    
+    return
+}
+
+func NewReleaseGrayResponse() (response *ReleaseGrayResponse) {
+    response = &ReleaseGrayResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ReleaseGray
+// 灰度发布
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) ReleaseGray(request *ReleaseGrayRequest) (response *ReleaseGrayResponse, err error) {
+    return c.ReleaseGrayWithContext(context.Background(), request)
+}
+
+// ReleaseGray
+// 灰度发布
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) ReleaseGrayWithContext(ctx context.Context, request *ReleaseGrayRequest) (response *ReleaseGrayResponse, err error) {
+    if request == nil {
+        request = NewReleaseGrayRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ReleaseGray require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewReleaseGrayResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewUpdateCloudRunServerRequest() (request *UpdateCloudRunServerRequest) {
     request = &UpdateCloudRunServerRequest{
         BaseRequest: &tchttp.BaseRequest{},

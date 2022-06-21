@@ -21,7 +21,6 @@ import (
 )
 
 type AvailableProtoStatus struct {
-
 	// 售卖状态。可选值有 sale_out 售罄、saling可售、no_saling不可销售
 	SaleStatus *string `json:"SaleStatus,omitempty" name:"SaleStatus"`
 
@@ -30,7 +29,6 @@ type AvailableProtoStatus struct {
 }
 
 type AvailableRegion struct {
-
 	// 区域名称，如“ap-beijing”
 	Region *string `json:"Region,omitempty" name:"Region"`
 
@@ -48,7 +46,6 @@ type AvailableRegion struct {
 }
 
 type AvailableType struct {
-
 	// 协议与售卖详情
 	Protocols []*AvailableProtoStatus `json:"Protocols,omitempty" name:"Protocols"`
 
@@ -60,7 +57,6 @@ type AvailableType struct {
 }
 
 type AvailableZone struct {
-
 	// 可用区名称
 	Zone *string `json:"Zone,omitempty" name:"Zone"`
 
@@ -77,9 +73,54 @@ type AvailableZone struct {
 	ZoneName *string `json:"ZoneName,omitempty" name:"ZoneName"`
 }
 
+// Predefined struct for user
+type CreateCfsFileSystemRequestParams struct {
+	// 可用区名称，例如ap-beijing-1，请参考 [概览](https://cloud.tencent.com/document/product/582/13225) 文档中的地域与可用区列表
+	Zone *string `json:"Zone,omitempty" name:"Zone"`
+
+	// 网络类型，可选值为 VPC，BASIC，CCN；其中 VPC 为私有网络，BASIC 为基础网络, CCN 为云联网，Turbo系列当前必须选择云联网。目前基础网络已逐渐淘汰，不推荐使用。
+	NetInterface *string `json:"NetInterface,omitempty" name:"NetInterface"`
+
+	// 权限组 ID，通用标准型和性能型必填，turbo系列请填写pgroupbasic
+	PGroupId *string `json:"PGroupId,omitempty" name:"PGroupId"`
+
+	// 文件系统协议类型， 值为 NFS、CIFS、TURBO ; 若留空则默认为 NFS协议，turbo系列必须选择turbo，不支持NFS、CIFS
+	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
+
+	// 文件系统存储类型，默认值为 SD ；其中 SD 为通用标准型标准型存储， HP为通用性能型存储， TB为turbo标准型， TP 为turbo性能型。
+	StorageType *string `json:"StorageType,omitempty" name:"StorageType"`
+
+	// 私有网络（VPC） ID，若网络类型选择的是VPC，该字段为必填。
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 子网 ID，若网络类型选择的是VPC，该字段为必填。
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+
+	// 指定IP地址，仅VPC网络支持；若不填写、将在该子网下随机分配 IP，Turbo系列当前不支持指定
+	MountIP *string `json:"MountIP,omitempty" name:"MountIP"`
+
+	// 用户自定义文件系统名称
+	FsName *string `json:"FsName,omitempty" name:"FsName"`
+
+	// 文件系统标签
+	ResourceTags []*TagInfo `json:"ResourceTags,omitempty" name:"ResourceTags"`
+
+	// 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。用于保证请求幂等性的字符串失效时间为2小时。
+	ClientToken *string `json:"ClientToken,omitempty" name:"ClientToken"`
+
+	// 云联网ID， 若网络类型选择的是CCN，该字段为必填
+	CcnId *string `json:"CcnId,omitempty" name:"CcnId"`
+
+	// 云联网中CFS使用的网段， 若网络类型选择的是Ccn，该字段为必填，且不能和Ccn中已经绑定的网段冲突
+	CidrBlock *string `json:"CidrBlock,omitempty" name:"CidrBlock"`
+
+	// 文件系统容量，turbo系列必填，单位为GiB。 turbo标准型单位GB，起售40TiB，即40960 GiB；扩容步长20TiB，即20480 GiB。turbo性能型起售20TiB，即20480 GiB；扩容步长10TiB，10240 GiB。
+	Capacity *uint64 `json:"Capacity,omitempty" name:"Capacity"`
+}
+
 type CreateCfsFileSystemRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 可用区名称，例如ap-beijing-1，请参考 [概览](https://cloud.tencent.com/document/product/582/13225) 文档中的地域与可用区列表
 	Zone *string `json:"Zone,omitempty" name:"Zone"`
 
@@ -155,37 +196,39 @@ func (r *CreateCfsFileSystemRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateCfsFileSystemResponseParams struct {
+	// 文件系统创建时间
+	CreationTime *string `json:"CreationTime,omitempty" name:"CreationTime"`
+
+	// 用户自定义文件系统名称
+	CreationToken *string `json:"CreationToken,omitempty" name:"CreationToken"`
+
+	// 文件系统 ID
+	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
+
+	// 文件系统状态，可能出现状态包括：“creating”  创建中, “create_failed” 创建失败, “available” 可用, “unserviced” 不可用, “upgrading” 升级中， “deleting” 删除中。
+	LifeCycleState *string `json:"LifeCycleState,omitempty" name:"LifeCycleState"`
+
+	// 文件系统已使用容量大小，单位为 Byte
+	SizeByte *uint64 `json:"SizeByte,omitempty" name:"SizeByte"`
+
+	// 可用区 ID
+	ZoneId *uint64 `json:"ZoneId,omitempty" name:"ZoneId"`
+
+	// 用户自定义文件系统名称
+	FsName *string `json:"FsName,omitempty" name:"FsName"`
+
+	// 文件系统是否加密
+	Encrypted *bool `json:"Encrypted,omitempty" name:"Encrypted"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreateCfsFileSystemResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 文件系统创建时间
-		CreationTime *string `json:"CreationTime,omitempty" name:"CreationTime"`
-
-		// 用户自定义文件系统名称
-		CreationToken *string `json:"CreationToken,omitempty" name:"CreationToken"`
-
-		// 文件系统 ID
-		FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
-
-		// 文件系统状态，可能出现状态包括：“creating”  创建中, “create_failed” 创建失败, “available” 可用, “unserviced” 不可用, “upgrading” 升级中， “deleting” 删除中。
-		LifeCycleState *string `json:"LifeCycleState,omitempty" name:"LifeCycleState"`
-
-		// 文件系统已使用容量大小，单位为 Byte
-		SizeByte *uint64 `json:"SizeByte,omitempty" name:"SizeByte"`
-
-		// 可用区 ID
-		ZoneId *uint64 `json:"ZoneId,omitempty" name:"ZoneId"`
-
-		// 用户自定义文件系统名称
-		FsName *string `json:"FsName,omitempty" name:"FsName"`
-
-		// 文件系统是否加密
-		Encrypted *bool `json:"Encrypted,omitempty" name:"Encrypted"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreateCfsFileSystemResponseParams `json:"Response"`
 }
 
 func (r *CreateCfsFileSystemResponse) ToJsonString() string {
@@ -199,9 +242,18 @@ func (r *CreateCfsFileSystemResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateCfsPGroupRequestParams struct {
+	// 权限组名称，1-64个字符且只能为中文，字母，数字，下划线或横线
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 权限组描述信息，1-255个字符
+	DescInfo *string `json:"DescInfo,omitempty" name:"DescInfo"`
+}
+
 type CreateCfsPGroupRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 权限组名称，1-64个字符且只能为中文，字母，数字，下划线或横线
 	Name *string `json:"Name,omitempty" name:"Name"`
 
@@ -229,28 +281,30 @@ func (r *CreateCfsPGroupRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateCfsPGroupResponseParams struct {
+	// 权限组 ID
+	PGroupId *string `json:"PGroupId,omitempty" name:"PGroupId"`
+
+	// 权限组名字
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 权限组描述信息
+	DescInfo *string `json:"DescInfo,omitempty" name:"DescInfo"`
+
+	// 已经与该权限组绑定的文件系统个数
+	BindCfsNum *int64 `json:"BindCfsNum,omitempty" name:"BindCfsNum"`
+
+	// 权限组创建时间
+	CDate *string `json:"CDate,omitempty" name:"CDate"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreateCfsPGroupResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 权限组 ID
-		PGroupId *string `json:"PGroupId,omitempty" name:"PGroupId"`
-
-		// 权限组名字
-		Name *string `json:"Name,omitempty" name:"Name"`
-
-		// 权限组描述信息
-		DescInfo *string `json:"DescInfo,omitempty" name:"DescInfo"`
-
-		// 已经与该权限组绑定的文件系统个数
-		BindCfsNum *int64 `json:"BindCfsNum,omitempty" name:"BindCfsNum"`
-
-		// 权限组创建时间
-		CDate *string `json:"CDate,omitempty" name:"CDate"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreateCfsPGroupResponseParams `json:"Response"`
 }
 
 func (r *CreateCfsPGroupResponse) ToJsonString() string {
@@ -264,9 +318,27 @@ func (r *CreateCfsPGroupResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateCfsRuleRequestParams struct {
+	// 权限组 ID
+	PGroupId *string `json:"PGroupId,omitempty" name:"PGroupId"`
+
+	// 可以填写单个 IP 或者单个网段，例如 10.1.10.11 或者 10.10.1.0/24。默认来访地址为*表示允许所有。同时需要注意，此处需填写 CVM 的内网 IP。
+	AuthClientIp *string `json:"AuthClientIp,omitempty" name:"AuthClientIp"`
+
+	// 规则优先级，参数范围1-100。 其中 1 为最高，100为最低
+	Priority *int64 `json:"Priority,omitempty" name:"Priority"`
+
+	// 读写权限, 值为 RO、RW；其中 RO 为只读，RW 为读写，不填默认为只读
+	RWPermission *string `json:"RWPermission,omitempty" name:"RWPermission"`
+
+	// 用户权限，值为 all_squash、no_all_squash、root_squash、no_root_squash。其中all_squash为所有访问用户都会被映射为匿名用户或用户组；no_all_squash为访问用户会先与本机用户匹配，匹配失败后再映射为匿名用户或用户组；root_squash为将来访的root用户映射为匿名用户或用户组；no_root_squash为来访的root用户保持root帐号权限。不填默认为root_squash。
+	UserPermission *string `json:"UserPermission,omitempty" name:"UserPermission"`
+}
+
 type CreateCfsRuleRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 权限组 ID
 	PGroupId *string `json:"PGroupId,omitempty" name:"PGroupId"`
 
@@ -306,31 +378,33 @@ func (r *CreateCfsRuleRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateCfsRuleResponseParams struct {
+	// 规则 ID
+	RuleId *string `json:"RuleId,omitempty" name:"RuleId"`
+
+	// 权限组 ID
+	PGroupId *string `json:"PGroupId,omitempty" name:"PGroupId"`
+
+	// 客户端 IP
+	AuthClientIp *string `json:"AuthClientIp,omitempty" name:"AuthClientIp"`
+
+	// 读写权限
+	RWPermission *string `json:"RWPermission,omitempty" name:"RWPermission"`
+
+	// 用户权限
+	UserPermission *string `json:"UserPermission,omitempty" name:"UserPermission"`
+
+	// 优先级
+	Priority *int64 `json:"Priority,omitempty" name:"Priority"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreateCfsRuleResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 规则 ID
-		RuleId *string `json:"RuleId,omitempty" name:"RuleId"`
-
-		// 权限组 ID
-		PGroupId *string `json:"PGroupId,omitempty" name:"PGroupId"`
-
-		// 客户端 IP
-		AuthClientIp *string `json:"AuthClientIp,omitempty" name:"AuthClientIp"`
-
-		// 读写权限
-		RWPermission *string `json:"RWPermission,omitempty" name:"RWPermission"`
-
-		// 用户权限
-		UserPermission *string `json:"UserPermission,omitempty" name:"UserPermission"`
-
-		// 优先级
-		Priority *int64 `json:"Priority,omitempty" name:"Priority"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreateCfsRuleResponseParams `json:"Response"`
 }
 
 func (r *CreateCfsRuleResponse) ToJsonString() string {
@@ -344,9 +418,15 @@ func (r *CreateCfsRuleResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteCfsFileSystemRequestParams struct {
+	// 文件系统 ID。说明，进行删除文件系统操作前需要先调用 DeleteMountTarget 接口删除该文件系统的挂载点，否则会删除失败。
+	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
+}
+
 type DeleteCfsFileSystemRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 文件系统 ID。说明，进行删除文件系统操作前需要先调用 DeleteMountTarget 接口删除该文件系统的挂载点，否则会删除失败。
 	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
 }
@@ -370,13 +450,15 @@ func (r *DeleteCfsFileSystemRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteCfsFileSystemResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DeleteCfsFileSystemResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DeleteCfsFileSystemResponseParams `json:"Response"`
 }
 
 func (r *DeleteCfsFileSystemResponse) ToJsonString() string {
@@ -390,9 +472,15 @@ func (r *DeleteCfsFileSystemResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteCfsPGroupRequestParams struct {
+	// 权限组 ID
+	PGroupId *string `json:"PGroupId,omitempty" name:"PGroupId"`
+}
+
 type DeleteCfsPGroupRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 权限组 ID
 	PGroupId *string `json:"PGroupId,omitempty" name:"PGroupId"`
 }
@@ -416,19 +504,21 @@ func (r *DeleteCfsPGroupRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteCfsPGroupResponseParams struct {
+	// 权限组 ID
+	PGroupId *string `json:"PGroupId,omitempty" name:"PGroupId"`
+
+	// 用户 ID
+	AppId *int64 `json:"AppId,omitempty" name:"AppId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DeleteCfsPGroupResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 权限组 ID
-		PGroupId *string `json:"PGroupId,omitempty" name:"PGroupId"`
-
-		// 用户 ID
-		AppId *int64 `json:"AppId,omitempty" name:"AppId"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DeleteCfsPGroupResponseParams `json:"Response"`
 }
 
 func (r *DeleteCfsPGroupResponse) ToJsonString() string {
@@ -442,9 +532,18 @@ func (r *DeleteCfsPGroupResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteCfsRuleRequestParams struct {
+	// 权限组 ID
+	PGroupId *string `json:"PGroupId,omitempty" name:"PGroupId"`
+
+	// 规则 ID
+	RuleId *string `json:"RuleId,omitempty" name:"RuleId"`
+}
+
 type DeleteCfsRuleRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 权限组 ID
 	PGroupId *string `json:"PGroupId,omitempty" name:"PGroupId"`
 
@@ -472,19 +571,21 @@ func (r *DeleteCfsRuleRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteCfsRuleResponseParams struct {
+	// 规则 ID
+	RuleId *string `json:"RuleId,omitempty" name:"RuleId"`
+
+	// 权限组 ID
+	PGroupId *string `json:"PGroupId,omitempty" name:"PGroupId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DeleteCfsRuleResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 规则 ID
-		RuleId *string `json:"RuleId,omitempty" name:"RuleId"`
-
-		// 权限组 ID
-		PGroupId *string `json:"PGroupId,omitempty" name:"PGroupId"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DeleteCfsRuleResponseParams `json:"Response"`
 }
 
 func (r *DeleteCfsRuleResponse) ToJsonString() string {
@@ -498,9 +599,18 @@ func (r *DeleteCfsRuleResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteMountTargetRequestParams struct {
+	// 文件系统 ID
+	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
+
+	// 挂载点 ID
+	MountTargetId *string `json:"MountTargetId,omitempty" name:"MountTargetId"`
+}
+
 type DeleteMountTargetRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 文件系统 ID
 	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
 
@@ -528,13 +638,15 @@ func (r *DeleteMountTargetRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteMountTargetResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DeleteMountTargetResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DeleteMountTargetResponseParams `json:"Response"`
 }
 
 func (r *DeleteMountTargetResponse) ToJsonString() string {
@@ -548,8 +660,14 @@ func (r *DeleteMountTargetResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeAvailableZoneInfoRequestParams struct {
+
+}
+
 type DescribeAvailableZoneInfoRequest struct {
 	*tchttp.BaseRequest
+	
 }
 
 func (r *DescribeAvailableZoneInfoRequest) ToJsonString() string {
@@ -564,22 +682,25 @@ func (r *DescribeAvailableZoneInfoRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAvailableZoneInfoRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeAvailableZoneInfoResponseParams struct {
+	// 各可用区的资源售卖情况以及支持的存储类型、存储协议等信息
+	RegionZones []*AvailableRegion `json:"RegionZones,omitempty" name:"RegionZones"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeAvailableZoneInfoResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 各可用区的资源售卖情况以及支持的存储类型、存储协议等信息
-		RegionZones []*AvailableRegion `json:"RegionZones,omitempty" name:"RegionZones"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeAvailableZoneInfoResponseParams `json:"Response"`
 }
 
 func (r *DescribeAvailableZoneInfoResponse) ToJsonString() string {
@@ -593,9 +714,15 @@ func (r *DescribeAvailableZoneInfoResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeCfsFileSystemClientsRequestParams struct {
+	// 文件系统 ID。
+	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
+}
+
 type DescribeCfsFileSystemClientsRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 文件系统 ID。
 	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
 }
@@ -619,16 +746,18 @@ func (r *DescribeCfsFileSystemClientsRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeCfsFileSystemClientsResponseParams struct {
+	// 客户端列表
+	ClientList []*FileSystemClient `json:"ClientList,omitempty" name:"ClientList"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeCfsFileSystemClientsResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 客户端列表
-		ClientList []*FileSystemClient `json:"ClientList,omitempty" name:"ClientList"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeCfsFileSystemClientsResponseParams `json:"Response"`
 }
 
 func (r *DescribeCfsFileSystemClientsResponse) ToJsonString() string {
@@ -642,9 +771,21 @@ func (r *DescribeCfsFileSystemClientsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeCfsFileSystemsRequestParams struct {
+	// 文件系统 ID
+	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
+
+	// 私有网络（VPC） ID
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 子网 ID
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+}
+
 type DescribeCfsFileSystemsRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 文件系统 ID
 	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
 
@@ -676,19 +817,21 @@ func (r *DescribeCfsFileSystemsRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeCfsFileSystemsResponseParams struct {
+	// 文件系统信息
+	FileSystems []*FileSystemInfo `json:"FileSystems,omitempty" name:"FileSystems"`
+
+	// 文件系统总数
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeCfsFileSystemsResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 文件系统信息
-		FileSystems []*FileSystemInfo `json:"FileSystems,omitempty" name:"FileSystems"`
-
-		// 文件系统总数
-		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeCfsFileSystemsResponseParams `json:"Response"`
 }
 
 func (r *DescribeCfsFileSystemsResponse) ToJsonString() string {
@@ -702,8 +845,14 @@ func (r *DescribeCfsFileSystemsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeCfsPGroupsRequestParams struct {
+
+}
+
 type DescribeCfsPGroupsRequest struct {
 	*tchttp.BaseRequest
+	
 }
 
 func (r *DescribeCfsPGroupsRequest) ToJsonString() string {
@@ -718,22 +867,25 @@ func (r *DescribeCfsPGroupsRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCfsPGroupsRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeCfsPGroupsResponseParams struct {
+	// 权限组信息列表
+	PGroupList []*PGroupInfo `json:"PGroupList,omitempty" name:"PGroupList"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeCfsPGroupsResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 权限组信息列表
-		PGroupList []*PGroupInfo `json:"PGroupList,omitempty" name:"PGroupList"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeCfsPGroupsResponseParams `json:"Response"`
 }
 
 func (r *DescribeCfsPGroupsResponse) ToJsonString() string {
@@ -747,9 +899,15 @@ func (r *DescribeCfsPGroupsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeCfsRulesRequestParams struct {
+	// 权限组 ID
+	PGroupId *string `json:"PGroupId,omitempty" name:"PGroupId"`
+}
+
 type DescribeCfsRulesRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 权限组 ID
 	PGroupId *string `json:"PGroupId,omitempty" name:"PGroupId"`
 }
@@ -773,16 +931,18 @@ func (r *DescribeCfsRulesRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeCfsRulesResponseParams struct {
+	// 权限组规则列表
+	RuleList []*PGroupRuleInfo `json:"RuleList,omitempty" name:"RuleList"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeCfsRulesResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 权限组规则列表
-		RuleList []*PGroupRuleInfo `json:"RuleList,omitempty" name:"RuleList"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeCfsRulesResponseParams `json:"Response"`
 }
 
 func (r *DescribeCfsRulesResponse) ToJsonString() string {
@@ -796,8 +956,14 @@ func (r *DescribeCfsRulesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeCfsServiceStatusRequestParams struct {
+
+}
+
 type DescribeCfsServiceStatusRequest struct {
 	*tchttp.BaseRequest
+	
 }
 
 func (r *DescribeCfsServiceStatusRequest) ToJsonString() string {
@@ -812,22 +978,25 @@ func (r *DescribeCfsServiceStatusRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCfsServiceStatusRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeCfsServiceStatusResponseParams struct {
+	// 该用户当前 CFS 服务的状态，none 为未开通，creating 为开通中，created 为已开通
+	CfsServiceStatus *string `json:"CfsServiceStatus,omitempty" name:"CfsServiceStatus"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeCfsServiceStatusResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 该用户当前 CFS 服务的状态，none 为未开通，creating 为开通中，created 为已开通
-		CfsServiceStatus *string `json:"CfsServiceStatus,omitempty" name:"CfsServiceStatus"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeCfsServiceStatusResponseParams `json:"Response"`
 }
 
 func (r *DescribeCfsServiceStatusResponse) ToJsonString() string {
@@ -841,9 +1010,15 @@ func (r *DescribeCfsServiceStatusResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeMountTargetsRequestParams struct {
+	// 文件系统 ID
+	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
+}
+
 type DescribeMountTargetsRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 文件系统 ID
 	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
 }
@@ -867,19 +1042,21 @@ func (r *DescribeMountTargetsRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeMountTargetsResponseParams struct {
+	// 挂载点详情
+	MountTargets []*MountInfo `json:"MountTargets,omitempty" name:"MountTargets"`
+
+	// 挂载点数量
+	NumberOfMountTargets *int64 `json:"NumberOfMountTargets,omitempty" name:"NumberOfMountTargets"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeMountTargetsResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 挂载点详情
-		MountTargets []*MountInfo `json:"MountTargets,omitempty" name:"MountTargets"`
-
-		// 挂载点数量
-		NumberOfMountTargets *int64 `json:"NumberOfMountTargets,omitempty" name:"NumberOfMountTargets"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeMountTargetsResponseParams `json:"Response"`
 }
 
 func (r *DescribeMountTargetsResponse) ToJsonString() string {
@@ -894,7 +1071,6 @@ func (r *DescribeMountTargetsResponse) FromJsonString(s string) error {
 }
 
 type FileSystemClient struct {
-
 	// 文件系统IP地址
 	CfsVip *string `json:"CfsVip,omitempty" name:"CfsVip"`
 
@@ -915,7 +1091,6 @@ type FileSystemClient struct {
 }
 
 type FileSystemInfo struct {
-
 	// 创建时间
 	CreationTime *string `json:"CreationTime,omitempty" name:"CreationTime"`
 
@@ -978,7 +1153,6 @@ type FileSystemInfo struct {
 }
 
 type MountInfo struct {
-
 	// 文件系统 ID
 	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
 
@@ -1017,7 +1191,6 @@ type MountInfo struct {
 }
 
 type PGroup struct {
-
 	// 权限组ID
 	PGroupId *string `json:"PGroupId,omitempty" name:"PGroupId"`
 
@@ -1026,7 +1199,6 @@ type PGroup struct {
 }
 
 type PGroupInfo struct {
-
 	// 权限组ID
 	PGroupId *string `json:"PGroupId,omitempty" name:"PGroupId"`
 
@@ -1044,7 +1216,6 @@ type PGroupInfo struct {
 }
 
 type PGroupRuleInfo struct {
-
 	// 规则ID
 	RuleId *string `json:"RuleId,omitempty" name:"RuleId"`
 
@@ -1061,8 +1232,14 @@ type PGroupRuleInfo struct {
 	Priority *int64 `json:"Priority,omitempty" name:"Priority"`
 }
 
+// Predefined struct for user
+type SignUpCfsServiceRequestParams struct {
+
+}
+
 type SignUpCfsServiceRequest struct {
 	*tchttp.BaseRequest
+	
 }
 
 func (r *SignUpCfsServiceRequest) ToJsonString() string {
@@ -1077,22 +1254,25 @@ func (r *SignUpCfsServiceRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SignUpCfsServiceRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type SignUpCfsServiceResponseParams struct {
+	// 该用户当前 CFS 服务的状态，none 是未开通，creating 是开通中，created 是已开通
+	CfsServiceStatus *string `json:"CfsServiceStatus,omitempty" name:"CfsServiceStatus"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type SignUpCfsServiceResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 该用户当前 CFS 服务的状态，none 是未开通，creating 是开通中，created 是已开通
-		CfsServiceStatus *string `json:"CfsServiceStatus,omitempty" name:"CfsServiceStatus"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *SignUpCfsServiceResponseParams `json:"Response"`
 }
 
 func (r *SignUpCfsServiceResponse) ToJsonString() string {
@@ -1107,7 +1287,6 @@ func (r *SignUpCfsServiceResponse) FromJsonString(s string) error {
 }
 
 type TagInfo struct {
-
 	// 标签键
 	TagKey *string `json:"TagKey,omitempty" name:"TagKey"`
 
@@ -1115,9 +1294,18 @@ type TagInfo struct {
 	TagValue *string `json:"TagValue,omitempty" name:"TagValue"`
 }
 
+// Predefined struct for user
+type UpdateCfsFileSystemNameRequestParams struct {
+	// 文件系统 ID
+	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
+
+	// 用户自定义文件系统名称
+	FsName *string `json:"FsName,omitempty" name:"FsName"`
+}
+
 type UpdateCfsFileSystemNameRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 文件系统 ID
 	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
 
@@ -1145,22 +1333,24 @@ func (r *UpdateCfsFileSystemNameRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type UpdateCfsFileSystemNameResponseParams struct {
+	// 用户自定义文件系统名称
+	CreationToken *string `json:"CreationToken,omitempty" name:"CreationToken"`
+
+	// 文件系统ID
+	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
+
+	// 用户自定义文件系统名称
+	FsName *string `json:"FsName,omitempty" name:"FsName"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type UpdateCfsFileSystemNameResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 用户自定义文件系统名称
-		CreationToken *string `json:"CreationToken,omitempty" name:"CreationToken"`
-
-		// 文件系统ID
-		FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
-
-		// 用户自定义文件系统名称
-		FsName *string `json:"FsName,omitempty" name:"FsName"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *UpdateCfsFileSystemNameResponseParams `json:"Response"`
 }
 
 func (r *UpdateCfsFileSystemNameResponse) ToJsonString() string {
@@ -1174,9 +1364,18 @@ func (r *UpdateCfsFileSystemNameResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type UpdateCfsFileSystemPGroupRequestParams struct {
+	// 权限组 ID
+	PGroupId *string `json:"PGroupId,omitempty" name:"PGroupId"`
+
+	// 文件系统 ID
+	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
+}
+
 type UpdateCfsFileSystemPGroupRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 权限组 ID
 	PGroupId *string `json:"PGroupId,omitempty" name:"PGroupId"`
 
@@ -1204,19 +1403,21 @@ func (r *UpdateCfsFileSystemPGroupRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type UpdateCfsFileSystemPGroupResponseParams struct {
+	// 权限组 ID
+	PGroupId *string `json:"PGroupId,omitempty" name:"PGroupId"`
+
+	// 文件系统 ID
+	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type UpdateCfsFileSystemPGroupResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 权限组 ID
-		PGroupId *string `json:"PGroupId,omitempty" name:"PGroupId"`
-
-		// 文件系统 ID
-		FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *UpdateCfsFileSystemPGroupResponseParams `json:"Response"`
 }
 
 func (r *UpdateCfsFileSystemPGroupResponse) ToJsonString() string {
@@ -1230,9 +1431,18 @@ func (r *UpdateCfsFileSystemPGroupResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type UpdateCfsFileSystemSizeLimitRequestParams struct {
+	// 文件系统容量限制大小，输入范围0-1073741824, 单位为GB；其中输入值为0时，表示不限制文件系统容量。
+	FsLimit *uint64 `json:"FsLimit,omitempty" name:"FsLimit"`
+
+	// 文件系统ID，目前仅支持标准型文件系统。
+	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
+}
+
 type UpdateCfsFileSystemSizeLimitRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 文件系统容量限制大小，输入范围0-1073741824, 单位为GB；其中输入值为0时，表示不限制文件系统容量。
 	FsLimit *uint64 `json:"FsLimit,omitempty" name:"FsLimit"`
 
@@ -1260,13 +1470,15 @@ func (r *UpdateCfsFileSystemSizeLimitRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type UpdateCfsFileSystemSizeLimitResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type UpdateCfsFileSystemSizeLimitResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *UpdateCfsFileSystemSizeLimitResponseParams `json:"Response"`
 }
 
 func (r *UpdateCfsFileSystemSizeLimitResponse) ToJsonString() string {
@@ -1280,9 +1492,21 @@ func (r *UpdateCfsFileSystemSizeLimitResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type UpdateCfsPGroupRequestParams struct {
+	// 权限组 ID
+	PGroupId *string `json:"PGroupId,omitempty" name:"PGroupId"`
+
+	// 权限组名称，1-64个字符且只能为中文，字母，数字，下划线或横线
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 权限组描述信息，1-255个字符
+	DescInfo *string `json:"DescInfo,omitempty" name:"DescInfo"`
+}
+
 type UpdateCfsPGroupRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 权限组 ID
 	PGroupId *string `json:"PGroupId,omitempty" name:"PGroupId"`
 
@@ -1314,22 +1538,24 @@ func (r *UpdateCfsPGroupRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type UpdateCfsPGroupResponseParams struct {
+	// 权限组ID
+	PGroupId *string `json:"PGroupId,omitempty" name:"PGroupId"`
+
+	// 权限组名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 描述信息
+	DescInfo *string `json:"DescInfo,omitempty" name:"DescInfo"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type UpdateCfsPGroupResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 权限组ID
-		PGroupId *string `json:"PGroupId,omitempty" name:"PGroupId"`
-
-		// 权限组名称
-		Name *string `json:"Name,omitempty" name:"Name"`
-
-		// 描述信息
-		DescInfo *string `json:"DescInfo,omitempty" name:"DescInfo"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *UpdateCfsPGroupResponseParams `json:"Response"`
 }
 
 func (r *UpdateCfsPGroupResponse) ToJsonString() string {
@@ -1343,9 +1569,30 @@ func (r *UpdateCfsPGroupResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type UpdateCfsRuleRequestParams struct {
+	// 权限组 ID
+	PGroupId *string `json:"PGroupId,omitempty" name:"PGroupId"`
+
+	// 规则 ID
+	RuleId *string `json:"RuleId,omitempty" name:"RuleId"`
+
+	// 可以填写单个 IP 或者单个网段，例如 10.1.10.11 或者 10.10.1.0/24。默认来访地址为*表示允许所有。同时需要注意，此处需填写 CVM 的内网 IP。
+	AuthClientIp *string `json:"AuthClientIp,omitempty" name:"AuthClientIp"`
+
+	// 读写权限, 值为RO、RW；其中 RO 为只读，RW 为读写，不填默认为只读
+	RWPermission *string `json:"RWPermission,omitempty" name:"RWPermission"`
+
+	// 用户权限，值为all_squash、no_all_squash、root_squash、no_root_squash。其中all_squash为所有访问用户都会被映射为匿名用户或用户组；no_all_squash为访问用户会先与本机用户匹配，匹配失败后再映射为匿名用户或用户组；root_squash为将来访的root用户映射为匿名用户或用户组；no_root_squash为来访的root用户保持root帐号权限。不填默认为root_squash。
+	UserPermission *string `json:"UserPermission,omitempty" name:"UserPermission"`
+
+	// 规则优先级，参数范围1-100。 其中 1 为最高，100为最低
+	Priority *int64 `json:"Priority,omitempty" name:"Priority"`
+}
+
 type UpdateCfsRuleRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 权限组 ID
 	PGroupId *string `json:"PGroupId,omitempty" name:"PGroupId"`
 
@@ -1389,31 +1636,33 @@ func (r *UpdateCfsRuleRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type UpdateCfsRuleResponseParams struct {
+	// 权限组 ID
+	PGroupId *string `json:"PGroupId,omitempty" name:"PGroupId"`
+
+	// 规则 ID
+	RuleId *string `json:"RuleId,omitempty" name:"RuleId"`
+
+	// 允许访问的客户端 IP 或者 IP 段
+	AuthClientIp *string `json:"AuthClientIp,omitempty" name:"AuthClientIp"`
+
+	// 读写权限
+	RWPermission *string `json:"RWPermission,omitempty" name:"RWPermission"`
+
+	// 用户权限
+	UserPermission *string `json:"UserPermission,omitempty" name:"UserPermission"`
+
+	// 优先级
+	Priority *int64 `json:"Priority,omitempty" name:"Priority"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type UpdateCfsRuleResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 权限组 ID
-		PGroupId *string `json:"PGroupId,omitempty" name:"PGroupId"`
-
-		// 规则 ID
-		RuleId *string `json:"RuleId,omitempty" name:"RuleId"`
-
-		// 允许访问的客户端 IP 或者 IP 段
-		AuthClientIp *string `json:"AuthClientIp,omitempty" name:"AuthClientIp"`
-
-		// 读写权限
-		RWPermission *string `json:"RWPermission,omitempty" name:"RWPermission"`
-
-		// 用户权限
-		UserPermission *string `json:"UserPermission,omitempty" name:"UserPermission"`
-
-		// 优先级
-		Priority *int64 `json:"Priority,omitempty" name:"Priority"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *UpdateCfsRuleResponseParams `json:"Response"`
 }
 
 func (r *UpdateCfsRuleResponse) ToJsonString() string {

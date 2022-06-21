@@ -20,9 +20,18 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+// Predefined struct for user
+type DeleteCertRequestParams struct {
+	// 证书 ID，即通过 GetList 拿到的证书列表的 ID 字段。
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 模块名称，应填 ssl。
+	ModuleType *string `json:"ModuleType,omitempty" name:"ModuleType"`
+}
+
 type DeleteCertRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 证书 ID，即通过 GetList 拿到的证书列表的 ID 字段。
 	Id *string `json:"Id,omitempty" name:"Id"`
 
@@ -50,13 +59,15 @@ func (r *DeleteCertRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteCertResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DeleteCertResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DeleteCertResponseParams `json:"Response"`
 }
 
 func (r *DeleteCertResponse) ToJsonString() string {
@@ -70,9 +81,36 @@ func (r *DeleteCertResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeCertListRequestParams struct {
+	// 模块名称，应填 ssl。
+	ModuleType *string `json:"ModuleType,omitempty" name:"ModuleType"`
+
+	// 页数，默认第一页。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 每页条数，默认每页20条。
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 搜索关键字。
+	SearchKey *string `json:"SearchKey,omitempty" name:"SearchKey"`
+
+	// 证书类型（目前支持:CA=客户端证书,SVR=服务器证书）。
+	CertType *string `json:"CertType,omitempty" name:"CertType"`
+
+	// 证书ID。
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 是否同时获取证书内容。
+	WithCert *string `json:"WithCert,omitempty" name:"WithCert"`
+
+	// 如传，则只返回可以给该域名使用的证书。
+	AltDomain *string `json:"AltDomain,omitempty" name:"AltDomain"`
+}
+
 type DescribeCertListRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 模块名称，应填 ssl。
 	ModuleType *string `json:"ModuleType,omitempty" name:"ModuleType"`
 
@@ -124,19 +162,21 @@ func (r *DescribeCertListRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeCertListResponseParams struct {
+	// 总数量。
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 列表。
+	CertificateSet []*SSLCertificate `json:"CertificateSet,omitempty" name:"CertificateSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeCertListResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 总数量。
-		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 列表。
-		CertificateSet []*SSLCertificate `json:"CertificateSet,omitempty" name:"CertificateSet"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeCertListResponseParams `json:"Response"`
 }
 
 func (r *DescribeCertListResponse) ToJsonString() string {
@@ -151,7 +191,6 @@ func (r *DescribeCertListResponse) FromJsonString(s string) error {
 }
 
 type SSLCertificate struct {
-
 	// 所属账户
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OwnerUin *string `json:"OwnerUin,omitempty" name:"OwnerUin"`
@@ -258,7 +297,6 @@ type SSLCertificate struct {
 }
 
 type SSLProjectInfo struct {
-
 	// 项目ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
@@ -284,9 +322,30 @@ type SSLProjectInfo struct {
 	Info *string `json:"Info,omitempty" name:"Info"`
 }
 
+// Predefined struct for user
+type UploadCertRequestParams struct {
+	// 证书内容。
+	Cert *string `json:"Cert,omitempty" name:"Cert"`
+
+	// 证书类型（目前支持：CA 为客户端证书，SVR 为服务器证书）。
+	CertType *string `json:"CertType,omitempty" name:"CertType"`
+
+	// 项目ID，详见用户指南的 [项目与标签](https://cloud.tencent.com/document/product/598/32738)。
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 模块名称，应填 ssl。
+	ModuleType *string `json:"ModuleType,omitempty" name:"ModuleType"`
+
+	// 证书私钥，certType=SVR 时必填。
+	Key *string `json:"Key,omitempty" name:"Key"`
+
+	// 证书备注。
+	Alias *string `json:"Alias,omitempty" name:"Alias"`
+}
+
 type UploadCertRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 证书内容。
 	Cert *string `json:"Cert,omitempty" name:"Cert"`
 
@@ -330,16 +389,18 @@ func (r *UploadCertRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type UploadCertResponseParams struct {
+	// 证书ID。
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type UploadCertResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 证书ID。
-		Id *string `json:"Id,omitempty" name:"Id"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *UploadCertResponseParams `json:"Response"`
 }
 
 func (r *UploadCertResponse) ToJsonString() string {

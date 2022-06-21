@@ -21,7 +21,6 @@ import (
 )
 
 type CodeDetail struct {
-
 	// 二维码在图片中的位置，由边界点的坐标表示
 	CodePosition []*CodePosition `json:"CodePosition,omitempty" name:"CodePosition"`
 
@@ -36,7 +35,6 @@ type CodeDetail struct {
 }
 
 type CodeDetect struct {
-
 	// 从图片中检测到的二维码，可能为多个
 	ModerationDetail []*CodeDetail `json:"ModerationDetail,omitempty" name:"ModerationDetail"`
 
@@ -45,7 +43,6 @@ type CodeDetect struct {
 }
 
 type CodePosition struct {
-
 	// 二维码边界点X轴坐标
 	FloatX *float64 `json:"FloatX,omitempty" name:"FloatX"`
 
@@ -54,7 +51,6 @@ type CodePosition struct {
 }
 
 type Coordinate struct {
-
 	// 左上角横坐标
 	Cx *int64 `json:"Cx,omitempty" name:"Cx"`
 
@@ -68,9 +64,33 @@ type Coordinate struct {
 	Width *int64 `json:"Width,omitempty" name:"Width"`
 }
 
+// Predefined struct for user
+type CreateFileSampleRequestParams struct {
+	// 文件类型结构数组
+	Contents []*FileSample `json:"Contents,omitempty" name:"Contents"`
+
+	// 恶意类型
+	// 100：正常
+	// 20001：政治
+	// 20002：色情 
+	// 20006：涉毒违法
+	// 20007：谩骂 
+	// 24001：暴恐
+	// 20105：广告引流
+	EvilType *int64 `json:"EvilType,omitempty" name:"EvilType"`
+
+	// image：图片
+	FileType *string `json:"FileType,omitempty" name:"FileType"`
+
+	// 样本类型
+	// 1：黑库
+	// 2：白库
+	Label *uint64 `json:"Label,omitempty" name:"Label"`
+}
+
 type CreateFileSampleRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 文件类型结构数组
 	Contents []*FileSample `json:"Contents,omitempty" name:"Contents"`
 
@@ -115,18 +135,20 @@ func (r *CreateFileSampleRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-type CreateFileSampleResponse struct {
-	*tchttp.BaseResponse
-	Response *struct {
-
-		// 任务状态
+// Predefined struct for user
+type CreateFileSampleResponseParams struct {
+	// 任务状态
 	// 1：已完成
 	// 2：处理中
-		Progress *uint64 `json:"Progress,omitempty" name:"Progress"`
+	Progress *uint64 `json:"Progress,omitempty" name:"Progress"`
 
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateFileSampleResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateFileSampleResponseParams `json:"Response"`
 }
 
 func (r *CreateFileSampleResponse) ToJsonString() string {
@@ -140,9 +162,33 @@ func (r *CreateFileSampleResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateTextSampleRequestParams struct {
+	// 关键词数组
+	Contents []*string `json:"Contents,omitempty" name:"Contents"`
+
+	// 恶意类型
+	// 100：正常
+	// 20001：政治
+	// 20002：色情 
+	// 20006：涉毒违法
+	// 20007：谩骂 
+	// 24001：暴恐
+	// 20105：广告引流
+	EvilType *int64 `json:"EvilType,omitempty" name:"EvilType"`
+
+	// 样本类型
+	// 1：黑库
+	// 2：白库
+	Label *uint64 `json:"Label,omitempty" name:"Label"`
+
+	// 测试修改参数
+	Test *string `json:"Test,omitempty" name:"Test"`
+}
+
 type CreateTextSampleRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 关键词数组
 	Contents []*string `json:"Contents,omitempty" name:"Contents"`
 
@@ -187,21 +233,23 @@ func (r *CreateTextSampleRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-type CreateTextSampleResponse struct {
-	*tchttp.BaseResponse
-	Response *struct {
+// Predefined struct for user
+type CreateTextSampleResponseParams struct {
+	// 操作样本失败时返回的错误信息示例：  "样本1":错误码，"样本2":错误码
+	ErrMsg *string `json:"ErrMsg,omitempty" name:"ErrMsg"`
 
-		// 操作样本失败时返回的错误信息示例：  "样本1":错误码，"样本2":错误码
-		ErrMsg *string `json:"ErrMsg,omitempty" name:"ErrMsg"`
-
-		// 任务状态
+	// 任务状态
 	// 1：已完成
 	// 2：处理中
-		Progress *uint64 `json:"Progress,omitempty" name:"Progress"`
+	Progress *uint64 `json:"Progress,omitempty" name:"Progress"`
 
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateTextSampleResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateTextSampleResponseParams `json:"Response"`
 }
 
 func (r *CreateTextSampleResponse) ToJsonString() string {
@@ -216,7 +264,6 @@ func (r *CreateTextSampleResponse) FromJsonString(s string) error {
 }
 
 type CustomResult struct {
-
 	// 命中的自定义关键词
 	Keywords []*string `json:"Keywords,omitempty" name:"Keywords"`
 
@@ -230,9 +277,15 @@ type CustomResult struct {
 	Type *string `json:"Type,omitempty" name:"Type"`
 }
 
+// Predefined struct for user
+type DeleteFileSampleRequestParams struct {
+	// 唯一标识数组
+	Ids []*string `json:"Ids,omitempty" name:"Ids"`
+}
+
 type DeleteFileSampleRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 唯一标识数组
 	Ids []*string `json:"Ids,omitempty" name:"Ids"`
 }
@@ -256,18 +309,20 @@ func (r *DeleteFileSampleRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-type DeleteFileSampleResponse struct {
-	*tchttp.BaseResponse
-	Response *struct {
-
-		// 任务状态
+// Predefined struct for user
+type DeleteFileSampleResponseParams struct {
+	// 任务状态
 	// 1：已完成
 	// 2：处理中
-		Progress *uint64 `json:"Progress,omitempty" name:"Progress"`
+	Progress *uint64 `json:"Progress,omitempty" name:"Progress"`
 
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DeleteFileSampleResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteFileSampleResponseParams `json:"Response"`
 }
 
 func (r *DeleteFileSampleResponse) ToJsonString() string {
@@ -281,9 +336,15 @@ func (r *DeleteFileSampleResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteTextSampleRequestParams struct {
+	// 唯一标识数组，目前暂时只支持单个删除
+	Ids []*string `json:"Ids,omitempty" name:"Ids"`
+}
+
 type DeleteTextSampleRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 唯一标识数组，目前暂时只支持单个删除
 	Ids []*string `json:"Ids,omitempty" name:"Ids"`
 }
@@ -307,18 +368,20 @@ func (r *DeleteTextSampleRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-type DeleteTextSampleResponse struct {
-	*tchttp.BaseResponse
-	Response *struct {
-
-		// 任务状态
+// Predefined struct for user
+type DeleteTextSampleResponseParams struct {
+	// 任务状态
 	// 1：已完成
 	// 2：处理中
-		Progress *uint64 `json:"Progress,omitempty" name:"Progress"`
+	Progress *uint64 `json:"Progress,omitempty" name:"Progress"`
 
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DeleteTextSampleResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteTextSampleResponseParams `json:"Response"`
 }
 
 func (r *DeleteTextSampleResponse) ToJsonString() string {
@@ -332,9 +395,27 @@ func (r *DeleteTextSampleResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeFileSampleRequestParams struct {
+	// 支持通过标签值进行筛选
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 数量限制，默认为20，最大值为100
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移量，默认为0
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 升序（asc）还是降序（desc），默认：desc
+	OrderDirection *string `json:"OrderDirection,omitempty" name:"OrderDirection"`
+
+	// 按某个字段排序，目前仅支持CreatedAt排序
+	OrderField *string `json:"OrderField,omitempty" name:"OrderField"`
+}
+
 type DescribeFileSampleRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 支持通过标签值进行筛选
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
@@ -374,19 +455,21 @@ func (r *DescribeFileSampleRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeFileSampleResponseParams struct {
+	// 符合要求的样本的信息
+	FileSampleSet []*FileSampleInfo `json:"FileSampleSet,omitempty" name:"FileSampleSet"`
+
+	// 符合要求的样本的数量
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeFileSampleResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 符合要求的样本的信息
-		FileSampleSet []*FileSampleInfo `json:"FileSampleSet,omitempty" name:"FileSampleSet"`
-
-		// 符合要求的样本的数量
-		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeFileSampleResponseParams `json:"Response"`
 }
 
 func (r *DescribeFileSampleResponse) ToJsonString() string {
@@ -400,9 +483,27 @@ func (r *DescribeFileSampleResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeTextSampleRequestParams struct {
+	// 支持通过标签值进行筛选
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 数量限制，默认为20，最大值为100
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移量，默认为0
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 升序（asc）还是降序（desc），默认：desc
+	OrderDirection *string `json:"OrderDirection,omitempty" name:"OrderDirection"`
+
+	// 按某个字段排序，目前仅支持CreatedAt排序
+	OrderField *string `json:"OrderField,omitempty" name:"OrderField"`
+}
+
 type DescribeTextSampleRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 支持通过标签值进行筛选
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
@@ -442,19 +543,21 @@ func (r *DescribeTextSampleRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeTextSampleResponseParams struct {
+	// 符合要求的样本的信息
+	TextSampleSet []*TextSample `json:"TextSampleSet,omitempty" name:"TextSampleSet"`
+
+	// 符合要求的样本的数量
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeTextSampleResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 符合要求的样本的信息
-		TextSampleSet []*TextSample `json:"TextSampleSet,omitempty" name:"TextSampleSet"`
-
-		// 符合要求的样本的数量
-		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeTextSampleResponseParams `json:"Response"`
 }
 
 func (r *DescribeTextSampleResponse) ToJsonString() string {
@@ -469,7 +572,6 @@ func (r *DescribeTextSampleResponse) FromJsonString(s string) error {
 }
 
 type DetailResult struct {
-
 	// 恶意标签，Normal：正常，Polity：涉政，Porn：色情，Illegal：违法，Abuse：谩骂，Terror：暴恐，Ad：广告，Custom：自定义关键词
 	EvilLabel *string `json:"EvilLabel,omitempty" name:"EvilLabel"`
 
@@ -491,7 +593,6 @@ type DetailResult struct {
 }
 
 type Device struct {
-
 	// 设备指纹ID
 	DeviceId *string `json:"DeviceId,omitempty" name:"DeviceId"`
 
@@ -515,7 +616,6 @@ type Device struct {
 }
 
 type FileSample struct {
-
 	// 文件md5
 	FileMd5 *string `json:"FileMd5,omitempty" name:"FileMd5"`
 
@@ -530,7 +630,6 @@ type FileSample struct {
 }
 
 type FileSampleInfo struct {
-
 	// 处理错误码
 	Code *int64 `json:"Code,omitempty" name:"Code"`
 
@@ -580,7 +679,6 @@ type FileSampleInfo struct {
 }
 
 type Filter struct {
-
 	// 需要过滤的字段
 	Name *string `json:"Name,omitempty" name:"Name"`
 
@@ -589,7 +687,6 @@ type Filter struct {
 }
 
 type ImageData struct {
-
 	// 是否恶意 0：正常 1：可疑
 	EvilFlag *int64 `json:"EvilFlag,omitempty" name:"EvilFlag"`
 
@@ -635,7 +732,6 @@ type ImageData struct {
 }
 
 type ImageHotDetect struct {
-
 	// 恶意类型
 	// 100：正常
 	// 20103：性感
@@ -655,7 +751,6 @@ type ImageHotDetect struct {
 }
 
 type ImageIllegalDetect struct {
-
 	// 恶意类型
 	// 100：正常 
 	// 20006：涉毒违法
@@ -674,9 +769,21 @@ type ImageIllegalDetect struct {
 	Score *int64 `json:"Score,omitempty" name:"Score"`
 }
 
+// Predefined struct for user
+type ImageModerationRequestParams struct {
+	// 文件内容 Base64,与FileUrl必须二填一
+	FileContent *string `json:"FileContent,omitempty" name:"FileContent"`
+
+	// 文件MD5值
+	FileMD5 *string `json:"FileMD5,omitempty" name:"FileMD5"`
+
+	// 文件地址
+	FileUrl *string `json:"FileUrl,omitempty" name:"FileUrl"`
+}
+
 type ImageModerationRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 文件内容 Base64,与FileUrl必须二填一
 	FileContent *string `json:"FileContent,omitempty" name:"FileContent"`
 
@@ -708,19 +815,21 @@ func (r *ImageModerationRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ImageModerationResponseParams struct {
+	// 识别结果
+	Data *ImageData `json:"Data,omitempty" name:"Data"`
+
+	// 业务返回码
+	BusinessCode *int64 `json:"BusinessCode,omitempty" name:"BusinessCode"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type ImageModerationResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 识别结果
-		Data *ImageData `json:"Data,omitempty" name:"Data"`
-
-		// 业务返回码
-		BusinessCode *int64 `json:"BusinessCode,omitempty" name:"BusinessCode"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *ImageModerationResponseParams `json:"Response"`
 }
 
 func (r *ImageModerationResponse) ToJsonString() string {
@@ -735,7 +844,6 @@ func (r *ImageModerationResponse) FromJsonString(s string) error {
 }
 
 type ImagePolityDetect struct {
-
 	// 恶意类型
 	// 100：正常 
 	// 20001：政治
@@ -761,7 +869,6 @@ type ImagePolityDetect struct {
 }
 
 type ImagePornDetect struct {
-
 	// 恶意类型
 	// 100：正常
 	// 20002：色情
@@ -781,7 +888,6 @@ type ImagePornDetect struct {
 }
 
 type ImageTerrorDetect struct {
-
 	// 恶意类型
 	// 100：正常
 	// 24001：暴恐
@@ -801,7 +907,6 @@ type ImageTerrorDetect struct {
 }
 
 type Logo struct {
-
 	// logo图标坐标信息
 	RrectF *RrectF `json:"RrectF,omitempty" name:"RrectF"`
 
@@ -813,13 +918,11 @@ type Logo struct {
 }
 
 type LogoDetail struct {
-
 	// 命中的Applogo详情
 	AppLogoDetail []*Logo `json:"AppLogoDetail,omitempty" name:"AppLogoDetail"`
 }
 
 type ManualReviewContent struct {
-
 	// 审核批次号
 	BatchId *string `json:"BatchId,omitempty" name:"BatchId"`
 
@@ -863,7 +966,6 @@ type ManualReviewContent struct {
 }
 
 type ManualReviewData struct {
-
 	// 人审内容批次号
 	BatchId *string `json:"BatchId,omitempty" name:"BatchId"`
 
@@ -871,9 +973,15 @@ type ManualReviewData struct {
 	ContentId *string `json:"ContentId,omitempty" name:"ContentId"`
 }
 
+// Predefined struct for user
+type ManualReviewRequestParams struct {
+	// 人工审核信息
+	ReviewContent *ManualReviewContent `json:"ReviewContent,omitempty" name:"ReviewContent"`
+}
+
 type ManualReviewRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 人工审核信息
 	ReviewContent *ManualReviewContent `json:"ReviewContent,omitempty" name:"ReviewContent"`
 }
@@ -897,16 +1005,18 @@ func (r *ManualReviewRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ManualReviewResponseParams struct {
+	// 人审接口同步响应结果
+	Data *ManualReviewData `json:"Data,omitempty" name:"Data"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type ManualReviewResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 人审接口同步响应结果
-		Data *ManualReviewData `json:"Data,omitempty" name:"Data"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *ManualReviewResponseParams `json:"Response"`
 }
 
 func (r *ManualReviewResponse) ToJsonString() string {
@@ -921,7 +1031,6 @@ func (r *ManualReviewResponse) FromJsonString(s string) error {
 }
 
 type OCRDetect struct {
-
 	// 识别到的详细信息
 	Item []*OCRItem `json:"Item,omitempty" name:"Item"`
 
@@ -930,7 +1039,6 @@ type OCRDetect struct {
 }
 
 type OCRItem struct {
-
 	// 检测到的文本坐标信息
 	TextPosition *Coordinate `json:"TextPosition,omitempty" name:"TextPosition"`
 
@@ -951,7 +1059,6 @@ type OCRItem struct {
 }
 
 type PhoneDetect struct {
-
 	// 恶意类型
 	// 100：正常
 	// 21000：综合
@@ -968,7 +1075,6 @@ type PhoneDetect struct {
 }
 
 type RiskDetails struct {
-
 	// 预留字段，暂时不使用
 	Keywords []*string `json:"Keywords,omitempty" name:"Keywords"`
 
@@ -983,7 +1089,6 @@ type RiskDetails struct {
 }
 
 type RrectF struct {
-
 	// logo横坐标
 	Cx *float64 `json:"Cx,omitempty" name:"Cx"`
 
@@ -1001,7 +1106,6 @@ type RrectF struct {
 }
 
 type Similar struct {
-
 	// 恶意类型
 	// 100：正常 
 	// 20001：政治
@@ -1019,7 +1123,6 @@ type Similar struct {
 }
 
 type TextData struct {
-
 	// 是否恶意 0：正常 1：可疑
 	EvilFlag *int64 `json:"EvilFlag,omitempty" name:"EvilFlag"`
 
@@ -1073,9 +1176,30 @@ type TextData struct {
 	Suggestion *string `json:"Suggestion,omitempty" name:"Suggestion"`
 }
 
+// Predefined struct for user
+type TextModerationRequestParams struct {
+	// 文本内容Base64编码。原文长度需小于15000字节，即5000个汉字以内。
+	Content *string `json:"Content,omitempty" name:"Content"`
+
+	// 设备相关信息
+	Device *Device `json:"Device,omitempty" name:"Device"`
+
+	// 用户相关信息
+	User *User `json:"User,omitempty" name:"User"`
+
+	// 该字段用于标识业务场景。您可以在内容安全控制台创建对应的ID，配置不同的内容审核策略，通过接口调用，默认不填为0，后端使用默认策略
+	BizType *uint64 `json:"BizType,omitempty" name:"BizType"`
+
+	// 数据ID，英文字母、下划线、-组成，不超过64个字符
+	DataId *string `json:"DataId,omitempty" name:"DataId"`
+
+	// 业务应用ID
+	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+}
+
 type TextModerationRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 文本内容Base64编码。原文长度需小于15000字节，即5000个汉字以内。
 	Content *string `json:"Content,omitempty" name:"Content"`
 
@@ -1119,19 +1243,21 @@ func (r *TextModerationRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type TextModerationResponseParams struct {
+	// 识别结果
+	Data *TextData `json:"Data,omitempty" name:"Data"`
+
+	// 业务返回码
+	BusinessCode *int64 `json:"BusinessCode,omitempty" name:"BusinessCode"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type TextModerationResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 识别结果
-		Data *TextData `json:"Data,omitempty" name:"Data"`
-
-		// 业务返回码
-		BusinessCode *int64 `json:"BusinessCode,omitempty" name:"BusinessCode"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *TextModerationResponseParams `json:"Response"`
 }
 
 func (r *TextModerationResponse) ToJsonString() string {
@@ -1146,7 +1272,6 @@ func (r *TextModerationResponse) FromJsonString(s string) error {
 }
 
 type TextOutputComm struct {
-
 	// 接入业务的唯一ID
 	AppID *int64 `json:"AppID,omitempty" name:"AppID"`
 
@@ -1161,7 +1286,6 @@ type TextOutputComm struct {
 }
 
 type TextOutputID struct {
-
 	// 接入业务的唯一ID
 	MsgID *string `json:"MsgID,omitempty" name:"MsgID"`
 
@@ -1170,7 +1294,6 @@ type TextOutputID struct {
 }
 
 type TextOutputRes struct {
-
 	// 操作人,信安处理人企业微信ID
 	Operator *string `json:"Operator,omitempty" name:"Operator"`
 
@@ -1186,7 +1309,6 @@ type TextOutputRes struct {
 }
 
 type TextSample struct {
-
 	// 处理错误码
 	Code *int64 `json:"Code,omitempty" name:"Code"`
 
@@ -1221,7 +1343,6 @@ type TextSample struct {
 }
 
 type User struct {
-
 	// 账号类别，"1-微信uin 2-QQ号 3-微信群uin 4-qq群号 5-微信openid 6-QQopenid 7-其它string"
 	AccountType *int64 `json:"AccountType,omitempty" name:"AccountType"`
 

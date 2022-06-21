@@ -21,7 +21,6 @@ import (
 )
 
 type AbstractRuntimeMC struct {
-
 	// 运行时id
 	RuntimeId *int64 `json:"RuntimeId,omitempty" name:"RuntimeId"`
 
@@ -47,9 +46,18 @@ type AbstractRuntimeMC struct {
 	ExpiredAt *int64 `json:"ExpiredAt,omitempty" name:"ExpiredAt"`
 }
 
+// Predefined struct for user
+type GetRuntimeMCRequestParams struct {
+	// 运行时id
+	RuntimeId *int64 `json:"RuntimeId,omitempty" name:"RuntimeId"`
+
+	// 运行时地域
+	Zone *string `json:"Zone,omitempty" name:"Zone"`
+}
+
 type GetRuntimeMCRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 运行时id
 	RuntimeId *int64 `json:"RuntimeId,omitempty" name:"RuntimeId"`
 
@@ -77,16 +85,18 @@ func (r *GetRuntimeMCRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type GetRuntimeMCResponseParams struct {
+	// 运行时详情
+	Runtime *RuntimeMC `json:"Runtime,omitempty" name:"Runtime"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type GetRuntimeMCResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 运行时详情
-		Runtime *RuntimeMC `json:"Runtime,omitempty" name:"Runtime"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *GetRuntimeMCResponseParams `json:"Response"`
 }
 
 func (r *GetRuntimeMCResponse) ToJsonString() string {
@@ -100,9 +110,30 @@ func (r *GetRuntimeMCResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type GetRuntimeResourceMonitorMetricMCRequestParams struct {
+	// 运行时id
+	RuntimeId *int64 `json:"RuntimeId,omitempty" name:"RuntimeId"`
+
+	// 起始时间
+	StartTime *int64 `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间
+	EndTime *int64 `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 指标类型：0:CPU, 1:MemUsageBytes, 2:K8sWorkloadNetworkReceiveBytesBw, 3:K8sWorkloadNetworkTransmitBytesBw
+	MetricType *int64 `json:"MetricType,omitempty" name:"MetricType"`
+
+	// 是否返回百分比数值，仅支持CPU，Memory
+	RateType *bool `json:"RateType,omitempty" name:"RateType"`
+
+	// 采样粒度：60(s), 300(s), 3600(s), 86400(s)
+	Interval *int64 `json:"Interval,omitempty" name:"Interval"`
+}
+
 type GetRuntimeResourceMonitorMetricMCRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 运行时id
 	RuntimeId *int64 `json:"RuntimeId,omitempty" name:"RuntimeId"`
 
@@ -146,19 +177,21 @@ func (r *GetRuntimeResourceMonitorMetricMCRequest) FromJsonString(s string) erro
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type GetRuntimeResourceMonitorMetricMCResponseParams struct {
+	// 指标名称，K8sWorkloadCpuCoreUsed，K8sWorkloadMemUsageBytes，K8sWorkloadNetworkReceiveBytesBw，K8sWorkloadNetworkTransmitBytesBw
+	MetricType *string `json:"MetricType,omitempty" name:"MetricType"`
+
+	// metric数值列表
+	Values []*MetricValueMC `json:"Values,omitempty" name:"Values"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type GetRuntimeResourceMonitorMetricMCResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 指标名称，K8sWorkloadCpuCoreUsed，K8sWorkloadMemUsageBytes，K8sWorkloadNetworkReceiveBytesBw，K8sWorkloadNetworkTransmitBytesBw
-		MetricType *string `json:"MetricType,omitempty" name:"MetricType"`
-
-		// metric数值列表
-		Values []*MetricValueMC `json:"Values,omitempty" name:"Values"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *GetRuntimeResourceMonitorMetricMCResponseParams `json:"Response"`
 }
 
 func (r *GetRuntimeResourceMonitorMetricMCResponse) ToJsonString() string {
@@ -172,8 +205,14 @@ func (r *GetRuntimeResourceMonitorMetricMCResponse) FromJsonString(s string) err
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ListDeployableRuntimesMCRequestParams struct {
+
+}
+
 type ListDeployableRuntimesMCRequest struct {
 	*tchttp.BaseRequest
+	
 }
 
 func (r *ListDeployableRuntimesMCRequest) ToJsonString() string {
@@ -188,22 +227,25 @@ func (r *ListDeployableRuntimesMCRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListDeployableRuntimesMCRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ListDeployableRuntimesMCResponseParams struct {
+	// 运行时列表
+	Runtimes []*AbstractRuntimeMC `json:"Runtimes,omitempty" name:"Runtimes"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type ListDeployableRuntimesMCResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 运行时列表
-		Runtimes []*AbstractRuntimeMC `json:"Runtimes,omitempty" name:"Runtimes"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *ListDeployableRuntimesMCResponseParams `json:"Response"`
 }
 
 func (r *ListDeployableRuntimesMCResponse) ToJsonString() string {
@@ -217,9 +259,33 @@ func (r *ListDeployableRuntimesMCResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ListRuntimeDeployedInstancesMCRequestParams struct {
+	// 运行时id
+	RuntimeId *int64 `json:"RuntimeId,omitempty" name:"RuntimeId"`
+
+	// 最大请求数量
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 请求偏移量
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 排序类型：1:创建时间排序, 2:更新时间排序（默认）
+	SortType *int64 `json:"SortType,omitempty" name:"SortType"`
+
+	// 排序方式：asc，desc（默认）
+	Sort *string `json:"Sort,omitempty" name:"Sort"`
+
+	// 运行时地域
+	Zone *string `json:"Zone,omitempty" name:"Zone"`
+
+	// 1:3.0版本新控制台传1；否则传0
+	ApiVersion *int64 `json:"ApiVersion,omitempty" name:"ApiVersion"`
+}
+
 type ListRuntimeDeployedInstancesMCRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 运行时id
 	RuntimeId *int64 `json:"RuntimeId,omitempty" name:"RuntimeId"`
 
@@ -267,19 +333,21 @@ func (r *ListRuntimeDeployedInstancesMCRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ListRuntimeDeployedInstancesMCResponseParams struct {
+	// 运行时所部属的应用实例列表
+	Instances []*RuntimeDeployedInstanceMC `json:"Instances,omitempty" name:"Instances"`
+
+	// 满足条件的记录总数，用于分页器
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type ListRuntimeDeployedInstancesMCResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 运行时所部属的应用实例列表
-		Instances []*RuntimeDeployedInstanceMC `json:"Instances,omitempty" name:"Instances"`
-
-		// 满足条件的记录总数，用于分页器
-		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *ListRuntimeDeployedInstancesMCResponseParams `json:"Response"`
 }
 
 func (r *ListRuntimeDeployedInstancesMCResponse) ToJsonString() string {
@@ -293,8 +361,14 @@ func (r *ListRuntimeDeployedInstancesMCResponse) FromJsonString(s string) error 
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ListRuntimesMCRequestParams struct {
+
+}
+
 type ListRuntimesMCRequest struct {
 	*tchttp.BaseRequest
+	
 }
 
 func (r *ListRuntimesMCRequest) ToJsonString() string {
@@ -309,22 +383,25 @@ func (r *ListRuntimesMCRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListRuntimesMCRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ListRuntimesMCResponseParams struct {
+	// 运行时列表
+	Runtimes []*RuntimeMC `json:"Runtimes,omitempty" name:"Runtimes"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type ListRuntimesMCResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 运行时列表
-		Runtimes []*RuntimeMC `json:"Runtimes,omitempty" name:"Runtimes"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *ListRuntimesMCResponseParams `json:"Response"`
 }
 
 func (r *ListRuntimesMCResponse) ToJsonString() string {
@@ -339,7 +416,6 @@ func (r *ListRuntimesMCResponse) FromJsonString(s string) error {
 }
 
 type MetricValueMC struct {
-
 	// 时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Time *int64 `json:"Time,omitempty" name:"Time"`
@@ -350,7 +426,6 @@ type MetricValueMC struct {
 }
 
 type RuntimeDeployedInstanceMC struct {
-
 	// 项目id
 	GroupId *int64 `json:"GroupId,omitempty" name:"GroupId"`
 
@@ -386,7 +461,6 @@ type RuntimeDeployedInstanceMC struct {
 }
 
 type RuntimeMC struct {
-
 	// 运行时id
 	RuntimeId *int64 `json:"RuntimeId,omitempty" name:"RuntimeId"`
 

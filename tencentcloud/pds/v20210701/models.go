@@ -20,9 +20,15 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+// Predefined struct for user
+type DescribeNewUserAcquisitionRequestParams struct {
+	// 用户信息
+	ServiceParams *UserInfos `json:"ServiceParams,omitempty" name:"ServiceParams"`
+}
+
 type DescribeNewUserAcquisitionRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 用户信息
 	ServiceParams *UserInfos `json:"ServiceParams,omitempty" name:"ServiceParams"`
 }
@@ -46,16 +52,18 @@ func (r *DescribeNewUserAcquisitionRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeNewUserAcquisitionResponseParams struct {
+	// 用户信誉分，1-5从低到高
+	ServiceRsp *Score `json:"ServiceRsp,omitempty" name:"ServiceRsp"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeNewUserAcquisitionResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 用户信誉分，1-5从低到高
-		ServiceRsp *Score `json:"ServiceRsp,omitempty" name:"ServiceRsp"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeNewUserAcquisitionResponseParams `json:"Response"`
 }
 
 func (r *DescribeNewUserAcquisitionResponse) ToJsonString() string {
@@ -69,9 +77,15 @@ func (r *DescribeNewUserAcquisitionResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeStockEstimationRequestParams struct {
+	// 用户信息
+	ServiceParams *UserInfos `json:"ServiceParams,omitempty" name:"ServiceParams"`
+}
+
 type DescribeStockEstimationRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 用户信息
 	ServiceParams *UserInfos `json:"ServiceParams,omitempty" name:"ServiceParams"`
 }
@@ -95,16 +109,18 @@ func (r *DescribeStockEstimationRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeStockEstimationResponseParams struct {
+	// 用户信誉分，1-5从低到高
+	ServiceRsp *Score `json:"ServiceRsp,omitempty" name:"ServiceRsp"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeStockEstimationResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 用户信誉分，1-5从低到高
-		ServiceRsp *Score `json:"ServiceRsp,omitempty" name:"ServiceRsp"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeStockEstimationResponseParams `json:"Response"`
 }
 
 func (r *DescribeStockEstimationResponse) ToJsonString() string {
@@ -119,13 +135,11 @@ func (r *DescribeStockEstimationResponse) FromJsonString(s string) error {
 }
 
 type Score struct {
-
 	// 信誉分，1-5从低到高
 	Star *int64 `json:"Star,omitempty" name:"Star"`
 }
 
 type UserInfos struct {
-
 	// 用户的手机号
 	PhoneNum *string `json:"PhoneNum,omitempty" name:"PhoneNum"`
 

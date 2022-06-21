@@ -21,7 +21,6 @@ import (
 )
 
 type AddSignStatus struct {
-
 	// 签名Id。
 	SignId *uint64 `json:"SignId,omitempty" name:"SignId"`
 
@@ -29,9 +28,60 @@ type AddSignStatus struct {
 	SignApplyId *uint64 `json:"SignApplyId,omitempty" name:"SignApplyId"`
 }
 
+// Predefined struct for user
+type AddSmsSignRequestParams struct {
+	// 签名名称。
+	// 注：不能重复申请已通过或待审核的签名。
+	SignName *string `json:"SignName,omitempty" name:"SignName"`
+
+	// 签名类型。其中每种类型后面标注了其可选的 DocumentType（证明类型）：
+	// 0：公司，可选 DocumentType 有（0，1）。
+	// 1：APP，可选 DocumentType 有（0，1，2，3，4） 。
+	// 2：网站，可选 DocumentType 有（0，1，2，3，5）。
+	// 3：公众号，可选 DocumentType 有（0，1，2，3，8）。
+	// 4：商标，可选 DocumentType 有（7）。
+	// 5：政府/机关事业单位/其他机构，可选 DocumentType 有（2，3）。
+	// 6：小程序，可选 DocumentType 有（0，1，2，3，6）。
+	// 注：必须按照对应关系选择证明类型，否则会审核失败。
+	SignType *uint64 `json:"SignType,omitempty" name:"SignType"`
+
+	// 证明类型：
+	// 0：三证合一。
+	// 1：企业营业执照。
+	// 2：组织机构代码证书。
+	// 3：社会信用代码证书。
+	// 4：应用后台管理截图（个人开发APP）。
+	// 5：网站备案后台截图（个人开发网站）。
+	// 6：小程序设置页面截图（个人认证小程序）。
+	// 7：商标注册书。
+	// 8：公众号设置页面截图（个人认证公众号）。
+	DocumentType *uint64 `json:"DocumentType,omitempty" name:"DocumentType"`
+
+	// 是否国际/港澳台短信：
+	// 0：表示国内短信。
+	// 1：表示国际/港澳台短信。
+	International *uint64 `json:"International,omitempty" name:"International"`
+
+	// 签名用途：
+	// 0：自用。
+	// 1：他用。
+	UsedMethod *uint64 `json:"UsedMethod,omitempty" name:"UsedMethod"`
+
+	// 签名对应的资质证明图片需先进行 base64 编码格式转换，将转换后的字符串去掉前缀`data:image/jpeg;base64,`再赋值给该参数。
+	ProofImage *string `json:"ProofImage,omitempty" name:"ProofImage"`
+
+	// 委托授权证明。选择 UsedMethod 为他用之后需要提交委托的授权证明。
+	// 图片需先进行 base64 编码格式转换，将转换后的字符串去掉前缀`data:image/jpeg;base64,`再赋值给该参数。
+	// 注：只有 UsedMethod 在选择为 1（他用）时，这个字段才会生效。
+	CommissionImage *string `json:"CommissionImage,omitempty" name:"CommissionImage"`
+
+	// 签名的申请备注。
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+}
+
 type AddSmsSignRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 签名名称。
 	// 注：不能重复申请已通过或待审核的签名。
 	SignName *string `json:"SignName,omitempty" name:"SignName"`
@@ -107,16 +157,18 @@ func (r *AddSmsSignRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type AddSmsSignResponseParams struct {
+	// 添加签名响应
+	AddSignStatus *AddSignStatus `json:"AddSignStatus,omitempty" name:"AddSignStatus"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type AddSmsSignResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 添加签名响应
-		AddSignStatus *AddSignStatus `json:"AddSignStatus,omitempty" name:"AddSignStatus"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *AddSmsSignResponseParams `json:"Response"`
 }
 
 func (r *AddSmsSignResponse) ToJsonString() string {
@@ -130,9 +182,29 @@ func (r *AddSmsSignResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type AddSmsTemplateRequestParams struct {
+	// 模板名称。
+	TemplateName *string `json:"TemplateName,omitempty" name:"TemplateName"`
+
+	// 模板内容。
+	TemplateContent *string `json:"TemplateContent,omitempty" name:"TemplateContent"`
+
+	// 短信类型，0表示普通短信, 1表示营销短信。
+	SmsType *uint64 `json:"SmsType,omitempty" name:"SmsType"`
+
+	// 是否国际/港澳台短信：
+	// 0：表示国内短信。
+	// 1：表示国际/港澳台短信。
+	International *uint64 `json:"International,omitempty" name:"International"`
+
+	// 模板备注，例如申请原因，使用场景等。
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+}
+
 type AddSmsTemplateRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 模板名称。
 	TemplateName *string `json:"TemplateName,omitempty" name:"TemplateName"`
 
@@ -174,16 +246,18 @@ func (r *AddSmsTemplateRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type AddSmsTemplateResponseParams struct {
+	// 添加短信模板响应包体
+	AddTemplateStatus *AddTemplateStatus `json:"AddTemplateStatus,omitempty" name:"AddTemplateStatus"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type AddSmsTemplateResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 添加短信模板响应包体
-		AddTemplateStatus *AddTemplateStatus `json:"AddTemplateStatus,omitempty" name:"AddTemplateStatus"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *AddSmsTemplateResponseParams `json:"Response"`
 }
 
 func (r *AddSmsTemplateResponse) ToJsonString() string {
@@ -198,13 +272,11 @@ func (r *AddSmsTemplateResponse) FromJsonString(s string) error {
 }
 
 type AddTemplateStatus struct {
-
 	// 模板参数
 	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
 }
 
 type CallbackStatusStatistics struct {
-
 	// 短信回执量统计。
 	CallbackCount *uint64 `json:"CallbackCount,omitempty" name:"CallbackCount"`
 
@@ -233,9 +305,30 @@ type CallbackStatusStatistics struct {
 	FrequencyLimitCount *uint64 `json:"FrequencyLimitCount,omitempty" name:"FrequencyLimitCount"`
 }
 
+// Predefined struct for user
+type CallbackStatusStatisticsRequestParams struct {
+	// 开始时间，yyyymmddhh 需要拉取的起始时间，精确到小时。
+	StartDateTime *uint64 `json:"StartDateTime,omitempty" name:"StartDateTime"`
+
+	// 结束时间，yyyymmddhh 需要拉取的截止时间，精确到小时。
+	// 注：EndDataTime 必须大于 StartDateTime。
+	EndDataTime *uint64 `json:"EndDataTime,omitempty" name:"EndDataTime"`
+
+	// 短信SdkAppid在 [短信控制台](https://console.cloud.tencent.com/smsv2) 添加应用后生成的实际SdkAppid，示例如1400006666。
+	SmsSdkAppid *string `json:"SmsSdkAppid,omitempty" name:"SmsSdkAppid"`
+
+	// 最大上限。
+	// 注：目前固定设置为0。
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移量。
+	// 注：目前固定设置为0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+}
+
 type CallbackStatusStatisticsRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 开始时间，yyyymmddhh 需要拉取的起始时间，精确到小时。
 	StartDateTime *uint64 `json:"StartDateTime,omitempty" name:"StartDateTime"`
 
@@ -278,16 +371,18 @@ func (r *CallbackStatusStatisticsRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CallbackStatusStatisticsResponseParams struct {
+	// 回执数据统计响应包体。
+	CallbackStatusStatistics *CallbackStatusStatistics `json:"CallbackStatusStatistics,omitempty" name:"CallbackStatusStatistics"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CallbackStatusStatisticsResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 回执数据统计响应包体。
-		CallbackStatusStatistics *CallbackStatusStatistics `json:"CallbackStatusStatistics,omitempty" name:"CallbackStatusStatistics"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CallbackStatusStatisticsResponseParams `json:"Response"`
 }
 
 func (r *CallbackStatusStatisticsResponse) ToJsonString() string {
@@ -302,7 +397,6 @@ func (r *CallbackStatusStatisticsResponse) FromJsonString(s string) error {
 }
 
 type DeleteSignStatus struct {
-
 	// 删除状态信息。
 	DeleteStatus *string `json:"DeleteStatus,omitempty" name:"DeleteStatus"`
 
@@ -310,9 +404,15 @@ type DeleteSignStatus struct {
 	DeleteTime *uint64 `json:"DeleteTime,omitempty" name:"DeleteTime"`
 }
 
+// Predefined struct for user
+type DeleteSmsSignRequestParams struct {
+	// 待删除的签名 ID。
+	SignId *uint64 `json:"SignId,omitempty" name:"SignId"`
+}
+
 type DeleteSmsSignRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 待删除的签名 ID。
 	SignId *uint64 `json:"SignId,omitempty" name:"SignId"`
 }
@@ -336,16 +436,18 @@ func (r *DeleteSmsSignRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteSmsSignResponseParams struct {
+	// 删除签名响应
+	DeleteSignStatus *DeleteSignStatus `json:"DeleteSignStatus,omitempty" name:"DeleteSignStatus"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DeleteSmsSignResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 删除签名响应
-		DeleteSignStatus *DeleteSignStatus `json:"DeleteSignStatus,omitempty" name:"DeleteSignStatus"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DeleteSmsSignResponseParams `json:"Response"`
 }
 
 func (r *DeleteSmsSignResponse) ToJsonString() string {
@@ -359,9 +461,15 @@ func (r *DeleteSmsSignResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteSmsTemplateRequestParams struct {
+	// 待删除的模板 ID。
+	TemplateId *uint64 `json:"TemplateId,omitempty" name:"TemplateId"`
+}
+
 type DeleteSmsTemplateRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 待删除的模板 ID。
 	TemplateId *uint64 `json:"TemplateId,omitempty" name:"TemplateId"`
 }
@@ -385,16 +493,18 @@ func (r *DeleteSmsTemplateRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteSmsTemplateResponseParams struct {
+	// 删除模板响应
+	DeleteTemplateStatus *DeleteTemplateStatus `json:"DeleteTemplateStatus,omitempty" name:"DeleteTemplateStatus"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DeleteSmsTemplateResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 删除模板响应
-		DeleteTemplateStatus *DeleteTemplateStatus `json:"DeleteTemplateStatus,omitempty" name:"DeleteTemplateStatus"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DeleteSmsTemplateResponseParams `json:"Response"`
 }
 
 func (r *DeleteSmsTemplateResponse) ToJsonString() string {
@@ -409,7 +519,6 @@ func (r *DeleteSmsTemplateResponse) FromJsonString(s string) error {
 }
 
 type DeleteTemplateStatus struct {
-
 	// 删除状态信息。
 	DeleteStatus *string `json:"DeleteStatus,omitempty" name:"DeleteStatus"`
 
@@ -418,7 +527,6 @@ type DeleteTemplateStatus struct {
 }
 
 type DescribeSignListStatus struct {
-
 	// 签名Id
 	SignId *uint64 `json:"SignId,omitempty" name:"SignId"`
 
@@ -443,9 +551,20 @@ type DescribeSignListStatus struct {
 	CreateTime *uint64 `json:"CreateTime,omitempty" name:"CreateTime"`
 }
 
+// Predefined struct for user
+type DescribeSmsSignListRequestParams struct {
+	// 签名 ID 数组。
+	SignIdSet []*uint64 `json:"SignIdSet,omitempty" name:"SignIdSet"`
+
+	// 是否国际/港澳台短信：
+	// 0：表示国内短信。
+	// 1：表示国际/港澳台短信。
+	International *uint64 `json:"International,omitempty" name:"International"`
+}
+
 type DescribeSmsSignListRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 签名 ID 数组。
 	SignIdSet []*uint64 `json:"SignIdSet,omitempty" name:"SignIdSet"`
 
@@ -475,16 +594,18 @@ func (r *DescribeSmsSignListRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeSmsSignListResponseParams struct {
+	// 获取签名信息响应
+	DescribeSignListStatusSet []*DescribeSignListStatus `json:"DescribeSignListStatusSet,omitempty" name:"DescribeSignListStatusSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeSmsSignListResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 获取签名信息响应
-		DescribeSignListStatusSet []*DescribeSignListStatus `json:"DescribeSignListStatusSet,omitempty" name:"DescribeSignListStatusSet"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeSmsSignListResponseParams `json:"Response"`
 }
 
 func (r *DescribeSmsSignListResponse) ToJsonString() string {
@@ -498,9 +619,20 @@ func (r *DescribeSmsSignListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeSmsTemplateListRequestParams struct {
+	// 模板 ID 数组。
+	TemplateIdSet []*uint64 `json:"TemplateIdSet,omitempty" name:"TemplateIdSet"`
+
+	// 是否国际/港澳台短信：
+	// 0：表示国内短信。
+	// 1：表示国际/港澳台短信。
+	International *uint64 `json:"International,omitempty" name:"International"`
+}
+
 type DescribeSmsTemplateListRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 模板 ID 数组。
 	TemplateIdSet []*uint64 `json:"TemplateIdSet,omitempty" name:"TemplateIdSet"`
 
@@ -530,16 +662,18 @@ func (r *DescribeSmsTemplateListRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeSmsTemplateListResponseParams struct {
+	// 获取短信模板信息响应
+	DescribeTemplateStatusSet []*DescribeTemplateListStatus `json:"DescribeTemplateStatusSet,omitempty" name:"DescribeTemplateStatusSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeSmsTemplateListResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 获取短信模板信息响应
-		DescribeTemplateStatusSet []*DescribeTemplateListStatus `json:"DescribeTemplateStatusSet,omitempty" name:"DescribeTemplateStatusSet"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeSmsTemplateListResponseParams `json:"Response"`
 }
 
 func (r *DescribeSmsTemplateListResponse) ToJsonString() string {
@@ -554,7 +688,6 @@ func (r *DescribeSmsTemplateListResponse) FromJsonString(s string) error {
 }
 
 type DescribeTemplateListStatus struct {
-
 	// 模板Id
 	TemplateId *uint64 `json:"TemplateId,omitempty" name:"TemplateId"`
 
@@ -580,7 +713,6 @@ type DescribeTemplateListStatus struct {
 }
 
 type ModifySignStatus struct {
-
 	// 签名Id
 	SignId *uint64 `json:"SignId,omitempty" name:"SignId"`
 
@@ -588,9 +720,63 @@ type ModifySignStatus struct {
 	SignApplyId *string `json:"SignApplyId,omitempty" name:"SignApplyId"`
 }
 
+// Predefined struct for user
+type ModifySmsSignRequestParams struct {
+	// 待修改的签名 ID。
+	SignId *uint64 `json:"SignId,omitempty" name:"SignId"`
+
+	// 签名名称。
+	SignName *string `json:"SignName,omitempty" name:"SignName"`
+
+	// 签名类型。其中每种类型后面标注了其可选的 DocumentType（证明类型）：
+	// 0：公司，可选 DocumentType 有（0，1）。
+	// 1：APP，可选 DocumentType 有（0，1，2，3，4） 。
+	// 2：网站，可选 DocumentType 有（0，1，2，3，5）。
+	// 3：公众号，可选 DocumentType 有（0，1，2，3，8）。
+	// 4：商标，可选 DocumentType 有（7）。
+	// 5：政府/机关事业单位/其他机构，可选 DocumentType 有（2，3）。
+	// 6：小程序，可选 DocumentType 有（0，1，2，3，6）。
+	// 注：必须按照对应关系选择证明类型，否则会审核失败。
+	SignType *uint64 `json:"SignType,omitempty" name:"SignType"`
+
+	// 证明类型：
+	// 0：三证合一。
+	// 1：企业营业执照。
+	// 2：组织机构代码证书。
+	// 3：社会信用代码证书。
+	// 4：应用后台管理截图（个人开发APP）。
+	// 5：网站备案后台截图（个人开发网站）。
+	// 6：小程序设置页面截图（个人认证小程序）。
+	// 7：商标注册书。
+	// 8：公众号设置页面截图（个人认证公众号）。
+	DocumentType *uint64 `json:"DocumentType,omitempty" name:"DocumentType"`
+
+	// 是否国际/港澳台短信：
+	// 0：表示国内短信。
+	// 1：表示国际/港澳台短信。
+	// 注：需要和待修改签名International值保持一致，该参数不能直接修改国内签名到国际签名。
+	International *uint64 `json:"International,omitempty" name:"International"`
+
+	// 签名用途：
+	// 0：自用。
+	// 1：他用。
+	UsedMethod *uint64 `json:"UsedMethod,omitempty" name:"UsedMethod"`
+
+	// 签名对应的资质证明图片需先进行 base64 编码格式转换，将转换后的字符串去掉前缀`data:image/jpeg;base64,`再赋值给该参数。
+	ProofImage *string `json:"ProofImage,omitempty" name:"ProofImage"`
+
+	// 委托授权证明。选择 UsedMethod 为他用之后需要提交委托的授权证明。
+	// 图片需先进行 base64 编码格式转换，将转换后的字符串去掉前缀`data:image/jpeg;base64,`再赋值给该参数。
+	// 注：只有 UsedMethod 在选择为 1（他用）时，这个字段才会生效。
+	CommissionImage *string `json:"CommissionImage,omitempty" name:"CommissionImage"`
+
+	// 签名的申请备注。
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+}
+
 type ModifySmsSignRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 待修改的签名 ID。
 	SignId *uint64 `json:"SignId,omitempty" name:"SignId"`
 
@@ -670,16 +856,18 @@ func (r *ModifySmsSignRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifySmsSignResponseParams struct {
+	// 修改签名响应
+	ModifySignStatus *ModifySignStatus `json:"ModifySignStatus,omitempty" name:"ModifySignStatus"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type ModifySmsSignResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 修改签名响应
-		ModifySignStatus *ModifySignStatus `json:"ModifySignStatus,omitempty" name:"ModifySignStatus"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *ModifySmsSignResponseParams `json:"Response"`
 }
 
 func (r *ModifySmsSignResponse) ToJsonString() string {
@@ -693,9 +881,32 @@ func (r *ModifySmsSignResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifySmsTemplateRequestParams struct {
+	// 待修改的模板的模板 ID。
+	TemplateId *uint64 `json:"TemplateId,omitempty" name:"TemplateId"`
+
+	// 新的模板名称。
+	TemplateName *string `json:"TemplateName,omitempty" name:"TemplateName"`
+
+	// 新的模板内容。
+	TemplateContent *string `json:"TemplateContent,omitempty" name:"TemplateContent"`
+
+	// 短信类型，0表示普通短信, 1表示营销短信。
+	SmsType *uint64 `json:"SmsType,omitempty" name:"SmsType"`
+
+	// 是否国际/港澳台短信：
+	// 0：表示国内短信。
+	// 1：表示国际/港澳台短信。
+	International *uint64 `json:"International,omitempty" name:"International"`
+
+	// 模板备注，例如申请原因，使用场景等。
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+}
+
 type ModifySmsTemplateRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 待修改的模板的模板 ID。
 	TemplateId *uint64 `json:"TemplateId,omitempty" name:"TemplateId"`
 
@@ -741,16 +952,18 @@ func (r *ModifySmsTemplateRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifySmsTemplateResponseParams struct {
+	// 修改模板参数响应
+	ModifyTemplateStatus *ModifyTemplateStatus `json:"ModifyTemplateStatus,omitempty" name:"ModifyTemplateStatus"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type ModifySmsTemplateResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 修改模板参数响应
-		ModifyTemplateStatus *ModifyTemplateStatus `json:"ModifyTemplateStatus,omitempty" name:"ModifyTemplateStatus"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *ModifySmsTemplateResponseParams `json:"Response"`
 }
 
 func (r *ModifySmsTemplateResponse) ToJsonString() string {
@@ -765,13 +978,11 @@ func (r *ModifySmsTemplateResponse) FromJsonString(s string) error {
 }
 
 type ModifyTemplateStatus struct {
-
 	// 模板参数
 	TemplateId *uint64 `json:"TemplateId,omitempty" name:"TemplateId"`
 }
 
 type PullSmsReplyStatus struct {
-
 	// 短信码号扩展号，默认未开通，如需开通请联系 [sms helper](https://cloud.tencent.com/document/product/382/3773)。
 	ExtendCode *string `json:"ExtendCode,omitempty" name:"ExtendCode"`
 
@@ -794,9 +1005,32 @@ type PullSmsReplyStatus struct {
 	ReplyUnixTime *uint64 `json:"ReplyUnixTime,omitempty" name:"ReplyUnixTime"`
 }
 
+// Predefined struct for user
+type PullSmsReplyStatusByPhoneNumberRequestParams struct {
+	// 拉取起始时间，UNIX 时间戳（时间：秒）。
+	// 注：最大可拉取当前时期7天前的数据。
+	SendDateTime *uint64 `json:"SendDateTime,omitempty" name:"SendDateTime"`
+
+	// 偏移量。
+	// 注：目前固定设置为0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 拉取最大条数，最多 100。
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 下发目的手机号码，依据 e.164 标准为：+[国家（或地区）码][手机号] ，示例如：+8613711112222， 其中前面有一个+号 ，86为国家码，13711112222为手机号。
+	PhoneNumber *string `json:"PhoneNumber,omitempty" name:"PhoneNumber"`
+
+	// 短信SdkAppid在 [短信控制台](https://console.cloud.tencent.com/smsv2) 添加应用后生成的实际SdkAppid，例如1400006666。
+	SmsSdkAppid *string `json:"SmsSdkAppid,omitempty" name:"SmsSdkAppid"`
+
+	// 拉取截止时间，UNIX 时间戳（时间：秒）。
+	EndDateTime *uint64 `json:"EndDateTime,omitempty" name:"EndDateTime"`
+}
+
 type PullSmsReplyStatusByPhoneNumberRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 拉取起始时间，UNIX 时间戳（时间：秒）。
 	// 注：最大可拉取当前时期7天前的数据。
 	SendDateTime *uint64 `json:"SendDateTime,omitempty" name:"SendDateTime"`
@@ -842,16 +1076,18 @@ func (r *PullSmsReplyStatusByPhoneNumberRequest) FromJsonString(s string) error 
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type PullSmsReplyStatusByPhoneNumberResponseParams struct {
+	// 回复状态响应集合。
+	PullSmsReplyStatusSet []*PullSmsReplyStatus `json:"PullSmsReplyStatusSet,omitempty" name:"PullSmsReplyStatusSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type PullSmsReplyStatusByPhoneNumberResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 回复状态响应集合。
-		PullSmsReplyStatusSet []*PullSmsReplyStatus `json:"PullSmsReplyStatusSet,omitempty" name:"PullSmsReplyStatusSet"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *PullSmsReplyStatusByPhoneNumberResponseParams `json:"Response"`
 }
 
 func (r *PullSmsReplyStatusByPhoneNumberResponse) ToJsonString() string {
@@ -865,9 +1101,18 @@ func (r *PullSmsReplyStatusByPhoneNumberResponse) FromJsonString(s string) error
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type PullSmsReplyStatusRequestParams struct {
+	// 拉取最大条数，最多100条。
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 短信 SdkAppid 在 [短信控制台](https://console.cloud.tencent.com/smsv2) 添加应用后生成的实际 SdkAppid，例如1400006666。
+	SmsSdkAppid *string `json:"SmsSdkAppid,omitempty" name:"SmsSdkAppid"`
+}
+
 type PullSmsReplyStatusRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 拉取最大条数，最多100条。
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
@@ -895,16 +1140,18 @@ func (r *PullSmsReplyStatusRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type PullSmsReplyStatusResponseParams struct {
+	// 回复状态响应集合。
+	PullSmsReplyStatusSet []*PullSmsReplyStatus `json:"PullSmsReplyStatusSet,omitempty" name:"PullSmsReplyStatusSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type PullSmsReplyStatusResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 回复状态响应集合。
-		PullSmsReplyStatusSet []*PullSmsReplyStatus `json:"PullSmsReplyStatusSet,omitempty" name:"PullSmsReplyStatusSet"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *PullSmsReplyStatusResponseParams `json:"Response"`
 }
 
 func (r *PullSmsReplyStatusResponse) ToJsonString() string {
@@ -919,7 +1166,6 @@ func (r *PullSmsReplyStatusResponse) FromJsonString(s string) error {
 }
 
 type PullSmsSendStatus struct {
-
 	// 用户实际接收到短信的时间。
 	UserReceiveTime *string `json:"UserReceiveTime,omitempty" name:"UserReceiveTime"`
 
@@ -945,9 +1191,32 @@ type PullSmsSendStatus struct {
 	Description *string `json:"Description,omitempty" name:"Description"`
 }
 
+// Predefined struct for user
+type PullSmsSendStatusByPhoneNumberRequestParams struct {
+	// 拉取起始时间，UNIX 时间戳（时间：秒）。
+	// 注：最大可拉取当前时期7天前的数据。
+	SendDateTime *uint64 `json:"SendDateTime,omitempty" name:"SendDateTime"`
+
+	// 偏移量。
+	// 注：目前固定设置为0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 拉取最大条数，最多 100。
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 下发目的手机号码，依据 e.164 标准为：+[国家（或地区）码][手机号] ，示例如：+8613711112222， 其中前面有一个+号 ，86为国家码，13711112222为手机号。
+	PhoneNumber *string `json:"PhoneNumber,omitempty" name:"PhoneNumber"`
+
+	// 短信SdkAppid在 [短信控制台](https://console.cloud.tencent.com/smsv2) 添加应用后生成的实际SdkAppid，例如1400006666。
+	SmsSdkAppid *string `json:"SmsSdkAppid,omitempty" name:"SmsSdkAppid"`
+
+	// 拉取截止时间，UNIX 时间戳（时间：秒）。
+	EndDateTime *uint64 `json:"EndDateTime,omitempty" name:"EndDateTime"`
+}
+
 type PullSmsSendStatusByPhoneNumberRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 拉取起始时间，UNIX 时间戳（时间：秒）。
 	// 注：最大可拉取当前时期7天前的数据。
 	SendDateTime *uint64 `json:"SendDateTime,omitempty" name:"SendDateTime"`
@@ -993,16 +1262,18 @@ func (r *PullSmsSendStatusByPhoneNumberRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type PullSmsSendStatusByPhoneNumberResponseParams struct {
+	// 下发状态响应集合。
+	PullSmsSendStatusSet []*PullSmsSendStatus `json:"PullSmsSendStatusSet,omitempty" name:"PullSmsSendStatusSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type PullSmsSendStatusByPhoneNumberResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 下发状态响应集合。
-		PullSmsSendStatusSet []*PullSmsSendStatus `json:"PullSmsSendStatusSet,omitempty" name:"PullSmsSendStatusSet"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *PullSmsSendStatusByPhoneNumberResponseParams `json:"Response"`
 }
 
 func (r *PullSmsSendStatusByPhoneNumberResponse) ToJsonString() string {
@@ -1016,9 +1287,18 @@ func (r *PullSmsSendStatusByPhoneNumberResponse) FromJsonString(s string) error 
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type PullSmsSendStatusRequestParams struct {
+	// 拉取最大条数，最多100条。
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 短信SdkAppid在 [短信控制台](https://console.cloud.tencent.com/smsv2) 添加应用后生成的实际SdkAppid，例如1400006666。
+	SmsSdkAppid *string `json:"SmsSdkAppid,omitempty" name:"SmsSdkAppid"`
+}
+
 type PullSmsSendStatusRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 拉取最大条数，最多100条。
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
@@ -1046,16 +1326,18 @@ func (r *PullSmsSendStatusRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type PullSmsSendStatusResponseParams struct {
+	// 下发状态响应集合。
+	PullSmsSendStatusSet []*PullSmsSendStatus `json:"PullSmsSendStatusSet,omitempty" name:"PullSmsSendStatusSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type PullSmsSendStatusResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 下发状态响应集合。
-		PullSmsSendStatusSet []*PullSmsSendStatus `json:"PullSmsSendStatusSet,omitempty" name:"PullSmsSendStatusSet"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *PullSmsSendStatusResponseParams `json:"Response"`
 }
 
 func (r *PullSmsSendStatusResponse) ToJsonString() string {
@@ -1069,9 +1351,37 @@ func (r *PullSmsSendStatusResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type SendSmsRequestParams struct {
+	// 下发手机号码，采用 e.164 标准，格式为+[国家或地区码][手机号]，单次请求最多支持200个手机号且要求全为境内手机号或全为境外手机号。
+	// 例如：+8613711112222， 其中前面有一个+号 ，86为国家码，13711112222为手机号。
+	PhoneNumberSet []*string `json:"PhoneNumberSet,omitempty" name:"PhoneNumberSet"`
+
+	// 模板 ID，必须填写已审核通过的模板 ID。模板ID可登录 [短信控制台](https://console.cloud.tencent.com/smsv2) 查看，若向境外手机号发送短信，仅支持使用国际/港澳台短信模板。
+	TemplateID *string `json:"TemplateID,omitempty" name:"TemplateID"`
+
+	// 短信SdkAppid在 [短信控制台](https://console.cloud.tencent.com/smsv2)  添加应用后生成的实际SdkAppid，示例如1400006666。
+	SmsSdkAppid *string `json:"SmsSdkAppid,omitempty" name:"SmsSdkAppid"`
+
+	// 短信签名内容，使用 UTF-8 编码，必须填写已审核通过的签名，签名信息可登录 [短信控制台](https://console.cloud.tencent.com/smsv2)  查看。注：国内短信为必填参数。
+	Sign *string `json:"Sign,omitempty" name:"Sign"`
+
+	// 模板参数，若无模板参数，则设置为空。
+	TemplateParamSet []*string `json:"TemplateParamSet,omitempty" name:"TemplateParamSet"`
+
+	// 短信码号扩展号，默认未开通，如需开通请联系 [sms helper](https://cloud.tencent.com/document/product/382/3773)。
+	ExtendCode *string `json:"ExtendCode,omitempty" name:"ExtendCode"`
+
+	// 用户的 session 内容，可以携带用户侧 ID 等上下文信息，server 会原样返回。
+	SessionContext *string `json:"SessionContext,omitempty" name:"SessionContext"`
+
+	// 国内短信无senderid，无需填写该项；若需开通国际/港澳台短信senderid，请联系smshelper。
+	SenderId *string `json:"SenderId,omitempty" name:"SenderId"`
+}
+
 type SendSmsRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 下发手机号码，采用 e.164 标准，格式为+[国家或地区码][手机号]，单次请求最多支持200个手机号且要求全为境内手机号或全为境外手机号。
 	// 例如：+8613711112222， 其中前面有一个+号 ，86为国家码，13711112222为手机号。
 	PhoneNumberSet []*string `json:"PhoneNumberSet,omitempty" name:"PhoneNumberSet"`
@@ -1124,16 +1434,18 @@ func (r *SendSmsRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type SendSmsResponseParams struct {
+	// 短信发送状态。
+	SendStatusSet []*SendStatus `json:"SendStatusSet,omitempty" name:"SendStatusSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type SendSmsResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 短信发送状态。
-		SendStatusSet []*SendStatus `json:"SendStatusSet,omitempty" name:"SendStatusSet"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *SendSmsResponseParams `json:"Response"`
 }
 
 func (r *SendSmsResponse) ToJsonString() string {
@@ -1148,7 +1460,6 @@ func (r *SendSmsResponse) FromJsonString(s string) error {
 }
 
 type SendStatus struct {
-
 	// 发送流水号。
 	SerialNo *string `json:"SerialNo,omitempty" name:"SerialNo"`
 
@@ -1172,7 +1483,6 @@ type SendStatus struct {
 }
 
 type SendStatusStatistics struct {
-
 	// 短信计费条数统计，例如提交成功量为100条，其中有20条是长短信（长度为80字）被拆分成2条，则计费条数为： ```80 * 1 + 20 * 2 = 120``` 条。
 	FeeCount *uint64 `json:"FeeCount,omitempty" name:"FeeCount"`
 
@@ -1183,9 +1493,30 @@ type SendStatusStatistics struct {
 	RequestSuccessCount *uint64 `json:"RequestSuccessCount,omitempty" name:"RequestSuccessCount"`
 }
 
+// Predefined struct for user
+type SendStatusStatisticsRequestParams struct {
+	// 拉取起始时间，yyyymmddhh 需要拉取的起始时间，精确到小时。
+	StartDateTime *uint64 `json:"StartDateTime,omitempty" name:"StartDateTime"`
+
+	// 结束时间，yyyymmddhh 需要拉取的截止时间，精确到小时
+	// 注：EndDataTime 必须大于 StartDateTime。
+	EndDataTime *uint64 `json:"EndDataTime,omitempty" name:"EndDataTime"`
+
+	// 短信SdkAppid在 [短信控制台](https://console.cloud.tencent.com/smsv2) 添加应用后生成的实际SdkAppid，示例如1400006666。
+	SmsSdkAppid *string `json:"SmsSdkAppid,omitempty" name:"SmsSdkAppid"`
+
+	// 最大上限。
+	// 注：目前固定设置为0。
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移量。
+	// 注：目前固定设置为0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+}
+
 type SendStatusStatisticsRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 拉取起始时间，yyyymmddhh 需要拉取的起始时间，精确到小时。
 	StartDateTime *uint64 `json:"StartDateTime,omitempty" name:"StartDateTime"`
 
@@ -1228,16 +1559,18 @@ func (r *SendStatusStatisticsRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type SendStatusStatisticsResponseParams struct {
+	// 发送数据统计响应包体。
+	SendStatusStatistics *SendStatusStatistics `json:"SendStatusStatistics,omitempty" name:"SendStatusStatistics"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type SendStatusStatisticsResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 发送数据统计响应包体。
-		SendStatusStatistics *SendStatusStatistics `json:"SendStatusStatistics,omitempty" name:"SendStatusStatistics"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *SendStatusStatisticsResponseParams `json:"Response"`
 }
 
 func (r *SendStatusStatisticsResponse) ToJsonString() string {
@@ -1252,7 +1585,6 @@ func (r *SendStatusStatisticsResponse) FromJsonString(s string) error {
 }
 
 type SmsPackagesStatistics struct {
-
 	// 套餐包创建时间，标准时间，例如：2019-10-08 17:18:37。
 	PackageCreateTime *string `json:"PackageCreateTime,omitempty" name:"PackageCreateTime"`
 
@@ -1284,9 +1616,22 @@ type SmsPackagesStatistics struct {
 	CurrentUsage *uint64 `json:"CurrentUsage,omitempty" name:"CurrentUsage"`
 }
 
+// Predefined struct for user
+type SmsPackagesStatisticsRequestParams struct {
+	// 短信SdkAppid在 [短信控制台](https://console.cloud.tencent.com/smsv2) 添加应用后生成的实际SdkAppid，示例如1400006666。
+	SmsSdkAppid *string `json:"SmsSdkAppid,omitempty" name:"SmsSdkAppid"`
+
+	// 最大上限(需要拉取的套餐包个数)。
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移量。
+	// 注：目前固定设置为0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+}
+
 type SmsPackagesStatisticsRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 短信SdkAppid在 [短信控制台](https://console.cloud.tencent.com/smsv2) 添加应用后生成的实际SdkAppid，示例如1400006666。
 	SmsSdkAppid *string `json:"SmsSdkAppid,omitempty" name:"SmsSdkAppid"`
 
@@ -1319,16 +1664,18 @@ func (r *SmsPackagesStatisticsRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type SmsPackagesStatisticsResponseParams struct {
+	// 发送数据统计响应包体。
+	SmsPackagesStatisticsSet []*SmsPackagesStatistics `json:"SmsPackagesStatisticsSet,omitempty" name:"SmsPackagesStatisticsSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type SmsPackagesStatisticsResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 发送数据统计响应包体。
-		SmsPackagesStatisticsSet []*SmsPackagesStatistics `json:"SmsPackagesStatisticsSet,omitempty" name:"SmsPackagesStatisticsSet"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *SmsPackagesStatisticsResponseParams `json:"Response"`
 }
 
 func (r *SmsPackagesStatisticsResponse) ToJsonString() string {

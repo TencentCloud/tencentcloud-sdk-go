@@ -21,7 +21,6 @@ import (
 )
 
 type AccountInfo struct {
-
 	// 用户 Id。
 	UserId *string `json:"UserId,omitempty" name:"UserId"`
 
@@ -38,7 +37,6 @@ type AccountInfo struct {
 }
 
 type AddMemberInfo struct {
-
 	// 团队成员 ID。
 	MemberId *string `json:"MemberId,omitempty" name:"MemberId"`
 
@@ -51,9 +49,24 @@ type AddMemberInfo struct {
 	Role *string `json:"Role,omitempty" name:"Role"`
 }
 
+// Predefined struct for user
+type AddTeamMemberRequestParams struct {
+	// 平台 Id，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
+	Platform *string `json:"Platform,omitempty" name:"Platform"`
+
+	// 团队 ID。
+	TeamId *string `json:"TeamId,omitempty" name:"TeamId"`
+
+	// 要添加的成员列表，一次最多添加30个成员。
+	TeamMembers []*AddMemberInfo `json:"TeamMembers,omitempty" name:"TeamMembers"`
+
+	// 操作者。如不填，默认为 `cmeid_system`，表示平台管理员操作，可以向任意团队中添加成员。如果指定操作者，则操作者必须为管理员或者团队所有者。
+	Operator *string `json:"Operator,omitempty" name:"Operator"`
+}
+
 type AddTeamMemberRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 平台 Id，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
 	Platform *string `json:"Platform,omitempty" name:"Platform"`
 
@@ -89,13 +102,15 @@ func (r *AddTeamMemberRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type AddTeamMemberResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type AddTeamMemberResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *AddTeamMemberResponseParams `json:"Response"`
 }
 
 func (r *AddTeamMemberResponse) ToJsonString() string {
@@ -110,7 +125,6 @@ func (r *AddTeamMemberResponse) FromJsonString(s string) error {
 }
 
 type AudioMaterial struct {
-
 	// 素材元信息。
 	MetaData *MediaMetaData `json:"MetaData,omitempty" name:"MetaData"`
 
@@ -132,7 +146,6 @@ type AudioMaterial struct {
 }
 
 type AudioStreamInfo struct {
-
 	// 码率，单位：bps。
 	Bitrate *uint64 `json:"Bitrate,omitempty" name:"Bitrate"`
 
@@ -144,7 +157,6 @@ type AudioStreamInfo struct {
 }
 
 type AudioTrackItem struct {
-
 	// 音频媒体来源类型，取值有：
 	// <ul>
 	// <li>VOD ：素材来源于云点播文件 ；</li>
@@ -173,7 +185,6 @@ type AudioTrackItem struct {
 }
 
 type AuthorizationInfo struct {
-
 	// 被授权者实体。
 	Authorizee *Entity `json:"Authorizee,omitempty" name:"Authorizee"`
 
@@ -186,7 +197,6 @@ type AuthorizationInfo struct {
 }
 
 type Authorizer struct {
-
 	// 授权者类型，取值有：
 	// <li>PERSON：个人。</li>
 	// <li>TEAM：团队。</li>
@@ -197,7 +207,6 @@ type Authorizer struct {
 }
 
 type CMEExportInfo struct {
-
 	// 导出媒体归属，个人或团队。
 	Owner *Entity `json:"Owner,omitempty" name:"Owner"`
 
@@ -218,7 +227,6 @@ type CMEExportInfo struct {
 }
 
 type ClassCreatedEvent struct {
-
 	// 分类归属。
 	Owner *Entity `json:"Owner,omitempty" name:"Owner"`
 
@@ -227,7 +235,6 @@ type ClassCreatedEvent struct {
 }
 
 type ClassDeletedEvent struct {
-
 	// 删除的分类归属。
 	Owner *Entity `json:"Owner,omitempty" name:"Owner"`
 
@@ -236,7 +243,6 @@ type ClassDeletedEvent struct {
 }
 
 type ClassInfo struct {
-
 	// 归属者。
 	Owner *Entity `json:"Owner,omitempty" name:"Owner"`
 
@@ -245,7 +251,6 @@ type ClassInfo struct {
 }
 
 type ClassMovedEvent struct {
-
 	// 源分类归属。
 	SourceOwner *Entity `json:"SourceOwner,omitempty" name:"SourceOwner"`
 
@@ -259,9 +264,27 @@ type ClassMovedEvent struct {
 	DestinationClassPath *string `json:"DestinationClassPath,omitempty" name:"DestinationClassPath"`
 }
 
+// Predefined struct for user
+type CopyProjectRequestParams struct {
+	// 平台名称，指定访问的平台。
+	Platform *string `json:"Platform,omitempty" name:"Platform"`
+
+	// 被复制的项目 ID。
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 复制后的项目名称，不填为原项目名称+"(副本)"。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 复制后的项目归属者，不填为原项目归属者。
+	Owner *Entity `json:"Owner,omitempty" name:"Owner"`
+
+	// 操作者。填写用户的 Id，用于标识调用者及校验操作权限。
+	Operator *string `json:"Operator,omitempty" name:"Operator"`
+}
+
 type CopyProjectRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 平台名称，指定访问的平台。
 	Platform *string `json:"Platform,omitempty" name:"Platform"`
 
@@ -301,16 +324,18 @@ func (r *CopyProjectRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CopyProjectResponseParams struct {
+	// 复制后的项目 ID。
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CopyProjectResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 复制后的项目 ID。
-		ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CopyProjectResponseParams `json:"Response"`
 }
 
 func (r *CopyProjectResponse) ToJsonString() string {
@@ -325,7 +350,6 @@ func (r *CopyProjectResponse) FromJsonString(s string) error {
 }
 
 type CosPublishInputInfo struct {
-
 	// 发布生成的对象存储文件所在的 COS Bucket 名，如 TopRankVideo-125xxx88。
 	Bucket *string `json:"Bucket,omitempty" name:"Bucket"`
 
@@ -339,9 +363,24 @@ type CosPublishInputInfo struct {
 	CoverKey *string `json:"CoverKey,omitempty" name:"CoverKey"`
 }
 
+// Predefined struct for user
+type CreateClassRequestParams struct {
+	// 平台名称，指定访问的平台。
+	Platform *string `json:"Platform,omitempty" name:"Platform"`
+
+	// 归属者。
+	Owner *Entity `json:"Owner,omitempty" name:"Owner"`
+
+	// 分类路径。
+	ClassPath *string `json:"ClassPath,omitempty" name:"ClassPath"`
+
+	// 操作者。填写用户的 Id，用于标识调用者及校验分类创建权限。
+	Operator *string `json:"Operator,omitempty" name:"Operator"`
+}
+
 type CreateClassRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 平台名称，指定访问的平台。
 	Platform *string `json:"Platform,omitempty" name:"Platform"`
 
@@ -377,13 +416,15 @@ func (r *CreateClassRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateClassResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreateClassResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreateClassResponseParams `json:"Response"`
 }
 
 func (r *CreateClassResponse) ToJsonString() string {
@@ -397,9 +438,40 @@ func (r *CreateClassResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateLinkRequestParams struct {
+	// 平台 Id，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
+	Platform *string `json:"Platform,omitempty" name:"Platform"`
+
+	// 链接类型，可取值有:
+	// <li>CLASS: 分类链接；</li>
+	// <li> MATERIAL：媒体文件链接。</li>
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 链接名称，不能超过30个字符。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 链接归属者。
+	Owner *Entity `json:"Owner,omitempty" name:"Owner"`
+
+	// 目标资源Id。可取值有：
+	// <li>当 Type 为 MATERIAL 时填媒体 ID；</li>
+	// <li>当 Type 为 CLASS 时填写分类路径。</li>
+	DestinationId *string `json:"DestinationId,omitempty" name:"DestinationId"`
+
+	// 目标资源归属者。
+	DestinationOwner *Entity `json:"DestinationOwner,omitempty" name:"DestinationOwner"`
+
+	// 链接的分类路径，如填"/a/b"则代表链接属于该分类路径，不填则默认为根路径。
+	ClassPath *string `json:"ClassPath,omitempty" name:"ClassPath"`
+
+	// 操作者。如不填，默认为 `cmeid_system`，表示平台管理员操作，可以创建任意源及目标资源的链接。如果指定操作者，则操作者必须对源资源有读权限，对目标媒体有写权限。
+	Operator *string `json:"Operator,omitempty" name:"Operator"`
+}
+
 type CreateLinkRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 平台 Id，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
 	Platform *string `json:"Platform,omitempty" name:"Platform"`
 
@@ -455,16 +527,18 @@ func (r *CreateLinkRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateLinkResponseParams struct {
+	// 新建链接的媒体 Id。
+	MaterialId *string `json:"MaterialId,omitempty" name:"MaterialId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreateLinkResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 新建链接的媒体 Id。
-		MaterialId *string `json:"MaterialId,omitempty" name:"MaterialId"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreateLinkResponseParams `json:"Response"`
 }
 
 func (r *CreateLinkResponse) ToJsonString() string {
@@ -478,9 +552,64 @@ func (r *CreateLinkResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateProjectRequestParams struct {
+	// 平台 Id，指定访问的平台。平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
+	Platform *string `json:"Platform,omitempty" name:"Platform"`
+
+	// 项目名称，不可超过30个字符。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 项目归属者，即项目的所有者，后续操作只有该所有者有权限操作。
+	// 
+	// 注：目前所有项目只能设置归属个人，暂不支持团队项目。
+	Owner *Entity `json:"Owner,omitempty" name:"Owner"`
+
+	// 项目类别，取值有：
+	// <li>VIDEO_EDIT：视频编辑。</li>
+	// <li>SWITCHER：导播台。</li>
+	// <li>VIDEO_SEGMENTATION：视频拆条。</li>
+	// <li>STREAM_CONNECT：云转推。</li>
+	// <li>RECORD_REPLAY：录制回放。</li>
+	Category *string `json:"Category,omitempty" name:"Category"`
+
+	// 项目模式，一个项目可以有多种模式并相互切换。
+	// 当 Category 为 VIDEO_EDIT 时，可选模式有：
+	// <li>Default：默认模式，即普通视频编辑项目。</li>
+	// <li>VideoEditTemplate：剪辑模板制作模式，用于制作剪辑模板。</li>
+	// 
+	// 注：不填则为默认模式。
+	Mode *string `json:"Mode,omitempty" name:"Mode"`
+
+	// 画布宽高比。
+	// 该字段已经废弃，请使用具体项目输入中的 AspectRatio 字段。
+	AspectRatio *string `json:"AspectRatio,omitempty" name:"AspectRatio"`
+
+	// 项目描述信息。
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 导播台项目输入信息，仅当项目类型为 SWITCHER 时必填。
+	SwitcherProjectInput *SwitcherProjectInput `json:"SwitcherProjectInput,omitempty" name:"SwitcherProjectInput"`
+
+	// 直播剪辑项目输入信息，暂未开放，请勿使用。
+	LiveStreamClipProjectInput *LiveStreamClipProjectInput `json:"LiveStreamClipProjectInput,omitempty" name:"LiveStreamClipProjectInput"`
+
+	// 视频编辑项目输入信息，仅当项目类型为 VIDEO_EDIT 时必填。
+	VideoEditProjectInput *VideoEditProjectInput `json:"VideoEditProjectInput,omitempty" name:"VideoEditProjectInput"`
+
+	// 视频拆条项目输入信息，仅当项目类型为 VIDEO_SEGMENTATION  时必填。
+	VideoSegmentationProjectInput *VideoSegmentationProjectInput `json:"VideoSegmentationProjectInput,omitempty" name:"VideoSegmentationProjectInput"`
+
+	// 云转推项目输入信息，仅当项目类型为 STREAM_CONNECT 时必填。
+	StreamConnectProjectInput *StreamConnectProjectInput `json:"StreamConnectProjectInput,omitempty" name:"StreamConnectProjectInput"`
+
+	// 录制回放项目输入信息，仅当项目类型为 RECORD_REPLAY 时必填。
+	RecordReplayProjectInput *RecordReplayProjectInput `json:"RecordReplayProjectInput,omitempty" name:"RecordReplayProjectInput"`
+}
+
 type CreateProjectRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 平台 Id，指定访问的平台。平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
 	Platform *string `json:"Platform,omitempty" name:"Platform"`
 
@@ -565,19 +694,21 @@ func (r *CreateProjectRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateProjectResponseParams struct {
+	// 项目 Id。
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// <li> 当 Catagory 为 STREAM_CONNECT 时，数组返回长度为2 ，第0个代表主输入源推流信息，第1个代表备输入源推流信息。只有当各自输入源类型为推流时才有有效内容。</li>
+	RtmpPushInputInfoSet []*RtmpPushInputInfo `json:"RtmpPushInputInfoSet,omitempty" name:"RtmpPushInputInfoSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreateProjectResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 项目 Id。
-		ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
-
-		// <li> 当 Catagory 为 STREAM_CONNECT 时，数组返回长度为2 ，第0个代表主输入源推流信息，第1个代表备输入源推流信息。只有当各自输入源类型为推流时才有有效内容。</li>
-		RtmpPushInputInfoSet []*RtmpPushInputInfo `json:"RtmpPushInputInfoSet,omitempty" name:"RtmpPushInputInfoSet"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreateProjectResponseParams `json:"Response"`
 }
 
 func (r *CreateProjectResponse) ToJsonString() string {
@@ -591,9 +722,27 @@ func (r *CreateProjectResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateTeamRequestParams struct {
+	// 平台名称，指定访问的平台。
+	Platform *string `json:"Platform,omitempty" name:"Platform"`
+
+	// 团队名称，限30个字符。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 团队所有者，指定用户 ID。
+	OwnerId *string `json:"OwnerId,omitempty" name:"OwnerId"`
+
+	// 团队所有者的备注，限30个字符。
+	OwnerRemark *string `json:"OwnerRemark,omitempty" name:"OwnerRemark"`
+
+	// 自定义团队 ID。创建后不可修改，限20个英文字符及"-"。同时不能以 cmetid_开头。不填会生成默认团队 ID。
+	TeamId *string `json:"TeamId,omitempty" name:"TeamId"`
+}
+
 type CreateTeamRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 平台名称，指定访问的平台。
 	Platform *string `json:"Platform,omitempty" name:"Platform"`
 
@@ -633,16 +782,18 @@ func (r *CreateTeamRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateTeamResponseParams struct {
+	// 创建的团队 ID。
+	TeamId *string `json:"TeamId,omitempty" name:"TeamId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreateTeamResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 创建的团队 ID。
-		TeamId *string `json:"TeamId,omitempty" name:"TeamId"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreateTeamResponseParams `json:"Response"`
 }
 
 func (r *CreateTeamResponse) ToJsonString() string {
@@ -656,9 +807,42 @@ func (r *CreateTeamResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateVideoEncodingPresetRequestParams struct {
+	// 平台名称，指定访问的平台。
+	Platform *string `json:"Platform,omitempty" name:"Platform"`
+
+	// 配置名，可用来简单描述该配置的作用。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 封装格式，可选值：
+	// <li>mp4 ；</li>
+	// <li>mov 。</li>
+	// 默认值：mp4。
+	Container *string `json:"Container,omitempty" name:"Container"`
+
+	// 是否去除视频数据，可选值：
+	// <li>0：保留；</li>
+	// <li>1：去除。</li>
+	// 默认值：0。
+	RemoveVideo *int64 `json:"RemoveVideo,omitempty" name:"RemoveVideo"`
+
+	// 是否去除音频数据，可选值：
+	// <li>0：保留；</li>
+	// <li>1：去除。</li>
+	// 默认值：0。
+	RemoveAudio *int64 `json:"RemoveAudio,omitempty" name:"RemoveAudio"`
+
+	// 编码配置的视频设置。默认值参考VideoEncodingPresetVideoSetting 定义。
+	VideoSetting *VideoEncodingPresetVideoSetting `json:"VideoSetting,omitempty" name:"VideoSetting"`
+
+	// 编码配置的音频设置。默认值参考VideoEncodingPresetAudioSetting 定义。
+	AudioSetting *VideoEncodingPresetAudioSetting `json:"AudioSetting,omitempty" name:"AudioSetting"`
+}
+
 type CreateVideoEncodingPresetRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 平台名称，指定访问的平台。
 	Platform *string `json:"Platform,omitempty" name:"Platform"`
 
@@ -715,16 +899,18 @@ func (r *CreateVideoEncodingPresetRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateVideoEncodingPresetResponseParams struct {
+	// 模板 ID。
+	Id *uint64 `json:"Id,omitempty" name:"Id"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreateVideoEncodingPresetResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 模板 ID。
-		Id *uint64 `json:"Id,omitempty" name:"Id"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreateVideoEncodingPresetResponseParams `json:"Response"`
 }
 
 func (r *CreateVideoEncodingPresetResponse) ToJsonString() string {
@@ -738,9 +924,24 @@ func (r *CreateVideoEncodingPresetResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteClassRequestParams struct {
+	// 平台名称，指定访问的平台。
+	Platform *string `json:"Platform,omitempty" name:"Platform"`
+
+	// 归属者。
+	Owner *Entity `json:"Owner,omitempty" name:"Owner"`
+
+	// 分类路径。
+	ClassPath *string `json:"ClassPath,omitempty" name:"ClassPath"`
+
+	// 操作者。填写用户的 Id，用于标识调用者及校验操作权限。
+	Operator *string `json:"Operator,omitempty" name:"Operator"`
+}
+
 type DeleteClassRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 平台名称，指定访问的平台。
 	Platform *string `json:"Platform,omitempty" name:"Platform"`
 
@@ -776,13 +977,15 @@ func (r *DeleteClassRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteClassResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DeleteClassResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DeleteClassResponseParams `json:"Response"`
 }
 
 func (r *DeleteClassResponse) ToJsonString() string {
@@ -796,9 +999,18 @@ func (r *DeleteClassResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteLoginStatusRequestParams struct {
+	// 平台名称，指定访问的平台。
+	Platform *string `json:"Platform,omitempty" name:"Platform"`
+
+	// 用户 Id 列表，N 从 0 开始取值，最大 19。
+	UserIds []*string `json:"UserIds,omitempty" name:"UserIds"`
+}
+
 type DeleteLoginStatusRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 平台名称，指定访问的平台。
 	Platform *string `json:"Platform,omitempty" name:"Platform"`
 
@@ -826,13 +1038,15 @@ func (r *DeleteLoginStatusRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteLoginStatusResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DeleteLoginStatusResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DeleteLoginStatusResponseParams `json:"Response"`
 }
 
 func (r *DeleteLoginStatusResponse) ToJsonString() string {
@@ -846,9 +1060,21 @@ func (r *DeleteLoginStatusResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteMaterialRequestParams struct {
+	// 平台名称，指定访问的平台。
+	Platform *string `json:"Platform,omitempty" name:"Platform"`
+
+	// 媒体 Id。
+	MaterialId *string `json:"MaterialId,omitempty" name:"MaterialId"`
+
+	// 操作者。填写用户的 Id，用于标识调用者及校验媒体删除权限。
+	Operator *string `json:"Operator,omitempty" name:"Operator"`
+}
+
 type DeleteMaterialRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 平台名称，指定访问的平台。
 	Platform *string `json:"Platform,omitempty" name:"Platform"`
 
@@ -880,13 +1106,15 @@ func (r *DeleteMaterialRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteMaterialResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DeleteMaterialResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DeleteMaterialResponseParams `json:"Response"`
 }
 
 func (r *DeleteMaterialResponse) ToJsonString() string {
@@ -900,9 +1128,21 @@ func (r *DeleteMaterialResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteProjectRequestParams struct {
+	// 平台 Id，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
+	Platform *string `json:"Platform,omitempty" name:"Platform"`
+
+	// 要删除的项目 Id。
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 操作者。如不填，默认为 `cmeid_system`，表示平台管理员操作，可以删除一切项目。如果指定操作者，则操作者必须为项目所有者。
+	Operator *string `json:"Operator,omitempty" name:"Operator"`
+}
+
 type DeleteProjectRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 平台 Id，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
 	Platform *string `json:"Platform,omitempty" name:"Platform"`
 
@@ -934,13 +1174,15 @@ func (r *DeleteProjectRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteProjectResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DeleteProjectResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DeleteProjectResponseParams `json:"Response"`
 }
 
 func (r *DeleteProjectResponse) ToJsonString() string {
@@ -954,9 +1196,24 @@ func (r *DeleteProjectResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteTeamMembersRequestParams struct {
+	// 平台 Id，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
+	Platform *string `json:"Platform,omitempty" name:"Platform"`
+
+	// 团队 ID。
+	TeamId *string `json:"TeamId,omitempty" name:"TeamId"`
+
+	// 要删除的成员列表。
+	MemberIds []*string `json:"MemberIds,omitempty" name:"MemberIds"`
+
+	// 操作者。如不填，默认为 `cmeid_system`，表示平台管理员操作，可以删除所有团队的成员。如果指定操作者，则操作者必须为团队管理员或者所有者。
+	Operator *string `json:"Operator,omitempty" name:"Operator"`
+}
+
 type DeleteTeamMembersRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 平台 Id，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
 	Platform *string `json:"Platform,omitempty" name:"Platform"`
 
@@ -992,13 +1249,15 @@ func (r *DeleteTeamMembersRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteTeamMembersResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DeleteTeamMembersResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DeleteTeamMembersResponseParams `json:"Response"`
 }
 
 func (r *DeleteTeamMembersResponse) ToJsonString() string {
@@ -1012,9 +1271,21 @@ func (r *DeleteTeamMembersResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteTeamRequestParams struct {
+	// 平台 Id，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
+	Platform *string `json:"Platform,omitempty" name:"Platform"`
+
+	// 要删除的团队  ID。
+	TeamId *string `json:"TeamId,omitempty" name:"TeamId"`
+
+	// 操作者。如不填，默认为 `cmeid_system`，表示平台管理员操作，可以删除所有团队。如果指定操作者，则操作者必须为团队所有者。
+	Operator *string `json:"Operator,omitempty" name:"Operator"`
+}
+
 type DeleteTeamRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 平台 Id，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
 	Platform *string `json:"Platform,omitempty" name:"Platform"`
 
@@ -1046,13 +1317,15 @@ func (r *DeleteTeamRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteTeamResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DeleteTeamResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DeleteTeamResponseParams `json:"Response"`
 }
 
 func (r *DeleteTeamResponse) ToJsonString() string {
@@ -1066,9 +1339,18 @@ func (r *DeleteTeamResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteVideoEncodingPresetRequestParams struct {
+	// 平台名称，指定访问的平台。
+	Platform *string `json:"Platform,omitempty" name:"Platform"`
+
+	// 要删除的视频编码配置 ID。
+	Id *uint64 `json:"Id,omitempty" name:"Id"`
+}
+
 type DeleteVideoEncodingPresetRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 平台名称，指定访问的平台。
 	Platform *string `json:"Platform,omitempty" name:"Platform"`
 
@@ -1096,13 +1378,15 @@ func (r *DeleteVideoEncodingPresetRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteVideoEncodingPresetResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DeleteVideoEncodingPresetResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DeleteVideoEncodingPresetResponseParams `json:"Response"`
 }
 
 func (r *DeleteVideoEncodingPresetResponse) ToJsonString() string {
@@ -1116,9 +1400,24 @@ func (r *DeleteVideoEncodingPresetResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeAccountsRequestParams struct {
+	// 平台 Id，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
+	Platform *string `json:"Platform,omitempty" name:"Platform"`
+
+	// 手机号码。指定手机号获取账号信息，目前仅支持国内手机号，且号码不加地区码 `+86` 等。
+	Phone *string `json:"Phone,omitempty" name:"Phone"`
+
+	// 分页返回的起始偏移量，默认值：0。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 分页返回的记录条数，默认值：10，最大值：20。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
 type DescribeAccountsRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 平台 Id，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
 	Platform *string `json:"Platform,omitempty" name:"Platform"`
 
@@ -1154,19 +1453,21 @@ func (r *DescribeAccountsRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeAccountsResponseParams struct {
+	// 符合搜索条件的记录总数。
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 账号信息列表。
+	AccountInfoSet []*AccountInfo `json:"AccountInfoSet,omitempty" name:"AccountInfoSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeAccountsResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 符合搜索条件的记录总数。
-		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 账号信息列表。
-		AccountInfoSet []*AccountInfo `json:"AccountInfoSet,omitempty" name:"AccountInfoSet"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeAccountsResponseParams `json:"Response"`
 }
 
 func (r *DescribeAccountsResponse) ToJsonString() string {
@@ -1180,9 +1481,21 @@ func (r *DescribeAccountsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeClassRequestParams struct {
+	// 平台名称，指定访问的平台。
+	Platform *string `json:"Platform,omitempty" name:"Platform"`
+
+	// 归属者。
+	Owner *Entity `json:"Owner,omitempty" name:"Owner"`
+
+	// 操作者。填写用户的 Id，用于标识调用者及校验操作权限。
+	Operator *string `json:"Operator,omitempty" name:"Operator"`
+}
+
 type DescribeClassRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 平台名称，指定访问的平台。
 	Platform *string `json:"Platform,omitempty" name:"Platform"`
 
@@ -1214,16 +1527,18 @@ func (r *DescribeClassRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeClassResponseParams struct {
+	// 分类信息列表。
+	ClassInfoSet []*ClassInfo `json:"ClassInfoSet,omitempty" name:"ClassInfoSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeClassResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 分类信息列表。
-		ClassInfoSet []*ClassInfo `json:"ClassInfoSet,omitempty" name:"ClassInfoSet"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeClassResponseParams `json:"Response"`
 }
 
 func (r *DescribeClassResponse) ToJsonString() string {
@@ -1237,9 +1552,24 @@ func (r *DescribeClassResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeJoinTeamsRequestParams struct {
+	// 平台 Id，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
+	Platform *string `json:"Platform,omitempty" name:"Platform"`
+
+	// 团队成员　ID。
+	MemberId *string `json:"MemberId,omitempty" name:"MemberId"`
+
+	// 分页偏移量，默认值：0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回记录条数，默认值：30，最大值：30。
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+}
+
 type DescribeJoinTeamsRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 平台 Id，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
 	Platform *string `json:"Platform,omitempty" name:"Platform"`
 
@@ -1275,19 +1605,21 @@ func (r *DescribeJoinTeamsRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeJoinTeamsResponseParams struct {
+	// 符合条件的记录总数。
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 团队列表。
+	TeamSet []*JoinTeamInfo `json:"TeamSet,omitempty" name:"TeamSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeJoinTeamsResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 符合条件的记录总数。
-		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 团队列表。
-		TeamSet []*JoinTeamInfo `json:"TeamSet,omitempty" name:"TeamSet"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeJoinTeamsResponseParams `json:"Response"`
 }
 
 func (r *DescribeJoinTeamsResponse) ToJsonString() string {
@@ -1301,9 +1633,18 @@ func (r *DescribeJoinTeamsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeLoginStatusRequestParams struct {
+	// 平台 Id，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
+	Platform *string `json:"Platform,omitempty" name:"Platform"`
+
+	// 用户 Id 列表，N 从0开始取值，最大19。
+	UserIds []*string `json:"UserIds,omitempty" name:"UserIds"`
+}
+
 type DescribeLoginStatusRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 平台 Id，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
 	Platform *string `json:"Platform,omitempty" name:"Platform"`
 
@@ -1331,16 +1672,18 @@ func (r *DescribeLoginStatusRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeLoginStatusResponseParams struct {
+	// 用户登录状态列表。
+	LoginStatusInfoSet []*LoginStatusInfo `json:"LoginStatusInfoSet,omitempty" name:"LoginStatusInfoSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeLoginStatusResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 用户登录状态列表。
-		LoginStatusInfoSet []*LoginStatusInfo `json:"LoginStatusInfoSet,omitempty" name:"LoginStatusInfoSet"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeLoginStatusResponseParams `json:"Response"`
 }
 
 func (r *DescribeLoginStatusResponse) ToJsonString() string {
@@ -1354,9 +1697,26 @@ func (r *DescribeLoginStatusResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeMaterialsRequestParams struct {
+	// 平台 Id，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
+	Platform *string `json:"Platform,omitempty" name:"Platform"`
+
+	// 媒体 ID 列表，一次最多可拉取20个媒体的信息。
+	MaterialIds []*string `json:"MaterialIds,omitempty" name:"MaterialIds"`
+
+	// 列表排序，支持下列排序字段：
+	// <li>CreateTime：创建时间；</li>
+	// <li>UpdateTime：更新时间。</li>
+	Sort *SortBy `json:"Sort,omitempty" name:"Sort"`
+
+	// 操作者。如不填，默认为 `cmeid_system`，表示平台管理员操作，可以获取任意媒体的信息。如果指定操作者，则操作者必须对媒体有读权限。
+	Operator *string `json:"Operator,omitempty" name:"Operator"`
+}
+
 type DescribeMaterialsRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 平台 Id，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
 	Platform *string `json:"Platform,omitempty" name:"Platform"`
 
@@ -1394,16 +1754,18 @@ func (r *DescribeMaterialsRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeMaterialsResponseParams struct {
+	// 媒体列表信息。
+	MaterialInfoSet []*MaterialInfo `json:"MaterialInfoSet,omitempty" name:"MaterialInfoSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeMaterialsResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 媒体列表信息。
-		MaterialInfoSet []*MaterialInfo `json:"MaterialInfoSet,omitempty" name:"MaterialInfoSet"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeMaterialsResponseParams `json:"Response"`
 }
 
 func (r *DescribeMaterialsResponse) ToJsonString() string {
@@ -1417,9 +1779,24 @@ func (r *DescribeMaterialsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribePlatformsRequestParams struct {
+	// 平台 Id 列表。如果不填，则不按平台 Id 进行过滤。
+	Platforms []*string `json:"Platforms,omitempty" name:"Platforms"`
+
+	// 平台绑定的 License Id 列表。如果不填，则不按平台绑定的 License Id 进行过滤。
+	LicenseIds []*string `json:"LicenseIds,omitempty" name:"LicenseIds"`
+
+	// 分页返回的起始偏移量，默认值：0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 分页返回的记录条数，默认值：10，最大值：20。
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+}
+
 type DescribePlatformsRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 平台 Id 列表。如果不填，则不按平台 Id 进行过滤。
 	Platforms []*string `json:"Platforms,omitempty" name:"Platforms"`
 
@@ -1455,19 +1832,21 @@ func (r *DescribePlatformsRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribePlatformsResponseParams struct {
+	// 符合查询条件的记录总数。
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 平台信息列表。
+	PlatformInfoSet []*PlatformInfo `json:"PlatformInfoSet,omitempty" name:"PlatformInfoSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribePlatformsResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 符合查询条件的记录总数。
-		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 平台信息列表。
-		PlatformInfoSet []*PlatformInfo `json:"PlatformInfoSet,omitempty" name:"PlatformInfoSet"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribePlatformsResponseParams `json:"Response"`
 }
 
 func (r *DescribePlatformsResponse) ToJsonString() string {
@@ -1481,9 +1860,58 @@ func (r *DescribePlatformsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeProjectsRequestParams struct {
+	// 平台 Id，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
+	Platform *string `json:"Platform,omitempty" name:"Platform"`
+
+	// 项目 Id 过滤参数列表，最大支持20个项目 Id 过滤。如果不填不需要项目 Id 进行过滤。
+	ProjectIds []*string `json:"ProjectIds,omitempty" name:"ProjectIds"`
+
+	// 画布宽高比过滤参数列表。如果不填则不用画布宽高比进行过滤。
+	AspectRatioSet []*string `json:"AspectRatioSet,omitempty" name:"AspectRatioSet"`
+
+	// 项目类型过滤参数列表，取值有：
+	// <li>VIDEO_EDIT：视频编辑。</li>
+	// <li>SWITCHER：导播台。</li>
+	// <li>VIDEO_SEGMENTATION：视频拆条。</li>
+	// <li>STREAM_CONNECT：云转推。</li>
+	// <li>RECORD_REPLAY：录制回放。</li>
+	// 
+	// 注：如果不填则不使用项目类型进行过滤。
+	CategorySet []*string `json:"CategorySet,omitempty" name:"CategorySet"`
+
+	// 项目模式过滤参数列表，一个项目可以有多种模式并相互切换。
+	// 当 Category 为 VIDEO_EDIT 时，可选模式有：
+	// <li>Default：默认模式。</li>
+	// <li>VideoEditTemplate：视频编辑模板制作模式。</li>
+	// 
+	// 注：不填不使用项目模式进行过滤。
+	Modes []*string `json:"Modes,omitempty" name:"Modes"`
+
+	// 结果排序方式，支持下列排序字段：
+	// <li>CreateTime：创建时间；</li>
+	// <li>UpdateTime：更新时间。</li>
+	// 
+	// 注：如不填，则使用项目创建时间倒序排列。
+	Sort *SortBy `json:"Sort,omitempty" name:"Sort"`
+
+	// 项目所有者，目前仅支持个人项目过滤。
+	Owner *Entity `json:"Owner,omitempty" name:"Owner"`
+
+	// 分页返回的起始偏移量，默认值：0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 分页返回的记录条数，默认值：10。
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 操作者。如不填，默认为 `cmeid_system`，表示平台管理员操作，可以查询一切用户项目信息。如果指定操作者，则操作者必须为项目所有者。
+	Operator *string `json:"Operator,omitempty" name:"Operator"`
+}
+
 type DescribeProjectsRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 平台 Id，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
 	Platform *string `json:"Platform,omitempty" name:"Platform"`
 
@@ -1559,19 +1987,21 @@ func (r *DescribeProjectsRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeProjectsResponseParams struct {
+	// 符合条件的记录总数。
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 项目信息列表。
+	ProjectInfoSet []*ProjectInfo `json:"ProjectInfoSet,omitempty" name:"ProjectInfoSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeProjectsResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 符合条件的记录总数。
-		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 项目信息列表。
-		ProjectInfoSet []*ProjectInfo `json:"ProjectInfoSet,omitempty" name:"ProjectInfoSet"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeProjectsResponseParams `json:"Response"`
 }
 
 func (r *DescribeProjectsResponse) ToJsonString() string {
@@ -1585,9 +2015,24 @@ func (r *DescribeProjectsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeResourceAuthorizationRequestParams struct {
+	// 平台 Id，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
+	Platform *string `json:"Platform,omitempty" name:"Platform"`
+
+	// 归属者。
+	Owner *Entity `json:"Owner,omitempty" name:"Owner"`
+
+	// 资源。
+	Resource *Resource `json:"Resource,omitempty" name:"Resource"`
+
+	// 操作者。如不填，默认为 `cmeid_system`，表示平台管理员操作，可以查询任意资源的被授权情况。如果指定操作者，则操作者必须对被授权资源有读权限。
+	Operator *string `json:"Operator,omitempty" name:"Operator"`
+}
+
 type DescribeResourceAuthorizationRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 平台 Id，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
 	Platform *string `json:"Platform,omitempty" name:"Platform"`
 
@@ -1623,20 +2068,22 @@ func (r *DescribeResourceAuthorizationRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeResourceAuthorizationResponseParams struct {
+	// 符合条件的资源授权记录总数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 授权信息列表。
+	AuthorizationInfoSet []*AuthorizationInfo `json:"AuthorizationInfoSet,omitempty" name:"AuthorizationInfoSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeResourceAuthorizationResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 符合条件的资源授权记录总数。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 授权信息列表。
-		AuthorizationInfoSet []*AuthorizationInfo `json:"AuthorizationInfoSet,omitempty" name:"AuthorizationInfoSet"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeResourceAuthorizationResponseParams `json:"Response"`
 }
 
 func (r *DescribeResourceAuthorizationResponse) ToJsonString() string {
@@ -1650,9 +2097,21 @@ func (r *DescribeResourceAuthorizationResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeSharedSpaceRequestParams struct {
+	// 平台 Id，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
+	Platform *string `json:"Platform,omitempty" name:"Platform"`
+
+	// 被授权目标，个人或团队。
+	Authorizee *Entity `json:"Authorizee,omitempty" name:"Authorizee"`
+
+	// 操作者。如不填，默认为 `cmeid_system`，表示平台管理员操作，可以查询任意个人或者团队的共享空间。如果指定操作者，则操作者必须本人或者团队成员。
+	Operator *string `json:"Operator,omitempty" name:"Operator"`
+}
+
 type DescribeSharedSpaceRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 平台 Id，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
 	Platform *string `json:"Platform,omitempty" name:"Platform"`
 
@@ -1684,19 +2143,21 @@ func (r *DescribeSharedSpaceRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeSharedSpaceResponseParams struct {
+	// 查询到的共享空间总数。
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 各个共享空间对应的授权者信息。
+	AuthorizerSet []*Authorizer `json:"AuthorizerSet,omitempty" name:"AuthorizerSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeSharedSpaceResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 查询到的共享空间总数。
-		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 各个共享空间对应的授权者信息。
-		AuthorizerSet []*Authorizer `json:"AuthorizerSet,omitempty" name:"AuthorizerSet"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeSharedSpaceResponseParams `json:"Response"`
 }
 
 func (r *DescribeSharedSpaceResponse) ToJsonString() string {
@@ -1710,9 +2171,21 @@ func (r *DescribeSharedSpaceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeTaskDetailRequestParams struct {
+	// 平台 Id，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
+	Platform *string `json:"Platform,omitempty" name:"Platform"`
+
+	// 任务 Id。
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 操作者。如不填，默认为 `cmeid_system`，表示平台管理员操作，可以获取任意任务信息。如果指定操作者，则操作者需要是任务发起者。
+	Operator *string `json:"Operator,omitempty" name:"Operator"`
+}
+
 type DescribeTaskDetailRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 平台 Id，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
 	Platform *string `json:"Platform,omitempty" name:"Platform"`
 
@@ -1744,41 +2217,43 @@ func (r *DescribeTaskDetailRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-type DescribeTaskDetailResponse struct {
-	*tchttp.BaseResponse
-	Response *struct {
-
-		// 任务状态，取值有：
+// Predefined struct for user
+type DescribeTaskDetailResponseParams struct {
+	// 任务状态，取值有：
 	// <li>PROCESSING：处理中：</li>
 	// <li>SUCCESS：成功；</li>
 	// <li>FAIL：失败。</li>
-		Status *string `json:"Status,omitempty" name:"Status"`
+	Status *string `json:"Status,omitempty" name:"Status"`
 
-		// 任务进度，取值为：0~100。
-		Progress *uint64 `json:"Progress,omitempty" name:"Progress"`
+	// 任务进度，取值为：0~100。
+	Progress *uint64 `json:"Progress,omitempty" name:"Progress"`
 
-		// 错误码。
+	// 错误码。
 	// <li>0：成功；</li>
 	// <li>其他值：失败。</li>
-		ErrCode *uint64 `json:"ErrCode,omitempty" name:"ErrCode"`
+	ErrCode *uint64 `json:"ErrCode,omitempty" name:"ErrCode"`
 
-		// 错误信息。
-		ErrMsg *string `json:"ErrMsg,omitempty" name:"ErrMsg"`
+	// 错误信息。
+	ErrMsg *string `json:"ErrMsg,omitempty" name:"ErrMsg"`
 
-		// 任务类型，取值有：
+	// 任务类型，取值有：
 	// <li>VIDEO_EDIT_PROJECT_EXPORT：视频编辑项目导出。</li>
-		TaskType *string `json:"TaskType,omitempty" name:"TaskType"`
+	TaskType *string `json:"TaskType,omitempty" name:"TaskType"`
 
-		// 导出项目输出信息。
+	// 导出项目输出信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		VideoEditProjectOutput *VideoEditProjectOutput `json:"VideoEditProjectOutput,omitempty" name:"VideoEditProjectOutput"`
+	VideoEditProjectOutput *VideoEditProjectOutput `json:"VideoEditProjectOutput,omitempty" name:"VideoEditProjectOutput"`
 
-		// 创建时间，格式按照 ISO 8601 标准表示。
-		CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+	// 创建时间，格式按照 ISO 8601 标准表示。
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
 
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeTaskDetailResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeTaskDetailResponseParams `json:"Response"`
 }
 
 func (r *DescribeTaskDetailResponse) ToJsonString() string {
@@ -1792,9 +2267,41 @@ func (r *DescribeTaskDetailResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeTasksRequestParams struct {
+	// 平台 Id，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
+	Platform *string `json:"Platform,omitempty" name:"Platform"`
+
+	// 项目 Id，使用项目 Id 进行过滤。
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 任务类型集合，取值有：
+	// <li>VIDEO_EDIT_PROJECT_EXPORT：视频编辑项目导出。</li>
+	// 
+	// 注：不填不使用任务类型进行过滤。
+	TaskTypeSet []*string `json:"TaskTypeSet,omitempty" name:"TaskTypeSet"`
+
+	// 任务状态集合，取值有：
+	// <li>PROCESSING：处理中；</li>
+	// <li>SUCCESS：成功；</li>
+	// <li>FAIL：失败。</li>
+	// 
+	// 注：不填则不使用任务状态进行过滤。
+	StatusSet []*string `json:"StatusSet,omitempty" name:"StatusSet"`
+
+	// 分页返回的起始偏移量，默认值：0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 分页返回的记录条数，默认值：10。最大值：20。
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 操作者。如不填，默认为 `cmeid_system`，表示平台管理员操作，可以获取所有任务信息。如果指定操作者，则操作者需要是任务发起者。
+	Operator *string `json:"Operator,omitempty" name:"Operator"`
+}
+
 type DescribeTasksRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 平台 Id，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
 	Platform *string `json:"Platform,omitempty" name:"Platform"`
 
@@ -1850,19 +2357,21 @@ func (r *DescribeTasksRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeTasksResponseParams struct {
+	// 符合搜索条件的记录总数。
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 任务基础信息列表。
+	TaskBaseInfoSet []*TaskBaseInfo `json:"TaskBaseInfoSet,omitempty" name:"TaskBaseInfoSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeTasksResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 符合搜索条件的记录总数。
-		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 任务基础信息列表。
-		TaskBaseInfoSet []*TaskBaseInfo `json:"TaskBaseInfoSet,omitempty" name:"TaskBaseInfoSet"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeTasksResponseParams `json:"Response"`
 }
 
 func (r *DescribeTasksResponse) ToJsonString() string {
@@ -1876,9 +2385,30 @@ func (r *DescribeTasksResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeTeamMembersRequestParams struct {
+	// 平台 Id，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
+	Platform *string `json:"Platform,omitempty" name:"Platform"`
+
+	// 团队 ID。
+	TeamId *string `json:"TeamId,omitempty" name:"TeamId"`
+
+	// 成员 ID 列表，限指定30个指定成员。如不填，则返回指定团队下的所有成员。
+	MemberIds []*string `json:"MemberIds,omitempty" name:"MemberIds"`
+
+	// 分页偏移量，默认值：0
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回记录条数，默认值：30，最大值：30。
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 操作者。如不填，默认为 `cmeid_system`，表示平台管理员操作，可以拉取任意团队成员的信息。如果指定操作者，则操作者必须为团队成员。
+	Operator *string `json:"Operator,omitempty" name:"Operator"`
+}
+
 type DescribeTeamMembersRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 平台 Id，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
 	Platform *string `json:"Platform,omitempty" name:"Platform"`
 
@@ -1922,19 +2452,21 @@ func (r *DescribeTeamMembersRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeTeamMembersResponseParams struct {
+	// 符合条件的记录总数。
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 团队成员列表。
+	MemberSet []*TeamMemberInfo `json:"MemberSet,omitempty" name:"MemberSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeTeamMembersResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 符合条件的记录总数。
-		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 团队成员列表。
-		MemberSet []*TeamMemberInfo `json:"MemberSet,omitempty" name:"MemberSet"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeTeamMembersResponseParams `json:"Response"`
 }
 
 func (r *DescribeTeamMembersResponse) ToJsonString() string {
@@ -1948,9 +2480,24 @@ func (r *DescribeTeamMembersResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeTeamsRequestParams struct {
+	// 平台 Id，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
+	Platform *string `json:"Platform,omitempty" name:"Platform"`
+
+	// 团队 ID 列表，限30个。若不填，则默认获取平台下所有团队。
+	TeamIds []*string `json:"TeamIds,omitempty" name:"TeamIds"`
+
+	// 分页偏移量，默认值：0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回记录条数，默认值：20，最大值：30。
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+}
+
 type DescribeTeamsRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 平台 Id，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
 	Platform *string `json:"Platform,omitempty" name:"Platform"`
 
@@ -1986,19 +2533,21 @@ func (r *DescribeTeamsRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeTeamsResponseParams struct {
+	// 符合条件的记录总数。
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 团队列表。
+	TeamSet []*TeamInfo `json:"TeamSet,omitempty" name:"TeamSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeTeamsResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 符合条件的记录总数。
-		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 团队列表。
-		TeamSet []*TeamInfo `json:"TeamSet,omitempty" name:"TeamSet"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeTeamsResponseParams `json:"Response"`
 }
 
 func (r *DescribeTeamsResponse) ToJsonString() string {
@@ -2012,9 +2561,24 @@ func (r *DescribeTeamsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeVideoEncodingPresetsRequestParams struct {
+	// 平台名称，指定访问的平台。
+	Platform *string `json:"Platform,omitempty" name:"Platform"`
+
+	// 要查询的配置 ID 列表。填写该参数则按照配置 ID 进行查询。
+	Ids []*uint64 `json:"Ids,omitempty" name:"Ids"`
+
+	// 分页大小，默认20。最大值50。
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 分页起始，默认0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+}
+
 type DescribeVideoEncodingPresetsRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 平台名称，指定访问的平台。
 	Platform *string `json:"Platform,omitempty" name:"Platform"`
 
@@ -2050,19 +2614,21 @@ func (r *DescribeVideoEncodingPresetsRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeVideoEncodingPresetsResponseParams struct {
+	// 符合条件的编码配置总个数。
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 视频编码配置信息。
+	VideoEncodingPresetSet []*VideoEncodingPreset `json:"VideoEncodingPresetSet,omitempty" name:"VideoEncodingPresetSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeVideoEncodingPresetsResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 符合条件的编码配置总个数。
-		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 视频编码配置信息。
-		VideoEncodingPresetSet []*VideoEncodingPreset `json:"VideoEncodingPresetSet,omitempty" name:"VideoEncodingPresetSet"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeVideoEncodingPresetsResponseParams `json:"Response"`
 }
 
 func (r *DescribeVideoEncodingPresetsResponse) ToJsonString() string {
@@ -2077,13 +2643,11 @@ func (r *DescribeVideoEncodingPresetsResponse) FromJsonString(s string) error {
 }
 
 type EmptyTrackItem struct {
-
 	// 持续时间，单位为秒。
 	Duration *float64 `json:"Duration,omitempty" name:"Duration"`
 }
 
 type Entity struct {
-
 	// 类型，取值有：
 	// <li>PERSON：个人。</li>
 	// <li>TEAM：团队。</li>
@@ -2094,7 +2658,6 @@ type Entity struct {
 }
 
 type EventContent struct {
-
 	// 事件类型，可取值有：
 	// <li>Storage.NewFileCreated：新文件产生事件；</li>
 	// <li>Project.StreamConnect.StatusChanged：云转推项目状态变更事件；</li>
@@ -2160,9 +2723,46 @@ type EventContent struct {
 	VideoExportCompletedEvent *VideoExportCompletedEvent `json:"VideoExportCompletedEvent,omitempty" name:"VideoExportCompletedEvent"`
 }
 
+// Predefined struct for user
+type ExportVideoByEditorTrackDataRequestParams struct {
+	// 平台 Id，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
+	Platform *string `json:"Platform,omitempty" name:"Platform"`
+
+	// 导出视频预设配置 Id，推荐优先使用下面的默认预设配置 Id，有其他需求可通过接口定制预设配置。
+	// <li>10：分辨率为 480P，输出视频格式为 MP4；</li>
+	// <li>11：分辨率为 720P，输出视频格式为 MP4；</li>
+	// <li>12：分辨率为 1080P，输出视频格式为 MP4。</li>
+	Definition *uint64 `json:"Definition,omitempty" name:"Definition"`
+
+	// 导出目标，指定导出视频的目标媒资库，可取值有：
+	// <li>CME：多媒体创建引擎，即导出到多媒体创作引擎媒资库，此导出目标在云点播媒资库依然可见；</li>
+	// <li>VOD：云点播，即导出为云点播媒资库，此导出目标在多媒体创作引擎媒资库将不可见。</li>
+	ExportDestination *string `json:"ExportDestination,omitempty" name:"ExportDestination"`
+
+	// 在线编辑轨道数据。轨道数据相关介绍，请查看 [视频合成协议](https://cloud.tencent.com/document/product/1156/51225)。
+	TrackData *string `json:"TrackData,omitempty" name:"TrackData"`
+
+	// 轨道数据对应的画布宽高比，配合预设配置中的视频短边尺寸，可决定导出画面的尺寸。例：
+	// <li>如果 AspectRatio 取值 16:9，预设配置选为12（短边1080），则导出尺寸为 1920 * 1080；</li>
+	// <li>如果 AspectRatio 取值 9:16，预设配置选为11（短边720），则导出尺寸为 720 *1280。</li>
+	AspectRatio *string `json:"AspectRatio,omitempty" name:"AspectRatio"`
+
+	// 视频封面图片文件（如 jpeg, png 等）进行 Base64 编码后的字符串，仅支持 gif、jpeg、png 三种图片格式，原图片文件不能超过2 M大 小。
+	CoverData *string `json:"CoverData,omitempty" name:"CoverData"`
+
+	// 导出的多媒体创作引擎媒体信息。当导出目标为 CME 时必填。
+	CMEExportInfo *CMEExportInfo `json:"CMEExportInfo,omitempty" name:"CMEExportInfo"`
+
+	// 导出的云点播媒资信息。当导出目标为 VOD 时必填。
+	VODExportInfo *VODExportInfo `json:"VODExportInfo,omitempty" name:"VODExportInfo"`
+
+	// 操作者。如不填，默认为 `cmeid_system`，表示平台管理员操作，无权限限制。如果指定操作者，轨道数据中使的媒资该操作者需要拥有使用权限。
+	Operator *string `json:"Operator,omitempty" name:"Operator"`
+}
+
 type ExportVideoByEditorTrackDataRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 平台 Id，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
 	Platform *string `json:"Platform,omitempty" name:"Platform"`
 
@@ -2225,16 +2825,18 @@ func (r *ExportVideoByEditorTrackDataRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ExportVideoByEditorTrackDataResponseParams struct {
+	// 任务 Id。
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type ExportVideoByEditorTrackDataResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 任务 Id。
-		TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *ExportVideoByEditorTrackDataResponseParams `json:"Response"`
 }
 
 func (r *ExportVideoByEditorTrackDataResponse) ToJsonString() string {
@@ -2248,9 +2850,41 @@ func (r *ExportVideoByEditorTrackDataResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ExportVideoByTemplateRequestParams struct {
+	// 平台 Id，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
+	Platform *string `json:"Platform,omitempty" name:"Platform"`
+
+	// 视频编辑模板  Id。
+	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
+
+	// 导出视频预设配置 Id，推荐优先使用下面的默认预设配置 Id，有其他需求可通过接口定制预设配置。
+	// <li>10：分辨率为 480P，输出视频格式为 MP4；</li>
+	// <li>11：分辨率为 720P，输出视频格式为 MP4；</li>
+	// <li>12：分辨率为 1080P，输出视频格式为 MP4。</li>
+	Definition *int64 `json:"Definition,omitempty" name:"Definition"`
+
+	// 导出目标，指定导出视频的目标媒资库，可取值有：
+	// <li>CME：多媒体创作引擎，即导出为多媒体创作引擎媒资库，此导出目标在云点播媒资库依然可见；</li>
+	// <li>VOD：云点播，即导出为云点播媒资库，此导出目标在多媒体创作引擎媒资库将不可见。</li>
+	ExportDestination *string `json:"ExportDestination,omitempty" name:"ExportDestination"`
+
+	// 需要替换的素材信息。
+	SlotReplacements []*SlotReplacementInfo `json:"SlotReplacements,omitempty" name:"SlotReplacements"`
+
+	// 导出的多媒体创作引擎媒资信息。当导出目标为 CME 时必填。
+	CMEExportInfo *CMEExportInfo `json:"CMEExportInfo,omitempty" name:"CMEExportInfo"`
+
+	// 导出的云点播媒资信息。当导出目标为 VOD 时必填。
+	VODExportInfo *VODExportInfo `json:"VODExportInfo,omitempty" name:"VODExportInfo"`
+
+	// 操作者。如不填，默认为 `cmeid_system`，表示平台管理员操作，无权限限制。如果指定操作者，则操作者需要有替换媒体及剪辑模板的权限。
+	Operator *string `json:"Operator,omitempty" name:"Operator"`
+}
+
 type ExportVideoByTemplateRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 平台 Id，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
 	Platform *string `json:"Platform,omitempty" name:"Platform"`
 
@@ -2307,16 +2941,18 @@ func (r *ExportVideoByTemplateRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ExportVideoByTemplateResponseParams struct {
+	// 导出任务 Id。
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type ExportVideoByTemplateResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 导出任务 Id。
-		TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *ExportVideoByTemplateResponseParams `json:"Response"`
 }
 
 func (r *ExportVideoByTemplateResponse) ToJsonString() string {
@@ -2330,9 +2966,44 @@ func (r *ExportVideoByTemplateResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ExportVideoByVideoSegmentationDataRequestParams struct {
+	// 平台 Id，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
+	Platform *string `json:"Platform,omitempty" name:"Platform"`
+
+	// 视频拆条项目 Id 。
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 指定需要导出的智能拆条片段的组 Id 。
+	SegmentGroupId *string `json:"SegmentGroupId,omitempty" name:"SegmentGroupId"`
+
+	// 指定需要导出的智能拆条片段 Id  集合。
+	SegmentIds []*string `json:"SegmentIds,omitempty" name:"SegmentIds"`
+
+	// 导出模板 Id，目前不支持自定义创建，只支持下面的预置模板 Id。
+	// <li>10：分辨率为 480P，输出视频格式为 MP4；</li>
+	// <li>11：分辨率为 720P，输出视频格式为 MP4；</li>
+	// <li>12：分辨率为 1080P，输出视频格式为 MP4。</li>
+	Definition *uint64 `json:"Definition,omitempty" name:"Definition"`
+
+	// 导出目标，指定导出视频的目标媒资库，可取值有：
+	// <li>CME：多媒体创作引擎，即导出为多媒体创作引擎媒资库，此导出目标在云点播媒资库依然可见；</li>
+	// <li>VOD：云点播，即导出为云点播媒资库，此导出目标在多媒体创作引擎媒资库将不可见。</li>
+	ExportDestination *string `json:"ExportDestination,omitempty" name:"ExportDestination"`
+
+	// 导出的多媒体创作引擎媒体信息。当导出目标为 CME 时必填。
+	CMEExportInfo *CMEExportInfo `json:"CMEExportInfo,omitempty" name:"CMEExportInfo"`
+
+	// 导出的云点播媒资信息。当导出目标为 VOD 时必填。
+	VODExportInfo *VODExportInfo `json:"VODExportInfo,omitempty" name:"VODExportInfo"`
+
+	// 操作者。如不填，默认为 `cmeid_system`，表示平台管理员操作，可以操作任意智能拆条项目。如果指定操作者，则操作者必须为项目所有。
+	Operator *string `json:"Operator,omitempty" name:"Operator"`
+}
+
 type ExportVideoByVideoSegmentationDataRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 平台 Id，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
 	Platform *string `json:"Platform,omitempty" name:"Platform"`
 
@@ -2393,16 +3064,18 @@ func (r *ExportVideoByVideoSegmentationDataRequest) FromJsonString(s string) err
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ExportVideoByVideoSegmentationDataResponseParams struct {
+	// 任务 Id。
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type ExportVideoByVideoSegmentationDataResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 任务 Id。
-		TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *ExportVideoByVideoSegmentationDataResponseParams `json:"Response"`
 }
 
 func (r *ExportVideoByVideoSegmentationDataResponse) ToJsonString() string {
@@ -2416,9 +3089,44 @@ func (r *ExportVideoByVideoSegmentationDataResponse) FromJsonString(s string) er
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ExportVideoEditProjectRequestParams struct {
+	// 平台名称，指定访问的平台。
+	Platform *string `json:"Platform,omitempty" name:"Platform"`
+
+	// 项目 Id。
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 视频编码配置 ID，支持自定义创建，推荐优先使用系统预置的导出配置。
+	// <li>10：分辨率为 480P，输出视频格式为 MP4；</li>
+	// <li>11：分辨率为 720P，输出视频格式为 MP4；</li>
+	// <li>12：分辨率为 1080P，输出视频格式为 MP4。</li>
+	Definition *uint64 `json:"Definition,omitempty" name:"Definition"`
+
+	// 导出目标，指定导出视频的目标媒资库，可取值有：
+	// <li>CME：多媒体创作引擎，即导出为多媒体创作引擎媒资库，此导出目标在云点播媒资库依然可见；</li>
+	// <li>VOD：云点播，即导出为云点播媒资库，此导出目标在多媒体创作引擎媒资库将不可见。</li>
+	ExportDestination *string `json:"ExportDestination,omitempty" name:"ExportDestination"`
+
+	// 视频封面图片文件（如 jpeg, png 等）进行 Base64 编码后的字符串，仅支持 gif、jpeg、png 三种图片格式，原图片文件不能超过2 M大 小。
+	CoverData *string `json:"CoverData,omitempty" name:"CoverData"`
+
+	// 导出的多媒体创作引擎媒体信息。当导出目标为 CME 时必填。
+	CMEExportInfo *CMEExportInfo `json:"CMEExportInfo,omitempty" name:"CMEExportInfo"`
+
+	// 导出的云点播媒资信息。当导出目标为 VOD 时必填。
+	VODExportInfo *VODExportInfo `json:"VODExportInfo,omitempty" name:"VODExportInfo"`
+
+	// 视频导出扩展参数。可以覆盖导出模板中的参数，灵活的指定导出规格及参数。
+	ExportExtensionArgs *VideoExportExtensionArgs `json:"ExportExtensionArgs,omitempty" name:"ExportExtensionArgs"`
+
+	// 操作者。填写用户的 Id，用于标识调用者及校验项目导出权限。
+	Operator *string `json:"Operator,omitempty" name:"Operator"`
+}
+
 type ExportVideoEditProjectRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 平台名称，指定访问的平台。
 	Platform *string `json:"Platform,omitempty" name:"Platform"`
 
@@ -2479,16 +3187,18 @@ func (r *ExportVideoEditProjectRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ExportVideoEditProjectResponseParams struct {
+	// 任务 Id。
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type ExportVideoEditProjectResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 任务 Id。
-		TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *ExportVideoEditProjectResponseParams `json:"Response"`
 }
 
 func (r *ExportVideoEditProjectResponse) ToJsonString() string {
@@ -2503,7 +3213,6 @@ func (r *ExportVideoEditProjectResponse) FromJsonString(s string) error {
 }
 
 type ExternalMediaInfo struct {
-
 	// 目前仅支持绑定 COS 桶的媒体，请填写存储对象 Key 值，例如：`example-folder/example.mp4`。
 	MediaKey *string `json:"MediaKey,omitempty" name:"MediaKey"`
 
@@ -2514,9 +3223,30 @@ type ExternalMediaInfo struct {
 	StorageId *string `json:"StorageId,omitempty" name:"StorageId"`
 }
 
+// Predefined struct for user
+type FlattenListMediaRequestParams struct {
+	// 平台 Id，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
+	Platform *string `json:"Platform,omitempty" name:"Platform"`
+
+	// 媒体分类路径，例如填写"/a/b"，则代表平铺该分类路径下及其子分类路径下的媒体信息。
+	ClassPath *string `json:"ClassPath,omitempty" name:"ClassPath"`
+
+	// 媒体分类的归属者。
+	Owner *Entity `json:"Owner,omitempty" name:"Owner"`
+
+	// 分页偏移量，默认值：0。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回记录条数，默认值：10，最大值：50。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 操作者。如不填，默认为 `cmeid_system`，表示平台管理员操作，可以平铺查询任意分类下的媒体信息。如果指定操作者，则操作者必须对当前分类有读权限。
+	Operator *string `json:"Operator,omitempty" name:"Operator"`
+}
+
 type FlattenListMediaRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 平台 Id，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
 	Platform *string `json:"Platform,omitempty" name:"Platform"`
 
@@ -2560,19 +3290,21 @@ func (r *FlattenListMediaRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type FlattenListMediaResponseParams struct {
+	// 符合条件的记录总数。
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 该分类路径下及其子分类下的所有媒体基础信息列表。
+	MaterialInfoSet []*MaterialInfo `json:"MaterialInfoSet,omitempty" name:"MaterialInfoSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type FlattenListMediaResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 符合条件的记录总数。
-		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 该分类路径下及其子分类下的所有媒体基础信息列表。
-		MaterialInfoSet []*MaterialInfo `json:"MaterialInfoSet,omitempty" name:"MaterialInfoSet"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *FlattenListMediaResponseParams `json:"Response"`
 }
 
 func (r *FlattenListMediaResponse) ToJsonString() string {
@@ -2586,9 +3318,21 @@ func (r *FlattenListMediaResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type GenerateVideoSegmentationSchemeByAiRequestParams struct {
+	// 平台 Id，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
+	Platform *string `json:"Platform,omitempty" name:"Platform"`
+
+	// 视频拆条项目 Id 。
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 操作者。如不填，默认为 `cmeid_system`，表示平台管理员操作，可以对任务视频拆条项目发起拆条任务。如果指定操作者，则操作者必须为项目所有者。
+	Operator *string `json:"Operator,omitempty" name:"Operator"`
+}
+
 type GenerateVideoSegmentationSchemeByAiRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 平台 Id，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
 	Platform *string `json:"Platform,omitempty" name:"Platform"`
 
@@ -2620,16 +3364,18 @@ func (r *GenerateVideoSegmentationSchemeByAiRequest) FromJsonString(s string) er
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type GenerateVideoSegmentationSchemeByAiResponseParams struct {
+	// 视频智能拆条任务 Id 。
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type GenerateVideoSegmentationSchemeByAiResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 视频智能拆条任务 Id 。
-		TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *GenerateVideoSegmentationSchemeByAiResponseParams `json:"Response"`
 }
 
 func (r *GenerateVideoSegmentationSchemeByAiResponse) ToJsonString() string {
@@ -2643,9 +3389,34 @@ func (r *GenerateVideoSegmentationSchemeByAiResponse) FromJsonString(s string) e
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type GrantResourceAuthorizationRequestParams struct {
+	// 平台 Id，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
+	Platform *string `json:"Platform,omitempty" name:"Platform"`
+
+	// 资源归属者，个人或者团队。
+	Owner *Entity `json:"Owner,omitempty" name:"Owner"`
+
+	// 被授权资源。
+	Resources []*Resource `json:"Resources,omitempty" name:"Resources"`
+
+	// 被授权目标，个人或者团队。
+	Authorizees []*Entity `json:"Authorizees,omitempty" name:"Authorizees"`
+
+	// 详细授权值。 取值有：
+	// <li>R：可读，可以浏览媒体，但不能使用该媒体文件（将其添加到 Project），或复制到自己的媒资库中</li>
+	// <li>X：可用，可以使用该素材（将其添加到 Project），但不能将其复制到自己的媒资库中，意味着被授权者无法将该资源进一步扩散给其他个人或团队。</li>
+	// <li>C：可复制，既可以使用该素材（将其添加到 Project），也可以将其复制到自己的媒资库中。</li>
+	// <li>W：可修改、删除媒资。</li>
+	Permissions []*string `json:"Permissions,omitempty" name:"Permissions"`
+
+	// 操作者。如不填，默认为 `cmeid_system`，表示平台管理员操作，可以授权任意归属者的资源。如果指定操作者，则操作者必须对资源拥有写权限。
+	Operator *string `json:"Operator,omitempty" name:"Operator"`
+}
+
 type GrantResourceAuthorizationRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 平台 Id，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
 	Platform *string `json:"Platform,omitempty" name:"Platform"`
 
@@ -2693,13 +3464,15 @@ func (r *GrantResourceAuthorizationRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type GrantResourceAuthorizationResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type GrantResourceAuthorizationResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *GrantResourceAuthorizationResponseParams `json:"Response"`
 }
 
 func (r *GrantResourceAuthorizationResponse) ToJsonString() string {
@@ -2713,9 +3486,38 @@ func (r *GrantResourceAuthorizationResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type HandleStreamConnectProjectRequestParams struct {
+	// 平台 Id，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
+	Platform *string `json:"Platform,omitempty" name:"Platform"`
+
+	// 云转推项目 Id 。
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 请参考 [操作类型](#Operation)
+	Operation *string `json:"Operation,omitempty" name:"Operation"`
+
+	// 转推输入源操作参数。具体操作方式详见 [操作类型](#Operation) 及下文示例。
+	InputInfo *StreamInputInfo `json:"InputInfo,omitempty" name:"InputInfo"`
+
+	// 主备输入源标识，取值有：
+	// <li> Main ：主源；</li>
+	// <li> Backup ：备源。</li>
+	InputEndpoint *string `json:"InputEndpoint,omitempty" name:"InputEndpoint"`
+
+	// 转推输出源操作参数。具体操作方式详见 [操作类型](#Operation) 及下文示例。
+	OutputInfo *StreamConnectOutput `json:"OutputInfo,omitempty" name:"OutputInfo"`
+
+	// 云转推当前预计结束时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。具体操作方式详见 [操作类型](#Operation) 及下文示例。
+	CurrentStopTime *string `json:"CurrentStopTime,omitempty" name:"CurrentStopTime"`
+
+	// 操作者。如不填，默认为 `cmeid_system`，表示平台管理员操作，可以操作所有云转推项目。如果指定操作者，则操作者必须为项目所有者。
+	Operator *string `json:"Operator,omitempty" name:"Operator"`
+}
+
 type HandleStreamConnectProjectRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 平台 Id，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
 	Platform *string `json:"Platform,omitempty" name:"Platform"`
 
@@ -2769,16 +3571,18 @@ func (r *HandleStreamConnectProjectRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type HandleStreamConnectProjectResponseParams struct {
+	// 输入源推流地址，当 Operation 取值 AddInput 且 InputType 为 RtmpPush 类型时有效。
+	StreamInputRtmpPushUrl *string `json:"StreamInputRtmpPushUrl,omitempty" name:"StreamInputRtmpPushUrl"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type HandleStreamConnectProjectResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 输入源推流地址，当 Operation 取值 AddInput 且 InputType 为 RtmpPush 类型时有效。
-		StreamInputRtmpPushUrl *string `json:"StreamInputRtmpPushUrl,omitempty" name:"StreamInputRtmpPushUrl"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *HandleStreamConnectProjectResponseParams `json:"Response"`
 }
 
 func (r *HandleStreamConnectProjectResponse) ToJsonString() string {
@@ -2793,7 +3597,6 @@ func (r *HandleStreamConnectProjectResponse) FromJsonString(s string) error {
 }
 
 type ImageMaterial struct {
-
 	// 图片高度，单位：px。
 	Height *int64 `json:"Height,omitempty" name:"Height"`
 
@@ -2813,9 +3616,44 @@ type ImageMaterial struct {
 	VodFileId *string `json:"VodFileId,omitempty" name:"VodFileId"`
 }
 
+// Predefined struct for user
+type ImportMaterialRequestParams struct {
+	// 平台 Id，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
+	Platform *string `json:"Platform,omitempty" name:"Platform"`
+
+	// 媒体归属者，可支持归属团队或个人。
+	Owner *Entity `json:"Owner,omitempty" name:"Owner"`
+
+	// 媒体名称，不能超过30个字符。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 导入媒资类型，取值：
+	// <li>VOD：云点播文件；</li>
+	// <li>EXTERNAL：媒资绑定。</li>
+	// 
+	// 注意：如果不填默认为云点播文件，如果媒体存储在非腾讯云点播中，都需要使用媒资绑定。另外，导入云点播的文件，使用云点播的子应用 Id 必须与创建多媒体创作引擎平台时使用的云点播子应用一致。
+	SourceType *string `json:"SourceType,omitempty" name:"SourceType"`
+
+	// 云点播媒资 FileId，仅当 SourceType 为 VOD 时有效。
+	VodFileId *string `json:"VodFileId,omitempty" name:"VodFileId"`
+
+	// 原始媒资文件信息，当 SourceType 取值 EXTERNAL 的时候必填。
+	ExternalMediaInfo *ExternalMediaInfo `json:"ExternalMediaInfo,omitempty" name:"ExternalMediaInfo"`
+
+	// 媒体分类路径，形如："/a/b"，层级数不能超过10，每个层级长度不能超过15字符。若不填则默认为根路径。
+	ClassPath *string `json:"ClassPath,omitempty" name:"ClassPath"`
+
+	// 媒体预处理任务参数 ID。可取值有：
+	// <li>10：进行编辑预处理。</li>
+	PreProcessDefinition *int64 `json:"PreProcessDefinition,omitempty" name:"PreProcessDefinition"`
+
+	// 操作者。如不填，默认为 `cmeid_system`，表示平台管理员操作，可以向任意团队或者个人导入媒体。如果指定操作者，如果媒体归属为个人，则操作者必须与归属者一致；如果媒体归属为团队，则必须为团队可导入媒体的团队成员(如果没有特殊设置，所有团队成员可导入媒体)。
+	Operator *string `json:"Operator,omitempty" name:"Operator"`
+}
+
 type ImportMaterialRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 平台 Id，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
 	Platform *string `json:"Platform,omitempty" name:"Platform"`
 
@@ -2876,19 +3714,21 @@ func (r *ImportMaterialRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ImportMaterialResponseParams struct {
+	// 媒体 Id。
+	MaterialId *string `json:"MaterialId,omitempty" name:"MaterialId"`
+
+	// 媒体文预处理任务 ID，如果未指定发起预处理任务则为空。
+	PreProcessTaskId *string `json:"PreProcessTaskId,omitempty" name:"PreProcessTaskId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type ImportMaterialResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 媒体 Id。
-		MaterialId *string `json:"MaterialId,omitempty" name:"MaterialId"`
-
-		// 媒体文预处理任务 ID，如果未指定发起预处理任务则为空。
-		PreProcessTaskId *string `json:"PreProcessTaskId,omitempty" name:"PreProcessTaskId"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *ImportMaterialResponseParams `json:"Response"`
 }
 
 func (r *ImportMaterialResponse) ToJsonString() string {
@@ -2903,7 +3743,6 @@ func (r *ImportMaterialResponse) FromJsonString(s string) error {
 }
 
 type ImportMediaInfo struct {
-
 	// 云点播文件 FileId。
 	FileId *string `json:"FileId,omitempty" name:"FileId"`
 
@@ -2911,9 +3750,43 @@ type ImportMediaInfo struct {
 	MaterialId *string `json:"MaterialId,omitempty" name:"MaterialId"`
 }
 
+// Predefined struct for user
+type ImportMediaToProjectRequestParams struct {
+	// 平台 Id，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
+	Platform *string `json:"Platform,omitempty" name:"Platform"`
+
+	// 项目 Id。
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 导入媒资类型，取值：
+	// <li>VOD：云点播文件；</li>
+	// <li>EXTERNAL：媒资绑定。</li>
+	// 
+	// 注意：如果不填默认为云点播文件，如果媒体存储在非腾讯云点播中，都需要使用媒资绑定。
+	SourceType *string `json:"SourceType,omitempty" name:"SourceType"`
+
+	// 云点播媒资文件 Id，当 SourceType 取值 VOD 或者缺省的时候必填。
+	VodFileId *string `json:"VodFileId,omitempty" name:"VodFileId"`
+
+	// 原始媒资文件信息，当 SourceType 取值 EXTERNAL 的时候必填。
+	ExternalMediaInfo *ExternalMediaInfo `json:"ExternalMediaInfo,omitempty" name:"ExternalMediaInfo"`
+
+	// 媒体名称，不能超过30个字符。如果不填，则媒体名称为点播媒资文件名称。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 媒体预处理配置 ID，取值：
+	// <li>10：进行视频编辑预处理。</li>
+	// 
+	// 注意：如果填0或者不填则不进行处理，如果原始视频不可在浏览器直接播放将无法在编辑页面编辑。
+	PreProcessDefinition *int64 `json:"PreProcessDefinition,omitempty" name:"PreProcessDefinition"`
+
+	// 操作者。如不填，默认为 `cmeid_system`，表示平台管理员操作，可以向所有视频编辑项目导入媒体；如果指定操作者，则操作者必须为项目所有者。
+	Operator *string `json:"Operator,omitempty" name:"Operator"`
+}
+
 type ImportMediaToProjectRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 平台 Id，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
 	Platform *string `json:"Platform,omitempty" name:"Platform"`
 
@@ -2972,19 +3845,21 @@ func (r *ImportMediaToProjectRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ImportMediaToProjectResponseParams struct {
+	// 媒体 Id。
+	MaterialId *string `json:"MaterialId,omitempty" name:"MaterialId"`
+
+	// 媒体预处理任务 ID，如果未指定发起预处理任务则为空。
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type ImportMediaToProjectResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 媒体 Id。
-		MaterialId *string `json:"MaterialId,omitempty" name:"MaterialId"`
-
-		// 媒体预处理任务 ID，如果未指定发起预处理任务则为空。
-		TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *ImportMediaToProjectResponseParams `json:"Response"`
 }
 
 func (r *ImportMediaToProjectResponse) ToJsonString() string {
@@ -2999,7 +3874,6 @@ func (r *ImportMediaToProjectResponse) FromJsonString(s string) error {
 }
 
 type IntegerRange struct {
-
 	// 按整形代表值的下限检索。
 	LowerBound *int64 `json:"LowerBound,omitempty" name:"LowerBound"`
 
@@ -3008,7 +3882,6 @@ type IntegerRange struct {
 }
 
 type JoinTeamInfo struct {
-
 	// 团队 ID。
 	TeamId *string `json:"TeamId,omitempty" name:"TeamId"`
 
@@ -3026,13 +3899,11 @@ type JoinTeamInfo struct {
 }
 
 type KuaishouPublishInfo struct {
-
 	// 视频发布标题，限30个字符。
 	Title *string `json:"Title,omitempty" name:"Title"`
 }
 
 type LinkMaterial struct {
-
 	// 链接类型取值:
 	// <li>CLASS: 分类链接;</li>
 	// <li> MATERIAL：素材链接。</li>
@@ -3053,7 +3924,6 @@ type LinkMaterial struct {
 }
 
 type LinkMaterialInfo struct {
-
 	// 素材基本信息。
 	BasicInfo *MaterialBasicInfo `json:"BasicInfo,omitempty" name:"BasicInfo"`
 
@@ -3070,9 +3940,30 @@ type LinkMaterialInfo struct {
 	ImageMaterial *ImageMaterial `json:"ImageMaterial,omitempty" name:"ImageMaterial"`
 }
 
+// Predefined struct for user
+type ListMediaRequestParams struct {
+	// 平台 Id，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
+	Platform *string `json:"Platform,omitempty" name:"Platform"`
+
+	// 媒体分类路径，例如填写"/a/b"，则代表浏览该分类路径下的媒体和子分类信息。
+	ClassPath *string `json:"ClassPath,omitempty" name:"ClassPath"`
+
+	// 媒体和分类的归属者。
+	Owner *Entity `json:"Owner,omitempty" name:"Owner"`
+
+	// 分页偏移量，默认值：0。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回记录条数，默认值：10，最大值：50。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 操作者。如不填，默认为 `cmeid_system`，表示平台管理员操作，可以浏览任意分类的信息。如果指定操作者，则操作者必须对分类有读权限。
+	Operator *string `json:"Operator,omitempty" name:"Operator"`
+}
+
 type ListMediaRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 平台 Id，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
 	Platform *string `json:"Platform,omitempty" name:"Platform"`
 
@@ -3116,22 +4007,24 @@ func (r *ListMediaRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ListMediaResponseParams struct {
+	// 符合条件的媒体记录总数。
+	MaterialTotalCount *int64 `json:"MaterialTotalCount,omitempty" name:"MaterialTotalCount"`
+
+	// 浏览分类路径下的媒体列表信息。
+	MaterialInfoSet []*MaterialInfo `json:"MaterialInfoSet,omitempty" name:"MaterialInfoSet"`
+
+	// 浏览分类路径下的一级子类。
+	ClassInfoSet []*ClassInfo `json:"ClassInfoSet,omitempty" name:"ClassInfoSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type ListMediaResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 符合条件的媒体记录总数。
-		MaterialTotalCount *int64 `json:"MaterialTotalCount,omitempty" name:"MaterialTotalCount"`
-
-		// 浏览分类路径下的媒体列表信息。
-		MaterialInfoSet []*MaterialInfo `json:"MaterialInfoSet,omitempty" name:"MaterialInfoSet"`
-
-		// 浏览分类路径下的一级子类。
-		ClassInfoSet []*ClassInfo `json:"ClassInfoSet,omitempty" name:"ClassInfoSet"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *ListMediaResponseParams `json:"Response"`
 }
 
 func (r *ListMediaResponse) ToJsonString() string {
@@ -3146,13 +4039,11 @@ func (r *ListMediaResponse) FromJsonString(s string) error {
 }
 
 type LivePullInputInfo struct {
-
 	// 直播拉流地址。
 	InputUrl *string `json:"InputUrl,omitempty" name:"InputUrl"`
 }
 
 type LiveStreamClipProjectInput struct {
-
 	// 直播流播放地址，目前仅支持 HLS 和 FLV 格式。
 	Url *string `json:"Url,omitempty" name:"Url"`
 
@@ -3161,7 +4052,6 @@ type LiveStreamClipProjectInput struct {
 }
 
 type LoginStatusInfo struct {
-
 	// 用户 Id。
 	UserId *string `json:"UserId,omitempty" name:"UserId"`
 
@@ -3172,7 +4062,6 @@ type LoginStatusInfo struct {
 }
 
 type MaterialAddedEvent struct {
-
 	// 添加的媒体 Id 列表。
 	MaterialIdSet []*string `json:"MaterialIdSet,omitempty" name:"MaterialIdSet"`
 
@@ -3184,7 +4073,6 @@ type MaterialAddedEvent struct {
 }
 
 type MaterialBasicInfo struct {
-
 	// 媒体 Id。
 	MaterialId *string `json:"MaterialId,omitempty" name:"MaterialId"`
 
@@ -3227,13 +4115,11 @@ type MaterialBasicInfo struct {
 }
 
 type MaterialDeletedEvent struct {
-
 	// 删除的媒体 Id 列表。
 	MaterialIdSet []*string `json:"MaterialIdSet,omitempty" name:"MaterialIdSet"`
 }
 
 type MaterialImportedEvent struct {
-
 	// 导入的媒体信息列表。
 	MediaInfoSet []*ImportMediaInfo `json:"MediaInfoSet,omitempty" name:"MediaInfoSet"`
 
@@ -3245,7 +4131,6 @@ type MaterialImportedEvent struct {
 }
 
 type MaterialInfo struct {
-
 	// 媒体基本信息。
 	BasicInfo *MaterialBasicInfo `json:"BasicInfo,omitempty" name:"BasicInfo"`
 
@@ -3275,7 +4160,6 @@ type MaterialInfo struct {
 }
 
 type MaterialModifiedEvent struct {
-
 	// 媒体 Id。
 	MaterialId *string `json:"MaterialId,omitempty" name:"MaterialId"`
 
@@ -3290,7 +4174,6 @@ type MaterialModifiedEvent struct {
 }
 
 type MaterialMovedEvent struct {
-
 	// 要移动的媒体 Id 列表。
 	MaterialIdSet []*string `json:"MaterialIdSet,omitempty" name:"MaterialIdSet"`
 
@@ -3308,7 +4191,6 @@ type MaterialMovedEvent struct {
 }
 
 type MaterialStatus struct {
-
 	// 素材编辑可用状态，取值有：
 	// <li>NORMAL：正常，可直接用于编辑；</li>
 	// <li>ABNORMAL : 异常，不可用于编辑；</li>
@@ -3317,7 +4199,6 @@ type MaterialStatus struct {
 }
 
 type MaterialTagInfo struct {
-
 	// 标签类型，取值为：
 	// <li>PRESET：预置标签；</li>
 	Type *string `json:"Type,omitempty" name:"Type"`
@@ -3330,7 +4211,6 @@ type MaterialTagInfo struct {
 }
 
 type MediaImageSpriteInfo struct {
-
 	// 雪碧图小图的高度。
 	Height *int64 `json:"Height,omitempty" name:"Height"`
 
@@ -3348,7 +4228,6 @@ type MediaImageSpriteInfo struct {
 }
 
 type MediaMetaData struct {
-
 	// 大小。
 	Size *uint64 `json:"Size,omitempty" name:"Size"`
 
@@ -3378,7 +4257,6 @@ type MediaMetaData struct {
 }
 
 type MediaPreprocessOperation struct {
-
 	// 预处理操作的类型，取值范围：
 	// <li>ImageTextMask：图片文字遮罩。</li>
 	Type *string `json:"Type,omitempty" name:"Type"`
@@ -3389,7 +4267,6 @@ type MediaPreprocessOperation struct {
 }
 
 type MediaReplacementInfo struct {
-
 	// 替换的媒体类型，取值有：
 	// <li>CMEMaterialId：替换的媒体类型为媒体 ID；</li>
 	// <li>ImageUrl：替换的媒体类型为图片 URL；</li>
@@ -3415,7 +4292,6 @@ type MediaReplacementInfo struct {
 }
 
 type MediaTrack struct {
-
 	// 轨道类型，取值有：
 	// <ul>
 	// <li>Video ：视频轨道。视频轨道由以下 Item 组成：<ul><li>VideoTrackItem</li><li>EmptyTrackItem</li><li>MediaTransitionItem</li></ul> </li>
@@ -3428,7 +4304,6 @@ type MediaTrack struct {
 }
 
 type MediaTrackItem struct {
-
 	// 片段类型。取值有：
 	// <li>Video：视频片段；</li>
 	// <li>Audio：音频片段；</li>
@@ -3451,7 +4326,6 @@ type MediaTrackItem struct {
 }
 
 type MediaTransitionItem struct {
-
 	// 转场 Id 。暂只支持一个转场。
 	TransitionId *string `json:"TransitionId,omitempty" name:"TransitionId"`
 
@@ -3459,9 +4333,30 @@ type MediaTransitionItem struct {
 	Duration *float64 `json:"Duration,omitempty" name:"Duration"`
 }
 
+// Predefined struct for user
+type ModifyMaterialRequestParams struct {
+	// 平台 Id，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
+	Platform *string `json:"Platform,omitempty" name:"Platform"`
+
+	// 要修改的媒体 Id。
+	MaterialId *string `json:"MaterialId,omitempty" name:"MaterialId"`
+
+	// 媒体归属者。
+	Owner *Entity `json:"Owner,omitempty" name:"Owner"`
+
+	// 媒体名称，不能超过30个字符，不填则不修改。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 媒体分类路径，例如填写"/a/b"，则代表该媒体存储的路径为"/a/b"。若修改分类路径，则 Owner 字段必填。
+	ClassPath *string `json:"ClassPath,omitempty" name:"ClassPath"`
+
+	// 操作者。如不填，默认为 `cmeid_system`，表示平台管理员操作，可以修改任意媒体的信息。如果指定操作者，则操作者必须对媒体有写权限。
+	Operator *string `json:"Operator,omitempty" name:"Operator"`
+}
+
 type ModifyMaterialRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 平台 Id，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
 	Platform *string `json:"Platform,omitempty" name:"Platform"`
 
@@ -3505,13 +4400,15 @@ func (r *ModifyMaterialRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifyMaterialResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type ModifyMaterialResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *ModifyMaterialResponseParams `json:"Response"`
 }
 
 func (r *ModifyMaterialResponse) ToJsonString() string {
@@ -3525,9 +4422,33 @@ func (r *ModifyMaterialResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifyProjectRequestParams struct {
+	// 平台 Id，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
+	Platform *string `json:"Platform,omitempty" name:"Platform"`
+
+	// 项目 Id。
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 项目名称，不可超过30个字符。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 画布宽高比，值为视频编辑项目画布宽与高的像素值的比值，如 16:9、9:16 等。
+	AspectRatio *string `json:"AspectRatio,omitempty" name:"AspectRatio"`
+
+	// 项目所有者。目前仅支持个人项目，不支持团队项目。
+	Owner *Entity `json:"Owner,omitempty" name:"Owner"`
+
+	// 项目模式，一个项目可以有多种模式并相互切换。
+	// 当 Category 为 VIDEO_EDIT 时，可选模式有：
+	// <li>Default：默认模式，即普通视频编辑项目。</li>
+	// <li>VideoEditTemplate：剪辑模板制作模式，用于制作剪辑模板。</li>
+	Mode *string `json:"Mode,omitempty" name:"Mode"`
+}
+
 type ModifyProjectRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 平台 Id，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
 	Platform *string `json:"Platform,omitempty" name:"Platform"`
 
@@ -3574,13 +4495,15 @@ func (r *ModifyProjectRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifyProjectResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type ModifyProjectResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *ModifyProjectResponseParams `json:"Response"`
 }
 
 func (r *ModifyProjectResponse) ToJsonString() string {
@@ -3594,9 +4517,32 @@ func (r *ModifyProjectResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifyTeamMemberRequestParams struct {
+	// 平台 Id，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
+	Platform *string `json:"Platform,omitempty" name:"Platform"`
+
+	// 团队 ID。
+	TeamId *string `json:"TeamId,omitempty" name:"TeamId"`
+
+	// 团队成员 ID。
+	MemberId *string `json:"MemberId,omitempty" name:"MemberId"`
+
+	// 成员备注，长度不能超过15个字符。
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 成员角色，可取值有：
+	// <li>Admin：团队管理员；</li>
+	// <li>Member：普通成员。</li>
+	Role *string `json:"Role,omitempty" name:"Role"`
+
+	// 操作者。如不填，默认为 `cmeid_system`，表示平台管理员操作，可以个改任意团队成员的信息。如果指定操作者，则操作者必须为团队的管理员或者所有者。
+	Operator *string `json:"Operator,omitempty" name:"Operator"`
+}
+
 type ModifyTeamMemberRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 平台 Id，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
 	Platform *string `json:"Platform,omitempty" name:"Platform"`
 
@@ -3642,13 +4588,15 @@ func (r *ModifyTeamMemberRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifyTeamMemberResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type ModifyTeamMemberResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *ModifyTeamMemberResponseParams `json:"Response"`
 }
 
 func (r *ModifyTeamMemberResponse) ToJsonString() string {
@@ -3662,9 +4610,24 @@ func (r *ModifyTeamMemberResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifyTeamRequestParams struct {
+	// 平台 Id，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
+	Platform *string `json:"Platform,omitempty" name:"Platform"`
+
+	// 团队 ID。
+	TeamId *string `json:"TeamId,omitempty" name:"TeamId"`
+
+	// 团队名称。团队名称不能置空，并且不能超过30个字符。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 操作者。如不填，默认为 `cmeid_system`，表示平台管理员操作，可以修改所有团队的信息。如果指定操作者，则操作者必须为团队管理员或者所有者。
+	Operator *string `json:"Operator,omitempty" name:"Operator"`
+}
+
 type ModifyTeamRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 平台 Id，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
 	Platform *string `json:"Platform,omitempty" name:"Platform"`
 
@@ -3700,13 +4663,15 @@ func (r *ModifyTeamRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifyTeamResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type ModifyTeamResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *ModifyTeamResponseParams `json:"Response"`
 }
 
 func (r *ModifyTeamResponse) ToJsonString() string {
@@ -3720,9 +4685,39 @@ func (r *ModifyTeamResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifyVideoEncodingPresetRequestParams struct {
+	// 平台名称，指定访问的平台。
+	Platform *string `json:"Platform,omitempty" name:"Platform"`
+
+	// 配置 ID。
+	Id *uint64 `json:"Id,omitempty" name:"Id"`
+
+	// 更改后的视频编码配置名，不填则不修改。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 是否去除视频数据，可选值：
+	// <li>0：保留；</li>
+	// <li>1：去除。</li>
+	// 默认值：0。
+	RemoveVideo *int64 `json:"RemoveVideo,omitempty" name:"RemoveVideo"`
+
+	// 是否去除音频数据，可选值：
+	// <li>0：保留；</li>
+	// <li>1：去除。</li>
+	// 默认值：0。
+	RemoveAudio *int64 `json:"RemoveAudio,omitempty" name:"RemoveAudio"`
+
+	// 更改后的编码配置的视频设置。
+	VideoSetting *VideoEncodingPresetVideoSettingForUpdate `json:"VideoSetting,omitempty" name:"VideoSetting"`
+
+	// 更改后的编码配置的音频设置。
+	AudioSetting *VideoEncodingPresetAudioSettingForUpdate `json:"AudioSetting,omitempty" name:"AudioSetting"`
+}
+
 type ModifyVideoEncodingPresetRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 平台名称，指定访问的平台。
 	Platform *string `json:"Platform,omitempty" name:"Platform"`
 
@@ -3776,13 +4771,15 @@ func (r *ModifyVideoEncodingPresetRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifyVideoEncodingPresetResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type ModifyVideoEncodingPresetResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *ModifyVideoEncodingPresetResponseParams `json:"Response"`
 }
 
 func (r *ModifyVideoEncodingPresetResponse) ToJsonString() string {
@@ -3796,9 +4793,27 @@ func (r *ModifyVideoEncodingPresetResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type MoveClassRequestParams struct {
+	// 平台名称，指定访问的平台。
+	Platform *string `json:"Platform,omitempty" name:"Platform"`
+
+	// 归属者。
+	Owner *Entity `json:"Owner,omitempty" name:"Owner"`
+
+	// 源分类路径。
+	SourceClassPath *string `json:"SourceClassPath,omitempty" name:"SourceClassPath"`
+
+	// 目标分类路径。
+	DestinationClassPath *string `json:"DestinationClassPath,omitempty" name:"DestinationClassPath"`
+
+	// 操作者。填写用户的 Id，用于标识调用者及校验操作权限。
+	Operator *string `json:"Operator,omitempty" name:"Operator"`
+}
+
 type MoveClassRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 平台名称，指定访问的平台。
 	Platform *string `json:"Platform,omitempty" name:"Platform"`
 
@@ -3838,13 +4853,15 @@ func (r *MoveClassRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type MoveClassResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type MoveClassResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *MoveClassResponseParams `json:"Response"`
 }
 
 func (r *MoveClassResponse) ToJsonString() string {
@@ -3858,9 +4875,24 @@ func (r *MoveClassResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type MoveResourceRequestParams struct {
+	// 平台 Id，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
+	Platform *string `json:"Platform,omitempty" name:"Platform"`
+
+	// 待移动的原始资源信息，包含原始媒体或分类资源，以及资源归属。
+	SourceResource *ResourceInfo `json:"SourceResource,omitempty" name:"SourceResource"`
+
+	// 目标信息，包含分类及归属，仅支持移动资源到分类。
+	DestinationResource *ResourceInfo `json:"DestinationResource,omitempty" name:"DestinationResource"`
+
+	// 操作者。如不填，默认为 `cmeid_system`，表示平台管理员操作，可以移动任务资源。如果指定操作者，则操作者必须对源及目标资源有写权限。
+	Operator *string `json:"Operator,omitempty" name:"Operator"`
+}
+
 type MoveResourceRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 平台 Id，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
 	Platform *string `json:"Platform,omitempty" name:"Platform"`
 
@@ -3896,13 +4928,15 @@ func (r *MoveResourceRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type MoveResourceResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type MoveResourceResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *MoveResourceResponseParams `json:"Response"`
 }
 
 func (r *MoveResourceResponse) ToJsonString() string {
@@ -3917,7 +4951,6 @@ func (r *MoveResourceResponse) FromJsonString(s string) error {
 }
 
 type OtherMaterial struct {
-
 	// 素材媒体文件的播放 URL 地址。
 	MaterialUrl *string `json:"MaterialUrl,omitempty" name:"MaterialUrl"`
 
@@ -3925,9 +4958,18 @@ type OtherMaterial struct {
 	VodFileId *string `json:"VodFileId,omitempty" name:"VodFileId"`
 }
 
+// Predefined struct for user
+type ParseEventRequestParams struct {
+	// 平台名称，指定访问的平台。
+	Platform *string `json:"Platform,omitempty" name:"Platform"`
+
+	// 回调事件内容。
+	EventContent *string `json:"EventContent,omitempty" name:"EventContent"`
+}
+
 type ParseEventRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 平台名称，指定访问的平台。
 	Platform *string `json:"Platform,omitempty" name:"Platform"`
 
@@ -3955,16 +4997,18 @@ func (r *ParseEventRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ParseEventResponseParams struct {
+	// 事件内容。
+	EventContent *EventContent `json:"EventContent,omitempty" name:"EventContent"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type ParseEventResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 事件内容。
-		EventContent *EventContent `json:"EventContent,omitempty" name:"EventContent"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *ParseEventResponseParams `json:"Response"`
 }
 
 func (r *ParseEventResponse) ToJsonString() string {
@@ -3979,7 +5023,6 @@ func (r *ParseEventResponse) FromJsonString(s string) error {
 }
 
 type PenguinMediaPlatformPublishInfo struct {
-
 	// 视频发布标题。
 	Title *string `json:"Title,omitempty" name:"Title"`
 
@@ -3994,7 +5037,6 @@ type PenguinMediaPlatformPublishInfo struct {
 }
 
 type PlatformInfo struct {
-
 	// 平台标识。
 	Platform *string `json:"Platform,omitempty" name:"Platform"`
 
@@ -4021,7 +5063,6 @@ type PlatformInfo struct {
 }
 
 type PresetTagInfo struct {
-
 	// 标签 Id 。
 	Id *string `json:"Id,omitempty" name:"Id"`
 
@@ -4033,7 +5074,6 @@ type PresetTagInfo struct {
 }
 
 type ProjectInfo struct {
-
 	// 项目 Id。
 	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
 
@@ -4069,7 +5109,6 @@ type ProjectInfo struct {
 }
 
 type ProjectStreamConnectStatusChangedEvent struct {
-
 	// 项目 Id。
 	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
 
@@ -4090,7 +5129,6 @@ type ProjectStreamConnectStatusChangedEvent struct {
 }
 
 type ProjectSwitcherStatusChangedEvent struct {
-
 	// 导播台项目 Id。
 	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
 
@@ -4105,7 +5143,6 @@ type ProjectSwitcherStatusChangedEvent struct {
 }
 
 type RecordReplayProjectInput struct {
-
 	// 录制拉流地址。
 	PullStreamUrl *string `json:"PullStreamUrl,omitempty" name:"PullStreamUrl"`
 
@@ -4120,7 +5157,6 @@ type RecordReplayProjectInput struct {
 }
 
 type Resource struct {
-
 	// 类型，取值有：
 	// <li>MATERIAL：素材。</li>
 	// <li>CLASS：分类。</li>
@@ -4131,7 +5167,6 @@ type Resource struct {
 }
 
 type ResourceInfo struct {
-
 	// 媒资和分类资源。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Resource *Resource `json:"Resource,omitempty" name:"Resource"`
@@ -4140,9 +5175,34 @@ type ResourceInfo struct {
 	Owner *Entity `json:"Owner,omitempty" name:"Owner"`
 }
 
+// Predefined struct for user
+type RevokeResourceAuthorizationRequestParams struct {
+	// 平台 Id，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
+	Platform *string `json:"Platform,omitempty" name:"Platform"`
+
+	// 资源所属实体。
+	Owner *Entity `json:"Owner,omitempty" name:"Owner"`
+
+	// 被授权资源。
+	Resources []*Resource `json:"Resources,omitempty" name:"Resources"`
+
+	// 被授权目标实体。
+	Authorizees []*Entity `json:"Authorizees,omitempty" name:"Authorizees"`
+
+	// 详细授权值。 取值有：
+	// <li>R：可读，可以浏览素材，但不能使用该素材（将其添加到 Project），或复制到自己的媒资库中</li>
+	// <li>X：可用，可以使用该素材（将其添加到 Project），但不能将其复制到自己的媒资库中，意味着被授权者无法将该资源进一步扩散给其他个人或团队。</li>
+	// <li>C：可复制，既可以使用该素材（将其添加到 Project），也可以将其复制到自己的媒资库中。</li>
+	// <li>W：可修改、删除媒资。</li>
+	Permissions []*string `json:"Permissions,omitempty" name:"Permissions"`
+
+	// 操作者。如不填，默认为 `cmeid_system`，表示平台管理员操作，撤销任意资源的授权权限。如果指定操作者，则操作者必须对被授权资源有写权限。
+	Operator *string `json:"Operator,omitempty" name:"Operator"`
+}
+
 type RevokeResourceAuthorizationRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 平台 Id，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
 	Platform *string `json:"Platform,omitempty" name:"Platform"`
 
@@ -4190,13 +5250,15 @@ func (r *RevokeResourceAuthorizationRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type RevokeResourceAuthorizationResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type RevokeResourceAuthorizationResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *RevokeResourceAuthorizationResponseParams `json:"Response"`
 }
 
 func (r *RevokeResourceAuthorizationResponse) ToJsonString() string {
@@ -4211,7 +5273,6 @@ func (r *RevokeResourceAuthorizationResponse) FromJsonString(s string) error {
 }
 
 type RtmpPushInputInfo struct {
-
 	// 直播推流地址有效期，单位：秒 。
 	ExpiredSecond *uint64 `json:"ExpiredSecond,omitempty" name:"ExpiredSecond"`
 
@@ -4219,9 +5280,52 @@ type RtmpPushInputInfo struct {
 	PushUrl *string `json:"PushUrl,omitempty" name:"PushUrl"`
 }
 
+// Predefined struct for user
+type SearchMaterialRequestParams struct {
+	// 平台 Id，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
+	Platform *string `json:"Platform,omitempty" name:"Platform"`
+
+	// 指定搜索空间，数组长度不得超过5。
+	SearchScopes []*SearchScope `json:"SearchScopes,omitempty" name:"SearchScopes"`
+
+	// 媒体类型，可取值有：
+	// <li>AUDIO：音频；</li>
+	// <li>VIDEO：视频 ；</li>
+	// <li>IMAGE：图片；</li>
+	// <li>VIDEO_EDIT_TEMPLATE：剪辑模板。</li>
+	MaterialTypes []*string `json:"MaterialTypes,omitempty" name:"MaterialTypes"`
+
+	// 搜索文本，模糊匹配媒体名称或描述信息，匹配项越多，匹配度越高，排序越优先。长度限制：15个字符。
+	Text *string `json:"Text,omitempty" name:"Text"`
+
+	// 按画质检索，取值为：LD/SD/HD/FHD/2K/4K。
+	Resolution *string `json:"Resolution,omitempty" name:"Resolution"`
+
+	// 按媒体时长检索，单位s。
+	DurationRange *IntegerRange `json:"DurationRange,omitempty" name:"DurationRange"`
+
+	// 按照媒体创建时间检索。
+	CreateTimeRange *TimeRange `json:"CreateTimeRange,omitempty" name:"CreateTimeRange"`
+
+	// 按标签检索，填入检索的标签名。
+	Tags []*string `json:"Tags,omitempty" name:"Tags"`
+
+	// 排序方式。Sort.Field 可选值：CreateTime。指定 Text 搜索时，将根据匹配度排序，该字段无效。
+	Sort *SortBy `json:"Sort,omitempty" name:"Sort"`
+
+	// 偏移量。默认值：0。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回记录条数，默认值：50。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 操作者。如不填，默认为 `cmeid_system`，表示平台管理员操作，可以搜索任意媒体的信息。如果指定操作者，则操作者必须对媒体有读权限。
+	Operator *string `json:"Operator,omitempty" name:"Operator"`
+}
+
 type SearchMaterialRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 平台 Id，指定访问的平台。关于平台概念，请参见文档 [平台](https://cloud.tencent.com/document/product/1156/43767)。
 	Platform *string `json:"Platform,omitempty" name:"Platform"`
 
@@ -4293,19 +5397,21 @@ func (r *SearchMaterialRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type SearchMaterialResponseParams struct {
+	// 符合记录总条数。
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 媒体信息，仅返回基础信息。
+	MaterialInfoSet []*MaterialInfo `json:"MaterialInfoSet,omitempty" name:"MaterialInfoSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type SearchMaterialResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 符合记录总条数。
-		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 媒体信息，仅返回基础信息。
-		MaterialInfoSet []*MaterialInfo `json:"MaterialInfoSet,omitempty" name:"MaterialInfoSet"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *SearchMaterialResponseParams `json:"Response"`
 }
 
 func (r *SearchMaterialResponse) ToJsonString() string {
@@ -4320,7 +5426,6 @@ func (r *SearchMaterialResponse) FromJsonString(s string) error {
 }
 
 type SearchScope struct {
-
 	// 分类路径归属。
 	Owner *Entity `json:"Owner,omitempty" name:"Owner"`
 
@@ -4329,7 +5434,6 @@ type SearchScope struct {
 }
 
 type SlotInfo struct {
-
 	// 卡槽 Id。
 	Id *int64 `json:"Id,omitempty" name:"Id"`
 
@@ -4352,7 +5456,6 @@ type SlotInfo struct {
 }
 
 type SlotReplacementInfo struct {
-
 	// 卡槽 Id。
 	Id *int64 `json:"Id,omitempty" name:"Id"`
 
@@ -4372,7 +5475,6 @@ type SlotReplacementInfo struct {
 }
 
 type SortBy struct {
-
 	// 排序字段。
 	Field *string `json:"Field,omitempty" name:"Field"`
 
@@ -4381,7 +5483,6 @@ type SortBy struct {
 }
 
 type StorageNewFileCreatedEvent struct {
-
 	// 云点播文件  Id。
 	FileId *string `json:"FileId,omitempty" name:"FileId"`
 
@@ -4413,7 +5514,6 @@ type StorageNewFileCreatedEvent struct {
 }
 
 type StreamConnectInputInterruptInfo struct {
-
 	// 云转推输入源标识，取值有：
 	// <li>Main：主源；</li>
 	// <li>Backup：备源。</li>
@@ -4421,7 +5521,6 @@ type StreamConnectInputInterruptInfo struct {
 }
 
 type StreamConnectOutput struct {
-
 	// 云转推输出源标识，转推项目级别唯一。若不填则由后端生成。
 	Id *string `json:"Id,omitempty" name:"Id"`
 
@@ -4438,7 +5537,6 @@ type StreamConnectOutput struct {
 }
 
 type StreamConnectOutputInfo struct {
-
 	// 输出源。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	StreamConnectOutput *StreamConnectOutput `json:"StreamConnectOutput,omitempty" name:"StreamConnectOutput"`
@@ -4450,7 +5548,6 @@ type StreamConnectOutputInfo struct {
 }
 
 type StreamConnectOutputInterruptInfo struct {
-
 	// 云转推输出标识。
 	Id *string `json:"Id,omitempty" name:"Id"`
 
@@ -4462,7 +5559,6 @@ type StreamConnectOutputInterruptInfo struct {
 }
 
 type StreamConnectProjectInfo struct {
-
 	// 转推项目状态，取值有：
 	// <li>Working ：转推中；</li>
 	// <li>Idle ：空闲中。</li>
@@ -4495,7 +5591,6 @@ type StreamConnectProjectInfo struct {
 }
 
 type StreamConnectProjectInput struct {
-
 	// 云转推主输入源信息。
 	MainInput *StreamInputInfo `json:"MainInput,omitempty" name:"MainInput"`
 
@@ -4507,7 +5602,6 @@ type StreamConnectProjectInput struct {
 }
 
 type StreamInputInfo struct {
-
 	// 流输入类型，取值：
 	// <li>VodPull ： 点播拉流；</li>
 	// <li>LivePull ：直播拉流；</li>
@@ -4528,7 +5622,6 @@ type StreamInputInfo struct {
 }
 
 type SwitcherPgmOutputConfig struct {
-
 	// 导播台输出模板 ID，可取值：
 	// <li>10001：分辨率为1080 P；</li>
 	// <li>10002：分辨率为720 P；</li>
@@ -4549,7 +5642,6 @@ type SwitcherPgmOutputConfig struct {
 }
 
 type SwitcherProjectInput struct {
-
 	// 导播台停止时间，格式按照 ISO 8601 标准表示。若不填，该值默认为当前时间加七天。
 	StopTime *string `json:"StopTime,omitempty" name:"StopTime"`
 
@@ -4558,7 +5650,6 @@ type SwitcherProjectInput struct {
 }
 
 type TaskBaseInfo struct {
-
 	// 任务 Id。
 	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
 
@@ -4588,7 +5679,6 @@ type TaskBaseInfo struct {
 }
 
 type TeamInfo struct {
-
 	// 团队 ID。
 	TeamId *string `json:"TeamId,omitempty" name:"TeamId"`
 
@@ -4606,7 +5696,6 @@ type TeamInfo struct {
 }
 
 type TeamMemberInfo struct {
-
 	// 团队成员 ID。
 	MemberId *string `json:"MemberId,omitempty" name:"MemberId"`
 
@@ -4621,19 +5710,16 @@ type TeamMemberInfo struct {
 }
 
 type TextReplacementInfo struct {
-
 	// 替换的文本信息。
 	Text *string `json:"Text,omitempty" name:"Text"`
 }
 
 type TextSlotInfo struct {
-
 	// 文本内容。
 	Text *string `json:"Text,omitempty" name:"Text"`
 }
 
 type ThirdPartyPublishInfo struct {
-
 	// 发布通道  ID。
 	ChannelMaterialId *string `json:"ChannelMaterialId,omitempty" name:"ChannelMaterialId"`
 
@@ -4651,7 +5737,6 @@ type ThirdPartyPublishInfo struct {
 }
 
 type TimeRange struct {
-
 	// 开始时间，使用 ISO 日期格式。
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
 
@@ -4660,7 +5745,6 @@ type TimeRange struct {
 }
 
 type VODExportInfo struct {
-
 	// 导出的媒资名称。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
@@ -4672,7 +5756,6 @@ type VODExportInfo struct {
 }
 
 type VideoEditProjectInput struct {
-
 	// 画布宽高比，取值有：
 	// <li>16:9；</li>
 	// <li>9:16；</li>
@@ -4689,7 +5772,6 @@ type VideoEditProjectInput struct {
 }
 
 type VideoEditProjectOutput struct {
-
 	// 导出的多媒体创作引擎媒体 Id，仅当导出目标为多媒体创作引擎媒体时有效。
 	MaterialId *string `json:"MaterialId,omitempty" name:"MaterialId"`
 
@@ -4705,7 +5787,6 @@ type VideoEditProjectOutput struct {
 }
 
 type VideoEditTemplateMaterial struct {
-
 	// 视频编辑模板宽高比。
 	AspectRatio *string `json:"AspectRatio,omitempty" name:"AspectRatio"`
 
@@ -4717,7 +5798,6 @@ type VideoEditTemplateMaterial struct {
 }
 
 type VideoEncodingPreset struct {
-
 	// 配置 ID。
 	Id *uint64 `json:"Id,omitempty" name:"Id"`
 
@@ -4749,7 +5829,6 @@ type VideoEncodingPreset struct {
 }
 
 type VideoEncodingPresetAudioSetting struct {
-
 	// 音频流的编码格式，可选值：
 	// AAC：AAC 编码。
 	// 
@@ -4772,7 +5851,6 @@ type VideoEncodingPresetAudioSetting struct {
 }
 
 type VideoEncodingPresetAudioSettingForUpdate struct {
-
 	// 音频码率，单位：bps。
 	// 不填则不修改。
 	Bitrate *string `json:"Bitrate,omitempty" name:"Bitrate"`
@@ -4789,7 +5867,6 @@ type VideoEncodingPresetAudioSettingForUpdate struct {
 }
 
 type VideoEncodingPresetVideoSetting struct {
-
 	// 视频流的编码格式，可选值：
 	// <li>H264：H.264 编码。</li>
 	Codec *string `json:"Codec,omitempty" name:"Codec"`
@@ -4811,7 +5888,6 @@ type VideoEncodingPresetVideoSetting struct {
 }
 
 type VideoEncodingPresetVideoSettingForUpdate struct {
-
 	// 视频短边尺寸，取值范围： [128, 4096]，单位：px。
 	// 视频最后的分辨率，根据短边尺寸和宽高比进行计算。
 	// 例：如果项目的宽高比是 16：9 ：
@@ -4833,7 +5909,6 @@ type VideoEncodingPresetVideoSettingForUpdate struct {
 }
 
 type VideoExportCompletedEvent struct {
-
 	// 任务 Id。
 	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
 
@@ -4856,7 +5931,6 @@ type VideoExportCompletedEvent struct {
 }
 
 type VideoExportExtensionArgs struct {
-
 	// 封装格式，可选值：
 	// <li>mp4 </li>
 	// <li>mov </li>
@@ -4898,7 +5972,6 @@ type VideoExportExtensionArgs struct {
 }
 
 type VideoMaterial struct {
-
 	// 素材元信息。
 	MetaData *MediaMetaData `json:"MetaData,omitempty" name:"MetaData"`
 
@@ -4926,7 +5999,6 @@ type VideoMaterial struct {
 }
 
 type VideoSegmentationProjectInput struct {
-
 	// 画布宽高比，取值有：
 	// <li>16:9；</li>
 	// <li>9:16；</li>
@@ -4945,7 +6017,6 @@ type VideoSegmentationProjectInput struct {
 }
 
 type VideoStreamInfo struct {
-
 	// 码率，单位：bps。
 	Bitrate *uint64 `json:"Bitrate,omitempty" name:"Bitrate"`
 
@@ -4963,7 +6034,6 @@ type VideoStreamInfo struct {
 }
 
 type VideoTrackItem struct {
-
 	// 视频媒体来源类型，取值有：
 	// <ul>
 	// <li>VOD ：媒体来源于云点播文件 。</li>
@@ -5025,7 +6095,6 @@ type VideoTrackItem struct {
 }
 
 type VodPullInputInfo struct {
-
 	// 点播输入拉流 URL 。
 	InputUrls []*string `json:"InputUrls,omitempty" name:"InputUrls"`
 
@@ -5038,7 +6107,6 @@ type VodPullInputInfo struct {
 }
 
 type WeiboPublishInfo struct {
-
 	// 视频发布标题。
 	Title *string `json:"Title,omitempty" name:"Title"`
 

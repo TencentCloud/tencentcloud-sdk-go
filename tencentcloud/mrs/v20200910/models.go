@@ -21,14 +21,12 @@ import (
 )
 
 type Advice struct {
-
 	// 文本
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Text *string `json:"Text,omitempty" name:"Text"`
 }
 
 type AspectRatio struct {
-
 	// 原文位置
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Index []*int64 `json:"Index,omitempty" name:"Index"`
@@ -51,7 +49,6 @@ type AspectRatio struct {
 }
 
 type BiopsyPart struct {
-
 	// 值
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Value *string `json:"Value,omitempty" name:"Value"`
@@ -62,7 +59,6 @@ type BiopsyPart struct {
 }
 
 type BlockInfo struct {
-
 	// 原文位置
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Index []*int64 `json:"Index,omitempty" name:"Index"`
@@ -89,7 +85,6 @@ type BlockInfo struct {
 }
 
 type Check struct {
-
 	// 描述
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Desc *Desc `json:"Desc,omitempty" name:"Desc"`
@@ -100,7 +95,6 @@ type Check struct {
 }
 
 type Desc struct {
-
 	// 描述
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Text *string `json:"Text,omitempty" name:"Text"`
@@ -115,7 +109,6 @@ type Desc struct {
 }
 
 type DiagCert struct {
-
 	// 建议
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Advice *Advice `json:"Advice,omitempty" name:"Advice"`
@@ -126,7 +119,6 @@ type DiagCert struct {
 }
 
 type DiagCertItem struct {
-
 	// 文本
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Text *string `json:"Text,omitempty" name:"Text"`
@@ -141,7 +133,6 @@ type DiagCertItem struct {
 }
 
 type DischargeDiagnosis struct {
-
 	// 表格位置
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TableIndex *int64 `json:"TableIndex,omitempty" name:"TableIndex"`
@@ -164,7 +155,6 @@ type DischargeDiagnosis struct {
 }
 
 type DiseaseMedicalHistory struct {
-
 	// 主病史
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MainDiseaseHistory *string `json:"MainDiseaseHistory,omitempty" name:"MainDiseaseHistory"`
@@ -187,7 +177,6 @@ type DiseaseMedicalHistory struct {
 }
 
 type EcgDescription struct {
-
 	// 心率
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	HeartRate *EcgItem `json:"HeartRate,omitempty" name:"HeartRate"`
@@ -270,7 +259,6 @@ type EcgDescription struct {
 }
 
 type EcgDiagnosis struct {
-
 	// 名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitempty" name:"Name"`
@@ -281,7 +269,6 @@ type EcgDiagnosis struct {
 }
 
 type EcgItem struct {
-
 	// 名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitempty" name:"Name"`
@@ -300,7 +287,6 @@ type EcgItem struct {
 }
 
 type Elastic struct {
-
 	// 原文位置
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Index []*int64 `json:"Index,omitempty" name:"Index"`
@@ -323,7 +309,6 @@ type Elastic struct {
 }
 
 type Electrocardiogram struct {
-
 	// 心电图详情
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EcgDescription *EcgDescription `json:"EcgDescription,omitempty" name:"EcgDescription"`
@@ -334,7 +319,6 @@ type Electrocardiogram struct {
 }
 
 type Endoscopy struct {
-
 	// 活检部位
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BiopsyPart *BiopsyPart `json:"BiopsyPart,omitempty" name:"BiopsyPart"`
@@ -349,7 +333,6 @@ type Endoscopy struct {
 }
 
 type EndoscopyDesc struct {
-
 	// 描述内容
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Text *string `json:"Text,omitempty" name:"Text"`
@@ -360,7 +343,6 @@ type EndoscopyDesc struct {
 }
 
 type EndoscopyOrgan struct {
-
 	// 部位
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Part *Part `json:"Part,omitempty" name:"Part"`
@@ -383,7 +365,6 @@ type EndoscopyOrgan struct {
 }
 
 type FamilyMedicalHistory struct {
-
 	// 家族成员史
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RelativeHistory *string `json:"RelativeHistory,omitempty" name:"RelativeHistory"`
@@ -398,7 +379,6 @@ type FamilyMedicalHistory struct {
 }
 
 type FirstPage struct {
-
 	// 出入院诊断
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DischargeDiagnosis []*DischargeDiagnosis `json:"DischargeDiagnosis,omitempty" name:"DischargeDiagnosis"`
@@ -413,7 +393,6 @@ type FirstPage struct {
 }
 
 type HandleParam struct {
-
 	// ocr引擎
 	OcrEngineType *int64 `json:"OcrEngineType,omitempty" name:"OcrEngineType"`
 
@@ -440,7 +419,6 @@ type HandleParam struct {
 }
 
 type HistologyLevel struct {
-
 	// 等级
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Grade *string `json:"Grade,omitempty" name:"Grade"`
@@ -455,7 +433,6 @@ type HistologyLevel struct {
 }
 
 type HistologyType struct {
-
 	// 浸润
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Infiltration *string `json:"Infiltration,omitempty" name:"Infiltration"`
@@ -474,7 +451,6 @@ type HistologyType struct {
 }
 
 type Hospitalization struct {
-
 	// 入院时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AdmissionTime *string `json:"AdmissionTime,omitempty" name:"AdmissionTime"`
@@ -509,7 +485,6 @@ type Hospitalization struct {
 }
 
 type IHCInfo struct {
-
 	// 原文位置
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Index []*int64 `json:"Index,omitempty" name:"Index"`
@@ -527,7 +502,6 @@ type IHCInfo struct {
 }
 
 type ImageInfo struct {
-
 	// 图片id
 	Id *uint64 `json:"Id,omitempty" name:"Id"`
 
@@ -538,9 +512,21 @@ type ImageInfo struct {
 	Base64 *string `json:"Base64,omitempty" name:"Base64"`
 }
 
+// Predefined struct for user
+type ImageToClassRequestParams struct {
+	// 图片列表，允许传入多张图片，支持传入图片的base64编码，暂不支持图片url
+	ImageInfoList []*ImageInfo `json:"ImageInfoList,omitempty" name:"ImageInfoList"`
+
+	// 图片处理参数
+	HandleParam *HandleParam `json:"HandleParam,omitempty" name:"HandleParam"`
+
+	// 不填，默认为0
+	Type *uint64 `json:"Type,omitempty" name:"Type"`
+}
+
 type ImageToClassRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 图片列表，允许传入多张图片，支持传入图片的base64编码，暂不支持图片url
 	ImageInfoList []*ImageInfo `json:"ImageInfoList,omitempty" name:"ImageInfoList"`
 
@@ -572,17 +558,19 @@ func (r *ImageToClassRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ImageToClassResponseParams struct {
+	// 分类结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TextTypeList []*TextType `json:"TextTypeList,omitempty" name:"TextTypeList"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type ImageToClassResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 分类结果
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		TextTypeList []*TextType `json:"TextTypeList,omitempty" name:"TextTypeList"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *ImageToClassResponseParams `json:"Response"`
 }
 
 func (r *ImageToClassResponse) ToJsonString() string {
@@ -596,9 +584,25 @@ func (r *ImageToClassResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ImageToObjectRequestParams struct {
+	// 图片列表，允许传入多张图片，目前只支持传入图片base64编码，图片url暂不支持
+	ImageInfoList []*ImageInfo `json:"ImageInfoList,omitempty" name:"ImageInfoList"`
+
+	// 图片处理参数
+	HandleParam *HandleParam `json:"HandleParam,omitempty" name:"HandleParam"`
+
+	// 报告类型，目前支持11（检验报告），12（检查报告），15（病理报告），28（出院报告），29（入院报告），210（门诊病历），212（手术记录），218（诊断证明），363（心电图），27（内窥镜检查），215（处方单），219（免疫接种证明），301（C14呼气试验）。如果不清楚报告类型，可以使用分类引擎，该字段传0（同时IsUsedClassify字段必须为True，否则无法输出结果）
+	Type *uint64 `json:"Type,omitempty" name:"Type"`
+
+	// 是否使用分类引擎，当不确定报告类型时，可以使用收费的报告分类引擎服务。若该字段为 False，则 Type 字段不能为 0，否则无法输出结果。
+	// 注意：当 IsUsedClassify 为True 时，表示使用收费的报告分类服务，将会产生额外的费用，具体收费标准参见 [购买指南的产品价格](https://cloud.tencent.com/document/product/1314/54264)。
+	IsUsedClassify *bool `json:"IsUsedClassify,omitempty" name:"IsUsedClassify"`
+}
+
 type ImageToObjectRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 图片列表，允许传入多张图片，目前只支持传入图片base64编码，图片url暂不支持
 	ImageInfoList []*ImageInfo `json:"ImageInfoList,omitempty" name:"ImageInfoList"`
 
@@ -635,21 +639,23 @@ func (r *ImageToObjectRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ImageToObjectResponseParams struct {
+	// 报告结构化结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Template *Template `json:"Template,omitempty" name:"Template"`
+
+	// 多级分类结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TextTypeList []*TextType `json:"TextTypeList,omitempty" name:"TextTypeList"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type ImageToObjectResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 报告结构化结果
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		Template *Template `json:"Template,omitempty" name:"Template"`
-
-		// 多级分类结果
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		TextTypeList []*TextType `json:"TextTypeList,omitempty" name:"TextTypeList"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *ImageToObjectResponseParams `json:"Response"`
 }
 
 func (r *ImageToObjectResponse) ToJsonString() string {
@@ -664,14 +670,12 @@ func (r *ImageToObjectResponse) FromJsonString(s string) error {
 }
 
 type Indicator struct {
-
 	// 检验指标项
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Indicators []*IndicatorItem `json:"Indicators,omitempty" name:"Indicators"`
 }
 
 type IndicatorItem struct {
-
 	// 英文缩写
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Code *string `json:"Code,omitempty" name:"Code"`
@@ -714,7 +718,6 @@ type IndicatorItem struct {
 }
 
 type Invas struct {
-
 	// 原文位置
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Index []*int64 `json:"Index,omitempty" name:"Index"`
@@ -733,7 +736,6 @@ type Invas struct {
 }
 
 type Lymph struct {
-
 	// 原文
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Src *string `json:"Src,omitempty" name:"Src"`
@@ -756,7 +758,6 @@ type Lymph struct {
 }
 
 type MedDoc struct {
-
 	// 建议
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Advice *Advice `json:"Advice,omitempty" name:"Advice"`
@@ -786,7 +787,6 @@ type MedDoc struct {
 }
 
 type MedicalRecordInfo struct {
-
 	// 就诊日期
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DiagnosisTime *string `json:"DiagnosisTime,omitempty" name:"DiagnosisTime"`
@@ -821,7 +821,6 @@ type MedicalRecordInfo struct {
 }
 
 type Medicine struct {
-
 	// 药品名
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitempty" name:"Name"`
@@ -856,7 +855,6 @@ type Medicine struct {
 }
 
 type MenstrualMedicalHistory struct {
-
 	// 末次月经时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LastMenstrualPeriod *string `json:"LastMenstrualPeriod,omitempty" name:"LastMenstrualPeriod"`
@@ -883,7 +881,6 @@ type MenstrualMedicalHistory struct {
 }
 
 type Multiple struct {
-
 	// 原文位置
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Index []*int64 `json:"Index,omitempty" name:"Index"`
@@ -906,7 +903,6 @@ type Multiple struct {
 }
 
 type NormPart struct {
-
 	// 部位值
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Part *string `json:"Part,omitempty" name:"Part"`
@@ -929,7 +925,6 @@ type NormPart struct {
 }
 
 type NormSize struct {
-
 	// 数量
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Number []*string `json:"Number,omitempty" name:"Number"`
@@ -944,7 +939,6 @@ type NormSize struct {
 }
 
 type ObstericalMedicalHistory struct {
-
 	// 婚史
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MarriageHistory *string `json:"MarriageHistory,omitempty" name:"MarriageHistory"`
@@ -955,7 +949,6 @@ type ObstericalMedicalHistory struct {
 }
 
 type Organ struct {
-
 	// 部位
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Part *Part `json:"Part,omitempty" name:"Part"`
@@ -1046,7 +1039,6 @@ type Organ struct {
 }
 
 type Part struct {
-
 	// 原文位置
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Index []*int64 `json:"Index,omitempty" name:"Index"`
@@ -1069,7 +1061,6 @@ type Part struct {
 }
 
 type PathologyReport struct {
-
 	// 癌症部位
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CancerPart *Part `json:"CancerPart,omitempty" name:"CancerPart"`
@@ -1128,7 +1119,6 @@ type PathologyReport struct {
 }
 
 type PatientInfo struct {
-
 	// 患者姓名
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitempty" name:"Name"`
@@ -1215,7 +1205,6 @@ type PatientInfo struct {
 }
 
 type PersonalMedicalHistory struct {
-
 	// 出生史
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BirthPlace *string `json:"BirthPlace,omitempty" name:"BirthPlace"`
@@ -1238,14 +1227,12 @@ type PersonalMedicalHistory struct {
 }
 
 type Prescription struct {
-
 	// 药品列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MedicineList []*Medicine `json:"MedicineList,omitempty" name:"MedicineList"`
 }
 
 type ReportInfo struct {
-
 	// 医院名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Hospital *string `json:"Hospital,omitempty" name:"Hospital"`
@@ -1320,7 +1307,6 @@ type ReportInfo struct {
 }
 
 type Size struct {
-
 	// 原文位置
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Index []*int64 `json:"Index,omitempty" name:"Index"`
@@ -1339,7 +1325,6 @@ type Size struct {
 }
 
 type Summary struct {
-
 	// 症状
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Symptom []*SymptomInfo `json:"Symptom,omitempty" name:"Symptom"`
@@ -1350,14 +1335,12 @@ type Summary struct {
 }
 
 type Surgery struct {
-
 	// 手术史
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SurgeryHistory *SurgeryHistory `json:"SurgeryHistory,omitempty" name:"SurgeryHistory"`
 }
 
 type SurgeryAttr struct {
-
 	// 名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitempty" name:"Name"`
@@ -1368,7 +1351,6 @@ type SurgeryAttr struct {
 }
 
 type SurgeryHistory struct {
-
 	// 手术名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SurgeryName *SurgeryAttr `json:"SurgeryName,omitempty" name:"SurgeryName"`
@@ -1395,7 +1377,6 @@ type SurgeryHistory struct {
 }
 
 type SymptomInfo struct {
-
 	// 等级
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Grade *BlockInfo `json:"Grade,omitempty" name:"Grade"`
@@ -1422,7 +1403,6 @@ type SymptomInfo struct {
 }
 
 type Template struct {
-
 	// 患者信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PatientInfo *PatientInfo `json:"PatientInfo,omitempty" name:"PatientInfo"`
@@ -1496,9 +1476,15 @@ type Template struct {
 	OcrResult *string `json:"OcrResult,omitempty" name:"OcrResult"`
 }
 
+// Predefined struct for user
+type TextToClassRequestParams struct {
+	// 报告文本
+	Text *string `json:"Text,omitempty" name:"Text"`
+}
+
 type TextToClassRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 报告文本
 	Text *string `json:"Text,omitempty" name:"Text"`
 }
@@ -1522,16 +1508,18 @@ func (r *TextToClassRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type TextToClassResponseParams struct {
+	// 分类结果
+	TextTypeList []*TextType `json:"TextTypeList,omitempty" name:"TextTypeList"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type TextToClassResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 分类结果
-		TextTypeList []*TextType `json:"TextTypeList,omitempty" name:"TextTypeList"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *TextToClassResponseParams `json:"Response"`
 }
 
 func (r *TextToClassResponse) ToJsonString() string {
@@ -1545,9 +1533,22 @@ func (r *TextToClassResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type TextToObjectRequestParams struct {
+	// 报告文本
+	Text *string `json:"Text,omitempty" name:"Text"`
+
+	// 报告类型，目前支持12（检查报告），15（病理报告），28（出院报告），29（入院报告），210（门诊病历），212（手术记录），218（诊断证明），363（心电图），27（内窥镜检查），215（处方单），219（免疫接种证明），301（C14呼气试验）。如果不清楚报告类型，可以使用分类引擎，该字段传0（同时IsUsedClassify字段必须为True，否则无法输出结果）
+	Type *uint64 `json:"Type,omitempty" name:"Type"`
+
+	// 是否使用分类引擎，当不确定报告类型时，可以使用收费的报告分类引擎服务。若该字段为False，则Type字段不能为0，否则无法输出结果。
+	// 注意：当 IsUsedClassify 为True 时，表示使用收费的报告分类服务，将会产生额外的费用，具体收费标准参见 [购买指南的产品价格](https://cloud.tencent.com/document/product/1314/54264)。
+	IsUsedClassify *bool `json:"IsUsedClassify,omitempty" name:"IsUsedClassify"`
+}
+
 type TextToObjectRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 报告文本
 	Text *string `json:"Text,omitempty" name:"Text"`
 
@@ -1580,16 +1581,18 @@ func (r *TextToObjectRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type TextToObjectResponseParams struct {
+	// 报告结构化结果
+	Template *Template `json:"Template,omitempty" name:"Template"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type TextToObjectResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 报告结构化结果
-		Template *Template `json:"Template,omitempty" name:"Template"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *TextToObjectResponseParams `json:"Response"`
 }
 
 func (r *TextToObjectResponse) ToJsonString() string {
@@ -1604,7 +1607,6 @@ func (r *TextToObjectResponse) FromJsonString(s string) error {
 }
 
 type TextType struct {
-
 	// 类别Id
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Id *int64 `json:"Id,omitempty" name:"Id"`
@@ -1619,7 +1621,6 @@ type TextType struct {
 }
 
 type TreatmentRecord struct {
-
 	// 入院
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DmissionCondition *string `json:"DmissionCondition,omitempty" name:"DmissionCondition"`
@@ -1730,7 +1731,6 @@ type TreatmentRecord struct {
 }
 
 type TuberInfo struct {
-
 	// 类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Type *BlockInfo `json:"Type,omitempty" name:"Type"`
@@ -1865,7 +1865,6 @@ type TuberInfo struct {
 }
 
 type Vaccination struct {
-
 	// 序号
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Id *string `json:"Id,omitempty" name:"Id"`
@@ -1904,14 +1903,12 @@ type Vaccination struct {
 }
 
 type VaccineCertificate struct {
-
 	// 免疫接种列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	VaccineList []*Vaccination `json:"VaccineList,omitempty" name:"VaccineList"`
 }
 
 type Value struct {
-
 	// 等级
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Grade *string `json:"Grade,omitempty" name:"Grade"`

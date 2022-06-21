@@ -20,9 +20,26 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+// Predefined struct for user
+type AssessQualityRequestParams struct {
+	// 图片URL地址。 
+	// 图片限制： 
+	// • 图片格式：PNG、JPG、JPEG。 
+	// • 图片大小：所下载图片经Base64编码后不超过4M。图片下载时间不超过3秒。 
+	// 建议：
+	// • 图片像素：大于50*50像素，否则影响识别效果； 
+	// • 长宽比：长边：短边<5； 
+	// 接口响应时间会受到图片下载时间的影响，建议使用更可靠的存储服务，推荐将图片存储在腾讯云COS。
+	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
+
+	// 图片经过base64编码的内容。最大不超过4M。与ImageUrl同时存在时优先使用ImageUrl字段。
+	// **注意：图片需要base64编码，并且要去掉编码头部。**
+	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
+}
+
 type AssessQualityRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 图片URL地址。 
 	// 图片限制： 
 	// • 图片格式：PNG、JPG、JPEG。 
@@ -58,34 +75,36 @@ func (r *AssessQualityRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type AssessQualityResponseParams struct {
+	// 取值为TRUE或FALSE，TRUE为长图，FALSE为正常图，长图定义为长宽比大于等于3或小于等于1/3的图片。
+	LongImage *bool `json:"LongImage,omitempty" name:"LongImage"`
+
+	// 取值为TRUE或FALSE，TRUE为黑白图，FALSE为否。黑白图即灰度图，指红绿蓝三个通道都是以灰度色阶显示的图片，并非视觉上的“黑白图片”。
+	BlackAndWhite *bool `json:"BlackAndWhite,omitempty" name:"BlackAndWhite"`
+
+	// 取值为TRUE或FALSE，TRUE为小图，FALSE为否, 小图定义为最长边小于179像素的图片。当一张图片被判断为小图时，不建议做推荐和展示，其他字段统一输出为0或FALSE。
+	SmallImage *bool `json:"SmallImage,omitempty" name:"SmallImage"`
+
+	// 取值为TRUE或FALSE，TRUE为大图，FALSE为否，定义为最短边大于1000像素的图片
+	BigImage *bool `json:"BigImage,omitempty" name:"BigImage"`
+
+	// 取值为TRUE或FALSE，TRUE为纯色图或纯文字图，即没有内容或只有简单内容的图片，FALSE为正常图片。
+	PureImage *bool `json:"PureImage,omitempty" name:"PureImage"`
+
+	// 综合评分。图像清晰度的得分，对图片的噪声、曝光、模糊、压缩等因素进行综合评估，取值为[0, 100]，值越大，越清晰。一般大于50为较清晰图片，标准可以自行把握。
+	ClarityScore *int64 `json:"ClarityScore,omitempty" name:"ClarityScore"`
+
+	// 综合评分。图像美观度得分， 从构图、色彩等多个艺术性维度评价图片，取值为[0, 100]，值越大，越美观。一般大于50为较美观图片，标准可以自行把握。
+	AestheticScore *int64 `json:"AestheticScore,omitempty" name:"AestheticScore"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type AssessQualityResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 取值为TRUE或FALSE，TRUE为长图，FALSE为正常图，长图定义为长宽比大于等于3或小于等于1/3的图片。
-		LongImage *bool `json:"LongImage,omitempty" name:"LongImage"`
-
-		// 取值为TRUE或FALSE，TRUE为黑白图，FALSE为否。黑白图即灰度图，指红绿蓝三个通道都是以灰度色阶显示的图片，并非视觉上的“黑白图片”。
-		BlackAndWhite *bool `json:"BlackAndWhite,omitempty" name:"BlackAndWhite"`
-
-		// 取值为TRUE或FALSE，TRUE为小图，FALSE为否, 小图定义为最长边小于179像素的图片。当一张图片被判断为小图时，不建议做推荐和展示，其他字段统一输出为0或FALSE。
-		SmallImage *bool `json:"SmallImage,omitempty" name:"SmallImage"`
-
-		// 取值为TRUE或FALSE，TRUE为大图，FALSE为否，定义为最短边大于1000像素的图片
-		BigImage *bool `json:"BigImage,omitempty" name:"BigImage"`
-
-		// 取值为TRUE或FALSE，TRUE为纯色图或纯文字图，即没有内容或只有简单内容的图片，FALSE为正常图片。
-		PureImage *bool `json:"PureImage,omitempty" name:"PureImage"`
-
-		// 综合评分。图像清晰度的得分，对图片的噪声、曝光、模糊、压缩等因素进行综合评估，取值为[0, 100]，值越大，越清晰。一般大于50为较清晰图片，标准可以自行把握。
-		ClarityScore *int64 `json:"ClarityScore,omitempty" name:"ClarityScore"`
-
-		// 综合评分。图像美观度得分， 从构图、色彩等多个艺术性维度评价图片，取值为[0, 100]，值越大，越美观。一般大于50为较美观图片，标准可以自行把握。
-		AestheticScore *int64 `json:"AestheticScore,omitempty" name:"AestheticScore"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *AssessQualityResponseParams `json:"Response"`
 }
 
 func (r *AssessQualityResponse) ToJsonString() string {
@@ -100,7 +119,6 @@ func (r *AssessQualityResponse) FromJsonString(s string) error {
 }
 
 type Attribute struct {
-
 	// 属性
 	Type *string `json:"Type,omitempty" name:"Type"`
 
@@ -109,7 +127,6 @@ type Attribute struct {
 }
 
 type Box struct {
-
 	// 图像主体区域。
 	Rect *ImageRect `json:"Rect,omitempty" name:"Rect"`
 
@@ -118,7 +135,6 @@ type Box struct {
 }
 
 type CarPlateContent struct {
-
 	// 车牌信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Plate *string `json:"Plate,omitempty" name:"Plate"`
@@ -137,7 +153,6 @@ type CarPlateContent struct {
 }
 
 type CarTagItem struct {
-
 	// 车系
 	Serial *string `json:"Serial,omitempty" name:"Serial"`
 
@@ -165,7 +180,6 @@ type CarTagItem struct {
 }
 
 type ColorInfo struct {
-
 	// RGB颜色值（16进制），例如：291A18。
 	Color *string `json:"Color,omitempty" name:"Color"`
 
@@ -177,7 +191,6 @@ type ColorInfo struct {
 }
 
 type Coord struct {
-
 	// 横坐标x
 	X *int64 `json:"X,omitempty" name:"X"`
 
@@ -185,9 +198,34 @@ type Coord struct {
 	Y *int64 `json:"Y,omitempty" name:"Y"`
 }
 
+// Predefined struct for user
+type CreateGroupRequestParams struct {
+	// 图库ID，不可重复，仅支持字母、数字和下划线。
+	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
+
+	// 图库名称描述。
+	GroupName *string `json:"GroupName,omitempty" name:"GroupName"`
+
+	// 图库可容纳的最大图片数量。
+	MaxCapacity *uint64 `json:"MaxCapacity,omitempty" name:"MaxCapacity"`
+
+	// 简介。
+	Brief *string `json:"Brief,omitempty" name:"Brief"`
+
+	// 访问限制默认为10qps，如需扩容请联系[在线客服](https://cloud.tencent.com/online-service)申请。
+	MaxQps *uint64 `json:"MaxQps,omitempty" name:"MaxQps"`
+
+	// 图库类型，对应不同服务类型，默认为4。1～3为历史版本，不推荐。
+	// 参数值：
+	// 4：在自建图库中搜索相同原图，可支持裁剪、翻转、调色、加水印后的图片搜索，适用于图片版权保护、原图查询等场景。
+	// 5：在自建图库中搜索相同或相似的商品图片，适用于商品分类、检索、推荐等电商场景。
+	// 6：在自建图片库中搜索与输入图片高度相似的图片，适用于相似图案、logo、纹理等图像元素的搜索。
+	GroupType *uint64 `json:"GroupType,omitempty" name:"GroupType"`
+}
+
 type CreateGroupRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 图库ID，不可重复，仅支持字母、数字和下划线。
 	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
 
@@ -235,13 +273,15 @@ func (r *CreateGroupRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateGroupResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreateGroupResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreateGroupResponseParams `json:"Response"`
 }
 
 func (r *CreateGroupResponse) ToJsonString() string {
@@ -255,9 +295,66 @@ func (r *CreateGroupResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateImageRequestParams struct {
+	// 图库ID。
+	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
+
+	// 物品ID，最多支持64个字符。 
+	// 若EntityId已存在，则对其追加图片。
+	EntityId *string `json:"EntityId,omitempty" name:"EntityId"`
+
+	// 图片名称，最多支持64个字符， 
+	// 同一个EntityId，最大支持10张图。
+	PicName *string `json:"PicName,omitempty" name:"PicName"`
+
+	// 图片的 Url 。对应图片 base64 编码后大小不可超过5M。  
+	// Url、Image必须提供一个，如果都提供，只使用 Url。 
+	// 图片分辨率不超过4096\*4096。
+	// 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
+	// 非腾讯云存储的Url速度和稳定性可能受一定影响。 
+	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+	// 注意：开启主体识别分辨率不超过2000\*2000，图片长宽比小于10（长/短 < 10）。
+	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
+
+	// 用户自定义的内容，最多支持4096个字符，查询时原样带回。
+	CustomContent *string `json:"CustomContent,omitempty" name:"CustomContent"`
+
+	// 图片 base64 数据，base64 编码后大小不可超过5M。 
+	// 图片分辨率不超过4096\*4096。 
+	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+	// 注意：开启主体识别分辨率不超过2000\*2000，图片长宽比小于10（长/短 < 10）。
+	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
+
+	// 图片自定义标签，最多不超过10个，格式为JSON。
+	Tags *string `json:"Tags,omitempty" name:"Tags"`
+
+	// 是否需要启用主体识别，默认为**TRUE**。
+	// 1.  为**TRUE**时，启用主体识别，返回主体信息。若没有指定**ImageRect**，自动提取最大面积主体创建图片并进行主体识别。主体识别结果可在**Response**中获取。
+	// 2. 为**FALSE**时，不启用主体识别，不返回主体信息。若没有指定**ImageRect**，以整张图创建图片。
+	// 注意：服务类型为商品图像搜索时生效。
+	EnableDetect *bool `json:"EnableDetect,omitempty" name:"EnableDetect"`
+
+	// 图像类目ID。
+	// 若设置类目ID，提取对应类目的主体创建图片。
+	// 注意：服务类型为商品图像搜索时生效。
+	// 类目信息：
+	// 0：上衣。
+	// 1：裙装。
+	// 2：下装。
+	// 3：包。
+	// 4：鞋。
+	// 5：配饰。
+	CategoryId *int64 `json:"CategoryId,omitempty" name:"CategoryId"`
+
+	// 图像主体区域。
+	// 若设置主体区域，提取指定的区域创建图片。
+	ImageRect *Rect `json:"ImageRect,omitempty" name:"ImageRect"`
+}
+
 type CreateImageRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 图库ID。
 	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
 
@@ -341,19 +438,21 @@ func (r *CreateImageRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-type CreateImageResponse struct {
-	*tchttp.BaseResponse
-	Response *struct {
-
-		// 输入图的主体信息。
+// Predefined struct for user
+type CreateImageResponseParams struct {
+	// 输入图的主体信息。
 	// 若启用主体识别且在请求中指定了类目ID或主体区域，以指定的主体为准。若启用主体识别且没有指定，以最大面积主体为准。
 	// 注意：此字段可能返回 null，表示取不到有效值。服务类型为商品图像搜索时生效。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		Object *ObjectInfo `json:"Object,omitempty" name:"Object"`
+	Object *ObjectInfo `json:"Object,omitempty" name:"Object"`
 
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateImageResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateImageResponseParams `json:"Response"`
 }
 
 func (r *CreateImageResponse) ToJsonString() string {
@@ -367,9 +466,36 @@ func (r *CreateImageResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CropImageRequestParams struct {
+	// 需要裁剪区域的宽度，与Height共同组成所需裁剪的图片宽高比例；
+	// 输入数字请大于0、小于图片宽度的像素值；
+	Width *int64 `json:"Width,omitempty" name:"Width"`
+
+	// 需要裁剪区域的高度，与Width共同组成所需裁剪的图片宽高比例；
+	// 输入数字请请大于0、小于图片高度的像素值；
+	// 宽高比例（Width : Height）会简化为最简分数，即如果Width输入10、Height输入20，会简化为1：2。
+	// Width : Height建议取值在[1, 2.5]之间，超过这个范围可能会影响效果；
+	Height *int64 `json:"Height,omitempty" name:"Height"`
+
+	// 图片URL地址。 
+	// 图片限制： 
+	// • 图片格式：PNG、JPG、JPEG。 
+	// • 图片大小：所下载图片经Base64编码后不超过4M。图片下载时间不超过3秒。 
+	// 建议：
+	// • 图片像素：大于50*50像素，否则影响识别效果； 
+	// • 长宽比：长边：短边<5； 
+	// 接口响应时间会受到图片下载时间的影响，建议使用更可靠的存储服务，推荐将图片存储在腾讯云COS。
+	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
+
+	// 图片经过base64编码的内容。最大不超过4M。与ImageUrl同时存在时优先使用ImageUrl字段。
+	// **注意：图片需要base64编码，并且要去掉编码头部。**
+	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
+}
+
 type CropImageRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 需要裁剪区域的宽度，与Height共同组成所需裁剪的图片宽高比例；
 	// 输入数字请大于0、小于图片宽度的像素值；
 	Width *int64 `json:"Width,omitempty" name:"Width"`
@@ -417,29 +543,27 @@ func (r *CropImageRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-type CropImageResponse struct {
-	*tchttp.BaseResponse
-	Response *struct {
+// Predefined struct for user
+type CropImageResponseParams struct {
+	// 裁剪区域左上角X坐标值
+	X *int64 `json:"X,omitempty" name:"X"`
 
-		// 裁剪区域左上角X坐标值
-		X *int64 `json:"X,omitempty" name:"X"`
+	// 裁剪区域左上角Y坐标值
+	Y *int64 `json:"Y,omitempty" name:"Y"`
 
-		// 裁剪区域左上角Y坐标值
-		Y *int64 `json:"Y,omitempty" name:"Y"`
+	// 裁剪区域的宽度，单位为像素
+	Width *int64 `json:"Width,omitempty" name:"Width"`
 
-		// 裁剪区域的宽度，单位为像素
-		Width *int64 `json:"Width,omitempty" name:"Width"`
+	// 裁剪区域的高度，单位为像素
+	Height *int64 `json:"Height,omitempty" name:"Height"`
 
-		// 裁剪区域的高度，单位为像素
-		Height *int64 `json:"Height,omitempty" name:"Height"`
+	// 原图宽度，单位为像素
+	OriginalWidth *int64 `json:"OriginalWidth,omitempty" name:"OriginalWidth"`
 
-		// 原图宽度，单位为像素
-		OriginalWidth *int64 `json:"OriginalWidth,omitempty" name:"OriginalWidth"`
+	// 原图高度，单位为像素
+	OriginalHeight *int64 `json:"OriginalHeight,omitempty" name:"OriginalHeight"`
 
-		// 原图高度，单位为像素
-		OriginalHeight *int64 `json:"OriginalHeight,omitempty" name:"OriginalHeight"`
-
-		// 0：抠图正常；
+	// 0：抠图正常；
 	// 1：原图过长，指原图的高度是宽度的1.8倍以上；
 	// 2：原图过宽，指原图的宽度是高度的1.8倍以上；
 	// 3：抠图区域过长，指抠图的高度是主体备选框高度的1.6倍以上；
@@ -448,11 +572,15 @@ type CropImageResponse struct {
 	// 6：宽高比异常，指Width : Height取值超出[1, 2.5]的范围；
 	// 
 	// 以上是辅助决策的参考建议，可以根据业务需求选择采纳或忽视。
-		CropResult *int64 `json:"CropResult,omitempty" name:"CropResult"`
+	CropResult *int64 `json:"CropResult,omitempty" name:"CropResult"`
 
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CropImageResponse struct {
+	*tchttp.BaseResponse
+	Response *CropImageResponseParams `json:"Response"`
 }
 
 func (r *CropImageResponse) ToJsonString() string {
@@ -466,9 +594,21 @@ func (r *CropImageResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteImagesRequestParams struct {
+	// 图库名称。
+	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
+
+	// 物品ID。
+	EntityId *string `json:"EntityId,omitempty" name:"EntityId"`
+
+	// 图片名称，如果不指定本参数，则删除EntityId下所有的图片；否则删除指定的图。
+	PicName *string `json:"PicName,omitempty" name:"PicName"`
+}
+
 type DeleteImagesRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 图库名称。
 	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
 
@@ -500,13 +640,15 @@ func (r *DeleteImagesRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteImagesResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DeleteImagesResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DeleteImagesResponseParams `json:"Response"`
 }
 
 func (r *DeleteImagesResponse) ToJsonString() string {
@@ -520,9 +662,21 @@ func (r *DeleteImagesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeGroupsRequestParams struct {
+	// 起始序号，默认值为0。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回数量，默认值为10，最大值为100。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 图库ID，如果不为空，则返回指定库信息。
+	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
+}
+
 type DescribeGroupsRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 起始序号，默认值为0。
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
@@ -554,17 +708,19 @@ func (r *DescribeGroupsRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeGroupsResponseParams struct {
+	// 图库信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Groups []*GroupInfo `json:"Groups,omitempty" name:"Groups"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeGroupsResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 图库信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		Groups []*GroupInfo `json:"Groups,omitempty" name:"Groups"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeGroupsResponseParams `json:"Response"`
 }
 
 func (r *DescribeGroupsResponse) ToJsonString() string {
@@ -578,9 +734,21 @@ func (r *DescribeGroupsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeImagesRequestParams struct {
+	// 图库名称。
+	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
+
+	// 物品ID。
+	EntityId *string `json:"EntityId,omitempty" name:"EntityId"`
+
+	// 图片名称。
+	PicName *string `json:"PicName,omitempty" name:"PicName"`
+}
+
 type DescribeImagesRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 图库名称。
 	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
 
@@ -612,22 +780,24 @@ func (r *DescribeImagesRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeImagesResponseParams struct {
+	// 图库名称。
+	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
+
+	// 物品ID。
+	EntityId *string `json:"EntityId,omitempty" name:"EntityId"`
+
+	// 图片信息。
+	ImageInfos []*ImageInfo `json:"ImageInfos,omitempty" name:"ImageInfos"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeImagesResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 图库名称。
-		GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
-
-		// 物品ID。
-		EntityId *string `json:"EntityId,omitempty" name:"EntityId"`
-
-		// 图片信息。
-		ImageInfos []*ImageInfo `json:"ImageInfos,omitempty" name:"ImageInfos"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeImagesResponseParams `json:"Response"`
 }
 
 func (r *DescribeImagesResponse) ToJsonString() string {
@@ -641,9 +811,26 @@ func (r *DescribeImagesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DetectCelebrityRequestParams struct {
+	// 图片URL地址。 
+	// 图片限制： 
+	// • 图片格式：PNG、JPG、JPEG。 
+	// • 图片大小：所下载图片经Base64编码后不超过4M。图片下载时间不超过3秒。 
+	// 建议：
+	// • 图片像素：大于50*50像素，否则影响识别效果； 
+	// • 长宽比：长边：短边<5； 
+	// 接口响应时间会受到图片下载时间的影响，建议使用更可靠的存储服务，推荐将图片存储在腾讯云COS。
+	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
+
+	// 图片经过base64编码的内容。最大不超过4M。与ImageUrl同时存在时优先使用ImageUrl字段。
+	// **注意：图片需要base64编码，并且要去掉编码头部。**
+	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
+}
+
 type DetectCelebrityRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 图片URL地址。 
 	// 图片限制： 
 	// • 图片格式：PNG、JPG、JPEG。 
@@ -679,23 +866,25 @@ func (r *DetectCelebrityRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-type DetectCelebrityResponse struct {
-	*tchttp.BaseResponse
-	Response *struct {
+// Predefined struct for user
+type DetectCelebrityResponseParams struct {
+	// 公众人物识别结果数组。如果检测不到人脸，返回为空；最多可以返回10个人脸识别结果。
+	Faces []*Face `json:"Faces,omitempty" name:"Faces"`
 
-		// 公众人物识别结果数组。如果检测不到人脸，返回为空；最多可以返回10个人脸识别结果。
-		Faces []*Face `json:"Faces,omitempty" name:"Faces"`
-
-		// 本服务在不同误识率水平下（将图片中的人物识别错误的比例）的推荐阈值，可以用于控制识别结果的精度。 
+	// 本服务在不同误识率水平下（将图片中的人物识别错误的比例）的推荐阈值，可以用于控制识别结果的精度。 
 	// FalseRate1Percent, FalseRate5Permil, FalseRate1Permil分别代表误识率在百分之一、千分之五、千分之一情况下的推荐阈值。 
 	// 因为阈值会存在变动，请勿将此处输出的固定值处理，而是每次取值与confidence对比，来判断本次的识别结果是否可信。
 	//  例如，如果您业务中可以接受的误识率是1%，则可以将所有confidence>=FalseRate1Percent的结论认为是正确的。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		Threshold *Threshold `json:"Threshold,omitempty" name:"Threshold"`
+	Threshold *Threshold `json:"Threshold,omitempty" name:"Threshold"`
 
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DetectCelebrityResponse struct {
+	*tchttp.BaseResponse
+	Response *DetectCelebrityResponseParams `json:"Response"`
 }
 
 func (r *DetectCelebrityResponse) ToJsonString() string {
@@ -709,9 +898,26 @@ func (r *DetectCelebrityResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DetectDisgustRequestParams struct {
+	// 图片URL地址。 
+	// 图片限制： 
+	// • 图片格式：PNG、JPG、JPEG。 
+	// • 图片大小：所下载图片经Base64编码后不超过4M。图片下载时间不超过3秒。 
+	// 建议：
+	// • 图片像素：大于50*50像素，否则影响识别效果； 
+	// • 长宽比：长边：短边<5； 
+	// 接口响应时间会受到图片下载时间的影响，建议使用更可靠的存储服务，推荐将图片存储在腾讯云COS。
+	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
+
+	// 图片经过base64编码的内容。最大不超过4M。与ImageUrl同时存在时优先使用ImageUrl字段。
+	// **注意：图片需要base64编码，并且要去掉编码头部。**
+	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
+}
+
 type DetectDisgustRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 图片URL地址。 
 	// 图片限制： 
 	// • 图片格式：PNG、JPG、JPEG。 
@@ -747,19 +953,21 @@ func (r *DetectDisgustRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DetectDisgustResponseParams struct {
+	// 对于图片中包含恶心内容的置信度，取值[0,1]，一般超过0.5则表明可能是恶心图片。
+	Confidence *float64 `json:"Confidence,omitempty" name:"Confidence"`
+
+	// 与图像内容最相似的恶心内容的类别，包含腐烂、密集、畸形、血腥、蛇、虫子、牙齿等。
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DetectDisgustResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 对于图片中包含恶心内容的置信度，取值[0,1]，一般超过0.5则表明可能是恶心图片。
-		Confidence *float64 `json:"Confidence,omitempty" name:"Confidence"`
-
-		// 与图像内容最相似的恶心内容的类别，包含腐烂、密集、畸形、血腥、蛇、虫子、牙齿等。
-		Type *string `json:"Type,omitempty" name:"Type"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DetectDisgustResponseParams `json:"Response"`
 }
 
 func (r *DetectDisgustResponse) ToJsonString() string {
@@ -773,9 +981,22 @@ func (r *DetectDisgustResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DetectEnvelopeRequestParams struct {
+	// 图片的URL地址。图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
+	// 非腾讯云存储的Url速度和稳定性可能受一定影响。
+	// 图片大小的限制为4M，图片像素的限制为4k。
+	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
+
+	// 图片经过base64编码的内容。与ImageUrl同时存在时优先使用ImageUrl字段。 
+	// 图片大小的限制为4M，图片像素的限制为4k。
+	// **注意：图片需要base64编码，并且要去掉编码头部。
+	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
+}
+
 type DetectEnvelopeRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 图片的URL地址。图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
 	// 非腾讯云存储的Url速度和稳定性可能受一定影响。
 	// 图片大小的限制为4M，图片像素的限制为4k。
@@ -807,21 +1028,23 @@ func (r *DetectEnvelopeRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DetectEnvelopeResponseParams struct {
+	// 一级标签结果数组。识别是否文件封。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FirstTags []*ImageTag `json:"FirstTags,omitempty" name:"FirstTags"`
+
+	// 二级标签结果数组。识别文件封正反面。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SecondTags []*ImageTag `json:"SecondTags,omitempty" name:"SecondTags"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DetectEnvelopeResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 一级标签结果数组。识别是否文件封。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		FirstTags []*ImageTag `json:"FirstTags,omitempty" name:"FirstTags"`
-
-		// 二级标签结果数组。识别文件封正反面。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		SecondTags []*ImageTag `json:"SecondTags,omitempty" name:"SecondTags"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DetectEnvelopeResponseParams `json:"Response"`
 }
 
 func (r *DetectEnvelopeResponse) ToJsonString() string {
@@ -835,9 +1058,38 @@ func (r *DetectEnvelopeResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DetectLabelBetaRequestParams struct {
+	// 图片URL地址。 
+	// 图片限制： 
+	// • 图片格式：PNG、JPG、JPEG。 
+	// • 图片大小：所下载图片经Base64编码后不超过4M。图片下载时间不超过3秒。 
+	// 建议：
+	// • 图片像素：大于50*50像素，否则影响识别效果； 
+	// • 长宽比：长边：短边<5； 
+	// 接口响应时间会受到图片下载时间的影响，建议使用更可靠的存储服务，推荐将图片存储在腾讯云COS。
+	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
+
+	// 图片经过base64编码的内容。最大不超过4M。与ImageUrl同时存在时优先使用ImageUrl字段。
+	// **注意：图片需要base64编码，并且要去掉编码头部。**
+	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
+
+	// 本次调用支持的识别场景，可选值如下：
+	// WEB，针对网络图片优化;
+	// CAMERA，针对手机摄像头拍摄图片优化;
+	// ALBUM，针对手机相册、网盘产品优化;
+	// NEWS，针对新闻、资讯、广电等行业优化；
+	// NONECAM，非实拍图；
+	// LOCATION，主体位置识别；
+	// 如果不传此参数，则默认为WEB。
+	// 
+	// 支持多场景（Scenes）一起检测。例如，使用 Scenes=["WEB", "CAMERA"]，即对一张图片使用两个模型同时检测，输出两套识别结果。
+	Scenes []*string `json:"Scenes,omitempty" name:"Scenes"`
+}
+
 type DetectLabelBetaRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 图片URL地址。 
 	// 图片限制： 
 	// • 图片格式：PNG、JPG、JPEG。 
@@ -886,38 +1138,40 @@ func (r *DetectLabelBetaRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-type DetectLabelBetaResponse struct {
-	*tchttp.BaseResponse
-	Response *struct {
-
-		// Web网络版标签结果数组。如未选择WEB场景，则为空。
+// Predefined struct for user
+type DetectLabelBetaResponseParams struct {
+	// Web网络版标签结果数组。如未选择WEB场景，则为空。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		Labels []*DetectLabelItem `json:"Labels,omitempty" name:"Labels"`
+	Labels []*DetectLabelItem `json:"Labels,omitempty" name:"Labels"`
 
-		// Camera摄像头版标签结果数组。如未选择CAMERA场景，则为空。
+	// Camera摄像头版标签结果数组。如未选择CAMERA场景，则为空。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		CameraLabels []*DetectLabelItem `json:"CameraLabels,omitempty" name:"CameraLabels"`
+	CameraLabels []*DetectLabelItem `json:"CameraLabels,omitempty" name:"CameraLabels"`
 
-		// Album相册版标签结果数组。如未选择ALBUM场景，则为空。
+	// Album相册版标签结果数组。如未选择ALBUM场景，则为空。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		AlbumLabels []*DetectLabelItem `json:"AlbumLabels,omitempty" name:"AlbumLabels"`
+	AlbumLabels []*DetectLabelItem `json:"AlbumLabels,omitempty" name:"AlbumLabels"`
 
-		// News新闻版标签结果数组。如未选择NEWS场景，则为空。
+	// News新闻版标签结果数组。如未选择NEWS场景，则为空。
 	// 新闻版目前为测试阶段，暂不提供每个标签的一级、二级分类信息的输出。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		NewsLabels []*DetectLabelItem `json:"NewsLabels,omitempty" name:"NewsLabels"`
+	NewsLabels []*DetectLabelItem `json:"NewsLabels,omitempty" name:"NewsLabels"`
 
-		// 非实拍标签
+	// 非实拍标签
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		NoneCamLabels []*DetectLabelItem `json:"NoneCamLabels,omitempty" name:"NoneCamLabels"`
+	NoneCamLabels []*DetectLabelItem `json:"NoneCamLabels,omitempty" name:"NoneCamLabels"`
 
-		// 识别结果
+	// 识别结果
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		LocationLabels []*Product `json:"LocationLabels,omitempty" name:"LocationLabels"`
+	LocationLabels []*Product `json:"LocationLabels,omitempty" name:"LocationLabels"`
 
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DetectLabelBetaResponse struct {
+	*tchttp.BaseResponse
+	Response *DetectLabelBetaResponseParams `json:"Response"`
 }
 
 func (r *DetectLabelBetaResponse) ToJsonString() string {
@@ -932,7 +1186,6 @@ func (r *DetectLabelBetaResponse) FromJsonString(s string) error {
 }
 
 type DetectLabelItem struct {
-
 	// 图片中的物体名称。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
@@ -946,9 +1199,26 @@ type DetectLabelItem struct {
 	SecondCategory *string `json:"SecondCategory,omitempty" name:"SecondCategory"`
 }
 
+// Predefined struct for user
+type DetectLabelProRequestParams struct {
+	// 图片URL地址。 
+	// 图片限制： 
+	// • 图片格式：PNG、JPG、JPEG、BMP。 
+	// • 图片大小：所下载图片经Base64编码后不超过4M。图片下载时间不超过3秒。 
+	// 建议：
+	// • 图片像素：大于50*50像素，否则影响识别效果； 
+	// • 长宽比：长边：短边<5； 
+	// 接口响应时间会受到图片下载时间的影响，建议使用更可靠的存储服务，推荐将图片存储在腾讯云COS。
+	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
+
+	// 图片经过base64编码的内容。最大不超过4M。与ImageUrl同时存在时优先使用ImageUrl字段。
+	// **注意：图片需要base64编码，并且要去掉编码头部。**
+	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
+}
+
 type DetectLabelProRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 图片URL地址。 
 	// 图片限制： 
 	// • 图片格式：PNG、JPG、JPEG、BMP。 
@@ -984,17 +1254,19 @@ func (r *DetectLabelProRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DetectLabelProResponseParams struct {
+	// 返回标签数组。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Labels []*DetectLabelItem `json:"Labels,omitempty" name:"Labels"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DetectLabelProResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 返回标签数组。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		Labels []*DetectLabelItem `json:"Labels,omitempty" name:"Labels"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DetectLabelProResponseParams `json:"Response"`
 }
 
 func (r *DetectLabelProResponse) ToJsonString() string {
@@ -1008,9 +1280,36 @@ func (r *DetectLabelProResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DetectLabelRequestParams struct {
+	// 图片URL地址。 
+	// 图片限制： 
+	// • 图片格式：PNG、JPG、JPEG。 
+	// • 图片大小：所下载图片经Base64编码后不超过4M。图片下载时间不超过3秒。 
+	// 建议：
+	// • 图片像素：大于50*50像素，否则影响识别效果； 
+	// • 长宽比：长边：短边<5； 
+	// 接口响应时间会受到图片下载时间的影响，建议使用更可靠的存储服务，推荐将图片存储在腾讯云COS。
+	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
+
+	// 图片经过base64编码的内容。最大不超过4M。与ImageUrl同时存在时优先使用ImageUrl字段。
+	// **注意：图片需要base64编码，并且要去掉编码头部。**
+	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
+
+	// 本次调用支持的识别场景，可选值如下：
+	// WEB，针对网络图片优化;
+	// CAMERA，针对手机摄像头拍摄图片优化;
+	// ALBUM，针对手机相册、网盘产品优化;
+	// NEWS，针对新闻、资讯、广电等行业优化；
+	// 如果不传此参数，则默认为WEB。
+	// 
+	// 支持多场景（Scenes）一起检测。例如，使用 Scenes=["WEB", "CAMERA"]，即对一张图片使用两个模型同时检测，输出两套识别结果。
+	Scenes []*string `json:"Scenes,omitempty" name:"Scenes"`
+}
+
 type DetectLabelRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 图片URL地址。 
 	// 图片限制： 
 	// • 图片格式：PNG、JPG、JPEG。 
@@ -1057,30 +1356,32 @@ func (r *DetectLabelRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-type DetectLabelResponse struct {
-	*tchttp.BaseResponse
-	Response *struct {
-
-		// Web网络版标签结果数组。如未选择WEB场景，则为空。
+// Predefined struct for user
+type DetectLabelResponseParams struct {
+	// Web网络版标签结果数组。如未选择WEB场景，则为空。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		Labels []*DetectLabelItem `json:"Labels,omitempty" name:"Labels"`
+	Labels []*DetectLabelItem `json:"Labels,omitempty" name:"Labels"`
 
-		// Camera摄像头版标签结果数组。如未选择CAMERA场景，则为空。
+	// Camera摄像头版标签结果数组。如未选择CAMERA场景，则为空。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		CameraLabels []*DetectLabelItem `json:"CameraLabels,omitempty" name:"CameraLabels"`
+	CameraLabels []*DetectLabelItem `json:"CameraLabels,omitempty" name:"CameraLabels"`
 
-		// Album相册版标签结果数组。如未选择ALBUM场景，则为空。
+	// Album相册版标签结果数组。如未选择ALBUM场景，则为空。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		AlbumLabels []*DetectLabelItem `json:"AlbumLabels,omitempty" name:"AlbumLabels"`
+	AlbumLabels []*DetectLabelItem `json:"AlbumLabels,omitempty" name:"AlbumLabels"`
 
-		// News新闻版标签结果数组。如未选择NEWS场景，则为空。
+	// News新闻版标签结果数组。如未选择NEWS场景，则为空。
 	// 新闻版目前为测试阶段，暂不提供每个标签的一级、二级分类信息的输出。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		NewsLabels []*DetectLabelItem `json:"NewsLabels,omitempty" name:"NewsLabels"`
+	NewsLabels []*DetectLabelItem `json:"NewsLabels,omitempty" name:"NewsLabels"`
 
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DetectLabelResponse struct {
+	*tchttp.BaseResponse
+	Response *DetectLabelResponseParams `json:"Response"`
 }
 
 func (r *DetectLabelResponse) ToJsonString() string {
@@ -1094,9 +1395,26 @@ func (r *DetectLabelResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DetectMisbehaviorRequestParams struct {
+	// 图片URL地址。 
+	// 图片限制： 
+	// • 图片格式：PNG、JPG、JPEG。 
+	// • 图片大小：所下载图片经Base64编码后不超过4M。图片下载时间不超过3秒。 
+	// 建议：
+	// • 图片像素：大于50*50像素，否则影响识别效果； 
+	// • 长宽比：长边：短边<5； 
+	// 接口响应时间会受到图片下载时间的影响，建议使用更可靠的存储服务，推荐将图片存储在腾讯云COS。
+	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
+
+	// 图片经过base64编码的内容。最大不超过4M。与ImageUrl同时存在时优先使用ImageUrl字段。
+	// **注意：图片需要base64编码，并且要去掉编码头部。**
+	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
+}
+
 type DetectMisbehaviorRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 图片URL地址。 
 	// 图片限制： 
 	// • 图片格式：PNG、JPG、JPEG。 
@@ -1132,19 +1450,21 @@ func (r *DetectMisbehaviorRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DetectMisbehaviorResponseParams struct {
+	// 对于图片中包含不良行为的置信度，取值[0,1]，一般超过0.5则表明可能包含不良行为内容；
+	Confidence *float64 `json:"Confidence,omitempty" name:"Confidence"`
+
+	// 图像中最可能包含的不良行为类别，包括赌博、打架斗殴、吸毒等。
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DetectMisbehaviorResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 对于图片中包含不良行为的置信度，取值[0,1]，一般超过0.5则表明可能包含不良行为内容；
-		Confidence *float64 `json:"Confidence,omitempty" name:"Confidence"`
-
-		// 图像中最可能包含的不良行为类别，包括赌博、打架斗殴、吸毒等。
-		Type *string `json:"Type,omitempty" name:"Type"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DetectMisbehaviorResponseParams `json:"Response"`
 }
 
 func (r *DetectMisbehaviorResponse) ToJsonString() string {
@@ -1158,9 +1478,23 @@ func (r *DetectMisbehaviorResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DetectProductBetaRequestParams struct {
+	// 图片限制：内测版仅支持jpg、jpeg，图片大小不超过1M，分辨率在25万到100万之间。 
+	// 建议先对图片进行压缩，以便提升处理速度。
+	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
+
+	// 图片经过base64编码的内容。最大不超过1M，分辨率在25万到100万之间。 
+	// 与ImageUrl同时存在时优先使用ImageUrl字段。
+	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
+
+	// 是否需要百科信息 1：是，0: 否，默认是0
+	NeedLemma *int64 `json:"NeedLemma,omitempty" name:"NeedLemma"`
+}
+
 type DetectProductBetaRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 图片限制：内测版仅支持jpg、jpeg，图片大小不超过1M，分辨率在25万到100万之间。 
 	// 建议先对图片进行压缩，以便提升处理速度。
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
@@ -1194,26 +1528,28 @@ func (r *DetectProductBetaRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-type DetectProductBetaResponse struct {
-	*tchttp.BaseResponse
-	Response *struct {
-
-		// 检测到的图片中的商品位置和品类预测。 
+// Predefined struct for user
+type DetectProductBetaResponseParams struct {
+	// 检测到的图片中的商品位置和品类预测。 
 	// 当图片中存在多个商品时，输出多组坐标，按照__显著性__排序（综合考虑面积、是否在中心、检测算法置信度）。 
 	// 最多可以输出__3组__检测结果。
-		RegionDetected []*RegionDetected `json:"RegionDetected,omitempty" name:"RegionDetected"`
+	RegionDetected []*RegionDetected `json:"RegionDetected,omitempty" name:"RegionDetected"`
 
-		// 图像识别出的商品的详细信息。 
+	// 图像识别出的商品的详细信息。 
 	// 当图像中检测到多个物品时，会对显著性最高的进行识别。
-		ProductInfo *ProductInfo `json:"ProductInfo,omitempty" name:"ProductInfo"`
+	ProductInfo *ProductInfo `json:"ProductInfo,omitempty" name:"ProductInfo"`
 
-		// 相似商品信息列表
+	// 相似商品信息列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		ProductInfoList []*ProductInfo `json:"ProductInfoList,omitempty" name:"ProductInfoList"`
+	ProductInfoList []*ProductInfo `json:"ProductInfoList,omitempty" name:"ProductInfoList"`
 
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DetectProductBetaResponse struct {
+	*tchttp.BaseResponse
+	Response *DetectProductBetaResponseParams `json:"Response"`
 }
 
 func (r *DetectProductBetaResponse) ToJsonString() string {
@@ -1227,9 +1563,26 @@ func (r *DetectProductBetaResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DetectProductRequestParams struct {
+	// 图片URL地址。 
+	// 图片限制： 
+	// • 图片格式：PNG、JPG、JPEG。 
+	// • 图片大小：所下载图片经Base64编码后不超过4M。图片下载时间不超过3秒。 
+	// 建议：
+	// • 图片像素：大于50*50像素，否则影响识别效果； 
+	// • 长宽比：长边：短边<5； 
+	// 接口响应时间会受到图片下载时间的影响，建议使用更可靠的存储服务，推荐将图片存储在腾讯云COS。
+	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
+
+	// 图片经过base64编码的内容。最大不超过4M。与ImageUrl同时存在时优先使用ImageUrl字段。
+	// **注意：图片需要base64编码，并且要去掉编码头部。**
+	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
+}
+
 type DetectProductRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 图片URL地址。 
 	// 图片限制： 
 	// • 图片格式：PNG、JPG、JPEG。 
@@ -1265,16 +1618,18 @@ func (r *DetectProductRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DetectProductResponseParams struct {
+	// 商品识别结果数组
+	Products []*Product `json:"Products,omitempty" name:"Products"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DetectProductResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 商品识别结果数组
-		Products []*Product `json:"Products,omitempty" name:"Products"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DetectProductResponseParams `json:"Response"`
 }
 
 func (r *DetectProductResponse) ToJsonString() string {
@@ -1288,9 +1643,26 @@ func (r *DetectProductResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type EnhanceImageRequestParams struct {
+	// 图片URL地址。 
+	// 图片限制： 
+	// • 图片格式：PNG、JPG、JPEG。 
+	// • 图片大小：所下载图片经Base64编码后不超过4M。图片下载时间不超过3秒。 
+	// 建议：
+	// • 图片像素：大于50*50像素，最大不超过250万像素，否则影响识别效果； 
+	// • 长宽比：长边：短边<5； 
+	// 接口响应时间会受到图片下载时间的影响，建议使用更可靠的存储服务，推荐将图片存储在腾讯云COS。
+	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
+
+	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。图片经过base64编码的内容。最大不超过4M。与ImageUrl同时存在时优先使用ImageUrl字段。
+	// **注意：图片需要base64编码，并且要去掉编码头部。**
+	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
+}
+
 type EnhanceImageRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 图片URL地址。 
 	// 图片限制： 
 	// • 图片格式：PNG、JPG、JPEG。 
@@ -1326,16 +1698,18 @@ func (r *EnhanceImageRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type EnhanceImageResponseParams struct {
+	// 增强后图片的base64编码。
+	EnhancedImage *string `json:"EnhancedImage,omitempty" name:"EnhancedImage"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type EnhanceImageResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 增强后图片的base64编码。
-		EnhancedImage *string `json:"EnhancedImage,omitempty" name:"EnhancedImage"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *EnhanceImageResponseParams `json:"Response"`
 }
 
 func (r *EnhanceImageResponse) ToJsonString() string {
@@ -1350,7 +1724,6 @@ func (r *EnhanceImageResponse) FromJsonString(s string) error {
 }
 
 type Face struct {
-
 	// 与图片中人脸最相似的公众人物的名字。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
@@ -1381,7 +1754,6 @@ type Face struct {
 }
 
 type GroupInfo struct {
-
 	// 图库Id。
 	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
 
@@ -1415,7 +1787,6 @@ type GroupInfo struct {
 }
 
 type ImageInfo struct {
-
 	// 图片名称。
 	EntityId *string `json:"EntityId,omitempty" name:"EntityId"`
 
@@ -1433,7 +1804,6 @@ type ImageInfo struct {
 }
 
 type ImageRect struct {
-
 	// 左上角横坐标。
 	X *int64 `json:"X,omitempty" name:"X"`
 
@@ -1448,7 +1818,6 @@ type ImageRect struct {
 }
 
 type ImageTag struct {
-
 	// 标签内容。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
@@ -1457,7 +1826,6 @@ type ImageTag struct {
 }
 
 type Labels struct {
-
 	// 公众人物身份标签的一级分类，例如体育明星、娱乐明星等；
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FirstLabel *string `json:"FirstLabel,omitempty" name:"FirstLabel"`
@@ -1468,7 +1836,6 @@ type Labels struct {
 }
 
 type LemmaInfo struct {
-
 	// 词条
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LemmaTitle *string `json:"LemmaTitle,omitempty" name:"LemmaTitle"`
@@ -1483,7 +1850,6 @@ type LemmaInfo struct {
 }
 
 type Location struct {
-
 	// 位置矩形框的左上角横坐标
 	XMin *int64 `json:"XMin,omitempty" name:"XMin"`
 
@@ -1498,7 +1864,6 @@ type Location struct {
 }
 
 type ObjectInfo struct {
-
 	// 图像主体区域。
 	Box *Box `json:"Box,omitempty" name:"Box"`
 
@@ -1513,7 +1878,6 @@ type ObjectInfo struct {
 }
 
 type Product struct {
-
 	// 图片中商品的三级分类识别结果，选取所有三级分类中的置信度最大者
 	Name *string `json:"Name,omitempty" name:"Name"`
 
@@ -1537,7 +1901,6 @@ type Product struct {
 }
 
 type ProductInfo struct {
-
 	// 1表示找到同款商品，以下字段为同款商品信息； 
 	// 0表示未找到同款商品， 具体商品信息为空（参考价格、名称、品牌等），仅提供商品类目和参考图片（商品库中找到的最相似图片，供参考）。  
 	// 是否找到同款的判断依据为Score分值，分值越大则同款的可能性越大。
@@ -1571,9 +1934,27 @@ type ProductInfo struct {
 	LemmaInfoList []*LemmaInfo `json:"LemmaInfoList,omitempty" name:"LemmaInfoList"`
 }
 
+// Predefined struct for user
+type RecognizeCarProRequestParams struct {
+	// 图片URL地址。 
+	// 图片限制： 
+	// • 图片格式：PNG、JPG、JPEG。 
+	// • 图片大小：所下载图片经Base64编码后不超过4M。图片下载时间不超过3秒。 
+	// 建议：
+	// • 图片像素：大于50*50像素，否则影响识别效果； 
+	// • 长宽比：长边：短边<5； 
+	// 接口响应时间会受到图片下载时间的影响，建议使用更可靠的存储服务，推荐将图片存储在腾讯云COS。
+	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
+
+	// 图片经过base64编码的内容。最大不超过4M。与ImageUrl同时存在时优先使用ImageUrl字段。
+	// **注意：图片需要base64编码，并且要去掉编码头部。**
+	// 支持的图片格式：PNG、JPG、JPEG、BMP，暂不支持GIF格式。支持的图片大小：所下载图片经Base64编码后不超过4M。图片下载时间不超过3秒。
+	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
+}
+
 type RecognizeCarProRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 图片URL地址。 
 	// 图片限制： 
 	// • 图片格式：PNG、JPG、JPEG。 
@@ -1610,20 +1991,22 @@ func (r *RecognizeCarProRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type RecognizeCarProResponseParams struct {
+	// 汽车的四个矩形顶点坐标，如果图片中存在多辆车，则输出最大车辆的坐标。
+	CarCoords []*Coord `json:"CarCoords,omitempty" name:"CarCoords"`
+
+	// 车辆属性识别的结果数组，如果识别到多辆车，则会输出每辆车的top1结果。
+	// 注意：置信度是指车牌信息置信度。
+	CarTags []*CarTagItem `json:"CarTags,omitempty" name:"CarTags"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type RecognizeCarProResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 汽车的四个矩形顶点坐标，如果图片中存在多辆车，则输出最大车辆的坐标。
-		CarCoords []*Coord `json:"CarCoords,omitempty" name:"CarCoords"`
-
-		// 车辆属性识别的结果数组，如果识别到多辆车，则会输出每辆车的top1结果。
-	// 注意：置信度是指车牌信息置信度。
-		CarTags []*CarTagItem `json:"CarTags,omitempty" name:"CarTags"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *RecognizeCarProResponseParams `json:"Response"`
 }
 
 func (r *RecognizeCarProResponse) ToJsonString() string {
@@ -1637,9 +2020,27 @@ func (r *RecognizeCarProResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type RecognizeCarRequestParams struct {
+	// 图片URL地址。 
+	// 图片限制： 
+	// • 图片格式：PNG、JPG、JPEG。 
+	// • 图片大小：所下载图片经Base64编码后不超过4M。图片下载时间不超过3秒。 
+	// 建议：
+	// • 图片像素：大于50*50像素，否则影响识别效果； 
+	// • 长宽比：长边：短边<5； 
+	// 接口响应时间会受到图片下载时间的影响，建议使用更可靠的存储服务，推荐将图片存储在腾讯云COS。
+	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
+
+	// 图片经过base64编码的内容。最大不超过4M。与ImageUrl同时存在时优先使用ImageUrl字段。
+	// **注意：图片需要base64编码，并且要去掉编码头部。**
+	// 支持的图片格式：PNG、JPG、JPEG、BMP，暂不支持GIF格式。支持的图片大小：所下载图片经Base64编码后不超过4M。图片下载时间不超过3秒。
+	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
+}
+
 type RecognizeCarRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 图片URL地址。 
 	// 图片限制： 
 	// • 图片格式：PNG、JPG、JPEG。 
@@ -1676,19 +2077,21 @@ func (r *RecognizeCarRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type RecognizeCarResponseParams struct {
+	// 汽车的四个矩形顶点坐标，如果图片中存在多辆车，则输出最大车辆的坐标。
+	CarCoords []*Coord `json:"CarCoords,omitempty" name:"CarCoords"`
+
+	// 车辆属性识别的结果数组，如果识别到多辆车，则会输出每辆车的top1结果。
+	CarTags []*CarTagItem `json:"CarTags,omitempty" name:"CarTags"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type RecognizeCarResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 汽车的四个矩形顶点坐标，如果图片中存在多辆车，则输出最大车辆的坐标。
-		CarCoords []*Coord `json:"CarCoords,omitempty" name:"CarCoords"`
-
-		// 车辆属性识别的结果数组，如果识别到多辆车，则会输出每辆车的top1结果。
-		CarTags []*CarTagItem `json:"CarTags,omitempty" name:"CarTags"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *RecognizeCarResponseParams `json:"Response"`
 }
 
 func (r *RecognizeCarResponse) ToJsonString() string {
@@ -1703,7 +2106,6 @@ func (r *RecognizeCarResponse) FromJsonString(s string) error {
 }
 
 type Rect struct {
-
 	// x轴坐标
 	X *int64 `json:"X,omitempty" name:"X"`
 
@@ -1718,7 +2120,6 @@ type Rect struct {
 }
 
 type RegionDetected struct {
-
 	// 商品的品类预测结果。 
 	// 包含：鞋、图书音像、箱包、美妆个护、服饰、家电数码、玩具乐器、食品饮料、珠宝、家居家装、药品、酒水、绿植园艺、其他商品、非商品等。
 	Category *string `json:"Category,omitempty" name:"Category"`
@@ -1730,9 +2131,64 @@ type RegionDetected struct {
 	Location *Location `json:"Location,omitempty" name:"Location"`
 }
 
+// Predefined struct for user
+type SearchImageRequestParams struct {
+	// 图库名称。
+	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
+
+	// 图片的 Url 。对应图片 base64 编码后大小不可超过5M。 
+	// 图片分辨率不超4096\*4096。 
+	// Url、Image必须提供一个，如果都提供，只使用 Url。 
+	// 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
+	// 非腾讯云存储的Url速度和稳定性可能受一定影响。 
+	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+	// 注意：开启主体识别分辨率不超过2000\*2000，图片长宽比小于10（长/短 < 10）。
+	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
+
+	// 图片 base64 数据，base64 编码后大小不可超过5M。 
+	// 图片分辨率不超过4096\*4096。 
+	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+	// 注意：开启主体识别分辨率不超过2000\*2000，图片长宽比小于10（长/短 < 10）。
+	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
+
+	// 返回数量，默认值为10，最大值为100。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 起始序号，默认值为0。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 出参Score中，只有超过**MatchThreshold**值的结果才会返回。默认为0
+	MatchThreshold *int64 `json:"MatchThreshold,omitempty" name:"MatchThreshold"`
+
+	// 针对入库时提交的Tags信息进行条件过滤。支持>、>=、 <、 <=、=，!=，多个条件之间支持AND和OR进行连接。
+	Filter *string `json:"Filter,omitempty" name:"Filter"`
+
+	// 图像主体区域。
+	// 若设置主体区域，提取指定的区域进行检索。
+	ImageRect *ImageRect `json:"ImageRect,omitempty" name:"ImageRect"`
+
+	// 是否需要启用主体识别，默认为**TRUE** 。
+	// 1. 为**TRUE**时，启用主体识别，返回主体信息。若没有指定**ImageRect**，自动提取最大面积主体进行检索并进行主体识别。主体识别结果可在**Response中**获取。
+	// 2. 为**FALSE**时，不启用主体识别，不返回主体信息。若没有指定**ImageRect**，以整张图检索图片。
+	// 注意：服务类型为商品图像搜索时生效。
+	EnableDetect *bool `json:"EnableDetect,omitempty" name:"EnableDetect"`
+
+	// 图像类目ID。
+	// 若设置类目ID，提取对应类目的主体进行检索。
+	// 注意：服务类型为商品图像搜索时生效。
+	// 类目信息：
+	// 0：上衣。
+	// 1：裙装。
+	// 2：下装。
+	// 3：包。
+	// 4：鞋。
+	// 5：配饰。
+	CategoryId *int64 `json:"CategoryId,omitempty" name:"CategoryId"`
+}
+
 type SearchImageRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 图库名称。
 	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
 
@@ -1814,26 +2270,28 @@ func (r *SearchImageRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-type SearchImageResponse struct {
-	*tchttp.BaseResponse
-	Response *struct {
+// Predefined struct for user
+type SearchImageResponseParams struct {
+	// 返回结果数量。
+	Count *int64 `json:"Count,omitempty" name:"Count"`
 
-		// 返回结果数量。
-		Count *int64 `json:"Count,omitempty" name:"Count"`
-
-		// 图片信息。
+	// 图片信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		ImageInfos []*ImageInfo `json:"ImageInfos,omitempty" name:"ImageInfos"`
+	ImageInfos []*ImageInfo `json:"ImageInfos,omitempty" name:"ImageInfos"`
 
-		// 输入图的主体信息。
+	// 输入图的主体信息。
 	// 若启用主体识别且在请求中指定了类目ID或主体区域，以指定的主体为准。若启用主体识别且没有指定，以最大面积主体为准。
 	// 注意：此字段可能返回 null，表示取不到有效值。服务类型为商品图像搜索时生效。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		Object *ObjectInfo `json:"Object,omitempty" name:"Object"`
+	Object *ObjectInfo `json:"Object,omitempty" name:"Object"`
 
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type SearchImageResponse struct {
+	*tchttp.BaseResponse
+	Response *SearchImageResponseParams `json:"Response"`
 }
 
 func (r *SearchImageResponse) ToJsonString() string {
@@ -1848,7 +2306,6 @@ func (r *SearchImageResponse) FromJsonString(s string) error {
 }
 
 type Threshold struct {
-
 	// 误识率在百分之一时的推荐阈值。
 	FalseRate1Percent *int64 `json:"FalseRate1Percent,omitempty" name:"FalseRate1Percent"`
 

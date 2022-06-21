@@ -21,7 +21,6 @@ import (
 )
 
 type Acl struct {
-
 	// 访问权限ID
 	Id *uint64 `json:"Id,omitempty" name:"Id"`
 
@@ -103,9 +102,18 @@ type Acl struct {
 	Status *uint64 `json:"Status,omitempty" name:"Status"`
 }
 
+// Predefined struct for user
+type AddDeviceGroupMembersRequestParams struct {
+	// 资产组ID
+	Id *uint64 `json:"Id,omitempty" name:"Id"`
+
+	// 需要添加到资产组的资产ID集合
+	MemberIdSet []*uint64 `json:"MemberIdSet,omitempty" name:"MemberIdSet"`
+}
+
 type AddDeviceGroupMembersRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 资产组ID
 	Id *uint64 `json:"Id,omitempty" name:"Id"`
 
@@ -133,13 +141,15 @@ func (r *AddDeviceGroupMembersRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type AddDeviceGroupMembersResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type AddDeviceGroupMembersResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *AddDeviceGroupMembersResponseParams `json:"Response"`
 }
 
 func (r *AddDeviceGroupMembersResponse) ToJsonString() string {
@@ -153,9 +163,18 @@ func (r *AddDeviceGroupMembersResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type AddUserGroupMembersRequestParams struct {
+	// 用户组ID
+	Id *uint64 `json:"Id,omitempty" name:"Id"`
+
+	// 成员用户ID集合
+	MemberIdSet []*uint64 `json:"MemberIdSet,omitempty" name:"MemberIdSet"`
+}
+
 type AddUserGroupMembersRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 用户组ID
 	Id *uint64 `json:"Id,omitempty" name:"Id"`
 
@@ -183,13 +202,15 @@ func (r *AddUserGroupMembersRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type AddUserGroupMembersResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type AddUserGroupMembersResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *AddUserGroupMembersResponseParams `json:"Response"`
 }
 
 func (r *AddUserGroupMembersResponse) ToJsonString() string {
@@ -203,9 +224,18 @@ func (r *AddUserGroupMembersResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type BindDeviceResourceRequestParams struct {
+	// 资产ID集合
+	DeviceIdSet []*uint64 `json:"DeviceIdSet,omitempty" name:"DeviceIdSet"`
+
+	// 堡垒机服务ID
+	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
+}
+
 type BindDeviceResourceRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 资产ID集合
 	DeviceIdSet []*uint64 `json:"DeviceIdSet,omitempty" name:"DeviceIdSet"`
 
@@ -233,13 +263,15 @@ func (r *BindDeviceResourceRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type BindDeviceResourceResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type BindDeviceResourceResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *BindDeviceResourceResponseParams `json:"Response"`
 }
 
 func (r *BindDeviceResourceResponse) ToJsonString() string {
@@ -254,7 +286,6 @@ func (r *BindDeviceResourceResponse) FromJsonString(s string) error {
 }
 
 type CmdTemplate struct {
-
 	// 高危命令模板ID
 	Id *uint64 `json:"Id,omitempty" name:"Id"`
 
@@ -265,9 +296,86 @@ type CmdTemplate struct {
 	CmdList *string `json:"CmdList,omitempty" name:"CmdList"`
 }
 
+// Predefined struct for user
+type CreateAclRequestParams struct {
+	// 权限名称，最大32字符，不能包含空白字符
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 是否开启磁盘映射
+	AllowDiskRedirect *bool `json:"AllowDiskRedirect,omitempty" name:"AllowDiskRedirect"`
+
+	// 是否允许任意账号登录
+	AllowAnyAccount *bool `json:"AllowAnyAccount,omitempty" name:"AllowAnyAccount"`
+
+	// 是否开启剪贴板文件上行
+	AllowClipFileUp *bool `json:"AllowClipFileUp,omitempty" name:"AllowClipFileUp"`
+
+	// 是否开启剪贴板文件下行
+	AllowClipFileDown *bool `json:"AllowClipFileDown,omitempty" name:"AllowClipFileDown"`
+
+	// 是否开启剪贴板文本（含图片）上行
+	AllowClipTextUp *bool `json:"AllowClipTextUp,omitempty" name:"AllowClipTextUp"`
+
+	// 是否开启剪贴板文本（含图片）下行
+	AllowClipTextDown *bool `json:"AllowClipTextDown,omitempty" name:"AllowClipTextDown"`
+
+	// 是否开启 SFTP 文件上传
+	AllowFileUp *bool `json:"AllowFileUp,omitempty" name:"AllowFileUp"`
+
+	// 文件传输上传大小限制（预留参数，目前暂未使用）
+	MaxFileUpSize *uint64 `json:"MaxFileUpSize,omitempty" name:"MaxFileUpSize"`
+
+	// 是否开启 SFTP 文件下载
+	AllowFileDown *bool `json:"AllowFileDown,omitempty" name:"AllowFileDown"`
+
+	// 文件传输下载大小限制（预留参数，目前暂未使用）
+	MaxFileDownSize *uint64 `json:"MaxFileDownSize,omitempty" name:"MaxFileDownSize"`
+
+	// 关联的用户ID集合
+	UserIdSet []*uint64 `json:"UserIdSet,omitempty" name:"UserIdSet"`
+
+	// 关联的用户组ID
+	UserGroupIdSet []*uint64 `json:"UserGroupIdSet,omitempty" name:"UserGroupIdSet"`
+
+	// 关联的资产ID集合
+	DeviceIdSet []*uint64 `json:"DeviceIdSet,omitempty" name:"DeviceIdSet"`
+
+	// 关联的资产组ID
+	DeviceGroupIdSet []*uint64 `json:"DeviceGroupIdSet,omitempty" name:"DeviceGroupIdSet"`
+
+	// 关联的账号
+	AccountSet []*string `json:"AccountSet,omitempty" name:"AccountSet"`
+
+	// 关联的高危命令模板ID
+	CmdTemplateIdSet []*uint64 `json:"CmdTemplateIdSet,omitempty" name:"CmdTemplateIdSet"`
+
+	// 是否开启rdp磁盘映射文件上传
+	AllowDiskFileUp *bool `json:"AllowDiskFileUp,omitempty" name:"AllowDiskFileUp"`
+
+	// 是否开启rdp磁盘映射文件下载
+	AllowDiskFileDown *bool `json:"AllowDiskFileDown,omitempty" name:"AllowDiskFileDown"`
+
+	// 是否开启rz sz文件上传
+	AllowShellFileUp *bool `json:"AllowShellFileUp,omitempty" name:"AllowShellFileUp"`
+
+	// 是否开启rz sz文件下载
+	AllowShellFileDown *bool `json:"AllowShellFileDown,omitempty" name:"AllowShellFileDown"`
+
+	// 是否开启 SFTP 文件删除
+	AllowFileDel *bool `json:"AllowFileDel,omitempty" name:"AllowFileDel"`
+
+	// 访问权限生效时间，如:"2021-09-22T00:00:00+00:00"
+	// 生效、失效时间不填则访问权限长期有效
+	ValidateFrom *string `json:"ValidateFrom,omitempty" name:"ValidateFrom"`
+
+	// 访问权限失效时间，如:"2021-09-23T00:00:00+00:00"
+	// 生效、失效时间不填则访问权限长期有效
+	ValidateTo *string `json:"ValidateTo,omitempty" name:"ValidateTo"`
+}
+
 type CreateAclRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 权限名称，最大32字符，不能包含空白字符
 	Name *string `json:"Name,omitempty" name:"Name"`
 
@@ -385,16 +493,18 @@ func (r *CreateAclRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateAclResponseParams struct {
+	// 新建成功的访问权限ID
+	Id *uint64 `json:"Id,omitempty" name:"Id"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreateAclResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 新建成功的访问权限ID
-		Id *uint64 `json:"Id,omitempty" name:"Id"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreateAclResponseParams `json:"Response"`
 }
 
 func (r *CreateAclResponse) ToJsonString() string {
@@ -408,9 +518,15 @@ func (r *CreateAclResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateDeviceGroupRequestParams struct {
+	// 资产组名，最大长度32字符
+	Name *string `json:"Name,omitempty" name:"Name"`
+}
+
 type CreateDeviceGroupRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 资产组名，最大长度32字符
 	Name *string `json:"Name,omitempty" name:"Name"`
 }
@@ -434,16 +550,18 @@ func (r *CreateDeviceGroupRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateDeviceGroupResponseParams struct {
+	// 新建成功的资产组ID
+	Id *uint64 `json:"Id,omitempty" name:"Id"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreateDeviceGroupResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 新建成功的资产组ID
-		Id *uint64 `json:"Id,omitempty" name:"Id"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreateDeviceGroupResponseParams `json:"Response"`
 }
 
 func (r *CreateDeviceGroupResponse) ToJsonString() string {
@@ -457,9 +575,15 @@ func (r *CreateDeviceGroupResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateUserGroupRequestParams struct {
+	// 用户组名，最大长度32字符
+	Name *string `json:"Name,omitempty" name:"Name"`
+}
+
 type CreateUserGroupRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 用户组名，最大长度32字符
 	Name *string `json:"Name,omitempty" name:"Name"`
 }
@@ -483,16 +607,18 @@ func (r *CreateUserGroupRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateUserGroupResponseParams struct {
+	// 新建成功的用户组ID
+	Id *uint64 `json:"Id,omitempty" name:"Id"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreateUserGroupResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 新建成功的用户组ID
-		Id *uint64 `json:"Id,omitempty" name:"Id"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreateUserGroupResponseParams `json:"Response"`
 }
 
 func (r *CreateUserGroupResponse) ToJsonString() string {
@@ -506,9 +632,41 @@ func (r *CreateUserGroupResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateUserRequestParams struct {
+	// 用户名, 3-20个字符, 必须以英文字母开头，且不能包含字母、数字、.、_、-以外的字符
+	UserName *string `json:"UserName,omitempty" name:"UserName"`
+
+	// 用户姓名，最大长度20个字符，不能包含空白字符
+	RealName *string `json:"RealName,omitempty" name:"RealName"`
+
+	// 大陆手机号直接填写，如果是其他国家、地区号码， 按照"国家地区代码|手机号"的格式输入。如: "+852|xxxxxxxx"
+	Phone *string `json:"Phone,omitempty" name:"Phone"`
+
+	// 电子邮件
+	Email *string `json:"Email,omitempty" name:"Email"`
+
+	// 用户生效时间，如:"2021-09-22T00:00:00+00:00"
+	// 生效、失效时间不填则用户长期有效
+	ValidateFrom *string `json:"ValidateFrom,omitempty" name:"ValidateFrom"`
+
+	// 用户失效时间，如:"2021-09-23T00:00:00+00:00"
+	// 生效、失效时间不填则用户长期有效
+	ValidateTo *string `json:"ValidateTo,omitempty" name:"ValidateTo"`
+
+	// 所属用户组ID集合
+	GroupIdSet []*uint64 `json:"GroupIdSet,omitempty" name:"GroupIdSet"`
+
+	// 认证方式，0 - 本地， 1 - LDAP， 2 - OAuth 不传则默认为0
+	AuthType *uint64 `json:"AuthType,omitempty" name:"AuthType"`
+
+	// 访问时间段限制， 由0、1组成的字符串，长度168(7 × 24)，代表该用户在一周中允许访问的时间段。字符串中第N个字符代表在一周中的第N个小时， 0 - 代表不允许访问，1 - 代表允许访问
+	ValidateTime *string `json:"ValidateTime,omitempty" name:"ValidateTime"`
+}
+
 type CreateUserRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 用户名, 3-20个字符, 必须以英文字母开头，且不能包含字母、数字、.、_、-以外的字符
 	UserName *string `json:"UserName,omitempty" name:"UserName"`
 
@@ -566,16 +724,18 @@ func (r *CreateUserRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateUserResponseParams struct {
+	// 新建用户的ID
+	Id *uint64 `json:"Id,omitempty" name:"Id"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreateUserResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 新建用户的ID
-		Id *uint64 `json:"Id,omitempty" name:"Id"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreateUserResponseParams `json:"Response"`
 }
 
 func (r *CreateUserResponse) ToJsonString() string {
@@ -589,9 +749,15 @@ func (r *CreateUserResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteAclsRequestParams struct {
+	// 待删除的权限ID集合
+	IdSet []*uint64 `json:"IdSet,omitempty" name:"IdSet"`
+}
+
 type DeleteAclsRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 待删除的权限ID集合
 	IdSet []*uint64 `json:"IdSet,omitempty" name:"IdSet"`
 }
@@ -615,13 +781,15 @@ func (r *DeleteAclsRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteAclsResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DeleteAclsResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DeleteAclsResponseParams `json:"Response"`
 }
 
 func (r *DeleteAclsResponse) ToJsonString() string {
@@ -635,9 +803,18 @@ func (r *DeleteAclsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteDeviceGroupMembersRequestParams struct {
+	// 资产组ID
+	Id *uint64 `json:"Id,omitempty" name:"Id"`
+
+	// 需要删除的资产ID集合
+	MemberIdSet []*uint64 `json:"MemberIdSet,omitempty" name:"MemberIdSet"`
+}
+
 type DeleteDeviceGroupMembersRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 资产组ID
 	Id *uint64 `json:"Id,omitempty" name:"Id"`
 
@@ -665,13 +842,15 @@ func (r *DeleteDeviceGroupMembersRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteDeviceGroupMembersResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DeleteDeviceGroupMembersResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DeleteDeviceGroupMembersResponseParams `json:"Response"`
 }
 
 func (r *DeleteDeviceGroupMembersResponse) ToJsonString() string {
@@ -685,9 +864,15 @@ func (r *DeleteDeviceGroupMembersResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteDeviceGroupsRequestParams struct {
+	// 待删除的资产组ID集合
+	IdSet []*uint64 `json:"IdSet,omitempty" name:"IdSet"`
+}
+
 type DeleteDeviceGroupsRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 待删除的资产组ID集合
 	IdSet []*uint64 `json:"IdSet,omitempty" name:"IdSet"`
 }
@@ -711,13 +896,15 @@ func (r *DeleteDeviceGroupsRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteDeviceGroupsResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DeleteDeviceGroupsResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DeleteDeviceGroupsResponseParams `json:"Response"`
 }
 
 func (r *DeleteDeviceGroupsResponse) ToJsonString() string {
@@ -731,9 +918,18 @@ func (r *DeleteDeviceGroupsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteUserGroupMembersRequestParams struct {
+	// 用户组ID
+	Id *uint64 `json:"Id,omitempty" name:"Id"`
+
+	// 需删除的成员用户ID集合
+	MemberIdSet []*uint64 `json:"MemberIdSet,omitempty" name:"MemberIdSet"`
+}
+
 type DeleteUserGroupMembersRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 用户组ID
 	Id *uint64 `json:"Id,omitempty" name:"Id"`
 
@@ -761,13 +957,15 @@ func (r *DeleteUserGroupMembersRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteUserGroupMembersResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DeleteUserGroupMembersResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DeleteUserGroupMembersResponseParams `json:"Response"`
 }
 
 func (r *DeleteUserGroupMembersResponse) ToJsonString() string {
@@ -781,9 +979,15 @@ func (r *DeleteUserGroupMembersResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteUserGroupsRequestParams struct {
+	// 待删除的用户组ID集合
+	IdSet []*uint64 `json:"IdSet,omitempty" name:"IdSet"`
+}
+
 type DeleteUserGroupsRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 待删除的用户组ID集合
 	IdSet []*uint64 `json:"IdSet,omitempty" name:"IdSet"`
 }
@@ -807,13 +1011,15 @@ func (r *DeleteUserGroupsRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteUserGroupsResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DeleteUserGroupsResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DeleteUserGroupsResponseParams `json:"Response"`
 }
 
 func (r *DeleteUserGroupsResponse) ToJsonString() string {
@@ -827,9 +1033,15 @@ func (r *DeleteUserGroupsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteUsersRequestParams struct {
+	// 待删除的用户ID集合
+	IdSet []*uint64 `json:"IdSet,omitempty" name:"IdSet"`
+}
+
 type DeleteUsersRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 待删除的用户ID集合
 	IdSet []*uint64 `json:"IdSet,omitempty" name:"IdSet"`
 }
@@ -853,13 +1065,15 @@ func (r *DeleteUsersRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteUsersResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DeleteUsersResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DeleteUsersResponseParams `json:"Response"`
 }
 
 func (r *DeleteUsersResponse) ToJsonString() string {
@@ -873,9 +1087,36 @@ func (r *DeleteUsersResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeAclsRequestParams struct {
+	// 访问权限ID集合
+	IdSet []*uint64 `json:"IdSet,omitempty" name:"IdSet"`
+
+	// 访问权限名称，模糊查询，最长64字符
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 分页偏移位置
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 每页条目数量，默认20，最大500
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 是否根据Name进行精确查询，默认值false
+	Exact *bool `json:"Exact,omitempty" name:"Exact"`
+
+	// 有访问权限的用户ID集合
+	AuthorizedUserIdSet []*uint64 `json:"AuthorizedUserIdSet,omitempty" name:"AuthorizedUserIdSet"`
+
+	// 有访问权限的资产ID集合
+	AuthorizedDeviceIdSet []*uint64 `json:"AuthorizedDeviceIdSet,omitempty" name:"AuthorizedDeviceIdSet"`
+
+	// 访问权限状态，1 - 已生效，2 - 未生效，3 - 已过期
+	Status *uint64 `json:"Status,omitempty" name:"Status"`
+}
+
 type DescribeAclsRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 访问权限ID集合
 	IdSet []*uint64 `json:"IdSet,omitempty" name:"IdSet"`
 
@@ -927,19 +1168,21 @@ func (r *DescribeAclsRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeAclsResponseParams struct {
+	// 访问权限总数
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 访问权限列表
+	AclSet []*Acl `json:"AclSet,omitempty" name:"AclSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeAclsResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 访问权限总数
-		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 访问权限列表
-		AclSet []*Acl `json:"AclSet,omitempty" name:"AclSet"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeAclsResponseParams `json:"Response"`
 }
 
 func (r *DescribeAclsResponse) ToJsonString() string {
@@ -953,8 +1196,14 @@ func (r *DescribeAclsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeDasbImageIdsRequestParams struct {
+
+}
+
 type DescribeDasbImageIdsRequest struct {
 	*tchttp.BaseRequest
+	
 }
 
 func (r *DescribeDasbImageIdsRequest) ToJsonString() string {
@@ -969,25 +1218,28 @@ func (r *DescribeDasbImageIdsRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDasbImageIdsRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeDasbImageIdsResponseParams struct {
+	// 基础镜像ID
+	BaseImageId *string `json:"BaseImageId,omitempty" name:"BaseImageId"`
+
+	// AI镜像ID
+	AiImageId *string `json:"AiImageId,omitempty" name:"AiImageId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeDasbImageIdsResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 基础镜像ID
-		BaseImageId *string `json:"BaseImageId,omitempty" name:"BaseImageId"`
-
-		// AI镜像ID
-		AiImageId *string `json:"AiImageId,omitempty" name:"AiImageId"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeDasbImageIdsResponseParams `json:"Response"`
 }
 
 func (r *DescribeDasbImageIdsResponse) ToJsonString() string {
@@ -1001,9 +1253,30 @@ func (r *DescribeDasbImageIdsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeDeviceGroupMembersRequestParams struct {
+	// 资产组ID
+	Id *uint64 `json:"Id,omitempty" name:"Id"`
+
+	// true - 查询已在该资产组的资产，false - 查询未在该资产组的资产
+	Bound *bool `json:"Bound,omitempty" name:"Bound"`
+
+	// 资产名或资产IP，模糊查询
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 分页偏移位置
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 每页条目数，默认20, 最大500
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 资产类型，1 - Linux，2 - Windows，3 - MySQL，4 - SQLServer
+	Kind *uint64 `json:"Kind,omitempty" name:"Kind"`
+}
+
 type DescribeDeviceGroupMembersRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 资产组ID
 	Id *uint64 `json:"Id,omitempty" name:"Id"`
 
@@ -1047,19 +1320,21 @@ func (r *DescribeDeviceGroupMembersRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeDeviceGroupMembersResponseParams struct {
+	// 资产组成员总数
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 资产组成员列表
+	DeviceSet []*Device `json:"DeviceSet,omitempty" name:"DeviceSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeDeviceGroupMembersResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 资产组成员总数
-		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 资产组成员列表
-		DeviceSet []*Device `json:"DeviceSet,omitempty" name:"DeviceSet"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeDeviceGroupMembersResponseParams `json:"Response"`
 }
 
 func (r *DescribeDeviceGroupMembersResponse) ToJsonString() string {
@@ -1073,9 +1348,24 @@ func (r *DescribeDeviceGroupMembersResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeDeviceGroupsRequestParams struct {
+	// 资产组ID集合
+	IdSet []*uint64 `json:"IdSet,omitempty" name:"IdSet"`
+
+	// 资产组名，最长64个字符，模糊查询
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 分页偏移位置
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 每页条目数量，缺省20，最大500
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+}
+
 type DescribeDeviceGroupsRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 资产组ID集合
 	IdSet []*uint64 `json:"IdSet,omitempty" name:"IdSet"`
 
@@ -1111,19 +1401,21 @@ func (r *DescribeDeviceGroupsRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeDeviceGroupsResponseParams struct {
+	// 资产组总数
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 资产组列表
+	GroupSet []*Group `json:"GroupSet,omitempty" name:"GroupSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeDeviceGroupsResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 资产组总数
-		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 资产组列表
-		GroupSet []*Group `json:"GroupSet,omitempty" name:"GroupSet"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeDeviceGroupsResponseParams `json:"Response"`
 }
 
 func (r *DescribeDeviceGroupsResponse) ToJsonString() string {
@@ -1137,9 +1429,42 @@ func (r *DescribeDeviceGroupsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeDevicesRequestParams struct {
+	// 资产ID集合
+	IdSet []*uint64 `json:"IdSet,omitempty" name:"IdSet"`
+
+	// 资产名或资产IP，模糊查询
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 暂未使用
+	Ip *string `json:"Ip,omitempty" name:"Ip"`
+
+	// 地域码集合
+	ApCodeSet []*string `json:"ApCodeSet,omitempty" name:"ApCodeSet"`
+
+	// 操作系统类型, 1 - Linux, 2 - Windows, 3 - MySQL, 4 - SQLServer
+	Kind *uint64 `json:"Kind,omitempty" name:"Kind"`
+
+	// 分页，偏移位置
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 每页条目数量，默认20
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 有该资产访问权限的用户ID集合
+	AuthorizedUserIdSet []*uint64 `json:"AuthorizedUserIdSet,omitempty" name:"AuthorizedUserIdSet"`
+
+	// 过滤条件，资产绑定的堡垒机服务ID集合
+	ResourceIdSet []*string `json:"ResourceIdSet,omitempty" name:"ResourceIdSet"`
+
+	// 可提供按照多种类型过滤, 1 - Linux, 2 - Windows, 3 - MySQL, 4 - SQLServer
+	KindSet []*uint64 `json:"KindSet,omitempty" name:"KindSet"`
+}
+
 type DescribeDevicesRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 资产ID集合
 	IdSet []*uint64 `json:"IdSet,omitempty" name:"IdSet"`
 
@@ -1199,19 +1524,21 @@ func (r *DescribeDevicesRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeDevicesResponseParams struct {
+	// 资产总数
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 资产信息列表
+	DeviceSet []*Device `json:"DeviceSet,omitempty" name:"DeviceSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeDevicesResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 资产总数
-		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 资产信息列表
-		DeviceSet []*Device `json:"DeviceSet,omitempty" name:"DeviceSet"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeDevicesResponseParams `json:"Response"`
 }
 
 func (r *DescribeDevicesResponse) ToJsonString() string {
@@ -1225,9 +1552,21 @@ func (r *DescribeDevicesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeResourcesRequestParams struct {
+	// 地域码, 如: ap-guangzhou
+	ApCode *string `json:"ApCode,omitempty" name:"ApCode"`
+
+	// 按照堡垒机开通的 VPC 实例ID查询
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 资源ID集合，当传入ID集合时忽略 ApCode 和 VpcId
+	ResourceIds []*string `json:"ResourceIds,omitempty" name:"ResourceIds"`
+}
+
 type DescribeResourcesRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 地域码, 如: ap-guangzhou
 	ApCode *string `json:"ApCode,omitempty" name:"ApCode"`
 
@@ -1259,16 +1598,18 @@ func (r *DescribeResourcesRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeResourcesResponseParams struct {
+	// 堡垒机资源列表
+	ResourceSet []*Resource `json:"ResourceSet,omitempty" name:"ResourceSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeResourcesResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 堡垒机资源列表
-		ResourceSet []*Resource `json:"ResourceSet,omitempty" name:"ResourceSet"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeResourcesResponseParams `json:"Response"`
 }
 
 func (r *DescribeResourcesResponse) ToJsonString() string {
@@ -1282,9 +1623,27 @@ func (r *DescribeResourcesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeUserGroupMembersRequestParams struct {
+	// 用户组ID
+	Id *uint64 `json:"Id,omitempty" name:"Id"`
+
+	// true - 查询已添加到该用户组的用户，false - 查询未添加到该用户组的用户
+	Bound *bool `json:"Bound,omitempty" name:"Bound"`
+
+	// 用户名或用户姓名，最长64个字符，模糊查询
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 分页偏移位置
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 每页条目数量，默认20, 最大500
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+}
+
 type DescribeUserGroupMembersRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 用户组ID
 	Id *uint64 `json:"Id,omitempty" name:"Id"`
 
@@ -1324,19 +1683,21 @@ func (r *DescribeUserGroupMembersRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeUserGroupMembersResponseParams struct {
+	// 用户组成员总数
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 用户组成员列表
+	UserSet []*User `json:"UserSet,omitempty" name:"UserSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeUserGroupMembersResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 用户组成员总数
-		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 用户组成员列表
-		UserSet []*User `json:"UserSet,omitempty" name:"UserSet"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeUserGroupMembersResponseParams `json:"Response"`
 }
 
 func (r *DescribeUserGroupMembersResponse) ToJsonString() string {
@@ -1350,9 +1711,24 @@ func (r *DescribeUserGroupMembersResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeUserGroupsRequestParams struct {
+	// 用户组ID集合
+	IdSet []*uint64 `json:"IdSet,omitempty" name:"IdSet"`
+
+	// 用户组名，模糊查询,长度：0-64字符
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 分页偏移位置
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 每页条目数量，缺省20，最大500
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+}
+
 type DescribeUserGroupsRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 用户组ID集合
 	IdSet []*uint64 `json:"IdSet,omitempty" name:"IdSet"`
 
@@ -1388,19 +1764,21 @@ func (r *DescribeUserGroupsRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeUserGroupsResponseParams struct {
+	// 用户组总数
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 用户组列表
+	GroupSet []*Group `json:"GroupSet,omitempty" name:"GroupSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeUserGroupsResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 用户组总数
-		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 用户组列表
-		GroupSet []*Group `json:"GroupSet,omitempty" name:"GroupSet"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeUserGroupsResponseParams `json:"Response"`
 }
 
 func (r *DescribeUserGroupsResponse) ToJsonString() string {
@@ -1414,9 +1792,37 @@ func (r *DescribeUserGroupsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeUsersRequestParams struct {
+	// 如果IdSet不为空，则忽略其他参数
+	IdSet []*uint64 `json:"IdSet,omitempty" name:"IdSet"`
+
+	// 模糊查询，IdSet、UserName、Phone为空时才生效，对用户名和姓名进行模糊查询
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 分页，偏移位置
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 每页条目数量，默认20, 最大500
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 精确查询，IdSet为空时才生效
+	UserName *string `json:"UserName,omitempty" name:"UserName"`
+
+	// 精确查询，IdSet、UserName为空时才生效。
+	// 大陆手机号直接填写，如果是其他国家、地区号码,按照"国家地区代码|手机号"的格式输入。如: "+852|xxxxxxxx"
+	Phone *string `json:"Phone,omitempty" name:"Phone"`
+
+	// 查询具有指定资产ID访问权限的用户
+	AuthorizedDeviceIdSet []*uint64 `json:"AuthorizedDeviceIdSet,omitempty" name:"AuthorizedDeviceIdSet"`
+
+	// 认证方式，0 - 本地, 1 - LDAP, 2 - OAuth, 不传为全部
+	AuthTypeSet []*uint64 `json:"AuthTypeSet,omitempty" name:"AuthTypeSet"`
+}
+
 type DescribeUsersRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 如果IdSet不为空，则忽略其他参数
 	IdSet []*uint64 `json:"IdSet,omitempty" name:"IdSet"`
 
@@ -1469,19 +1875,21 @@ func (r *DescribeUsersRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeUsersResponseParams struct {
+	// 用户总数
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 用户列表
+	UserSet []*User `json:"UserSet,omitempty" name:"UserSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeUsersResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 用户总数
-		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 用户列表
-		UserSet []*User `json:"UserSet,omitempty" name:"UserSet"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeUsersResponseParams `json:"Response"`
 }
 
 func (r *DescribeUsersResponse) ToJsonString() string {
@@ -1496,7 +1904,6 @@ func (r *DescribeUsersResponse) FromJsonString(s string) error {
 }
 
 type Device struct {
-
 	// 资产ID
 	Id *uint64 `json:"Id,omitempty" name:"Id"`
 
@@ -1542,7 +1949,6 @@ type Device struct {
 }
 
 type Group struct {
-
 	// 组ID
 	Id *uint64 `json:"Id,omitempty" name:"Id"`
 
@@ -1550,9 +1956,89 @@ type Group struct {
 	Name *string `json:"Name,omitempty" name:"Name"`
 }
 
+// Predefined struct for user
+type ModifyAclRequestParams struct {
+	// 访问权限名称，最大32字符，不能包含空白字符
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 是否开启磁盘映射
+	AllowDiskRedirect *bool `json:"AllowDiskRedirect,omitempty" name:"AllowDiskRedirect"`
+
+	// 是否允许任意账号登录
+	AllowAnyAccount *bool `json:"AllowAnyAccount,omitempty" name:"AllowAnyAccount"`
+
+	// 访问权限ID
+	Id *uint64 `json:"Id,omitempty" name:"Id"`
+
+	// 是否开启剪贴板文件上行
+	AllowClipFileUp *bool `json:"AllowClipFileUp,omitempty" name:"AllowClipFileUp"`
+
+	// 是否开启剪贴板文件下行
+	AllowClipFileDown *bool `json:"AllowClipFileDown,omitempty" name:"AllowClipFileDown"`
+
+	// 是否开启剪贴板文本（含图片）上行
+	AllowClipTextUp *bool `json:"AllowClipTextUp,omitempty" name:"AllowClipTextUp"`
+
+	// 是否开启剪贴板文本（含图片）下行
+	AllowClipTextDown *bool `json:"AllowClipTextDown,omitempty" name:"AllowClipTextDown"`
+
+	// 是否开启文件传输上传
+	AllowFileUp *bool `json:"AllowFileUp,omitempty" name:"AllowFileUp"`
+
+	// 文件传输上传大小限制（预留参数，目前暂未使用）
+	MaxFileUpSize *uint64 `json:"MaxFileUpSize,omitempty" name:"MaxFileUpSize"`
+
+	// 是否开启文件传输下载
+	AllowFileDown *bool `json:"AllowFileDown,omitempty" name:"AllowFileDown"`
+
+	// 文件传输下载大小限制（预留参数，目前暂未使用）
+	MaxFileDownSize *uint64 `json:"MaxFileDownSize,omitempty" name:"MaxFileDownSize"`
+
+	// 关联的用户ID
+	UserIdSet []*uint64 `json:"UserIdSet,omitempty" name:"UserIdSet"`
+
+	// 关联的用户组ID
+	UserGroupIdSet []*uint64 `json:"UserGroupIdSet,omitempty" name:"UserGroupIdSet"`
+
+	// 关联的资产ID
+	DeviceIdSet []*uint64 `json:"DeviceIdSet,omitempty" name:"DeviceIdSet"`
+
+	// 关联的资产组ID
+	DeviceGroupIdSet []*uint64 `json:"DeviceGroupIdSet,omitempty" name:"DeviceGroupIdSet"`
+
+	// 关联的账号
+	AccountSet []*string `json:"AccountSet,omitempty" name:"AccountSet"`
+
+	// 关联的高危命令模板ID
+	CmdTemplateIdSet []*uint64 `json:"CmdTemplateIdSet,omitempty" name:"CmdTemplateIdSet"`
+
+	// 是否开启 RDP 磁盘映射文件上传
+	AllowDiskFileUp *bool `json:"AllowDiskFileUp,omitempty" name:"AllowDiskFileUp"`
+
+	// 是否开启 RDP 磁盘映射文件下载
+	AllowDiskFileDown *bool `json:"AllowDiskFileDown,omitempty" name:"AllowDiskFileDown"`
+
+	// 是否开启rz sz文件上传
+	AllowShellFileUp *bool `json:"AllowShellFileUp,omitempty" name:"AllowShellFileUp"`
+
+	// 是否开启rz sz文件下载
+	AllowShellFileDown *bool `json:"AllowShellFileDown,omitempty" name:"AllowShellFileDown"`
+
+	// 是否开启 SFTP 文件删除
+	AllowFileDel *bool `json:"AllowFileDel,omitempty" name:"AllowFileDel"`
+
+	// 访问权限生效时间，如:"2021-09-22T00:00:00+00:00"
+	// 生效、失效时间不填则访问权限长期有效
+	ValidateFrom *string `json:"ValidateFrom,omitempty" name:"ValidateFrom"`
+
+	// 访问权限失效时间，如:"2021-09-23T00:00:00+00:00"
+	// 生效、失效时间不填则访问权限长期有效
+	ValidateTo *string `json:"ValidateTo,omitempty" name:"ValidateTo"`
+}
+
 type ModifyAclRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 访问权限名称，最大32字符，不能包含空白字符
 	Name *string `json:"Name,omitempty" name:"Name"`
 
@@ -1674,13 +2160,15 @@ func (r *ModifyAclRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifyAclResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type ModifyAclResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *ModifyAclResponseParams `json:"Response"`
 }
 
 func (r *ModifyAclResponse) ToJsonString() string {
@@ -1694,9 +2182,41 @@ func (r *ModifyAclResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifyUserRequestParams struct {
+	// 用户ID
+	Id *uint64 `json:"Id,omitempty" name:"Id"`
+
+	// 用户姓名，最大长度20个字符，不能包含空格
+	RealName *string `json:"RealName,omitempty" name:"RealName"`
+
+	// 大陆手机号直接填写，如果是其他国家、地区号码,按照"国家地区代码|手机号"的格式输入。如: "+852|xxxxxxxx"
+	Phone *string `json:"Phone,omitempty" name:"Phone"`
+
+	// 电子邮件
+	Email *string `json:"Email,omitempty" name:"Email"`
+
+	// 用户生效时间，如:"2021-09-22T00:00:00+00:00"
+	// 生效、失效时间不填则用户长期有效
+	ValidateFrom *string `json:"ValidateFrom,omitempty" name:"ValidateFrom"`
+
+	// 用户失效时间，如:"2021-09-23T00:00:00+00:00"
+	// 生效、失效时间不填则用户长期有效
+	ValidateTo *string `json:"ValidateTo,omitempty" name:"ValidateTo"`
+
+	// 所属用户组ID集合
+	GroupIdSet []*uint64 `json:"GroupIdSet,omitempty" name:"GroupIdSet"`
+
+	// 认证方式，0 - 本地，1 - LDAP，2 - OAuth 不传则默认为0
+	AuthType *uint64 `json:"AuthType,omitempty" name:"AuthType"`
+
+	// 访问时间段限制， 由0、1组成的字符串，长度168(7 × 24)，代表该用户在一周中允许访问的时间段。字符串中第N个字符代表在一周中的第N个小时， 0 - 代表不允许访问，1 - 代表允许访问
+	ValidateTime *string `json:"ValidateTime,omitempty" name:"ValidateTime"`
+}
+
 type ModifyUserRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 用户ID
 	Id *uint64 `json:"Id,omitempty" name:"Id"`
 
@@ -1754,13 +2274,15 @@ func (r *ModifyUserRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifyUserResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type ModifyUserResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *ModifyUserResponseParams `json:"Response"`
 }
 
 func (r *ModifyUserResponse) ToJsonString() string {
@@ -1775,7 +2297,6 @@ func (r *ModifyUserResponse) FromJsonString(s string) error {
 }
 
 type Resource struct {
-
 	// 服务实例ID，如bh-saas-s3ed4r5e
 	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
 
@@ -1862,7 +2383,6 @@ type Resource struct {
 }
 
 type User struct {
-
 	// 用户名, 3-20个字符 必须以英文字母开头，且不能包含字母、数字、.、_、-以外的字符
 	UserName *string `json:"UserName,omitempty" name:"UserName"`
 

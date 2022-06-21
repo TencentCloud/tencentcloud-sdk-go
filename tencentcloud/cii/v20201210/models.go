@@ -21,7 +21,6 @@ import (
 )
 
 type CompareMetricsData struct {
-
 	// 短文准确率
 	ShortStructAccuracy *string `json:"ShortStructAccuracy,omitempty" name:"ShortStructAccuracy"`
 
@@ -41,9 +40,39 @@ type CompareMetricsData struct {
 	LongContentRecall *string `json:"LongContentRecall,omitempty" name:"LongContentRecall"`
 }
 
+// Predefined struct for user
+type CreateStructureTaskRequestParams struct {
+	// 保单号
+	PolicyId *string `json:"PolicyId,omitempty" name:"PolicyId"`
+
+	// 客户号
+	CustomerId *string `json:"CustomerId,omitempty" name:"CustomerId"`
+
+	// 客户姓名
+	CustomerName *string `json:"CustomerName,omitempty" name:"CustomerName"`
+
+	// 文件类型，目前只支持体检报告类型，对应的值为：HealthReport
+	TaskType *string `json:"TaskType,omitempty" name:"TaskType"`
+
+	// 报告年份
+	Year *string `json:"Year,omitempty" name:"Year"`
+
+	// 报告文件上传的地址列表，需按顺序排列。如果使用ImageList参数，置为空数组即可
+	FileList []*string `json:"FileList,omitempty" name:"FileList"`
+
+	// 险种，如果是体检报告类型，此参数是必填，类型说明如下：
+	// CriticalDiseaseInsurance:重疾险
+	// LifeInsurance：寿险
+	// AccidentInsurance：意外险
+	InsuranceTypes []*string `json:"InsuranceTypes,omitempty" name:"InsuranceTypes"`
+
+	// 报告上传的图片内容数组，图片内容采用base64编码，需按顺序排列
+	ImageList []*string `json:"ImageList,omitempty" name:"ImageList"`
+}
+
 type CreateStructureTaskRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 保单号
 	PolicyId *string `json:"PolicyId,omitempty" name:"PolicyId"`
 
@@ -98,16 +127,18 @@ func (r *CreateStructureTaskRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateStructureTaskResponseParams struct {
+	// 本次结构化任务的ID
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreateStructureTaskResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 本次结构化任务的ID
-		TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreateStructureTaskResponseParams `json:"Response"`
 }
 
 func (r *CreateStructureTaskResponse) ToJsonString() string {
@@ -121,9 +152,15 @@ func (r *CreateStructureTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeStructCompareDataRequestParams struct {
+	// 结构化任务ID
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+}
+
 type DescribeStructCompareDataRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 结构化任务ID
 	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
 }
@@ -147,43 +184,45 @@ func (r *DescribeStructCompareDataRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeStructCompareDataResponseParams struct {
+	// 保单号
+	PolicyId *string `json:"PolicyId,omitempty" name:"PolicyId"`
+
+	// 结构化任务ID
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 客户号
+	CustomerId *string `json:"CustomerId,omitempty" name:"CustomerId"`
+
+	// 客户姓名
+	CustomerName *string `json:"CustomerName,omitempty" name:"CustomerName"`
+
+	// 复核时间
+	ReviewTime *string `json:"ReviewTime,omitempty" name:"ReviewTime"`
+
+	// 算法识别结果
+	MachineResult *string `json:"MachineResult,omitempty" name:"MachineResult"`
+
+	// 人工复核结果
+	ManualResult *string `json:"ManualResult,omitempty" name:"ManualResult"`
+
+	// 结构化对比指标数据
+	Metrics *CompareMetricsData `json:"Metrics,omitempty" name:"Metrics"`
+
+	// 新增项
+	NewItems *string `json:"NewItems,omitempty" name:"NewItems"`
+
+	// 修改项
+	ModifyItems *string `json:"ModifyItems,omitempty" name:"ModifyItems"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeStructCompareDataResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 保单号
-		PolicyId *string `json:"PolicyId,omitempty" name:"PolicyId"`
-
-		// 结构化任务ID
-		TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
-
-		// 客户号
-		CustomerId *string `json:"CustomerId,omitempty" name:"CustomerId"`
-
-		// 客户姓名
-		CustomerName *string `json:"CustomerName,omitempty" name:"CustomerName"`
-
-		// 复核时间
-		ReviewTime *string `json:"ReviewTime,omitempty" name:"ReviewTime"`
-
-		// 算法识别结果
-		MachineResult *string `json:"MachineResult,omitempty" name:"MachineResult"`
-
-		// 人工复核结果
-		ManualResult *string `json:"ManualResult,omitempty" name:"ManualResult"`
-
-		// 结构化对比指标数据
-		Metrics *CompareMetricsData `json:"Metrics,omitempty" name:"Metrics"`
-
-		// 新增项
-		NewItems *string `json:"NewItems,omitempty" name:"NewItems"`
-
-		// 修改项
-		ModifyItems *string `json:"ModifyItems,omitempty" name:"ModifyItems"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeStructCompareDataResponseParams `json:"Response"`
 }
 
 func (r *DescribeStructCompareDataResponse) ToJsonString() string {
@@ -197,9 +236,15 @@ func (r *DescribeStructCompareDataResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeStructureTaskResultRequestParams struct {
+	// 结构化任务ID
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+}
+
 type DescribeStructureTaskResultRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 结构化任务ID
 	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
 }
@@ -223,23 +268,25 @@ func (r *DescribeStructureTaskResultRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-type DescribeStructureTaskResultResponse struct {
-	*tchttp.BaseResponse
-	Response *struct {
-
-		// 结果状态：
+// Predefined struct for user
+type DescribeStructureTaskResultResponseParams struct {
+	// 结果状态：
 	// 0：返回成功
 	// 1：结果未生成
 	// 2：结果生成失败
-		Status *uint64 `json:"Status,omitempty" name:"Status"`
+	Status *uint64 `json:"Status,omitempty" name:"Status"`
 
-		// 结构化识别结果数组，每个数组元素对应一个图片的结构化结果，顺序和输入参数的ImageList或FileList对应。
+	// 结构化识别结果数组，每个数组元素对应一个图片的结构化结果，顺序和输入参数的ImageList或FileList对应。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-		Results []*ResultObject `json:"Results,omitempty" name:"Results"`
+	Results []*ResultObject `json:"Results,omitempty" name:"Results"`
 
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeStructureTaskResultResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeStructureTaskResultResponseParams `json:"Response"`
 }
 
 func (r *DescribeStructureTaskResultResponse) ToJsonString() string {
@@ -254,7 +301,6 @@ func (r *DescribeStructureTaskResultResponse) FromJsonString(s string) error {
 }
 
 type ResultObject struct {
-
 	// 图片质量分
 	Quality *float64 `json:"Quality,omitempty" name:"Quality"`
 

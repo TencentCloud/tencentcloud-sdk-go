@@ -20,9 +20,39 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+// Predefined struct for user
+type CreateFlowServiceRequestParams struct {
+	// 定义文本（JSON格式）
+	Definition *string `json:"Definition,omitempty" name:"Definition"`
+
+	// 状态机所属服务名
+	FlowServiceName *string `json:"FlowServiceName,omitempty" name:"FlowServiceName"`
+
+	// 是不是新的角色
+	IsNewRole *bool `json:"IsNewRole,omitempty" name:"IsNewRole"`
+
+	// 状态机类型（EXPRESS，STANDARD）
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 状态机所属服务中文名
+	FlowServiceChineseName *string `json:"FlowServiceChineseName,omitempty" name:"FlowServiceChineseName"`
+
+	// 角色资源名, 比如: qcs::cam::uin/20103392:roleName/SomeRoleForYourStateMachine
+	RoleResource *string `json:"RoleResource,omitempty" name:"RoleResource"`
+
+	// 备注
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 是否开启CLS日志投递功能
+	EnableCLS *bool `json:"EnableCLS,omitempty" name:"EnableCLS"`
+
+	// 该状态机的默认输入
+	Input *string `json:"Input,omitempty" name:"Input"`
+}
+
 type CreateFlowServiceRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 定义文本（JSON格式）
 	Definition *string `json:"Definition,omitempty" name:"Definition"`
 
@@ -78,19 +108,21 @@ func (r *CreateFlowServiceRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateFlowServiceResponseParams struct {
+	// 状态机所属服务资源
+	FlowServiceResource *string `json:"FlowServiceResource,omitempty" name:"FlowServiceResource"`
+
+	// 生成日期
+	CreateDate *string `json:"CreateDate,omitempty" name:"CreateDate"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreateFlowServiceResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 状态机所属服务资源
-		FlowServiceResource *string `json:"FlowServiceResource,omitempty" name:"FlowServiceResource"`
-
-		// 生成日期
-		CreateDate *string `json:"CreateDate,omitempty" name:"CreateDate"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreateFlowServiceResponseParams `json:"Response"`
 }
 
 func (r *CreateFlowServiceResponse) ToJsonString() string {
@@ -104,9 +136,15 @@ func (r *CreateFlowServiceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeExecutionHistoryRequestParams struct {
+	// 执行资源名
+	ExecutionResourceName *string `json:"ExecutionResourceName,omitempty" name:"ExecutionResourceName"`
+}
+
 type DescribeExecutionHistoryRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 执行资源名
 	ExecutionResourceName *string `json:"ExecutionResourceName,omitempty" name:"ExecutionResourceName"`
 }
@@ -130,16 +168,18 @@ func (r *DescribeExecutionHistoryRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeExecutionHistoryResponseParams struct {
+	// 执行的事件列表
+	Events []*ExecutionEvent `json:"Events,omitempty" name:"Events"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeExecutionHistoryResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 执行的事件列表
-		Events []*ExecutionEvent `json:"Events,omitempty" name:"Events"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeExecutionHistoryResponseParams `json:"Response"`
 }
 
 func (r *DescribeExecutionHistoryResponse) ToJsonString() string {
@@ -153,9 +193,15 @@ func (r *DescribeExecutionHistoryResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeExecutionRequestParams struct {
+	// 执行资源名
+	ExecutionResourceName *string `json:"ExecutionResourceName,omitempty" name:"ExecutionResourceName"`
+}
+
 type DescribeExecutionRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 执行资源名
 	ExecutionResourceName *string `json:"ExecutionResourceName,omitempty" name:"ExecutionResourceName"`
 }
@@ -179,42 +225,44 @@ func (r *DescribeExecutionRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeExecutionResponseParams struct {
+	// 执行资源名
+	ExecutionResourceName *string `json:"ExecutionResourceName,omitempty" name:"ExecutionResourceName"`
+
+	// 资源名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 执行开始时间，毫秒
+	StartDate *string `json:"StartDate,omitempty" name:"StartDate"`
+
+	// 执行结束时间，毫秒
+	StopDate *string `json:"StopDate,omitempty" name:"StopDate"`
+
+	// 状态机资源名
+	StateMachineResourceName *string `json:"StateMachineResourceName,omitempty" name:"StateMachineResourceName"`
+
+	// 执行状态。INIT，RUNNING，SUCCEED，FAILED，TERMINATED
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 执行的输入
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Input *string `json:"Input,omitempty" name:"Input"`
+
+	// 执行的输出
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Output *string `json:"Output,omitempty" name:"Output"`
+
+	// 启动执行时，状态机的定义
+	ExecutionDefinition *string `json:"ExecutionDefinition,omitempty" name:"ExecutionDefinition"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeExecutionResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 执行资源名
-		ExecutionResourceName *string `json:"ExecutionResourceName,omitempty" name:"ExecutionResourceName"`
-
-		// 资源名称
-		Name *string `json:"Name,omitempty" name:"Name"`
-
-		// 执行开始时间，毫秒
-		StartDate *string `json:"StartDate,omitempty" name:"StartDate"`
-
-		// 执行结束时间，毫秒
-		StopDate *string `json:"StopDate,omitempty" name:"StopDate"`
-
-		// 状态机资源名
-		StateMachineResourceName *string `json:"StateMachineResourceName,omitempty" name:"StateMachineResourceName"`
-
-		// 执行状态。INIT，RUNNING，SUCCEED，FAILED，TERMINATED
-		Status *string `json:"Status,omitempty" name:"Status"`
-
-		// 执行的输入
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		Input *string `json:"Input,omitempty" name:"Input"`
-
-		// 执行的输出
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		Output *string `json:"Output,omitempty" name:"Output"`
-
-		// 启动执行时，状态机的定义
-		ExecutionDefinition *string `json:"ExecutionDefinition,omitempty" name:"ExecutionDefinition"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeExecutionResponseParams `json:"Response"`
 }
 
 func (r *DescribeExecutionResponse) ToJsonString() string {
@@ -228,9 +276,27 @@ func (r *DescribeExecutionResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeExecutionsRequestParams struct {
+	// 状态机资源名
+	StateMachineResourceName *string `json:"StateMachineResourceName,omitempty" name:"StateMachineResourceName"`
+
+	// 页大小，最大100
+	PageSize *int64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// 页序号，从1开始
+	PageIndex *int64 `json:"PageIndex,omitempty" name:"PageIndex"`
+
+	// 按状态过滤条件，INIT，RUNNING，SUCCEED，FAILED，TERMINATED
+	FilterExecutionStatus *string `json:"FilterExecutionStatus,omitempty" name:"FilterExecutionStatus"`
+
+	// 按执行名过滤条件
+	FilterExecutionResourceName *string `json:"FilterExecutionResourceName,omitempty" name:"FilterExecutionResourceName"`
+}
+
 type DescribeExecutionsRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 状态机资源名
 	StateMachineResourceName *string `json:"StateMachineResourceName,omitempty" name:"StateMachineResourceName"`
 
@@ -270,13 +336,15 @@ func (r *DescribeExecutionsRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeExecutionsResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeExecutionsResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeExecutionsResponseParams `json:"Response"`
 }
 
 func (r *DescribeExecutionsResponse) ToJsonString() string {
@@ -290,9 +358,15 @@ func (r *DescribeExecutionsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeFlowServiceDetailRequestParams struct {
+	// 状态机所属服务资源名
+	FlowServiceResource *string `json:"FlowServiceResource,omitempty" name:"FlowServiceResource"`
+}
+
 type DescribeFlowServiceDetailRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 状态机所属服务资源名
 	FlowServiceResource *string `json:"FlowServiceResource,omitempty" name:"FlowServiceResource"`
 }
@@ -316,53 +390,55 @@ func (r *DescribeFlowServiceDetailRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeFlowServiceDetailResponseParams struct {
+	// 状态机所属服务名
+	FlowServiceName *string `json:"FlowServiceName,omitempty" name:"FlowServiceName"`
+
+	// 状态机状态
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 定义文本（JSON格式）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Definition *string `json:"Definition,omitempty" name:"Definition"`
+
+	// 角色资源名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RoleResource *string `json:"RoleResource,omitempty" name:"RoleResource"`
+
+	// 状态机的类型，可以为 （EXPRESS/STANDARD）
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 生成时间
+	CreateDate *string `json:"CreateDate,omitempty" name:"CreateDate"`
+
+	// 备注
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 状态机所属服务中文名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FlowServiceChineseName *string `json:"FlowServiceChineseName,omitempty" name:"FlowServiceChineseName"`
+
+	// 是否开启日志CLS服务
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EnableCLS *bool `json:"EnableCLS,omitempty" name:"EnableCLS"`
+
+	// CLS日志查看地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CLSUrl *string `json:"CLSUrl,omitempty" name:"CLSUrl"`
+
+	// 工作流提示输入
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FlowInput *string `json:"FlowInput,omitempty" name:"FlowInput"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeFlowServiceDetailResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 状态机所属服务名
-		FlowServiceName *string `json:"FlowServiceName,omitempty" name:"FlowServiceName"`
-
-		// 状态机状态
-		Status *string `json:"Status,omitempty" name:"Status"`
-
-		// 定义文本（JSON格式）
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		Definition *string `json:"Definition,omitempty" name:"Definition"`
-
-		// 角色资源名
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		RoleResource *string `json:"RoleResource,omitempty" name:"RoleResource"`
-
-		// 状态机的类型，可以为 （EXPRESS/STANDARD）
-		Type *string `json:"Type,omitempty" name:"Type"`
-
-		// 生成时间
-		CreateDate *string `json:"CreateDate,omitempty" name:"CreateDate"`
-
-		// 备注
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		Description *string `json:"Description,omitempty" name:"Description"`
-
-		// 状态机所属服务中文名
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		FlowServiceChineseName *string `json:"FlowServiceChineseName,omitempty" name:"FlowServiceChineseName"`
-
-		// 是否开启日志CLS服务
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		EnableCLS *bool `json:"EnableCLS,omitempty" name:"EnableCLS"`
-
-		// CLS日志查看地址
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		CLSUrl *string `json:"CLSUrl,omitempty" name:"CLSUrl"`
-
-		// 工作流提示输入
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		FlowInput *string `json:"FlowInput,omitempty" name:"FlowInput"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeFlowServiceDetailResponseParams `json:"Response"`
 }
 
 func (r *DescribeFlowServiceDetailResponse) ToJsonString() string {
@@ -376,9 +452,21 @@ func (r *DescribeFlowServiceDetailResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeFlowServicesRequestParams struct {
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回数量，默认为20，最大值为100。
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 过滤条件，详见下表：实例过滤条件表。每次请求的Filter.Values的上限为5。参数名字仅支持FlowServiceName， Status, Type三种情况
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+}
+
 type DescribeFlowServicesRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 偏移量，默认为0。
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
@@ -410,19 +498,21 @@ func (r *DescribeFlowServicesRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeFlowServicesResponseParams struct {
+	// 用户的状态机列表
+	FlowServiceSet []*StateMachine `json:"FlowServiceSet,omitempty" name:"FlowServiceSet"`
+
+	// 用户的状态机总数
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeFlowServicesResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 用户的状态机列表
-		FlowServiceSet []*StateMachine `json:"FlowServiceSet,omitempty" name:"FlowServiceSet"`
-
-		// 用户的状态机总数
-		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeFlowServicesResponseParams `json:"Response"`
 }
 
 func (r *DescribeFlowServicesResponse) ToJsonString() string {
@@ -437,7 +527,6 @@ func (r *DescribeFlowServicesResponse) FromJsonString(s string) error {
 }
 
 type ExecutionEvent struct {
-
 	// 执行资源名
 	ExecutionResourceName *string `json:"ExecutionResourceName,omitempty" name:"ExecutionResourceName"`
 
@@ -465,7 +554,6 @@ type ExecutionEvent struct {
 }
 
 type Filter struct {
-
 	// 过滤器名字
 	Name *string `json:"Name,omitempty" name:"Name"`
 
@@ -473,9 +561,39 @@ type Filter struct {
 	Values []*string `json:"Values,omitempty" name:"Values"`
 }
 
+// Predefined struct for user
+type ModifyFlowServiceRequestParams struct {
+	// 状态机资源名
+	FlowServiceResource *string `json:"FlowServiceResource,omitempty" name:"FlowServiceResource"`
+
+	// 定义JSON
+	Definition *string `json:"Definition,omitempty" name:"Definition"`
+
+	// 状态机所属服务名
+	FlowServiceName *string `json:"FlowServiceName,omitempty" name:"FlowServiceName"`
+
+	// 状态机所属服务中文名
+	FlowServiceChineseName *string `json:"FlowServiceChineseName,omitempty" name:"FlowServiceChineseName"`
+
+	// 是否是新角色
+	IsNewRole *bool `json:"IsNewRole,omitempty" name:"IsNewRole"`
+
+	// 状态机类型
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 角色资源名
+	RoleResource *string `json:"RoleResource,omitempty" name:"RoleResource"`
+
+	// 状态机备注
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 是否允许日志投递
+	EnableCLS *bool `json:"EnableCLS,omitempty" name:"EnableCLS"`
+}
+
 type ModifyFlowServiceRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 状态机资源名
 	FlowServiceResource *string `json:"FlowServiceResource,omitempty" name:"FlowServiceResource"`
 
@@ -531,19 +649,21 @@ func (r *ModifyFlowServiceRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifyFlowServiceResponseParams struct {
+	// 状态机资源名
+	FlowServiceResource *string `json:"FlowServiceResource,omitempty" name:"FlowServiceResource"`
+
+	// 更新时间
+	UpdateDate *string `json:"UpdateDate,omitempty" name:"UpdateDate"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type ModifyFlowServiceResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 状态机资源名
-		FlowServiceResource *string `json:"FlowServiceResource,omitempty" name:"FlowServiceResource"`
-
-		// 更新时间
-		UpdateDate *string `json:"UpdateDate,omitempty" name:"UpdateDate"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *ModifyFlowServiceResponseParams `json:"Response"`
 }
 
 func (r *ModifyFlowServiceResponse) ToJsonString() string {
@@ -557,9 +677,21 @@ func (r *ModifyFlowServiceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type StartExecutionRequestParams struct {
+	// 状态机资源名
+	StateMachineResourceName *string `json:"StateMachineResourceName,omitempty" name:"StateMachineResourceName"`
+
+	// 输入参数，内容为JsonObject，长度不大于524288字符。
+	Input *string `json:"Input,omitempty" name:"Input"`
+
+	// 本次执行名。如果不填，系统会自动生成。如果填，应保证状态机下唯一
+	Name *string `json:"Name,omitempty" name:"Name"`
+}
+
 type StartExecutionRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 状态机资源名
 	StateMachineResourceName *string `json:"StateMachineResourceName,omitempty" name:"StateMachineResourceName"`
 
@@ -591,19 +723,21 @@ func (r *StartExecutionRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type StartExecutionResponseParams struct {
+	// 执行资源名
+	ExecutionResourceName *string `json:"ExecutionResourceName,omitempty" name:"ExecutionResourceName"`
+
+	// 执行开始时间
+	StartDate *string `json:"StartDate,omitempty" name:"StartDate"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type StartExecutionResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 执行资源名
-		ExecutionResourceName *string `json:"ExecutionResourceName,omitempty" name:"ExecutionResourceName"`
-
-		// 执行开始时间
-		StartDate *string `json:"StartDate,omitempty" name:"StartDate"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *StartExecutionResponseParams `json:"Response"`
 }
 
 func (r *StartExecutionResponse) ToJsonString() string {
@@ -618,7 +752,6 @@ func (r *StartExecutionResponse) FromJsonString(s string) error {
 }
 
 type StateMachine struct {
-
 	// 状态机资源
 	FlowServiceResource *string `json:"FlowServiceResource,omitempty" name:"FlowServiceResource"`
 
@@ -658,9 +791,15 @@ type StateMachine struct {
 	Description *string `json:"Description,omitempty" name:"Description"`
 }
 
+// Predefined struct for user
+type StopExecutionRequestParams struct {
+	// 执行名称
+	ExecutionQrn *string `json:"ExecutionQrn,omitempty" name:"ExecutionQrn"`
+}
+
 type StopExecutionRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 执行名称
 	ExecutionQrn *string `json:"ExecutionQrn,omitempty" name:"ExecutionQrn"`
 }
@@ -684,13 +823,15 @@ func (r *StopExecutionRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type StopExecutionResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type StopExecutionResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *StopExecutionResponseParams `json:"Response"`
 }
 
 func (r *StopExecutionResponse) ToJsonString() string {

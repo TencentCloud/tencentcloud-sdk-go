@@ -20,9 +20,24 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+// Predefined struct for user
+type CreateCredentialRequestParams struct {
+	// 参数集合，详见示例
+	FunctionArg *FunctionArg `json:"FunctionArg,omitempty" name:"FunctionArg"`
+
+	// 参数集合，详见示例
+	TransactionArg *TransactionArg `json:"TransactionArg,omitempty" name:"TransactionArg"`
+
+	// 版本
+	VersionCredential *string `json:"VersionCredential,omitempty" name:"VersionCredential"`
+
+	// 是否未签名
+	UnSigned *bool `json:"UnSigned,omitempty" name:"UnSigned"`
+}
+
 type CreateCredentialRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 参数集合，详见示例
 	FunctionArg *FunctionArg `json:"FunctionArg,omitempty" name:"FunctionArg"`
 
@@ -58,16 +73,18 @@ func (r *CreateCredentialRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateCredentialResponseParams struct {
+	// Credential的具体信息
+	CredentialData *string `json:"CredentialData,omitempty" name:"CredentialData"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreateCredentialResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// Credential的具体信息
-		CredentialData *string `json:"CredentialData,omitempty" name:"CredentialData"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreateCredentialResponseParams `json:"Response"`
 }
 
 func (r *CreateCredentialResponse) ToJsonString() string {
@@ -81,9 +98,18 @@ func (r *CreateCredentialResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateSelectiveCredentialRequestParams struct {
+	// 参数集合
+	FunctionArg *VerifyFunctionArg `json:"FunctionArg,omitempty" name:"FunctionArg"`
+
+	// 批露策略id
+	PolicyId *uint64 `json:"PolicyId,omitempty" name:"PolicyId"`
+}
+
 type CreateSelectiveCredentialRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 参数集合
 	FunctionArg *VerifyFunctionArg `json:"FunctionArg,omitempty" name:"FunctionArg"`
 
@@ -111,16 +137,18 @@ func (r *CreateSelectiveCredentialRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateSelectiveCredentialResponseParams struct {
+	// 凭证字符串
+	CredentialData *string `json:"CredentialData,omitempty" name:"CredentialData"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreateSelectiveCredentialResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 凭证字符串
-		CredentialData *string `json:"CredentialData,omitempty" name:"CredentialData"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreateSelectiveCredentialResponseParams `json:"Response"`
 }
 
 func (r *CreateSelectiveCredentialResponse) ToJsonString() string {
@@ -134,9 +162,24 @@ func (r *CreateSelectiveCredentialResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateTDidByPublicKeyRequestParams struct {
+	// 网络ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 群组ID
+	GroupId *uint64 `json:"GroupId,omitempty" name:"GroupId"`
+
+	// 身份公钥
+	PublicKey *string `json:"PublicKey,omitempty" name:"PublicKey"`
+
+	// 加密公钥
+	EncryptPubKey *string `json:"EncryptPubKey,omitempty" name:"EncryptPubKey"`
+}
+
 type CreateTDidByPublicKeyRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 网络ID
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 
@@ -172,16 +215,18 @@ func (r *CreateTDidByPublicKeyRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateTDidByPublicKeyResponseParams struct {
+	// did具体信息
+	Did *string `json:"Did,omitempty" name:"Did"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreateTDidByPublicKeyResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// did具体信息
-		Did *string `json:"Did,omitempty" name:"Did"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreateTDidByPublicKeyResponseParams `json:"Response"`
 }
 
 func (r *CreateTDidByPublicKeyResponse) ToJsonString() string {
@@ -195,9 +240,21 @@ func (r *CreateTDidByPublicKeyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateTDidRequestParams struct {
+	// 群组ID
+	GroupId *uint64 `json:"GroupId,omitempty" name:"GroupId"`
+
+	// 网络ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 部署机构为1，否则为0
+	Relegation *uint64 `json:"Relegation,omitempty" name:"Relegation"`
+}
+
 type CreateTDidRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 群组ID
 	GroupId *uint64 `json:"GroupId,omitempty" name:"GroupId"`
 
@@ -229,16 +286,18 @@ func (r *CreateTDidRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateTDidResponseParams struct {
+	// TDID
+	Did *string `json:"Did,omitempty" name:"Did"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreateTDidResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// TDID
-		Did *string `json:"Did,omitempty" name:"Did"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreateTDidResponseParams `json:"Response"`
 }
 
 func (r *CreateTDidResponse) ToJsonString() string {
@@ -253,7 +312,6 @@ func (r *CreateTDidResponse) FromJsonString(s string) error {
 }
 
 type CredentialStatus struct {
-
 	// 凭证唯一id
 	CredentialId *string `json:"CredentialId,omitempty" name:"CredentialId"`
 
@@ -277,7 +335,6 @@ type CredentialStatus struct {
 }
 
 type FunctionArg struct {
-
 	// CPT ID
 	CptId *uint64 `json:"CptId,omitempty" name:"CptId"`
 
@@ -291,9 +348,15 @@ type FunctionArg struct {
 	ClaimJson *string `json:"ClaimJson,omitempty" name:"ClaimJson"`
 }
 
+// Predefined struct for user
+type GetAuthorityIssuerRequestParams struct {
+	// tdid
+	Did *string `json:"Did,omitempty" name:"Did"`
+}
+
 type GetAuthorityIssuerRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// tdid
 	Did *string `json:"Did,omitempty" name:"Did"`
 }
@@ -317,34 +380,36 @@ func (r *GetAuthorityIssuerRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type GetAuthorityIssuerResponseParams struct {
+	// 名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 区块链网络id
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 区块链群组id
+	GroupId *uint64 `json:"GroupId,omitempty" name:"GroupId"`
+
+	// 权威机构did
+	Did *string `json:"Did,omitempty" name:"Did"`
+
+	// 机构备注信息
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 注册时间
+	RegisterTime *string `json:"RegisterTime,omitempty" name:"RegisterTime"`
+
+	// 认证时间
+	RecognizeTime *string `json:"RecognizeTime,omitempty" name:"RecognizeTime"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type GetAuthorityIssuerResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 名称
-		Name *string `json:"Name,omitempty" name:"Name"`
-
-		// 区块链网络id
-		ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
-
-		// 区块链群组id
-		GroupId *uint64 `json:"GroupId,omitempty" name:"GroupId"`
-
-		// 权威机构did
-		Did *string `json:"Did,omitempty" name:"Did"`
-
-		// 机构备注信息
-		Remark *string `json:"Remark,omitempty" name:"Remark"`
-
-		// 注册时间
-		RegisterTime *string `json:"RegisterTime,omitempty" name:"RegisterTime"`
-
-		// 认证时间
-		RecognizeTime *string `json:"RecognizeTime,omitempty" name:"RecognizeTime"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *GetAuthorityIssuerResponseParams `json:"Response"`
 }
 
 func (r *GetAuthorityIssuerResponse) ToJsonString() string {
@@ -358,9 +423,15 @@ func (r *GetAuthorityIssuerResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type GetDidDocumentRequestParams struct {
+	// tdid
+	Did *string `json:"Did,omitempty" name:"Did"`
+}
+
 type GetDidDocumentRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// tdid
 	Did *string `json:"Did,omitempty" name:"Did"`
 }
@@ -384,19 +455,21 @@ func (r *GetDidDocumentRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type GetDidDocumentResponseParams struct {
+	// 名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// DID文档
+	Document *string `json:"Document,omitempty" name:"Document"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type GetDidDocumentResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 名称
-		Name *string `json:"Name,omitempty" name:"Name"`
-
-		// DID文档
-		Document *string `json:"Document,omitempty" name:"Document"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *GetDidDocumentResponseParams `json:"Response"`
 }
 
 func (r *GetDidDocumentResponse) ToJsonString() string {
@@ -411,7 +484,6 @@ func (r *GetDidDocumentResponse) FromJsonString(s string) error {
 }
 
 type Proof struct {
-
 	// 创建时间
 	Created *int64 `json:"Created,omitempty" name:"Created"`
 
@@ -428,9 +500,15 @@ type Proof struct {
 	Type *string `json:"Type,omitempty" name:"Type"`
 }
 
+// Predefined struct for user
+type SetCredentialStatusRequestParams struct {
+	// 凭证状态
+	CredentialStatus *CredentialStatus `json:"CredentialStatus,omitempty" name:"CredentialStatus"`
+}
+
 type SetCredentialStatusRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 凭证状态
 	CredentialStatus *CredentialStatus `json:"CredentialStatus,omitempty" name:"CredentialStatus"`
 }
@@ -454,13 +532,15 @@ func (r *SetCredentialStatusRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type SetCredentialStatusResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type SetCredentialStatusResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *SetCredentialStatusResponseParams `json:"Response"`
 }
 
 func (r *SetCredentialStatusResponse) ToJsonString() string {
@@ -475,14 +555,19 @@ func (r *SetCredentialStatusResponse) FromJsonString(s string) error {
 }
 
 type TransactionArg struct {
-
 	// 凭证did
 	InvokerTDid *string `json:"InvokerTDid,omitempty" name:"InvokerTDid"`
 }
 
+// Predefined struct for user
+type VerifyCredentialRequestParams struct {
+	// 参数集合
+	FunctionArg *VerifyFunctionArg `json:"FunctionArg,omitempty" name:"FunctionArg"`
+}
+
 type VerifyCredentialRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 参数集合
 	FunctionArg *VerifyFunctionArg `json:"FunctionArg,omitempty" name:"FunctionArg"`
 }
@@ -506,22 +591,24 @@ func (r *VerifyCredentialRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type VerifyCredentialResponseParams struct {
+	// 是否验证成功
+	Result *bool `json:"Result,omitempty" name:"Result"`
+
+	// 验证返回码
+	VerifyCode *uint64 `json:"VerifyCode,omitempty" name:"VerifyCode"`
+
+	// 验证消息
+	VerifyMessage *string `json:"VerifyMessage,omitempty" name:"VerifyMessage"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type VerifyCredentialResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 是否验证成功
-		Result *bool `json:"Result,omitempty" name:"Result"`
-
-		// 验证返回码
-		VerifyCode *uint64 `json:"VerifyCode,omitempty" name:"VerifyCode"`
-
-		// 验证消息
-		VerifyMessage *string `json:"VerifyMessage,omitempty" name:"VerifyMessage"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *VerifyCredentialResponseParams `json:"Response"`
 }
 
 func (r *VerifyCredentialResponse) ToJsonString() string {
@@ -536,7 +623,6 @@ func (r *VerifyCredentialResponse) FromJsonString(s string) error {
 }
 
 type VerifyFunctionArg struct {
-
 	// CPT ID
 	CptId *uint64 `json:"CptId,omitempty" name:"CptId"`
 

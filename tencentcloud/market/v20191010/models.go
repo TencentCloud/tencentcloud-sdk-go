@@ -20,9 +20,30 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+// Predefined struct for user
+type FlowProductRemindRequestParams struct {
+	// 服务商uin
+	ProviderUin *string `json:"ProviderUin,omitempty" name:"ProviderUin"`
+
+	// 服务商实例ID
+	SignId *string `json:"SignId,omitempty" name:"SignId"`
+
+	// 云市场实例ID
+	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
+
+	// 实例总流量
+	TotalFlow *string `json:"TotalFlow,omitempty" name:"TotalFlow"`
+
+	// 剩余流量
+	LeftFlow *string `json:"LeftFlow,omitempty" name:"LeftFlow"`
+
+	// 流量单位
+	FlowUnit *string `json:"FlowUnit,omitempty" name:"FlowUnit"`
+}
+
 type FlowProductRemindRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 服务商uin
 	ProviderUin *string `json:"ProviderUin,omitempty" name:"ProviderUin"`
 
@@ -66,23 +87,25 @@ func (r *FlowProductRemindRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type FlowProductRemindResponseParams struct {
+	// 是否成功
+	Success *string `json:"Success,omitempty" name:"Success"`
+
+	// 流水号
+	FlowId *string `json:"FlowId,omitempty" name:"FlowId"`
+
+	// 消息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Info *string `json:"Info,omitempty" name:"Info"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type FlowProductRemindResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 是否成功
-		Success *string `json:"Success,omitempty" name:"Success"`
-
-		// 流水号
-		FlowId *string `json:"FlowId,omitempty" name:"FlowId"`
-
-		// 消息
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		Info *string `json:"Info,omitempty" name:"Info"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *FlowProductRemindResponseParams `json:"Response"`
 }
 
 func (r *FlowProductRemindResponse) ToJsonString() string {
@@ -96,9 +119,15 @@ func (r *FlowProductRemindResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type GetUsagePlanUsageAmountRequestParams struct {
+	// 用于查询实例的Id
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+}
+
 type GetUsagePlanUsageAmountRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 用于查询实例的Id
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 }
@@ -122,22 +151,24 @@ func (r *GetUsagePlanUsageAmountRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type GetUsagePlanUsageAmountResponseParams struct {
+	// 最大调用量
+	MaxRequestNum *int64 `json:"MaxRequestNum,omitempty" name:"MaxRequestNum"`
+
+	// 已经调用量
+	InUseRequestNum *int64 `json:"InUseRequestNum,omitempty" name:"InUseRequestNum"`
+
+	// 剩余调用量
+	RemainingRequestNum *int64 `json:"RemainingRequestNum,omitempty" name:"RemainingRequestNum"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type GetUsagePlanUsageAmountResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 最大调用量
-		MaxRequestNum *int64 `json:"MaxRequestNum,omitempty" name:"MaxRequestNum"`
-
-		// 已经调用量
-		InUseRequestNum *int64 `json:"InUseRequestNum,omitempty" name:"InUseRequestNum"`
-
-		// 剩余调用量
-		RemainingRequestNum *int64 `json:"RemainingRequestNum,omitempty" name:"RemainingRequestNum"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *GetUsagePlanUsageAmountResponseParams `json:"Response"`
 }
 
 func (r *GetUsagePlanUsageAmountResponse) ToJsonString() string {

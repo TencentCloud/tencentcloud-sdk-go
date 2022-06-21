@@ -20,9 +20,27 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+// Predefined struct for user
+type CreateLibraryRequestParams struct {
+	// 媒体库名称，最多 50 个字符
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 存储桶全名，新建后不可更改
+	BucketName *string `json:"BucketName,omitempty" name:"BucketName"`
+
+	// 存储桶所在地域，新建后不可更改
+	BucketRegion *string `json:"BucketRegion,omitempty" name:"BucketRegion"`
+
+	// 媒体库配置项，部分参数新建后不可更改
+	LibraryExtension *LibraryExtension `json:"LibraryExtension,omitempty" name:"LibraryExtension"`
+
+	// 备注，最多 250 个字符
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+}
+
 type CreateLibraryRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 媒体库名称，最多 50 个字符
 	Name *string `json:"Name,omitempty" name:"Name"`
 
@@ -62,16 +80,18 @@ func (r *CreateLibraryRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateLibraryResponseParams struct {
+	// 媒体库 ID
+	LibraryId *string `json:"LibraryId,omitempty" name:"LibraryId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreateLibraryResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 媒体库 ID
-		LibraryId *string `json:"LibraryId,omitempty" name:"LibraryId"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreateLibraryResponseParams `json:"Response"`
 }
 
 func (r *CreateLibraryResponse) ToJsonString() string {
@@ -85,9 +105,15 @@ func (r *CreateLibraryResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteLibraryRequestParams struct {
+	// 媒体库 ID
+	LibraryId *string `json:"LibraryId,omitempty" name:"LibraryId"`
+}
+
 type DeleteLibraryRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 媒体库 ID
 	LibraryId *string `json:"LibraryId,omitempty" name:"LibraryId"`
 }
@@ -111,13 +137,15 @@ func (r *DeleteLibraryRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteLibraryResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DeleteLibraryResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DeleteLibraryResponseParams `json:"Response"`
 }
 
 func (r *DeleteLibraryResponse) ToJsonString() string {
@@ -131,9 +159,21 @@ func (r *DeleteLibraryResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeLibrariesRequestParams struct {
+	// 按照一个或者多个媒体库 ID 查询，每次请求的上限为 100 个。
+	LibraryIds []*string `json:"LibraryIds,omitempty" name:"LibraryIds"`
+
+	// 页码，整型，配合 PageSize 使用，默认值为 1。
+	PageNumber *uint64 `json:"PageNumber,omitempty" name:"PageNumber"`
+
+	// 每页数目，整型，配合 PageNumber 使用，默认值为 20，最大值为 100。
+	PageSize *uint64 `json:"PageSize,omitempty" name:"PageSize"`
+}
+
 type DescribeLibrariesRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 按照一个或者多个媒体库 ID 查询，每次请求的上限为 100 个。
 	LibraryIds []*string `json:"LibraryIds,omitempty" name:"LibraryIds"`
 
@@ -165,19 +205,21 @@ func (r *DescribeLibrariesRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeLibrariesResponseParams struct {
+	// 媒体库列表
+	List []*Library `json:"List,omitempty" name:"List"`
+
+	// 总数
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeLibrariesResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 媒体库列表
-		List []*Library `json:"List,omitempty" name:"List"`
-
-		// 总数
-		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeLibrariesResponseParams `json:"Response"`
 }
 
 func (r *DescribeLibrariesResponse) ToJsonString() string {
@@ -191,9 +233,15 @@ func (r *DescribeLibrariesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeLibrarySecretRequestParams struct {
+	// 媒体库 ID
+	LibraryId *string `json:"LibraryId,omitempty" name:"LibraryId"`
+}
+
 type DescribeLibrarySecretRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 媒体库 ID
 	LibraryId *string `json:"LibraryId,omitempty" name:"LibraryId"`
 }
@@ -217,19 +265,21 @@ func (r *DescribeLibrarySecretRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeLibrarySecretResponseParams struct {
+	// 查询的媒体库 ID
+	LibraryId *string `json:"LibraryId,omitempty" name:"LibraryId"`
+
+	// 查询到的媒体库密钥
+	LibrarySecret *string `json:"LibrarySecret,omitempty" name:"LibrarySecret"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeLibrarySecretResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 查询的媒体库 ID
-		LibraryId *string `json:"LibraryId,omitempty" name:"LibraryId"`
-
-		// 查询到的媒体库密钥
-		LibrarySecret *string `json:"LibrarySecret,omitempty" name:"LibrarySecret"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeLibrarySecretResponseParams `json:"Response"`
 }
 
 func (r *DescribeLibrarySecretResponse) ToJsonString() string {
@@ -243,9 +293,36 @@ func (r *DescribeLibrarySecretResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeOfficialInstancesRequestParams struct {
+	// 是否查询实例绑定的超级管理员账号，默认值为 false。
+	SuperAdminAccount *bool `json:"SuperAdminAccount,omitempty" name:"SuperAdminAccount"`
+
+	// 按照一个或者多个实例 ID 查询，每次请求的上限为 100 个。
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
+
+	// 页码，整型，配合 PageSize 使用，默认值为 1。
+	PageNumber *uint64 `json:"PageNumber,omitempty" name:"PageNumber"`
+
+	// 每页数目，整型，配合 PageNumber 使用，默认值为 20，最大值为 100。
+	PageSize *uint64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// 对指定列进行排序
+	OrderBy *string `json:"OrderBy,omitempty" name:"OrderBy"`
+
+	// 排序方式
+	OrderByType *string `json:"OrderByType,omitempty" name:"OrderByType"`
+
+	// 续费管理筛选类型
+	AutoRenew *uint64 `json:"AutoRenew,omitempty" name:"AutoRenew"`
+
+	// 超级管理管理员账号是否绑定了手机号
+	BindPhone *bool `json:"BindPhone,omitempty" name:"BindPhone"`
+}
+
 type DescribeOfficialInstancesRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 是否查询实例绑定的超级管理员账号，默认值为 false。
 	SuperAdminAccount *bool `json:"SuperAdminAccount,omitempty" name:"SuperAdminAccount"`
 
@@ -297,19 +374,21 @@ func (r *DescribeOfficialInstancesRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeOfficialInstancesResponseParams struct {
+	// 实例列表
+	List []*Instance `json:"List,omitempty" name:"List"`
+
+	// 总数
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeOfficialInstancesResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 实例列表
-		List []*Instance `json:"List,omitempty" name:"List"`
-
-		// 总数
-		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeOfficialInstancesResponseParams `json:"Response"`
 }
 
 func (r *DescribeOfficialInstancesResponse) ToJsonString() string {
@@ -323,8 +402,14 @@ func (r *DescribeOfficialInstancesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeOfficialOverviewRequestParams struct {
+
+}
+
 type DescribeOfficialOverviewRequest struct {
 	*tchttp.BaseRequest
+	
 }
 
 func (r *DescribeOfficialOverviewRequest) ToJsonString() string {
@@ -339,31 +424,34 @@ func (r *DescribeOfficialOverviewRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeOfficialOverviewRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeOfficialOverviewResponseParams struct {
+	// 云盘实例数量
+	Quantity *uint64 `json:"Quantity,omitempty" name:"Quantity"`
+
+	// 已经使用的总存储量，单位为 Bytes，由于数字类型精度限制，该字段为 String 类型。
+	Storage *string `json:"Storage,omitempty" name:"Storage"`
+
+	// 已经分配和使用的总用户数
+	UserCount *uint64 `json:"UserCount,omitempty" name:"UserCount"`
+
+	// 本月外网下行流量，单位为 Bytes，由于数字类型精度限制，该字段为 String 类型。
+	InternetTraffic *string `json:"InternetTraffic,omitempty" name:"InternetTraffic"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeOfficialOverviewResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 云盘实例数量
-		Quantity *uint64 `json:"Quantity,omitempty" name:"Quantity"`
-
-		// 已经使用的总存储量，单位为 Bytes，由于数字类型精度限制，该字段为 String 类型。
-		Storage *string `json:"Storage,omitempty" name:"Storage"`
-
-		// 已经分配和使用的总用户数
-		UserCount *uint64 `json:"UserCount,omitempty" name:"UserCount"`
-
-		// 本月外网下行流量，单位为 Bytes，由于数字类型精度限制，该字段为 String 类型。
-		InternetTraffic *string `json:"InternetTraffic,omitempty" name:"InternetTraffic"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeOfficialOverviewResponseParams `json:"Response"`
 }
 
 func (r *DescribeOfficialOverviewResponse) ToJsonString() string {
@@ -377,9 +465,30 @@ func (r *DescribeOfficialOverviewResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeTrafficPackagesRequestParams struct {
+	// 按照一个或者多个资源 ID 查询，每次请求的上限为 100 个。
+	ResourceIds []*string `json:"ResourceIds,omitempty" name:"ResourceIds"`
+
+	// 页码，整型，配合 PageSize 使用，默认值为 1。
+	PageNumber *uint64 `json:"PageNumber,omitempty" name:"PageNumber"`
+
+	// 每页数目，整型，配合 PageNumber 使用，默认值为 20，最大值为 100。
+	PageSize *uint64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// 对指定列进行排序
+	OrderBy *string `json:"OrderBy,omitempty" name:"OrderBy"`
+
+	// 排序方式
+	OrderByType *string `json:"OrderByType,omitempty" name:"OrderByType"`
+
+	// 来源类型筛选
+	Type *uint64 `json:"Type,omitempty" name:"Type"`
+}
+
 type DescribeTrafficPackagesRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 按照一个或者多个资源 ID 查询，每次请求的上限为 100 个。
 	ResourceIds []*string `json:"ResourceIds,omitempty" name:"ResourceIds"`
 
@@ -423,19 +532,21 @@ func (r *DescribeTrafficPackagesRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeTrafficPackagesResponseParams struct {
+	// 流量包列表
+	List []*TrafficPackage `json:"List,omitempty" name:"List"`
+
+	// 总数
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeTrafficPackagesResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 流量包列表
-		List []*TrafficPackage `json:"List,omitempty" name:"List"`
-
-		// 总数
-		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeTrafficPackagesResponseParams `json:"Response"`
 }
 
 func (r *DescribeTrafficPackagesResponse) ToJsonString() string {
@@ -450,7 +561,6 @@ func (r *DescribeTrafficPackagesResponse) FromJsonString(s string) error {
 }
 
 type Instance struct {
-
 	// 实例 ID
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
@@ -489,7 +599,6 @@ type Instance struct {
 }
 
 type Library struct {
-
 	// 媒体库 ID
 	LibraryId *string `json:"LibraryId,omitempty" name:"LibraryId"`
 
@@ -522,7 +631,6 @@ type Library struct {
 }
 
 type LibraryExtension struct {
-
 	// true 为文件类型媒体库，可存储任何类型文件；false 为媒体类型媒体库，仅可存储照片和视频类型文件。默认为 false。在媒体库创建后不能修改。
 	IsFileLibrary *bool `json:"IsFileLibrary,omitempty" name:"IsFileLibrary"`
 
@@ -592,9 +700,24 @@ type LibraryExtension struct {
 	RecognizeSensitiveContent *bool `json:"RecognizeSensitiveContent,omitempty" name:"RecognizeSensitiveContent"`
 }
 
+// Predefined struct for user
+type ModifyLibraryRequestParams struct {
+	// 媒体库 ID
+	LibraryId *string `json:"LibraryId,omitempty" name:"LibraryId"`
+
+	// 媒体库名称，最多 50 个字符。如不传则不修改。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 备注，最多 250 个字符。如不传则不修改。
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 媒体库配置项，部分参数在新建后不可更改，且仅修改传入的参数。如不传该参数则不修改任何配置项。
+	LibraryExtension *LibraryExtension `json:"LibraryExtension,omitempty" name:"LibraryExtension"`
+}
+
 type ModifyLibraryRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 媒体库 ID
 	LibraryId *string `json:"LibraryId,omitempty" name:"LibraryId"`
 
@@ -630,13 +753,15 @@ func (r *ModifyLibraryRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifyLibraryResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type ModifyLibraryResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *ModifyLibraryResponseParams `json:"Response"`
 }
 
 func (r *ModifyLibraryResponse) ToJsonString() string {
@@ -650,9 +775,24 @@ func (r *ModifyLibraryResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type SendSmsCodeRequestParams struct {
+	// 验证码目的，当前仅支持换绑超级管理员账号，固定填写 BindSuperAdmin。
+	Purpose *string `json:"Purpose,omitempty" name:"Purpose"`
+
+	// 官方云盘实例 ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 将作为超级管理员账号的手机号码
+	PhoneNumber *string `json:"PhoneNumber,omitempty" name:"PhoneNumber"`
+
+	// 将作为超级管理员账号的手机号码的国家代码。默认为 +86。
+	CountryCode *string `json:"CountryCode,omitempty" name:"CountryCode"`
+}
+
 type SendSmsCodeRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 验证码目的，当前仅支持换绑超级管理员账号，固定填写 BindSuperAdmin。
 	Purpose *string `json:"Purpose,omitempty" name:"Purpose"`
 
@@ -688,13 +828,15 @@ func (r *SendSmsCodeRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type SendSmsCodeResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type SendSmsCodeResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *SendSmsCodeResponseParams `json:"Response"`
 }
 
 func (r *SendSmsCodeResponse) ToJsonString() string {
@@ -709,7 +851,6 @@ func (r *SendSmsCodeResponse) FromJsonString(s string) error {
 }
 
 type TrafficPackage struct {
-
 	// 流量资源包所抵扣的实例 ID
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
@@ -743,9 +884,27 @@ type TrafficPackage struct {
 	ExpireTime *string `json:"ExpireTime,omitempty" name:"ExpireTime"`
 }
 
+// Predefined struct for user
+type VerifySmsCodeRequestParams struct {
+	// 验证码目的，当前仅支持换绑超级管理员账号，固定填写 BindSuperAdmin。
+	Purpose *string `json:"Purpose,omitempty" name:"Purpose"`
+
+	// 官方云盘实例 ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 将作为超级管理员账号的手机号码
+	PhoneNumber *string `json:"PhoneNumber,omitempty" name:"PhoneNumber"`
+
+	// 短信验证码
+	Code *string `json:"Code,omitempty" name:"Code"`
+
+	// 将作为超级管理员账号的手机号码的国家代码。默认为 +86。
+	CountryCode *string `json:"CountryCode,omitempty" name:"CountryCode"`
+}
+
 type VerifySmsCodeRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 验证码目的，当前仅支持换绑超级管理员账号，固定填写 BindSuperAdmin。
 	Purpose *string `json:"Purpose,omitempty" name:"Purpose"`
 
@@ -785,13 +944,15 @@ func (r *VerifySmsCodeRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type VerifySmsCodeResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type VerifySmsCodeResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *VerifySmsCodeResponseParams `json:"Response"`
 }
 
 func (r *VerifySmsCodeResponse) ToJsonString() string {

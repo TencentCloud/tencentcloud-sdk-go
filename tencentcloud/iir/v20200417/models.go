@@ -21,7 +21,6 @@ import (
 )
 
 type Location struct {
-
 	// 位置矩形框的左上角横坐标
 	XMin *int64 `json:"XMin,omitempty" name:"XMin"`
 
@@ -36,7 +35,6 @@ type Location struct {
 }
 
 type ProductInfo struct {
-
 	// 1表示找到同款商品，以下字段为同款商品信息； 
 	// 0表示未找到同款商品， 具体商品信息为空（参考价格、名称、品牌等），仅提供商品类目。  
 	// 是否找到同款的判断依据为Score分值，分值越大则同款的可能性越大。
@@ -66,9 +64,21 @@ type ProductInfo struct {
 	Image *string `json:"Image,omitempty" name:"Image"`
 }
 
+// Predefined struct for user
+type RecognizeProductRequestParams struct {
+	// 图片限制：内测版仅支持jpg、jpeg，图片大小不超过1M，分辨率在25万到100万之间。 
+	// 建议先对图片进行压缩，以便提升处理速度。
+	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
+
+	// 图片经过base64编码的内容。最大不超过1M，分辨率在25万到100万之间。 
+	// 与ImageUrl同时存在时优先使用ImageUrl字段。
+	// **注意：图片需要base64编码，并且要去掉编码头部。**
+	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
+}
+
 type RecognizeProductRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 图片限制：内测版仅支持jpg、jpeg，图片大小不超过1M，分辨率在25万到100万之间。 
 	// 建议先对图片进行压缩，以便提升处理速度。
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
@@ -99,22 +109,24 @@ func (r *RecognizeProductRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-type RecognizeProductResponse struct {
-	*tchttp.BaseResponse
-	Response *struct {
-
-		// 检测到的图片中的商品位置和品类预测。 
+// Predefined struct for user
+type RecognizeProductResponseParams struct {
+	// 检测到的图片中的商品位置和品类预测。 
 	// 当图片中存在多个商品时，输出多组坐标，按照__显著性__排序（综合考虑面积、是否在中心、检测算法置信度）。 
 	// 最多可以输出__3组__检测结果。
-		RegionDetected []*RegionDetected `json:"RegionDetected,omitempty" name:"RegionDetected"`
+	RegionDetected []*RegionDetected `json:"RegionDetected,omitempty" name:"RegionDetected"`
 
-		// 图像识别出的商品的详细信息。 
+	// 图像识别出的商品的详细信息。 
 	// 当图像中检测到多个物品时，会对显著性最高的进行识别。
-		ProductInfo *ProductInfo `json:"ProductInfo,omitempty" name:"ProductInfo"`
+	ProductInfo *ProductInfo `json:"ProductInfo,omitempty" name:"ProductInfo"`
 
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type RecognizeProductResponse struct {
+	*tchttp.BaseResponse
+	Response *RecognizeProductResponseParams `json:"Response"`
 }
 
 func (r *RecognizeProductResponse) ToJsonString() string {
@@ -129,7 +141,6 @@ func (r *RecognizeProductResponse) FromJsonString(s string) error {
 }
 
 type RegionDetected struct {
-
 	// 商品的品类预测结果。 
 	// 包含：鞋、图书音像、箱包、美妆个护、服饰、家电数码、玩具乐器、食品饮料、珠宝、家居家装、药品、酒水、绿植园艺、其他商品、非商品等。
 	Category *string `json:"Category,omitempty" name:"Category"`

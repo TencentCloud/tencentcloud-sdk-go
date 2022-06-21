@@ -20,9 +20,24 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+// Predefined struct for user
+type ApplyConcurrentRequestParams struct {
+	// 唯一用户身份标识，由业务方自定义，平台不予理解。（可根据业务需要决定使用用户的唯一身份标识或是使用时间戳随机生成；在用户重连时应保持UserId不变）
+	UserId *string `json:"UserId,omitempty" name:"UserId"`
+
+	// 用户IP
+	UserIp *string `json:"UserIp,omitempty" name:"UserIp"`
+
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 应用版本ID
+	ApplicationVersionId *string `json:"ApplicationVersionId,omitempty" name:"ApplicationVersionId"`
+}
+
 type ApplyConcurrentRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 唯一用户身份标识，由业务方自定义，平台不予理解。（可根据业务需要决定使用用户的唯一身份标识或是使用时间戳随机生成；在用户重连时应保持UserId不变）
 	UserId *string `json:"UserId,omitempty" name:"UserId"`
 
@@ -58,13 +73,15 @@ func (r *ApplyConcurrentRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ApplyConcurrentResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type ApplyConcurrentResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *ApplyConcurrentResponseParams `json:"Response"`
 }
 
 func (r *ApplyConcurrentResponse) ToJsonString() string {
@@ -78,9 +95,21 @@ func (r *ApplyConcurrentResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateSessionRequestParams struct {
+	// 唯一用户身份标识，由业务方自定义，平台不予理解。（可根据业务需要决定使用用户的唯一身份标识或是使用时间戳随机生成；在用户重连时应保持UserId不变）
+	UserId *string `json:"UserId,omitempty" name:"UserId"`
+
+	// 用户IP
+	UserIp *string `json:"UserIp,omitempty" name:"UserIp"`
+
+	// 客户端session信息，从SDK请求中获得
+	ClientSession *string `json:"ClientSession,omitempty" name:"ClientSession"`
+}
+
 type CreateSessionRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 唯一用户身份标识，由业务方自定义，平台不予理解。（可根据业务需要决定使用用户的唯一身份标识或是使用时间戳随机生成；在用户重连时应保持UserId不变）
 	UserId *string `json:"UserId,omitempty" name:"UserId"`
 
@@ -112,16 +141,18 @@ func (r *CreateSessionRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateSessionResponseParams struct {
+	// 服务端session信息，返回给SDK
+	ServerSession *string `json:"ServerSession,omitempty" name:"ServerSession"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreateSessionResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 服务端session信息，返回给SDK
-		ServerSession *string `json:"ServerSession,omitempty" name:"ServerSession"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreateSessionResponseParams `json:"Response"`
 }
 
 func (r *CreateSessionResponse) ToJsonString() string {
@@ -135,9 +166,15 @@ func (r *CreateSessionResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DestroySessionRequestParams struct {
+	// 唯一用户身份标识，由业务方自定义，平台不予理解。（可根据业务需要决定使用用户的唯一身份标识或是使用时间戳随机生成；在用户重连时应保持UserId不变）
+	UserId *string `json:"UserId,omitempty" name:"UserId"`
+}
+
 type DestroySessionRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 唯一用户身份标识，由业务方自定义，平台不予理解。（可根据业务需要决定使用用户的唯一身份标识或是使用时间戳随机生成；在用户重连时应保持UserId不变）
 	UserId *string `json:"UserId,omitempty" name:"UserId"`
 }
@@ -161,13 +198,15 @@ func (r *DestroySessionRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DestroySessionResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DestroySessionResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DestroySessionResponseParams `json:"Response"`
 }
 
 func (r *DestroySessionResponse) ToJsonString() string {

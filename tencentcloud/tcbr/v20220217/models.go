@@ -21,7 +21,6 @@ import (
 )
 
 type BuildPacksInfo struct {
-
 	// 基础镜像
 	BaseImage *string `json:"BaseImage,omitempty" name:"BaseImage"`
 
@@ -36,7 +35,6 @@ type BuildPacksInfo struct {
 }
 
 type ClsInfo struct {
-
 	// cls所属地域
 	ClsRegion *string `json:"ClsRegion,omitempty" name:"ClsRegion"`
 
@@ -50,9 +48,41 @@ type ClsInfo struct {
 	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
 }
 
+// Predefined struct for user
+type CreateCloudRunEnvRequestParams struct {
+	// Trial,Standard,Professional,Enterprise
+	PackageType *string `json:"PackageType,omitempty" name:"PackageType"`
+
+	// 环境别名，要以a-z开头，不能包含 a-z,0-9,- 以外的字符
+	Alias *string `json:"Alias,omitempty" name:"Alias"`
+
+	// 用户享有的免费额度级别，目前只能为“basic”，不传该字段或该字段为空，标识不享受免费额度。
+	FreeQuota *string `json:"FreeQuota,omitempty" name:"FreeQuota"`
+
+	// 订单标记。建议使用方统一转大小写之后再判断。
+	// QuickStart：快速启动来源
+	// Activity：活动来源
+	Flag *string `json:"Flag,omitempty" name:"Flag"`
+
+	// 私有网络Id
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 子网列表
+	SubNetIds []*string `json:"SubNetIds,omitempty" name:"SubNetIds"`
+
+	// 请求key 用于防重
+	ReqKey *string `json:"ReqKey,omitempty" name:"ReqKey"`
+
+	// 来源：wechat | cloud
+	Source *string `json:"Source,omitempty" name:"Source"`
+
+	// 渠道：wechat | cloud
+	Channel *string `json:"Channel,omitempty" name:"Channel"`
+}
+
 type CreateCloudRunEnvRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// Trial,Standard,Professional,Enterprise
 	PackageType *string `json:"PackageType,omitempty" name:"PackageType"`
 
@@ -110,19 +140,21 @@ func (r *CreateCloudRunEnvRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateCloudRunEnvResponseParams struct {
+	// 环境Id
+	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
+
+	// 后付费订单号
+	TranId *string `json:"TranId,omitempty" name:"TranId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreateCloudRunEnvResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 环境Id
-		EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
-
-		// 后付费订单号
-		TranId *string `json:"TranId,omitempty" name:"TranId"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreateCloudRunEnvResponseParams `json:"Response"`
 }
 
 func (r *CreateCloudRunEnvResponse) ToJsonString() string {
@@ -136,9 +168,24 @@ func (r *CreateCloudRunEnvResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateCloudRunServerRequestParams struct {
+	// 环境Id
+	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
+
+	// 服务名
+	ServerName *string `json:"ServerName,omitempty" name:"ServerName"`
+
+	// 部署信息
+	DeployInfo *DeployParam `json:"DeployInfo,omitempty" name:"DeployInfo"`
+
+	// 服务配置信息
+	ServerConfig *ServerBaseConfig `json:"ServerConfig,omitempty" name:"ServerConfig"`
+}
+
 type CreateCloudRunServerRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 环境Id
 	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
 
@@ -174,16 +221,18 @@ func (r *CreateCloudRunServerRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateCloudRunServerResponseParams struct {
+	// 一键部署任务Id，微信云托管，暂时用不到
+	TaskId *int64 `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreateCloudRunServerResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 一键部署任务Id，微信云托管，暂时用不到
-		TaskId *int64 `json:"TaskId,omitempty" name:"TaskId"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreateCloudRunServerResponseParams `json:"Response"`
 }
 
 func (r *CreateCloudRunServerResponse) ToJsonString() string {
@@ -198,7 +247,6 @@ func (r *CreateCloudRunServerResponse) FromJsonString(s string) error {
 }
 
 type DatabasesInfo struct {
-
 	// 数据库唯一标识
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
@@ -215,7 +263,6 @@ type DatabasesInfo struct {
 }
 
 type DeployParam struct {
-
 	// 部署类型：package/image/repository/pipeline/jar/war
 	DeployType *string `json:"DeployType,omitempty" name:"DeployType"`
 
@@ -241,9 +288,22 @@ type DeployParam struct {
 	ReleaseType *string `json:"ReleaseType,omitempty" name:"ReleaseType"`
 }
 
+// Predefined struct for user
+type DescribeCloudRunEnvsRequestParams struct {
+	// 环境ID，如果传了这个参数则只返回该环境的相关信息
+	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
+
+	// 指定Channels字段为可见渠道列表或不可见渠道列表
+	// 如只想获取渠道A的环境 就填写IsVisible= true,Channels = ["A"], 过滤渠道A拉取其他渠道环境时填写IsVisible= false,Channels = ["A"]
+	IsVisible *bool `json:"IsVisible,omitempty" name:"IsVisible"`
+
+	// 渠道列表，代表可见或不可见渠道由IsVisible参数指定
+	Channels []*string `json:"Channels,omitempty" name:"Channels"`
+}
+
 type DescribeCloudRunEnvsRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 环境ID，如果传了这个参数则只返回该环境的相关信息
 	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
 
@@ -276,16 +336,18 @@ func (r *DescribeCloudRunEnvsRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeCloudRunEnvsResponseParams struct {
+	// 环境信息列表
+	EnvList []*EnvInfo `json:"EnvList,omitempty" name:"EnvList"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeCloudRunEnvsResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 环境信息列表
-		EnvList []*EnvInfo `json:"EnvList,omitempty" name:"EnvList"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeCloudRunEnvsResponseParams `json:"Response"`
 }
 
 func (r *DescribeCloudRunEnvsResponse) ToJsonString() string {
@@ -299,9 +361,18 @@ func (r *DescribeCloudRunEnvsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeCloudRunServerDetailRequestParams struct {
+	// 环境Id
+	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
+
+	// 服务名
+	ServerName *string `json:"ServerName,omitempty" name:"ServerName"`
+}
+
 type DescribeCloudRunServerDetailRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 环境Id
 	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
 
@@ -329,21 +400,23 @@ func (r *DescribeCloudRunServerDetailRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeCloudRunServerDetailResponseParams struct {
+	// 服务基本信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BaseInfo *ServerBaseInfo `json:"BaseInfo,omitempty" name:"BaseInfo"`
+
+	// 服务配置信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ServerConfig *ServerBaseConfig `json:"ServerConfig,omitempty" name:"ServerConfig"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeCloudRunServerDetailResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 服务基本信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		BaseInfo *ServerBaseInfo `json:"BaseInfo,omitempty" name:"BaseInfo"`
-
-		// 服务配置信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		ServerConfig *ServerBaseConfig `json:"ServerConfig,omitempty" name:"ServerConfig"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeCloudRunServerDetailResponseParams `json:"Response"`
 }
 
 func (r *DescribeCloudRunServerDetailResponse) ToJsonString() string {
@@ -357,9 +430,15 @@ func (r *DescribeCloudRunServerDetailResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeCloudRunServersRequestParams struct {
+	// 环境Id
+	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
+}
+
 type DescribeCloudRunServersRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 环境Id
 	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
 }
@@ -383,16 +462,18 @@ func (r *DescribeCloudRunServersRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeCloudRunServersResponseParams struct {
+	// 服务列表
+	ServerList []*ServerBaseInfo `json:"ServerList,omitempty" name:"ServerList"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeCloudRunServersResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 服务列表
-		ServerList []*ServerBaseInfo `json:"ServerList,omitempty" name:"ServerList"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeCloudRunServersResponseParams `json:"Response"`
 }
 
 func (r *DescribeCloudRunServersResponse) ToJsonString() string {
@@ -406,9 +487,15 @@ func (r *DescribeCloudRunServersResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeEnvBaseInfoRequestParams struct {
+	// 环境 Id
+	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
+}
+
 type DescribeEnvBaseInfoRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 环境 Id
 	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
 }
@@ -432,16 +519,18 @@ func (r *DescribeEnvBaseInfoRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeEnvBaseInfoResponseParams struct {
+	// 环境基础信息
+	EnvBaseInfo *EnvBaseInfo `json:"EnvBaseInfo,omitempty" name:"EnvBaseInfo"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeEnvBaseInfoResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 环境基础信息
-		EnvBaseInfo *EnvBaseInfo `json:"EnvBaseInfo,omitempty" name:"EnvBaseInfo"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeEnvBaseInfoResponseParams `json:"Response"`
 }
 
 func (r *DescribeEnvBaseInfoResponse) ToJsonString() string {
@@ -456,7 +545,6 @@ func (r *DescribeEnvBaseInfoResponse) FromJsonString(s string) error {
 }
 
 type EnvBaseInfo struct {
-
 	// 环境Id
 	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
 
@@ -483,7 +571,6 @@ type EnvBaseInfo struct {
 }
 
 type EnvInfo struct {
-
 	// 账户下该环境唯一标识
 	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
 
@@ -567,7 +654,6 @@ type EnvInfo struct {
 }
 
 type FunctionInfo struct {
-
 	// 命名空间
 	Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
 
@@ -577,7 +663,6 @@ type FunctionInfo struct {
 }
 
 type HpaPolicy struct {
-
 	// 扩缩容类型
 	PolicyType *string `json:"PolicyType,omitempty" name:"PolicyType"`
 
@@ -586,7 +671,6 @@ type HpaPolicy struct {
 }
 
 type LogServiceInfo struct {
-
 	// log名
 	LogsetName *string `json:"LogsetName,omitempty" name:"LogsetName"`
 
@@ -603,8 +687,193 @@ type LogServiceInfo struct {
 	Region *string `json:"Region,omitempty" name:"Region"`
 }
 
-type RepositoryInfo struct {
+type ObjectKV struct {
+	// 键值对Key
+	Key *string `json:"Key,omitempty" name:"Key"`
 
+	// 键值对Value
+	Value *string `json:"Value,omitempty" name:"Value"`
+}
+
+// Predefined struct for user
+type OperateServerManageRequestParams struct {
+	// 环境Id
+	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
+
+	// 服务名
+	ServerName *string `json:"ServerName,omitempty" name:"ServerName"`
+
+	// 任报Id
+	TaskId *int64 `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 操作类型:cancel | go_back | done
+	OperateType *string `json:"OperateType,omitempty" name:"OperateType"`
+
+	// 操作标识
+	OperatorRemark *string `json:"OperatorRemark,omitempty" name:"OperatorRemark"`
+}
+
+type OperateServerManageRequest struct {
+	*tchttp.BaseRequest
+	
+	// 环境Id
+	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
+
+	// 服务名
+	ServerName *string `json:"ServerName,omitempty" name:"ServerName"`
+
+	// 任报Id
+	TaskId *int64 `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 操作类型:cancel | go_back | done
+	OperateType *string `json:"OperateType,omitempty" name:"OperateType"`
+
+	// 操作标识
+	OperatorRemark *string `json:"OperatorRemark,omitempty" name:"OperatorRemark"`
+}
+
+func (r *OperateServerManageRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *OperateServerManageRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EnvId")
+	delete(f, "ServerName")
+	delete(f, "TaskId")
+	delete(f, "OperateType")
+	delete(f, "OperatorRemark")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "OperateServerManageRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type OperateServerManageResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type OperateServerManageResponse struct {
+	*tchttp.BaseResponse
+	Response *OperateServerManageResponseParams `json:"Response"`
+}
+
+func (r *OperateServerManageResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *OperateServerManageResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ReleaseGrayRequestParams struct {
+	// 环境Id
+	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
+
+	// 服务名
+	ServerName *string `json:"ServerName,omitempty" name:"ServerName"`
+
+	// 灰度类型
+	GrayType *string `json:"GrayType,omitempty" name:"GrayType"`
+
+	// 流量类型
+	TrafficType *string `json:"TrafficType,omitempty" name:"TrafficType"`
+
+	// 流量策略
+	VersionFlowItems []*VersionFlowInfo `json:"VersionFlowItems,omitempty" name:"VersionFlowItems"`
+
+	// 操作标识
+	OperatorRemark *string `json:"OperatorRemark,omitempty" name:"OperatorRemark"`
+
+	// 流量比例
+	GrayFlowRatio *int64 `json:"GrayFlowRatio,omitempty" name:"GrayFlowRatio"`
+}
+
+type ReleaseGrayRequest struct {
+	*tchttp.BaseRequest
+	
+	// 环境Id
+	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
+
+	// 服务名
+	ServerName *string `json:"ServerName,omitempty" name:"ServerName"`
+
+	// 灰度类型
+	GrayType *string `json:"GrayType,omitempty" name:"GrayType"`
+
+	// 流量类型
+	TrafficType *string `json:"TrafficType,omitempty" name:"TrafficType"`
+
+	// 流量策略
+	VersionFlowItems []*VersionFlowInfo `json:"VersionFlowItems,omitempty" name:"VersionFlowItems"`
+
+	// 操作标识
+	OperatorRemark *string `json:"OperatorRemark,omitempty" name:"OperatorRemark"`
+
+	// 流量比例
+	GrayFlowRatio *int64 `json:"GrayFlowRatio,omitempty" name:"GrayFlowRatio"`
+}
+
+func (r *ReleaseGrayRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ReleaseGrayRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EnvId")
+	delete(f, "ServerName")
+	delete(f, "GrayType")
+	delete(f, "TrafficType")
+	delete(f, "VersionFlowItems")
+	delete(f, "OperatorRemark")
+	delete(f, "GrayFlowRatio")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ReleaseGrayRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ReleaseGrayResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ReleaseGrayResponse struct {
+	*tchttp.BaseResponse
+	Response *ReleaseGrayResponseParams `json:"Response"`
+}
+
+func (r *ReleaseGrayResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ReleaseGrayResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type RepositoryInfo struct {
 	// git source
 	Source *string `json:"Source,omitempty" name:"Source"`
 
@@ -616,7 +885,6 @@ type RepositoryInfo struct {
 }
 
 type ServerBaseConfig struct {
-
 	// 环境 Id
 	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
 
@@ -679,7 +947,6 @@ type ServerBaseConfig struct {
 }
 
 type ServerBaseInfo struct {
-
 	// 服务名
 	ServerName *string `json:"ServerName,omitempty" name:"ServerName"`
 
@@ -697,7 +964,6 @@ type ServerBaseInfo struct {
 }
 
 type StaticStorageInfo struct {
-
 	// 静态CDN域名
 	StaticDomain *string `json:"StaticDomain,omitempty" name:"StaticDomain"`
 
@@ -715,7 +981,6 @@ type StaticStorageInfo struct {
 }
 
 type StorageInfo struct {
-
 	// 资源所属地域。
 	// 当前支持ap-shanghai
 	Region *string `json:"Region,omitempty" name:"Region"`
@@ -731,7 +996,6 @@ type StorageInfo struct {
 }
 
 type Tag struct {
-
 	// 标签键
 	Key *string `json:"Key,omitempty" name:"Key"`
 
@@ -739,9 +1003,24 @@ type Tag struct {
 	Value *string `json:"Value,omitempty" name:"Value"`
 }
 
+// Predefined struct for user
+type UpdateCloudRunServerRequestParams struct {
+	// 环境Id
+	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
+
+	// 服务名
+	ServerName *string `json:"ServerName,omitempty" name:"ServerName"`
+
+	// 部署信息
+	DeployInfo *DeployParam `json:"DeployInfo,omitempty" name:"DeployInfo"`
+
+	// 服务配置信息
+	ServerConfig *ServerBaseConfig `json:"ServerConfig,omitempty" name:"ServerConfig"`
+}
+
 type UpdateCloudRunServerRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 环境Id
 	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
 
@@ -777,19 +1056,21 @@ func (r *UpdateCloudRunServerRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type UpdateCloudRunServerResponseParams struct {
+	// 环境Id
+	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
+
+	// 一键部署任务Id，暂时用不到
+	TaskId *int64 `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type UpdateCloudRunServerResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 环境Id
-		EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
-
-		// 一键部署任务Id，暂时用不到
-		TaskId *int64 `json:"TaskId,omitempty" name:"TaskId"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *UpdateCloudRunServerResponseParams `json:"Response"`
 }
 
 func (r *UpdateCloudRunServerResponse) ToJsonString() string {
@@ -801,4 +1082,21 @@ func (r *UpdateCloudRunServerResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *UpdateCloudRunServerResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type VersionFlowInfo struct {
+	// 版本名
+	VersionName *string `json:"VersionName,omitempty" name:"VersionName"`
+
+	// 是否默认版本
+	IsDefaultPriority *bool `json:"IsDefaultPriority,omitempty" name:"IsDefaultPriority"`
+
+	// 流量比例
+	FlowRatio *int64 `json:"FlowRatio,omitempty" name:"FlowRatio"`
+
+	// 测试KV值
+	UrlParam *ObjectKV `json:"UrlParam,omitempty" name:"UrlParam"`
+
+	// 权重
+	Priority *int64 `json:"Priority,omitempty" name:"Priority"`
 }

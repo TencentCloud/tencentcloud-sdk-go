@@ -21,7 +21,6 @@ import (
 )
 
 type AttributeMap struct {
-
 	// 属性字典 key [a-zA-Z0-9-\.]*
 	Key *string `json:"Key,omitempty" name:"Key"`
 
@@ -29,9 +28,18 @@ type AttributeMap struct {
 	Value *int64 `json:"Value,omitempty" name:"Value"`
 }
 
+// Predefined struct for user
+type CancelMatchingRequestParams struct {
+	// 匹配 Code
+	MatchCode *string `json:"MatchCode,omitempty" name:"MatchCode"`
+
+	// 要取消的匹配匹配票据 ID
+	MatchTicketId *string `json:"MatchTicketId,omitempty" name:"MatchTicketId"`
+}
+
 type CancelMatchingRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 匹配 Code
 	MatchCode *string `json:"MatchCode,omitempty" name:"MatchCode"`
 
@@ -59,16 +67,18 @@ func (r *CancelMatchingRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CancelMatchingResponseParams struct {
+	// 错误码
+	ErrCode *uint64 `json:"ErrCode,omitempty" name:"ErrCode"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CancelMatchingResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 错误码
-		ErrCode *uint64 `json:"ErrCode,omitempty" name:"ErrCode"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CancelMatchingResponseParams `json:"Response"`
 }
 
 func (r *CancelMatchingResponse) ToJsonString() string {
@@ -82,9 +92,51 @@ func (r *CancelMatchingResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateMatchRequestParams struct {
+	// 匹配名称，[a-zA-Z0-9-\.]* 长度128
+	MatchName *string `json:"MatchName,omitempty" name:"MatchName"`
+
+	// 规则code
+	RuleCode *string `json:"RuleCode,omitempty" name:"RuleCode"`
+
+	// 超时时间，1-600秒
+	Timeout *int64 `json:"Timeout,omitempty" name:"Timeout"`
+
+	// 是否为匹配结果请求服务器资源，0表示否，1表示请求GSE资源
+	ServerType *int64 `json:"ServerType,omitempty" name:"ServerType"`
+
+	// 匹配描述，最长1024
+	MatchDesc *string `json:"MatchDesc,omitempty" name:"MatchDesc"`
+
+	// 只支持https 和 http 协议
+	NotifyUrl *string `json:"NotifyUrl,omitempty" name:"NotifyUrl"`
+
+	// 游戏服务器队列地域
+	ServerRegion *string `json:"ServerRegion,omitempty" name:"ServerRegion"`
+
+	// 游戏服务器队列
+	ServerQueue *string `json:"ServerQueue,omitempty" name:"ServerQueue"`
+
+	// 自定义推送数据
+	CustomPushData *string `json:"CustomPushData,omitempty" name:"CustomPushData"`
+
+	// 游戏服务器会话数据
+	ServerSessionData *string `json:"ServerSessionData,omitempty" name:"ServerSessionData"`
+
+	// 游戏属性，key-value结构的数组
+	GameProperties []*StringKV `json:"GameProperties,omitempty" name:"GameProperties"`
+
+	// 日志开关，0表示关，1表示开
+	LogSwitch *int64 `json:"LogSwitch,omitempty" name:"LogSwitch"`
+
+	// 标签，key-value结构的数组
+	Tags []*StringKV `json:"Tags,omitempty" name:"Tags"`
+}
+
 type CreateMatchRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 匹配名称，[a-zA-Z0-9-\.]* 长度128
 	MatchName *string `json:"MatchName,omitempty" name:"MatchName"`
 
@@ -156,16 +208,18 @@ func (r *CreateMatchRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateMatchResponseParams struct {
+	// 匹配信息
+	MatchInfo *MatchInfo `json:"MatchInfo,omitempty" name:"MatchInfo"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreateMatchResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 匹配信息
-		MatchInfo *MatchInfo `json:"MatchInfo,omitempty" name:"MatchInfo"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreateMatchResponseParams `json:"Response"`
 }
 
 func (r *CreateMatchResponse) ToJsonString() string {
@@ -179,9 +233,24 @@ func (r *CreateMatchResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateRuleRequestParams struct {
+	// 规则名称，[a-zA-Z0-9-\.]* 长度128
+	RuleName *string `json:"RuleName,omitempty" name:"RuleName"`
+
+	// 规则脚本，长度65535
+	RuleScript *string `json:"RuleScript,omitempty" name:"RuleScript"`
+
+	// 规则描述，最长1024
+	RuleDesc *string `json:"RuleDesc,omitempty" name:"RuleDesc"`
+
+	// 标签，key-value结构的数组，最多关联50组标签
+	Tags []*StringKV `json:"Tags,omitempty" name:"Tags"`
+}
+
 type CreateRuleRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 规则名称，[a-zA-Z0-9-\.]* 长度128
 	RuleName *string `json:"RuleName,omitempty" name:"RuleName"`
 
@@ -217,16 +286,18 @@ func (r *CreateRuleRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateRuleResponseParams struct {
+	// 规则信息
+	RuleInfo *RuleInfo `json:"RuleInfo,omitempty" name:"RuleInfo"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreateRuleResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 规则信息
-		RuleInfo *RuleInfo `json:"RuleInfo,omitempty" name:"RuleInfo"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreateRuleResponseParams `json:"Response"`
 }
 
 func (r *CreateRuleResponse) ToJsonString() string {
@@ -240,9 +311,15 @@ func (r *CreateRuleResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteMatchRequestParams struct {
+	// 匹配code
+	MatchCode *string `json:"MatchCode,omitempty" name:"MatchCode"`
+}
+
 type DeleteMatchRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 匹配code
 	MatchCode *string `json:"MatchCode,omitempty" name:"MatchCode"`
 }
@@ -266,13 +343,15 @@ func (r *DeleteMatchRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteMatchResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DeleteMatchResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DeleteMatchResponseParams `json:"Response"`
 }
 
 func (r *DeleteMatchResponse) ToJsonString() string {
@@ -286,9 +365,15 @@ func (r *DeleteMatchResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteRuleRequestParams struct {
+	// 规则code
+	RuleCode *string `json:"RuleCode,omitempty" name:"RuleCode"`
+}
+
 type DeleteRuleRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 规则code
 	RuleCode *string `json:"RuleCode,omitempty" name:"RuleCode"`
 }
@@ -312,13 +397,15 @@ func (r *DeleteRuleRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteRuleResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DeleteRuleResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DeleteRuleResponseParams `json:"Response"`
 }
 
 func (r *DeleteRuleResponse) ToJsonString() string {
@@ -332,9 +419,24 @@ func (r *DeleteRuleResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeDataRequestParams struct {
+	// 起始时间，单位：秒
+	StartTime *int64 `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 截止时间，单位：秒
+	EndTime *int64 `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 时间粒度，1表示1天；2表示1小时；3表示1分钟；4表示10分钟；5表示30分钟
+	TimeType *int64 `json:"TimeType,omitempty" name:"TimeType"`
+
+	// 匹配code
+	MatchCode *string `json:"MatchCode,omitempty" name:"MatchCode"`
+}
+
 type DescribeDataRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 起始时间，单位：秒
 	StartTime *int64 `json:"StartTime,omitempty" name:"StartTime"`
 
@@ -370,21 +472,23 @@ func (r *DescribeDataRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeDataResponseParams struct {
+	// 匹配概况
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OverviewData *ReportOverviewData `json:"OverviewData,omitempty" name:"OverviewData"`
+
+	// 匹配请求次数趋势数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TrendData *ReportTrendData `json:"TrendData,omitempty" name:"TrendData"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeDataResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 匹配概况
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		OverviewData *ReportOverviewData `json:"OverviewData,omitempty" name:"OverviewData"`
-
-		// 匹配请求次数趋势数据
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		TrendData *ReportTrendData `json:"TrendData,omitempty" name:"TrendData"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeDataResponseParams `json:"Response"`
 }
 
 func (r *DescribeDataResponse) ToJsonString() string {
@@ -398,9 +502,21 @@ func (r *DescribeDataResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeMatchCodesRequestParams struct {
+	// 偏移量，页码
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 每页数量
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 搜索的字符串
+	MatchCode *string `json:"MatchCode,omitempty" name:"MatchCode"`
+}
+
 type DescribeMatchCodesRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 偏移量，页码
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
@@ -432,21 +548,23 @@ func (r *DescribeMatchCodesRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeMatchCodesResponseParams struct {
+	// 匹配Code
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MatchCodes []*MatchCodeAttr `json:"MatchCodes,omitempty" name:"MatchCodes"`
+
+	// 总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeMatchCodesResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 匹配Code
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		MatchCodes []*MatchCodeAttr `json:"MatchCodes,omitempty" name:"MatchCodes"`
-
-		// 总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeMatchCodesResponseParams `json:"Response"`
 }
 
 func (r *DescribeMatchCodesResponse) ToJsonString() string {
@@ -460,9 +578,15 @@ func (r *DescribeMatchCodesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeMatchRequestParams struct {
+	// 匹配code
+	MatchCode *string `json:"MatchCode,omitempty" name:"MatchCode"`
+}
+
 type DescribeMatchRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 匹配code
 	MatchCode *string `json:"MatchCode,omitempty" name:"MatchCode"`
 }
@@ -486,17 +610,19 @@ func (r *DescribeMatchRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeMatchResponseParams struct {
+	// 匹配信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MatchInfo *MatchInfo `json:"MatchInfo,omitempty" name:"MatchInfo"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeMatchResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 匹配信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		MatchInfo *MatchInfo `json:"MatchInfo,omitempty" name:"MatchInfo"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeMatchResponseParams `json:"Response"`
 }
 
 func (r *DescribeMatchResponse) ToJsonString() string {
@@ -510,9 +636,27 @@ func (r *DescribeMatchResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeMatchesRequestParams struct {
+	// 当前页号，不传则获取所有有权限的资源。
+	PageNumber *int64 `json:"PageNumber,omitempty" name:"PageNumber"`
+
+	// 单页大小，不传则获取所有有权限的资源。
+	PageSize *int64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// 查询类型（可选）：match表示通过matchCode或者matchName来搜索，rule表示通过ruleCode或者ruleName来搜索，其余类型不做过滤处理。
+	SearchType *string `json:"SearchType,omitempty" name:"SearchType"`
+
+	// 查询关键词，针对SearchType进行具体过滤的内容。
+	Keyword *string `json:"Keyword,omitempty" name:"Keyword"`
+
+	// 标签列表，用于过滤。
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
+}
+
 type DescribeMatchesRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 当前页号，不传则获取所有有权限的资源。
 	PageNumber *int64 `json:"PageNumber,omitempty" name:"PageNumber"`
 
@@ -552,32 +696,34 @@ func (r *DescribeMatchesRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeMatchesResponseParams struct {
+	// 匹配信息列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MatchInfoList []*MatchInfo `json:"MatchInfoList,omitempty" name:"MatchInfoList"`
+
+	// 总记录数
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 当前页号，不填默认返回第一页
+	PageNumber *int64 `json:"PageNumber,omitempty" name:"PageNumber"`
+
+	// 单页大小，不填默认取 30，最大值不能超过 30
+	PageSize *int64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// 查询类型（可选）：matchName表示匹配名称，matchCode表示匹配code，ruleName表示规则名称，tag表示标签Key/Value
+	SearchType *string `json:"SearchType,omitempty" name:"SearchType"`
+
+	// 查询关键词（可选）
+	Keyword *string `json:"Keyword,omitempty" name:"Keyword"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeMatchesResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 匹配信息列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		MatchInfoList []*MatchInfo `json:"MatchInfoList,omitempty" name:"MatchInfoList"`
-
-		// 总记录数
-		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 当前页号，不填默认返回第一页
-		PageNumber *int64 `json:"PageNumber,omitempty" name:"PageNumber"`
-
-		// 单页大小，不填默认取 30，最大值不能超过 30
-		PageSize *int64 `json:"PageSize,omitempty" name:"PageSize"`
-
-		// 查询类型（可选）：matchName表示匹配名称，matchCode表示匹配code，ruleName表示规则名称，tag表示标签Key/Value
-		SearchType *string `json:"SearchType,omitempty" name:"SearchType"`
-
-		// 查询关键词（可选）
-		Keyword *string `json:"Keyword,omitempty" name:"Keyword"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeMatchesResponseParams `json:"Response"`
 }
 
 func (r *DescribeMatchesResponse) ToJsonString() string {
@@ -591,9 +737,15 @@ func (r *DescribeMatchesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeMatchingProgressRequestParams struct {
+	// 匹配票据 ID列表, 列表长度 12。
+	MatchTicketIds []*MTicket `json:"MatchTicketIds,omitempty" name:"MatchTicketIds"`
+}
+
 type DescribeMatchingProgressRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 匹配票据 ID列表, 列表长度 12。
 	MatchTicketIds []*MTicket `json:"MatchTicketIds,omitempty" name:"MatchTicketIds"`
 }
@@ -617,21 +769,23 @@ func (r *DescribeMatchingProgressRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeMatchingProgressResponseParams struct {
+	// 匹配票据列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MatchTickets []*MatchTicket `json:"MatchTickets,omitempty" name:"MatchTickets"`
+
+	// 错误码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrCode *uint64 `json:"ErrCode,omitempty" name:"ErrCode"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeMatchingProgressResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 匹配票据列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		MatchTickets []*MatchTicket `json:"MatchTickets,omitempty" name:"MatchTickets"`
-
-		// 错误码
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		ErrCode *uint64 `json:"ErrCode,omitempty" name:"ErrCode"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeMatchingProgressResponseParams `json:"Response"`
 }
 
 func (r *DescribeMatchingProgressResponse) ToJsonString() string {
@@ -645,9 +799,15 @@ func (r *DescribeMatchingProgressResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeRuleRequestParams struct {
+	// 规则code
+	RuleCode *string `json:"RuleCode,omitempty" name:"RuleCode"`
+}
+
 type DescribeRuleRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 规则code
 	RuleCode *string `json:"RuleCode,omitempty" name:"RuleCode"`
 }
@@ -671,17 +831,19 @@ func (r *DescribeRuleRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeRuleResponseParams struct {
+	// 规则信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleInfo *RuleInfo `json:"RuleInfo,omitempty" name:"RuleInfo"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeRuleResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 规则信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		RuleInfo *RuleInfo `json:"RuleInfo,omitempty" name:"RuleInfo"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeRuleResponseParams `json:"Response"`
 }
 
 func (r *DescribeRuleResponse) ToJsonString() string {
@@ -695,9 +857,27 @@ func (r *DescribeRuleResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeRulesRequestParams struct {
+	// 当前页号，不传则返回第一页
+	PageNumber *int64 `json:"PageNumber,omitempty" name:"PageNumber"`
+
+	// 单页大小，最大 30，不填默认30
+	PageSize *int64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// 查询类型（可选）：match表示通过matchCode或者matchName来搜索，rule表示通过ruleCode或者ruleName来搜索，其余类型不做过滤处理。
+	SearchType *string `json:"SearchType,omitempty" name:"SearchType"`
+
+	// 查询关键词，针对SearchType进行具体过滤的内容。
+	Keyword *string `json:"Keyword,omitempty" name:"Keyword"`
+
+	// 标签列表，用于过滤。
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
+}
+
 type DescribeRulesRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 当前页号，不传则返回第一页
 	PageNumber *int64 `json:"PageNumber,omitempty" name:"PageNumber"`
 
@@ -737,32 +917,34 @@ func (r *DescribeRulesRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeRulesResponseParams struct {
+	// 规则信息列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleInfoList []*RuleBriefInfo `json:"RuleInfoList,omitempty" name:"RuleInfoList"`
+
+	// 总记录数
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 当前页号
+	PageNumber *int64 `json:"PageNumber,omitempty" name:"PageNumber"`
+
+	// 单页大小
+	PageSize *int64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// 查询类型（可选）matchName表示匹配名称，matchCode表示匹配code，ruleName表示规则名称，tag表示标签Key/Value
+	SearchType *string `json:"SearchType,omitempty" name:"SearchType"`
+
+	// 查询关键词（可选）
+	Keyword *string `json:"Keyword,omitempty" name:"Keyword"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeRulesResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 规则信息列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		RuleInfoList []*RuleBriefInfo `json:"RuleInfoList,omitempty" name:"RuleInfoList"`
-
-		// 总记录数
-		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 当前页号
-		PageNumber *int64 `json:"PageNumber,omitempty" name:"PageNumber"`
-
-		// 单页大小
-		PageSize *int64 `json:"PageSize,omitempty" name:"PageSize"`
-
-		// 查询类型（可选）matchName表示匹配名称，matchCode表示匹配code，ruleName表示规则名称，tag表示标签Key/Value
-		SearchType *string `json:"SearchType,omitempty" name:"SearchType"`
-
-		// 查询关键词（可选）
-		Keyword *string `json:"Keyword,omitempty" name:"Keyword"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeRulesResponseParams `json:"Response"`
 }
 
 func (r *DescribeRulesResponse) ToJsonString() string {
@@ -776,9 +958,15 @@ func (r *DescribeRulesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeTokenRequestParams struct {
+	// 匹配code
+	MatchCode *string `json:"MatchCode,omitempty" name:"MatchCode"`
+}
+
 type DescribeTokenRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 匹配code
 	MatchCode *string `json:"MatchCode,omitempty" name:"MatchCode"`
 }
@@ -802,21 +990,23 @@ func (r *DescribeTokenRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeTokenResponseParams struct {
+	// 当前的MatchCode对应的Token。如果当前MatchCode没有Token，该参数可能取不到有效值。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MatchToken *string `json:"MatchToken,omitempty" name:"MatchToken"`
+
+	// 当Token被替换后，GPM将兼容推送原始Token的时间（秒）。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CompatibleSpan *uint64 `json:"CompatibleSpan,omitempty" name:"CompatibleSpan"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeTokenResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 当前的MatchCode对应的Token。如果当前MatchCode没有Token，该参数可能取不到有效值。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		MatchToken *string `json:"MatchToken,omitempty" name:"MatchToken"`
-
-		// 当Token被替换后，GPM将兼容推送原始Token的时间（秒）。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		CompatibleSpan *uint64 `json:"CompatibleSpan,omitempty" name:"CompatibleSpan"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeTokenResponseParams `json:"Response"`
 }
 
 func (r *DescribeTokenResponse) ToJsonString() string {
@@ -831,7 +1021,6 @@ func (r *DescribeTokenResponse) FromJsonString(s string) error {
 }
 
 type MTicket struct {
-
 	// 匹配Code
 	MatchCode *string `json:"MatchCode,omitempty" name:"MatchCode"`
 
@@ -840,7 +1029,6 @@ type MTicket struct {
 }
 
 type MatchAttribute struct {
-
 	// 属性名 长度 128 [a-zA-Z0-9-\.]*
 	Name *string `json:"Name,omitempty" name:"Name"`
 
@@ -861,14 +1049,12 @@ type MatchAttribute struct {
 }
 
 type MatchCodeAttr struct {
-
 	// 匹配code
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MatchCode *string `json:"MatchCode,omitempty" name:"MatchCode"`
 }
 
 type MatchInfo struct {
-
 	// 匹配code
 	MatchCode *string `json:"MatchCode,omitempty" name:"MatchCode"`
 
@@ -963,7 +1149,6 @@ type MatchInfo struct {
 }
 
 type MatchTicket struct {
-
 	// 匹配票据 ID长度 128 [a-zA-Z0-9-\.]*
 	Id *string `json:"Id,omitempty" name:"Id"`
 
@@ -1000,9 +1185,54 @@ type MatchTicket struct {
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 }
 
+// Predefined struct for user
+type ModifyMatchRequestParams struct {
+	// 匹配名称，[a-zA-Z0-9-\.]* 长度128
+	MatchName *string `json:"MatchName,omitempty" name:"MatchName"`
+
+	// 规则code
+	RuleCode *string `json:"RuleCode,omitempty" name:"RuleCode"`
+
+	// 超时时间，1-600秒
+	Timeout *int64 `json:"Timeout,omitempty" name:"Timeout"`
+
+	// 是否为匹配结果请求服务器资源，0表示否，1表示请求GSE资源
+	ServerType *int64 `json:"ServerType,omitempty" name:"ServerType"`
+
+	// 匹配code
+	MatchCode *string `json:"MatchCode,omitempty" name:"MatchCode"`
+
+	// 匹配描述，最长1024
+	MatchDesc *string `json:"MatchDesc,omitempty" name:"MatchDesc"`
+
+	// 只支持 http 和 https 协议
+	NotifyUrl *string `json:"NotifyUrl,omitempty" name:"NotifyUrl"`
+
+	// 游戏服务器队列地域
+	ServerRegion *string `json:"ServerRegion,omitempty" name:"ServerRegion"`
+
+	// 游戏服务器队列
+	ServerQueue *string `json:"ServerQueue,omitempty" name:"ServerQueue"`
+
+	// 自定义推送数据
+	CustomPushData *string `json:"CustomPushData,omitempty" name:"CustomPushData"`
+
+	// 游戏服务器会话数据
+	ServerSessionData *string `json:"ServerSessionData,omitempty" name:"ServerSessionData"`
+
+	// 游戏属性，key-value结构的数组
+	GameProperties []*StringKV `json:"GameProperties,omitempty" name:"GameProperties"`
+
+	// 日志开关，0表示关，1表示开
+	LogSwitch *int64 `json:"LogSwitch,omitempty" name:"LogSwitch"`
+
+	// 标签，key-value结构的数组
+	Tags []*StringKV `json:"Tags,omitempty" name:"Tags"`
+}
+
 type ModifyMatchRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 匹配名称，[a-zA-Z0-9-\.]* 长度128
 	MatchName *string `json:"MatchName,omitempty" name:"MatchName"`
 
@@ -1078,16 +1308,18 @@ func (r *ModifyMatchRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifyMatchResponseParams struct {
+	// 匹配信息
+	MatchInfo *MatchInfo `json:"MatchInfo,omitempty" name:"MatchInfo"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type ModifyMatchResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 匹配信息
-		MatchInfo *MatchInfo `json:"MatchInfo,omitempty" name:"MatchInfo"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *ModifyMatchResponseParams `json:"Response"`
 }
 
 func (r *ModifyMatchResponse) ToJsonString() string {
@@ -1101,9 +1333,24 @@ func (r *ModifyMatchResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifyRuleRequestParams struct {
+	// 规则code
+	RuleCode *string `json:"RuleCode,omitempty" name:"RuleCode"`
+
+	// 规则名称，只能包含数字、字母、. 和 -
+	RuleName *string `json:"RuleName,omitempty" name:"RuleName"`
+
+	// 规则描述，最长1024
+	RuleDesc *string `json:"RuleDesc,omitempty" name:"RuleDesc"`
+
+	// 标签，key-value结构的数组，最多关联50组标签
+	Tags []*StringKV `json:"Tags,omitempty" name:"Tags"`
+}
+
 type ModifyRuleRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 规则code
 	RuleCode *string `json:"RuleCode,omitempty" name:"RuleCode"`
 
@@ -1139,16 +1386,18 @@ func (r *ModifyRuleRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifyRuleResponseParams struct {
+	// 规则信息
+	RuleInfo *RuleInfo `json:"RuleInfo,omitempty" name:"RuleInfo"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type ModifyRuleResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 规则信息
-		RuleInfo *RuleInfo `json:"RuleInfo,omitempty" name:"RuleInfo"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *ModifyRuleResponseParams `json:"Response"`
 }
 
 func (r *ModifyRuleResponse) ToJsonString() string {
@@ -1162,9 +1411,21 @@ func (r *ModifyRuleResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifyTokenRequestParams struct {
+	// 匹配Code。
+	MatchCode *string `json:"MatchCode,omitempty" name:"MatchCode"`
+
+	// 单位秒，取值0-1800。此参数表示当前Token被替换后，GPM将持续推送原Token的时间。在CompatibleSpan时间范围内，用户将在事件消息中收到当前和原始Token。
+	CompatibleSpan *uint64 `json:"CompatibleSpan,omitempty" name:"CompatibleSpan"`
+
+	// Token，[a-zA-Z0-9-_.], 长度0-64。如果为空，将由GPM随机生成。
+	MatchToken *string `json:"MatchToken,omitempty" name:"MatchToken"`
+}
+
 type ModifyTokenRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 匹配Code。
 	MatchCode *string `json:"MatchCode,omitempty" name:"MatchCode"`
 
@@ -1196,20 +1457,22 @@ func (r *ModifyTokenRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifyTokenResponseParams struct {
+	// 成功设置的Token。
+	MatchToken *string `json:"MatchToken,omitempty" name:"MatchToken"`
+
+	// 当前Token被替换后，GPM将持续推送原Token的时间。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CompatibleSpan *uint64 `json:"CompatibleSpan,omitempty" name:"CompatibleSpan"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type ModifyTokenResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 成功设置的Token。
-		MatchToken *string `json:"MatchToken,omitempty" name:"MatchToken"`
-
-		// 当前Token被替换后，GPM将持续推送原Token的时间。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		CompatibleSpan *uint64 `json:"CompatibleSpan,omitempty" name:"CompatibleSpan"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *ModifyTokenResponseParams `json:"Response"`
 }
 
 func (r *ModifyTokenResponse) ToJsonString() string {
@@ -1224,7 +1487,6 @@ func (r *ModifyTokenResponse) FromJsonString(s string) error {
 }
 
 type Player struct {
-
 	// 玩家 PlayerId 长度 128 [a-zA-Z\d-\._]*
 	Id *string `json:"Id,omitempty" name:"Id"`
 
@@ -1248,7 +1510,6 @@ type Player struct {
 }
 
 type RegionLatency struct {
-
 	// 地域
 	// ap-beijing          华北地区(北京)
 	// ap-chengdu          西南地区(成都)
@@ -1272,7 +1533,6 @@ type RegionLatency struct {
 }
 
 type ReportOverviewData struct {
-
 	// 总次数
 	TotalTimes *string `json:"TotalTimes,omitempty" name:"TotalTimes"`
 
@@ -1290,7 +1550,6 @@ type ReportOverviewData struct {
 }
 
 type ReportTrendData struct {
-
 	// 总次数
 	TotalList []*string `json:"TotalList,omitempty" name:"TotalList"`
 
@@ -1311,7 +1570,6 @@ type ReportTrendData struct {
 }
 
 type RuleBriefInfo struct {
-
 	// 规则名称 [a-zA-Z\d-\.]*
 	RuleName *string `json:"RuleName,omitempty" name:"RuleName"`
 
@@ -1326,7 +1584,6 @@ type RuleBriefInfo struct {
 }
 
 type RuleInfo struct {
-
 	// 规则名称 [a-zA-Z0-9-\.]*
 	RuleName *string `json:"RuleName,omitempty" name:"RuleName"`
 
@@ -1368,9 +1625,24 @@ type RuleInfo struct {
 	CreateUin *string `json:"CreateUin,omitempty" name:"CreateUin"`
 }
 
+// Predefined struct for user
+type StartMatchingBackfillRequestParams struct {
+	// 匹配code
+	MatchCode *string `json:"MatchCode,omitempty" name:"MatchCode"`
+
+	// 玩家信息
+	Players []*Player `json:"Players,omitempty" name:"Players"`
+
+	// 游戏服务器回话 ID [1-256] 个ASCII 字符
+	GameServerSessionId *string `json:"GameServerSessionId,omitempty" name:"GameServerSessionId"`
+
+	// 匹配票据 Id 默认 "" 为空则由 GPM 自动生成 长度 [1, 128]
+	MatchTicketId *string `json:"MatchTicketId,omitempty" name:"MatchTicketId"`
+}
+
 type StartMatchingBackfillRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 匹配code
 	MatchCode *string `json:"MatchCode,omitempty" name:"MatchCode"`
 
@@ -1406,17 +1678,19 @@ func (r *StartMatchingBackfillRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type StartMatchingBackfillResponseParams struct {
+	// 匹配票据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MatchTicket *MatchTicket `json:"MatchTicket,omitempty" name:"MatchTicket"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type StartMatchingBackfillResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 匹配票据
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		MatchTicket *MatchTicket `json:"MatchTicket,omitempty" name:"MatchTicket"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *StartMatchingBackfillResponseParams `json:"Response"`
 }
 
 func (r *StartMatchingBackfillResponse) ToJsonString() string {
@@ -1430,9 +1704,21 @@ func (r *StartMatchingBackfillResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type StartMatchingRequestParams struct {
+	// 匹配 Code。
+	MatchCode *string `json:"MatchCode,omitempty" name:"MatchCode"`
+
+	// 玩家信息 最多 200 条。
+	Players []*Player `json:"Players,omitempty" name:"Players"`
+
+	// 匹配票据 ID 默认空字符串，为空则由 GPM 自动生成 长度 128，只能包含数字、字母、. 和 -
+	MatchTicketId *string `json:"MatchTicketId,omitempty" name:"MatchTicketId"`
+}
+
 type StartMatchingRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 匹配 Code。
 	MatchCode *string `json:"MatchCode,omitempty" name:"MatchCode"`
 
@@ -1464,19 +1750,21 @@ func (r *StartMatchingRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type StartMatchingResponseParams struct {
+	// 错误码。
+	ErrCode *uint64 `json:"ErrCode,omitempty" name:"ErrCode"`
+
+	// 匹配票据 ID长度 128。
+	MatchTicketId *string `json:"MatchTicketId,omitempty" name:"MatchTicketId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type StartMatchingResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 错误码。
-		ErrCode *uint64 `json:"ErrCode,omitempty" name:"ErrCode"`
-
-		// 匹配票据 ID长度 128。
-		MatchTicketId *string `json:"MatchTicketId,omitempty" name:"MatchTicketId"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *StartMatchingResponseParams `json:"Response"`
 }
 
 func (r *StartMatchingResponse) ToJsonString() string {
@@ -1491,7 +1779,6 @@ func (r *StartMatchingResponse) FromJsonString(s string) error {
 }
 
 type StringKV struct {
-
 	// 键
 	Key *string `json:"Key,omitempty" name:"Key"`
 
@@ -1500,7 +1787,6 @@ type StringKV struct {
 }
 
 type Tag struct {
-
 	// 标签键
 	TagKey *string `json:"TagKey,omitempty" name:"TagKey"`
 

@@ -21,7 +21,6 @@ import (
 )
 
 type ChainData struct {
-
 	// 区块hash
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BlockHash *string `json:"BlockHash,omitempty" name:"BlockHash"`
@@ -36,7 +35,6 @@ type ChainData struct {
 }
 
 type CodeBatch struct {
-
 	// 批次号
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BatchId *string `json:"BatchId,omitempty" name:"BatchId"`
@@ -103,14 +101,34 @@ type CodeBatch struct {
 }
 
 type CodeItem struct {
-
 	// 无
 	Code *string `json:"Code,omitempty" name:"Code"`
 }
 
+// Predefined struct for user
+type CreateCodeBatchRequestParams struct {
+	// 企业ID
+	CorpId *uint64 `json:"CorpId,omitempty" name:"CorpId"`
+
+	// 商户ID
+	MerchantId *string `json:"MerchantId,omitempty" name:"MerchantId"`
+
+	// 产品ID
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+
+	// 批次类型 0:溯源 1:营销
+	BatchType *uint64 `json:"BatchType,omitempty" name:"BatchType"`
+
+	// 批次ID，系统自动生成
+	BatchId *string `json:"BatchId,omitempty" name:"BatchId"`
+
+	// 备注
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+}
+
 type CreateCodeBatchRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 企业ID
 	CorpId *uint64 `json:"CorpId,omitempty" name:"CorpId"`
 
@@ -154,16 +172,18 @@ func (r *CreateCodeBatchRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateCodeBatchResponseParams struct {
+	// 批次ID
+	BatchId *string `json:"BatchId,omitempty" name:"BatchId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreateCodeBatchResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 批次ID
-		BatchId *string `json:"BatchId,omitempty" name:"BatchId"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreateCodeBatchResponseParams `json:"Response"`
 }
 
 func (r *CreateCodeBatchResponse) ToJsonString() string {
@@ -177,9 +197,36 @@ func (r *CreateCodeBatchResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateCodePackRequestParams struct {
+	// 商户ID
+	MerchantId *string `json:"MerchantId,omitempty" name:"MerchantId"`
+
+	// 码长度
+	CodeLength *uint64 `json:"CodeLength,omitempty" name:"CodeLength"`
+
+	// 码类型 alphabet 字母, number 数字, mixin 混合
+	CodeType *string `json:"CodeType,omitempty" name:"CodeType"`
+
+	// 生码数量 普通码包时必填
+	Amount *int64 `json:"Amount,omitempty" name:"Amount"`
+
+	// 企业ID
+	CorpId *uint64 `json:"CorpId,omitempty" name:"CorpId"`
+
+	// 码包类型 0: 普通码包 1: 层级码包
+	PackType *uint64 `json:"PackType,omitempty" name:"PackType"`
+
+	// 码包层级
+	PackLevel *uint64 `json:"PackLevel,omitempty" name:"PackLevel"`
+
+	// 码包规格
+	PackSpec []*PackSpec `json:"PackSpec,omitempty" name:"PackSpec"`
+}
+
 type CreateCodePackRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 商户ID
 	MerchantId *string `json:"MerchantId,omitempty" name:"MerchantId"`
 
@@ -231,16 +278,18 @@ func (r *CreateCodePackRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateCodePackResponseParams struct {
+	// 码包ID
+	PackId *string `json:"PackId,omitempty" name:"PackId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreateCodePackResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 码包ID
-		PackId *string `json:"PackId,omitempty" name:"PackId"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreateCodePackResponseParams `json:"Response"`
 }
 
 func (r *CreateCodePackResponse) ToJsonString() string {
@@ -254,9 +303,21 @@ func (r *CreateCodePackResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateMerchantRequestParams struct {
+	// 商户名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 备注
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 企业ID
+	CorpId *uint64 `json:"CorpId,omitempty" name:"CorpId"`
+}
+
 type CreateMerchantRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 商户名称
 	Name *string `json:"Name,omitempty" name:"Name"`
 
@@ -288,17 +349,19 @@ func (r *CreateMerchantRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateMerchantResponseParams struct {
+	// 商户标识码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MerchantId *string `json:"MerchantId,omitempty" name:"MerchantId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreateMerchantResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 商户标识码
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		MerchantId *string `json:"MerchantId,omitempty" name:"MerchantId"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreateMerchantResponseParams `json:"Response"`
 }
 
 func (r *CreateMerchantResponse) ToJsonString() string {
@@ -312,9 +375,36 @@ func (r *CreateMerchantResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateProductRequestParams struct {
+	// 商品名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 商户ID
+	MerchantId *string `json:"MerchantId,omitempty" name:"MerchantId"`
+
+	// 备注
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 商户名称
+	MerchantName *string `json:"MerchantName,omitempty" name:"MerchantName"`
+
+	// 商品规格
+	Specification *string `json:"Specification,omitempty" name:"Specification"`
+
+	// 商品图片
+	Logo []*string `json:"Logo,omitempty" name:"Logo"`
+
+	// 企业ID
+	CorpId *uint64 `json:"CorpId,omitempty" name:"CorpId"`
+
+	// 预留字段
+	Ext *Ext `json:"Ext,omitempty" name:"Ext"`
+}
+
 type CreateProductRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 商品名称
 	Name *string `json:"Name,omitempty" name:"Name"`
 
@@ -366,17 +456,19 @@ func (r *CreateProductRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateProductResponseParams struct {
+	// 商品ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreateProductResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 商品ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreateProductResponseParams `json:"Response"`
 }
 
 func (r *CreateProductResponse) ToJsonString() string {
@@ -390,9 +482,18 @@ func (r *CreateProductResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateTraceChainRequestParams struct {
+	// 企业ID
+	CorpId *uint64 `json:"CorpId,omitempty" name:"CorpId"`
+
+	// 溯源ID
+	TraceId *string `json:"TraceId,omitempty" name:"TraceId"`
+}
+
 type CreateTraceChainRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 企业ID
 	CorpId *uint64 `json:"CorpId,omitempty" name:"CorpId"`
 
@@ -420,16 +521,18 @@ func (r *CreateTraceChainRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateTraceChainResponseParams struct {
+	// 溯源ID
+	TraceId *string `json:"TraceId,omitempty" name:"TraceId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreateTraceChainResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 溯源ID
-		TraceId *string `json:"TraceId,omitempty" name:"TraceId"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreateTraceChainResponseParams `json:"Response"`
 }
 
 func (r *CreateTraceChainResponse) ToJsonString() string {
@@ -443,9 +546,21 @@ func (r *CreateTraceChainResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateTraceCodesRequestParams struct {
+	// 批次ID
+	BatchId *string `json:"BatchId,omitempty" name:"BatchId"`
+
+	// 企业ID
+	CorpId *uint64 `json:"CorpId,omitempty" name:"CorpId"`
+
+	// 码
+	Codes []*CodeItem `json:"Codes,omitempty" name:"Codes"`
+}
+
 type CreateTraceCodesRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 批次ID
 	BatchId *string `json:"BatchId,omitempty" name:"BatchId"`
 
@@ -477,22 +592,24 @@ func (r *CreateTraceCodesRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateTraceCodesResponseParams struct {
+	// 批次ID
+	BatchId *string `json:"BatchId,omitempty" name:"BatchId"`
+
+	// 导入成功码数量
+	ActiveCnt *uint64 `json:"ActiveCnt,omitempty" name:"ActiveCnt"`
+
+	// 批次码数量
+	CodeCnt *uint64 `json:"CodeCnt,omitempty" name:"CodeCnt"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreateTraceCodesResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 批次ID
-		BatchId *string `json:"BatchId,omitempty" name:"BatchId"`
-
-		// 导入成功码数量
-		ActiveCnt *uint64 `json:"ActiveCnt,omitempty" name:"ActiveCnt"`
-
-		// 批次码数量
-		CodeCnt *uint64 `json:"CodeCnt,omitempty" name:"CodeCnt"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreateTraceCodesResponseParams `json:"Response"`
 }
 
 func (r *CreateTraceCodesResponse) ToJsonString() string {
@@ -506,9 +623,39 @@ func (r *CreateTraceCodesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateTraceDataRequestParams struct {
+	// 企业ID
+	CorpId *uint64 `json:"CorpId,omitempty" name:"CorpId"`
+
+	// 批次ID
+	BatchId *string `json:"BatchId,omitempty" name:"BatchId"`
+
+	// 任务ID
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 溯源阶段 0:商品 1:通用 2:内部溯源 3:外部溯源
+	Phase *uint64 `json:"Phase,omitempty" name:"Phase"`
+
+	// 溯源阶段名称
+	PhaseName *string `json:"PhaseName,omitempty" name:"PhaseName"`
+
+	// [无效] 上链状态
+	ChainStatus *uint64 `json:"ChainStatus,omitempty" name:"ChainStatus"`
+
+	// [无效] 码类型 0: 批次, 1: 码, 2: 生产任务, 3: 物流信息
+	Type *uint64 `json:"Type,omitempty" name:"Type"`
+
+	// [无效] 溯源ID
+	TraceId *string `json:"TraceId,omitempty" name:"TraceId"`
+
+	// 溯源信息
+	TraceItems []*TraceItem `json:"TraceItems,omitempty" name:"TraceItems"`
+}
+
 type CreateTraceDataRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 企业ID
 	CorpId *uint64 `json:"CorpId,omitempty" name:"CorpId"`
 
@@ -564,16 +711,18 @@ func (r *CreateTraceDataRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateTraceDataResponseParams struct {
+	// 溯源ID
+	TraceId *string `json:"TraceId,omitempty" name:"TraceId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreateTraceDataResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 溯源ID
-		TraceId *string `json:"TraceId,omitempty" name:"TraceId"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreateTraceDataResponseParams `json:"Response"`
 }
 
 func (r *CreateTraceDataResponse) ToJsonString() string {
@@ -587,9 +736,18 @@ func (r *CreateTraceDataResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteCodeBatchRequestParams struct {
+	// 企业ID
+	CorpId *uint64 `json:"CorpId,omitempty" name:"CorpId"`
+
+	// 批次ID
+	BatchId *string `json:"BatchId,omitempty" name:"BatchId"`
+}
+
 type DeleteCodeBatchRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 企业ID
 	CorpId *uint64 `json:"CorpId,omitempty" name:"CorpId"`
 
@@ -617,16 +775,18 @@ func (r *DeleteCodeBatchRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteCodeBatchResponseParams struct {
+	// 批次ID
+	BatchId *string `json:"BatchId,omitempty" name:"BatchId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DeleteCodeBatchResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 批次ID
-		BatchId *string `json:"BatchId,omitempty" name:"BatchId"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DeleteCodeBatchResponseParams `json:"Response"`
 }
 
 func (r *DeleteCodeBatchResponse) ToJsonString() string {
@@ -640,9 +800,18 @@ func (r *DeleteCodeBatchResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteMerchantRequestParams struct {
+	// 商户标识码
+	MerchantId *string `json:"MerchantId,omitempty" name:"MerchantId"`
+
+	// 企业ID
+	CorpId *uint64 `json:"CorpId,omitempty" name:"CorpId"`
+}
+
 type DeleteMerchantRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 商户标识码
 	MerchantId *string `json:"MerchantId,omitempty" name:"MerchantId"`
 
@@ -670,17 +839,19 @@ func (r *DeleteMerchantRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteMerchantResponseParams struct {
+	// 商户标识码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MerchantId *string `json:"MerchantId,omitempty" name:"MerchantId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DeleteMerchantResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 商户标识码
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		MerchantId *string `json:"MerchantId,omitempty" name:"MerchantId"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DeleteMerchantResponseParams `json:"Response"`
 }
 
 func (r *DeleteMerchantResponse) ToJsonString() string {
@@ -694,9 +865,18 @@ func (r *DeleteMerchantResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteProductRequestParams struct {
+	// 商品ID
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+
+	// 企业ID
+	CorpId *uint64 `json:"CorpId,omitempty" name:"CorpId"`
+}
+
 type DeleteProductRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 商品ID
 	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
 
@@ -724,17 +904,19 @@ func (r *DeleteProductRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteProductResponseParams struct {
+	// 商品ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DeleteProductResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 商品ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DeleteProductResponseParams `json:"Response"`
 }
 
 func (r *DeleteProductResponse) ToJsonString() string {
@@ -748,9 +930,18 @@ func (r *DeleteProductResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteTraceDataRequestParams struct {
+	// 溯源ID
+	TraceId *string `json:"TraceId,omitempty" name:"TraceId"`
+
+	// 企业ID
+	CorpId *uint64 `json:"CorpId,omitempty" name:"CorpId"`
+}
+
 type DeleteTraceDataRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 溯源ID
 	TraceId *string `json:"TraceId,omitempty" name:"TraceId"`
 
@@ -778,17 +969,19 @@ func (r *DeleteTraceDataRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteTraceDataResponseParams struct {
+	// 溯源id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TraceId *string `json:"TraceId,omitempty" name:"TraceId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DeleteTraceDataResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 溯源id
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		TraceId *string `json:"TraceId,omitempty" name:"TraceId"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DeleteTraceDataResponseParams `json:"Response"`
 }
 
 func (r *DeleteTraceDataResponse) ToJsonString() string {
@@ -802,9 +995,18 @@ func (r *DeleteTraceDataResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeCodeBatchByIdRequestParams struct {
+	// 企业ID
+	CorpId *uint64 `json:"CorpId,omitempty" name:"CorpId"`
+
+	// 批次ID
+	BatchId *string `json:"BatchId,omitempty" name:"BatchId"`
+}
+
 type DescribeCodeBatchByIdRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 企业ID
 	CorpId *uint64 `json:"CorpId,omitempty" name:"CorpId"`
 
@@ -832,16 +1034,18 @@ func (r *DescribeCodeBatchByIdRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeCodeBatchByIdResponseParams struct {
+	// 批次
+	CodeBatch *CodeBatch `json:"CodeBatch,omitempty" name:"CodeBatch"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeCodeBatchByIdResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 批次
-		CodeBatch *CodeBatch `json:"CodeBatch,omitempty" name:"CodeBatch"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeCodeBatchByIdResponseParams `json:"Response"`
 }
 
 func (r *DescribeCodeBatchByIdResponse) ToJsonString() string {
@@ -855,9 +1059,33 @@ func (r *DescribeCodeBatchByIdResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeCodeBatchsRequestParams struct {
+	// 查询商户ID
+	MerchantId *string `json:"MerchantId,omitempty" name:"MerchantId"`
+
+	// 查询商品ID
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+
+	// 查询关键字
+	Keyword *string `json:"Keyword,omitempty" name:"Keyword"`
+
+	// 条数
+	PageSize *int64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// 页数
+	PageNumber *int64 `json:"PageNumber,omitempty" name:"PageNumber"`
+
+	// 批次类型 0:溯源 1:营销
+	BatchType *string `json:"BatchType,omitempty" name:"BatchType"`
+
+	// 企业ID
+	CorpId *uint64 `json:"CorpId,omitempty" name:"CorpId"`
+}
+
 type DescribeCodeBatchsRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 查询商户ID
 	MerchantId *string `json:"MerchantId,omitempty" name:"MerchantId"`
 
@@ -905,21 +1133,23 @@ func (r *DescribeCodeBatchsRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeCodeBatchsResponseParams struct {
+	// 批次列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CodeBatchs []*CodeBatch `json:"CodeBatchs,omitempty" name:"CodeBatchs"`
+
+	// 总条数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeCodeBatchsResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 批次列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		CodeBatchs []*CodeBatch `json:"CodeBatchs,omitempty" name:"CodeBatchs"`
-
-		// 总条数
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeCodeBatchsResponseParams `json:"Response"`
 }
 
 func (r *DescribeCodeBatchsResponse) ToJsonString() string {
@@ -933,9 +1163,24 @@ func (r *DescribeCodeBatchsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeCodePacksRequestParams struct {
+	// 每页数量
+	PageSize *uint64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// 页数
+	PageNumber *uint64 `json:"PageNumber,omitempty" name:"PageNumber"`
+
+	// 查询关键字
+	Keyword *string `json:"Keyword,omitempty" name:"Keyword"`
+
+	// 企业ID
+	CorpId *uint64 `json:"CorpId,omitempty" name:"CorpId"`
+}
+
 type DescribeCodePacksRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 每页数量
 	PageSize *uint64 `json:"PageSize,omitempty" name:"PageSize"`
 
@@ -971,13 +1216,15 @@ func (r *DescribeCodePacksRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeCodePacksResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeCodePacksResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeCodePacksResponseParams `json:"Response"`
 }
 
 func (r *DescribeCodePacksResponse) ToJsonString() string {
@@ -991,9 +1238,18 @@ func (r *DescribeCodePacksResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeCodesByPackRequestParams struct {
+	// 码包ID
+	PackId *string `json:"PackId,omitempty" name:"PackId"`
+
+	// 企业ID
+	CorpId *uint64 `json:"CorpId,omitempty" name:"CorpId"`
+}
+
 type DescribeCodesByPackRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 码包ID
 	PackId *string `json:"PackId,omitempty" name:"PackId"`
 
@@ -1021,17 +1277,19 @@ func (r *DescribeCodesByPackRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeCodesByPackResponseParams struct {
+	// 码列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Codes []*CodeItem `json:"Codes,omitempty" name:"Codes"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeCodesByPackResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 码列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		Codes []*CodeItem `json:"Codes,omitempty" name:"Codes"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeCodesByPackResponseParams `json:"Response"`
 }
 
 func (r *DescribeCodesByPackResponse) ToJsonString() string {
@@ -1045,9 +1303,18 @@ func (r *DescribeCodesByPackResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeMerchantByIdRequestParams struct {
+	// 商户标识码
+	MerchantId *string `json:"MerchantId,omitempty" name:"MerchantId"`
+
+	// 企业ID
+	CorpId *uint64 `json:"CorpId,omitempty" name:"CorpId"`
+}
+
 type DescribeMerchantByIdRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 商户标识码
 	MerchantId *string `json:"MerchantId,omitempty" name:"MerchantId"`
 
@@ -1075,17 +1342,19 @@ func (r *DescribeMerchantByIdRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeMerchantByIdResponseParams struct {
+	// 商户信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Merchant *Merchant `json:"Merchant,omitempty" name:"Merchant"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeMerchantByIdResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 商户信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		Merchant *Merchant `json:"Merchant,omitempty" name:"Merchant"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeMerchantByIdResponseParams `json:"Response"`
 }
 
 func (r *DescribeMerchantByIdResponse) ToJsonString() string {
@@ -1099,9 +1368,24 @@ func (r *DescribeMerchantByIdResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeMerchantsRequestParams struct {
+	// 搜索商户名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 条数
+	PageSize *uint64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// 页数
+	PageNumber *uint64 `json:"PageNumber,omitempty" name:"PageNumber"`
+
+	// 企业ID
+	CorpId *uint64 `json:"CorpId,omitempty" name:"CorpId"`
+}
+
 type DescribeMerchantsRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 搜索商户名称
 	Name *string `json:"Name,omitempty" name:"Name"`
 
@@ -1137,21 +1421,23 @@ func (r *DescribeMerchantsRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeMerchantsResponseParams struct {
+	// 商户列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Merchants []*Merchant `json:"Merchants,omitempty" name:"Merchants"`
+
+	// 总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeMerchantsResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 商户列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		Merchants []*Merchant `json:"Merchants,omitempty" name:"Merchants"`
-
-		// 总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeMerchantsResponseParams `json:"Response"`
 }
 
 func (r *DescribeMerchantsResponse) ToJsonString() string {
@@ -1165,9 +1451,18 @@ func (r *DescribeMerchantsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeProductByIdRequestParams struct {
+	// 商品ID
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+
+	// 企业ID
+	CorpId *uint64 `json:"CorpId,omitempty" name:"CorpId"`
+}
+
 type DescribeProductByIdRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 商品ID
 	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
 
@@ -1195,17 +1490,19 @@ func (r *DescribeProductByIdRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeProductByIdResponseParams struct {
+	// 商品信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Product *Product `json:"Product,omitempty" name:"Product"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeProductByIdResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 商品信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		Product *Product `json:"Product,omitempty" name:"Product"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeProductByIdResponseParams `json:"Response"`
 }
 
 func (r *DescribeProductByIdResponse) ToJsonString() string {
@@ -1219,9 +1516,27 @@ func (r *DescribeProductByIdResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeProductsRequestParams struct {
+	// 商品名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 条数
+	PageSize *uint64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// 页数
+	PageNumber *uint64 `json:"PageNumber,omitempty" name:"PageNumber"`
+
+	// 商品ID
+	MerchantId *string `json:"MerchantId,omitempty" name:"MerchantId"`
+
+	// 企业ID
+	CorpId *uint64 `json:"CorpId,omitempty" name:"CorpId"`
+}
+
 type DescribeProductsRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 商品名称
 	Name *string `json:"Name,omitempty" name:"Name"`
 
@@ -1261,21 +1576,23 @@ func (r *DescribeProductsRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeProductsResponseParams struct {
+	// 商品列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Products []*Product `json:"Products,omitempty" name:"Products"`
+
+	// 总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeProductsResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 商品列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		Products []*Product `json:"Products,omitempty" name:"Products"`
-
-		// 总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeProductsResponseParams `json:"Response"`
 }
 
 func (r *DescribeProductsResponse) ToJsonString() string {
@@ -1289,9 +1606,18 @@ func (r *DescribeProductsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeTraceCodeByIdRequestParams struct {
+	// 企业ID
+	CorpId *uint64 `json:"CorpId,omitempty" name:"CorpId"`
+
+	// 二维码
+	Code *string `json:"Code,omitempty" name:"Code"`
+}
+
 type DescribeTraceCodeByIdRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 企业ID
 	CorpId *uint64 `json:"CorpId,omitempty" name:"CorpId"`
 
@@ -1319,16 +1645,18 @@ func (r *DescribeTraceCodeByIdRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeTraceCodeByIdResponseParams struct {
+	// 无
+	TraceCode *TraceCode `json:"TraceCode,omitempty" name:"TraceCode"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeTraceCodeByIdResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 无
-		TraceCode *TraceCode `json:"TraceCode,omitempty" name:"TraceCode"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeTraceCodeByIdResponseParams `json:"Response"`
 }
 
 func (r *DescribeTraceCodeByIdResponse) ToJsonString() string {
@@ -1342,9 +1670,27 @@ func (r *DescribeTraceCodeByIdResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeTraceCodesRequestParams struct {
+	// 搜索关键字 码标识，或者批次ID
+	Keyword *string `json:"Keyword,omitempty" name:"Keyword"`
+
+	// 条数
+	PageNumber *uint64 `json:"PageNumber,omitempty" name:"PageNumber"`
+
+	// 页码
+	PageSize *uint64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// 批次ID，弃用
+	BatchId *string `json:"BatchId,omitempty" name:"BatchId"`
+
+	// 企业ID
+	CorpId *uint64 `json:"CorpId,omitempty" name:"CorpId"`
+}
+
 type DescribeTraceCodesRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 搜索关键字 码标识，或者批次ID
 	Keyword *string `json:"Keyword,omitempty" name:"Keyword"`
 
@@ -1384,21 +1730,23 @@ func (r *DescribeTraceCodesRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeTraceCodesResponseParams struct {
+	// 标识列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TraceCodes []*TraceCode `json:"TraceCodes,omitempty" name:"TraceCodes"`
+
+	// 条数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeTraceCodesResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 标识列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		TraceCodes []*TraceCode `json:"TraceCodes,omitempty" name:"TraceCodes"`
-
-		// 条数
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeTraceCodesResponseParams `json:"Response"`
 }
 
 func (r *DescribeTraceCodesResponse) ToJsonString() string {
@@ -1412,9 +1760,33 @@ func (r *DescribeTraceCodesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeTraceDataListRequestParams struct {
+	// 企业ID
+	CorpId *uint64 `json:"CorpId,omitempty" name:"CorpId"`
+
+	// 批次ID
+	BatchId *string `json:"BatchId,omitempty" name:"BatchId"`
+
+	// 任务ID 用于外部溯源
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 页数
+	PageNumber *uint64 `json:"PageNumber,omitempty" name:"PageNumber"`
+
+	// 二维码
+	Code *string `json:"Code,omitempty" name:"Code"`
+
+	// 溯源阶段 0:商品 1:通用 2:内部溯源 3:外部溯源
+	Phase *uint64 `json:"Phase,omitempty" name:"Phase"`
+
+	// 数量
+	PageSize *uint64 `json:"PageSize,omitempty" name:"PageSize"`
+}
+
 type DescribeTraceDataListRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 企业ID
 	CorpId *uint64 `json:"CorpId,omitempty" name:"CorpId"`
 
@@ -1462,19 +1834,21 @@ func (r *DescribeTraceDataListRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeTraceDataListResponseParams struct {
+	// 数量
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 无
+	TraceDataList []*TraceData `json:"TraceDataList,omitempty" name:"TraceDataList"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeTraceDataListResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 数量
-		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 无
-		TraceDataList []*TraceData `json:"TraceDataList,omitempty" name:"TraceDataList"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeTraceDataListResponseParams `json:"Response"`
 }
 
 func (r *DescribeTraceDataListResponse) ToJsonString() string {
@@ -1489,10 +1863,10 @@ func (r *DescribeTraceDataListResponse) FromJsonString(s string) error {
 }
 
 type Ext struct {
+
 }
 
 type Merchant struct {
-
 	// 商户标识码
 	MerchantId *string `json:"MerchantId,omitempty" name:"MerchantId"`
 
@@ -1516,9 +1890,24 @@ type Merchant struct {
 	CodeRule *string `json:"CodeRule,omitempty" name:"CodeRule"`
 }
 
+// Predefined struct for user
+type ModifyCodeBatchRequestParams struct {
+	// 批次ID
+	BatchId *string `json:"BatchId,omitempty" name:"BatchId"`
+
+	// 企业ID
+	CorpId *uint64 `json:"CorpId,omitempty" name:"CorpId"`
+
+	// 状态 0: 未激活 1: 已激活 -1: 已冻结
+	Status *int64 `json:"Status,omitempty" name:"Status"`
+
+	// 模板ID
+	MpTpl *string `json:"MpTpl,omitempty" name:"MpTpl"`
+}
+
 type ModifyCodeBatchRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 批次ID
 	BatchId *string `json:"BatchId,omitempty" name:"BatchId"`
 
@@ -1554,16 +1943,18 @@ func (r *ModifyCodeBatchRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifyCodeBatchResponseParams struct {
+	// 批次ID
+	BatchId *string `json:"BatchId,omitempty" name:"BatchId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type ModifyCodeBatchResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 批次ID
-		BatchId *string `json:"BatchId,omitempty" name:"BatchId"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *ModifyCodeBatchResponseParams `json:"Response"`
 }
 
 func (r *ModifyCodeBatchResponse) ToJsonString() string {
@@ -1577,9 +1968,24 @@ func (r *ModifyCodeBatchResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifyMerchantRequestParams struct {
+	// 商户名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 商户标识码
+	MerchantId *string `json:"MerchantId,omitempty" name:"MerchantId"`
+
+	// 备注
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 企业ID
+	CorpId *uint64 `json:"CorpId,omitempty" name:"CorpId"`
+}
+
 type ModifyMerchantRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 商户名称
 	Name *string `json:"Name,omitempty" name:"Name"`
 
@@ -1615,17 +2021,19 @@ func (r *ModifyMerchantRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifyMerchantResponseParams struct {
+	// 商户标识码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MerchantId *string `json:"MerchantId,omitempty" name:"MerchantId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type ModifyMerchantResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 商户标识码
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		MerchantId *string `json:"MerchantId,omitempty" name:"MerchantId"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *ModifyMerchantResponseParams `json:"Response"`
 }
 
 func (r *ModifyMerchantResponse) ToJsonString() string {
@@ -1639,9 +2047,33 @@ func (r *ModifyMerchantResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifyProductRequestParams struct {
+	// 商品名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 商品ID
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+
+	// 备注
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 商品规格
+	Specification *string `json:"Specification,omitempty" name:"Specification"`
+
+	// 商品图片
+	Logo []*string `json:"Logo,omitempty" name:"Logo"`
+
+	// 企业ID
+	CorpId *uint64 `json:"CorpId,omitempty" name:"CorpId"`
+
+	// 预留字段
+	Ext *Ext `json:"Ext,omitempty" name:"Ext"`
+}
+
 type ModifyProductRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 商品名称
 	Name *string `json:"Name,omitempty" name:"Name"`
 
@@ -1689,17 +2121,19 @@ func (r *ModifyProductRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifyProductResponseParams struct {
+	// 商品ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type ModifyProductResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 商品ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *ModifyProductResponseParams `json:"Response"`
 }
 
 func (r *ModifyProductResponse) ToJsonString() string {
@@ -1713,9 +2147,21 @@ func (r *ModifyProductResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifyTraceCodeRequestParams struct {
+	// 二维码
+	Code *string `json:"Code,omitempty" name:"Code"`
+
+	// 企业ID
+	CorpId *uint64 `json:"CorpId,omitempty" name:"CorpId"`
+
+	// 状态 0: 冻结 1: 激活
+	Status *uint64 `json:"Status,omitempty" name:"Status"`
+}
+
 type ModifyTraceCodeRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 二维码
 	Code *string `json:"Code,omitempty" name:"Code"`
 
@@ -1747,13 +2193,15 @@ func (r *ModifyTraceCodeRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifyTraceCodeResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type ModifyTraceCodeResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *ModifyTraceCodeResponseParams `json:"Response"`
 }
 
 func (r *ModifyTraceCodeResponse) ToJsonString() string {
@@ -1767,9 +2215,24 @@ func (r *ModifyTraceCodeResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifyTraceDataRanksRequestParams struct {
+	// 企业ID
+	CorpId *uint64 `json:"CorpId,omitempty" name:"CorpId"`
+
+	// 批次ID
+	BatchId *string `json:"BatchId,omitempty" name:"BatchId"`
+
+	// 生产任务ID
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 溯源ID
+	TraceIds []*string `json:"TraceIds,omitempty" name:"TraceIds"`
+}
+
 type ModifyTraceDataRanksRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 企业ID
 	CorpId *uint64 `json:"CorpId,omitempty" name:"CorpId"`
 
@@ -1805,17 +2268,19 @@ func (r *ModifyTraceDataRanksRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifyTraceDataRanksResponseParams struct {
+	// 批次ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BatchId *string `json:"BatchId,omitempty" name:"BatchId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type ModifyTraceDataRanksResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 批次ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		BatchId *string `json:"BatchId,omitempty" name:"BatchId"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *ModifyTraceDataRanksResponseParams `json:"Response"`
 }
 
 func (r *ModifyTraceDataRanksResponse) ToJsonString() string {
@@ -1829,9 +2294,60 @@ func (r *ModifyTraceDataRanksResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifyTraceDataRequestParams struct {
+	// 溯源ID
+	TraceId *string `json:"TraceId,omitempty" name:"TraceId"`
+
+	// 批次ID
+	BatchId *string `json:"BatchId,omitempty" name:"BatchId"`
+
+	// 生产溯源任务ID
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 溯源信息
+	TraceItems []*TraceItem `json:"TraceItems,omitempty" name:"TraceItems"`
+
+	// 溯源阶段名称
+	PhaseName *string `json:"PhaseName,omitempty" name:"PhaseName"`
+
+	// [无效] 类型
+	Type *uint64 `json:"Type,omitempty" name:"Type"`
+
+	// [无效] 溯源码
+	Code *string `json:"Code,omitempty" name:"Code"`
+
+	// [无效] 排序
+	Rank *uint64 `json:"Rank,omitempty" name:"Rank"`
+
+	// [无效] 溯源阶段 0:商品 1:通用 2:物流
+	Phase *uint64 `json:"Phase,omitempty" name:"Phase"`
+
+	// [无效] 溯源时间
+	TraceTime *string `json:"TraceTime,omitempty" name:"TraceTime"`
+
+	// [无效] 创建时间
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// [无效] 上链状态
+	ChainStatus *uint64 `json:"ChainStatus,omitempty" name:"ChainStatus"`
+
+	// [无效] 上链时间
+	ChainTime *string `json:"ChainTime,omitempty" name:"ChainTime"`
+
+	// [无效] 上链数据
+	ChainData *ChainData `json:"ChainData,omitempty" name:"ChainData"`
+
+	// 企业ID
+	CorpId *uint64 `json:"CorpId,omitempty" name:"CorpId"`
+
+	// [无效] 溯源状态
+	Status *uint64 `json:"Status,omitempty" name:"Status"`
+}
+
 type ModifyTraceDataRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 溯源ID
 	TraceId *string `json:"TraceId,omitempty" name:"TraceId"`
 
@@ -1915,16 +2431,18 @@ func (r *ModifyTraceDataRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifyTraceDataResponseParams struct {
+	// 溯源ID
+	TraceId *string `json:"TraceId,omitempty" name:"TraceId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type ModifyTraceDataResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 溯源ID
-		TraceId *string `json:"TraceId,omitempty" name:"TraceId"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *ModifyTraceDataResponseParams `json:"Response"`
 }
 
 func (r *ModifyTraceDataResponse) ToJsonString() string {
@@ -1939,7 +2457,6 @@ func (r *ModifyTraceDataResponse) FromJsonString(s string) error {
 }
 
 type PackSpec struct {
-
 	// 层级
 	Level *uint64 `json:"Level,omitempty" name:"Level"`
 
@@ -1951,7 +2468,6 @@ type PackSpec struct {
 }
 
 type Product struct {
-
 	// 商品id
 	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
 
@@ -1994,7 +2510,6 @@ type Product struct {
 }
 
 type TraceCode struct {
-
 	// 码
 	Code *string `json:"Code,omitempty" name:"Code"`
 
@@ -2030,7 +2545,6 @@ type TraceCode struct {
 }
 
 type TraceData struct {
-
 	// 溯源ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TraceId *string `json:"TraceId,omitempty" name:"TraceId"`
@@ -2085,7 +2599,6 @@ type TraceData struct {
 }
 
 type TraceItem struct {
-
 	// 名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitempty" name:"Name"`

@@ -20,8 +20,14 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+// Predefined struct for user
+type DescribeComponentAlertObjectRequestParams struct {
+
+}
+
 type DescribeComponentAlertObjectRequest struct {
 	*tchttp.BaseRequest
+	
 }
 
 func (r *DescribeComponentAlertObjectRequest) ToJsonString() string {
@@ -36,19 +42,22 @@ func (r *DescribeComponentAlertObjectRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeComponentAlertObjectRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeComponentAlertObjectResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeComponentAlertObjectResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeComponentAlertObjectResponseParams `json:"Response"`
 }
 
 func (r *DescribeComponentAlertObjectResponse) ToJsonString() string {
@@ -62,8 +71,14 @@ func (r *DescribeComponentAlertObjectResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeServiceAlertObjectRequestParams struct {
+
+}
+
 type DescribeServiceAlertObjectRequest struct {
 	*tchttp.BaseRequest
+	
 }
 
 func (r *DescribeServiceAlertObjectRequest) ToJsonString() string {
@@ -78,19 +93,22 @@ func (r *DescribeServiceAlertObjectRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeServiceAlertObjectRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeServiceAlertObjectResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeServiceAlertObjectResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeServiceAlertObjectResponseParams `json:"Response"`
 }
 
 func (r *DescribeServiceAlertObjectResponse) ToJsonString() string {
@@ -104,9 +122,15 @@ func (r *DescribeServiceAlertObjectResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeTokenRequestParams struct {
+	// 命名空间
+	Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
+}
+
 type DescribeTokenRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 命名空间
 	Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
 }
@@ -130,16 +154,18 @@ func (r *DescribeTokenRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeTokenResponseParams struct {
+	// token
+	Result *string `json:"Result,omitempty" name:"Result"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeTokenResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// token
-		Result *string `json:"Result,omitempty" name:"Result"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeTokenResponseParams `json:"Response"`
 }
 
 func (r *DescribeTokenResponse) ToJsonString() string {

@@ -20,9 +20,18 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+// Predefined struct for user
+type DescribeEisConnectorConfigRequestParams struct {
+	// 连接器名称
+	ConnectorName *string `json:"ConnectorName,omitempty" name:"ConnectorName"`
+
+	// 连接器版本
+	ConnectorVersion *string `json:"ConnectorVersion,omitempty" name:"ConnectorVersion"`
+}
+
 type DescribeEisConnectorConfigRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 连接器名称
 	ConnectorName *string `json:"ConnectorName,omitempty" name:"ConnectorName"`
 
@@ -50,11 +59,9 @@ func (r *DescribeEisConnectorConfigRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-type DescribeEisConnectorConfigResponse struct {
-	*tchttp.BaseResponse
-	Response *struct {
-
-		// 连接器配置参数描述（json结构），示例如下：
+// Predefined struct for user
+type DescribeEisConnectorConfigResponseParams struct {
+	// 连接器配置参数描述（json结构），示例如下：
 	// {
 	//     "attributes":{
 	//         "description":"测试", // 连接器的描述
@@ -229,11 +236,15 @@ type DescribeEisConnectorConfigResponse struct {
 	//         }
 	//     ]
 	// }
-		ConnectorParameter *string `json:"ConnectorParameter,omitempty" name:"ConnectorParameter"`
+	ConnectorParameter *string `json:"ConnectorParameter,omitempty" name:"ConnectorParameter"`
 
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeEisConnectorConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeEisConnectorConfigResponseParams `json:"Response"`
 }
 
 func (r *DescribeEisConnectorConfigResponse) ToJsonString() string {
@@ -248,7 +259,6 @@ func (r *DescribeEisConnectorConfigResponse) FromJsonString(s string) error {
 }
 
 type EisConnectionOperation struct {
-
 	// 连接器操作名称
 	OperationName *string `json:"OperationName,omitempty" name:"OperationName"`
 
@@ -260,7 +270,6 @@ type EisConnectionOperation struct {
 }
 
 type EisConnectorSummary struct {
-
 	// 连接器名称
 	ConnectorName *string `json:"ConnectorName,omitempty" name:"ConnectorName"`
 
@@ -280,9 +289,18 @@ type EisConnectorSummary struct {
 	CreateTime *int64 `json:"CreateTime,omitempty" name:"CreateTime"`
 }
 
+// Predefined struct for user
+type ListEisConnectorOperationsRequestParams struct {
+	// 连接器名称
+	ConnectorName *string `json:"ConnectorName,omitempty" name:"ConnectorName"`
+
+	// 连接器版本
+	ConnectorVersion *string `json:"ConnectorVersion,omitempty" name:"ConnectorVersion"`
+}
+
 type ListEisConnectorOperationsRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 连接器名称
 	ConnectorName *string `json:"ConnectorName,omitempty" name:"ConnectorName"`
 
@@ -310,16 +328,18 @@ func (r *ListEisConnectorOperationsRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ListEisConnectorOperationsResponseParams struct {
+	// 连接器列表
+	Operations []*EisConnectionOperation `json:"Operations,omitempty" name:"Operations"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type ListEisConnectorOperationsResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 连接器列表
-		Operations []*EisConnectionOperation `json:"Operations,omitempty" name:"Operations"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *ListEisConnectorOperationsResponseParams `json:"Response"`
 }
 
 func (r *ListEisConnectorOperationsResponse) ToJsonString() string {
@@ -333,9 +353,21 @@ func (r *ListEisConnectorOperationsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ListEisConnectorsRequestParams struct {
+	// 连接器名称,非必输，如输入则按照输入值模糊匹配
+	ConnectorName *string `json:"ConnectorName,omitempty" name:"ConnectorName"`
+
+	// 分页参数,数据偏移量
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 分页参数,每页显示的条数
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
 type ListEisConnectorsRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 连接器名称,非必输，如输入则按照输入值模糊匹配
 	ConnectorName *string `json:"ConnectorName,omitempty" name:"ConnectorName"`
 
@@ -367,19 +399,21 @@ func (r *ListEisConnectorsRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ListEisConnectorsResponseParams struct {
+	// 连接器总数
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 连接器列表
+	Connectors []*EisConnectorSummary `json:"Connectors,omitempty" name:"Connectors"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type ListEisConnectorsResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 连接器总数
-		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 连接器列表
-		Connectors []*EisConnectorSummary `json:"Connectors,omitempty" name:"Connectors"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *ListEisConnectorsResponseParams `json:"Response"`
 }
 
 func (r *ListEisConnectorsResponse) ToJsonString() string {

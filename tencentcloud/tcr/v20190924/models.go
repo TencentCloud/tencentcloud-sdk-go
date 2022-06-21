@@ -21,7 +21,6 @@ import (
 )
 
 type AccessVpc struct {
-
 	// Vpc的Id
 	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
 
@@ -36,7 +35,6 @@ type AccessVpc struct {
 }
 
 type AutoDelStrategyInfo struct {
-
 	// 用户名
 	Username *string `json:"Username,omitempty" name:"Username"`
 
@@ -57,7 +55,6 @@ type AutoDelStrategyInfo struct {
 }
 
 type AutoDelStrategyInfoResp struct {
-
 	// 总数目
 	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
@@ -66,9 +63,18 @@ type AutoDelStrategyInfoResp struct {
 	StrategyInfo []*AutoDelStrategyInfo `json:"StrategyInfo,omitempty" name:"StrategyInfo"`
 }
 
+// Predefined struct for user
+type BatchDeleteImagePersonalRequestParams struct {
+	// 仓库名称
+	RepoName *string `json:"RepoName,omitempty" name:"RepoName"`
+
+	// Tag列表
+	Tags []*string `json:"Tags,omitempty" name:"Tags"`
+}
+
 type BatchDeleteImagePersonalRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 仓库名称
 	RepoName *string `json:"RepoName,omitempty" name:"RepoName"`
 
@@ -96,13 +102,15 @@ func (r *BatchDeleteImagePersonalRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type BatchDeleteImagePersonalResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type BatchDeleteImagePersonalResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *BatchDeleteImagePersonalResponseParams `json:"Response"`
 }
 
 func (r *BatchDeleteImagePersonalResponse) ToJsonString() string {
@@ -116,9 +124,15 @@ func (r *BatchDeleteImagePersonalResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type BatchDeleteRepositoryPersonalRequestParams struct {
+	// 仓库名称数组
+	RepoNames []*string `json:"RepoNames,omitempty" name:"RepoNames"`
+}
+
 type BatchDeleteRepositoryPersonalRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 仓库名称数组
 	RepoNames []*string `json:"RepoNames,omitempty" name:"RepoNames"`
 }
@@ -142,13 +156,15 @@ func (r *BatchDeleteRepositoryPersonalRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type BatchDeleteRepositoryPersonalResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type BatchDeleteRepositoryPersonalResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *BatchDeleteRepositoryPersonalResponseParams `json:"Response"`
 }
 
 func (r *BatchDeleteRepositoryPersonalResponse) ToJsonString() string {
@@ -162,9 +178,15 @@ func (r *BatchDeleteRepositoryPersonalResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CheckInstanceNameRequestParams struct {
+	// 待创建的实例名称
+	RegistryName *string `json:"RegistryName,omitempty" name:"RegistryName"`
+}
+
 type CheckInstanceNameRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 待创建的实例名称
 	RegistryName *string `json:"RegistryName,omitempty" name:"RegistryName"`
 }
@@ -188,16 +210,18 @@ func (r *CheckInstanceNameRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CheckInstanceNameResponseParams struct {
+	// 检查结果，true为合法，false为非法
+	IsValidated *bool `json:"IsValidated,omitempty" name:"IsValidated"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CheckInstanceNameResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 检查结果，true为合法，false为非法
-		IsValidated *bool `json:"IsValidated,omitempty" name:"IsValidated"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CheckInstanceNameResponseParams `json:"Response"`
 }
 
 func (r *CheckInstanceNameResponse) ToJsonString() string {
@@ -211,9 +235,15 @@ func (r *CheckInstanceNameResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CheckInstanceRequestParams struct {
+	// 待检测的实例Id
+	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
+}
+
 type CheckInstanceRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 待检测的实例Id
 	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
 }
@@ -237,19 +267,21 @@ func (r *CheckInstanceRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CheckInstanceResponseParams struct {
+	// 检查结果，true为合法，false为非法
+	IsValidated *bool `json:"IsValidated,omitempty" name:"IsValidated"`
+
+	// 实例所在的RegionId
+	RegionId *uint64 `json:"RegionId,omitempty" name:"RegionId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CheckInstanceResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 检查结果，true为合法，false为非法
-		IsValidated *bool `json:"IsValidated,omitempty" name:"IsValidated"`
-
-		// 实例所在的RegionId
-		RegionId *uint64 `json:"RegionId,omitempty" name:"RegionId"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CheckInstanceResponseParams `json:"Response"`
 }
 
 func (r *CheckInstanceResponse) ToJsonString() string {
@@ -263,9 +295,42 @@ func (r *CheckInstanceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateApplicationTriggerPersonalRequestParams struct {
+	// 触发器关联的镜像仓库，library/test格式
+	RepoName *string `json:"RepoName,omitempty" name:"RepoName"`
+
+	// 触发器名称
+	TriggerName *string `json:"TriggerName,omitempty" name:"TriggerName"`
+
+	// 触发方式，"all"全部触发，"taglist"指定tag触发，"regex"正则触发
+	InvokeMethod *string `json:"InvokeMethod,omitempty" name:"InvokeMethod"`
+
+	// 应用所在TKE集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 应用所在TKE集群命名空间
+	Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
+
+	// 应用所在TKE集群工作负载类型,支持Deployment、StatefulSet、DaemonSet、CronJob、Job。
+	WorkloadType *string `json:"WorkloadType,omitempty" name:"WorkloadType"`
+
+	// 应用所在TKE集群工作负载名称
+	WorkloadName *string `json:"WorkloadName,omitempty" name:"WorkloadName"`
+
+	// 应用所在TKE集群工作负载下容器名称
+	ContainerName *string `json:"ContainerName,omitempty" name:"ContainerName"`
+
+	// 应用所在TKE集群地域
+	ClusterRegion *int64 `json:"ClusterRegion,omitempty" name:"ClusterRegion"`
+
+	// 触发方式对应的表达式
+	InvokeExpr *string `json:"InvokeExpr,omitempty" name:"InvokeExpr"`
+}
+
 type CreateApplicationTriggerPersonalRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 触发器关联的镜像仓库，library/test格式
 	RepoName *string `json:"RepoName,omitempty" name:"RepoName"`
 
@@ -325,13 +390,15 @@ func (r *CreateApplicationTriggerPersonalRequest) FromJsonString(s string) error
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateApplicationTriggerPersonalResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreateApplicationTriggerPersonalResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreateApplicationTriggerPersonalResponseParams `json:"Response"`
 }
 
 func (r *CreateApplicationTriggerPersonalResponse) ToJsonString() string {
@@ -345,9 +412,21 @@ func (r *CreateApplicationTriggerPersonalResponse) FromJsonString(s string) erro
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateImageLifecyclePersonalRequestParams struct {
+	// 仓库名称
+	RepoName *string `json:"RepoName,omitempty" name:"RepoName"`
+
+	// keep_last_days:保留最近几天的数据;keep_last_nums:保留最近多少个
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 策略值
+	Val *int64 `json:"Val,omitempty" name:"Val"`
+}
+
 type CreateImageLifecyclePersonalRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 仓库名称
 	RepoName *string `json:"RepoName,omitempty" name:"RepoName"`
 
@@ -379,13 +458,15 @@ func (r *CreateImageLifecyclePersonalRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateImageLifecyclePersonalResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreateImageLifecyclePersonalResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreateImageLifecyclePersonalResponseParams `json:"Response"`
 }
 
 func (r *CreateImageLifecyclePersonalResponse) ToJsonString() string {
@@ -399,9 +480,21 @@ func (r *CreateImageLifecyclePersonalResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateImmutableTagRulesRequestParams struct {
+	// 实例 Id
+	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
+
+	// 命名空间
+	NamespaceName *string `json:"NamespaceName,omitempty" name:"NamespaceName"`
+
+	// 规则
+	Rule *ImmutableTagRule `json:"Rule,omitempty" name:"Rule"`
+}
+
 type CreateImmutableTagRulesRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 实例 Id
 	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
 
@@ -433,13 +526,15 @@ func (r *CreateImmutableTagRulesRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateImmutableTagRulesResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreateImmutableTagRulesResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreateImmutableTagRulesResponseParams `json:"Response"`
 }
 
 func (r *CreateImmutableTagRulesResponse) ToJsonString() string {
@@ -453,9 +548,27 @@ func (r *CreateImmutableTagRulesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateInstanceRequestParams struct {
+	// 企业版实例名称
+	RegistryName *string `json:"RegistryName,omitempty" name:"RegistryName"`
+
+	// 企业版实例类型（basic 基础版；standard 标准版；premium 高级版）
+	RegistryType *string `json:"RegistryType,omitempty" name:"RegistryType"`
+
+	// 云标签描述
+	TagSpecification *TagSpecification `json:"TagSpecification,omitempty" name:"TagSpecification"`
+
+	// 实例计费类型，0表示按量计费，1表示预付费，默认为按量计费
+	RegistryChargeType *int64 `json:"RegistryChargeType,omitempty" name:"RegistryChargeType"`
+
+	// 是否同步TCR云标签至生成的COS Bucket
+	SyncTag *bool `json:"SyncTag,omitempty" name:"SyncTag"`
+}
+
 type CreateInstanceRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 企业版实例名称
 	RegistryName *string `json:"RegistryName,omitempty" name:"RegistryName"`
 
@@ -495,16 +608,18 @@ func (r *CreateInstanceRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateInstanceResponseParams struct {
+	// 企业版实例Id
+	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreateInstanceResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 企业版实例Id
-		RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreateInstanceResponseParams `json:"Response"`
 }
 
 func (r *CreateInstanceResponse) ToJsonString() string {
@@ -518,9 +633,21 @@ func (r *CreateInstanceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateInstanceTokenRequestParams struct {
+	// 实例Id
+	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
+
+	// 访问凭证类型，longterm 为长期访问凭证，temp 为临时访问凭证，默认是临时访问凭证，有效期1小时
+	TokenType *string `json:"TokenType,omitempty" name:"TokenType"`
+
+	// 长期访问凭证描述信息
+	Desc *string `json:"Desc,omitempty" name:"Desc"`
+}
+
 type CreateInstanceTokenRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 实例Id
 	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
 
@@ -552,27 +679,29 @@ func (r *CreateInstanceTokenRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateInstanceTokenResponseParams struct {
+	// 用户名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Username *string `json:"Username,omitempty" name:"Username"`
+
+	// 访问凭证
+	Token *string `json:"Token,omitempty" name:"Token"`
+
+	// 访问凭证过期时间戳，是一个时间戳数字，无单位
+	ExpTime *int64 `json:"ExpTime,omitempty" name:"ExpTime"`
+
+	// 长期凭证的TokenId，短期凭证没有TokenId
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TokenId *string `json:"TokenId,omitempty" name:"TokenId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreateInstanceTokenResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 用户名
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		Username *string `json:"Username,omitempty" name:"Username"`
-
-		// 访问凭证
-		Token *string `json:"Token,omitempty" name:"Token"`
-
-		// 访问凭证过期时间戳，是一个时间戳数字，无单位
-		ExpTime *int64 `json:"ExpTime,omitempty" name:"ExpTime"`
-
-		// 长期凭证的TokenId，短期凭证没有TokenId
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		TokenId *string `json:"TokenId,omitempty" name:"TokenId"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreateInstanceTokenResponseParams `json:"Response"`
 }
 
 func (r *CreateInstanceTokenResponse) ToJsonString() string {
@@ -586,9 +715,29 @@ func (r *CreateInstanceTokenResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateInternalEndpointDnsRequestParams struct {
+	// tcr实例id
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 私有网络id
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// tcr内网访问链路ip
+	EniLBIp *string `json:"EniLBIp,omitempty" name:"EniLBIp"`
+
+	// true：为默认域名，公网域名一致
+	// false: 使用vpc域名
+	// 默认为vpc域名
+	UsePublicDomain *bool `json:"UsePublicDomain,omitempty" name:"UsePublicDomain"`
+
+	// 解析地域，需要保证和vpc处于同一地域，如果不填则默认为主实例地域
+	RegionName *string `json:"RegionName,omitempty" name:"RegionName"`
+}
+
 type CreateInternalEndpointDnsRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// tcr实例id
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
@@ -630,13 +779,15 @@ func (r *CreateInternalEndpointDnsRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateInternalEndpointDnsResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreateInternalEndpointDnsResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreateInternalEndpointDnsResponseParams `json:"Response"`
 }
 
 func (r *CreateInternalEndpointDnsResponse) ToJsonString() string {
@@ -650,9 +801,18 @@ func (r *CreateInternalEndpointDnsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateMultipleSecurityPolicyRequestParams struct {
+	// 实例Id
+	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
+
+	// 安全组策略
+	SecurityGroupPolicySet []*SecurityPolicy `json:"SecurityGroupPolicySet,omitempty" name:"SecurityGroupPolicySet"`
+}
+
 type CreateMultipleSecurityPolicyRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 实例Id
 	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
 
@@ -680,16 +840,18 @@ func (r *CreateMultipleSecurityPolicyRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateMultipleSecurityPolicyResponseParams struct {
+	// 实例Id
+	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreateMultipleSecurityPolicyResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 实例Id
-		RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreateMultipleSecurityPolicyResponseParams `json:"Response"`
 }
 
 func (r *CreateMultipleSecurityPolicyResponse) ToJsonString() string {
@@ -703,9 +865,15 @@ func (r *CreateMultipleSecurityPolicyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateNamespacePersonalRequestParams struct {
+	// 命名空间名称
+	Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
+}
+
 type CreateNamespacePersonalRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 命名空间名称
 	Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
 }
@@ -729,13 +897,15 @@ func (r *CreateNamespacePersonalRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateNamespacePersonalResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreateNamespacePersonalResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreateNamespacePersonalResponseParams `json:"Response"`
 }
 
 func (r *CreateNamespacePersonalResponse) ToJsonString() string {
@@ -749,9 +919,21 @@ func (r *CreateNamespacePersonalResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateNamespaceRequestParams struct {
+	// 实例ID
+	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
+
+	// 命名空间的名称（长度2-30个字符，只能包含小写字母、数字及分隔符("."、"_"、"-")，且不能以分隔符开头、结尾或连续）
+	NamespaceName *string `json:"NamespaceName,omitempty" name:"NamespaceName"`
+
+	// 是否公开，true为公开，fale为私有
+	IsPublic *bool `json:"IsPublic,omitempty" name:"IsPublic"`
+}
+
 type CreateNamespaceRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 实例ID
 	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
 
@@ -783,13 +965,15 @@ func (r *CreateNamespaceRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateNamespaceResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreateNamespaceResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreateNamespaceResponseParams `json:"Response"`
 }
 
 func (r *CreateNamespaceResponse) ToJsonString() string {
@@ -803,9 +987,24 @@ func (r *CreateNamespaceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateReplicationInstanceRequestParams struct {
+	// 主实例iD
+	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
+
+	// 复制实例地域ID
+	ReplicationRegionId *uint64 `json:"ReplicationRegionId,omitempty" name:"ReplicationRegionId"`
+
+	// 复制实例地域名称
+	ReplicationRegionName *string `json:"ReplicationRegionName,omitempty" name:"ReplicationRegionName"`
+
+	// 是否同步TCR云标签至生成的COS Bucket
+	SyncTag *bool `json:"SyncTag,omitempty" name:"SyncTag"`
+}
+
 type CreateReplicationInstanceRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 主实例iD
 	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
 
@@ -841,16 +1040,18 @@ func (r *CreateReplicationInstanceRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateReplicationInstanceResponseParams struct {
+	// 企业版复制实例Id
+	ReplicationRegistryId *string `json:"ReplicationRegistryId,omitempty" name:"ReplicationRegistryId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreateReplicationInstanceResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 企业版复制实例Id
-		ReplicationRegistryId *string `json:"ReplicationRegistryId,omitempty" name:"ReplicationRegistryId"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreateReplicationInstanceResponseParams `json:"Response"`
 }
 
 func (r *CreateReplicationInstanceResponse) ToJsonString() string {
@@ -864,9 +1065,21 @@ func (r *CreateReplicationInstanceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateRepositoryPersonalRequestParams struct {
+	// 仓库名称
+	RepoName *string `json:"RepoName,omitempty" name:"RepoName"`
+
+	// 是否公共,1:公共,0:私有
+	Public *uint64 `json:"Public,omitempty" name:"Public"`
+
+	// 仓库描述
+	Description *string `json:"Description,omitempty" name:"Description"`
+}
+
 type CreateRepositoryPersonalRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 仓库名称
 	RepoName *string `json:"RepoName,omitempty" name:"RepoName"`
 
@@ -898,13 +1111,15 @@ func (r *CreateRepositoryPersonalRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateRepositoryPersonalResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreateRepositoryPersonalResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreateRepositoryPersonalResponseParams `json:"Response"`
 }
 
 func (r *CreateRepositoryPersonalResponse) ToJsonString() string {
@@ -918,9 +1133,27 @@ func (r *CreateRepositoryPersonalResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateRepositoryRequestParams struct {
+	// 实例ID
+	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
+
+	// 命名空间名称
+	NamespaceName *string `json:"NamespaceName,omitempty" name:"NamespaceName"`
+
+	// 仓库名称
+	RepositoryName *string `json:"RepositoryName,omitempty" name:"RepositoryName"`
+
+	// 仓库简短描述
+	BriefDescription *string `json:"BriefDescription,omitempty" name:"BriefDescription"`
+
+	// 仓库详细描述
+	Description *string `json:"Description,omitempty" name:"Description"`
+}
+
 type CreateRepositoryRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 实例ID
 	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
 
@@ -960,13 +1193,15 @@ func (r *CreateRepositoryRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateRepositoryResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreateRepositoryResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreateRepositoryResponseParams `json:"Response"`
 }
 
 func (r *CreateRepositoryResponse) ToJsonString() string {
@@ -980,9 +1215,21 @@ func (r *CreateRepositoryResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateSecurityPolicyRequestParams struct {
+	// 实例Id
+	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
+
+	// 192.168.0.0/24
+	CidrBlock *string `json:"CidrBlock,omitempty" name:"CidrBlock"`
+
+	// 备注
+	Description *string `json:"Description,omitempty" name:"Description"`
+}
+
 type CreateSecurityPolicyRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 实例Id
 	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
 
@@ -1014,16 +1261,18 @@ func (r *CreateSecurityPolicyRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateSecurityPolicyResponseParams struct {
+	// 实例Id
+	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreateSecurityPolicyResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 实例Id
-		RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreateSecurityPolicyResponseParams `json:"Response"`
 }
 
 func (r *CreateSecurityPolicyResponse) ToJsonString() string {
@@ -1037,9 +1286,21 @@ func (r *CreateSecurityPolicyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateTagRetentionExecutionRequestParams struct {
+	// 主实例iD
+	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
+
+	// 版本保留规则Id
+	RetentionId *int64 `json:"RetentionId,omitempty" name:"RetentionId"`
+
+	// 是否模拟执行，默认值为false，即非模拟执行
+	DryRun *bool `json:"DryRun,omitempty" name:"DryRun"`
+}
+
 type CreateTagRetentionExecutionRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 主实例iD
 	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
 
@@ -1071,13 +1332,15 @@ func (r *CreateTagRetentionExecutionRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateTagRetentionExecutionResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreateTagRetentionExecutionResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreateTagRetentionExecutionResponseParams `json:"Response"`
 }
 
 func (r *CreateTagRetentionExecutionResponse) ToJsonString() string {
@@ -1091,9 +1354,27 @@ func (r *CreateTagRetentionExecutionResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateTagRetentionRuleRequestParams struct {
+	// 主实例iD
+	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
+
+	// 命名空间的Id
+	NamespaceId *int64 `json:"NamespaceId,omitempty" name:"NamespaceId"`
+
+	// 保留策略
+	RetentionRule *RetentionRule `json:"RetentionRule,omitempty" name:"RetentionRule"`
+
+	// 执行周期，当前只能选择： manual;daily;weekly;monthly
+	CronSetting *string `json:"CronSetting,omitempty" name:"CronSetting"`
+
+	// 是否禁用规则，默认值为false
+	Disabled *bool `json:"Disabled,omitempty" name:"Disabled"`
+}
+
 type CreateTagRetentionRuleRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 主实例iD
 	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
 
@@ -1133,13 +1414,15 @@ func (r *CreateTagRetentionRuleRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateTagRetentionRuleResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreateTagRetentionRuleResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreateTagRetentionRuleResponseParams `json:"Response"`
 }
 
 func (r *CreateTagRetentionRuleResponse) ToJsonString() string {
@@ -1153,9 +1436,15 @@ func (r *CreateTagRetentionRuleResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateUserPersonalRequestParams struct {
+	// 用户密码，密码必须为8到16位
+	Password *string `json:"Password,omitempty" name:"Password"`
+}
+
 type CreateUserPersonalRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 用户密码，密码必须为8到16位
 	Password *string `json:"Password,omitempty" name:"Password"`
 }
@@ -1179,13 +1468,15 @@ func (r *CreateUserPersonalRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateUserPersonalResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreateUserPersonalResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreateUserPersonalResponseParams `json:"Response"`
 }
 
 func (r *CreateUserPersonalResponse) ToJsonString() string {
@@ -1199,9 +1490,21 @@ func (r *CreateUserPersonalResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateWebhookTriggerRequestParams struct {
+	// 实例 Id
+	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
+
+	// 触发器参数
+	Trigger *WebhookTrigger `json:"Trigger,omitempty" name:"Trigger"`
+
+	// 命名空间
+	Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
+}
+
 type CreateWebhookTriggerRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 实例 Id
 	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
 
@@ -1233,16 +1536,18 @@ func (r *CreateWebhookTriggerRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateWebhookTriggerResponseParams struct {
+	// 新建的触发器
+	Trigger *WebhookTrigger `json:"Trigger,omitempty" name:"Trigger"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreateWebhookTriggerResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 新建的触发器
-		Trigger *WebhookTrigger `json:"Trigger,omitempty" name:"Trigger"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreateWebhookTriggerResponseParams `json:"Response"`
 }
 
 func (r *CreateWebhookTriggerResponse) ToJsonString() string {
@@ -1256,9 +1561,15 @@ func (r *CreateWebhookTriggerResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteApplicationTriggerPersonalRequestParams struct {
+	// 触发器名称
+	TriggerName *string `json:"TriggerName,omitempty" name:"TriggerName"`
+}
+
 type DeleteApplicationTriggerPersonalRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 触发器名称
 	TriggerName *string `json:"TriggerName,omitempty" name:"TriggerName"`
 }
@@ -1282,13 +1593,15 @@ func (r *DeleteApplicationTriggerPersonalRequest) FromJsonString(s string) error
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteApplicationTriggerPersonalResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DeleteApplicationTriggerPersonalResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DeleteApplicationTriggerPersonalResponseParams `json:"Response"`
 }
 
 func (r *DeleteApplicationTriggerPersonalResponse) ToJsonString() string {
@@ -1302,8 +1615,14 @@ func (r *DeleteApplicationTriggerPersonalResponse) FromJsonString(s string) erro
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteImageLifecycleGlobalPersonalRequestParams struct {
+
+}
+
 type DeleteImageLifecycleGlobalPersonalRequest struct {
 	*tchttp.BaseRequest
+	
 }
 
 func (r *DeleteImageLifecycleGlobalPersonalRequest) ToJsonString() string {
@@ -1318,19 +1637,22 @@ func (r *DeleteImageLifecycleGlobalPersonalRequest) FromJsonString(s string) err
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteImageLifecycleGlobalPersonalRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteImageLifecycleGlobalPersonalResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DeleteImageLifecycleGlobalPersonalResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DeleteImageLifecycleGlobalPersonalResponseParams `json:"Response"`
 }
 
 func (r *DeleteImageLifecycleGlobalPersonalResponse) ToJsonString() string {
@@ -1344,9 +1666,15 @@ func (r *DeleteImageLifecycleGlobalPersonalResponse) FromJsonString(s string) er
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteImageLifecyclePersonalRequestParams struct {
+	// 仓库名称
+	RepoName *string `json:"RepoName,omitempty" name:"RepoName"`
+}
+
 type DeleteImageLifecyclePersonalRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 仓库名称
 	RepoName *string `json:"RepoName,omitempty" name:"RepoName"`
 }
@@ -1370,13 +1698,15 @@ func (r *DeleteImageLifecyclePersonalRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteImageLifecyclePersonalResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DeleteImageLifecyclePersonalResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DeleteImageLifecyclePersonalResponseParams `json:"Response"`
 }
 
 func (r *DeleteImageLifecyclePersonalResponse) ToJsonString() string {
@@ -1390,9 +1720,18 @@ func (r *DeleteImageLifecyclePersonalResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteImagePersonalRequestParams struct {
+	// 仓库名称
+	RepoName *string `json:"RepoName,omitempty" name:"RepoName"`
+
+	// Tag名
+	Tag *string `json:"Tag,omitempty" name:"Tag"`
+}
+
 type DeleteImagePersonalRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 仓库名称
 	RepoName *string `json:"RepoName,omitempty" name:"RepoName"`
 
@@ -1420,13 +1759,15 @@ func (r *DeleteImagePersonalRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteImagePersonalResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DeleteImagePersonalResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DeleteImagePersonalResponseParams `json:"Response"`
 }
 
 func (r *DeleteImagePersonalResponse) ToJsonString() string {
@@ -1440,9 +1781,24 @@ func (r *DeleteImagePersonalResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteImageRequestParams struct {
+	// 实例Id
+	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
+
+	// 镜像仓库名称
+	RepositoryName *string `json:"RepositoryName,omitempty" name:"RepositoryName"`
+
+	// 镜像版本
+	ImageVersion *string `json:"ImageVersion,omitempty" name:"ImageVersion"`
+
+	// 命名空间名称
+	NamespaceName *string `json:"NamespaceName,omitempty" name:"NamespaceName"`
+}
+
 type DeleteImageRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 实例Id
 	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
 
@@ -1478,13 +1834,15 @@ func (r *DeleteImageRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteImageResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DeleteImageResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DeleteImageResponseParams `json:"Response"`
 }
 
 func (r *DeleteImageResponse) ToJsonString() string {
@@ -1498,9 +1856,21 @@ func (r *DeleteImageResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteImmutableTagRulesRequestParams struct {
+	// 实例 Id
+	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
+
+	// 命名空间
+	NamespaceName *string `json:"NamespaceName,omitempty" name:"NamespaceName"`
+
+	// 规则 Id
+	RuleId *int64 `json:"RuleId,omitempty" name:"RuleId"`
+}
+
 type DeleteImmutableTagRulesRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 实例 Id
 	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
 
@@ -1532,13 +1902,15 @@ func (r *DeleteImmutableTagRulesRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteImmutableTagRulesResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DeleteImmutableTagRulesResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DeleteImmutableTagRulesResponseParams `json:"Response"`
 }
 
 func (r *DeleteImmutableTagRulesResponse) ToJsonString() string {
@@ -1552,9 +1924,21 @@ func (r *DeleteImmutableTagRulesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteInstanceRequestParams struct {
+	// 实例id
+	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
+
+	// 是否删除存储桶，默认为false
+	DeleteBucket *bool `json:"DeleteBucket,omitempty" name:"DeleteBucket"`
+
+	// 是否dryRun模式，缺省值：false
+	DryRun *bool `json:"DryRun,omitempty" name:"DryRun"`
+}
+
 type DeleteInstanceRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 实例id
 	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
 
@@ -1586,13 +1970,15 @@ func (r *DeleteInstanceRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteInstanceResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DeleteInstanceResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DeleteInstanceResponseParams `json:"Response"`
 }
 
 func (r *DeleteInstanceResponse) ToJsonString() string {
@@ -1606,9 +1992,18 @@ func (r *DeleteInstanceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteInstanceTokenRequestParams struct {
+	// 实例 ID
+	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
+
+	// 访问凭证 ID
+	TokenId *string `json:"TokenId,omitempty" name:"TokenId"`
+}
+
 type DeleteInstanceTokenRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 实例 ID
 	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
 
@@ -1636,13 +2031,15 @@ func (r *DeleteInstanceTokenRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteInstanceTokenResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DeleteInstanceTokenResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DeleteInstanceTokenResponseParams `json:"Response"`
 }
 
 func (r *DeleteInstanceTokenResponse) ToJsonString() string {
@@ -1656,9 +2053,28 @@ func (r *DeleteInstanceTokenResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteInternalEndpointDnsRequestParams struct {
+	// tcr实例id
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 私有网络id
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// tcr内网访问链路ip
+	EniLBIp *string `json:"EniLBIp,omitempty" name:"EniLBIp"`
+
+	// true：使用默认域名
+	// false:  使用带有vpc的域名
+	UsePublicDomain *bool `json:"UsePublicDomain,omitempty" name:"UsePublicDomain"`
+
+	// 解析地域，需要保证和vpc处于同一地域，如果不填则默认为主实例地域
+	RegionName *string `json:"RegionName,omitempty" name:"RegionName"`
+}
+
 type DeleteInternalEndpointDnsRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// tcr实例id
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
@@ -1699,13 +2115,15 @@ func (r *DeleteInternalEndpointDnsRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteInternalEndpointDnsResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DeleteInternalEndpointDnsResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DeleteInternalEndpointDnsResponseParams `json:"Response"`
 }
 
 func (r *DeleteInternalEndpointDnsResponse) ToJsonString() string {
@@ -1719,9 +2137,18 @@ func (r *DeleteInternalEndpointDnsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteMultipleSecurityPolicyRequestParams struct {
+	// 实例Id
+	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
+
+	// 安全组策略
+	SecurityGroupPolicySet []*SecurityPolicy `json:"SecurityGroupPolicySet,omitempty" name:"SecurityGroupPolicySet"`
+}
+
 type DeleteMultipleSecurityPolicyRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 实例Id
 	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
 
@@ -1749,16 +2176,18 @@ func (r *DeleteMultipleSecurityPolicyRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteMultipleSecurityPolicyResponseParams struct {
+	// 实例Id
+	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DeleteMultipleSecurityPolicyResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 实例Id
-		RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DeleteMultipleSecurityPolicyResponseParams `json:"Response"`
 }
 
 func (r *DeleteMultipleSecurityPolicyResponse) ToJsonString() string {
@@ -1772,9 +2201,15 @@ func (r *DeleteMultipleSecurityPolicyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteNamespacePersonalRequestParams struct {
+	// 命名空间名称
+	Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
+}
+
 type DeleteNamespacePersonalRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 命名空间名称
 	Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
 }
@@ -1798,13 +2233,15 @@ func (r *DeleteNamespacePersonalRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteNamespacePersonalResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DeleteNamespacePersonalResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DeleteNamespacePersonalResponseParams `json:"Response"`
 }
 
 func (r *DeleteNamespacePersonalResponse) ToJsonString() string {
@@ -1818,9 +2255,18 @@ func (r *DeleteNamespacePersonalResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteNamespaceRequestParams struct {
+	// 实例ID
+	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
+
+	// 命名空间的名称
+	NamespaceName *string `json:"NamespaceName,omitempty" name:"NamespaceName"`
+}
+
 type DeleteNamespaceRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 实例ID
 	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
 
@@ -1848,13 +2294,15 @@ func (r *DeleteNamespaceRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteNamespaceResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DeleteNamespaceResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DeleteNamespaceResponseParams `json:"Response"`
 }
 
 func (r *DeleteNamespaceResponse) ToJsonString() string {
@@ -1868,9 +2316,15 @@ func (r *DeleteNamespaceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteRepositoryPersonalRequestParams struct {
+	// 仓库名称
+	RepoName *string `json:"RepoName,omitempty" name:"RepoName"`
+}
+
 type DeleteRepositoryPersonalRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 仓库名称
 	RepoName *string `json:"RepoName,omitempty" name:"RepoName"`
 }
@@ -1894,13 +2348,15 @@ func (r *DeleteRepositoryPersonalRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteRepositoryPersonalResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DeleteRepositoryPersonalResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DeleteRepositoryPersonalResponseParams `json:"Response"`
 }
 
 func (r *DeleteRepositoryPersonalResponse) ToJsonString() string {
@@ -1914,9 +2370,21 @@ func (r *DeleteRepositoryPersonalResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteRepositoryRequestParams struct {
+	// 实例Id
+	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
+
+	// 命名空间的名称
+	NamespaceName *string `json:"NamespaceName,omitempty" name:"NamespaceName"`
+
+	// 镜像仓库的名称
+	RepositoryName *string `json:"RepositoryName,omitempty" name:"RepositoryName"`
+}
+
 type DeleteRepositoryRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 实例Id
 	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
 
@@ -1948,13 +2416,15 @@ func (r *DeleteRepositoryRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteRepositoryResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DeleteRepositoryResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DeleteRepositoryResponseParams `json:"Response"`
 }
 
 func (r *DeleteRepositoryResponse) ToJsonString() string {
@@ -1968,9 +2438,21 @@ func (r *DeleteRepositoryResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteSecurityPolicyRequestParams struct {
+	// 实例Id
+	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
+
+	// 白名单Id
+	PolicyIndex *int64 `json:"PolicyIndex,omitempty" name:"PolicyIndex"`
+
+	// 白名单版本
+	PolicyVersion *string `json:"PolicyVersion,omitempty" name:"PolicyVersion"`
+}
+
 type DeleteSecurityPolicyRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 实例Id
 	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
 
@@ -2002,16 +2484,18 @@ func (r *DeleteSecurityPolicyRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteSecurityPolicyResponseParams struct {
+	// 实例Id
+	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DeleteSecurityPolicyResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 实例Id
-		RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DeleteSecurityPolicyResponseParams `json:"Response"`
 }
 
 func (r *DeleteSecurityPolicyResponse) ToJsonString() string {
@@ -2025,9 +2509,18 @@ func (r *DeleteSecurityPolicyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteTagRetentionRuleRequestParams struct {
+	// 主实例iD
+	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
+
+	// 版本保留规则的Id
+	RetentionId *int64 `json:"RetentionId,omitempty" name:"RetentionId"`
+}
+
 type DeleteTagRetentionRuleRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 主实例iD
 	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
 
@@ -2055,13 +2548,15 @@ func (r *DeleteTagRetentionRuleRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteTagRetentionRuleResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DeleteTagRetentionRuleResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DeleteTagRetentionRuleResponseParams `json:"Response"`
 }
 
 func (r *DeleteTagRetentionRuleResponse) ToJsonString() string {
@@ -2075,9 +2570,21 @@ func (r *DeleteTagRetentionRuleResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteWebhookTriggerRequestParams struct {
+	// 实例Id
+	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
+
+	// 命名空间
+	Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
+
+	// 触发器 Id
+	Id *int64 `json:"Id,omitempty" name:"Id"`
+}
+
 type DeleteWebhookTriggerRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 实例Id
 	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
 
@@ -2109,13 +2616,15 @@ func (r *DeleteWebhookTriggerRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteWebhookTriggerResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DeleteWebhookTriggerResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DeleteWebhookTriggerResponseParams `json:"Response"`
 }
 
 func (r *DeleteWebhookTriggerResponse) ToJsonString() string {
@@ -2129,9 +2638,27 @@ func (r *DeleteWebhookTriggerResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeApplicationTriggerLogPersonalRequestParams struct {
+	// 仓库名称
+	RepoName *string `json:"RepoName,omitempty" name:"RepoName"`
+
+	// 偏移量，默认为0
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回最大数量，默认 20, 最大值 100
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 升序或降序
+	Order *string `json:"Order,omitempty" name:"Order"`
+
+	// 按某列排序
+	OrderBy *string `json:"OrderBy,omitempty" name:"OrderBy"`
+}
+
 type DescribeApplicationTriggerLogPersonalRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 仓库名称
 	RepoName *string `json:"RepoName,omitempty" name:"RepoName"`
 
@@ -2172,7 +2699,6 @@ func (r *DescribeApplicationTriggerLogPersonalRequest) FromJsonString(s string) 
 }
 
 type DescribeApplicationTriggerLogPersonalResp struct {
-
 	// 返回总数
 	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
@@ -2181,16 +2707,18 @@ type DescribeApplicationTriggerLogPersonalResp struct {
 	LogInfo []*TriggerLogResp `json:"LogInfo,omitempty" name:"LogInfo"`
 }
 
+// Predefined struct for user
+type DescribeApplicationTriggerLogPersonalResponseParams struct {
+	// 触发日志返回值
+	Data *DescribeApplicationTriggerLogPersonalResp `json:"Data,omitempty" name:"Data"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeApplicationTriggerLogPersonalResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 触发日志返回值
-		Data *DescribeApplicationTriggerLogPersonalResp `json:"Data,omitempty" name:"Data"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeApplicationTriggerLogPersonalResponseParams `json:"Response"`
 }
 
 func (r *DescribeApplicationTriggerLogPersonalResponse) ToJsonString() string {
@@ -2204,9 +2732,24 @@ func (r *DescribeApplicationTriggerLogPersonalResponse) FromJsonString(s string)
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeApplicationTriggerPersonalRequestParams struct {
+	// 仓库名称
+	RepoName *string `json:"RepoName,omitempty" name:"RepoName"`
+
+	// 触发器名称
+	TriggerName *string `json:"TriggerName,omitempty" name:"TriggerName"`
+
+	// 偏移量，默认为0
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回最大数量，默认 20, 最大值 100
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
 type DescribeApplicationTriggerPersonalRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 仓库名称
 	RepoName *string `json:"RepoName,omitempty" name:"RepoName"`
 
@@ -2243,7 +2786,6 @@ func (r *DescribeApplicationTriggerPersonalRequest) FromJsonString(s string) err
 }
 
 type DescribeApplicationTriggerPersonalResp struct {
-
 	// 返回条目总数
 	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
@@ -2251,16 +2793,18 @@ type DescribeApplicationTriggerPersonalResp struct {
 	TriggerInfo []*TriggerResp `json:"TriggerInfo,omitempty" name:"TriggerInfo"`
 }
 
+// Predefined struct for user
+type DescribeApplicationTriggerPersonalResponseParams struct {
+	// 触发器列表返回值
+	Data *DescribeApplicationTriggerPersonalResp `json:"Data,omitempty" name:"Data"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeApplicationTriggerPersonalResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 触发器列表返回值
-		Data *DescribeApplicationTriggerPersonalResp `json:"Data,omitempty" name:"Data"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeApplicationTriggerPersonalResponseParams `json:"Response"`
 }
 
 func (r *DescribeApplicationTriggerPersonalResponse) ToJsonString() string {
@@ -2274,9 +2818,24 @@ func (r *DescribeApplicationTriggerPersonalResponse) FromJsonString(s string) er
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeChartDownloadInfoRequestParams struct {
+	// 实例ID
+	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
+
+	// 命名空间
+	NamespaceName *string `json:"NamespaceName,omitempty" name:"NamespaceName"`
+
+	// Chart包的名称
+	ChartName *string `json:"ChartName,omitempty" name:"ChartName"`
+
+	// Chart包的版本
+	ChartVersion *string `json:"ChartVersion,omitempty" name:"ChartVersion"`
+}
+
 type DescribeChartDownloadInfoRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 实例ID
 	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
 
@@ -2312,16 +2871,18 @@ func (r *DescribeChartDownloadInfoRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeChartDownloadInfoResponseParams struct {
+	// 用于下载的url的预签名地址
+	PreSignedDownloadURL *string `json:"PreSignedDownloadURL,omitempty" name:"PreSignedDownloadURL"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeChartDownloadInfoResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 用于下载的url的预签名地址
-		PreSignedDownloadURL *string `json:"PreSignedDownloadURL,omitempty" name:"PreSignedDownloadURL"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeChartDownloadInfoResponseParams `json:"Response"`
 }
 
 func (r *DescribeChartDownloadInfoResponse) ToJsonString() string {
@@ -2335,9 +2896,15 @@ func (r *DescribeChartDownloadInfoResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeExternalEndpointStatusRequestParams struct {
+	// 实例Id
+	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
+}
+
 type DescribeExternalEndpointStatusRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 实例Id
 	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
 }
@@ -2361,20 +2928,22 @@ func (r *DescribeExternalEndpointStatusRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeExternalEndpointStatusResponseParams struct {
+	// 开启公网访问状态，开启中（Opening）、已开启（Opened）、关闭（Closed）
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 原因
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Reason *string `json:"Reason,omitempty" name:"Reason"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeExternalEndpointStatusResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 开启公网访问状态，开启中（Opening）、已开启（Opened）、关闭（Closed）
-		Status *string `json:"Status,omitempty" name:"Status"`
-
-		// 原因
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		Reason *string `json:"Reason,omitempty" name:"Reason"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeExternalEndpointStatusResponseParams `json:"Response"`
 }
 
 func (r *DescribeExternalEndpointStatusResponse) ToJsonString() string {
@@ -2388,9 +2957,21 @@ func (r *DescribeExternalEndpointStatusResponse) FromJsonString(s string) error 
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeFavorRepositoryPersonalRequestParams struct {
+	// 仓库名称
+	RepoName *string `json:"RepoName,omitempty" name:"RepoName"`
+
+	// 分页Limit
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// Offset用于分页
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+}
+
 type DescribeFavorRepositoryPersonalRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 仓库名称
 	RepoName *string `json:"RepoName,omitempty" name:"RepoName"`
 
@@ -2422,16 +3003,18 @@ func (r *DescribeFavorRepositoryPersonalRequest) FromJsonString(s string) error 
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeFavorRepositoryPersonalResponseParams struct {
+	// 个人收藏仓库列表返回信息
+	Data *FavorResp `json:"Data,omitempty" name:"Data"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeFavorRepositoryPersonalResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 个人收藏仓库列表返回信息
-		Data *FavorResp `json:"Data,omitempty" name:"Data"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeFavorRepositoryPersonalResponseParams `json:"Response"`
 }
 
 func (r *DescribeFavorRepositoryPersonalResponse) ToJsonString() string {
@@ -2445,9 +3028,18 @@ func (r *DescribeFavorRepositoryPersonalResponse) FromJsonString(s string) error
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeImageFilterPersonalRequestParams struct {
+	// 仓库名称
+	RepoName *string `json:"RepoName,omitempty" name:"RepoName"`
+
+	// Tag名
+	Tag *string `json:"Tag,omitempty" name:"Tag"`
+}
+
 type DescribeImageFilterPersonalRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 仓库名称
 	RepoName *string `json:"RepoName,omitempty" name:"RepoName"`
 
@@ -2475,16 +3067,18 @@ func (r *DescribeImageFilterPersonalRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeImageFilterPersonalResponseParams struct {
+	// 返回tag镜像内容相同的tag列表
+	Data *SameImagesResp `json:"Data,omitempty" name:"Data"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeImageFilterPersonalResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 返回tag镜像内容相同的tag列表
-		Data *SameImagesResp `json:"Data,omitempty" name:"Data"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeImageFilterPersonalResponseParams `json:"Response"`
 }
 
 func (r *DescribeImageFilterPersonalResponse) ToJsonString() string {
@@ -2498,8 +3092,14 @@ func (r *DescribeImageFilterPersonalResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeImageLifecycleGlobalPersonalRequestParams struct {
+
+}
+
 type DescribeImageLifecycleGlobalPersonalRequest struct {
 	*tchttp.BaseRequest
+	
 }
 
 func (r *DescribeImageLifecycleGlobalPersonalRequest) ToJsonString() string {
@@ -2514,22 +3114,25 @@ func (r *DescribeImageLifecycleGlobalPersonalRequest) FromJsonString(s string) e
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeImageLifecycleGlobalPersonalRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeImageLifecycleGlobalPersonalResponseParams struct {
+	// 全局自动删除策略信息
+	Data *AutoDelStrategyInfoResp `json:"Data,omitempty" name:"Data"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeImageLifecycleGlobalPersonalResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 全局自动删除策略信息
-		Data *AutoDelStrategyInfoResp `json:"Data,omitempty" name:"Data"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeImageLifecycleGlobalPersonalResponseParams `json:"Response"`
 }
 
 func (r *DescribeImageLifecycleGlobalPersonalResponse) ToJsonString() string {
@@ -2543,9 +3146,15 @@ func (r *DescribeImageLifecycleGlobalPersonalResponse) FromJsonString(s string) 
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeImageLifecyclePersonalRequestParams struct {
+	// 仓库名称
+	RepoName *string `json:"RepoName,omitempty" name:"RepoName"`
+}
+
 type DescribeImageLifecyclePersonalRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 仓库名称
 	RepoName *string `json:"RepoName,omitempty" name:"RepoName"`
 }
@@ -2569,16 +3178,18 @@ func (r *DescribeImageLifecyclePersonalRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeImageLifecyclePersonalResponseParams struct {
+	// 自动删除策略信息
+	Data *AutoDelStrategyInfoResp `json:"Data,omitempty" name:"Data"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeImageLifecyclePersonalResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 自动删除策略信息
-		Data *AutoDelStrategyInfoResp `json:"Data,omitempty" name:"Data"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeImageLifecyclePersonalResponseParams `json:"Response"`
 }
 
 func (r *DescribeImageLifecyclePersonalResponse) ToJsonString() string {
@@ -2592,9 +3203,24 @@ func (r *DescribeImageLifecyclePersonalResponse) FromJsonString(s string) error 
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeImageManifestsRequestParams struct {
+	// 实例ID
+	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
+
+	// 命名空间名称
+	NamespaceName *string `json:"NamespaceName,omitempty" name:"NamespaceName"`
+
+	// 镜像仓库名称
+	RepositoryName *string `json:"RepositoryName,omitempty" name:"RepositoryName"`
+
+	// 镜像版本
+	ImageVersion *string `json:"ImageVersion,omitempty" name:"ImageVersion"`
+}
+
 type DescribeImageManifestsRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 实例ID
 	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
 
@@ -2630,19 +3256,21 @@ func (r *DescribeImageManifestsRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeImageManifestsResponseParams struct {
+	// 镜像的Manifest信息
+	Manifest *string `json:"Manifest,omitempty" name:"Manifest"`
+
+	// 镜像的配置信息
+	Config *string `json:"Config,omitempty" name:"Config"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeImageManifestsResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 镜像的Manifest信息
-		Manifest *string `json:"Manifest,omitempty" name:"Manifest"`
-
-		// 镜像的配置信息
-		Config *string `json:"Config,omitempty" name:"Config"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeImageManifestsResponseParams `json:"Response"`
 }
 
 func (r *DescribeImageManifestsResponse) ToJsonString() string {
@@ -2656,9 +3284,24 @@ func (r *DescribeImageManifestsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeImagePersonalRequestParams struct {
+	// 仓库名称
+	RepoName *string `json:"RepoName,omitempty" name:"RepoName"`
+
+	// 偏移量，默认为0
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回最大数量，默认 20, 最大值 100
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// tag名称，可根据输入搜索
+	Tag *string `json:"Tag,omitempty" name:"Tag"`
+}
+
 type DescribeImagePersonalRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 仓库名称
 	RepoName *string `json:"RepoName,omitempty" name:"RepoName"`
 
@@ -2694,16 +3337,18 @@ func (r *DescribeImagePersonalRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeImagePersonalResponseParams struct {
+	// 镜像tag信息
+	Data *TagInfoResp `json:"Data,omitempty" name:"Data"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeImagePersonalResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 镜像tag信息
-		Data *TagInfoResp `json:"Data,omitempty" name:"Data"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeImagePersonalResponseParams `json:"Response"`
 }
 
 func (r *DescribeImagePersonalResponse) ToJsonString() string {
@@ -2717,9 +3362,30 @@ func (r *DescribeImagePersonalResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeImagesRequestParams struct {
+	// 实例ID
+	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
+
+	// 命名空间名称
+	NamespaceName *string `json:"NamespaceName,omitempty" name:"NamespaceName"`
+
+	// 镜像仓库名称
+	RepositoryName *string `json:"RepositoryName,omitempty" name:"RepositoryName"`
+
+	// 指定镜像版本进行查找，当前为模糊搜索
+	ImageVersion *string `json:"ImageVersion,omitempty" name:"ImageVersion"`
+
+	// 每页个数，用于分页，默认20
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 页数，默认值为1
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+}
+
 type DescribeImagesRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 实例ID
 	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
 
@@ -2763,19 +3429,21 @@ func (r *DescribeImagesRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeImagesResponseParams struct {
+	// 容器镜像信息列表
+	ImageInfoList []*TcrImageInfo `json:"ImageInfoList,omitempty" name:"ImageInfoList"`
+
+	// 容器镜像总数
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeImagesResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 容器镜像信息列表
-		ImageInfoList []*TcrImageInfo `json:"ImageInfoList,omitempty" name:"ImageInfoList"`
-
-		// 容器镜像总数
-		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeImagesResponseParams `json:"Response"`
 }
 
 func (r *DescribeImagesResponse) ToJsonString() string {
@@ -2789,9 +3457,15 @@ func (r *DescribeImagesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeImmutableTagRulesRequestParams struct {
+	// 实例 Id
+	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
+}
+
 type DescribeImmutableTagRulesRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 实例 Id
 	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
 }
@@ -2815,24 +3489,26 @@ func (r *DescribeImmutableTagRulesRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeImmutableTagRulesResponseParams struct {
+	// 规则列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Rules []*ImmutableTagRule `json:"Rules,omitempty" name:"Rules"`
+
+	// 未创建规则的命名空间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EmptyNs []*string `json:"EmptyNs,omitempty" name:"EmptyNs"`
+
+	// 规则总量
+	Total *int64 `json:"Total,omitempty" name:"Total"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeImmutableTagRulesResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 规则列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		Rules []*ImmutableTagRule `json:"Rules,omitempty" name:"Rules"`
-
-		// 未创建规则的命名空间
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		EmptyNs []*string `json:"EmptyNs,omitempty" name:"EmptyNs"`
-
-		// 规则总量
-		Total *int64 `json:"Total,omitempty" name:"Total"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeImmutableTagRulesResponseParams `json:"Response"`
 }
 
 func (r *DescribeImmutableTagRulesResponse) ToJsonString() string {
@@ -2846,9 +3522,15 @@ func (r *DescribeImmutableTagRulesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeInstanceStatusRequestParams struct {
+	// 实例ID的数组
+	RegistryIds []*string `json:"RegistryIds,omitempty" name:"RegistryIds"`
+}
+
 type DescribeInstanceStatusRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 实例ID的数组
 	RegistryIds []*string `json:"RegistryIds,omitempty" name:"RegistryIds"`
 }
@@ -2872,17 +3554,19 @@ func (r *DescribeInstanceStatusRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeInstanceStatusResponseParams struct {
+	// 实例的状态列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RegistryStatusSet []*RegistryStatus `json:"RegistryStatusSet,omitempty" name:"RegistryStatusSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeInstanceStatusResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 实例的状态列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		RegistryStatusSet []*RegistryStatus `json:"RegistryStatusSet,omitempty" name:"RegistryStatusSet"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeInstanceStatusResponseParams `json:"Response"`
 }
 
 func (r *DescribeInstanceStatusResponse) ToJsonString() string {
@@ -2896,9 +3580,21 @@ func (r *DescribeInstanceStatusResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeInstanceTokenRequestParams struct {
+	// 实例 ID
+	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
+
+	// 分页单页数量
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 分页偏移量
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+}
+
 type DescribeInstanceTokenRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 实例 ID
 	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
 
@@ -2930,19 +3626,21 @@ func (r *DescribeInstanceTokenRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeInstanceTokenResponseParams struct {
+	// 长期访问凭证总数
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 长期访问凭证列表
+	Tokens []*TcrInstanceToken `json:"Tokens,omitempty" name:"Tokens"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeInstanceTokenResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 长期访问凭证总数
-		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 长期访问凭证列表
-		Tokens []*TcrInstanceToken `json:"Tokens,omitempty" name:"Tokens"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeInstanceTokenResponseParams `json:"Response"`
 }
 
 func (r *DescribeInstanceTokenResponse) ToJsonString() string {
@@ -2956,9 +3654,28 @@ func (r *DescribeInstanceTokenResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeInstancesRequestParams struct {
+	// 实例ID列表(为空时，
+	// 表示获取账号下所有实例)
+	Registryids []*string `json:"Registryids,omitempty" name:"Registryids"`
+
+	// 偏移量,默认0
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 最大输出条数，默认20，最大为100
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 过滤条件
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 获取所有地域的实例，默认为False
+	AllRegion *bool `json:"AllRegion,omitempty" name:"AllRegion"`
+}
+
 type DescribeInstancesRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 实例ID列表(为空时，
 	// 表示获取账号下所有实例)
 	Registryids []*string `json:"Registryids,omitempty" name:"Registryids"`
@@ -2999,20 +3716,22 @@ func (r *DescribeInstancesRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeInstancesResponseParams struct {
+	// 总实例个数
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 实例信息列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Registries []*Registry `json:"Registries,omitempty" name:"Registries"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeInstancesResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 总实例个数
-		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 实例信息列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		Registries []*Registry `json:"Registries,omitempty" name:"Registries"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeInstancesResponseParams `json:"Response"`
 }
 
 func (r *DescribeInstancesResponse) ToJsonString() string {
@@ -3026,9 +3745,15 @@ func (r *DescribeInstancesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeInternalEndpointDnsStatusRequestParams struct {
+	// vpc列表
+	VpcSet []*VpcAndDomainInfo `json:"VpcSet,omitempty" name:"VpcSet"`
+}
+
 type DescribeInternalEndpointDnsStatusRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// vpc列表
 	VpcSet []*VpcAndDomainInfo `json:"VpcSet,omitempty" name:"VpcSet"`
 }
@@ -3052,17 +3777,19 @@ func (r *DescribeInternalEndpointDnsStatusRequest) FromJsonString(s string) erro
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeInternalEndpointDnsStatusResponseParams struct {
+	// vpc私有域名解析状态列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VpcSet []*VpcPrivateDomainStatus `json:"VpcSet,omitempty" name:"VpcSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeInternalEndpointDnsStatusResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// vpc私有域名解析状态列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		VpcSet []*VpcPrivateDomainStatus `json:"VpcSet,omitempty" name:"VpcSet"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeInternalEndpointDnsStatusResponseParams `json:"Response"`
 }
 
 func (r *DescribeInternalEndpointDnsStatusResponse) ToJsonString() string {
@@ -3076,9 +3803,15 @@ func (r *DescribeInternalEndpointDnsStatusResponse) FromJsonString(s string) err
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeInternalEndpointsRequestParams struct {
+	// 实例Id
+	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
+}
+
 type DescribeInternalEndpointsRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 实例Id
 	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
 }
@@ -3102,20 +3835,22 @@ func (r *DescribeInternalEndpointsRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeInternalEndpointsResponseParams struct {
+	// 内网接入信息的列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AccessVpcSet []*AccessVpc `json:"AccessVpcSet,omitempty" name:"AccessVpcSet"`
+
+	// 内网接入总数
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeInternalEndpointsResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 内网接入信息的列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		AccessVpcSet []*AccessVpc `json:"AccessVpcSet,omitempty" name:"AccessVpcSet"`
-
-		// 内网接入总数
-		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeInternalEndpointsResponseParams `json:"Response"`
 }
 
 func (r *DescribeInternalEndpointsResponse) ToJsonString() string {
@@ -3129,9 +3864,21 @@ func (r *DescribeInternalEndpointsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeNamespacePersonalRequestParams struct {
+	// 命名空间，支持模糊查询
+	Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
+
+	// 单页数量
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移量
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+}
+
 type DescribeNamespacePersonalRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 命名空间，支持模糊查询
 	Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
 
@@ -3163,16 +3910,18 @@ func (r *DescribeNamespacePersonalRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeNamespacePersonalResponseParams struct {
+	// 用户命名空间返回信息
+	Data *NamespaceInfoResp `json:"Data,omitempty" name:"Data"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeNamespacePersonalResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 用户命名空间返回信息
-		Data *NamespaceInfoResp `json:"Data,omitempty" name:"Data"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeNamespacePersonalResponseParams `json:"Response"`
 }
 
 func (r *DescribeNamespacePersonalResponse) ToJsonString() string {
@@ -3186,9 +3935,24 @@ func (r *DescribeNamespacePersonalResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeNamespacesRequestParams struct {
+	// 实例Id
+	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
+
+	// 指定命名空间，不填写默认查询所有命名空间
+	NamespaceName *string `json:"NamespaceName,omitempty" name:"NamespaceName"`
+
+	// 每页个数
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 页偏移
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+}
+
 type DescribeNamespacesRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 实例Id
 	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
 
@@ -3224,19 +3988,21 @@ func (r *DescribeNamespacesRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeNamespacesResponseParams struct {
+	// 命名空间列表信息
+	NamespaceList []*TcrNamespaceInfo `json:"NamespaceList,omitempty" name:"NamespaceList"`
+
+	// 总个数
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeNamespacesResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 命名空间列表信息
-		NamespaceList []*TcrNamespaceInfo `json:"NamespaceList,omitempty" name:"NamespaceList"`
-
-		// 总个数
-		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeNamespacesResponseParams `json:"Response"`
 }
 
 func (r *DescribeNamespacesResponse) ToJsonString() string {
@@ -3250,9 +4016,18 @@ func (r *DescribeNamespacesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeReplicationInstanceCreateTasksRequestParams struct {
+	// 同步实例Id，见实例返回列表中的同步实例ID
+	ReplicationRegistryId *string `json:"ReplicationRegistryId,omitempty" name:"ReplicationRegistryId"`
+
+	// 同步实例的地域ID，见实例返回列表中地域ID
+	ReplicationRegionId *uint64 `json:"ReplicationRegionId,omitempty" name:"ReplicationRegionId"`
+}
+
 type DescribeReplicationInstanceCreateTasksRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 同步实例Id，见实例返回列表中的同步实例ID
 	ReplicationRegistryId *string `json:"ReplicationRegistryId,omitempty" name:"ReplicationRegistryId"`
 
@@ -3280,19 +4055,21 @@ func (r *DescribeReplicationInstanceCreateTasksRequest) FromJsonString(s string)
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeReplicationInstanceCreateTasksResponseParams struct {
+	// 任务详情
+	TaskDetail []*TaskDetail `json:"TaskDetail,omitempty" name:"TaskDetail"`
+
+	// 整体任务状态
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeReplicationInstanceCreateTasksResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 任务详情
-		TaskDetail []*TaskDetail `json:"TaskDetail,omitempty" name:"TaskDetail"`
-
-		// 整体任务状态
-		Status *string `json:"Status,omitempty" name:"Status"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeReplicationInstanceCreateTasksResponseParams `json:"Response"`
 }
 
 func (r *DescribeReplicationInstanceCreateTasksResponse) ToJsonString() string {
@@ -3306,9 +4083,30 @@ func (r *DescribeReplicationInstanceCreateTasksResponse) FromJsonString(s string
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeReplicationInstanceSyncStatusRequestParams struct {
+	// 主实例Id
+	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
+
+	// 复制实例Id
+	ReplicationRegistryId *string `json:"ReplicationRegistryId,omitempty" name:"ReplicationRegistryId"`
+
+	// 复制实例的地域Id
+	ReplicationRegionId *uint64 `json:"ReplicationRegionId,omitempty" name:"ReplicationRegionId"`
+
+	// 是否显示同步日志
+	ShowReplicationLog *bool `json:"ShowReplicationLog,omitempty" name:"ShowReplicationLog"`
+
+	// 日志页号, 默认0
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 最大输出条数，默认5，最大为20
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
 type DescribeReplicationInstanceSyncStatusRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 主实例Id
 	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
 
@@ -3352,23 +4150,25 @@ func (r *DescribeReplicationInstanceSyncStatusRequest) FromJsonString(s string) 
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeReplicationInstanceSyncStatusResponseParams struct {
+	// 同步状态
+	ReplicationStatus *string `json:"ReplicationStatus,omitempty" name:"ReplicationStatus"`
+
+	// 同步完成时间
+	ReplicationTime *string `json:"ReplicationTime,omitempty" name:"ReplicationTime"`
+
+	// 同步日志
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReplicationLog *ReplicationLog `json:"ReplicationLog,omitempty" name:"ReplicationLog"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeReplicationInstanceSyncStatusResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 同步状态
-		ReplicationStatus *string `json:"ReplicationStatus,omitempty" name:"ReplicationStatus"`
-
-		// 同步完成时间
-		ReplicationTime *string `json:"ReplicationTime,omitempty" name:"ReplicationTime"`
-
-		// 同步日志
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		ReplicationLog *ReplicationLog `json:"ReplicationLog,omitempty" name:"ReplicationLog"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeReplicationInstanceSyncStatusResponseParams `json:"Response"`
 }
 
 func (r *DescribeReplicationInstanceSyncStatusResponse) ToJsonString() string {
@@ -3382,9 +4182,21 @@ func (r *DescribeReplicationInstanceSyncStatusResponse) FromJsonString(s string)
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeReplicationInstancesRequestParams struct {
+	// 实例Id
+	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
+
+	// 偏移量,默认0
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 最大输出条数，默认20，最大为100
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
 type DescribeReplicationInstancesRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 实例Id
 	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
 
@@ -3416,20 +4228,22 @@ func (r *DescribeReplicationInstancesRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeReplicationInstancesResponseParams struct {
+	// 总实例个数
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 同步实例列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReplicationRegistries []*ReplicationRegistry `json:"ReplicationRegistries,omitempty" name:"ReplicationRegistries"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeReplicationInstancesResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 总实例个数
-		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 同步实例列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		ReplicationRegistries []*ReplicationRegistry `json:"ReplicationRegistries,omitempty" name:"ReplicationRegistries"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeReplicationInstancesResponseParams `json:"Response"`
 }
 
 func (r *DescribeReplicationInstancesResponse) ToJsonString() string {
@@ -3443,9 +4257,30 @@ func (r *DescribeReplicationInstancesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeRepositoriesRequestParams struct {
+	// 实例Id
+	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
+
+	// 指定命名空间，不填写默认为查询所有命名空间下镜像仓库
+	NamespaceName *string `json:"NamespaceName,omitempty" name:"NamespaceName"`
+
+	// 指定镜像仓库，不填写默认查询指定命名空间下所有镜像仓库
+	RepositoryName *string `json:"RepositoryName,omitempty" name:"RepositoryName"`
+
+	// 页数，用于分页
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 每页个数，用于分页
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 基于字段排序，支持的值有-creation_time,-name, -update_time
+	SortBy *string `json:"SortBy,omitempty" name:"SortBy"`
+}
+
 type DescribeRepositoriesRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 实例Id
 	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
 
@@ -3489,19 +4324,21 @@ func (r *DescribeRepositoriesRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeRepositoriesResponseParams struct {
+	// 仓库信息列表
+	RepositoryList []*TcrRepositoryInfo `json:"RepositoryList,omitempty" name:"RepositoryList"`
+
+	// 总个数
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeRepositoriesResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 仓库信息列表
-		RepositoryList []*TcrRepositoryInfo `json:"RepositoryList,omitempty" name:"RepositoryList"`
-
-		// 总个数
-		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeRepositoriesResponseParams `json:"Response"`
 }
 
 func (r *DescribeRepositoriesResponse) ToJsonString() string {
@@ -3515,9 +4352,27 @@ func (r *DescribeRepositoriesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeRepositoryFilterPersonalRequestParams struct {
+	// 搜索镜像名
+	RepoName *string `json:"RepoName,omitempty" name:"RepoName"`
+
+	// 偏移量，默认为0
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回最大数量，默认 20，最大100
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 筛选条件：1表示public，0表示private
+	Public *int64 `json:"Public,omitempty" name:"Public"`
+
+	// 命名空间
+	Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
+}
+
 type DescribeRepositoryFilterPersonalRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 搜索镜像名
 	RepoName *string `json:"RepoName,omitempty" name:"RepoName"`
 
@@ -3557,16 +4412,18 @@ func (r *DescribeRepositoryFilterPersonalRequest) FromJsonString(s string) error
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeRepositoryFilterPersonalResponseParams struct {
+	// 仓库信息
+	Data *SearchUserRepositoryResp `json:"Data,omitempty" name:"Data"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeRepositoryFilterPersonalResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 仓库信息
-		Data *SearchUserRepositoryResp `json:"Data,omitempty" name:"Data"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeRepositoryFilterPersonalResponseParams `json:"Response"`
 }
 
 func (r *DescribeRepositoryFilterPersonalResponse) ToJsonString() string {
@@ -3580,9 +4437,21 @@ func (r *DescribeRepositoryFilterPersonalResponse) FromJsonString(s string) erro
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeRepositoryOwnerPersonalRequestParams struct {
+	// 偏移量，默认为0
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回最大数量，默认 20, 最大值 100
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 仓库名称
+	RepoName *string `json:"RepoName,omitempty" name:"RepoName"`
+}
+
 type DescribeRepositoryOwnerPersonalRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 偏移量，默认为0
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
@@ -3614,16 +4483,18 @@ func (r *DescribeRepositoryOwnerPersonalRequest) FromJsonString(s string) error 
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeRepositoryOwnerPersonalResponseParams struct {
+	// 仓库信息
+	Data *RepoInfoResp `json:"Data,omitempty" name:"Data"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeRepositoryOwnerPersonalResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 仓库信息
-		Data *RepoInfoResp `json:"Data,omitempty" name:"Data"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeRepositoryOwnerPersonalResponseParams `json:"Response"`
 }
 
 func (r *DescribeRepositoryOwnerPersonalResponse) ToJsonString() string {
@@ -3637,9 +4508,15 @@ func (r *DescribeRepositoryOwnerPersonalResponse) FromJsonString(s string) error
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeRepositoryPersonalRequestParams struct {
+	// 仓库名字
+	RepoName *string `json:"RepoName,omitempty" name:"RepoName"`
+}
+
 type DescribeRepositoryPersonalRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 仓库名字
 	RepoName *string `json:"RepoName,omitempty" name:"RepoName"`
 }
@@ -3663,16 +4540,18 @@ func (r *DescribeRepositoryPersonalRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeRepositoryPersonalResponseParams struct {
+	// 仓库信息
+	Data *RepositoryInfoResp `json:"Data,omitempty" name:"Data"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeRepositoryPersonalResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 仓库信息
-		Data *RepositoryInfoResp `json:"Data,omitempty" name:"Data"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeRepositoryPersonalResponseParams `json:"Response"`
 }
 
 func (r *DescribeRepositoryPersonalResponse) ToJsonString() string {
@@ -3686,9 +4565,15 @@ func (r *DescribeRepositoryPersonalResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeSecurityPoliciesRequestParams struct {
+	// 实例的Id
+	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
+}
+
 type DescribeSecurityPoliciesRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 实例的Id
 	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
 }
@@ -3712,17 +4597,19 @@ func (r *DescribeSecurityPoliciesRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeSecurityPoliciesResponseParams struct {
+	// 实例安全策略组
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SecurityPolicySet []*SecurityPolicy `json:"SecurityPolicySet,omitempty" name:"SecurityPolicySet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeSecurityPoliciesResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 实例安全策略组
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		SecurityPolicySet []*SecurityPolicy `json:"SecurityPolicySet,omitempty" name:"SecurityPolicySet"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeSecurityPoliciesResponseParams `json:"Response"`
 }
 
 func (r *DescribeSecurityPoliciesResponse) ToJsonString() string {
@@ -3736,9 +4623,24 @@ func (r *DescribeSecurityPoliciesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeTagRetentionExecutionRequestParams struct {
+	// 主实例iD
+	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
+
+	// 规则Id
+	RetentionId *int64 `json:"RetentionId,omitempty" name:"RetentionId"`
+
+	// 分页PageSize
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 分页Page
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+}
+
 type DescribeTagRetentionExecutionRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 主实例iD
 	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
 
@@ -3774,19 +4676,21 @@ func (r *DescribeTagRetentionExecutionRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeTagRetentionExecutionResponseParams struct {
+	// 版本保留执行记录列表
+	RetentionExecutionList []*RetentionExecution `json:"RetentionExecutionList,omitempty" name:"RetentionExecutionList"`
+
+	// 版本保留执行记录总数
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeTagRetentionExecutionResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 版本保留执行记录列表
-		RetentionExecutionList []*RetentionExecution `json:"RetentionExecutionList,omitempty" name:"RetentionExecutionList"`
-
-		// 版本保留执行记录总数
-		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeTagRetentionExecutionResponseParams `json:"Response"`
 }
 
 func (r *DescribeTagRetentionExecutionResponse) ToJsonString() string {
@@ -3800,9 +4704,27 @@ func (r *DescribeTagRetentionExecutionResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeTagRetentionExecutionTaskRequestParams struct {
+	// 主实例iD
+	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
+
+	// 规则Id
+	RetentionId *int64 `json:"RetentionId,omitempty" name:"RetentionId"`
+
+	// 规则执行Id
+	ExecutionId *int64 `json:"ExecutionId,omitempty" name:"ExecutionId"`
+
+	// 分页Page
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 分页PageSize
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
 type DescribeTagRetentionExecutionTaskRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 主实例iD
 	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
 
@@ -3842,19 +4764,21 @@ func (r *DescribeTagRetentionExecutionTaskRequest) FromJsonString(s string) erro
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeTagRetentionExecutionTaskResponseParams struct {
+	// 版本保留执行任务列表
+	RetentionTaskList []*RetentionTask `json:"RetentionTaskList,omitempty" name:"RetentionTaskList"`
+
+	// 版本保留执行任务总数
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeTagRetentionExecutionTaskResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 版本保留执行任务列表
-		RetentionTaskList []*RetentionTask `json:"RetentionTaskList,omitempty" name:"RetentionTaskList"`
-
-		// 版本保留执行任务总数
-		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeTagRetentionExecutionTaskResponseParams `json:"Response"`
 }
 
 func (r *DescribeTagRetentionExecutionTaskResponse) ToJsonString() string {
@@ -3868,9 +4792,24 @@ func (r *DescribeTagRetentionExecutionTaskResponse) FromJsonString(s string) err
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeTagRetentionRulesRequestParams struct {
+	// 主实例iD
+	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
+
+	// 命名空间的名称
+	NamespaceName *string `json:"NamespaceName,omitempty" name:"NamespaceName"`
+
+	// 分页PageSize
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 分页Page
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+}
+
 type DescribeTagRetentionRulesRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 主实例iD
 	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
 
@@ -3906,19 +4845,21 @@ func (r *DescribeTagRetentionRulesRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeTagRetentionRulesResponseParams struct {
+	// 版本保留策略列表
+	RetentionPolicyList []*RetentionPolicy `json:"RetentionPolicyList,omitempty" name:"RetentionPolicyList"`
+
+	// 版本保留策略总数
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeTagRetentionRulesResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 版本保留策略列表
-		RetentionPolicyList []*RetentionPolicy `json:"RetentionPolicyList,omitempty" name:"RetentionPolicyList"`
-
-		// 版本保留策略总数
-		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeTagRetentionRulesResponseParams `json:"Response"`
 }
 
 func (r *DescribeTagRetentionRulesResponse) ToJsonString() string {
@@ -3932,8 +4873,14 @@ func (r *DescribeTagRetentionRulesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeUserQuotaPersonalRequestParams struct {
+
+}
+
 type DescribeUserQuotaPersonalRequest struct {
 	*tchttp.BaseRequest
+	
 }
 
 func (r *DescribeUserQuotaPersonalRequest) ToJsonString() string {
@@ -3948,22 +4895,25 @@ func (r *DescribeUserQuotaPersonalRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeUserQuotaPersonalRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeUserQuotaPersonalResponseParams struct {
+	// 配额返回信息
+	Data *RespLimit `json:"Data,omitempty" name:"Data"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeUserQuotaPersonalResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 配额返回信息
-		Data *RespLimit `json:"Data,omitempty" name:"Data"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeUserQuotaPersonalResponseParams `json:"Response"`
 }
 
 func (r *DescribeUserQuotaPersonalResponse) ToJsonString() string {
@@ -3977,9 +4927,27 @@ func (r *DescribeUserQuotaPersonalResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeWebhookTriggerLogRequestParams struct {
+	// 实例 Id
+	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
+
+	// 命名空间
+	Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
+
+	// 触发器 Id
+	Id *int64 `json:"Id,omitempty" name:"Id"`
+
+	// 分页单页数量
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 分页偏移量
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+}
+
 type DescribeWebhookTriggerLogRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 实例 Id
 	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
 
@@ -4019,19 +4987,21 @@ func (r *DescribeWebhookTriggerLogRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeWebhookTriggerLogResponseParams struct {
+	// 总数
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 日志列表
+	Logs []*WebhookTriggerLog `json:"Logs,omitempty" name:"Logs"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeWebhookTriggerLogResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 总数
-		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 日志列表
-		Logs []*WebhookTriggerLog `json:"Logs,omitempty" name:"Logs"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeWebhookTriggerLogResponseParams `json:"Response"`
 }
 
 func (r *DescribeWebhookTriggerLogResponse) ToJsonString() string {
@@ -4045,9 +5015,24 @@ func (r *DescribeWebhookTriggerLogResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeWebhookTriggerRequestParams struct {
+	// 实例Id
+	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
+
+	// 分页单页数量
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 分页偏移量
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 命名空间
+	Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
+}
+
 type DescribeWebhookTriggerRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 实例Id
 	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
 
@@ -4083,19 +5068,21 @@ func (r *DescribeWebhookTriggerRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeWebhookTriggerResponseParams struct {
+	// 触发器总数
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 触发器列表
+	Triggers []*WebhookTrigger `json:"Triggers,omitempty" name:"Triggers"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeWebhookTriggerResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 触发器总数
-		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 触发器列表
-		Triggers []*WebhookTrigger `json:"Triggers,omitempty" name:"Triggers"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeWebhookTriggerResponseParams `json:"Response"`
 }
 
 func (r *DescribeWebhookTriggerResponse) ToJsonString() string {
@@ -4109,9 +5096,24 @@ func (r *DescribeWebhookTriggerResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DownloadHelmChartRequestParams struct {
+	// 实例ID
+	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
+
+	// 命名空间名称
+	NamespaceName *string `json:"NamespaceName,omitempty" name:"NamespaceName"`
+
+	// Helm chart名称
+	ChartName *string `json:"ChartName,omitempty" name:"ChartName"`
+
+	// Helm chart版本
+	ChartVersion *string `json:"ChartVersion,omitempty" name:"ChartVersion"`
+}
+
 type DownloadHelmChartRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 实例ID
 	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
 
@@ -4147,37 +5149,39 @@ func (r *DownloadHelmChartRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DownloadHelmChartResponseParams struct {
+	// 临时token
+	TmpToken *string `json:"TmpToken,omitempty" name:"TmpToken"`
+
+	// 临时的secretId
+	TmpSecretId *string `json:"TmpSecretId,omitempty" name:"TmpSecretId"`
+
+	// 临时的secretKey
+	TmpSecretKey *string `json:"TmpSecretKey,omitempty" name:"TmpSecretKey"`
+
+	// 存储桶信息
+	Bucket *string `json:"Bucket,omitempty" name:"Bucket"`
+
+	// 实例ID
+	Region *string `json:"Region,omitempty" name:"Region"`
+
+	// chart信息
+	Path *string `json:"Path,omitempty" name:"Path"`
+
+	// 开始时间时间戳
+	StartTime *int64 `json:"StartTime,omitempty" name:"StartTime"`
+
+	// token过期时间时间戳
+	ExpiredTime *int64 `json:"ExpiredTime,omitempty" name:"ExpiredTime"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DownloadHelmChartResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 临时token
-		TmpToken *string `json:"TmpToken,omitempty" name:"TmpToken"`
-
-		// 临时的secretId
-		TmpSecretId *string `json:"TmpSecretId,omitempty" name:"TmpSecretId"`
-
-		// 临时的secretKey
-		TmpSecretKey *string `json:"TmpSecretKey,omitempty" name:"TmpSecretKey"`
-
-		// 存储桶信息
-		Bucket *string `json:"Bucket,omitempty" name:"Bucket"`
-
-		// 实例ID
-		Region *string `json:"Region,omitempty" name:"Region"`
-
-		// chart信息
-		Path *string `json:"Path,omitempty" name:"Path"`
-
-		// 开始时间时间戳
-		StartTime *int64 `json:"StartTime,omitempty" name:"StartTime"`
-
-		// token过期时间时间戳
-		ExpiredTime *int64 `json:"ExpiredTime,omitempty" name:"ExpiredTime"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DownloadHelmChartResponseParams `json:"Response"`
 }
 
 func (r *DownloadHelmChartResponse) ToJsonString() string {
@@ -4192,14 +5196,22 @@ func (r *DownloadHelmChartResponse) FromJsonString(s string) error {
 }
 
 type DupImageTagResp struct {
-
 	// 镜像Digest值
 	Digest *string `json:"Digest,omitempty" name:"Digest"`
 }
 
+// Predefined struct for user
+type DuplicateImagePersonalRequestParams struct {
+	// 源镜像名称，不包含domain。例如： tencentyun/foo:v1
+	SrcImage *string `json:"SrcImage,omitempty" name:"SrcImage"`
+
+	// 目的镜像名称，不包含domain。例如： tencentyun/foo:latest
+	DestImage *string `json:"DestImage,omitempty" name:"DestImage"`
+}
+
 type DuplicateImagePersonalRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 源镜像名称，不包含domain。例如： tencentyun/foo:v1
 	SrcImage *string `json:"SrcImage,omitempty" name:"SrcImage"`
 
@@ -4227,16 +5239,18 @@ func (r *DuplicateImagePersonalRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DuplicateImagePersonalResponseParams struct {
+	// 复制镜像返回值
+	Data *DupImageTagResp `json:"Data,omitempty" name:"Data"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DuplicateImagePersonalResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 复制镜像返回值
-		Data *DupImageTagResp `json:"Data,omitempty" name:"Data"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DuplicateImagePersonalResponseParams `json:"Response"`
 }
 
 func (r *DuplicateImagePersonalResponse) ToJsonString() string {
@@ -4251,7 +5265,6 @@ func (r *DuplicateImagePersonalResponse) FromJsonString(s string) error {
 }
 
 type FavorResp struct {
-
 	// 收藏仓库的总数
 	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
@@ -4261,7 +5274,6 @@ type FavorResp struct {
 }
 
 type Favors struct {
-
 	// 仓库名字
 	RepoName *string `json:"RepoName,omitempty" name:"RepoName"`
 
@@ -4300,7 +5312,6 @@ type Favors struct {
 }
 
 type Filter struct {
-
 	// 属性名称, 若存在多个Filter时，Filter间的关系为逻辑与（AND）关系。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
@@ -4309,7 +5320,6 @@ type Filter struct {
 }
 
 type Header struct {
-
 	// Header Key
 	Key *string `json:"Key,omitempty" name:"Key"`
 
@@ -4318,7 +5328,6 @@ type Header struct {
 }
 
 type ImmutableTagRule struct {
-
 	// 仓库匹配规则
 	RepositoryPattern *string `json:"RepositoryPattern,omitempty" name:"RepositoryPattern"`
 
@@ -4342,7 +5351,6 @@ type ImmutableTagRule struct {
 }
 
 type Limit struct {
-
 	// 用户名
 	Username *string `json:"Username,omitempty" name:"Username"`
 
@@ -4353,9 +5361,18 @@ type Limit struct {
 	Value *int64 `json:"Value,omitempty" name:"Value"`
 }
 
+// Predefined struct for user
+type ManageExternalEndpointRequestParams struct {
+	// 实例Id
+	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
+
+	// 操作（Create/Delete）
+	Operation *string `json:"Operation,omitempty" name:"Operation"`
+}
+
 type ManageExternalEndpointRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 实例Id
 	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
 
@@ -4383,16 +5400,18 @@ func (r *ManageExternalEndpointRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ManageExternalEndpointResponseParams struct {
+	// 实例Id
+	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type ManageExternalEndpointResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 实例Id
-		RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *ManageExternalEndpointResponseParams `json:"Response"`
 }
 
 func (r *ManageExternalEndpointResponse) ToJsonString() string {
@@ -4406,9 +5425,18 @@ func (r *ManageExternalEndpointResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ManageImageLifecycleGlobalPersonalRequestParams struct {
+	// global_keep_last_days:全局保留最近几天的数据;global_keep_last_nums:全局保留最近多少个
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 策略值
+	Val *int64 `json:"Val,omitempty" name:"Val"`
+}
+
 type ManageImageLifecycleGlobalPersonalRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// global_keep_last_days:全局保留最近几天的数据;global_keep_last_nums:全局保留最近多少个
 	Type *string `json:"Type,omitempty" name:"Type"`
 
@@ -4436,13 +5464,15 @@ func (r *ManageImageLifecycleGlobalPersonalRequest) FromJsonString(s string) err
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ManageImageLifecycleGlobalPersonalResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type ManageImageLifecycleGlobalPersonalResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *ManageImageLifecycleGlobalPersonalResponseParams `json:"Response"`
 }
 
 func (r *ManageImageLifecycleGlobalPersonalResponse) ToJsonString() string {
@@ -4456,9 +5486,30 @@ func (r *ManageImageLifecycleGlobalPersonalResponse) FromJsonString(s string) er
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ManageInternalEndpointRequestParams struct {
+	// 实例Id
+	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
+
+	// Create/Delete
+	Operation *string `json:"Operation,omitempty" name:"Operation"`
+
+	// 需要接入的用户vpcid
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 需要接入的用户子网id
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+
+	// 请求的地域ID，用于实例复制地域
+	RegionId *uint64 `json:"RegionId,omitempty" name:"RegionId"`
+
+	// 请求的地域名称，用于实例复制地域
+	RegionName *string `json:"RegionName,omitempty" name:"RegionName"`
+}
+
 type ManageInternalEndpointRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 实例Id
 	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
 
@@ -4502,16 +5553,18 @@ func (r *ManageInternalEndpointRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ManageInternalEndpointResponseParams struct {
+	// 实例Id
+	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type ManageInternalEndpointResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 实例Id
-		RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *ManageInternalEndpointResponseParams `json:"Response"`
 }
 
 func (r *ManageInternalEndpointResponse) ToJsonString() string {
@@ -4525,9 +5578,30 @@ func (r *ManageInternalEndpointResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ManageReplicationRequestParams struct {
+	// 复制源实例ID
+	SourceRegistryId *string `json:"SourceRegistryId,omitempty" name:"SourceRegistryId"`
+
+	// 复制目标实例ID
+	DestinationRegistryId *string `json:"DestinationRegistryId,omitempty" name:"DestinationRegistryId"`
+
+	// 同步规则
+	Rule *ReplicationRule `json:"Rule,omitempty" name:"Rule"`
+
+	// 规则描述
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 目标实例的地域ID，如广州是1
+	DestinationRegionId *uint64 `json:"DestinationRegionId,omitempty" name:"DestinationRegionId"`
+
+	// 开启跨主账号实例同步配置项
+	PeerReplicationOption *PeerReplicationOption `json:"PeerReplicationOption,omitempty" name:"PeerReplicationOption"`
+}
+
 type ManageReplicationRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 复制源实例ID
 	SourceRegistryId *string `json:"SourceRegistryId,omitempty" name:"SourceRegistryId"`
 
@@ -4571,13 +5645,15 @@ func (r *ManageReplicationRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ManageReplicationResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type ManageReplicationResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *ManageReplicationResponseParams `json:"Response"`
 }
 
 func (r *ManageReplicationResponse) ToJsonString() string {
@@ -4591,9 +5667,45 @@ func (r *ManageReplicationResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifyApplicationTriggerPersonalRequestParams struct {
+	// 触发器关联的镜像仓库，library/test格式
+	RepoName *string `json:"RepoName,omitempty" name:"RepoName"`
+
+	// 触发器名称，必填参数
+	TriggerName *string `json:"TriggerName,omitempty" name:"TriggerName"`
+
+	// 触发方式，"all"全部触发，"taglist"指定tag触发，"regex"正则触发
+	InvokeMethod *string `json:"InvokeMethod,omitempty" name:"InvokeMethod"`
+
+	// 触发方式对应的表达式
+	InvokeExpr *string `json:"InvokeExpr,omitempty" name:"InvokeExpr"`
+
+	// 应用所在TKE集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 应用所在TKE集群命名空间
+	Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
+
+	// 应用所在TKE集群工作负载类型,支持Deployment、StatefulSet、DaemonSet、CronJob、Job。
+	WorkloadType *string `json:"WorkloadType,omitempty" name:"WorkloadType"`
+
+	// 应用所在TKE集群工作负载名称
+	WorkloadName *string `json:"WorkloadName,omitempty" name:"WorkloadName"`
+
+	// 应用所在TKE集群工作负载下容器名称
+	ContainerName *string `json:"ContainerName,omitempty" name:"ContainerName"`
+
+	// 应用所在TKE集群地域数字ID，如1（广州）、16（成都）
+	ClusterRegion *int64 `json:"ClusterRegion,omitempty" name:"ClusterRegion"`
+
+	// 新触发器名称
+	NewTriggerName *string `json:"NewTriggerName,omitempty" name:"NewTriggerName"`
+}
+
 type ModifyApplicationTriggerPersonalRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 触发器关联的镜像仓库，library/test格式
 	RepoName *string `json:"RepoName,omitempty" name:"RepoName"`
 
@@ -4657,13 +5769,15 @@ func (r *ModifyApplicationTriggerPersonalRequest) FromJsonString(s string) error
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifyApplicationTriggerPersonalResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type ModifyApplicationTriggerPersonalResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *ModifyApplicationTriggerPersonalResponseParams `json:"Response"`
 }
 
 func (r *ModifyApplicationTriggerPersonalResponse) ToJsonString() string {
@@ -4677,9 +5791,24 @@ func (r *ModifyApplicationTriggerPersonalResponse) FromJsonString(s string) erro
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifyImmutableTagRulesRequestParams struct {
+	// 实例 Id
+	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
+
+	// 命名空间
+	NamespaceName *string `json:"NamespaceName,omitempty" name:"NamespaceName"`
+
+	// 规则 Id
+	RuleId *int64 `json:"RuleId,omitempty" name:"RuleId"`
+
+	// 规则
+	Rule *ImmutableTagRule `json:"Rule,omitempty" name:"Rule"`
+}
+
 type ModifyImmutableTagRulesRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 实例 Id
 	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
 
@@ -4715,13 +5844,15 @@ func (r *ModifyImmutableTagRulesRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifyImmutableTagRulesResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type ModifyImmutableTagRulesResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *ModifyImmutableTagRulesResponseParams `json:"Response"`
 }
 
 func (r *ModifyImmutableTagRulesResponse) ToJsonString() string {
@@ -4735,9 +5866,18 @@ func (r *ModifyImmutableTagRulesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifyInstanceRequestParams struct {
+	// 实例ID
+	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
+
+	// 实例的规格
+	RegistryType *string `json:"RegistryType,omitempty" name:"RegistryType"`
+}
+
 type ModifyInstanceRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 实例ID
 	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
 
@@ -4765,13 +5905,15 @@ func (r *ModifyInstanceRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifyInstanceResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type ModifyInstanceResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *ModifyInstanceResponseParams `json:"Response"`
 }
 
 func (r *ModifyInstanceResponse) ToJsonString() string {
@@ -4785,9 +5927,27 @@ func (r *ModifyInstanceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifyInstanceTokenRequestParams struct {
+	// 实例长期访问凭证 ID
+	TokenId *string `json:"TokenId,omitempty" name:"TokenId"`
+
+	// 实例 ID
+	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
+
+	// 启用或禁用实例长期访问凭证
+	Enable *bool `json:"Enable,omitempty" name:"Enable"`
+
+	// 访问凭证描述
+	Desc *string `json:"Desc,omitempty" name:"Desc"`
+
+	// 1为修改描述 2为操作启动禁用，默认值为2
+	ModifyFlag *int64 `json:"ModifyFlag,omitempty" name:"ModifyFlag"`
+}
+
 type ModifyInstanceTokenRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 实例长期访问凭证 ID
 	TokenId *string `json:"TokenId,omitempty" name:"TokenId"`
 
@@ -4827,13 +5987,15 @@ func (r *ModifyInstanceTokenRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifyInstanceTokenResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type ModifyInstanceTokenResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *ModifyInstanceTokenResponseParams `json:"Response"`
 }
 
 func (r *ModifyInstanceTokenResponse) ToJsonString() string {
@@ -4847,9 +6009,21 @@ func (r *ModifyInstanceTokenResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifyNamespaceRequestParams struct {
+	// 实例Id
+	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
+
+	// 命名空间名称
+	NamespaceName *string `json:"NamespaceName,omitempty" name:"NamespaceName"`
+
+	// 访问级别，True为公开，False为私有
+	IsPublic *bool `json:"IsPublic,omitempty" name:"IsPublic"`
+}
+
 type ModifyNamespaceRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 实例Id
 	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
 
@@ -4881,13 +6055,15 @@ func (r *ModifyNamespaceRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifyNamespaceResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type ModifyNamespaceResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *ModifyNamespaceResponseParams `json:"Response"`
 }
 
 func (r *ModifyNamespaceResponse) ToJsonString() string {
@@ -4901,9 +6077,18 @@ func (r *ModifyNamespaceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifyRepositoryAccessPersonalRequestParams struct {
+	// 仓库名称
+	RepoName *string `json:"RepoName,omitempty" name:"RepoName"`
+
+	// 默认值为0, 1公共，0私有
+	Public *int64 `json:"Public,omitempty" name:"Public"`
+}
+
 type ModifyRepositoryAccessPersonalRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 仓库名称
 	RepoName *string `json:"RepoName,omitempty" name:"RepoName"`
 
@@ -4931,13 +6116,15 @@ func (r *ModifyRepositoryAccessPersonalRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifyRepositoryAccessPersonalResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type ModifyRepositoryAccessPersonalResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *ModifyRepositoryAccessPersonalResponseParams `json:"Response"`
 }
 
 func (r *ModifyRepositoryAccessPersonalResponse) ToJsonString() string {
@@ -4951,9 +6138,18 @@ func (r *ModifyRepositoryAccessPersonalResponse) FromJsonString(s string) error 
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifyRepositoryInfoPersonalRequestParams struct {
+	// 仓库名称
+	RepoName *string `json:"RepoName,omitempty" name:"RepoName"`
+
+	// 仓库描述
+	Description *string `json:"Description,omitempty" name:"Description"`
+}
+
 type ModifyRepositoryInfoPersonalRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 仓库名称
 	RepoName *string `json:"RepoName,omitempty" name:"RepoName"`
 
@@ -4981,13 +6177,15 @@ func (r *ModifyRepositoryInfoPersonalRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifyRepositoryInfoPersonalResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type ModifyRepositoryInfoPersonalResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *ModifyRepositoryInfoPersonalResponseParams `json:"Response"`
 }
 
 func (r *ModifyRepositoryInfoPersonalResponse) ToJsonString() string {
@@ -5001,9 +6199,27 @@ func (r *ModifyRepositoryInfoPersonalResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifyRepositoryRequestParams struct {
+	// 实例ID
+	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
+
+	// 命名空间名称
+	NamespaceName *string `json:"NamespaceName,omitempty" name:"NamespaceName"`
+
+	// 镜像仓库名称
+	RepositoryName *string `json:"RepositoryName,omitempty" name:"RepositoryName"`
+
+	// 仓库简短描述
+	BriefDescription *string `json:"BriefDescription,omitempty" name:"BriefDescription"`
+
+	// 仓库详细描述
+	Description *string `json:"Description,omitempty" name:"Description"`
+}
+
 type ModifyRepositoryRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 实例ID
 	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
 
@@ -5043,13 +6259,15 @@ func (r *ModifyRepositoryRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifyRepositoryResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type ModifyRepositoryResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *ModifyRepositoryResponseParams `json:"Response"`
 }
 
 func (r *ModifyRepositoryResponse) ToJsonString() string {
@@ -5063,9 +6281,24 @@ func (r *ModifyRepositoryResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifySecurityPolicyRequestParams struct {
+	// 实例的Id
+	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
+
+	// PolicyId
+	PolicyIndex *int64 `json:"PolicyIndex,omitempty" name:"PolicyIndex"`
+
+	// 192.168.0.0/24 白名单Ip
+	CidrBlock *string `json:"CidrBlock,omitempty" name:"CidrBlock"`
+
+	// 备注
+	Description *string `json:"Description,omitempty" name:"Description"`
+}
+
 type ModifySecurityPolicyRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 实例的Id
 	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
 
@@ -5101,16 +6334,18 @@ func (r *ModifySecurityPolicyRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifySecurityPolicyResponseParams struct {
+	// 实例Id
+	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type ModifySecurityPolicyResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 实例Id
-		RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *ModifySecurityPolicyResponseParams `json:"Response"`
 }
 
 func (r *ModifySecurityPolicyResponse) ToJsonString() string {
@@ -5124,9 +6359,30 @@ func (r *ModifySecurityPolicyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifyTagRetentionRuleRequestParams struct {
+	// 主实例iD
+	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
+
+	// 命名空间的Id，必须填写原有的命名空间id
+	NamespaceId *int64 `json:"NamespaceId,omitempty" name:"NamespaceId"`
+
+	// 保留策略
+	RetentionRule *RetentionRule `json:"RetentionRule,omitempty" name:"RetentionRule"`
+
+	// 执行周期，必须填写为原来的设置
+	CronSetting *string `json:"CronSetting,omitempty" name:"CronSetting"`
+
+	// 规则Id
+	RetentionId *int64 `json:"RetentionId,omitempty" name:"RetentionId"`
+
+	// 是否禁用规则
+	Disabled *bool `json:"Disabled,omitempty" name:"Disabled"`
+}
+
 type ModifyTagRetentionRuleRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 主实例iD
 	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
 
@@ -5170,13 +6426,15 @@ func (r *ModifyTagRetentionRuleRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifyTagRetentionRuleResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type ModifyTagRetentionRuleResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *ModifyTagRetentionRuleResponseParams `json:"Response"`
 }
 
 func (r *ModifyTagRetentionRuleResponse) ToJsonString() string {
@@ -5190,9 +6448,15 @@ func (r *ModifyTagRetentionRuleResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifyUserPasswordPersonalRequestParams struct {
+	// 更新后的密码
+	Password *string `json:"Password,omitempty" name:"Password"`
+}
+
 type ModifyUserPasswordPersonalRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 更新后的密码
 	Password *string `json:"Password,omitempty" name:"Password"`
 }
@@ -5216,13 +6480,15 @@ func (r *ModifyUserPasswordPersonalRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifyUserPasswordPersonalResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type ModifyUserPasswordPersonalResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *ModifyUserPasswordPersonalResponseParams `json:"Response"`
 }
 
 func (r *ModifyUserPasswordPersonalResponse) ToJsonString() string {
@@ -5236,9 +6502,21 @@ func (r *ModifyUserPasswordPersonalResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifyWebhookTriggerRequestParams struct {
+	// 实例Id
+	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
+
+	// 触发器参数
+	Trigger *WebhookTrigger `json:"Trigger,omitempty" name:"Trigger"`
+
+	// 命名空间
+	Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
+}
+
 type ModifyWebhookTriggerRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 实例Id
 	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
 
@@ -5270,13 +6548,15 @@ func (r *ModifyWebhookTriggerRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifyWebhookTriggerResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type ModifyWebhookTriggerResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *ModifyWebhookTriggerResponseParams `json:"Response"`
 }
 
 func (r *ModifyWebhookTriggerResponse) ToJsonString() string {
@@ -5291,7 +6571,6 @@ func (r *ModifyWebhookTriggerResponse) FromJsonString(s string) error {
 }
 
 type NamespaceInfo struct {
-
 	// 命名空间
 	Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
 
@@ -5303,7 +6582,6 @@ type NamespaceInfo struct {
 }
 
 type NamespaceInfoResp struct {
-
 	// 命名空间数量
 	NamespaceCount *int64 `json:"NamespaceCount,omitempty" name:"NamespaceCount"`
 
@@ -5312,7 +6590,6 @@ type NamespaceInfoResp struct {
 }
 
 type NamespaceIsExistsResp struct {
-
 	// 命名空间是否存在
 	IsExist *bool `json:"IsExist,omitempty" name:"IsExist"`
 
@@ -5321,7 +6598,6 @@ type NamespaceIsExistsResp struct {
 }
 
 type PeerReplicationOption struct {
-
 	// 待同步实例的uin
 	PeerRegistryUin *string `json:"PeerRegistryUin,omitempty" name:"PeerRegistryUin"`
 
@@ -5333,7 +6609,6 @@ type PeerReplicationOption struct {
 }
 
 type Registry struct {
-
 	// 实例ID
 	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
 
@@ -5385,7 +6660,6 @@ type Registry struct {
 }
 
 type RegistryChargePrepaid struct {
-
 	// 购买实例的时长，单位：月
 	Period *int64 `json:"Period,omitempty" name:"Period"`
 
@@ -5394,7 +6668,6 @@ type RegistryChargePrepaid struct {
 }
 
 type RegistryCondition struct {
-
 	// 实例创建过程类型
 	Type *string `json:"Type,omitempty" name:"Type"`
 
@@ -5407,7 +6680,6 @@ type RegistryCondition struct {
 }
 
 type RegistryStatus struct {
-
 	// 实例的Id
 	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
 
@@ -5419,9 +6691,21 @@ type RegistryStatus struct {
 	Conditions []*RegistryCondition `json:"Conditions,omitempty" name:"Conditions"`
 }
 
+// Predefined struct for user
+type RenewInstanceRequestParams struct {
+	// 实例Id
+	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
+
+	// 预付费自动续费标识和购买时长,0：手动续费，1：自动续费，2：不续费并且不通知;单位为月
+	RegistryChargePrepaid *RegistryChargePrepaid `json:"RegistryChargePrepaid,omitempty" name:"RegistryChargePrepaid"`
+
+	// 0 续费， 1按量转包年包月
+	Flag *int64 `json:"Flag,omitempty" name:"Flag"`
+}
+
 type RenewInstanceRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 实例Id
 	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
 
@@ -5453,16 +6737,18 @@ func (r *RenewInstanceRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type RenewInstanceResponseParams struct {
+	// 企业版实例Id
+	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type RenewInstanceResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 企业版实例Id
-		RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *RenewInstanceResponseParams `json:"Response"`
 }
 
 func (r *RenewInstanceResponse) ToJsonString() string {
@@ -5477,7 +6763,6 @@ func (r *RenewInstanceResponse) FromJsonString(s string) error {
 }
 
 type ReplicationFilter struct {
-
 	// 类型（name、tag和resource）
 	Type *string `json:"Type,omitempty" name:"Type"`
 
@@ -5486,7 +6771,6 @@ type ReplicationFilter struct {
 }
 
 type ReplicationLog struct {
-
 	// 资源类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceType *string `json:"ResourceType,omitempty" name:"ResourceType"`
@@ -5513,7 +6797,6 @@ type ReplicationLog struct {
 }
 
 type ReplicationRegistry struct {
-
 	// 主实例ID
 	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
 
@@ -5534,7 +6817,6 @@ type ReplicationRegistry struct {
 }
 
 type ReplicationRule struct {
-
 	// 同步规则名称
 	Name *string `json:"Name,omitempty" name:"Name"`
 
@@ -5549,7 +6831,6 @@ type ReplicationRule struct {
 }
 
 type RepoInfo struct {
-
 	// 仓库名称
 	RepoName *string `json:"RepoName,omitempty" name:"RepoName"`
 
@@ -5585,7 +6866,6 @@ type RepoInfo struct {
 }
 
 type RepoInfoResp struct {
-
 	// 仓库总数
 	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
@@ -5597,13 +6877,11 @@ type RepoInfoResp struct {
 }
 
 type RepoIsExistResp struct {
-
 	// 仓库是否存在
 	IsExist *bool `json:"IsExist,omitempty" name:"IsExist"`
 }
 
 type RepositoryInfoResp struct {
-
 	// 镜像仓库名字
 	RepoName *string `json:"RepoName,omitempty" name:"RepoName"`
 
@@ -5637,13 +6915,11 @@ type RepositoryInfoResp struct {
 }
 
 type RespLimit struct {
-
 	// 配额信息
 	LimitInfo []*Limit `json:"LimitInfo,omitempty" name:"LimitInfo"`
 }
 
 type RetentionExecution struct {
-
 	// 执行Id
 	ExecutionId *int64 `json:"ExecutionId,omitempty" name:"ExecutionId"`
 
@@ -5661,7 +6937,6 @@ type RetentionExecution struct {
 }
 
 type RetentionPolicy struct {
-
 	// 版本保留策略Id
 	RetentionId *int64 `json:"RetentionId,omitempty" name:"RetentionId"`
 
@@ -5682,7 +6957,6 @@ type RetentionPolicy struct {
 }
 
 type RetentionRule struct {
-
 	// 支持的策略，可选值为latestPushedK（保留最新推送多少个版本）nDaysSinceLastPush（保留近天内推送）
 	Key *string `json:"Key,omitempty" name:"Key"`
 
@@ -5691,7 +6965,6 @@ type RetentionRule struct {
 }
 
 type RetentionTask struct {
-
 	// 任务Id
 	TaskId *int64 `json:"TaskId,omitempty" name:"TaskId"`
 
@@ -5718,14 +6991,12 @@ type RetentionTask struct {
 }
 
 type SameImagesResp struct {
-
 	// tag列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SameImages []*string `json:"SameImages,omitempty" name:"SameImages"`
 }
 
 type SearchUserRepositoryResp struct {
-
 	// 总个数
 	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
@@ -5740,7 +7011,6 @@ type SearchUserRepositoryResp struct {
 }
 
 type SecurityPolicy struct {
-
 	// 策略索引
 	PolicyIndex *int64 `json:"PolicyIndex,omitempty" name:"PolicyIndex"`
 
@@ -5755,7 +7025,6 @@ type SecurityPolicy struct {
 }
 
 type Tag struct {
-
 	// 云标签的key
 	Key *string `json:"Key,omitempty" name:"Key"`
 
@@ -5764,7 +7033,6 @@ type Tag struct {
 }
 
 type TagInfo struct {
-
 	// Tag名称
 	TagName *string `json:"TagName,omitempty" name:"TagName"`
 
@@ -5810,7 +7078,6 @@ type TagInfo struct {
 }
 
 type TagInfoResp struct {
-
 	// Tag的总数
 	TagCount *int64 `json:"TagCount,omitempty" name:"TagCount"`
 
@@ -5825,7 +7092,6 @@ type TagInfoResp struct {
 }
 
 type TagSpecification struct {
-
 	// 默认值为instance
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceType *string `json:"ResourceType,omitempty" name:"ResourceType"`
@@ -5836,7 +7102,6 @@ type TagSpecification struct {
 }
 
 type TaskDetail struct {
-
 	// 任务
 	TaskName *string `json:"TaskName,omitempty" name:"TaskName"`
 
@@ -5859,7 +7124,6 @@ type TaskDetail struct {
 }
 
 type TcrImageInfo struct {
-
 	// 哈希值
 	Digest *string `json:"Digest,omitempty" name:"Digest"`
 
@@ -5874,7 +7138,6 @@ type TcrImageInfo struct {
 }
 
 type TcrInstanceToken struct {
-
 	// 令牌ID
 	Id *string `json:"Id,omitempty" name:"Id"`
 
@@ -5895,7 +7158,6 @@ type TcrInstanceToken struct {
 }
 
 type TcrNamespaceInfo struct {
-
 	// 命名空间名称
 	Name *string `json:"Name,omitempty" name:"Name"`
 
@@ -5910,7 +7172,6 @@ type TcrNamespaceInfo struct {
 }
 
 type TcrRepositoryInfo struct {
-
 	// 仓库名称
 	Name *string `json:"Name,omitempty" name:"Name"`
 
@@ -5936,7 +7197,6 @@ type TcrRepositoryInfo struct {
 }
 
 type TriggerInvokeCondition struct {
-
 	// 触发方式
 	InvokeMethod *string `json:"InvokeMethod,omitempty" name:"InvokeMethod"`
 
@@ -5946,7 +7206,6 @@ type TriggerInvokeCondition struct {
 }
 
 type TriggerInvokePara struct {
-
 	// AppId
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AppId *string `json:"AppId,omitempty" name:"AppId"`
@@ -5973,7 +7232,6 @@ type TriggerInvokePara struct {
 }
 
 type TriggerInvokeResult struct {
-
 	// 请求TKE返回值
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReturnCode *int64 `json:"ReturnCode,omitempty" name:"ReturnCode"`
@@ -5984,7 +7242,6 @@ type TriggerInvokeResult struct {
 }
 
 type TriggerLogResp struct {
-
 	// 仓库名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RepoName *string `json:"RepoName,omitempty" name:"RepoName"`
@@ -6023,7 +7280,6 @@ type TriggerLogResp struct {
 }
 
 type TriggerResp struct {
-
 	// 触发器名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TriggerName *string `json:"TriggerName,omitempty" name:"TriggerName"`
@@ -6053,9 +7309,15 @@ type TriggerResp struct {
 	InvokePara *TriggerInvokePara `json:"InvokePara,omitempty" name:"InvokePara"`
 }
 
+// Predefined struct for user
+type ValidateNamespaceExistPersonalRequestParams struct {
+	// 命名空间名称
+	Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
+}
+
 type ValidateNamespaceExistPersonalRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 命名空间名称
 	Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
 }
@@ -6079,16 +7341,18 @@ func (r *ValidateNamespaceExistPersonalRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ValidateNamespaceExistPersonalResponseParams struct {
+	// 验证命名空间是否存在返回信息
+	Data *NamespaceIsExistsResp `json:"Data,omitempty" name:"Data"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type ValidateNamespaceExistPersonalResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 验证命名空间是否存在返回信息
-		Data *NamespaceIsExistsResp `json:"Data,omitempty" name:"Data"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *ValidateNamespaceExistPersonalResponseParams `json:"Response"`
 }
 
 func (r *ValidateNamespaceExistPersonalResponse) ToJsonString() string {
@@ -6102,9 +7366,15 @@ func (r *ValidateNamespaceExistPersonalResponse) FromJsonString(s string) error 
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ValidateRepositoryExistPersonalRequestParams struct {
+	// 仓库名称
+	RepoName *string `json:"RepoName,omitempty" name:"RepoName"`
+}
+
 type ValidateRepositoryExistPersonalRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 仓库名称
 	RepoName *string `json:"RepoName,omitempty" name:"RepoName"`
 }
@@ -6128,16 +7398,18 @@ func (r *ValidateRepositoryExistPersonalRequest) FromJsonString(s string) error 
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ValidateRepositoryExistPersonalResponseParams struct {
+	// 验证个人版仓库是否存在返回信息
+	Data *RepoIsExistResp `json:"Data,omitempty" name:"Data"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type ValidateRepositoryExistPersonalResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 验证个人版仓库是否存在返回信息
-		Data *RepoIsExistResp `json:"Data,omitempty" name:"Data"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *ValidateRepositoryExistPersonalResponseParams `json:"Response"`
 }
 
 func (r *ValidateRepositoryExistPersonalResponse) ToJsonString() string {
@@ -6152,7 +7424,6 @@ func (r *ValidateRepositoryExistPersonalResponse) FromJsonString(s string) error
 }
 
 type VpcAndDomainInfo struct {
-
 	// tcr实例id
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
@@ -6171,7 +7442,6 @@ type VpcAndDomainInfo struct {
 }
 
 type VpcPrivateDomainStatus struct {
-
 	// 地域
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Region *string `json:"Region,omitempty" name:"Region"`
@@ -6186,7 +7456,6 @@ type VpcPrivateDomainStatus struct {
 }
 
 type WebhookTarget struct {
-
 	// 目标地址
 	Address *string `json:"Address,omitempty" name:"Address"`
 
@@ -6195,7 +7464,6 @@ type WebhookTarget struct {
 }
 
 type WebhookTrigger struct {
-
 	// 触发器名称
 	Name *string `json:"Name,omitempty" name:"Name"`
 
@@ -6222,7 +7490,6 @@ type WebhookTrigger struct {
 }
 
 type WebhookTriggerLog struct {
-
 	// 日志 Id
 	Id *int64 `json:"Id,omitempty" name:"Id"`
 

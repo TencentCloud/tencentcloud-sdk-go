@@ -21,7 +21,6 @@ import (
 )
 
 type Container struct {
-
 	// 容器启动命令
 	Command *string `json:"Command,omitempty" name:"Command"`
 
@@ -60,7 +59,6 @@ type Container struct {
 }
 
 type ContainerInstance struct {
-
 	// 容器实例ID
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
@@ -108,7 +106,6 @@ type ContainerInstance struct {
 }
 
 type ContainerLog struct {
-
 	// 容器名称
 	Name *string `json:"Name,omitempty" name:"Name"`
 
@@ -120,7 +117,6 @@ type ContainerLog struct {
 }
 
 type ContainerState struct {
-
 	// 容器运行开始时间
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
 
@@ -137,9 +133,30 @@ type ContainerState struct {
 	ExitCode *int64 `json:"ExitCode,omitempty" name:"ExitCode"`
 }
 
+// Predefined struct for user
+type CreateContainerInstanceRequestParams struct {
+	// 可用区
+	Zone *string `json:"Zone,omitempty" name:"Zone"`
+
+	// vpcId
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// subnetId
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+
+	// 容器实例名称，由小写字母、数字和 - 组成，由小写字母开头，小写字母或数字结尾，且长度不超过 40个字符
+	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
+
+	// 重启策略（Always,OnFailure,Never）
+	RestartPolicy *string `json:"RestartPolicy,omitempty" name:"RestartPolicy"`
+
+	// 容器列表
+	Containers []*Container `json:"Containers,omitempty" name:"Containers"`
+}
+
 type CreateContainerInstanceRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 可用区
 	Zone *string `json:"Zone,omitempty" name:"Zone"`
 
@@ -183,16 +200,18 @@ func (r *CreateContainerInstanceRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateContainerInstanceResponseParams struct {
+	// 容器实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreateContainerInstanceResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 容器实例ID
-		InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
-
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreateContainerInstanceResponseParams `json:"Response"`
 }
 
 func (r *CreateContainerInstanceResponse) ToJsonString() string {
@@ -206,9 +225,15 @@ func (r *CreateContainerInstanceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteContainerInstanceRequestParams struct {
+	// 容器实例名称
+	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
+}
+
 type DeleteContainerInstanceRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 容器实例名称
 	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
 }
@@ -232,16 +257,18 @@ func (r *DeleteContainerInstanceRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteContainerInstanceResponseParams struct {
+	// 操作信息
+	Msg *string `json:"Msg,omitempty" name:"Msg"`
+
+	// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DeleteContainerInstanceResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 操作信息
-		Msg *string `json:"Msg,omitempty" name:"Msg"`
-
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DeleteContainerInstanceResponseParams `json:"Response"`
 }
 
 func (r *DeleteContainerInstanceResponse) ToJsonString() string {
@@ -255,9 +282,15 @@ func (r *DeleteContainerInstanceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeContainerInstanceEventsRequestParams struct {
+	// 容器实例名称
+	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
+}
+
 type DescribeContainerInstanceEventsRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 容器实例名称
 	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
 }
@@ -281,16 +314,18 @@ func (r *DescribeContainerInstanceEventsRequest) FromJsonString(s string) error 
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeContainerInstanceEventsResponseParams struct {
+	// 容器实例事件列表
+	EventList []*Event `json:"EventList,omitempty" name:"EventList"`
+
+	// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeContainerInstanceEventsResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 容器实例事件列表
-		EventList []*Event `json:"EventList,omitempty" name:"EventList"`
-
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeContainerInstanceEventsResponseParams `json:"Response"`
 }
 
 func (r *DescribeContainerInstanceEventsResponse) ToJsonString() string {
@@ -304,9 +339,15 @@ func (r *DescribeContainerInstanceEventsResponse) FromJsonString(s string) error
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeContainerInstanceRequestParams struct {
+	// 容器实例名称
+	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
+}
+
 type DescribeContainerInstanceRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 容器实例名称
 	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
 }
@@ -330,16 +371,18 @@ func (r *DescribeContainerInstanceRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeContainerInstanceResponseParams struct {
+	// 容器实例详细信息
+	ContainerInstance *ContainerInstance `json:"ContainerInstance,omitempty" name:"ContainerInstance"`
+
+	// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeContainerInstanceResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 容器实例详细信息
-		ContainerInstance *ContainerInstance `json:"ContainerInstance,omitempty" name:"ContainerInstance"`
-
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeContainerInstanceResponseParams `json:"Response"`
 }
 
 func (r *DescribeContainerInstanceResponse) ToJsonString() string {
@@ -353,9 +396,24 @@ func (r *DescribeContainerInstanceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeContainerInstancesRequestParams struct {
+	// 偏移量，默认为0
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回数量，默认为10
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 过滤条件。
+	// - Zone - String - 是否必填：否 -（过滤条件）按照可用区过滤。
+	// - VpcId - String - 是否必填：否 -（过滤条件）按照VpcId过滤。
+	// - InstanceName - String - 是否必填：否 -（过滤条件）按照容器实例名称做模糊查询。
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+}
+
 type DescribeContainerInstancesRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 偏移量，默认为0
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
@@ -390,19 +448,21 @@ func (r *DescribeContainerInstancesRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeContainerInstancesResponseParams struct {
+	// 容器实例列表
+	ContainerInstanceList []*ContainerInstance `json:"ContainerInstanceList,omitempty" name:"ContainerInstanceList"`
+
+	// 容器实例总数
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeContainerInstancesResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 容器实例列表
-		ContainerInstanceList []*ContainerInstance `json:"ContainerInstanceList,omitempty" name:"ContainerInstanceList"`
-
-		// 容器实例总数
-		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeContainerInstancesResponseParams `json:"Response"`
 }
 
 func (r *DescribeContainerInstancesResponse) ToJsonString() string {
@@ -416,9 +476,24 @@ func (r *DescribeContainerInstancesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeContainerLogRequestParams struct {
+	// 容器实例名称
+	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
+
+	// 容器名称
+	ContainerName *string `json:"ContainerName,omitempty" name:"ContainerName"`
+
+	// 日志显示尾部行数
+	Tail *uint64 `json:"Tail,omitempty" name:"Tail"`
+
+	// 日志起始时间
+	SinceTime *string `json:"SinceTime,omitempty" name:"SinceTime"`
+}
+
 type DescribeContainerLogRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 容器实例名称
 	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
 
@@ -454,16 +529,18 @@ func (r *DescribeContainerLogRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeContainerLogResponseParams struct {
+	// 容器日志数组
+	ContainerLogList []*ContainerLog `json:"ContainerLogList,omitempty" name:"ContainerLogList"`
+
+	// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeContainerLogResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 容器日志数组
-		ContainerLogList []*ContainerLog `json:"ContainerLogList,omitempty" name:"ContainerLogList"`
-
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeContainerLogResponseParams `json:"Response"`
 }
 
 func (r *DescribeContainerLogResponse) ToJsonString() string {
@@ -478,7 +555,6 @@ func (r *DescribeContainerLogResponse) FromJsonString(s string) error {
 }
 
 type EnvironmentVar struct {
-
 	// 环境变量名
 	Name *string `json:"Name,omitempty" name:"Name"`
 
@@ -487,7 +563,6 @@ type EnvironmentVar struct {
 }
 
 type Event struct {
-
 	// 事件首次出现时间
 	FirstSeen *string `json:"FirstSeen,omitempty" name:"FirstSeen"`
 
@@ -508,7 +583,6 @@ type Event struct {
 }
 
 type Filter struct {
-
 	// 过滤字段，可选值 - Zone，VpcId，InstanceName
 	Name *string `json:"Name,omitempty" name:"Name"`
 
@@ -516,9 +590,21 @@ type Filter struct {
 	ValueList []*string `json:"ValueList,omitempty" name:"ValueList"`
 }
 
+// Predefined struct for user
+type InquiryPriceCreateCisRequestParams struct {
+	// 可用区
+	Zone *string `json:"Zone,omitempty" name:"Zone"`
+
+	// CPU，单位：核
+	Cpu *float64 `json:"Cpu,omitempty" name:"Cpu"`
+
+	// 内存，单位：Gi
+	Memory *float64 `json:"Memory,omitempty" name:"Memory"`
+}
+
 type InquiryPriceCreateCisRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 可用区
 	Zone *string `json:"Zone,omitempty" name:"Zone"`
 
@@ -550,16 +636,18 @@ func (r *InquiryPriceCreateCisRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type InquiryPriceCreateCisResponseParams struct {
+	// 价格
+	Price *Price `json:"Price,omitempty" name:"Price"`
+
+	// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type InquiryPriceCreateCisResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 价格
-		Price *Price `json:"Price,omitempty" name:"Price"`
-
-		// 唯一请求ID，每次请求都会返回。定位问题时需要提供该次请求的RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *InquiryPriceCreateCisResponseParams `json:"Response"`
 }
 
 func (r *InquiryPriceCreateCisResponse) ToJsonString() string {
@@ -574,7 +662,6 @@ func (r *InquiryPriceCreateCisResponse) FromJsonString(s string) error {
 }
 
 type Price struct {
-
 	// 原价，单位：元
 	DiscountPrice *float64 `json:"DiscountPrice,omitempty" name:"DiscountPrice"`
 

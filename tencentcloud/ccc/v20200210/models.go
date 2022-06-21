@@ -21,7 +21,6 @@ import (
 )
 
 type AutoCalloutTaskCalleeInfo struct {
-
 	// 被叫号码
 	Callee *string `json:"Callee,omitempty" name:"Callee"`
 
@@ -30,7 +29,6 @@ type AutoCalloutTaskCalleeInfo struct {
 }
 
 type AutoCalloutTaskInfo struct {
-
 	// 任务名
 	Name *string `json:"Name,omitempty" name:"Name"`
 
@@ -57,9 +55,21 @@ type AutoCalloutTaskInfo struct {
 	TaskId *uint64 `json:"TaskId,omitempty" name:"TaskId"`
 }
 
+// Predefined struct for user
+type BindStaffSkillGroupListRequestParams struct {
+	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+	SdkAppId *int64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 坐席邮箱
+	StaffEmail *string `json:"StaffEmail,omitempty" name:"StaffEmail"`
+
+	// 绑定技能组列表
+	SkillGroupList []*int64 `json:"SkillGroupList,omitempty" name:"SkillGroupList"`
+}
+
 type BindStaffSkillGroupListRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
 	SdkAppId *int64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
 
@@ -91,13 +101,15 @@ func (r *BindStaffSkillGroupListRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type BindStaffSkillGroupListResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type BindStaffSkillGroupListResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *BindStaffSkillGroupListResponseParams `json:"Response"`
 }
 
 func (r *BindStaffSkillGroupListResponse) ToJsonString() string {
@@ -112,7 +124,6 @@ func (r *BindStaffSkillGroupListResponse) FromJsonString(s string) error {
 }
 
 type CallInMetrics struct {
-
 	// IVR驻留数量
 	IvrCount *int64 `json:"IvrCount,omitempty" name:"IvrCount"`
 
@@ -148,7 +159,6 @@ type CallInMetrics struct {
 }
 
 type CallInNumberMetrics struct {
-
 	// 线路号码
 	Number *string `json:"Number,omitempty" name:"Number"`
 
@@ -160,7 +170,6 @@ type CallInNumberMetrics struct {
 }
 
 type CallInSkillGroupMetrics struct {
-
 	// 技能组ID
 	SkillGroupId *int64 `json:"SkillGroupId,omitempty" name:"SkillGroupId"`
 
@@ -171,9 +180,39 @@ type CallInSkillGroupMetrics struct {
 	Name *string `json:"Name,omitempty" name:"Name"`
 }
 
+// Predefined struct for user
+type CreateAutoCalloutTaskRequestParams struct {
+	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 任务起始时间戳，Unix 秒级时间戳
+	NotBefore *int64 `json:"NotBefore,omitempty" name:"NotBefore"`
+
+	// 被叫号码列表
+	Callees []*string `json:"Callees,omitempty" name:"Callees"`
+
+	// 主叫号码列表
+	Callers []*string `json:"Callers,omitempty" name:"Callers"`
+
+	// 呼叫使用的Ivr
+	IvrId *uint64 `json:"IvrId,omitempty" name:"IvrId"`
+
+	// 任务名
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 任务描述
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 任务停止时间戳，Unix 秒级时间戳
+	NotAfter *int64 `json:"NotAfter,omitempty" name:"NotAfter"`
+
+	// 最大尝试次数
+	Tries *uint64 `json:"Tries,omitempty" name:"Tries"`
+}
+
 type CreateAutoCalloutTaskRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
 	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
 
@@ -229,16 +268,18 @@ func (r *CreateAutoCalloutTaskRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateAutoCalloutTaskResponseParams struct {
+	// 任务Id
+	TaskId *uint64 `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreateAutoCalloutTaskResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 任务Id
-		TaskId *uint64 `json:"TaskId,omitempty" name:"TaskId"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreateAutoCalloutTaskResponseParams `json:"Response"`
 }
 
 func (r *CreateAutoCalloutTaskResponse) ToJsonString() string {
@@ -252,9 +293,25 @@ func (r *CreateAutoCalloutTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateCCCSkillGroupRequestParams struct {
+	// 应用 ID（必填）
+	SdkAppId *int64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 技能组名称
+	SkillGroupName *string `json:"SkillGroupName,omitempty" name:"SkillGroupName"`
+
+	// 技能组类型0-电话，1-在线，3-音频，4-视频
+	SkillGroupType *int64 `json:"SkillGroupType,omitempty" name:"SkillGroupType"`
+
+	// 技能组接待人数上限（该技能组中1个座席可接待的人数上限）默认为1。1、若技能组类型为在线，则接待上限可设置为1及以上
+	// 2、若技能组类型为电话、音频、视频，则接待上线必须只能为1
+	MaxConcurrency *uint64 `json:"MaxConcurrency,omitempty" name:"MaxConcurrency"`
+}
+
 type CreateCCCSkillGroupRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 应用 ID（必填）
 	SdkAppId *int64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
 
@@ -291,16 +348,18 @@ func (r *CreateCCCSkillGroupRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateCCCSkillGroupResponseParams struct {
+	// 技能组ID
+	SkillGroupId *int64 `json:"SkillGroupId,omitempty" name:"SkillGroupId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreateCCCSkillGroupResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 技能组ID
-		SkillGroupId *int64 `json:"SkillGroupId,omitempty" name:"SkillGroupId"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreateCCCSkillGroupResponseParams `json:"Response"`
 }
 
 func (r *CreateCCCSkillGroupResponse) ToJsonString() string {
@@ -314,9 +373,30 @@ func (r *CreateCCCSkillGroupResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateCallOutSessionRequestParams struct {
+	// 应用 ID
+	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 客服用户 ID，一般为客服邮箱
+	UserId *string `json:"UserId,omitempty" name:"UserId"`
+
+	// 被叫号码，须带 0086 前缀
+	Callee *string `json:"Callee,omitempty" name:"Callee"`
+
+	// 主叫号码，须带 0086 前缀
+	Caller *string `json:"Caller,omitempty" name:"Caller"`
+
+	// 是否强制使用手机外呼，当前只支持 true，若为 true 请确保已配置白名单
+	IsForceUseMobile *bool `json:"IsForceUseMobile,omitempty" name:"IsForceUseMobile"`
+
+	// 自定义数据，长度限制 1024 字节
+	Uui *string `json:"Uui,omitempty" name:"Uui"`
+}
+
 type CreateCallOutSessionRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 应用 ID
 	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
 
@@ -360,16 +440,18 @@ func (r *CreateCallOutSessionRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateCallOutSessionResponseParams struct {
+	// 新创建的会话 ID
+	SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreateCallOutSessionResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 新创建的会话 ID
-		SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreateCallOutSessionResponseParams `json:"Response"`
 }
 
 func (r *CreateCallOutSessionResponse) ToJsonString() string {
@@ -383,9 +465,18 @@ func (r *CreateCallOutSessionResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateSDKLoginTokenRequestParams struct {
+	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+	SdkAppId *int64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 坐席账号。
+	SeatUserId *string `json:"SeatUserId,omitempty" name:"SeatUserId"`
+}
+
 type CreateSDKLoginTokenRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
 	SdkAppId *int64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
 
@@ -413,22 +504,24 @@ func (r *CreateSDKLoginTokenRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateSDKLoginTokenResponseParams struct {
+	// SDK 登录 Token。
+	Token *string `json:"Token,omitempty" name:"Token"`
+
+	// 过期时间戳，Unix 时间戳。
+	ExpiredTime *int64 `json:"ExpiredTime,omitempty" name:"ExpiredTime"`
+
+	// SDK 加载路径会随着 SDK 的发布而变动。
+	SdkURL *string `json:"SdkURL,omitempty" name:"SdkURL"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreateSDKLoginTokenResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// SDK 登录 Token。
-		Token *string `json:"Token,omitempty" name:"Token"`
-
-		// 过期时间戳，Unix 时间戳。
-		ExpiredTime *int64 `json:"ExpiredTime,omitempty" name:"ExpiredTime"`
-
-		// SDK 加载路径会随着 SDK 的发布而变动。
-		SdkURL *string `json:"SdkURL,omitempty" name:"SdkURL"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreateSDKLoginTokenResponseParams `json:"Response"`
 }
 
 func (r *CreateSDKLoginTokenResponse) ToJsonString() string {
@@ -442,9 +535,18 @@ func (r *CreateSDKLoginTokenResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateStaffRequestParams struct {
+	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+	SdkAppId *int64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 客服信息，个数不超过 10
+	Staffs []*SeatUserInfo `json:"Staffs,omitempty" name:"Staffs"`
+}
+
 type CreateStaffRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
 	SdkAppId *int64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
 
@@ -472,17 +574,19 @@ func (r *CreateStaffRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateStaffResponseParams struct {
+	// 错误坐席列表及错误信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrorStaffList []*ErrStaffItem `json:"ErrorStaffList,omitempty" name:"ErrorStaffList"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreateStaffResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 错误坐席列表及错误信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		ErrorStaffList []*ErrStaffItem `json:"ErrorStaffList,omitempty" name:"ErrorStaffList"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreateStaffResponseParams `json:"Response"`
 }
 
 func (r *CreateStaffResponse) ToJsonString() string {
@@ -496,9 +600,24 @@ func (r *CreateStaffResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateUserSigRequestParams struct {
+	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+	SdkAppId *int64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 用户 ID
+	Uid *string `json:"Uid,omitempty" name:"Uid"`
+
+	// 有效期，单位秒，不超过 1 小时
+	ExpiredTime *int64 `json:"ExpiredTime,omitempty" name:"ExpiredTime"`
+
+	// 用户签名数据
+	ClientData *string `json:"ClientData,omitempty" name:"ClientData"`
+}
+
 type CreateUserSigRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
 	SdkAppId *int64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
 
@@ -534,16 +653,18 @@ func (r *CreateUserSigRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateUserSigResponseParams struct {
+	// 签名结果
+	UserSig *string `json:"UserSig,omitempty" name:"UserSig"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreateUserSigResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 签名结果
-		UserSig *string `json:"UserSig,omitempty" name:"UserSig"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreateUserSigResponseParams `json:"Response"`
 }
 
 func (r *CreateUserSigResponse) ToJsonString() string {
@@ -557,9 +678,18 @@ func (r *CreateUserSigResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteStaffRequestParams struct {
+	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+	SdkAppId *int64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 待删除客服邮箱列表
+	StaffList []*string `json:"StaffList,omitempty" name:"StaffList"`
+}
+
 type DeleteStaffRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
 	SdkAppId *int64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
 
@@ -587,17 +717,19 @@ func (r *DeleteStaffRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteStaffResponseParams struct {
+	// 无法删除的状态为在线的客服列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OnlineStaffList []*string `json:"OnlineStaffList,omitempty" name:"OnlineStaffList"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DeleteStaffResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 无法删除的状态为在线的客服列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		OnlineStaffList []*string `json:"OnlineStaffList,omitempty" name:"OnlineStaffList"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DeleteStaffResponseParams `json:"Response"`
 }
 
 func (r *DeleteStaffResponse) ToJsonString() string {
@@ -611,9 +743,18 @@ func (r *DeleteStaffResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeAutoCalloutTaskRequestParams struct {
+	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 任务Id
+	TaskId *uint64 `json:"TaskId,omitempty" name:"TaskId"`
+}
+
 type DescribeAutoCalloutTaskRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
 	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
 
@@ -641,38 +782,40 @@ func (r *DescribeAutoCalloutTaskRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeAutoCalloutTaskResponseParams struct {
+	// 任务名
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 任务描述
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 任务起始时间戳
+	NotBefore *int64 `json:"NotBefore,omitempty" name:"NotBefore"`
+
+	// 任务结束时间戳
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NotAfter *int64 `json:"NotAfter,omitempty" name:"NotAfter"`
+
+	// 主叫列表
+	Callers []*string `json:"Callers,omitempty" name:"Callers"`
+
+	// 被叫信息列表
+	Callees []*AutoCalloutTaskCalleeInfo `json:"Callees,omitempty" name:"Callees"`
+
+	// 任务使用的IvrId
+	IvrId *uint64 `json:"IvrId,omitempty" name:"IvrId"`
+
+	// 任务状态 0初始 1运行中 2已完成 3结束中 4已终止
+	State *uint64 `json:"State,omitempty" name:"State"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeAutoCalloutTaskResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 任务名
-		Name *string `json:"Name,omitempty" name:"Name"`
-
-		// 任务描述
-		Description *string `json:"Description,omitempty" name:"Description"`
-
-		// 任务起始时间戳
-		NotBefore *int64 `json:"NotBefore,omitempty" name:"NotBefore"`
-
-		// 任务结束时间戳
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		NotAfter *int64 `json:"NotAfter,omitempty" name:"NotAfter"`
-
-		// 主叫列表
-		Callers []*string `json:"Callers,omitempty" name:"Callers"`
-
-		// 被叫信息列表
-		Callees []*AutoCalloutTaskCalleeInfo `json:"Callees,omitempty" name:"Callees"`
-
-		// 任务使用的IvrId
-		IvrId *uint64 `json:"IvrId,omitempty" name:"IvrId"`
-
-		// 任务状态 0初始 1运行中 2已完成 3结束中 4已终止
-		State *uint64 `json:"State,omitempty" name:"State"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeAutoCalloutTaskResponseParams `json:"Response"`
 }
 
 func (r *DescribeAutoCalloutTaskResponse) ToJsonString() string {
@@ -686,9 +829,21 @@ func (r *DescribeAutoCalloutTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeAutoCalloutTasksRequestParams struct {
+	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 分页大小
+	PageSize *uint64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// 页数
+	PageNumber *uint64 `json:"PageNumber,omitempty" name:"PageNumber"`
+}
+
 type DescribeAutoCalloutTasksRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
 	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
 
@@ -720,19 +875,21 @@ func (r *DescribeAutoCalloutTasksRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeAutoCalloutTasksResponseParams struct {
+	// 总数
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 任务列表
+	Tasks []*AutoCalloutTaskInfo `json:"Tasks,omitempty" name:"Tasks"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeAutoCalloutTasksResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 总数
-		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 任务列表
-		Tasks []*AutoCalloutTaskInfo `json:"Tasks,omitempty" name:"Tasks"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeAutoCalloutTasksResponseParams `json:"Response"`
 }
 
 func (r *DescribeAutoCalloutTasksResponse) ToJsonString() string {
@@ -746,9 +903,15 @@ func (r *DescribeAutoCalloutTasksResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeCCCBuyInfoListRequestParams struct {
+	// 应用ID列表，不传时查询所有应用
+	SdkAppIds []*int64 `json:"SdkAppIds,omitempty" name:"SdkAppIds"`
+}
+
 type DescribeCCCBuyInfoListRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 应用ID列表，不传时查询所有应用
 	SdkAppIds []*int64 `json:"SdkAppIds,omitempty" name:"SdkAppIds"`
 }
@@ -772,22 +935,24 @@ func (r *DescribeCCCBuyInfoListRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeCCCBuyInfoListResponseParams struct {
+	// 应用总数
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 应用购买信息列表
+	SdkAppIdBuyList []*SdkAppIdBuyInfo `json:"SdkAppIdBuyList,omitempty" name:"SdkAppIdBuyList"`
+
+	// 套餐包购买信息列表
+	PackageBuyList []*PackageBuyInfo `json:"PackageBuyList,omitempty" name:"PackageBuyList"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeCCCBuyInfoListResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 应用总数
-		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 应用购买信息列表
-		SdkAppIdBuyList []*SdkAppIdBuyInfo `json:"SdkAppIdBuyList,omitempty" name:"SdkAppIdBuyList"`
-
-		// 套餐包购买信息列表
-		PackageBuyList []*PackageBuyInfo `json:"PackageBuyList,omitempty" name:"PackageBuyList"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeCCCBuyInfoListResponseParams `json:"Response"`
 }
 
 func (r *DescribeCCCBuyInfoListResponse) ToJsonString() string {
@@ -801,9 +966,21 @@ func (r *DescribeCCCBuyInfoListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeCallInMetricsRequestParams struct {
+	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+	SdkAppId *int64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 是否返回技能组维度信息，默认“是”
+	EnabledSkillGroup *bool `json:"EnabledSkillGroup,omitempty" name:"EnabledSkillGroup"`
+
+	// 是否返回线路维度信息，默认“否”
+	EnabledNumber *bool `json:"EnabledNumber,omitempty" name:"EnabledNumber"`
+}
+
 type DescribeCallInMetricsRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
 	SdkAppId *int64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
 
@@ -835,27 +1012,29 @@ func (r *DescribeCallInMetricsRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeCallInMetricsResponseParams struct {
+	// 时间戳
+	Timestamp *int64 `json:"Timestamp,omitempty" name:"Timestamp"`
+
+	// 总体指标
+	TotalMetrics *CallInMetrics `json:"TotalMetrics,omitempty" name:"TotalMetrics"`
+
+	// 线路维度指标
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NumberMetrics []*CallInNumberMetrics `json:"NumberMetrics,omitempty" name:"NumberMetrics"`
+
+	// 技能组维度指标
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SkillGroupMetrics []*CallInSkillGroupMetrics `json:"SkillGroupMetrics,omitempty" name:"SkillGroupMetrics"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeCallInMetricsResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 时间戳
-		Timestamp *int64 `json:"Timestamp,omitempty" name:"Timestamp"`
-
-		// 总体指标
-		TotalMetrics *CallInMetrics `json:"TotalMetrics,omitempty" name:"TotalMetrics"`
-
-		// 线路维度指标
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		NumberMetrics []*CallInNumberMetrics `json:"NumberMetrics,omitempty" name:"NumberMetrics"`
-
-		// 技能组维度指标
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		SkillGroupMetrics []*CallInSkillGroupMetrics `json:"SkillGroupMetrics,omitempty" name:"SkillGroupMetrics"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeCallInMetricsResponseParams `json:"Response"`
 }
 
 func (r *DescribeCallInMetricsResponse) ToJsonString() string {
@@ -869,9 +1048,33 @@ func (r *DescribeCallInMetricsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeChatMessagesRequestParams struct {
+	// 实例 ID（废弃）
+	InstanceId *int64 `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+	SdkAppId *int64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 服务记录ID
+	CdrId *string `json:"CdrId,omitempty" name:"CdrId"`
+
+	// 返回记录条数 最大为100默认20
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 返回记录偏移 默认为0
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 1为从早到晚，2为从晚到早，默认为2
+	Order *int64 `json:"Order,omitempty" name:"Order"`
+
+	// 服务记录SessionID
+	SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
+}
+
 type DescribeChatMessagesRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 实例 ID（废弃）
 	InstanceId *int64 `json:"InstanceId,omitempty" name:"InstanceId"`
 
@@ -919,20 +1122,22 @@ func (r *DescribeChatMessagesRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeChatMessagesResponseParams struct {
+	// 总记录数
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 消息列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Messages []*MessageBody `json:"Messages,omitempty" name:"Messages"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeChatMessagesResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 总记录数
-		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 消息列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		Messages []*MessageBody `json:"Messages,omitempty" name:"Messages"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeChatMessagesResponseParams `json:"Response"`
 }
 
 func (r *DescribeChatMessagesResponse) ToJsonString() string {
@@ -946,9 +1151,33 @@ func (r *DescribeChatMessagesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeIMCdrsRequestParams struct {
+	// 起始时间
+	StartTimestamp *int64 `json:"StartTimestamp,omitempty" name:"StartTimestamp"`
+
+	// 结束时间
+	EndTimestamp *int64 `json:"EndTimestamp,omitempty" name:"EndTimestamp"`
+
+	// 实例 ID（废弃）
+	InstanceId *int64 `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+	SdkAppId *int64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 返回记录条数 最大为100默认20
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 返回记录偏移 默认为0
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 1为全媒体，2为文本客服，不填则查询全部
+	Type *int64 `json:"Type,omitempty" name:"Type"`
+}
+
 type DescribeIMCdrsRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 起始时间
 	StartTimestamp *int64 `json:"StartTimestamp,omitempty" name:"StartTimestamp"`
 
@@ -996,19 +1225,21 @@ func (r *DescribeIMCdrsRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeIMCdrsResponseParams struct {
+	// 总记录数
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 服务记录列表
+	IMCdrs []*IMCdrInfo `json:"IMCdrs,omitempty" name:"IMCdrs"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeIMCdrsResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 总记录数
-		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 服务记录列表
-		IMCdrs []*IMCdrInfo `json:"IMCdrs,omitempty" name:"IMCdrs"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeIMCdrsResponseParams `json:"Response"`
 }
 
 func (r *DescribeIMCdrsResponse) ToJsonString() string {
@@ -1022,9 +1253,21 @@ func (r *DescribeIMCdrsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribePSTNActiveSessionListRequestParams struct {
+	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+	SdkAppId *int64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 数据偏移
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回的数据条数，最大 25
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
 type DescribePSTNActiveSessionListRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
 	SdkAppId *int64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
 
@@ -1056,19 +1299,21 @@ func (r *DescribePSTNActiveSessionListRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribePSTNActiveSessionListResponseParams struct {
+	// 列表总条数
+	Total *int64 `json:"Total,omitempty" name:"Total"`
+
+	// 列表内容
+	Sessions []*PSTNSessionInfo `json:"Sessions,omitempty" name:"Sessions"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribePSTNActiveSessionListResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 列表总条数
-		Total *int64 `json:"Total,omitempty" name:"Total"`
-
-		// 列表内容
-		Sessions []*PSTNSessionInfo `json:"Sessions,omitempty" name:"Sessions"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribePSTNActiveSessionListResponseParams `json:"Response"`
 }
 
 func (r *DescribePSTNActiveSessionListResponse) ToJsonString() string {
@@ -1082,9 +1327,27 @@ func (r *DescribePSTNActiveSessionListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeProtectedTelCdrRequestParams struct {
+	// 起始时间戳，Unix 秒级时间戳
+	StartTimeStamp *int64 `json:"StartTimeStamp,omitempty" name:"StartTimeStamp"`
+
+	// 结束时间戳，Unix 秒级时间戳
+	EndTimeStamp *int64 `json:"EndTimeStamp,omitempty" name:"EndTimeStamp"`
+
+	// 应用 ID，可以查看 https://console.cloud.tencent.com/ccc
+	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 分页尺寸，上限 100
+	PageSize *uint64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// 分页页码，从 0 开始
+	PageNumber *uint64 `json:"PageNumber,omitempty" name:"PageNumber"`
+}
+
 type DescribeProtectedTelCdrRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 起始时间戳，Unix 秒级时间戳
 	StartTimeStamp *int64 `json:"StartTimeStamp,omitempty" name:"StartTimeStamp"`
 
@@ -1124,19 +1387,21 @@ func (r *DescribeProtectedTelCdrRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeProtectedTelCdrResponseParams struct {
+	// 话单记录总数
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 话单记录
+	TelCdrs []*TelCdrInfo `json:"TelCdrs,omitempty" name:"TelCdrs"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeProtectedTelCdrResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 话单记录总数
-		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 话单记录
-		TelCdrs []*TelCdrInfo `json:"TelCdrs,omitempty" name:"TelCdrs"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeProtectedTelCdrResponseParams `json:"Response"`
 }
 
 func (r *DescribeProtectedTelCdrResponse) ToJsonString() string {
@@ -1150,9 +1415,21 @@ func (r *DescribeProtectedTelCdrResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeSeatUserListRequestParams struct {
+	// 实例ID
+	InstanceId *int64 `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 偏移量
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回数量
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
 type DescribeSeatUserListRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 实例ID
 	InstanceId *int64 `json:"InstanceId,omitempty" name:"InstanceId"`
 
@@ -1184,19 +1461,21 @@ func (r *DescribeSeatUserListRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeSeatUserListResponseParams struct {
+	// 此实例的坐席用户总数
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 坐席用户信息列表
+	SeatUsers []*SeatUserInfo `json:"SeatUsers,omitempty" name:"SeatUsers"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeSeatUserListResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 此实例的坐席用户总数
-		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 坐席用户信息列表
-		SeatUsers []*SeatUserInfo `json:"SeatUsers,omitempty" name:"SeatUsers"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeSeatUserListResponseParams `json:"Response"`
 }
 
 func (r *DescribeSeatUserListResponse) ToJsonString() string {
@@ -1210,9 +1489,27 @@ func (r *DescribeSeatUserListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeSkillGroupInfoListRequestParams struct {
+	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+	SdkAppId *int64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 分页尺寸，上限 100
+	PageSize *int64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// 分页页码，从 0 开始
+	PageNumber *int64 `json:"PageNumber,omitempty" name:"PageNumber"`
+
+	// 技能组ID，查询单个技能组时使用
+	SkillGroupId *int64 `json:"SkillGroupId,omitempty" name:"SkillGroupId"`
+
+	// 查询修改时间大于等于ModifiedTime的技能组时使用
+	ModifiedTime *int64 `json:"ModifiedTime,omitempty" name:"ModifiedTime"`
+}
+
 type DescribeSkillGroupInfoListRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
 	SdkAppId *int64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
 
@@ -1252,19 +1549,21 @@ func (r *DescribeSkillGroupInfoListRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeSkillGroupInfoListResponseParams struct {
+	// 技能组总数
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 技能组信息列表
+	SkillGroupList []*SkillGroupInfoItem `json:"SkillGroupList,omitempty" name:"SkillGroupList"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeSkillGroupInfoListResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 技能组总数
-		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 技能组信息列表
-		SkillGroupList []*SkillGroupInfoItem `json:"SkillGroupList,omitempty" name:"SkillGroupList"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeSkillGroupInfoListResponseParams `json:"Response"`
 }
 
 func (r *DescribeSkillGroupInfoListResponse) ToJsonString() string {
@@ -1278,9 +1577,27 @@ func (r *DescribeSkillGroupInfoListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeStaffInfoListRequestParams struct {
+	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+	SdkAppId *int64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 分页尺寸，上限 100
+	PageSize *int64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// 分页页码，从 0 开始
+	PageNumber *int64 `json:"PageNumber,omitempty" name:"PageNumber"`
+
+	// 坐席账号，查询单个坐席时使用
+	StaffMail *string `json:"StaffMail,omitempty" name:"StaffMail"`
+
+	// 查询修改时间大于等于ModifiedTime的坐席时使用
+	ModifiedTime *int64 `json:"ModifiedTime,omitempty" name:"ModifiedTime"`
+}
+
 type DescribeStaffInfoListRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
 	SdkAppId *int64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
 
@@ -1320,19 +1637,21 @@ func (r *DescribeStaffInfoListRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeStaffInfoListResponseParams struct {
+	// 坐席用户总数
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 坐席用户信息列表
+	StaffList []*StaffInfo `json:"StaffList,omitempty" name:"StaffList"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeStaffInfoListResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 坐席用户总数
-		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 坐席用户信息列表
-		StaffList []*StaffInfo `json:"StaffList,omitempty" name:"StaffList"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeStaffInfoListResponseParams `json:"Response"`
 }
 
 func (r *DescribeStaffInfoListResponse) ToJsonString() string {
@@ -1346,9 +1665,18 @@ func (r *DescribeStaffInfoListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeStaffStatusMetricsRequestParams struct {
+	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+	SdkAppId *int64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 筛选坐席列表，默认不传返回全部坐席信息
+	StaffList []*string `json:"StaffList,omitempty" name:"StaffList"`
+}
+
 type DescribeStaffStatusMetricsRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
 	SdkAppId *int64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
 
@@ -1376,16 +1704,18 @@ func (r *DescribeStaffStatusMetricsRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeStaffStatusMetricsResponseParams struct {
+	// 坐席状态实时信息
+	Metrics []*StaffStatusMetrics `json:"Metrics,omitempty" name:"Metrics"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeStaffStatusMetricsResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 坐席状态实时信息
-		Metrics []*StaffStatusMetrics `json:"Metrics,omitempty" name:"Metrics"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeStaffStatusMetricsResponseParams `json:"Response"`
 }
 
 func (r *DescribeStaffStatusMetricsResponse) ToJsonString() string {
@@ -1399,9 +1729,21 @@ func (r *DescribeStaffStatusMetricsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeTelCallInfoRequestParams struct {
+	// 起始时间戳，Unix 时间戳
+	StartTimeStamp *int64 `json:"StartTimeStamp,omitempty" name:"StartTimeStamp"`
+
+	// 结束时间戳，Unix 时间戳，查询时间范围最大为90天
+	EndTimeStamp *int64 `json:"EndTimeStamp,omitempty" name:"EndTimeStamp"`
+
+	// 应用ID列表，多个ID时，返回值为多个ID使用总和
+	SdkAppIdList []*int64 `json:"SdkAppIdList,omitempty" name:"SdkAppIdList"`
+}
+
 type DescribeTelCallInfoRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 起始时间戳，Unix 时间戳
 	StartTimeStamp *int64 `json:"StartTimeStamp,omitempty" name:"StartTimeStamp"`
 
@@ -1433,22 +1775,24 @@ func (r *DescribeTelCallInfoRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeTelCallInfoResponseParams struct {
+	// 呼出套餐包消耗分钟数
+	TelCallOutCount *int64 `json:"TelCallOutCount,omitempty" name:"TelCallOutCount"`
+
+	// 呼入套餐包消耗分钟数
+	TelCallInCount *int64 `json:"TelCallInCount,omitempty" name:"TelCallInCount"`
+
+	// 坐席使用统计个数
+	SeatUsedCount *int64 `json:"SeatUsedCount,omitempty" name:"SeatUsedCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeTelCallInfoResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 呼出套餐包消耗分钟数
-		TelCallOutCount *int64 `json:"TelCallOutCount,omitempty" name:"TelCallOutCount"`
-
-		// 呼入套餐包消耗分钟数
-		TelCallInCount *int64 `json:"TelCallInCount,omitempty" name:"TelCallInCount"`
-
-		// 坐席使用统计个数
-		SeatUsedCount *int64 `json:"SeatUsedCount,omitempty" name:"SeatUsedCount"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeTelCallInfoResponseParams `json:"Response"`
 }
 
 func (r *DescribeTelCallInfoResponse) ToJsonString() string {
@@ -1462,9 +1806,42 @@ func (r *DescribeTelCallInfoResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeTelCdrRequestParams struct {
+	// 起始时间戳，Unix 秒级时间戳
+	StartTimeStamp *int64 `json:"StartTimeStamp,omitempty" name:"StartTimeStamp"`
+
+	// 结束时间戳，Unix 秒级时间戳
+	EndTimeStamp *int64 `json:"EndTimeStamp,omitempty" name:"EndTimeStamp"`
+
+	// 实例 ID（废弃）
+	InstanceId *int64 `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 返回数据条数，上限（废弃）
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移（废弃）
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+	SdkAppId *int64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 分页尺寸（必填），上限 100
+	PageSize *int64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// 分页页码（必填），从 0 开始
+	PageNumber *int64 `json:"PageNumber,omitempty" name:"PageNumber"`
+
+	// 按手机号筛选
+	Phones []*string `json:"Phones,omitempty" name:"Phones"`
+
+	// 按SessionId筛选
+	SessionIds []*string `json:"SessionIds,omitempty" name:"SessionIds"`
+}
+
 type DescribeTelCdrRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 起始时间戳，Unix 秒级时间戳
 	StartTimeStamp *int64 `json:"StartTimeStamp,omitempty" name:"StartTimeStamp"`
 
@@ -1524,19 +1901,21 @@ func (r *DescribeTelCdrRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeTelCdrResponseParams struct {
+	// 话单记录总数
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 话单记录
+	TelCdrs []*TelCdrInfo `json:"TelCdrs,omitempty" name:"TelCdrs"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeTelCdrResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 话单记录总数
-		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 话单记录
-		TelCdrs []*TelCdrInfo `json:"TelCdrs,omitempty" name:"TelCdrs"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeTelCdrResponseParams `json:"Response"`
 }
 
 func (r *DescribeTelCdrResponse) ToJsonString() string {
@@ -1550,9 +1929,18 @@ func (r *DescribeTelCdrResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeTelSessionRequestParams struct {
+	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+	SdkAppId *int64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 会话 ID
+	SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
+}
+
 type DescribeTelSessionRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
 	SdkAppId *int64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
 
@@ -1580,16 +1968,18 @@ func (r *DescribeTelSessionRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeTelSessionResponseParams struct {
+	// 会话信息
+	Session *PSTNSession `json:"Session,omitempty" name:"Session"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeTelSessionResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 会话信息
-		Session *PSTNSession `json:"Session,omitempty" name:"Session"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeTelSessionResponseParams `json:"Response"`
 }
 
 func (r *DescribeTelSessionResponse) ToJsonString() string {
@@ -1604,7 +1994,6 @@ func (r *DescribeTelSessionResponse) FromJsonString(s string) error {
 }
 
 type ErrStaffItem struct {
-
 	// 坐席邮箱地址
 	StaffEmail *string `json:"StaffEmail,omitempty" name:"StaffEmail"`
 
@@ -1616,7 +2005,6 @@ type ErrStaffItem struct {
 }
 
 type IMCdrInfo struct {
-
 	// 服务记录ID
 	Id *string `json:"Id,omitempty" name:"Id"`
 
@@ -1660,7 +2048,6 @@ type IMCdrInfo struct {
 }
 
 type IVRKeyPressedElement struct {
-
 	// 按键
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Key *string `json:"Key,omitempty" name:"Key"`
@@ -1671,7 +2058,6 @@ type IVRKeyPressedElement struct {
 }
 
 type Message struct {
-
 	// 消息类型
 	Type *string `json:"Type,omitempty" name:"Type"`
 
@@ -1680,7 +2066,6 @@ type Message struct {
 }
 
 type MessageBody struct {
-
 	// 消息时间戳
 	Timestamp *int64 `json:"Timestamp,omitempty" name:"Timestamp"`
 
@@ -1692,7 +2077,6 @@ type MessageBody struct {
 }
 
 type PSTNSession struct {
-
 	// 会话 ID
 	SessionID *string `json:"SessionID,omitempty" name:"SessionID"`
 
@@ -1744,7 +2128,6 @@ type PSTNSession struct {
 }
 
 type PSTNSessionInfo struct {
-
 	// 会话 ID
 	SessionID *string `json:"SessionID,omitempty" name:"SessionID"`
 
@@ -1786,7 +2169,6 @@ type PSTNSessionInfo struct {
 }
 
 type PackageBuyInfo struct {
-
 	// 套餐包Id
 	PackageId *string `json:"PackageId,omitempty" name:"PackageId"`
 
@@ -1807,7 +2189,6 @@ type PackageBuyInfo struct {
 }
 
 type PhoneNumBuyInfo struct {
-
 	// 电话号码
 	PhoneNum *string `json:"PhoneNum,omitempty" name:"PhoneNum"`
 
@@ -1828,7 +2209,6 @@ type PhoneNumBuyInfo struct {
 }
 
 type SdkAppIdBuyInfo struct {
-
 	// 应用ID
 	SdkAppId *int64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
 
@@ -1846,7 +2226,6 @@ type SdkAppIdBuyInfo struct {
 }
 
 type SeatUserInfo struct {
-
 	// 坐席名称
 	Name *string `json:"Name,omitempty" name:"Name"`
 
@@ -1872,7 +2251,6 @@ type SeatUserInfo struct {
 }
 
 type ServeParticipant struct {
-
 	// 坐席邮箱
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Mail *string `json:"Mail,omitempty" name:"Mail"`
@@ -1943,7 +2321,6 @@ type ServeParticipant struct {
 }
 
 type SkillGroupInfoItem struct {
-
 	// 技能组ID
 	SkillGroupId *int64 `json:"SkillGroupId,omitempty" name:"SkillGroupId"`
 
@@ -1971,7 +2348,6 @@ type SkillGroupInfoItem struct {
 }
 
 type SkillGroupItem struct {
-
 	// 技能组ID
 	SkillGroupId *int64 `json:"SkillGroupId,omitempty" name:"SkillGroupId"`
 
@@ -1986,7 +2362,6 @@ type SkillGroupItem struct {
 }
 
 type StaffBuyInfo struct {
-
 	// 购买坐席数量
 	Num *int64 `json:"Num,omitempty" name:"Num"`
 
@@ -1998,7 +2373,6 @@ type StaffBuyInfo struct {
 }
 
 type StaffInfo struct {
-
 	// 坐席名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitempty" name:"Name"`
@@ -2028,7 +2402,6 @@ type StaffInfo struct {
 }
 
 type StaffStatusExtra struct {
-
 	// im - 文本 | tel - 电话 | all - 全媒体
 	Type *string `json:"Type,omitempty" name:"Type"`
 
@@ -2037,7 +2410,6 @@ type StaffStatusExtra struct {
 }
 
 type StaffStatusMetrics struct {
-
 	// 坐席邮箱
 	Email *string `json:"Email,omitempty" name:"Email"`
 
@@ -2075,9 +2447,18 @@ type StaffStatusMetrics struct {
 	ReserveNotReady *bool `json:"ReserveNotReady,omitempty" name:"ReserveNotReady"`
 }
 
+// Predefined struct for user
+type StopAutoCalloutTaskRequestParams struct {
+	// 呼叫中心实例Id
+	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 任务Id
+	TaskId *uint64 `json:"TaskId,omitempty" name:"TaskId"`
+}
+
 type StopAutoCalloutTaskRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 呼叫中心实例Id
 	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
 
@@ -2105,13 +2486,15 @@ func (r *StopAutoCalloutTaskRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type StopAutoCalloutTaskResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type StopAutoCalloutTaskResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *StopAutoCalloutTaskResponseParams `json:"Response"`
 }
 
 func (r *StopAutoCalloutTaskResponse) ToJsonString() string {
@@ -2126,7 +2509,6 @@ func (r *StopAutoCalloutTaskResponse) FromJsonString(s string) error {
 }
 
 type TelCdrInfo struct {
-
 	// 主叫号码
 	Caller *string `json:"Caller,omitempty" name:"Caller"`
 
@@ -2281,9 +2663,21 @@ type TelCdrInfo struct {
 	CustomRecordURL *string `json:"CustomRecordURL,omitempty" name:"CustomRecordURL"`
 }
 
+// Predefined struct for user
+type UnbindStaffSkillGroupListRequestParams struct {
+	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+	SdkAppId *int64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 客服邮箱
+	StaffEmail *string `json:"StaffEmail,omitempty" name:"StaffEmail"`
+
+	// 解绑技能组列表
+	SkillGroupList []*int64 `json:"SkillGroupList,omitempty" name:"SkillGroupList"`
+}
+
 type UnbindStaffSkillGroupListRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
 	SdkAppId *int64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
 
@@ -2315,13 +2709,15 @@ func (r *UnbindStaffSkillGroupListRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type UnbindStaffSkillGroupListResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type UnbindStaffSkillGroupListResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *UnbindStaffSkillGroupListResponseParams `json:"Response"`
 }
 
 func (r *UnbindStaffSkillGroupListResponse) ToJsonString() string {

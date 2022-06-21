@@ -21,14 +21,22 @@ import (
 )
 
 type GetIndustryV1HomeMembersReqPayload struct {
-
 	// 用户ID
 	ID *string `json:"ID,omitempty" name:"ID"`
 }
 
+// Predefined struct for user
+type GetIndustryV1HomeMembersRequestParams struct {
+	// 无
+	Payload *GetIndustryV1HomeMembersReqPayload `json:"Payload,omitempty" name:"Payload"`
+
+	// 无
+	Metadata *ReqMetadata `json:"Metadata,omitempty" name:"Metadata"`
+}
+
 type GetIndustryV1HomeMembersRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 无
 	Payload *GetIndustryV1HomeMembersReqPayload `json:"Payload,omitempty" name:"Payload"`
 
@@ -57,7 +65,6 @@ func (r *GetIndustryV1HomeMembersRequest) FromJsonString(s string) error {
 }
 
 type GetIndustryV1HomeMembersRespData struct {
-
 	// 修改时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EditTime *int64 `json:"EditTime,omitempty" name:"EditTime"`
@@ -100,7 +107,6 @@ type GetIndustryV1HomeMembersRespData struct {
 }
 
 type GetIndustryV1HomeMembersRespFeature struct {
-
 	// 功能名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FeatureName *string `json:"FeatureName,omitempty" name:"FeatureName"`
@@ -111,7 +117,6 @@ type GetIndustryV1HomeMembersRespFeature struct {
 }
 
 type GetIndustryV1HomeMembersRespIndustry struct {
-
 	// 行业ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ID *string `json:"ID,omitempty" name:"ID"`
@@ -122,7 +127,6 @@ type GetIndustryV1HomeMembersRespIndustry struct {
 }
 
 type GetIndustryV1HomeMembersRespPayload struct {
-
 	// 用户级别
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AccountLevel *string `json:"AccountLevel,omitempty" name:"AccountLevel"`
@@ -145,7 +149,6 @@ type GetIndustryV1HomeMembersRespPayload struct {
 }
 
 type GetIndustryV1HomeMembersRespProduct struct {
-
 	// 创建时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
@@ -184,7 +187,6 @@ type GetIndustryV1HomeMembersRespProduct struct {
 }
 
 type GetIndustryV1HomeMembersRespType struct {
-
 	// 类型ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Type *string `json:"Type,omitempty" name:"Type"`
@@ -194,21 +196,23 @@ type GetIndustryV1HomeMembersRespType struct {
 	TypeName *string `json:"TypeName,omitempty" name:"TypeName"`
 }
 
+// Predefined struct for user
+type GetIndustryV1HomeMembersResponseParams struct {
+	// 无
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Metadata *RspMetadata `json:"Metadata,omitempty" name:"Metadata"`
+
+	// 无
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Payload *GetIndustryV1HomeMembersRespPayload `json:"Payload,omitempty" name:"Payload"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type GetIndustryV1HomeMembersResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 无
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		Metadata *RspMetadata `json:"Metadata,omitempty" name:"Metadata"`
-
-		// 无
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		Payload *GetIndustryV1HomeMembersRespPayload `json:"Payload,omitempty" name:"Payload"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *GetIndustryV1HomeMembersResponseParams `json:"Response"`
 }
 
 func (r *GetIndustryV1HomeMembersResponse) ToJsonString() string {
@@ -223,7 +227,6 @@ func (r *GetIndustryV1HomeMembersResponse) FromJsonString(s string) error {
 }
 
 type ReqMetadata struct {
-
 	// 渠道
 	ChannelID *string `json:"ChannelID,omitempty" name:"ChannelID"`
 
@@ -244,7 +247,6 @@ type ReqMetadata struct {
 }
 
 type ReqMetadataLBS struct {
-
 	// 纬度
 	Latitude *float64 `json:"Latitude,omitempty" name:"Latitude"`
 
@@ -253,7 +255,6 @@ type ReqMetadataLBS struct {
 }
 
 type ReqMetadataVagrant struct {
-
 	// 无
 	Key *string `json:"Key,omitempty" name:"Key"`
 
@@ -262,7 +263,6 @@ type ReqMetadataVagrant struct {
 }
 
 type RspMetadata struct {
-
 	// 无
 	Code *int64 `json:"Code,omitempty" name:"Code"`
 

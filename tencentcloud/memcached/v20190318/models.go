@@ -20,9 +20,45 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+// Predefined struct for user
+type DescribeInstancesRequestParams struct {
+	// 枚举范围： AddTimeStamp, InstanceName, ProjectId
+	OrderBy *string `json:"OrderBy,omitempty" name:"OrderBy"`
+
+	// 查找的关键字
+	SearchKeys []*string `json:"SearchKeys,omitempty" name:"SearchKeys"`
+
+	// 子网ID列表
+	UniqSubnetIds []*string `json:"UniqSubnetIds,omitempty" name:"UniqSubnetIds"`
+
+	// VIP列表
+	Vips []*string `json:"Vips,omitempty" name:"Vips"`
+
+	// 0倒序，1正序，默认倒序
+	OrderType *int64 `json:"OrderType,omitempty" name:"OrderType"`
+
+	// 实例名称列表
+	InstanceNames []*string `json:"InstanceNames,omitempty" name:"InstanceNames"`
+
+	// VPC ID列表
+	UniqVpcIds []*string `json:"UniqVpcIds,omitempty" name:"UniqVpcIds"`
+
+	// 项目ID列表
+	ProjectIds []*int64 `json:"ProjectIds,omitempty" name:"ProjectIds"`
+
+	// 偏移量，取Limit整数倍
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 实例列表的大小，参数默认值100
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 实例ID列表
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
+}
+
 type DescribeInstancesRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 枚举范围： AddTimeStamp, InstanceName, ProjectId
 	OrderBy *string `json:"OrderBy,omitempty" name:"OrderBy"`
 
@@ -86,19 +122,21 @@ func (r *DescribeInstancesRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeInstancesResponseParams struct {
+	// 实例详细信息列表
+	InstanceList []*InstanceListInfo `json:"InstanceList,omitempty" name:"InstanceList"`
+
+	// 实例数量
+	TotalNum *int64 `json:"TotalNum,omitempty" name:"TotalNum"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeInstancesResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 实例详细信息列表
-		InstanceList []*InstanceListInfo `json:"InstanceList,omitempty" name:"InstanceList"`
-
-		// 实例数量
-		TotalNum *int64 `json:"TotalNum,omitempty" name:"TotalNum"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeInstancesResponseParams `json:"Response"`
 }
 
 func (r *DescribeInstancesResponse) ToJsonString() string {
@@ -113,7 +151,6 @@ func (r *DescribeInstancesResponse) FromJsonString(s string) error {
 }
 
 type InstanceListInfo struct {
-
 	// 实例修改时间
 	ModTimeStamp *string `json:"ModTimeStamp,omitempty" name:"ModTimeStamp"`
 
@@ -189,7 +226,6 @@ type InstanceListInfo struct {
 }
 
 type TagInfo struct {
-
 	// 标签键
 	TagKey *string `json:"TagKey,omitempty" name:"TagKey"`
 

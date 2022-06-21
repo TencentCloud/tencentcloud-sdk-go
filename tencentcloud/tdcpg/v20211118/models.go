@@ -21,7 +21,6 @@ import (
 )
 
 type Account struct {
-
 	// 数据库账号名
 	AccountName *string `json:"AccountName,omitempty" name:"AccountName"`
 
@@ -39,7 +38,6 @@ type Account struct {
 }
 
 type AvailableRecoveryTimeRange struct {
-
 	// 可回档起始时间。按照RFC3339标准表示，并且使用东八区时区时间，格式为：YYYY-MM-DDThh:mm:ss+08:00。
 	AvailableBeginTime *string `json:"AvailableBeginTime,omitempty" name:"AvailableBeginTime"`
 
@@ -48,7 +46,6 @@ type AvailableRecoveryTimeRange struct {
 }
 
 type Backup struct {
-
 	// 备份集ID，集群内唯一
 	BackupId *int64 `json:"BackupId,omitempty" name:"BackupId"`
 
@@ -74,9 +71,60 @@ type Backup struct {
 	BackupTaskStatus *string `json:"BackupTaskStatus,omitempty" name:"BackupTaskStatus"`
 }
 
+// Predefined struct for user
+type CloneClusterToPointInTimeRequestParams struct {
+	// 可用区
+	Zone *string `json:"Zone,omitempty" name:"Zone"`
+
+	// 数据库版本，目前仅支持 10.17
+	DBVersion *string `json:"DBVersion,omitempty" name:"DBVersion"`
+
+	// CPU核数。取值参考文档【购买指南】
+	CPU *uint64 `json:"CPU,omitempty" name:"CPU"`
+
+	// 内存大小，单位GiB。取值参考文档【购买指南】
+	Memory *uint64 `json:"Memory,omitempty" name:"Memory"`
+
+	// 私有网络ID
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 已配置的私有网络中的子网ID
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+
+	// 集群付费模式
+	// - PREPAID：预付费，即包年包月
+	// - POSTPAID_BY_HOUR：按小时后付费
+	PayMode *string `json:"PayMode,omitempty" name:"PayMode"`
+
+	// 对应的备份数据来源集群ID
+	SourceClusterId *string `json:"SourceClusterId,omitempty" name:"SourceClusterId"`
+
+	// 对应的备份数据时间点。按照RFC3339标准表示，并且使用东八区时区时间。格式为：YYYY-MM-DDThh:mm:ss+08:00。
+	SourceDataPoint *string `json:"SourceDataPoint,omitempty" name:"SourceDataPoint"`
+
+	// 集群名，1-60个字符，可以包含中文、英文、数字和符号"-"、"_"、"."。不输入此参数时默认与ClusterId保持一致。
+	ClusterName *string `json:"ClusterName,omitempty" name:"ClusterName"`
+
+	// 项目Id，默认为0表示默认项目
+	ProjectId *uint64 `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 连接数据库时，Endpoint使用的端口。取值范围为[1,65534]，默认值为5432
+	Port *uint64 `json:"Port,omitempty" name:"Port"`
+
+	// 集群下实例数量。取值范围为[1,4]，默认值为1
+	InstanceCount *uint64 `json:"InstanceCount,omitempty" name:"InstanceCount"`
+
+	// 购买时长，单位：月。取值范围为[1,60]，默认值为1。
+	// 只有当PayMode为PREPAID时生效。
+	Period *uint64 `json:"Period,omitempty" name:"Period"`
+
+	// 是否自动续费，0-不 1-是。默认为0，只有当PayMode为PREPAID时生效。
+	AutoRenewFlag *uint64 `json:"AutoRenewFlag,omitempty" name:"AutoRenewFlag"`
+}
+
 type CloneClusterToPointInTimeRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 可用区
 	Zone *string `json:"Zone,omitempty" name:"Zone"`
 
@@ -159,16 +207,18 @@ func (r *CloneClusterToPointInTimeRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CloneClusterToPointInTimeResponseParams struct {
+	// 订单号
+	DealNameSet []*string `json:"DealNameSet,omitempty" name:"DealNameSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CloneClusterToPointInTimeResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 订单号
-		DealNameSet []*string `json:"DealNameSet,omitempty" name:"DealNameSet"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CloneClusterToPointInTimeResponseParams `json:"Response"`
 }
 
 func (r *CloneClusterToPointInTimeResponse) ToJsonString() string {
@@ -183,7 +233,6 @@ func (r *CloneClusterToPointInTimeResponse) FromJsonString(s string) error {
 }
 
 type Cluster struct {
-
 	// 集群ID，集群的唯一标识
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 
@@ -247,9 +296,27 @@ type Cluster struct {
 	EndpointSet []*Endpoint `json:"EndpointSet,omitempty" name:"EndpointSet"`
 }
 
+// Predefined struct for user
+type CreateClusterInstancesRequestParams struct {
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// CPU核数。取值参考文档【购买指南】
+	CPU *uint64 `json:"CPU,omitempty" name:"CPU"`
+
+	// 内存大小，单位GiB。取值参考文档【购买指南】
+	Memory *uint64 `json:"Memory,omitempty" name:"Memory"`
+
+	// 实例名，1-60个字符，可以包含中文、英文、数字和符号"-"、"_"、"."。不输入此参数时默认与InstanceId一致。
+	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
+
+	// 新建实例的数量，默认为1。单集群下实例数量目前不能超过4个。
+	InstanceCount *uint64 `json:"InstanceCount,omitempty" name:"InstanceCount"`
+}
+
 type CreateClusterInstancesRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 集群ID
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 
@@ -289,16 +356,18 @@ func (r *CreateClusterInstancesRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateClusterInstancesResponseParams struct {
+	// 订单号
+	DealNameSet []*string `json:"DealNameSet,omitempty" name:"DealNameSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreateClusterInstancesResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 订单号
-		DealNameSet []*string `json:"DealNameSet,omitempty" name:"DealNameSet"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreateClusterInstancesResponseParams `json:"Response"`
 }
 
 func (r *CreateClusterInstancesResponse) ToJsonString() string {
@@ -312,9 +381,57 @@ func (r *CreateClusterInstancesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateClusterRequestParams struct {
+	// 可用区
+	Zone *string `json:"Zone,omitempty" name:"Zone"`
+
+	// 数据库版本，目前仅支持 10.17
+	DBVersion *string `json:"DBVersion,omitempty" name:"DBVersion"`
+
+	// 数据库用户密码，必须满足 8-64个字符，至少包含 大写字母、小写字母、数字和符号~!@#$%^&*_-+=`|\(){}[]:;'<>,.?/中的任意三种
+	MasterUserPassword *string `json:"MasterUserPassword,omitempty" name:"MasterUserPassword"`
+
+	// CPU核数。取值参考文档【购买指南】
+	CPU *uint64 `json:"CPU,omitempty" name:"CPU"`
+
+	// 内存大小，单位GiB。取值参考文档【购买指南】
+	Memory *uint64 `json:"Memory,omitempty" name:"Memory"`
+
+	// 私有网络ID
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 已配置的私有网络中的子网ID
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+
+	// 集群付费模式
+	//  - PREPAID：预付费，即包年包月
+	//  - POSTPAID_BY_HOUR：按小时后付费
+	PayMode *string `json:"PayMode,omitempty" name:"PayMode"`
+
+	// 集群名，1-60个字符，可以包含中文、英文、数字和符号"-"、"_"、"."。不输入此参数时默认与ClusterId保持一致
+	ClusterName *string `json:"ClusterName,omitempty" name:"ClusterName"`
+
+	// 项目Id，默认为0表示默认项目
+	ProjectId *uint64 `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 连接数据库时，Endpoint使用的端口。取值范围为[1,65534]，默认值为5432
+	Port *uint64 `json:"Port,omitempty" name:"Port"`
+
+	// 集群下实例数量。取值范围为[1,4]，默认值为1
+	InstanceCount *uint64 `json:"InstanceCount,omitempty" name:"InstanceCount"`
+
+	// 购买时长，单位：月。取值范围为[1,60]，默认值为1。
+	// 只有当PayMode为PREPAID时生效。
+	Period *uint64 `json:"Period,omitempty" name:"Period"`
+
+	// 是否自动续费，0-不 1-是。默认值为0，只有当PayMode为PREPAID时生效。
+	AutoRenewFlag *uint64 `json:"AutoRenewFlag,omitempty" name:"AutoRenewFlag"`
+}
+
 type CreateClusterRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 可用区
 	Zone *string `json:"Zone,omitempty" name:"Zone"`
 
@@ -393,16 +510,18 @@ func (r *CreateClusterRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateClusterResponseParams struct {
+	// 订单号
+	DealNameSet []*string `json:"DealNameSet,omitempty" name:"DealNameSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreateClusterResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 订单号
-		DealNameSet []*string `json:"DealNameSet,omitempty" name:"DealNameSet"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreateClusterResponseParams `json:"Response"`
 }
 
 func (r *CreateClusterResponse) ToJsonString() string {
@@ -416,9 +535,18 @@ func (r *CreateClusterResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteClusterInstancesRequestParams struct {
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 实例ID列表
+	InstanceIdSet []*string `json:"InstanceIdSet,omitempty" name:"InstanceIdSet"`
+}
+
 type DeleteClusterInstancesRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 集群ID
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 
@@ -446,13 +574,15 @@ func (r *DeleteClusterInstancesRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteClusterInstancesResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DeleteClusterInstancesResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DeleteClusterInstancesResponseParams `json:"Response"`
 }
 
 func (r *DeleteClusterInstancesResponse) ToJsonString() string {
@@ -466,9 +596,15 @@ func (r *DeleteClusterInstancesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteClusterRequestParams struct {
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+}
+
 type DeleteClusterRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 集群ID
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 }
@@ -492,13 +628,15 @@ func (r *DeleteClusterRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteClusterResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DeleteClusterResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DeleteClusterResponseParams `json:"Response"`
 }
 
 func (r *DeleteClusterResponse) ToJsonString() string {
@@ -512,9 +650,15 @@ func (r *DeleteClusterResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeAccountsRequestParams struct {
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+}
+
 type DescribeAccountsRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 集群ID
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 }
@@ -538,19 +682,21 @@ func (r *DescribeAccountsRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeAccountsResponseParams struct {
+	// 总条数
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 账号信息列表
+	AccountSet []*Account `json:"AccountSet,omitempty" name:"AccountSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeAccountsResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 总条数
-		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 账号信息列表
-		AccountSet []*Account `json:"AccountSet,omitempty" name:"AccountSet"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeAccountsResponseParams `json:"Response"`
 }
 
 func (r *DescribeAccountsResponse) ToJsonString() string {
@@ -564,9 +710,21 @@ func (r *DescribeAccountsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeClusterBackupsRequestParams struct {
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 页码，取值范围为[1,INF)，默认值为1
+	PageNumber *int64 `json:"PageNumber,omitempty" name:"PageNumber"`
+
+	// 每页个数，取值范围为默认为[1,100]，默认值为20
+	PageSize *int64 `json:"PageSize,omitempty" name:"PageSize"`
+}
+
 type DescribeClusterBackupsRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 集群ID
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 
@@ -598,19 +756,21 @@ func (r *DescribeClusterBackupsRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeClusterBackupsResponseParams struct {
+	// 总条数
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 备份列表信息
+	BackupSet []*Backup `json:"BackupSet,omitempty" name:"BackupSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeClusterBackupsResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 总条数
-		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 备份列表信息
-		BackupSet []*Backup `json:"BackupSet,omitempty" name:"BackupSet"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeClusterBackupsResponseParams `json:"Response"`
 }
 
 func (r *DescribeClusterBackupsResponse) ToJsonString() string {
@@ -624,9 +784,15 @@ func (r *DescribeClusterBackupsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeClusterEndpointsRequestParams struct {
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+}
+
 type DescribeClusterEndpointsRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 集群ID
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 }
@@ -650,19 +816,21 @@ func (r *DescribeClusterEndpointsRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeClusterEndpointsResponseParams struct {
+	// 总条数
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 接入点列表
+	EndpointSet []*Endpoint `json:"EndpointSet,omitempty" name:"EndpointSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeClusterEndpointsResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 总条数
-		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 接入点列表
-		EndpointSet []*Endpoint `json:"EndpointSet,omitempty" name:"EndpointSet"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeClusterEndpointsResponseParams `json:"Response"`
 }
 
 func (r *DescribeClusterEndpointsResponse) ToJsonString() string {
@@ -676,9 +844,39 @@ func (r *DescribeClusterEndpointsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeClusterInstancesRequestParams struct {
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 页码，取值范围为[1,INF)，默认值为1
+	PageNumber *uint64 `json:"PageNumber,omitempty" name:"PageNumber"`
+
+	// 每页个数，取值范围为默认为[1,100]，默认值为20
+	PageSize *uint64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// 目前支持查询条件包括：
+	//  - InstanceId : 实例ID
+	//  - InstanceName : 实例名
+	//  - EndpointId : 接入点ID
+	//  - Status : 实例状态
+	//  - InstanceType : 实例类型
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 排序字段，可选字段：
+	// - CreateTime : 实例创建时间(默认值)
+	// - PayPeriodEndTime : 实例过期时间
+	OrderBy *string `json:"OrderBy,omitempty" name:"OrderBy"`
+
+	// 排序方式，可选字段：
+	// - DESC : 降序(默认值)
+	// - ASC : 升序
+	OrderByType *string `json:"OrderByType,omitempty" name:"OrderByType"`
+}
+
 type DescribeClusterInstancesRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 集群ID
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 
@@ -731,19 +929,21 @@ func (r *DescribeClusterInstancesRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeClusterInstancesResponseParams struct {
+	// 总条数
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 实例列表信息
+	InstanceSet []*Instance `json:"InstanceSet,omitempty" name:"InstanceSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeClusterInstancesResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 总条数
-		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 实例列表信息
-		InstanceSet []*Instance `json:"InstanceSet,omitempty" name:"InstanceSet"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeClusterInstancesResponseParams `json:"Response"`
 }
 
 func (r *DescribeClusterInstancesResponse) ToJsonString() string {
@@ -757,9 +957,18 @@ func (r *DescribeClusterInstancesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeClusterRecoveryTimeRangeRequestParams struct {
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 期望的回档时间点，传入从集群创建时间到当前时间之间的时间点。按照RFC3339标准表示，并且使用东八区时区时间，格式为：YYYY-MM-DDThh:mm:ss+08:00。
+	DataPoint *string `json:"DataPoint,omitempty" name:"DataPoint"`
+}
+
 type DescribeClusterRecoveryTimeRangeRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 集群ID
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 
@@ -787,16 +996,18 @@ func (r *DescribeClusterRecoveryTimeRangeRequest) FromJsonString(s string) error
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeClusterRecoveryTimeRangeResponseParams struct {
+	// 可回档时间范围列表
+	AvailableRecoveryTimeRangeSet []*AvailableRecoveryTimeRange `json:"AvailableRecoveryTimeRangeSet,omitempty" name:"AvailableRecoveryTimeRangeSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeClusterRecoveryTimeRangeResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 可回档时间范围列表
-		AvailableRecoveryTimeRangeSet []*AvailableRecoveryTimeRange `json:"AvailableRecoveryTimeRangeSet,omitempty" name:"AvailableRecoveryTimeRangeSet"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeClusterRecoveryTimeRangeResponseParams `json:"Response"`
 }
 
 func (r *DescribeClusterRecoveryTimeRangeResponse) ToJsonString() string {
@@ -810,9 +1021,36 @@ func (r *DescribeClusterRecoveryTimeRangeResponse) FromJsonString(s string) erro
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeClustersRequestParams struct {
+	// 页码，取值范围为[1,INF)，默认值为1
+	PageNumber *uint64 `json:"PageNumber,omitempty" name:"PageNumber"`
+
+	// 每页条数，取值范围为默认为[1,100]，默认值为20
+	PageSize *uint64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// 目前支持查询条件包括：
+	//  - ClusterId : 集群ID
+	//  - ClusterName : 集群名
+	//  - ProjectId : 项目ID
+	//  - Status : 集群状态
+	//  - PayMode : 付费模式
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 排序字段，可选字段：
+	//  - CreateTime : 集群创建时间(默认值)
+	//  - PayPeriodEndTime : 集群过期时间
+	OrderBy *string `json:"OrderBy,omitempty" name:"OrderBy"`
+
+	// 排序方式，可选字段：
+	//  - DESC : 降序(默认值)
+	//  - ASC : 升序
+	OrderByType *string `json:"OrderByType,omitempty" name:"OrderByType"`
+}
+
 type DescribeClustersRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 页码，取值范围为[1,INF)，默认值为1
 	PageNumber *uint64 `json:"PageNumber,omitempty" name:"PageNumber"`
 
@@ -861,19 +1099,21 @@ func (r *DescribeClustersRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeClustersResponseParams struct {
+	// 总条数
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 集群列表信息
+	ClusterSet []*Cluster `json:"ClusterSet,omitempty" name:"ClusterSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeClustersResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 总条数
-		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 集群列表信息
-		ClusterSet []*Cluster `json:"ClusterSet,omitempty" name:"ClusterSet"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeClustersResponseParams `json:"Response"`
 }
 
 func (r *DescribeClustersResponse) ToJsonString() string {
@@ -887,9 +1127,15 @@ func (r *DescribeClustersResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeResourcesByDealNameRequestParams struct {
+	// 计费订单id（如果计费还没回调业务发货，可能出现错误码InvalidParameterValue.DealNameNotFound，这种情况需要业务重试DescribeResourcesByDealName接口直到成功）
+	DealName *string `json:"DealName,omitempty" name:"DealName"`
+}
+
 type DescribeResourcesByDealNameRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 计费订单id（如果计费还没回调业务发货，可能出现错误码InvalidParameterValue.DealNameNotFound，这种情况需要业务重试DescribeResourcesByDealName接口直到成功）
 	DealName *string `json:"DealName,omitempty" name:"DealName"`
 }
@@ -913,16 +1159,18 @@ func (r *DescribeResourcesByDealNameRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeResourcesByDealNameResponseParams struct {
+	// 资源ID信息列表
+	ResourceIdInfoSet []*ResourceIdInfo `json:"ResourceIdInfoSet,omitempty" name:"ResourceIdInfoSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeResourcesByDealNameResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 资源ID信息列表
-		ResourceIdInfoSet []*ResourceIdInfo `json:"ResourceIdInfoSet,omitempty" name:"ResourceIdInfoSet"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeResourcesByDealNameResponseParams `json:"Response"`
 }
 
 func (r *DescribeResourcesByDealNameResponse) ToJsonString() string {
@@ -937,7 +1185,6 @@ func (r *DescribeResourcesByDealNameResponse) FromJsonString(s string) error {
 }
 
 type Endpoint struct {
-
 	// 连接点ID，集群内唯一
 	EndpointId *string `json:"EndpointId,omitempty" name:"EndpointId"`
 
@@ -975,7 +1222,6 @@ type Endpoint struct {
 }
 
 type Filter struct {
-
 	// 过滤条件名
 	Name *string `json:"Name,omitempty" name:"Name"`
 
@@ -987,7 +1233,6 @@ type Filter struct {
 }
 
 type Instance struct {
-
 	// 实例ID，集群下唯一
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
@@ -1040,9 +1285,18 @@ type Instance struct {
 	InstanceType *string `json:"InstanceType,omitempty" name:"InstanceType"`
 }
 
+// Predefined struct for user
+type IsolateClusterInstancesRequestParams struct {
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 实例ID列表
+	InstanceIdSet []*string `json:"InstanceIdSet,omitempty" name:"InstanceIdSet"`
+}
+
 type IsolateClusterInstancesRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 集群ID
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 
@@ -1070,13 +1324,15 @@ func (r *IsolateClusterInstancesRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type IsolateClusterInstancesResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type IsolateClusterInstancesResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *IsolateClusterInstancesResponseParams `json:"Response"`
 }
 
 func (r *IsolateClusterInstancesResponse) ToJsonString() string {
@@ -1090,9 +1346,15 @@ func (r *IsolateClusterInstancesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type IsolateClusterRequestParams struct {
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+}
+
 type IsolateClusterRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 集群ID
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 }
@@ -1116,13 +1378,15 @@ func (r *IsolateClusterRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type IsolateClusterResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type IsolateClusterResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *IsolateClusterResponseParams `json:"Response"`
 }
 
 func (r *IsolateClusterResponse) ToJsonString() string {
@@ -1136,9 +1400,21 @@ func (r *IsolateClusterResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifyAccountDescriptionRequestParams struct {
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 账号名字
+	AccountName *string `json:"AccountName,omitempty" name:"AccountName"`
+
+	// 账号描述，0-256个字符
+	AccountDescription *string `json:"AccountDescription,omitempty" name:"AccountDescription"`
+}
+
 type ModifyAccountDescriptionRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 集群ID
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 
@@ -1170,13 +1446,15 @@ func (r *ModifyAccountDescriptionRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifyAccountDescriptionResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type ModifyAccountDescriptionResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *ModifyAccountDescriptionResponseParams `json:"Response"`
 }
 
 func (r *ModifyAccountDescriptionResponse) ToJsonString() string {
@@ -1190,9 +1468,23 @@ func (r *ModifyAccountDescriptionResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifyClusterEndpointWanStatusRequestParams struct {
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 接入点ID
+	EndpointId *string `json:"EndpointId,omitempty" name:"EndpointId"`
+
+	// 取值为： 
+	//  - OPEN：开启外网 
+	//  - CLOSE：关闭外网
+	WanStatus *string `json:"WanStatus,omitempty" name:"WanStatus"`
+}
+
 type ModifyClusterEndpointWanStatusRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 集群ID
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 
@@ -1226,13 +1518,15 @@ func (r *ModifyClusterEndpointWanStatusRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifyClusterEndpointWanStatusResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type ModifyClusterEndpointWanStatusResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *ModifyClusterEndpointWanStatusResponseParams `json:"Response"`
 }
 
 func (r *ModifyClusterEndpointWanStatusResponse) ToJsonString() string {
@@ -1246,9 +1540,29 @@ func (r *ModifyClusterEndpointWanStatusResponse) FromJsonString(s string) error 
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifyClusterInstancesSpecRequestParams struct {
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 实例ID列表，目前只支持单个实例修改
+	InstanceIdSet []*string `json:"InstanceIdSet,omitempty" name:"InstanceIdSet"`
+
+	// 修改后的CPU核数。取值参考文档【购买指南】
+	CPU *uint64 `json:"CPU,omitempty" name:"CPU"`
+
+	// 修改后的内存大小，单位GiB。取值参考文档【购买指南】
+	Memory *uint64 `json:"Memory,omitempty" name:"Memory"`
+
+	// 操作时机
+	//  - IMMEDIATE：立即执行 
+	//  - MAINTAIN_PERIOD：维护窗口期执行
+	OperationTiming *string `json:"OperationTiming,omitempty" name:"OperationTiming"`
+}
+
 type ModifyClusterInstancesSpecRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 集群ID
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 
@@ -1290,13 +1604,15 @@ func (r *ModifyClusterInstancesSpecRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifyClusterInstancesSpecResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type ModifyClusterInstancesSpecResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *ModifyClusterInstancesSpecResponseParams `json:"Response"`
 }
 
 func (r *ModifyClusterInstancesSpecResponse) ToJsonString() string {
@@ -1310,9 +1626,18 @@ func (r *ModifyClusterInstancesSpecResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifyClusterNameRequestParams struct {
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 集群名，1-60个字符，可以包含中文、英文、数字和符号"-"、"_"、"."
+	ClusterName *string `json:"ClusterName,omitempty" name:"ClusterName"`
+}
+
 type ModifyClusterNameRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 集群ID
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 
@@ -1340,13 +1665,15 @@ func (r *ModifyClusterNameRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifyClusterNameResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type ModifyClusterNameResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *ModifyClusterNameResponseParams `json:"Response"`
 }
 
 func (r *ModifyClusterNameResponse) ToJsonString() string {
@@ -1360,9 +1687,18 @@ func (r *ModifyClusterNameResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifyClustersAutoRenewFlagRequestParams struct {
+	// 集群ID列表
+	ClusterIdSet []*string `json:"ClusterIdSet,omitempty" name:"ClusterIdSet"`
+
+	// 是否自动续费，0-不 1-是。默认为0，只有当集群的PayMode为PREPAID时生效。
+	AutoRenewFlag *uint64 `json:"AutoRenewFlag,omitempty" name:"AutoRenewFlag"`
+}
+
 type ModifyClustersAutoRenewFlagRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 集群ID列表
 	ClusterIdSet []*string `json:"ClusterIdSet,omitempty" name:"ClusterIdSet"`
 
@@ -1390,13 +1726,15 @@ func (r *ModifyClustersAutoRenewFlagRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifyClustersAutoRenewFlagResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type ModifyClustersAutoRenewFlagResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *ModifyClustersAutoRenewFlagResponseParams `json:"Response"`
 }
 
 func (r *ModifyClustersAutoRenewFlagResponse) ToJsonString() string {
@@ -1410,9 +1748,22 @@ func (r *ModifyClustersAutoRenewFlagResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type RecoverClusterInstancesRequestParams struct {
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 实例ID列表
+	InstanceIdSet []*string `json:"InstanceIdSet,omitempty" name:"InstanceIdSet"`
+
+	// 购买时长，单位：月。取值范围为[1,60]，默认值为1。
+	// 只有当PayMode为PREPAID时生效。
+	Period *uint64 `json:"Period,omitempty" name:"Period"`
+}
+
 type RecoverClusterInstancesRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 集群ID
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 
@@ -1445,13 +1796,15 @@ func (r *RecoverClusterInstancesRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type RecoverClusterInstancesResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type RecoverClusterInstancesResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *RecoverClusterInstancesResponseParams `json:"Response"`
 }
 
 func (r *RecoverClusterInstancesResponse) ToJsonString() string {
@@ -1465,9 +1818,19 @@ func (r *RecoverClusterInstancesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type RecoverClusterRequestParams struct {
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 购买时长，单位：月。取值范围为[1,60]，默认值为1。
+	// 只有当PayMode为PREPAID时生效。
+	Period *uint64 `json:"Period,omitempty" name:"Period"`
+}
+
 type RecoverClusterRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 集群ID
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 
@@ -1496,13 +1859,15 @@ func (r *RecoverClusterRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type RecoverClusterResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type RecoverClusterResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *RecoverClusterResponseParams `json:"Response"`
 }
 
 func (r *RecoverClusterResponse) ToJsonString() string {
@@ -1516,9 +1881,18 @@ func (r *RecoverClusterResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type RenewClusterRequestParams struct {
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 续费时间，单位：月。取值范围为[1,60]，默认值为1。
+	Period *uint64 `json:"Period,omitempty" name:"Period"`
+}
+
 type RenewClusterRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 集群ID
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 
@@ -1546,13 +1920,15 @@ func (r *RenewClusterRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type RenewClusterResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type RenewClusterResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *RenewClusterResponseParams `json:"Response"`
 }
 
 func (r *RenewClusterResponse) ToJsonString() string {
@@ -1566,9 +1942,21 @@ func (r *RenewClusterResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ResetAccountPasswordRequestParams struct {
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 账号名字
+	AccountName *string `json:"AccountName,omitempty" name:"AccountName"`
+
+	// 数据库用户密码，必须满足 8-64个字符，至少包含 大写字母、小写字母、数字和符号~!@#$%^&*_-+=`|(){}[]:;'<>,.?/中的任意三种
+	AccountPassword *string `json:"AccountPassword,omitempty" name:"AccountPassword"`
+}
+
 type ResetAccountPasswordRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 集群ID
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 
@@ -1600,13 +1988,15 @@ func (r *ResetAccountPasswordRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ResetAccountPasswordResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type ResetAccountPasswordResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *ResetAccountPasswordResponseParams `json:"Response"`
 }
 
 func (r *ResetAccountPasswordResponse) ToJsonString() string {
@@ -1621,7 +2011,6 @@ func (r *ResetAccountPasswordResponse) FromJsonString(s string) error {
 }
 
 type ResourceIdInfo struct {
-
 	// 集群ID
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 
@@ -1629,9 +2018,18 @@ type ResourceIdInfo struct {
 	InstanceIdSet []*string `json:"InstanceIdSet,omitempty" name:"InstanceIdSet"`
 }
 
+// Predefined struct for user
+type RestartClusterInstancesRequestParams struct {
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 实例ID列表，目前只支持单个实例重启
+	InstanceIdSet []*string `json:"InstanceIdSet,omitempty" name:"InstanceIdSet"`
+}
+
 type RestartClusterInstancesRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 集群ID
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 
@@ -1659,13 +2057,15 @@ func (r *RestartClusterInstancesRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type RestartClusterInstancesResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type RestartClusterInstancesResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *RestartClusterInstancesResponseParams `json:"Response"`
 }
 
 func (r *RestartClusterInstancesResponse) ToJsonString() string {
@@ -1679,9 +2079,24 @@ func (r *RestartClusterInstancesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type TransformClusterPayModeRequestParams struct {
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 当前付费模式，目前只支持：POSTPAID_BY_HOUR(按小时后付费)
+	CurrentPayMode *string `json:"CurrentPayMode,omitempty" name:"CurrentPayMode"`
+
+	// 目标付费模式，目前只支持：PREPAID(预付费)
+	TargetPayMode *string `json:"TargetPayMode,omitempty" name:"TargetPayMode"`
+
+	// 购买时长，单位：月。取值范围为[1,60]，默认值为1。
+	Period *uint64 `json:"Period,omitempty" name:"Period"`
+}
+
 type TransformClusterPayModeRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 集群ID
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 
@@ -1717,13 +2132,15 @@ func (r *TransformClusterPayModeRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type TransformClusterPayModeResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type TransformClusterPayModeResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *TransformClusterPayModeResponseParams `json:"Response"`
 }
 
 func (r *TransformClusterPayModeResponse) ToJsonString() string {

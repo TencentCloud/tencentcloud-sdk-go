@@ -21,7 +21,6 @@ import (
 )
 
 type AccountInfo struct {
-
 	// 账号类型
 	AccountType *uint64 `json:"AccountType,omitempty" name:"AccountType"`
 
@@ -35,8 +34,14 @@ type AccountInfo struct {
 	OtherAccount *OtherAccountInfo `json:"OtherAccount,omitempty" name:"OtherAccount"`
 }
 
+// Predefined struct for user
+type DescribeRiskAssessmentRequestParams struct {
+
+}
+
 type DescribeRiskAssessmentRequest struct {
 	*tchttp.BaseRequest
+	
 }
 
 func (r *DescribeRiskAssessmentRequest) ToJsonString() string {
@@ -51,19 +56,22 @@ func (r *DescribeRiskAssessmentRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRiskAssessmentRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeRiskAssessmentResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeRiskAssessmentResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeRiskAssessmentResponseParams `json:"Response"`
 }
 
 func (r *DescribeRiskAssessmentResponse) ToJsonString() string {
@@ -77,9 +85,15 @@ func (r *DescribeRiskAssessmentResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeRiskModelRequestParams struct {
+	// 业务入参
+	BusinessSecurityData *InputDescribeRiskModelData `json:"BusinessSecurityData,omitempty" name:"BusinessSecurityData"`
+}
+
 type DescribeRiskModelRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 业务入参
 	BusinessSecurityData *InputDescribeRiskModelData `json:"BusinessSecurityData,omitempty" name:"BusinessSecurityData"`
 }
@@ -103,16 +117,18 @@ func (r *DescribeRiskModelRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeRiskModelResponseParams struct {
+	// 业务出参
+	Data *OutputDescribeRiskModel `json:"Data,omitempty" name:"Data"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeRiskModelResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 业务出参
-		Data *OutputDescribeRiskModel `json:"Data,omitempty" name:"Data"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeRiskModelResponseParams `json:"Response"`
 }
 
 func (r *DescribeRiskModelResponse) ToJsonString() string {
@@ -126,9 +142,15 @@ func (r *DescribeRiskModelResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeRiskTrendsRequestParams struct {
+	// 业务入参
+	BusinessSecurityData *InputFrontRisk `json:"BusinessSecurityData,omitempty" name:"BusinessSecurityData"`
+}
+
 type DescribeRiskTrendsRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 业务入参
 	BusinessSecurityData *InputFrontRisk `json:"BusinessSecurityData,omitempty" name:"BusinessSecurityData"`
 }
@@ -152,16 +174,18 @@ func (r *DescribeRiskTrendsRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeRiskTrendsResponseParams struct {
+	// 业务出参
+	Data *OutputFrontRiskData `json:"Data,omitempty" name:"Data"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeRiskTrendsResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 业务出参
-		Data *OutputFrontRiskData `json:"Data,omitempty" name:"Data"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeRiskTrendsResponseParams `json:"Response"`
 }
 
 func (r *DescribeRiskTrendsResponse) ToJsonString() string {
@@ -176,7 +200,6 @@ func (r *DescribeRiskTrendsResponse) FromJsonString(s string) error {
 }
 
 type InputCryptoManageMarketingRisk struct {
-
 	// 是否授权
 	IsAuthorized *string `json:"IsAuthorized,omitempty" name:"IsAuthorized"`
 
@@ -188,7 +211,6 @@ type InputCryptoManageMarketingRisk struct {
 }
 
 type InputDescribeRiskModelData struct {
-
 	// 业务参数加密后的签名值
 	UserData *string `json:"UserData,omitempty" name:"UserData"`
 
@@ -203,7 +225,6 @@ type InputDescribeRiskModelData struct {
 }
 
 type InputDetails struct {
-
 	// 字段名称
 	FieldName *string `json:"FieldName,omitempty" name:"FieldName"`
 
@@ -212,7 +233,6 @@ type InputDetails struct {
 }
 
 type InputFrontRisk struct {
-
 	// 事件ID
 	EventId *int64 `json:"EventId,omitempty" name:"EventId"`
 
@@ -233,7 +253,6 @@ type InputFrontRisk struct {
 }
 
 type InputManageMarketingRisk struct {
-
 	// 账号信息。
 	Account *AccountInfo `json:"Account,omitempty" name:"Account"`
 
@@ -307,9 +326,18 @@ type InputManageMarketingRisk struct {
 	Platform *string `json:"Platform,omitempty" name:"Platform"`
 }
 
+// Predefined struct for user
+type ManageMarketingRiskRequestParams struct {
+	// 业务入参
+	BusinessSecurityData *InputManageMarketingRisk `json:"BusinessSecurityData,omitempty" name:"BusinessSecurityData"`
+
+	// 业务入参
+	BusinessCryptoData *InputCryptoManageMarketingRisk `json:"BusinessCryptoData,omitempty" name:"BusinessCryptoData"`
+}
+
 type ManageMarketingRiskRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 业务入参
 	BusinessSecurityData *InputManageMarketingRisk `json:"BusinessSecurityData,omitempty" name:"BusinessSecurityData"`
 
@@ -337,16 +365,18 @@ func (r *ManageMarketingRiskRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ManageMarketingRiskResponseParams struct {
+	// 业务出参
+	Data *OutputManageMarketingRisk `json:"Data,omitempty" name:"Data"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type ManageMarketingRiskResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 业务出参
-		Data *OutputManageMarketingRisk `json:"Data,omitempty" name:"Data"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *ManageMarketingRiskResponseParams `json:"Response"`
 }
 
 func (r *ManageMarketingRiskResponse) ToJsonString() string {
@@ -361,7 +391,6 @@ func (r *ManageMarketingRiskResponse) FromJsonString(s string) error {
 }
 
 type OnlineScamInfo struct {
-
 	// 内容标签。
 	ContentLabel *string `json:"ContentLabel,omitempty" name:"ContentLabel"`
 
@@ -383,7 +412,6 @@ type OnlineScamInfo struct {
 }
 
 type OtherAccountInfo struct {
-
 	// id
 	AccountId *string `json:"AccountId,omitempty" name:"AccountId"`
 
@@ -395,7 +423,6 @@ type OtherAccountInfo struct {
 }
 
 type OutputDescribeRiskModel struct {
-
 	// 请求返回状态值，0为成功，别的结合Message查看
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Code *int64 `json:"Code,omitempty" name:"Code"`
@@ -408,13 +435,11 @@ type OutputDescribeRiskModel struct {
 }
 
 type OutputDescribeRiskModelValue struct {
-
 	// 模型分数值
 	ApplyScore *float64 `json:"ApplyScore,omitempty" name:"ApplyScore"`
 }
 
 type OutputFrontRisk struct {
-
 	// 名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitempty" name:"Name"`
@@ -425,7 +450,6 @@ type OutputFrontRisk struct {
 }
 
 type OutputFrontRiskData struct {
-
 	// 返回码[0：成功；非0：标识失败错误码]。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Code *int64 `json:"Code,omitempty" name:"Code"`
@@ -440,7 +464,6 @@ type OutputFrontRiskData struct {
 }
 
 type OutputFrontRiskValue struct {
-
 	// 请求次数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Requests *int64 `json:"Requests,omitempty" name:"Requests"`
@@ -451,7 +474,6 @@ type OutputFrontRiskValue struct {
 }
 
 type OutputManageMarketingRisk struct {
-
 	// 返回码。0表示成功，非0标识失败错误码。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Code *int64 `json:"Code,omitempty" name:"Code"`
@@ -470,7 +492,6 @@ type OutputManageMarketingRisk struct {
 }
 
 type OutputManageMarketingRiskValue struct {
-
 	// 账号ID。对应输入参数：
 	// AccountType是1时，对应QQ的OpenID。
 	// AccountType是2时，对应微信的OpenID/UnionID。
@@ -535,7 +556,6 @@ type OutputManageMarketingRiskValue struct {
 }
 
 type QQAccountInfo struct {
-
 	// QQ的OpenID。
 	QQOpenId *string `json:"QQOpenId,omitempty" name:"QQOpenId"`
 
@@ -553,7 +573,6 @@ type QQAccountInfo struct {
 }
 
 type SponsorInfo struct {
-
 	// OpenID
 	SponsorOpenId *string `json:"SponsorOpenId,omitempty" name:"SponsorOpenId"`
 
@@ -571,7 +590,6 @@ type SponsorInfo struct {
 }
 
 type WeChatAccountInfo struct {
-
 	// 微信的OpenID/UnionID 。
 	WeChatOpenId *string `json:"WeChatOpenId,omitempty" name:"WeChatOpenId"`
 

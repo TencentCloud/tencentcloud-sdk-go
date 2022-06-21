@@ -21,7 +21,6 @@ import (
 )
 
 type AgePortrait struct {
-
 	// 年龄区间
 	AgeRange *string `json:"AgeRange,omitempty" name:"AgeRange"`
 
@@ -30,13 +29,11 @@ type AgePortrait struct {
 }
 
 type AgePortraitInfo struct {
-
 	// 用户年龄画像数组
 	PortraitSet []*AgePortrait `json:"PortraitSet,omitempty" name:"PortraitSet"`
 }
 
 type BrandReportArticle struct {
-
 	// 文章标题
 	Title *string `json:"Title,omitempty" name:"Title"`
 
@@ -66,7 +63,6 @@ type BrandReportArticle struct {
 }
 
 type Comment struct {
-
 	// 评论的日期
 	Date *string `json:"Date,omitempty" name:"Date"`
 
@@ -78,7 +74,6 @@ type Comment struct {
 }
 
 type CommentInfo struct {
-
 	// 用户评论内容
 	Comment *string `json:"Comment,omitempty" name:"Comment"`
 
@@ -87,7 +82,6 @@ type CommentInfo struct {
 }
 
 type DateCount struct {
-
 	// 统计日期
 	Date *string `json:"Date,omitempty" name:"Date"`
 
@@ -95,9 +89,21 @@ type DateCount struct {
 	Count *uint64 `json:"Count,omitempty" name:"Count"`
 }
 
+// Predefined struct for user
+type DescribeBrandCommentCountRequestParams struct {
+	// 品牌ID
+	BrandId *string `json:"BrandId,omitempty" name:"BrandId"`
+
+	// 查询开始日期
+	StartDate *string `json:"StartDate,omitempty" name:"StartDate"`
+
+	// 查询结束日期
+	EndDate *string `json:"EndDate,omitempty" name:"EndDate"`
+}
+
 type DescribeBrandCommentCountRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 品牌ID
 	BrandId *string `json:"BrandId,omitempty" name:"BrandId"`
 
@@ -129,16 +135,18 @@ func (r *DescribeBrandCommentCountRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeBrandCommentCountResponseParams struct {
+	// 按天统计好评/差评数
+	CommentSet []*Comment `json:"CommentSet,omitempty" name:"CommentSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeBrandCommentCountResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 按天统计好评/差评数
-		CommentSet []*Comment `json:"CommentSet,omitempty" name:"CommentSet"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeBrandCommentCountResponseParams `json:"Response"`
 }
 
 func (r *DescribeBrandCommentCountResponse) ToJsonString() string {
@@ -152,9 +160,21 @@ func (r *DescribeBrandCommentCountResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeBrandExposureRequestParams struct {
+	// 品牌ID
+	BrandId *string `json:"BrandId,omitempty" name:"BrandId"`
+
+	// 查询开始时间
+	StartDate *string `json:"StartDate,omitempty" name:"StartDate"`
+
+	// 查询结束时间
+	EndDate *string `json:"EndDate,omitempty" name:"EndDate"`
+}
+
 type DescribeBrandExposureRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 品牌ID
 	BrandId *string `json:"BrandId,omitempty" name:"BrandId"`
 
@@ -186,19 +206,21 @@ func (r *DescribeBrandExposureRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeBrandExposureResponseParams struct {
+	// 累计曝光量
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 按天计算的统计数据
+	DateCountSet []*DateCount `json:"DateCountSet,omitempty" name:"DateCountSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeBrandExposureResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 累计曝光量
-		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 按天计算的统计数据
-		DateCountSet []*DateCount `json:"DateCountSet,omitempty" name:"DateCountSet"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeBrandExposureResponseParams `json:"Response"`
 }
 
 func (r *DescribeBrandExposureResponse) ToJsonString() string {
@@ -212,9 +234,21 @@ func (r *DescribeBrandExposureResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeBrandMediaReportRequestParams struct {
+	// 品牌ID
+	BrandId *string `json:"BrandId,omitempty" name:"BrandId"`
+
+	// 查询开始时间
+	StartDate *string `json:"StartDate,omitempty" name:"StartDate"`
+
+	// 查询结束时间
+	EndDate *string `json:"EndDate,omitempty" name:"EndDate"`
+}
+
 type DescribeBrandMediaReportRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 品牌ID
 	BrandId *string `json:"BrandId,omitempty" name:"BrandId"`
 
@@ -246,19 +280,21 @@ func (r *DescribeBrandMediaReportRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeBrandMediaReportResponseParams struct {
+	// 查询范围内文章总数
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 按天计算的每天文章数
+	DateCountSet []*DateCount `json:"DateCountSet,omitempty" name:"DateCountSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeBrandMediaReportResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 查询范围内文章总数
-		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 按天计算的每天文章数
-		DateCountSet []*DateCount `json:"DateCountSet,omitempty" name:"DateCountSet"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeBrandMediaReportResponseParams `json:"Response"`
 }
 
 func (r *DescribeBrandMediaReportResponse) ToJsonString() string {
@@ -272,9 +308,27 @@ func (r *DescribeBrandMediaReportResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeBrandNegCommentsRequestParams struct {
+	// 品牌ID
+	BrandId *string `json:"BrandId,omitempty" name:"BrandId"`
+
+	// 查询开始时间
+	StartDate *string `json:"StartDate,omitempty" name:"StartDate"`
+
+	// 查询结束时间
+	EndDate *string `json:"EndDate,omitempty" name:"EndDate"`
+
+	// 查询条数上限，默认20
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 查询偏移，默认从0开始
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+}
+
 type DescribeBrandNegCommentsRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 品牌ID
 	BrandId *string `json:"BrandId,omitempty" name:"BrandId"`
 
@@ -314,19 +368,21 @@ func (r *DescribeBrandNegCommentsRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeBrandNegCommentsResponseParams struct {
+	// 评论列表
+	BrandCommentSet []*CommentInfo `json:"BrandCommentSet,omitempty" name:"BrandCommentSet"`
+
+	// 总的差评个数
+	TotalComments *uint64 `json:"TotalComments,omitempty" name:"TotalComments"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeBrandNegCommentsResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 评论列表
-		BrandCommentSet []*CommentInfo `json:"BrandCommentSet,omitempty" name:"BrandCommentSet"`
-
-		// 总的差评个数
-		TotalComments *uint64 `json:"TotalComments,omitempty" name:"TotalComments"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeBrandNegCommentsResponseParams `json:"Response"`
 }
 
 func (r *DescribeBrandNegCommentsResponse) ToJsonString() string {
@@ -340,9 +396,27 @@ func (r *DescribeBrandNegCommentsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeBrandPosCommentsRequestParams struct {
+	// 品牌ID
+	BrandId *string `json:"BrandId,omitempty" name:"BrandId"`
+
+	// 查询开始时间
+	StartDate *string `json:"StartDate,omitempty" name:"StartDate"`
+
+	// 查询结束时间
+	EndDate *string `json:"EndDate,omitempty" name:"EndDate"`
+
+	// 查询条数上限，默认20
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 查询偏移，从0开始
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+}
+
 type DescribeBrandPosCommentsRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 品牌ID
 	BrandId *string `json:"BrandId,omitempty" name:"BrandId"`
 
@@ -382,19 +456,21 @@ func (r *DescribeBrandPosCommentsRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeBrandPosCommentsResponseParams struct {
+	// 评论列表
+	BrandCommentSet []*CommentInfo `json:"BrandCommentSet,omitempty" name:"BrandCommentSet"`
+
+	// 总的好评个数
+	TotalComments *uint64 `json:"TotalComments,omitempty" name:"TotalComments"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeBrandPosCommentsResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 评论列表
-		BrandCommentSet []*CommentInfo `json:"BrandCommentSet,omitempty" name:"BrandCommentSet"`
-
-		// 总的好评个数
-		TotalComments *uint64 `json:"TotalComments,omitempty" name:"TotalComments"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeBrandPosCommentsResponseParams `json:"Response"`
 }
 
 func (r *DescribeBrandPosCommentsResponse) ToJsonString() string {
@@ -408,9 +484,30 @@ func (r *DescribeBrandPosCommentsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeBrandSocialOpinionRequestParams struct {
+	// 品牌ID
+	BrandId *string `json:"BrandId,omitempty" name:"BrandId"`
+
+	// 检索开始时间
+	StartDate *string `json:"StartDate,omitempty" name:"StartDate"`
+
+	// 检索结束时间
+	EndDate *string `json:"EndDate,omitempty" name:"EndDate"`
+
+	// 查询偏移，默认从0开始
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 查询条数上限，默认20
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 列表显示标记，若为true，则返回文章列表详情
+	ShowList *bool `json:"ShowList,omitempty" name:"ShowList"`
+}
+
 type DescribeBrandSocialOpinionRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 品牌ID
 	BrandId *string `json:"BrandId,omitempty" name:"BrandId"`
 
@@ -454,25 +551,27 @@ func (r *DescribeBrandSocialOpinionRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeBrandSocialOpinionResponseParams struct {
+	// 文章总数
+	ArticleCount *uint64 `json:"ArticleCount,omitempty" name:"ArticleCount"`
+
+	// 来源统计总数
+	FromCount *uint64 `json:"FromCount,omitempty" name:"FromCount"`
+
+	// 疑似负面报道总数
+	AdverseCount *uint64 `json:"AdverseCount,omitempty" name:"AdverseCount"`
+
+	// 文章列表详情
+	ArticleSet []*BrandReportArticle `json:"ArticleSet,omitempty" name:"ArticleSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeBrandSocialOpinionResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 文章总数
-		ArticleCount *uint64 `json:"ArticleCount,omitempty" name:"ArticleCount"`
-
-		// 来源统计总数
-		FromCount *uint64 `json:"FromCount,omitempty" name:"FromCount"`
-
-		// 疑似负面报道总数
-		AdverseCount *uint64 `json:"AdverseCount,omitempty" name:"AdverseCount"`
-
-		// 文章列表详情
-		ArticleSet []*BrandReportArticle `json:"ArticleSet,omitempty" name:"ArticleSet"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeBrandSocialOpinionResponseParams `json:"Response"`
 }
 
 func (r *DescribeBrandSocialOpinionResponse) ToJsonString() string {
@@ -486,9 +585,21 @@ func (r *DescribeBrandSocialOpinionResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeBrandSocialReportRequestParams struct {
+	// 品牌ID
+	BrandId *string `json:"BrandId,omitempty" name:"BrandId"`
+
+	// 查询开始时间
+	StartDate *string `json:"StartDate,omitempty" name:"StartDate"`
+
+	// 查询结束时间
+	EndDate *string `json:"EndDate,omitempty" name:"EndDate"`
+}
+
 type DescribeBrandSocialReportRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 品牌ID
 	BrandId *string `json:"BrandId,omitempty" name:"BrandId"`
 
@@ -520,19 +631,21 @@ func (r *DescribeBrandSocialReportRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeBrandSocialReportResponseParams struct {
+	// 累计统计数据
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 按天计算的统计数据
+	DateCountSet []*DateCount `json:"DateCountSet,omitempty" name:"DateCountSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeBrandSocialReportResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 累计统计数据
-		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 按天计算的统计数据
-		DateCountSet []*DateCount `json:"DateCountSet,omitempty" name:"DateCountSet"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeBrandSocialReportResponseParams `json:"Response"`
 }
 
 func (r *DescribeBrandSocialReportResponse) ToJsonString() string {
@@ -546,9 +659,30 @@ func (r *DescribeBrandSocialReportResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeIndustryNewsRequestParams struct {
+	// 行业ID
+	IndustryId *string `json:"IndustryId,omitempty" name:"IndustryId"`
+
+	// 查询开始时间
+	StartDate *string `json:"StartDate,omitempty" name:"StartDate"`
+
+	// 查询结束时间
+	EndDate *string `json:"EndDate,omitempty" name:"EndDate"`
+
+	// 是否显示列表，若为 true，则返回文章列表
+	ShowList *bool `json:"ShowList,omitempty" name:"ShowList"`
+
+	// 查询偏移，默认从0开始
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 查询条数上限，默认20
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
 type DescribeIndustryNewsRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 行业ID
 	IndustryId *string `json:"IndustryId,omitempty" name:"IndustryId"`
 
@@ -592,28 +726,30 @@ func (r *DescribeIndustryNewsRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeIndustryNewsResponseParams struct {
+	// 总计文章数量
+	NewsCount *uint64 `json:"NewsCount,omitempty" name:"NewsCount"`
+
+	// 总计来源数量
+	FromCount *uint64 `json:"FromCount,omitempty" name:"FromCount"`
+
+	// 总计疑似负面数量
+	AdverseCount *uint64 `json:"AdverseCount,omitempty" name:"AdverseCount"`
+
+	// 文章列表
+	NewsSet []*IndustryNews `json:"NewsSet,omitempty" name:"NewsSet"`
+
+	// 按天统计的数量列表
+	DateCountSet []*DateCount `json:"DateCountSet,omitempty" name:"DateCountSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeIndustryNewsResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 总计文章数量
-		NewsCount *uint64 `json:"NewsCount,omitempty" name:"NewsCount"`
-
-		// 总计来源数量
-		FromCount *uint64 `json:"FromCount,omitempty" name:"FromCount"`
-
-		// 总计疑似负面数量
-		AdverseCount *uint64 `json:"AdverseCount,omitempty" name:"AdverseCount"`
-
-		// 文章列表
-		NewsSet []*IndustryNews `json:"NewsSet,omitempty" name:"NewsSet"`
-
-		// 按天统计的数量列表
-		DateCountSet []*DateCount `json:"DateCountSet,omitempty" name:"DateCountSet"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeIndustryNewsResponseParams `json:"Response"`
 }
 
 func (r *DescribeIndustryNewsResponse) ToJsonString() string {
@@ -627,9 +763,15 @@ func (r *DescribeIndustryNewsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeUserPortraitRequestParams struct {
+	// 品牌ID
+	BrandId *string `json:"BrandId,omitempty" name:"BrandId"`
+}
+
 type DescribeUserPortraitRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 品牌ID
 	BrandId *string `json:"BrandId,omitempty" name:"BrandId"`
 }
@@ -653,28 +795,30 @@ func (r *DescribeUserPortraitRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeUserPortraitResponseParams struct {
+	// 年龄画像
+	Age *AgePortraitInfo `json:"Age,omitempty" name:"Age"`
+
+	// 性别画像
+	Gender *GenderPortraitInfo `json:"Gender,omitempty" name:"Gender"`
+
+	// 省份画像
+	Province *ProvincePortraitInfo `json:"Province,omitempty" name:"Province"`
+
+	// 电影喜好画像
+	Movie *MoviePortraitInfo `json:"Movie,omitempty" name:"Movie"`
+
+	// 明星喜好画像
+	Star *StarPortraitInfo `json:"Star,omitempty" name:"Star"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeUserPortraitResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 年龄画像
-		Age *AgePortraitInfo `json:"Age,omitempty" name:"Age"`
-
-		// 性别画像
-		Gender *GenderPortraitInfo `json:"Gender,omitempty" name:"Gender"`
-
-		// 省份画像
-		Province *ProvincePortraitInfo `json:"Province,omitempty" name:"Province"`
-
-		// 电影喜好画像
-		Movie *MoviePortraitInfo `json:"Movie,omitempty" name:"Movie"`
-
-		// 明星喜好画像
-		Star *StarPortraitInfo `json:"Star,omitempty" name:"Star"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeUserPortraitResponseParams `json:"Response"`
 }
 
 func (r *DescribeUserPortraitResponse) ToJsonString() string {
@@ -689,7 +833,6 @@ func (r *DescribeUserPortraitResponse) FromJsonString(s string) error {
 }
 
 type GenderPortrait struct {
-
 	// 性别
 	Gender *string `json:"Gender,omitempty" name:"Gender"`
 
@@ -698,13 +841,11 @@ type GenderPortrait struct {
 }
 
 type GenderPortraitInfo struct {
-
 	// 用户性别画像数组
 	PortraitSet []*GenderPortrait `json:"PortraitSet,omitempty" name:"PortraitSet"`
 }
 
 type IndustryNews struct {
-
 	// 行业报道ID
 	IndustryId *string `json:"IndustryId,omitempty" name:"IndustryId"`
 
@@ -734,7 +875,6 @@ type IndustryNews struct {
 }
 
 type MoviePortrait struct {
-
 	// 电影名称
 	Name *string `json:"Name,omitempty" name:"Name"`
 
@@ -743,13 +883,11 @@ type MoviePortrait struct {
 }
 
 type MoviePortraitInfo struct {
-
 	// 用户喜好电影画像数组
 	PortraitSet []*MoviePortrait `json:"PortraitSet,omitempty" name:"PortraitSet"`
 }
 
 type ProvincePortrait struct {
-
 	// 省份名称
 	Province *string `json:"Province,omitempty" name:"Province"`
 
@@ -758,13 +896,11 @@ type ProvincePortrait struct {
 }
 
 type ProvincePortraitInfo struct {
-
 	// 用户省份画像数组
 	PortraitSet []*ProvincePortrait `json:"PortraitSet,omitempty" name:"PortraitSet"`
 }
 
 type StarPortrait struct {
-
 	// 喜欢的明星名字
 	Name *string `json:"Name,omitempty" name:"Name"`
 
@@ -773,7 +909,6 @@ type StarPortrait struct {
 }
 
 type StarPortraitInfo struct {
-
 	// 用户喜好的明星画像数组
 	PortraitSet []*StarPortrait `json:"PortraitSet,omitempty" name:"PortraitSet"`
 }

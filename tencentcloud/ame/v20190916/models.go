@@ -21,7 +21,6 @@ import (
 )
 
 type Album struct {
-
 	// 专辑名
 	AlbumName *string `json:"AlbumName,omitempty" name:"AlbumName"`
 
@@ -31,7 +30,6 @@ type Album struct {
 }
 
 type ApplicationLicenseInput struct {
-
 	// 应用名称，注：后面三个字段AndroidPackageName、IOSBundleId、PcIdentifier，三者选填一个
 	AppName *string `json:"AppName,omitempty" name:"AppName"`
 
@@ -46,13 +44,11 @@ type ApplicationLicenseInput struct {
 }
 
 type Artist struct {
-
 	// 歌手名
 	ArtistName *string `json:"ArtistName,omitempty" name:"ArtistName"`
 }
 
 type AuthInfo struct {
-
 	// 主体名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubjectName *string `json:"SubjectName,omitempty" name:"SubjectName"`
@@ -80,9 +76,15 @@ type AuthInfo struct {
 	Id *string `json:"Id,omitempty" name:"Id"`
 }
 
+// Predefined struct for user
+type BatchDescribeKTVMusicDetailsRequestParams struct {
+	// 歌曲Id列表，注：列表最大长度为50
+	MusicIds []*string `json:"MusicIds,omitempty" name:"MusicIds"`
+}
+
 type BatchDescribeKTVMusicDetailsRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 歌曲Id列表，注：列表最大长度为50
 	MusicIds []*string `json:"MusicIds,omitempty" name:"MusicIds"`
 }
@@ -106,19 +108,21 @@ func (r *BatchDescribeKTVMusicDetailsRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type BatchDescribeKTVMusicDetailsResponseParams struct {
+	// 歌曲详情列表信息
+	KTVMusicDetailInfoSet []*KTVMusicDetailInfo `json:"KTVMusicDetailInfoSet,omitempty" name:"KTVMusicDetailInfoSet"`
+
+	// 不存在的歌曲 ID 列表。
+	NotExistMusicIdSet []*string `json:"NotExistMusicIdSet,omitempty" name:"NotExistMusicIdSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type BatchDescribeKTVMusicDetailsResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 歌曲详情列表信息
-		KTVMusicDetailInfoSet []*KTVMusicDetailInfo `json:"KTVMusicDetailInfoSet,omitempty" name:"KTVMusicDetailInfoSet"`
-
-		// 不存在的歌曲 ID 列表。
-		NotExistMusicIdSet []*string `json:"NotExistMusicIdSet,omitempty" name:"NotExistMusicIdSet"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *BatchDescribeKTVMusicDetailsResponseParams `json:"Response"`
 }
 
 func (r *BatchDescribeKTVMusicDetailsResponse) ToJsonString() string {
@@ -133,7 +137,6 @@ func (r *BatchDescribeKTVMusicDetailsResponse) FromJsonString(s string) error {
 }
 
 type ChorusClip struct {
-
 	// 副歌时间，单位：毫秒
 	StartTime *int64 `json:"StartTime,omitempty" name:"StartTime"`
 
@@ -141,9 +144,25 @@ type ChorusClip struct {
 	EndTime *int64 `json:"EndTime,omitempty" name:"EndTime"`
 }
 
+// Predefined struct for user
+type CreateKTVRobotRequestParams struct {
+	// RTC厂商类型，取值有：
+	// <li>TRTC</li>
+	RTCSystem *string `json:"RTCSystem,omitempty" name:"RTCSystem"`
+
+	// 进房参数。
+	JoinRoomInput *JoinRoomInput `json:"JoinRoomInput,omitempty" name:"JoinRoomInput"`
+
+	// license基础信息
+	ApplicationLicenseInput *ApplicationLicenseInput `json:"ApplicationLicenseInput,omitempty" name:"ApplicationLicenseInput"`
+
+	// 创建机器人时初始化参数。
+	SyncRobotCommands []*SyncRobotCommand `json:"SyncRobotCommands,omitempty" name:"SyncRobotCommands"`
+}
+
 type CreateKTVRobotRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// RTC厂商类型，取值有：
 	// <li>TRTC</li>
 	RTCSystem *string `json:"RTCSystem,omitempty" name:"RTCSystem"`
@@ -180,16 +199,18 @@ func (r *CreateKTVRobotRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateKTVRobotResponseParams struct {
+	// 机器人Id。
+	RobotId *string `json:"RobotId,omitempty" name:"RobotId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreateKTVRobotResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 机器人Id。
-		RobotId *string `json:"RobotId,omitempty" name:"RobotId"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreateKTVRobotResponseParams `json:"Response"`
 }
 
 func (r *CreateKTVRobotResponse) ToJsonString() string {
@@ -204,7 +225,6 @@ func (r *CreateKTVRobotResponse) FromJsonString(s string) error {
 }
 
 type DataInfo struct {
-
 	// Song Name
 	Name *string `json:"Name,omitempty" name:"Name"`
 
@@ -224,9 +244,21 @@ type DataInfo struct {
 	TagNames []*string `json:"TagNames,omitempty" name:"TagNames"`
 }
 
+// Predefined struct for user
+type DescribeAuthInfoRequestParams struct {
+	// 偏移量：Offset=Offset+Limit
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 数据条数
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 搜索关键字
+	Key *string `json:"Key,omitempty" name:"Key"`
+}
+
 type DescribeAuthInfoRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 偏移量：Offset=Offset+Limit
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
@@ -258,19 +290,21 @@ func (r *DescribeAuthInfoRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeAuthInfoResponseParams struct {
+	// 授权项目列表
+	AuthInfo []*AuthInfo `json:"AuthInfo,omitempty" name:"AuthInfo"`
+
+	// 总数
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeAuthInfoResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 授权项目列表
-		AuthInfo []*AuthInfo `json:"AuthInfo,omitempty" name:"AuthInfo"`
-
-		// 总数
-		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeAuthInfoResponseParams `json:"Response"`
 }
 
 func (r *DescribeAuthInfoResponse) ToJsonString() string {
@@ -284,9 +318,15 @@ func (r *DescribeAuthInfoResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeCloudMusicPurchasedRequestParams struct {
+	// 授权项目Id
+	AuthInfoId *string `json:"AuthInfoId,omitempty" name:"AuthInfoId"`
+}
+
 type DescribeCloudMusicPurchasedRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 授权项目Id
 	AuthInfoId *string `json:"AuthInfoId,omitempty" name:"AuthInfoId"`
 }
@@ -310,17 +350,19 @@ func (r *DescribeCloudMusicPurchasedRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeCloudMusicPurchasedResponseParams struct {
+	// 云音乐列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MusicOpenDetail []*MusicOpenDetail `json:"MusicOpenDetail,omitempty" name:"MusicOpenDetail"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeCloudMusicPurchasedResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 云音乐列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		MusicOpenDetail []*MusicOpenDetail `json:"MusicOpenDetail,omitempty" name:"MusicOpenDetail"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeCloudMusicPurchasedResponseParams `json:"Response"`
 }
 
 func (r *DescribeCloudMusicPurchasedResponse) ToJsonString() string {
@@ -334,9 +376,22 @@ func (r *DescribeCloudMusicPurchasedResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeCloudMusicRequestParams struct {
+	// 歌曲Id
+	MusicId *string `json:"MusicId,omitempty" name:"MusicId"`
+
+	// 歌曲类型，可选值有：
+	// <li>MP3-128K-FTW：含有水印的试听资源；</li>
+	// <li>MP3-320K-FTD-P：320kbps歌曲热门片段；</li>
+	// <li>MP3-320K-FTD：320kbps已核验歌曲完整资源。</li>
+	// 默认为：MP3-128K-FTW
+	MusicType *string `json:"MusicType,omitempty" name:"MusicType"`
+}
+
 type DescribeCloudMusicRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 歌曲Id
 	MusicId *string `json:"MusicId,omitempty" name:"MusicId"`
 
@@ -368,34 +423,36 @@ func (r *DescribeCloudMusicRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeCloudMusicResponseParams struct {
+	// 歌曲Id
+	MusicId *string `json:"MusicId,omitempty" name:"MusicId"`
+
+	// 歌曲名称
+	MusicName *string `json:"MusicName,omitempty" name:"MusicName"`
+
+	// 歌曲时长
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Duration *int64 `json:"Duration,omitempty" name:"Duration"`
+
+	// 歌曲链接
+	MusicUrl *string `json:"MusicUrl,omitempty" name:"MusicUrl"`
+
+	// 歌曲图片
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MusicImageUrl *string `json:"MusicImageUrl,omitempty" name:"MusicImageUrl"`
+
+	// 歌手列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Singers []*string `json:"Singers,omitempty" name:"Singers"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeCloudMusicResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 歌曲Id
-		MusicId *string `json:"MusicId,omitempty" name:"MusicId"`
-
-		// 歌曲名称
-		MusicName *string `json:"MusicName,omitempty" name:"MusicName"`
-
-		// 歌曲时长
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		Duration *int64 `json:"Duration,omitempty" name:"Duration"`
-
-		// 歌曲链接
-		MusicUrl *string `json:"MusicUrl,omitempty" name:"MusicUrl"`
-
-		// 歌曲图片
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		MusicImageUrl *string `json:"MusicImageUrl,omitempty" name:"MusicImageUrl"`
-
-		// 歌手列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		Singers []*string `json:"Singers,omitempty" name:"Singers"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeCloudMusicResponseParams `json:"Response"`
 }
 
 func (r *DescribeCloudMusicResponse) ToJsonString() string {
@@ -409,9 +466,15 @@ func (r *DescribeCloudMusicResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeItemByIdRequestParams struct {
+	// 歌曲ID，目前暂不支持批量查询
+	ItemIDs *string `json:"ItemIDs,omitempty" name:"ItemIDs"`
+}
+
 type DescribeItemByIdRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 歌曲ID，目前暂不支持批量查询
 	ItemIDs *string `json:"ItemIDs,omitempty" name:"ItemIDs"`
 }
@@ -435,17 +498,19 @@ func (r *DescribeItemByIdRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeItemByIdResponseParams struct {
+	// 歌曲信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Items []*Item `json:"Items,omitempty" name:"Items"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeItemByIdResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 歌曲信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		Items []*Item `json:"Items,omitempty" name:"Items"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeItemByIdResponseParams `json:"Response"`
 }
 
 func (r *DescribeItemByIdResponse) ToJsonString() string {
@@ -459,9 +524,24 @@ func (r *DescribeItemByIdResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeItemsRequestParams struct {
+	// offset (Default = 0)，(当前页-1) * Limit
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 条数，必须大于0，最大值为30
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// （电台/歌单）ID，CategoryId和CategoryCode两个必传1个，可以从<a href="https://cloud.tencent.com/document/product/1155/40109">获取分类内容（Station）列表接口</a>中获取。
+	CategoryId *string `json:"CategoryId,omitempty" name:"CategoryId"`
+
+	// （电台/歌单）ID，CategoryId和CategoryCode两个必传1个，可以从<a href="https://cloud.tencent.com/document/product/1155/40109">获取分类内容（Station）列表接口</a>中获取。
+	CategoryCode *string `json:"CategoryCode,omitempty" name:"CategoryCode"`
+}
+
 type DescribeItemsRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// offset (Default = 0)，(当前页-1) * Limit
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
@@ -497,30 +577,32 @@ func (r *DescribeItemsRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeItemsResponseParams struct {
+	// 分页偏移量
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 当前页歌曲数量
+	Size *uint64 `json:"Size,omitempty" name:"Size"`
+
+	// 总数据条数
+	Total *uint64 `json:"Total,omitempty" name:"Total"`
+
+	// 剩余数量（total-offset-size），通过这个值判断是否
+	// 还有下一页
+	HaveMore *uint64 `json:"HaveMore,omitempty" name:"HaveMore"`
+
+	// Items 歌曲列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Items []*Item `json:"Items,omitempty" name:"Items"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeItemsResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 分页偏移量
-		Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
-
-		// 当前页歌曲数量
-		Size *uint64 `json:"Size,omitempty" name:"Size"`
-
-		// 总数据条数
-		Total *uint64 `json:"Total,omitempty" name:"Total"`
-
-		// 剩余数量（total-offset-size），通过这个值判断是否
-	// 还有下一页
-		HaveMore *uint64 `json:"HaveMore,omitempty" name:"HaveMore"`
-
-		// Items 歌曲列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		Items []*Item `json:"Items,omitempty" name:"Items"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeItemsResponseParams `json:"Response"`
 }
 
 func (r *DescribeItemsResponse) ToJsonString() string {
@@ -534,9 +616,15 @@ func (r *DescribeItemsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeKTVMusicDetailRequestParams struct {
+	// 曲目 Id
+	MusicId *string `json:"MusicId,omitempty" name:"MusicId"`
+}
+
 type DescribeKTVMusicDetailRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 曲目 Id
 	MusicId *string `json:"MusicId,omitempty" name:"MusicId"`
 }
@@ -560,34 +648,36 @@ func (r *DescribeKTVMusicDetailRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeKTVMusicDetailResponseParams struct {
+	// 歌曲基础信息
+	KTVMusicBaseInfo *KTVMusicBaseInfo `json:"KTVMusicBaseInfo,omitempty" name:"KTVMusicBaseInfo"`
+
+	// 播放凭证
+	PlayToken *string `json:"PlayToken,omitempty" name:"PlayToken"`
+
+	// 歌词下载地址
+	LyricsUrl *string `json:"LyricsUrl,omitempty" name:"LyricsUrl"`
+
+	// 歌曲规格信息列表
+	DefinitionInfoSet []*KTVMusicDefinitionInfo `json:"DefinitionInfoSet,omitempty" name:"DefinitionInfoSet"`
+
+	// 音高数据文件下载地址
+	MidiJsonUrl *string `json:"MidiJsonUrl,omitempty" name:"MidiJsonUrl"`
+
+	// 副歌片段数据列表
+	ChorusClipSet []*ChorusClip `json:"ChorusClipSet,omitempty" name:"ChorusClipSet"`
+
+	// 前奏间隔，单位：毫秒；注：若参数返回为0则无人声部分
+	PreludeInterval *int64 `json:"PreludeInterval,omitempty" name:"PreludeInterval"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeKTVMusicDetailResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 歌曲基础信息
-		KTVMusicBaseInfo *KTVMusicBaseInfo `json:"KTVMusicBaseInfo,omitempty" name:"KTVMusicBaseInfo"`
-
-		// 播放凭证
-		PlayToken *string `json:"PlayToken,omitempty" name:"PlayToken"`
-
-		// 歌词下载地址
-		LyricsUrl *string `json:"LyricsUrl,omitempty" name:"LyricsUrl"`
-
-		// 歌曲规格信息列表
-		DefinitionInfoSet []*KTVMusicDefinitionInfo `json:"DefinitionInfoSet,omitempty" name:"DefinitionInfoSet"`
-
-		// 音高数据文件下载地址
-		MidiJsonUrl *string `json:"MidiJsonUrl,omitempty" name:"MidiJsonUrl"`
-
-		// 副歌片段数据列表
-		ChorusClipSet []*ChorusClip `json:"ChorusClipSet,omitempty" name:"ChorusClipSet"`
-
-		// 前奏间隔，单位：毫秒；注：若参数返回为0则无人声部分
-		PreludeInterval *int64 `json:"PreludeInterval,omitempty" name:"PreludeInterval"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeKTVMusicDetailResponseParams `json:"Response"`
 }
 
 func (r *DescribeKTVMusicDetailResponse) ToJsonString() string {
@@ -601,8 +691,14 @@ func (r *DescribeKTVMusicDetailResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeKTVMusicTagsRequestParams struct {
+
+}
+
 type DescribeKTVMusicTagsRequest struct {
 	*tchttp.BaseRequest
+	
 }
 
 func (r *DescribeKTVMusicTagsRequest) ToJsonString() string {
@@ -617,22 +713,25 @@ func (r *DescribeKTVMusicTagsRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeKTVMusicTagsRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeKTVMusicTagsResponseParams struct {
+	// 标签分组列表
+	TagGroupSet []*KTVMusicTagGroup `json:"TagGroupSet,omitempty" name:"TagGroupSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeKTVMusicTagsResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 标签分组列表
-		TagGroupSet []*KTVMusicTagGroup `json:"TagGroupSet,omitempty" name:"TagGroupSet"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeKTVMusicTagsResponseParams `json:"Response"`
 }
 
 func (r *DescribeKTVMusicTagsResponse) ToJsonString() string {
@@ -646,9 +745,21 @@ func (r *DescribeKTVMusicTagsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeKTVPlaylistDetailRequestParams struct {
+	// 歌单Id
+	PlaylistId *string `json:"PlaylistId,omitempty" name:"PlaylistId"`
+
+	// 分页返回的起始偏移量，默认值：0。将返回第 Offset 到第 Offset+Limit-1 条。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 分页返回的记录条数，默认值：50。将返回第 Offset 到第 Offset+Limit-1 条。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
 type DescribeKTVPlaylistDetailRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 歌单Id
 	PlaylistId *string `json:"PlaylistId,omitempty" name:"PlaylistId"`
 
@@ -680,19 +791,21 @@ func (r *DescribeKTVPlaylistDetailRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeKTVPlaylistDetailResponseParams struct {
+	// 歌曲基础信息列表
+	KTVMusicInfoSet []*KTVMusicBaseInfo `json:"KTVMusicInfoSet,omitempty" name:"KTVMusicInfoSet"`
+
+	// 歌单基础信息
+	PlaylistBaseInfo *KTVPlaylistBaseInfo `json:"PlaylistBaseInfo,omitempty" name:"PlaylistBaseInfo"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeKTVPlaylistDetailResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 歌曲基础信息列表
-		KTVMusicInfoSet []*KTVMusicBaseInfo `json:"KTVMusicInfoSet,omitempty" name:"KTVMusicInfoSet"`
-
-		// 歌单基础信息
-		PlaylistBaseInfo *KTVPlaylistBaseInfo `json:"PlaylistBaseInfo,omitempty" name:"PlaylistBaseInfo"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeKTVPlaylistDetailResponseParams `json:"Response"`
 }
 
 func (r *DescribeKTVPlaylistDetailResponse) ToJsonString() string {
@@ -706,9 +819,26 @@ func (r *DescribeKTVPlaylistDetailResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeKTVPlaylistsRequestParams struct {
+	// 歌单类型，取值有：
+	// ·OfficialRec：官方推荐
+	// ·Normal：自定义
+	// 当该字段未填时，默认为取OfficialRec
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 分页返回的起始偏移量，默认值：0。将返回第 Offset 到第 Offset+Limit-1 条。
+	// 取值范围：Offset + Limit 不超过5000
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 分页返回的记录条数，默认值：50。将返回第 Offset 到第 Offset+Limit-1 条。
+	// 取值范围：Offset + Limit 不超过5000
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
 type DescribeKTVPlaylistsRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 歌单类型，取值有：
 	// ·OfficialRec：官方推荐
 	// ·Normal：自定义
@@ -745,19 +875,21 @@ func (r *DescribeKTVPlaylistsRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeKTVPlaylistsResponseParams struct {
+	// 推荐歌单列表
+	PlaylistBaseInfoSet []*KTVPlaylistBaseInfo `json:"PlaylistBaseInfoSet,omitempty" name:"PlaylistBaseInfoSet"`
+
+	// 推荐歌单列表总数
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeKTVPlaylistsResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 推荐歌单列表
-		PlaylistBaseInfoSet []*KTVPlaylistBaseInfo `json:"PlaylistBaseInfoSet,omitempty" name:"PlaylistBaseInfoSet"`
-
-		// 推荐歌单列表总数
-		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeKTVPlaylistsResponseParams `json:"Response"`
 }
 
 func (r *DescribeKTVPlaylistsResponse) ToJsonString() string {
@@ -771,9 +903,31 @@ func (r *DescribeKTVPlaylistsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeKTVRobotsRequestParams struct {
+	// 机器人Id列表。
+	RobotIds []*string `json:"RobotIds,omitempty" name:"RobotIds"`
+
+	// 机器人状态，取值有：
+	// <li>Play：播放</li>
+	// <li>Pause：暂停</li>
+	// <li>Destroy：销毁</li>
+	Statuses []*string `json:"Statuses,omitempty" name:"Statuses"`
+
+	// 匹配创建时间在此时间段内的机器人。
+	// <li>包含所指定的头尾时间点。</li>
+	CreateTime *TimeRange `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 分页返回的起始偏移量，默认值：0。将返回第 Offset 到第 Offset+Limit-1 条。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 分页返回的起始偏移量，默认值：10。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
 type DescribeKTVRobotsRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 机器人Id列表。
 	RobotIds []*string `json:"RobotIds,omitempty" name:"RobotIds"`
 
@@ -817,19 +971,21 @@ func (r *DescribeKTVRobotsRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeKTVRobotsResponseParams struct {
+	// 机器人总数。
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 机器人信息集合。
+	KTVRobotInfoSet []*KTVRobotInfo `json:"KTVRobotInfoSet,omitempty" name:"KTVRobotInfoSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeKTVRobotsResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 机器人总数。
-		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 机器人信息集合。
-		KTVRobotInfoSet []*KTVRobotInfo `json:"KTVRobotInfoSet,omitempty" name:"KTVRobotInfoSet"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeKTVRobotsResponseParams `json:"Response"`
 }
 
 func (r *DescribeKTVRobotsResponse) ToJsonString() string {
@@ -843,8 +999,14 @@ func (r *DescribeKTVRobotsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeKTVSingerCategoriesRequestParams struct {
+
+}
+
 type DescribeKTVSingerCategoriesRequest struct {
 	*tchttp.BaseRequest
+	
 }
 
 func (r *DescribeKTVSingerCategoriesRequest) ToJsonString() string {
@@ -859,25 +1021,28 @@ func (r *DescribeKTVSingerCategoriesRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeKTVSingerCategoriesRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeKTVSingerCategoriesResponseParams struct {
+	// 歌手性别分类列表
+	GenderSet []*KTVSingerCategoryInfo `json:"GenderSet,omitempty" name:"GenderSet"`
+
+	// 歌手区域分类列表
+	AreaSet []*KTVSingerCategoryInfo `json:"AreaSet,omitempty" name:"AreaSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeKTVSingerCategoriesResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 歌手性别分类列表
-		GenderSet []*KTVSingerCategoryInfo `json:"GenderSet,omitempty" name:"GenderSet"`
-
-		// 歌手区域分类列表
-		AreaSet []*KTVSingerCategoryInfo `json:"AreaSet,omitempty" name:"AreaSet"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeKTVSingerCategoriesResponseParams `json:"Response"`
 }
 
 func (r *DescribeKTVSingerCategoriesResponse) ToJsonString() string {
@@ -891,9 +1056,21 @@ func (r *DescribeKTVSingerCategoriesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeKTVSingerMusicsRequestParams struct {
+	// 歌手id
+	SingerId *string `json:"SingerId,omitempty" name:"SingerId"`
+
+	// 分页偏移量，默认值：0。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 分页返回的记录条数，默认值：50。将返回第 Offset 到第 Offset+Limit-1 条。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
 type DescribeKTVSingerMusicsRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 歌手id
 	SingerId *string `json:"SingerId,omitempty" name:"SingerId"`
 
@@ -925,19 +1102,21 @@ func (r *DescribeKTVSingerMusicsRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeKTVSingerMusicsResponseParams struct {
+	// 总曲目数
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// KTV 曲目列表
+	KTVMusicInfoSet []*KTVMusicBaseInfo `json:"KTVMusicInfoSet,omitempty" name:"KTVMusicInfoSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeKTVSingerMusicsResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 总曲目数
-		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// KTV 曲目列表
-		KTVMusicInfoSet []*KTVMusicBaseInfo `json:"KTVMusicInfoSet,omitempty" name:"KTVMusicInfoSet"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeKTVSingerMusicsResponseParams `json:"Response"`
 }
 
 func (r *DescribeKTVSingerMusicsResponse) ToJsonString() string {
@@ -951,9 +1130,36 @@ func (r *DescribeKTVSingerMusicsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeKTVSingersRequestParams struct {
+	// 歌手id集合，精确匹配歌手id
+	// <li> 数组长度限制10</li>
+	SingerIds []*string `json:"SingerIds,omitempty" name:"SingerIds"`
+
+	// 歌手性别集合，不传为全部，精确匹配歌手性别类型，
+	// <li>数组长度限制1</li>
+	// <li>取值范围：直播互动曲库歌手分类信息接口，返回性别分类信息列表中，分类英文名</li>
+	Genders []*string `json:"Genders,omitempty" name:"Genders"`
+
+	// 歌手区域集合，不传为全部，精确匹配歌手区域
+	// <li>数组长度限制10</li>
+	// <li>取值范围：直播互动曲库歌手分类信息接口，返回的区域分类信息列表中，分类英文名</li>
+	Areas []*string `json:"Areas,omitempty" name:"Areas"`
+
+	// 排序方式。默认按照播放数倒序
+	// <li> Sort.Field 可选 PlayCount。</li>
+	Sort *SortBy `json:"Sort,omitempty" name:"Sort"`
+
+	// 分页偏移量，默认值：0。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 分页返回的记录条数，默认值：50。将返回第 Offset 到第 Offset+Limit-1 条。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
 type DescribeKTVSingersRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 歌手id集合，精确匹配歌手id
 	// <li> 数组长度限制10</li>
 	SingerIds []*string `json:"SingerIds,omitempty" name:"SingerIds"`
@@ -1003,19 +1209,21 @@ func (r *DescribeKTVSingersRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeKTVSingersResponseParams struct {
+	// 总歌手数
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// KTV歌手列表
+	KTVSingerInfoSet []*KTVSingerInfo `json:"KTVSingerInfoSet,omitempty" name:"KTVSingerInfoSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeKTVSingersResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 总歌手数
-		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// KTV歌手列表
-		KTVSingerInfoSet []*KTVSingerInfo `json:"KTVSingerInfoSet,omitempty" name:"KTVSingerInfoSet"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeKTVSingersResponseParams `json:"Response"`
 }
 
 func (r *DescribeKTVSingersResponse) ToJsonString() string {
@@ -1029,9 +1237,15 @@ func (r *DescribeKTVSingersResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeKTVSuggestionsRequestParams struct {
+	// 联想关键词
+	KeyWord *string `json:"KeyWord,omitempty" name:"KeyWord"`
+}
+
 type DescribeKTVSuggestionsRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 联想关键词
 	KeyWord *string `json:"KeyWord,omitempty" name:"KeyWord"`
 }
@@ -1055,16 +1269,18 @@ func (r *DescribeKTVSuggestionsRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeKTVSuggestionsResponseParams struct {
+	// 联想词信息列表。返回总数最大为10。
+	KTVSuggestionInfoSet []*KTVSuggestionInfo `json:"KTVSuggestionInfoSet,omitempty" name:"KTVSuggestionInfoSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeKTVSuggestionsResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 联想词信息列表。返回总数最大为10。
-		KTVSuggestionInfoSet []*KTVSuggestionInfo `json:"KTVSuggestionInfoSet,omitempty" name:"KTVSuggestionInfoSet"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeKTVSuggestionsResponseParams `json:"Response"`
 }
 
 func (r *DescribeKTVSuggestionsResponse) ToJsonString() string {
@@ -1078,9 +1294,21 @@ func (r *DescribeKTVSuggestionsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeKTVTopListRequestParams struct {
+	// 榜单类型。默认Hot
+	// <li> Hot, 热歌榜。</li>
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 榜单周期 默认为Week
+	// <li> Week, 周榜。</li>
+	// <li> Month, 月榜。</li>
+	Period *string `json:"Period,omitempty" name:"Period"`
+}
+
 type DescribeKTVTopListRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 榜单类型。默认Hot
 	// <li> Hot, 热歌榜。</li>
 	Type *string `json:"Type,omitempty" name:"Type"`
@@ -1111,19 +1339,21 @@ func (r *DescribeKTVTopListRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeKTVTopListResponseParams struct {
+	// 歌曲基础信息列表
+	KTVMusicTopInfoSet []*KTVMusicTopInfo `json:"KTVMusicTopInfoSet,omitempty" name:"KTVMusicTopInfoSet"`
+
+	// 返回总条数
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeKTVTopListResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 歌曲基础信息列表
-		KTVMusicTopInfoSet []*KTVMusicTopInfo `json:"KTVMusicTopInfoSet,omitempty" name:"KTVMusicTopInfoSet"`
-
-		// 返回总条数
-		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeKTVTopListResponseParams `json:"Response"`
 }
 
 func (r *DescribeKTVTopListResponse) ToJsonString() string {
@@ -1137,9 +1367,20 @@ func (r *DescribeKTVTopListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeLyricRequestParams struct {
+	// 歌曲ID
+	ItemId *string `json:"ItemId,omitempty" name:"ItemId"`
+
+	// 格式，可选项，可不填写，默认值为：LRC-LRC。
+	// <li>LRC-LRC：歌词；</li>
+	// <li>JSON-ST：波形图。</li>
+	SubItemType *string `json:"SubItemType,omitempty" name:"SubItemType"`
+}
+
 type DescribeLyricRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 歌曲ID
 	ItemId *string `json:"ItemId,omitempty" name:"ItemId"`
 
@@ -1169,17 +1410,19 @@ func (r *DescribeLyricRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeLyricResponseParams struct {
+	// 歌词或者波形图详情
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Lyric *Lyric `json:"Lyric,omitempty" name:"Lyric"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeLyricResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 歌词或者波形图详情
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		Lyric *Lyric `json:"Lyric,omitempty" name:"Lyric"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeLyricResponseParams `json:"Response"`
 }
 
 func (r *DescribeLyricResponse) ToJsonString() string {
@@ -1193,9 +1436,26 @@ func (r *DescribeLyricResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeMusicRequestParams struct {
+	// 歌曲ID
+	ItemId *string `json:"ItemId,omitempty" name:"ItemId"`
+
+	// 在应用前端播放音乐C端用户的唯一标识。无需是账户信息，用户唯一标识即可。
+	IdentityId *string `json:"IdentityId,omitempty" name:"IdentityId"`
+
+	// MP3-320K-FTD-P  为获取320kbps歌曲热门片段。
+	// MP3-320K-FTD 为获取320kbps已核验歌曲完整资源。
+	SubItemType *string `json:"SubItemType,omitempty" name:"SubItemType"`
+
+	// CDN URL Protocol:HTTP or HTTPS/SSL
+	// Values:Y , N(default)
+	Ssl *string `json:"Ssl,omitempty" name:"Ssl"`
+}
+
 type DescribeMusicRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 歌曲ID
 	ItemId *string `json:"ItemId,omitempty" name:"ItemId"`
 
@@ -1233,17 +1493,19 @@ func (r *DescribeMusicRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeMusicResponseParams struct {
+	// 音乐相关信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Music *Music `json:"Music,omitempty" name:"Music"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeMusicResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 音乐相关信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		Music *Music `json:"Music,omitempty" name:"Music"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeMusicResponseParams `json:"Response"`
 }
 
 func (r *DescribeMusicResponse) ToJsonString() string {
@@ -1257,9 +1519,18 @@ func (r *DescribeMusicResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeMusicSaleStatusRequestParams struct {
+	// 歌曲Id集合，可传单个，也可传多个，上线查询单次50个
+	MusicIds []*string `json:"MusicIds,omitempty" name:"MusicIds"`
+
+	// 查询哪个渠道的数据，1为曲库包，2为单曲
+	PurchaseType *int64 `json:"PurchaseType,omitempty" name:"PurchaseType"`
+}
+
 type DescribeMusicSaleStatusRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 歌曲Id集合，可传单个，也可传多个，上线查询单次50个
 	MusicIds []*string `json:"MusicIds,omitempty" name:"MusicIds"`
 
@@ -1287,16 +1558,18 @@ func (r *DescribeMusicSaleStatusRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeMusicSaleStatusResponseParams struct {
+	// musicId对应歌曲状态
+	MusicStatusSet []*MusicStatus `json:"MusicStatusSet,omitempty" name:"MusicStatusSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeMusicSaleStatusResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// musicId对应歌曲状态
-		MusicStatusSet []*MusicStatus `json:"MusicStatusSet,omitempty" name:"MusicStatusSet"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeMusicSaleStatusResponseParams `json:"Response"`
 }
 
 func (r *DescribeMusicSaleStatusResponse) ToJsonString() string {
@@ -1310,9 +1583,21 @@ func (r *DescribeMusicSaleStatusResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribePackageItemsRequestParams struct {
+	// 订单id，从获取已购曲库包列表中获取
+	OrderId *string `json:"OrderId,omitempty" name:"OrderId"`
+
+	// 默认0，Offset=Offset+Length
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 默认20
+	Length *uint64 `json:"Length,omitempty" name:"Length"`
+}
+
 type DescribePackageItemsRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 订单id，从获取已购曲库包列表中获取
 	OrderId *string `json:"OrderId,omitempty" name:"OrderId"`
 
@@ -1344,17 +1629,19 @@ func (r *DescribePackageItemsRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribePackageItemsResponseParams struct {
+	// 已核销歌曲信息列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PackageItems []*PackageItem `json:"PackageItems,omitempty" name:"PackageItems"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribePackageItemsResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 已核销歌曲信息列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		PackageItems []*PackageItem `json:"PackageItems,omitempty" name:"PackageItems"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribePackageItemsResponseParams `json:"Response"`
 }
 
 func (r *DescribePackageItemsResponse) ToJsonString() string {
@@ -1368,9 +1655,18 @@ func (r *DescribePackageItemsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribePackagesRequestParams struct {
+	// 默认0，Offset=Offset+Length
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 默认20
+	Length *uint64 `json:"Length,omitempty" name:"Length"`
+}
+
 type DescribePackagesRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 默认0，Offset=Offset+Length
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
@@ -1398,17 +1694,19 @@ func (r *DescribePackagesRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribePackagesResponseParams struct {
+	// 已购曲库包列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Packages []*Package `json:"Packages,omitempty" name:"Packages"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribePackagesResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 已购曲库包列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		Packages []*Package `json:"Packages,omitempty" name:"Packages"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribePackagesResponseParams `json:"Response"`
 }
 
 func (r *DescribePackagesResponse) ToJsonString() string {
@@ -1422,9 +1720,21 @@ func (r *DescribePackagesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribePkgOfflineMusicRequestParams struct {
+	// 订单id
+	PackageOrderId *string `json:"PackageOrderId,omitempty" name:"PackageOrderId"`
+
+	// 分页返回的起始偏移量，默认值：0。将返回第 Offset 到第 Offset+Limit-1 条(注：单次上限为100)。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 分页返回的记录条数，默认值：50。将返回第 Offset 到第 Offset+Limit-1 条。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+}
+
 type DescribePkgOfflineMusicRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 订单id
 	PackageOrderId *string `json:"PackageOrderId,omitempty" name:"PackageOrderId"`
 
@@ -1456,19 +1766,21 @@ func (r *DescribePkgOfflineMusicRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribePkgOfflineMusicResponseParams struct {
+	// 曲库包中不可用歌曲信息
+	OfflineMusicSet []*OfflineMusicDetail `json:"OfflineMusicSet,omitempty" name:"OfflineMusicSet"`
+
+	// 返回总量
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribePkgOfflineMusicResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 曲库包中不可用歌曲信息
-		OfflineMusicSet []*OfflineMusicDetail `json:"OfflineMusicSet,omitempty" name:"OfflineMusicSet"`
-
-		// 返回总量
-		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribePkgOfflineMusicResponseParams `json:"Response"`
 }
 
 func (r *DescribePkgOfflineMusicResponse) ToJsonString() string {
@@ -1482,9 +1794,18 @@ func (r *DescribePkgOfflineMusicResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeStationsRequestParams struct {
+	// 条数，必须大于0
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// offset (Default = 0)，Offset=Offset+Limit
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+}
+
 type DescribeStationsRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 条数，必须大于0
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
@@ -1512,29 +1833,31 @@ func (r *DescribeStationsRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeStationsResponseParams struct {
+	// 总数量
+	Total *uint64 `json:"Total,omitempty" name:"Total"`
+
+	// 分页偏移量
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 当前页station数量
+	Size *uint64 `json:"Size,omitempty" name:"Size"`
+
+	// 剩余数量（total-offset-size），通过这个值判断是否还有下一页
+	HaveMore *uint64 `json:"HaveMore,omitempty" name:"HaveMore"`
+
+	// Stations 素材库列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Stations []*Station `json:"Stations,omitempty" name:"Stations"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeStationsResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 总数量
-		Total *uint64 `json:"Total,omitempty" name:"Total"`
-
-		// 分页偏移量
-		Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
-
-		// 当前页station数量
-		Size *uint64 `json:"Size,omitempty" name:"Size"`
-
-		// 剩余数量（total-offset-size），通过这个值判断是否还有下一页
-		HaveMore *uint64 `json:"HaveMore,omitempty" name:"HaveMore"`
-
-		// Stations 素材库列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		Stations []*Station `json:"Stations,omitempty" name:"Stations"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeStationsResponseParams `json:"Response"`
 }
 
 func (r *DescribeStationsResponse) ToJsonString() string {
@@ -1548,9 +1871,15 @@ func (r *DescribeStationsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DestroyKTVRobotRequestParams struct {
+	// 机器人Id。
+	RobotId *string `json:"RobotId,omitempty" name:"RobotId"`
+}
+
 type DestroyKTVRobotRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 机器人Id。
 	RobotId *string `json:"RobotId,omitempty" name:"RobotId"`
 }
@@ -1574,13 +1903,15 @@ func (r *DestroyKTVRobotRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DestroyKTVRobotResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DestroyKTVRobotResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DestroyKTVRobotResponseParams `json:"Response"`
 }
 
 func (r *DestroyKTVRobotResponse) ToJsonString() string {
@@ -1595,7 +1926,6 @@ func (r *DestroyKTVRobotResponse) FromJsonString(s string) error {
 }
 
 type ImagePath struct {
-
 	// station图片大小及类别
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Key *string `json:"Key,omitempty" name:"Key"`
@@ -1606,7 +1936,6 @@ type ImagePath struct {
 }
 
 type Item struct {
-
 	// Song ID
 	ItemID *string `json:"ItemID,omitempty" name:"ItemID"`
 
@@ -1628,13 +1957,11 @@ type Item struct {
 }
 
 type JoinRoomInput struct {
-
 	// TRTC进房参数
 	TRTCJoinRoomInput *TRTCJoinRoomInput `json:"TRTCJoinRoomInput,omitempty" name:"TRTCJoinRoomInput"`
 }
 
 type KTVMusicBaseInfo struct {
-
 	// 歌曲 Id
 	MusicId *string `json:"MusicId,omitempty" name:"MusicId"`
 
@@ -1661,7 +1988,6 @@ type KTVMusicBaseInfo struct {
 }
 
 type KTVMusicDefinitionInfo struct {
-
 	// 规格，取值有：
 	// <li>audio/mi：低规格；</li>
 	// <li>audio/lo：中规格；</li>
@@ -1676,7 +2002,6 @@ type KTVMusicDefinitionInfo struct {
 }
 
 type KTVMusicDetailInfo struct {
-
 	// 即使广播曲库歌曲基础信息
 	KTVMusicBaseInfo *KTVMusicBaseInfo `json:"KTVMusicBaseInfo,omitempty" name:"KTVMusicBaseInfo"`
 
@@ -1700,7 +2025,6 @@ type KTVMusicDetailInfo struct {
 }
 
 type KTVMusicTagGroup struct {
-
 	// 标签分组英文名
 	EnglishGroupName *string `json:"EnglishGroupName,omitempty" name:"EnglishGroupName"`
 
@@ -1712,7 +2036,6 @@ type KTVMusicTagGroup struct {
 }
 
 type KTVMusicTagInfo struct {
-
 	// 标签Id
 	TagId *string `json:"TagId,omitempty" name:"TagId"`
 
@@ -1721,7 +2044,6 @@ type KTVMusicTagInfo struct {
 }
 
 type KTVMusicTopInfo struct {
-
 	// 歌曲Id
 	MusicId *string `json:"MusicId,omitempty" name:"MusicId"`
 
@@ -1745,7 +2067,6 @@ type KTVMusicTopInfo struct {
 }
 
 type KTVPlaylistBaseInfo struct {
-
 	// 歌单Id
 	PlaylistId *string `json:"PlaylistId,omitempty" name:"PlaylistId"`
 
@@ -1760,7 +2081,6 @@ type KTVPlaylistBaseInfo struct {
 }
 
 type KTVRobotInfo struct {
-
 	// 机器人Id。
 	RobotId *string `json:"RobotId,omitempty" name:"RobotId"`
 
@@ -1801,7 +2121,6 @@ type KTVRobotInfo struct {
 }
 
 type KTVSingerBaseInfo struct {
-
 	// 歌手id
 	SingerId *string `json:"SingerId,omitempty" name:"SingerId"`
 
@@ -1810,7 +2129,6 @@ type KTVSingerBaseInfo struct {
 }
 
 type KTVSingerCategoryInfo struct {
-
 	// 分类中文名
 	ChineseName *string `json:"ChineseName,omitempty" name:"ChineseName"`
 
@@ -1819,7 +2137,6 @@ type KTVSingerCategoryInfo struct {
 }
 
 type KTVSingerInfo struct {
-
 	// 歌手id
 	SingerId *string `json:"SingerId,omitempty" name:"SingerId"`
 
@@ -1840,13 +2157,11 @@ type KTVSingerInfo struct {
 }
 
 type KTVSuggestionInfo struct {
-
 	// 联想词
 	Suggestion *string `json:"Suggestion,omitempty" name:"Suggestion"`
 }
 
 type Lyric struct {
-
 	// 歌词cdn地址
 	Url *string `json:"Url,omitempty" name:"Url"`
 
@@ -1857,9 +2172,18 @@ type Lyric struct {
 	SubItemType *string `json:"SubItemType,omitempty" name:"SubItemType"`
 }
 
+// Predefined struct for user
+type ModifyMusicOnShelvesRequestParams struct {
+	// 歌曲变更信息
+	MusicDetailInfos *MusicDetailInfo `json:"MusicDetailInfos,omitempty" name:"MusicDetailInfos"`
+
+	// ame对接资源方密钥
+	AmeKey *string `json:"AmeKey,omitempty" name:"AmeKey"`
+}
+
 type ModifyMusicOnShelvesRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 歌曲变更信息
 	MusicDetailInfos *MusicDetailInfo `json:"MusicDetailInfos,omitempty" name:"MusicDetailInfos"`
 
@@ -1887,13 +2211,15 @@ func (r *ModifyMusicOnShelvesRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifyMusicOnShelvesResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type ModifyMusicOnShelvesResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *ModifyMusicOnShelvesResponseParams `json:"Response"`
 }
 
 func (r *ModifyMusicOnShelvesResponse) ToJsonString() string {
@@ -1908,7 +2234,6 @@ func (r *ModifyMusicOnShelvesResponse) FromJsonString(s string) error {
 }
 
 type Music struct {
-
 	// 音乐播放链接相对路径，必须通过在正版曲库直通车控制台上登记的域名进行拼接。
 	Url *string `json:"Url,omitempty" name:"Url"`
 
@@ -1932,7 +2257,6 @@ type Music struct {
 }
 
 type MusicDetailInfo struct {
-
 	// 资源方音乐Id
 	MusicId *string `json:"MusicId,omitempty" name:"MusicId"`
 
@@ -1971,7 +2295,6 @@ type MusicDetailInfo struct {
 }
 
 type MusicOpenDetail struct {
-
 	// 音乐Id
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MusicId *string `json:"MusicId,omitempty" name:"MusicId"`
@@ -2014,7 +2337,6 @@ type MusicOpenDetail struct {
 }
 
 type MusicStatus struct {
-
 	// 歌曲Id
 	MusicId *string `json:"MusicId,omitempty" name:"MusicId"`
 
@@ -2023,7 +2345,6 @@ type MusicStatus struct {
 }
 
 type OfflineMusicDetail struct {
-
 	// 歌曲Id
 	ItemId *string `json:"ItemId,omitempty" name:"ItemId"`
 
@@ -2038,7 +2359,6 @@ type OfflineMusicDetail struct {
 }
 
 type Package struct {
-
 	// 订单id
 	OrderId *string `json:"OrderId,omitempty" name:"OrderId"`
 
@@ -2074,7 +2394,6 @@ type Package struct {
 }
 
 type PackageItem struct {
-
 	// 订单id
 	OrderId *string `json:"OrderId,omitempty" name:"OrderId"`
 
@@ -2101,14 +2420,19 @@ type PackageItem struct {
 }
 
 type PlayCommandInput struct {
-
 	// 歌曲位置索引。
 	Index *int64 `json:"Index,omitempty" name:"Index"`
 }
 
+// Predefined struct for user
+type PutMusicOnTheShelvesRequestParams struct {
+	// 资源方歌曲Id
+	MusicIds []*string `json:"MusicIds,omitempty" name:"MusicIds"`
+}
+
 type PutMusicOnTheShelvesRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 资源方歌曲Id
 	MusicIds []*string `json:"MusicIds,omitempty" name:"MusicIds"`
 }
@@ -2132,23 +2456,25 @@ func (r *PutMusicOnTheShelvesRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type PutMusicOnTheShelvesResponseParams struct {
+	// 操作成功数量
+	SuccessNum *int64 `json:"SuccessNum,omitempty" name:"SuccessNum"`
+
+	// 操作失败数量
+	FailedNum *int64 `json:"FailedNum,omitempty" name:"FailedNum"`
+
+	// 失败歌曲Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FailedMusicIds []*string `json:"FailedMusicIds,omitempty" name:"FailedMusicIds"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type PutMusicOnTheShelvesResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 操作成功数量
-		SuccessNum *int64 `json:"SuccessNum,omitempty" name:"SuccessNum"`
-
-		// 操作失败数量
-		FailedNum *int64 `json:"FailedNum,omitempty" name:"FailedNum"`
-
-		// 失败歌曲Id
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		FailedMusicIds []*string `json:"FailedMusicIds,omitempty" name:"FailedMusicIds"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *PutMusicOnTheShelvesResponseParams `json:"Response"`
 }
 
 func (r *PutMusicOnTheShelvesResponse) ToJsonString() string {
@@ -2162,9 +2488,27 @@ func (r *PutMusicOnTheShelvesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ReportDataRequestParams struct {
+	// 上报数据
+	// 注:reportData为客户端压缩后的上报数据进行16进制转换的字符串数据
+	// 压缩说明：
+	// a) 上报的json格式字符串通过流的转换（ByteArrayInputStream, java.util.zip.GZIPOutputStream），获取到压缩后的字节数组。
+	// b) 将压缩后的字节数组转成16进制字符串。
+	// 
+	// reportData由两部分数据组成：
+	// 1）report_type（上报类型）
+	// 2）data（歌曲上报数据）
+	// 不同的report_type对应的data数据结构不一样。
+	// 
+	// 详细说明请参考文档reportdata.docx：
+	// https://github.com/tencentyun/ame-documents
+	ReportData *string `json:"ReportData,omitempty" name:"ReportData"`
+}
+
 type ReportDataRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 上报数据
 	// 注:reportData为客户端压缩后的上报数据进行16进制转换的字符串数据
 	// 压缩说明：
@@ -2200,13 +2544,15 @@ func (r *ReportDataRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ReportDataResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type ReportDataResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *ReportDataResponseParams `json:"Response"`
 }
 
 func (r *ReportDataResponse) ToJsonString() string {
@@ -2220,9 +2566,32 @@ func (r *ReportDataResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type SearchKTVMusicsRequestParams struct {
+	// 搜索关键词
+	KeyWord *string `json:"KeyWord,omitempty" name:"KeyWord"`
+
+	// 分页返回的起始偏移量，默认值：0。将返回第 Offset 到第 Offset+Limit-1 条。
+	// 取值范围：Offset + Limit 不超过5000。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 分页返回的起始偏移量，默认值：50。将返回第 Offset 到第 Offset+Limit-1 条。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 排序方式。默认按照匹配度排序
+	// <li> Sort.Field 可选 CreateTime</li>
+	// <li> Sort.Order 可选 Desc </li>
+	// <li> 当 KeyWord 不为空时，Sort.Field 字段无效， 搜索结果将以匹配度排序。</li>
+	Sort *SortBy `json:"Sort,omitempty" name:"Sort"`
+
+	// 标签 ID 集合，匹配集合指定所有 ID 。
+	// <li>数组长度限制：10。</li>
+	TagIds []*string `json:"TagIds,omitempty" name:"TagIds"`
+}
+
 type SearchKTVMusicsRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 搜索关键词
 	KeyWord *string `json:"KeyWord,omitempty" name:"KeyWord"`
 
@@ -2267,19 +2636,21 @@ func (r *SearchKTVMusicsRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type SearchKTVMusicsResponseParams struct {
+	// 总记录数
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// KTV 曲目列表
+	KTVMusicInfoSet []*KTVMusicBaseInfo `json:"KTVMusicInfoSet,omitempty" name:"KTVMusicInfoSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type SearchKTVMusicsResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 总记录数
-		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// KTV 曲目列表
-		KTVMusicInfoSet []*KTVMusicBaseInfo `json:"KTVMusicInfoSet,omitempty" name:"KTVMusicInfoSet"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *SearchKTVMusicsResponseParams `json:"Response"`
 }
 
 func (r *SearchKTVMusicsResponse) ToJsonString() string {
@@ -2294,13 +2665,11 @@ func (r *SearchKTVMusicsResponse) FromJsonString(s string) error {
 }
 
 type SeekCommandInput struct {
-
 	// 播放位置，单位：毫秒。
 	Position *uint64 `json:"Position,omitempty" name:"Position"`
 }
 
 type SendMessageCommandInput struct {
-
 	// 自定义消息，json格式字符串。
 	Message *string `json:"Message,omitempty" name:"Message"`
 
@@ -2309,7 +2678,6 @@ type SendMessageCommandInput struct {
 }
 
 type SetAudioParamCommandInput struct {
-
 	// 规格，取值有：
 	// <li>audio/mi：低规格</li>
 	// <li>audio/lo：中规格</li>
@@ -2323,7 +2691,6 @@ type SetAudioParamCommandInput struct {
 }
 
 type SetDestroyModeCommandInput struct {
-
 	// 销毁模式，取值有：
 	// <li>Auto：房间没人时自动销毁</li>
 	// <li>Expire：房间没人时过期自动销毁</li>
@@ -2335,7 +2702,6 @@ type SetDestroyModeCommandInput struct {
 }
 
 type SetPlayModeCommandInput struct {
-
 	// 播放模式，取值有：
 	// <li>RepeatPlaylist：列表循环</li>
 	// <li>Order：顺序播放</li>
@@ -2345,7 +2711,6 @@ type SetPlayModeCommandInput struct {
 }
 
 type SetPlaylistCommandInput struct {
-
 	// 变更类型，取值有：
 	// <li>Add：添加</li>
 	// <li>Delete：删除</li>
@@ -2367,13 +2732,11 @@ type SetPlaylistCommandInput struct {
 }
 
 type SetVolumeCommandInput struct {
-
 	// 音量大小，取值范围为 0~100，默认值为 50。
 	Volume *int64 `json:"Volume,omitempty" name:"Volume"`
 }
 
 type SortBy struct {
-
 	// 排序字段
 	Field *string `json:"Field,omitempty" name:"Field"`
 
@@ -2382,7 +2745,6 @@ type SortBy struct {
 }
 
 type Station struct {
-
 	// StationID
 	CategoryID *string `json:"CategoryID,omitempty" name:"CategoryID"`
 
@@ -2403,9 +2765,53 @@ type Station struct {
 	ImagePathMap []*ImagePath `json:"ImagePathMap,omitempty" name:"ImagePathMap"`
 }
 
+// Predefined struct for user
+type SyncKTVRobotCommandRequestParams struct {
+	// 机器人Id。
+	RobotId *string `json:"RobotId,omitempty" name:"RobotId"`
+
+	// 指令，取值有：
+	// <li>Play：播放</li>
+	// <li>Pause：暂停</li>
+	// <li>SwitchPrevious：上一首</li>
+	// <li>SwitchNext：下一首</li>
+	// <li>SetPlayMode：设置播放模式</li>
+	// <li>Seek：调整播放进度</li>
+	// <li>SetPlaylist：歌单变更</li>
+	// <li>SetAudioParam：音频参数变更</li>
+	// <li>SendMessage：发送自定义消息</li>
+	// <li>SetDestroyMode：设置销毁模式</li>
+	// <li>SetVolume：设置音量</li>
+	Command *string `json:"Command,omitempty" name:"Command"`
+
+	// 播放参数。
+	PlayCommandInput *PlayCommandInput `json:"PlayCommandInput,omitempty" name:"PlayCommandInput"`
+
+	// 播放列表变更信息，当Command取SetPlaylist时，必填。
+	SetPlaylistCommandInput *SetPlaylistCommandInput `json:"SetPlaylistCommandInput,omitempty" name:"SetPlaylistCommandInput"`
+
+	// 播放进度，当Command取Seek时，必填。
+	SeekCommandInput *SeekCommandInput `json:"SeekCommandInput,omitempty" name:"SeekCommandInput"`
+
+	// 音频参数，当Command取SetAudioParam时，必填。
+	SetAudioParamCommandInput *SetAudioParamCommandInput `json:"SetAudioParamCommandInput,omitempty" name:"SetAudioParamCommandInput"`
+
+	// 自定义消息，当Command取SendMessage时，必填。
+	SendMessageCommandInput *SendMessageCommandInput `json:"SendMessageCommandInput,omitempty" name:"SendMessageCommandInput"`
+
+	// 播放模式，当Command取SetPlayMode时，必填。
+	SetPlayModeCommandInput *SetPlayModeCommandInput `json:"SetPlayModeCommandInput,omitempty" name:"SetPlayModeCommandInput"`
+
+	// 销毁模式，当Command取SetDestroyMode时，必填。
+	SetDestroyModeCommandInput *SetDestroyModeCommandInput `json:"SetDestroyModeCommandInput,omitempty" name:"SetDestroyModeCommandInput"`
+
+	// 音量，当Command取SetVolume时，必填。
+	SetVolumeCommandInput *SetVolumeCommandInput `json:"SetVolumeCommandInput,omitempty" name:"SetVolumeCommandInput"`
+}
+
 type SyncKTVRobotCommandRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 机器人Id。
 	RobotId *string `json:"RobotId,omitempty" name:"RobotId"`
 
@@ -2476,13 +2882,15 @@ func (r *SyncKTVRobotCommandRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type SyncKTVRobotCommandResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type SyncKTVRobotCommandResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *SyncKTVRobotCommandResponseParams `json:"Response"`
 }
 
 func (r *SyncKTVRobotCommandResponse) ToJsonString() string {
@@ -2497,7 +2905,6 @@ func (r *SyncKTVRobotCommandResponse) FromJsonString(s string) error {
 }
 
 type SyncRobotCommand struct {
-
 	// 可同时传入多个指令，顺序执行。取值有：
 	// <li>Play：播放</li>
 	// <li>Pause：暂停</li>
@@ -2538,7 +2945,6 @@ type SyncRobotCommand struct {
 }
 
 type TRTCJoinRoomInput struct {
-
 	// 签名。
 	Sign *string `json:"Sign,omitempty" name:"Sign"`
 
@@ -2553,7 +2959,6 @@ type TRTCJoinRoomInput struct {
 }
 
 type TakeMusicOffShelves struct {
-
 	// 资源方对应音乐Id
 	MusicIds *string `json:"MusicIds,omitempty" name:"MusicIds"`
 
@@ -2562,9 +2967,15 @@ type TakeMusicOffShelves struct {
 	SaleStatus *string `json:"SaleStatus,omitempty" name:"SaleStatus"`
 }
 
+// Predefined struct for user
+type TakeMusicOffShelvesRequestParams struct {
+	// 资源方下架必传结构
+	TakeMusicOffShelves []*TakeMusicOffShelves `json:"TakeMusicOffShelves,omitempty" name:"TakeMusicOffShelves"`
+}
+
 type TakeMusicOffShelvesRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 资源方下架必传结构
 	TakeMusicOffShelves []*TakeMusicOffShelves `json:"TakeMusicOffShelves,omitempty" name:"TakeMusicOffShelves"`
 }
@@ -2588,23 +2999,25 @@ func (r *TakeMusicOffShelvesRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type TakeMusicOffShelvesResponseParams struct {
+	// 返回成功数量
+	SuccessNum *int64 `json:"SuccessNum,omitempty" name:"SuccessNum"`
+
+	// 返回失败数量
+	FailedNum *int64 `json:"FailedNum,omitempty" name:"FailedNum"`
+
+	// 返回失败歌曲musicId
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FailedMusicIds []*string `json:"FailedMusicIds,omitempty" name:"FailedMusicIds"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type TakeMusicOffShelvesResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 返回成功数量
-		SuccessNum *int64 `json:"SuccessNum,omitempty" name:"SuccessNum"`
-
-		// 返回失败数量
-		FailedNum *int64 `json:"FailedNum,omitempty" name:"FailedNum"`
-
-		// 返回失败歌曲musicId
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		FailedMusicIds []*string `json:"FailedMusicIds,omitempty" name:"FailedMusicIds"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *TakeMusicOffShelvesResponseParams `json:"Response"`
 }
 
 func (r *TakeMusicOffShelvesResponse) ToJsonString() string {
@@ -2619,7 +3032,6 @@ func (r *TakeMusicOffShelvesResponse) FromJsonString(s string) error {
 }
 
 type TimeRange struct {
-
 	// <li>大于等于此时间（起始时间）。</li>
 	// <li>格式按照 ISO 8601标准表示，详见 <a href="https://cloud.tencent.com/document/product/266/11732#I" target="_blank">ISO 日期格式说明</a>。</li>
 	Before *string `json:"Before,omitempty" name:"Before"`
@@ -2630,7 +3042,6 @@ type TimeRange struct {
 }
 
 type UseRange struct {
-
 	// 用途id
 	UseRangeId *int64 `json:"UseRangeId,omitempty" name:"UseRangeId"`
 

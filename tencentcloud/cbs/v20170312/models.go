@@ -20,9 +20,24 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+// Predefined struct for user
+type ApplySnapshotRequestParams struct {
+	// 快照ID, 可通过[DescribeSnapshots](/document/product/362/15647)查询。
+	SnapshotId *string `json:"SnapshotId,omitempty" name:"SnapshotId"`
+
+	// 快照原云硬盘ID，可通过[DescribeDisks](/document/product/362/16315)接口查询。
+	DiskId *string `json:"DiskId,omitempty" name:"DiskId"`
+
+	// 回滚前是否执行自动关机
+	AutoStopInstance *bool `json:"AutoStopInstance,omitempty" name:"AutoStopInstance"`
+
+	// 回滚完成后是否自动开机
+	AutoStartInstance *bool `json:"AutoStartInstance,omitempty" name:"AutoStartInstance"`
+}
+
 type ApplySnapshotRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 快照ID, 可通过[DescribeSnapshots](/document/product/362/15647)查询。
 	SnapshotId *string `json:"SnapshotId,omitempty" name:"SnapshotId"`
 
@@ -58,13 +73,15 @@ func (r *ApplySnapshotRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ApplySnapshotResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type ApplySnapshotResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *ApplySnapshotResponseParams `json:"Response"`
 }
 
 func (r *ApplySnapshotResponse) ToJsonString() string {
@@ -79,7 +96,6 @@ func (r *ApplySnapshotResponse) FromJsonString(s string) error {
 }
 
 type AttachDetail struct {
-
 	// 实例ID。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
@@ -90,9 +106,24 @@ type AttachDetail struct {
 	MaxAttachCount *uint64 `json:"MaxAttachCount,omitempty" name:"MaxAttachCount"`
 }
 
+// Predefined struct for user
+type AttachDisksRequestParams struct {
+	// 云服务器实例ID。云盘将被挂载到此云服务器上，通过[DescribeInstances](/document/product/213/15728)接口查询。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 将要被挂载的弹性云盘ID。通过[DescribeDisks](/document/product/362/16315)接口查询。单次最多可挂载10块弹性云盘。
+	DiskIds []*string `json:"DiskIds,omitempty" name:"DiskIds"`
+
+	// 可选参数，不传该参数则仅执行挂载操作。传入`True`时，会在挂载成功后将云硬盘设置为随云主机销毁模式，仅对按量计费云硬盘有效。
+	DeleteWithInstance *bool `json:"DeleteWithInstance,omitempty" name:"DeleteWithInstance"`
+
+	// 可选参数，用于控制云盘挂载时使用的挂载模式，目前仅对黑石裸金属机型有效。取值范围：<br><li>PF<br><li>VF
+	AttachMode *string `json:"AttachMode,omitempty" name:"AttachMode"`
+}
+
 type AttachDisksRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 云服务器实例ID。云盘将被挂载到此云服务器上，通过[DescribeInstances](/document/product/213/15728)接口查询。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
@@ -128,13 +159,15 @@ func (r *AttachDisksRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type AttachDisksResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type AttachDisksResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *AttachDisksResponseParams `json:"Response"`
 }
 
 func (r *AttachDisksResponse) ToJsonString() string {
@@ -149,7 +182,6 @@ func (r *AttachDisksResponse) FromJsonString(s string) error {
 }
 
 type AutoMountConfiguration struct {
-
 	// 要挂载到的实例ID。
 	InstanceId []*string `json:"InstanceId,omitempty" name:"InstanceId"`
 
@@ -161,7 +193,6 @@ type AutoMountConfiguration struct {
 }
 
 type AutoSnapshotPolicy struct {
-
 	// 已绑定当前定期快照策略的云盘ID列表。
 	DiskIdSet []*string `json:"DiskIdSet,omitempty" name:"DiskIdSet"`
 
@@ -205,9 +236,18 @@ type AutoSnapshotPolicy struct {
 	InstanceIdSet []*string `json:"InstanceIdSet,omitempty" name:"InstanceIdSet"`
 }
 
+// Predefined struct for user
+type BindAutoSnapshotPolicyRequestParams struct {
+	// 要绑定的定期快照策略ID。
+	AutoSnapshotPolicyId *string `json:"AutoSnapshotPolicyId,omitempty" name:"AutoSnapshotPolicyId"`
+
+	// 要绑定的云硬盘ID列表，一次请求最多绑定80块云盘。
+	DiskIds []*string `json:"DiskIds,omitempty" name:"DiskIds"`
+}
+
 type BindAutoSnapshotPolicyRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 要绑定的定期快照策略ID。
 	AutoSnapshotPolicyId *string `json:"AutoSnapshotPolicyId,omitempty" name:"AutoSnapshotPolicyId"`
 
@@ -235,13 +275,15 @@ func (r *BindAutoSnapshotPolicyRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type BindAutoSnapshotPolicyResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type BindAutoSnapshotPolicyResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *BindAutoSnapshotPolicyResponseParams `json:"Response"`
 }
 
 func (r *BindAutoSnapshotPolicyResponse) ToJsonString() string {
@@ -256,7 +298,6 @@ func (r *BindAutoSnapshotPolicyResponse) FromJsonString(s string) error {
 }
 
 type Cdc struct {
-
 	// 独享集群围笼ID。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CageId *string `json:"CageId,omitempty" name:"CageId"`
@@ -286,7 +327,6 @@ type Cdc struct {
 }
 
 type CdcSize struct {
-
 	// 独享集群的可用容量大小，单位GiB
 	DiskAavilable *uint64 `json:"DiskAavilable,omitempty" name:"DiskAavilable"`
 
@@ -294,9 +334,21 @@ type CdcSize struct {
 	DiskTotal *uint64 `json:"DiskTotal,omitempty" name:"DiskTotal"`
 }
 
+// Predefined struct for user
+type CopySnapshotCrossRegionsRequestParams struct {
+	// 快照需要复制到的目标地域，各地域的标准取值可通过接口[DescribeRegions](https://cloud.tencent.com/document/product/213/9456)查询，且只能传入支持快照的地域。
+	DestinationRegions []*string `json:"DestinationRegions,omitempty" name:"DestinationRegions"`
+
+	// 需要跨地域复制的源快照ID，可通过[DescribeSnapshots](/document/product/362/15647)查询。
+	SnapshotId *string `json:"SnapshotId,omitempty" name:"SnapshotId"`
+
+	// 新复制快照的名称，如果不传，则默认取值为“Copied 源快照ID from 地域名”。
+	SnapshotName *string `json:"SnapshotName,omitempty" name:"SnapshotName"`
+}
+
 type CopySnapshotCrossRegionsRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 快照需要复制到的目标地域，各地域的标准取值可通过接口[DescribeRegions](https://cloud.tencent.com/document/product/213/9456)查询，且只能传入支持快照的地域。
 	DestinationRegions []*string `json:"DestinationRegions,omitempty" name:"DestinationRegions"`
 
@@ -328,16 +380,18 @@ func (r *CopySnapshotCrossRegionsRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CopySnapshotCrossRegionsResponseParams struct {
+	// 快照跨地域复制的结果，如果请求下发成功，则返回相应地地域的新快照ID，否则返回Error。
+	SnapshotCopyResultSet []*SnapshotCopyResult `json:"SnapshotCopyResultSet,omitempty" name:"SnapshotCopyResultSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CopySnapshotCrossRegionsResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 快照跨地域复制的结果，如果请求下发成功，则返回相应地地域的新快照ID，否则返回Error。
-		SnapshotCopyResultSet []*SnapshotCopyResult `json:"SnapshotCopyResultSet,omitempty" name:"SnapshotCopyResultSet"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CopySnapshotCrossRegionsResponseParams `json:"Response"`
 }
 
 func (r *CopySnapshotCrossRegionsResponse) ToJsonString() string {
@@ -351,9 +405,30 @@ func (r *CopySnapshotCrossRegionsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateAutoSnapshotPolicyRequestParams struct {
+	// 定期快照的执行策略。
+	Policy []*Policy `json:"Policy,omitempty" name:"Policy"`
+
+	// 要创建的定期快照策略名。不传则默认为“未命名”。最大长度不能超60个字节。
+	AutoSnapshotPolicyName *string `json:"AutoSnapshotPolicyName,omitempty" name:"AutoSnapshotPolicyName"`
+
+	// 是否激活定期快照策略，FALSE表示未激活，TRUE表示激活，默认为TRUE。
+	IsActivated *bool `json:"IsActivated,omitempty" name:"IsActivated"`
+
+	// 通过该定期快照策略创建的快照是否永久保留。FALSE表示非永久保留，TRUE表示永久保留，默认为FALSE。
+	IsPermanent *bool `json:"IsPermanent,omitempty" name:"IsPermanent"`
+
+	// 通过该定期快照策略创建的快照保留天数，默认保留7天。如果指定本参数，则IsPermanent入参不可指定为TRUE，否则会产生冲突。
+	RetentionDays *uint64 `json:"RetentionDays,omitempty" name:"RetentionDays"`
+
+	// 是否创建定期快照的执行策略。TRUE表示只需获取首次开始备份的时间，不实际创建定期快照策略，FALSE表示创建，默认为FALSE。
+	DryRun *bool `json:"DryRun,omitempty" name:"DryRun"`
+}
+
 type CreateAutoSnapshotPolicyRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 定期快照的执行策略。
 	Policy []*Policy `json:"Policy,omitempty" name:"Policy"`
 
@@ -397,19 +472,21 @@ func (r *CreateAutoSnapshotPolicyRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateAutoSnapshotPolicyResponseParams struct {
+	// 新创建的定期快照策略ID。
+	AutoSnapshotPolicyId *string `json:"AutoSnapshotPolicyId,omitempty" name:"AutoSnapshotPolicyId"`
+
+	// 首次开始备份的时间。
+	NextTriggerTime *string `json:"NextTriggerTime,omitempty" name:"NextTriggerTime"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreateAutoSnapshotPolicyResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 新创建的定期快照策略ID。
-		AutoSnapshotPolicyId *string `json:"AutoSnapshotPolicyId,omitempty" name:"AutoSnapshotPolicyId"`
-
-		// 首次开始备份的时间。
-		NextTriggerTime *string `json:"NextTriggerTime,omitempty" name:"NextTriggerTime"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreateAutoSnapshotPolicyResponseParams `json:"Response"`
 }
 
 func (r *CreateAutoSnapshotPolicyResponse) ToJsonString() string {
@@ -423,9 +500,60 @@ func (r *CreateAutoSnapshotPolicyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateDisksRequestParams struct {
+	// 实例所在的位置。通过该参数可以指定实例所属可用区，所属项目。若不指定项目，将在默认项目下进行创建。
+	Placement *Placement `json:"Placement,omitempty" name:"Placement"`
+
+	// 云硬盘计费类型。<br><li>PREPAID：预付费，即包年包月<br><li>POSTPAID_BY_HOUR：按小时后付费<br><li>CDCPAID：独享集群付费<br>各类型价格请参考云硬盘[价格总览](/document/product/362/2413)。
+	DiskChargeType *string `json:"DiskChargeType,omitempty" name:"DiskChargeType"`
+
+	// 硬盘介质类型。取值范围：<br><li>CLOUD_BASIC：表示普通云硬盘<br><li>CLOUD_PREMIUM：表示高性能云硬盘<br><li>CLOUD_SSD：表示SSD云硬盘<br><li>CLOUD_HSSD：表示增强型SSD云硬盘<br><li>CLOUD_TSSD：表示极速型SSD云硬盘。
+	DiskType *string `json:"DiskType,omitempty" name:"DiskType"`
+
+	// 云盘显示名称。不传则默认为“未命名”。最大长度不能超60个字节。
+	DiskName *string `json:"DiskName,omitempty" name:"DiskName"`
+
+	// 云盘绑定的标签。
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
+
+	// 快照ID，如果传入则根据此快照创建云硬盘，快照类型必须为数据盘快照，可通过[DescribeSnapshots](/document/product/362/15647)接口查询快照，见输出参数DiskUsage解释。
+	SnapshotId *string `json:"SnapshotId,omitempty" name:"SnapshotId"`
+
+	// 创建云硬盘数量，不传则默认为1。单次请求最多可创建的云盘数有限制，具体参见[云硬盘使用限制](https://cloud.tencent.com/doc/product/362/5145)。
+	DiskCount *uint64 `json:"DiskCount,omitempty" name:"DiskCount"`
+
+	// 可选参数。使用此参数可给云硬盘购买额外的性能。<br>当前仅支持极速型云盘（CLOUD_TSSD）和增强型SSD云硬盘（CLOUD_HSSD）
+	ThroughputPerformance *uint64 `json:"ThroughputPerformance,omitempty" name:"ThroughputPerformance"`
+
+	// 云硬盘大小，单位为GB。<br><li>如果传入`SnapshotId`则可不传`DiskSize`，此时新建云盘的大小为快照大小<br><li>如果传入`SnapshotId`同时传入`DiskSize`，则云盘大小必须大于或等于快照大小<br><li>云盘大小取值范围参见云硬盘[产品分类](/document/product/362/2353)的说明。
+	DiskSize *uint64 `json:"DiskSize,omitempty" name:"DiskSize"`
+
+	// 可选参数，默认为False。传入True时，云盘将创建为共享型云盘。
+	Shareable *bool `json:"Shareable,omitempty" name:"Shareable"`
+
+	// 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。
+	ClientToken *string `json:"ClientToken,omitempty" name:"ClientToken"`
+
+	// 传入该参数用于创建加密云盘，取值固定为ENCRYPT。
+	Encrypt *string `json:"Encrypt,omitempty" name:"Encrypt"`
+
+	// 预付费模式，即包年包月相关参数设置。通过该参数指定包年包月云盘的购买时长、是否设置自动续费等属性。<br>创建预付费云盘该参数必传，创建按小时后付费云盘无需传该参数。
+	DiskChargePrepaid *DiskChargePrepaid `json:"DiskChargePrepaid,omitempty" name:"DiskChargePrepaid"`
+
+	// 销毁云盘时删除关联的非永久保留快照。0 表示非永久快照不随云盘销毁而销毁，1表示非永久快照随云盘销毁而销毁，默认取0。快照是否永久保留可以通过DescribeSnapshots接口返回的快照详情的IsPermanent字段来判断，true表示永久快照，false表示非永久快照。
+	DeleteSnapshot *int64 `json:"DeleteSnapshot,omitempty" name:"DeleteSnapshot"`
+
+	// 创建云盘时指定自动挂载并初始化该数据盘。
+	AutoMountConfiguration *AutoMountConfiguration `json:"AutoMountConfiguration,omitempty" name:"AutoMountConfiguration"`
+
+	// 指定云硬盘备份点配额。
+	DiskBackupQuota *uint64 `json:"DiskBackupQuota,omitempty" name:"DiskBackupQuota"`
+}
+
 type CreateDisksRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 实例所在的位置。通过该参数可以指定实例所属可用区，所属项目。若不指定项目，将在默认项目下进行创建。
 	Placement *Placement `json:"Placement,omitempty" name:"Placement"`
 
@@ -509,16 +637,18 @@ func (r *CreateDisksRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateDisksResponseParams struct {
+	// 创建的云硬盘ID列表。
+	DiskIdSet []*string `json:"DiskIdSet,omitempty" name:"DiskIdSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreateDisksResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 创建的云硬盘ID列表。
-		DiskIdSet []*string `json:"DiskIdSet,omitempty" name:"DiskIdSet"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreateDisksResponseParams `json:"Response"`
 }
 
 func (r *CreateDisksResponse) ToJsonString() string {
@@ -532,9 +662,27 @@ func (r *CreateDisksResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateSnapshotRequestParams struct {
+	// 需要创建快照的云硬盘ID，可通过[DescribeDisks](/document/product/362/16315)接口查询。
+	DiskId *string `json:"DiskId,omitempty" name:"DiskId"`
+
+	// 快照名称，不传则新快照名称默认为“未命名”。
+	SnapshotName *string `json:"SnapshotName,omitempty" name:"SnapshotName"`
+
+	// 快照的到期时间，到期后该快照将会自动删除,需要传入UTC时间下的ISO-8601标准时间格式,例如:2022-01-08T09:47:55+00:00
+	Deadline *string `json:"Deadline,omitempty" name:"Deadline"`
+
+	// 云硬盘备份点ID。传入此参数时，将通过备份点创建快照。
+	DiskBackupId *string `json:"DiskBackupId,omitempty" name:"DiskBackupId"`
+
+	// 快照绑定的标签。
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
+}
+
 type CreateSnapshotRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 需要创建快照的云硬盘ID，可通过[DescribeDisks](/document/product/362/16315)接口查询。
 	DiskId *string `json:"DiskId,omitempty" name:"DiskId"`
 
@@ -574,16 +722,18 @@ func (r *CreateSnapshotRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateSnapshotResponseParams struct {
+	// 新创建的快照ID。
+	SnapshotId *string `json:"SnapshotId,omitempty" name:"SnapshotId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreateSnapshotResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 新创建的快照ID。
-		SnapshotId *string `json:"SnapshotId,omitempty" name:"SnapshotId"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreateSnapshotResponseParams `json:"Response"`
 }
 
 func (r *CreateSnapshotResponse) ToJsonString() string {
@@ -597,9 +747,15 @@ func (r *CreateSnapshotResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteAutoSnapshotPoliciesRequestParams struct {
+	// 要删除的定期快照策略ID列表。
+	AutoSnapshotPolicyIds []*string `json:"AutoSnapshotPolicyIds,omitempty" name:"AutoSnapshotPolicyIds"`
+}
+
 type DeleteAutoSnapshotPoliciesRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 要删除的定期快照策略ID列表。
 	AutoSnapshotPolicyIds []*string `json:"AutoSnapshotPolicyIds,omitempty" name:"AutoSnapshotPolicyIds"`
 }
@@ -623,13 +779,15 @@ func (r *DeleteAutoSnapshotPoliciesRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteAutoSnapshotPoliciesResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DeleteAutoSnapshotPoliciesResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DeleteAutoSnapshotPoliciesResponseParams `json:"Response"`
 }
 
 func (r *DeleteAutoSnapshotPoliciesResponse) ToJsonString() string {
@@ -643,9 +801,18 @@ func (r *DeleteAutoSnapshotPoliciesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteSnapshotsRequestParams struct {
+	// 要删除的快照ID列表，可通过[DescribeSnapshots](/document/product/362/15647)查询。
+	SnapshotIds []*string `json:"SnapshotIds,omitempty" name:"SnapshotIds"`
+
+	// 是否强制删除快照关联的镜像
+	DeleteBindImages *bool `json:"DeleteBindImages,omitempty" name:"DeleteBindImages"`
+}
+
 type DeleteSnapshotsRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 要删除的快照ID列表，可通过[DescribeSnapshots](/document/product/362/15647)查询。
 	SnapshotIds []*string `json:"SnapshotIds,omitempty" name:"SnapshotIds"`
 
@@ -673,13 +840,15 @@ func (r *DeleteSnapshotsRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteSnapshotsResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DeleteSnapshotsResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DeleteSnapshotsResponseParams `json:"Response"`
 }
 
 func (r *DeleteSnapshotsResponse) ToJsonString() string {
@@ -693,9 +862,30 @@ func (r *DeleteSnapshotsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeAutoSnapshotPoliciesRequestParams struct {
+	// 要查询的定期快照策略ID列表。参数不支持同时指定`AutoSnapshotPolicyIds`和`Filters`。
+	AutoSnapshotPolicyIds []*string `json:"AutoSnapshotPolicyIds,omitempty" name:"AutoSnapshotPolicyIds"`
+
+	// 过滤条件。参数不支持同时指定`AutoSnapshotPolicyIds`和`Filters`。<br><li>auto-snapshot-policy-id - Array of String - 是否必填：否 -（过滤条件）按定期快照策略ID进行过滤。定期快照策略ID形如：`asp-11112222`。<br><li>auto-snapshot-policy-state - Array of String - 是否必填：否 -（过滤条件）按定期快照策略的状态进行过滤。定期快照策略ID形如：`asp-11112222`。(NORMAL：正常 | ISOLATED：已隔离。)<br><li>auto-snapshot-policy-name - Array of String - 是否必填：否 -（过滤条件）按定期快照策略名称进行过滤。
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 返回数量，默认为20，最大值为100。关于`Limit`的更进一步介绍请参考 API [简介](/document/product/362/15633)中的相关小节。
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移量，默认为0。关于`Offset`的更进一步介绍请参考API[简介](/document/product/362/15633)中的相关小节。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 输出定期快照列表的排列顺序。取值范围：<br><li>ASC：升序排列<br><li>DESC：降序排列。
+	Order *string `json:"Order,omitempty" name:"Order"`
+
+	// 定期快照列表排序的依据字段。取值范围：<br><li>CREATETIME：依据定期快照的创建时间排序<br>默认按创建时间排序。
+	OrderField *string `json:"OrderField,omitempty" name:"OrderField"`
+}
+
 type DescribeAutoSnapshotPoliciesRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 要查询的定期快照策略ID列表。参数不支持同时指定`AutoSnapshotPolicyIds`和`Filters`。
 	AutoSnapshotPolicyIds []*string `json:"AutoSnapshotPolicyIds,omitempty" name:"AutoSnapshotPolicyIds"`
 
@@ -739,19 +929,21 @@ func (r *DescribeAutoSnapshotPoliciesRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeAutoSnapshotPoliciesResponseParams struct {
+	// 有效的定期快照策略数量。
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 定期快照策略列表。
+	AutoSnapshotPolicySet []*AutoSnapshotPolicy `json:"AutoSnapshotPolicySet,omitempty" name:"AutoSnapshotPolicySet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeAutoSnapshotPoliciesResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 有效的定期快照策略数量。
-		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 定期快照策略列表。
-		AutoSnapshotPolicySet []*AutoSnapshotPolicy `json:"AutoSnapshotPolicySet,omitempty" name:"AutoSnapshotPolicySet"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeAutoSnapshotPoliciesResponseParams `json:"Response"`
 }
 
 func (r *DescribeAutoSnapshotPoliciesResponse) ToJsonString() string {
@@ -765,9 +957,15 @@ func (r *DescribeAutoSnapshotPoliciesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeDiskAssociatedAutoSnapshotPolicyRequestParams struct {
+	// 要查询的云硬盘ID。
+	DiskId *string `json:"DiskId,omitempty" name:"DiskId"`
+}
+
 type DescribeDiskAssociatedAutoSnapshotPolicyRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 要查询的云硬盘ID。
 	DiskId *string `json:"DiskId,omitempty" name:"DiskId"`
 }
@@ -791,19 +989,21 @@ func (r *DescribeDiskAssociatedAutoSnapshotPolicyRequest) FromJsonString(s strin
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeDiskAssociatedAutoSnapshotPolicyResponseParams struct {
+	// 云盘绑定的定期快照数量。
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 云盘绑定的定期快照列表。
+	AutoSnapshotPolicySet []*AutoSnapshotPolicy `json:"AutoSnapshotPolicySet,omitempty" name:"AutoSnapshotPolicySet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeDiskAssociatedAutoSnapshotPolicyResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 云盘绑定的定期快照数量。
-		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 云盘绑定的定期快照列表。
-		AutoSnapshotPolicySet []*AutoSnapshotPolicy `json:"AutoSnapshotPolicySet,omitempty" name:"AutoSnapshotPolicySet"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeDiskAssociatedAutoSnapshotPolicyResponseParams `json:"Response"`
 }
 
 func (r *DescribeDiskAssociatedAutoSnapshotPolicyResponse) ToJsonString() string {
@@ -817,9 +1017,36 @@ func (r *DescribeDiskAssociatedAutoSnapshotPolicyResponse) FromJsonString(s stri
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeDiskConfigQuotaRequestParams struct {
+	// 查询类别，取值范围。<br><li>INQUIRY_CBS_CONFIG：查询云盘配置列表<br><li>INQUIRY_CVM_CONFIG：查询云盘与实例搭配的配置列表。
+	InquiryType *string `json:"InquiryType,omitempty" name:"InquiryType"`
+
+	// 查询一个或多个[可用区](/document/product/213/15753#ZoneInfo)下的配置。
+	Zones []*string `json:"Zones,omitempty" name:"Zones"`
+
+	// 付费模式。取值范围：<br><li>PREPAID：预付费<br><li>POSTPAID_BY_HOUR：后付费。
+	DiskChargeType *string `json:"DiskChargeType,omitempty" name:"DiskChargeType"`
+
+	// 硬盘介质类型。取值范围：<br><li>CLOUD_BASIC：表示普通云硬盘<br><li>CLOUD_PREMIUM：表示高性能云硬盘<br><li>CLOUD_SSD：表示SSD云硬盘<br><li>CLOUD_HSSD：表示增强型SSD云硬盘。
+	DiskTypes []*string `json:"DiskTypes,omitempty" name:"DiskTypes"`
+
+	// 系统盘或数据盘。取值范围：<br><li>SYSTEM_DISK：表示系统盘<br><li>DATA_DISK：表示数据盘。
+	DiskUsage *string `json:"DiskUsage,omitempty" name:"DiskUsage"`
+
+	// 按照实例机型系列过滤。实例机型系列形如：S1、I1、M1等。详见[实例类型](https://cloud.tencent.com/document/product/213/11518)
+	InstanceFamilies []*string `json:"InstanceFamilies,omitempty" name:"InstanceFamilies"`
+
+	// 实例CPU核数。
+	CPU *uint64 `json:"CPU,omitempty" name:"CPU"`
+
+	// 实例内存大小。
+	Memory *uint64 `json:"Memory,omitempty" name:"Memory"`
+}
+
 type DescribeDiskConfigQuotaRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 查询类别，取值范围。<br><li>INQUIRY_CBS_CONFIG：查询云盘配置列表<br><li>INQUIRY_CVM_CONFIG：查询云盘与实例搭配的配置列表。
 	InquiryType *string `json:"InquiryType,omitempty" name:"InquiryType"`
 
@@ -871,16 +1098,18 @@ func (r *DescribeDiskConfigQuotaRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeDiskConfigQuotaResponseParams struct {
+	// 云盘配置列表。
+	DiskConfigSet []*DiskConfig `json:"DiskConfigSet,omitempty" name:"DiskConfigSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeDiskConfigQuotaResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 云盘配置列表。
-		DiskConfigSet []*DiskConfig `json:"DiskConfigSet,omitempty" name:"DiskConfigSet"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeDiskConfigQuotaResponseParams `json:"Response"`
 }
 
 func (r *DescribeDiskConfigQuotaResponse) ToJsonString() string {
@@ -894,9 +1123,22 @@ func (r *DescribeDiskConfigQuotaResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeDiskOperationLogsRequestParams struct {
+	// 过滤条件。支持以下条件：
+	// <li>disk-id - Array of String - 是否必填：是 - 按云盘ID过滤，每个请求最多可指定10个云盘ID。
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 要查询的操作日志的截止时间，例如：“2019-11-22 23:59:59"
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 要查询的操作日志的起始时间，例如：“2019-11-22 00:00:00"
+	BeginTime *string `json:"BeginTime,omitempty" name:"BeginTime"`
+}
+
 type DescribeDiskOperationLogsRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 过滤条件。支持以下条件：
 	// <li>disk-id - Array of String - 是否必填：是 - 按云盘ID过滤，每个请求最多可指定10个云盘ID。
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
@@ -929,16 +1171,18 @@ func (r *DescribeDiskOperationLogsRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeDiskOperationLogsResponseParams struct {
+	// 云盘的操作日志列表。
+	DiskOperationLogSet []*DiskOperationLog `json:"DiskOperationLogSet,omitempty" name:"DiskOperationLogSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeDiskOperationLogsResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 云盘的操作日志列表。
-		DiskOperationLogSet []*DiskOperationLog `json:"DiskOperationLogSet,omitempty" name:"DiskOperationLogSet"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeDiskOperationLogsResponseParams `json:"Response"`
 }
 
 func (r *DescribeDiskOperationLogsResponse) ToJsonString() string {
@@ -952,9 +1196,24 @@ func (r *DescribeDiskOperationLogsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeDiskStoragePoolRequestParams struct {
+	// 返回数量，默认为20，最大值为100。关于`Limit`的更进一步介绍请参考 API [简介](/document/product/362/15633)中的相关小节。
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 指定需要查询的独享集群ID列表，该入参不能与Filters一起使用。
+	CdcIds []*string `json:"CdcIds,omitempty" name:"CdcIds"`
+
+	// 过滤条件。参数不支持同时指定`CdcIds`和`Filters`。<br><li>cdc-id - Array of String - 是否必填：否 -（过滤条件）按独享集群ID过滤。<br><li>zone - Array of String - 是否必填：否 -（过滤条件）按独享集群所在[可用区](/document/product/213/15753#ZoneInfo)过滤。<br><li>cage-id - Array of String - 是否必填：否 -（过滤条件）按独享集群所在围笼的ID过滤。<br><li>disk-type - Array of String - 是否必填：否 -（过滤条件）按照云盘介质类型过滤。(CLOUD_BASIC：表示普通云硬盘 | CLOUD_PREMIUM：表示高性能云硬盘。| CLOUD_SSD：SSD表示SSD云硬盘。)
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 偏移量，默认为0。关于`Offset`的更进一步介绍请参考API[简介](/document/product/362/15633)中的相关小节。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+}
+
 type DescribeDiskStoragePoolRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 返回数量，默认为20，最大值为100。关于`Limit`的更进一步介绍请参考 API [简介](/document/product/362/15633)中的相关小节。
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
@@ -990,19 +1249,21 @@ func (r *DescribeDiskStoragePoolRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeDiskStoragePoolResponseParams struct {
+	// 符合条件的独享集群的数量
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 独享集群的详细信息列表
+	DiskStoragePoolSet []*Cdc `json:"DiskStoragePoolSet,omitempty" name:"DiskStoragePoolSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeDiskStoragePoolResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 符合条件的独享集群的数量
-		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 独享集群的详细信息列表
-		DiskStoragePoolSet []*Cdc `json:"DiskStoragePoolSet,omitempty" name:"DiskStoragePoolSet"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeDiskStoragePoolResponseParams `json:"Response"`
 }
 
 func (r *DescribeDiskStoragePoolResponse) ToJsonString() string {
@@ -1016,9 +1277,33 @@ func (r *DescribeDiskStoragePoolResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeDisksRequestParams struct {
+	// 过滤条件。参数不支持同时指定`DiskIds`和`Filters`。<br><li>disk-usage - Array of String - 是否必填：否 -（过滤条件）按云盘类型过滤。 (SYSTEM_DISK：表示系统盘 | DATA_DISK：表示数据盘)<br><li>disk-charge-type - Array of String - 是否必填：否 -（过滤条件）按照云硬盘计费模式过滤。 (PREPAID：表示预付费，即包年包月 | POSTPAID_BY_HOUR：表示后付费，即按量计费。)<br><li>portable - Array of String - 是否必填：否 -（过滤条件）按是否为弹性云盘过滤。 (TRUE：表示弹性云盘 | FALSE：表示非弹性云盘。)<br><li>project-id - Array of Integer - 是否必填：否 -（过滤条件）按云硬盘所属项目ID过滤。<br><li>disk-id - Array of String - 是否必填：否 -（过滤条件）按照云硬盘ID过滤。云盘ID形如：`disk-11112222`。<br><li>disk-name - Array of String - 是否必填：否 -（过滤条件）按照云盘名称过滤。<br><li>disk-type - Array of String - 是否必填：否 -（过滤条件）按照云盘介质类型过滤。(CLOUD_BASIC：表示普通云硬盘 | CLOUD_PREMIUM：表示高性能云硬盘。| CLOUD_SSD：表示SSD云硬盘 | CLOUD_HSSD：表示增强型SSD云硬盘。| CLOUD_TSSD：表示极速型云硬盘。)<br><li>disk-state - Array of String - 是否必填：否 -（过滤条件）按照云盘状态过滤。(UNATTACHED：未挂载 | ATTACHING：挂载中 | ATTACHED：已挂载 | DETACHING：解挂中 | EXPANDING：扩容中 | ROLLBACKING：回滚中 | TORECYCLE：待回收。)<br><li>instance-id - Array of String - 是否必填：否 -（过滤条件）按照云盘挂载的云主机实例ID过滤。可根据此参数查询挂载在指定云主机下的云硬盘。<br><li>zone - Array of String - 是否必填：否 -（过滤条件）按照[可用区](/document/product/213/15753#ZoneInfo)过滤。<br><li>instance-ip-address - Array of String - 是否必填：否 -（过滤条件）按云盘所挂载云主机的内网或外网IP过滤。<br><li>instance-name - Array of String - 是否必填：否 -（过滤条件）按云盘所挂载的实例名称过滤。<br><li>tag-key - Array of String - 是否必填：否 -（过滤条件）按照标签键进行过滤。<br><li>tag-value - Array of String - 是否必填：否 -（过滤条件）照标签值进行过滤。<br><li>tag:tag-key - Array of String - 是否必填：否 -（过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 返回数量，默认为20，最大值为100。关于`Limit`的更进一步介绍请参考 API [简介](/document/product/362/15633)中的相关小节。
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 云盘列表排序的依据字段。取值范围：<br><li>CREATE_TIME：依据云盘的创建时间排序<br><li>DEADLINE：依据云盘的到期时间排序<br>默认按云盘创建时间排序。
+	OrderField *string `json:"OrderField,omitempty" name:"OrderField"`
+
+	// 偏移量，默认为0。关于`Offset`的更进一步介绍请参考API[简介](/document/product/362/15633)中的相关小节。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 云盘详情中是否需要返回云盘绑定的定期快照策略ID，TRUE表示需要返回，FALSE表示不返回。
+	ReturnBindAutoSnapshotPolicy *bool `json:"ReturnBindAutoSnapshotPolicy,omitempty" name:"ReturnBindAutoSnapshotPolicy"`
+
+	// 按照一个或者多个云硬盘ID查询。云硬盘ID形如：`disk-11112222`，此参数的具体格式可参考API[简介](/document/product/362/15633)的ids.N一节）。参数不支持同时指定`DiskIds`和`Filters`。
+	DiskIds []*string `json:"DiskIds,omitempty" name:"DiskIds"`
+
+	// 输出云盘列表的排列顺序。取值范围：<br><li>ASC：升序排列<br><li>DESC：降序排列。
+	Order *string `json:"Order,omitempty" name:"Order"`
+}
+
 type DescribeDisksRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 过滤条件。参数不支持同时指定`DiskIds`和`Filters`。<br><li>disk-usage - Array of String - 是否必填：否 -（过滤条件）按云盘类型过滤。 (SYSTEM_DISK：表示系统盘 | DATA_DISK：表示数据盘)<br><li>disk-charge-type - Array of String - 是否必填：否 -（过滤条件）按照云硬盘计费模式过滤。 (PREPAID：表示预付费，即包年包月 | POSTPAID_BY_HOUR：表示后付费，即按量计费。)<br><li>portable - Array of String - 是否必填：否 -（过滤条件）按是否为弹性云盘过滤。 (TRUE：表示弹性云盘 | FALSE：表示非弹性云盘。)<br><li>project-id - Array of Integer - 是否必填：否 -（过滤条件）按云硬盘所属项目ID过滤。<br><li>disk-id - Array of String - 是否必填：否 -（过滤条件）按照云硬盘ID过滤。云盘ID形如：`disk-11112222`。<br><li>disk-name - Array of String - 是否必填：否 -（过滤条件）按照云盘名称过滤。<br><li>disk-type - Array of String - 是否必填：否 -（过滤条件）按照云盘介质类型过滤。(CLOUD_BASIC：表示普通云硬盘 | CLOUD_PREMIUM：表示高性能云硬盘。| CLOUD_SSD：表示SSD云硬盘 | CLOUD_HSSD：表示增强型SSD云硬盘。| CLOUD_TSSD：表示极速型云硬盘。)<br><li>disk-state - Array of String - 是否必填：否 -（过滤条件）按照云盘状态过滤。(UNATTACHED：未挂载 | ATTACHING：挂载中 | ATTACHED：已挂载 | DETACHING：解挂中 | EXPANDING：扩容中 | ROLLBACKING：回滚中 | TORECYCLE：待回收。)<br><li>instance-id - Array of String - 是否必填：否 -（过滤条件）按照云盘挂载的云主机实例ID过滤。可根据此参数查询挂载在指定云主机下的云硬盘。<br><li>zone - Array of String - 是否必填：否 -（过滤条件）按照[可用区](/document/product/213/15753#ZoneInfo)过滤。<br><li>instance-ip-address - Array of String - 是否必填：否 -（过滤条件）按云盘所挂载云主机的内网或外网IP过滤。<br><li>instance-name - Array of String - 是否必填：否 -（过滤条件）按云盘所挂载的实例名称过滤。<br><li>tag-key - Array of String - 是否必填：否 -（过滤条件）按照标签键进行过滤。<br><li>tag-value - Array of String - 是否必填：否 -（过滤条件）照标签值进行过滤。<br><li>tag:tag-key - Array of String - 是否必填：否 -（过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
@@ -1066,19 +1351,21 @@ func (r *DescribeDisksRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeDisksResponseParams struct {
+	// 符合条件的云硬盘数量。
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 云硬盘的详细信息列表。
+	DiskSet []*Disk `json:"DiskSet,omitempty" name:"DiskSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeDisksResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 符合条件的云硬盘数量。
-		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 云硬盘的详细信息列表。
-		DiskSet []*Disk `json:"DiskSet,omitempty" name:"DiskSet"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeDisksResponseParams `json:"Response"`
 }
 
 func (r *DescribeDisksResponse) ToJsonString() string {
@@ -1092,9 +1379,15 @@ func (r *DescribeDisksResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeInstancesDiskNumRequestParams struct {
+	// 云服务器实例ID，通过[DescribeInstances](/document/product/213/15728)接口查询。
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
+}
+
 type DescribeInstancesDiskNumRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 云服务器实例ID，通过[DescribeInstances](/document/product/213/15728)接口查询。
 	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
 }
@@ -1118,16 +1411,18 @@ func (r *DescribeInstancesDiskNumRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeInstancesDiskNumResponseParams struct {
+	// 各个云服务器已挂载和可挂载弹性云盘的数量。
+	AttachDetail []*AttachDetail `json:"AttachDetail,omitempty" name:"AttachDetail"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeInstancesDiskNumResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 各个云服务器已挂载和可挂载弹性云盘的数量。
-		AttachDetail []*AttachDetail `json:"AttachDetail,omitempty" name:"AttachDetail"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeInstancesDiskNumResponseParams `json:"Response"`
 }
 
 func (r *DescribeInstancesDiskNumResponse) ToJsonString() string {
@@ -1141,9 +1436,22 @@ func (r *DescribeInstancesDiskNumResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeSnapshotOperationLogsRequestParams struct {
+	// 过滤条件。支持以下条件：
+	// <li>snapshot-id - Array of String - 是否必填：是 - 按快照ID过滤，每个请求最多可指定10个快照ID。
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 要查询的操作日志的起始时间，例如：“2019-11-22 00:00:00"
+	BeginTime *string `json:"BeginTime,omitempty" name:"BeginTime"`
+
+	// 要查询的操作日志的截止时间，例如：“2019-11-22 23:59:59"
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+}
+
 type DescribeSnapshotOperationLogsRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 过滤条件。支持以下条件：
 	// <li>snapshot-id - Array of String - 是否必填：是 - 按快照ID过滤，每个请求最多可指定10个快照ID。
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
@@ -1176,16 +1484,18 @@ func (r *DescribeSnapshotOperationLogsRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeSnapshotOperationLogsResponseParams struct {
+	// 快照操作日志列表。
+	SnapshotOperationLogSet []*SnapshotOperationLog `json:"SnapshotOperationLogSet,omitempty" name:"SnapshotOperationLogSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeSnapshotOperationLogsResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 快照操作日志列表。
-		SnapshotOperationLogSet []*SnapshotOperationLog `json:"SnapshotOperationLogSet,omitempty" name:"SnapshotOperationLogSet"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeSnapshotOperationLogsResponseParams `json:"Response"`
 }
 
 func (r *DescribeSnapshotOperationLogsResponse) ToJsonString() string {
@@ -1199,9 +1509,15 @@ func (r *DescribeSnapshotOperationLogsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeSnapshotSharePermissionRequestParams struct {
+	// 要查询快照的ID。可通过[DescribeSnapshots](https://cloud.tencent.com/document/api/362/15647)查询获取。
+	SnapshotId *string `json:"SnapshotId,omitempty" name:"SnapshotId"`
+}
+
 type DescribeSnapshotSharePermissionRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 要查询快照的ID。可通过[DescribeSnapshots](https://cloud.tencent.com/document/api/362/15647)查询获取。
 	SnapshotId *string `json:"SnapshotId,omitempty" name:"SnapshotId"`
 }
@@ -1225,16 +1541,18 @@ func (r *DescribeSnapshotSharePermissionRequest) FromJsonString(s string) error 
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeSnapshotSharePermissionResponseParams struct {
+	// 快照的分享信息的集合
+	SharePermissionSet []*SharePermission `json:"SharePermissionSet,omitempty" name:"SharePermissionSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeSnapshotSharePermissionResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 快照的分享信息的集合
-		SharePermissionSet []*SharePermission `json:"SharePermissionSet,omitempty" name:"SharePermissionSet"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeSnapshotSharePermissionResponseParams `json:"Response"`
 }
 
 func (r *DescribeSnapshotSharePermissionResponse) ToJsonString() string {
@@ -1248,9 +1566,32 @@ func (r *DescribeSnapshotSharePermissionResponse) FromJsonString(s string) error
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeSnapshotsRequestParams struct {
+	// 要查询快照的ID列表。参数不支持同时指定`SnapshotIds`和`Filters`。
+	SnapshotIds []*string `json:"SnapshotIds,omitempty" name:"SnapshotIds"`
+
+	// 过滤条件。参数不支持同时指定`SnapshotIds`和`Filters`。<br><li>snapshot-id - Array of String - 是否必填：否 -（过滤条件）按照快照的ID过滤。快照ID形如：`snap-11112222`。<br><li>snapshot-name - Array of String - 是否必填：否 -（过滤条件）按照快照名称过滤。<br><li>snapshot-state - Array of String - 是否必填：否 -（过滤条件）按照快照状态过滤。 (NORMAL：正常 | CREATING：创建中 | ROLLBACKING：回滚中。)<br><li>disk-usage - Array of String - 是否必填：否 -（过滤条件）按创建快照的云盘类型过滤。 (SYSTEM_DISK：代表系统盘 | DATA_DISK：代表数据盘。)<br><li>project-id  - Array of String - 是否必填：否 -（过滤条件）按云硬盘所属项目ID过滤。<br><li>disk-id  - Array of String - 是否必填：否 -（过滤条件）按照创建快照的云硬盘ID过滤。<br><li>zone - Array of String - 是否必填：否 -（过滤条件）按照[可用区](/document/product/213/15753#ZoneInfo)过滤。<br><li>encrypt - Array of String - 是否必填：否 -（过滤条件）按是否加密盘快照过滤。 (TRUE：表示加密盘快照 | FALSE：表示非加密盘快照。)
+	// <li>snapshot-type- Array of String - 是否必填：否 -（过滤条件）根据snapshot-type指定的快照类型查询对应的快照。
+	// (SHARED_SNAPSHOT：表示共享过来的快照 | PRIVATE_SNAPSHOT：表示自己私有快照。)
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 偏移量，默认为0。关于`Offset`的更进一步介绍请参考API[简介](/document/product/362/15633)中的相关小节。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回数量，默认为20，最大值为100。关于`Limit`的更进一步介绍请参考 API [简介](/document/product/362/15633)中的相关小节。
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 输出云盘列表的排列顺序。取值范围：<br><li>ASC：升序排列<br><li>DESC：降序排列。
+	Order *string `json:"Order,omitempty" name:"Order"`
+
+	// 快照列表排序的依据字段。取值范围：<br><li>CREATE_TIME：依据快照的创建时间排序<br>默认按创建时间排序。
+	OrderField *string `json:"OrderField,omitempty" name:"OrderField"`
+}
+
 type DescribeSnapshotsRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 要查询快照的ID列表。参数不支持同时指定`SnapshotIds`和`Filters`。
 	SnapshotIds []*string `json:"SnapshotIds,omitempty" name:"SnapshotIds"`
 
@@ -1296,19 +1637,21 @@ func (r *DescribeSnapshotsRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeSnapshotsResponseParams struct {
+	// 快照的数量。
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 快照的详情列表。
+	SnapshotSet []*Snapshot `json:"SnapshotSet,omitempty" name:"SnapshotSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeSnapshotsResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 快照的数量。
-		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 快照的详情列表。
-		SnapshotSet []*Snapshot `json:"SnapshotSet,omitempty" name:"SnapshotSet"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeSnapshotsResponseParams `json:"Response"`
 }
 
 func (r *DescribeSnapshotsResponse) ToJsonString() string {
@@ -1322,9 +1665,18 @@ func (r *DescribeSnapshotsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DetachDisksRequestParams struct {
+	// 将要卸载的云硬盘ID， 通过[DescribeDisks](/document/product/362/16315)接口查询，单次请求最多可卸载10块弹性云盘。
+	DiskIds []*string `json:"DiskIds,omitempty" name:"DiskIds"`
+
+	// 对于非共享型云盘，会忽略该参数；对于共享型云盘，该参数表示要从哪个CVM实例上卸载云盘。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+}
+
 type DetachDisksRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 将要卸载的云硬盘ID， 通过[DescribeDisks](/document/product/362/16315)接口查询，单次请求最多可卸载10块弹性云盘。
 	DiskIds []*string `json:"DiskIds,omitempty" name:"DiskIds"`
 
@@ -1352,13 +1704,15 @@ func (r *DetachDisksRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DetachDisksResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DetachDisksResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DetachDisksResponseParams `json:"Response"`
 }
 
 func (r *DetachDisksResponse) ToJsonString() string {
@@ -1373,7 +1727,6 @@ func (r *DetachDisksResponse) FromJsonString(s string) error {
 }
 
 type Disk struct {
-
 	// 云盘是否与挂载的实例一起销毁。<br><li>true:销毁实例时会同时销毁云盘，只支持按小时后付费云盘。<br><li>false：销毁实例时不销毁云盘。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeleteWithInstance *bool `json:"DeleteWithInstance,omitempty" name:"DeleteWithInstance"`
@@ -1503,7 +1856,6 @@ type Disk struct {
 }
 
 type DiskChargePrepaid struct {
-
 	// 购买云盘的时长，默认单位为月，取值范围：1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36。
 	Period *uint64 `json:"Period,omitempty" name:"Period"`
 
@@ -1515,7 +1867,6 @@ type DiskChargePrepaid struct {
 }
 
 type DiskConfig struct {
-
 	// 配置是否可用。
 	Available *bool `json:"Available,omitempty" name:"Available"`
 
@@ -1547,7 +1898,6 @@ type DiskConfig struct {
 }
 
 type DiskOperationLog struct {
-
 	// 操作的状态。取值范围：
 	// SUCCESS :表示操作成功 
 	// FAILED :表示操作失败 
@@ -1580,7 +1930,6 @@ type DiskOperationLog struct {
 }
 
 type Filter struct {
-
 	// 一个或者多个过滤值。
 	Values []*string `json:"Values,omitempty" name:"Values"`
 
@@ -1588,8 +1937,14 @@ type Filter struct {
 	Name *string `json:"Name,omitempty" name:"Name"`
 }
 
+// Predefined struct for user
+type GetSnapOverviewRequestParams struct {
+
+}
+
 type GetSnapOverviewRequest struct {
 	*tchttp.BaseRequest
+	
 }
 
 func (r *GetSnapOverviewRequest) ToJsonString() string {
@@ -1604,31 +1959,34 @@ func (r *GetSnapOverviewRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetSnapOverviewRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type GetSnapOverviewResponseParams struct {
+	// 用户快照总大小
+	TotalSize *float64 `json:"TotalSize,omitempty" name:"TotalSize"`
+
+	// 用户快照总大小（用于计费）
+	RealTradeSize *float64 `json:"RealTradeSize,omitempty" name:"RealTradeSize"`
+
+	// 快照免费额度
+	FreeQuota *float64 `json:"FreeQuota,omitempty" name:"FreeQuota"`
+
+	// 快照总个数
+	TotalNums *int64 `json:"TotalNums,omitempty" name:"TotalNums"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type GetSnapOverviewResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 用户快照总大小
-		TotalSize *float64 `json:"TotalSize,omitempty" name:"TotalSize"`
-
-		// 用户快照总大小（用于计费）
-		RealTradeSize *float64 `json:"RealTradeSize,omitempty" name:"RealTradeSize"`
-
-		// 快照免费额度
-		FreeQuota *float64 `json:"FreeQuota,omitempty" name:"FreeQuota"`
-
-		// 快照总个数
-		TotalNums *int64 `json:"TotalNums,omitempty" name:"TotalNums"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *GetSnapOverviewResponseParams `json:"Response"`
 }
 
 func (r *GetSnapOverviewResponse) ToJsonString() string {
@@ -1643,7 +2001,6 @@ func (r *GetSnapOverviewResponse) FromJsonString(s string) error {
 }
 
 type Image struct {
-
 	// 镜像名称。
 	ImageName *string `json:"ImageName,omitempty" name:"ImageName"`
 
@@ -1651,9 +2008,15 @@ type Image struct {
 	ImageId *string `json:"ImageId,omitempty" name:"ImageId"`
 }
 
+// Predefined struct for user
+type InitializeDisksRequestParams struct {
+	// 待重新初始化的云硬盘ID列表， 单次初始化限制20块以内
+	DiskIds []*string `json:"DiskIds,omitempty" name:"DiskIds"`
+}
+
 type InitializeDisksRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 待重新初始化的云硬盘ID列表， 单次初始化限制20块以内
 	DiskIds []*string `json:"DiskIds,omitempty" name:"DiskIds"`
 }
@@ -1677,13 +2040,15 @@ func (r *InitializeDisksRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type InitializeDisksResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type InitializeDisksResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *InitializeDisksResponseParams `json:"Response"`
 }
 
 func (r *InitializeDisksResponse) ToJsonString() string {
@@ -1697,9 +2062,18 @@ func (r *InitializeDisksResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type InquirePriceModifyDiskExtraPerformanceRequestParams struct {
+	// 云硬盘ID， 通过[DescribeDisks](/document/product/362/16315)接口查询。
+	DiskId *string `json:"DiskId,omitempty" name:"DiskId"`
+
+	// 额外购买的云硬盘性能值，单位MB/s。
+	ThroughputPerformance *uint64 `json:"ThroughputPerformance,omitempty" name:"ThroughputPerformance"`
+}
+
 type InquirePriceModifyDiskExtraPerformanceRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 云硬盘ID， 通过[DescribeDisks](/document/product/362/16315)接口查询。
 	DiskId *string `json:"DiskId,omitempty" name:"DiskId"`
 
@@ -1727,16 +2101,18 @@ func (r *InquirePriceModifyDiskExtraPerformanceRequest) FromJsonString(s string)
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type InquirePriceModifyDiskExtraPerformanceResponseParams struct {
+	// 描述了调整云盘额外性能时对应的价格。
+	DiskPrice *Price `json:"DiskPrice,omitempty" name:"DiskPrice"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type InquirePriceModifyDiskExtraPerformanceResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 描述了调整云盘额外性能时对应的价格。
-		DiskPrice *Price `json:"DiskPrice,omitempty" name:"DiskPrice"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *InquirePriceModifyDiskExtraPerformanceResponseParams `json:"Response"`
 }
 
 func (r *InquirePriceModifyDiskExtraPerformanceResponse) ToJsonString() string {
@@ -1750,9 +2126,36 @@ func (r *InquirePriceModifyDiskExtraPerformanceResponse) FromJsonString(s string
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type InquiryPriceCreateDisksRequestParams struct {
+	// 云硬盘计费类型。<br><li>PREPAID：预付费，即包年包月<br><li>POSTPAID_BY_HOUR：按小时后付费
+	DiskChargeType *string `json:"DiskChargeType,omitempty" name:"DiskChargeType"`
+
+	// 硬盘介质类型。取值范围：<br><li>CLOUD_BASIC：表示普通云硬盘<br><li>CLOUD_PREMIUM：表示高性能云硬盘<br><li>CLOUD_SSD：表示SSD云硬盘<br><li>CLOUD_HSSD：表示增强型SSD云硬盘<br><li>CLOUD_TSSD：表示极速型SSD云硬盘。
+	DiskType *string `json:"DiskType,omitempty" name:"DiskType"`
+
+	// 云硬盘大小，单位为GB。云盘大小取值范围参见云硬盘[产品分类](/document/product/362/2353)的说明。
+	DiskSize *uint64 `json:"DiskSize,omitempty" name:"DiskSize"`
+
+	// 云盘所属项目ID。
+	ProjectId *uint64 `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 购买云盘的数量。不填则默认为1。
+	DiskCount *uint64 `json:"DiskCount,omitempty" name:"DiskCount"`
+
+	// 额外购买的云硬盘性能值，单位MB/s。<br>目前仅支持增强型SSD云硬盘（CLOUD_HSSD）和极速型SSD云硬盘（CLOUD_TSSD）
+	ThroughputPerformance *uint64 `json:"ThroughputPerformance,omitempty" name:"ThroughputPerformance"`
+
+	// 预付费模式，即包年包月相关参数设置。通过该参数指定包年包月云盘的购买时长、是否设置自动续费等属性。<br>创建预付费云盘该参数必传，创建按小时后付费云盘无需传该参数。
+	DiskChargePrepaid *DiskChargePrepaid `json:"DiskChargePrepaid,omitempty" name:"DiskChargePrepaid"`
+
+	// 指定云硬盘备份点配额。
+	DiskBackupQuota *uint64 `json:"DiskBackupQuota,omitempty" name:"DiskBackupQuota"`
+}
+
 type InquiryPriceCreateDisksRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 云硬盘计费类型。<br><li>PREPAID：预付费，即包年包月<br><li>POSTPAID_BY_HOUR：按小时后付费
 	DiskChargeType *string `json:"DiskChargeType,omitempty" name:"DiskChargeType"`
 
@@ -1804,16 +2207,18 @@ func (r *InquiryPriceCreateDisksRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type InquiryPriceCreateDisksResponseParams struct {
+	// 描述了新购云盘的价格。
+	DiskPrice *Price `json:"DiskPrice,omitempty" name:"DiskPrice"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type InquiryPriceCreateDisksResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 描述了新购云盘的价格。
-		DiskPrice *Price `json:"DiskPrice,omitempty" name:"DiskPrice"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *InquiryPriceCreateDisksResponseParams `json:"Response"`
 }
 
 func (r *InquiryPriceCreateDisksResponse) ToJsonString() string {
@@ -1827,9 +2232,24 @@ func (r *InquiryPriceCreateDisksResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type InquiryPriceRenewDisksRequestParams struct {
+	// 云硬盘ID， 通过[DescribeDisks](/document/product/362/16315)接口查询。
+	DiskIds []*string `json:"DiskIds,omitempty" name:"DiskIds"`
+
+	// 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月云盘的购买时长。如果在该参数中指定CurInstanceDeadline，则会按对齐到子机到期时间来续费。如果是批量续费询价，该参数与Disks参数一一对应，元素数量需保持一致。
+	DiskChargePrepaids []*DiskChargePrepaid `json:"DiskChargePrepaids,omitempty" name:"DiskChargePrepaids"`
+
+	// 指定云盘新的到期时间，形式如：2017-12-17 00:00:00。参数`NewDeadline`和`DiskChargePrepaids`是两种指定询价时长的方式，两者必传一个。
+	NewDeadline *string `json:"NewDeadline,omitempty" name:"NewDeadline"`
+
+	// 云盘所属项目ID。 如传入则仅用于鉴权。
+	ProjectId *uint64 `json:"ProjectId,omitempty" name:"ProjectId"`
+}
+
 type InquiryPriceRenewDisksRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 云硬盘ID， 通过[DescribeDisks](/document/product/362/16315)接口查询。
 	DiskIds []*string `json:"DiskIds,omitempty" name:"DiskIds"`
 
@@ -1865,16 +2285,18 @@ func (r *InquiryPriceRenewDisksRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type InquiryPriceRenewDisksResponseParams struct {
+	// 描述了续费云盘的价格。
+	DiskPrice *PrepayPrice `json:"DiskPrice,omitempty" name:"DiskPrice"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type InquiryPriceRenewDisksResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 描述了续费云盘的价格。
-		DiskPrice *PrepayPrice `json:"DiskPrice,omitempty" name:"DiskPrice"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *InquiryPriceRenewDisksResponseParams `json:"Response"`
 }
 
 func (r *InquiryPriceRenewDisksResponse) ToJsonString() string {
@@ -1888,9 +2310,21 @@ func (r *InquiryPriceRenewDisksResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type InquiryPriceResizeDiskRequestParams struct {
+	// 云硬盘ID， 通过[DescribeDisks](/document/product/362/16315)接口查询。
+	DiskId *string `json:"DiskId,omitempty" name:"DiskId"`
+
+	// 云硬盘扩容后的大小，单位为GB，不得小于当前云硬盘大小。云盘大小取值范围参见云硬盘[产品分类](/document/product/362/2353)的说明。
+	DiskSize *uint64 `json:"DiskSize,omitempty" name:"DiskSize"`
+
+	// 云盘所属项目ID。 如传入则仅用于鉴权。
+	ProjectId *uint64 `json:"ProjectId,omitempty" name:"ProjectId"`
+}
+
 type InquiryPriceResizeDiskRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 云硬盘ID， 通过[DescribeDisks](/document/product/362/16315)接口查询。
 	DiskId *string `json:"DiskId,omitempty" name:"DiskId"`
 
@@ -1922,16 +2356,18 @@ func (r *InquiryPriceResizeDiskRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type InquiryPriceResizeDiskResponseParams struct {
+	// 描述了扩容云盘的价格。
+	DiskPrice *PrepayPrice `json:"DiskPrice,omitempty" name:"DiskPrice"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type InquiryPriceResizeDiskResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 描述了扩容云盘的价格。
-		DiskPrice *PrepayPrice `json:"DiskPrice,omitempty" name:"DiskPrice"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *InquiryPriceResizeDiskResponseParams `json:"Response"`
 }
 
 func (r *InquiryPriceResizeDiskResponse) ToJsonString() string {
@@ -1945,9 +2381,30 @@ func (r *InquiryPriceResizeDiskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifyAutoSnapshotPolicyAttributeRequestParams struct {
+	// 定期快照策略ID。
+	AutoSnapshotPolicyId *string `json:"AutoSnapshotPolicyId,omitempty" name:"AutoSnapshotPolicyId"`
+
+	// 定期快照的执行策略。
+	Policy []*Policy `json:"Policy,omitempty" name:"Policy"`
+
+	// 要创建的定期快照策略名。不传则默认为“未命名”。最大长度不能超60个字节。
+	AutoSnapshotPolicyName *string `json:"AutoSnapshotPolicyName,omitempty" name:"AutoSnapshotPolicyName"`
+
+	// 是否激活定期快照策略，FALSE表示未激活，TRUE表示激活，默认为TRUE。
+	IsActivated *bool `json:"IsActivated,omitempty" name:"IsActivated"`
+
+	// 通过该定期快照策略创建的快照是否永久保留。FALSE表示非永久保留，TRUE表示永久保留，默认为FALSE。
+	IsPermanent *bool `json:"IsPermanent,omitempty" name:"IsPermanent"`
+
+	// 通过该定期快照策略创建的快照保留天数，该参数不可与`IsPermanent`参数冲突，即若定期快照策略设置为永久保留，`RetentionDays`应置0。
+	RetentionDays *uint64 `json:"RetentionDays,omitempty" name:"RetentionDays"`
+}
+
 type ModifyAutoSnapshotPolicyAttributeRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 定期快照策略ID。
 	AutoSnapshotPolicyId *string `json:"AutoSnapshotPolicyId,omitempty" name:"AutoSnapshotPolicyId"`
 
@@ -1991,13 +2448,15 @@ func (r *ModifyAutoSnapshotPolicyAttributeRequest) FromJsonString(s string) erro
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifyAutoSnapshotPolicyAttributeResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type ModifyAutoSnapshotPolicyAttributeResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *ModifyAutoSnapshotPolicyAttributeResponseParams `json:"Response"`
 }
 
 func (r *ModifyAutoSnapshotPolicyAttributeResponse) ToJsonString() string {
@@ -2011,9 +2470,30 @@ func (r *ModifyAutoSnapshotPolicyAttributeResponse) FromJsonString(s string) err
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifyDiskAttributesRequestParams struct {
+	// 一个或多个待操作的云硬盘ID。如果传入多个云盘ID，仅支持所有云盘修改为同一属性。
+	DiskIds []*string `json:"DiskIds,omitempty" name:"DiskIds"`
+
+	// 新的云硬盘项目ID，只支持修改弹性云盘的项目ID。通过[DescribeProject](/document/api/378/4400)接口查询可用项目及其ID。
+	ProjectId *uint64 `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 新的云硬盘名称。
+	DiskName *string `json:"DiskName,omitempty" name:"DiskName"`
+
+	// 是否为弹性云盘，FALSE表示非弹性云盘，TRUE表示弹性云盘。仅支持非弹性云盘修改为弹性云盘。
+	Portable *bool `json:"Portable,omitempty" name:"Portable"`
+
+	// 成功挂载到云主机后该云硬盘是否随云主机销毁，TRUE表示随云主机销毁，FALSE表示不随云主机销毁。仅支持按量计费云硬盘数据盘。
+	DeleteWithInstance *bool `json:"DeleteWithInstance,omitempty" name:"DeleteWithInstance"`
+
+	// 变更云盘类型时，可传入该参数，表示变更的目标类型，取值范围：<br><li>CLOUD_PREMIUM：表示高性能云硬盘<br><li>CLOUD_SSD：表示SSD云硬盘。<br>当前不支持批量变更类型，即传入DiskType时，DiskIds仅支持传入一块云盘；<br>变更云盘类型时不支持同时变更其他属性。
+	DiskType *string `json:"DiskType,omitempty" name:"DiskType"`
+}
+
 type ModifyDiskAttributesRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 一个或多个待操作的云硬盘ID。如果传入多个云盘ID，仅支持所有云盘修改为同一属性。
 	DiskIds []*string `json:"DiskIds,omitempty" name:"DiskIds"`
 
@@ -2057,13 +2537,15 @@ func (r *ModifyDiskAttributesRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifyDiskAttributesResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type ModifyDiskAttributesResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *ModifyDiskAttributesResponseParams `json:"Response"`
 }
 
 func (r *ModifyDiskAttributesResponse) ToJsonString() string {
@@ -2077,9 +2559,18 @@ func (r *ModifyDiskAttributesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifyDiskExtraPerformanceRequestParams struct {
+	// 需要创建快照的云硬盘ID，可通过[DescribeDisks](/document/product/362/16315)接口查询。
+	DiskId *string `json:"DiskId,omitempty" name:"DiskId"`
+
+	// 额外购买的云硬盘性能值，单位MB/s。
+	ThroughputPerformance *uint64 `json:"ThroughputPerformance,omitempty" name:"ThroughputPerformance"`
+}
+
 type ModifyDiskExtraPerformanceRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 需要创建快照的云硬盘ID，可通过[DescribeDisks](/document/product/362/16315)接口查询。
 	DiskId *string `json:"DiskId,omitempty" name:"DiskId"`
 
@@ -2107,13 +2598,15 @@ func (r *ModifyDiskExtraPerformanceRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifyDiskExtraPerformanceResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type ModifyDiskExtraPerformanceResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *ModifyDiskExtraPerformanceResponseParams `json:"Response"`
 }
 
 func (r *ModifyDiskExtraPerformanceResponse) ToJsonString() string {
@@ -2127,9 +2620,21 @@ func (r *ModifyDiskExtraPerformanceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifyDisksChargeTypeRequestParams struct {
+	// 一个或多个待操作的云硬盘ID。每次请求批量云盘上限为100。
+	DiskIds []*string `json:"DiskIds,omitempty" name:"DiskIds"`
+
+	// 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。
+	DiskChargePrepaid *DiskChargePrepaid `json:"DiskChargePrepaid,omitempty" name:"DiskChargePrepaid"`
+
+	// 后付费模式
+	DiskChargePostpaid *bool `json:"DiskChargePostpaid,omitempty" name:"DiskChargePostpaid"`
+}
+
 type ModifyDisksChargeTypeRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 一个或多个待操作的云硬盘ID。每次请求批量云盘上限为100。
 	DiskIds []*string `json:"DiskIds,omitempty" name:"DiskIds"`
 
@@ -2161,13 +2666,15 @@ func (r *ModifyDisksChargeTypeRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifyDisksChargeTypeResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type ModifyDisksChargeTypeResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *ModifyDisksChargeTypeResponseParams `json:"Response"`
 }
 
 func (r *ModifyDisksChargeTypeResponse) ToJsonString() string {
@@ -2181,9 +2688,18 @@ func (r *ModifyDisksChargeTypeResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifyDisksRenewFlagRequestParams struct {
+	// 一个或多个待操作的云硬盘ID。
+	DiskIds []*string `json:"DiskIds,omitempty" name:"DiskIds"`
+
+	// 云盘的续费标识。取值范围：<br><li>NOTIFY_AND_AUTO_RENEW：通知过期且自动续费<br><li>NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费<br><li>DISABLE_NOTIFY_AND_MANUAL_RENEW：不通知过期不自动续费。
+	RenewFlag *string `json:"RenewFlag,omitempty" name:"RenewFlag"`
+}
+
 type ModifyDisksRenewFlagRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 一个或多个待操作的云硬盘ID。
 	DiskIds []*string `json:"DiskIds,omitempty" name:"DiskIds"`
 
@@ -2211,13 +2727,15 @@ func (r *ModifyDisksRenewFlagRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifyDisksRenewFlagResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type ModifyDisksRenewFlagResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *ModifyDisksRenewFlagResponseParams `json:"Response"`
 }
 
 func (r *ModifyDisksRenewFlagResponse) ToJsonString() string {
@@ -2231,9 +2749,24 @@ func (r *ModifyDisksRenewFlagResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifySnapshotAttributeRequestParams struct {
+	// 快照ID, 可通过[DescribeSnapshots](/document/product/362/15647)查询。
+	SnapshotId *string `json:"SnapshotId,omitempty" name:"SnapshotId"`
+
+	// 新的快照名称。最长为60个字符。
+	SnapshotName *string `json:"SnapshotName,omitempty" name:"SnapshotName"`
+
+	// 快照的保留方式，FALSE表示非永久保留，TRUE表示永久保留。
+	IsPermanent *bool `json:"IsPermanent,omitempty" name:"IsPermanent"`
+
+	// 快照的到期时间；设置好快照将会被同时设置为非永久保留方式；超过到期时间后快照将会被自动删除。
+	Deadline *string `json:"Deadline,omitempty" name:"Deadline"`
+}
+
 type ModifySnapshotAttributeRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 快照ID, 可通过[DescribeSnapshots](/document/product/362/15647)查询。
 	SnapshotId *string `json:"SnapshotId,omitempty" name:"SnapshotId"`
 
@@ -2269,13 +2802,15 @@ func (r *ModifySnapshotAttributeRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifySnapshotAttributeResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type ModifySnapshotAttributeResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *ModifySnapshotAttributeResponseParams `json:"Response"`
 }
 
 func (r *ModifySnapshotAttributeResponse) ToJsonString() string {
@@ -2289,9 +2824,21 @@ func (r *ModifySnapshotAttributeResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifySnapshotsSharePermissionRequestParams struct {
+	// 接收分享快照的账号Id列表，array型参数的格式可以参考[API简介](https://cloud.tencent.com/document/api/213/568)。帐号ID不同于QQ号，查询用户帐号ID请查看[帐号信息](https://console.cloud.tencent.com/developer)中的帐号ID栏。
+	AccountIds []*string `json:"AccountIds,omitempty" name:"AccountIds"`
+
+	// 操作，包括 SHARE，CANCEL。其中SHARE代表分享操作，CANCEL代表取消分享操作。
+	Permission *string `json:"Permission,omitempty" name:"Permission"`
+
+	// 快照ID, 可通过[DescribeSnapshots](https://cloud.tencent.com/document/api/362/15647)查询获取。
+	SnapshotIds []*string `json:"SnapshotIds,omitempty" name:"SnapshotIds"`
+}
+
 type ModifySnapshotsSharePermissionRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 接收分享快照的账号Id列表，array型参数的格式可以参考[API简介](https://cloud.tencent.com/document/api/213/568)。帐号ID不同于QQ号，查询用户帐号ID请查看[帐号信息](https://console.cloud.tencent.com/developer)中的帐号ID栏。
 	AccountIds []*string `json:"AccountIds,omitempty" name:"AccountIds"`
 
@@ -2323,13 +2870,15 @@ func (r *ModifySnapshotsSharePermissionRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifySnapshotsSharePermissionResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type ModifySnapshotsSharePermissionResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *ModifySnapshotsSharePermissionResponseParams `json:"Response"`
 }
 
 func (r *ModifySnapshotsSharePermissionResponse) ToJsonString() string {
@@ -2344,7 +2893,6 @@ func (r *ModifySnapshotsSharePermissionResponse) FromJsonString(s string) error 
 }
 
 type Placement struct {
-
 	// 云硬盘所属的[可用区](/document/product/213/15753#ZoneInfo)。该参数也可以通过调用  [DescribeZones](/document/product/213/15707) 的返回值中的Zone字段来获取。
 	Zone *string `json:"Zone,omitempty" name:"Zone"`
 
@@ -2368,7 +2916,6 @@ type Placement struct {
 }
 
 type Policy struct {
-
 	// 指定每周从周一到周日需要触发定期快照的日期，取值范围：[0, 6]。0表示周日触发，1-6分别表示周一至周六。
 	DayOfWeek []*uint64 `json:"DayOfWeek,omitempty" name:"DayOfWeek"`
 
@@ -2377,7 +2924,6 @@ type Policy struct {
 }
 
 type PrepayPrice struct {
-
 	// 预付费云盘或快照预支费用的原价，单位：元。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OriginalPrice *float64 `json:"OriginalPrice,omitempty" name:"OriginalPrice"`
@@ -2416,7 +2962,6 @@ type PrepayPrice struct {
 }
 
 type Price struct {
-
 	// 后付费云盘折扣单价，单位：元。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UnitPriceDiscount *float64 `json:"UnitPriceDiscount,omitempty" name:"UnitPriceDiscount"`
@@ -2454,9 +2999,18 @@ type Price struct {
 	ChargeUnit *string `json:"ChargeUnit,omitempty" name:"ChargeUnit"`
 }
 
+// Predefined struct for user
+type RenewDiskRequestParams struct {
+	// 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月云盘的续费时长。<br>在云盘与挂载的实例一起续费的场景下，可以指定参数CurInstanceDeadline，此时云盘会按对齐到实例续费后的到期时间来续费。
+	DiskChargePrepaid *DiskChargePrepaid `json:"DiskChargePrepaid,omitempty" name:"DiskChargePrepaid"`
+
+	// 云硬盘ID， 通过[DescribeDisks](/document/product/362/16315)接口查询。
+	DiskId *string `json:"DiskId,omitempty" name:"DiskId"`
+}
+
 type RenewDiskRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月云盘的续费时长。<br>在云盘与挂载的实例一起续费的场景下，可以指定参数CurInstanceDeadline，此时云盘会按对齐到实例续费后的到期时间来续费。
 	DiskChargePrepaid *DiskChargePrepaid `json:"DiskChargePrepaid,omitempty" name:"DiskChargePrepaid"`
 
@@ -2484,13 +3038,15 @@ func (r *RenewDiskRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type RenewDiskResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type RenewDiskResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *RenewDiskResponseParams `json:"Response"`
 }
 
 func (r *RenewDiskResponse) ToJsonString() string {
@@ -2504,9 +3060,18 @@ func (r *RenewDiskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ResizeDiskRequestParams struct {
+	// 云硬盘ID， 通过[DescribeDisks](/document/product/362/16315)接口查询。
+	DiskId *string `json:"DiskId,omitempty" name:"DiskId"`
+
+	// 云硬盘扩容后的大小，单位为GB，必须大于当前云硬盘大小。云盘大小取值范围参见云硬盘[产品分类](/document/product/362/2353)的说明。
+	DiskSize *uint64 `json:"DiskSize,omitempty" name:"DiskSize"`
+}
+
 type ResizeDiskRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 云硬盘ID， 通过[DescribeDisks](/document/product/362/16315)接口查询。
 	DiskId *string `json:"DiskId,omitempty" name:"DiskId"`
 
@@ -2534,13 +3099,15 @@ func (r *ResizeDiskRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ResizeDiskResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type ResizeDiskResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *ResizeDiskResponseParams `json:"Response"`
 }
 
 func (r *ResizeDiskResponse) ToJsonString() string {
@@ -2555,7 +3122,6 @@ func (r *ResizeDiskResponse) FromJsonString(s string) error {
 }
 
 type SharePermission struct {
-
 	// 快照分享的时间
 	CreatedTime *string `json:"CreatedTime,omitempty" name:"CreatedTime"`
 
@@ -2564,7 +3130,6 @@ type SharePermission struct {
 }
 
 type Snapshot struct {
-
 	// 快照所在的位置。
 	Placement *Placement `json:"Placement,omitempty" name:"Placement"`
 
@@ -2627,7 +3192,6 @@ type Snapshot struct {
 }
 
 type SnapshotCopyResult struct {
-
 	// 复制到目标地域的新快照ID。
 	SnapshotId *string `json:"SnapshotId,omitempty" name:"SnapshotId"`
 
@@ -2642,7 +3206,6 @@ type SnapshotCopyResult struct {
 }
 
 type SnapshotOperationLog struct {
-
 	// 操作者的UIN。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Operator *string `json:"Operator,omitempty" name:"Operator"`
@@ -2674,7 +3237,6 @@ type SnapshotOperationLog struct {
 }
 
 type Tag struct {
-
 	// 标签健。
 	Key *string `json:"Key,omitempty" name:"Key"`
 
@@ -2682,9 +3244,18 @@ type Tag struct {
 	Value *string `json:"Value,omitempty" name:"Value"`
 }
 
+// Predefined struct for user
+type TerminateDisksRequestParams struct {
+	// 需退还的云盘ID列表。
+	DiskIds []*string `json:"DiskIds,omitempty" name:"DiskIds"`
+
+	// 销毁云盘时删除关联的非永久保留快照。0 表示非永久快照不随云盘销毁而销毁，1表示非永久快照随云盘销毁而销毁，默认取0。快照是否永久保留可以通过DescribeSnapshots接口返回的快照详情的IsPermanent字段来判断，true表示永久快照，false表示非永久快照。
+	DeleteSnapshot *int64 `json:"DeleteSnapshot,omitempty" name:"DeleteSnapshot"`
+}
+
 type TerminateDisksRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 需退还的云盘ID列表。
 	DiskIds []*string `json:"DiskIds,omitempty" name:"DiskIds"`
 
@@ -2712,13 +3283,15 @@ func (r *TerminateDisksRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type TerminateDisksResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type TerminateDisksResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *TerminateDisksResponseParams `json:"Response"`
 }
 
 func (r *TerminateDisksResponse) ToJsonString() string {
@@ -2732,9 +3305,18 @@ func (r *TerminateDisksResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type UnbindAutoSnapshotPolicyRequestParams struct {
+	// 要解绑的定期快照策略ID。
+	AutoSnapshotPolicyId *string `json:"AutoSnapshotPolicyId,omitempty" name:"AutoSnapshotPolicyId"`
+
+	// 要解绑定期快照策略的云盘ID列表。
+	DiskIds []*string `json:"DiskIds,omitempty" name:"DiskIds"`
+}
+
 type UnbindAutoSnapshotPolicyRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 要解绑的定期快照策略ID。
 	AutoSnapshotPolicyId *string `json:"AutoSnapshotPolicyId,omitempty" name:"AutoSnapshotPolicyId"`
 
@@ -2762,13 +3344,15 @@ func (r *UnbindAutoSnapshotPolicyRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type UnbindAutoSnapshotPolicyResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type UnbindAutoSnapshotPolicyResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *UnbindAutoSnapshotPolicyResponseParams `json:"Response"`
 }
 
 func (r *UnbindAutoSnapshotPolicyResponse) ToJsonString() string {

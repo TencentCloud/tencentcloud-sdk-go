@@ -20,9 +20,21 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+// Predefined struct for user
+type ChangeRoomPlayerProfileRequestParams struct {
+	// 游戏资源Id。
+	GameId *string `json:"GameId,omitempty" name:"GameId"`
+
+	// 发起修改的玩家Id。
+	PlayerId *string `json:"PlayerId,omitempty" name:"PlayerId"`
+
+	// 需要修改的玩家自定义属性。
+	CustomProfile *string `json:"CustomProfile,omitempty" name:"CustomProfile"`
+}
+
 type ChangeRoomPlayerProfileRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 游戏资源Id。
 	GameId *string `json:"GameId,omitempty" name:"GameId"`
 
@@ -54,16 +66,18 @@ func (r *ChangeRoomPlayerProfileRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ChangeRoomPlayerProfileResponseParams struct {
+	// 房间信息。
+	Room *Room `json:"Room,omitempty" name:"Room"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type ChangeRoomPlayerProfileResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 房间信息。
-		Room *Room `json:"Room,omitempty" name:"Room"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *ChangeRoomPlayerProfileResponseParams `json:"Response"`
 }
 
 func (r *ChangeRoomPlayerProfileResponse) ToJsonString() string {
@@ -77,9 +91,21 @@ func (r *ChangeRoomPlayerProfileResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ChangeRoomPlayerStatusRequestParams struct {
+	// 游戏资源Id。
+	GameId *string `json:"GameId,omitempty" name:"GameId"`
+
+	// 玩家自定义状态。
+	CustomStatus *uint64 `json:"CustomStatus,omitempty" name:"CustomStatus"`
+
+	// 玩家id。
+	PlayerId *string `json:"PlayerId,omitempty" name:"PlayerId"`
+}
+
 type ChangeRoomPlayerStatusRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 游戏资源Id。
 	GameId *string `json:"GameId,omitempty" name:"GameId"`
 
@@ -111,16 +137,18 @@ func (r *ChangeRoomPlayerStatusRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ChangeRoomPlayerStatusResponseParams struct {
+	// 房间信息
+	Room *Room `json:"Room,omitempty" name:"Room"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type ChangeRoomPlayerStatusResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 房间信息
-		Room *Room `json:"Room,omitempty" name:"Room"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *ChangeRoomPlayerStatusResponseParams `json:"Response"`
 }
 
 func (r *ChangeRoomPlayerStatusResponse) ToJsonString() string {
@@ -134,9 +162,21 @@ func (r *ChangeRoomPlayerStatusResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribePlayerRequestParams struct {
+	// 游戏资源Id。
+	GameId *string `json:"GameId,omitempty" name:"GameId"`
+
+	// 玩家OpenId。
+	OpenId *string `json:"OpenId,omitempty" name:"OpenId"`
+
+	// 玩家PlayerId，由后台分配，当OpenId不传的时候，PlayerId必传，传入PlayerId可以查询当前PlayerId的玩家信息，当OpenId传入的时候，PlayerId可不传，按照OpenId查询玩家信息。
+	PlayerId *string `json:"PlayerId,omitempty" name:"PlayerId"`
+}
+
 type DescribePlayerRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 游戏资源Id。
 	GameId *string `json:"GameId,omitempty" name:"GameId"`
 
@@ -168,16 +208,18 @@ func (r *DescribePlayerRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribePlayerResponseParams struct {
+	// 玩家信息。
+	Player *Player `json:"Player,omitempty" name:"Player"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribePlayerResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 玩家信息。
-		Player *Player `json:"Player,omitempty" name:"Player"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribePlayerResponseParams `json:"Response"`
 }
 
 func (r *DescribePlayerResponse) ToJsonString() string {
@@ -191,9 +233,21 @@ func (r *DescribePlayerResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeRoomRequestParams struct {
+	// 游戏资源Id。
+	GameId *string `json:"GameId,omitempty" name:"GameId"`
+
+	// 玩家Id。当房间Id不传的时候，玩家Id必传，传入玩家Id可以查询当前玩家所在的房间信息，当房间Id传入的时候，优先按照房间Id查询房间信息。
+	PlayerId *string `json:"PlayerId,omitempty" name:"PlayerId"`
+
+	// 房间Id。
+	RoomId *string `json:"RoomId,omitempty" name:"RoomId"`
+}
+
 type DescribeRoomRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 游戏资源Id。
 	GameId *string `json:"GameId,omitempty" name:"GameId"`
 
@@ -225,16 +279,18 @@ func (r *DescribeRoomRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeRoomResponseParams struct {
+	// 房间信息。
+	Room *Room `json:"Room,omitempty" name:"Room"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeRoomResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 房间信息。
-		Room *Room `json:"Room,omitempty" name:"Room"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeRoomResponseParams `json:"Response"`
 }
 
 func (r *DescribeRoomResponse) ToJsonString() string {
@@ -248,9 +304,18 @@ func (r *DescribeRoomResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DismissRoomRequestParams struct {
+	// 表示游戏资源唯一 ID, 由后台自动分配, 无法修改。
+	GameId *string `json:"GameId,omitempty" name:"GameId"`
+
+	// 表示游戏房间唯一ID。
+	RoomId *string `json:"RoomId,omitempty" name:"RoomId"`
+}
+
 type DismissRoomRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 表示游戏资源唯一 ID, 由后台自动分配, 无法修改。
 	GameId *string `json:"GameId,omitempty" name:"GameId"`
 
@@ -278,13 +343,15 @@ func (r *DismissRoomRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DismissRoomResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DismissRoomResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DismissRoomResponseParams `json:"Response"`
 }
 
 func (r *DismissRoomResponse) ToJsonString() string {
@@ -298,9 +365,45 @@ func (r *DismissRoomResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifyRoomRequestParams struct {
+	// 游戏资源Id。
+	GameId *string `json:"GameId,omitempty" name:"GameId"`
+
+	// 房间ID。
+	RoomId *string `json:"RoomId,omitempty" name:"RoomId"`
+
+	// 发起者的PlayerId。
+	PlayerId *string `json:"PlayerId,omitempty" name:"PlayerId"`
+
+	// 需要修改的房间选项，0表示房间名称，1表示房主，2表示是否允许观战，3表示是否支持邀请码/密码，4表示是否私有，5表示是否自定义房间属性，6表示是否禁止加人。
+	ChangeRoomOptionList []*int64 `json:"ChangeRoomOptionList,omitempty" name:"ChangeRoomOptionList"`
+
+	// 房间名称。
+	RoomName *string `json:"RoomName,omitempty" name:"RoomName"`
+
+	// 变更房主。
+	Owner *string `json:"Owner,omitempty" name:"Owner"`
+
+	// 是否支持观战。
+	IsViewed *bool `json:"IsViewed,omitempty" name:"IsViewed"`
+
+	// 是否支持邀请码/密码。
+	IsInvited *bool `json:"IsInvited,omitempty" name:"IsInvited"`
+
+	// 是否私有。
+	IsPrivate *bool `json:"IsPrivate,omitempty" name:"IsPrivate"`
+
+	// 自定义房间属性。
+	CustomProperties *string `json:"CustomProperties,omitempty" name:"CustomProperties"`
+
+	// 房间是否禁止加人。
+	IsForbidJoin *bool `json:"IsForbidJoin,omitempty" name:"IsForbidJoin"`
+}
+
 type ModifyRoomRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 游戏资源Id。
 	GameId *string `json:"GameId,omitempty" name:"GameId"`
 
@@ -364,16 +467,18 @@ func (r *ModifyRoomRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifyRoomResponseParams struct {
+	// 房间信息
+	Room *Room `json:"Room,omitempty" name:"Room"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type ModifyRoomResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 房间信息
-		Room *Room `json:"Room,omitempty" name:"Room"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *ModifyRoomResponseParams `json:"Response"`
 }
 
 func (r *ModifyRoomResponse) ToJsonString() string {
@@ -388,7 +493,6 @@ func (r *ModifyRoomResponse) FromJsonString(s string) error {
 }
 
 type Player struct {
-
 	// 玩家 OpenId。最长不超过64个字符。
 	OpenId *string `json:"OpenId,omitempty" name:"OpenId"`
 
@@ -411,9 +515,18 @@ type Player struct {
 	CustomProfile *string `json:"CustomProfile,omitempty" name:"CustomProfile"`
 }
 
+// Predefined struct for user
+type RemoveRoomPlayerRequestParams struct {
+	// 游戏资源Id。
+	GameId *string `json:"GameId,omitempty" name:"GameId"`
+
+	// 被踢出房间的玩家Id。
+	RemovePlayerId *string `json:"RemovePlayerId,omitempty" name:"RemovePlayerId"`
+}
+
 type RemoveRoomPlayerRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 游戏资源Id。
 	GameId *string `json:"GameId,omitempty" name:"GameId"`
 
@@ -441,16 +554,18 @@ func (r *RemoveRoomPlayerRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type RemoveRoomPlayerResponseParams struct {
+	// 房间信息
+	Room *Room `json:"Room,omitempty" name:"Room"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type RemoveRoomPlayerResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 房间信息
-		Room *Room `json:"Room,omitempty" name:"Room"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *RemoveRoomPlayerResponseParams `json:"Response"`
 }
 
 func (r *RemoveRoomPlayerResponse) ToJsonString() string {
@@ -465,7 +580,6 @@ func (r *RemoveRoomPlayerResponse) FromJsonString(s string) error {
 }
 
 type Room struct {
-
 	// 表示房间名称。最长不超过32个字符。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
@@ -519,7 +633,6 @@ type Room struct {
 }
 
 type Team struct {
-
 	// 队伍ID。最长不超过16个字符。
 	Id *string `json:"Id,omitempty" name:"Id"`
 

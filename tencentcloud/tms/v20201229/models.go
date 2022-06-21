@@ -21,7 +21,6 @@ import (
 )
 
 type DetailResults struct {
-
 	// 该字段用于返回检测结果所对应的全部恶意标签。<br>返回值：**Normal**：正常，**Porn**：色情，**Abuse**：谩骂，**Ad**：广告，**Custom**：自定义违规；以及其他令人反感、不安全或不适宜的内容类型。
 	Label *string `json:"Label,omitempty" name:"Label"`
 
@@ -55,7 +54,6 @@ type DetailResults struct {
 }
 
 type Device struct {
-
 	// 该字段表示业务用户对应设备的IP地址。<br>
 	// 备注:目前仅支持IPv4地址记录，不支持IPv6地址记录。
 	IP *string `json:"IP,omitempty" name:"IP"`
@@ -81,7 +79,6 @@ type Device struct {
 }
 
 type RiskDetails struct {
-
 	// 该字段用于返回账号信息检测对应的风险类别，取值为：**RiskAccount**（账号存在风险）、**RiskIP**（IP地址存在风险）、**RiskIMEI**（移动设备识别码存在风险）。
 	Label *string `json:"Label,omitempty" name:"Label"`
 
@@ -89,9 +86,27 @@ type RiskDetails struct {
 	Level *int64 `json:"Level,omitempty" name:"Level"`
 }
 
+// Predefined struct for user
+type TextModerationRequestParams struct {
+	// 该字段表示待检测对象的文本内容，文本需要按utf-8格式编码，长度不能超过10000个字符（按unicode编码计算），并进行 Base64加密
+	Content *string `json:"Content,omitempty" name:"Content"`
+
+	// 该字段表示策略的具体编号，用于接口调度，在内容安全控制台中可配置。若不传入Biztype参数（留空），则代表采用默认的识别策略；传入则会在审核时根据业务场景采取不同的审核策略。<br>备注：Biztype仅为数字、字母与下划线的组合，长度为3-32个字符；不同Biztype关联不同的业务场景与识别能力策略，调用前请确认正确的Biztype
+	BizType *string `json:"BizType,omitempty" name:"BizType"`
+
+	// 该字段表示您为待检测对象分配的数据ID，传入后可方便您对文件进行标识和管理。<br>取值：由英文字母（大小写均可）、数字及四个特殊符号（_，-，@，#）组成，**长度不超过64个字符**
+	DataId *string `json:"DataId,omitempty" name:"DataId"`
+
+	// 该字段表示待检测对象对应的用户相关信息，传入后可便于甄别相应违规风险用户
+	User *User `json:"User,omitempty" name:"User"`
+
+	// 该字段表示待检测对象对应的设备相关信息，传入后可便于甄别相应违规风险设备
+	Device *Device `json:"Device,omitempty" name:"Device"`
+}
+
 type TextModerationRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 该字段表示待检测对象的文本内容，文本需要按utf-8格式编码，长度不能超过10000个字符（按unicode编码计算），并进行 Base64加密
 	Content *string `json:"Content,omitempty" name:"Content"`
 
@@ -131,49 +146,51 @@ func (r *TextModerationRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type TextModerationResponseParams struct {
+	// 该字段用于返回请求参数中的BizType参数
+	BizType *string `json:"BizType,omitempty" name:"BizType"`
+
+	// 该字段用于返回检测结果（DetailResults）中所对应的**优先级最高的恶意标签**，表示模型推荐的审核结果，建议您按照业务所需，对不同违规类型与建议值进行处理。<br>返回值：**Normal**：正常，**Porn**：色情，**Abuse**：谩骂，**Ad**：广告，**Custom**：自定义违规；以及其他令人反感、不安全或不适宜的内容类型
+	Label *string `json:"Label,omitempty" name:"Label"`
+
+	// 该字段用于返回后续操作建议。当您获取到判定结果后，返回值表示系统推荐的后续操作；建议您按照业务所需，对不同违规类型与建议值进行处理。<br>返回值：**Block**：建议屏蔽，**Review** ：建议人工复审，**Pass**：建议通过
+	Suggestion *string `json:"Suggestion,omitempty" name:"Suggestion"`
+
+	// 该字段用于返回当前标签（Label）下被检测文本命中的关键词信息，用于标注文本违规的具体原因（如：*加我微信*）。该参数可能会有多个返回值，代表命中的多个关键词；如返回值为空且Score不为空，则代表识别结果所对应的恶意标签（Label）是来自于语义模型判断的返回值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Keywords []*string `json:"Keywords,omitempty" name:"Keywords"`
+
+	// 该字段用于返回当前标签（Label）下的置信度，取值范围：0（**置信度最低**）-100（**置信度最高** ），越高代表文本越有可能属于当前返回的标签；如：*色情 99*，则表明该文本非常有可能属于色情内容；*色情 0*，则表明该文本不属于色情内容
+	Score *int64 `json:"Score,omitempty" name:"Score"`
+
+	// 该字段用于返回基于文本风险库审核的详细结果，返回值信息可参阅对应数据结构（DetailResults）的详细描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DetailResults []*DetailResults `json:"DetailResults,omitempty" name:"DetailResults"`
+
+	// 该字段用于返回文本检测中存在违规风险的账号检测结果，主要包括违规风险类别和风险等级信息，具体内容可参阅对应数据结构（RiskDetails）的详细描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RiskDetails []*RiskDetails `json:"RiskDetails,omitempty" name:"RiskDetails"`
+
+	// 该字段用于返回根据您的需求配置的额外附加信息（Extra），如未配置则默认返回值为空。<br>备注：不同客户或Biztype下返回信息不同，如需配置该字段请提交工单咨询或联系售后专员处理
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Extra *string `json:"Extra,omitempty" name:"Extra"`
+
+	// 该字段用于返回检测对象对应请求参数中的DataId，与输入的DataId字段中的内容对应
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DataId *string `json:"DataId,omitempty" name:"DataId"`
+
+	// 该字段用于返回当前标签（Label）下的二级标签。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubLabel *string `json:"SubLabel,omitempty" name:"SubLabel"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type TextModerationResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 该字段用于返回请求参数中的BizType参数
-		BizType *string `json:"BizType,omitempty" name:"BizType"`
-
-		// 该字段用于返回检测结果（DetailResults）中所对应的**优先级最高的恶意标签**，表示模型推荐的审核结果，建议您按照业务所需，对不同违规类型与建议值进行处理。<br>返回值：**Normal**：正常，**Porn**：色情，**Abuse**：谩骂，**Ad**：广告，**Custom**：自定义违规；以及其他令人反感、不安全或不适宜的内容类型
-		Label *string `json:"Label,omitempty" name:"Label"`
-
-		// 该字段用于返回后续操作建议。当您获取到判定结果后，返回值表示系统推荐的后续操作；建议您按照业务所需，对不同违规类型与建议值进行处理。<br>返回值：**Block**：建议屏蔽，**Review** ：建议人工复审，**Pass**：建议通过
-		Suggestion *string `json:"Suggestion,omitempty" name:"Suggestion"`
-
-		// 该字段用于返回当前标签（Label）下被检测文本命中的关键词信息，用于标注文本违规的具体原因（如：*加我微信*）。该参数可能会有多个返回值，代表命中的多个关键词；如返回值为空且Score不为空，则代表识别结果所对应的恶意标签（Label）是来自于语义模型判断的返回值
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		Keywords []*string `json:"Keywords,omitempty" name:"Keywords"`
-
-		// 该字段用于返回当前标签（Label）下的置信度，取值范围：0（**置信度最低**）-100（**置信度最高** ），越高代表文本越有可能属于当前返回的标签；如：*色情 99*，则表明该文本非常有可能属于色情内容；*色情 0*，则表明该文本不属于色情内容
-		Score *int64 `json:"Score,omitempty" name:"Score"`
-
-		// 该字段用于返回基于文本风险库审核的详细结果，返回值信息可参阅对应数据结构（DetailResults）的详细描述
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		DetailResults []*DetailResults `json:"DetailResults,omitempty" name:"DetailResults"`
-
-		// 该字段用于返回文本检测中存在违规风险的账号检测结果，主要包括违规风险类别和风险等级信息，具体内容可参阅对应数据结构（RiskDetails）的详细描述
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		RiskDetails []*RiskDetails `json:"RiskDetails,omitempty" name:"RiskDetails"`
-
-		// 该字段用于返回根据您的需求配置的额外附加信息（Extra），如未配置则默认返回值为空。<br>备注：不同客户或Biztype下返回信息不同，如需配置该字段请提交工单咨询或联系售后专员处理
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		Extra *string `json:"Extra,omitempty" name:"Extra"`
-
-		// 该字段用于返回检测对象对应请求参数中的DataId，与输入的DataId字段中的内容对应
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		DataId *string `json:"DataId,omitempty" name:"DataId"`
-
-		// 该字段用于返回当前标签（Label）下的二级标签。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		SubLabel *string `json:"SubLabel,omitempty" name:"SubLabel"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *TextModerationResponseParams `json:"Response"`
 }
 
 func (r *TextModerationResponse) ToJsonString() string {
@@ -188,7 +205,6 @@ func (r *TextModerationResponse) FromJsonString(s string) error {
 }
 
 type User struct {
-
 	// 该字段表示业务用户ID,填写后，系统可根据账号过往违规历史优化审核结果判定，有利于存在可疑违规风险时的辅助判断。<br>
 	// 备注：该字段可传入微信openid、QQopenid、字符串等账号信息，与账号类别参数（AccountType）配合使用可确定唯一账号。
 	UserId *string `json:"UserId,omitempty" name:"UserId"`

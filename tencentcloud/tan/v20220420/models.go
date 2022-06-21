@@ -20,9 +20,21 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+// Predefined struct for user
+type CreateBlockNodeRecordsRequestParams struct {
+	// 盘查实例id
+	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
+
+	// 节点id
+	NodeId *string `json:"NodeId,omitempty" name:"NodeId"`
+
+	// 节点记录-json
+	Records *string `json:"Records,omitempty" name:"Records"`
+}
+
 type CreateBlockNodeRecordsRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 盘查实例id
 	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
 
@@ -54,13 +66,15 @@ func (r *CreateBlockNodeRecordsRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateBlockNodeRecordsResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreateBlockNodeRecordsResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreateBlockNodeRecordsResponseParams `json:"Response"`
 }
 
 func (r *CreateBlockNodeRecordsResponse) ToJsonString() string {

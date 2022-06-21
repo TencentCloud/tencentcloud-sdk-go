@@ -20,9 +20,36 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+// Predefined struct for user
+type CreateAudioDepositRequestParams struct {
+	// 存证名称(长度最大30)
+	EvidenceName *string `json:"EvidenceName,omitempty" name:"EvidenceName"`
+
+	// 对应数据Base64文件名称
+	FileName *string `json:"FileName,omitempty" name:"FileName"`
+
+	// 文件hash
+	EvidenceHash *string `json:"EvidenceHash,omitempty" name:"EvidenceHash"`
+
+	// 业务ID 透传 长度最大不超过64
+	BusinessId *string `json:"BusinessId,omitempty" name:"BusinessId"`
+
+	// 数据Base64编码，大小不超过5M
+	FileContent *string `json:"FileContent,omitempty" name:"FileContent"`
+
+	// 资源访问链接 与fileContent必须二选一
+	FileUrl *string `json:"FileUrl,omitempty" name:"FileUrl"`
+
+	// 算法类型 0 SM3, 1 SHA256, 2 SHA384 默认0
+	HashType *uint64 `json:"HashType,omitempty" name:"HashType"`
+
+	// 存证描述
+	EvidenceDescription *string `json:"EvidenceDescription,omitempty" name:"EvidenceDescription"`
+}
+
 type CreateAudioDepositRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 存证名称(长度最大30)
 	EvidenceName *string `json:"EvidenceName,omitempty" name:"EvidenceName"`
 
@@ -74,20 +101,22 @@ func (r *CreateAudioDepositRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateAudioDepositResponseParams struct {
+	// 业务ID 透传 长度最大不超过64
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BusinessId *string `json:"BusinessId,omitempty" name:"BusinessId"`
+
+	// 请求成功，返回存证编码,用于查询存证后续业务数据
+	EvidenceId *string `json:"EvidenceId,omitempty" name:"EvidenceId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreateAudioDepositResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 业务ID 透传 长度最大不超过64
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		BusinessId *string `json:"BusinessId,omitempty" name:"BusinessId"`
-
-		// 请求成功，返回存证编码,用于查询存证后续业务数据
-		EvidenceId *string `json:"EvidenceId,omitempty" name:"EvidenceId"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreateAudioDepositResponseParams `json:"Response"`
 }
 
 func (r *CreateAudioDepositResponse) ToJsonString() string {
@@ -101,9 +130,30 @@ func (r *CreateAudioDepositResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateDataDepositRequestParams struct {
+	// 业务数据明文(json格式字符串)，最大256kb
+	EvidenceInfo *string `json:"EvidenceInfo,omitempty" name:"EvidenceInfo"`
+
+	// 存证名称(长度最大30)
+	EvidenceName *string `json:"EvidenceName,omitempty" name:"EvidenceName"`
+
+	// 数据hash
+	EvidenceHash *string `json:"EvidenceHash,omitempty" name:"EvidenceHash"`
+
+	// 业务ID 透传 长度最大不超过64
+	BusinessId *string `json:"BusinessId,omitempty" name:"BusinessId"`
+
+	// 算法类型 0 SM3, 1 SHA256, 2 SHA384 默认0
+	HashType *uint64 `json:"HashType,omitempty" name:"HashType"`
+
+	// 存证描述
+	EvidenceDescription *string `json:"EvidenceDescription,omitempty" name:"EvidenceDescription"`
+}
+
 type CreateDataDepositRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 业务数据明文(json格式字符串)，最大256kb
 	EvidenceInfo *string `json:"EvidenceInfo,omitempty" name:"EvidenceInfo"`
 
@@ -147,20 +197,22 @@ func (r *CreateDataDepositRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateDataDepositResponseParams struct {
+	// 业务ID 透传 长度最大不超过64
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BusinessId *string `json:"BusinessId,omitempty" name:"BusinessId"`
+
+	// 请求成功，返回存证编码,用于查询存证后续业务数据
+	EvidenceId *string `json:"EvidenceId,omitempty" name:"EvidenceId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreateDataDepositResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 业务ID 透传 长度最大不超过64
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		BusinessId *string `json:"BusinessId,omitempty" name:"BusinessId"`
-
-		// 请求成功，返回存证编码,用于查询存证后续业务数据
-		EvidenceId *string `json:"EvidenceId,omitempty" name:"EvidenceId"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreateDataDepositResponseParams `json:"Response"`
 }
 
 func (r *CreateDataDepositResponse) ToJsonString() string {
@@ -174,9 +226,36 @@ func (r *CreateDataDepositResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateDocDepositRequestParams struct {
+	// 存证名称(长度最大30)
+	EvidenceName *string `json:"EvidenceName,omitempty" name:"EvidenceName"`
+
+	// 对应数据Base64文件名称
+	FileName *string `json:"FileName,omitempty" name:"FileName"`
+
+	// 文件hash
+	EvidenceHash *string `json:"EvidenceHash,omitempty" name:"EvidenceHash"`
+
+	// 业务ID 透传 长度最大不超过64
+	BusinessId *string `json:"BusinessId,omitempty" name:"BusinessId"`
+
+	// 数据Base64编码，大小不超过5M
+	FileContent *string `json:"FileContent,omitempty" name:"FileContent"`
+
+	// 资源访问链接 与fileContent必须二选一
+	FileUrl *string `json:"FileUrl,omitempty" name:"FileUrl"`
+
+	// 算法类型 0 SM3, 1 SHA256, 2 SHA384 默认0
+	HashType *uint64 `json:"HashType,omitempty" name:"HashType"`
+
+	// 存证描述
+	EvidenceDescription *string `json:"EvidenceDescription,omitempty" name:"EvidenceDescription"`
+}
+
 type CreateDocDepositRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 存证名称(长度最大30)
 	EvidenceName *string `json:"EvidenceName,omitempty" name:"EvidenceName"`
 
@@ -228,20 +307,22 @@ func (r *CreateDocDepositRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateDocDepositResponseParams struct {
+	// 业务ID 透传 长度最大不超过64
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BusinessId *string `json:"BusinessId,omitempty" name:"BusinessId"`
+
+	// 请求成功，返回存证编码,用于查询存证后续业务数据
+	EvidenceId *string `json:"EvidenceId,omitempty" name:"EvidenceId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreateDocDepositResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 业务ID 透传 长度最大不超过64
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		BusinessId *string `json:"BusinessId,omitempty" name:"BusinessId"`
-
-		// 请求成功，返回存证编码,用于查询存证后续业务数据
-		EvidenceId *string `json:"EvidenceId,omitempty" name:"EvidenceId"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreateDocDepositResponseParams `json:"Response"`
 }
 
 func (r *CreateDocDepositResponse) ToJsonString() string {
@@ -255,9 +336,24 @@ func (r *CreateDocDepositResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateHashDepositNoCertRequestParams struct {
+	// 数据hash
+	EvidenceHash *string `json:"EvidenceHash,omitempty" name:"EvidenceHash"`
+
+	// 该字段为透传字段，方便调用方做业务处理， 长度最大不超过64
+	BusinessId *string `json:"BusinessId,omitempty" name:"BusinessId"`
+
+	// 算法类型 0 SM3, 1 SHA256, 2 SHA384 默认0
+	HashType *uint64 `json:"HashType,omitempty" name:"HashType"`
+
+	// 业务扩展信息
+	EvidenceInfo *string `json:"EvidenceInfo,omitempty" name:"EvidenceInfo"`
+}
+
 type CreateHashDepositNoCertRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 数据hash
 	EvidenceHash *string `json:"EvidenceHash,omitempty" name:"EvidenceHash"`
 
@@ -293,29 +389,31 @@ func (r *CreateHashDepositNoCertRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateHashDepositNoCertResponseParams struct {
+	// 透传字段
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BusinessId *string `json:"BusinessId,omitempty" name:"BusinessId"`
+
+	// 存证编码
+	EvidenceId *string `json:"EvidenceId,omitempty" name:"EvidenceId"`
+
+	// 上链时间
+	EvidenceTime *string `json:"EvidenceTime,omitempty" name:"EvidenceTime"`
+
+	// 区块链交易哈希
+	EvidenceTxHash *string `json:"EvidenceTxHash,omitempty" name:"EvidenceTxHash"`
+
+	// 区块高度
+	BlockchainHeight *uint64 `json:"BlockchainHeight,omitempty" name:"BlockchainHeight"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreateHashDepositNoCertResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 透传字段
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		BusinessId *string `json:"BusinessId,omitempty" name:"BusinessId"`
-
-		// 存证编码
-		EvidenceId *string `json:"EvidenceId,omitempty" name:"EvidenceId"`
-
-		// 上链时间
-		EvidenceTime *string `json:"EvidenceTime,omitempty" name:"EvidenceTime"`
-
-		// 区块链交易哈希
-		EvidenceTxHash *string `json:"EvidenceTxHash,omitempty" name:"EvidenceTxHash"`
-
-		// 区块高度
-		BlockchainHeight *uint64 `json:"BlockchainHeight,omitempty" name:"BlockchainHeight"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreateHashDepositNoCertResponseParams `json:"Response"`
 }
 
 func (r *CreateHashDepositNoCertResponse) ToJsonString() string {
@@ -329,9 +427,24 @@ func (r *CreateHashDepositNoCertResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateHashDepositNoSealRequestParams struct {
+	// 数据hash
+	EvidenceHash *string `json:"EvidenceHash,omitempty" name:"EvidenceHash"`
+
+	// 该字段为透传字段，方便调用方做业务处理， 长度最大不超过64
+	BusinessId *string `json:"BusinessId,omitempty" name:"BusinessId"`
+
+	// 算法类型 0 SM3, 1 SHA256, 2 SHA384 默认0
+	HashType *uint64 `json:"HashType,omitempty" name:"HashType"`
+
+	// 业务扩展信息
+	EvidenceInfo *string `json:"EvidenceInfo,omitempty" name:"EvidenceInfo"`
+}
+
 type CreateHashDepositNoSealRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 数据hash
 	EvidenceHash *string `json:"EvidenceHash,omitempty" name:"EvidenceHash"`
 
@@ -367,29 +480,31 @@ func (r *CreateHashDepositNoSealRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateHashDepositNoSealResponseParams struct {
+	// 透传字段
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BusinessId *string `json:"BusinessId,omitempty" name:"BusinessId"`
+
+	// 存证编码
+	EvidenceId *string `json:"EvidenceId,omitempty" name:"EvidenceId"`
+
+	// 上链时间
+	EvidenceTime *string `json:"EvidenceTime,omitempty" name:"EvidenceTime"`
+
+	// 区块链交易哈希
+	EvidenceTxHash *string `json:"EvidenceTxHash,omitempty" name:"EvidenceTxHash"`
+
+	// 区块高度
+	BlockchainHeight *uint64 `json:"BlockchainHeight,omitempty" name:"BlockchainHeight"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreateHashDepositNoSealResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 透传字段
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		BusinessId *string `json:"BusinessId,omitempty" name:"BusinessId"`
-
-		// 存证编码
-		EvidenceId *string `json:"EvidenceId,omitempty" name:"EvidenceId"`
-
-		// 上链时间
-		EvidenceTime *string `json:"EvidenceTime,omitempty" name:"EvidenceTime"`
-
-		// 区块链交易哈希
-		EvidenceTxHash *string `json:"EvidenceTxHash,omitempty" name:"EvidenceTxHash"`
-
-		// 区块高度
-		BlockchainHeight *uint64 `json:"BlockchainHeight,omitempty" name:"BlockchainHeight"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreateHashDepositNoSealResponseParams `json:"Response"`
 }
 
 func (r *CreateHashDepositNoSealResponse) ToJsonString() string {
@@ -403,9 +518,27 @@ func (r *CreateHashDepositNoSealResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateHashDepositRequestParams struct {
+	// 存证名称(长度最大30)
+	EvidenceName *string `json:"EvidenceName,omitempty" name:"EvidenceName"`
+
+	// 数据hash
+	EvidenceHash *string `json:"EvidenceHash,omitempty" name:"EvidenceHash"`
+
+	// 该字段为透传字段，方便调用方做业务处理， 长度最大不超过64
+	BusinessId *string `json:"BusinessId,omitempty" name:"BusinessId"`
+
+	// 算法类型 0 SM3, 1 SHA256, 2 SHA384 默认0
+	HashType *uint64 `json:"HashType,omitempty" name:"HashType"`
+
+	// 存证描述
+	EvidenceDescription *string `json:"EvidenceDescription,omitempty" name:"EvidenceDescription"`
+}
+
 type CreateHashDepositRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 存证名称(长度最大30)
 	EvidenceName *string `json:"EvidenceName,omitempty" name:"EvidenceName"`
 
@@ -445,20 +578,22 @@ func (r *CreateHashDepositRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateHashDepositResponseParams struct {
+	// 透传字段
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BusinessId *string `json:"BusinessId,omitempty" name:"BusinessId"`
+
+	// 存证编码
+	EvidenceId *string `json:"EvidenceId,omitempty" name:"EvidenceId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreateHashDepositResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 透传字段
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		BusinessId *string `json:"BusinessId,omitempty" name:"BusinessId"`
-
-		// 存证编码
-		EvidenceId *string `json:"EvidenceId,omitempty" name:"EvidenceId"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreateHashDepositResponseParams `json:"Response"`
 }
 
 func (r *CreateHashDepositResponse) ToJsonString() string {
@@ -472,9 +607,36 @@ func (r *CreateHashDepositResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateImageDepositRequestParams struct {
+	// 存证名称(长度最大30)
+	EvidenceName *string `json:"EvidenceName,omitempty" name:"EvidenceName"`
+
+	// 对应数据Base64文件名称 test.png
+	FileName *string `json:"FileName,omitempty" name:"FileName"`
+
+	// 文件hash
+	EvidenceHash *string `json:"EvidenceHash,omitempty" name:"EvidenceHash"`
+
+	// 业务ID 透传 长度最大不超过64
+	BusinessId *string `json:"BusinessId,omitempty" name:"BusinessId"`
+
+	// 数据Base64编码，大小不超过5M
+	FileContent *string `json:"FileContent,omitempty" name:"FileContent"`
+
+	// 资源访问链接 与fileContent必须二选一
+	FileUrl *string `json:"FileUrl,omitempty" name:"FileUrl"`
+
+	// 算法类型 0 SM3, 1 SHA256, 2 SHA384 默认0
+	HashType *uint64 `json:"HashType,omitempty" name:"HashType"`
+
+	// 存证描述
+	EvidenceDescription *string `json:"EvidenceDescription,omitempty" name:"EvidenceDescription"`
+}
+
 type CreateImageDepositRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 存证名称(长度最大30)
 	EvidenceName *string `json:"EvidenceName,omitempty" name:"EvidenceName"`
 
@@ -526,20 +688,22 @@ func (r *CreateImageDepositRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateImageDepositResponseParams struct {
+	// 业务ID 透传 长度最大不超过64
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BusinessId *string `json:"BusinessId,omitempty" name:"BusinessId"`
+
+	// 请求成功，返回存证编码,用于查询存证后续业务数据
+	EvidenceId *string `json:"EvidenceId,omitempty" name:"EvidenceId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreateImageDepositResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 业务ID 透传 长度最大不超过64
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		BusinessId *string `json:"BusinessId,omitempty" name:"BusinessId"`
-
-		// 请求成功，返回存证编码,用于查询存证后续业务数据
-		EvidenceId *string `json:"EvidenceId,omitempty" name:"EvidenceId"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreateImageDepositResponseParams `json:"Response"`
 }
 
 func (r *CreateImageDepositResponse) ToJsonString() string {
@@ -553,9 +717,36 @@ func (r *CreateImageDepositResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateVideoDepositRequestParams struct {
+	// 存证名称(长度最大30)
+	EvidenceName *string `json:"EvidenceName,omitempty" name:"EvidenceName"`
+
+	// 对应数据Base64文件名称
+	FileName *string `json:"FileName,omitempty" name:"FileName"`
+
+	// 文件hash
+	EvidenceHash *string `json:"EvidenceHash,omitempty" name:"EvidenceHash"`
+
+	// 业务ID 透传 长度最大不超过64
+	BusinessId *string `json:"BusinessId,omitempty" name:"BusinessId"`
+
+	// 数据Base64编码，大小不超过5M
+	FileContent *string `json:"FileContent,omitempty" name:"FileContent"`
+
+	// 资源访问链接 与fileContent必须二选一
+	FileUrl *string `json:"FileUrl,omitempty" name:"FileUrl"`
+
+	// 算法类型 0 SM3, 1 SHA256, 2 SHA384 默认0
+	HashType *uint64 `json:"HashType,omitempty" name:"HashType"`
+
+	// 存证描述
+	EvidenceDescription *string `json:"EvidenceDescription,omitempty" name:"EvidenceDescription"`
+}
+
 type CreateVideoDepositRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 存证名称(长度最大30)
 	EvidenceName *string `json:"EvidenceName,omitempty" name:"EvidenceName"`
 
@@ -607,20 +798,22 @@ func (r *CreateVideoDepositRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateVideoDepositResponseParams struct {
+	// 业务ID 透传 长度最大不超过64
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BusinessId *string `json:"BusinessId,omitempty" name:"BusinessId"`
+
+	// 请求成功，返回存证编码,用于查询存证后续业务数据
+	EvidenceId *string `json:"EvidenceId,omitempty" name:"EvidenceId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreateVideoDepositResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 业务ID 透传 长度最大不超过64
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		BusinessId *string `json:"BusinessId,omitempty" name:"BusinessId"`
-
-		// 请求成功，返回存证编码,用于查询存证后续业务数据
-		EvidenceId *string `json:"EvidenceId,omitempty" name:"EvidenceId"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreateVideoDepositResponseParams `json:"Response"`
 }
 
 func (r *CreateVideoDepositResponse) ToJsonString() string {
@@ -634,9 +827,27 @@ func (r *CreateVideoDepositResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateWebpageDepositRequestParams struct {
+	// 存证名称(长度最大30)
+	EvidenceName *string `json:"EvidenceName,omitempty" name:"EvidenceName"`
+
+	// 网页链接
+	EvidenceUrl *string `json:"EvidenceUrl,omitempty" name:"EvidenceUrl"`
+
+	// 业务ID 透传 长度最大不超过64
+	BusinessId *string `json:"BusinessId,omitempty" name:"BusinessId"`
+
+	// 算法类型 0 SM3, 1 SHA256, 2 SHA384 默认0
+	HashType *uint64 `json:"HashType,omitempty" name:"HashType"`
+
+	// 存证描述
+	EvidenceDescription *string `json:"EvidenceDescription,omitempty" name:"EvidenceDescription"`
+}
+
 type CreateWebpageDepositRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 存证名称(长度最大30)
 	EvidenceName *string `json:"EvidenceName,omitempty" name:"EvidenceName"`
 
@@ -676,20 +887,22 @@ func (r *CreateWebpageDepositRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateWebpageDepositResponseParams struct {
+	// 业务ID 透传 长度最大不超过64
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BusinessId *string `json:"BusinessId,omitempty" name:"BusinessId"`
+
+	// 请求成功，返回存证编码,用于查询存证后续业务数据
+	EvidenceId *string `json:"EvidenceId,omitempty" name:"EvidenceId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreateWebpageDepositResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 业务ID 透传 长度最大不超过64
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		BusinessId *string `json:"BusinessId,omitempty" name:"BusinessId"`
-
-		// 请求成功，返回存证编码,用于查询存证后续业务数据
-		EvidenceId *string `json:"EvidenceId,omitempty" name:"EvidenceId"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreateWebpageDepositResponseParams `json:"Response"`
 }
 
 func (r *CreateWebpageDepositResponse) ToJsonString() string {
@@ -703,9 +916,15 @@ func (r *CreateWebpageDepositResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type GetDepositCertRequestParams struct {
+	// 存证编码
+	EvidenceId *string `json:"EvidenceId,omitempty" name:"EvidenceId"`
+}
+
 type GetDepositCertRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 存证编码
 	EvidenceId *string `json:"EvidenceId,omitempty" name:"EvidenceId"`
 }
@@ -729,19 +948,21 @@ func (r *GetDepositCertRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type GetDepositCertResponseParams struct {
+	// 存证编码
+	EvidenceId *string `json:"EvidenceId,omitempty" name:"EvidenceId"`
+
+	// 存证证书文件临时链接
+	EvidenceCert *string `json:"EvidenceCert,omitempty" name:"EvidenceCert"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type GetDepositCertResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 存证编码
-		EvidenceId *string `json:"EvidenceId,omitempty" name:"EvidenceId"`
-
-		// 存证证书文件临时链接
-		EvidenceCert *string `json:"EvidenceCert,omitempty" name:"EvidenceCert"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *GetDepositCertResponseParams `json:"Response"`
 }
 
 func (r *GetDepositCertResponse) ToJsonString() string {
@@ -755,9 +976,15 @@ func (r *GetDepositCertResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type GetDepositFileRequestParams struct {
+	// 存证编码
+	EvidenceId *string `json:"EvidenceId,omitempty" name:"EvidenceId"`
+}
+
 type GetDepositFileRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 存证编码
 	EvidenceId *string `json:"EvidenceId,omitempty" name:"EvidenceId"`
 }
@@ -781,19 +1008,21 @@ func (r *GetDepositFileRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type GetDepositFileResponseParams struct {
+	// 存证编号
+	EvidenceId *string `json:"EvidenceId,omitempty" name:"EvidenceId"`
+
+	// 存证文件临时链接
+	EvidenceFile *string `json:"EvidenceFile,omitempty" name:"EvidenceFile"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type GetDepositFileResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 存证编号
-		EvidenceId *string `json:"EvidenceId,omitempty" name:"EvidenceId"`
-
-		// 存证文件临时链接
-		EvidenceFile *string `json:"EvidenceFile,omitempty" name:"EvidenceFile"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *GetDepositFileResponseParams `json:"Response"`
 }
 
 func (r *GetDepositFileResponse) ToJsonString() string {
@@ -807,9 +1036,15 @@ func (r *GetDepositFileResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type GetDepositInfoRequestParams struct {
+	// 存证编码
+	EvidenceId *string `json:"EvidenceId,omitempty" name:"EvidenceId"`
+}
+
 type GetDepositInfoRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 存证编码
 	EvidenceId *string `json:"EvidenceId,omitempty" name:"EvidenceId"`
 }
@@ -833,25 +1068,27 @@ func (r *GetDepositInfoRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type GetDepositInfoResponseParams struct {
+	// 存证编号
+	EvidenceId *string `json:"EvidenceId,omitempty" name:"EvidenceId"`
+
+	// 上链时间
+	EvidenceTime *string `json:"EvidenceTime,omitempty" name:"EvidenceTime"`
+
+	// 区块链交易哈希
+	EvidenceTxHash *string `json:"EvidenceTxHash,omitempty" name:"EvidenceTxHash"`
+
+	// 区块高度
+	BlockchainHeight *int64 `json:"BlockchainHeight,omitempty" name:"BlockchainHeight"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type GetDepositInfoResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 存证编号
-		EvidenceId *string `json:"EvidenceId,omitempty" name:"EvidenceId"`
-
-		// 上链时间
-		EvidenceTime *string `json:"EvidenceTime,omitempty" name:"EvidenceTime"`
-
-		// 区块链交易哈希
-		EvidenceTxHash *string `json:"EvidenceTxHash,omitempty" name:"EvidenceTxHash"`
-
-		// 区块高度
-		BlockchainHeight *int64 `json:"BlockchainHeight,omitempty" name:"BlockchainHeight"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *GetDepositInfoResponseParams `json:"Response"`
 }
 
 func (r *GetDepositInfoResponse) ToJsonString() string {

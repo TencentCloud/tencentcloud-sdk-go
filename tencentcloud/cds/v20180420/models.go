@@ -21,7 +21,6 @@ import (
 )
 
 type CdsAuditInstance struct {
-
 	// 实例ID
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
@@ -76,7 +75,6 @@ type CdsAuditInstance struct {
 }
 
 type DbauditTypesInfo struct {
-
 	// 规格描述
 	InstanceVersionName *string `json:"InstanceVersionName,omitempty" name:"InstanceVersionName"`
 
@@ -99,8 +97,14 @@ type DbauditTypesInfo struct {
 	ArchivingStorageCapacity *uint64 `json:"ArchivingStorageCapacity,omitempty" name:"ArchivingStorageCapacity"`
 }
 
+// Predefined struct for user
+type DescribeDasbImageIdsRequestParams struct {
+
+}
+
 type DescribeDasbImageIdsRequest struct {
 	*tchttp.BaseRequest
+	
 }
 
 func (r *DescribeDasbImageIdsRequest) ToJsonString() string {
@@ -115,25 +119,28 @@ func (r *DescribeDasbImageIdsRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDasbImageIdsRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeDasbImageIdsResponseParams struct {
+	// 基础镜像ID
+	BaseImageId *string `json:"BaseImageId,omitempty" name:"BaseImageId"`
+
+	// AI镜像ID
+	AiImageId *string `json:"AiImageId,omitempty" name:"AiImageId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeDasbImageIdsResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 基础镜像ID
-		BaseImageId *string `json:"BaseImageId,omitempty" name:"BaseImageId"`
-
-		// AI镜像ID
-		AiImageId *string `json:"AiImageId,omitempty" name:"AiImageId"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeDasbImageIdsResponseParams `json:"Response"`
 }
 
 func (r *DescribeDasbImageIdsResponse) ToJsonString() string {
@@ -147,8 +154,14 @@ func (r *DescribeDasbImageIdsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeDbauditInstanceTypeRequestParams struct {
+
+}
+
 type DescribeDbauditInstanceTypeRequest struct {
 	*tchttp.BaseRequest
+	
 }
 
 func (r *DescribeDbauditInstanceTypeRequest) ToJsonString() string {
@@ -163,22 +176,25 @@ func (r *DescribeDbauditInstanceTypeRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDbauditInstanceTypeRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeDbauditInstanceTypeResponseParams struct {
+	// 数据安全审计产品规格信息列表
+	DbauditTypesSet []*DbauditTypesInfo `json:"DbauditTypesSet,omitempty" name:"DbauditTypesSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeDbauditInstanceTypeResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 数据安全审计产品规格信息列表
-		DbauditTypesSet []*DbauditTypesInfo `json:"DbauditTypesSet,omitempty" name:"DbauditTypesSet"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeDbauditInstanceTypeResponseParams `json:"Response"`
 }
 
 func (r *DescribeDbauditInstanceTypeResponse) ToJsonString() string {
@@ -192,9 +208,21 @@ func (r *DescribeDbauditInstanceTypeResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeDbauditInstancesRequestParams struct {
+	// 查询条件地域
+	SearchRegion *string `json:"SearchRegion,omitempty" name:"SearchRegion"`
+
+	// 限制数目，默认10， 最大50
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移量，默认1
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+}
+
 type DescribeDbauditInstancesRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 查询条件地域
 	SearchRegion *string `json:"SearchRegion,omitempty" name:"SearchRegion"`
 
@@ -226,19 +254,21 @@ func (r *DescribeDbauditInstancesRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeDbauditInstancesResponseParams struct {
+	// 总实例数
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 数据安全审计实例信息列表
+	CdsAuditInstanceSet []*CdsAuditInstance `json:"CdsAuditInstanceSet,omitempty" name:"CdsAuditInstanceSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeDbauditInstancesResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 总实例数
-		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 数据安全审计实例信息列表
-		CdsAuditInstanceSet []*CdsAuditInstance `json:"CdsAuditInstanceSet,omitempty" name:"CdsAuditInstanceSet"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeDbauditInstancesResponseParams `json:"Response"`
 }
 
 func (r *DescribeDbauditInstancesResponse) ToJsonString() string {
@@ -252,8 +282,14 @@ func (r *DescribeDbauditInstancesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeDbauditUsedRegionsRequestParams struct {
+
+}
+
 type DescribeDbauditUsedRegionsRequest struct {
 	*tchttp.BaseRequest
+	
 }
 
 func (r *DescribeDbauditUsedRegionsRequest) ToJsonString() string {
@@ -268,22 +304,25 @@ func (r *DescribeDbauditUsedRegionsRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDbauditUsedRegionsRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeDbauditUsedRegionsResponseParams struct {
+	// 可售卖地域信息列表
+	RegionSet []*RegionInfo `json:"RegionSet,omitempty" name:"RegionSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeDbauditUsedRegionsResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 可售卖地域信息列表
-		RegionSet []*RegionInfo `json:"RegionSet,omitempty" name:"RegionSet"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeDbauditUsedRegionsResponseParams `json:"Response"`
 }
 
 func (r *DescribeDbauditUsedRegionsResponse) ToJsonString() string {
@@ -297,9 +336,27 @@ func (r *DescribeDbauditUsedRegionsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type InquiryPriceDbauditInstanceRequestParams struct {
+	// 实例规格，取值范围： cdsaudit，cdsaudit_adv， cdsaudit_ent 分别为合规版，高级版，企业版
+	InstanceVersion *string `json:"InstanceVersion,omitempty" name:"InstanceVersion"`
+
+	// 询价类型： renew，续费；newbuy，新购
+	InquiryType *string `json:"InquiryType,omitempty" name:"InquiryType"`
+
+	// 购买实例的时长。取值范围：1（y/m），2（y/m）,，3（y/m），4（m）， 5（m），6（m）， 7（m），8（m），9（m）， 10（m）
+	TimeSpan *uint64 `json:"TimeSpan,omitempty" name:"TimeSpan"`
+
+	// 购买时长单位，y：年；m：月
+	TimeUnit *string `json:"TimeUnit,omitempty" name:"TimeUnit"`
+
+	// 实例所在地域
+	ServiceRegion *string `json:"ServiceRegion,omitempty" name:"ServiceRegion"`
+}
+
 type InquiryPriceDbauditInstanceRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 实例规格，取值范围： cdsaudit，cdsaudit_adv， cdsaudit_ent 分别为合规版，高级版，企业版
 	InstanceVersion *string `json:"InstanceVersion,omitempty" name:"InstanceVersion"`
 
@@ -339,19 +396,21 @@ func (r *InquiryPriceDbauditInstanceRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type InquiryPriceDbauditInstanceResponseParams struct {
+	// 总价，单位：元
+	TotalPrice *float64 `json:"TotalPrice,omitempty" name:"TotalPrice"`
+
+	// 真实价钱，预支费用的折扣价，单位：元
+	RealTotalCost *float64 `json:"RealTotalCost,omitempty" name:"RealTotalCost"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type InquiryPriceDbauditInstanceResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 总价，单位：元
-		TotalPrice *float64 `json:"TotalPrice,omitempty" name:"TotalPrice"`
-
-		// 真实价钱，预支费用的折扣价，单位：元
-		RealTotalCost *float64 `json:"RealTotalCost,omitempty" name:"RealTotalCost"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *InquiryPriceDbauditInstanceResponseParams `json:"Response"`
 }
 
 func (r *InquiryPriceDbauditInstanceResponse) ToJsonString() string {
@@ -365,9 +424,18 @@ func (r *InquiryPriceDbauditInstanceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifyDbauditInstancesRenewFlagRequestParams struct {
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 0，表示默认状态(用户未设置，即初始状态)；1，表示自动续费；2，表示明确不自动续费
+	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitempty" name:"AutoRenewFlag"`
+}
+
 type ModifyDbauditInstancesRenewFlagRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 实例ID
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
@@ -395,13 +463,15 @@ func (r *ModifyDbauditInstancesRenewFlagRequest) FromJsonString(s string) error 
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifyDbauditInstancesRenewFlagResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type ModifyDbauditInstancesRenewFlagResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *ModifyDbauditInstancesRenewFlagResponseParams `json:"Response"`
 }
 
 func (r *ModifyDbauditInstancesRenewFlagResponse) ToJsonString() string {
@@ -416,7 +486,6 @@ func (r *ModifyDbauditInstancesRenewFlagResponse) FromJsonString(s string) error
 }
 
 type RegionInfo struct {
-
 	// 地域ID
 	RegionId *int64 `json:"RegionId,omitempty" name:"RegionId"`
 

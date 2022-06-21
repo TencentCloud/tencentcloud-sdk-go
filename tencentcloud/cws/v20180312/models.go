@@ -20,9 +20,30 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+// Predefined struct for user
+type CreateMonitorsRequestParams struct {
+	// 站点的url列表
+	Urls []*string `json:"Urls,omitempty" name:"Urls"`
+
+	// 任务名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 扫描模式，normal-正常扫描；deep-深度扫描
+	ScannerType *string `json:"ScannerType,omitempty" name:"ScannerType"`
+
+	// 扫描周期，单位小时，每X小时执行一次
+	Crontab *uint64 `json:"Crontab,omitempty" name:"Crontab"`
+
+	// 扫描速率限制，每秒发送X个HTTP请求
+	RateLimit *uint64 `json:"RateLimit,omitempty" name:"RateLimit"`
+
+	// 首次扫描开始时间
+	FirstScanStartTime *string `json:"FirstScanStartTime,omitempty" name:"FirstScanStartTime"`
+}
+
 type CreateMonitorsRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 站点的url列表
 	Urls []*string `json:"Urls,omitempty" name:"Urls"`
 
@@ -66,13 +87,15 @@ func (r *CreateMonitorsRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateMonitorsResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreateMonitorsResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreateMonitorsResponseParams `json:"Response"`
 }
 
 func (r *CreateMonitorsResponse) ToJsonString() string {
@@ -86,9 +109,18 @@ func (r *CreateMonitorsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateSitesRequestParams struct {
+	// 站点的url列表
+	Urls []*string `json:"Urls,omitempty" name:"Urls"`
+
+	// 访问网站的客户端标识
+	UserAgent *string `json:"UserAgent,omitempty" name:"UserAgent"`
+}
+
 type CreateSitesRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 站点的url列表
 	Urls []*string `json:"Urls,omitempty" name:"Urls"`
 
@@ -116,19 +148,21 @@ func (r *CreateSitesRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateSitesResponseParams struct {
+	// 新增站点数。
+	Number *uint64 `json:"Number,omitempty" name:"Number"`
+
+	// 站点数组
+	Sites []*MiniSite `json:"Sites,omitempty" name:"Sites"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreateSitesResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 新增站点数。
-		Number *uint64 `json:"Number,omitempty" name:"Number"`
-
-		// 站点数组
-		Sites []*MiniSite `json:"Sites,omitempty" name:"Sites"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreateSitesResponseParams `json:"Response"`
 }
 
 func (r *CreateSitesResponse) ToJsonString() string {
@@ -142,9 +176,21 @@ func (r *CreateSitesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateSitesScansRequestParams struct {
+	// 站点的ID列表
+	SiteIds []*uint64 `json:"SiteIds,omitempty" name:"SiteIds"`
+
+	// 扫描模式，normal-正常扫描；deep-深度扫描
+	ScannerType *string `json:"ScannerType,omitempty" name:"ScannerType"`
+
+	// 扫描速率限制，每秒发送X个HTTP请求
+	RateLimit *uint64 `json:"RateLimit,omitempty" name:"RateLimit"`
+}
+
 type CreateSitesScansRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 站点的ID列表
 	SiteIds []*uint64 `json:"SiteIds,omitempty" name:"SiteIds"`
 
@@ -176,13 +222,15 @@ func (r *CreateSitesScansRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateSitesScansResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreateSitesScansResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreateSitesScansResponseParams `json:"Response"`
 }
 
 func (r *CreateSitesScansResponse) ToJsonString() string {
@@ -196,9 +244,15 @@ func (r *CreateSitesScansResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateVulsMisinformationRequestParams struct {
+	// 漏洞ID列表
+	VulIds []*uint64 `json:"VulIds,omitempty" name:"VulIds"`
+}
+
 type CreateVulsMisinformationRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 漏洞ID列表
 	VulIds []*uint64 `json:"VulIds,omitempty" name:"VulIds"`
 }
@@ -222,13 +276,15 @@ func (r *CreateVulsMisinformationRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateVulsMisinformationResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreateVulsMisinformationResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreateVulsMisinformationResponseParams `json:"Response"`
 }
 
 func (r *CreateVulsMisinformationResponse) ToJsonString() string {
@@ -242,9 +298,18 @@ func (r *CreateVulsMisinformationResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateVulsReportRequestParams struct {
+	// 站点ID
+	SiteId *uint64 `json:"SiteId,omitempty" name:"SiteId"`
+
+	// 监控任务ID
+	MonitorId *uint64 `json:"MonitorId,omitempty" name:"MonitorId"`
+}
+
 type CreateVulsReportRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 站点ID
 	SiteId *uint64 `json:"SiteId,omitempty" name:"SiteId"`
 
@@ -272,16 +337,18 @@ func (r *CreateVulsReportRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateVulsReportResponseParams struct {
+	// 报告下载地址
+	ReportFileUrl *string `json:"ReportFileUrl,omitempty" name:"ReportFileUrl"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreateVulsReportResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 报告下载地址
-		ReportFileUrl *string `json:"ReportFileUrl,omitempty" name:"ReportFileUrl"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreateVulsReportResponseParams `json:"Response"`
 }
 
 func (r *CreateVulsReportResponse) ToJsonString() string {
@@ -295,9 +362,15 @@ func (r *CreateVulsReportResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteMonitorsRequestParams struct {
+	// 监控任务ID列表
+	MonitorIds []*uint64 `json:"MonitorIds,omitempty" name:"MonitorIds"`
+}
+
 type DeleteMonitorsRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 监控任务ID列表
 	MonitorIds []*uint64 `json:"MonitorIds,omitempty" name:"MonitorIds"`
 }
@@ -321,13 +394,15 @@ func (r *DeleteMonitorsRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteMonitorsResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DeleteMonitorsResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DeleteMonitorsResponseParams `json:"Response"`
 }
 
 func (r *DeleteMonitorsResponse) ToJsonString() string {
@@ -341,9 +416,15 @@ func (r *DeleteMonitorsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteSitesRequestParams struct {
+	// 站点ID列表
+	SiteIds []*uint64 `json:"SiteIds,omitempty" name:"SiteIds"`
+}
+
 type DeleteSitesRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 站点ID列表
 	SiteIds []*uint64 `json:"SiteIds,omitempty" name:"SiteIds"`
 }
@@ -367,13 +448,15 @@ func (r *DeleteSitesRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteSitesResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DeleteSitesResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DeleteSitesResponseParams `json:"Response"`
 }
 
 func (r *DeleteSitesResponse) ToJsonString() string {
@@ -387,8 +470,14 @@ func (r *DeleteSitesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeConfigRequestParams struct {
+
+}
+
 type DescribeConfigRequest struct {
 	*tchttp.BaseRequest
+	
 }
 
 func (r *DescribeConfigRequest) ToJsonString() string {
@@ -403,37 +492,40 @@ func (r *DescribeConfigRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeConfigRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeConfigResponseParams struct {
+	// 漏洞告警通知等级，4位分别代表：高危、中危、低危、提示。
+	NoticeLevel *string `json:"NoticeLevel,omitempty" name:"NoticeLevel"`
+
+	// 配置ID。
+	Id *uint64 `json:"Id,omitempty" name:"Id"`
+
+	// 记录创建时间。
+	CreatedAt *string `json:"CreatedAt,omitempty" name:"CreatedAt"`
+
+	// 记录更新新建。
+	UpdatedAt *string `json:"UpdatedAt,omitempty" name:"UpdatedAt"`
+
+	// 云用户appid。
+	Appid *uint64 `json:"Appid,omitempty" name:"Appid"`
+
+	// 内容检测通知等级-1:通知,0-不通知
+	ContentLevel *uint64 `json:"ContentLevel,omitempty" name:"ContentLevel"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeConfigResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 漏洞告警通知等级，4位分别代表：高危、中危、低危、提示。
-		NoticeLevel *string `json:"NoticeLevel,omitempty" name:"NoticeLevel"`
-
-		// 配置ID。
-		Id *uint64 `json:"Id,omitempty" name:"Id"`
-
-		// 记录创建时间。
-		CreatedAt *string `json:"CreatedAt,omitempty" name:"CreatedAt"`
-
-		// 记录更新新建。
-		UpdatedAt *string `json:"UpdatedAt,omitempty" name:"UpdatedAt"`
-
-		// 云用户appid。
-		Appid *uint64 `json:"Appid,omitempty" name:"Appid"`
-
-		// 内容检测通知等级-1:通知,0-不通知
-		ContentLevel *uint64 `json:"ContentLevel,omitempty" name:"ContentLevel"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeConfigResponseParams `json:"Response"`
 }
 
 func (r *DescribeConfigResponse) ToJsonString() string {
@@ -447,9 +539,24 @@ func (r *DescribeConfigResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeMonitorsRequestParams struct {
+	// 监控任务ID列表
+	MonitorIds []*uint64 `json:"MonitorIds,omitempty" name:"MonitorIds"`
+
+	// 过滤条件
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 偏移量，默认为0
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回数量，默认为10，最大值为100
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+}
+
 type DescribeMonitorsRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 监控任务ID列表
 	MonitorIds []*uint64 `json:"MonitorIds,omitempty" name:"MonitorIds"`
 
@@ -485,19 +592,21 @@ func (r *DescribeMonitorsRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeMonitorsResponseParams struct {
+	// 监控任务列表。
+	Monitors []*MonitorsDetail `json:"Monitors,omitempty" name:"Monitors"`
+
+	// 监控任务数量。
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeMonitorsResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 监控任务列表。
-		Monitors []*MonitorsDetail `json:"Monitors,omitempty" name:"Monitors"`
-
-		// 监控任务数量。
-		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeMonitorsResponseParams `json:"Response"`
 }
 
 func (r *DescribeMonitorsResponse) ToJsonString() string {
@@ -511,8 +620,14 @@ func (r *DescribeMonitorsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeSiteQuotaRequestParams struct {
+
+}
+
 type DescribeSiteQuotaRequest struct {
 	*tchttp.BaseRequest
+	
 }
 
 func (r *DescribeSiteQuotaRequest) ToJsonString() string {
@@ -527,28 +642,31 @@ func (r *DescribeSiteQuotaRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSiteQuotaRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeSiteQuotaResponseParams struct {
+	// 已购买的扫描次数。
+	Total *uint64 `json:"Total,omitempty" name:"Total"`
+
+	// 已使用的扫描次数。
+	Used *uint64 `json:"Used,omitempty" name:"Used"`
+
+	// 剩余可用的扫描次数。
+	Available *uint64 `json:"Available,omitempty" name:"Available"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeSiteQuotaResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 已购买的扫描次数。
-		Total *uint64 `json:"Total,omitempty" name:"Total"`
-
-		// 已使用的扫描次数。
-		Used *uint64 `json:"Used,omitempty" name:"Used"`
-
-		// 剩余可用的扫描次数。
-		Available *uint64 `json:"Available,omitempty" name:"Available"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeSiteQuotaResponseParams `json:"Response"`
 }
 
 func (r *DescribeSiteQuotaResponse) ToJsonString() string {
@@ -562,9 +680,24 @@ func (r *DescribeSiteQuotaResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeSitesRequestParams struct {
+	// 站点ID列表
+	SiteIds []*uint64 `json:"SiteIds,omitempty" name:"SiteIds"`
+
+	// 过滤条件
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 偏移量，默认为0
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回数量，默认为10，最大值为100
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+}
+
 type DescribeSitesRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 站点ID列表
 	SiteIds []*uint64 `json:"SiteIds,omitempty" name:"SiteIds"`
 
@@ -600,19 +733,21 @@ func (r *DescribeSitesRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeSitesResponseParams struct {
+	// 站点数量。
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 站点信息列表。
+	Sites []*Site `json:"Sites,omitempty" name:"Sites"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeSitesResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 站点数量。
-		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 站点信息列表。
-		Sites []*Site `json:"Sites,omitempty" name:"Sites"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeSitesResponseParams `json:"Response"`
 }
 
 func (r *DescribeSitesResponse) ToJsonString() string {
@@ -626,9 +761,15 @@ func (r *DescribeSitesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeSitesVerificationRequestParams struct {
+	// 站点的url列表
+	Urls []*string `json:"Urls,omitempty" name:"Urls"`
+}
+
 type DescribeSitesVerificationRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 站点的url列表
 	Urls []*string `json:"Urls,omitempty" name:"Urls"`
 }
@@ -652,19 +793,21 @@ func (r *DescribeSitesVerificationRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeSitesVerificationResponseParams struct {
+	// 验证信息数量。
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 验证信息列表。
+	SitesVerification []*SitesVerification `json:"SitesVerification,omitempty" name:"SitesVerification"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeSitesVerificationResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 验证信息数量。
-		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 验证信息列表。
-		SitesVerification []*SitesVerification `json:"SitesVerification,omitempty" name:"SitesVerification"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeSitesVerificationResponseParams `json:"Response"`
 }
 
 func (r *DescribeSitesVerificationResponse) ToJsonString() string {
@@ -678,8 +821,14 @@ func (r *DescribeSitesVerificationResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeVulsNumberRequestParams struct {
+
+}
+
 type DescribeVulsNumberRequest struct {
 	*tchttp.BaseRequest
+	
 }
 
 func (r *DescribeVulsNumberRequest) ToJsonString() string {
@@ -694,46 +843,49 @@ func (r *DescribeVulsNumberRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeVulsNumberRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeVulsNumberResponseParams struct {
+	// 受影响的网站总数。
+	ImpactSiteNumber *uint64 `json:"ImpactSiteNumber,omitempty" name:"ImpactSiteNumber"`
+
+	// 已验证的网站总数。
+	SiteNumber *uint64 `json:"SiteNumber,omitempty" name:"SiteNumber"`
+
+	// 高风险漏洞总数。
+	VulsHighNumber *uint64 `json:"VulsHighNumber,omitempty" name:"VulsHighNumber"`
+
+	// 中风险漏洞总数。
+	VulsMiddleNumber *uint64 `json:"VulsMiddleNumber,omitempty" name:"VulsMiddleNumber"`
+
+	// 低高风险漏洞总数。
+	VulsLowNumber *uint64 `json:"VulsLowNumber,omitempty" name:"VulsLowNumber"`
+
+	// 风险提示总数。
+	VulsNoticeNumber *uint64 `json:"VulsNoticeNumber,omitempty" name:"VulsNoticeNumber"`
+
+	// 扫描页面总数。
+	PageCount *uint64 `json:"PageCount,omitempty" name:"PageCount"`
+
+	// 已验证的网站列表。
+	Sites []*MonitorMiniSite `json:"Sites,omitempty" name:"Sites"`
+
+	// 受影响的网站列表。
+	ImpactSites []*MonitorMiniSite `json:"ImpactSites,omitempty" name:"ImpactSites"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeVulsNumberResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 受影响的网站总数。
-		ImpactSiteNumber *uint64 `json:"ImpactSiteNumber,omitempty" name:"ImpactSiteNumber"`
-
-		// 已验证的网站总数。
-		SiteNumber *uint64 `json:"SiteNumber,omitempty" name:"SiteNumber"`
-
-		// 高风险漏洞总数。
-		VulsHighNumber *uint64 `json:"VulsHighNumber,omitempty" name:"VulsHighNumber"`
-
-		// 中风险漏洞总数。
-		VulsMiddleNumber *uint64 `json:"VulsMiddleNumber,omitempty" name:"VulsMiddleNumber"`
-
-		// 低高风险漏洞总数。
-		VulsLowNumber *uint64 `json:"VulsLowNumber,omitempty" name:"VulsLowNumber"`
-
-		// 风险提示总数。
-		VulsNoticeNumber *uint64 `json:"VulsNoticeNumber,omitempty" name:"VulsNoticeNumber"`
-
-		// 扫描页面总数。
-		PageCount *uint64 `json:"PageCount,omitempty" name:"PageCount"`
-
-		// 已验证的网站列表。
-		Sites []*MonitorMiniSite `json:"Sites,omitempty" name:"Sites"`
-
-		// 受影响的网站列表。
-		ImpactSites []*MonitorMiniSite `json:"ImpactSites,omitempty" name:"ImpactSites"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeVulsNumberResponseParams `json:"Response"`
 }
 
 func (r *DescribeVulsNumberResponse) ToJsonString() string {
@@ -747,8 +899,14 @@ func (r *DescribeVulsNumberResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeVulsNumberTimelineRequestParams struct {
+
+}
+
 type DescribeVulsNumberTimelineRequest struct {
 	*tchttp.BaseRequest
+	
 }
 
 func (r *DescribeVulsNumberTimelineRequest) ToJsonString() string {
@@ -763,25 +921,28 @@ func (r *DescribeVulsNumberTimelineRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeVulsNumberTimelineRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeVulsNumberTimelineResponseParams struct {
+	// 统计数据记录数量。
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 用户漏洞数随时间变化统计数据。
+	VulsTimeline []*VulsTimeline `json:"VulsTimeline,omitempty" name:"VulsTimeline"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeVulsNumberTimelineResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 统计数据记录数量。
-		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 用户漏洞数随时间变化统计数据。
-		VulsTimeline []*VulsTimeline `json:"VulsTimeline,omitempty" name:"VulsTimeline"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeVulsNumberTimelineResponseParams `json:"Response"`
 }
 
 func (r *DescribeVulsNumberTimelineResponse) ToJsonString() string {
@@ -795,9 +956,27 @@ func (r *DescribeVulsNumberTimelineResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeVulsRequestParams struct {
+	// 站点ID
+	SiteId *uint64 `json:"SiteId,omitempty" name:"SiteId"`
+
+	// 监控任务ID
+	MonitorId *uint64 `json:"MonitorId,omitempty" name:"MonitorId"`
+
+	// 过滤条件
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 偏移量，默认为0
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回数量，默认为10，最大值为100
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+}
+
 type DescribeVulsRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 站点ID
 	SiteId *uint64 `json:"SiteId,omitempty" name:"SiteId"`
 
@@ -837,19 +1016,21 @@ func (r *DescribeVulsRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeVulsResponseParams struct {
+	// 漏洞数量。
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 漏洞信息列表。
+	Vuls []*Vul `json:"Vuls,omitempty" name:"Vuls"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeVulsResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 漏洞数量。
-		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 漏洞信息列表。
-		Vuls []*Vul `json:"Vuls,omitempty" name:"Vuls"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeVulsResponseParams `json:"Response"`
 }
 
 func (r *DescribeVulsResponse) ToJsonString() string {
@@ -864,7 +1045,6 @@ func (r *DescribeVulsResponse) FromJsonString(s string) error {
 }
 
 type Filter struct {
-
 	// 过滤键的名称。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
@@ -873,7 +1053,6 @@ type Filter struct {
 }
 
 type MiniSite struct {
-
 	// 站点ID。
 	SiteId *uint64 `json:"SiteId,omitempty" name:"SiteId"`
 
@@ -881,9 +1060,15 @@ type MiniSite struct {
 	Url *string `json:"Url,omitempty" name:"Url"`
 }
 
+// Predefined struct for user
+type ModifyConfigAttributeRequestParams struct {
+	// 漏洞告警通知等级，4位分别代表：高危、中危、低危、提示
+	NoticeLevel *string `json:"NoticeLevel,omitempty" name:"NoticeLevel"`
+}
+
 type ModifyConfigAttributeRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 漏洞告警通知等级，4位分别代表：高危、中危、低危、提示
 	NoticeLevel *string `json:"NoticeLevel,omitempty" name:"NoticeLevel"`
 }
@@ -907,13 +1092,15 @@ func (r *ModifyConfigAttributeRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifyConfigAttributeResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type ModifyConfigAttributeResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *ModifyConfigAttributeResponseParams `json:"Response"`
 }
 
 func (r *ModifyConfigAttributeResponse) ToJsonString() string {
@@ -927,9 +1114,36 @@ func (r *ModifyConfigAttributeResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifyMonitorAttributeRequestParams struct {
+	// 监测任务ID
+	MonitorId *uint64 `json:"MonitorId,omitempty" name:"MonitorId"`
+
+	// 站点的url列表
+	Urls []*string `json:"Urls,omitempty" name:"Urls"`
+
+	// 任务名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 扫描模式，normal-正常扫描；deep-深度扫描
+	ScannerType *string `json:"ScannerType,omitempty" name:"ScannerType"`
+
+	// 扫描周期，单位小时，每X小时执行一次
+	Crontab *uint64 `json:"Crontab,omitempty" name:"Crontab"`
+
+	// 扫描速率限制，每秒发送X个HTTP请求
+	RateLimit *uint64 `json:"RateLimit,omitempty" name:"RateLimit"`
+
+	// 首次扫描开始时间
+	FirstScanStartTime *string `json:"FirstScanStartTime,omitempty" name:"FirstScanStartTime"`
+
+	// 监测状态：1-监测中；2-暂停监测
+	MonitorStatus *uint64 `json:"MonitorStatus,omitempty" name:"MonitorStatus"`
+}
+
 type ModifyMonitorAttributeRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 监测任务ID
 	MonitorId *uint64 `json:"MonitorId,omitempty" name:"MonitorId"`
 
@@ -981,13 +1195,15 @@ func (r *ModifyMonitorAttributeRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifyMonitorAttributeResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type ModifyMonitorAttributeResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *ModifyMonitorAttributeResponseParams `json:"Response"`
 }
 
 func (r *ModifyMonitorAttributeResponse) ToJsonString() string {
@@ -1001,9 +1217,33 @@ func (r *ModifyMonitorAttributeResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifySiteAttributeRequestParams struct {
+	// 站点ID
+	SiteId *uint64 `json:"SiteId,omitempty" name:"SiteId"`
+
+	// 站点名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 网站是否需要登录扫描：0-未知；-1-不需要；1-需要
+	NeedLogin *int64 `json:"NeedLogin,omitempty" name:"NeedLogin"`
+
+	// 登录后的cookie
+	LoginCookie *string `json:"LoginCookie,omitempty" name:"LoginCookie"`
+
+	// 用于测试cookie是否有效的URL
+	LoginCheckUrl *string `json:"LoginCheckUrl,omitempty" name:"LoginCheckUrl"`
+
+	// 用于测试cookie是否有效的关键字
+	LoginCheckKw *string `json:"LoginCheckKw,omitempty" name:"LoginCheckKw"`
+
+	// 禁止扫描器扫描的目录关键字
+	ScanDisallow *string `json:"ScanDisallow,omitempty" name:"ScanDisallow"`
+}
+
 type ModifySiteAttributeRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 站点ID
 	SiteId *uint64 `json:"SiteId,omitempty" name:"SiteId"`
 
@@ -1051,13 +1291,15 @@ func (r *ModifySiteAttributeRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifySiteAttributeResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type ModifySiteAttributeResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *ModifySiteAttributeResponseParams `json:"Response"`
 }
 
 func (r *ModifySiteAttributeResponse) ToJsonString() string {
@@ -1072,7 +1314,6 @@ func (r *ModifySiteAttributeResponse) FromJsonString(s string) error {
 }
 
 type Monitor struct {
-
 	// 监控任务ID。
 	Id *uint64 `json:"Id,omitempty" name:"Id"`
 
@@ -1120,7 +1361,6 @@ type Monitor struct {
 }
 
 type MonitorMiniSite struct {
-
 	// 站点ID。
 	SiteId *uint64 `json:"SiteId,omitempty" name:"SiteId"`
 
@@ -1129,7 +1369,6 @@ type MonitorMiniSite struct {
 }
 
 type MonitorsDetail struct {
-
 	// 监控任务基础信息。
 	Basic *Monitor `json:"Basic,omitempty" name:"Basic"`
 
@@ -1168,7 +1407,6 @@ type MonitorsDetail struct {
 }
 
 type Site struct {
-
 	// 站点ID。
 	Id *uint64 `json:"Id,omitempty" name:"Id"`
 
@@ -1273,7 +1511,6 @@ type Site struct {
 }
 
 type SitesVerification struct {
-
 	// 根域名。
 	Domain *string `json:"Domain,omitempty" name:"Domain"`
 
@@ -1308,9 +1545,15 @@ type SitesVerification struct {
 	VerifyFileUrl *string `json:"VerifyFileUrl,omitempty" name:"VerifyFileUrl"`
 }
 
+// Predefined struct for user
+type VerifySitesRequestParams struct {
+	// 站点的url列表
+	Urls []*string `json:"Urls,omitempty" name:"Urls"`
+}
+
 type VerifySitesRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 站点的url列表
 	Urls []*string `json:"Urls,omitempty" name:"Urls"`
 }
@@ -1334,19 +1577,21 @@ func (r *VerifySitesRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type VerifySitesResponseParams struct {
+	// 验证成功的根域名数量。
+	SuccessNumber *uint64 `json:"SuccessNumber,omitempty" name:"SuccessNumber"`
+
+	// 验证失败的根域名数量。
+	FailNumber *uint64 `json:"FailNumber,omitempty" name:"FailNumber"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type VerifySitesResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 验证成功的根域名数量。
-		SuccessNumber *uint64 `json:"SuccessNumber,omitempty" name:"SuccessNumber"`
-
-		// 验证失败的根域名数量。
-		FailNumber *uint64 `json:"FailNumber,omitempty" name:"FailNumber"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *VerifySitesResponseParams `json:"Response"`
 }
 
 func (r *VerifySitesResponse) ToJsonString() string {
@@ -1361,7 +1606,6 @@ func (r *VerifySitesResponse) FromJsonString(s string) error {
 }
 
 type Vul struct {
-
 	// 漏洞ID。
 	Id *uint64 `json:"Id,omitempty" name:"Id"`
 
@@ -1418,7 +1662,6 @@ type Vul struct {
 }
 
 type VulsTimeline struct {
-
 	// ID。
 	Id *uint64 `json:"Id,omitempty" name:"Id"`
 

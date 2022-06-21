@@ -21,7 +21,6 @@ import (
 )
 
 type AdInfo struct {
-
 	// 插播广告列表
 	Spots []*PluginInfo `json:"Spots,omitempty" name:"Spots"`
 
@@ -42,7 +41,6 @@ type AdInfo struct {
 }
 
 type AppDetailInfo struct {
-
 	// app的名称
 	AppName *string `json:"AppName,omitempty" name:"AppName"`
 
@@ -66,7 +64,6 @@ type AppDetailInfo struct {
 }
 
 type AppInfo struct {
-
 	// app的url，必须保证不用权限校验就可以下载
 	AppUrl *string `json:"AppUrl,omitempty" name:"AppUrl"`
 
@@ -93,7 +90,6 @@ type AppInfo struct {
 }
 
 type AppScanSet struct {
-
 	// 任务唯一标识
 	ItemId *string `json:"ItemId,omitempty" name:"ItemId"`
 
@@ -135,7 +131,6 @@ type AppScanSet struct {
 }
 
 type AppSetInfo struct {
-
 	// 任务唯一标识
 	ItemId *string `json:"ItemId,omitempty" name:"ItemId"`
 
@@ -183,6 +178,20 @@ type AppSetInfo struct {
 }
 
 type BindInfo struct {
+	// app的icon的url
+	AppIconUrl *string `json:"AppIconUrl,omitempty" name:"AppIconUrl"`
+
+	// app的名称
+	AppName *string `json:"AppName,omitempty" name:"AppName"`
+
+	// app的包名
+	AppPkgName *string `json:"AppPkgName,omitempty" name:"AppPkgName"`
+}
+
+// Predefined struct for user
+type CreateBindInstanceRequestParams struct {
+	// 资源id，全局唯一
+	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
 
 	// app的icon的url
 	AppIconUrl *string `json:"AppIconUrl,omitempty" name:"AppIconUrl"`
@@ -196,7 +205,7 @@ type BindInfo struct {
 
 type CreateBindInstanceRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 资源id，全局唯一
 	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
 
@@ -232,16 +241,18 @@ func (r *CreateBindInstanceRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateBindInstanceResponseParams struct {
+	// 任务状态: 1-已完成,2-处理中,3-处理出错,4-处理超时
+	Progress *uint64 `json:"Progress,omitempty" name:"Progress"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreateBindInstanceResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 任务状态: 1-已完成,2-处理中,3-处理出错,4-处理超时
-		Progress *uint64 `json:"Progress,omitempty" name:"Progress"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreateBindInstanceResponseParams `json:"Response"`
 }
 
 func (r *CreateBindInstanceResponse) ToJsonString() string {
@@ -255,9 +266,18 @@ func (r *CreateBindInstanceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateCosSecKeyInstanceRequestParams struct {
+	// 地域信息，例如广州：ap-guangzhou，上海：ap-shanghai，默认为广州。
+	CosRegion *string `json:"CosRegion,omitempty" name:"CosRegion"`
+
+	// 密钥有效时间，默认为1小时。
+	Duration *uint64 `json:"Duration,omitempty" name:"Duration"`
+}
+
 type CreateCosSecKeyInstanceRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 地域信息，例如广州：ap-guangzhou，上海：ap-shanghai，默认为广州。
 	CosRegion *string `json:"CosRegion,omitempty" name:"CosRegion"`
 
@@ -285,37 +305,39 @@ func (r *CreateCosSecKeyInstanceRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateCosSecKeyInstanceResponseParams struct {
+	// COS密钥对应的AppId
+	CosAppid *uint64 `json:"CosAppid,omitempty" name:"CosAppid"`
+
+	// COS密钥对应的存储桶名
+	CosBucket *string `json:"CosBucket,omitempty" name:"CosBucket"`
+
+	// 存储桶对应的地域
+	CosRegion *string `json:"CosRegion,omitempty" name:"CosRegion"`
+
+	// 密钥过期时间
+	ExpireTime *uint64 `json:"ExpireTime,omitempty" name:"ExpireTime"`
+
+	// 密钥ID信息
+	CosId *string `json:"CosId,omitempty" name:"CosId"`
+
+	// 密钥KEY信息
+	CosKey *string `json:"CosKey,omitempty" name:"CosKey"`
+
+	// 密钥TOCKEN信息
+	CosTocken *string `json:"CosTocken,omitempty" name:"CosTocken"`
+
+	// 密钥可访问的文件前缀人。例如：CosPrefix=test/123/666，则该密钥只能操作test/123/666为前缀的文件，例如test/123/666/1.txt
+	CosPrefix *string `json:"CosPrefix,omitempty" name:"CosPrefix"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreateCosSecKeyInstanceResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// COS密钥对应的AppId
-		CosAppid *uint64 `json:"CosAppid,omitempty" name:"CosAppid"`
-
-		// COS密钥对应的存储桶名
-		CosBucket *string `json:"CosBucket,omitempty" name:"CosBucket"`
-
-		// 存储桶对应的地域
-		CosRegion *string `json:"CosRegion,omitempty" name:"CosRegion"`
-
-		// 密钥过期时间
-		ExpireTime *uint64 `json:"ExpireTime,omitempty" name:"ExpireTime"`
-
-		// 密钥ID信息
-		CosId *string `json:"CosId,omitempty" name:"CosId"`
-
-		// 密钥KEY信息
-		CosKey *string `json:"CosKey,omitempty" name:"CosKey"`
-
-		// 密钥TOCKEN信息
-		CosTocken *string `json:"CosTocken,omitempty" name:"CosTocken"`
-
-		// 密钥可访问的文件前缀人。例如：CosPrefix=test/123/666，则该密钥只能操作test/123/666为前缀的文件，例如test/123/666/1.txt
-		CosPrefix *string `json:"CosPrefix,omitempty" name:"CosPrefix"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreateCosSecKeyInstanceResponseParams `json:"Response"`
 }
 
 func (r *CreateCosSecKeyInstanceResponse) ToJsonString() string {
@@ -329,9 +351,24 @@ func (r *CreateCosSecKeyInstanceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateResourceInstancesRequestParams struct {
+	// 资源类型id。13624：加固专业版。
+	Pid *uint64 `json:"Pid,omitempty" name:"Pid"`
+
+	// 时间单位，取值为d，m，y，分别表示天，月，年。
+	TimeUnit *string `json:"TimeUnit,omitempty" name:"TimeUnit"`
+
+	// 时间数量。
+	TimeSpan *uint64 `json:"TimeSpan,omitempty" name:"TimeSpan"`
+
+	// 资源数量。
+	ResourceNum *uint64 `json:"ResourceNum,omitempty" name:"ResourceNum"`
+}
+
 type CreateResourceInstancesRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 资源类型id。13624：加固专业版。
 	Pid *uint64 `json:"Pid,omitempty" name:"Pid"`
 
@@ -367,16 +404,18 @@ func (r *CreateResourceInstancesRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateResourceInstancesResponseParams struct {
+	// 新创建的资源列表。
+	ResourceSet []*string `json:"ResourceSet,omitempty" name:"ResourceSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreateResourceInstancesResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 新创建的资源列表。
-		ResourceSet []*string `json:"ResourceSet,omitempty" name:"ResourceSet"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreateResourceInstancesResponseParams `json:"Response"`
 }
 
 func (r *CreateResourceInstancesResponse) ToJsonString() string {
@@ -390,9 +429,18 @@ func (r *CreateResourceInstancesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateScanInstancesRequestParams struct {
+	// 待扫描的app信息列表，一次最多提交20个
+	AppInfos []*AppInfo `json:"AppInfos,omitempty" name:"AppInfos"`
+
+	// 扫描信息
+	ScanInfo *ScanInfo `json:"ScanInfo,omitempty" name:"ScanInfo"`
+}
+
 type CreateScanInstancesRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 待扫描的app信息列表，一次最多提交20个
 	AppInfos []*AppInfo `json:"AppInfos,omitempty" name:"AppInfos"`
 
@@ -420,28 +468,30 @@ func (r *CreateScanInstancesRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateScanInstancesResponseParams struct {
+	// 任务唯一标识
+	ItemId *string `json:"ItemId,omitempty" name:"ItemId"`
+
+	// 任务状态: 1-已完成,2-处理中,3-处理出错,4-处理超时
+	Progress *uint64 `json:"Progress,omitempty" name:"Progress"`
+
+	// 提交成功的app的md5集合
+	AppMd5s []*string `json:"AppMd5s,omitempty" name:"AppMd5s"`
+
+	// 剩余可用次数
+	LimitCount *uint64 `json:"LimitCount,omitempty" name:"LimitCount"`
+
+	// 到期时间
+	LimitTime *uint64 `json:"LimitTime,omitempty" name:"LimitTime"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreateScanInstancesResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 任务唯一标识
-		ItemId *string `json:"ItemId,omitempty" name:"ItemId"`
-
-		// 任务状态: 1-已完成,2-处理中,3-处理出错,4-处理超时
-		Progress *uint64 `json:"Progress,omitempty" name:"Progress"`
-
-		// 提交成功的app的md5集合
-		AppMd5s []*string `json:"AppMd5s,omitempty" name:"AppMd5s"`
-
-		// 剩余可用次数
-		LimitCount *uint64 `json:"LimitCount,omitempty" name:"LimitCount"`
-
-		// 到期时间
-		LimitTime *uint64 `json:"LimitTime,omitempty" name:"LimitTime"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreateScanInstancesResponseParams `json:"Response"`
 }
 
 func (r *CreateScanInstancesResponse) ToJsonString() string {
@@ -455,9 +505,18 @@ func (r *CreateScanInstancesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateShieldInstanceRequestParams struct {
+	// 待加固的应用信息
+	AppInfo *AppInfo `json:"AppInfo,omitempty" name:"AppInfo"`
+
+	// 加固服务信息
+	ServiceInfo *ServiceInfo `json:"ServiceInfo,omitempty" name:"ServiceInfo"`
+}
+
 type CreateShieldInstanceRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 待加固的应用信息
 	AppInfo *AppInfo `json:"AppInfo,omitempty" name:"AppInfo"`
 
@@ -485,19 +544,21 @@ func (r *CreateShieldInstanceRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateShieldInstanceResponseParams struct {
+	// 任务状态: 1-已完成,2-处理中,3-处理出错,4-处理超时
+	Progress *uint64 `json:"Progress,omitempty" name:"Progress"`
+
+	// 任务唯一标识
+	ItemId *string `json:"ItemId,omitempty" name:"ItemId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreateShieldInstanceResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 任务状态: 1-已完成,2-处理中,3-处理出错,4-处理超时
-		Progress *uint64 `json:"Progress,omitempty" name:"Progress"`
-
-		// 任务唯一标识
-		ItemId *string `json:"ItemId,omitempty" name:"ItemId"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreateShieldInstanceResponseParams `json:"Response"`
 }
 
 func (r *CreateShieldInstanceResponse) ToJsonString() string {
@@ -511,9 +572,21 @@ func (r *CreateShieldInstanceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateShieldPlanInstanceRequestParams struct {
+	// 资源id
+	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
+
+	// 策略名称
+	PlanName *string `json:"PlanName,omitempty" name:"PlanName"`
+
+	// 策略具体信息
+	PlanInfo *PlanInfo `json:"PlanInfo,omitempty" name:"PlanInfo"`
+}
+
 type CreateShieldPlanInstanceRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 资源id
 	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
 
@@ -545,19 +618,21 @@ func (r *CreateShieldPlanInstanceRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateShieldPlanInstanceResponseParams struct {
+	// 策略id
+	PlanId *uint64 `json:"PlanId,omitempty" name:"PlanId"`
+
+	// 任务状态: 1-已完成,2-处理中,3-处理出错,4-处理超时
+	Progress *uint64 `json:"Progress,omitempty" name:"Progress"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreateShieldPlanInstanceResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 策略id
-		PlanId *uint64 `json:"PlanId,omitempty" name:"PlanId"`
-
-		// 任务状态: 1-已完成,2-处理中,3-处理出错,4-处理超时
-		Progress *uint64 `json:"Progress,omitempty" name:"Progress"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreateShieldPlanInstanceResponseParams `json:"Response"`
 }
 
 func (r *CreateShieldPlanInstanceResponse) ToJsonString() string {
@@ -571,9 +646,15 @@ func (r *CreateShieldPlanInstanceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteScanInstancesRequestParams struct {
+	// 删除一个或多个扫描的app，最大支持20个
+	AppSids []*string `json:"AppSids,omitempty" name:"AppSids"`
+}
+
 type DeleteScanInstancesRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 删除一个或多个扫描的app，最大支持20个
 	AppSids []*string `json:"AppSids,omitempty" name:"AppSids"`
 }
@@ -597,16 +678,18 @@ func (r *DeleteScanInstancesRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteScanInstancesResponseParams struct {
+	// 任务状态: 1-已完成,2-处理中,3-处理出错,4-处理超时
+	Progress *uint64 `json:"Progress,omitempty" name:"Progress"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DeleteScanInstancesResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 任务状态: 1-已完成,2-处理中,3-处理出错,4-处理超时
-		Progress *uint64 `json:"Progress,omitempty" name:"Progress"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DeleteScanInstancesResponseParams `json:"Response"`
 }
 
 func (r *DeleteScanInstancesResponse) ToJsonString() string {
@@ -620,9 +703,15 @@ func (r *DeleteScanInstancesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteShieldInstancesRequestParams struct {
+	// 任务唯一标识ItemId的列表
+	ItemIds []*string `json:"ItemIds,omitempty" name:"ItemIds"`
+}
+
 type DeleteShieldInstancesRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 任务唯一标识ItemId的列表
 	ItemIds []*string `json:"ItemIds,omitempty" name:"ItemIds"`
 }
@@ -646,16 +735,18 @@ func (r *DeleteShieldInstancesRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DeleteShieldInstancesResponseParams struct {
+	// 任务状态: 1-已完成,2-处理中,3-处理出错,4-处理超时
+	Progress *uint64 `json:"Progress,omitempty" name:"Progress"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DeleteShieldInstancesResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 任务状态: 1-已完成,2-处理中,3-处理出错,4-处理超时
-		Progress *uint64 `json:"Progress,omitempty" name:"Progress"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DeleteShieldInstancesResponseParams `json:"Response"`
 }
 
 func (r *DeleteShieldInstancesResponse) ToJsonString() string {
@@ -669,9 +760,30 @@ func (r *DeleteShieldInstancesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeResourceInstancesRequestParams struct {
+	// 资源类别id数组，13624：加固专业版，12750：企业版。空数组表示返回全部资源。
+	Pids []*uint64 `json:"Pids,omitempty" name:"Pids"`
+
+	// 支持通过资源id，pid进行查询
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 偏移量，默认为0
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 数量限制，默认为20，最大值为100。
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 按某个字段排序，目前支持CreateTime、ExpireTime其中的一个排序。
+	OrderField *string `json:"OrderField,omitempty" name:"OrderField"`
+
+	// 升序（asc）还是降序（desc），默认：desc。
+	OrderDirection *string `json:"OrderDirection,omitempty" name:"OrderDirection"`
+}
+
 type DescribeResourceInstancesRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 资源类别id数组，13624：加固专业版，12750：企业版。空数组表示返回全部资源。
 	Pids []*uint64 `json:"Pids,omitempty" name:"Pids"`
 
@@ -715,19 +827,21 @@ func (r *DescribeResourceInstancesRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeResourceInstancesResponseParams struct {
+	// 符合要求的资源数量
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 符合要求的资源数组
+	ResourceSet []*ResourceInfo `json:"ResourceSet,omitempty" name:"ResourceSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeResourceInstancesResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 符合要求的资源数量
-		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 符合要求的资源数组
-		ResourceSet []*ResourceInfo `json:"ResourceSet,omitempty" name:"ResourceSet"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeResourceInstancesResponseParams `json:"Response"`
 }
 
 func (r *DescribeResourceInstancesResponse) ToJsonString() string {
@@ -741,9 +855,30 @@ func (r *DescribeResourceInstancesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeScanInstancesRequestParams struct {
+	// 支持通过app名称，app包名进行筛选
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 偏移量，默认为0
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 数量限制，默认为20，最大值为100。
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 可以提供ItemId数组来查询一个或者多个结果。注意不可以同时指定ItemIds和Filters。
+	ItemIds []*string `json:"ItemIds,omitempty" name:"ItemIds"`
+
+	// 按某个字段排序，目前仅支持TaskTime排序。
+	OrderField *string `json:"OrderField,omitempty" name:"OrderField"`
+
+	// 升序（asc）还是降序（desc），默认：desc。
+	OrderDirection *string `json:"OrderDirection,omitempty" name:"OrderDirection"`
+}
+
 type DescribeScanInstancesRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 支持通过app名称，app包名进行筛选
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
@@ -787,19 +922,21 @@ func (r *DescribeScanInstancesRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeScanInstancesResponseParams struct {
+	// 符合要求的app数量
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 一个关于app详细信息的结构体，主要包括app的基本信息和扫描状态信息。
+	ScanSet []*AppScanSet `json:"ScanSet,omitempty" name:"ScanSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeScanInstancesResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 符合要求的app数量
-		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 一个关于app详细信息的结构体，主要包括app的基本信息和扫描状态信息。
-		ScanSet []*AppScanSet `json:"ScanSet,omitempty" name:"ScanSet"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeScanInstancesResponseParams `json:"Response"`
 }
 
 func (r *DescribeScanInstancesResponse) ToJsonString() string {
@@ -813,9 +950,18 @@ func (r *DescribeScanInstancesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeScanResultsRequestParams struct {
+	// 任务唯一标识
+	ItemId *string `json:"ItemId,omitempty" name:"ItemId"`
+
+	// 批量查询一个或者多个app的扫描结果，如果不传表示查询该任务下所提交的所有app
+	AppMd5s []*string `json:"AppMd5s,omitempty" name:"AppMd5s"`
+}
+
 type DescribeScanResultsRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 任务唯一标识
 	ItemId *string `json:"ItemId,omitempty" name:"ItemId"`
 
@@ -843,19 +989,21 @@ func (r *DescribeScanResultsRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeScanResultsResponseParams struct {
+	// 批量扫描的app结果集
+	ScanSet []*ScanSetInfo `json:"ScanSet,omitempty" name:"ScanSet"`
+
+	// 批量扫描结果的个数
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeScanResultsResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 批量扫描的app结果集
-		ScanSet []*ScanSetInfo `json:"ScanSet,omitempty" name:"ScanSet"`
-
-		// 批量扫描结果的个数
-		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeScanResultsResponseParams `json:"Response"`
 }
 
 func (r *DescribeScanResultsResponse) ToJsonString() string {
@@ -869,9 +1017,30 @@ func (r *DescribeScanResultsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeShieldInstancesRequestParams struct {
+	// 支持通过app名称，app包名，加固的服务版本，提交的渠道进行筛选。
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 数量限制，默认为20，最大值为100。
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 可以提供ItemId数组来查询一个或者多个结果。注意不可以同时指定ItemIds和Filters。
+	ItemIds []*string `json:"ItemIds,omitempty" name:"ItemIds"`
+
+	// 按某个字段排序，目前仅支持TaskTime排序。
+	OrderField *string `json:"OrderField,omitempty" name:"OrderField"`
+
+	// 升序（asc）还是降序（desc），默认：desc。
+	OrderDirection *string `json:"OrderDirection,omitempty" name:"OrderDirection"`
+}
+
 type DescribeShieldInstancesRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 支持通过app名称，app包名，加固的服务版本，提交的渠道进行筛选。
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
@@ -915,19 +1084,21 @@ func (r *DescribeShieldInstancesRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeShieldInstancesResponseParams struct {
+	// 符合要求的app数量
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 一个关于app详细信息的结构体，主要包括app的基本信息和加固信息。
+	AppSet []*AppSetInfo `json:"AppSet,omitempty" name:"AppSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeShieldInstancesResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 符合要求的app数量
-		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 一个关于app详细信息的结构体，主要包括app的基本信息和加固信息。
-		AppSet []*AppSetInfo `json:"AppSet,omitempty" name:"AppSet"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeShieldInstancesResponseParams `json:"Response"`
 }
 
 func (r *DescribeShieldInstancesResponse) ToJsonString() string {
@@ -941,9 +1112,18 @@ func (r *DescribeShieldInstancesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeShieldPlanInstanceRequestParams struct {
+	// 资源id
+	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
+
+	// 服务类别id
+	Pid *uint64 `json:"Pid,omitempty" name:"Pid"`
+}
+
 type DescribeShieldPlanInstanceRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 资源id
 	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
 
@@ -971,22 +1151,24 @@ func (r *DescribeShieldPlanInstanceRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeShieldPlanInstanceResponseParams struct {
+	// 绑定资源信息
+	BindInfo *BindInfo `json:"BindInfo,omitempty" name:"BindInfo"`
+
+	// 加固策略信息
+	ShieldPlanInfo *ShieldPlanInfo `json:"ShieldPlanInfo,omitempty" name:"ShieldPlanInfo"`
+
+	// 加固资源信息
+	ResourceServiceInfo *ResourceServiceInfo `json:"ResourceServiceInfo,omitempty" name:"ResourceServiceInfo"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeShieldPlanInstanceResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 绑定资源信息
-		BindInfo *BindInfo `json:"BindInfo,omitempty" name:"BindInfo"`
-
-		// 加固策略信息
-		ShieldPlanInfo *ShieldPlanInfo `json:"ShieldPlanInfo,omitempty" name:"ShieldPlanInfo"`
-
-		// 加固资源信息
-		ResourceServiceInfo *ResourceServiceInfo `json:"ResourceServiceInfo,omitempty" name:"ResourceServiceInfo"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeShieldPlanInstanceResponseParams `json:"Response"`
 }
 
 func (r *DescribeShieldPlanInstanceResponse) ToJsonString() string {
@@ -1000,9 +1182,15 @@ func (r *DescribeShieldPlanInstanceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeShieldResultRequestParams struct {
+	// 任务唯一标识
+	ItemId *string `json:"ItemId,omitempty" name:"ItemId"`
+}
+
 type DescribeShieldResultRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 任务唯一标识
 	ItemId *string `json:"ItemId,omitempty" name:"ItemId"`
 }
@@ -1026,28 +1214,30 @@ func (r *DescribeShieldResultRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeShieldResultResponseParams struct {
+	// 任务状态: 0-请返回,1-已完成,2-处理中,3-处理出错,4-处理超时
+	TaskStatus *uint64 `json:"TaskStatus,omitempty" name:"TaskStatus"`
+
+	// app加固前的详细信息
+	AppDetailInfo *AppDetailInfo `json:"AppDetailInfo,omitempty" name:"AppDetailInfo"`
+
+	// app加固后的详细信息
+	ShieldInfo *ShieldInfo `json:"ShieldInfo,omitempty" name:"ShieldInfo"`
+
+	// 状态描述
+	StatusDesc *string `json:"StatusDesc,omitempty" name:"StatusDesc"`
+
+	// 状态指引
+	StatusRef *string `json:"StatusRef,omitempty" name:"StatusRef"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeShieldResultResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 任务状态: 0-请返回,1-已完成,2-处理中,3-处理出错,4-处理超时
-		TaskStatus *uint64 `json:"TaskStatus,omitempty" name:"TaskStatus"`
-
-		// app加固前的详细信息
-		AppDetailInfo *AppDetailInfo `json:"AppDetailInfo,omitempty" name:"AppDetailInfo"`
-
-		// app加固后的详细信息
-		ShieldInfo *ShieldInfo `json:"ShieldInfo,omitempty" name:"ShieldInfo"`
-
-		// 状态描述
-		StatusDesc *string `json:"StatusDesc,omitempty" name:"StatusDesc"`
-
-		// 状态指引
-		StatusRef *string `json:"StatusRef,omitempty" name:"StatusRef"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeShieldResultResponseParams `json:"Response"`
 }
 
 func (r *DescribeShieldResultResponse) ToJsonString() string {
@@ -1061,8 +1251,14 @@ func (r *DescribeShieldResultResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeUserBaseInfoInstanceRequestParams struct {
+
+}
+
 type DescribeUserBaseInfoInstanceRequest struct {
 	*tchttp.BaseRequest
+	
 }
 
 func (r *DescribeUserBaseInfoInstanceRequest) ToJsonString() string {
@@ -1077,28 +1273,31 @@ func (r *DescribeUserBaseInfoInstanceRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeUserBaseInfoInstanceRequest has unknown keys!", "")
 	}
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeUserBaseInfoInstanceResponseParams struct {
+	// 用户uin信息
+	UserUin *uint64 `json:"UserUin,omitempty" name:"UserUin"`
+
+	// 用户APPID信息
+	UserAppid *uint64 `json:"UserAppid,omitempty" name:"UserAppid"`
+
+	// 系统时间戳
+	TimeStamp *uint64 `json:"TimeStamp,omitempty" name:"TimeStamp"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeUserBaseInfoInstanceResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 用户uin信息
-		UserUin *uint64 `json:"UserUin,omitempty" name:"UserUin"`
-
-		// 用户APPID信息
-		UserAppid *uint64 `json:"UserAppid,omitempty" name:"UserAppid"`
-
-		// 系统时间戳
-		TimeStamp *uint64 `json:"TimeStamp,omitempty" name:"TimeStamp"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeUserBaseInfoInstanceResponseParams `json:"Response"`
 }
 
 func (r *DescribeUserBaseInfoInstanceResponse) ToJsonString() string {
@@ -1113,7 +1312,6 @@ func (r *DescribeUserBaseInfoInstanceResponse) FromJsonString(s string) error {
 }
 
 type Filter struct {
-
 	// 需要过滤的字段
 	Name *string `json:"Name,omitempty" name:"Name"`
 
@@ -1122,7 +1320,6 @@ type Filter struct {
 }
 
 type PlanDetailInfo struct {
-
 	// 默认策略，1为默认，0为非默认
 	IsDefault *uint64 `json:"IsDefault,omitempty" name:"IsDefault"`
 
@@ -1137,7 +1334,6 @@ type PlanDetailInfo struct {
 }
 
 type PlanInfo struct {
-
 	// apk大小优化，0关闭，1开启
 	ApkSizeOpt *uint64 `json:"ApkSizeOpt,omitempty" name:"ApkSizeOpt"`
 
@@ -1188,7 +1384,6 @@ type PlanInfo struct {
 }
 
 type PluginInfo struct {
-
 	// 插件类型，分别为 1-通知栏广告，2-积分墙广告，3-banner广告，4- 悬浮窗图标广告，5-精品推荐列表广告, 6-插播广告
 	PluginType *uint64 `json:"PluginType,omitempty" name:"PluginType"`
 
@@ -1200,7 +1395,6 @@ type PluginInfo struct {
 }
 
 type ResourceInfo struct {
-
 	// 用户购买的资源id，全局唯一
 	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
 
@@ -1224,7 +1418,6 @@ type ResourceInfo struct {
 }
 
 type ResourceServiceInfo struct {
-
 	// 创建时间戳
 	CreateTime *uint64 `json:"CreateTime,omitempty" name:"CreateTime"`
 
@@ -1236,7 +1429,6 @@ type ResourceServiceInfo struct {
 }
 
 type ScanInfo struct {
-
 	// 任务处理完成后的反向通知回调地址,批量提交app每扫描完成一个会通知一次,通知为POST请求，post信息{ItemId:
 	CallbackUrl *string `json:"CallbackUrl,omitempty" name:"CallbackUrl"`
 
@@ -1245,19 +1437,16 @@ type ScanInfo struct {
 }
 
 type ScanPermissionInfo struct {
-
 	// 系统权限
 	Permission *string `json:"Permission,omitempty" name:"Permission"`
 }
 
 type ScanPermissionList struct {
-
 	// 系统权限信息
 	PermissionList []*ScanPermissionInfo `json:"PermissionList,omitempty" name:"PermissionList"`
 }
 
 type ScanSensitiveInfo struct {
-
 	// 敏感词
 	WordList []*string `json:"WordList,omitempty" name:"WordList"`
 
@@ -1269,13 +1458,11 @@ type ScanSensitiveInfo struct {
 }
 
 type ScanSensitiveList struct {
-
 	// 敏感词列表
 	SensitiveList []*ScanSensitiveInfo `json:"SensitiveList,omitempty" name:"SensitiveList"`
 }
 
 type ScanSetInfo struct {
-
 	// 任务状态: 1-已完成,2-处理中,3-处理出错,4-处理超时
 	TaskStatus *uint64 `json:"TaskStatus,omitempty" name:"TaskStatus"`
 
@@ -1311,7 +1498,6 @@ type ScanSetInfo struct {
 }
 
 type ServiceInfo struct {
-
 	// 服务版本，基础版basic，专业版professional，企业版enterprise。
 	ServiceEdition *string `json:"ServiceEdition,omitempty" name:"ServiceEdition"`
 
@@ -1326,7 +1512,6 @@ type ServiceInfo struct {
 }
 
 type ShieldInfo struct {
-
 	// 加固结果的返回码
 	ShieldCode *uint64 `json:"ShieldCode,omitempty" name:"ShieldCode"`
 
@@ -1350,7 +1535,6 @@ type ShieldInfo struct {
 }
 
 type ShieldPlanInfo struct {
-
 	// 加固策略数量
 	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
@@ -1359,13 +1543,11 @@ type ShieldPlanInfo struct {
 }
 
 type SoInfo struct {
-
 	// so文件列表
 	SoFileNames []*string `json:"SoFileNames,omitempty" name:"SoFileNames"`
 }
 
 type VirusInfo struct {
-
 	// 软件安全类型，分别为0-未知、 1-安全软件、2-风险软件、3-病毒软件
 	SafeType *int64 `json:"SafeType,omitempty" name:"SafeType"`
 
@@ -1377,7 +1559,6 @@ type VirusInfo struct {
 }
 
 type VulInfo struct {
-
 	// 漏洞列表
 	VulList []*VulList `json:"VulList,omitempty" name:"VulList"`
 
@@ -1386,7 +1567,6 @@ type VulInfo struct {
 }
 
 type VulList struct {
-
 	// 漏洞id
 	VulId *string `json:"VulId,omitempty" name:"VulId"`
 

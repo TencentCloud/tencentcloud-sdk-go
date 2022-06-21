@@ -21,7 +21,6 @@ import (
 )
 
 type AuthInfo struct {
-
 	// 主键
 	Id *string `json:"Id,omitempty" name:"Id"`
 
@@ -38,9 +37,15 @@ type AuthInfo struct {
 	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
 }
 
+// Predefined struct for user
+type BatchDescribeOrderCertificateRequestParams struct {
+	// 要下载授权书的订单id
+	OrderIds []*string `json:"OrderIds,omitempty" name:"OrderIds"`
+}
+
 type BatchDescribeOrderCertificateRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 要下载授权书的订单id
 	OrderIds []*string `json:"OrderIds,omitempty" name:"OrderIds"`
 }
@@ -64,16 +69,18 @@ func (r *BatchDescribeOrderCertificateRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type BatchDescribeOrderCertificateResponseParams struct {
+	// 授权书的下载地址
+	CertificateUrls []*string `json:"CertificateUrls,omitempty" name:"CertificateUrls"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type BatchDescribeOrderCertificateResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 授权书的下载地址
-		CertificateUrls []*string `json:"CertificateUrls,omitempty" name:"CertificateUrls"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *BatchDescribeOrderCertificateResponseParams `json:"Response"`
 }
 
 func (r *BatchDescribeOrderCertificateResponse) ToJsonString() string {
@@ -87,9 +94,15 @@ func (r *BatchDescribeOrderCertificateResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type BatchDescribeOrderImageRequestParams struct {
+	// 要下载图片的订单id
+	OrderIds []*string `json:"OrderIds,omitempty" name:"OrderIds"`
+}
+
 type BatchDescribeOrderImageRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 要下载图片的订单id
 	OrderIds []*string `json:"OrderIds,omitempty" name:"OrderIds"`
 }
@@ -113,16 +126,18 @@ func (r *BatchDescribeOrderImageRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type BatchDescribeOrderImageResponseParams struct {
+	// 图片的下载地址
+	ImageUrls []*string `json:"ImageUrls,omitempty" name:"ImageUrls"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type BatchDescribeOrderImageResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 图片的下载地址
-		ImageUrls []*string `json:"ImageUrls,omitempty" name:"ImageUrls"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *BatchDescribeOrderImageResponseParams `json:"Response"`
 }
 
 func (r *BatchDescribeOrderImageResponse) ToJsonString() string {
@@ -136,9 +151,15 @@ func (r *BatchDescribeOrderImageResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateOrderAndDownloadsRequestParams struct {
+	// ImageId必填，单张购买，所有必填，会员身份可以省略部分参数
+	ImageInfos []*ImageInfo `json:"ImageInfos,omitempty" name:"ImageInfos"`
+}
+
 type CreateOrderAndDownloadsRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// ImageId必填，单张购买，所有必填，会员身份可以省略部分参数
 	ImageInfos []*ImageInfo `json:"ImageInfos,omitempty" name:"ImageInfos"`
 }
@@ -162,20 +183,22 @@ func (r *CreateOrderAndDownloadsRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateOrderAndDownloadsResponseParams struct {
+	// 成功核销后可以获取图片基本信息和原图地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DownloadInfos []*DownloadInfo `json:"DownloadInfos,omitempty" name:"DownloadInfos"`
+
+	// 可下载图片数量
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreateOrderAndDownloadsResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 成功核销后可以获取图片基本信息和原图地址
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		DownloadInfos []*DownloadInfo `json:"DownloadInfos,omitempty" name:"DownloadInfos"`
-
-		// 可下载图片数量
-		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreateOrderAndDownloadsResponseParams `json:"Response"`
 }
 
 func (r *CreateOrderAndDownloadsResponse) ToJsonString() string {
@@ -189,9 +212,21 @@ func (r *CreateOrderAndDownloadsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateOrderAndPayRequestParams struct {
+	// 图片ID
+	ImageId *uint64 `json:"ImageId,omitempty" name:"ImageId"`
+
+	// 授权人ID
+	AuthUserId *string `json:"AuthUserId,omitempty" name:"AuthUserId"`
+
+	// 售卖组合id
+	MarshalId *uint64 `json:"MarshalId,omitempty" name:"MarshalId"`
+}
+
 type CreateOrderAndPayRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 图片ID
 	ImageId *uint64 `json:"ImageId,omitempty" name:"ImageId"`
 
@@ -223,16 +258,18 @@ func (r *CreateOrderAndPayRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CreateOrderAndPayResponseParams struct {
+	// 订单ID
+	OrderId *string `json:"OrderId,omitempty" name:"OrderId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type CreateOrderAndPayResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 订单ID
-		OrderId *string `json:"OrderId,omitempty" name:"OrderId"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *CreateOrderAndPayResponseParams `json:"Response"`
 }
 
 func (r *CreateOrderAndPayResponse) ToJsonString() string {
@@ -246,9 +283,18 @@ func (r *CreateOrderAndPayResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeAuthUsersRequestParams struct {
+	// 分页大小
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 页偏移量
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+}
+
 type DescribeAuthUsersRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 分页大小
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
@@ -276,23 +322,25 @@ func (r *DescribeAuthUsersRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeAuthUsersResponseParams struct {
+	// 授权人信息数组
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Users []*AuthInfo `json:"Users,omitempty" name:"Users"`
+
+	// 总记录数
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 是否是老策略用户
+	OldUser *bool `json:"OldUser,omitempty" name:"OldUser"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeAuthUsersResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 授权人信息数组
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		Users []*AuthInfo `json:"Users,omitempty" name:"Users"`
-
-		// 总记录数
-		TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 是否是老策略用户
-		OldUser *bool `json:"OldUser,omitempty" name:"OldUser"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeAuthUsersResponseParams `json:"Response"`
 }
 
 func (r *DescribeAuthUsersResponse) ToJsonString() string {
@@ -306,9 +354,27 @@ func (r *DescribeAuthUsersResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeDownloadInfosRequestParams struct {
+	// 默认10
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 默认0
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 开始时间晚于指定时间
+	BeginTime *string `json:"BeginTime,omitempty" name:"BeginTime"`
+
+	// 结束时间早于指定时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 无效值，过滤结果为空
+	ImageIds []*int64 `json:"ImageIds,omitempty" name:"ImageIds"`
+}
+
 type DescribeDownloadInfosRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 默认10
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
@@ -348,20 +414,22 @@ func (r *DescribeDownloadInfosRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeDownloadInfosResponseParams struct {
+	// 核销下载记录
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DownloadInfos []*DownloadInfo `json:"DownloadInfos,omitempty" name:"DownloadInfos"`
+
+	// 总记录数量
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeDownloadInfosResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 核销下载记录
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		DownloadInfos []*DownloadInfo `json:"DownloadInfos,omitempty" name:"DownloadInfos"`
-
-		// 总记录数量
-		TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeDownloadInfosResponseParams `json:"Response"`
 }
 
 func (r *DescribeDownloadInfosResponse) ToJsonString() string {
@@ -375,9 +443,15 @@ func (r *DescribeDownloadInfosResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeImageRequestParams struct {
+	// 图片ID
+	ImageId *uint64 `json:"ImageId,omitempty" name:"ImageId"`
+}
+
 type DescribeImageRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 图片ID
 	ImageId *uint64 `json:"ImageId,omitempty" name:"ImageId"`
 }
@@ -401,55 +475,57 @@ func (r *DescribeImageRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeImageResponseParams struct {
+	// 图片ID
+	ImageId *uint64 `json:"ImageId,omitempty" name:"ImageId"`
+
+	// 图片标题
+	Title *string `json:"Title,omitempty" name:"Title"`
+
+	// 图片描述
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 图片预览链接
+	PreviewUrl *string `json:"PreviewUrl,omitempty" name:"PreviewUrl"`
+
+	// 图片缩略图
+	ThumbUrl *string `json:"ThumbUrl,omitempty" name:"ThumbUrl"`
+
+	// 图片供应商
+	Vendor *string `json:"Vendor,omitempty" name:"Vendor"`
+
+	// 图片售卖组合信息
+	Marshals []*ImageMarshal `json:"Marshals,omitempty" name:"Marshals"`
+
+	// 宽
+	Width *int64 `json:"Width,omitempty" name:"Width"`
+
+	// 高
+	Height *int64 `json:"Height,omitempty" name:"Height"`
+
+	// 图片格式 jpg/eps/psd/...
+	ImageFormat *string `json:"ImageFormat,omitempty" name:"ImageFormat"`
+
+	// 图片类型 摄影图片、插画、漫画、图表、矢量、psd、全景、gif、模板
+	ImageSenseType *string `json:"ImageSenseType,omitempty" name:"ImageSenseType"`
+
+	// 关键词，多关键词用空格分隔
+	Keywords *string `json:"Keywords,omitempty" name:"Keywords"`
+
+	// 分层图库id
+	LayeredGalleryId *int64 `json:"LayeredGalleryId,omitempty" name:"LayeredGalleryId"`
+
+	// 构图方式：horizontal:横图、vertical:竖图、square:方图
+	Orientation *string `json:"Orientation,omitempty" name:"Orientation"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeImageResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 图片ID
-		ImageId *uint64 `json:"ImageId,omitempty" name:"ImageId"`
-
-		// 图片标题
-		Title *string `json:"Title,omitempty" name:"Title"`
-
-		// 图片描述
-		Description *string `json:"Description,omitempty" name:"Description"`
-
-		// 图片预览链接
-		PreviewUrl *string `json:"PreviewUrl,omitempty" name:"PreviewUrl"`
-
-		// 图片缩略图
-		ThumbUrl *string `json:"ThumbUrl,omitempty" name:"ThumbUrl"`
-
-		// 图片供应商
-		Vendor *string `json:"Vendor,omitempty" name:"Vendor"`
-
-		// 图片售卖组合信息
-		Marshals []*ImageMarshal `json:"Marshals,omitempty" name:"Marshals"`
-
-		// 宽
-		Width *int64 `json:"Width,omitempty" name:"Width"`
-
-		// 高
-		Height *int64 `json:"Height,omitempty" name:"Height"`
-
-		// 图片格式 jpg/eps/psd/...
-		ImageFormat *string `json:"ImageFormat,omitempty" name:"ImageFormat"`
-
-		// 图片类型 摄影图片、插画、漫画、图表、矢量、psd、全景、gif、模板
-		ImageSenseType *string `json:"ImageSenseType,omitempty" name:"ImageSenseType"`
-
-		// 关键词，多关键词用空格分隔
-		Keywords *string `json:"Keywords,omitempty" name:"Keywords"`
-
-		// 分层图库id
-		LayeredGalleryId *int64 `json:"LayeredGalleryId,omitempty" name:"LayeredGalleryId"`
-
-		// 构图方式：horizontal:横图、vertical:竖图、square:方图
-		Orientation *string `json:"Orientation,omitempty" name:"Orientation"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeImageResponseParams `json:"Response"`
 }
 
 func (r *DescribeImageResponse) ToJsonString() string {
@@ -463,9 +539,30 @@ func (r *DescribeImageResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeImagesRequestParams struct {
+	// 页偏移量
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 页大小
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 搜索关键字
+	Keyword *string `json:"Keyword,omitempty" name:"Keyword"`
+
+	// 构图方式，可选以下值：horizontal、vertical、square，分别代表以下含义：横图、竖图、方图
+	Orientation *string `json:"Orientation,omitempty" name:"Orientation"`
+
+	// 图片类型，可选以下值：照片、插画
+	ImageSenseType *string `json:"ImageSenseType,omitempty" name:"ImageSenseType"`
+
+	// 分层图库id数组，可选以下数值：1(基础)，2(精选)，3(高级)
+	LayeredGalleryIds []*int64 `json:"LayeredGalleryIds,omitempty" name:"LayeredGalleryIds"`
+}
+
 type DescribeImagesRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 页偏移量
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
@@ -509,28 +606,30 @@ func (r *DescribeImagesRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeImagesResponseParams struct {
+	// 页偏移量
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 页大小
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 总条数
+	Total *int64 `json:"Total,omitempty" name:"Total"`
+
+	// 是否有下一页
+	HaveMore *bool `json:"HaveMore,omitempty" name:"HaveMore"`
+
+	// 图片信息数组
+	Items []*ImageItem `json:"Items,omitempty" name:"Items"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeImagesResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 页偏移量
-		Offset *int64 `json:"Offset,omitempty" name:"Offset"`
-
-		// 页大小
-		Limit *int64 `json:"Limit,omitempty" name:"Limit"`
-
-		// 总条数
-		Total *int64 `json:"Total,omitempty" name:"Total"`
-
-		// 是否有下一页
-		HaveMore *bool `json:"HaveMore,omitempty" name:"HaveMore"`
-
-		// 图片信息数组
-		Items []*ImageItem `json:"Items,omitempty" name:"Items"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeImagesResponseParams `json:"Response"`
 }
 
 func (r *DescribeImagesResponse) ToJsonString() string {
@@ -545,7 +644,6 @@ func (r *DescribeImagesResponse) FromJsonString(s string) error {
 }
 
 type DownloadInfo struct {
-
 	// 图片基础信息
 	ImageInfo *ImageInfo `json:"ImageInfo,omitempty" name:"ImageInfo"`
 
@@ -575,7 +673,6 @@ type DownloadInfo struct {
 }
 
 type ImageInfo struct {
-
 	// 图片Id
 	ImageId *int64 `json:"ImageId,omitempty" name:"ImageId"`
 
@@ -600,7 +697,6 @@ type ImageInfo struct {
 }
 
 type ImageItem struct {
-
 	// 图片ID
 	ImageId *uint64 `json:"ImageId,omitempty" name:"ImageId"`
 
@@ -630,7 +726,6 @@ type ImageItem struct {
 }
 
 type ImageMarshal struct {
-
 	// 售卖组合唯一标识
 	MarshalId *uint64 `json:"MarshalId,omitempty" name:"MarshalId"`
 

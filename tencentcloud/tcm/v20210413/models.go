@@ -21,7 +21,6 @@ import (
 )
 
 type APM struct {
-
 	// 是否启用
 	Enable *bool `json:"Enable,omitempty" name:"Enable"`
 
@@ -35,7 +34,6 @@ type APM struct {
 }
 
 type AccessLogConfig struct {
-
 	// 是否启用
 	Enable *bool `json:"Enable,omitempty" name:"Enable"`
 
@@ -65,7 +63,6 @@ type AccessLogConfig struct {
 }
 
 type ActiveOperation struct {
-
 	// 操作Id
 	OperationId *string `json:"OperationId,omitempty" name:"OperationId"`
 
@@ -78,7 +75,6 @@ type ActiveOperation struct {
 }
 
 type AutoInjectionNamespaceState struct {
-
 	// 命名空间名称
 	Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
 
@@ -88,7 +84,6 @@ type AutoInjectionNamespaceState struct {
 }
 
 type CLS struct {
-
 	// 是否启用
 	Enable *bool `json:"Enable,omitempty" name:"Enable"`
 
@@ -100,7 +95,6 @@ type CLS struct {
 }
 
 type Cluster struct {
-
 	// 集群Id
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 
@@ -140,7 +134,6 @@ type Cluster struct {
 }
 
 type ClusterConfig struct {
-
 	// 自动注入SideCar的NameSpace
 	AutoInjectionNamespaceList []*string `json:"AutoInjectionNamespaceList,omitempty" name:"AutoInjectionNamespaceList"`
 
@@ -162,7 +155,6 @@ type ClusterConfig struct {
 }
 
 type ClusterStatus struct {
-
 	// 关联状态，取值范围：
 	// - LINKING: 关联中
 	// - LINKED: 已关联
@@ -177,7 +169,6 @@ type ClusterStatus struct {
 }
 
 type CustomPromConfig struct {
-
 	// Prometheus 访问地址
 	Url *string `json:"Url,omitempty" name:"Url"`
 
@@ -198,7 +189,6 @@ type CustomPromConfig struct {
 }
 
 type DeployConfig struct {
-
 	// 部署类型，取值范围：
 	// - SPECIFIC：专有模式
 	// - AUTO：普通模式
@@ -208,9 +198,21 @@ type DeployConfig struct {
 	Nodes []*string `json:"Nodes,omitempty" name:"Nodes"`
 }
 
+// Predefined struct for user
+type DescribeMeshListRequestParams struct {
+	// 过滤条件
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 分页限制
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 分页偏移
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+}
+
 type DescribeMeshListRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 过滤条件
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
@@ -242,20 +244,22 @@ func (r *DescribeMeshListRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeMeshListResponseParams struct {
+	// 查询到的网格信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MeshList []*Mesh `json:"MeshList,omitempty" name:"MeshList"`
+
+	// 总数
+	Total *int64 `json:"Total,omitempty" name:"Total"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeMeshListResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// 查询到的网格信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
-		MeshList []*Mesh `json:"MeshList,omitempty" name:"MeshList"`
-
-		// 总数
-		Total *int64 `json:"Total,omitempty" name:"Total"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeMeshListResponseParams `json:"Response"`
 }
 
 func (r *DescribeMeshListResponse) ToJsonString() string {
@@ -269,9 +273,15 @@ func (r *DescribeMeshListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeMeshRequestParams struct {
+	// 需要查询的网格 Id
+	MeshId *string `json:"MeshId,omitempty" name:"MeshId"`
+}
+
 type DescribeMeshRequest struct {
 	*tchttp.BaseRequest
-
+	
 	// 需要查询的网格 Id
 	MeshId *string `json:"MeshId,omitempty" name:"MeshId"`
 }
@@ -295,16 +305,18 @@ func (r *DescribeMeshRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeMeshResponseParams struct {
+	// Mesh详细信息
+	Mesh *Mesh `json:"Mesh,omitempty" name:"Mesh"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeMeshResponse struct {
 	*tchttp.BaseResponse
-	Response *struct {
-
-		// Mesh详细信息
-		Mesh *Mesh `json:"Mesh,omitempty" name:"Mesh"`
-
-		// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-		RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-	} `json:"Response"`
+	Response *DescribeMeshResponseParams `json:"Response"`
 }
 
 func (r *DescribeMeshResponse) ToJsonString() string {
@@ -319,7 +331,6 @@ func (r *DescribeMeshResponse) FromJsonString(s string) error {
 }
 
 type EgressGateway struct {
-
 	// Egress名称
 	Name *string `json:"Name,omitempty" name:"Name"`
 
@@ -331,7 +342,6 @@ type EgressGateway struct {
 }
 
 type Filter struct {
-
 	// 需要过滤的字段。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
@@ -340,7 +350,6 @@ type Filter struct {
 }
 
 type GrafanaInfo struct {
-
 	// 是否开启
 	Enabled *bool `json:"Enabled,omitempty" name:"Enabled"`
 
@@ -361,7 +370,6 @@ type GrafanaInfo struct {
 }
 
 type HorizontalPodAutoscalerSpec struct {
-
 	// 最小副本数
 	MinReplicas *int64 `json:"MinReplicas,omitempty" name:"MinReplicas"`
 
@@ -373,7 +381,6 @@ type HorizontalPodAutoscalerSpec struct {
 }
 
 type IngressGateway struct {
-
 	// IngressGateway 实例名字
 	Name *string `json:"Name,omitempty" name:"Name"`
 
@@ -401,13 +408,11 @@ type IngressGateway struct {
 }
 
 type IngressGatewayStatus struct {
-
 	// 负载均衡实例状态
 	LoadBalancer *LoadBalancerStatus `json:"LoadBalancer,omitempty" name:"LoadBalancer"`
 }
 
 type InjectConfig struct {
-
 	// 不需要进行代理的 ip 地址范围
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExcludeIPRanges []*string `json:"ExcludeIPRanges,omitempty" name:"ExcludeIPRanges"`
@@ -422,7 +427,6 @@ type InjectConfig struct {
 }
 
 type IstioConfig struct {
-
 	// 外部流量策略
 	OutboundTrafficPolicy *string `json:"OutboundTrafficPolicy,omitempty" name:"OutboundTrafficPolicy"`
 
@@ -435,13 +439,11 @@ type IstioConfig struct {
 }
 
 type IstiodConfig struct {
-
 	// 工作负载配置
 	Workload *WorkloadConfig `json:"Workload,omitempty" name:"Workload"`
 }
 
 type LoadBalancer struct {
-
 	// 负载均衡实例的网络类型：
 	// OPEN：公网属性， INTERNAL：内网属性。
 	// 只读。
@@ -458,7 +460,6 @@ type LoadBalancer struct {
 }
 
 type LoadBalancerStatus struct {
-
 	// 负载均衡实例 ID
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" name:"LoadBalancerId"`
 
@@ -470,7 +471,6 @@ type LoadBalancerStatus struct {
 }
 
 type Mesh struct {
-
 	// Mesh实例Id
 	MeshId *string `json:"MeshId,omitempty" name:"MeshId"`
 
@@ -521,7 +521,6 @@ type Mesh struct {
 }
 
 type MeshConfig struct {
-
 	// Istio配置
 	Istio *IstioConfig `json:"Istio,omitempty" name:"Istio"`
 
@@ -545,7 +544,6 @@ type MeshConfig struct {
 }
 
 type MeshStatus struct {
-
 	// 服务数量
 	ServiceCount *int64 `json:"ServiceCount,omitempty" name:"ServiceCount"`
 
@@ -571,7 +569,6 @@ type MeshStatus struct {
 }
 
 type MetricSpec struct {
-
 	// 指标来源类型，支持 Pods/Resource
 	Type *string `json:"Type,omitempty" name:"Type"`
 
@@ -583,7 +580,6 @@ type MetricSpec struct {
 }
 
 type PodsMetricSource struct {
-
 	// 指标名
 	MetricName *string `json:"MetricName,omitempty" name:"MetricName"`
 
@@ -592,7 +588,6 @@ type PodsMetricSource struct {
 }
 
 type PrometheusConfig struct {
-
 	// 虚拟网络Id
 	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
 
@@ -611,7 +606,6 @@ type PrometheusConfig struct {
 }
 
 type PrometheusStatus struct {
-
 	// Prometheus Id
 	PrometheusId *string `json:"PrometheusId,omitempty" name:"PrometheusId"`
 
@@ -640,7 +634,6 @@ type PrometheusStatus struct {
 }
 
 type Resource struct {
-
 	// 资源类型 cpu/memory
 	Name *string `json:"Name,omitempty" name:"Name"`
 
@@ -649,7 +642,6 @@ type Resource struct {
 }
 
 type ResourceMetricSource struct {
-
 	// 资源名称 cpu/memory
 	Name *string `json:"Name,omitempty" name:"Name"`
 
@@ -661,7 +653,6 @@ type ResourceMetricSource struct {
 }
 
 type ResourceRequirements struct {
-
 	// Limits 描述了允许的最大计算资源量。
 	Limits []*Resource `json:"Limits,omitempty" name:"Limits"`
 
@@ -670,7 +661,6 @@ type ResourceRequirements struct {
 }
 
 type SelectedItems struct {
-
 	// 命名空间
 	Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
 
@@ -685,7 +675,6 @@ type SelectedItems struct {
 }
 
 type SelectedRange struct {
-
 	// 选中的项目详细内容
 	Items []*SelectedItems `json:"Items,omitempty" name:"Items"`
 
@@ -694,7 +683,6 @@ type SelectedRange struct {
 }
 
 type Service struct {
-
 	// ClusterIP/NodePort/LoadBalancer
 	Type *string `json:"Type,omitempty" name:"Type"`
 
@@ -706,7 +694,6 @@ type Service struct {
 }
 
 type TracingConfig struct {
-
 	// 调用链采样率，百分比
 	Sampling *float64 `json:"Sampling,omitempty" name:"Sampling"`
 
@@ -721,13 +708,11 @@ type TracingConfig struct {
 }
 
 type TracingZipkin struct {
-
 	// Zipkin调用地址
 	Address *string `json:"Address,omitempty" name:"Address"`
 }
 
 type WorkloadConfig struct {
-
 	// 工作副本数
 	Replicas *int64 `json:"Replicas,omitempty" name:"Replicas"`
 
