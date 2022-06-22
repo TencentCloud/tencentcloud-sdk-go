@@ -7326,10 +7326,10 @@ type DownloadL7LogsRequestParams struct {
 	// 当前页
 	PageNo *int64 `json:"PageNo,omitempty" name:"PageNo"`
 
-	// 站点集合
+	// 站点名集合
 	Zones []*string `json:"Zones,omitempty" name:"Zones"`
 
-	// 域名集合
+	// 子域名集合
 	Domains []*string `json:"Domains,omitempty" name:"Domains"`
 }
 
@@ -7348,10 +7348,10 @@ type DownloadL7LogsRequest struct {
 	// 当前页
 	PageNo *int64 `json:"PageNo,omitempty" name:"PageNo"`
 
-	// 站点集合
+	// 站点名集合
 	Zones []*string `json:"Zones,omitempty" name:"Zones"`
 
-	// 域名集合
+	// 子域名集合
 	Domains []*string `json:"Domains,omitempty" name:"Domains"`
 }
 
@@ -7664,7 +7664,7 @@ type L7OfflineLog struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LogTime *int64 `json:"LogTime,omitempty" name:"LogTime"`
 
-	// 站点名称
+	// 子域名
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Domain *string `json:"Domain,omitempty" name:"Domain"`
 

@@ -1,3 +1,179 @@
+# Release v1.0.427
+
+## 内容分发网络(cdn) 版本：2018-06-06
+
+### 第 105 次发布
+
+发布时间：2022-06-23 06:08:11
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateVerifyRecord](https://cloud.tencent.com/document/api/228/48118)
+
+	* 新增出参：FileVerifyDomains, FileVerifyName
+
+
+
+
+## 主机安全(cwp) 版本：2018-02-28
+
+### 第 45 次发布
+
+发布时间：2022-06-23 06:10:09
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [LicenseOrder](https://cloud.tencent.com/document/api/296/19867#LicenseOrder)
+
+修改数据结构：
+
+* [EffectiveMachineInfo](https://cloud.tencent.com/document/api/296/19867#EffectiveMachineInfo)
+
+	* 新增成员：LicenseOrder
+
+
+
+
+## DNSPod(dnspod) 版本：2021-03-23
+
+### 第 6 次发布
+
+发布时间：2022-06-23 06:11:27
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateDeal](https://cloud.tencent.com/document/api/1427/75921)
+* [ModifyPackageAutoRenew](https://cloud.tencent.com/document/api/1427/75920)
+* [ModifyVasAutoRenewStatus](https://cloud.tencent.com/document/api/1427/75919)
+* [PayOrderWithBalance](https://cloud.tencent.com/document/api/1427/75918)
+
+新增数据结构：
+
+* [Deals](https://cloud.tencent.com/document/api/1427/56185#Deals)
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
+
+### 第 18 次发布
+
+发布时间：2022-06-23 06:12:30
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Component](https://cloud.tencent.com/document/api/1420/61525#Component)
+
+	* 新增成员：OffsetX, OffsetY
+
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
+
+
+
+## 云监控(monitor) 版本：2018-07-24
+
+### 第 47 次发布
+
+发布时间：2022-06-23 06:15:13
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [BindingPolicyTag](https://cloud.tencent.com/document/api/248/67219)
+
+	* 新增入参：BatchTag
+
+	* <font color="#dd0000">**修改入参**：</font>Tag
+
+
+
+
+## 私有网络(vpc) 版本：2017-03-12
+
+### 第 116 次发布
+
+发布时间：2022-06-23 06:21:17
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeVpnGatewaySslClients](https://cloud.tencent.com/document/api/215/70286)
+
+	* 新增入参：IsVpnPortal
+
+* [DescribeVpnGatewaySslServers](https://cloud.tencent.com/document/api/215/70285)
+
+	* 新增入参：IsVpnPortal
+
+* [DownloadVpnGatewaySslClientCert](https://cloud.tencent.com/document/api/215/70283)
+
+	* 新增入参：SamlToken, IsVpnPortal
+
+	* 新增出参：SslClientConfig, Authenticated
+
+
+新增数据结构：
+
+* [AccessPolicy](https://cloud.tencent.com/document/api/215/15824#AccessPolicy)
+* [SslClientConfig](https://cloud.tencent.com/document/api/215/15824#SslClientConfig)
+
+修改数据结构：
+
+* [SslVpnSever](https://cloud.tencent.com/document/api/215/15824#SslVpnSever)
+
+	* 新增成员：SsoEnabled, EiamApplicationId, AccessPolicyEnabled, AccessPolicy
+
+
+
+
+## Web 应用防火墙(waf) 版本：2018-01-25
+
+### 第 9 次发布
+
+发布时间：2022-06-23 06:22:00
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeInstances](https://cloud.tencent.com/document/api/627/75922)
+
+新增数据结构：
+
+* [BotPkg](https://cloud.tencent.com/document/api/627/53609#BotPkg)
+* [DomainPackageNew](https://cloud.tencent.com/document/api/627/53609#DomainPackageNew)
+* [FraudPkg](https://cloud.tencent.com/document/api/627/53609#FraudPkg)
+* [InstanceInfo](https://cloud.tencent.com/document/api/627/53609#InstanceInfo)
+* [QPSPackageNew](https://cloud.tencent.com/document/api/627/53609#QPSPackageNew)
+
+
+
 # Release v1.0.426
 
 ## 企业收付平台(cpdp) 版本：2019-08-20

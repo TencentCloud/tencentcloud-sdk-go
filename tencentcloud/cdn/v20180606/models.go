@@ -2459,6 +2459,14 @@ type CreateVerifyRecordResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FileVerifyUrl *string `json:"FileVerifyUrl,omitempty" name:"FileVerifyUrl"`
 
+	// 文件校验域名列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FileVerifyDomains []*string `json:"FileVerifyDomains,omitempty" name:"FileVerifyDomains"`
+
+	// 文件校验文件名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FileVerifyName *string `json:"FileVerifyName,omitempty" name:"FileVerifyName"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }

@@ -44,6 +44,9 @@ const (
 	// 2天内有产生流量，域名处于锁定期间，2天内无流量产生才允许删除域名。
 	FAILEDOPERATION_DELETEDOMAININLOCKEDTIME = "FailedOperation.DeleteDomainInLockedTime"
 
+	// 配置域名规则失败。
+	FAILEDOPERATION_DOMAINGSLBFAIL = "FailedOperation.DomainGslbFail"
+
 	// 无法获取水印 url。
 	FAILEDOPERATION_GETPICTUREURLERROR = "FailedOperation.GetPictureUrlError"
 

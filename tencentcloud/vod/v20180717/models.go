@@ -11989,23 +11989,24 @@ type MediaTranscodeItem struct {
 	// 视频流宽度的最大值，单位：px。
 	Width *int64 `json:"Width,omitempty" name:"Width"`
 
-	// 媒体文件总大小（视频为 HLS 时，大小是 m3u8 和 ts 文件大小的总和），单位：字节。
+	// 媒体文件总大小，单位：字节。
+	// <li>当媒体文件为 HLS 时，大小是 m3u8 和 ts 文件大小的总和。</li>
 	Size *int64 `json:"Size,omitempty" name:"Size"`
 
 	// 视频时长，单位：秒。
 	Duration *float64 `json:"Duration,omitempty" name:"Duration"`
 
-	// 容器类型，例如 m4a，mp4 等。
-	Container *string `json:"Container,omitempty" name:"Container"`
-
 	// 视频的 md5 值。
 	Md5 *string `json:"Md5,omitempty" name:"Md5"`
 
-	// 音频流信息。
-	AudioStreamSet []*MediaAudioStreamItem `json:"AudioStreamSet,omitempty" name:"AudioStreamSet"`
+	// 容器类型，例如 m4a，mp4 等。
+	Container *string `json:"Container,omitempty" name:"Container"`
 
 	// 视频流信息。
 	VideoStreamSet []*MediaVideoStreamItem `json:"VideoStreamSet,omitempty" name:"VideoStreamSet"`
+
+	// 音频流信息。
+	AudioStreamSet []*MediaAudioStreamItem `json:"AudioStreamSet,omitempty" name:"AudioStreamSet"`
 }
 
 type MediaTransitionItem struct {
@@ -16624,6 +16625,9 @@ type SampleSnapshotTemplate struct {
 
 // Predefined struct for user
 type SearchMediaRequestParams struct {
+	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+
 	// 文件 ID 集合，匹配集合中的任意元素。
 	// <li>数组长度限制：10。</li>
 	// <li>单个 ID 长度限制：40个字符。</li>
@@ -16649,7 +16653,7 @@ type SearchMediaRequestParams struct {
 	ClassIds []*int64 `json:"ClassIds,omitempty" name:"ClassIds"`
 
 	// 标签集合，匹配集合中任意元素。
-	// <li>单个标签长度限制：8个字符。</li>
+	// <li>单个标签长度限制：16个字符。</li>
 	// <li>数组长度限制：10。</li>
 	Tags []*string `json:"Tags,omitempty" name:"Tags"`
 
@@ -16709,9 +16713,6 @@ type SearchMediaRequestParams struct {
 	// <li>单个存储地区长度限制：20个字符。</li>
 	// <li>数组长度限制：20。</li>
 	StorageRegions []*string `json:"StorageRegions,omitempty" name:"StorageRegions"`
-
-	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 
 	// 存储类型数组。可选值有：
 	// <li> STANDARD：标准存储。</li>
@@ -16754,6 +16755,9 @@ type SearchMediaRequestParams struct {
 type SearchMediaRequest struct {
 	*tchttp.BaseRequest
 	
+	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+
 	// 文件 ID 集合，匹配集合中的任意元素。
 	// <li>数组长度限制：10。</li>
 	// <li>单个 ID 长度限制：40个字符。</li>
@@ -16779,7 +16783,7 @@ type SearchMediaRequest struct {
 	ClassIds []*int64 `json:"ClassIds,omitempty" name:"ClassIds"`
 
 	// 标签集合，匹配集合中任意元素。
-	// <li>单个标签长度限制：8个字符。</li>
+	// <li>单个标签长度限制：16个字符。</li>
 	// <li>数组长度限制：10。</li>
 	Tags []*string `json:"Tags,omitempty" name:"Tags"`
 
@@ -16839,9 +16843,6 @@ type SearchMediaRequest struct {
 	// <li>单个存储地区长度限制：20个字符。</li>
 	// <li>数组长度限制：20。</li>
 	StorageRegions []*string `json:"StorageRegions,omitempty" name:"StorageRegions"`
-
-	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 
 	// 存储类型数组。可选值有：
 	// <li> STANDARD：标准存储。</li>
@@ -16893,6 +16894,7 @@ func (r *SearchMediaRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "SubAppId")
 	delete(f, "FileIds")
 	delete(f, "Names")
 	delete(f, "NamePrefixes")
@@ -16910,7 +16912,6 @@ func (r *SearchMediaRequest) FromJsonString(s string) error {
 	delete(f, "Limit")
 	delete(f, "Filters")
 	delete(f, "StorageRegions")
-	delete(f, "SubAppId")
 	delete(f, "StorageClasses")
 	delete(f, "Text")
 	delete(f, "SourceType")

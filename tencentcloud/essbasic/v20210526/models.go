@@ -433,6 +433,12 @@ type Component struct {
 
 	// 控件描述
 	ComponentDescription *string `json:"ComponentDescription,omitempty" name:"ComponentDescription"`
+
+	// 指定关键字时横坐标偏移量
+	OffsetX *float64 `json:"OffsetX,omitempty" name:"OffsetX"`
+
+	// 指定关键字时纵坐标偏移量
+	OffsetY *float64 `json:"OffsetY,omitempty" name:"OffsetY"`
 }
 
 // Predefined struct for user

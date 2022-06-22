@@ -9477,8 +9477,8 @@ type DescribeImportMachineInfoRequestParams struct {
 	// 该参数已作废.
 	IsQueryProMachine *bool `json:"IsQueryProMachine,omitempty" name:"IsQueryProMachine"`
 
-	// 过滤条件。
-	// <li>Version - String  是否必填：否 - 当前防护版本（ PRO_VERSION：专业版 | BASIC_VERSION：基础版 | Flagship : 旗舰版 | ProtectedMachines: 专业版+旗舰版）</li>
+	// 过滤条件：
+	// <li>Version - String  是否必填：否 - 当前防护版本（ PRO_VERSION：专业版 | BASIC_VERSION：基础版 | Flagship：旗舰版 | ProtectedMachines：专业版+旗舰版） | BASIC_PROPOST_GENERAL_DISCOUNT：普惠版+专业版按量计费+基础版主机 | UnFlagship：专业版预付费+专业版后付费+基础版+普惠版</li>
 	Filters []*Filters `json:"Filters,omitempty" name:"Filters"`
 }
 
@@ -9494,8 +9494,8 @@ type DescribeImportMachineInfoRequest struct {
 	// 该参数已作废.
 	IsQueryProMachine *bool `json:"IsQueryProMachine,omitempty" name:"IsQueryProMachine"`
 
-	// 过滤条件。
-	// <li>Version - String  是否必填：否 - 当前防护版本（ PRO_VERSION：专业版 | BASIC_VERSION：基础版 | Flagship : 旗舰版 | ProtectedMachines: 专业版+旗舰版）</li>
+	// 过滤条件：
+	// <li>Version - String  是否必填：否 - 当前防护版本（ PRO_VERSION：专业版 | BASIC_VERSION：基础版 | Flagship：旗舰版 | ProtectedMachines：专业版+旗舰版） | BASIC_PROPOST_GENERAL_DISCOUNT：普惠版+专业版按量计费+基础版主机 | UnFlagship：专业版预付费+专业版后付费+基础版+普惠版</li>
 	Filters []*Filters `json:"Filters,omitempty" name:"Filters"`
 }
 
@@ -14709,6 +14709,10 @@ type EffectiveMachineInfo struct {
 	// 在线状态 OFFLINE，ONLINE
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MachineStatus *string `json:"MachineStatus,omitempty" name:"MachineStatus"`
+
+	// 授权订单对象
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LicenseOrder *LicenseOrder `json:"LicenseOrder,omitempty" name:"LicenseOrder"`
 }
 
 type EmergencyResponseInfo struct {
@@ -16703,6 +16707,23 @@ type IgnoreRuleEffectHostInfo struct {
 	// 主机quuid
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
+}
+
+type LicenseOrder struct {
+	// 授权ID
+	LicenseId *uint64 `json:"LicenseId,omitempty" name:"LicenseId"`
+
+	// 授权类型
+	LicenseType *uint64 `json:"LicenseType,omitempty" name:"LicenseType"`
+
+	// 授权订单资源状态
+	Status *uint64 `json:"Status,omitempty" name:"Status"`
+
+	// 订单类型
+	SourceType *uint64 `json:"SourceType,omitempty" name:"SourceType"`
+
+	// 资源ID
+	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
 }
 
 type LoginWhiteCombinedInfo struct {

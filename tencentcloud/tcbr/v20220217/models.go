@@ -880,7 +880,7 @@ type RepositoryInfo struct {
 	// 仓库名
 	Repo *string `json:"Repo,omitempty" name:"Repo"`
 
-	// 分之名
+	// 分支名
 	Branch *string `json:"Branch,omitempty" name:"Branch"`
 }
 

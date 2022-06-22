@@ -589,6 +589,36 @@ type AutoDenyDetail struct {
 	LastUpdateTime *string `json:"LastUpdateTime,omitempty" name:"LastUpdateTime"`
 }
 
+type BotPkg struct {
+	// 资源id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceIds *string `json:"ResourceIds,omitempty" name:"ResourceIds"`
+
+	// 状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *int64 `json:"Status,omitempty" name:"Status"`
+
+	// 地域
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Region *int64 `json:"Region,omitempty" name:"Region"`
+
+	// 开始时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BeginTime *string `json:"BeginTime,omitempty" name:"BeginTime"`
+
+	// 结束时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 申请数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InquireNum *int64 `json:"InquireNum,omitempty" name:"InquireNum"`
+
+	// 使用数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UsedNum *int64 `json:"UsedNum,omitempty" name:"UsedNum"`
+}
+
 type BotStatPointItem struct {
 	// 横坐标
 	TimeStamp *string `json:"TimeStamp,omitempty" name:"TimeStamp"`
@@ -1913,6 +1943,80 @@ func (r *DescribeFlowTrendResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeInstancesRequestParams struct {
+	// 偏移
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 容量
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 过滤数组
+	Filters []*FiltersItemNew `json:"Filters,omitempty" name:"Filters"`
+}
+
+type DescribeInstancesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 偏移
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 容量
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 过滤数组
+	Filters []*FiltersItemNew `json:"Filters,omitempty" name:"Filters"`
+}
+
+func (r *DescribeInstancesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeInstancesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeInstancesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeInstancesResponseParams struct {
+	// 总数
+	Total *uint64 `json:"Total,omitempty" name:"Total"`
+
+	// instance列表
+	Instances []*InstanceInfo `json:"Instances,omitempty" name:"Instances"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeInstancesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeInstancesResponseParams `json:"Response"`
+}
+
+func (r *DescribeInstancesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeInstancesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeIpAccessControlRequestParams struct {
 	// 域名
 	Domain *string `json:"Domain,omitempty" name:"Domain"`
@@ -2415,6 +2519,23 @@ type DomainInfo struct {
 
 }
 
+type DomainPackageNew struct {
+	// 资源ID
+	ResourceIds *string `json:"ResourceIds,omitempty" name:"ResourceIds"`
+
+	// 过期时间
+	ValidTime *string `json:"ValidTime,omitempty" name:"ValidTime"`
+
+	// 是否自动续费，1：自动续费，0：不自动续费
+	RenewFlag *uint64 `json:"RenewFlag,omitempty" name:"RenewFlag"`
+
+	// 套餐购买个数
+	Count *uint64 `json:"Count,omitempty" name:"Count"`
+
+	// 套餐购买地域，clb-waf暂时没有用到
+	Region *string `json:"Region,omitempty" name:"Region"`
+}
+
 type ExportAccessInfo struct {
 	// 日志导出任务ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -2468,6 +2589,103 @@ type FiltersItemNew struct {
 
 	// 是否精确查找
 	ExactMatch *bool `json:"ExactMatch,omitempty" name:"ExactMatch"`
+}
+
+type FraudPkg struct {
+	// 资源id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceIds *string `json:"ResourceIds,omitempty" name:"ResourceIds"`
+
+	// 状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *int64 `json:"Status,omitempty" name:"Status"`
+
+	// 地域
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Region *int64 `json:"Region,omitempty" name:"Region"`
+
+	// 开始时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BeginTime *string `json:"BeginTime,omitempty" name:"BeginTime"`
+
+	// 结束时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 申请数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InquireNum *int64 `json:"InquireNum,omitempty" name:"InquireNum"`
+
+	// 使用数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UsedNum *int64 `json:"UsedNum,omitempty" name:"UsedNum"`
+}
+
+type InstanceInfo struct {
+	// id
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// name
+	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
+
+	// 资源id
+	ResourceIds *string `json:"ResourceIds,omitempty" name:"ResourceIds"`
+
+	// 地域
+	Region *string `json:"Region,omitempty" name:"Region"`
+
+	// 付费模式
+	PayMode *uint64 `json:"PayMode,omitempty" name:"PayMode"`
+
+	// 自动续费
+	RenewFlag *uint64 `json:"RenewFlag,omitempty" name:"RenewFlag"`
+
+	// 弹性计费
+	Mode *uint64 `json:"Mode,omitempty" name:"Mode"`
+
+	// 套餐版本
+	Level *uint64 `json:"Level,omitempty" name:"Level"`
+
+	// 过期时间
+	ValidTime *string `json:"ValidTime,omitempty" name:"ValidTime"`
+
+	// 开始时间
+	BeginTime *string `json:"BeginTime,omitempty" name:"BeginTime"`
+
+	// 已用
+	DomainCount *uint64 `json:"DomainCount,omitempty" name:"DomainCount"`
+
+	// 上限
+	SubDomainLimit *uint64 `json:"SubDomainLimit,omitempty" name:"SubDomainLimit"`
+
+	// 已用
+	MainDomainCount *uint64 `json:"MainDomainCount,omitempty" name:"MainDomainCount"`
+
+	// 上限
+	MainDomainLimit *uint64 `json:"MainDomainLimit,omitempty" name:"MainDomainLimit"`
+
+	// 峰值
+	MaxQPS *uint64 `json:"MaxQPS,omitempty" name:"MaxQPS"`
+
+	// qps套餐
+	QPS *QPSPackageNew `json:"QPS,omitempty" name:"QPS"`
+
+	// 域名套餐
+	DomainPkg *DomainPackageNew `json:"DomainPkg,omitempty" name:"DomainPkg"`
+
+	// 用户appid
+	AppId *uint64 `json:"AppId,omitempty" name:"AppId"`
+
+	// clb或saas
+	Edition *string `json:"Edition,omitempty" name:"Edition"`
+
+	// 业务安全包
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FraudPkg *FraudPkg `json:"FraudPkg,omitempty" name:"FraudPkg"`
+
+	// Bot资源包
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BotPkg *BotPkg `json:"BotPkg,omitempty" name:"BotPkg"`
 }
 
 type IpAccessControlData struct {
@@ -2970,6 +3188,23 @@ type PortItem struct {
 
 	// Nginx的服务器ID
 	NginxServerId *string `json:"NginxServerId,omitempty" name:"NginxServerId"`
+}
+
+type QPSPackageNew struct {
+	// 资源ID
+	ResourceIds *string `json:"ResourceIds,omitempty" name:"ResourceIds"`
+
+	// 过期时间
+	ValidTime *string `json:"ValidTime,omitempty" name:"ValidTime"`
+
+	// 是否自动续费，1：自动续费，0：不自动续费
+	RenewFlag *int64 `json:"RenewFlag,omitempty" name:"RenewFlag"`
+
+	// 套餐购买个数
+	Count *int64 `json:"Count,omitempty" name:"Count"`
+
+	// 套餐购买地域，clb-waf暂时没有用到
+	Region *string `json:"Region,omitempty" name:"Region"`
 }
 
 type ResponseCode struct {

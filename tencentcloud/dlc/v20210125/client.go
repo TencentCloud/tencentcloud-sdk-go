@@ -119,8 +119,14 @@ func NewAttachUserPolicyResponse() (response *AttachUserPolicyResponse) {
 // 绑定鉴权策略到用户
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_GETPOLICYFAILED = "FailedOperation.GetPolicyFailed"
+//  FAILEDOPERATION_GETUSERINFOFAILED = "FailedOperation.GetUserInfoFailed"
+//  FAILEDOPERATION_GETWORKGROUPINFOFAILED = "FailedOperation.GetWorkGroupInfoFailed"
+//  FAILEDOPERATION_GRANTPOLICYFAILED = "FailedOperation.GrantPolicyFailed"
 //  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALIDACCESSPOLICY = "InvalidParameter.InvalidAccessPolicy"
 //  INVALIDPARAMETER_INVALIDUSERNAME = "InvalidParameter.InvalidUserName"
+//  INVALIDPARAMETER_INVALIDUSERTYPE = "InvalidParameter.InvalidUserType"
 //  RESOURCESSOLDOUT_UNAUTHORIZEDGRANTPOLICY = "ResourcesSoldOut.UnauthorizedGrantPolicy"
 //  UNAUTHORIZEDOPERATION_GRANTPOLICY = "UnauthorizedOperation.GrantPolicy"
 //  UNAUTHORIZEDOPERATION_USERNOTEXIST = "UnauthorizedOperation.UserNotExist"
@@ -133,8 +139,14 @@ func (c *Client) AttachUserPolicy(request *AttachUserPolicyRequest) (response *A
 // 绑定鉴权策略到用户
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_GETPOLICYFAILED = "FailedOperation.GetPolicyFailed"
+//  FAILEDOPERATION_GETUSERINFOFAILED = "FailedOperation.GetUserInfoFailed"
+//  FAILEDOPERATION_GETWORKGROUPINFOFAILED = "FailedOperation.GetWorkGroupInfoFailed"
+//  FAILEDOPERATION_GRANTPOLICYFAILED = "FailedOperation.GrantPolicyFailed"
 //  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALIDACCESSPOLICY = "InvalidParameter.InvalidAccessPolicy"
 //  INVALIDPARAMETER_INVALIDUSERNAME = "InvalidParameter.InvalidUserName"
+//  INVALIDPARAMETER_INVALIDUSERTYPE = "InvalidParameter.InvalidUserType"
 //  RESOURCESSOLDOUT_UNAUTHORIZEDGRANTPOLICY = "ResourcesSoldOut.UnauthorizedGrantPolicy"
 //  UNAUTHORIZEDOPERATION_GRANTPOLICY = "UnauthorizedOperation.GrantPolicy"
 //  UNAUTHORIZEDOPERATION_USERNOTEXIST = "UnauthorizedOperation.UserNotExist"
@@ -176,6 +188,11 @@ func NewAttachWorkGroupPolicyResponse() (response *AttachWorkGroupPolicyResponse
 // 绑定鉴权策略到工作组
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_GETPOLICYFAILED = "FailedOperation.GetPolicyFailed"
+//  FAILEDOPERATION_GETUSERINFOFAILED = "FailedOperation.GetUserInfoFailed"
+//  FAILEDOPERATION_GETWORKGROUPINFOFAILED = "FailedOperation.GetWorkGroupInfoFailed"
+//  FAILEDOPERATION_GRANTPOLICYFAILED = "FailedOperation.GrantPolicyFailed"
+//  FAILEDOPERATION_REVOKEPOLICYFAILED = "FailedOperation.RevokePolicyFailed"
 //  INTERNALERROR = "InternalError"
 //  UNAUTHORIZEDOPERATION_GRANTPOLICY = "UnauthorizedOperation.GrantPolicy"
 //  UNAUTHORIZEDOPERATION_USERNOTEXIST = "UnauthorizedOperation.UserNotExist"
@@ -187,6 +204,11 @@ func (c *Client) AttachWorkGroupPolicy(request *AttachWorkGroupPolicyRequest) (r
 // 绑定鉴权策略到工作组
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_GETPOLICYFAILED = "FailedOperation.GetPolicyFailed"
+//  FAILEDOPERATION_GETUSERINFOFAILED = "FailedOperation.GetUserInfoFailed"
+//  FAILEDOPERATION_GETWORKGROUPINFOFAILED = "FailedOperation.GetWorkGroupInfoFailed"
+//  FAILEDOPERATION_GRANTPOLICYFAILED = "FailedOperation.GrantPolicyFailed"
+//  FAILEDOPERATION_REVOKEPOLICYFAILED = "FailedOperation.RevokePolicyFailed"
 //  INTERNALERROR = "InternalError"
 //  UNAUTHORIZEDOPERATION_GRANTPOLICY = "UnauthorizedOperation.GrantPolicy"
 //  UNAUTHORIZEDOPERATION_USERNOTEXIST = "UnauthorizedOperation.UserNotExist"
@@ -1841,7 +1863,11 @@ func NewDescribeUsersResponse() (response *DescribeUsersResponse) {
 // 获取用户列表信息
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_GETPOLICYFAILED = "FailedOperation.GetPolicyFailed"
+//  FAILEDOPERATION_GETUSERINFOFAILED = "FailedOperation.GetUserInfoFailed"
+//  FAILEDOPERATION_GETWORKGROUPINFOFAILED = "FailedOperation.GetWorkGroupInfoFailed"
 //  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALIDACCESSPOLICY = "InvalidParameter.InvalidAccessPolicy"
 //  INVALIDPARAMETER_INVALIDOFFSET = "InvalidParameter.InvalidOffset"
 //  INVALIDPARAMETER_INVALIDSORTBYTYPE = "InvalidParameter.InvalidSortByType"
 func (c *Client) DescribeUsers(request *DescribeUsersRequest) (response *DescribeUsersResponse, err error) {
@@ -1852,7 +1878,11 @@ func (c *Client) DescribeUsers(request *DescribeUsersRequest) (response *Describ
 // 获取用户列表信息
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_GETPOLICYFAILED = "FailedOperation.GetPolicyFailed"
+//  FAILEDOPERATION_GETUSERINFOFAILED = "FailedOperation.GetUserInfoFailed"
+//  FAILEDOPERATION_GETWORKGROUPINFOFAILED = "FailedOperation.GetWorkGroupInfoFailed"
 //  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALIDACCESSPOLICY = "InvalidParameter.InvalidAccessPolicy"
 //  INVALIDPARAMETER_INVALIDOFFSET = "InvalidParameter.InvalidOffset"
 //  INVALIDPARAMETER_INVALIDSORTBYTYPE = "InvalidParameter.InvalidSortByType"
 func (c *Client) DescribeUsersWithContext(ctx context.Context, request *DescribeUsersRequest) (response *DescribeUsersResponse, err error) {
@@ -1943,7 +1973,11 @@ func NewDescribeWorkGroupsResponse() (response *DescribeWorkGroupsResponse) {
 // 获取工作组列表
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_GETPOLICYFAILED = "FailedOperation.GetPolicyFailed"
+//  FAILEDOPERATION_GETUSERINFOFAILED = "FailedOperation.GetUserInfoFailed"
+//  FAILEDOPERATION_GETWORKGROUPINFOFAILED = "FailedOperation.GetWorkGroupInfoFailed"
 //  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALIDACCESSPOLICY = "InvalidParameter.InvalidAccessPolicy"
 //  INVALIDPARAMETER_INVALIDOFFSET = "InvalidParameter.InvalidOffset"
 //  INVALIDPARAMETER_INVALIDSORTBYTYPE = "InvalidParameter.InvalidSortByType"
 func (c *Client) DescribeWorkGroups(request *DescribeWorkGroupsRequest) (response *DescribeWorkGroupsResponse, err error) {
@@ -1954,7 +1988,11 @@ func (c *Client) DescribeWorkGroups(request *DescribeWorkGroupsRequest) (respons
 // 获取工作组列表
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_GETPOLICYFAILED = "FailedOperation.GetPolicyFailed"
+//  FAILEDOPERATION_GETUSERINFOFAILED = "FailedOperation.GetUserInfoFailed"
+//  FAILEDOPERATION_GETWORKGROUPINFOFAILED = "FailedOperation.GetWorkGroupInfoFailed"
 //  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALIDACCESSPOLICY = "InvalidParameter.InvalidAccessPolicy"
 //  INVALIDPARAMETER_INVALIDOFFSET = "InvalidParameter.InvalidOffset"
 //  INVALIDPARAMETER_INVALIDSORTBYTYPE = "InvalidParameter.InvalidSortByType"
 func (c *Client) DescribeWorkGroupsWithContext(ctx context.Context, request *DescribeWorkGroupsRequest) (response *DescribeWorkGroupsResponse, err error) {
@@ -1994,6 +2032,11 @@ func NewDetachUserPolicyResponse() (response *DetachUserPolicyResponse) {
 // 解绑用户鉴权策略
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_GETPOLICYFAILED = "FailedOperation.GetPolicyFailed"
+//  FAILEDOPERATION_GETUSERINFOFAILED = "FailedOperation.GetUserInfoFailed"
+//  FAILEDOPERATION_GETWORKGROUPINFOFAILED = "FailedOperation.GetWorkGroupInfoFailed"
+//  FAILEDOPERATION_GRANTPOLICYFAILED = "FailedOperation.GrantPolicyFailed"
+//  FAILEDOPERATION_REVOKEPOLICYFAILED = "FailedOperation.RevokePolicyFailed"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER_INVALIDACCESSPOLICY = "InvalidParameter.InvalidAccessPolicy"
 //  UNAUTHORIZEDOPERATION_REVOKEPOLICY = "UnauthorizedOperation.RevokePolicy"
@@ -2007,6 +2050,11 @@ func (c *Client) DetachUserPolicy(request *DetachUserPolicyRequest) (response *D
 // 解绑用户鉴权策略
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_GETPOLICYFAILED = "FailedOperation.GetPolicyFailed"
+//  FAILEDOPERATION_GETUSERINFOFAILED = "FailedOperation.GetUserInfoFailed"
+//  FAILEDOPERATION_GETWORKGROUPINFOFAILED = "FailedOperation.GetWorkGroupInfoFailed"
+//  FAILEDOPERATION_GRANTPOLICYFAILED = "FailedOperation.GrantPolicyFailed"
+//  FAILEDOPERATION_REVOKEPOLICYFAILED = "FailedOperation.RevokePolicyFailed"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER_INVALIDACCESSPOLICY = "InvalidParameter.InvalidAccessPolicy"
 //  UNAUTHORIZEDOPERATION_REVOKEPOLICY = "UnauthorizedOperation.RevokePolicy"
@@ -2049,6 +2097,11 @@ func NewDetachWorkGroupPolicyResponse() (response *DetachWorkGroupPolicyResponse
 // 解绑工作组鉴权策略
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_GETPOLICYFAILED = "FailedOperation.GetPolicyFailed"
+//  FAILEDOPERATION_GETUSERINFOFAILED = "FailedOperation.GetUserInfoFailed"
+//  FAILEDOPERATION_GETWORKGROUPINFOFAILED = "FailedOperation.GetWorkGroupInfoFailed"
+//  FAILEDOPERATION_GRANTPOLICYFAILED = "FailedOperation.GrantPolicyFailed"
+//  FAILEDOPERATION_REVOKEPOLICYFAILED = "FailedOperation.RevokePolicyFailed"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER_INVALIDACCESSPOLICY = "InvalidParameter.InvalidAccessPolicy"
 //  UNAUTHORIZEDOPERATION_REVOKEPOLICY = "UnauthorizedOperation.RevokePolicy"
@@ -2060,6 +2113,11 @@ func (c *Client) DetachWorkGroupPolicy(request *DetachWorkGroupPolicyRequest) (r
 // 解绑工作组鉴权策略
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_GETPOLICYFAILED = "FailedOperation.GetPolicyFailed"
+//  FAILEDOPERATION_GETUSERINFOFAILED = "FailedOperation.GetUserInfoFailed"
+//  FAILEDOPERATION_GETWORKGROUPINFOFAILED = "FailedOperation.GetWorkGroupInfoFailed"
+//  FAILEDOPERATION_GRANTPOLICYFAILED = "FailedOperation.GrantPolicyFailed"
+//  FAILEDOPERATION_REVOKEPOLICYFAILED = "FailedOperation.RevokePolicyFailed"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER_INVALIDACCESSPOLICY = "InvalidParameter.InvalidAccessPolicy"
 //  UNAUTHORIZEDOPERATION_REVOKEPOLICY = "UnauthorizedOperation.RevokePolicy"

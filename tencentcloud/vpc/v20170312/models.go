@@ -81,6 +81,23 @@ func (r *AcceptAttachCcnInstancesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type AccessPolicy struct {
+	// 目的CIDR
+	TargetCidr *string `json:"TargetCidr,omitempty" name:"TargetCidr"`
+
+	// 策略ID
+	VpnGatewayIdSslAccessPolicyId *string `json:"VpnGatewayIdSslAccessPolicyId,omitempty" name:"VpnGatewayIdSslAccessPolicyId"`
+
+	// 是否对所有用户都生效。1 生效 0不生效
+	ForAllClient *uint64 `json:"ForAllClient,omitempty" name:"ForAllClient"`
+
+	// 用户组ID
+	UserGroupIds []*string `json:"UserGroupIds,omitempty" name:"UserGroupIds"`
+
+	// 更新时间
+	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+}
+
 type AccountAttribute struct {
 	// 属性名
 	AttributeName *string `json:"AttributeName,omitempty" name:"AttributeName"`
@@ -13559,6 +13576,9 @@ type DescribeVpnGatewaySslClientsRequestParams struct {
 
 	// SSL-VPN-CLIENT实例ID。形如：vpngwSslClient-f49l6u0z。每次请求的实例的上限为100。参数不支持同时指定SslVpnClientIds和Filters。
 	SslVpnClientIds []*string `json:"SslVpnClientIds,omitempty" name:"SslVpnClientIds"`
+
+	// VPN门户网站使用。默认是False。
+	IsVpnPortal *bool `json:"IsVpnPortal,omitempty" name:"IsVpnPortal"`
 }
 
 type DescribeVpnGatewaySslClientsRequest struct {
@@ -13580,6 +13600,9 @@ type DescribeVpnGatewaySslClientsRequest struct {
 
 	// SSL-VPN-CLIENT实例ID。形如：vpngwSslClient-f49l6u0z。每次请求的实例的上限为100。参数不支持同时指定SslVpnClientIds和Filters。
 	SslVpnClientIds []*string `json:"SslVpnClientIds,omitempty" name:"SslVpnClientIds"`
+
+	// VPN门户网站使用。默认是False。
+	IsVpnPortal *bool `json:"IsVpnPortal,omitempty" name:"IsVpnPortal"`
 }
 
 func (r *DescribeVpnGatewaySslClientsRequest) ToJsonString() string {
@@ -13598,6 +13621,7 @@ func (r *DescribeVpnGatewaySslClientsRequest) FromJsonString(s string) error {
 	delete(f, "Offset")
 	delete(f, "Limit")
 	delete(f, "SslVpnClientIds")
+	delete(f, "IsVpnPortal")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeVpnGatewaySslClientsRequest has unknown keys!", "")
 	}
@@ -13650,6 +13674,9 @@ type DescribeVpnGatewaySslServersRequestParams struct {
 	// <li>ssl-vpn-server-name - String - （过滤条件）SSL-VPN-SERVER实例名称。</li>
 	// <li>ssl-vpn-server-id - String - （过滤条件）SSL-VPN-SERVER实例ID形如：vpngwSslServer-123456。</li>
 	Filters []*FilterObject `json:"Filters,omitempty" name:"Filters"`
+
+	// vpn门户使用。 默认Flase
+	IsVpnPortal *bool `json:"IsVpnPortal,omitempty" name:"IsVpnPortal"`
 }
 
 type DescribeVpnGatewaySslServersRequest struct {
@@ -13671,6 +13698,9 @@ type DescribeVpnGatewaySslServersRequest struct {
 	// <li>ssl-vpn-server-name - String - （过滤条件）SSL-VPN-SERVER实例名称。</li>
 	// <li>ssl-vpn-server-id - String - （过滤条件）SSL-VPN-SERVER实例ID形如：vpngwSslServer-123456。</li>
 	Filters []*FilterObject `json:"Filters,omitempty" name:"Filters"`
+
+	// vpn门户使用。 默认Flase
+	IsVpnPortal *bool `json:"IsVpnPortal,omitempty" name:"IsVpnPortal"`
 }
 
 func (r *DescribeVpnGatewaySslServersRequest) ToJsonString() string {
@@ -13689,6 +13719,7 @@ func (r *DescribeVpnGatewaySslServersRequest) FromJsonString(s string) error {
 	delete(f, "Limit")
 	delete(f, "SslVpnServerIds")
 	delete(f, "Filters")
+	delete(f, "IsVpnPortal")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeVpnGatewaySslServersRequest has unknown keys!", "")
 	}
@@ -14986,6 +15017,12 @@ func (r *DownloadCustomerGatewayConfigurationResponse) FromJsonString(s string) 
 type DownloadVpnGatewaySslClientCertRequestParams struct {
 	// SSL-VPN-CLIENT 实例ID。
 	SslVpnClientId *string `json:"SslVpnClientId,omitempty" name:"SslVpnClientId"`
+
+	// SAML-TOKEN
+	SamlToken *string `json:"SamlToken,omitempty" name:"SamlToken"`
+
+	// VPN门户网站使用。默认Flase
+	IsVpnPortal *bool `json:"IsVpnPortal,omitempty" name:"IsVpnPortal"`
 }
 
 type DownloadVpnGatewaySslClientCertRequest struct {
@@ -14993,6 +15030,12 @@ type DownloadVpnGatewaySslClientCertRequest struct {
 	
 	// SSL-VPN-CLIENT 实例ID。
 	SslVpnClientId *string `json:"SslVpnClientId,omitempty" name:"SslVpnClientId"`
+
+	// SAML-TOKEN
+	SamlToken *string `json:"SamlToken,omitempty" name:"SamlToken"`
+
+	// VPN门户网站使用。默认Flase
+	IsVpnPortal *bool `json:"IsVpnPortal,omitempty" name:"IsVpnPortal"`
 }
 
 func (r *DownloadVpnGatewaySslClientCertRequest) ToJsonString() string {
@@ -15008,6 +15051,8 @@ func (r *DownloadVpnGatewaySslClientCertRequest) FromJsonString(s string) error 
 		return err
 	}
 	delete(f, "SslVpnClientId")
+	delete(f, "SamlToken")
+	delete(f, "IsVpnPortal")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DownloadVpnGatewaySslClientCertRequest has unknown keys!", "")
 	}
@@ -15016,8 +15061,14 @@ func (r *DownloadVpnGatewaySslClientCertRequest) FromJsonString(s string) error 
 
 // Predefined struct for user
 type DownloadVpnGatewaySslClientCertResponseParams struct {
-	// SSL-VPN-CLIENT 证书配置
+	// 无
 	SslClientConfigsSet *string `json:"SslClientConfigsSet,omitempty" name:"SslClientConfigsSet"`
+
+	// SSL-VPN client配置
+	SslClientConfig []*SslClientConfig `json:"SslClientConfig,omitempty" name:"SslClientConfig"`
+
+	// 是否鉴权成功 只有传入SamlToken 才生效
+	Authenticated *uint64 `json:"Authenticated,omitempty" name:"Authenticated"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -21928,6 +21979,20 @@ type SourceIpTranslationNatRule struct {
 	CreatedTime *string `json:"CreatedTime,omitempty" name:"CreatedTime"`
 }
 
+type SslClientConfig struct {
+	// 客户端配置
+	SslVpnClientConfiguration *string `json:"SslVpnClientConfiguration,omitempty" name:"SslVpnClientConfiguration"`
+
+	// 更证书
+	SslVpnRootCert *string `json:"SslVpnRootCert,omitempty" name:"SslVpnRootCert"`
+
+	// 客户端密钥
+	SslVpnKey *string `json:"SslVpnKey,omitempty" name:"SslVpnKey"`
+
+	// 客户端证书
+	SslVpnCert *string `json:"SslVpnCert,omitempty" name:"SslVpnCert"`
+}
+
 type SslVpnClient struct {
 	// VPC实例ID
 	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
@@ -22021,6 +22086,18 @@ type SslVpnSever struct {
 	// 6 已连通
 	// 7 未知
 	State *uint64 `json:"State,omitempty" name:"State"`
+
+	// 是否开启SSO认证。1：开启  0： 不开启
+	SsoEnabled *uint64 `json:"SsoEnabled,omitempty" name:"SsoEnabled"`
+
+	// EIAM应用ID
+	EiamApplicationId *string `json:"EiamApplicationId,omitempty" name:"EiamApplicationId"`
+
+	// 是否开启策略控制。0：不开启 1： 开启
+	AccessPolicyEnabled *uint64 `json:"AccessPolicyEnabled,omitempty" name:"AccessPolicyEnabled"`
+
+	// 策略信息
+	AccessPolicy []*AccessPolicy `json:"AccessPolicy,omitempty" name:"AccessPolicy"`
 }
 
 type Subnet struct {

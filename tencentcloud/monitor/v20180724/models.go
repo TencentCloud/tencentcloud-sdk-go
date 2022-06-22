@@ -528,14 +528,17 @@ type BindingPolicyTagRequestParams struct {
 	// 用于实例、实例组绑定和解绑接口（BindingPolicyObject、UnBindingAllPolicyObject、UnBindingPolicyObject）的策略 ID
 	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
 
-	// 策略标签
-	Tag *PolicyTag `json:"Tag,omitempty" name:"Tag"`
-
 	// 产品类型
 	ServiceType *string `json:"ServiceType,omitempty" name:"ServiceType"`
 
+	// 策略标签
+	Tag *PolicyTag `json:"Tag,omitempty" name:"Tag"`
+
 	// 实例分组ID
 	InstanceGroupId *int64 `json:"InstanceGroupId,omitempty" name:"InstanceGroupId"`
+
+	// 批量绑定标签
+	BatchTag []*PolicyTag `json:"BatchTag,omitempty" name:"BatchTag"`
 }
 
 type BindingPolicyTagRequest struct {
@@ -550,14 +553,17 @@ type BindingPolicyTagRequest struct {
 	// 用于实例、实例组绑定和解绑接口（BindingPolicyObject、UnBindingAllPolicyObject、UnBindingPolicyObject）的策略 ID
 	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
 
-	// 策略标签
-	Tag *PolicyTag `json:"Tag,omitempty" name:"Tag"`
-
 	// 产品类型
 	ServiceType *string `json:"ServiceType,omitempty" name:"ServiceType"`
 
+	// 策略标签
+	Tag *PolicyTag `json:"Tag,omitempty" name:"Tag"`
+
 	// 实例分组ID
 	InstanceGroupId *int64 `json:"InstanceGroupId,omitempty" name:"InstanceGroupId"`
+
+	// 批量绑定标签
+	BatchTag []*PolicyTag `json:"BatchTag,omitempty" name:"BatchTag"`
 }
 
 func (r *BindingPolicyTagRequest) ToJsonString() string {
@@ -575,9 +581,10 @@ func (r *BindingPolicyTagRequest) FromJsonString(s string) error {
 	delete(f, "Module")
 	delete(f, "PolicyId")
 	delete(f, "GroupId")
-	delete(f, "Tag")
 	delete(f, "ServiceType")
+	delete(f, "Tag")
 	delete(f, "InstanceGroupId")
+	delete(f, "BatchTag")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BindingPolicyTagRequest has unknown keys!", "")
 	}

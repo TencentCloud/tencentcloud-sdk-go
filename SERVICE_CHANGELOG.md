@@ -1,41 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 企业收付平台(cpdp) 版本：2019-08-20
+## 内容分发网络(cdn) 版本：2018-06-06
 
-### 第 69 次发布
+### 第 105 次发布
 
-发布时间：2022-06-22 06:05:01
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [OpenBankGoodsInfo](https://cloud.tencent.com/document/api/1122/40683#OpenBankGoodsInfo)
-
-	* 新增成员：GoodsBizType
-
-* [OpenBankPayerInfo](https://cloud.tencent.com/document/api/1122/40683#OpenBankPayerInfo)
-
-	* 新增成员：BankCardType
-
-* [OpenBankSceneInfo](https://cloud.tencent.com/document/api/1122/40683#OpenBankSceneInfo)
-
-	* 新增成员：DeviceType
-
-* [SupportBankInfo](https://cloud.tencent.com/document/api/1122/40683#SupportBankInfo)
-
-	* 新增成员：BankId, CardType
-
-
-
-
-## 云直播(live) 版本：2018-08-01
-
-### 第 79 次发布
-
-发布时间：2022-06-22 06:10:05
+发布时间：2022-06-23 06:08:11
 
 本次发布包含了以下内容：
 
@@ -43,33 +12,41 @@
 
 修改接口：
 
-* [CreateLiveTranscodeTemplate](https://cloud.tencent.com/document/api/267/32646)
+* [CreateVerifyRecord](https://cloud.tencent.com/document/api/228/48118)
 
-	* 新增入参：DRMType, DRMTracks
+	* 新增出参：FileVerifyDomains, FileVerifyName
 
-* [ModifyLiveTranscodeTemplate](https://cloud.tencent.com/document/api/267/32640)
 
-	* 新增入参：DRMType, DRMTracks
 
+
+## 主机安全(cwp) 版本：2018-02-28
+
+### 第 45 次发布
+
+发布时间：2022-06-23 06:10:09
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [LicenseOrder](https://cloud.tencent.com/document/api/296/19867#LicenseOrder)
 
 修改数据结构：
 
-* [TemplateInfo](https://cloud.tencent.com/document/api/267/20474#TemplateInfo)
+* [EffectiveMachineInfo](https://cloud.tencent.com/document/api/296/19867#EffectiveMachineInfo)
 
-	* 新增成员：DRMType, DRMTracks
-
-* [TimeShiftBillData](https://cloud.tencent.com/document/api/267/20474#TimeShiftBillData)
-
-	* 新增成员：TotalDuration
+	* 新增成员：LicenseOrder
 
 
 
 
-## 云托管 CloudBase Run(tcbr) 版本：2022-02-17
+## DNSPod(dnspod) 版本：2021-03-23
 
-### 第 2 次发布
+### 第 6 次发布
 
-发布时间：2022-06-22 06:13:21
+发布时间：2022-06-23 06:11:27
 
 本次发布包含了以下内容：
 
@@ -77,21 +54,107 @@
 
 新增接口：
 
-* [OperateServerManage](https://cloud.tencent.com/document/api/1243/75873)
-* [ReleaseGray](https://cloud.tencent.com/document/api/1243/75872)
+* [CreateDeal](https://cloud.tencent.com/document/api/1427/75921)
+* [ModifyPackageAutoRenew](https://cloud.tencent.com/document/api/1427/75920)
+* [ModifyVasAutoRenewStatus](https://cloud.tencent.com/document/api/1427/75919)
+* [PayOrderWithBalance](https://cloud.tencent.com/document/api/1427/75918)
 
 新增数据结构：
 
-* [ObjectKV](https://cloud.tencent.com/document/api/1243/75713#ObjectKV)
-* [VersionFlowInfo](https://cloud.tencent.com/document/api/1243/75713#VersionFlowInfo)
+* [Deals](https://cloud.tencent.com/document/api/1427/56185#Deals)
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
+
+### 第 18 次发布
+
+发布时间：2022-06-23 06:12:30
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Component](https://cloud.tencent.com/document/api/1420/61525#Component)
+
+	* 新增成员：OffsetX, OffsetY
+
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
+
+
+
+## 云监控(monitor) 版本：2018-07-24
+
+### 第 47 次发布
+
+发布时间：2022-06-23 06:15:13
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [BindingPolicyTag](https://cloud.tencent.com/document/api/248/67219)
+
+	* 新增入参：BatchTag
+
+	* <font color="#dd0000">**修改入参**：</font>Tag
+
 
 
 
 ## 私有网络(vpc) 版本：2017-03-12
 
-### 第 115 次发布
+### 第 116 次发布
 
-发布时间：2022-06-22 06:16:12
+发布时间：2022-06-23 06:21:17
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeVpnGatewaySslClients](https://cloud.tencent.com/document/api/215/70286)
+
+	* 新增入参：IsVpnPortal
+
+* [DescribeVpnGatewaySslServers](https://cloud.tencent.com/document/api/215/70285)
+
+	* 新增入参：IsVpnPortal
+
+* [DownloadVpnGatewaySslClientCert](https://cloud.tencent.com/document/api/215/70283)
+
+	* 新增入参：SamlToken, IsVpnPortal
+
+	* 新增出参：SslClientConfig, Authenticated
+
+
+新增数据结构：
+
+* [AccessPolicy](https://cloud.tencent.com/document/api/215/15824#AccessPolicy)
+* [SslClientConfig](https://cloud.tencent.com/document/api/215/15824#SslClientConfig)
+
+修改数据结构：
+
+* [SslVpnSever](https://cloud.tencent.com/document/api/215/15824#SslVpnSever)
+
+	* 新增成员：SsoEnabled, EiamApplicationId, AccessPolicyEnabled, AccessPolicy
+
+
+
+
+## Web 应用防火墙(waf) 版本：2018-01-25
+
+### 第 9 次发布
+
+发布时间：2022-06-23 06:22:00
 
 本次发布包含了以下内容：
 
@@ -99,14 +162,15 @@
 
 新增接口：
 
-* [AdjustPublicAddress](https://cloud.tencent.com/document/api/215/75874)
+* [DescribeInstances](https://cloud.tencent.com/document/api/627/75922)
 
-修改接口：
+新增数据结构：
 
-* [CreateVpnGatewaySslServer](https://cloud.tencent.com/document/api/215/70289)
-
-	* 新增入参：SsoEnabled, AccessPolicyEnabled, SamlData
-
+* [BotPkg](https://cloud.tencent.com/document/api/627/53609#BotPkg)
+* [DomainPackageNew](https://cloud.tencent.com/document/api/627/53609#DomainPackageNew)
+* [FraudPkg](https://cloud.tencent.com/document/api/627/53609#FraudPkg)
+* [InstanceInfo](https://cloud.tencent.com/document/api/627/53609#InstanceInfo)
+* [QPSPackageNew](https://cloud.tencent.com/document/api/627/53609#QPSPackageNew)
 
 
 
@@ -12731,6 +12795,21 @@
 
 ## 内容分发网络(cdn) 版本：2018-06-06
 
+### 第 105 次发布
+
+发布时间：2022-06-23 06:08:11
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateVerifyRecord](https://cloud.tencent.com/document/api/228/48118)
+
+	* 新增出参：FileVerifyDomains, FileVerifyName
+
+
 ### 第 104 次发布
 
 发布时间：2022-06-13 06:07:47
@@ -24861,6 +24940,25 @@
 
 ## 主机安全(cwp) 版本：2018-02-28
 
+### 第 45 次发布
+
+发布时间：2022-06-23 06:10:09
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [[LicenseOrder](https://cloud.tencent.com/document/api/296/19867#LicenseOrder)](https://cloud.tencent.com/document/api/296/19867#[LicenseOrder](https://cloud.tencent.com/document/api/296/19867#LicenseOrder))
+
+修改数据结构：
+
+* [EffectiveMachineInfo](https://cloud.tencent.com/document/api/296/19867#EffectiveMachineInfo)
+
+	* 新增成员：LicenseOrder
+
+
 ### 第 44 次发布
 
 发布时间：2022-06-20 06:06:12
@@ -29642,6 +29740,25 @@
 
 
 ## DNSPod(dnspod) 版本：2021-03-23
+
+### 第 6 次发布
+
+发布时间：2022-06-23 06:11:27
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateDeal](https://cloud.tencent.com/document/api/1427/75921)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyPackageAutoRenew](https://cloud.tencent.com/document/api/1427/75920)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyVasAutoRenewStatus](https://cloud.tencent.com/document/api/1427/75919)](https://cloud.tencent.com/document/api/#/#)
+* [[PayOrderWithBalance](https://cloud.tencent.com/document/api/1427/75918)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[Deals](https://cloud.tencent.com/document/api/1427/56185#Deals)](https://cloud.tencent.com/document/api/1427/56185#[Deals](https://cloud.tencent.com/document/api/1427/56185#Deals))
 
 ### 第 5 次发布
 
@@ -34806,6 +34923,21 @@
 
 
 ## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
+
+### 第 18 次发布
+
+发布时间：2022-06-23 06:12:30
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Component](https://cloud.tencent.com/document/api/1420/61525#Component)
+
+	* 新增成员：OffsetX, OffsetY
+
 
 ### 第 17 次发布
 
@@ -48068,6 +48200,23 @@
 
 
 ## 云监控(monitor) 版本：2018-07-24
+
+### 第 47 次发布
+
+发布时间：2022-06-23 06:15:13
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [BindingPolicyTag](https://cloud.tencent.com/document/api/248/67219)
+
+	* 新增入参：BatchTag
+
+	* <font color="#dd0000">**修改入参**：</font>Tag
+
 
 ### 第 46 次发布
 
@@ -62828,13 +62977,13 @@
 
 新增接口：
 
-* [[OperateServerManage](https://cloud.tencent.com/document/api/1243/75873)](https://cloud.tencent.com/document/api/#/#)
-* [[ReleaseGray](https://cloud.tencent.com/document/api/1243/75872)](https://cloud.tencent.com/document/api/#/#)
+* [OperateServerManage](https://cloud.tencent.com/document/api/1243/75873)
+* [ReleaseGray](https://cloud.tencent.com/document/api/1243/75872)
 
 新增数据结构：
 
-* [[ObjectKV](https://cloud.tencent.com/document/api/1243/75713#ObjectKV)](https://cloud.tencent.com/document/api/1243/75713#[ObjectKV](https://cloud.tencent.com/document/api/1243/75713#ObjectKV))
-* [[VersionFlowInfo](https://cloud.tencent.com/document/api/1243/75713#VersionFlowInfo)](https://cloud.tencent.com/document/api/1243/75713#[VersionFlowInfo](https://cloud.tencent.com/document/api/1243/75713#VersionFlowInfo))
+* [ObjectKV](https://cloud.tencent.com/document/api/1243/75713#ObjectKV)
+* [VersionFlowInfo](https://cloud.tencent.com/document/api/1243/75713#VersionFlowInfo)
 
 ### 第 1 次发布
 
@@ -77855,6 +78004,43 @@
 
 ## 私有网络(vpc) 版本：2017-03-12
 
+### 第 116 次发布
+
+发布时间：2022-06-23 06:21:17
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeVpnGatewaySslClients](https://cloud.tencent.com/document/api/215/70286)
+
+	* 新增入参：IsVpnPortal
+
+* [DescribeVpnGatewaySslServers](https://cloud.tencent.com/document/api/215/70285)
+
+	* 新增入参：IsVpnPortal
+
+* [DownloadVpnGatewaySslClientCert](https://cloud.tencent.com/document/api/215/70283)
+
+	* 新增入参：SamlToken, IsVpnPortal
+
+	* 新增出参：SslClientConfig, Authenticated
+
+
+新增数据结构：
+
+* [[AccessPolicy](https://cloud.tencent.com/document/api/215/15824#AccessPolicy)](https://cloud.tencent.com/document/api/215/15824#[AccessPolicy](https://cloud.tencent.com/document/api/215/15824#AccessPolicy))
+* [[SslClientConfig](https://cloud.tencent.com/document/api/215/15824#SslClientConfig)](https://cloud.tencent.com/document/api/215/15824#[SslClientConfig](https://cloud.tencent.com/document/api/215/15824#SslClientConfig))
+
+修改数据结构：
+
+* [SslVpnSever](https://cloud.tencent.com/document/api/215/15824#SslVpnSever)
+
+	* 新增成员：SsoEnabled, EiamApplicationId, AccessPolicyEnabled, AccessPolicy
+
+
 ### 第 115 次发布
 
 发布时间：2022-06-22 06:16:12
@@ -77865,7 +78051,7 @@
 
 新增接口：
 
-* [[AdjustPublicAddress](https://cloud.tencent.com/document/api/215/75874)](https://cloud.tencent.com/document/api/#/#)
+* [AdjustPublicAddress](https://cloud.tencent.com/document/api/215/75874)
 
 修改接口：
 
@@ -80618,6 +80804,26 @@
 
 
 ## Web 应用防火墙(waf) 版本：2018-01-25
+
+### 第 9 次发布
+
+发布时间：2022-06-23 06:22:00
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeInstances](https://cloud.tencent.com/document/api/627/75922)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[BotPkg](https://cloud.tencent.com/document/api/627/53609#BotPkg)](https://cloud.tencent.com/document/api/627/53609#[BotPkg](https://cloud.tencent.com/document/api/627/53609#BotPkg))
+* [[DomainPackageNew](https://cloud.tencent.com/document/api/627/53609#DomainPackageNew)](https://cloud.tencent.com/document/api/627/53609#[DomainPackageNew](https://cloud.tencent.com/document/api/627/53609#DomainPackageNew))
+* [[FraudPkg](https://cloud.tencent.com/document/api/627/53609#FraudPkg)](https://cloud.tencent.com/document/api/627/53609#[FraudPkg](https://cloud.tencent.com/document/api/627/53609#FraudPkg))
+* [[InstanceInfo](https://cloud.tencent.com/document/api/627/53609#InstanceInfo)](https://cloud.tencent.com/document/api/627/53609#[InstanceInfo](https://cloud.tencent.com/document/api/627/53609#InstanceInfo))
+* [[QPSPackageNew](https://cloud.tencent.com/document/api/627/53609#QPSPackageNew)](https://cloud.tencent.com/document/api/627/53609#[QPSPackageNew](https://cloud.tencent.com/document/api/627/53609#QPSPackageNew))
 
 ### 第 8 次发布
 

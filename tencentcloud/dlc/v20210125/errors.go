@@ -26,8 +26,23 @@ const (
 	// 另一个请求正在处理中，请稍后再试。
 	FAILEDOPERATION_ANOTHERREQUESTPROCESSING = "FailedOperation.AnotherRequestProcessing"
 
+	// 获取鉴权策略失败。
+	FAILEDOPERATION_GETPOLICYFAILED = "FailedOperation.GetPolicyFailed"
+
+	// 获取用户信息失败。
+	FAILEDOPERATION_GETUSERINFOFAILED = "FailedOperation.GetUserInfoFailed"
+
+	// 获取工作组信息失败。
+	FAILEDOPERATION_GETWORKGROUPINFOFAILED = "FailedOperation.GetWorkGroupInfoFailed"
+
+	// 授权失败。
+	FAILEDOPERATION_GRANTPOLICYFAILED = "FailedOperation.GrantPolicyFailed"
+
 	// HTTP客户端请求失败。
 	FAILEDOPERATION_HTTPCLIENTDOREQUESTFAILED = "FailedOperation.HttpClientDoRequestFailed"
+
+	// 取消授权失败。
+	FAILEDOPERATION_REVOKEPOLICYFAILED = "FailedOperation.RevokePolicyFailed"
 
 	// 内部错误。
 	INTERNALERROR = "InternalError"

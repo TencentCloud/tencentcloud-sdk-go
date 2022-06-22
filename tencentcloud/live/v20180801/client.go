@@ -7265,8 +7265,8 @@ func NewModifyLivePlayDomainResponse() (response *ModifyLivePlayDomainResponse) 
 // 修改播放域名信息。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DOMAINGSLBFAIL = "FailedOperation.DomainGslbFail"
 //  INTERNALERROR = "InternalError"
-//  INTERNALERROR_DOMAINGSLBFAIL = "InternalError.DomainGslbFail"
 //  INTERNALERROR_NETWORKERROR = "InternalError.NetworkError"
 //  INVALIDPARAMETER_DOMAINHITBLACKLIST = "InvalidParameter.DomainHitBlackList"
 //  MISSINGPARAMETER = "MissingParameter"
@@ -7283,8 +7283,8 @@ func (c *Client) ModifyLivePlayDomain(request *ModifyLivePlayDomainRequest) (res
 // 修改播放域名信息。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DOMAINGSLBFAIL = "FailedOperation.DomainGslbFail"
 //  INTERNALERROR = "InternalError"
-//  INTERNALERROR_DOMAINGSLBFAIL = "InternalError.DomainGslbFail"
 //  INTERNALERROR_NETWORKERROR = "InternalError.NetworkError"
 //  INVALIDPARAMETER_DOMAINHITBLACKLIST = "InvalidParameter.DomainHitBlackList"
 //  MISSINGPARAMETER = "MissingParameter"
