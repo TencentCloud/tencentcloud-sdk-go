@@ -1202,6 +1202,10 @@ type PatientInfo struct {
 	// 居民医保代码
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MedicalInsuranceTypeCode *string `json:"MedicalInsuranceTypeCode,omitempty" name:"MedicalInsuranceTypeCode"`
+
+	// 床号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BedNo *string `json:"BedNo,omitempty" name:"BedNo"`
 }
 
 type PersonalMedicalHistory struct {
@@ -1304,6 +1308,34 @@ type ReportInfo struct {
 	// 临床诊断
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Diagnose *string `json:"Diagnose,omitempty" name:"Diagnose"`
+
+	// 检查项目
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CheckItem *string `json:"CheckItem,omitempty" name:"CheckItem"`
+
+	// 检查方法
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CheckMethod *string `json:"CheckMethod,omitempty" name:"CheckMethod"`
+
+	// 诊断时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DiagnoseTime *string `json:"DiagnoseTime,omitempty" name:"DiagnoseTime"`
+
+	// 体检号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HealthCheckupNum *string `json:"HealthCheckupNum,omitempty" name:"HealthCheckupNum"`
+
+	// 其它时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OtherTime *string `json:"OtherTime,omitempty" name:"OtherTime"`
+
+	// 打印时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PrintTime *string `json:"PrintTime,omitempty" name:"PrintTime"`
+
+	// 未归类时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Times []*Time `json:"Times,omitempty" name:"Times"`
 }
 
 type Size struct {
@@ -1618,6 +1650,16 @@ type TextType struct {
 	// 类别名
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitempty" name:"Name"`
+}
+
+type Time struct {
+	// 具体时间类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 时间值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Value *string `json:"Value,omitempty" name:"Value"`
 }
 
 type TreatmentRecord struct {

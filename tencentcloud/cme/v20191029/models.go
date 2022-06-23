@@ -3576,6 +3576,10 @@ type HandleStreamConnectProjectResponseParams struct {
 	// 输入源推流地址，当 Operation 取值 AddInput 且 InputType 为 RtmpPush 类型时有效。
 	StreamInputRtmpPushUrl *string `json:"StreamInputRtmpPushUrl,omitempty" name:"StreamInputRtmpPushUrl"`
 
+	// 点播输入源播放进度信息，当 Operation 取值 DescribeInputPlayInfo 且 InputType 为 VodPull 类型时有效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VodPullInputPlayInfo *VodPullInputPlayInfo `json:"VodPullInputPlayInfo,omitempty" name:"VodPullInputPlayInfo"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }
@@ -6104,6 +6108,14 @@ type VodPullInputInfo struct {
 	// <li>大于0 : 具体循环次数，次数和时间以先结束的为准。</li>
 	// 默认不循环。
 	LoopTimes *int64 `json:"LoopTimes,omitempty" name:"LoopTimes"`
+}
+
+type VodPullInputPlayInfo struct {
+	// 当前正在播放文件 Url 。
+	Url *string `json:"Url,omitempty" name:"Url"`
+
+	// 点播文件已播放时长，单位：秒。
+	TimeOffset *float64 `json:"TimeOffset,omitempty" name:"TimeOffset"`
 }
 
 type WeiboPublishInfo struct {

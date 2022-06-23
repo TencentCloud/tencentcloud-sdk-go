@@ -18536,7 +18536,7 @@ type ModifyNetworkAclEntriesRequestParams struct {
 	// 网络ACL实例ID。例如：acl-12345678。
 	NetworkAclId *string `json:"NetworkAclId,omitempty" name:"NetworkAclId"`
 
-	// 网络ACL规则集。
+	// 网络ACL规则集。NetworkAclEntrySet和NetworkAclQuintupleSet只能输入一个。
 	NetworkAclEntrySet *NetworkAclEntrySet `json:"NetworkAclEntrySet,omitempty" name:"NetworkAclEntrySet"`
 }
 
@@ -18546,7 +18546,7 @@ type ModifyNetworkAclEntriesRequest struct {
 	// 网络ACL实例ID。例如：acl-12345678。
 	NetworkAclId *string `json:"NetworkAclId,omitempty" name:"NetworkAclId"`
 
-	// 网络ACL规则集。
+	// 网络ACL规则集。NetworkAclEntrySet和NetworkAclQuintupleSet只能输入一个。
 	NetworkAclEntrySet *NetworkAclEntrySet `json:"NetworkAclEntrySet,omitempty" name:"NetworkAclEntrySet"`
 }
 

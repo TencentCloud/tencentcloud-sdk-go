@@ -544,6 +544,87 @@ func (r *DescribeEnvBaseInfoResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeServerManageTaskRequestParams struct {
+	// 环境Id
+	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
+
+	// 服务名
+	ServerName *string `json:"ServerName,omitempty" name:"ServerName"`
+
+	// 任务Id
+	TaskId *int64 `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 操作标识
+	OperatorRemark *string `json:"OperatorRemark,omitempty" name:"OperatorRemark"`
+}
+
+type DescribeServerManageTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// 环境Id
+	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
+
+	// 服务名
+	ServerName *string `json:"ServerName,omitempty" name:"ServerName"`
+
+	// 任务Id
+	TaskId *int64 `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 操作标识
+	OperatorRemark *string `json:"OperatorRemark,omitempty" name:"OperatorRemark"`
+}
+
+func (r *DescribeServerManageTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeServerManageTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EnvId")
+	delete(f, "ServerName")
+	delete(f, "TaskId")
+	delete(f, "OperatorRemark")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeServerManageTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeServerManageTaskResponseParams struct {
+	// 是否存在
+	IsExist *bool `json:"IsExist,omitempty" name:"IsExist"`
+
+	// 任务信息
+	Task *ServerManageTaskInfo `json:"Task,omitempty" name:"Task"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeServerManageTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeServerManageTaskResponseParams `json:"Response"`
+}
+
+func (r *DescribeServerManageTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeServerManageTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type EnvBaseInfo struct {
 	// 环境Id
 	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
@@ -963,6 +1044,56 @@ type ServerBaseInfo struct {
 	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
 }
 
+type ServerManageTaskInfo struct {
+	// 任务Id
+	Id *int64 `json:"Id,omitempty" name:"Id"`
+
+	// 环境Id
+	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
+
+	// 服务名
+	ServerName *string `json:"ServerName,omitempty" name:"ServerName"`
+
+	// 创建时间
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 变更类型
+	ChangeType *string `json:"ChangeType,omitempty" name:"ChangeType"`
+
+	// 发布类型
+	ReleaseType *string `json:"ReleaseType,omitempty" name:"ReleaseType"`
+
+	// 部署类型
+	DeployType *string `json:"DeployType,omitempty" name:"DeployType"`
+
+	// 上一个版本名
+	PreVersionName *string `json:"PreVersionName,omitempty" name:"PreVersionName"`
+
+	// 版本名
+	VersionName *string `json:"VersionName,omitempty" name:"VersionName"`
+
+	// 流水线Id
+	PipelineId *int64 `json:"PipelineId,omitempty" name:"PipelineId"`
+
+	// 流水线任务Id
+	PipelineTaskId *int64 `json:"PipelineTaskId,omitempty" name:"PipelineTaskId"`
+
+	// 发布单Id
+	ReleaseId *int64 `json:"ReleaseId,omitempty" name:"ReleaseId"`
+
+	// 状态
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 步骤信息
+	Steps []*TaskStepInfo `json:"Steps,omitempty" name:"Steps"`
+
+	// 失败原因
+	FailReason *string `json:"FailReason,omitempty" name:"FailReason"`
+
+	// 操作标识
+	OperatorRemark *string `json:"OperatorRemark,omitempty" name:"OperatorRemark"`
+}
+
 type StaticStorageInfo struct {
 	// 静态CDN域名
 	StaticDomain *string `json:"StaticDomain,omitempty" name:"StaticDomain"`
@@ -1001,6 +1132,29 @@ type Tag struct {
 
 	// 标签值
 	Value *string `json:"Value,omitempty" name:"Value"`
+}
+
+type TaskStepInfo struct {
+	// 步骤名
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 未启动："todo"
+	// 运行中："running"
+	// 失败："failed"
+	// 成功结束："finished"
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 开始时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 消耗时间：秒
+	CostTime *int64 `json:"CostTime,omitempty" name:"CostTime"`
+
+	// 失败原因
+	FailReason *string `json:"FailReason,omitempty" name:"FailReason"`
 }
 
 // Predefined struct for user

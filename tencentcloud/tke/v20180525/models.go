@@ -5984,7 +5984,7 @@ type DescribeEKSClusterCredentialResponseParams struct {
 	// 集群的接入地址信息
 	Addresses []*IPAddress `json:"Addresses,omitempty" name:"Addresses"`
 
-	// 集群的认证信息
+	// 集群的认证信息（token只有请求是主账号才返回，子账户请使用返回的kubeconfig）
 	Credential *ClusterCredential `json:"Credential,omitempty" name:"Credential"`
 
 	// 集群的公网访问信息

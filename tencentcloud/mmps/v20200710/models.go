@@ -50,6 +50,10 @@ type AppInfoItem struct {
 	// 小程序隐私诊断堆栈报告名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BehaviorTitle *string `json:"BehaviorTitle,omitempty" name:"BehaviorTitle"`
+
+	// 诊断风险项数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HighRiskCount *int64 `json:"HighRiskCount,omitempty" name:"HighRiskCount"`
 }
 
 type AppTaskData struct {

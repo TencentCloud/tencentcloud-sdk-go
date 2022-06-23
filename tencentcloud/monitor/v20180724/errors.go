@@ -38,8 +38,14 @@ const (
 	// 访问标签服务失败。
 	FAILEDOPERATION_ACCESSTAGFAIL = "FailedOperation.AccessTagFail"
 
+	// agent当前状态不允许该操作。
+	FAILEDOPERATION_AGENTNOTALLOWED = "FailedOperation.AgentNotAllowed"
+
 	// Agent版本不支持该操作，请升级Agent。
 	FAILEDOPERATION_AGENTVERSIONNOTSUPPORTED = "FailedOperation.AgentVersionNotSupported"
+
+	// 该实例上有正在运行的Agent。
+	FAILEDOPERATION_AGENTSNOTINUNINSTALLSTAGE = "FailedOperation.AgentsNotInUninstallStage"
 
 	// 删除过滤条件失败。
 	FAILEDOPERATION_ALERTFILTERRULEDELETEFAILED = "FailedOperation.AlertFilterRuleDeleteFailed"
@@ -107,6 +113,9 @@ const (
 	// 生成资源ID错误。
 	FAILEDOPERATION_GENERATEINSTANCEIDFAILED = "FailedOperation.GenerateInstanceIDFailed"
 
+	// 实例不存在。
+	FAILEDOPERATION_INSTANCENOTFOUND = "FailedOperation.InstanceNotFound"
+
 	// 实例没有运行。
 	FAILEDOPERATION_INSTANCENOTRUNNING = "FailedOperation.InstanceNotRunning"
 
@@ -115,6 +124,9 @@ const (
 
 	// 资源不存在。
 	FAILEDOPERATION_RESOURCENOTFOUND = "FailedOperation.ResourceNotFound"
+
+	// 资源正在被操作。
+	FAILEDOPERATION_RESOURCEOPERATING = "FailedOperation.ResourceOperating"
 
 	// 发送授权请求失败。
 	FAILEDOPERATION_SENDREQUEST = "FailedOperation.SendRequest"

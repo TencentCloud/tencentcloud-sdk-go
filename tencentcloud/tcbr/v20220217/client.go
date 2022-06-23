@@ -345,6 +345,55 @@ func (c *Client) DescribeEnvBaseInfoWithContext(ctx context.Context, request *De
     return
 }
 
+func NewDescribeServerManageTaskRequest() (request *DescribeServerManageTaskRequest) {
+    request = &DescribeServerManageTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tcbr", APIVersion, "DescribeServerManageTask")
+    
+    
+    return
+}
+
+func NewDescribeServerManageTaskResponse() (response *DescribeServerManageTaskResponse) {
+    response = &DescribeServerManageTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeServerManageTask
+// 查询服务管理任务信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeServerManageTask(request *DescribeServerManageTaskRequest) (response *DescribeServerManageTaskResponse, err error) {
+    return c.DescribeServerManageTaskWithContext(context.Background(), request)
+}
+
+// DescribeServerManageTask
+// 查询服务管理任务信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeServerManageTaskWithContext(ctx context.Context, request *DescribeServerManageTaskRequest) (response *DescribeServerManageTaskResponse, err error) {
+    if request == nil {
+        request = NewDescribeServerManageTaskRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeServerManageTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeServerManageTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewOperateServerManageRequest() (request *OperateServerManageRequest) {
     request = &OperateServerManageRequest{
         BaseRequest: &tchttp.BaseRequest{},

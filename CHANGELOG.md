@@ -1,3 +1,174 @@
+# Release v1.0.428
+
+## 多媒体创作引擎(cme) 版本：2019-10-29
+
+### 第 50 次发布
+
+发布时间：2022-06-24 06:09:00
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [HandleStreamConnectProject](https://cloud.tencent.com/document/api/1156/54998)
+
+	* 新增出参：VodPullInputPlayInfo
+
+
+新增数据结构：
+
+* [VodPullInputPlayInfo](https://cloud.tencent.com/document/api/1156/40360#VodPullInputPlayInfo)
+
+
+
+## 企业收付平台(cpdp) 版本：2019-08-20
+
+### 第 70 次发布
+
+发布时间：2022-06-24 06:09:13
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [QueryOpenBankPaymentOrderResult](https://cloud.tencent.com/document/api/1122/40683#QueryOpenBankPaymentOrderResult)
+
+	* 新增成员：FeeAmount, FeeRate
+
+
+
+
+## 小程序安全(mmps) 版本：2020-07-10
+
+### 第 4 次发布
+
+发布时间：2022-06-24 06:14:40
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [AppInfoItem](https://cloud.tencent.com/document/api/1223/75143#AppInfoItem)
+
+	* 新增成员：HighRiskCount
+
+
+
+
+## 云监控(monitor) 版本：2018-07-24
+
+### 第 48 次发布
+
+发布时间：2022-06-24 06:14:48
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [BindPrometheusManagedGrafana](https://cloud.tencent.com/document/api/248/76020)
+* [CreateExporterIntegration](https://cloud.tencent.com/document/api/248/76019)
+* [CreatePrometheusAgent](https://cloud.tencent.com/document/api/248/76018)
+* [CreatePrometheusScrapeJob](https://cloud.tencent.com/document/api/248/76017)
+* [DeleteExporterIntegration](https://cloud.tencent.com/document/api/248/76016)
+* [DeletePrometheusScrapeJobs](https://cloud.tencent.com/document/api/248/76015)
+* [DescribeExporterIntegrations](https://cloud.tencent.com/document/api/248/76014)
+* [DescribePrometheusAgents](https://cloud.tencent.com/document/api/248/76013)
+* [DescribePrometheusScrapeJobs](https://cloud.tencent.com/document/api/248/76012)
+* [DestroyPrometheusInstance](https://cloud.tencent.com/document/api/248/76011)
+* [GetPrometheusAgentManagementCommand](https://cloud.tencent.com/document/api/248/76010)
+* [ModifyPrometheusInstanceAttributes](https://cloud.tencent.com/document/api/248/76009)
+* [TerminatePrometheusInstances](https://cloud.tencent.com/document/api/248/76008)
+* [UnbindPrometheusManagedGrafana](https://cloud.tencent.com/document/api/248/76007)
+* [UninstallGrafanaDashboard](https://cloud.tencent.com/document/api/248/76006)
+* [UpdateExporterIntegration](https://cloud.tencent.com/document/api/248/76005)
+* [UpdatePrometheusAgentStatus](https://cloud.tencent.com/document/api/248/76004)
+* [UpdatePrometheusScrapeJob](https://cloud.tencent.com/document/api/248/76003)
+* [UpgradeGrafanaDashboard](https://cloud.tencent.com/document/api/248/76002)
+
+新增数据结构：
+
+* [IntegrationConfiguration](https://cloud.tencent.com/document/api/248/30354#IntegrationConfiguration)
+* [ManagementCommand](https://cloud.tencent.com/document/api/248/30354#ManagementCommand)
+* [PrometheusAgent](https://cloud.tencent.com/document/api/248/30354#PrometheusAgent)
+* [PrometheusScrapeJob](https://cloud.tencent.com/document/api/248/30354#PrometheusScrapeJob)
+
+
+
+## 医疗报告结构化(mrs) 版本：2020-09-10
+
+### 第 12 次发布
+
+发布时间：2022-06-24 06:15:32
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [Time](https://cloud.tencent.com/document/api/1314/56230#Time)
+
+修改数据结构：
+
+* [PatientInfo](https://cloud.tencent.com/document/api/1314/56230#PatientInfo)
+
+	* 新增成员：BedNo
+
+* [ReportInfo](https://cloud.tencent.com/document/api/1314/56230#ReportInfo)
+
+	* 新增成员：CheckItem, CheckMethod, DiagnoseTime, HealthCheckupNum, OtherTime, PrintTime, Times
+
+
+
+
+## 云托管 CloudBase Run(tcbr) 版本：2022-02-17
+
+### 第 3 次发布
+
+发布时间：2022-06-24 06:17:45
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeServerManageTask](https://cloud.tencent.com/document/api/1243/76021)
+
+新增数据结构：
+
+* [ServerManageTaskInfo](https://cloud.tencent.com/document/api/1243/75713#ServerManageTaskInfo)
+* [TaskStepInfo](https://cloud.tencent.com/document/api/1243/75713#TaskStepInfo)
+
+
+
+## 私有网络(vpc) 版本：2017-03-12
+
+### 第 117 次发布
+
+发布时间：2022-06-24 06:20:35
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ModifyNetworkAclEntries](https://cloud.tencent.com/document/api/215/42107)
+
+	* <font color="#dd0000">**修改入参**：</font>NetworkAclEntrySet
+
+
+
+
 # Release v1.0.427
 
 ## 内容分发网络(cdn) 版本：2018-06-06

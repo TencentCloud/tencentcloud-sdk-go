@@ -1,10 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 内容分发网络(cdn) 版本：2018-06-06
+## 多媒体创作引擎(cme) 版本：2019-10-29
 
-### 第 105 次发布
+### 第 50 次发布
 
-发布时间：2022-06-23 06:08:11
+发布时间：2022-06-24 06:09:00
 
 本次发布包含了以下内容：
 
@@ -12,64 +12,22 @@
 
 修改接口：
 
-* [CreateVerifyRecord](https://cloud.tencent.com/document/api/228/48118)
+* [HandleStreamConnectProject](https://cloud.tencent.com/document/api/1156/54998)
 
-	* 新增出参：FileVerifyDomains, FileVerifyName
+	* 新增出参：VodPullInputPlayInfo
 
-
-
-
-## 主机安全(cwp) 版本：2018-02-28
-
-### 第 45 次发布
-
-发布时间：2022-06-23 06:10:09
-
-本次发布包含了以下内容：
-
-改善已有的文档。
 
 新增数据结构：
 
-* [LicenseOrder](https://cloud.tencent.com/document/api/296/19867#LicenseOrder)
-
-修改数据结构：
-
-* [EffectiveMachineInfo](https://cloud.tencent.com/document/api/296/19867#EffectiveMachineInfo)
-
-	* 新增成员：LicenseOrder
+* [VodPullInputPlayInfo](https://cloud.tencent.com/document/api/1156/40360#VodPullInputPlayInfo)
 
 
 
+## 企业收付平台(cpdp) 版本：2019-08-20
 
-## DNSPod(dnspod) 版本：2021-03-23
+### 第 70 次发布
 
-### 第 6 次发布
-
-发布时间：2022-06-23 06:11:27
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [CreateDeal](https://cloud.tencent.com/document/api/1427/75921)
-* [ModifyPackageAutoRenew](https://cloud.tencent.com/document/api/1427/75920)
-* [ModifyVasAutoRenewStatus](https://cloud.tencent.com/document/api/1427/75919)
-* [PayOrderWithBalance](https://cloud.tencent.com/document/api/1427/75918)
-
-新增数据结构：
-
-* [Deals](https://cloud.tencent.com/document/api/1427/56185#Deals)
-
-
-
-## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
-
-### 第 18 次发布
-
-发布时间：2022-06-23 06:12:30
+发布时间：2022-06-24 06:09:13
 
 本次发布包含了以下内容：
 
@@ -77,84 +35,37 @@
 
 修改数据结构：
 
-* [Component](https://cloud.tencent.com/document/api/1420/61525#Component)
+* [QueryOpenBankPaymentOrderResult](https://cloud.tencent.com/document/api/1122/40683#QueryOpenBankPaymentOrderResult)
 
-	* 新增成员：OffsetX, OffsetY
-
-
+	* 新增成员：FeeAmount, FeeRate
 
 
-## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
+
+
+## 小程序安全(mmps) 版本：2020-07-10
+
+### 第 4 次发布
+
+发布时间：2022-06-24 06:14:40
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [AppInfoItem](https://cloud.tencent.com/document/api/1223/75143#AppInfoItem)
+
+	* 新增成员：HighRiskCount
+
 
 
 
 ## 云监控(monitor) 版本：2018-07-24
 
-### 第 47 次发布
+### 第 48 次发布
 
-发布时间：2022-06-23 06:15:13
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [BindingPolicyTag](https://cloud.tencent.com/document/api/248/67219)
-
-	* 新增入参：BatchTag
-
-	* <font color="#dd0000">**修改入参**：</font>Tag
-
-
-
-
-## 私有网络(vpc) 版本：2017-03-12
-
-### 第 116 次发布
-
-发布时间：2022-06-23 06:21:17
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [DescribeVpnGatewaySslClients](https://cloud.tencent.com/document/api/215/70286)
-
-	* 新增入参：IsVpnPortal
-
-* [DescribeVpnGatewaySslServers](https://cloud.tencent.com/document/api/215/70285)
-
-	* 新增入参：IsVpnPortal
-
-* [DownloadVpnGatewaySslClientCert](https://cloud.tencent.com/document/api/215/70283)
-
-	* 新增入参：SamlToken, IsVpnPortal
-
-	* 新增出参：SslClientConfig, Authenticated
-
-
-新增数据结构：
-
-* [AccessPolicy](https://cloud.tencent.com/document/api/215/15824#AccessPolicy)
-* [SslClientConfig](https://cloud.tencent.com/document/api/215/15824#SslClientConfig)
-
-修改数据结构：
-
-* [SslVpnSever](https://cloud.tencent.com/document/api/215/15824#SslVpnSever)
-
-	* 新增成员：SsoEnabled, EiamApplicationId, AccessPolicyEnabled, AccessPolicy
-
-
-
-
-## Web 应用防火墙(waf) 版本：2018-01-25
-
-### 第 9 次发布
-
-发布时间：2022-06-23 06:22:00
+发布时间：2022-06-24 06:14:48
 
 本次发布包含了以下内容：
 
@@ -162,15 +73,99 @@
 
 新增接口：
 
-* [DescribeInstances](https://cloud.tencent.com/document/api/627/75922)
+* [BindPrometheusManagedGrafana](https://cloud.tencent.com/document/api/248/76020)
+* [CreateExporterIntegration](https://cloud.tencent.com/document/api/248/76019)
+* [CreatePrometheusAgent](https://cloud.tencent.com/document/api/248/76018)
+* [CreatePrometheusScrapeJob](https://cloud.tencent.com/document/api/248/76017)
+* [DeleteExporterIntegration](https://cloud.tencent.com/document/api/248/76016)
+* [DeletePrometheusScrapeJobs](https://cloud.tencent.com/document/api/248/76015)
+* [DescribeExporterIntegrations](https://cloud.tencent.com/document/api/248/76014)
+* [DescribePrometheusAgents](https://cloud.tencent.com/document/api/248/76013)
+* [DescribePrometheusScrapeJobs](https://cloud.tencent.com/document/api/248/76012)
+* [DestroyPrometheusInstance](https://cloud.tencent.com/document/api/248/76011)
+* [GetPrometheusAgentManagementCommand](https://cloud.tencent.com/document/api/248/76010)
+* [ModifyPrometheusInstanceAttributes](https://cloud.tencent.com/document/api/248/76009)
+* [TerminatePrometheusInstances](https://cloud.tencent.com/document/api/248/76008)
+* [UnbindPrometheusManagedGrafana](https://cloud.tencent.com/document/api/248/76007)
+* [UninstallGrafanaDashboard](https://cloud.tencent.com/document/api/248/76006)
+* [UpdateExporterIntegration](https://cloud.tencent.com/document/api/248/76005)
+* [UpdatePrometheusAgentStatus](https://cloud.tencent.com/document/api/248/76004)
+* [UpdatePrometheusScrapeJob](https://cloud.tencent.com/document/api/248/76003)
+* [UpgradeGrafanaDashboard](https://cloud.tencent.com/document/api/248/76002)
 
 新增数据结构：
 
-* [BotPkg](https://cloud.tencent.com/document/api/627/53609#BotPkg)
-* [DomainPackageNew](https://cloud.tencent.com/document/api/627/53609#DomainPackageNew)
-* [FraudPkg](https://cloud.tencent.com/document/api/627/53609#FraudPkg)
-* [InstanceInfo](https://cloud.tencent.com/document/api/627/53609#InstanceInfo)
-* [QPSPackageNew](https://cloud.tencent.com/document/api/627/53609#QPSPackageNew)
+* [IntegrationConfiguration](https://cloud.tencent.com/document/api/248/30354#IntegrationConfiguration)
+* [ManagementCommand](https://cloud.tencent.com/document/api/248/30354#ManagementCommand)
+* [PrometheusAgent](https://cloud.tencent.com/document/api/248/30354#PrometheusAgent)
+* [PrometheusScrapeJob](https://cloud.tencent.com/document/api/248/30354#PrometheusScrapeJob)
+
+
+
+## 医疗报告结构化(mrs) 版本：2020-09-10
+
+### 第 12 次发布
+
+发布时间：2022-06-24 06:15:32
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [Time](https://cloud.tencent.com/document/api/1314/56230#Time)
+
+修改数据结构：
+
+* [PatientInfo](https://cloud.tencent.com/document/api/1314/56230#PatientInfo)
+
+	* 新增成员：BedNo
+
+* [ReportInfo](https://cloud.tencent.com/document/api/1314/56230#ReportInfo)
+
+	* 新增成员：CheckItem, CheckMethod, DiagnoseTime, HealthCheckupNum, OtherTime, PrintTime, Times
+
+
+
+
+## 云托管 CloudBase Run(tcbr) 版本：2022-02-17
+
+### 第 3 次发布
+
+发布时间：2022-06-24 06:17:45
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeServerManageTask](https://cloud.tencent.com/document/api/1243/76021)
+
+新增数据结构：
+
+* [ServerManageTaskInfo](https://cloud.tencent.com/document/api/1243/75713#ServerManageTaskInfo)
+* [TaskStepInfo](https://cloud.tencent.com/document/api/1243/75713#TaskStepInfo)
+
+
+
+## 私有网络(vpc) 版本：2017-03-12
+
+### 第 117 次发布
+
+发布时间：2022-06-24 06:20:35
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ModifyNetworkAclEntries](https://cloud.tencent.com/document/api/215/42107)
+
+	* <font color="#dd0000">**修改入参**：</font>NetworkAclEntrySet
+
 
 
 
@@ -19729,6 +19724,25 @@
 
 ## 多媒体创作引擎(cme) 版本：2019-10-29
 
+### 第 50 次发布
+
+发布时间：2022-06-24 06:09:00
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [HandleStreamConnectProject](https://cloud.tencent.com/document/api/1156/54998)
+
+	* 新增出参：VodPullInputPlayInfo
+
+
+新增数据结构：
+
+* [[VodPullInputPlayInfo](https://cloud.tencent.com/document/api/1156/40360#VodPullInputPlayInfo)](https://cloud.tencent.com/document/api/1156/40360#[VodPullInputPlayInfo](https://cloud.tencent.com/document/api/1156/40360#VodPullInputPlayInfo))
+
 ### 第 49 次发布
 
 发布时间：2022-06-10 06:04:57
@@ -21257,6 +21271,21 @@
 
 
 ## 企业收付平台(cpdp) 版本：2019-08-20
+
+### 第 70 次发布
+
+发布时间：2022-06-24 06:09:13
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [QueryOpenBankPaymentOrderResult](https://cloud.tencent.com/document/api/1122/40683#QueryOpenBankPaymentOrderResult)
+
+	* 新增成员：FeeAmount, FeeRate
+
 
 ### 第 69 次发布
 
@@ -24950,7 +24979,7 @@
 
 新增数据结构：
 
-* [[LicenseOrder](https://cloud.tencent.com/document/api/296/19867#LicenseOrder)](https://cloud.tencent.com/document/api/296/19867#[LicenseOrder](https://cloud.tencent.com/document/api/296/19867#LicenseOrder))
+* [LicenseOrder](https://cloud.tencent.com/document/api/296/19867#LicenseOrder)
 
 修改数据结构：
 
@@ -29751,14 +29780,14 @@
 
 新增接口：
 
-* [[CreateDeal](https://cloud.tencent.com/document/api/1427/75921)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyPackageAutoRenew](https://cloud.tencent.com/document/api/1427/75920)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyVasAutoRenewStatus](https://cloud.tencent.com/document/api/1427/75919)](https://cloud.tencent.com/document/api/#/#)
-* [[PayOrderWithBalance](https://cloud.tencent.com/document/api/1427/75918)](https://cloud.tencent.com/document/api/#/#)
+* [CreateDeal](https://cloud.tencent.com/document/api/1427/75921)
+* [ModifyPackageAutoRenew](https://cloud.tencent.com/document/api/1427/75920)
+* [ModifyVasAutoRenewStatus](https://cloud.tencent.com/document/api/1427/75919)
+* [PayOrderWithBalance](https://cloud.tencent.com/document/api/1427/75918)
 
 新增数据结构：
 
-* [[Deals](https://cloud.tencent.com/document/api/1427/56185#Deals)](https://cloud.tencent.com/document/api/1427/56185#[Deals](https://cloud.tencent.com/document/api/1427/56185#Deals))
+* [Deals](https://cloud.tencent.com/document/api/1427/56185#Deals)
 
 ### 第 5 次发布
 
@@ -47558,6 +47587,21 @@
 
 ## 小程序安全(mmps) 版本：2020-07-10
 
+### 第 4 次发布
+
+发布时间：2022-06-24 06:14:40
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [AppInfoItem](https://cloud.tencent.com/document/api/1223/75143#AppInfoItem)
+
+	* 新增成员：HighRiskCount
+
+
 ### 第 3 次发布
 
 发布时间：2022-06-14 11:16:30
@@ -48200,6 +48244,43 @@
 
 
 ## 云监控(monitor) 版本：2018-07-24
+
+### 第 48 次发布
+
+发布时间：2022-06-24 06:14:48
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[BindPrometheusManagedGrafana](https://cloud.tencent.com/document/api/248/76020)](https://cloud.tencent.com/document/api/#/#)
+* [[CreateExporterIntegration](https://cloud.tencent.com/document/api/248/76019)](https://cloud.tencent.com/document/api/#/#)
+* [[CreatePrometheusAgent](https://cloud.tencent.com/document/api/248/76018)](https://cloud.tencent.com/document/api/#/#)
+* [[CreatePrometheusScrapeJob](https://cloud.tencent.com/document/api/248/76017)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteExporterIntegration](https://cloud.tencent.com/document/api/248/76016)](https://cloud.tencent.com/document/api/#/#)
+* [[DeletePrometheusScrapeJobs](https://cloud.tencent.com/document/api/248/76015)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeExporterIntegrations](https://cloud.tencent.com/document/api/248/76014)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribePrometheusAgents](https://cloud.tencent.com/document/api/248/76013)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribePrometheusScrapeJobs](https://cloud.tencent.com/document/api/248/76012)](https://cloud.tencent.com/document/api/#/#)
+* [[DestroyPrometheusInstance](https://cloud.tencent.com/document/api/248/76011)](https://cloud.tencent.com/document/api/#/#)
+* [[GetPrometheusAgentManagementCommand](https://cloud.tencent.com/document/api/248/76010)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyPrometheusInstanceAttributes](https://cloud.tencent.com/document/api/248/76009)](https://cloud.tencent.com/document/api/#/#)
+* [[TerminatePrometheusInstances](https://cloud.tencent.com/document/api/248/76008)](https://cloud.tencent.com/document/api/#/#)
+* [[UnbindPrometheusManagedGrafana](https://cloud.tencent.com/document/api/248/76007)](https://cloud.tencent.com/document/api/#/#)
+* [[UninstallGrafanaDashboard](https://cloud.tencent.com/document/api/248/76006)](https://cloud.tencent.com/document/api/#/#)
+* [[UpdateExporterIntegration](https://cloud.tencent.com/document/api/248/76005)](https://cloud.tencent.com/document/api/#/#)
+* [[UpdatePrometheusAgentStatus](https://cloud.tencent.com/document/api/248/76004)](https://cloud.tencent.com/document/api/#/#)
+* [[UpdatePrometheusScrapeJob](https://cloud.tencent.com/document/api/248/76003)](https://cloud.tencent.com/document/api/#/#)
+* [[UpgradeGrafanaDashboard](https://cloud.tencent.com/document/api/248/76002)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[IntegrationConfiguration](https://cloud.tencent.com/document/api/248/30354#IntegrationConfiguration)](https://cloud.tencent.com/document/api/248/30354#[IntegrationConfiguration](https://cloud.tencent.com/document/api/248/30354#IntegrationConfiguration))
+* [[ManagementCommand](https://cloud.tencent.com/document/api/248/30354#ManagementCommand)](https://cloud.tencent.com/document/api/248/30354#[ManagementCommand](https://cloud.tencent.com/document/api/248/30354#ManagementCommand))
+* [[PrometheusAgent](https://cloud.tencent.com/document/api/248/30354#PrometheusAgent)](https://cloud.tencent.com/document/api/248/30354#[PrometheusAgent](https://cloud.tencent.com/document/api/248/30354#PrometheusAgent))
+* [[PrometheusScrapeJob](https://cloud.tencent.com/document/api/248/30354#PrometheusScrapeJob)](https://cloud.tencent.com/document/api/248/30354#[PrometheusScrapeJob](https://cloud.tencent.com/document/api/248/30354#PrometheusScrapeJob))
 
 ### 第 47 次发布
 
@@ -50477,6 +50558,29 @@
 
 
 ## 医疗报告结构化(mrs) 版本：2020-09-10
+
+### 第 12 次发布
+
+发布时间：2022-06-24 06:15:32
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [[Time](https://cloud.tencent.com/document/api/1314/56230#Time)](https://cloud.tencent.com/document/api/1314/56230#[Time](https://cloud.tencent.com/document/api/1314/56230#Time))
+
+修改数据结构：
+
+* [PatientInfo](https://cloud.tencent.com/document/api/1314/56230#PatientInfo)
+
+	* 新增成员：BedNo
+
+* [ReportInfo](https://cloud.tencent.com/document/api/1314/56230#ReportInfo)
+
+	* 新增成员：CheckItem, CheckMethod, DiagnoseTime, HealthCheckupNum, OtherTime, PrintTime, Times
+
 
 ### 第 11 次发布
 
@@ -62966,6 +63070,23 @@
 
 
 ## 云托管 CloudBase Run(tcbr) 版本：2022-02-17
+
+### 第 3 次发布
+
+发布时间：2022-06-24 06:17:45
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeServerManageTask](https://cloud.tencent.com/document/api/1243/76021)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[ServerManageTaskInfo](https://cloud.tencent.com/document/api/1243/75713#ServerManageTaskInfo)](https://cloud.tencent.com/document/api/1243/75713#[ServerManageTaskInfo](https://cloud.tencent.com/document/api/1243/75713#ServerManageTaskInfo))
+* [[TaskStepInfo](https://cloud.tencent.com/document/api/1243/75713#TaskStepInfo)](https://cloud.tencent.com/document/api/1243/75713#[TaskStepInfo](https://cloud.tencent.com/document/api/1243/75713#TaskStepInfo))
 
 ### 第 2 次发布
 
@@ -78004,6 +78125,21 @@
 
 ## 私有网络(vpc) 版本：2017-03-12
 
+### 第 117 次发布
+
+发布时间：2022-06-24 06:20:35
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ModifyNetworkAclEntries](https://cloud.tencent.com/document/api/215/42107)
+
+	* <font color="#dd0000">**修改入参**：</font>NetworkAclEntrySet
+
+
 ### 第 116 次发布
 
 发布时间：2022-06-23 06:21:17
@@ -78031,8 +78167,8 @@
 
 新增数据结构：
 
-* [[AccessPolicy](https://cloud.tencent.com/document/api/215/15824#AccessPolicy)](https://cloud.tencent.com/document/api/215/15824#[AccessPolicy](https://cloud.tencent.com/document/api/215/15824#AccessPolicy))
-* [[SslClientConfig](https://cloud.tencent.com/document/api/215/15824#SslClientConfig)](https://cloud.tencent.com/document/api/215/15824#[SslClientConfig](https://cloud.tencent.com/document/api/215/15824#SslClientConfig))
+* [AccessPolicy](https://cloud.tencent.com/document/api/215/15824#AccessPolicy)
+* [SslClientConfig](https://cloud.tencent.com/document/api/215/15824#SslClientConfig)
 
 修改数据结构：
 
@@ -80815,15 +80951,15 @@
 
 新增接口：
 
-* [[DescribeInstances](https://cloud.tencent.com/document/api/627/75922)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeInstances](https://cloud.tencent.com/document/api/627/75922)
 
 新增数据结构：
 
-* [[BotPkg](https://cloud.tencent.com/document/api/627/53609#BotPkg)](https://cloud.tencent.com/document/api/627/53609#[BotPkg](https://cloud.tencent.com/document/api/627/53609#BotPkg))
-* [[DomainPackageNew](https://cloud.tencent.com/document/api/627/53609#DomainPackageNew)](https://cloud.tencent.com/document/api/627/53609#[DomainPackageNew](https://cloud.tencent.com/document/api/627/53609#DomainPackageNew))
-* [[FraudPkg](https://cloud.tencent.com/document/api/627/53609#FraudPkg)](https://cloud.tencent.com/document/api/627/53609#[FraudPkg](https://cloud.tencent.com/document/api/627/53609#FraudPkg))
-* [[InstanceInfo](https://cloud.tencent.com/document/api/627/53609#InstanceInfo)](https://cloud.tencent.com/document/api/627/53609#[InstanceInfo](https://cloud.tencent.com/document/api/627/53609#InstanceInfo))
-* [[QPSPackageNew](https://cloud.tencent.com/document/api/627/53609#QPSPackageNew)](https://cloud.tencent.com/document/api/627/53609#[QPSPackageNew](https://cloud.tencent.com/document/api/627/53609#QPSPackageNew))
+* [BotPkg](https://cloud.tencent.com/document/api/627/53609#BotPkg)
+* [DomainPackageNew](https://cloud.tencent.com/document/api/627/53609#DomainPackageNew)
+* [FraudPkg](https://cloud.tencent.com/document/api/627/53609#FraudPkg)
+* [InstanceInfo](https://cloud.tencent.com/document/api/627/53609#InstanceInfo)
+* [QPSPackageNew](https://cloud.tencent.com/document/api/627/53609#QPSPackageNew)
 
 ### 第 8 次发布
 

@@ -7252,13 +7252,13 @@ type CreateOpenBankExternalSubMerchantRegistrationRequestParams struct {
 	// 外部子商户ID,平台侧商户唯一ID。
 	OutSubMerchantId *string `json:"OutSubMerchantId,omitempty" name:"OutSubMerchantId"`
 
-	// 渠道名称。
+	// 渠道名称。详见附录-云企付枚举类说明-ChannelName。
 	// __TENPAY__: 商企付
 	// __WECHAT__: 微信支付
 	// __ALIPAY__: 支付宝
 	ChannelName *string `json:"ChannelName,omitempty" name:"ChannelName"`
 
-	// 支付方式。
+	// 支付方式。详见附录-云企付枚举类说明-PaymentMethod。
 	// __EBANK_PAYMENT__: ebank支付
 	// __OPENBANK_PAYMENT__: openbank支付
 	PaymentMethod *string `json:"PaymentMethod,omitempty" name:"PaymentMethod"`
@@ -7303,13 +7303,13 @@ type CreateOpenBankExternalSubMerchantRegistrationRequest struct {
 	// 外部子商户ID,平台侧商户唯一ID。
 	OutSubMerchantId *string `json:"OutSubMerchantId,omitempty" name:"OutSubMerchantId"`
 
-	// 渠道名称。
+	// 渠道名称。详见附录-云企付枚举类说明-ChannelName。
 	// __TENPAY__: 商企付
 	// __WECHAT__: 微信支付
 	// __ALIPAY__: 支付宝
 	ChannelName *string `json:"ChannelName,omitempty" name:"ChannelName"`
 
-	// 支付方式。
+	// 支付方式。详见附录-云企付枚举类说明-PaymentMethod。
 	// __EBANK_PAYMENT__: ebank支付
 	// __OPENBANK_PAYMENT__: openbank支付
 	PaymentMethod *string `json:"PaymentMethod,omitempty" name:"PaymentMethod"`
@@ -7593,14 +7593,14 @@ type CreateOpenBankPaymentOrderRequestParams struct {
 	// 云企付渠道商户号。外部接入平台入驻云企付平台后下发。
 	ChannelMerchantId *string `json:"ChannelMerchantId,omitempty" name:"ChannelMerchantId"`
 
-	// 渠道名称。
+	// 渠道名称。详见附录-云企付枚举类说明-ChannelName。
 	// __TENPAY__: 商企付
 	// __WECHAT__: 微信支付
 	// __ALIPAY__: 支付宝
 	// __WECHAT__: 微信支付
 	ChannelName *string `json:"ChannelName,omitempty" name:"ChannelName"`
 
-	// 付款方式。如
+	// 付款方式。详见附录-云企付枚举类说明-PaymentMethod。
 	// __EBANK_PAYMENT__:B2B EBank付款
 	// __OPENBANK_PAYMENT__:B2C  openbank付款
 	// __SAFT_ISV__:支付宝安心发
@@ -7673,14 +7673,14 @@ type CreateOpenBankPaymentOrderRequest struct {
 	// 云企付渠道商户号。外部接入平台入驻云企付平台后下发。
 	ChannelMerchantId *string `json:"ChannelMerchantId,omitempty" name:"ChannelMerchantId"`
 
-	// 渠道名称。
+	// 渠道名称。详见附录-云企付枚举类说明-ChannelName。
 	// __TENPAY__: 商企付
 	// __WECHAT__: 微信支付
 	// __ALIPAY__: 支付宝
 	// __WECHAT__: 微信支付
 	ChannelName *string `json:"ChannelName,omitempty" name:"ChannelName"`
 
-	// 付款方式。如
+	// 付款方式。详见附录-云企付枚举类说明-PaymentMethod。
 	// __EBANK_PAYMENT__:B2B EBank付款
 	// __OPENBANK_PAYMENT__:B2C  openbank付款
 	// __SAFT_ISV__:支付宝安心发
@@ -20030,9 +20030,9 @@ type QueryOpenBankPaymentOrderResult struct {
 	// 第三方支付平台订单号
 	ThirdPayOrderId *string `json:"ThirdPayOrderId,omitempty" name:"ThirdPayOrderId"`
 
+	// 订单状态。
 	// INIT：初始化
 	// PAYING：支付中
-	// DEDUCTED：扣款成功
 	// ACCEPTED：支付受理成功
 	// SUCCESS：支付成功
 	// CLOSED：关单
@@ -20073,6 +20073,14 @@ type QueryOpenBankPaymentOrderResult struct {
 	// 银行复核指引。当TENPAY下OPENBANT_PAYMENT时，下单受理成功是返回。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BankApprovalGuideInfo *OpenBankApprovalGuideInfo `json:"BankApprovalGuideInfo,omitempty" name:"BankApprovalGuideInfo"`
+
+	// 手续费金额
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FeeAmount *int64 `json:"FeeAmount,omitempty" name:"FeeAmount"`
+
+	// 手续费费率
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FeeRate *int64 `json:"FeeRate,omitempty" name:"FeeRate"`
 }
 
 // Predefined struct for user

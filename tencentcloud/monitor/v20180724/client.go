@@ -45,6 +45,47 @@ func NewClient(credential common.CredentialIface, region string, clientProfile *
 }
 
 
+func NewBindPrometheusManagedGrafanaRequest() (request *BindPrometheusManagedGrafanaRequest) {
+    request = &BindPrometheusManagedGrafanaRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("monitor", APIVersion, "BindPrometheusManagedGrafana")
+    
+    
+    return
+}
+
+func NewBindPrometheusManagedGrafanaResponse() (response *BindPrometheusManagedGrafanaResponse) {
+    response = &BindPrometheusManagedGrafanaResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// BindPrometheusManagedGrafana
+// 绑定 Grafana 可视化服务实例
+func (c *Client) BindPrometheusManagedGrafana(request *BindPrometheusManagedGrafanaRequest) (response *BindPrometheusManagedGrafanaResponse, err error) {
+    return c.BindPrometheusManagedGrafanaWithContext(context.Background(), request)
+}
+
+// BindPrometheusManagedGrafana
+// 绑定 Grafana 可视化服务实例
+func (c *Client) BindPrometheusManagedGrafanaWithContext(ctx context.Context, request *BindPrometheusManagedGrafanaRequest) (response *BindPrometheusManagedGrafanaResponse, err error) {
+    if request == nil {
+        request = NewBindPrometheusManagedGrafanaRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("BindPrometheusManagedGrafana require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewBindPrometheusManagedGrafanaResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewBindingPolicyObjectRequest() (request *BindingPolicyObjectRequest) {
     request = &BindingPolicyObjectRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -340,6 +381,73 @@ func (c *Client) CreateAlertRuleWithContext(ctx context.Context, request *Create
     return
 }
 
+func NewCreateExporterIntegrationRequest() (request *CreateExporterIntegrationRequest) {
+    request = &CreateExporterIntegrationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("monitor", APIVersion, "CreateExporterIntegration")
+    
+    
+    return
+}
+
+func NewCreateExporterIntegrationResponse() (response *CreateExporterIntegrationResponse) {
+    response = &CreateExporterIntegrationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateExporterIntegration
+// 创建 exporter 集成
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_ACCESSTKEFAIL = "FailedOperation.AccessTKEFail"
+//  FAILEDOPERATION_DBQUERYFAILED = "FailedOperation.DbQueryFailed"
+//  FAILEDOPERATION_INSTANCENOTRUNNING = "FailedOperation.InstanceNotRunning"
+//  FAILEDOPERATION_RESOURCEEXIST = "FailedOperation.ResourceExist"
+//  FAILEDOPERATION_RESOURCENOTFOUND = "FailedOperation.ResourceNotFound"
+//  FAILEDOPERATION_RESOURCEOPERATING = "FailedOperation.ResourceOperating"
+//  FAILEDOPERATION_TKERESOURCECONFLICT = "FailedOperation.TKEResourceConflict"
+//  INTERNALERROR = "InternalError"
+func (c *Client) CreateExporterIntegration(request *CreateExporterIntegrationRequest) (response *CreateExporterIntegrationResponse, err error) {
+    return c.CreateExporterIntegrationWithContext(context.Background(), request)
+}
+
+// CreateExporterIntegration
+// 创建 exporter 集成
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_ACCESSTKEFAIL = "FailedOperation.AccessTKEFail"
+//  FAILEDOPERATION_DBQUERYFAILED = "FailedOperation.DbQueryFailed"
+//  FAILEDOPERATION_INSTANCENOTRUNNING = "FailedOperation.InstanceNotRunning"
+//  FAILEDOPERATION_RESOURCEEXIST = "FailedOperation.ResourceExist"
+//  FAILEDOPERATION_RESOURCENOTFOUND = "FailedOperation.ResourceNotFound"
+//  FAILEDOPERATION_RESOURCEOPERATING = "FailedOperation.ResourceOperating"
+//  FAILEDOPERATION_TKERESOURCECONFLICT = "FailedOperation.TKEResourceConflict"
+//  INTERNALERROR = "InternalError"
+func (c *Client) CreateExporterIntegrationWithContext(ctx context.Context, request *CreateExporterIntegrationRequest) (response *CreateExporterIntegrationResponse, err error) {
+    if request == nil {
+        request = NewCreateExporterIntegrationRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateExporterIntegration require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateExporterIntegrationResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreatePolicyGroupRequest() (request *CreatePolicyGroupRequest) {
     request = &CreatePolicyGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -407,6 +515,140 @@ func (c *Client) CreatePolicyGroupWithContext(ctx context.Context, request *Crea
     request.SetContext(ctx)
     
     response = NewCreatePolicyGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreatePrometheusAgentRequest() (request *CreatePrometheusAgentRequest) {
+    request = &CreatePrometheusAgentRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("monitor", APIVersion, "CreatePrometheusAgent")
+    
+    
+    return
+}
+
+func NewCreatePrometheusAgentResponse() (response *CreatePrometheusAgentResponse) {
+    response = &CreatePrometheusAgentResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreatePrometheusAgent
+// 创建 Prometheus CVM Agent
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_DBQUERYFAILED = "FailedOperation.DbQueryFailed"
+//  FAILEDOPERATION_DBRECORDCREATEFAILED = "FailedOperation.DbRecordCreateFailed"
+//  FAILEDOPERATION_DBRECORDUPDATEFAILED = "FailedOperation.DbRecordUpdateFailed"
+//  FAILEDOPERATION_INSTANCENOTRUNNING = "FailedOperation.InstanceNotRunning"
+//  FAILEDOPERATION_RESOURCENOTFOUND = "FailedOperation.ResourceNotFound"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) CreatePrometheusAgent(request *CreatePrometheusAgentRequest) (response *CreatePrometheusAgentResponse, err error) {
+    return c.CreatePrometheusAgentWithContext(context.Background(), request)
+}
+
+// CreatePrometheusAgent
+// 创建 Prometheus CVM Agent
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_DBQUERYFAILED = "FailedOperation.DbQueryFailed"
+//  FAILEDOPERATION_DBRECORDCREATEFAILED = "FailedOperation.DbRecordCreateFailed"
+//  FAILEDOPERATION_DBRECORDUPDATEFAILED = "FailedOperation.DbRecordUpdateFailed"
+//  FAILEDOPERATION_INSTANCENOTRUNNING = "FailedOperation.InstanceNotRunning"
+//  FAILEDOPERATION_RESOURCENOTFOUND = "FailedOperation.ResourceNotFound"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) CreatePrometheusAgentWithContext(ctx context.Context, request *CreatePrometheusAgentRequest) (response *CreatePrometheusAgentResponse, err error) {
+    if request == nil {
+        request = NewCreatePrometheusAgentRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreatePrometheusAgent require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreatePrometheusAgentResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreatePrometheusScrapeJobRequest() (request *CreatePrometheusScrapeJobRequest) {
+    request = &CreatePrometheusScrapeJobRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("monitor", APIVersion, "CreatePrometheusScrapeJob")
+    
+    
+    return
+}
+
+func NewCreatePrometheusScrapeJobResponse() (response *CreatePrometheusScrapeJobResponse) {
+    response = &CreatePrometheusScrapeJobResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreatePrometheusScrapeJob
+// 创建 Prometheus 抓取任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_BADYAMLFORMAT = "FailedOperation.BadYamlFormat"
+//  FAILEDOPERATION_DBQUERYFAILED = "FailedOperation.DbQueryFailed"
+//  FAILEDOPERATION_DBRECORDCREATEFAILED = "FailedOperation.DbRecordCreateFailed"
+//  FAILEDOPERATION_DBRECORDDELETEFAILED = "FailedOperation.DbRecordDeleteFailed"
+//  FAILEDOPERATION_DBRECORDUPDATEFAILED = "FailedOperation.DbRecordUpdateFailed"
+//  FAILEDOPERATION_RESOURCEEXIST = "FailedOperation.ResourceExist"
+//  FAILEDOPERATION_RESOURCENOTFOUND = "FailedOperation.ResourceNotFound"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) CreatePrometheusScrapeJob(request *CreatePrometheusScrapeJobRequest) (response *CreatePrometheusScrapeJobResponse, err error) {
+    return c.CreatePrometheusScrapeJobWithContext(context.Background(), request)
+}
+
+// CreatePrometheusScrapeJob
+// 创建 Prometheus 抓取任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_BADYAMLFORMAT = "FailedOperation.BadYamlFormat"
+//  FAILEDOPERATION_DBQUERYFAILED = "FailedOperation.DbQueryFailed"
+//  FAILEDOPERATION_DBRECORDCREATEFAILED = "FailedOperation.DbRecordCreateFailed"
+//  FAILEDOPERATION_DBRECORDDELETEFAILED = "FailedOperation.DbRecordDeleteFailed"
+//  FAILEDOPERATION_DBRECORDUPDATEFAILED = "FailedOperation.DbRecordUpdateFailed"
+//  FAILEDOPERATION_RESOURCEEXIST = "FailedOperation.ResourceExist"
+//  FAILEDOPERATION_RESOURCENOTFOUND = "FailedOperation.ResourceNotFound"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) CreatePrometheusScrapeJobWithContext(ctx context.Context, request *CreatePrometheusScrapeJobRequest) (response *CreatePrometheusScrapeJobResponse, err error) {
+    if request == nil {
+        request = NewCreatePrometheusScrapeJobRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreatePrometheusScrapeJob require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreatePrometheusScrapeJobResponse()
     err = c.Send(request, response)
     return
 }
@@ -665,6 +907,79 @@ func (c *Client) DeleteAlertRulesWithContext(ctx context.Context, request *Delet
     return
 }
 
+func NewDeleteExporterIntegrationRequest() (request *DeleteExporterIntegrationRequest) {
+    request = &DeleteExporterIntegrationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("monitor", APIVersion, "DeleteExporterIntegration")
+    
+    
+    return
+}
+
+func NewDeleteExporterIntegrationResponse() (response *DeleteExporterIntegrationResponse) {
+    response = &DeleteExporterIntegrationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteExporterIntegration
+// 删除 exporter 集成
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_ACCESSTKEFAIL = "FailedOperation.AccessTKEFail"
+//  FAILEDOPERATION_DBQUERYFAILED = "FailedOperation.DbQueryFailed"
+//  FAILEDOPERATION_DBRECORDCREATEFAILED = "FailedOperation.DbRecordCreateFailed"
+//  FAILEDOPERATION_DBRECORDDELETEFAILED = "FailedOperation.DbRecordDeleteFailed"
+//  FAILEDOPERATION_DBRECORDUPDATEFAILED = "FailedOperation.DbRecordUpdateFailed"
+//  FAILEDOPERATION_RESOURCEEXIST = "FailedOperation.ResourceExist"
+//  FAILEDOPERATION_RESOURCENOTFOUND = "FailedOperation.ResourceNotFound"
+//  FAILEDOPERATION_RESOURCEOPERATING = "FailedOperation.ResourceOperating"
+//  FAILEDOPERATION_TKERESOURCECONFLICT = "FailedOperation.TKEResourceConflict"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DeleteExporterIntegration(request *DeleteExporterIntegrationRequest) (response *DeleteExporterIntegrationResponse, err error) {
+    return c.DeleteExporterIntegrationWithContext(context.Background(), request)
+}
+
+// DeleteExporterIntegration
+// 删除 exporter 集成
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_ACCESSTKEFAIL = "FailedOperation.AccessTKEFail"
+//  FAILEDOPERATION_DBQUERYFAILED = "FailedOperation.DbQueryFailed"
+//  FAILEDOPERATION_DBRECORDCREATEFAILED = "FailedOperation.DbRecordCreateFailed"
+//  FAILEDOPERATION_DBRECORDDELETEFAILED = "FailedOperation.DbRecordDeleteFailed"
+//  FAILEDOPERATION_DBRECORDUPDATEFAILED = "FailedOperation.DbRecordUpdateFailed"
+//  FAILEDOPERATION_RESOURCEEXIST = "FailedOperation.ResourceExist"
+//  FAILEDOPERATION_RESOURCENOTFOUND = "FailedOperation.ResourceNotFound"
+//  FAILEDOPERATION_RESOURCEOPERATING = "FailedOperation.ResourceOperating"
+//  FAILEDOPERATION_TKERESOURCECONFLICT = "FailedOperation.TKEResourceConflict"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DeleteExporterIntegrationWithContext(ctx context.Context, request *DeleteExporterIntegrationRequest) (response *DeleteExporterIntegrationResponse, err error) {
+    if request == nil {
+        request = NewDeleteExporterIntegrationRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteExporterIntegration require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteExporterIntegrationResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeletePolicyGroupRequest() (request *DeletePolicyGroupRequest) {
     request = &DeletePolicyGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -778,6 +1093,75 @@ func (c *Client) DeletePolicyGroupWithContext(ctx context.Context, request *Dele
     request.SetContext(ctx)
     
     response = NewDeletePolicyGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeletePrometheusScrapeJobsRequest() (request *DeletePrometheusScrapeJobsRequest) {
+    request = &DeletePrometheusScrapeJobsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("monitor", APIVersion, "DeletePrometheusScrapeJobs")
+    
+    
+    return
+}
+
+func NewDeletePrometheusScrapeJobsResponse() (response *DeletePrometheusScrapeJobsResponse) {
+    response = &DeletePrometheusScrapeJobsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeletePrometheusScrapeJobs
+// 删除 Prometheus 抓取任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_BADYAMLFORMAT = "FailedOperation.BadYamlFormat"
+//  FAILEDOPERATION_DBQUERYFAILED = "FailedOperation.DbQueryFailed"
+//  FAILEDOPERATION_DBRECORDCREATEFAILED = "FailedOperation.DbRecordCreateFailed"
+//  FAILEDOPERATION_DBRECORDDELETEFAILED = "FailedOperation.DbRecordDeleteFailed"
+//  FAILEDOPERATION_DBRECORDUPDATEFAILED = "FailedOperation.DbRecordUpdateFailed"
+//  FAILEDOPERATION_INSTANCENOTFOUND = "FailedOperation.InstanceNotFound"
+//  FAILEDOPERATION_INSTANCENOTRUNNING = "FailedOperation.InstanceNotRunning"
+//  FAILEDOPERATION_RESOURCENOTFOUND = "FailedOperation.ResourceNotFound"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DeletePrometheusScrapeJobs(request *DeletePrometheusScrapeJobsRequest) (response *DeletePrometheusScrapeJobsResponse, err error) {
+    return c.DeletePrometheusScrapeJobsWithContext(context.Background(), request)
+}
+
+// DeletePrometheusScrapeJobs
+// 删除 Prometheus 抓取任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_BADYAMLFORMAT = "FailedOperation.BadYamlFormat"
+//  FAILEDOPERATION_DBQUERYFAILED = "FailedOperation.DbQueryFailed"
+//  FAILEDOPERATION_DBRECORDCREATEFAILED = "FailedOperation.DbRecordCreateFailed"
+//  FAILEDOPERATION_DBRECORDDELETEFAILED = "FailedOperation.DbRecordDeleteFailed"
+//  FAILEDOPERATION_DBRECORDUPDATEFAILED = "FailedOperation.DbRecordUpdateFailed"
+//  FAILEDOPERATION_INSTANCENOTFOUND = "FailedOperation.InstanceNotFound"
+//  FAILEDOPERATION_INSTANCENOTRUNNING = "FailedOperation.InstanceNotRunning"
+//  FAILEDOPERATION_RESOURCENOTFOUND = "FailedOperation.ResourceNotFound"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DeletePrometheusScrapeJobsWithContext(ctx context.Context, request *DeletePrometheusScrapeJobsRequest) (response *DeletePrometheusScrapeJobsResponse, err error) {
+    if request == nil {
+        request = NewDeletePrometheusScrapeJobsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeletePrometheusScrapeJobs require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeletePrometheusScrapeJobsResponse()
     err = c.Send(request, response)
     return
 }
@@ -1812,6 +2196,75 @@ func (c *Client) DescribeConditionsTemplateListWithContext(ctx context.Context, 
     return
 }
 
+func NewDescribeExporterIntegrationsRequest() (request *DescribeExporterIntegrationsRequest) {
+    request = &DescribeExporterIntegrationsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("monitor", APIVersion, "DescribeExporterIntegrations")
+    
+    
+    return
+}
+
+func NewDescribeExporterIntegrationsResponse() (response *DescribeExporterIntegrationsResponse) {
+    response = &DescribeExporterIntegrationsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeExporterIntegrations
+// 查询 exporter 集成列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_ACCESSTKEFAIL = "FailedOperation.AccessTKEFail"
+//  FAILEDOPERATION_AGENTNOTALLOWED = "FailedOperation.AgentNotAllowed"
+//  FAILEDOPERATION_DBQUERYFAILED = "FailedOperation.DbQueryFailed"
+//  FAILEDOPERATION_RESOURCEEXIST = "FailedOperation.ResourceExist"
+//  FAILEDOPERATION_RESOURCENOTFOUND = "FailedOperation.ResourceNotFound"
+//  FAILEDOPERATION_TKERESOURCECONFLICT = "FailedOperation.TKEResourceConflict"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeExporterIntegrations(request *DescribeExporterIntegrationsRequest) (response *DescribeExporterIntegrationsResponse, err error) {
+    return c.DescribeExporterIntegrationsWithContext(context.Background(), request)
+}
+
+// DescribeExporterIntegrations
+// 查询 exporter 集成列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_ACCESSTKEFAIL = "FailedOperation.AccessTKEFail"
+//  FAILEDOPERATION_AGENTNOTALLOWED = "FailedOperation.AgentNotAllowed"
+//  FAILEDOPERATION_DBQUERYFAILED = "FailedOperation.DbQueryFailed"
+//  FAILEDOPERATION_RESOURCEEXIST = "FailedOperation.ResourceExist"
+//  FAILEDOPERATION_RESOURCENOTFOUND = "FailedOperation.ResourceNotFound"
+//  FAILEDOPERATION_TKERESOURCECONFLICT = "FailedOperation.TKEResourceConflict"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeExporterIntegrationsWithContext(ctx context.Context, request *DescribeExporterIntegrationsRequest) (response *DescribeExporterIntegrationsResponse, err error) {
+    if request == nil {
+        request = NewDescribeExporterIntegrationsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeExporterIntegrations require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeExporterIntegrationsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeMonitorTypesRequest() (request *DescribeMonitorTypesRequest) {
     request = &DescribeMonitorTypesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2338,6 +2791,69 @@ func (c *Client) DescribeProductListWithContext(ctx context.Context, request *De
     return
 }
 
+func NewDescribePrometheusAgentsRequest() (request *DescribePrometheusAgentsRequest) {
+    request = &DescribePrometheusAgentsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("monitor", APIVersion, "DescribePrometheusAgents")
+    
+    
+    return
+}
+
+func NewDescribePrometheusAgentsResponse() (response *DescribePrometheusAgentsResponse) {
+    response = &DescribePrometheusAgentsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribePrometheusAgents
+// 列出 Prometheus CVM Agent
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DBQUERYFAILED = "FailedOperation.DbQueryFailed"
+//  FAILEDOPERATION_DBRECORDUPDATEFAILED = "FailedOperation.DbRecordUpdateFailed"
+//  FAILEDOPERATION_DBTRANSACTIONBEGINFAILED = "FailedOperation.DbTransactionBeginFailed"
+//  FAILEDOPERATION_RESOURCENOTFOUND = "FailedOperation.ResourceNotFound"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribePrometheusAgents(request *DescribePrometheusAgentsRequest) (response *DescribePrometheusAgentsResponse, err error) {
+    return c.DescribePrometheusAgentsWithContext(context.Background(), request)
+}
+
+// DescribePrometheusAgents
+// 列出 Prometheus CVM Agent
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DBQUERYFAILED = "FailedOperation.DbQueryFailed"
+//  FAILEDOPERATION_DBRECORDUPDATEFAILED = "FailedOperation.DbRecordUpdateFailed"
+//  FAILEDOPERATION_DBTRANSACTIONBEGINFAILED = "FailedOperation.DbTransactionBeginFailed"
+//  FAILEDOPERATION_RESOURCENOTFOUND = "FailedOperation.ResourceNotFound"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribePrometheusAgentsWithContext(ctx context.Context, request *DescribePrometheusAgentsRequest) (response *DescribePrometheusAgentsResponse, err error) {
+    if request == nil {
+        request = NewDescribePrometheusAgentsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribePrometheusAgents require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribePrometheusAgentsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribePrometheusInstancesRequest() (request *DescribePrometheusInstancesRequest) {
     request = &DescribePrometheusInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2413,6 +2929,73 @@ func (c *Client) DescribePrometheusInstancesWithContext(ctx context.Context, req
     request.SetContext(ctx)
     
     response = NewDescribePrometheusInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribePrometheusScrapeJobsRequest() (request *DescribePrometheusScrapeJobsRequest) {
+    request = &DescribePrometheusScrapeJobsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("monitor", APIVersion, "DescribePrometheusScrapeJobs")
+    
+    
+    return
+}
+
+func NewDescribePrometheusScrapeJobsResponse() (response *DescribePrometheusScrapeJobsResponse) {
+    response = &DescribePrometheusScrapeJobsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribePrometheusScrapeJobs
+// 列出 Prometheus 抓取任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_BADYAMLFORMAT = "FailedOperation.BadYamlFormat"
+//  FAILEDOPERATION_DBQUERYFAILED = "FailedOperation.DbQueryFailed"
+//  FAILEDOPERATION_DBRECORDCREATEFAILED = "FailedOperation.DbRecordCreateFailed"
+//  FAILEDOPERATION_DBRECORDDELETEFAILED = "FailedOperation.DbRecordDeleteFailed"
+//  FAILEDOPERATION_DBRECORDUPDATEFAILED = "FailedOperation.DbRecordUpdateFailed"
+//  FAILEDOPERATION_RESOURCENOTFOUND = "FailedOperation.ResourceNotFound"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribePrometheusScrapeJobs(request *DescribePrometheusScrapeJobsRequest) (response *DescribePrometheusScrapeJobsResponse, err error) {
+    return c.DescribePrometheusScrapeJobsWithContext(context.Background(), request)
+}
+
+// DescribePrometheusScrapeJobs
+// 列出 Prometheus 抓取任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_BADYAMLFORMAT = "FailedOperation.BadYamlFormat"
+//  FAILEDOPERATION_DBQUERYFAILED = "FailedOperation.DbQueryFailed"
+//  FAILEDOPERATION_DBRECORDCREATEFAILED = "FailedOperation.DbRecordCreateFailed"
+//  FAILEDOPERATION_DBRECORDDELETEFAILED = "FailedOperation.DbRecordDeleteFailed"
+//  FAILEDOPERATION_DBRECORDUPDATEFAILED = "FailedOperation.DbRecordUpdateFailed"
+//  FAILEDOPERATION_RESOURCENOTFOUND = "FailedOperation.ResourceNotFound"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribePrometheusScrapeJobsWithContext(ctx context.Context, request *DescribePrometheusScrapeJobsRequest) (response *DescribePrometheusScrapeJobsResponse, err error) {
+    if request == nil {
+        request = NewDescribePrometheusScrapeJobsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribePrometheusScrapeJobs require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribePrometheusScrapeJobsResponse()
     err = c.Send(request, response)
     return
 }
@@ -2623,6 +3206,69 @@ func (c *Client) DescribeStatisticDataWithContext(ctx context.Context, request *
     return
 }
 
+func NewDestroyPrometheusInstanceRequest() (request *DestroyPrometheusInstanceRequest) {
+    request = &DestroyPrometheusInstanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("monitor", APIVersion, "DestroyPrometheusInstance")
+    
+    
+    return
+}
+
+func NewDestroyPrometheusInstanceResponse() (response *DestroyPrometheusInstanceResponse) {
+    response = &DestroyPrometheusInstanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DestroyPrometheusInstance
+// 彻底删除 Prometheus 实例相关数据，给定的实例必须先被 Terminate
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_AGENTSNOTINUNINSTALLSTAGE = "FailedOperation.AgentsNotInUninstallStage"
+//  FAILEDOPERATION_DBQUERYFAILED = "FailedOperation.DbQueryFailed"
+//  FAILEDOPERATION_DBRECORDCREATEFAILED = "FailedOperation.DbRecordCreateFailed"
+//  FAILEDOPERATION_DBRECORDDELETEFAILED = "FailedOperation.DbRecordDeleteFailed"
+//  FAILEDOPERATION_DBRECORDUPDATEFAILED = "FailedOperation.DbRecordUpdateFailed"
+//  FAILEDOPERATION_RESOURCENOTFOUND = "FailedOperation.ResourceNotFound"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DestroyPrometheusInstance(request *DestroyPrometheusInstanceRequest) (response *DestroyPrometheusInstanceResponse, err error) {
+    return c.DestroyPrometheusInstanceWithContext(context.Background(), request)
+}
+
+// DestroyPrometheusInstance
+// 彻底删除 Prometheus 实例相关数据，给定的实例必须先被 Terminate
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_AGENTSNOTINUNINSTALLSTAGE = "FailedOperation.AgentsNotInUninstallStage"
+//  FAILEDOPERATION_DBQUERYFAILED = "FailedOperation.DbQueryFailed"
+//  FAILEDOPERATION_DBRECORDCREATEFAILED = "FailedOperation.DbRecordCreateFailed"
+//  FAILEDOPERATION_DBRECORDDELETEFAILED = "FailedOperation.DbRecordDeleteFailed"
+//  FAILEDOPERATION_DBRECORDUPDATEFAILED = "FailedOperation.DbRecordUpdateFailed"
+//  FAILEDOPERATION_RESOURCENOTFOUND = "FailedOperation.ResourceNotFound"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DestroyPrometheusInstanceWithContext(ctx context.Context, request *DestroyPrometheusInstanceRequest) (response *DestroyPrometheusInstanceResponse, err error) {
+    if request == nil {
+        request = NewDestroyPrometheusInstanceRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DestroyPrometheusInstance require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDestroyPrometheusInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewGetMonitorDataRequest() (request *GetMonitorDataRequest) {
     request = &GetMonitorDataRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2682,6 +3328,69 @@ func (c *Client) GetMonitorDataWithContext(ctx context.Context, request *GetMoni
     request.SetContext(ctx)
     
     response = NewGetMonitorDataResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewGetPrometheusAgentManagementCommandRequest() (request *GetPrometheusAgentManagementCommandRequest) {
+    request = &GetPrometheusAgentManagementCommandRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("monitor", APIVersion, "GetPrometheusAgentManagementCommand")
+    
+    
+    return
+}
+
+func NewGetPrometheusAgentManagementCommandResponse() (response *GetPrometheusAgentManagementCommandResponse) {
+    response = &GetPrometheusAgentManagementCommandResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// GetPrometheusAgentManagementCommand
+// 获取 Prometheus Agent 管理相关的命令行
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DBQUERYFAILED = "FailedOperation.DbQueryFailed"
+//  FAILEDOPERATION_RESOURCENOTFOUND = "FailedOperation.ResourceNotFound"
+//  INTERNALERROR = "InternalError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) GetPrometheusAgentManagementCommand(request *GetPrometheusAgentManagementCommandRequest) (response *GetPrometheusAgentManagementCommandResponse, err error) {
+    return c.GetPrometheusAgentManagementCommandWithContext(context.Background(), request)
+}
+
+// GetPrometheusAgentManagementCommand
+// 获取 Prometheus Agent 管理相关的命令行
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DBQUERYFAILED = "FailedOperation.DbQueryFailed"
+//  FAILEDOPERATION_RESOURCENOTFOUND = "FailedOperation.ResourceNotFound"
+//  INTERNALERROR = "InternalError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) GetPrometheusAgentManagementCommandWithContext(ctx context.Context, request *GetPrometheusAgentManagementCommandRequest) (response *GetPrometheusAgentManagementCommandResponse, err error) {
+    if request == nil {
+        request = NewGetPrometheusAgentManagementCommandRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetPrometheusAgentManagementCommand require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetPrometheusAgentManagementCommandResponse()
     err = c.Send(request, response)
     return
 }
@@ -3168,6 +3877,69 @@ func (c *Client) ModifyPolicyGroupWithContext(ctx context.Context, request *Modi
     return
 }
 
+func NewModifyPrometheusInstanceAttributesRequest() (request *ModifyPrometheusInstanceAttributesRequest) {
+    request = &ModifyPrometheusInstanceAttributesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("monitor", APIVersion, "ModifyPrometheusInstanceAttributes")
+    
+    
+    return
+}
+
+func NewModifyPrometheusInstanceAttributesResponse() (response *ModifyPrometheusInstanceAttributesResponse) {
+    response = &ModifyPrometheusInstanceAttributesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyPrometheusInstanceAttributes
+// 修改 Prometheus 实例相关属性
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DBQUERYFAILED = "FailedOperation.DbQueryFailed"
+//  FAILEDOPERATION_DBRECORDUPDATEFAILED = "FailedOperation.DbRecordUpdateFailed"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETER_INVALIDPARAMETERPARAM = "InvalidParameter.InvalidParameterParam"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) ModifyPrometheusInstanceAttributes(request *ModifyPrometheusInstanceAttributesRequest) (response *ModifyPrometheusInstanceAttributesResponse, err error) {
+    return c.ModifyPrometheusInstanceAttributesWithContext(context.Background(), request)
+}
+
+// ModifyPrometheusInstanceAttributes
+// 修改 Prometheus 实例相关属性
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DBQUERYFAILED = "FailedOperation.DbQueryFailed"
+//  FAILEDOPERATION_DBRECORDUPDATEFAILED = "FailedOperation.DbRecordUpdateFailed"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
+//  INVALIDPARAMETER_INVALIDPARAMETERPARAM = "InvalidParameter.InvalidParameterParam"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) ModifyPrometheusInstanceAttributesWithContext(ctx context.Context, request *ModifyPrometheusInstanceAttributesRequest) (response *ModifyPrometheusInstanceAttributesResponse, err error) {
+    if request == nil {
+        request = NewModifyPrometheusInstanceAttributesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyPrometheusInstanceAttributes require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyPrometheusInstanceAttributesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewPutMonitorDataRequest() (request *PutMonitorDataRequest) {
     request = &PutMonitorDataRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3389,6 +4161,69 @@ func (c *Client) SetDefaultAlarmPolicyWithContext(ctx context.Context, request *
     request.SetContext(ctx)
     
     response = NewSetDefaultAlarmPolicyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewTerminatePrometheusInstancesRequest() (request *TerminatePrometheusInstancesRequest) {
+    request = &TerminatePrometheusInstancesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("monitor", APIVersion, "TerminatePrometheusInstances")
+    
+    
+    return
+}
+
+func NewTerminatePrometheusInstancesResponse() (response *TerminatePrometheusInstancesResponse) {
+    response = &TerminatePrometheusInstancesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// TerminatePrometheusInstances
+// 销毁按量 Prometheus 实例
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_AGENTSNOTINUNINSTALLSTAGE = "FailedOperation.AgentsNotInUninstallStage"
+//  FAILEDOPERATION_DBQUERYFAILED = "FailedOperation.DbQueryFailed"
+//  FAILEDOPERATION_DBRECORDCREATEFAILED = "FailedOperation.DbRecordCreateFailed"
+//  FAILEDOPERATION_DBRECORDDELETEFAILED = "FailedOperation.DbRecordDeleteFailed"
+//  FAILEDOPERATION_DBRECORDUPDATEFAILED = "FailedOperation.DbRecordUpdateFailed"
+//  FAILEDOPERATION_RESOURCENOTFOUND = "FailedOperation.ResourceNotFound"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) TerminatePrometheusInstances(request *TerminatePrometheusInstancesRequest) (response *TerminatePrometheusInstancesResponse, err error) {
+    return c.TerminatePrometheusInstancesWithContext(context.Background(), request)
+}
+
+// TerminatePrometheusInstances
+// 销毁按量 Prometheus 实例
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_AGENTSNOTINUNINSTALLSTAGE = "FailedOperation.AgentsNotInUninstallStage"
+//  FAILEDOPERATION_DBQUERYFAILED = "FailedOperation.DbQueryFailed"
+//  FAILEDOPERATION_DBRECORDCREATEFAILED = "FailedOperation.DbRecordCreateFailed"
+//  FAILEDOPERATION_DBRECORDDELETEFAILED = "FailedOperation.DbRecordDeleteFailed"
+//  FAILEDOPERATION_DBRECORDUPDATEFAILED = "FailedOperation.DbRecordUpdateFailed"
+//  FAILEDOPERATION_RESOURCENOTFOUND = "FailedOperation.ResourceNotFound"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) TerminatePrometheusInstancesWithContext(ctx context.Context, request *TerminatePrometheusInstancesRequest) (response *TerminatePrometheusInstancesResponse, err error) {
+    if request == nil {
+        request = NewTerminatePrometheusInstancesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("TerminatePrometheusInstances require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewTerminatePrometheusInstancesResponse()
     err = c.Send(request, response)
     return
 }
@@ -3631,6 +4466,104 @@ func (c *Client) UnBindingPolicyObjectWithContext(ctx context.Context, request *
     return
 }
 
+func NewUnbindPrometheusManagedGrafanaRequest() (request *UnbindPrometheusManagedGrafanaRequest) {
+    request = &UnbindPrometheusManagedGrafanaRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("monitor", APIVersion, "UnbindPrometheusManagedGrafana")
+    
+    
+    return
+}
+
+func NewUnbindPrometheusManagedGrafanaResponse() (response *UnbindPrometheusManagedGrafanaResponse) {
+    response = &UnbindPrometheusManagedGrafanaResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// UnbindPrometheusManagedGrafana
+// 解除实例绑定的 Grafana 可视化实例
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_RESOURCENOTFOUND = "FailedOperation.ResourceNotFound"
+func (c *Client) UnbindPrometheusManagedGrafana(request *UnbindPrometheusManagedGrafanaRequest) (response *UnbindPrometheusManagedGrafanaResponse, err error) {
+    return c.UnbindPrometheusManagedGrafanaWithContext(context.Background(), request)
+}
+
+// UnbindPrometheusManagedGrafana
+// 解除实例绑定的 Grafana 可视化实例
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_RESOURCENOTFOUND = "FailedOperation.ResourceNotFound"
+func (c *Client) UnbindPrometheusManagedGrafanaWithContext(ctx context.Context, request *UnbindPrometheusManagedGrafanaRequest) (response *UnbindPrometheusManagedGrafanaResponse, err error) {
+    if request == nil {
+        request = NewUnbindPrometheusManagedGrafanaRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UnbindPrometheusManagedGrafana require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUnbindPrometheusManagedGrafanaResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUninstallGrafanaDashboardRequest() (request *UninstallGrafanaDashboardRequest) {
+    request = &UninstallGrafanaDashboardRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("monitor", APIVersion, "UninstallGrafanaDashboard")
+    
+    
+    return
+}
+
+func NewUninstallGrafanaDashboardResponse() (response *UninstallGrafanaDashboardResponse) {
+    response = &UninstallGrafanaDashboardResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// UninstallGrafanaDashboard
+// 删除 Grafana Dashboard
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_RESOURCENOTFOUND = "FailedOperation.ResourceNotFound"
+func (c *Client) UninstallGrafanaDashboard(request *UninstallGrafanaDashboardRequest) (response *UninstallGrafanaDashboardResponse, err error) {
+    return c.UninstallGrafanaDashboardWithContext(context.Background(), request)
+}
+
+// UninstallGrafanaDashboard
+// 删除 Grafana Dashboard
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_RESOURCENOTFOUND = "FailedOperation.ResourceNotFound"
+func (c *Client) UninstallGrafanaDashboardWithContext(ctx context.Context, request *UninstallGrafanaDashboardRequest) (response *UninstallGrafanaDashboardResponse, err error) {
+    if request == nil {
+        request = NewUninstallGrafanaDashboardRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UninstallGrafanaDashboard require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUninstallGrafanaDashboardResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewUpdateAlertRuleRequest() (request *UpdateAlertRuleRequest) {
     request = &UpdateAlertRuleRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3777,6 +4710,213 @@ func (c *Client) UpdateAlertRuleStateWithContext(ctx context.Context, request *U
     return
 }
 
+func NewUpdateExporterIntegrationRequest() (request *UpdateExporterIntegrationRequest) {
+    request = &UpdateExporterIntegrationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("monitor", APIVersion, "UpdateExporterIntegration")
+    
+    
+    return
+}
+
+func NewUpdateExporterIntegrationResponse() (response *UpdateExporterIntegrationResponse) {
+    response = &UpdateExporterIntegrationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// UpdateExporterIntegration
+// 更新 exporter 集成配置
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_ACCESSTKEFAIL = "FailedOperation.AccessTKEFail"
+//  FAILEDOPERATION_AGENTNOTALLOWED = "FailedOperation.AgentNotAllowed"
+//  FAILEDOPERATION_DBQUERYFAILED = "FailedOperation.DbQueryFailed"
+//  FAILEDOPERATION_DBRECORDCREATEFAILED = "FailedOperation.DbRecordCreateFailed"
+//  FAILEDOPERATION_DBRECORDDELETEFAILED = "FailedOperation.DbRecordDeleteFailed"
+//  FAILEDOPERATION_DBRECORDUPDATEFAILED = "FailedOperation.DbRecordUpdateFailed"
+//  FAILEDOPERATION_INSTANCENOTFOUND = "FailedOperation.InstanceNotFound"
+//  FAILEDOPERATION_INSTANCENOTRUNNING = "FailedOperation.InstanceNotRunning"
+//  FAILEDOPERATION_RESOURCEEXIST = "FailedOperation.ResourceExist"
+//  FAILEDOPERATION_RESOURCENOTFOUND = "FailedOperation.ResourceNotFound"
+//  FAILEDOPERATION_RESOURCEOPERATING = "FailedOperation.ResourceOperating"
+//  FAILEDOPERATION_TKERESOURCECONFLICT = "FailedOperation.TKEResourceConflict"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) UpdateExporterIntegration(request *UpdateExporterIntegrationRequest) (response *UpdateExporterIntegrationResponse, err error) {
+    return c.UpdateExporterIntegrationWithContext(context.Background(), request)
+}
+
+// UpdateExporterIntegration
+// 更新 exporter 集成配置
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_ACCESSTKEFAIL = "FailedOperation.AccessTKEFail"
+//  FAILEDOPERATION_AGENTNOTALLOWED = "FailedOperation.AgentNotAllowed"
+//  FAILEDOPERATION_DBQUERYFAILED = "FailedOperation.DbQueryFailed"
+//  FAILEDOPERATION_DBRECORDCREATEFAILED = "FailedOperation.DbRecordCreateFailed"
+//  FAILEDOPERATION_DBRECORDDELETEFAILED = "FailedOperation.DbRecordDeleteFailed"
+//  FAILEDOPERATION_DBRECORDUPDATEFAILED = "FailedOperation.DbRecordUpdateFailed"
+//  FAILEDOPERATION_INSTANCENOTFOUND = "FailedOperation.InstanceNotFound"
+//  FAILEDOPERATION_INSTANCENOTRUNNING = "FailedOperation.InstanceNotRunning"
+//  FAILEDOPERATION_RESOURCEEXIST = "FailedOperation.ResourceExist"
+//  FAILEDOPERATION_RESOURCENOTFOUND = "FailedOperation.ResourceNotFound"
+//  FAILEDOPERATION_RESOURCEOPERATING = "FailedOperation.ResourceOperating"
+//  FAILEDOPERATION_TKERESOURCECONFLICT = "FailedOperation.TKEResourceConflict"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) UpdateExporterIntegrationWithContext(ctx context.Context, request *UpdateExporterIntegrationRequest) (response *UpdateExporterIntegrationResponse, err error) {
+    if request == nil {
+        request = NewUpdateExporterIntegrationRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateExporterIntegration require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpdateExporterIntegrationResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdatePrometheusAgentStatusRequest() (request *UpdatePrometheusAgentStatusRequest) {
+    request = &UpdatePrometheusAgentStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("monitor", APIVersion, "UpdatePrometheusAgentStatus")
+    
+    
+    return
+}
+
+func NewUpdatePrometheusAgentStatusResponse() (response *UpdatePrometheusAgentStatusResponse) {
+    response = &UpdatePrometheusAgentStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// UpdatePrometheusAgentStatus
+// 更新 Prometheus CVM Agent 状态
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DBQUERYFAILED = "FailedOperation.DbQueryFailed"
+//  FAILEDOPERATION_DBRECORDUPDATEFAILED = "FailedOperation.DbRecordUpdateFailed"
+//  FAILEDOPERATION_RESOURCENOTFOUND = "FailedOperation.ResourceNotFound"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) UpdatePrometheusAgentStatus(request *UpdatePrometheusAgentStatusRequest) (response *UpdatePrometheusAgentStatusResponse, err error) {
+    return c.UpdatePrometheusAgentStatusWithContext(context.Background(), request)
+}
+
+// UpdatePrometheusAgentStatus
+// 更新 Prometheus CVM Agent 状态
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DBQUERYFAILED = "FailedOperation.DbQueryFailed"
+//  FAILEDOPERATION_DBRECORDUPDATEFAILED = "FailedOperation.DbRecordUpdateFailed"
+//  FAILEDOPERATION_RESOURCENOTFOUND = "FailedOperation.ResourceNotFound"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) UpdatePrometheusAgentStatusWithContext(ctx context.Context, request *UpdatePrometheusAgentStatusRequest) (response *UpdatePrometheusAgentStatusResponse, err error) {
+    if request == nil {
+        request = NewUpdatePrometheusAgentStatusRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdatePrometheusAgentStatus require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpdatePrometheusAgentStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdatePrometheusScrapeJobRequest() (request *UpdatePrometheusScrapeJobRequest) {
+    request = &UpdatePrometheusScrapeJobRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("monitor", APIVersion, "UpdatePrometheusScrapeJob")
+    
+    
+    return
+}
+
+func NewUpdatePrometheusScrapeJobResponse() (response *UpdatePrometheusScrapeJobResponse) {
+    response = &UpdatePrometheusScrapeJobResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// UpdatePrometheusScrapeJob
+// 更新 Prometheus 抓取任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_BADYAMLFORMAT = "FailedOperation.BadYamlFormat"
+//  FAILEDOPERATION_DBQUERYFAILED = "FailedOperation.DbQueryFailed"
+//  FAILEDOPERATION_DBRECORDCREATEFAILED = "FailedOperation.DbRecordCreateFailed"
+//  FAILEDOPERATION_DBRECORDDELETEFAILED = "FailedOperation.DbRecordDeleteFailed"
+//  FAILEDOPERATION_DBRECORDUPDATEFAILED = "FailedOperation.DbRecordUpdateFailed"
+//  FAILEDOPERATION_RESOURCEEXIST = "FailedOperation.ResourceExist"
+//  FAILEDOPERATION_RESOURCENOTFOUND = "FailedOperation.ResourceNotFound"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) UpdatePrometheusScrapeJob(request *UpdatePrometheusScrapeJobRequest) (response *UpdatePrometheusScrapeJobResponse, err error) {
+    return c.UpdatePrometheusScrapeJobWithContext(context.Background(), request)
+}
+
+// UpdatePrometheusScrapeJob
+// 更新 Prometheus 抓取任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_BADYAMLFORMAT = "FailedOperation.BadYamlFormat"
+//  FAILEDOPERATION_DBQUERYFAILED = "FailedOperation.DbQueryFailed"
+//  FAILEDOPERATION_DBRECORDCREATEFAILED = "FailedOperation.DbRecordCreateFailed"
+//  FAILEDOPERATION_DBRECORDDELETEFAILED = "FailedOperation.DbRecordDeleteFailed"
+//  FAILEDOPERATION_DBRECORDUPDATEFAILED = "FailedOperation.DbRecordUpdateFailed"
+//  FAILEDOPERATION_RESOURCEEXIST = "FailedOperation.ResourceExist"
+//  FAILEDOPERATION_RESOURCENOTFOUND = "FailedOperation.ResourceNotFound"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) UpdatePrometheusScrapeJobWithContext(ctx context.Context, request *UpdatePrometheusScrapeJobRequest) (response *UpdatePrometheusScrapeJobResponse, err error) {
+    if request == nil {
+        request = NewUpdatePrometheusScrapeJobRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdatePrometheusScrapeJob require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpdatePrometheusScrapeJobResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewUpdateServiceDiscoveryRequest() (request *UpdateServiceDiscoveryRequest) {
     request = &UpdateServiceDiscoveryRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3842,6 +4982,67 @@ func (c *Client) UpdateServiceDiscoveryWithContext(ctx context.Context, request 
     request.SetContext(ctx)
     
     response = NewUpdateServiceDiscoveryResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpgradeGrafanaDashboardRequest() (request *UpgradeGrafanaDashboardRequest) {
+    request = &UpgradeGrafanaDashboardRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("monitor", APIVersion, "UpgradeGrafanaDashboard")
+    
+    
+    return
+}
+
+func NewUpgradeGrafanaDashboardResponse() (response *UpgradeGrafanaDashboardResponse) {
+    response = &UpgradeGrafanaDashboardResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// UpgradeGrafanaDashboard
+// 升级 Grafana Dashboard
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ACCESSSTSFAIL = "FailedOperation.AccessSTSFail"
+//  FAILEDOPERATION_ACCESSTKEFAIL = "FailedOperation.AccessTKEFail"
+//  FAILEDOPERATION_AGENTVERSIONNOTSUPPORTED = "FailedOperation.AgentVersionNotSupported"
+//  FAILEDOPERATION_BADYAMLFORMAT = "FailedOperation.BadYamlFormat"
+//  FAILEDOPERATION_TKEENDPOINTSTATUSERROR = "FailedOperation.TKEEndpointStatusError"
+//  FAILEDOPERATION_TKERESOURCECONFLICT = "FailedOperation.TKEResourceConflict"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) UpgradeGrafanaDashboard(request *UpgradeGrafanaDashboardRequest) (response *UpgradeGrafanaDashboardResponse, err error) {
+    return c.UpgradeGrafanaDashboardWithContext(context.Background(), request)
+}
+
+// UpgradeGrafanaDashboard
+// 升级 Grafana Dashboard
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ACCESSSTSFAIL = "FailedOperation.AccessSTSFail"
+//  FAILEDOPERATION_ACCESSTKEFAIL = "FailedOperation.AccessTKEFail"
+//  FAILEDOPERATION_AGENTVERSIONNOTSUPPORTED = "FailedOperation.AgentVersionNotSupported"
+//  FAILEDOPERATION_BADYAMLFORMAT = "FailedOperation.BadYamlFormat"
+//  FAILEDOPERATION_TKEENDPOINTSTATUSERROR = "FailedOperation.TKEEndpointStatusError"
+//  FAILEDOPERATION_TKERESOURCECONFLICT = "FailedOperation.TKEResourceConflict"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) UpgradeGrafanaDashboardWithContext(ctx context.Context, request *UpgradeGrafanaDashboardRequest) (response *UpgradeGrafanaDashboardResponse, err error) {
+    if request == nil {
+        request = NewUpgradeGrafanaDashboardRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpgradeGrafanaDashboard require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpgradeGrafanaDashboardResponse()
     err = c.Send(request, response)
     return
 }
