@@ -588,6 +588,15 @@ type CacheKey struct {
 	QueryString *QueryString `json:"QueryString,omitempty" name:"QueryString"`
 }
 
+type CachePrefresh struct {
+	// 缓存预刷新配置开关
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
+
+	// 缓存预刷新百分比：1-99
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Percent *int64 `json:"Percent,omitempty" name:"Percent"`
+}
+
 type CertFilter struct {
 	// 过滤字段名，支持的列表如下:
 	//  - host：域名。
@@ -7063,6 +7072,10 @@ type DescribeZoneSettingResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClientIpHeader *ClientIp `json:"ClientIpHeader,omitempty" name:"ClientIpHeader"`
 
+	// 缓存预刷新配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CachePrefresh *CachePrefresh `json:"CachePrefresh,omitempty" name:"CachePrefresh"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }
@@ -9259,6 +9272,9 @@ type ModifyZoneSettingRequestParams struct {
 
 	// 客户端IP回源请求头配置
 	ClientIpHeader *ClientIp `json:"ClientIpHeader,omitempty" name:"ClientIpHeader"`
+
+	// 缓存预刷新配置
+	CachePrefresh *CachePrefresh `json:"CachePrefresh,omitempty" name:"CachePrefresh"`
 }
 
 type ModifyZoneSettingRequest struct {
@@ -9308,6 +9324,9 @@ type ModifyZoneSettingRequest struct {
 
 	// 客户端IP回源请求头配置
 	ClientIpHeader *ClientIp `json:"ClientIpHeader,omitempty" name:"ClientIpHeader"`
+
+	// 缓存预刷新配置
+	CachePrefresh *CachePrefresh `json:"CachePrefresh,omitempty" name:"CachePrefresh"`
 }
 
 func (r *ModifyZoneSettingRequest) ToJsonString() string {
@@ -9337,6 +9356,7 @@ func (r *ModifyZoneSettingRequest) FromJsonString(s string) error {
 	delete(f, "SmartRouting")
 	delete(f, "WebSocket")
 	delete(f, "ClientIpHeader")
+	delete(f, "CachePrefresh")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyZoneSettingRequest has unknown keys!", "")
 	}

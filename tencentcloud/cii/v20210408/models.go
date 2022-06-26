@@ -1088,6 +1088,9 @@ type OcrRecognise struct {
 
 	// 位置信息
 	Location *Location `json:"Location,omitempty" name:"Location"`
+
+	// 字段名
+	Field *string `json:"Field,omitempty" name:"Field"`
 }
 
 type PerStructDifference struct {

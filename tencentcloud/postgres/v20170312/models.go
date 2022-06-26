@@ -4236,10 +4236,10 @@ func (r *InquiryPriceUpgradeDBInstanceRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type InquiryPriceUpgradeDBInstanceResponseParams struct {
-	// 总费用，打折前的
+	// 刊例价费用
 	OriginalPrice *int64 `json:"OriginalPrice,omitempty" name:"OriginalPrice"`
 
-	// 实际需要付款金额
+	// 折后实际付款金额
 	Price *int64 `json:"Price,omitempty" name:"Price"`
 
 	// 币种。例如，CNY：人民币。

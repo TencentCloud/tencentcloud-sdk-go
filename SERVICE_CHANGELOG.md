@@ -1,33 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 多媒体创作引擎(cme) 版本：2019-10-29
+## 智能保险助手(cii) 版本：2021-04-08
 
-### 第 50 次发布
+### 第 14 次发布
 
-发布时间：2022-06-24 06:09:00
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [HandleStreamConnectProject](https://cloud.tencent.com/document/api/1156/54998)
-
-	* 新增出参：VodPullInputPlayInfo
-
-
-新增数据结构：
-
-* [VodPullInputPlayInfo](https://cloud.tencent.com/document/api/1156/40360#VodPullInputPlayInfo)
-
-
-
-## 企业收付平台(cpdp) 版本：2019-08-20
-
-### 第 70 次发布
-
-发布时间：2022-06-24 06:09:13
+发布时间：2022-06-27 06:06:02
 
 本次发布包含了以下内容：
 
@@ -35,105 +12,22 @@
 
 修改数据结构：
 
-* [QueryOpenBankPaymentOrderResult](https://cloud.tencent.com/document/api/1122/40683#QueryOpenBankPaymentOrderResult)
+* [OcrRecognise](https://cloud.tencent.com/document/api/1368/56853#OcrRecognise)
 
-	* 新增成员：FeeAmount, FeeRate
-
-
+	* 新增成员：Field
 
 
-## 小程序安全(mmps) 版本：2020-07-10
 
-### 第 4 次发布
 
-发布时间：2022-06-24 06:14:40
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [AppInfoItem](https://cloud.tencent.com/document/api/1223/75143#AppInfoItem)
-
-	* 新增成员：HighRiskCount
-
+## 智能保险助手(cii) 版本：2020-12-10
 
 
 
 ## 云监控(monitor) 版本：2018-07-24
 
-### 第 48 次发布
+### 第 49 次发布
 
-发布时间：2022-06-24 06:14:48
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [BindPrometheusManagedGrafana](https://cloud.tencent.com/document/api/248/76020)
-* [CreateExporterIntegration](https://cloud.tencent.com/document/api/248/76019)
-* [CreatePrometheusAgent](https://cloud.tencent.com/document/api/248/76018)
-* [CreatePrometheusScrapeJob](https://cloud.tencent.com/document/api/248/76017)
-* [DeleteExporterIntegration](https://cloud.tencent.com/document/api/248/76016)
-* [DeletePrometheusScrapeJobs](https://cloud.tencent.com/document/api/248/76015)
-* [DescribeExporterIntegrations](https://cloud.tencent.com/document/api/248/76014)
-* [DescribePrometheusAgents](https://cloud.tencent.com/document/api/248/76013)
-* [DescribePrometheusScrapeJobs](https://cloud.tencent.com/document/api/248/76012)
-* [DestroyPrometheusInstance](https://cloud.tencent.com/document/api/248/76011)
-* [GetPrometheusAgentManagementCommand](https://cloud.tencent.com/document/api/248/76010)
-* [ModifyPrometheusInstanceAttributes](https://cloud.tencent.com/document/api/248/76009)
-* [TerminatePrometheusInstances](https://cloud.tencent.com/document/api/248/76008)
-* [UnbindPrometheusManagedGrafana](https://cloud.tencent.com/document/api/248/76007)
-* [UninstallGrafanaDashboard](https://cloud.tencent.com/document/api/248/76006)
-* [UpdateExporterIntegration](https://cloud.tencent.com/document/api/248/76005)
-* [UpdatePrometheusAgentStatus](https://cloud.tencent.com/document/api/248/76004)
-* [UpdatePrometheusScrapeJob](https://cloud.tencent.com/document/api/248/76003)
-* [UpgradeGrafanaDashboard](https://cloud.tencent.com/document/api/248/76002)
-
-新增数据结构：
-
-* [IntegrationConfiguration](https://cloud.tencent.com/document/api/248/30354#IntegrationConfiguration)
-* [ManagementCommand](https://cloud.tencent.com/document/api/248/30354#ManagementCommand)
-* [PrometheusAgent](https://cloud.tencent.com/document/api/248/30354#PrometheusAgent)
-* [PrometheusScrapeJob](https://cloud.tencent.com/document/api/248/30354#PrometheusScrapeJob)
-
-
-
-## 医疗报告结构化(mrs) 版本：2020-09-10
-
-### 第 12 次发布
-
-发布时间：2022-06-24 06:15:32
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增数据结构：
-
-* [Time](https://cloud.tencent.com/document/api/1314/56230#Time)
-
-修改数据结构：
-
-* [PatientInfo](https://cloud.tencent.com/document/api/1314/56230#PatientInfo)
-
-	* 新增成员：BedNo
-
-* [ReportInfo](https://cloud.tencent.com/document/api/1314/56230#ReportInfo)
-
-	* 新增成员：CheckItem, CheckMethod, DiagnoseTime, HealthCheckupNum, OtherTime, PrintTime, Times
-
-
-
-
-## 云托管 CloudBase Run(tcbr) 版本：2022-02-17
-
-### 第 3 次发布
-
-发布时间：2022-06-24 06:17:45
+发布时间：2022-06-27 06:12:15
 
 本次发布包含了以下内容：
 
@@ -141,20 +35,22 @@
 
 新增接口：
 
-* [DescribeServerManageTask](https://cloud.tencent.com/document/api/1243/76021)
+* [CreateRecordingRule](https://cloud.tencent.com/document/api/248/76041)
+* [DeleteRecordingRules](https://cloud.tencent.com/document/api/248/76040)
+* [DescribeRecordingRules](https://cloud.tencent.com/document/api/248/76039)
+* [UpdateRecordingRule](https://cloud.tencent.com/document/api/248/76038)
 
 新增数据结构：
 
-* [ServerManageTaskInfo](https://cloud.tencent.com/document/api/1243/75713#ServerManageTaskInfo)
-* [TaskStepInfo](https://cloud.tencent.com/document/api/1243/75713#TaskStepInfo)
+* [RecordingRuleSet](https://cloud.tencent.com/document/api/248/30354#RecordingRuleSet)
 
 
 
-## 私有网络(vpc) 版本：2017-03-12
+## 边缘安全加速平台(teo) 版本：2022-01-06
 
-### 第 117 次发布
+### 第 10 次发布
 
-发布时间：2022-06-24 06:20:35
+发布时间：2022-06-27 06:15:53
 
 本次发布包含了以下内容：
 
@@ -162,10 +58,34 @@
 
 修改接口：
 
-* [ModifyNetworkAclEntries](https://cloud.tencent.com/document/api/215/42107)
+* [DescribeZoneSetting](https://cloud.tencent.com/document/api/1552/74820)
 
-	* <font color="#dd0000">**修改入参**：</font>NetworkAclEntrySet
+	* 新增出参：CachePrefresh
 
+* [ModifyZoneSetting](https://cloud.tencent.com/document/api/1552/74819)
+
+	* 新增入参：CachePrefresh
+
+
+新增数据结构：
+
+* [CachePrefresh](https://cloud.tencent.com/document/api/1552/73155#CachePrefresh)
+
+
+
+## 容器服务(tke) 版本：2018-05-25
+
+### 第 105 次发布
+
+发布时间：2022-06-27 06:16:26
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [ForwardTKEEdgeApplicationRequestV3](https://cloud.tencent.com/document/api/457/76042)
 
 
 
@@ -16260,6 +16180,21 @@
 
 ## 智能保险助手(cii) 版本：2021-04-08
 
+### 第 14 次发布
+
+发布时间：2022-06-27 06:06:02
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [OcrRecognise](https://cloud.tencent.com/document/api/1368/56853#OcrRecognise)
+
+	* 新增成员：Field
+
+
 ### 第 13 次发布
 
 发布时间：2022-06-16 06:03:27
@@ -19741,7 +19676,7 @@
 
 新增数据结构：
 
-* [[VodPullInputPlayInfo](https://cloud.tencent.com/document/api/1156/40360#VodPullInputPlayInfo)](https://cloud.tencent.com/document/api/1156/40360#[VodPullInputPlayInfo](https://cloud.tencent.com/document/api/1156/40360#VodPullInputPlayInfo))
+* [VodPullInputPlayInfo](https://cloud.tencent.com/document/api/1156/40360#VodPullInputPlayInfo)
 
 ### 第 49 次发布
 
@@ -48245,6 +48180,25 @@
 
 ## 云监控(monitor) 版本：2018-07-24
 
+### 第 49 次发布
+
+发布时间：2022-06-27 06:12:15
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateRecordingRule](https://cloud.tencent.com/document/api/248/76041)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteRecordingRules](https://cloud.tencent.com/document/api/248/76040)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeRecordingRules](https://cloud.tencent.com/document/api/248/76039)](https://cloud.tencent.com/document/api/#/#)
+* [[UpdateRecordingRule](https://cloud.tencent.com/document/api/248/76038)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[RecordingRuleSet](https://cloud.tencent.com/document/api/248/30354#RecordingRuleSet)](https://cloud.tencent.com/document/api/248/30354#[RecordingRuleSet](https://cloud.tencent.com/document/api/248/30354#RecordingRuleSet))
+
 ### 第 48 次发布
 
 发布时间：2022-06-24 06:14:48
@@ -48255,32 +48209,32 @@
 
 新增接口：
 
-* [[BindPrometheusManagedGrafana](https://cloud.tencent.com/document/api/248/76020)](https://cloud.tencent.com/document/api/#/#)
-* [[CreateExporterIntegration](https://cloud.tencent.com/document/api/248/76019)](https://cloud.tencent.com/document/api/#/#)
-* [[CreatePrometheusAgent](https://cloud.tencent.com/document/api/248/76018)](https://cloud.tencent.com/document/api/#/#)
-* [[CreatePrometheusScrapeJob](https://cloud.tencent.com/document/api/248/76017)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteExporterIntegration](https://cloud.tencent.com/document/api/248/76016)](https://cloud.tencent.com/document/api/#/#)
-* [[DeletePrometheusScrapeJobs](https://cloud.tencent.com/document/api/248/76015)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeExporterIntegrations](https://cloud.tencent.com/document/api/248/76014)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribePrometheusAgents](https://cloud.tencent.com/document/api/248/76013)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribePrometheusScrapeJobs](https://cloud.tencent.com/document/api/248/76012)](https://cloud.tencent.com/document/api/#/#)
-* [[DestroyPrometheusInstance](https://cloud.tencent.com/document/api/248/76011)](https://cloud.tencent.com/document/api/#/#)
-* [[GetPrometheusAgentManagementCommand](https://cloud.tencent.com/document/api/248/76010)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyPrometheusInstanceAttributes](https://cloud.tencent.com/document/api/248/76009)](https://cloud.tencent.com/document/api/#/#)
-* [[TerminatePrometheusInstances](https://cloud.tencent.com/document/api/248/76008)](https://cloud.tencent.com/document/api/#/#)
-* [[UnbindPrometheusManagedGrafana](https://cloud.tencent.com/document/api/248/76007)](https://cloud.tencent.com/document/api/#/#)
-* [[UninstallGrafanaDashboard](https://cloud.tencent.com/document/api/248/76006)](https://cloud.tencent.com/document/api/#/#)
-* [[UpdateExporterIntegration](https://cloud.tencent.com/document/api/248/76005)](https://cloud.tencent.com/document/api/#/#)
-* [[UpdatePrometheusAgentStatus](https://cloud.tencent.com/document/api/248/76004)](https://cloud.tencent.com/document/api/#/#)
-* [[UpdatePrometheusScrapeJob](https://cloud.tencent.com/document/api/248/76003)](https://cloud.tencent.com/document/api/#/#)
-* [[UpgradeGrafanaDashboard](https://cloud.tencent.com/document/api/248/76002)](https://cloud.tencent.com/document/api/#/#)
+* [BindPrometheusManagedGrafana](https://cloud.tencent.com/document/api/248/76020)
+* [CreateExporterIntegration](https://cloud.tencent.com/document/api/248/76019)
+* [CreatePrometheusAgent](https://cloud.tencent.com/document/api/248/76018)
+* [CreatePrometheusScrapeJob](https://cloud.tencent.com/document/api/248/76017)
+* [DeleteExporterIntegration](https://cloud.tencent.com/document/api/248/76016)
+* [DeletePrometheusScrapeJobs](https://cloud.tencent.com/document/api/248/76015)
+* [DescribeExporterIntegrations](https://cloud.tencent.com/document/api/248/76014)
+* [DescribePrometheusAgents](https://cloud.tencent.com/document/api/248/76013)
+* [DescribePrometheusScrapeJobs](https://cloud.tencent.com/document/api/248/76012)
+* [DestroyPrometheusInstance](https://cloud.tencent.com/document/api/248/76011)
+* [GetPrometheusAgentManagementCommand](https://cloud.tencent.com/document/api/248/76010)
+* [ModifyPrometheusInstanceAttributes](https://cloud.tencent.com/document/api/248/76009)
+* [TerminatePrometheusInstances](https://cloud.tencent.com/document/api/248/76008)
+* [UnbindPrometheusManagedGrafana](https://cloud.tencent.com/document/api/248/76007)
+* [UninstallGrafanaDashboard](https://cloud.tencent.com/document/api/248/76006)
+* [UpdateExporterIntegration](https://cloud.tencent.com/document/api/248/76005)
+* [UpdatePrometheusAgentStatus](https://cloud.tencent.com/document/api/248/76004)
+* [UpdatePrometheusScrapeJob](https://cloud.tencent.com/document/api/248/76003)
+* [UpgradeGrafanaDashboard](https://cloud.tencent.com/document/api/248/76002)
 
 新增数据结构：
 
-* [[IntegrationConfiguration](https://cloud.tencent.com/document/api/248/30354#IntegrationConfiguration)](https://cloud.tencent.com/document/api/248/30354#[IntegrationConfiguration](https://cloud.tencent.com/document/api/248/30354#IntegrationConfiguration))
-* [[ManagementCommand](https://cloud.tencent.com/document/api/248/30354#ManagementCommand)](https://cloud.tencent.com/document/api/248/30354#[ManagementCommand](https://cloud.tencent.com/document/api/248/30354#ManagementCommand))
-* [[PrometheusAgent](https://cloud.tencent.com/document/api/248/30354#PrometheusAgent)](https://cloud.tencent.com/document/api/248/30354#[PrometheusAgent](https://cloud.tencent.com/document/api/248/30354#PrometheusAgent))
-* [[PrometheusScrapeJob](https://cloud.tencent.com/document/api/248/30354#PrometheusScrapeJob)](https://cloud.tencent.com/document/api/248/30354#[PrometheusScrapeJob](https://cloud.tencent.com/document/api/248/30354#PrometheusScrapeJob))
+* [IntegrationConfiguration](https://cloud.tencent.com/document/api/248/30354#IntegrationConfiguration)
+* [ManagementCommand](https://cloud.tencent.com/document/api/248/30354#ManagementCommand)
+* [PrometheusAgent](https://cloud.tencent.com/document/api/248/30354#PrometheusAgent)
+* [PrometheusScrapeJob](https://cloud.tencent.com/document/api/248/30354#PrometheusScrapeJob)
 
 ### 第 47 次发布
 
@@ -50569,7 +50523,7 @@
 
 新增数据结构：
 
-* [[Time](https://cloud.tencent.com/document/api/1314/56230#Time)](https://cloud.tencent.com/document/api/1314/56230#[Time](https://cloud.tencent.com/document/api/1314/56230#Time))
+* [Time](https://cloud.tencent.com/document/api/1314/56230#Time)
 
 修改数据结构：
 
@@ -63081,12 +63035,12 @@
 
 新增接口：
 
-* [[DescribeServerManageTask](https://cloud.tencent.com/document/api/1243/76021)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeServerManageTask](https://cloud.tencent.com/document/api/1243/76021)
 
 新增数据结构：
 
-* [[ServerManageTaskInfo](https://cloud.tencent.com/document/api/1243/75713#ServerManageTaskInfo)](https://cloud.tencent.com/document/api/1243/75713#[ServerManageTaskInfo](https://cloud.tencent.com/document/api/1243/75713#ServerManageTaskInfo))
-* [[TaskStepInfo](https://cloud.tencent.com/document/api/1243/75713#TaskStepInfo)](https://cloud.tencent.com/document/api/1243/75713#[TaskStepInfo](https://cloud.tencent.com/document/api/1243/75713#TaskStepInfo))
+* [ServerManageTaskInfo](https://cloud.tencent.com/document/api/1243/75713#ServerManageTaskInfo)
+* [TaskStepInfo](https://cloud.tencent.com/document/api/1243/75713#TaskStepInfo)
 
 ### 第 2 次发布
 
@@ -66835,6 +66789,29 @@
 
 ## 边缘安全加速平台(teo) 版本：2022-01-06
 
+### 第 10 次发布
+
+发布时间：2022-06-27 06:15:53
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeZoneSetting](https://cloud.tencent.com/document/api/1552/74820)
+
+	* 新增出参：CachePrefresh
+
+* [ModifyZoneSetting](https://cloud.tencent.com/document/api/1552/74819)
+
+	* 新增入参：CachePrefresh
+
+
+新增数据结构：
+
+* [[CachePrefresh](https://cloud.tencent.com/document/api/1552/73155#CachePrefresh)](https://cloud.tencent.com/document/api/1552/73155#[CachePrefresh](https://cloud.tencent.com/document/api/1552/73155#CachePrefresh))
+
 ### 第 9 次发布
 
 发布时间：2022-06-17 06:14:37
@@ -69226,6 +69203,18 @@
 
 
 ## 容器服务(tke) 版本：2018-05-25
+
+### 第 105 次发布
+
+发布时间：2022-06-27 06:16:26
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[ForwardTKEEdgeApplicationRequestV3](https://cloud.tencent.com/document/api/457/76042)](https://cloud.tencent.com/document/api/#/#)
 
 ### 第 104 次发布
 

@@ -692,6 +692,9 @@ const (
 	// 不支持删除默认路由表。
 	UNSUPPORTEDOPERATION_NOTSUPPORTDELETEDEFAULTROUTETABLE = "UnsupportedOperation.NotSupportDeleteDefaultRouteTable"
 
+	// 当前云联网不支持更新路由发布。
+	UNSUPPORTEDOPERATION_NOTSUPPORTEDUPDATECCNROUTEPUBLISH = "UnsupportedOperation.NotSupportedUpdateCcnRoutePublish"
+
 	// 指定的路由策略不支持发布或撤销至云联网。
 	UNSUPPORTEDOPERATION_NOTIFYCCN = "UnsupportedOperation.NotifyCcn"
 

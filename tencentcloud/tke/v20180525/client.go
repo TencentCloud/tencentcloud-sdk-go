@@ -7809,6 +7809,77 @@ func (c *Client) ForwardApplicationRequestV3WithContext(ctx context.Context, req
     return
 }
 
+func NewForwardTKEEdgeApplicationRequestV3Request() (request *ForwardTKEEdgeApplicationRequestV3Request) {
+    request = &ForwardTKEEdgeApplicationRequestV3Request{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tke", APIVersion, "ForwardTKEEdgeApplicationRequestV3")
+    
+    
+    return
+}
+
+func NewForwardTKEEdgeApplicationRequestV3Response() (response *ForwardTKEEdgeApplicationRequestV3Response) {
+    response = &ForwardTKEEdgeApplicationRequestV3Response{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ForwardTKEEdgeApplicationRequestV3
+// 操作TKEEdge集群的addon
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_RBACFORBIDDEN = "FailedOperation.RBACForbidden"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_NOTINWHITELIST = "UnsupportedOperation.NotInWhitelist"
+func (c *Client) ForwardTKEEdgeApplicationRequestV3(request *ForwardTKEEdgeApplicationRequestV3Request) (response *ForwardTKEEdgeApplicationRequestV3Response, err error) {
+    return c.ForwardTKEEdgeApplicationRequestV3WithContext(context.Background(), request)
+}
+
+// ForwardTKEEdgeApplicationRequestV3
+// 操作TKEEdge集群的addon
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_RBACFORBIDDEN = "FailedOperation.RBACForbidden"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_NOTINWHITELIST = "UnsupportedOperation.NotInWhitelist"
+func (c *Client) ForwardTKEEdgeApplicationRequestV3WithContext(ctx context.Context, request *ForwardTKEEdgeApplicationRequestV3Request) (response *ForwardTKEEdgeApplicationRequestV3Response, err error) {
+    if request == nil {
+        request = NewForwardTKEEdgeApplicationRequestV3Request()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ForwardTKEEdgeApplicationRequestV3 require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewForwardTKEEdgeApplicationRequestV3Response()
+    err = c.Send(request, response)
+    return
+}
+
 func NewGetClusterLevelPriceRequest() (request *GetClusterLevelPriceRequest) {
     request = &GetClusterLevelPriceRequest{
         BaseRequest: &tchttp.BaseRequest{},

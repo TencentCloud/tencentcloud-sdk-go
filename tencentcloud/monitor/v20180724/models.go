@@ -1527,6 +1527,93 @@ func (r *CreatePrometheusScrapeJobResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateRecordingRuleRequestParams struct {
+	// 聚合规则名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 聚合规则组内容，格式为 yaml
+	Group *string `json:"Group,omitempty" name:"Group"`
+
+	// Prometheus 实例 ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 规则状态码，取值如下：
+	// <li>1=RuleDeleted</li>
+	// <li>2=RuleEnabled</li>
+	// <li>3=RuleDisabled</li>
+	// 默认状态码为 2 启用。
+	RuleState *int64 `json:"RuleState,omitempty" name:"RuleState"`
+}
+
+type CreateRecordingRuleRequest struct {
+	*tchttp.BaseRequest
+	
+	// 聚合规则名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 聚合规则组内容，格式为 yaml
+	Group *string `json:"Group,omitempty" name:"Group"`
+
+	// Prometheus 实例 ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 规则状态码，取值如下：
+	// <li>1=RuleDeleted</li>
+	// <li>2=RuleEnabled</li>
+	// <li>3=RuleDisabled</li>
+	// 默认状态码为 2 启用。
+	RuleState *int64 `json:"RuleState,omitempty" name:"RuleState"`
+}
+
+func (r *CreateRecordingRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateRecordingRuleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Name")
+	delete(f, "Group")
+	delete(f, "InstanceId")
+	delete(f, "RuleState")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateRecordingRuleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateRecordingRuleResponseParams struct {
+	// 规则 ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleId *string `json:"RuleId,omitempty" name:"RuleId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateRecordingRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateRecordingRuleResponseParams `json:"Response"`
+}
+
+func (r *CreateRecordingRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateRecordingRuleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateServiceDiscoveryRequestParams struct {
 	// Prometheus 实例 ID
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
@@ -2027,6 +2114,67 @@ func (r *DeletePrometheusScrapeJobsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeletePrometheusScrapeJobsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteRecordingRulesRequestParams struct {
+	// 规则 ID 列表
+	RuleIds []*string `json:"RuleIds,omitempty" name:"RuleIds"`
+
+	// Prometheus 实例 ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+}
+
+type DeleteRecordingRulesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 规则 ID 列表
+	RuleIds []*string `json:"RuleIds,omitempty" name:"RuleIds"`
+
+	// Prometheus 实例 ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+}
+
+func (r *DeleteRecordingRulesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteRecordingRulesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RuleIds")
+	delete(f, "InstanceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteRecordingRulesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteRecordingRulesResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DeleteRecordingRulesResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteRecordingRulesResponseParams `json:"Response"`
+}
+
+func (r *DeleteRecordingRulesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteRecordingRulesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -5510,6 +5658,108 @@ func (r *DescribePrometheusScrapeJobsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeRecordingRulesRequestParams struct {
+	// Prometheus 实例 ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 返回数量，默认为 20，最大值为 100
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移量，默认为 0
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 规则 ID
+	RuleId *string `json:"RuleId,omitempty" name:"RuleId"`
+
+	// 规则状态码，取值如下：
+	// <li>1=RuleDeleted</li>
+	// <li>2=RuleEnabled</li>
+	// <li>3=RuleDisabled</li>
+	RuleState *int64 `json:"RuleState,omitempty" name:"RuleState"`
+
+	// 规则名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+}
+
+type DescribeRecordingRulesRequest struct {
+	*tchttp.BaseRequest
+	
+	// Prometheus 实例 ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 返回数量，默认为 20，最大值为 100
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移量，默认为 0
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 规则 ID
+	RuleId *string `json:"RuleId,omitempty" name:"RuleId"`
+
+	// 规则状态码，取值如下：
+	// <li>1=RuleDeleted</li>
+	// <li>2=RuleEnabled</li>
+	// <li>3=RuleDisabled</li>
+	RuleState *int64 `json:"RuleState,omitempty" name:"RuleState"`
+
+	// 规则名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+}
+
+func (r *DescribeRecordingRulesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRecordingRulesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "RuleId")
+	delete(f, "RuleState")
+	delete(f, "Name")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRecordingRulesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRecordingRulesResponseParams struct {
+	// 规则组数量
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 规则组详情
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RecordingRuleSet []*RecordingRuleSet `json:"RecordingRuleSet,omitempty" name:"RecordingRuleSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeRecordingRulesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeRecordingRulesResponseParams `json:"Response"`
+}
+
+func (r *DescribeRecordingRulesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRecordingRulesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeServiceDiscoveryRequestParams struct {
 	// Prometheus 实例 ID
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
@@ -7465,6 +7715,29 @@ type ReceiverInfo struct {
 	ReceiveLanguage *string `json:"ReceiveLanguage,omitempty" name:"ReceiveLanguage"`
 }
 
+type RecordingRuleSet struct {
+	// 规则 ID
+	RuleId *string `json:"RuleId,omitempty" name:"RuleId"`
+
+	// 规则状态码
+	RuleState *int64 `json:"RuleState,omitempty" name:"RuleState"`
+
+	// 规则名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 规则内容组
+	Group *string `json:"Group,omitempty" name:"Group"`
+
+	// 规则数量
+	Total *int64 `json:"Total,omitempty" name:"Total"`
+
+	// 规则创建时间
+	CreatedAt *string `json:"CreatedAt,omitempty" name:"CreatedAt"`
+
+	// 规则最近更新时间
+	UpdatedAt *string `json:"UpdatedAt,omitempty" name:"UpdatedAt"`
+}
+
 // Predefined struct for user
 type SendCustomAlarmMsgRequestParams struct {
 	// 接口模块名，当前取值monitor
@@ -8512,6 +8785,100 @@ func (r *UpdatePrometheusScrapeJobResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *UpdatePrometheusScrapeJobResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateRecordingRuleRequestParams struct {
+	// 聚合规则名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 聚合规则组内容，格式为 yaml，通过 base64 进行编码。
+	Group *string `json:"Group,omitempty" name:"Group"`
+
+	// Prometheus 实例 ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// Prometheus 聚合规则 ID
+	RuleId *string `json:"RuleId,omitempty" name:"RuleId"`
+
+	// 规则状态码，取值如下：
+	// <li>1=RuleDeleted</li>
+	// <li>2=RuleEnabled</li>
+	// <li>3=RuleDisabled</li>
+	// 默认状态码为 2 启用。
+	RuleState *int64 `json:"RuleState,omitempty" name:"RuleState"`
+}
+
+type UpdateRecordingRuleRequest struct {
+	*tchttp.BaseRequest
+	
+	// 聚合规则名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 聚合规则组内容，格式为 yaml，通过 base64 进行编码。
+	Group *string `json:"Group,omitempty" name:"Group"`
+
+	// Prometheus 实例 ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// Prometheus 聚合规则 ID
+	RuleId *string `json:"RuleId,omitempty" name:"RuleId"`
+
+	// 规则状态码，取值如下：
+	// <li>1=RuleDeleted</li>
+	// <li>2=RuleEnabled</li>
+	// <li>3=RuleDisabled</li>
+	// 默认状态码为 2 启用。
+	RuleState *int64 `json:"RuleState,omitempty" name:"RuleState"`
+}
+
+func (r *UpdateRecordingRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateRecordingRuleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Name")
+	delete(f, "Group")
+	delete(f, "InstanceId")
+	delete(f, "RuleId")
+	delete(f, "RuleState")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateRecordingRuleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateRecordingRuleResponseParams struct {
+	// 规则 ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleId *string `json:"RuleId,omitempty" name:"RuleId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type UpdateRecordingRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *UpdateRecordingRuleResponseParams `json:"Response"`
+}
+
+func (r *UpdateRecordingRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateRecordingRuleResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

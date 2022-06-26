@@ -10090,6 +10090,105 @@ func (r *ForwardApplicationRequestV3Response) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ForwardTKEEdgeApplicationRequestV3RequestParams struct {
+	// 请求集群addon的访问
+	Method *string `json:"Method,omitempty" name:"Method"`
+
+	// 请求集群addon的路径
+	Path *string `json:"Path,omitempty" name:"Path"`
+
+	// 请求集群addon后允许接收的数据格式
+	Accept *string `json:"Accept,omitempty" name:"Accept"`
+
+	// 请求集群addon的数据格式
+	ContentType *string `json:"ContentType,omitempty" name:"ContentType"`
+
+	// 请求集群addon的数据
+	RequestBody *string `json:"RequestBody,omitempty" name:"RequestBody"`
+
+	// 集群名称，例如cls-1234abcd
+	ClusterName *string `json:"ClusterName,omitempty" name:"ClusterName"`
+
+	// 是否编码请求内容
+	EncodedBody *string `json:"EncodedBody,omitempty" name:"EncodedBody"`
+}
+
+type ForwardTKEEdgeApplicationRequestV3Request struct {
+	*tchttp.BaseRequest
+	
+	// 请求集群addon的访问
+	Method *string `json:"Method,omitempty" name:"Method"`
+
+	// 请求集群addon的路径
+	Path *string `json:"Path,omitempty" name:"Path"`
+
+	// 请求集群addon后允许接收的数据格式
+	Accept *string `json:"Accept,omitempty" name:"Accept"`
+
+	// 请求集群addon的数据格式
+	ContentType *string `json:"ContentType,omitempty" name:"ContentType"`
+
+	// 请求集群addon的数据
+	RequestBody *string `json:"RequestBody,omitempty" name:"RequestBody"`
+
+	// 集群名称，例如cls-1234abcd
+	ClusterName *string `json:"ClusterName,omitempty" name:"ClusterName"`
+
+	// 是否编码请求内容
+	EncodedBody *string `json:"EncodedBody,omitempty" name:"EncodedBody"`
+}
+
+func (r *ForwardTKEEdgeApplicationRequestV3Request) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ForwardTKEEdgeApplicationRequestV3Request) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Method")
+	delete(f, "Path")
+	delete(f, "Accept")
+	delete(f, "ContentType")
+	delete(f, "RequestBody")
+	delete(f, "ClusterName")
+	delete(f, "EncodedBody")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ForwardTKEEdgeApplicationRequestV3Request has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ForwardTKEEdgeApplicationRequestV3ResponseParams struct {
+	// 请求集群addon后返回的数据
+	ResponseBody *string `json:"ResponseBody,omitempty" name:"ResponseBody"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ForwardTKEEdgeApplicationRequestV3Response struct {
+	*tchttp.BaseResponse
+	Response *ForwardTKEEdgeApplicationRequestV3ResponseParams `json:"Response"`
+}
+
+func (r *ForwardTKEEdgeApplicationRequestV3Response) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ForwardTKEEdgeApplicationRequestV3Response) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type GetClusterLevelPriceRequestParams struct {
 	// 集群规格，托管集群询价
 	ClusterLevel *string `json:"ClusterLevel,omitempty" name:"ClusterLevel"`
