@@ -4307,6 +4307,7 @@ func NewUpdateGroupResponse() (response *UpdateGroupResponse) {
 //  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETER_GROUPNAMEINUSE = "InvalidParameter.GroupNameInUse"
 //  INVALIDPARAMETER_GROUPNOTEXIST = "InvalidParameter.GroupNotExist"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  RESOURCENOTFOUND_GROUPNOTEXIST = "ResourceNotFound.GroupNotExist"
 func (c *Client) UpdateGroup(request *UpdateGroupRequest) (response *UpdateGroupResponse, err error) {
     return c.UpdateGroupWithContext(context.Background(), request)
@@ -4319,6 +4320,7 @@ func (c *Client) UpdateGroup(request *UpdateGroupRequest) (response *UpdateGroup
 //  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETER_GROUPNAMEINUSE = "InvalidParameter.GroupNameInUse"
 //  INVALIDPARAMETER_GROUPNOTEXIST = "InvalidParameter.GroupNotExist"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  RESOURCENOTFOUND_GROUPNOTEXIST = "ResourceNotFound.GroupNotExist"
 func (c *Client) UpdateGroupWithContext(ctx context.Context, request *UpdateGroupRequest) (response *UpdateGroupResponse, err error) {
     if request == nil {

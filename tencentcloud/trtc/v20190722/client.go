@@ -781,26 +781,7 @@ func NewDescribeExternalTrtcMeasureResponse() (response *DescribeExternalTrtcMea
 // 获取Trtc的用量统计数据。走计费渠道二期 只允许查两天的数据
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INTERNALERROR_ESQUERYERROR = "InternalError.EsQueryError"
-//  INTERNALERROR_HTTPPARASEFALIED = "InternalError.HttpParaseFalied"
-//  INTERNALERROR_INTERFACEERR = "InternalError.InterfaceErr"
-//  INTERNALERROR_METHODERR = "InternalError.MethodErr"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_BODYPARAMSERROR = "InvalidParameter.BodyParamsError"
-//  INVALIDPARAMETER_ENDTS = "InvalidParameter.EndTs"
-//  INVALIDPARAMETER_STARTTS = "InvalidParameter.StartTs"
-//  INVALIDPARAMETER_STARTTSOVERSIZE = "InvalidParameter.StartTsOversize"
-//  INVALIDPARAMETER_URLPARAMSERROR = "InvalidParameter.UrlParamsError"
-//  INVALIDPARAMETER_USERID = "InvalidParameter.UserId"
-//  MISSINGPARAMETER = "MissingParameter"
-//  MISSINGPARAMETER_APPID = "MissingParameter.AppId"
-//  MISSINGPARAMETER_COMMID = "MissingParameter.CommId"
-//  MISSINGPARAMETER_COMMIDORSDKAPPID = "MissingParameter.CommIdOrSdkAppId"
-//  MISSINGPARAMETER_ENDTS = "MissingParameter.EndTs"
-//  MISSINGPARAMETER_ROOMID = "MissingParameter.RoomId"
-//  MISSINGPARAMETER_STARTTS = "MissingParameter.StartTs"
-//  MISSINGPARAMETER_USERID = "MissingParameter.UserId"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
 func (c *Client) DescribeExternalTrtcMeasure(request *DescribeExternalTrtcMeasureRequest) (response *DescribeExternalTrtcMeasureResponse, err error) {
     return c.DescribeExternalTrtcMeasureWithContext(context.Background(), request)
 }
@@ -809,26 +790,7 @@ func (c *Client) DescribeExternalTrtcMeasure(request *DescribeExternalTrtcMeasur
 // 获取Trtc的用量统计数据。走计费渠道二期 只允许查两天的数据
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INTERNALERROR_ESQUERYERROR = "InternalError.EsQueryError"
-//  INTERNALERROR_HTTPPARASEFALIED = "InternalError.HttpParaseFalied"
-//  INTERNALERROR_INTERFACEERR = "InternalError.InterfaceErr"
-//  INTERNALERROR_METHODERR = "InternalError.MethodErr"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_BODYPARAMSERROR = "InvalidParameter.BodyParamsError"
-//  INVALIDPARAMETER_ENDTS = "InvalidParameter.EndTs"
-//  INVALIDPARAMETER_STARTTS = "InvalidParameter.StartTs"
-//  INVALIDPARAMETER_STARTTSOVERSIZE = "InvalidParameter.StartTsOversize"
-//  INVALIDPARAMETER_URLPARAMSERROR = "InvalidParameter.UrlParamsError"
-//  INVALIDPARAMETER_USERID = "InvalidParameter.UserId"
-//  MISSINGPARAMETER = "MissingParameter"
-//  MISSINGPARAMETER_APPID = "MissingParameter.AppId"
-//  MISSINGPARAMETER_COMMID = "MissingParameter.CommId"
-//  MISSINGPARAMETER_COMMIDORSDKAPPID = "MissingParameter.CommIdOrSdkAppId"
-//  MISSINGPARAMETER_ENDTS = "MissingParameter.EndTs"
-//  MISSINGPARAMETER_ROOMID = "MissingParameter.RoomId"
-//  MISSINGPARAMETER_STARTTS = "MissingParameter.StartTs"
-//  MISSINGPARAMETER_USERID = "MissingParameter.UserId"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
 func (c *Client) DescribeExternalTrtcMeasureWithContext(ctx context.Context, request *DescribeExternalTrtcMeasureRequest) (response *DescribeExternalTrtcMeasureResponse, err error) {
     if request == nil {
         request = NewDescribeExternalTrtcMeasureRequest()

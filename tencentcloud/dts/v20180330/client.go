@@ -808,6 +808,7 @@ func NewDescribeSubscribesResponse() (response *DescribeSubscribesResponse) {
 //  AUTHFAILURE_UNAUTHORIZEDOPERATIONERROR = "AuthFailure.UnauthorizedOperationError"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
 func (c *Client) DescribeSubscribes(request *DescribeSubscribesRequest) (response *DescribeSubscribesResponse, err error) {
     return c.DescribeSubscribesWithContext(context.Background(), request)
 }
@@ -819,6 +820,7 @@ func (c *Client) DescribeSubscribes(request *DescribeSubscribesRequest) (respons
 //  AUTHFAILURE_UNAUTHORIZEDOPERATIONERROR = "AuthFailure.UnauthorizedOperationError"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
 func (c *Client) DescribeSubscribesWithContext(ctx context.Context, request *DescribeSubscribesRequest) (response *DescribeSubscribesResponse, err error) {
     if request == nil {
         request = NewDescribeSubscribesRequest()
@@ -923,7 +925,10 @@ func NewModifyMigrateJobResponse() (response *ModifyMigrateJobResponse) {
 //  INTERNALERROR_DATABASEERROR = "InternalError.DatabaseError"
 //  INTERNALERROR_DUPLICATEJOB = "InternalError.DuplicateJob"
 //  INTERNALERROR_PROTOCOLERROR = "InternalError.ProtocolError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_BIZINVALIDPARAMETERVALUEERROR = "InvalidParameterValue.BizInvalidParameterValueError"
+//  INVALIDPARAMETERVALUE_DATACONVERTERROR = "InvalidParameterValue.DataConvertError"
 //  RESOURCENOTFOUND_JOBNOTEXIST = "ResourceNotFound.JobNotExist"
 //  UNAUTHORIZEDOPERATION_NOTENOUGHPRIVILEGES = "UnauthorizedOperation.NotEnoughPrivileges"
 func (c *Client) ModifyMigrateJob(request *ModifyMigrateJobRequest) (response *ModifyMigrateJobResponse, err error) {
@@ -944,7 +949,10 @@ func (c *Client) ModifyMigrateJob(request *ModifyMigrateJobRequest) (response *M
 //  INTERNALERROR_DATABASEERROR = "InternalError.DatabaseError"
 //  INTERNALERROR_DUPLICATEJOB = "InternalError.DuplicateJob"
 //  INTERNALERROR_PROTOCOLERROR = "InternalError.ProtocolError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_BIZINVALIDPARAMETERVALUEERROR = "InvalidParameterValue.BizInvalidParameterValueError"
+//  INVALIDPARAMETERVALUE_DATACONVERTERROR = "InvalidParameterValue.DataConvertError"
 //  RESOURCENOTFOUND_JOBNOTEXIST = "ResourceNotFound.JobNotExist"
 //  UNAUTHORIZEDOPERATION_NOTENOUGHPRIVILEGES = "UnauthorizedOperation.NotEnoughPrivileges"
 func (c *Client) ModifyMigrateJobWithContext(ctx context.Context, request *ModifyMigrateJobRequest) (response *ModifyMigrateJobResponse, err error) {

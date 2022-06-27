@@ -179,6 +179,108 @@ func (c *Client) DeleteEngineWithContext(ctx context.Context, request *DeleteEng
     return
 }
 
+func NewDescribeNacosReplicasRequest() (request *DescribeNacosReplicasRequest) {
+    request = &DescribeNacosReplicasRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tse", APIVersion, "DescribeNacosReplicas")
+    
+    
+    return
+}
+
+func NewDescribeNacosReplicasResponse() (response *DescribeNacosReplicasResponse) {
+    response = &DescribeNacosReplicasResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeNacosReplicas
+// 查询Nacos类型引擎实例副本信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR_GETCREDENTIAL = "InternalError.GetCredential"
+//  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
+//  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
+//  INVALIDPARAMETERVALUE_QUERYERROR = "InvalidParameterValue.QueryError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeNacosReplicas(request *DescribeNacosReplicasRequest) (response *DescribeNacosReplicasResponse, err error) {
+    return c.DescribeNacosReplicasWithContext(context.Background(), request)
+}
+
+// DescribeNacosReplicas
+// 查询Nacos类型引擎实例副本信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR_GETCREDENTIAL = "InternalError.GetCredential"
+//  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
+//  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
+//  INVALIDPARAMETERVALUE_QUERYERROR = "InvalidParameterValue.QueryError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeNacosReplicasWithContext(ctx context.Context, request *DescribeNacosReplicasRequest) (response *DescribeNacosReplicasResponse, err error) {
+    if request == nil {
+        request = NewDescribeNacosReplicasRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeNacosReplicas require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeNacosReplicasResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeNacosServerInterfacesRequest() (request *DescribeNacosServerInterfacesRequest) {
+    request = &DescribeNacosServerInterfacesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tse", APIVersion, "DescribeNacosServerInterfaces")
+    
+    
+    return
+}
+
+func NewDescribeNacosServerInterfacesResponse() (response *DescribeNacosServerInterfacesResponse) {
+    response = &DescribeNacosServerInterfacesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeNacosServerInterfaces
+// 查询nacos服务接口列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+func (c *Client) DescribeNacosServerInterfaces(request *DescribeNacosServerInterfacesRequest) (response *DescribeNacosServerInterfacesResponse, err error) {
+    return c.DescribeNacosServerInterfacesWithContext(context.Background(), request)
+}
+
+// DescribeNacosServerInterfaces
+// 查询nacos服务接口列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+func (c *Client) DescribeNacosServerInterfacesWithContext(ctx context.Context, request *DescribeNacosServerInterfacesRequest) (response *DescribeNacosServerInterfacesResponse, err error) {
+    if request == nil {
+        request = NewDescribeNacosServerInterfacesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeNacosServerInterfaces require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeNacosServerInterfacesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeSREInstanceAccessAddressRequest() (request *DescribeSREInstanceAccessAddressRequest) {
     request = &DescribeSREInstanceAccessAddressRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -287,6 +389,108 @@ func (c *Client) DescribeSREInstancesWithContext(ctx context.Context, request *D
     request.SetContext(ctx)
     
     response = NewDescribeSREInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeZookeeperReplicasRequest() (request *DescribeZookeeperReplicasRequest) {
+    request = &DescribeZookeeperReplicasRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tse", APIVersion, "DescribeZookeeperReplicas")
+    
+    
+    return
+}
+
+func NewDescribeZookeeperReplicasResponse() (response *DescribeZookeeperReplicasResponse) {
+    response = &DescribeZookeeperReplicasResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeZookeeperReplicas
+// 查询Zookeeper类型注册引擎实例副本信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR_GETCREDENTIAL = "InternalError.GetCredential"
+//  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
+//  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
+//  INVALIDPARAMETERVALUE_QUERYERROR = "InvalidParameterValue.QueryError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeZookeeperReplicas(request *DescribeZookeeperReplicasRequest) (response *DescribeZookeeperReplicasResponse, err error) {
+    return c.DescribeZookeeperReplicasWithContext(context.Background(), request)
+}
+
+// DescribeZookeeperReplicas
+// 查询Zookeeper类型注册引擎实例副本信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR_GETCREDENTIAL = "InternalError.GetCredential"
+//  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
+//  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
+//  INVALIDPARAMETERVALUE_QUERYERROR = "InvalidParameterValue.QueryError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeZookeeperReplicasWithContext(ctx context.Context, request *DescribeZookeeperReplicasRequest) (response *DescribeZookeeperReplicasResponse, err error) {
+    if request == nil {
+        request = NewDescribeZookeeperReplicasRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeZookeeperReplicas require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeZookeeperReplicasResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeZookeeperServerInterfacesRequest() (request *DescribeZookeeperServerInterfacesRequest) {
+    request = &DescribeZookeeperServerInterfacesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tse", APIVersion, "DescribeZookeeperServerInterfaces")
+    
+    
+    return
+}
+
+func NewDescribeZookeeperServerInterfacesResponse() (response *DescribeZookeeperServerInterfacesResponse) {
+    response = &DescribeZookeeperServerInterfacesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeZookeeperServerInterfaces
+// 查询zookeeper服务接口列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+func (c *Client) DescribeZookeeperServerInterfaces(request *DescribeZookeeperServerInterfacesRequest) (response *DescribeZookeeperServerInterfacesResponse, err error) {
+    return c.DescribeZookeeperServerInterfacesWithContext(context.Background(), request)
+}
+
+// DescribeZookeeperServerInterfaces
+// 查询zookeeper服务接口列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+func (c *Client) DescribeZookeeperServerInterfacesWithContext(ctx context.Context, request *DescribeZookeeperServerInterfacesRequest) (response *DescribeZookeeperServerInterfacesResponse, err error) {
+    if request == nil {
+        request = NewDescribeZookeeperServerInterfacesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeZookeeperServerInterfaces require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeZookeeperServerInterfacesResponse()
     err = c.Send(request, response)
     return
 }

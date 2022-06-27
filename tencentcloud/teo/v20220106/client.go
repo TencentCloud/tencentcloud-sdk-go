@@ -981,6 +981,7 @@ func NewDescribeApplicationProxyResponse() (response *DescribeApplicationProxyRe
 // 获取应用代理列表
 //
 // 可能返回的错误码:
+//  INTERNALERROR_PROXYSERVER = "InternalError.ProxyServer"
 //  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
 func (c *Client) DescribeApplicationProxy(request *DescribeApplicationProxyRequest) (response *DescribeApplicationProxyResponse, err error) {
     return c.DescribeApplicationProxyWithContext(context.Background(), request)
@@ -990,6 +991,7 @@ func (c *Client) DescribeApplicationProxy(request *DescribeApplicationProxyReque
 // 获取应用代理列表
 //
 // 可能返回的错误码:
+//  INTERNALERROR_PROXYSERVER = "InternalError.ProxyServer"
 //  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
 func (c *Client) DescribeApplicationProxyWithContext(ctx context.Context, request *DescribeApplicationProxyRequest) (response *DescribeApplicationProxyResponse, err error) {
     if request == nil {
@@ -2463,6 +2465,7 @@ func NewDescribeSecurityPortraitRulesResponse() (response *DescribeSecurityPortr
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_SECURITY = "InvalidParameter.Security"
+//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
 func (c *Client) DescribeSecurityPortraitRules(request *DescribeSecurityPortraitRulesRequest) (response *DescribeSecurityPortraitRulesResponse, err error) {
     return c.DescribeSecurityPortraitRulesWithContext(context.Background(), request)
 }
@@ -2472,6 +2475,7 @@ func (c *Client) DescribeSecurityPortraitRules(request *DescribeSecurityPortrait
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_SECURITY = "InvalidParameter.Security"
+//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
 func (c *Client) DescribeSecurityPortraitRulesWithContext(ctx context.Context, request *DescribeSecurityPortraitRulesRequest) (response *DescribeSecurityPortraitRulesResponse, err error) {
     if request == nil {
         request = NewDescribeSecurityPortraitRulesRequest()
@@ -3232,6 +3236,7 @@ func NewDescribeZonesResponse() (response *DescribeZonesResponse) {
 // 用户查询用户站点信息列表，支持分页
 //
 // 可能返回的错误码:
+//  OPERATIONDENIED = "OperationDenied"
 //  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
 //  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
 func (c *Client) DescribeZones(request *DescribeZonesRequest) (response *DescribeZonesResponse, err error) {
@@ -3242,6 +3247,7 @@ func (c *Client) DescribeZones(request *DescribeZonesRequest) (response *Describ
 // 用户查询用户站点信息列表，支持分页
 //
 // 可能返回的错误码:
+//  OPERATIONDENIED = "OperationDenied"
 //  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
 //  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
 func (c *Client) DescribeZonesWithContext(ctx context.Context, request *DescribeZonesRequest) (response *DescribeZonesResponse, err error) {

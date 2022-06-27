@@ -6200,6 +6200,7 @@ func NewDescribeJvmMonitorResponse() (response *DescribeJvmMonitorResponse) {
 //  FAILEDOPERATION_TSFMONITORWAITEDTIMEOUT = "FailedOperation.TsfMonitorWaitedTimeout"
 //  INTERNALERROR_TSFMONITORDATEPARSEFAILED = "InternalError.TsfMonitorDateParseFailed"
 //  INTERNALERROR_TSFMONITORINTERNALERROR = "InternalError.TsfMonitorInternalError"
+//  INVALIDPARAMETER_BADREQUEST = "InvalidParameter.BadRequest"
 //  INVALIDPARAMETER_TSFMONITORREQUESTPARAMILLEGAL = "InvalidParameter.TsfMonitorRequestParamIllegal"
 //  UNAUTHORIZEDOPERATION_NOPRIVILEGE = "UnauthorizedOperation.NoPrivilege"
 func (c *Client) DescribeJvmMonitor(request *DescribeJvmMonitorRequest) (response *DescribeJvmMonitorResponse, err error) {
@@ -6214,6 +6215,7 @@ func (c *Client) DescribeJvmMonitor(request *DescribeJvmMonitorRequest) (respons
 //  FAILEDOPERATION_TSFMONITORWAITEDTIMEOUT = "FailedOperation.TsfMonitorWaitedTimeout"
 //  INTERNALERROR_TSFMONITORDATEPARSEFAILED = "InternalError.TsfMonitorDateParseFailed"
 //  INTERNALERROR_TSFMONITORINTERNALERROR = "InternalError.TsfMonitorInternalError"
+//  INVALIDPARAMETER_BADREQUEST = "InvalidParameter.BadRequest"
 //  INVALIDPARAMETER_TSFMONITORREQUESTPARAMILLEGAL = "InvalidParameter.TsfMonitorRequestParamIllegal"
 //  UNAUTHORIZEDOPERATION_NOPRIVILEGE = "UnauthorizedOperation.NoPrivilege"
 func (c *Client) DescribeJvmMonitorWithContext(ctx context.Context, request *DescribeJvmMonitorRequest) (response *DescribeJvmMonitorResponse, err error) {
@@ -7992,6 +7994,7 @@ func NewDescribeUnitApiUseDetailResponse() (response *DescribeUnitApiUseDetailRe
 //  FAILEDOPERATION_GATEWAYREMOTECALLERROR = "FailedOperation.GatewayRemoteCallError"
 //  INVALIDPARAMETERVALUE_GATEWAYPARAMETERINVALID = "InvalidParameterValue.GatewayParameterInvalid"
 //  MISSINGPARAMETER_GATEWAYPARAMETERREQUIRED = "MissingParameter.GatewayParameterRequired"
+//  RESOURCENOTFOUND_INTERFACENOTFOUND = "ResourceNotFound.InterfaceNotFound"
 func (c *Client) DescribeUnitApiUseDetail(request *DescribeUnitApiUseDetailRequest) (response *DescribeUnitApiUseDetailResponse, err error) {
     return c.DescribeUnitApiUseDetailWithContext(context.Background(), request)
 }
@@ -8003,6 +8006,7 @@ func (c *Client) DescribeUnitApiUseDetail(request *DescribeUnitApiUseDetailReque
 //  FAILEDOPERATION_GATEWAYREMOTECALLERROR = "FailedOperation.GatewayRemoteCallError"
 //  INVALIDPARAMETERVALUE_GATEWAYPARAMETERINVALID = "InvalidParameterValue.GatewayParameterInvalid"
 //  MISSINGPARAMETER_GATEWAYPARAMETERREQUIRED = "MissingParameter.GatewayParameterRequired"
+//  RESOURCENOTFOUND_INTERFACENOTFOUND = "ResourceNotFound.InterfaceNotFound"
 func (c *Client) DescribeUnitApiUseDetailWithContext(ctx context.Context, request *DescribeUnitApiUseDetailRequest) (response *DescribeUnitApiUseDetailResponse, err error) {
     if request == nil {
         request = NewDescribeUnitApiUseDetailRequest()

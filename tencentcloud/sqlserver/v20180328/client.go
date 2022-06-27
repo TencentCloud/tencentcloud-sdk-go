@@ -5290,6 +5290,7 @@ func NewRemoveBackupsResponse() (response *RemoveBackupsResponse) {
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
 //  INVALIDPARAMETER_INPUTILLEGAL = "InvalidParameter.InputIllegal"
 //  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSINVALID = "ResourceUnavailable.InstanceStatusInvalid"
 func (c *Client) RemoveBackups(request *RemoveBackupsRequest) (response *RemoveBackupsResponse, err error) {
     return c.RemoveBackupsWithContext(context.Background(), request)
 }
@@ -5303,6 +5304,7 @@ func (c *Client) RemoveBackups(request *RemoveBackupsRequest) (response *RemoveB
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
 //  INVALIDPARAMETER_INPUTILLEGAL = "InvalidParameter.InputIllegal"
 //  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSINVALID = "ResourceUnavailable.InstanceStatusInvalid"
 func (c *Client) RemoveBackupsWithContext(ctx context.Context, request *RemoveBackupsRequest) (response *RemoveBackupsResponse, err error) {
     if request == nil {
         request = NewRemoveBackupsRequest()

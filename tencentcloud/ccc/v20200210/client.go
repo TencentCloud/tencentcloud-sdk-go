@@ -451,6 +451,7 @@ func NewDeleteStaffResponse() (response *DeleteStaffResponse) {
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
 func (c *Client) DeleteStaff(request *DeleteStaffRequest) (response *DeleteStaffResponse, err error) {
     return c.DeleteStaffWithContext(context.Background(), request)
 }
@@ -461,6 +462,7 @@ func (c *Client) DeleteStaff(request *DeleteStaffRequest) (response *DeleteStaff
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
 func (c *Client) DeleteStaffWithContext(ctx context.Context, request *DeleteStaffRequest) (response *DeleteStaffResponse, err error) {
     if request == nil {
         request = NewDeleteStaffRequest()

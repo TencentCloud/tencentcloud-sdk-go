@@ -1541,6 +1541,7 @@ func NewDescribeCloudBaseRunPodListResponse() (response *DescribeCloudBaseRunPod
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_SERVICENOTEXIST = "InvalidParameter.ServiceNotExist"
 //  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeCloudBaseRunPodList(request *DescribeCloudBaseRunPodListRequest) (response *DescribeCloudBaseRunPodListResponse, err error) {
     return c.DescribeCloudBaseRunPodListWithContext(context.Background(), request)
@@ -1554,6 +1555,7 @@ func (c *Client) DescribeCloudBaseRunPodList(request *DescribeCloudBaseRunPodLis
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_SERVICENOTEXIST = "InvalidParameter.ServiceNotExist"
 //  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeCloudBaseRunPodListWithContext(ctx context.Context, request *DescribeCloudBaseRunPodListRequest) (response *DescribeCloudBaseRunPodListResponse, err error) {
     if request == nil {

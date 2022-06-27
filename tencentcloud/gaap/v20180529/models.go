@@ -759,6 +759,10 @@ type CountryAreaMap struct {
 
 	// 大洲编码。
 	ContinentInnerCode *string `json:"ContinentInnerCode,omitempty" name:"ContinentInnerCode"`
+
+	// 标注信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
 }
 
 // Predefined struct for user

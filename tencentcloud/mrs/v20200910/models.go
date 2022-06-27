@@ -94,6 +94,24 @@ type Check struct {
 	Summary *Summary `json:"Summary,omitempty" name:"Summary"`
 }
 
+type Coordinate struct {
+	// 左上角x坐标
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	X *int64 `json:"X,omitempty" name:"X"`
+
+	// 左上角y坐标
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Y *int64 `json:"Y,omitempty" name:"Y"`
+
+	// 宽度，单位像素
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Width *int64 `json:"Width,omitempty" name:"Width"`
+
+	// 高度，单位像素
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Height *int64 `json:"Height,omitempty" name:"Height"`
+}
+
 type Desc struct {
 	// 描述
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -715,6 +733,14 @@ type IndicatorItem struct {
 	// 项目原文
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ItemString *string `json:"ItemString,omitempty" name:"ItemString"`
+
+	// 指标项ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Id *int64 `json:"Id,omitempty" name:"Id"`
+
+	// 指标项坐标位置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Coords *Coordinate `json:"Coords,omitempty" name:"Coords"`
 }
 
 type Invas struct {

@@ -1489,14 +1489,14 @@ func (r *ListRulesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ListTargetsRequestParams struct {
-	// 事件规则ID
-	RuleId *string `json:"RuleId,omitempty" name:"RuleId"`
-
 	// 事件集ID
 	EventBusId *string `json:"EventBusId,omitempty" name:"EventBusId"`
 
 	// 根据哪个字段进行返回结果排序,支持以下字段：AddTime（创建时间）, ModTime（修改时间）
 	OrderBy *string `json:"OrderBy,omitempty" name:"OrderBy"`
+
+	// 事件规则ID
+	RuleId *string `json:"RuleId,omitempty" name:"RuleId"`
 
 	// 返回数量，默认为20，最大值为100。
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
@@ -1511,14 +1511,14 @@ type ListTargetsRequestParams struct {
 type ListTargetsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 事件规则ID
-	RuleId *string `json:"RuleId,omitempty" name:"RuleId"`
-
 	// 事件集ID
 	EventBusId *string `json:"EventBusId,omitempty" name:"EventBusId"`
 
 	// 根据哪个字段进行返回结果排序,支持以下字段：AddTime（创建时间）, ModTime（修改时间）
 	OrderBy *string `json:"OrderBy,omitempty" name:"OrderBy"`
+
+	// 事件规则ID
+	RuleId *string `json:"RuleId,omitempty" name:"RuleId"`
 
 	// 返回数量，默认为20，最大值为100。
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
@@ -1542,9 +1542,9 @@ func (r *ListTargetsRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	delete(f, "RuleId")
 	delete(f, "EventBusId")
 	delete(f, "OrderBy")
+	delete(f, "RuleId")
 	delete(f, "Limit")
 	delete(f, "Offset")
 	delete(f, "Order")

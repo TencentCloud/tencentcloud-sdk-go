@@ -98,6 +98,9 @@ const (
 	// 其他错误，请联系 [腾讯云短信小助手](https://cloud.tencent.com/document/product/382/3773#.E6.8A.80.E6.9C.AF.E4.BA.A4.E6.B5.81) 并提供失败手机号。
 	INTERNALERROR_OTHERERROR = "InternalError.OtherError"
 
+	// 解析运营商包体失败，可联系 [sms helper](https://cloud.tencent.com/document/product/382/3773#.E6.8A.80.E6.9C.AF.E4.BA.A4.E6.B5.81) 。
+	INTERNALERROR_PARSEBACKENDRESPONSEFAIL = "InternalError.ParseBackendResponseFail"
+
 	// 请求发起时间不正常，通常是由于您的服务器时间与腾讯云服务器时间差异超过10分钟导致的，请核对服务器时间及 API 接口中的时间字段是否正常。
 	INTERNALERROR_REQUESTTIMEEXCEPTION = "InternalError.RequestTimeException"
 

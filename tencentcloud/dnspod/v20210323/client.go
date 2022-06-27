@@ -1315,6 +1315,9 @@ func NewDescribeDomainAnalyticsResponse() (response *DescribeDomainAnalyticsResp
 //  FAILEDOPERATION_DOMAINISSPAM = "FailedOperation.DomainIsSpam"
 //  FAILEDOPERATION_DOMAINNOTINSERVICE = "FailedOperation.DomainNotInService"
 //  FAILEDOPERATION_TEMPORARYERROR = "FailedOperation.TemporaryError"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnknowError"
+//  INVALIDPARAMETER_DOMAININVALID = "InvalidParameter.DomainInvalid"
+//  INVALIDPARAMETERVALUE_DOMAINNOTEXISTS = "InvalidParameterValue.DomainNotExists"
 //  OPERATIONDENIED_DOMAINOWNERALLOWEDONLY = "OperationDenied.DomainOwnerAllowedOnly"
 func (c *Client) DescribeDomainAnalytics(request *DescribeDomainAnalyticsRequest) (response *DescribeDomainAnalyticsResponse, err error) {
     return c.DescribeDomainAnalyticsWithContext(context.Background(), request)
@@ -1327,6 +1330,9 @@ func (c *Client) DescribeDomainAnalytics(request *DescribeDomainAnalyticsRequest
 //  FAILEDOPERATION_DOMAINISSPAM = "FailedOperation.DomainIsSpam"
 //  FAILEDOPERATION_DOMAINNOTINSERVICE = "FailedOperation.DomainNotInService"
 //  FAILEDOPERATION_TEMPORARYERROR = "FailedOperation.TemporaryError"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnknowError"
+//  INVALIDPARAMETER_DOMAININVALID = "InvalidParameter.DomainInvalid"
+//  INVALIDPARAMETERVALUE_DOMAINNOTEXISTS = "InvalidParameterValue.DomainNotExists"
 //  OPERATIONDENIED_DOMAINOWNERALLOWEDONLY = "OperationDenied.DomainOwnerAllowedOnly"
 func (c *Client) DescribeDomainAnalyticsWithContext(ctx context.Context, request *DescribeDomainAnalyticsRequest) (response *DescribeDomainAnalyticsResponse, err error) {
     if request == nil {
@@ -1988,6 +1994,7 @@ func NewDescribeSubdomainAnalyticsResponse() (response *DescribeSubdomainAnalyti
 //  FAILEDOPERATION_DOMAINISSPAM = "FailedOperation.DomainIsSpam"
 //  FAILEDOPERATION_DOMAINNOTINSERVICE = "FailedOperation.DomainNotInService"
 //  FAILEDOPERATION_TEMPORARYERROR = "FailedOperation.TemporaryError"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnknowError"
 //  INVALIDPARAMETERVALUE_DOMAINGRADEINVALID = "InvalidParameterValue.DomainGradeInvalid"
 //  OPERATIONDENIED_DOMAINOWNERALLOWEDONLY = "OperationDenied.DomainOwnerAllowedOnly"
 func (c *Client) DescribeSubdomainAnalytics(request *DescribeSubdomainAnalyticsRequest) (response *DescribeSubdomainAnalyticsResponse, err error) {
@@ -2001,6 +2008,7 @@ func (c *Client) DescribeSubdomainAnalytics(request *DescribeSubdomainAnalyticsR
 //  FAILEDOPERATION_DOMAINISSPAM = "FailedOperation.DomainIsSpam"
 //  FAILEDOPERATION_DOMAINNOTINSERVICE = "FailedOperation.DomainNotInService"
 //  FAILEDOPERATION_TEMPORARYERROR = "FailedOperation.TemporaryError"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnknowError"
 //  INVALIDPARAMETERVALUE_DOMAINGRADEINVALID = "InvalidParameterValue.DomainGradeInvalid"
 //  OPERATIONDENIED_DOMAINOWNERALLOWEDONLY = "OperationDenied.DomainOwnerAllowedOnly"
 func (c *Client) DescribeSubdomainAnalyticsWithContext(ctx context.Context, request *DescribeSubdomainAnalyticsRequest) (response *DescribeSubdomainAnalyticsResponse, err error) {

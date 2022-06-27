@@ -77,6 +77,8 @@ func NewCreateSessionResponse() (response *CreateSessionResponse) {
 //  LIMITEXCEEDED_ROLE = "LimitExceeded.Role"
 //  OPERATIONDENIED = "OperationDenied"
 //  RESOURCENOTFOUND_NOIDLE = "ResourceNotFound.NoIdle"
+//  RESOURCENOTFOUND_SESSIONNOTFOUND = "ResourceNotFound.SessionNotFound"
+//  RESOURCEUNAVAILABLE_INITIALIZATION = "ResourceUnavailable.Initialization"
 //  UNSUPPORTEDOPERATION_STOPPING = "UnsupportedOperation.Stopping"
 func (c *Client) CreateSession(request *CreateSessionRequest) (response *CreateSessionResponse, err error) {
     return c.CreateSessionWithContext(context.Background(), request)
@@ -97,6 +99,8 @@ func (c *Client) CreateSession(request *CreateSessionRequest) (response *CreateS
 //  LIMITEXCEEDED_ROLE = "LimitExceeded.Role"
 //  OPERATIONDENIED = "OperationDenied"
 //  RESOURCENOTFOUND_NOIDLE = "ResourceNotFound.NoIdle"
+//  RESOURCENOTFOUND_SESSIONNOTFOUND = "ResourceNotFound.SessionNotFound"
+//  RESOURCEUNAVAILABLE_INITIALIZATION = "ResourceUnavailable.Initialization"
 //  UNSUPPORTEDOPERATION_STOPPING = "UnsupportedOperation.Stopping"
 func (c *Client) CreateSessionWithContext(ctx context.Context, request *CreateSessionRequest) (response *CreateSessionResponse, err error) {
     if request == nil {

@@ -668,6 +668,99 @@ func (r *DescribeFlySecMiniAppReportUrlResponse) FromJsonString(s string) error 
 }
 
 // Predefined struct for user
+type DescribeFlySecMiniAppScanReportListRequestParams struct {
+	// 任务id
+	MiniAppID *string `json:"MiniAppID,omitempty" name:"MiniAppID"`
+
+	// 诊断方式 1:基础诊断，2:深度诊断
+	Mode *int64 `json:"Mode,omitempty" name:"Mode"`
+
+	// 诊断状态 -1:查询全部, 0:排队中, 1:成功, 2:失败, 3:进行中
+	Status *int64 `json:"Status,omitempty" name:"Status"`
+
+	// 查询数量, 0:查询所有, 其他值:最近几次的诊断数量
+	Size *int64 `json:"Size,omitempty" name:"Size"`
+
+	// 小程序版本
+	MiniAppVersion *string `json:"MiniAppVersion,omitempty" name:"MiniAppVersion"`
+}
+
+type DescribeFlySecMiniAppScanReportListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 任务id
+	MiniAppID *string `json:"MiniAppID,omitempty" name:"MiniAppID"`
+
+	// 诊断方式 1:基础诊断，2:深度诊断
+	Mode *int64 `json:"Mode,omitempty" name:"Mode"`
+
+	// 诊断状态 -1:查询全部, 0:排队中, 1:成功, 2:失败, 3:进行中
+	Status *int64 `json:"Status,omitempty" name:"Status"`
+
+	// 查询数量, 0:查询所有, 其他值:最近几次的诊断数量
+	Size *int64 `json:"Size,omitempty" name:"Size"`
+
+	// 小程序版本
+	MiniAppVersion *string `json:"MiniAppVersion,omitempty" name:"MiniAppVersion"`
+}
+
+func (r *DescribeFlySecMiniAppScanReportListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeFlySecMiniAppScanReportListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MiniAppID")
+	delete(f, "Mode")
+	delete(f, "Status")
+	delete(f, "Size")
+	delete(f, "MiniAppVersion")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeFlySecMiniAppScanReportListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeFlySecMiniAppScanReportListResponseParams struct {
+	// 返回值, 0:成功, 其他值请查看“返回值”定义
+	Ret *int64 `json:"Ret,omitempty" name:"Ret"`
+
+	// 诊断报告数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data []*FlySecMiniAppReportData `json:"Data,omitempty" name:"Data"`
+
+	// 诊断任务数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Total *int64 `json:"Total,omitempty" name:"Total"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeFlySecMiniAppScanReportListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeFlySecMiniAppScanReportListResponseParams `json:"Response"`
+}
+
+func (r *DescribeFlySecMiniAppScanReportListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeFlySecMiniAppScanReportListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeFlySecMiniAppScanTaskListRequestParams struct {
 	// 诊断方式 1:基础诊断，2:深度诊断
 	Mode *int64 `json:"Mode,omitempty" name:"Mode"`
@@ -1260,6 +1353,64 @@ func (r *DescribeScanTaskStatusResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *DescribeScanTaskStatusResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type FlySecMiniAppReportData struct {
+	// 任务id
+	TaskID *string `json:"TaskID,omitempty" name:"TaskID"`
+
+	// 小程序appid
+	MiniAppID *string `json:"MiniAppID,omitempty" name:"MiniAppID"`
+
+	// 小程序名称
+	MiniAppName *string `json:"MiniAppName,omitempty" name:"MiniAppName"`
+
+	// 小程序版本
+	MiniAppVersion *string `json:"MiniAppVersion,omitempty" name:"MiniAppVersion"`
+
+	// 诊断模式 1:基础诊断，2:深度诊断
+	Mode *int64 `json:"Mode,omitempty" name:"Mode"`
+
+	// 诊断状态, 0:排队中, 1:成功, 2:失败, 3:进行中
+	Status *int64 `json:"Status,omitempty" name:"Status"`
+
+	// 诊断时间
+	CreateTime *int64 `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 诊断得分
+	RiskScore *string `json:"RiskScore,omitempty" name:"RiskScore"`
+
+	// 诊断风险等级 1:高风险 2:中风险 3:低风险
+	RiskLevel *int64 `json:"RiskLevel,omitempty" name:"RiskLevel"`
+
+	// 诊断8大维度得分情况(每项总分100分)
+	RiskItems *FlySecMiniAppRiskItems `json:"RiskItems,omitempty" name:"RiskItems"`
+}
+
+type FlySecMiniAppRiskItems struct {
+	// 代码防护(基础诊断)
+	RiskItem1Score *int64 `json:"RiskItem1Score,omitempty" name:"RiskItem1Score"`
+
+	// 开发测试信息泄露(基础诊断)
+	RiskItem2Score *int64 `json:"RiskItem2Score,omitempty" name:"RiskItem2Score"`
+
+	// 编码规范(基础诊断)
+	RiskItem3Score *int64 `json:"RiskItem3Score,omitempty" name:"RiskItem3Score"`
+
+	// 配置风险(基础诊断)
+	RiskItem4Score *int64 `json:"RiskItem4Score,omitempty" name:"RiskItem4Score"`
+
+	// 账号安全(基础诊断)
+	RiskItem5Score *int64 `json:"RiskItem5Score,omitempty" name:"RiskItem5Score"`
+
+	// 用户信息安全(基础诊断)
+	RiskItem6Score *int64 `json:"RiskItem6Score,omitempty" name:"RiskItem6Score"`
+
+	// 内部信息泄露(基础诊断)
+	RiskItem7Score *int64 `json:"RiskItem7Score,omitempty" name:"RiskItem7Score"`
+
+	// 其他安全(基础诊断)
+	RiskItem8Score *int64 `json:"RiskItem8Score,omitempty" name:"RiskItem8Score"`
 }
 
 type FlySecMiniAppTaskData struct {

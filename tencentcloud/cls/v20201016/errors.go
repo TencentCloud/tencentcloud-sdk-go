@@ -110,6 +110,9 @@ const (
 	// 数据库唯一键冲突。
 	INVALIDPARAMETER_DBDUPLICATION = "InvalidParameter.DbDuplication"
 
+	// 导出任务已经存在。
+	INVALIDPARAMETER_EXPORTCONFLICT = "InvalidParameter.ExportConflict"
+
 	// 低频不支持配置kv和tag索引。
 	INVALIDPARAMETER_INVALIDINDEXRULEFORSEARCHLOW = "InvalidParameter.InValidIndexRuleForSearchLow"
 

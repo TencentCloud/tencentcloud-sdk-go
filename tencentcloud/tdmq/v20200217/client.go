@@ -779,6 +779,7 @@ func NewCreateEnvironmentResponse() (response *CreateEnvironmentResponse) {
 //  LIMITEXCEEDED_RETENTIONTIME = "LimitExceeded.RetentionTime"
 //  MISSINGPARAMETER_NEEDMOREPARAMS = "MissingParameter.NeedMoreParams"
 //  OPERATIONDENIED_DEFAULTENVIRONMENT = "OperationDenied.DefaultEnvironment"
+//  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCEINUSE_NAMESPACE = "ResourceInUse.Namespace"
 //  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
 func (c *Client) CreateEnvironment(request *CreateEnvironmentRequest) (response *CreateEnvironmentResponse, err error) {
@@ -802,6 +803,7 @@ func (c *Client) CreateEnvironment(request *CreateEnvironmentRequest) (response 
 //  LIMITEXCEEDED_RETENTIONTIME = "LimitExceeded.RetentionTime"
 //  MISSINGPARAMETER_NEEDMOREPARAMS = "MissingParameter.NeedMoreParams"
 //  OPERATIONDENIED_DEFAULTENVIRONMENT = "OperationDenied.DefaultEnvironment"
+//  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCEINUSE_NAMESPACE = "ResourceInUse.Namespace"
 //  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
 func (c *Client) CreateEnvironmentWithContext(ctx context.Context, request *CreateEnvironmentRequest) (response *CreateEnvironmentResponse, err error) {
@@ -1031,6 +1033,7 @@ func NewCreateRocketMQNamespaceResponse() (response *CreateRocketMQNamespaceResp
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_SETTTL = "FailedOperation.SetTTL"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_ILLEGALMESSAGE = "InternalError.IllegalMessage"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -1048,6 +1051,7 @@ func (c *Client) CreateRocketMQNamespace(request *CreateRocketMQNamespaceRequest
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_SETTTL = "FailedOperation.SetTTL"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_ILLEGALMESSAGE = "InternalError.IllegalMessage"
 //  INVALIDPARAMETER = "InvalidParameter"

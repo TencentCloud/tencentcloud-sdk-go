@@ -365,6 +365,155 @@ func (r *DeleteEngineResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeNacosReplicasRequestParams struct {
+	// 引擎实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 副本列表Limit
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 副本列表Offset
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+}
+
+type DescribeNacosReplicasRequest struct {
+	*tchttp.BaseRequest
+	
+	// 引擎实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 副本列表Limit
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 副本列表Offset
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+}
+
+func (r *DescribeNacosReplicasRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeNacosReplicasRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeNacosReplicasRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeNacosReplicasResponseParams struct {
+	// 引擎实例副本信息
+	Replicas []*NacosReplica `json:"Replicas,omitempty" name:"Replicas"`
+
+	// 副本个数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeNacosReplicasResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeNacosReplicasResponseParams `json:"Response"`
+}
+
+func (r *DescribeNacosReplicasResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeNacosReplicasResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeNacosServerInterfacesRequestParams struct {
+	// 实例id
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 返回的列表个数
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 返回的列表起始偏移量
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+}
+
+type DescribeNacosServerInterfacesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例id
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 返回的列表个数
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 返回的列表起始偏移量
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+}
+
+func (r *DescribeNacosServerInterfacesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeNacosServerInterfacesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeNacosServerInterfacesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeNacosServerInterfacesResponseParams struct {
+	// 接口总个数
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 接口列表
+	Content []*NacosServerInterface `json:"Content,omitempty" name:"Content"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeNacosServerInterfacesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeNacosServerInterfacesResponseParams `json:"Response"`
+}
+
+func (r *DescribeNacosServerInterfacesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeNacosServerInterfacesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeSREInstanceAccessAddressRequestParams struct {
 	// 注册引擎实例Id
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
@@ -545,6 +694,155 @@ func (r *DescribeSREInstancesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeZookeeperReplicasRequestParams struct {
+	// 注册引擎实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 副本列表Limit
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 副本列表Offset
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+}
+
+type DescribeZookeeperReplicasRequest struct {
+	*tchttp.BaseRequest
+	
+	// 注册引擎实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 副本列表Limit
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 副本列表Offset
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+}
+
+func (r *DescribeZookeeperReplicasRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeZookeeperReplicasRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeZookeeperReplicasRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeZookeeperReplicasResponseParams struct {
+	// 注册引擎实例副本信息
+	Replicas []*ZookeeperReplica `json:"Replicas,omitempty" name:"Replicas"`
+
+	// 副本个数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeZookeeperReplicasResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeZookeeperReplicasResponseParams `json:"Response"`
+}
+
+func (r *DescribeZookeeperReplicasResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeZookeeperReplicasResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeZookeeperServerInterfacesRequestParams struct {
+	// 实例id
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 返回的列表个数
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 返回的列表起始偏移量
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+}
+
+type DescribeZookeeperServerInterfacesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例id
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 返回的列表个数
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 返回的列表起始偏移量
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+}
+
+func (r *DescribeZookeeperServerInterfacesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeZookeeperServerInterfacesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeZookeeperServerInterfacesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeZookeeperServerInterfacesResponseParams struct {
+	// 接口总个数
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 接口列表
+	Content []*ZookeeperServerInterface `json:"Content,omitempty" name:"Content"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeZookeeperServerInterfacesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeZookeeperServerInterfacesResponseParams `json:"Response"`
+}
+
+func (r *DescribeZookeeperServerInterfacesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeZookeeperServerInterfacesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type EngineAdmin struct {
 	// 控制台初始用户名
 	Name *string `json:"Name,omitempty" name:"Name"`
@@ -627,6 +925,35 @@ type KVPair struct {
 
 	// 值
 	Value *string `json:"Value,omitempty" name:"Value"`
+}
+
+type NacosReplica struct {
+	// 名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 角色
+	Role *string `json:"Role,omitempty" name:"Role"`
+
+	// 状态
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 子网ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+
+	// 可用区ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Zone *string `json:"Zone,omitempty" name:"Zone"`
+
+	// 可用区ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
+}
+
+type NacosServerInterface struct {
+	// 接口名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Interface *string `json:"Interface,omitempty" name:"Interface"`
 }
 
 type SREInstance struct {
@@ -769,4 +1096,33 @@ type VpcInfo struct {
 	// 内网访问地址
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IntranetAddress *string `json:"IntranetAddress,omitempty" name:"IntranetAddress"`
+}
+
+type ZookeeperReplica struct {
+	// 名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 角色
+	Role *string `json:"Role,omitempty" name:"Role"`
+
+	// 状态
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 子网ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+
+	// 可用区ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Zone *string `json:"Zone,omitempty" name:"Zone"`
+
+	// 可用区ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
+}
+
+type ZookeeperServerInterface struct {
+	// 接口名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Interface *string `json:"Interface,omitempty" name:"Interface"`
 }

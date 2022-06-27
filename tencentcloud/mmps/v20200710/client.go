@@ -327,6 +327,53 @@ func (c *Client) DescribeFlySecMiniAppReportUrlWithContext(ctx context.Context, 
     return
 }
 
+func NewDescribeFlySecMiniAppScanReportListRequest() (request *DescribeFlySecMiniAppScanReportListRequest) {
+    request = &DescribeFlySecMiniAppScanReportListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("mmps", APIVersion, "DescribeFlySecMiniAppScanReportList")
+    
+    
+    return
+}
+
+func NewDescribeFlySecMiniAppScanReportListResponse() (response *DescribeFlySecMiniAppScanReportListResponse) {
+    response = &DescribeFlySecMiniAppScanReportListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeFlySecMiniAppScanReportList
+// 查询指定小程序版本的翼扬诊断安全得分
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeFlySecMiniAppScanReportList(request *DescribeFlySecMiniAppScanReportListRequest) (response *DescribeFlySecMiniAppScanReportListResponse, err error) {
+    return c.DescribeFlySecMiniAppScanReportListWithContext(context.Background(), request)
+}
+
+// DescribeFlySecMiniAppScanReportList
+// 查询指定小程序版本的翼扬诊断安全得分
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeFlySecMiniAppScanReportListWithContext(ctx context.Context, request *DescribeFlySecMiniAppScanReportListRequest) (response *DescribeFlySecMiniAppScanReportListResponse, err error) {
+    if request == nil {
+        request = NewDescribeFlySecMiniAppScanReportListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeFlySecMiniAppScanReportList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeFlySecMiniAppScanReportListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeFlySecMiniAppScanTaskListRequest() (request *DescribeFlySecMiniAppScanTaskListRequest) {
     request = &DescribeFlySecMiniAppScanTaskListRequest{
         BaseRequest: &tchttp.BaseRequest{},

@@ -1776,6 +1776,7 @@ func NewGetProvisionedConcurrencyConfigResponse() (response *GetProvisionedConcu
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_FUNCTIONNAME = "InvalidParameterValue.FunctionName"
 //  INVALIDPARAMETERVALUE_NAMESPACE = "InvalidParameterValue.Namespace"
 //  INVALIDPARAMETERVALUE_QUALIFIER = "InvalidParameterValue.Qualifier"
 //  MISSINGPARAMETER = "MissingParameter"
@@ -1794,6 +1795,7 @@ func (c *Client) GetProvisionedConcurrencyConfig(request *GetProvisionedConcurre
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_FUNCTIONNAME = "InvalidParameterValue.FunctionName"
 //  INVALIDPARAMETERVALUE_NAMESPACE = "InvalidParameterValue.Namespace"
 //  INVALIDPARAMETERVALUE_QUALIFIER = "InvalidParameterValue.Qualifier"
 //  MISSINGPARAMETER = "MissingParameter"

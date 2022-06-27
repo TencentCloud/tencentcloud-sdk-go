@@ -3510,6 +3510,27 @@ func (r *BindRelateAcctUnionPayResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type BusinessLicenseInfo struct {
+	// 营业证件类型
+	//  IDCARD：身份证
+	//  CREDITCODE：统一社会信用代码
+	BusinessLicenseType *string `json:"BusinessLicenseType,omitempty" name:"BusinessLicenseType"`
+
+	// 营业证件号码 非个人商户上送统一社会信用代码，个人商户上送身份证号码
+	BusinessLicenseNumber *string `json:"BusinessLicenseNumber,omitempty" name:"BusinessLicenseNumber"`
+
+	// 营业证件有效期类型 
+	// LONGTERM：长期有效
+	// OTHER：非长期有效
+	BusinessLicenseValidityType *string `json:"BusinessLicenseValidityType,omitempty" name:"BusinessLicenseValidityType"`
+
+	// 营业证件生效日期，yyyy-MM-dd
+	BusinessLicenseEffectiveDate *string `json:"BusinessLicenseEffectiveDate,omitempty" name:"BusinessLicenseEffectiveDate"`
+
+	// 营业证件失效日期，yyyy-MM-dd
+	BusinessLicenseExpireDate *string `json:"BusinessLicenseExpireDate,omitempty" name:"BusinessLicenseExpireDate"`
+}
+
 type ChannelContractInfo struct {
 	// 外部合约协议号
 	OutContractCode *string `json:"OutContractCode,omitempty" name:"OutContractCode"`
@@ -7123,6 +7144,242 @@ type CreateMerchantResultData struct {
 }
 
 // Predefined struct for user
+type CreateOpenBankAggregatedSubMerchantRegistrationRequestParams struct {
+	// 外部进件序列号。
+	OutRegistrationNo *string `json:"OutRegistrationNo,omitempty" name:"OutRegistrationNo"`
+
+	// 渠道商户ID。
+	ChannelMerchantId *string `json:"ChannelMerchantId,omitempty" name:"ChannelMerchantId"`
+
+	// 外部子商户ID。
+	OutSubMerchantId *string `json:"OutSubMerchantId,omitempty" name:"OutSubMerchantId"`
+
+	// 渠道名称。详见附录-云企付枚举类说明-ChannelName。
+	// TENPAY: 商企付
+	// WECHAT: 微信支付
+	// ALIPAY: 支付宝
+	// HELIPAY:合利宝
+	ChannelName *string `json:"ChannelName,omitempty" name:"ChannelName"`
+
+	// 外部子商户类型。
+	// ENTERPRISE：企业商户 
+	// INSTITUTION：事业单位商户 
+	// INDIVIDUALBISS：个体工商户 
+	// PERSON：个人商户(小微商户) 
+	// SUBJECT_TYPE_OTHERS：其他组织
+	OutSubMerchantType *string `json:"OutSubMerchantType,omitempty" name:"OutSubMerchantType"`
+
+	// 外部子商户名称。
+	// HELIPAY渠道(长度不能小于5大于150)。
+	OutSubMerchantName *string `json:"OutSubMerchantName,omitempty" name:"OutSubMerchantName"`
+
+	// 商户法人代表信息。
+	LegalPersonInfo *LegalPersonInfo `json:"LegalPersonInfo,omitempty" name:"LegalPersonInfo"`
+
+	// 营业证件信息。
+	BusinessLicenseInfo *BusinessLicenseInfo `json:"BusinessLicenseInfo,omitempty" name:"BusinessLicenseInfo"`
+
+	// 支付渠道子商户进件信息。
+	// json字符串，详情见附录-复杂类型-InterConnectionSubMerchantData。
+	InterConnectionSubMerchantData *string `json:"InterConnectionSubMerchantData,omitempty" name:"InterConnectionSubMerchantData"`
+
+	// 支付方式。详见附录-云企付枚举类说明-PaymentMethod。
+	// 合利宝渠道不需要传。
+	PaymentMethod *string `json:"PaymentMethod,omitempty" name:"PaymentMethod"`
+
+	// 外部子商户简称。
+	// HELIPAY渠道必传(长度不能小于2大于20)。
+	OutSubMerchantShortName *string `json:"OutSubMerchantShortName,omitempty" name:"OutSubMerchantShortName"`
+
+	// 外部子商户描述。
+	OutSubMerchantDescription *string `json:"OutSubMerchantDescription,omitempty" name:"OutSubMerchantDescription"`
+
+	// 通知地址。
+	NotifyUrl *string `json:"NotifyUrl,omitempty" name:"NotifyUrl"`
+
+	// 相关自然人信息列表。
+	// HELIPAY渠道必传业务联系人。
+	NaturalPersonList []*NaturalPersonInfo `json:"NaturalPersonList,omitempty" name:"NaturalPersonList"`
+
+	// 商户结算信息。
+	// HELIPAY渠道必传。
+	SettleInfo *SettleInfo `json:"SettleInfo,omitempty" name:"SettleInfo"`
+
+	// 外部子商户其他公用扩展信息。
+	// HELIPAY渠道必传。
+	OutSubMerchantExtensionInfo *OutSubMerchantExtensionInfo `json:"OutSubMerchantExtensionInfo,omitempty" name:"OutSubMerchantExtensionInfo"`
+
+	// 环境类型。
+	// __release__:生产环境
+	// __sandbox__:沙箱环境
+	// _不填默认为生产环境_
+	Environment *string `json:"Environment,omitempty" name:"Environment"`
+}
+
+type CreateOpenBankAggregatedSubMerchantRegistrationRequest struct {
+	*tchttp.BaseRequest
+	
+	// 外部进件序列号。
+	OutRegistrationNo *string `json:"OutRegistrationNo,omitempty" name:"OutRegistrationNo"`
+
+	// 渠道商户ID。
+	ChannelMerchantId *string `json:"ChannelMerchantId,omitempty" name:"ChannelMerchantId"`
+
+	// 外部子商户ID。
+	OutSubMerchantId *string `json:"OutSubMerchantId,omitempty" name:"OutSubMerchantId"`
+
+	// 渠道名称。详见附录-云企付枚举类说明-ChannelName。
+	// TENPAY: 商企付
+	// WECHAT: 微信支付
+	// ALIPAY: 支付宝
+	// HELIPAY:合利宝
+	ChannelName *string `json:"ChannelName,omitempty" name:"ChannelName"`
+
+	// 外部子商户类型。
+	// ENTERPRISE：企业商户 
+	// INSTITUTION：事业单位商户 
+	// INDIVIDUALBISS：个体工商户 
+	// PERSON：个人商户(小微商户) 
+	// SUBJECT_TYPE_OTHERS：其他组织
+	OutSubMerchantType *string `json:"OutSubMerchantType,omitempty" name:"OutSubMerchantType"`
+
+	// 外部子商户名称。
+	// HELIPAY渠道(长度不能小于5大于150)。
+	OutSubMerchantName *string `json:"OutSubMerchantName,omitempty" name:"OutSubMerchantName"`
+
+	// 商户法人代表信息。
+	LegalPersonInfo *LegalPersonInfo `json:"LegalPersonInfo,omitempty" name:"LegalPersonInfo"`
+
+	// 营业证件信息。
+	BusinessLicenseInfo *BusinessLicenseInfo `json:"BusinessLicenseInfo,omitempty" name:"BusinessLicenseInfo"`
+
+	// 支付渠道子商户进件信息。
+	// json字符串，详情见附录-复杂类型-InterConnectionSubMerchantData。
+	InterConnectionSubMerchantData *string `json:"InterConnectionSubMerchantData,omitempty" name:"InterConnectionSubMerchantData"`
+
+	// 支付方式。详见附录-云企付枚举类说明-PaymentMethod。
+	// 合利宝渠道不需要传。
+	PaymentMethod *string `json:"PaymentMethod,omitempty" name:"PaymentMethod"`
+
+	// 外部子商户简称。
+	// HELIPAY渠道必传(长度不能小于2大于20)。
+	OutSubMerchantShortName *string `json:"OutSubMerchantShortName,omitempty" name:"OutSubMerchantShortName"`
+
+	// 外部子商户描述。
+	OutSubMerchantDescription *string `json:"OutSubMerchantDescription,omitempty" name:"OutSubMerchantDescription"`
+
+	// 通知地址。
+	NotifyUrl *string `json:"NotifyUrl,omitempty" name:"NotifyUrl"`
+
+	// 相关自然人信息列表。
+	// HELIPAY渠道必传业务联系人。
+	NaturalPersonList []*NaturalPersonInfo `json:"NaturalPersonList,omitempty" name:"NaturalPersonList"`
+
+	// 商户结算信息。
+	// HELIPAY渠道必传。
+	SettleInfo *SettleInfo `json:"SettleInfo,omitempty" name:"SettleInfo"`
+
+	// 外部子商户其他公用扩展信息。
+	// HELIPAY渠道必传。
+	OutSubMerchantExtensionInfo *OutSubMerchantExtensionInfo `json:"OutSubMerchantExtensionInfo,omitempty" name:"OutSubMerchantExtensionInfo"`
+
+	// 环境类型。
+	// __release__:生产环境
+	// __sandbox__:沙箱环境
+	// _不填默认为生产环境_
+	Environment *string `json:"Environment,omitempty" name:"Environment"`
+}
+
+func (r *CreateOpenBankAggregatedSubMerchantRegistrationRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateOpenBankAggregatedSubMerchantRegistrationRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "OutRegistrationNo")
+	delete(f, "ChannelMerchantId")
+	delete(f, "OutSubMerchantId")
+	delete(f, "ChannelName")
+	delete(f, "OutSubMerchantType")
+	delete(f, "OutSubMerchantName")
+	delete(f, "LegalPersonInfo")
+	delete(f, "BusinessLicenseInfo")
+	delete(f, "InterConnectionSubMerchantData")
+	delete(f, "PaymentMethod")
+	delete(f, "OutSubMerchantShortName")
+	delete(f, "OutSubMerchantDescription")
+	delete(f, "NotifyUrl")
+	delete(f, "NaturalPersonList")
+	delete(f, "SettleInfo")
+	delete(f, "OutSubMerchantExtensionInfo")
+	delete(f, "Environment")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateOpenBankAggregatedSubMerchantRegistrationRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateOpenBankAggregatedSubMerchantRegistrationResponseParams struct {
+	// 错误码。
+	// __SUCCESS__: 成功
+	// __其他__: 见附录-错误码表
+	ErrCode *string `json:"ErrCode,omitempty" name:"ErrCode"`
+
+	// 错误消息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrMessage *string `json:"ErrMessage,omitempty" name:"ErrMessage"`
+
+	// 返回结果。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Result *CreateOpenBankExternalAggregatedSubMerchantRegistrationResult `json:"Result,omitempty" name:"Result"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateOpenBankAggregatedSubMerchantRegistrationResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateOpenBankAggregatedSubMerchantRegistrationResponseParams `json:"Response"`
+}
+
+func (r *CreateOpenBankAggregatedSubMerchantRegistrationResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateOpenBankAggregatedSubMerchantRegistrationResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateOpenBankExternalAggregatedSubMerchantRegistrationResult struct {
+	// 进件状态 
+	// SUCCESS: 进件成功 
+	// FAILED: 进件失败
+	// PROCESSING: 进件中 
+	// 注意：若返回进件中，需要再次调用进件结果查询接口，查询结果。
+	RegistrationStatus *string `json:"RegistrationStatus,omitempty" name:"RegistrationStatus"`
+
+	// 进件返回描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RegistrationMessage *string `json:"RegistrationMessage,omitempty" name:"RegistrationMessage"`
+
+	// 渠道进件序列号
+	ChannelRegistrationNo *string `json:"ChannelRegistrationNo,omitempty" name:"ChannelRegistrationNo"`
+
+	// 渠道子商户ID
+	ChannelSubMerchantId *string `json:"ChannelSubMerchantId,omitempty" name:"ChannelSubMerchantId"`
+}
+
+// Predefined struct for user
 type CreateOpenBankExternalSubMerchantAccountBookRequestParams struct {
 	// 外部账本ID
 	OutAccountBookId *string `json:"OutAccountBookId,omitempty" name:"OutAccountBookId"`
@@ -7975,6 +8232,454 @@ func (r *CreateOpenBankRechargeOrderResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateOpenBankRechargeOrderResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateOpenBankSubMerchantRateConfigureRequestParams struct {
+	// 渠道进件序列号。
+	// 填写子商户进件返回的渠道进件编号。
+	ChannelRegistrationNo *string `json:"ChannelRegistrationNo,omitempty" name:"ChannelRegistrationNo"`
+
+	// 外部产品费率申请序列号。
+	OutProductFeeNo *string `json:"OutProductFeeNo,omitempty" name:"OutProductFeeNo"`
+
+	// 渠道商户ID。
+	ChannelMerchantId *string `json:"ChannelMerchantId,omitempty" name:"ChannelMerchantId"`
+
+	// 渠道子商户ID。
+	ChannelSubMerchantId *string `json:"ChannelSubMerchantId,omitempty" name:"ChannelSubMerchantId"`
+
+	// 渠道名称。详见附录-云企付枚举类说明-ChannelName。
+	ChannelName *string `json:"ChannelName,omitempty" name:"ChannelName"`
+
+	// 支付类型。
+	// SWIPE:刷卡
+	// SCAN:扫码
+	// WAP:WAP
+	// PUBLIC:公众号支付
+	// SDK:SDK
+	// MINI_PROGRAM:小程序
+	// 注意：HELIPAY渠道传SDK。
+	PayType *string `json:"PayType,omitempty" name:"PayType"`
+
+	// 支付渠道。
+	// ALIPAY：支付宝 
+	// WXPAY：微信支付 
+	// UNIONPAY：银联
+	PayChannel *string `json:"PayChannel,omitempty" name:"PayChannel"`
+
+	// 计费模式。
+	// SINGLE：按单笔金额计费
+	// RATIO：按单笔费率计费 
+	// RANGE：按分段区间计费
+	FeeMode *string `json:"FeeMode,omitempty" name:"FeeMode"`
+
+	// 费用值，单位（0.01%或分）。
+	FeeValue *uint64 `json:"FeeValue,omitempty" name:"FeeValue"`
+
+	// 支付方式。详见附录-云企付枚举类说明-PaymentMethod。
+	// HELIPAY渠道不需要传入。
+	PaymentMethod *string `json:"PaymentMethod,omitempty" name:"PaymentMethod"`
+
+	// 最低收费金额，单位（分）。
+	MinFee *uint64 `json:"MinFee,omitempty" name:"MinFee"`
+
+	// 最高收费金额，单位（分）。
+	MaxFee *uint64 `json:"MaxFee,omitempty" name:"MaxFee"`
+
+	// 通知地址。
+	NotifyUrl *string `json:"NotifyUrl,omitempty" name:"NotifyUrl"`
+
+	// 分段计费区间列表。
+	FeeRangeList []*FeeRangInfo `json:"FeeRangeList,omitempty" name:"FeeRangeList"`
+
+	// 环境类型。
+	// __release__:生产环境
+	// __sandbox__:沙箱环境
+	// _不填默认为生产环境_
+	Environment *string `json:"Environment,omitempty" name:"Environment"`
+}
+
+type CreateOpenBankSubMerchantRateConfigureRequest struct {
+	*tchttp.BaseRequest
+	
+	// 渠道进件序列号。
+	// 填写子商户进件返回的渠道进件编号。
+	ChannelRegistrationNo *string `json:"ChannelRegistrationNo,omitempty" name:"ChannelRegistrationNo"`
+
+	// 外部产品费率申请序列号。
+	OutProductFeeNo *string `json:"OutProductFeeNo,omitempty" name:"OutProductFeeNo"`
+
+	// 渠道商户ID。
+	ChannelMerchantId *string `json:"ChannelMerchantId,omitempty" name:"ChannelMerchantId"`
+
+	// 渠道子商户ID。
+	ChannelSubMerchantId *string `json:"ChannelSubMerchantId,omitempty" name:"ChannelSubMerchantId"`
+
+	// 渠道名称。详见附录-云企付枚举类说明-ChannelName。
+	ChannelName *string `json:"ChannelName,omitempty" name:"ChannelName"`
+
+	// 支付类型。
+	// SWIPE:刷卡
+	// SCAN:扫码
+	// WAP:WAP
+	// PUBLIC:公众号支付
+	// SDK:SDK
+	// MINI_PROGRAM:小程序
+	// 注意：HELIPAY渠道传SDK。
+	PayType *string `json:"PayType,omitempty" name:"PayType"`
+
+	// 支付渠道。
+	// ALIPAY：支付宝 
+	// WXPAY：微信支付 
+	// UNIONPAY：银联
+	PayChannel *string `json:"PayChannel,omitempty" name:"PayChannel"`
+
+	// 计费模式。
+	// SINGLE：按单笔金额计费
+	// RATIO：按单笔费率计费 
+	// RANGE：按分段区间计费
+	FeeMode *string `json:"FeeMode,omitempty" name:"FeeMode"`
+
+	// 费用值，单位（0.01%或分）。
+	FeeValue *uint64 `json:"FeeValue,omitempty" name:"FeeValue"`
+
+	// 支付方式。详见附录-云企付枚举类说明-PaymentMethod。
+	// HELIPAY渠道不需要传入。
+	PaymentMethod *string `json:"PaymentMethod,omitempty" name:"PaymentMethod"`
+
+	// 最低收费金额，单位（分）。
+	MinFee *uint64 `json:"MinFee,omitempty" name:"MinFee"`
+
+	// 最高收费金额，单位（分）。
+	MaxFee *uint64 `json:"MaxFee,omitempty" name:"MaxFee"`
+
+	// 通知地址。
+	NotifyUrl *string `json:"NotifyUrl,omitempty" name:"NotifyUrl"`
+
+	// 分段计费区间列表。
+	FeeRangeList []*FeeRangInfo `json:"FeeRangeList,omitempty" name:"FeeRangeList"`
+
+	// 环境类型。
+	// __release__:生产环境
+	// __sandbox__:沙箱环境
+	// _不填默认为生产环境_
+	Environment *string `json:"Environment,omitempty" name:"Environment"`
+}
+
+func (r *CreateOpenBankSubMerchantRateConfigureRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateOpenBankSubMerchantRateConfigureRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ChannelRegistrationNo")
+	delete(f, "OutProductFeeNo")
+	delete(f, "ChannelMerchantId")
+	delete(f, "ChannelSubMerchantId")
+	delete(f, "ChannelName")
+	delete(f, "PayType")
+	delete(f, "PayChannel")
+	delete(f, "FeeMode")
+	delete(f, "FeeValue")
+	delete(f, "PaymentMethod")
+	delete(f, "MinFee")
+	delete(f, "MaxFee")
+	delete(f, "NotifyUrl")
+	delete(f, "FeeRangeList")
+	delete(f, "Environment")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateOpenBankSubMerchantRateConfigureRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateOpenBankSubMerchantRateConfigureResponseParams struct {
+	// 错误码。
+	// __SUCCESS__: 成功
+	// __其他__: 见附录-错误码表
+	ErrCode *string `json:"ErrCode,omitempty" name:"ErrCode"`
+
+	// 错误消息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrMessage *string `json:"ErrMessage,omitempty" name:"ErrMessage"`
+
+	// 返回结果。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Result *CreateOpenBankSubMerchantRateConfigureResult `json:"Result,omitempty" name:"Result"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateOpenBankSubMerchantRateConfigureResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateOpenBankSubMerchantRateConfigureResponseParams `json:"Response"`
+}
+
+func (r *CreateOpenBankSubMerchantRateConfigureResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateOpenBankSubMerchantRateConfigureResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateOpenBankSubMerchantRateConfigureResult struct {
+	// 处理状态 
+	// SUCCESS: 开通成功 
+	// FAILED: 开通失败
+	// PROCESSING: 开通中 
+	// 注意：若返回开通中，需要再次调用费率配置结果查询接口，查询结果。
+	DealStatus *string `json:"DealStatus,omitempty" name:"DealStatus"`
+
+	// 处理描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DealMessage *string `json:"DealMessage,omitempty" name:"DealMessage"`
+
+	// 渠道产品费率序列号
+	ChannelProductFeeNo *string `json:"ChannelProductFeeNo,omitempty" name:"ChannelProductFeeNo"`
+}
+
+// Predefined struct for user
+type CreateOpenBankUnifiedOrderRequestParams struct {
+	// 渠道商户号。
+	ChannelMerchantId *string `json:"ChannelMerchantId,omitempty" name:"ChannelMerchantId"`
+
+	// 渠道名称。
+	ChannelName *string `json:"ChannelName,omitempty" name:"ChannelName"`
+
+	// 支付产品类型。
+	// 被扫（扫码）：SWIPE, 主扫（刷卡）：SCAN, 
+	// H5：WAP, 公众号：PUBLIC, 
+	// APP-SDK：SDK, 小程序：MINI_PROGRAM, 
+	// 快捷支付：QUICK, 网银支付：ONLINE_BANK。
+	PayType *string `json:"PayType,omitempty" name:"PayType"`
+
+	// 外部商户订单号。
+	// 只能是数字、大小写字母，且在同一个接入平台下唯一。
+	OutOrderId *string `json:"OutOrderId,omitempty" name:"OutOrderId"`
+
+	// 交易金额，单位分。
+	TotalAmount *int64 `json:"TotalAmount,omitempty" name:"TotalAmount"`
+
+	// 币种。固定：CNY。
+	Currency *string `json:"Currency,omitempty" name:"Currency"`
+
+	// 渠道子商户号。
+	ChannelSubMerchantId *string `json:"ChannelSubMerchantId,omitempty" name:"ChannelSubMerchantId"`
+
+	// 实际支付渠道。没有则无需填写。如
+	// 支付宝 ALIPAY
+	// 微信支付 WXPAY
+	// 银联 UNIONPAY
+	// 一般在间连模式下使用。
+	PayChannel *string `json:"PayChannel,omitempty" name:"PayChannel"`
+
+	// 设备信息。
+	SceneInfo *OpenBankSceneInfo `json:"SceneInfo,omitempty" name:"SceneInfo"`
+
+	// 分账信息列表。
+	ProfitShareInfoList []*OpenBankProfitShareInfo `json:"ProfitShareInfoList,omitempty" name:"ProfitShareInfoList"`
+
+	// 订单标题。
+	OrderSubject *string `json:"OrderSubject,omitempty" name:"OrderSubject"`
+
+	// 商品信息。
+	GoodsDetail *string `json:"GoodsDetail,omitempty" name:"GoodsDetail"`
+
+	// 超时时间。
+	ExpireTime *string `json:"ExpireTime,omitempty" name:"ExpireTime"`
+
+	// 支付成功回调地址。
+	NotifyUrl *string `json:"NotifyUrl,omitempty" name:"NotifyUrl"`
+
+	// 支付成功前端跳转URL。
+	FrontUrl *string `json:"FrontUrl,omitempty" name:"FrontUrl"`
+
+	// 订单附加信息，查询或者回调的时候原样返回。
+	Attachment *string `json:"Attachment,omitempty" name:"Attachment"`
+
+	// 第三方渠道扩展字段。见附录-复杂类型。
+	// 未作特殊说明，则无需传入。
+	ExternalPaymentData *string `json:"ExternalPaymentData,omitempty" name:"ExternalPaymentData"`
+
+	// 备注。
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 门店信息。
+	StoreInfo *OpenBankStoreInfo `json:"StoreInfo,omitempty" name:"StoreInfo"`
+
+	// 支付限制。
+	PayLimitInfo *OpenBankPayLimitInfo `json:"PayLimitInfo,omitempty" name:"PayLimitInfo"`
+
+	// 环境类型。
+	// __release__:生产环境
+	// __sandbox__:沙箱环境
+	// _不填默认为生产环境_
+	Environment *string `json:"Environment,omitempty" name:"Environment"`
+}
+
+type CreateOpenBankUnifiedOrderRequest struct {
+	*tchttp.BaseRequest
+	
+	// 渠道商户号。
+	ChannelMerchantId *string `json:"ChannelMerchantId,omitempty" name:"ChannelMerchantId"`
+
+	// 渠道名称。
+	ChannelName *string `json:"ChannelName,omitempty" name:"ChannelName"`
+
+	// 支付产品类型。
+	// 被扫（扫码）：SWIPE, 主扫（刷卡）：SCAN, 
+	// H5：WAP, 公众号：PUBLIC, 
+	// APP-SDK：SDK, 小程序：MINI_PROGRAM, 
+	// 快捷支付：QUICK, 网银支付：ONLINE_BANK。
+	PayType *string `json:"PayType,omitempty" name:"PayType"`
+
+	// 外部商户订单号。
+	// 只能是数字、大小写字母，且在同一个接入平台下唯一。
+	OutOrderId *string `json:"OutOrderId,omitempty" name:"OutOrderId"`
+
+	// 交易金额，单位分。
+	TotalAmount *int64 `json:"TotalAmount,omitempty" name:"TotalAmount"`
+
+	// 币种。固定：CNY。
+	Currency *string `json:"Currency,omitempty" name:"Currency"`
+
+	// 渠道子商户号。
+	ChannelSubMerchantId *string `json:"ChannelSubMerchantId,omitempty" name:"ChannelSubMerchantId"`
+
+	// 实际支付渠道。没有则无需填写。如
+	// 支付宝 ALIPAY
+	// 微信支付 WXPAY
+	// 银联 UNIONPAY
+	// 一般在间连模式下使用。
+	PayChannel *string `json:"PayChannel,omitempty" name:"PayChannel"`
+
+	// 设备信息。
+	SceneInfo *OpenBankSceneInfo `json:"SceneInfo,omitempty" name:"SceneInfo"`
+
+	// 分账信息列表。
+	ProfitShareInfoList []*OpenBankProfitShareInfo `json:"ProfitShareInfoList,omitempty" name:"ProfitShareInfoList"`
+
+	// 订单标题。
+	OrderSubject *string `json:"OrderSubject,omitempty" name:"OrderSubject"`
+
+	// 商品信息。
+	GoodsDetail *string `json:"GoodsDetail,omitempty" name:"GoodsDetail"`
+
+	// 超时时间。
+	ExpireTime *string `json:"ExpireTime,omitempty" name:"ExpireTime"`
+
+	// 支付成功回调地址。
+	NotifyUrl *string `json:"NotifyUrl,omitempty" name:"NotifyUrl"`
+
+	// 支付成功前端跳转URL。
+	FrontUrl *string `json:"FrontUrl,omitempty" name:"FrontUrl"`
+
+	// 订单附加信息，查询或者回调的时候原样返回。
+	Attachment *string `json:"Attachment,omitempty" name:"Attachment"`
+
+	// 第三方渠道扩展字段。见附录-复杂类型。
+	// 未作特殊说明，则无需传入。
+	ExternalPaymentData *string `json:"ExternalPaymentData,omitempty" name:"ExternalPaymentData"`
+
+	// 备注。
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 门店信息。
+	StoreInfo *OpenBankStoreInfo `json:"StoreInfo,omitempty" name:"StoreInfo"`
+
+	// 支付限制。
+	PayLimitInfo *OpenBankPayLimitInfo `json:"PayLimitInfo,omitempty" name:"PayLimitInfo"`
+
+	// 环境类型。
+	// __release__:生产环境
+	// __sandbox__:沙箱环境
+	// _不填默认为生产环境_
+	Environment *string `json:"Environment,omitempty" name:"Environment"`
+}
+
+func (r *CreateOpenBankUnifiedOrderRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateOpenBankUnifiedOrderRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ChannelMerchantId")
+	delete(f, "ChannelName")
+	delete(f, "PayType")
+	delete(f, "OutOrderId")
+	delete(f, "TotalAmount")
+	delete(f, "Currency")
+	delete(f, "ChannelSubMerchantId")
+	delete(f, "PayChannel")
+	delete(f, "SceneInfo")
+	delete(f, "ProfitShareInfoList")
+	delete(f, "OrderSubject")
+	delete(f, "GoodsDetail")
+	delete(f, "ExpireTime")
+	delete(f, "NotifyUrl")
+	delete(f, "FrontUrl")
+	delete(f, "Attachment")
+	delete(f, "ExternalPaymentData")
+	delete(f, "Remark")
+	delete(f, "StoreInfo")
+	delete(f, "PayLimitInfo")
+	delete(f, "Environment")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateOpenBankUnifiedOrderRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateOpenBankUnifiedOrderResponseParams struct {
+	// 业务系统返回码，SUCCESS表示成功，其他表示失败。
+	ErrCode *string `json:"ErrCode,omitempty" name:"ErrCode"`
+
+	// 业务系统返回消息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrMessage *string `json:"ErrMessage,omitempty" name:"ErrMessage"`
+
+	// 统一下单响应对象。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Result *CreateOpenBankOrderPaymentResult `json:"Result,omitempty" name:"Result"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateOpenBankUnifiedOrderResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateOpenBankUnifiedOrderResponseParams `json:"Response"`
+}
+
+func (r *CreateOpenBankUnifiedOrderResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateOpenBankUnifiedOrderResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -11246,6 +11951,33 @@ type ExternalReturnContractInfo struct {
 	ExternalReturnContractTerminationMode *string `json:"ExternalReturnContractTerminationMode,omitempty" name:"ExternalReturnContractTerminationMode"`
 }
 
+type FeeRangInfo struct {
+	// 卡类型，银联产品使用 
+	// DEBIT：借记卡 
+	// CREDIT：贷记卡
+	CardType *string `json:"CardType,omitempty" name:"CardType"`
+
+	// 区间起始金额，单位（分）
+	RangeStartValue *uint64 `json:"RangeStartValue,omitempty" name:"RangeStartValue"`
+
+	// 区间结束金额，单位（分）
+	RangeEndValue *uint64 `json:"RangeEndValue,omitempty" name:"RangeEndValue"`
+
+	// 分段计费模式 
+	// SINGLE：按金额计费 
+	// RATIO：按费率计费
+	RangeFeeMode *string `json:"RangeFeeMode,omitempty" name:"RangeFeeMode"`
+
+	// 费用值，单位（0.01%或分）
+	FeeValue *uint64 `json:"FeeValue,omitempty" name:"FeeValue"`
+
+	// 最低收费金额，单位（分）
+	MinFee *uint64 `json:"MinFee,omitempty" name:"MinFee"`
+
+	// 最高收费金额，单位（分）
+	MaxFee *uint64 `json:"MaxFee,omitempty" name:"MaxFee"`
+}
+
 type FileItem struct {
 	// STRING(256)，文件名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -11933,6 +12665,40 @@ func (r *GetPayRollAuthResultResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *GetPayRollAuthResultResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type LegalPersonInfo struct {
+	// 证件类型 
+	// IDCARD：身份证 
+	// PASSPORT：护照 SOLDIERSCERTIFICATE：士兵证 OFFICERSCERTIFICATE：军官证 GATXCERTIFICATE：香港居民来往内地通行证 TWNDCERTIFICATE：台湾同胞来往内地通行证 
+	// MACAOCERTIFICATE：澳门来往内地通行证
+	IdType *string `json:"IdType,omitempty" name:"IdType"`
+
+	// 证件号码
+	IdNumber *string `json:"IdNumber,omitempty" name:"IdNumber"`
+
+	// 姓名
+	PersonName *string `json:"PersonName,omitempty" name:"PersonName"`
+
+	// 证件有效期类型 
+	// LONGTERM：长期有效 
+	// OTHER：非长期有效
+	IdValidityType *string `json:"IdValidityType,omitempty" name:"IdValidityType"`
+
+	// 证件生效日期，yyyy-MM-dd
+	IdEffectiveDate *string `json:"IdEffectiveDate,omitempty" name:"IdEffectiveDate"`
+
+	// 联系电话
+	ContactPhone *string `json:"ContactPhone,omitempty" name:"ContactPhone"`
+
+	// 证件失效日期，yyyy-MM-dd
+	IdExpireDate *string `json:"IdExpireDate,omitempty" name:"IdExpireDate"`
+
+	// 联系地址
+	ContactAddress *string `json:"ContactAddress,omitempty" name:"ContactAddress"`
+
+	// 邮箱地址
+	EmailAddress *string `json:"EmailAddress,omitempty" name:"EmailAddress"`
 }
 
 type MemberTransactionItem struct {
@@ -12771,6 +13537,50 @@ type MultiApplyOrder struct {
 	Details []*MultiApplyDetail `json:"Details,omitempty" name:"Details"`
 }
 
+type NaturalPersonInfo struct {
+	// 自然人类型 
+	// 2：商户负责人 
+	// 3：授权经办人
+	// 4：业务联系人 
+	// 5：实际控制人 
+	// 6：控股股东 
+	// 7：受益人 
+	// 8：结算人
+	// 注意：HELIPAY渠道必传业务联系人
+	PersonType *string `json:"PersonType,omitempty" name:"PersonType"`
+
+	// 证件类型 
+	// IDCARD：身份证 
+	// PASSPORT：护照 SOLDIERSCERTIFICATE：士兵证 OFFICERSCERTIFICATE：军官证 GATXCERTIFICATE：香港居民来往内地通行证 TWNDCERTIFICATE：台湾同胞来往内地通行证 MACAOCERTIFICATE：澳门来往内地通行证
+	IdType *string `json:"IdType,omitempty" name:"IdType"`
+
+	// 证件号码
+	IdNumber *string `json:"IdNumber,omitempty" name:"IdNumber"`
+
+	// 姓名
+	PersonName *string `json:"PersonName,omitempty" name:"PersonName"`
+
+	// 证件有效期类型 
+	// LONGTERM：长期有效 
+	// OTHER：非长期有效
+	IdValidityType *string `json:"IdValidityType,omitempty" name:"IdValidityType"`
+
+	// 证件生效日期，yyyy-MM-dd
+	IdEffectiveDate *string `json:"IdEffectiveDate,omitempty" name:"IdEffectiveDate"`
+
+	// 证件失效日期，yyyy-MM-dd
+	IdExpireDate *string `json:"IdExpireDate,omitempty" name:"IdExpireDate"`
+
+	// 联系电话，HELIPAY渠道业务联系人必传
+	ContactPhone *string `json:"ContactPhone,omitempty" name:"ContactPhone"`
+
+	// 联系地址
+	ContactAddress *string `json:"ContactAddress,omitempty" name:"ContactAddress"`
+
+	// 邮箱地址
+	EmailAddress *string `json:"EmailAddress,omitempty" name:"EmailAddress"`
+}
+
 type OpenBankApprovalGuideInfo struct {
 	// PC网银指引
 	PcGuideUrl *string `json:"PcGuideUrl,omitempty" name:"PcGuideUrl"`
@@ -12792,6 +13602,14 @@ type OpenBankGoodsInfo struct {
 
 	// 业务类型。汇付渠道必填，汇付渠道传入固定值100099。
 	GoodsBizType *string `json:"GoodsBizType,omitempty" name:"GoodsBizType"`
+}
+
+type OpenBankPayLimitInfo struct {
+	// 限制类型
+	PayLimitType *string `json:"PayLimitType,omitempty" name:"PayLimitType"`
+
+	// 限制类型值
+	PayLimitValue *string `json:"PayLimitValue,omitempty" name:"PayLimitValue"`
 }
 
 type OpenBankPayeeInfo struct {
@@ -12862,6 +13680,52 @@ type OpenBankProfitShareInfo struct {
 	ProfitShareFee *int64 `json:"ProfitShareFee,omitempty" name:"ProfitShareFee"`
 }
 
+type OpenBankQueryRefundOrderResult struct {
+	// 外部商户退款单号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OutRefundId *string `json:"OutRefundId,omitempty" name:"OutRefundId"`
+
+	// 渠道退款单号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ChannelRefundId *string `json:"ChannelRefundId,omitempty" name:"ChannelRefundId"`
+
+	// 退款原因
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RefundReason *string `json:"RefundReason,omitempty" name:"RefundReason"`
+
+	// 退款金额，单位分
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RefundAmount *int64 `json:"RefundAmount,omitempty" name:"RefundAmount"`
+
+	// 实际退款金额，单位分
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RealRefundAmount *int64 `json:"RealRefundAmount,omitempty" name:"RealRefundAmount"`
+
+	// 原支付订单总金额，单位分
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalAmount *int64 `json:"TotalAmount,omitempty" name:"TotalAmount"`
+
+	// 退款完成时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TimeFinish *string `json:"TimeFinish,omitempty" name:"TimeFinish"`
+
+	// 退款订单状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RefundStatus *string `json:"RefundStatus,omitempty" name:"RefundStatus"`
+
+	// 退款明细信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RefundInfo *string `json:"RefundInfo,omitempty" name:"RefundInfo"`
+
+	// 退款手续费金额
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FeeAmount *int64 `json:"FeeAmount,omitempty" name:"FeeAmount"`
+
+	// 退款返回描述，比如失败原因等。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RefundMessage *string `json:"RefundMessage,omitempty" name:"RefundMessage"`
+}
+
 type OpenBankRechargePayeeInfo struct {
 	// 收款方标识
 	// 收款方类型为电子记账本时，上送渠道电子记账本ID
@@ -12905,6 +13769,40 @@ type OpenBankRedirectInfo struct {
 	MpUserName *string `json:"MpUserName,omitempty" name:"MpUserName"`
 }
 
+type OpenBankRefundOrderApplyResult struct {
+	// 云企付订单号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ChannelOrderId *string `json:"ChannelOrderId,omitempty" name:"ChannelOrderId"`
+
+	// 云企付退款流水号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ChannelRefundId *string `json:"ChannelRefundId,omitempty" name:"ChannelRefundId"`
+
+	// 外部商户退款单号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OutRefundId *string `json:"OutRefundId,omitempty" name:"OutRefundId"`
+
+	// 外部商户订单号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OutOrderId *string `json:"OutOrderId,omitempty" name:"OutOrderId"`
+
+	// 退款返回描述，比如失败原因等。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RefundMessage *string `json:"RefundMessage,omitempty" name:"RefundMessage"`
+
+	// 退款金额
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RefundAmount *int64 `json:"RefundAmount,omitempty" name:"RefundAmount"`
+
+	// 退款手续费金额
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FeeAmount *int64 `json:"FeeAmount,omitempty" name:"FeeAmount"`
+
+	// 退款状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RefundStatus *string `json:"RefundStatus,omitempty" name:"RefundStatus"`
+}
+
 type OpenBankSceneInfo struct {
 	// 用户端实际 ip。汇付渠道必填。
 	PayerClientIp *string `json:"PayerClientIp,omitempty" name:"PayerClientIp"`
@@ -12921,6 +13819,20 @@ type OpenBankSceneInfo struct {
 	// 终端设备类型。MOBILE_BROWSER:手机浏览器，MOBILE_APP:手机应用程序，TABLET:平板；WATCH:手表，PC:电脑PC，OTHER:其他。
 	// 汇付渠道必填。
 	DeviceType *string `json:"DeviceType,omitempty" name:"DeviceType"`
+}
+
+type OpenBankStoreInfo struct {
+	// 门店名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 地区编码
+	AreaCode *string `json:"AreaCode,omitempty" name:"AreaCode"`
+
+	// 详细地址
+	Address *string `json:"Address,omitempty" name:"Address"`
+
+	// 门店编号
+	Id *string `json:"Id,omitempty" name:"Id"`
 }
 
 type Order struct {
@@ -13023,6 +13935,31 @@ type OrganizationInfo struct {
 	// 法人证件号码，如果SubMchName不是法人，需要另外送入法人信息（企业必输）
 	// <敏感信息>加密详见<a href="https://cloud.tencent.com/document/product/1122/48979" target="_blank">《商户端接口敏感信息加密说明》</a>
 	LegalPersonIdCode *string `json:"LegalPersonIdCode,omitempty" name:"LegalPersonIdCode"`
+}
+
+type OutSubMerchantExtensionInfo struct {
+	// 地区代码，国标码
+	// HELIPAY渠道必传
+	RegionCode *string `json:"RegionCode,omitempty" name:"RegionCode"`
+
+	// 注册地址
+	RegisterAddress *string `json:"RegisterAddress,omitempty" name:"RegisterAddress"`
+
+	// 通讯地址
+	// HELIPAY渠道必传
+	MailingAddress *string `json:"MailingAddress,omitempty" name:"MailingAddress"`
+
+	// 营业地址/经营地址
+	BusinessAddress *string `json:"BusinessAddress,omitempty" name:"BusinessAddress"`
+
+	// 客服电话
+	ServicePhone *string `json:"ServicePhone,omitempty" name:"ServicePhone"`
+
+	// 网站url
+	WebSiteUrl *string `json:"WebSiteUrl,omitempty" name:"WebSiteUrl"`
+
+	// 邮箱地址
+	EmailAddress *string `json:"EmailAddress,omitempty" name:"EmailAddress"`
 }
 
 type Paging struct {
@@ -19007,6 +19944,246 @@ type QueryOpenBankBankBranchListResult struct {
 	Count *int64 `json:"Count,omitempty" name:"Count"`
 }
 
+type QueryOpenBankBillData struct {
+	// 交易日期
+	BillDate *string `json:"BillDate,omitempty" name:"BillDate"`
+
+	// 渠道编码
+	Channel *string `json:"Channel,omitempty" name:"Channel"`
+
+	// 二级渠道
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubChannel *string `json:"SubChannel,omitempty" name:"SubChannel"`
+
+	// 系统父商户号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ParentMerchantId *string `json:"ParentMerchantId,omitempty" name:"ParentMerchantId"`
+
+	// 外部商户号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OutMerchantId *string `json:"OutMerchantId,omitempty" name:"OutMerchantId"`
+
+	// 系统商户号
+	MerchantId *string `json:"MerchantId,omitempty" name:"MerchantId"`
+
+	// 第三方商户号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EndMerchantId *string `json:"EndMerchantId,omitempty" name:"EndMerchantId"`
+
+	// 外部订单号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OutTradeNo *string `json:"OutTradeNo,omitempty" name:"OutTradeNo"`
+
+	// 系统订单号
+	TradeNo *string `json:"TradeNo,omitempty" name:"TradeNo"`
+
+	// 第三方订单号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EndTradeNo *string `json:"EndTradeNo,omitempty" name:"EndTradeNo"`
+
+	// 收付类型，PAYMENT:付款，INCOME:收款
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PaymentType *string `json:"PaymentType,omitempty" name:"PaymentType"`
+
+	// 业务类型，WITHDRAW:提现，PAY:支付，RECHARGE:充值，TRANSFER:转账，REFUND:退款
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BusinessType *string `json:"BusinessType,omitempty" name:"BusinessType"`
+
+	// 发起交易时间，格式yyyy-MM-dd HH:mm:ss
+	TradeTime *string `json:"TradeTime,omitempty" name:"TradeTime"`
+
+	// 交易完成时间，格式yyyy-MM-dd HH:mm:ss
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FinishTime *string `json:"FinishTime,omitempty" name:"FinishTime"`
+
+	// 交易状态，0:未知，1:成功，2:失败
+	TradeStatus *string `json:"TradeStatus,omitempty" name:"TradeStatus"`
+
+	// 对账状态，1:成功，2:失败 3:长账 4:短账
+	CheckStatus *string `json:"CheckStatus,omitempty" name:"CheckStatus"`
+
+	// 对账失败原因
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CheckFailReason *string `json:"CheckFailReason,omitempty" name:"CheckFailReason"`
+
+	// 交易金额（元）
+	OrderAmount *string `json:"OrderAmount,omitempty" name:"OrderAmount"`
+
+	// 服务费（元）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ServiceFee *string `json:"ServiceFee,omitempty" name:"ServiceFee"`
+
+	// 收款人账号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PayeeAccount *string `json:"PayeeAccount,omitempty" name:"PayeeAccount"`
+
+	// 收款人名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PayeeName *string `json:"PayeeName,omitempty" name:"PayeeName"`
+
+	// 付款人账号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PayerAccount *string `json:"PayerAccount,omitempty" name:"PayerAccount"`
+
+	// 付款人名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PayerName *string `json:"PayerName,omitempty" name:"PayerName"`
+
+	// 支付信息描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitempty" name:"Description"`
+}
+
+// Predefined struct for user
+type QueryOpenBankBillDataPageRequestParams struct {
+	// 渠道商户号，外部接入平台方入驻云企付平台后下发。
+	// EBANK_PAYMENT支付方式下，填写渠道商户号；
+	// SAFT_ISV支付方式下，填写渠道子商户号;
+	// HELIPAY渠道下，填写渠道子商户号。
+	ChannelMerchantId *string `json:"ChannelMerchantId,omitempty" name:"ChannelMerchantId"`
+
+	// 账单日期,yyyy-MM-dd。
+	BillDate *string `json:"BillDate,omitempty" name:"BillDate"`
+
+	// 渠道名称。详见附录-云企付枚举类说明-ChannelName。
+	// __TENPAY__: 商企付
+	// __WECHAT__: 微信支付
+	// __ALIPAY__: 支付宝
+	// HELIPAY：合利宝
+	ChannelName *string `json:"ChannelName,omitempty" name:"ChannelName"`
+
+	// 分页页码。
+	PageNo *uint64 `json:"PageNo,omitempty" name:"PageNo"`
+
+	// 分页大小，最大1000。
+	PageSize *uint64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// 账单类型，默认交易账单。
+	BillType *string `json:"BillType,omitempty" name:"BillType"`
+
+	// 支付方式。详见附录-云企付枚举类说明-PaymentMethod。
+	PaymentMethod *string `json:"PaymentMethod,omitempty" name:"PaymentMethod"`
+
+	// 环境类型。
+	// __release__:生产环境
+	// __sandbox__:沙箱环境
+	// _不填默认为生产环境_
+	Environment *string `json:"Environment,omitempty" name:"Environment"`
+}
+
+type QueryOpenBankBillDataPageRequest struct {
+	*tchttp.BaseRequest
+	
+	// 渠道商户号，外部接入平台方入驻云企付平台后下发。
+	// EBANK_PAYMENT支付方式下，填写渠道商户号；
+	// SAFT_ISV支付方式下，填写渠道子商户号;
+	// HELIPAY渠道下，填写渠道子商户号。
+	ChannelMerchantId *string `json:"ChannelMerchantId,omitempty" name:"ChannelMerchantId"`
+
+	// 账单日期,yyyy-MM-dd。
+	BillDate *string `json:"BillDate,omitempty" name:"BillDate"`
+
+	// 渠道名称。详见附录-云企付枚举类说明-ChannelName。
+	// __TENPAY__: 商企付
+	// __WECHAT__: 微信支付
+	// __ALIPAY__: 支付宝
+	// HELIPAY：合利宝
+	ChannelName *string `json:"ChannelName,omitempty" name:"ChannelName"`
+
+	// 分页页码。
+	PageNo *uint64 `json:"PageNo,omitempty" name:"PageNo"`
+
+	// 分页大小，最大1000。
+	PageSize *uint64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// 账单类型，默认交易账单。
+	BillType *string `json:"BillType,omitempty" name:"BillType"`
+
+	// 支付方式。详见附录-云企付枚举类说明-PaymentMethod。
+	PaymentMethod *string `json:"PaymentMethod,omitempty" name:"PaymentMethod"`
+
+	// 环境类型。
+	// __release__:生产环境
+	// __sandbox__:沙箱环境
+	// _不填默认为生产环境_
+	Environment *string `json:"Environment,omitempty" name:"Environment"`
+}
+
+func (r *QueryOpenBankBillDataPageRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryOpenBankBillDataPageRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ChannelMerchantId")
+	delete(f, "BillDate")
+	delete(f, "ChannelName")
+	delete(f, "PageNo")
+	delete(f, "PageSize")
+	delete(f, "BillType")
+	delete(f, "PaymentMethod")
+	delete(f, "Environment")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryOpenBankBillDataPageRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type QueryOpenBankBillDataPageResponseParams struct {
+	// 错误码。
+	// __SUCCESS__: 成功
+	// __其他__: 见附录-错误码表
+	ErrCode *string `json:"ErrCode,omitempty" name:"ErrCode"`
+
+	// 错误消息。
+	ErrMessage *string `json:"ErrMessage,omitempty" name:"ErrMessage"`
+
+	// 结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Result *QueryOpenBankBillDataPageResult `json:"Result,omitempty" name:"Result"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type QueryOpenBankBillDataPageResponse struct {
+	*tchttp.BaseResponse
+	Response *QueryOpenBankBillDataPageResponseParams `json:"Response"`
+}
+
+func (r *QueryOpenBankBillDataPageResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryOpenBankBillDataPageResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryOpenBankBillDataPageResult struct {
+	// 页码
+	PageNo *uint64 `json:"PageNo,omitempty" name:"PageNo"`
+
+	// 分页大小
+	PageSize *uint64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// 总数
+	Count *uint64 `json:"Count,omitempty" name:"Count"`
+
+	// 账单数据明细
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DataList []*QueryOpenBankBillData `json:"DataList,omitempty" name:"DataList"`
+}
+
 // Predefined struct for user
 type QueryOpenBankBindExternalSubMerchantBankAccountRequestParams struct {
 	// 渠道子商户ID。
@@ -20081,6 +21258,360 @@ type QueryOpenBankPaymentOrderResult struct {
 	// 手续费费率
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FeeRate *int64 `json:"FeeRate,omitempty" name:"FeeRate"`
+}
+
+// Predefined struct for user
+type QueryOpenBankRefundOrderRequestParams struct {
+	// 渠道商户号。
+	ChannelMerchantId *string `json:"ChannelMerchantId,omitempty" name:"ChannelMerchantId"`
+
+	// 外部商户退单号，与渠道退款单号二者选填其一。
+	OutRefundId *string `json:"OutRefundId,omitempty" name:"OutRefundId"`
+
+	// 渠道退款订单号，与外部商户退款单号二者选填其一。
+	ChannelRefundId *string `json:"ChannelRefundId,omitempty" name:"ChannelRefundId"`
+
+	// 环境类型。
+	// __release__:生产环境
+	// __sandbox__:沙箱环境
+	// _不填默认为生产环境_
+	Environment *string `json:"Environment,omitempty" name:"Environment"`
+}
+
+type QueryOpenBankRefundOrderRequest struct {
+	*tchttp.BaseRequest
+	
+	// 渠道商户号。
+	ChannelMerchantId *string `json:"ChannelMerchantId,omitempty" name:"ChannelMerchantId"`
+
+	// 外部商户退单号，与渠道退款单号二者选填其一。
+	OutRefundId *string `json:"OutRefundId,omitempty" name:"OutRefundId"`
+
+	// 渠道退款订单号，与外部商户退款单号二者选填其一。
+	ChannelRefundId *string `json:"ChannelRefundId,omitempty" name:"ChannelRefundId"`
+
+	// 环境类型。
+	// __release__:生产环境
+	// __sandbox__:沙箱环境
+	// _不填默认为生产环境_
+	Environment *string `json:"Environment,omitempty" name:"Environment"`
+}
+
+func (r *QueryOpenBankRefundOrderRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryOpenBankRefundOrderRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ChannelMerchantId")
+	delete(f, "OutRefundId")
+	delete(f, "ChannelRefundId")
+	delete(f, "Environment")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryOpenBankRefundOrderRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type QueryOpenBankRefundOrderResponseParams struct {
+	// 错误码
+	ErrCode *string `json:"ErrCode,omitempty" name:"ErrCode"`
+
+	// 错误消息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrMessage *string `json:"ErrMessage,omitempty" name:"ErrMessage"`
+
+	// 返回结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Result *OpenBankQueryRefundOrderResult `json:"Result,omitempty" name:"Result"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type QueryOpenBankRefundOrderResponse struct {
+	*tchttp.BaseResponse
+	Response *QueryOpenBankRefundOrderResponseParams `json:"Response"`
+}
+
+func (r *QueryOpenBankRefundOrderResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryOpenBankRefundOrderResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type QueryOpenBankSubMerchantCredentialRequestParams struct {
+	// 渠道商户ID。
+	ChannelMerchantId *string `json:"ChannelMerchantId,omitempty" name:"ChannelMerchantId"`
+
+	// 渠道子商户ID。
+	ChannelSubMerchantId *string `json:"ChannelSubMerchantId,omitempty" name:"ChannelSubMerchantId"`
+
+	// 渠道名称。详见附录-枚举类型-ChannelName。
+	ChannelName *string `json:"ChannelName,omitempty" name:"ChannelName"`
+
+	// 支付方式。
+	// 合利宝渠道不需要传。
+	PaymentMethod *string `json:"PaymentMethod,omitempty" name:"PaymentMethod"`
+
+	// 外部申请流水号。
+	// 外部申请流水号与渠道申请流水号两者选填其一。
+	OutApplyId *string `json:"OutApplyId,omitempty" name:"OutApplyId"`
+
+	// 渠道申请流水号。
+	// 外部申请流水号与渠道申请流水号两者选填其一。
+	ChannelApplyId *string `json:"ChannelApplyId,omitempty" name:"ChannelApplyId"`
+
+	// 环境类型。
+	// __release__:生产环境
+	// __sandbox__:沙箱环境
+	// _不填默认为生产环境_
+	Environment *string `json:"Environment,omitempty" name:"Environment"`
+}
+
+type QueryOpenBankSubMerchantCredentialRequest struct {
+	*tchttp.BaseRequest
+	
+	// 渠道商户ID。
+	ChannelMerchantId *string `json:"ChannelMerchantId,omitempty" name:"ChannelMerchantId"`
+
+	// 渠道子商户ID。
+	ChannelSubMerchantId *string `json:"ChannelSubMerchantId,omitempty" name:"ChannelSubMerchantId"`
+
+	// 渠道名称。详见附录-枚举类型-ChannelName。
+	ChannelName *string `json:"ChannelName,omitempty" name:"ChannelName"`
+
+	// 支付方式。
+	// 合利宝渠道不需要传。
+	PaymentMethod *string `json:"PaymentMethod,omitempty" name:"PaymentMethod"`
+
+	// 外部申请流水号。
+	// 外部申请流水号与渠道申请流水号两者选填其一。
+	OutApplyId *string `json:"OutApplyId,omitempty" name:"OutApplyId"`
+
+	// 渠道申请流水号。
+	// 外部申请流水号与渠道申请流水号两者选填其一。
+	ChannelApplyId *string `json:"ChannelApplyId,omitempty" name:"ChannelApplyId"`
+
+	// 环境类型。
+	// __release__:生产环境
+	// __sandbox__:沙箱环境
+	// _不填默认为生产环境_
+	Environment *string `json:"Environment,omitempty" name:"Environment"`
+}
+
+func (r *QueryOpenBankSubMerchantCredentialRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryOpenBankSubMerchantCredentialRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ChannelMerchantId")
+	delete(f, "ChannelSubMerchantId")
+	delete(f, "ChannelName")
+	delete(f, "PaymentMethod")
+	delete(f, "OutApplyId")
+	delete(f, "ChannelApplyId")
+	delete(f, "Environment")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryOpenBankSubMerchantCredentialRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type QueryOpenBankSubMerchantCredentialResponseParams struct {
+	// 错误码。
+	ErrCode *string `json:"ErrCode,omitempty" name:"ErrCode"`
+
+	// 错误消息。
+	ErrMessage *string `json:"ErrMessage,omitempty" name:"ErrMessage"`
+
+	// 返回结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Result *QueryOpenBankSubMerchantCredentialResult `json:"Result,omitempty" name:"Result"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type QueryOpenBankSubMerchantCredentialResponse struct {
+	*tchttp.BaseResponse
+	Response *QueryOpenBankSubMerchantCredentialResponseParams `json:"Response"`
+}
+
+func (r *QueryOpenBankSubMerchantCredentialResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryOpenBankSubMerchantCredentialResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryOpenBankSubMerchantCredentialResult struct {
+	// 上传状态
+	UploadStatus *string `json:"UploadStatus,omitempty" name:"UploadStatus"`
+
+	// 上传描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UploadMessage *string `json:"UploadMessage,omitempty" name:"UploadMessage"`
+}
+
+// Predefined struct for user
+type QueryOpenBankSubMerchantRateConfigureRequestParams struct {
+	// 渠道进件序列号。
+	ChannelRegistrationNo *string `json:"ChannelRegistrationNo,omitempty" name:"ChannelRegistrationNo"`
+
+	// 渠道商户ID。
+	ChannelMerchantId *string `json:"ChannelMerchantId,omitempty" name:"ChannelMerchantId"`
+
+	// 渠道子商户ID。
+	ChannelSubMerchantId *string `json:"ChannelSubMerchantId,omitempty" name:"ChannelSubMerchantId"`
+
+	// 渠道名称。详见附录-云企付枚举类说明-ChannelName。
+	// TENPAY: 商企付
+	// WECHAT: 微信支付
+	// ALIPAY: 支付宝
+	// HELIPAY:合利宝
+	ChannelName *string `json:"ChannelName,omitempty" name:"ChannelName"`
+
+	// 渠道产品费率序列号。与外部产品费率序列号二者选填其一。
+	ChannelProductFeeNo *string `json:"ChannelProductFeeNo,omitempty" name:"ChannelProductFeeNo"`
+
+	// 外部产品费率序列号。与渠道产品费率序列号二者选填其一。
+	OutProductFeeNo *string `json:"OutProductFeeNo,omitempty" name:"OutProductFeeNo"`
+
+	// 环境类型。
+	// __release__:生产环境
+	// __sandbox__:沙箱环境
+	// _不填默认为生产环境_
+	Environment *string `json:"Environment,omitempty" name:"Environment"`
+}
+
+type QueryOpenBankSubMerchantRateConfigureRequest struct {
+	*tchttp.BaseRequest
+	
+	// 渠道进件序列号。
+	ChannelRegistrationNo *string `json:"ChannelRegistrationNo,omitempty" name:"ChannelRegistrationNo"`
+
+	// 渠道商户ID。
+	ChannelMerchantId *string `json:"ChannelMerchantId,omitempty" name:"ChannelMerchantId"`
+
+	// 渠道子商户ID。
+	ChannelSubMerchantId *string `json:"ChannelSubMerchantId,omitempty" name:"ChannelSubMerchantId"`
+
+	// 渠道名称。详见附录-云企付枚举类说明-ChannelName。
+	// TENPAY: 商企付
+	// WECHAT: 微信支付
+	// ALIPAY: 支付宝
+	// HELIPAY:合利宝
+	ChannelName *string `json:"ChannelName,omitempty" name:"ChannelName"`
+
+	// 渠道产品费率序列号。与外部产品费率序列号二者选填其一。
+	ChannelProductFeeNo *string `json:"ChannelProductFeeNo,omitempty" name:"ChannelProductFeeNo"`
+
+	// 外部产品费率序列号。与渠道产品费率序列号二者选填其一。
+	OutProductFeeNo *string `json:"OutProductFeeNo,omitempty" name:"OutProductFeeNo"`
+
+	// 环境类型。
+	// __release__:生产环境
+	// __sandbox__:沙箱环境
+	// _不填默认为生产环境_
+	Environment *string `json:"Environment,omitempty" name:"Environment"`
+}
+
+func (r *QueryOpenBankSubMerchantRateConfigureRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryOpenBankSubMerchantRateConfigureRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ChannelRegistrationNo")
+	delete(f, "ChannelMerchantId")
+	delete(f, "ChannelSubMerchantId")
+	delete(f, "ChannelName")
+	delete(f, "ChannelProductFeeNo")
+	delete(f, "OutProductFeeNo")
+	delete(f, "Environment")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryOpenBankSubMerchantRateConfigureRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type QueryOpenBankSubMerchantRateConfigureResponseParams struct {
+	// 错误码。
+	// __SUCCESS__: 成功
+	// __其他__: 见附录-错误码表
+	ErrCode *string `json:"ErrCode,omitempty" name:"ErrCode"`
+
+	// 错误消息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrMessage *string `json:"ErrMessage,omitempty" name:"ErrMessage"`
+
+	// 返回结果。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Result *QueryOpenBankSubMerchantRateConfigureResult `json:"Result,omitempty" name:"Result"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type QueryOpenBankSubMerchantRateConfigureResponse struct {
+	*tchttp.BaseResponse
+	Response *QueryOpenBankSubMerchantRateConfigureResponseParams `json:"Response"`
+}
+
+func (r *QueryOpenBankSubMerchantRateConfigureResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryOpenBankSubMerchantRateConfigureResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryOpenBankSubMerchantRateConfigureResult struct {
+	// 处理状态 
+	// SUCCESS: 开通成功 
+	// FAILED: 开通失败
+	// PROCESSING: 开通中
+	DealStatus *string `json:"DealStatus,omitempty" name:"DealStatus"`
+
+	// 处理描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DealMessage *string `json:"DealMessage,omitempty" name:"DealMessage"`
 }
 
 // Predefined struct for user
@@ -23406,6 +24937,142 @@ func (r *RefundMemberTransactionResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type RefundOpenBankOrderRequestParams struct {
+	// 外部商户退款单号。
+	OutRefundId *string `json:"OutRefundId,omitempty" name:"OutRefundId"`
+
+	// 退款金额。单位分。
+	RefundAmount *int64 `json:"RefundAmount,omitempty" name:"RefundAmount"`
+
+	// 渠道商户号。
+	ChannelMerchantId *string `json:"ChannelMerchantId,omitempty" name:"ChannelMerchantId"`
+
+	// 外部商户订单号，与云企付渠道订单号二者选填其一。
+	OutOrderId *string `json:"OutOrderId,omitempty" name:"OutOrderId"`
+
+	// 云企付渠道订单号，与外部订单号二者选填其一。
+	ChannelOrderId *string `json:"ChannelOrderId,omitempty" name:"ChannelOrderId"`
+
+	// 退款通知地址。
+	NotifyUrl *string `json:"NotifyUrl,omitempty" name:"NotifyUrl"`
+
+	// 退款原因。
+	RefundReason *string `json:"RefundReason,omitempty" name:"RefundReason"`
+
+	// 第三方渠道退款附加信息。详见附录-复杂类型。
+	// 若未作特殊说明，则无需传入。
+	ExternalRefundData *string `json:"ExternalRefundData,omitempty" name:"ExternalRefundData"`
+
+	// 备注信息
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 环境类型。
+	// __release__:生产环境
+	// __sandbox__:沙箱环境
+	// _不填默认为生产环境_
+	Environment *string `json:"Environment,omitempty" name:"Environment"`
+}
+
+type RefundOpenBankOrderRequest struct {
+	*tchttp.BaseRequest
+	
+	// 外部商户退款单号。
+	OutRefundId *string `json:"OutRefundId,omitempty" name:"OutRefundId"`
+
+	// 退款金额。单位分。
+	RefundAmount *int64 `json:"RefundAmount,omitempty" name:"RefundAmount"`
+
+	// 渠道商户号。
+	ChannelMerchantId *string `json:"ChannelMerchantId,omitempty" name:"ChannelMerchantId"`
+
+	// 外部商户订单号，与云企付渠道订单号二者选填其一。
+	OutOrderId *string `json:"OutOrderId,omitempty" name:"OutOrderId"`
+
+	// 云企付渠道订单号，与外部订单号二者选填其一。
+	ChannelOrderId *string `json:"ChannelOrderId,omitempty" name:"ChannelOrderId"`
+
+	// 退款通知地址。
+	NotifyUrl *string `json:"NotifyUrl,omitempty" name:"NotifyUrl"`
+
+	// 退款原因。
+	RefundReason *string `json:"RefundReason,omitempty" name:"RefundReason"`
+
+	// 第三方渠道退款附加信息。详见附录-复杂类型。
+	// 若未作特殊说明，则无需传入。
+	ExternalRefundData *string `json:"ExternalRefundData,omitempty" name:"ExternalRefundData"`
+
+	// 备注信息
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 环境类型。
+	// __release__:生产环境
+	// __sandbox__:沙箱环境
+	// _不填默认为生产环境_
+	Environment *string `json:"Environment,omitempty" name:"Environment"`
+}
+
+func (r *RefundOpenBankOrderRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RefundOpenBankOrderRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "OutRefundId")
+	delete(f, "RefundAmount")
+	delete(f, "ChannelMerchantId")
+	delete(f, "OutOrderId")
+	delete(f, "ChannelOrderId")
+	delete(f, "NotifyUrl")
+	delete(f, "RefundReason")
+	delete(f, "ExternalRefundData")
+	delete(f, "Remark")
+	delete(f, "Environment")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RefundOpenBankOrderRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RefundOpenBankOrderResponseParams struct {
+	// 错误码
+	ErrCode *string `json:"ErrCode,omitempty" name:"ErrCode"`
+
+	// 错误消息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrMessage *string `json:"ErrMessage,omitempty" name:"ErrMessage"`
+
+	// 返回结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Result *OpenBankRefundOrderApplyResult `json:"Result,omitempty" name:"Result"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type RefundOpenBankOrderResponse struct {
+	*tchttp.BaseResponse
+	Response *RefundOpenBankOrderResponseParams `json:"Response"`
+}
+
+func (r *RefundOpenBankOrderResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RefundOpenBankOrderResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type RefundOrderRequestParams struct {
 	// 进件成功后返给商户方的AppId
 	MerchantAppId *string `json:"MerchantAppId,omitempty" name:"MerchantAppId"`
@@ -24989,6 +26656,42 @@ type SceneInfo struct {
 	// 用户IP
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UserClientIp *string `json:"UserClientIp,omitempty" name:"UserClientIp"`
+}
+
+type SettleInfo struct {
+	// 结算账户类型 
+	// PRIVATE：对私 
+	// BUSINESS：对公
+	// HELIPAY渠道必传
+	SettleAccountType *string `json:"SettleAccountType,omitempty" name:"SettleAccountType"`
+
+	// 结算账号
+	// HELIPAY渠道必传
+	SettleAccountNumber *string `json:"SettleAccountNumber,omitempty" name:"SettleAccountNumber"`
+
+	// 结算账户名称
+	// HELIPAY渠道必传
+	SettleAccountName *string `json:"SettleAccountName,omitempty" name:"SettleAccountName"`
+
+	// 支行号
+	// HELIPAY渠道必传
+	BankBranchId *string `json:"BankBranchId,omitempty" name:"BankBranchId"`
+
+	// 支行名称
+	BankBranchName *string `json:"BankBranchName,omitempty" name:"BankBranchName"`
+
+	// 结算方式 
+	// AUTO：自动结算 
+	// SELF：自主结算
+	// HELIPAY渠道必传
+	SettleMode *string `json:"SettleMode,omitempty" name:"SettleMode"`
+
+	// 结算周期 
+	// T1：工作日隔天结算 
+	// D1：自然日隔天结算 
+	// D0：当日结算
+	// HELIPAY渠道必传
+	SettlePeriod *string `json:"SettlePeriod,omitempty" name:"SettlePeriod"`
 }
 
 type SettlementOrderResult struct {
@@ -27274,6 +28977,162 @@ type UploadFileResult struct {
 	// 文件路径
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FilePath *string `json:"FilePath,omitempty" name:"FilePath"`
+}
+
+// Predefined struct for user
+type UploadOpenBankSubMerchantCredentialRequestParams struct {
+	// 渠道商户ID。
+	ChannelMerchantId *string `json:"ChannelMerchantId,omitempty" name:"ChannelMerchantId"`
+
+	// 渠道子商户ID。
+	ChannelSubMerchantId *string `json:"ChannelSubMerchantId,omitempty" name:"ChannelSubMerchantId"`
+
+	// 渠道名称。详见附录-枚举类型-ChannelName。
+	ChannelName *string `json:"ChannelName,omitempty" name:"ChannelName"`
+
+	// 外部序列进件号。
+	OutApplyId *string `json:"OutApplyId,omitempty" name:"OutApplyId"`
+
+	// 资质类型，详见附录-枚举类型-CredentialType。
+	CredentialType *string `json:"CredentialType,omitempty" name:"CredentialType"`
+
+	// 文件类型。
+	// 合利宝渠道，文件类型为PNG/JPG格式。
+	FileType *string `json:"FileType,omitempty" name:"FileType"`
+
+	// 支付方式。
+	// 合利宝渠道不需要传。
+	PaymentMethod *string `json:"PaymentMethod,omitempty" name:"PaymentMethod"`
+
+	// 资质文件内容。Base64编码，资质文件内容和链接二选一。
+	// 合利宝渠道，文件限制大小5M以内。
+	CredentialContent *string `json:"CredentialContent,omitempty" name:"CredentialContent"`
+
+	// 资质文件链接。资质文件内容和链接二选一。
+	// 合利宝渠道，文件限制大小5M以内。
+	CredentialUrl *string `json:"CredentialUrl,omitempty" name:"CredentialUrl"`
+
+	// 环境类型。
+	// __release__:生产环境
+	// __sandbox__:沙箱环境
+	// _不填默认为生产环境_
+	Environment *string `json:"Environment,omitempty" name:"Environment"`
+}
+
+type UploadOpenBankSubMerchantCredentialRequest struct {
+	*tchttp.BaseRequest
+	
+	// 渠道商户ID。
+	ChannelMerchantId *string `json:"ChannelMerchantId,omitempty" name:"ChannelMerchantId"`
+
+	// 渠道子商户ID。
+	ChannelSubMerchantId *string `json:"ChannelSubMerchantId,omitempty" name:"ChannelSubMerchantId"`
+
+	// 渠道名称。详见附录-枚举类型-ChannelName。
+	ChannelName *string `json:"ChannelName,omitempty" name:"ChannelName"`
+
+	// 外部序列进件号。
+	OutApplyId *string `json:"OutApplyId,omitempty" name:"OutApplyId"`
+
+	// 资质类型，详见附录-枚举类型-CredentialType。
+	CredentialType *string `json:"CredentialType,omitempty" name:"CredentialType"`
+
+	// 文件类型。
+	// 合利宝渠道，文件类型为PNG/JPG格式。
+	FileType *string `json:"FileType,omitempty" name:"FileType"`
+
+	// 支付方式。
+	// 合利宝渠道不需要传。
+	PaymentMethod *string `json:"PaymentMethod,omitempty" name:"PaymentMethod"`
+
+	// 资质文件内容。Base64编码，资质文件内容和链接二选一。
+	// 合利宝渠道，文件限制大小5M以内。
+	CredentialContent *string `json:"CredentialContent,omitempty" name:"CredentialContent"`
+
+	// 资质文件链接。资质文件内容和链接二选一。
+	// 合利宝渠道，文件限制大小5M以内。
+	CredentialUrl *string `json:"CredentialUrl,omitempty" name:"CredentialUrl"`
+
+	// 环境类型。
+	// __release__:生产环境
+	// __sandbox__:沙箱环境
+	// _不填默认为生产环境_
+	Environment *string `json:"Environment,omitempty" name:"Environment"`
+}
+
+func (r *UploadOpenBankSubMerchantCredentialRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UploadOpenBankSubMerchantCredentialRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ChannelMerchantId")
+	delete(f, "ChannelSubMerchantId")
+	delete(f, "ChannelName")
+	delete(f, "OutApplyId")
+	delete(f, "CredentialType")
+	delete(f, "FileType")
+	delete(f, "PaymentMethod")
+	delete(f, "CredentialContent")
+	delete(f, "CredentialUrl")
+	delete(f, "Environment")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UploadOpenBankSubMerchantCredentialRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UploadOpenBankSubMerchantCredentialResponseParams struct {
+	// 错误码。
+	ErrCode *string `json:"ErrCode,omitempty" name:"ErrCode"`
+
+	// 错误消息。
+	ErrMessage *string `json:"ErrMessage,omitempty" name:"ErrMessage"`
+
+	// 返回结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Result *UploadOpenBankSubMerchantCredentialResult `json:"Result,omitempty" name:"Result"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type UploadOpenBankSubMerchantCredentialResponse struct {
+	*tchttp.BaseResponse
+	Response *UploadOpenBankSubMerchantCredentialResponseParams `json:"Response"`
+}
+
+func (r *UploadOpenBankSubMerchantCredentialResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UploadOpenBankSubMerchantCredentialResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type UploadOpenBankSubMerchantCredentialResult struct {
+	// 上传状态
+	// SUCCESS：上传成功
+	// FAILED：上传失败
+	// PROCESSING:上传中
+	UploadStatus *string `json:"UploadStatus,omitempty" name:"UploadStatus"`
+
+	// 上传描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UploadMessage *string `json:"UploadMessage,omitempty" name:"UploadMessage"`
+
+	// 渠道上传流水号
+	ChannelApplyId *string `json:"ChannelApplyId,omitempty" name:"ChannelApplyId"`
 }
 
 // Predefined struct for user

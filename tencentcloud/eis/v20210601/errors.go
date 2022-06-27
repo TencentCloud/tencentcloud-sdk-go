@@ -73,4 +73,7 @@ const (
 
 	// 运行时地域不存在。
 	INVALIDPARAMETERVALUE_RUNTIMEZONENOTEXISTED = "InvalidParameterValue.RuntimeZoneNotExisted"
+
+	// 资源不可用。
+	RESOURCEUNAVAILABLE = "ResourceUnavailable"
 )

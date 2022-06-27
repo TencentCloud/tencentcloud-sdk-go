@@ -1459,6 +1459,105 @@ func (r *CreatePrometheusAgentResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreatePrometheusMultiTenantInstancePostPayModeRequestParams struct {
+	// 实例名
+	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
+
+	// VPC ID
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 子网 ID
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+
+	// 数据存储时间（单位天），限制值为15，30，45之一
+	DataRetentionTime *int64 `json:"DataRetentionTime,omitempty" name:"DataRetentionTime"`
+
+	// 可用区
+	Zone *string `json:"Zone,omitempty" name:"Zone"`
+
+	// 实例的标签
+	TagSpecification []*PrometheusTag `json:"TagSpecification,omitempty" name:"TagSpecification"`
+
+	// 需要关联的 Grafana 实例
+	GrafanaInstanceId *string `json:"GrafanaInstanceId,omitempty" name:"GrafanaInstanceId"`
+}
+
+type CreatePrometheusMultiTenantInstancePostPayModeRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例名
+	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
+
+	// VPC ID
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 子网 ID
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+
+	// 数据存储时间（单位天），限制值为15，30，45之一
+	DataRetentionTime *int64 `json:"DataRetentionTime,omitempty" name:"DataRetentionTime"`
+
+	// 可用区
+	Zone *string `json:"Zone,omitempty" name:"Zone"`
+
+	// 实例的标签
+	TagSpecification []*PrometheusTag `json:"TagSpecification,omitempty" name:"TagSpecification"`
+
+	// 需要关联的 Grafana 实例
+	GrafanaInstanceId *string `json:"GrafanaInstanceId,omitempty" name:"GrafanaInstanceId"`
+}
+
+func (r *CreatePrometheusMultiTenantInstancePostPayModeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreatePrometheusMultiTenantInstancePostPayModeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceName")
+	delete(f, "VpcId")
+	delete(f, "SubnetId")
+	delete(f, "DataRetentionTime")
+	delete(f, "Zone")
+	delete(f, "TagSpecification")
+	delete(f, "GrafanaInstanceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreatePrometheusMultiTenantInstancePostPayModeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreatePrometheusMultiTenantInstancePostPayModeResponseParams struct {
+	// 实例 ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreatePrometheusMultiTenantInstancePostPayModeResponse struct {
+	*tchttp.BaseResponse
+	Response *CreatePrometheusMultiTenantInstancePostPayModeResponseParams `json:"Response"`
+}
+
+func (r *CreatePrometheusMultiTenantInstancePostPayModeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreatePrometheusMultiTenantInstancePostPayModeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreatePrometheusScrapeJobRequestParams struct {
 	// 实例 ID
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`

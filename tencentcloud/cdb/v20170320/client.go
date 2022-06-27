@@ -4300,6 +4300,7 @@ func NewDescribeParamTemplatesResponse() (response *DescribeParamTemplatesRespon
 //  AUTHFAILURE = "AuthFailure"
 //  CDBERROR_DATABASEERROR = "CdbError.DatabaseError"
 //  INTERNALERROR_PARAMERROR = "InternalError.ParamError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeParamTemplates(request *DescribeParamTemplatesRequest) (response *DescribeParamTemplatesResponse, err error) {
     return c.DescribeParamTemplatesWithContext(context.Background(), request)
@@ -4312,6 +4313,7 @@ func (c *Client) DescribeParamTemplates(request *DescribeParamTemplatesRequest) 
 //  AUTHFAILURE = "AuthFailure"
 //  CDBERROR_DATABASEERROR = "CdbError.DatabaseError"
 //  INTERNALERROR_PARAMERROR = "InternalError.ParamError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeParamTemplatesWithContext(ctx context.Context, request *DescribeParamTemplatesRequest) (response *DescribeParamTemplatesResponse, err error) {
     if request == nil {
@@ -5709,6 +5711,7 @@ func NewModifyAccountMaxUserConnectionsResponse() (response *ModifyAccountMaxUse
 //  FAILEDOPERATION_JSONUNMARSHALERROR = "FailedOperation.JsonUnmarshalError"
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETERVALUE_ACCOUNTHOSTRULEERROR = "InvalidParameterValue.AccountHostRuleError"
 func (c *Client) ModifyAccountMaxUserConnections(request *ModifyAccountMaxUserConnectionsRequest) (response *ModifyAccountMaxUserConnectionsResponse, err error) {
     return c.ModifyAccountMaxUserConnectionsWithContext(context.Background(), request)
 }
@@ -5721,6 +5724,7 @@ func (c *Client) ModifyAccountMaxUserConnections(request *ModifyAccountMaxUserCo
 //  FAILEDOPERATION_JSONUNMARSHALERROR = "FailedOperation.JsonUnmarshalError"
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETERVALUE_ACCOUNTHOSTRULEERROR = "InvalidParameterValue.AccountHostRuleError"
 func (c *Client) ModifyAccountMaxUserConnectionsWithContext(ctx context.Context, request *ModifyAccountMaxUserConnectionsRequest) (response *ModifyAccountMaxUserConnectionsResponse, err error) {
     if request == nil {
         request = NewModifyAccountMaxUserConnectionsRequest()
@@ -6775,6 +6779,7 @@ func NewModifyInstanceTagResponse() (response *ModifyInstanceTagResponse) {
 //  INTERNALERROR_COSERROR = "InternalError.CosError"
 //  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
 //  INTERNALERROR_TAGERROR = "InternalError.TagError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_RESOURCENOTFOUND = "InvalidParameter.ResourceNotFound"
 //  INVALIDPARAMETERVALUE_DATACONVERTERROR = "InvalidParameterValue.DataConvertError"
@@ -6797,6 +6802,7 @@ func (c *Client) ModifyInstanceTag(request *ModifyInstanceTagRequest) (response 
 //  INTERNALERROR_COSERROR = "InternalError.CosError"
 //  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
 //  INTERNALERROR_TAGERROR = "InternalError.TagError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_RESOURCENOTFOUND = "InvalidParameter.ResourceNotFound"
 //  INVALIDPARAMETERVALUE_DATACONVERTERROR = "InvalidParameterValue.DataConvertError"

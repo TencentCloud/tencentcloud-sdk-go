@@ -1,33 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 智能保险助手(cii) 版本：2021-04-08
+## 企业收付平台(cpdp) 版本：2019-08-20
 
-### 第 14 次发布
+### 第 71 次发布
 
-发布时间：2022-06-27 06:06:02
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [OcrRecognise](https://cloud.tencent.com/document/api/1368/56853#OcrRecognise)
-
-	* 新增成员：Field
-
-
-
-
-## 智能保险助手(cii) 版本：2020-12-10
-
-
-
-## 云监控(monitor) 版本：2018-07-24
-
-### 第 49 次发布
-
-发布时间：2022-06-27 06:12:15
+发布时间：2022-06-28 06:07:23
 
 本次发布包含了以下内容：
 
@@ -35,22 +12,43 @@
 
 新增接口：
 
-* [CreateRecordingRule](https://cloud.tencent.com/document/api/248/76041)
-* [DeleteRecordingRules](https://cloud.tencent.com/document/api/248/76040)
-* [DescribeRecordingRules](https://cloud.tencent.com/document/api/248/76039)
-* [UpdateRecordingRule](https://cloud.tencent.com/document/api/248/76038)
+* [CreateOpenBankAggregatedSubMerchantRegistration](https://cloud.tencent.com/document/api/1122/76096)
+* [CreateOpenBankSubMerchantRateConfigure](https://cloud.tencent.com/document/api/1122/76095)
+* [CreateOpenBankUnifiedOrder](https://cloud.tencent.com/document/api/1122/76094)
+* [QueryOpenBankBillDataPage](https://cloud.tencent.com/document/api/1122/76093)
+* [QueryOpenBankRefundOrder](https://cloud.tencent.com/document/api/1122/76092)
+* [QueryOpenBankSubMerchantCredential](https://cloud.tencent.com/document/api/1122/76091)
+* [QueryOpenBankSubMerchantRateConfigure](https://cloud.tencent.com/document/api/1122/76090)
+* [RefundOpenBankOrder](https://cloud.tencent.com/document/api/1122/76089)
+* [UploadOpenBankSubMerchantCredential](https://cloud.tencent.com/document/api/1122/76088)
 
 新增数据结构：
 
-* [RecordingRuleSet](https://cloud.tencent.com/document/api/248/30354#RecordingRuleSet)
+* [BusinessLicenseInfo](https://cloud.tencent.com/document/api/1122/40683#BusinessLicenseInfo)
+* [CreateOpenBankExternalAggregatedSubMerchantRegistrationResult](https://cloud.tencent.com/document/api/1122/40683#CreateOpenBankExternalAggregatedSubMerchantRegistrationResult)
+* [CreateOpenBankSubMerchantRateConfigureResult](https://cloud.tencent.com/document/api/1122/40683#CreateOpenBankSubMerchantRateConfigureResult)
+* [FeeRangInfo](https://cloud.tencent.com/document/api/1122/40683#FeeRangInfo)
+* [LegalPersonInfo](https://cloud.tencent.com/document/api/1122/40683#LegalPersonInfo)
+* [NaturalPersonInfo](https://cloud.tencent.com/document/api/1122/40683#NaturalPersonInfo)
+* [OpenBankPayLimitInfo](https://cloud.tencent.com/document/api/1122/40683#OpenBankPayLimitInfo)
+* [OpenBankQueryRefundOrderResult](https://cloud.tencent.com/document/api/1122/40683#OpenBankQueryRefundOrderResult)
+* [OpenBankRefundOrderApplyResult](https://cloud.tencent.com/document/api/1122/40683#OpenBankRefundOrderApplyResult)
+* [OpenBankStoreInfo](https://cloud.tencent.com/document/api/1122/40683#OpenBankStoreInfo)
+* [OutSubMerchantExtensionInfo](https://cloud.tencent.com/document/api/1122/40683#OutSubMerchantExtensionInfo)
+* [QueryOpenBankBillData](https://cloud.tencent.com/document/api/1122/40683#QueryOpenBankBillData)
+* [QueryOpenBankBillDataPageResult](https://cloud.tencent.com/document/api/1122/40683#QueryOpenBankBillDataPageResult)
+* [QueryOpenBankSubMerchantCredentialResult](https://cloud.tencent.com/document/api/1122/40683#QueryOpenBankSubMerchantCredentialResult)
+* [QueryOpenBankSubMerchantRateConfigureResult](https://cloud.tencent.com/document/api/1122/40683#QueryOpenBankSubMerchantRateConfigureResult)
+* [SettleInfo](https://cloud.tencent.com/document/api/1122/40683#SettleInfo)
+* [UploadOpenBankSubMerchantCredentialResult](https://cloud.tencent.com/document/api/1122/40683#UploadOpenBankSubMerchantCredentialResult)
 
 
 
-## 边缘安全加速平台(teo) 版本：2022-01-06
+## 事件总线(eb) 版本：2021-04-16
 
-### 第 10 次发布
+### 第 4 次发布
 
-发布时间：2022-06-27 06:15:53
+发布时间：2022-06-28 06:09:50
 
 本次发布包含了以下内容：
 
@@ -58,26 +56,37 @@
 
 修改接口：
 
-* [DescribeZoneSetting](https://cloud.tencent.com/document/api/1552/74820)
+* [ListTargets](https://cloud.tencent.com/document/api/1359/67701)
 
-	* 新增出参：CachePrefresh
-
-* [ModifyZoneSetting](https://cloud.tencent.com/document/api/1552/74819)
-
-	* 新增入参：CachePrefresh
-
-
-新增数据结构：
-
-* [CachePrefresh](https://cloud.tencent.com/document/api/1552/73155#CachePrefresh)
+	* <font color="#dd0000">**修改入参**：</font>RuleId
 
 
 
-## 容器服务(tke) 版本：2018-05-25
 
-### 第 105 次发布
+## 全球应用加速(gaap) 版本：2018-05-29
 
-发布时间：2022-06-27 06:16:26
+### 第 30 次发布
+
+发布时间：2022-06-28 06:10:45
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [CountryAreaMap](https://cloud.tencent.com/document/api/608/37023#CountryAreaMap)
+
+	* 新增成员：Remark
+
+
+
+
+## 小程序安全(mmps) 版本：2020-07-10
+
+### 第 5 次发布
+
+发布时间：2022-06-27 14:56:37
 
 本次发布包含了以下内容：
 
@@ -85,7 +94,121 @@
 
 新增接口：
 
-* [ForwardTKEEdgeApplicationRequestV3](https://cloud.tencent.com/document/api/457/76042)
+* [DescribeFlySecMiniAppScanReportList](https://cloud.tencent.com/document/api/1223/76058)
+
+新增数据结构：
+
+* [FlySecMiniAppReportData](https://cloud.tencent.com/document/api/1223/75143#FlySecMiniAppReportData)
+* [FlySecMiniAppRiskItems](https://cloud.tencent.com/document/api/1223/75143#FlySecMiniAppRiskItems)
+
+
+
+## 云监控(monitor) 版本：2018-07-24
+
+### 第 50 次发布
+
+发布时间：2022-06-28 06:13:35
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreatePrometheusMultiTenantInstancePostPayMode](https://cloud.tencent.com/document/api/248/76097)
+
+
+
+## 医疗报告结构化(mrs) 版本：2020-09-10
+
+### 第 13 次发布
+
+发布时间：2022-06-28 06:14:04
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [Coordinate](https://cloud.tencent.com/document/api/1314/56230#Coordinate)
+
+修改数据结构：
+
+* [IndicatorItem](https://cloud.tencent.com/document/api/1314/56230#IndicatorItem)
+
+	* 新增成员：Id, Coords
+
+
+
+
+## 云托管 CloudBase Run(tcbr) 版本：2022-02-17
+
+### 第 4 次发布
+
+发布时间：2022-06-28 06:16:23
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeCloudRunServerDetail](https://cloud.tencent.com/document/api/1243/75711)
+
+	* 新增出参：OnlineVersionInfos
+
+
+新增数据结构：
+
+* [OnlineVersionInfo](https://cloud.tencent.com/document/api/1243/75713#OnlineVersionInfo)
+
+
+
+## 分布式消息队列(tdmq) 版本：2020-02-17
+
+### 第 35 次发布
+
+发布时间：2022-06-28 06:17:03
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ReceiveMessage](https://cloud.tencent.com/document/api/1179/57458)
+
+	* 新增入参：MaxNumMessages, MaxNumBytes, Timeout
+
+	* 新增出参：MessageIDList, MessagesPayload
+
+
+
+
+## 腾讯云微服务引擎(tse) 版本：2020-12-07
+
+### 第 21 次发布
+
+发布时间：2022-06-28 06:18:34
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeNacosReplicas](https://cloud.tencent.com/document/api/1364/76101)
+* [DescribeNacosServerInterfaces](https://cloud.tencent.com/document/api/1364/76100)
+* [DescribeZookeeperReplicas](https://cloud.tencent.com/document/api/1364/76099)
+* [DescribeZookeeperServerInterfaces](https://cloud.tencent.com/document/api/1364/76098)
+
+新增数据结构：
+
+* [NacosReplica](https://cloud.tencent.com/document/api/1364/54942#NacosReplica)
+* [NacosServerInterface](https://cloud.tencent.com/document/api/1364/54942#NacosServerInterface)
+* [ZookeeperReplica](https://cloud.tencent.com/document/api/1364/54942#ZookeeperReplica)
+* [ZookeeperServerInterface](https://cloud.tencent.com/document/api/1364/54942#ZookeeperServerInterface)
 
 
 
@@ -21207,6 +21330,46 @@
 
 ## 企业收付平台(cpdp) 版本：2019-08-20
 
+### 第 71 次发布
+
+发布时间：2022-06-28 06:07:23
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateOpenBankAggregatedSubMerchantRegistration](https://cloud.tencent.com/document/api/1122/76096)](https://cloud.tencent.com/document/api/#/#)
+* [[CreateOpenBankSubMerchantRateConfigure](https://cloud.tencent.com/document/api/1122/76095)](https://cloud.tencent.com/document/api/#/#)
+* [[CreateOpenBankUnifiedOrder](https://cloud.tencent.com/document/api/1122/76094)](https://cloud.tencent.com/document/api/#/#)
+* [[QueryOpenBankBillDataPage](https://cloud.tencent.com/document/api/1122/76093)](https://cloud.tencent.com/document/api/#/#)
+* [[QueryOpenBankRefundOrder](https://cloud.tencent.com/document/api/1122/76092)](https://cloud.tencent.com/document/api/#/#)
+* [[QueryOpenBankSubMerchantCredential](https://cloud.tencent.com/document/api/1122/76091)](https://cloud.tencent.com/document/api/#/#)
+* [[QueryOpenBankSubMerchantRateConfigure](https://cloud.tencent.com/document/api/1122/76090)](https://cloud.tencent.com/document/api/#/#)
+* [[RefundOpenBankOrder](https://cloud.tencent.com/document/api/1122/76089)](https://cloud.tencent.com/document/api/#/#)
+* [[UploadOpenBankSubMerchantCredential](https://cloud.tencent.com/document/api/1122/76088)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[BusinessLicenseInfo](https://cloud.tencent.com/document/api/1122/40683#BusinessLicenseInfo)](https://cloud.tencent.com/document/api/1122/40683#[BusinessLicenseInfo](https://cloud.tencent.com/document/api/1122/40683#BusinessLicenseInfo))
+* [[CreateOpenBankExternalAggregatedSubMerchantRegistrationResult](https://cloud.tencent.com/document/api/1122/40683#CreateOpenBankExternalAggregatedSubMerchantRegistrationResult)](https://cloud.tencent.com/document/api/1122/40683#[CreateOpenBankExternalAggregatedSubMerchantRegistrationResult](https://cloud.tencent.com/document/api/1122/40683#CreateOpenBankExternalAggregatedSubMerchantRegistrationResult))
+* [[CreateOpenBankSubMerchantRateConfigureResult](https://cloud.tencent.com/document/api/1122/40683#CreateOpenBankSubMerchantRateConfigureResult)](https://cloud.tencent.com/document/api/1122/40683#[CreateOpenBankSubMerchantRateConfigureResult](https://cloud.tencent.com/document/api/1122/40683#CreateOpenBankSubMerchantRateConfigureResult))
+* [[FeeRangInfo](https://cloud.tencent.com/document/api/1122/40683#FeeRangInfo)](https://cloud.tencent.com/document/api/1122/40683#[FeeRangInfo](https://cloud.tencent.com/document/api/1122/40683#FeeRangInfo))
+* [[LegalPersonInfo](https://cloud.tencent.com/document/api/1122/40683#LegalPersonInfo)](https://cloud.tencent.com/document/api/1122/40683#[LegalPersonInfo](https://cloud.tencent.com/document/api/1122/40683#LegalPersonInfo))
+* [[NaturalPersonInfo](https://cloud.tencent.com/document/api/1122/40683#NaturalPersonInfo)](https://cloud.tencent.com/document/api/1122/40683#[NaturalPersonInfo](https://cloud.tencent.com/document/api/1122/40683#NaturalPersonInfo))
+* [[OpenBankPayLimitInfo](https://cloud.tencent.com/document/api/1122/40683#OpenBankPayLimitInfo)](https://cloud.tencent.com/document/api/1122/40683#[OpenBankPayLimitInfo](https://cloud.tencent.com/document/api/1122/40683#OpenBankPayLimitInfo))
+* [[OpenBankQueryRefundOrderResult](https://cloud.tencent.com/document/api/1122/40683#OpenBankQueryRefundOrderResult)](https://cloud.tencent.com/document/api/1122/40683#[OpenBankQueryRefundOrderResult](https://cloud.tencent.com/document/api/1122/40683#OpenBankQueryRefundOrderResult))
+* [[OpenBankRefundOrderApplyResult](https://cloud.tencent.com/document/api/1122/40683#OpenBankRefundOrderApplyResult)](https://cloud.tencent.com/document/api/1122/40683#[OpenBankRefundOrderApplyResult](https://cloud.tencent.com/document/api/1122/40683#OpenBankRefundOrderApplyResult))
+* [[OpenBankStoreInfo](https://cloud.tencent.com/document/api/1122/40683#OpenBankStoreInfo)](https://cloud.tencent.com/document/api/1122/40683#[OpenBankStoreInfo](https://cloud.tencent.com/document/api/1122/40683#OpenBankStoreInfo))
+* [[OutSubMerchantExtensionInfo](https://cloud.tencent.com/document/api/1122/40683#OutSubMerchantExtensionInfo)](https://cloud.tencent.com/document/api/1122/40683#[OutSubMerchantExtensionInfo](https://cloud.tencent.com/document/api/1122/40683#OutSubMerchantExtensionInfo))
+* [[QueryOpenBankBillData](https://cloud.tencent.com/document/api/1122/40683#QueryOpenBankBillData)](https://cloud.tencent.com/document/api/1122/40683#[QueryOpenBankBillData](https://cloud.tencent.com/document/api/1122/40683#QueryOpenBankBillData))
+* [[QueryOpenBankBillDataPageResult](https://cloud.tencent.com/document/api/1122/40683#QueryOpenBankBillDataPageResult)](https://cloud.tencent.com/document/api/1122/40683#[QueryOpenBankBillDataPageResult](https://cloud.tencent.com/document/api/1122/40683#QueryOpenBankBillDataPageResult))
+* [[QueryOpenBankSubMerchantCredentialResult](https://cloud.tencent.com/document/api/1122/40683#QueryOpenBankSubMerchantCredentialResult)](https://cloud.tencent.com/document/api/1122/40683#[QueryOpenBankSubMerchantCredentialResult](https://cloud.tencent.com/document/api/1122/40683#QueryOpenBankSubMerchantCredentialResult))
+* [[QueryOpenBankSubMerchantRateConfigureResult](https://cloud.tencent.com/document/api/1122/40683#QueryOpenBankSubMerchantRateConfigureResult)](https://cloud.tencent.com/document/api/1122/40683#[QueryOpenBankSubMerchantRateConfigureResult](https://cloud.tencent.com/document/api/1122/40683#QueryOpenBankSubMerchantRateConfigureResult))
+* [[SettleInfo](https://cloud.tencent.com/document/api/1122/40683#SettleInfo)](https://cloud.tencent.com/document/api/1122/40683#[SettleInfo](https://cloud.tencent.com/document/api/1122/40683#SettleInfo))
+* [[UploadOpenBankSubMerchantCredentialResult](https://cloud.tencent.com/document/api/1122/40683#UploadOpenBankSubMerchantCredentialResult)](https://cloud.tencent.com/document/api/1122/40683#[UploadOpenBankSubMerchantCredentialResult](https://cloud.tencent.com/document/api/1122/40683#UploadOpenBankSubMerchantCredentialResult))
+
 ### 第 70 次发布
 
 发布时间：2022-06-24 06:09:13
@@ -30852,6 +31015,21 @@
 
 ## 事件总线(eb) 版本：2021-04-16
 
+### 第 4 次发布
+
+发布时间：2022-06-28 06:09:50
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ListTargets](https://cloud.tencent.com/document/api/1359/67701)
+
+	* <font color="#dd0000">**修改入参**：</font>RuleId
+
+
 ### 第 3 次发布
 
 发布时间：2022-05-26 06:11:01
@@ -36258,6 +36436,21 @@
 
 
 ## 全球应用加速(gaap) 版本：2018-05-29
+
+### 第 30 次发布
+
+发布时间：2022-06-28 06:10:45
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [CountryAreaMap](https://cloud.tencent.com/document/api/608/37023#CountryAreaMap)
+
+	* 新增成员：Remark
+
 
 ### 第 29 次发布
 
@@ -47522,6 +47715,23 @@
 
 ## 小程序安全(mmps) 版本：2020-07-10
 
+### 第 5 次发布
+
+发布时间：2022-06-27 14:56:37
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeFlySecMiniAppScanReportList](https://cloud.tencent.com/document/api/1223/76058)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[FlySecMiniAppReportData](https://cloud.tencent.com/document/api/1223/75143#FlySecMiniAppReportData)](https://cloud.tencent.com/document/api/1223/75143#[FlySecMiniAppReportData](https://cloud.tencent.com/document/api/1223/75143#FlySecMiniAppReportData))
+* [[FlySecMiniAppRiskItems](https://cloud.tencent.com/document/api/1223/75143#FlySecMiniAppRiskItems)](https://cloud.tencent.com/document/api/1223/75143#[FlySecMiniAppRiskItems](https://cloud.tencent.com/document/api/1223/75143#FlySecMiniAppRiskItems))
+
 ### 第 4 次发布
 
 发布时间：2022-06-24 06:14:40
@@ -48180,6 +48390,18 @@
 
 ## 云监控(monitor) 版本：2018-07-24
 
+### 第 50 次发布
+
+发布时间：2022-06-28 06:13:35
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreatePrometheusMultiTenantInstancePostPayMode](https://cloud.tencent.com/document/api/248/76097)](https://cloud.tencent.com/document/api/#/#)
+
 ### 第 49 次发布
 
 发布时间：2022-06-27 06:12:15
@@ -48190,14 +48412,14 @@
 
 新增接口：
 
-* [[CreateRecordingRule](https://cloud.tencent.com/document/api/248/76041)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteRecordingRules](https://cloud.tencent.com/document/api/248/76040)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeRecordingRules](https://cloud.tencent.com/document/api/248/76039)](https://cloud.tencent.com/document/api/#/#)
-* [[UpdateRecordingRule](https://cloud.tencent.com/document/api/248/76038)](https://cloud.tencent.com/document/api/#/#)
+* [CreateRecordingRule](https://cloud.tencent.com/document/api/248/76041)
+* [DeleteRecordingRules](https://cloud.tencent.com/document/api/248/76040)
+* [DescribeRecordingRules](https://cloud.tencent.com/document/api/248/76039)
+* [UpdateRecordingRule](https://cloud.tencent.com/document/api/248/76038)
 
 新增数据结构：
 
-* [[RecordingRuleSet](https://cloud.tencent.com/document/api/248/30354#RecordingRuleSet)](https://cloud.tencent.com/document/api/248/30354#[RecordingRuleSet](https://cloud.tencent.com/document/api/248/30354#RecordingRuleSet))
+* [RecordingRuleSet](https://cloud.tencent.com/document/api/248/30354#RecordingRuleSet)
 
 ### 第 48 次发布
 
@@ -50512,6 +50734,25 @@
 
 
 ## 医疗报告结构化(mrs) 版本：2020-09-10
+
+### 第 13 次发布
+
+发布时间：2022-06-28 06:14:04
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [[Coordinate](https://cloud.tencent.com/document/api/1314/56230#Coordinate)](https://cloud.tencent.com/document/api/1314/56230#[Coordinate](https://cloud.tencent.com/document/api/1314/56230#Coordinate))
+
+修改数据结构：
+
+* [IndicatorItem](https://cloud.tencent.com/document/api/1314/56230#IndicatorItem)
+
+	* 新增成员：Id, Coords
+
 
 ### 第 12 次发布
 
@@ -63025,6 +63266,25 @@
 
 ## 云托管 CloudBase Run(tcbr) 版本：2022-02-17
 
+### 第 4 次发布
+
+发布时间：2022-06-28 06:16:23
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeCloudRunServerDetail](https://cloud.tencent.com/document/api/1243/75711)
+
+	* 新增出参：OnlineVersionInfos
+
+
+新增数据结构：
+
+* [[OnlineVersionInfo](https://cloud.tencent.com/document/api/1243/75713#OnlineVersionInfo)](https://cloud.tencent.com/document/api/1243/75713#[OnlineVersionInfo](https://cloud.tencent.com/document/api/1243/75713#OnlineVersionInfo))
+
 ### 第 3 次发布
 
 发布时间：2022-06-24 06:17:45
@@ -65324,6 +65584,23 @@
 
 ## 分布式消息队列(tdmq) 版本：2020-02-17
 
+### 第 35 次发布
+
+发布时间：2022-06-28 06:17:03
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ReceiveMessage](https://cloud.tencent.com/document/api/1179/57458)
+
+	* 新增入参：MaxNumMessages, MaxNumBytes, Timeout
+
+	* 新增出参：MessageIDList, MessagesPayload
+
+
 ### 第 34 次发布
 
 发布时间：2022-04-13 07:16:01
@@ -66810,7 +67087,7 @@
 
 新增数据结构：
 
-* [[CachePrefresh](https://cloud.tencent.com/document/api/1552/73155#CachePrefresh)](https://cloud.tencent.com/document/api/1552/73155#[CachePrefresh](https://cloud.tencent.com/document/api/1552/73155#CachePrefresh))
+* [CachePrefresh](https://cloud.tencent.com/document/api/1552/73155#CachePrefresh)
 
 ### 第 9 次发布
 
@@ -69214,7 +69491,7 @@
 
 新增接口：
 
-* [[ForwardTKEEdgeApplicationRequestV3](https://cloud.tencent.com/document/api/457/76042)](https://cloud.tencent.com/document/api/#/#)
+* [ForwardTKEEdgeApplicationRequestV3](https://cloud.tencent.com/document/api/457/76042)
 
 ### 第 104 次发布
 
@@ -72290,6 +72567,28 @@
 
 
 ## 腾讯云微服务引擎(tse) 版本：2020-12-07
+
+### 第 21 次发布
+
+发布时间：2022-06-28 06:18:34
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeNacosReplicas](https://cloud.tencent.com/document/api/1364/76101)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeNacosServerInterfaces](https://cloud.tencent.com/document/api/1364/76100)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeZookeeperReplicas](https://cloud.tencent.com/document/api/1364/76099)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeZookeeperServerInterfaces](https://cloud.tencent.com/document/api/1364/76098)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[NacosReplica](https://cloud.tencent.com/document/api/1364/54942#NacosReplica)](https://cloud.tencent.com/document/api/1364/54942#[NacosReplica](https://cloud.tencent.com/document/api/1364/54942#NacosReplica))
+* [[NacosServerInterface](https://cloud.tencent.com/document/api/1364/54942#NacosServerInterface)](https://cloud.tencent.com/document/api/1364/54942#[NacosServerInterface](https://cloud.tencent.com/document/api/1364/54942#NacosServerInterface))
+* [[ZookeeperReplica](https://cloud.tencent.com/document/api/1364/54942#ZookeeperReplica)](https://cloud.tencent.com/document/api/1364/54942#[ZookeeperReplica](https://cloud.tencent.com/document/api/1364/54942#ZookeeperReplica))
+* [[ZookeeperServerInterface](https://cloud.tencent.com/document/api/1364/54942#ZookeeperServerInterface)](https://cloud.tencent.com/document/api/1364/54942#[ZookeeperServerInterface](https://cloud.tencent.com/document/api/1364/54942#ZookeeperServerInterface))
 
 ### 第 20 次发布
 

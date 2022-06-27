@@ -8289,6 +8289,15 @@ type ReceiveMessageRequestParams struct {
 
 	// 默认值为：Latest。用作判定consumer初始接收消息的位置，可选参数为：Earliest, Latest
 	SubInitialPosition *string `json:"SubInitialPosition,omitempty" name:"SubInitialPosition"`
+
+	// 用于设置BatchReceivePolicy，指在一次batch中最多接收多少条消息，默认是 0。即不开启BatchReceivePolicy
+	MaxNumMessages *int64 `json:"MaxNumMessages,omitempty" name:"MaxNumMessages"`
+
+	// 用于设置BatchReceivePolicy，指在一次batch中最多接收的消息体有多大，单位是 bytes。默认是 0，即不开启BatchReceivePolicy
+	MaxNumBytes *int64 `json:"MaxNumBytes,omitempty" name:"MaxNumBytes"`
+
+	// 用于设置BatchReceivePolicy，指在一次batch消息的接收z中最多等待的超时时间，单位是毫秒。默认是 0，即不开启BatchReceivePolicy
+	Timeout *int64 `json:"Timeout,omitempty" name:"Timeout"`
 }
 
 type ReceiveMessageRequest struct {
@@ -8305,6 +8314,15 @@ type ReceiveMessageRequest struct {
 
 	// 默认值为：Latest。用作判定consumer初始接收消息的位置，可选参数为：Earliest, Latest
 	SubInitialPosition *string `json:"SubInitialPosition,omitempty" name:"SubInitialPosition"`
+
+	// 用于设置BatchReceivePolicy，指在一次batch中最多接收多少条消息，默认是 0。即不开启BatchReceivePolicy
+	MaxNumMessages *int64 `json:"MaxNumMessages,omitempty" name:"MaxNumMessages"`
+
+	// 用于设置BatchReceivePolicy，指在一次batch中最多接收的消息体有多大，单位是 bytes。默认是 0，即不开启BatchReceivePolicy
+	MaxNumBytes *int64 `json:"MaxNumBytes,omitempty" name:"MaxNumBytes"`
+
+	// 用于设置BatchReceivePolicy，指在一次batch消息的接收z中最多等待的超时时间，单位是毫秒。默认是 0，即不开启BatchReceivePolicy
+	Timeout *int64 `json:"Timeout,omitempty" name:"Timeout"`
 }
 
 func (r *ReceiveMessageRequest) ToJsonString() string {
@@ -8323,6 +8341,9 @@ func (r *ReceiveMessageRequest) FromJsonString(s string) error {
 	delete(f, "SubscriptionName")
 	delete(f, "ReceiverQueueSize")
 	delete(f, "SubInitialPosition")
+	delete(f, "MaxNumMessages")
+	delete(f, "MaxNumBytes")
+	delete(f, "Timeout")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ReceiveMessageRequest has unknown keys!", "")
 	}
@@ -8347,6 +8368,14 @@ type ReceiveMessageResponseParams struct {
 	// 返回订阅者的名字，用来创建 ack consumer时使用
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubName *string `json:"SubName,omitempty" name:"SubName"`
+
+	// BatchReceivePolicy 一次性返回的多条消息的 MessageID，用 ‘###’ 来区分不同的 MessageID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MessageIDList *string `json:"MessageIDList,omitempty" name:"MessageIDList"`
+
+	// BatchReceivePolicy 一次性返回的多条消息的消息内容，用 ‘###’ 来区分不同的消息内容
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MessagesPayload *string `json:"MessagesPayload,omitempty" name:"MessagesPayload"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`

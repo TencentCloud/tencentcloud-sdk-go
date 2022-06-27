@@ -410,6 +410,10 @@ type DescribeCloudRunServerDetailResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ServerConfig *ServerBaseConfig `json:"ServerConfig,omitempty" name:"ServerConfig"`
 
+	// 在线版本信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OnlineVersionInfos []*OnlineVersionInfo `json:"OnlineVersionInfos,omitempty" name:"OnlineVersionInfos"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }
@@ -774,6 +778,20 @@ type ObjectKV struct {
 
 	// 键值对Value
 	Value *string `json:"Value,omitempty" name:"Value"`
+}
+
+type OnlineVersionInfo struct {
+	// 版本名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VersionName *string `json:"VersionName,omitempty" name:"VersionName"`
+
+	// 镜像url
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
+
+	// 流量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FlowRatio *string `json:"FlowRatio,omitempty" name:"FlowRatio"`
 }
 
 // Predefined struct for user

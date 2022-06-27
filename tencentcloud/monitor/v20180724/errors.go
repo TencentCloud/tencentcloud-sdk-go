@@ -68,6 +68,12 @@ const (
 	// Yaml 格式不正确。
 	FAILEDOPERATION_BADYAMLFORMAT = "FailedOperation.BadYamlFormat"
 
+	// 创建实例失败。
+	FAILEDOPERATION_CREATEINSTANCE = "FailedOperation.CreateInstance"
+
+	// 该账号创建实例被限制。
+	FAILEDOPERATION_CREATEINSTANCELIMITED = "FailedOperation.CreateInstanceLimited"
+
 	// 数据表字段不存在。
 	FAILEDOPERATION_DATACOLUMNNOTFOUND = "FailedOperation.DataColumnNotFound"
 

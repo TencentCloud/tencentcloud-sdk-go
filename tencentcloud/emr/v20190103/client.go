@@ -783,6 +783,7 @@ func NewDescribeResourceScheduleResponse() (response *DescribeResourceScheduleRe
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_WOODSERVERERROR = "InternalError.WoodServerError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
 func (c *Client) DescribeResourceSchedule(request *DescribeResourceScheduleRequest) (response *DescribeResourceScheduleResponse, err error) {
@@ -794,6 +795,7 @@ func (c *Client) DescribeResourceSchedule(request *DescribeResourceScheduleReque
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_WOODSERVERERROR = "InternalError.WoodServerError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
 func (c *Client) DescribeResourceScheduleWithContext(ctx context.Context, request *DescribeResourceScheduleRequest) (response *DescribeResourceScheduleResponse, err error) {

@@ -299,6 +299,9 @@ const (
 	// 用户未通过实名认证。
 	UNAUTHORIZEDOPERATION_USERNOTAUTHENTICAED = "UnauthorizedOperation.UserNotAuthenticaed"
 
+	// 设备私钥已被获取。
+	UNSUPPORTEDOPERATION_CLIENTCERTALREADYGOT = "UnsupportedOperation.ClientCertAlreadyGot"
+
 	// 设备ota升级中。
 	UNSUPPORTEDOPERATION_DEVICEOTATASKINPROGRESS = "UnsupportedOperation.DeviceOtaTaskInProgress"
 

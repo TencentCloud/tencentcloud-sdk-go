@@ -140,6 +140,9 @@ const (
 	// 标签键不能为空。
 	INVALIDPARAMETERVALUE_INVALIDTAGKEY = "InvalidParameterValue.InvalidTagKey"
 
+	// 标签值为空或字符无效。
+	INVALIDPARAMETERVALUE_INVALIDTAGVALUE = "InvalidParameterValue.InvalidTagValue"
+
 	// 无效的容量值。
 	INVALIDPARAMETERVALUE_INVALIDTURBOCAPACITY = "InvalidParameterValue.InvalidTurboCapacity"
 
@@ -241,6 +244,9 @@ const (
 
 	// 该资源的标签个数达到最大限制。
 	RESOURCEINSUFFICIENT_TAGLIMITEXCEEDED = "ResourceInsufficient.TagLimitExceeded"
+
+	// 标签限额不足。
+	RESOURCEINSUFFICIENT_TAGQUOTASEXCEEDED = "ResourceInsufficient.TagQuotasExceeded"
 
 	// 资源不存在。
 	RESOURCENOTFOUND = "ResourceNotFound"

@@ -2286,6 +2286,67 @@ func (c *Client) CreateMerchantWithContext(ctx context.Context, request *CreateM
     return
 }
 
+func NewCreateOpenBankAggregatedSubMerchantRegistrationRequest() (request *CreateOpenBankAggregatedSubMerchantRegistrationRequest) {
+    request = &CreateOpenBankAggregatedSubMerchantRegistrationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "CreateOpenBankAggregatedSubMerchantRegistration")
+    
+    
+    return
+}
+
+func NewCreateOpenBankAggregatedSubMerchantRegistrationResponse() (response *CreateOpenBankAggregatedSubMerchantRegistrationResponse) {
+    response = &CreateOpenBankAggregatedSubMerchantRegistrationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateOpenBankAggregatedSubMerchantRegistration
+// 云企付-子商户进件V2
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DUPLICATEKEYERROR = "InternalError.DuplicateKeyError"
+//  INTERNALERROR_SAVEDBERROR = "InternalError.SaveDBError"
+//  INTERNALERROR_SIGGENERROR = "InternalError.SigGenError"
+//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
+//  INVALIDPARAMETER_LACKPARAMETER = "InvalidParameter.LackParameter"
+//  RESOURCENOTFOUND_INVOICENOTFOUND = "ResourceNotFound.InvoiceNotFound"
+//  RESOURCENOTFOUND_MERCHANTINFONOTFOUND = "ResourceNotFound.MerchantInfoNotFound"
+//  RESOURCENOTFOUND_PLATFORMINFONOTFOUND = "ResourceNotFound.PlatformInfoNotFound"
+func (c *Client) CreateOpenBankAggregatedSubMerchantRegistration(request *CreateOpenBankAggregatedSubMerchantRegistrationRequest) (response *CreateOpenBankAggregatedSubMerchantRegistrationResponse, err error) {
+    return c.CreateOpenBankAggregatedSubMerchantRegistrationWithContext(context.Background(), request)
+}
+
+// CreateOpenBankAggregatedSubMerchantRegistration
+// 云企付-子商户进件V2
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DUPLICATEKEYERROR = "InternalError.DuplicateKeyError"
+//  INTERNALERROR_SAVEDBERROR = "InternalError.SaveDBError"
+//  INTERNALERROR_SIGGENERROR = "InternalError.SigGenError"
+//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
+//  INVALIDPARAMETER_LACKPARAMETER = "InvalidParameter.LackParameter"
+//  RESOURCENOTFOUND_INVOICENOTFOUND = "ResourceNotFound.InvoiceNotFound"
+//  RESOURCENOTFOUND_MERCHANTINFONOTFOUND = "ResourceNotFound.MerchantInfoNotFound"
+//  RESOURCENOTFOUND_PLATFORMINFONOTFOUND = "ResourceNotFound.PlatformInfoNotFound"
+func (c *Client) CreateOpenBankAggregatedSubMerchantRegistrationWithContext(ctx context.Context, request *CreateOpenBankAggregatedSubMerchantRegistrationRequest) (response *CreateOpenBankAggregatedSubMerchantRegistrationResponse, err error) {
+    if request == nil {
+        request = NewCreateOpenBankAggregatedSubMerchantRegistrationRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateOpenBankAggregatedSubMerchantRegistration require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateOpenBankAggregatedSubMerchantRegistrationResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateOpenBankExternalSubMerchantAccountBookRequest() (request *CreateOpenBankExternalSubMerchantAccountBookRequest) {
     request = &CreateOpenBankExternalSubMerchantAccountBookRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2531,6 +2592,100 @@ func (c *Client) CreateOpenBankRechargeOrderWithContext(ctx context.Context, req
     request.SetContext(ctx)
     
     response = NewCreateOpenBankRechargeOrderResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateOpenBankSubMerchantRateConfigureRequest() (request *CreateOpenBankSubMerchantRateConfigureRequest) {
+    request = &CreateOpenBankSubMerchantRateConfigureRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "CreateOpenBankSubMerchantRateConfigure")
+    
+    
+    return
+}
+
+func NewCreateOpenBankSubMerchantRateConfigureResponse() (response *CreateOpenBankSubMerchantRateConfigureResponse) {
+    response = &CreateOpenBankSubMerchantRateConfigureResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateOpenBankSubMerchantRateConfigure
+// 云企付-子商户费率配置
+//
+// 可能返回的错误码:
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+func (c *Client) CreateOpenBankSubMerchantRateConfigure(request *CreateOpenBankSubMerchantRateConfigureRequest) (response *CreateOpenBankSubMerchantRateConfigureResponse, err error) {
+    return c.CreateOpenBankSubMerchantRateConfigureWithContext(context.Background(), request)
+}
+
+// CreateOpenBankSubMerchantRateConfigure
+// 云企付-子商户费率配置
+//
+// 可能返回的错误码:
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+func (c *Client) CreateOpenBankSubMerchantRateConfigureWithContext(ctx context.Context, request *CreateOpenBankSubMerchantRateConfigureRequest) (response *CreateOpenBankSubMerchantRateConfigureResponse, err error) {
+    if request == nil {
+        request = NewCreateOpenBankSubMerchantRateConfigureRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateOpenBankSubMerchantRateConfigure require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateOpenBankSubMerchantRateConfigureResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateOpenBankUnifiedOrderRequest() (request *CreateOpenBankUnifiedOrderRequest) {
+    request = &CreateOpenBankUnifiedOrderRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "CreateOpenBankUnifiedOrder")
+    
+    
+    return
+}
+
+func NewCreateOpenBankUnifiedOrderResponse() (response *CreateOpenBankUnifiedOrderResponse) {
+    response = &CreateOpenBankUnifiedOrderResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateOpenBankUnifiedOrder
+// 云企付-聚合下单
+//
+// 可能返回的错误码:
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+func (c *Client) CreateOpenBankUnifiedOrder(request *CreateOpenBankUnifiedOrderRequest) (response *CreateOpenBankUnifiedOrderResponse, err error) {
+    return c.CreateOpenBankUnifiedOrderWithContext(context.Background(), request)
+}
+
+// CreateOpenBankUnifiedOrder
+// 云企付-聚合下单
+//
+// 可能返回的错误码:
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+func (c *Client) CreateOpenBankUnifiedOrderWithContext(ctx context.Context, request *CreateOpenBankUnifiedOrderRequest) (response *CreateOpenBankUnifiedOrderResponse, err error) {
+    if request == nil {
+        request = NewCreateOpenBankUnifiedOrderRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateOpenBankUnifiedOrder require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateOpenBankUnifiedOrderResponse()
     err = c.Send(request, response)
     return
 }
@@ -8142,6 +8297,53 @@ func (c *Client) QueryOpenBankBankBranchListWithContext(ctx context.Context, req
     return
 }
 
+func NewQueryOpenBankBillDataPageRequest() (request *QueryOpenBankBillDataPageRequest) {
+    request = &QueryOpenBankBillDataPageRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "QueryOpenBankBillDataPage")
+    
+    
+    return
+}
+
+func NewQueryOpenBankBillDataPageResponse() (response *QueryOpenBankBillDataPageResponse) {
+    response = &QueryOpenBankBillDataPageResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// QueryOpenBankBillDataPage
+// 云企付-分页查询对账单数据
+//
+// 可能返回的错误码:
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+func (c *Client) QueryOpenBankBillDataPage(request *QueryOpenBankBillDataPageRequest) (response *QueryOpenBankBillDataPageResponse, err error) {
+    return c.QueryOpenBankBillDataPageWithContext(context.Background(), request)
+}
+
+// QueryOpenBankBillDataPage
+// 云企付-分页查询对账单数据
+//
+// 可能返回的错误码:
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+func (c *Client) QueryOpenBankBillDataPageWithContext(ctx context.Context, request *QueryOpenBankBillDataPageRequest) (response *QueryOpenBankBillDataPageResponse, err error) {
+    if request == nil {
+        request = NewQueryOpenBankBillDataPageRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryOpenBankBillDataPage require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewQueryOpenBankBillDataPageResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewQueryOpenBankBindExternalSubMerchantBankAccountRequest() (request *QueryOpenBankBindExternalSubMerchantBankAccountRequest) {
     request = &QueryOpenBankBindExternalSubMerchantBankAccountRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -8514,6 +8716,147 @@ func (c *Client) QueryOpenBankPaymentOrderWithContext(ctx context.Context, reque
     request.SetContext(ctx)
     
     response = NewQueryOpenBankPaymentOrderResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewQueryOpenBankRefundOrderRequest() (request *QueryOpenBankRefundOrderRequest) {
+    request = &QueryOpenBankRefundOrderRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "QueryOpenBankRefundOrder")
+    
+    
+    return
+}
+
+func NewQueryOpenBankRefundOrderResponse() (response *QueryOpenBankRefundOrderResponse) {
+    response = &QueryOpenBankRefundOrderResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// QueryOpenBankRefundOrder
+// 云企付-退款结果查询
+//
+// 可能返回的错误码:
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+func (c *Client) QueryOpenBankRefundOrder(request *QueryOpenBankRefundOrderRequest) (response *QueryOpenBankRefundOrderResponse, err error) {
+    return c.QueryOpenBankRefundOrderWithContext(context.Background(), request)
+}
+
+// QueryOpenBankRefundOrder
+// 云企付-退款结果查询
+//
+// 可能返回的错误码:
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+func (c *Client) QueryOpenBankRefundOrderWithContext(ctx context.Context, request *QueryOpenBankRefundOrderRequest) (response *QueryOpenBankRefundOrderResponse, err error) {
+    if request == nil {
+        request = NewQueryOpenBankRefundOrderRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryOpenBankRefundOrder require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewQueryOpenBankRefundOrderResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewQueryOpenBankSubMerchantCredentialRequest() (request *QueryOpenBankSubMerchantCredentialRequest) {
+    request = &QueryOpenBankSubMerchantCredentialRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "QueryOpenBankSubMerchantCredential")
+    
+    
+    return
+}
+
+func NewQueryOpenBankSubMerchantCredentialResponse() (response *QueryOpenBankSubMerchantCredentialResponse) {
+    response = &QueryOpenBankSubMerchantCredentialResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// QueryOpenBankSubMerchantCredential
+// 云企付-子商户资质文件查询
+//
+// 可能返回的错误码:
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+func (c *Client) QueryOpenBankSubMerchantCredential(request *QueryOpenBankSubMerchantCredentialRequest) (response *QueryOpenBankSubMerchantCredentialResponse, err error) {
+    return c.QueryOpenBankSubMerchantCredentialWithContext(context.Background(), request)
+}
+
+// QueryOpenBankSubMerchantCredential
+// 云企付-子商户资质文件查询
+//
+// 可能返回的错误码:
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+func (c *Client) QueryOpenBankSubMerchantCredentialWithContext(ctx context.Context, request *QueryOpenBankSubMerchantCredentialRequest) (response *QueryOpenBankSubMerchantCredentialResponse, err error) {
+    if request == nil {
+        request = NewQueryOpenBankSubMerchantCredentialRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryOpenBankSubMerchantCredential require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewQueryOpenBankSubMerchantCredentialResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewQueryOpenBankSubMerchantRateConfigureRequest() (request *QueryOpenBankSubMerchantRateConfigureRequest) {
+    request = &QueryOpenBankSubMerchantRateConfigureRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "QueryOpenBankSubMerchantRateConfigure")
+    
+    
+    return
+}
+
+func NewQueryOpenBankSubMerchantRateConfigureResponse() (response *QueryOpenBankSubMerchantRateConfigureResponse) {
+    response = &QueryOpenBankSubMerchantRateConfigureResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// QueryOpenBankSubMerchantRateConfigure
+// 云企付-子商户费率配置结果查询
+//
+// 可能返回的错误码:
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+func (c *Client) QueryOpenBankSubMerchantRateConfigure(request *QueryOpenBankSubMerchantRateConfigureRequest) (response *QueryOpenBankSubMerchantRateConfigureResponse, err error) {
+    return c.QueryOpenBankSubMerchantRateConfigureWithContext(context.Background(), request)
+}
+
+// QueryOpenBankSubMerchantRateConfigure
+// 云企付-子商户费率配置结果查询
+//
+// 可能返回的错误码:
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+func (c *Client) QueryOpenBankSubMerchantRateConfigureWithContext(ctx context.Context, request *QueryOpenBankSubMerchantRateConfigureRequest) (response *QueryOpenBankSubMerchantRateConfigureResponse, err error) {
+    if request == nil {
+        request = NewQueryOpenBankSubMerchantRateConfigureRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryOpenBankSubMerchantRateConfigure require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewQueryOpenBankSubMerchantRateConfigureResponse()
     err = c.Send(request, response)
     return
 }
@@ -9949,6 +10292,57 @@ func (c *Client) RefundMemberTransactionWithContext(ctx context.Context, request
     return
 }
 
+func NewRefundOpenBankOrderRequest() (request *RefundOpenBankOrderRequest) {
+    request = &RefundOpenBankOrderRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "RefundOpenBankOrder")
+    
+    
+    return
+}
+
+func NewRefundOpenBankOrderResponse() (response *RefundOpenBankOrderResponse) {
+    response = &RefundOpenBankOrderResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// RefundOpenBankOrder
+// 云企付-退款申请
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_ACTIONINVALID = "FailedOperation.ActionInvalid"
+//  FAILEDOPERATION_PABANKERROR = "FailedOperation.PABankError"
+func (c *Client) RefundOpenBankOrder(request *RefundOpenBankOrderRequest) (response *RefundOpenBankOrderResponse, err error) {
+    return c.RefundOpenBankOrderWithContext(context.Background(), request)
+}
+
+// RefundOpenBankOrder
+// 云企付-退款申请
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_ACTIONINVALID = "FailedOperation.ActionInvalid"
+//  FAILEDOPERATION_PABANKERROR = "FailedOperation.PABankError"
+func (c *Client) RefundOpenBankOrderWithContext(ctx context.Context, request *RefundOpenBankOrderRequest) (response *RefundOpenBankOrderResponse, err error) {
+    if request == nil {
+        request = NewRefundOpenBankOrderRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RefundOpenBankOrder require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewRefundOpenBankOrderResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewRefundOrderRequest() (request *RefundOrderRequest) {
     request = &RefundOrderRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -11359,6 +11753,59 @@ func (c *Client) UploadFileWithContext(ctx context.Context, request *UploadFileR
     request.SetContext(ctx)
     
     response = NewUploadFileResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUploadOpenBankSubMerchantCredentialRequest() (request *UploadOpenBankSubMerchantCredentialRequest) {
+    request = &UploadOpenBankSubMerchantCredentialRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "UploadOpenBankSubMerchantCredential")
+    
+    
+    return
+}
+
+func NewUploadOpenBankSubMerchantCredentialResponse() (response *UploadOpenBankSubMerchantCredentialResponse) {
+    response = &UploadOpenBankSubMerchantCredentialResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// UploadOpenBankSubMerchantCredential
+// 云企付-子商户资质文件上传
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ACTION = "FailedOperation.Action"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  MISSINGPARAMETER_ACTION = "MissingParameter.Action"
+//  MISSINGPARAMETER_APPID = "MissingParameter.AppId"
+func (c *Client) UploadOpenBankSubMerchantCredential(request *UploadOpenBankSubMerchantCredentialRequest) (response *UploadOpenBankSubMerchantCredentialResponse, err error) {
+    return c.UploadOpenBankSubMerchantCredentialWithContext(context.Background(), request)
+}
+
+// UploadOpenBankSubMerchantCredential
+// 云企付-子商户资质文件上传
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ACTION = "FailedOperation.Action"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  MISSINGPARAMETER_ACTION = "MissingParameter.Action"
+//  MISSINGPARAMETER_APPID = "MissingParameter.AppId"
+func (c *Client) UploadOpenBankSubMerchantCredentialWithContext(ctx context.Context, request *UploadOpenBankSubMerchantCredentialRequest) (response *UploadOpenBankSubMerchantCredentialResponse, err error) {
+    if request == nil {
+        request = NewUploadOpenBankSubMerchantCredentialRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UploadOpenBankSubMerchantCredential require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUploadOpenBankSubMerchantCredentialResponse()
     err = c.Send(request, response)
     return
 }
