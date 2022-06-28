@@ -5031,6 +5031,7 @@ func NewTrainTicketOCRResponse() (response *TrainTicketOCRResponse) {
 //  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) TrainTicketOCR(request *TrainTicketOCRRequest) (response *TrainTicketOCRResponse, err error) {
     return c.TrainTicketOCRWithContext(context.Background(), request)
@@ -5047,6 +5048,7 @@ func (c *Client) TrainTicketOCR(request *TrainTicketOCRRequest) (response *Train
 //  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) TrainTicketOCRWithContext(ctx context.Context, request *TrainTicketOCRRequest) (response *TrainTicketOCRResponse, err error) {
     if request == nil {
@@ -5846,6 +5848,7 @@ func NewWaybillOCRResponse() (response *WaybillOCRResponse) {
 //  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) WaybillOCR(request *WaybillOCRRequest) (response *WaybillOCRResponse, err error) {
     return c.WaybillOCRWithContext(context.Background(), request)
@@ -5865,6 +5868,7 @@ func (c *Client) WaybillOCR(request *WaybillOCRRequest) (response *WaybillOCRRes
 //  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) WaybillOCRWithContext(ctx context.Context, request *WaybillOCRRequest) (response *WaybillOCRResponse, err error) {
     if request == nil {

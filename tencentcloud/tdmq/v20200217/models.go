@@ -1756,7 +1756,7 @@ type CreateEnvironmentRequestParams struct {
 	// 环境（命名空间）名称，不支持中字以及除了短线和下划线外的特殊字符且不超过16个字符。
 	EnvironmentId *string `json:"EnvironmentId,omitempty" name:"EnvironmentId"`
 
-	// 未消费消息过期时间，单位：秒，最小60，最大1296000，（15天）。
+	// 未消费消息过期时间，单位：秒，取值范围：60秒~1天。
 	MsgTTL *uint64 `json:"MsgTTL,omitempty" name:"MsgTTL"`
 
 	// 说明，128个字符以内。
@@ -1775,7 +1775,7 @@ type CreateEnvironmentRequest struct {
 	// 环境（命名空间）名称，不支持中字以及除了短线和下划线外的特殊字符且不超过16个字符。
 	EnvironmentId *string `json:"EnvironmentId,omitempty" name:"EnvironmentId"`
 
-	// 未消费消息过期时间，单位：秒，最小60，最大1296000，（15天）。
+	// 未消费消息过期时间，单位：秒，取值范围：60秒~1天。
 	MsgTTL *uint64 `json:"MsgTTL,omitempty" name:"MsgTTL"`
 
 	// 说明，128个字符以内。
@@ -2437,12 +2437,13 @@ type CreateTopicRequestParams struct {
 	// 主题名，不支持中字以及除了短线和下划线外的特殊字符且不超过64个字符。
 	TopicName *string `json:"TopicName,omitempty" name:"TopicName"`
 
-	// 0：非分区topic，无分区；非0：具体分区topic的分区数，最大不允许超过128。
+	// 入参为1，即是创建非分区topic，无分区；入参大于1，表示分区topic的分区数，最大不允许超过128。
 	Partitions *uint64 `json:"Partitions,omitempty" name:"Partitions"`
 
 	// 备注，128字符以内。
 	Remark *string `json:"Remark,omitempty" name:"Remark"`
 
+	// 该入参将逐步弃用，可切换至PulsarTopicType参数
 	// 0： 普通消息；
 	// 1 ：全局顺序消息；
 	// 2 ：局部顺序消息；
@@ -2470,12 +2471,13 @@ type CreateTopicRequest struct {
 	// 主题名，不支持中字以及除了短线和下划线外的特殊字符且不超过64个字符。
 	TopicName *string `json:"TopicName,omitempty" name:"TopicName"`
 
-	// 0：非分区topic，无分区；非0：具体分区topic的分区数，最大不允许超过128。
+	// 入参为1，即是创建非分区topic，无分区；入参大于1，表示分区topic的分区数，最大不允许超过128。
 	Partitions *uint64 `json:"Partitions,omitempty" name:"Partitions"`
 
 	// 备注，128字符以内。
 	Remark *string `json:"Remark,omitempty" name:"Remark"`
 
+	// 该入参将逐步弃用，可切换至PulsarTopicType参数
 	// 0： 普通消息；
 	// 1 ：全局顺序消息；
 	// 2 ：局部顺序消息；
@@ -2527,7 +2529,7 @@ type CreateTopicResponseParams struct {
 	// 主题名。
 	TopicName *string `json:"TopicName,omitempty" name:"TopicName"`
 
-	// 0：非分区topic，无分区；非0：具体分区topic的分区数。
+	// 0或1：非分区topic，无分区；大于1：具体分区topic的分区数。（存量非分区主题返回0，增量非分区主题返回1）
 	Partitions *uint64 `json:"Partitions,omitempty" name:"Partitions"`
 
 	// 备注，128字符以内。
@@ -2539,7 +2541,6 @@ type CreateTopicResponseParams struct {
 	// 2 ：局部顺序消息；
 	// 3 ：重试队列；
 	// 4 ：死信队列；
-	// 5 ：事务消息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TopicType *uint64 `json:"TopicType,omitempty" name:"TopicType"`
 
@@ -6491,12 +6492,10 @@ type DescribeTopicsRequestParams struct {
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
 	// topic类型描述：
-	// 0：普通消息；
-	// 1：全局顺序消息；
-	// 2：局部顺序消息；
-	// 3：重试队列；
-	// 4：死信队列；
-	// 5：事务消息。
+	// 0：非持久非分区主题类型；
+	// 1：非持久分区主题类型；
+	// 2：持久非分区主题类型；
+	// 3：持久分区主题类型；
 	TopicType *uint64 `json:"TopicType,omitempty" name:"TopicType"`
 
 	// Pulsar 集群的ID
@@ -6507,6 +6506,11 @@ type DescribeTopicsRequestParams struct {
 	// 类型：String
 	// 必选：否
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 创建来源：
+	// 1：用户创建
+	// 2：系统创建
+	TopicCreator *uint64 `json:"TopicCreator,omitempty" name:"TopicCreator"`
 }
 
 type DescribeTopicsRequest struct {
@@ -6525,12 +6529,10 @@ type DescribeTopicsRequest struct {
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
 	// topic类型描述：
-	// 0：普通消息；
-	// 1：全局顺序消息；
-	// 2：局部顺序消息；
-	// 3：重试队列；
-	// 4：死信队列；
-	// 5：事务消息。
+	// 0：非持久非分区主题类型；
+	// 1：非持久分区主题类型；
+	// 2：持久非分区主题类型；
+	// 3：持久分区主题类型；
 	TopicType *uint64 `json:"TopicType,omitempty" name:"TopicType"`
 
 	// Pulsar 集群的ID
@@ -6541,6 +6543,11 @@ type DescribeTopicsRequest struct {
 	// 类型：String
 	// 必选：否
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 创建来源：
+	// 1：用户创建
+	// 2：系统创建
+	TopicCreator *uint64 `json:"TopicCreator,omitempty" name:"TopicCreator"`
 }
 
 func (r *DescribeTopicsRequest) ToJsonString() string {
@@ -6562,6 +6569,7 @@ func (r *DescribeTopicsRequest) FromJsonString(s string) error {
 	delete(f, "TopicType")
 	delete(f, "ClusterId")
 	delete(f, "Filters")
+	delete(f, "TopicCreator")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTopicsRequest has unknown keys!", "")
 	}
@@ -7461,7 +7469,7 @@ type ModifyEnvironmentAttributesRequestParams struct {
 	// 命名空间名称。
 	EnvironmentId *string `json:"EnvironmentId,omitempty" name:"EnvironmentId"`
 
-	// 未消费消息过期时间，单位：秒，最大1296000。
+	// 未消费消息过期时间，单位：秒，范围60秒~1天。
 	MsgTTL *uint64 `json:"MsgTTL,omitempty" name:"MsgTTL"`
 
 	// 备注，字符串最长不超过128。
@@ -7480,7 +7488,7 @@ type ModifyEnvironmentAttributesRequest struct {
 	// 命名空间名称。
 	EnvironmentId *string `json:"EnvironmentId,omitempty" name:"EnvironmentId"`
 
-	// 未消费消息过期时间，单位：秒，最大1296000。
+	// 未消费消息过期时间，单位：秒，范围60秒~1天。
 	MsgTTL *uint64 `json:"MsgTTL,omitempty" name:"MsgTTL"`
 
 	// 备注，字符串最长不超过128。

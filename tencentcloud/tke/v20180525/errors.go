@@ -98,6 +98,9 @@ const (
 	// 创建集群Client出错。
 	FAILEDOPERATION_KUBERNETESCREATEOPERATIONERROR = "FailedOperation.KubernetesCreateOperationError"
 
+	// Kubernetes Delete 操作错误。
+	FAILEDOPERATION_KUBERNETESDELETEOPERATIONERROR = "FailedOperation.KubernetesDeleteOperationError"
+
 	// Kubernetes未知错误。
 	FAILEDOPERATION_KUBERNETESINTERNAL = "FailedOperation.KubernetesInternal"
 
@@ -139,6 +142,9 @@ const (
 
 	// 未发现vpc记录。
 	FAILEDOPERATION_VPCRECODRNOTFOUND = "FailedOperation.VpcRecodrNotFound"
+
+	// 白名单错误。
+	FAILEDOPERATION_WHITELISTUNEXPECTEDERROR = "FailedOperation.WhitelistUnexpectedError"
 
 	// 内部错误。
 	INTERNALERROR = "InternalError"

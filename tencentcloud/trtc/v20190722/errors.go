@@ -17,32 +17,14 @@ package v20190722
 const (
 	// 此产品的特有错误码
 
-	// CAM签名/鉴权错误。
-	AUTHFAILURE = "AuthFailure"
-
 	// 未完成实名认证，不允许此操作。
 	AUTHFAILURE_UNREALNAMEAUTHENTICATED = "AuthFailure.UnRealNameAuthenticated"
-
-	// CAM鉴权失败。
-	AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
-
-	// 不支持该操作。
-	AUTHFAILURE_UNSUPPORTEDOPERATION = "AuthFailure.UnsupportedOperation"
-
-	// 操作失败。
-	FAILEDOPERATION = "FailedOperation"
-
-	// 云端录制方法不支持。
-	FAILEDOPERATION_CRUNSUPPORTMETHOD = "FailedOperation.CRUnsupportMethod"
 
 	// 房间中没有设置混流模板。
 	FAILEDOPERATION_MIXSESSIONNOTEXIST = "FailedOperation.MixSessionNotExist"
 
 	// 云API混流模板和SDK混流冲突。
 	FAILEDOPERATION_REQUESTREJECTION = "FailedOperation.RequestRejection"
-
-	// 单用户并发过载，请联系我们增大并发路数到合理值。
-	FAILEDOPERATION_RESTRICTEDCONCURRENCY = "FailedOperation.RestrictedConcurrency"
 
 	// 房间不存在。
 	FAILEDOPERATION_ROOMNOTEXIST = "FailedOperation.RoomNotExist"
@@ -58,9 +40,6 @@ const (
 
 	// 访问后端服务超时。
 	INTERNALERROR_BACKENDTIMEOUT = "InternalError.BackendTimeOut"
-
-	// 云端录制内部服务错误。
-	INTERNALERROR_CRINTERNALERROR = "InternalError.CRInternalError"
 
 	// 数据库查询异常。
 	INTERNALERROR_DBERROR = "InternalError.DBError"
@@ -115,9 +94,6 @@ const (
 
 	// 大画面流类型错误。
 	INVALIDPARAMETER_MAINVIDEOSTREAMTYPE = "InvalidParameter.MainVideoStreamType"
-
-	// 参数超出范围。
-	INVALIDPARAMETER_OUTOFRANGE = "InvalidParameter.OutOfRange"
 
 	// OutputParams参数错误。
 	INVALIDPARAMETER_OUTPUTPARAMS = "InvalidParameter.OutputParams"
@@ -197,9 +173,6 @@ const (
 	// 缺少参数错误。
 	MISSINGPARAMETER = "MissingParameter"
 
-	// 缺少AccessKey参数。
-	MISSINGPARAMETER_ACCESSKEY = "MissingParameter.AccessKey"
-
 	// 缺少AppId参数。
 	MISSINGPARAMETER_APPID = "MissingParameter.AppId"
 
@@ -208,12 +181,6 @@ const (
 
 	// 转推参数中缺少BizId。
 	MISSINGPARAMETER_BIZID = "MissingParameter.BizId"
-
-	// 缺少Bucket参数。
-	MISSINGPARAMETER_BUCKET = "MissingParameter.Bucket"
-
-	// 缺少CloudStorage参数。
-	MISSINGPARAMETER_CLOUDSTORAGE = "MissingParameter.CloudStorage"
 
 	// 缺少CommId参数。
 	MISSINGPARAMETER_COMMID = "MissingParameter.CommId"
@@ -239,15 +206,6 @@ const (
 	// 转推参数中缺少转推目的地址。
 	MISSINGPARAMETER_PUBLISHCDNURLS = "MissingParameter.PublishCdnUrls"
 
-	// 缺少RecordMode参数。
-	MISSINGPARAMETER_RECORDMODE = "MissingParameter.RecordMode"
-
-	// 缺少RecordParams参数。
-	MISSINGPARAMETER_RECORDPARAMS = "MissingParameter.RecordParams"
-
-	// 缺少Region参数。
-	MISSINGPARAMETER_REGION = "MissingParameter.Region"
-
 	// 缺少RoomId参数。
 	MISSINGPARAMETER_ROOMID = "MissingParameter.RoomId"
 
@@ -257,23 +215,11 @@ const (
 	// 缺少SdkAppId参数。
 	MISSINGPARAMETER_SDKAPPID = "MissingParameter.SdkAppId"
 
-	// 缺少SecretKey参数。
-	MISSINGPARAMETER_SECRETKEY = "MissingParameter.SecretKey"
-
 	// 缺少startTS_s参数。
 	MISSINGPARAMETER_STARTTS = "MissingParameter.StartTs"
 
-	// 缺少StorageParams参数。
-	MISSINGPARAMETER_STORAGEPARAMS = "MissingParameter.StorageParams"
-
 	// OutputParams中缺少StreamId参数。
 	MISSINGPARAMETER_STREAMID = "MissingParameter.StreamId"
-
-	// 缺少StreamType参数。
-	MISSINGPARAMETER_STREAMTYPE = "MissingParameter.StreamType"
-
-	// 缺少TaskId参数。
-	MISSINGPARAMETER_TASKID = "MissingParameter.TaskId"
 
 	// 缺少UserId参数。
 	MISSINGPARAMETER_USERID = "MissingParameter.UserId"
@@ -281,17 +227,8 @@ const (
 	// 缺少UserIds参数。
 	MISSINGPARAMETER_USERIDS = "MissingParameter.UserIds"
 
-	// 缺少UserSig参数。
-	MISSINGPARAMETER_USERSIG = "MissingParameter.UserSig"
-
-	// 缺少Vendor参数。
-	MISSINGPARAMETER_VENDOR = "MissingParameter.Vendor"
-
 	// EncodeParams中缺少视频输出参数。
 	MISSINGPARAMETER_VIDEOENCODEPARAMS = "MissingParameter.VideoEncodeParams"
-
-	// 资源不存在。
-	RESOURCENOTFOUND = "ResourceNotFound"
 
 	// 没有操作SdkAppId的权限。
 	UNAUTHORIZEDOPERATION_SDKAPPID = "UnauthorizedOperation.SdkAppId"

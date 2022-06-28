@@ -16601,6 +16601,10 @@ type HostLoginList struct {
 	// 位置名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Location *string `json:"Location,omitempty" name:"Location"`
+
+	// 主机quuid
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
 }
 
 type IgnoreBaselineRule struct {

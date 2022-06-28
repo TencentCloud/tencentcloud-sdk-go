@@ -669,7 +669,7 @@ func (r *DescribeFlySecMiniAppReportUrlResponse) FromJsonString(s string) error 
 
 // Predefined struct for user
 type DescribeFlySecMiniAppScanReportListRequestParams struct {
-	// 任务id
+	// 小程序AppID
 	MiniAppID *string `json:"MiniAppID,omitempty" name:"MiniAppID"`
 
 	// 诊断方式 1:基础诊断，2:深度诊断
@@ -688,7 +688,7 @@ type DescribeFlySecMiniAppScanReportListRequestParams struct {
 type DescribeFlySecMiniAppScanReportListRequest struct {
 	*tchttp.BaseRequest
 	
-	// 任务id
+	// 小程序AppID
 	MiniAppID *string `json:"MiniAppID,omitempty" name:"MiniAppID"`
 
 	// 诊断方式 1:基础诊断，2:深度诊断

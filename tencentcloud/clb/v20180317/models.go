@@ -4908,6 +4908,10 @@ type Listener struct {
 	// 解绑后端目标时，是否发RST给客户端，（此参数仅对于TCP监听器有意义）。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeregisterTargetRst *bool `json:"DeregisterTargetRst,omitempty" name:"DeregisterTargetRst"`
+
+	// 监听器的属性
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AttrFlags []*string `json:"AttrFlags,omitempty" name:"AttrFlags"`
 }
 
 type ListenerBackend struct {
