@@ -7747,6 +7747,7 @@ func NewDescribeStatisticsResponse() (response *DescribeStatisticsResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION_TSFAPMCTSDBCLIENTREQUESTERROR = "FailedOperation.TsfApmCtsdbClientRequestError"
 //  FAILEDOPERATION_UNHANDLEDEXCEPTION = "FailedOperation.UnhandledException"
+//  INTERNALERROR_TSFAPMCALLTSFMSFAILED = "InternalError.TsfApmCallTsfMsFailed"
 //  INTERNALERROR_TSFAPMINTERNALERROR = "InternalError.TsfApmInternalError"
 //  INVALIDPARAMETER_TSFAPMTRACESEARCHREQUESTPARAMERROR = "InvalidParameter.TsfApmTraceSearchRequestParamError"
 //  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
@@ -7762,6 +7763,7 @@ func (c *Client) DescribeStatistics(request *DescribeStatisticsRequest) (respons
 // 可能返回的错误码:
 //  FAILEDOPERATION_TSFAPMCTSDBCLIENTREQUESTERROR = "FailedOperation.TsfApmCtsdbClientRequestError"
 //  FAILEDOPERATION_UNHANDLEDEXCEPTION = "FailedOperation.UnhandledException"
+//  INTERNALERROR_TSFAPMCALLTSFMSFAILED = "InternalError.TsfApmCallTsfMsFailed"
 //  INTERNALERROR_TSFAPMINTERNALERROR = "InternalError.TsfApmInternalError"
 //  INVALIDPARAMETER_TSFAPMTRACESEARCHREQUESTPARAMERROR = "InvalidParameter.TsfApmTraceSearchRequestParamError"
 //  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"

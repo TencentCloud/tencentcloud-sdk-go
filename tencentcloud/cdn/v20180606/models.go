@@ -9695,6 +9695,13 @@ type PurgePathCacheRequestParams struct {
 
 	// 是否对中文字符进行编码后刷新
 	UrlEncode *bool `json:"UrlEncode,omitempty" name:"UrlEncode"`
+
+	// 刷新区域
+	// 无此参数时，默认刷新加速域名所在加速区域
+	// 填充 mainland 时，仅刷新中国境内加速节点上缓存内容
+	// 填充 overseas 时，仅刷新中国境外加速节点上缓存内容
+	// 指定刷新区域时，需要与域名加速区域匹配
+	Area *string `json:"Area,omitempty" name:"Area"`
 }
 
 type PurgePathCacheRequest struct {
@@ -9710,6 +9717,13 @@ type PurgePathCacheRequest struct {
 
 	// 是否对中文字符进行编码后刷新
 	UrlEncode *bool `json:"UrlEncode,omitempty" name:"UrlEncode"`
+
+	// 刷新区域
+	// 无此参数时，默认刷新加速域名所在加速区域
+	// 填充 mainland 时，仅刷新中国境内加速节点上缓存内容
+	// 填充 overseas 时，仅刷新中国境外加速节点上缓存内容
+	// 指定刷新区域时，需要与域名加速区域匹配
+	Area *string `json:"Area,omitempty" name:"Area"`
 }
 
 func (r *PurgePathCacheRequest) ToJsonString() string {
@@ -9727,6 +9741,7 @@ func (r *PurgePathCacheRequest) FromJsonString(s string) error {
 	delete(f, "Paths")
 	delete(f, "FlushType")
 	delete(f, "UrlEncode")
+	delete(f, "Area")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "PurgePathCacheRequest has unknown keys!", "")
 	}

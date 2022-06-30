@@ -52,6 +52,24 @@ type AclConfigRelation struct {
 	InstanceDetailList []*InstanceRelation `json:"InstanceDetailList,omitempty" name:"InstanceDetailList"`
 }
 
+type AnycastOutPackRelation struct {
+	// 业务带宽(单位M)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NormalBandwidth *uint64 `json:"NormalBandwidth,omitempty" name:"NormalBandwidth"`
+
+	// 转发规则数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ForwardRulesLimit *uint64 `json:"ForwardRulesLimit,omitempty" name:"ForwardRulesLimit"`
+
+	// 自动续费标记
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AutoRenewFlag *uint64 `json:"AutoRenewFlag,omitempty" name:"AutoRenewFlag"`
+
+	// 到期时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CurDeadline *string `json:"CurDeadline,omitempty" name:"CurDeadline"`
+}
+
 // Predefined struct for user
 type AssociateDDoSEipAddressRequestParams struct {
 	// 资源实例ID，实例ID形如：bgpip-0000011x。只能填写高防IP实例。
@@ -294,6 +312,11 @@ type BGPIPInstance struct {
 	// 资源关联标签
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TagInfoList []*TagInfo `json:"TagInfoList,omitempty" name:"TagInfoList"`
+
+	// 资产实例所属的全力防护套餐包详情，
+	// 注意：当资产实例不是全力防护套餐包的实例时，此字段为null
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AnycastOutPackRelation *AnycastOutPackRelation `json:"AnycastOutPackRelation,omitempty" name:"AnycastOutPackRelation"`
 }
 
 type BGPIPInstanceSpecification struct {
@@ -393,6 +416,9 @@ type BGPInstance struct {
 
 	// 资源关联标签
 	TagInfoList []*TagInfo `json:"TagInfoList,omitempty" name:"TagInfoList"`
+
+	// 新版本1ip高防包
+	IpCountNewFlag *uint64 `json:"IpCountNewFlag,omitempty" name:"IpCountNewFlag"`
 }
 
 type BGPInstanceSpecification struct {
@@ -4638,6 +4664,9 @@ type DescribeListBGPIPInstancesRequestParams struct {
 
 	// 标签搜索
 	FilterTag *TagFilter `json:"FilterTag,omitempty" name:"FilterTag"`
+
+	// 按照套餐类型进行过滤
+	FilterPackType []*string `json:"FilterPackType,omitempty" name:"FilterPackType"`
 }
 
 type DescribeListBGPIPInstancesRequest struct {
@@ -4690,6 +4719,9 @@ type DescribeListBGPIPInstancesRequest struct {
 
 	// 标签搜索
 	FilterTag *TagFilter `json:"FilterTag,omitempty" name:"FilterTag"`
+
+	// 按照套餐类型进行过滤
+	FilterPackType []*string `json:"FilterPackType,omitempty" name:"FilterPackType"`
 }
 
 func (r *DescribeListBGPIPInstancesRequest) ToJsonString() string {
@@ -4718,6 +4750,7 @@ func (r *DescribeListBGPIPInstancesRequest) FromJsonString(s string) error {
 	delete(f, "FilterCname")
 	delete(f, "FilterInstanceIdList")
 	delete(f, "FilterTag")
+	delete(f, "FilterPackType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeListBGPIPInstancesRequest has unknown keys!", "")
 	}

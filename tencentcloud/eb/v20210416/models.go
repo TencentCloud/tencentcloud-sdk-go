@@ -923,6 +923,26 @@ func (r *DeleteTransformationResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type ESTargetParams struct {
+	// 网络连接类型
+	NetMode *string `json:"NetMode,omitempty" name:"NetMode"`
+
+	// 索引前缀
+	IndexPrefix *string `json:"IndexPrefix,omitempty" name:"IndexPrefix"`
+
+	// es日志轮换粒度
+	RotationInterval *string `json:"RotationInterval,omitempty" name:"RotationInterval"`
+
+	// DTS事件配置
+	OutputMode *string `json:"OutputMode,omitempty" name:"OutputMode"`
+
+	// DTS索引配置
+	IndexSuffixMode *string `json:"IndexSuffixMode,omitempty" name:"IndexSuffixMode"`
+
+	// es模版类型
+	IndexTemplateType *string `json:"IndexTemplateType,omitempty" name:"IndexTemplateType"`
+}
+
 type EtlFilter struct {
 	// 语法Rule规则保持一致
 	Filter *string `json:"Filter,omitempty" name:"Filter"`
@@ -1814,6 +1834,9 @@ type TargetDescription struct {
 
 	// Ckafka参数
 	CkafkaTargetParams *CkafkaTargetParams `json:"CkafkaTargetParams,omitempty" name:"CkafkaTargetParams"`
+
+	// ElasticSearch参数
+	ESTargetParams *ESTargetParams `json:"ESTargetParams,omitempty" name:"ESTargetParams"`
 }
 
 type TextParams struct {

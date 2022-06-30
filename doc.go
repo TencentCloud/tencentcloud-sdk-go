@@ -234,6 +234,7 @@ import (
 	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/waf"
 	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/wav"
 	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/wss"
+	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/yinsuda"
 	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/youmall"
 	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/yunjing"
 	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/yunsou"

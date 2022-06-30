@@ -93,71 +93,6 @@ type Device struct {
 	DeviceType *int64 `json:"DeviceType,omitempty" name:"DeviceType"`
 }
 
-// Predefined struct for user
-type EnhanceTaDegreeRequestParams struct {
-	// 业务数据
-	BspData *InputTaBspData `json:"BspData,omitempty" name:"BspData"`
-
-	// 业务加密数据
-	BusinessEncryptData *InputBusinessEncryptData `json:"BusinessEncryptData,omitempty" name:"BusinessEncryptData"`
-}
-
-type EnhanceTaDegreeRequest struct {
-	*tchttp.BaseRequest
-	
-	// 业务数据
-	BspData *InputTaBspData `json:"BspData,omitempty" name:"BspData"`
-
-	// 业务加密数据
-	BusinessEncryptData *InputBusinessEncryptData `json:"BusinessEncryptData,omitempty" name:"BusinessEncryptData"`
-}
-
-func (r *EnhanceTaDegreeRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *EnhanceTaDegreeRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "BspData")
-	delete(f, "BusinessEncryptData")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "EnhanceTaDegreeRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type EnhanceTaDegreeResponseParams struct {
-	// 回包数据
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Data *OutputTaData `json:"Data,omitempty" name:"Data"`
-
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-}
-
-type EnhanceTaDegreeResponse struct {
-	*tchttp.BaseResponse
-	Response *EnhanceTaDegreeResponseParams `json:"Response"`
-}
-
-func (r *EnhanceTaDegreeResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *EnhanceTaDegreeResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type InputBusinessEncryptData struct {
 
 }
@@ -336,86 +271,6 @@ type InputSendTrafficSecuritySmsMsg struct {
 	EncryptData *string `json:"EncryptData,omitempty" name:"EncryptData"`
 }
 
-type InputTaBspData struct {
-	// 请求序列号
-	Seq *int64 `json:"Seq,omitempty" name:"Seq"`
-
-	// 操作系统类型[0：未知；1：android；2：ios；3：windows]
-	OsType *string `json:"OsType,omitempty" name:"OsType"`
-
-	// 年龄下限
-	AgeFloor *int64 `json:"AgeFloor,omitempty" name:"AgeFloor"`
-
-	// 年龄上限
-	AgeCeil *int64 `json:"AgeCeil,omitempty" name:"AgeCeil"`
-
-	// 性别[1：男；2：女]
-	Gender *int64 `json:"Gender,omitempty" name:"Gender"`
-
-	// 用户操作时间,uinux时间戳，精确到秒
-	UserTime *int64 `json:"UserTime,omitempty" name:"UserTime"`
-
-	// Imei [在(Imei|ImeiMd5|Idfa|IdfaMd5)里面4选1]
-	Imei *string `json:"Imei,omitempty" name:"Imei"`
-
-	// Imei小写后加密Md5 [在(Imei|ImeiMd5|Idfa|IdfaMd5)里面4选1]
-	ImeiMd5 *string `json:"ImeiMd5,omitempty" name:"ImeiMd5"`
-
-	// Idfa [在(Imei|ImeiMd5|Idfa|IdfaMd5)里面4选1]
-	Idfa *string `json:"Idfa,omitempty" name:"Idfa"`
-
-	// Idfa大写后加密Md5 [在(Imei|ImeiMd5|Idfa|IdfaMd5)里面4选1]
-	IdfaMd5 *string `json:"IdfaMd5,omitempty" name:"IdfaMd5"`
-
-	// 用户IP
-	UserIp *string `json:"UserIp,omitempty" name:"UserIp"`
-
-	// MAC地址[建议提供]
-	Mac *string `json:"Mac,omitempty" name:"Mac"`
-
-	// 手机号码[中国大陆]
-	PhoneNum *string `json:"PhoneNum,omitempty" name:"PhoneNum"`
-
-	// 浏览器
-	UserAgent *string `json:"UserAgent,omitempty" name:"UserAgent"`
-
-	// APP名称
-	App *string `json:"App,omitempty" name:"App"`
-
-	// 应用安装包名称
-	Package *string `json:"Package,omitempty" name:"Package"`
-
-	// 设备制造商
-	DeviceMaker *string `json:"DeviceMaker,omitempty" name:"DeviceMaker"`
-
-	// 设备型号
-	DeviceModule *string `json:"DeviceModule,omitempty" name:"DeviceModule"`
-
-	// 入网方式[1：WIFI；2：4G；3：3G；4：2G；5：其它]
-	AccessMode *string `json:"AccessMode,omitempty" name:"AccessMode"`
-
-	// 运营商[1：移动；2：联通；3：电信；4：其它]
-	Sp *string `json:"Sp,omitempty" name:"Sp"`
-
-	// 网址
-	Url *string `json:"Url,omitempty" name:"Url"`
-
-	// 用户地址
-	Location *string `json:"Location,omitempty" name:"Location"`
-
-	// 纬度
-	Latitude *string `json:"Latitude,omitempty" name:"Latitude"`
-
-	// 精度
-	Longitude *string `json:"Longitude,omitempty" name:"Longitude"`
-
-	// 辅助区分信息
-	Context *string `json:"Context,omitempty" name:"Context"`
-
-	// 是否授权
-	IsAuthorized *uint64 `json:"IsAuthorized,omitempty" name:"IsAuthorized"`
-}
-
 type OutputKolData struct {
 	// 错误码[0:成功；非0：失败的错误码]
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -510,29 +365,6 @@ type OutputSendTrafficSecuritySmsMsg struct {
 	// 发送失败的号码列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Value []*string `json:"Value,omitempty" name:"Value"`
-}
-
-type OutputTaData struct {
-	// 错误码[0:成功；非0：失败的错误码]
-	Code *int64 `json:"Code,omitempty" name:"Code"`
-
-	// 错误信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Message *string `json:"Message,omitempty" name:"Message"`
-
-	// 结果数据
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Value *OutputTaValue `json:"Value,omitempty" name:"Value"`
-}
-
-type OutputTaValue struct {
-	// 是否查得[0：未查得；1：查得]
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	IsCheck *int64 `json:"IsCheck,omitempty" name:"IsCheck"`
-
-	// 是否符合[0：不符合；1：符合]
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	IsMatch *int64 `json:"IsMatch,omitempty" name:"IsMatch"`
 }
 
 // Predefined struct for user

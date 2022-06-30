@@ -99,11 +99,13 @@ type AiRule struct {
 }
 
 type ApplicationProxy struct {
-	// 实例ID
+	// 代理ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProxyId *string `json:"ProxyId,omitempty" name:"ProxyId"`
 
-	// 实例名称
+	// 代理名称
+	// 当ProxyType=hostname时，表示域名或者子域名
+	// 当ProxyType=instance时，表示实例名称
 	ProxyName *string `json:"ProxyName,omitempty" name:"ProxyName"`
 
 	// 调度模式：
@@ -156,12 +158,14 @@ type ApplicationProxy struct {
 	SessionPersistTime *uint64 `json:"SessionPersistTime,omitempty" name:"SessionPersistTime"`
 
 	// 服务类型
-	// hostname：子域名
-	// instance：实例
+	// hostname：子域名模式
+	// instance：实例模式
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProxyType *string `json:"ProxyType,omitempty" name:"ProxyType"`
 
-	// 七层实例ID
+	// 当ProxyType=hostname时：
+	// ProxyName为域名，如：test.123.com
+	// HostId表示该域名，即test.123.com对应的代理加速唯一标识
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	HostId *string `json:"HostId,omitempty" name:"HostId"`
 }
@@ -178,15 +182,15 @@ type ApplicationProxyRule struct {
 	// 源站类型，取值：
 	// custom：手动添加
 	// origins：源站组
-	// load_balancing：负载均衡
 	OriginType *string `json:"OriginType,omitempty" name:"OriginType"`
 
 	// 源站信息：
-	// 当OriginType=custom时，表示多个：
-	// IP:端口
-	// 域名:端口
-	// 当OriginType=origins时，包含一个元素，表示源站组ID
-	// 当OriginType=load_balancing时，包含一个元素，表示负载均衡ID
+	// 当OriginType=custom时，表示一个或多个源站，如：
+	// OriginValue=["8.8.8.8:80","9.9.9.9:80"]
+	// OriginValue=["test.com:80"]
+	// 
+	// 当OriginType=origins时，包含一个元素，表示源站组ID，如：
+	// OriginValue=["origin-xxx"]
 	OriginValue []*string `json:"OriginValue,omitempty" name:"OriginValue"`
 
 	// 规则ID
@@ -725,7 +729,9 @@ type CreateApplicationProxyRequestParams struct {
 	// 站点名称
 	ZoneName *string `json:"ZoneName,omitempty" name:"ZoneName"`
 
-	// 四层代理名称
+	// 代理名称
+	// 当ProxyType=hostname时，表示域名或者子域名
+	// 当ProxyType=instance时，表示实例名称
 	ProxyName *string `json:"ProxyName,omitempty" name:"ProxyName"`
 
 	// 调度模式：
@@ -752,8 +758,8 @@ type CreateApplicationProxyRequestParams struct {
 	SessionPersistTime *uint64 `json:"SessionPersistTime,omitempty" name:"SessionPersistTime"`
 
 	// 服务类型
-	// hostname：子域名
-	// instance：实例
+	// hostname：子域名模式
+	// instance：实例模式
 	ProxyType *string `json:"ProxyType,omitempty" name:"ProxyType"`
 }
 
@@ -766,7 +772,9 @@ type CreateApplicationProxyRequest struct {
 	// 站点名称
 	ZoneName *string `json:"ZoneName,omitempty" name:"ZoneName"`
 
-	// 四层代理名称
+	// 代理名称
+	// 当ProxyType=hostname时，表示域名或者子域名
+	// 当ProxyType=instance时，表示实例名称
 	ProxyName *string `json:"ProxyName,omitempty" name:"ProxyName"`
 
 	// 调度模式：
@@ -793,8 +801,8 @@ type CreateApplicationProxyRequest struct {
 	SessionPersistTime *uint64 `json:"SessionPersistTime,omitempty" name:"SessionPersistTime"`
 
 	// 服务类型
-	// hostname：子域名
-	// instance：实例
+	// hostname：子域名模式
+	// instance：实例模式
 	ProxyType *string `json:"ProxyType,omitempty" name:"ProxyType"`
 }
 
@@ -871,7 +879,6 @@ type CreateApplicationProxyRuleRequestParams struct {
 	// 源站类型，取值：
 	// custom：手动添加
 	// origins：源站组
-	// load_balancing：负载均衡
 	OriginType *string `json:"OriginType,omitempty" name:"OriginType"`
 
 	// 源站信息：
@@ -879,7 +886,6 @@ type CreateApplicationProxyRuleRequestParams struct {
 	// IP:端口
 	// 域名:端口
 	// 当OriginType=origins时，包含一个元素，表示源站组ID
-	// 当OriginType=load_balancing时，包含一个元素，表示负载均衡ID
 	OriginValue []*string `json:"OriginValue,omitempty" name:"OriginValue"`
 
 	// 传递客户端IP，当Proto=TCP时，取值：
@@ -916,7 +922,6 @@ type CreateApplicationProxyRuleRequest struct {
 	// 源站类型，取值：
 	// custom：手动添加
 	// origins：源站组
-	// load_balancing：负载均衡
 	OriginType *string `json:"OriginType,omitempty" name:"OriginType"`
 
 	// 源站信息：
@@ -924,7 +929,6 @@ type CreateApplicationProxyRuleRequest struct {
 	// IP:端口
 	// 域名:端口
 	// 当OriginType=origins时，包含一个元素，表示源站组ID
-	// 当OriginType=load_balancing时，包含一个元素，表示负载均衡ID
 	OriginValue []*string `json:"OriginValue,omitempty" name:"OriginValue"`
 
 	// 传递客户端IP，当Proto=TCP时，取值：
@@ -1379,7 +1383,7 @@ type CreateOriginGroupRequestParams struct {
 	// 配置类型，当OriginType=self 时，需要填写：
 	// area: 按区域配置
 	// weight: 按权重配置
-	// 当OriginType=third_party 时，不需要填写
+	// 当OriginType=third_party/cos 时，不需要填写
 	Type *string `json:"Type,omitempty" name:"Type"`
 
 	// 源站记录
@@ -1391,6 +1395,7 @@ type CreateOriginGroupRequestParams struct {
 	// 源站类型
 	// self：自有源站
 	// third_party：第三方源站
+	// cos：腾讯云COS源站
 	OriginType *string `json:"OriginType,omitempty" name:"OriginType"`
 }
 
@@ -1403,7 +1408,7 @@ type CreateOriginGroupRequest struct {
 	// 配置类型，当OriginType=self 时，需要填写：
 	// area: 按区域配置
 	// weight: 按权重配置
-	// 当OriginType=third_party 时，不需要填写
+	// 当OriginType=third_party/cos 时，不需要填写
 	Type *string `json:"Type,omitempty" name:"Type"`
 
 	// 源站记录
@@ -1415,6 +1420,7 @@ type CreateOriginGroupRequest struct {
 	// 源站类型
 	// self：自有源站
 	// third_party：第三方源站
+	// cos：腾讯云COS源站
 	OriginType *string `json:"OriginType,omitempty" name:"OriginType"`
 }
 
@@ -2658,7 +2664,9 @@ type DescribeApplicationProxyDetailResponseParams struct {
 	// 实例ID
 	ProxyId *string `json:"ProxyId,omitempty" name:"ProxyId"`
 
-	// 实例名称
+	// 代理名称
+	// 当ProxyType=hostname时，表示域名或者子域名
+	// 当ProxyType=instance时，表示实例名称
 	ProxyName *string `json:"ProxyName,omitempty" name:"ProxyName"`
 
 	// 调度模式：
@@ -2703,11 +2711,13 @@ type DescribeApplicationProxyDetailResponseParams struct {
 	SessionPersistTime *uint64 `json:"SessionPersistTime,omitempty" name:"SessionPersistTime"`
 
 	// 服务类型
-	// hostname：子域名
-	// instance：实例
+	// hostname：子域名模式
+	// instance：实例模式
 	ProxyType *string `json:"ProxyType,omitempty" name:"ProxyType"`
 
-	// 七层实例ID
+	// 当ProxyType=hostname时：
+	// ProxyName为域名，如：test.123.com
+	// HostId表示该域名，即test.123.com对应的代理加速唯一标识
 	HostId *string `json:"HostId,omitempty" name:"HostId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -2786,9 +2796,17 @@ type DescribeApplicationProxyResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
-	// 当ZoneId不为空时，表示当前站点允许创建的实例数量
+	// 字段已废弃
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Quota *int64 `json:"Quota,omitempty" name:"Quota"`
+
+	// 表示套餐内PlatType为ip的Anycast IP实例数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IpCount *uint64 `json:"IpCount,omitempty" name:"IpCount"`
+
+	// 表示套餐内PlatType为domain的CNAME实例数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DomainCount *uint64 `json:"DomainCount,omitempty" name:"DomainCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -4560,7 +4578,9 @@ type DescribeOriginGroupDetailResponseParams struct {
 	// 源站组名称
 	OriginName *string `json:"OriginName,omitempty" name:"OriginName"`
 
-	// 配置类型
+	// 源站组配置类型
+	// area：表示按照Record记录中的Area字段进行按客户端IP所在区域回源。
+	// weight：表示按照Record记录中的Weight字段进行按权重回源。
 	Type *string `json:"Type,omitempty" name:"Type"`
 
 	// 记录
@@ -4579,13 +4599,21 @@ type DescribeOriginGroupDetailResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OriginType *string `json:"OriginType,omitempty" name:"OriginType"`
 
-	// 是否被四层代理使用
+	// 当前源站组是否被四层代理使用。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ApplicationProxyUsed *bool `json:"ApplicationProxyUsed,omitempty" name:"ApplicationProxyUsed"`
 
-	// 是否被负载均衡使用
+	// 当前源站组是否被负载均衡使用。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LoadBalancingUsed *bool `json:"LoadBalancingUsed,omitempty" name:"LoadBalancingUsed"`
+
+	// 使用当前源站组的负载均衡的类型：
+	// none：未被使用
+	// dns_only：被仅DNS类型负载均衡使用
+	// proxied：被代理加速类型负载均衡使用
+	// both：同时被仅DNS和代理加速类型负载均衡使用
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LoadBalancingUsedType *string `json:"LoadBalancingUsedType,omitempty" name:"LoadBalancingUsedType"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -7275,10 +7303,10 @@ type DnsRecord struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Cname *string `json:"Cname,omitempty" name:"Cname"`
 
-	// 域名是否开启了lb，四层，安全
+	// 域名是否开启了负载均衡，四层代理，安全
 	// - lb 负载均衡
 	// - security 安全
-	// - l4 四层
+	// - l4 四层代理
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DomainStatus []*string `json:"DomainStatus,omitempty" name:"DomainStatus"`
 }
@@ -7777,10 +7805,12 @@ type ModifyApplicationProxyRequestParams struct {
 	// 站点ID
 	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
 
-	// 四层代理ID
+	// 代理ID
 	ProxyId *string `json:"ProxyId,omitempty" name:"ProxyId"`
 
-	// 四层代理名称
+	// 代理名称
+	// 当ProxyType=hostname时，表示域名或者子域名
+	// 当ProxyType=instance时，表示实例名称
 	ProxyName *string `json:"ProxyName,omitempty" name:"ProxyName"`
 
 	// 参数已经废弃
@@ -7793,8 +7823,8 @@ type ModifyApplicationProxyRequestParams struct {
 	SessionPersistTime *uint64 `json:"SessionPersistTime,omitempty" name:"SessionPersistTime"`
 
 	// 服务类型
-	// hostname：子域名
-	// instance：实例
+	// hostname：子域名模式
+	// instance：实例模式
 	ProxyType *string `json:"ProxyType,omitempty" name:"ProxyType"`
 }
 
@@ -7804,10 +7834,12 @@ type ModifyApplicationProxyRequest struct {
 	// 站点ID
 	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
 
-	// 四层代理ID
+	// 代理ID
 	ProxyId *string `json:"ProxyId,omitempty" name:"ProxyId"`
 
-	// 四层代理名称
+	// 代理名称
+	// 当ProxyType=hostname时，表示域名或者子域名
+	// 当ProxyType=instance时，表示实例名称
 	ProxyName *string `json:"ProxyName,omitempty" name:"ProxyName"`
 
 	// 参数已经废弃
@@ -7820,8 +7852,8 @@ type ModifyApplicationProxyRequest struct {
 	SessionPersistTime *uint64 `json:"SessionPersistTime,omitempty" name:"SessionPersistTime"`
 
 	// 服务类型
-	// hostname：子域名
-	// instance：实例
+	// hostname：子域名模式
+	// instance：实例模式
 	ProxyType *string `json:"ProxyType,omitempty" name:"ProxyType"`
 }
 
@@ -7852,7 +7884,7 @@ func (r *ModifyApplicationProxyRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyApplicationProxyResponseParams struct {
-	// 四层代理ID
+	// 代理ID
 	ProxyId *string `json:"ProxyId,omitempty" name:"ProxyId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -7897,15 +7929,15 @@ type ModifyApplicationProxyRuleRequestParams struct {
 	// 源站类型，取值：
 	// custom：手动添加
 	// origins：源站组
-	// load_balancing：负载均衡
 	OriginType *string `json:"OriginType,omitempty" name:"OriginType"`
 
 	// 源站信息：
-	// 当OriginType=custom时，表示多个：
-	// IP:端口
-	// 域名:端口
-	// 当OriginType=origins时，包含一个元素，表示源站组ID
-	// 当OriginType=load_balancing时，包含一个元素，表示负载均衡ID
+	// 当OriginType=custom时，表示一个或多个源站，如：
+	// OriginValue=["8.8.8.8:80","9.9.9.9:80"]
+	// OriginValue=["test.com:80"]
+	// 
+	// 当OriginType=origins时，包含一个元素，表示源站组ID，如：
+	// OriginValue=["origin-xxx"]
 	OriginValue []*string `json:"OriginValue,omitempty" name:"OriginValue"`
 
 	// 传递客户端IP，当Proto=TCP时，取值：
@@ -7945,15 +7977,15 @@ type ModifyApplicationProxyRuleRequest struct {
 	// 源站类型，取值：
 	// custom：手动添加
 	// origins：源站组
-	// load_balancing：负载均衡
 	OriginType *string `json:"OriginType,omitempty" name:"OriginType"`
 
 	// 源站信息：
-	// 当OriginType=custom时，表示多个：
-	// IP:端口
-	// 域名:端口
-	// 当OriginType=origins时，包含一个元素，表示源站组ID
-	// 当OriginType=load_balancing时，包含一个元素，表示负载均衡ID
+	// 当OriginType=custom时，表示一个或多个源站，如：
+	// OriginValue=["8.8.8.8:80","9.9.9.9:80"]
+	// OriginValue=["test.com:80"]
+	// 
+	// 当OriginType=origins时，包含一个元素，表示源站组ID，如：
+	// OriginValue=["origin-xxx"]
 	OriginValue []*string `json:"OriginValue,omitempty" name:"OriginValue"`
 
 	// 传递客户端IP，当Proto=TCP时，取值：
@@ -8027,7 +8059,7 @@ type ModifyApplicationProxyRuleStatusRequestParams struct {
 	// 站点ID
 	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
 
-	// 四层代理ID
+	// 代理ID
 	ProxyId *string `json:"ProxyId,omitempty" name:"ProxyId"`
 
 	// 规则ID
@@ -8045,7 +8077,7 @@ type ModifyApplicationProxyRuleStatusRequest struct {
 	// 站点ID
 	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
 
-	// 四层代理ID
+	// 代理ID
 	ProxyId *string `json:"ProxyId,omitempty" name:"ProxyId"`
 
 	// 规则ID
@@ -8109,7 +8141,7 @@ type ModifyApplicationProxyStatusRequestParams struct {
 	// 站点ID
 	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
 
-	// 四层代理ID
+	// 代理ID
 	ProxyId *string `json:"ProxyId,omitempty" name:"ProxyId"`
 
 	// 状态
@@ -8124,7 +8156,7 @@ type ModifyApplicationProxyStatusRequest struct {
 	// 站点ID
 	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
 
-	// 四层代理ID
+	// 代理ID
 	ProxyId *string `json:"ProxyId,omitempty" name:"ProxyId"`
 
 	// 状态
@@ -8156,7 +8188,7 @@ func (r *ModifyApplicationProxyStatusRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyApplicationProxyStatusResponseParams struct {
-	// 四层代理ID
+	// 代理ID
 	ProxyId *string `json:"ProxyId,omitempty" name:"ProxyId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -8881,7 +8913,7 @@ type ModifyOriginGroupRequestParams struct {
 	// 配置类型，当OriginType=self 时，需要填写：
 	// area: 按区域配置
 	// weight: 按权重配置
-	// 当OriginType=third_party 时，不需要填写
+	// 当OriginType=third_party/cos 时，不需要填写
 	Type *string `json:"Type,omitempty" name:"Type"`
 
 	// 源站记录
@@ -8893,6 +8925,7 @@ type ModifyOriginGroupRequestParams struct {
 	// 源站类型
 	// self：自有源站
 	// third_party：第三方源站
+	// cos：腾讯云COS源站
 	OriginType *string `json:"OriginType,omitempty" name:"OriginType"`
 }
 
@@ -8908,7 +8941,7 @@ type ModifyOriginGroupRequest struct {
 	// 配置类型，当OriginType=self 时，需要填写：
 	// area: 按区域配置
 	// weight: 按权重配置
-	// 当OriginType=third_party 时，不需要填写
+	// 当OriginType=third_party/cos 时，不需要填写
 	Type *string `json:"Type,omitempty" name:"Type"`
 
 	// 源站记录
@@ -8920,6 +8953,7 @@ type ModifyOriginGroupRequest struct {
 	// 源站类型
 	// self：自有源站
 	// third_party：第三方源站
+	// cos：腾讯云COS源站
 	OriginType *string `json:"OriginType,omitempty" name:"OriginType"`
 }
 
@@ -9482,6 +9516,15 @@ type Origin struct {
 	OriginPullProtocol *string `json:"OriginPullProtocol,omitempty" name:"OriginPullProtocol"`
 }
 
+type OriginCheckOriginStatus struct {
+	// healthy: 健康，unhealthy: 不健康，process: 探测中
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// host列表，源站组不健康时存在值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Host []*string `json:"Host,omitempty" name:"Host"`
+}
+
 type OriginFilter struct {
 	// 要过滤的字段，支持：name
 	Name *string `json:"Name,omitempty" name:"Name"`
@@ -9497,7 +9540,9 @@ type OriginGroup struct {
 	// 源站组名称
 	OriginName *string `json:"OriginName,omitempty" name:"OriginName"`
 
-	// 配置类型
+	// 源站组配置类型
+	// area：表示按照Record记录中的Area字段进行按客户端IP所在区域回源。
+	// weight：表示按照Record记录中的Weight字段进行按权重回源。
 	Type *string `json:"Type,omitempty" name:"Type"`
 
 	// 记录
@@ -9516,13 +9561,25 @@ type OriginGroup struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OriginType *string `json:"OriginType,omitempty" name:"OriginType"`
 
-	// 是否为四层代理使用
+	// 当前源站组是否被四层代理使用。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ApplicationProxyUsed *bool `json:"ApplicationProxyUsed,omitempty" name:"ApplicationProxyUsed"`
 
-	// 是否为负载均衡使用
+	// 当前源站组是否被负载均衡使用。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LoadBalancingUsed *bool `json:"LoadBalancingUsed,omitempty" name:"LoadBalancingUsed"`
+
+	// 源站状态信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *OriginCheckOriginStatus `json:"Status,omitempty" name:"Status"`
+
+	// 使用当前源站组的负载均衡的类型：
+	// none：未被使用
+	// dns_only：被仅DNS类型负载均衡使用
+	// proxied：被代理加速类型负载均衡使用
+	// both：同时被仅DNS和代理加速类型负载均衡使用
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LoadBalancingUsedType *string `json:"LoadBalancingUsedType,omitempty" name:"LoadBalancingUsedType"`
 }
 
 type OriginRecord struct {
@@ -9530,10 +9587,12 @@ type OriginRecord struct {
 	Record *string `json:"Record,omitempty" name:"Record"`
 
 	// 当源站配置类型Type=area时，表示区域
-	// 当源站类型Type=area时，为空表示默认区域
+	// 为空表示默认区域
 	Area []*string `json:"Area,omitempty" name:"Area"`
 
 	// 当源站配置类型Type=weight时，表示权重
+	// 取值范围为[1-100]
+	// 源站组内多个源站权重总和应为100
 	Weight *uint64 `json:"Weight,omitempty" name:"Weight"`
 
 	// 端口

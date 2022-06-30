@@ -7820,7 +7820,7 @@ type CreateOpenBankOrderPaymentResult struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ThirdPayOrderId *string `json:"ThirdPayOrderId,omitempty" name:"ThirdPayOrderId"`
 
-	// 小程序跳转参数
+	// 跳转参数
 	// 渠道为TENPAY，付款方式为EBANK_PAYMENT时必选。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RedirectInfo *OpenBankRedirectInfo `json:"RedirectInfo,omitempty" name:"RedirectInfo"`
@@ -13590,6 +13590,16 @@ type OpenBankApprovalGuideInfo struct {
 	MobileGuideUrl *string `json:"MobileGuideUrl,omitempty" name:"MobileGuideUrl"`
 }
 
+type OpenBankFormInfo struct {
+	// 网银页面提交html
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FormHtml *string `json:"FormHtml,omitempty" name:"FormHtml"`
+
+	// 网银提交页面字符集
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FormEncoding *string `json:"FormEncoding,omitempty" name:"FormEncoding"`
+}
+
 type OpenBankGoodsInfo struct {
 	// 商品标题。默认值“商品支付”。
 	GoodsName *string `json:"GoodsName,omitempty" name:"GoodsName"`
@@ -13767,6 +13777,10 @@ type OpenBankRedirectInfo struct {
 
 	// 小程序原始 id
 	MpUserName *string `json:"MpUserName,omitempty" name:"MpUserName"`
+
+	// 网银支付提交页面信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FormInfo *OpenBankFormInfo `json:"FormInfo,omitempty" name:"FormInfo"`
 }
 
 type OpenBankRefundOrderApplyResult struct {

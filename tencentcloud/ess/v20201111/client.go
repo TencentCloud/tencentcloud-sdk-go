@@ -63,14 +63,13 @@ func NewCancelFlowResponse() (response *CancelFlowResponse) {
 }
 
 // CancelFlow
-// 用于撤销流程
+// 用于撤销签署流程
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DB = "InternalError.Db"
 //  INTERNALERROR_SYSTEM = "InternalError.System"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
-//  INVALIDPARAMETER_STATUS = "InvalidParameter.Status"
 //  OPERATIONDENIED = "OperationDenied"
 //  RESOURCENOTFOUND_FLOW = "ResourceNotFound.Flow"
 //  RESOURCENOTFOUND_NOTEXISTFLOW = "ResourceNotFound.NotExistFlow"
@@ -79,14 +78,13 @@ func (c *Client) CancelFlow(request *CancelFlowRequest) (response *CancelFlowRes
 }
 
 // CancelFlow
-// 用于撤销流程
+// 用于撤销签署流程
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DB = "InternalError.Db"
 //  INTERNALERROR_SYSTEM = "InternalError.System"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
-//  INVALIDPARAMETER_STATUS = "InvalidParameter.Status"
 //  OPERATIONDENIED = "OperationDenied"
 //  RESOURCENOTFOUND_FLOW = "ResourceNotFound.Flow"
 //  RESOURCENOTFOUND_NOTEXISTFLOW = "ResourceNotFound.NotExistFlow"
@@ -335,7 +333,7 @@ func NewCreateFlowByFilesResponse() (response *CreateFlowByFilesResponse) {
 }
 
 // CreateFlowByFiles
-// 此接口（CreateFlowByFiles）用来通过上传后的pdf资源编号来创建流程。
+// 此接口（CreateFlowByFiles）用来通过上传后的pdf资源编号来创建签署流程。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -367,7 +365,7 @@ func (c *Client) CreateFlowByFiles(request *CreateFlowByFilesRequest) (response 
 }
 
 // CreateFlowByFiles
-// 此接口（CreateFlowByFiles）用来通过上传后的pdf资源编号来创建流程。
+// 此接口（CreateFlowByFiles）用来通过上传后的pdf资源编号来创建签署流程。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -503,13 +501,15 @@ func NewCreateSchemeUrlResponse() (response *CreateSchemeUrlResponse) {
 //
 // 
 //
-// 如您需要自主配置小程序跳转链接，请参考: <a href="https://tcloud-doc.isd.com/document/product/1323/74774">跳转小程序链接配置说明</a>
+// 如您需要自主配置小程序跳转链接，请参考: <a href="https://cloud.tencent.com/document/product/1323/74774">跳转小程序链接配置说明</a>
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DB = "InternalError.Db"
 //  INVALIDPARAMETER_DATANOTFOUND = "InvalidParameter.DataNotFound"
+//  INVALIDPARAMETER_MOBILE = "InvalidParameter.Mobile"
+//  INVALIDPARAMETER_NAME = "InvalidParameter.Name"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
@@ -532,13 +532,15 @@ func (c *Client) CreateSchemeUrl(request *CreateSchemeUrlRequest) (response *Cre
 //
 // 
 //
-// 如您需要自主配置小程序跳转链接，请参考: <a href="https://tcloud-doc.isd.com/document/product/1323/74774">跳转小程序链接配置说明</a>
+// 如您需要自主配置小程序跳转链接，请参考: <a href="https://cloud.tencent.com/document/product/1323/74774">跳转小程序链接配置说明</a>
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DB = "InternalError.Db"
 //  INVALIDPARAMETER_DATANOTFOUND = "InvalidParameter.DataNotFound"
+//  INVALIDPARAMETER_MOBILE = "InvalidParameter.Mobile"
+//  INVALIDPARAMETER_NAME = "InvalidParameter.Name"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"

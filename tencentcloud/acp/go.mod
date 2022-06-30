@@ -2,4 +2,4 @@ module github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/acp
 
 go 1.14
 
-require github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common v1.0.431
+require github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common v1.0.432

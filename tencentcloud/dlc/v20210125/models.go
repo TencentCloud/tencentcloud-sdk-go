@@ -21,6 +21,66 @@ import (
 )
 
 // Predefined struct for user
+type AddDMSPartitionsRequestParams struct {
+	// 分区
+	Partitions []*DMSPartition `json:"Partitions,omitempty" name:"Partitions"`
+}
+
+type AddDMSPartitionsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 分区
+	Partitions []*DMSPartition `json:"Partitions,omitempty" name:"Partitions"`
+}
+
+func (r *AddDMSPartitionsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AddDMSPartitionsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Partitions")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AddDMSPartitionsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type AddDMSPartitionsResponseParams struct {
+	// 成功数量
+	Total *int64 `json:"Total,omitempty" name:"Total"`
+
+	// 分区值
+	Partitions []*DMSPartition `json:"Partitions,omitempty" name:"Partitions"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type AddDMSPartitionsResponse struct {
+	*tchttp.BaseResponse
+	Response *AddDMSPartitionsResponseParams `json:"Response"`
+}
+
+func (r *AddDMSPartitionsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AddDMSPartitionsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type AddUsersToWorkGroupRequestParams struct {
 	// 要操作的工作组和用户信息
 	AddInfo *UserIdSetOfWorkGroupId `json:"AddInfo,omitempty" name:"AddInfo"`
@@ -72,6 +132,302 @@ func (r *AddUsersToWorkGroupResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *AddUsersToWorkGroupResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type AlterDMSDatabaseRequestParams struct {
+
+}
+
+type AlterDMSDatabaseRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *AlterDMSDatabaseRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AlterDMSDatabaseRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AlterDMSDatabaseRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type AlterDMSDatabaseResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type AlterDMSDatabaseResponse struct {
+	*tchttp.BaseResponse
+	Response *AlterDMSDatabaseResponseParams `json:"Response"`
+}
+
+func (r *AlterDMSDatabaseResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AlterDMSDatabaseResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type AlterDMSPartitionRequestParams struct {
+	// 当前名称，变更前db名称
+	CurrentDbName *string `json:"CurrentDbName,omitempty" name:"CurrentDbName"`
+
+	// 当前名称，变更前table名称
+	CurrentTableName *string `json:"CurrentTableName,omitempty" name:"CurrentTableName"`
+
+	// 当前名称，变更前Part名称
+	CurrentValues *string `json:"CurrentValues,omitempty" name:"CurrentValues"`
+
+	// 分区
+	Partition *DMSPartition `json:"Partition,omitempty" name:"Partition"`
+}
+
+type AlterDMSPartitionRequest struct {
+	*tchttp.BaseRequest
+	
+	// 当前名称，变更前db名称
+	CurrentDbName *string `json:"CurrentDbName,omitempty" name:"CurrentDbName"`
+
+	// 当前名称，变更前table名称
+	CurrentTableName *string `json:"CurrentTableName,omitempty" name:"CurrentTableName"`
+
+	// 当前名称，变更前Part名称
+	CurrentValues *string `json:"CurrentValues,omitempty" name:"CurrentValues"`
+
+	// 分区
+	Partition *DMSPartition `json:"Partition,omitempty" name:"Partition"`
+}
+
+func (r *AlterDMSPartitionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AlterDMSPartitionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CurrentDbName")
+	delete(f, "CurrentTableName")
+	delete(f, "CurrentValues")
+	delete(f, "Partition")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AlterDMSPartitionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type AlterDMSPartitionResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type AlterDMSPartitionResponse struct {
+	*tchttp.BaseResponse
+	Response *AlterDMSPartitionResponseParams `json:"Response"`
+}
+
+func (r *AlterDMSPartitionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AlterDMSPartitionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type AlterDMSTableRequestParams struct {
+	// 当前名称
+	CurrentName *string `json:"CurrentName,omitempty" name:"CurrentName"`
+
+	// 当前数据库名称
+	CurrentDbName *string `json:"CurrentDbName,omitempty" name:"CurrentDbName"`
+
+	// 基础对象
+	Asset *Asset `json:"Asset,omitempty" name:"Asset"`
+
+	// 表类型
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 数据库名称
+	DbName *string `json:"DbName,omitempty" name:"DbName"`
+
+	// 存储大小
+	StorageSize *int64 `json:"StorageSize,omitempty" name:"StorageSize"`
+
+	// 记录数量
+	RecordCount *int64 `json:"RecordCount,omitempty" name:"RecordCount"`
+
+	// 生命周期
+	LifeTime *int64 `json:"LifeTime,omitempty" name:"LifeTime"`
+
+	// 数据更新时间
+	DataUpdateTime *string `json:"DataUpdateTime,omitempty" name:"DataUpdateTime"`
+
+	// 结构更新时间
+	StructUpdateTime *string `json:"StructUpdateTime,omitempty" name:"StructUpdateTime"`
+
+	// 最后访问时间
+	LastAccessTime *string `json:"LastAccessTime,omitempty" name:"LastAccessTime"`
+
+	// 存储对象
+	Sds *DMSSds `json:"Sds,omitempty" name:"Sds"`
+
+	// 列
+	Columns []*DMSColumn `json:"Columns,omitempty" name:"Columns"`
+
+	// 分区键值
+	PartitionKeys []*DMSColumn `json:"PartitionKeys,omitempty" name:"PartitionKeys"`
+
+	// 视图文本
+	ViewOriginalText *string `json:"ViewOriginalText,omitempty" name:"ViewOriginalText"`
+
+	// 视图文本
+	ViewExpandedText *string `json:"ViewExpandedText,omitempty" name:"ViewExpandedText"`
+
+	// 分区
+	Partitions []*DMSPartition `json:"Partitions,omitempty" name:"Partitions"`
+}
+
+type AlterDMSTableRequest struct {
+	*tchttp.BaseRequest
+	
+	// 当前名称
+	CurrentName *string `json:"CurrentName,omitempty" name:"CurrentName"`
+
+	// 当前数据库名称
+	CurrentDbName *string `json:"CurrentDbName,omitempty" name:"CurrentDbName"`
+
+	// 基础对象
+	Asset *Asset `json:"Asset,omitempty" name:"Asset"`
+
+	// 表类型
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 数据库名称
+	DbName *string `json:"DbName,omitempty" name:"DbName"`
+
+	// 存储大小
+	StorageSize *int64 `json:"StorageSize,omitempty" name:"StorageSize"`
+
+	// 记录数量
+	RecordCount *int64 `json:"RecordCount,omitempty" name:"RecordCount"`
+
+	// 生命周期
+	LifeTime *int64 `json:"LifeTime,omitempty" name:"LifeTime"`
+
+	// 数据更新时间
+	DataUpdateTime *string `json:"DataUpdateTime,omitempty" name:"DataUpdateTime"`
+
+	// 结构更新时间
+	StructUpdateTime *string `json:"StructUpdateTime,omitempty" name:"StructUpdateTime"`
+
+	// 最后访问时间
+	LastAccessTime *string `json:"LastAccessTime,omitempty" name:"LastAccessTime"`
+
+	// 存储对象
+	Sds *DMSSds `json:"Sds,omitempty" name:"Sds"`
+
+	// 列
+	Columns []*DMSColumn `json:"Columns,omitempty" name:"Columns"`
+
+	// 分区键值
+	PartitionKeys []*DMSColumn `json:"PartitionKeys,omitempty" name:"PartitionKeys"`
+
+	// 视图文本
+	ViewOriginalText *string `json:"ViewOriginalText,omitempty" name:"ViewOriginalText"`
+
+	// 视图文本
+	ViewExpandedText *string `json:"ViewExpandedText,omitempty" name:"ViewExpandedText"`
+
+	// 分区
+	Partitions []*DMSPartition `json:"Partitions,omitempty" name:"Partitions"`
+}
+
+func (r *AlterDMSTableRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AlterDMSTableRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CurrentName")
+	delete(f, "CurrentDbName")
+	delete(f, "Asset")
+	delete(f, "Type")
+	delete(f, "DbName")
+	delete(f, "StorageSize")
+	delete(f, "RecordCount")
+	delete(f, "LifeTime")
+	delete(f, "DataUpdateTime")
+	delete(f, "StructUpdateTime")
+	delete(f, "LastAccessTime")
+	delete(f, "Sds")
+	delete(f, "Columns")
+	delete(f, "PartitionKeys")
+	delete(f, "ViewOriginalText")
+	delete(f, "ViewExpandedText")
+	delete(f, "Partitions")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AlterDMSTableRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type AlterDMSTableResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type AlterDMSTableResponse struct {
+	*tchttp.BaseResponse
+	Response *AlterDMSTableResponseParams `json:"Response"`
+}
+
+func (r *AlterDMSTableResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AlterDMSTableResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type Asset struct {
+
 }
 
 // Predefined struct for user
@@ -331,6 +687,87 @@ func (r *CancelTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CheckLockMetaDataRequestParams struct {
+	// 锁ID
+	LockId *int64 `json:"LockId,omitempty" name:"LockId"`
+
+	// 数据源名称
+	DatasourceConnectionName *string `json:"DatasourceConnectionName,omitempty" name:"DatasourceConnectionName"`
+
+	// 事务ID
+	TxnId *int64 `json:"TxnId,omitempty" name:"TxnId"`
+
+	// 过期时间ms
+	ElapsedMs *int64 `json:"ElapsedMs,omitempty" name:"ElapsedMs"`
+}
+
+type CheckLockMetaDataRequest struct {
+	*tchttp.BaseRequest
+	
+	// 锁ID
+	LockId *int64 `json:"LockId,omitempty" name:"LockId"`
+
+	// 数据源名称
+	DatasourceConnectionName *string `json:"DatasourceConnectionName,omitempty" name:"DatasourceConnectionName"`
+
+	// 事务ID
+	TxnId *int64 `json:"TxnId,omitempty" name:"TxnId"`
+
+	// 过期时间ms
+	ElapsedMs *int64 `json:"ElapsedMs,omitempty" name:"ElapsedMs"`
+}
+
+func (r *CheckLockMetaDataRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CheckLockMetaDataRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "LockId")
+	delete(f, "DatasourceConnectionName")
+	delete(f, "TxnId")
+	delete(f, "ElapsedMs")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CheckLockMetaDataRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CheckLockMetaDataResponseParams struct {
+	// 锁ID
+	LockId *int64 `json:"LockId,omitempty" name:"LockId"`
+
+	// 锁状态：ACQUIRED、WAITING、ABORT、NOT_ACQUIRED
+	LockState *string `json:"LockState,omitempty" name:"LockState"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CheckLockMetaDataResponse struct {
+	*tchttp.BaseResponse
+	Response *CheckLockMetaDataResponseParams `json:"Response"`
+}
+
+func (r *CheckLockMetaDataResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CheckLockMetaDataResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type Column struct {
 	// 列名称，不区分大小写，最大支持25个字符。
 	Name *string `json:"Name,omitempty" name:"Name"`
@@ -370,6 +807,219 @@ type Column struct {
 	// 是否为分区字段
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsPartition *bool `json:"IsPartition,omitempty" name:"IsPartition"`
+}
+
+// Predefined struct for user
+type CreateDMSDatabaseRequestParams struct {
+	// 数据库名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+}
+
+type CreateDMSDatabaseRequest struct {
+	*tchttp.BaseRequest
+	
+	// 数据库名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+}
+
+func (r *CreateDMSDatabaseRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateDMSDatabaseRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Name")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDMSDatabaseRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateDMSDatabaseResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateDMSDatabaseResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateDMSDatabaseResponseParams `json:"Response"`
+}
+
+func (r *CreateDMSDatabaseResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateDMSDatabaseResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateDMSTableRequestParams struct {
+	// 基础对象
+	Asset *Asset `json:"Asset,omitempty" name:"Asset"`
+
+	// 表类型
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 数据库名称
+	DbName *string `json:"DbName,omitempty" name:"DbName"`
+
+	// 存储大小
+	StorageSize *int64 `json:"StorageSize,omitempty" name:"StorageSize"`
+
+	// 记录数量
+	RecordCount *int64 `json:"RecordCount,omitempty" name:"RecordCount"`
+
+	// 生命周期
+	LifeTime *int64 `json:"LifeTime,omitempty" name:"LifeTime"`
+
+	// 数据更新时间
+	DataUpdateTime *string `json:"DataUpdateTime,omitempty" name:"DataUpdateTime"`
+
+	// 结构更新时间
+	StructUpdateTime *string `json:"StructUpdateTime,omitempty" name:"StructUpdateTime"`
+
+	// 最后访问时间
+	LastAccessTime *string `json:"LastAccessTime,omitempty" name:"LastAccessTime"`
+
+	// 存储对象
+	Sds *DMSSds `json:"Sds,omitempty" name:"Sds"`
+
+	// 列
+	Columns []*DMSColumn `json:"Columns,omitempty" name:"Columns"`
+
+	// 分区键值
+	PartitionKeys []*DMSColumn `json:"PartitionKeys,omitempty" name:"PartitionKeys"`
+
+	// 视图文本
+	ViewOriginalText *string `json:"ViewOriginalText,omitempty" name:"ViewOriginalText"`
+
+	// 视图文本
+	ViewExpandedText *string `json:"ViewExpandedText,omitempty" name:"ViewExpandedText"`
+
+	// 分区
+	Partitions []*DMSPartition `json:"Partitions,omitempty" name:"Partitions"`
+
+	// 表名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+}
+
+type CreateDMSTableRequest struct {
+	*tchttp.BaseRequest
+	
+	// 基础对象
+	Asset *Asset `json:"Asset,omitempty" name:"Asset"`
+
+	// 表类型
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 数据库名称
+	DbName *string `json:"DbName,omitempty" name:"DbName"`
+
+	// 存储大小
+	StorageSize *int64 `json:"StorageSize,omitempty" name:"StorageSize"`
+
+	// 记录数量
+	RecordCount *int64 `json:"RecordCount,omitempty" name:"RecordCount"`
+
+	// 生命周期
+	LifeTime *int64 `json:"LifeTime,omitempty" name:"LifeTime"`
+
+	// 数据更新时间
+	DataUpdateTime *string `json:"DataUpdateTime,omitempty" name:"DataUpdateTime"`
+
+	// 结构更新时间
+	StructUpdateTime *string `json:"StructUpdateTime,omitempty" name:"StructUpdateTime"`
+
+	// 最后访问时间
+	LastAccessTime *string `json:"LastAccessTime,omitempty" name:"LastAccessTime"`
+
+	// 存储对象
+	Sds *DMSSds `json:"Sds,omitempty" name:"Sds"`
+
+	// 列
+	Columns []*DMSColumn `json:"Columns,omitempty" name:"Columns"`
+
+	// 分区键值
+	PartitionKeys []*DMSColumn `json:"PartitionKeys,omitempty" name:"PartitionKeys"`
+
+	// 视图文本
+	ViewOriginalText *string `json:"ViewOriginalText,omitempty" name:"ViewOriginalText"`
+
+	// 视图文本
+	ViewExpandedText *string `json:"ViewExpandedText,omitempty" name:"ViewExpandedText"`
+
+	// 分区
+	Partitions []*DMSPartition `json:"Partitions,omitempty" name:"Partitions"`
+
+	// 表名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+}
+
+func (r *CreateDMSTableRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateDMSTableRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Asset")
+	delete(f, "Type")
+	delete(f, "DbName")
+	delete(f, "StorageSize")
+	delete(f, "RecordCount")
+	delete(f, "LifeTime")
+	delete(f, "DataUpdateTime")
+	delete(f, "StructUpdateTime")
+	delete(f, "LastAccessTime")
+	delete(f, "Sds")
+	delete(f, "Columns")
+	delete(f, "PartitionKeys")
+	delete(f, "ViewOriginalText")
+	delete(f, "ViewExpandedText")
+	delete(f, "Partitions")
+	delete(f, "Name")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDMSTableRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateDMSTableResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateDMSTableResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateDMSTableResponseParams `json:"Response"`
+}
+
+func (r *CreateDMSTableResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateDMSTableResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user
@@ -1440,6 +2090,225 @@ func (r *CreateWorkGroupResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DMSColumn struct {
+	// 名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 排序
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Position *int64 `json:"Position,omitempty" name:"Position"`
+
+	// 附加参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Params []*KVPair `json:"Params,omitempty" name:"Params"`
+
+	// 业务参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BizParams []*KVPair `json:"BizParams,omitempty" name:"BizParams"`
+
+	// 是否分区
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsPartition *bool `json:"IsPartition,omitempty" name:"IsPartition"`
+}
+
+type DMSColumnOrder struct {
+	// 列名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Col *string `json:"Col,omitempty" name:"Col"`
+
+	// 排序
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Order *int64 `json:"Order,omitempty" name:"Order"`
+}
+
+type DMSPartition struct {
+	// 数据库名称
+	DatabaseName *string `json:"DatabaseName,omitempty" name:"DatabaseName"`
+
+	// 数据目录名称
+	SchemaName *string `json:"SchemaName,omitempty" name:"SchemaName"`
+
+	// 表名称
+	TableName *string `json:"TableName,omitempty" name:"TableName"`
+
+	// 数据版本
+	DataVersion *int64 `json:"DataVersion,omitempty" name:"DataVersion"`
+
+	// 分区名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 值列表
+	Values []*string `json:"Values,omitempty" name:"Values"`
+
+	// 存储大小
+	StorageSize *int64 `json:"StorageSize,omitempty" name:"StorageSize"`
+
+	// 记录数量
+	RecordCount *int64 `json:"RecordCount,omitempty" name:"RecordCount"`
+
+	// 创建时间
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 修改时间
+	ModifiedTime *string `json:"ModifiedTime,omitempty" name:"ModifiedTime"`
+
+	// 最后访问时间
+	LastAccessTime *string `json:"LastAccessTime,omitempty" name:"LastAccessTime"`
+
+	// 附件属性
+	Params []*KVPair `json:"Params,omitempty" name:"Params"`
+
+	// 存储对象
+	Sds *DMSSds `json:"Sds,omitempty" name:"Sds"`
+}
+
+type DMSSds struct {
+	// 存储地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Location *string `json:"Location,omitempty" name:"Location"`
+
+	// 输入格式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InputFormat *string `json:"InputFormat,omitempty" name:"InputFormat"`
+
+	// 输出格式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OutputFormat *string `json:"OutputFormat,omitempty" name:"OutputFormat"`
+
+	// bucket数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NumBuckets *int64 `json:"NumBuckets,omitempty" name:"NumBuckets"`
+
+	// 是是否压缩
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Compressed *bool `json:"Compressed,omitempty" name:"Compressed"`
+
+	// 是否有子目录
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StoredAsSubDirectories *bool `json:"StoredAsSubDirectories,omitempty" name:"StoredAsSubDirectories"`
+
+	// 序列化lib
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SerdeLib *string `json:"SerdeLib,omitempty" name:"SerdeLib"`
+
+	// 序列化名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SerdeName *string `json:"SerdeName,omitempty" name:"SerdeName"`
+
+	// 桶名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BucketCols []*string `json:"BucketCols,omitempty" name:"BucketCols"`
+
+	// 序列化参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SerdeParams []*KVPair `json:"SerdeParams,omitempty" name:"SerdeParams"`
+
+	// 附加参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Params []*KVPair `json:"Params,omitempty" name:"Params"`
+
+	// 列排序(Expired)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SortCols *DMSColumnOrder `json:"SortCols,omitempty" name:"SortCols"`
+
+	// 列
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Cols []*DMSColumn `json:"Cols,omitempty" name:"Cols"`
+
+	// 列排序字段
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SortColumns []*DMSColumnOrder `json:"SortColumns,omitempty" name:"SortColumns"`
+}
+
+type DMSTable struct {
+	// 视图文本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ViewOriginalText *string `json:"ViewOriginalText,omitempty" name:"ViewOriginalText"`
+
+	// 视图文本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ViewExpandedText *string `json:"ViewExpandedText,omitempty" name:"ViewExpandedText"`
+
+	// hive维护版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Retention *int64 `json:"Retention,omitempty" name:"Retention"`
+
+	// 存储对象
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Sds *DMSSds `json:"Sds,omitempty" name:"Sds"`
+
+	// 分区列
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PartitionKeys []*DMSColumn `json:"PartitionKeys,omitempty" name:"PartitionKeys"`
+
+	// 分区
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Partitions []*DMSPartition `json:"Partitions,omitempty" name:"Partitions"`
+
+	// 表类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 数据库名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DbName *string `json:"DbName,omitempty" name:"DbName"`
+
+	// Schema名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SchemaName *string `json:"SchemaName,omitempty" name:"SchemaName"`
+
+	// 存储大小
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StorageSize *int64 `json:"StorageSize,omitempty" name:"StorageSize"`
+
+	// 记录数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RecordCount *int64 `json:"RecordCount,omitempty" name:"RecordCount"`
+
+	// 生命周期
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LifeTime *int64 `json:"LifeTime,omitempty" name:"LifeTime"`
+
+	// 最后访问时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LastAccessTime *string `json:"LastAccessTime,omitempty" name:"LastAccessTime"`
+
+	// 数据更新时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DataUpdateTime *string `json:"DataUpdateTime,omitempty" name:"DataUpdateTime"`
+
+	// 结构更新时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StructUpdateTime *string `json:"StructUpdateTime,omitempty" name:"StructUpdateTime"`
+
+	// 列
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Columns []*DMSColumn `json:"Columns,omitempty" name:"Columns"`
+
+	// 表名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitempty" name:"Name"`
+}
+
+type DMSTableInfo struct {
+	// DMS表信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Table *DMSTable `json:"Table,omitempty" name:"Table"`
+
+	// 基础对象信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Asset *Asset `json:"Asset,omitempty" name:"Asset"`
+}
+
 type DataFormat struct {
 	// 文本格式，TextFile。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -1774,6 +2643,501 @@ func (r *DeleteWorkGroupResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteWorkGroupResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDMSDatabaseRequestParams struct {
+
+}
+
+type DescribeDMSDatabaseRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DescribeDMSDatabaseRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDMSDatabaseRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDMSDatabaseRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDMSDatabaseResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeDMSDatabaseResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDMSDatabaseResponseParams `json:"Response"`
+}
+
+func (r *DescribeDMSDatabaseResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDMSDatabaseResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDMSPartitionsRequestParams struct {
+	// 数据库名
+	DatabaseName *string `json:"DatabaseName,omitempty" name:"DatabaseName"`
+
+	// 表名称
+	TableName *string `json:"TableName,omitempty" name:"TableName"`
+
+	// schema名称
+	SchemaName *string `json:"SchemaName,omitempty" name:"SchemaName"`
+
+	// 名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 单个分区名称，精准匹配
+	Values []*string `json:"Values,omitempty" name:"Values"`
+
+	// 多个分区名称，精准匹配
+	PartitionNames []*string `json:"PartitionNames,omitempty" name:"PartitionNames"`
+
+	// 多个分区字段的匹配，模糊匹配
+	PartValues []*string `json:"PartValues,omitempty" name:"PartValues"`
+
+	// 过滤SQL
+	Filter *string `json:"Filter,omitempty" name:"Filter"`
+
+	// 最大分区数量
+	MaxParts *int64 `json:"MaxParts,omitempty" name:"MaxParts"`
+
+	// 翻页跳过数量
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 页面数量
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+type DescribeDMSPartitionsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 数据库名
+	DatabaseName *string `json:"DatabaseName,omitempty" name:"DatabaseName"`
+
+	// 表名称
+	TableName *string `json:"TableName,omitempty" name:"TableName"`
+
+	// schema名称
+	SchemaName *string `json:"SchemaName,omitempty" name:"SchemaName"`
+
+	// 名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 单个分区名称，精准匹配
+	Values []*string `json:"Values,omitempty" name:"Values"`
+
+	// 多个分区名称，精准匹配
+	PartitionNames []*string `json:"PartitionNames,omitempty" name:"PartitionNames"`
+
+	// 多个分区字段的匹配，模糊匹配
+	PartValues []*string `json:"PartValues,omitempty" name:"PartValues"`
+
+	// 过滤SQL
+	Filter *string `json:"Filter,omitempty" name:"Filter"`
+
+	// 最大分区数量
+	MaxParts *int64 `json:"MaxParts,omitempty" name:"MaxParts"`
+
+	// 翻页跳过数量
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 页面数量
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribeDMSPartitionsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDMSPartitionsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DatabaseName")
+	delete(f, "TableName")
+	delete(f, "SchemaName")
+	delete(f, "Name")
+	delete(f, "Values")
+	delete(f, "PartitionNames")
+	delete(f, "PartValues")
+	delete(f, "Filter")
+	delete(f, "MaxParts")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDMSPartitionsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDMSPartitionsResponseParams struct {
+	// 分区信息
+	Partitions []*DMSPartition `json:"Partitions,omitempty" name:"Partitions"`
+
+	// 总数
+	Total *int64 `json:"Total,omitempty" name:"Total"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeDMSPartitionsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDMSPartitionsResponseParams `json:"Response"`
+}
+
+func (r *DescribeDMSPartitionsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDMSPartitionsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDMSTableRequestParams struct {
+	// 数据库名称
+	DbName *string `json:"DbName,omitempty" name:"DbName"`
+
+	// 数据库schema名称
+	SchemaName *string `json:"SchemaName,omitempty" name:"SchemaName"`
+
+	// 表名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 数据目录
+	Catalog *string `json:"Catalog,omitempty" name:"Catalog"`
+
+	// 查询关键词
+	Keyword *string `json:"Keyword,omitempty" name:"Keyword"`
+
+	// 查询模式
+	Pattern *string `json:"Pattern,omitempty" name:"Pattern"`
+
+	// 表类型
+	Type *string `json:"Type,omitempty" name:"Type"`
+}
+
+type DescribeDMSTableRequest struct {
+	*tchttp.BaseRequest
+	
+	// 数据库名称
+	DbName *string `json:"DbName,omitempty" name:"DbName"`
+
+	// 数据库schema名称
+	SchemaName *string `json:"SchemaName,omitempty" name:"SchemaName"`
+
+	// 表名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 数据目录
+	Catalog *string `json:"Catalog,omitempty" name:"Catalog"`
+
+	// 查询关键词
+	Keyword *string `json:"Keyword,omitempty" name:"Keyword"`
+
+	// 查询模式
+	Pattern *string `json:"Pattern,omitempty" name:"Pattern"`
+
+	// 表类型
+	Type *string `json:"Type,omitempty" name:"Type"`
+}
+
+func (r *DescribeDMSTableRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDMSTableRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DbName")
+	delete(f, "SchemaName")
+	delete(f, "Name")
+	delete(f, "Catalog")
+	delete(f, "Keyword")
+	delete(f, "Pattern")
+	delete(f, "Type")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDMSTableRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDMSTableResponseParams struct {
+	// 基础对象
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Asset *Asset `json:"Asset,omitempty" name:"Asset"`
+
+	// 视图文本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ViewOriginalText *string `json:"ViewOriginalText,omitempty" name:"ViewOriginalText"`
+
+	// 视图文本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ViewExpandedText *string `json:"ViewExpandedText,omitempty" name:"ViewExpandedText"`
+
+	// hive维护版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Retention *int64 `json:"Retention,omitempty" name:"Retention"`
+
+	// 存储对象
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Sds *DMSSds `json:"Sds,omitempty" name:"Sds"`
+
+	// 分区列
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PartitionKeys []*DMSColumn `json:"PartitionKeys,omitempty" name:"PartitionKeys"`
+
+	// 分区
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Partitions []*DMSPartition `json:"Partitions,omitempty" name:"Partitions"`
+
+	// 表类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 数据库名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DbName *string `json:"DbName,omitempty" name:"DbName"`
+
+	// Schame名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SchemaName *string `json:"SchemaName,omitempty" name:"SchemaName"`
+
+	// 存储大小
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StorageSize *int64 `json:"StorageSize,omitempty" name:"StorageSize"`
+
+	// 记录数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RecordCount *int64 `json:"RecordCount,omitempty" name:"RecordCount"`
+
+	// 生命周期
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LifeTime *int64 `json:"LifeTime,omitempty" name:"LifeTime"`
+
+	// 最后访问时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LastAccessTime *string `json:"LastAccessTime,omitempty" name:"LastAccessTime"`
+
+	// 数据更新时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DataUpdateTime *string `json:"DataUpdateTime,omitempty" name:"DataUpdateTime"`
+
+	// 结构更新时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StructUpdateTime *string `json:"StructUpdateTime,omitempty" name:"StructUpdateTime"`
+
+	// 列
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Columns []*DMSColumn `json:"Columns,omitempty" name:"Columns"`
+
+	// 表名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeDMSTableResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDMSTableResponseParams `json:"Response"`
+}
+
+func (r *DescribeDMSTableResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDMSTableResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDMSTablesRequestParams struct {
+	// 数据库名称
+	DbName *string `json:"DbName,omitempty" name:"DbName"`
+
+	// 数据库schema名称
+	SchemaName *string `json:"SchemaName,omitempty" name:"SchemaName"`
+
+	// 表名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 数据目录
+	Catalog *string `json:"Catalog,omitempty" name:"Catalog"`
+
+	// 查询关键词
+	Keyword *string `json:"Keyword,omitempty" name:"Keyword"`
+
+	// 查询模式
+	Pattern *string `json:"Pattern,omitempty" name:"Pattern"`
+
+	// 表类型
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 筛选参数：更新开始时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 筛选参数：更新结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 分页参数
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 分页参数
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 排序字段：create_time：创建时间
+	Sort *string `json:"Sort,omitempty" name:"Sort"`
+
+	// 排序字段：true：升序（默认），false：降序
+	Asc *bool `json:"Asc,omitempty" name:"Asc"`
+}
+
+type DescribeDMSTablesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 数据库名称
+	DbName *string `json:"DbName,omitempty" name:"DbName"`
+
+	// 数据库schema名称
+	SchemaName *string `json:"SchemaName,omitempty" name:"SchemaName"`
+
+	// 表名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 数据目录
+	Catalog *string `json:"Catalog,omitempty" name:"Catalog"`
+
+	// 查询关键词
+	Keyword *string `json:"Keyword,omitempty" name:"Keyword"`
+
+	// 查询模式
+	Pattern *string `json:"Pattern,omitempty" name:"Pattern"`
+
+	// 表类型
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 筛选参数：更新开始时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 筛选参数：更新结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 分页参数
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 分页参数
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 排序字段：create_time：创建时间
+	Sort *string `json:"Sort,omitempty" name:"Sort"`
+
+	// 排序字段：true：升序（默认），false：降序
+	Asc *bool `json:"Asc,omitempty" name:"Asc"`
+}
+
+func (r *DescribeDMSTablesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDMSTablesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DbName")
+	delete(f, "SchemaName")
+	delete(f, "Name")
+	delete(f, "Catalog")
+	delete(f, "Keyword")
+	delete(f, "Pattern")
+	delete(f, "Type")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "Sort")
+	delete(f, "Asc")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDMSTablesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDMSTablesResponseParams struct {
+	// DMS元数据列表信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TableList []*DMSTableInfo `json:"TableList,omitempty" name:"TableList"`
+
+	// 统计值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeDMSTablesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDMSTablesResponseParams `json:"Response"`
+}
+
+func (r *DescribeDMSTablesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDMSTablesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -3104,6 +4468,224 @@ func (r *DetachWorkGroupPolicyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DropDMSDatabaseRequestParams struct {
+
+}
+
+type DropDMSDatabaseRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DropDMSDatabaseRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DropDMSDatabaseRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DropDMSDatabaseRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DropDMSDatabaseResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DropDMSDatabaseResponse struct {
+	*tchttp.BaseResponse
+	Response *DropDMSDatabaseResponseParams `json:"Response"`
+}
+
+func (r *DropDMSDatabaseResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DropDMSDatabaseResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DropDMSPartitionsRequestParams struct {
+	// 数据库名称
+	DatabaseName *string `json:"DatabaseName,omitempty" name:"DatabaseName"`
+
+	// 数据库Schema名称
+	SchemaName *string `json:"SchemaName,omitempty" name:"SchemaName"`
+
+	// 数据表名称
+	TableName *string `json:"TableName,omitempty" name:"TableName"`
+
+	// 分区名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 单个分区名称
+	Values []*string `json:"Values,omitempty" name:"Values"`
+
+	// 是否删除分区数据
+	DeleteData *bool `json:"DeleteData,omitempty" name:"DeleteData"`
+}
+
+type DropDMSPartitionsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 数据库名称
+	DatabaseName *string `json:"DatabaseName,omitempty" name:"DatabaseName"`
+
+	// 数据库Schema名称
+	SchemaName *string `json:"SchemaName,omitempty" name:"SchemaName"`
+
+	// 数据表名称
+	TableName *string `json:"TableName,omitempty" name:"TableName"`
+
+	// 分区名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 单个分区名称
+	Values []*string `json:"Values,omitempty" name:"Values"`
+
+	// 是否删除分区数据
+	DeleteData *bool `json:"DeleteData,omitempty" name:"DeleteData"`
+}
+
+func (r *DropDMSPartitionsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DropDMSPartitionsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DatabaseName")
+	delete(f, "SchemaName")
+	delete(f, "TableName")
+	delete(f, "Name")
+	delete(f, "Values")
+	delete(f, "DeleteData")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DropDMSPartitionsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DropDMSPartitionsResponseParams struct {
+	// 状态
+	Status *bool `json:"Status,omitempty" name:"Status"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DropDMSPartitionsResponse struct {
+	*tchttp.BaseResponse
+	Response *DropDMSPartitionsResponseParams `json:"Response"`
+}
+
+func (r *DropDMSPartitionsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DropDMSPartitionsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DropDMSTableRequestParams struct {
+	// 数据库名称
+	DbName *string `json:"DbName,omitempty" name:"DbName"`
+
+	// 表名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 是否删除数据
+	DeleteData *bool `json:"DeleteData,omitempty" name:"DeleteData"`
+
+	// 环境属性
+	EnvProps *KVPair `json:"EnvProps,omitempty" name:"EnvProps"`
+}
+
+type DropDMSTableRequest struct {
+	*tchttp.BaseRequest
+	
+	// 数据库名称
+	DbName *string `json:"DbName,omitempty" name:"DbName"`
+
+	// 表名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 是否删除数据
+	DeleteData *bool `json:"DeleteData,omitempty" name:"DeleteData"`
+
+	// 环境属性
+	EnvProps *KVPair `json:"EnvProps,omitempty" name:"EnvProps"`
+}
+
+func (r *DropDMSTableRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DropDMSTableRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DbName")
+	delete(f, "Name")
+	delete(f, "DeleteData")
+	delete(f, "EnvProps")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DropDMSTableRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DropDMSTableResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DropDMSTableResponse struct {
+	*tchttp.BaseResponse
+	Response *DropDMSTableResponseParams `json:"Response"`
+}
+
+func (r *DropDMSTableResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DropDMSTableResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type Execution struct {
 	// 自动生成SQL语句。
 	SQL *string `json:"SQL,omitempty" name:"SQL"`
@@ -3236,6 +4818,120 @@ func (r *ListTaskJobLogDetailResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ListTaskJobLogDetailResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type LockComponentInfo struct {
+	// 数据库名称
+	DbName *string `json:"DbName,omitempty" name:"DbName"`
+
+	// 表名称
+	TableName *string `json:"TableName,omitempty" name:"TableName"`
+
+	// 分区
+	Partition *string `json:"Partition,omitempty" name:"Partition"`
+
+	// 锁类型：SHARED_READ、SHARED_WRITE、EXCLUSIVE
+	LockType *string `json:"LockType,omitempty" name:"LockType"`
+
+	// 锁级别：DB、TABLE、PARTITION
+	LockLevel *string `json:"LockLevel,omitempty" name:"LockLevel"`
+
+	// 锁操作：SELECT,INSERT,UPDATE,DELETE,UNSET,NO_TXN
+	DataOperationType *string `json:"DataOperationType,omitempty" name:"DataOperationType"`
+
+	// 是否保持Acid
+	IsAcid *bool `json:"IsAcid,omitempty" name:"IsAcid"`
+
+	// 是否动态分区写
+	IsDynamicPartitionWrite *bool `json:"IsDynamicPartitionWrite,omitempty" name:"IsDynamicPartitionWrite"`
+}
+
+// Predefined struct for user
+type LockMetaDataRequestParams struct {
+	// 加锁内容
+	LockComponentList []*LockComponentInfo `json:"LockComponentList,omitempty" name:"LockComponentList"`
+
+	// 数据源名称
+	DatasourceConnectionName *string `json:"DatasourceConnectionName,omitempty" name:"DatasourceConnectionName"`
+
+	// 事务id
+	TxnId *int64 `json:"TxnId,omitempty" name:"TxnId"`
+
+	// 客户端信息
+	AgentInfo *string `json:"AgentInfo,omitempty" name:"AgentInfo"`
+
+	// 主机名
+	Hostname *string `json:"Hostname,omitempty" name:"Hostname"`
+}
+
+type LockMetaDataRequest struct {
+	*tchttp.BaseRequest
+	
+	// 加锁内容
+	LockComponentList []*LockComponentInfo `json:"LockComponentList,omitempty" name:"LockComponentList"`
+
+	// 数据源名称
+	DatasourceConnectionName *string `json:"DatasourceConnectionName,omitempty" name:"DatasourceConnectionName"`
+
+	// 事务id
+	TxnId *int64 `json:"TxnId,omitempty" name:"TxnId"`
+
+	// 客户端信息
+	AgentInfo *string `json:"AgentInfo,omitempty" name:"AgentInfo"`
+
+	// 主机名
+	Hostname *string `json:"Hostname,omitempty" name:"Hostname"`
+}
+
+func (r *LockMetaDataRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *LockMetaDataRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "LockComponentList")
+	delete(f, "DatasourceConnectionName")
+	delete(f, "TxnId")
+	delete(f, "AgentInfo")
+	delete(f, "Hostname")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "LockMetaDataRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type LockMetaDataResponseParams struct {
+	// 锁id
+	LockId *int64 `json:"LockId,omitempty" name:"LockId"`
+
+	// 锁状态：ACQUIRED、WAITING、ABORT、NOT_ACQUIRED
+	LockState *string `json:"LockState,omitempty" name:"LockState"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type LockMetaDataResponse struct {
+	*tchttp.BaseResponse
+	Response *LockMetaDataResponseParams `json:"Response"`
+}
+
+func (r *LockMetaDataResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *LockMetaDataResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -4152,6 +5848,67 @@ func (r *UnbindWorkGroupsFromUserResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *UnbindWorkGroupsFromUserResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UnlockMetaDataRequestParams struct {
+	// 锁ID
+	LockId *int64 `json:"LockId,omitempty" name:"LockId"`
+
+	// 数据源名称
+	DatasourceConnectionName *string `json:"DatasourceConnectionName,omitempty" name:"DatasourceConnectionName"`
+}
+
+type UnlockMetaDataRequest struct {
+	*tchttp.BaseRequest
+	
+	// 锁ID
+	LockId *int64 `json:"LockId,omitempty" name:"LockId"`
+
+	// 数据源名称
+	DatasourceConnectionName *string `json:"DatasourceConnectionName,omitempty" name:"DatasourceConnectionName"`
+}
+
+func (r *UnlockMetaDataRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UnlockMetaDataRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "LockId")
+	delete(f, "DatasourceConnectionName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UnlockMetaDataRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UnlockMetaDataResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type UnlockMetaDataResponse struct {
+	*tchttp.BaseResponse
+	Response *UnlockMetaDataResponseParams `json:"Response"`
+}
+
+func (r *UnlockMetaDataResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UnlockMetaDataResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

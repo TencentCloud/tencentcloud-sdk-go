@@ -422,6 +422,9 @@ const (
 	// 资源被占用。
 	RESOURCEINUSE = "ResourceInUse"
 
+	// 资源已存在。
+	RESOURCEINUSE_RESOURCEEXISTALREADY = "ResourceInUse.ResourceExistAlready"
+
 	// 资源不足。
 	RESOURCEINSUFFICIENT = "ResourceInsufficient"
 
