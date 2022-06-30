@@ -9,6 +9,7 @@ import (
 	essbasic "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/essbasic/v20201222"
 	"os"
 	"testing"
+	"time"
 )
 
 const (
@@ -34,7 +35,7 @@ func TestCreateFlow(t *testing.T) {
 	req := ess.NewCreateFlowRequest()
 	// 公共参数
 	req.Operator = &ess.UserInfo{
-		UserId:   common.StringPtr(OperatorId),
+		UserId: common.StringPtr(OperatorId),
 	}
 	req.BaseRequest.SetHttpMethod("POST")
 
@@ -58,7 +59,7 @@ func TestCreateFlow(t *testing.T) {
 	req.Approvers = []*ess.FlowCreateApprover{&approver1, &approver2}
 
 	// 请设置合理的时间，否则容易造成合同过期
-	req.DeadLine = common.Int64Ptr(1692474522)
+	req.DeadLine = common.Int64Ptr(time.Now().Add(7 * 24 * time.Hour).Unix())
 	req.FlowName = common.StringPtr("***********************")
 
 	res, err := client.CreateFlow(req)
@@ -78,7 +79,7 @@ func TestCreateDocument(t *testing.T) {
 	req := ess.NewCreateDocumentRequest()
 	// 公共参数
 	req.Operator = &ess.UserInfo{
-		UserId:   common.StringPtr(OperatorId),
+		UserId: common.StringPtr(OperatorId),
 	}
 	req.BaseRequest.SetHttpMethod("POST")
 
@@ -140,7 +141,7 @@ func TestDescribeFileUrls(t *testing.T) {
 	req := ess.NewDescribeFileUrlsRequest()
 	// 公共参数
 	req.Operator = &ess.UserInfo{
-		UserId:   common.StringPtr(OperatorId),
+		UserId: common.StringPtr(OperatorId),
 	}
 	req.BaseRequest.SetHttpMethod("POST")
 
@@ -164,7 +165,7 @@ func TestUploadFiles(t *testing.T) {
 	req := essbasic.NewUploadFilesRequest()
 	// 公共参数
 	req.Caller = &essbasic.Caller{
-		OperatorId:    common.StringPtr(OperatorId),
+		OperatorId: common.StringPtr(OperatorId),
 	}
 	req.BaseRequest.SetHttpMethod("POST")
 	req.BusinessType = common.StringPtr("FLOW")
@@ -202,7 +203,7 @@ func TestCreateFlowByFiles(t *testing.T) {
 	req := ess.NewCreateFlowByFilesRequest()
 	// 公共参数
 	req.Operator = &ess.UserInfo{
-		UserId:   common.StringPtr(OperatorId),
+		UserId: common.StringPtr(OperatorId),
 	}
 	req.BaseRequest.SetHttpMethod("POST")
 
@@ -249,6 +250,7 @@ func TestCreateFlowByFiles(t *testing.T) {
 	}
 
 	req.FlowName = common.StringPtr("***********************")
+	req.Deadline = common.Int64Ptr(time.Now().Add(7 * 24 * time.Hour).Unix())
 
 	res, err := client.CreateFlowByFiles(req)
 	if err != nil {
@@ -267,7 +269,7 @@ func TestDescribeFlowBriefs(t *testing.T) {
 	req := ess.NewDescribeFlowBriefsRequest()
 	// 公共参数
 	req.Operator = &ess.UserInfo{
-		UserId:   common.StringPtr(OperatorId),
+		UserId: common.StringPtr(OperatorId),
 	}
 	req.BaseRequest.SetHttpMethod("POST")
 
@@ -290,7 +292,7 @@ func TestCreateSchemeUrl(t *testing.T) {
 	req := ess.NewCreateSchemeUrlRequest()
 	// 公共参数
 	req.Operator = &ess.UserInfo{
-		UserId:   common.StringPtr(OperatorId),
+		UserId: common.StringPtr(OperatorId),
 	}
 	req.BaseRequest.SetHttpMethod("POST")
 
@@ -314,7 +316,7 @@ func TestDescribeFlowTemplates(t *testing.T) {
 	req := ess.NewDescribeFlowTemplatesRequest()
 	// 公共参数
 	req.Operator = &ess.UserInfo{
-		UserId:   common.StringPtr(OperatorId),
+		UserId: common.StringPtr(OperatorId),
 	}
 	req.BaseRequest.SetHttpMethod("POST")
 
@@ -336,7 +338,7 @@ func TestCancelFlow(t *testing.T) {
 	req.BaseRequest.SetHttpMethod("POST")
 	// 公共参数
 	req.Operator = &ess.UserInfo{
-		UserId:   common.StringPtr(OperatorId),
+		UserId: common.StringPtr(OperatorId),
 	}
 	req.FlowId = common.StringPtr("***********************")
 	req.CancelMessage = common.StringPtr("***********************")
