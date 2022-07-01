@@ -1,3 +1,64 @@
+# Release v1.0.433
+
+## 云数据库独享集群(dbdc) 版本：2020-10-29
+
+### 第 2 次发布
+
+发布时间：2022-07-01 11:26:52
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeHostList](https://cloud.tencent.com/document/api/1322/76350)
+
+新增数据结构：
+
+* [HostDetail](https://cloud.tencent.com/document/api/1322/74754#HostDetail)
+
+
+
+## 移动应用安全(ms) 版本：2018-04-08
+
+### 第 8 次发布
+
+发布时间：2022-07-01 11:58:05
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeUrlDetectionResult](https://cloud.tencent.com/document/api/283/76351)
+
+
+
+## 数据开发治理平台 WeData(wedata) 版本：2021-08-20
+
+### 第 1 次发布
+
+发布时间：2022-07-01 10:43:09
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeRelatedInstances](https://cloud.tencent.com/document/api/1267/76335)
+* [DescribeTaskInstances](https://cloud.tencent.com/document/api/1267/76334)
+
+新增数据结构：
+
+* [DescribeTaskInstancesData](https://cloud.tencent.com/document/api/1267/76336#DescribeTaskInstancesData)
+* [OrderField](https://cloud.tencent.com/document/api/1267/76336#OrderField)
+* [TaskInstanceInfo](https://cloud.tencent.com/document/api/1267/76336#TaskInstanceInfo)
+
+
+
 # Release v1.0.432
 
 ## DDoS 防护(antiddos) 版本：2020-03-09

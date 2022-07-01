@@ -52,4 +52,7 @@ const (
 
 	// 获取资源列表失败，ErrMsg：{{1}}。
 	RESOURCENOTFOUND_FETCHRESOURCELISTERROR = "ResourceNotFound.FetchResourceListError"
+
+	// 资源状态异常。
+	RESOURCEUNAVAILABLE_RESOURCESTATUSABNORMALERROR = "ResourceUnavailable.ResourceStatusAbnormalError"
 )

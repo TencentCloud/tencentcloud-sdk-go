@@ -61,7 +61,7 @@ require (
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cme v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cmq v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cms v0.0.0
-	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common v1.0.432
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common v1.0.433
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cpdp v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cr v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cvm v0.0.0
@@ -208,6 +208,7 @@ require (
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/vpc v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/waf v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/wav v0.0.0
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/wedata v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/wss v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/yinsuda v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/youmall v0.0.0
@@ -422,6 +423,7 @@ replace (
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/vpc => ../tencentcloud/vpc
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/waf => ../tencentcloud/waf
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/wav => ../tencentcloud/wav
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/wedata => ../tencentcloud/wedata
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/wss => ../tencentcloud/wss
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/yinsuda => ../tencentcloud/yinsuda
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/youmall => ../tencentcloud/youmall

@@ -245,6 +245,7 @@ import (
 	vpcv20170312 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/vpc/v20170312"
 	wafv20180125 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/waf/v20180125"
 	wavv20210129 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/wav/v20210129"
+	wedatav20210820 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/wedata/v20210820"
 	wssv20180426 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/wss/v20180426"
 	yinsudav20220527 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/yinsuda/v20220527"
 	youmallv20180228 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/youmall/v20180228"
@@ -3176,6 +3177,19 @@ func TestWavv20210129Import(t *testing.T) {
         profile.NewClientProfile())
     if err != nil || client == nil {
         t.Errorf("fail to init wav_v20210129 client: %v", err)
+    }
+}
+
+func TestWedatav20210820Import(t *testing.T) {
+    credential := common.NewCredential(
+        os.Getenv("TENCENTCLOUD_SECRET_ID"),
+        os.Getenv("TENCENTCLOUD_SECRET_KEY"))
+    client, err := wedatav20210820.NewClient(
+        credential,
+        regions.Guangzhou,
+        profile.NewClientProfile())
+    if err != nil || client == nil {
+        t.Errorf("fail to init wedata_v20210820 client: %v", err)
     }
 }
 

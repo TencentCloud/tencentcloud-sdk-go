@@ -66,7 +66,7 @@
 | dasb | [堡垒机](https://cloud.tencent.com/document/product/1025) | 2022-06-01 20:56:43 |
 | dayu | [DDoS 高防包](https://cloud.tencent.com/document/product/1021) | 2022-04-04 06:33:41 |
 | dbbrain | [数据库智能管家 DBbrain](https://cloud.tencent.com/document/product/1130) | 2022-06-22 06:06:28 |
-| dbdc | [云数据库独享集群](https://cloud.tencent.com/document/product/1322) | 2022-05-31 17:05:07 |
+| dbdc | [云数据库独享集群](https://cloud.tencent.com/document/product/1322) | 2022-07-01 11:26:52 |
 | dc | [专线接入](https://cloud.tencent.com/document/product/216) | 2022-04-13 06:36:47 |
 | dcdb | [分布式数据库 TDSQL](https://cloud.tencent.com/document/product/557) | 2022-05-31 06:09:47 |
 | dlc | [数据湖计算](https://cloud.tencent.com/document/product/1342) | 2022-07-01 06:10:47 |
@@ -126,7 +126,7 @@
 | monitor | [云监控](https://cloud.tencent.com/document/product/248) | 2022-06-28 06:13:35 |
 | mps | [视频处理](https://cloud.tencent.com/document/product/862) | 2022-05-25 06:12:20 |
 | mrs | [医疗报告结构化](https://cloud.tencent.com/document/product/1314) | 2022-06-28 06:14:04 |
-| ms | [移动应用安全](https://cloud.tencent.com/document/product) | 2020-06-05 08:13:52 |
+| ms | [移动应用安全](https://cloud.tencent.com/document/product/283) | 2022-07-01 11:58:05 |
 | msp | [迁移服务平台](https://cloud.tencent.com/document/product/659) | 2022-04-04 07:00:13 |
 | mvj | [营销价值判断](https://cloud.tencent.com/document/product) | 2020-03-19 08:11:44 |
 | nlp | [自然语言处理](https://cloud.tencent.com/document/product/271) | 2022-04-13 07:00:13 |
@@ -203,6 +203,7 @@
 | vpc | [私有网络](https://cloud.tencent.com/document/product/215) | 2022-07-01 06:20:43 |
 | waf | [Web 应用防火墙](https://cloud.tencent.com/document/product/627) | 2022-06-23 06:22:00 |
 | wav | [企业微信汽车行业版](https://cloud.tencent.com/document/product/1318) | 2022-04-04 07:39:05 |
+| wedata | [数据开发治理平台 WeData](https://cloud.tencent.com/document/product/1267) | 2022-07-01 10:43:09 |
 | wss | [SSL证书管理服务](https://cloud.tencent.com/document/product) | 2020-04-01 08:53:44 |
 | yinsuda | [音速达直播音乐版权引擎](https://cloud.tencent.com/document/product/1592) | 2022-06-29 15:15:26 |
 | youmall | [](https://cloud.tencent.com/document/product) | 2019-01-11 11:24:15 |
