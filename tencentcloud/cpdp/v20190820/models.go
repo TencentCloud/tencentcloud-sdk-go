@@ -1285,6 +1285,13 @@ type ApplyFlexPaymentRequestParams struct {
 
 	// 提现备注
 	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 环境类型
+	// __release__:生产环境
+	// __sandbox__:沙箱环境
+	// __test__:测试环境
+	// 缺省默认为生产环境
+	Environment *string `json:"Environment,omitempty" name:"Environment"`
 }
 
 type ApplyFlexPaymentRequest struct {
@@ -1309,6 +1316,13 @@ type ApplyFlexPaymentRequest struct {
 
 	// 提现备注
 	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 环境类型
+	// __release__:生产环境
+	// __sandbox__:沙箱环境
+	// __test__:测试环境
+	// 缺省默认为生产环境
+	Environment *string `json:"Environment,omitempty" name:"Environment"`
 }
 
 func (r *ApplyFlexPaymentRequest) ToJsonString() string {
@@ -1329,6 +1343,7 @@ func (r *ApplyFlexPaymentRequest) FromJsonString(s string) error {
 	delete(f, "OutOrderId")
 	delete(f, "FundingAccountInfo")
 	delete(f, "Remark")
+	delete(f, "Environment")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ApplyFlexPaymentRequest has unknown keys!", "")
 	}
@@ -1399,6 +1414,13 @@ type ApplyFlexSettlementRequestParams struct {
 
 	// 备注
 	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 环境类型
+	// __release__:生产环境
+	// __sandbox__:沙箱环境
+	// __test__:测试环境
+	// 缺省默认为生产环境
+	Environment *string `json:"Environment,omitempty" name:"Environment"`
 }
 
 type ApplyFlexSettlementRequest struct {
@@ -1420,6 +1442,13 @@ type ApplyFlexSettlementRequest struct {
 
 	// 备注
 	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 环境类型
+	// __release__:生产环境
+	// __sandbox__:沙箱环境
+	// __test__:测试环境
+	// 缺省默认为生产环境
+	Environment *string `json:"Environment,omitempty" name:"Environment"`
 }
 
 func (r *ApplyFlexSettlementRequest) ToJsonString() string {
@@ -1439,6 +1468,7 @@ func (r *ApplyFlexSettlementRequest) FromJsonString(s string) error {
 	delete(f, "AmountBeforeTax")
 	delete(f, "OutOrderId")
 	delete(f, "Remark")
+	delete(f, "Environment")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ApplyFlexSettlementRequest has unknown keys!", "")
 	}
@@ -6108,6 +6138,16 @@ type CreateFlexPayeeRequestParams struct {
 
 	// 备注
 	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 手机号码
+	PhoneNo *string `json:"PhoneNo,omitempty" name:"PhoneNo"`
+
+	// 环境类型
+	// __release__:生产环境
+	// __sandbox__:沙箱环境
+	// __test__:测试环境
+	// 缺省默认为生产环境
+	Environment *string `json:"Environment,omitempty" name:"Environment"`
 }
 
 type CreateFlexPayeeRequest struct {
@@ -6138,6 +6178,16 @@ type CreateFlexPayeeRequest struct {
 
 	// 备注
 	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 手机号码
+	PhoneNo *string `json:"PhoneNo,omitempty" name:"PhoneNo"`
+
+	// 环境类型
+	// __release__:生产环境
+	// __sandbox__:沙箱环境
+	// __test__:测试环境
+	// 缺省默认为生产环境
+	Environment *string `json:"Environment,omitempty" name:"Environment"`
 }
 
 func (r *CreateFlexPayeeRequest) ToJsonString() string {
@@ -6160,6 +6210,8 @@ func (r *CreateFlexPayeeRequest) FromJsonString(s string) error {
 	delete(f, "TaxInfo")
 	delete(f, "IdType")
 	delete(f, "Remark")
+	delete(f, "PhoneNo")
+	delete(f, "Environment")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateFlexPayeeRequest has unknown keys!", "")
 	}
@@ -12030,6 +12082,13 @@ type FreezeFlexBalanceRequestParams struct {
 
 	// 冻结备注
 	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 环境类型
+	// __release__:生产环境
+	// __sandbox__:沙箱环境
+	// __test__:测试环境
+	// 缺省默认为生产环境
+	Environment *string `json:"Environment,omitempty" name:"Environment"`
 }
 
 type FreezeFlexBalanceRequest struct {
@@ -12056,6 +12115,13 @@ type FreezeFlexBalanceRequest struct {
 
 	// 冻结备注
 	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 环境类型
+	// __release__:生产环境
+	// __sandbox__:沙箱环境
+	// __test__:测试环境
+	// 缺省默认为生产环境
+	Environment *string `json:"Environment,omitempty" name:"Environment"`
 }
 
 func (r *FreezeFlexBalanceRequest) ToJsonString() string {
@@ -12076,6 +12142,7 @@ func (r *FreezeFlexBalanceRequest) FromJsonString(s string) error {
 	delete(f, "OutOrderId")
 	delete(f, "OperationType")
 	delete(f, "Remark")
+	delete(f, "Environment")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "FreezeFlexBalanceRequest has unknown keys!", "")
 	}
@@ -13240,6 +13307,13 @@ type ModifyFlexPayeeAccountRightStatusRequestParams struct {
 	// ENABLE:启用
 	// DISABLE:停用
 	AccountRightStatus *string `json:"AccountRightStatus,omitempty" name:"AccountRightStatus"`
+
+	// 环境类型
+	// __release__:生产环境
+	// __sandbox__:沙箱环境
+	// __test__:测试环境
+	// 缺省默认为生产环境
+	Environment *string `json:"Environment,omitempty" name:"Environment"`
 }
 
 type ModifyFlexPayeeAccountRightStatusRequest struct {
@@ -13257,6 +13331,13 @@ type ModifyFlexPayeeAccountRightStatusRequest struct {
 	// ENABLE:启用
 	// DISABLE:停用
 	AccountRightStatus *string `json:"AccountRightStatus,omitempty" name:"AccountRightStatus"`
+
+	// 环境类型
+	// __release__:生产环境
+	// __sandbox__:沙箱环境
+	// __test__:测试环境
+	// 缺省默认为生产环境
+	Environment *string `json:"Environment,omitempty" name:"Environment"`
 }
 
 func (r *ModifyFlexPayeeAccountRightStatusRequest) ToJsonString() string {
@@ -13274,6 +13355,7 @@ func (r *ModifyFlexPayeeAccountRightStatusRequest) FromJsonString(s string) erro
 	delete(f, "PayeeId")
 	delete(f, "AccountRightType")
 	delete(f, "AccountRightStatus")
+	delete(f, "Environment")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyFlexPayeeAccountRightStatusRequest has unknown keys!", "")
 	}
@@ -14394,6 +14476,9 @@ type PaymentOrderResult struct {
 	// 提现备注
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 收款用户ID
+	PayeeId *string `json:"PayeeId,omitempty" name:"PayeeId"`
 }
 
 type PaymentOrderStatusResult struct {
@@ -17458,6 +17543,13 @@ type QueryFlexAmountBeforeTaxRequestParams struct {
 
 	// 税后金额
 	AmountAfterTax *string `json:"AmountAfterTax,omitempty" name:"AmountAfterTax"`
+
+	// 环境类型
+	// __release__:生产环境
+	// __sandbox__:沙箱环境
+	// __test__:测试环境
+	// 缺省默认为生产环境
+	Environment *string `json:"Environment,omitempty" name:"Environment"`
 }
 
 type QueryFlexAmountBeforeTaxRequest struct {
@@ -17473,6 +17565,13 @@ type QueryFlexAmountBeforeTaxRequest struct {
 
 	// 税后金额
 	AmountAfterTax *string `json:"AmountAfterTax,omitempty" name:"AmountAfterTax"`
+
+	// 环境类型
+	// __release__:生产环境
+	// __sandbox__:沙箱环境
+	// __test__:测试环境
+	// 缺省默认为生产环境
+	Environment *string `json:"Environment,omitempty" name:"Environment"`
 }
 
 func (r *QueryFlexAmountBeforeTaxRequest) ToJsonString() string {
@@ -17490,6 +17589,7 @@ func (r *QueryFlexAmountBeforeTaxRequest) FromJsonString(s string) error {
 	delete(f, "PayeeId")
 	delete(f, "IncomeType")
 	delete(f, "AmountAfterTax")
+	delete(f, "Environment")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryFlexAmountBeforeTaxRequest has unknown keys!", "")
 	}
@@ -17546,6 +17646,13 @@ type QueryFlexFreezeOrderListRequestParams struct {
 
 	// 分页
 	PageNumber *Paging `json:"PageNumber,omitempty" name:"PageNumber"`
+
+	// 环境类型
+	// __release__:生产环境
+	// __sandbox__:沙箱环境
+	// __test__:测试环境
+	// 缺省默认为生产环境
+	Environment *string `json:"Environment,omitempty" name:"Environment"`
 }
 
 type QueryFlexFreezeOrderListRequest struct {
@@ -17567,6 +17674,13 @@ type QueryFlexFreezeOrderListRequest struct {
 
 	// 分页
 	PageNumber *Paging `json:"PageNumber,omitempty" name:"PageNumber"`
+
+	// 环境类型
+	// __release__:生产环境
+	// __sandbox__:沙箱环境
+	// __test__:测试环境
+	// 缺省默认为生产环境
+	Environment *string `json:"Environment,omitempty" name:"Environment"`
 }
 
 func (r *QueryFlexFreezeOrderListRequest) ToJsonString() string {
@@ -17586,6 +17700,7 @@ func (r *QueryFlexFreezeOrderListRequest) FromJsonString(s string) error {
 	delete(f, "StartTime")
 	delete(f, "EndTime")
 	delete(f, "PageNumber")
+	delete(f, "Environment")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryFlexFreezeOrderListRequest has unknown keys!", "")
 	}
@@ -17633,6 +17748,13 @@ type QueryFlexPayeeAccountBalanceRequestParams struct {
 	// LABOR:劳务所得
 	// OCCASION:偶然所得
 	IncomeType *string `json:"IncomeType,omitempty" name:"IncomeType"`
+
+	// 环境类型
+	// __release__:生产环境
+	// __sandbox__:沙箱环境
+	// __test__:测试环境
+	// 缺省默认为生产环境
+	Environment *string `json:"Environment,omitempty" name:"Environment"`
 }
 
 type QueryFlexPayeeAccountBalanceRequest struct {
@@ -17645,6 +17767,13 @@ type QueryFlexPayeeAccountBalanceRequest struct {
 	// LABOR:劳务所得
 	// OCCASION:偶然所得
 	IncomeType *string `json:"IncomeType,omitempty" name:"IncomeType"`
+
+	// 环境类型
+	// __release__:生产环境
+	// __sandbox__:沙箱环境
+	// __test__:测试环境
+	// 缺省默认为生产环境
+	Environment *string `json:"Environment,omitempty" name:"Environment"`
 }
 
 func (r *QueryFlexPayeeAccountBalanceRequest) ToJsonString() string {
@@ -17661,6 +17790,7 @@ func (r *QueryFlexPayeeAccountBalanceRequest) FromJsonString(s string) error {
 	}
 	delete(f, "PayeeId")
 	delete(f, "IncomeType")
+	delete(f, "Environment")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryFlexPayeeAccountBalanceRequest has unknown keys!", "")
 	}
@@ -17706,6 +17836,13 @@ type QueryFlexPayeeAccountInfoRequestParams struct {
 
 	// 外部用户ID
 	OutUserId *string `json:"OutUserId,omitempty" name:"OutUserId"`
+
+	// 环境类型
+	// __release__:生产环境
+	// __sandbox__:沙箱环境
+	// __test__:测试环境
+	// 缺省默认为生产环境
+	Environment *string `json:"Environment,omitempty" name:"Environment"`
 }
 
 type QueryFlexPayeeAccountInfoRequest struct {
@@ -17716,6 +17853,13 @@ type QueryFlexPayeeAccountInfoRequest struct {
 
 	// 外部用户ID
 	OutUserId *string `json:"OutUserId,omitempty" name:"OutUserId"`
+
+	// 环境类型
+	// __release__:生产环境
+	// __sandbox__:沙箱环境
+	// __test__:测试环境
+	// 缺省默认为生产环境
+	Environment *string `json:"Environment,omitempty" name:"Environment"`
 }
 
 func (r *QueryFlexPayeeAccountInfoRequest) ToJsonString() string {
@@ -17732,6 +17876,7 @@ func (r *QueryFlexPayeeAccountInfoRequest) FromJsonString(s string) error {
 	}
 	delete(f, "PayeeId")
 	delete(f, "OutUserId")
+	delete(f, "Environment")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryFlexPayeeAccountInfoRequest has unknown keys!", "")
 	}
@@ -17783,6 +17928,13 @@ type QueryFlexPayeeAccountListRequestParams struct {
 
 	// 分页
 	PageNumber *Paging `json:"PageNumber,omitempty" name:"PageNumber"`
+
+	// 环境类型
+	// __release__:生产环境
+	// __sandbox__:沙箱环境
+	// __test__:测试环境
+	// 缺省默认为生产环境
+	Environment *string `json:"Environment,omitempty" name:"Environment"`
 }
 
 type QueryFlexPayeeAccountListRequest struct {
@@ -17799,6 +17951,13 @@ type QueryFlexPayeeAccountListRequest struct {
 
 	// 分页
 	PageNumber *Paging `json:"PageNumber,omitempty" name:"PageNumber"`
+
+	// 环境类型
+	// __release__:生产环境
+	// __sandbox__:沙箱环境
+	// __test__:测试环境
+	// 缺省默认为生产环境
+	Environment *string `json:"Environment,omitempty" name:"Environment"`
 }
 
 func (r *QueryFlexPayeeAccountListRequest) ToJsonString() string {
@@ -17817,6 +17976,7 @@ func (r *QueryFlexPayeeAccountListRequest) FromJsonString(s string) error {
 	delete(f, "StartTime")
 	delete(f, "EndTime")
 	delete(f, "PageNumber")
+	delete(f, "Environment")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryFlexPayeeAccountListRequest has unknown keys!", "")
 	}
@@ -17862,6 +18022,13 @@ type QueryFlexPayeeInfoRequestParams struct {
 
 	// 外部用户ID
 	OutUserId *string `json:"OutUserId,omitempty" name:"OutUserId"`
+
+	// 环境类型
+	// __release__:生产环境
+	// __sandbox__:沙箱环境
+	// __test__:测试环境
+	// 缺省默认为生产环境
+	Environment *string `json:"Environment,omitempty" name:"Environment"`
 }
 
 type QueryFlexPayeeInfoRequest struct {
@@ -17872,6 +18039,13 @@ type QueryFlexPayeeInfoRequest struct {
 
 	// 外部用户ID
 	OutUserId *string `json:"OutUserId,omitempty" name:"OutUserId"`
+
+	// 环境类型
+	// __release__:生产环境
+	// __sandbox__:沙箱环境
+	// __test__:测试环境
+	// 缺省默认为生产环境
+	Environment *string `json:"Environment,omitempty" name:"Environment"`
 }
 
 func (r *QueryFlexPayeeInfoRequest) ToJsonString() string {
@@ -17888,6 +18062,7 @@ func (r *QueryFlexPayeeInfoRequest) FromJsonString(s string) error {
 	}
 	delete(f, "PayeeId")
 	delete(f, "OutUserId")
+	delete(f, "Environment")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryFlexPayeeInfoRequest has unknown keys!", "")
 	}
@@ -17939,6 +18114,13 @@ type QueryFlexPaymentOrderListRequestParams struct {
 
 	// 分页
 	PageNumber *Paging `json:"PageNumber,omitempty" name:"PageNumber"`
+
+	// 环境类型
+	// __release__:生产环境
+	// __sandbox__:沙箱环境
+	// __test__:测试环境
+	// 缺省默认为生产环境
+	Environment *string `json:"Environment,omitempty" name:"Environment"`
 }
 
 type QueryFlexPaymentOrderListRequest struct {
@@ -17955,6 +18137,13 @@ type QueryFlexPaymentOrderListRequest struct {
 
 	// 分页
 	PageNumber *Paging `json:"PageNumber,omitempty" name:"PageNumber"`
+
+	// 环境类型
+	// __release__:生产环境
+	// __sandbox__:沙箱环境
+	// __test__:测试环境
+	// 缺省默认为生产环境
+	Environment *string `json:"Environment,omitempty" name:"Environment"`
 }
 
 func (r *QueryFlexPaymentOrderListRequest) ToJsonString() string {
@@ -17973,6 +18162,7 @@ func (r *QueryFlexPaymentOrderListRequest) FromJsonString(s string) error {
 	delete(f, "StartTime")
 	delete(f, "EndTime")
 	delete(f, "PageNumber")
+	delete(f, "Environment")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryFlexPaymentOrderListRequest has unknown keys!", "")
 	}
@@ -18018,6 +18208,13 @@ type QueryFlexPaymentOrderStatusRequestParams struct {
 
 	// 订单ID
 	OrderId *string `json:"OrderId,omitempty" name:"OrderId"`
+
+	// 环境类型
+	// __release__:生产环境
+	// __sandbox__:沙箱环境
+	// __test__:测试环境
+	// 缺省默认为生产环境
+	Environment *string `json:"Environment,omitempty" name:"Environment"`
 }
 
 type QueryFlexPaymentOrderStatusRequest struct {
@@ -18028,6 +18225,13 @@ type QueryFlexPaymentOrderStatusRequest struct {
 
 	// 订单ID
 	OrderId *string `json:"OrderId,omitempty" name:"OrderId"`
+
+	// 环境类型
+	// __release__:生产环境
+	// __sandbox__:沙箱环境
+	// __test__:测试环境
+	// 缺省默认为生产环境
+	Environment *string `json:"Environment,omitempty" name:"Environment"`
 }
 
 func (r *QueryFlexPaymentOrderStatusRequest) ToJsonString() string {
@@ -18044,6 +18248,7 @@ func (r *QueryFlexPaymentOrderStatusRequest) FromJsonString(s string) error {
 	}
 	delete(f, "OutOrderId")
 	delete(f, "OrderId")
+	delete(f, "Environment")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryFlexPaymentOrderStatusRequest has unknown keys!", "")
 	}
@@ -18095,6 +18300,20 @@ type QueryFlexSettlementOrderListRequestParams struct {
 
 	// 分页
 	PageNumber *Paging `json:"PageNumber,omitempty" name:"PageNumber"`
+
+	// 操作类型。
+	// ENABLE_SETTLE: 正常结算
+	// DISABLE_SETTLE: 停用结算
+	// UNFREEZE_SETTLE: 解冻结算
+	// 若需要支持多个操作类型，则以;分隔
+	OperationType *string `json:"OperationType,omitempty" name:"OperationType"`
+
+	// 环境类型
+	// __release__:生产环境
+	// __sandbox__:沙箱环境
+	// __test__:测试环境
+	// 缺省默认为生产环境
+	Environment *string `json:"Environment,omitempty" name:"Environment"`
 }
 
 type QueryFlexSettlementOrderListRequest struct {
@@ -18111,6 +18330,20 @@ type QueryFlexSettlementOrderListRequest struct {
 
 	// 分页
 	PageNumber *Paging `json:"PageNumber,omitempty" name:"PageNumber"`
+
+	// 操作类型。
+	// ENABLE_SETTLE: 正常结算
+	// DISABLE_SETTLE: 停用结算
+	// UNFREEZE_SETTLE: 解冻结算
+	// 若需要支持多个操作类型，则以;分隔
+	OperationType *string `json:"OperationType,omitempty" name:"OperationType"`
+
+	// 环境类型
+	// __release__:生产环境
+	// __sandbox__:沙箱环境
+	// __test__:测试环境
+	// 缺省默认为生产环境
+	Environment *string `json:"Environment,omitempty" name:"Environment"`
 }
 
 func (r *QueryFlexSettlementOrderListRequest) ToJsonString() string {
@@ -18129,6 +18362,8 @@ func (r *QueryFlexSettlementOrderListRequest) FromJsonString(s string) error {
 	delete(f, "StartTime")
 	delete(f, "EndTime")
 	delete(f, "PageNumber")
+	delete(f, "OperationType")
+	delete(f, "Environment")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryFlexSettlementOrderListRequest has unknown keys!", "")
 	}

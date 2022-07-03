@@ -1351,6 +1351,81 @@ func (c *Client) DescribeAccountQuotaWithContext(ctx context.Context, request *D
     return
 }
 
+func NewDescribeChcHostsRequest() (request *DescribeChcHostsRequest) {
+    request = &DescribeChcHostsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cvm", APIVersion, "DescribeChcHosts")
+    
+    
+    return
+}
+
+func NewDescribeChcHostsResponse() (response *DescribeChcHostsResponse) {
+    response = &DescribeChcHostsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeChcHosts
+// 本接口 (DescribeChcHosts) 用于查询一个或多个CHC物理服务器详细信息。
+//
+// 
+//
+// * 可以根据实例`ID`、实例名称或者设备类型等信息来查询实例的详细信息。过滤信息详细请见过滤器`Filter`。
+//
+// * 如果参数为空，返回当前用户一定数量（`Limit`所指定的数量，默认为20）的实例。
+//
+// 可能返回的错误码:
+//  ACCOUNTQUALIFICATIONRESTRICTIONS = "AccountQualificationRestrictions"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER_ATMOSTONE = "InvalidParameter.AtMostOne"
+//  INVALIDPARAMETERVALUE_CHCHOSTSNOTFOUND = "InvalidParameterValue.ChcHostsNotFound"
+//  INVALIDPARAMETERVALUE_INCORRECTFORMAT = "InvalidParameterValue.IncorrectFormat"
+//  INVALIDPARAMETERVALUELIMIT = "InvalidParameterValueLimit"
+//  INVALIDPARAMETERVALUEOFFSET = "InvalidParameterValueOffset"
+//  INVALIDZONE_MISMATCHREGION = "InvalidZone.MismatchRegion"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeChcHosts(request *DescribeChcHostsRequest) (response *DescribeChcHostsResponse, err error) {
+    return c.DescribeChcHostsWithContext(context.Background(), request)
+}
+
+// DescribeChcHosts
+// 本接口 (DescribeChcHosts) 用于查询一个或多个CHC物理服务器详细信息。
+//
+// 
+//
+// * 可以根据实例`ID`、实例名称或者设备类型等信息来查询实例的详细信息。过滤信息详细请见过滤器`Filter`。
+//
+// * 如果参数为空，返回当前用户一定数量（`Limit`所指定的数量，默认为20）的实例。
+//
+// 可能返回的错误码:
+//  ACCOUNTQUALIFICATIONRESTRICTIONS = "AccountQualificationRestrictions"
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER_ATMOSTONE = "InvalidParameter.AtMostOne"
+//  INVALIDPARAMETERVALUE_CHCHOSTSNOTFOUND = "InvalidParameterValue.ChcHostsNotFound"
+//  INVALIDPARAMETERVALUE_INCORRECTFORMAT = "InvalidParameterValue.IncorrectFormat"
+//  INVALIDPARAMETERVALUELIMIT = "InvalidParameterValueLimit"
+//  INVALIDPARAMETERVALUEOFFSET = "InvalidParameterValueOffset"
+//  INVALIDZONE_MISMATCHREGION = "InvalidZone.MismatchRegion"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeChcHostsWithContext(ctx context.Context, request *DescribeChcHostsRequest) (response *DescribeChcHostsResponse, err error) {
+    if request == nil {
+        request = NewDescribeChcHostsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeChcHosts require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeChcHostsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDisasterRecoverGroupQuotaRequest() (request *DescribeDisasterRecoverGroupQuotaRequest) {
     request = &DescribeDisasterRecoverGroupQuotaRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1372,10 +1447,15 @@ func NewDescribeDisasterRecoverGroupQuotaResponse() (response *DescribeDisasterR
 // 本接口 (DescribeDisasterRecoverGroupQuota)用于查询[分散置放群组](https://cloud.tencent.com/document/product/213/15486)配额。
 //
 // 可能返回的错误码:
+//  ACCOUNTQUALIFICATIONRESTRICTIONS = "AccountQualificationRestrictions"
 //  INVALIDFILTER = "InvalidFilter"
-//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
+//  INVALIDPARAMETER_ATMOSTONE = "InvalidParameter.AtMostOne"
+//  INVALIDPARAMETERVALUE_CHCHOSTSNOTFOUND = "InvalidParameterValue.ChcHostsNotFound"
+//  INVALIDPARAMETERVALUE_INCORRECTFORMAT = "InvalidParameterValue.IncorrectFormat"
+//  INVALIDPARAMETERVALUELIMIT = "InvalidParameterValueLimit"
+//  INVALIDPARAMETERVALUEOFFSET = "InvalidParameterValueOffset"
 //  INVALIDZONE_MISMATCHREGION = "InvalidZone.MismatchRegion"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeDisasterRecoverGroupQuota(request *DescribeDisasterRecoverGroupQuotaRequest) (response *DescribeDisasterRecoverGroupQuotaResponse, err error) {
     return c.DescribeDisasterRecoverGroupQuotaWithContext(context.Background(), request)
 }
@@ -1384,10 +1464,15 @@ func (c *Client) DescribeDisasterRecoverGroupQuota(request *DescribeDisasterReco
 // 本接口 (DescribeDisasterRecoverGroupQuota)用于查询[分散置放群组](https://cloud.tencent.com/document/product/213/15486)配额。
 //
 // 可能返回的错误码:
+//  ACCOUNTQUALIFICATIONRESTRICTIONS = "AccountQualificationRestrictions"
 //  INVALIDFILTER = "InvalidFilter"
-//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
+//  INVALIDPARAMETER_ATMOSTONE = "InvalidParameter.AtMostOne"
+//  INVALIDPARAMETERVALUE_CHCHOSTSNOTFOUND = "InvalidParameterValue.ChcHostsNotFound"
+//  INVALIDPARAMETERVALUE_INCORRECTFORMAT = "InvalidParameterValue.IncorrectFormat"
+//  INVALIDPARAMETERVALUELIMIT = "InvalidParameterValueLimit"
+//  INVALIDPARAMETERVALUEOFFSET = "InvalidParameterValueOffset"
 //  INVALIDZONE_MISMATCHREGION = "InvalidZone.MismatchRegion"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeDisasterRecoverGroupQuotaWithContext(ctx context.Context, request *DescribeDisasterRecoverGroupQuotaRequest) (response *DescribeDisasterRecoverGroupQuotaResponse, err error) {
     if request == nil {
         request = NewDescribeDisasterRecoverGroupQuotaRequest()

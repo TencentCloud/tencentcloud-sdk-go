@@ -2687,12 +2687,21 @@ func (r *CreatePrometheusAlertRuleResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreatePrometheusClusterAgentRequestParams struct {
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
+	// agent列表
+	Agents []*PrometheusClusterAgentBasic `json:"Agents,omitempty" name:"Agents"`
 }
 
 type CreatePrometheusClusterAgentRequest struct {
 	*tchttp.BaseRequest
 	
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// agent列表
+	Agents []*PrometheusClusterAgentBasic `json:"Agents,omitempty" name:"Agents"`
 }
 
 func (r *CreatePrometheusClusterAgentRequest) ToJsonString() string {
@@ -2707,7 +2716,8 @@ func (r *CreatePrometheusClusterAgentRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "InstanceId")
+	delete(f, "Agents")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreatePrometheusClusterAgentRequest has unknown keys!", "")
 	}
@@ -12935,6 +12945,43 @@ type PrometheusAlertRuleDetail struct {
 	Interval *string `json:"Interval,omitempty" name:"Interval"`
 }
 
+type PrometheusClusterAgentBasic struct {
+	// 集群ID
+	Region *string `json:"Region,omitempty" name:"Region"`
+
+	// 集群类型
+	ClusterType *string `json:"ClusterType,omitempty" name:"ClusterType"`
+
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 是否开启公网CLB
+	EnableExternal *bool `json:"EnableExternal,omitempty" name:"EnableExternal"`
+
+	// 集群内部署组件的pod配置
+	InClusterPodConfig *PrometheusClusterAgentPodConfig `json:"InClusterPodConfig,omitempty" name:"InClusterPodConfig"`
+
+	// 该集群采集的所有指标都会带上这些labels
+	ExternalLabels []*Label `json:"ExternalLabels,omitempty" name:"ExternalLabels"`
+
+	// 是否安装默认采集配置
+	NotInstallBasicScrape *bool `json:"NotInstallBasicScrape,omitempty" name:"NotInstallBasicScrape"`
+
+	// 是否采集指标，true代表drop所有指标，false代表采集默认指标
+	NotScrape *bool `json:"NotScrape,omitempty" name:"NotScrape"`
+}
+
+type PrometheusClusterAgentPodConfig struct {
+	// 是否使用HostNetWork
+	HostNet *bool `json:"HostNet,omitempty" name:"HostNet"`
+
+	// 指定pod运行节点
+	NodeSelector []*Label `json:"NodeSelector,omitempty" name:"NodeSelector"`
+
+	// 容忍污点
+	Tolerations []*Toleration `json:"Tolerations,omitempty" name:"Tolerations"`
+}
+
 type PrometheusConfigItem struct {
 	// 名称
 	Name *string `json:"Name,omitempty" name:"Name"`
@@ -14186,6 +14233,17 @@ type TcpSocket struct {
 	// TcpSocket检测的端口
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Port *uint64 `json:"Port,omitempty" name:"Port"`
+}
+
+type Toleration struct {
+	// 容忍应用到的 taint key
+	Key *string `json:"Key,omitempty" name:"Key"`
+
+	// 键与值的关系
+	Operator *string `json:"Operator,omitempty" name:"Operator"`
+
+	// 要匹配的污点效果
+	Effect *string `json:"Effect,omitempty" name:"Effect"`
 }
 
 // Predefined struct for user

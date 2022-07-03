@@ -21,6 +21,102 @@ import (
 )
 
 // Predefined struct for user
+type DescribeProjectRequestParams struct {
+	// 项目id。一般使用项目Id来查询，与projectName必须存在一个。
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 是否展示关联集群信息
+	DescribeClusters *bool `json:"DescribeClusters,omitempty" name:"DescribeClusters"`
+
+	// 是否展示关联执行组的信息，仅部分信息。
+	DescribeExecutors *bool `json:"DescribeExecutors,omitempty" name:"DescribeExecutors"`
+
+	// 默认不展示项目管理员信息
+	DescribeAdminUsers *bool `json:"DescribeAdminUsers,omitempty" name:"DescribeAdminUsers"`
+
+	// 默认不统计项目人员数量
+	DescribeMemberCount *bool `json:"DescribeMemberCount,omitempty" name:"DescribeMemberCount"`
+
+	// 默认不查询创建者的信息
+	DescribeCreator *bool `json:"DescribeCreator,omitempty" name:"DescribeCreator"`
+
+	// 项目名只在租户内唯一，一般用来转化为项目ID。
+	ProjectName *string `json:"ProjectName,omitempty" name:"ProjectName"`
+}
+
+type DescribeProjectRequest struct {
+	*tchttp.BaseRequest
+	
+	// 项目id。一般使用项目Id来查询，与projectName必须存在一个。
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 是否展示关联集群信息
+	DescribeClusters *bool `json:"DescribeClusters,omitempty" name:"DescribeClusters"`
+
+	// 是否展示关联执行组的信息，仅部分信息。
+	DescribeExecutors *bool `json:"DescribeExecutors,omitempty" name:"DescribeExecutors"`
+
+	// 默认不展示项目管理员信息
+	DescribeAdminUsers *bool `json:"DescribeAdminUsers,omitempty" name:"DescribeAdminUsers"`
+
+	// 默认不统计项目人员数量
+	DescribeMemberCount *bool `json:"DescribeMemberCount,omitempty" name:"DescribeMemberCount"`
+
+	// 默认不查询创建者的信息
+	DescribeCreator *bool `json:"DescribeCreator,omitempty" name:"DescribeCreator"`
+
+	// 项目名只在租户内唯一，一般用来转化为项目ID。
+	ProjectName *string `json:"ProjectName,omitempty" name:"ProjectName"`
+}
+
+func (r *DescribeProjectRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeProjectRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProjectId")
+	delete(f, "DescribeClusters")
+	delete(f, "DescribeExecutors")
+	delete(f, "DescribeAdminUsers")
+	delete(f, "DescribeMemberCount")
+	delete(f, "DescribeCreator")
+	delete(f, "ProjectName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeProjectRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeProjectResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeProjectResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeProjectResponseParams `json:"Response"`
+}
+
+func (r *DescribeProjectResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeProjectResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeRelatedInstancesRequestParams struct {
 	// 项目id
 	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`

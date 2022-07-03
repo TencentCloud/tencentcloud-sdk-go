@@ -45,6 +45,53 @@ func NewClient(credential common.CredentialIface, region string, clientProfile *
 }
 
 
+func NewDescribeProjectRequest() (request *DescribeProjectRequest) {
+    request = &DescribeProjectRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("wedata", APIVersion, "DescribeProject")
+    
+    
+    return
+}
+
+func NewDescribeProjectResponse() (response *DescribeProjectResponse) {
+    response = &DescribeProjectResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeProject
+// 获取项目信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeProject(request *DescribeProjectRequest) (response *DescribeProjectResponse, err error) {
+    return c.DescribeProjectWithContext(context.Background(), request)
+}
+
+// DescribeProject
+// 获取项目信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeProjectWithContext(ctx context.Context, request *DescribeProjectRequest) (response *DescribeProjectResponse, err error) {
+    if request == nil {
+        request = NewDescribeProjectRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeProject require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeProjectResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeRelatedInstancesRequest() (request *DescribeRelatedInstancesRequest) {
     request = &DescribeRelatedInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -64,12 +111,18 @@ func NewDescribeRelatedInstancesResponse() (response *DescribeRelatedInstancesRe
 
 // DescribeRelatedInstances
 // 查询任务实例的关联实例列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 func (c *Client) DescribeRelatedInstances(request *DescribeRelatedInstancesRequest) (response *DescribeRelatedInstancesResponse, err error) {
     return c.DescribeRelatedInstancesWithContext(context.Background(), request)
 }
 
 // DescribeRelatedInstances
 // 查询任务实例的关联实例列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 func (c *Client) DescribeRelatedInstancesWithContext(ctx context.Context, request *DescribeRelatedInstancesRequest) (response *DescribeRelatedInstancesResponse, err error) {
     if request == nil {
         request = NewDescribeRelatedInstancesRequest()
@@ -105,12 +158,18 @@ func NewDescribeTaskInstancesResponse() (response *DescribeTaskInstancesResponse
 
 // DescribeTaskInstances
 // 查询任务实例列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 func (c *Client) DescribeTaskInstances(request *DescribeTaskInstancesRequest) (response *DescribeTaskInstancesResponse, err error) {
     return c.DescribeTaskInstancesWithContext(context.Background(), request)
 }
 
 // DescribeTaskInstances
 // 查询任务实例列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 func (c *Client) DescribeTaskInstancesWithContext(ctx context.Context, request *DescribeTaskInstancesRequest) (response *DescribeTaskInstancesResponse, err error) {
     if request == nil {
         request = NewDescribeTaskInstancesRequest()

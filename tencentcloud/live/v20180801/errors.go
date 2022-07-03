@@ -410,6 +410,9 @@ const (
 	// 域名不存在或不匹配。
 	RESOURCENOTFOUND_DOMAINNOTEXIST = "ResourceNotFound.DomainNotExist"
 
+	// 用户被禁用。
+	RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+
 	// 用户不支持此接口。
 	RESOURCENOTFOUND_INVALIDUSER = "ResourceNotFound.InvalidUser"
 

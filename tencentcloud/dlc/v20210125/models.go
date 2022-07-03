@@ -5355,6 +5355,74 @@ type Property struct {
 	Value *string `json:"Value,omitempty" name:"Value"`
 }
 
+// Predefined struct for user
+type ReportHeartbeatMetaDataRequestParams struct {
+	// 数据源名称
+	DatasourceConnectionName *string `json:"DatasourceConnectionName,omitempty" name:"DatasourceConnectionName"`
+
+	// 锁ID
+	LockId *int64 `json:"LockId,omitempty" name:"LockId"`
+
+	// 事务ID
+	TxnId *int64 `json:"TxnId,omitempty" name:"TxnId"`
+}
+
+type ReportHeartbeatMetaDataRequest struct {
+	*tchttp.BaseRequest
+	
+	// 数据源名称
+	DatasourceConnectionName *string `json:"DatasourceConnectionName,omitempty" name:"DatasourceConnectionName"`
+
+	// 锁ID
+	LockId *int64 `json:"LockId,omitempty" name:"LockId"`
+
+	// 事务ID
+	TxnId *int64 `json:"TxnId,omitempty" name:"TxnId"`
+}
+
+func (r *ReportHeartbeatMetaDataRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ReportHeartbeatMetaDataRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DatasourceConnectionName")
+	delete(f, "LockId")
+	delete(f, "TxnId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ReportHeartbeatMetaDataRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ReportHeartbeatMetaDataResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ReportHeartbeatMetaDataResponse struct {
+	*tchttp.BaseResponse
+	Response *ReportHeartbeatMetaDataResponseParams `json:"Response"`
+}
+
+func (r *ReportHeartbeatMetaDataResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ReportHeartbeatMetaDataResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type SQLTask struct {
 	// base64加密后的SQL语句
 	SQL *string `json:"SQL,omitempty" name:"SQL"`

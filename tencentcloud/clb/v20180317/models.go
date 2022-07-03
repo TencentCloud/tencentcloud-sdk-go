@@ -4555,6 +4555,7 @@ type DescribeTaskStatusRequestParams struct {
 	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
 
 	// 订单ID。
+	// 注意：参数TaskId和DealName必须传一个。
 	DealName *string `json:"DealName,omitempty" name:"DealName"`
 }
 
@@ -4565,6 +4566,7 @@ type DescribeTaskStatusRequest struct {
 	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
 
 	// 订单ID。
+	// 注意：参数TaskId和DealName必须传一个。
 	DealName *string `json:"DealName,omitempty" name:"DealName"`
 }
 

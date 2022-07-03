@@ -703,6 +703,55 @@ func (c *Client) DescribeBackupConfigWithContext(ctx context.Context, request *D
     return
 }
 
+func NewDescribeBackupDownloadUrlRequest() (request *DescribeBackupDownloadUrlRequest) {
+    request = &DescribeBackupDownloadUrlRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cynosdb", APIVersion, "DescribeBackupDownloadUrl")
+    
+    
+    return
+}
+
+func NewDescribeBackupDownloadUrlResponse() (response *DescribeBackupDownloadUrlResponse) {
+    response = &DescribeBackupDownloadUrlResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeBackupDownloadUrl
+// 此接口（DescribeBackupDownloadUrl）用于查询集群备份文件下载地址。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DescribeBackupDownloadUrl(request *DescribeBackupDownloadUrlRequest) (response *DescribeBackupDownloadUrlResponse, err error) {
+    return c.DescribeBackupDownloadUrlWithContext(context.Background(), request)
+}
+
+// DescribeBackupDownloadUrl
+// 此接口（DescribeBackupDownloadUrl）用于查询集群备份文件下载地址。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DescribeBackupDownloadUrlWithContext(ctx context.Context, request *DescribeBackupDownloadUrlRequest) (response *DescribeBackupDownloadUrlResponse, err error) {
+    if request == nil {
+        request = NewDescribeBackupDownloadUrlRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBackupDownloadUrl require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeBackupDownloadUrlResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeBackupListRequest() (request *DescribeBackupListRequest) {
     request = &DescribeBackupListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -760,6 +809,155 @@ func (c *Client) DescribeBackupListWithContext(ctx context.Context, request *Des
     request.SetContext(ctx)
     
     response = NewDescribeBackupListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeBinlogDownloadUrlRequest() (request *DescribeBinlogDownloadUrlRequest) {
+    request = &DescribeBinlogDownloadUrlRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cynosdb", APIVersion, "DescribeBinlogDownloadUrl")
+    
+    
+    return
+}
+
+func NewDescribeBinlogDownloadUrlResponse() (response *DescribeBinlogDownloadUrlResponse) {
+    response = &DescribeBinlogDownloadUrlResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeBinlogDownloadUrl
+// 此接口（DescribeBinlogDownloadUrl）用于查询Binlog的下载地址。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DescribeBinlogDownloadUrl(request *DescribeBinlogDownloadUrlRequest) (response *DescribeBinlogDownloadUrlResponse, err error) {
+    return c.DescribeBinlogDownloadUrlWithContext(context.Background(), request)
+}
+
+// DescribeBinlogDownloadUrl
+// 此接口（DescribeBinlogDownloadUrl）用于查询Binlog的下载地址。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DescribeBinlogDownloadUrlWithContext(ctx context.Context, request *DescribeBinlogDownloadUrlRequest) (response *DescribeBinlogDownloadUrlResponse, err error) {
+    if request == nil {
+        request = NewDescribeBinlogDownloadUrlRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBinlogDownloadUrl require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeBinlogDownloadUrlResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeBinlogSaveDaysRequest() (request *DescribeBinlogSaveDaysRequest) {
+    request = &DescribeBinlogSaveDaysRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cynosdb", APIVersion, "DescribeBinlogSaveDays")
+    
+    
+    return
+}
+
+func NewDescribeBinlogSaveDaysResponse() (response *DescribeBinlogSaveDaysResponse) {
+    response = &DescribeBinlogSaveDaysResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeBinlogSaveDays
+// 此接口（DescribeBinlogSaveDays）用于查询集群的Binlog保留天数。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DescribeBinlogSaveDays(request *DescribeBinlogSaveDaysRequest) (response *DescribeBinlogSaveDaysResponse, err error) {
+    return c.DescribeBinlogSaveDaysWithContext(context.Background(), request)
+}
+
+// DescribeBinlogSaveDays
+// 此接口（DescribeBinlogSaveDays）用于查询集群的Binlog保留天数。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DescribeBinlogSaveDaysWithContext(ctx context.Context, request *DescribeBinlogSaveDaysRequest) (response *DescribeBinlogSaveDaysResponse, err error) {
+    if request == nil {
+        request = NewDescribeBinlogSaveDaysRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBinlogSaveDays require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeBinlogSaveDaysResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeBinlogsRequest() (request *DescribeBinlogsRequest) {
+    request = &DescribeBinlogsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cynosdb", APIVersion, "DescribeBinlogs")
+    
+    
+    return
+}
+
+func NewDescribeBinlogsResponse() (response *DescribeBinlogsResponse) {
+    response = &DescribeBinlogsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeBinlogs
+// 此接口（DescribeBinlogs）用来查询集群Binlog日志列表。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DescribeBinlogs(request *DescribeBinlogsRequest) (response *DescribeBinlogsResponse, err error) {
+    return c.DescribeBinlogsWithContext(context.Background(), request)
+}
+
+// DescribeBinlogs
+// 此接口（DescribeBinlogs）用来查询集群Binlog日志列表。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DescribeBinlogsWithContext(ctx context.Context, request *DescribeBinlogsRequest) (response *DescribeBinlogsResponse, err error) {
+    if request == nil {
+        request = NewDescribeBinlogsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBinlogs require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeBinlogsResponse()
     err = c.Send(request, response)
     return
 }
@@ -1122,6 +1320,55 @@ func (c *Client) DescribeInstanceDetailWithContext(ctx context.Context, request 
     request.SetContext(ctx)
     
     response = NewDescribeInstanceDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeInstanceSlowQueriesRequest() (request *DescribeInstanceSlowQueriesRequest) {
+    request = &DescribeInstanceSlowQueriesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cynosdb", APIVersion, "DescribeInstanceSlowQueries")
+    
+    
+    return
+}
+
+func NewDescribeInstanceSlowQueriesResponse() (response *DescribeInstanceSlowQueriesResponse) {
+    response = &DescribeInstanceSlowQueriesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeInstanceSlowQueries
+// 此接口（DescribeInstanceSlowQueries）用于查询实例慢查询日志。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DescribeInstanceSlowQueries(request *DescribeInstanceSlowQueriesRequest) (response *DescribeInstanceSlowQueriesResponse, err error) {
+    return c.DescribeInstanceSlowQueriesWithContext(context.Background(), request)
+}
+
+// DescribeInstanceSlowQueries
+// 此接口（DescribeInstanceSlowQueries）用于查询实例慢查询日志。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DescribeInstanceSlowQueriesWithContext(ctx context.Context, request *DescribeInstanceSlowQueriesRequest) (response *DescribeInstanceSlowQueriesResponse, err error) {
+    if request == nil {
+        request = NewDescribeInstanceSlowQueriesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeInstanceSlowQueries require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeInstanceSlowQueriesResponse()
     err = c.Send(request, response)
     return
 }
@@ -1580,6 +1827,55 @@ func (c *Client) DisassociateSecurityGroupsWithContext(ctx context.Context, requ
     return
 }
 
+func NewExportInstanceSlowQueriesRequest() (request *ExportInstanceSlowQueriesRequest) {
+    request = &ExportInstanceSlowQueriesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cynosdb", APIVersion, "ExportInstanceSlowQueries")
+    
+    
+    return
+}
+
+func NewExportInstanceSlowQueriesResponse() (response *ExportInstanceSlowQueriesResponse) {
+    response = &ExportInstanceSlowQueriesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ExportInstanceSlowQueries
+// 此接口（ExportInstanceSlowQueries）用于导出实例慢日志。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) ExportInstanceSlowQueries(request *ExportInstanceSlowQueriesRequest) (response *ExportInstanceSlowQueriesResponse, err error) {
+    return c.ExportInstanceSlowQueriesWithContext(context.Background(), request)
+}
+
+// ExportInstanceSlowQueries
+// 此接口（ExportInstanceSlowQueries）用于导出实例慢日志。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) ExportInstanceSlowQueriesWithContext(ctx context.Context, request *ExportInstanceSlowQueriesRequest) (response *ExportInstanceSlowQueriesResponse, err error) {
+    if request == nil {
+        request = NewExportInstanceSlowQueriesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ExportInstanceSlowQueries require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewExportInstanceSlowQueriesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewGrantAccountPrivilegesRequest() (request *GrantAccountPrivilegesRequest) {
     request = &GrantAccountPrivilegesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2001,6 +2297,55 @@ func (c *Client) ModifyBackupConfigWithContext(ctx context.Context, request *Mod
     request.SetContext(ctx)
     
     response = NewModifyBackupConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyBackupNameRequest() (request *ModifyBackupNameRequest) {
+    request = &ModifyBackupNameRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cynosdb", APIVersion, "ModifyBackupName")
+    
+    
+    return
+}
+
+func NewModifyBackupNameResponse() (response *ModifyBackupNameResponse) {
+    response = &ModifyBackupNameResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyBackupName
+// 此接口（ModifyBackupName）用于修改备份文件备注名。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) ModifyBackupName(request *ModifyBackupNameRequest) (response *ModifyBackupNameResponse, err error) {
+    return c.ModifyBackupNameWithContext(context.Background(), request)
+}
+
+// ModifyBackupName
+// 此接口（ModifyBackupName）用于修改备份文件备注名。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) ModifyBackupNameWithContext(ctx context.Context, request *ModifyBackupNameRequest) (response *ModifyBackupNameResponse, err error) {
+    if request == nil {
+        request = NewModifyBackupNameRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyBackupName require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyBackupNameResponse()
     err = c.Send(request, response)
     return
 }

@@ -16,4 +16,7 @@ package v20210820
 
 const (
 	// 此产品的特有错误码
+
+	// 操作失败。
+	FAILEDOPERATION = "FailedOperation"
 )

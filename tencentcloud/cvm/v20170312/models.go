@@ -292,6 +292,102 @@ type ChargePrepaid struct {
 	RenewFlag *string `json:"RenewFlag,omitempty" name:"RenewFlag"`
 }
 
+type ChcDeployExtraConfig struct {
+
+}
+
+type ChcHost struct {
+	// CHC物理服务器ID。
+	ChcId *string `json:"ChcId,omitempty" name:"ChcId"`
+
+	// 实例名称。
+	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
+
+	// 服务器序列号。
+	SerialNumber *string `json:"SerialNumber,omitempty" name:"SerialNumber"`
+
+	// CHC的状态<br/>
+	// <ul>
+	// <li>REGISTERED: 设备已录入。还未配置带外和部署网络</li>
+	// <li>VPC_READY: 已配置带外和部署网络</li>
+	// <li>PREPARED: 可分配云主机</li>
+	// <li>ONLINE: 已分配云主机</li>
+	// </ul>
+	InstanceState *string `json:"InstanceState,omitempty" name:"InstanceState"`
+
+	// 设备类型。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeviceType *string `json:"DeviceType,omitempty" name:"DeviceType"`
+
+	// 所属可用区
+	Placement *Placement `json:"Placement,omitempty" name:"Placement"`
+
+	// 带外网络。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BmcVirtualPrivateCloud *VirtualPrivateCloud `json:"BmcVirtualPrivateCloud,omitempty" name:"BmcVirtualPrivateCloud"`
+
+	// 带外网络Ip。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BmcIp *string `json:"BmcIp,omitempty" name:"BmcIp"`
+
+	// 带外网络安全组Id。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BmcSecurityGroupIds []*string `json:"BmcSecurityGroupIds,omitempty" name:"BmcSecurityGroupIds"`
+
+	// 部署网络。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeployVirtualPrivateCloud *VirtualPrivateCloud `json:"DeployVirtualPrivateCloud,omitempty" name:"DeployVirtualPrivateCloud"`
+
+	// 部署网络Ip。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeployIp *string `json:"DeployIp,omitempty" name:"DeployIp"`
+
+	// 部署网络安全组Id。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeploySecurityGroupIds []*string `json:"DeploySecurityGroupIds,omitempty" name:"DeploySecurityGroupIds"`
+
+	// 关联的云主机Id。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CvmInstanceId *string `json:"CvmInstanceId,omitempty" name:"CvmInstanceId"`
+
+	// 服务器导入的时间。
+	CreatedTime *string `json:"CreatedTime,omitempty" name:"CreatedTime"`
+
+	// 机型的硬件描述，分别为CPU核数，内存容量和磁盘容量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HardwareDescription *string `json:"HardwareDescription,omitempty" name:"HardwareDescription"`
+
+	// CHC物理服务器的CPU核数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CPU *int64 `json:"CPU,omitempty" name:"CPU"`
+
+	// CHC物理服务器的内存大小，单位为GB
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Memory *int64 `json:"Memory,omitempty" name:"Memory"`
+
+	// CHC物理服务器的磁盘信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Disk *string `json:"Disk,omitempty" name:"Disk"`
+
+	// 带外网络下分配的MAC地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BmcMAC *string `json:"BmcMAC,omitempty" name:"BmcMAC"`
+
+	// 部署网络下分配的MAC地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeployMAC *string `json:"DeployMAC,omitempty" name:"DeployMAC"`
+
+	// 设备托管类型。
+	// HOSTING: 托管
+	// TENANT: 租赁
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TenantType *string `json:"TenantType,omitempty" name:"TenantType"`
+
+	// chc dhcp选项，用于minios调试
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeployExtraConfig *ChcDeployExtraConfig `json:"DeployExtraConfig,omitempty" name:"DeployExtraConfig"`
+}
+
 // Predefined struct for user
 type CreateDisasterRecoverGroupRequestParams struct {
 	// 分散置放群组名称，长度1-60个字符，支持中、英文。
@@ -1475,6 +1571,109 @@ func (r *DescribeAccountQuotaResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeAccountQuotaResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeChcHostsRequestParams struct {
+	// CHC物理服务器实例ID。每次请求的实例的上限为100。参数不支持同时指定`ChcIds`和`Filters`。
+	ChcIds []*string `json:"ChcIds,omitempty" name:"ChcIds"`
+
+	// <li><strong>zone</strong></li>
+	// <p style="padding-left: 30px;">按照【<strong>可用区</strong>】进行过滤。可用区形如：ap-guangzhou-1。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p><p style="padding-left: 30px;">可选项：<a href="https://cloud.tencent.com/document/product/213/6091">可用区列表</a></p>
+	// <li><strong>instance-name</strong></li>
+	// <p style="padding-left: 30px;">按照【<strong>实例名称</strong>】进行过滤。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p>
+	// <li><strong>instance-state</strong></li>
+	// <p style="padding-left: 30px;">按照【<strong>实例状态</strong>】进行过滤。状态类型详见[实例状态表](https://cloud.tencent.com/document/api/213/15753#InstanceStatus)</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p>
+	// <li><strong>device-type</strong></li>
+	// <p style="padding-left: 30px;">按照【<strong>设备类型</strong>】进行过滤。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p>
+	// <li><strong>vpc-id</strong></li>
+	// <p style="padding-left: 30px;">按照【<strong>私有网络唯一ID</strong>】进行过滤。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p>
+	// <li><strong>subnet-id</strong></li>
+	// <p style="padding-left: 30px;">按照【<strong>私有子网唯一ID</strong>】进行过滤。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p>
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 偏移量，默认为0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回数量，默认为20，最大值为100。关于`Limit`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+type DescribeChcHostsRequest struct {
+	*tchttp.BaseRequest
+	
+	// CHC物理服务器实例ID。每次请求的实例的上限为100。参数不支持同时指定`ChcIds`和`Filters`。
+	ChcIds []*string `json:"ChcIds,omitempty" name:"ChcIds"`
+
+	// <li><strong>zone</strong></li>
+	// <p style="padding-left: 30px;">按照【<strong>可用区</strong>】进行过滤。可用区形如：ap-guangzhou-1。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p><p style="padding-left: 30px;">可选项：<a href="https://cloud.tencent.com/document/product/213/6091">可用区列表</a></p>
+	// <li><strong>instance-name</strong></li>
+	// <p style="padding-left: 30px;">按照【<strong>实例名称</strong>】进行过滤。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p>
+	// <li><strong>instance-state</strong></li>
+	// <p style="padding-left: 30px;">按照【<strong>实例状态</strong>】进行过滤。状态类型详见[实例状态表](https://cloud.tencent.com/document/api/213/15753#InstanceStatus)</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p>
+	// <li><strong>device-type</strong></li>
+	// <p style="padding-left: 30px;">按照【<strong>设备类型</strong>】进行过滤。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p>
+	// <li><strong>vpc-id</strong></li>
+	// <p style="padding-left: 30px;">按照【<strong>私有网络唯一ID</strong>】进行过滤。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p>
+	// <li><strong>subnet-id</strong></li>
+	// <p style="padding-left: 30px;">按照【<strong>私有子网唯一ID</strong>】进行过滤。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p>
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 偏移量，默认为0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回数量，默认为20，最大值为100。关于`Limit`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribeChcHostsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeChcHostsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ChcIds")
+	delete(f, "Filters")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeChcHostsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeChcHostsResponseParams struct {
+	// 符合条件的实例数量。
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 返回的实例列表
+	ChcHostSet []*ChcHost `json:"ChcHostSet,omitempty" name:"ChcHostSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeChcHostsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeChcHostsResponseParams `json:"Response"`
+}
+
+func (r *DescribeChcHostsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeChcHostsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

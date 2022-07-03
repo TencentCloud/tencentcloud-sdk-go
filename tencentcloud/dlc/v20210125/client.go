@@ -3132,6 +3132,55 @@ func (c *Client) ModifyWorkGroupWithContext(ctx context.Context, request *Modify
     return
 }
 
+func NewReportHeartbeatMetaDataRequest() (request *ReportHeartbeatMetaDataRequest) {
+    request = &ReportHeartbeatMetaDataRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dlc", APIVersion, "ReportHeartbeatMetaData")
+    
+    
+    return
+}
+
+func NewReportHeartbeatMetaDataResponse() (response *ReportHeartbeatMetaDataResponse) {
+    response = &ReportHeartbeatMetaDataResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ReportHeartbeatMetaData
+// 上报元数据心跳
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  UNAUTHORIZEDOPERATION_MODIFYWORKGROUPINFO = "UnauthorizedOperation.ModifyWorkgroupInfo"
+func (c *Client) ReportHeartbeatMetaData(request *ReportHeartbeatMetaDataRequest) (response *ReportHeartbeatMetaDataResponse, err error) {
+    return c.ReportHeartbeatMetaDataWithContext(context.Background(), request)
+}
+
+// ReportHeartbeatMetaData
+// 上报元数据心跳
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  UNAUTHORIZEDOPERATION_MODIFYWORKGROUPINFO = "UnauthorizedOperation.ModifyWorkgroupInfo"
+func (c *Client) ReportHeartbeatMetaDataWithContext(ctx context.Context, request *ReportHeartbeatMetaDataRequest) (response *ReportHeartbeatMetaDataResponse, err error) {
+    if request == nil {
+        request = NewReportHeartbeatMetaDataRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ReportHeartbeatMetaData require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewReportHeartbeatMetaDataResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewUnbindWorkGroupsFromUserRequest() (request *UnbindWorkGroupsFromUserRequest) {
     request = &UnbindWorkGroupsFromUserRequest{
         BaseRequest: &tchttp.BaseRequest{},
