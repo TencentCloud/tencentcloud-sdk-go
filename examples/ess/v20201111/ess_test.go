@@ -9,6 +9,7 @@ import (
 	essbasic "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/essbasic/v20201222"
 	"os"
 	"testing"
+	"time"
 )
 
 const (
@@ -20,9 +21,6 @@ const (
 	Ak = "***********************"
 
 	Sk = "***********************"
-
-	// Appid 电子签侧应用id,电子签提供
-	Appid = "***********************"
 
 	// 管理员用户id或者员工用户id
 	OperatorId = "***********************"
@@ -37,12 +35,11 @@ func TestCreateFlow(t *testing.T) {
 	req := ess.NewCreateFlowRequest()
 	// 公共参数
 	req.Operator = &ess.UserInfo{
-		UserId:   common.StringPtr(OperatorId),
-		ClientIp: common.StringPtr("***********************"),
+		UserId: common.StringPtr(OperatorId),
 	}
 	req.BaseRequest.SetHttpMethod("POST")
 
-	// 企业方 静默签署时type为3/非静默签署type为0（仅支持处于第一位的签署方进行静默签，且合同为顺序签署，请于控制台调整好模板）
+	// 企业方 静默签署时type为3/非静默签署type为0
 	approver1 := ess.FlowCreateApprover{
 		ApproverType:     common.Int64Ptr(3),
 		OrganizationName: common.StringPtr("***********************"),
@@ -62,7 +59,7 @@ func TestCreateFlow(t *testing.T) {
 	req.Approvers = []*ess.FlowCreateApprover{&approver1, &approver2}
 
 	// 请设置合理的时间，否则容易造成合同过期
-	req.DeadLine = common.Int64Ptr(1692474522)
+	req.DeadLine = common.Int64Ptr(time.Now().Add(7 * 24 * time.Hour).Unix())
 	req.FlowName = common.StringPtr("***********************")
 
 	res, err := client.CreateFlow(req)
@@ -82,8 +79,7 @@ func TestCreateDocument(t *testing.T) {
 	req := ess.NewCreateDocumentRequest()
 	// 公共参数
 	req.Operator = &ess.UserInfo{
-		UserId:   common.StringPtr(OperatorId),
-		ClientIp: common.StringPtr("***********************"),
+		UserId: common.StringPtr(OperatorId),
 	}
 	req.BaseRequest.SetHttpMethod("POST")
 
@@ -145,8 +141,7 @@ func TestDescribeFileUrls(t *testing.T) {
 	req := ess.NewDescribeFileUrlsRequest()
 	// 公共参数
 	req.Operator = &ess.UserInfo{
-		UserId:   common.StringPtr(OperatorId),
-		ClientIp: common.StringPtr("***********************"),
+		UserId: common.StringPtr(OperatorId),
 	}
 	req.BaseRequest.SetHttpMethod("POST")
 
@@ -170,8 +165,7 @@ func TestUploadFiles(t *testing.T) {
 	req := essbasic.NewUploadFilesRequest()
 	// 公共参数
 	req.Caller = &essbasic.Caller{
-		ApplicationId: common.StringPtr(Appid),
-		OperatorId:    common.StringPtr(OperatorId),
+		OperatorId: common.StringPtr(OperatorId),
 	}
 	req.BaseRequest.SetHttpMethod("POST")
 	req.BusinessType = common.StringPtr("FLOW")
@@ -209,8 +203,7 @@ func TestCreateFlowByFiles(t *testing.T) {
 	req := ess.NewCreateFlowByFilesRequest()
 	// 公共参数
 	req.Operator = &ess.UserInfo{
-		UserId:   common.StringPtr(OperatorId),
-		ClientIp: common.StringPtr("***********************"),
+		UserId: common.StringPtr(OperatorId),
 	}
 	req.BaseRequest.SetHttpMethod("POST")
 
@@ -218,7 +211,7 @@ func TestCreateFlowByFiles(t *testing.T) {
 	req.FileIds = []*string{common.StringPtr("***********************")}
 
 	req.Approvers = []*ess.ApproverInfo{
-		// 企业方 静默签署时type为3/非静默签署type为0（仅支持处于第一位的签署方进行静默签，且合同为顺序签署，请于控制台调整好模板）
+		// 企业方 静默签署时type为3/非静默签署type为0
 		{
 			ApproverType:     common.Int64Ptr(3),
 			ApproverName:     common.StringPtr("***********************"),
@@ -257,6 +250,7 @@ func TestCreateFlowByFiles(t *testing.T) {
 	}
 
 	req.FlowName = common.StringPtr("***********************")
+	req.Deadline = common.Int64Ptr(time.Now().Add(7 * 24 * time.Hour).Unix())
 
 	res, err := client.CreateFlowByFiles(req)
 	if err != nil {
@@ -275,8 +269,7 @@ func TestDescribeFlowBriefs(t *testing.T) {
 	req := ess.NewDescribeFlowBriefsRequest()
 	// 公共参数
 	req.Operator = &ess.UserInfo{
-		UserId:   common.StringPtr(OperatorId),
-		ClientIp: common.StringPtr("***********************"),
+		UserId: common.StringPtr(OperatorId),
 	}
 	req.BaseRequest.SetHttpMethod("POST")
 
@@ -299,8 +292,7 @@ func TestCreateSchemeUrl(t *testing.T) {
 	req := ess.NewCreateSchemeUrlRequest()
 	// 公共参数
 	req.Operator = &ess.UserInfo{
-		UserId:   common.StringPtr(OperatorId),
-		ClientIp: common.StringPtr("***********************"),
+		UserId: common.StringPtr(OperatorId),
 	}
 	req.BaseRequest.SetHttpMethod("POST")
 
@@ -308,6 +300,50 @@ func TestCreateSchemeUrl(t *testing.T) {
 	req.PathType = common.Uint64Ptr(1)
 
 	res, err := client.CreateSchemeUrl(req)
+	if err != nil {
+		fmt.Printf("error : %v\n", err)
+		return
+	}
+	fmt.Println(res.ToJsonString())
+}
+
+func TestDescribeFlowTemplates(t *testing.T) {
+	pf := profile.NewClientProfile()
+	pf.HttpProfile.Endpoint = EndPoint
+	pf.HttpProfile.Scheme = "HTTPS"
+	client, _ := ess.NewClient(common.NewCredential(Ak, Sk), "ap-guangzhou", pf)
+
+	req := ess.NewDescribeFlowTemplatesRequest()
+	// 公共参数
+	req.Operator = &ess.UserInfo{
+		UserId: common.StringPtr(OperatorId),
+	}
+	req.BaseRequest.SetHttpMethod("POST")
+
+	res, err := client.DescribeFlowTemplates(req)
+	if err != nil {
+		fmt.Printf("error : %v\n", err)
+		return
+	}
+	fmt.Println(res.ToJsonString())
+}
+
+func TestCancelFlow(t *testing.T) {
+	pf := profile.NewClientProfile()
+	pf.HttpProfile.Endpoint = EndPoint
+	pf.HttpProfile.Scheme = "HTTPS"
+	client, _ := ess.NewClient(common.NewCredential(Ak, Sk), "ap-guangzhou", pf)
+
+	req := ess.NewCancelFlowRequest()
+	req.BaseRequest.SetHttpMethod("POST")
+	// 公共参数
+	req.Operator = &ess.UserInfo{
+		UserId: common.StringPtr(OperatorId),
+	}
+	req.FlowId = common.StringPtr("***********************")
+	req.CancelMessage = common.StringPtr("***********************")
+
+	res, err := client.CancelFlow(req)
 	if err != nil {
 		fmt.Printf("error : %v\n", err)
 		return
