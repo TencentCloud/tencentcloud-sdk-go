@@ -86,6 +86,88 @@ func (c *Client) AddContractWithContext(ctx context.Context, request *AddContrac
     return
 }
 
+func NewAddFlexIdInfoRequest() (request *AddFlexIdInfoRequest) {
+    request = &AddFlexIdInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "AddFlexIdInfo")
+    
+    
+    return
+}
+
+func NewAddFlexIdInfoResponse() (response *AddFlexIdInfoResponse) {
+    response = &AddFlexIdInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// AddFlexIdInfo
+// 灵云V2-补充证件信息
+func (c *Client) AddFlexIdInfo(request *AddFlexIdInfoRequest) (response *AddFlexIdInfoResponse, err error) {
+    return c.AddFlexIdInfoWithContext(context.Background(), request)
+}
+
+// AddFlexIdInfo
+// 灵云V2-补充证件信息
+func (c *Client) AddFlexIdInfoWithContext(ctx context.Context, request *AddFlexIdInfoRequest) (response *AddFlexIdInfoResponse, err error) {
+    if request == nil {
+        request = NewAddFlexIdInfoRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AddFlexIdInfo require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewAddFlexIdInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewAddFlexPhoneNoRequest() (request *AddFlexPhoneNoRequest) {
+    request = &AddFlexPhoneNoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "AddFlexPhoneNo")
+    
+    
+    return
+}
+
+func NewAddFlexPhoneNoResponse() (response *AddFlexPhoneNoResponse) {
+    response = &AddFlexPhoneNoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// AddFlexPhoneNo
+// 灵云V2-补充手机号信息
+func (c *Client) AddFlexPhoneNo(request *AddFlexPhoneNoRequest) (response *AddFlexPhoneNoResponse, err error) {
+    return c.AddFlexPhoneNoWithContext(context.Background(), request)
+}
+
+// AddFlexPhoneNo
+// 灵云V2-补充手机号信息
+func (c *Client) AddFlexPhoneNoWithContext(ctx context.Context, request *AddFlexPhoneNoRequest) (response *AddFlexPhoneNoResponse, err error) {
+    if request == nil {
+        request = NewAddFlexPhoneNoRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AddFlexPhoneNo require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewAddFlexPhoneNoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewAddMerchantRequest() (request *AddMerchantRequest) {
     request = &AddMerchantRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -7056,6 +7138,57 @@ func (c *Client) QueryFlexAmountBeforeTaxWithContext(ctx context.Context, reques
     return
 }
 
+func NewQueryFlexBillDownloadUrlRequest() (request *QueryFlexBillDownloadUrlRequest) {
+    request = &QueryFlexBillDownloadUrlRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "QueryFlexBillDownloadUrl")
+    
+    
+    return
+}
+
+func NewQueryFlexBillDownloadUrlResponse() (response *QueryFlexBillDownloadUrlResponse) {
+    response = &QueryFlexBillDownloadUrlResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// QueryFlexBillDownloadUrl
+// 灵云V2-查询对账单文件下载链接
+//
+// 可能返回的错误码:
+//  INTERNALERROR_PARAMETERERROR = "InternalError.ParameterError"
+//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
+//  RESOURCENOTFOUND_MERCHANTINFONOTFOUND = "ResourceNotFound.MerchantInfoNotFound"
+func (c *Client) QueryFlexBillDownloadUrl(request *QueryFlexBillDownloadUrlRequest) (response *QueryFlexBillDownloadUrlResponse, err error) {
+    return c.QueryFlexBillDownloadUrlWithContext(context.Background(), request)
+}
+
+// QueryFlexBillDownloadUrl
+// 灵云V2-查询对账单文件下载链接
+//
+// 可能返回的错误码:
+//  INTERNALERROR_PARAMETERERROR = "InternalError.ParameterError"
+//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
+//  RESOURCENOTFOUND_MERCHANTINFONOTFOUND = "ResourceNotFound.MerchantInfoNotFound"
+func (c *Client) QueryFlexBillDownloadUrlWithContext(ctx context.Context, request *QueryFlexBillDownloadUrlRequest) (response *QueryFlexBillDownloadUrlResponse, err error) {
+    if request == nil {
+        request = NewQueryFlexBillDownloadUrlRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryFlexBillDownloadUrl require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewQueryFlexBillDownloadUrlResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewQueryFlexFreezeOrderListRequest() (request *QueryFlexFreezeOrderListRequest) {
     request = &QueryFlexFreezeOrderListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -7103,6 +7236,57 @@ func (c *Client) QueryFlexFreezeOrderListWithContext(ctx context.Context, reques
     request.SetContext(ctx)
     
     response = NewQueryFlexFreezeOrderListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewQueryFlexOrderSummaryListRequest() (request *QueryFlexOrderSummaryListRequest) {
+    request = &QueryFlexOrderSummaryListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "QueryFlexOrderSummaryList")
+    
+    
+    return
+}
+
+func NewQueryFlexOrderSummaryListResponse() (response *QueryFlexOrderSummaryListResponse) {
+    response = &QueryFlexOrderSummaryListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// QueryFlexOrderSummaryList
+// 灵云V2-订单汇总列表查询
+//
+// 可能返回的错误码:
+//  INTERNALERROR_PARAMETERERROR = "InternalError.ParameterError"
+//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
+//  RESOURCENOTFOUND_MERCHANTINFONOTFOUND = "ResourceNotFound.MerchantInfoNotFound"
+func (c *Client) QueryFlexOrderSummaryList(request *QueryFlexOrderSummaryListRequest) (response *QueryFlexOrderSummaryListResponse, err error) {
+    return c.QueryFlexOrderSummaryListWithContext(context.Background(), request)
+}
+
+// QueryFlexOrderSummaryList
+// 灵云V2-订单汇总列表查询
+//
+// 可能返回的错误码:
+//  INTERNALERROR_PARAMETERERROR = "InternalError.ParameterError"
+//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
+//  RESOURCENOTFOUND_MERCHANTINFONOTFOUND = "ResourceNotFound.MerchantInfoNotFound"
+func (c *Client) QueryFlexOrderSummaryListWithContext(ctx context.Context, request *QueryFlexOrderSummaryListRequest) (response *QueryFlexOrderSummaryListResponse, err error) {
+    if request == nil {
+        request = NewQueryFlexOrderSummaryListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryFlexOrderSummaryList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewQueryFlexOrderSummaryListResponse()
     err = c.Send(request, response)
     return
 }

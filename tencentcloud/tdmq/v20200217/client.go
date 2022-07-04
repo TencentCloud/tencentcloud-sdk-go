@@ -529,6 +529,7 @@ func NewCreateClusterResponse() (response *CreateClusterResponse) {
 //  RESOURCEINUSE_CLUSTER = "ResourceInUse.Cluster"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  RESOURCEUNAVAILABLE_CREATEFAILED = "ResourceUnavailable.CreateFailed"
+//  RESOURCEUNAVAILABLE_FUNDREQUIRED = "ResourceUnavailable.FundRequired"
 func (c *Client) CreateCluster(request *CreateClusterRequest) (response *CreateClusterResponse, err error) {
     return c.CreateClusterWithContext(context.Background(), request)
 }
@@ -546,6 +547,7 @@ func (c *Client) CreateCluster(request *CreateClusterRequest) (response *CreateC
 //  RESOURCEINUSE_CLUSTER = "ResourceInUse.Cluster"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  RESOURCEUNAVAILABLE_CREATEFAILED = "ResourceUnavailable.CreateFailed"
+//  RESOURCEUNAVAILABLE_FUNDREQUIRED = "ResourceUnavailable.FundRequired"
 func (c *Client) CreateClusterWithContext(ctx context.Context, request *CreateClusterRequest) (response *CreateClusterResponse, err error) {
     if request == nil {
         request = NewCreateClusterRequest()
@@ -1753,6 +1755,7 @@ func NewDeleteCmqSubscribeResponse() (response *DeleteCmqSubscribeResponse) {
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_DELETESUBSCRIPTIONS = "FailedOperation.DeleteSubscriptions"
 //  FAILEDOPERATION_DELETETOPICS = "FailedOperation.DeleteTopics"
+//  RESOURCENOTFOUND_TOPIC = "ResourceNotFound.Topic"
 func (c *Client) DeleteCmqSubscribe(request *DeleteCmqSubscribeRequest) (response *DeleteCmqSubscribeResponse, err error) {
     return c.DeleteCmqSubscribeWithContext(context.Background(), request)
 }
@@ -1764,6 +1767,7 @@ func (c *Client) DeleteCmqSubscribe(request *DeleteCmqSubscribeRequest) (respons
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_DELETESUBSCRIPTIONS = "FailedOperation.DeleteSubscriptions"
 //  FAILEDOPERATION_DELETETOPICS = "FailedOperation.DeleteTopics"
+//  RESOURCENOTFOUND_TOPIC = "ResourceNotFound.Topic"
 func (c *Client) DeleteCmqSubscribeWithContext(ctx context.Context, request *DeleteCmqSubscribeRequest) (response *DeleteCmqSubscribeResponse, err error) {
     if request == nil {
         request = NewDeleteCmqSubscribeRequest()
@@ -4441,6 +4445,7 @@ func NewModifyCmqQueueAttributeResponse() (response *ModifyCmqQueueAttributeResp
 //  FAILEDOPERATION_SETRETENTIONPOLICY = "FailedOperation.SetRetentionPolicy"
 //  FAILEDOPERATION_SETTTL = "FailedOperation.SetTTL"
 //  INTERNALERROR_BROKERSERVICE = "InternalError.BrokerService"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_ENVIRONMENT = "ResourceNotFound.Environment"
 func (c *Client) ModifyCmqQueueAttribute(request *ModifyCmqQueueAttributeRequest) (response *ModifyCmqQueueAttributeResponse, err error) {
     return c.ModifyCmqQueueAttributeWithContext(context.Background(), request)
@@ -4454,6 +4459,7 @@ func (c *Client) ModifyCmqQueueAttribute(request *ModifyCmqQueueAttributeRequest
 //  FAILEDOPERATION_SETRETENTIONPOLICY = "FailedOperation.SetRetentionPolicy"
 //  FAILEDOPERATION_SETTTL = "FailedOperation.SetTTL"
 //  INTERNALERROR_BROKERSERVICE = "InternalError.BrokerService"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_ENVIRONMENT = "ResourceNotFound.Environment"
 func (c *Client) ModifyCmqQueueAttributeWithContext(ctx context.Context, request *ModifyCmqQueueAttributeRequest) (response *ModifyCmqQueueAttributeResponse, err error) {
     if request == nil {

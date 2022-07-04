@@ -302,6 +302,118 @@ func (c *Client) AssociateSecurityGroupsWithContext(ctx context.Context, request
     return
 }
 
+func NewConfigureChcAssistVpcRequest() (request *ConfigureChcAssistVpcRequest) {
+    request = &ConfigureChcAssistVpcRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cvm", APIVersion, "ConfigureChcAssistVpc")
+    
+    
+    return
+}
+
+func NewConfigureChcAssistVpcResponse() (response *ConfigureChcAssistVpcResponse) {
+    response = &ConfigureChcAssistVpcResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ConfigureChcAssistVpc
+// 配置CHC物理服务器的带外和部署网络。传入带外网络和部署网络信息
+//
+// 可能返回的错误码:
+//  ACCOUNTQUALIFICATIONRESTRICTIONS = "AccountQualificationRestrictions"
+//  INVALIDHOST_NOTSUPPORTED = "InvalidHost.NotSupported"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_AMOUNTNOTEQUAL = "InvalidParameterValue.AmountNotEqual"
+//  INVALIDPARAMETERVALUE_CHCHOSTSNOTFOUND = "InvalidParameterValue.ChcHostsNotFound"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDPARAMETERVALUE_MUSTDHCPENABLEDVPC = "InvalidParameterValue.MustDhcpEnabledVpc"
+func (c *Client) ConfigureChcAssistVpc(request *ConfigureChcAssistVpcRequest) (response *ConfigureChcAssistVpcResponse, err error) {
+    return c.ConfigureChcAssistVpcWithContext(context.Background(), request)
+}
+
+// ConfigureChcAssistVpc
+// 配置CHC物理服务器的带外和部署网络。传入带外网络和部署网络信息
+//
+// 可能返回的错误码:
+//  ACCOUNTQUALIFICATIONRESTRICTIONS = "AccountQualificationRestrictions"
+//  INVALIDHOST_NOTSUPPORTED = "InvalidHost.NotSupported"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_AMOUNTNOTEQUAL = "InvalidParameterValue.AmountNotEqual"
+//  INVALIDPARAMETERVALUE_CHCHOSTSNOTFOUND = "InvalidParameterValue.ChcHostsNotFound"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDPARAMETERVALUE_MUSTDHCPENABLEDVPC = "InvalidParameterValue.MustDhcpEnabledVpc"
+func (c *Client) ConfigureChcAssistVpcWithContext(ctx context.Context, request *ConfigureChcAssistVpcRequest) (response *ConfigureChcAssistVpcResponse, err error) {
+    if request == nil {
+        request = NewConfigureChcAssistVpcRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ConfigureChcAssistVpc require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewConfigureChcAssistVpcResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewConfigureChcDeployVpcRequest() (request *ConfigureChcDeployVpcRequest) {
+    request = &ConfigureChcDeployVpcRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cvm", APIVersion, "ConfigureChcDeployVpc")
+    
+    
+    return
+}
+
+func NewConfigureChcDeployVpcResponse() (response *ConfigureChcDeployVpcResponse) {
+    response = &ConfigureChcDeployVpcResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ConfigureChcDeployVpc
+// 配置CHC物理服务器部署网络
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_AMOUNTNOTEQUAL = "InvalidParameterValue.AmountNotEqual"
+//  INVALIDPARAMETERVALUE_DEPLOYVPCALREADYEXISTS = "InvalidParameterValue.DeployVpcAlreadyExists"
+//  INVALIDPARAMETERVALUE_MUSTDHCPENABLEDVPC = "InvalidParameterValue.MustDhcpEnabledVpc"
+func (c *Client) ConfigureChcDeployVpc(request *ConfigureChcDeployVpcRequest) (response *ConfigureChcDeployVpcResponse, err error) {
+    return c.ConfigureChcDeployVpcWithContext(context.Background(), request)
+}
+
+// ConfigureChcDeployVpc
+// 配置CHC物理服务器部署网络
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_AMOUNTNOTEQUAL = "InvalidParameterValue.AmountNotEqual"
+//  INVALIDPARAMETERVALUE_DEPLOYVPCALREADYEXISTS = "InvalidParameterValue.DeployVpcAlreadyExists"
+//  INVALIDPARAMETERVALUE_MUSTDHCPENABLEDVPC = "InvalidParameterValue.MustDhcpEnabledVpc"
+func (c *Client) ConfigureChcDeployVpcWithContext(ctx context.Context, request *ConfigureChcDeployVpcRequest) (response *ConfigureChcDeployVpcResponse, err error) {
+    if request == nil {
+        request = NewConfigureChcDeployVpcRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ConfigureChcDeployVpc require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewConfigureChcDeployVpcResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateDisasterRecoverGroupRequest() (request *CreateDisasterRecoverGroupRequest) {
     request = &CreateDisasterRecoverGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -392,6 +504,7 @@ func NewCreateImageResponse() (response *CreateImageResponse) {
 //  INVALIDPARAMETERVALUE_INVALIDAPPIDFORMAT = "InvalidParameterValue.InvalidAppIdFormat"
 //  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
 //  INVALIDPARAMETERVALUE_TAGKEYNOTFOUND = "InvalidParameterValue.TagKeyNotFound"
+//  INVALIDPARAMETERVALUE_TAGQUOTALIMITEXCEEDED = "InvalidParameterValue.TagQuotaLimitExceeded"
 //  INVALIDPARAMETERVALUE_TOOLARGE = "InvalidParameterValue.TooLarge"
 //  MUTEXOPERATION_TASKRUNNING = "MutexOperation.TaskRunning"
 //  OPERATIONDENIED_INSTANCEOPERATIONINPROGRESS = "OperationDenied.InstanceOperationInProgress"
@@ -437,6 +550,7 @@ func (c *Client) CreateImage(request *CreateImageRequest) (response *CreateImage
 //  INVALIDPARAMETERVALUE_INVALIDAPPIDFORMAT = "InvalidParameterValue.InvalidAppIdFormat"
 //  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
 //  INVALIDPARAMETERVALUE_TAGKEYNOTFOUND = "InvalidParameterValue.TagKeyNotFound"
+//  INVALIDPARAMETERVALUE_TAGQUOTALIMITEXCEEDED = "InvalidParameterValue.TagQuotaLimitExceeded"
 //  INVALIDPARAMETERVALUE_TOOLARGE = "InvalidParameterValue.TooLarge"
 //  MUTEXOPERATION_TASKRUNNING = "MutexOperation.TaskRunning"
 //  OPERATIONDENIED_INSTANCEOPERATIONINPROGRESS = "OperationDenied.InstanceOperationInProgress"
@@ -3385,6 +3499,7 @@ func NewImportImageResponse() (response *ImportImageResponse) {
 //  INVALIDPARAMETERVALUE_INVALIDLICENSETYPE = "InvalidParameterValue.InvalidLicenseType"
 //  INVALIDPARAMETERVALUE_TAGKEYNOTFOUND = "InvalidParameterValue.TagKeyNotFound"
 //  INVALIDPARAMETERVALUE_TOOLARGE = "InvalidParameterValue.TooLarge"
+//  OPERATIONDENIED_INNERUSERPROHIBITACTION = "OperationDenied.InnerUserProhibitAction"
 //  REGIONABILITYLIMIT_UNSUPPORTEDTOIMPORTIMAGE = "RegionAbilityLimit.UnsupportedToImportImage"
 func (c *Client) ImportImage(request *ImportImageRequest) (response *ImportImageResponse, err error) {
     return c.ImportImageWithContext(context.Background(), request)
@@ -3402,6 +3517,7 @@ func (c *Client) ImportImage(request *ImportImageRequest) (response *ImportImage
 //  INVALIDPARAMETERVALUE_INVALIDLICENSETYPE = "InvalidParameterValue.InvalidLicenseType"
 //  INVALIDPARAMETERVALUE_TAGKEYNOTFOUND = "InvalidParameterValue.TagKeyNotFound"
 //  INVALIDPARAMETERVALUE_TOOLARGE = "InvalidParameterValue.TooLarge"
+//  OPERATIONDENIED_INNERUSERPROHIBITACTION = "OperationDenied.InnerUserProhibitAction"
 //  REGIONABILITYLIMIT_UNSUPPORTEDTOIMPORTIMAGE = "RegionAbilityLimit.UnsupportedToImportImage"
 func (c *Client) ImportImageWithContext(ctx context.Context, request *ImportImageRequest) (response *ImportImageResponse, err error) {
     if request == nil {
@@ -4377,6 +4493,63 @@ func (c *Client) InquiryPriceTerminateInstancesWithContext(ctx context.Context, 
     request.SetContext(ctx)
     
     response = NewInquiryPriceTerminateInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyChcAttributeRequest() (request *ModifyChcAttributeRequest) {
+    request = &ModifyChcAttributeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cvm", APIVersion, "ModifyChcAttribute")
+    
+    
+    return
+}
+
+func NewModifyChcAttributeResponse() (response *ModifyChcAttributeResponse) {
+    response = &ModifyChcAttributeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyChcAttribute
+// 修改CHC物理服务器的属性
+//
+// 可能返回的错误码:
+//  ACCOUNTQUALIFICATIONRESTRICTIONS = "AccountQualificationRestrictions"
+//  INVALIDHOST_NOTSUPPORTED = "InvalidHost.NotSupported"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_CHCHOSTSNOTFOUND = "InvalidParameterValue.ChcHostsNotFound"
+//  INVALIDPARAMETERVALUE_CHCNETWORKEMPTY = "InvalidParameterValue.ChcNetworkEmpty"
+//  INVALIDPASSWORD = "InvalidPassword"
+func (c *Client) ModifyChcAttribute(request *ModifyChcAttributeRequest) (response *ModifyChcAttributeResponse, err error) {
+    return c.ModifyChcAttributeWithContext(context.Background(), request)
+}
+
+// ModifyChcAttribute
+// 修改CHC物理服务器的属性
+//
+// 可能返回的错误码:
+//  ACCOUNTQUALIFICATIONRESTRICTIONS = "AccountQualificationRestrictions"
+//  INVALIDHOST_NOTSUPPORTED = "InvalidHost.NotSupported"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_CHCHOSTSNOTFOUND = "InvalidParameterValue.ChcHostsNotFound"
+//  INVALIDPARAMETERVALUE_CHCNETWORKEMPTY = "InvalidParameterValue.ChcNetworkEmpty"
+//  INVALIDPASSWORD = "InvalidPassword"
+func (c *Client) ModifyChcAttributeWithContext(ctx context.Context, request *ModifyChcAttributeRequest) (response *ModifyChcAttributeResponse, err error) {
+    if request == nil {
+        request = NewModifyChcAttributeRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyChcAttribute require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyChcAttributeResponse()
     err = c.Send(request, response)
     return
 }
@@ -5688,6 +5861,106 @@ func (c *Client) RebootInstancesWithContext(ctx context.Context, request *Reboot
     request.SetContext(ctx)
     
     response = NewRebootInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewRemoveChcAssistVpcRequest() (request *RemoveChcAssistVpcRequest) {
+    request = &RemoveChcAssistVpcRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cvm", APIVersion, "RemoveChcAssistVpc")
+    
+    
+    return
+}
+
+func NewRemoveChcAssistVpcResponse() (response *RemoveChcAssistVpcResponse) {
+    response = &RemoveChcAssistVpcResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// RemoveChcAssistVpc
+// 清理CHC物理服务器的带外网络和部署网络
+//
+// 可能返回的错误码:
+//  ACCOUNTQUALIFICATIONRESTRICTIONS = "AccountQualificationRestrictions"
+//  INVALIDHOST_NOTSUPPORTED = "InvalidHost.NotSupported"
+//  INVALIDPARAMETERVALUE_CHCHOSTSNOTFOUND = "InvalidParameterValue.ChcHostsNotFound"
+func (c *Client) RemoveChcAssistVpc(request *RemoveChcAssistVpcRequest) (response *RemoveChcAssistVpcResponse, err error) {
+    return c.RemoveChcAssistVpcWithContext(context.Background(), request)
+}
+
+// RemoveChcAssistVpc
+// 清理CHC物理服务器的带外网络和部署网络
+//
+// 可能返回的错误码:
+//  ACCOUNTQUALIFICATIONRESTRICTIONS = "AccountQualificationRestrictions"
+//  INVALIDHOST_NOTSUPPORTED = "InvalidHost.NotSupported"
+//  INVALIDPARAMETERVALUE_CHCHOSTSNOTFOUND = "InvalidParameterValue.ChcHostsNotFound"
+func (c *Client) RemoveChcAssistVpcWithContext(ctx context.Context, request *RemoveChcAssistVpcRequest) (response *RemoveChcAssistVpcResponse, err error) {
+    if request == nil {
+        request = NewRemoveChcAssistVpcRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RemoveChcAssistVpc require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewRemoveChcAssistVpcResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewRemoveChcDeployVpcRequest() (request *RemoveChcDeployVpcRequest) {
+    request = &RemoveChcDeployVpcRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cvm", APIVersion, "RemoveChcDeployVpc")
+    
+    
+    return
+}
+
+func NewRemoveChcDeployVpcResponse() (response *RemoveChcDeployVpcResponse) {
+    response = &RemoveChcDeployVpcResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// RemoveChcDeployVpc
+// 清理CHC物理服务器的部署网络
+//
+// 可能返回的错误码:
+//  INVALIDHOST_NOTSUPPORTED = "InvalidHost.NotSupported"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) RemoveChcDeployVpc(request *RemoveChcDeployVpcRequest) (response *RemoveChcDeployVpcResponse, err error) {
+    return c.RemoveChcDeployVpcWithContext(context.Background(), request)
+}
+
+// RemoveChcDeployVpc
+// 清理CHC物理服务器的部署网络
+//
+// 可能返回的错误码:
+//  INVALIDHOST_NOTSUPPORTED = "InvalidHost.NotSupported"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) RemoveChcDeployVpcWithContext(ctx context.Context, request *RemoveChcDeployVpcRequest) (response *RemoveChcDeployVpcResponse, err error) {
+    if request == nil {
+        request = NewRemoveChcDeployVpcRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RemoveChcDeployVpc require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewRemoveChcDeployVpcResponse()
     err = c.Send(request, response)
     return
 }

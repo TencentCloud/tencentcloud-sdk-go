@@ -471,6 +471,7 @@ func NewCreateInstancePreResponse() (response *CreateInstancePreResponse) {
 // 创建实例(预付费包年包月)
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
@@ -493,6 +494,7 @@ func (c *Client) CreateInstancePre(request *CreateInstancePreRequest) (response 
 // 创建实例(预付费包年包月)
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"

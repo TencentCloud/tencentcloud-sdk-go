@@ -312,6 +312,9 @@ type AlterDMSTableRequestParams struct {
 
 	// 分区
 	Partitions []*DMSPartition `json:"Partitions,omitempty" name:"Partitions"`
+
+	// 当前表名
+	Name *string `json:"Name,omitempty" name:"Name"`
 }
 
 type AlterDMSTableRequest struct {
@@ -367,6 +370,9 @@ type AlterDMSTableRequest struct {
 
 	// 分区
 	Partitions []*DMSPartition `json:"Partitions,omitempty" name:"Partitions"`
+
+	// 当前表名
+	Name *string `json:"Name,omitempty" name:"Name"`
 }
 
 func (r *AlterDMSTableRequest) ToJsonString() string {
@@ -398,6 +404,7 @@ func (r *AlterDMSTableRequest) FromJsonString(s string) error {
 	delete(f, "ViewOriginalText")
 	delete(f, "ViewExpandedText")
 	delete(f, "Partitions")
+	delete(f, "Name")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AlterDMSTableRequest has unknown keys!", "")
 	}

@@ -287,6 +287,9 @@ const (
 	// 参数取值错误。
 	INVALIDPARAMETERVALUE = "InvalidParameterValue"
 
+	// 入参数目不相等。
+	INVALIDPARAMETERVALUE_AMOUNTNOTEQUAL = "InvalidParameterValue.AmountNotEqual"
+
 	// 共享带宽包ID不合要求，请提供规范的共享带宽包ID，类似bwp-xxxxxxxx，字母x代表小写字符或者数字。
 	INVALIDPARAMETERVALUE_BANDWIDTHPACKAGEIDMALFORMED = "InvalidParameterValue.BandwidthPackageIdMalformed"
 
@@ -302,11 +305,17 @@ const (
 	// 找不到对应的CHC物理服务器。
 	INVALIDPARAMETERVALUE_CHCHOSTSNOTFOUND = "InvalidParameterValue.ChcHostsNotFound"
 
+	// 该CHC未配置任何网络。
+	INVALIDPARAMETERVALUE_CHCNETWORKEMPTY = "InvalidParameterValue.ChcNetworkEmpty"
+
 	// SSD云硬盘为数据盘时，购买大小不得小于100GB
 	INVALIDPARAMETERVALUE_CLOUDSSDDATADISKSIZETOOSMALL = "InvalidParameterValue.CloudSsdDataDiskSizeTooSmall"
 
 	// 核心计数不合法。
 	INVALIDPARAMETERVALUE_CORECOUNTVALUE = "InvalidParameterValue.CoreCountValue"
+
+	// 已经存在部署VPC。
+	INVALIDPARAMETERVALUE_DEPLOYVPCALREADYEXISTS = "InvalidParameterValue.DeployVpcAlreadyExists"
 
 	// 置放群组ID格式错误。
 	INVALIDPARAMETERVALUE_DISASTERRECOVERGROUPIDMALFORMED = "InvalidParameterValue.DisasterRecoverGroupIdMalformed"
@@ -610,6 +619,9 @@ const (
 
 	// 不允许未配置部署网络的CHC安装云上镜像。
 	OPERATIONDENIED_CHCINSTALLCLOUDIMAGEWITHOUTDEPLOYNETWORK = "OperationDenied.ChcInstallCloudImageWithoutDeployNetwork"
+
+	// 禁止管控账号操作。
+	OPERATIONDENIED_INNERUSERPROHIBITACTION = "OperationDenied.InnerUserProhibitAction"
 
 	// 实例正在执行其他操作，请稍后再试。
 	OPERATIONDENIED_INSTANCEOPERATIONINPROGRESS = "OperationDenied.InstanceOperationInProgress"

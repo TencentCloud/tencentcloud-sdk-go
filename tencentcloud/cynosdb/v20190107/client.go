@@ -2497,6 +2497,7 @@ func NewModifyDBInstanceSecurityGroupsResponse() (response *ModifyDBInstanceSecu
 //  INTERNALERROR_LISTINSTANCEFAILED = "InternalError.ListInstanceFailed"
 //  INTERNALERROR_QUERYDATABASEFAILED = "InternalError.QueryDatabaseFailed"
 //  INVALIDPARAMETERVALUE_INSTANCENOTFOUND = "InvalidParameterValue.InstanceNotFound"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
 //  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) ModifyDBInstanceSecurityGroups(request *ModifyDBInstanceSecurityGroupsRequest) (response *ModifyDBInstanceSecurityGroupsResponse, err error) {
     return c.ModifyDBInstanceSecurityGroupsWithContext(context.Background(), request)
@@ -2510,6 +2511,7 @@ func (c *Client) ModifyDBInstanceSecurityGroups(request *ModifyDBInstanceSecurit
 //  INTERNALERROR_LISTINSTANCEFAILED = "InternalError.ListInstanceFailed"
 //  INTERNALERROR_QUERYDATABASEFAILED = "InternalError.QueryDatabaseFailed"
 //  INVALIDPARAMETERVALUE_INSTANCENOTFOUND = "InvalidParameterValue.InstanceNotFound"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
 //  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) ModifyDBInstanceSecurityGroupsWithContext(ctx context.Context, request *ModifyDBInstanceSecurityGroupsRequest) (response *ModifyDBInstanceSecurityGroupsResponse, err error) {
     if request == nil {

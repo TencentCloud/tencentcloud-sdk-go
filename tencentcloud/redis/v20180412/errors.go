@@ -272,6 +272,9 @@ const (
 	// 实例状态异常，不能执行对应操作。
 	RESOURCEUNAVAILABLE_INSTANCESTATUSERROR = "ResourceUnavailable.InstanceStatusError"
 
+	// 实例已经被其它流程锁定。
+	RESOURCEUNAVAILABLE_INSTANCEUNLOCKEDERROR = "ResourceUnavailable.InstanceUnLockedError"
+
 	// vpc网络IP资源不足。
 	RESOURCEUNAVAILABLE_NOENOUGHVIPINVPC = "ResourceUnavailable.NoEnoughVipInVPC"
 

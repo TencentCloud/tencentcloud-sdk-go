@@ -234,6 +234,10 @@ type BotConfig struct {
 
 	// 用户画像规则
 	PortraitRule *BotPortraitRule `json:"PortraitRule,omitempty" name:"PortraitRule"`
+
+	// Bot智能分析
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IntelligenceRule *IntelligenceRule `json:"IntelligenceRule,omitempty" name:"IntelligenceRule"`
 }
 
 type BotLog struct {
@@ -1827,6 +1831,10 @@ type DDoSAntiPly struct {
 
 	// 空连接防护开启 0-1
 	EmptyConnectProtect *string `json:"EmptyConnectProtect,omitempty" name:"EmptyConnectProtect"`
+
+	// UDP分片开关；off-关闭，on-开启
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UdpShard *string `json:"UdpShard,omitempty" name:"UdpShard"`
 }
 
 type DDoSApplication struct {
@@ -2188,6 +2196,10 @@ type DdosRule struct {
 	// DDoS开关 on-开启；off-关闭
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
+
+	// UDP分片功能是否支持，off-不支持，on-支持
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UdpShardOpen *string `json:"UdpShardOpen,omitempty" name:"UdpShardOpen"`
 }
 
 type DefaultServerCertInfo struct {
@@ -5482,20 +5494,26 @@ type DescribeTimingL4DataRequestParams struct {
 	// 指标列表
 	MetricNames []*string `json:"MetricNames,omitempty" name:"MetricNames"`
 
-	// ZoneId列表，仅在zone/instance维度下查询时该参数有效
+	// 站点id列表
 	ZoneIds []*string `json:"ZoneIds,omitempty" name:"ZoneIds"`
 
-	// InstanceId列表，仅在Instance维度下查询时该参数有效
+	// 该字段已废弃，请使用ProxyIds字段
 	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
 
-	// 协议类型， 该字段当前无效
+	// 该字段当前无效
 	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
 
 	// 时间间隔，选填{min, 5min, hour, day}
 	Interval *string `json:"Interval,omitempty" name:"Interval"`
 
-	// 规则ID，仅在instance维度有效
+	// 该字段当前无效，请使用Filter筛选
 	RuleId *string `json:"RuleId,omitempty" name:"RuleId"`
+
+	// 支持的 Filter：proxyd,ruleId
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 四层实例列表
+	ProxyIds []*string `json:"ProxyIds,omitempty" name:"ProxyIds"`
 }
 
 type DescribeTimingL4DataRequest struct {
@@ -5510,20 +5528,26 @@ type DescribeTimingL4DataRequest struct {
 	// 指标列表
 	MetricNames []*string `json:"MetricNames,omitempty" name:"MetricNames"`
 
-	// ZoneId列表，仅在zone/instance维度下查询时该参数有效
+	// 站点id列表
 	ZoneIds []*string `json:"ZoneIds,omitempty" name:"ZoneIds"`
 
-	// InstanceId列表，仅在Instance维度下查询时该参数有效
+	// 该字段已废弃，请使用ProxyIds字段
 	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
 
-	// 协议类型， 该字段当前无效
+	// 该字段当前无效
 	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
 
 	// 时间间隔，选填{min, 5min, hour, day}
 	Interval *string `json:"Interval,omitempty" name:"Interval"`
 
-	// 规则ID，仅在instance维度有效
+	// 该字段当前无效，请使用Filter筛选
 	RuleId *string `json:"RuleId,omitempty" name:"RuleId"`
+
+	// 支持的 Filter：proxyd,ruleId
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 四层实例列表
+	ProxyIds []*string `json:"ProxyIds,omitempty" name:"ProxyIds"`
 }
 
 func (r *DescribeTimingL4DataRequest) ToJsonString() string {
@@ -5546,6 +5570,8 @@ func (r *DescribeTimingL4DataRequest) FromJsonString(s string) error {
 	delete(f, "Protocol")
 	delete(f, "Interval")
 	delete(f, "RuleId")
+	delete(f, "Filters")
+	delete(f, "ProxyIds")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTimingL4DataRequest has unknown keys!", "")
 	}
@@ -7700,6 +7726,58 @@ func (r *ImportDnsRecordsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type IntelligenceRule struct {
+	// 开关
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
+
+	// 规则详情
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Items []*IntelligenceRuleItem `json:"Items,omitempty" name:"Items"`
+}
+
+type IntelligenceRuleItem struct {
+	// 恶意BOT
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Label *string `json:"Label,omitempty" name:"Label"`
+
+	// 动作
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Action *string `json:"Action,omitempty" name:"Action"`
+}
+
+type IpTableConfig struct {
+	// 开关
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
+
+	// []
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Rules []*IpTableRule `json:"Rules,omitempty" name:"Rules"`
+}
+
+type IpTableRule struct {
+	// 动作: drop拦截，trans放行，monitor观察
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Action *string `json:"Action,omitempty" name:"Action"`
+
+	// 根据类型匹配：ip(根据ip), area(根据区域)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MatchFrom *string `json:"MatchFrom,omitempty" name:"MatchFrom"`
+
+	// 匹配内容
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MatchContent *string `json:"MatchContent,omitempty" name:"MatchContent"`
+
+	// 规则id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleID *int64 `json:"RuleID,omitempty" name:"RuleID"`
+
+	// 更新时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+}
+
 type L7OfflineLog struct {
 	// 日志打包开始时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -9696,6 +9774,20 @@ type RateLimitConfig struct {
 	// 默认模板
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Template *RateLimitTemplate `json:"Template,omitempty" name:"Template"`
+
+	// 智能客户端过滤
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Intelligence *RateLimitIntelligence `json:"Intelligence,omitempty" name:"Intelligence"`
+}
+
+type RateLimitIntelligence struct {
+	// 功能开关
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
+
+	// 执行动作 monitor(观察), alg(挑战)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Action *string `json:"Action,omitempty" name:"Action"`
 }
 
 type RateLimitTemplate struct {
@@ -9950,6 +10042,10 @@ type SecurityConfig struct {
 	// 总开关
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SwitchConfig *SwitchConfig `json:"SwitchConfig,omitempty" name:"SwitchConfig"`
+
+	// IP黑白名单
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IpTableConfig *IpTableConfig `json:"IpTableConfig,omitempty" name:"IpTableConfig"`
 }
 
 type SecurityEntity struct {

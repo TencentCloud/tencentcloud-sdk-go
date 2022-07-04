@@ -1,3 +1,343 @@
+# Release v1.0.435
+
+## 云数据库 MySQL(cdb) 版本：2017-03-20
+
+### 第 95 次发布
+
+发布时间：2022-07-05 06:08:02
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [OpenAuditService](https://cloud.tencent.com/document/api/236/76408)
+
+修改接口：
+
+* [ModifyAuditConfig](https://cloud.tencent.com/document/api/236/45451)
+
+	* 新增入参：HighLogExpireDay
+
+
+
+
+## 消息队列 Ckafka(ckafka) 版本：2019-08-19
+
+### 第 42 次发布
+
+发布时间：2022-07-05 06:09:16
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeCkafkaZone](https://cloud.tencent.com/document/api/597/55246)
+
+	* 新增入参：CdcId
+
+* [DescribeRegion](https://cloud.tencent.com/document/api/597/55245)
+
+	* 新增入参：CdcId
+
+
+修改数据结构：
+
+* [InstanceDetail](https://cloud.tencent.com/document/api/597/40861#InstanceDetail)
+
+	* 新增成员：ClusterType
+
+
+
+
+## 企业收付平台(cpdp) 版本：2019-08-20
+
+### 第 74 次发布
+
+发布时间：2022-07-05 06:10:03
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [AddFlexIdInfo](https://cloud.tencent.com/document/api/1122/76412)
+* [AddFlexPhoneNo](https://cloud.tencent.com/document/api/1122/76411)
+* [QueryFlexBillDownloadUrl](https://cloud.tencent.com/document/api/1122/76410)
+* [QueryFlexOrderSummaryList](https://cloud.tencent.com/document/api/1122/76409)
+
+新增数据结构：
+
+* [FlexBillDownloadUrlResult](https://cloud.tencent.com/document/api/1122/40683#FlexBillDownloadUrlResult)
+* [OrderSummaries](https://cloud.tencent.com/document/api/1122/40683#OrderSummaries)
+* [OrderSummaryResult](https://cloud.tencent.com/document/api/1122/40683#OrderSummaryResult)
+
+
+
+## 云服务器(cvm) 版本：2017-03-12
+
+### 第 89 次发布
+
+发布时间：2022-07-05 06:10:41
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [ConfigureChcAssistVpc](https://cloud.tencent.com/document/api/213/76417)
+* [ConfigureChcDeployVpc](https://cloud.tencent.com/document/api/213/76416)
+* [ModifyChcAttribute](https://cloud.tencent.com/document/api/213/76415)
+* [RemoveChcAssistVpc](https://cloud.tencent.com/document/api/213/76414)
+* [RemoveChcDeployVpc](https://cloud.tencent.com/document/api/213/76413)
+
+
+
+## 分布式数据库 TDSQL(dcdb) 版本：2018-04-11
+
+### 第 42 次发布
+
+发布时间：2022-07-05 06:12:03
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateAccount](https://cloud.tencent.com/document/api/557/19996)
+
+	* 新增入参：SlaveConst, MaxUserConnections
+
+
+修改数据结构：
+
+* [DBAccount](https://cloud.tencent.com/document/api/557/16142#DBAccount)
+
+	* 新增成员：SlaveConst
+
+
+
+
+## 数据湖计算(dlc) 版本：2021-01-25
+
+### 第 26 次发布
+
+发布时间：2022-07-05 06:12:13
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [AlterDMSTable](https://cloud.tencent.com/document/api/1342/76230)
+
+	* 新增入参：Name
+
+
+
+
+## Elasticsearch Service(es) 版本：2018-04-16
+
+### 第 29 次发布
+
+发布时间：2022-07-05 06:13:25
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [NodeInfo](https://cloud.tencent.com/document/api/845/30634#NodeInfo)
+
+	* 新增成员：CpuNum, MemSize
+
+
+
+
+## 电子签服务(ess) 版本：2020-11-11
+
+### 第 10 次发布
+
+发布时间：2022-07-05 06:13:29
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [UploadFiles](https://cloud.tencent.com/document/api/1323/73066)
+
+	* <font color="#dd0000">**修改入参**：</font>Caller
+
+
+
+
+## 智能编辑(ie) 版本：2020-03-04
+
+### 第 12 次发布
+
+发布时间：2022-07-05 06:14:24
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [DynamicImageInfo](https://cloud.tencent.com/document/api/1186/42824#DynamicImageInfo)
+* [MediaCuttingWatermark](https://cloud.tencent.com/document/api/1186/42824#MediaCuttingWatermark)
+* [MediaCuttingWatermarkImage](https://cloud.tencent.com/document/api/1186/42824#MediaCuttingWatermarkImage)
+* [MediaCuttingWatermarkText](https://cloud.tencent.com/document/api/1186/42824#MediaCuttingWatermarkText)
+* [SpriteImageInfo](https://cloud.tencent.com/document/api/1186/42824#SpriteImageInfo)
+
+修改数据结构：
+
+* [MediaCuttingInfo](https://cloud.tencent.com/document/api/1186/42824#MediaCuttingInfo)
+
+	* 新增成员：WatermarkInfoSet, DropPureColor
+
+* [MediaCuttingOutForm](https://cloud.tencent.com/document/api/1186/42824#MediaCuttingOutForm)
+
+	* 新增成员：SpriteInfo, DynamicInfo
+
+* [MediaCuttingTaskResult](https://cloud.tencent.com/document/api/1186/42824#MediaCuttingTaskResult)
+
+	* 新增成员：ImageCount
+
+* [MediaJoiningInfo](https://cloud.tencent.com/document/api/1186/42824#MediaJoiningInfo)
+
+	* 新增成员：Mode
+
+* [SaveInfo](https://cloud.tencent.com/document/api/1186/42824#SaveInfo)
+
+	* 新增成员：Id
+
+* [TaskResultFile](https://cloud.tencent.com/document/api/1186/42824#TaskResultFile)
+
+	* 新增成员：Md5
+
+
+
+
+## 云数据库 MariaDB(mariadb) 版本：2017-03-12
+
+### 第 37 次发布
+
+发布时间：2022-07-05 06:18:01
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateAccount](https://cloud.tencent.com/document/api/237/16165)
+
+	* 新增入参：SlaveConst, MaxUserConnections
+
+
+修改数据结构：
+
+* [DBAccount](https://cloud.tencent.com/document/api/237/16191#DBAccount)
+
+	* 新增成员：SlaveConst
+
+
+
+
+## TDSQL-C PostgreSQL 版(tdcpg) 版本：2021-11-18
+
+### 第 2 次发布
+
+发布时间：2022-07-05 06:21:49
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateCluster](https://cloud.tencent.com/document/api/1556/70670)
+
+	* 新增入参：DBMajorVersion, DBKernelVersion
+
+	* <font color="#dd0000">**修改入参**：</font>DBVersion
+
+
+修改数据结构：
+
+* [Cluster](https://cloud.tencent.com/document/api/1556/70695#Cluster)
+
+	* 新增成员：DBMajorVersion, DBKernelVersion
+
+* [Instance](https://cloud.tencent.com/document/api/1556/70695#Instance)
+
+	* 新增成员：DBMajorVersion, DBKernelVersion
+
+
+
+
+## 边缘安全加速平台(teo) 版本：2022-01-06
+
+### 第 12 次发布
+
+发布时间：2022-07-05 06:22:14
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeTimingL4Data](https://cloud.tencent.com/document/api/1552/75655)
+
+	* 新增入参：Filters, ProxyIds
+
+
+新增数据结构：
+
+* [IntelligenceRule](https://cloud.tencent.com/document/api/1552/73155#IntelligenceRule)
+* [IntelligenceRuleItem](https://cloud.tencent.com/document/api/1552/73155#IntelligenceRuleItem)
+* [IpTableConfig](https://cloud.tencent.com/document/api/1552/73155#IpTableConfig)
+* [IpTableRule](https://cloud.tencent.com/document/api/1552/73155#IpTableRule)
+* [RateLimitIntelligence](https://cloud.tencent.com/document/api/1552/73155#RateLimitIntelligence)
+
+修改数据结构：
+
+* [BotConfig](https://cloud.tencent.com/document/api/1552/73155#BotConfig)
+
+	* 新增成员：IntelligenceRule
+
+	* <font color="#dd0000">**修改成员**：</font>Switch
+
+* [DDoSAntiPly](https://cloud.tencent.com/document/api/1552/73155#DDoSAntiPly)
+
+	* 新增成员：UdpShard
+
+* [DdosRule](https://cloud.tencent.com/document/api/1552/73155#DdosRule)
+
+	* 新增成员：UdpShardOpen
+
+* [RateLimitConfig](https://cloud.tencent.com/document/api/1552/73155#RateLimitConfig)
+
+	* 新增成员：Intelligence
+
+* [SecurityConfig](https://cloud.tencent.com/document/api/1552/73155#SecurityConfig)
+
+	* 新增成员：IpTableConfig
+
+
+
+
 # Release v1.0.434
 
 ## 企业收付平台(cpdp) 版本：2019-08-20

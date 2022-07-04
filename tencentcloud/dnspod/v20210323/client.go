@@ -1995,6 +1995,7 @@ func NewDescribeSubdomainAnalyticsResponse() (response *DescribeSubdomainAnalyti
 //  FAILEDOPERATION_DOMAINNOTINSERVICE = "FailedOperation.DomainNotInService"
 //  FAILEDOPERATION_TEMPORARYERROR = "FailedOperation.TemporaryError"
 //  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnknowError"
+//  INVALIDPARAMETER_DOMAININVALID = "InvalidParameter.DomainInvalid"
 //  INVALIDPARAMETERVALUE_DOMAINGRADEINVALID = "InvalidParameterValue.DomainGradeInvalid"
 //  OPERATIONDENIED_DOMAINOWNERALLOWEDONLY = "OperationDenied.DomainOwnerAllowedOnly"
 func (c *Client) DescribeSubdomainAnalytics(request *DescribeSubdomainAnalyticsRequest) (response *DescribeSubdomainAnalyticsResponse, err error) {
@@ -2009,6 +2010,7 @@ func (c *Client) DescribeSubdomainAnalytics(request *DescribeSubdomainAnalyticsR
 //  FAILEDOPERATION_DOMAINNOTINSERVICE = "FailedOperation.DomainNotInService"
 //  FAILEDOPERATION_TEMPORARYERROR = "FailedOperation.TemporaryError"
 //  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnknowError"
+//  INVALIDPARAMETER_DOMAININVALID = "InvalidParameter.DomainInvalid"
 //  INVALIDPARAMETERVALUE_DOMAINGRADEINVALID = "InvalidParameterValue.DomainGradeInvalid"
 //  OPERATIONDENIED_DOMAINOWNERALLOWEDONLY = "OperationDenied.DomainOwnerAllowedOnly"
 func (c *Client) DescribeSubdomainAnalyticsWithContext(ctx context.Context, request *DescribeSubdomainAnalyticsRequest) (response *DescribeSubdomainAnalyticsResponse, err error) {

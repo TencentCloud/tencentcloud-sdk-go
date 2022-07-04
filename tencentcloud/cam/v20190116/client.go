@@ -2933,6 +2933,7 @@ func NewListAccessKeysResponse() (response *ListAccessKeysResponse) {
 //  OPERATIONDENIED_ACCESSKEYOVERLIMIT = "OperationDenied.AccessKeyOverLimit"
 //  OPERATIONDENIED_SUBUIN = "OperationDenied.SubUin"
 //  OPERATIONDENIED_UINNOTMATCH = "OperationDenied.UinNotMatch"
+//  RESOURCENOTFOUND_SECRETNOTEXIST = "ResourceNotFound.SecretNotExist"
 func (c *Client) ListAccessKeys(request *ListAccessKeysRequest) (response *ListAccessKeysResponse, err error) {
     return c.ListAccessKeysWithContext(context.Background(), request)
 }
@@ -2948,6 +2949,7 @@ func (c *Client) ListAccessKeys(request *ListAccessKeysRequest) (response *ListA
 //  OPERATIONDENIED_ACCESSKEYOVERLIMIT = "OperationDenied.AccessKeyOverLimit"
 //  OPERATIONDENIED_SUBUIN = "OperationDenied.SubUin"
 //  OPERATIONDENIED_UINNOTMATCH = "OperationDenied.UinNotMatch"
+//  RESOURCENOTFOUND_SECRETNOTEXIST = "ResourceNotFound.SecretNotExist"
 func (c *Client) ListAccessKeysWithContext(ctx context.Context, request *ListAccessKeysRequest) (response *ListAccessKeysResponse, err error) {
     if request == nil {
         request = NewListAccessKeysRequest()

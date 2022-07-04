@@ -779,6 +779,7 @@ func NewCreateExportTaskResponse() (response *CreateExportTaskResponse) {
 // 该接口（CreateExportTask）用于创建导出任务
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -791,6 +792,7 @@ func (c *Client) CreateExportTask(request *CreateExportTaskRequest) (response *C
 // 该接口（CreateExportTask）用于创建导出任务
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -832,6 +834,7 @@ func NewCreateImportTaskResponse() (response *CreateImportTaskResponse) {
 // 该接口（CreateImportTask）用于创建导入任务
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -843,6 +846,7 @@ func (c *Client) CreateImportTask(request *CreateImportTaskRequest) (response *C
 // 该接口（CreateImportTask）用于创建导入任务
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -1325,6 +1329,7 @@ func NewCreateUserResponse() (response *CreateUserResponse) {
 // 创建用户
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_GRANTPOLICYFAILED = "FailedOperation.GrantPolicyFailed"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER_DUPLICATEUSERNAME = "InvalidParameter.DuplicateUserName"
 //  INVALIDPARAMETER_INVALIDACCESSPOLICY = "InvalidParameter.InvalidAccessPolicy"
@@ -1345,6 +1350,7 @@ func (c *Client) CreateUser(request *CreateUserRequest) (response *CreateUserRes
 // 创建用户
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_GRANTPOLICYFAILED = "FailedOperation.GrantPolicyFailed"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER_DUPLICATEUSERNAME = "InvalidParameter.DuplicateUserName"
 //  INVALIDPARAMETER_INVALIDACCESSPOLICY = "InvalidParameter.InvalidAccessPolicy"
@@ -1394,6 +1400,7 @@ func NewCreateWorkGroupResponse() (response *CreateWorkGroupResponse) {
 // 创建工作组
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_GRANTPOLICYFAILED = "FailedOperation.GrantPolicyFailed"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER_DUPLICATEGROUPNAME = "InvalidParameter.DuplicateGroupName"
 //  INVALIDPARAMETER_INVALIDDESCRIPTION = "InvalidParameter.InvalidDescription"
@@ -1413,6 +1420,7 @@ func (c *Client) CreateWorkGroup(request *CreateWorkGroupRequest) (response *Cre
 // 创建工作组
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_GRANTPOLICYFAILED = "FailedOperation.GrantPolicyFailed"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER_DUPLICATEGROUPNAME = "InvalidParameter.DuplicateGroupName"
 //  INVALIDPARAMETER_INVALIDDESCRIPTION = "InvalidParameter.InvalidDescription"
@@ -1560,6 +1568,7 @@ func NewDeleteUserResponse() (response *DeleteUserResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_REVOKEPOLICYFAILED = "FailedOperation.RevokePolicyFailed"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER_INVALIDUSERNAME = "InvalidParameter.InvalidUserName"
 //  RESOURCESSOLDOUT_UNAUTHORIZEDREVOKEPOLICY = "ResourcesSoldOut.UnauthorizedRevokePolicy"
@@ -1575,6 +1584,7 @@ func (c *Client) DeleteUser(request *DeleteUserRequest) (response *DeleteUserRes
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_REVOKEPOLICYFAILED = "FailedOperation.RevokePolicyFailed"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER_INVALIDUSERNAME = "InvalidParameter.InvalidUserName"
 //  RESOURCESSOLDOUT_UNAUTHORIZEDREVOKEPOLICY = "ResourcesSoldOut.UnauthorizedRevokePolicy"
@@ -1669,6 +1679,7 @@ func NewDeleteWorkGroupResponse() (response *DeleteWorkGroupResponse) {
 // 删除工作组
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_REVOKEPOLICYFAILED = "FailedOperation.RevokePolicyFailed"
 //  INTERNALERROR = "InternalError"
 //  UNAUTHORIZEDOPERATION_DELETEWORKGROUP = "UnauthorizedOperation.DeleteWorkgroup"
 //  UNAUTHORIZEDOPERATION_REVOKEPOLICY = "UnauthorizedOperation.RevokePolicy"
@@ -1680,6 +1691,7 @@ func (c *Client) DeleteWorkGroup(request *DeleteWorkGroupRequest) (response *Del
 // 删除工作组
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_REVOKEPOLICYFAILED = "FailedOperation.RevokePolicyFailed"
 //  INTERNALERROR = "InternalError"
 //  UNAUTHORIZEDOPERATION_DELETEWORKGROUP = "UnauthorizedOperation.DeleteWorkgroup"
 //  UNAUTHORIZEDOPERATION_REVOKEPOLICY = "UnauthorizedOperation.RevokePolicy"
@@ -2038,9 +2050,7 @@ func NewDescribeSparkAppJobResponse() (response *DescribeSparkAppJobResponse) {
 // 查询具体的spark应用
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INTERNALERROR_DBERROR = "InternalError.DBError"
-//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDSPARKAPPPARAM = "InvalidParameter.InvalidSparkAppParam"
 func (c *Client) DescribeSparkAppJob(request *DescribeSparkAppJobRequest) (response *DescribeSparkAppJobResponse, err error) {
     return c.DescribeSparkAppJobWithContext(context.Background(), request)
 }
@@ -2049,9 +2059,7 @@ func (c *Client) DescribeSparkAppJob(request *DescribeSparkAppJobRequest) (respo
 // 查询具体的spark应用
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INTERNALERROR_DBERROR = "InternalError.DBError"
-//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDSPARKAPPPARAM = "InvalidParameter.InvalidSparkAppParam"
 func (c *Client) DescribeSparkAppJobWithContext(ctx context.Context, request *DescribeSparkAppJobRequest) (response *DescribeSparkAppJobResponse, err error) {
     if request == nil {
         request = NewDescribeSparkAppJobRequest()
@@ -2624,6 +2632,7 @@ func NewDetachUserPolicyResponse() (response *DetachUserPolicyResponse) {
 //  FAILEDOPERATION_REVOKEPOLICYFAILED = "FailedOperation.RevokePolicyFailed"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER_INVALIDACCESSPOLICY = "InvalidParameter.InvalidAccessPolicy"
+//  INVALIDPARAMETER_INVALIDUSERNAME = "InvalidParameter.InvalidUserName"
 //  UNAUTHORIZEDOPERATION_REVOKEPOLICY = "UnauthorizedOperation.RevokePolicy"
 //  UNAUTHORIZEDOPERATION_USERNOTEXIST = "UnauthorizedOperation.UserNotExist"
 //  UNSUPPORTEDOPERATION_MODIFYOWNERUNSUPPORTED = "UnsupportedOperation.ModifyOwnerUnsupported"
@@ -2642,6 +2651,7 @@ func (c *Client) DetachUserPolicy(request *DetachUserPolicyRequest) (response *D
 //  FAILEDOPERATION_REVOKEPOLICYFAILED = "FailedOperation.RevokePolicyFailed"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER_INVALIDACCESSPOLICY = "InvalidParameter.InvalidAccessPolicy"
+//  INVALIDPARAMETER_INVALIDUSERNAME = "InvalidParameter.InvalidUserName"
 //  UNAUTHORIZEDOPERATION_REVOKEPOLICY = "UnauthorizedOperation.RevokePolicy"
 //  UNAUTHORIZEDOPERATION_USERNOTEXIST = "UnauthorizedOperation.UserNotExist"
 //  UNSUPPORTEDOPERATION_MODIFYOWNERUNSUPPORTED = "UnsupportedOperation.ModifyOwnerUnsupported"

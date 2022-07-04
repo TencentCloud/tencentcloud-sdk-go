@@ -59,6 +59,9 @@ const (
 	// 证书信息错误。
 	INVALIDPARAMETER_INVALIDCERTINFO = "InvalidParameter.InvalidCertInfo"
 
+	// 无效的源站。
+	INVALIDPARAMETER_INVALIDORIGIN = "InvalidParameter.InvalidOrigin"
+
 	// 无效的请求头header。
 	INVALIDPARAMETER_INVALIDREQUESTHEADERNAME = "InvalidParameter.InvalidRequestHeaderName"
 

@@ -509,6 +509,12 @@ type CreateAccountRequestParams struct {
 
 	// 根据传入时间判断备机不可用
 	DelayThresh *int64 `json:"DelayThresh,omitempty" name:"DelayThresh"`
+
+	// 针对只读账号，设置策略是否固定备机，0：不固定备机，即备机不满足条件与客户端不断开连接，Proxy选择其他可用备机，1：备机不满足条件断开连接，确保一个连接固定备机。
+	SlaveConst *int64 `json:"SlaveConst,omitempty" name:"SlaveConst"`
+
+	// 用户最大连接数限制参数。不传或者传0表示为不限制，对应max_user_connections参数，目前10.1内核版本不支持设置。
+	MaxUserConnections *uint64 `json:"MaxUserConnections,omitempty" name:"MaxUserConnections"`
 }
 
 type CreateAccountRequest struct {
@@ -534,6 +540,12 @@ type CreateAccountRequest struct {
 
 	// 根据传入时间判断备机不可用
 	DelayThresh *int64 `json:"DelayThresh,omitempty" name:"DelayThresh"`
+
+	// 针对只读账号，设置策略是否固定备机，0：不固定备机，即备机不满足条件与客户端不断开连接，Proxy选择其他可用备机，1：备机不满足条件断开连接，确保一个连接固定备机。
+	SlaveConst *int64 `json:"SlaveConst,omitempty" name:"SlaveConst"`
+
+	// 用户最大连接数限制参数。不传或者传0表示为不限制，对应max_user_connections参数，目前10.1内核版本不支持设置。
+	MaxUserConnections *uint64 `json:"MaxUserConnections,omitempty" name:"MaxUserConnections"`
 }
 
 func (r *CreateAccountRequest) ToJsonString() string {
@@ -555,6 +567,8 @@ func (r *CreateAccountRequest) FromJsonString(s string) error {
 	delete(f, "ReadOnly")
 	delete(f, "Description")
 	delete(f, "DelayThresh")
+	delete(f, "SlaveConst")
+	delete(f, "MaxUserConnections")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAccountRequest has unknown keys!", "")
 	}
@@ -1283,6 +1297,9 @@ type DBAccount struct {
 	// 该字段对只读帐号有意义，表示选择主备延迟小于该值的备机
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DelayThresh *int64 `json:"DelayThresh,omitempty" name:"DelayThresh"`
+
+	// 针对只读账号，设置策略是否固定备机，0：不固定备机，即备机不满足条件与客户端不断开连接，Proxy选择其他可用备机，1：备机不满足条件断开连接，确保一个连接固定备机。
+	SlaveConst *int64 `json:"SlaveConst,omitempty" name:"SlaveConst"`
 }
 
 type DBBackupTimeConfig struct {

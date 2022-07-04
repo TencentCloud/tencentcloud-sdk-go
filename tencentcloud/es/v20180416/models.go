@@ -1950,6 +1950,14 @@ type NodeInfo struct {
 
 	// 节点磁盘是否加密 0: 不加密，1: 加密；默认不加密
 	DiskEncrypt *uint64 `json:"DiskEncrypt,omitempty" name:"DiskEncrypt"`
+
+	// cpu数目
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CpuNum *uint64 `json:"CpuNum,omitempty" name:"CpuNum"`
+
+	// 内存大小，单位GB
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MemSize *int64 `json:"MemSize,omitempty" name:"MemSize"`
 }
 
 type NodeView struct {

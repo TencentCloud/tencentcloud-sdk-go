@@ -2744,6 +2744,7 @@ func NewDescribeParamsEventResponse() (response *DescribeParamsEventResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CAMAUTHFAILED = "FailedOperation.CamAuthFailed"
+//  FAILEDOPERATION_FAILEDOPERATIONERROR = "FailedOperation.FailedOperationError"
 //  FAILEDOPERATION_OSSOPERATIONFAILED = "FailedOperation.OssOperationFailed"
 //  INTERNALERROR_INTERNALHTTPSERVERERROR = "InternalError.InternalHttpServerError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
@@ -2758,6 +2759,7 @@ func (c *Client) DescribeParamsEvent(request *DescribeParamsEventRequest) (respo
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CAMAUTHFAILED = "FailedOperation.CamAuthFailed"
+//  FAILEDOPERATION_FAILEDOPERATIONERROR = "FailedOperation.FailedOperationError"
 //  FAILEDOPERATION_OSSOPERATIONFAILED = "FailedOperation.OssOperationFailed"
 //  INTERNALERROR_INTERNALHTTPSERVERERROR = "InternalError.InternalHttpServerError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
@@ -3832,6 +3834,7 @@ func NewInquiryPriceUpgradeDBInstanceResponse() (response *InquiryPriceUpgradeDB
 //  INVALIDPARAMETERVALUE_PARAMETERHANDLEERROR = "InvalidParameterValue.ParameterHandleError"
 //  OPERATIONDENIED_CAMDENIEDERROR = "OperationDenied.CamDeniedError"
 //  OPERATIONDENIED_INSTANCEACCESSDENIEDERROR = "OperationDenied.InstanceAccessDeniedError"
+//  OPERATIONDENIED_INSTANCESTATUSLIMITOPERROR = "OperationDenied.InstanceStatusLimitOpError"
 //  RESOURCENOTFOUND_INSTANCENOTFOUNDERROR = "ResourceNotFound.InstanceNotFoundError"
 //  RESOURCEUNAVAILABLE_INVALIDINSTANCESTATUS = "ResourceUnavailable.InvalidInstanceStatus"
 func (c *Client) InquiryPriceUpgradeDBInstance(request *InquiryPriceUpgradeDBInstanceRequest) (response *InquiryPriceUpgradeDBInstanceResponse, err error) {
@@ -3864,6 +3867,7 @@ func (c *Client) InquiryPriceUpgradeDBInstance(request *InquiryPriceUpgradeDBIns
 //  INVALIDPARAMETERVALUE_PARAMETERHANDLEERROR = "InvalidParameterValue.ParameterHandleError"
 //  OPERATIONDENIED_CAMDENIEDERROR = "OperationDenied.CamDeniedError"
 //  OPERATIONDENIED_INSTANCEACCESSDENIEDERROR = "OperationDenied.InstanceAccessDeniedError"
+//  OPERATIONDENIED_INSTANCESTATUSLIMITOPERROR = "OperationDenied.InstanceStatusLimitOpError"
 //  RESOURCENOTFOUND_INSTANCENOTFOUNDERROR = "ResourceNotFound.InstanceNotFoundError"
 //  RESOURCEUNAVAILABLE_INVALIDINSTANCESTATUS = "ResourceUnavailable.InvalidInstanceStatus"
 func (c *Client) InquiryPriceUpgradeDBInstanceWithContext(ctx context.Context, request *InquiryPriceUpgradeDBInstanceRequest) (response *InquiryPriceUpgradeDBInstanceResponse, err error) {

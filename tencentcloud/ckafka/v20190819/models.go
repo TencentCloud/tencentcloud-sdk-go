@@ -2430,12 +2430,15 @@ func (r *DescribeAppInfoResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeCkafkaZoneRequestParams struct {
-
+	// cdc专业集群业务参数
+	CdcId *string `json:"CdcId,omitempty" name:"CdcId"`
 }
 
 type DescribeCkafkaZoneRequest struct {
 	*tchttp.BaseRequest
 	
+	// cdc专业集群业务参数
+	CdcId *string `json:"CdcId,omitempty" name:"CdcId"`
 }
 
 func (r *DescribeCkafkaZoneRequest) ToJsonString() string {
@@ -2450,7 +2453,7 @@ func (r *DescribeCkafkaZoneRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "CdcId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCkafkaZoneRequest has unknown keys!", "")
 	}
@@ -3089,6 +3092,9 @@ type DescribeRegionRequestParams struct {
 
 	// 业务字段，可忽略
 	Business *string `json:"Business,omitempty" name:"Business"`
+
+	// cdc专有集群业务字段，可忽略
+	CdcId *string `json:"CdcId,omitempty" name:"CdcId"`
 }
 
 type DescribeRegionRequest struct {
@@ -3102,6 +3108,9 @@ type DescribeRegionRequest struct {
 
 	// 业务字段，可忽略
 	Business *string `json:"Business,omitempty" name:"Business"`
+
+	// cdc专有集群业务字段，可忽略
+	CdcId *string `json:"CdcId,omitempty" name:"CdcId"`
 }
 
 func (r *DescribeRegionRequest) ToJsonString() string {
@@ -3119,6 +3128,7 @@ func (r *DescribeRegionRequest) FromJsonString(s string) error {
 	delete(f, "Offset")
 	delete(f, "Limit")
 	delete(f, "Business")
+	delete(f, "CdcId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRegionRequest has unknown keys!", "")
 	}
@@ -4157,6 +4167,10 @@ type InstanceDetail struct {
 	// 公网带宽值
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PublicNetwork *int64 `json:"PublicNetwork,omitempty" name:"PublicNetwork"`
+
+	// 实例类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterType *string `json:"ClusterType,omitempty" name:"ClusterType"`
 }
 
 type InstanceDetailResponse struct {

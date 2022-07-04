@@ -1833,6 +1833,7 @@ func NewCreateTaskFlowResponse() (response *CreateTaskFlowResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_TASKCREATEERROR = "FailedOperation.TaskCreateError"
+//  FAILEDOPERATION_TASKOPERATIONFORBIDDEN = "FailedOperation.TaskOperationForbidden"
 //  INTERNALERROR_TASKINTERNALERROR = "InternalError.TaskInternalError"
 //  INVALIDPARAMETER_BADREQUEST = "InvalidParameter.BadRequest"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERFORMAT = "InvalidParameterValue.InvalidParameterFormat"
@@ -1852,6 +1853,7 @@ func (c *Client) CreateTaskFlow(request *CreateTaskFlowRequest) (response *Creat
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_TASKCREATEERROR = "FailedOperation.TaskCreateError"
+//  FAILEDOPERATION_TASKOPERATIONFORBIDDEN = "FailedOperation.TaskOperationForbidden"
 //  INTERNALERROR_TASKINTERNALERROR = "InternalError.TaskInternalError"
 //  INVALIDPARAMETER_BADREQUEST = "InvalidParameter.BadRequest"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERFORMAT = "InvalidParameterValue.InvalidParameterFormat"
@@ -10459,6 +10461,7 @@ func NewRollbackConfigResponse() (response *RollbackConfigResponse) {
 //
 // 可能返回的错误码:
 //  INTERNALERROR_CONSULSERVERERROR = "InternalError.ConsulServerError"
+//  INVALIDPARAMETERVALUE_CONFIGALREADYRELEASED = "InvalidParameterValue.ConfigAlreadyReleased"
 //  INVALIDPARAMETERVALUE_CONFIGNOTEXISTSORPERMISSIONDENIED = "InvalidParameterValue.ConfigNotExistsOrPermissionDenied"
 //  INVALIDPARAMETERVALUE_GROUPNOTEXISTS = "InvalidParameterValue.GroupNotExists"
 func (c *Client) RollbackConfig(request *RollbackConfigRequest) (response *RollbackConfigResponse, err error) {
@@ -10470,6 +10473,7 @@ func (c *Client) RollbackConfig(request *RollbackConfigRequest) (response *Rollb
 //
 // 可能返回的错误码:
 //  INTERNALERROR_CONSULSERVERERROR = "InternalError.ConsulServerError"
+//  INVALIDPARAMETERVALUE_CONFIGALREADYRELEASED = "InvalidParameterValue.ConfigAlreadyReleased"
 //  INVALIDPARAMETERVALUE_CONFIGNOTEXISTSORPERMISSIONDENIED = "InvalidParameterValue.ConfigNotExistsOrPermissionDenied"
 //  INVALIDPARAMETERVALUE_GROUPNOTEXISTS = "InvalidParameterValue.GroupNotExists"
 func (c *Client) RollbackConfigWithContext(ctx context.Context, request *RollbackConfigRequest) (response *RollbackConfigResponse, err error) {

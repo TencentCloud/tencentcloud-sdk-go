@@ -362,44 +362,56 @@ func (r *DescribeDetailedSingleProbeDataResponse) FromJsonString(s string) error
 
 // Predefined struct for user
 type DescribeProbeMetricDataRequestParams struct {
-	// 分析任务类型
+	// 分析任务类型，支持以下几种类型：
+	// AnalyzeTaskType_Network：网络质量
+	// AnalyzeTaskType_Browse：页面性能
+	// AnalyzeTaskType_Transport：端口性能
+	// AnalyzeTaskType_UploadDownload：文件传输
+	// AnalyzeTaskType_MediaStream：音视频体验
 	AnalyzeTaskType *string `json:"AnalyzeTaskType,omitempty" name:"AnalyzeTaskType"`
 
-	// 指标类型，counter 或者 gauge
+	// 指标类型，指标查询默认传gauge
 	MetricType *string `json:"MetricType,omitempty" name:"MetricType"`
 
-	// 指标详细字段
+	// 指标详细字段，可以传递传具体的指标也可以对指标进行聚合查询例如："avg(ping_time)"代表整体时延(ms)
 	Field *string `json:"Field,omitempty" name:"Field"`
 
-	// 过滤条件
+	// 过滤条件可以传单个过滤条件也可以拼接多个参数
 	Filter *string `json:"Filter,omitempty" name:"Filter"`
 
-	// 聚合时间, 1m、1d、100d 等等
+	// 聚合时间, 1m、1d、30d 等等
 	GroupBy *string `json:"GroupBy,omitempty" name:"GroupBy"`
 
-	// 过滤条件数组
+	// 多条件过滤，支持多个过滤条件组合查询
+	// 例如：[""host" = 'www.test.com'", "time >= now()-1h"]
 	Filters []*string `json:"Filters,omitempty" name:"Filters"`
 }
 
 type DescribeProbeMetricDataRequest struct {
 	*tchttp.BaseRequest
 	
-	// 分析任务类型
+	// 分析任务类型，支持以下几种类型：
+	// AnalyzeTaskType_Network：网络质量
+	// AnalyzeTaskType_Browse：页面性能
+	// AnalyzeTaskType_Transport：端口性能
+	// AnalyzeTaskType_UploadDownload：文件传输
+	// AnalyzeTaskType_MediaStream：音视频体验
 	AnalyzeTaskType *string `json:"AnalyzeTaskType,omitempty" name:"AnalyzeTaskType"`
 
-	// 指标类型，counter 或者 gauge
+	// 指标类型，指标查询默认传gauge
 	MetricType *string `json:"MetricType,omitempty" name:"MetricType"`
 
-	// 指标详细字段
+	// 指标详细字段，可以传递传具体的指标也可以对指标进行聚合查询例如："avg(ping_time)"代表整体时延(ms)
 	Field *string `json:"Field,omitempty" name:"Field"`
 
-	// 过滤条件
+	// 过滤条件可以传单个过滤条件也可以拼接多个参数
 	Filter *string `json:"Filter,omitempty" name:"Filter"`
 
-	// 聚合时间, 1m、1d、100d 等等
+	// 聚合时间, 1m、1d、30d 等等
 	GroupBy *string `json:"GroupBy,omitempty" name:"GroupBy"`
 
-	// 过滤条件数组
+	// 多条件过滤，支持多个过滤条件组合查询
+	// 例如：[""host" = 'www.test.com'", "time >= now()-1h"]
 	Filters []*string `json:"Filters,omitempty" name:"Filters"`
 }
 
@@ -429,7 +441,8 @@ func (r *DescribeProbeMetricDataRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeProbeMetricDataResponseParams struct {
-	// 指标 JSON 序列化后的字符串
+	// 返回指标 JSON 序列化后的字符串,具体如下所示：
+	// "[{\"name\":\"task_navigate_request_gauge\",\"columns\":[\"time\",\"avg(first_screen_time) / 1000\"],\"values\":[[1641571200,6.756600000000001]],\"tags\":null}]"
 	MetricSet *string `json:"MetricSet,omitempty" name:"MetricSet"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。

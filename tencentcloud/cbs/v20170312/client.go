@@ -1555,8 +1555,7 @@ func NewInitializeDisksResponse() (response *InitializeDisksResponse) {
 // 4. 当创建此云硬盘的原始快照被删除时，不再支持重新初始化此云硬盘。
 //
 // 可能返回的错误码:
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  MISSINGPARAMETER = "MissingParameter"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
 func (c *Client) InitializeDisks(request *InitializeDisksRequest) (response *InitializeDisksResponse, err error) {
     return c.InitializeDisksWithContext(context.Background(), request)
 }
@@ -1573,8 +1572,7 @@ func (c *Client) InitializeDisks(request *InitializeDisksRequest) (response *Ini
 // 4. 当创建此云硬盘的原始快照被删除时，不再支持重新初始化此云硬盘。
 //
 // 可能返回的错误码:
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  MISSINGPARAMETER = "MissingParameter"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
 func (c *Client) InitializeDisksWithContext(ctx context.Context, request *InitializeDisksRequest) (response *InitializeDisksResponse, err error) {
     if request == nil {
         request = NewInitializeDisksRequest()

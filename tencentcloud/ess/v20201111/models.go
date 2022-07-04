@@ -1628,17 +1628,14 @@ type UploadFile struct {
 
 // Predefined struct for user
 type UploadFilesRequestParams struct {
-	// 调用方信息
-	Caller *Caller `json:"Caller,omitempty" name:"Caller"`
-
 	// 文件对应业务类型，用于区分文件存储路径：
 	// 1. TEMPLATE - 模板； 文件类型：.pdf/.html
 	// 2. DOCUMENT - 签署过程及签署后的合同文档 文件类型：.pdf/.html
-	// 3. FLOW - 签署过程 文件类型：.pdf/.html
-	// 4. SEAL - 印章； 文件类型：.jpg/.jpeg/.png
-	// 5. BUSINESSLICENSE - 营业执照 文件类型：.jpg/.jpeg/.png
-	// 6. IDCARD - 身份证 文件类型：.jpg/.jpeg/.png
+	// 3. SEAL - 印章； 文件类型：.jpg/.jpeg/.png
 	BusinessType *string `json:"BusinessType,omitempty" name:"BusinessType"`
+
+	// 调用方信息
+	Caller *Caller `json:"Caller,omitempty" name:"Caller"`
 
 	// 上传文件内容数组，最多支持20个文件
 	FileInfos []*UploadFile `json:"FileInfos,omitempty" name:"FileInfos"`
@@ -1646,13 +1643,13 @@ type UploadFilesRequestParams struct {
 	// 上传文件链接数组，最多支持20个URL
 	FileUrls *string `json:"FileUrls,omitempty" name:"FileUrls"`
 
-	// 是否将pdf灰色矩阵置白
+	// 此参数只对 PDF 文件有效。是否将pdf灰色矩阵置白
 	// true--是，处理置白
 	// false--否，不处理
 	CoverRect *bool `json:"CoverRect,omitempty" name:"CoverRect"`
 
-	// 特殊文件类型需要指定文件类型：
-	// HTML-- .html文件
+	// 文件类型， 默认通过文件内容解析得到文件类型，客户可以显示的说明上传文件的类型。
+	// 如：PDF 表示上传的文件 xxx.pdf的文件类型是 PDF
 	FileType *string `json:"FileType,omitempty" name:"FileType"`
 
 	// 用户自定义ID数组，与上传文件一一对应
@@ -1662,17 +1659,14 @@ type UploadFilesRequestParams struct {
 type UploadFilesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 调用方信息
-	Caller *Caller `json:"Caller,omitempty" name:"Caller"`
-
 	// 文件对应业务类型，用于区分文件存储路径：
 	// 1. TEMPLATE - 模板； 文件类型：.pdf/.html
 	// 2. DOCUMENT - 签署过程及签署后的合同文档 文件类型：.pdf/.html
-	// 3. FLOW - 签署过程 文件类型：.pdf/.html
-	// 4. SEAL - 印章； 文件类型：.jpg/.jpeg/.png
-	// 5. BUSINESSLICENSE - 营业执照 文件类型：.jpg/.jpeg/.png
-	// 6. IDCARD - 身份证 文件类型：.jpg/.jpeg/.png
+	// 3. SEAL - 印章； 文件类型：.jpg/.jpeg/.png
 	BusinessType *string `json:"BusinessType,omitempty" name:"BusinessType"`
+
+	// 调用方信息
+	Caller *Caller `json:"Caller,omitempty" name:"Caller"`
 
 	// 上传文件内容数组，最多支持20个文件
 	FileInfos []*UploadFile `json:"FileInfos,omitempty" name:"FileInfos"`
@@ -1680,13 +1674,13 @@ type UploadFilesRequest struct {
 	// 上传文件链接数组，最多支持20个URL
 	FileUrls *string `json:"FileUrls,omitempty" name:"FileUrls"`
 
-	// 是否将pdf灰色矩阵置白
+	// 此参数只对 PDF 文件有效。是否将pdf灰色矩阵置白
 	// true--是，处理置白
 	// false--否，不处理
 	CoverRect *bool `json:"CoverRect,omitempty" name:"CoverRect"`
 
-	// 特殊文件类型需要指定文件类型：
-	// HTML-- .html文件
+	// 文件类型， 默认通过文件内容解析得到文件类型，客户可以显示的说明上传文件的类型。
+	// 如：PDF 表示上传的文件 xxx.pdf的文件类型是 PDF
 	FileType *string `json:"FileType,omitempty" name:"FileType"`
 
 	// 用户自定义ID数组，与上传文件一一对应
@@ -1705,8 +1699,8 @@ func (r *UploadFilesRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	delete(f, "Caller")
 	delete(f, "BusinessType")
+	delete(f, "Caller")
 	delete(f, "FileInfos")
 	delete(f, "FileUrls")
 	delete(f, "CoverRect")

@@ -85,7 +85,9 @@ func NewAddDelayLiveStreamResponse() (response *AddDelayLiveStreamResponse) {
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 //  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
 func (c *Client) AddDelayLiveStream(request *AddDelayLiveStreamRequest) (response *AddDelayLiveStreamResponse, err error) {
     return c.AddDelayLiveStreamWithContext(context.Background(), request)
@@ -114,7 +116,9 @@ func (c *Client) AddDelayLiveStream(request *AddDelayLiveStreamRequest) (respons
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 //  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
 func (c *Client) AddDelayLiveStreamWithContext(ctx context.Context, request *AddDelayLiveStreamRequest) (response *AddDelayLiveStreamResponse, err error) {
     if request == nil {
@@ -179,8 +183,11 @@ func NewAddLiveDomainResponse() (response *AddLiveDomainResponse) {
 //  INVALIDPARAMETER_MPHOSTDELETE = "InvalidParameter.MpHostDelete"
 //  INVALIDPARAMETER_MPPLUGINNOUSE = "InvalidParameter.MpPluginNoUse"
 //  RESOURCENOTFOUND_DOMAINNORECORD = "ResourceNotFound.DomainNoRecord"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_INVALIDUSER = "ResourceNotFound.InvalidUser"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 func (c *Client) AddLiveDomain(request *AddLiveDomainRequest) (response *AddLiveDomainResponse, err error) {
     return c.AddLiveDomainWithContext(context.Background(), request)
 }
@@ -215,8 +222,11 @@ func (c *Client) AddLiveDomain(request *AddLiveDomainRequest) (response *AddLive
 //  INVALIDPARAMETER_MPHOSTDELETE = "InvalidParameter.MpHostDelete"
 //  INVALIDPARAMETER_MPPLUGINNOUSE = "InvalidParameter.MpPluginNoUse"
 //  RESOURCENOTFOUND_DOMAINNORECORD = "ResourceNotFound.DomainNoRecord"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_INVALIDUSER = "ResourceNotFound.InvalidUser"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 func (c *Client) AddLiveDomainWithContext(ctx context.Context, request *AddLiveDomainRequest) (response *AddLiveDomainResponse, err error) {
     if request == nil {
         request = NewAddLiveDomainRequest()
@@ -261,7 +271,9 @@ func NewAddLiveWatermarkResponse() (response *AddLiveWatermarkResponse) {
 //  INTERNALERROR_WATERMARKADDERROR = "InternalError.WatermarkAddError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 //  RESOURCENOTFOUND_USERNOTFOUNT = "ResourceNotFound.UserNotFount"
 func (c *Client) AddLiveWatermark(request *AddLiveWatermarkRequest) (response *AddLiveWatermarkResponse, err error) {
     return c.AddLiveWatermarkWithContext(context.Background(), request)
@@ -278,7 +290,9 @@ func (c *Client) AddLiveWatermark(request *AddLiveWatermarkRequest) (response *A
 //  INTERNALERROR_WATERMARKADDERROR = "InternalError.WatermarkAddError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 //  RESOURCENOTFOUND_USERNOTFOUNT = "ResourceNotFound.UserNotFount"
 func (c *Client) AddLiveWatermarkWithContext(ctx context.Context, request *AddLiveWatermarkRequest) (response *AddLiveWatermarkResponse, err error) {
     if request == nil {
@@ -328,7 +342,9 @@ func NewBindLiveDomainCertResponse() (response *BindLiveDomainCertResponse) {
 //  RESOURCENOTFOUND_CRTDATENOTFOUND = "ResourceNotFound.CrtDateNotFound"
 //  RESOURCENOTFOUND_DOMAINNOTEXIST = "ResourceNotFound.DomainNotExist"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 func (c *Client) BindLiveDomainCert(request *BindLiveDomainCertRequest) (response *BindLiveDomainCertResponse, err error) {
     return c.BindLiveDomainCertWithContext(context.Background(), request)
 }
@@ -348,7 +364,9 @@ func (c *Client) BindLiveDomainCert(request *BindLiveDomainCertRequest) (respons
 //  RESOURCENOTFOUND_CRTDATENOTFOUND = "ResourceNotFound.CrtDateNotFound"
 //  RESOURCENOTFOUND_DOMAINNOTEXIST = "ResourceNotFound.DomainNotExist"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 func (c *Client) BindLiveDomainCertWithContext(ctx context.Context, request *BindLiveDomainCertRequest) (response *BindLiveDomainCertResponse, err error) {
     if request == nil {
         request = NewBindLiveDomainCertRequest()
@@ -395,7 +413,9 @@ func NewCancelCommonMixStreamResponse() (response *CancelCommonMixStreamResponse
 //  INVALIDPARAMETER_CANCELSESSIONNOTEXIST = "InvalidParameter.CancelSessionNotExist"
 //  INVALIDPARAMETER_OTHERERROR = "InvalidParameter.OtherError"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 func (c *Client) CancelCommonMixStream(request *CancelCommonMixStreamRequest) (response *CancelCommonMixStreamResponse, err error) {
     return c.CancelCommonMixStreamWithContext(context.Background(), request)
 }
@@ -413,7 +433,9 @@ func (c *Client) CancelCommonMixStream(request *CancelCommonMixStreamRequest) (r
 //  INVALIDPARAMETER_CANCELSESSIONNOTEXIST = "InvalidParameter.CancelSessionNotExist"
 //  INVALIDPARAMETER_OTHERERROR = "InvalidParameter.OtherError"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 func (c *Client) CancelCommonMixStreamWithContext(ctx context.Context, request *CancelCommonMixStreamRequest) (response *CancelCommonMixStreamResponse, err error) {
     if request == nil {
         request = NewCancelCommonMixStreamRequest()
@@ -480,7 +502,9 @@ func NewCreateCommonMixStreamResponse() (response *CreateCommonMixStreamResponse
 //  INVALIDPARAMETER_SESSIONOUTPUTSTREAMCHANGED = "InvalidParameter.SessionOutputStreamChanged"
 //  INVALIDPARAMETER_TEMPLATENOTMATCHINPUTNUM = "InvalidParameter.TemplateNotMatchInputNum"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 func (c *Client) CreateCommonMixStream(request *CreateCommonMixStreamRequest) (response *CreateCommonMixStreamResponse, err error) {
     return c.CreateCommonMixStreamWithContext(context.Background(), request)
 }
@@ -518,7 +542,9 @@ func (c *Client) CreateCommonMixStream(request *CreateCommonMixStreamRequest) (r
 //  INVALIDPARAMETER_SESSIONOUTPUTSTREAMCHANGED = "InvalidParameter.SessionOutputStreamChanged"
 //  INVALIDPARAMETER_TEMPLATENOTMATCHINPUTNUM = "InvalidParameter.TemplateNotMatchInputNum"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 func (c *Client) CreateCommonMixStreamWithContext(ctx context.Context, request *CreateCommonMixStreamRequest) (response *CreateCommonMixStreamResponse, err error) {
     if request == nil {
         request = NewCreateCommonMixStreamRequest()
@@ -565,7 +591,9 @@ func NewCreateLiveCallbackRuleResponse() (response *CreateLiveCallbackRuleRespon
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 //  UNSUPPORTEDOPERATION_NOTLVBCODEMODE = "UnsupportedOperation.NotLVBCodeMode"
 func (c *Client) CreateLiveCallbackRule(request *CreateLiveCallbackRuleRequest) (response *CreateLiveCallbackRuleResponse, err error) {
     return c.CreateLiveCallbackRuleWithContext(context.Background(), request)
@@ -584,7 +612,9 @@ func (c *Client) CreateLiveCallbackRule(request *CreateLiveCallbackRuleRequest) 
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 //  UNSUPPORTEDOPERATION_NOTLVBCODEMODE = "UnsupportedOperation.NotLVBCodeMode"
 func (c *Client) CreateLiveCallbackRuleWithContext(ctx context.Context, request *CreateLiveCallbackRuleRequest) (response *CreateLiveCallbackRuleResponse, err error) {
     if request == nil {
@@ -647,7 +677,9 @@ func NewCreateLiveCallbackTemplateResponse() (response *CreateLiveCallbackTempla
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 //  UNSUPPORTEDOPERATION_NOTLVBCODEMODE = "UnsupportedOperation.NotLVBCodeMode"
 func (c *Client) CreateLiveCallbackTemplate(request *CreateLiveCallbackTemplateRequest) (response *CreateLiveCallbackTemplateResponse, err error) {
     return c.CreateLiveCallbackTemplateWithContext(context.Background(), request)
@@ -681,7 +713,9 @@ func (c *Client) CreateLiveCallbackTemplate(request *CreateLiveCallbackTemplateR
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 //  UNSUPPORTEDOPERATION_NOTLVBCODEMODE = "UnsupportedOperation.NotLVBCodeMode"
 func (c *Client) CreateLiveCallbackTemplateWithContext(ctx context.Context, request *CreateLiveCallbackTemplateRequest) (response *CreateLiveCallbackTemplateResponse, err error) {
     if request == nil {
@@ -736,7 +770,9 @@ func NewCreateLiveCertResponse() (response *CreateLiveCertResponse) {
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 func (c *Client) CreateLiveCert(request *CreateLiveCertRequest) (response *CreateLiveCertResponse, err error) {
     return c.CreateLiveCertWithContext(context.Background(), request)
 }
@@ -761,7 +797,9 @@ func (c *Client) CreateLiveCert(request *CreateLiveCertRequest) (response *Creat
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 func (c *Client) CreateLiveCertWithContext(ctx context.Context, request *CreateLiveCertRequest) (response *CreateLiveCertResponse, err error) {
     if request == nil {
         request = NewCreateLiveCertRequest()
@@ -820,12 +858,15 @@ func NewCreateLivePullStreamTaskResponse() (response *CreateLivePullStreamTaskRe
 //  INVALIDPARAMETER_INVALIDSOURCEURL = "InvalidParameter.InvalidSourceUrl"
 //  INVALIDPARAMETER_INVALIDTASKTIME = "InvalidParameter.InvalidTaskTime"
 //  INVALIDPARAMETER_INVALIDTOURL = "InvalidParameter.InvalidToUrl"
+//  INVALIDPARAMETER_INVALIDWATERMARK = "InvalidParameter.InvalidWatermark"
 //  INVALIDPARAMETER_TASKNOTEXIST = "InvalidParameter.TaskNotExist"
 //  INVALIDPARAMETER_TASKNUMMORETHANLIMIT = "InvalidParameter.TaskNumMoreThanLimit"
 //  INVALIDPARAMETER_TOURLNOPERMISSION = "InvalidParameter.ToUrlNoPermission"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 //  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
 func (c *Client) CreateLivePullStreamTask(request *CreateLivePullStreamTaskRequest) (response *CreateLivePullStreamTaskResponse, err error) {
     return c.CreateLivePullStreamTaskWithContext(context.Background(), request)
@@ -856,12 +897,15 @@ func (c *Client) CreateLivePullStreamTask(request *CreateLivePullStreamTaskReque
 //  INVALIDPARAMETER_INVALIDSOURCEURL = "InvalidParameter.InvalidSourceUrl"
 //  INVALIDPARAMETER_INVALIDTASKTIME = "InvalidParameter.InvalidTaskTime"
 //  INVALIDPARAMETER_INVALIDTOURL = "InvalidParameter.InvalidToUrl"
+//  INVALIDPARAMETER_INVALIDWATERMARK = "InvalidParameter.InvalidWatermark"
 //  INVALIDPARAMETER_TASKNOTEXIST = "InvalidParameter.TaskNotExist"
 //  INVALIDPARAMETER_TASKNUMMORETHANLIMIT = "InvalidParameter.TaskNumMoreThanLimit"
 //  INVALIDPARAMETER_TOURLNOPERMISSION = "InvalidParameter.ToUrlNoPermission"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 //  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
 func (c *Client) CreateLivePullStreamTaskWithContext(ctx context.Context, request *CreateLivePullStreamTaskRequest) (response *CreateLivePullStreamTaskResponse, err error) {
     if request == nil {
@@ -939,7 +983,9 @@ func NewCreateLiveRecordResponse() (response *CreateLiveRecordResponse) {
 //  LIMITEXCEEDED_MAXIMUMTASK = "LimitExceeded.MaximumTask"
 //  RESOURCENOTFOUND_CHANNELNOTEXIST = "ResourceNotFound.ChannelNotExist"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 //  RESOURCEUNAVAILABLE_INVALIDVODSTATUS = "ResourceUnavailable.InvalidVodStatus"
 //  RESOURCEUNAVAILABLE_STREAMNOTEXIST = "ResourceUnavailable.StreamNotExist"
 func (c *Client) CreateLiveRecord(request *CreateLiveRecordRequest) (response *CreateLiveRecordResponse, err error) {
@@ -989,7 +1035,9 @@ func (c *Client) CreateLiveRecord(request *CreateLiveRecordRequest) (response *C
 //  LIMITEXCEEDED_MAXIMUMTASK = "LimitExceeded.MaximumTask"
 //  RESOURCENOTFOUND_CHANNELNOTEXIST = "ResourceNotFound.ChannelNotExist"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 //  RESOURCEUNAVAILABLE_INVALIDVODSTATUS = "ResourceUnavailable.InvalidVodStatus"
 //  RESOURCEUNAVAILABLE_STREAMNOTEXIST = "ResourceUnavailable.StreamNotExist"
 func (c *Client) CreateLiveRecordWithContext(ctx context.Context, request *CreateLiveRecordRequest) (response *CreateLiveRecordResponse, err error) {
@@ -1045,7 +1093,9 @@ func NewCreateLiveRecordRuleResponse() (response *CreateLiveRecordRuleResponse) 
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 func (c *Client) CreateLiveRecordRule(request *CreateLiveRecordRuleRequest) (response *CreateLiveRecordRuleResponse, err error) {
     return c.CreateLiveRecordRuleWithContext(context.Background(), request)
 }
@@ -1070,7 +1120,9 @@ func (c *Client) CreateLiveRecordRule(request *CreateLiveRecordRuleRequest) (res
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 func (c *Client) CreateLiveRecordRuleWithContext(ctx context.Context, request *CreateLiveRecordRuleRequest) (response *CreateLiveRecordRuleResponse, err error) {
     if request == nil {
         request = NewCreateLiveRecordRuleRequest()
@@ -1125,7 +1177,10 @@ func NewCreateLiveRecordTemplateResponse() (response *CreateLiveRecordTemplateRe
 //  INVALIDPARAMETER_INVALIDVODFILENAME = "InvalidParameter.InvalidVodFileName"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 //  UNSUPPORTEDOPERATION_NOTLVBCODEMODE = "UnsupportedOperation.NotLVBCodeMode"
 func (c *Client) CreateLiveRecordTemplate(request *CreateLiveRecordTemplateRequest) (response *CreateLiveRecordTemplateResponse, err error) {
     return c.CreateLiveRecordTemplateWithContext(context.Background(), request)
@@ -1152,7 +1207,10 @@ func (c *Client) CreateLiveRecordTemplate(request *CreateLiveRecordTemplateReque
 //  INVALIDPARAMETER_INVALIDVODFILENAME = "InvalidParameter.InvalidVodFileName"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 //  UNSUPPORTEDOPERATION_NOTLVBCODEMODE = "UnsupportedOperation.NotLVBCodeMode"
 func (c *Client) CreateLiveRecordTemplateWithContext(ctx context.Context, request *CreateLiveRecordTemplateRequest) (response *CreateLiveRecordTemplateResponse, err error) {
     if request == nil {
@@ -1210,7 +1268,9 @@ func NewCreateLiveSnapshotRuleResponse() (response *CreateLiveSnapshotRuleRespon
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 func (c *Client) CreateLiveSnapshotRule(request *CreateLiveSnapshotRuleRequest) (response *CreateLiveSnapshotRuleResponse, err error) {
     return c.CreateLiveSnapshotRuleWithContext(context.Background(), request)
 }
@@ -1238,7 +1298,9 @@ func (c *Client) CreateLiveSnapshotRule(request *CreateLiveSnapshotRuleRequest) 
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 func (c *Client) CreateLiveSnapshotRuleWithContext(ctx context.Context, request *CreateLiveSnapshotRuleRequest) (response *CreateLiveSnapshotRuleResponse, err error) {
     if request == nil {
         request = NewCreateLiveSnapshotRuleRequest()
@@ -1293,7 +1355,9 @@ func NewCreateLiveSnapshotTemplateResponse() (response *CreateLiveSnapshotTempla
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 //  UNSUPPORTEDOPERATION_NOTLVBCODEMODE = "UnsupportedOperation.NotLVBCodeMode"
 func (c *Client) CreateLiveSnapshotTemplate(request *CreateLiveSnapshotTemplateRequest) (response *CreateLiveSnapshotTemplateResponse, err error) {
     return c.CreateLiveSnapshotTemplateWithContext(context.Background(), request)
@@ -1320,7 +1384,9 @@ func (c *Client) CreateLiveSnapshotTemplate(request *CreateLiveSnapshotTemplateR
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 //  UNSUPPORTEDOPERATION_NOTLVBCODEMODE = "UnsupportedOperation.NotLVBCodeMode"
 func (c *Client) CreateLiveSnapshotTemplateWithContext(ctx context.Context, request *CreateLiveSnapshotTemplateRequest) (response *CreateLiveSnapshotTemplateResponse, err error) {
     if request == nil {
@@ -1377,7 +1443,9 @@ func NewCreateLiveTranscodeRuleResponse() (response *CreateLiveTranscodeRuleResp
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 //  UNSUPPORTEDOPERATION_NOTLVBCODEMODE = "UnsupportedOperation.NotLVBCodeMode"
 func (c *Client) CreateLiveTranscodeRule(request *CreateLiveTranscodeRuleRequest) (response *CreateLiveTranscodeRuleResponse, err error) {
     return c.CreateLiveTranscodeRuleWithContext(context.Background(), request)
@@ -1405,7 +1473,9 @@ func (c *Client) CreateLiveTranscodeRule(request *CreateLiveTranscodeRuleRequest
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 //  UNSUPPORTEDOPERATION_NOTLVBCODEMODE = "UnsupportedOperation.NotLVBCodeMode"
 func (c *Client) CreateLiveTranscodeRuleWithContext(ctx context.Context, request *CreateLiveTranscodeRuleRequest) (response *CreateLiveTranscodeRuleResponse, err error) {
     if request == nil {
@@ -1462,7 +1532,10 @@ func NewCreateLiveTranscodeTemplateResponse() (response *CreateLiveTranscodeTemp
 //  INVALIDPARAMETER_ARGSNOTMATCH = "InvalidParameter.ArgsNotMatch"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 //  UNSUPPORTEDOPERATION_NOTLVBCODEMODE = "UnsupportedOperation.NotLVBCodeMode"
 func (c *Client) CreateLiveTranscodeTemplate(request *CreateLiveTranscodeTemplateRequest) (response *CreateLiveTranscodeTemplateResponse, err error) {
     return c.CreateLiveTranscodeTemplateWithContext(context.Background(), request)
@@ -1490,7 +1563,10 @@ func (c *Client) CreateLiveTranscodeTemplate(request *CreateLiveTranscodeTemplat
 //  INVALIDPARAMETER_ARGSNOTMATCH = "InvalidParameter.ArgsNotMatch"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 //  UNSUPPORTEDOPERATION_NOTLVBCODEMODE = "UnsupportedOperation.NotLVBCodeMode"
 func (c *Client) CreateLiveTranscodeTemplateWithContext(ctx context.Context, request *CreateLiveTranscodeTemplateRequest) (response *CreateLiveTranscodeTemplateResponse, err error) {
     if request == nil {
@@ -1544,7 +1620,9 @@ func NewCreateLiveWatermarkRuleResponse() (response *CreateLiveWatermarkRuleResp
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 //  UNSUPPORTEDOPERATION_NOTLVBCODEMODE = "UnsupportedOperation.NotLVBCodeMode"
 func (c *Client) CreateLiveWatermarkRule(request *CreateLiveWatermarkRuleRequest) (response *CreateLiveWatermarkRuleResponse, err error) {
     return c.CreateLiveWatermarkRuleWithContext(context.Background(), request)
@@ -1569,7 +1647,9 @@ func (c *Client) CreateLiveWatermarkRule(request *CreateLiveWatermarkRuleRequest
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 //  UNSUPPORTEDOPERATION_NOTLVBCODEMODE = "UnsupportedOperation.NotLVBCodeMode"
 func (c *Client) CreateLiveWatermarkRuleWithContext(ctx context.Context, request *CreateLiveWatermarkRuleRequest) (response *CreateLiveWatermarkRuleResponse, err error) {
     if request == nil {
@@ -1624,7 +1704,10 @@ func NewCreatePullStreamConfigResponse() (response *CreatePullStreamConfigRespon
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 //  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
 func (c *Client) CreatePullStreamConfig(request *CreatePullStreamConfigRequest) (response *CreatePullStreamConfigResponse, err error) {
     return c.CreatePullStreamConfigWithContext(context.Background(), request)
@@ -1650,7 +1733,10 @@ func (c *Client) CreatePullStreamConfig(request *CreatePullStreamConfigRequest) 
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 //  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
 func (c *Client) CreatePullStreamConfigWithContext(ctx context.Context, request *CreatePullStreamConfigRequest) (response *CreatePullStreamConfigResponse, err error) {
     if request == nil {
@@ -1713,7 +1799,9 @@ func NewCreateRecordTaskResponse() (response *CreateRecordTaskResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  LIMITEXCEEDED_MAXIMUMRUNNINGTASK = "LimitExceeded.MaximumRunningTask"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 //  RESOURCEUNAVAILABLE_INVALIDVODSTATUS = "ResourceUnavailable.InvalidVodStatus"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateRecordTask(request *CreateRecordTaskRequest) (response *CreateRecordTaskResponse, err error) {
@@ -1748,7 +1836,9 @@ func (c *Client) CreateRecordTask(request *CreateRecordTaskRequest) (response *C
 //  INVALIDPARAMETER = "InvalidParameter"
 //  LIMITEXCEEDED_MAXIMUMRUNNINGTASK = "LimitExceeded.MaximumRunningTask"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 //  RESOURCEUNAVAILABLE_INVALIDVODSTATUS = "ResourceUnavailable.InvalidVodStatus"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateRecordTaskWithContext(ctx context.Context, request *CreateRecordTaskRequest) (response *CreateRecordTaskResponse, err error) {
@@ -1806,7 +1896,9 @@ func NewCreateScreenshotTaskResponse() (response *CreateScreenshotTaskResponse) 
 //  INVALIDPARAMETER = "InvalidParameter"
 //  LIMITEXCEEDED_MAXIMUMRUNNINGTASK = "LimitExceeded.MaximumRunningTask"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateScreenshotTask(request *CreateScreenshotTaskRequest) (response *CreateScreenshotTaskResponse, err error) {
     return c.CreateScreenshotTaskWithContext(context.Background(), request)
@@ -1834,7 +1926,9 @@ func (c *Client) CreateScreenshotTask(request *CreateScreenshotTaskRequest) (res
 //  INVALIDPARAMETER = "InvalidParameter"
 //  LIMITEXCEEDED_MAXIMUMRUNNINGTASK = "LimitExceeded.MaximumRunningTask"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateScreenshotTaskWithContext(ctx context.Context, request *CreateScreenshotTaskRequest) (response *CreateScreenshotTaskResponse, err error) {
     if request == nil {
@@ -1879,7 +1973,10 @@ func NewDeleteLiveCallbackRuleResponse() (response *DeleteLiveCallbackRuleRespon
 //  INVALIDPARAMETER_DOMAINFORMATERROR = "InvalidParameter.DomainFormatError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 func (c *Client) DeleteLiveCallbackRule(request *DeleteLiveCallbackRuleRequest) (response *DeleteLiveCallbackRuleResponse, err error) {
     return c.DeleteLiveCallbackRuleWithContext(context.Background(), request)
 }
@@ -1894,7 +1991,10 @@ func (c *Client) DeleteLiveCallbackRule(request *DeleteLiveCallbackRuleRequest) 
 //  INVALIDPARAMETER_DOMAINFORMATERROR = "InvalidParameter.DomainFormatError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 func (c *Client) DeleteLiveCallbackRuleWithContext(ctx context.Context, request *DeleteLiveCallbackRuleRequest) (response *DeleteLiveCallbackRuleResponse, err error) {
     if request == nil {
         request = NewDeleteLiveCallbackRuleRequest()
@@ -1948,7 +2048,10 @@ func NewDeleteLiveCallbackTemplateResponse() (response *DeleteLiveCallbackTempla
 //  INVALIDPARAMETER_INVALIDVODFILENAME = "InvalidParameter.InvalidVodFileName"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 func (c *Client) DeleteLiveCallbackTemplate(request *DeleteLiveCallbackTemplateRequest) (response *DeleteLiveCallbackTemplateResponse, err error) {
     return c.DeleteLiveCallbackTemplateWithContext(context.Background(), request)
 }
@@ -1973,7 +2076,10 @@ func (c *Client) DeleteLiveCallbackTemplate(request *DeleteLiveCallbackTemplateR
 //  INVALIDPARAMETER_INVALIDVODFILENAME = "InvalidParameter.InvalidVodFileName"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 func (c *Client) DeleteLiveCallbackTemplateWithContext(ctx context.Context, request *DeleteLiveCallbackTemplateRequest) (response *DeleteLiveCallbackTemplateResponse, err error) {
     if request == nil {
         request = NewDeleteLiveCallbackTemplateRequest()
@@ -2020,7 +2126,9 @@ func NewDeleteLiveCertResponse() (response *DeleteLiveCertResponse) {
 //  INTERNALERROR_INVALIDINPUT = "InternalError.InvalidInput"
 //  INVALIDPARAMETER_CRTDATEINUSING = "InvalidParameter.CrtDateInUsing"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 func (c *Client) DeleteLiveCert(request *DeleteLiveCertRequest) (response *DeleteLiveCertResponse, err error) {
     return c.DeleteLiveCertWithContext(context.Background(), request)
 }
@@ -2038,7 +2146,9 @@ func (c *Client) DeleteLiveCert(request *DeleteLiveCertRequest) (response *Delet
 //  INTERNALERROR_INVALIDINPUT = "InternalError.InvalidInput"
 //  INVALIDPARAMETER_CRTDATEINUSING = "InvalidParameter.CrtDateInUsing"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 func (c *Client) DeleteLiveCertWithContext(ctx context.Context, request *DeleteLiveCertRequest) (response *DeleteLiveCertResponse, err error) {
     if request == nil {
         request = NewDeleteLiveCertRequest()
@@ -2086,7 +2196,9 @@ func NewDeleteLiveDomainResponse() (response *DeleteLiveDomainResponse) {
 //  INVALIDPARAMETER_DOMAINISLIMITED = "InvalidParameter.DomainIsLimited"
 //  RESOURCENOTFOUND_DOMAINNOTEXIST = "ResourceNotFound.DomainNotExist"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 func (c *Client) DeleteLiveDomain(request *DeleteLiveDomainRequest) (response *DeleteLiveDomainResponse, err error) {
     return c.DeleteLiveDomainWithContext(context.Background(), request)
 }
@@ -2105,7 +2217,9 @@ func (c *Client) DeleteLiveDomain(request *DeleteLiveDomainRequest) (response *D
 //  INVALIDPARAMETER_DOMAINISLIMITED = "InvalidParameter.DomainIsLimited"
 //  RESOURCENOTFOUND_DOMAINNOTEXIST = "ResourceNotFound.DomainNotExist"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 func (c *Client) DeleteLiveDomainWithContext(ctx context.Context, request *DeleteLiveDomainRequest) (response *DeleteLiveDomainResponse, err error) {
     if request == nil {
         request = NewDeleteLiveDomainRequest()
@@ -2155,7 +2269,9 @@ func NewDeleteLivePullStreamTaskResponse() (response *DeleteLivePullStreamTaskRe
 //  INTERNALERROR_INVALIDINPUT = "InternalError.InvalidInput"
 //  INVALIDPARAMETER_TASKNOTEXIST = "InvalidParameter.TaskNotExist"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 //  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
 func (c *Client) DeleteLivePullStreamTask(request *DeleteLivePullStreamTaskRequest) (response *DeleteLivePullStreamTaskResponse, err error) {
     return c.DeleteLivePullStreamTaskWithContext(context.Background(), request)
@@ -2177,7 +2293,9 @@ func (c *Client) DeleteLivePullStreamTask(request *DeleteLivePullStreamTaskReque
 //  INTERNALERROR_INVALIDINPUT = "InternalError.InvalidInput"
 //  INVALIDPARAMETER_TASKNOTEXIST = "InvalidParameter.TaskNotExist"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 //  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
 func (c *Client) DeleteLivePullStreamTaskWithContext(ctx context.Context, request *DeleteLivePullStreamTaskRequest) (response *DeleteLivePullStreamTaskResponse, err error) {
     if request == nil {
@@ -2225,8 +2343,10 @@ func NewDeleteLiveRecordResponse() (response *DeleteLiveRecordResponse) {
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_CHANNELNOTEXIST = "ResourceNotFound.ChannelNotExist"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
 //  RESOURCENOTFOUND_TASKID = "ResourceNotFound.TaskId"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 func (c *Client) DeleteLiveRecord(request *DeleteLiveRecordRequest) (response *DeleteLiveRecordResponse, err error) {
     return c.DeleteLiveRecordWithContext(context.Background(), request)
 }
@@ -2244,8 +2364,10 @@ func (c *Client) DeleteLiveRecord(request *DeleteLiveRecordRequest) (response *D
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_CHANNELNOTEXIST = "ResourceNotFound.ChannelNotExist"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
 //  RESOURCENOTFOUND_TASKID = "ResourceNotFound.TaskId"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 func (c *Client) DeleteLiveRecordWithContext(ctx context.Context, request *DeleteLiveRecordRequest) (response *DeleteLiveRecordResponse, err error) {
     if request == nil {
         request = NewDeleteLiveRecordRequest()
@@ -2297,7 +2419,10 @@ func NewDeleteLiveRecordRuleResponse() (response *DeleteLiveRecordRuleResponse) 
 //  INVALIDPARAMETER_DOMAINFORMATERROR = "InvalidParameter.DomainFormatError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 func (c *Client) DeleteLiveRecordRule(request *DeleteLiveRecordRuleRequest) (response *DeleteLiveRecordRuleResponse, err error) {
     return c.DeleteLiveRecordRuleWithContext(context.Background(), request)
 }
@@ -2320,7 +2445,10 @@ func (c *Client) DeleteLiveRecordRule(request *DeleteLiveRecordRuleRequest) (res
 //  INVALIDPARAMETER_DOMAINFORMATERROR = "InvalidParameter.DomainFormatError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 func (c *Client) DeleteLiveRecordRuleWithContext(ctx context.Context, request *DeleteLiveRecordRuleRequest) (response *DeleteLiveRecordRuleResponse, err error) {
     if request == nil {
         request = NewDeleteLiveRecordRuleRequest()
@@ -2372,7 +2500,9 @@ func NewDeleteLiveRecordTemplateResponse() (response *DeleteLiveRecordTemplateRe
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 func (c *Client) DeleteLiveRecordTemplate(request *DeleteLiveRecordTemplateRequest) (response *DeleteLiveRecordTemplateResponse, err error) {
     return c.DeleteLiveRecordTemplateWithContext(context.Background(), request)
 }
@@ -2395,7 +2525,9 @@ func (c *Client) DeleteLiveRecordTemplate(request *DeleteLiveRecordTemplateReque
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 func (c *Client) DeleteLiveRecordTemplateWithContext(ctx context.Context, request *DeleteLiveRecordTemplateRequest) (response *DeleteLiveRecordTemplateResponse, err error) {
     if request == nil {
         request = NewDeleteLiveRecordTemplateRequest()
@@ -2448,7 +2580,9 @@ func NewDeleteLiveSnapshotRuleResponse() (response *DeleteLiveSnapshotRuleRespon
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 func (c *Client) DeleteLiveSnapshotRule(request *DeleteLiveSnapshotRuleRequest) (response *DeleteLiveSnapshotRuleResponse, err error) {
     return c.DeleteLiveSnapshotRuleWithContext(context.Background(), request)
 }
@@ -2472,7 +2606,9 @@ func (c *Client) DeleteLiveSnapshotRule(request *DeleteLiveSnapshotRuleRequest) 
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 func (c *Client) DeleteLiveSnapshotRuleWithContext(ctx context.Context, request *DeleteLiveSnapshotRuleRequest) (response *DeleteLiveSnapshotRuleResponse, err error) {
     if request == nil {
         request = NewDeleteLiveSnapshotRuleRequest()
@@ -2524,7 +2660,9 @@ func NewDeleteLiveSnapshotTemplateResponse() (response *DeleteLiveSnapshotTempla
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 func (c *Client) DeleteLiveSnapshotTemplate(request *DeleteLiveSnapshotTemplateRequest) (response *DeleteLiveSnapshotTemplateResponse, err error) {
     return c.DeleteLiveSnapshotTemplateWithContext(context.Background(), request)
 }
@@ -2547,7 +2685,9 @@ func (c *Client) DeleteLiveSnapshotTemplate(request *DeleteLiveSnapshotTemplateR
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 func (c *Client) DeleteLiveSnapshotTemplateWithContext(ctx context.Context, request *DeleteLiveSnapshotTemplateRequest) (response *DeleteLiveSnapshotTemplateResponse, err error) {
     if request == nil {
         request = NewDeleteLiveSnapshotTemplateRequest()
@@ -2601,7 +2741,10 @@ func NewDeleteLiveTranscodeRuleResponse() (response *DeleteLiveTranscodeRuleResp
 //  INVALIDPARAMETER_DOMAINFORMATERROR = "InvalidParameter.DomainFormatError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 func (c *Client) DeleteLiveTranscodeRule(request *DeleteLiveTranscodeRuleRequest) (response *DeleteLiveTranscodeRuleResponse, err error) {
     return c.DeleteLiveTranscodeRuleWithContext(context.Background(), request)
 }
@@ -2626,7 +2769,10 @@ func (c *Client) DeleteLiveTranscodeRule(request *DeleteLiveTranscodeRuleRequest
 //  INVALIDPARAMETER_DOMAINFORMATERROR = "InvalidParameter.DomainFormatError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 func (c *Client) DeleteLiveTranscodeRuleWithContext(ctx context.Context, request *DeleteLiveTranscodeRuleRequest) (response *DeleteLiveTranscodeRuleResponse, err error) {
     if request == nil {
         request = NewDeleteLiveTranscodeRuleRequest()
@@ -2680,7 +2826,9 @@ func NewDeleteLiveTranscodeTemplateResponse() (response *DeleteLiveTranscodeTemp
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 func (c *Client) DeleteLiveTranscodeTemplate(request *DeleteLiveTranscodeTemplateRequest) (response *DeleteLiveTranscodeTemplateResponse, err error) {
     return c.DeleteLiveTranscodeTemplateWithContext(context.Background(), request)
 }
@@ -2705,7 +2853,9 @@ func (c *Client) DeleteLiveTranscodeTemplate(request *DeleteLiveTranscodeTemplat
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 func (c *Client) DeleteLiveTranscodeTemplateWithContext(ctx context.Context, request *DeleteLiveTranscodeTemplateRequest) (response *DeleteLiveTranscodeTemplateResponse, err error) {
     if request == nil {
         request = NewDeleteLiveTranscodeTemplateRequest()
@@ -2749,7 +2899,9 @@ func NewDeleteLiveWatermarkResponse() (response *DeleteLiveWatermarkResponse) {
 //  INTERNALERROR_GETWATERMARKERROR = "InternalError.GetWatermarkError"
 //  INTERNALERROR_WATERMARKNOTEXIST = "InternalError.WatermarkNotExist"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 //  RESOURCENOTFOUND_WATERMARKNOTEXIST = "ResourceNotFound.WatermarkNotExist"
 func (c *Client) DeleteLiveWatermark(request *DeleteLiveWatermarkRequest) (response *DeleteLiveWatermarkResponse, err error) {
     return c.DeleteLiveWatermarkWithContext(context.Background(), request)
@@ -2765,7 +2917,9 @@ func (c *Client) DeleteLiveWatermark(request *DeleteLiveWatermarkRequest) (respo
 //  INTERNALERROR_GETWATERMARKERROR = "InternalError.GetWatermarkError"
 //  INTERNALERROR_WATERMARKNOTEXIST = "InternalError.WatermarkNotExist"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 //  RESOURCENOTFOUND_WATERMARKNOTEXIST = "ResourceNotFound.WatermarkNotExist"
 func (c *Client) DeleteLiveWatermarkWithContext(ctx context.Context, request *DeleteLiveWatermarkRequest) (response *DeleteLiveWatermarkResponse, err error) {
     if request == nil {
@@ -2819,7 +2973,9 @@ func NewDeleteLiveWatermarkRuleResponse() (response *DeleteLiveWatermarkRuleResp
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 func (c *Client) DeleteLiveWatermarkRule(request *DeleteLiveWatermarkRuleRequest) (response *DeleteLiveWatermarkRuleResponse, err error) {
     return c.DeleteLiveWatermarkRuleWithContext(context.Background(), request)
 }
@@ -2843,7 +2999,9 @@ func (c *Client) DeleteLiveWatermarkRule(request *DeleteLiveWatermarkRuleRequest
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 func (c *Client) DeleteLiveWatermarkRuleWithContext(ctx context.Context, request *DeleteLiveWatermarkRuleRequest) (response *DeleteLiveWatermarkRuleResponse, err error) {
     if request == nil {
         request = NewDeleteLiveWatermarkRuleRequest()
@@ -2887,7 +3045,10 @@ func NewDeletePullStreamConfigResponse() (response *DeletePullStreamConfigRespon
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 //  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
 func (c *Client) DeletePullStreamConfig(request *DeletePullStreamConfigRequest) (response *DeletePullStreamConfigResponse, err error) {
     return c.DeletePullStreamConfigWithContext(context.Background(), request)
@@ -2903,7 +3064,10 @@ func (c *Client) DeletePullStreamConfig(request *DeletePullStreamConfigRequest) 
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 //  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
 func (c *Client) DeletePullStreamConfigWithContext(ctx context.Context, request *DeletePullStreamConfigRequest) (response *DeletePullStreamConfigResponse, err error) {
     if request == nil {
@@ -2947,7 +3111,9 @@ func NewDeleteRecordTaskResponse() (response *DeleteRecordTaskResponse) {
 //  INTERNALERROR_NETWORKERROR = "InternalError.NetworkError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 //  RESOURCEUNAVAILABLE_INVALIDVODSTATUS = "ResourceUnavailable.InvalidVodStatus"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteRecordTask(request *DeleteRecordTaskRequest) (response *DeleteRecordTaskResponse, err error) {
@@ -2963,7 +3129,9 @@ func (c *Client) DeleteRecordTask(request *DeleteRecordTaskRequest) (response *D
 //  INTERNALERROR_NETWORKERROR = "InternalError.NetworkError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 //  RESOURCEUNAVAILABLE_INVALIDVODSTATUS = "ResourceUnavailable.InvalidVodStatus"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteRecordTaskWithContext(ctx context.Context, request *DeleteRecordTaskRequest) (response *DeleteRecordTaskResponse, err error) {
@@ -3008,7 +3176,9 @@ func NewDeleteScreenshotTaskResponse() (response *DeleteScreenshotTaskResponse) 
 //  INTERNALERROR_NETWORKERROR = "InternalError.NetworkError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteScreenshotTask(request *DeleteScreenshotTaskRequest) (response *DeleteScreenshotTaskResponse, err error) {
     return c.DeleteScreenshotTaskWithContext(context.Background(), request)
@@ -3023,7 +3193,9 @@ func (c *Client) DeleteScreenshotTask(request *DeleteScreenshotTaskRequest) (res
 //  INTERNALERROR_NETWORKERROR = "InternalError.NetworkError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteScreenshotTaskWithContext(ctx context.Context, request *DeleteScreenshotTaskRequest) (response *DeleteScreenshotTaskResponse, err error) {
     if request == nil {
@@ -3067,7 +3239,9 @@ func NewDescribeAllStreamPlayInfoListResponse() (response *DescribeAllStreamPlay
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 func (c *Client) DescribeAllStreamPlayInfoList(request *DescribeAllStreamPlayInfoListRequest) (response *DescribeAllStreamPlayInfoListResponse, err error) {
     return c.DescribeAllStreamPlayInfoListWithContext(context.Background(), request)
 }
@@ -3081,7 +3255,9 @@ func (c *Client) DescribeAllStreamPlayInfoList(request *DescribeAllStreamPlayInf
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 func (c *Client) DescribeAllStreamPlayInfoListWithContext(ctx context.Context, request *DescribeAllStreamPlayInfoListRequest) (response *DescribeAllStreamPlayInfoListResponse, err error) {
     if request == nil {
         request = NewDescribeAllStreamPlayInfoListRequest()
@@ -3123,7 +3299,9 @@ func NewDescribeAreaBillBandwidthAndFluxListResponse() (response *DescribeAreaBi
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 func (c *Client) DescribeAreaBillBandwidthAndFluxList(request *DescribeAreaBillBandwidthAndFluxListRequest) (response *DescribeAreaBillBandwidthAndFluxListResponse, err error) {
     return c.DescribeAreaBillBandwidthAndFluxListWithContext(context.Background(), request)
 }
@@ -3136,7 +3314,9 @@ func (c *Client) DescribeAreaBillBandwidthAndFluxList(request *DescribeAreaBillB
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 func (c *Client) DescribeAreaBillBandwidthAndFluxListWithContext(ctx context.Context, request *DescribeAreaBillBandwidthAndFluxListRequest) (response *DescribeAreaBillBandwidthAndFluxListResponse, err error) {
     if request == nil {
         request = NewDescribeAreaBillBandwidthAndFluxListRequest()
@@ -3178,7 +3358,9 @@ func NewDescribeBillBandwidthAndFluxListResponse() (response *DescribeBillBandwi
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 func (c *Client) DescribeBillBandwidthAndFluxList(request *DescribeBillBandwidthAndFluxListRequest) (response *DescribeBillBandwidthAndFluxListResponse, err error) {
     return c.DescribeBillBandwidthAndFluxListWithContext(context.Background(), request)
 }
@@ -3191,7 +3373,9 @@ func (c *Client) DescribeBillBandwidthAndFluxList(request *DescribeBillBandwidth
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 func (c *Client) DescribeBillBandwidthAndFluxListWithContext(ctx context.Context, request *DescribeBillBandwidthAndFluxListRequest) (response *DescribeBillBandwidthAndFluxListResponse, err error) {
     if request == nil {
         request = NewDescribeBillBandwidthAndFluxListRequest()
@@ -3232,7 +3416,10 @@ func NewDescribeCallbackRecordsListResponse() (response *DescribeCallbackRecords
 //  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 func (c *Client) DescribeCallbackRecordsList(request *DescribeCallbackRecordsListRequest) (response *DescribeCallbackRecordsListResponse, err error) {
     return c.DescribeCallbackRecordsListWithContext(context.Background(), request)
 }
@@ -3244,7 +3431,10 @@ func (c *Client) DescribeCallbackRecordsList(request *DescribeCallbackRecordsLis
 //  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 func (c *Client) DescribeCallbackRecordsListWithContext(ctx context.Context, request *DescribeCallbackRecordsListRequest) (response *DescribeCallbackRecordsListResponse, err error) {
     if request == nil {
         request = NewDescribeCallbackRecordsListRequest()
@@ -3287,7 +3477,9 @@ func NewDescribeConcurrentRecordStreamNumResponse() (response *DescribeConcurren
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 func (c *Client) DescribeConcurrentRecordStreamNum(request *DescribeConcurrentRecordStreamNumRequest) (response *DescribeConcurrentRecordStreamNumResponse, err error) {
     return c.DescribeConcurrentRecordStreamNumWithContext(context.Background(), request)
 }
@@ -3301,7 +3493,9 @@ func (c *Client) DescribeConcurrentRecordStreamNum(request *DescribeConcurrentRe
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 func (c *Client) DescribeConcurrentRecordStreamNumWithContext(ctx context.Context, request *DescribeConcurrentRecordStreamNumRequest) (response *DescribeConcurrentRecordStreamNumResponse, err error) {
     if request == nil {
         request = NewDescribeConcurrentRecordStreamNumRequest()
@@ -3343,7 +3537,9 @@ func NewDescribeDeliverBandwidthListResponse() (response *DescribeDeliverBandwid
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeDeliverBandwidthList(request *DescribeDeliverBandwidthListRequest) (response *DescribeDeliverBandwidthListResponse, err error) {
     return c.DescribeDeliverBandwidthListWithContext(context.Background(), request)
@@ -3357,7 +3553,9 @@ func (c *Client) DescribeDeliverBandwidthList(request *DescribeDeliverBandwidthL
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeDeliverBandwidthListWithContext(ctx context.Context, request *DescribeDeliverBandwidthListRequest) (response *DescribeDeliverBandwidthListResponse, err error) {
     if request == nil {
@@ -3399,7 +3597,10 @@ func NewDescribeGroupProIspPlayInfoListResponse() (response *DescribeGroupProIsp
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeGroupProIspPlayInfoList(request *DescribeGroupProIspPlayInfoListRequest) (response *DescribeGroupProIspPlayInfoListResponse, err error) {
     return c.DescribeGroupProIspPlayInfoListWithContext(context.Background(), request)
@@ -3412,7 +3613,10 @@ func (c *Client) DescribeGroupProIspPlayInfoList(request *DescribeGroupProIspPla
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeGroupProIspPlayInfoListWithContext(ctx context.Context, request *DescribeGroupProIspPlayInfoListRequest) (response *DescribeGroupProIspPlayInfoListResponse, err error) {
     if request == nil {
@@ -3457,7 +3661,9 @@ func NewDescribeHttpStatusInfoListResponse() (response *DescribeHttpStatusInfoLi
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 func (c *Client) DescribeHttpStatusInfoList(request *DescribeHttpStatusInfoListRequest) (response *DescribeHttpStatusInfoListResponse, err error) {
     return c.DescribeHttpStatusInfoListWithContext(context.Background(), request)
 }
@@ -3472,7 +3678,9 @@ func (c *Client) DescribeHttpStatusInfoList(request *DescribeHttpStatusInfoListR
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 func (c *Client) DescribeHttpStatusInfoListWithContext(ctx context.Context, request *DescribeHttpStatusInfoListRequest) (response *DescribeHttpStatusInfoListResponse, err error) {
     if request == nil {
         request = NewDescribeHttpStatusInfoListRequest()
@@ -3515,7 +3723,9 @@ func NewDescribeLiveCallbackRulesResponse() (response *DescribeLiveCallbackRules
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 //  UNSUPPORTEDOPERATION_NOTLVBCODEMODE = "UnsupportedOperation.NotLVBCodeMode"
 func (c *Client) DescribeLiveCallbackRules(request *DescribeLiveCallbackRulesRequest) (response *DescribeLiveCallbackRulesResponse, err error) {
     return c.DescribeLiveCallbackRulesWithContext(context.Background(), request)
@@ -3530,7 +3740,9 @@ func (c *Client) DescribeLiveCallbackRules(request *DescribeLiveCallbackRulesReq
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 //  UNSUPPORTEDOPERATION_NOTLVBCODEMODE = "UnsupportedOperation.NotLVBCodeMode"
 func (c *Client) DescribeLiveCallbackRulesWithContext(ctx context.Context, request *DescribeLiveCallbackRulesRequest) (response *DescribeLiveCallbackRulesResponse, err error) {
     if request == nil {
@@ -3588,7 +3800,9 @@ func NewDescribeLiveCallbackTemplateResponse() (response *DescribeLiveCallbackTe
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 func (c *Client) DescribeLiveCallbackTemplate(request *DescribeLiveCallbackTemplateRequest) (response *DescribeLiveCallbackTemplateResponse, err error) {
     return c.DescribeLiveCallbackTemplateWithContext(context.Background(), request)
 }
@@ -3616,7 +3830,9 @@ func (c *Client) DescribeLiveCallbackTemplate(request *DescribeLiveCallbackTempl
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 func (c *Client) DescribeLiveCallbackTemplateWithContext(ctx context.Context, request *DescribeLiveCallbackTemplateRequest) (response *DescribeLiveCallbackTemplateResponse, err error) {
     if request == nil {
         request = NewDescribeLiveCallbackTemplateRequest()
@@ -3671,7 +3887,9 @@ func NewDescribeLiveCallbackTemplatesResponse() (response *DescribeLiveCallbackT
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 //  UNSUPPORTEDOPERATION_NOTLVBCODEMODE = "UnsupportedOperation.NotLVBCodeMode"
 func (c *Client) DescribeLiveCallbackTemplates(request *DescribeLiveCallbackTemplatesRequest) (response *DescribeLiveCallbackTemplatesResponse, err error) {
     return c.DescribeLiveCallbackTemplatesWithContext(context.Background(), request)
@@ -3698,7 +3916,9 @@ func (c *Client) DescribeLiveCallbackTemplates(request *DescribeLiveCallbackTemp
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 //  UNSUPPORTEDOPERATION_NOTLVBCODEMODE = "UnsupportedOperation.NotLVBCodeMode"
 func (c *Client) DescribeLiveCallbackTemplatesWithContext(ctx context.Context, request *DescribeLiveCallbackTemplatesRequest) (response *DescribeLiveCallbackTemplatesResponse, err error) {
     if request == nil {
@@ -3744,7 +3964,9 @@ func NewDescribeLiveCertResponse() (response *DescribeLiveCertResponse) {
 //  INTERNALERROR_INVALIDINPUT = "InternalError.InvalidInput"
 //  RESOURCENOTFOUND_CRTDOMAINNOTFOUND = "ResourceNotFound.CrtDomainNotFound"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 func (c *Client) DescribeLiveCert(request *DescribeLiveCertRequest) (response *DescribeLiveCertResponse, err error) {
     return c.DescribeLiveCertWithContext(context.Background(), request)
 }
@@ -3760,7 +3982,9 @@ func (c *Client) DescribeLiveCert(request *DescribeLiveCertRequest) (response *D
 //  INTERNALERROR_INVALIDINPUT = "InternalError.InvalidInput"
 //  RESOURCENOTFOUND_CRTDOMAINNOTFOUND = "ResourceNotFound.CrtDomainNotFound"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 func (c *Client) DescribeLiveCertWithContext(ctx context.Context, request *DescribeLiveCertRequest) (response *DescribeLiveCertResponse, err error) {
     if request == nil {
         request = NewDescribeLiveCertRequest()
@@ -3805,7 +4029,9 @@ func NewDescribeLiveCertsResponse() (response *DescribeLiveCertsResponse) {
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_CRTDOMAINNOTFOUND = "ResourceNotFound.CrtDomainNotFound"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 func (c *Client) DescribeLiveCerts(request *DescribeLiveCertsRequest) (response *DescribeLiveCertsResponse, err error) {
     return c.DescribeLiveCertsWithContext(context.Background(), request)
 }
@@ -3821,7 +4047,9 @@ func (c *Client) DescribeLiveCerts(request *DescribeLiveCertsRequest) (response 
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_CRTDOMAINNOTFOUND = "ResourceNotFound.CrtDomainNotFound"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 func (c *Client) DescribeLiveCertsWithContext(ctx context.Context, request *DescribeLiveCertsRequest) (response *DescribeLiveCertsResponse, err error) {
     if request == nil {
         request = NewDescribeLiveCertsRequest()
@@ -3863,7 +4091,10 @@ func NewDescribeLiveDelayInfoListResponse() (response *DescribeLiveDelayInfoList
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 //  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
 func (c *Client) DescribeLiveDelayInfoList(request *DescribeLiveDelayInfoListRequest) (response *DescribeLiveDelayInfoListResponse, err error) {
     return c.DescribeLiveDelayInfoListWithContext(context.Background(), request)
@@ -3877,7 +4108,10 @@ func (c *Client) DescribeLiveDelayInfoList(request *DescribeLiveDelayInfoListReq
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 //  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
 func (c *Client) DescribeLiveDelayInfoListWithContext(ctx context.Context, request *DescribeLiveDelayInfoListRequest) (response *DescribeLiveDelayInfoListResponse, err error) {
     if request == nil {
@@ -3924,7 +4158,10 @@ func NewDescribeLiveDomainResponse() (response *DescribeLiveDomainResponse) {
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_DOMAINNOTEXIST = "ResourceNotFound.DomainNotExist"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 func (c *Client) DescribeLiveDomain(request *DescribeLiveDomainRequest) (response *DescribeLiveDomainResponse, err error) {
     return c.DescribeLiveDomainWithContext(context.Background(), request)
 }
@@ -3941,7 +4178,10 @@ func (c *Client) DescribeLiveDomain(request *DescribeLiveDomainRequest) (respons
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_DOMAINNOTEXIST = "ResourceNotFound.DomainNotExist"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 func (c *Client) DescribeLiveDomainWithContext(ctx context.Context, request *DescribeLiveDomainRequest) (response *DescribeLiveDomainResponse, err error) {
     if request == nil {
         request = NewDescribeLiveDomainRequest()
@@ -3986,7 +4226,9 @@ func NewDescribeLiveDomainCertResponse() (response *DescribeLiveDomainCertRespon
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_CRTDOMAINNOTFOUND = "ResourceNotFound.CrtDomainNotFound"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 func (c *Client) DescribeLiveDomainCert(request *DescribeLiveDomainCertRequest) (response *DescribeLiveDomainCertResponse, err error) {
     return c.DescribeLiveDomainCertWithContext(context.Background(), request)
 }
@@ -4002,7 +4244,9 @@ func (c *Client) DescribeLiveDomainCert(request *DescribeLiveDomainCertRequest) 
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_CRTDOMAINNOTFOUND = "ResourceNotFound.CrtDomainNotFound"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 func (c *Client) DescribeLiveDomainCertWithContext(ctx context.Context, request *DescribeLiveDomainCertRequest) (response *DescribeLiveDomainCertResponse, err error) {
     if request == nil {
         request = NewDescribeLiveDomainCertRequest()
@@ -4043,7 +4287,9 @@ func NewDescribeLiveDomainPlayInfoListResponse() (response *DescribeLiveDomainPl
 //  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeLiveDomainPlayInfoList(request *DescribeLiveDomainPlayInfoListRequest) (response *DescribeLiveDomainPlayInfoListResponse, err error) {
     return c.DescribeLiveDomainPlayInfoListWithContext(context.Background(), request)
@@ -4056,7 +4302,9 @@ func (c *Client) DescribeLiveDomainPlayInfoList(request *DescribeLiveDomainPlayI
 //  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeLiveDomainPlayInfoListWithContext(ctx context.Context, request *DescribeLiveDomainPlayInfoListRequest) (response *DescribeLiveDomainPlayInfoListResponse, err error) {
     if request == nil {
@@ -4105,7 +4353,10 @@ func NewDescribeLiveDomainRefererResponse() (response *DescribeLiveDomainReferer
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_DOMAINNOTEXIST = "ResourceNotFound.DomainNotExist"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 func (c *Client) DescribeLiveDomainReferer(request *DescribeLiveDomainRefererRequest) (response *DescribeLiveDomainRefererResponse, err error) {
     return c.DescribeLiveDomainRefererWithContext(context.Background(), request)
 }
@@ -4124,7 +4375,10 @@ func (c *Client) DescribeLiveDomainReferer(request *DescribeLiveDomainRefererReq
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_DOMAINNOTEXIST = "ResourceNotFound.DomainNotExist"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 func (c *Client) DescribeLiveDomainRefererWithContext(ctx context.Context, request *DescribeLiveDomainRefererRequest) (response *DescribeLiveDomainRefererResponse, err error) {
     if request == nil {
         request = NewDescribeLiveDomainRefererRequest()
@@ -4168,8 +4422,10 @@ func NewDescribeLiveDomainsResponse() (response *DescribeLiveDomainsResponse) {
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
 //  INTERNALERROR_GETBIZIDERROR = "InternalError.GetBizidError"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_INVALIDUSER = "ResourceNotFound.InvalidUser"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 func (c *Client) DescribeLiveDomains(request *DescribeLiveDomainsRequest) (response *DescribeLiveDomainsResponse, err error) {
     return c.DescribeLiveDomainsWithContext(context.Background(), request)
 }
@@ -4184,8 +4440,10 @@ func (c *Client) DescribeLiveDomains(request *DescribeLiveDomainsRequest) (respo
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
 //  INTERNALERROR_GETBIZIDERROR = "InternalError.GetBizidError"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_INVALIDUSER = "ResourceNotFound.InvalidUser"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 func (c *Client) DescribeLiveDomainsWithContext(ctx context.Context, request *DescribeLiveDomainsRequest) (response *DescribeLiveDomainsResponse, err error) {
     if request == nil {
         request = NewDescribeLiveDomainsRequest()
@@ -4233,7 +4491,9 @@ func NewDescribeLiveForbidStreamListResponse() (response *DescribeLiveForbidStre
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 //  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
 func (c *Client) DescribeLiveForbidStreamList(request *DescribeLiveForbidStreamListRequest) (response *DescribeLiveForbidStreamListResponse, err error) {
     return c.DescribeLiveForbidStreamListWithContext(context.Background(), request)
@@ -4253,7 +4513,9 @@ func (c *Client) DescribeLiveForbidStreamList(request *DescribeLiveForbidStreamL
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 //  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
 func (c *Client) DescribeLiveForbidStreamListWithContext(ctx context.Context, request *DescribeLiveForbidStreamListRequest) (response *DescribeLiveForbidStreamListResponse, err error) {
     if request == nil {
@@ -4299,7 +4561,9 @@ func NewDescribeLivePackageInfoResponse() (response *DescribeLivePackageInfoResp
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 func (c *Client) DescribeLivePackageInfo(request *DescribeLivePackageInfoRequest) (response *DescribeLivePackageInfoResponse, err error) {
     return c.DescribeLivePackageInfoWithContext(context.Background(), request)
 }
@@ -4315,7 +4579,9 @@ func (c *Client) DescribeLivePackageInfo(request *DescribeLivePackageInfoRequest
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 func (c *Client) DescribeLivePackageInfoWithContext(ctx context.Context, request *DescribeLivePackageInfoRequest) (response *DescribeLivePackageInfoResponse, err error) {
     if request == nil {
         request = NewDescribeLivePackageInfoRequest()
@@ -4360,8 +4626,11 @@ func NewDescribeLivePlayAuthKeyResponse() (response *DescribeLivePlayAuthKeyResp
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_PLAYDOMAINNORECORD = "ResourceNotFound.PlayDomainNoRecord"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 func (c *Client) DescribeLivePlayAuthKey(request *DescribeLivePlayAuthKeyRequest) (response *DescribeLivePlayAuthKeyResponse, err error) {
     return c.DescribeLivePlayAuthKeyWithContext(context.Background(), request)
 }
@@ -4377,8 +4646,11 @@ func (c *Client) DescribeLivePlayAuthKey(request *DescribeLivePlayAuthKeyRequest
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_PLAYDOMAINNORECORD = "ResourceNotFound.PlayDomainNoRecord"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 func (c *Client) DescribeLivePlayAuthKeyWithContext(ctx context.Context, request *DescribeLivePlayAuthKeyRequest) (response *DescribeLivePlayAuthKeyResponse, err error) {
     if request == nil {
         request = NewDescribeLivePlayAuthKeyRequest()
@@ -4422,7 +4694,9 @@ func NewDescribeLivePullStreamTasksResponse() (response *DescribeLivePullStreamT
 //  FAILEDOPERATION_CALLOTHERSVRFAILED = "FailedOperation.CallOtherSvrFailed"
 //  INTERNALERROR = "InternalError"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 //  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
 func (c *Client) DescribeLivePullStreamTasks(request *DescribeLivePullStreamTasksRequest) (response *DescribeLivePullStreamTasksResponse, err error) {
     return c.DescribeLivePullStreamTasksWithContext(context.Background(), request)
@@ -4438,7 +4712,9 @@ func (c *Client) DescribeLivePullStreamTasks(request *DescribeLivePullStreamTask
 //  FAILEDOPERATION_CALLOTHERSVRFAILED = "FailedOperation.CallOtherSvrFailed"
 //  INTERNALERROR = "InternalError"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 //  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
 func (c *Client) DescribeLivePullStreamTasksWithContext(ctx context.Context, request *DescribeLivePullStreamTasksRequest) (response *DescribeLivePullStreamTasksResponse, err error) {
     if request == nil {
@@ -4484,8 +4760,11 @@ func NewDescribeLivePushAuthKeyResponse() (response *DescribeLivePushAuthKeyResp
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_PUSHDOMAINNORECORD = "ResourceNotFound.PushDomainNoRecord"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 func (c *Client) DescribeLivePushAuthKey(request *DescribeLivePushAuthKeyRequest) (response *DescribeLivePushAuthKeyResponse, err error) {
     return c.DescribeLivePushAuthKeyWithContext(context.Background(), request)
 }
@@ -4501,8 +4780,11 @@ func (c *Client) DescribeLivePushAuthKey(request *DescribeLivePushAuthKeyRequest
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_PUSHDOMAINNORECORD = "ResourceNotFound.PushDomainNoRecord"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 func (c *Client) DescribeLivePushAuthKeyWithContext(ctx context.Context, request *DescribeLivePushAuthKeyRequest) (response *DescribeLivePushAuthKeyResponse, err error) {
     if request == nil {
         request = NewDescribeLivePushAuthKeyRequest()
@@ -4553,7 +4835,9 @@ func NewDescribeLiveRecordRulesResponse() (response *DescribeLiveRecordRulesResp
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 func (c *Client) DescribeLiveRecordRules(request *DescribeLiveRecordRulesRequest) (response *DescribeLiveRecordRulesResponse, err error) {
     return c.DescribeLiveRecordRulesWithContext(context.Background(), request)
 }
@@ -4575,7 +4859,9 @@ func (c *Client) DescribeLiveRecordRules(request *DescribeLiveRecordRulesRequest
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 func (c *Client) DescribeLiveRecordRulesWithContext(ctx context.Context, request *DescribeLiveRecordRulesRequest) (response *DescribeLiveRecordRulesResponse, err error) {
     if request == nil {
         request = NewDescribeLiveRecordRulesRequest()
@@ -4627,7 +4913,9 @@ func NewDescribeLiveRecordTemplateResponse() (response *DescribeLiveRecordTempla
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 func (c *Client) DescribeLiveRecordTemplate(request *DescribeLiveRecordTemplateRequest) (response *DescribeLiveRecordTemplateResponse, err error) {
     return c.DescribeLiveRecordTemplateWithContext(context.Background(), request)
 }
@@ -4650,7 +4938,9 @@ func (c *Client) DescribeLiveRecordTemplate(request *DescribeLiveRecordTemplateR
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 func (c *Client) DescribeLiveRecordTemplateWithContext(ctx context.Context, request *DescribeLiveRecordTemplateRequest) (response *DescribeLiveRecordTemplateResponse, err error) {
     if request == nil {
         request = NewDescribeLiveRecordTemplateRequest()
@@ -4700,7 +4990,10 @@ func NewDescribeLiveRecordTemplatesResponse() (response *DescribeLiveRecordTempl
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 func (c *Client) DescribeLiveRecordTemplates(request *DescribeLiveRecordTemplatesRequest) (response *DescribeLiveRecordTemplatesResponse, err error) {
     return c.DescribeLiveRecordTemplatesWithContext(context.Background(), request)
 }
@@ -4721,7 +5014,10 @@ func (c *Client) DescribeLiveRecordTemplates(request *DescribeLiveRecordTemplate
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 func (c *Client) DescribeLiveRecordTemplatesWithContext(ctx context.Context, request *DescribeLiveRecordTemplatesRequest) (response *DescribeLiveRecordTemplatesResponse, err error) {
     if request == nil {
         request = NewDescribeLiveRecordTemplatesRequest()
@@ -4772,7 +5068,9 @@ func NewDescribeLiveSnapshotRulesResponse() (response *DescribeLiveSnapshotRules
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 func (c *Client) DescribeLiveSnapshotRules(request *DescribeLiveSnapshotRulesRequest) (response *DescribeLiveSnapshotRulesResponse, err error) {
     return c.DescribeLiveSnapshotRulesWithContext(context.Background(), request)
 }
@@ -4794,7 +5092,9 @@ func (c *Client) DescribeLiveSnapshotRules(request *DescribeLiveSnapshotRulesReq
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 func (c *Client) DescribeLiveSnapshotRulesWithContext(ctx context.Context, request *DescribeLiveSnapshotRulesRequest) (response *DescribeLiveSnapshotRulesResponse, err error) {
     if request == nil {
         request = NewDescribeLiveSnapshotRulesRequest()
@@ -4848,7 +5148,9 @@ func NewDescribeLiveSnapshotTemplateResponse() (response *DescribeLiveSnapshotTe
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 //  UNSUPPORTEDOPERATION_NOTLVBCODEMODE = "UnsupportedOperation.NotLVBCodeMode"
 func (c *Client) DescribeLiveSnapshotTemplate(request *DescribeLiveSnapshotTemplateRequest) (response *DescribeLiveSnapshotTemplateResponse, err error) {
     return c.DescribeLiveSnapshotTemplateWithContext(context.Background(), request)
@@ -4874,7 +5176,9 @@ func (c *Client) DescribeLiveSnapshotTemplate(request *DescribeLiveSnapshotTempl
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 //  UNSUPPORTEDOPERATION_NOTLVBCODEMODE = "UnsupportedOperation.NotLVBCodeMode"
 func (c *Client) DescribeLiveSnapshotTemplateWithContext(ctx context.Context, request *DescribeLiveSnapshotTemplateRequest) (response *DescribeLiveSnapshotTemplateResponse, err error) {
     if request == nil {
@@ -4926,7 +5230,9 @@ func NewDescribeLiveSnapshotTemplatesResponse() (response *DescribeLiveSnapshotT
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 //  UNSUPPORTEDOPERATION_NOTLVBCODEMODE = "UnsupportedOperation.NotLVBCodeMode"
 func (c *Client) DescribeLiveSnapshotTemplates(request *DescribeLiveSnapshotTemplatesRequest) (response *DescribeLiveSnapshotTemplatesResponse, err error) {
     return c.DescribeLiveSnapshotTemplatesWithContext(context.Background(), request)
@@ -4949,7 +5255,9 @@ func (c *Client) DescribeLiveSnapshotTemplates(request *DescribeLiveSnapshotTemp
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 //  UNSUPPORTEDOPERATION_NOTLVBCODEMODE = "UnsupportedOperation.NotLVBCodeMode"
 func (c *Client) DescribeLiveSnapshotTemplatesWithContext(ctx context.Context, request *DescribeLiveSnapshotTemplatesRequest) (response *DescribeLiveSnapshotTemplatesResponse, err error) {
     if request == nil {
@@ -5002,7 +5310,9 @@ func NewDescribeLiveStreamEventListResponse() (response *DescribeLiveStreamEvent
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 //  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
 func (c *Client) DescribeLiveStreamEventList(request *DescribeLiveStreamEventListRequest) (response *DescribeLiveStreamEventListResponse, err error) {
     return c.DescribeLiveStreamEventListWithContext(context.Background(), request)
@@ -5026,7 +5336,9 @@ func (c *Client) DescribeLiveStreamEventList(request *DescribeLiveStreamEventLis
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 //  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
 func (c *Client) DescribeLiveStreamEventListWithContext(ctx context.Context, request *DescribeLiveStreamEventListRequest) (response *DescribeLiveStreamEventListResponse, err error) {
     if request == nil {
@@ -5087,7 +5399,9 @@ func NewDescribeLiveStreamOnlineListResponse() (response *DescribeLiveStreamOnli
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 //  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
 func (c *Client) DescribeLiveStreamOnlineList(request *DescribeLiveStreamOnlineListRequest) (response *DescribeLiveStreamOnlineListResponse, err error) {
     return c.DescribeLiveStreamOnlineListWithContext(context.Background(), request)
@@ -5119,7 +5433,9 @@ func (c *Client) DescribeLiveStreamOnlineList(request *DescribeLiveStreamOnlineL
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 //  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
 func (c *Client) DescribeLiveStreamOnlineListWithContext(ctx context.Context, request *DescribeLiveStreamOnlineListRequest) (response *DescribeLiveStreamOnlineListResponse, err error) {
     if request == nil {
@@ -5175,7 +5491,9 @@ func NewDescribeLiveStreamPublishedListResponse() (response *DescribeLiveStreamP
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 //  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
 func (c *Client) DescribeLiveStreamPublishedList(request *DescribeLiveStreamPublishedListRequest) (response *DescribeLiveStreamPublishedListResponse, err error) {
     return c.DescribeLiveStreamPublishedListWithContext(context.Background(), request)
@@ -5202,7 +5520,9 @@ func (c *Client) DescribeLiveStreamPublishedList(request *DescribeLiveStreamPubl
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 //  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
 func (c *Client) DescribeLiveStreamPublishedListWithContext(ctx context.Context, request *DescribeLiveStreamPublishedListRequest) (response *DescribeLiveStreamPublishedListResponse, err error) {
     if request == nil {
@@ -5250,7 +5570,9 @@ func NewDescribeLiveStreamPushInfoListResponse() (response *DescribeLiveStreamPu
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 func (c *Client) DescribeLiveStreamPushInfoList(request *DescribeLiveStreamPushInfoListRequest) (response *DescribeLiveStreamPushInfoListResponse, err error) {
     return c.DescribeLiveStreamPushInfoListWithContext(context.Background(), request)
 }
@@ -5268,7 +5590,9 @@ func (c *Client) DescribeLiveStreamPushInfoList(request *DescribeLiveStreamPushI
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 func (c *Client) DescribeLiveStreamPushInfoListWithContext(ctx context.Context, request *DescribeLiveStreamPushInfoListRequest) (response *DescribeLiveStreamPushInfoListResponse, err error) {
     if request == nil {
         request = NewDescribeLiveStreamPushInfoListRequest()
@@ -5339,7 +5663,9 @@ func NewDescribeLiveStreamStateResponse() (response *DescribeLiveStreamStateResp
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 //  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
 func (c *Client) DescribeLiveStreamState(request *DescribeLiveStreamStateRequest) (response *DescribeLiveStreamStateResponse, err error) {
     return c.DescribeLiveStreamStateWithContext(context.Background(), request)
@@ -5382,7 +5708,9 @@ func (c *Client) DescribeLiveStreamState(request *DescribeLiveStreamStateRequest
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 //  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
 func (c *Client) DescribeLiveStreamStateWithContext(ctx context.Context, request *DescribeLiveStreamStateRequest) (response *DescribeLiveStreamStateResponse, err error) {
     if request == nil {
@@ -5426,7 +5754,9 @@ func NewDescribeLiveTimeShiftBillInfoListResponse() (response *DescribeLiveTimeS
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 func (c *Client) DescribeLiveTimeShiftBillInfoList(request *DescribeLiveTimeShiftBillInfoListRequest) (response *DescribeLiveTimeShiftBillInfoListResponse, err error) {
     return c.DescribeLiveTimeShiftBillInfoListWithContext(context.Background(), request)
 }
@@ -5440,7 +5770,9 @@ func (c *Client) DescribeLiveTimeShiftBillInfoList(request *DescribeLiveTimeShif
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 func (c *Client) DescribeLiveTimeShiftBillInfoListWithContext(ctx context.Context, request *DescribeLiveTimeShiftBillInfoListRequest) (response *DescribeLiveTimeShiftBillInfoListResponse, err error) {
     if request == nil {
         request = NewDescribeLiveTimeShiftBillInfoListRequest()
@@ -5482,7 +5814,9 @@ func NewDescribeLiveTranscodeDetailInfoResponse() (response *DescribeLiveTransco
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 func (c *Client) DescribeLiveTranscodeDetailInfo(request *DescribeLiveTranscodeDetailInfoRequest) (response *DescribeLiveTranscodeDetailInfoResponse, err error) {
     return c.DescribeLiveTranscodeDetailInfoWithContext(context.Background(), request)
 }
@@ -5495,7 +5829,9 @@ func (c *Client) DescribeLiveTranscodeDetailInfo(request *DescribeLiveTranscodeD
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 func (c *Client) DescribeLiveTranscodeDetailInfoWithContext(ctx context.Context, request *DescribeLiveTranscodeDetailInfoRequest) (response *DescribeLiveTranscodeDetailInfoResponse, err error) {
     if request == nil {
         request = NewDescribeLiveTranscodeDetailInfoRequest()
@@ -5546,7 +5882,9 @@ func NewDescribeLiveTranscodeRulesResponse() (response *DescribeLiveTranscodeRul
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 func (c *Client) DescribeLiveTranscodeRules(request *DescribeLiveTranscodeRulesRequest) (response *DescribeLiveTranscodeRulesResponse, err error) {
     return c.DescribeLiveTranscodeRulesWithContext(context.Background(), request)
 }
@@ -5568,7 +5906,9 @@ func (c *Client) DescribeLiveTranscodeRules(request *DescribeLiveTranscodeRulesR
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 func (c *Client) DescribeLiveTranscodeRulesWithContext(ctx context.Context, request *DescribeLiveTranscodeRulesRequest) (response *DescribeLiveTranscodeRulesResponse, err error) {
     if request == nil {
         request = NewDescribeLiveTranscodeRulesRequest()
@@ -5619,7 +5959,10 @@ func NewDescribeLiveTranscodeTemplateResponse() (response *DescribeLiveTranscode
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 //  UNSUPPORTEDOPERATION_NOTLVBCODEMODE = "UnsupportedOperation.NotLVBCodeMode"
 func (c *Client) DescribeLiveTranscodeTemplate(request *DescribeLiveTranscodeTemplateRequest) (response *DescribeLiveTranscodeTemplateResponse, err error) {
     return c.DescribeLiveTranscodeTemplateWithContext(context.Background(), request)
@@ -5642,7 +5985,10 @@ func (c *Client) DescribeLiveTranscodeTemplate(request *DescribeLiveTranscodeTem
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 //  UNSUPPORTEDOPERATION_NOTLVBCODEMODE = "UnsupportedOperation.NotLVBCodeMode"
 func (c *Client) DescribeLiveTranscodeTemplateWithContext(ctx context.Context, request *DescribeLiveTranscodeTemplateRequest) (response *DescribeLiveTranscodeTemplateResponse, err error) {
     if request == nil {
@@ -5694,7 +6040,9 @@ func NewDescribeLiveTranscodeTemplatesResponse() (response *DescribeLiveTranscod
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 //  UNSUPPORTEDOPERATION_NOTLVBCODEMODE = "UnsupportedOperation.NotLVBCodeMode"
 func (c *Client) DescribeLiveTranscodeTemplates(request *DescribeLiveTranscodeTemplatesRequest) (response *DescribeLiveTranscodeTemplatesResponse, err error) {
     return c.DescribeLiveTranscodeTemplatesWithContext(context.Background(), request)
@@ -5717,7 +6065,9 @@ func (c *Client) DescribeLiveTranscodeTemplates(request *DescribeLiveTranscodeTe
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 //  UNSUPPORTEDOPERATION_NOTLVBCODEMODE = "UnsupportedOperation.NotLVBCodeMode"
 func (c *Client) DescribeLiveTranscodeTemplatesWithContext(ctx context.Context, request *DescribeLiveTranscodeTemplatesRequest) (response *DescribeLiveTranscodeTemplatesResponse, err error) {
     if request == nil {
@@ -5766,7 +6116,9 @@ func NewDescribeLiveTranscodeTotalInfoResponse() (response *DescribeLiveTranscod
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeLiveTranscodeTotalInfo(request *DescribeLiveTranscodeTotalInfoRequest) (response *DescribeLiveTranscodeTotalInfoResponse, err error) {
     return c.DescribeLiveTranscodeTotalInfoWithContext(context.Background(), request)
@@ -5786,7 +6138,9 @@ func (c *Client) DescribeLiveTranscodeTotalInfo(request *DescribeLiveTranscodeTo
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeLiveTranscodeTotalInfoWithContext(ctx context.Context, request *DescribeLiveTranscodeTotalInfoRequest) (response *DescribeLiveTranscodeTotalInfoResponse, err error) {
     if request == nil {
@@ -5838,7 +6192,10 @@ func NewDescribeLiveWatermarkResponse() (response *DescribeLiveWatermarkResponse
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 func (c *Client) DescribeLiveWatermark(request *DescribeLiveWatermarkRequest) (response *DescribeLiveWatermarkResponse, err error) {
     return c.DescribeLiveWatermarkWithContext(context.Background(), request)
 }
@@ -5860,7 +6217,10 @@ func (c *Client) DescribeLiveWatermark(request *DescribeLiveWatermarkRequest) (r
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 func (c *Client) DescribeLiveWatermarkWithContext(ctx context.Context, request *DescribeLiveWatermarkRequest) (response *DescribeLiveWatermarkResponse, err error) {
     if request == nil {
         request = NewDescribeLiveWatermarkRequest()
@@ -5911,7 +6271,9 @@ func NewDescribeLiveWatermarkRulesResponse() (response *DescribeLiveWatermarkRul
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 func (c *Client) DescribeLiveWatermarkRules(request *DescribeLiveWatermarkRulesRequest) (response *DescribeLiveWatermarkRulesResponse, err error) {
     return c.DescribeLiveWatermarkRulesWithContext(context.Background(), request)
 }
@@ -5933,7 +6295,9 @@ func (c *Client) DescribeLiveWatermarkRules(request *DescribeLiveWatermarkRulesR
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 func (c *Client) DescribeLiveWatermarkRulesWithContext(ctx context.Context, request *DescribeLiveWatermarkRulesRequest) (response *DescribeLiveWatermarkRulesResponse, err error) {
     if request == nil {
         request = NewDescribeLiveWatermarkRulesRequest()
@@ -5972,7 +6336,9 @@ func NewDescribeLiveWatermarksResponse() (response *DescribeLiveWatermarksRespon
 //
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 func (c *Client) DescribeLiveWatermarks(request *DescribeLiveWatermarksRequest) (response *DescribeLiveWatermarksResponse, err error) {
     return c.DescribeLiveWatermarksWithContext(context.Background(), request)
 }
@@ -5982,7 +6348,9 @@ func (c *Client) DescribeLiveWatermarks(request *DescribeLiveWatermarksRequest) 
 //
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 func (c *Client) DescribeLiveWatermarksWithContext(ctx context.Context, request *DescribeLiveWatermarksRequest) (response *DescribeLiveWatermarksResponse, err error) {
     if request == nil {
         request = NewDescribeLiveWatermarksRequest()
@@ -6028,7 +6396,10 @@ func NewDescribeLogDownloadListResponse() (response *DescribeLogDownloadListResp
 //  RESOURCENOTFOUND_CDNLOGEMPTY = "ResourceNotFound.CdnLogEmpty"
 //  RESOURCENOTFOUND_CDNTHEMEEMPTY = "ResourceNotFound.CdnThemeEmpty"
 //  RESOURCENOTFOUND_DOMAINNOTEXIST = "ResourceNotFound.DomainNotExist"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 func (c *Client) DescribeLogDownloadList(request *DescribeLogDownloadListRequest) (response *DescribeLogDownloadListResponse, err error) {
     return c.DescribeLogDownloadListWithContext(context.Background(), request)
 }
@@ -6045,7 +6416,10 @@ func (c *Client) DescribeLogDownloadList(request *DescribeLogDownloadListRequest
 //  RESOURCENOTFOUND_CDNLOGEMPTY = "ResourceNotFound.CdnLogEmpty"
 //  RESOURCENOTFOUND_CDNTHEMEEMPTY = "ResourceNotFound.CdnThemeEmpty"
 //  RESOURCENOTFOUND_DOMAINNOTEXIST = "ResourceNotFound.DomainNotExist"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 func (c *Client) DescribeLogDownloadListWithContext(ctx context.Context, request *DescribeLogDownloadListRequest) (response *DescribeLogDownloadListResponse, err error) {
     if request == nil {
         request = NewDescribeLogDownloadListRequest()
@@ -6089,7 +6463,9 @@ func NewDescribePlayErrorCodeDetailInfoListResponse() (response *DescribePlayErr
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 func (c *Client) DescribePlayErrorCodeDetailInfoList(request *DescribePlayErrorCodeDetailInfoListRequest) (response *DescribePlayErrorCodeDetailInfoListResponse, err error) {
     return c.DescribePlayErrorCodeDetailInfoListWithContext(context.Background(), request)
 }
@@ -6104,7 +6480,9 @@ func (c *Client) DescribePlayErrorCodeDetailInfoList(request *DescribePlayErrorC
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 func (c *Client) DescribePlayErrorCodeDetailInfoListWithContext(ctx context.Context, request *DescribePlayErrorCodeDetailInfoListRequest) (response *DescribePlayErrorCodeDetailInfoListResponse, err error) {
     if request == nil {
         request = NewDescribePlayErrorCodeDetailInfoListRequest()
@@ -6146,7 +6524,9 @@ func NewDescribePlayErrorCodeSumInfoListResponse() (response *DescribePlayErrorC
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 func (c *Client) DescribePlayErrorCodeSumInfoList(request *DescribePlayErrorCodeSumInfoListRequest) (response *DescribePlayErrorCodeSumInfoListResponse, err error) {
     return c.DescribePlayErrorCodeSumInfoListWithContext(context.Background(), request)
 }
@@ -6159,7 +6539,9 @@ func (c *Client) DescribePlayErrorCodeSumInfoList(request *DescribePlayErrorCode
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 func (c *Client) DescribePlayErrorCodeSumInfoListWithContext(ctx context.Context, request *DescribePlayErrorCodeSumInfoListRequest) (response *DescribePlayErrorCodeSumInfoListResponse, err error) {
     if request == nil {
         request = NewDescribePlayErrorCodeSumInfoListRequest()
@@ -6201,7 +6583,9 @@ func NewDescribeProIspPlaySumInfoListResponse() (response *DescribeProIspPlaySum
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 func (c *Client) DescribeProIspPlaySumInfoList(request *DescribeProIspPlaySumInfoListRequest) (response *DescribeProIspPlaySumInfoListResponse, err error) {
     return c.DescribeProIspPlaySumInfoListWithContext(context.Background(), request)
 }
@@ -6214,7 +6598,9 @@ func (c *Client) DescribeProIspPlaySumInfoList(request *DescribeProIspPlaySumInf
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 func (c *Client) DescribeProIspPlaySumInfoListWithContext(ctx context.Context, request *DescribeProIspPlaySumInfoListRequest) (response *DescribeProIspPlaySumInfoListResponse, err error) {
     if request == nil {
         request = NewDescribeProIspPlaySumInfoListRequest()
@@ -6261,7 +6647,9 @@ func NewDescribeProvinceIspPlayInfoListResponse() (response *DescribeProvinceIsp
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 func (c *Client) DescribeProvinceIspPlayInfoList(request *DescribeProvinceIspPlayInfoListRequest) (response *DescribeProvinceIspPlayInfoListResponse, err error) {
     return c.DescribeProvinceIspPlayInfoListWithContext(context.Background(), request)
 }
@@ -6279,7 +6667,9 @@ func (c *Client) DescribeProvinceIspPlayInfoList(request *DescribeProvinceIspPla
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 func (c *Client) DescribeProvinceIspPlayInfoListWithContext(ctx context.Context, request *DescribeProvinceIspPlayInfoListRequest) (response *DescribeProvinceIspPlayInfoListResponse, err error) {
     if request == nil {
         request = NewDescribeProvinceIspPlayInfoListRequest()
@@ -6325,7 +6715,10 @@ func NewDescribePullStreamConfigsResponse() (response *DescribePullStreamConfigs
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 //  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
 func (c *Client) DescribePullStreamConfigs(request *DescribePullStreamConfigsRequest) (response *DescribePullStreamConfigsResponse, err error) {
     return c.DescribePullStreamConfigsWithContext(context.Background(), request)
@@ -6343,7 +6736,10 @@ func (c *Client) DescribePullStreamConfigs(request *DescribePullStreamConfigsReq
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 //  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
 func (c *Client) DescribePullStreamConfigsWithContext(ctx context.Context, request *DescribePullStreamConfigsRequest) (response *DescribePullStreamConfigsResponse, err error) {
     if request == nil {
@@ -6388,7 +6784,9 @@ func NewDescribePushBandwidthAndFluxListResponse() (response *DescribePushBandwi
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 func (c *Client) DescribePushBandwidthAndFluxList(request *DescribePushBandwidthAndFluxListRequest) (response *DescribePushBandwidthAndFluxListResponse, err error) {
     return c.DescribePushBandwidthAndFluxListWithContext(context.Background(), request)
 }
@@ -6403,7 +6801,9 @@ func (c *Client) DescribePushBandwidthAndFluxList(request *DescribePushBandwidth
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 func (c *Client) DescribePushBandwidthAndFluxListWithContext(ctx context.Context, request *DescribePushBandwidthAndFluxListRequest) (response *DescribePushBandwidthAndFluxListResponse, err error) {
     if request == nil {
         request = NewDescribePushBandwidthAndFluxListRequest()
@@ -6452,7 +6852,9 @@ func NewDescribeRecordTaskResponse() (response *DescribeRecordTaskResponse) {
 //  INTERNALERROR_NETWORKERROR = "InternalError.NetworkError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeRecordTask(request *DescribeRecordTaskRequest) (response *DescribeRecordTaskResponse, err error) {
     return c.DescribeRecordTaskWithContext(context.Background(), request)
@@ -6473,7 +6875,9 @@ func (c *Client) DescribeRecordTask(request *DescribeRecordTaskRequest) (respons
 //  INTERNALERROR_NETWORKERROR = "InternalError.NetworkError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeRecordTaskWithContext(ctx context.Context, request *DescribeRecordTaskRequest) (response *DescribeRecordTaskResponse, err error) {
     if request == nil {
@@ -6518,7 +6922,9 @@ func NewDescribeScreenShotSheetNumListResponse() (response *DescribeScreenShotSh
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 func (c *Client) DescribeScreenShotSheetNumList(request *DescribeScreenShotSheetNumListRequest) (response *DescribeScreenShotSheetNumListResponse, err error) {
     return c.DescribeScreenShotSheetNumListWithContext(context.Background(), request)
 }
@@ -6533,7 +6939,9 @@ func (c *Client) DescribeScreenShotSheetNumList(request *DescribeScreenShotSheet
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 func (c *Client) DescribeScreenShotSheetNumListWithContext(ctx context.Context, request *DescribeScreenShotSheetNumListRequest) (response *DescribeScreenShotSheetNumListResponse, err error) {
     if request == nil {
         request = NewDescribeScreenShotSheetNumListRequest()
@@ -6582,7 +6990,9 @@ func NewDescribeScreenshotTaskResponse() (response *DescribeScreenshotTaskRespon
 //  INTERNALERROR_NETWORKERROR = "InternalError.NetworkError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeScreenshotTask(request *DescribeScreenshotTaskRequest) (response *DescribeScreenshotTaskResponse, err error) {
     return c.DescribeScreenshotTaskWithContext(context.Background(), request)
@@ -6603,7 +7013,9 @@ func (c *Client) DescribeScreenshotTask(request *DescribeScreenshotTaskRequest) 
 //  INTERNALERROR_NETWORKERROR = "InternalError.NetworkError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeScreenshotTaskWithContext(ctx context.Context, request *DescribeScreenshotTaskRequest) (response *DescribeScreenshotTaskResponse, err error) {
     if request == nil {
@@ -6647,7 +7059,9 @@ func NewDescribeStreamDayPlayInfoListResponse() (response *DescribeStreamDayPlay
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 func (c *Client) DescribeStreamDayPlayInfoList(request *DescribeStreamDayPlayInfoListRequest) (response *DescribeStreamDayPlayInfoListResponse, err error) {
     return c.DescribeStreamDayPlayInfoListWithContext(context.Background(), request)
 }
@@ -6661,7 +7075,9 @@ func (c *Client) DescribeStreamDayPlayInfoList(request *DescribeStreamDayPlayInf
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 func (c *Client) DescribeStreamDayPlayInfoListWithContext(ctx context.Context, request *DescribeStreamDayPlayInfoListRequest) (response *DescribeStreamDayPlayInfoListResponse, err error) {
     if request == nil {
         request = NewDescribeStreamDayPlayInfoListRequest()
@@ -6707,7 +7123,9 @@ func NewDescribeStreamPlayInfoListResponse() (response *DescribeStreamPlayInfoLi
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 func (c *Client) DescribeStreamPlayInfoList(request *DescribeStreamPlayInfoListRequest) (response *DescribeStreamPlayInfoListResponse, err error) {
     return c.DescribeStreamPlayInfoListWithContext(context.Background(), request)
 }
@@ -6724,7 +7142,9 @@ func (c *Client) DescribeStreamPlayInfoList(request *DescribeStreamPlayInfoListR
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 func (c *Client) DescribeStreamPlayInfoListWithContext(ctx context.Context, request *DescribeStreamPlayInfoListRequest) (response *DescribeStreamPlayInfoListResponse, err error) {
     if request == nil {
         request = NewDescribeStreamPlayInfoListRequest()
@@ -6766,7 +7186,9 @@ func NewDescribeStreamPushInfoListResponse() (response *DescribeStreamPushInfoLi
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 func (c *Client) DescribeStreamPushInfoList(request *DescribeStreamPushInfoListRequest) (response *DescribeStreamPushInfoListResponse, err error) {
     return c.DescribeStreamPushInfoListWithContext(context.Background(), request)
 }
@@ -6779,7 +7201,9 @@ func (c *Client) DescribeStreamPushInfoList(request *DescribeStreamPushInfoListR
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 func (c *Client) DescribeStreamPushInfoListWithContext(ctx context.Context, request *DescribeStreamPushInfoListRequest) (response *DescribeStreamPushInfoListResponse, err error) {
     if request == nil {
         request = NewDescribeStreamPushInfoListRequest()
@@ -6821,7 +7245,9 @@ func NewDescribeTopClientIpSumInfoListResponse() (response *DescribeTopClientIpS
 //  INVALIDPARAMETER = "InvalidParameter"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 func (c *Client) DescribeTopClientIpSumInfoList(request *DescribeTopClientIpSumInfoListRequest) (response *DescribeTopClientIpSumInfoListResponse, err error) {
     return c.DescribeTopClientIpSumInfoListWithContext(context.Background(), request)
 }
@@ -6834,7 +7260,9 @@ func (c *Client) DescribeTopClientIpSumInfoList(request *DescribeTopClientIpSumI
 //  INVALIDPARAMETER = "InvalidParameter"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 func (c *Client) DescribeTopClientIpSumInfoListWithContext(ctx context.Context, request *DescribeTopClientIpSumInfoListRequest) (response *DescribeTopClientIpSumInfoListResponse, err error) {
     if request == nil {
         request = NewDescribeTopClientIpSumInfoListRequest()
@@ -6876,7 +7304,9 @@ func NewDescribeUploadStreamNumsResponse() (response *DescribeUploadStreamNumsRe
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 func (c *Client) DescribeUploadStreamNums(request *DescribeUploadStreamNumsRequest) (response *DescribeUploadStreamNumsResponse, err error) {
     return c.DescribeUploadStreamNumsWithContext(context.Background(), request)
 }
@@ -6889,7 +7319,9 @@ func (c *Client) DescribeUploadStreamNums(request *DescribeUploadStreamNumsReque
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 func (c *Client) DescribeUploadStreamNumsWithContext(ctx context.Context, request *DescribeUploadStreamNumsRequest) (response *DescribeUploadStreamNumsResponse, err error) {
     if request == nil {
         request = NewDescribeUploadStreamNumsRequest()
@@ -6932,7 +7364,9 @@ func NewDescribeVisitTopSumInfoListResponse() (response *DescribeVisitTopSumInfo
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 func (c *Client) DescribeVisitTopSumInfoList(request *DescribeVisitTopSumInfoListRequest) (response *DescribeVisitTopSumInfoListResponse, err error) {
     return c.DescribeVisitTopSumInfoListWithContext(context.Background(), request)
 }
@@ -6946,7 +7380,9 @@ func (c *Client) DescribeVisitTopSumInfoList(request *DescribeVisitTopSumInfoLis
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 func (c *Client) DescribeVisitTopSumInfoListWithContext(ctx context.Context, request *DescribeVisitTopSumInfoListRequest) (response *DescribeVisitTopSumInfoListResponse, err error) {
     if request == nil {
         request = NewDescribeVisitTopSumInfoListRequest()
@@ -7001,8 +7437,10 @@ func NewDropLiveStreamResponse() (response *DropLiveStreamResponse) {
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
 //  RESOURCENOTFOUND_STREAMNOTALIVE = "ResourceNotFound.StreamNotAlive"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 //  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
 func (c *Client) DropLiveStream(request *DropLiveStreamRequest) (response *DropLiveStreamResponse, err error) {
     return c.DropLiveStreamWithContext(context.Background(), request)
@@ -7029,8 +7467,10 @@ func (c *Client) DropLiveStream(request *DropLiveStreamRequest) (response *DropL
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
 //  RESOURCENOTFOUND_STREAMNOTALIVE = "ResourceNotFound.StreamNotAlive"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 //  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
 func (c *Client) DropLiveStreamWithContext(ctx context.Context, request *DropLiveStreamRequest) (response *DropLiveStreamResponse, err error) {
     if request == nil {
@@ -7078,8 +7518,10 @@ func NewEnableLiveDomainResponse() (response *EnableLiveDomainResponse) {
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_DOMAINNORECORD = "ResourceNotFound.DomainNoRecord"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_INVALIDUSER = "ResourceNotFound.InvalidUser"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 func (c *Client) EnableLiveDomain(request *EnableLiveDomainRequest) (response *EnableLiveDomainResponse, err error) {
     return c.EnableLiveDomainWithContext(context.Background(), request)
 }
@@ -7097,8 +7539,10 @@ func (c *Client) EnableLiveDomain(request *EnableLiveDomainRequest) (response *E
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_DOMAINNORECORD = "ResourceNotFound.DomainNoRecord"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_INVALIDUSER = "ResourceNotFound.InvalidUser"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 func (c *Client) EnableLiveDomainWithContext(ctx context.Context, request *EnableLiveDomainRequest) (response *EnableLiveDomainResponse, err error) {
     if request == nil {
         request = NewEnableLiveDomainRequest()
@@ -7141,7 +7585,9 @@ func NewForbidLiveDomainResponse() (response *ForbidLiveDomainResponse) {
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 func (c *Client) ForbidLiveDomain(request *ForbidLiveDomainRequest) (response *ForbidLiveDomainResponse, err error) {
     return c.ForbidLiveDomainWithContext(context.Background(), request)
 }
@@ -7155,7 +7601,9 @@ func (c *Client) ForbidLiveDomain(request *ForbidLiveDomainRequest) (response *F
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 func (c *Client) ForbidLiveDomainWithContext(ctx context.Context, request *ForbidLiveDomainRequest) (response *ForbidLiveDomainResponse, err error) {
     if request == nil {
         request = NewForbidLiveDomainRequest()
@@ -7208,7 +7656,9 @@ func NewForbidLiveStreamResponse() (response *ForbidLiveStreamResponse) {
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 //  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
 func (c *Client) ForbidLiveStream(request *ForbidLiveStreamRequest) (response *ForbidLiveStreamResponse, err error) {
     return c.ForbidLiveStreamWithContext(context.Background(), request)
@@ -7233,7 +7683,9 @@ func (c *Client) ForbidLiveStream(request *ForbidLiveStreamRequest) (response *F
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 //  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
 func (c *Client) ForbidLiveStreamWithContext(ctx context.Context, request *ForbidLiveStreamRequest) (response *ForbidLiveStreamResponse, err error) {
     if request == nil {
@@ -7291,7 +7743,9 @@ func NewModifyLiveCallbackTemplateResponse() (response *ModifyLiveCallbackTempla
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 //  UNSUPPORTEDOPERATION_NOTLVBCODEMODE = "UnsupportedOperation.NotLVBCodeMode"
 func (c *Client) ModifyLiveCallbackTemplate(request *ModifyLiveCallbackTemplateRequest) (response *ModifyLiveCallbackTemplateResponse, err error) {
     return c.ModifyLiveCallbackTemplateWithContext(context.Background(), request)
@@ -7320,7 +7774,9 @@ func (c *Client) ModifyLiveCallbackTemplate(request *ModifyLiveCallbackTemplateR
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 //  UNSUPPORTEDOPERATION_NOTLVBCODEMODE = "UnsupportedOperation.NotLVBCodeMode"
 func (c *Client) ModifyLiveCallbackTemplateWithContext(ctx context.Context, request *ModifyLiveCallbackTemplateRequest) (response *ModifyLiveCallbackTemplateResponse, err error) {
     if request == nil {
@@ -7370,7 +7826,9 @@ func NewModifyLiveCertResponse() (response *ModifyLiveCertResponse) {
 //  INVALIDPARAMETER_CRTDATEOVERDUE = "InvalidParameter.CrtDateOverdue"
 //  INVALIDPARAMETER_CRTKEYNOTMATCH = "InvalidParameter.CrtKeyNotMatch"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 func (c *Client) ModifyLiveCert(request *ModifyLiveCertRequest) (response *ModifyLiveCertResponse, err error) {
     return c.ModifyLiveCertWithContext(context.Background(), request)
 }
@@ -7390,7 +7848,9 @@ func (c *Client) ModifyLiveCert(request *ModifyLiveCertRequest) (response *Modif
 //  INVALIDPARAMETER_CRTDATEOVERDUE = "InvalidParameter.CrtDateOverdue"
 //  INVALIDPARAMETER_CRTKEYNOTMATCH = "InvalidParameter.CrtKeyNotMatch"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 func (c *Client) ModifyLiveCertWithContext(ctx context.Context, request *ModifyLiveCertRequest) (response *ModifyLiveCertResponse, err error) {
     if request == nil {
         request = NewModifyLiveCertRequest()
@@ -7436,7 +7896,10 @@ func NewModifyLiveDomainCertResponse() (response *ModifyLiveDomainCertResponse) 
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_CRTDOMAINNOTFOUND = "ResourceNotFound.CrtDomainNotFound"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 func (c *Client) ModifyLiveDomainCert(request *ModifyLiveDomainCertRequest) (response *ModifyLiveDomainCertResponse, err error) {
     return c.ModifyLiveDomainCertWithContext(context.Background(), request)
 }
@@ -7453,7 +7916,10 @@ func (c *Client) ModifyLiveDomainCert(request *ModifyLiveDomainCertRequest) (res
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_CRTDOMAINNOTFOUND = "ResourceNotFound.CrtDomainNotFound"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 func (c *Client) ModifyLiveDomainCertWithContext(ctx context.Context, request *ModifyLiveDomainCertRequest) (response *ModifyLiveDomainCertResponse, err error) {
     if request == nil {
         request = NewModifyLiveDomainCertRequest()
@@ -7501,7 +7967,10 @@ func NewModifyLiveDomainRefererResponse() (response *ModifyLiveDomainRefererResp
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_DOMAINNOTEXIST = "ResourceNotFound.DomainNotExist"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 func (c *Client) ModifyLiveDomainReferer(request *ModifyLiveDomainRefererRequest) (response *ModifyLiveDomainRefererResponse, err error) {
     return c.ModifyLiveDomainRefererWithContext(context.Background(), request)
 }
@@ -7520,7 +7989,10 @@ func (c *Client) ModifyLiveDomainReferer(request *ModifyLiveDomainRefererRequest
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_DOMAINNOTEXIST = "ResourceNotFound.DomainNotExist"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 func (c *Client) ModifyLiveDomainRefererWithContext(ctx context.Context, request *ModifyLiveDomainRefererRequest) (response *ModifyLiveDomainRefererResponse, err error) {
     if request == nil {
         request = NewModifyLiveDomainRefererRequest()
@@ -7564,8 +8036,10 @@ func NewModifyLivePlayAuthKeyResponse() (response *ModifyLivePlayAuthKeyResponse
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_PLAYDOMAINNORECORD = "ResourceNotFound.PlayDomainNoRecord"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 func (c *Client) ModifyLivePlayAuthKey(request *ModifyLivePlayAuthKeyRequest) (response *ModifyLivePlayAuthKeyResponse, err error) {
     return c.ModifyLivePlayAuthKeyWithContext(context.Background(), request)
 }
@@ -7580,8 +8054,10 @@ func (c *Client) ModifyLivePlayAuthKey(request *ModifyLivePlayAuthKeyRequest) (r
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_PLAYDOMAINNORECORD = "ResourceNotFound.PlayDomainNoRecord"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 func (c *Client) ModifyLivePlayAuthKeyWithContext(ctx context.Context, request *ModifyLivePlayAuthKeyRequest) (response *ModifyLivePlayAuthKeyResponse, err error) {
     if request == nil {
         request = NewModifyLivePlayAuthKeyRequest()
@@ -7629,8 +8105,10 @@ func NewModifyLivePlayDomainResponse() (response *ModifyLivePlayDomainResponse) 
 //  RESOURCENOTFOUND_DOMAINNORECORD = "ResourceNotFound.DomainNoRecord"
 //  RESOURCENOTFOUND_DOMAINNOTEXIST = "ResourceNotFound.DomainNotExist"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_INVALIDUSER = "ResourceNotFound.InvalidUser"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 func (c *Client) ModifyLivePlayDomain(request *ModifyLivePlayDomainRequest) (response *ModifyLivePlayDomainResponse, err error) {
     return c.ModifyLivePlayDomainWithContext(context.Background(), request)
 }
@@ -7649,8 +8127,10 @@ func (c *Client) ModifyLivePlayDomain(request *ModifyLivePlayDomainRequest) (res
 //  RESOURCENOTFOUND_DOMAINNORECORD = "ResourceNotFound.DomainNoRecord"
 //  RESOURCENOTFOUND_DOMAINNOTEXIST = "ResourceNotFound.DomainNotExist"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_INVALIDUSER = "ResourceNotFound.InvalidUser"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 func (c *Client) ModifyLivePlayDomainWithContext(ctx context.Context, request *ModifyLivePlayDomainRequest) (response *ModifyLivePlayDomainResponse, err error) {
     if request == nil {
         request = NewModifyLivePlayDomainRequest()
@@ -7699,11 +8179,14 @@ func NewModifyLivePullStreamTaskResponse() (response *ModifyLivePullStreamTaskRe
 //  INVALIDPARAMETER_INVALIDSOURCEURL = "InvalidParameter.InvalidSourceUrl"
 //  INVALIDPARAMETER_INVALIDTASKTIME = "InvalidParameter.InvalidTaskTime"
 //  INVALIDPARAMETER_INVALIDTOURL = "InvalidParameter.InvalidToUrl"
+//  INVALIDPARAMETER_INVALIDWATERMARK = "InvalidParameter.InvalidWatermark"
 //  INVALIDPARAMETER_TASKNOTEXIST = "InvalidParameter.TaskNotExist"
 //  INVALIDPARAMETER_TOURLNOPERMISSION = "InvalidParameter.ToUrlNoPermission"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 //  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
 func (c *Client) ModifyLivePullStreamTask(request *ModifyLivePullStreamTaskRequest) (response *ModifyLivePullStreamTaskResponse, err error) {
     return c.ModifyLivePullStreamTaskWithContext(context.Background(), request)
@@ -7724,11 +8207,14 @@ func (c *Client) ModifyLivePullStreamTask(request *ModifyLivePullStreamTaskReque
 //  INVALIDPARAMETER_INVALIDSOURCEURL = "InvalidParameter.InvalidSourceUrl"
 //  INVALIDPARAMETER_INVALIDTASKTIME = "InvalidParameter.InvalidTaskTime"
 //  INVALIDPARAMETER_INVALIDTOURL = "InvalidParameter.InvalidToUrl"
+//  INVALIDPARAMETER_INVALIDWATERMARK = "InvalidParameter.InvalidWatermark"
 //  INVALIDPARAMETER_TASKNOTEXIST = "InvalidParameter.TaskNotExist"
 //  INVALIDPARAMETER_TOURLNOPERMISSION = "InvalidParameter.ToUrlNoPermission"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 //  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
 func (c *Client) ModifyLivePullStreamTaskWithContext(ctx context.Context, request *ModifyLivePullStreamTaskRequest) (response *ModifyLivePullStreamTaskResponse, err error) {
     if request == nil {
@@ -7775,8 +8261,10 @@ func NewModifyLivePushAuthKeyResponse() (response *ModifyLivePushAuthKeyResponse
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_PUSHDOMAINNORECORD = "ResourceNotFound.PushDomainNoRecord"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 func (c *Client) ModifyLivePushAuthKey(request *ModifyLivePushAuthKeyRequest) (response *ModifyLivePushAuthKeyResponse, err error) {
     return c.ModifyLivePushAuthKeyWithContext(context.Background(), request)
 }
@@ -7793,8 +8281,10 @@ func (c *Client) ModifyLivePushAuthKey(request *ModifyLivePushAuthKeyRequest) (r
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_PUSHDOMAINNORECORD = "ResourceNotFound.PushDomainNoRecord"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 func (c *Client) ModifyLivePushAuthKeyWithContext(ctx context.Context, request *ModifyLivePushAuthKeyRequest) (response *ModifyLivePushAuthKeyResponse, err error) {
     if request == nil {
         request = NewModifyLivePushAuthKeyRequest()
@@ -7847,7 +8337,9 @@ func NewModifyLiveRecordTemplateResponse() (response *ModifyLiveRecordTemplateRe
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 func (c *Client) ModifyLiveRecordTemplate(request *ModifyLiveRecordTemplateRequest) (response *ModifyLiveRecordTemplateResponse, err error) {
     return c.ModifyLiveRecordTemplateWithContext(context.Background(), request)
 }
@@ -7871,7 +8363,9 @@ func (c *Client) ModifyLiveRecordTemplate(request *ModifyLiveRecordTemplateReque
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 func (c *Client) ModifyLiveRecordTemplateWithContext(ctx context.Context, request *ModifyLiveRecordTemplateRequest) (response *ModifyLiveRecordTemplateResponse, err error) {
     if request == nil {
         request = NewModifyLiveRecordTemplateRequest()
@@ -7924,7 +8418,9 @@ func NewModifyLiveSnapshotTemplateResponse() (response *ModifyLiveSnapshotTempla
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 //  UNSUPPORTEDOPERATION_NOTLVBCODEMODE = "UnsupportedOperation.NotLVBCodeMode"
 func (c *Client) ModifyLiveSnapshotTemplate(request *ModifyLiveSnapshotTemplateRequest) (response *ModifyLiveSnapshotTemplateResponse, err error) {
     return c.ModifyLiveSnapshotTemplateWithContext(context.Background(), request)
@@ -7949,7 +8445,9 @@ func (c *Client) ModifyLiveSnapshotTemplate(request *ModifyLiveSnapshotTemplateR
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 //  UNSUPPORTEDOPERATION_NOTLVBCODEMODE = "UnsupportedOperation.NotLVBCodeMode"
 func (c *Client) ModifyLiveSnapshotTemplateWithContext(ctx context.Context, request *ModifyLiveSnapshotTemplateRequest) (response *ModifyLiveSnapshotTemplateResponse, err error) {
     if request == nil {
@@ -8003,7 +8501,9 @@ func NewModifyLiveTranscodeTemplateResponse() (response *ModifyLiveTranscodeTemp
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 func (c *Client) ModifyLiveTranscodeTemplate(request *ModifyLiveTranscodeTemplateRequest) (response *ModifyLiveTranscodeTemplateResponse, err error) {
     return c.ModifyLiveTranscodeTemplateWithContext(context.Background(), request)
 }
@@ -8027,7 +8527,9 @@ func (c *Client) ModifyLiveTranscodeTemplate(request *ModifyLiveTranscodeTemplat
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 func (c *Client) ModifyLiveTranscodeTemplateWithContext(ctx context.Context, request *ModifyLiveTranscodeTemplateRequest) (response *ModifyLiveTranscodeTemplateResponse, err error) {
     if request == nil {
         request = NewModifyLiveTranscodeTemplateRequest()
@@ -8074,7 +8576,9 @@ func NewModifyPullStreamConfigResponse() (response *ModifyPullStreamConfigRespon
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 //  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
 func (c *Client) ModifyPullStreamConfig(request *ModifyPullStreamConfigRequest) (response *ModifyPullStreamConfigResponse, err error) {
     return c.ModifyPullStreamConfigWithContext(context.Background(), request)
@@ -8093,7 +8597,9 @@ func (c *Client) ModifyPullStreamConfig(request *ModifyPullStreamConfigRequest) 
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 //  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
 func (c *Client) ModifyPullStreamConfigWithContext(ctx context.Context, request *ModifyPullStreamConfigRequest) (response *ModifyPullStreamConfigResponse, err error) {
     if request == nil {
@@ -8139,7 +8645,10 @@ func NewModifyPullStreamStatusResponse() (response *ModifyPullStreamStatusRespon
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 //  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
 func (c *Client) ModifyPullStreamStatus(request *ModifyPullStreamStatusRequest) (response *ModifyPullStreamStatusResponse, err error) {
     return c.ModifyPullStreamStatusWithContext(context.Background(), request)
@@ -8156,7 +8665,10 @@ func (c *Client) ModifyPullStreamStatus(request *ModifyPullStreamStatusRequest) 
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 //  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
 func (c *Client) ModifyPullStreamStatusWithContext(ctx context.Context, request *ModifyPullStreamStatusRequest) (response *ModifyPullStreamStatusResponse, err error) {
     if request == nil {
@@ -8215,7 +8727,9 @@ func NewResumeDelayLiveStreamResponse() (response *ResumeDelayLiveStreamResponse
 //  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNKNOWNPARAMETER = "UnknownParameter"
@@ -8248,7 +8762,9 @@ func (c *Client) ResumeDelayLiveStream(request *ResumeDelayLiveStreamRequest) (r
 //  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNKNOWNPARAMETER = "UnknownParameter"
@@ -8305,7 +8821,9 @@ func NewResumeLiveStreamResponse() (response *ResumeLiveStreamResponse) {
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 //  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
 func (c *Client) ResumeLiveStream(request *ResumeLiveStreamRequest) (response *ResumeLiveStreamResponse, err error) {
     return c.ResumeLiveStreamWithContext(context.Background(), request)
@@ -8330,7 +8848,9 @@ func (c *Client) ResumeLiveStream(request *ResumeLiveStreamRequest) (response *R
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 //  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
 func (c *Client) ResumeLiveStreamWithContext(ctx context.Context, request *ResumeLiveStreamRequest) (response *ResumeLiveStreamResponse, err error) {
     if request == nil {
@@ -8377,8 +8897,10 @@ func NewStopLiveRecordResponse() (response *StopLiveRecordResponse) {
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_CHANNELNOTEXIST = "ResourceNotFound.ChannelNotExist"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
 //  RESOURCENOTFOUND_TASKID = "ResourceNotFound.TaskId"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 func (c *Client) StopLiveRecord(request *StopLiveRecordRequest) (response *StopLiveRecordResponse, err error) {
     return c.StopLiveRecordWithContext(context.Background(), request)
 }
@@ -8395,8 +8917,10 @@ func (c *Client) StopLiveRecord(request *StopLiveRecordRequest) (response *StopL
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_CHANNELNOTEXIST = "ResourceNotFound.ChannelNotExist"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
 //  RESOURCENOTFOUND_TASKID = "ResourceNotFound.TaskId"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 func (c *Client) StopLiveRecordWithContext(ctx context.Context, request *StopLiveRecordRequest) (response *StopLiveRecordResponse, err error) {
     if request == nil {
         request = NewStopLiveRecordRequest()
@@ -8439,7 +8963,10 @@ func NewStopRecordTaskResponse() (response *StopRecordTaskResponse) {
 //  INTERNALERROR_NETWORKERROR = "InternalError.NetworkError"
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 //  RESOURCEUNAVAILABLE_INVALIDVODSTATUS = "ResourceUnavailable.InvalidVodStatus"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) StopRecordTask(request *StopRecordTaskRequest) (response *StopRecordTaskResponse, err error) {
@@ -8455,7 +8982,10 @@ func (c *Client) StopRecordTask(request *StopRecordTaskRequest) (response *StopR
 //  INTERNALERROR_NETWORKERROR = "InternalError.NetworkError"
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 //  RESOURCEUNAVAILABLE_INVALIDVODSTATUS = "ResourceUnavailable.InvalidVodStatus"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) StopRecordTaskWithContext(ctx context.Context, request *StopRecordTaskRequest) (response *StopRecordTaskResponse, err error) {
@@ -8501,7 +9031,9 @@ func NewStopScreenshotTaskResponse() (response *StopScreenshotTaskResponse) {
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) StopScreenshotTask(request *StopScreenshotTaskRequest) (response *StopScreenshotTaskResponse, err error) {
     return c.StopScreenshotTaskWithContext(context.Background(), request)
@@ -8517,7 +9049,9 @@ func (c *Client) StopScreenshotTask(request *StopScreenshotTaskRequest) (respons
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) StopScreenshotTaskWithContext(ctx context.Context, request *StopScreenshotTaskRequest) (response *StopScreenshotTaskResponse, err error) {
     if request == nil {
@@ -8560,7 +9094,10 @@ func NewUnBindLiveDomainCertResponse() (response *UnBindLiveDomainCertResponse) 
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 func (c *Client) UnBindLiveDomainCert(request *UnBindLiveDomainCertRequest) (response *UnBindLiveDomainCertResponse, err error) {
     return c.UnBindLiveDomainCertWithContext(context.Background(), request)
 }
@@ -8573,7 +9110,10 @@ func (c *Client) UnBindLiveDomainCert(request *UnBindLiveDomainCertRequest) (res
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 func (c *Client) UnBindLiveDomainCertWithContext(ctx context.Context, request *UnBindLiveDomainCertRequest) (response *UnBindLiveDomainCertResponse, err error) {
     if request == nil {
         request = NewUnBindLiveDomainCertRequest()
@@ -8617,7 +9157,9 @@ func NewUpdateLiveWatermarkResponse() (response *UpdateLiveWatermarkResponse) {
 //  INTERNALERROR_WATERMARKEDITERROR = "InternalError.WatermarkEditError"
 //  INTERNALERROR_WATERMARKNOTEXIST = "InternalError.WatermarkNotExist"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 //  RESOURCENOTFOUND_WATERMARKNOTEXIST = "ResourceNotFound.WatermarkNotExist"
 func (c *Client) UpdateLiveWatermark(request *UpdateLiveWatermarkRequest) (response *UpdateLiveWatermarkResponse, err error) {
     return c.UpdateLiveWatermarkWithContext(context.Background(), request)
@@ -8633,7 +9175,9 @@ func (c *Client) UpdateLiveWatermark(request *UpdateLiveWatermarkRequest) (respo
 //  INTERNALERROR_WATERMARKEDITERROR = "InternalError.WatermarkEditError"
 //  INTERNALERROR_WATERMARKNOTEXIST = "InternalError.WatermarkNotExist"
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 //  RESOURCENOTFOUND_WATERMARKNOTEXIST = "ResourceNotFound.WatermarkNotExist"
 func (c *Client) UpdateLiveWatermarkWithContext(ctx context.Context, request *UpdateLiveWatermarkRequest) (response *UpdateLiveWatermarkResponse, err error) {
     if request == nil {

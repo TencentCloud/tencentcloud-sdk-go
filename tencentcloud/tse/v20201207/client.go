@@ -470,6 +470,7 @@ func NewDescribeZookeeperServerInterfacesResponse() (response *DescribeZookeeper
 //
 // 可能返回的错误码:
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETERVALUE_QUERYERROR = "InvalidParameterValue.QueryError"
 func (c *Client) DescribeZookeeperServerInterfaces(request *DescribeZookeeperServerInterfacesRequest) (response *DescribeZookeeperServerInterfacesResponse, err error) {
     return c.DescribeZookeeperServerInterfacesWithContext(context.Background(), request)
 }
@@ -479,6 +480,7 @@ func (c *Client) DescribeZookeeperServerInterfaces(request *DescribeZookeeperSer
 //
 // 可能返回的错误码:
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETERVALUE_QUERYERROR = "InvalidParameterValue.QueryError"
 func (c *Client) DescribeZookeeperServerInterfacesWithContext(ctx context.Context, request *DescribeZookeeperServerInterfacesRequest) (response *DescribeZookeeperServerInterfacesResponse, err error) {
     if request == nil {
         request = NewDescribeZookeeperServerInterfacesRequest()

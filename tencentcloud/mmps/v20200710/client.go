@@ -677,7 +677,7 @@ func NewDescribeScanTaskStatusResponse() (response *DescribeScanTaskStatusRespon
 // 查询小程序隐私合规诊断任务状态
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeScanTaskStatus(request *DescribeScanTaskStatusRequest) (response *DescribeScanTaskStatusResponse, err error) {
     return c.DescribeScanTaskStatusWithContext(context.Background(), request)
 }
@@ -686,7 +686,7 @@ func (c *Client) DescribeScanTaskStatus(request *DescribeScanTaskStatusRequest) 
 // 查询小程序隐私合规诊断任务状态
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeScanTaskStatusWithContext(ctx context.Context, request *DescribeScanTaskStatusRequest) (response *DescribeScanTaskStatusResponse, err error) {
     if request == nil {
         request = NewDescribeScanTaskStatusRequest()

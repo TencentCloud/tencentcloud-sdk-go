@@ -389,6 +389,156 @@ type ChcHost struct {
 }
 
 // Predefined struct for user
+type ConfigureChcAssistVpcRequestParams struct {
+	// CHC物理服务器的实例Id。
+	ChcIds []*string `json:"ChcIds,omitempty" name:"ChcIds"`
+
+	// 带外网络信息。
+	BmcVirtualPrivateCloud *VirtualPrivateCloud `json:"BmcVirtualPrivateCloud,omitempty" name:"BmcVirtualPrivateCloud"`
+
+	// 带外网络的安全组列表
+	BmcSecurityGroupIds []*string `json:"BmcSecurityGroupIds,omitempty" name:"BmcSecurityGroupIds"`
+
+	// 部署网络信息。
+	DeployVirtualPrivateCloud *VirtualPrivateCloud `json:"DeployVirtualPrivateCloud,omitempty" name:"DeployVirtualPrivateCloud"`
+
+	// 部署网络的安全组列表
+	DeploySecurityGroupIds []*string `json:"DeploySecurityGroupIds,omitempty" name:"DeploySecurityGroupIds"`
+}
+
+type ConfigureChcAssistVpcRequest struct {
+	*tchttp.BaseRequest
+	
+	// CHC物理服务器的实例Id。
+	ChcIds []*string `json:"ChcIds,omitempty" name:"ChcIds"`
+
+	// 带外网络信息。
+	BmcVirtualPrivateCloud *VirtualPrivateCloud `json:"BmcVirtualPrivateCloud,omitempty" name:"BmcVirtualPrivateCloud"`
+
+	// 带外网络的安全组列表
+	BmcSecurityGroupIds []*string `json:"BmcSecurityGroupIds,omitempty" name:"BmcSecurityGroupIds"`
+
+	// 部署网络信息。
+	DeployVirtualPrivateCloud *VirtualPrivateCloud `json:"DeployVirtualPrivateCloud,omitempty" name:"DeployVirtualPrivateCloud"`
+
+	// 部署网络的安全组列表
+	DeploySecurityGroupIds []*string `json:"DeploySecurityGroupIds,omitempty" name:"DeploySecurityGroupIds"`
+}
+
+func (r *ConfigureChcAssistVpcRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ConfigureChcAssistVpcRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ChcIds")
+	delete(f, "BmcVirtualPrivateCloud")
+	delete(f, "BmcSecurityGroupIds")
+	delete(f, "DeployVirtualPrivateCloud")
+	delete(f, "DeploySecurityGroupIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ConfigureChcAssistVpcRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ConfigureChcAssistVpcResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ConfigureChcAssistVpcResponse struct {
+	*tchttp.BaseResponse
+	Response *ConfigureChcAssistVpcResponseParams `json:"Response"`
+}
+
+func (r *ConfigureChcAssistVpcResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ConfigureChcAssistVpcResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ConfigureChcDeployVpcRequestParams struct {
+	// CHC物理服务器的实例Id。
+	ChcIds []*string `json:"ChcIds,omitempty" name:"ChcIds"`
+
+	// 部署网络信息。
+	DeployVirtualPrivateCloud *VirtualPrivateCloud `json:"DeployVirtualPrivateCloud,omitempty" name:"DeployVirtualPrivateCloud"`
+
+	// 部署网络的安全组列表。
+	DeploySecurityGroupIds []*string `json:"DeploySecurityGroupIds,omitempty" name:"DeploySecurityGroupIds"`
+}
+
+type ConfigureChcDeployVpcRequest struct {
+	*tchttp.BaseRequest
+	
+	// CHC物理服务器的实例Id。
+	ChcIds []*string `json:"ChcIds,omitempty" name:"ChcIds"`
+
+	// 部署网络信息。
+	DeployVirtualPrivateCloud *VirtualPrivateCloud `json:"DeployVirtualPrivateCloud,omitempty" name:"DeployVirtualPrivateCloud"`
+
+	// 部署网络的安全组列表。
+	DeploySecurityGroupIds []*string `json:"DeploySecurityGroupIds,omitempty" name:"DeploySecurityGroupIds"`
+}
+
+func (r *ConfigureChcDeployVpcRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ConfigureChcDeployVpcRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ChcIds")
+	delete(f, "DeployVirtualPrivateCloud")
+	delete(f, "DeploySecurityGroupIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ConfigureChcDeployVpcRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ConfigureChcDeployVpcResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ConfigureChcDeployVpcResponse struct {
+	*tchttp.BaseResponse
+	Response *ConfigureChcDeployVpcResponseParams `json:"Response"`
+}
+
+func (r *ConfigureChcDeployVpcResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ConfigureChcDeployVpcResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateDisasterRecoverGroupRequestParams struct {
 	// 分散置放群组名称，长度1-60个字符，支持中、英文。
 	Name *string `json:"Name,omitempty" name:"Name"`
@@ -5712,6 +5862,95 @@ type LoginSettings struct {
 }
 
 // Predefined struct for user
+type ModifyChcAttributeRequestParams struct {
+	// CHC物理服务器ID。
+	ChcIds []*string `json:"ChcIds,omitempty" name:"ChcIds"`
+
+	// CHC物理服务器名称
+	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
+
+	// 服务器类型
+	DeviceType *string `json:"DeviceType,omitempty" name:"DeviceType"`
+
+	// 合法字符为字母,数字, 横线和下划线
+	BmcUser *string `json:"BmcUser,omitempty" name:"BmcUser"`
+
+	// 密码8-16位字符, 允许数字，字母， 和特殊字符()`~!@#$%^&*-+=_|{}[]:;'<>,.?/
+	Password *string `json:"Password,omitempty" name:"Password"`
+
+	// bmc网络的安全组列表
+	BmcSecurityGroupIds []*string `json:"BmcSecurityGroupIds,omitempty" name:"BmcSecurityGroupIds"`
+}
+
+type ModifyChcAttributeRequest struct {
+	*tchttp.BaseRequest
+	
+	// CHC物理服务器ID。
+	ChcIds []*string `json:"ChcIds,omitempty" name:"ChcIds"`
+
+	// CHC物理服务器名称
+	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
+
+	// 服务器类型
+	DeviceType *string `json:"DeviceType,omitempty" name:"DeviceType"`
+
+	// 合法字符为字母,数字, 横线和下划线
+	BmcUser *string `json:"BmcUser,omitempty" name:"BmcUser"`
+
+	// 密码8-16位字符, 允许数字，字母， 和特殊字符()`~!@#$%^&*-+=_|{}[]:;'<>,.?/
+	Password *string `json:"Password,omitempty" name:"Password"`
+
+	// bmc网络的安全组列表
+	BmcSecurityGroupIds []*string `json:"BmcSecurityGroupIds,omitempty" name:"BmcSecurityGroupIds"`
+}
+
+func (r *ModifyChcAttributeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyChcAttributeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ChcIds")
+	delete(f, "InstanceName")
+	delete(f, "DeviceType")
+	delete(f, "BmcUser")
+	delete(f, "Password")
+	delete(f, "BmcSecurityGroupIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyChcAttributeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyChcAttributeResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ModifyChcAttributeResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyChcAttributeResponseParams `json:"Response"`
+}
+
+func (r *ModifyChcAttributeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyChcAttributeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyDisasterRecoverGroupAttributeRequestParams struct {
 	// 分散置放群组ID，可使用[DescribeDisasterRecoverGroups](https://cloud.tencent.com/document/api/213/17810)接口获取。
 	DisasterRecoverGroupId *string `json:"DisasterRecoverGroupId,omitempty" name:"DisasterRecoverGroupId"`
@@ -6865,6 +7104,114 @@ type RegionInfo struct {
 
 	// 地域是否可用状态
 	RegionState *string `json:"RegionState,omitempty" name:"RegionState"`
+}
+
+// Predefined struct for user
+type RemoveChcAssistVpcRequestParams struct {
+	// CHC物理服务器Id。
+	ChcIds []*string `json:"ChcIds,omitempty" name:"ChcIds"`
+}
+
+type RemoveChcAssistVpcRequest struct {
+	*tchttp.BaseRequest
+	
+	// CHC物理服务器Id。
+	ChcIds []*string `json:"ChcIds,omitempty" name:"ChcIds"`
+}
+
+func (r *RemoveChcAssistVpcRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RemoveChcAssistVpcRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ChcIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RemoveChcAssistVpcRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RemoveChcAssistVpcResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type RemoveChcAssistVpcResponse struct {
+	*tchttp.BaseResponse
+	Response *RemoveChcAssistVpcResponseParams `json:"Response"`
+}
+
+func (r *RemoveChcAssistVpcResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RemoveChcAssistVpcResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RemoveChcDeployVpcRequestParams struct {
+	// CHC物理服务器Id。
+	ChcIds []*string `json:"ChcIds,omitempty" name:"ChcIds"`
+}
+
+type RemoveChcDeployVpcRequest struct {
+	*tchttp.BaseRequest
+	
+	// CHC物理服务器Id。
+	ChcIds []*string `json:"ChcIds,omitempty" name:"ChcIds"`
+}
+
+func (r *RemoveChcDeployVpcRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RemoveChcDeployVpcRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ChcIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RemoveChcDeployVpcRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RemoveChcDeployVpcResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type RemoveChcDeployVpcResponse struct {
+	*tchttp.BaseResponse
+	Response *RemoveChcDeployVpcResponseParams `json:"Response"`
+}
+
+func (r *RemoveChcDeployVpcResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RemoveChcDeployVpcResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user
@@ -8148,7 +8495,7 @@ type Tag struct {
 }
 
 type TagSpecification struct {
-	// 标签绑定的资源类型，云服务器为“instance”，专用宿主机为“host”，镜像为“image”
+	// 标签绑定的资源类型，云服务器为“instance”，专用宿主机为“host”，镜像为“image”，密钥为“keypair”
 	ResourceType *string `json:"ResourceType,omitempty" name:"ResourceType"`
 
 	// 标签对列表
