@@ -731,14 +731,36 @@ type CreateSignUrlsRequestParams struct {
 	// 签署流程编号数组，最多支持100个。
 	FlowIds []*string `json:"FlowIds,omitempty" name:"FlowIds"`
 
-	// 签署链接类型：“WEIXINAPP”-直接跳小程序；“CHANNEL”-跳转H5页面；“APP”-第三方APP或小程序跳转电子签小程序；默认“WEIXINAPP”类型，即跳转至小程序。
+	// 签署链接类型：“WEIXINAPP”-直接跳小程序；“CHANNEL”-跳转H5页面；“APP”-第三方APP或小程序跳转电子签小程序；默认“WEIXINAPP”类型，即跳转至小程序；
 	Endpoint *string `json:"Endpoint,omitempty" name:"Endpoint"`
 
-	// 签署完之后的H5页面的跳转链接，针对Endpoint为CHANNEL时有效，最大长度1000个字符。
-	JumpUrl *string `json:"JumpUrl,omitempty" name:"JumpUrl"`
+	// 签署链接生成类型，默认是 "ALL"；
+	// "ALL"：全部签署方签署链接；
+	// "CHANNEL"：渠道合作企业；
+	// "NOT_CHANNEL"：非渠道合作企业；
+	// "PERSON"：个人；
+	GenerateType *string `json:"GenerateType,omitempty" name:"GenerateType"`
+
+	// 非渠道合作企业参与方的企业名称，GenerateType为"NOT_CHANNEL"时必填
+	OrganizationName *string `json:"OrganizationName,omitempty" name:"OrganizationName"`
+
+	// 参与人姓名，GenerateType为"PERSON"时必填
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 参与人手机号，GenerateType为"PERSON"时必填
+	Mobile *string `json:"Mobile,omitempty" name:"Mobile"`
+
+	// 渠道合作企业的企业Id，GenerateType为"CHANNEL"时必填
+	OrganizationOpenId *string `json:"OrganizationOpenId,omitempty" name:"OrganizationOpenId"`
+
+	// 渠道合作企业参与人OpenId，GenerateType为"CHANNEL"时可用，指定到具体参与人
+	OpenId *string `json:"OpenId,omitempty" name:"OpenId"`
 
 	// Endpoint为"APP" 类型的签署链接，可以设置此值；支持调用方小程序打开签署链接，在电子签小程序完成签署后自动回跳至调用方小程序
 	AutoJumpBack *bool `json:"AutoJumpBack,omitempty" name:"AutoJumpBack"`
+
+	// 签署完之后的H5页面的跳转链接，针对Endpoint为CHANNEL时有效，最大长度1000个字符。
+	JumpUrl *string `json:"JumpUrl,omitempty" name:"JumpUrl"`
 
 	// 操作者的信息
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
@@ -753,14 +775,36 @@ type CreateSignUrlsRequest struct {
 	// 签署流程编号数组，最多支持100个。
 	FlowIds []*string `json:"FlowIds,omitempty" name:"FlowIds"`
 
-	// 签署链接类型：“WEIXINAPP”-直接跳小程序；“CHANNEL”-跳转H5页面；“APP”-第三方APP或小程序跳转电子签小程序；默认“WEIXINAPP”类型，即跳转至小程序。
+	// 签署链接类型：“WEIXINAPP”-直接跳小程序；“CHANNEL”-跳转H5页面；“APP”-第三方APP或小程序跳转电子签小程序；默认“WEIXINAPP”类型，即跳转至小程序；
 	Endpoint *string `json:"Endpoint,omitempty" name:"Endpoint"`
 
-	// 签署完之后的H5页面的跳转链接，针对Endpoint为CHANNEL时有效，最大长度1000个字符。
-	JumpUrl *string `json:"JumpUrl,omitempty" name:"JumpUrl"`
+	// 签署链接生成类型，默认是 "ALL"；
+	// "ALL"：全部签署方签署链接；
+	// "CHANNEL"：渠道合作企业；
+	// "NOT_CHANNEL"：非渠道合作企业；
+	// "PERSON"：个人；
+	GenerateType *string `json:"GenerateType,omitempty" name:"GenerateType"`
+
+	// 非渠道合作企业参与方的企业名称，GenerateType为"NOT_CHANNEL"时必填
+	OrganizationName *string `json:"OrganizationName,omitempty" name:"OrganizationName"`
+
+	// 参与人姓名，GenerateType为"PERSON"时必填
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 参与人手机号，GenerateType为"PERSON"时必填
+	Mobile *string `json:"Mobile,omitempty" name:"Mobile"`
+
+	// 渠道合作企业的企业Id，GenerateType为"CHANNEL"时必填
+	OrganizationOpenId *string `json:"OrganizationOpenId,omitempty" name:"OrganizationOpenId"`
+
+	// 渠道合作企业参与人OpenId，GenerateType为"CHANNEL"时可用，指定到具体参与人
+	OpenId *string `json:"OpenId,omitempty" name:"OpenId"`
 
 	// Endpoint为"APP" 类型的签署链接，可以设置此值；支持调用方小程序打开签署链接，在电子签小程序完成签署后自动回跳至调用方小程序
 	AutoJumpBack *bool `json:"AutoJumpBack,omitempty" name:"AutoJumpBack"`
+
+	// 签署完之后的H5页面的跳转链接，针对Endpoint为CHANNEL时有效，最大长度1000个字符。
+	JumpUrl *string `json:"JumpUrl,omitempty" name:"JumpUrl"`
 
 	// 操作者的信息
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
@@ -781,8 +825,14 @@ func (r *CreateSignUrlsRequest) FromJsonString(s string) error {
 	delete(f, "Agent")
 	delete(f, "FlowIds")
 	delete(f, "Endpoint")
-	delete(f, "JumpUrl")
+	delete(f, "GenerateType")
+	delete(f, "OrganizationName")
+	delete(f, "Name")
+	delete(f, "Mobile")
+	delete(f, "OrganizationOpenId")
+	delete(f, "OpenId")
 	delete(f, "AutoJumpBack")
+	delete(f, "JumpUrl")
 	delete(f, "Operator")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateSignUrlsRequest has unknown keys!", "")

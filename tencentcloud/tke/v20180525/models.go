@@ -9482,6 +9482,15 @@ func (r *DescribeTKEEdgeScriptRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeTKEEdgeScriptResponseParams struct {
+	// 下载链接
+	Link *string `json:"Link,omitempty" name:"Link"`
+
+	// 下载需要的token
+	Token *string `json:"Token,omitempty" name:"Token"`
+
+	// 下载命令
+	Command *string `json:"Command,omitempty" name:"Command"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }

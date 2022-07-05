@@ -136,12 +136,33 @@ func (r *AddUsersToWorkGroupResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type AlterDMSDatabaseRequestParams struct {
+	// 当前名称
+	CurrentName *string `json:"CurrentName,omitempty" name:"CurrentName"`
 
+	// schema名称
+	SchemaName *string `json:"SchemaName,omitempty" name:"SchemaName"`
+
+	// 路径
+	Location *string `json:"Location,omitempty" name:"Location"`
+
+	// 基础对象
+	Asset *Asset `json:"Asset,omitempty" name:"Asset"`
 }
 
 type AlterDMSDatabaseRequest struct {
 	*tchttp.BaseRequest
 	
+	// 当前名称
+	CurrentName *string `json:"CurrentName,omitempty" name:"CurrentName"`
+
+	// schema名称
+	SchemaName *string `json:"SchemaName,omitempty" name:"SchemaName"`
+
+	// 路径
+	Location *string `json:"Location,omitempty" name:"Location"`
+
+	// 基础对象
+	Asset *Asset `json:"Asset,omitempty" name:"Asset"`
 }
 
 func (r *AlterDMSDatabaseRequest) ToJsonString() string {
@@ -156,7 +177,10 @@ func (r *AlterDMSDatabaseRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "CurrentName")
+	delete(f, "SchemaName")
+	delete(f, "Location")
+	delete(f, "Asset")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AlterDMSDatabaseRequest has unknown keys!", "")
 	}
@@ -434,7 +458,51 @@ func (r *AlterDMSTableResponse) FromJsonString(s string) error {
 }
 
 type Asset struct {
+	// 主键
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Id *int64 `json:"Id,omitempty" name:"Id"`
 
+	// 名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 对象GUID值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Guid *string `json:"Guid,omitempty" name:"Guid"`
+
+	// 数据目录
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Catalog *string `json:"Catalog,omitempty" name:"Catalog"`
+
+	// 描述信息
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 对象owner
+	Owner *string `json:"Owner,omitempty" name:"Owner"`
+
+	// 对象owner账户
+	OwnerAccount *string `json:"OwnerAccount,omitempty" name:"OwnerAccount"`
+
+	// 权限
+	PermValues []*KVPair `json:"PermValues,omitempty" name:"PermValues"`
+
+	// 附加属性
+	Params []*KVPair `json:"Params,omitempty" name:"Params"`
+
+	// 附加业务属性
+	BizParams []*KVPair `json:"BizParams,omitempty" name:"BizParams"`
+
+	// 数据版本
+	DataVersion *int64 `json:"DataVersion,omitempty" name:"DataVersion"`
+
+	// 创建时间
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 修改时间
+	ModifiedTime *string `json:"ModifiedTime,omitempty" name:"ModifiedTime"`
+
+	// 数据源主键
+	DatasourceId *int64 `json:"DatasourceId,omitempty" name:"DatasourceId"`
 }
 
 // Predefined struct for user
@@ -818,6 +886,15 @@ type Column struct {
 
 // Predefined struct for user
 type CreateDMSDatabaseRequestParams struct {
+	// 基础元数据对象
+	Asset *Asset `json:"Asset,omitempty" name:"Asset"`
+
+	// Schema目录
+	SchemaName *string `json:"SchemaName,omitempty" name:"SchemaName"`
+
+	// Db存储路径
+	Location *string `json:"Location,omitempty" name:"Location"`
+
 	// 数据库名称
 	Name *string `json:"Name,omitempty" name:"Name"`
 }
@@ -825,6 +902,15 @@ type CreateDMSDatabaseRequestParams struct {
 type CreateDMSDatabaseRequest struct {
 	*tchttp.BaseRequest
 	
+	// 基础元数据对象
+	Asset *Asset `json:"Asset,omitempty" name:"Asset"`
+
+	// Schema目录
+	SchemaName *string `json:"SchemaName,omitempty" name:"SchemaName"`
+
+	// Db存储路径
+	Location *string `json:"Location,omitempty" name:"Location"`
+
 	// 数据库名称
 	Name *string `json:"Name,omitempty" name:"Name"`
 }
@@ -841,6 +927,9 @@ func (r *CreateDMSDatabaseRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "Asset")
+	delete(f, "SchemaName")
+	delete(f, "Location")
 	delete(f, "Name")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDMSDatabaseRequest has unknown keys!", "")
@@ -2655,12 +2744,27 @@ func (r *DeleteWorkGroupResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDMSDatabaseRequestParams struct {
+	// 数据库名称
+	Name *string `json:"Name,omitempty" name:"Name"`
 
+	// schema名称
+	SchemaName *string `json:"SchemaName,omitempty" name:"SchemaName"`
+
+	// 匹配规则
+	Pattern *string `json:"Pattern,omitempty" name:"Pattern"`
 }
 
 type DescribeDMSDatabaseRequest struct {
 	*tchttp.BaseRequest
 	
+	// 数据库名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// schema名称
+	SchemaName *string `json:"SchemaName,omitempty" name:"SchemaName"`
+
+	// 匹配规则
+	Pattern *string `json:"Pattern,omitempty" name:"Pattern"`
 }
 
 func (r *DescribeDMSDatabaseRequest) ToJsonString() string {
@@ -2675,7 +2779,9 @@ func (r *DescribeDMSDatabaseRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "Name")
+	delete(f, "SchemaName")
+	delete(f, "Pattern")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDMSDatabaseRequest has unknown keys!", "")
 	}
@@ -2684,6 +2790,22 @@ func (r *DescribeDMSDatabaseRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDMSDatabaseResponseParams struct {
+	// 数据库名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// schema名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SchemaName *string `json:"SchemaName,omitempty" name:"SchemaName"`
+
+	// 存储地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Location *string `json:"Location,omitempty" name:"Location"`
+
+	// 数据对象
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Asset *Asset `json:"Asset,omitempty" name:"Asset"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }
@@ -2738,6 +2860,9 @@ type DescribeDMSPartitionsRequestParams struct {
 
 	// 页面数量
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 表达式
+	Expression *string `json:"Expression,omitempty" name:"Expression"`
 }
 
 type DescribeDMSPartitionsRequest struct {
@@ -2775,6 +2900,9 @@ type DescribeDMSPartitionsRequest struct {
 
 	// 页面数量
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 表达式
+	Expression *string `json:"Expression,omitempty" name:"Expression"`
 }
 
 func (r *DescribeDMSPartitionsRequest) ToJsonString() string {
@@ -2800,6 +2928,7 @@ func (r *DescribeDMSPartitionsRequest) FromJsonString(s string) error {
 	delete(f, "MaxParts")
 	delete(f, "Offset")
 	delete(f, "Limit")
+	delete(f, "Expression")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDMSPartitionsRequest has unknown keys!", "")
 	}
@@ -4477,12 +4606,27 @@ func (r *DetachWorkGroupPolicyResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DropDMSDatabaseRequestParams struct {
+	// 数据库名称
+	Name *string `json:"Name,omitempty" name:"Name"`
 
+	// 是否删除数据
+	DeleteData *bool `json:"DeleteData,omitempty" name:"DeleteData"`
+
+	// 是否级联删除
+	Cascade *bool `json:"Cascade,omitempty" name:"Cascade"`
 }
 
 type DropDMSDatabaseRequest struct {
 	*tchttp.BaseRequest
 	
+	// 数据库名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 是否删除数据
+	DeleteData *bool `json:"DeleteData,omitempty" name:"DeleteData"`
+
+	// 是否级联删除
+	Cascade *bool `json:"Cascade,omitempty" name:"Cascade"`
 }
 
 func (r *DropDMSDatabaseRequest) ToJsonString() string {
@@ -4497,7 +4641,9 @@ func (r *DropDMSDatabaseRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "Name")
+	delete(f, "DeleteData")
+	delete(f, "Cascade")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DropDMSDatabaseRequest has unknown keys!", "")
 	}

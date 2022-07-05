@@ -2567,6 +2567,63 @@ func (c *Client) DescribeUpgradePriceWithContext(ctx context.Context, request *D
     return
 }
 
+func NewDestroyDBInstanceRequest() (request *DestroyDBInstanceRequest) {
+    request = &DestroyDBInstanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("mariadb", APIVersion, "DestroyDBInstance")
+    
+    
+    return
+}
+
+func NewDestroyDBInstanceResponse() (response *DestroyDBInstanceResponse) {
+    response = &DestroyDBInstanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DestroyDBInstance
+// 本接口(DestroyDBInstance)用于销毁已隔离的包年包月实例。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_CREATEFLOWFAILED = "FailedOperation.CreateFlowFailed"
+//  INTERNALERROR_OPERATEDATABASEFAILED = "InternalError.OperateDatabaseFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  RESOURCEUNAVAILABLE_INSTANCEALREADYDELETED = "ResourceUnavailable.InstanceAlreadyDeleted"
+func (c *Client) DestroyDBInstance(request *DestroyDBInstanceRequest) (response *DestroyDBInstanceResponse, err error) {
+    return c.DestroyDBInstanceWithContext(context.Background(), request)
+}
+
+// DestroyDBInstance
+// 本接口(DestroyDBInstance)用于销毁已隔离的包年包月实例。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_CREATEFLOWFAILED = "FailedOperation.CreateFlowFailed"
+//  INTERNALERROR_OPERATEDATABASEFAILED = "InternalError.OperateDatabaseFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  RESOURCEUNAVAILABLE_INSTANCEALREADYDELETED = "ResourceUnavailable.InstanceAlreadyDeleted"
+func (c *Client) DestroyDBInstanceWithContext(ctx context.Context, request *DestroyDBInstanceRequest) (response *DestroyDBInstanceResponse, err error) {
+    if request == nil {
+        request = NewDestroyDBInstanceRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DestroyDBInstance require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDestroyDBInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDestroyHourDBInstanceRequest() (request *DestroyHourDBInstanceRequest) {
     request = &DestroyHourDBInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},

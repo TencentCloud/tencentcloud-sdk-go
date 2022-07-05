@@ -14748,6 +14748,10 @@ type EffectiveMachineInfo struct {
 	// 授权订单对象
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LicenseOrder *LicenseOrder `json:"LicenseOrder,omitempty" name:"LicenseOrder"`
+
+	// 漏洞数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VulNum *uint64 `json:"VulNum,omitempty" name:"VulNum"`
 }
 
 type EmergencyResponseInfo struct {

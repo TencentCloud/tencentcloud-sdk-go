@@ -7656,7 +7656,7 @@ func NewDescribeTKEEdgeScriptResponse() (response *DescribeTKEEdgeScriptResponse
 }
 
 // DescribeTKEEdgeScript
-// 获取边缘脚本链接
+// 获取边缘脚本链接，此接口用于添加第三方节点，通过下载脚本从而将节点添加到边缘集群。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -7675,7 +7675,7 @@ func (c *Client) DescribeTKEEdgeScript(request *DescribeTKEEdgeScriptRequest) (r
 }
 
 // DescribeTKEEdgeScript
-// 获取边缘脚本链接
+// 获取边缘脚本链接，此接口用于添加第三方节点，通过下载脚本从而将节点添加到边缘集群。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

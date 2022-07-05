@@ -1,3 +1,183 @@
+# Release v1.0.436
+
+## 云硬盘(cbs) 版本：2017-03-12
+
+### 第 42 次发布
+
+发布时间：2022-07-06 06:07:59
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Policy](https://cloud.tencent.com/document/api/362/15669#Policy)
+
+	* <font color="#dd0000">**修改成员**：</font>DayOfWeek
+
+
+
+
+## 主机安全(cwp) 版本：2018-02-28
+
+### 第 48 次发布
+
+发布时间：2022-07-06 06:10:33
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [EffectiveMachineInfo](https://cloud.tencent.com/document/api/296/19867#EffectiveMachineInfo)
+
+	* 新增成员：VulNum
+
+
+
+
+## 数据湖计算(dlc) 版本：2021-01-25
+
+### 第 27 次发布
+
+发布时间：2022-07-06 06:11:44
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [AlterDMSDatabase](https://cloud.tencent.com/document/api/1342/76232)
+
+	* 新增入参：CurrentName, SchemaName, Location, Asset
+
+* [CreateDMSDatabase](https://cloud.tencent.com/document/api/1342/76229)
+
+	* 新增入参：Asset, SchemaName, Location
+
+* [DescribeDMSDatabase](https://cloud.tencent.com/document/api/1342/76227)
+
+	* 新增入参：Name, SchemaName, Pattern
+
+	* 新增出参：Name, SchemaName, Location, Asset
+
+* [DescribeDMSPartitions](https://cloud.tencent.com/document/api/1342/76226)
+
+	* 新增入参：Expression
+
+* [DropDMSDatabase](https://cloud.tencent.com/document/api/1342/76223)
+
+	* 新增入参：Name, DeleteData, Cascade
+
+
+修改数据结构：
+
+* [Asset](https://cloud.tencent.com/document/api/1342/53778#Asset)
+
+	* 新增成员：Id, Name, Guid, Catalog, Description, Owner, OwnerAccount, PermValues, Params, BizParams, DataVersion, CreateTime, ModifiedTime, DatasourceId
+
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
+
+### 第 20 次发布
+
+发布时间：2022-07-05 17:07:31
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateSignUrls](https://cloud.tencent.com/document/api/1420/61522)
+
+	* 新增入参：GenerateType, OrganizationName, Name, Mobile, OrganizationOpenId, OpenId
+
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
+
+
+
+## 云数据库 MariaDB(mariadb) 版本：2017-03-12
+
+### 第 38 次发布
+
+发布时间：2022-07-06 06:15:28
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DestroyDBInstance](https://cloud.tencent.com/document/api/237/76451)
+
+
+
+## 云数据库 Redis(redis) 版本：2018-04-12
+
+### 第 48 次发布
+
+发布时间：2022-07-06 06:16:58
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeTaskList](https://cloud.tencent.com/document/api/239/39374)
+
+	* 新增入参：OperateUin
+
+
+
+
+## 容器安全服务(tcss) 版本：2020-11-01
+
+### 第 20 次发布
+
+发布时间：2022-07-06 06:18:51
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribePurchaseStateInfo](https://cloud.tencent.com/document/api/1285/65466)
+
+	* 新增出参：BeginTime, SubState
+
+
+
+
+## 容器服务(tke) 版本：2018-05-25
+
+### 第 109 次发布
+
+发布时间：2022-07-06 06:20:07
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeTKEEdgeScript](https://cloud.tencent.com/document/api/457/70732)
+
+	* 新增出参：Link, Token, Command
+
+
+
+
 # Release v1.0.435
 
 ## 云数据库 MySQL(cdb) 版本：2017-03-20
