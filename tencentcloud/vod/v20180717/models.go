@@ -464,49 +464,49 @@ type AiContentReviewResult struct {
 	// <li>Prohibited.Ocr：Ocr 文字鉴违禁</li>
 	Type *string `json:"Type,omitempty" name:"Type"`
 
-	// 视频智能识别任务（画面涉及令人反感的信息）的查询结果，当任务类型为 Porn 时有效。
+	// 视频音视频审核任务（画面涉及令人反感的信息）的查询结果，当任务类型为 Porn 时有效。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PornTask *AiReviewTaskPornResult `json:"PornTask,omitempty" name:"PornTask"`
 
-	// 视频智能识别任务（画面涉及令人不安全的信息）的查询结果，当任务类型为 Terrorism 时有效。
+	// 视频音视频审核任务（画面涉及令人不安全的信息）的查询结果，当任务类型为 Terrorism 时有效。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TerrorismTask *AiReviewTaskTerrorismResult `json:"TerrorismTask,omitempty" name:"TerrorismTask"`
 
-	// 视频智能识别任务（画面涉及令人不适宜的信息）的查询结果，当任务类型为 Political 时有效。
+	// 视频音视频审核任务（画面涉及令人不适宜的信息）的查询结果，当任务类型为 Political 时有效。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PoliticalTask *AiReviewTaskPoliticalResult `json:"PoliticalTask,omitempty" name:"PoliticalTask"`
 
-	// 视频智能识别任务（Asr 文字涉及令人反感的信息）的查询结果，当任务类型为 Porn.Asr 时有效。
+	// 视频音视频审核任务（Asr 文字涉及令人反感的信息）的查询结果，当任务类型为 Porn.Asr 时有效。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PornAsrTask *AiReviewTaskPornAsrResult `json:"PornAsrTask,omitempty" name:"PornAsrTask"`
 
-	// 视频智能识别任务（Ocr 文字涉及令人反感的信息）的查询结果，当任务类型为 Porn.Ocr 时有效。
+	// 视频音视频审核任务（Ocr 文字涉及令人反感的信息）的查询结果，当任务类型为 Porn.Ocr 时有效。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PornOcrTask *AiReviewTaskPornOcrResult `json:"PornOcrTask,omitempty" name:"PornOcrTask"`
 
-	// 视频智能识别任务（Asr 文字涉及令人不适宜的信息）的查询结果，当任务类型为 Political.Asr 时有效。
+	// 视频音视频审核任务（Asr 文字涉及令人不适宜的信息）的查询结果，当任务类型为 Political.Asr 时有效。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PoliticalAsrTask *AiReviewTaskPoliticalAsrResult `json:"PoliticalAsrTask,omitempty" name:"PoliticalAsrTask"`
 
-	// 视频智能识别任务（Ocr 文字涉及令人不适宜的信息）的查询结果，当任务类型为 Political.Ocr 时有效。
+	// 视频音视频审核任务（Ocr 文字涉及令人不适宜的信息）的查询结果，当任务类型为 Political.Ocr 时有效。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PoliticalOcrTask *AiReviewTaskPoliticalOcrResult `json:"PoliticalOcrTask,omitempty" name:"PoliticalOcrTask"`
 
-	// 视频智能识别任务（ Ocr 文字涉及令人不安全的信息）的查询结果，当任务类型为 Terrorism.Ocr 时有效。
+	// 视频音视频审核任务（ Ocr 文字涉及令人不安全的信息）的查询结果，当任务类型为 Terrorism.Ocr 时有效。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TerrorismOcrTask *AiReviewTaskTerrorismOcrResult `json:"TerrorismOcrTask,omitempty" name:"TerrorismOcrTask"`
 
-	// 视频智能识别 Ocr 文字鉴违禁任务的查询结果，当任务类型为 Prohibited.Ocr 时有效。
+	// 视频音视频审核 Ocr 文字鉴违禁任务的查询结果，当任务类型为 Prohibited.Ocr 时有效。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProhibitedOcrTask *AiReviewTaskProhibitedOcrResult `json:"ProhibitedOcrTask,omitempty" name:"ProhibitedOcrTask"`
 
-	// 视频智能识别 Asr 文字鉴违禁任务的查询结果，当任务类型为 Prohibited.Asr 时有效。
+	// 视频音视频审核 Asr 文字鉴违禁任务的查询结果，当任务类型为 Prohibited.Asr 时有效。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProhibitedAsrTask *AiReviewTaskProhibitedAsrResult `json:"ProhibitedAsrTask,omitempty" name:"ProhibitedAsrTask"`
 }
 
 type AiContentReviewTaskInput struct {
-	// 智能识别模板 ID。
+	// 音视频审核模板 ID。
 	Definition *uint64 `json:"Definition,omitempty" name:"Definition"`
 }
 
@@ -1096,7 +1096,7 @@ type AiReviewPoliticalTaskOutput struct {
 	// <li>block。</li>
 	Suggestion *string `json:"Suggestion,omitempty" name:"Suggestion"`
 
-	// 视频涉及令人不适宜信息的结果标签。智能识别模板[画面鉴政任务控制参数](https://cloud.tencent.com/document/api/266/31773#PoliticalImgReviewTemplateInfo)里 LabelSet 参数与此参数取值范围的对应关系：
+	// 视频涉及令人不适宜信息的结果标签。音视频审核模板[画面鉴政任务控制参数](https://cloud.tencent.com/document/api/266/31773#PoliticalImgReviewTemplateInfo)里 LabelSet 参数与此参数取值范围的对应关系：
 	// violation_photo：
 	// <li>violation_photo：违规图标。</li>
 	// 其他（即 politician/entertainment/sport/entrepreneur/scholar/celebrity/military）：
@@ -1264,10 +1264,10 @@ type AiReviewTaskPoliticalAsrResult struct {
 	// 错误信息。
 	Message *string `json:"Message,omitempty" name:"Message"`
 
-	// 智能识别 Asr 文字涉及令人不适宜信息的任务输入。
+	// 音视频审核 Asr 文字涉及令人不适宜信息的任务输入。
 	Input *AiReviewPoliticalAsrTaskInput `json:"Input,omitempty" name:"Input"`
 
-	// 智能识别 Asr 文字涉及令人不适宜信息的任务输出。
+	// 音视频审核 Asr 文字涉及令人不适宜信息的任务输出。
 	Output *AiReviewPoliticalAsrTaskOutput `json:"Output,omitempty" name:"Output"`
 }
 
@@ -1284,10 +1284,10 @@ type AiReviewTaskPoliticalOcrResult struct {
 	// 错误信息。
 	Message *string `json:"Message,omitempty" name:"Message"`
 
-	// 智能识别 Ocr 文字涉及令人不适宜信息的任务输入。
+	// 音视频审核 Ocr 文字涉及令人不适宜信息的任务输入。
 	Input *AiReviewPoliticalOcrTaskInput `json:"Input,omitempty" name:"Input"`
 
-	// 智能识别 Ocr 文字涉及令人不适宜信息的任务输出。
+	// 音视频审核 Ocr 文字涉及令人不适宜信息的任务输出。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Output *AiReviewPoliticalOcrTaskOutput `json:"Output,omitempty" name:"Output"`
 }
@@ -1305,10 +1305,10 @@ type AiReviewTaskPoliticalResult struct {
 	// 错误信息。
 	Message *string `json:"Message,omitempty" name:"Message"`
 
-	// 智能识别涉及令人不适宜信息的任务输入。
+	// 音视频审核涉及令人不适宜信息的任务输入。
 	Input *AiReviewPoliticalTaskInput `json:"Input,omitempty" name:"Input"`
 
-	// 智能识别涉及令人不适宜信息的任务输出。
+	// 音视频审核涉及令人不适宜信息的任务输出。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Output *AiReviewPoliticalTaskOutput `json:"Output,omitempty" name:"Output"`
 }
@@ -1326,10 +1326,10 @@ type AiReviewTaskPornAsrResult struct {
 	// 错误信息。
 	Message *string `json:"Message,omitempty" name:"Message"`
 
-	// 智能识别 Asr 文字涉及令人反感的信息的任务输入。
+	// 音视频审核 Asr 文字涉及令人反感的信息的任务输入。
 	Input *AiReviewPornAsrTaskInput `json:"Input,omitempty" name:"Input"`
 
-	// 智能识别 Asr 文字涉及令人反感的信息的任务输出。
+	// 音视频审核 Asr 文字涉及令人反感的信息的任务输出。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Output *AiReviewPornAsrTaskOutput `json:"Output,omitempty" name:"Output"`
 }
@@ -1347,10 +1347,10 @@ type AiReviewTaskPornOcrResult struct {
 	// 错误信息。
 	Message *string `json:"Message,omitempty" name:"Message"`
 
-	// 智能识别 Ocr 文字涉及令人反感的信息的任务输入。
+	// 音视频审核 Ocr 文字涉及令人反感的信息的任务输入。
 	Input *AiReviewPornOcrTaskInput `json:"Input,omitempty" name:"Input"`
 
-	// Ocr 文字智能识别涉及令人反感的信息的任务输出。
+	// Ocr 文字音视频审核涉及令人反感的信息的任务输出。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Output *AiReviewPornOcrTaskOutput `json:"Output,omitempty" name:"Output"`
 }
@@ -1368,10 +1368,10 @@ type AiReviewTaskPornResult struct {
 	// 错误信息。
 	Message *string `json:"Message,omitempty" name:"Message"`
 
-	// 智能识别涉及令人反感的信息的任务输入。
+	// 音视频审核涉及令人反感的信息的任务输入。
 	Input *AiReviewPornTaskInput `json:"Input,omitempty" name:"Input"`
 
-	// 智能识别涉及令人反感的信息的任务输出。
+	// 音视频审核涉及令人反感的信息的任务输出。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Output *AiReviewPornTaskOutput `json:"Output,omitempty" name:"Output"`
 }
@@ -1389,10 +1389,10 @@ type AiReviewTaskProhibitedAsrResult struct {
 	// 错误信息。
 	Message *string `json:"Message,omitempty" name:"Message"`
 
-	// 智能识别 Asr 文字鉴违禁任务输入。
+	// 音视频审核 Asr 文字鉴违禁任务输入。
 	Input *AiReviewProhibitedAsrTaskInput `json:"Input,omitempty" name:"Input"`
 
-	// 智能识别 Asr 文字鉴违禁任务输出。
+	// 音视频审核 Asr 文字鉴违禁任务输出。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Output *AiReviewProhibitedAsrTaskOutput `json:"Output,omitempty" name:"Output"`
 }
@@ -1410,10 +1410,10 @@ type AiReviewTaskProhibitedOcrResult struct {
 	// 错误信息。
 	Message *string `json:"Message,omitempty" name:"Message"`
 
-	// 智能识别 Ocr 文字鉴违禁任务输入。
+	// 音视频审核 Ocr 文字鉴违禁任务输入。
 	Input *AiReviewProhibitedOcrTaskInput `json:"Input,omitempty" name:"Input"`
 
-	// 智能识别 Ocr 文字鉴违禁任务输出。
+	// 音视频审核 Ocr 文字鉴违禁任务输出。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Output *AiReviewProhibitedOcrTaskOutput `json:"Output,omitempty" name:"Output"`
 }
@@ -1431,10 +1431,10 @@ type AiReviewTaskTerrorismOcrResult struct {
 	// 错误信息。
 	Message *string `json:"Message,omitempty" name:"Message"`
 
-	// 智能识别 Ocr 文字涉及令人不安全的信息的任务输入。
+	// 音视频审核 Ocr 文字涉及令人不安全的信息的任务输入。
 	Input *AiReviewTerrorismOcrTaskInput `json:"Input,omitempty" name:"Input"`
 
-	// 智能识别 Ocr 文字涉及令人不安全的信息的任务输出。
+	// 音视频审核 Ocr 文字涉及令人不安全的信息的任务输出。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Output *AiReviewTerrorismOcrTaskOutput `json:"Output,omitempty" name:"Output"`
 }
@@ -1452,10 +1452,10 @@ type AiReviewTaskTerrorismResult struct {
 	// 错误信息。
 	Message *string `json:"Message,omitempty" name:"Message"`
 
-	// 智能识别涉及令人不安全的信息的任务输入。
+	// 音视频审核涉及令人不安全的信息的任务输入。
 	Input *AiReviewTerrorismTaskInput `json:"Input,omitempty" name:"Input"`
 
-	// 智能识别涉及令人不安全的信息的任务输出。
+	// 音视频审核涉及令人不安全的信息的任务输出。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Output *AiReviewTerrorismTaskOutput `json:"Output,omitempty" name:"Output"`
 }
@@ -2584,13 +2584,13 @@ type ContentReviewResult struct {
 }
 
 type ContentReviewTemplateItem struct {
-	// 智能识别模板唯一标识。
+	// 音视频审核模板唯一标识。
 	Definition *int64 `json:"Definition,omitempty" name:"Definition"`
 
-	// 智能识别模板名称，长度限制：64 个字符。
+	// 音视频审核模板名称，长度限制：64 个字符。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
-	// 智能识别模板描述信息，长度限制：256 个字符。
+	// 音视频审核模板描述信息，长度限制：256 个字符。
 	Comment *string `json:"Comment,omitempty" name:"Comment"`
 
 	// 鉴别涉及令人反感的信息的控制参数。
@@ -2611,11 +2611,11 @@ type ContentReviewTemplateItem struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProhibitedConfigure *ProhibitedConfigureInfo `json:"ProhibitedConfigure,omitempty" name:"ProhibitedConfigure"`
 
-	// 用户自定义智能识别控制参数。
+	// 用户自定义音视频审核控制参数。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UserDefineConfigure *UserDefineConfigureInfo `json:"UserDefineConfigure,omitempty" name:"UserDefineConfigure"`
 
-	// 智能识别结果是否进入智能识别墙（对智能识别结果进行人工复核）的开关。
+	// 音视频审核结果是否进入音视频审核墙（对音视频审核结果进行人工复核）的开关。
 	// <li>ON：是；</li>
 	// <li>OFF：否。</li>
 	ReviewWallSwitch *string `json:"ReviewWallSwitch,omitempty" name:"ReviewWallSwitch"`
@@ -2672,10 +2672,10 @@ type CreateAIAnalysisTemplateRequestParams struct {
 	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 
-	// 视频内容分析模板名称，长度限制：64 个字符。
+	// 音视频内容分析模板名称，长度限制：64 个字符。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
-	// 视频内容分析模板描述信息，长度限制：256 个字符。
+	// 音视频内容分析模板描述信息，长度限制：256 个字符。
 	Comment *string `json:"Comment,omitempty" name:"Comment"`
 
 	// 智能分类任务控制参数。
@@ -2700,10 +2700,10 @@ type CreateAIAnalysisTemplateRequest struct {
 	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 
-	// 视频内容分析模板名称，长度限制：64 个字符。
+	// 音视频内容分析模板名称，长度限制：64 个字符。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
-	// 视频内容分析模板描述信息，长度限制：256 个字符。
+	// 音视频内容分析模板描述信息，长度限制：256 个字符。
 	Comment *string `json:"Comment,omitempty" name:"Comment"`
 
 	// 智能分类任务控制参数。
@@ -2750,7 +2750,7 @@ func (r *CreateAIAnalysisTemplateRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateAIAnalysisTemplateResponseParams struct {
-	// 视频内容分析模板唯一标识。
+	// 音视频内容分析模板唯一标识。
 	Definition *int64 `json:"Definition,omitempty" name:"Definition"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -2778,10 +2778,10 @@ type CreateAIRecognitionTemplateRequestParams struct {
 	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 
-	// 视频内容识别模板名称，长度限制：64 个字符。
+	// 音视频内容识别模板名称，长度限制：64 个字符。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
-	// 视频内容识别模板描述信息，长度限制：256 个字符。
+	// 音视频内容识别模板描述信息，长度限制：256 个字符。
 	Comment *string `json:"Comment,omitempty" name:"Comment"`
 
 	// 视频片头片尾识别控制参数。
@@ -2818,10 +2818,10 @@ type CreateAIRecognitionTemplateRequest struct {
 	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 
-	// 视频内容识别模板名称，长度限制：64 个字符。
+	// 音视频内容识别模板名称，长度限制：64 个字符。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
-	// 视频内容识别模板描述信息，长度限制：256 个字符。
+	// 音视频内容识别模板描述信息，长度限制：256 个字符。
 	Comment *string `json:"Comment,omitempty" name:"Comment"`
 
 	// 视频片头片尾识别控制参数。
@@ -2884,7 +2884,7 @@ func (r *CreateAIRecognitionTemplateRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateAIRecognitionTemplateResponseParams struct {
-	// 视频内容识别模板唯一标识。
+	// 音视频内容识别模板唯一标识。
 	Definition *int64 `json:"Definition,omitempty" name:"Definition"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -3251,7 +3251,7 @@ func (r *CreateClassResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateContentReviewTemplateRequestParams struct {
-	// 智能识别结果是否进入智能识别墙（对识别结果进行人工复核）的开关。
+	// 音视频审核结果是否进入音视频审核墙（对识别结果进行人工复核）的开关。
 	// <li>ON：是；</li>
 	// <li>OFF：否。</li>
 	ReviewWallSwitch *string `json:"ReviewWallSwitch,omitempty" name:"ReviewWallSwitch"`
@@ -3259,10 +3259,10 @@ type CreateContentReviewTemplateRequestParams struct {
 	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 
-	// 内容智能识别模板名称，长度限制：64 个字符。
+	// 内容审核模板名称，长度限制：64 个字符。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
-	// 内容智能识别模板描述信息，长度限制：256 个字符。
+	// 内容审核模板描述信息，长度限制：256 个字符。
 	Comment *string `json:"Comment,omitempty" name:"Comment"`
 
 	// 令人反感的信息的控制参数。
@@ -3279,7 +3279,7 @@ type CreateContentReviewTemplateRequestParams struct {
 	// <li>涉毒违法。</li>
 	ProhibitedConfigure *ProhibitedConfigureInfo `json:"ProhibitedConfigure,omitempty" name:"ProhibitedConfigure"`
 
-	// 用户自定义内容智能识别控制参数。
+	// 用户自定义内容审核控制参数。
 	UserDefineConfigure *UserDefineConfigureInfo `json:"UserDefineConfigure,omitempty" name:"UserDefineConfigure"`
 
 	// 截帧间隔，单位为秒。当不填时，默认截帧间隔为 1 秒，最小值为 0.5 秒。
@@ -3289,7 +3289,7 @@ type CreateContentReviewTemplateRequestParams struct {
 type CreateContentReviewTemplateRequest struct {
 	*tchttp.BaseRequest
 	
-	// 智能识别结果是否进入智能识别墙（对识别结果进行人工复核）的开关。
+	// 音视频审核结果是否进入音视频审核墙（对识别结果进行人工复核）的开关。
 	// <li>ON：是；</li>
 	// <li>OFF：否。</li>
 	ReviewWallSwitch *string `json:"ReviewWallSwitch,omitempty" name:"ReviewWallSwitch"`
@@ -3297,10 +3297,10 @@ type CreateContentReviewTemplateRequest struct {
 	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 
-	// 内容智能识别模板名称，长度限制：64 个字符。
+	// 内容审核模板名称，长度限制：64 个字符。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
-	// 内容智能识别模板描述信息，长度限制：256 个字符。
+	// 内容审核模板描述信息，长度限制：256 个字符。
 	Comment *string `json:"Comment,omitempty" name:"Comment"`
 
 	// 令人反感的信息的控制参数。
@@ -3317,7 +3317,7 @@ type CreateContentReviewTemplateRequest struct {
 	// <li>涉毒违法。</li>
 	ProhibitedConfigure *ProhibitedConfigureInfo `json:"ProhibitedConfigure,omitempty" name:"ProhibitedConfigure"`
 
-	// 用户自定义内容智能识别控制参数。
+	// 用户自定义内容审核控制参数。
 	UserDefineConfigure *UserDefineConfigureInfo `json:"UserDefineConfigure,omitempty" name:"UserDefineConfigure"`
 
 	// 截帧间隔，单位为秒。当不填时，默认截帧间隔为 1 秒，最小值为 0.5 秒。
@@ -3354,7 +3354,7 @@ func (r *CreateContentReviewTemplateRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateContentReviewTemplateResponseParams struct {
-	// 内容智能识别模板唯一标识。
+	// 音视频内容审核模板唯一标识。
 	Definition *int64 `json:"Definition,omitempty" name:"Definition"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -3866,23 +3866,23 @@ type CreateProcedureTemplateRequestParams struct {
 	// 任务流名字（支持中文，不超过20个字）。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
+	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+
 	// 模板描述信息，长度限制：256 个字符。
 	Comment *string `json:"Comment,omitempty" name:"Comment"`
 
 	// 视频处理类型任务参数。
 	MediaProcessTask *MediaProcessTaskInput `json:"MediaProcessTask,omitempty" name:"MediaProcessTask"`
 
-	// AI 智能识别类型任务参数。
+	// AI 内容审核类型任务参数。
 	AiContentReviewTask *AiContentReviewTaskInput `json:"AiContentReviewTask,omitempty" name:"AiContentReviewTask"`
 
-	// AI 智能内容分析类型任务参数。
+	// AI 内容分析类型任务参数。
 	AiAnalysisTask *AiAnalysisTaskInput `json:"AiAnalysisTask,omitempty" name:"AiAnalysisTask"`
 
 	// AI 内容识别类型任务参数。
 	AiRecognitionTask *AiRecognitionTaskInput `json:"AiRecognitionTask,omitempty" name:"AiRecognitionTask"`
-
-	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
 type CreateProcedureTemplateRequest struct {
@@ -3891,23 +3891,23 @@ type CreateProcedureTemplateRequest struct {
 	// 任务流名字（支持中文，不超过20个字）。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
+	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+
 	// 模板描述信息，长度限制：256 个字符。
 	Comment *string `json:"Comment,omitempty" name:"Comment"`
 
 	// 视频处理类型任务参数。
 	MediaProcessTask *MediaProcessTaskInput `json:"MediaProcessTask,omitempty" name:"MediaProcessTask"`
 
-	// AI 智能识别类型任务参数。
+	// AI 内容审核类型任务参数。
 	AiContentReviewTask *AiContentReviewTaskInput `json:"AiContentReviewTask,omitempty" name:"AiContentReviewTask"`
 
-	// AI 智能内容分析类型任务参数。
+	// AI 内容分析类型任务参数。
 	AiAnalysisTask *AiAnalysisTaskInput `json:"AiAnalysisTask,omitempty" name:"AiAnalysisTask"`
 
 	// AI 内容识别类型任务参数。
 	AiRecognitionTask *AiRecognitionTaskInput `json:"AiRecognitionTask,omitempty" name:"AiRecognitionTask"`
-
-	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
 func (r *CreateProcedureTemplateRequest) ToJsonString() string {
@@ -3923,12 +3923,12 @@ func (r *CreateProcedureTemplateRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "Name")
+	delete(f, "SubAppId")
 	delete(f, "Comment")
 	delete(f, "MediaProcessTask")
 	delete(f, "AiContentReviewTask")
 	delete(f, "AiAnalysisTask")
 	delete(f, "AiRecognitionTask")
-	delete(f, "SubAppId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateProcedureTemplateRequest has unknown keys!", "")
 	}
@@ -5017,7 +5017,7 @@ type DailyPlayStatInfo struct {
 
 // Predefined struct for user
 type DeleteAIAnalysisTemplateRequestParams struct {
-	// 视频内容分析模板唯一标识。
+	// 音视频内容分析模板唯一标识。
 	Definition *int64 `json:"Definition,omitempty" name:"Definition"`
 
 	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
@@ -5027,7 +5027,7 @@ type DeleteAIAnalysisTemplateRequestParams struct {
 type DeleteAIAnalysisTemplateRequest struct {
 	*tchttp.BaseRequest
 	
-	// 视频内容分析模板唯一标识。
+	// 音视频内容分析模板唯一标识。
 	Definition *int64 `json:"Definition,omitempty" name:"Definition"`
 
 	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
@@ -5078,7 +5078,7 @@ func (r *DeleteAIAnalysisTemplateResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteAIRecognitionTemplateRequestParams struct {
-	// 视频内容识别模板唯一标识。
+	// 音视频内容识别模板唯一标识。
 	Definition *int64 `json:"Definition,omitempty" name:"Definition"`
 
 	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
@@ -5088,7 +5088,7 @@ type DeleteAIRecognitionTemplateRequestParams struct {
 type DeleteAIRecognitionTemplateRequest struct {
 	*tchttp.BaseRequest
 	
-	// 视频内容识别模板唯一标识。
+	// 音视频内容识别模板唯一标识。
 	Definition *int64 `json:"Definition,omitempty" name:"Definition"`
 
 	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
@@ -5322,7 +5322,7 @@ func (r *DeleteClassResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteContentReviewTemplateRequestParams struct {
-	// 内容智能识别模板唯一标识。
+	// 内容审核模板唯一标识。
 	Definition *int64 `json:"Definition,omitempty" name:"Definition"`
 
 	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
@@ -5332,7 +5332,7 @@ type DeleteContentReviewTemplateRequestParams struct {
 type DeleteContentReviewTemplateRequest struct {
 	*tchttp.BaseRequest
 	
-	// 内容智能识别模板唯一标识。
+	// 内容审核模板唯一标识。
 	Definition *int64 `json:"Definition,omitempty" name:"Definition"`
 
 	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
@@ -6186,7 +6186,7 @@ type DescribeAIAnalysisTemplatesRequestParams struct {
 	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 
-	// 视频内容分析模板唯一标识过滤条件，数组长度最大值：100。
+	// 音视频内容分析模板唯一标识过滤条件，数组长度最大值：100。
 	Definitions []*int64 `json:"Definitions,omitempty" name:"Definitions"`
 
 	// 分页偏移量，默认值：0。
@@ -6202,7 +6202,7 @@ type DescribeAIAnalysisTemplatesRequest struct {
 	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 
-	// 视频内容分析模板唯一标识过滤条件，数组长度最大值：100。
+	// 音视频内容分析模板唯一标识过滤条件，数组长度最大值：100。
 	Definitions []*int64 `json:"Definitions,omitempty" name:"Definitions"`
 
 	// 分页偏移量，默认值：0。
@@ -6239,7 +6239,7 @@ type DescribeAIAnalysisTemplatesResponseParams struct {
 	// 符合过滤条件的记录总数。
 	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
-	// 视频内容分析模板详情列表。
+	// 音视频内容分析模板详情列表。
 	AIAnalysisTemplateSet []*AIAnalysisTemplateItem `json:"AIAnalysisTemplateSet,omitempty" name:"AIAnalysisTemplateSet"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -6267,7 +6267,7 @@ type DescribeAIRecognitionTemplatesRequestParams struct {
 	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 
-	// 视频内容识别模板唯一标识过滤条件，数组长度限制：100。
+	// 音视频内容识别模板唯一标识过滤条件，数组长度限制：100。
 	Definitions []*int64 `json:"Definitions,omitempty" name:"Definitions"`
 
 	// 分页偏移量，默认值：0。
@@ -6283,7 +6283,7 @@ type DescribeAIRecognitionTemplatesRequest struct {
 	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 
-	// 视频内容识别模板唯一标识过滤条件，数组长度限制：100。
+	// 音视频内容识别模板唯一标识过滤条件，数组长度限制：100。
 	Definitions []*int64 `json:"Definitions,omitempty" name:"Definitions"`
 
 	// 分页偏移量，默认值：0。
@@ -6320,7 +6320,7 @@ type DescribeAIRecognitionTemplatesResponseParams struct {
 	// 符合过滤条件的记录总数。
 	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
-	// 视频内容识别模板详情列表。
+	// 音视频内容识别模板详情列表。
 	AIRecognitionTemplateSet []*AIRecognitionTemplateItem `json:"AIRecognitionTemplateSet,omitempty" name:"AIRecognitionTemplateSet"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -7032,7 +7032,7 @@ type DescribeContentReviewTemplatesRequestParams struct {
 	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 
-	// 内容智能识别模板唯一标识过滤条件，数组长度限制：100。
+	// 内容审核模板唯一标识过滤条件，数组长度限制：100。
 	Definitions []*int64 `json:"Definitions,omitempty" name:"Definitions"`
 
 	// 分页偏移量，默认值：0。
@@ -7048,7 +7048,7 @@ type DescribeContentReviewTemplatesRequest struct {
 	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 
-	// 内容智能识别模板唯一标识过滤条件，数组长度限制：100。
+	// 内容审核模板唯一标识过滤条件，数组长度限制：100。
 	Definitions []*int64 `json:"Definitions,omitempty" name:"Definitions"`
 
 	// 分页偏移量，默认值：0。
@@ -7085,7 +7085,7 @@ type DescribeContentReviewTemplatesResponseParams struct {
 	// 符合过滤条件的记录总数。
 	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
-	// 内容智能识别模板详情列表。
+	// 内容审核模板详情列表。
 	ContentReviewTemplateSet []*ContentReviewTemplateItem `json:"ContentReviewTemplateSet,omitempty" name:"ContentReviewTemplateSet"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -7740,7 +7740,7 @@ func (r *DescribeImageReviewUsageDataRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeImageReviewUsageDataResponseParams struct {
-	// 图片智能识别次数统计数据，展示查询时间范围内的图片智能识别次数的概览数据。
+	// 图片审核次数统计数据，展示查询时间范围内的图片审核次数的概览数据。
 	ImageReviewUsageDataSet []*ImageReviewUsageDataItem `json:"ImageReviewUsageDataSet,omitempty" name:"ImageReviewUsageDataSet"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -11265,7 +11265,7 @@ type MediaContentReviewAsrTextSegmentItem struct {
 	// 嫌疑片段置信度。
 	Confidence *float64 `json:"Confidence,omitempty" name:"Confidence"`
 
-	// 嫌疑片段智能识别的结果建议，取值范围：
+	// 嫌疑片段音视频审核的结果建议，取值范围：
 	// <li>pass。</li>
 	// <li>review。</li>
 	// <li>block。</li>
@@ -11285,7 +11285,7 @@ type MediaContentReviewOcrTextSegmentItem struct {
 	// 嫌疑片段置信度。
 	Confidence *float64 `json:"Confidence,omitempty" name:"Confidence"`
 
-	// 嫌疑片段智能识别的结果建议，取值范围：
+	// 嫌疑片段音视频审核的结果建议，取值范围：
 	// <li>pass。</li>
 	// <li>review。</li>
 	// <li>block。</li>
@@ -11324,7 +11324,7 @@ type MediaContentReviewPoliticalSegmentItem struct {
 	// 涉及令人不适宜的信息、违规图标名字。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
-	// 嫌疑片段涉及令人不适宜的信息的结果标签。智能识别模板[画面涉及令人不适宜的信息的任务控制参数](https://cloud.tencent.com/document/api/266/31773#PoliticalImgReviewTemplateInfo)里 LabelSet 参数与此参数取值范围的对应关系：
+	// 嫌疑片段涉及令人不适宜的信息的结果标签。音视频审核模板[画面涉及令人不适宜的信息的任务控制参数](https://cloud.tencent.com/document/api/266/31773#PoliticalImgReviewTemplateInfo)里 LabelSet 参数与此参数取值范围的对应关系：
 	// violation_photo：
 	// <li>violation_photo：违规图标。</li>
 	// politician：
@@ -11540,7 +11540,7 @@ type MediaMetaData struct {
 }
 
 type MediaMiniProgramReviewElem struct {
-	// 智能识别类型。 
+	// 音视频审核类型。 
 	// <li>Porn：画面涉及令人反感的信息，</li>
 	// <li>Porn.Ocr：文字涉及令人反感的信息，</li>
 	// <li>Porn.Asr：声音涉及令人反感的信息，</li>
@@ -11550,18 +11550,18 @@ type MediaMiniProgramReviewElem struct {
 	// <li>Political.Asr：声音涉及令人不适宜的信息。</li>
 	Type *string `json:"Type,omitempty" name:"Type"`
 
-	// 智能识别意见。
+	// 音视频审核意见。
 	// <li>pass：确认正常，</li>
 	// <li>block：确认违规，</li>
 	// <li>review：疑似违规。</li>
 	Suggestion *string `json:"Suggestion,omitempty" name:"Suggestion"`
 
-	// 智能识别结果置信度。取值 0~100。
+	// 音视频审核结果置信度。取值 0~100。
 	Confidence *float64 `json:"Confidence,omitempty" name:"Confidence"`
 }
 
 type MediaMiniProgramReviewInfo struct {
-	// 智能识别信息列表。
+	// 音视频审核信息列表。
 	MiniProgramReviewList []*MediaMiniProgramReviewInfoItem `json:"MiniProgramReviewList,omitempty" name:"MiniProgramReviewList"`
 }
 
@@ -11572,7 +11572,7 @@ type MediaMiniProgramReviewInfoItem struct {
 	// 视频元信息。
 	MetaData *MediaMetaData `json:"MetaData,omitempty" name:"MetaData"`
 
-	// 小程序智能识别视频播放地址。
+	// 小程序音视频审核视频播放地址。
 	Url *string `json:"Url,omitempty" name:"Url"`
 
 	// 小程序视频发布状态：
@@ -11580,7 +11580,7 @@ type MediaMiniProgramReviewInfoItem struct {
 	// <li>Rejected：未通过。</li>
 	ReviewResult *string `json:"ReviewResult,omitempty" name:"ReviewResult"`
 
-	// 小程序智能识别元素。
+	// 小程序音视频审核元素。
 	ReviewSummary []*MediaMiniProgramReviewElem `json:"ReviewSummary,omitempty" name:"ReviewSummary"`
 }
 
@@ -12036,16 +12036,16 @@ type MediaVideoStreamItem struct {
 
 // Predefined struct for user
 type ModifyAIAnalysisTemplateRequestParams struct {
-	// 视频内容分析模板唯一标识。
+	// 音视频内容分析模板唯一标识。
 	Definition *int64 `json:"Definition,omitempty" name:"Definition"`
 
 	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 
-	// 视频内容分析模板名称，长度限制：64 个字符。
+	// 音视频内容分析模板名称，长度限制：64 个字符。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
-	// 视频内容分析模板描述信息，长度限制：256 个字符。
+	// 音视频内容分析模板描述信息，长度限制：256 个字符。
 	Comment *string `json:"Comment,omitempty" name:"Comment"`
 
 	// 智能分类任务控制参数。
@@ -12067,16 +12067,16 @@ type ModifyAIAnalysisTemplateRequestParams struct {
 type ModifyAIAnalysisTemplateRequest struct {
 	*tchttp.BaseRequest
 	
-	// 视频内容分析模板唯一标识。
+	// 音视频内容分析模板唯一标识。
 	Definition *int64 `json:"Definition,omitempty" name:"Definition"`
 
 	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 
-	// 视频内容分析模板名称，长度限制：64 个字符。
+	// 音视频内容分析模板名称，长度限制：64 个字符。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
-	// 视频内容分析模板描述信息，长度限制：256 个字符。
+	// 音视频内容分析模板描述信息，长度限制：256 个字符。
 	Comment *string `json:"Comment,omitempty" name:"Comment"`
 
 	// 智能分类任务控制参数。
@@ -12146,16 +12146,16 @@ func (r *ModifyAIAnalysisTemplateResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyAIRecognitionTemplateRequestParams struct {
-	// 视频内容识别模板唯一标识。
+	// 音视频内容识别模板唯一标识。
 	Definition *int64 `json:"Definition,omitempty" name:"Definition"`
 
 	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 
-	// 视频内容识别模板名称，长度限制：64 个字符。
+	// 音视频内容识别模板名称，长度限制：64 个字符。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
-	// 视频内容识别模板描述信息，长度限制：256 个字符。
+	// 音视频内容识别模板描述信息，长度限制：256 个字符。
 	Comment *string `json:"Comment,omitempty" name:"Comment"`
 
 	// 视频片头片尾识别控制参数。
@@ -12189,16 +12189,16 @@ type ModifyAIRecognitionTemplateRequestParams struct {
 type ModifyAIRecognitionTemplateRequest struct {
 	*tchttp.BaseRequest
 	
-	// 视频内容识别模板唯一标识。
+	// 音视频内容识别模板唯一标识。
 	Definition *int64 `json:"Definition,omitempty" name:"Definition"`
 
 	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 
-	// 视频内容识别模板名称，长度限制：64 个字符。
+	// 音视频内容识别模板名称，长度限制：64 个字符。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
-	// 视频内容识别模板描述信息，长度限制：256 个字符。
+	// 音视频内容识别模板描述信息，长度限制：256 个字符。
 	Comment *string `json:"Comment,omitempty" name:"Comment"`
 
 	// 视频片头片尾识别控制参数。
@@ -12612,16 +12612,16 @@ func (r *ModifyClassResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyContentReviewTemplateRequestParams struct {
-	// 内容智能识别模板唯一标识。
+	// 内容审核模板唯一标识。
 	Definition *int64 `json:"Definition,omitempty" name:"Definition"`
 
 	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 
-	// 内容智能识别模板名称，长度限制：64 个字符。
+	// 内容审核模板名称，长度限制：64 个字符。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
-	// 内容智能识别模板描述信息，长度限制：256 个字符。
+	// 内容审核模板描述信息，长度限制：256 个字符。
 	Comment *string `json:"Comment,omitempty" name:"Comment"`
 
 	// 令人不安全的信息的控制参数。
@@ -12638,13 +12638,13 @@ type ModifyContentReviewTemplateRequestParams struct {
 	// <li>涉毒违法。</li>
 	ProhibitedConfigure *ProhibitedConfigureInfoForUpdate `json:"ProhibitedConfigure,omitempty" name:"ProhibitedConfigure"`
 
-	// 用户自定义内容智能识别控制参数。
+	// 用户自定义内容审核控制参数。
 	UserDefineConfigure *UserDefineConfigureInfoForUpdate `json:"UserDefineConfigure,omitempty" name:"UserDefineConfigure"`
 
 	// 截帧间隔，单位为秒，最小值为 0.5 秒。
 	ScreenshotInterval *float64 `json:"ScreenshotInterval,omitempty" name:"ScreenshotInterval"`
 
-	// 智能识别结果是否进入智能识别墙（对智能识别结果进行人工识别）的开关。
+	// 审核结果是否进入审核墙（对审核结果进行人工识别）的开关。
 	// <li>ON：是；</li>
 	// <li>OFF：否。</li>
 	ReviewWallSwitch *string `json:"ReviewWallSwitch,omitempty" name:"ReviewWallSwitch"`
@@ -12653,16 +12653,16 @@ type ModifyContentReviewTemplateRequestParams struct {
 type ModifyContentReviewTemplateRequest struct {
 	*tchttp.BaseRequest
 	
-	// 内容智能识别模板唯一标识。
+	// 内容审核模板唯一标识。
 	Definition *int64 `json:"Definition,omitempty" name:"Definition"`
 
 	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 
-	// 内容智能识别模板名称，长度限制：64 个字符。
+	// 内容审核模板名称，长度限制：64 个字符。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
-	// 内容智能识别模板描述信息，长度限制：256 个字符。
+	// 内容审核模板描述信息，长度限制：256 个字符。
 	Comment *string `json:"Comment,omitempty" name:"Comment"`
 
 	// 令人不安全的信息的控制参数。
@@ -12679,13 +12679,13 @@ type ModifyContentReviewTemplateRequest struct {
 	// <li>涉毒违法。</li>
 	ProhibitedConfigure *ProhibitedConfigureInfoForUpdate `json:"ProhibitedConfigure,omitempty" name:"ProhibitedConfigure"`
 
-	// 用户自定义内容智能识别控制参数。
+	// 用户自定义内容审核控制参数。
 	UserDefineConfigure *UserDefineConfigureInfoForUpdate `json:"UserDefineConfigure,omitempty" name:"UserDefineConfigure"`
 
 	// 截帧间隔，单位为秒，最小值为 0.5 秒。
 	ScreenshotInterval *float64 `json:"ScreenshotInterval,omitempty" name:"ScreenshotInterval"`
 
-	// 智能识别结果是否进入智能识别墙（对智能识别结果进行人工识别）的开关。
+	// 审核结果是否进入审核墙（对审核结果进行人工识别）的开关。
 	// <li>ON：是；</li>
 	// <li>OFF：否。</li>
 	ReviewWallSwitch *string `json:"ReviewWallSwitch,omitempty" name:"ReviewWallSwitch"`
@@ -14931,10 +14931,10 @@ type PoliticalAsrReviewTemplateInfo struct {
 	// <li>OFF：关闭语音鉴别的涉及令人不适宜的信息的任务。</li>
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
 
-	// 判定需人工复核是否违规的分数阈值，当智能识别达到该分数以上，认为需人工复核，不填默认为 75 分。取值范围：0~100。
+	// 判定需人工复核是否违规的分数阈值，当音视频审核达到该分数以上，认为需人工复核，不填默认为 75 分。取值范围：0~100。
 	ReviewConfidence *int64 `json:"ReviewConfidence,omitempty" name:"ReviewConfidence"`
 
-	// 判定涉嫌违规的分数阈值，当智能识别达到该分数以上，认为涉嫌违规，不填默认为 100 分。取值范围：0~100。
+	// 判定涉嫌违规的分数阈值，当音视频审核达到该分数以上，认为涉嫌违规，不填默认为 100 分。取值范围：0~100。
 	BlockConfidence *int64 `json:"BlockConfidence,omitempty" name:"BlockConfidence"`
 }
 
@@ -14944,10 +14944,10 @@ type PoliticalAsrReviewTemplateInfoForUpdate struct {
 	// <li>OFF：关闭语音鉴别涉及令人不适宜的信息的任务。</li>
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
 
-	// 判定涉嫌违规的分数阈值，当智能识别达到该分数以上，认为涉嫌违规。取值范围：0~100。
+	// 判定涉嫌违规的分数阈值，当音视频审核达到该分数以上，认为涉嫌违规。取值范围：0~100。
 	BlockConfidence *int64 `json:"BlockConfidence,omitempty" name:"BlockConfidence"`
 
-	// 判定需人工复核是否违规的分数阈值，当智能识别达到该分数以上，认为需人工复核。取值范围：0~100。
+	// 判定需人工复核是否违规的分数阈值，当音视频审核达到该分数以上，认为需人工复核。取值范围：0~100。
 	ReviewConfidence *int64 `json:"ReviewConfidence,omitempty" name:"ReviewConfidence"`
 }
 
@@ -14999,7 +14999,7 @@ type PoliticalImgReviewTemplateInfo struct {
 	// <li>OFF：关闭画面鉴别涉及令人不适宜的信息的任务。</li>
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
 
-	// 画面鉴别涉及令人不适宜的信息的过滤标签，智能识别结果包含选择的标签则返回结果，如果过滤标签为空，则智能识别结果全部返回，可选值为：
+	// 画面鉴别涉及令人不适宜的信息的过滤标签，审核结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回，可选值为：
 	// <li>violation_photo：违规图标；</li>
 	// <li>politician：相关人物；</li>
 	// <li>entertainment：娱乐人物；</li>
@@ -15010,10 +15010,10 @@ type PoliticalImgReviewTemplateInfo struct {
 	// <li>military：相关人物。</li>
 	LabelSet []*string `json:"LabelSet,omitempty" name:"LabelSet"`
 
-	// 判定涉嫌违规的分数阈值，当智能识别达到该分数以上，认为涉嫌违规，不填默认为 97 分。取值范围：0~100。
+	// 判定涉嫌违规的分数阈值，当审核达到该分数以上，认为涉嫌违规，不填默认为 97 分。取值范围：0~100。
 	BlockConfidence *int64 `json:"BlockConfidence,omitempty" name:"BlockConfidence"`
 
-	// 判定需人工复核是否违规的分数阈值，当智能识别达到该分数以上，认为需人工复核，不填默认为 95 分。取值范围：0~100。
+	// 判定需人工复核是否违规的分数阈值，当审核达到该分数以上，认为需人工复核，不填默认为 95 分。取值范围：0~100。
 	ReviewConfidence *int64 `json:"ReviewConfidence,omitempty" name:"ReviewConfidence"`
 }
 
@@ -15023,7 +15023,7 @@ type PoliticalImgReviewTemplateInfoForUpdate struct {
 	// <li>OFF：关闭画面鉴别涉及令人不适宜的信息的任务。</li>
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
 
-	// 画面鉴别涉及令人不适宜的信息的过滤标签，智能识别结果包含选择的标签则返回结果，如果过滤标签为空，则智能识别结果全部返回，可选值为：
+	// 画面鉴别涉及令人不适宜的信息的过滤标签，审核结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回，可选值为：
 	// <li>violation_photo：违规图标；</li>
 	// <li>politician：相关人物；</li>
 	// <li>entertainment：娱乐人物；</li>
@@ -15034,10 +15034,10 @@ type PoliticalImgReviewTemplateInfoForUpdate struct {
 	// <li>military：相关人物。</li>
 	LabelSet []*string `json:"LabelSet,omitempty" name:"LabelSet"`
 
-	// 判定涉嫌违规的分数阈值，当智能识别达到该分数以上，认为涉嫌违规。取值范围：0~100。
+	// 判定涉嫌违规的分数阈值，当审核达到该分数以上，认为涉嫌违规。取值范围：0~100。
 	BlockConfidence *int64 `json:"BlockConfidence,omitempty" name:"BlockConfidence"`
 
-	// 判定需人工复核是否违规的分数阈值，当智能识别达到该分数以上，认为需人工复核。取值范围：0~100。
+	// 判定需人工复核是否违规的分数阈值，当审核达到该分数以上，认为需人工复核。取值范围：0~100。
 	ReviewConfidence *int64 `json:"ReviewConfidence,omitempty" name:"ReviewConfidence"`
 }
 
@@ -15047,10 +15047,10 @@ type PoliticalOcrReviewTemplateInfo struct {
 	// <li>OFF：关闭文本鉴别涉及令人不适宜的信息的任务。</li>
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
 
-	// 判定涉嫌违规的分数阈值，当智能识别达到该分数以上，认为涉嫌违规，不填默认为 100 分。取值范围：0~100。
+	// 判定涉嫌违规的分数阈值，当审核达到该分数以上，认为涉嫌违规，不填默认为 100 分。取值范围：0~100。
 	BlockConfidence *int64 `json:"BlockConfidence,omitempty" name:"BlockConfidence"`
 
-	// 判定需人工复核是否违规的分数阈值，当智能识别达到该分数以上，认为需人工复核，不填默认为 75 分。取值范围：0~100。
+	// 判定需人工复核是否违规的分数阈值，当审核达到该分数以上，认为需人工复核，不填默认为 75 分。取值范围：0~100。
 	ReviewConfidence *int64 `json:"ReviewConfidence,omitempty" name:"ReviewConfidence"`
 }
 
@@ -15060,10 +15060,10 @@ type PoliticalOcrReviewTemplateInfoForUpdate struct {
 	// <li>OFF：关闭文本鉴别涉及令人不适宜的信息的任务。</li>
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
 
-	// 判定涉嫌违规的分数阈值，当智能识别达到该分数以上，认为涉嫌违规。取值范围：0~100。
+	// 判定涉嫌违规的分数阈值，当审核达到该分数以上，认为涉嫌违规。取值范围：0~100。
 	BlockConfidence *int64 `json:"BlockConfidence,omitempty" name:"BlockConfidence"`
 
-	// 判定需人工复核是否违规的分数阈值，当智能识别达到该分数以上，认为需人工复核。取值范围：0~100。
+	// 判定需人工复核是否违规的分数阈值，当审核达到该分数以上，认为需人工复核。取值范围：0~100。
 	ReviewConfidence *int64 `json:"ReviewConfidence,omitempty" name:"ReviewConfidence"`
 }
 
@@ -15073,10 +15073,10 @@ type PornAsrReviewTemplateInfo struct {
 	// <li>OFF：关闭语音鉴别涉及令人反感的信息的任务。</li>
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
 
-	// 判定涉嫌违规的分数阈值，当智能识别达到该分数以上，认为涉嫌违规，不填默认为 100 分。取值范围：0~100。
+	// 判定涉嫌违规的分数阈值，当审核达到该分数以上，认为涉嫌违规，不填默认为 100 分。取值范围：0~100。
 	BlockConfidence *int64 `json:"BlockConfidence,omitempty" name:"BlockConfidence"`
 
-	// 判定需人工复核是否违规的分数阈值，当智能识别达到该分数以上，认为需人工复核，不填默认为 75 分。取值范围：0~100。
+	// 判定需人工复核是否违规的分数阈值，当审核达到该分数以上，认为需人工复核，不填默认为 75 分。取值范围：0~100。
 	ReviewConfidence *int64 `json:"ReviewConfidence,omitempty" name:"ReviewConfidence"`
 }
 
@@ -15086,10 +15086,10 @@ type PornAsrReviewTemplateInfoForUpdate struct {
 	// <li>OFF：关闭语音鉴别涉及令人反感的信息的任务。</li>
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
 
-	// 判定涉嫌违规的分数阈值，当智能识别达到该分数以上，认为涉嫌违规。取值范围：0~100。
+	// 判定涉嫌违规的分数阈值，当审核达到该分数以上，认为涉嫌违规。取值范围：0~100。
 	BlockConfidence *int64 `json:"BlockConfidence,omitempty" name:"BlockConfidence"`
 
-	// 判定需人工复核是否违规的分数阈值，当智能识别达到该分数以上，认为需人工复核。取值范围：0~100。
+	// 判定需人工复核是否违规的分数阈值，当审核达到该分数以上，认为需人工复核。取值范围：0~100。
 	ReviewConfidence *int64 `json:"ReviewConfidence,omitempty" name:"ReviewConfidence"`
 }
 
@@ -15142,17 +15142,17 @@ type PornImgReviewTemplateInfo struct {
 	// <li>OFF：关闭画面鉴别涉及令人反感的信息的任务。</li>
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
 
-	// 画面鉴别涉及令人反感的信息的过滤标签，智能识别结果包含选择的标签则返回结果，如果过滤标签为空，则智能识别结果全部返回，可选值为：
+	// 画面鉴别涉及令人反感的信息的过滤标签，审核结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回，可选值为：
 	// <li>porn：色情；</li>
 	// <li>vulgar：低俗；</li>
 	// <li>intimacy：亲密行为；</li>
 	// <li>sexy：性感。</li>
 	LabelSet []*string `json:"LabelSet,omitempty" name:"LabelSet"`
 
-	// 判定涉嫌违规的分数阈值，当智能识别达到该分数以上，认为涉嫌违规，不填默认为 90 分。取值范围：0~100。
+	// 判定涉嫌违规的分数阈值，当审核达到该分数以上，认为涉嫌违规，不填默认为 90 分。取值范围：0~100。
 	BlockConfidence *int64 `json:"BlockConfidence,omitempty" name:"BlockConfidence"`
 
-	// 判定需人工复核是否违规的分数阈值，当智能识别达到该分数以上，认为需人工复核，不填默认为 0 分。取值范围：0~100。
+	// 判定需人工复核是否违规的分数阈值，当审核达到该分数以上，认为需人工复核，不填默认为 0 分。取值范围：0~100。
 	ReviewConfidence *int64 `json:"ReviewConfidence,omitempty" name:"ReviewConfidence"`
 }
 
@@ -15162,17 +15162,17 @@ type PornImgReviewTemplateInfoForUpdate struct {
 	// <li>OFF：关闭画面鉴别涉及令人反感的信息的任务。</li>
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
 
-	// 画面鉴别涉及令人反感的信息的过滤标签，智能识别结果包含选择的标签则返回结果，如果过滤标签为空，则智能识别结果全部返回，可选值为：
+	// 画面鉴别涉及令人反感的信息的过滤标签，审核结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回，可选值为：
 	// <li>porn：色情；</li>
 	// <li>vulgar：低俗；</li>
 	// <li>intimacy：亲密行为；</li>
 	// <li>sexy：性感。</li>
 	LabelSet []*string `json:"LabelSet,omitempty" name:"LabelSet"`
 
-	// 判定涉嫌违规的分数阈值，当智能识别达到该分数以上，认为涉嫌违规。取值范围：0~100。
+	// 判定涉嫌违规的分数阈值，当审核达到该分数以上，认为涉嫌违规。取值范围：0~100。
 	BlockConfidence *int64 `json:"BlockConfidence,omitempty" name:"BlockConfidence"`
 
-	// 判定需人工复核是否违规的分数阈值，当智能识别达到该分数以上，认为需人工复核。取值范围：0~100。
+	// 判定需人工复核是否违规的分数阈值，当审核达到该分数以上，认为需人工复核。取值范围：0~100。
 	ReviewConfidence *int64 `json:"ReviewConfidence,omitempty" name:"ReviewConfidence"`
 }
 
@@ -15182,10 +15182,10 @@ type PornOcrReviewTemplateInfo struct {
 	// <li>OFF：关闭文本鉴别涉及令人反感的信息的任务。</li>
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
 
-	// 判定涉嫌违规的分数阈值，当智能识别达到该分数以上，认为涉嫌违规，不填默认为 100 分。取值范围：0~100。
+	// 判定涉嫌违规的分数阈值，当审核达到该分数以上，认为涉嫌违规，不填默认为 100 分。取值范围：0~100。
 	BlockConfidence *int64 `json:"BlockConfidence,omitempty" name:"BlockConfidence"`
 
-	// 判定需人工复核是否违规的分数阈值，当智能识别达到该分数以上，认为需人工复核，不填默认为 75 分。取值范围：0~100。
+	// 判定需人工复核是否违规的分数阈值，当审核达到该分数以上，认为需人工复核，不填默认为 75 分。取值范围：0~100。
 	ReviewConfidence *int64 `json:"ReviewConfidence,omitempty" name:"ReviewConfidence"`
 }
 
@@ -15203,7 +15203,7 @@ type PornOcrReviewTemplateInfoForUpdate struct {
 }
 
 type ProcedureTask struct {
-	// 视频处理任务 ID。
+	// 音视频处理任务 ID。
 	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
 
 	// 任务流状态，取值：
@@ -15232,20 +15232,20 @@ type ProcedureTask struct {
 	// <li>若流程由 [ProcessMediaByUrl](https://cloud.tencent.com/document/product/266/33426) 发起，该字段表示 [MediaInputInfo](https://cloud.tencent.com/document/product/266/31773#MediaInputInfo) 的 Url。</li>
 	FileUrl *string `json:"FileUrl,omitempty" name:"FileUrl"`
 
-	// 原始视频的元信息。
+	// 原始音视频的元信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MetaData *MediaMetaData `json:"MetaData,omitempty" name:"MetaData"`
 
-	// 视频处理任务的执行状态与结果。
+	// 音视频处理任务的执行状态与结果。
 	MediaProcessResultSet []*MediaProcessTaskResult `json:"MediaProcessResultSet,omitempty" name:"MediaProcessResultSet"`
 
-	// 视频智能识别任务的执行状态与结果。
+	// 音视频审核任务的执行状态与结果。
 	AiContentReviewResultSet []*AiContentReviewResult `json:"AiContentReviewResultSet,omitempty" name:"AiContentReviewResultSet"`
 
-	// 视频内容分析任务的执行状态与结果。
+	// 音视频内容分析任务的执行状态与结果。
 	AiAnalysisResultSet []*AiAnalysisResult `json:"AiAnalysisResultSet,omitempty" name:"AiAnalysisResultSet"`
 
-	// 视频内容识别任务的执行状态与结果。
+	// 音视频内容识别任务的执行状态与结果。
 	AiRecognitionResultSet []*AiRecognitionResult `json:"AiRecognitionResultSet,omitempty" name:"AiRecognitionResultSet"`
 
 	// 任务流的优先级，取值范围为 [-10, 10]。
@@ -15280,7 +15280,7 @@ type ProcedureTemplate struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MediaProcessTask *MediaProcessTaskInput `json:"MediaProcessTask,omitempty" name:"MediaProcessTask"`
 
-	// AI 智能识别类型任务参数。
+	// AI 智能审核类型任务参数。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AiContentReviewTask *AiContentReviewTaskInput `json:"AiContentReviewTask,omitempty" name:"AiContentReviewTask"`
 
@@ -15618,13 +15618,13 @@ type ProcessMediaRequestParams struct {
 	// 视频处理类型任务参数。
 	MediaProcessTask *MediaProcessTaskInput `json:"MediaProcessTask,omitempty" name:"MediaProcessTask"`
 
-	// 视频智能识别类型任务参数。
+	// 音视频内容审核类型任务参数。
 	AiContentReviewTask *AiContentReviewTaskInput `json:"AiContentReviewTask,omitempty" name:"AiContentReviewTask"`
 
-	// 视频内容分析类型任务参数。
+	// 音视频内容分析类型任务参数。
 	AiAnalysisTask *AiAnalysisTaskInput `json:"AiAnalysisTask,omitempty" name:"AiAnalysisTask"`
 
-	// 视频内容识别类型任务参数。
+	// 音视频内容识别类型任务参数。
 	AiRecognitionTask *AiRecognitionTaskInput `json:"AiRecognitionTask,omitempty" name:"AiRecognitionTask"`
 
 	// 任务流的优先级，数值越大优先级越高，取值范围是 -10 到 10，不填代表 0。
@@ -15655,13 +15655,13 @@ type ProcessMediaRequest struct {
 	// 视频处理类型任务参数。
 	MediaProcessTask *MediaProcessTaskInput `json:"MediaProcessTask,omitempty" name:"MediaProcessTask"`
 
-	// 视频智能识别类型任务参数。
+	// 音视频内容审核类型任务参数。
 	AiContentReviewTask *AiContentReviewTaskInput `json:"AiContentReviewTask,omitempty" name:"AiContentReviewTask"`
 
-	// 视频内容分析类型任务参数。
+	// 音视频内容分析类型任务参数。
 	AiAnalysisTask *AiAnalysisTaskInput `json:"AiAnalysisTask,omitempty" name:"AiAnalysisTask"`
 
-	// 视频内容识别类型任务参数。
+	// 音视频内容识别类型任务参数。
 	AiRecognitionTask *AiRecognitionTaskInput `json:"AiRecognitionTask,omitempty" name:"AiRecognitionTask"`
 
 	// 任务流的优先级，数值越大优先级越高，取值范围是 -10 到 10，不填代表 0。
@@ -15778,23 +15778,23 @@ type ProductInstanceRecource struct {
 	// <li>Traffic：流量资源包。</li>
 	// <li>Transcode：普通转码资源包。</li>
 	// <li>TESHD：极速高清转码资源包。</li>
-	// <li>Review：视频智能识别转码资源包。</li>
+	// <li>Review：音视频审核转码资源包。</li>
 	ResourceType *string `json:"ResourceType,omitempty" name:"ResourceType"`
 
 	// 资源包额度。
-	// <li>视频存储资源包，单位为字节。</li>
-	// <li>视频转码资源包，单位为秒。</li>
-	// <li>视频智能识别资源包，单位为秒。</li>
-	// <li>视频极速高清资源包，单位为秒。</li>
-	// <li>视频加速资源包，单位为字节。</li>
+	// <li>音视频存储资源包，单位为字节。</li>
+	// <li>音视频转码资源包，单位为秒。</li>
+	// <li>音视频审核资源包，单位为秒。</li>
+	// <li>音视频极速高清资源包，单位为秒。</li>
+	// <li>音视频加速资源包，单位为字节。</li>
 	Amount *int64 `json:"Amount,omitempty" name:"Amount"`
 
 	// 资源包余量。
-	// <li>视频存储资源包，单位为字节。</li>
-	// <li>视频转码资源包，单位为秒。</li>
-	// <li>视频智能识别资源包，单位为秒。</li>
-	// <li>视频极速高清资源包，单位为秒。</li>
-	// <li>视频加速资源包，单位为字节。</li>
+	// <li>音视频存储资源包，单位为字节。</li>
+	// <li>音视频转码资源包，单位为秒。</li>
+	// <li>音视频审核资源包，单位为秒。</li>
+	// <li>音视频极速高清资源包，单位为秒。</li>
+	// <li>音视频加速资源包，单位为字节。</li>
 	Left *int64 `json:"Left,omitempty" name:"Left"`
 }
 
@@ -15804,10 +15804,10 @@ type ProhibitedAsrReviewTemplateInfo struct {
 	// <li>OFF：关闭语音违禁任务。</li>
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
 
-	// 判定涉嫌违规的分数阈值，当智能识别达到该分数以上，认为涉嫌违规，不填默认为 100 分。取值范围：0~100。
+	// 判定涉嫌违规的分数阈值，当审核达到该分数以上，认为涉嫌违规，不填默认为 100 分。取值范围：0~100。
 	BlockConfidence *int64 `json:"BlockConfidence,omitempty" name:"BlockConfidence"`
 
-	// 判定需人工复核是否违规的分数阈值，当智能识别达到该分数以上，认为需人工复核，不填默认为 75 分。取值范围：0~100。
+	// 判定需人工复核是否违规的分数阈值，当审核达到该分数以上，认为需人工复核，不填默认为 75 分。取值范围：0~100。
 	ReviewConfidence *int64 `json:"ReviewConfidence,omitempty" name:"ReviewConfidence"`
 }
 
@@ -15817,10 +15817,10 @@ type ProhibitedAsrReviewTemplateInfoForUpdate struct {
 	// <li>OFF：关闭语音违禁任务。</li>
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
 
-	// 判定涉嫌违规的分数阈值，当智能识别达到该分数以上，认为涉嫌违规，不填默认为 100 分。取值范围：0~100。
+	// 判定涉嫌违规的分数阈值，当审核达到该分数以上，认为涉嫌违规，不填默认为 100 分。取值范围：0~100。
 	BlockConfidence *int64 `json:"BlockConfidence,omitempty" name:"BlockConfidence"`
 
-	// 判定需人工复核是否违规的分数阈值，当智能识别达到该分数以上，认为需人工复核，不填默认为 75 分。取值范围：0~100。
+	// 判定需人工复核是否违规的分数阈值，当审核达到该分数以上，认为需人工复核，不填默认为 75 分。取值范围：0~100。
 	ReviewConfidence *int64 `json:"ReviewConfidence,omitempty" name:"ReviewConfidence"`
 }
 
@@ -15848,10 +15848,10 @@ type ProhibitedOcrReviewTemplateInfo struct {
 	// <li>OFF：关闭文本违禁任务。</li>
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
 
-	// 判定涉嫌违规的分数阈值，当智能识别达到该分数以上，认为涉嫌违规，不填默认为 100 分。取值范围：0~100。
+	// 判定涉嫌违规的分数阈值，当审核达到该分数以上，认为涉嫌违规，不填默认为 100 分。取值范围：0~100。
 	BlockConfidence *int64 `json:"BlockConfidence,omitempty" name:"BlockConfidence"`
 
-	// 判定需人工复核是否违规的分数阈值，当智能识别达到该分数以上，认为需人工复核，不填默认为 75 分。取值范围：0~100。
+	// 判定需人工复核是否违规的分数阈值，当审核达到该分数以上，认为需人工复核，不填默认为 75 分。取值范围：0~100。
 	ReviewConfidence *int64 `json:"ReviewConfidence,omitempty" name:"ReviewConfidence"`
 }
 
@@ -15861,10 +15861,10 @@ type ProhibitedOcrReviewTemplateInfoForUpdate struct {
 	// <li>OFF：关闭文本违禁任务。</li>
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
 
-	// 判定涉嫌违规的分数阈值，当智能识别达到该分数以上，认为涉嫌违规，不填默认为 100 分。取值范围：0~100。
+	// 判定涉嫌违规的分数阈值，当审核达到该分数以上，认为涉嫌违规，不填默认为 100 分。取值范围：0~100。
 	BlockConfidence *int64 `json:"BlockConfidence,omitempty" name:"BlockConfidence"`
 
-	// 判定需人工复核是否违规的分数阈值，当智能识别达到该分数以上，认为需人工复核，不填默认为 75 分。取值范围：0~100。
+	// 判定需人工复核是否违规的分数阈值，当审核达到该分数以上，认为需人工复核，不填默认为 75 分。取值范围：0~100。
 	ReviewConfidence *int64 `json:"ReviewConfidence,omitempty" name:"ReviewConfidence"`
 }
 
@@ -16488,7 +16488,7 @@ type ReviewImageRequestParams struct {
 	// 媒体文件 ID，即该文件在云点播上的全局唯一标识符。本接口要求媒体文件必须是图片格式。
 	FileId *string `json:"FileId,omitempty" name:"FileId"`
 
-	// 图片智能识别模板 ID，当前固定填 10。
+	// 图片审核模板 ID，当前固定填 10。
 	Definition *uint64 `json:"Definition,omitempty" name:"Definition"`
 
 	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
@@ -16501,7 +16501,7 @@ type ReviewImageRequest struct {
 	// 媒体文件 ID，即该文件在云点播上的全局唯一标识符。本接口要求媒体文件必须是图片格式。
 	FileId *string `json:"FileId,omitempty" name:"FileId"`
 
-	// 图片智能识别模板 ID，当前固定填 10。
+	// 图片审核模板 ID，当前固定填 10。
 	Definition *uint64 `json:"Definition,omitempty" name:"Definition"`
 
 	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
@@ -16531,7 +16531,7 @@ func (r *ReviewImageRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ReviewImageResponseParams struct {
-	// 图片智能识别任务结果。
+	// 图片审核任务结果。
 	ReviewResultSet []*ContentReviewResult `json:"ReviewResultSet,omitempty" name:"ReviewResultSet"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -17766,7 +17766,7 @@ type TerrorismImgReviewTemplateInfo struct {
 	// <li>OFF：关闭画面鉴别涉及令人不安全的信息的任务。</li>
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
 
-	// 画面鉴别涉及令人不安全的信息的过滤标签，智能识别结果包含选择的标签则返回结果，如果过滤标签为空，则智能识别结果全部返回，可选值为：
+	// 画面鉴别涉及令人不安全的信息的过滤标签，审核结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回，可选值为：
 	// <li>guns：武器枪支；</li>
 	// <li>crowd：人群聚集；</li>
 	// <li>bloody：血腥画面；</li>
@@ -17778,10 +17778,10 @@ type TerrorismImgReviewTemplateInfo struct {
 	// <li>scenario：暴恐画面。</li>
 	LabelSet []*string `json:"LabelSet,omitempty" name:"LabelSet"`
 
-	// 判定涉嫌违规的分数阈值，当智能识别达到该分数以上，认为涉嫌违规，不填默认为 90 分。取值范围：0~100。
+	// 判定涉嫌违规的分数阈值，当审核达到该分数以上，认为涉嫌违规，不填默认为 90 分。取值范围：0~100。
 	BlockConfidence *int64 `json:"BlockConfidence,omitempty" name:"BlockConfidence"`
 
-	// 判定需人工复核是否违规的分数阈值，当智能识别达到该分数以上，认为需人工复核，不填默认为 80 分。取值范围：0~100。
+	// 判定需人工复核是否违规的分数阈值，当审核达到该分数以上，认为需人工复核，不填默认为 80 分。取值范围：0~100。
 	ReviewConfidence *int64 `json:"ReviewConfidence,omitempty" name:"ReviewConfidence"`
 }
 
@@ -17791,7 +17791,7 @@ type TerrorismImgReviewTemplateInfoForUpdate struct {
 	// <li>OFF：关闭画面鉴别涉及令人不安全的信息的任务。</li>
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
 
-	// 画面鉴别涉及令人不安全的信息的过滤标签，智能识别结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回，可选值为：
+	// 画面鉴别涉及令人不安全的信息的过滤标签，审核结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回，可选值为：
 	// <li>guns：武器枪支；</li>
 	// <li>crowd：人群聚集；</li>
 	// <li>bloody：血腥画面；</li>
@@ -17803,10 +17803,10 @@ type TerrorismImgReviewTemplateInfoForUpdate struct {
 	// <li>scenario：暴恐画面。</li>
 	LabelSet []*string `json:"LabelSet,omitempty" name:"LabelSet"`
 
-	// 判定涉嫌违规的分数阈值，当智能识别达到该分数以上，认为涉嫌违规。取值范围：0~100。
+	// 判定涉嫌违规的分数阈值，当审核达到该分数以上，认为涉嫌违规。取值范围：0~100。
 	BlockConfidence *int64 `json:"BlockConfidence,omitempty" name:"BlockConfidence"`
 
-	// 判定需人工复核是否违规的分数阈值，当智能识别达到该分数以上，认为需人工复核。取值范围：0~100。
+	// 判定需人工复核是否违规的分数阈值，当审核达到该分数以上，认为需人工复核。取值范围：0~100。
 	ReviewConfidence *int64 `json:"ReviewConfidence,omitempty" name:"ReviewConfidence"`
 }
 
@@ -17816,10 +17816,10 @@ type TerrorismOcrReviewTemplateInfo struct {
 	// <li>OFF：关闭文本鉴别涉及令人不安全的信息的任务。</li>
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
 
-	// 判定涉嫌违规的分数阈值，当智能识别达到该分数以上，认为涉嫌违规，不填默认为 100 分。取值范围：0~100。
+	// 判定涉嫌违规的分数阈值，当审核达到该分数以上，认为涉嫌违规，不填默认为 100 分。取值范围：0~100。
 	BlockConfidence *int64 `json:"BlockConfidence,omitempty" name:"BlockConfidence"`
 
-	// 判定需人工复核是否违规的分数阈值，当智能识别达到该分数以上，认为需人工复核，不填默认为 75 分。取值范围：0~100。
+	// 判定需人工复核是否违规的分数阈值，当审核达到该分数以上，认为需人工复核，不填默认为 75 分。取值范围：0~100。
 	ReviewConfidence *int64 `json:"ReviewConfidence,omitempty" name:"ReviewConfidence"`
 }
 
@@ -17829,10 +17829,10 @@ type TerrorismOcrReviewTemplateInfoForUpdate struct {
 	// <li>OFF：关闭文本鉴别涉及令人不安全的信息的任务。</li>
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
 
-	// 判定涉嫌违规的分数阈值，当智能识别达到该分数以上，认为涉嫌违规，不填默认为 100 分。取值范围：0~100。
+	// 判定涉嫌违规的分数阈值，当审核达到该分数以上，认为涉嫌违规，不填默认为 100 分。取值范围：0~100。
 	BlockConfidence *int64 `json:"BlockConfidence,omitempty" name:"BlockConfidence"`
 
-	// 判定需人工复核是否违规的分数阈值，当智能识别达到该分数以上，认为需人工复核，不填默认为 75 分。取值范围：0~100。
+	// 判定需人工复核是否违规的分数阈值，当审核达到该分数以上，认为需人工复核，不填默认为 75 分。取值范围：0~100。
 	ReviewConfidence *int64 `json:"ReviewConfidence,omitempty" name:"ReviewConfidence"`
 }
 
@@ -18077,129 +18077,129 @@ type UrlSignatureAuthPolicy struct {
 }
 
 type UserDefineAsrTextReviewTemplateInfo struct {
-	// 用户自定语音智能识别任务开关，可选值：
-	// <li>ON：开启自定义语音智能识别任务；</li>
-	// <li>OFF：关闭自定义语音智能识别任务。</li>
+	// 用户自定语音审核任务开关，可选值：
+	// <li>ON：开启自定义语音审核任务；</li>
+	// <li>OFF：关闭自定义语音审核任务。</li>
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
 
-	// 用户自定义语音过滤标签，智能识别结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回。如果要使用标签过滤功能，添加自定义语音关键词素材时需要添加对应标签。
+	// 用户自定义语音过滤标签，审核结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回。如果要使用标签过滤功能，添加自定义语音关键词素材时需要添加对应标签。
 	// 标签个数最多 10 个，每个标签长度最多 16 个字符。
 	LabelSet []*string `json:"LabelSet,omitempty" name:"LabelSet"`
 
-	// 判定涉嫌违规的分数阈值，当智能智能识别达到该分数以上，认为涉嫌违规，不填默认为 100 分。取值范围：0~100。
+	// 判定涉嫌违规的分数阈值，当智能审核达到该分数以上，认为涉嫌违规，不填默认为 100 分。取值范围：0~100。
 	BlockConfidence *int64 `json:"BlockConfidence,omitempty" name:"BlockConfidence"`
 
-	// 判定需人工复核是否违规的分数阈值，当智能识别达到该分数以上，认为需人工复核，不填默认为 75 分。取值范围：0~100。
+	// 判定需人工复核是否违规的分数阈值，当审核达到该分数以上，认为需人工复核，不填默认为 75 分。取值范围：0~100。
 	ReviewConfidence *int64 `json:"ReviewConfidence,omitempty" name:"ReviewConfidence"`
 }
 
 type UserDefineAsrTextReviewTemplateInfoForUpdate struct {
-	// 用户自定语音智能识别任务开关，可选值：
-	// <li>ON：开启自定义语音智能识别任务；</li>
-	// <li>OFF：关闭自定义语音智能识别任务。</li>
+	// 用户自定语音审核任务开关，可选值：
+	// <li>ON：开启自定义语音审核任务；</li>
+	// <li>OFF：关闭自定义语音审核任务。</li>
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
 
-	// 用户自定义语音过滤标签，智能识别结果包含选择的标签则返回结果，如果过滤标签为空，则智能识别结果全部返回。如果要使用标签过滤功能，添加自定义语音关键词素材时需要添加对应标签。
+	// 用户自定义语音过滤标签，审核结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回。如果要使用标签过滤功能，添加自定义语音关键词素材时需要添加对应标签。
 	// 标签个数最多 10 个，每个标签长度最多 16 个字符。
 	LabelSet []*string `json:"LabelSet,omitempty" name:"LabelSet"`
 
-	// 判定涉嫌违规的分数阈值，当智能识别达到该分数以上，认为涉嫌违规。取值范围：0~100。
+	// 判定涉嫌违规的分数阈值，当审核达到该分数以上，认为涉嫌违规。取值范围：0~100。
 	BlockConfidence *int64 `json:"BlockConfidence,omitempty" name:"BlockConfidence"`
 
-	// 判定需人工复核是否违规的分数阈值，当智能识别达到该分数以上，认为需人工复核。取值范围：0~100。
+	// 判定需人工复核是否违规的分数阈值，当审核达到该分数以上，认为需人工复核。取值范围：0~100。
 	ReviewConfidence *int64 `json:"ReviewConfidence,omitempty" name:"ReviewConfidence"`
 }
 
 type UserDefineConfigureInfo struct {
-	// 用户自定义人物智能识别控制参数。
+	// 用户自定义人物音视频审核控制参数。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FaceReviewInfo *UserDefineFaceReviewTemplateInfo `json:"FaceReviewInfo,omitempty" name:"FaceReviewInfo"`
 
-	// 用户自定义语音智能识别控制参数。
+	// 用户自定义语音音视频审核控制参数。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AsrReviewInfo *UserDefineAsrTextReviewTemplateInfo `json:"AsrReviewInfo,omitempty" name:"AsrReviewInfo"`
 
-	// 用户自定义文本智能识别控制参数。
+	// 用户自定义文本音视频审核控制参数。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OcrReviewInfo *UserDefineOcrTextReviewTemplateInfo `json:"OcrReviewInfo,omitempty" name:"OcrReviewInfo"`
 }
 
 type UserDefineConfigureInfoForUpdate struct {
-	// 用户自定义人物智能识别控制参数。
+	// 用户自定义人物音视频审核控制参数。
 	FaceReviewInfo *UserDefineFaceReviewTemplateInfoForUpdate `json:"FaceReviewInfo,omitempty" name:"FaceReviewInfo"`
 
-	// 用户自定义语音智能识别控制参数。
+	// 用户自定义语音音视频审核控制参数。
 	AsrReviewInfo *UserDefineAsrTextReviewTemplateInfoForUpdate `json:"AsrReviewInfo,omitempty" name:"AsrReviewInfo"`
 
-	// 用户自定义文本智能识别控制参数。
+	// 用户自定义文本音视频审核控制参数。
 	OcrReviewInfo *UserDefineOcrTextReviewTemplateInfoForUpdate `json:"OcrReviewInfo,omitempty" name:"OcrReviewInfo"`
 }
 
 type UserDefineFaceReviewTemplateInfo struct {
-	// 用户自定义人物智能识别任务开关，可选值：
-	// <li>ON：开启自定义人物智能识别任务；</li>
-	// <li>OFF：关闭自定义人物智能识别任务。</li>
+	// 用户自定义人物音视频审核任务开关，可选值：
+	// <li>ON：开启自定义人物音视频审核任务；</li>
+	// <li>OFF：关闭自定义人物音视频审核任务。</li>
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
 
-	// 用户自定义人物过滤标签，智能识别结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回。如果要使用标签过滤功能，添加自定义人物库的时，需要添加对应人物标签。
+	// 用户自定义人物过滤标签，音视频审核结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回。如果要使用标签过滤功能，添加自定义人物库的时，需要添加对应人物标签。
 	// 标签个数最多 10 个，每个标签长度最多 16 个字符。
 	LabelSet []*string `json:"LabelSet,omitempty" name:"LabelSet"`
 
-	// 判定涉嫌违规的分数阈值，当智能智能识别达到该分数以上，认为涉嫌违规，不填默认为 97 分。取值范围：0~100。
+	// 判定涉嫌违规的分数阈值，当审核达到该分数以上，认为涉嫌违规，不填默认为 97 分。取值范围：0~100。
 	BlockConfidence *int64 `json:"BlockConfidence,omitempty" name:"BlockConfidence"`
 
-	// 判定需人工复核是否违规的分数阈值，当智能识别达到该分数以上，认为需人工复核，不填默认为 95 分。取值范围：0~100。
+	// 判定需人工复核是否违规的分数阈值，当审核达到该分数以上，认为需人工复核，不填默认为 95 分。取值范围：0~100。
 	ReviewConfidence *int64 `json:"ReviewConfidence,omitempty" name:"ReviewConfidence"`
 }
 
 type UserDefineFaceReviewTemplateInfoForUpdate struct {
-	// 用户自定义人物智能识别任务开关，可选值：
-	// <li>ON：开启自定义人物智能识别任务；</li>
-	// <li>OFF：关闭自定义人物智能识别任务。</li>
+	// 用户自定义人物音视频审核任务开关，可选值：
+	// <li>ON：开启自定义人物音视频审核任务；</li>
+	// <li>OFF：关闭自定义人物音视频审核任务。</li>
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
 
-	// 用户自定义人物过滤标签，智能识别结果包含选择的标签则返回结果，如果过滤标签为空，则智能识别结果全部返回。如果要使用标签过滤功能，添加自定义人物库的时，需要添加对应人物标签。
+	// 用户自定义人物过滤标签，音视频审核结果包含选择的标签则返回结果，如果过滤标签为空，则音视频审核结果全部返回。如果要使用标签过滤功能，添加自定义人物库的时，需要添加对应人物标签。
 	// 标签个数最多 10 个，每个标签长度最多 16 个字符。
 	LabelSet []*string `json:"LabelSet,omitempty" name:"LabelSet"`
 
-	// 判定涉嫌违规的分数阈值，当智能识别达到该分数以上，认为涉嫌违规。取值范围：0~100。
+	// 判定涉嫌违规的分数阈值，当音视频审核达到该分数以上，认为涉嫌违规。取值范围：0~100。
 	BlockConfidence *int64 `json:"BlockConfidence,omitempty" name:"BlockConfidence"`
 
-	// 判定需人工复核是否违规的分数阈值，当智能识别达到该分数以上，认为需人工复核。取值范围：0~100。
+	// 判定需人工复核是否违规的分数阈值，当音视频审核达到该分数以上，认为需人工复核。取值范围：0~100。
 	ReviewConfidence *int64 `json:"ReviewConfidence,omitempty" name:"ReviewConfidence"`
 }
 
 type UserDefineOcrTextReviewTemplateInfo struct {
-	// 用户自定文本智能识别任务开关，可选值：
-	// <li>ON：开启自定义文本智能识别任务；</li>
-	// <li>OFF：关闭自定义文本智能识别任务。</li>
+	// 用户自定文本音视频审核任务开关，可选值：
+	// <li>ON：开启自定义文本音视频审核任务；</li>
+	// <li>OFF：关闭自定义文本音视频审核任务。</li>
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
 
-	// 用户自定义文本过滤标签，智能识别结果包含选择的标签则返回结果，如果过滤标签为空，则智能识别结果全部返回。如果要使用标签过滤功能，添加自定义文本关键词素材时需要添加对应标签。
+	// 用户自定义文本过滤标签，音视频审核结果包含选择的标签则返回结果，如果过滤标签为空，则音视频审核结果全部返回。如果要使用标签过滤功能，添加自定义文本关键词素材时需要添加对应标签。
 	// 标签个数最多 10 个，每个标签长度最多 16 个字符。
 	LabelSet []*string `json:"LabelSet,omitempty" name:"LabelSet"`
 
-	// 判定涉嫌违规的分数阈值，当智能识别达到该分数以上，认为涉嫌违规，不填默认为 100 分。取值范围：0~100。
+	// 判定涉嫌违规的分数阈值，当审核达到该分数以上，认为涉嫌违规，不填默认为 100 分。取值范围：0~100。
 	BlockConfidence *int64 `json:"BlockConfidence,omitempty" name:"BlockConfidence"`
 
-	// 判定需人工复核是否违规的分数阈值，当智能识别达到该分数以上，认为需人工复核，不填默认为 75 分。取值范围：0~100。
+	// 判定需人工复核是否违规的分数阈值，当审核达到该分数以上，认为需人工复核，不填默认为 75 分。取值范围：0~100。
 	ReviewConfidence *int64 `json:"ReviewConfidence,omitempty" name:"ReviewConfidence"`
 }
 
 type UserDefineOcrTextReviewTemplateInfoForUpdate struct {
-	// 用户自定文本智能识别任务开关，可选值：
-	// <li>ON：开启自定义文本智能识别任务；</li>
-	// <li>OFF：关闭自定义文本智能识别任务。</li>
+	// 用户自定文本音视频审核任务开关，可选值：
+	// <li>ON：开启自定义文本音视频审核任务；</li>
+	// <li>OFF：关闭自定义文本音视频审核任务。</li>
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
 
-	// 用户自定义文本过滤标签，智能识别结果包含选择的标签则返回结果，如果过滤标签为空，则智能识别结果全部返回。如果要使用标签过滤功能，添加自定义文本关键词素材时需要添加对应标签。
+	// 用户自定义文本过滤标签，音视频审核结果包含选择的标签则返回结果，如果过滤标签为空，则音视频审核结果全部返回。如果要使用标签过滤功能，添加自定义文本关键词素材时需要添加对应标签。
 	// 标签个数最多 10 个，每个标签长度最多 16 个字符。
 	LabelSet []*string `json:"LabelSet,omitempty" name:"LabelSet"`
 
-	// 判定涉嫌违规的分数阈值，当智能识别达到该分数以上，认为涉嫌违规。取值范围：0~100。
+	// 判定涉嫌违规的分数阈值，当审核达到该分数以上，认为涉嫌违规。取值范围：0~100。
 	BlockConfidence *int64 `json:"BlockConfidence,omitempty" name:"BlockConfidence"`
 
-	// 判定需人工复核是否违规的分数阈值，当智能识别达到该分数以上，认为需人工复核。取值范围：0~100。
+	// 判定需人工复核是否违规的分数阈值，当审核达到该分数以上，认为需人工复核。取值范围：0~100。
 	ReviewConfidence *int64 `json:"ReviewConfidence,omitempty" name:"ReviewConfidence"`
 }
 
@@ -18558,7 +18558,7 @@ type WechatMiniProgramPublishTask struct {
 	// 微信小程序视频发布状态，取值：
 	// <li>Pass：发布成功；</li>
 	// <li>Failed：发布失败；</li>
-	// <li>Rejected：智能识别未通过。</li>
+	// <li>Rejected：音视频审核未通过。</li>
 	PublishResult *string `json:"PublishResult,omitempty" name:"PublishResult"`
 }
 

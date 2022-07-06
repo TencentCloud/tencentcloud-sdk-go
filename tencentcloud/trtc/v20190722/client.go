@@ -1405,6 +1405,7 @@ func NewStartMCUMixTranscodeResponse() (response *StartMCUMixTranscodeResponse) 
 //  MISSINGPARAMETER_SDKAPPID = "MissingParameter.SdkAppId"
 //  MISSINGPARAMETER_STREAMID = "MissingParameter.StreamId"
 //  MISSINGPARAMETER_VIDEOENCODEPARAMS = "MissingParameter.VideoEncodeParams"
+//  RESOURCEINSUFFICIENT_REQUESTREJECTION = "ResourceInsufficient.RequestRejection"
 //  UNAUTHORIZEDOPERATION_SDKAPPID = "UnauthorizedOperation.SdkAppId"
 func (c *Client) StartMCUMixTranscode(request *StartMCUMixTranscodeRequest) (response *StartMCUMixTranscodeResponse, err error) {
     return c.StartMCUMixTranscodeWithContext(context.Background(), request)
@@ -1487,6 +1488,7 @@ func (c *Client) StartMCUMixTranscode(request *StartMCUMixTranscodeRequest) (res
 //  MISSINGPARAMETER_SDKAPPID = "MissingParameter.SdkAppId"
 //  MISSINGPARAMETER_STREAMID = "MissingParameter.StreamId"
 //  MISSINGPARAMETER_VIDEOENCODEPARAMS = "MissingParameter.VideoEncodeParams"
+//  RESOURCEINSUFFICIENT_REQUESTREJECTION = "ResourceInsufficient.RequestRejection"
 //  UNAUTHORIZEDOPERATION_SDKAPPID = "UnauthorizedOperation.SdkAppId"
 func (c *Client) StartMCUMixTranscodeWithContext(ctx context.Context, request *StartMCUMixTranscodeRequest) (response *StartMCUMixTranscodeResponse, err error) {
     if request == nil {

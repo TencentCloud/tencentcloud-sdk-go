@@ -194,6 +194,7 @@ func NewCreateConnectionResponse() (response *CreateConnectionResponse) {
 //  LIMITEXCEEDED_CONNECTION = "LimitExceeded.Connection"
 //  LIMITEXCEEDED_ROUTEOVERLIMIT = "LimitExceeded.RouteOverLimit"
 //  OPERATIONDENIED_RESOURCEIMMUTABLE = "OperationDenied.ResourceImmutable"
+//  OPERATIONDENIED_UNSUPPORTEDOPERATION = "OperationDenied.UnsupportedOperation"
 //  RESOURCENOTFOUND_EVENTBUS = "ResourceNotFound.EventBus"
 //  RESOURCENOTFOUND_INVALIDSERVICE = "ResourceNotFound.InvalidService"
 //  RESOURCENOTFOUND_ROLE = "ResourceNotFound.Role"
@@ -224,6 +225,7 @@ func (c *Client) CreateConnection(request *CreateConnectionRequest) (response *C
 //  LIMITEXCEEDED_CONNECTION = "LimitExceeded.Connection"
 //  LIMITEXCEEDED_ROUTEOVERLIMIT = "LimitExceeded.RouteOverLimit"
 //  OPERATIONDENIED_RESOURCEIMMUTABLE = "OperationDenied.ResourceImmutable"
+//  OPERATIONDENIED_UNSUPPORTEDOPERATION = "OperationDenied.UnsupportedOperation"
 //  RESOURCENOTFOUND_EVENTBUS = "ResourceNotFound.EventBus"
 //  RESOURCENOTFOUND_INVALIDSERVICE = "ResourceNotFound.InvalidService"
 //  RESOURCENOTFOUND_ROLE = "ResourceNotFound.Role"
@@ -269,6 +271,7 @@ func NewCreateEventBusResponse() (response *CreateEventBusResponse) {
 // 用于创建事件集
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_REGISTERCLSSERVICE = "FailedOperation.RegisterCLSService"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE_DESCRIPTION = "InvalidParameterValue.Description"
 //  INVALIDPARAMETERVALUE_EVENTBUSNAME = "InvalidParameterValue.EventBusName"
@@ -288,6 +291,7 @@ func (c *Client) CreateEventBus(request *CreateEventBusRequest) (response *Creat
 // 用于创建事件集
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_REGISTERCLSSERVICE = "FailedOperation.RegisterCLSService"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE_DESCRIPTION = "InvalidParameterValue.Description"
 //  INVALIDPARAMETERVALUE_EVENTBUSNAME = "InvalidParameterValue.EventBusName"
@@ -1358,6 +1362,7 @@ func NewUpdateConnectionResponse() (response *UpdateConnectionResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_UPDATECONNECTION = "FailedOperation.UpdateConnection"
+//  INVALIDPARAMETER_ENABLEAPIGATEWAY = "InvalidParameter.EnableAPIGateway"
 //  INVALIDPARAMETERVALUE_CONNECTIONID = "InvalidParameterValue.ConnectionId"
 //  INVALIDPARAMETERVALUE_EVENTBUSID = "InvalidParameterValue.EventBusId"
 //  OPERATIONDENIED_RESOURCEIMMUTABLE = "OperationDenied.ResourceImmutable"
@@ -1371,6 +1376,7 @@ func (c *Client) UpdateConnection(request *UpdateConnectionRequest) (response *U
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_UPDATECONNECTION = "FailedOperation.UpdateConnection"
+//  INVALIDPARAMETER_ENABLEAPIGATEWAY = "InvalidParameter.EnableAPIGateway"
 //  INVALIDPARAMETERVALUE_CONNECTIONID = "InvalidParameterValue.ConnectionId"
 //  INVALIDPARAMETERVALUE_EVENTBUSID = "InvalidParameterValue.EventBusId"
 //  OPERATIONDENIED_RESOURCEIMMUTABLE = "OperationDenied.ResourceImmutable"
@@ -1412,6 +1418,7 @@ func NewUpdateEventBusResponse() (response *UpdateEventBusResponse) {
 // 更新事件集
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_REGISTERCLSSERVICE = "FailedOperation.RegisterCLSService"
 //  INVALIDPARAMETERVALUE_DESCRIPTION = "InvalidParameterValue.Description"
 //  INVALIDPARAMETERVALUE_EVENTBUSNAME = "InvalidParameterValue.EventBusName"
 //  INVALIDPARAMETERVALUE_EVENTTRACECONFIG = "InvalidParameterValue.EventTraceConfig"
@@ -1426,6 +1433,7 @@ func (c *Client) UpdateEventBus(request *UpdateEventBusRequest) (response *Updat
 // 更新事件集
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_REGISTERCLSSERVICE = "FailedOperation.RegisterCLSService"
 //  INVALIDPARAMETERVALUE_DESCRIPTION = "InvalidParameterValue.Description"
 //  INVALIDPARAMETERVALUE_EVENTBUSNAME = "InvalidParameterValue.EventBusName"
 //  INVALIDPARAMETERVALUE_EVENTTRACECONFIG = "InvalidParameterValue.EventTraceConfig"

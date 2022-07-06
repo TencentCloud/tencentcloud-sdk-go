@@ -17,9 +17,6 @@ package v20170312
 const (
 	// 此产品的特有错误码
 
-	// 定期快照策略数量已达到上限。
-	AUTOSNAPSHOTPOLICYOUTOFQUOTA = "AutoSnapshotPolicyOutOfQuota"
-
 	// 云盘退还数量已达上限，不能再退还。
 	INSUFFICIENTREFUNDQUOTA = "InsufficientRefundQuota"
 

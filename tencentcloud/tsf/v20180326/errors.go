@@ -272,6 +272,9 @@ const (
 	// TSF应用性能管理业务日志配置与应用关联处理错误。
 	INTERNALERROR_TSFAPMBUSILOGCFGAPPRELATIONMASTERERROR = "InternalError.TsfApmBusiLogCfgAppRelationMasterError"
 
+	// TSF应用性能管理调用tsf-ms模块失败。
+	INTERNALERROR_TSFAPMCALLTSFMSFAILED = "InternalError.TsfApmCallTsfMsFailed"
+
 	// TSF应用性能管理通用异常。
 	INTERNALERROR_TSFAPMCOMMONERROR = "InternalError.TsfApmCommonError"
 

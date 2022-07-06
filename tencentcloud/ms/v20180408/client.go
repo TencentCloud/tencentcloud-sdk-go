@@ -174,6 +174,7 @@ func NewCreateResourceInstancesResponse() (response *CreateResourceInstancesResp
 //  INTERNALERROR_SERVERERROR = "InternalError.ServerError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  RESOURCEUNAVAILABLE_NOTFOUND = "ResourceUnavailable.NotFound"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNAUTHORIZEDOPERATION_NOTWHITEUSER = "UnauthorizedOperation.NotWhiteUser"
@@ -189,6 +190,7 @@ func (c *Client) CreateResourceInstances(request *CreateResourceInstancesRequest
 //  INTERNALERROR_SERVERERROR = "InternalError.ServerError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  RESOURCEUNAVAILABLE_NOTFOUND = "ResourceUnavailable.NotFound"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNAUTHORIZEDOPERATION_NOTWHITEUSER = "UnauthorizedOperation.NotWhiteUser"
@@ -831,6 +833,65 @@ func (c *Client) DescribeShieldResultWithContext(ctx context.Context, request *D
     return
 }
 
+func NewDescribeUrlDetectionResultRequest() (request *DescribeUrlDetectionResultRequest) {
+    request = &DescribeUrlDetectionResultRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ms", APIVersion, "DescribeUrlDetectionResult")
+    
+    
+    return
+}
+
+func NewDescribeUrlDetectionResultResponse() (response *DescribeUrlDetectionResultResponse) {
+    response = &DescribeUrlDetectionResultResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeUrlDetectionResult
+// 移动安全-网址检测服务
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAMETERERROR = "InvalidParameter.ParameterError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNAUTHORIZEDOPERATION_NOTWHITEUSER = "UnauthorizedOperation.NotWhiteUser"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeUrlDetectionResult(request *DescribeUrlDetectionResultRequest) (response *DescribeUrlDetectionResultResponse, err error) {
+    return c.DescribeUrlDetectionResultWithContext(context.Background(), request)
+}
+
+// DescribeUrlDetectionResult
+// 移动安全-网址检测服务
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAMETERERROR = "InvalidParameter.ParameterError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNAUTHORIZEDOPERATION_NOTWHITEUSER = "UnauthorizedOperation.NotWhiteUser"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeUrlDetectionResultWithContext(ctx context.Context, request *DescribeUrlDetectionResultRequest) (response *DescribeUrlDetectionResultResponse, err error) {
+    if request == nil {
+        request = NewDescribeUrlDetectionResultRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeUrlDetectionResult require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeUrlDetectionResultResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeUserBaseInfoInstanceRequest() (request *DescribeUserBaseInfoInstanceRequest) {
     request = &DescribeUserBaseInfoInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -852,9 +913,13 @@ func NewDescribeUserBaseInfoInstanceResponse() (response *DescribeUserBaseInfoIn
 // 获取用户基础信息
 //
 // 可能返回的错误码:
-//  INTERNALERROR_SERVERERROR = "InternalError.ServerError"
-//  MISSINGPARAMETER_MISSINGITEMID = "MissingParameter.MissingItemId"
-//  RESOURCENOTFOUND_ITEMIDNOTFOUND = "ResourceNotFound.ItemIdNotFound"
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAMETERERROR = "InvalidParameter.ParameterError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNAUTHORIZEDOPERATION_NOTWHITEUSER = "UnauthorizedOperation.NotWhiteUser"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeUserBaseInfoInstance(request *DescribeUserBaseInfoInstanceRequest) (response *DescribeUserBaseInfoInstanceResponse, err error) {
     return c.DescribeUserBaseInfoInstanceWithContext(context.Background(), request)
 }
@@ -863,9 +928,13 @@ func (c *Client) DescribeUserBaseInfoInstance(request *DescribeUserBaseInfoInsta
 // 获取用户基础信息
 //
 // 可能返回的错误码:
-//  INTERNALERROR_SERVERERROR = "InternalError.ServerError"
-//  MISSINGPARAMETER_MISSINGITEMID = "MissingParameter.MissingItemId"
-//  RESOURCENOTFOUND_ITEMIDNOTFOUND = "ResourceNotFound.ItemIdNotFound"
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAMETERERROR = "InvalidParameter.ParameterError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNAUTHORIZEDOPERATION_NOTWHITEUSER = "UnauthorizedOperation.NotWhiteUser"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeUserBaseInfoInstanceWithContext(ctx context.Context, request *DescribeUserBaseInfoInstanceRequest) (response *DescribeUserBaseInfoInstanceResponse, err error) {
     if request == nil {
         request = NewDescribeUserBaseInfoInstanceRequest()

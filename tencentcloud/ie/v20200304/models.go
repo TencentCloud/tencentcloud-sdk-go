@@ -799,6 +799,13 @@ type DownInfo struct {
 	CosInfo *CosInfo `json:"CosInfo,omitempty" name:"CosInfo"`
 }
 
+type DynamicImageInfo struct {
+	// 画面质量，范围：1~100。
+	// <li>对于webp格式，默认：75</li>
+	// <li>对于gif格式，小于10为低质量，大于50为高质量，其它为普通。默认：低质量。</li>
+	Quality *uint64 `json:"Quality,omitempty" name:"Quality"`
+}
+
 type EditInfo struct {
 	// 剪辑开始时间，单位：ms。
 	StartTime *int64 `json:"StartTime,omitempty" name:"StartTime"`
@@ -1025,9 +1032,16 @@ type MediaCuttingInfo struct {
 	OutForm *MediaCuttingOutForm `json:"OutForm,omitempty" name:"OutForm"`
 
 	// 列表文件形式，存储到用户存储服务中，可选值：
-	// UseSaveInfo：默认，结果列表和结果存储同一位置；
-	// NoListFile：不存储结果列表。
+	// <li>NoListFile：不存储结果列表; </li>
+	// <li>UseSaveInfo：默认，结果列表和结果存储同一位置（即SaveInfoSet 的第一个存储位置）；</li>
+	// <li>SaveInfoSet 存储的Id：存储在指定的存储位置。</li>
 	ResultListSaveType *string `json:"ResultListSaveType,omitempty" name:"ResultListSaveType"`
+
+	// 水印信息，最多支持 10 个水印。
+	WatermarkInfoSet []*MediaCuttingWatermark `json:"WatermarkInfoSet,omitempty" name:"WatermarkInfoSet"`
+
+	// 是否去除纯色截图，如果值为 True ，对应时间点的截图如果是纯色，将略过。
+	DropPureColor *string `json:"DropPureColor,omitempty" name:"DropPureColor"`
 }
 
 type MediaCuttingOutForm struct {
@@ -1054,11 +1068,17 @@ type MediaCuttingOutForm struct {
 	// 默认White。
 	FillType *string `json:"FillType,omitempty" name:"FillType"`
 
-	// Type=Sprite时有效，表示雪碧图行数，范围为 [1,200]，默认100。
+	// 【废弃】参考SpriteInfo
 	SpriteRowCount *int64 `json:"SpriteRowCount,omitempty" name:"SpriteRowCount"`
 
-	// Type=Sprite时有效，表示雪碧图列数，范围为 [1,200]，默认100。
+	// 【废弃】参考SpriteInfo
 	SpriteColumnCount *int64 `json:"SpriteColumnCount,omitempty" name:"SpriteColumnCount"`
+
+	// Type=Sprite时有效，表示雪碧图参数信息。
+	SpriteInfo *SpriteImageInfo `json:"SpriteInfo,omitempty" name:"SpriteInfo"`
+
+	// Type=Dynamic时有效，表示动图参数信息。
+	DynamicInfo *DynamicImageInfo `json:"DynamicInfo,omitempty" name:"DynamicInfo"`
 }
 
 type MediaCuttingTaskResult struct {
@@ -1077,6 +1097,13 @@ type MediaCuttingTaskResult struct {
 	// 最后一个结果文件。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LastFile *TaskResultFile `json:"LastFile,omitempty" name:"LastFile"`
+
+	// 任务结果包含的图片总数。
+	// 静态图：总数即为文件数；
+	// 雪碧图：所有小图总数；
+	// 动图、视频：不计算图片数，为 0。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ImageCount *int64 `json:"ImageCount,omitempty" name:"ImageCount"`
 }
 
 type MediaCuttingTimeInfo struct {
@@ -1096,10 +1123,97 @@ type MediaCuttingTimeInfo struct {
 	SectionSet []*SectionTime `json:"SectionSet,omitempty" name:"SectionSet"`
 }
 
+type MediaCuttingWatermark struct {
+	// 水印类型，可选值：
+	// <li>Image：图像水印；</li>
+	// <li>Text：文字水印。</li>
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 图像水印信息，当 Type=Image 时必选。
+	Image *MediaCuttingWatermarkImage `json:"Image,omitempty" name:"Image"`
+
+	// 文字水印信息，当 Type=Text 时必选。
+	Text *MediaCuttingWatermarkText `json:"Text,omitempty" name:"Text"`
+}
+
+type MediaCuttingWatermarkImage struct {
+	// 水印源的ID，对应SourceInfoSet内的源。
+	// 注意1：对应的 MediaSourceInfo.Type需要为Image。
+	// 注意2：对于动图，只取第一帧图像作为水印源。
+	SourceId *string `json:"SourceId,omitempty" name:"SourceId"`
+
+	// 水印水平坐标，单位像素，默认：0。
+	PosX *uint64 `json:"PosX,omitempty" name:"PosX"`
+
+	// 水印垂直坐标，单位像素，默认：0。
+	PosY *uint64 `json:"PosY,omitempty" name:"PosY"`
+
+	// 水印宽度，单位像素，默认：0。
+	Width *uint64 `json:"Width,omitempty" name:"Width"`
+
+	// 水印高度，单位像素，默认：0。
+	// 注意：对于宽高符合以下规则：
+	// 1、Width>0 且 Height>0，按指定宽高拉伸；
+	// 2、Width=0 且 Height>0，以Height为基准等比缩放；
+	// 3、Width>0 且 Height=0，以Width为基准等比缩放；
+	// 4、Width=0 且 Height=0，采用源的宽高。
+	Height *uint64 `json:"Height,omitempty" name:"Height"`
+
+	// 指定坐标原点，可选值：
+	// <li>LeftTop：PosXY 表示水印左上点到图片左上点的相对位置</li>
+	// <li>RightTop：PosXY 表示水印右上点到图片右上点的相对位置</li>
+	// <li>LeftBottom：PosXY 表示水印左下点到图片左下点的相对位置</li>
+	// <li>RightBottom：PosXY 表示水印右下点到图片右下点的相对位置</li>
+	// <li>Center：PosXY 表示水印中心点到图片中心点的相对位置</li>
+	// 默认：LeftTop。
+	PosOriginType *string `json:"PosOriginType,omitempty" name:"PosOriginType"`
+}
+
+type MediaCuttingWatermarkText struct {
+	// 水印文字。
+	Text *string `json:"Text,omitempty" name:"Text"`
+
+	// 文字大小
+	FontSize *uint64 `json:"FontSize,omitempty" name:"FontSize"`
+
+	// 水印水平坐标，单位像素，默认：0。
+	PosX *uint64 `json:"PosX,omitempty" name:"PosX"`
+
+	// 水印垂直坐标，单位像素，默认：0。
+	PosY *uint64 `json:"PosY,omitempty" name:"PosY"`
+
+	// 文字颜色，格式为：#RRGGBBAA，默认值：#000000。
+	FontColor *string `json:"FontColor,omitempty" name:"FontColor"`
+
+	// 文字透明度，范围：0~100，默认值：100。
+	FontAlpha *uint64 `json:"FontAlpha,omitempty" name:"FontAlpha"`
+
+	// 指定坐标原点，可选值：
+	// <li>LeftTop：PosXY 表示水印左上点到图片左上点的相对位置</li>
+	// <li>RightTop：PosXY 表示水印右上点到图片右上点的相对位置</li>
+	// <li>LeftBottom：PosXY 表示水印左下点到图片左下点的相对位置</li>
+	// <li>RightBottom：PosXY 表示水印右下点到图片右下点的相对位置</li>
+	// <li>Center：PosXY 表示水印中心点到图片中心点的相对位置</li>
+	// 默认：LeftTop。
+	PosOriginType *string `json:"PosOriginType,omitempty" name:"PosOriginType"`
+
+	// 字体，可选值：
+	// <li>SimHei</li>
+	// <li>SimKai</li>
+	// <li>Arial</li>
+	// 默认 SimHei。
+	Font *string `json:"Font,omitempty" name:"Font"`
+}
+
 type MediaJoiningInfo struct {
 	// 输出目标信息，拼接只采用FileName和Format，用于指定目标文件名和格式。
 	// 其中Format只支持mp4.
 	TargetInfo *MediaTargetInfo `json:"TargetInfo,omitempty" name:"TargetInfo"`
+
+	// 拼接模式：
+	// Fast：快速；
+	// Normal：正常；
+	Mode *string `json:"Mode,omitempty" name:"Mode"`
 }
 
 type MediaJoiningTaskResult struct {
@@ -1241,9 +1355,7 @@ type MediaTargetInfo struct {
 	// 视频流信息。
 	TargetVideoInfo *TargetVideoInfo `json:"TargetVideoInfo,omitempty" name:"TargetVideoInfo"`
 
-	// 【不再使用】 对于多输出任务，部分子服务推荐结果信息以列表文件形式，存储到用户存储服务中，可选值：
-	// UseSaveInfo：默认，结果列表和结果存储同一位置；
-	// NoListFile：不存储结果列表。
+	// 【不再使用】
 	ResultListSaveType *string `json:"ResultListSaveType,omitempty" name:"ResultListSaveType"`
 }
 
@@ -1496,7 +1608,7 @@ type ResultVideoInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Height *int64 `json:"Height,omitempty" name:"Height"`
 
-	// 视频帧率
+	// 视频帧率，如果高于原始帧率，部分服务将无效。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Fps *int64 `json:"Fps,omitempty" name:"Fps"`
 }
@@ -1508,6 +1620,10 @@ type SaveInfo struct {
 
 	// Cos形式存储信息，当Type等于1时必选。
 	CosInfo *CosInfo `json:"CosInfo,omitempty" name:"CosInfo"`
+
+	// 存储信息ID标记，用于多个输出场景。部分任务支持多输出时，一般要求必选。
+	// ID只能包含字母、数字、下划线、中划线，长读不能超过128。
+	Id *string `json:"Id,omitempty" name:"Id"`
 }
 
 type ScratchRepair struct {
@@ -1545,6 +1661,41 @@ type Sharp struct {
 
 	// 细节增强强度，可选项：0.0-1.0。小于0.0的默认为0.0，大于1.0的默认为1.0。
 	Ratio *float64 `json:"Ratio,omitempty" name:"Ratio"`
+}
+
+type SpriteImageInfo struct {
+	// 表示雪碧图行数，默认：10。
+	RowCount *uint64 `json:"RowCount,omitempty" name:"RowCount"`
+
+	// 表示雪碧图列数，默认：10。
+	ColumnCount *uint64 `json:"ColumnCount,omitempty" name:"ColumnCount"`
+
+	// 第一行元素与顶部像素距离，默认：0。
+	MarginTop *int64 `json:"MarginTop,omitempty" name:"MarginTop"`
+
+	// 最后一行元素与底部像素距离，默认：0。
+	MarginBottom *int64 `json:"MarginBottom,omitempty" name:"MarginBottom"`
+
+	// 最左一行元素与左边像素距离，默认：0。
+	MarginLeft *int64 `json:"MarginLeft,omitempty" name:"MarginLeft"`
+
+	// 最右一行元素与右边像素距离，默认：0。
+	MarginRight *int64 `json:"MarginRight,omitempty" name:"MarginRight"`
+
+	// 小图与元素顶部像素距离，默认：0。
+	PaddingTop *int64 `json:"PaddingTop,omitempty" name:"PaddingTop"`
+
+	// 小图与元素底部像素距离，默认：0。
+	PaddingBottom *int64 `json:"PaddingBottom,omitempty" name:"PaddingBottom"`
+
+	// 小图与元素左边像素距离，默认：0。
+	PaddingLeft *int64 `json:"PaddingLeft,omitempty" name:"PaddingLeft"`
+
+	// 小图与元素右边像素距离，默认：0。
+	PaddingRight *int64 `json:"PaddingRight,omitempty" name:"PaddingRight"`
+
+	// 背景颜色，格式：#RRGGBB，默认：#FFFFFF。
+	BackgroundColor *string `json:"BackgroundColor,omitempty" name:"BackgroundColor"`
 }
 
 // Predefined struct for user
@@ -1855,10 +2006,10 @@ type TargetInfo struct {
 }
 
 type TargetVideoInfo struct {
-	// 视频宽度，单位像素
+	// 视频宽度，单位像素，一般要求是偶数，否则会向下对齐。
 	Width *int64 `json:"Width,omitempty" name:"Width"`
 
-	// 视频高度，单位像素
+	// 视频高度，单位像素，一般要求是偶数，否则会向下对齐。
 	Height *int64 `json:"Height,omitempty" name:"Height"`
 
 	// 视频帧率，范围在1到120之间
@@ -1877,6 +2028,10 @@ type TaskResultFile struct {
 	// 媒体信息，对于媒体文件，部分任务支持返回
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MediaInfo *MediaResultInfo `json:"MediaInfo,omitempty" name:"MediaInfo"`
+
+	// 文件对应的md5。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Md5 *string `json:"Md5,omitempty" name:"Md5"`
 }
 
 type TextMarkInfoItem struct {

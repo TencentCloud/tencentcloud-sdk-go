@@ -67,6 +67,8 @@ func NewFileTranslateResponse() (response *FileTranslateResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INSERTERR = "FailedOperation.InsertErr"
+//  FAILEDOPERATION_REQUESTAILABERR = "FailedOperation.RequestAiLabErr"
 //  FAILEDOPERATION_USERNOTREGISTERED = "FailedOperation.UserNotRegistered"
 func (c *Client) FileTranslate(request *FileTranslateRequest) (response *FileTranslateResponse, err error) {
     return c.FileTranslateWithContext(context.Background(), request)
@@ -77,6 +79,8 @@ func (c *Client) FileTranslate(request *FileTranslateRequest) (response *FileTra
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INSERTERR = "FailedOperation.InsertErr"
+//  FAILEDOPERATION_REQUESTAILABERR = "FailedOperation.RequestAiLabErr"
 //  FAILEDOPERATION_USERNOTREGISTERED = "FailedOperation.UserNotRegistered"
 func (c *Client) FileTranslateWithContext(ctx context.Context, request *FileTranslateRequest) (response *FileTranslateResponse, err error) {
     if request == nil {

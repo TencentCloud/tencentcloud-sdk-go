@@ -20,8 +20,14 @@ const (
 	// 操作失败。
 	FAILEDOPERATION = "FailedOperation"
 
+	// 数据插入错误。
+	FAILEDOPERATION_INSERTERR = "FailedOperation.InsertErr"
+
 	// 本月免费额度已用完，如需继续使用您可以在机器翻译控制台升级为付费使用。
 	FAILEDOPERATION_NOFREEAMOUNT = "FailedOperation.NoFreeAmount"
+
+	// 内部请求错误。
+	FAILEDOPERATION_REQUESTAILABERR = "FailedOperation.RequestAiLabErr"
 
 	// 账号因为欠费停止服务，请在腾讯云账户充值。
 	FAILEDOPERATION_SERVICEISOLATE = "FailedOperation.ServiceIsolate"

@@ -119,11 +119,14 @@ const (
 	// 验证码不正确。
 	INVALIDPARAMETER_INVALIDVERIFYCODE = "InvalidParameter.InvalidVerifyCode"
 
+	// 手机号不正确。
+	INVALIDPARAMETER_MOBILE = "InvalidParameter.Mobile"
+
+	// 名字不正确。
+	INVALIDPARAMETER_NAME = "InvalidParameter.Name"
+
 	// 参数错误。
 	INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
-
-	// 参数Status不正确。
-	INVALIDPARAMETER_STATUS = "InvalidParameter.Status"
 
 	// 参数取值错误。
 	INVALIDPARAMETERVALUE = "InvalidParameterValue"

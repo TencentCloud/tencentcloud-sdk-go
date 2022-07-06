@@ -1756,7 +1756,7 @@ type CreateEnvironmentRequestParams struct {
 	// 环境（命名空间）名称，不支持中字以及除了短线和下划线外的特殊字符且不超过16个字符。
 	EnvironmentId *string `json:"EnvironmentId,omitempty" name:"EnvironmentId"`
 
-	// 未消费消息过期时间，单位：秒，取值范围：60秒~1天。
+	// 未消费消息过期时间，单位：秒，取值范围：60秒~15天。
 	MsgTTL *uint64 `json:"MsgTTL,omitempty" name:"MsgTTL"`
 
 	// 说明，128个字符以内。
@@ -1775,7 +1775,7 @@ type CreateEnvironmentRequest struct {
 	// 环境（命名空间）名称，不支持中字以及除了短线和下划线外的特殊字符且不超过16个字符。
 	EnvironmentId *string `json:"EnvironmentId,omitempty" name:"EnvironmentId"`
 
-	// 未消费消息过期时间，单位：秒，取值范围：60秒~1天。
+	// 未消费消息过期时间，单位：秒，取值范围：60秒~15天。
 	MsgTTL *uint64 `json:"MsgTTL,omitempty" name:"MsgTTL"`
 
 	// 说明，128个字符以内。
@@ -7469,7 +7469,7 @@ type ModifyEnvironmentAttributesRequestParams struct {
 	// 命名空间名称。
 	EnvironmentId *string `json:"EnvironmentId,omitempty" name:"EnvironmentId"`
 
-	// 未消费消息过期时间，单位：秒，范围60秒~1天。
+	// 未消费消息过期时间，单位：秒，范围60秒~15天。
 	MsgTTL *uint64 `json:"MsgTTL,omitempty" name:"MsgTTL"`
 
 	// 备注，字符串最长不超过128。
@@ -7488,7 +7488,7 @@ type ModifyEnvironmentAttributesRequest struct {
 	// 命名空间名称。
 	EnvironmentId *string `json:"EnvironmentId,omitempty" name:"EnvironmentId"`
 
-	// 未消费消息过期时间，单位：秒，范围60秒~1天。
+	// 未消费消息过期时间，单位：秒，范围60秒~15天。
 	MsgTTL *uint64 `json:"MsgTTL,omitempty" name:"MsgTTL"`
 
 	// 备注，字符串最长不超过128。

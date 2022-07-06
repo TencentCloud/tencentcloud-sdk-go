@@ -1286,6 +1286,65 @@ func (c *Client) DescribeTelSessionWithContext(ctx context.Context, request *Des
     return
 }
 
+func NewModifyStaffRequest() (request *ModifyStaffRequest) {
+    request = &ModifyStaffRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ccc", APIVersion, "ModifyStaff")
+    
+    
+    return
+}
+
+func NewModifyStaffResponse() (response *ModifyStaffResponse) {
+    response = &ModifyStaffResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyStaff
+// 修改客服账号
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_ACCOUNTNOTEXIST = "InvalidParameterValue.AccountNotExist"
+//  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
+//  INVALIDPARAMETERVALUE_PHONENUMISBOUNDOTHERACCOUNT = "InvalidParameterValue.PhoneNumIsBoundOtherAccount"
+//  INVALIDPARAMETERVALUE_SKILLGROUPERROR = "InvalidParameterValue.SkillGroupError"
+func (c *Client) ModifyStaff(request *ModifyStaffRequest) (response *ModifyStaffResponse, err error) {
+    return c.ModifyStaffWithContext(context.Background(), request)
+}
+
+// ModifyStaff
+// 修改客服账号
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_ACCOUNTNOTEXIST = "InvalidParameterValue.AccountNotExist"
+//  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
+//  INVALIDPARAMETERVALUE_PHONENUMISBOUNDOTHERACCOUNT = "InvalidParameterValue.PhoneNumIsBoundOtherAccount"
+//  INVALIDPARAMETERVALUE_SKILLGROUPERROR = "InvalidParameterValue.SkillGroupError"
+func (c *Client) ModifyStaffWithContext(ctx context.Context, request *ModifyStaffRequest) (response *ModifyStaffResponse, err error) {
+    if request == nil {
+        request = NewModifyStaffRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyStaff require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyStaffResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewStopAutoCalloutTaskRequest() (request *StopAutoCalloutTaskRequest) {
     request = &StopAutoCalloutTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},

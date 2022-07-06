@@ -245,7 +245,7 @@ type Cluster struct {
 	// 可用区
 	Zone *string `json:"Zone,omitempty" name:"Zone"`
 
-	// 数据库版本
+	// TDSQL-C PostgreSQL 合入的社区版本号
 	DBVersion *string `json:"DBVersion,omitempty" name:"DBVersion"`
 
 	// 项目ID
@@ -294,6 +294,12 @@ type Cluster struct {
 
 	// 集群内访问点信息
 	EndpointSet []*Endpoint `json:"EndpointSet,omitempty" name:"EndpointSet"`
+
+	// TDSQL-C PostgreSQL 合入的社区主要版本号
+	DBMajorVersion *string `json:"DBMajorVersion,omitempty" name:"DBMajorVersion"`
+
+	// TDSQL-C PostgreSQL 内核版本号
+	DBKernelVersion *string `json:"DBKernelVersion,omitempty" name:"DBKernelVersion"`
 }
 
 // Predefined struct for user
@@ -386,9 +392,6 @@ type CreateClusterRequestParams struct {
 	// 可用区
 	Zone *string `json:"Zone,omitempty" name:"Zone"`
 
-	// 数据库版本，目前仅支持 10.17
-	DBVersion *string `json:"DBVersion,omitempty" name:"DBVersion"`
-
 	// 数据库用户密码，必须满足 8-64个字符，至少包含 大写字母、小写字母、数字和符号~!@#$%^&*_-+=`|\(){}[]:;'<>,.?/中的任意三种
 	MasterUserPassword *string `json:"MasterUserPassword,omitempty" name:"MasterUserPassword"`
 
@@ -412,6 +415,11 @@ type CreateClusterRequestParams struct {
 	// 集群名，1-60个字符，可以包含中文、英文、数字和符号"-"、"_"、"."。不输入此参数时默认与ClusterId保持一致
 	ClusterName *string `json:"ClusterName,omitempty" name:"ClusterName"`
 
+	// TDSQL-C PostgreSQL 合入的社区版本号。
+	// 支持入参值为：10.17。当输入该参数时，会基于此版本号创建对应的最新DBKernelVersion数据库内核。
+	// 注：该参数与DBMajorVersion、DBKernelVersion只能传递一个，且需要传递一个。
+	DBVersion *string `json:"DBVersion,omitempty" name:"DBVersion"`
+
 	// 项目Id，默认为0表示默认项目
 	ProjectId *uint64 `json:"ProjectId,omitempty" name:"ProjectId"`
 
@@ -427,6 +435,16 @@ type CreateClusterRequestParams struct {
 
 	// 是否自动续费，0-不 1-是。默认值为0，只有当PayMode为PREPAID时生效。
 	AutoRenewFlag *uint64 `json:"AutoRenewFlag,omitempty" name:"AutoRenewFlag"`
+
+	// TDSQL-C PostgreSQL 合入的社区主要版本号。
+	// 支持入参值为：10。当输入该参数时，会基于此版本号创建对应的最新DBKernelVersion数据库内核。
+	// 注：该参数和DBVersion、DBKernelVersion只能传递一个，且需要传递一个。
+	DBMajorVersion *string `json:"DBMajorVersion,omitempty" name:"DBMajorVersion"`
+
+	// TDSQL-C PostgreSQL 内核版本号。
+	// 支持入参值为：v10.17_r1.4。当输入该参数时，会创建此版本号对应的数据库内核。
+	// 注：该参数和DBVersion、DBMajorVersion只能传递一个，且需要传递一个。
+	DBKernelVersion *string `json:"DBKernelVersion,omitempty" name:"DBKernelVersion"`
 }
 
 type CreateClusterRequest struct {
@@ -435,9 +453,6 @@ type CreateClusterRequest struct {
 	// 可用区
 	Zone *string `json:"Zone,omitempty" name:"Zone"`
 
-	// 数据库版本，目前仅支持 10.17
-	DBVersion *string `json:"DBVersion,omitempty" name:"DBVersion"`
-
 	// 数据库用户密码，必须满足 8-64个字符，至少包含 大写字母、小写字母、数字和符号~!@#$%^&*_-+=`|\(){}[]:;'<>,.?/中的任意三种
 	MasterUserPassword *string `json:"MasterUserPassword,omitempty" name:"MasterUserPassword"`
 
@@ -461,6 +476,11 @@ type CreateClusterRequest struct {
 	// 集群名，1-60个字符，可以包含中文、英文、数字和符号"-"、"_"、"."。不输入此参数时默认与ClusterId保持一致
 	ClusterName *string `json:"ClusterName,omitempty" name:"ClusterName"`
 
+	// TDSQL-C PostgreSQL 合入的社区版本号。
+	// 支持入参值为：10.17。当输入该参数时，会基于此版本号创建对应的最新DBKernelVersion数据库内核。
+	// 注：该参数与DBMajorVersion、DBKernelVersion只能传递一个，且需要传递一个。
+	DBVersion *string `json:"DBVersion,omitempty" name:"DBVersion"`
+
 	// 项目Id，默认为0表示默认项目
 	ProjectId *uint64 `json:"ProjectId,omitempty" name:"ProjectId"`
 
@@ -476,6 +496,16 @@ type CreateClusterRequest struct {
 
 	// 是否自动续费，0-不 1-是。默认值为0，只有当PayMode为PREPAID时生效。
 	AutoRenewFlag *uint64 `json:"AutoRenewFlag,omitempty" name:"AutoRenewFlag"`
+
+	// TDSQL-C PostgreSQL 合入的社区主要版本号。
+	// 支持入参值为：10。当输入该参数时，会基于此版本号创建对应的最新DBKernelVersion数据库内核。
+	// 注：该参数和DBVersion、DBKernelVersion只能传递一个，且需要传递一个。
+	DBMajorVersion *string `json:"DBMajorVersion,omitempty" name:"DBMajorVersion"`
+
+	// TDSQL-C PostgreSQL 内核版本号。
+	// 支持入参值为：v10.17_r1.4。当输入该参数时，会创建此版本号对应的数据库内核。
+	// 注：该参数和DBVersion、DBMajorVersion只能传递一个，且需要传递一个。
+	DBKernelVersion *string `json:"DBKernelVersion,omitempty" name:"DBKernelVersion"`
 }
 
 func (r *CreateClusterRequest) ToJsonString() string {
@@ -491,7 +521,6 @@ func (r *CreateClusterRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "Zone")
-	delete(f, "DBVersion")
 	delete(f, "MasterUserPassword")
 	delete(f, "CPU")
 	delete(f, "Memory")
@@ -499,11 +528,14 @@ func (r *CreateClusterRequest) FromJsonString(s string) error {
 	delete(f, "SubnetId")
 	delete(f, "PayMode")
 	delete(f, "ClusterName")
+	delete(f, "DBVersion")
 	delete(f, "ProjectId")
 	delete(f, "Port")
 	delete(f, "InstanceCount")
 	delete(f, "Period")
 	delete(f, "AutoRenewFlag")
+	delete(f, "DBMajorVersion")
+	delete(f, "DBKernelVersion")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateClusterRequest has unknown keys!", "")
 	}
@@ -1283,6 +1315,12 @@ type Instance struct {
 	//  - RW：读写实例
 	//  - RO：只读实例
 	InstanceType *string `json:"InstanceType,omitempty" name:"InstanceType"`
+
+	// TDSQL-C PostgreSQL 合入的社区主要版本号
+	DBMajorVersion *string `json:"DBMajorVersion,omitempty" name:"DBMajorVersion"`
+
+	// TDSQL-C PostgreSQL 内核版本号
+	DBKernelVersion *string `json:"DBKernelVersion,omitempty" name:"DBKernelVersion"`
 }
 
 // Predefined struct for user

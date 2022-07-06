@@ -104,6 +104,63 @@ func (c *Client) DescribeDBInstancesWithContext(ctx context.Context, request *De
     return
 }
 
+func NewDescribeHostListRequest() (request *DescribeHostListRequest) {
+    request = &DescribeHostListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dbdc", APIVersion, "DescribeHostList")
+    
+    
+    return
+}
+
+func NewDescribeHostListResponse() (response *DescribeHostListResponse) {
+    response = &DescribeHostListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeHostList
+// 本接口用于查询主机列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION_QUERYRESOURCEERROR = "FailedOperation.QueryResourceError"
+//  FAILEDOPERATION_QUERYSPECINFOERROR = "FailedOperation.QuerySpecInfoError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  RESOURCEUNAVAILABLE_RESOURCESTATUSABNORMALERROR = "ResourceUnavailable.ResourceStatusAbnormalError"
+func (c *Client) DescribeHostList(request *DescribeHostListRequest) (response *DescribeHostListResponse, err error) {
+    return c.DescribeHostListWithContext(context.Background(), request)
+}
+
+// DescribeHostList
+// 本接口用于查询主机列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION_QUERYRESOURCEERROR = "FailedOperation.QueryResourceError"
+//  FAILEDOPERATION_QUERYSPECINFOERROR = "FailedOperation.QuerySpecInfoError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  RESOURCEUNAVAILABLE_RESOURCESTATUSABNORMALERROR = "ResourceUnavailable.ResourceStatusAbnormalError"
+func (c *Client) DescribeHostListWithContext(ctx context.Context, request *DescribeHostListRequest) (response *DescribeHostListResponse, err error) {
+    if request == nil {
+        request = NewDescribeHostListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeHostList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeHostListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeInstanceDetailRequest() (request *DescribeInstanceDetailRequest) {
     request = &DescribeInstanceDetailRequest{
         BaseRequest: &tchttp.BaseRequest{},

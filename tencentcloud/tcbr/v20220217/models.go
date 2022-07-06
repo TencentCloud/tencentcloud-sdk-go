@@ -438,6 +438,14 @@ func (r *DescribeCloudRunServerDetailResponse) FromJsonString(s string) error {
 type DescribeCloudRunServersRequestParams struct {
 	// 环境Id
 	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
+
+	// 默认为9， 最大为30
+	// 不传或传0时 取默认9
+	// 大于30时取30
+	PageSize *int64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// 不传或传0时 会默认为1
+	PageNum *int64 `json:"PageNum,omitempty" name:"PageNum"`
 }
 
 type DescribeCloudRunServersRequest struct {
@@ -445,6 +453,14 @@ type DescribeCloudRunServersRequest struct {
 	
 	// 环境Id
 	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
+
+	// 默认为9， 最大为30
+	// 不传或传0时 取默认9
+	// 大于30时取30
+	PageSize *int64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// 不传或传0时 会默认为1
+	PageNum *int64 `json:"PageNum,omitempty" name:"PageNum"`
 }
 
 func (r *DescribeCloudRunServersRequest) ToJsonString() string {
@@ -460,6 +476,8 @@ func (r *DescribeCloudRunServersRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "EnvId")
+	delete(f, "PageSize")
+	delete(f, "PageNum")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCloudRunServersRequest has unknown keys!", "")
 	}
@@ -470,6 +488,9 @@ func (r *DescribeCloudRunServersRequest) FromJsonString(s string) error {
 type DescribeCloudRunServersResponseParams struct {
 	// 服务列表
 	ServerList []*ServerBaseInfo `json:"ServerList,omitempty" name:"ServerList"`
+
+	// 服务总数
+	Total *int64 `json:"Total,omitempty" name:"Total"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`

@@ -6376,12 +6376,15 @@ func (r *DescribeApplicationsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeBasicResourceUsageRequestParams struct {
-
+	// 是否无视权限查询全租户的，默认 true。注：无论 true 还是 false，PackageSpaceUsed 和 ConsulInstanceCount  都是全租户的
+	All *bool `json:"All,omitempty" name:"All"`
 }
 
 type DescribeBasicResourceUsageRequest struct {
 	*tchttp.BaseRequest
 	
+	// 是否无视权限查询全租户的，默认 true。注：无论 true 还是 false，PackageSpaceUsed 和 ConsulInstanceCount  都是全租户的
+	All *bool `json:"All,omitempty" name:"All"`
 }
 
 func (r *DescribeBasicResourceUsageRequest) ToJsonString() string {
@@ -6396,7 +6399,7 @@ func (r *DescribeBasicResourceUsageRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "All")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBasicResourceUsageRequest has unknown keys!", "")
 	}
@@ -11967,6 +11970,9 @@ type DescribeStatisticsRequestParams struct {
 
 	// 数据库
 	DbName *string `json:"DbName,omitempty" name:"DbName"`
+
+	// 命名空间id数组
+	NamespaceIdList []*string `json:"NamespaceIdList,omitempty" name:"NamespaceIdList"`
 }
 
 type DescribeStatisticsRequest struct {
@@ -12013,6 +12019,9 @@ type DescribeStatisticsRequest struct {
 
 	// 数据库
 	DbName *string `json:"DbName,omitempty" name:"DbName"`
+
+	// 命名空间id数组
+	NamespaceIdList []*string `json:"NamespaceIdList,omitempty" name:"NamespaceIdList"`
 }
 
 func (r *DescribeStatisticsRequest) ToJsonString() string {
@@ -12041,6 +12050,7 @@ func (r *DescribeStatisticsRequest) FromJsonString(s string) error {
 	delete(f, "MetricDimensionValues")
 	delete(f, "BucketKey")
 	delete(f, "DbName")
+	delete(f, "NamespaceIdList")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeStatisticsRequest has unknown keys!", "")
 	}
@@ -14495,6 +14505,10 @@ type Instance struct {
 	// agent版本
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AgentVersion *string `json:"AgentVersion,omitempty" name:"AgentVersion"`
+
+	// 容器母机实例ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NodeInstanceId *string `json:"NodeInstanceId,omitempty" name:"NodeInstanceId"`
 }
 
 type InstanceAdvancedSettings struct {
@@ -14959,6 +14973,10 @@ type MetricDataSingleValue struct {
 	// 指标值
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MetricDataValue *string `json:"MetricDataValue,omitempty" name:"MetricDataValue"`
+
+	// 日环比
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DailyPercent *float64 `json:"DailyPercent,omitempty" name:"DailyPercent"`
 }
 
 type MetricDimension struct {

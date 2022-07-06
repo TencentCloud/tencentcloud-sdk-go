@@ -2076,6 +2076,95 @@ type MessageBody struct {
 	Messages []*Message `json:"Messages,omitempty" name:"Messages"`
 }
 
+// Predefined struct for user
+type ModifyStaffRequestParams struct {
+	// 应用ID
+	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 坐席账户
+	Email *string `json:"Email,omitempty" name:"Email"`
+
+	// 坐席名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 坐席手机号（带0086前缀,示例：008618011111111）
+	Phone *string `json:"Phone,omitempty" name:"Phone"`
+
+	// 坐席昵称
+	Nick *string `json:"Nick,omitempty" name:"Nick"`
+
+	// 绑定技能组ID列表
+	SkillGroupIds []*int64 `json:"SkillGroupIds,omitempty" name:"SkillGroupIds"`
+}
+
+type ModifyStaffRequest struct {
+	*tchttp.BaseRequest
+	
+	// 应用ID
+	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 坐席账户
+	Email *string `json:"Email,omitempty" name:"Email"`
+
+	// 坐席名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 坐席手机号（带0086前缀,示例：008618011111111）
+	Phone *string `json:"Phone,omitempty" name:"Phone"`
+
+	// 坐席昵称
+	Nick *string `json:"Nick,omitempty" name:"Nick"`
+
+	// 绑定技能组ID列表
+	SkillGroupIds []*int64 `json:"SkillGroupIds,omitempty" name:"SkillGroupIds"`
+}
+
+func (r *ModifyStaffRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyStaffRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SdkAppId")
+	delete(f, "Email")
+	delete(f, "Name")
+	delete(f, "Phone")
+	delete(f, "Nick")
+	delete(f, "SkillGroupIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyStaffRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyStaffResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ModifyStaffResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyStaffResponseParams `json:"Response"`
+}
+
+func (r *ModifyStaffResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyStaffResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type PSTNSession struct {
 	// 会话 ID
 	SessionID *string `json:"SessionID,omitempty" name:"SessionID"`

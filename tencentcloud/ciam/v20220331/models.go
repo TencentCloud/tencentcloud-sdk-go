@@ -730,6 +730,95 @@ func (r *ListJobsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ListLogMessageByConditionRequestParams struct {
+	// 用户池ID
+	UserStoreId *string `json:"UserStoreId,omitempty" name:"UserStoreId"`
+
+	// 分页数据
+	Pageable *Pageable `json:"Pageable,omitempty" name:"Pageable"`
+
+	// 开始时间，时间戳精确到毫秒
+	StartTime *int64 `json:"StartTime,omitempty" name:"StartTime"`
+
+	// Key可选值为events
+	// 
+	// <li> **events** </li>	Values为["SIGNUP", "USER_UPDATE", "USER_DELETE", "USER_CREATE", "ACCOUNT_LINKING"] 中的一个或多个
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+}
+
+type ListLogMessageByConditionRequest struct {
+	*tchttp.BaseRequest
+	
+	// 用户池ID
+	UserStoreId *string `json:"UserStoreId,omitempty" name:"UserStoreId"`
+
+	// 分页数据
+	Pageable *Pageable `json:"Pageable,omitempty" name:"Pageable"`
+
+	// 开始时间，时间戳精确到毫秒
+	StartTime *int64 `json:"StartTime,omitempty" name:"StartTime"`
+
+	// Key可选值为events
+	// 
+	// <li> **events** </li>	Values为["SIGNUP", "USER_UPDATE", "USER_DELETE", "USER_CREATE", "ACCOUNT_LINKING"] 中的一个或多个
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+}
+
+func (r *ListLogMessageByConditionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListLogMessageByConditionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "UserStoreId")
+	delete(f, "Pageable")
+	delete(f, "StartTime")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListLogMessageByConditionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ListLogMessageByConditionResponseParams struct {
+	// 总条数
+	Total *int64 `json:"Total,omitempty" name:"Total"`
+
+	// 分页对象
+	Pageable *Pageable `json:"Pageable,omitempty" name:"Pageable"`
+
+	// 日志列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Content []*LogMessage `json:"Content,omitempty" name:"Content"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ListLogMessageByConditionResponse struct {
+	*tchttp.BaseResponse
+	Response *ListLogMessageByConditionResponseParams `json:"Response"`
+}
+
+func (r *ListLogMessageByConditionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListLogMessageByConditionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ListUserByPropertyRequestParams struct {
 	// 用户目录ID
 	UserStoreId *string `json:"UserStoreId,omitempty" name:"UserStoreId"`
@@ -891,6 +980,78 @@ func (r *ListUserResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *ListUserResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type LogMessage struct {
+	// 日志标识
+	LogId *string `json:"LogId,omitempty" name:"LogId"`
+
+	// 租户ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TenantId *string `json:"TenantId,omitempty" name:"TenantId"`
+
+	// 用户池ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserStoreId *string `json:"UserStoreId,omitempty" name:"UserStoreId"`
+
+	// 事件编码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EventCode *string `json:"EventCode,omitempty" name:"EventCode"`
+
+	// 事件发生时间戳，单位：毫秒
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EventDate *int64 `json:"EventDate,omitempty" name:"EventDate"`
+
+	// 描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 事件参与者
+	// 
+	// <li> **TENANT** </li>  租户
+	// <li> **USER** </li>  用户
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Participant *string `json:"Participant,omitempty" name:"Participant"`
+
+	// 应用clientId
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApplicationClientId *string `json:"ApplicationClientId,omitempty" name:"ApplicationClientId"`
+
+	// 应用名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApplicationName *string `json:"ApplicationName,omitempty" name:"ApplicationName"`
+
+	// 认证源ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AuthSourceId *string `json:"AuthSourceId,omitempty" name:"AuthSourceId"`
+
+	// 认证源名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AuthSourceName *string `json:"AuthSourceName,omitempty" name:"AuthSourceName"`
+
+	// 认证源类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AuthSourceType *string `json:"AuthSourceType,omitempty" name:"AuthSourceType"`
+
+	// 认证源类别
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AuthSourceCategory *string `json:"AuthSourceCategory,omitempty" name:"AuthSourceCategory"`
+
+	// IP地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Ip *string `json:"Ip,omitempty" name:"Ip"`
+
+	// 用户代理
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserAgent *string `json:"UserAgent,omitempty" name:"UserAgent"`
+
+	// 用户ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserId *string `json:"UserId,omitempty" name:"UserId"`
+
+	// 详情
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Detail *string `json:"Detail,omitempty" name:"Detail"`
 }
 
 type MemberMap struct {

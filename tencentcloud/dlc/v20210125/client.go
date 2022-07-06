@@ -45,6 +45,59 @@ func NewClient(credential common.CredentialIface, region string, clientProfile *
 }
 
 
+func NewAddDMSPartitionsRequest() (request *AddDMSPartitionsRequest) {
+    request = &AddDMSPartitionsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dlc", APIVersion, "AddDMSPartitions")
+    
+    
+    return
+}
+
+func NewAddDMSPartitionsResponse() (response *AddDMSPartitionsResponse) {
+    response = &AddDMSPartitionsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// AddDMSPartitions
+// DMS元数据新增分区
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) AddDMSPartitions(request *AddDMSPartitionsRequest) (response *AddDMSPartitionsResponse, err error) {
+    return c.AddDMSPartitionsWithContext(context.Background(), request)
+}
+
+// AddDMSPartitions
+// DMS元数据新增分区
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) AddDMSPartitionsWithContext(ctx context.Context, request *AddDMSPartitionsRequest) (response *AddDMSPartitionsResponse, err error) {
+    if request == nil {
+        request = NewAddDMSPartitionsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AddDMSPartitions require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewAddDMSPartitionsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewAddUsersToWorkGroupRequest() (request *AddUsersToWorkGroupRequest) {
     request = &AddUsersToWorkGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -94,6 +147,165 @@ func (c *Client) AddUsersToWorkGroupWithContext(ctx context.Context, request *Ad
     request.SetContext(ctx)
     
     response = NewAddUsersToWorkGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewAlterDMSDatabaseRequest() (request *AlterDMSDatabaseRequest) {
+    request = &AlterDMSDatabaseRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dlc", APIVersion, "AlterDMSDatabase")
+    
+    
+    return
+}
+
+func NewAlterDMSDatabaseResponse() (response *AlterDMSDatabaseResponse) {
+    response = &AlterDMSDatabaseResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// AlterDMSDatabase
+// DMS元数据更新库
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) AlterDMSDatabase(request *AlterDMSDatabaseRequest) (response *AlterDMSDatabaseResponse, err error) {
+    return c.AlterDMSDatabaseWithContext(context.Background(), request)
+}
+
+// AlterDMSDatabase
+// DMS元数据更新库
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) AlterDMSDatabaseWithContext(ctx context.Context, request *AlterDMSDatabaseRequest) (response *AlterDMSDatabaseResponse, err error) {
+    if request == nil {
+        request = NewAlterDMSDatabaseRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AlterDMSDatabase require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewAlterDMSDatabaseResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewAlterDMSPartitionRequest() (request *AlterDMSPartitionRequest) {
+    request = &AlterDMSPartitionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dlc", APIVersion, "AlterDMSPartition")
+    
+    
+    return
+}
+
+func NewAlterDMSPartitionResponse() (response *AlterDMSPartitionResponse) {
+    response = &AlterDMSPartitionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// AlterDMSPartition
+// DMS元数据更新分区
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) AlterDMSPartition(request *AlterDMSPartitionRequest) (response *AlterDMSPartitionResponse, err error) {
+    return c.AlterDMSPartitionWithContext(context.Background(), request)
+}
+
+// AlterDMSPartition
+// DMS元数据更新分区
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) AlterDMSPartitionWithContext(ctx context.Context, request *AlterDMSPartitionRequest) (response *AlterDMSPartitionResponse, err error) {
+    if request == nil {
+        request = NewAlterDMSPartitionRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AlterDMSPartition require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewAlterDMSPartitionResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewAlterDMSTableRequest() (request *AlterDMSTableRequest) {
+    request = &AlterDMSTableRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dlc", APIVersion, "AlterDMSTable")
+    
+    
+    return
+}
+
+func NewAlterDMSTableResponse() (response *AlterDMSTableResponse) {
+    response = &AlterDMSTableResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// AlterDMSTable
+// DMS元数据更新表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) AlterDMSTable(request *AlterDMSTableRequest) (response *AlterDMSTableResponse, err error) {
+    return c.AlterDMSTableWithContext(context.Background(), request)
+}
+
+// AlterDMSTable
+// DMS元数据更新表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) AlterDMSTableWithContext(ctx context.Context, request *AlterDMSTableRequest) (response *AlterDMSTableResponse, err error) {
+    if request == nil {
+        request = NewAlterDMSTableRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AlterDMSTable require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewAlterDMSTableResponse()
     err = c.Send(request, response)
     return
 }
@@ -336,6 +548,167 @@ func (c *Client) CancelTaskWithContext(ctx context.Context, request *CancelTaskR
     return
 }
 
+func NewCheckLockMetaDataRequest() (request *CheckLockMetaDataRequest) {
+    request = &CheckLockMetaDataRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dlc", APIVersion, "CheckLockMetaData")
+    
+    
+    return
+}
+
+func NewCheckLockMetaDataResponse() (response *CheckLockMetaDataResponse) {
+    response = &CheckLockMetaDataResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CheckLockMetaData
+// 元数据锁检查
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ANOTHERREQUESTPROCESSING = "FailedOperation.AnotherRequestProcessing"
+//  FAILEDOPERATION_HTTPCLIENTDOREQUESTFAILED = "FailedOperation.HttpClientDoRequestFailed"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALIDTASKID = "InvalidParameter.InvalidTaskId"
+//  INVALIDPARAMETER_TASKALREADYFINISHED = "InvalidParameter.TaskAlreadyFinished"
+func (c *Client) CheckLockMetaData(request *CheckLockMetaDataRequest) (response *CheckLockMetaDataResponse, err error) {
+    return c.CheckLockMetaDataWithContext(context.Background(), request)
+}
+
+// CheckLockMetaData
+// 元数据锁检查
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ANOTHERREQUESTPROCESSING = "FailedOperation.AnotherRequestProcessing"
+//  FAILEDOPERATION_HTTPCLIENTDOREQUESTFAILED = "FailedOperation.HttpClientDoRequestFailed"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALIDTASKID = "InvalidParameter.InvalidTaskId"
+//  INVALIDPARAMETER_TASKALREADYFINISHED = "InvalidParameter.TaskAlreadyFinished"
+func (c *Client) CheckLockMetaDataWithContext(ctx context.Context, request *CheckLockMetaDataRequest) (response *CheckLockMetaDataResponse, err error) {
+    if request == nil {
+        request = NewCheckLockMetaDataRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CheckLockMetaData require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCheckLockMetaDataResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateDMSDatabaseRequest() (request *CreateDMSDatabaseRequest) {
+    request = &CreateDMSDatabaseRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dlc", APIVersion, "CreateDMSDatabase")
+    
+    
+    return
+}
+
+func NewCreateDMSDatabaseResponse() (response *CreateDMSDatabaseResponse) {
+    response = &CreateDMSDatabaseResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateDMSDatabase
+// DMS元数据创建库
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) CreateDMSDatabase(request *CreateDMSDatabaseRequest) (response *CreateDMSDatabaseResponse, err error) {
+    return c.CreateDMSDatabaseWithContext(context.Background(), request)
+}
+
+// CreateDMSDatabase
+// DMS元数据创建库
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) CreateDMSDatabaseWithContext(ctx context.Context, request *CreateDMSDatabaseRequest) (response *CreateDMSDatabaseResponse, err error) {
+    if request == nil {
+        request = NewCreateDMSDatabaseRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateDMSDatabase require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateDMSDatabaseResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateDMSTableRequest() (request *CreateDMSTableRequest) {
+    request = &CreateDMSTableRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dlc", APIVersion, "CreateDMSTable")
+    
+    
+    return
+}
+
+func NewCreateDMSTableResponse() (response *CreateDMSTableResponse) {
+    response = &CreateDMSTableResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateDMSTable
+// DMS元数据创建表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) CreateDMSTable(request *CreateDMSTableRequest) (response *CreateDMSTableResponse, err error) {
+    return c.CreateDMSTableWithContext(context.Background(), request)
+}
+
+// CreateDMSTable
+// DMS元数据创建表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) CreateDMSTableWithContext(ctx context.Context, request *CreateDMSTableRequest) (response *CreateDMSTableResponse, err error) {
+    if request == nil {
+        request = NewCreateDMSTableRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateDMSTable require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateDMSTableResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateDatabaseRequest() (request *CreateDatabaseRequest) {
     request = &CreateDatabaseRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -406,6 +779,7 @@ func NewCreateExportTaskResponse() (response *CreateExportTaskResponse) {
 // 该接口（CreateExportTask）用于创建导出任务
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -418,6 +792,7 @@ func (c *Client) CreateExportTask(request *CreateExportTaskRequest) (response *C
 // 该接口（CreateExportTask）用于创建导出任务
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -459,6 +834,7 @@ func NewCreateImportTaskResponse() (response *CreateImportTaskResponse) {
 // 该接口（CreateImportTask）用于创建导入任务
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -470,6 +846,7 @@ func (c *Client) CreateImportTask(request *CreateImportTaskRequest) (response *C
 // 该接口（CreateImportTask）用于创建导入任务
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -952,6 +1329,7 @@ func NewCreateUserResponse() (response *CreateUserResponse) {
 // 创建用户
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_GRANTPOLICYFAILED = "FailedOperation.GrantPolicyFailed"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER_DUPLICATEUSERNAME = "InvalidParameter.DuplicateUserName"
 //  INVALIDPARAMETER_INVALIDACCESSPOLICY = "InvalidParameter.InvalidAccessPolicy"
@@ -972,6 +1350,7 @@ func (c *Client) CreateUser(request *CreateUserRequest) (response *CreateUserRes
 // 创建用户
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_GRANTPOLICYFAILED = "FailedOperation.GrantPolicyFailed"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER_DUPLICATEUSERNAME = "InvalidParameter.DuplicateUserName"
 //  INVALIDPARAMETER_INVALIDACCESSPOLICY = "InvalidParameter.InvalidAccessPolicy"
@@ -1021,6 +1400,7 @@ func NewCreateWorkGroupResponse() (response *CreateWorkGroupResponse) {
 // 创建工作组
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_GRANTPOLICYFAILED = "FailedOperation.GrantPolicyFailed"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER_DUPLICATEGROUPNAME = "InvalidParameter.DuplicateGroupName"
 //  INVALIDPARAMETER_INVALIDDESCRIPTION = "InvalidParameter.InvalidDescription"
@@ -1040,6 +1420,7 @@ func (c *Client) CreateWorkGroup(request *CreateWorkGroupRequest) (response *Cre
 // 创建工作组
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_GRANTPOLICYFAILED = "FailedOperation.GrantPolicyFailed"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER_DUPLICATEGROUPNAME = "InvalidParameter.DuplicateGroupName"
 //  INVALIDPARAMETER_INVALIDDESCRIPTION = "InvalidParameter.InvalidDescription"
@@ -1187,6 +1568,7 @@ func NewDeleteUserResponse() (response *DeleteUserResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_REVOKEPOLICYFAILED = "FailedOperation.RevokePolicyFailed"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER_INVALIDUSERNAME = "InvalidParameter.InvalidUserName"
 //  RESOURCESSOLDOUT_UNAUTHORIZEDREVOKEPOLICY = "ResourcesSoldOut.UnauthorizedRevokePolicy"
@@ -1202,6 +1584,7 @@ func (c *Client) DeleteUser(request *DeleteUserRequest) (response *DeleteUserRes
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_REVOKEPOLICYFAILED = "FailedOperation.RevokePolicyFailed"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER_INVALIDUSERNAME = "InvalidParameter.InvalidUserName"
 //  RESOURCESSOLDOUT_UNAUTHORIZEDREVOKEPOLICY = "ResourcesSoldOut.UnauthorizedRevokePolicy"
@@ -1296,6 +1679,7 @@ func NewDeleteWorkGroupResponse() (response *DeleteWorkGroupResponse) {
 // 删除工作组
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_REVOKEPOLICYFAILED = "FailedOperation.RevokePolicyFailed"
 //  INTERNALERROR = "InternalError"
 //  UNAUTHORIZEDOPERATION_DELETEWORKGROUP = "UnauthorizedOperation.DeleteWorkgroup"
 //  UNAUTHORIZEDOPERATION_REVOKEPOLICY = "UnauthorizedOperation.RevokePolicy"
@@ -1307,6 +1691,7 @@ func (c *Client) DeleteWorkGroup(request *DeleteWorkGroupRequest) (response *Del
 // 删除工作组
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_REVOKEPOLICYFAILED = "FailedOperation.RevokePolicyFailed"
 //  INTERNALERROR = "InternalError"
 //  UNAUTHORIZEDOPERATION_DELETEWORKGROUP = "UnauthorizedOperation.DeleteWorkgroup"
 //  UNAUTHORIZEDOPERATION_REVOKEPOLICY = "UnauthorizedOperation.RevokePolicy"
@@ -1322,6 +1707,218 @@ func (c *Client) DeleteWorkGroupWithContext(ctx context.Context, request *Delete
     request.SetContext(ctx)
     
     response = NewDeleteWorkGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDMSDatabaseRequest() (request *DescribeDMSDatabaseRequest) {
+    request = &DescribeDMSDatabaseRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dlc", APIVersion, "DescribeDMSDatabase")
+    
+    
+    return
+}
+
+func NewDescribeDMSDatabaseResponse() (response *DescribeDMSDatabaseResponse) {
+    response = &DescribeDMSDatabaseResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeDMSDatabase
+// DMS元数据获取库
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeDMSDatabase(request *DescribeDMSDatabaseRequest) (response *DescribeDMSDatabaseResponse, err error) {
+    return c.DescribeDMSDatabaseWithContext(context.Background(), request)
+}
+
+// DescribeDMSDatabase
+// DMS元数据获取库
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeDMSDatabaseWithContext(ctx context.Context, request *DescribeDMSDatabaseRequest) (response *DescribeDMSDatabaseResponse, err error) {
+    if request == nil {
+        request = NewDescribeDMSDatabaseRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDMSDatabase require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDMSDatabaseResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDMSPartitionsRequest() (request *DescribeDMSPartitionsRequest) {
+    request = &DescribeDMSPartitionsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dlc", APIVersion, "DescribeDMSPartitions")
+    
+    
+    return
+}
+
+func NewDescribeDMSPartitionsResponse() (response *DescribeDMSPartitionsResponse) {
+    response = &DescribeDMSPartitionsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeDMSPartitions
+// DMS元数据获取分区
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeDMSPartitions(request *DescribeDMSPartitionsRequest) (response *DescribeDMSPartitionsResponse, err error) {
+    return c.DescribeDMSPartitionsWithContext(context.Background(), request)
+}
+
+// DescribeDMSPartitions
+// DMS元数据获取分区
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeDMSPartitionsWithContext(ctx context.Context, request *DescribeDMSPartitionsRequest) (response *DescribeDMSPartitionsResponse, err error) {
+    if request == nil {
+        request = NewDescribeDMSPartitionsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDMSPartitions require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDMSPartitionsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDMSTableRequest() (request *DescribeDMSTableRequest) {
+    request = &DescribeDMSTableRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dlc", APIVersion, "DescribeDMSTable")
+    
+    
+    return
+}
+
+func NewDescribeDMSTableResponse() (response *DescribeDMSTableResponse) {
+    response = &DescribeDMSTableResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeDMSTable
+// DMS元数据获取表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeDMSTable(request *DescribeDMSTableRequest) (response *DescribeDMSTableResponse, err error) {
+    return c.DescribeDMSTableWithContext(context.Background(), request)
+}
+
+// DescribeDMSTable
+// DMS元数据获取表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeDMSTableWithContext(ctx context.Context, request *DescribeDMSTableRequest) (response *DescribeDMSTableResponse, err error) {
+    if request == nil {
+        request = NewDescribeDMSTableRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDMSTable require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDMSTableResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDMSTablesRequest() (request *DescribeDMSTablesRequest) {
+    request = &DescribeDMSTablesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dlc", APIVersion, "DescribeDMSTables")
+    
+    
+    return
+}
+
+func NewDescribeDMSTablesResponse() (response *DescribeDMSTablesResponse) {
+    response = &DescribeDMSTablesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeDMSTables
+// DMS元数据获取表列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeDMSTables(request *DescribeDMSTablesRequest) (response *DescribeDMSTablesResponse, err error) {
+    return c.DescribeDMSTablesWithContext(context.Background(), request)
+}
+
+// DescribeDMSTables
+// DMS元数据获取表列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeDMSTablesWithContext(ctx context.Context, request *DescribeDMSTablesRequest) (response *DescribeDMSTablesResponse, err error) {
+    if request == nil {
+        request = NewDescribeDMSTablesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDMSTables require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDMSTablesResponse()
     err = c.Send(request, response)
     return
 }
@@ -1453,9 +2050,7 @@ func NewDescribeSparkAppJobResponse() (response *DescribeSparkAppJobResponse) {
 // 查询具体的spark应用
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INTERNALERROR_DBERROR = "InternalError.DBError"
-//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDSPARKAPPPARAM = "InvalidParameter.InvalidSparkAppParam"
 func (c *Client) DescribeSparkAppJob(request *DescribeSparkAppJobRequest) (response *DescribeSparkAppJobResponse, err error) {
     return c.DescribeSparkAppJobWithContext(context.Background(), request)
 }
@@ -1464,9 +2059,7 @@ func (c *Client) DescribeSparkAppJob(request *DescribeSparkAppJobRequest) (respo
 // 查询具体的spark应用
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INTERNALERROR_DBERROR = "InternalError.DBError"
-//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDSPARKAPPPARAM = "InvalidParameter.InvalidSparkAppParam"
 func (c *Client) DescribeSparkAppJobWithContext(ctx context.Context, request *DescribeSparkAppJobRequest) (response *DescribeSparkAppJobResponse, err error) {
     if request == nil {
         request = NewDescribeSparkAppJobRequest()
@@ -2039,6 +2632,7 @@ func NewDetachUserPolicyResponse() (response *DetachUserPolicyResponse) {
 //  FAILEDOPERATION_REVOKEPOLICYFAILED = "FailedOperation.RevokePolicyFailed"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER_INVALIDACCESSPOLICY = "InvalidParameter.InvalidAccessPolicy"
+//  INVALIDPARAMETER_INVALIDUSERNAME = "InvalidParameter.InvalidUserName"
 //  UNAUTHORIZEDOPERATION_REVOKEPOLICY = "UnauthorizedOperation.RevokePolicy"
 //  UNAUTHORIZEDOPERATION_USERNOTEXIST = "UnauthorizedOperation.UserNotExist"
 //  UNSUPPORTEDOPERATION_MODIFYOWNERUNSUPPORTED = "UnsupportedOperation.ModifyOwnerUnsupported"
@@ -2057,6 +2651,7 @@ func (c *Client) DetachUserPolicy(request *DetachUserPolicyRequest) (response *D
 //  FAILEDOPERATION_REVOKEPOLICYFAILED = "FailedOperation.RevokePolicyFailed"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER_INVALIDACCESSPOLICY = "InvalidParameter.InvalidAccessPolicy"
+//  INVALIDPARAMETER_INVALIDUSERNAME = "InvalidParameter.InvalidUserName"
 //  UNAUTHORIZEDOPERATION_REVOKEPOLICY = "UnauthorizedOperation.RevokePolicy"
 //  UNAUTHORIZEDOPERATION_USERNOTEXIST = "UnauthorizedOperation.UserNotExist"
 //  UNSUPPORTEDOPERATION_MODIFYOWNERUNSUPPORTED = "UnsupportedOperation.ModifyOwnerUnsupported"
@@ -2137,6 +2732,165 @@ func (c *Client) DetachWorkGroupPolicyWithContext(ctx context.Context, request *
     return
 }
 
+func NewDropDMSDatabaseRequest() (request *DropDMSDatabaseRequest) {
+    request = &DropDMSDatabaseRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dlc", APIVersion, "DropDMSDatabase")
+    
+    
+    return
+}
+
+func NewDropDMSDatabaseResponse() (response *DropDMSDatabaseResponse) {
+    response = &DropDMSDatabaseResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DropDMSDatabase
+// DMS元数据删除库
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DropDMSDatabase(request *DropDMSDatabaseRequest) (response *DropDMSDatabaseResponse, err error) {
+    return c.DropDMSDatabaseWithContext(context.Background(), request)
+}
+
+// DropDMSDatabase
+// DMS元数据删除库
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DropDMSDatabaseWithContext(ctx context.Context, request *DropDMSDatabaseRequest) (response *DropDMSDatabaseResponse, err error) {
+    if request == nil {
+        request = NewDropDMSDatabaseRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DropDMSDatabase require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDropDMSDatabaseResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDropDMSPartitionsRequest() (request *DropDMSPartitionsRequest) {
+    request = &DropDMSPartitionsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dlc", APIVersion, "DropDMSPartitions")
+    
+    
+    return
+}
+
+func NewDropDMSPartitionsResponse() (response *DropDMSPartitionsResponse) {
+    response = &DropDMSPartitionsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DropDMSPartitions
+// DMS元数据删除分区
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DropDMSPartitions(request *DropDMSPartitionsRequest) (response *DropDMSPartitionsResponse, err error) {
+    return c.DropDMSPartitionsWithContext(context.Background(), request)
+}
+
+// DropDMSPartitions
+// DMS元数据删除分区
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DropDMSPartitionsWithContext(ctx context.Context, request *DropDMSPartitionsRequest) (response *DropDMSPartitionsResponse, err error) {
+    if request == nil {
+        request = NewDropDMSPartitionsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DropDMSPartitions require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDropDMSPartitionsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDropDMSTableRequest() (request *DropDMSTableRequest) {
+    request = &DropDMSTableRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dlc", APIVersion, "DropDMSTable")
+    
+    
+    return
+}
+
+func NewDropDMSTableResponse() (response *DropDMSTableResponse) {
+    response = &DropDMSTableResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DropDMSTable
+// DMS元数据删除表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DropDMSTable(request *DropDMSTableRequest) (response *DropDMSTableResponse, err error) {
+    return c.DropDMSTableWithContext(context.Background(), request)
+}
+
+// DropDMSTable
+// DMS元数据删除表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DropDMSTableWithContext(ctx context.Context, request *DropDMSTableRequest) (response *DropDMSTableResponse, err error) {
+    if request == nil {
+        request = NewDropDMSTableRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DropDMSTable require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDropDMSTableResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewListTaskJobLogDetailRequest() (request *ListTaskJobLogDetailRequest) {
     request = &ListTaskJobLogDetailRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2184,6 +2938,57 @@ func (c *Client) ListTaskJobLogDetailWithContext(ctx context.Context, request *L
     request.SetContext(ctx)
     
     response = NewListTaskJobLogDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewLockMetaDataRequest() (request *LockMetaDataRequest) {
+    request = &LockMetaDataRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dlc", APIVersion, "LockMetaData")
+    
+    
+    return
+}
+
+func NewLockMetaDataResponse() (response *LockMetaDataResponse) {
+    response = &LockMetaDataResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// LockMetaData
+// 元数据锁
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDSQL = "InvalidParameter.InvalidSQL"
+func (c *Client) LockMetaData(request *LockMetaDataRequest) (response *LockMetaDataResponse, err error) {
+    return c.LockMetaDataWithContext(context.Background(), request)
+}
+
+// LockMetaData
+// 元数据锁
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDSQL = "InvalidParameter.InvalidSQL"
+func (c *Client) LockMetaDataWithContext(ctx context.Context, request *LockMetaDataRequest) (response *LockMetaDataResponse, err error) {
+    if request == nil {
+        request = NewLockMetaDataRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("LockMetaData require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewLockMetaDataResponse()
     err = c.Send(request, response)
     return
 }
@@ -2337,6 +3142,55 @@ func (c *Client) ModifyWorkGroupWithContext(ctx context.Context, request *Modify
     return
 }
 
+func NewReportHeartbeatMetaDataRequest() (request *ReportHeartbeatMetaDataRequest) {
+    request = &ReportHeartbeatMetaDataRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dlc", APIVersion, "ReportHeartbeatMetaData")
+    
+    
+    return
+}
+
+func NewReportHeartbeatMetaDataResponse() (response *ReportHeartbeatMetaDataResponse) {
+    response = &ReportHeartbeatMetaDataResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ReportHeartbeatMetaData
+// 上报元数据心跳
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  UNAUTHORIZEDOPERATION_MODIFYWORKGROUPINFO = "UnauthorizedOperation.ModifyWorkgroupInfo"
+func (c *Client) ReportHeartbeatMetaData(request *ReportHeartbeatMetaDataRequest) (response *ReportHeartbeatMetaDataResponse, err error) {
+    return c.ReportHeartbeatMetaDataWithContext(context.Background(), request)
+}
+
+// ReportHeartbeatMetaData
+// 上报元数据心跳
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  UNAUTHORIZEDOPERATION_MODIFYWORKGROUPINFO = "UnauthorizedOperation.ModifyWorkgroupInfo"
+func (c *Client) ReportHeartbeatMetaDataWithContext(ctx context.Context, request *ReportHeartbeatMetaDataRequest) (response *ReportHeartbeatMetaDataResponse, err error) {
+    if request == nil {
+        request = NewReportHeartbeatMetaDataRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ReportHeartbeatMetaData require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewReportHeartbeatMetaDataResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewUnbindWorkGroupsFromUserRequest() (request *UnbindWorkGroupsFromUserRequest) {
     request = &UnbindWorkGroupsFromUserRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2384,6 +3238,57 @@ func (c *Client) UnbindWorkGroupsFromUserWithContext(ctx context.Context, reques
     request.SetContext(ctx)
     
     response = NewUnbindWorkGroupsFromUserResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUnlockMetaDataRequest() (request *UnlockMetaDataRequest) {
+    request = &UnlockMetaDataRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("dlc", APIVersion, "UnlockMetaData")
+    
+    
+    return
+}
+
+func NewUnlockMetaDataResponse() (response *UnlockMetaDataResponse) {
+    response = &UnlockMetaDataResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// UnlockMetaData
+// 元数据解锁
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_DUPLICATEUSERNAME = "InvalidParameter.DuplicateUserName"
+//  UNAUTHORIZEDOPERATION_UNBINDWORKGROUPSFROMUSER = "UnauthorizedOperation.UnbindWorkgroupsFromUser"
+func (c *Client) UnlockMetaData(request *UnlockMetaDataRequest) (response *UnlockMetaDataResponse, err error) {
+    return c.UnlockMetaDataWithContext(context.Background(), request)
+}
+
+// UnlockMetaData
+// 元数据解锁
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_DUPLICATEUSERNAME = "InvalidParameter.DuplicateUserName"
+//  UNAUTHORIZEDOPERATION_UNBINDWORKGROUPSFROMUSER = "UnauthorizedOperation.UnbindWorkgroupsFromUser"
+func (c *Client) UnlockMetaDataWithContext(ctx context.Context, request *UnlockMetaDataRequest) (response *UnlockMetaDataResponse, err error) {
+    if request == nil {
+        request = NewUnlockMetaDataRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UnlockMetaData require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUnlockMetaDataResponse()
     err = c.Send(request, response)
     return
 }

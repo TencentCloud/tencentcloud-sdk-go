@@ -167,6 +167,87 @@ func (r *DescribeDBInstancesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeHostListRequestParams struct {
+	// 独享集群实例Id
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 分页返回数量
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 分页偏移量
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 分配状态过滤，0-可分配，1-禁止分配
+	AssignStatus []*int64 `json:"AssignStatus,omitempty" name:"AssignStatus"`
+}
+
+type DescribeHostListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 独享集群实例Id
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 分页返回数量
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 分页偏移量
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 分配状态过滤，0-可分配，1-禁止分配
+	AssignStatus []*int64 `json:"AssignStatus,omitempty" name:"AssignStatus"`
+}
+
+func (r *DescribeHostListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeHostListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "AssignStatus")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeHostListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeHostListResponseParams struct {
+	// 主机总数
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 主机详情
+	Hosts []*HostDetail `json:"Hosts,omitempty" name:"Hosts"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeHostListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeHostListResponseParams `json:"Response"`
+}
+
+func (r *DescribeHostListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeHostListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type DescribeInstanceDetail struct {
 	// 独享集群实例Id
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
@@ -641,6 +722,77 @@ type DeviceInfo struct {
 
 	// 数据库实例个数
 	InstanceNum *uint64 `json:"InstanceNum,omitempty" name:"InstanceNum"`
+}
+
+type HostDetail struct {
+	// 主机Id
+	HostId *string `json:"HostId,omitempty" name:"HostId"`
+
+	// 主机名称
+	HostName *string `json:"HostName,omitempty" name:"HostName"`
+
+	// 可用区
+	Zone *string `json:"Zone,omitempty" name:"Zone"`
+
+	// 主机状态
+	Status *int64 `json:"Status,omitempty" name:"Status"`
+
+	// 分配DB实例状态,0:可分配,1:不可分配
+	AssignStatus *int64 `json:"AssignStatus,omitempty" name:"AssignStatus"`
+
+	// 主机类型, 0:物理机, 1:cvm本地盘, 2:cvm云盘
+	HostType *int64 `json:"HostType,omitempty" name:"HostType"`
+
+	// DB实例数
+	DbNum *int64 `json:"DbNum,omitempty" name:"DbNum"`
+
+	// 主机CPU(单位:核数)
+	CpuSpec *int64 `json:"CpuSpec,omitempty" name:"CpuSpec"`
+
+	// 已分配CPU(单位:核数)
+	CpuAssigned *int64 `json:"CpuAssigned,omitempty" name:"CpuAssigned"`
+
+	// 可分配CPU(单位:核数)
+	CpuAssignable *int64 `json:"CpuAssignable,omitempty" name:"CpuAssignable"`
+
+	// 主机内存(单位:GB)
+	MemorySpec *int64 `json:"MemorySpec,omitempty" name:"MemorySpec"`
+
+	// 已分配内存(单位:GB)
+	MemoryAssigned *int64 `json:"MemoryAssigned,omitempty" name:"MemoryAssigned"`
+
+	// 可分配内存(单位:GB)
+	MemoryAssignable *int64 `json:"MemoryAssignable,omitempty" name:"MemoryAssignable"`
+
+	// 主机磁盘(单位:GB)
+	DiskSpec *int64 `json:"DiskSpec,omitempty" name:"DiskSpec"`
+
+	// 已分配磁盘(单位:GB)
+	DiskAssigned *int64 `json:"DiskAssigned,omitempty" name:"DiskAssigned"`
+
+	// 可分配磁盘(GB)
+	DiskAssignable *int64 `json:"DiskAssignable,omitempty" name:"DiskAssignable"`
+
+	// CPU分配比
+	CpuRatio *float64 `json:"CpuRatio,omitempty" name:"CpuRatio"`
+
+	// 内存分配比
+	MemoryRatio *float64 `json:"MemoryRatio,omitempty" name:"MemoryRatio"`
+
+	// 磁盘分配比
+	DiskRatio *float64 `json:"DiskRatio,omitempty" name:"DiskRatio"`
+
+	// 机型名称
+	MachineName *string `json:"MachineName,omitempty" name:"MachineName"`
+
+	// 机型类别
+	MachineType *string `json:"MachineType,omitempty" name:"MachineType"`
+
+	// 计费标签
+	PidTag *string `json:"PidTag,omitempty" name:"PidTag"`
+
+	// 计费ID
+	Pid *int64 `json:"Pid,omitempty" name:"Pid"`
 }
 
 type InstanceDetail struct {

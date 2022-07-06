@@ -160,6 +160,9 @@ type CreateJobConfigRequestParams struct {
 
 	// 工作空间 SerialId
 	WorkSpaceId *string `json:"WorkSpaceId,omitempty" name:"WorkSpaceId"`
+
+	// 日志级别
+	LogLevel *string `json:"LogLevel,omitempty" name:"LogLevel"`
 }
 
 type CreateJobConfigRequest struct {
@@ -215,6 +218,9 @@ type CreateJobConfigRequest struct {
 
 	// 工作空间 SerialId
 	WorkSpaceId *string `json:"WorkSpaceId,omitempty" name:"WorkSpaceId"`
+
+	// 日志级别
+	LogLevel *string `json:"LogLevel,omitempty" name:"LogLevel"`
 }
 
 func (r *CreateJobConfigRequest) ToJsonString() string {
@@ -246,6 +252,7 @@ func (r *CreateJobConfigRequest) FromJsonString(s string) error {
 	delete(f, "LogCollectType")
 	delete(f, "PythonVersion")
 	delete(f, "WorkSpaceId")
+	delete(f, "LogLevel")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateJobConfigRequest has unknown keys!", "")
 	}

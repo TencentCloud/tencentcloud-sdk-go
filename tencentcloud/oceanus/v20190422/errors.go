@@ -98,6 +98,9 @@ const (
 	// ResourceIds非法。
 	INVALIDPARAMETER_INVALIDRESOURCEIDS = "InvalidParameter.InvalidResourceIds"
 
+	// 创建作业配置错误。
+	INVALIDPARAMETER_JOBCONFIGLOGCOLLECTPARAMERROR = "InvalidParameter.JobConfigLogCollectParamError"
+
 	// MaxParallelism 过大。
 	INVALIDPARAMETER_MAXPARALLELISMTOOLARGE = "InvalidParameter.MaxParallelismTooLarge"
 

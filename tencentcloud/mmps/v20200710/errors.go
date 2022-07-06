@@ -19,4 +19,7 @@ const (
 
 	// 操作失败。
 	FAILEDOPERATION = "FailedOperation"
+
+	// 操作不支持。
+	UNSUPPORTEDOPERATION = "UnsupportedOperation"
 )

@@ -410,20 +410,20 @@ type CreateAutoSnapshotPolicyRequestParams struct {
 	// 定期快照的执行策略。
 	Policy []*Policy `json:"Policy,omitempty" name:"Policy"`
 
-	// 要创建的定期快照策略名。不传则默认为“未命名”。最大长度不能超60个字节。
-	AutoSnapshotPolicyName *string `json:"AutoSnapshotPolicyName,omitempty" name:"AutoSnapshotPolicyName"`
+	// 是否创建定期快照的执行策略。TRUE表示只需获取首次开始备份的时间，不实际创建定期快照策略，FALSE表示创建，默认为FALSE。
+	DryRun *bool `json:"DryRun,omitempty" name:"DryRun"`
 
 	// 是否激活定期快照策略，FALSE表示未激活，TRUE表示激活，默认为TRUE。
 	IsActivated *bool `json:"IsActivated,omitempty" name:"IsActivated"`
+
+	// 要创建的定期快照策略名。不传则默认为“未命名”。最大长度不能超60个字节。
+	AutoSnapshotPolicyName *string `json:"AutoSnapshotPolicyName,omitempty" name:"AutoSnapshotPolicyName"`
 
 	// 通过该定期快照策略创建的快照是否永久保留。FALSE表示非永久保留，TRUE表示永久保留，默认为FALSE。
 	IsPermanent *bool `json:"IsPermanent,omitempty" name:"IsPermanent"`
 
 	// 通过该定期快照策略创建的快照保留天数，默认保留7天。如果指定本参数，则IsPermanent入参不可指定为TRUE，否则会产生冲突。
 	RetentionDays *uint64 `json:"RetentionDays,omitempty" name:"RetentionDays"`
-
-	// 是否创建定期快照的执行策略。TRUE表示只需获取首次开始备份的时间，不实际创建定期快照策略，FALSE表示创建，默认为FALSE。
-	DryRun *bool `json:"DryRun,omitempty" name:"DryRun"`
 }
 
 type CreateAutoSnapshotPolicyRequest struct {
@@ -432,20 +432,20 @@ type CreateAutoSnapshotPolicyRequest struct {
 	// 定期快照的执行策略。
 	Policy []*Policy `json:"Policy,omitempty" name:"Policy"`
 
-	// 要创建的定期快照策略名。不传则默认为“未命名”。最大长度不能超60个字节。
-	AutoSnapshotPolicyName *string `json:"AutoSnapshotPolicyName,omitempty" name:"AutoSnapshotPolicyName"`
+	// 是否创建定期快照的执行策略。TRUE表示只需获取首次开始备份的时间，不实际创建定期快照策略，FALSE表示创建，默认为FALSE。
+	DryRun *bool `json:"DryRun,omitempty" name:"DryRun"`
 
 	// 是否激活定期快照策略，FALSE表示未激活，TRUE表示激活，默认为TRUE。
 	IsActivated *bool `json:"IsActivated,omitempty" name:"IsActivated"`
+
+	// 要创建的定期快照策略名。不传则默认为“未命名”。最大长度不能超60个字节。
+	AutoSnapshotPolicyName *string `json:"AutoSnapshotPolicyName,omitempty" name:"AutoSnapshotPolicyName"`
 
 	// 通过该定期快照策略创建的快照是否永久保留。FALSE表示非永久保留，TRUE表示永久保留，默认为FALSE。
 	IsPermanent *bool `json:"IsPermanent,omitempty" name:"IsPermanent"`
 
 	// 通过该定期快照策略创建的快照保留天数，默认保留7天。如果指定本参数，则IsPermanent入参不可指定为TRUE，否则会产生冲突。
 	RetentionDays *uint64 `json:"RetentionDays,omitempty" name:"RetentionDays"`
-
-	// 是否创建定期快照的执行策略。TRUE表示只需获取首次开始备份的时间，不实际创建定期快照策略，FALSE表示创建，默认为FALSE。
-	DryRun *bool `json:"DryRun,omitempty" name:"DryRun"`
 }
 
 func (r *CreateAutoSnapshotPolicyRequest) ToJsonString() string {
@@ -461,11 +461,11 @@ func (r *CreateAutoSnapshotPolicyRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "Policy")
-	delete(f, "AutoSnapshotPolicyName")
+	delete(f, "DryRun")
 	delete(f, "IsActivated")
+	delete(f, "AutoSnapshotPolicyName")
 	delete(f, "IsPermanent")
 	delete(f, "RetentionDays")
-	delete(f, "DryRun")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAutoSnapshotPolicyRequest has unknown keys!", "")
 	}
@@ -2386,19 +2386,19 @@ type ModifyAutoSnapshotPolicyAttributeRequestParams struct {
 	// 定期快照策略ID。
 	AutoSnapshotPolicyId *string `json:"AutoSnapshotPolicyId,omitempty" name:"AutoSnapshotPolicyId"`
 
-	// 定期快照的执行策略。
-	Policy []*Policy `json:"Policy,omitempty" name:"Policy"`
-
-	// 要创建的定期快照策略名。不传则默认为“未命名”。最大长度不能超60个字节。
-	AutoSnapshotPolicyName *string `json:"AutoSnapshotPolicyName,omitempty" name:"AutoSnapshotPolicyName"`
-
 	// 是否激活定期快照策略，FALSE表示未激活，TRUE表示激活，默认为TRUE。
 	IsActivated *bool `json:"IsActivated,omitempty" name:"IsActivated"`
 
 	// 通过该定期快照策略创建的快照是否永久保留。FALSE表示非永久保留，TRUE表示永久保留，默认为FALSE。
 	IsPermanent *bool `json:"IsPermanent,omitempty" name:"IsPermanent"`
 
-	// 通过该定期快照策略创建的快照保留天数，该参数不可与`IsPermanent`参数冲突，即若定期快照策略设置为永久保留，`RetentionDays`应置0。
+	// 要创建的定期快照策略名。不传则默认为“未命名”。最大长度不能超60个字节。
+	AutoSnapshotPolicyName *string `json:"AutoSnapshotPolicyName,omitempty" name:"AutoSnapshotPolicyName"`
+
+	// 定期快照的执行策略。
+	Policy []*Policy `json:"Policy,omitempty" name:"Policy"`
+
+	// 通过该定期快照策略创建的快照保留天数。如果指定本参数，则IsPermanent入参不可指定为TRUE，否则会产生冲突。
 	RetentionDays *uint64 `json:"RetentionDays,omitempty" name:"RetentionDays"`
 }
 
@@ -2408,19 +2408,19 @@ type ModifyAutoSnapshotPolicyAttributeRequest struct {
 	// 定期快照策略ID。
 	AutoSnapshotPolicyId *string `json:"AutoSnapshotPolicyId,omitempty" name:"AutoSnapshotPolicyId"`
 
-	// 定期快照的执行策略。
-	Policy []*Policy `json:"Policy,omitempty" name:"Policy"`
-
-	// 要创建的定期快照策略名。不传则默认为“未命名”。最大长度不能超60个字节。
-	AutoSnapshotPolicyName *string `json:"AutoSnapshotPolicyName,omitempty" name:"AutoSnapshotPolicyName"`
-
 	// 是否激活定期快照策略，FALSE表示未激活，TRUE表示激活，默认为TRUE。
 	IsActivated *bool `json:"IsActivated,omitempty" name:"IsActivated"`
 
 	// 通过该定期快照策略创建的快照是否永久保留。FALSE表示非永久保留，TRUE表示永久保留，默认为FALSE。
 	IsPermanent *bool `json:"IsPermanent,omitempty" name:"IsPermanent"`
 
-	// 通过该定期快照策略创建的快照保留天数，该参数不可与`IsPermanent`参数冲突，即若定期快照策略设置为永久保留，`RetentionDays`应置0。
+	// 要创建的定期快照策略名。不传则默认为“未命名”。最大长度不能超60个字节。
+	AutoSnapshotPolicyName *string `json:"AutoSnapshotPolicyName,omitempty" name:"AutoSnapshotPolicyName"`
+
+	// 定期快照的执行策略。
+	Policy []*Policy `json:"Policy,omitempty" name:"Policy"`
+
+	// 通过该定期快照策略创建的快照保留天数。如果指定本参数，则IsPermanent入参不可指定为TRUE，否则会产生冲突。
 	RetentionDays *uint64 `json:"RetentionDays,omitempty" name:"RetentionDays"`
 }
 
@@ -2437,10 +2437,10 @@ func (r *ModifyAutoSnapshotPolicyAttributeRequest) FromJsonString(s string) erro
 		return err
 	}
 	delete(f, "AutoSnapshotPolicyId")
-	delete(f, "Policy")
-	delete(f, "AutoSnapshotPolicyName")
 	delete(f, "IsActivated")
 	delete(f, "IsPermanent")
+	delete(f, "AutoSnapshotPolicyName")
+	delete(f, "Policy")
 	delete(f, "RetentionDays")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyAutoSnapshotPolicyAttributeRequest has unknown keys!", "")
@@ -2916,11 +2916,11 @@ type Placement struct {
 }
 
 type Policy struct {
-	// 指定每周从周一到周日需要触发定期快照的日期，取值范围：[0, 6]。0表示周日触发，1-6分别表示周一至周六。
-	DayOfWeek []*uint64 `json:"DayOfWeek,omitempty" name:"DayOfWeek"`
-
 	// 指定定期快照策略的触发时间。单位为小时，取值范围：[0, 23]。00:00 ~ 23:00 共 24 个时间点可选，1表示 01:00，依此类推。
 	Hour []*uint64 `json:"Hour,omitempty" name:"Hour"`
+
+	// 指定每周从周一到周日需要触发定期快照的日期，取值范围：[0, 6]。0表示周日触发，1-6分别表示周一至周六。
+	DayOfWeek []*uint64 `json:"DayOfWeek,omitempty" name:"DayOfWeek"`
 }
 
 type PrepayPrice struct {

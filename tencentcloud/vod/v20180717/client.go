@@ -394,7 +394,7 @@ func NewCreateAIAnalysisTemplateResponse() (response *CreateAIAnalysisTemplateRe
 }
 
 // CreateAIAnalysisTemplate
-// 创建用户自定义视频内容分析模板，数量上限：50。
+// 创建用户自定义音视频内容分析模板，数量上限：50。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -414,7 +414,7 @@ func (c *Client) CreateAIAnalysisTemplate(request *CreateAIAnalysisTemplateReque
 }
 
 // CreateAIAnalysisTemplate
-// 创建用户自定义视频内容分析模板，数量上限：50。
+// 创建用户自定义音视频内容分析模板，数量上限：50。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -463,7 +463,7 @@ func NewCreateAIRecognitionTemplateResponse() (response *CreateAIRecognitionTemp
 }
 
 // CreateAIRecognitionTemplate
-// 创建用户自定义视频内容识别模板，数量上限：50。
+// 创建用户自定义音视频内容识别模板，数量上限：50。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -486,7 +486,7 @@ func (c *Client) CreateAIRecognitionTemplate(request *CreateAIRecognitionTemplat
 }
 
 // CreateAIRecognitionTemplate
-// 创建用户自定义视频内容识别模板，数量上限：50。
+// 创建用户自定义音视频内容识别模板，数量上限：50。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -771,7 +771,7 @@ func NewCreateContentReviewTemplateResponse() (response *CreateContentReviewTemp
 }
 
 // CreateContentReviewTemplate
-// 创建用户自定义视频内容智能识别模板，数量上限：50。
+// 创建用户自定义音视频内容审核模板，数量上限：50。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -793,7 +793,7 @@ func (c *Client) CreateContentReviewTemplate(request *CreateContentReviewTemplat
 }
 
 // CreateContentReviewTemplate
-// 创建用户自定义视频内容智能识别模板，数量上限：50。
+// 创建用户自定义音视频内容审核模板，数量上限：50。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1792,7 +1792,7 @@ func NewDeleteAIAnalysisTemplateResponse() (response *DeleteAIAnalysisTemplateRe
 }
 
 // DeleteAIAnalysisTemplate
-// 删除用户自定义视频内容分析模板。
+// 删除用户自定义音视频内容分析模板。
 //
 // 
 //
@@ -1809,7 +1809,7 @@ func (c *Client) DeleteAIAnalysisTemplate(request *DeleteAIAnalysisTemplateReque
 }
 
 // DeleteAIAnalysisTemplate
-// 删除用户自定义视频内容分析模板。
+// 删除用户自定义音视频内容分析模板。
 //
 // 
 //
@@ -1855,7 +1855,7 @@ func NewDeleteAIRecognitionTemplateResponse() (response *DeleteAIRecognitionTemp
 }
 
 // DeleteAIRecognitionTemplate
-// 删除用户自定义视频内容识别模板。
+// 删除用户自定义音视频内容识别模板。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -1868,7 +1868,7 @@ func (c *Client) DeleteAIRecognitionTemplate(request *DeleteAIRecognitionTemplat
 }
 
 // DeleteAIRecognitionTemplate
-// 删除用户自定义视频内容识别模板。
+// 删除用户自定义音视频内容识别模板。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -2075,7 +2075,7 @@ func NewDeleteContentReviewTemplateResponse() (response *DeleteContentReviewTemp
 }
 
 // DeleteContentReviewTemplate
-// 删除用户自定义视频内容智能识别模板。
+// 删除用户自定义音视频内容审核模板。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -2088,7 +2088,7 @@ func (c *Client) DeleteContentReviewTemplate(request *DeleteContentReviewTemplat
 }
 
 // DeleteContentReviewTemplate
-// 删除用户自定义视频内容智能识别模板。
+// 删除用户自定义音视频内容审核模板。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -2851,7 +2851,7 @@ func NewDescribeAIAnalysisTemplatesResponse() (response *DescribeAIAnalysisTempl
 }
 
 // DescribeAIAnalysisTemplates
-// 根据视频内容分析模板唯一标识，获取视频内容分析模板详情列表。返回结果包含符合条件的所有用户自定义视频内容分析模板及[系统预置视频内容分析模板](https://cloud.tencent.com/document/product/266/33476#.E9.A2.84.E7.BD.AE.E8.A7.86.E9.A2.91.E5.86.85.E5.AE.B9.E5.88.86.E6.9E.90.E6.A8.A1.E6.9D.BF)。
+// 根据音视频内容分析模板唯一标识，获取音视频内容分析模板详情列表。返回结果包含符合条件的所有用户自定义音视频内容分析模板及[系统预置音视频内容分析模板](https://cloud.tencent.com/document/product/266/33476#.E9.A2.84.E7.BD.AE.E8.A7.86.E9.A2.91.E5.86.85.E5.AE.B9.E5.88.86.E6.9E.90.E6.A8.A1.E6.9D.BF)。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -2865,7 +2865,7 @@ func (c *Client) DescribeAIAnalysisTemplates(request *DescribeAIAnalysisTemplate
 }
 
 // DescribeAIAnalysisTemplates
-// 根据视频内容分析模板唯一标识，获取视频内容分析模板详情列表。返回结果包含符合条件的所有用户自定义视频内容分析模板及[系统预置视频内容分析模板](https://cloud.tencent.com/document/product/266/33476#.E9.A2.84.E7.BD.AE.E8.A7.86.E9.A2.91.E5.86.85.E5.AE.B9.E5.88.86.E6.9E.90.E6.A8.A1.E6.9D.BF)。
+// 根据音视频内容分析模板唯一标识，获取音视频内容分析模板详情列表。返回结果包含符合条件的所有用户自定义音视频内容分析模板及[系统预置音视频内容分析模板](https://cloud.tencent.com/document/product/266/33476#.E9.A2.84.E7.BD.AE.E8.A7.86.E9.A2.91.E5.86.85.E5.AE.B9.E5.88.86.E6.9E.90.E6.A8.A1.E6.9D.BF)。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -2908,7 +2908,7 @@ func NewDescribeAIRecognitionTemplatesResponse() (response *DescribeAIRecognitio
 }
 
 // DescribeAIRecognitionTemplates
-// 根据视频内容识别模板唯一标识，获取视频内容识别模板详情列表。返回结果包含符合条件的所有用户自定义视频内容识别模板及[系统预置视频内容识别模板](https://cloud.tencent.com/document/product/266/33476#.E9.A2.84.E7.BD.AE.E8.A7.86.E9.A2.91.E5.86.85.E5.AE.B9.E8.AF.86.E5.88.AB.E6.A8.A1.E6.9D.BF)。
+// 根据音视频内容识别模板唯一标识，获取音视频内容识别模板详情列表。返回结果包含符合条件的所有用户自定义音视频内容识别模板及[系统预置音视频内容识别模板](https://cloud.tencent.com/document/product/266/33476#.E9.A2.84.E7.BD.AE.E8.A7.86.E9.A2.91.E5.86.85.E5.AE.B9.E8.AF.86.E5.88.AB.E6.A8.A1.E6.9D.BF)。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -2924,7 +2924,7 @@ func (c *Client) DescribeAIRecognitionTemplates(request *DescribeAIRecognitionTe
 }
 
 // DescribeAIRecognitionTemplates
-// 根据视频内容识别模板唯一标识，获取视频内容识别模板详情列表。返回结果包含符合条件的所有用户自定义视频内容识别模板及[系统预置视频内容识别模板](https://cloud.tencent.com/document/product/266/33476#.E9.A2.84.E7.BD.AE.E8.A7.86.E9.A2.91.E5.86.85.E5.AE.B9.E8.AF.86.E5.88.AB.E6.A8.A1.E6.9D.BF)。
+// 根据音视频内容识别模板唯一标识，获取音视频内容识别模板详情列表。返回结果包含符合条件的所有用户自定义音视频内容识别模板及[系统预置音视频内容识别模板](https://cloud.tencent.com/document/product/266/33476#.E9.A2.84.E7.BD.AE.E8.A7.86.E9.A2.91.E5.86.85.E5.AE.B9.E8.AF.86.E5.88.AB.E6.A8.A1.E6.9D.BF)。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -3377,7 +3377,7 @@ func NewDescribeContentReviewTemplatesResponse() (response *DescribeContentRevie
 }
 
 // DescribeContentReviewTemplates
-// 根据视频内容智能识别模板唯一标识，获取视频内容智能识别模板详情列表。返回结果包含符合条件的所有用户自定义模板及[系统预置内容智能识别模板](https://cloud.tencent.com/document/product/266/33476#.E9.A2.84.E7.BD.AE.E8.A7.86.E9.A2.91.E5.86.85.E5.AE.B9.E5.AE.A1.E6.A0.B8.E6.A8.A1.E6.9D.BF)。
+// 根据音视频内容审核模板唯一标识，获取音视频内容审核模板详情列表。返回结果包含符合条件的所有用户自定义模板及[系统预置内容审核模板](https://cloud.tencent.com/document/product/266/33476#.E9.A2.84.E7.BD.AE.E8.A7.86.E9.A2.91.E5.86.85.E5.AE.B9.E5.AE.A1.E6.A0.B8.E6.A8.A1.E6.9D.BF)。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -3393,7 +3393,7 @@ func (c *Client) DescribeContentReviewTemplates(request *DescribeContentReviewTe
 }
 
 // DescribeContentReviewTemplates
-// 根据视频内容智能识别模板唯一标识，获取视频内容智能识别模板详情列表。返回结果包含符合条件的所有用户自定义模板及[系统预置内容智能识别模板](https://cloud.tencent.com/document/product/266/33476#.E9.A2.84.E7.BD.AE.E8.A7.86.E9.A2.91.E5.86.85.E5.AE.B9.E5.AE.A1.E6.A0.B8.E6.A8.A1.E6.9D.BF)。
+// 根据音视频内容审核模板唯一标识，获取音视频内容审核模板详情列表。返回结果包含符合条件的所有用户自定义模板及[系统预置内容审核模板](https://cloud.tencent.com/document/product/266/33476#.E9.A2.84.E7.BD.AE.E8.A7.86.E9.A2.91.E5.86.85.E5.AE.B9.E5.AE.A1.E6.A0.B8.E6.A8.A1.E6.9D.BF)。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -3954,9 +3954,9 @@ func NewDescribeImageReviewUsageDataResponse() (response *DescribeImageReviewUsa
 }
 
 // DescribeImageReviewUsageData
-// 该接口返回查询时间范围内每天使用的图片智能识别用量信息。
+// 该接口返回查询时间范围内每天使用的图片审核用量信息。
 //
-//    1. 可以查询最近365天内的图片智能识别统计数据。
+//    1. 可以查询最近365天内的图片审核统计数据。
 //
 //    2. 查询时间跨度不超过90天。
 //
@@ -3972,9 +3972,9 @@ func (c *Client) DescribeImageReviewUsageData(request *DescribeImageReviewUsageD
 }
 
 // DescribeImageReviewUsageData
-// 该接口返回查询时间范围内每天使用的图片智能识别用量信息。
+// 该接口返回查询时间范围内每天使用的图片审核用量信息。
 //
-//    1. 可以查询最近365天内的图片智能识别统计数据。
+//    1. 可以查询最近365天内的图片审核统计数据。
 //
 //    2. 查询时间跨度不超过90天。
 //
@@ -5864,7 +5864,7 @@ func NewModifyAIAnalysisTemplateResponse() (response *ModifyAIAnalysisTemplateRe
 }
 
 // ModifyAIAnalysisTemplate
-// 修改用户自定义视频内容分析模板。
+// 修改用户自定义音视频内容分析模板。
 //
 // 
 //
@@ -5888,7 +5888,7 @@ func (c *Client) ModifyAIAnalysisTemplate(request *ModifyAIAnalysisTemplateReque
 }
 
 // ModifyAIAnalysisTemplate
-// 修改用户自定义视频内容分析模板。
+// 修改用户自定义音视频内容分析模板。
 //
 // 
 //
@@ -5941,7 +5941,7 @@ func NewModifyAIRecognitionTemplateResponse() (response *ModifyAIRecognitionTemp
 }
 
 // ModifyAIRecognitionTemplate
-// 修改用户自定义视频内容识别模板。
+// 修改用户自定义音视频内容识别模板。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -5965,7 +5965,7 @@ func (c *Client) ModifyAIRecognitionTemplate(request *ModifyAIRecognitionTemplat
 }
 
 // ModifyAIRecognitionTemplate
-// 修改用户自定义视频内容识别模板。
+// 修改用户自定义音视频内容识别模板。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -6233,7 +6233,7 @@ func NewModifyContentReviewTemplateResponse() (response *ModifyContentReviewTemp
 }
 
 // ModifyContentReviewTemplate
-// 修改用户自定义视频内容智能识别模板。
+// 修改用户自定义音视频内容审核模板。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -6255,7 +6255,7 @@ func (c *Client) ModifyContentReviewTemplate(request *ModifyContentReviewTemplat
 }
 
 // ModifyContentReviewTemplate
-// 修改用户自定义视频内容智能识别模板。
+// 修改用户自定义音视频内容审核模板。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -7635,9 +7635,9 @@ func NewProcessMediaResponse() (response *ProcessMediaResponse) {
 //
 // 7. 对视频转自适应码流（并加密）；
 //
-// 8. 智能识别（令人反感的信息、不安全的信息、不适宜的信息）；
+// 8. 内容审核（令人反感的信息、不安全的信息、不适宜的信息）；
 //
-// 9. 智能内容分析（标签、分类、封面、按帧标签）；
+// 9. 内容分析（标签、分类、封面、按帧标签）；
 //
 // 10. 内容识别（视频片头片尾、人脸、文本全文、文本关键词、语音全文、语音关键词、物体）。
 //
@@ -7694,9 +7694,9 @@ func (c *Client) ProcessMedia(request *ProcessMediaRequest) (response *ProcessMe
 //
 // 7. 对视频转自适应码流（并加密）；
 //
-// 8. 智能识别（令人反感的信息、不安全的信息、不适宜的信息）；
+// 8. 内容审核（令人反感的信息、不安全的信息、不适宜的信息）；
 //
-// 9. 智能内容分析（标签、分类、封面、按帧标签）；
+// 9. 内容分析（标签、分类、封面、按帧标签）；
 //
 // 10. 内容识别（视频片头片尾、人脸、文本全文、文本关键词、语音全文、语音关键词、物体）。
 //
@@ -8356,13 +8356,13 @@ func NewReviewImageResponse() (response *ReviewImageResponse) {
 }
 
 // ReviewImage
-// 对点播中的图片文件发起智能识别（令人反感的信息、不安全的信息、不适宜的信息）任务。
+// 对点播中的图片文件发起审核（令人反感的信息、不安全的信息、不适宜的信息）任务。
 //
 // 
 //
 // ><li>图片文件大小支持：文件 < 5M；</li>
 //
-// ><li>图片文件分辨率支持：建议分辨率大于256x256，否则可能会影响智能识别效果；</li>
+// ><li>图片文件分辨率支持：建议分辨率大于256x256，否则可能会影响审核效果；</li>
 //
 // ><li>图片文件支持格式：PNG、JPG、JPEG、BMP、GIF、WEBP格式。</li>
 //
@@ -8379,13 +8379,13 @@ func (c *Client) ReviewImage(request *ReviewImageRequest) (response *ReviewImage
 }
 
 // ReviewImage
-// 对点播中的图片文件发起智能识别（令人反感的信息、不安全的信息、不适宜的信息）任务。
+// 对点播中的图片文件发起审核（令人反感的信息、不安全的信息、不适宜的信息）任务。
 //
 // 
 //
 // ><li>图片文件大小支持：文件 < 5M；</li>
 //
-// ><li>图片文件分辨率支持：建议分辨率大于256x256，否则可能会影响智能识别效果；</li>
+// ><li>图片文件分辨率支持：建议分辨率大于256x256，否则可能会影响审核效果；</li>
 //
 // ><li>图片文件支持格式：PNG、JPG、JPEG、BMP、GIF、WEBP格式。</li>
 //

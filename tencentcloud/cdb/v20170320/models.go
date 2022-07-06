@@ -8661,6 +8661,15 @@ type ModifyAuditConfigRequestParams struct {
 	// 当关闭审计服务时，会删除用户的审计日志和文件，并删除该实例的所有审计策略。
 	// CloseAudit、LogExpireDay必须至少提供一个，如果两个都提供则按照CloseAudit优先的逻辑处理。
 	CloseAudit *bool `json:"CloseAudit,omitempty" name:"CloseAudit"`
+
+	// 高频审计日志保存时长。支持值包括：
+	// 7 - 一周
+	// 30 - 一个月；
+	// 180 - 六个月；
+	// 365 - 一年；
+	// 1095 - 三年；
+	// 1825 - 五年；
+	HighLogExpireDay *int64 `json:"HighLogExpireDay,omitempty" name:"HighLogExpireDay"`
 }
 
 type ModifyAuditConfigRequest struct {
@@ -8682,6 +8691,15 @@ type ModifyAuditConfigRequest struct {
 	// 当关闭审计服务时，会删除用户的审计日志和文件，并删除该实例的所有审计策略。
 	// CloseAudit、LogExpireDay必须至少提供一个，如果两个都提供则按照CloseAudit优先的逻辑处理。
 	CloseAudit *bool `json:"CloseAudit,omitempty" name:"CloseAudit"`
+
+	// 高频审计日志保存时长。支持值包括：
+	// 7 - 一周
+	// 30 - 一个月；
+	// 180 - 六个月；
+	// 365 - 一年；
+	// 1095 - 三年；
+	// 1825 - 五年；
+	HighLogExpireDay *int64 `json:"HighLogExpireDay,omitempty" name:"HighLogExpireDay"`
 }
 
 func (r *ModifyAuditConfigRequest) ToJsonString() string {
@@ -8699,6 +8717,7 @@ func (r *ModifyAuditConfigRequest) FromJsonString(s string) error {
 	delete(f, "InstanceId")
 	delete(f, "LogExpireDay")
 	delete(f, "CloseAudit")
+	delete(f, "HighLogExpireDay")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyAuditConfigRequest has unknown keys!", "")
 	}
@@ -9860,7 +9879,7 @@ type ModifyLocalBinlogConfigRequestParams struct {
 	// 实例 ID，格式如：cdb-c1nl9rpv。与云数据库控制台页面中显示的实例ID相同。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 本地binlog保留时长，可取值范围：[72,168]。
+	// 本地binlog保留时长，可取值范围：[120,168]。
 	SaveHours *int64 `json:"SaveHours,omitempty" name:"SaveHours"`
 
 	// 本地binlog空间使用率，可取值范围：[30,50]。
@@ -9873,7 +9892,7 @@ type ModifyLocalBinlogConfigRequest struct {
 	// 实例 ID，格式如：cdb-c1nl9rpv。与云数据库控制台页面中显示的实例ID相同。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 本地binlog保留时长，可取值范围：[72,168]。
+	// 本地binlog保留时长，可取值范围：[120,168]。
 	SaveHours *int64 `json:"SaveHours,omitempty" name:"SaveHours"`
 
 	// 本地binlog空间使用率，可取值范围：[30,50]。
@@ -10278,6 +10297,98 @@ func (r *OfflineIsolatedInstancesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *OfflineIsolatedInstancesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type OpenAuditServiceRequestParams struct {
+	// CDB实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 审计日志保存时长。支持值包括：
+	// 7 - 一周
+	// 30 - 一个月；
+	// 180 - 六个月；
+	// 365 - 一年；
+	// 1095 - 三年；
+	// 1825 - 五年；
+	LogExpireDay *uint64 `json:"LogExpireDay,omitempty" name:"LogExpireDay"`
+
+	// 高频审计日志保存时长。支持值包括：
+	// 7 - 一周
+	// 30 - 一个月；
+	// 180 - 六个月；
+	// 365 - 一年；
+	// 1095 - 三年；
+	// 1825 - 五年；
+	HighLogExpireDay *uint64 `json:"HighLogExpireDay,omitempty" name:"HighLogExpireDay"`
+}
+
+type OpenAuditServiceRequest struct {
+	*tchttp.BaseRequest
+	
+	// CDB实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 审计日志保存时长。支持值包括：
+	// 7 - 一周
+	// 30 - 一个月；
+	// 180 - 六个月；
+	// 365 - 一年；
+	// 1095 - 三年；
+	// 1825 - 五年；
+	LogExpireDay *uint64 `json:"LogExpireDay,omitempty" name:"LogExpireDay"`
+
+	// 高频审计日志保存时长。支持值包括：
+	// 7 - 一周
+	// 30 - 一个月；
+	// 180 - 六个月；
+	// 365 - 一年；
+	// 1095 - 三年；
+	// 1825 - 五年；
+	HighLogExpireDay *uint64 `json:"HighLogExpireDay,omitempty" name:"HighLogExpireDay"`
+}
+
+func (r *OpenAuditServiceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *OpenAuditServiceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "LogExpireDay")
+	delete(f, "HighLogExpireDay")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "OpenAuditServiceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type OpenAuditServiceResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type OpenAuditServiceResponse struct {
+	*tchttp.BaseResponse
+	Response *OpenAuditServiceResponseParams `json:"Response"`
+}
+
+func (r *OpenAuditServiceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *OpenAuditServiceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
