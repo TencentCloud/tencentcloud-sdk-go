@@ -734,6 +734,10 @@ type Cluster struct {
 	// 自动变配集群等级，针对托管集群生效
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AutoUpgradeClusterLevel *bool `json:"AutoUpgradeClusterLevel,omitempty" name:"AutoUpgradeClusterLevel"`
+
+	// 是否开启QGPU共享
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	QGPUShareEnable *bool `json:"QGPUShareEnable,omitempty" name:"QGPUShareEnable"`
 }
 
 type ClusterAdvancedSettings struct {
@@ -796,6 +800,9 @@ type ClusterAdvancedSettings struct {
 
 	// 集群VPC-CNI模式下是否是双栈集群，默认false，表明非双栈集群。
 	IsDualStack *bool `json:"IsDualStack,omitempty" name:"IsDualStack"`
+
+	// 是否开启QGPU共享
+	QGPUShareEnable *bool `json:"QGPUShareEnable,omitempty" name:"QGPUShareEnable"`
 }
 
 type ClusterAsGroup struct {
@@ -1097,6 +1104,14 @@ type ClusterNetworkSettings struct {
 	// 是否忽略 ServiceCIDR 冲突错误, 仅在 VPC-CNI 模式生效，默认不忽略
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IgnoreServiceCIDRConflict *bool `json:"IgnoreServiceCIDRConflict,omitempty" name:"IgnoreServiceCIDRConflict"`
+
+	// 集群VPC-CNI模式是否为非双栈集群，默认false，非双栈。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsDualStack *bool `json:"IsDualStack,omitempty" name:"IsDualStack"`
+
+	// 用于分配service的IP range，由系统自动分配
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Ipv6ServiceCIDR *string `json:"Ipv6ServiceCIDR,omitempty" name:"Ipv6ServiceCIDR"`
 }
 
 type ClusterPublicLB struct {
@@ -1598,6 +1613,9 @@ type CreateClusterNodePoolRequestParams struct {
 
 	// 资源标签
 	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
+
+	// 删除保护开关
+	DeletionProtection *bool `json:"DeletionProtection,omitempty" name:"DeletionProtection"`
 }
 
 type CreateClusterNodePoolRequest struct {
@@ -1641,6 +1659,9 @@ type CreateClusterNodePoolRequest struct {
 
 	// 资源标签
 	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
+
+	// 删除保护开关
+	DeletionProtection *bool `json:"DeletionProtection,omitempty" name:"DeletionProtection"`
 }
 
 func (r *CreateClusterNodePoolRequest) ToJsonString() string {
@@ -1668,6 +1689,7 @@ func (r *CreateClusterNodePoolRequest) FromJsonString(s string) error {
 	delete(f, "NodePoolOs")
 	delete(f, "OsCustomizeType")
 	delete(f, "Tags")
+	delete(f, "DeletionProtection")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateClusterNodePoolRequest has unknown keys!", "")
 	}
@@ -11636,6 +11658,9 @@ type ModifyClusterAttributeRequestParams struct {
 
 	// 自动变配集群等级
 	AutoUpgradeClusterLevel *AutoUpgradeClusterLevel `json:"AutoUpgradeClusterLevel,omitempty" name:"AutoUpgradeClusterLevel"`
+
+	// 是否开启QGPU共享
+	QGPUShareEnable *bool `json:"QGPUShareEnable,omitempty" name:"QGPUShareEnable"`
 }
 
 type ModifyClusterAttributeRequest struct {
@@ -11658,6 +11683,9 @@ type ModifyClusterAttributeRequest struct {
 
 	// 自动变配集群等级
 	AutoUpgradeClusterLevel *AutoUpgradeClusterLevel `json:"AutoUpgradeClusterLevel,omitempty" name:"AutoUpgradeClusterLevel"`
+
+	// 是否开启QGPU共享
+	QGPUShareEnable *bool `json:"QGPUShareEnable,omitempty" name:"QGPUShareEnable"`
 }
 
 func (r *ModifyClusterAttributeRequest) ToJsonString() string {
@@ -11678,6 +11706,7 @@ func (r *ModifyClusterAttributeRequest) FromJsonString(s string) error {
 	delete(f, "ClusterDesc")
 	delete(f, "ClusterLevel")
 	delete(f, "AutoUpgradeClusterLevel")
+	delete(f, "QGPUShareEnable")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyClusterAttributeRequest has unknown keys!", "")
 	}
@@ -11705,6 +11734,10 @@ type ModifyClusterAttributeResponseParams struct {
 	// 自动变配集群等级
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AutoUpgradeClusterLevel *AutoUpgradeClusterLevel `json:"AutoUpgradeClusterLevel,omitempty" name:"AutoUpgradeClusterLevel"`
+
+	// 是否开启QGPU共享
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	QGPUShareEnable *bool `json:"QGPUShareEnable,omitempty" name:"QGPUShareEnable"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -11888,6 +11921,9 @@ type ModifyClusterNodePoolRequestParams struct {
 
 	// 设置加入的节点是否参与调度，默认值为0，表示参与调度；非0表示不参与调度, 待节点初始化完成之后, 可执行kubectl uncordon nodename使node加入调度.
 	Unschedulable *int64 `json:"Unschedulable,omitempty" name:"Unschedulable"`
+
+	// 删除保护开关
+	DeletionProtection *bool `json:"DeletionProtection,omitempty" name:"DeletionProtection"`
 }
 
 type ModifyClusterNodePoolRequest struct {
@@ -11931,6 +11967,9 @@ type ModifyClusterNodePoolRequest struct {
 
 	// 设置加入的节点是否参与调度，默认值为0，表示参与调度；非0表示不参与调度, 待节点初始化完成之后, 可执行kubectl uncordon nodename使node加入调度.
 	Unschedulable *int64 `json:"Unschedulable,omitempty" name:"Unschedulable"`
+
+	// 删除保护开关
+	DeletionProtection *bool `json:"DeletionProtection,omitempty" name:"DeletionProtection"`
 }
 
 func (r *ModifyClusterNodePoolRequest) ToJsonString() string {
@@ -11958,6 +11997,7 @@ func (r *ModifyClusterNodePoolRequest) FromJsonString(s string) error {
 	delete(f, "ExtraArgs")
 	delete(f, "Tags")
 	delete(f, "Unschedulable")
+	delete(f, "DeletionProtection")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyClusterNodePoolRequest has unknown keys!", "")
 	}
@@ -12743,6 +12783,10 @@ type NodePool struct {
 	// 资源标签
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
+
+	// 删除保护开关
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeletionProtection *bool `json:"DeletionProtection,omitempty" name:"DeletionProtection"`
 }
 
 type NodePoolOption struct {

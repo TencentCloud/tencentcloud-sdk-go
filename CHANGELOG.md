@@ -1,3 +1,198 @@
+# Release v1.0.437
+
+## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
+
+### 第 21 次发布
+
+发布时间：2022-07-07 06:10:24
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [UsageDetail](https://cloud.tencent.com/document/api/1420/61525#UsageDetail)
+
+	* 新增成员：Cancel
+
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
+
+
+
+## 移动应用安全(ms) 版本：2018-04-08
+
+### 第 9 次发布
+
+发布时间：2022-07-07 06:13:41
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeResourceInstances](https://cloud.tencent.com/document/api/283/18578)
+
+	* <font color="#dd0000">**修改入参**：</font>Pids
+
+
+
+
+## 安全凭证服务(sts) 版本：2018-08-13
+
+### 第 10 次发布
+
+发布时间：2022-07-07 06:15:25
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [AssumeRole](https://cloud.tencent.com/document/api/1312/48197)
+
+	* 新增入参：SourceIdentity
+
+
+
+
+## 容器镜像服务(tcr) 版本：2019-09-24
+
+### 第 41 次发布
+
+发布时间：2022-07-07 06:16:05
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateNamespace](https://cloud.tencent.com/document/api/1141/42729)
+
+	* 新增入参：TagSpecification
+
+* [DescribeNamespaces](https://cloud.tencent.com/document/api/1141/42765)
+
+	* 新增入参：All, Filters
+
+
+修改数据结构：
+
+* [TcrNamespaceInfo](https://cloud.tencent.com/document/api/1141/41603#TcrNamespaceInfo)
+
+	* 新增成员：TagSpecification
+
+
+
+
+## 容器安全服务(tcss) 版本：2020-11-01
+
+### 第 21 次发布
+
+发布时间：2022-07-07 06:16:19
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [AbnormalProcessEventInfo](https://cloud.tencent.com/document/api/1285/65614#AbnormalProcessEventInfo)
+
+	* 新增成员：ContainerStatus
+
+* [AccessControlEventInfo](https://cloud.tencent.com/document/api/1285/65614#AccessControlEventInfo)
+
+	* 新增成员：ContainerStatus
+
+* [EscapeEventInfo](https://cloud.tencent.com/document/api/1285/65614#EscapeEventInfo)
+
+	* 新增成员：ContainerStatus
+
+* [ReverseShellEventInfo](https://cloud.tencent.com/document/api/1285/65614#ReverseShellEventInfo)
+
+	* 新增成员：ContainerStatus
+
+* [RiskSyscallEventInfo](https://cloud.tencent.com/document/api/1285/65614#RiskSyscallEventInfo)
+
+	* 新增成员：ContainerStatus
+
+
+
+
+## 图像分析(tiia) 版本：2019-05-29
+
+### 第 24 次发布
+
+发布时间：2022-07-07 06:17:32
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ObjectInfo](https://cloud.tencent.com/document/api/865/35474#ObjectInfo)
+
+	* 新增成员：AllBox
+
+
+
+
+## 容器服务(tke) 版本：2018-05-25
+
+### 第 110 次发布
+
+发布时间：2022-07-07 06:17:44
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateClusterNodePool](https://cloud.tencent.com/document/api/457/49436)
+
+	* 新增入参：DeletionProtection
+
+* [ModifyClusterAttribute](https://cloud.tencent.com/document/api/457/42938)
+
+	* 新增入参：QGPUShareEnable
+
+	* 新增出参：QGPUShareEnable
+
+* [ModifyClusterNodePool](https://cloud.tencent.com/document/api/457/49431)
+
+	* 新增入参：DeletionProtection
+
+
+修改数据结构：
+
+* [Cluster](https://cloud.tencent.com/document/api/457/31866#Cluster)
+
+	* 新增成员：QGPUShareEnable
+
+* [ClusterAdvancedSettings](https://cloud.tencent.com/document/api/457/31866#ClusterAdvancedSettings)
+
+	* 新增成员：QGPUShareEnable
+
+* [ClusterNetworkSettings](https://cloud.tencent.com/document/api/457/31866#ClusterNetworkSettings)
+
+	* 新增成员：IsDualStack, Ipv6ServiceCIDR
+
+* [NodePool](https://cloud.tencent.com/document/api/457/31866#NodePool)
+
+	* 新增成员：DeletionProtection
+
+
+
+
 # Release v1.0.436
 
 ## 云硬盘(cbs) 版本：2017-03-12

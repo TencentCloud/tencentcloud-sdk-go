@@ -4738,7 +4738,10 @@ type DescribeOverviewL7DataRequestParams struct {
 	// RFC3339格式，客户端时间
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
-	// 指标列表
+	// 指标列表，支持的指标
+	// l7Flow_outFlux: 访问流量
+	// l7Flow_request: 访问请求数
+	// l7Flow_outBandwidth: 访问带宽
 	MetricNames []*string `json:"MetricNames,omitempty" name:"MetricNames"`
 
 	// 时间间隔，选填{min, 5min, hour, day, week}
@@ -4763,7 +4766,10 @@ type DescribeOverviewL7DataRequest struct {
 	// RFC3339格式，客户端时间
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
-	// 指标列表
+	// 指标列表，支持的指标
+	// l7Flow_outFlux: 访问流量
+	// l7Flow_request: 访问请求数
+	// l7Flow_outBandwidth: 访问带宽
 	MetricNames []*string `json:"MetricNames,omitempty" name:"MetricNames"`
 
 	// 时间间隔，选填{min, 5min, hour, day, week}
@@ -5491,7 +5497,11 @@ type DescribeTimingL4DataRequestParams struct {
 	// RFC3339格式，客户端时间
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
-	// 指标列表
+	// 支持的指标：
+	// l4Flow_connections: 访问连接数
+	// l4Flow_flux: 访问总流量
+	// l4Flow_inFlux: 访问入流量
+	// l4Flow_outFlux: 访问出流量
 	MetricNames []*string `json:"MetricNames,omitempty" name:"MetricNames"`
 
 	// 站点id列表
@@ -5525,7 +5535,11 @@ type DescribeTimingL4DataRequest struct {
 	// RFC3339格式，客户端时间
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
-	// 指标列表
+	// 支持的指标：
+	// l4Flow_connections: 访问连接数
+	// l4Flow_flux: 访问总流量
+	// l4Flow_inFlux: 访问入流量
+	// l4Flow_outFlux: 访问出流量
 	MetricNames []*string `json:"MetricNames,omitempty" name:"MetricNames"`
 
 	// 站点id列表
@@ -5618,7 +5632,10 @@ type DescribeTimingL7AnalysisDataRequestParams struct {
 	// RFC3339标准，客户端时间
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
-	// 时序类访问流量指标
+	// 指标列表，支持的指标
+	// l7Flow_outFlux: 访问流量
+	// l7Flow_request: 访问请求数
+	// l7Flow_outBandwidth: 访问带宽
 	MetricNames []*string `json:"MetricNames,omitempty" name:"MetricNames"`
 
 	// 时间间隔，选填{min, 5min, hour, day, week}
@@ -5640,7 +5657,10 @@ type DescribeTimingL7AnalysisDataRequest struct {
 	// RFC3339标准，客户端时间
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
-	// 时序类访问流量指标
+	// 指标列表，支持的指标
+	// l7Flow_outFlux: 访问流量
+	// l7Flow_request: 访问请求数
+	// l7Flow_outBandwidth: 访问带宽
 	MetricNames []*string `json:"MetricNames,omitempty" name:"MetricNames"`
 
 	// 时间间隔，选填{min, 5min, hour, day, week}
@@ -5717,7 +5737,9 @@ type DescribeTimingL7CacheDataRequestParams struct {
 	// RFC3339标准，客户端时间
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
-	// 时序类访问流量指标列表
+	// 时序类访问流量指标列表，支持的指标
+	// l7Cache_outFlux: 访问流量
+	// l7Cache_request: 访问请求数
 	MetricNames []*string `json:"MetricNames,omitempty" name:"MetricNames"`
 
 	// 时间间隔，选填{min, 5min, hour, day, week}
@@ -5741,7 +5763,9 @@ type DescribeTimingL7CacheDataRequest struct {
 	// RFC3339标准，客户端时间
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
-	// 时序类访问流量指标列表
+	// 时序类访问流量指标列表，支持的指标
+	// l7Cache_outFlux: 访问流量
+	// l7Cache_request: 访问请求数
 	MetricNames []*string `json:"MetricNames,omitempty" name:"MetricNames"`
 
 	// 时间间隔，选填{min, 5min, hour, day, week}

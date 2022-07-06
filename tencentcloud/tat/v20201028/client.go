@@ -1264,6 +1264,7 @@ func NewPreviewReplacedCommandContentResponse() (response *PreviewReplacedComman
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_CONFLICTPARAMETER = "InvalidParameter.ConflictParameter"
+//  INVALIDPARAMETER_PARAMETERNAMEDUPLICATED = "InvalidParameter.ParameterNameDuplicated"
 //  INVALIDPARAMETERVALUE_COMMANDCONTENTINVALID = "InvalidParameterValue.CommandContentInvalid"
 //  INVALIDPARAMETERVALUE_COMMANDNAMEDUPLICATED = "InvalidParameterValue.CommandNameDuplicated"
 //  INVALIDPARAMETERVALUE_INVALIDCOMMANDID = "InvalidParameterValue.InvalidCommandId"
@@ -1292,6 +1293,7 @@ func (c *Client) PreviewReplacedCommandContent(request *PreviewReplacedCommandCo
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_CONFLICTPARAMETER = "InvalidParameter.ConflictParameter"
+//  INVALIDPARAMETER_PARAMETERNAMEDUPLICATED = "InvalidParameter.ParameterNameDuplicated"
 //  INVALIDPARAMETERVALUE_COMMANDCONTENTINVALID = "InvalidParameterValue.CommandContentInvalid"
 //  INVALIDPARAMETERVALUE_COMMANDNAMEDUPLICATED = "InvalidParameterValue.CommandNameDuplicated"
 //  INVALIDPARAMETERVALUE_INVALIDCOMMANDID = "InvalidParameterValue.InvalidCommandId"

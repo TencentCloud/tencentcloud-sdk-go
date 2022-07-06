@@ -60,6 +60,9 @@ type AssumeRoleRequestParams struct {
 
 	// 会话标签列表。最多可以传递 50 个会话标签，不支持包含相同标签键。
 	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
+
+	// 调用者身份uin
+	SourceIdentity *string `json:"SourceIdentity,omitempty" name:"SourceIdentity"`
 }
 
 type AssumeRoleRequest struct {
@@ -92,6 +95,9 @@ type AssumeRoleRequest struct {
 
 	// 会话标签列表。最多可以传递 50 个会话标签，不支持包含相同标签键。
 	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
+
+	// 调用者身份uin
+	SourceIdentity *string `json:"SourceIdentity,omitempty" name:"SourceIdentity"`
 }
 
 func (r *AssumeRoleRequest) ToJsonString() string {
@@ -112,6 +118,7 @@ func (r *AssumeRoleRequest) FromJsonString(s string) error {
 	delete(f, "Policy")
 	delete(f, "ExternalId")
 	delete(f, "Tags")
+	delete(f, "SourceIdentity")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AssumeRoleRequest has unknown keys!", "")
 	}

@@ -167,6 +167,16 @@ type AbnormalProcessEventInfo struct {
 	// 容器隔离操作来源
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ContainerIsolateOperationSrc *string `json:"ContainerIsolateOperationSrc,omitempty" name:"ContainerIsolateOperationSrc"`
+
+	// 容器状态
+	// 正在运行: RUNNING
+	// 暂停: PAUSED
+	// 停止: STOPPED
+	// 已经创建: CREATED
+	// 已经销毁: DESTROYED
+	// 正在重启中: RESTARTING
+	// 迁移中: REMOVING
+	ContainerStatus *string `json:"ContainerStatus,omitempty" name:"ContainerStatus"`
 }
 
 type AbnormalProcessRuleInfo struct {
@@ -362,6 +372,16 @@ type AccessControlEventInfo struct {
 
 	// 容器隔离操作来源
 	ContainerIsolateOperationSrc *string `json:"ContainerIsolateOperationSrc,omitempty" name:"ContainerIsolateOperationSrc"`
+
+	// 容器状态
+	// 正在运行: RUNNING
+	// 暂停: PAUSED
+	// 停止: STOPPED
+	// 已经创建: CREATED
+	// 已经销毁: DESTROYED
+	// 正在重启中: RESTARTING
+	// 迁移中: REMOVING
+	ContainerStatus *string `json:"ContainerStatus,omitempty" name:"ContainerStatus"`
 }
 
 type AccessControlRuleInfo struct {
@@ -11958,6 +11978,7 @@ type DescribeVirusListRequestParams struct {
 	// <li>TaskId- string - 是否必填：否 - 任务ID</li>
 	// <li>ContainerNetStatus - String -是否必填: 否 -  容器网络状态筛选 NORMAL ISOLATED ISOLATING RESTORING RESTORE_FAILED</li>
 	// <li>TimeRange - string -是否必填: 否 - 时间范围筛选 ["2022-03-31 16:55:00", "2022-03-31 17:00:00"]</li>
+	// <li>ContainerStatus - string -是否必填: 否 - 容器状态 RUNNING PAUSED STOPPED CREATED DESTROYED RESTARTING REMOVING</li>
 	Filters []*RunTimeFilters `json:"Filters,omitempty" name:"Filters"`
 
 	// 排序方式
@@ -11988,6 +12009,7 @@ type DescribeVirusListRequest struct {
 	// <li>TaskId- string - 是否必填：否 - 任务ID</li>
 	// <li>ContainerNetStatus - String -是否必填: 否 -  容器网络状态筛选 NORMAL ISOLATED ISOLATING RESTORING RESTORE_FAILED</li>
 	// <li>TimeRange - string -是否必填: 否 - 时间范围筛选 ["2022-03-31 16:55:00", "2022-03-31 17:00:00"]</li>
+	// <li>ContainerStatus - string -是否必填: 否 - 容器状态 RUNNING PAUSED STOPPED CREATED DESTROYED RESTARTING REMOVING</li>
 	Filters []*RunTimeFilters `json:"Filters,omitempty" name:"Filters"`
 
 	// 排序方式
@@ -12698,6 +12720,16 @@ type EscapeEventInfo struct {
 	// 容器隔离操作来源
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ContainerIsolateOperationSrc *string `json:"ContainerIsolateOperationSrc,omitempty" name:"ContainerIsolateOperationSrc"`
+
+	// 容器状态
+	// 正在运行: RUNNING
+	// 暂停: PAUSED
+	// 停止: STOPPED
+	// 已经创建: CREATED
+	// 已经销毁: DESTROYED
+	// 正在重启中: RESTARTING
+	// 迁移中: REMOVING
+	ContainerStatus *string `json:"ContainerStatus,omitempty" name:"ContainerStatus"`
 }
 
 type EscapeRule struct {
@@ -15168,6 +15200,16 @@ type ReverseShellEventInfo struct {
 
 	// 容器隔离操作来源
 	ContainerIsolateOperationSrc *string `json:"ContainerIsolateOperationSrc,omitempty" name:"ContainerIsolateOperationSrc"`
+
+	// 容器状态
+	// 正在运行: RUNNING
+	// 暂停: PAUSED
+	// 停止: STOPPED
+	// 已经创建: CREATED
+	// 已经销毁: DESTROYED
+	// 正在重启中: RESTARTING
+	// 迁移中: REMOVING
+	ContainerStatus *string `json:"ContainerStatus,omitempty" name:"ContainerStatus"`
 }
 
 type ReverseShellWhiteListBaseInfo struct {
@@ -15314,6 +15356,16 @@ type RiskSyscallEventInfo struct {
 
 	// 容器隔离操作来源
 	ContainerIsolateOperationSrc *string `json:"ContainerIsolateOperationSrc,omitempty" name:"ContainerIsolateOperationSrc"`
+
+	// 容器状态
+	// 正在运行: RUNNING
+	// 暂停: PAUSED
+	// 停止: STOPPED
+	// 已经创建: CREATED
+	// 已经销毁: DESTROYED
+	// 正在重启中: RESTARTING
+	// 迁移中: REMOVING
+	ContainerStatus *string `json:"ContainerStatus,omitempty" name:"ContainerStatus"`
 }
 
 type RiskSyscallWhiteListBaseInfo struct {
@@ -16252,8 +16304,14 @@ type VirusInfo struct {
 	// 容器id
 	ContainerId *string `json:"ContainerId,omitempty" name:"ContainerId"`
 
-	// 容器状态，CS_RUNING:运行， CS_PAUSE:暂停，CS_STOP:停止，
-	// 												       CS_CREATE:已经创建， CS_DESTORY:销毁
+	// 容器状态
+	// 正在运行: RUNNING
+	// 暂停: PAUSED
+	// 停止: STOPPED
+	// 已经创建: CREATED
+	// 已经销毁: DESTROYED
+	// 正在重启中: RESTARTING
+	// 迁移中: REMOVING
 	ContainerStatus *string `json:"ContainerStatus,omitempty" name:"ContainerStatus"`
 
 	// 镜像名称

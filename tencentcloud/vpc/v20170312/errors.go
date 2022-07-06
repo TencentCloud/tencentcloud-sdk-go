@@ -464,6 +464,9 @@ const (
 	// 缺少参数错误。
 	MISSINGPARAMETER = "MissingParameter"
 
+	// 互斥的任务正在执行。
+	OPERATIONDENIED_MUTEXTASKRUNNING = "OperationDenied.MutexTaskRunning"
+
 	// 资源被占用。
 	RESOURCEINUSE = "ResourceInUse"
 

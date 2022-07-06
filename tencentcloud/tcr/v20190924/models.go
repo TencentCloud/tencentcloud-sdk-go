@@ -929,6 +929,9 @@ type CreateNamespaceRequestParams struct {
 
 	// 是否公开，true为公开，fale为私有
 	IsPublic *bool `json:"IsPublic,omitempty" name:"IsPublic"`
+
+	// 云标签描述
+	TagSpecification *TagSpecification `json:"TagSpecification,omitempty" name:"TagSpecification"`
 }
 
 type CreateNamespaceRequest struct {
@@ -942,6 +945,9 @@ type CreateNamespaceRequest struct {
 
 	// 是否公开，true为公开，fale为私有
 	IsPublic *bool `json:"IsPublic,omitempty" name:"IsPublic"`
+
+	// 云标签描述
+	TagSpecification *TagSpecification `json:"TagSpecification,omitempty" name:"TagSpecification"`
 }
 
 func (r *CreateNamespaceRequest) ToJsonString() string {
@@ -959,6 +965,7 @@ func (r *CreateNamespaceRequest) FromJsonString(s string) error {
 	delete(f, "RegistryId")
 	delete(f, "NamespaceName")
 	delete(f, "IsPublic")
+	delete(f, "TagSpecification")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateNamespaceRequest has unknown keys!", "")
 	}
@@ -3946,8 +3953,14 @@ type DescribeNamespacesRequestParams struct {
 	// 每页个数
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 页偏移
+	// 页面偏移（第几页）
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 列出所有命名空间
+	All *bool `json:"All,omitempty" name:"All"`
+
+	// 过滤条件
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 }
 
 type DescribeNamespacesRequest struct {
@@ -3962,8 +3975,14 @@ type DescribeNamespacesRequest struct {
 	// 每页个数
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 页偏移
+	// 页面偏移（第几页）
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 列出所有命名空间
+	All *bool `json:"All,omitempty" name:"All"`
+
+	// 过滤条件
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 }
 
 func (r *DescribeNamespacesRequest) ToJsonString() string {
@@ -3982,6 +4001,8 @@ func (r *DescribeNamespacesRequest) FromJsonString(s string) error {
 	delete(f, "NamespaceName")
 	delete(f, "Limit")
 	delete(f, "Offset")
+	delete(f, "All")
+	delete(f, "Filters")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeNamespacesRequest has unknown keys!", "")
 	}
@@ -7169,6 +7190,10 @@ type TcrNamespaceInfo struct {
 
 	// 命名空间的Id
 	NamespaceId *int64 `json:"NamespaceId,omitempty" name:"NamespaceId"`
+
+	// 实例云标签
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TagSpecification *TagSpecification `json:"TagSpecification,omitempty" name:"TagSpecification"`
 }
 
 type TcrRepositoryInfo struct {

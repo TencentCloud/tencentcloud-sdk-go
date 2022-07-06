@@ -2090,7 +2090,7 @@ func (r *UploadFilesRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type UploadFilesResponseParams struct {
-	// 文件id数组
+	// 文件id数组，有效期一个小时
 	FileIds []*string `json:"FileIds,omitempty" name:"FileIds"`
 
 	// 上传成功文件数量
@@ -2131,8 +2131,12 @@ type UsageDetail struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Date *string `json:"Date,omitempty" name:"Date"`
 
-	// 消耗量
+	// 消耗数量
 	Usage *uint64 `json:"Usage,omitempty" name:"Usage"`
+
+	// 撤回数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Cancel *uint64 `json:"Cancel,omitempty" name:"Cancel"`
 }
 
 type UserInfo struct {

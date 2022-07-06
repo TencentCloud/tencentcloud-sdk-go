@@ -762,10 +762,7 @@ func (r *DeleteShieldInstancesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeResourceInstancesRequestParams struct {
-	// 资源类别id数组，13624：加固专业版，12750：企业版。空数组表示返回全部资源。
-	Pids []*uint64 `json:"Pids,omitempty" name:"Pids"`
-
-	// 支持通过资源id，pid进行查询
+	// 支持CreateTime、ExpireTime、AppName、AppPkgName、BindValue、IsBind过滤
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 偏移量，默认为0
@@ -773,6 +770,9 @@ type DescribeResourceInstancesRequestParams struct {
 
 	// 数量限制，默认为20，最大值为100。
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 资源类别id数组，13624：加固专业版，12750：企业版。空数组表示返回全部资源。
+	Pids []*uint64 `json:"Pids,omitempty" name:"Pids"`
 
 	// 按某个字段排序，目前支持CreateTime、ExpireTime其中的一个排序。
 	OrderField *string `json:"OrderField,omitempty" name:"OrderField"`
@@ -784,10 +784,7 @@ type DescribeResourceInstancesRequestParams struct {
 type DescribeResourceInstancesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 资源类别id数组，13624：加固专业版，12750：企业版。空数组表示返回全部资源。
-	Pids []*uint64 `json:"Pids,omitempty" name:"Pids"`
-
-	// 支持通过资源id，pid进行查询
+	// 支持CreateTime、ExpireTime、AppName、AppPkgName、BindValue、IsBind过滤
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 偏移量，默认为0
@@ -795,6 +792,9 @@ type DescribeResourceInstancesRequest struct {
 
 	// 数量限制，默认为20，最大值为100。
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 资源类别id数组，13624：加固专业版，12750：企业版。空数组表示返回全部资源。
+	Pids []*uint64 `json:"Pids,omitempty" name:"Pids"`
 
 	// 按某个字段排序，目前支持CreateTime、ExpireTime其中的一个排序。
 	OrderField *string `json:"OrderField,omitempty" name:"OrderField"`
@@ -815,10 +815,10 @@ func (r *DescribeResourceInstancesRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	delete(f, "Pids")
 	delete(f, "Filters")
 	delete(f, "Offset")
 	delete(f, "Limit")
+	delete(f, "Pids")
 	delete(f, "OrderField")
 	delete(f, "OrderDirection")
 	if len(f) > 0 {
