@@ -128,6 +128,7 @@ import (
 	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/iottid"
 	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/iotvideo"
 	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/iotvideo"
+	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/iotvideo"
 	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/iotvideoindustry"
 	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ivld"
 	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/kms"

@@ -592,7 +592,10 @@ type CreateFlowRequestParams struct {
 	// 应用相关信息
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
-	// 发送类型(true为无序签,false为顺序签)
+	// 发送类型：
+	// true：无序签
+	// false：有序签
+	// 注：默认为false（有序签），请和模板中的配置保持一致
 	Unordered *bool `json:"Unordered,omitempty" name:"Unordered"`
 
 	// 签署流程的签署截止时间。
@@ -636,7 +639,10 @@ type CreateFlowRequest struct {
 	// 应用相关信息
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
-	// 发送类型(true为无序签,false为顺序签)
+	// 发送类型：
+	// true：无序签
+	// false：有序签
+	// 注：默认为false（有序签），请和模板中的配置保持一致
 	Unordered *bool `json:"Unordered,omitempty" name:"Unordered"`
 
 	// 签署流程的签署截止时间。

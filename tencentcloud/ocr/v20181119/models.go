@@ -5279,9 +5279,6 @@ func (r *RecognizeOnlineTaxiItineraryOCRResponse) FromJsonString(s string) error
 
 // Predefined struct for user
 type RecognizePhilippinesDrivingLicenseOCRRequestParams struct {
-	// 是否返回人像照片。
-	ReturnHeadImage *bool `json:"ReturnHeadImage,omitempty" name:"ReturnHeadImage"`
-
 	// 图片的 Base64 值。
 	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
 	// 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
@@ -5294,14 +5291,14 @@ type RecognizePhilippinesDrivingLicenseOCRRequestParams struct {
 	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
 	// 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
+
+	// 是否返回人像照片。
+	ReturnHeadImage *bool `json:"ReturnHeadImage,omitempty" name:"ReturnHeadImage"`
 }
 
 type RecognizePhilippinesDrivingLicenseOCRRequest struct {
 	*tchttp.BaseRequest
 	
-	// 是否返回人像照片。
-	ReturnHeadImage *bool `json:"ReturnHeadImage,omitempty" name:"ReturnHeadImage"`
-
 	// 图片的 Base64 值。
 	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
 	// 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
@@ -5314,6 +5311,9 @@ type RecognizePhilippinesDrivingLicenseOCRRequest struct {
 	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
 	// 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
+
+	// 是否返回人像照片。
+	ReturnHeadImage *bool `json:"ReturnHeadImage,omitempty" name:"ReturnHeadImage"`
 }
 
 func (r *RecognizePhilippinesDrivingLicenseOCRRequest) ToJsonString() string {
@@ -5328,9 +5328,9 @@ func (r *RecognizePhilippinesDrivingLicenseOCRRequest) FromJsonString(s string) 
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	delete(f, "ReturnHeadImage")
 	delete(f, "ImageBase64")
 	delete(f, "ImageUrl")
+	delete(f, "ReturnHeadImage")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RecognizePhilippinesDrivingLicenseOCRRequest has unknown keys!", "")
 	}
@@ -6329,6 +6329,12 @@ type SmartStructuralOCRRequestParams struct {
 	// 若客户只想返回姓名、性别两个字段的识别结果，则输入
 	// ItemNames=["姓名","性别"]
 	ItemNames []*string `json:"ItemNames,omitempty" name:"ItemNames"`
+
+	// 是否开启PDF识别，默认值为false，开启后可同时支持图片和PDF的识别。
+	IsPdf *bool `json:"IsPdf,omitempty" name:"IsPdf"`
+
+	// 需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
+	PdfPageNumber *uint64 `json:"PdfPageNumber,omitempty" name:"PdfPageNumber"`
 }
 
 type SmartStructuralOCRRequest struct {
@@ -6351,6 +6357,12 @@ type SmartStructuralOCRRequest struct {
 	// 若客户只想返回姓名、性别两个字段的识别结果，则输入
 	// ItemNames=["姓名","性别"]
 	ItemNames []*string `json:"ItemNames,omitempty" name:"ItemNames"`
+
+	// 是否开启PDF识别，默认值为false，开启后可同时支持图片和PDF的识别。
+	IsPdf *bool `json:"IsPdf,omitempty" name:"IsPdf"`
+
+	// 需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
+	PdfPageNumber *uint64 `json:"PdfPageNumber,omitempty" name:"PdfPageNumber"`
 }
 
 func (r *SmartStructuralOCRRequest) ToJsonString() string {
@@ -6368,6 +6380,8 @@ func (r *SmartStructuralOCRRequest) FromJsonString(s string) error {
 	delete(f, "ImageUrl")
 	delete(f, "ImageBase64")
 	delete(f, "ItemNames")
+	delete(f, "IsPdf")
+	delete(f, "PdfPageNumber")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SmartStructuralOCRRequest has unknown keys!", "")
 	}

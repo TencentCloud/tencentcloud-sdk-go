@@ -66,6 +66,7 @@ func NewApplyConcurrentResponse() (response *ApplyConcurrentResponse) {
 // 申请并发
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_PROCESSTIMEOUT = "FailedOperation.ProcessTimeout"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER_JSONPARSEERROR = "InvalidParameter.JsonParseError"
@@ -81,6 +82,7 @@ func (c *Client) ApplyConcurrent(request *ApplyConcurrentRequest) (response *App
 // 申请并发
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_PROCESSTIMEOUT = "FailedOperation.ProcessTimeout"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER_JSONPARSEERROR = "InvalidParameter.JsonParseError"
@@ -125,6 +127,7 @@ func NewCreateSessionResponse() (response *CreateSessionResponse) {
 // 创建会话
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_LOCKTIMEOUT = "FailedOperation.LockTimeout"
 //  FAILEDOPERATION_PROCESSTIMEOUT = "FailedOperation.ProcessTimeout"
 //  FAILEDOPERATION_SLOWDOWN = "FailedOperation.SlowDown"
@@ -144,6 +147,7 @@ func (c *Client) CreateSession(request *CreateSessionRequest) (response *CreateS
 // 创建会话
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_LOCKTIMEOUT = "FailedOperation.LockTimeout"
 //  FAILEDOPERATION_PROCESSTIMEOUT = "FailedOperation.ProcessTimeout"
 //  FAILEDOPERATION_SLOWDOWN = "FailedOperation.SlowDown"
@@ -192,6 +196,7 @@ func NewDestroySessionResponse() (response *DestroySessionResponse) {
 // 销毁会话
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_PROCESSTIMEOUT = "FailedOperation.ProcessTimeout"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER_JSONPARSEERROR = "InvalidParameter.JsonParseError"
@@ -204,6 +209,7 @@ func (c *Client) DestroySession(request *DestroySessionRequest) (response *Destr
 // 销毁会话
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_PROCESSTIMEOUT = "FailedOperation.ProcessTimeout"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER_JSONPARSEERROR = "InvalidParameter.JsonParseError"

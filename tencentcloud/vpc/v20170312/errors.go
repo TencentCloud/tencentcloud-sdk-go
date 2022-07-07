@@ -29,11 +29,20 @@ const (
 	// 地址没有弹性网卡信息。
 	FAILEDOPERATION_ADDRESSENIINFONOTFOUND = "FailedOperation.AddressEniInfoNotFound"
 
+	// 账户余额不足。
+	FAILEDOPERATION_BALANCEINSUFFICIENT = "FailedOperation.BalanceInsufficient"
+
 	// 不支持的地域。
 	FAILEDOPERATION_INVALIDREGION = "FailedOperation.InvalidRegion"
 
+	// 未找到实例的主网卡。
+	FAILEDOPERATION_MASTERENINOTFOUND = "FailedOperation.MasterEniNotFound"
+
 	// 网络探测超时，请稍后重试。
 	FAILEDOPERATION_NETDETECTTIMEOUT = "FailedOperation.NetDetectTimeOut"
+
+	// 任务执行失败。
+	FAILEDOPERATION_TASKFAILED = "FailedOperation.TaskFailed"
 
 	// 内部错误。
 	INTERNALERROR = "InternalError"
@@ -494,6 +503,9 @@ const (
 	// 未授权操作。
 	UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 
+	// 无权限申请AnycastEip资源。
+	UNAUTHORIZEDOPERATION_ANYCASTEIP = "UnauthorizedOperation.AnycastEip"
+
 	// 绑定关系不存在。
 	UNAUTHORIZEDOPERATION_ATTACHMENTNOTFOUND = "UnauthorizedOperation.AttachmentNotFound"
 
@@ -668,6 +680,9 @@ const (
 	// 指定的CDC已存在本地网关。
 	UNSUPPORTEDOPERATION_LOCALGATEWAYALREADYEXISTS = "UnsupportedOperation.LocalGatewayAlreadyExists"
 
+	// 账户不支持修改公网IP的该属性。
+	UNSUPPORTEDOPERATION_MODIFYADDRESSATTRIBUTE = "UnsupportedOperation.ModifyAddressAttribute"
+
 	// 资源互斥操作任务正在执行。
 	UNSUPPORTEDOPERATION_MUTEXOPERATIONTASKRUNNING = "UnsupportedOperation.MutexOperationTaskRunning"
 
@@ -700,6 +715,9 @@ const (
 
 	// 指定的路由策略不支持发布或撤销至云联网。
 	UNSUPPORTEDOPERATION_NOTIFYCCN = "UnsupportedOperation.NotifyCcn"
+
+	// 此产品计费方式已下线，请尝试其他计费方式。
+	UNSUPPORTEDOPERATION_OFFLINECHARGETYPE = "UnsupportedOperation.OfflineChargeType"
 
 	// 仅支持专业版Ckafka。
 	UNSUPPORTEDOPERATION_ONLYSUPPORTPROFESSIONKAFKA = "UnsupportedOperation.OnlySupportProfessionKafka"

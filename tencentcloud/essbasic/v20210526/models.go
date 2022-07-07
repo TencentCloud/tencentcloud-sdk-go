@@ -2010,7 +2010,7 @@ type TemplateInfo struct {
 	// 模板中的流程参与人信息
 	Recipients []*Recipient `json:"Recipients,omitempty" name:"Recipients"`
 
-	// 模板类型：1-静默签；2-静默签授权；3-普通模板
+	// 模板类型：1-静默签；3-普通模板
 	TemplateType *int64 `json:"TemplateType,omitempty" name:"TemplateType"`
 
 	// 是否是发起人

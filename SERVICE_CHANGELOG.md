@@ -1,155 +1,33 @@
 # 本版本更新包含以下内容：
 
-## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
-
-### 第 21 次发布
-
-发布时间：2022-07-07 06:10:24
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [UsageDetail](https://cloud.tencent.com/document/api/1420/61525#UsageDetail)
-
-	* 新增成员：Cancel
-
-
-
-
-## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
-
-
-
-## 移动应用安全(ms) 版本：2018-04-08
-
-### 第 9 次发布
-
-发布时间：2022-07-07 06:13:41
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [DescribeResourceInstances](https://cloud.tencent.com/document/api/283/18578)
-
-	* <font color="#dd0000">**修改入参**：</font>Pids
-
-
-
-
-## 安全凭证服务(sts) 版本：2018-08-13
-
-### 第 10 次发布
-
-发布时间：2022-07-07 06:15:25
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [AssumeRole](https://cloud.tencent.com/document/api/1312/48197)
-
-	* 新增入参：SourceIdentity
-
-
-
-
-## 容器镜像服务(tcr) 版本：2019-09-24
-
-### 第 41 次发布
-
-发布时间：2022-07-07 06:16:05
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CreateNamespace](https://cloud.tencent.com/document/api/1141/42729)
-
-	* 新增入参：TagSpecification
-
-* [DescribeNamespaces](https://cloud.tencent.com/document/api/1141/42765)
-
-	* 新增入参：All, Filters
-
-
-修改数据结构：
-
-* [TcrNamespaceInfo](https://cloud.tencent.com/document/api/1141/41603#TcrNamespaceInfo)
-
-	* 新增成员：TagSpecification
-
-
-
-
-## 容器安全服务(tcss) 版本：2020-11-01
-
-### 第 21 次发布
-
-发布时间：2022-07-07 06:16:19
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [AbnormalProcessEventInfo](https://cloud.tencent.com/document/api/1285/65614#AbnormalProcessEventInfo)
-
-	* 新增成员：ContainerStatus
-
-* [AccessControlEventInfo](https://cloud.tencent.com/document/api/1285/65614#AccessControlEventInfo)
-
-	* 新增成员：ContainerStatus
-
-* [EscapeEventInfo](https://cloud.tencent.com/document/api/1285/65614#EscapeEventInfo)
-
-	* 新增成员：ContainerStatus
-
-* [ReverseShellEventInfo](https://cloud.tencent.com/document/api/1285/65614#ReverseShellEventInfo)
-
-	* 新增成员：ContainerStatus
-
-* [RiskSyscallEventInfo](https://cloud.tencent.com/document/api/1285/65614#RiskSyscallEventInfo)
-
-	* 新增成员：ContainerStatus
-
-
-
-
-## 图像分析(tiia) 版本：2019-05-29
+## 日志服务(cls) 版本：2020-10-16
 
 ### 第 24 次发布
 
-发布时间：2022-07-07 06:17:32
+发布时间：2022-07-08 06:05:35
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
+新增数据结构：
+
+* [AlarmAnalysisConfig](https://cloud.tencent.com/document/api/614/56471#AlarmAnalysisConfig)
+
 修改数据结构：
 
-* [ObjectInfo](https://cloud.tencent.com/document/api/865/35474#ObjectInfo)
+* [AnalysisDimensional](https://cloud.tencent.com/document/api/614/56471#AnalysisDimensional)
 
-	* 新增成员：AllBox
-
-
+	* 新增成员：ConfigInfo
 
 
-## 容器服务(tke) 版本：2018-05-25
 
-### 第 110 次发布
 
-发布时间：2022-07-07 06:17:44
+## 企业收付平台(cpdp) 版本：2019-08-20
+
+### 第 75 次发布
+
+发布时间：2022-07-08 06:05:56
 
 本次发布包含了以下内容：
 
@@ -157,38 +35,102 @@
 
 修改接口：
 
-* [CreateClusterNodePool](https://cloud.tencent.com/document/api/457/49436)
+* [QueryFlexPaymentOrderList](https://cloud.tencent.com/document/api/1122/74965)
 
-	* 新增入参：DeletionProtection
-
-* [ModifyClusterAttribute](https://cloud.tencent.com/document/api/457/42938)
-
-	* 新增入参：QGPUShareEnable
-
-	* 新增出参：QGPUShareEnable
-
-* [ModifyClusterNodePool](https://cloud.tencent.com/document/api/457/49431)
-
-	* 新增入参：DeletionProtection
+	* <font color="#dd0000">**修改入参**：</font>PayeeId
 
 
 修改数据结构：
 
-* [Cluster](https://cloud.tencent.com/document/api/457/31866#Cluster)
+* [FreezeOrderResult](https://cloud.tencent.com/document/api/1122/40683#FreezeOrderResult)
 
-	* 新增成员：QGPUShareEnable
+	* 新增成员：PayeeId, OutUserId
 
-* [ClusterAdvancedSettings](https://cloud.tencent.com/document/api/457/31866#ClusterAdvancedSettings)
+* [OrderSummaryResult](https://cloud.tencent.com/document/api/1122/40683#OrderSummaryResult)
 
-	* 新增成员：QGPUShareEnable
+	* 新增成员：OutUserId
 
-* [ClusterNetworkSettings](https://cloud.tencent.com/document/api/457/31866#ClusterNetworkSettings)
+* [PaymentOrderResult](https://cloud.tencent.com/document/api/1122/40683#PaymentOrderResult)
 
-	* 新增成员：IsDualStack, Ipv6ServiceCIDR
+	* 新增成员：OutUserId
 
-* [NodePool](https://cloud.tencent.com/document/api/457/31866#NodePool)
+* [SettlementOrderResult](https://cloud.tencent.com/document/api/1122/40683#SettlementOrderResult)
 
-	* 新增成员：DeletionProtection
+	* 新增成员：PayeeId, OutUserId, OperationType
+
+
+
+
+## 物联网智能视频服务(iotvideo) 版本：2021-11-25
+
+### 第 1 次发布
+
+发布时间：2022-07-07 20:28:12
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CallDeviceActionAsync](https://cloud.tencent.com/document/api/1131/76631)
+* [CallDeviceActionSync](https://cloud.tencent.com/document/api/1131/76630)
+* [DescribeDeviceDataStats](https://cloud.tencent.com/document/api/1131/76634)
+* [DescribeMessageDataStats](https://cloud.tencent.com/document/api/1131/76633)
+
+新增数据结构：
+
+* [DeviceCntStats](https://cloud.tencent.com/document/api/1131/76635#DeviceCntStats)
+* [MessageCntStats](https://cloud.tencent.com/document/api/1131/76635#MessageCntStats)
+
+
+
+## 物联网智能视频服务(iotvideo) 版本：2020-12-15
+
+
+
+## 物联网智能视频服务(iotvideo) 版本：2019-11-26
+
+
+
+## 文字识别(ocr) 版本：2018-11-19
+
+### 第 71 次发布
+
+发布时间：2022-07-08 06:12:23
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [RecognizePhilippinesDrivingLicenseOCR](https://cloud.tencent.com/document/api/866/75194)
+
+	* <font color="#dd0000">**修改入参**：</font>ReturnHeadImage
+
+* [SmartStructuralOCR](https://cloud.tencent.com/document/api/866/60877)
+
+	* 新增入参：IsPdf, PdfPageNumber
+
+
+
+
+## 云点播(vod) 版本：2018-07-17
+
+### 第 107 次发布
+
+发布时间：2022-07-08 06:17:05
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [AiRecognitionTaskAsrFullTextResult](https://cloud.tencent.com/document/api/266/31773#AiRecognitionTaskAsrFullTextResult)
+
+	* 新增成员：Progress
 
 
 
@@ -19387,6 +19329,25 @@
 
 ## 日志服务(cls) 版本：2020-10-16
 
+### 第 24 次发布
+
+发布时间：2022-07-08 06:05:35
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [[AlarmAnalysisConfig](https://cloud.tencent.com/document/api/614/56471#AlarmAnalysisConfig)](https://cloud.tencent.com/document/api/614/56471#[AlarmAnalysisConfig](https://cloud.tencent.com/document/api/614/56471#AlarmAnalysisConfig))
+
+修改数据结构：
+
+* [AnalysisDimensional](https://cloud.tencent.com/document/api/614/56471#AnalysisDimensional)
+
+	* 新增成员：ConfigInfo
+
+
 ### 第 23 次发布
 
 发布时间：2022-06-29 06:04:44
@@ -21479,6 +21440,40 @@
 
 
 ## 企业收付平台(cpdp) 版本：2019-08-20
+
+### 第 75 次发布
+
+发布时间：2022-07-08 06:05:56
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [QueryFlexPaymentOrderList](https://cloud.tencent.com/document/api/1122/74965)
+
+	* <font color="#dd0000">**修改入参**：</font>PayeeId
+
+
+修改数据结构：
+
+* [FreezeOrderResult](https://cloud.tencent.com/document/api/1122/40683#FreezeOrderResult)
+
+	* 新增成员：PayeeId, OutUserId
+
+* [OrderSummaryResult](https://cloud.tencent.com/document/api/1122/40683#OrderSummaryResult)
+
+	* 新增成员：OutUserId
+
+* [PaymentOrderResult](https://cloud.tencent.com/document/api/1122/40683#PaymentOrderResult)
+
+	* 新增成员：OutUserId
+
+* [SettlementOrderResult](https://cloud.tencent.com/document/api/1122/40683#SettlementOrderResult)
+
+	* 新增成员：PayeeId, OutUserId, OperationType
+
 
 ### 第 74 次发布
 
@@ -44061,6 +44056,30 @@
 
 
 
+## 物联网智能视频服务(iotvideo) 版本：2021-11-25
+
+### 第 1 次发布
+
+发布时间：2022-07-07 20:28:12
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CallDeviceActionAsync](https://cloud.tencent.com/document/api/1131/76631)](https://cloud.tencent.com/document/api/#/#)
+* [[CallDeviceActionSync](https://cloud.tencent.com/document/api/1131/76630)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeDeviceDataStats](https://cloud.tencent.com/document/api/1131/76634)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeMessageDataStats](https://cloud.tencent.com/document/api/1131/76633)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[DeviceCntStats](https://cloud.tencent.com/document/api/1131/76635#DeviceCntStats)](https://cloud.tencent.com/document/api/1131/76635#[DeviceCntStats](https://cloud.tencent.com/document/api/1131/76635#DeviceCntStats))
+* [[MessageCntStats](https://cloud.tencent.com/document/api/1131/76635#MessageCntStats)](https://cloud.tencent.com/document/api/1131/76635#[MessageCntStats](https://cloud.tencent.com/document/api/1131/76635#MessageCntStats))
+
+
+
 
 ## 物联网智能视频服务（行业版）(iotvideoindustry) 版本：2020-12-01
 
@@ -52860,6 +52879,25 @@
 
 
 ## 文字识别(ocr) 版本：2018-11-19
+
+### 第 71 次发布
+
+发布时间：2022-07-08 06:12:23
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [RecognizePhilippinesDrivingLicenseOCR](https://cloud.tencent.com/document/api/866/75194)
+
+	* <font color="#dd0000">**修改入参**：</font>ReturnHeadImage
+
+* [SmartStructuralOCR](https://cloud.tencent.com/document/api/866/60877)
+
+	* 新增入参：IsPdf, PdfPageNumber
+
 
 ### 第 70 次发布
 
@@ -76743,6 +76781,21 @@
 
 
 ## 云点播(vod) 版本：2018-07-17
+
+### 第 107 次发布
+
+发布时间：2022-07-08 06:17:05
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [AiRecognitionTaskAsrFullTextResult](https://cloud.tencent.com/document/api/266/31773#AiRecognitionTaskAsrFullTextResult)
+
+	* 新增成员：Progress
+
 
 ### 第 106 次发布
 

@@ -1,3 +1,140 @@
+# Release v1.0.438
+
+## 日志服务(cls) 版本：2020-10-16
+
+### 第 24 次发布
+
+发布时间：2022-07-08 06:05:35
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [AlarmAnalysisConfig](https://cloud.tencent.com/document/api/614/56471#AlarmAnalysisConfig)
+
+修改数据结构：
+
+* [AnalysisDimensional](https://cloud.tencent.com/document/api/614/56471#AnalysisDimensional)
+
+	* 新增成员：ConfigInfo
+
+
+
+
+## 企业收付平台(cpdp) 版本：2019-08-20
+
+### 第 75 次发布
+
+发布时间：2022-07-08 06:05:56
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [QueryFlexPaymentOrderList](https://cloud.tencent.com/document/api/1122/74965)
+
+	* <font color="#dd0000">**修改入参**：</font>PayeeId
+
+
+修改数据结构：
+
+* [FreezeOrderResult](https://cloud.tencent.com/document/api/1122/40683#FreezeOrderResult)
+
+	* 新增成员：PayeeId, OutUserId
+
+* [OrderSummaryResult](https://cloud.tencent.com/document/api/1122/40683#OrderSummaryResult)
+
+	* 新增成员：OutUserId
+
+* [PaymentOrderResult](https://cloud.tencent.com/document/api/1122/40683#PaymentOrderResult)
+
+	* 新增成员：OutUserId
+
+* [SettlementOrderResult](https://cloud.tencent.com/document/api/1122/40683#SettlementOrderResult)
+
+	* 新增成员：PayeeId, OutUserId, OperationType
+
+
+
+
+## 物联网智能视频服务(iotvideo) 版本：2021-11-25
+
+### 第 1 次发布
+
+发布时间：2022-07-07 20:28:12
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CallDeviceActionAsync](https://cloud.tencent.com/document/api/1131/76631)
+* [CallDeviceActionSync](https://cloud.tencent.com/document/api/1131/76630)
+* [DescribeDeviceDataStats](https://cloud.tencent.com/document/api/1131/76634)
+* [DescribeMessageDataStats](https://cloud.tencent.com/document/api/1131/76633)
+
+新增数据结构：
+
+* [DeviceCntStats](https://cloud.tencent.com/document/api/1131/76635#DeviceCntStats)
+* [MessageCntStats](https://cloud.tencent.com/document/api/1131/76635#MessageCntStats)
+
+
+
+## 物联网智能视频服务(iotvideo) 版本：2020-12-15
+
+
+
+## 物联网智能视频服务(iotvideo) 版本：2019-11-26
+
+
+
+## 文字识别(ocr) 版本：2018-11-19
+
+### 第 71 次发布
+
+发布时间：2022-07-08 06:12:23
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [RecognizePhilippinesDrivingLicenseOCR](https://cloud.tencent.com/document/api/866/75194)
+
+	* <font color="#dd0000">**修改入参**：</font>ReturnHeadImage
+
+* [SmartStructuralOCR](https://cloud.tencent.com/document/api/866/60877)
+
+	* 新增入参：IsPdf, PdfPageNumber
+
+
+
+
+## 云点播(vod) 版本：2018-07-17
+
+### 第 107 次发布
+
+发布时间：2022-07-08 06:17:05
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [AiRecognitionTaskAsrFullTextResult](https://cloud.tencent.com/document/api/266/31773#AiRecognitionTaskAsrFullTextResult)
+
+	* 新增成员：Progress
+
+
+
+
 # Release v1.0.437
 
 ## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26

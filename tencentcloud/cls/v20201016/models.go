@@ -20,6 +20,14 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+type AlarmAnalysisConfig struct {
+	// 键
+	Key *string `json:"Key,omitempty" name:"Key"`
+
+	// 值
+	Value *string `json:"Value,omitempty" name:"Value"`
+}
+
 type AlarmInfo struct {
 	// 告警策略名称。
 	Name *string `json:"Name,omitempty" name:"Name"`
@@ -148,11 +156,14 @@ type AnalysisDimensional struct {
 	// 分析名称
 	Name *string `json:"Name,omitempty" name:"Name"`
 
-	// 分析类型：query，field
+	// 分析类型：query，field ，original
 	Type *string `json:"Type,omitempty" name:"Type"`
 
 	// 分析内容
 	Content *string `json:"Content,omitempty" name:"Content"`
+
+	// 配置
+	ConfigInfo []*AlarmAnalysisConfig `json:"ConfigInfo,omitempty" name:"ConfigInfo"`
 }
 
 // Predefined struct for user

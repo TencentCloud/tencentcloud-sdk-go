@@ -17,6 +17,9 @@ package v20220110
 const (
 	// 此产品的特有错误码
 
+	// 操作失败。
+	FAILEDOPERATION = "FailedOperation"
+
 	// 未申请并发或申请后超时。
 	FAILEDOPERATION_LOCKTIMEOUT = "FailedOperation.LockTimeout"
 

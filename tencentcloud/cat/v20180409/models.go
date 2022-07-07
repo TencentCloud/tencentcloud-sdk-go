@@ -225,9 +225,16 @@ type DescribeDetailedSingleProbeDataRequestParams struct {
 	EndTime *uint64 `json:"EndTime,omitempty" name:"EndTime"`
 
 	// 任务类型
+	// AnalyzeTaskType_Network：网络质量
+	// AnalyzeTaskType_Browse：页面性能
+	// AnalyzeTaskType_UploadDownload：文件传输（含文件上传、文件下载）
+	// AnalyzeTaskType_Transport：端口性能
+	// AnalyzeTaskType_MediaStream：音视频体验
 	TaskType *string `json:"TaskType,omitempty" name:"TaskType"`
 
 	// 待排序字段
+	// 可以填写 ProbeTime 拨测时间排序
+	// 也可填写SelectedFields 中的选中字段
 	SortField *string `json:"SortField,omitempty" name:"SortField"`
 
 	// true表示升序
@@ -246,15 +253,35 @@ type DescribeDetailedSingleProbeDataRequestParams struct {
 	TaskID []*string `json:"TaskID,omitempty" name:"TaskID"`
 
 	// 拨测点运营商
+	// 	
+	// 这里实际按拨测结果中的运营商来填写即可
+	// 
+	// 电信：中国电信
+	// 移动：中国移动
+	// 联通：中国联通
 	Operators []*string `json:"Operators,omitempty" name:"Operators"`
 
 	// 拨测点地区
+	// 	
+	// 这里实际按拨测结果中的地区来填写即可
+	// 
+	// 国内一般是省级单位，如广东、广西、香港特区、新疆；直辖市则填北京、上海
+	// 
+	// 海外一般是国家名，如澳大利亚、新加坡
 	Districts []*string `json:"Districts,omitempty" name:"Districts"`
 
 	// 错误类型
 	ErrorTypes []*string `json:"ErrorTypes,omitempty" name:"ErrorTypes"`
 
 	// 城市
+	// 这里实际按拨测结果中的城市来填写即可
+	// 
+	// 示例：
+	// 
+	// 深圳市
+	// 武汉市
+	// 首尔
+	// 多伦多
 	City []*string `json:"City,omitempty" name:"City"`
 }
 
@@ -268,9 +295,16 @@ type DescribeDetailedSingleProbeDataRequest struct {
 	EndTime *uint64 `json:"EndTime,omitempty" name:"EndTime"`
 
 	// 任务类型
+	// AnalyzeTaskType_Network：网络质量
+	// AnalyzeTaskType_Browse：页面性能
+	// AnalyzeTaskType_UploadDownload：文件传输（含文件上传、文件下载）
+	// AnalyzeTaskType_Transport：端口性能
+	// AnalyzeTaskType_MediaStream：音视频体验
 	TaskType *string `json:"TaskType,omitempty" name:"TaskType"`
 
 	// 待排序字段
+	// 可以填写 ProbeTime 拨测时间排序
+	// 也可填写SelectedFields 中的选中字段
 	SortField *string `json:"SortField,omitempty" name:"SortField"`
 
 	// true表示升序
@@ -289,15 +323,35 @@ type DescribeDetailedSingleProbeDataRequest struct {
 	TaskID []*string `json:"TaskID,omitempty" name:"TaskID"`
 
 	// 拨测点运营商
+	// 	
+	// 这里实际按拨测结果中的运营商来填写即可
+	// 
+	// 电信：中国电信
+	// 移动：中国移动
+	// 联通：中国联通
 	Operators []*string `json:"Operators,omitempty" name:"Operators"`
 
 	// 拨测点地区
+	// 	
+	// 这里实际按拨测结果中的地区来填写即可
+	// 
+	// 国内一般是省级单位，如广东、广西、香港特区、新疆；直辖市则填北京、上海
+	// 
+	// 海外一般是国家名，如澳大利亚、新加坡
 	Districts []*string `json:"Districts,omitempty" name:"Districts"`
 
 	// 错误类型
 	ErrorTypes []*string `json:"ErrorTypes,omitempty" name:"ErrorTypes"`
 
 	// 城市
+	// 这里实际按拨测结果中的城市来填写即可
+	// 
+	// 示例：
+	// 
+	// 深圳市
+	// 武汉市
+	// 首尔
+	// 多伦多
 	City []*string `json:"City,omitempty" name:"City"`
 }
 
@@ -598,6 +652,17 @@ type DescribeProbeTasksRequestParams struct {
 	OrderState *int64 `json:"OrderState,omitempty" name:"OrderState"`
 
 	// 拨测类型
+	// 
+	// <li>1 = 创建中</li>
+	// <li> 2 = 运行中 </li>
+	// <li> 3 = 运行异常 </li>
+	// <li> 4 = 暂停中 </li>
+	// <li> 5 = 暂停异常 </li>
+	// <li> 6 = 任务暂停 </li>
+	// <li> 7 = 任务删除中 </li>
+	// <li> 8 = 任务删除异常 </li>
+	// <li> 9 = 任务删除</li>
+	// <li> 10 = 定时任务暂停中 </li>
 	TaskType []*int64 `json:"TaskType,omitempty" name:"TaskType"`
 
 	// 节点类型
@@ -645,6 +710,17 @@ type DescribeProbeTasksRequest struct {
 	OrderState *int64 `json:"OrderState,omitempty" name:"OrderState"`
 
 	// 拨测类型
+	// 
+	// <li>1 = 创建中</li>
+	// <li> 2 = 运行中 </li>
+	// <li> 3 = 运行异常 </li>
+	// <li> 4 = 暂停中 </li>
+	// <li> 5 = 暂停异常 </li>
+	// <li> 6 = 任务暂停 </li>
+	// <li> 7 = 任务删除中 </li>
+	// <li> 8 = 任务删除异常 </li>
+	// <li> 9 = 任务删除</li>
+	// <li> 10 = 定时任务暂停中 </li>
 	TaskType []*int64 `json:"TaskType,omitempty" name:"TaskType"`
 
 	// 节点类型

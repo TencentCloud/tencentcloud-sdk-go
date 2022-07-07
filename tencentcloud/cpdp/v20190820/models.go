@@ -12417,6 +12417,12 @@ type FreezeOrderResult struct {
 	// 冻结备注
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 收款用户ID
+	PayeeId *string `json:"PayeeId,omitempty" name:"PayeeId"`
+
+	// 外部用户ID
+	OutUserId *string `json:"OutUserId,omitempty" name:"OutUserId"`
 }
 
 type FreezeOrders struct {
@@ -14231,6 +14237,9 @@ type OrderSummaryResult struct {
 
 	// 汇总记录数量
 	SummaryCount *int64 `json:"SummaryCount,omitempty" name:"SummaryCount"`
+
+	// 外部用户ID
+	OutUserId *string `json:"OutUserId,omitempty" name:"OutUserId"`
 }
 
 type OrganizationInfo struct {
@@ -14701,6 +14710,9 @@ type PaymentOrderResult struct {
 
 	// 收款用户ID
 	PayeeId *string `json:"PayeeId,omitempty" name:"PayeeId"`
+
+	// 外部用户ID
+	OutUserId *string `json:"OutUserId,omitempty" name:"OutUserId"`
 }
 
 type PaymentOrderStatusResult struct {
@@ -18518,9 +18530,6 @@ func (r *QueryFlexPayeeInfoResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type QueryFlexPaymentOrderListRequestParams struct {
-	// 收款用户ID
-	PayeeId *string `json:"PayeeId,omitempty" name:"PayeeId"`
-
 	// 开始时间，格式"yyyy-MM-dd hh:mm:ss"
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
 
@@ -18529,6 +18538,9 @@ type QueryFlexPaymentOrderListRequestParams struct {
 
 	// 分页
 	PageNumber *Paging `json:"PageNumber,omitempty" name:"PageNumber"`
+
+	// 收款用户ID
+	PayeeId *string `json:"PayeeId,omitempty" name:"PayeeId"`
 
 	// 环境类型
 	// __release__:生产环境
@@ -18541,9 +18553,6 @@ type QueryFlexPaymentOrderListRequestParams struct {
 type QueryFlexPaymentOrderListRequest struct {
 	*tchttp.BaseRequest
 	
-	// 收款用户ID
-	PayeeId *string `json:"PayeeId,omitempty" name:"PayeeId"`
-
 	// 开始时间，格式"yyyy-MM-dd hh:mm:ss"
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
 
@@ -18552,6 +18561,9 @@ type QueryFlexPaymentOrderListRequest struct {
 
 	// 分页
 	PageNumber *Paging `json:"PageNumber,omitempty" name:"PageNumber"`
+
+	// 收款用户ID
+	PayeeId *string `json:"PayeeId,omitempty" name:"PayeeId"`
 
 	// 环境类型
 	// __release__:生产环境
@@ -18573,10 +18585,10 @@ func (r *QueryFlexPaymentOrderListRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	delete(f, "PayeeId")
 	delete(f, "StartTime")
 	delete(f, "EndTime")
 	delete(f, "PageNumber")
+	delete(f, "PayeeId")
 	delete(f, "Environment")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryFlexPaymentOrderListRequest has unknown keys!", "")
@@ -27401,6 +27413,15 @@ type SettlementOrderResult struct {
 	// 备注
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 收款用户ID
+	PayeeId *string `json:"PayeeId,omitempty" name:"PayeeId"`
+
+	// 外部用户ID
+	OutUserId *string `json:"OutUserId,omitempty" name:"OutUserId"`
+
+	// 操作类型
+	OperationType *string `json:"OperationType,omitempty" name:"OperationType"`
 }
 
 type SettlementOrders struct {

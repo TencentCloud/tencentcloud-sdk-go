@@ -581,6 +581,9 @@ type AiRecognitionTaskAsrFullTextResult struct {
 	// 语音全文识别任务输出信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Output *AiRecognitionTaskAsrFullTextResultOutput `json:"Output,omitempty" name:"Output"`
+
+	// 任务进度，取值范围 [0-100] 。
+	Progress *int64 `json:"Progress,omitempty" name:"Progress"`
 }
 
 type AiRecognitionTaskAsrFullTextResultInput struct {

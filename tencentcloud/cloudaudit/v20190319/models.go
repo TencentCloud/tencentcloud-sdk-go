@@ -580,7 +580,7 @@ func (r *DescribeEventsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeEventsResponseParams struct {
-	// 日志集合是否结束
+	// 日志集合是否结束。true表示结束，无需进行翻页。
 	ListOver *bool `json:"ListOver,omitempty" name:"ListOver"`
 
 	// 查看更多日志的凭证
@@ -590,7 +590,7 @@ type DescribeEventsResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Events []*Event `json:"Events,omitempty" name:"Events"`
 
-	// 总数
+	// 此字段已经废弃。翻页请使用ListOver配合NextToken，在ListOver为false进行下一页数据读取。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 

@@ -17,6 +17,9 @@ package v20191118
 const (
 	// 此产品的特有错误码
 
+	// 操作失败。
+	FAILEDOPERATION = "FailedOperation"
+
 	// 锁定机器超时或未调用TrylockWorker。
 	FAILEDOPERATION_LOCKTIMEOUT = "FailedOperation.LockTimeout"
 

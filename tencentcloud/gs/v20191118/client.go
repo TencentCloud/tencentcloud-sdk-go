@@ -66,6 +66,7 @@ func NewCreateSessionResponse() (response *CreateSessionResponse) {
 // 创建会话
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_LOCKTIMEOUT = "FailedOperation.LockTimeout"
 //  FAILEDOPERATION_PROCESSTIMEOUT = "FailedOperation.ProcessTimeout"
 //  FAILEDOPERATION_SLOWDOWN = "FailedOperation.SlowDown"
@@ -88,6 +89,7 @@ func (c *Client) CreateSession(request *CreateSessionRequest) (response *CreateS
 // 创建会话
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_LOCKTIMEOUT = "FailedOperation.LockTimeout"
 //  FAILEDOPERATION_PROCESSTIMEOUT = "FailedOperation.ProcessTimeout"
 //  FAILEDOPERATION_SLOWDOWN = "FailedOperation.SlowDown"
@@ -190,6 +192,7 @@ func NewSaveGameArchiveResponse() (response *SaveGameArchiveResponse) {
 // 保存游戏存档
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_SLOWDOWN = "FailedOperation.SlowDown"
 //  FAILEDOPERATION_TOOFREQUENTLY = "FailedOperation.TooFrequently"
 //  INTERNALERROR = "InternalError"
@@ -205,6 +208,7 @@ func (c *Client) SaveGameArchive(request *SaveGameArchiveRequest) (response *Sav
 // 保存游戏存档
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_SLOWDOWN = "FailedOperation.SlowDown"
 //  FAILEDOPERATION_TOOFREQUENTLY = "FailedOperation.TooFrequently"
 //  INTERNALERROR = "InternalError"
@@ -249,6 +253,7 @@ func NewStartPublishStreamResponse() (response *StartPublishStreamResponse) {
 // 开始云端推流
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER_JSONPARSEERROR = "InvalidParameter.JsonParseError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -263,6 +268,7 @@ func (c *Client) StartPublishStream(request *StartPublishStreamRequest) (respons
 // 开始云端推流
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER_JSONPARSEERROR = "InvalidParameter.JsonParseError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -306,6 +312,7 @@ func NewStopGameResponse() (response *StopGameResponse) {
 // 强制退出游戏
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_PROCESSTIMEOUT = "FailedOperation.ProcessTimeout"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER_JSONPARSEERROR = "InvalidParameter.JsonParseError"
@@ -318,6 +325,7 @@ func (c *Client) StopGame(request *StopGameRequest) (response *StopGameResponse,
 // 强制退出游戏
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_PROCESSTIMEOUT = "FailedOperation.ProcessTimeout"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER_JSONPARSEERROR = "InvalidParameter.JsonParseError"
@@ -359,6 +367,7 @@ func NewStopPublishStreamResponse() (response *StopPublishStreamResponse) {
 // 停止云端推流
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER_JSONPARSEERROR = "InvalidParameter.JsonParseError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -373,6 +382,7 @@ func (c *Client) StopPublishStream(request *StopPublishStreamRequest) (response 
 // 停止云端推流
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER_JSONPARSEERROR = "InvalidParameter.JsonParseError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -416,6 +426,7 @@ func NewSwitchGameArchiveResponse() (response *SwitchGameArchiveResponse) {
 // 切换游戏存档
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_SLOWDOWN = "FailedOperation.SlowDown"
 //  FAILEDOPERATION_TOOFREQUENTLY = "FailedOperation.TooFrequently"
 //  INTERNALERROR = "InternalError"
@@ -431,6 +442,7 @@ func (c *Client) SwitchGameArchive(request *SwitchGameArchiveRequest) (response 
 // 切换游戏存档
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_SLOWDOWN = "FailedOperation.SlowDown"
 //  FAILEDOPERATION_TOOFREQUENTLY = "FailedOperation.TooFrequently"
 //  INTERNALERROR = "InternalError"
@@ -475,6 +487,7 @@ func NewTrylockWorkerResponse() (response *TrylockWorkerResponse) {
 // 尝试锁定机器
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_PROCESSTIMEOUT = "FailedOperation.ProcessTimeout"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER_JSONPARSEERROR = "InvalidParameter.JsonParseError"
@@ -490,6 +503,7 @@ func (c *Client) TrylockWorker(request *TrylockWorkerRequest) (response *Trylock
 // 尝试锁定机器
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_PROCESSTIMEOUT = "FailedOperation.ProcessTimeout"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER_JSONPARSEERROR = "InvalidParameter.JsonParseError"
