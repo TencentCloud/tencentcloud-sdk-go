@@ -1310,7 +1310,9 @@ type FlowApproverInfo struct {
 	// 企业签署方在同一渠道下的其他合作企业OpenId，签署方为非发起方企业场景下必传，最大长度64个字符；
 	OrganizationOpenId *string `json:"OrganizationOpenId,omitempty" name:"OrganizationOpenId"`
 
-	// 签署人类型，PERSON-个人；ORGANIZATION-企业；
+	// 签署人类型，PERSON-个人；
+	// PERSON_AUTO_SIGN-个人自动签；
+	// ORGANIZATION-企业；
 	// ENTERPRISESERVER-企业静默签;
 	// 注：ENTERPRISESERVER 类型仅用于使用文件创建签署流程（ChannelCreateFlowByFiles）接口；并且仅能指定发起方企业签署方为静默签署；
 	ApproverType *string `json:"ApproverType,omitempty" name:"ApproverType"`
@@ -1391,7 +1393,7 @@ type FlowInfo struct {
 	// 合同描述，最大长度1000个字符
 	FlowDescription *string `json:"FlowDescription,omitempty" name:"FlowDescription"`
 
-	// 渠道的业务信息，最大长度1000个字符
+	// 渠道的业务信息，最大长度1000个字符。发起自动签署时，需设置对应自动签署场景，目前仅支持场景：处方单-E_PRESCRIPTION_AUTO_SIGN
 	CustomerData *string `json:"CustomerData,omitempty" name:"CustomerData"`
 
 	// 合同显示的页卡模板，说明：只支持{合同名称}, {发起方企业}, {发起方姓名}, {签署方N企业}, {签署方N姓名}，且N不能超过签署人的数量，N从1开始

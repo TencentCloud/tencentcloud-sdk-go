@@ -63,6 +63,10 @@ func NewCancelMatchingResponse() (response *CancelMatchingResponse) {
 }
 
 // CancelMatching
+// 此接口无法使用，游戏玩家匹配GPM已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 取消匹配。
 //
 // 可能返回的错误码:
@@ -89,6 +93,10 @@ func (c *Client) CancelMatching(request *CancelMatchingRequest) (response *Cance
 }
 
 // CancelMatching
+// 此接口无法使用，游戏玩家匹配GPM已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 取消匹配。
 //
 // 可能返回的错误码:
@@ -144,6 +152,10 @@ func NewCreateMatchResponse() (response *CreateMatchResponse) {
 }
 
 // CreateMatch
+// 此接口无法使用，游戏玩家匹配GPM已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 创建匹配
 //
 // 可能返回的错误码:
@@ -182,6 +194,10 @@ func (c *Client) CreateMatch(request *CreateMatchRequest) (response *CreateMatch
 }
 
 // CreateMatch
+// 此接口无法使用，游戏玩家匹配GPM已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 创建匹配
 //
 // 可能返回的错误码:
@@ -249,6 +265,10 @@ func NewCreateRuleResponse() (response *CreateRuleResponse) {
 }
 
 // CreateRule
+// 此接口无法使用，游戏玩家匹配GPM已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 创建规则
 //
 // 可能返回的错误码:
@@ -285,6 +305,10 @@ func (c *Client) CreateRule(request *CreateRuleRequest) (response *CreateRuleRes
 }
 
 // CreateRule
+// 此接口无法使用，游戏玩家匹配GPM已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 创建规则
 //
 // 可能返回的错误码:
@@ -350,6 +374,10 @@ func NewDeleteMatchResponse() (response *DeleteMatchResponse) {
 }
 
 // DeleteMatch
+// 此接口无法使用，游戏玩家匹配GPM已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 删除匹配
 //
 // 可能返回的错误码:
@@ -385,6 +413,10 @@ func (c *Client) DeleteMatch(request *DeleteMatchRequest) (response *DeleteMatch
 }
 
 // DeleteMatch
+// 此接口无法使用，游戏玩家匹配GPM已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 删除匹配
 //
 // 可能返回的错误码:
@@ -449,6 +481,10 @@ func NewDeleteRuleResponse() (response *DeleteRuleResponse) {
 }
 
 // DeleteRule
+// 此接口无法使用，游戏玩家匹配GPM已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 删除规则
 //
 // 可能返回的错误码:
@@ -483,6 +519,10 @@ func (c *Client) DeleteRule(request *DeleteRuleRequest) (response *DeleteRuleRes
 }
 
 // DeleteRule
+// 此接口无法使用，游戏玩家匹配GPM已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 删除规则
 //
 // 可能返回的错误码:
@@ -546,6 +586,10 @@ func NewDescribeDataResponse() (response *DescribeDataResponse) {
 }
 
 // DescribeData
+// 此接口无法使用，游戏玩家匹配GPM已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 统计数据
 //
 // 可能返回的错误码:
@@ -580,6 +624,10 @@ func (c *Client) DescribeData(request *DescribeDataRequest) (response *DescribeD
 }
 
 // DescribeData
+// 此接口无法使用，游戏玩家匹配GPM已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 统计数据
 //
 // 可能返回的错误码:
@@ -643,6 +691,10 @@ func NewDescribeMatchResponse() (response *DescribeMatchResponse) {
 }
 
 // DescribeMatch
+// 此接口无法使用，游戏玩家匹配GPM已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 查询匹配详情
 //
 // 可能返回的错误码:
@@ -675,6 +727,10 @@ func (c *Client) DescribeMatch(request *DescribeMatchRequest) (response *Describ
 }
 
 // DescribeMatch
+// 此接口无法使用，游戏玩家匹配GPM已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 查询匹配详情
 //
 // 可能返回的错误码:
@@ -736,6 +792,10 @@ func NewDescribeMatchCodesResponse() (response *DescribeMatchCodesResponse) {
 }
 
 // DescribeMatchCodes
+// 此接口无法使用，游戏玩家匹配GPM已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 分页查询匹配Code
 //
 // 可能返回的错误码:
@@ -767,6 +827,10 @@ func (c *Client) DescribeMatchCodes(request *DescribeMatchCodesRequest) (respons
 }
 
 // DescribeMatchCodes
+// 此接口无法使用，游戏玩家匹配GPM已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 分页查询匹配Code
 //
 // 可能返回的错误码:
@@ -827,6 +891,10 @@ func NewDescribeMatchesResponse() (response *DescribeMatchesResponse) {
 }
 
 // DescribeMatches
+// 此接口无法使用，游戏玩家匹配GPM已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 分页查询匹配列表
 //
 // 可能返回的错误码:
@@ -862,6 +930,10 @@ func (c *Client) DescribeMatches(request *DescribeMatchesRequest) (response *Des
 }
 
 // DescribeMatches
+// 此接口无法使用，游戏玩家匹配GPM已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 分页查询匹配列表
 //
 // 可能返回的错误码:
@@ -926,6 +998,10 @@ func NewDescribeMatchingProgressResponse() (response *DescribeMatchingProgressRe
 }
 
 // DescribeMatchingProgress
+// 此接口无法使用，游戏玩家匹配GPM已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 查询匹配进度。
 //
 // 可能返回的错误码:
@@ -951,6 +1027,10 @@ func (c *Client) DescribeMatchingProgress(request *DescribeMatchingProgressReque
 }
 
 // DescribeMatchingProgress
+// 此接口无法使用，游戏玩家匹配GPM已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 查询匹配进度。
 //
 // 可能返回的错误码:
@@ -1005,6 +1085,10 @@ func NewDescribeRuleResponse() (response *DescribeRuleResponse) {
 }
 
 // DescribeRule
+// 此接口无法使用，游戏玩家匹配GPM已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 查询规则详情
 //
 // 可能返回的错误码:
@@ -1036,6 +1120,10 @@ func (c *Client) DescribeRule(request *DescribeRuleRequest) (response *DescribeR
 }
 
 // DescribeRule
+// 此接口无法使用，游戏玩家匹配GPM已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 查询规则详情
 //
 // 可能返回的错误码:
@@ -1096,6 +1184,10 @@ func NewDescribeRulesResponse() (response *DescribeRulesResponse) {
 }
 
 // DescribeRules
+// 此接口无法使用，游戏玩家匹配GPM已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 分页查询规则集列表
 //
 // 可能返回的错误码:
@@ -1129,6 +1221,10 @@ func (c *Client) DescribeRules(request *DescribeRulesRequest) (response *Describ
 }
 
 // DescribeRules
+// 此接口无法使用，游戏玩家匹配GPM已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 分页查询规则集列表
 //
 // 可能返回的错误码:
@@ -1191,6 +1287,10 @@ func NewDescribeTokenResponse() (response *DescribeTokenResponse) {
 }
 
 // DescribeToken
+// 此接口无法使用，游戏玩家匹配GPM已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 查询匹配Token，Token用于push消息验证。
 //
 // 可能返回的错误码:
@@ -1203,6 +1303,10 @@ func (c *Client) DescribeToken(request *DescribeTokenRequest) (response *Describ
 }
 
 // DescribeToken
+// 此接口无法使用，游戏玩家匹配GPM已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 查询匹配Token，Token用于push消息验证。
 //
 // 可能返回的错误码:
@@ -1244,6 +1348,10 @@ func NewModifyMatchResponse() (response *ModifyMatchResponse) {
 }
 
 // ModifyMatch
+// 此接口无法使用，游戏玩家匹配GPM已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 修改匹配
 //
 // 可能返回的错误码:
@@ -1281,6 +1389,10 @@ func (c *Client) ModifyMatch(request *ModifyMatchRequest) (response *ModifyMatch
 }
 
 // ModifyMatch
+// 此接口无法使用，游戏玩家匹配GPM已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 修改匹配
 //
 // 可能返回的错误码:
@@ -1347,6 +1459,10 @@ func NewModifyRuleResponse() (response *ModifyRuleResponse) {
 }
 
 // ModifyRule
+// 此接口无法使用，游戏玩家匹配GPM已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 修改规则（描述、标签）
 //
 // 可能返回的错误码:
@@ -1380,6 +1496,10 @@ func (c *Client) ModifyRule(request *ModifyRuleRequest) (response *ModifyRuleRes
 }
 
 // ModifyRule
+// 此接口无法使用，游戏玩家匹配GPM已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 修改规则（描述、标签）
 //
 // 可能返回的错误码:
@@ -1442,6 +1562,10 @@ func NewModifyTokenResponse() (response *ModifyTokenResponse) {
 }
 
 // ModifyToken
+// 此接口无法使用，游戏玩家匹配GPM已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 修改匹配Token。
 //
 // 可能返回的错误码:
@@ -1454,6 +1578,10 @@ func (c *Client) ModifyToken(request *ModifyTokenRequest) (response *ModifyToken
 }
 
 // ModifyToken
+// 此接口无法使用，游戏玩家匹配GPM已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 修改匹配Token。
 //
 // 可能返回的错误码:
@@ -1495,6 +1623,10 @@ func NewStartMatchingResponse() (response *StartMatchingResponse) {
 }
 
 // StartMatching
+// 此接口无法使用，游戏玩家匹配GPM已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 支持传入一个玩家或多个玩家发起匹配，在同一个请求内的玩家将被分到同一个对局。
 //
 // 可能返回的错误码:
@@ -1530,6 +1662,10 @@ func (c *Client) StartMatching(request *StartMatchingRequest) (response *StartMa
 }
 
 // StartMatching
+// 此接口无法使用，游戏玩家匹配GPM已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 支持传入一个玩家或多个玩家发起匹配，在同一个请求内的玩家将被分到同一个对局。
 //
 // 可能返回的错误码:
@@ -1594,6 +1730,10 @@ func NewStartMatchingBackfillResponse() (response *StartMatchingBackfillResponse
 }
 
 // StartMatchingBackfill
+// 此接口无法使用，游戏玩家匹配GPM已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 通过调用StartMatchingBackfill，用户可以传入一个回填的匹配请求，GPM为回填请求搜索符合条件的ticket并形成一个新的match。
 //
 // 可能返回的错误码:
@@ -1631,6 +1771,10 @@ func (c *Client) StartMatchingBackfill(request *StartMatchingBackfillRequest) (r
 }
 
 // StartMatchingBackfill
+// 此接口无法使用，游戏玩家匹配GPM已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 通过调用StartMatchingBackfill，用户可以传入一个回填的匹配请求，GPM为回填请求搜索符合条件的ticket并形成一个新的match。
 //
 // 可能返回的错误码:

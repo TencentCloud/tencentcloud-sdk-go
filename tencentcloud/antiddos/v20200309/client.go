@@ -4378,6 +4378,87 @@ func (c *Client) DescribeListWaterPrintConfigWithContext(ctx context.Context, re
     return
 }
 
+func NewDescribeNewL7RulesRequest() (request *DescribeNewL7RulesRequest) {
+    request = &DescribeNewL7RulesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("antiddos", APIVersion, "DescribeNewL7Rules")
+    
+    
+    return
+}
+
+func NewDescribeNewL7RulesResponse() (response *DescribeNewL7RulesResponse) {
+    response = &DescribeNewL7RulesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeNewL7Rules
+// 高防IP获取7层规则
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeNewL7Rules(request *DescribeNewL7RulesRequest) (response *DescribeNewL7RulesResponse, err error) {
+    return c.DescribeNewL7RulesWithContext(context.Background(), request)
+}
+
+// DescribeNewL7Rules
+// 高防IP获取7层规则
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeNewL7RulesWithContext(ctx context.Context, request *DescribeNewL7RulesRequest) (response *DescribeNewL7RulesResponse, err error) {
+    if request == nil {
+        request = NewDescribeNewL7RulesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeNewL7Rules require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeNewL7RulesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeOverviewAttackTrendRequest() (request *DescribeOverviewAttackTrendRequest) {
     request = &DescribeOverviewAttackTrendRequest{
         BaseRequest: &tchttp.BaseRequest{},

@@ -1,3 +1,141 @@
+# Release v1.0.439
+
+## DDoS 防护(antiddos) 版本：2020-03-09
+
+### 第 35 次发布
+
+发布时间：2022-07-11 06:05:26
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeNewL7Rules](https://cloud.tencent.com/document/api/1021/76706)
+
+新增数据结构：
+
+* [L7RuleHealth](https://cloud.tencent.com/document/api/1021/57582#L7RuleHealth)
+
+
+
+## 内容分发网络(cdn) 版本：2018-06-06
+
+### 第 107 次发布
+
+发布时间：2022-07-11 06:07:38
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [RedirectConfig](https://cloud.tencent.com/document/api/228/30987#RedirectConfig)
+
+修改数据结构：
+
+* [FollowRedirect](https://cloud.tencent.com/document/api/228/30987#FollowRedirect)
+
+	* 新增成员：RedirectConfig
+
+
+
+
+## 企业收付平台(cpdp) 版本：2019-08-20
+
+### 第 76 次发布
+
+发布时间：2022-07-11 06:09:01
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateOpenBankVerificationOrder](https://cloud.tencent.com/document/api/1122/76709)
+* [QueryOpenBankVerificationOrder](https://cloud.tencent.com/document/api/1122/76708)
+* [VerifyOpenBankAccount](https://cloud.tencent.com/document/api/1122/76707)
+
+新增数据结构：
+
+* [CreateOpenBankVerificationResult](https://cloud.tencent.com/document/api/1122/40683#CreateOpenBankVerificationResult)
+* [QueryOpenBankVerificationResult](https://cloud.tencent.com/document/api/1122/40683#QueryOpenBankVerificationResult)
+* [VerifyOpenBankAccountResult](https://cloud.tencent.com/document/api/1122/40683#VerifyOpenBankAccountResult)
+
+修改数据结构：
+
+* [FlexFundingAccountInfo](https://cloud.tencent.com/document/api/1122/40683#FlexFundingAccountInfo)
+
+	* 新增成员：FundingAccountName
+
+
+
+
+## 云原生数据库 TDSQL-C(cynosdb) 版本：2019-01-07
+
+### 第 18 次发布
+
+发布时间：2022-07-11 06:10:21
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [BillingResourceInfo](https://cloud.tencent.com/document/api/1003/48097#BillingResourceInfo)
+
+	* 新增成员：DealName
+
+
+
+
+## 云直播(live) 版本：2018-08-01
+
+### 第 80 次发布
+
+发布时间：2022-07-11 06:14:37
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除接口**：</font>
+
+* BindLiveDomainCert
+* CreateLiveCert
+* DeleteLiveCert
+* ModifyLiveCert
+* ModifyLiveDomainCert
+
+
+
+## 弹性微服务(tem) 版本：2021-07-01
+
+### 第 19 次发布
+
+发布时间：2022-07-11 06:18:55
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [PortMapping](https://cloud.tencent.com/document/api/1371/60171#PortMapping)
+
+	* 新增成员：ServiceName
+
+
+
+
+## 弹性微服务(tem) 版本：2020-12-21
+
+
+
 # Release v1.0.438
 
 ## 日志服务(cls) 版本：2020-10-16

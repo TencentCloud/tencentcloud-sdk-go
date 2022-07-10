@@ -5898,6 +5898,118 @@ func (r *DescribeListWaterPrintConfigResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeNewL7RulesRequestParams struct {
+	// 大禹子产品代号（bgpip表示高防IP）
+	Business *string `json:"Business,omitempty" name:"Business"`
+
+	// 状态搜索，选填，取值[0(规则配置成功)，1(规则配置生效中)，2(规则配置失败)，3(规则删除生效中)，5(规则删除失败)，6(规则等待配置)，7(规则等待删除)，8(规则待配置证书)]
+	StatusList []*uint64 `json:"StatusList,omitempty" name:"StatusList"`
+
+	// 域名搜索，选填，当需要搜索域名请填写
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// IP搜索，选填，当需要搜索IP请填写
+	Ip *string `json:"Ip,omitempty" name:"Ip"`
+
+	// 一页条数，填0表示不分页
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 页起始偏移，取值为(页码-1)*一页条数
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 转发协议搜索，选填，取值[http, https, http/https]
+	ProtocolList []*string `json:"ProtocolList,omitempty" name:"ProtocolList"`
+
+	// 高防IP实例的Cname
+	Cname *string `json:"Cname,omitempty" name:"Cname"`
+}
+
+type DescribeNewL7RulesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 大禹子产品代号（bgpip表示高防IP）
+	Business *string `json:"Business,omitempty" name:"Business"`
+
+	// 状态搜索，选填，取值[0(规则配置成功)，1(规则配置生效中)，2(规则配置失败)，3(规则删除生效中)，5(规则删除失败)，6(规则等待配置)，7(规则等待删除)，8(规则待配置证书)]
+	StatusList []*uint64 `json:"StatusList,omitempty" name:"StatusList"`
+
+	// 域名搜索，选填，当需要搜索域名请填写
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// IP搜索，选填，当需要搜索IP请填写
+	Ip *string `json:"Ip,omitempty" name:"Ip"`
+
+	// 一页条数，填0表示不分页
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 页起始偏移，取值为(页码-1)*一页条数
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 转发协议搜索，选填，取值[http, https, http/https]
+	ProtocolList []*string `json:"ProtocolList,omitempty" name:"ProtocolList"`
+
+	// 高防IP实例的Cname
+	Cname *string `json:"Cname,omitempty" name:"Cname"`
+}
+
+func (r *DescribeNewL7RulesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeNewL7RulesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Business")
+	delete(f, "StatusList")
+	delete(f, "Domain")
+	delete(f, "Ip")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "ProtocolList")
+	delete(f, "Cname")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeNewL7RulesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeNewL7RulesResponseParams struct {
+	// 转发规则列表
+	Rules []*NewL7RuleEntry `json:"Rules,omitempty" name:"Rules"`
+
+	// 健康检查配置列表
+	Healths []*L7RuleHealth `json:"Healths,omitempty" name:"Healths"`
+
+	// 总规则数
+	Total *uint64 `json:"Total,omitempty" name:"Total"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeNewL7RulesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeNewL7RulesResponseParams `json:"Response"`
+}
+
+func (r *DescribeNewL7RulesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeNewL7RulesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeOverviewAttackTrendRequestParams struct {
 	// 攻击类型，取值ddos， cc
 	Type *string `json:"Type,omitempty" name:"Type"`
@@ -6670,6 +6782,35 @@ type L7RuleEntry struct {
 
 	// 同ruleId
 	Id *string `json:"Id,omitempty" name:"Id"`
+}
+
+type L7RuleHealth struct {
+	// 配置状态，0： 正常，1：配置中，2：配置失败
+	Status *uint64 `json:"Status,omitempty" name:"Status"`
+
+	// =1表示开启；=0表示关闭
+	Enable *uint64 `json:"Enable,omitempty" name:"Enable"`
+
+	// 规则ID
+	RuleId *string `json:"RuleId,omitempty" name:"RuleId"`
+
+	// 检查目录的URL，默认为/
+	Url *string `json:"Url,omitempty" name:"Url"`
+
+	// 检测间隔时间，单位秒
+	Interval *uint64 `json:"Interval,omitempty" name:"Interval"`
+
+	// 健康阈值，单位次
+	AliveNum *uint64 `json:"AliveNum,omitempty" name:"AliveNum"`
+
+	// 不健康阈值，单位次
+	KickNum *uint64 `json:"KickNum,omitempty" name:"KickNum"`
+
+	// HTTP请求方式，取值[HEAD,GET]
+	Method *string `json:"Method,omitempty" name:"Method"`
+
+	// 健康检查判定正常状态码，1xx =1, 2xx=2, 3xx=4, 4xx=8,5xx=16，多个状态码值加和
+	StatusCode *uint64 `json:"StatusCode,omitempty" name:"StatusCode"`
 }
 
 type Layer4Rule struct {

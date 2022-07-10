@@ -2602,7 +2602,7 @@ func NewCreateOpenBankPaymentOrderResponse() (response *CreateOpenBankPaymentOrd
 }
 
 // CreateOpenBankPaymentOrder
-// 云企付-创建支付订单
+// 云企付-创建支付订单。支持B2B网关支付，B2C转账下单。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
@@ -2611,7 +2611,7 @@ func (c *Client) CreateOpenBankPaymentOrder(request *CreateOpenBankPaymentOrderR
 }
 
 // CreateOpenBankPaymentOrder
-// 云企付-创建支付订单
+// 云企付-创建支付订单。支持B2B网关支付，B2C转账下单。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
@@ -2768,6 +2768,53 @@ func (c *Client) CreateOpenBankUnifiedOrderWithContext(ctx context.Context, requ
     request.SetContext(ctx)
     
     response = NewCreateOpenBankUnifiedOrderResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateOpenBankVerificationOrderRequest() (request *CreateOpenBankVerificationOrderRequest) {
+    request = &CreateOpenBankVerificationOrderRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "CreateOpenBankVerificationOrder")
+    
+    
+    return
+}
+
+func NewCreateOpenBankVerificationOrderResponse() (response *CreateOpenBankVerificationOrderResponse) {
+    response = &CreateOpenBankVerificationOrderResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateOpenBankVerificationOrder
+// 云企付-创建核销申请，适用于针对支付订单维度的确认收货，解冻等业务场景。目前支持的渠道有TENPAY下的EBANK_PAYMENT付款方式创建支付订单时，选择担保支付下单的订单进行解冻。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+func (c *Client) CreateOpenBankVerificationOrder(request *CreateOpenBankVerificationOrderRequest) (response *CreateOpenBankVerificationOrderResponse, err error) {
+    return c.CreateOpenBankVerificationOrderWithContext(context.Background(), request)
+}
+
+// CreateOpenBankVerificationOrder
+// 云企付-创建核销申请，适用于针对支付订单维度的确认收货，解冻等业务场景。目前支持的渠道有TENPAY下的EBANK_PAYMENT付款方式创建支付订单时，选择担保支付下单的订单进行解冻。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+func (c *Client) CreateOpenBankVerificationOrderWithContext(ctx context.Context, request *CreateOpenBankVerificationOrderRequest) (response *CreateOpenBankVerificationOrderResponse, err error) {
+    if request == nil {
+        request = NewCreateOpenBankVerificationOrderRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateOpenBankVerificationOrder require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateOpenBankVerificationOrderResponse()
     err = c.Send(request, response)
     return
 }
@@ -9139,6 +9186,53 @@ func (c *Client) QueryOpenBankUnbindExternalSubMerchantBankAccountWithContext(ct
     return
 }
 
+func NewQueryOpenBankVerificationOrderRequest() (request *QueryOpenBankVerificationOrderRequest) {
+    request = &QueryOpenBankVerificationOrderRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "QueryOpenBankVerificationOrder")
+    
+    
+    return
+}
+
+func NewQueryOpenBankVerificationOrderResponse() (response *QueryOpenBankVerificationOrderResponse) {
+    response = &QueryOpenBankVerificationOrderResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// QueryOpenBankVerificationOrder
+// 云企付-查询核销订单状态，客户可以使用该接口来查询核销申请的订单状态。目前仅支持TENPAY渠道EBANK_PAYMENT付款方式的担保支付订单查询。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+func (c *Client) QueryOpenBankVerificationOrder(request *QueryOpenBankVerificationOrderRequest) (response *QueryOpenBankVerificationOrderResponse, err error) {
+    return c.QueryOpenBankVerificationOrderWithContext(context.Background(), request)
+}
+
+// QueryOpenBankVerificationOrder
+// 云企付-查询核销订单状态，客户可以使用该接口来查询核销申请的订单状态。目前仅支持TENPAY渠道EBANK_PAYMENT付款方式的担保支付订单查询。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+func (c *Client) QueryOpenBankVerificationOrderWithContext(ctx context.Context, request *QueryOpenBankVerificationOrderRequest) (response *QueryOpenBankVerificationOrderResponse, err error) {
+    if request == nil {
+        request = NewQueryOpenBankVerificationOrderRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryOpenBankVerificationOrder require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewQueryOpenBankVerificationOrderResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewQueryOrderRequest() (request *QueryOrderRequest) {
     request = &QueryOrderRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -12155,6 +12249,63 @@ func (c *Client) UploadTaxPaymentWithContext(ctx context.Context, request *Uploa
     request.SetContext(ctx)
     
     response = NewUploadTaxPaymentResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewVerifyOpenBankAccountRequest() (request *VerifyOpenBankAccountRequest) {
+    request = &VerifyOpenBankAccountRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cpdp", APIVersion, "VerifyOpenBankAccount")
+    
+    
+    return
+}
+
+func NewVerifyOpenBankAccountResponse() (response *VerifyOpenBankAccountResponse) {
+    response = &VerifyOpenBankAccountResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// VerifyOpenBankAccount
+// 云企付-子商户银行卡打款验证，在接入TENPAY渠道EBANK_PAYMENT付款时，若客户期望接入担保支付，需在接入前先完成，收款商户绑定的银行卡进行打款验证。验证成功后，才可以调用CreateOpenBankPaymentOrder接口进行担保支付下单。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_UPLOADTAXLIST = "FailedOperation.UploadTaxList"
+//  FAILEDOPERATION_UPLOADTAXPAYMENT = "FailedOperation.UploadTaxPayment"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  MISSINGPARAMETER_ACTION = "MissingParameter.Action"
+//  MISSINGPARAMETER_APPID = "MissingParameter.AppId"
+//  RESOURCENOTFOUND_ACCOUNT = "ResourceNotFound.Account"
+func (c *Client) VerifyOpenBankAccount(request *VerifyOpenBankAccountRequest) (response *VerifyOpenBankAccountResponse, err error) {
+    return c.VerifyOpenBankAccountWithContext(context.Background(), request)
+}
+
+// VerifyOpenBankAccount
+// 云企付-子商户银行卡打款验证，在接入TENPAY渠道EBANK_PAYMENT付款时，若客户期望接入担保支付，需在接入前先完成，收款商户绑定的银行卡进行打款验证。验证成功后，才可以调用CreateOpenBankPaymentOrder接口进行担保支付下单。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_UPLOADTAXLIST = "FailedOperation.UploadTaxList"
+//  FAILEDOPERATION_UPLOADTAXPAYMENT = "FailedOperation.UploadTaxPayment"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  MISSINGPARAMETER_ACTION = "MissingParameter.Action"
+//  MISSINGPARAMETER_APPID = "MissingParameter.AppId"
+//  RESOURCENOTFOUND_ACCOUNT = "ResourceNotFound.Account"
+func (c *Client) VerifyOpenBankAccountWithContext(ctx context.Context, request *VerifyOpenBankAccountRequest) (response *VerifyOpenBankAccountResponse, err error) {
+    if request == nil {
+        request = NewVerifyOpenBankAccountRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("VerifyOpenBankAccount require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewVerifyOpenBankAccountResponse()
     err = c.Send(request, response)
     return
 }

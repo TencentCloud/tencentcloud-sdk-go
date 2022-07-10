@@ -63,6 +63,10 @@ func NewAttachCcnInstancesResponse() (response *AttachCcnInstancesResponse) {
 }
 
 // AttachCcnInstances
+// 此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 本接口（AttachCcnInstances）用于关联云联网实例。
 //
 // 可能返回的错误码:
@@ -89,6 +93,10 @@ func (c *Client) AttachCcnInstances(request *AttachCcnInstancesRequest) (respons
 }
 
 // AttachCcnInstances
+// 此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 本接口（AttachCcnInstances）用于关联云联网实例。
 //
 // 可能返回的错误码:
@@ -144,6 +152,10 @@ func NewCopyFleetResponse() (response *CopyFleetResponse) {
 }
 
 // CopyFleet
+// 此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 本接口（CopyFleet）用于复制服务器舰队。
 //
 // 可能返回的错误码:
@@ -170,6 +182,10 @@ func (c *Client) CopyFleet(request *CopyFleetRequest) (response *CopyFleetRespon
 }
 
 // CopyFleet
+// 此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 本接口（CopyFleet）用于复制服务器舰队。
 //
 // 可能返回的错误码:
@@ -225,6 +241,10 @@ func NewCreateAliasResponse() (response *CreateAliasResponse) {
 }
 
 // CreateAlias
+// 此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 本接口（CreateAlias）用于创建别名。
 //
 // 可能返回的错误码:
@@ -238,6 +258,10 @@ func (c *Client) CreateAlias(request *CreateAliasRequest) (response *CreateAlias
 }
 
 // CreateAlias
+// 此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 本接口（CreateAlias）用于创建别名。
 //
 // 可能返回的错误码:
@@ -280,6 +304,10 @@ func NewCreateAssetResponse() (response *CreateAssetResponse) {
 }
 
 // CreateAsset
+// 此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 本接口（CreateAsset）用于创建生成包。
 //
 // 通过获取上传cos的临时密钥，将文件上传至cos，然后将生成包的zip名称下发给本接口完成资源创建。  
@@ -321,6 +349,10 @@ func (c *Client) CreateAsset(request *CreateAssetRequest) (response *CreateAsset
 }
 
 // CreateAsset
+// 此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 本接口（CreateAsset）用于创建生成包。
 //
 // 通过获取上传cos的临时密钥，将文件上传至cos，然后将生成包的zip名称下发给本接口完成资源创建。  
@@ -391,6 +423,10 @@ func NewCreateAssetWithImageResponse() (response *CreateAssetWithImageResponse) 
 }
 
 // CreateAssetWithImage
+// 此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 本接口（CreateAssetWithImage）用于创建生成包镜像信息。
 //
 // 可能返回的错误码:
@@ -416,6 +452,10 @@ func (c *Client) CreateAssetWithImage(request *CreateAssetWithImageRequest) (res
 }
 
 // CreateAssetWithImage
+// 此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 本接口（CreateAssetWithImage）用于创建生成包镜像信息。
 //
 // 可能返回的错误码:
@@ -470,6 +510,10 @@ func NewCreateFleetResponse() (response *CreateFleetResponse) {
 }
 
 // CreateFleet
+// 此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 本接口（CreateFleet）用于创建服务器舰队。
 //
 // 可能返回的错误码:
@@ -494,6 +538,10 @@ func (c *Client) CreateFleet(request *CreateFleetRequest) (response *CreateFleet
 }
 
 // CreateFleet
+// 此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 本接口（CreateFleet）用于创建服务器舰队。
 //
 // 可能返回的错误码:
@@ -547,6 +595,10 @@ func NewCreateGameServerSessionResponse() (response *CreateGameServerSessionResp
 }
 
 // CreateGameServerSession
+// 此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 本接口（CreateGameServerSession）用于创建游戏服务会话。
 //
 // 可能返回的错误码:
@@ -565,6 +617,10 @@ func (c *Client) CreateGameServerSession(request *CreateGameServerSessionRequest
 }
 
 // CreateGameServerSession
+// 此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 本接口（CreateGameServerSession）用于创建游戏服务会话。
 //
 // 可能返回的错误码:
@@ -612,6 +668,10 @@ func NewCreateGameServerSessionQueueResponse() (response *CreateGameServerSessio
 }
 
 // CreateGameServerSessionQueue
+// 此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 本接口（CreateGameServerSessionQueue）用于创建游戏服务器会话队列。
 //
 // 可能返回的错误码:
@@ -629,6 +689,10 @@ func (c *Client) CreateGameServerSessionQueue(request *CreateGameServerSessionQu
 }
 
 // CreateGameServerSessionQueue
+// 此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 本接口（CreateGameServerSessionQueue）用于创建游戏服务器会话队列。
 //
 // 可能返回的错误码:
@@ -675,6 +739,10 @@ func NewDeleteAliasResponse() (response *DeleteAliasResponse) {
 }
 
 // DeleteAlias
+// 此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 本接口（DeleteAlias）用于删除别名。
 //
 // 可能返回的错误码:
@@ -687,6 +755,10 @@ func (c *Client) DeleteAlias(request *DeleteAliasRequest) (response *DeleteAlias
 }
 
 // DeleteAlias
+// 此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 本接口（DeleteAlias）用于删除别名。
 //
 // 可能返回的错误码:
@@ -728,6 +800,10 @@ func NewDeleteAssetResponse() (response *DeleteAssetResponse) {
 }
 
 // DeleteAsset
+// 此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 本接口（DeleteAsset）用于删除生成包。
 //
 // 可能返回的错误码:
@@ -744,6 +820,10 @@ func (c *Client) DeleteAsset(request *DeleteAssetRequest) (response *DeleteAsset
 }
 
 // DeleteAsset
+// 此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 本接口（DeleteAsset）用于删除生成包。
 //
 // 可能返回的错误码:
@@ -789,6 +869,10 @@ func NewDeleteFleetResponse() (response *DeleteFleetResponse) {
 }
 
 // DeleteFleet
+// 此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 本接口（DeleteFleet）用于删除服务器舰队。
 //
 // 可能返回的错误码:
@@ -810,6 +894,10 @@ func (c *Client) DeleteFleet(request *DeleteFleetRequest) (response *DeleteFleet
 }
 
 // DeleteFleet
+// 此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 本接口（DeleteFleet）用于删除服务器舰队。
 //
 // 可能返回的错误码:
@@ -860,6 +948,10 @@ func NewDeleteGameServerSessionQueueResponse() (response *DeleteGameServerSessio
 }
 
 // DeleteGameServerSessionQueue
+// 此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 本接口（DeleteGameServerSessionQueue）用于删除游戏服务器会话队列。
 //
 // 可能返回的错误码:
@@ -872,6 +964,10 @@ func (c *Client) DeleteGameServerSessionQueue(request *DeleteGameServerSessionQu
 }
 
 // DeleteGameServerSessionQueue
+// 此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 本接口（DeleteGameServerSessionQueue）用于删除游戏服务器会话队列。
 //
 // 可能返回的错误码:
@@ -913,6 +1009,10 @@ func NewDeleteScalingPolicyResponse() (response *DeleteScalingPolicyResponse) {
 }
 
 // DeleteScalingPolicy
+// 此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 本接口（DeleteScalingPolicy）用于删除服务器舰队的扩缩容策略。
 //
 // 通过服务器舰队ID和策略名称删除服务器舰队的扩缩容策略，只传递服务器舰队ID时，会将这个服务器舰队下的所有策略都删除。
@@ -931,6 +1031,10 @@ func (c *Client) DeleteScalingPolicy(request *DeleteScalingPolicyRequest) (respo
 }
 
 // DeleteScalingPolicy
+// 此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 本接口（DeleteScalingPolicy）用于删除服务器舰队的扩缩容策略。
 //
 // 通过服务器舰队ID和策略名称删除服务器舰队的扩缩容策略，只传递服务器舰队ID时，会将这个服务器舰队下的所有策略都删除。
@@ -978,6 +1082,10 @@ func NewDeleteTimerScalingPolicyResponse() (response *DeleteTimerScalingPolicyRe
 }
 
 // DeleteTimerScalingPolicy
+// 此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 本接口（DeleteTimerScalingPolicy）用于删除fleet下的定时器。
 //
 // 可能返回的错误码:
@@ -993,6 +1101,10 @@ func (c *Client) DeleteTimerScalingPolicy(request *DeleteTimerScalingPolicyReque
 }
 
 // DeleteTimerScalingPolicy
+// 此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 本接口（DeleteTimerScalingPolicy）用于删除fleet下的定时器。
 //
 // 可能返回的错误码:
@@ -1037,6 +1149,10 @@ func NewDescribeAliasResponse() (response *DescribeAliasResponse) {
 }
 
 // DescribeAlias
+// 此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 本接口（DescribeAlias）用于获取别名详情。
 //
 // 可能返回的错误码:
@@ -1049,6 +1165,10 @@ func (c *Client) DescribeAlias(request *DescribeAliasRequest) (response *Describ
 }
 
 // DescribeAlias
+// 此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 本接口（DescribeAlias）用于获取别名详情。
 //
 // 可能返回的错误码:
@@ -1090,6 +1210,10 @@ func NewDescribeAssetResponse() (response *DescribeAssetResponse) {
 }
 
 // DescribeAsset
+// 此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 本接口（DescribeAsset）获取生成包信息。
 //
 // 可能返回的错误码:
@@ -1104,6 +1228,10 @@ func (c *Client) DescribeAsset(request *DescribeAssetRequest) (response *Describ
 }
 
 // DescribeAsset
+// 此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 本接口（DescribeAsset）获取生成包信息。
 //
 // 可能返回的错误码:
@@ -1147,6 +1275,10 @@ func NewDescribeAssetSystemsResponse() (response *DescribeAssetSystemsResponse) 
 }
 
 // DescribeAssetSystems
+// 此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 本接口（DescribeAssetSystems）用于获取生成包支持的操作系统。
 //
 // 可能返回的错误码:
@@ -1161,6 +1293,10 @@ func (c *Client) DescribeAssetSystems(request *DescribeAssetSystemsRequest) (res
 }
 
 // DescribeAssetSystems
+// 此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 本接口（DescribeAssetSystems）用于获取生成包支持的操作系统。
 //
 // 可能返回的错误码:
@@ -1204,6 +1340,10 @@ func NewDescribeAssetsResponse() (response *DescribeAssetsResponse) {
 }
 
 // DescribeAssets
+// 此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 本接口（DescribeAssets）用于获取生成包列表。
 //
 // 可能返回的错误码:
@@ -1219,6 +1359,10 @@ func (c *Client) DescribeAssets(request *DescribeAssetsRequest) (response *Descr
 }
 
 // DescribeAssets
+// 此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 本接口（DescribeAssets）用于获取生成包列表。
 //
 // 可能返回的错误码:
@@ -1263,6 +1407,10 @@ func NewDescribeCcnInstancesResponse() (response *DescribeCcnInstancesResponse) 
 }
 
 // DescribeCcnInstances
+// 此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 本接口（DescribeCcnInstances）用于查询云联网实例。
 //
 // 可能返回的错误码:
@@ -1290,6 +1438,10 @@ func (c *Client) DescribeCcnInstances(request *DescribeCcnInstancesRequest) (res
 }
 
 // DescribeCcnInstances
+// 此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 本接口（DescribeCcnInstances）用于查询云联网实例。
 //
 // 可能返回的错误码:
@@ -1346,6 +1498,10 @@ func NewDescribeFleetAttributesResponse() (response *DescribeFleetAttributesResp
 }
 
 // DescribeFleetAttributes
+// 此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 本接口（DescribeFleetAttributes）用于查询服务器舰队属性。
 //
 // 可能返回的错误码:
@@ -1359,6 +1515,10 @@ func (c *Client) DescribeFleetAttributes(request *DescribeFleetAttributesRequest
 }
 
 // DescribeFleetAttributes
+// 此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 本接口（DescribeFleetAttributes）用于查询服务器舰队属性。
 //
 // 可能返回的错误码:
@@ -1401,6 +1561,10 @@ func NewDescribeFleetCapacityResponse() (response *DescribeFleetCapacityResponse
 }
 
 // DescribeFleetCapacity
+// 此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 本接口（DescribeFleetCapacity）用于查询服务部署容量配置。
 //
 // 可能返回的错误码:
@@ -1417,6 +1581,10 @@ func (c *Client) DescribeFleetCapacity(request *DescribeFleetCapacityRequest) (r
 }
 
 // DescribeFleetCapacity
+// 此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 本接口（DescribeFleetCapacity）用于查询服务部署容量配置。
 //
 // 可能返回的错误码:
@@ -1462,6 +1630,10 @@ func NewDescribeFleetEventsResponse() (response *DescribeFleetEventsResponse) {
 }
 
 // DescribeFleetEvents
+// 此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 本接口（DescribeFleetEvents）用于查询服务器舰队相关的事件列表。
 //
 // 可能返回的错误码:
@@ -1476,6 +1648,10 @@ func (c *Client) DescribeFleetEvents(request *DescribeFleetEventsRequest) (respo
 }
 
 // DescribeFleetEvents
+// 此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 本接口（DescribeFleetEvents）用于查询服务器舰队相关的事件列表。
 //
 // 可能返回的错误码:
@@ -1519,6 +1695,10 @@ func NewDescribeFleetPortSettingsResponse() (response *DescribeFleetPortSettings
 }
 
 // DescribeFleetPortSettings
+// 此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 本接口（DescribeFleetPortSettings）用于获取服务器舰队安全组信息。
 //
 // 可能返回的错误码:
@@ -1535,6 +1715,10 @@ func (c *Client) DescribeFleetPortSettings(request *DescribeFleetPortSettingsReq
 }
 
 // DescribeFleetPortSettings
+// 此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 本接口（DescribeFleetPortSettings）用于获取服务器舰队安全组信息。
 //
 // 可能返回的错误码:
@@ -1580,6 +1764,10 @@ func NewDescribeFleetRelatedResourcesResponse() (response *DescribeFleetRelatedR
 }
 
 // DescribeFleetRelatedResources
+// 此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 本接口（DescribeFleetRelatedResources）用于获取与游戏服务器舰队关联的资源信息，如别名、队列
 //
 // 可能返回的错误码:
@@ -1595,6 +1783,10 @@ func (c *Client) DescribeFleetRelatedResources(request *DescribeFleetRelatedReso
 }
 
 // DescribeFleetRelatedResources
+// 此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 本接口（DescribeFleetRelatedResources）用于获取与游戏服务器舰队关联的资源信息，如别名、队列
 //
 // 可能返回的错误码:
@@ -1639,6 +1831,10 @@ func NewDescribeFleetStatisticDetailsResponse() (response *DescribeFleetStatisti
 }
 
 // DescribeFleetStatisticDetails
+// 此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 本接口（DescribeFleetStatisticDetails）用于查询服务部署统计详情。
 //
 // 可能返回的错误码:
@@ -1660,6 +1856,10 @@ func (c *Client) DescribeFleetStatisticDetails(request *DescribeFleetStatisticDe
 }
 
 // DescribeFleetStatisticDetails
+// 此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 本接口（DescribeFleetStatisticDetails）用于查询服务部署统计详情。
 //
 // 可能返回的错误码:
@@ -1710,6 +1910,10 @@ func NewDescribeFleetStatisticFlowsResponse() (response *DescribeFleetStatisticF
 }
 
 // DescribeFleetStatisticFlows
+// 此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 本接口（DescribeFleetStatisticFlows）用于查询服务部署统计用量。
 //
 // 可能返回的错误码:
@@ -1730,6 +1934,10 @@ func (c *Client) DescribeFleetStatisticFlows(request *DescribeFleetStatisticFlow
 }
 
 // DescribeFleetStatisticFlows
+// 此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 本接口（DescribeFleetStatisticFlows）用于查询服务部署统计用量。
 //
 // 可能返回的错误码:
@@ -1779,6 +1987,10 @@ func NewDescribeFleetStatisticSummaryResponse() (response *DescribeFleetStatisti
 }
 
 // DescribeFleetStatisticSummary
+// 此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 本接口（DescribeFleetStatisticSummary）用于查询服务部署统计汇总信息。
 //
 // 可能返回的错误码:
@@ -1797,6 +2009,10 @@ func (c *Client) DescribeFleetStatisticSummary(request *DescribeFleetStatisticSu
 }
 
 // DescribeFleetStatisticSummary
+// 此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 本接口（DescribeFleetStatisticSummary）用于查询服务部署统计汇总信息。
 //
 // 可能返回的错误码:
@@ -1844,6 +2060,10 @@ func NewDescribeFleetUtilizationResponse() (response *DescribeFleetUtilizationRe
 }
 
 // DescribeFleetUtilization
+// 此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 本接口（DescribeFleetUtilization）用于查询服务器舰队的利用率信息。
 //
 // 可能返回的错误码:
@@ -1866,6 +2086,10 @@ func (c *Client) DescribeFleetUtilization(request *DescribeFleetUtilizationReque
 }
 
 // DescribeFleetUtilization
+// 此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 本接口（DescribeFleetUtilization）用于查询服务器舰队的利用率信息。
 //
 // 可能返回的错误码:
@@ -1917,6 +2141,10 @@ func NewDescribeGameServerSessionDetailsResponse() (response *DescribeGameServer
 }
 
 // DescribeGameServerSessionDetails
+// 此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 本接口（DescribeGameServerSessionDetails）用于查询游戏服务器会话详情列表。
 //
 // 可能返回的错误码:
@@ -1933,6 +2161,10 @@ func (c *Client) DescribeGameServerSessionDetails(request *DescribeGameServerSes
 }
 
 // DescribeGameServerSessionDetails
+// 此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 本接口（DescribeGameServerSessionDetails）用于查询游戏服务器会话详情列表。
 //
 // 可能返回的错误码:
@@ -1978,6 +2210,10 @@ func NewDescribeGameServerSessionPlacementResponse() (response *DescribeGameServ
 }
 
 // DescribeGameServerSessionPlacement
+// 此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 本接口（DescribeGameServerSessionPlacement）用于查询游戏服务器会话的放置。
 //
 // 可能返回的错误码:
@@ -1991,6 +2227,10 @@ func (c *Client) DescribeGameServerSessionPlacement(request *DescribeGameServerS
 }
 
 // DescribeGameServerSessionPlacement
+// 此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 本接口（DescribeGameServerSessionPlacement）用于查询游戏服务器会话的放置。
 //
 // 可能返回的错误码:
@@ -2033,6 +2273,10 @@ func NewDescribeGameServerSessionQueuesResponse() (response *DescribeGameServerS
 }
 
 // DescribeGameServerSessionQueues
+// 此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 本接口（DescribeGameServerSessionQueues）用于查询游戏服务器会话队列。
 //
 // 可能返回的错误码:
@@ -2047,6 +2291,10 @@ func (c *Client) DescribeGameServerSessionQueues(request *DescribeGameServerSess
 }
 
 // DescribeGameServerSessionQueues
+// 此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 本接口（DescribeGameServerSessionQueues）用于查询游戏服务器会话队列。
 //
 // 可能返回的错误码:
@@ -2090,6 +2338,10 @@ func NewDescribeGameServerSessionsResponse() (response *DescribeGameServerSessio
 }
 
 // DescribeGameServerSessions
+// 此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 本接口（DescribeGameServerSessions）用于查询游戏服务器会话列表。
 //
 // 可能返回的错误码:
@@ -2106,6 +2358,10 @@ func (c *Client) DescribeGameServerSessions(request *DescribeGameServerSessionsR
 }
 
 // DescribeGameServerSessions
+// 此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 本接口（DescribeGameServerSessions）用于查询游戏服务器会话列表。
 //
 // 可能返回的错误码:
@@ -2151,6 +2407,10 @@ func NewDescribeInstanceLimitResponse() (response *DescribeInstanceLimitResponse
 }
 
 // DescribeInstanceLimit
+// 此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 本接口（DescribeInstanceLimit）用于查询用户实例数限额。
 //
 // 可能返回的错误码:
@@ -2164,6 +2424,10 @@ func (c *Client) DescribeInstanceLimit(request *DescribeInstanceLimitRequest) (r
 }
 
 // DescribeInstanceLimit
+// 此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 本接口（DescribeInstanceLimit）用于查询用户实例数限额。
 //
 // 可能返回的错误码:
@@ -2206,6 +2470,10 @@ func NewDescribeInstanceTypesResponse() (response *DescribeInstanceTypesResponse
 }
 
 // DescribeInstanceTypes
+// 此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 本接口（DescribeInstanceTypes）用于获取服务器实例类型列表。
 //
 // 可能返回的错误码:
@@ -2219,6 +2487,10 @@ func (c *Client) DescribeInstanceTypes(request *DescribeInstanceTypesRequest) (r
 }
 
 // DescribeInstanceTypes
+// 此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 本接口（DescribeInstanceTypes）用于获取服务器实例类型列表。
 //
 // 可能返回的错误码:
@@ -2261,6 +2533,10 @@ func NewDescribeInstancesResponse() (response *DescribeInstancesResponse) {
 }
 
 // DescribeInstances
+// 此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 本接口（DescribeInstances）用于查询服务器实例列表。
 //
 // 可能返回的错误码:
@@ -2275,6 +2551,10 @@ func (c *Client) DescribeInstances(request *DescribeInstancesRequest) (response 
 }
 
 // DescribeInstances
+// 此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 本接口（DescribeInstances）用于查询服务器实例列表。
 //
 // 可能返回的错误码:
@@ -2318,6 +2598,10 @@ func NewDescribeInstancesExtendResponse() (response *DescribeInstancesExtendResp
 }
 
 // DescribeInstancesExtend
+// 此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 本接口（DescribeInstancesExtend）用于查询实例扩展信息列表。
 //
 // 可能返回的错误码:
@@ -2332,6 +2616,10 @@ func (c *Client) DescribeInstancesExtend(request *DescribeInstancesExtendRequest
 }
 
 // DescribeInstancesExtend
+// 此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 本接口（DescribeInstancesExtend）用于查询实例扩展信息列表。
 //
 // 可能返回的错误码:
@@ -2375,6 +2663,10 @@ func NewDescribePlayerSessionsResponse() (response *DescribePlayerSessionsRespon
 }
 
 // DescribePlayerSessions
+// 此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 本接口（DescribePlayerSessions）用于获取玩家会话列表。
 //
 // 可能返回的错误码:
@@ -2390,6 +2682,10 @@ func (c *Client) DescribePlayerSessions(request *DescribePlayerSessionsRequest) 
 }
 
 // DescribePlayerSessions
+// 此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 本接口（DescribePlayerSessions）用于获取玩家会话列表。
 //
 // 可能返回的错误码:
@@ -2434,6 +2730,10 @@ func NewDescribeRuntimeConfigurationResponse() (response *DescribeRuntimeConfigu
 }
 
 // DescribeRuntimeConfiguration
+// 此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 本接口（DescribeRuntimeConfiguration）用于获取服务器舰队运行配置。
 //
 // 可能返回的错误码:
@@ -2455,6 +2755,10 @@ func (c *Client) DescribeRuntimeConfiguration(request *DescribeRuntimeConfigurat
 }
 
 // DescribeRuntimeConfiguration
+// 此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 本接口（DescribeRuntimeConfiguration）用于获取服务器舰队运行配置。
 //
 // 可能返回的错误码:
@@ -2505,6 +2809,10 @@ func NewDescribeScalingPoliciesResponse() (response *DescribeScalingPoliciesResp
 }
 
 // DescribeScalingPolicies
+// 此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 本接口（DescribeScalingPolicies）用于查询服务器舰队的动态扩缩容策略列表。
 //
 // 可能返回的错误码:
@@ -2519,6 +2827,10 @@ func (c *Client) DescribeScalingPolicies(request *DescribeScalingPoliciesRequest
 }
 
 // DescribeScalingPolicies
+// 此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 本接口（DescribeScalingPolicies）用于查询服务器舰队的动态扩缩容策略列表。
 //
 // 可能返回的错误码:
@@ -2562,6 +2874,10 @@ func NewDescribeTimerScalingPoliciesResponse() (response *DescribeTimerScalingPo
 }
 
 // DescribeTimerScalingPolicies
+// 此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 本接口（DescribeTimerScalingPolicies）用于查询fleet下的定时器列表。可以通过fleetid，定时器名称分页查询。
 //
 // 可能返回的错误码:
@@ -2578,6 +2894,10 @@ func (c *Client) DescribeTimerScalingPolicies(request *DescribeTimerScalingPolic
 }
 
 // DescribeTimerScalingPolicies
+// 此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 本接口（DescribeTimerScalingPolicies）用于查询fleet下的定时器列表。可以通过fleetid，定时器名称分页查询。
 //
 // 可能返回的错误码:
@@ -2623,6 +2943,10 @@ func NewDescribeUserQuotaResponse() (response *DescribeUserQuotaResponse) {
 }
 
 // DescribeUserQuota
+// 此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 本接口（DescribeUserQuota）获取用户单个模块配额。
 //
 // 可能返回的错误码:
@@ -2644,6 +2968,10 @@ func (c *Client) DescribeUserQuota(request *DescribeUserQuotaRequest) (response 
 }
 
 // DescribeUserQuota
+// 此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 本接口（DescribeUserQuota）获取用户单个模块配额。
 //
 // 可能返回的错误码:
@@ -2694,6 +3022,10 @@ func NewDescribeUserQuotasResponse() (response *DescribeUserQuotasResponse) {
 }
 
 // DescribeUserQuotas
+// 此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 本接口（DescribeUserQuotas）用于获取用户配额
 //
 // 可能返回的错误码:
@@ -2715,6 +3047,10 @@ func (c *Client) DescribeUserQuotas(request *DescribeUserQuotasRequest) (respons
 }
 
 // DescribeUserQuotas
+// 此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 本接口（DescribeUserQuotas）用于获取用户配额
 //
 // 可能返回的错误码:
@@ -2765,6 +3101,10 @@ func NewDetachCcnInstancesResponse() (response *DetachCcnInstancesResponse) {
 }
 
 // DetachCcnInstances
+// 此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 本接口（DetachCcnInstances）用于解关联云联网实例。
 //
 // 可能返回的错误码:
@@ -2791,6 +3131,10 @@ func (c *Client) DetachCcnInstances(request *DetachCcnInstancesRequest) (respons
 }
 
 // DetachCcnInstances
+// 此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 本接口（DetachCcnInstances）用于解关联云联网实例。
 //
 // 可能返回的错误码:
@@ -2846,6 +3190,10 @@ func NewEndGameServerSessionAndProcessResponse() (response *EndGameServerSession
 }
 
 // EndGameServerSessionAndProcess
+// 此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 本接口（EndGameServerSessionAndProcess）用于终止游戏服务器会话和对应的进程，适用于时限保护和不保护。
 //
 // 可能返回的错误码:
@@ -2858,6 +3206,10 @@ func (c *Client) EndGameServerSessionAndProcess(request *EndGameServerSessionAnd
 }
 
 // EndGameServerSessionAndProcess
+// 此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 本接口（EndGameServerSessionAndProcess）用于终止游戏服务器会话和对应的进程，适用于时限保护和不保护。
 //
 // 可能返回的错误码:
@@ -2899,6 +3251,10 @@ func NewGetGameServerInstanceLogUrlResponse() (response *GetGameServerInstanceLo
 }
 
 // GetGameServerInstanceLogUrl
+// 此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 本接口用于获取游戏服务器实例的日志URL。
 //
 // 可能返回的错误码:
@@ -2914,6 +3270,10 @@ func (c *Client) GetGameServerInstanceLogUrl(request *GetGameServerInstanceLogUr
 }
 
 // GetGameServerInstanceLogUrl
+// 此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 本接口用于获取游戏服务器实例的日志URL。
 //
 // 可能返回的错误码:
@@ -2958,6 +3318,10 @@ func NewGetGameServerSessionLogUrlResponse() (response *GetGameServerSessionLogU
 }
 
 // GetGameServerSessionLogUrl
+// 此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 本接口（GetGameServerSessionLogUrl）用于获取游戏服务器会话的日志URL。
 //
 // 可能返回的错误码:
@@ -2973,6 +3337,10 @@ func (c *Client) GetGameServerSessionLogUrl(request *GetGameServerSessionLogUrlR
 }
 
 // GetGameServerSessionLogUrl
+// 此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 本接口（GetGameServerSessionLogUrl）用于获取游戏服务器会话的日志URL。
 //
 // 可能返回的错误码:
@@ -3017,6 +3385,10 @@ func NewGetInstanceAccessResponse() (response *GetInstanceAccessResponse) {
 }
 
 // GetInstanceAccess
+// 此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 本接口（GetInstanceAccess）用于获取实例登录所需要的凭据。
 //
 // 可能返回的错误码:
@@ -3038,6 +3410,10 @@ func (c *Client) GetInstanceAccess(request *GetInstanceAccessRequest) (response 
 }
 
 // GetInstanceAccess
+// 此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 本接口（GetInstanceAccess）用于获取实例登录所需要的凭据。
 //
 // 可能返回的错误码:
@@ -3088,6 +3464,10 @@ func NewGetUploadCredentialsResponse() (response *GetUploadCredentialsResponse) 
 }
 
 // GetUploadCredentials
+// 此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 本接口（GetUploadCredentials）获取上传文件授权信息。
 //
 // 通过 [GetUploadCredentials](https://cloud.tencent.com/document/product/1165/48727) 接口获取临时授权信息后，调用 COS API将数据上传，根据上传的 BucketKey 信息进行生成包 [CreateAsset](https://cloud.tencent.com/document/product/1165/48731) 的创建。参考下面的示例部分。
@@ -3102,6 +3482,10 @@ func (c *Client) GetUploadCredentials(request *GetUploadCredentialsRequest) (res
 }
 
 // GetUploadCredentials
+// 此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 本接口（GetUploadCredentials）获取上传文件授权信息。
 //
 // 通过 [GetUploadCredentials](https://cloud.tencent.com/document/product/1165/48727) 接口获取临时授权信息后，调用 COS API将数据上传，根据上传的 BucketKey 信息进行生成包 [CreateAsset](https://cloud.tencent.com/document/product/1165/48731) 的创建。参考下面的示例部分。
@@ -3145,6 +3529,10 @@ func NewGetUploadFederationTokenResponse() (response *GetUploadFederationTokenRe
 }
 
 // GetUploadFederationToken
+// 此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 本接口（GetUploadFederationToken）用于 获取生成包上传所需要的临时密钥。
 //
 // 可能返回的错误码:
@@ -3156,6 +3544,10 @@ func (c *Client) GetUploadFederationToken(request *GetUploadFederationTokenReque
 }
 
 // GetUploadFederationToken
+// 此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 本接口（GetUploadFederationToken）用于 获取生成包上传所需要的临时密钥。
 //
 // 可能返回的错误码:
@@ -3196,6 +3588,10 @@ func NewJoinGameServerSessionResponse() (response *JoinGameServerSessionResponse
 }
 
 // JoinGameServerSession
+// 此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 本接口（JoinGameServerSession）用于加入游戏服务器会话。
 //
 // 可能返回的错误码:
@@ -3214,6 +3610,10 @@ func (c *Client) JoinGameServerSession(request *JoinGameServerSessionRequest) (r
 }
 
 // JoinGameServerSession
+// 此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 本接口（JoinGameServerSession）用于加入游戏服务器会话。
 //
 // 可能返回的错误码:
@@ -3261,6 +3661,10 @@ func NewJoinGameServerSessionBatchResponse() (response *JoinGameServerSessionBat
 }
 
 // JoinGameServerSessionBatch
+// 此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 本接口（JoinGameServerSessionBatch）用于批量加入游戏服务器会话。
 //
 // 可能返回的错误码:
@@ -3278,6 +3682,10 @@ func (c *Client) JoinGameServerSessionBatch(request *JoinGameServerSessionBatchR
 }
 
 // JoinGameServerSessionBatch
+// 此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 本接口（JoinGameServerSessionBatch）用于批量加入游戏服务器会话。
 //
 // 可能返回的错误码:
@@ -3324,6 +3732,10 @@ func NewListAliasesResponse() (response *ListAliasesResponse) {
 }
 
 // ListAliases
+// 此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 本接口（ListAliases）用于检索帐户下的所有别名。
 //
 // 可能返回的错误码:
@@ -3337,6 +3749,10 @@ func (c *Client) ListAliases(request *ListAliasesRequest) (response *ListAliases
 }
 
 // ListAliases
+// 此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 本接口（ListAliases）用于检索帐户下的所有别名。
 //
 // 可能返回的错误码:
@@ -3379,6 +3795,10 @@ func NewListFleetsResponse() (response *ListFleetsResponse) {
 }
 
 // ListFleets
+// 此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 本接口（ListFleets）用于获取服务器舰队列表。
 //
 // 可能返回的错误码:
@@ -3401,6 +3821,10 @@ func (c *Client) ListFleets(request *ListFleetsRequest) (response *ListFleetsRes
 }
 
 // ListFleets
+// 此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 本接口（ListFleets）用于获取服务器舰队列表。
 //
 // 可能返回的错误码:
@@ -3452,6 +3876,10 @@ func NewPutScalingPolicyResponse() (response *PutScalingPolicyResponse) {
 }
 
 // PutScalingPolicy
+// 此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 本接口（PutScalingPolicy）用于设置服务器舰队的动态扩缩容策略。
 //
 // 
@@ -3662,6 +4090,10 @@ func (c *Client) PutScalingPolicy(request *PutScalingPolicyRequest) (response *P
 }
 
 // PutScalingPolicy
+// 此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 本接口（PutScalingPolicy）用于设置服务器舰队的动态扩缩容策略。
 //
 // 
@@ -3901,6 +4333,10 @@ func NewPutTimerScalingPolicyResponse() (response *PutTimerScalingPolicyResponse
 }
 
 // PutTimerScalingPolicy
+// 此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 本接口（PutTimerScalingPolicy）用于给fleet创建或更新定时器。
 //
 // 
@@ -3921,6 +4357,10 @@ func (c *Client) PutTimerScalingPolicy(request *PutTimerScalingPolicyRequest) (r
 }
 
 // PutTimerScalingPolicy
+// 此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 本接口（PutTimerScalingPolicy）用于给fleet创建或更新定时器。
 //
 // 
@@ -3970,6 +4410,10 @@ func NewResolveAliasResponse() (response *ResolveAliasResponse) {
 }
 
 // ResolveAlias
+// 此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 本接口（ResolveAlias）用于获取别名当前指向的fleetId。
 //
 // 可能返回的错误码:
@@ -3983,6 +4427,10 @@ func (c *Client) ResolveAlias(request *ResolveAliasRequest) (response *ResolveAl
 }
 
 // ResolveAlias
+// 此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 本接口（ResolveAlias）用于获取别名当前指向的fleetId。
 //
 // 可能返回的错误码:
@@ -4025,6 +4473,10 @@ func NewSearchGameServerSessionsResponse() (response *SearchGameServerSessionsRe
 }
 
 // SearchGameServerSessions
+// 此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 本接口（SearchGameServerSessions）用于搜索游戏服务器会话列表。
 //
 // 可能返回的错误码:
@@ -4040,6 +4492,10 @@ func (c *Client) SearchGameServerSessions(request *SearchGameServerSessionsReque
 }
 
 // SearchGameServerSessions
+// 此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 本接口（SearchGameServerSessions）用于搜索游戏服务器会话列表。
 //
 // 可能返回的错误码:
@@ -4084,6 +4540,10 @@ func NewSetServerReservedResponse() (response *SetServerReservedResponse) {
 }
 
 // SetServerReserved
+// 此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 本接口（SetServerReserved）用于将异常的实例标记为保留，用于问题排查。
 //
 // 
@@ -4104,6 +4564,10 @@ func (c *Client) SetServerReserved(request *SetServerReservedRequest) (response 
 }
 
 // SetServerReserved
+// 此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 本接口（SetServerReserved）用于将异常的实例标记为保留，用于问题排查。
 //
 // 
@@ -4153,6 +4617,10 @@ func NewSetServerWeightResponse() (response *SetServerWeightResponse) {
 }
 
 // SetServerWeight
+// 此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 本接口（SetServerWeight）用于设置服务器权重。
 //
 // 可能返回的错误码:
@@ -4174,6 +4642,10 @@ func (c *Client) SetServerWeight(request *SetServerWeightRequest) (response *Set
 }
 
 // SetServerWeight
+// 此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 本接口（SetServerWeight）用于设置服务器权重。
 //
 // 可能返回的错误码:
@@ -4224,6 +4696,10 @@ func NewStartFleetActionsResponse() (response *StartFleetActionsResponse) {
 }
 
 // StartFleetActions
+// 此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 本接口（StartFleetActions）用于启用服务器舰队自动扩缩容。
 //
 // 可能返回的错误码:
@@ -4240,6 +4716,10 @@ func (c *Client) StartFleetActions(request *StartFleetActionsRequest) (response 
 }
 
 // StartFleetActions
+// 此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 本接口（StartFleetActions）用于启用服务器舰队自动扩缩容。
 //
 // 可能返回的错误码:
@@ -4285,6 +4765,10 @@ func NewStartGameServerSessionPlacementResponse() (response *StartGameServerSess
 }
 
 // StartGameServerSessionPlacement
+// 此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 本接口（StartGameServerSessionPlacement）用于开始放置游戏服务器会话。
 //
 // 可能返回的错误码:
@@ -4300,6 +4784,10 @@ func (c *Client) StartGameServerSessionPlacement(request *StartGameServerSession
 }
 
 // StartGameServerSessionPlacement
+// 此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 本接口（StartGameServerSessionPlacement）用于开始放置游戏服务器会话。
 //
 // 可能返回的错误码:
@@ -4344,6 +4832,10 @@ func NewStopFleetActionsResponse() (response *StopFleetActionsResponse) {
 }
 
 // StopFleetActions
+// 此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 本接口（StopFleetActions）用于停止服务器舰队自动扩缩容，改为手动扩缩容。
 //
 // 可能返回的错误码:
@@ -4360,6 +4852,10 @@ func (c *Client) StopFleetActions(request *StopFleetActionsRequest) (response *S
 }
 
 // StopFleetActions
+// 此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 本接口（StopFleetActions）用于停止服务器舰队自动扩缩容，改为手动扩缩容。
 //
 // 可能返回的错误码:
@@ -4405,6 +4901,10 @@ func NewStopGameServerSessionPlacementResponse() (response *StopGameServerSessio
 }
 
 // StopGameServerSessionPlacement
+// 此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 本接口（StopGameServerSessionPlacement）用于停止放置游戏服务器会话。
 //
 // 可能返回的错误码:
@@ -4417,6 +4917,10 @@ func (c *Client) StopGameServerSessionPlacement(request *StopGameServerSessionPl
 }
 
 // StopGameServerSessionPlacement
+// 此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 本接口（StopGameServerSessionPlacement）用于停止放置游戏服务器会话。
 //
 // 可能返回的错误码:
@@ -4458,6 +4962,10 @@ func NewUpdateAliasResponse() (response *UpdateAliasResponse) {
 }
 
 // UpdateAlias
+// 此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 本接口（UpdateAlias）用于更新别名的属性。
 //
 // 可能返回的错误码:
@@ -4470,6 +4978,10 @@ func (c *Client) UpdateAlias(request *UpdateAliasRequest) (response *UpdateAlias
 }
 
 // UpdateAlias
+// 此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 本接口（UpdateAlias）用于更新别名的属性。
 //
 // 可能返回的错误码:
@@ -4511,6 +5023,10 @@ func NewUpdateAssetResponse() (response *UpdateAssetResponse) {
 }
 
 // UpdateAsset
+// 此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 本接口（UpdateAsset）用于修改生成包信息。
 //
 // 可能返回的错误码:
@@ -4525,6 +5041,10 @@ func (c *Client) UpdateAsset(request *UpdateAssetRequest) (response *UpdateAsset
 }
 
 // UpdateAsset
+// 此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 本接口（UpdateAsset）用于修改生成包信息。
 //
 // 可能返回的错误码:
@@ -4568,6 +5088,10 @@ func NewUpdateBucketAccelerateOptResponse() (response *UpdateBucketAccelerateOpt
 }
 
 // UpdateBucketAccelerateOpt
+// 此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 本接口（UpdateBucketAccelerateOpt）用于开启cos全球加速。
 //
 // 可能返回的错误码:
@@ -4582,6 +5106,10 @@ func (c *Client) UpdateBucketAccelerateOpt(request *UpdateBucketAccelerateOptReq
 }
 
 // UpdateBucketAccelerateOpt
+// 此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 本接口（UpdateBucketAccelerateOpt）用于开启cos全球加速。
 //
 // 可能返回的错误码:
@@ -4625,6 +5153,10 @@ func NewUpdateBucketCORSOptResponse() (response *UpdateBucketCORSOptResponse) {
 }
 
 // UpdateBucketCORSOpt
+// 此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 本接口（UpdateBucketCORSOpt）用于设置cos跨域访问。
 //
 // 可能返回的错误码:
@@ -4640,6 +5172,10 @@ func (c *Client) UpdateBucketCORSOpt(request *UpdateBucketCORSOptRequest) (respo
 }
 
 // UpdateBucketCORSOpt
+// 此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 本接口（UpdateBucketCORSOpt）用于设置cos跨域访问。
 //
 // 可能返回的错误码:
@@ -4684,6 +5220,10 @@ func NewUpdateFleetAttributesResponse() (response *UpdateFleetAttributesResponse
 }
 
 // UpdateFleetAttributes
+// 此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 本接口（UpdateFleetAttributes）用于更新服务器舰队属性。
 //
 // 可能返回的错误码:
@@ -4705,6 +5245,10 @@ func (c *Client) UpdateFleetAttributes(request *UpdateFleetAttributesRequest) (r
 }
 
 // UpdateFleetAttributes
+// 此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 本接口（UpdateFleetAttributes）用于更新服务器舰队属性。
 //
 // 可能返回的错误码:
@@ -4755,6 +5299,10 @@ func NewUpdateFleetCapacityResponse() (response *UpdateFleetCapacityResponse) {
 }
 
 // UpdateFleetCapacity
+// 此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 本接口（UpdateFleetCapacity）用于更新服务器舰队容量配置。
 //
 // 可能返回的错误码:
@@ -4772,6 +5320,10 @@ func (c *Client) UpdateFleetCapacity(request *UpdateFleetCapacityRequest) (respo
 }
 
 // UpdateFleetCapacity
+// 此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 本接口（UpdateFleetCapacity）用于更新服务器舰队容量配置。
 //
 // 可能返回的错误码:
@@ -4818,6 +5370,10 @@ func NewUpdateFleetNameResponse() (response *UpdateFleetNameResponse) {
 }
 
 // UpdateFleetName
+// 此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 本接口（UpdateFleetName）用于更新服务器舰队名称。
 //
 // 可能返回的错误码:
@@ -4839,6 +5395,10 @@ func (c *Client) UpdateFleetName(request *UpdateFleetNameRequest) (response *Upd
 }
 
 // UpdateFleetName
+// 此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 本接口（UpdateFleetName）用于更新服务器舰队名称。
 //
 // 可能返回的错误码:
@@ -4889,6 +5449,10 @@ func NewUpdateFleetPortSettingsResponse() (response *UpdateFleetPortSettingsResp
 }
 
 // UpdateFleetPortSettings
+// 此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 本接口（UpdateFleetPortSettings）用于更新服务器舰队安全组。
 //
 // 可能返回的错误码:
@@ -4910,6 +5474,10 @@ func (c *Client) UpdateFleetPortSettings(request *UpdateFleetPortSettingsRequest
 }
 
 // UpdateFleetPortSettings
+// 此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 本接口（UpdateFleetPortSettings）用于更新服务器舰队安全组。
 //
 // 可能返回的错误码:
@@ -4960,6 +5528,10 @@ func NewUpdateGameServerSessionResponse() (response *UpdateGameServerSessionResp
 }
 
 // UpdateGameServerSession
+// 此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 本接口（UpdateGameServerSession）用于更新游戏服务器会话。
 //
 // 可能返回的错误码:
@@ -4974,6 +5546,10 @@ func (c *Client) UpdateGameServerSession(request *UpdateGameServerSessionRequest
 }
 
 // UpdateGameServerSession
+// 此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 本接口（UpdateGameServerSession）用于更新游戏服务器会话。
 //
 // 可能返回的错误码:
@@ -5017,6 +5593,10 @@ func NewUpdateGameServerSessionQueueResponse() (response *UpdateGameServerSessio
 }
 
 // UpdateGameServerSessionQueue
+// 此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 本接口（UpdateGameServerSessionQueue）用于修改游戏服务器会话队列。
 //
 // 可能返回的错误码:
@@ -5033,6 +5613,10 @@ func (c *Client) UpdateGameServerSessionQueue(request *UpdateGameServerSessionQu
 }
 
 // UpdateGameServerSessionQueue
+// 此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 本接口（UpdateGameServerSessionQueue）用于修改游戏服务器会话队列。
 //
 // 可能返回的错误码:
@@ -5078,6 +5662,10 @@ func NewUpdateRuntimeConfigurationResponse() (response *UpdateRuntimeConfigurati
 }
 
 // UpdateRuntimeConfiguration
+// 此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 本接口（UpdateRuntimeConfiguration）用于更新服务器舰队配置。
 //
 // 可能返回的错误码:
@@ -5099,6 +5687,10 @@ func (c *Client) UpdateRuntimeConfiguration(request *UpdateRuntimeConfigurationR
 }
 
 // UpdateRuntimeConfiguration
+// 此接口无法使用，游戏服务器引擎GSE已于6.1正式下架，感谢您的支持
+//
+// 
+//
 // 本接口（UpdateRuntimeConfiguration）用于更新服务器舰队配置。
 //
 // 可能返回的错误码:

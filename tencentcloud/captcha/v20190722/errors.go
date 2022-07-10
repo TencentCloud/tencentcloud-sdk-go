@@ -26,6 +26,6 @@ const (
 	// 鉴权失败。
 	UNAUTHORIZEDOPERATION_ERRAUTH = "UnauthorizedOperation.ErrAuth"
 
-	// 未开通权限。
+	// 未开通权限/无有效套餐包/账号已欠费。
 	UNAUTHORIZEDOPERATION_UNAUTHORIZED = "UnauthorizedOperation.Unauthorized"
 )

@@ -5756,10 +5756,10 @@ type RecognizeTravelCardOCRResponseParams struct {
 	// 行程卡颜色：绿色、黄色、红色
 	Color *string `json:"Color,omitempty" name:"Color"`
 
-	// 14天内到达或途经的城市
+	// 7天内到达或途经的城市（自2022年7月8日起，通信行程卡查询结果的覆盖时间范围由“14天”调整为“7天”）
 	ReachedCity []*string `json:"ReachedCity,omitempty" name:"ReachedCity"`
 
-	// 14天内到达或途径存在中高风险地区的城市
+	// 7天内到达或途径存在中高风险地区的城市（自2022年6月29日起，通信行程卡取消“星号”标记，改字段将返回空值）
 	RiskArea []*string `json:"RiskArea,omitempty" name:"RiskArea"`
 
 	// 电话号码

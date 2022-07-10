@@ -804,7 +804,8 @@ type DeployApplicationRequestParams struct {
 	// 是否开启prometheus 业务指标监控
 	EnablePrometheusConf *EnablePrometheusConf `json:"EnablePrometheusConf,omitempty" name:"EnablePrometheusConf"`
 
-	// 1：开始apm采集；0：关闭apm采集
+	// 1：开始apm采集（skywalking）；
+	// 0：关闭apm采集；
 	EnableTracing *int64 `json:"EnableTracing,omitempty" name:"EnableTracing"`
 }
 
@@ -945,7 +946,8 @@ type DeployApplicationRequest struct {
 	// 是否开启prometheus 业务指标监控
 	EnablePrometheusConf *EnablePrometheusConf `json:"EnablePrometheusConf,omitempty" name:"EnablePrometheusConf"`
 
-	// 1：开始apm采集；0：关闭apm采集
+	// 1：开始apm采集（skywalking）；
+	// 0：关闭apm采集；
 	EnableTracing *int64 `json:"EnableTracing,omitempty" name:"EnableTracing"`
 }
 
@@ -1989,7 +1991,7 @@ type ModifyApplicationInfoRequestParams struct {
 	// 来源渠道
 	SourceChannel *int64 `json:"SourceChannel,omitempty" name:"SourceChannel"`
 
-	// 是否开启调用链, 0 为关闭，1位开启
+	// 是否开启调用链,（此参数已弃用）
 	EnableTracing *uint64 `json:"EnableTracing,omitempty" name:"EnableTracing"`
 }
 
@@ -2005,7 +2007,7 @@ type ModifyApplicationInfoRequest struct {
 	// 来源渠道
 	SourceChannel *int64 `json:"SourceChannel,omitempty" name:"SourceChannel"`
 
-	// 是否开启调用链, 0 为关闭，1位开启
+	// 是否开启调用链,（此参数已弃用）
 	EnableTracing *uint64 `json:"EnableTracing,omitempty" name:"EnableTracing"`
 }
 
@@ -2347,6 +2349,9 @@ type PortMapping struct {
 
 	// 协议栈 TCP/UDP
 	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
+
+	// k8s service名称
+	ServiceName *string `json:"ServiceName,omitempty" name:"ServiceName"`
 }
 
 // Predefined struct for user

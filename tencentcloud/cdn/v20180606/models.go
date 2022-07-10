@@ -7279,6 +7279,10 @@ type FollowRedirect struct {
 	// on：开启
 	// off：关闭
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
+
+	// 自定义回源302 follow请求host配置，该功能为白名单功能，需要开启请联系腾讯云工程师。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RedirectConfig *RedirectConfig `json:"RedirectConfig,omitempty" name:"RedirectConfig"`
 }
 
 type ForceRedirect struct {
@@ -10103,6 +10107,17 @@ type RangeOriginPullRule struct {
 	// path 时填充绝对路径，如 /xxx/test.html
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RulePaths []*string `json:"RulePaths,omitempty" name:"RulePaths"`
+}
+
+type RedirectConfig struct {
+	// 配置开关
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
+
+	// 主源站follow302请求时带的自定义的host头部
+	FollowRedirectHost *string `json:"FollowRedirectHost,omitempty" name:"FollowRedirectHost"`
+
+	// 备份源站follow302请求时带的自定义的host头部
+	FollowRedirectBackupHost *string `json:"FollowRedirectBackupHost,omitempty" name:"FollowRedirectBackupHost"`
 }
 
 type Referer struct {

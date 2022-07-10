@@ -8089,7 +8089,7 @@ type CreateOpenBankPaymentOrderRequestParams struct {
 	// __TENPAY__: 商企付
 	// __WECHAT__: 微信支付
 	// __ALIPAY__: 支付宝
-	// __WECHAT__: 微信支付
+	// __HUIFU__: 汇付斗拱
 	ChannelName *string `json:"ChannelName,omitempty" name:"ChannelName"`
 
 	// 付款方式。详见附录-云企付枚举类说明-PaymentMethod。
@@ -8097,6 +8097,8 @@ type CreateOpenBankPaymentOrderRequestParams struct {
 	// __OPENBANK_PAYMENT__:B2C  openbank付款
 	// __SAFT_ISV__:支付宝安心发
 	// __TRANS_TO_CHANGE__: 微信支付转账到零钱v2
+	// __TRANS_TO_CHANGE_V3__: 微信支付转账到零钱v3
+	// __ONLINEBANK__: 汇付网银
 	PaymentMethod *string `json:"PaymentMethod,omitempty" name:"PaymentMethod"`
 
 	// 付款模式。默认直接支付，如
@@ -8169,7 +8171,7 @@ type CreateOpenBankPaymentOrderRequest struct {
 	// __TENPAY__: 商企付
 	// __WECHAT__: 微信支付
 	// __ALIPAY__: 支付宝
-	// __WECHAT__: 微信支付
+	// __HUIFU__: 汇付斗拱
 	ChannelName *string `json:"ChannelName,omitempty" name:"ChannelName"`
 
 	// 付款方式。详见附录-云企付枚举类说明-PaymentMethod。
@@ -8177,6 +8179,8 @@ type CreateOpenBankPaymentOrderRequest struct {
 	// __OPENBANK_PAYMENT__:B2C  openbank付款
 	// __SAFT_ISV__:支付宝安心发
 	// __TRANS_TO_CHANGE__: 微信支付转账到零钱v2
+	// __TRANS_TO_CHANGE_V3__: 微信支付转账到零钱v3
+	// __ONLINEBANK__: 汇付网银
 	PaymentMethod *string `json:"PaymentMethod,omitempty" name:"PaymentMethod"`
 
 	// 付款模式。默认直接支付，如
@@ -8916,6 +8920,155 @@ func (r *CreateOpenBankUnifiedOrderResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *CreateOpenBankUnifiedOrderResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateOpenBankVerificationOrderRequestParams struct {
+	// 云企付渠道商户号。外部接入平台入驻云企付平台后下发。
+	ChannelMerchantId *string `json:"ChannelMerchantId,omitempty" name:"ChannelMerchantId"`
+
+	// 外部核销申请订单号
+	OutVerificationId *string `json:"OutVerificationId,omitempty" name:"OutVerificationId"`
+
+	// 核销金额，单位分
+	VerificationAmount *int64 `json:"VerificationAmount,omitempty" name:"VerificationAmount"`
+
+	// 外部支付订单号。调用创建支付订单时，下单支付时的外部订单号。与ChannelOrderId不能同时为空。
+	OutOrderId *string `json:"OutOrderId,omitempty" name:"OutOrderId"`
+
+	// 云企付渠道订单号。调用创建支付订单时，下单支付时的云企付渠道订单号。与OutOrderId不能同时为空。
+	ChannelOrderId *string `json:"ChannelOrderId,omitempty" name:"ChannelOrderId"`
+
+	// 核销成功回调地址。若不上送，则不回调通知。
+	NotifyUrl *string `json:"NotifyUrl,omitempty" name:"NotifyUrl"`
+
+	// 备注。
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 第三方支付渠道需要额外上送字段。详情见附录描述。
+	ExternalVerificationData *string `json:"ExternalVerificationData,omitempty" name:"ExternalVerificationData"`
+
+	// 环境类型。
+	// __release__:生产环境
+	// __sandbox__:沙箱环境
+	// _不填默认为生产环境_
+	Environment *string `json:"Environment,omitempty" name:"Environment"`
+}
+
+type CreateOpenBankVerificationOrderRequest struct {
+	*tchttp.BaseRequest
+	
+	// 云企付渠道商户号。外部接入平台入驻云企付平台后下发。
+	ChannelMerchantId *string `json:"ChannelMerchantId,omitempty" name:"ChannelMerchantId"`
+
+	// 外部核销申请订单号
+	OutVerificationId *string `json:"OutVerificationId,omitempty" name:"OutVerificationId"`
+
+	// 核销金额，单位分
+	VerificationAmount *int64 `json:"VerificationAmount,omitempty" name:"VerificationAmount"`
+
+	// 外部支付订单号。调用创建支付订单时，下单支付时的外部订单号。与ChannelOrderId不能同时为空。
+	OutOrderId *string `json:"OutOrderId,omitempty" name:"OutOrderId"`
+
+	// 云企付渠道订单号。调用创建支付订单时，下单支付时的云企付渠道订单号。与OutOrderId不能同时为空。
+	ChannelOrderId *string `json:"ChannelOrderId,omitempty" name:"ChannelOrderId"`
+
+	// 核销成功回调地址。若不上送，则不回调通知。
+	NotifyUrl *string `json:"NotifyUrl,omitempty" name:"NotifyUrl"`
+
+	// 备注。
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 第三方支付渠道需要额外上送字段。详情见附录描述。
+	ExternalVerificationData *string `json:"ExternalVerificationData,omitempty" name:"ExternalVerificationData"`
+
+	// 环境类型。
+	// __release__:生产环境
+	// __sandbox__:沙箱环境
+	// _不填默认为生产环境_
+	Environment *string `json:"Environment,omitempty" name:"Environment"`
+}
+
+func (r *CreateOpenBankVerificationOrderRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateOpenBankVerificationOrderRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ChannelMerchantId")
+	delete(f, "OutVerificationId")
+	delete(f, "VerificationAmount")
+	delete(f, "OutOrderId")
+	delete(f, "ChannelOrderId")
+	delete(f, "NotifyUrl")
+	delete(f, "Remark")
+	delete(f, "ExternalVerificationData")
+	delete(f, "Environment")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateOpenBankVerificationOrderRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateOpenBankVerificationOrderResponseParams struct {
+	// 业务系统返回码，SUCCESS表示成功，其他表示失败。
+	ErrCode *string `json:"ErrCode,omitempty" name:"ErrCode"`
+
+	// 业务系统返回消息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrMessage *string `json:"ErrMessage,omitempty" name:"ErrMessage"`
+
+	// 核销申请响应对象。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Result *CreateOpenBankVerificationResult `json:"Result,omitempty" name:"Result"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateOpenBankVerificationOrderResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateOpenBankVerificationOrderResponseParams `json:"Response"`
+}
+
+func (r *CreateOpenBankVerificationOrderResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateOpenBankVerificationOrderResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateOpenBankVerificationResult struct {
+	// 云企付渠道核销订单号
+	ChannelVerificationId *string `json:"ChannelVerificationId,omitempty" name:"ChannelVerificationId"`
+
+	// 第三方支付渠道核销订单号
+	ThirdVerificationId *string `json:"ThirdVerificationId,omitempty" name:"ThirdVerificationId"`
+
+	// 核销状态
+	// INIT("INIT","初始化"),
+	// SUCCESS("SUCCESS","核销成功"),
+	// FAILED("FAILED","核销失败"),
+	// PROCESSING("PROCESSING","核销中");
+	VerificationStatus *string `json:"VerificationStatus,omitempty" name:"VerificationStatus"`
+
+	// 核销金额，单位分
+	VerificationAmount *int64 `json:"VerificationAmount,omitempty" name:"VerificationAmount"`
+
+	// 渠道附加返回信息，一般情况可以不关注
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ThirdVerificationReturnInfo *string `json:"ThirdVerificationReturnInfo,omitempty" name:"ThirdVerificationReturnInfo"`
 }
 
 // Predefined struct for user
@@ -12248,6 +12401,9 @@ type FlexFundingAccountInfo struct {
 
 	// 资金账户绑定序列号
 	FundingAccountBindSerialNo *string `json:"FundingAccountBindSerialNo,omitempty" name:"FundingAccountBindSerialNo"`
+
+	// 资金账户名称
+	FundingAccountName *string `json:"FundingAccountName,omitempty" name:"FundingAccountName"`
 }
 
 // Predefined struct for user
@@ -22514,6 +22670,124 @@ type QueryOpenBankUnbindExternalSubMerchantBankAccountResult struct {
 	UnbindMessage *string `json:"UnbindMessage,omitempty" name:"UnbindMessage"`
 }
 
+// Predefined struct for user
+type QueryOpenBankVerificationOrderRequestParams struct {
+	// 云企付渠道商户号。外部接入平台入驻云企付平台后下发。
+	ChannelMerchantId *string `json:"ChannelMerchantId,omitempty" name:"ChannelMerchantId"`
+
+	// 云企付渠道核销订单号。与OutVerificationId不能同时为空。
+	ChannelVerificationId *string `json:"ChannelVerificationId,omitempty" name:"ChannelVerificationId"`
+
+	// 外部核销申请订单号。与ChannelVerificationId不能同时为空。
+	OutVerificationId *string `json:"OutVerificationId,omitempty" name:"OutVerificationId"`
+
+	// 环境类型。
+	// __release__:生产环境
+	// __sandbox__:沙箱环境
+	// _不填默认为生产环境_
+	Environment *string `json:"Environment,omitempty" name:"Environment"`
+}
+
+type QueryOpenBankVerificationOrderRequest struct {
+	*tchttp.BaseRequest
+	
+	// 云企付渠道商户号。外部接入平台入驻云企付平台后下发。
+	ChannelMerchantId *string `json:"ChannelMerchantId,omitempty" name:"ChannelMerchantId"`
+
+	// 云企付渠道核销订单号。与OutVerificationId不能同时为空。
+	ChannelVerificationId *string `json:"ChannelVerificationId,omitempty" name:"ChannelVerificationId"`
+
+	// 外部核销申请订单号。与ChannelVerificationId不能同时为空。
+	OutVerificationId *string `json:"OutVerificationId,omitempty" name:"OutVerificationId"`
+
+	// 环境类型。
+	// __release__:生产环境
+	// __sandbox__:沙箱环境
+	// _不填默认为生产环境_
+	Environment *string `json:"Environment,omitempty" name:"Environment"`
+}
+
+func (r *QueryOpenBankVerificationOrderRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryOpenBankVerificationOrderRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ChannelMerchantId")
+	delete(f, "ChannelVerificationId")
+	delete(f, "OutVerificationId")
+	delete(f, "Environment")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryOpenBankVerificationOrderRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type QueryOpenBankVerificationOrderResponseParams struct {
+	// 业务系统返回码，SUCCESS表示成功，其他表示失败。
+	ErrCode *string `json:"ErrCode,omitempty" name:"ErrCode"`
+
+	// 业务系统返回消息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrMessage *string `json:"ErrMessage,omitempty" name:"ErrMessage"`
+
+	// 核销查询响应对象。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Result *QueryOpenBankVerificationResult `json:"Result,omitempty" name:"Result"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type QueryOpenBankVerificationOrderResponse struct {
+	*tchttp.BaseResponse
+	Response *QueryOpenBankVerificationOrderResponseParams `json:"Response"`
+}
+
+func (r *QueryOpenBankVerificationOrderResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryOpenBankVerificationOrderResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryOpenBankVerificationResult struct {
+	// 云企付渠道核销订单号
+	ChannelVerificationId *string `json:"ChannelVerificationId,omitempty" name:"ChannelVerificationId"`
+
+	// 第三方支付渠道核销订单号
+	ThirdVerificationId *string `json:"ThirdVerificationId,omitempty" name:"ThirdVerificationId"`
+
+	// 核销金额，单位分
+	VerificationAmount *int64 `json:"VerificationAmount,omitempty" name:"VerificationAmount"`
+
+	// 核销状态
+	// INIT("INIT","初始化"),
+	// SUCCESS("SUCCESS","核销成功"),
+	// FAILED("FAILED","核销失败"),
+	// PROCESSING("PROCESSING","核销中");
+	VerificationStatus *string `json:"VerificationStatus,omitempty" name:"VerificationStatus"`
+
+	// 失败原因，若核销失败，附上原因。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FailReason *string `json:"FailReason,omitempty" name:"FailReason"`
+
+	// 渠道附加返回信息，一般情况可以不关注
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ThirdVerificationReturnData *string `json:"ThirdVerificationReturnData,omitempty" name:"ThirdVerificationReturnData"`
+}
+
 type QueryOrderOutOrderList struct {
 	// 聚鑫分配的支付主MidasAppId
 	MidasAppId *string `json:"MidasAppId,omitempty" name:"MidasAppId"`
@@ -25620,19 +25894,20 @@ type RefundOpenBankOrderRequestParams struct {
 	// 退款金额。单位分。
 	RefundAmount *int64 `json:"RefundAmount,omitempty" name:"RefundAmount"`
 
-	// 渠道商户号。
+	// 渠道商户号。外部平台接入云企付平台下发。必填。
 	ChannelMerchantId *string `json:"ChannelMerchantId,omitempty" name:"ChannelMerchantId"`
 
-	// 外部商户订单号，与云企付渠道订单号二者选填其一。
+	// 外部商户订单号，与云企付渠道订单号二者不能同时为空。
 	OutOrderId *string `json:"OutOrderId,omitempty" name:"OutOrderId"`
 
-	// 云企付渠道订单号，与外部订单号二者选填其一。
+	// 云企付渠道订单号，与外部订单号二者不能同时为空。
 	ChannelOrderId *string `json:"ChannelOrderId,omitempty" name:"ChannelOrderId"`
 
 	// 退款通知地址。
 	NotifyUrl *string `json:"NotifyUrl,omitempty" name:"NotifyUrl"`
 
 	// 退款原因。
+	// 当EBANK_PAYMENT担保支付订单退款时，此字段必传。
 	RefundReason *string `json:"RefundReason,omitempty" name:"RefundReason"`
 
 	// 第三方渠道退款附加信息。详见附录-复杂类型。
@@ -25658,19 +25933,20 @@ type RefundOpenBankOrderRequest struct {
 	// 退款金额。单位分。
 	RefundAmount *int64 `json:"RefundAmount,omitempty" name:"RefundAmount"`
 
-	// 渠道商户号。
+	// 渠道商户号。外部平台接入云企付平台下发。必填。
 	ChannelMerchantId *string `json:"ChannelMerchantId,omitempty" name:"ChannelMerchantId"`
 
-	// 外部商户订单号，与云企付渠道订单号二者选填其一。
+	// 外部商户订单号，与云企付渠道订单号二者不能同时为空。
 	OutOrderId *string `json:"OutOrderId,omitempty" name:"OutOrderId"`
 
-	// 云企付渠道订单号，与外部订单号二者选填其一。
+	// 云企付渠道订单号，与外部订单号二者不能同时为空。
 	ChannelOrderId *string `json:"ChannelOrderId,omitempty" name:"ChannelOrderId"`
 
 	// 退款通知地址。
 	NotifyUrl *string `json:"NotifyUrl,omitempty" name:"NotifyUrl"`
 
 	// 退款原因。
+	// 当EBANK_PAYMENT担保支付订单退款时，此字段必传。
 	RefundReason *string `json:"RefundReason,omitempty" name:"RefundReason"`
 
 	// 第三方渠道退款附加信息。详见附录-复杂类型。
@@ -30071,6 +30347,120 @@ func (r *UploadTaxPaymentResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *UploadTaxPaymentResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type VerifyOpenBankAccountRequestParams struct {
+	// 渠道商户号。外部接入平台入驻云企付平台下发
+	ChannelMerchantId *string `json:"ChannelMerchantId,omitempty" name:"ChannelMerchantId"`
+
+	// 渠道名称。详见附录-云企付枚举类说明-ChannelName。
+	// __TENPAY__: 商企付
+	ChannelName *string `json:"ChannelName,omitempty" name:"ChannelName"`
+
+	// 收款方信息。
+	PayeeInfo *OpenBankPayeeInfo `json:"PayeeInfo,omitempty" name:"PayeeInfo"`
+
+	// 通知地址，如www.test.com。
+	NotifyUrl *string `json:"NotifyUrl,omitempty" name:"NotifyUrl"`
+
+	// 环境类型。
+	// __release__:生产环境
+	// __sandbox__:沙箱环境
+	// _不填默认为生产环境_
+	Environment *string `json:"Environment,omitempty" name:"Environment"`
+}
+
+type VerifyOpenBankAccountRequest struct {
+	*tchttp.BaseRequest
+	
+	// 渠道商户号。外部接入平台入驻云企付平台下发
+	ChannelMerchantId *string `json:"ChannelMerchantId,omitempty" name:"ChannelMerchantId"`
+
+	// 渠道名称。详见附录-云企付枚举类说明-ChannelName。
+	// __TENPAY__: 商企付
+	ChannelName *string `json:"ChannelName,omitempty" name:"ChannelName"`
+
+	// 收款方信息。
+	PayeeInfo *OpenBankPayeeInfo `json:"PayeeInfo,omitempty" name:"PayeeInfo"`
+
+	// 通知地址，如www.test.com。
+	NotifyUrl *string `json:"NotifyUrl,omitempty" name:"NotifyUrl"`
+
+	// 环境类型。
+	// __release__:生产环境
+	// __sandbox__:沙箱环境
+	// _不填默认为生产环境_
+	Environment *string `json:"Environment,omitempty" name:"Environment"`
+}
+
+func (r *VerifyOpenBankAccountRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *VerifyOpenBankAccountRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ChannelMerchantId")
+	delete(f, "ChannelName")
+	delete(f, "PayeeInfo")
+	delete(f, "NotifyUrl")
+	delete(f, "Environment")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "VerifyOpenBankAccountRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type VerifyOpenBankAccountResponseParams struct {
+	// 业务系统返回码，SUCCESS表示成功，其他表示失败。
+	ErrCode *string `json:"ErrCode,omitempty" name:"ErrCode"`
+
+	// 业务系统返回消息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrMessage *string `json:"ErrMessage,omitempty" name:"ErrMessage"`
+
+	// 打款验证结果。前端使用url字段，根据指引完成打款验证动作
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Result *VerifyOpenBankAccountResult `json:"Result,omitempty" name:"Result"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type VerifyOpenBankAccountResponse struct {
+	*tchttp.BaseResponse
+	Response *VerifyOpenBankAccountResponseParams `json:"Response"`
+}
+
+func (r *VerifyOpenBankAccountResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *VerifyOpenBankAccountResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type VerifyOpenBankAccountResult struct {
+	// 打款验证状态。
+	//  INIT("打款中"),
+	// PENDING("打款成功待验证"),
+	// VERIFIED("验证成功"),
+	// FAILED("打款失败"),
+	// VERIFY_FAILED("验证失败")
+	VerifyState *string `json:"VerifyState,omitempty" name:"VerifyState"`
+
+	// 重定向参数，用于客户端跳转，收款商户未完成打款验证时返回该参数
+	RedirectInfo *OpenBankRedirectInfo `json:"RedirectInfo,omitempty" name:"RedirectInfo"`
 }
 
 // Predefined struct for user

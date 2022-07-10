@@ -17636,8 +17636,10 @@ type TaskStatData struct {
 	// <li> Editing: 视频编辑</li>
 	// <li> Editing-TESHD: 极速高清视频编辑</li>
 	// <li> AdaptiveBitrateStreaming: 自适应码流</li>
-	// <li> ContentAudit: 智能识别</li>
+	// <li> ContentAudit: 内容审核</li>
+	// <li> ContentRecognition: 内容识别</li>
 	// <li> RemoveWatermark: 去水印</li>
+	// <li> ExtractTraceWatermark: 提取水印</li>
 	// <li>Transcode: 转码，包含普通转码、极速高清和视频编辑（不推荐使用）</li>
 	TaskType *string `json:"TaskType,omitempty" name:"TaskType"`
 
@@ -17690,12 +17692,12 @@ type TaskStatData struct {
 	// <li>Edit.TESHD-10.H265.2K: H.265编码方式2K极速高清视频编辑</li>
 	// <li>Edit.TESHD-10.H265.4K: H.265编码方式4K极速高清视频编辑</li>
 	// 去水印规格：
-	// <li>480P: 分辨率640*480及以下</li>
-	// <li>720P: 分辨率1280*720及以下</li>
-	// <li>1080P: 分辨率1920*1080及以下</li>
-	// <li>2K: 分辨率2560*1440及以下</li>
-	// <li>4K: 分辨率3840*2160及以下</li>
-	// <li>8K: 分辨率7680*4320及以下</li>
+	// <li>480P: 短边 ≤ 480px</li>
+	// <li>720P: 短边 ≤ 720px</li>
+	// <li>1080P: 短边 ≤ 1080px</li>
+	// <li>2K: 短边 ≤ 1440px</li>
+	// <li>4K: 短边 ≤ 2160px</li>
+	// <li>8K: 短边 ≤ 4320px</li>
 	Details []*SpecificationDataItem `json:"Details,omitempty" name:"Details"`
 }
 

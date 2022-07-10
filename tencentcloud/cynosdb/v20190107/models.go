@@ -376,6 +376,9 @@ type BillingResourceInfo struct {
 
 	// 实例ID列表
 	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
+
+	// 订单ID
+	DealName *string `json:"DealName,omitempty" name:"DealName"`
 }
 
 type BinlogItem struct {
@@ -4503,10 +4506,10 @@ func (r *RollBackClusterResponse) FromJsonString(s string) error {
 }
 
 type RollbackDatabase struct {
-	// 旧数据库
+	// 旧数据库名称
 	OldDatabase *string `json:"OldDatabase,omitempty" name:"OldDatabase"`
 
-	// 新数据库
+	// 新数据库名称
 	NewDatabase *string `json:"NewDatabase,omitempty" name:"NewDatabase"`
 }
 
