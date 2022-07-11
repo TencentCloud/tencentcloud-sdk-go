@@ -3863,6 +3863,7 @@ func NewDescribeLiveDelayInfoListResponse() (response *DescribeLiveDelayInfoList
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CALLOTHERSVRFAILED = "FailedOperation.CallOtherSvrFailed"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -3880,6 +3881,7 @@ func (c *Client) DescribeLiveDelayInfoList(request *DescribeLiveDelayInfoListReq
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CALLOTHERSVRFAILED = "FailedOperation.CallOtherSvrFailed"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"

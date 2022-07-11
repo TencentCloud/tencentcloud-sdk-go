@@ -179,6 +179,7 @@ func NewCreateTrainingModelResponse() (response *CreateTrainingModelResponse) {
 //  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) CreateTrainingModel(request *CreateTrainingModelRequest) (response *CreateTrainingModelResponse, err error) {
     return c.CreateTrainingModelWithContext(context.Background(), request)
@@ -202,6 +203,7 @@ func (c *Client) CreateTrainingModel(request *CreateTrainingModelRequest) (respo
 //  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) CreateTrainingModelWithContext(ctx context.Context, request *CreateTrainingModelRequest) (response *CreateTrainingModelResponse, err error) {
     if request == nil {
@@ -1167,6 +1169,7 @@ func NewDescribeLogsResponse() (response *DescribeLogsResponse) {
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
 func (c *Client) DescribeLogs(request *DescribeLogsRequest) (response *DescribeLogsResponse, err error) {
     return c.DescribeLogsWithContext(context.Background(), request)
 }
@@ -1176,6 +1179,7 @@ func (c *Client) DescribeLogs(request *DescribeLogsRequest) (response *DescribeL
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
 func (c *Client) DescribeLogsWithContext(ctx context.Context, request *DescribeLogsRequest) (response *DescribeLogsResponse, err error) {
     if request == nil {
         request = NewDescribeLogsRequest()

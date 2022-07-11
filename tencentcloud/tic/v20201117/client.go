@@ -710,6 +710,7 @@ func NewPlanStackResponse() (response *PlanStackResponse) {
 //  INTERNALERROR_DBERROR = "InternalError.DbError"
 //  INTERNALERROR_SYSTEM = "InternalError.System"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  UNSUPPORTEDOPERATION_FORBIDOP = "UnsupportedOperation.ForbidOp"
 func (c *Client) PlanStack(request *PlanStackRequest) (response *PlanStackResponse, err error) {
     return c.PlanStackWithContext(context.Background(), request)
@@ -731,6 +732,7 @@ func (c *Client) PlanStack(request *PlanStackRequest) (response *PlanStackRespon
 //  INTERNALERROR_DBERROR = "InternalError.DbError"
 //  INTERNALERROR_SYSTEM = "InternalError.System"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  UNSUPPORTEDOPERATION_FORBIDOP = "UnsupportedOperation.ForbidOp"
 func (c *Client) PlanStackWithContext(ctx context.Context, request *PlanStackRequest) (response *PlanStackResponse, err error) {
     if request == nil {

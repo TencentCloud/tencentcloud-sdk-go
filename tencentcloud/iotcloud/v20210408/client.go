@@ -1885,6 +1885,7 @@ func NewDescribeProductResourceResponse() (response *DescribeProductResourceResp
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
+//  RESOURCENOTFOUND_PRODUCTRESOURCENOTEXIST = "ResourceNotFound.ProductResourceNotExist"
 func (c *Client) DescribeProductResource(request *DescribeProductResourceRequest) (response *DescribeProductResourceResponse, err error) {
     return c.DescribeProductResourceWithContext(context.Background(), request)
 }
@@ -1896,6 +1897,7 @@ func (c *Client) DescribeProductResource(request *DescribeProductResourceRequest
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
+//  RESOURCENOTFOUND_PRODUCTRESOURCENOTEXIST = "ResourceNotFound.ProductResourceNotExist"
 func (c *Client) DescribeProductResourceWithContext(ctx context.Context, request *DescribeProductResourceRequest) (response *DescribeProductResourceResponse, err error) {
     if request == nil {
         request = NewDescribeProductResourceRequest()
@@ -2879,6 +2881,7 @@ func NewPublishBroadcastMessageResponse() (response *PublishBroadcastMessageResp
 // 发布广播消息
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_BROADCASTTASKISRUNNING = "FailedOperation.BroadcastTaskIsRunning"
 //  INVALIDPARAMETERVALUE_PAYLOADOVERLIMIT = "InvalidParameterValue.PayloadOverLimit"
 //  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
 func (c *Client) PublishBroadcastMessage(request *PublishBroadcastMessageRequest) (response *PublishBroadcastMessageResponse, err error) {
@@ -2889,6 +2892,7 @@ func (c *Client) PublishBroadcastMessage(request *PublishBroadcastMessageRequest
 // 发布广播消息
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_BROADCASTTASKISRUNNING = "FailedOperation.BroadcastTaskIsRunning"
 //  INVALIDPARAMETERVALUE_PAYLOADOVERLIMIT = "InvalidParameterValue.PayloadOverLimit"
 //  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
 func (c *Client) PublishBroadcastMessageWithContext(ctx context.Context, request *PublishBroadcastMessageRequest) (response *PublishBroadcastMessageResponse, err error) {

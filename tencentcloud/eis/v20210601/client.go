@@ -203,6 +203,7 @@ func NewListDeployableRuntimesMCResponse() (response *ListDeployableRuntimesMCRe
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_AUTHENTICATIONFAILED = "FailedOperation.AuthenticationFailed"
+//  FAILEDOPERATION_UNSUPPORTEDOPERATIONTYPE = "FailedOperation.UnSupportedOperationType"
 //  INTERNALERROR_DATABASEERROR = "InternalError.DatabaseError"
 //  INTERNALERROR_RPCPILOTSERVERERROR = "InternalError.RpcPilotServerError"
 func (c *Client) ListDeployableRuntimesMC(request *ListDeployableRuntimesMCRequest) (response *ListDeployableRuntimesMCResponse, err error) {
@@ -214,6 +215,7 @@ func (c *Client) ListDeployableRuntimesMC(request *ListDeployableRuntimesMCReque
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_AUTHENTICATIONFAILED = "FailedOperation.AuthenticationFailed"
+//  FAILEDOPERATION_UNSUPPORTEDOPERATIONTYPE = "FailedOperation.UnSupportedOperationType"
 //  INTERNALERROR_DATABASEERROR = "InternalError.DatabaseError"
 //  INTERNALERROR_RPCPILOTSERVERERROR = "InternalError.RpcPilotServerError"
 func (c *Client) ListDeployableRuntimesMCWithContext(ctx context.Context, request *ListDeployableRuntimesMCRequest) (response *ListDeployableRuntimesMCResponse, err error) {

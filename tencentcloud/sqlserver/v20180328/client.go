@@ -698,6 +698,7 @@ func NewCreateDBInstancesResponse() (response *CreateDBInstancesResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CREATEORDERFAILED = "FailedOperation.CreateOrderFailed"
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
 //  FAILEDOPERATION_GETVPCFAILED = "FailedOperation.GetVpcFailed"
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
@@ -720,6 +721,7 @@ func (c *Client) CreateDBInstances(request *CreateDBInstancesRequest) (response 
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CREATEORDERFAILED = "FailedOperation.CreateOrderFailed"
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
 //  FAILEDOPERATION_GETVPCFAILED = "FailedOperation.GetVpcFailed"
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
@@ -5657,6 +5659,7 @@ func NewRollbackInstanceResponse() (response *RollbackInstanceResponse) {
 //  INVALIDPARAMETER_INPUTILLEGAL = "InvalidParameter.InputIllegal"
 //  INVALIDPARAMETER_PARAMSASSERTFAILED = "InvalidParameter.ParamsAssertFailed"
 //  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  RESOURCEUNAVAILABLE_DBINVALIDSTATUS = "ResourceUnavailable.DBInvalidStatus"
 //  RESOURCEUNAVAILABLE_INSTANCESTATUSINVALID = "ResourceUnavailable.InstanceStatusInvalid"
 //  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) RollbackInstance(request *RollbackInstanceRequest) (response *RollbackInstanceResponse, err error) {
@@ -5673,6 +5676,7 @@ func (c *Client) RollbackInstance(request *RollbackInstanceRequest) (response *R
 //  INVALIDPARAMETER_INPUTILLEGAL = "InvalidParameter.InputIllegal"
 //  INVALIDPARAMETER_PARAMSASSERTFAILED = "InvalidParameter.ParamsAssertFailed"
 //  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  RESOURCEUNAVAILABLE_DBINVALIDSTATUS = "ResourceUnavailable.DBInvalidStatus"
 //  RESOURCEUNAVAILABLE_INSTANCESTATUSINVALID = "ResourceUnavailable.InstanceStatusInvalid"
 //  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) RollbackInstanceWithContext(ctx context.Context, request *RollbackInstanceRequest) (response *RollbackInstanceResponse, err error) {

@@ -2,52 +2,9 @@
 
 ## DDoS 防护(antiddos) 版本：2020-03-09
 
-### 第 35 次发布
+### 第 36 次发布
 
-发布时间：2022-07-11 06:05:26
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DescribeNewL7Rules](https://cloud.tencent.com/document/api/1021/76706)
-
-新增数据结构：
-
-* [L7RuleHealth](https://cloud.tencent.com/document/api/1021/57582#L7RuleHealth)
-
-
-
-## 内容分发网络(cdn) 版本：2018-06-06
-
-### 第 107 次发布
-
-发布时间：2022-07-11 06:07:38
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增数据结构：
-
-* [RedirectConfig](https://cloud.tencent.com/document/api/228/30987#RedirectConfig)
-
-修改数据结构：
-
-* [FollowRedirect](https://cloud.tencent.com/document/api/228/30987#FollowRedirect)
-
-	* 新增成员：RedirectConfig
-
-
-
-
-## 企业收付平台(cpdp) 版本：2019-08-20
-
-### 第 76 次发布
-
-发布时间：2022-07-11 06:09:01
+发布时间：2022-07-11 11:21:01
 
 本次发布包含了以下内容：
 
@@ -55,69 +12,195 @@
 
 新增接口：
 
-* [CreateOpenBankVerificationOrder](https://cloud.tencent.com/document/api/1122/76709)
-* [QueryOpenBankVerificationOrder](https://cloud.tencent.com/document/api/1122/76708)
-* [VerifyOpenBankAccount](https://cloud.tencent.com/document/api/1122/76707)
+* [CreateNewL7Rules](https://cloud.tencent.com/document/api/1021/76711)
 
-新增数据结构：
 
-* [CreateOpenBankVerificationResult](https://cloud.tencent.com/document/api/1122/40683#CreateOpenBankVerificationResult)
-* [QueryOpenBankVerificationResult](https://cloud.tencent.com/document/api/1122/40683#QueryOpenBankVerificationResult)
-* [VerifyOpenBankAccountResult](https://cloud.tencent.com/document/api/1122/40683#VerifyOpenBankAccountResult)
 
-修改数据结构：
+## 应用性能观测(apm) 版本：2021-06-22
 
-* [FlexFundingAccountInfo](https://cloud.tencent.com/document/api/1122/40683#FlexFundingAccountInfo)
+### 第 12 次发布
 
-	* 新增成员：FundingAccountName
+发布时间：2022-07-12 06:04:29
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeGeneralMetricData](https://cloud.tencent.com/document/api/1463/73791)
+
+	* 新增入参：OrderBy, PageSize
+
+
+
+
+## 云服务器(cvm) 版本：2017-03-12
+
+### 第 90 次发布
+
+发布时间：2022-07-12 06:08:19
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateKeyPair](https://cloud.tencent.com/document/api/213/15702)
+
+	* 新增入参：TagSpecification
+
+* [ImportKeyPair](https://cloud.tencent.com/document/api/213/15703)
+
+	* 新增入参：TagSpecification
 
 
 
 
 ## 云原生数据库 TDSQL-C(cynosdb) 版本：2019-01-07
 
-### 第 18 次发布
+### 第 19 次发布
 
-发布时间：2022-07-11 06:10:21
+发布时间：2022-07-12 06:09:05
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-修改数据结构：
+修改接口：
 
-* [BillingResourceInfo](https://cloud.tencent.com/document/api/1003/48097#BillingResourceInfo)
+* [CreateClusters](https://cloud.tencent.com/document/api/1003/48087)
 
-	* 新增成员：DealName
+	* 新增入参：SlaveZone
 
+* [DescribeResourcesByDealName](https://cloud.tencent.com/document/api/1003/52131)
+
+	* 新增入参：DealNames
+
+	* <font color="#dd0000">**修改入参**：</font>DealName
+
+
+
+
+## 智能推荐平台(irp) 版本：2022-03-24
+
+### 第 1 次发布
+
+发布时间：2022-07-11 16:20:35
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [RecommendContent](https://cloud.tencent.com/document/api/1541/76752)
+* [ReportAction](https://cloud.tencent.com/document/api/1541/76751)
+* [ReportMaterial](https://cloud.tencent.com/document/api/1541/76750)
+* [ReportPortrait](https://cloud.tencent.com/document/api/1541/76749)
+
+新增数据结构：
+
+* [AuthorInfo](https://cloud.tencent.com/document/api/1541/76753#AuthorInfo)
+* [DislikeInfo](https://cloud.tencent.com/document/api/1541/76753#DislikeInfo)
+* [DocBehavior](https://cloud.tencent.com/document/api/1541/76753#DocBehavior)
+* [DocItem](https://cloud.tencent.com/document/api/1541/76753#DocItem)
+* [PortraitInfo](https://cloud.tencent.com/document/api/1541/76753#PortraitInfo)
+* [RecItemData](https://cloud.tencent.com/document/api/1541/76753#RecItemData)
+* [TagInfo](https://cloud.tencent.com/document/api/1541/76753#TagInfo)
+* [UserIdInfo](https://cloud.tencent.com/document/api/1541/76753#UserIdInfo)
 
 
 
 ## 云直播(live) 版本：2018-08-01
 
-### 第 80 次发布
+### 第 81 次发布
 
-发布时间：2022-07-11 06:14:37
+发布时间：2022-07-12 06:13:23
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-<font color="#dd0000">**删除接口**：</font>
+修改接口：
 
-* BindLiveDomainCert
-* CreateLiveCert
-* DeleteLiveCert
-* ModifyLiveCert
-* ModifyLiveDomainCert
+* [DescribePushBandwidthAndFluxList](https://cloud.tencent.com/document/api/267/59511)
+
+	* 新增入参：CountryNames
 
 
 
-## 弹性微服务(tem) 版本：2021-07-01
 
-### 第 19 次发布
+## 边缘安全加速平台(teo) 版本：2022-01-06
 
-发布时间：2022-07-11 06:18:55
+### 第 13 次发布
+
+发布时间：2022-07-12 06:17:57
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateZone](https://cloud.tencent.com/document/api/1552/74851)
+
+	* 新增入参：Tags
+
+* [DescribeZoneDetails](https://cloud.tencent.com/document/api/1552/74843)
+
+	* 新增出参：Tags
+
+
+新增数据结构：
+
+* [Tag](https://cloud.tencent.com/document/api/1552/73155#Tag)
+
+修改数据结构：
+
+* [Zone](https://cloud.tencent.com/document/api/1552/73155#Zone)
+
+	* 新增成员：Tags
+
+
+
+
+## 腾讯云微服务引擎(tse) 版本：2020-12-07
+
+### 第 22 次发布
+
+发布时间：2022-07-12 06:19:15
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeSREInstanceAccessAddress](https://cloud.tencent.com/document/api/1364/54941)
+
+	* 新增入参：Workload
+
+
+修改数据结构：
+
+* [EnvAddressInfo](https://cloud.tencent.com/document/api/1364/54942#EnvAddressInfo)
+
+	* 新增成员：ConfigIntranetAddress
+
+* [ServiceGovernanceInfo](https://cloud.tencent.com/document/api/1364/54942#ServiceGovernanceInfo)
+
+	* 新增成员：PgwVpcInfos
+
+
+
+
+## 云点播(vod) 版本：2018-07-17
+
+### 第 108 次发布
+
+发布时间：2022-07-12 06:19:53
 
 本次发布包含了以下内容：
 
@@ -125,14 +208,18 @@
 
 修改数据结构：
 
-* [PortMapping](https://cloud.tencent.com/document/api/1371/60171#PortMapping)
+* [ImageWatermarkInput](https://cloud.tencent.com/document/api/266/31773#ImageWatermarkInput)
 
-	* 新增成员：ServiceName
+	* 新增成员：Transparency
 
+* [ImageWatermarkInputForUpdate](https://cloud.tencent.com/document/api/266/31773#ImageWatermarkInputForUpdate)
 
+	* 新增成员：Transparency
 
+* [ImageWatermarkTemplate](https://cloud.tencent.com/document/api/266/31773#ImageWatermarkTemplate)
 
-## 弹性微服务(tem) 版本：2020-12-21
+	* 新增成员：Transparency
+
 
 
 
@@ -1530,6 +1617,18 @@
 
 ## DDoS 防护(antiddos) 版本：2020-03-09
 
+### 第 36 次发布
+
+发布时间：2022-07-11 11:21:01
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateNewL7Rules](https://cloud.tencent.com/document/api/1021/76711)](https://cloud.tencent.com/document/api/#/#)
+
 ### 第 35 次发布
 
 发布时间：2022-07-11 06:05:26
@@ -1540,11 +1639,11 @@
 
 新增接口：
 
-* [[DescribeNewL7Rules](https://cloud.tencent.com/document/api/1021/76706)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeNewL7Rules](https://cloud.tencent.com/document/api/1021/76706)
 
 新增数据结构：
 
-* [[L7RuleHealth](https://cloud.tencent.com/document/api/1021/57582#L7RuleHealth)](https://cloud.tencent.com/document/api/1021/57582#[L7RuleHealth](https://cloud.tencent.com/document/api/1021/57582#L7RuleHealth))
+* [L7RuleHealth](https://cloud.tencent.com/document/api/1021/57582#L7RuleHealth)
 
 ### 第 34 次发布
 
@@ -3241,6 +3340,21 @@
 
 
 ## 应用性能观测(apm) 版本：2021-06-22
+
+### 第 12 次发布
+
+发布时间：2022-07-12 06:04:29
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeGeneralMetricData](https://cloud.tencent.com/document/api/1463/73791)
+
+	* 新增入参：OrderBy, PageSize
+
 
 ### 第 11 次发布
 
@@ -12859,7 +12973,7 @@
 
 新增数据结构：
 
-* [[RedirectConfig](https://cloud.tencent.com/document/api/228/30987#RedirectConfig)](https://cloud.tencent.com/document/api/228/30987#[RedirectConfig](https://cloud.tencent.com/document/api/228/30987#RedirectConfig))
+* [RedirectConfig](https://cloud.tencent.com/document/api/228/30987#RedirectConfig)
 
 修改数据结构：
 
@@ -21487,15 +21601,15 @@
 
 新增接口：
 
-* [[CreateOpenBankVerificationOrder](https://cloud.tencent.com/document/api/1122/76709)](https://cloud.tencent.com/document/api/#/#)
-* [[QueryOpenBankVerificationOrder](https://cloud.tencent.com/document/api/1122/76708)](https://cloud.tencent.com/document/api/#/#)
-* [[VerifyOpenBankAccount](https://cloud.tencent.com/document/api/1122/76707)](https://cloud.tencent.com/document/api/#/#)
+* [CreateOpenBankVerificationOrder](https://cloud.tencent.com/document/api/1122/76709)
+* [QueryOpenBankVerificationOrder](https://cloud.tencent.com/document/api/1122/76708)
+* [VerifyOpenBankAccount](https://cloud.tencent.com/document/api/1122/76707)
 
 新增数据结构：
 
-* [[CreateOpenBankVerificationResult](https://cloud.tencent.com/document/api/1122/40683#CreateOpenBankVerificationResult)](https://cloud.tencent.com/document/api/1122/40683#[CreateOpenBankVerificationResult](https://cloud.tencent.com/document/api/1122/40683#CreateOpenBankVerificationResult))
-* [[QueryOpenBankVerificationResult](https://cloud.tencent.com/document/api/1122/40683#QueryOpenBankVerificationResult)](https://cloud.tencent.com/document/api/1122/40683#[QueryOpenBankVerificationResult](https://cloud.tencent.com/document/api/1122/40683#QueryOpenBankVerificationResult))
-* [[VerifyOpenBankAccountResult](https://cloud.tencent.com/document/api/1122/40683#VerifyOpenBankAccountResult)](https://cloud.tencent.com/document/api/1122/40683#[VerifyOpenBankAccountResult](https://cloud.tencent.com/document/api/1122/40683#VerifyOpenBankAccountResult))
+* [CreateOpenBankVerificationResult](https://cloud.tencent.com/document/api/1122/40683#CreateOpenBankVerificationResult)
+* [QueryOpenBankVerificationResult](https://cloud.tencent.com/document/api/1122/40683#QueryOpenBankVerificationResult)
+* [VerifyOpenBankAccountResult](https://cloud.tencent.com/document/api/1122/40683#VerifyOpenBankAccountResult)
 
 修改数据结构：
 
@@ -23700,6 +23814,25 @@
 
 
 ## 云服务器(cvm) 版本：2017-03-12
+
+### 第 90 次发布
+
+发布时间：2022-07-12 06:08:19
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateKeyPair](https://cloud.tencent.com/document/api/213/15702)
+
+	* 新增入参：TagSpecification
+
+* [ImportKeyPair](https://cloud.tencent.com/document/api/213/15703)
+
+	* 新增入参：TagSpecification
+
 
 ### 第 89 次发布
 
@@ -27069,6 +27202,27 @@
 
 
 ## 云原生数据库 TDSQL-C(cynosdb) 版本：2019-01-07
+
+### 第 19 次发布
+
+发布时间：2022-07-12 06:09:05
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateClusters](https://cloud.tencent.com/document/api/1003/48087)
+
+	* 新增入参：SlaveZone
+
+* [DescribeResourcesByDealName](https://cloud.tencent.com/document/api/1003/52131)
+
+	* 新增入参：DealNames
+
+	* <font color="#dd0000">**修改入参**：</font>DealName
+
 
 ### 第 18 次发布
 
@@ -44653,6 +44807,37 @@
 
 
 
+## 智能推荐平台(irp) 版本：2022-03-24
+
+### 第 1 次发布
+
+发布时间：2022-07-11 16:20:35
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[RecommendContent](https://cloud.tencent.com/document/api/1541/76752)](https://cloud.tencent.com/document/api/#/#)
+* [[ReportAction](https://cloud.tencent.com/document/api/1541/76751)](https://cloud.tencent.com/document/api/#/#)
+* [[ReportMaterial](https://cloud.tencent.com/document/api/1541/76750)](https://cloud.tencent.com/document/api/#/#)
+* [[ReportPortrait](https://cloud.tencent.com/document/api/1541/76749)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[AuthorInfo](https://cloud.tencent.com/document/api/1541/76753#AuthorInfo)](https://cloud.tencent.com/document/api/1541/76753#[AuthorInfo](https://cloud.tencent.com/document/api/1541/76753#AuthorInfo))
+* [[DislikeInfo](https://cloud.tencent.com/document/api/1541/76753#DislikeInfo)](https://cloud.tencent.com/document/api/1541/76753#[DislikeInfo](https://cloud.tencent.com/document/api/1541/76753#DislikeInfo))
+* [[DocBehavior](https://cloud.tencent.com/document/api/1541/76753#DocBehavior)](https://cloud.tencent.com/document/api/1541/76753#[DocBehavior](https://cloud.tencent.com/document/api/1541/76753#DocBehavior))
+* [[DocItem](https://cloud.tencent.com/document/api/1541/76753#DocItem)](https://cloud.tencent.com/document/api/1541/76753#[DocItem](https://cloud.tencent.com/document/api/1541/76753#DocItem))
+* [[PortraitInfo](https://cloud.tencent.com/document/api/1541/76753#PortraitInfo)](https://cloud.tencent.com/document/api/1541/76753#[PortraitInfo](https://cloud.tencent.com/document/api/1541/76753#PortraitInfo))
+* [[RecItemData](https://cloud.tencent.com/document/api/1541/76753#RecItemData)](https://cloud.tencent.com/document/api/1541/76753#[RecItemData](https://cloud.tencent.com/document/api/1541/76753#RecItemData))
+* [[TagInfo](https://cloud.tencent.com/document/api/1541/76753#TagInfo)](https://cloud.tencent.com/document/api/1541/76753#[TagInfo](https://cloud.tencent.com/document/api/1541/76753#TagInfo))
+* [[UserIdInfo](https://cloud.tencent.com/document/api/1541/76753#UserIdInfo)](https://cloud.tencent.com/document/api/1541/76753#[UserIdInfo](https://cloud.tencent.com/document/api/1541/76753#UserIdInfo))
+
+
+
+
 ## 视频智能标签(ivld) 版本：2021-09-03
 
 ### 第 6 次发布
@@ -45831,6 +46016,21 @@
 
 
 ## 云直播(live) 版本：2018-08-01
+
+### 第 81 次发布
+
+发布时间：2022-07-12 06:13:23
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribePushBandwidthAndFluxList](https://cloud.tencent.com/document/api/267/59511)
+
+	* 新增入参：CountryNames
+
 
 ### 第 80 次发布
 
@@ -68200,6 +68400,36 @@
 
 ## 边缘安全加速平台(teo) 版本：2022-01-06
 
+### 第 13 次发布
+
+发布时间：2022-07-12 06:17:57
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateZone](https://cloud.tencent.com/document/api/1552/74851)
+
+	* 新增入参：Tags
+
+* [DescribeZoneDetails](https://cloud.tencent.com/document/api/1552/74843)
+
+	* 新增出参：Tags
+
+
+新增数据结构：
+
+* [[Tag](https://cloud.tencent.com/document/api/1552/73155#Tag)](https://cloud.tencent.com/document/api/1552/73155#[Tag](https://cloud.tencent.com/document/api/1552/73155#Tag))
+
+修改数据结构：
+
+* [Zone](https://cloud.tencent.com/document/api/1552/73155#Zone)
+
+	* 新增成员：Tags
+
+
 ### 第 12 次发布
 
 发布时间：2022-07-05 06:22:14
@@ -73946,6 +74176,32 @@
 
 ## 腾讯云微服务引擎(tse) 版本：2020-12-07
 
+### 第 22 次发布
+
+发布时间：2022-07-12 06:19:15
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeSREInstanceAccessAddress](https://cloud.tencent.com/document/api/1364/54941)
+
+	* 新增入参：Workload
+
+
+修改数据结构：
+
+* [EnvAddressInfo](https://cloud.tencent.com/document/api/1364/54942#EnvAddressInfo)
+
+	* 新增成员：ConfigIntranetAddress
+
+* [ServiceGovernanceInfo](https://cloud.tencent.com/document/api/1364/54942#ServiceGovernanceInfo)
+
+	* 新增成员：PgwVpcInfos
+
+
 ### 第 21 次发布
 
 发布时间：2022-06-28 06:18:34
@@ -76890,6 +77146,29 @@
 
 
 ## 云点播(vod) 版本：2018-07-17
+
+### 第 108 次发布
+
+发布时间：2022-07-12 06:19:53
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ImageWatermarkInput](https://cloud.tencent.com/document/api/266/31773#ImageWatermarkInput)
+
+	* 新增成员：Transparency
+
+* [ImageWatermarkInputForUpdate](https://cloud.tencent.com/document/api/266/31773#ImageWatermarkInputForUpdate)
+
+	* 新增成员：Transparency
+
+* [ImageWatermarkTemplate](https://cloud.tencent.com/document/api/266/31773#ImageWatermarkTemplate)
+
+	* 新增成员：Transparency
+
 
 ### 第 107 次发布
 

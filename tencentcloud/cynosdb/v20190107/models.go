@@ -545,7 +545,7 @@ type CreateClustersRequestParams struct {
 	// 账号密码(8-64个字符，包含大小写英文字母、数字和符号~!@#$%^&*_-+=`|\(){}[]:;'<>,.?/中的任意三种)
 	AdminPassword *string `json:"AdminPassword,omitempty" name:"AdminPassword"`
 
-	// 端口，默认5432
+	// 端口，默认3306，取值范围[0, 65535)
 	Port *int64 `json:"Port,omitempty" name:"Port"`
 
 	// 计费模式，按量计费：0，包年包月：1。默认按量计费。
@@ -577,7 +577,7 @@ type CreateClustersRequestParams struct {
 	// 当DbType为MYSQL，且存储计费模式为预付费时，该参数需不大于cpu与memory对应存储规格上限
 	StorageLimit *int64 `json:"StorageLimit,omitempty" name:"StorageLimit"`
 
-	// 实例数量
+	// 实例数量，数量范围为(0,16]
 	InstanceCount *int64 `json:"InstanceCount,omitempty" name:"InstanceCount"`
 
 	// 包年包月购买时长
@@ -586,7 +586,7 @@ type CreateClustersRequestParams struct {
 	// 包年包月购买时长单位，['s','d','m','y']
 	TimeUnit *string `json:"TimeUnit,omitempty" name:"TimeUnit"`
 
-	// 包年包月购买是否自动续费
+	// 包年包月购买是否自动续费，默认为0
 	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitempty" name:"AutoRenewFlag"`
 
 	// 是否自动选择代金券 1是 0否 默认为0
@@ -642,8 +642,11 @@ type CreateClustersRequestParams struct {
 	// 交易模式，0-下单且支付，1-下单
 	DealMode *int64 `json:"DealMode,omitempty" name:"DealMode"`
 
-	// 参数模版ID
+	// 参数模版ID，可以通过查询参数模板信息DescribeParamTemplates获得参数模板ID
 	ParamTemplateId *int64 `json:"ParamTemplateId,omitempty" name:"ParamTemplateId"`
+
+	// 多可用区地址
+	SlaveZone *string `json:"SlaveZone,omitempty" name:"SlaveZone"`
 }
 
 type CreateClustersRequest struct {
@@ -687,7 +690,7 @@ type CreateClustersRequest struct {
 	// 账号密码(8-64个字符，包含大小写英文字母、数字和符号~!@#$%^&*_-+=`|\(){}[]:;'<>,.?/中的任意三种)
 	AdminPassword *string `json:"AdminPassword,omitempty" name:"AdminPassword"`
 
-	// 端口，默认5432
+	// 端口，默认3306，取值范围[0, 65535)
 	Port *int64 `json:"Port,omitempty" name:"Port"`
 
 	// 计费模式，按量计费：0，包年包月：1。默认按量计费。
@@ -719,7 +722,7 @@ type CreateClustersRequest struct {
 	// 当DbType为MYSQL，且存储计费模式为预付费时，该参数需不大于cpu与memory对应存储规格上限
 	StorageLimit *int64 `json:"StorageLimit,omitempty" name:"StorageLimit"`
 
-	// 实例数量
+	// 实例数量，数量范围为(0,16]
 	InstanceCount *int64 `json:"InstanceCount,omitempty" name:"InstanceCount"`
 
 	// 包年包月购买时长
@@ -728,7 +731,7 @@ type CreateClustersRequest struct {
 	// 包年包月购买时长单位，['s','d','m','y']
 	TimeUnit *string `json:"TimeUnit,omitempty" name:"TimeUnit"`
 
-	// 包年包月购买是否自动续费
+	// 包年包月购买是否自动续费，默认为0
 	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitempty" name:"AutoRenewFlag"`
 
 	// 是否自动选择代金券 1是 0否 默认为0
@@ -784,8 +787,11 @@ type CreateClustersRequest struct {
 	// 交易模式，0-下单且支付，1-下单
 	DealMode *int64 `json:"DealMode,omitempty" name:"DealMode"`
 
-	// 参数模版ID
+	// 参数模版ID，可以通过查询参数模板信息DescribeParamTemplates获得参数模板ID
 	ParamTemplateId *int64 `json:"ParamTemplateId,omitempty" name:"ParamTemplateId"`
+
+	// 多可用区地址
+	SlaveZone *string `json:"SlaveZone,omitempty" name:"SlaveZone"`
 }
 
 func (r *CreateClustersRequest) ToJsonString() string {
@@ -839,6 +845,7 @@ func (r *CreateClustersRequest) FromJsonString(s string) error {
 	delete(f, "ClusterParams")
 	delete(f, "DealMode")
 	delete(f, "ParamTemplateId")
+	delete(f, "SlaveZone")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateClustersRequest has unknown keys!", "")
 	}
@@ -2802,15 +2809,21 @@ func (r *DescribeProjectSecurityGroupsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeResourcesByDealNameRequestParams struct {
-	// 计费订单id（如果计费还没回调业务发货，可能出现错误码InvalidParameterValue.DealNameNotFound，这种情况需要业务重试DescribeResourcesByDealName接口直到成功）
+	// 计费订单ID（如果计费还没回调业务发货，可能出现错误码InvalidParameterValue.DealNameNotFound，这种情况需要业务重试DescribeResourcesByDealName接口直到成功）
 	DealName *string `json:"DealName,omitempty" name:"DealName"`
+
+	// 计费订单ID列表，可以一次查询若干条订单ID对应资源信息（如果计费还没回调业务发货，可能出现错误码InvalidParameterValue.DealNameNotFound，这种情况需要业务重试DescribeResourcesByDealName接口直到成功）
+	DealNames []*string `json:"DealNames,omitempty" name:"DealNames"`
 }
 
 type DescribeResourcesByDealNameRequest struct {
 	*tchttp.BaseRequest
 	
-	// 计费订单id（如果计费还没回调业务发货，可能出现错误码InvalidParameterValue.DealNameNotFound，这种情况需要业务重试DescribeResourcesByDealName接口直到成功）
+	// 计费订单ID（如果计费还没回调业务发货，可能出现错误码InvalidParameterValue.DealNameNotFound，这种情况需要业务重试DescribeResourcesByDealName接口直到成功）
 	DealName *string `json:"DealName,omitempty" name:"DealName"`
+
+	// 计费订单ID列表，可以一次查询若干条订单ID对应资源信息（如果计费还没回调业务发货，可能出现错误码InvalidParameterValue.DealNameNotFound，这种情况需要业务重试DescribeResourcesByDealName接口直到成功）
+	DealNames []*string `json:"DealNames,omitempty" name:"DealNames"`
 }
 
 func (r *DescribeResourcesByDealNameRequest) ToJsonString() string {
@@ -2826,6 +2839,7 @@ func (r *DescribeResourcesByDealNameRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "DealName")
+	delete(f, "DealNames")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeResourcesByDealNameRequest has unknown keys!", "")
 	}
@@ -3710,7 +3724,7 @@ type ModifyClusterParamRequestParams struct {
 	// 集群ID
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 
-	// 要修改的参数列表。每一个元素是ParamName、CurrentValue和OldValue的组合。ParamName是参数名称，CurrentValue是当前值，OldValue是之前值
+	// 要修改的参数列表。每一个元素是ParamName、CurrentValue和OldValue的组合。ParamName是参数名称，CurrentValue是当前值，OldValue是之前值且不做校验
 	ParamList []*ParamItem `json:"ParamList,omitempty" name:"ParamList"`
 
 	// 维护期间执行-yes,立即执行-no
@@ -3723,7 +3737,7 @@ type ModifyClusterParamRequest struct {
 	// 集群ID
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 
-	// 要修改的参数列表。每一个元素是ParamName、CurrentValue和OldValue的组合。ParamName是参数名称，CurrentValue是当前值，OldValue是之前值
+	// 要修改的参数列表。每一个元素是ParamName、CurrentValue和OldValue的组合。ParamName是参数名称，CurrentValue是当前值，OldValue是之前值且不做校验
 	ParamList []*ParamItem `json:"ParamList,omitempty" name:"ParamList"`
 
 	// 维护期间执行-yes,立即执行-no

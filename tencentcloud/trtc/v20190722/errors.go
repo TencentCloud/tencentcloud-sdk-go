@@ -149,6 +149,9 @@ const (
 	// 查询开始时间超过文档限制。
 	INVALIDPARAMETER_STARTTSOVERSIZE = "InvalidParameter.StartTsOversize"
 
+	// StrRoomId参数错误。
+	INVALIDPARAMETER_STRROOMID = "InvalidParameter.StrRoomId"
+
 	// StreamId参数错误。
 	INVALIDPARAMETER_STREAMID = "InvalidParameter.StreamId"
 

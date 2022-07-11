@@ -9879,7 +9879,7 @@ type ModifyLocalBinlogConfigRequestParams struct {
 	// 实例 ID，格式如：cdb-c1nl9rpv。与云数据库控制台页面中显示的实例ID相同。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 本地binlog保留时长，可取值范围：[120,168]。
+	// 本地binlog保留时长，可取值范围：[72,168]，当实例存在灾备实例时，可取值范围：[120,168]。
 	SaveHours *int64 `json:"SaveHours,omitempty" name:"SaveHours"`
 
 	// 本地binlog空间使用率，可取值范围：[30,50]。
@@ -9892,7 +9892,7 @@ type ModifyLocalBinlogConfigRequest struct {
 	// 实例 ID，格式如：cdb-c1nl9rpv。与云数据库控制台页面中显示的实例ID相同。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 本地binlog保留时长，可取值范围：[120,168]。
+	// 本地binlog保留时长，可取值范围：[72,168]，当实例存在灾备实例时，可取值范围：[120,168]。
 	SaveHours *int64 `json:"SaveHours,omitempty" name:"SaveHours"`
 
 	// 本地binlog空间使用率，可取值范围：[30,50]。

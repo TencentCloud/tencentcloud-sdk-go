@@ -1,3 +1,228 @@
+# Release v1.0.440
+
+## DDoS 防护(antiddos) 版本：2020-03-09
+
+### 第 36 次发布
+
+发布时间：2022-07-11 11:21:01
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateNewL7Rules](https://cloud.tencent.com/document/api/1021/76711)
+
+
+
+## 应用性能观测(apm) 版本：2021-06-22
+
+### 第 12 次发布
+
+发布时间：2022-07-12 06:04:29
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeGeneralMetricData](https://cloud.tencent.com/document/api/1463/73791)
+
+	* 新增入参：OrderBy, PageSize
+
+
+
+
+## 云服务器(cvm) 版本：2017-03-12
+
+### 第 90 次发布
+
+发布时间：2022-07-12 06:08:19
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateKeyPair](https://cloud.tencent.com/document/api/213/15702)
+
+	* 新增入参：TagSpecification
+
+* [ImportKeyPair](https://cloud.tencent.com/document/api/213/15703)
+
+	* 新增入参：TagSpecification
+
+
+
+
+## 云原生数据库 TDSQL-C(cynosdb) 版本：2019-01-07
+
+### 第 19 次发布
+
+发布时间：2022-07-12 06:09:05
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateClusters](https://cloud.tencent.com/document/api/1003/48087)
+
+	* 新增入参：SlaveZone
+
+* [DescribeResourcesByDealName](https://cloud.tencent.com/document/api/1003/52131)
+
+	* 新增入参：DealNames
+
+	* <font color="#dd0000">**修改入参**：</font>DealName
+
+
+
+
+## 智能推荐平台(irp) 版本：2022-03-24
+
+### 第 1 次发布
+
+发布时间：2022-07-11 16:20:35
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [RecommendContent](https://cloud.tencent.com/document/api/1541/76752)
+* [ReportAction](https://cloud.tencent.com/document/api/1541/76751)
+* [ReportMaterial](https://cloud.tencent.com/document/api/1541/76750)
+* [ReportPortrait](https://cloud.tencent.com/document/api/1541/76749)
+
+新增数据结构：
+
+* [AuthorInfo](https://cloud.tencent.com/document/api/1541/76753#AuthorInfo)
+* [DislikeInfo](https://cloud.tencent.com/document/api/1541/76753#DislikeInfo)
+* [DocBehavior](https://cloud.tencent.com/document/api/1541/76753#DocBehavior)
+* [DocItem](https://cloud.tencent.com/document/api/1541/76753#DocItem)
+* [PortraitInfo](https://cloud.tencent.com/document/api/1541/76753#PortraitInfo)
+* [RecItemData](https://cloud.tencent.com/document/api/1541/76753#RecItemData)
+* [TagInfo](https://cloud.tencent.com/document/api/1541/76753#TagInfo)
+* [UserIdInfo](https://cloud.tencent.com/document/api/1541/76753#UserIdInfo)
+
+
+
+## 云直播(live) 版本：2018-08-01
+
+### 第 81 次发布
+
+发布时间：2022-07-12 06:13:23
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribePushBandwidthAndFluxList](https://cloud.tencent.com/document/api/267/59511)
+
+	* 新增入参：CountryNames
+
+
+
+
+## 边缘安全加速平台(teo) 版本：2022-01-06
+
+### 第 13 次发布
+
+发布时间：2022-07-12 06:17:57
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateZone](https://cloud.tencent.com/document/api/1552/74851)
+
+	* 新增入参：Tags
+
+* [DescribeZoneDetails](https://cloud.tencent.com/document/api/1552/74843)
+
+	* 新增出参：Tags
+
+
+新增数据结构：
+
+* [Tag](https://cloud.tencent.com/document/api/1552/73155#Tag)
+
+修改数据结构：
+
+* [Zone](https://cloud.tencent.com/document/api/1552/73155#Zone)
+
+	* 新增成员：Tags
+
+
+
+
+## 腾讯云微服务引擎(tse) 版本：2020-12-07
+
+### 第 22 次发布
+
+发布时间：2022-07-12 06:19:15
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeSREInstanceAccessAddress](https://cloud.tencent.com/document/api/1364/54941)
+
+	* 新增入参：Workload
+
+
+修改数据结构：
+
+* [EnvAddressInfo](https://cloud.tencent.com/document/api/1364/54942#EnvAddressInfo)
+
+	* 新增成员：ConfigIntranetAddress
+
+* [ServiceGovernanceInfo](https://cloud.tencent.com/document/api/1364/54942#ServiceGovernanceInfo)
+
+	* 新增成员：PgwVpcInfos
+
+
+
+
+## 云点播(vod) 版本：2018-07-17
+
+### 第 108 次发布
+
+发布时间：2022-07-12 06:19:53
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ImageWatermarkInput](https://cloud.tencent.com/document/api/266/31773#ImageWatermarkInput)
+
+	* 新增成员：Transparency
+
+* [ImageWatermarkInputForUpdate](https://cloud.tencent.com/document/api/266/31773#ImageWatermarkInputForUpdate)
+
+	* 新增成员：Transparency
+
+* [ImageWatermarkTemplate](https://cloud.tencent.com/document/api/266/31773#ImageWatermarkTemplate)
+
+	* 新增成员：Transparency
+
+
+
+
 # Release v1.0.439
 
 ## DDoS 防护(antiddos) 版本：2020-03-09

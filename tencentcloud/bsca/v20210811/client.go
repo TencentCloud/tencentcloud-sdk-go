@@ -281,6 +281,7 @@ func NewMatchKBPURLListResponse() (response *MatchKBPURLListResponse) {
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) MatchKBPURLList(request *MatchKBPURLListRequest) (response *MatchKBPURLListResponse, err error) {
     return c.MatchKBPURLListWithContext(context.Background(), request)
 }
@@ -292,6 +293,7 @@ func (c *Client) MatchKBPURLList(request *MatchKBPURLListRequest) (response *Mat
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) MatchKBPURLListWithContext(ctx context.Context, request *MatchKBPURLListRequest) (response *MatchKBPURLListResponse, err error) {
     if request == nil {
         request = NewMatchKBPURLListRequest()

@@ -61,7 +61,7 @@ require (
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cme v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cmq v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cms v0.0.0
-	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common v1.0.439
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common v1.0.440
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cpdp v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cr v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cvm v0.0.0
@@ -115,6 +115,7 @@ require (
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/iottid v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/iotvideo v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/iotvideoindustry v0.0.0
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/irp v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ivld v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/kms v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/lighthouse v0.0.0
@@ -330,6 +331,7 @@ replace (
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/iottid => ../tencentcloud/iottid
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/iotvideo => ../tencentcloud/iotvideo
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/iotvideoindustry => ../tencentcloud/iotvideoindustry
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/irp => ../tencentcloud/irp
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ivld => ../tencentcloud/ivld
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/kms => ../tencentcloud/kms
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/lighthouse => ../tencentcloud/lighthouse

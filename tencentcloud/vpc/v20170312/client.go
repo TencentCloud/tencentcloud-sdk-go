@@ -338,6 +338,7 @@ func NewAdjustPublicAddressResponse() (response *AdjustPublicAddressResponse) {
 //  INVALIDPARAMETERVALUE_UNAVAILABLEZONE = "InvalidParameterValue.UnavailableZone"
 //  LIMITEXCEEDED_CHANGEADDRESSQUOTA = "LimitExceeded.ChangeAddressQuota"
 //  LIMITEXCEEDED_DAILYCHANGEADDRESSQUOTA = "LimitExceeded.DailyChangeAddressQuota"
+//  OPERATIONDENIED_ADDRESSINARREARS = "OperationDenied.AddressInArrears"
 //  OPERATIONDENIED_MUTEXTASKRUNNING = "OperationDenied.MutexTaskRunning"
 //  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 //  UNSUPPORTEDOPERATION_ADDRESSSTATUSNOTPERMIT = "UnsupportedOperation.AddressStatusNotPermit"
@@ -363,6 +364,7 @@ func (c *Client) AdjustPublicAddress(request *AdjustPublicAddressRequest) (respo
 //  INVALIDPARAMETERVALUE_UNAVAILABLEZONE = "InvalidParameterValue.UnavailableZone"
 //  LIMITEXCEEDED_CHANGEADDRESSQUOTA = "LimitExceeded.ChangeAddressQuota"
 //  LIMITEXCEEDED_DAILYCHANGEADDRESSQUOTA = "LimitExceeded.DailyChangeAddressQuota"
+//  OPERATIONDENIED_ADDRESSINARREARS = "OperationDenied.AddressInArrears"
 //  OPERATIONDENIED_MUTEXTASKRUNNING = "OperationDenied.MutexTaskRunning"
 //  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 //  UNSUPPORTEDOPERATION_ADDRESSSTATUSNOTPERMIT = "UnsupportedOperation.AddressStatusNotPermit"
@@ -2125,6 +2127,7 @@ func NewCreateAssistantCidrResponse() (response *CreateAssistantCidrResponse) {
 //  INVALIDPARAMETERVALUE_SUBNETCONFLICT = "InvalidParameterValue.SubnetConflict"
 //  INVALIDPARAMETERVALUE_SUBNETOVERLAPASSISTCIDR = "InvalidParameterValue.SubnetOverlapAssistCidr"
 //  INVALIDPARAMETERVALUE_SUBNETRANGE = "InvalidParameterValue.SubnetRange"
+//  INVALIDPARAMETERVALUE_VPCCIDRCONFLICT = "InvalidParameterValue.VpcCidrConflict"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) CreateAssistantCidr(request *CreateAssistantCidrRequest) (response *CreateAssistantCidrResponse, err error) {
@@ -2142,6 +2145,7 @@ func (c *Client) CreateAssistantCidr(request *CreateAssistantCidrRequest) (respo
 //  INVALIDPARAMETERVALUE_SUBNETCONFLICT = "InvalidParameterValue.SubnetConflict"
 //  INVALIDPARAMETERVALUE_SUBNETOVERLAPASSISTCIDR = "InvalidParameterValue.SubnetOverlapAssistCidr"
 //  INVALIDPARAMETERVALUE_SUBNETRANGE = "InvalidParameterValue.SubnetRange"
+//  INVALIDPARAMETERVALUE_VPCCIDRCONFLICT = "InvalidParameterValue.VpcCidrConflict"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) CreateAssistantCidrWithContext(ctx context.Context, request *CreateAssistantCidrRequest) (response *CreateAssistantCidrResponse, err error) {
@@ -3362,6 +3366,7 @@ func NewCreateNatGatewaySourceIpTranslationNatRuleResponse() (response *CreateNa
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
 //  INVALIDPARAMETERVALUE_NATSNATRULEEXISTS = "InvalidParameterValue.NatSnatRuleExists"
 //  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION_NATGATEWAYRULEPIPEXISTS = "UnsupportedOperation.NatGatewayRulePipExists"
 //  UNSUPPORTEDOPERATION_NATGATEWAYTYPENOTSUPPORTSNAT = "UnsupportedOperation.NatGatewayTypeNotSupportSNAT"
@@ -3381,6 +3386,7 @@ func (c *Client) CreateNatGatewaySourceIpTranslationNatRule(request *CreateNatGa
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
 //  INVALIDPARAMETERVALUE_NATSNATRULEEXISTS = "InvalidParameterValue.NatSnatRuleExists"
 //  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION_NATGATEWAYRULEPIPEXISTS = "UnsupportedOperation.NatGatewayRulePipExists"
 //  UNSUPPORTEDOPERATION_NATGATEWAYTYPENOTSUPPORTSNAT = "UnsupportedOperation.NatGatewayTypeNotSupportSNAT"
@@ -10430,6 +10436,7 @@ func NewDescribeVpcEndPointServiceResponse() (response *DescribeVpcEndPointServi
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
 //  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION_ROLENOTFOUND = "UnsupportedOperation.RoleNotFound"
 func (c *Client) DescribeVpcEndPointService(request *DescribeVpcEndPointServiceRequest) (response *DescribeVpcEndPointServiceResponse, err error) {
     return c.DescribeVpcEndPointServiceWithContext(context.Background(), request)
 }
@@ -10444,6 +10451,7 @@ func (c *Client) DescribeVpcEndPointService(request *DescribeVpcEndPointServiceR
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
 //  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION_ROLENOTFOUND = "UnsupportedOperation.RoleNotFound"
 func (c *Client) DescribeVpcEndPointServiceWithContext(ctx context.Context, request *DescribeVpcEndPointServiceRequest) (response *DescribeVpcEndPointServiceResponse, err error) {
     if request == nil {
         request = NewDescribeVpcEndPointServiceRequest()
@@ -12287,6 +12295,7 @@ func NewDownloadVpnGatewaySslClientCertResponse() (response *DownloadVpnGatewayS
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_SSLVPNCLIENTIDNOTFOUND = "UnsupportedOperation.SslVpnClientIdNotFound"
 func (c *Client) DownloadVpnGatewaySslClientCert(request *DownloadVpnGatewaySslClientCertRequest) (response *DownloadVpnGatewaySslClientCertResponse, err error) {
     return c.DownloadVpnGatewaySslClientCertWithContext(context.Background(), request)
 }
@@ -12297,6 +12306,7 @@ func (c *Client) DownloadVpnGatewaySslClientCert(request *DownloadVpnGatewaySslC
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_SSLVPNCLIENTIDNOTFOUND = "UnsupportedOperation.SslVpnClientIdNotFound"
 func (c *Client) DownloadVpnGatewaySslClientCertWithContext(ctx context.Context, request *DownloadVpnGatewaySslClientCertRequest) (response *DownloadVpnGatewaySslClientCertResponse, err error) {
     if request == nil {
         request = NewDownloadVpnGatewaySslClientCertRequest()
@@ -16133,6 +16143,7 @@ func NewReleaseAddressesResponse() (response *ReleaseAddressesResponse) {
 //  INVALIDPARAMETERVALUE_ADDRESSNOTEIP = "InvalidParameterValue.AddressNotEIP"
 //  INVALIDPARAMETERVALUE_ADDRESSNOTFOUND = "InvalidParameterValue.AddressNotFound"
 //  LIMITEXCEEDED_ACCOUNTRETURNQUOTA = "LimitExceeded.AccountReturnQuota"
+//  OPERATIONDENIED_MUTEXTASKRUNNING = "OperationDenied.MutexTaskRunning"
 //  UNSUPPORTEDOPERATION_ADDRESSSTATUSNOTPERMIT = "UnsupportedOperation.AddressStatusNotPermit"
 func (c *Client) ReleaseAddresses(request *ReleaseAddressesRequest) (response *ReleaseAddressesResponse, err error) {
     return c.ReleaseAddressesWithContext(context.Background(), request)
@@ -16154,6 +16165,7 @@ func (c *Client) ReleaseAddresses(request *ReleaseAddressesRequest) (response *R
 //  INVALIDPARAMETERVALUE_ADDRESSNOTEIP = "InvalidParameterValue.AddressNotEIP"
 //  INVALIDPARAMETERVALUE_ADDRESSNOTFOUND = "InvalidParameterValue.AddressNotFound"
 //  LIMITEXCEEDED_ACCOUNTRETURNQUOTA = "LimitExceeded.AccountReturnQuota"
+//  OPERATIONDENIED_MUTEXTASKRUNNING = "OperationDenied.MutexTaskRunning"
 //  UNSUPPORTEDOPERATION_ADDRESSSTATUSNOTPERMIT = "UnsupportedOperation.AddressStatusNotPermit"
 func (c *Client) ReleaseAddressesWithContext(ctx context.Context, request *ReleaseAddressesRequest) (response *ReleaseAddressesResponse, err error) {
     if request == nil {

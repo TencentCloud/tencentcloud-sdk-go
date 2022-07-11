@@ -240,6 +240,7 @@ func NewAssumeRoleWithWebIdentityResponse() (response *AssumeRoleWithWebIdentity
 // 申请OIDC角色临时密钥
 //
 // 可能返回的错误码:
+//  INTERNALERROR_GETROLEERROR = "InternalError.GetRoleError"
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
@@ -253,6 +254,7 @@ func (c *Client) AssumeRoleWithWebIdentity(request *AssumeRoleWithWebIdentityReq
 // 申请OIDC角色临时密钥
 //
 // 可能返回的错误码:
+//  INTERNALERROR_GETROLEERROR = "InternalError.GetRoleError"
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"

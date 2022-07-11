@@ -1784,6 +1784,84 @@ func (r *CreateL7RuleCertsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateNewL7RulesRequestParams struct {
+	// 规则列表
+	Rules []*L7RuleEntry `json:"Rules,omitempty" name:"Rules"`
+
+	// 大禹子产品代号（bgpip表示高防IP）
+	Business *string `json:"Business,omitempty" name:"Business"`
+
+	// 资源ID列表
+	IdList []*string `json:"IdList,omitempty" name:"IdList"`
+
+	// 资源IP列表
+	VipList []*string `json:"VipList,omitempty" name:"VipList"`
+}
+
+type CreateNewL7RulesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 规则列表
+	Rules []*L7RuleEntry `json:"Rules,omitempty" name:"Rules"`
+
+	// 大禹子产品代号（bgpip表示高防IP）
+	Business *string `json:"Business,omitempty" name:"Business"`
+
+	// 资源ID列表
+	IdList []*string `json:"IdList,omitempty" name:"IdList"`
+
+	// 资源IP列表
+	VipList []*string `json:"VipList,omitempty" name:"VipList"`
+}
+
+func (r *CreateNewL7RulesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateNewL7RulesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Rules")
+	delete(f, "Business")
+	delete(f, "IdList")
+	delete(f, "VipList")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateNewL7RulesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateNewL7RulesResponseParams struct {
+	// 成功码
+	Success *SuccessCode `json:"Success,omitempty" name:"Success"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateNewL7RulesResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateNewL7RulesResponseParams `json:"Response"`
+}
+
+func (r *CreateNewL7RulesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateNewL7RulesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreatePacketFilterConfigRequestParams struct {
 	// 资源实例ID
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`

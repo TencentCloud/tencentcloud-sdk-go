@@ -7787,6 +7787,10 @@ type DescribePushBandwidthAndFluxListRequestParams struct {
 	// Middle East 中东
 	// Africa 非洲。
 	RegionNames []*string `json:"RegionNames,omitempty" name:"RegionNames"`
+
+	// 国家，映射表参照如下文档：
+	// https://cloud.tencent.com/document/product/267/34019。
+	CountryNames []*string `json:"CountryNames,omitempty" name:"CountryNames"`
 }
 
 type DescribePushBandwidthAndFluxListRequest struct {
@@ -7825,6 +7829,10 @@ type DescribePushBandwidthAndFluxListRequest struct {
 	// Middle East 中东
 	// Africa 非洲。
 	RegionNames []*string `json:"RegionNames,omitempty" name:"RegionNames"`
+
+	// 国家，映射表参照如下文档：
+	// https://cloud.tencent.com/document/product/267/34019。
+	CountryNames []*string `json:"CountryNames,omitempty" name:"CountryNames"`
 }
 
 func (r *DescribePushBandwidthAndFluxListRequest) ToJsonString() string {
@@ -7845,6 +7853,7 @@ func (r *DescribePushBandwidthAndFluxListRequest) FromJsonString(s string) error
 	delete(f, "MainlandOrOversea")
 	delete(f, "Granularity")
 	delete(f, "RegionNames")
+	delete(f, "CountryNames")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePushBandwidthAndFluxListRequest has unknown keys!", "")
 	}

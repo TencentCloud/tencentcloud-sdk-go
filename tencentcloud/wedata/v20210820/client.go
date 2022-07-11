@@ -67,6 +67,7 @@ func NewDescribeProjectResponse() (response *DescribeProjectResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER_WORKSPACENOTEXIST = "InvalidParameter.WorkspaceNotExist"
 func (c *Client) DescribeProject(request *DescribeProjectRequest) (response *DescribeProjectResponse, err error) {
     return c.DescribeProjectWithContext(context.Background(), request)
 }
@@ -76,6 +77,7 @@ func (c *Client) DescribeProject(request *DescribeProjectRequest) (response *Des
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER_WORKSPACENOTEXIST = "InvalidParameter.WorkspaceNotExist"
 func (c *Client) DescribeProjectWithContext(ctx context.Context, request *DescribeProjectRequest) (response *DescribeProjectResponse, err error) {
     if request == nil {
         request = NewDescribeProjectRequest()
@@ -114,6 +116,7 @@ func NewDescribeRelatedInstancesResponse() (response *DescribeRelatedInstancesRe
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER_WORKSPACENOTEXIST = "InvalidParameter.WorkspaceNotExist"
 func (c *Client) DescribeRelatedInstances(request *DescribeRelatedInstancesRequest) (response *DescribeRelatedInstancesResponse, err error) {
     return c.DescribeRelatedInstancesWithContext(context.Background(), request)
 }
@@ -123,6 +126,7 @@ func (c *Client) DescribeRelatedInstances(request *DescribeRelatedInstancesReque
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER_WORKSPACENOTEXIST = "InvalidParameter.WorkspaceNotExist"
 func (c *Client) DescribeRelatedInstancesWithContext(ctx context.Context, request *DescribeRelatedInstancesRequest) (response *DescribeRelatedInstancesResponse, err error) {
     if request == nil {
         request = NewDescribeRelatedInstancesRequest()
@@ -161,6 +165,7 @@ func NewDescribeTaskInstancesResponse() (response *DescribeTaskInstancesResponse
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER_WORKSPACENOTEXIST = "InvalidParameter.WorkspaceNotExist"
 func (c *Client) DescribeTaskInstances(request *DescribeTaskInstancesRequest) (response *DescribeTaskInstancesResponse, err error) {
     return c.DescribeTaskInstancesWithContext(context.Background(), request)
 }
@@ -170,6 +175,7 @@ func (c *Client) DescribeTaskInstances(request *DescribeTaskInstancesRequest) (r
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER_WORKSPACENOTEXIST = "InvalidParameter.WorkspaceNotExist"
 func (c *Client) DescribeTaskInstancesWithContext(ctx context.Context, request *DescribeTaskInstancesRequest) (response *DescribeTaskInstancesResponse, err error) {
     if request == nil {
         request = NewDescribeTaskInstancesRequest()

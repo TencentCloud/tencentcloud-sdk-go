@@ -622,6 +622,7 @@ func NewCreateZoneResponse() (response *CreateZoneResponse) {
 //  OPERATIONDENIED = "OperationDenied"
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCEINUSE_OTHERS = "ResourceInUse.Others"
+//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
 func (c *Client) CreateZone(request *CreateZoneRequest) (response *CreateZoneResponse, err error) {
     return c.CreateZoneWithContext(context.Background(), request)
 }
@@ -634,6 +635,7 @@ func (c *Client) CreateZone(request *CreateZoneRequest) (response *CreateZoneRes
 //  OPERATIONDENIED = "OperationDenied"
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCEINUSE_OTHERS = "ResourceInUse.Others"
+//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
 func (c *Client) CreateZoneWithContext(ctx context.Context, request *CreateZoneRequest) (response *CreateZoneResponse, err error) {
     if request == nil {
         request = NewCreateZoneRequest()
@@ -675,6 +677,7 @@ func NewDeleteApplicationProxyResponse() (response *DeleteApplicationProxyRespon
 //  OPERATIONDENIED = "OperationDenied"
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCEINUSE_OTHERS = "ResourceInUse.Others"
+//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
 func (c *Client) DeleteApplicationProxy(request *DeleteApplicationProxyRequest) (response *DeleteApplicationProxyResponse, err error) {
     return c.DeleteApplicationProxyWithContext(context.Background(), request)
 }
@@ -687,6 +690,7 @@ func (c *Client) DeleteApplicationProxy(request *DeleteApplicationProxyRequest) 
 //  OPERATIONDENIED = "OperationDenied"
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCEINUSE_OTHERS = "ResourceInUse.Others"
+//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
 func (c *Client) DeleteApplicationProxyWithContext(ctx context.Context, request *DeleteApplicationProxyRequest) (response *DeleteApplicationProxyResponse, err error) {
     if request == nil {
         request = NewDeleteApplicationProxyRequest()
@@ -728,6 +732,7 @@ func NewDeleteApplicationProxyRuleResponse() (response *DeleteApplicationProxyRu
 //  OPERATIONDENIED = "OperationDenied"
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCEINUSE_OTHERS = "ResourceInUse.Others"
+//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
 func (c *Client) DeleteApplicationProxyRule(request *DeleteApplicationProxyRuleRequest) (response *DeleteApplicationProxyRuleResponse, err error) {
     return c.DeleteApplicationProxyRuleWithContext(context.Background(), request)
 }
@@ -740,6 +745,7 @@ func (c *Client) DeleteApplicationProxyRule(request *DeleteApplicationProxyRuleR
 //  OPERATIONDENIED = "OperationDenied"
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCEINUSE_OTHERS = "ResourceInUse.Others"
+//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
 func (c *Client) DeleteApplicationProxyRuleWithContext(ctx context.Context, request *DeleteApplicationProxyRuleRequest) (response *DeleteApplicationProxyRuleResponse, err error) {
     if request == nil {
         request = NewDeleteApplicationProxyRuleRequest()
@@ -1030,6 +1036,7 @@ func NewDescribeApplicationProxyDetailResponse() (response *DescribeApplicationP
 // 获取应用代理详细信息
 //
 // 可能返回的错误码:
+//  INTERNALERROR_PROXYSERVER = "InternalError.ProxyServer"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeApplicationProxyDetail(request *DescribeApplicationProxyDetailRequest) (response *DescribeApplicationProxyDetailResponse, err error) {
     return c.DescribeApplicationProxyDetailWithContext(context.Background(), request)
@@ -1039,6 +1046,7 @@ func (c *Client) DescribeApplicationProxyDetail(request *DescribeApplicationProx
 // 获取应用代理详细信息
 //
 // 可能返回的错误码:
+//  INTERNALERROR_PROXYSERVER = "InternalError.ProxyServer"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeApplicationProxyDetailWithContext(ctx context.Context, request *DescribeApplicationProxyDetailRequest) (response *DescribeApplicationProxyDetailResponse, err error) {
     if request == nil {
@@ -1077,6 +1085,7 @@ func NewDescribeBotLogResponse() (response *DescribeBotLogResponse) {
 // 查询Bot攻击日志
 //
 // 可能返回的错误码:
+//  INTERNALERROR_PROXYSERVER = "InternalError.ProxyServer"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeBotLog(request *DescribeBotLogRequest) (response *DescribeBotLogResponse, err error) {
     return c.DescribeBotLogWithContext(context.Background(), request)
@@ -1086,6 +1095,7 @@ func (c *Client) DescribeBotLog(request *DescribeBotLogRequest) (response *Descr
 // 查询Bot攻击日志
 //
 // 可能返回的错误码:
+//  INTERNALERROR_PROXYSERVER = "InternalError.ProxyServer"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeBotLogWithContext(ctx context.Context, request *DescribeBotLogRequest) (response *DescribeBotLogResponse, err error) {
     if request == nil {
@@ -3194,6 +3204,7 @@ func NewDescribeZoneSettingResponse() (response *DescribeZoneSettingResponse) {
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_SETTINGINVALIDPARAM = "InvalidParameter.SettingInvalidParam"
+//  INVALIDPARAMETER_ZONENOTFOUND = "InvalidParameter.ZoneNotFound"
 //  OPERATIONDENIED = "OperationDenied"
 //  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
 func (c *Client) DescribeZoneSetting(request *DescribeZoneSettingRequest) (response *DescribeZoneSettingResponse, err error) {
@@ -3205,6 +3216,7 @@ func (c *Client) DescribeZoneSetting(request *DescribeZoneSettingRequest) (respo
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_SETTINGINVALIDPARAM = "InvalidParameter.SettingInvalidParam"
+//  INVALIDPARAMETER_ZONENOTFOUND = "InvalidParameter.ZoneNotFound"
 //  OPERATIONDENIED = "OperationDenied"
 //  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
 func (c *Client) DescribeZoneSettingWithContext(ctx context.Context, request *DescribeZoneSettingRequest) (response *DescribeZoneSettingResponse, err error) {
@@ -3930,12 +3942,7 @@ func NewModifyLoadBalancingResponse() (response *ModifyLoadBalancingResponse) {
 // 修改负载均衡
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_CERTIFICATENOTFOUND = "FailedOperation.CertificateNotFound"
-//  INTERNALERROR_GETROLEERROR = "InternalError.GetRoleError"
-//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
-//  INVALIDPARAMETER_INVALIDCERTINFO = "InvalidParameter.InvalidCertInfo"
 //  OPERATIONDENIED = "OperationDenied"
-//  RESOURCEUNAVAILABLE_HOSTNOTFOUND = "ResourceUnavailable.HostNotFound"
 func (c *Client) ModifyLoadBalancing(request *ModifyLoadBalancingRequest) (response *ModifyLoadBalancingResponse, err error) {
     return c.ModifyLoadBalancingWithContext(context.Background(), request)
 }
@@ -3944,12 +3951,7 @@ func (c *Client) ModifyLoadBalancing(request *ModifyLoadBalancingRequest) (respo
 // 修改负载均衡
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_CERTIFICATENOTFOUND = "FailedOperation.CertificateNotFound"
-//  INTERNALERROR_GETROLEERROR = "InternalError.GetRoleError"
-//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
-//  INVALIDPARAMETER_INVALIDCERTINFO = "InvalidParameter.InvalidCertInfo"
 //  OPERATIONDENIED = "OperationDenied"
-//  RESOURCEUNAVAILABLE_HOSTNOTFOUND = "ResourceUnavailable.HostNotFound"
 func (c *Client) ModifyLoadBalancingWithContext(ctx context.Context, request *ModifyLoadBalancingRequest) (response *ModifyLoadBalancingResponse, err error) {
     if request == nil {
         request = NewModifyLoadBalancingRequest()
@@ -4081,6 +4083,8 @@ func NewModifySecurityPolicyResponse() (response *ModifySecurityPolicyResponse) 
 // 修改Web&Bot安全配置
 //
 // 可能返回的错误码:
+//  INTERNALERROR_ROUTEERROR = "InternalError.RouteError"
+//  OPERATIONDENIED = "OperationDenied"
 //  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
 func (c *Client) ModifySecurityPolicy(request *ModifySecurityPolicyRequest) (response *ModifySecurityPolicyResponse, err error) {
     return c.ModifySecurityPolicyWithContext(context.Background(), request)
@@ -4090,6 +4094,8 @@ func (c *Client) ModifySecurityPolicy(request *ModifySecurityPolicyRequest) (res
 // 修改Web&Bot安全配置
 //
 // 可能返回的错误码:
+//  INTERNALERROR_ROUTEERROR = "InternalError.RouteError"
+//  OPERATIONDENIED = "OperationDenied"
 //  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
 func (c *Client) ModifySecurityPolicyWithContext(ctx context.Context, request *ModifySecurityPolicyRequest) (response *ModifySecurityPolicyResponse, err error) {
     if request == nil {

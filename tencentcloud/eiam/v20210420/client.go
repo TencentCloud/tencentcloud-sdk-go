@@ -1467,6 +1467,7 @@ func NewListApplicationAuthorizationsResponse() (response *ListApplicationAuthor
 //  INVALIDPARAMETERVALUE_APPIDCANNOTBEEMPTY = "InvalidParameterValue.AppIdCanNotBeEmpty"
 //  INVALIDPARAMETERVALUE_ENTITYTYPENOTMATCH = "InvalidParameterValue.EntityTypeNotMatch"
 //  INVALIDPARAMETERVALUE_PARAMETERILLEGAL = "InvalidParameterValue.ParameterIllegal"
+//  OPERATIONDENIED_ACTIONPERMISSIONDENY = "OperationDenied.ActionPermissionDeny"
 func (c *Client) ListApplicationAuthorizations(request *ListApplicationAuthorizationsRequest) (response *ListApplicationAuthorizationsResponse, err error) {
     return c.ListApplicationAuthorizationsWithContext(context.Background(), request)
 }
@@ -1481,6 +1482,7 @@ func (c *Client) ListApplicationAuthorizations(request *ListApplicationAuthoriza
 //  INVALIDPARAMETERVALUE_APPIDCANNOTBEEMPTY = "InvalidParameterValue.AppIdCanNotBeEmpty"
 //  INVALIDPARAMETERVALUE_ENTITYTYPENOTMATCH = "InvalidParameterValue.EntityTypeNotMatch"
 //  INVALIDPARAMETERVALUE_PARAMETERILLEGAL = "InvalidParameterValue.ParameterIllegal"
+//  OPERATIONDENIED_ACTIONPERMISSIONDENY = "OperationDenied.ActionPermissionDeny"
 func (c *Client) ListApplicationAuthorizationsWithContext(ctx context.Context, request *ListApplicationAuthorizationsRequest) (response *ListApplicationAuthorizationsResponse, err error) {
     if request == nil {
         request = NewListApplicationAuthorizationsRequest()

@@ -89,6 +89,9 @@ const (
 	// 导出目标不合法。
 	INVALIDPARAMETERVALUE_EXPORTDESTINATION = "InvalidParameterValue.ExportDestination"
 
+	// 拓展信息不合法。
+	INVALIDPARAMETERVALUE_EXTINFOINVALID = "InvalidParameterValue.ExtInfoInvalid"
+
 	// 原始媒资信息不存在。
 	INVALIDPARAMETERVALUE_EXTERNALMEDIAINFONOTEXIST = "InvalidParameterValue.ExternalMediaInfoNotExist"
 

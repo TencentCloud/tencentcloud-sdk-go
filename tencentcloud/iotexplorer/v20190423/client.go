@@ -4354,6 +4354,7 @@ func NewModifyLoRaGatewayResponse() (response *ModifyLoRaGatewayResponse) {
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DBOPERTAIONERROR = "InternalError.DBOpertaionError"
+//  INTERNALERROR_INTERNALLORASERVERERROR = "InternalError.InternalLoRaServerError"
 //  INTERNALERROR_INTERNALRPCERROR = "InternalError.InternalRPCError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -4368,6 +4369,7 @@ func (c *Client) ModifyLoRaGateway(request *ModifyLoRaGatewayRequest) (response 
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DBOPERTAIONERROR = "InternalError.DBOpertaionError"
+//  INTERNALERROR_INTERNALLORASERVERERROR = "InternalError.InternalLoRaServerError"
 //  INTERNALERROR_INTERNALRPCERROR = "InternalError.InternalRPCError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"

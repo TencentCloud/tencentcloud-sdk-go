@@ -756,6 +756,9 @@ type CreateKeyPairRequestParams struct {
 	// <li>通过项目列表查询项目ID。
 	// <li>通过调用接口DescribeProject，取返回信息中的`projectId `获取项目ID。
 	ProjectId *int64 `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 标签描述列表。通过指定该参数可以同时绑定标签到密钥对。
+	TagSpecification []*TagSpecification `json:"TagSpecification,omitempty" name:"TagSpecification"`
 }
 
 type CreateKeyPairRequest struct {
@@ -769,6 +772,9 @@ type CreateKeyPairRequest struct {
 	// <li>通过项目列表查询项目ID。
 	// <li>通过调用接口DescribeProject，取返回信息中的`projectId `获取项目ID。
 	ProjectId *int64 `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 标签描述列表。通过指定该参数可以同时绑定标签到密钥对。
+	TagSpecification []*TagSpecification `json:"TagSpecification,omitempty" name:"TagSpecification"`
 }
 
 func (r *CreateKeyPairRequest) ToJsonString() string {
@@ -785,6 +791,7 @@ func (r *CreateKeyPairRequest) FromJsonString(s string) error {
 	}
 	delete(f, "KeyName")
 	delete(f, "ProjectId")
+	delete(f, "TagSpecification")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateKeyPairRequest has unknown keys!", "")
 	}
@@ -4409,6 +4416,9 @@ type ImportKeyPairRequestParams struct {
 
 	// 密钥对的公钥内容，`OpenSSH RSA` 格式。
 	PublicKey *string `json:"PublicKey,omitempty" name:"PublicKey"`
+
+	// 标签描述列表。通过指定该参数可以同时绑定标签到密钥对。
+	TagSpecification []*TagSpecification `json:"TagSpecification,omitempty" name:"TagSpecification"`
 }
 
 type ImportKeyPairRequest struct {
@@ -4424,6 +4434,9 @@ type ImportKeyPairRequest struct {
 
 	// 密钥对的公钥内容，`OpenSSH RSA` 格式。
 	PublicKey *string `json:"PublicKey,omitempty" name:"PublicKey"`
+
+	// 标签描述列表。通过指定该参数可以同时绑定标签到密钥对。
+	TagSpecification []*TagSpecification `json:"TagSpecification,omitempty" name:"TagSpecification"`
 }
 
 func (r *ImportKeyPairRequest) ToJsonString() string {
@@ -4441,6 +4454,7 @@ func (r *ImportKeyPairRequest) FromJsonString(s string) error {
 	delete(f, "KeyName")
 	delete(f, "ProjectId")
 	delete(f, "PublicKey")
+	delete(f, "TagSpecification")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ImportKeyPairRequest has unknown keys!", "")
 	}

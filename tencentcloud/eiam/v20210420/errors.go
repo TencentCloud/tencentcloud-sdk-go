@@ -244,4 +244,7 @@ const (
 
 	// 用户的次要机构超出数量上限。
 	LIMITEXCEEDED_SECONDARYNODECOUNTLIMITEXCEEDED = "LimitExceeded.SecondaryNodeCountLimitExceeded"
+
+	// 当前用户缺乏访问该操作的权限。
+	OPERATIONDENIED_ACTIONPERMISSIONDENY = "OperationDenied.ActionPermissionDeny"
 )

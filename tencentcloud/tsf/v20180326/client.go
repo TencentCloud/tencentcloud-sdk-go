@@ -9696,6 +9696,7 @@ func NewOperateApplicationTcrBindingResponse() (response *OperateApplicationTcrB
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_UNHANDLEDEXCEPTION = "FailedOperation.UnhandledException"
+//  INTERNALERROR_CLOUDAPIPROXYERROR = "InternalError.CloudApiProxyError"
 //  INTERNALERROR_IMAGEREPOTCRBINDERROR = "InternalError.ImagerepoTcrBindError"
 //  INVALIDPARAMETER_IMAGEREPOTCRNAMESPACENOTFOUND = "InvalidParameter.ImagerepoTcrNamespaceNotFound"
 func (c *Client) OperateApplicationTcrBinding(request *OperateApplicationTcrBindingRequest) (response *OperateApplicationTcrBindingResponse, err error) {
@@ -9707,6 +9708,7 @@ func (c *Client) OperateApplicationTcrBinding(request *OperateApplicationTcrBind
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_UNHANDLEDEXCEPTION = "FailedOperation.UnhandledException"
+//  INTERNALERROR_CLOUDAPIPROXYERROR = "InternalError.CloudApiProxyError"
 //  INTERNALERROR_IMAGEREPOTCRBINDERROR = "InternalError.ImagerepoTcrBindError"
 //  INVALIDPARAMETER_IMAGEREPOTCRNAMESPACENOTFOUND = "InvalidParameter.ImagerepoTcrNamespaceNotFound"
 func (c *Client) OperateApplicationTcrBindingWithContext(ctx context.Context, request *OperateApplicationTcrBindingRequest) (response *OperateApplicationTcrBindingResponse, err error) {
@@ -9747,6 +9749,7 @@ func NewReassociateBusinessLogConfigResponse() (response *ReassociateBusinessLog
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_UNHANDLEDEXCEPTION = "FailedOperation.UnhandledException"
+//  INTERNALERROR_CLOUDAPIPROXYERROR = "InternalError.CloudApiProxyError"
 //  INTERNALERROR_IMAGEREPOTCRBINDERROR = "InternalError.ImagerepoTcrBindError"
 //  INVALIDPARAMETER_IMAGEREPOTCRNAMESPACENOTFOUND = "InvalidParameter.ImagerepoTcrNamespaceNotFound"
 func (c *Client) ReassociateBusinessLogConfig(request *ReassociateBusinessLogConfigRequest) (response *ReassociateBusinessLogConfigResponse, err error) {
@@ -9758,6 +9761,7 @@ func (c *Client) ReassociateBusinessLogConfig(request *ReassociateBusinessLogCon
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_UNHANDLEDEXCEPTION = "FailedOperation.UnhandledException"
+//  INTERNALERROR_CLOUDAPIPROXYERROR = "InternalError.CloudApiProxyError"
 //  INTERNALERROR_IMAGEREPOTCRBINDERROR = "InternalError.ImagerepoTcrBindError"
 //  INVALIDPARAMETER_IMAGEREPOTCRNAMESPACENOTFOUND = "InvalidParameter.ImagerepoTcrNamespaceNotFound"
 func (c *Client) ReassociateBusinessLogConfigWithContext(ctx context.Context, request *ReassociateBusinessLogConfigRequest) (response *ReassociateBusinessLogConfigResponse, err error) {

@@ -883,6 +883,7 @@ func NewDeleteCdnDomainResponse() (response *DeleteCdnDomainResponse) {
 //  INTERNALERROR_CDNCONFIGERROR = "InternalError.CdnConfigError"
 //  INTERNALERROR_CDNDBERROR = "InternalError.CdnDbError"
 //  INTERNALERROR_CDNSYSTEMERROR = "InternalError.CdnSystemError"
+//  INTERNALERROR_TAGSYSTEMERROR = "InternalError.TagSystemError"
 //  INVALIDPARAMETER_CDNSTATUSINVALIDDOMAIN = "InvalidParameter.CDNStatusInvalidDomain"
 //  INVALIDPARAMETER_CDNHOSTHASSPECIALCONFIG = "InvalidParameter.CdnHostHasSpecialConfig"
 //  INVALIDPARAMETER_CDNPARAMERROR = "InvalidParameter.CdnParamError"
@@ -910,6 +911,7 @@ func (c *Client) DeleteCdnDomain(request *DeleteCdnDomainRequest) (response *Del
 //  INTERNALERROR_CDNCONFIGERROR = "InternalError.CdnConfigError"
 //  INTERNALERROR_CDNDBERROR = "InternalError.CdnDbError"
 //  INTERNALERROR_CDNSYSTEMERROR = "InternalError.CdnSystemError"
+//  INTERNALERROR_TAGSYSTEMERROR = "InternalError.TagSystemError"
 //  INVALIDPARAMETER_CDNSTATUSINVALIDDOMAIN = "InvalidParameter.CDNStatusInvalidDomain"
 //  INVALIDPARAMETER_CDNHOSTHASSPECIALCONFIG = "InvalidParameter.CdnHostHasSpecialConfig"
 //  INVALIDPARAMETER_CDNPARAMERROR = "InvalidParameter.CdnParamError"
@@ -3420,6 +3422,7 @@ func NewDescribeTopDataResponse() (response *DescribeTopDataResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CDNCONFIGERROR = "FailedOperation.CdnConfigError"
+//  INTERNALERROR_CAMSYSTEMERROR = "InternalError.CamSystemError"
 //  INTERNALERROR_CDNCONFIGERROR = "InternalError.CdnConfigError"
 //  INTERNALERROR_CDNDBERROR = "InternalError.CdnDbError"
 //  INTERNALERROR_CDNQUERYPARAMERROR = "InternalError.CdnQueryParamError"
@@ -3476,6 +3479,7 @@ func (c *Client) DescribeTopData(request *DescribeTopDataRequest) (response *Des
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CDNCONFIGERROR = "FailedOperation.CdnConfigError"
+//  INTERNALERROR_CAMSYSTEMERROR = "InternalError.CamSystemError"
 //  INTERNALERROR_CDNCONFIGERROR = "InternalError.CdnConfigError"
 //  INTERNALERROR_CDNDBERROR = "InternalError.CdnDbError"
 //  INTERNALERROR_CDNQUERYPARAMERROR = "InternalError.CdnQueryParamError"

@@ -23,6 +23,9 @@ const (
 	// 操作失败。
 	FAILEDOPERATION = "FailedOperation"
 
+	// 用户鉴权错误。
+	FAILEDOPERATION_AUTHENTICATEUSERFAILED = "FailedOperation.AuthenticateUserFailed"
+
 	// 投递目标创建失败，请检查函数状态。
 	FAILEDOPERATION_CREATETRIGGER = "FailedOperation.CreateTrigger"
 
@@ -31,6 +34,9 @@ const (
 
 	// 规则删除失败，请检查资源信息，确认是资源否存在或状态正常。
 	FAILEDOPERATION_DELETERULE = "FailedOperation.DeleteRule"
+
+	// ES集群操作失败。
+	FAILEDOPERATION_ESREQUESTFAILED = "FailedOperation.ESRequestFailed"
 
 	// 规则与事件不匹配，请修正后再试。
 	FAILEDOPERATION_ERRORFILTER = "FailedOperation.ErrorFilter"
@@ -100,6 +106,9 @@ const (
 
 	// Description取值与规范不符，请修正后再试。
 	INVALIDPARAMETERVALUE_DESCRIPTION = "InvalidParameterValue.Description"
+
+	// ES目标参数错误。
+	INVALIDPARAMETERVALUE_ELASTICSEARCHTARGETPARAMS = "InvalidParameterValue.ElasticSearchTargetParams"
 
 	// EventBusId取值与规范不符，请修正后再试。
 	INVALIDPARAMETERVALUE_EVENTBUSID = "InvalidParameterValue.EventBusId"
@@ -256,6 +265,9 @@ const (
 
 	// 投递目标创建失败，未找到指定的命名空间，请创建后再试。
 	RESOURCENOTFOUND_NAMESPACE = "ResourceNotFound.Namespace"
+
+	// 未找到privatelink记录。
+	RESOURCENOTFOUND_PRIVATELINKRESOURCE = "ResourceNotFound.PrivateLinkResource"
 
 	// 未找到指定的服务角色，请创建后再试。
 	RESOURCENOTFOUND_ROLE = "ResourceNotFound.Role"

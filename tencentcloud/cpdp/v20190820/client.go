@@ -105,12 +105,18 @@ func NewAddFlexIdInfoResponse() (response *AddFlexIdInfoResponse) {
 
 // AddFlexIdInfo
 // 灵云V2-补充证件信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
 func (c *Client) AddFlexIdInfo(request *AddFlexIdInfoRequest) (response *AddFlexIdInfoResponse, err error) {
     return c.AddFlexIdInfoWithContext(context.Background(), request)
 }
 
 // AddFlexIdInfo
 // 灵云V2-补充证件信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
 func (c *Client) AddFlexIdInfoWithContext(ctx context.Context, request *AddFlexIdInfoRequest) (response *AddFlexIdInfoResponse, err error) {
     if request == nil {
         request = NewAddFlexIdInfoRequest()
@@ -146,12 +152,18 @@ func NewAddFlexPhoneNoResponse() (response *AddFlexPhoneNoResponse) {
 
 // AddFlexPhoneNo
 // 灵云V2-补充手机号信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
 func (c *Client) AddFlexPhoneNo(request *AddFlexPhoneNoRequest) (response *AddFlexPhoneNoResponse, err error) {
     return c.AddFlexPhoneNoWithContext(context.Background(), request)
 }
 
 // AddFlexPhoneNo
 // 灵云V2-补充手机号信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
 func (c *Client) AddFlexPhoneNoWithContext(ctx context.Context, request *AddFlexPhoneNoRequest) (response *AddFlexPhoneNoResponse, err error) {
     if request == nil {
         request = NewAddFlexPhoneNoRequest()
@@ -187,12 +199,18 @@ func NewAddMerchantResponse() (response *AddMerchantResponse) {
 
 // AddMerchant
 // 云支付-添加商户接口
+//
+// 可能返回的错误码:
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
 func (c *Client) AddMerchant(request *AddMerchantRequest) (response *AddMerchantResponse, err error) {
     return c.AddMerchantWithContext(context.Background(), request)
 }
 
 // AddMerchant
 // 云支付-添加商户接口
+//
+// 可能返回的错误码:
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
 func (c *Client) AddMerchantWithContext(ctx context.Context, request *AddMerchantRequest) (response *AddMerchantResponse, err error) {
     if request == nil {
         request = NewAddMerchantRequest()
@@ -228,12 +246,18 @@ func NewAddShopResponse() (response *AddShopResponse) {
 
 // AddShop
 // 云支付-添加门店接口
+//
+// 可能返回的错误码:
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
 func (c *Client) AddShop(request *AddShopRequest) (response *AddShopResponse, err error) {
     return c.AddShopWithContext(context.Background(), request)
 }
 
 // AddShop
 // 云支付-添加门店接口
+//
+// 可能返回的错误码:
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
 func (c *Client) AddShopWithContext(ctx context.Context, request *AddShopRequest) (response *AddShopResponse, err error) {
     if request == nil {
         request = NewAddShopRequest()
@@ -2139,16 +2163,7 @@ func NewCreateFlexPayeeResponse() (response *CreateFlexPayeeResponse) {
 // 灵云V2-收款用户开立
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_BACKENDERROR = "FailedOperation.BackendError"
-//  FAILEDOPERATION_SDKERROR = "FailedOperation.SDKError"
-//  INTERNALERROR_BACKENDERROR = "InternalError.BackendError"
-//  INTERNALERROR_DBACCESSERROR = "InternalError.DBAccessError"
-//  INTERNALERROR_FUNDSUMMARYACCTNOINCONSISTENTERROR = "InternalError.FundSummaryAcctNoInconsistentError"
-//  INTERNALERROR_PARAMETERERROR = "InternalError.ParameterError"
-//  INTERNALERROR_SAVEDBERROR = "InternalError.SaveDBError"
-//  INTERNALERROR_SUBACCOUNTNOTFOUNDERROR = "InternalError.SubAccountNotFoundError"
 //  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
-//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
 func (c *Client) CreateFlexPayee(request *CreateFlexPayeeRequest) (response *CreateFlexPayeeResponse, err error) {
     return c.CreateFlexPayeeWithContext(context.Background(), request)
 }
@@ -2157,16 +2172,7 @@ func (c *Client) CreateFlexPayee(request *CreateFlexPayeeRequest) (response *Cre
 // 灵云V2-收款用户开立
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_BACKENDERROR = "FailedOperation.BackendError"
-//  FAILEDOPERATION_SDKERROR = "FailedOperation.SDKError"
-//  INTERNALERROR_BACKENDERROR = "InternalError.BackendError"
-//  INTERNALERROR_DBACCESSERROR = "InternalError.DBAccessError"
-//  INTERNALERROR_FUNDSUMMARYACCTNOINCONSISTENTERROR = "InternalError.FundSummaryAcctNoInconsistentError"
-//  INTERNALERROR_PARAMETERERROR = "InternalError.ParameterError"
-//  INTERNALERROR_SAVEDBERROR = "InternalError.SaveDBError"
-//  INTERNALERROR_SUBACCOUNTNOTFOUNDERROR = "InternalError.SubAccountNotFoundError"
 //  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
-//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
 func (c *Client) CreateFlexPayeeWithContext(ctx context.Context, request *CreateFlexPayeeRequest) (response *CreateFlexPayeeResponse, err error) {
     if request == nil {
         request = NewCreateFlexPayeeRequest()
@@ -6477,6 +6483,7 @@ func NewQueryContractResponse() (response *QueryContractResponse) {
 // 可能返回的错误码:
 //  AUTHFAILURE_SECRETKEYNOTFOUND = "AuthFailure.SecretKeyNotFound"
 //  AUTHFAILURE_VERIFYERROR = "AuthFailure.VerifyError"
+//  AUTHFAILURE_VERIFYTOKENFAILURE = "AuthFailure.VerifyTokenFailure"
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_BACKCALLERROR = "FailedOperation.BackCallError"
 //  FAILEDOPERATION_CALLCHANNELGATEWAYERROR = "FailedOperation.CallChannelGatewayError"
@@ -6520,6 +6527,7 @@ func (c *Client) QueryContract(request *QueryContractRequest) (response *QueryCo
 // 可能返回的错误码:
 //  AUTHFAILURE_SECRETKEYNOTFOUND = "AuthFailure.SecretKeyNotFound"
 //  AUTHFAILURE_VERIFYERROR = "AuthFailure.VerifyError"
+//  AUTHFAILURE_VERIFYTOKENFAILURE = "AuthFailure.VerifyTokenFailure"
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_BACKCALLERROR = "FailedOperation.BackCallError"
 //  FAILEDOPERATION_CALLCHANNELGATEWAYERROR = "FailedOperation.CallChannelGatewayError"
@@ -6592,6 +6600,7 @@ func NewQueryContractPayFeeResponse() (response *QueryContractPayFeeResponse) {
 // 可能返回的错误码:
 //  AUTHFAILURE_SECRETKEYNOTFOUND = "AuthFailure.SecretKeyNotFound"
 //  AUTHFAILURE_VERIFYERROR = "AuthFailure.VerifyError"
+//  AUTHFAILURE_VERIFYTOKENFAILURE = "AuthFailure.VerifyTokenFailure"
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_BACKCALLERROR = "FailedOperation.BackCallError"
 //  FAILEDOPERATION_CALLCHANNELGATEWAYERROR = "FailedOperation.CallChannelGatewayError"
@@ -6635,6 +6644,7 @@ func (c *Client) QueryContractPayFee(request *QueryContractPayFeeRequest) (respo
 // 可能返回的错误码:
 //  AUTHFAILURE_SECRETKEYNOTFOUND = "AuthFailure.SecretKeyNotFound"
 //  AUTHFAILURE_VERIFYERROR = "AuthFailure.VerifyError"
+//  AUTHFAILURE_VERIFYTOKENFAILURE = "AuthFailure.VerifyTokenFailure"
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_BACKCALLERROR = "FailedOperation.BackCallError"
 //  FAILEDOPERATION_CALLCHANNELGATEWAYERROR = "FailedOperation.CallChannelGatewayError"
@@ -6707,6 +6717,7 @@ func NewQueryContractPayWayListResponse() (response *QueryContractPayWayListResp
 // 可能返回的错误码:
 //  AUTHFAILURE_SECRETKEYNOTFOUND = "AuthFailure.SecretKeyNotFound"
 //  AUTHFAILURE_VERIFYERROR = "AuthFailure.VerifyError"
+//  AUTHFAILURE_VERIFYTOKENFAILURE = "AuthFailure.VerifyTokenFailure"
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_BACKCALLERROR = "FailedOperation.BackCallError"
 //  FAILEDOPERATION_CALLCHANNELGATEWAYERROR = "FailedOperation.CallChannelGatewayError"
@@ -6750,6 +6761,7 @@ func (c *Client) QueryContractPayWayList(request *QueryContractPayWayListRequest
 // 可能返回的错误码:
 //  AUTHFAILURE_SECRETKEYNOTFOUND = "AuthFailure.SecretKeyNotFound"
 //  AUTHFAILURE_VERIFYERROR = "AuthFailure.VerifyError"
+//  AUTHFAILURE_VERIFYTOKENFAILURE = "AuthFailure.VerifyTokenFailure"
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_BACKCALLERROR = "FailedOperation.BackCallError"
 //  FAILEDOPERATION_CALLCHANNELGATEWAYERROR = "FailedOperation.CallChannelGatewayError"
@@ -6822,6 +6834,7 @@ func NewQueryContractRelateShopResponse() (response *QueryContractRelateShopResp
 // 可能返回的错误码:
 //  AUTHFAILURE_SECRETKEYNOTFOUND = "AuthFailure.SecretKeyNotFound"
 //  AUTHFAILURE_VERIFYERROR = "AuthFailure.VerifyError"
+//  AUTHFAILURE_VERIFYTOKENFAILURE = "AuthFailure.VerifyTokenFailure"
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_BACKCALLERROR = "FailedOperation.BackCallError"
 //  FAILEDOPERATION_CALLCHANNELGATEWAYERROR = "FailedOperation.CallChannelGatewayError"
@@ -6865,6 +6878,7 @@ func (c *Client) QueryContractRelateShop(request *QueryContractRelateShopRequest
 // 可能返回的错误码:
 //  AUTHFAILURE_SECRETKEYNOTFOUND = "AuthFailure.SecretKeyNotFound"
 //  AUTHFAILURE_VERIFYERROR = "AuthFailure.VerifyError"
+//  AUTHFAILURE_VERIFYTOKENFAILURE = "AuthFailure.VerifyTokenFailure"
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_BACKCALLERROR = "FailedOperation.BackCallError"
 //  FAILEDOPERATION_CALLCHANNELGATEWAYERROR = "FailedOperation.CallChannelGatewayError"
@@ -7308,9 +7322,7 @@ func NewQueryFlexOrderSummaryListResponse() (response *QueryFlexOrderSummaryList
 // 灵云V2-订单汇总列表查询
 //
 // 可能返回的错误码:
-//  INTERNALERROR_PARAMETERERROR = "InternalError.ParameterError"
-//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
-//  RESOURCENOTFOUND_MERCHANTINFONOTFOUND = "ResourceNotFound.MerchantInfoNotFound"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
 func (c *Client) QueryFlexOrderSummaryList(request *QueryFlexOrderSummaryListRequest) (response *QueryFlexOrderSummaryListResponse, err error) {
     return c.QueryFlexOrderSummaryListWithContext(context.Background(), request)
 }
@@ -7319,9 +7331,7 @@ func (c *Client) QueryFlexOrderSummaryList(request *QueryFlexOrderSummaryListReq
 // 灵云V2-订单汇总列表查询
 //
 // 可能返回的错误码:
-//  INTERNALERROR_PARAMETERERROR = "InternalError.ParameterError"
-//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
-//  RESOURCENOTFOUND_MERCHANTINFONOTFOUND = "ResourceNotFound.MerchantInfoNotFound"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
 func (c *Client) QueryFlexOrderSummaryListWithContext(ctx context.Context, request *QueryFlexOrderSummaryListRequest) (response *QueryFlexOrderSummaryListResponse, err error) {
     if request == nil {
         request = NewQueryFlexOrderSummaryListRequest()
@@ -7359,9 +7369,7 @@ func NewQueryFlexPayeeAccountBalanceResponse() (response *QueryFlexPayeeAccountB
 // 灵云V2-收款用户账户余额查询
 //
 // 可能返回的错误码:
-//  INTERNALERROR_PARAMETERERROR = "InternalError.ParameterError"
-//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
-//  RESOURCENOTFOUND_MERCHANTINFONOTFOUND = "ResourceNotFound.MerchantInfoNotFound"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
 func (c *Client) QueryFlexPayeeAccountBalance(request *QueryFlexPayeeAccountBalanceRequest) (response *QueryFlexPayeeAccountBalanceResponse, err error) {
     return c.QueryFlexPayeeAccountBalanceWithContext(context.Background(), request)
 }
@@ -7370,9 +7378,7 @@ func (c *Client) QueryFlexPayeeAccountBalance(request *QueryFlexPayeeAccountBala
 // 灵云V2-收款用户账户余额查询
 //
 // 可能返回的错误码:
-//  INTERNALERROR_PARAMETERERROR = "InternalError.ParameterError"
-//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
-//  RESOURCENOTFOUND_MERCHANTINFONOTFOUND = "ResourceNotFound.MerchantInfoNotFound"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
 func (c *Client) QueryFlexPayeeAccountBalanceWithContext(ctx context.Context, request *QueryFlexPayeeAccountBalanceRequest) (response *QueryFlexPayeeAccountBalanceResponse, err error) {
     if request == nil {
         request = NewQueryFlexPayeeAccountBalanceRequest()
@@ -7410,9 +7416,7 @@ func NewQueryFlexPayeeAccountInfoResponse() (response *QueryFlexPayeeAccountInfo
 // 灵云V2-收款用户账户信息查询
 //
 // 可能返回的错误码:
-//  INTERNALERROR_PARAMETERERROR = "InternalError.ParameterError"
-//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
-//  RESOURCENOTFOUND_MERCHANTINFONOTFOUND = "ResourceNotFound.MerchantInfoNotFound"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
 func (c *Client) QueryFlexPayeeAccountInfo(request *QueryFlexPayeeAccountInfoRequest) (response *QueryFlexPayeeAccountInfoResponse, err error) {
     return c.QueryFlexPayeeAccountInfoWithContext(context.Background(), request)
 }
@@ -7421,9 +7425,7 @@ func (c *Client) QueryFlexPayeeAccountInfo(request *QueryFlexPayeeAccountInfoReq
 // 灵云V2-收款用户账户信息查询
 //
 // 可能返回的错误码:
-//  INTERNALERROR_PARAMETERERROR = "InternalError.ParameterError"
-//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
-//  RESOURCENOTFOUND_MERCHANTINFONOTFOUND = "ResourceNotFound.MerchantInfoNotFound"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
 func (c *Client) QueryFlexPayeeAccountInfoWithContext(ctx context.Context, request *QueryFlexPayeeAccountInfoRequest) (response *QueryFlexPayeeAccountInfoResponse, err error) {
     if request == nil {
         request = NewQueryFlexPayeeAccountInfoRequest()
@@ -7461,9 +7463,7 @@ func NewQueryFlexPayeeAccountListResponse() (response *QueryFlexPayeeAccountList
 // 灵云V2-收款用户账户列表查询
 //
 // 可能返回的错误码:
-//  INTERNALERROR_PARAMETERERROR = "InternalError.ParameterError"
-//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
-//  RESOURCENOTFOUND_MERCHANTINFONOTFOUND = "ResourceNotFound.MerchantInfoNotFound"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
 func (c *Client) QueryFlexPayeeAccountList(request *QueryFlexPayeeAccountListRequest) (response *QueryFlexPayeeAccountListResponse, err error) {
     return c.QueryFlexPayeeAccountListWithContext(context.Background(), request)
 }
@@ -7472,9 +7472,7 @@ func (c *Client) QueryFlexPayeeAccountList(request *QueryFlexPayeeAccountListReq
 // 灵云V2-收款用户账户列表查询
 //
 // 可能返回的错误码:
-//  INTERNALERROR_PARAMETERERROR = "InternalError.ParameterError"
-//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
-//  RESOURCENOTFOUND_MERCHANTINFONOTFOUND = "ResourceNotFound.MerchantInfoNotFound"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
 func (c *Client) QueryFlexPayeeAccountListWithContext(ctx context.Context, request *QueryFlexPayeeAccountListRequest) (response *QueryFlexPayeeAccountListResponse, err error) {
     if request == nil {
         request = NewQueryFlexPayeeAccountListRequest()
@@ -7512,9 +7510,7 @@ func NewQueryFlexPayeeInfoResponse() (response *QueryFlexPayeeInfoResponse) {
 // 灵云V2-收款用户信息查询
 //
 // 可能返回的错误码:
-//  INTERNALERROR_PARAMETERERROR = "InternalError.ParameterError"
-//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
-//  RESOURCENOTFOUND_MERCHANTINFONOTFOUND = "ResourceNotFound.MerchantInfoNotFound"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
 func (c *Client) QueryFlexPayeeInfo(request *QueryFlexPayeeInfoRequest) (response *QueryFlexPayeeInfoResponse, err error) {
     return c.QueryFlexPayeeInfoWithContext(context.Background(), request)
 }
@@ -7523,9 +7519,7 @@ func (c *Client) QueryFlexPayeeInfo(request *QueryFlexPayeeInfoRequest) (respons
 // 灵云V2-收款用户信息查询
 //
 // 可能返回的错误码:
-//  INTERNALERROR_PARAMETERERROR = "InternalError.ParameterError"
-//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
-//  RESOURCENOTFOUND_MERCHANTINFONOTFOUND = "ResourceNotFound.MerchantInfoNotFound"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
 func (c *Client) QueryFlexPayeeInfoWithContext(ctx context.Context, request *QueryFlexPayeeInfoRequest) (response *QueryFlexPayeeInfoResponse, err error) {
     if request == nil {
         request = NewQueryFlexPayeeInfoRequest()
@@ -7563,9 +7557,7 @@ func NewQueryFlexPaymentOrderListResponse() (response *QueryFlexPaymentOrderList
 // 灵云V2-查询付款订单列表
 //
 // 可能返回的错误码:
-//  INTERNALERROR_PARAMETERERROR = "InternalError.ParameterError"
-//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
-//  RESOURCENOTFOUND_MERCHANTINFONOTFOUND = "ResourceNotFound.MerchantInfoNotFound"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
 func (c *Client) QueryFlexPaymentOrderList(request *QueryFlexPaymentOrderListRequest) (response *QueryFlexPaymentOrderListResponse, err error) {
     return c.QueryFlexPaymentOrderListWithContext(context.Background(), request)
 }
@@ -7574,9 +7566,7 @@ func (c *Client) QueryFlexPaymentOrderList(request *QueryFlexPaymentOrderListReq
 // 灵云V2-查询付款订单列表
 //
 // 可能返回的错误码:
-//  INTERNALERROR_PARAMETERERROR = "InternalError.ParameterError"
-//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
-//  RESOURCENOTFOUND_MERCHANTINFONOTFOUND = "ResourceNotFound.MerchantInfoNotFound"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
 func (c *Client) QueryFlexPaymentOrderListWithContext(ctx context.Context, request *QueryFlexPaymentOrderListRequest) (response *QueryFlexPaymentOrderListResponse, err error) {
     if request == nil {
         request = NewQueryFlexPaymentOrderListRequest()
@@ -7614,9 +7604,7 @@ func NewQueryFlexPaymentOrderStatusResponse() (response *QueryFlexPaymentOrderSt
 // 灵云V2-查询付款订单状态
 //
 // 可能返回的错误码:
-//  INTERNALERROR_PARAMETERERROR = "InternalError.ParameterError"
-//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
-//  RESOURCENOTFOUND_MERCHANTINFONOTFOUND = "ResourceNotFound.MerchantInfoNotFound"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
 func (c *Client) QueryFlexPaymentOrderStatus(request *QueryFlexPaymentOrderStatusRequest) (response *QueryFlexPaymentOrderStatusResponse, err error) {
     return c.QueryFlexPaymentOrderStatusWithContext(context.Background(), request)
 }
@@ -7625,9 +7613,7 @@ func (c *Client) QueryFlexPaymentOrderStatus(request *QueryFlexPaymentOrderStatu
 // 灵云V2-查询付款订单状态
 //
 // 可能返回的错误码:
-//  INTERNALERROR_PARAMETERERROR = "InternalError.ParameterError"
-//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
-//  RESOURCENOTFOUND_MERCHANTINFONOTFOUND = "ResourceNotFound.MerchantInfoNotFound"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
 func (c *Client) QueryFlexPaymentOrderStatusWithContext(ctx context.Context, request *QueryFlexPaymentOrderStatusRequest) (response *QueryFlexPaymentOrderStatusResponse, err error) {
     if request == nil {
         request = NewQueryFlexPaymentOrderStatusRequest()
@@ -7665,9 +7651,7 @@ func NewQueryFlexSettlementOrderListResponse() (response *QueryFlexSettlementOrd
 // 灵云V2-查询结算订单列表
 //
 // 可能返回的错误码:
-//  INTERNALERROR_PARAMETERERROR = "InternalError.ParameterError"
-//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
-//  RESOURCENOTFOUND_MERCHANTINFONOTFOUND = "ResourceNotFound.MerchantInfoNotFound"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
 func (c *Client) QueryFlexSettlementOrderList(request *QueryFlexSettlementOrderListRequest) (response *QueryFlexSettlementOrderListResponse, err error) {
     return c.QueryFlexSettlementOrderListWithContext(context.Background(), request)
 }
@@ -7676,9 +7660,7 @@ func (c *Client) QueryFlexSettlementOrderList(request *QueryFlexSettlementOrderL
 // 灵云V2-查询结算订单列表
 //
 // 可能返回的错误码:
-//  INTERNALERROR_PARAMETERERROR = "InternalError.ParameterError"
-//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
-//  RESOURCENOTFOUND_MERCHANTINFONOTFOUND = "ResourceNotFound.MerchantInfoNotFound"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
 func (c *Client) QueryFlexSettlementOrderListWithContext(ctx context.Context, request *QueryFlexSettlementOrderListRequest) (response *QueryFlexSettlementOrderListResponse, err error) {
     if request == nil {
         request = NewQueryFlexSettlementOrderListRequest()
@@ -7716,9 +7698,7 @@ func NewQueryFundsTransactionDetailsResponse() (response *QueryFundsTransactionD
 // 聚鑫-查询会员资金交易信息列表
 //
 // 可能返回的错误码:
-//  INTERNALERROR_PARAMETERERROR = "InternalError.ParameterError"
-//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
-//  RESOURCENOTFOUND_MERCHANTINFONOTFOUND = "ResourceNotFound.MerchantInfoNotFound"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
 func (c *Client) QueryFundsTransactionDetails(request *QueryFundsTransactionDetailsRequest) (response *QueryFundsTransactionDetailsResponse, err error) {
     return c.QueryFundsTransactionDetailsWithContext(context.Background(), request)
 }
@@ -7727,9 +7707,7 @@ func (c *Client) QueryFundsTransactionDetails(request *QueryFundsTransactionDeta
 // 聚鑫-查询会员资金交易信息列表
 //
 // 可能返回的错误码:
-//  INTERNALERROR_PARAMETERERROR = "InternalError.ParameterError"
-//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
-//  RESOURCENOTFOUND_MERCHANTINFONOTFOUND = "ResourceNotFound.MerchantInfoNotFound"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
 func (c *Client) QueryFundsTransactionDetailsWithContext(ctx context.Context, request *QueryFundsTransactionDetailsRequest) (response *QueryFundsTransactionDetailsResponse, err error) {
     if request == nil {
         request = NewQueryFundsTransactionDetailsRequest()
@@ -9256,6 +9234,7 @@ func NewQueryOrderResponse() (response *QueryOrderResponse) {
 // 可能返回的错误码:
 //  AUTHFAILURE_SECRETKEYNOTFOUND = "AuthFailure.SecretKeyNotFound"
 //  AUTHFAILURE_VERIFYERROR = "AuthFailure.VerifyError"
+//  AUTHFAILURE_VERIFYTOKENFAILURE = "AuthFailure.VerifyTokenFailure"
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_APPDENY = "FailedOperation.AppDeny"
 //  FAILEDOPERATION_NORECORD = "FailedOperation.NoRecord"
@@ -9270,6 +9249,7 @@ func (c *Client) QueryOrder(request *QueryOrderRequest) (response *QueryOrderRes
 // 可能返回的错误码:
 //  AUTHFAILURE_SECRETKEYNOTFOUND = "AuthFailure.SecretKeyNotFound"
 //  AUTHFAILURE_VERIFYERROR = "AuthFailure.VerifyError"
+//  AUTHFAILURE_VERIFYTOKENFAILURE = "AuthFailure.VerifyTokenFailure"
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_APPDENY = "FailedOperation.AppDeny"
 //  FAILEDOPERATION_NORECORD = "FailedOperation.NoRecord"
@@ -9313,6 +9293,7 @@ func NewQueryOrderStatusResponse() (response *QueryOrderStatusResponse) {
 // 可能返回的错误码:
 //  AUTHFAILURE_SECRETKEYNOTFOUND = "AuthFailure.SecretKeyNotFound"
 //  AUTHFAILURE_VERIFYERROR = "AuthFailure.VerifyError"
+//  AUTHFAILURE_VERIFYTOKENFAILURE = "AuthFailure.VerifyTokenFailure"
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_APPDENY = "FailedOperation.AppDeny"
 //  FAILEDOPERATION_NORECORD = "FailedOperation.NoRecord"
@@ -9327,6 +9308,7 @@ func (c *Client) QueryOrderStatus(request *QueryOrderStatusRequest) (response *Q
 // 可能返回的错误码:
 //  AUTHFAILURE_SECRETKEYNOTFOUND = "AuthFailure.SecretKeyNotFound"
 //  AUTHFAILURE_VERIFYERROR = "AuthFailure.VerifyError"
+//  AUTHFAILURE_VERIFYTOKENFAILURE = "AuthFailure.VerifyTokenFailure"
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_APPDENY = "FailedOperation.AppDeny"
 //  FAILEDOPERATION_NORECORD = "FailedOperation.NoRecord"

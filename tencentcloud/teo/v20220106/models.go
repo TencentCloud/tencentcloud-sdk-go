@@ -1682,6 +1682,9 @@ type CreateZoneRequestParams struct {
 
 	// 是否跳过站点历史解析记录扫描
 	JumpStart *bool `json:"JumpStart,omitempty" name:"JumpStart"`
+
+	// 资源标签
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 }
 
 type CreateZoneRequest struct {
@@ -1697,6 +1700,9 @@ type CreateZoneRequest struct {
 
 	// 是否跳过站点历史解析记录扫描
 	JumpStart *bool `json:"JumpStart,omitempty" name:"JumpStart"`
+
+	// 资源标签
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 }
 
 func (r *CreateZoneRequest) ToJsonString() string {
@@ -1714,6 +1720,7 @@ func (r *CreateZoneRequest) FromJsonString(s string) error {
 	delete(f, "Name")
 	delete(f, "Type")
 	delete(f, "JumpStart")
+	delete(f, "Tags")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateZoneRequest has unknown keys!", "")
 	}
@@ -7034,6 +7041,10 @@ type DescribeZoneDetailsResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CnameStatus *string `json:"CnameStatus,omitempty" name:"CnameStatus"`
 
+	// 资源标签
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }
@@ -10164,6 +10175,16 @@ type SwitchConfig struct {
 	WebSwitch *string `json:"WebSwitch,omitempty" name:"WebSwitch"`
 }
 
+type Tag struct {
+	// 标签键
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TagKey *string `json:"TagKey,omitempty" name:"TagKey"`
+
+	// 标签值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TagValue *string `json:"TagValue,omitempty" name:"TagValue"`
+}
+
 type Task struct {
 	// 任务ID
 	JobId *string `json:"JobId,omitempty" name:"JobId"`
@@ -10483,12 +10504,18 @@ type Zone struct {
 	// - pending 站点验证中
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CnameStatus *string `json:"CnameStatus,omitempty" name:"CnameStatus"`
+
+	// 资源标签
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 }
 
 type ZoneFilter struct {
 	// 过滤字段名，支持的列表如下：
 	// - name: 站点名。
 	// - status: 站点状态
+	// - tagKey: 标签键
+	// - tagValue: 标签值
 	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 过滤字段值

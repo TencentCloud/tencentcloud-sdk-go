@@ -47,6 +47,9 @@ const (
 	// 配额系统处理失败。
 	INTERNALERROR_QUOTASYSTEM = "InternalError.QuotaSystem"
 
+	// 后端服务路由地址错误。
+	INTERNALERROR_ROUTEERROR = "InternalError.RouteError"
+
 	// 内部错误。
 	INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
 
@@ -82,6 +85,9 @@ const (
 
 	// 文件上传链接存在问题。
 	INVALIDPARAMETER_UPLOADURL = "InvalidParameter.UploadUrl"
+
+	// 站点不存在。
+	INVALIDPARAMETER_ZONENOTFOUND = "InvalidParameter.ZoneNotFound"
 
 	// 与已经添加的记录冲突。
 	INVALIDPARAMETERVALUE_CONFLICTRECORD = "InvalidParameterValue.ConflictRecord"

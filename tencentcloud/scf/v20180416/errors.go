@@ -566,6 +566,9 @@ const (
 	// Cdn使用超过最大限制。
 	LIMITEXCEEDED_CDN = "LimitExceeded.Cdn"
 
+	// 用户开启镜像加速函数版本超限。
+	LIMITEXCEEDED_CONTAINERIMAGEACCELERATEQUOTA = "LimitExceeded.ContainerImageAccelerateQuota"
+
 	// eip资源超限。
 	LIMITEXCEEDED_EIP = "LimitExceeded.Eip"
 

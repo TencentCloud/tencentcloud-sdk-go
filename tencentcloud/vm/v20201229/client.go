@@ -240,6 +240,7 @@ func NewCreateVideoModerationTaskResponse() (response *CreateVideoModerationTask
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  RESOURCESSOLDOUT = "ResourcesSoldOut"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZED = "UnauthorizedOperation.Unauthorized"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateVideoModerationTask(request *CreateVideoModerationTaskRequest) (response *CreateVideoModerationTaskResponse, err error) {
@@ -339,6 +340,7 @@ func (c *Client) CreateVideoModerationTask(request *CreateVideoModerationTaskReq
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  RESOURCESSOLDOUT = "ResourcesSoldOut"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZED = "UnauthorizedOperation.Unauthorized"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateVideoModerationTaskWithContext(ctx context.Context, request *CreateVideoModerationTaskRequest) (response *CreateVideoModerationTaskResponse, err error) {

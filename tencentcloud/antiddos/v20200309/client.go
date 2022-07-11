@@ -1001,6 +1001,53 @@ func (c *Client) CreateL7RuleCertsWithContext(ctx context.Context, request *Crea
     return
 }
 
+func NewCreateNewL7RulesRequest() (request *CreateNewL7RulesRequest) {
+    request = &CreateNewL7RulesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("antiddos", APIVersion, "CreateNewL7Rules")
+    
+    
+    return
+}
+
+func NewCreateNewL7RulesResponse() (response *CreateNewL7RulesResponse) {
+    response = &CreateNewL7RulesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateNewL7Rules
+// 添加7层转发规则
+//
+// 可能返回的错误码:
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateNewL7Rules(request *CreateNewL7RulesRequest) (response *CreateNewL7RulesResponse, err error) {
+    return c.CreateNewL7RulesWithContext(context.Background(), request)
+}
+
+// CreateNewL7Rules
+// 添加7层转发规则
+//
+// 可能返回的错误码:
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateNewL7RulesWithContext(ctx context.Context, request *CreateNewL7RulesRequest) (response *CreateNewL7RulesResponse, err error) {
+    if request == nil {
+        request = NewCreateNewL7RulesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateNewL7Rules require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateNewL7RulesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreatePacketFilterConfigRequest() (request *CreatePacketFilterConfigRequest) {
     request = &CreatePacketFilterConfigRequest{
         BaseRequest: &tchttp.BaseRequest{},

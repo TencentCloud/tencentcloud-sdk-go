@@ -523,6 +523,9 @@ type DescribeSREInstanceAccessAddressRequestParams struct {
 
 	// 子网ID
 	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+
+	// 引擎其他组件名称（pushgateway）
+	Workload *string `json:"Workload,omitempty" name:"Workload"`
 }
 
 type DescribeSREInstanceAccessAddressRequest struct {
@@ -536,6 +539,9 @@ type DescribeSREInstanceAccessAddressRequest struct {
 
 	// 子网ID
 	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+
+	// 引擎其他组件名称（pushgateway）
+	Workload *string `json:"Workload,omitempty" name:"Workload"`
 }
 
 func (r *DescribeSREInstanceAccessAddressRequest) ToJsonString() string {
@@ -553,6 +559,7 @@ func (r *DescribeSREInstanceAccessAddressRequest) FromJsonString(s string) error
 	delete(f, "InstanceId")
 	delete(f, "VpcId")
 	delete(f, "SubnetId")
+	delete(f, "Workload")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSREInstanceAccessAddressRequest has unknown keys!", "")
 	}
@@ -863,6 +870,10 @@ type EnvAddressInfo struct {
 
 	// config公网ip
 	ConfigInternetServiceIp *string `json:"ConfigInternetServiceIp,omitempty" name:"ConfigInternetServiceIp"`
+
+	// config内网访问地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConfigIntranetAddress *string `json:"ConfigIntranetAddress,omitempty" name:"ConfigIntranetAddress"`
 }
 
 type EnvInfo struct {
@@ -1084,6 +1095,9 @@ type ServiceGovernanceInfo struct {
 
 	// 主账户名默认为 polaris，该值为主账户的默认密码
 	MainPassword *string `json:"MainPassword,omitempty" name:"MainPassword"`
+
+	// 服务治理pushgateway引擎绑定的网络信息
+	PgwVpcInfos []*VpcInfo `json:"PgwVpcInfos,omitempty" name:"PgwVpcInfos"`
 }
 
 type VpcInfo struct {

@@ -779,6 +779,10 @@ func NewCreateNamespaceResponse() (response *CreateNamespaceResponse) {
 // 用于在企业版中创建命名空间
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_ERRORTCRINVALIDMEDIATYPE = "FailedOperation.ErrorTcrInvalidMediaType"
+//  FAILEDOPERATION_ERRORTCRRESOURCECONFLICT = "FailedOperation.ErrorTcrResourceConflict"
+//  FAILEDOPERATION_ERRORTCRUNAUTHORIZED = "FailedOperation.ErrorTcrUnauthorized"
 //  FAILEDOPERATION_OPERATIONCANCEL = "FailedOperation.OperationCancel"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_ERRORTCRINTERNAL = "InternalError.ErrorTcrInternal"
@@ -799,6 +803,10 @@ func (c *Client) CreateNamespace(request *CreateNamespaceRequest) (response *Cre
 // 用于在企业版中创建命名空间
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_ERRORTCRINVALIDMEDIATYPE = "FailedOperation.ErrorTcrInvalidMediaType"
+//  FAILEDOPERATION_ERRORTCRRESOURCECONFLICT = "FailedOperation.ErrorTcrResourceConflict"
+//  FAILEDOPERATION_ERRORTCRUNAUTHORIZED = "FailedOperation.ErrorTcrUnauthorized"
 //  FAILEDOPERATION_OPERATIONCANCEL = "FailedOperation.OperationCancel"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_ERRORTCRINTERNAL = "InternalError.ErrorTcrInternal"
@@ -1979,6 +1987,11 @@ func NewDeleteNamespaceResponse() (response *DeleteNamespaceResponse) {
 // 删除命名空间
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_ERRORGETDBDATAERROR = "FailedOperation.ErrorGetDBDataError"
+//  FAILEDOPERATION_ERRORTCRRESOURCECONFLICT = "FailedOperation.ErrorTcrResourceConflict"
+//  FAILEDOPERATION_ERRORTCRUNAUTHORIZED = "FailedOperation.ErrorTcrUnauthorized"
+//  FAILEDOPERATION_GETDBDATAERROR = "FailedOperation.GetDBDataError"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_ERRORTCRINTERNAL = "InternalError.ErrorTcrInternal"
 //  INTERNALERROR_ERRORTCRINVALIDMEDIATYPE = "InternalError.ErrorTcrInvalidMediaType"
@@ -1998,6 +2011,11 @@ func (c *Client) DeleteNamespace(request *DeleteNamespaceRequest) (response *Del
 // 删除命名空间
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_ERRORGETDBDATAERROR = "FailedOperation.ErrorGetDBDataError"
+//  FAILEDOPERATION_ERRORTCRRESOURCECONFLICT = "FailedOperation.ErrorTcrResourceConflict"
+//  FAILEDOPERATION_ERRORTCRUNAUTHORIZED = "FailedOperation.ErrorTcrUnauthorized"
+//  FAILEDOPERATION_GETDBDATAERROR = "FailedOperation.GetDBDataError"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_ERRORTCRINTERNAL = "InternalError.ErrorTcrInternal"
 //  INTERNALERROR_ERRORTCRINVALIDMEDIATYPE = "InternalError.ErrorTcrInvalidMediaType"
@@ -2565,6 +2583,7 @@ func NewDescribeExternalEndpointStatusResponse() (response *DescribeExternalEndp
 // 查询实例公网访问入口状态
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_ERRORGETDBDATAERROR = "FailedOperation.ErrorGetDBDataError"
 //  FAILEDOPERATION_GETDBDATAERROR = "FailedOperation.GetDBDataError"
 //  FAILEDOPERATION_GETTCRCLIENT = "FailedOperation.GetTcrClient"
 //  INTERNALERROR = "InternalError"
@@ -2584,6 +2603,7 @@ func (c *Client) DescribeExternalEndpointStatus(request *DescribeExternalEndpoin
 // 查询实例公网访问入口状态
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_ERRORGETDBDATAERROR = "FailedOperation.ErrorGetDBDataError"
 //  FAILEDOPERATION_GETDBDATAERROR = "FailedOperation.GetDBDataError"
 //  FAILEDOPERATION_GETTCRCLIENT = "FailedOperation.GetTcrClient"
 //  INTERNALERROR = "InternalError"
@@ -3438,6 +3458,11 @@ func NewDescribeNamespacesResponse() (response *DescribeNamespacesResponse) {
 // 查询命名空间列表或指定命名空间信息
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_ERRORGETDBDATAERROR = "FailedOperation.ErrorGetDBDataError"
+//  FAILEDOPERATION_ERRORTCRRESOURCECONFLICT = "FailedOperation.ErrorTcrResourceConflict"
+//  FAILEDOPERATION_ERRORTCRUNAUTHORIZED = "FailedOperation.ErrorTcrUnauthorized"
+//  FAILEDOPERATION_GETDBDATAERROR = "FailedOperation.GetDBDataError"
 //  FAILEDOPERATION_OPERATIONCANCEL = "FailedOperation.OperationCancel"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_ERRORTCRINTERNAL = "InternalError.ErrorTcrInternal"
@@ -3445,6 +3470,7 @@ func NewDescribeNamespacesResponse() (response *DescribeNamespacesResponse) {
 //  INTERNALERROR_ERRORTCRRESOURCECONFLICT = "InternalError.ErrorTcrResourceConflict"
 //  INTERNALERROR_ERRORTCRUNAUTHORIZED = "InternalError.ErrorTcrUnauthorized"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ERRORTCRINVALIDPARAMETER = "InvalidParameter.ErrorTcrInvalidParameter"
 //  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
 //  RESOURCENOTFOUND = "ResourceNotFound"
@@ -3458,6 +3484,11 @@ func (c *Client) DescribeNamespaces(request *DescribeNamespacesRequest) (respons
 // 查询命名空间列表或指定命名空间信息
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_ERRORGETDBDATAERROR = "FailedOperation.ErrorGetDBDataError"
+//  FAILEDOPERATION_ERRORTCRRESOURCECONFLICT = "FailedOperation.ErrorTcrResourceConflict"
+//  FAILEDOPERATION_ERRORTCRUNAUTHORIZED = "FailedOperation.ErrorTcrUnauthorized"
+//  FAILEDOPERATION_GETDBDATAERROR = "FailedOperation.GetDBDataError"
 //  FAILEDOPERATION_OPERATIONCANCEL = "FailedOperation.OperationCancel"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_ERRORTCRINTERNAL = "InternalError.ErrorTcrInternal"
@@ -3465,6 +3496,7 @@ func (c *Client) DescribeNamespaces(request *DescribeNamespacesRequest) (respons
 //  INTERNALERROR_ERRORTCRRESOURCECONFLICT = "InternalError.ErrorTcrResourceConflict"
 //  INTERNALERROR_ERRORTCRUNAUTHORIZED = "InternalError.ErrorTcrUnauthorized"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ERRORTCRINVALIDPARAMETER = "InvalidParameter.ErrorTcrInvalidParameter"
 //  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
 //  RESOURCENOTFOUND = "ResourceNotFound"

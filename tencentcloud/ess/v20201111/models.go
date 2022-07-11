@@ -989,7 +989,7 @@ type DescribeFileUrlsRequestParams struct {
 	// 指定资源数量，查询全部资源则传入-1
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 下载url过期时间，单位秒。0: 按默认值5分钟，允许范围：1s~24*60*60s(1天)
+	// 下载url过期时间，单位秒。0: 按默认值5分钟，允许范围：1s~24x60x60s(1天)
 	UrlTtl *int64 `json:"UrlTtl,omitempty" name:"UrlTtl"`
 
 	// 暂不开放
@@ -1031,7 +1031,7 @@ type DescribeFileUrlsRequest struct {
 	// 指定资源数量，查询全部资源则传入-1
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 下载url过期时间，单位秒。0: 按默认值5分钟，允许范围：1s~24*60*60s(1天)
+	// 下载url过期时间，单位秒。0: 按默认值5分钟，允许范围：1s~24x60x60s(1天)
 	UrlTtl *int64 `json:"UrlTtl,omitempty" name:"UrlTtl"`
 
 	// 暂不开放

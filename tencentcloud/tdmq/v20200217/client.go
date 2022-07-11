@@ -655,6 +655,7 @@ func NewCreateCmqSubscribeResponse() (response *CreateCmqSubscribeResponse) {
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_CREATESUBSCRIPTION = "FailedOperation.CreateSubscription"
 //  RESOURCEINUSE_SUBSCRIPTION = "ResourceInUse.Subscription"
+//  RESOURCEUNAVAILABLE_FUNDREQUIRED = "ResourceUnavailable.FundRequired"
 func (c *Client) CreateCmqSubscribe(request *CreateCmqSubscribeRequest) (response *CreateCmqSubscribeResponse, err error) {
     return c.CreateCmqSubscribeWithContext(context.Background(), request)
 }
@@ -666,6 +667,7 @@ func (c *Client) CreateCmqSubscribe(request *CreateCmqSubscribeRequest) (respons
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_CREATESUBSCRIPTION = "FailedOperation.CreateSubscription"
 //  RESOURCEINUSE_SUBSCRIPTION = "ResourceInUse.Subscription"
+//  RESOURCEUNAVAILABLE_FUNDREQUIRED = "ResourceUnavailable.FundRequired"
 func (c *Client) CreateCmqSubscribeWithContext(ctx context.Context, request *CreateCmqSubscribeRequest) (response *CreateCmqSubscribeResponse, err error) {
     if request == nil {
         request = NewCreateCmqSubscribeRequest()
@@ -713,6 +715,7 @@ func NewCreateCmqTopicResponse() (response *CreateCmqTopicResponse) {
 //  RESOURCEINUSE_TOPIC = "ResourceInUse.Topic"
 //  RESOURCENOTFOUND_ENVIRONMENT = "ResourceNotFound.Environment"
 //  RESOURCEUNAVAILABLE_CREATEFAILED = "ResourceUnavailable.CreateFailed"
+//  RESOURCEUNAVAILABLE_FUNDREQUIRED = "ResourceUnavailable.FundRequired"
 func (c *Client) CreateCmqTopic(request *CreateCmqTopicRequest) (response *CreateCmqTopicResponse, err error) {
     return c.CreateCmqTopicWithContext(context.Background(), request)
 }
@@ -731,6 +734,7 @@ func (c *Client) CreateCmqTopic(request *CreateCmqTopicRequest) (response *Creat
 //  RESOURCEINUSE_TOPIC = "ResourceInUse.Topic"
 //  RESOURCENOTFOUND_ENVIRONMENT = "ResourceNotFound.Environment"
 //  RESOURCEUNAVAILABLE_CREATEFAILED = "ResourceUnavailable.CreateFailed"
+//  RESOURCEUNAVAILABLE_FUNDREQUIRED = "ResourceUnavailable.FundRequired"
 func (c *Client) CreateCmqTopicWithContext(ctx context.Context, request *CreateCmqTopicRequest) (response *CreateCmqTopicResponse, err error) {
     if request == nil {
         request = NewCreateCmqTopicRequest()

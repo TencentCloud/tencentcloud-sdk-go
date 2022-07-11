@@ -383,6 +383,7 @@ func NewDeleteModelResponse() (response *DeleteModelResponse) {
 //  FAILEDOPERATION_PARAMETERVALUEERROR = "FailedOperation.ParameterValueError"
 //  INVALIDPARAMETERVALUE_MODELIDNOTFOUND = "InvalidParameterValue.ModelIdNotFound"
 //  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_NOTREADY = "ResourceUnavailable.NotReady"
 func (c *Client) DeleteModel(request *DeleteModelRequest) (response *DeleteModelResponse, err error) {
     return c.DeleteModelWithContext(context.Background(), request)
 }
@@ -396,6 +397,7 @@ func (c *Client) DeleteModel(request *DeleteModelRequest) (response *DeleteModel
 //  FAILEDOPERATION_PARAMETERVALUEERROR = "FailedOperation.ParameterValueError"
 //  INVALIDPARAMETERVALUE_MODELIDNOTFOUND = "InvalidParameterValue.ModelIdNotFound"
 //  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_NOTREADY = "ResourceUnavailable.NotReady"
 func (c *Client) DeleteModelWithContext(ctx context.Context, request *DeleteModelRequest) (response *DeleteModelResponse, err error) {
     if request == nil {
         request = NewDeleteModelRequest()
@@ -495,6 +497,7 @@ func NewQueryBeautifyVideoJobResponse() (response *QueryBeautifyVideoJobResponse
 //  FAILEDOPERATION_JOBHASBEENCANCELED = "FailedOperation.JobHasBeenCanceled"
 //  FAILEDOPERATION_JOBSTOPPROCESSING = "FailedOperation.JobStopProcessing"
 //  INVALIDPARAMETERVALUE_PARAMETERVALUEERROR = "InvalidParameterValue.ParameterValueError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
 func (c *Client) QueryBeautifyVideoJob(request *QueryBeautifyVideoJobRequest) (response *QueryBeautifyVideoJobResponse, err error) {
     return c.QueryBeautifyVideoJobWithContext(context.Background(), request)
 }
@@ -510,6 +513,7 @@ func (c *Client) QueryBeautifyVideoJob(request *QueryBeautifyVideoJobRequest) (r
 //  FAILEDOPERATION_JOBHASBEENCANCELED = "FailedOperation.JobHasBeenCanceled"
 //  FAILEDOPERATION_JOBSTOPPROCESSING = "FailedOperation.JobStopProcessing"
 //  INVALIDPARAMETERVALUE_PARAMETERVALUEERROR = "InvalidParameterValue.ParameterValueError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
 func (c *Client) QueryBeautifyVideoJobWithContext(ctx context.Context, request *QueryBeautifyVideoJobRequest) (response *QueryBeautifyVideoJobResponse, err error) {
     if request == nil {
         request = NewQueryBeautifyVideoJobRequest()
@@ -636,6 +640,7 @@ func NewStyleImageProResponse() (response *StyleImageProResponse) {
 //  FAILEDOPERATION_REQUESTENTITYTOOLARGE = "FailedOperation.RequestEntityTooLarge"
 //  FAILEDOPERATION_REQUESTTIMEOUT = "FailedOperation.RequestTimeout"
 //  FAILEDOPERATION_RPCFAIL = "FailedOperation.RpcFail"
+//  FAILEDOPERATION_UNKNOWN = "FailedOperation.Unknown"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
@@ -662,6 +667,7 @@ func (c *Client) StyleImagePro(request *StyleImageProRequest) (response *StyleIm
 //  FAILEDOPERATION_REQUESTENTITYTOOLARGE = "FailedOperation.RequestEntityTooLarge"
 //  FAILEDOPERATION_REQUESTTIMEOUT = "FailedOperation.RequestTimeout"
 //  FAILEDOPERATION_RPCFAIL = "FailedOperation.RpcFail"
+//  FAILEDOPERATION_UNKNOWN = "FailedOperation.Unknown"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"

@@ -557,6 +557,9 @@ const (
 	// 指定置放群组配额不足。
 	LIMITEXCEEDED_DISASTERRECOVERGROUP = "LimitExceeded.DisasterRecoverGroup"
 
+	// 特定实例包含的某个ENI的EIP数量已超过目标实例类型的EIP允许的最大值，请删除部分EIP后重试。
+	LIMITEXCEEDED_EIPNUMLIMIT = "LimitExceeded.EipNumLimit"
+
 	// 特定实例当前ENI数量已超过目标实例类型的ENI允许的最大值，需删除部分ENI后重试。
 	LIMITEXCEEDED_ENINUMLIMIT = "LimitExceeded.EniNumLimit"
 
@@ -868,6 +871,9 @@ const (
 
 	// 不支持关机不收费特性
 	UNSUPPORTEDOPERATION_STOPPEDMODESTOPCHARGING = "UnsupportedOperation.StoppedModeStopCharging"
+
+	// 不支持关机不收费机器做同类型变配操作。
+	UNSUPPORTEDOPERATION_STOPPEDMODESTOPCHARGINGSAMEFAMILY = "UnsupportedOperation.StoppedModeStopChargingSameFamily"
 
 	// 该机型为包销机型，RenewFlag的值只允许设置为NOTIFY_AND_AUTO_RENEW。
 	UNSUPPORTEDOPERATION_UNDERWRITINGINSTANCETYPEONLYSUPPORTAUTORENEW = "UnsupportedOperation.UnderwritingInstanceTypeOnlySupportAutoRenew"

@@ -19,4 +19,7 @@ const (
 
 	// 操作失败。
 	FAILEDOPERATION = "FailedOperation"
+
+	// 工作空间不存在。
+	INVALIDPARAMETER_WORKSPACENOTEXIST = "InvalidParameter.WorkspaceNotExist"
 )

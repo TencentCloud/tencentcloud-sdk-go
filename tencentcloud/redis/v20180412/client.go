@@ -2567,6 +2567,7 @@ func NewDescribeProxySlowLogResponse() (response *DescribeProxySlowLogResponse) 
 // 本接口（DescribeProxySlowLog）用于查询代理慢查询。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
 //  FAILEDOPERATION_UNKNOWN = "FailedOperation.Unknown"
 //  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
 //  INVALIDPARAMETER_EMPTYPARAM = "InvalidParameter.EmptyParam"
@@ -2582,6 +2583,7 @@ func (c *Client) DescribeProxySlowLog(request *DescribeProxySlowLogRequest) (res
 // 本接口（DescribeProxySlowLog）用于查询代理慢查询。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
 //  FAILEDOPERATION_UNKNOWN = "FailedOperation.Unknown"
 //  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
 //  INVALIDPARAMETER_EMPTYPARAM = "InvalidParameter.EmptyParam"

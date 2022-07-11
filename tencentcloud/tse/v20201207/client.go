@@ -355,6 +355,7 @@ func NewDescribeSREInstancesResponse() (response *DescribeSREInstancesResponse) 
 // 用于查询引擎实例列表
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
 //  INTERNALERROR_TAGFAILURE = "InternalError.TagFailure"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
@@ -370,6 +371,7 @@ func (c *Client) DescribeSREInstances(request *DescribeSREInstancesRequest) (res
 // 用于查询引擎实例列表
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
 //  INTERNALERROR_TAGFAILURE = "InternalError.TagFailure"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"

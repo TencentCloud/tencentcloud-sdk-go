@@ -473,6 +473,9 @@ const (
 	// 缺少参数错误。
 	MISSINGPARAMETER = "MissingParameter"
 
+	// 指定公网IP处于隔离状态。
+	OPERATIONDENIED_ADDRESSINARREARS = "OperationDenied.AddressInArrears"
+
 	// 互斥的任务正在执行。
 	OPERATIONDENIED_MUTEXTASKRUNNING = "OperationDenied.MutexTaskRunning"
 
@@ -746,8 +749,14 @@ const (
 	// 输入的资源ID与IP绑定的资源不匹配，请检查。
 	UNSUPPORTEDOPERATION_RESOURCEMISMATCH = "UnsupportedOperation.ResourceMismatch"
 
+	// 未找到相关角色，请确认角色是否授权。
+	UNSUPPORTEDOPERATION_ROLENOTFOUND = "UnsupportedOperation.RoleNotFound"
+
 	// 指定的终端节点服务所创建的终端节点不支持绑定安全组。
 	UNSUPPORTEDOPERATION_SPECIALENDPOINTSERVICE = "UnsupportedOperation.SpecialEndPointService"
+
+	// SslVpnClientId 不存在。
+	UNSUPPORTEDOPERATION_SSLVPNCLIENTIDNOTFOUND = "UnsupportedOperation.SslVpnClientIdNotFound"
 
 	// 中继网卡不支持该操作。
 	UNSUPPORTEDOPERATION_SUBENINOTSUPPORTTRUNKING = "UnsupportedOperation.SubEniNotSupportTrunking"

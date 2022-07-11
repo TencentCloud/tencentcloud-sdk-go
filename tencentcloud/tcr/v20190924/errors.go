@@ -27,6 +27,18 @@ const (
 	FAILEDOPERATION_DEPENDENCEERROR = "FailedOperation.DependenceError"
 
 	// 获取数据库数据错误。
+	FAILEDOPERATION_ERRORGETDBDATAERROR = "FailedOperation.ErrorGetDBDataError"
+
+	// Tcr实例请求无效的Hearder类型。
+	FAILEDOPERATION_ERRORTCRINVALIDMEDIATYPE = "FailedOperation.ErrorTcrInvalidMediaType"
+
+	// Tcr实例资源冲突。
+	FAILEDOPERATION_ERRORTCRRESOURCECONFLICT = "FailedOperation.ErrorTcrResourceConflict"
+
+	// 没有Tcr操作权限。
+	FAILEDOPERATION_ERRORTCRUNAUTHORIZED = "FailedOperation.ErrorTcrUnauthorized"
+
+	// 获取数据库数据错误。
 	FAILEDOPERATION_GETDBDATAERROR = "FailedOperation.GetDBDataError"
 
 	// 获取安全组策略错误。
