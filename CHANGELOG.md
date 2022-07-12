@@ -1,3 +1,233 @@
+# Release v1.0.441
+
+## 企业收付平台(cpdp) 版本：2019-08-20
+
+### 第 77 次发布
+
+发布时间：2022-07-13 06:08:02
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [PayeeAccountBalanceResult](https://cloud.tencent.com/document/api/1122/40683#PayeeAccountBalanceResult)
+
+	* 新增成员：SumSettlementAmount
+
+
+
+
+## 数据湖计算(dlc) 版本：2021-01-25
+
+### 第 28 次发布
+
+发布时间：2022-07-13 06:09:56
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateSparkApp](https://cloud.tencent.com/document/api/1342/74538)
+
+	* 新增入参：IsLocalArchives, AppArchives
+
+* [ModifySparkApp](https://cloud.tencent.com/document/api/1342/74532)
+
+	* 新增入参：IsLocalArchives, AppArchives
+
+
+修改数据结构：
+
+* [SparkJobInfo](https://cloud.tencent.com/document/api/1342/53778#SparkJobInfo)
+
+	* 新增成员：IsLocalArchives, JobArchives, JobPythonFiles, TaskNum
+
+
+
+
+## Elasticsearch Service(es) 版本：2018-04-16
+
+### 第 30 次发布
+
+发布时间：2022-07-13 06:11:03
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateInstance](https://cloud.tencent.com/document/api/845/30633)
+
+	* 新增入参：OperationDuration
+
+* [DescribeInstances](https://cloud.tencent.com/document/api/845/30631)
+
+	* 新增入参：VpcIds
+
+* [UpdateInstance](https://cloud.tencent.com/document/api/845/30629)
+
+	* 新增入参：OperationDuration
+
+
+新增数据结构：
+
+* [OperationDuration](https://cloud.tencent.com/document/api/845/30634#OperationDuration)
+* [OperationDurationUpdated](https://cloud.tencent.com/document/api/845/30634#OperationDurationUpdated)
+
+修改数据结构：
+
+* [InstanceInfo](https://cloud.tencent.com/document/api/845/30634#InstanceInfo)
+
+	* 新增成员：OperationDuration
+
+
+
+
+## 全球应用加速(gaap) 版本：2018-05-29
+
+### 第 31 次发布
+
+发布时间：2022-07-13 06:11:21
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateRule](https://cloud.tencent.com/document/api/608/36990)
+
+	* 新增入参：ForcedRedirect
+
+* [ModifyRuleAttribute](https://cloud.tencent.com/document/api/608/36983)
+
+	* 新增入参：ForcedRedirect
+
+
+修改数据结构：
+
+* [RuleInfo](https://cloud.tencent.com/document/api/608/37023#RuleInfo)
+
+	* 新增成员：ForcedRedirect
+
+
+
+
+## 流计算 Oceanus(oceanus) 版本：2019-04-22
+
+### 第 21 次发布
+
+发布时间：2022-07-13 06:14:33
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DeleteJobs](https://cloud.tencent.com/document/api/849/76834)
+* [DescribeClusters](https://cloud.tencent.com/document/api/849/76832)
+* [DescribeTreeJobs](https://cloud.tencent.com/document/api/849/76833)
+
+新增数据结构：
+
+* [CCN](https://cloud.tencent.com/document/api/849/52010#CCN)
+* [Cluster](https://cloud.tencent.com/document/api/849/52010#Cluster)
+* [ClusterVersion](https://cloud.tencent.com/document/api/849/52010#ClusterVersion)
+* [Tag](https://cloud.tencent.com/document/api/849/52010#Tag)
+* [WorkSpaceClusterItem](https://cloud.tencent.com/document/api/849/52010#WorkSpaceClusterItem)
+
+
+
+## 云数据库 Redis(redis) 版本：2018-04-12
+
+### 第 49 次发布
+
+发布时间：2022-07-13 06:15:09
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeInstances](https://cloud.tencent.com/document/api/239/20018)
+
+	* 新增入参：ProductVersions
+
+
+
+
+## 前端性能监控(rum) 版本：2021-06-22
+
+### 第 14 次发布
+
+发布时间：2022-07-13 06:15:23
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeDataFetchProject](https://cloud.tencent.com/document/api/1464/69232)
+
+	* 新增入参：Status, Ret
+
+* [DescribeDataFetchUrl](https://cloud.tencent.com/document/api/1464/68355)
+
+	* 新增入参：Status, Ret
+
+* [DescribeDataSetUrlStatistics](https://cloud.tencent.com/document/api/1464/69227)
+
+	* 新增入参：PackageType
+
+
+
+
+## 容器服务(tke) 版本：2018-05-25
+
+### 第 111 次发布
+
+发布时间：2022-07-13 06:18:17
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ExistedInstance](https://cloud.tencent.com/document/api/457/31866#ExistedInstance)
+
+	* 新增成员：IPv6Addresses
+
+
+
+
+## 音速达直播音乐版权引擎(yinsuda) 版本：2022-05-27
+
+### 第 2 次发布
+
+发布时间：2022-07-13 06:20:29
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [KTVMusicDetailInfo](https://cloud.tencent.com/document/api/1592/76191#KTVMusicDetailInfo)
+
+	* 新增成员：PreludeInterval, GenreSet
+
+
+
+
 # Release v1.0.440
 
 ## DDoS 防护(antiddos) 版本：2020-03-09

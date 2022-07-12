@@ -1586,6 +1586,12 @@ type DescribeDataFetchProjectRequestParams struct {
 
 	// 环境
 	Env *string `json:"Env,omitempty" name:"Env"`
+
+	// httpcode响应码
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// retcode
+	Ret *string `json:"Ret,omitempty" name:"Ret"`
 }
 
 type DescribeDataFetchProjectRequest struct {
@@ -1659,6 +1665,12 @@ type DescribeDataFetchProjectRequest struct {
 
 	// 环境
 	Env *string `json:"Env,omitempty" name:"Env"`
+
+	// httpcode响应码
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// retcode
+	Ret *string `json:"Ret,omitempty" name:"Ret"`
 }
 
 func (r *DescribeDataFetchProjectRequest) ToJsonString() string {
@@ -1696,6 +1708,8 @@ func (r *DescribeDataFetchProjectRequest) FromJsonString(s string) error {
 	delete(f, "CostType")
 	delete(f, "Url")
 	delete(f, "Env")
+	delete(f, "Status")
+	delete(f, "Ret")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDataFetchProjectRequest has unknown keys!", "")
 	}
@@ -2008,6 +2022,12 @@ type DescribeDataFetchUrlRequestParams struct {
 
 	// 环境
 	Env *string `json:"Env,omitempty" name:"Env"`
+
+	// httpcode响应码
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// retcode
+	Ret *string `json:"Ret,omitempty" name:"Ret"`
 }
 
 type DescribeDataFetchUrlRequest struct {
@@ -2081,6 +2101,12 @@ type DescribeDataFetchUrlRequest struct {
 
 	// 环境
 	Env *string `json:"Env,omitempty" name:"Env"`
+
+	// httpcode响应码
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// retcode
+	Ret *string `json:"Ret,omitempty" name:"Ret"`
 }
 
 func (r *DescribeDataFetchUrlRequest) ToJsonString() string {
@@ -2118,6 +2144,8 @@ func (r *DescribeDataFetchUrlRequest) FromJsonString(s string) error {
 	delete(f, "CostType")
 	delete(f, "Url")
 	delete(f, "Env")
+	delete(f, "Status")
+	delete(f, "Ret")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDataFetchUrlRequest has unknown keys!", "")
 	}
@@ -3435,6 +3463,9 @@ type DescribeDataSetUrlStatisticsRequestParams struct {
 
 	// 环境
 	Env *string `json:"Env,omitempty" name:"Env"`
+
+	// 获取package
+	PackageType *string `json:"PackageType,omitempty" name:"PackageType"`
 }
 
 type DescribeDataSetUrlStatisticsRequest struct {
@@ -3505,6 +3536,9 @@ type DescribeDataSetUrlStatisticsRequest struct {
 
 	// 环境
 	Env *string `json:"Env,omitempty" name:"Env"`
+
+	// 获取package
+	PackageType *string `json:"PackageType,omitempty" name:"PackageType"`
 }
 
 func (r *DescribeDataSetUrlStatisticsRequest) ToJsonString() string {
@@ -3541,6 +3575,7 @@ func (r *DescribeDataSetUrlStatisticsRequest) FromJsonString(s string) error {
 	delete(f, "Browser")
 	delete(f, "CostType")
 	delete(f, "Env")
+	delete(f, "PackageType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDataSetUrlStatisticsRequest has unknown keys!", "")
 	}

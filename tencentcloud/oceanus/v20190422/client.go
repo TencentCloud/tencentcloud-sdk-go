@@ -398,6 +398,77 @@ func (c *Client) CreateResourceConfigWithContext(ctx context.Context, request *C
     return
 }
 
+func NewDeleteJobsRequest() (request *DeleteJobsRequest) {
+    request = &DeleteJobsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("oceanus", APIVersion, "DeleteJobs")
+    
+    
+    return
+}
+
+func NewDeleteJobsResponse() (response *DeleteJobsResponse) {
+    response = &DeleteJobsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteJobs
+// 批量删除作业接口，批量操作数量上限20
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DB = "InternalError.DB"
+//  INTERNALERROR_LOGICERROR = "InternalError.LogicError"
+//  INVALIDPARAMETERVALUE_JOBIDVALUEERROR = "InvalidParameterValue.JobIdValueError"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND_JOB = "ResourceNotFound.Job"
+//  RESOURCENOTFOUND_JOBID = "ResourceNotFound.JobId"
+//  RESOURCEUNAVAILABLE_NOTALLOWEDTOBEDELETED = "ResourceUnavailable.NotAllowedToBeDeleted"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_NOPERMISSIONACCESS = "UnsupportedOperation.NoPermissionAccess"
+func (c *Client) DeleteJobs(request *DeleteJobsRequest) (response *DeleteJobsResponse, err error) {
+    return c.DeleteJobsWithContext(context.Background(), request)
+}
+
+// DeleteJobs
+// 批量删除作业接口，批量操作数量上限20
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DB = "InternalError.DB"
+//  INTERNALERROR_LOGICERROR = "InternalError.LogicError"
+//  INVALIDPARAMETERVALUE_JOBIDVALUEERROR = "InvalidParameterValue.JobIdValueError"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND_JOB = "ResourceNotFound.Job"
+//  RESOURCENOTFOUND_JOBID = "ResourceNotFound.JobId"
+//  RESOURCEUNAVAILABLE_NOTALLOWEDTOBEDELETED = "ResourceUnavailable.NotAllowedToBeDeleted"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_NOPERMISSIONACCESS = "UnsupportedOperation.NoPermissionAccess"
+func (c *Client) DeleteJobsWithContext(ctx context.Context, request *DeleteJobsRequest) (response *DeleteJobsResponse, err error) {
+    if request == nil {
+        request = NewDeleteJobsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteJobs require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteJobsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteResourceConfigsRequest() (request *DeleteResourceConfigsRequest) {
     request = &DeleteResourceConfigsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -581,6 +652,69 @@ func (c *Client) DeleteTableConfigWithContext(ctx context.Context, request *Dele
     request.SetContext(ctx)
     
     response = NewDeleteTableConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeClustersRequest() (request *DescribeClustersRequest) {
+    request = &DescribeClustersRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("oceanus", APIVersion, "DescribeClusters")
+    
+    
+    return
+}
+
+func NewDescribeClustersResponse() (response *DescribeClustersResponse) {
+    response = &DescribeClustersResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeClusters
+// 查询集群
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_GETRESOURCETAGSBYRESOURCEIDS = "FailedOperation.GetResourceTagsByResourceIds"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_CLUSTERIDS = "InvalidParameterValue.ClusterIds"
+//  INVALIDPARAMETERVALUE_ORDERTYPE = "InvalidParameterValue.OrderType"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION_NOPERMISSIONACCESS = "UnsupportedOperation.NoPermissionAccess"
+func (c *Client) DescribeClusters(request *DescribeClustersRequest) (response *DescribeClustersResponse, err error) {
+    return c.DescribeClustersWithContext(context.Background(), request)
+}
+
+// DescribeClusters
+// 查询集群
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_GETRESOURCETAGSBYRESOURCEIDS = "FailedOperation.GetResourceTagsByResourceIds"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_CLUSTERIDS = "InvalidParameterValue.ClusterIds"
+//  INVALIDPARAMETERVALUE_ORDERTYPE = "InvalidParameterValue.OrderType"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION_NOPERMISSIONACCESS = "UnsupportedOperation.NoPermissionAccess"
+func (c *Client) DescribeClustersWithContext(ctx context.Context, request *DescribeClustersRequest) (response *DescribeClustersResponse, err error) {
+    if request == nil {
+        request = NewDescribeClustersRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeClusters require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeClustersResponse()
     err = c.Send(request, response)
     return
 }
@@ -1020,6 +1154,59 @@ func (c *Client) DescribeSystemResourcesWithContext(ctx context.Context, request
     request.SetContext(ctx)
     
     response = NewDescribeSystemResourcesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeTreeJobsRequest() (request *DescribeTreeJobsRequest) {
+    request = &DescribeTreeJobsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("oceanus", APIVersion, "DescribeTreeJobs")
+    
+    
+    return
+}
+
+func NewDescribeTreeJobsResponse() (response *DescribeTreeJobsResponse) {
+    response = &DescribeTreeJobsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeTreeJobs
+// 生成树状作业显示结构
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  UNSUPPORTEDOPERATION_NOPERMISSIONACCESS = "UnsupportedOperation.NoPermissionAccess"
+func (c *Client) DescribeTreeJobs(request *DescribeTreeJobsRequest) (response *DescribeTreeJobsResponse, err error) {
+    return c.DescribeTreeJobsWithContext(context.Background(), request)
+}
+
+// DescribeTreeJobs
+// 生成树状作业显示结构
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  UNSUPPORTEDOPERATION_NOPERMISSIONACCESS = "UnsupportedOperation.NoPermissionAccess"
+func (c *Client) DescribeTreeJobsWithContext(ctx context.Context, request *DescribeTreeJobsRequest) (response *DescribeTreeJobsResponse, err error) {
+    if request == nil {
+        request = NewDescribeTreeJobsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTreeJobs require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTreeJobsResponse()
     err = c.Send(request, response)
     return
 }

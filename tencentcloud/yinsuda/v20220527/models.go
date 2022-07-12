@@ -377,6 +377,12 @@ type KTVMusicDetailInfo struct {
 
 	// 副歌片段信息。
 	ChorusClipSet []*ChorusClip `json:"ChorusClipSet,omitempty" name:"ChorusClipSet"`
+
+	// 前奏间隔。
+	PreludeInterval *int64 `json:"PreludeInterval,omitempty" name:"PreludeInterval"`
+
+	// 歌曲流派列表。
+	GenreSet []*string `json:"GenreSet,omitempty" name:"GenreSet"`
 }
 
 type KTVPlaylistBaseInfo struct {

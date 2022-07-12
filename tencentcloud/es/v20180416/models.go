@@ -308,6 +308,9 @@ type CreateInstanceRequestParams struct {
 
 	// 创建https集群，默认是http
 	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
+
+	// 可维护时间段
+	OperationDuration *OperationDuration `json:"OperationDuration,omitempty" name:"OperationDuration"`
 }
 
 type CreateInstanceRequest struct {
@@ -410,6 +413,9 @@ type CreateInstanceRequest struct {
 
 	// 创建https集群，默认是http
 	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
+
+	// 可维护时间段
+	OperationDuration *OperationDuration `json:"OperationDuration,omitempty" name:"OperationDuration"`
 }
 
 func (r *CreateInstanceRequest) ToJsonString() string {
@@ -454,6 +460,7 @@ func (r *CreateInstanceRequest) FromJsonString(s string) error {
 	delete(f, "SceneType")
 	delete(f, "WebNodeTypeInfo")
 	delete(f, "Protocol")
+	delete(f, "OperationDuration")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateInstanceRequest has unknown keys!", "")
 	}
@@ -1086,6 +1093,9 @@ type DescribeInstancesRequestParams struct {
 
 	// 健康状态筛列表
 	HealthStatus []*int64 `json:"HealthStatus,omitempty" name:"HealthStatus"`
+
+	// Vpc列表 筛选项
+	VpcIds []*string `json:"VpcIds,omitempty" name:"VpcIds"`
 }
 
 type DescribeInstancesRequest struct {
@@ -1123,6 +1133,9 @@ type DescribeInstancesRequest struct {
 
 	// 健康状态筛列表
 	HealthStatus []*int64 `json:"HealthStatus,omitempty" name:"HealthStatus"`
+
+	// Vpc列表 筛选项
+	VpcIds []*string `json:"VpcIds,omitempty" name:"VpcIds"`
 }
 
 func (r *DescribeInstancesRequest) ToJsonString() string {
@@ -1148,6 +1161,7 @@ func (r *DescribeInstancesRequest) FromJsonString(s string) error {
 	delete(f, "IpList")
 	delete(f, "ZoneList")
 	delete(f, "HealthStatus")
+	delete(f, "VpcIds")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeInstancesRequest has unknown keys!", "")
 	}
@@ -1818,6 +1832,10 @@ type InstanceInfo struct {
 	// 集群的配置组信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EsConfigSets []*EsConfigSetInfo `json:"EsConfigSets,omitempty" name:"EsConfigSets"`
+
+	// 集群可维护时间段
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OperationDuration *OperationDuration `json:"OperationDuration,omitempty" name:"OperationDuration"`
 }
 
 type InstanceLog struct {
@@ -2042,6 +2060,38 @@ type OperationDetail struct {
 
 	// 实例更新后配置信息
 	NewInfo []*KeyValue `json:"NewInfo,omitempty" name:"NewInfo"`
+}
+
+type OperationDuration struct {
+	// 维护周期，表示周一到周日，可取值[0, 6]
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Periods []*uint64 `json:"Periods,omitempty" name:"Periods"`
+
+	// 维护开始时间
+	TimeStart *string `json:"TimeStart,omitempty" name:"TimeStart"`
+
+	// 维护结束时间
+	TimeEnd *string `json:"TimeEnd,omitempty" name:"TimeEnd"`
+
+	// 时区，以UTC形式表示
+	TimeZone *string `json:"TimeZone,omitempty" name:"TimeZone"`
+}
+
+type OperationDurationUpdated struct {
+	// 维护周期，表示周一到周日，可取值[0, 6]
+	Periods []*uint64 `json:"Periods,omitempty" name:"Periods"`
+
+	// 维护开始时间
+	TimeStart *string `json:"TimeStart,omitempty" name:"TimeStart"`
+
+	// 维护结束时间
+	TimeEnd *string `json:"TimeEnd,omitempty" name:"TimeEnd"`
+
+	// 时区，以UTC形式表示
+	TimeZone *string `json:"TimeZone,omitempty" name:"TimeZone"`
+
+	// ES集群ID数组
+	MoreInstances []*string `json:"MoreInstances,omitempty" name:"MoreInstances"`
 }
 
 // Predefined struct for user
@@ -2632,6 +2682,9 @@ type UpdateInstanceRequestParams struct {
 
 	// 新增或修改的配置组信息
 	EsConfigSet *EsConfigSetInfo `json:"EsConfigSet,omitempty" name:"EsConfigSet"`
+
+	// 可维护时间段
+	OperationDuration *OperationDurationUpdated `json:"OperationDuration,omitempty" name:"OperationDuration"`
 }
 
 type UpdateInstanceRequest struct {
@@ -2732,6 +2785,9 @@ type UpdateInstanceRequest struct {
 
 	// 新增或修改的配置组信息
 	EsConfigSet *EsConfigSetInfo `json:"EsConfigSet,omitempty" name:"EsConfigSet"`
+
+	// 可维护时间段
+	OperationDuration *OperationDurationUpdated `json:"OperationDuration,omitempty" name:"OperationDuration"`
 }
 
 func (r *UpdateInstanceRequest) ToJsonString() string {
@@ -2776,6 +2832,7 @@ func (r *UpdateInstanceRequest) FromJsonString(s string) error {
 	delete(f, "CerebroPublicAccess")
 	delete(f, "CerebroPrivateAccess")
 	delete(f, "EsConfigSet")
+	delete(f, "OperationDuration")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateInstanceRequest has unknown keys!", "")
 	}

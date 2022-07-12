@@ -1477,6 +1477,12 @@ type CreateSparkAppRequestParams struct {
 
 	// pyspark：python依赖, 除py文件外，还支持zip/egg等归档格式，多文件以逗号分隔
 	AppPythonFiles *string `json:"AppPythonFiles,omitempty" name:"AppPythonFiles"`
+
+	// archives：依赖上传方式，1、cos；2、lakefs（控制台使用，该方式不支持直接接口调用）
+	IsLocalArchives *string `json:"IsLocalArchives,omitempty" name:"IsLocalArchives"`
+
+	// archives：依赖资源
+	AppArchives *string `json:"AppArchives,omitempty" name:"AppArchives"`
 }
 
 type CreateSparkAppRequest struct {
@@ -1544,6 +1550,12 @@ type CreateSparkAppRequest struct {
 
 	// pyspark：python依赖, 除py文件外，还支持zip/egg等归档格式，多文件以逗号分隔
 	AppPythonFiles *string `json:"AppPythonFiles,omitempty" name:"AppPythonFiles"`
+
+	// archives：依赖上传方式，1、cos；2、lakefs（控制台使用，该方式不支持直接接口调用）
+	IsLocalArchives *string `json:"IsLocalArchives,omitempty" name:"IsLocalArchives"`
+
+	// archives：依赖资源
+	AppArchives *string `json:"AppArchives,omitempty" name:"AppArchives"`
 }
 
 func (r *CreateSparkAppRequest) ToJsonString() string {
@@ -1579,6 +1591,8 @@ func (r *CreateSparkAppRequest) FromJsonString(s string) error {
 	delete(f, "DataSource")
 	delete(f, "IsLocalPythonFiles")
 	delete(f, "AppPythonFiles")
+	delete(f, "IsLocalArchives")
+	delete(f, "AppArchives")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateSparkAppRequest has unknown keys!", "")
 	}
@@ -3541,7 +3555,7 @@ type DescribeSparkAppJobsRequestParams struct {
 	// 正序或者倒序，例如：desc
 	Sorting *string `json:"Sorting,omitempty" name:"Sorting"`
 
-	// 按照该参数过滤
+	// 按照该参数过滤,支持spark-job-name
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 更新时间起始点
@@ -3566,7 +3580,7 @@ type DescribeSparkAppJobsRequest struct {
 	// 正序或者倒序，例如：desc
 	Sorting *string `json:"Sorting,omitempty" name:"Sorting"`
 
-	// 按照该参数过滤
+	// 按照该参数过滤,支持spark-job-name
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 更新时间起始点
@@ -5155,6 +5169,12 @@ type ModifySparkAppRequestParams struct {
 
 	// 数据源名
 	DataSource *string `json:"DataSource,omitempty" name:"DataSource"`
+
+	// archives：依赖上传方式，1、cos；2、lakefs（控制台使用，该方式不支持直接接口调用）
+	IsLocalArchives *string `json:"IsLocalArchives,omitempty" name:"IsLocalArchives"`
+
+	// archives：依赖资源
+	AppArchives *string `json:"AppArchives,omitempty" name:"AppArchives"`
 }
 
 type ModifySparkAppRequest struct {
@@ -5225,6 +5245,12 @@ type ModifySparkAppRequest struct {
 
 	// 数据源名
 	DataSource *string `json:"DataSource,omitempty" name:"DataSource"`
+
+	// archives：依赖上传方式，1、cos；2、lakefs（控制台使用，该方式不支持直接接口调用）
+	IsLocalArchives *string `json:"IsLocalArchives,omitempty" name:"IsLocalArchives"`
+
+	// archives：依赖资源
+	AppArchives *string `json:"AppArchives,omitempty" name:"AppArchives"`
 }
 
 func (r *ModifySparkAppRequest) ToJsonString() string {
@@ -5261,6 +5287,8 @@ func (r *ModifySparkAppRequest) FromJsonString(s string) error {
 	delete(f, "CmdArgs")
 	delete(f, "MaxRetries")
 	delete(f, "DataSource")
+	delete(f, "IsLocalArchives")
+	delete(f, "AppArchives")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifySparkAppRequest has unknown keys!", "")
 	}
@@ -5695,9 +5723,25 @@ type SparkJobInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsLocalPythonFiles *string `json:"IsLocalPythonFiles,omitempty" name:"IsLocalPythonFiles"`
 
-	// pyspark：python依赖, 除py文件外，还支持zip/egg等归档格式，多文件以逗号分隔
+	// 注：该返回值已废弃
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AppPythonFiles *string `json:"AppPythonFiles,omitempty" name:"AppPythonFiles"`
+
+	// archives：依赖上传方式，1、cos；2、lakefs（控制台使用，该方式不支持直接接口调用）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsLocalArchives *string `json:"IsLocalArchives,omitempty" name:"IsLocalArchives"`
+
+	// archives：依赖资源
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	JobArchives *string `json:"JobArchives,omitempty" name:"JobArchives"`
+
+	// pyspark：python依赖, 除py文件外，还支持zip/egg等归档格式，多文件以逗号分隔
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	JobPythonFiles *string `json:"JobPythonFiles,omitempty" name:"JobPythonFiles"`
+
+	// 当前job正在运行或准备运行的任务个数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskNum *int64 `json:"TaskNum,omitempty" name:"TaskNum"`
 }
 
 type StreamingStatistics struct {

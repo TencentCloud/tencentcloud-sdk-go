@@ -2876,7 +2876,7 @@ func (r *DescribeInstanceZoneInfoResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeInstancesRequestParams struct {
-	// 实例列表的大小，参数默认值20，传值则以传参为准，如果传参大于具体配置etc/conf/component.properties中的DescribeInstancesPageLimit配置项 （读不到配置默认配置项为1000），则以配置项为准
+	// 返回数量，参数默认值20，最大值为1000
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 偏移量，取Limit整数倍
@@ -2947,12 +2947,15 @@ type DescribeInstancesRequestParams struct {
 
 	// 根据标签的Key筛选资源，不传或者传空数组则不进行过滤
 	TagKeys []*string `json:"TagKeys,omitempty" name:"TagKeys"`
+
+	// 需要过滤的产品版本支持多个，"local"本地盘版，"cloud"云盘版，"cdc"独享集群版，如果不传则默认不过滤
+	ProductVersions []*string `json:"ProductVersions,omitempty" name:"ProductVersions"`
 }
 
 type DescribeInstancesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例列表的大小，参数默认值20，传值则以传参为准，如果传参大于具体配置etc/conf/component.properties中的DescribeInstancesPageLimit配置项 （读不到配置默认配置项为1000），则以配置项为准
+	// 返回数量，参数默认值20，最大值为1000
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 偏移量，取Limit整数倍
@@ -3023,6 +3026,9 @@ type DescribeInstancesRequest struct {
 
 	// 根据标签的Key筛选资源，不传或者传空数组则不进行过滤
 	TagKeys []*string `json:"TagKeys,omitempty" name:"TagKeys"`
+
+	// 需要过滤的产品版本支持多个，"local"本地盘版，"cloud"云盘版，"cdc"独享集群版，如果不传则默认不过滤
+	ProductVersions []*string `json:"ProductVersions,omitempty" name:"ProductVersions"`
 }
 
 func (r *DescribeInstancesRequest) ToJsonString() string {
@@ -3061,6 +3067,7 @@ func (r *DescribeInstancesRequest) FromJsonString(s string) error {
 	delete(f, "MonitorVersion")
 	delete(f, "InstanceTags")
 	delete(f, "TagKeys")
+	delete(f, "ProductVersions")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeInstancesRequest has unknown keys!", "")
 	}

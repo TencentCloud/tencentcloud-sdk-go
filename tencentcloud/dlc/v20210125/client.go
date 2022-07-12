@@ -938,9 +938,7 @@ func NewCreateSparkAppResponse() (response *CreateSparkAppResponse) {
 // 创建spark应用
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDROLEARN = "InvalidParameter.InvalidRoleArn"
 func (c *Client) CreateSparkApp(request *CreateSparkAppRequest) (response *CreateSparkAppResponse, err error) {
     return c.CreateSparkAppWithContext(context.Background(), request)
 }
@@ -949,9 +947,7 @@ func (c *Client) CreateSparkApp(request *CreateSparkAppRequest) (response *Creat
 // 创建spark应用
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDROLEARN = "InvalidParameter.InvalidRoleArn"
 func (c *Client) CreateSparkAppWithContext(ctx context.Context, request *CreateSparkAppRequest) (response *CreateSparkAppResponse, err error) {
     if request == nil {
         request = NewCreateSparkAppRequest()
@@ -2050,6 +2046,8 @@ func NewDescribeSparkAppJobResponse() (response *DescribeSparkAppJobResponse) {
 // 查询具体的spark应用
 //
 // 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_INVALIDSPARKAPPPARAM = "InvalidParameter.InvalidSparkAppParam"
 func (c *Client) DescribeSparkAppJob(request *DescribeSparkAppJobRequest) (response *DescribeSparkAppJobResponse, err error) {
     return c.DescribeSparkAppJobWithContext(context.Background(), request)
@@ -2059,6 +2057,8 @@ func (c *Client) DescribeSparkAppJob(request *DescribeSparkAppJobRequest) (respo
 // 查询具体的spark应用
 //
 // 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_INVALIDSPARKAPPPARAM = "InvalidParameter.InvalidSparkAppParam"
 func (c *Client) DescribeSparkAppJobWithContext(ctx context.Context, request *DescribeSparkAppJobRequest) (response *DescribeSparkAppJobResponse, err error) {
     if request == nil {

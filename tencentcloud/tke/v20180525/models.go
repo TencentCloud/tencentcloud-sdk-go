@@ -10591,6 +10591,11 @@ type ExistedInstance struct {
 	// 实例计费模式。取值范围： PREPAID：表示预付费，即包年包月 POSTPAID_BY_HOUR：表示后付费，即按量计费 CDHPAID：CDH付费，即只对CDH计费，不对CDH上的实例计费。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceChargeType *string `json:"InstanceChargeType,omitempty" name:"InstanceChargeType"`
+
+	// 实例的IPv6地址。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IPv6Addresses []*string `json:"IPv6Addresses,omitempty" name:"IPv6Addresses"`
 }
 
 type ExistedInstancesForNode struct {

@@ -1783,6 +1783,9 @@ type CreateRuleRequestParams struct {
 
 	// 服务器名称指示（ServerNameIndication，简称SNI），当SNI开关打开时，该字段必填。
 	ServerNameIndication *string `json:"ServerNameIndication,omitempty" name:"ServerNameIndication"`
+
+	// HTTP强制跳转HTTPS。输入当前规则对应的域名与地址。
+	ForcedRedirect *string `json:"ForcedRedirect,omitempty" name:"ForcedRedirect"`
 }
 
 type CreateRuleRequest struct {
@@ -1821,6 +1824,9 @@ type CreateRuleRequest struct {
 
 	// 服务器名称指示（ServerNameIndication，简称SNI），当SNI开关打开时，该字段必填。
 	ServerNameIndication *string `json:"ServerNameIndication,omitempty" name:"ServerNameIndication"`
+
+	// HTTP强制跳转HTTPS。输入当前规则对应的域名与地址。
+	ForcedRedirect *string `json:"ForcedRedirect,omitempty" name:"ForcedRedirect"`
 }
 
 func (r *CreateRuleRequest) ToJsonString() string {
@@ -1846,6 +1852,7 @@ func (r *CreateRuleRequest) FromJsonString(s string) error {
 	delete(f, "ForwardHost")
 	delete(f, "ServerNameIndicationSwitch")
 	delete(f, "ServerNameIndication")
+	delete(f, "ForcedRedirect")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateRuleRequest has unknown keys!", "")
 	}
@@ -7177,6 +7184,9 @@ type ModifyRuleAttributeRequestParams struct {
 
 	// 服务器名称指示（ServerNameIndication，简称SNI），当SNI开关打开时，该字段必填。
 	ServerNameIndication *string `json:"ServerNameIndication,omitempty" name:"ServerNameIndication"`
+
+	// HTTP强制跳转HTTPS。输入当前规则对应的域名与地址。
+	ForcedRedirect *string `json:"ForcedRedirect,omitempty" name:"ForcedRedirect"`
 }
 
 type ModifyRuleAttributeRequest struct {
@@ -7218,6 +7228,9 @@ type ModifyRuleAttributeRequest struct {
 
 	// 服务器名称指示（ServerNameIndication，简称SNI），当SNI开关打开时，该字段必填。
 	ServerNameIndication *string `json:"ServerNameIndication,omitempty" name:"ServerNameIndication"`
+
+	// HTTP强制跳转HTTPS。输入当前规则对应的域名与地址。
+	ForcedRedirect *string `json:"ForcedRedirect,omitempty" name:"ForcedRedirect"`
 }
 
 func (r *ModifyRuleAttributeRequest) ToJsonString() string {
@@ -7242,6 +7255,7 @@ func (r *ModifyRuleAttributeRequest) FromJsonString(s string) error {
 	delete(f, "ForwardHost")
 	delete(f, "ServerNameIndicationSwitch")
 	delete(f, "ServerNameIndication")
+	delete(f, "ForcedRedirect")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyRuleAttributeRequest has unknown keys!", "")
 	}
@@ -8309,6 +8323,10 @@ type RuleInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ServerNameIndication *string `json:"ServerNameIndication,omitempty" name:"ServerNameIndication"`
+
+	// 强转HTTPS指示，当传递值为https:时表示强转为https
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ForcedRedirect *string `json:"ForcedRedirect,omitempty" name:"ForcedRedirect"`
 }
 
 type SecurityPolicyRuleIn struct {

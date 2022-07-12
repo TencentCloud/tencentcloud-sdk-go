@@ -205,7 +205,7 @@ func NewBatchDeregisterTargetsResponse() (response *BatchDeregisterTargetsRespon
 }
 
 // BatchDeregisterTargets
-// 批量解绑四七层后端服务。批量解绑的资源数量上限为500。
+// 批量解绑四七层后端服务。批量解绑的资源数量上限为500。只支持VPC网络负载均衡。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -230,7 +230,7 @@ func (c *Client) BatchDeregisterTargets(request *BatchDeregisterTargetsRequest) 
 }
 
 // BatchDeregisterTargets
-// 批量解绑四七层后端服务。批量解绑的资源数量上限为500。
+// 批量解绑四七层后端服务。批量解绑的资源数量上限为500。只支持VPC网络负载均衡。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -343,7 +343,7 @@ func NewBatchRegisterTargetsResponse() (response *BatchRegisterTargetsResponse) 
 }
 
 // BatchRegisterTargets
-// 批量绑定虚拟主机或弹性网卡，支持跨域绑定，支持四层、七层（TCP、UDP、HTTP、HTTPS）协议绑定。批量绑定的资源数量上限为500。
+// 批量绑定虚拟主机或弹性网卡，支持跨域绑定，支持四层、七层（TCP、UDP、HTTP、HTTPS）协议绑定。批量绑定的资源数量上限为500。只支持VPC网络负载均衡。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -367,7 +367,7 @@ func (c *Client) BatchRegisterTargets(request *BatchRegisterTargetsRequest) (res
 }
 
 // BatchRegisterTargets
-// 批量绑定虚拟主机或弹性网卡，支持跨域绑定，支持四层、七层（TCP、UDP、HTTP、HTTPS）协议绑定。批量绑定的资源数量上限为500。
+// 批量绑定虚拟主机或弹性网卡，支持跨域绑定，支持四层、七层（TCP、UDP、HTTP、HTTPS）协议绑定。批量绑定的资源数量上限为500。只支持VPC网络负载均衡。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

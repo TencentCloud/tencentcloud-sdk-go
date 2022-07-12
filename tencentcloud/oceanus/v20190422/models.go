@@ -20,6 +20,17 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+type CCN struct {
+	// 私有网络 ID
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 子网 ID
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+
+	// 云联网 ID，如 ccn-rahigzjd
+	CcnId *string `json:"CcnId,omitempty" name:"CcnId"`
+}
+
 // Predefined struct for user
 type CheckSavepointRequestParams struct {
 	// 作业 id
@@ -106,6 +117,137 @@ func (r *CheckSavepointResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *CheckSavepointResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type Cluster struct {
+	// 集群 ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 集群名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 地域
+	Region *string `json:"Region,omitempty" name:"Region"`
+
+	// 用户 AppID
+	AppId *uint64 `json:"AppId,omitempty" name:"AppId"`
+
+	// 主账号 UIN
+	OwnerUin *string `json:"OwnerUin,omitempty" name:"OwnerUin"`
+
+	// 创建者 UIN
+	CreatorUin *string `json:"CreatorUin,omitempty" name:"CreatorUin"`
+
+	// 集群状态, 1 未初始化,，3 初始化中，2 运行中
+	Status *int64 `json:"Status,omitempty" name:"Status"`
+
+	// 描述
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 集群创建时间
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 最后一次操作集群的时间
+	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+
+	// CU 数量
+	CuNum *uint64 `json:"CuNum,omitempty" name:"CuNum"`
+
+	// CU 内存规格
+	CuMem *uint64 `json:"CuMem,omitempty" name:"CuMem"`
+
+	// 可用区
+	Zone *string `json:"Zone,omitempty" name:"Zone"`
+
+	// 状态描述
+	StatusDesc *string `json:"StatusDesc,omitempty" name:"StatusDesc"`
+
+	// 网络
+	CCNs []*CCN `json:"CCNs,omitempty" name:"CCNs"`
+
+	// 网络
+	NetEnvironmentType *uint64 `json:"NetEnvironmentType,omitempty" name:"NetEnvironmentType"`
+
+	// 空闲 CU
+	FreeCuNum *int64 `json:"FreeCuNum,omitempty" name:"FreeCuNum"`
+
+	// 集群绑定的标签
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
+
+	// 集群隔离时间; 没隔离时间，则为 -
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsolatedTime *string `json:"IsolatedTime,omitempty" name:"IsolatedTime"`
+
+	// 集群过期时间; 没过期概念，则为 -
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExpireTime *string `json:"ExpireTime,omitempty" name:"ExpireTime"`
+
+	// 距离过期还有多少秒; 没过期概念，则为 -
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SecondsUntilExpiry *string `json:"SecondsUntilExpiry,omitempty" name:"SecondsUntilExpiry"`
+
+	// 自动续费标记，0 表示默认状态 (用户未设置，即初始状态，用户开通了预付费不停服特权会进行自动续费)， 1 表示自动续费，2表示明确不自动续费(用户设置)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitempty" name:"AutoRenewFlag"`
+
+	// 集群的默认 COS 存储桶
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DefaultCOSBucket *string `json:"DefaultCOSBucket,omitempty" name:"DefaultCOSBucket"`
+
+	// 集群的CLS 日志集 LogSet
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CLSLogSet *string `json:"CLSLogSet,omitempty" name:"CLSLogSet"`
+
+	// 集群的CLS 日志主题 TopicId
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CLSTopicId *string `json:"CLSTopicId,omitempty" name:"CLSTopicId"`
+
+	// 集群的CLS 日志集  名字
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CLSLogName *string `json:"CLSLogName,omitempty" name:"CLSLogName"`
+
+	// 集群的CLS 日志主题  名字
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CLSTopicName *string `json:"CLSTopicName,omitempty" name:"CLSTopicName"`
+
+	// 集群的版本信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Version *ClusterVersion `json:"Version,omitempty" name:"Version"`
+
+	// 细粒度资源下的空闲CU
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FreeCu *float64 `json:"FreeCu,omitempty" name:"FreeCu"`
+
+	// 集群的默认日志采集配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DefaultLogCollectConf *string `json:"DefaultLogCollectConf,omitempty" name:"DefaultLogCollectConf"`
+
+	// 取值：0-没有设置，1-已设置，2-不允许设置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CustomizedDNSEnabled *int64 `json:"CustomizedDNSEnabled,omitempty" name:"CustomizedDNSEnabled"`
+
+	// 空间信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Correlations []*WorkSpaceClusterItem `json:"Correlations,omitempty" name:"Correlations"`
+
+	// 运行CU
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RunningCu *float64 `json:"RunningCu,omitempty" name:"RunningCu"`
+
+	// 0 后付费,1 预付费
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PayMode *int64 `json:"PayMode,omitempty" name:"PayMode"`
+}
+
+type ClusterVersion struct {
+	// 集群的Flink版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Flink *string `json:"Flink,omitempty" name:"Flink"`
+
+	// 集群支持的Flink版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SupportedFlink []*string `json:"SupportedFlink,omitempty" name:"SupportedFlink"`
 }
 
 // Predefined struct for user
@@ -585,6 +727,67 @@ func (r *CreateResourceResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DeleteJobsRequestParams struct {
+	// 作业Id列表
+	JobIds []*string `json:"JobIds,omitempty" name:"JobIds"`
+
+	// 工作空间Id
+	WorkSpaceId *string `json:"WorkSpaceId,omitempty" name:"WorkSpaceId"`
+}
+
+type DeleteJobsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 作业Id列表
+	JobIds []*string `json:"JobIds,omitempty" name:"JobIds"`
+
+	// 工作空间Id
+	WorkSpaceId *string `json:"WorkSpaceId,omitempty" name:"WorkSpaceId"`
+}
+
+func (r *DeleteJobsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteJobsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "JobIds")
+	delete(f, "WorkSpaceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteJobsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteJobsResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DeleteJobsResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteJobsResponseParams `json:"Response"`
+}
+
+func (r *DeleteJobsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteJobsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DeleteResourceConfigsRequestParams struct {
 	// 资源ID
 	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
@@ -785,6 +988,101 @@ func (r *DeleteTableConfigResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteTableConfigResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeClustersRequestParams struct {
+	// 按照一个或者多个集群 ID 查询，每次请求的集群上限为 100
+	ClusterIds []*string `json:"ClusterIds,omitempty" name:"ClusterIds"`
+
+	// 偏移量，默认 0
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 请求的集群数量，默认 20，最大值 100
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 集群信息结果排序规则，1 按时间降序，2 按照时间升序，3  按照状态排序
+	OrderType *int64 `json:"OrderType,omitempty" name:"OrderType"`
+
+	// 过滤规则
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 工作空间 SerialId
+	WorkSpaceId *string `json:"WorkSpaceId,omitempty" name:"WorkSpaceId"`
+}
+
+type DescribeClustersRequest struct {
+	*tchttp.BaseRequest
+	
+	// 按照一个或者多个集群 ID 查询，每次请求的集群上限为 100
+	ClusterIds []*string `json:"ClusterIds,omitempty" name:"ClusterIds"`
+
+	// 偏移量，默认 0
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 请求的集群数量，默认 20，最大值 100
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 集群信息结果排序规则，1 按时间降序，2 按照时间升序，3  按照状态排序
+	OrderType *int64 `json:"OrderType,omitempty" name:"OrderType"`
+
+	// 过滤规则
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 工作空间 SerialId
+	WorkSpaceId *string `json:"WorkSpaceId,omitempty" name:"WorkSpaceId"`
+}
+
+func (r *DescribeClustersRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeClustersRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterIds")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "OrderType")
+	delete(f, "Filters")
+	delete(f, "WorkSpaceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeClustersRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeClustersResponseParams struct {
+	// 集群总数
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 集群列表
+	ClusterSet []*Cluster `json:"ClusterSet,omitempty" name:"ClusterSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeClustersResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeClustersResponseParams `json:"Response"`
+}
+
+func (r *DescribeClustersResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeClustersResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1448,6 +1746,60 @@ func (r *DescribeSystemResourcesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeSystemResourcesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeTreeJobsRequestParams struct {
+	// 工作空间 Serialid
+	WorkSpaceId *string `json:"WorkSpaceId,omitempty" name:"WorkSpaceId"`
+}
+
+type DescribeTreeJobsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 工作空间 Serialid
+	WorkSpaceId *string `json:"WorkSpaceId,omitempty" name:"WorkSpaceId"`
+}
+
+func (r *DescribeTreeJobsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTreeJobsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "WorkSpaceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTreeJobsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeTreeJobsResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeTreeJobsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeTreeJobsResponseParams `json:"Response"`
+}
+
+func (r *DescribeTreeJobsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTreeJobsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2116,6 +2468,16 @@ type SystemResourceItem struct {
 	LatestResourceConfigVersion *int64 `json:"LatestResourceConfigVersion,omitempty" name:"LatestResourceConfigVersion"`
 }
 
+type Tag struct {
+	// 标签键
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TagKey *string `json:"TagKey,omitempty" name:"TagKey"`
+
+	// 标签值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TagValue *string `json:"TagValue,omitempty" name:"TagValue"`
+}
+
 // Predefined struct for user
 type TriggerJobSavepointRequestParams struct {
 	// 作业 SerialId
@@ -2197,4 +2559,24 @@ func (r *TriggerJobSavepointResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *TriggerJobSavepointResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type WorkSpaceClusterItem struct {
+	// 集群 ID
+	ClusterGroupId *int64 `json:"ClusterGroupId,omitempty" name:"ClusterGroupId"`
+
+	// 集群 SerialId
+	ClusterGroupSerialId *string `json:"ClusterGroupSerialId,omitempty" name:"ClusterGroupSerialId"`
+
+	// 集群名称
+	ClusterName *string `json:"ClusterName,omitempty" name:"ClusterName"`
+
+	// 工作空间 SerialId
+	WorkSpaceId *string `json:"WorkSpaceId,omitempty" name:"WorkSpaceId"`
+
+	// 工作空间名称
+	WorkSpaceName *string `json:"WorkSpaceName,omitempty" name:"WorkSpaceName"`
+
+	// 绑定状态  2 绑定 1  解除绑定
+	Status *int64 `json:"Status,omitempty" name:"Status"`
 }
