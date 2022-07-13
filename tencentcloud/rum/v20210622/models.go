@@ -425,7 +425,7 @@ type CreateTawInstanceRequestParams struct {
 	// 片区Id，(至少大于0)
 	AreaId *int64 `json:"AreaId,omitempty" name:"AreaId"`
 
-	// 计费类型, (1=体验，2=预付费，3=后付费)
+	// 计费类型, (1=后付费，2=预付费)
 	ChargeType *int64 `json:"ChargeType,omitempty" name:"ChargeType"`
 
 	// 数据保存时间，(至少大于0)
@@ -456,7 +456,7 @@ type CreateTawInstanceRequest struct {
 	// 片区Id，(至少大于0)
 	AreaId *int64 `json:"AreaId,omitempty" name:"AreaId"`
 
-	// 计费类型, (1=体验，2=预付费，3=后付费)
+	// 计费类型, (1=后付费，2=预付费)
 	ChargeType *int64 `json:"ChargeType,omitempty" name:"ChargeType"`
 
 	// 数据保存时间，(至少大于0)

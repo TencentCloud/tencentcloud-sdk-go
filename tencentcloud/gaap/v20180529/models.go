@@ -157,6 +157,57 @@ func (r *AddRealServersResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type BanAndRecoverProxyRequestParams struct {
+
+}
+
+type BanAndRecoverProxyRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *BanAndRecoverProxyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BanAndRecoverProxyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BanAndRecoverProxyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type BanAndRecoverProxyResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type BanAndRecoverProxyResponse struct {
+	*tchttp.BaseResponse
+	Response *BanAndRecoverProxyResponseParams `json:"Response"`
+}
+
+func (r *BanAndRecoverProxyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BanAndRecoverProxyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type BandwidthPriceGradient struct {
 	// 带宽范围。
 	BandwidthRange []*int64 `json:"BandwidthRange,omitempty" name:"BandwidthRange"`
@@ -3214,6 +3265,57 @@ func (r *DescribeCountryAreaMappingResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeCountryAreaMappingResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCrossBorderProxiesRequestParams struct {
+
+}
+
+type DescribeCrossBorderProxiesRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DescribeCrossBorderProxiesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCrossBorderProxiesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCrossBorderProxiesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCrossBorderProxiesResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeCrossBorderProxiesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeCrossBorderProxiesResponseParams `json:"Response"`
+}
+
+func (r *DescribeCrossBorderProxiesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCrossBorderProxiesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

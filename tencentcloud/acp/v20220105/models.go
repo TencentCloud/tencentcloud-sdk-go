@@ -82,7 +82,7 @@ type AppTaskData struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskErrMsg *string `json:"TaskErrMsg,omitempty" name:"TaskErrMsg"`
 
-	// 任务来源,0:默认值(私域), 1:灵犀, 2:灵鲲
+	// 任务来源,0:小程序诊断, 1:预留字段(暂未使用), 2:app诊断(android)
 	Source *int64 `json:"Source,omitempty" name:"Source"`
 
 	// 应用信息
@@ -101,7 +101,7 @@ type AppTaskData struct {
 
 // Predefined struct for user
 type CreateAppScanTaskRepeatRequestParams struct {
-	// 任务来源, 0:默认值(私域), 1:灵犀, 2:灵鲲;
+	// 任务来源, 0:小程序诊断, 1:预留字段(暂未使用), 2:app诊断(android);
 	Source *int64 `json:"Source,omitempty" name:"Source"`
 
 	// 应用平台, 0:android, 1:ios, 2:小程序
@@ -116,13 +116,13 @@ type CreateAppScanTaskRepeatRequestParams struct {
 	// App包名
 	AppPackage *string `json:"AppPackage,omitempty" name:"AppPackage"`
 
-	// 上传的文件ID(灵犀诊断必填)
+	// 上传的文件ID(任务来源为1时必填)
 	FileID *string `json:"FileID,omitempty" name:"FileID"`
 
-	// 软件下载链接地址(灵鲲诊断必填)
+	// 软件下载链接地址(任务来源为2时必填)
 	AppDownloadUrl *string `json:"AppDownloadUrl,omitempty" name:"AppDownloadUrl"`
 
-	// 隐私文本下载地址(灵鲲诊断必填)
+	// 隐私文本下载地址(任务来源为2时必填)
 	PrivacyTextUrl *string `json:"PrivacyTextUrl,omitempty" name:"PrivacyTextUrl"`
 
 	// 应用名称
@@ -135,7 +135,7 @@ type CreateAppScanTaskRepeatRequestParams struct {
 type CreateAppScanTaskRepeatRequest struct {
 	*tchttp.BaseRequest
 	
-	// 任务来源, 0:默认值(私域), 1:灵犀, 2:灵鲲;
+	// 任务来源, 0:小程序诊断, 1:预留字段(暂未使用), 2:app诊断(android);
 	Source *int64 `json:"Source,omitempty" name:"Source"`
 
 	// 应用平台, 0:android, 1:ios, 2:小程序
@@ -150,13 +150,13 @@ type CreateAppScanTaskRepeatRequest struct {
 	// App包名
 	AppPackage *string `json:"AppPackage,omitempty" name:"AppPackage"`
 
-	// 上传的文件ID(灵犀诊断必填)
+	// 上传的文件ID(任务来源为1时必填)
 	FileID *string `json:"FileID,omitempty" name:"FileID"`
 
-	// 软件下载链接地址(灵鲲诊断必填)
+	// 软件下载链接地址(任务来源为2时必填)
 	AppDownloadUrl *string `json:"AppDownloadUrl,omitempty" name:"AppDownloadUrl"`
 
-	// 隐私文本下载地址(灵鲲诊断必填)
+	// 隐私文本下载地址(任务来源为2时必填)
 	PrivacyTextUrl *string `json:"PrivacyTextUrl,omitempty" name:"PrivacyTextUrl"`
 
 	// 应用名称
@@ -227,7 +227,7 @@ type CreateAppScanTaskRequestParams struct {
 	// 任务类型, 0:基础版, 1:专家版, 2:本地化
 	TaskType *int64 `json:"TaskType,omitempty" name:"TaskType"`
 
-	// 任务来源, 0:默认值(私域), 1:灵犀, 2:灵鲲;
+	// 任务来源, 0:小程序诊断, 1:预留字段(暂未使用), 2:app诊断(android);
 	Source *int64 `json:"Source,omitempty" name:"Source"`
 
 	// 应用平台, 0:android, 1:ios, 2:小程序
@@ -242,13 +242,13 @@ type CreateAppScanTaskRequestParams struct {
 	// App版本
 	AppVersion *string `json:"AppVersion,omitempty" name:"AppVersion"`
 
-	// 上传的软件文件ID(灵犀诊断必填)
+	// 上传的软件文件ID(任务来源为1时必填)
 	FileID *string `json:"FileID,omitempty" name:"FileID"`
 
-	// 软件下载链接地址(灵鲲诊断必填)
+	// 软件下载链接地址(任务来源为2时必填)
 	AppDownloadUrl *string `json:"AppDownloadUrl,omitempty" name:"AppDownloadUrl"`
 
-	// 隐私文本下载地址(灵鲲诊断必填)
+	// 隐私文本下载地址(任务来源为2时必填)
 	PrivacyTextUrl *string `json:"PrivacyTextUrl,omitempty" name:"PrivacyTextUrl"`
 
 	// 联系人信息
@@ -282,7 +282,7 @@ type CreateAppScanTaskRequest struct {
 	// 任务类型, 0:基础版, 1:专家版, 2:本地化
 	TaskType *int64 `json:"TaskType,omitempty" name:"TaskType"`
 
-	// 任务来源, 0:默认值(私域), 1:灵犀, 2:灵鲲;
+	// 任务来源, 0:小程序诊断, 1:预留字段(暂未使用), 2:app诊断(android);
 	Source *int64 `json:"Source,omitempty" name:"Source"`
 
 	// 应用平台, 0:android, 1:ios, 2:小程序
@@ -297,13 +297,13 @@ type CreateAppScanTaskRequest struct {
 	// App版本
 	AppVersion *string `json:"AppVersion,omitempty" name:"AppVersion"`
 
-	// 上传的软件文件ID(灵犀诊断必填)
+	// 上传的软件文件ID(任务来源为1时必填)
 	FileID *string `json:"FileID,omitempty" name:"FileID"`
 
-	// 软件下载链接地址(灵鲲诊断必填)
+	// 软件下载链接地址(任务来源为2时必填)
 	AppDownloadUrl *string `json:"AppDownloadUrl,omitempty" name:"AppDownloadUrl"`
 
-	// 隐私文本下载地址(灵鲲诊断必填)
+	// 隐私文本下载地址(任务来源为2时必填)
 	PrivacyTextUrl *string `json:"PrivacyTextUrl,omitempty" name:"PrivacyTextUrl"`
 
 	// 联系人信息
@@ -397,7 +397,7 @@ func (r *CreateAppScanTaskResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeFileTicketRequestParams struct {
-	// 任务来源, 0:默认值(私域), 1:灵犀, 2:灵鲲;
+	// 任务来源, 0:小程序诊断, 1:预留字段(暂未使用), 2:app诊断(android);
 	Source *int64 `json:"Source,omitempty" name:"Source"`
 
 	// 应用平台, 0:android, 1:ios, 2:小程序
@@ -407,7 +407,7 @@ type DescribeFileTicketRequestParams struct {
 type DescribeFileTicketRequest struct {
 	*tchttp.BaseRequest
 	
-	// 任务来源, 0:默认值(私域), 1:灵犀, 2:灵鲲;
+	// 任务来源, 0:小程序诊断, 1:预留字段(暂未使用), 2:app诊断(android);
 	Source *int64 `json:"Source,omitempty" name:"Source"`
 
 	// 应用平台, 0:android, 1:ios, 2:小程序
@@ -439,14 +439,14 @@ type DescribeFileTicketResponseParams struct {
 	// 返回值, 0:成功, 其他值请查看“返回值”定义
 	Result *int64 `json:"Result,omitempty" name:"Result"`
 
-	// 上传url(灵鲲:Post方法（100:apk,101:txt）, 灵犀:put方法)
+	// 上传url(任务来源为2时:Post方法（100:apk,101:txt）, 任务来源为1时:put方法)
 	UploadUrl *string `json:"UploadUrl,omitempty" name:"UploadUrl"`
 
-	// 上传url鉴权信息(灵犀上传需要, Authorization参数值)
+	// 上传url鉴权信息(任务来源为1时上传需要, Authorization参数值)
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UploadSign *string `json:"UploadSign,omitempty" name:"UploadSign"`
 
-	// 上传文件ID(灵犀提交诊断任务需要)
+	// 上传文件ID(任务来源为1时提交诊断任务需要)
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FildID *string `json:"FildID,omitempty" name:"FildID"`
 
@@ -532,7 +532,7 @@ func (r *DescribeResourceUsageInfoResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeScanTaskListRequestParams struct {
-	// 任务来源, -1:所有, 0:默认值(私域), 1:灵犀, 2:灵鲲;
+	// 任务来源, -1:所有, 0:小程序诊断, 1:预留字段(暂未使用), 2:app诊断(android);
 	Source *int64 `json:"Source,omitempty" name:"Source"`
 
 	// 应用平台, 0:android, 1:ios, 2:小程序
@@ -563,7 +563,7 @@ type DescribeScanTaskListRequestParams struct {
 type DescribeScanTaskListRequest struct {
 	*tchttp.BaseRequest
 	
-	// 任务来源, -1:所有, 0:默认值(私域), 1:灵犀, 2:灵鲲;
+	// 任务来源, -1:所有, 0:小程序诊断, 1:预留字段(暂未使用), 2:app诊断(android);
 	Source *int64 `json:"Source,omitempty" name:"Source"`
 
 	// 应用平台, 0:android, 1:ios, 2:小程序
@@ -652,7 +652,7 @@ func (r *DescribeScanTaskListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeScanTaskReportUrlRequestParams struct {
-	// 任务来源, 0:默认值(私域), 1:灵犀, 2:灵鲲;
+	// 任务来源, 0:小程序诊断, 1:预留字段(暂未使用), 2:app诊断(android);
 	Source *int64 `json:"Source,omitempty" name:"Source"`
 
 	// 应用平台, 0:android, 1:ios, 2:小程序
@@ -671,7 +671,7 @@ type DescribeScanTaskReportUrlRequestParams struct {
 type DescribeScanTaskReportUrlRequest struct {
 	*tchttp.BaseRequest
 	
-	// 任务来源, 0:默认值(私域), 1:灵犀, 2:灵鲲;
+	// 任务来源, 0:小程序诊断, 1:预留字段(暂未使用), 2:app诊断(android);
 	Source *int64 `json:"Source,omitempty" name:"Source"`
 
 	// 应用平台, 0:android, 1:ios, 2:小程序
@@ -745,7 +745,7 @@ func (r *DescribeScanTaskReportUrlResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeScanTaskStatusRequestParams struct {
-	// 任务来源, 0:默认值(私域), 1:灵犀, 2:灵鲲;
+	// 任务来源, 0:小程序诊断, 1:预留字段(暂未使用), 2:app诊断(android);
 	Source *int64 `json:"Source,omitempty" name:"Source"`
 
 	// 应用平台, 0:android, 1:ios, 2:小程序
@@ -761,7 +761,7 @@ type DescribeScanTaskStatusRequestParams struct {
 type DescribeScanTaskStatusRequest struct {
 	*tchttp.BaseRequest
 	
-	// 任务来源, 0:默认值(私域), 1:灵犀, 2:灵鲲;
+	// 任务来源, 0:小程序诊断, 1:预留字段(暂未使用), 2:app诊断(android);
 	Source *int64 `json:"Source,omitempty" name:"Source"`
 
 	// 应用平台, 0:android, 1:ios, 2:小程序

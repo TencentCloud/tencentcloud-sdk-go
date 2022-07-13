@@ -127,6 +127,59 @@ func (c *Client) CallDeviceActionSyncWithContext(ctx context.Context, request *C
     return
 }
 
+func NewCreateProductRequest() (request *CreateProductRequest) {
+    request = &CreateProductRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotvideo", APIVersion, "CreateProduct")
+    
+    
+    return
+}
+
+func NewCreateProductResponse() (response *CreateProductResponse) {
+    response = &CreateProductResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateProduct
+// 创建产品
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateProduct(request *CreateProductRequest) (response *CreateProductResponse, err error) {
+    return c.CreateProductWithContext(context.Background(), request)
+}
+
+// CreateProduct
+// 创建产品
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateProductWithContext(ctx context.Context, request *CreateProductRequest) (response *CreateProductResponse, err error) {
+    if request == nil {
+        request = NewCreateProductRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateProduct require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateProductResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDeviceDataStatsRequest() (request *DescribeDeviceDataStatsRequest) {
     request = &DescribeDeviceDataStatsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -146,12 +199,24 @@ func NewDescribeDeviceDataStatsResponse() (response *DescribeDeviceDataStatsResp
 
 // DescribeDeviceDataStats
 // 查询设备数据统计
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeDeviceDataStats(request *DescribeDeviceDataStatsRequest) (response *DescribeDeviceDataStatsResponse, err error) {
     return c.DescribeDeviceDataStatsWithContext(context.Background(), request)
 }
 
 // DescribeDeviceDataStats
 // 查询设备数据统计
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeDeviceDataStatsWithContext(ctx context.Context, request *DescribeDeviceDataStatsRequest) (response *DescribeDeviceDataStatsResponse, err error) {
     if request == nil {
         request = NewDescribeDeviceDataStatsRequest()
@@ -187,12 +252,24 @@ func NewDescribeMessageDataStatsResponse() (response *DescribeMessageDataStatsRe
 
 // DescribeMessageDataStats
 // 查询设备消息数量统计
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeMessageDataStats(request *DescribeMessageDataStatsRequest) (response *DescribeMessageDataStatsResponse, err error) {
     return c.DescribeMessageDataStatsWithContext(context.Background(), request)
 }
 
 // DescribeMessageDataStats
 // 查询设备消息数量统计
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeMessageDataStatsWithContext(ctx context.Context, request *DescribeMessageDataStatsRequest) (response *DescribeMessageDataStatsResponse, err error) {
     if request == nil {
         request = NewDescribeMessageDataStatsRequest()
@@ -205,6 +282,59 @@ func (c *Client) DescribeMessageDataStatsWithContext(ctx context.Context, reques
     request.SetContext(ctx)
     
     response = NewDescribeMessageDataStatsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewGenSingleDeviceSignatureOfPublicRequest() (request *GenSingleDeviceSignatureOfPublicRequest) {
+    request = &GenSingleDeviceSignatureOfPublicRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotvideo", APIVersion, "GenSingleDeviceSignatureOfPublic")
+    
+    
+    return
+}
+
+func NewGenSingleDeviceSignatureOfPublicResponse() (response *GenSingleDeviceSignatureOfPublicResponse) {
+    response = &GenSingleDeviceSignatureOfPublicResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// GenSingleDeviceSignatureOfPublic
+// 获取设备的绑定签名
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) GenSingleDeviceSignatureOfPublic(request *GenSingleDeviceSignatureOfPublicRequest) (response *GenSingleDeviceSignatureOfPublicResponse, err error) {
+    return c.GenSingleDeviceSignatureOfPublicWithContext(context.Background(), request)
+}
+
+// GenSingleDeviceSignatureOfPublic
+// 获取设备的绑定签名
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) GenSingleDeviceSignatureOfPublicWithContext(ctx context.Context, request *GenSingleDeviceSignatureOfPublicRequest) (response *GenSingleDeviceSignatureOfPublicResponse, err error) {
+    if request == nil {
+        request = NewGenSingleDeviceSignatureOfPublicRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GenSingleDeviceSignatureOfPublic require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGenSingleDeviceSignatureOfPublicResponse()
     err = c.Send(request, response)
     return
 }

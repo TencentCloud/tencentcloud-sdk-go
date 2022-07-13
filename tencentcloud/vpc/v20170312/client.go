@@ -10436,6 +10436,7 @@ func NewDescribeVpcEndPointServiceResponse() (response *DescribeVpcEndPointServi
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
 //  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION_INSTANCEMISMATCH = "UnsupportedOperation.InstanceMismatch"
 //  UNSUPPORTEDOPERATION_ROLENOTFOUND = "UnsupportedOperation.RoleNotFound"
 func (c *Client) DescribeVpcEndPointService(request *DescribeVpcEndPointServiceRequest) (response *DescribeVpcEndPointServiceResponse, err error) {
     return c.DescribeVpcEndPointServiceWithContext(context.Background(), request)
@@ -10451,6 +10452,7 @@ func (c *Client) DescribeVpcEndPointService(request *DescribeVpcEndPointServiceR
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
 //  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION_INSTANCEMISMATCH = "UnsupportedOperation.InstanceMismatch"
 //  UNSUPPORTEDOPERATION_ROLENOTFOUND = "UnsupportedOperation.RoleNotFound"
 func (c *Client) DescribeVpcEndPointServiceWithContext(ctx context.Context, request *DescribeVpcEndPointServiceRequest) (response *DescribeVpcEndPointServiceResponse, err error) {
     if request == nil {

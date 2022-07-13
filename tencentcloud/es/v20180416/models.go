@@ -497,6 +497,175 @@ func (r *CreateInstanceResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateLogstashInstanceRequestParams struct {
+	// 实例名称（1-50 个英文、汉字、数字、连接线-或下划线_）
+	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
+
+	// 可用区
+	Zone *string `json:"Zone,omitempty" name:"Zone"`
+
+	// 实例版本（支持"6.8.13"、"7.10.1"）
+	LogstashVersion *string `json:"LogstashVersion,omitempty" name:"LogstashVersion"`
+
+	// 私有网络ID
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 子网ID
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+
+	// 节点数量（2-50个）
+	NodeNum *uint64 `json:"NodeNum,omitempty" name:"NodeNum"`
+
+	// 计费类型<li>PREPAID：预付费，即包年包月</li><li>POSTPAID_BY_HOUR：按小时后付费</li>默认值POSTPAID_BY_HOUR
+	ChargeType *string `json:"ChargeType,omitempty" name:"ChargeType"`
+
+	// 包年包月购买时长（单位由参数TimeUnit决定）
+	ChargePeriod *uint64 `json:"ChargePeriod,omitempty" name:"ChargePeriod"`
+
+	// 计费时长单位（ChargeType为PREPAID时需要设置，默认值为“m”，表示月，当前只支持“m”）
+	TimeUnit *string `json:"TimeUnit,omitempty" name:"TimeUnit"`
+
+	// 是否自动使用代金券<li>0：不自动使用</li><li>1：自动使用</li>默认值0
+	AutoVoucher *int64 `json:"AutoVoucher,omitempty" name:"AutoVoucher"`
+
+	// 代金券ID列表（目前仅支持指定一张代金券）
+	VoucherIds []*string `json:"VoucherIds,omitempty" name:"VoucherIds"`
+
+	// 自动续费标识<li>RENEW_FLAG_AUTO：自动续费</li><li>RENEW_FLAG_MANUAL：不自动续费，用户手动续费</li>ChargeType为PREPAID时需要设置，如不传递该参数，普通用户默认不自动续费，SVIP用户自动续费
+	RenewFlag *string `json:"RenewFlag,omitempty" name:"RenewFlag"`
+
+	// 节点规格<li>LOGSTASH.S1.SMALL2：1核2G</li><li>LOGSTASH.S1.MEDIUM4：2核4G</li><li>LOGSTASH.S1.MEDIUM8：2核8G</li><li>LOGSTASH.S1.LARGE16：4核16G</li><li>LOGSTASH.S1.2XLARGE32：8核32G</li><li>LOGSTASH.S1.4XLARGE32：16核32G</li><li>LOGSTASH.S1.4XLARGE64：16核64G</li>
+	NodeType *string `json:"NodeType,omitempty" name:"NodeType"`
+
+	// 节点磁盘类型<li>CLOUD_SSD：SSD云硬盘</li><li>CLOUD_PREMIUM：高硬能云硬盘</li>默认值CLOUD_SSD
+	DiskType *string `json:"DiskType,omitempty" name:"DiskType"`
+
+	// 节点磁盘容量（单位GB）
+	DiskSize *uint64 `json:"DiskSize,omitempty" name:"DiskSize"`
+
+	// License类型<li>oss：开源版</li><li>xpack：xpack版</li>默认值xpack
+	LicenseType *string `json:"LicenseType,omitempty" name:"LicenseType"`
+
+	// 标签信息列表
+	TagList []*TagInfo `json:"TagList,omitempty" name:"TagList"`
+}
+
+type CreateLogstashInstanceRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例名称（1-50 个英文、汉字、数字、连接线-或下划线_）
+	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
+
+	// 可用区
+	Zone *string `json:"Zone,omitempty" name:"Zone"`
+
+	// 实例版本（支持"6.8.13"、"7.10.1"）
+	LogstashVersion *string `json:"LogstashVersion,omitempty" name:"LogstashVersion"`
+
+	// 私有网络ID
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 子网ID
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+
+	// 节点数量（2-50个）
+	NodeNum *uint64 `json:"NodeNum,omitempty" name:"NodeNum"`
+
+	// 计费类型<li>PREPAID：预付费，即包年包月</li><li>POSTPAID_BY_HOUR：按小时后付费</li>默认值POSTPAID_BY_HOUR
+	ChargeType *string `json:"ChargeType,omitempty" name:"ChargeType"`
+
+	// 包年包月购买时长（单位由参数TimeUnit决定）
+	ChargePeriod *uint64 `json:"ChargePeriod,omitempty" name:"ChargePeriod"`
+
+	// 计费时长单位（ChargeType为PREPAID时需要设置，默认值为“m”，表示月，当前只支持“m”）
+	TimeUnit *string `json:"TimeUnit,omitempty" name:"TimeUnit"`
+
+	// 是否自动使用代金券<li>0：不自动使用</li><li>1：自动使用</li>默认值0
+	AutoVoucher *int64 `json:"AutoVoucher,omitempty" name:"AutoVoucher"`
+
+	// 代金券ID列表（目前仅支持指定一张代金券）
+	VoucherIds []*string `json:"VoucherIds,omitempty" name:"VoucherIds"`
+
+	// 自动续费标识<li>RENEW_FLAG_AUTO：自动续费</li><li>RENEW_FLAG_MANUAL：不自动续费，用户手动续费</li>ChargeType为PREPAID时需要设置，如不传递该参数，普通用户默认不自动续费，SVIP用户自动续费
+	RenewFlag *string `json:"RenewFlag,omitempty" name:"RenewFlag"`
+
+	// 节点规格<li>LOGSTASH.S1.SMALL2：1核2G</li><li>LOGSTASH.S1.MEDIUM4：2核4G</li><li>LOGSTASH.S1.MEDIUM8：2核8G</li><li>LOGSTASH.S1.LARGE16：4核16G</li><li>LOGSTASH.S1.2XLARGE32：8核32G</li><li>LOGSTASH.S1.4XLARGE32：16核32G</li><li>LOGSTASH.S1.4XLARGE64：16核64G</li>
+	NodeType *string `json:"NodeType,omitempty" name:"NodeType"`
+
+	// 节点磁盘类型<li>CLOUD_SSD：SSD云硬盘</li><li>CLOUD_PREMIUM：高硬能云硬盘</li>默认值CLOUD_SSD
+	DiskType *string `json:"DiskType,omitempty" name:"DiskType"`
+
+	// 节点磁盘容量（单位GB）
+	DiskSize *uint64 `json:"DiskSize,omitempty" name:"DiskSize"`
+
+	// License类型<li>oss：开源版</li><li>xpack：xpack版</li>默认值xpack
+	LicenseType *string `json:"LicenseType,omitempty" name:"LicenseType"`
+
+	// 标签信息列表
+	TagList []*TagInfo `json:"TagList,omitempty" name:"TagList"`
+}
+
+func (r *CreateLogstashInstanceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateLogstashInstanceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceName")
+	delete(f, "Zone")
+	delete(f, "LogstashVersion")
+	delete(f, "VpcId")
+	delete(f, "SubnetId")
+	delete(f, "NodeNum")
+	delete(f, "ChargeType")
+	delete(f, "ChargePeriod")
+	delete(f, "TimeUnit")
+	delete(f, "AutoVoucher")
+	delete(f, "VoucherIds")
+	delete(f, "RenewFlag")
+	delete(f, "NodeType")
+	delete(f, "DiskType")
+	delete(f, "DiskSize")
+	delete(f, "LicenseType")
+	delete(f, "TagList")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateLogstashInstanceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateLogstashInstanceResponseParams struct {
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateLogstashInstanceResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateLogstashInstanceResponseParams `json:"Response"`
+}
+
+func (r *CreateLogstashInstanceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateLogstashInstanceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DeleteIndexRequestParams struct {
 	// ES集群ID
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
@@ -636,6 +805,121 @@ func (r *DeleteInstanceResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteInstanceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteLogstashInstanceRequestParams struct {
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+}
+
+type DeleteLogstashInstanceRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+}
+
+func (r *DeleteLogstashInstanceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteLogstashInstanceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteLogstashInstanceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteLogstashInstanceResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DeleteLogstashInstanceResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteLogstashInstanceResponseParams `json:"Response"`
+}
+
+func (r *DeleteLogstashInstanceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteLogstashInstanceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteLogstashPipelinesRequestParams struct {
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 管道ID列表
+	PipelineIds []*string `json:"PipelineIds,omitempty" name:"PipelineIds"`
+}
+
+type DeleteLogstashPipelinesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 管道ID列表
+	PipelineIds []*string `json:"PipelineIds,omitempty" name:"PipelineIds"`
+}
+
+func (r *DeleteLogstashPipelinesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteLogstashPipelinesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "PipelineIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteLogstashPipelinesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteLogstashPipelinesResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DeleteLogstashPipelinesResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteLogstashPipelinesResponseParams `json:"Response"`
+}
+
+func (r *DeleteLogstashPipelinesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteLogstashPipelinesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1193,6 +1477,375 @@ func (r *DescribeInstancesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeInstancesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeLogstashInstanceLogsRequestParams struct {
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 日志类型，默认值为1
+	// <li>1, 主日志</li>
+	// <li>2, 慢日志</li>
+	// <li>3, GC日志</li>
+	LogType *uint64 `json:"LogType,omitempty" name:"LogType"`
+
+	// 搜索词，支持LUCENE语法，如 level:WARN、ip:1.1.1.1、message:test-index等
+	SearchKey *string `json:"SearchKey,omitempty" name:"SearchKey"`
+
+	// 日志开始时间，格式为YYYY-MM-DD HH:MM:SS, 如2019-01-22 20:15:53
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 日志结束时间，格式为YYYY-MM-DD HH:MM:SS, 如2019-01-22 20:15:53
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 分页起始值, 默认值为0
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 分页大小，默认值为100，最大值100
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 时间排序方式，默认值为0
+	// <li>0, 降序</li>
+	// <li>1, 升序</li>
+	OrderByType *uint64 `json:"OrderByType,omitempty" name:"OrderByType"`
+}
+
+type DescribeLogstashInstanceLogsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 日志类型，默认值为1
+	// <li>1, 主日志</li>
+	// <li>2, 慢日志</li>
+	// <li>3, GC日志</li>
+	LogType *uint64 `json:"LogType,omitempty" name:"LogType"`
+
+	// 搜索词，支持LUCENE语法，如 level:WARN、ip:1.1.1.1、message:test-index等
+	SearchKey *string `json:"SearchKey,omitempty" name:"SearchKey"`
+
+	// 日志开始时间，格式为YYYY-MM-DD HH:MM:SS, 如2019-01-22 20:15:53
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 日志结束时间，格式为YYYY-MM-DD HH:MM:SS, 如2019-01-22 20:15:53
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 分页起始值, 默认值为0
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 分页大小，默认值为100，最大值100
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 时间排序方式，默认值为0
+	// <li>0, 降序</li>
+	// <li>1, 升序</li>
+	OrderByType *uint64 `json:"OrderByType,omitempty" name:"OrderByType"`
+}
+
+func (r *DescribeLogstashInstanceLogsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLogstashInstanceLogsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "LogType")
+	delete(f, "SearchKey")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "OrderByType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLogstashInstanceLogsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeLogstashInstanceLogsResponseParams struct {
+	// 返回的日志条数
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 日志详细信息列表
+	InstanceLogList []*InstanceLog `json:"InstanceLogList,omitempty" name:"InstanceLogList"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeLogstashInstanceLogsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeLogstashInstanceLogsResponseParams `json:"Response"`
+}
+
+func (r *DescribeLogstashInstanceLogsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLogstashInstanceLogsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeLogstashInstanceOperationsRequestParams struct {
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 起始时间, e.g. "2019-03-07 16:30:39"
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间, e.g. "2019-03-30 20:18:03"
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 分页起始值
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 分页大小
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+type DescribeLogstashInstanceOperationsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 起始时间, e.g. "2019-03-07 16:30:39"
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间, e.g. "2019-03-30 20:18:03"
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 分页起始值
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 分页大小
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribeLogstashInstanceOperationsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLogstashInstanceOperationsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLogstashInstanceOperationsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeLogstashInstanceOperationsResponseParams struct {
+	// 操作记录总数
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 操作记录
+	Operations []*Operation `json:"Operations,omitempty" name:"Operations"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeLogstashInstanceOperationsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeLogstashInstanceOperationsResponseParams `json:"Response"`
+}
+
+func (r *DescribeLogstashInstanceOperationsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLogstashInstanceOperationsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeLogstashInstancesRequestParams struct {
+	// 实例所属可用区，不传则默认所有可用区
+	Zone *string `json:"Zone,omitempty" name:"Zone"`
+
+	// 实例ID列表
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
+
+	// 实例名称列表
+	InstanceNames []*string `json:"InstanceNames,omitempty" name:"InstanceNames"`
+
+	// 分页起始值, 默认值0
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 分页大小，默认值20
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 排序字段<li>1：实例ID</li><li>2：实例名称</li><li>3：可用区</li><li>4：创建时间</li>若orderKey未传递则按创建时间降序排序
+	OrderByKey *uint64 `json:"OrderByKey,omitempty" name:"OrderByKey"`
+
+	// 排序方式<li>0：升序</li><li>1：降序</li>若传递了orderByKey未传递orderByType, 则默认升序
+	OrderByType *uint64 `json:"OrderByType,omitempty" name:"OrderByType"`
+}
+
+type DescribeLogstashInstancesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例所属可用区，不传则默认所有可用区
+	Zone *string `json:"Zone,omitempty" name:"Zone"`
+
+	// 实例ID列表
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
+
+	// 实例名称列表
+	InstanceNames []*string `json:"InstanceNames,omitempty" name:"InstanceNames"`
+
+	// 分页起始值, 默认值0
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 分页大小，默认值20
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 排序字段<li>1：实例ID</li><li>2：实例名称</li><li>3：可用区</li><li>4：创建时间</li>若orderKey未传递则按创建时间降序排序
+	OrderByKey *uint64 `json:"OrderByKey,omitempty" name:"OrderByKey"`
+
+	// 排序方式<li>0：升序</li><li>1：降序</li>若传递了orderByKey未传递orderByType, 则默认升序
+	OrderByType *uint64 `json:"OrderByType,omitempty" name:"OrderByType"`
+}
+
+func (r *DescribeLogstashInstancesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLogstashInstancesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Zone")
+	delete(f, "InstanceIds")
+	delete(f, "InstanceNames")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "OrderByKey")
+	delete(f, "OrderByType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLogstashInstancesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeLogstashInstancesResponseParams struct {
+	// 返回的实例个数
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 实例详细信息列表
+	InstanceList []*LogstashInstanceInfo `json:"InstanceList,omitempty" name:"InstanceList"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeLogstashInstancesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeLogstashInstancesResponseParams `json:"Response"`
+}
+
+func (r *DescribeLogstashInstancesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLogstashInstancesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeLogstashPipelinesRequestParams struct {
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+}
+
+type DescribeLogstashPipelinesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+}
+
+func (r *DescribeLogstashPipelinesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLogstashPipelinesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLogstashPipelinesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeLogstashPipelinesResponseParams struct {
+	// 管道总数
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 管道列表
+	LogstashPipelineList []*LogstashPipelineInfo `json:"LogstashPipelineList,omitempty" name:"LogstashPipelineList"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeLogstashPipelinesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeLogstashPipelinesResponseParams `json:"Response"`
+}
+
+func (r *DescribeLogstashPipelinesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLogstashPipelinesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1917,6 +2570,191 @@ type LocalDiskInfo struct {
 	LocalDiskCount *uint64 `json:"LocalDiskCount,omitempty" name:"LocalDiskCount"`
 }
 
+type LogstashBindedES struct {
+	// ES集群ID
+	ESInstanceId *string `json:"ESInstanceId,omitempty" name:"ESInstanceId"`
+
+	// ES集群用户名
+	ESUserName *string `json:"ESUserName,omitempty" name:"ESUserName"`
+
+	// ES集群密码
+	ESPassword *string `json:"ESPassword,omitempty" name:"ESPassword"`
+}
+
+type LogstashExtendedFile struct {
+	// 扩展文件名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 扩展文件大小，单位B
+	Size *uint64 `json:"Size,omitempty" name:"Size"`
+}
+
+type LogstashInstanceInfo struct {
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 实例名称
+	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
+
+	// 地域
+	Region *string `json:"Region,omitempty" name:"Region"`
+
+	// 可用区
+	Zone *string `json:"Zone,omitempty" name:"Zone"`
+
+	// 用户ID
+	AppId *uint64 `json:"AppId,omitempty" name:"AppId"`
+
+	// 用户UIN
+	Uin *string `json:"Uin,omitempty" name:"Uin"`
+
+	// 实例所属VPC的ID
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 实例所属子网的ID
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+
+	// 实例状态，0:处理中,1:正常,-1停止,-2:销毁中,-3:已销毁
+	Status *int64 `json:"Status,omitempty" name:"Status"`
+
+	// 实例计费模式。取值范围：  PREPAID：表示预付费，即包年包月  POSTPAID_BY_HOUR：表示后付费，即按量计费  CDHPAID：CDH付费，即只对CDH计费，不对CDH上的实例计费。
+	ChargeType *string `json:"ChargeType,omitempty" name:"ChargeType"`
+
+	// 包年包月购买时长,单位:月
+	ChargePeriod *uint64 `json:"ChargePeriod,omitempty" name:"ChargePeriod"`
+
+	// 自动续费标识。取值范围：  NOTIFY_AND_AUTO_RENEW：通知过期且自动续费  NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费  DISABLE_NOTIFY_AND_MANUAL_RENEW：不通知过期不自动续费  默认取值：NOTIFY_AND_AUTO_RENEW。若该参数指定为NOTIFY_AND_AUTO_RENEW，在账户余额充足的情况下，实例到期后将按月自动续费。
+	RenewFlag *string `json:"RenewFlag,omitempty" name:"RenewFlag"`
+
+	// 节点规格<li>LOGSTASH.S1.SMALL2：1核2G</li><li>LOGSTASH.S1.MEDIUM4：2核4G</li><li>LOGSTASH.S1.MEDIUM8：2核8G</li><li>LOGSTASH.S1.LARGE16：4核16G</li><li>LOGSTASH.S1.2XLARGE32：8核32G</li><li>LOGSTASH.S1.4XLARGE32：16核32G</li><li>LOGSTASH.S1.4XLARGE64：16核64G</li>
+	NodeType *string `json:"NodeType,omitempty" name:"NodeType"`
+
+	// 节点个数
+	NodeNum *uint64 `json:"NodeNum,omitempty" name:"NodeNum"`
+
+	// 节点磁盘类型
+	DiskType *string `json:"DiskType,omitempty" name:"DiskType"`
+
+	// 节点磁盘大小，单位GB
+	DiskSize *uint64 `json:"DiskSize,omitempty" name:"DiskSize"`
+
+	// Logstash版本号
+	LogstashVersion *string `json:"LogstashVersion,omitempty" name:"LogstashVersion"`
+
+	// License类型<li>oss：开源版</li><li>xpack：基础版</li>默认值xpack
+	LicenseType *string `json:"LicenseType,omitempty" name:"LicenseType"`
+
+	// 实例创建时间
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 实例最后修改操作时间
+	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+
+	// 实例到期时间
+	Deadline *string `json:"Deadline,omitempty" name:"Deadline"`
+
+	// 实例节点类型
+	Nodes []*LogstashNodeInfo `json:"Nodes,omitempty" name:"Nodes"`
+
+	// 实例绑定的ES集群ID
+	BindedESInstanceId *string `json:"BindedESInstanceId,omitempty" name:"BindedESInstanceId"`
+
+	// 实例的YML配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	YMLConfig *string `json:"YMLConfig,omitempty" name:"YMLConfig"`
+
+	// 扩展文件列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExtendedFiles []*LogstashExtendedFile `json:"ExtendedFiles,omitempty" name:"ExtendedFiles"`
+}
+
+type LogstashNodeInfo struct {
+	// 节点ID
+	NodeId *string `json:"NodeId,omitempty" name:"NodeId"`
+
+	// 节点IP
+	Ip *string `json:"Ip,omitempty" name:"Ip"`
+
+	// 节点端口
+	Port *uint64 `json:"Port,omitempty" name:"Port"`
+}
+
+type LogstashPipeline struct {
+	// 管道ID
+	PipelineId *string `json:"PipelineId,omitempty" name:"PipelineId"`
+
+	// 管道描述信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PipelineDesc *string `json:"PipelineDesc,omitempty" name:"PipelineDesc"`
+
+	// 管道配置内容
+	Config *string `json:"Config,omitempty" name:"Config"`
+
+	// 管道的Worker数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Workers *uint64 `json:"Workers,omitempty" name:"Workers"`
+
+	// 管道批处理大小
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BatchSize *uint64 `json:"BatchSize,omitempty" name:"BatchSize"`
+
+	// 管道批处理延迟
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BatchDelay *uint64 `json:"BatchDelay,omitempty" name:"BatchDelay"`
+
+	// 管道缓冲队列类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	QueueType *string `json:"QueueType,omitempty" name:"QueueType"`
+
+	// 管道缓冲队列大小
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	QueueMaxBytes *string `json:"QueueMaxBytes,omitempty" name:"QueueMaxBytes"`
+
+	// 管道缓冲队列检查点写入数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	QueueCheckPointWrites *uint64 `json:"QueueCheckPointWrites,omitempty" name:"QueueCheckPointWrites"`
+}
+
+type LogstashPipelineInfo struct {
+	// 管道ID
+	PipelineId *string `json:"PipelineId,omitempty" name:"PipelineId"`
+
+	// 管道描述信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PipelineDesc *string `json:"PipelineDesc,omitempty" name:"PipelineDesc"`
+
+	// 管道配置内容
+	Config *string `json:"Config,omitempty" name:"Config"`
+
+	// 管道状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *int64 `json:"Status,omitempty" name:"Status"`
+
+	// 管道的Worker数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Workers *uint64 `json:"Workers,omitempty" name:"Workers"`
+
+	// 管道批处理大小
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BatchSize *uint64 `json:"BatchSize,omitempty" name:"BatchSize"`
+
+	// 管道批处理延迟
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BatchDelay *uint64 `json:"BatchDelay,omitempty" name:"BatchDelay"`
+
+	// 管道缓冲队列类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	QueueType *string `json:"QueueType,omitempty" name:"QueueType"`
+
+	// 管道缓冲队列大小
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	QueueMaxBytes *string `json:"QueueMaxBytes,omitempty" name:"QueueMaxBytes"`
+
+	// 管道缓冲队列检查点写入数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	QueueCheckPointWrites *uint64 `json:"QueueCheckPointWrites,omitempty" name:"QueueCheckPointWrites"`
+}
+
 type MasterNodeInfo struct {
 	// 是否启用了专用主节点
 	EnableDedicatedMaster *bool `json:"EnableDedicatedMaster,omitempty" name:"EnableDedicatedMaster"`
@@ -2217,6 +3055,67 @@ func (r *RestartKibanaResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type RestartLogstashInstanceRequestParams struct {
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 重启类型，0全量重启，1滚动重启
+	Type *int64 `json:"Type,omitempty" name:"Type"`
+}
+
+type RestartLogstashInstanceRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 重启类型，0全量重启，1滚动重启
+	Type *int64 `json:"Type,omitempty" name:"Type"`
+}
+
+func (r *RestartLogstashInstanceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RestartLogstashInstanceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "Type")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RestartLogstashInstanceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RestartLogstashInstanceResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type RestartLogstashInstanceResponse struct {
+	*tchttp.BaseResponse
+	Response *RestartLogstashInstanceResponseParams `json:"Response"`
+}
+
+func (r *RestartLogstashInstanceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RestartLogstashInstanceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type RestartNodesRequestParams struct {
 	// 集群实例ID
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
@@ -2281,6 +3180,196 @@ func (r *RestartNodesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *RestartNodesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SaveAndDeployLogstashPipelineRequestParams struct {
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 实例管道信息
+	Pipeline *LogstashPipeline `json:"Pipeline,omitempty" name:"Pipeline"`
+
+	// 操作类型<li>1：只保存</li><li>2：保存并部署</li>
+	OpType *uint64 `json:"OpType,omitempty" name:"OpType"`
+}
+
+type SaveAndDeployLogstashPipelineRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 实例管道信息
+	Pipeline *LogstashPipeline `json:"Pipeline,omitempty" name:"Pipeline"`
+
+	// 操作类型<li>1：只保存</li><li>2：保存并部署</li>
+	OpType *uint64 `json:"OpType,omitempty" name:"OpType"`
+}
+
+func (r *SaveAndDeployLogstashPipelineRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SaveAndDeployLogstashPipelineRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "Pipeline")
+	delete(f, "OpType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SaveAndDeployLogstashPipelineRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SaveAndDeployLogstashPipelineResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type SaveAndDeployLogstashPipelineResponse struct {
+	*tchttp.BaseResponse
+	Response *SaveAndDeployLogstashPipelineResponseParams `json:"Response"`
+}
+
+func (r *SaveAndDeployLogstashPipelineResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SaveAndDeployLogstashPipelineResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type StartLogstashPipelinesRequestParams struct {
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 管道ID列表
+	PipelineIds []*string `json:"PipelineIds,omitempty" name:"PipelineIds"`
+}
+
+type StartLogstashPipelinesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 管道ID列表
+	PipelineIds []*string `json:"PipelineIds,omitempty" name:"PipelineIds"`
+}
+
+func (r *StartLogstashPipelinesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *StartLogstashPipelinesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "PipelineIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StartLogstashPipelinesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type StartLogstashPipelinesResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type StartLogstashPipelinesResponse struct {
+	*tchttp.BaseResponse
+	Response *StartLogstashPipelinesResponseParams `json:"Response"`
+}
+
+func (r *StartLogstashPipelinesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *StartLogstashPipelinesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type StopLogstashPipelinesRequestParams struct {
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 管道ID列表
+	PipelineIds []*string `json:"PipelineIds,omitempty" name:"PipelineIds"`
+}
+
+type StopLogstashPipelinesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 管道ID列表
+	PipelineIds []*string `json:"PipelineIds,omitempty" name:"PipelineIds"`
+}
+
+func (r *StopLogstashPipelinesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *StopLogstashPipelinesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "PipelineIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StopLogstashPipelinesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type StopLogstashPipelinesResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type StopLogstashPipelinesResponse struct {
+	*tchttp.BaseResponse
+	Response *StopLogstashPipelinesResponseParams `json:"Response"`
+}
+
+func (r *StopLogstashPipelinesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *StopLogstashPipelinesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2937,6 +4026,177 @@ func (r *UpdateJdkResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *UpdateJdkResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateLogstashInstanceRequestParams struct {
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 实例节点数量
+	NodeNum *uint64 `json:"NodeNum,omitempty" name:"NodeNum"`
+
+	// 实例YML配置
+	YMLConfig *string `json:"YMLConfig,omitempty" name:"YMLConfig"`
+
+	// 实例绑定的ES集群信息
+	BindedES *LogstashBindedES `json:"BindedES,omitempty" name:"BindedES"`
+
+	// 实例名称
+	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
+
+	// 扩展文件列表
+	ExtendedFiles []*LogstashExtendedFile `json:"ExtendedFiles,omitempty" name:"ExtendedFiles"`
+
+	// 实例规格
+	NodeType *string `json:"NodeType,omitempty" name:"NodeType"`
+
+	// 节点磁盘容量
+	DiskSize *uint64 `json:"DiskSize,omitempty" name:"DiskSize"`
+}
+
+type UpdateLogstashInstanceRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 实例节点数量
+	NodeNum *uint64 `json:"NodeNum,omitempty" name:"NodeNum"`
+
+	// 实例YML配置
+	YMLConfig *string `json:"YMLConfig,omitempty" name:"YMLConfig"`
+
+	// 实例绑定的ES集群信息
+	BindedES *LogstashBindedES `json:"BindedES,omitempty" name:"BindedES"`
+
+	// 实例名称
+	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
+
+	// 扩展文件列表
+	ExtendedFiles []*LogstashExtendedFile `json:"ExtendedFiles,omitempty" name:"ExtendedFiles"`
+
+	// 实例规格
+	NodeType *string `json:"NodeType,omitempty" name:"NodeType"`
+
+	// 节点磁盘容量
+	DiskSize *uint64 `json:"DiskSize,omitempty" name:"DiskSize"`
+}
+
+func (r *UpdateLogstashInstanceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateLogstashInstanceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "NodeNum")
+	delete(f, "YMLConfig")
+	delete(f, "BindedES")
+	delete(f, "InstanceName")
+	delete(f, "ExtendedFiles")
+	delete(f, "NodeType")
+	delete(f, "DiskSize")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateLogstashInstanceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateLogstashInstanceResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type UpdateLogstashInstanceResponse struct {
+	*tchttp.BaseResponse
+	Response *UpdateLogstashInstanceResponseParams `json:"Response"`
+}
+
+func (r *UpdateLogstashInstanceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateLogstashInstanceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateLogstashPipelineDescRequestParams struct {
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 实例管道ID
+	PipelineId *string `json:"PipelineId,omitempty" name:"PipelineId"`
+
+	// 管道描述信息
+	PipelineDesc *string `json:"PipelineDesc,omitempty" name:"PipelineDesc"`
+}
+
+type UpdateLogstashPipelineDescRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 实例管道ID
+	PipelineId *string `json:"PipelineId,omitempty" name:"PipelineId"`
+
+	// 管道描述信息
+	PipelineDesc *string `json:"PipelineDesc,omitempty" name:"PipelineDesc"`
+}
+
+func (r *UpdateLogstashPipelineDescRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateLogstashPipelineDescRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "PipelineId")
+	delete(f, "PipelineDesc")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateLogstashPipelineDescRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateLogstashPipelineDescResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type UpdateLogstashPipelineDescResponse struct {
+	*tchttp.BaseResponse
+	Response *UpdateLogstashPipelineDescResponseParams `json:"Response"`
+}
+
+func (r *UpdateLogstashPipelineDescResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateLogstashPipelineDescResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

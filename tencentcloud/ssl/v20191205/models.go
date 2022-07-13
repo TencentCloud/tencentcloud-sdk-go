@@ -374,6 +374,10 @@ type Certificates struct {
 	// 是否已忽略到期通知
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsIgnore *bool `json:"IsIgnore,omitempty" name:"IsIgnore"`
+
+	// 是否国密证书
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsSM *bool `json:"IsSM,omitempty" name:"IsSM"`
 }
 
 // Predefined struct for user
@@ -1271,7 +1275,7 @@ type DescribeCertificatesRequestParams struct {
 	// 按到期时间排序：DESC = 降序， ASC = 升序。
 	ExpirationSort *string `json:"ExpirationSort,omitempty" name:"ExpirationSort"`
 
-	// 证书状态。
+	// 证书状态：0 = 审核中，1 = 已通过，2 = 审核失败，3 = 已过期，4 = 已添加DNS记录，5 = 企业证书，待提交，6 = 订单取消中，7 = 已取消，8 = 已提交资料， 待上传确认函，9 = 证书吊销中，10 = 已吊销，11 = 重颁发中，12 = 待上传吊销确认函，13 = 免费证书待提交资料。
 	CertificateStatus []*uint64 `json:"CertificateStatus,omitempty" name:"CertificateStatus"`
 
 	// 是否可部署，可选值：1 = 可部署，0 =  不可部署。
@@ -1285,6 +1289,9 @@ type DescribeCertificatesRequestParams struct {
 
 	// 筛选来源， upload：上传证书， buy：腾讯云证书， 不传默认全部
 	FilterSource *string `json:"FilterSource,omitempty" name:"FilterSource"`
+
+	// 是否筛选国密证书。1:筛选  0:不筛选
+	IsSM *int64 `json:"IsSM,omitempty" name:"IsSM"`
 }
 
 type DescribeCertificatesRequest struct {
@@ -1308,7 +1315,7 @@ type DescribeCertificatesRequest struct {
 	// 按到期时间排序：DESC = 降序， ASC = 升序。
 	ExpirationSort *string `json:"ExpirationSort,omitempty" name:"ExpirationSort"`
 
-	// 证书状态。
+	// 证书状态：0 = 审核中，1 = 已通过，2 = 审核失败，3 = 已过期，4 = 已添加DNS记录，5 = 企业证书，待提交，6 = 订单取消中，7 = 已取消，8 = 已提交资料， 待上传确认函，9 = 证书吊销中，10 = 已吊销，11 = 重颁发中，12 = 待上传吊销确认函，13 = 免费证书待提交资料。
 	CertificateStatus []*uint64 `json:"CertificateStatus,omitempty" name:"CertificateStatus"`
 
 	// 是否可部署，可选值：1 = 可部署，0 =  不可部署。
@@ -1322,6 +1329,9 @@ type DescribeCertificatesRequest struct {
 
 	// 筛选来源， upload：上传证书， buy：腾讯云证书， 不传默认全部
 	FilterSource *string `json:"FilterSource,omitempty" name:"FilterSource"`
+
+	// 是否筛选国密证书。1:筛选  0:不筛选
+	IsSM *int64 `json:"IsSM,omitempty" name:"IsSM"`
 }
 
 func (r *DescribeCertificatesRequest) ToJsonString() string {
@@ -1347,6 +1357,7 @@ func (r *DescribeCertificatesRequest) FromJsonString(s string) error {
 	delete(f, "Upload")
 	delete(f, "Renew")
 	delete(f, "FilterSource")
+	delete(f, "IsSM")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCertificatesRequest has unknown keys!", "")
 	}

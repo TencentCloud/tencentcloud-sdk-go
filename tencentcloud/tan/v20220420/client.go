@@ -63,7 +63,7 @@ func NewCreateBlockNodeRecordsResponse() (response *CreateBlockNodeRecordsRespon
 }
 
 // CreateBlockNodeRecords
-// 创建节点记录
+// 推送节点数据
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -93,7 +93,7 @@ func (c *Client) CreateBlockNodeRecords(request *CreateBlockNodeRecordsRequest) 
 }
 
 // CreateBlockNodeRecords
-// 创建节点记录
+// 推送节点数据
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"

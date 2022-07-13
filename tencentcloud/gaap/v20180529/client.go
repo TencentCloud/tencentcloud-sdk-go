@@ -124,6 +124,77 @@ func (c *Client) AddRealServersWithContext(ctx context.Context, request *AddReal
     return
 }
 
+func NewBanAndRecoverProxyRequest() (request *BanAndRecoverProxyRequest) {
+    request = &BanAndRecoverProxyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("gaap", APIVersion, "BanAndRecoverProxy")
+    
+    
+    return
+}
+
+func NewBanAndRecoverProxyResponse() (response *BanAndRecoverProxyResponse) {
+    response = &BanAndRecoverProxyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// BanAndRecoverProxy
+// 本接口（BanAndRecoverProxy）用于联通封禁解封GAAP跨境通道实例，支持按照客户UIN维度下发请求。被封禁的实例带宽上限将会被限制到0Mbps，无法正常处理客户端和源站之间的请求。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_NOTENTERPRISEAUTHORIZATION = "AuthFailure.NotEnterpriseAuthorization"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_RESOURCEHADBEENDONE = "FailedOperation.ResourceHadBeenDone"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) BanAndRecoverProxy(request *BanAndRecoverProxyRequest) (response *BanAndRecoverProxyResponse, err error) {
+    return c.BanAndRecoverProxyWithContext(context.Background(), request)
+}
+
+// BanAndRecoverProxy
+// 本接口（BanAndRecoverProxy）用于联通封禁解封GAAP跨境通道实例，支持按照客户UIN维度下发请求。被封禁的实例带宽上限将会被限制到0Mbps，无法正常处理客户端和源站之间的请求。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_NOTENTERPRISEAUTHORIZATION = "AuthFailure.NotEnterpriseAuthorization"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_RESOURCEHADBEENDONE = "FailedOperation.ResourceHadBeenDone"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) BanAndRecoverProxyWithContext(ctx context.Context, request *BanAndRecoverProxyRequest) (response *BanAndRecoverProxyResponse, err error) {
+    if request == nil {
+        request = NewBanAndRecoverProxyRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("BanAndRecoverProxy require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewBanAndRecoverProxyResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewBindListenerRealServersRequest() (request *BindListenerRealServersRequest) {
     request = &BindListenerRealServersRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2918,6 +2989,67 @@ func (c *Client) DescribeCountryAreaMappingWithContext(ctx context.Context, requ
     request.SetContext(ctx)
     
     response = NewDescribeCountryAreaMappingResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeCrossBorderProxiesRequest() (request *DescribeCrossBorderProxiesRequest) {
+    request = &DescribeCrossBorderProxiesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("gaap", APIVersion, "DescribeCrossBorderProxies")
+    
+    
+    return
+}
+
+func NewDescribeCrossBorderProxiesResponse() (response *DescribeCrossBorderProxiesResponse) {
+    response = &DescribeCrossBorderProxiesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeCrossBorderProxies
+// 本接口（DescribeCrossBorderProxies）用于查询跨境通道实例列表。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeCrossBorderProxies(request *DescribeCrossBorderProxiesRequest) (response *DescribeCrossBorderProxiesResponse, err error) {
+    return c.DescribeCrossBorderProxiesWithContext(context.Background(), request)
+}
+
+// DescribeCrossBorderProxies
+// 本接口（DescribeCrossBorderProxies）用于查询跨境通道实例列表。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeCrossBorderProxiesWithContext(ctx context.Context, request *DescribeCrossBorderProxiesRequest) (response *DescribeCrossBorderProxiesResponse, err error) {
+    if request == nil {
+        request = NewDescribeCrossBorderProxiesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCrossBorderProxies require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCrossBorderProxiesResponse()
     err = c.Send(request, response)
     return
 }

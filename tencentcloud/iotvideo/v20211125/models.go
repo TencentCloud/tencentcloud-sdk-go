@@ -191,6 +191,126 @@ func (r *CallDeviceActionSyncResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateProductRequestParams struct {
+	// 产品名称
+	ProductName *string `json:"ProductName,omitempty" name:"ProductName"`
+
+	// 产品设备类型 1.普通设备 2.NVR设备
+	DeviceType *uint64 `json:"DeviceType,omitempty" name:"DeviceType"`
+
+	// 产品有效期
+	ProductVaildYears *uint64 `json:"ProductVaildYears,omitempty" name:"ProductVaildYears"`
+
+	// 设备功能码 ypsxth音频双向通话 spdxth视频单向通话 sxysp双向音视频
+	Features []*string `json:"Features,omitempty" name:"Features"`
+
+	// 设备操作系统，通用设备填default
+	ChipOs *string `json:"ChipOs,omitempty" name:"ChipOs"`
+
+	// 芯片厂商id，通用设备填default
+	ChipManufactureId *string `json:"ChipManufactureId,omitempty" name:"ChipManufactureId"`
+
+	// 芯片id，通用设备填default
+	ChipId *string `json:"ChipId,omitempty" name:"ChipId"`
+
+	// 产品描述信息
+	ProductDescription *string `json:"ProductDescription,omitempty" name:"ProductDescription"`
+
+	// 认证方式 只支持取值为2 psk认证
+	EncryptionType *uint64 `json:"EncryptionType,omitempty" name:"EncryptionType"`
+
+	// 连接类型，wifi表示WIFI连接，cellular表示4G连接
+	NetType *string `json:"NetType,omitempty" name:"NetType"`
+}
+
+type CreateProductRequest struct {
+	*tchttp.BaseRequest
+	
+	// 产品名称
+	ProductName *string `json:"ProductName,omitempty" name:"ProductName"`
+
+	// 产品设备类型 1.普通设备 2.NVR设备
+	DeviceType *uint64 `json:"DeviceType,omitempty" name:"DeviceType"`
+
+	// 产品有效期
+	ProductVaildYears *uint64 `json:"ProductVaildYears,omitempty" name:"ProductVaildYears"`
+
+	// 设备功能码 ypsxth音频双向通话 spdxth视频单向通话 sxysp双向音视频
+	Features []*string `json:"Features,omitempty" name:"Features"`
+
+	// 设备操作系统，通用设备填default
+	ChipOs *string `json:"ChipOs,omitempty" name:"ChipOs"`
+
+	// 芯片厂商id，通用设备填default
+	ChipManufactureId *string `json:"ChipManufactureId,omitempty" name:"ChipManufactureId"`
+
+	// 芯片id，通用设备填default
+	ChipId *string `json:"ChipId,omitempty" name:"ChipId"`
+
+	// 产品描述信息
+	ProductDescription *string `json:"ProductDescription,omitempty" name:"ProductDescription"`
+
+	// 认证方式 只支持取值为2 psk认证
+	EncryptionType *uint64 `json:"EncryptionType,omitempty" name:"EncryptionType"`
+
+	// 连接类型，wifi表示WIFI连接，cellular表示4G连接
+	NetType *string `json:"NetType,omitempty" name:"NetType"`
+}
+
+func (r *CreateProductRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateProductRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProductName")
+	delete(f, "DeviceType")
+	delete(f, "ProductVaildYears")
+	delete(f, "Features")
+	delete(f, "ChipOs")
+	delete(f, "ChipManufactureId")
+	delete(f, "ChipId")
+	delete(f, "ProductDescription")
+	delete(f, "EncryptionType")
+	delete(f, "NetType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateProductRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateProductResponseParams struct {
+	// 产品详情
+	Data *VideoProduct `json:"Data,omitempty" name:"Data"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateProductResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateProductResponseParams `json:"Response"`
+}
+
+func (r *CreateProductResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateProductResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeDeviceDataStatsRequestParams struct {
 	// 开始日期
 	StartDate *string `json:"StartDate,omitempty" name:"StartDate"`
@@ -363,6 +483,85 @@ type DeviceCntStats struct {
 	ActiveCnt *uint64 `json:"ActiveCnt,omitempty" name:"ActiveCnt"`
 }
 
+type DeviceSignatureInfo struct {
+	// 设备名称
+	DeviceName *string `json:"DeviceName,omitempty" name:"DeviceName"`
+
+	// 设备签名
+	DeviceSignature *string `json:"DeviceSignature,omitempty" name:"DeviceSignature"`
+}
+
+// Predefined struct for user
+type GenSingleDeviceSignatureOfPublicRequestParams struct {
+	// 设备所属的产品ID
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+
+	// 需要绑定的设备
+	DeviceName *string `json:"DeviceName,omitempty" name:"DeviceName"`
+
+	// 设备绑定签名的有效时间,以秒为单位。取值范围：0 < Expire <= 86400，Expire == -1（十年）
+	Expire *int64 `json:"Expire,omitempty" name:"Expire"`
+}
+
+type GenSingleDeviceSignatureOfPublicRequest struct {
+	*tchttp.BaseRequest
+	
+	// 设备所属的产品ID
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+
+	// 需要绑定的设备
+	DeviceName *string `json:"DeviceName,omitempty" name:"DeviceName"`
+
+	// 设备绑定签名的有效时间,以秒为单位。取值范围：0 < Expire <= 86400，Expire == -1（十年）
+	Expire *int64 `json:"Expire,omitempty" name:"Expire"`
+}
+
+func (r *GenSingleDeviceSignatureOfPublicRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GenSingleDeviceSignatureOfPublicRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProductId")
+	delete(f, "DeviceName")
+	delete(f, "Expire")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GenSingleDeviceSignatureOfPublicRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GenSingleDeviceSignatureOfPublicResponseParams struct {
+	// 设备签名信息
+	DeviceSignature *DeviceSignatureInfo `json:"DeviceSignature,omitempty" name:"DeviceSignature"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type GenSingleDeviceSignatureOfPublicResponse struct {
+	*tchttp.BaseResponse
+	Response *GenSingleDeviceSignatureOfPublicResponseParams `json:"Response"`
+}
+
+func (r *GenSingleDeviceSignatureOfPublicResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GenSingleDeviceSignatureOfPublicResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type MessageCntStats struct {
 	// 统计日期
 	Date *string `json:"Date,omitempty" name:"Date"`
@@ -378,4 +577,43 @@ type MessageCntStats struct {
 	// ntp消息数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	NtpMsgCnt *uint64 `json:"NtpMsgCnt,omitempty" name:"NtpMsgCnt"`
+}
+
+type VideoProduct struct {
+	// 产品ID
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+
+	// 产品名称
+	ProductName *string `json:"ProductName,omitempty" name:"ProductName"`
+
+	// 产品设备类型（普通设备)	1.普通设备
+	DeviceType *uint64 `json:"DeviceType,omitempty" name:"DeviceType"`
+
+	// 认证方式：2：PSK
+	EncryptionType *uint64 `json:"EncryptionType,omitempty" name:"EncryptionType"`
+
+	// 设备功能码
+	Features []*string `json:"Features,omitempty" name:"Features"`
+
+	// 操作系统
+	ChipOs *string `json:"ChipOs,omitempty" name:"ChipOs"`
+
+	// 芯片厂商id
+	ChipManufactureId *string `json:"ChipManufactureId,omitempty" name:"ChipManufactureId"`
+
+	// 芯片id
+	ChipId *string `json:"ChipId,omitempty" name:"ChipId"`
+
+	// 产品描述信息
+	ProductDescription *string `json:"ProductDescription,omitempty" name:"ProductDescription"`
+
+	// 创建时间unix时间戳
+	CreateTime *uint64 `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 修改时间unix时间戳
+	UpdateTime *uint64 `json:"UpdateTime,omitempty" name:"UpdateTime"`
+
+	// 连接类型，wifi表示WIFI连接，cellular表示4G连接
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NetType *string `json:"NetType,omitempty" name:"NetType"`
 }

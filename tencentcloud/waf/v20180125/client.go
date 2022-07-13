@@ -976,53 +976,6 @@ func (c *Client) DescribeAutoDenyIPWithContext(ctx context.Context, request *Des
     return
 }
 
-func NewDescribeCustomRulesRequest() (request *DescribeCustomRulesRequest) {
-    request = &DescribeCustomRulesRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    request.Init().WithApiInfo("waf", APIVersion, "DescribeCustomRules")
-    
-    
-    return
-}
-
-func NewDescribeCustomRulesResponse() (response *DescribeCustomRulesResponse) {
-    response = &DescribeCustomRulesResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// DescribeCustomRules
-// 获取防护配置中的自定义策略列表
-//
-// 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-func (c *Client) DescribeCustomRules(request *DescribeCustomRulesRequest) (response *DescribeCustomRulesResponse, err error) {
-    return c.DescribeCustomRulesWithContext(context.Background(), request)
-}
-
-// DescribeCustomRules
-// 获取防护配置中的自定义策略列表
-//
-// 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-func (c *Client) DescribeCustomRulesWithContext(ctx context.Context, request *DescribeCustomRulesRequest) (response *DescribeCustomRulesResponse, err error) {
-    if request == nil {
-        request = NewDescribeCustomRulesRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeCustomRules require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeCustomRulesResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewDescribeDomainWhiteRulesRequest() (request *DescribeDomainWhiteRulesRequest) {
     request = &DescribeDomainWhiteRulesRequest{
         BaseRequest: &tchttp.BaseRequest{},

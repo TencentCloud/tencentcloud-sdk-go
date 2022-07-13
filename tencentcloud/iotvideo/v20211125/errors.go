@@ -16,4 +16,16 @@ package v20211125
 
 const (
 	// 此产品的特有错误码
+
+	// 操作失败。
+	FAILEDOPERATION = "FailedOperation"
+
+	// 内部错误。
+	INTERNALERROR = "InternalError"
+
+	// 参数错误。
+	INVALIDPARAMETER = "InvalidParameter"
+
+	// 操作不支持。
+	UNSUPPORTEDOPERATION = "UnsupportedOperation"
 )

@@ -1,29 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 企业收付平台(cpdp) 版本：2019-08-20
+## 弹性 MapReduce(emr) 版本：2019-01-03
 
-### 第 77 次发布
+### 第 35 次发布
 
-发布时间：2022-07-13 06:08:02
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [PayeeAccountBalanceResult](https://cloud.tencent.com/document/api/1122/40683#PayeeAccountBalanceResult)
-
-	* 新增成员：SumSettlementAmount
-
-
-
-
-## 数据湖计算(dlc) 版本：2021-01-25
-
-### 第 28 次发布
-
-发布时间：2022-07-13 06:09:56
+发布时间：2022-07-14 06:10:00
 
 本次发布包含了以下内容：
 
@@ -31,98 +12,18 @@
 
 修改接口：
 
-* [CreateSparkApp](https://cloud.tencent.com/document/api/1342/74538)
+* [ScaleOutInstance](https://cloud.tencent.com/document/api/589/34264)
 
-	* 新增入参：IsLocalArchives, AppArchives
-
-* [ModifySparkApp](https://cloud.tencent.com/document/api/1342/74532)
-
-	* 新增入参：IsLocalArchives, AppArchives
-
-
-修改数据结构：
-
-* [SparkJobInfo](https://cloud.tencent.com/document/api/1342/53778#SparkJobInfo)
-
-	* 新增成员：IsLocalArchives, JobArchives, JobPythonFiles, TaskNum
+	* 新增入参：ScaleOutServiceConfAssign
 
 
 
 
 ## Elasticsearch Service(es) 版本：2018-04-16
 
-### 第 30 次发布
-
-发布时间：2022-07-13 06:11:03
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CreateInstance](https://cloud.tencent.com/document/api/845/30633)
-
-	* 新增入参：OperationDuration
-
-* [DescribeInstances](https://cloud.tencent.com/document/api/845/30631)
-
-	* 新增入参：VpcIds
-
-* [UpdateInstance](https://cloud.tencent.com/document/api/845/30629)
-
-	* 新增入参：OperationDuration
-
-
-新增数据结构：
-
-* [OperationDuration](https://cloud.tencent.com/document/api/845/30634#OperationDuration)
-* [OperationDurationUpdated](https://cloud.tencent.com/document/api/845/30634#OperationDurationUpdated)
-
-修改数据结构：
-
-* [InstanceInfo](https://cloud.tencent.com/document/api/845/30634#InstanceInfo)
-
-	* 新增成员：OperationDuration
-
-
-
-
-## 全球应用加速(gaap) 版本：2018-05-29
-
 ### 第 31 次发布
 
-发布时间：2022-07-13 06:11:21
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CreateRule](https://cloud.tencent.com/document/api/608/36990)
-
-	* 新增入参：ForcedRedirect
-
-* [ModifyRuleAttribute](https://cloud.tencent.com/document/api/608/36983)
-
-	* 新增入参：ForcedRedirect
-
-
-修改数据结构：
-
-* [RuleInfo](https://cloud.tencent.com/document/api/608/37023#RuleInfo)
-
-	* 新增成员：ForcedRedirect
-
-
-
-
-## 流计算 Oceanus(oceanus) 版本：2019-04-22
-
-### 第 21 次发布
-
-发布时间：2022-07-13 06:14:33
+发布时间：2022-07-14 06:10:06
 
 本次发布包含了以下内容：
 
@@ -130,101 +31,136 @@
 
 新增接口：
 
-* [DeleteJobs](https://cloud.tencent.com/document/api/849/76834)
-* [DescribeClusters](https://cloud.tencent.com/document/api/849/76832)
-* [DescribeTreeJobs](https://cloud.tencent.com/document/api/849/76833)
+* [CreateLogstashInstance](https://cloud.tencent.com/document/api/845/77244)
+* [DeleteLogstashInstance](https://cloud.tencent.com/document/api/845/77243)
+* [DeleteLogstashPipelines](https://cloud.tencent.com/document/api/845/77242)
+* [DescribeLogstashInstanceLogs](https://cloud.tencent.com/document/api/845/77241)
+* [DescribeLogstashInstanceOperations](https://cloud.tencent.com/document/api/845/77240)
+* [DescribeLogstashInstances](https://cloud.tencent.com/document/api/845/77239)
+* [DescribeLogstashPipelines](https://cloud.tencent.com/document/api/845/77238)
+* [RestartLogstashInstance](https://cloud.tencent.com/document/api/845/77237)
+* [SaveAndDeployLogstashPipeline](https://cloud.tencent.com/document/api/845/77236)
+* [StartLogstashPipelines](https://cloud.tencent.com/document/api/845/77235)
+* [StopLogstashPipelines](https://cloud.tencent.com/document/api/845/77234)
+* [UpdateLogstashInstance](https://cloud.tencent.com/document/api/845/77233)
+* [UpdateLogstashPipelineDesc](https://cloud.tencent.com/document/api/845/77232)
 
 新增数据结构：
 
-* [CCN](https://cloud.tencent.com/document/api/849/52010#CCN)
-* [Cluster](https://cloud.tencent.com/document/api/849/52010#Cluster)
-* [ClusterVersion](https://cloud.tencent.com/document/api/849/52010#ClusterVersion)
-* [Tag](https://cloud.tencent.com/document/api/849/52010#Tag)
-* [WorkSpaceClusterItem](https://cloud.tencent.com/document/api/849/52010#WorkSpaceClusterItem)
+* [LogstashBindedES](https://cloud.tencent.com/document/api/845/30634#LogstashBindedES)
+* [LogstashExtendedFile](https://cloud.tencent.com/document/api/845/30634#LogstashExtendedFile)
+* [LogstashInstanceInfo](https://cloud.tencent.com/document/api/845/30634#LogstashInstanceInfo)
+* [LogstashNodeInfo](https://cloud.tencent.com/document/api/845/30634#LogstashNodeInfo)
+* [LogstashPipeline](https://cloud.tencent.com/document/api/845/30634#LogstashPipeline)
+* [LogstashPipelineInfo](https://cloud.tencent.com/document/api/845/30634#LogstashPipelineInfo)
 
 
 
-## 云数据库 Redis(redis) 版本：2018-04-12
+## 全球应用加速(gaap) 版本：2018-05-29
 
-### 第 49 次发布
+### 第 32 次发布
 
-发布时间：2022-07-13 06:15:09
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [DescribeInstances](https://cloud.tencent.com/document/api/239/20018)
-
-	* 新增入参：ProductVersions
-
-
-
-
-## 前端性能监控(rum) 版本：2021-06-22
-
-### 第 14 次发布
-
-发布时间：2022-07-13 06:15:23
+发布时间：2022-07-14 06:10:30
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-修改接口：
+新增接口：
 
-* [DescribeDataFetchProject](https://cloud.tencent.com/document/api/1464/69232)
-
-	* 新增入参：Status, Ret
-
-* [DescribeDataFetchUrl](https://cloud.tencent.com/document/api/1464/68355)
-
-	* 新增入参：Status, Ret
-
-* [DescribeDataSetUrlStatistics](https://cloud.tencent.com/document/api/1464/69227)
-
-	* 新增入参：PackageType
+* [BanAndRecoverProxy](https://cloud.tencent.com/document/api/608/77246)
+* [DescribeCrossBorderProxies](https://cloud.tencent.com/document/api/608/77245)
 
 
 
+## 物联网智能视频服务(iotvideo) 版本：2021-11-25
 
-## 容器服务(tke) 版本：2018-05-25
+### 第 3 次发布
 
-### 第 111 次发布
-
-发布时间：2022-07-13 06:18:17
+发布时间：2022-07-13 11:20:10
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-修改数据结构：
+新增接口：
 
-* [ExistedInstance](https://cloud.tencent.com/document/api/457/31866#ExistedInstance)
+* [CreateProduct](https://cloud.tencent.com/document/api/1131/77008)
 
-	* 新增成员：IPv6Addresses
+新增数据结构：
 
-
-
-
-## 音速达直播音乐版权引擎(yinsuda) 版本：2022-05-27
+* [VideoProduct](https://cloud.tencent.com/document/api/1131/76635#VideoProduct)
 
 ### 第 2 次发布
 
-发布时间：2022-07-13 06:20:29
+发布时间：2022-07-13 10:17:38
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
+新增接口：
+
+* [GenSingleDeviceSignatureOfPublic](https://cloud.tencent.com/document/api/1131/76866)
+
+新增数据结构：
+
+* [DeviceSignatureInfo](https://cloud.tencent.com/document/api/1131/76635#DeviceSignatureInfo)
+
+
+
+## 物联网智能视频服务(iotvideo) 版本：2020-12-15
+
+
+
+## 物联网智能视频服务(iotvideo) 版本：2019-11-26
+
+
+
+## 证书(ssl) 版本：2019-12-05
+
+### 第 16 次发布
+
+发布时间：2022-07-14 06:15:09
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeCertificates](https://cloud.tencent.com/document/api/400/41671)
+
+	* 新增入参：IsSM
+
+
 修改数据结构：
 
-* [KTVMusicDetailInfo](https://cloud.tencent.com/document/api/1592/76191#KTVMusicDetailInfo)
+* [Certificates](https://cloud.tencent.com/document/api/400/41679#Certificates)
 
-	* 新增成员：PreludeInterval, GenreSet
+	* 新增成员：IsSM
 
+
+
+
+## Web 应用防火墙(waf) 版本：2018-01-25
+
+### 第 10 次发布
+
+发布时间：2022-07-14 06:19:27
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除接口**：</font>
+
+* DescribeCustomRules
+
+<font color="#dd0000">**删除数据结构**：</font>
+
+* DescribeCustomRulesPagingInfo
+* DescribeCustomRulesRspRuleListItem
 
 
 
@@ -34136,6 +34072,21 @@
 
 ## 弹性 MapReduce(emr) 版本：2019-01-03
 
+### 第 35 次发布
+
+发布时间：2022-07-14 06:10:00
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ScaleOutInstance](https://cloud.tencent.com/document/api/589/34264)
+
+	* 新增入参：ScaleOutServiceConfAssign
+
+
 ### 第 34 次发布
 
 发布时间：2022-06-09 06:11:36
@@ -35005,6 +34956,39 @@
 
 ## Elasticsearch Service(es) 版本：2018-04-16
 
+### 第 31 次发布
+
+发布时间：2022-07-14 06:10:06
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateLogstashInstance](https://cloud.tencent.com/document/api/845/77244)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteLogstashInstance](https://cloud.tencent.com/document/api/845/77243)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteLogstashPipelines](https://cloud.tencent.com/document/api/845/77242)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeLogstashInstanceLogs](https://cloud.tencent.com/document/api/845/77241)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeLogstashInstanceOperations](https://cloud.tencent.com/document/api/845/77240)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeLogstashInstances](https://cloud.tencent.com/document/api/845/77239)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeLogstashPipelines](https://cloud.tencent.com/document/api/845/77238)](https://cloud.tencent.com/document/api/#/#)
+* [[RestartLogstashInstance](https://cloud.tencent.com/document/api/845/77237)](https://cloud.tencent.com/document/api/#/#)
+* [[SaveAndDeployLogstashPipeline](https://cloud.tencent.com/document/api/845/77236)](https://cloud.tencent.com/document/api/#/#)
+* [[StartLogstashPipelines](https://cloud.tencent.com/document/api/845/77235)](https://cloud.tencent.com/document/api/#/#)
+* [[StopLogstashPipelines](https://cloud.tencent.com/document/api/845/77234)](https://cloud.tencent.com/document/api/#/#)
+* [[UpdateLogstashInstance](https://cloud.tencent.com/document/api/845/77233)](https://cloud.tencent.com/document/api/#/#)
+* [[UpdateLogstashPipelineDesc](https://cloud.tencent.com/document/api/845/77232)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[LogstashBindedES](https://cloud.tencent.com/document/api/845/30634#LogstashBindedES)](https://cloud.tencent.com/document/api/845/30634#[LogstashBindedES](https://cloud.tencent.com/document/api/845/30634#LogstashBindedES))
+* [[LogstashExtendedFile](https://cloud.tencent.com/document/api/845/30634#LogstashExtendedFile)](https://cloud.tencent.com/document/api/845/30634#[LogstashExtendedFile](https://cloud.tencent.com/document/api/845/30634#LogstashExtendedFile))
+* [[LogstashInstanceInfo](https://cloud.tencent.com/document/api/845/30634#LogstashInstanceInfo)](https://cloud.tencent.com/document/api/845/30634#[LogstashInstanceInfo](https://cloud.tencent.com/document/api/845/30634#LogstashInstanceInfo))
+* [[LogstashNodeInfo](https://cloud.tencent.com/document/api/845/30634#LogstashNodeInfo)](https://cloud.tencent.com/document/api/845/30634#[LogstashNodeInfo](https://cloud.tencent.com/document/api/845/30634#LogstashNodeInfo))
+* [[LogstashPipeline](https://cloud.tencent.com/document/api/845/30634#LogstashPipeline)](https://cloud.tencent.com/document/api/845/30634#[LogstashPipeline](https://cloud.tencent.com/document/api/845/30634#LogstashPipeline))
+* [[LogstashPipelineInfo](https://cloud.tencent.com/document/api/845/30634#LogstashPipelineInfo)](https://cloud.tencent.com/document/api/845/30634#[LogstashPipelineInfo](https://cloud.tencent.com/document/api/845/30634#LogstashPipelineInfo))
+
 ### 第 30 次发布
 
 发布时间：2022-07-13 06:11:03
@@ -35030,8 +35014,8 @@
 
 新增数据结构：
 
-* [[OperationDuration](https://cloud.tencent.com/document/api/845/30634#OperationDuration)](https://cloud.tencent.com/document/api/845/30634#[OperationDuration](https://cloud.tencent.com/document/api/845/30634#OperationDuration))
-* [[OperationDurationUpdated](https://cloud.tencent.com/document/api/845/30634#OperationDurationUpdated)](https://cloud.tencent.com/document/api/845/30634#[OperationDurationUpdated](https://cloud.tencent.com/document/api/845/30634#OperationDurationUpdated))
+* [OperationDuration](https://cloud.tencent.com/document/api/845/30634#OperationDuration)
+* [OperationDurationUpdated](https://cloud.tencent.com/document/api/845/30634#OperationDurationUpdated)
 
 修改数据结构：
 
@@ -37432,6 +37416,19 @@
 
 
 ## 全球应用加速(gaap) 版本：2018-05-29
+
+### 第 32 次发布
+
+发布时间：2022-07-14 06:10:30
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[BanAndRecoverProxy](https://cloud.tencent.com/document/api/608/77246)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeCrossBorderProxies](https://cloud.tencent.com/document/api/608/77245)](https://cloud.tencent.com/document/api/#/#)
 
 ### 第 31 次发布
 
@@ -44396,6 +44393,38 @@
 
 
 ## 物联网智能视频服务(iotvideo) 版本：2021-11-25
+
+### 第 3 次发布
+
+发布时间：2022-07-13 11:20:10
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateProduct](https://cloud.tencent.com/document/api/1131/77008)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[VideoProduct](https://cloud.tencent.com/document/api/1131/76635#VideoProduct)](https://cloud.tencent.com/document/api/1131/76635#[VideoProduct](https://cloud.tencent.com/document/api/1131/76635#VideoProduct))
+
+### 第 2 次发布
+
+发布时间：2022-07-13 10:17:38
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[GenSingleDeviceSignatureOfPublic](https://cloud.tencent.com/document/api/1131/76866)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[DeviceSignatureInfo](https://cloud.tencent.com/document/api/1131/76635#DeviceSignatureInfo)](https://cloud.tencent.com/document/api/1131/76635#[DeviceSignatureInfo](https://cloud.tencent.com/document/api/1131/76635#DeviceSignatureInfo))
 
 ### 第 1 次发布
 
@@ -52870,17 +52899,17 @@
 
 新增接口：
 
-* [[DeleteJobs](https://cloud.tencent.com/document/api/849/76834)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeClusters](https://cloud.tencent.com/document/api/849/76832)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeTreeJobs](https://cloud.tencent.com/document/api/849/76833)](https://cloud.tencent.com/document/api/#/#)
+* [DeleteJobs](https://cloud.tencent.com/document/api/849/76834)
+* [DescribeClusters](https://cloud.tencent.com/document/api/849/76832)
+* [DescribeTreeJobs](https://cloud.tencent.com/document/api/849/76833)
 
 新增数据结构：
 
-* [[CCN](https://cloud.tencent.com/document/api/849/52010#CCN)](https://cloud.tencent.com/document/api/849/52010#[CCN](https://cloud.tencent.com/document/api/849/52010#CCN))
-* [[Cluster](https://cloud.tencent.com/document/api/849/52010#Cluster)](https://cloud.tencent.com/document/api/849/52010#[Cluster](https://cloud.tencent.com/document/api/849/52010#Cluster))
-* [[ClusterVersion](https://cloud.tencent.com/document/api/849/52010#ClusterVersion)](https://cloud.tencent.com/document/api/849/52010#[ClusterVersion](https://cloud.tencent.com/document/api/849/52010#ClusterVersion))
-* [[Tag](https://cloud.tencent.com/document/api/849/52010#Tag)](https://cloud.tencent.com/document/api/849/52010#[Tag](https://cloud.tencent.com/document/api/849/52010#Tag))
-* [[WorkSpaceClusterItem](https://cloud.tencent.com/document/api/849/52010#WorkSpaceClusterItem)](https://cloud.tencent.com/document/api/849/52010#[WorkSpaceClusterItem](https://cloud.tencent.com/document/api/849/52010#WorkSpaceClusterItem))
+* [CCN](https://cloud.tencent.com/document/api/849/52010#CCN)
+* [Cluster](https://cloud.tencent.com/document/api/849/52010#Cluster)
+* [ClusterVersion](https://cloud.tencent.com/document/api/849/52010#ClusterVersion)
+* [Tag](https://cloud.tencent.com/document/api/849/52010#Tag)
+* [WorkSpaceClusterItem](https://cloud.tencent.com/document/api/849/52010#WorkSpaceClusterItem)
 
 ### 第 20 次发布
 
@@ -60634,6 +60663,28 @@
 
 
 ## 证书(ssl) 版本：2019-12-05
+
+### 第 16 次发布
+
+发布时间：2022-07-14 06:15:09
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeCertificates](https://cloud.tencent.com/document/api/400/41671)
+
+	* 新增入参：IsSM
+
+
+修改数据结构：
+
+* [Certificates](https://cloud.tencent.com/document/api/400/41679#Certificates)
+
+	* 新增成员：IsSM
+
 
 ### 第 15 次发布
 
@@ -83112,6 +83163,23 @@
 
 
 ## Web 应用防火墙(waf) 版本：2018-01-25
+
+### 第 10 次发布
+
+发布时间：2022-07-14 06:19:27
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除接口**：</font>
+
+* DescribeCustomRules
+
+<font color="#dd0000">**删除数据结构**：</font>
+
+* DescribeCustomRulesPagingInfo
+* DescribeCustomRulesRspRuleListItem
 
 ### 第 9 次发布
 

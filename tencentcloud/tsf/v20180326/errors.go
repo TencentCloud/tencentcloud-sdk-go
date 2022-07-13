@@ -863,7 +863,7 @@ const (
 	// 无法获取应用信息。
 	RESOURCENOTFOUND_APPLICATIONNOTEXIST = "ResourceNotFound.ApplicationNotExist"
 
-	// 应用不存在或应用不属于当前项目。
+	// 无法获取应用或应用不属于当前项目。
 	RESOURCENOTFOUND_APPLICATIONPROJECTNOTMATCH = "ResourceNotFound.ApplicationProjectNotMatch"
 
 	// 无法获取命名空间所属集群。

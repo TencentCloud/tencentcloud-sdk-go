@@ -641,6 +641,9 @@ const (
 	// 用户配置的实例和路由表不匹配。
 	UNSUPPORTEDOPERATION_INSTANCEANDRTBNOTMATCH = "UnsupportedOperation.InstanceAndRtbNotMatch"
 
+	// 指定实例资源不匹配。
+	UNSUPPORTEDOPERATION_INSTANCEMISMATCH = "UnsupportedOperation.InstanceMismatch"
+
 	// 跨账号场景下不支持普通账号实例关联自驾云账号云联网。
 	UNSUPPORTEDOPERATION_INSTANCEORDINARYACCOUNTREFUSEATTACH = "UnsupportedOperation.InstanceOrdinaryAccountRefuseAttach"
 

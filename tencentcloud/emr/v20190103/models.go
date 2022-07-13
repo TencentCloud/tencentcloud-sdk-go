@@ -3777,6 +3777,9 @@ type ScaleOutInstanceRequestParams struct {
 
 	// 子网，默认是集群创建时的子网
 	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+
+	// 预设配置组
+	ScaleOutServiceConfAssign *string `json:"ScaleOutServiceConfAssign,omitempty" name:"ScaleOutServiceConfAssign"`
 }
 
 type ScaleOutInstanceRequest struct {
@@ -3864,6 +3867,9 @@ type ScaleOutInstanceRequest struct {
 
 	// 子网，默认是集群创建时的子网
 	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+
+	// 预设配置组
+	ScaleOutServiceConfAssign *string `json:"ScaleOutServiceConfAssign,omitempty" name:"ScaleOutServiceConfAssign"`
 }
 
 func (r *ScaleOutInstanceRequest) ToJsonString() string {
@@ -3902,6 +3908,7 @@ func (r *ScaleOutInstanceRequest) FromJsonString(s string) error {
 	delete(f, "StartServiceAfterScaleOut")
 	delete(f, "ZoneId")
 	delete(f, "SubnetId")
+	delete(f, "ScaleOutServiceConfAssign")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ScaleOutInstanceRequest has unknown keys!", "")
 	}
