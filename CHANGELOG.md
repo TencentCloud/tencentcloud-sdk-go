@@ -1,3 +1,137 @@
+# Release v1.0.443
+
+## DDoS 防护(antiddos) 版本：2020-03-09
+
+### 第 37 次发布
+
+发布时间：2022-07-15 06:03:07
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [L7RuleEntry](https://cloud.tencent.com/document/api/1021/57582#L7RuleEntry)
+
+	* 新增成员：CCAIEnable
+
+
+
+
+## 主机安全(cwp) 版本：2018-02-28
+
+### 第 49 次发布
+
+发布时间：2022-07-15 06:07:13
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [MalwareInfo](https://cloud.tencent.com/document/api/296/19867#MalwareInfo)
+
+	* 新增成员：ModifyTime, StrFileAccessTime
+
+
+
+
+## 人脸核身(faceid) 版本：2018-03-01
+
+### 第 41 次发布
+
+发布时间：2022-07-14 17:47:55
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [GetEidResult](https://cloud.tencent.com/document/api/1007/54090)
+
+	* 新增出参：IntentionVerifyData
+
+
+修改数据结构：
+
+* [GetEidTokenConfig](https://cloud.tencent.com/document/api/1007/41958#GetEidTokenConfig)
+
+	* 新增成员：UseIntentionVerify, IntentionVerifyText
+
+
+
+
+## 云监控(monitor) 版本：2018-07-24
+
+### 第 51 次发布
+
+发布时间：2022-07-15 06:12:20
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateExporterIntegration](https://cloud.tencent.com/document/api/248/76019)
+
+	* <font color="#dd0000">**修改入参**：</font>KubeType, ClusterId
+
+	* 新增出参：Names
+
+* [CreatePrometheusAgent](https://cloud.tencent.com/document/api/248/76018)
+
+	* 新增出参：AgentId
+
+* [CreatePrometheusScrapeJob](https://cloud.tencent.com/document/api/248/76017)
+
+	* 新增出参：JobId
+
+
+
+
+## 云数据库 Redis(redis) 版本：2018-04-12
+
+### 第 50 次发布
+
+发布时间：2022-07-15 06:13:33
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateInstances](https://cloud.tencent.com/document/api/239/20026)
+
+	* 新增入参：ProductVersion, RedisClusterId
+
+* [InquiryPriceCreateInstance](https://cloud.tencent.com/document/api/239/41159)
+
+	* 新增入参：ProductVersion
+
+
+
+
+## 实时音视频(trtc) 版本：2019-07-22
+
+### 第 34 次发布
+
+发布时间：2022-07-15 06:17:08
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除接口**：</font>
+
+* CreateTroubleInfo
+
+
+
 # Release v1.0.442
 
 ## 弹性 MapReduce(emr) 版本：2019-01-03

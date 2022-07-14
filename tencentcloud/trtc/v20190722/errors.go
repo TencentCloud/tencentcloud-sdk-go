@@ -35,12 +35,6 @@ const (
 	// 内部错误。
 	INTERNALERROR = "InternalError"
 
-	// 访问后端服务失败。
-	INTERNALERROR_BACKENDFAIL = "InternalError.BackendFail"
-
-	// 访问后端服务超时。
-	INTERNALERROR_BACKENDTIMEOUT = "InternalError.BackendTimeOut"
-
 	// 数据库查询异常。
 	INTERNALERROR_DBERROR = "InternalError.DBError"
 

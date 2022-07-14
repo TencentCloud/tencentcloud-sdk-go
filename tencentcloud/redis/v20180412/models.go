@@ -724,6 +724,12 @@ type CreateInstancesRequestParams struct {
 
 	// false ：默认值,发送正常请求，通过检查后直接创建实例 true：发送检查请求，不会创建实例。
 	DryRun *bool `json:"DryRun,omitempty" name:"DryRun"`
+
+	// "local"本地盘版，"cloud"云盘版，"cdc"独享集群版，如果不传默认发货为本地盘版本
+	ProductVersion *string `json:"ProductVersion,omitempty" name:"ProductVersion"`
+
+	// 独享集群id，ProductVersion="cdc"时必传
+	RedisClusterId *string `json:"RedisClusterId,omitempty" name:"RedisClusterId"`
 }
 
 type CreateInstancesRequest struct {
@@ -800,6 +806,12 @@ type CreateInstancesRequest struct {
 
 	// false ：默认值,发送正常请求，通过检查后直接创建实例 true：发送检查请求，不会创建实例。
 	DryRun *bool `json:"DryRun,omitempty" name:"DryRun"`
+
+	// "local"本地盘版，"cloud"云盘版，"cdc"独享集群版，如果不传默认发货为本地盘版本
+	ProductVersion *string `json:"ProductVersion,omitempty" name:"ProductVersion"`
+
+	// 独享集群id，ProductVersion="cdc"时必传
+	RedisClusterId *string `json:"RedisClusterId,omitempty" name:"RedisClusterId"`
 }
 
 func (r *CreateInstancesRequest) ToJsonString() string {
@@ -837,6 +849,8 @@ func (r *CreateInstancesRequest) FromJsonString(s string) error {
 	delete(f, "ZoneName")
 	delete(f, "TemplateId")
 	delete(f, "DryRun")
+	delete(f, "ProductVersion")
+	delete(f, "RedisClusterId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateInstancesRequest has unknown keys!", "")
 	}
@@ -4493,6 +4507,9 @@ type InquiryPriceCreateInstanceRequestParams struct {
 
 	// 实例所属的可用区名称，可参考[地域和可用区](https://cloud.tencent.com/document/product/239/4106)  。
 	ZoneName *string `json:"ZoneName,omitempty" name:"ZoneName"`
+
+	// "local"本地盘版，"cloud"云盘版，"cdc"独享集群版，如果不传默认询价为本地盘版本
+	ProductVersion *string `json:"ProductVersion,omitempty" name:"ProductVersion"`
 }
 
 type InquiryPriceCreateInstanceRequest struct {
@@ -4528,6 +4545,9 @@ type InquiryPriceCreateInstanceRequest struct {
 
 	// 实例所属的可用区名称，可参考[地域和可用区](https://cloud.tencent.com/document/product/239/4106)  。
 	ZoneName *string `json:"ZoneName,omitempty" name:"ZoneName"`
+
+	// "local"本地盘版，"cloud"云盘版，"cdc"独享集群版，如果不传默认询价为本地盘版本
+	ProductVersion *string `json:"ProductVersion,omitempty" name:"ProductVersion"`
 }
 
 func (r *InquiryPriceCreateInstanceRequest) ToJsonString() string {
@@ -4552,6 +4572,7 @@ func (r *InquiryPriceCreateInstanceRequest) FromJsonString(s string) error {
 	delete(f, "RedisReplicasNum")
 	delete(f, "ReplicasReadonly")
 	delete(f, "ZoneName")
+	delete(f, "ProductVersion")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "InquiryPriceCreateInstanceRequest has unknown keys!", "")
 	}

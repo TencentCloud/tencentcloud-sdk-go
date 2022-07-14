@@ -1140,6 +1140,12 @@ type CreateExporterIntegrationRequestParams struct {
 	// 实例 ID
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
+	// 类型
+	Kind *string `json:"Kind,omitempty" name:"Kind"`
+
+	// 集成配置
+	Content *string `json:"Content,omitempty" name:"Content"`
+
 	// Kubernetes 集群类型，取值如下：
 	// <li> 1= 容器集群(TKE) </li>
 	// <li> 2=弹性集群<EKS> </li>
@@ -1148,12 +1154,6 @@ type CreateExporterIntegrationRequestParams struct {
 
 	// 集群 ID
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
-
-	// 类型
-	Kind *string `json:"Kind,omitempty" name:"Kind"`
-
-	// 集成配置
-	Content *string `json:"Content,omitempty" name:"Content"`
 }
 
 type CreateExporterIntegrationRequest struct {
@@ -1162,6 +1162,12 @@ type CreateExporterIntegrationRequest struct {
 	// 实例 ID
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
+	// 类型
+	Kind *string `json:"Kind,omitempty" name:"Kind"`
+
+	// 集成配置
+	Content *string `json:"Content,omitempty" name:"Content"`
+
 	// Kubernetes 集群类型，取值如下：
 	// <li> 1= 容器集群(TKE) </li>
 	// <li> 2=弹性集群<EKS> </li>
@@ -1170,12 +1176,6 @@ type CreateExporterIntegrationRequest struct {
 
 	// 集群 ID
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
-
-	// 类型
-	Kind *string `json:"Kind,omitempty" name:"Kind"`
-
-	// 集成配置
-	Content *string `json:"Content,omitempty" name:"Content"`
 }
 
 func (r *CreateExporterIntegrationRequest) ToJsonString() string {
@@ -1191,10 +1191,10 @@ func (r *CreateExporterIntegrationRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "InstanceId")
-	delete(f, "KubeType")
-	delete(f, "ClusterId")
 	delete(f, "Kind")
 	delete(f, "Content")
+	delete(f, "KubeType")
+	delete(f, "ClusterId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateExporterIntegrationRequest has unknown keys!", "")
 	}
@@ -1203,6 +1203,9 @@ func (r *CreateExporterIntegrationRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateExporterIntegrationResponseParams struct {
+	// 返回创建成功的集成名称列表
+	Names []*string `json:"Names,omitempty" name:"Names"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }
@@ -1438,6 +1441,9 @@ func (r *CreatePrometheusAgentRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreatePrometheusAgentResponseParams struct {
+	// 创建成功的 Agent Id
+	AgentId *string `json:"AgentId,omitempty" name:"AgentId"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }
@@ -1605,6 +1611,9 @@ func (r *CreatePrometheusScrapeJobRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreatePrometheusScrapeJobResponseParams struct {
+	// 成功创建抓取任务 Id
+	JobId *string `json:"JobId,omitempty" name:"JobId"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }

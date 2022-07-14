@@ -143,6 +143,9 @@ const (
 	// 设备不存在。
 	INVALIDPARAMETERVALUE_DEVICENOTEXIST = "InvalidParameterValue.DeviceNotExist"
 
+	// 使用标准蓝牙广播协议的产品，DeviceName最多不超过8个字符。
+	INVALIDPARAMETERVALUE_ERRLLSYNCBROADCASTDEVICENAMELENGTHEXCEED = "InvalidParameterValue.ErrLLSyncBroadcastDeviceNameLengthExceed"
+
 	// 任务不存在。
 	INVALIDPARAMETERVALUE_ERRORTASKNOTEXIST = "InvalidParameterValue.ErrorTaskNotExist"
 

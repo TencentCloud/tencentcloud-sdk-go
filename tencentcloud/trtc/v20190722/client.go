@@ -104,65 +104,6 @@ func (c *Client) CreatePictureWithContext(ctx context.Context, request *CreatePi
     return
 }
 
-func NewCreateTroubleInfoRequest() (request *CreateTroubleInfoRequest) {
-    request = &CreateTroubleInfoRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    request.Init().WithApiInfo("trtc", APIVersion, "CreateTroubleInfo")
-    
-    
-    return
-}
-
-func NewCreateTroubleInfoResponse() (response *CreateTroubleInfoResponse) {
-    response = &CreateTroubleInfoResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// CreateTroubleInfo
-// 创建异常信息
-//
-// 可能返回的错误码:
-//  AUTHFAILURE_UNREALNAMEAUTHENTICATED = "AuthFailure.UnRealNameAuthenticated"
-//  INTERNALERROR = "InternalError"
-//  INTERNALERROR_BACKENDFAIL = "InternalError.BackendFail"
-//  INTERNALERROR_BACKENDTIMEOUT = "InternalError.BackendTimeOut"
-//  INTERNALERROR_DBERROR = "InternalError.DBError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  MISSINGPARAMETER = "MissingParameter"
-func (c *Client) CreateTroubleInfo(request *CreateTroubleInfoRequest) (response *CreateTroubleInfoResponse, err error) {
-    return c.CreateTroubleInfoWithContext(context.Background(), request)
-}
-
-// CreateTroubleInfo
-// 创建异常信息
-//
-// 可能返回的错误码:
-//  AUTHFAILURE_UNREALNAMEAUTHENTICATED = "AuthFailure.UnRealNameAuthenticated"
-//  INTERNALERROR = "InternalError"
-//  INTERNALERROR_BACKENDFAIL = "InternalError.BackendFail"
-//  INTERNALERROR_BACKENDTIMEOUT = "InternalError.BackendTimeOut"
-//  INTERNALERROR_DBERROR = "InternalError.DBError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  MISSINGPARAMETER = "MissingParameter"
-func (c *Client) CreateTroubleInfoWithContext(ctx context.Context, request *CreateTroubleInfoRequest) (response *CreateTroubleInfoResponse, err error) {
-    if request == nil {
-        request = NewCreateTroubleInfoRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("CreateTroubleInfo require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewCreateTroubleInfoResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewDeletePictureRequest() (request *DeletePictureRequest) {
     request = &DeletePictureRequest{
         BaseRequest: &tchttp.BaseRequest{},

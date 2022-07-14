@@ -6860,6 +6860,9 @@ type L7RuleEntry struct {
 
 	// 同ruleId
 	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 智能cc开关，取值[0(关闭), 1(开启)]
+	CCAIEnable *uint64 `json:"CCAIEnable,omitempty" name:"CCAIEnable"`
 }
 
 type L7RuleHealth struct {

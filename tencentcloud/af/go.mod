@@ -2,4 +2,4 @@ module github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/af
 
 go 1.14
 
-require github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common v1.0.442
+require github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common v1.0.443

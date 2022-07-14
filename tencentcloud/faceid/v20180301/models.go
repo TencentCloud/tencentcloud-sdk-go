@@ -1171,96 +1171,6 @@ type DetectInfoVideoData struct {
 	LivenessVideo *string `json:"LivenessVideo,omitempty" name:"LivenessVideo"`
 }
 
-// Predefined struct for user
-type DetectReflectLivenessAndCompareRequestParams struct {
-	// SDK生成的活体检测数据包的资源地址。
-	LiveDataUrl *string `json:"LiveDataUrl,omitempty" name:"LiveDataUrl"`
-
-	// SDK生成的活体检测数据包的资源内容MD5（32位，用于校验LiveData的一致性）。
-	LiveDataMd5 *string `json:"LiveDataMd5,omitempty" name:"LiveDataMd5"`
-
-	// 用于比对的目标图片的资源地址。
-	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
-
-	// 用于比对的目标图片的资源MD5（32位，用于校验Image的一致性）。
-	ImageMd5 *string `json:"ImageMd5,omitempty" name:"ImageMd5"`
-}
-
-type DetectReflectLivenessAndCompareRequest struct {
-	*tchttp.BaseRequest
-	
-	// SDK生成的活体检测数据包的资源地址。
-	LiveDataUrl *string `json:"LiveDataUrl,omitempty" name:"LiveDataUrl"`
-
-	// SDK生成的活体检测数据包的资源内容MD5（32位，用于校验LiveData的一致性）。
-	LiveDataMd5 *string `json:"LiveDataMd5,omitempty" name:"LiveDataMd5"`
-
-	// 用于比对的目标图片的资源地址。
-	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
-
-	// 用于比对的目标图片的资源MD5（32位，用于校验Image的一致性）。
-	ImageMd5 *string `json:"ImageMd5,omitempty" name:"ImageMd5"`
-}
-
-func (r *DetectReflectLivenessAndCompareRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DetectReflectLivenessAndCompareRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "LiveDataUrl")
-	delete(f, "LiveDataMd5")
-	delete(f, "ImageUrl")
-	delete(f, "ImageMd5")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DetectReflectLivenessAndCompareRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DetectReflectLivenessAndCompareResponseParams struct {
-	// 验证通过后的视频最佳截图资源临时地址，jpg格式，资源和链接有效期2小时，务必在有效期内下载。
-	BestFrameUrl *string `json:"BestFrameUrl,omitempty" name:"BestFrameUrl"`
-
-	// 验证通过后的视频最佳截图资源MD5（32位，用于校验BestFrame的一致性）。
-	BestFrameMd5 *string `json:"BestFrameMd5,omitempty" name:"BestFrameMd5"`
-
-	// 业务错误码，成功情况返回Success，错误情况请参考下方错误码 列表中FailedOperation部分。
-	Result *string `json:"Result,omitempty" name:"Result"`
-
-	// 业务结果描述。
-	Description *string `json:"Description,omitempty" name:"Description"`
-
-	// 相似度，取值范围 [0.00, 100.00]。推荐相似度大于等于70时可判断为同一人，可根据具体场景自行调整阈值（阈值70的误通过率为千分之一，阈值80的误通过率是万分之一）。
-	Sim *float64 `json:"Sim,omitempty" name:"Sim"`
-
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-}
-
-type DetectReflectLivenessAndCompareResponse struct {
-	*tchttp.BaseResponse
-	Response *DetectReflectLivenessAndCompareResponseParams `json:"Response"`
-}
-
-func (r *DetectReflectLivenessAndCompareResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DetectReflectLivenessAndCompareResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type EidInfo struct {
 	// 商户方 appeIDcode 的数字证书
 	EidCode *string `json:"EidCode,omitempty" name:"EidCode"`
@@ -1380,7 +1290,7 @@ type Encryption struct {
 	// 在使用加密服务时，填入要被加密的字段。本接口中可填入加密后的一个或多个字段
 	EncryptList []*string `json:"EncryptList,omitempty" name:"EncryptList"`
 
-	// 有加密需求的用户，传入CBC加密的初始向量
+	// 有加密需求的用户，传入CBC加密的初始向量（客户自定义字符串，长度16字符）。
 	Iv *string `json:"Iv,omitempty" name:"Iv"`
 }
 
@@ -1693,7 +1603,7 @@ type GetEidResultRequestParams struct {
 	// E证通流程的唯一标识，调用GetEidToken接口时生成。
 	EidToken *string `json:"EidToken,omitempty" name:"EidToken"`
 
-	// 指定拉取的结果信息，取值（0：全部；1：文本类；2：身份证信息；3：最佳截图信息）。
+	// 指定拉取的结果信息，取值（0：全部；1：文本类；2：身份证信息；3：最佳截图信息；5：意愿核身相关结果；）。
 	// 如 13表示拉取文本类、最佳截图信息。
 	// 默认值：0
 	InfoType *string `json:"InfoType,omitempty" name:"InfoType"`
@@ -1708,7 +1618,7 @@ type GetEidResultRequest struct {
 	// E证通流程的唯一标识，调用GetEidToken接口时生成。
 	EidToken *string `json:"EidToken,omitempty" name:"EidToken"`
 
-	// 指定拉取的结果信息，取值（0：全部；1：文本类；2：身份证信息；3：最佳截图信息）。
+	// 指定拉取的结果信息，取值（0：全部；1：文本类；2：身份证信息；3：最佳截图信息；5：意愿核身相关结果；）。
 	// 如 13表示拉取文本类、最佳截图信息。
 	// 默认值：0
 	InfoType *string `json:"InfoType,omitempty" name:"InfoType"`
@@ -1756,6 +1666,10 @@ type GetEidResultResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EidInfo *EidInfo `json:"EidInfo,omitempty" name:"EidInfo"`
 
+	// 意愿核身相关信息。若未使用意愿核身功能，该字段返回值可以不处理。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IntentionVerifyData *IntentionVerifyData `json:"IntentionVerifyData,omitempty" name:"IntentionVerifyData"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }
@@ -1785,6 +1699,12 @@ type GetEidTokenConfig struct {
 	// 默认1
 	// 注：使用OCR时仅支持用户修改结果中的姓名
 	InputType *string `json:"InputType,omitempty" name:"InputType"`
+
+	// 是否使用意愿核身，默认不使用。注意：如开启使用，则计费标签按【意愿核身】计费标签计价；如不开启，则计费标签按【E证通】计费标签计价，价格详见：[价格说明](https://cloud.tencent.com/document/product/1007/56804)。
+	UseIntentionVerify *bool `json:"UseIntentionVerify,omitempty" name:"UseIntentionVerify"`
+
+	// 意愿核身使用的文案，若未使用意愿核身功能，该字段无需传入。默认为空，最长可接受120的字符串长度。
+	IntentionVerifyText *string `json:"IntentionVerifyText,omitempty" name:"IntentionVerifyText"`
 }
 
 // Predefined struct for user
@@ -1802,7 +1722,7 @@ type GetEidTokenRequestParams struct {
 	// 透传字段，在获取验证结果时返回。最长长度1024位。
 	Extra *string `json:"Extra,omitempty" name:"Extra"`
 
-	// 小程序模式配置，包括如何传入姓名身份证的配置。
+	// 小程序模式配置，包括如何传入姓名身份证的配置，以及是否使用意愿核身。
 	Config *GetEidTokenConfig `json:"Config,omitempty" name:"Config"`
 
 	// 最长长度1024位。用户从Url中进入核身认证结束后重定向的回调链接地址。EidToken会在该链接的query参数中。
@@ -1828,7 +1748,7 @@ type GetEidTokenRequest struct {
 	// 透传字段，在获取验证结果时返回。最长长度1024位。
 	Extra *string `json:"Extra,omitempty" name:"Extra"`
 
-	// 小程序模式配置，包括如何传入姓名身份证的配置。
+	// 小程序模式配置，包括如何传入姓名身份证的配置，以及是否使用意愿核身。
 	Config *GetEidTokenConfig `json:"Config,omitempty" name:"Config"`
 
 	// 最长长度1024位。用户从Url中进入核身认证结束后重定向的回调链接地址。EidToken会在该链接的query参数中。

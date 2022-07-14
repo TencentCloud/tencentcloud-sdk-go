@@ -17117,6 +17117,14 @@ type MalwareInfo struct {
 	// 主机uuid
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Uuid *string `json:"Uuid,omitempty" name:"Uuid"`
+
+	// 最近修改时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ModifyTime *string `json:"ModifyTime,omitempty" name:"ModifyTime"`
+
+	// 最近访问时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StrFileAccessTime *string `json:"StrFileAccessTime,omitempty" name:"StrFileAccessTime"`
 }
 
 type MalwareRisk struct {
