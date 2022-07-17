@@ -902,6 +902,9 @@ func (r *DeleteDatasetResponse) FromJsonString(s string) error {
 type DeleteTrainingModelRequestParams struct {
 	// 模型ID
 	TrainingModelId *string `json:"TrainingModelId,omitempty" name:"TrainingModelId"`
+
+	// 是否同步清理cos
+	EnableDeleteCos *bool `json:"EnableDeleteCos,omitempty" name:"EnableDeleteCos"`
 }
 
 type DeleteTrainingModelRequest struct {
@@ -909,6 +912,9 @@ type DeleteTrainingModelRequest struct {
 	
 	// 模型ID
 	TrainingModelId *string `json:"TrainingModelId,omitempty" name:"TrainingModelId"`
+
+	// 是否同步清理cos
+	EnableDeleteCos *bool `json:"EnableDeleteCos,omitempty" name:"EnableDeleteCos"`
 }
 
 func (r *DeleteTrainingModelRequest) ToJsonString() string {
@@ -924,6 +930,7 @@ func (r *DeleteTrainingModelRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "TrainingModelId")
+	delete(f, "EnableDeleteCos")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteTrainingModelRequest has unknown keys!", "")
 	}
@@ -956,6 +963,9 @@ func (r *DeleteTrainingModelResponse) FromJsonString(s string) error {
 type DeleteTrainingModelVersionRequestParams struct {
 	// 模型版本ID
 	TrainingModelVersionId *string `json:"TrainingModelVersionId,omitempty" name:"TrainingModelVersionId"`
+
+	// 是否同步清理cos
+	EnableDeleteCos *bool `json:"EnableDeleteCos,omitempty" name:"EnableDeleteCos"`
 }
 
 type DeleteTrainingModelVersionRequest struct {
@@ -963,6 +973,9 @@ type DeleteTrainingModelVersionRequest struct {
 	
 	// 模型版本ID
 	TrainingModelVersionId *string `json:"TrainingModelVersionId,omitempty" name:"TrainingModelVersionId"`
+
+	// 是否同步清理cos
+	EnableDeleteCos *bool `json:"EnableDeleteCos,omitempty" name:"EnableDeleteCos"`
 }
 
 func (r *DeleteTrainingModelVersionRequest) ToJsonString() string {
@@ -978,6 +991,7 @@ func (r *DeleteTrainingModelVersionRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "TrainingModelVersionId")
+	delete(f, "EnableDeleteCos")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteTrainingModelVersionRequest has unknown keys!", "")
 	}

@@ -104,6 +104,61 @@ type ActionConfigInfo struct {
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
 }
 
+type ActivityResItem struct {
+	// 转码任务输出
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TranscodeTask *MediaProcessTaskTranscodeResult `json:"TranscodeTask,omitempty" name:"TranscodeTask"`
+
+	// 转动图任务输出
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AnimatedGraphicTask *MediaProcessTaskAnimatedGraphicResult `json:"AnimatedGraphicTask,omitempty" name:"AnimatedGraphicTask"`
+
+	// 时间点截图任务输出
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SnapshotByTimeOffsetTask *MediaProcessTaskSampleSnapshotResult `json:"SnapshotByTimeOffsetTask,omitempty" name:"SnapshotByTimeOffsetTask"`
+
+	// 采样截图任务输出
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SampleSnapshotTask *MediaProcessTaskSampleSnapshotResult `json:"SampleSnapshotTask,omitempty" name:"SampleSnapshotTask"`
+
+	// 雪碧图任务输出
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ImageSpriteTask *MediaProcessTaskImageSpriteResult `json:"ImageSpriteTask,omitempty" name:"ImageSpriteTask"`
+
+	// 自适应码流任务输出
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AdaptiveDynamicStreamingTask *MediaProcessTaskAdaptiveDynamicStreamingResult `json:"AdaptiveDynamicStreamingTask,omitempty" name:"AdaptiveDynamicStreamingTask"`
+
+	// 识别任务输出
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RecognitionTask *ScheduleRecognitionTaskResult `json:"RecognitionTask,omitempty" name:"RecognitionTask"`
+
+	// 审核任务输出
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReviewTask *ScheduleReviewTaskResult `json:"ReviewTask,omitempty" name:"ReviewTask"`
+
+	// 分析任务输出
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AnalysisTask *ScheduleAnalysisTaskResult `json:"AnalysisTask,omitempty" name:"AnalysisTask"`
+}
+
+type ActivityResult struct {
+	// 原子任务类型。
+	// <li>Transcode：转码。</li>
+	// <li>SampleSnapshot：采样截图。</li>
+	// <li>AnimatedGraphics：转动图。</li>
+	// <li>SnapshotByTimeOffset：时间点截图。</li>
+	// <li>ImageSprites：雪碧图。</li>
+	// <li>AdaptiveDynamicStreaming：自适应码流。</li>
+	// <li>AiContentReview：内容审核。</li>
+	// <li>AIRecognition：智能识别。</li>
+	// <li>AIAnalysis：智能分析。</li>
+	ActivityType *string `json:"ActivityType,omitempty" name:"ActivityType"`
+
+	// 原子任务输出。
+	ActivityResItem *ActivityResItem `json:"ActivityResItem,omitempty" name:"ActivityResItem"`
+}
+
 type AdaptiveDynamicStreamingInfoItem struct {
 	// 转自适应码流规格。
 	Definition *int64 `json:"Definition,omitempty" name:"Definition"`
@@ -1364,6 +1419,21 @@ type AnimatedGraphicsTemplate struct {
 	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
 }
 
+type ArtifactRepairConfig struct {
+	// 能力配置开关，可选值：
+	// <li>ON：开启；</li>
+	// <li>OFF：关闭。</li>
+	// 默认值：ON。
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
+
+	// 类型，可选值：
+	// <li>weak</li>
+	// <li>strong</li>
+	// 默认值：weak。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *string `json:"Type,omitempty" name:"Type"`
+}
+
 type AsrFullTextConfigureInfo struct {
 	// 语音全文识别任务开关，可选值：
 	// <li>ON：开启智能语音全文识别任务；</li>
@@ -1495,6 +1565,22 @@ type ClassificationConfigureInfoForUpdate struct {
 	// <li>ON：开启智能分类任务；</li>
 	// <li>OFF：关闭智能分类任务。</li>
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
+}
+
+type ColorEnhanceConfig struct {
+	// 能力配置开关，可选值：
+	// <li>ON：开启；</li>
+	// <li>OFF：关闭。</li>
+	// 默认值：ON。
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
+
+	// 类型，可选值：
+	// <li>weak</li>
+	// <li>normal</li>
+	// <li>strong</li>
+	// 默认值：weak。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *string `json:"Type,omitempty" name:"Type"`
 }
 
 type ContentReviewTemplateItem struct {
@@ -2710,6 +2796,9 @@ type CreateTranscodeTemplateRequestParams struct {
 
 	// 极速高清转码参数。
 	TEHDConfig *TEHDConfig `json:"TEHDConfig,omitempty" name:"TEHDConfig"`
+
+	// 音视频增强配置。
+	EnhanceConfig *EnhanceConfig `json:"EnhanceConfig,omitempty" name:"EnhanceConfig"`
 }
 
 type CreateTranscodeTemplateRequest struct {
@@ -2744,6 +2833,9 @@ type CreateTranscodeTemplateRequest struct {
 
 	// 极速高清转码参数。
 	TEHDConfig *TEHDConfig `json:"TEHDConfig,omitempty" name:"TEHDConfig"`
+
+	// 音视频增强配置。
+	EnhanceConfig *EnhanceConfig `json:"EnhanceConfig,omitempty" name:"EnhanceConfig"`
 }
 
 func (r *CreateTranscodeTemplateRequest) ToJsonString() string {
@@ -2766,6 +2858,7 @@ func (r *CreateTranscodeTemplateRequest) FromJsonString(s string) error {
 	delete(f, "VideoTemplate")
 	delete(f, "AudioTemplate")
 	delete(f, "TEHDConfig")
+	delete(f, "EnhanceConfig")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateTranscodeTemplateRequest has unknown keys!", "")
 	}
@@ -4720,6 +4813,7 @@ type DescribeTaskDetailResponseParams struct {
 	// <li>WorkflowTask：视频工作流处理任务。</li>
 	// <li>EditMediaTask：视频编辑任务。</li>
 	// <li>LiveStreamProcessTask：直播流处理任务。</li>
+	// <li>ScheduleTask：编排处理任务。</li>
 	TaskType *string `json:"TaskType,omitempty" name:"TaskType"`
 
 	// 任务状态，取值：
@@ -4737,13 +4831,13 @@ type DescribeTaskDetailResponseParams struct {
 	// 任务执行完毕的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
 	FinishTime *string `json:"FinishTime,omitempty" name:"FinishTime"`
 
-	// 视频处理任务信息，仅当 TaskType 为 WorkflowTask，该字段有值。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	WorkflowTask *WorkflowTask `json:"WorkflowTask,omitempty" name:"WorkflowTask"`
-
 	// 视频编辑任务信息，仅当 TaskType 为 EditMediaTask，该字段有值。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EditMediaTask *EditMediaTask `json:"EditMediaTask,omitempty" name:"EditMediaTask"`
+
+	// 视频处理任务信息，仅当 TaskType 为 WorkflowTask，该字段有值。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WorkflowTask *WorkflowTask `json:"WorkflowTask,omitempty" name:"WorkflowTask"`
 
 	// 直播流处理任务信息，仅当 TaskType 为 LiveStreamProcessTask，该字段有值。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -4764,6 +4858,10 @@ type DescribeTaskDetailResponseParams struct {
 
 	// 扩展信息字段，仅用于特定场景。
 	ExtInfo *string `json:"ExtInfo,omitempty" name:"ExtInfo"`
+
+	// 编排处理任务信息，仅当 TaskType 为 ScheduleTask，该字段有值。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ScheduleTask *ScheduleTask `json:"ScheduleTask,omitempty" name:"ScheduleTask"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -4839,6 +4937,9 @@ type DescribeTasksResponseParams struct {
 	// 翻页标识，当请求未返回所有数据，该字段表示下一条记录的 ID。当该字段为空字符串，说明已无更多数据。
 	ScrollToken *string `json:"ScrollToken,omitempty" name:"ScrollToken"`
 
+	// 符合过滤条件的记录总数。
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }
@@ -4884,6 +4985,13 @@ type DescribeTranscodeTemplatesRequestParams struct {
 
 	// 返回记录条数，默认值：10，最大值：100。
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 模板类型（替换旧版本 TEHDType），可选值：
+	// <li>Common：普通转码模板；</li>
+	// <li>TEHD：极速高清模板。</li>
+	// <li>Enhance：音视频增强模板。</li>
+	// 默认空，不限制类型。
+	TranscodeType *string `json:"TranscodeType,omitempty" name:"TranscodeType"`
 }
 
 type DescribeTranscodeTemplatesRequest struct {
@@ -4912,6 +5020,13 @@ type DescribeTranscodeTemplatesRequest struct {
 
 	// 返回记录条数，默认值：10，最大值：100。
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 模板类型（替换旧版本 TEHDType），可选值：
+	// <li>Common：普通转码模板；</li>
+	// <li>TEHD：极速高清模板。</li>
+	// <li>Enhance：音视频增强模板。</li>
+	// 默认空，不限制类型。
+	TranscodeType *string `json:"TranscodeType,omitempty" name:"TranscodeType"`
 }
 
 func (r *DescribeTranscodeTemplatesRequest) ToJsonString() string {
@@ -4932,6 +5047,7 @@ func (r *DescribeTranscodeTemplatesRequest) FromJsonString(s string) error {
 	delete(f, "TEHDType")
 	delete(f, "Offset")
 	delete(f, "Limit")
+	delete(f, "TranscodeType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTranscodeTemplatesRequest has unknown keys!", "")
 	}
@@ -5516,6 +5632,12 @@ func (r *EnableWorkflowResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type EnhanceConfig struct {
+	// 视频增强配置。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VideoEnhance *VideoEnhanceConfig `json:"VideoEnhance,omitempty" name:"VideoEnhance"`
+}
+
 // Predefined struct for user
 type ExecuteFunctionRequestParams struct {
 	// 调用后端接口名称。
@@ -5640,6 +5762,33 @@ type FaceConfigureInfoForUpdate struct {
 	FaceLibrary *string `json:"FaceLibrary,omitempty" name:"FaceLibrary"`
 }
 
+type FaceEnhanceConfig struct {
+	// 能力配置开关，可选值：
+	// <li>ON：开启；</li>
+	// <li>OFF：关闭。</li>
+	// 默认值：ON。
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
+
+	// 强度，取值范围：0.0~1.0。
+	// 默认：0.0。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Intensity *float64 `json:"Intensity,omitempty" name:"Intensity"`
+}
+
+type FrameRateConfig struct {
+	// 能力配置开关，可选值：
+	// <li>ON：开启；</li>
+	// <li>OFF：关闭。</li>
+	// 默认值：ON。
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
+
+	// 帧率，取值范围：[0, 100]，单位：Hz。
+	// 默认值 0。
+	// 注意：对于转码，该参数会覆盖 VideoTemplate 内部的 Fps。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Fps *uint64 `json:"Fps,omitempty" name:"Fps"`
+}
+
 type FrameTagConfigureInfo struct {
 	// 智能按帧标签任务开关，可选值：
 	// <li>ON：开启智能按帧标签任务；</li>
@@ -5654,12 +5803,45 @@ type FrameTagConfigureInfoForUpdate struct {
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
 }
 
+type HdrConfig struct {
+	// 能力配置开关，可选值：
+	// <li>ON：开启；</li>
+	// <li>OFF：关闭。</li>
+	// 默认值：ON。
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
+
+	// 类型，可选值：
+	// <li>HDR10</li>
+	// <li>HLG</li>
+	// 默认值：HDR10。
+	// 注意：video的编码方式需要为libx265；
+	// 注意：视频编码位深为10。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *string `json:"Type,omitempty" name:"Type"`
+}
+
 type HeadTailParameter struct {
 	// 片头列表。
 	HeadSet []*MediaInputInfo `json:"HeadSet,omitempty" name:"HeadSet"`
 
 	// 片尾列表。
 	TailSet []*MediaInputInfo `json:"TailSet,omitempty" name:"TailSet"`
+}
+
+type ImageQualityEnhanceConfig struct {
+	// 能力配置开关，可选值：
+	// <li>ON：开启；</li>
+	// <li>OFF：关闭。</li>
+	// 默认值：ON。
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
+
+	// 类型，可选值：
+	// <li>weak</li>
+	// <li>normal</li>
+	// <li>strong</li>
+	// 默认值：weak。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *string `json:"Type,omitempty" name:"Type"`
 }
 
 type ImageSpriteTaskInput struct {
@@ -6126,6 +6308,20 @@ type LiveStreamTaskNotifyConfig struct {
 
 	// HTTP回调地址，NotifyType为URL时必填。
 	NotifyUrl *string `json:"NotifyUrl,omitempty" name:"NotifyUrl"`
+}
+
+type LowLightEnhanceConfig struct {
+	// 能力配置开关，可选值：
+	// <li>ON：开启；</li>
+	// <li>OFF：关闭。</li>
+	// 默认值：ON。
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
+
+	// 类型，可选值：
+	// <li>normal</li>
+	// 默认值：normal。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *string `json:"Type,omitempty" name:"Type"`
 }
 
 // Predefined struct for user
@@ -7954,6 +8150,9 @@ type ModifyTranscodeTemplateRequestParams struct {
 
 	// 极速高清转码参数。
 	TEHDConfig *TEHDConfigForUpdate `json:"TEHDConfig,omitempty" name:"TEHDConfig"`
+
+	// 音视频增强参数。
+	EnhanceConfig *EnhanceConfig `json:"EnhanceConfig,omitempty" name:"EnhanceConfig"`
 }
 
 type ModifyTranscodeTemplateRequest struct {
@@ -7989,6 +8188,9 @@ type ModifyTranscodeTemplateRequest struct {
 
 	// 极速高清转码参数。
 	TEHDConfig *TEHDConfigForUpdate `json:"TEHDConfig,omitempty" name:"TEHDConfig"`
+
+	// 音视频增强参数。
+	EnhanceConfig *EnhanceConfig `json:"EnhanceConfig,omitempty" name:"EnhanceConfig"`
 }
 
 func (r *ModifyTranscodeTemplateRequest) ToJsonString() string {
@@ -8012,6 +8214,7 @@ func (r *ModifyTranscodeTemplateRequest) FromJsonString(s string) error {
 	delete(f, "VideoTemplate")
 	delete(f, "AudioTemplate")
 	delete(f, "TEHDConfig")
+	delete(f, "EnhanceConfig")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyTranscodeTemplateRequest has unknown keys!", "")
 	}
@@ -8488,6 +8691,7 @@ type ParseNotificationResponseParams struct {
 	// 支持事件类型，目前取值有：
 	// <li>WorkflowTask：视频工作流处理任务。</li>
 	// <li>EditMediaTask：视频编辑任务。</li>
+	// <li>ScheduleTask：编排任务。</li>
 	EventType *string `json:"EventType,omitempty" name:"EventType"`
 
 	// 视频处理任务信息，仅当 TaskType 为 WorkflowTask，该字段有值。
@@ -8503,6 +8707,10 @@ type ParseNotificationResponseParams struct {
 
 	// 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长1000个字符。
 	SessionContext *string `json:"SessionContext,omitempty" name:"SessionContext"`
+
+	// 编排任务信息，仅当 TaskType 为 ScheduleTask，该字段有值。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ScheduleTaskEvent *ScheduleTask `json:"ScheduleTaskEvent,omitempty" name:"ScheduleTaskEvent"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -8900,6 +9108,12 @@ type ProcessMediaRequestParams struct {
 
 	// 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。
 	SessionContext *string `json:"SessionContext,omitempty" name:"SessionContext"`
+
+	// 编排ID。
+	// 注意1：对于OutputStorage、OutputDir，如果编排任务里没有配置，将采用请求里对应参数。
+	// 注意2：对于TaskNotifyConfig，如果编排任务里没有配置，将采用请求里对应的参数。
+	// 注意3：编排的 Trigger 只是用来自动化触发场景，在手动发起的请求中已经配置的 Trigger 无意义。
+	ScheduleId *int64 `json:"ScheduleId,omitempty" name:"ScheduleId"`
 }
 
 type ProcessMediaRequest struct {
@@ -8937,6 +9151,12 @@ type ProcessMediaRequest struct {
 
 	// 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。
 	SessionContext *string `json:"SessionContext,omitempty" name:"SessionContext"`
+
+	// 编排ID。
+	// 注意1：对于OutputStorage、OutputDir，如果编排任务里没有配置，将采用请求里对应参数。
+	// 注意2：对于TaskNotifyConfig，如果编排任务里没有配置，将采用请求里对应的参数。
+	// 注意3：编排的 Trigger 只是用来自动化触发场景，在手动发起的请求中已经配置的 Trigger 无意义。
+	ScheduleId *int64 `json:"ScheduleId,omitempty" name:"ScheduleId"`
 }
 
 func (r *ProcessMediaRequest) ToJsonString() string {
@@ -8962,6 +9182,7 @@ func (r *ProcessMediaRequest) FromJsonString(s string) error {
 	delete(f, "TasksPriority")
 	delete(f, "SessionId")
 	delete(f, "SessionContext")
+	delete(f, "ScheduleId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ProcessMediaRequest has unknown keys!", "")
 	}
@@ -9413,6 +9634,117 @@ type SampleSnapshotTemplate struct {
 	FillType *string `json:"FillType,omitempty" name:"FillType"`
 }
 
+type ScheduleAnalysisTaskResult struct {
+	// 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 错误码，空字符串表示成功，其他值表示失败，取值请参考 [媒体处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+	ErrCodeExt *string `json:"ErrCodeExt,omitempty" name:"ErrCodeExt"`
+
+	// 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
+	ErrCode *int64 `json:"ErrCode,omitempty" name:"ErrCode"`
+
+	// 错误信息。
+	Message *string `json:"Message,omitempty" name:"Message"`
+
+	// 分析任务的输入。
+	Input *AiAnalysisTaskInput `json:"Input,omitempty" name:"Input"`
+
+	// 分析任务的输出。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Output []*AiAnalysisResult `json:"Output,omitempty" name:"Output"`
+}
+
+type ScheduleRecognitionTaskResult struct {
+	// 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 错误码，空字符串表示成功，其他值表示失败，取值请参考 [媒体处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+	ErrCodeExt *string `json:"ErrCodeExt,omitempty" name:"ErrCodeExt"`
+
+	// 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
+	ErrCode *int64 `json:"ErrCode,omitempty" name:"ErrCode"`
+
+	// 错误信息。
+	Message *string `json:"Message,omitempty" name:"Message"`
+
+	// 识别任务的输入。
+	Input *AiRecognitionTaskInput `json:"Input,omitempty" name:"Input"`
+
+	// 识别任务的输出。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Output []*AiRecognitionResult `json:"Output,omitempty" name:"Output"`
+}
+
+type ScheduleReviewTaskResult struct {
+	// 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 错误码，空字符串表示成功，其他值表示失败，取值请参考 [媒体处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+	ErrCodeExt *string `json:"ErrCodeExt,omitempty" name:"ErrCodeExt"`
+
+	// 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
+	ErrCode *int64 `json:"ErrCode,omitempty" name:"ErrCode"`
+
+	// 错误信息。
+	Message *string `json:"Message,omitempty" name:"Message"`
+
+	// 审核任务的输入。
+	Input *AiContentReviewTaskInput `json:"Input,omitempty" name:"Input"`
+
+	// 审核任务的输出。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Output []*AiContentReviewResult `json:"Output,omitempty" name:"Output"`
+}
+
+type ScheduleTask struct {
+	// 编排任务 ID。
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 任务流状态，取值：
+	// <li>PROCESSING：处理中；</li>
+	// <li>FINISH：已完成。</li>
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 媒体处理的目标文件信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InputInfo *MediaInputInfo `json:"InputInfo,omitempty" name:"InputInfo"`
+
+	// 原始视频的元信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MetaData *MediaMetaData `json:"MetaData,omitempty" name:"MetaData"`
+
+	// 编排任务输出。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ActivityResultSet []*ActivityResult `json:"ActivityResultSet,omitempty" name:"ActivityResultSet"`
+}
+
+type ScratchRepairConfig struct {
+	// 能力配置开关，可选值：
+	// <li>ON：开启；</li>
+	// <li>OFF：关闭。</li>
+	// 默认值：ON。
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
+
+	// 强度，取值范围：0.0~1.0。
+	// 默认：0.0。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Intensity *float64 `json:"Intensity,omitempty" name:"Intensity"`
+}
+
+type SharpEnhanceConfig struct {
+	// 能力配置开关，可选值：
+	// <li>ON：开启；</li>
+	// <li>OFF：关闭。</li>
+	// 默认值：ON。
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
+
+	// 强度，取值范围：0.0~1.0。
+	// 默认：0.0。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Intensity *float64 `json:"Intensity,omitempty" name:"Intensity"`
+}
+
 type SnapshotByTimeOffsetTaskInput struct {
 	// 指定时间点截图模板 ID。
 	Definition *uint64 `json:"Definition,omitempty" name:"Definition"`
@@ -9493,6 +9825,27 @@ type SnapshotByTimeOffsetTemplate struct {
 	// <li>black：高斯模糊，保持视频宽高比不变，边缘剩余部分使用高斯模糊。</li>
 	// 默认值：black 。
 	FillType *string `json:"FillType,omitempty" name:"FillType"`
+}
+
+type SuperResolutionConfig struct {
+	// 能力配置开关，可选值：
+	// <li>ON：开启；</li>
+	// <li>OFF：关闭。</li>
+	// 默认值：ON。
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
+
+	// 类型，可选值：
+	// <li>lq：针对低清晰度有较多噪声视频的超分；</li>
+	// <li>hq：针对高清晰度视频超分。</li>
+	// 默认值：lq。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 超分倍数，可选值：
+	// <li>2：目前只支持 2 倍超分。</li>
+	// 默认值：2。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Size *int64 `json:"Size,omitempty" name:"Size"`
 }
 
 type SvgWatermarkInput struct {
@@ -9598,6 +9951,7 @@ type TaskNotifyConfig struct {
 	// <li>CMQ：已下线，建议切换到TDMQ-CMQ</li>
 	// <li>TDMQ-CMQ：消息队列</li>
 	// <li>URL：指定URL时HTTP回调推送到 NotifyUrl 指定的地址，回调协议http+json，包体内容同解析事件通知接口的输出参数 </li>
+	// <li>SCF：不推荐使用，需要在控制台额外配置SCF</li>
 	// 目前 默认CMQ。
 	NotifyType *string `json:"NotifyType,omitempty" name:"NotifyType"`
 
@@ -9864,6 +10218,10 @@ type TranscodeTemplate struct {
 
 	// 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
 	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+
+	// 音视频增强配置。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EnhanceConfig *EnhanceConfig `json:"EnhanceConfig,omitempty" name:"EnhanceConfig"`
 }
 
 type UrlInputInfo struct {
@@ -9995,18 +10353,82 @@ type UserDefineOcrTextReviewTemplateInfoForUpdate struct {
 	ReviewConfidence *int64 `json:"ReviewConfidence,omitempty" name:"ReviewConfidence"`
 }
 
+type VideoDenoiseConfig struct {
+	// 能力配置开关，可选值：
+	// <li>ON：开启；</li>
+	// <li>OFF：关闭。</li>
+	// 默认值：ON。
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
+
+	// 类型，可选值：
+	// <li>weak</li>
+	// <li>strong</li>
+	// 默认值：weak。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *string `json:"Type,omitempty" name:"Type"`
+}
+
+type VideoEnhanceConfig struct {
+	// 插帧帧率配置。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FrameRate *FrameRateConfig `json:"FrameRate,omitempty" name:"FrameRate"`
+
+	// 超分配置。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SuperResolution *SuperResolutionConfig `json:"SuperResolution,omitempty" name:"SuperResolution"`
+
+	// HDR配置。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Hdr *HdrConfig `json:"Hdr,omitempty" name:"Hdr"`
+
+	// 视频降噪配置。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Denoise *VideoDenoiseConfig `json:"Denoise,omitempty" name:"Denoise"`
+
+	// 综合增强配置。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ImageQualityEnhance *ImageQualityEnhanceConfig `json:"ImageQualityEnhance,omitempty" name:"ImageQualityEnhance"`
+
+	// 色彩增强配置。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ColorEnhance *ColorEnhanceConfig `json:"ColorEnhance,omitempty" name:"ColorEnhance"`
+
+	// 细节增强配置。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SharpEnhance *SharpEnhanceConfig `json:"SharpEnhance,omitempty" name:"SharpEnhance"`
+
+	// 人脸增强配置。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FaceEnhance *FaceEnhanceConfig `json:"FaceEnhance,omitempty" name:"FaceEnhance"`
+
+	// 低光照增强配置。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LowLightEnhance *LowLightEnhanceConfig `json:"LowLightEnhance,omitempty" name:"LowLightEnhance"`
+
+	// 去划痕配置。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ScratchRepair *ScratchRepairConfig `json:"ScratchRepair,omitempty" name:"ScratchRepair"`
+
+	// 去伪影（毛刺）配置。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ArtifactRepair *ArtifactRepairConfig `json:"ArtifactRepair,omitempty" name:"ArtifactRepair"`
+}
+
 type VideoTemplateInfo struct {
 	// 视频流的编码格式，可选值：
 	// <li>libx264：H.264 编码</li>
 	// <li>libx265：H.265 编码</li>
 	// <li>av1：AOMedia Video 1 编码</li>
+	// 注意：目前 H.265 编码必须指定分辨率，并且需要在 640*480 以内。
+	// 注意：av1 编码容器目前只支持 mp4 。
 	Codec *string `json:"Codec,omitempty" name:"Codec"`
 
 	// 视频帧率，取值范围：[0, 100]，单位：Hz。
 	// 当取值为 0，表示帧率和原始视频保持一致。
+	// 注意：自适应码率时取值范围是 [0, 60]
 	Fps *uint64 `json:"Fps,omitempty" name:"Fps"`
 
-	// 视频流的码率，取值范围：0 和 [75, 35000]，单位：kbps。
+	// 视频流的码率，取值范围：0 和 [128, 35000]，单位：kbps。
 	// 当取值为 0，表示视频码率和原始视频保持一致。
 	Bitrate *uint64 `json:"Bitrate,omitempty" name:"Bitrate"`
 
@@ -10014,6 +10436,7 @@ type VideoTemplateInfo struct {
 	// <li>open：开启，此时，Width 代表视频的长边，Height 表示视频的短边；</li>
 	// <li>close：关闭，此时，Width 代表视频的宽度，Height 表示视频的高度。</li>
 	// 默认值：open。
+	// 注意：自适应模式时，Width不能小于Height。
 	ResolutionAdaptive *string `json:"ResolutionAdaptive,omitempty" name:"ResolutionAdaptive"`
 
 	// 视频流宽度（或长边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
@@ -10042,6 +10465,7 @@ type VideoTemplateInfo struct {
 	// <li>white：留白，保持视频宽高比不变，边缘剩余部分使用白色填充。</li>
 	// <li>gauss：高斯模糊，保持视频宽高比不变，边缘剩余部分使用高斯模糊填充。</li>
 	// 默认值：black 。
+	// 注意：自适应码流只支持 stretch、black。
 	FillType *string `json:"FillType,omitempty" name:"FillType"`
 
 	// 视频恒定码率控制因子，取值范围为[1, 51]。
@@ -10055,7 +10479,8 @@ type VideoTemplateInfoForUpdate struct {
 	// <li>libx264：H.264 编码</li>
 	// <li>libx265：H.265 编码</li>
 	// <li>av1：AOMedia Video 1 编码</li>
-	// 目前 H.265 编码必须指定分辨率，并且需要在 640*480 以内。av1 编码容器目前只支持 mp4 。
+	// 注意：目前 H.265 编码必须指定分辨率，并且需要在 640*480 以内。
+	// 注意：av1 编码容器目前只支持 mp4 。
 	Codec *string `json:"Codec,omitempty" name:"Codec"`
 
 	// 视频帧率，取值范围：[0, 100]，单位：Hz。
@@ -10069,6 +10494,7 @@ type VideoTemplateInfoForUpdate struct {
 	// 分辨率自适应，可选值：
 	// <li>open：开启，此时，Width 代表视频的长边，Height 表示视频的短边；</li>
 	// <li>close：关闭，此时，Width 代表视频的宽度，Height 表示视频的高度。</li>
+	// 注意：自适应模式时，Width不能小于Height。
 	ResolutionAdaptive *string `json:"ResolutionAdaptive,omitempty" name:"ResolutionAdaptive"`
 
 	// 视频流宽度（或长边）的最大值，取值范围：0 和 [128, 4096]，单位：px。

@@ -3348,6 +3348,20 @@ type ItemCoord struct {
 	Height *int64 `json:"Height,omitempty" name:"Height"`
 }
 
+type LicensePlateInfo struct {
+	// 识别出的车牌号码。
+	Number *string `json:"Number,omitempty" name:"Number"`
+
+	// 置信度，0 - 100 之间。
+	Confidence *int64 `json:"Confidence,omitempty" name:"Confidence"`
+
+	// 文本行在原图片中的像素坐标框。
+	Rect *Rect `json:"Rect,omitempty" name:"Rect"`
+
+	// 识别出的车牌颜色，目前支持颜色包括 “白”、“黑”、“蓝”、“绿“、“黄”、“黄绿”、“临牌”。
+	Color *string `json:"Color,omitempty" name:"Color"`
+}
+
 // Predefined struct for user
 type LicensePlateOCRRequestParams struct {
 	// 图片的 Base64 值。
@@ -3414,6 +3428,9 @@ type LicensePlateOCRResponseParams struct {
 
 	// 识别出的车牌颜色，目前支持颜色包括 “白”、“黑”、“蓝”、“绿“、“黄”、“黄绿”、“临牌”。
 	Color *string `json:"Color,omitempty" name:"Color"`
+
+	// 全部车牌信息。
+	LicensePlateInfos []*LicensePlateInfo `json:"LicensePlateInfos,omitempty" name:"LicensePlateInfos"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`

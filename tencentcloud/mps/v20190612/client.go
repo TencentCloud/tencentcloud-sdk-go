@@ -675,6 +675,8 @@ func NewCreateTranscodeTemplateResponse() (response *CreateTranscodeTemplateResp
 // 可能返回的错误码:
 //  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ACCESSDBERROR = "InternalError.AccessDBError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_AUDIOBITRATE = "InvalidParameterValue.AudioBitrate"
 //  INVALIDPARAMETERVALUE_AUDIOCHANNEL = "InvalidParameterValue.AudioChannel"
 //  INVALIDPARAMETERVALUE_AUDIOCODEC = "InvalidParameterValue.AudioCodec"
@@ -701,6 +703,8 @@ func (c *Client) CreateTranscodeTemplate(request *CreateTranscodeTemplateRequest
 // 可能返回的错误码:
 //  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ACCESSDBERROR = "InternalError.AccessDBError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_AUDIOBITRATE = "InvalidParameterValue.AudioBitrate"
 //  INVALIDPARAMETERVALUE_AUDIOCHANNEL = "InvalidParameterValue.AudioChannel"
 //  INVALIDPARAMETERVALUE_AUDIOCODEC = "InvalidParameterValue.AudioCodec"
@@ -1472,6 +1476,8 @@ func NewDeleteTranscodeTemplateResponse() (response *DeleteTranscodeTemplateResp
 // 可能返回的错误码:
 //  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ACCESSDBERROR = "InternalError.AccessDBError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_DEFINITION = "InvalidParameterValue.Definition"
 //  RESOURCENOTFOUND_TEMPLATENOTEXIST = "ResourceNotFound.TemplateNotExist"
 func (c *Client) DeleteTranscodeTemplate(request *DeleteTranscodeTemplateRequest) (response *DeleteTranscodeTemplateResponse, err error) {
@@ -1484,6 +1490,8 @@ func (c *Client) DeleteTranscodeTemplate(request *DeleteTranscodeTemplateRequest
 // 可能返回的错误码:
 //  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ACCESSDBERROR = "InternalError.AccessDBError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_DEFINITION = "InvalidParameterValue.Definition"
 //  RESOURCENOTFOUND_TEMPLATENOTEXIST = "ResourceNotFound.TemplateNotExist"
 func (c *Client) DeleteTranscodeTemplateWithContext(ctx context.Context, request *DeleteTranscodeTemplateRequest) (response *DeleteTranscodeTemplateResponse, err error) {
@@ -2284,6 +2292,7 @@ func NewDescribeTasksResponse() (response *DescribeTasksResponse) {
 //  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_LIMIT = "InvalidParameterValue.Limit"
 func (c *Client) DescribeTasks(request *DescribeTasksRequest) (response *DescribeTasksResponse, err error) {
     return c.DescribeTasksWithContext(context.Background(), request)
 }
@@ -2299,6 +2308,7 @@ func (c *Client) DescribeTasks(request *DescribeTasksRequest) (response *Describ
 //  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_LIMIT = "InvalidParameterValue.Limit"
 func (c *Client) DescribeTasksWithContext(ctx context.Context, request *DescribeTasksRequest) (response *DescribeTasksResponse, err error) {
     if request == nil {
         request = NewDescribeTasksRequest()
@@ -2338,6 +2348,7 @@ func NewDescribeTranscodeTemplatesResponse() (response *DescribeTranscodeTemplat
 // 可能返回的错误码:
 //  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ACCESSDBERROR = "InternalError.AccessDBError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_CONTAINERTYPE = "InvalidParameterValue.ContainerType"
 //  INVALIDPARAMETERVALUE_DEFINITIONS = "InvalidParameterValue.Definitions"
@@ -2355,6 +2366,7 @@ func (c *Client) DescribeTranscodeTemplates(request *DescribeTranscodeTemplatesR
 // 可能返回的错误码:
 //  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ACCESSDBERROR = "InternalError.AccessDBError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_CONTAINERTYPE = "InvalidParameterValue.ContainerType"
 //  INVALIDPARAMETERVALUE_DEFINITIONS = "InvalidParameterValue.Definitions"
@@ -3488,12 +3500,15 @@ func NewModifyTranscodeTemplateResponse() (response *ModifyTranscodeTemplateResp
 // 可能返回的错误码:
 //  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ACCESSDBERROR = "InternalError.AccessDBError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_AUDIOBITRATE = "InvalidParameterValue.AudioBitrate"
 //  INVALIDPARAMETERVALUE_AUDIOCHANNEL = "InvalidParameterValue.AudioChannel"
 //  INVALIDPARAMETERVALUE_AUDIOCODEC = "InvalidParameterValue.AudioCodec"
 //  INVALIDPARAMETERVALUE_AUDIOSAMPLERATE = "InvalidParameterValue.AudioSampleRate"
 //  INVALIDPARAMETERVALUE_CONTAINER = "InvalidParameterValue.Container"
 //  INVALIDPARAMETERVALUE_FPS = "InvalidParameterValue.Fps"
+//  INVALIDPARAMETERVALUE_NAME = "InvalidParameterValue.Name"
 //  INVALIDPARAMETERVALUE_REMOVEAUDIO = "InvalidParameterValue.RemoveAudio"
 //  INVALIDPARAMETERVALUE_REMOVEVIDEO = "InvalidParameterValue.RemoveVideo"
 //  INVALIDPARAMETERVALUE_RESOLUTION = "InvalidParameterValue.Resolution"
@@ -3514,12 +3529,15 @@ func (c *Client) ModifyTranscodeTemplate(request *ModifyTranscodeTemplateRequest
 // 可能返回的错误码:
 //  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ACCESSDBERROR = "InternalError.AccessDBError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_AUDIOBITRATE = "InvalidParameterValue.AudioBitrate"
 //  INVALIDPARAMETERVALUE_AUDIOCHANNEL = "InvalidParameterValue.AudioChannel"
 //  INVALIDPARAMETERVALUE_AUDIOCODEC = "InvalidParameterValue.AudioCodec"
 //  INVALIDPARAMETERVALUE_AUDIOSAMPLERATE = "InvalidParameterValue.AudioSampleRate"
 //  INVALIDPARAMETERVALUE_CONTAINER = "InvalidParameterValue.Container"
 //  INVALIDPARAMETERVALUE_FPS = "InvalidParameterValue.Fps"
+//  INVALIDPARAMETERVALUE_NAME = "InvalidParameterValue.Name"
 //  INVALIDPARAMETERVALUE_REMOVEAUDIO = "InvalidParameterValue.RemoveAudio"
 //  INVALIDPARAMETERVALUE_REMOVEVIDEO = "InvalidParameterValue.RemoveVideo"
 //  INVALIDPARAMETERVALUE_RESOLUTION = "InvalidParameterValue.Resolution"

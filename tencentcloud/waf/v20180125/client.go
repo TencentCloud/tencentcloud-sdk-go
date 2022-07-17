@@ -1566,6 +1566,55 @@ func (c *Client) DescribeWafThreatenIntelligenceWithContext(ctx context.Context,
     return
 }
 
+func NewGetAttackDownloadRecordsRequest() (request *GetAttackDownloadRecordsRequest) {
+    request = &GetAttackDownloadRecordsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("waf", APIVersion, "GetAttackDownloadRecords")
+    
+    
+    return
+}
+
+func NewGetAttackDownloadRecordsResponse() (response *GetAttackDownloadRecordsResponse) {
+    response = &GetAttackDownloadRecordsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// GetAttackDownloadRecords
+// 查询下载攻击日志任务记录列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) GetAttackDownloadRecords(request *GetAttackDownloadRecordsRequest) (response *GetAttackDownloadRecordsResponse, err error) {
+    return c.GetAttackDownloadRecordsWithContext(context.Background(), request)
+}
+
+// GetAttackDownloadRecords
+// 查询下载攻击日志任务记录列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) GetAttackDownloadRecordsWithContext(ctx context.Context, request *GetAttackDownloadRecordsRequest) (response *GetAttackDownloadRecordsResponse, err error) {
+    if request == nil {
+        request = NewGetAttackDownloadRecordsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetAttackDownloadRecords require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetAttackDownloadRecordsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyAccessPeriodRequest() (request *ModifyAccessPeriodRequest) {
     request = &ModifyAccessPeriodRequest{
         BaseRequest: &tchttp.BaseRequest{},

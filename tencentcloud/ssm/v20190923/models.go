@@ -208,6 +208,9 @@ type CreateSSHKeyPairSecretRequestParams struct {
 
 	// 标签列表。
 	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
+
+	// 用户自定义输入的SSH密钥对的名称，可由数字，字母和下划线组成，只能以数字和字母开头，长度不超过25个字符。
+	SSHKeyName *string `json:"SSHKeyName,omitempty" name:"SSHKeyName"`
 }
 
 type CreateSSHKeyPairSecretRequest struct {
@@ -229,6 +232,9 @@ type CreateSSHKeyPairSecretRequest struct {
 
 	// 标签列表。
 	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
+
+	// 用户自定义输入的SSH密钥对的名称，可由数字，字母和下划线组成，只能以数字和字母开头，长度不超过25个字符。
+	SSHKeyName *string `json:"SSHKeyName,omitempty" name:"SSHKeyName"`
 }
 
 func (r *CreateSSHKeyPairSecretRequest) ToJsonString() string {
@@ -248,6 +254,7 @@ func (r *CreateSSHKeyPairSecretRequest) FromJsonString(s string) error {
 	delete(f, "Description")
 	delete(f, "KmsKeyId")
 	delete(f, "Tags")
+	delete(f, "SSHKeyName")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateSSHKeyPairSecretRequest has unknown keys!", "")
 	}

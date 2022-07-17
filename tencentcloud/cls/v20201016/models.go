@@ -3998,7 +3998,7 @@ type ExportInfo struct {
 	// 日志导出数量
 	Count *uint64 `json:"Count,omitempty" name:"Count"`
 
-	// 日志下载状态。Processing:导出正在进行中，Complete:导出完成，Failed:导出失败，Expired:日志导出已过期（三天有效期）。
+	// 日志下载状态。Processing:导出正在进行中，Completed:导出完成，Failed:导出失败，Expired:日志导出已过期(三天有效期), Queuing 排队中
 	Status *string `json:"Status,omitempty" name:"Status"`
 
 	// 日志导出起始时间
@@ -4054,6 +4054,14 @@ type ExtractRuleInfo struct {
 	// 增量采集模式下的回溯数据量，默认-1（全量采集）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Backtracking *int64 `json:"Backtracking,omitempty" name:"Backtracking"`
+
+	// 是否为Gbk编码.   0: 否, 1: 是
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsGBK *int64 `json:"IsGBK,omitempty" name:"IsGBK"`
+
+	// 是否为标准json.   0: 否, 1: 是
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	JsonStandard *int64 `json:"JsonStandard,omitempty" name:"JsonStandard"`
 }
 
 type Filter struct {

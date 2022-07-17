@@ -213,6 +213,15 @@ type Backup struct {
 
 	// 备份文件形式（pkg-打包备份文件，single-单库备份文件）
 	BackupFormat *string `json:"BackupFormat,omitempty" name:"BackupFormat"`
+
+	// 实例当前地域Code
+	Region *string `json:"Region,omitempty" name:"Region"`
+
+	// 跨地域备份的目的地域下载链接
+	CrossBackupAddr []*CrossBackupAddr `json:"CrossBackupAddr,omitempty" name:"CrossBackupAddr"`
+
+	// 跨地域备份的目标地域和备份状态
+	CrossBackupStatus []*CrossRegionStatus `json:"CrossBackupStatus,omitempty" name:"CrossBackupStatus"`
 }
 
 type BackupFile struct {
@@ -230,6 +239,12 @@ type BackupFile struct {
 
 	// 下载地址
 	DownloadLink *string `json:"DownloadLink,omitempty" name:"DownloadLink"`
+
+	// 当前实例地域码
+	Region *string `json:"Region,omitempty" name:"Region"`
+
+	// 备份的跨地域region和所对应的下载地址
+	CrossBackupAddr []*CrossBackupAddr `json:"CrossBackupAddr,omitempty" name:"CrossBackupAddr"`
 }
 
 // Predefined struct for user
@@ -1537,6 +1552,25 @@ func (r *CreateReadOnlyDBInstancesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type CrossBackupAddr struct {
+	// 跨地域备份目标地域
+	CrossRegion *string `json:"CrossRegion,omitempty" name:"CrossRegion"`
+
+	// 跨地域备份内网下载地址
+	CrossInternalAddr *string `json:"CrossInternalAddr,omitempty" name:"CrossInternalAddr"`
+
+	// 跨地域备份外网下载地址
+	CrossExternalAddr *string `json:"CrossExternalAddr,omitempty" name:"CrossExternalAddr"`
+}
+
+type CrossRegionStatus struct {
+	// 跨地域备份目标地域
+	CrossRegion *string `json:"CrossRegion,omitempty" name:"CrossRegion"`
+
+	// 备份跨地域的同步状态 0-创建中；1-成功；2-失败；4-同步中
+	CrossStatus *int64 `json:"CrossStatus,omitempty" name:"CrossStatus"`
+}
+
 type DBCreateInfo struct {
 	// 数据库名
 	DBName *string `json:"DBName,omitempty" name:"DBName"`
@@ -1710,6 +1744,15 @@ type DBInstance struct {
 
 	// 实例类型 HA-高可用 RO-只读实例 SI-基础版 BI-商业智能服务
 	InstanceType *string `json:"InstanceType,omitempty" name:"InstanceType"`
+
+	// 跨地域备份目的地域，如果为空，则表示未开启跨地域备份
+	CrossRegions []*string `json:"CrossRegions,omitempty" name:"CrossRegions"`
+
+	// 跨地域备份状态 enable-开启，disable-关闭
+	CrossBackupEnabled *string `json:"CrossBackupEnabled,omitempty" name:"CrossBackupEnabled"`
+
+	// 跨地域备份保留天数，则默认7天
+	CrossBackupSaveDays *uint64 `json:"CrossBackupSaveDays,omitempty" name:"CrossBackupSaveDays"`
 }
 
 type DBPrivilege struct {

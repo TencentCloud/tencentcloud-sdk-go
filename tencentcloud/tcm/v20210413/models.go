@@ -131,6 +131,9 @@ type Cluster struct {
 	// - TKE
 	// - EKS
 	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 集群关联的 Namespace 列表
+	HostedNamespaces []*string `json:"HostedNamespaces,omitempty" name:"HostedNamespaces"`
 }
 
 type ClusterConfig struct {
@@ -341,6 +344,26 @@ type EgressGateway struct {
 	Workload *WorkloadConfig `json:"Workload,omitempty" name:"Workload"`
 }
 
+type ExtensiveCluster struct {
+	// Cluster ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 可用区
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Zone *string `json:"Zone,omitempty" name:"Zone"`
+}
+
+type ExtensiveClusters struct {
+	// 4层集群配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	L4Clusters []*ExtensiveCluster `json:"L4Clusters,omitempty" name:"L4Clusters"`
+
+	// 7层集群配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	L7Clusters []*ExtensiveCluster `json:"L7Clusters,omitempty" name:"L7Clusters"`
+}
+
 type Filter struct {
 	// 需要过滤的字段。
 	Name *string `json:"Name,omitempty" name:"Name"`
@@ -455,8 +478,32 @@ type LoadBalancer struct {
 	// TRAFFIC_POSTPAID_BY_HOUR 按流量按小时后计费 ; BANDWIDTH_POSTPAID_BY_HOUR 按带宽按小时后计费;只读。
 	InternetChargeType *string `json:"InternetChargeType,omitempty" name:"InternetChargeType"`
 
-	// 最大出带宽，单位Mbps，范围支持0到2048，仅对公网属性的LB生效，默认值 10
+	// 最大出带宽，单位Mbps，仅对公网属性的LB生效，默认值 10
 	InternetMaxBandwidthOut *int64 `json:"InternetMaxBandwidthOut,omitempty" name:"InternetMaxBandwidthOut"`
+
+	// 可用区 ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ZoneID *string `json:"ZoneID,omitempty" name:"ZoneID"`
+
+	// 运营商类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VipIsp *string `json:"VipIsp,omitempty" name:"VipIsp"`
+
+	// TGW Group 名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TgwGroupName *string `json:"TgwGroupName,omitempty" name:"TgwGroupName"`
+
+	// IP 类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AddressIPVersion *string `json:"AddressIPVersion,omitempty" name:"AddressIPVersion"`
+
+	// 标签列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
+
+	// 内网独占集群配置列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExtensiveClusters *ExtensiveClusters `json:"ExtensiveClusters,omitempty" name:"ExtensiveClusters"`
 }
 
 type LoadBalancerStatus struct {
@@ -693,6 +740,17 @@ type Service struct {
 	ExternalTrafficPolicy *string `json:"ExternalTrafficPolicy,omitempty" name:"ExternalTrafficPolicy"`
 }
 
+type Tag struct {
+	// 标签键
+	Key *string `json:"Key,omitempty" name:"Key"`
+
+	// 标签值
+	Value *string `json:"Value,omitempty" name:"Value"`
+
+	// 是否透传给其他关联产品
+	Passthrough *bool `json:"Passthrough,omitempty" name:"Passthrough"`
+}
+
 type TracingConfig struct {
 	// 调用链采样率，百分比
 	Sampling *float64 `json:"Sampling,omitempty" name:"Sampling"`
@@ -724,4 +782,11 @@ type WorkloadConfig struct {
 
 	// 部署到指定节点
 	SelectedNodeList []*string `json:"SelectedNodeList,omitempty" name:"SelectedNodeList"`
+
+	// 组件的部署模式，取值说明：
+	// IN_GENERAL_NODE：常规节点
+	// IN_EKLET：eklet 节点
+	// IN_SHARED_NODE_POOL：共享节电池
+	// IN_EXCLUSIVE_NODE_POOL：独占节点池
+	DeployMode *string `json:"DeployMode,omitempty" name:"DeployMode"`
 }
