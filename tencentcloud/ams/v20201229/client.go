@@ -357,6 +357,7 @@ func NewCreateAudioModerationTaskResponse() (response *CreateAudioModerationTask
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  RESOURCESSOLDOUT = "ResourcesSoldOut"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZED = "UnauthorizedOperation.Unauthorized"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateAudioModerationTask(request *CreateAudioModerationTaskRequest) (response *CreateAudioModerationTaskResponse, err error) {
@@ -430,6 +431,7 @@ func (c *Client) CreateAudioModerationTask(request *CreateAudioModerationTaskReq
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  RESOURCESSOLDOUT = "ResourcesSoldOut"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZED = "UnauthorizedOperation.Unauthorized"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateAudioModerationTaskWithContext(ctx context.Context, request *CreateAudioModerationTaskRequest) (response *CreateAudioModerationTaskResponse, err error) {

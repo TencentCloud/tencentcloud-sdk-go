@@ -318,6 +318,61 @@ func (c *Client) CancelAuthorizationTokenWithContext(ctx context.Context, reques
     return
 }
 
+func NewCheckCdcClusterRequest() (request *CheckCdcClusterRequest) {
+    request = &CheckCdcClusterRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ckafka", APIVersion, "CheckCdcCluster")
+    
+    
+    return
+}
+
+func NewCheckCdcClusterResponse() (response *CheckCdcClusterResponse) {
+    response = &CheckCdcClusterResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CheckCdcCluster
+// 用于查询cdc-ckafka任务状态
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
+func (c *Client) CheckCdcCluster(request *CheckCdcClusterRequest) (response *CheckCdcClusterResponse, err error) {
+    return c.CheckCdcClusterWithContext(context.Background(), request)
+}
+
+// CheckCdcCluster
+// 用于查询cdc-ckafka任务状态
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
+func (c *Client) CheckCdcClusterWithContext(ctx context.Context, request *CheckCdcClusterRequest) (response *CheckCdcClusterResponse, err error) {
+    if request == nil {
+        request = NewCheckCdcClusterRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CheckCdcCluster require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCheckCdcClusterResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateAclRequest() (request *CreateAclRequest) {
     request = &CreateAclRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -387,6 +442,79 @@ func (c *Client) CreateAclWithContext(ctx context.Context, request *CreateAclReq
     request.SetContext(ctx)
     
     response = NewCreateAclResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateCdcClusterRequest() (request *CreateCdcClusterRequest) {
+    request = &CreateCdcClusterRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ckafka", APIVersion, "CreateCdcCluster")
+    
+    
+    return
+}
+
+func NewCreateCdcClusterResponse() (response *CreateCdcClusterResponse) {
+    response = &CreateCdcClusterResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateCdcCluster
+// 用于cdc的专用ckafka集群
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
+//  INVALIDPARAMETERVALUE_REPETITIONVALUE = "InvalidParameterValue.RepetitionValue"
+//  INVALIDPARAMETERVALUE_SUBNETIDINVALID = "InvalidParameterValue.SubnetIdInvalid"
+//  INVALIDPARAMETERVALUE_SUBNETNOTBELONGTOZONE = "InvalidParameterValue.SubnetNotBelongToZone"
+//  INVALIDPARAMETERVALUE_VPCIDINVALID = "InvalidParameterValue.VpcIdInvalid"
+//  INVALIDPARAMETERVALUE_WRONGACTION = "InvalidParameterValue.WrongAction"
+//  INVALIDPARAMETERVALUE_ZONENOTSUPPORT = "InvalidParameterValue.ZoneNotSupport"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION_BATCHDELINSTANCELIMIT = "UnsupportedOperation.BatchDelInstanceLimit"
+//  UNSUPPORTEDOPERATION_OSSREJECT = "UnsupportedOperation.OssReject"
+func (c *Client) CreateCdcCluster(request *CreateCdcClusterRequest) (response *CreateCdcClusterResponse, err error) {
+    return c.CreateCdcClusterWithContext(context.Background(), request)
+}
+
+// CreateCdcCluster
+// 用于cdc的专用ckafka集群
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
+//  INVALIDPARAMETERVALUE_REPETITIONVALUE = "InvalidParameterValue.RepetitionValue"
+//  INVALIDPARAMETERVALUE_SUBNETIDINVALID = "InvalidParameterValue.SubnetIdInvalid"
+//  INVALIDPARAMETERVALUE_SUBNETNOTBELONGTOZONE = "InvalidParameterValue.SubnetNotBelongToZone"
+//  INVALIDPARAMETERVALUE_VPCIDINVALID = "InvalidParameterValue.VpcIdInvalid"
+//  INVALIDPARAMETERVALUE_WRONGACTION = "InvalidParameterValue.WrongAction"
+//  INVALIDPARAMETERVALUE_ZONENOTSUPPORT = "InvalidParameterValue.ZoneNotSupport"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION_BATCHDELINSTANCELIMIT = "UnsupportedOperation.BatchDelInstanceLimit"
+//  UNSUPPORTEDOPERATION_OSSREJECT = "UnsupportedOperation.OssReject"
+func (c *Client) CreateCdcClusterWithContext(ctx context.Context, request *CreateCdcClusterRequest) (response *CreateCdcClusterResponse, err error) {
+    if request == nil {
+        request = NewCreateCdcClusterRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateCdcCluster require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateCdcClusterResponse()
     err = c.Send(request, response)
     return
 }

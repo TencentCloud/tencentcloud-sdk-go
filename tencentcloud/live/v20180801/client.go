@@ -6167,6 +6167,7 @@ func NewDescribeLogDownloadListResponse() (response *DescribeLogDownloadListResp
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_INVOKECDNAPIFAIL = "FailedOperation.InvokeCdnApiFail"
+//  INTERNALERROR_CONNECTDBERROR = "InternalError.ConnectDbError"
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -6187,6 +6188,7 @@ func (c *Client) DescribeLogDownloadList(request *DescribeLogDownloadListRequest
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_INVOKECDNAPIFAIL = "FailedOperation.InvokeCdnApiFail"
+//  INTERNALERROR_CONNECTDBERROR = "InternalError.ConnectDbError"
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"

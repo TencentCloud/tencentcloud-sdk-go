@@ -4989,12 +4989,7 @@ func NewModifyFlexPayeeAccountRightStatusResponse() (response *ModifyFlexPayeeAc
 // 灵云V2-收款用户账户权益状态修改
 //
 // 可能返回的错误码:
-//  INTERNALERROR_DELETEDBERROR = "InternalError.DeleteDBError"
-//  INTERNALERROR_SAVEDBERROR = "InternalError.SaveDBError"
-//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
-//  INVALIDPARAMETER_LACKPARAMETER = "InvalidParameter.LackParameter"
-//  RESOURCENOTFOUND_BATCHINFONOTFOUND = "ResourceNotFound.BatchInfoNotFound"
-//  RESOURCENOTFOUND_PLATFORMINFONOTFOUND = "ResourceNotFound.PlatformInfoNotFound"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
 func (c *Client) ModifyFlexPayeeAccountRightStatus(request *ModifyFlexPayeeAccountRightStatusRequest) (response *ModifyFlexPayeeAccountRightStatusResponse, err error) {
     return c.ModifyFlexPayeeAccountRightStatusWithContext(context.Background(), request)
 }
@@ -5003,12 +4998,7 @@ func (c *Client) ModifyFlexPayeeAccountRightStatus(request *ModifyFlexPayeeAccou
 // 灵云V2-收款用户账户权益状态修改
 //
 // 可能返回的错误码:
-//  INTERNALERROR_DELETEDBERROR = "InternalError.DeleteDBError"
-//  INTERNALERROR_SAVEDBERROR = "InternalError.SaveDBError"
-//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
-//  INVALIDPARAMETER_LACKPARAMETER = "InvalidParameter.LackParameter"
-//  RESOURCENOTFOUND_BATCHINFONOTFOUND = "ResourceNotFound.BatchInfoNotFound"
-//  RESOURCENOTFOUND_PLATFORMINFONOTFOUND = "ResourceNotFound.PlatformInfoNotFound"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
 func (c *Client) ModifyFlexPayeeAccountRightStatusWithContext(ctx context.Context, request *ModifyFlexPayeeAccountRightStatusRequest) (response *ModifyFlexPayeeAccountRightStatusResponse, err error) {
     if request == nil {
         request = NewModifyFlexPayeeAccountRightStatusRequest()

@@ -1538,6 +1538,7 @@ func NewStartMCUMixTranscodeByStrRoomIdResponse() (response *StartMCUMixTranscod
 //  MISSINGPARAMETER_PUBLISHCDNURLS = "MissingParameter.PublishCdnUrls"
 //  MISSINGPARAMETER_STREAMID = "MissingParameter.StreamId"
 //  MISSINGPARAMETER_VIDEOENCODEPARAMS = "MissingParameter.VideoEncodeParams"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNAUTHORIZEDOPERATION_SDKAPPID = "UnauthorizedOperation.SdkAppId"
 func (c *Client) StartMCUMixTranscodeByStrRoomId(request *StartMCUMixTranscodeByStrRoomIdRequest) (response *StartMCUMixTranscodeByStrRoomIdResponse, err error) {
     return c.StartMCUMixTranscodeByStrRoomIdWithContext(context.Background(), request)
@@ -1617,6 +1618,7 @@ func (c *Client) StartMCUMixTranscodeByStrRoomId(request *StartMCUMixTranscodeBy
 //  MISSINGPARAMETER_PUBLISHCDNURLS = "MissingParameter.PublishCdnUrls"
 //  MISSINGPARAMETER_STREAMID = "MissingParameter.StreamId"
 //  MISSINGPARAMETER_VIDEOENCODEPARAMS = "MissingParameter.VideoEncodeParams"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNAUTHORIZEDOPERATION_SDKAPPID = "UnauthorizedOperation.SdkAppId"
 func (c *Client) StartMCUMixTranscodeByStrRoomIdWithContext(ctx context.Context, request *StartMCUMixTranscodeByStrRoomIdRequest) (response *StartMCUMixTranscodeByStrRoomIdResponse, err error) {
     if request == nil {

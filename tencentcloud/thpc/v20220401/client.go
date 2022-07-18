@@ -134,6 +134,7 @@ func NewBindAutoScalingGroupResponse() (response *BindAutoScalingGroupResponse) 
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_TOOSMALL = "InvalidParameterValue.TooSmall"
+//  RESOURCENOTFOUND_AUTOSCALINGGROUPID = "ResourceNotFound.AutoScalingGroupId"
 //  RESOURCENOTFOUND_CLUSTERID = "ResourceNotFound.ClusterId"
 //  RESOURCENOTFOUND_LAUNCHCONFIGURATIONID = "ResourceNotFound.LaunchConfigurationId"
 //  UNSUPPORTEDOPERATION_AUTOSCALINGGROUPALREADYBINDED = "UnsupportedOperation.AutoScalingGroupAlreadyBinded"
@@ -146,6 +147,7 @@ func (c *Client) BindAutoScalingGroup(request *BindAutoScalingGroupRequest) (res
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_TOOSMALL = "InvalidParameterValue.TooSmall"
+//  RESOURCENOTFOUND_AUTOSCALINGGROUPID = "ResourceNotFound.AutoScalingGroupId"
 //  RESOURCENOTFOUND_CLUSTERID = "ResourceNotFound.ClusterId"
 //  RESOURCENOTFOUND_LAUNCHCONFIGURATIONID = "ResourceNotFound.LaunchConfigurationId"
 //  UNSUPPORTEDOPERATION_AUTOSCALINGGROUPALREADYBINDED = "UnsupportedOperation.AutoScalingGroupAlreadyBinded"

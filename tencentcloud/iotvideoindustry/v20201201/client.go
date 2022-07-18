@@ -7976,6 +7976,7 @@ func NewDescribeVideoListResponse() (response *DescribeVideoListResponse) {
 //
 // 可能返回的错误码:
 //  UNSUPPORTEDOPERATION_DEVICEMISSMATCH = "UnsupportedOperation.DeviceMissMatch"
+//  UNSUPPORTEDOPERATION_USERISISOLATE = "UnsupportedOperation.UserIsIsolate"
 func (c *Client) DescribeVideoList(request *DescribeVideoListRequest) (response *DescribeVideoListResponse, err error) {
     return c.DescribeVideoListWithContext(context.Background(), request)
 }
@@ -7985,6 +7986,7 @@ func (c *Client) DescribeVideoList(request *DescribeVideoListRequest) (response 
 //
 // 可能返回的错误码:
 //  UNSUPPORTEDOPERATION_DEVICEMISSMATCH = "UnsupportedOperation.DeviceMissMatch"
+//  UNSUPPORTEDOPERATION_USERISISOLATE = "UnsupportedOperation.UserIsIsolate"
 func (c *Client) DescribeVideoListWithContext(ctx context.Context, request *DescribeVideoListRequest) (response *DescribeVideoListResponse, err error) {
     if request == nil {
         request = NewDescribeVideoListRequest()

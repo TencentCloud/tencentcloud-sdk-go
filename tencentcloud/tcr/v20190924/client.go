@@ -780,11 +780,13 @@ func NewCreateNamespaceResponse() (response *CreateNamespaceResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DEPENDENCEERROR = "FailedOperation.DependenceError"
 //  FAILEDOPERATION_ERRORTCRINVALIDMEDIATYPE = "FailedOperation.ErrorTcrInvalidMediaType"
 //  FAILEDOPERATION_ERRORTCRRESOURCECONFLICT = "FailedOperation.ErrorTcrResourceConflict"
 //  FAILEDOPERATION_ERRORTCRUNAUTHORIZED = "FailedOperation.ErrorTcrUnauthorized"
 //  FAILEDOPERATION_OPERATIONCANCEL = "FailedOperation.OperationCancel"
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DbError"
 //  INTERNALERROR_ERRORTCRINTERNAL = "InternalError.ErrorTcrInternal"
 //  INTERNALERROR_ERRORTCRINVALIDMEDIATYPE = "InternalError.ErrorTcrInvalidMediaType"
 //  INTERNALERROR_ERRORTCRRESOURCECONFLICT = "InternalError.ErrorTcrResourceConflict"
@@ -804,11 +806,13 @@ func (c *Client) CreateNamespace(request *CreateNamespaceRequest) (response *Cre
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DEPENDENCEERROR = "FailedOperation.DependenceError"
 //  FAILEDOPERATION_ERRORTCRINVALIDMEDIATYPE = "FailedOperation.ErrorTcrInvalidMediaType"
 //  FAILEDOPERATION_ERRORTCRRESOURCECONFLICT = "FailedOperation.ErrorTcrResourceConflict"
 //  FAILEDOPERATION_ERRORTCRUNAUTHORIZED = "FailedOperation.ErrorTcrUnauthorized"
 //  FAILEDOPERATION_OPERATIONCANCEL = "FailedOperation.OperationCancel"
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DbError"
 //  INTERNALERROR_ERRORTCRINTERNAL = "InternalError.ErrorTcrInternal"
 //  INTERNALERROR_ERRORTCRINVALIDMEDIATYPE = "InternalError.ErrorTcrInvalidMediaType"
 //  INTERNALERROR_ERRORTCRRESOURCECONFLICT = "InternalError.ErrorTcrResourceConflict"
@@ -3459,12 +3463,14 @@ func NewDescribeNamespacesResponse() (response *DescribeNamespacesResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DEPENDENCEERROR = "FailedOperation.DependenceError"
 //  FAILEDOPERATION_ERRORGETDBDATAERROR = "FailedOperation.ErrorGetDBDataError"
 //  FAILEDOPERATION_ERRORTCRRESOURCECONFLICT = "FailedOperation.ErrorTcrResourceConflict"
 //  FAILEDOPERATION_ERRORTCRUNAUTHORIZED = "FailedOperation.ErrorTcrUnauthorized"
 //  FAILEDOPERATION_GETDBDATAERROR = "FailedOperation.GetDBDataError"
 //  FAILEDOPERATION_OPERATIONCANCEL = "FailedOperation.OperationCancel"
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DbError"
 //  INTERNALERROR_ERRORTCRINTERNAL = "InternalError.ErrorTcrInternal"
 //  INTERNALERROR_ERRORTCRINVALIDMEDIATYPE = "InternalError.ErrorTcrInvalidMediaType"
 //  INTERNALERROR_ERRORTCRRESOURCECONFLICT = "InternalError.ErrorTcrResourceConflict"
@@ -3485,12 +3491,14 @@ func (c *Client) DescribeNamespaces(request *DescribeNamespacesRequest) (respons
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DEPENDENCEERROR = "FailedOperation.DependenceError"
 //  FAILEDOPERATION_ERRORGETDBDATAERROR = "FailedOperation.ErrorGetDBDataError"
 //  FAILEDOPERATION_ERRORTCRRESOURCECONFLICT = "FailedOperation.ErrorTcrResourceConflict"
 //  FAILEDOPERATION_ERRORTCRUNAUTHORIZED = "FailedOperation.ErrorTcrUnauthorized"
 //  FAILEDOPERATION_GETDBDATAERROR = "FailedOperation.GetDBDataError"
 //  FAILEDOPERATION_OPERATIONCANCEL = "FailedOperation.OperationCancel"
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DbError"
 //  INTERNALERROR_ERRORTCRINTERNAL = "InternalError.ErrorTcrInternal"
 //  INTERNALERROR_ERRORTCRINVALIDMEDIATYPE = "InternalError.ErrorTcrInvalidMediaType"
 //  INTERNALERROR_ERRORTCRRESOURCECONFLICT = "InternalError.ErrorTcrResourceConflict"

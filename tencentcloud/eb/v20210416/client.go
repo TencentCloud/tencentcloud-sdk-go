@@ -738,6 +738,7 @@ func NewDeleteTargetResponse() (response *DeleteTargetResponse) {
 // 删除事件目标
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_ESREQUESTFAILED = "FailedOperation.ESRequestFailed"
 //  INVALIDPARAMETERVALUE_EVENTBUSID = "InvalidParameterValue.EventBusId"
 //  INVALIDPARAMETERVALUE_RULEID = "InvalidParameterValue.RuleId"
 //  INVALIDPARAMETERVALUE_TARGETID = "InvalidParameterValue.TargetId"
@@ -756,6 +757,7 @@ func (c *Client) DeleteTarget(request *DeleteTargetRequest) (response *DeleteTar
 // 删除事件目标
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_ESREQUESTFAILED = "FailedOperation.ESRequestFailed"
 //  INVALIDPARAMETERVALUE_EVENTBUSID = "InvalidParameterValue.EventBusId"
 //  INVALIDPARAMETERVALUE_RULEID = "InvalidParameterValue.RuleId"
 //  INVALIDPARAMETERVALUE_TARGETID = "InvalidParameterValue.TargetId"

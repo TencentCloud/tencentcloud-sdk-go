@@ -64,12 +64,18 @@ func NewCreateAppScanTaskResponse() (response *CreateAppScanTaskResponse) {
 
 // CreateAppScanTask
 // 创建应用合规隐私诊断任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 func (c *Client) CreateAppScanTask(request *CreateAppScanTaskRequest) (response *CreateAppScanTaskResponse, err error) {
     return c.CreateAppScanTaskWithContext(context.Background(), request)
 }
 
 // CreateAppScanTask
 // 创建应用合规隐私诊断任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 func (c *Client) CreateAppScanTaskWithContext(ctx context.Context, request *CreateAppScanTaskRequest) (response *CreateAppScanTaskResponse, err error) {
     if request == nil {
         request = NewCreateAppScanTaskRequest()
@@ -105,12 +111,18 @@ func NewCreateAppScanTaskRepeatResponse() (response *CreateAppScanTaskRepeatResp
 
 // CreateAppScanTaskRepeat
 // App应用合规隐私诊断重试任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 func (c *Client) CreateAppScanTaskRepeat(request *CreateAppScanTaskRepeatRequest) (response *CreateAppScanTaskRepeatResponse, err error) {
     return c.CreateAppScanTaskRepeatWithContext(context.Background(), request)
 }
 
 // CreateAppScanTaskRepeat
 // App应用合规隐私诊断重试任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 func (c *Client) CreateAppScanTaskRepeatWithContext(ctx context.Context, request *CreateAppScanTaskRepeatRequest) (response *CreateAppScanTaskRepeatResponse, err error) {
     if request == nil {
         request = NewCreateAppScanTaskRepeatRequest()

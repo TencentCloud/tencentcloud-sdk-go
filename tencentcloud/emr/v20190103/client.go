@@ -165,6 +165,7 @@ func NewCreateInstanceResponse() (response *CreateInstanceResponse) {
 //  INVALIDPARAMETER_INVALIDPRODUCTID = "InvalidParameter.InvalidProductId"
 //  INVALIDPARAMETER_INVALIDPROJECTID = "InvalidParameter.InvalidProjectId"
 //  INVALIDPARAMETER_INVALIDRESOURCESPEC = "InvalidParameter.InvalidResourceSpec"
+//  INVALIDPARAMETER_INVALIDSECURITYSUPPORT = "InvalidParameter.InvalidSecuritySupport"
 //  INVALIDPARAMETER_INVALIDSERCURITYGRPUPID = "InvalidParameter.InvalidSercurityGrpupId"
 //  INVALIDPARAMETER_INVALIDSERVICENAME = "InvalidParameter.InvalidServiceName"
 //  INVALIDPARAMETER_INVALIDSOFTDEPLOYINFO = "InvalidParameter.InvalidSoftDeployInfo"
@@ -244,6 +245,7 @@ func (c *Client) CreateInstance(request *CreateInstanceRequest) (response *Creat
 //  INVALIDPARAMETER_INVALIDPRODUCTID = "InvalidParameter.InvalidProductId"
 //  INVALIDPARAMETER_INVALIDPROJECTID = "InvalidParameter.InvalidProjectId"
 //  INVALIDPARAMETER_INVALIDRESOURCESPEC = "InvalidParameter.InvalidResourceSpec"
+//  INVALIDPARAMETER_INVALIDSECURITYSUPPORT = "InvalidParameter.InvalidSecuritySupport"
 //  INVALIDPARAMETER_INVALIDSERCURITYGRPUPID = "InvalidParameter.InvalidSercurityGrpupId"
 //  INVALIDPARAMETER_INVALIDSERVICENAME = "InvalidParameter.InvalidServiceName"
 //  INVALIDPARAMETER_INVALIDSOFTDEPLOYINFO = "InvalidParameter.InvalidSoftDeployInfo"
@@ -312,6 +314,7 @@ func NewDescribeClusterNodesResponse() (response *DescribeClusterNodesResponse) 
 // 查询硬件节点信息
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_ACCOUNTCGWERROR = "InternalError.AccountCgwError"
 //  INTERNALERROR_CAMCGWERROR = "InternalError.CamCgwError"
@@ -344,6 +347,7 @@ func (c *Client) DescribeClusterNodes(request *DescribeClusterNodesRequest) (res
 // 查询硬件节点信息
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_ACCOUNTCGWERROR = "InternalError.AccountCgwError"
 //  INTERNALERROR_CAMCGWERROR = "InternalError.CamCgwError"

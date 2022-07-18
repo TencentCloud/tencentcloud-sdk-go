@@ -5812,6 +5812,9 @@ type ModifyListenerRequestParams struct {
 	// 是否开启SNI特性，此参数仅适用于HTTPS监听器。注意：未开启SNI的监听器可以开启SNI；已开启SNI的监听器不能关闭SNI。
 	SniSwitch *int64 `json:"SniSwitch,omitempty" name:"SniSwitch"`
 
+	// 后端目标类型，NODE表示绑定普通节点，TARGETGROUP表示绑定目标组。
+	TargetType *string `json:"TargetType,omitempty" name:"TargetType"`
+
 	// 是否开启长连接，此参数仅适用于HTTP/HTTPS监听器。
 	KeepaliveEnable *int64 `json:"KeepaliveEnable,omitempty" name:"KeepaliveEnable"`
 
@@ -5850,6 +5853,9 @@ type ModifyListenerRequest struct {
 	// 是否开启SNI特性，此参数仅适用于HTTPS监听器。注意：未开启SNI的监听器可以开启SNI；已开启SNI的监听器不能关闭SNI。
 	SniSwitch *int64 `json:"SniSwitch,omitempty" name:"SniSwitch"`
 
+	// 后端目标类型，NODE表示绑定普通节点，TARGETGROUP表示绑定目标组。
+	TargetType *string `json:"TargetType,omitempty" name:"TargetType"`
+
 	// 是否开启长连接，此参数仅适用于HTTP/HTTPS监听器。
 	KeepaliveEnable *int64 `json:"KeepaliveEnable,omitempty" name:"KeepaliveEnable"`
 
@@ -5880,6 +5886,7 @@ func (r *ModifyListenerRequest) FromJsonString(s string) error {
 	delete(f, "Certificate")
 	delete(f, "Scheduler")
 	delete(f, "SniSwitch")
+	delete(f, "TargetType")
 	delete(f, "KeepaliveEnable")
 	delete(f, "DeregisterTargetRst")
 	delete(f, "SessionType")

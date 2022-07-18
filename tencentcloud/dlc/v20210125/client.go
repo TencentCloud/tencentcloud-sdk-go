@@ -1146,6 +1146,7 @@ func NewCreateTaskResponse() (response *CreateTaskResponse) {
 //  INVALIDPARAMETER_INVALIDSQLNUM = "InvalidParameter.InvalidSQLNum"
 //  INVALIDPARAMETER_INVALIDSTORELOCATION = "InvalidParameter.InvalidStoreLocation"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_RESULTOUTPUTPATHNOTFOUND = "ResourceNotFound.ResultOutputPathNotFound"
 //  RESOURCEUNAVAILABLE_BALANCEINSUFFICIENT = "ResourceUnavailable.BalanceInsufficient"
 //  UNAUTHORIZEDOPERATION_USECOMPUTINGENGINE = "UnauthorizedOperation.UseComputingEngine"
 func (c *Client) CreateTask(request *CreateTaskRequest) (response *CreateTaskResponse, err error) {
@@ -1164,6 +1165,7 @@ func (c *Client) CreateTask(request *CreateTaskRequest) (response *CreateTaskRes
 //  INVALIDPARAMETER_INVALIDSQLNUM = "InvalidParameter.InvalidSQLNum"
 //  INVALIDPARAMETER_INVALIDSTORELOCATION = "InvalidParameter.InvalidStoreLocation"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_RESULTOUTPUTPATHNOTFOUND = "ResourceNotFound.ResultOutputPathNotFound"
 //  RESOURCEUNAVAILABLE_BALANCEINSUFFICIENT = "ResourceUnavailable.BalanceInsufficient"
 //  UNAUTHORIZEDOPERATION_USECOMPUTINGENGINE = "UnauthorizedOperation.UseComputingEngine"
 func (c *Client) CreateTaskWithContext(ctx context.Context, request *CreateTaskRequest) (response *CreateTaskResponse, err error) {
@@ -1213,6 +1215,7 @@ func NewCreateTasksResponse() (response *CreateTasksResponse) {
 //  INVALIDPARAMETER_INVALIDSTORELOCATION = "InvalidParameter.InvalidStoreLocation"
 //  INVALIDPARAMETER_INVALIDTASKTYPE = "InvalidParameter.InvalidTaskType"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_RESULTOUTPUTPATHNOTFOUND = "ResourceNotFound.ResultOutputPathNotFound"
 //  RESOURCEUNAVAILABLE_BALANCEINSUFFICIENT = "ResourceUnavailable.BalanceInsufficient"
 //  UNAUTHORIZEDOPERATION_USECOMPUTINGENGINE = "UnauthorizedOperation.UseComputingEngine"
 func (c *Client) CreateTasks(request *CreateTasksRequest) (response *CreateTasksResponse, err error) {
@@ -1233,6 +1236,7 @@ func (c *Client) CreateTasks(request *CreateTasksRequest) (response *CreateTasks
 //  INVALIDPARAMETER_INVALIDSTORELOCATION = "InvalidParameter.InvalidStoreLocation"
 //  INVALIDPARAMETER_INVALIDTASKTYPE = "InvalidParameter.InvalidTaskType"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_RESULTOUTPUTPATHNOTFOUND = "ResourceNotFound.ResultOutputPathNotFound"
 //  RESOURCEUNAVAILABLE_BALANCEINSUFFICIENT = "ResourceUnavailable.BalanceInsufficient"
 //  UNAUTHORIZEDOPERATION_USECOMPUTINGENGINE = "UnauthorizedOperation.UseComputingEngine"
 func (c *Client) CreateTasksWithContext(ctx context.Context, request *CreateTasksRequest) (response *CreateTasksResponse, err error) {
@@ -2963,9 +2967,7 @@ func NewLockMetaDataResponse() (response *LockMetaDataResponse) {
 // 元数据锁
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_INVALIDSQL = "InvalidParameter.InvalidSQL"
+//  FAILEDOPERATION = "FailedOperation"
 func (c *Client) LockMetaData(request *LockMetaDataRequest) (response *LockMetaDataResponse, err error) {
     return c.LockMetaDataWithContext(context.Background(), request)
 }
@@ -2974,9 +2976,7 @@ func (c *Client) LockMetaData(request *LockMetaDataRequest) (response *LockMetaD
 // 元数据锁
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_INVALIDSQL = "InvalidParameter.InvalidSQL"
+//  FAILEDOPERATION = "FailedOperation"
 func (c *Client) LockMetaDataWithContext(ctx context.Context, request *LockMetaDataRequest) (response *LockMetaDataResponse, err error) {
     if request == nil {
         request = NewLockMetaDataRequest()

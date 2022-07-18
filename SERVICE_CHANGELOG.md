@@ -1,237 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 日志服务(cls) 版本：2020-10-16
+## 消息队列 Ckafka(ckafka) 版本：2019-08-19
 
-### 第 25 次发布
+### 第 43 次发布
 
-发布时间：2022-07-18 06:07:30
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [ExtractRuleInfo](https://cloud.tencent.com/document/api/614/56471#ExtractRuleInfo)
-
-	* 新增成员：IsGBK, JsonStandard
-
-
-
-
-## 视频处理(mps) 版本：2019-06-12
-
-### 第 40 次发布
-
-发布时间：2022-07-16 09:45:55
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CreateTranscodeTemplate](https://cloud.tencent.com/document/api/862/37605)
-
-	* 新增入参：EnhanceConfig
-
-* [DescribeTaskDetail](https://cloud.tencent.com/document/api/862/37614)
-
-	* 新增出参：ScheduleTask
-
-* [DescribeTasks](https://cloud.tencent.com/document/api/862/37613)
-
-	* 新增出参：TotalCount
-
-* [DescribeTranscodeTemplates](https://cloud.tencent.com/document/api/862/37593)
-
-	* 新增入参：TranscodeType
-
-* [ModifyTranscodeTemplate](https://cloud.tencent.com/document/api/862/37587)
-
-	* 新增入参：EnhanceConfig
-
-* [ParseNotification](https://cloud.tencent.com/document/api/862/39228)
-
-	* 新增出参：ScheduleTaskEvent
-
-* [ProcessMedia](https://cloud.tencent.com/document/api/862/37578)
-
-	* 新增入参：ScheduleId
-
-
-新增数据结构：
-
-* [ActivityResItem](https://cloud.tencent.com/document/api/862/37615#ActivityResItem)
-* [ActivityResult](https://cloud.tencent.com/document/api/862/37615#ActivityResult)
-* [ArtifactRepairConfig](https://cloud.tencent.com/document/api/862/37615#ArtifactRepairConfig)
-* [ColorEnhanceConfig](https://cloud.tencent.com/document/api/862/37615#ColorEnhanceConfig)
-* [EnhanceConfig](https://cloud.tencent.com/document/api/862/37615#EnhanceConfig)
-* [FaceEnhanceConfig](https://cloud.tencent.com/document/api/862/37615#FaceEnhanceConfig)
-* [FrameRateConfig](https://cloud.tencent.com/document/api/862/37615#FrameRateConfig)
-* [HdrConfig](https://cloud.tencent.com/document/api/862/37615#HdrConfig)
-* [ImageQualityEnhanceConfig](https://cloud.tencent.com/document/api/862/37615#ImageQualityEnhanceConfig)
-* [LowLightEnhanceConfig](https://cloud.tencent.com/document/api/862/37615#LowLightEnhanceConfig)
-* [ScheduleAnalysisTaskResult](https://cloud.tencent.com/document/api/862/37615#ScheduleAnalysisTaskResult)
-* [ScheduleRecognitionTaskResult](https://cloud.tencent.com/document/api/862/37615#ScheduleRecognitionTaskResult)
-* [ScheduleReviewTaskResult](https://cloud.tencent.com/document/api/862/37615#ScheduleReviewTaskResult)
-* [ScheduleTask](https://cloud.tencent.com/document/api/862/37615#ScheduleTask)
-* [ScratchRepairConfig](https://cloud.tencent.com/document/api/862/37615#ScratchRepairConfig)
-* [SharpEnhanceConfig](https://cloud.tencent.com/document/api/862/37615#SharpEnhanceConfig)
-* [SuperResolutionConfig](https://cloud.tencent.com/document/api/862/37615#SuperResolutionConfig)
-* [VideoDenoiseConfig](https://cloud.tencent.com/document/api/862/37615#VideoDenoiseConfig)
-* [VideoEnhanceConfig](https://cloud.tencent.com/document/api/862/37615#VideoEnhanceConfig)
-
-修改数据结构：
-
-* [TranscodeTemplate](https://cloud.tencent.com/document/api/862/37615#TranscodeTemplate)
-
-	* 新增成员：EnhanceConfig
-
-
-
-
-## 文字识别(ocr) 版本：2018-11-19
-
-### 第 72 次发布
-
-发布时间：2022-07-18 06:14:15
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [LicensePlateOCR](https://cloud.tencent.com/document/api/866/36211)
-
-	* 新增出参：LicensePlateInfos
-
-
-新增数据结构：
-
-* [LicensePlateInfo](https://cloud.tencent.com/document/api/866/33527#LicensePlateInfo)
-
-
-
-## 云数据库 SQL Server(sqlserver) 版本：2018-03-28
-
-### 第 34 次发布
-
-发布时间：2022-07-18 06:15:30
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增数据结构：
-
-* [CrossBackupAddr](https://cloud.tencent.com/document/api/238/19976#CrossBackupAddr)
-* [CrossRegionStatus](https://cloud.tencent.com/document/api/238/19976#CrossRegionStatus)
-
-修改数据结构：
-
-* [Backup](https://cloud.tencent.com/document/api/238/19976#Backup)
-
-	* 新增成员：Region, CrossBackupAddr, CrossBackupStatus
-
-* [BackupFile](https://cloud.tencent.com/document/api/238/19976#BackupFile)
-
-	* 新增成员：Region, CrossBackupAddr
-
-* [DBInstance](https://cloud.tencent.com/document/api/238/19976#DBInstance)
-
-	* 新增成员：CrossRegions, CrossBackupEnabled, CrossBackupSaveDays
-
-
-
-
-## 凭据管理系统(ssm) 版本：2019-09-23
-
-### 第 7 次发布
-
-发布时间：2022-07-18 06:15:58
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CreateSSHKeyPairSecret](https://cloud.tencent.com/document/api/1140/60331)
-
-	* 新增入参：SSHKeyName
-
-
-
-
-## 服务网格(tcm) 版本：2021-04-13
-
-### 第 10 次发布
-
-发布时间：2022-07-18 06:16:41
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增数据结构：
-
-* [ExtensiveCluster](https://cloud.tencent.com/document/api/1261/63843#ExtensiveCluster)
-* [ExtensiveClusters](https://cloud.tencent.com/document/api/1261/63843#ExtensiveClusters)
-* [Tag](https://cloud.tencent.com/document/api/1261/63843#Tag)
-
-修改数据结构：
-
-* [Cluster](https://cloud.tencent.com/document/api/1261/63843#Cluster)
-
-	* 新增成员：HostedNamespaces
-
-* [LoadBalancer](https://cloud.tencent.com/document/api/1261/63843#LoadBalancer)
-
-	* 新增成员：ZoneID, VipIsp, TgwGroupName, AddressIPVersion, Tags, ExtensiveClusters
-
-	* <font color="#dd0000">**修改成员**：</font>LoadBalancerType
-
-* [WorkloadConfig](https://cloud.tencent.com/document/api/1261/63843#WorkloadConfig)
-
-	* 新增成员：DeployMode
-
-
-
-
-## 腾讯云 TI 平台 TI-ONE(tione) 版本：2021-11-11
-
-### 第 3 次发布
-
-发布时间：2022-07-18 06:17:59
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [DeleteTrainingModel](https://cloud.tencent.com/document/api/851/75073)
-
-	* 新增入参：EnableDeleteCos
-
-* [DeleteTrainingModelVersion](https://cloud.tencent.com/document/api/851/75072)
-
-	* 新增入参：EnableDeleteCos
-
-
-
-
-## 腾讯云 TI 平台 TI-ONE(tione) 版本：2019-10-22
-
-
-
-## Web 应用防火墙(waf) 版本：2018-01-25
-
-### 第 11 次发布
-
-发布时间：2022-07-18 06:19:58
+发布时间：2022-07-19 06:07:25
 
 本次发布包含了以下内容：
 
@@ -239,7 +12,111 @@
 
 新增接口：
 
-* [GetAttackDownloadRecords](https://cloud.tencent.com/document/api/627/77337)
+* [CheckCdcCluster](https://cloud.tencent.com/document/api/597/77400)
+* [CreateCdcCluster](https://cloud.tencent.com/document/api/597/77399)
+
+新增数据结构：
+
+* [CdcClusterResponse](https://cloud.tencent.com/document/api/597/40861#CdcClusterResponse)
+
+
+
+## 负载均衡(clb) 版本：2018-03-17
+
+### 第 70 次发布
+
+发布时间：2022-07-19 06:07:41
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ModifyListener](https://cloud.tencent.com/document/api/214/30681)
+
+	* 新增入参：TargetType
+
+
+
+
+## 文字识别(ocr) 版本：2018-11-19
+
+### 第 73 次发布
+
+发布时间：2022-07-19 06:15:45
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [VehicleInvoiceInfo](https://cloud.tencent.com/document/api/866/33527#VehicleInvoiceInfo)
+
+	* 新增成员：SellerAddress, SellerTel
+
+
+
+
+## 流量反欺诈(taf) 版本：2020-02-10
+
+### 第 13 次发布
+
+发布时间：2022-07-19 06:17:28
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [InputRecognizeTargetAudience](https://cloud.tencent.com/document/api/1031/43310#InputRecognizeTargetAudience)
+
+	* <font color="#dd0000">**修改成员**：</font>Uid, AccountType
+
+
+
+
+## 腾讯云微服务引擎(tse) 版本：2020-12-07
+
+### 第 23 次发布
+
+发布时间：2022-07-19 06:20:45
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [EnvInfo](https://cloud.tencent.com/document/api/1364/54942#EnvInfo)
+
+	* 新增成员：EnvDesc, ClientBandWidth
+
+
+
+
+## 云点播(vod) 版本：2018-07-17
+
+### 第 109 次发布
+
+发布时间：2022-07-19 06:21:28
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [MediaClassInfo](https://cloud.tencent.com/document/api/266/31773#MediaClassInfo)
+
+	* 新增成员：Name
+
+* [SubAppIdInfo](https://cloud.tencent.com/document/api/266/31773#SubAppIdInfo)
+
+	* 新增成员：SubAppIdName
+
 
 
 
@@ -16827,6 +16704,23 @@
 
 ## 消息队列 Ckafka(ckafka) 版本：2019-08-19
 
+### 第 43 次发布
+
+发布时间：2022-07-19 06:07:25
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CheckCdcCluster](https://cloud.tencent.com/document/api/597/77400)](https://cloud.tencent.com/document/api/#/#)
+* [[CreateCdcCluster](https://cloud.tencent.com/document/api/597/77399)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[CdcClusterResponse](https://cloud.tencent.com/document/api/597/40861#CdcClusterResponse)](https://cloud.tencent.com/document/api/597/40861#[CdcClusterResponse](https://cloud.tencent.com/document/api/597/40861#CdcClusterResponse))
+
 ### 第 42 次发布
 
 发布时间：2022-07-05 06:09:16
@@ -17710,6 +17604,21 @@
 
 
 ## 负载均衡(clb) 版本：2018-03-17
+
+### 第 70 次发布
+
+发布时间：2022-07-19 06:07:41
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ModifyListener](https://cloud.tencent.com/document/api/214/30681)
+
+	* 新增入参：TargetType
+
 
 ### 第 69 次发布
 
@@ -50848,25 +50757,25 @@
 
 新增数据结构：
 
-* [[ActivityResItem](https://cloud.tencent.com/document/api/862/37615#ActivityResItem)](https://cloud.tencent.com/document/api/862/37615#[ActivityResItem](https://cloud.tencent.com/document/api/862/37615#ActivityResItem))
-* [[ActivityResult](https://cloud.tencent.com/document/api/862/37615#ActivityResult)](https://cloud.tencent.com/document/api/862/37615#[ActivityResult](https://cloud.tencent.com/document/api/862/37615#ActivityResult))
-* [[ArtifactRepairConfig](https://cloud.tencent.com/document/api/862/37615#ArtifactRepairConfig)](https://cloud.tencent.com/document/api/862/37615#[ArtifactRepairConfig](https://cloud.tencent.com/document/api/862/37615#ArtifactRepairConfig))
-* [[ColorEnhanceConfig](https://cloud.tencent.com/document/api/862/37615#ColorEnhanceConfig)](https://cloud.tencent.com/document/api/862/37615#[ColorEnhanceConfig](https://cloud.tencent.com/document/api/862/37615#ColorEnhanceConfig))
-* [[EnhanceConfig](https://cloud.tencent.com/document/api/862/37615#EnhanceConfig)](https://cloud.tencent.com/document/api/862/37615#[EnhanceConfig](https://cloud.tencent.com/document/api/862/37615#EnhanceConfig))
-* [[FaceEnhanceConfig](https://cloud.tencent.com/document/api/862/37615#FaceEnhanceConfig)](https://cloud.tencent.com/document/api/862/37615#[FaceEnhanceConfig](https://cloud.tencent.com/document/api/862/37615#FaceEnhanceConfig))
-* [[FrameRateConfig](https://cloud.tencent.com/document/api/862/37615#FrameRateConfig)](https://cloud.tencent.com/document/api/862/37615#[FrameRateConfig](https://cloud.tencent.com/document/api/862/37615#FrameRateConfig))
-* [[HdrConfig](https://cloud.tencent.com/document/api/862/37615#HdrConfig)](https://cloud.tencent.com/document/api/862/37615#[HdrConfig](https://cloud.tencent.com/document/api/862/37615#HdrConfig))
-* [[ImageQualityEnhanceConfig](https://cloud.tencent.com/document/api/862/37615#ImageQualityEnhanceConfig)](https://cloud.tencent.com/document/api/862/37615#[ImageQualityEnhanceConfig](https://cloud.tencent.com/document/api/862/37615#ImageQualityEnhanceConfig))
-* [[LowLightEnhanceConfig](https://cloud.tencent.com/document/api/862/37615#LowLightEnhanceConfig)](https://cloud.tencent.com/document/api/862/37615#[LowLightEnhanceConfig](https://cloud.tencent.com/document/api/862/37615#LowLightEnhanceConfig))
-* [[ScheduleAnalysisTaskResult](https://cloud.tencent.com/document/api/862/37615#ScheduleAnalysisTaskResult)](https://cloud.tencent.com/document/api/862/37615#[ScheduleAnalysisTaskResult](https://cloud.tencent.com/document/api/862/37615#ScheduleAnalysisTaskResult))
-* [[ScheduleRecognitionTaskResult](https://cloud.tencent.com/document/api/862/37615#ScheduleRecognitionTaskResult)](https://cloud.tencent.com/document/api/862/37615#[ScheduleRecognitionTaskResult](https://cloud.tencent.com/document/api/862/37615#ScheduleRecognitionTaskResult))
-* [[ScheduleReviewTaskResult](https://cloud.tencent.com/document/api/862/37615#ScheduleReviewTaskResult)](https://cloud.tencent.com/document/api/862/37615#[ScheduleReviewTaskResult](https://cloud.tencent.com/document/api/862/37615#ScheduleReviewTaskResult))
-* [[ScheduleTask](https://cloud.tencent.com/document/api/862/37615#ScheduleTask)](https://cloud.tencent.com/document/api/862/37615#[ScheduleTask](https://cloud.tencent.com/document/api/862/37615#ScheduleTask))
-* [[ScratchRepairConfig](https://cloud.tencent.com/document/api/862/37615#ScratchRepairConfig)](https://cloud.tencent.com/document/api/862/37615#[ScratchRepairConfig](https://cloud.tencent.com/document/api/862/37615#ScratchRepairConfig))
-* [[SharpEnhanceConfig](https://cloud.tencent.com/document/api/862/37615#SharpEnhanceConfig)](https://cloud.tencent.com/document/api/862/37615#[SharpEnhanceConfig](https://cloud.tencent.com/document/api/862/37615#SharpEnhanceConfig))
-* [[SuperResolutionConfig](https://cloud.tencent.com/document/api/862/37615#SuperResolutionConfig)](https://cloud.tencent.com/document/api/862/37615#[SuperResolutionConfig](https://cloud.tencent.com/document/api/862/37615#SuperResolutionConfig))
-* [[VideoDenoiseConfig](https://cloud.tencent.com/document/api/862/37615#VideoDenoiseConfig)](https://cloud.tencent.com/document/api/862/37615#[VideoDenoiseConfig](https://cloud.tencent.com/document/api/862/37615#VideoDenoiseConfig))
-* [[VideoEnhanceConfig](https://cloud.tencent.com/document/api/862/37615#VideoEnhanceConfig)](https://cloud.tencent.com/document/api/862/37615#[VideoEnhanceConfig](https://cloud.tencent.com/document/api/862/37615#VideoEnhanceConfig))
+* [ActivityResItem](https://cloud.tencent.com/document/api/862/37615#ActivityResItem)
+* [ActivityResult](https://cloud.tencent.com/document/api/862/37615#ActivityResult)
+* [ArtifactRepairConfig](https://cloud.tencent.com/document/api/862/37615#ArtifactRepairConfig)
+* [ColorEnhanceConfig](https://cloud.tencent.com/document/api/862/37615#ColorEnhanceConfig)
+* [EnhanceConfig](https://cloud.tencent.com/document/api/862/37615#EnhanceConfig)
+* [FaceEnhanceConfig](https://cloud.tencent.com/document/api/862/37615#FaceEnhanceConfig)
+* [FrameRateConfig](https://cloud.tencent.com/document/api/862/37615#FrameRateConfig)
+* [HdrConfig](https://cloud.tencent.com/document/api/862/37615#HdrConfig)
+* [ImageQualityEnhanceConfig](https://cloud.tencent.com/document/api/862/37615#ImageQualityEnhanceConfig)
+* [LowLightEnhanceConfig](https://cloud.tencent.com/document/api/862/37615#LowLightEnhanceConfig)
+* [ScheduleAnalysisTaskResult](https://cloud.tencent.com/document/api/862/37615#ScheduleAnalysisTaskResult)
+* [ScheduleRecognitionTaskResult](https://cloud.tencent.com/document/api/862/37615#ScheduleRecognitionTaskResult)
+* [ScheduleReviewTaskResult](https://cloud.tencent.com/document/api/862/37615#ScheduleReviewTaskResult)
+* [ScheduleTask](https://cloud.tencent.com/document/api/862/37615#ScheduleTask)
+* [ScratchRepairConfig](https://cloud.tencent.com/document/api/862/37615#ScratchRepairConfig)
+* [SharpEnhanceConfig](https://cloud.tencent.com/document/api/862/37615#SharpEnhanceConfig)
+* [SuperResolutionConfig](https://cloud.tencent.com/document/api/862/37615#SuperResolutionConfig)
+* [VideoDenoiseConfig](https://cloud.tencent.com/document/api/862/37615#VideoDenoiseConfig)
+* [VideoEnhanceConfig](https://cloud.tencent.com/document/api/862/37615#VideoEnhanceConfig)
 
 修改数据结构：
 
@@ -53571,6 +53480,21 @@
 
 ## 文字识别(ocr) 版本：2018-11-19
 
+### 第 73 次发布
+
+发布时间：2022-07-19 06:15:45
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [VehicleInvoiceInfo](https://cloud.tencent.com/document/api/866/33527#VehicleInvoiceInfo)
+
+	* 新增成员：SellerAddress, SellerTel
+
+
 ### 第 72 次发布
 
 发布时间：2022-07-18 06:14:15
@@ -53588,7 +53512,7 @@
 
 新增数据结构：
 
-* [[LicensePlateInfo](https://cloud.tencent.com/document/api/866/33527#LicensePlateInfo)](https://cloud.tencent.com/document/api/866/33527#[LicensePlateInfo](https://cloud.tencent.com/document/api/866/33527#LicensePlateInfo))
+* [LicensePlateInfo](https://cloud.tencent.com/document/api/866/33527#LicensePlateInfo)
 
 ### 第 71 次发布
 
@@ -59874,8 +59798,8 @@
 
 新增数据结构：
 
-* [[CrossBackupAddr](https://cloud.tencent.com/document/api/238/19976#CrossBackupAddr)](https://cloud.tencent.com/document/api/238/19976#[CrossBackupAddr](https://cloud.tencent.com/document/api/238/19976#CrossBackupAddr))
-* [[CrossRegionStatus](https://cloud.tencent.com/document/api/238/19976#CrossRegionStatus)](https://cloud.tencent.com/document/api/238/19976#[CrossRegionStatus](https://cloud.tencent.com/document/api/238/19976#CrossRegionStatus))
+* [CrossBackupAddr](https://cloud.tencent.com/document/api/238/19976#CrossBackupAddr)
+* [CrossRegionStatus](https://cloud.tencent.com/document/api/238/19976#CrossRegionStatus)
 
 修改数据结构：
 
@@ -61701,6 +61625,21 @@
 
 
 ## 流量反欺诈(taf) 版本：2020-02-10
+
+### 第 13 次发布
+
+发布时间：2022-07-19 06:17:28
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [InputRecognizeTargetAudience](https://cloud.tencent.com/document/api/1031/43310#InputRecognizeTargetAudience)
+
+	* <font color="#dd0000">**修改成员**：</font>Uid, AccountType
+
 
 ### 第 12 次发布
 
@@ -65473,9 +65412,9 @@
 
 新增数据结构：
 
-* [[ExtensiveCluster](https://cloud.tencent.com/document/api/1261/63843#ExtensiveCluster)](https://cloud.tencent.com/document/api/1261/63843#[ExtensiveCluster](https://cloud.tencent.com/document/api/1261/63843#ExtensiveCluster))
-* [[ExtensiveClusters](https://cloud.tencent.com/document/api/1261/63843#ExtensiveClusters)](https://cloud.tencent.com/document/api/1261/63843#[ExtensiveClusters](https://cloud.tencent.com/document/api/1261/63843#ExtensiveClusters))
-* [[Tag](https://cloud.tencent.com/document/api/1261/63843#Tag)](https://cloud.tencent.com/document/api/1261/63843#[Tag](https://cloud.tencent.com/document/api/1261/63843#Tag))
+* [ExtensiveCluster](https://cloud.tencent.com/document/api/1261/63843#ExtensiveCluster)
+* [ExtensiveClusters](https://cloud.tencent.com/document/api/1261/63843#ExtensiveClusters)
+* [Tag](https://cloud.tencent.com/document/api/1261/63843#Tag)
 
 修改数据结构：
 
@@ -74791,6 +74730,21 @@
 
 ## 腾讯云微服务引擎(tse) 版本：2020-12-07
 
+### 第 23 次发布
+
+发布时间：2022-07-19 06:20:45
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [EnvInfo](https://cloud.tencent.com/document/api/1364/54942#EnvInfo)
+
+	* 新增成员：EnvDesc, ClientBandWidth
+
+
 ### 第 22 次发布
 
 发布时间：2022-07-12 06:19:15
@@ -77761,6 +77715,25 @@
 
 
 ## 云点播(vod) 版本：2018-07-17
+
+### 第 109 次发布
+
+发布时间：2022-07-19 06:21:28
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [MediaClassInfo](https://cloud.tencent.com/document/api/266/31773#MediaClassInfo)
+
+	* 新增成员：Name
+
+* [SubAppIdInfo](https://cloud.tencent.com/document/api/266/31773#SubAppIdInfo)
+
+	* 新增成员：SubAppIdName
+
 
 ### 第 108 次发布
 
@@ -83556,7 +83529,7 @@
 
 新增接口：
 
-* [[GetAttackDownloadRecords](https://cloud.tencent.com/document/api/627/77337)](https://cloud.tencent.com/document/api/#/#)
+* [GetAttackDownloadRecords](https://cloud.tencent.com/document/api/627/77337)
 
 ### 第 10 次发布
 

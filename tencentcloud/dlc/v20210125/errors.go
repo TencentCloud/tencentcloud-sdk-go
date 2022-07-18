@@ -128,6 +128,9 @@ const (
 	// 指定数据源连接没有找到。
 	RESOURCENOTFOUND_DATASOURCENOTFOUND = "ResourceNotFound.DatasourceNotFound"
 
+	// 未找到结果路径。
+	RESOURCENOTFOUND_RESULTOUTPUTPATHNOTFOUND = "ResourceNotFound.ResultOutputPathNotFound"
+
 	// 资源不可用。
 	RESOURCEUNAVAILABLE = "ResourceUnavailable"
 

@@ -600,6 +600,7 @@ func NewDeleteIpAccessControlResponse() (response *DeleteIpAccessControlResponse
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteIpAccessControl(request *DeleteIpAccessControlRequest) (response *DeleteIpAccessControlResponse, err error) {
     return c.DeleteIpAccessControlWithContext(context.Background(), request)
 }
@@ -609,6 +610,7 @@ func (c *Client) DeleteIpAccessControl(request *DeleteIpAccessControlRequest) (r
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteIpAccessControlWithContext(ctx context.Context, request *DeleteIpAccessControlRequest) (response *DeleteIpAccessControlResponse, err error) {
     if request == nil {
         request = NewDeleteIpAccessControlRequest()

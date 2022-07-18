@@ -2628,6 +2628,7 @@ func NewUnbindAutoSnapshotPolicyResponse() (response *UnbindAutoSnapshotPolicyRe
 // * 如果传入的云盘未绑定到当前定期快照策略，接口将自动跳过，仅解绑与当前定期快照策略绑定的云盘。
 //
 // 可能返回的错误码:
+//  INVALIDAUTOSNAPSHOTPOLICYID_NOTFOUND = "InvalidAutoSnapshotPolicyId.NotFound"
 //  INVALIDDISKID_NOTFOUND = "InvalidDiskId.NotFound"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
@@ -2645,6 +2646,7 @@ func (c *Client) UnbindAutoSnapshotPolicy(request *UnbindAutoSnapshotPolicyReque
 // * 如果传入的云盘未绑定到当前定期快照策略，接口将自动跳过，仅解绑与当前定期快照策略绑定的云盘。
 //
 // 可能返回的错误码:
+//  INVALIDAUTOSNAPSHOTPOLICYID_NOTFOUND = "InvalidAutoSnapshotPolicyId.NotFound"
 //  INVALIDDISKID_NOTFOUND = "InvalidDiskId.NotFound"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"

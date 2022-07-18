@@ -274,6 +274,7 @@ func NewDeleteSitesResponse() (response *DeleteSitesResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION_FAILDELETESITE = "FailedOperation.FailDeleteSite"
 //  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  RESOURCENOTFOUND_INVALIDSITEID = "ResourceNotFound.InvalidSiteId"
 func (c *Client) DeleteSites(request *DeleteSitesRequest) (response *DeleteSitesResponse, err error) {
     return c.DeleteSitesWithContext(context.Background(), request)
 }
@@ -284,6 +285,7 @@ func (c *Client) DeleteSites(request *DeleteSitesRequest) (response *DeleteSites
 // 可能返回的错误码:
 //  FAILEDOPERATION_FAILDELETESITE = "FailedOperation.FailDeleteSite"
 //  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  RESOURCENOTFOUND_INVALIDSITEID = "ResourceNotFound.InvalidSiteId"
 func (c *Client) DeleteSitesWithContext(ctx context.Context, request *DeleteSitesRequest) (response *DeleteSitesResponse, err error) {
     if request == nil {
         request = NewDeleteSitesRequest()

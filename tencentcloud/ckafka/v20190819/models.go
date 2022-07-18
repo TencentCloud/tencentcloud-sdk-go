@@ -561,6 +561,70 @@ func (r *CancelAuthorizationTokenResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type CdcClusterResponse struct {
+	// 任务ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskId *int64 `json:"TaskId,omitempty" name:"TaskId"`
+}
+
+// Predefined struct for user
+type CheckCdcClusterRequestParams struct {
+	// 任务ID
+	TaskId *int64 `json:"TaskId,omitempty" name:"TaskId"`
+}
+
+type CheckCdcClusterRequest struct {
+	*tchttp.BaseRequest
+	
+	// 任务ID
+	TaskId *int64 `json:"TaskId,omitempty" name:"TaskId"`
+}
+
+func (r *CheckCdcClusterRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CheckCdcClusterRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CheckCdcClusterRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CheckCdcClusterResponseParams struct {
+	// 返回结果状态Success
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Result *string `json:"Result,omitempty" name:"Result"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CheckCdcClusterResponse struct {
+	*tchttp.BaseResponse
+	Response *CheckCdcClusterResponseParams `json:"Response"`
+}
+
+func (r *CheckCdcClusterResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CheckCdcClusterResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type ClusterInfo struct {
 	// 集群Id
 	ClusterId *int64 `json:"ClusterId,omitempty" name:"ClusterId"`
@@ -803,6 +867,112 @@ func (r *CreateAclResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateAclResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateCdcClusterRequestParams struct {
+	// cdc的id
+	CdcId *string `json:"CdcId,omitempty" name:"CdcId"`
+
+	// vpcId,一个地域只有唯一一个vpcid用于CDC
+	CdcVpcId *string `json:"CdcVpcId,omitempty" name:"CdcVpcId"`
+
+	// 每个CDC集群有唯一一个子网ID
+	CdcSubnetId *string `json:"CdcSubnetId,omitempty" name:"CdcSubnetId"`
+
+	// 所在可用区ID
+	ZoneId *int64 `json:"ZoneId,omitempty" name:"ZoneId"`
+
+	// cdc集群的总带宽
+	Bandwidth *int64 `json:"Bandwidth,omitempty" name:"Bandwidth"`
+
+	// cdc集群的总磁盘
+	DiskSize *int64 `json:"DiskSize,omitempty" name:"DiskSize"`
+
+	// 数据盘类型
+	DiskType *string `json:"DiskType,omitempty" name:"DiskType"`
+
+	// 系统盘类型
+	SystemDiskType *string `json:"SystemDiskType,omitempty" name:"SystemDiskType"`
+}
+
+type CreateCdcClusterRequest struct {
+	*tchttp.BaseRequest
+	
+	// cdc的id
+	CdcId *string `json:"CdcId,omitempty" name:"CdcId"`
+
+	// vpcId,一个地域只有唯一一个vpcid用于CDC
+	CdcVpcId *string `json:"CdcVpcId,omitempty" name:"CdcVpcId"`
+
+	// 每个CDC集群有唯一一个子网ID
+	CdcSubnetId *string `json:"CdcSubnetId,omitempty" name:"CdcSubnetId"`
+
+	// 所在可用区ID
+	ZoneId *int64 `json:"ZoneId,omitempty" name:"ZoneId"`
+
+	// cdc集群的总带宽
+	Bandwidth *int64 `json:"Bandwidth,omitempty" name:"Bandwidth"`
+
+	// cdc集群的总磁盘
+	DiskSize *int64 `json:"DiskSize,omitempty" name:"DiskSize"`
+
+	// 数据盘类型
+	DiskType *string `json:"DiskType,omitempty" name:"DiskType"`
+
+	// 系统盘类型
+	SystemDiskType *string `json:"SystemDiskType,omitempty" name:"SystemDiskType"`
+}
+
+func (r *CreateCdcClusterRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateCdcClusterRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CdcId")
+	delete(f, "CdcVpcId")
+	delete(f, "CdcSubnetId")
+	delete(f, "ZoneId")
+	delete(f, "Bandwidth")
+	delete(f, "DiskSize")
+	delete(f, "DiskType")
+	delete(f, "SystemDiskType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCdcClusterRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateCdcClusterResponseParams struct {
+	// 无
+	Result *CdcClusterResponse `json:"Result,omitempty" name:"Result"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateCdcClusterResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateCdcClusterResponseParams `json:"Response"`
+}
+
+func (r *CreateCdcClusterResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateCdcClusterResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

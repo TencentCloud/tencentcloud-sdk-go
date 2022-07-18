@@ -1,3 +1,125 @@
+# Release v1.0.445
+
+## 消息队列 Ckafka(ckafka) 版本：2019-08-19
+
+### 第 43 次发布
+
+发布时间：2022-07-19 06:07:25
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CheckCdcCluster](https://cloud.tencent.com/document/api/597/77400)
+* [CreateCdcCluster](https://cloud.tencent.com/document/api/597/77399)
+
+新增数据结构：
+
+* [CdcClusterResponse](https://cloud.tencent.com/document/api/597/40861#CdcClusterResponse)
+
+
+
+## 负载均衡(clb) 版本：2018-03-17
+
+### 第 70 次发布
+
+发布时间：2022-07-19 06:07:41
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ModifyListener](https://cloud.tencent.com/document/api/214/30681)
+
+	* 新增入参：TargetType
+
+
+
+
+## 文字识别(ocr) 版本：2018-11-19
+
+### 第 73 次发布
+
+发布时间：2022-07-19 06:15:45
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [VehicleInvoiceInfo](https://cloud.tencent.com/document/api/866/33527#VehicleInvoiceInfo)
+
+	* 新增成员：SellerAddress, SellerTel
+
+
+
+
+## 流量反欺诈(taf) 版本：2020-02-10
+
+### 第 13 次发布
+
+发布时间：2022-07-19 06:17:28
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [InputRecognizeTargetAudience](https://cloud.tencent.com/document/api/1031/43310#InputRecognizeTargetAudience)
+
+	* <font color="#dd0000">**修改成员**：</font>Uid, AccountType
+
+
+
+
+## 腾讯云微服务引擎(tse) 版本：2020-12-07
+
+### 第 23 次发布
+
+发布时间：2022-07-19 06:20:45
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [EnvInfo](https://cloud.tencent.com/document/api/1364/54942#EnvInfo)
+
+	* 新增成员：EnvDesc, ClientBandWidth
+
+
+
+
+## 云点播(vod) 版本：2018-07-17
+
+### 第 109 次发布
+
+发布时间：2022-07-19 06:21:28
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [MediaClassInfo](https://cloud.tencent.com/document/api/266/31773#MediaClassInfo)
+
+	* 新增成员：Name
+
+* [SubAppIdInfo](https://cloud.tencent.com/document/api/266/31773#SubAppIdInfo)
+
+	* 新增成员：SubAppIdName
+
+
+
+
 # Release v1.0.444
 
 ## 日志服务(cls) 版本：2020-10-16

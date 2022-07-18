@@ -1295,7 +1295,7 @@ type CreateLoadBalancingRequestParams struct {
 	// 站点ID
 	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
 
-	// 子域名，填写@表示根域
+	// 子域名
 	Host *string `json:"Host,omitempty" name:"Host"`
 
 	// 代理模式：
@@ -1316,7 +1316,7 @@ type CreateLoadBalancingRequest struct {
 	// 站点ID
 	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
 
-	// 子域名，填写@表示根域
+	// 子域名
 	Host *string `json:"Host,omitempty" name:"Host"`
 
 	// 代理模式：

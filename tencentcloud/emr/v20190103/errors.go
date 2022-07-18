@@ -209,6 +209,9 @@ const (
 	// 无效的资源规格。
 	INVALIDPARAMETER_INVALIDRESOURCESPEC = "InvalidParameter.InvalidResourceSpec"
 
+	// 该EMR版本不支持开启安全模式。
+	INVALIDPARAMETER_INVALIDSECURITYSUPPORT = "InvalidParameter.InvalidSecuritySupport"
+
 	// 无效的安全组ID。
 	INVALIDPARAMETER_INVALIDSERCURITYGRPUPID = "InvalidParameter.InvalidSercurityGrpupId"
 

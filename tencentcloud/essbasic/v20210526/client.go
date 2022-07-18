@@ -218,6 +218,7 @@ func NewChannelCreateMultiFlowSignQRCodeResponse() (response *ChannelCreateMulti
 //  INVALIDPARAMETER = "InvalidParameter"
 //  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED_NOQUOTA = "OperationDenied.NoQuota"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_TEMPLATE = "ResourceNotFound.Template"
 func (c *Client) ChannelCreateMultiFlowSignQRCode(request *ChannelCreateMultiFlowSignQRCodeRequest) (response *ChannelCreateMultiFlowSignQRCodeResponse, err error) {
     return c.ChannelCreateMultiFlowSignQRCodeWithContext(context.Background(), request)
@@ -237,6 +238,7 @@ func (c *Client) ChannelCreateMultiFlowSignQRCode(request *ChannelCreateMultiFlo
 //  INVALIDPARAMETER = "InvalidParameter"
 //  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED_NOQUOTA = "OperationDenied.NoQuota"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_TEMPLATE = "ResourceNotFound.Template"
 func (c *Client) ChannelCreateMultiFlowSignQRCodeWithContext(ctx context.Context, request *ChannelCreateMultiFlowSignQRCodeRequest) (response *ChannelCreateMultiFlowSignQRCodeResponse, err error) {
     if request == nil {

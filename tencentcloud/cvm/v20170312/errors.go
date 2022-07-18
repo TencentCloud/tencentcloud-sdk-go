@@ -830,6 +830,9 @@ const (
 	// 该实例类型不支持竞价计费
 	UNSUPPORTEDOPERATION_NOINSTANCETYPESUPPORTSPOT = "UnsupportedOperation.NoInstanceTypeSupportSpot"
 
+	// 不支持物理网络的实例。
+	UNSUPPORTEDOPERATION_NOVPCNETWORK = "UnsupportedOperation.NoVpcNetwork"
+
 	// 当前实例不是FPGA机型。
 	UNSUPPORTEDOPERATION_NOTFPGAINSTANCE = "UnsupportedOperation.NotFpgaInstance"
 

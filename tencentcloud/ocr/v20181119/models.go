@@ -7974,6 +7974,12 @@ type VehicleInvoiceInfo struct {
 
 	// 账号
 	MotorBankAccount *string `json:"MotorBankAccount,omitempty" name:"MotorBankAccount"`
+
+	// 销售地址
+	SellerAddress *string `json:"SellerAddress,omitempty" name:"SellerAddress"`
+
+	// 销售电话
+	SellerTel *string `json:"SellerTel,omitempty" name:"SellerTel"`
 }
 
 // Predefined struct for user

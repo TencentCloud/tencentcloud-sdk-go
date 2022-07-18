@@ -922,6 +922,7 @@ func NewAssociateAddressResponse() (response *AssociateAddressResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_ADDRESSENIINFONOTFOUND = "FailedOperation.AddressEniInfoNotFound"
+//  FAILEDOPERATION_TASKFAILED = "FailedOperation.TaskFailed"
 //  INVALIDACCOUNT_NOTSUPPORTED = "InvalidAccount.NotSupported"
 //  INVALIDADDRESSID_BLOCKED = "InvalidAddressId.Blocked"
 //  INVALIDADDRESSID_NOTFOUND = "InvalidAddressId.NotFound"
@@ -977,6 +978,7 @@ func (c *Client) AssociateAddress(request *AssociateAddressRequest) (response *A
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_ADDRESSENIINFONOTFOUND = "FailedOperation.AddressEniInfoNotFound"
+//  FAILEDOPERATION_TASKFAILED = "FailedOperation.TaskFailed"
 //  INVALIDACCOUNT_NOTSUPPORTED = "InvalidAccount.NotSupported"
 //  INVALIDADDRESSID_BLOCKED = "InvalidAddressId.Blocked"
 //  INVALIDADDRESSID_NOTFOUND = "InvalidAddressId.NotFound"
@@ -1056,6 +1058,7 @@ func NewAssociateDhcpIpWithAddressIpResponse() (response *AssociateDhcpIpWithAdd
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION_BINDEIP = "UnsupportedOperation.BindEIP"
+//  UNSUPPORTEDOPERATION_UNSUPPORTEDBINDLOCALZONEEIP = "UnsupportedOperation.UnsupportedBindLocalZoneEIP"
 func (c *Client) AssociateDhcpIpWithAddressIp(request *AssociateDhcpIpWithAddressIpRequest) (response *AssociateDhcpIpWithAddressIpResponse, err error) {
     return c.AssociateDhcpIpWithAddressIpWithContext(context.Background(), request)
 }
@@ -1072,6 +1075,7 @@ func (c *Client) AssociateDhcpIpWithAddressIp(request *AssociateDhcpIpWithAddres
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION_BINDEIP = "UnsupportedOperation.BindEIP"
+//  UNSUPPORTEDOPERATION_UNSUPPORTEDBINDLOCALZONEEIP = "UnsupportedOperation.UnsupportedBindLocalZoneEIP"
 func (c *Client) AssociateDhcpIpWithAddressIpWithContext(ctx context.Context, request *AssociateDhcpIpWithAddressIpRequest) (response *AssociateDhcpIpWithAddressIpResponse, err error) {
     if request == nil {
         request = NewAssociateDhcpIpWithAddressIpRequest()
@@ -4344,6 +4348,7 @@ func NewCreateSubnetResponse() (response *CreateSubnetResponse) {
 //  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
 //  INVALIDPARAMETERVALUE_SUBNETCONFLICT = "InvalidParameterValue.SubnetConflict"
+//  INVALIDPARAMETERVALUE_SUBNETOVERLAP = "InvalidParameterValue.SubnetOverlap"
 //  INVALIDPARAMETERVALUE_SUBNETRANGE = "InvalidParameterValue.SubnetRange"
 //  INVALIDPARAMETERVALUE_TAGDUPLICATEKEY = "InvalidParameterValue.TagDuplicateKey"
 //  INVALIDPARAMETERVALUE_TAGDUPLICATERESOURCETYPE = "InvalidParameterValue.TagDuplicateResourceType"
@@ -4370,6 +4375,7 @@ func NewCreateSubnetResponse() (response *CreateSubnetResponse) {
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION_APPIDMISMATCH = "UnsupportedOperation.AppIdMismatch"
 //  UNSUPPORTEDOPERATION_DCGATEWAYSNOTFOUNDINVPC = "UnsupportedOperation.DcGatewaysNotFoundInVpc"
+//  UNSUPPORTEDOPERATION_RECORDEXISTS = "UnsupportedOperation.RecordExists"
 //  UNSUPPORTEDOPERATION_TAGALLOCATE = "UnsupportedOperation.TagAllocate"
 //  UNSUPPORTEDOPERATION_TAGFREE = "UnsupportedOperation.TagFree"
 //  UNSUPPORTEDOPERATION_TAGNOTPERMIT = "UnsupportedOperation.TagNotPermit"
@@ -4400,6 +4406,7 @@ func (c *Client) CreateSubnet(request *CreateSubnetRequest) (response *CreateSub
 //  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
 //  INVALIDPARAMETERVALUE_SUBNETCONFLICT = "InvalidParameterValue.SubnetConflict"
+//  INVALIDPARAMETERVALUE_SUBNETOVERLAP = "InvalidParameterValue.SubnetOverlap"
 //  INVALIDPARAMETERVALUE_SUBNETRANGE = "InvalidParameterValue.SubnetRange"
 //  INVALIDPARAMETERVALUE_TAGDUPLICATEKEY = "InvalidParameterValue.TagDuplicateKey"
 //  INVALIDPARAMETERVALUE_TAGDUPLICATERESOURCETYPE = "InvalidParameterValue.TagDuplicateResourceType"
@@ -4426,6 +4433,7 @@ func (c *Client) CreateSubnet(request *CreateSubnetRequest) (response *CreateSub
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION_APPIDMISMATCH = "UnsupportedOperation.AppIdMismatch"
 //  UNSUPPORTEDOPERATION_DCGATEWAYSNOTFOUNDINVPC = "UnsupportedOperation.DcGatewaysNotFoundInVpc"
+//  UNSUPPORTEDOPERATION_RECORDEXISTS = "UnsupportedOperation.RecordExists"
 //  UNSUPPORTEDOPERATION_TAGALLOCATE = "UnsupportedOperation.TagAllocate"
 //  UNSUPPORTEDOPERATION_TAGFREE = "UnsupportedOperation.TagFree"
 //  UNSUPPORTEDOPERATION_TAGNOTPERMIT = "UnsupportedOperation.TagNotPermit"
@@ -5678,6 +5686,7 @@ func NewDeleteDirectConnectGatewayResponse() (response *DeleteDirectConnectGatew
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteDirectConnectGateway(request *DeleteDirectConnectGatewayRequest) (response *DeleteDirectConnectGatewayResponse, err error) {
@@ -5696,6 +5705,7 @@ func (c *Client) DeleteDirectConnectGateway(request *DeleteDirectConnectGatewayR
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteDirectConnectGatewayWithContext(ctx context.Context, request *DeleteDirectConnectGatewayRequest) (response *DeleteDirectConnectGatewayResponse, err error) {
@@ -6526,6 +6536,7 @@ func NewDeleteSecurityGroupPoliciesResponse() (response *DeleteSecurityGroupPoli
 //  INVALIDPARAMETER_COEXIST = "InvalidParameter.Coexist"
 //  INVALIDPARAMETERVALUE_EMPTY = "InvalidParameterValue.Empty"
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION_VERSIONMISMATCH = "UnsupportedOperation.VersionMismatch"
 func (c *Client) DeleteSecurityGroupPolicies(request *DeleteSecurityGroupPoliciesRequest) (response *DeleteSecurityGroupPoliciesResponse, err error) {
@@ -6541,6 +6552,7 @@ func (c *Client) DeleteSecurityGroupPolicies(request *DeleteSecurityGroupPolicie
 //  INVALIDPARAMETER_COEXIST = "InvalidParameter.Coexist"
 //  INVALIDPARAMETERVALUE_EMPTY = "InvalidParameterValue.Empty"
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION_VERSIONMISMATCH = "UnsupportedOperation.VersionMismatch"
 func (c *Client) DeleteSecurityGroupPoliciesWithContext(ctx context.Context, request *DeleteSecurityGroupPoliciesRequest) (response *DeleteSecurityGroupPoliciesResponse, err error) {
@@ -6798,6 +6810,7 @@ func NewDeleteVpcResponse() (response *DeleteVpcResponse) {
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION_APPIDMISMATCH = "UnsupportedOperation.AppIdMismatch"
+//  UNSUPPORTEDOPERATION_RECORDNOTEXISTS = "UnsupportedOperation.RecordNotExists"
 func (c *Client) DeleteVpc(request *DeleteVpcRequest) (response *DeleteVpcResponse, err error) {
     return c.DeleteVpcWithContext(context.Background(), request)
 }
@@ -6814,6 +6827,7 @@ func (c *Client) DeleteVpc(request *DeleteVpcRequest) (response *DeleteVpcRespon
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION_APPIDMISMATCH = "UnsupportedOperation.AppIdMismatch"
+//  UNSUPPORTEDOPERATION_RECORDNOTEXISTS = "UnsupportedOperation.RecordNotExists"
 func (c *Client) DeleteVpcWithContext(ctx context.Context, request *DeleteVpcRequest) (response *DeleteVpcResponse, err error) {
     if request == nil {
         request = NewDeleteVpcRequest()
@@ -12735,6 +12749,7 @@ func NewHaVipAssociateAddressIpResponse() (response *HaVipAssociateAddressIpResp
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION_BINDEIP = "UnsupportedOperation.BindEIP"
 //  UNSUPPORTEDOPERATION_MUTEXOPERATIONTASKRUNNING = "UnsupportedOperation.MutexOperationTaskRunning"
+//  UNSUPPORTEDOPERATION_UNSUPPORTEDBINDLOCALZONEEIP = "UnsupportedOperation.UnsupportedBindLocalZoneEIP"
 func (c *Client) HaVipAssociateAddressIp(request *HaVipAssociateAddressIpRequest) (response *HaVipAssociateAddressIpResponse, err error) {
     return c.HaVipAssociateAddressIpWithContext(context.Background(), request)
 }
@@ -12749,6 +12764,7 @@ func (c *Client) HaVipAssociateAddressIp(request *HaVipAssociateAddressIpRequest
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION_BINDEIP = "UnsupportedOperation.BindEIP"
 //  UNSUPPORTEDOPERATION_MUTEXOPERATIONTASKRUNNING = "UnsupportedOperation.MutexOperationTaskRunning"
+//  UNSUPPORTEDOPERATION_UNSUPPORTEDBINDLOCALZONEEIP = "UnsupportedOperation.UnsupportedBindLocalZoneEIP"
 func (c *Client) HaVipAssociateAddressIpWithContext(ctx context.Context, request *HaVipAssociateAddressIpRequest) (response *HaVipAssociateAddressIpResponse, err error) {
     if request == nil {
         request = NewHaVipAssociateAddressIpRequest()
@@ -15358,6 +15374,7 @@ func NewModifyServiceTemplateGroupAttributeResponse() (response *ModifyServiceTe
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION_MUTEXOPERATIONTASKRUNNING = "UnsupportedOperation.MutexOperationTaskRunning"
 func (c *Client) ModifyServiceTemplateGroupAttribute(request *ModifyServiceTemplateGroupAttributeRequest) (response *ModifyServiceTemplateGroupAttributeResponse, err error) {
     return c.ModifyServiceTemplateGroupAttributeWithContext(context.Background(), request)
 }
@@ -15369,6 +15386,7 @@ func (c *Client) ModifyServiceTemplateGroupAttribute(request *ModifyServiceTempl
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION_MUTEXOPERATIONTASKRUNNING = "UnsupportedOperation.MutexOperationTaskRunning"
 func (c *Client) ModifyServiceTemplateGroupAttributeWithContext(ctx context.Context, request *ModifyServiceTemplateGroupAttributeRequest) (response *ModifyServiceTemplateGroupAttributeResponse, err error) {
     if request == nil {
         request = NewModifyServiceTemplateGroupAttributeRequest()
@@ -16137,6 +16155,7 @@ func NewReleaseAddressesResponse() (response *ReleaseAddressesResponse) {
 // * 只有状态为 UNBIND 的 EIP 才能进行释放操作。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_TASKFAILED = "FailedOperation.TaskFailed"
 //  INVALIDADDRESSID_BLOCKED = "InvalidAddressId.Blocked"
 //  INVALIDADDRESSID_NOTFOUND = "InvalidAddressId.NotFound"
 //  INVALIDADDRESSSTATE = "InvalidAddressState"
@@ -16159,6 +16178,7 @@ func (c *Client) ReleaseAddresses(request *ReleaseAddressesRequest) (response *R
 // * 只有状态为 UNBIND 的 EIP 才能进行释放操作。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_TASKFAILED = "FailedOperation.TaskFailed"
 //  INVALIDADDRESSID_BLOCKED = "InvalidAddressId.Blocked"
 //  INVALIDADDRESSID_NOTFOUND = "InvalidAddressId.NotFound"
 //  INVALIDADDRESSSTATE = "InvalidAddressState"

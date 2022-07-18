@@ -2946,6 +2946,7 @@ func NewDescribeCDBProxyResponse() (response *DescribeCDBProxyResponse) {
 // 查询数据库代理（待下线，替换接口QueryCDBProxy）
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DESCRIBEPROXYGROUPERROR = "FailedOperation.DescribeProxyGroupError"
 //  INTERNALERROR_DBRECORDNOTEXISTERROR = "InternalError.DBRecordNotExistError"
 //  INTERNALERROR_INTERNALHTTPSERVERERROR = "InternalError.InternalHttpServerError"
 func (c *Client) DescribeCDBProxy(request *DescribeCDBProxyRequest) (response *DescribeCDBProxyResponse, err error) {
@@ -2956,6 +2957,7 @@ func (c *Client) DescribeCDBProxy(request *DescribeCDBProxyRequest) (response *D
 // 查询数据库代理（待下线，替换接口QueryCDBProxy）
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DESCRIBEPROXYGROUPERROR = "FailedOperation.DescribeProxyGroupError"
 //  INTERNALERROR_DBRECORDNOTEXISTERROR = "InternalError.DBRecordNotExistError"
 //  INTERNALERROR_INTERNALHTTPSERVERERROR = "InternalError.InternalHttpServerError"
 func (c *Client) DescribeCDBProxyWithContext(ctx context.Context, request *DescribeCDBProxyRequest) (response *DescribeCDBProxyResponse, err error) {
@@ -5645,6 +5647,7 @@ func NewModifyAccountHostResponse() (response *ModifyAccountHostResponse) {
 //  INVALIDPARAMETER_INSTANCENAMENOTFOUND = "InvalidParameter.InstanceNameNotFound"
 //  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
 //  INVALIDPARAMETERVALUE_ACCOUNTHOSTRULEERROR = "InvalidParameterValue.AccountHostRuleError"
+//  OPERATIONDENIED_INSTTYPENOTSUPPORT = "OperationDenied.InstTypeNotSupport"
 //  OPERATIONDENIED_NOTSUPPORTMODIFYLOCALROOTHOSTERROR = "OperationDenied.NotSupportModifyLocalRootHostError"
 //  RESOURCENOTFOUND_CDBINSTANCENOTFOUNDERROR = "ResourceNotFound.CdbInstanceNotFoundError"
 //  UNSUPPORTEDOPERATION_PRIVILEGESUNSUPPORTEDERROR = "UnsupportedOperation.PrivilegesUnsupportedError"
@@ -5675,6 +5678,7 @@ func (c *Client) ModifyAccountHost(request *ModifyAccountHostRequest) (response 
 //  INVALIDPARAMETER_INSTANCENAMENOTFOUND = "InvalidParameter.InstanceNameNotFound"
 //  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
 //  INVALIDPARAMETERVALUE_ACCOUNTHOSTRULEERROR = "InvalidParameterValue.AccountHostRuleError"
+//  OPERATIONDENIED_INSTTYPENOTSUPPORT = "OperationDenied.InstTypeNotSupport"
 //  OPERATIONDENIED_NOTSUPPORTMODIFYLOCALROOTHOSTERROR = "OperationDenied.NotSupportModifyLocalRootHostError"
 //  RESOURCENOTFOUND_CDBINSTANCENOTFOUNDERROR = "ResourceNotFound.CdbInstanceNotFoundError"
 //  UNSUPPORTEDOPERATION_PRIVILEGESUNSUPPORTEDERROR = "UnsupportedOperation.PrivilegesUnsupportedError"
@@ -6493,6 +6497,7 @@ func NewModifyDBInstanceNameResponse() (response *ModifyDBInstanceNameResponse) 
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  INTERNALERROR_UNDEFINEDERROR = "InternalError.UndefinedError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
 func (c *Client) ModifyDBInstanceName(request *ModifyDBInstanceNameRequest) (response *ModifyDBInstanceNameResponse, err error) {
@@ -6505,6 +6510,7 @@ func (c *Client) ModifyDBInstanceName(request *ModifyDBInstanceNameRequest) (res
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  INTERNALERROR_UNDEFINEDERROR = "InternalError.UndefinedError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
 func (c *Client) ModifyDBInstanceNameWithContext(ctx context.Context, request *ModifyDBInstanceNameRequest) (response *ModifyDBInstanceNameResponse, err error) {
@@ -7100,6 +7106,7 @@ func NewModifyTimeWindowResponse() (response *ModifyTimeWindowResponse) {
 //  AUTHFAILURE = "AuthFailure"
 //  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
 //  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
 //  OPERATIONDENIED = "OperationDenied"
@@ -7114,6 +7121,7 @@ func (c *Client) ModifyTimeWindow(request *ModifyTimeWindowRequest) (response *M
 //  AUTHFAILURE = "AuthFailure"
 //  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
 //  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
 //  OPERATIONDENIED = "OperationDenied"

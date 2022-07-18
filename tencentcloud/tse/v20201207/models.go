@@ -912,6 +912,12 @@ type EnvInfo struct {
 
 	// 环境别名
 	AliasEnvName *string `json:"AliasEnvName,omitempty" name:"AliasEnvName"`
+
+	// 环境描述
+	EnvDesc *string `json:"EnvDesc,omitempty" name:"EnvDesc"`
+
+	// 客户端带宽
+	ClientBandWidth *uint64 `json:"ClientBandWidth,omitempty" name:"ClientBandWidth"`
 }
 
 type Filter struct {

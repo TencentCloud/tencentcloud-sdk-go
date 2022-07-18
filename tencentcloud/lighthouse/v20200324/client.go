@@ -83,6 +83,7 @@ func NewApplyInstanceSnapshotResponse() (response *ApplyInstanceSnapshotResponse
 //  RESOURCENOTFOUND_INSTANCEIDNOTFOUND = "ResourceNotFound.InstanceIdNotFound"
 //  RESOURCENOTFOUND_SNAPSHOTIDNOTFOUND = "ResourceNotFound.SnapshotIdNotFound"
 //  RESOURCENOTFOUND_SNAPSHOTNOTFOUND = "ResourceNotFound.SnapshotNotFound"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
 //  UNSUPPORTEDOPERATION_DISKBUSY = "UnsupportedOperation.DiskBusy"
 //  UNSUPPORTEDOPERATION_DISKLATESTOPERATIONUNFINISHED = "UnsupportedOperation.DiskLatestOperationUnfinished"
 //  UNSUPPORTEDOPERATION_INVALIDINSTANCESTATE = "UnsupportedOperation.InvalidInstanceState"
@@ -115,6 +116,7 @@ func (c *Client) ApplyInstanceSnapshot(request *ApplyInstanceSnapshotRequest) (r
 //  RESOURCENOTFOUND_INSTANCEIDNOTFOUND = "ResourceNotFound.InstanceIdNotFound"
 //  RESOURCENOTFOUND_SNAPSHOTIDNOTFOUND = "ResourceNotFound.SnapshotIdNotFound"
 //  RESOURCENOTFOUND_SNAPSHOTNOTFOUND = "ResourceNotFound.SnapshotNotFound"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
 //  UNSUPPORTEDOPERATION_DISKBUSY = "UnsupportedOperation.DiskBusy"
 //  UNSUPPORTEDOPERATION_DISKLATESTOPERATIONUNFINISHED = "UnsupportedOperation.DiskLatestOperationUnfinished"
 //  UNSUPPORTEDOPERATION_INVALIDINSTANCESTATE = "UnsupportedOperation.InvalidInstanceState"
@@ -191,6 +193,7 @@ func NewAssociateInstancesKeyPairsResponse() (response *AssociateInstancesKeyPai
 //  UNSUPPORTEDOPERATION_KEYPAIRBINDDUPLICATE = "UnsupportedOperation.KeyPairBindDuplicate"
 //  UNSUPPORTEDOPERATION_LATESTOPERATIONUNFINISHED = "UnsupportedOperation.LatestOperationUnfinished"
 //  UNSUPPORTEDOPERATION_WINDOWSNOTALLOWTOASSOCIATEKEYPAIR = "UnsupportedOperation.WindowsNotAllowToAssociateKeyPair"
+//  UNSUPPORTEDOPERATION_WINDOWSNOTSUPPORTKEYPAIR = "UnsupportedOperation.WindowsNotSupportKeyPair"
 func (c *Client) AssociateInstancesKeyPairs(request *AssociateInstancesKeyPairsRequest) (response *AssociateInstancesKeyPairsResponse, err error) {
     return c.AssociateInstancesKeyPairsWithContext(context.Background(), request)
 }
@@ -231,6 +234,7 @@ func (c *Client) AssociateInstancesKeyPairs(request *AssociateInstancesKeyPairsR
 //  UNSUPPORTEDOPERATION_KEYPAIRBINDDUPLICATE = "UnsupportedOperation.KeyPairBindDuplicate"
 //  UNSUPPORTEDOPERATION_LATESTOPERATIONUNFINISHED = "UnsupportedOperation.LatestOperationUnfinished"
 //  UNSUPPORTEDOPERATION_WINDOWSNOTALLOWTOASSOCIATEKEYPAIR = "UnsupportedOperation.WindowsNotAllowToAssociateKeyPair"
+//  UNSUPPORTEDOPERATION_WINDOWSNOTSUPPORTKEYPAIR = "UnsupportedOperation.WindowsNotSupportKeyPair"
 func (c *Client) AssociateInstancesKeyPairsWithContext(ctx context.Context, request *AssociateInstancesKeyPairsRequest) (response *AssociateInstancesKeyPairsResponse, err error) {
     if request == nil {
         request = NewAssociateInstancesKeyPairsRequest()
@@ -658,6 +662,7 @@ func NewCreateInstancesResponse() (response *CreateInstancesResponse) {
 //  INVALIDPARAMETER_BUNDLEIDNOTFOUND = "InvalidParameter.BundleIdNotFound"
 //  INVALIDPARAMETERVALUE_BLUEPRINTID = "InvalidParameterValue.BlueprintId"
 //  INVALIDPARAMETERVALUE_BLUEPRINTIDMALFORMED = "InvalidParameterValue.BlueprintIdMalformed"
+//  INVALIDPARAMETERVALUE_BUNDLEANDBLUEPRINTNOTMATCH = "InvalidParameterValue.BundleAndBlueprintNotMatch"
 //  INVALIDPARAMETERVALUE_INSTANCENAMETOOLONG = "InvalidParameterValue.InstanceNameTooLong"
 //  INVALIDPARAMETERVALUE_INVALIDBLUEPRINTID = "InvalidParameterValue.InvalidBlueprintId"
 //  INVALIDPARAMETERVALUE_INVALIDBUNDLE = "InvalidParameterValue.InvalidBundle"
@@ -690,6 +695,7 @@ func (c *Client) CreateInstances(request *CreateInstancesRequest) (response *Cre
 //  INVALIDPARAMETER_BUNDLEIDNOTFOUND = "InvalidParameter.BundleIdNotFound"
 //  INVALIDPARAMETERVALUE_BLUEPRINTID = "InvalidParameterValue.BlueprintId"
 //  INVALIDPARAMETERVALUE_BLUEPRINTIDMALFORMED = "InvalidParameterValue.BlueprintIdMalformed"
+//  INVALIDPARAMETERVALUE_BUNDLEANDBLUEPRINTNOTMATCH = "InvalidParameterValue.BundleAndBlueprintNotMatch"
 //  INVALIDPARAMETERVALUE_INSTANCENAMETOOLONG = "InvalidParameterValue.InstanceNameTooLong"
 //  INVALIDPARAMETERVALUE_INVALIDBLUEPRINTID = "InvalidParameterValue.InvalidBlueprintId"
 //  INVALIDPARAMETERVALUE_INVALIDBUNDLE = "InvalidParameterValue.InvalidBundle"

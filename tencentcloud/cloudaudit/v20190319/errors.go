@@ -148,4 +148,7 @@ const (
 
 	// 跟踪集不存在
 	RESOURCENOTFOUND_AUDITNOTEXIST = "ResourceNotFound.AuditNotExist"
+
+	// 角色不存在。
+	RESOURCENOTFOUND_ROLENOTEXIST = "ResourceNotFound.RoleNotExist"
 )

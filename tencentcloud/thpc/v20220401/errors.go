@@ -47,6 +47,9 @@ const (
 	// 资源不足。
 	RESOURCEINSUFFICIENT = "ResourceInsufficient"
 
+	// 无法找到弹性伸缩组ID。
+	RESOURCENOTFOUND_AUTOSCALINGGROUPID = "ResourceNotFound.AutoScalingGroupId"
+
 	// 集群不存在。
 	RESOURCENOTFOUND_CLUSTERID = "ResourceNotFound.ClusterId"
 

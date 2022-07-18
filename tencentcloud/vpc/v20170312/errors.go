@@ -305,6 +305,9 @@ const (
 	// 子网CIDR冲突。
 	INVALIDPARAMETERVALUE_SUBNETCONFLICT = "InvalidParameterValue.SubnetConflict"
 
+	// CIDR与同一个私有网络内的另一个子网发生重叠。
+	INVALIDPARAMETERVALUE_SUBNETOVERLAP = "InvalidParameterValue.SubnetOverlap"
+
 	// 子网与辅助Cidr网段重叠。
 	INVALIDPARAMETERVALUE_SUBNETOVERLAPASSISTCIDR = "InvalidParameterValue.SubnetOverlapAssistCidr"
 
@@ -749,6 +752,12 @@ const (
 	// 当前账号不能在该地域使用产品。
 	UNSUPPORTEDOPERATION_PURCHASELIMIT = "UnsupportedOperation.PurchaseLimit"
 
+	// 记录已存在。
+	UNSUPPORTEDOPERATION_RECORDEXISTS = "UnsupportedOperation.RecordExists"
+
+	// 记录不存在。
+	UNSUPPORTEDOPERATION_RECORDNOTEXISTS = "UnsupportedOperation.RecordNotExists"
+
 	// 输入的资源ID与IP绑定的资源不匹配，请检查。
 	UNSUPPORTEDOPERATION_RESOURCEMISMATCH = "UnsupportedOperation.ResourceMismatch"
 
@@ -796,6 +805,9 @@ const (
 
 	// 账户还有未支付订单，请先完成付款。
 	UNSUPPORTEDOPERATION_UNPAIDORDERALREADYEXISTS = "UnsupportedOperation.UnpaidOrderAlreadyExists"
+
+	// 不支持绑定LocalZone弹性公网IP。
+	UNSUPPORTEDOPERATION_UNSUPPORTEDBINDLOCALZONEEIP = "UnsupportedOperation.UnsupportedBindLocalZoneEIP"
 
 	// 指定机型不支持弹性网卡。
 	UNSUPPORTEDOPERATION_UNSUPPORTEDINSTANCEFAMILY = "UnsupportedOperation.UnsupportedInstanceFamily"

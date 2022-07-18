@@ -625,6 +625,7 @@ func NewCreateClusterResponse() (response *CreateClusterResponse) {
 //  INVALIDPARAMETER_CIDRCONFLICTWITHOTHERROUTE = "InvalidParameter.CidrConflictWithOtherRoute"
 //  INVALIDPARAMETER_CIDRCONFLICTWITHVPCCIDR = "InvalidParameter.CidrConflictWithVpcCidr"
 //  INVALIDPARAMETER_CIDRCONFLICTWITHVPCGLOBALROUTE = "InvalidParameter.CidrConflictWithVpcGlobalRoute"
+//  INVALIDPARAMETER_CIDRINVALI = "InvalidParameter.CidrInvali"
 //  INVALIDPARAMETER_CIDRINVALID = "InvalidParameter.CidrInvalid"
 //  INVALIDPARAMETER_INVALIDPRIVATENETWORKCIDR = "InvalidParameter.InvalidPrivateNetworkCIDR"
 //  LIMITEXCEEDED = "LimitExceeded"
@@ -694,6 +695,7 @@ func (c *Client) CreateCluster(request *CreateClusterRequest) (response *CreateC
 //  INVALIDPARAMETER_CIDRCONFLICTWITHOTHERROUTE = "InvalidParameter.CidrConflictWithOtherRoute"
 //  INVALIDPARAMETER_CIDRCONFLICTWITHVPCCIDR = "InvalidParameter.CidrConflictWithVpcCidr"
 //  INVALIDPARAMETER_CIDRCONFLICTWITHVPCGLOBALROUTE = "InvalidParameter.CidrConflictWithVpcGlobalRoute"
+//  INVALIDPARAMETER_CIDRINVALI = "InvalidParameter.CidrInvali"
 //  INVALIDPARAMETER_CIDRINVALID = "InvalidParameter.CidrInvalid"
 //  INVALIDPARAMETER_INVALIDPRIVATENETWORKCIDR = "InvalidParameter.InvalidPrivateNetworkCIDR"
 //  LIMITEXCEEDED = "LimitExceeded"
@@ -1655,6 +1657,7 @@ func NewCreatePrometheusClusterAgentResponse() (response *CreatePrometheusCluste
 // 与云监控融合的2.0实例关联集群
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_COMPONENTCLIENTCOMMON = "FailedOperation.ComponentClientCommon"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DB = "InternalError.Db"
 //  INTERNALERROR_DBRECORDNOTFOUND = "InternalError.DbRecordNotFound"
@@ -1670,6 +1673,7 @@ func (c *Client) CreatePrometheusClusterAgent(request *CreatePrometheusClusterAg
 // 与云监控融合的2.0实例关联集群
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_COMPONENTCLIENTCOMMON = "FailedOperation.ComponentClientCommon"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DB = "InternalError.Db"
 //  INTERNALERROR_DBRECORDNOTFOUND = "InternalError.DbRecordNotFound"
@@ -1722,6 +1726,7 @@ func NewCreatePrometheusConfigResponse() (response *CreatePrometheusConfigRespon
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_CLUSTERNOTFOUND = "InvalidParameter.ClusterNotFound"
 //  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  INVALIDPARAMETER_PROMCLUSTERNOTFOUND = "InvalidParameter.PromClusterNotFound"
 //  RESOURCEINUSE_RESOURCEEXISTALREADY = "ResourceInUse.ResourceExistAlready"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) CreatePrometheusConfig(request *CreatePrometheusConfigRequest) (response *CreatePrometheusConfigResponse, err error) {
@@ -1740,6 +1745,7 @@ func (c *Client) CreatePrometheusConfig(request *CreatePrometheusConfigRequest) 
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_CLUSTERNOTFOUND = "InvalidParameter.ClusterNotFound"
 //  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  INVALIDPARAMETER_PROMCLUSTERNOTFOUND = "InvalidParameter.PromClusterNotFound"
 //  RESOURCEINUSE_RESOURCEEXISTALREADY = "ResourceInUse.ResourceExistAlready"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) CreatePrometheusConfigWithContext(ctx context.Context, request *CreatePrometheusConfigRequest) (response *CreatePrometheusConfigResponse, err error) {
@@ -2125,6 +2131,7 @@ func NewDeleteClusterResponse() (response *DeleteClusterResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_CAMNOAUTH = "FailedOperation.CamNoAuth"
+//  FAILEDOPERATION_CLUSTERFORBIDDENTODELETE = "FailedOperation.ClusterForbiddenToDelete"
 //  FAILEDOPERATION_CLUSTERNOTFOUND = "FailedOperation.ClusterNotFound"
 //  FAILEDOPERATION_CLUSTERSTATE = "FailedOperation.ClusterState"
 //  FAILEDOPERATION_COMPONENTCLIENTHTTP = "FailedOperation.ComponentClientHttp"
@@ -2152,6 +2159,7 @@ func (c *Client) DeleteCluster(request *DeleteClusterRequest) (response *DeleteC
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_CAMNOAUTH = "FailedOperation.CamNoAuth"
+//  FAILEDOPERATION_CLUSTERFORBIDDENTODELETE = "FailedOperation.ClusterForbiddenToDelete"
 //  FAILEDOPERATION_CLUSTERNOTFOUND = "FailedOperation.ClusterNotFound"
 //  FAILEDOPERATION_CLUSTERSTATE = "FailedOperation.ClusterState"
 //  FAILEDOPERATION_COMPONENTCLIENTHTTP = "FailedOperation.ComponentClientHttp"
@@ -2538,6 +2546,7 @@ func NewDeleteClusterNodePoolResponse() (response *DeleteClusterNodePoolResponse
 // 可能返回的错误码:
 //  INTERNALERROR_DB = "InternalError.Db"
 //  INTERNALERROR_DBRECORDNOTFOUND = "InternalError.DbRecordNotFound"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
 //  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DeleteClusterNodePool(request *DeleteClusterNodePoolRequest) (response *DeleteClusterNodePoolResponse, err error) {
@@ -2550,6 +2559,7 @@ func (c *Client) DeleteClusterNodePool(request *DeleteClusterNodePoolRequest) (r
 // 可能返回的错误码:
 //  INTERNALERROR_DB = "InternalError.Db"
 //  INTERNALERROR_DBRECORDNOTFOUND = "InternalError.DbRecordNotFound"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
 //  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DeleteClusterNodePoolWithContext(ctx context.Context, request *DeleteClusterNodePoolRequest) (response *DeleteClusterNodePoolResponse, err error) {
@@ -6437,6 +6447,7 @@ func NewDescribePrometheusConfigResponse() (response *DescribePrometheusConfigRe
 // 可能返回的错误码:
 //  FAILEDOPERATION_COMPONENTCLIENTHTTP = "FailedOperation.ComponentClientHttp"
 //  FAILEDOPERATION_COMPONENTCLIENTUNPACK = "FailedOperation.ComponentClientUnpack"
+//  FAILEDOPERATION_DB = "FailedOperation.Db"
 //  FAILEDOPERATION_KUBECOMMON = "FailedOperation.KubeCommon"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DB = "InternalError.Db"
@@ -6457,6 +6468,7 @@ func (c *Client) DescribePrometheusConfig(request *DescribePrometheusConfigReque
 // 可能返回的错误码:
 //  FAILEDOPERATION_COMPONENTCLIENTHTTP = "FailedOperation.ComponentClientHttp"
 //  FAILEDOPERATION_COMPONENTCLIENTUNPACK = "FailedOperation.ComponentClientUnpack"
+//  FAILEDOPERATION_DB = "FailedOperation.Db"
 //  FAILEDOPERATION_KUBECOMMON = "FailedOperation.KubeCommon"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DB = "InternalError.Db"
@@ -6511,6 +6523,7 @@ func NewDescribePrometheusGlobalConfigResponse() (response *DescribePrometheusGl
 //  INTERNALERROR_PARAM = "InternalError.Param"
 //  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PROMINSTANCENOTFOUND = "InvalidParameter.PromInstanceNotFound"
 func (c *Client) DescribePrometheusGlobalConfig(request *DescribePrometheusGlobalConfigRequest) (response *DescribePrometheusGlobalConfigResponse, err error) {
     return c.DescribePrometheusGlobalConfigWithContext(context.Background(), request)
 }
@@ -6526,6 +6539,7 @@ func (c *Client) DescribePrometheusGlobalConfig(request *DescribePrometheusGloba
 //  INTERNALERROR_PARAM = "InternalError.Param"
 //  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PROMINSTANCENOTFOUND = "InvalidParameter.PromInstanceNotFound"
 func (c *Client) DescribePrometheusGlobalConfigWithContext(ctx context.Context, request *DescribePrometheusGlobalConfigRequest) (response *DescribePrometheusGlobalConfigResponse, err error) {
     if request == nil {
         request = NewDescribePrometheusGlobalConfigRequest()
@@ -6990,6 +7004,7 @@ func NewDescribePrometheusTempResponse() (response *DescribePrometheusTempRespon
 // 拉取模板列表，默认模板将总是在最前面
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_COMPONENTCLIENTUNPACK = "FailedOperation.ComponentClientUnpack"
 //  INTERNALERROR_DB = "InternalError.Db"
 //  INTERNALERROR_PARAM = "InternalError.Param"
 //  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
@@ -7002,6 +7017,7 @@ func (c *Client) DescribePrometheusTemp(request *DescribePrometheusTempRequest) 
 // 拉取模板列表，默认模板将总是在最前面
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_COMPONENTCLIENTUNPACK = "FailedOperation.ComponentClientUnpack"
 //  INTERNALERROR_DB = "InternalError.Db"
 //  INTERNALERROR_PARAM = "InternalError.Param"
 //  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
@@ -8115,6 +8131,8 @@ func NewEnableClusterAuditResponse() (response *EnableClusterAuditResponse) {
 //  FAILEDOPERATION_CREATECLSMACHINEGROUP = "FailedOperation.CreateClsMachineGroup"
 //  FAILEDOPERATION_GETCLSMACHINEGROUP = "FailedOperation.GetClsMachineGroup"
 //  FAILEDOPERATION_KUBERNETESCREATEOPERATIONERROR = "FailedOperation.KubernetesCreateOperationError"
+//  FAILEDOPERATION_KUBERNETESDELETEOPERATIONERROR = "FailedOperation.KubernetesDeleteOperationError"
+//  FAILEDOPERATION_KUBERNETESPATCHOPERATIONERROR = "FailedOperation.KubernetesPatchOperationError"
 //  INTERNALERROR_UNEXCEPTEDINTERNAL = "InternalError.UnexceptedInternal"
 //  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
 //  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
@@ -8130,6 +8148,8 @@ func (c *Client) EnableClusterAudit(request *EnableClusterAuditRequest) (respons
 //  FAILEDOPERATION_CREATECLSMACHINEGROUP = "FailedOperation.CreateClsMachineGroup"
 //  FAILEDOPERATION_GETCLSMACHINEGROUP = "FailedOperation.GetClsMachineGroup"
 //  FAILEDOPERATION_KUBERNETESCREATEOPERATIONERROR = "FailedOperation.KubernetesCreateOperationError"
+//  FAILEDOPERATION_KUBERNETESDELETEOPERATIONERROR = "FailedOperation.KubernetesDeleteOperationError"
+//  FAILEDOPERATION_KUBERNETESPATCHOPERATIONERROR = "FailedOperation.KubernetesPatchOperationError"
 //  INTERNALERROR_UNEXCEPTEDINTERNAL = "InternalError.UnexceptedInternal"
 //  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
 //  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
@@ -8312,6 +8332,7 @@ func NewEnableVpcCniNetworkTypeResponse() (response *EnableVpcCniNetworkTypeResp
 //  INTERNALERROR_UNEXCEPTEDINTERNAL = "InternalError.UnexceptedInternal"
 //  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
 //  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  UNSUPPORTEDOPERATION_CLUSTERNOTSUITENABLEVPCCNI = "UnsupportedOperation.ClusterNotSuitEnableVPCCNI"
 func (c *Client) EnableVpcCniNetworkType(request *EnableVpcCniNetworkTypeRequest) (response *EnableVpcCniNetworkTypeResponse, err error) {
     return c.EnableVpcCniNetworkTypeWithContext(context.Background(), request)
 }
@@ -8323,6 +8344,7 @@ func (c *Client) EnableVpcCniNetworkType(request *EnableVpcCniNetworkTypeRequest
 //  INTERNALERROR_UNEXCEPTEDINTERNAL = "InternalError.UnexceptedInternal"
 //  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
 //  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  UNSUPPORTEDOPERATION_CLUSTERNOTSUITENABLEVPCCNI = "UnsupportedOperation.ClusterNotSuitEnableVPCCNI"
 func (c *Client) EnableVpcCniNetworkTypeWithContext(ctx context.Context, request *EnableVpcCniNetworkTypeRequest) (response *EnableVpcCniNetworkTypeResponse, err error) {
     if request == nil {
         request = NewEnableVpcCniNetworkTypeRequest()
@@ -9449,6 +9471,7 @@ func NewModifyPrometheusAlertRuleResponse() (response *ModifyPrometheusAlertRule
 // 修改告警规则 
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_KUBECOMMON = "FailedOperation.KubeCommon"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_PARAM = "InternalError.Param"
 //  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
@@ -9463,6 +9486,7 @@ func (c *Client) ModifyPrometheusAlertRule(request *ModifyPrometheusAlertRuleReq
 // 修改告警规则 
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_KUBECOMMON = "FailedOperation.KubeCommon"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_PARAM = "InternalError.Param"
 //  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"

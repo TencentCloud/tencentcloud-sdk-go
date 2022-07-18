@@ -127,14 +127,14 @@ type InputRecognizeEffectiveFlow struct {
 }
 
 type InputRecognizeTargetAudience struct {
+	// 模型ID列表
+	ModelIdList []*int64 `json:"ModelIdList,omitempty" name:"ModelIdList"`
+
 	// 设备ID，AccountType指定的类型
 	Uid *string `json:"Uid,omitempty" name:"Uid"`
 
 	// 设备号类型，1.imei 2.imeiMd5（小写后转MD5转小写）3.idfa， 4.idfaMd5（大写后转MD5转小写），5.手机号,256.其它
 	AccountType *int64 `json:"AccountType,omitempty" name:"AccountType"`
-
-	// 模型ID列表
-	ModelIdList []*int64 `json:"ModelIdList,omitempty" name:"ModelIdList"`
 
 	// 用户IP
 	Ip *string `json:"Ip,omitempty" name:"Ip"`

@@ -2688,6 +2688,7 @@ func NewDescribePayTypeResponse() (response *DescribePayTypeResponse) {
 // 可能返回的错误码:
 //  INTERNALERROR_CDNDBERROR = "InternalError.CdnDbError"
 //  INTERNALERROR_CDNSYSTEMERROR = "InternalError.CdnSystemError"
+//  INTERNALERROR_DATASYSTEMERROR = "InternalError.DataSystemError"
 //  INVALIDPARAMETER_CDNINTERFACEERROR = "InvalidParameter.CdnInterfaceError"
 //  INVALIDPARAMETER_CDNPARAMERROR = "InvalidParameter.CdnParamError"
 //  INVALIDPARAMETER_ECDNINTERFACEERROR = "InvalidParameter.EcdnInterfaceError"
@@ -2704,6 +2705,7 @@ func (c *Client) DescribePayType(request *DescribePayTypeRequest) (response *Des
 // 可能返回的错误码:
 //  INTERNALERROR_CDNDBERROR = "InternalError.CdnDbError"
 //  INTERNALERROR_CDNSYSTEMERROR = "InternalError.CdnSystemError"
+//  INTERNALERROR_DATASYSTEMERROR = "InternalError.DataSystemError"
 //  INVALIDPARAMETER_CDNINTERFACEERROR = "InvalidParameter.CdnInterfaceError"
 //  INVALIDPARAMETER_CDNPARAMERROR = "InvalidParameter.CdnParamError"
 //  INVALIDPARAMETER_ECDNINTERFACEERROR = "InvalidParameter.EcdnInterfaceError"
@@ -5105,6 +5107,7 @@ func NewListTopDataResponse() (response *ListTopDataResponse) {
 //  INTERNALERROR_ERROR = "InternalError.Error"
 //  INTERNALERROR_PROXYSERVER = "InternalError.ProxyServer"
 //  INTERNALERROR_ROUTEERROR = "InternalError.RouteError"
+//  INTERNALERROR_TAGSYSTEMERROR = "InternalError.TagSystemError"
 //  INVALIDPARAMETER_CDNHOSTINVALIDPARAM = "InvalidParameter.CdnHostInvalidParam"
 //  INVALIDPARAMETER_CDNINTERFACEERROR = "InvalidParameter.CdnInterfaceError"
 //  INVALIDPARAMETER_CDNPARAMERROR = "InvalidParameter.CdnParamError"
@@ -5158,6 +5161,7 @@ func (c *Client) ListTopData(request *ListTopDataRequest) (response *ListTopData
 //  INTERNALERROR_ERROR = "InternalError.Error"
 //  INTERNALERROR_PROXYSERVER = "InternalError.ProxyServer"
 //  INTERNALERROR_ROUTEERROR = "InternalError.RouteError"
+//  INTERNALERROR_TAGSYSTEMERROR = "InternalError.TagSystemError"
 //  INVALIDPARAMETER_CDNHOSTINVALIDPARAM = "InvalidParameter.CdnHostInvalidParam"
 //  INVALIDPARAMETER_CDNINTERFACEERROR = "InvalidParameter.CdnInterfaceError"
 //  INVALIDPARAMETER_CDNPARAMERROR = "InvalidParameter.CdnParamError"
@@ -5672,6 +5676,7 @@ func NewPushUrlsCacheResponse() (response *PushUrlsCacheResponse) {
 //  INTERNALERROR_CDNSYSTEMERROR = "InternalError.CdnSystemError"
 //  INTERNALERROR_ERROR = "InternalError.Error"
 //  INTERNALERROR_PROXYSERVER = "InternalError.ProxyServer"
+//  INTERNALERROR_ROUTEERROR = "InternalError.RouteError"
 //  INVALIDPARAMETER_CDNHOSTINVALIDMIDDLECONFIG = "InvalidParameter.CdnHostInvalidMiddleConfig"
 //  INVALIDPARAMETER_CDNHOSTINVALIDPARAM = "InvalidParameter.CdnHostInvalidParam"
 //  INVALIDPARAMETER_CDNHOSTINVALIDSTATUS = "InvalidParameter.CdnHostInvalidStatus"
@@ -5714,6 +5719,7 @@ func (c *Client) PushUrlsCache(request *PushUrlsCacheRequest) (response *PushUrl
 //  INTERNALERROR_CDNSYSTEMERROR = "InternalError.CdnSystemError"
 //  INTERNALERROR_ERROR = "InternalError.Error"
 //  INTERNALERROR_PROXYSERVER = "InternalError.ProxyServer"
+//  INTERNALERROR_ROUTEERROR = "InternalError.RouteError"
 //  INVALIDPARAMETER_CDNHOSTINVALIDMIDDLECONFIG = "InvalidParameter.CdnHostInvalidMiddleConfig"
 //  INVALIDPARAMETER_CDNHOSTINVALIDPARAM = "InvalidParameter.CdnHostInvalidParam"
 //  INVALIDPARAMETER_CDNHOSTINVALIDSTATUS = "InvalidParameter.CdnHostInvalidStatus"
@@ -6242,6 +6248,7 @@ func NewUpdateDomainConfigResponse() (response *UpdateDomainConfigResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CDNCONFIGERROR = "FailedOperation.CdnConfigError"
+//  INTERNALERROR_CAMSYSTEMERROR = "InternalError.CamSystemError"
 //  INTERNALERROR_CDNCONFIGERROR = "InternalError.CdnConfigError"
 //  INTERNALERROR_CDNDBERROR = "InternalError.CdnDbError"
 //  INTERNALERROR_CDNSYSTEMERROR = "InternalError.CdnSystemError"
@@ -6299,6 +6306,7 @@ func (c *Client) UpdateDomainConfig(request *UpdateDomainConfigRequest) (respons
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CDNCONFIGERROR = "FailedOperation.CdnConfigError"
+//  INTERNALERROR_CAMSYSTEMERROR = "InternalError.CamSystemError"
 //  INTERNALERROR_CDNCONFIGERROR = "InternalError.CdnConfigError"
 //  INTERNALERROR_CDNDBERROR = "InternalError.CdnDbError"
 //  INTERNALERROR_CDNSYSTEMERROR = "InternalError.CdnSystemError"

@@ -63,6 +63,10 @@ func NewCreateJobResponse() (response *CreateJobResponse) {
 }
 
 // CreateJob
+// 因业务策略调整，腾讯云TI平台TI-EMS已经于2022年6月30日下线并停止提供服务。若您有新增的业务需求，可前往TI-ONE(https://cloud.tencent.com/document/product/851)使用。
+//
+// 
+//
 // 创建任务
 //
 // 可能返回的错误码:
@@ -77,6 +81,10 @@ func (c *Client) CreateJob(request *CreateJobRequest) (response *CreateJobRespon
 }
 
 // CreateJob
+// 因业务策略调整，腾讯云TI平台TI-EMS已经于2022年6月30日下线并停止提供服务。若您有新增的业务需求，可前往TI-ONE(https://cloud.tencent.com/document/product/851)使用。
+//
+// 
+//
 // 创建任务
 //
 // 可能返回的错误码:
@@ -120,6 +128,10 @@ func NewCreateRsgAsGroupResponse() (response *CreateRsgAsGroupResponse) {
 }
 
 // CreateRsgAsGroup
+// 因业务策略调整，腾讯云TI平台TI-EMS已经于2022年6月30日下线并停止提供服务。若您有新增的业务需求，可前往TI-ONE(https://cloud.tencent.com/document/product/851)使用。
+//
+// 
+//
 // 创建资源组的伸缩组。当前一个资源组仅允许创建一个伸缩组。
 //
 // 可能返回的错误码:
@@ -135,6 +147,10 @@ func (c *Client) CreateRsgAsGroup(request *CreateRsgAsGroupRequest) (response *C
 }
 
 // CreateRsgAsGroup
+// 因业务策略调整，腾讯云TI平台TI-EMS已经于2022年6月30日下线并停止提供服务。若您有新增的业务需求，可前往TI-ONE(https://cloud.tencent.com/document/product/851)使用。
+//
+// 
+//
 // 创建资源组的伸缩组。当前一个资源组仅允许创建一个伸缩组。
 //
 // 可能返回的错误码:
@@ -179,6 +195,10 @@ func NewCreateRuntimeResponse() (response *CreateRuntimeResponse) {
 }
 
 // CreateRuntime
+// 因业务策略调整，腾讯云TI平台TI-EMS已经于2022年6月30日下线并停止提供服务。若您有新增的业务需求，可前往TI-ONE(https://cloud.tencent.com/document/product/851)使用。
+//
+// 
+//
 // 创建运行环境
 //
 // 可能返回的错误码:
@@ -193,6 +213,10 @@ func (c *Client) CreateRuntime(request *CreateRuntimeRequest) (response *CreateR
 }
 
 // CreateRuntime
+// 因业务策略调整，腾讯云TI平台TI-EMS已经于2022年6月30日下线并停止提供服务。若您有新增的业务需求，可前往TI-ONE(https://cloud.tencent.com/document/product/851)使用。
+//
+// 
+//
 // 创建运行环境
 //
 // 可能返回的错误码:
@@ -236,6 +260,10 @@ func NewCreateServiceResponse() (response *CreateServiceResponse) {
 }
 
 // CreateService
+// 因业务策略调整，腾讯云TI平台TI-EMS已经于2022年6月30日下线并停止提供服务。若您有新增的业务需求，可前往TI-ONE(https://cloud.tencent.com/document/product/851)使用。
+//
+// 
+//
 // 创建服务
 //
 // 可能返回的错误码:
@@ -250,6 +278,10 @@ func (c *Client) CreateService(request *CreateServiceRequest) (response *CreateS
 }
 
 // CreateService
+// 因业务策略调整，腾讯云TI平台TI-EMS已经于2022年6月30日下线并停止提供服务。若您有新增的业务需求，可前往TI-ONE(https://cloud.tencent.com/document/product/851)使用。
+//
+// 
+//
 // 创建服务
 //
 // 可能返回的错误码:
@@ -293,6 +325,10 @@ func NewCreateServiceConfigResponse() (response *CreateServiceConfigResponse) {
 }
 
 // CreateServiceConfig
+// 因业务策略调整，腾讯云TI平台TI-EMS已经于2022年6月30日下线并停止提供服务。若您有新增的业务需求，可前往TI-ONE(https://cloud.tencent.com/document/product/851)使用。
+//
+// 
+//
 // 创建服务配置
 //
 // 可能返回的错误码:
@@ -307,6 +343,10 @@ func (c *Client) CreateServiceConfig(request *CreateServiceConfigRequest) (respo
 }
 
 // CreateServiceConfig
+// 因业务策略调整，腾讯云TI平台TI-EMS已经于2022年6月30日下线并停止提供服务。若您有新增的业务需求，可前往TI-ONE(https://cloud.tencent.com/document/product/851)使用。
+//
+// 
+//
 // 创建服务配置
 //
 // 可能返回的错误码:
@@ -350,6 +390,10 @@ func NewDeleteInstanceResponse() (response *DeleteInstanceResponse) {
 }
 
 // DeleteInstance
+// 因业务策略调整，腾讯云TI平台TI-EMS已经于2022年6月30日下线并停止提供服务。若您有新增的业务需求，可前往TI-ONE(https://cloud.tencent.com/document/product/851)使用。
+//
+// 
+//
 // 删除资源组中的节点。目前仅支持删除已经到期的预付费节点，和按量付费节点。
 //
 // 可能返回的错误码:
@@ -363,6 +407,10 @@ func (c *Client) DeleteInstance(request *DeleteInstanceRequest) (response *Delet
 }
 
 // DeleteInstance
+// 因业务策略调整，腾讯云TI平台TI-EMS已经于2022年6月30日下线并停止提供服务。若您有新增的业务需求，可前往TI-ONE(https://cloud.tencent.com/document/product/851)使用。
+//
+// 
+//
 // 删除资源组中的节点。目前仅支持删除已经到期的预付费节点，和按量付费节点。
 //
 // 可能返回的错误码:
@@ -405,6 +453,10 @@ func NewDeleteJobResponse() (response *DeleteJobResponse) {
 }
 
 // DeleteJob
+// 因业务策略调整，腾讯云TI平台TI-EMS已经于2022年6月30日下线并停止提供服务。若您有新增的业务需求，可前往TI-ONE(https://cloud.tencent.com/document/product/851)使用。
+//
+// 
+//
 // 删除任务
 //
 // 可能返回的错误码:
@@ -416,6 +468,10 @@ func (c *Client) DeleteJob(request *DeleteJobRequest) (response *DeleteJobRespon
 }
 
 // DeleteJob
+// 因业务策略调整，腾讯云TI平台TI-EMS已经于2022年6月30日下线并停止提供服务。若您有新增的业务需求，可前往TI-ONE(https://cloud.tencent.com/document/product/851)使用。
+//
+// 
+//
 // 删除任务
 //
 // 可能返回的错误码:
@@ -456,6 +512,10 @@ func NewDeleteResourceGroupResponse() (response *DeleteResourceGroupResponse) {
 }
 
 // DeleteResourceGroup
+// 因业务策略调整，腾讯云TI平台TI-EMS已经于2022年6月30日下线并停止提供服务。若您有新增的业务需求，可前往TI-ONE(https://cloud.tencent.com/document/product/851)使用。
+//
+// 
+//
 // 删除资源组
 //
 // 可能返回的错误码:
@@ -467,6 +527,10 @@ func (c *Client) DeleteResourceGroup(request *DeleteResourceGroupRequest) (respo
 }
 
 // DeleteResourceGroup
+// 因业务策略调整，腾讯云TI平台TI-EMS已经于2022年6月30日下线并停止提供服务。若您有新增的业务需求，可前往TI-ONE(https://cloud.tencent.com/document/product/851)使用。
+//
+// 
+//
 // 删除资源组
 //
 // 可能返回的错误码:
@@ -507,6 +571,10 @@ func NewDeleteRsgAsGroupResponse() (response *DeleteRsgAsGroupResponse) {
 }
 
 // DeleteRsgAsGroup
+// 因业务策略调整，腾讯云TI平台TI-EMS已经于2022年6月30日下线并停止提供服务。若您有新增的业务需求，可前往TI-ONE(https://cloud.tencent.com/document/product/851)使用。
+//
+// 
+//
 // 伸缩
 //
 // 可能返回的错误码:
@@ -519,6 +587,10 @@ func (c *Client) DeleteRsgAsGroup(request *DeleteRsgAsGroupRequest) (response *D
 }
 
 // DeleteRsgAsGroup
+// 因业务策略调整，腾讯云TI平台TI-EMS已经于2022年6月30日下线并停止提供服务。若您有新增的业务需求，可前往TI-ONE(https://cloud.tencent.com/document/product/851)使用。
+//
+// 
+//
 // 伸缩
 //
 // 可能返回的错误码:
@@ -560,6 +632,10 @@ func NewDeleteRuntimeResponse() (response *DeleteRuntimeResponse) {
 }
 
 // DeleteRuntime
+// 因业务策略调整，腾讯云TI平台TI-EMS已经于2022年6月30日下线并停止提供服务。若您有新增的业务需求，可前往TI-ONE(https://cloud.tencent.com/document/product/851)使用。
+//
+// 
+//
 // 删除运行环境
 //
 // 可能返回的错误码:
@@ -574,6 +650,10 @@ func (c *Client) DeleteRuntime(request *DeleteRuntimeRequest) (response *DeleteR
 }
 
 // DeleteRuntime
+// 因业务策略调整，腾讯云TI平台TI-EMS已经于2022年6月30日下线并停止提供服务。若您有新增的业务需求，可前往TI-ONE(https://cloud.tencent.com/document/product/851)使用。
+//
+// 
+//
 // 删除运行环境
 //
 // 可能返回的错误码:
@@ -617,6 +697,10 @@ func NewDeleteServiceResponse() (response *DeleteServiceResponse) {
 }
 
 // DeleteService
+// 因业务策略调整，腾讯云TI平台TI-EMS已经于2022年6月30日下线并停止提供服务。若您有新增的业务需求，可前往TI-ONE(https://cloud.tencent.com/document/product/851)使用。
+//
+// 
+//
 // 删除服务
 //
 // 可能返回的错误码:
@@ -630,6 +714,10 @@ func (c *Client) DeleteService(request *DeleteServiceRequest) (response *DeleteS
 }
 
 // DeleteService
+// 因业务策略调整，腾讯云TI平台TI-EMS已经于2022年6月30日下线并停止提供服务。若您有新增的业务需求，可前往TI-ONE(https://cloud.tencent.com/document/product/851)使用。
+//
+// 
+//
 // 删除服务
 //
 // 可能返回的错误码:
@@ -672,6 +760,10 @@ func NewDeleteServiceConfigResponse() (response *DeleteServiceConfigResponse) {
 }
 
 // DeleteServiceConfig
+// 因业务策略调整，腾讯云TI平台TI-EMS已经于2022年6月30日下线并停止提供服务。若您有新增的业务需求，可前往TI-ONE(https://cloud.tencent.com/document/product/851)使用。
+//
+// 
+//
 // 删除服务配置
 //
 // 可能返回的错误码:
@@ -685,6 +777,10 @@ func (c *Client) DeleteServiceConfig(request *DeleteServiceConfigRequest) (respo
 }
 
 // DeleteServiceConfig
+// 因业务策略调整，腾讯云TI平台TI-EMS已经于2022年6月30日下线并停止提供服务。若您有新增的业务需求，可前往TI-ONE(https://cloud.tencent.com/document/product/851)使用。
+//
+// 
+//
 // 删除服务配置
 //
 // 可能返回的错误码:
@@ -727,6 +823,10 @@ func NewDescribeInstancesResponse() (response *DescribeInstancesResponse) {
 }
 
 // DescribeInstances
+// 因业务策略调整，腾讯云TI平台TI-EMS已经于2022年6月30日下线并停止提供服务。若您有新增的业务需求，可前往TI-ONE(https://cloud.tencent.com/document/product/851)使用。
+//
+// 
+//
 // 获取节点列表
 //
 // 可能返回的错误码:
@@ -739,6 +839,10 @@ func (c *Client) DescribeInstances(request *DescribeInstancesRequest) (response 
 }
 
 // DescribeInstances
+// 因业务策略调整，腾讯云TI平台TI-EMS已经于2022年6月30日下线并停止提供服务。若您有新增的业务需求，可前往TI-ONE(https://cloud.tencent.com/document/product/851)使用。
+//
+// 
+//
 // 获取节点列表
 //
 // 可能返回的错误码:
@@ -780,6 +884,10 @@ func NewDescribeResourceGroupsResponse() (response *DescribeResourceGroupsRespon
 }
 
 // DescribeResourceGroups
+// 因业务策略调整，腾讯云TI平台TI-EMS已经于2022年6月30日下线并停止提供服务。若您有新增的业务需求，可前往TI-ONE(https://cloud.tencent.com/document/product/851)使用。
+//
+// 
+//
 // 获取资源组列表
 //
 // 可能返回的错误码:
@@ -792,6 +900,10 @@ func (c *Client) DescribeResourceGroups(request *DescribeResourceGroupsRequest) 
 }
 
 // DescribeResourceGroups
+// 因业务策略调整，腾讯云TI平台TI-EMS已经于2022年6月30日下线并停止提供服务。若您有新增的业务需求，可前往TI-ONE(https://cloud.tencent.com/document/product/851)使用。
+//
+// 
+//
 // 获取资源组列表
 //
 // 可能返回的错误码:
@@ -833,6 +945,10 @@ func NewDescribeRsgAsGroupActivitiesResponse() (response *DescribeRsgAsGroupActi
 }
 
 // DescribeRsgAsGroupActivities
+// 因业务策略调整，腾讯云TI平台TI-EMS已经于2022年6月30日下线并停止提供服务。若您有新增的业务需求，可前往TI-ONE(https://cloud.tencent.com/document/product/851)使用。
+//
+// 
+//
 // 查询伸缩组活动
 //
 // 可能返回的错误码:
@@ -846,6 +962,10 @@ func (c *Client) DescribeRsgAsGroupActivities(request *DescribeRsgAsGroupActivit
 }
 
 // DescribeRsgAsGroupActivities
+// 因业务策略调整，腾讯云TI平台TI-EMS已经于2022年6月30日下线并停止提供服务。若您有新增的业务需求，可前往TI-ONE(https://cloud.tencent.com/document/product/851)使用。
+//
+// 
+//
 // 查询伸缩组活动
 //
 // 可能返回的错误码:
@@ -888,6 +1008,10 @@ func NewDescribeRsgAsGroupsResponse() (response *DescribeRsgAsGroupsResponse) {
 }
 
 // DescribeRsgAsGroups
+// 因业务策略调整，腾讯云TI平台TI-EMS已经于2022年6月30日下线并停止提供服务。若您有新增的业务需求，可前往TI-ONE(https://cloud.tencent.com/document/product/851)使用。
+//
+// 
+//
 // 查询资源组的伸缩组信息
 //
 // 可能返回的错误码:
@@ -901,6 +1025,10 @@ func (c *Client) DescribeRsgAsGroups(request *DescribeRsgAsGroupsRequest) (respo
 }
 
 // DescribeRsgAsGroups
+// 因业务策略调整，腾讯云TI平台TI-EMS已经于2022年6月30日下线并停止提供服务。若您有新增的业务需求，可前往TI-ONE(https://cloud.tencent.com/document/product/851)使用。
+//
+// 
+//
 // 查询资源组的伸缩组信息
 //
 // 可能返回的错误码:
@@ -943,6 +1071,10 @@ func NewDescribeRuntimesResponse() (response *DescribeRuntimesResponse) {
 }
 
 // DescribeRuntimes
+// 因业务策略调整，腾讯云TI平台TI-EMS已经于2022年6月30日下线并停止提供服务。若您有新增的业务需求，可前往TI-ONE(https://cloud.tencent.com/document/product/851)使用。
+//
+// 
+//
 // 描述服务运行环境
 //
 // 可能返回的错误码:
@@ -956,6 +1088,10 @@ func (c *Client) DescribeRuntimes(request *DescribeRuntimesRequest) (response *D
 }
 
 // DescribeRuntimes
+// 因业务策略调整，腾讯云TI平台TI-EMS已经于2022年6月30日下线并停止提供服务。若您有新增的业务需求，可前往TI-ONE(https://cloud.tencent.com/document/product/851)使用。
+//
+// 
+//
 // 描述服务运行环境
 //
 // 可能返回的错误码:
@@ -998,6 +1134,10 @@ func NewDescribeServiceConfigsResponse() (response *DescribeServiceConfigsRespon
 }
 
 // DescribeServiceConfigs
+// 因业务策略调整，腾讯云TI平台TI-EMS已经于2022年6月30日下线并停止提供服务。若您有新增的业务需求，可前往TI-ONE(https://cloud.tencent.com/document/product/851)使用。
+//
+// 
+//
 // 描述服务配置
 //
 // 可能返回的错误码:
@@ -1011,6 +1151,10 @@ func (c *Client) DescribeServiceConfigs(request *DescribeServiceConfigsRequest) 
 }
 
 // DescribeServiceConfigs
+// 因业务策略调整，腾讯云TI平台TI-EMS已经于2022年6月30日下线并停止提供服务。若您有新增的业务需求，可前往TI-ONE(https://cloud.tencent.com/document/product/851)使用。
+//
+// 
+//
 // 描述服务配置
 //
 // 可能返回的错误码:
@@ -1053,6 +1197,10 @@ func NewDescribeServicesResponse() (response *DescribeServicesResponse) {
 }
 
 // DescribeServices
+// 因业务策略调整，腾讯云TI平台TI-EMS已经于2022年6月30日下线并停止提供服务。若您有新增的业务需求，可前往TI-ONE(https://cloud.tencent.com/document/product/851)使用。
+//
+// 
+//
 // 描述服务
 //
 // 可能返回的错误码:
@@ -1067,6 +1215,10 @@ func (c *Client) DescribeServices(request *DescribeServicesRequest) (response *D
 }
 
 // DescribeServices
+// 因业务策略调整，腾讯云TI平台TI-EMS已经于2022年6月30日下线并停止提供服务。若您有新增的业务需求，可前往TI-ONE(https://cloud.tencent.com/document/product/851)使用。
+//
+// 
+//
 // 描述服务
 //
 // 可能返回的错误码:
@@ -1110,6 +1262,10 @@ func NewDisableRsgAsGroupResponse() (response *DisableRsgAsGroupResponse) {
 }
 
 // DisableRsgAsGroup
+// 因业务策略调整，腾讯云TI平台TI-EMS已经于2022年6月30日下线并停止提供服务。若您有新增的业务需求，可前往TI-ONE(https://cloud.tencent.com/document/product/851)使用。
+//
+// 
+//
 // 停用资源组的伸缩组
 //
 // 可能返回的错误码:
@@ -1123,6 +1279,10 @@ func (c *Client) DisableRsgAsGroup(request *DisableRsgAsGroupRequest) (response 
 }
 
 // DisableRsgAsGroup
+// 因业务策略调整，腾讯云TI平台TI-EMS已经于2022年6月30日下线并停止提供服务。若您有新增的业务需求，可前往TI-ONE(https://cloud.tencent.com/document/product/851)使用。
+//
+// 
+//
 // 停用资源组的伸缩组
 //
 // 可能返回的错误码:
@@ -1165,6 +1325,10 @@ func NewEnableRsgAsGroupResponse() (response *EnableRsgAsGroupResponse) {
 }
 
 // EnableRsgAsGroup
+// 因业务策略调整，腾讯云TI平台TI-EMS已经于2022年6月30日下线并停止提供服务。若您有新增的业务需求，可前往TI-ONE(https://cloud.tencent.com/document/product/851)使用。
+//
+// 
+//
 // 启用资源组的伸缩组
 //
 // 可能返回的错误码:
@@ -1178,6 +1342,10 @@ func (c *Client) EnableRsgAsGroup(request *EnableRsgAsGroupRequest) (response *E
 }
 
 // EnableRsgAsGroup
+// 因业务策略调整，腾讯云TI平台TI-EMS已经于2022年6月30日下线并停止提供服务。若您有新增的业务需求，可前往TI-ONE(https://cloud.tencent.com/document/product/851)使用。
+//
+// 
+//
 // 启用资源组的伸缩组
 //
 // 可能返回的错误码:
@@ -1220,6 +1388,10 @@ func NewExposeServiceResponse() (response *ExposeServiceResponse) {
 }
 
 // ExposeService
+// 因业务策略调整，腾讯云TI平台TI-EMS已经于2022年6月30日下线并停止提供服务。若您有新增的业务需求，可前往TI-ONE(https://cloud.tencent.com/document/product/851)使用。
+//
+// 
+//
 // 暴露服务
 //
 // 可能返回的错误码:
@@ -1234,6 +1406,10 @@ func (c *Client) ExposeService(request *ExposeServiceRequest) (response *ExposeS
 }
 
 // ExposeService
+// 因业务策略调整，腾讯云TI平台TI-EMS已经于2022年6月30日下线并停止提供服务。若您有新增的业务需求，可前往TI-ONE(https://cloud.tencent.com/document/product/851)使用。
+//
+// 
+//
 // 暴露服务
 //
 // 可能返回的错误码:
@@ -1277,6 +1453,10 @@ func NewUpdateJobResponse() (response *UpdateJobResponse) {
 }
 
 // UpdateJob
+// 因业务策略调整，腾讯云TI平台TI-EMS已经于2022年6月30日下线并停止提供服务。若您有新增的业务需求，可前往TI-ONE(https://cloud.tencent.com/document/product/851)使用。
+//
+// 
+//
 // 更新任务
 //
 // 可能返回的错误码:
@@ -1290,6 +1470,10 @@ func (c *Client) UpdateJob(request *UpdateJobRequest) (response *UpdateJobRespon
 }
 
 // UpdateJob
+// 因业务策略调整，腾讯云TI平台TI-EMS已经于2022年6月30日下线并停止提供服务。若您有新增的业务需求，可前往TI-ONE(https://cloud.tencent.com/document/product/851)使用。
+//
+// 
+//
 // 更新任务
 //
 // 可能返回的错误码:
@@ -1332,6 +1516,10 @@ func NewUpdateRsgAsGroupResponse() (response *UpdateRsgAsGroupResponse) {
 }
 
 // UpdateRsgAsGroup
+// 因业务策略调整，腾讯云TI平台TI-EMS已经于2022年6月30日下线并停止提供服务。若您有新增的业务需求，可前往TI-ONE(https://cloud.tencent.com/document/product/851)使用。
+//
+// 
+//
 // 更新资源组的伸缩组
 //
 // 可能返回的错误码:
@@ -1345,6 +1533,10 @@ func (c *Client) UpdateRsgAsGroup(request *UpdateRsgAsGroupRequest) (response *U
 }
 
 // UpdateRsgAsGroup
+// 因业务策略调整，腾讯云TI平台TI-EMS已经于2022年6月30日下线并停止提供服务。若您有新增的业务需求，可前往TI-ONE(https://cloud.tencent.com/document/product/851)使用。
+//
+// 
+//
 // 更新资源组的伸缩组
 //
 // 可能返回的错误码:
@@ -1387,6 +1579,10 @@ func NewUpdateServiceResponse() (response *UpdateServiceResponse) {
 }
 
 // UpdateService
+// 因业务策略调整，腾讯云TI平台TI-EMS已经于2022年6月30日下线并停止提供服务。若您有新增的业务需求，可前往TI-ONE(https://cloud.tencent.com/document/product/851)使用。
+//
+// 
+//
 // 更新服务
 //
 // 可能返回的错误码:
@@ -1400,6 +1596,10 @@ func (c *Client) UpdateService(request *UpdateServiceRequest) (response *UpdateS
 }
 
 // UpdateService
+// 因业务策略调整，腾讯云TI平台TI-EMS已经于2022年6月30日下线并停止提供服务。若您有新增的业务需求，可前往TI-ONE(https://cloud.tencent.com/document/product/851)使用。
+//
+// 
+//
 // 更新服务
 //
 // 可能返回的错误码:

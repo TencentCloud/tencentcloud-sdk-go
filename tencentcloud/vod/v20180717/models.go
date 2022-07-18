@@ -11262,20 +11262,23 @@ type MediaBasicInfo struct {
 }
 
 type MediaClassInfo struct {
-	// 分类 ID
+	// 分类 ID。
 	ClassId *int64 `json:"ClassId,omitempty" name:"ClassId"`
 
 	// 父类 ID，一级分类的父类 ID 为 -1。
 	ParentId *int64 `json:"ParentId,omitempty" name:"ParentId"`
 
-	// 分类名称
-	ClassName *string `json:"ClassName,omitempty" name:"ClassName"`
+	// 分类名称。
+	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 分类级别，一级分类为 0，最大值为 3，即最多允许 4 级分类层次。
 	Level *uint64 `json:"Level,omitempty" name:"Level"`
 
-	// 当前分类的第一级子类 ID 集合
+	// 当前分类的第一级子类 ID 集合。
 	SubClassIdSet []*int64 `json:"SubClassIdSet,omitempty" name:"SubClassIdSet"`
+
+	// 分类名称（该字段已不推荐使用，建议使用新的分类名称字段 Name）。
+	ClassName *string `json:"ClassName,omitempty" name:"ClassName"`
 }
 
 type MediaContentReviewAsrTextSegmentItem struct {
@@ -17500,7 +17503,7 @@ type SubAppIdInfo struct {
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 
 	// 子应用名称。
-	Name *string `json:"Name,omitempty" name:"Name"`
+	SubAppIdName *string `json:"SubAppIdName,omitempty" name:"SubAppIdName"`
 
 	// 子应用简介。
 	Description *string `json:"Description,omitempty" name:"Description"`
@@ -17514,6 +17517,9 @@ type SubAppIdInfo struct {
 	// <li>Destroying：销毁中。</li>
 	// <li>Destroyed：销毁完成。</li>
 	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 子应用名称（该字段已不推荐使用，建议使用新的子应用名称字段 SubAppIdName）。
+	Name *string `json:"Name,omitempty" name:"Name"`
 }
 
 type SvgWatermarkInput struct {

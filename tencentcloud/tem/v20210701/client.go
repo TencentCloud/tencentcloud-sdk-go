@@ -607,6 +607,7 @@ func NewDescribeDeployApplicationDetailResponse() (response *DescribeDeployAppli
 // 获取分批发布详情
 //
 // 可能返回的错误码:
+//  INTERNALERROR_DEFAULTINTERNALERROR = "InternalError.DefaultInternalError"
 //  INTERNALERROR_DESCRIBERUNPODLISTERROR = "InternalError.DescribeRunPodListError"
 //  INVALIDPARAMETERVALUE_NAMESPACENOTBELONGTOAPPID = "InvalidParameterValue.NamespaceNotBelongToAppid"
 //  MISSINGPARAMETER_NAMESPACEIDNULL = "MissingParameter.NamespaceIdNull"
@@ -622,6 +623,7 @@ func (c *Client) DescribeDeployApplicationDetail(request *DescribeDeployApplicat
 // 获取分批发布详情
 //
 // 可能返回的错误码:
+//  INTERNALERROR_DEFAULTINTERNALERROR = "InternalError.DefaultInternalError"
 //  INTERNALERROR_DESCRIBERUNPODLISTERROR = "InternalError.DescribeRunPodListError"
 //  INVALIDPARAMETERVALUE_NAMESPACENOTBELONGTOAPPID = "InvalidParameterValue.NamespaceNotBelongToAppid"
 //  MISSINGPARAMETER_NAMESPACEIDNULL = "MissingParameter.NamespaceIdNull"

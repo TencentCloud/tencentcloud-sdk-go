@@ -22,26 +22,26 @@ import (
 
 // Predefined struct for user
 type CreateBlockNodeRecordsRequestParams struct {
-	// 盘查实例id
+	// 盘查组id，可在“盘查组概览”功能中获取。
 	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
 
-	// 节点id
+	// 节点id，可在“数据接入管理”中获取。
 	NodeId *string `json:"NodeId,omitempty" name:"NodeId"`
 
-	// 节点记录-json
+	// 节点数据json，具体demo请参考输入示例，其中key为数据接入管理中节点内创建的属性变量名，value为期望的推送值。
 	Records *string `json:"Records,omitempty" name:"Records"`
 }
 
 type CreateBlockNodeRecordsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 盘查实例id
+	// 盘查组id，可在“盘查组概览”功能中获取。
 	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
 
-	// 节点id
+	// 节点id，可在“数据接入管理”中获取。
 	NodeId *string `json:"NodeId,omitempty" name:"NodeId"`
 
-	// 节点记录-json
+	// 节点数据json，具体demo请参考输入示例，其中key为数据接入管理中节点内创建的属性变量名，value为期望的推送值。
 	Records *string `json:"Records,omitempty" name:"Records"`
 }
 

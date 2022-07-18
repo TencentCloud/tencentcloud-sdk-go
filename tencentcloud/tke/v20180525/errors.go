@@ -38,6 +38,9 @@ const (
 	// 无该接口CAM权限。
 	FAILEDOPERATION_CAMNOAUTH = "FailedOperation.CamNoAuth"
 
+	// 集群禁止删除。
+	FAILEDOPERATION_CLUSTERFORBIDDENTODELETE = "FailedOperation.ClusterForbiddenToDelete"
+
 	// 集群未找到。
 	FAILEDOPERATION_CLUSTERNOTFOUND = "FailedOperation.ClusterNotFound"
 
@@ -401,6 +404,9 @@ const (
 	// 创建的路由与VPC下已存在的全局路由产生冲突。
 	INVALIDPARAMETER_CIDRCONFLICTWITHVPCGLOBALROUTE = "InvalidParameter.CidrConflictWithVpcGlobalRoute"
 
+	// CIDR无效。
+	INVALIDPARAMETER_CIDRINVALI = "InvalidParameter.CidrInvali"
+
 	// 参数错误，CIDR不符合规范。
 	INVALIDPARAMETER_CIDRINVALID = "InvalidParameter.CidrInvalid"
 
@@ -502,6 +508,9 @@ const (
 
 	// AS伸缩关闭导致无法开启CA。
 	UNSUPPORTEDOPERATION_CAENABLEFAILED = "UnsupportedOperation.CaEnableFailed"
+
+	// 集群不支持开启 VPC-CNI 模式。
+	UNSUPPORTEDOPERATION_CLUSTERNOTSUITENABLEVPCCNI = "UnsupportedOperation.ClusterNotSuitEnableVPCCNI"
 
 	// 非白名单用户。
 	UNSUPPORTEDOPERATION_NOTINWHITELIST = "UnsupportedOperation.NotInWhitelist"
