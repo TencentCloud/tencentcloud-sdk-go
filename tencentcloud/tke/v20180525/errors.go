@@ -95,6 +95,12 @@ const (
 	// 获得安全组配额失败。
 	FAILEDOPERATION_DFWGETUSGQUOTA = "FailedOperation.DfwGetUSGQuota"
 
+	// 集群关闭 VPC-CNI 模式失败。
+	FAILEDOPERATION_DISABLEVPCCNIFAILED = "FailedOperation.DisableVPCCNIFailed"
+
+	// 开启 VPC-CNI 模式失败。
+	FAILEDOPERATION_ENABLEVPCCNIFAILED = "FailedOperation.EnableVPCCNIFailed"
+
 	// 获取CLS采集配置失败。
 	FAILEDOPERATION_GETCLSCONFIG = "FailedOperation.GetClsConfig"
 
@@ -508,6 +514,9 @@ const (
 
 	// AS伸缩关闭导致无法开启CA。
 	UNSUPPORTEDOPERATION_CAENABLEFAILED = "UnsupportedOperation.CaEnableFailed"
+
+	// 集群不支持添加 ClusterCIDR。
+	UNSUPPORTEDOPERATION_CLUSTERNOTSUITADDCLUSTERCIDR = "UnsupportedOperation.ClusterNotSuitAddClusterCIDR"
 
 	// 集群不支持开启 VPC-CNI 模式。
 	UNSUPPORTEDOPERATION_CLUSTERNOTSUITENABLEVPCCNI = "UnsupportedOperation.ClusterNotSuitEnableVPCCNI"

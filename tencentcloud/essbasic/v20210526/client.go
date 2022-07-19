@@ -485,7 +485,7 @@ func NewCreateSignUrlsResponse() (response *CreateSignUrlsResponse) {
 }
 
 // CreateSignUrls
-// 创建跳转小程序查看或签署的链接
+// 创建跳转小程序查看或签署的链接；自动签署的签署方不创建签署链接；
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -509,7 +509,7 @@ func (c *Client) CreateSignUrls(request *CreateSignUrlsRequest) (response *Creat
 }
 
 // CreateSignUrls
-// 创建跳转小程序查看或签署的链接
+// 创建跳转小程序查看或签署的链接；自动签署的签署方不创建签署链接；
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

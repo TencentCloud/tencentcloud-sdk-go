@@ -739,6 +739,7 @@ type CreateSignUrlsRequestParams struct {
 	// "CHANNEL"：渠道合作企业；
 	// "NOT_CHANNEL"：非渠道合作企业；
 	// "PERSON"：个人；
+	// "FOLLOWER"：关注方，目前是合同抄送方；
 	GenerateType *string `json:"GenerateType,omitempty" name:"GenerateType"`
 
 	// 非渠道合作企业参与方的企业名称，GenerateType为"NOT_CHANNEL"时必填
@@ -747,7 +748,8 @@ type CreateSignUrlsRequestParams struct {
 	// 参与人姓名，GenerateType为"PERSON"时必填
 	Name *string `json:"Name,omitempty" name:"Name"`
 
-	// 参与人手机号，GenerateType为"PERSON"时必填
+	// 参与人手机号；
+	// GenerateType为"PERSON"或"FOLLOWER"时必填
 	Mobile *string `json:"Mobile,omitempty" name:"Mobile"`
 
 	// 渠道合作企业的企业Id，GenerateType为"CHANNEL"时必填
@@ -783,6 +785,7 @@ type CreateSignUrlsRequest struct {
 	// "CHANNEL"：渠道合作企业；
 	// "NOT_CHANNEL"：非渠道合作企业；
 	// "PERSON"：个人；
+	// "FOLLOWER"：关注方，目前是合同抄送方；
 	GenerateType *string `json:"GenerateType,omitempty" name:"GenerateType"`
 
 	// 非渠道合作企业参与方的企业名称，GenerateType为"NOT_CHANNEL"时必填
@@ -791,7 +794,8 @@ type CreateSignUrlsRequest struct {
 	// 参与人姓名，GenerateType为"PERSON"时必填
 	Name *string `json:"Name,omitempty" name:"Name"`
 
-	// 参与人手机号，GenerateType为"PERSON"时必填
+	// 参与人手机号；
+	// GenerateType为"PERSON"或"FOLLOWER"时必填
 	Mobile *string `json:"Mobile,omitempty" name:"Mobile"`
 
 	// 渠道合作企业的企业Id，GenerateType为"CHANNEL"时必填

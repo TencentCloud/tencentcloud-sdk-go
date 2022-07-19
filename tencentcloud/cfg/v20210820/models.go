@@ -963,6 +963,14 @@ type TaskGroupAction struct {
 	// 动作类型：平台、自定义
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ActionType *string `json:"ActionType,omitempty" name:"ActionType"`
+
+	// 是否可重试
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsExecuteRedo *bool `json:"IsExecuteRedo,omitempty" name:"IsExecuteRedo"`
+
+	// 动作风险级别
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ActionRisk *string `json:"ActionRisk,omitempty" name:"ActionRisk"`
 }
 
 type TaskGroupActionConfig struct {
@@ -1024,6 +1032,10 @@ type TaskGroupInstance struct {
 	// 执行结束时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskGroupInstanceEndTime *string `json:"TaskGroupInstanceEndTime,omitempty" name:"TaskGroupInstanceEndTime"`
+
+	// 实例是否可重试
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskGroupInstanceIsRedo *bool `json:"TaskGroupInstanceIsRedo,omitempty" name:"TaskGroupInstanceIsRedo"`
 }
 
 type TaskListItem struct {

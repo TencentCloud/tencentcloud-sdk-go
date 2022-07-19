@@ -2408,6 +2408,41 @@ type DomainPackageNew struct {
 	Region *string `json:"Region,omitempty" name:"Region"`
 }
 
+type DownloadAttackRecordInfo struct {
+	// 记录ID
+	Id *uint64 `json:"Id,omitempty" name:"Id"`
+
+	// 下载任务名
+	TaskName *string `json:"TaskName,omitempty" name:"TaskName"`
+
+	// 任务ID
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 域名
+	Host *string `json:"Host,omitempty" name:"Host"`
+
+	// 当前下载任务的日志条数
+	Count *uint64 `json:"Count,omitempty" name:"Count"`
+
+	// 下载任务运行状态：-1-下载超时，0-下载等待，1-下载完成，2-下载失败，4-正在下载
+	Status *int64 `json:"Status,omitempty" name:"Status"`
+
+	// 下载文件URL
+	Url *string `json:"Url,omitempty" name:"Url"`
+
+	// 创建时间
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 最后更新修改时间
+	ModifyTime *string `json:"ModifyTime,omitempty" name:"ModifyTime"`
+
+	// 过期时间
+	ExpireTime *string `json:"ExpireTime,omitempty" name:"ExpireTime"`
+
+	// 下载任务需下载的日志总条数
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+}
+
 type ExportAccessInfo struct {
 	// 日志导出任务ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -2524,6 +2559,9 @@ func (r *GetAttackDownloadRecordsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type GetAttackDownloadRecordsResponseParams struct {
+	// 下载攻击日志记录数组
+	Records []*DownloadAttackRecordInfo `json:"Records,omitempty" name:"Records"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }
@@ -3111,6 +3149,98 @@ type PortItem struct {
 
 	// Nginx的服务器ID
 	NginxServerId *string `json:"NginxServerId,omitempty" name:"NginxServerId"`
+}
+
+// Predefined struct for user
+type PostAttackDownloadTaskRequestParams struct {
+	// 查询的域名，所有域名使用all
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 查询起始时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 查询结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// Lucene语法
+	QueryString *string `json:"QueryString,omitempty" name:"QueryString"`
+
+	// 任务名称
+	TaskName *string `json:"TaskName,omitempty" name:"TaskName"`
+
+	// 默认为desc，可以取值desc和asc
+	Sort *string `json:"Sort,omitempty" name:"Sort"`
+}
+
+type PostAttackDownloadTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// 查询的域名，所有域名使用all
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 查询起始时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 查询结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// Lucene语法
+	QueryString *string `json:"QueryString,omitempty" name:"QueryString"`
+
+	// 任务名称
+	TaskName *string `json:"TaskName,omitempty" name:"TaskName"`
+
+	// 默认为desc，可以取值desc和asc
+	Sort *string `json:"Sort,omitempty" name:"Sort"`
+}
+
+func (r *PostAttackDownloadTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *PostAttackDownloadTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Domain")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "QueryString")
+	delete(f, "TaskName")
+	delete(f, "Sort")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "PostAttackDownloadTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type PostAttackDownloadTaskResponseParams struct {
+	// 任务task id
+	Flow *string `json:"Flow,omitempty" name:"Flow"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type PostAttackDownloadTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *PostAttackDownloadTaskResponseParams `json:"Response"`
+}
+
+func (r *PostAttackDownloadTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *PostAttackDownloadTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type QPSPackageNew struct {

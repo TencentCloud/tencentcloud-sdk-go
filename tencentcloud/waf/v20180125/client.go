@@ -1941,6 +1941,53 @@ func (c *Client) ModifyWafThreatenIntelligenceWithContext(ctx context.Context, r
     return
 }
 
+func NewPostAttackDownloadTaskRequest() (request *PostAttackDownloadTaskRequest) {
+    request = &PostAttackDownloadTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("waf", APIVersion, "PostAttackDownloadTask")
+    
+    
+    return
+}
+
+func NewPostAttackDownloadTaskResponse() (response *PostAttackDownloadTaskResponse) {
+    response = &PostAttackDownloadTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// PostAttackDownloadTask
+// 创建搜索下载攻击日志任务，使用CLS新版本的搜索下载getlog接口
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) PostAttackDownloadTask(request *PostAttackDownloadTaskRequest) (response *PostAttackDownloadTaskResponse, err error) {
+    return c.PostAttackDownloadTaskWithContext(context.Background(), request)
+}
+
+// PostAttackDownloadTask
+// 创建搜索下载攻击日志任务，使用CLS新版本的搜索下载getlog接口
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) PostAttackDownloadTaskWithContext(ctx context.Context, request *PostAttackDownloadTaskRequest) (response *PostAttackDownloadTaskResponse, err error) {
+    if request == nil {
+        request = NewPostAttackDownloadTaskRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("PostAttackDownloadTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewPostAttackDownloadTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewSearchAccessLogRequest() (request *SearchAccessLogRequest) {
     request = &SearchAccessLogRequest{
         BaseRequest: &tchttp.BaseRequest{},

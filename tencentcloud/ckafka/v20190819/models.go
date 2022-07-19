@@ -4814,6 +4814,9 @@ type ModifyTopicAttributesRequestParams struct {
 
 	// 消费限流，单位 MB/s
 	QuotaConsumerByteRate *int64 `json:"QuotaConsumerByteRate,omitempty" name:"QuotaConsumerByteRate"`
+
+	// 调整topic副本数
+	ReplicaNum *int64 `json:"ReplicaNum,omitempty" name:"ReplicaNum"`
 }
 
 type ModifyTopicAttributesRequest struct {
@@ -4869,6 +4872,9 @@ type ModifyTopicAttributesRequest struct {
 
 	// 消费限流，单位 MB/s
 	QuotaConsumerByteRate *int64 `json:"QuotaConsumerByteRate,omitempty" name:"QuotaConsumerByteRate"`
+
+	// 调整topic副本数
+	ReplicaNum *int64 `json:"ReplicaNum,omitempty" name:"ReplicaNum"`
 }
 
 func (r *ModifyTopicAttributesRequest) ToJsonString() string {
@@ -4900,6 +4906,7 @@ func (r *ModifyTopicAttributesRequest) FromJsonString(s string) error {
 	delete(f, "Tags")
 	delete(f, "QuotaProducerByteRate")
 	delete(f, "QuotaConsumerByteRate")
+	delete(f, "ReplicaNum")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyTopicAttributesRequest has unknown keys!", "")
 	}

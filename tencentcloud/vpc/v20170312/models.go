@@ -20133,6 +20133,12 @@ type NetworkAcl struct {
 
 	// 网络ACL出站规则。
 	EgressEntries []*NetworkAclEntry `json:"EgressEntries,omitempty" name:"EgressEntries"`
+
+	// 网络ACL类型。三元组：'TRIPLE'   五元组：'QUINTUPLE'
+	NetworkAclType *string `json:"NetworkAclType,omitempty" name:"NetworkAclType"`
+
+	// 标签键值对
+	TagSet []*Tag `json:"TagSet,omitempty" name:"TagSet"`
 }
 
 type NetworkAclEntry struct {

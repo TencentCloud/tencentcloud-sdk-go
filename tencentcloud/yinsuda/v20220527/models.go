@@ -360,6 +360,11 @@ type KTVMusicBaseInfo struct {
 	// <li>Play：可播；</li>
 	// <li>Sing：可唱。</li>
 	RightSet []*string `json:"RightSet,omitempty" name:"RightSet"`
+
+	// 推荐类型，取值有：
+	// <li>Featured：精选；</li>
+	// <li>Other：其他。</li>
+	RecommendType *string `json:"RecommendType,omitempty" name:"RecommendType"`
 }
 
 type KTVMusicDetailInfo struct {

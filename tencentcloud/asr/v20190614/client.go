@@ -223,7 +223,7 @@ func NewCreateAsyncRecognitionTaskResponse() (response *CreateAsyncRecognitionTa
 // CreateAsyncRecognitionTask
 // 本接口用于对语音流进行准实时识别，通过异步回调来返回识别结果。适用于直播审核等场景。
 //
-// <br>• 支持rtmp、hls、rtsp等流媒体协议，以及各类基于http协议的直播流
+// <br>• 支持rtmp、rtsp等流媒体协议，以及各类基于http协议的直播流(不支持hls)
 //
 // <br>• 音频流时长无限制，服务会自动拉取音频流数据，若连续10分钟拉不到流数据时，服务会终止识别任务
 //
@@ -250,7 +250,7 @@ func (c *Client) CreateAsyncRecognitionTask(request *CreateAsyncRecognitionTaskR
 // CreateAsyncRecognitionTask
 // 本接口用于对语音流进行准实时识别，通过异步回调来返回识别结果。适用于直播审核等场景。
 //
-// <br>• 支持rtmp、hls、rtsp等流媒体协议，以及各类基于http协议的直播流
+// <br>• 支持rtmp、rtsp等流媒体协议，以及各类基于http协议的直播流(不支持hls)
 //
 // <br>• 音频流时长无限制，服务会自动拉取音频流数据，若连续10分钟拉不到流数据时，服务会终止识别任务
 //

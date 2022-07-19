@@ -365,6 +365,12 @@ type DescribeUserByIdRequestParams struct {
 
 	// 用户ID
 	UserId *string `json:"UserId,omitempty" name:"UserId"`
+
+	// 返回信息是否为原文
+	// 
+	// <li> **false** </li>	默认，返回信息为脱敏信息
+	// <li> **true** </li>	返回用户信息原文
+	Original *bool `json:"Original,omitempty" name:"Original"`
 }
 
 type DescribeUserByIdRequest struct {
@@ -375,6 +381,12 @@ type DescribeUserByIdRequest struct {
 
 	// 用户ID
 	UserId *string `json:"UserId,omitempty" name:"UserId"`
+
+	// 返回信息是否为原文
+	// 
+	// <li> **false** </li>	默认，返回信息为脱敏信息
+	// <li> **true** </li>	返回用户信息原文
+	Original *bool `json:"Original,omitempty" name:"Original"`
 }
 
 func (r *DescribeUserByIdRequest) ToJsonString() string {
@@ -391,6 +403,7 @@ func (r *DescribeUserByIdRequest) FromJsonString(s string) error {
 	}
 	delete(f, "UserStoreId")
 	delete(f, "UserId")
+	delete(f, "Original")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeUserByIdRequest has unknown keys!", "")
 	}
@@ -420,6 +433,93 @@ func (r *DescribeUserByIdResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeUserByIdResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeUserRequestParams struct {
+	// 用户目录ID
+	UserStoreId *string `json:"UserStoreId,omitempty" name:"UserStoreId"`
+
+	// 分页数据
+	Pageable *Pageable `json:"Pageable,omitempty" name:"Pageable"`
+
+	// 查询条件，根据propertycode和propertykey
+	Filters []*QueryUserFilter `json:"Filters,omitempty" name:"Filters"`
+
+	// 是否返回明文
+	Original *bool `json:"Original,omitempty" name:"Original"`
+}
+
+type DescribeUserRequest struct {
+	*tchttp.BaseRequest
+	
+	// 用户目录ID
+	UserStoreId *string `json:"UserStoreId,omitempty" name:"UserStoreId"`
+
+	// 分页数据
+	Pageable *Pageable `json:"Pageable,omitempty" name:"Pageable"`
+
+	// 查询条件，根据propertycode和propertykey
+	Filters []*QueryUserFilter `json:"Filters,omitempty" name:"Filters"`
+
+	// 是否返回明文
+	Original *bool `json:"Original,omitempty" name:"Original"`
+}
+
+func (r *DescribeUserRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeUserRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "UserStoreId")
+	delete(f, "Pageable")
+	delete(f, "Filters")
+	delete(f, "Original")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeUserRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeUserResponseParams struct {
+	// 总条数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Total *int64 `json:"Total,omitempty" name:"Total"`
+
+	// 分页对象
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Pageable *Pageable `json:"Pageable,omitempty" name:"Pageable"`
+
+	// 用户列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Content []*User `json:"Content,omitempty" name:"Content"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeUserResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeUserResponseParams `json:"Response"`
+}
+
+func (r *DescribeUserResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeUserResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -831,6 +931,9 @@ type ListUserByPropertyRequestParams struct {
 
 	// 属性值
 	PropertyValue *string `json:"PropertyValue,omitempty" name:"PropertyValue"`
+
+	// 返回信息是否为原文
+	Original *bool `json:"Original,omitempty" name:"Original"`
 }
 
 type ListUserByPropertyRequest struct {
@@ -847,6 +950,9 @@ type ListUserByPropertyRequest struct {
 
 	// 属性值
 	PropertyValue *string `json:"PropertyValue,omitempty" name:"PropertyValue"`
+
+	// 返回信息是否为原文
+	Original *bool `json:"Original,omitempty" name:"Original"`
 }
 
 func (r *ListUserByPropertyRequest) ToJsonString() string {
@@ -864,6 +970,7 @@ func (r *ListUserByPropertyRequest) FromJsonString(s string) error {
 	delete(f, "UserStoreId")
 	delete(f, "PropertyCode")
 	delete(f, "PropertyValue")
+	delete(f, "Original")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListUserByPropertyRequest has unknown keys!", "")
 	}
@@ -909,6 +1016,9 @@ type ListUserRequestParams struct {
 	// <li> **condition** </li>	Values = 查询条件，用户ID，用户名称，手机或邮箱
 	// <li> **userGroupId** </li>	Values = 用户组ID
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 返回信息是否为原文
+	Original *bool `json:"Original,omitempty" name:"Original"`
 }
 
 type ListUserRequest struct {
@@ -925,6 +1035,9 @@ type ListUserRequest struct {
 	// <li> **condition** </li>	Values = 查询条件，用户ID，用户名称，手机或邮箱
 	// <li> **userGroupId** </li>	Values = 用户组ID
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 返回信息是否为原文
+	Original *bool `json:"Original,omitempty" name:"Original"`
 }
 
 func (r *ListUserRequest) ToJsonString() string {
@@ -942,6 +1055,7 @@ func (r *ListUserRequest) FromJsonString(s string) error {
 	delete(f, "UserStoreId")
 	delete(f, "Pageable")
 	delete(f, "Filters")
+	delete(f, "Original")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListUserRequest has unknown keys!", "")
 	}
@@ -1072,6 +1186,17 @@ type Pageable struct {
 
 	// 当前页码
 	PageNumber *int64 `json:"PageNumber,omitempty" name:"PageNumber"`
+}
+
+type QueryUserFilter struct {
+	// 属性key
+	PropertyKey *string `json:"PropertyKey,omitempty" name:"PropertyKey"`
+
+	// 属性value
+	PropertyValue *string `json:"PropertyValue,omitempty" name:"PropertyValue"`
+
+	// 逻辑值，等于true，不等于false
+	Logic *bool `json:"Logic,omitempty" name:"Logic"`
 }
 
 // Predefined struct for user

@@ -968,6 +968,14 @@ type DescribeCertificateDetailResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EncryptPrivateKey *string `json:"EncryptPrivateKey,omitempty" name:"EncryptPrivateKey"`
 
+	// 签名证书 SHA1指纹
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CertFingerprint *string `json:"CertFingerprint,omitempty" name:"CertFingerprint"`
+
+	// 加密证书 SHA1指纹 （国密证书特有）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EncryptCertFingerprint *string `json:"EncryptCertFingerprint,omitempty" name:"EncryptCertFingerprint"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }
