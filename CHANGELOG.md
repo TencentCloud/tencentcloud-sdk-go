@@ -1,3 +1,171 @@
+# Release v1.0.447
+
+## 数据湖计算(dlc) 版本：2021-01-25
+
+### 第 29 次发布
+
+发布时间：2022-07-21 06:07:59
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeSparkAppTasks](https://cloud.tencent.com/document/api/1342/74533)
+
+	* 新增入参：StartTime, EndTime, Filters
+
+
+修改数据结构：
+
+* [DatabaseResponseInfo](https://cloud.tencent.com/document/api/1342/53778#DatabaseResponseInfo)
+
+	* 新增成员：Location, UserAlias, UserSubUin
+
+* [TableBaseInfo](https://cloud.tencent.com/document/api/1342/53778#TableBaseInfo)
+
+	* 新增成员：UserAlias, UserSubUin
+
+* [ViewBaseInfo](https://cloud.tencent.com/document/api/1342/53778#ViewBaseInfo)
+
+	* 新增成员：UserAlias, UserSubUin
+
+
+
+
+## 弹性 MapReduce(emr) 版本：2019-01-03
+
+### 第 36 次发布
+
+发布时间：2022-07-21 06:09:30
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeEmrApplicationStatics](https://cloud.tencent.com/document/api/589/77586)
+
+新增数据结构：
+
+* [ApplicationStatics](https://cloud.tencent.com/document/api/589/33981#ApplicationStatics)
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
+
+### 第 22 次发布
+
+发布时间：2022-07-21 06:10:03
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateConsoleLoginUrl](https://cloud.tencent.com/document/api/1420/61524)
+
+	* 新增入参：MenuStatus
+
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
+
+
+
+## 企业组织(organization) 版本：2021-03-31
+
+### 第 10 次发布
+
+发布时间：2022-07-21 06:14:50
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [OrgMember](https://cloud.tencent.com/document/api/850/67060#OrgMember)
+
+	* 新增成员：PermissionStatus
+
+
+
+
+## 企业组织(organization) 版本：2018-12-25
+
+
+
+## 邮件推送(ses) 版本：2020-10-02
+
+### 第 13 次发布
+
+发布时间：2022-07-21 06:15:51
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [GetEmailTemplate](https://cloud.tencent.com/document/api/1288/51040)
+
+	* 新增出参：TemplateStatus
+
+
+
+
+## 图像分析(tiia) 版本：2019-05-29
+
+### 第 25 次发布
+
+发布时间：2022-07-21 06:19:01
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [CarTagItem](https://cloud.tencent.com/document/api/865/35474#CarTagItem)
+
+	* 新增成员：PlateConfidence, TypeConfidence, ColorConfidence
+
+
+
+
+## 私有网络(vpc) 版本：2017-03-12
+
+### 第 119 次发布
+
+发布时间：2022-07-21 06:20:44
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateNetworkAcl](https://cloud.tencent.com/document/api/215/42162)
+
+	* 新增入参：NetworkAclType, Tags
+
+* [ModifyNetworkAclEntries](https://cloud.tencent.com/document/api/215/42107)
+
+	* 新增入参：NetworkAclQuintupleSet
+
+
+新增数据结构：
+
+* [NetworkAclQuintupleEntries](https://cloud.tencent.com/document/api/215/15824#NetworkAclQuintupleEntries)
+* [NetworkAclQuintupleEntry](https://cloud.tencent.com/document/api/215/15824#NetworkAclQuintupleEntry)
+
+
+
 # Release v1.0.446
 
 ## 混沌演练平台(cfg) 版本：2021-08-20

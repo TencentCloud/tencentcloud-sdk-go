@@ -4070,6 +4070,12 @@ type CreateNetworkAclRequestParams struct {
 
 	// 网络ACL名称，最大长度不能超过60个字节。
 	NetworkAclName *string `json:"NetworkAclName,omitempty" name:"NetworkAclName"`
+
+	// 网络ACL类型，三元组(TRIPLE)或五元组(QUINTUPLE)
+	NetworkAclType *string `json:"NetworkAclType,omitempty" name:"NetworkAclType"`
+
+	// 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]。
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 }
 
 type CreateNetworkAclRequest struct {
@@ -4080,6 +4086,12 @@ type CreateNetworkAclRequest struct {
 
 	// 网络ACL名称，最大长度不能超过60个字节。
 	NetworkAclName *string `json:"NetworkAclName,omitempty" name:"NetworkAclName"`
+
+	// 网络ACL类型，三元组(TRIPLE)或五元组(QUINTUPLE)
+	NetworkAclType *string `json:"NetworkAclType,omitempty" name:"NetworkAclType"`
+
+	// 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]。
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 }
 
 func (r *CreateNetworkAclRequest) ToJsonString() string {
@@ -4096,6 +4108,8 @@ func (r *CreateNetworkAclRequest) FromJsonString(s string) error {
 	}
 	delete(f, "VpcId")
 	delete(f, "NetworkAclName")
+	delete(f, "NetworkAclType")
+	delete(f, "Tags")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateNetworkAclRequest has unknown keys!", "")
 	}
@@ -18538,6 +18552,9 @@ type ModifyNetworkAclEntriesRequestParams struct {
 
 	// 网络ACL规则集。NetworkAclEntrySet和NetworkAclQuintupleSet只能输入一个。
 	NetworkAclEntrySet *NetworkAclEntrySet `json:"NetworkAclEntrySet,omitempty" name:"NetworkAclEntrySet"`
+
+	// 网络ACL五元组规则集。NetworkAclEntrySet和NetworkAclQuintupleSet只能输入一个。
+	NetworkAclQuintupleSet *NetworkAclQuintupleEntries `json:"NetworkAclQuintupleSet,omitempty" name:"NetworkAclQuintupleSet"`
 }
 
 type ModifyNetworkAclEntriesRequest struct {
@@ -18548,6 +18565,9 @@ type ModifyNetworkAclEntriesRequest struct {
 
 	// 网络ACL规则集。NetworkAclEntrySet和NetworkAclQuintupleSet只能输入一个。
 	NetworkAclEntrySet *NetworkAclEntrySet `json:"NetworkAclEntrySet,omitempty" name:"NetworkAclEntrySet"`
+
+	// 网络ACL五元组规则集。NetworkAclEntrySet和NetworkAclQuintupleSet只能输入一个。
+	NetworkAclQuintupleSet *NetworkAclQuintupleEntries `json:"NetworkAclQuintupleSet,omitempty" name:"NetworkAclQuintupleSet"`
 }
 
 func (r *ModifyNetworkAclEntriesRequest) ToJsonString() string {
@@ -18564,6 +18584,7 @@ func (r *ModifyNetworkAclEntriesRequest) FromJsonString(s string) error {
 	}
 	delete(f, "NetworkAclId")
 	delete(f, "NetworkAclEntrySet")
+	delete(f, "NetworkAclQuintupleSet")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyNetworkAclEntriesRequest has unknown keys!", "")
 	}
@@ -20170,6 +20191,49 @@ type NetworkAclEntrySet struct {
 
 	// 出站规则。
 	Egress []*NetworkAclEntry `json:"Egress,omitempty" name:"Egress"`
+}
+
+type NetworkAclQuintupleEntries struct {
+	// 网络ACL五元组入站规则。
+	Ingress []*NetworkAclQuintupleEntry `json:"Ingress,omitempty" name:"Ingress"`
+
+	// 网络ACL五元组出站规则
+	Egress []*NetworkAclQuintupleEntry `json:"Egress,omitempty" name:"Egress"`
+}
+
+type NetworkAclQuintupleEntry struct {
+	// 协议, 取值: TCP,UDP, ICMP, ALL。
+	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
+
+	// 描述。
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 源端口(all, 单个port,  range)。当Protocol为ALL或ICMP时，不能指定Port。
+	SourcePort *string `json:"SourcePort,omitempty" name:"SourcePort"`
+
+	// 源CIDR。
+	SourceCidr *string `json:"SourceCidr,omitempty" name:"SourceCidr"`
+
+	// 目的端口(all, 单个port,  range)。当Protocol为ALL或ICMP时，不能指定Port。
+	DestinationPort *string `json:"DestinationPort,omitempty" name:"DestinationPort"`
+
+	// 目的CIDR。
+	DestinationCidr *string `json:"DestinationCidr,omitempty" name:"DestinationCidr"`
+
+	// 动作，ACCEPT 或 DROP。
+	Action *string `json:"Action,omitempty" name:"Action"`
+
+	// 网络ACL条目唯一ID。
+	NetworkAclQuintupleEntryId *string `json:"NetworkAclQuintupleEntryId,omitempty" name:"NetworkAclQuintupleEntryId"`
+
+	// 优先级，从1开始。
+	Priority *int64 `json:"Priority,omitempty" name:"Priority"`
+
+	// 创建时间，用于DescribeNetworkAclQuintupleEntries的出参。
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 方向，INGRESS或EGRESS，用于DescribeNetworkAclQuintupleEntries的出参。
+	NetworkAclDirection *string `json:"NetworkAclDirection,omitempty" name:"NetworkAclDirection"`
 }
 
 type NetworkInterface struct {

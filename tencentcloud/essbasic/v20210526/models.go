@@ -471,6 +471,9 @@ type CreateConsoleLoginUrlRequestParams struct {
 	// 渠道侧合作企业统一社会信用代码，最大长度200个字符
 	UniformSocialCreditCode *string `json:"UniformSocialCreditCode,omitempty" name:"UniformSocialCreditCode"`
 
+	// 是否展示左侧菜单栏 是：ENABLE（默认） 否：DISABLE
+	MenuStatus *string `json:"MenuStatus,omitempty" name:"MenuStatus"`
+
 	// 操作者的信息
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 }
@@ -497,6 +500,9 @@ type CreateConsoleLoginUrlRequest struct {
 	// 渠道侧合作企业统一社会信用代码，最大长度200个字符
 	UniformSocialCreditCode *string `json:"UniformSocialCreditCode,omitempty" name:"UniformSocialCreditCode"`
 
+	// 是否展示左侧菜单栏 是：ENABLE（默认） 否：DISABLE
+	MenuStatus *string `json:"MenuStatus,omitempty" name:"MenuStatus"`
+
 	// 操作者的信息
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 }
@@ -519,6 +525,7 @@ func (r *CreateConsoleLoginUrlRequest) FromJsonString(s string) error {
 	delete(f, "Module")
 	delete(f, "ModuleId")
 	delete(f, "UniformSocialCreditCode")
+	delete(f, "MenuStatus")
 	delete(f, "Operator")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateConsoleLoginUrlRequest has unknown keys!", "")

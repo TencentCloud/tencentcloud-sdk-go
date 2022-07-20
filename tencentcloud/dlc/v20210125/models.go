@@ -2481,6 +2481,18 @@ type DatabaseResponseInfo struct {
 	// 数据库更新时间戳，单位：s。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ModifiedTime *string `json:"ModifiedTime,omitempty" name:"ModifiedTime"`
+
+	// cos存储路径
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Location *string `json:"Location,omitempty" name:"Location"`
+
+	// 建库用户昵称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserAlias *string `json:"UserAlias,omitempty" name:"UserAlias"`
+
+	// 建库用户ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserSubUin *string `json:"UserSubUin,omitempty" name:"UserSubUin"`
 }
 
 // Predefined struct for user
@@ -3662,6 +3674,15 @@ type DescribeSparkAppTasksRequestParams struct {
 
 	// 执行实例id
 	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 更新时间起始点
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 更新时间截止点
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 按照该参数过滤,支持task-state
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 }
 
 type DescribeSparkAppTasksRequest struct {
@@ -3678,6 +3699,15 @@ type DescribeSparkAppTasksRequest struct {
 
 	// 执行实例id
 	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 更新时间起始点
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 更新时间截止点
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 按照该参数过滤,支持task-state
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 }
 
 func (r *DescribeSparkAppTasksRequest) ToJsonString() string {
@@ -3696,6 +3726,9 @@ func (r *DescribeSparkAppTasksRequest) FromJsonString(s string) error {
 	delete(f, "Offset")
 	delete(f, "Limit")
 	delete(f, "TaskId")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "Filters")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSparkAppTasksRequest has unknown keys!", "")
 	}
@@ -3886,7 +3919,7 @@ type DescribeTablesRequestParams struct {
 	// 终止时间：用于对更新时间的筛选
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
-	// 排序字段，支持：ModifiedTime（默认）；CreateTime
+	// 排序字段，支持：CreateTime、UpdateTime、StorageSize、RecordCount、Name（不传则默认按name升序）
 	Sort *string `json:"Sort,omitempty" name:"Sort"`
 
 	// 排序字段，false：降序（默认）；true：升序
@@ -3925,7 +3958,7 @@ type DescribeTablesRequest struct {
 	// 终止时间：用于对更新时间的筛选
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
-	// 排序字段，支持：ModifiedTime（默认）；CreateTime
+	// 排序字段，支持：CreateTime、UpdateTime、StorageSize、RecordCount、Name（不传则默认按name升序）
 	Sort *string `json:"Sort,omitempty" name:"Sort"`
 
 	// 排序字段，false：降序（默认）；true：升序
@@ -5801,6 +5834,14 @@ type TableBaseInfo struct {
 	// 数据格式类型，hive，iceberg等
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TableFormat *string `json:"TableFormat,omitempty" name:"TableFormat"`
+
+	// 建表用户昵称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserAlias *string `json:"UserAlias,omitempty" name:"UserAlias"`
+
+	// 建表用户ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserSubUin *string `json:"UserSubUin,omitempty" name:"UserSubUin"`
 }
 
 type TableInfo struct {
@@ -6244,6 +6285,12 @@ type ViewBaseInfo struct {
 
 	// 视图名称
 	ViewName *string `json:"ViewName,omitempty" name:"ViewName"`
+
+	// 视图创建人昵称
+	UserAlias *string `json:"UserAlias,omitempty" name:"UserAlias"`
+
+	// 视图创建人ID
+	UserSubUin *string `json:"UserSubUin,omitempty" name:"UserSubUin"`
 }
 
 type ViewResponseInfo struct {

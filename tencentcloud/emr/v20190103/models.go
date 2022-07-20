@@ -89,6 +89,32 @@ func (r *AddUsersForUserManagerResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type ApplicationStatics struct {
+	// 队列名
+	Queue *string `json:"Queue,omitempty" name:"Queue"`
+
+	// 用户名
+	User *string `json:"User,omitempty" name:"User"`
+
+	// 作业类型
+	ApplicationType *string `json:"ApplicationType,omitempty" name:"ApplicationType"`
+
+	// SumMemorySeconds含义
+	SumMemorySeconds *int64 `json:"SumMemorySeconds,omitempty" name:"SumMemorySeconds"`
+
+	// SumVCoreSeconds含义
+	SumVCoreSeconds *int64 `json:"SumVCoreSeconds,omitempty" name:"SumVCoreSeconds"`
+
+	// SumHDFSBytesWritten（带单位）
+	SumHDFSBytesWritten *string `json:"SumHDFSBytesWritten,omitempty" name:"SumHDFSBytesWritten"`
+
+	// SumHDFSBytesRead（待单位）
+	SumHDFSBytesRead *string `json:"SumHDFSBytesRead,omitempty" name:"SumHDFSBytesRead"`
+
+	// 作业数
+	CountApps *int64 `json:"CountApps,omitempty" name:"CountApps"`
+}
+
 type BootstrapAction struct {
 	// 脚本位置，支持cos上的文件，且只支持https协议。
 	Path *string `json:"Path,omitempty" name:"Path"`
@@ -1019,6 +1045,145 @@ func (r *DescribeCvmQuotaResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeCvmQuotaResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeEmrApplicationStaticsRequestParams struct {
+	// 集群id
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 起始时间
+	StartTime *int64 `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间
+	EndTime *int64 `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 过滤的队列名
+	Queues []*string `json:"Queues,omitempty" name:"Queues"`
+
+	// 过滤的用户名
+	Users []*string `json:"Users,omitempty" name:"Users"`
+
+	// 过滤的作业类型
+	ApplicationTypes []*string `json:"ApplicationTypes,omitempty" name:"ApplicationTypes"`
+
+	// 分组字段，可选：queue, user, applicationType
+	GroupBy []*string `json:"GroupBy,omitempty" name:"GroupBy"`
+
+	// 排序字段，可选：sumMemorySeconds, sumVCoreSeconds, sumHDFSBytesWritten, sumHDFSBytesRead
+	OrderBy *string `json:"OrderBy,omitempty" name:"OrderBy"`
+
+	// 是否顺序排序，0-逆序，1-正序
+	IsAsc *int64 `json:"IsAsc,omitempty" name:"IsAsc"`
+
+	// 页号
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 页容量
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+type DescribeEmrApplicationStaticsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群id
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 起始时间
+	StartTime *int64 `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间
+	EndTime *int64 `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 过滤的队列名
+	Queues []*string `json:"Queues,omitempty" name:"Queues"`
+
+	// 过滤的用户名
+	Users []*string `json:"Users,omitempty" name:"Users"`
+
+	// 过滤的作业类型
+	ApplicationTypes []*string `json:"ApplicationTypes,omitempty" name:"ApplicationTypes"`
+
+	// 分组字段，可选：queue, user, applicationType
+	GroupBy []*string `json:"GroupBy,omitempty" name:"GroupBy"`
+
+	// 排序字段，可选：sumMemorySeconds, sumVCoreSeconds, sumHDFSBytesWritten, sumHDFSBytesRead
+	OrderBy *string `json:"OrderBy,omitempty" name:"OrderBy"`
+
+	// 是否顺序排序，0-逆序，1-正序
+	IsAsc *int64 `json:"IsAsc,omitempty" name:"IsAsc"`
+
+	// 页号
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 页容量
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribeEmrApplicationStaticsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeEmrApplicationStaticsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "Queues")
+	delete(f, "Users")
+	delete(f, "ApplicationTypes")
+	delete(f, "GroupBy")
+	delete(f, "OrderBy")
+	delete(f, "IsAsc")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeEmrApplicationStaticsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeEmrApplicationStaticsResponseParams struct {
+	// 作业统计信息
+	Statics []*ApplicationStatics `json:"Statics,omitempty" name:"Statics"`
+
+	// 总数
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 可选择的队列名
+	Queues []*string `json:"Queues,omitempty" name:"Queues"`
+
+	// 可选择的用户名
+	Users []*string `json:"Users,omitempty" name:"Users"`
+
+	// 可选择的作业类型
+	ApplicationTypes []*string `json:"ApplicationTypes,omitempty" name:"ApplicationTypes"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeEmrApplicationStaticsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeEmrApplicationStaticsResponseParams `json:"Response"`
+}
+
+func (r *DescribeEmrApplicationStaticsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeEmrApplicationStaticsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

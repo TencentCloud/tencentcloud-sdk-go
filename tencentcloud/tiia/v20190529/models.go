@@ -165,7 +165,7 @@ type CarTagItem struct {
 	// 车辆颜色
 	Color *string `json:"Color,omitempty" name:"Color"`
 
-	// 置信度，0-100
+	// 车系置信度，0-100
 	Confidence *int64 `json:"Confidence,omitempty" name:"Confidence"`
 
 	// 年份，没识别出年份的时候返回0
@@ -174,9 +174,21 @@ type CarTagItem struct {
 	// 车辆在图片中的坐标信息
 	CarLocation []*Coord `json:"CarLocation,omitempty" name:"CarLocation"`
 
-	// 车牌信息
+	// 车牌信息，仅车辆识别（增强版）支持
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PlateContent *CarPlateContent `json:"PlateContent,omitempty" name:"PlateContent"`
+
+	// 车牌信息置信度，0-100，仅车辆识别（增强版）支持
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PlateConfidence *int64 `json:"PlateConfidence,omitempty" name:"PlateConfidence"`
+
+	// 车辆类型置信度，0-100，仅车辆识别（增强版）支持
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TypeConfidence *int64 `json:"TypeConfidence,omitempty" name:"TypeConfidence"`
+
+	// 车辆颜色置信度，0-100，仅车辆识别（增强版）支持
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ColorConfidence *int64 `json:"ColorConfidence,omitempty" name:"ColorConfidence"`
 }
 
 type ColorInfo struct {

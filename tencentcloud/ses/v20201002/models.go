@@ -967,6 +967,9 @@ type GetEmailTemplateResponseParams struct {
 	// 模板内容数据
 	TemplateContent *TemplateContent `json:"TemplateContent,omitempty" name:"TemplateContent"`
 
+	// 模板状态 0-审核通过 1-待审核 2-审核拒绝
+	TemplateStatus *uint64 `json:"TemplateStatus,omitempty" name:"TemplateStatus"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }

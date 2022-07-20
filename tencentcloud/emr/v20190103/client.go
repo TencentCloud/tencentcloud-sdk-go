@@ -435,6 +435,53 @@ func (c *Client) DescribeCvmQuotaWithContext(ctx context.Context, request *Descr
     return
 }
 
+func NewDescribeEmrApplicationStaticsRequest() (request *DescribeEmrApplicationStaticsRequest) {
+    request = &DescribeEmrApplicationStaticsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("emr", APIVersion, "DescribeEmrApplicationStatics")
+    
+    
+    return
+}
+
+func NewDescribeEmrApplicationStaticsResponse() (response *DescribeEmrApplicationStaticsResponse) {
+    response = &DescribeEmrApplicationStaticsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeEmrApplicationStatics
+// （通过走emrcc接入到cam） yarn applciation 统计接口
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) DescribeEmrApplicationStatics(request *DescribeEmrApplicationStaticsRequest) (response *DescribeEmrApplicationStaticsResponse, err error) {
+    return c.DescribeEmrApplicationStaticsWithContext(context.Background(), request)
+}
+
+// DescribeEmrApplicationStatics
+// （通过走emrcc接入到cam） yarn applciation 统计接口
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) DescribeEmrApplicationStaticsWithContext(ctx context.Context, request *DescribeEmrApplicationStaticsRequest) (response *DescribeEmrApplicationStaticsResponse, err error) {
+    if request == nil {
+        request = NewDescribeEmrApplicationStaticsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeEmrApplicationStatics require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeEmrApplicationStaticsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeInstanceRenewNodesRequest() (request *DescribeInstanceRenewNodesRequest) {
     request = &DescribeInstanceRenewNodesRequest{
         BaseRequest: &tchttp.BaseRequest{},
