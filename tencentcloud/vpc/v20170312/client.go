@@ -3607,6 +3607,67 @@ func (c *Client) CreateNetworkAclWithContext(ctx context.Context, request *Creat
     return
 }
 
+func NewCreateNetworkAclQuintupleEntriesRequest() (request *CreateNetworkAclQuintupleEntriesRequest) {
+    request = &CreateNetworkAclQuintupleEntriesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "CreateNetworkAclQuintupleEntries")
+    
+    
+    return
+}
+
+func NewCreateNetworkAclQuintupleEntriesResponse() (response *CreateNetworkAclQuintupleEntriesResponse) {
+    response = &CreateNetworkAclQuintupleEntriesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateNetworkAclQuintupleEntries
+// 本接口（CreateNetworkAclQuintupleEntries）用于增量网络ACL五元组的入站规则和出站规则。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_COEXIST = "InvalidParameter.Coexist"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION_APPIDMISMATCH = "UnsupportedOperation.AppIdMismatch"
+func (c *Client) CreateNetworkAclQuintupleEntries(request *CreateNetworkAclQuintupleEntriesRequest) (response *CreateNetworkAclQuintupleEntriesResponse, err error) {
+    return c.CreateNetworkAclQuintupleEntriesWithContext(context.Background(), request)
+}
+
+// CreateNetworkAclQuintupleEntries
+// 本接口（CreateNetworkAclQuintupleEntries）用于增量网络ACL五元组的入站规则和出站规则。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_COEXIST = "InvalidParameter.Coexist"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION_APPIDMISMATCH = "UnsupportedOperation.AppIdMismatch"
+func (c *Client) CreateNetworkAclQuintupleEntriesWithContext(ctx context.Context, request *CreateNetworkAclQuintupleEntriesRequest) (response *CreateNetworkAclQuintupleEntriesResponse, err error) {
+    if request == nil {
+        request = NewCreateNetworkAclQuintupleEntriesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateNetworkAclQuintupleEntries require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateNetworkAclQuintupleEntriesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateNetworkInterfaceRequest() (request *CreateNetworkInterfaceRequest) {
     request = &CreateNetworkInterfaceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -6268,6 +6329,67 @@ func (c *Client) DeleteNetworkAclWithContext(ctx context.Context, request *Delet
     request.SetContext(ctx)
     
     response = NewDeleteNetworkAclResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteNetworkAclQuintupleEntriesRequest() (request *DeleteNetworkAclQuintupleEntriesRequest) {
+    request = &DeleteNetworkAclQuintupleEntriesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "DeleteNetworkAclQuintupleEntries")
+    
+    
+    return
+}
+
+func NewDeleteNetworkAclQuintupleEntriesResponse() (response *DeleteNetworkAclQuintupleEntriesResponse) {
+    response = &DeleteNetworkAclQuintupleEntriesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteNetworkAclQuintupleEntries
+// 本接口（DeleteNetworkAclQuintupleEntries）用于删除网络ACL五元组指定的入站规则和出站规则（但不是全量删除该ACL下的所有条目）。在NetworkAclQuintupleEntrySet参数中：NetworkAclQuintupleEntry需要提供NetworkAclQuintupleEntryId。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_COEXIST = "InvalidParameter.Coexist"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION_APPIDMISMATCH = "UnsupportedOperation.AppIdMismatch"
+func (c *Client) DeleteNetworkAclQuintupleEntries(request *DeleteNetworkAclQuintupleEntriesRequest) (response *DeleteNetworkAclQuintupleEntriesResponse, err error) {
+    return c.DeleteNetworkAclQuintupleEntriesWithContext(context.Background(), request)
+}
+
+// DeleteNetworkAclQuintupleEntries
+// 本接口（DeleteNetworkAclQuintupleEntries）用于删除网络ACL五元组指定的入站规则和出站规则（但不是全量删除该ACL下的所有条目）。在NetworkAclQuintupleEntrySet参数中：NetworkAclQuintupleEntry需要提供NetworkAclQuintupleEntryId。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_COEXIST = "InvalidParameter.Coexist"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION_APPIDMISMATCH = "UnsupportedOperation.AppIdMismatch"
+func (c *Client) DeleteNetworkAclQuintupleEntriesWithContext(ctx context.Context, request *DeleteNetworkAclQuintupleEntriesRequest) (response *DeleteNetworkAclQuintupleEntriesResponse, err error) {
+    if request == nil {
+        request = NewDeleteNetworkAclQuintupleEntriesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteNetworkAclQuintupleEntries require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteNetworkAclQuintupleEntriesResponse()
     err = c.Send(request, response)
     return
 }
@@ -9435,6 +9557,67 @@ func (c *Client) DescribeNetDetectsWithContext(ctx context.Context, request *Des
     request.SetContext(ctx)
     
     response = NewDescribeNetDetectsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeNetworkAclQuintupleEntriesRequest() (request *DescribeNetworkAclQuintupleEntriesRequest) {
+    request = &DescribeNetworkAclQuintupleEntriesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "DescribeNetworkAclQuintupleEntries")
+    
+    
+    return
+}
+
+func NewDescribeNetworkAclQuintupleEntriesResponse() (response *DescribeNetworkAclQuintupleEntriesResponse) {
+    response = &DescribeNetworkAclQuintupleEntriesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeNetworkAclQuintupleEntries
+// 本接口（DescribeNetworkAclQuintupleEntries）查询入方向或出方向网络ACL五元组条目列表。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_COEXIST = "InvalidParameter.Coexist"
+//  INVALIDPARAMETER_FILTERINVALIDKEY = "InvalidParameter.FilterInvalidKey"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_ACTIONNOTFOUND = "UnsupportedOperation.ActionNotFound"
+func (c *Client) DescribeNetworkAclQuintupleEntries(request *DescribeNetworkAclQuintupleEntriesRequest) (response *DescribeNetworkAclQuintupleEntriesResponse, err error) {
+    return c.DescribeNetworkAclQuintupleEntriesWithContext(context.Background(), request)
+}
+
+// DescribeNetworkAclQuintupleEntries
+// 本接口（DescribeNetworkAclQuintupleEntries）查询入方向或出方向网络ACL五元组条目列表。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_COEXIST = "InvalidParameter.Coexist"
+//  INVALIDPARAMETER_FILTERINVALIDKEY = "InvalidParameter.FilterInvalidKey"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_ACTIONNOTFOUND = "UnsupportedOperation.ActionNotFound"
+func (c *Client) DescribeNetworkAclQuintupleEntriesWithContext(ctx context.Context, request *DescribeNetworkAclQuintupleEntriesRequest) (response *DescribeNetworkAclQuintupleEntriesResponse, err error) {
+    if request == nil {
+        request = NewDescribeNetworkAclQuintupleEntriesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeNetworkAclQuintupleEntries require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeNetworkAclQuintupleEntriesResponse()
     err = c.Send(request, response)
     return
 }
@@ -14923,6 +15106,67 @@ func (c *Client) ModifyNetworkAclEntriesWithContext(ctx context.Context, request
     request.SetContext(ctx)
     
     response = NewModifyNetworkAclEntriesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyNetworkAclQuintupleEntriesRequest() (request *ModifyNetworkAclQuintupleEntriesRequest) {
+    request = &ModifyNetworkAclQuintupleEntriesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vpc", APIVersion, "ModifyNetworkAclQuintupleEntries")
+    
+    
+    return
+}
+
+func NewModifyNetworkAclQuintupleEntriesResponse() (response *ModifyNetworkAclQuintupleEntriesResponse) {
+    response = &ModifyNetworkAclQuintupleEntriesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyNetworkAclQuintupleEntries
+// 本接口（ModifyNetworkAclQuintupleEntries）用于修改网络ACL五元组的入站规则和出站规则。在NetworkAclQuintupleEntrySet参数中：NetworkAclQuintupleEntry需要提供NetworkAclQuintupleEntryId。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_COEXIST = "InvalidParameter.Coexist"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION_APPIDMISMATCH = "UnsupportedOperation.AppIdMismatch"
+func (c *Client) ModifyNetworkAclQuintupleEntries(request *ModifyNetworkAclQuintupleEntriesRequest) (response *ModifyNetworkAclQuintupleEntriesResponse, err error) {
+    return c.ModifyNetworkAclQuintupleEntriesWithContext(context.Background(), request)
+}
+
+// ModifyNetworkAclQuintupleEntries
+// 本接口（ModifyNetworkAclQuintupleEntries）用于修改网络ACL五元组的入站规则和出站规则。在NetworkAclQuintupleEntrySet参数中：NetworkAclQuintupleEntry需要提供NetworkAclQuintupleEntryId。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_COEXIST = "InvalidParameter.Coexist"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION_APPIDMISMATCH = "UnsupportedOperation.AppIdMismatch"
+func (c *Client) ModifyNetworkAclQuintupleEntriesWithContext(ctx context.Context, request *ModifyNetworkAclQuintupleEntriesRequest) (response *ModifyNetworkAclQuintupleEntriesResponse, err error) {
+    if request == nil {
+        request = NewModifyNetworkAclQuintupleEntriesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyNetworkAclQuintupleEntries require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyNetworkAclQuintupleEntriesResponse()
     err = c.Send(request, response)
     return
 }

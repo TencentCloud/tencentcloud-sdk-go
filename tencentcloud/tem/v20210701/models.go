@@ -1679,6 +1679,70 @@ type DescribeRunPodPage struct {
 	PodList []*RunVersionPod `json:"PodList,omitempty" name:"PodList"`
 }
 
+// Predefined struct for user
+type DestroyEnvironmentRequestParams struct {
+	// 命名空间ID
+	EnvironmentId *string `json:"EnvironmentId,omitempty" name:"EnvironmentId"`
+
+	// Namespace
+	SourceChannel *int64 `json:"SourceChannel,omitempty" name:"SourceChannel"`
+}
+
+type DestroyEnvironmentRequest struct {
+	*tchttp.BaseRequest
+	
+	// 命名空间ID
+	EnvironmentId *string `json:"EnvironmentId,omitempty" name:"EnvironmentId"`
+
+	// Namespace
+	SourceChannel *int64 `json:"SourceChannel,omitempty" name:"SourceChannel"`
+}
+
+func (r *DestroyEnvironmentRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DestroyEnvironmentRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EnvironmentId")
+	delete(f, "SourceChannel")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DestroyEnvironmentRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DestroyEnvironmentResponseParams struct {
+	// 返回结果
+	Result *bool `json:"Result,omitempty" name:"Result"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DestroyEnvironmentResponse struct {
+	*tchttp.BaseResponse
+	Response *DestroyEnvironmentResponseParams `json:"Response"`
+}
+
+func (r *DestroyEnvironmentResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DestroyEnvironmentResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type EksService struct {
 	// service name
 	Name *string `json:"Name,omitempty" name:"Name"`

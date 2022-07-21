@@ -139,6 +139,53 @@ func (c *Client) CreateAppScanTaskRepeatWithContext(ctx context.Context, request
     return
 }
 
+func NewCreateFlySecMiniAppProfessionalScanTaskRequest() (request *CreateFlySecMiniAppProfessionalScanTaskRequest) {
+    request = &CreateFlySecMiniAppProfessionalScanTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("mmps", APIVersion, "CreateFlySecMiniAppProfessionalScanTask")
+    
+    
+    return
+}
+
+func NewCreateFlySecMiniAppProfessionalScanTaskResponse() (response *CreateFlySecMiniAppProfessionalScanTaskResponse) {
+    response = &CreateFlySecMiniAppProfessionalScanTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateFlySecMiniAppProfessionalScanTask
+// 创建小程序安全深度诊断任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) CreateFlySecMiniAppProfessionalScanTask(request *CreateFlySecMiniAppProfessionalScanTaskRequest) (response *CreateFlySecMiniAppProfessionalScanTaskResponse, err error) {
+    return c.CreateFlySecMiniAppProfessionalScanTaskWithContext(context.Background(), request)
+}
+
+// CreateFlySecMiniAppProfessionalScanTask
+// 创建小程序安全深度诊断任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) CreateFlySecMiniAppProfessionalScanTaskWithContext(ctx context.Context, request *CreateFlySecMiniAppProfessionalScanTaskRequest) (response *CreateFlySecMiniAppProfessionalScanTaskResponse, err error) {
+    if request == nil {
+        request = NewCreateFlySecMiniAppProfessionalScanTaskRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateFlySecMiniAppProfessionalScanTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateFlySecMiniAppProfessionalScanTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateFlySecMiniAppScanTaskRequest() (request *CreateFlySecMiniAppScanTaskRequest) {
     request = &CreateFlySecMiniAppScanTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},

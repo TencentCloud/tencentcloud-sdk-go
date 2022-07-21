@@ -1478,6 +1478,10 @@ type DCDBInstanceInfo struct {
 	// 实例标签信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceTags []*ResourceTag `json:"ResourceTags,omitempty" name:"ResourceTags"`
+
+	// 数据库引擎版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DbVersionId *string `json:"DbVersionId,omitempty" name:"DbVersionId"`
 }
 
 type DCDBShardInfo struct {

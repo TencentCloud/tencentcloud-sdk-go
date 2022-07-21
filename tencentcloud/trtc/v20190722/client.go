@@ -179,7 +179,9 @@ func NewDescribeAbnormalEventResponse() (response *DescribeAbnormalEventResponse
 }
 
 // DescribeAbnormalEvent
-// 查询SDKAppID下用户的异常体验事件，返回异常体验ID与可能产生异常体验的原因。可查询15天内数据，查询起止时间不超过1个小时。支持跨天查询。异常体验ID映射见：https://cloud.tencent.com/document/product/647/44916
+// 查询SdkAppId下任意20条异常体验事件，返回异常体验ID与可能产生异常体验的原因。可查询14天内数据，查询起止时间不超过1个小时。支持跨天查询。
+//
+// 异常体验ID映射见：https://cloud.tencent.com/document/product/647/44916
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -205,7 +207,9 @@ func (c *Client) DescribeAbnormalEvent(request *DescribeAbnormalEventRequest) (r
 }
 
 // DescribeAbnormalEvent
-// 查询SDKAppID下用户的异常体验事件，返回异常体验ID与可能产生异常体验的原因。可查询15天内数据，查询起止时间不超过1个小时。支持跨天查询。异常体验ID映射见：https://cloud.tencent.com/document/product/647/44916
+// 查询SdkAppId下任意20条异常体验事件，返回异常体验ID与可能产生异常体验的原因。可查询14天内数据，查询起止时间不超过1个小时。支持跨天查询。
+//
+// 异常体验ID映射见：https://cloud.tencent.com/document/product/647/44916
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -260,7 +264,7 @@ func NewDescribeCallDetailResponse() (response *DescribeCallDetailResponse) {
 }
 
 // DescribeCallDetail
-// 查询指定时间内的用户列表及用户通话质量数据，可查询14天内数据。DataType 不为null，查询起止时间不超过1个小时，查询用户不超过6个，支持跨天查询。DataType，UserIds为null时，查询起止时间不超过4个小时， 默认查询6个用户，同时支持每页查询100以内用户个数（PageSize不超过100）。接口用于查询质量问题，不推荐作为计费使用。
+// 查询指定时间内的用户列表及用户通话质量数据，可查询14天内数据。DataType 不为null，查询起止时间不超过1个小时，查询用户不超过6个，支持跨天查询。DataType为null时，查询起止时间不超过4个小时， 默认查询6个用户，同时支持每页查询100以内用户个数（PageSize不超过100）。接口用于查询质量问题，不推荐作为计费使用。
 //
 // **注意**：该接口只用于历史数据统计或核对数据使用，实时类关键业务逻辑不能使用。
 //
@@ -293,7 +297,7 @@ func (c *Client) DescribeCallDetail(request *DescribeCallDetailRequest) (respons
 }
 
 // DescribeCallDetail
-// 查询指定时间内的用户列表及用户通话质量数据，可查询14天内数据。DataType 不为null，查询起止时间不超过1个小时，查询用户不超过6个，支持跨天查询。DataType，UserIds为null时，查询起止时间不超过4个小时， 默认查询6个用户，同时支持每页查询100以内用户个数（PageSize不超过100）。接口用于查询质量问题，不推荐作为计费使用。
+// 查询指定时间内的用户列表及用户通话质量数据，可查询14天内数据。DataType 不为null，查询起止时间不超过1个小时，查询用户不超过6个，支持跨天查询。DataType为null时，查询起止时间不超过4个小时， 默认查询6个用户，同时支持每页查询100以内用户个数（PageSize不超过100）。接口用于查询质量问题，不推荐作为计费使用。
 //
 // **注意**：该接口只用于历史数据统计或核对数据使用，实时类关键业务逻辑不能使用。
 //
@@ -487,7 +491,7 @@ func NewDescribeHistoryScaleResponse() (response *DescribeHistoryScaleResponse) 
 }
 
 // DescribeHistoryScale
-// 可查询sdkqppid 每天的房间数和用户数，每分钟1次，可查询最近14天的数据。当天未结束，无法查到当天的房间数与用户数。 
+// 可查询SdkAppId每天的房间数和用户数，按天统计，可查询最近14天的数据。当天未结束，数据未统计完成，无法查到当天的房间数与用户数
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -509,7 +513,7 @@ func (c *Client) DescribeHistoryScale(request *DescribeHistoryScaleRequest) (res
 }
 
 // DescribeHistoryScale
-// 可查询sdkqppid 每天的房间数和用户数，每分钟1次，可查询最近14天的数据。当天未结束，无法查到当天的房间数与用户数。 
+// 可查询SdkAppId每天的房间数和用户数，按天统计，可查询最近14天的数据。当天未结束，数据未统计完成，无法查到当天的房间数与用户数
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -694,7 +698,7 @@ func NewDescribeRoomInformationResponse() (response *DescribeRoomInformationResp
 }
 
 // DescribeRoomInformation
-// 查询sdkappid下的房间列表。默认返回10条通话，一次最多返回100条通话。可查询14天内的数据。
+// 查询SdkAppId下的房间列表。默认返回10条通话，一次最多返回100条通话。可查询14天内的数据。
 //
 // **注意**：该接口只用于历史数据统计或核对数据使用，实时类关键业务逻辑不能使用。
 //
@@ -726,7 +730,7 @@ func (c *Client) DescribeRoomInformation(request *DescribeRoomInformationRequest
 }
 
 // DescribeRoomInformation
-// 查询sdkappid下的房间列表。默认返回10条通话，一次最多返回100条通话。可查询14天内的数据。
+// 查询SdkAppId下的房间列表。默认返回10条通话，一次最多返回100条通话。可查询14天内的数据。
 //
 // **注意**：该接口只用于历史数据统计或核对数据使用，实时类关键业务逻辑不能使用。
 //

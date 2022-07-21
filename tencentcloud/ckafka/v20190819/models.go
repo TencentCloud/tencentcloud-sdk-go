@@ -4341,6 +4341,10 @@ type InstanceDetail struct {
 	// 实例类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClusterType *string `json:"ClusterType,omitempty" name:"ClusterType"`
+
+	// 实例功能列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Features []*string `json:"Features,omitempty" name:"Features"`
 }
 
 type InstanceDetailResponse struct {

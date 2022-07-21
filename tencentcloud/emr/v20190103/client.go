@@ -453,7 +453,7 @@ func NewDescribeEmrApplicationStaticsResponse() (response *DescribeEmrApplicatio
 }
 
 // DescribeEmrApplicationStatics
-// （通过走emrcc接入到cam） yarn applciation 统计接口
+//  yarn applciation 统计接口查询
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -462,7 +462,7 @@ func (c *Client) DescribeEmrApplicationStatics(request *DescribeEmrApplicationSt
 }
 
 // DescribeEmrApplicationStatics
-// （通过走emrcc接入到cam） yarn applciation 统计接口
+//  yarn applciation 统计接口查询
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"

@@ -1,3 +1,192 @@
+# Release v1.0.448
+
+## 混沌演练平台(cfg) 版本：2021-08-20
+
+### 第 3 次发布
+
+发布时间：2022-07-22 06:04:01
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [TaskGroupAction](https://cloud.tencent.com/document/api/1500/71784#TaskGroupAction)
+
+	* 新增成员：TaskGroupActionExecuteTime
+
+* [TaskGroupInstance](https://cloud.tencent.com/document/api/1500/71784#TaskGroupInstance)
+
+	* 新增成员：TaskGroupInstanceExecuteTime
+
+
+
+
+## 消息队列 Ckafka(ckafka) 版本：2019-08-19
+
+### 第 45 次发布
+
+发布时间：2022-07-22 06:04:27
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [InstanceDetail](https://cloud.tencent.com/document/api/597/40861#InstanceDetail)
+
+	* 新增成员：Features
+
+
+
+
+## 云服务器(cvm) 版本：2017-03-12
+
+### 第 91 次发布
+
+发布时间：2022-07-22 06:05:40
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ImportImage](https://cloud.tencent.com/document/api/213/15717)
+
+	* 新增入参：LicenseType
+
+
+
+
+## 分布式数据库 TDSQL(dcdb) 版本：2018-04-11
+
+### 第 43 次发布
+
+发布时间：2022-07-22 06:06:56
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [DCDBInstanceInfo](https://cloud.tencent.com/document/api/557/16142#DCDBInstanceInfo)
+
+	* 新增成员：DbVersionId
+
+
+
+
+## 云数据库 MariaDB(mariadb) 版本：2017-03-12
+
+### 第 39 次发布
+
+发布时间：2022-07-22 06:10:50
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateHourDBInstance](https://cloud.tencent.com/document/api/237/67878)
+
+	* 新增出参：FlowId
+
+
+修改数据结构：
+
+* [DBInstance](https://cloud.tencent.com/document/api/237/16191#DBInstance)
+
+	* 新增成员：DbVersionId
+
+
+
+
+## 小程序安全(mmps) 版本：2020-07-10
+
+### 第 6 次发布
+
+发布时间：2022-07-21 15:01:26
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateFlySecMiniAppProfessionalScanTask](https://cloud.tencent.com/document/api/1223/77611)
+
+
+
+## 邮件推送(ses) 版本：2020-10-02
+
+### 第 14 次发布
+
+发布时间：2022-07-22 06:12:49
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ListEmailIdentities](https://cloud.tencent.com/document/api/1288/51045)
+
+	* 新增出参：MaxReputationLevel, MaxDailyQuota
+
+
+修改数据结构：
+
+* [EmailIdentity](https://cloud.tencent.com/document/api/1288/51053#EmailIdentity)
+
+	* 新增成员：CurrentReputationLevel, DailyQuota
+
+
+
+
+## 弹性微服务(tem) 版本：2021-07-01
+
+### 第 20 次发布
+
+发布时间：2022-07-22 06:14:55
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DestroyEnvironment](https://cloud.tencent.com/document/api/1371/77632)
+
+
+
+## 弹性微服务(tem) 版本：2020-12-21
+
+
+
+## 私有网络(vpc) 版本：2017-03-12
+
+### 第 120 次发布
+
+发布时间：2022-07-22 06:16:48
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateNetworkAclQuintupleEntries](https://cloud.tencent.com/document/api/215/77636)
+* [DeleteNetworkAclQuintupleEntries](https://cloud.tencent.com/document/api/215/77635)
+* [DescribeNetworkAclQuintupleEntries](https://cloud.tencent.com/document/api/215/77634)
+* [ModifyNetworkAclQuintupleEntries](https://cloud.tencent.com/document/api/215/77633)
+
+
+
 # Release v1.0.447
 
 ## 数据湖计算(dlc) 版本：2021-01-25

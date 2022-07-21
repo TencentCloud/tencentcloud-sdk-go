@@ -1053,10 +1053,10 @@ type DescribeEmrApplicationStaticsRequestParams struct {
 	// 集群id
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 起始时间
+	// 起始时间，时间戳（秒）
 	StartTime *int64 `json:"StartTime,omitempty" name:"StartTime"`
 
-	// 结束时间
+	// 结束时间，时间戳（秒）
 	EndTime *int64 `json:"EndTime,omitempty" name:"EndTime"`
 
 	// 过滤的队列名
@@ -1090,10 +1090,10 @@ type DescribeEmrApplicationStaticsRequest struct {
 	// 集群id
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 起始时间
+	// 起始时间，时间戳（秒）
 	StartTime *int64 `json:"StartTime,omitempty" name:"StartTime"`
 
-	// 结束时间
+	// 结束时间，时间戳（秒）
 	EndTime *int64 `json:"EndTime,omitempty" name:"EndTime"`
 
 	// 过滤的队列名

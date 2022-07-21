@@ -1191,6 +1191,10 @@ type CreateHourDBInstanceResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
 
+	// 异步任务的请求 ID，可使用此 ID [查询异步任务的执行结果](https://cloud.tencent.com/document/product/237/16177)。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FlowId *int64 `json:"FlowId,omitempty" name:"FlowId"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }
@@ -1481,6 +1485,10 @@ type DBInstance struct {
 	// 实例标签信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceTags []*ResourceTag `json:"ResourceTags,omitempty" name:"ResourceTags"`
+
+	// 数据库版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DbVersionId *string `json:"DbVersionId,omitempty" name:"DbVersionId"`
 }
 
 type DBParamValue struct {

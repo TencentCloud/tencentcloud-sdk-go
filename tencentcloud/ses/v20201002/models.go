@@ -852,6 +852,12 @@ type EmailIdentity struct {
 
 	// 是否已通过验证
 	SendingEnabled *bool `json:"SendingEnabled,omitempty" name:"SendingEnabled"`
+
+	// 当前信誉等级
+	CurrentReputationLevel *uint64 `json:"CurrentReputationLevel,omitempty" name:"CurrentReputationLevel"`
+
+	// 当日最高发信量
+	DailyQuota *uint64 `json:"DailyQuota,omitempty" name:"DailyQuota"`
 }
 
 type EmailSender struct {
@@ -1339,6 +1345,12 @@ func (r *ListEmailIdentitiesRequest) FromJsonString(s string) error {
 type ListEmailIdentitiesResponseParams struct {
 	// 发信域名列表
 	EmailIdentities []*EmailIdentity `json:"EmailIdentities,omitempty" name:"EmailIdentities"`
+
+	// 最大信誉等级
+	MaxReputationLevel *uint64 `json:"MaxReputationLevel,omitempty" name:"MaxReputationLevel"`
+
+	// 单域名最高日发送量
+	MaxDailyQuota *uint64 `json:"MaxDailyQuota,omitempty" name:"MaxDailyQuota"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`

@@ -1,10 +1,52 @@
 # 本版本更新包含以下内容：
 
-## 数据湖计算(dlc) 版本：2021-01-25
+## 混沌演练平台(cfg) 版本：2021-08-20
 
-### 第 29 次发布
+### 第 3 次发布
 
-发布时间：2022-07-21 06:07:59
+发布时间：2022-07-22 06:04:01
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [TaskGroupAction](https://cloud.tencent.com/document/api/1500/71784#TaskGroupAction)
+
+	* 新增成员：TaskGroupActionExecuteTime
+
+* [TaskGroupInstance](https://cloud.tencent.com/document/api/1500/71784#TaskGroupInstance)
+
+	* 新增成员：TaskGroupInstanceExecuteTime
+
+
+
+
+## 消息队列 Ckafka(ckafka) 版本：2019-08-19
+
+### 第 45 次发布
+
+发布时间：2022-07-22 06:04:27
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [InstanceDetail](https://cloud.tencent.com/document/api/597/40861#InstanceDetail)
+
+	* 新增成员：Features
+
+
+
+
+## 云服务器(cvm) 版本：2017-03-12
+
+### 第 91 次发布
+
+发布时间：2022-07-22 06:05:40
 
 本次发布包含了以下内容：
 
@@ -12,33 +54,63 @@
 
 修改接口：
 
-* [DescribeSparkAppTasks](https://cloud.tencent.com/document/api/1342/74533)
+* [ImportImage](https://cloud.tencent.com/document/api/213/15717)
 
-	* 新增入参：StartTime, EndTime, Filters
+	* 新增入参：LicenseType
+
+
+
+
+## 分布式数据库 TDSQL(dcdb) 版本：2018-04-11
+
+### 第 43 次发布
+
+发布时间：2022-07-22 06:06:56
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [DCDBInstanceInfo](https://cloud.tencent.com/document/api/557/16142#DCDBInstanceInfo)
+
+	* 新增成员：DbVersionId
+
+
+
+
+## 云数据库 MariaDB(mariadb) 版本：2017-03-12
+
+### 第 39 次发布
+
+发布时间：2022-07-22 06:10:50
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateHourDBInstance](https://cloud.tencent.com/document/api/237/67878)
+
+	* 新增出参：FlowId
 
 
 修改数据结构：
 
-* [DatabaseResponseInfo](https://cloud.tencent.com/document/api/1342/53778#DatabaseResponseInfo)
+* [DBInstance](https://cloud.tencent.com/document/api/237/16191#DBInstance)
 
-	* 新增成员：Location, UserAlias, UserSubUin
-
-* [TableBaseInfo](https://cloud.tencent.com/document/api/1342/53778#TableBaseInfo)
-
-	* 新增成员：UserAlias, UserSubUin
-
-* [ViewBaseInfo](https://cloud.tencent.com/document/api/1342/53778#ViewBaseInfo)
-
-	* 新增成员：UserAlias, UserSubUin
+	* 新增成员：DbVersionId
 
 
 
 
-## 弹性 MapReduce(emr) 版本：2019-01-03
+## 小程序安全(mmps) 版本：2020-07-10
 
-### 第 36 次发布
+### 第 6 次发布
 
-发布时间：2022-07-21 06:09:30
+发布时间：2022-07-21 15:01:26
 
 本次发布包含了以下内容：
 
@@ -46,65 +118,15 @@
 
 新增接口：
 
-* [DescribeEmrApplicationStatics](https://cloud.tencent.com/document/api/589/77586)
-
-新增数据结构：
-
-* [ApplicationStatics](https://cloud.tencent.com/document/api/589/33981#ApplicationStatics)
-
-
-
-## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
-
-### 第 22 次发布
-
-发布时间：2022-07-21 06:10:03
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CreateConsoleLoginUrl](https://cloud.tencent.com/document/api/1420/61524)
-
-	* 新增入参：MenuStatus
-
-
-
-
-## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
-
-
-
-## 企业组织(organization) 版本：2021-03-31
-
-### 第 10 次发布
-
-发布时间：2022-07-21 06:14:50
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [OrgMember](https://cloud.tencent.com/document/api/850/67060#OrgMember)
-
-	* 新增成员：PermissionStatus
-
-
-
-
-## 企业组织(organization) 版本：2018-12-25
+* [CreateFlySecMiniAppProfessionalScanTask](https://cloud.tencent.com/document/api/1223/77611)
 
 
 
 ## 邮件推送(ses) 版本：2020-10-02
 
-### 第 13 次发布
+### 第 14 次发布
 
-发布时间：2022-07-21 06:15:51
+发布时间：2022-07-22 06:12:49
 
 本次发布包含了以下内容：
 
@@ -112,57 +134,56 @@
 
 修改接口：
 
-* [GetEmailTemplate](https://cloud.tencent.com/document/api/1288/51040)
+* [ListEmailIdentities](https://cloud.tencent.com/document/api/1288/51045)
 
-	* 新增出参：TemplateStatus
-
-
+	* 新增出参：MaxReputationLevel, MaxDailyQuota
 
 
-## 图像分析(tiia) 版本：2019-05-29
+修改数据结构：
 
-### 第 25 次发布
+* [EmailIdentity](https://cloud.tencent.com/document/api/1288/51053#EmailIdentity)
 
-发布时间：2022-07-21 06:19:01
+	* 新增成员：CurrentReputationLevel, DailyQuota
+
+
+
+
+## 弹性微服务(tem) 版本：2021-07-01
+
+### 第 20 次发布
+
+发布时间：2022-07-22 06:14:55
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-修改数据结构：
+新增接口：
 
-* [CarTagItem](https://cloud.tencent.com/document/api/865/35474#CarTagItem)
+* [DestroyEnvironment](https://cloud.tencent.com/document/api/1371/77632)
 
-	* 新增成员：PlateConfidence, TypeConfidence, ColorConfidence
 
+
+## 弹性微服务(tem) 版本：2020-12-21
 
 
 
 ## 私有网络(vpc) 版本：2017-03-12
 
-### 第 119 次发布
+### 第 120 次发布
 
-发布时间：2022-07-21 06:20:44
+发布时间：2022-07-22 06:16:48
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-修改接口：
+新增接口：
 
-* [CreateNetworkAcl](https://cloud.tencent.com/document/api/215/42162)
-
-	* 新增入参：NetworkAclType, Tags
-
-* [ModifyNetworkAclEntries](https://cloud.tencent.com/document/api/215/42107)
-
-	* 新增入参：NetworkAclQuintupleSet
-
-
-新增数据结构：
-
-* [NetworkAclQuintupleEntries](https://cloud.tencent.com/document/api/215/15824#NetworkAclQuintupleEntries)
-* [NetworkAclQuintupleEntry](https://cloud.tencent.com/document/api/215/15824#NetworkAclQuintupleEntry)
+* [CreateNetworkAclQuintupleEntries](https://cloud.tencent.com/document/api/215/77636)
+* [DeleteNetworkAclQuintupleEntries](https://cloud.tencent.com/document/api/215/77635)
+* [DescribeNetworkAclQuintupleEntries](https://cloud.tencent.com/document/api/215/77634)
+* [ModifyNetworkAclQuintupleEntries](https://cloud.tencent.com/document/api/215/77633)
 
 
 
@@ -15381,6 +15402,25 @@
 
 ## 混沌演练平台(cfg) 版本：2021-08-20
 
+### 第 3 次发布
+
+发布时间：2022-07-22 06:04:01
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [TaskGroupAction](https://cloud.tencent.com/document/api/1500/71784#TaskGroupAction)
+
+	* 新增成员：TaskGroupActionExecuteTime
+
+* [TaskGroupInstance](https://cloud.tencent.com/document/api/1500/71784#TaskGroupInstance)
+
+	* 新增成员：TaskGroupInstanceExecuteTime
+
+
 ### 第 2 次发布
 
 发布时间：2022-07-20 06:02:51
@@ -16799,6 +16839,21 @@
 
 
 ## 消息队列 Ckafka(ckafka) 版本：2019-08-19
+
+### 第 45 次发布
+
+发布时间：2022-07-22 06:04:27
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [InstanceDetail](https://cloud.tencent.com/document/api/597/40861#InstanceDetail)
+
+	* 新增成员：Features
+
 
 ### 第 44 次发布
 
@@ -23900,6 +23955,21 @@
 
 ## 云服务器(cvm) 版本：2017-03-12
 
+### 第 91 次发布
+
+发布时间：2022-07-22 06:05:40
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ImportImage](https://cloud.tencent.com/document/api/213/15717)
+
+	* 新增入参：LicenseType
+
+
 ### 第 90 次发布
 
 发布时间：2022-07-12 06:08:19
@@ -29266,6 +29336,21 @@
 
 ## 分布式数据库 TDSQL(dcdb) 版本：2018-04-11
 
+### 第 43 次发布
+
+发布时间：2022-07-22 06:06:56
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [DCDBInstanceInfo](https://cloud.tencent.com/document/api/557/16142#DCDBInstanceInfo)
+
+	* 新增成员：DbVersionId
+
+
 ### 第 42 次发布
 
 发布时间：2022-07-05 06:12:03
@@ -34256,11 +34341,11 @@
 
 新增接口：
 
-* [[DescribeEmrApplicationStatics](https://cloud.tencent.com/document/api/589/77586)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeEmrApplicationStatics](https://cloud.tencent.com/document/api/589/77586)
 
 新增数据结构：
 
-* [[ApplicationStatics](https://cloud.tencent.com/document/api/589/33981#ApplicationStatics)](https://cloud.tencent.com/document/api/589/33981#[ApplicationStatics](https://cloud.tencent.com/document/api/589/33981#ApplicationStatics))
+* [ApplicationStatics](https://cloud.tencent.com/document/api/589/33981#ApplicationStatics)
 
 ### 第 35 次发布
 
@@ -48239,6 +48324,28 @@
 
 ## 云数据库 MariaDB(mariadb) 版本：2017-03-12
 
+### 第 39 次发布
+
+发布时间：2022-07-22 06:10:50
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateHourDBInstance](https://cloud.tencent.com/document/api/237/67878)
+
+	* 新增出参：FlowId
+
+
+修改数据结构：
+
+* [DBInstance](https://cloud.tencent.com/document/api/237/16191#DBInstance)
+
+	* 新增成员：DbVersionId
+
+
 ### 第 38 次发布
 
 发布时间：2022-07-06 06:15:28
@@ -49283,6 +49390,18 @@
 
 
 ## 小程序安全(mmps) 版本：2020-07-10
+
+### 第 6 次发布
+
+发布时间：2022-07-21 15:01:26
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateFlySecMiniAppProfessionalScanTask](https://cloud.tencent.com/document/api/1223/77611)](https://cloud.tencent.com/document/api/#/#)
 
 ### 第 5 次发布
 
@@ -59196,6 +59315,28 @@
 
 ## 邮件推送(ses) 版本：2020-10-02
 
+### 第 14 次发布
+
+发布时间：2022-07-22 06:12:49
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ListEmailIdentities](https://cloud.tencent.com/document/api/1288/51045)
+
+	* 新增出参：MaxReputationLevel, MaxDailyQuota
+
+
+修改数据结构：
+
+* [EmailIdentity](https://cloud.tencent.com/document/api/1288/51053#EmailIdentity)
+
+	* 新增成员：CurrentReputationLevel, DailyQuota
+
+
 ### 第 13 次发布
 
 发布时间：2022-07-21 06:15:51
@@ -68858,6 +68999,18 @@
 
 
 ## 弹性微服务(tem) 版本：2021-07-01
+
+### 第 20 次发布
+
+发布时间：2022-07-22 06:14:55
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DestroyEnvironment](https://cloud.tencent.com/document/api/1371/77632)](https://cloud.tencent.com/document/api/#/#)
 
 ### 第 19 次发布
 
@@ -81063,6 +81216,21 @@
 
 ## 私有网络(vpc) 版本：2017-03-12
 
+### 第 120 次发布
+
+发布时间：2022-07-22 06:16:48
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateNetworkAclQuintupleEntries](https://cloud.tencent.com/document/api/215/77636)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteNetworkAclQuintupleEntries](https://cloud.tencent.com/document/api/215/77635)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeNetworkAclQuintupleEntries](https://cloud.tencent.com/document/api/215/77634)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyNetworkAclQuintupleEntries](https://cloud.tencent.com/document/api/215/77633)](https://cloud.tencent.com/document/api/#/#)
+
 ### 第 119 次发布
 
 发布时间：2022-07-21 06:20:44
@@ -81084,8 +81252,8 @@
 
 新增数据结构：
 
-* [[NetworkAclQuintupleEntries](https://cloud.tencent.com/document/api/215/15824#NetworkAclQuintupleEntries)](https://cloud.tencent.com/document/api/215/15824#[NetworkAclQuintupleEntries](https://cloud.tencent.com/document/api/215/15824#NetworkAclQuintupleEntries))
-* [[NetworkAclQuintupleEntry](https://cloud.tencent.com/document/api/215/15824#NetworkAclQuintupleEntry)](https://cloud.tencent.com/document/api/215/15824#[NetworkAclQuintupleEntry](https://cloud.tencent.com/document/api/215/15824#NetworkAclQuintupleEntry))
+* [NetworkAclQuintupleEntries](https://cloud.tencent.com/document/api/215/15824#NetworkAclQuintupleEntries)
+* [NetworkAclQuintupleEntry](https://cloud.tencent.com/document/api/215/15824#NetworkAclQuintupleEntry)
 
 ### 第 118 次发布
 

@@ -302,11 +302,110 @@ func (r *CreateAppScanTaskResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateFlySecMiniAppProfessionalScanTaskRequestParams struct {
+	// 小程序AppID
+	MiniAppID *string `json:"MiniAppID,omitempty" name:"MiniAppID"`
+
+	// 小程序名称
+	MiniAppName *string `json:"MiniAppName,omitempty" name:"MiniAppName"`
+
+	// 诊断模式 2:深度诊断
+	Mode *int64 `json:"Mode,omitempty" name:"Mode"`
+
+	// 公司名称
+	CorpName *string `json:"CorpName,omitempty" name:"CorpName"`
+
+	// 手机号码
+	Mobile *string `json:"Mobile,omitempty" name:"Mobile"`
+
+	// 电子邮箱
+	Email *string `json:"Email,omitempty" name:"Email"`
+
+	// 备注信息
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+}
+
+type CreateFlySecMiniAppProfessionalScanTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// 小程序AppID
+	MiniAppID *string `json:"MiniAppID,omitempty" name:"MiniAppID"`
+
+	// 小程序名称
+	MiniAppName *string `json:"MiniAppName,omitempty" name:"MiniAppName"`
+
+	// 诊断模式 2:深度诊断
+	Mode *int64 `json:"Mode,omitempty" name:"Mode"`
+
+	// 公司名称
+	CorpName *string `json:"CorpName,omitempty" name:"CorpName"`
+
+	// 手机号码
+	Mobile *string `json:"Mobile,omitempty" name:"Mobile"`
+
+	// 电子邮箱
+	Email *string `json:"Email,omitempty" name:"Email"`
+
+	// 备注信息
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+}
+
+func (r *CreateFlySecMiniAppProfessionalScanTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateFlySecMiniAppProfessionalScanTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MiniAppID")
+	delete(f, "MiniAppName")
+	delete(f, "Mode")
+	delete(f, "CorpName")
+	delete(f, "Mobile")
+	delete(f, "Email")
+	delete(f, "Remark")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateFlySecMiniAppProfessionalScanTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateFlySecMiniAppProfessionalScanTaskResponseParams struct {
+	// 返回值, 0:成功, 其他值请查看“返回值”定义
+	Ret *int64 `json:"Ret,omitempty" name:"Ret"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateFlySecMiniAppProfessionalScanTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateFlySecMiniAppProfessionalScanTaskResponseParams `json:"Response"`
+}
+
+func (r *CreateFlySecMiniAppProfessionalScanTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateFlySecMiniAppProfessionalScanTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateFlySecMiniAppScanTaskRepeatRequestParams struct {
 	// 小程序AppID
 	MiniAppID *string `json:"MiniAppID,omitempty" name:"MiniAppID"`
 
-	// 诊断模式 1:基础诊断，2:深度诊断
+	// 诊断模式 1:基础诊断
 	Mode *int64 `json:"Mode,omitempty" name:"Mode"`
 
 	// 原任务id
@@ -328,7 +427,7 @@ type CreateFlySecMiniAppScanTaskRepeatRequest struct {
 	// 小程序AppID
 	MiniAppID *string `json:"MiniAppID,omitempty" name:"MiniAppID"`
 
-	// 诊断模式 1:基础诊断，2:深度诊断
+	// 诊断模式 1:基础诊断
 	Mode *int64 `json:"Mode,omitempty" name:"Mode"`
 
 	// 原任务id
@@ -401,7 +500,7 @@ type CreateFlySecMiniAppScanTaskRequestParams struct {
 	// 小程序AppID
 	MiniAppID *string `json:"MiniAppID,omitempty" name:"MiniAppID"`
 
-	// 诊断模式 1:基础诊断，2:深度诊断
+	// 诊断模式 1:基础诊断
 	Mode *int64 `json:"Mode,omitempty" name:"Mode"`
 
 	// 小程序测试账号(自有账号体系需提供,其他情况不需要)
@@ -435,7 +534,7 @@ type CreateFlySecMiniAppScanTaskRequest struct {
 	// 小程序AppID
 	MiniAppID *string `json:"MiniAppID,omitempty" name:"MiniAppID"`
 
-	// 诊断模式 1:基础诊断，2:深度诊断
+	// 诊断模式 1:基础诊断
 	Mode *int64 `json:"Mode,omitempty" name:"Mode"`
 
 	// 小程序测试账号(自有账号体系需提供,其他情况不需要)

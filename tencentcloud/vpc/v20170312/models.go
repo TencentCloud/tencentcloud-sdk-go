@@ -4064,6 +4064,67 @@ func (r *CreateNetDetectResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateNetworkAclQuintupleEntriesRequestParams struct {
+	// 网络ACL实例ID。例如：acl-12345678。
+	NetworkAclId *string `json:"NetworkAclId,omitempty" name:"NetworkAclId"`
+
+	// 网络五元组ACL规则集。
+	NetworkAclQuintupleSet *NetworkAclQuintupleEntries `json:"NetworkAclQuintupleSet,omitempty" name:"NetworkAclQuintupleSet"`
+}
+
+type CreateNetworkAclQuintupleEntriesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 网络ACL实例ID。例如：acl-12345678。
+	NetworkAclId *string `json:"NetworkAclId,omitempty" name:"NetworkAclId"`
+
+	// 网络五元组ACL规则集。
+	NetworkAclQuintupleSet *NetworkAclQuintupleEntries `json:"NetworkAclQuintupleSet,omitempty" name:"NetworkAclQuintupleSet"`
+}
+
+func (r *CreateNetworkAclQuintupleEntriesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateNetworkAclQuintupleEntriesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "NetworkAclId")
+	delete(f, "NetworkAclQuintupleSet")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateNetworkAclQuintupleEntriesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateNetworkAclQuintupleEntriesResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateNetworkAclQuintupleEntriesResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateNetworkAclQuintupleEntriesResponseParams `json:"Response"`
+}
+
+func (r *CreateNetworkAclQuintupleEntriesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateNetworkAclQuintupleEntriesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateNetworkAclRequestParams struct {
 	// VPC实例ID。可通过DescribeVpcs接口返回值中的VpcId获取。
 	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
@@ -6913,6 +6974,67 @@ func (r *DeleteNetDetectResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteNetDetectResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteNetworkAclQuintupleEntriesRequestParams struct {
+	// 网络ACL实例ID。例如：acl-12345678。
+	NetworkAclId *string `json:"NetworkAclId,omitempty" name:"NetworkAclId"`
+
+	// 网络五元组ACL规则集。
+	NetworkAclQuintupleSet *NetworkAclQuintupleEntries `json:"NetworkAclQuintupleSet,omitempty" name:"NetworkAclQuintupleSet"`
+}
+
+type DeleteNetworkAclQuintupleEntriesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 网络ACL实例ID。例如：acl-12345678。
+	NetworkAclId *string `json:"NetworkAclId,omitempty" name:"NetworkAclId"`
+
+	// 网络五元组ACL规则集。
+	NetworkAclQuintupleSet *NetworkAclQuintupleEntries `json:"NetworkAclQuintupleSet,omitempty" name:"NetworkAclQuintupleSet"`
+}
+
+func (r *DeleteNetworkAclQuintupleEntriesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteNetworkAclQuintupleEntriesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "NetworkAclId")
+	delete(f, "NetworkAclQuintupleSet")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteNetworkAclQuintupleEntriesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteNetworkAclQuintupleEntriesResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DeleteNetworkAclQuintupleEntriesResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteNetworkAclQuintupleEntriesResponseParams `json:"Response"`
+}
+
+func (r *DeleteNetworkAclQuintupleEntriesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteNetworkAclQuintupleEntriesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -11314,6 +11436,63 @@ func (r *DescribeNetDetectsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeNetDetectsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeNetworkAclQuintupleEntriesRequestParams struct {
+
+}
+
+type DescribeNetworkAclQuintupleEntriesRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DescribeNetworkAclQuintupleEntriesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeNetworkAclQuintupleEntriesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeNetworkAclQuintupleEntriesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeNetworkAclQuintupleEntriesResponseParams struct {
+	// 网络ACL条目列表（NetworkAclTuple5Entry）
+	NetworkAclQuintupleSet []*NetworkAclQuintupleEntry `json:"NetworkAclQuintupleSet,omitempty" name:"NetworkAclQuintupleSet"`
+
+	// 符合条件的实例数量。
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeNetworkAclQuintupleEntriesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeNetworkAclQuintupleEntriesResponseParams `json:"Response"`
+}
+
+func (r *DescribeNetworkAclQuintupleEntriesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeNetworkAclQuintupleEntriesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -18610,6 +18789,67 @@ func (r *ModifyNetworkAclEntriesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyNetworkAclEntriesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyNetworkAclQuintupleEntriesRequestParams struct {
+	// 网络ACL实例ID。例如：acl-12345678。
+	NetworkAclId *string `json:"NetworkAclId,omitempty" name:"NetworkAclId"`
+
+	// 网络五元组ACL规则集。
+	NetworkAclQuintupleSet *NetworkAclQuintupleEntries `json:"NetworkAclQuintupleSet,omitempty" name:"NetworkAclQuintupleSet"`
+}
+
+type ModifyNetworkAclQuintupleEntriesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 网络ACL实例ID。例如：acl-12345678。
+	NetworkAclId *string `json:"NetworkAclId,omitempty" name:"NetworkAclId"`
+
+	// 网络五元组ACL规则集。
+	NetworkAclQuintupleSet *NetworkAclQuintupleEntries `json:"NetworkAclQuintupleSet,omitempty" name:"NetworkAclQuintupleSet"`
+}
+
+func (r *ModifyNetworkAclQuintupleEntriesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyNetworkAclQuintupleEntriesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "NetworkAclId")
+	delete(f, "NetworkAclQuintupleSet")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyNetworkAclQuintupleEntriesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyNetworkAclQuintupleEntriesResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ModifyNetworkAclQuintupleEntriesResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyNetworkAclQuintupleEntriesResponseParams `json:"Response"`
+}
+
+func (r *ModifyNetworkAclQuintupleEntriesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyNetworkAclQuintupleEntriesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

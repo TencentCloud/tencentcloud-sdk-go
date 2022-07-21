@@ -853,6 +853,55 @@ func (c *Client) DescribeRelatedIngressesWithContext(ctx context.Context, reques
     return
 }
 
+func NewDestroyEnvironmentRequest() (request *DestroyEnvironmentRequest) {
+    request = &DestroyEnvironmentRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tem", APIVersion, "DestroyEnvironment")
+    
+    
+    return
+}
+
+func NewDestroyEnvironmentResponse() (response *DestroyEnvironmentResponse) {
+    response = &DestroyEnvironmentResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DestroyEnvironment
+// 销毁命名空间
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_VERSIONNAMESPACENOTFOUND = "ResourceNotFound.VersionNamespaceNotFound"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
+func (c *Client) DestroyEnvironment(request *DestroyEnvironmentRequest) (response *DestroyEnvironmentResponse, err error) {
+    return c.DestroyEnvironmentWithContext(context.Background(), request)
+}
+
+// DestroyEnvironment
+// 销毁命名空间
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_VERSIONNAMESPACENOTFOUND = "ResourceNotFound.VersionNamespaceNotFound"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
+func (c *Client) DestroyEnvironmentWithContext(ctx context.Context, request *DestroyEnvironmentRequest) (response *DestroyEnvironmentResponse, err error) {
+    if request == nil {
+        request = NewDestroyEnvironmentRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DestroyEnvironment require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDestroyEnvironmentResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewGenerateApplicationPackageDownloadUrlRequest() (request *GenerateApplicationPackageDownloadUrlRequest) {
     request = &GenerateApplicationPackageDownloadUrlRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -874,12 +923,8 @@ func NewGenerateApplicationPackageDownloadUrlResponse() (response *GenerateAppli
 // 生成应用程序包预签名下载链接
 //
 // 可能返回的错误码:
-//  INTERNALERROR_DESCRIBESERVICEINGRESSERROR = "InternalError.DescribeServiceIngressError"
-//  INVALIDPARAMETERVALUE_NAMESPACENOTBELONGTOAPPID = "InvalidParameterValue.NamespaceNotBelongToAppid"
-//  MISSINGPARAMETER_NAMESPACEIDNULL = "MissingParameter.NamespaceIdNull"
-//  MISSINGPARAMETER_SERVICEIDNULL = "MissingParameter.ServiceIdNull"
-//  RESOURCENOTFOUND_SERVICENOTFOUND = "ResourceNotFound.ServiceNotFound"
 //  RESOURCENOTFOUND_VERSIONNAMESPACENOTFOUND = "ResourceNotFound.VersionNamespaceNotFound"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
 func (c *Client) GenerateApplicationPackageDownloadUrl(request *GenerateApplicationPackageDownloadUrlRequest) (response *GenerateApplicationPackageDownloadUrlResponse, err error) {
     return c.GenerateApplicationPackageDownloadUrlWithContext(context.Background(), request)
 }
@@ -888,12 +933,8 @@ func (c *Client) GenerateApplicationPackageDownloadUrl(request *GenerateApplicat
 // 生成应用程序包预签名下载链接
 //
 // 可能返回的错误码:
-//  INTERNALERROR_DESCRIBESERVICEINGRESSERROR = "InternalError.DescribeServiceIngressError"
-//  INVALIDPARAMETERVALUE_NAMESPACENOTBELONGTOAPPID = "InvalidParameterValue.NamespaceNotBelongToAppid"
-//  MISSINGPARAMETER_NAMESPACEIDNULL = "MissingParameter.NamespaceIdNull"
-//  MISSINGPARAMETER_SERVICEIDNULL = "MissingParameter.ServiceIdNull"
-//  RESOURCENOTFOUND_SERVICENOTFOUND = "ResourceNotFound.ServiceNotFound"
 //  RESOURCENOTFOUND_VERSIONNAMESPACENOTFOUND = "ResourceNotFound.VersionNamespaceNotFound"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
 func (c *Client) GenerateApplicationPackageDownloadUrlWithContext(ctx context.Context, request *GenerateApplicationPackageDownloadUrlRequest) (response *GenerateApplicationPackageDownloadUrlResponse, err error) {
     if request == nil {
         request = NewGenerateApplicationPackageDownloadUrlRequest()

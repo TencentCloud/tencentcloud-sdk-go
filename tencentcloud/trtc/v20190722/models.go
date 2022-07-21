@@ -208,13 +208,14 @@ func (r *DeletePictureResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeAbnormalEventRequestParams struct {
-	// 用户SDKAppID，查询SDKAppID下任意20条异常体验事件（可能不同房间）
+	// 用户SdkAppId（如：1400xxxxxx）
 	SdkAppId *string `json:"SdkAppId,omitempty" name:"SdkAppId"`
 
-	// 查询开始时间,本地unix时间戳（1592448600s）
+	// 查询开始时间，本地unix时间戳，单位为秒（如：1590065777）
+	// 注意：支持查询14天内的数据
 	StartTime *uint64 `json:"StartTime,omitempty" name:"StartTime"`
 
-	// 查询结束时间,本地unix时间戳（1592449080s）
+	// 查询结束时间，本地unix时间戳，单位为秒（如：1590065877）注意：与StartTime间隔时间不超过1小时。
 	EndTime *uint64 `json:"EndTime,omitempty" name:"EndTime"`
 
 	// 房间号，查询房间内任意20条以内异常体验事件
@@ -224,13 +225,14 @@ type DescribeAbnormalEventRequestParams struct {
 type DescribeAbnormalEventRequest struct {
 	*tchttp.BaseRequest
 	
-	// 用户SDKAppID，查询SDKAppID下任意20条异常体验事件（可能不同房间）
+	// 用户SdkAppId（如：1400xxxxxx）
 	SdkAppId *string `json:"SdkAppId,omitempty" name:"SdkAppId"`
 
-	// 查询开始时间,本地unix时间戳（1592448600s）
+	// 查询开始时间，本地unix时间戳，单位为秒（如：1590065777）
+	// 注意：支持查询14天内的数据
 	StartTime *uint64 `json:"StartTime,omitempty" name:"StartTime"`
 
-	// 查询结束时间,本地unix时间戳（1592449080s）
+	// 查询结束时间，本地unix时间戳，单位为秒（如：1590065877）注意：与StartTime间隔时间不超过1小时。
 	EndTime *uint64 `json:"EndTime,omitempty" name:"EndTime"`
 
 	// 房间号，查询房间内任意20条以内异常体验事件
@@ -289,19 +291,21 @@ func (r *DescribeAbnormalEventResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeCallDetailRequestParams struct {
-	// 通话 ID（唯一标识一次通话）： sdkappid_roomgString（房间号_createTime（房间创建时间，unix时间戳，单位为s）例：1400353843_218695_1590065777。通过 DescribeRoomInformation（查询房间列表）接口获取（链接：https://cloud.tencent.com/document/product/647/44050）
+	// 通话 ID（唯一标识一次通话）： SdkAppId_RoomId（房间号）_ CreateTime（房间创建时间，unix时间戳，单位为s）例：1400xxxxxx_218695_1590065777。通过 DescribeRoomInfo（查询历史房间列表）接口获取（[查询历史房间列表](https://cloud.tencent.com/document/product/647/44050)）。
 	CommId *string `json:"CommId,omitempty" name:"CommId"`
 
-	// 查询开始时间，14天内。本地unix时间戳（1590065777s），查询实时数据时，查询起止时间不超过1个小时。
+	// 查询开始时间，本地unix时间戳，单位为秒（如：1590065777），
+	// 注意：支持查询14天内的数据。
 	StartTime *uint64 `json:"StartTime,omitempty" name:"StartTime"`
 
-	// 查询结束时间，本地unix时间戳（1590065877s）
+	// 查询结束时间，本地unix时间戳，单位为秒（如：1590065877）
+	// 注意：DataType 不为null ，与StartTime间隔时间不超过1小时；DataType 为null，与StartTime间隔时间不超过4小时。
 	EndTime *uint64 `json:"EndTime,omitempty" name:"EndTime"`
 
-	// 用户SDKAppID（1400353843）
+	// 用户SdkAppId（如：1400xxxxxx）。
 	SdkAppId *string `json:"SdkAppId,omitempty" name:"SdkAppId"`
 
-	// 需查询的用户数组，不填默认返回6个用户,最多可填6个用户
+	// 需查询的用户数组，默认不填返回6个用户。
 	UserIds []*string `json:"UserIds,omitempty" name:"UserIds"`
 
 	// 需查询的指标，不填则只返回用户列表，填all则返回所有指标。
@@ -320,29 +324,35 @@ type DescribeCallDetailRequestParams struct {
 	// bigvHeight：上/下行分辨率高
 	DataType []*string `json:"DataType,omitempty" name:"DataType"`
 
-	// 设置分页index，从0开始（PageNumber和PageSize 其中一个不填均默认返回6条数据）
+	// 当前页数，默认为0，
+	// 注意：PageNumber和PageSize 其中一个不填均默认返回6条数据。
 	PageNumber *string `json:"PageNumber,omitempty" name:"PageNumber"`
 
-	// 设置分页大小（PageNumber和PageSize 其中一个不填均默认返回6条数据,DataType，UserIds不为null，PageSize最大不超过6，DataType，UserIds为null，PageSize最大不超过100）
+	// 每页个数，默认为6，
+	// 范围：[1，100]
+	// 注意：DataType不为null，UserIds长度不能超过6，PageSize最大值不超过6；
+	// DataType 为null，UserIds长度不超过100，PageSize最大不超过100。
 	PageSize *string `json:"PageSize,omitempty" name:"PageSize"`
 }
 
 type DescribeCallDetailRequest struct {
 	*tchttp.BaseRequest
 	
-	// 通话 ID（唯一标识一次通话）： sdkappid_roomgString（房间号_createTime（房间创建时间，unix时间戳，单位为s）例：1400353843_218695_1590065777。通过 DescribeRoomInformation（查询房间列表）接口获取（链接：https://cloud.tencent.com/document/product/647/44050）
+	// 通话 ID（唯一标识一次通话）： SdkAppId_RoomId（房间号）_ CreateTime（房间创建时间，unix时间戳，单位为s）例：1400xxxxxx_218695_1590065777。通过 DescribeRoomInfo（查询历史房间列表）接口获取（[查询历史房间列表](https://cloud.tencent.com/document/product/647/44050)）。
 	CommId *string `json:"CommId,omitempty" name:"CommId"`
 
-	// 查询开始时间，14天内。本地unix时间戳（1590065777s），查询实时数据时，查询起止时间不超过1个小时。
+	// 查询开始时间，本地unix时间戳，单位为秒（如：1590065777），
+	// 注意：支持查询14天内的数据。
 	StartTime *uint64 `json:"StartTime,omitempty" name:"StartTime"`
 
-	// 查询结束时间，本地unix时间戳（1590065877s）
+	// 查询结束时间，本地unix时间戳，单位为秒（如：1590065877）
+	// 注意：DataType 不为null ，与StartTime间隔时间不超过1小时；DataType 为null，与StartTime间隔时间不超过4小时。
 	EndTime *uint64 `json:"EndTime,omitempty" name:"EndTime"`
 
-	// 用户SDKAppID（1400353843）
+	// 用户SdkAppId（如：1400xxxxxx）。
 	SdkAppId *string `json:"SdkAppId,omitempty" name:"SdkAppId"`
 
-	// 需查询的用户数组，不填默认返回6个用户,最多可填6个用户
+	// 需查询的用户数组，默认不填返回6个用户。
 	UserIds []*string `json:"UserIds,omitempty" name:"UserIds"`
 
 	// 需查询的指标，不填则只返回用户列表，填all则返回所有指标。
@@ -361,10 +371,14 @@ type DescribeCallDetailRequest struct {
 	// bigvHeight：上/下行分辨率高
 	DataType []*string `json:"DataType,omitempty" name:"DataType"`
 
-	// 设置分页index，从0开始（PageNumber和PageSize 其中一个不填均默认返回6条数据）
+	// 当前页数，默认为0，
+	// 注意：PageNumber和PageSize 其中一个不填均默认返回6条数据。
 	PageNumber *string `json:"PageNumber,omitempty" name:"PageNumber"`
 
-	// 设置分页大小（PageNumber和PageSize 其中一个不填均默认返回6条数据,DataType，UserIds不为null，PageSize最大不超过6，DataType，UserIds为null，PageSize最大不超过100）
+	// 每页个数，默认为6，
+	// 范围：[1，100]
+	// 注意：DataType不为null，UserIds长度不能超过6，PageSize最大值不超过6；
+	// DataType 为null，UserIds长度不超过100，PageSize最大不超过100。
 	PageSize *string `json:"PageSize,omitempty" name:"PageSize"`
 }
 
@@ -429,38 +443,42 @@ func (r *DescribeCallDetailResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDetailEventRequestParams struct {
-	// 通话 ID（唯一标识一次通话）： sdkappid_roomgString（房间号_createTime（房间创建时间，unix时间戳，单位s）。通过 DescribeRoomInformation（查询房间列表）接口获取。（链接：https://cloud.tencent.com/document/product/647/44050）
+	// 通话 ID（唯一标识一次通话）： SdkAppId_RoomId（房间号）_ CreateTime（房间创建时间，unix时间戳，单位为s）例：1400xxxxxx_218695_1590065777。通过 DescribeRoomInfo（查询历史房间列表）接口获取（[查询历史房间列表](https://cloud.tencent.com/document/product/647/44050)）。
 	CommId *string `json:"CommId,omitempty" name:"CommId"`
 
-	// 查询开始时间，14天内。本地unix时间戳（1588055615s）
+	// 查询开始时间，本地unix时间戳，单位为秒（如：1590065777）
+	// 注意：支持查询14天内的数据
 	StartTime *uint64 `json:"StartTime,omitempty" name:"StartTime"`
 
-	// 查询结束时间，本地unix时间戳（1588058615s）
+	// 查询结束时间，本地unix时间戳，单位为秒（如：1590065877）
+	// 注意：查询时间大于房间结束时间，以房间结束时间为准。
 	EndTime *uint64 `json:"EndTime,omitempty" name:"EndTime"`
 
-	// 用户id
+	// 用户UserId
 	UserId *string `json:"UserId,omitempty" name:"UserId"`
 
-	// 房间号
+	// 房间号（如：223）
 	RoomId *string `json:"RoomId,omitempty" name:"RoomId"`
 }
 
 type DescribeDetailEventRequest struct {
 	*tchttp.BaseRequest
 	
-	// 通话 ID（唯一标识一次通话）： sdkappid_roomgString（房间号_createTime（房间创建时间，unix时间戳，单位s）。通过 DescribeRoomInformation（查询房间列表）接口获取。（链接：https://cloud.tencent.com/document/product/647/44050）
+	// 通话 ID（唯一标识一次通话）： SdkAppId_RoomId（房间号）_ CreateTime（房间创建时间，unix时间戳，单位为s）例：1400xxxxxx_218695_1590065777。通过 DescribeRoomInfo（查询历史房间列表）接口获取（[查询历史房间列表](https://cloud.tencent.com/document/product/647/44050)）。
 	CommId *string `json:"CommId,omitempty" name:"CommId"`
 
-	// 查询开始时间，14天内。本地unix时间戳（1588055615s）
+	// 查询开始时间，本地unix时间戳，单位为秒（如：1590065777）
+	// 注意：支持查询14天内的数据
 	StartTime *uint64 `json:"StartTime,omitempty" name:"StartTime"`
 
-	// 查询结束时间，本地unix时间戳（1588058615s）
+	// 查询结束时间，本地unix时间戳，单位为秒（如：1590065877）
+	// 注意：查询时间大于房间结束时间，以房间结束时间为准。
 	EndTime *uint64 `json:"EndTime,omitempty" name:"EndTime"`
 
-	// 用户id
+	// 用户UserId
 	UserId *string `json:"UserId,omitempty" name:"UserId"`
 
-	// 房间号
+	// 房间号（如：223）
 	RoomId *string `json:"RoomId,omitempty" name:"RoomId"`
 }
 
@@ -591,26 +609,30 @@ func (r *DescribeExternalTrtcMeasureResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeHistoryScaleRequestParams struct {
-	// 用户sdkappid(1400188366)
+	// 用户SdkAppId（如：1400xxxxxx）
 	SdkAppId *string `json:"SdkAppId,omitempty" name:"SdkAppId"`
 
-	// 查询开始时间，5天内。本地unix时间戳（1587571000s）
+	// 查询开始时间，本地unix时间戳，单位为秒（如：1590065777）
+	// 注意：支持查询14天内的数据。
 	StartTime *uint64 `json:"StartTime,omitempty" name:"StartTime"`
 
-	// 查询结束时间，本地unix时间戳（1588034999s）
+	// 查询结束时间，本地unix时间戳，单位为秒（如：1590065877），建议与StartTime间隔时间超过24小时。
+	// 注意：按天统计，结束时间小于前一天，否则查询数据为空（如：需查询20号数据，结束时间需小于20号0点）。
 	EndTime *uint64 `json:"EndTime,omitempty" name:"EndTime"`
 }
 
 type DescribeHistoryScaleRequest struct {
 	*tchttp.BaseRequest
 	
-	// 用户sdkappid(1400188366)
+	// 用户SdkAppId（如：1400xxxxxx）
 	SdkAppId *string `json:"SdkAppId,omitempty" name:"SdkAppId"`
 
-	// 查询开始时间，5天内。本地unix时间戳（1587571000s）
+	// 查询开始时间，本地unix时间戳，单位为秒（如：1590065777）
+	// 注意：支持查询14天内的数据。
 	StartTime *uint64 `json:"StartTime,omitempty" name:"StartTime"`
 
-	// 查询结束时间，本地unix时间戳（1588034999s）
+	// 查询结束时间，本地unix时间戳，单位为秒（如：1590065877），建议与StartTime间隔时间超过24小时。
+	// 注意：按天统计，结束时间小于前一天，否则查询数据为空（如：需查询20号数据，结束时间需小于20号0点）。
 	EndTime *uint64 `json:"EndTime,omitempty" name:"EndTime"`
 }
 
@@ -820,44 +842,52 @@ func (r *DescribeRecordStatisticResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeRoomInformationRequestParams struct {
-	// 用户sdkappid
+	// 用户SdkAppId（如：1400xxxxxx）
 	SdkAppId *string `json:"SdkAppId,omitempty" name:"SdkAppId"`
 
-	// 查询开始时间，14天内。本地unix时间戳（1588031999）
+	// 查询开始时间，本地unix时间戳，单位为秒（如：1590065777）
+	// 注意：支持查询14天内的数据
 	StartTime *uint64 `json:"StartTime,omitempty" name:"StartTime"`
 
-	// 查询结束时间，本地unix时间戳（1588034999）
+	// 查询结束时间，本地unix时间戳，单位为秒（如：1590065877）
+	// 注意：与StartTime间隔时间不超过24小时。
 	EndTime *uint64 `json:"EndTime,omitempty" name:"EndTime"`
 
-	// 字符串房间号
+	// 房间号（如：223)
 	RoomId *string `json:"RoomId,omitempty" name:"RoomId"`
 
-	// 分页index，从0开始（PageNumber和PageSize 其中一个不填均默认返回10条数据）
+	// 当前页数，默认为0，
+	// 注意：PageNumber和PageSize 其中一个不填均默认返回10条数据。
 	PageNumber *string `json:"PageNumber,omitempty" name:"PageNumber"`
 
-	// 分页大小（PageNumber和PageSize 其中一个不填均默认返回10条数据,最大不超过100）
+	// 每页个数，默认为10，
+	// 范围：[1，100]
 	PageSize *string `json:"PageSize,omitempty" name:"PageSize"`
 }
 
 type DescribeRoomInformationRequest struct {
 	*tchttp.BaseRequest
 	
-	// 用户sdkappid
+	// 用户SdkAppId（如：1400xxxxxx）
 	SdkAppId *string `json:"SdkAppId,omitempty" name:"SdkAppId"`
 
-	// 查询开始时间，14天内。本地unix时间戳（1588031999）
+	// 查询开始时间，本地unix时间戳，单位为秒（如：1590065777）
+	// 注意：支持查询14天内的数据
 	StartTime *uint64 `json:"StartTime,omitempty" name:"StartTime"`
 
-	// 查询结束时间，本地unix时间戳（1588034999）
+	// 查询结束时间，本地unix时间戳，单位为秒（如：1590065877）
+	// 注意：与StartTime间隔时间不超过24小时。
 	EndTime *uint64 `json:"EndTime,omitempty" name:"EndTime"`
 
-	// 字符串房间号
+	// 房间号（如：223)
 	RoomId *string `json:"RoomId,omitempty" name:"RoomId"`
 
-	// 分页index，从0开始（PageNumber和PageSize 其中一个不填均默认返回10条数据）
+	// 当前页数，默认为0，
+	// 注意：PageNumber和PageSize 其中一个不填均默认返回10条数据。
 	PageNumber *string `json:"PageNumber,omitempty" name:"PageNumber"`
 
-	// 分页大小（PageNumber和PageSize 其中一个不填均默认返回10条数据,最大不超过100）
+	// 每页个数，默认为10，
+	// 范围：[1，100]
 	PageSize *string `json:"PageSize,omitempty" name:"PageSize"`
 }
 
@@ -988,50 +1018,60 @@ func (r *DescribeTrtcMcuTranscodeTimeResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeUserInformationRequestParams struct {
-	// 通话 ID（唯一标识一次通话）： sdkappid_roomgString（房间号_createTime（房间创建时间，unix时间戳，单位为s）例：1400353843_218695_1590065777。通过 DescribeRoomInformation（查询房间列表）接口获取（链接：https://cloud.tencent.com/document/product/647/44050）
+	// 通话 ID（唯一标识一次通话）： SdkAppId_RoomId（房间号）_ CreateTime（房间创建时间，unix时间戳，单位为s）例：1400xxxxxx_218695_1590065777。通过 DescribeRoomInfo（查询历史房间列表）接口获取（[查询历史房间列表](https://cloud.tencent.com/document/product/647/44050)）。
 	CommId *string `json:"CommId,omitempty" name:"CommId"`
 
-	// 查询开始时间，14天内。本地unix时间戳（1590065777）
+	// 查询开始时间，本地unix时间戳，单位为秒（如：1590065777）
+	// 注意：支持查询14天内的数据
 	StartTime *uint64 `json:"StartTime,omitempty" name:"StartTime"`
 
-	// 查询结束时间，本地unix时间戳（1590065877）
+	// 查询结束时间，本地unix时间戳，单位为秒（如：1590065877）
+	// 注意：与StartTime间隔时间不超过4小时。
 	EndTime *uint64 `json:"EndTime,omitempty" name:"EndTime"`
 
-	// 用户SDKAppID（1400353843）
+	// 用户SdkAppId（如：1400xxxxxx）
 	SdkAppId *string `json:"SdkAppId,omitempty" name:"SdkAppId"`
 
-	// 需查询的用户数组，不填默认返回6个用户,最多可填6个用户
+	// 需查询的用户数组，不填默认返回6个用户
+	// 范围：[1，100]。
 	UserIds []*string `json:"UserIds,omitempty" name:"UserIds"`
 
-	// 设置分页index，从0开始（PageNumber和PageSize 其中一个不填均默认返回6条数据）
+	// 当前页数，默认为0，
+	// 注意：PageNumber和PageSize 其中一个不填均默认返回6条数据。
 	PageNumber *string `json:"PageNumber,omitempty" name:"PageNumber"`
 
-	// 设置分页大小（PageNumber和PageSize 其中一个不填均默认返回6条数据,PageSize最大不超过100）
+	// 每页个数，默认为6，
+	// 范围：[1，100]。
 	PageSize *string `json:"PageSize,omitempty" name:"PageSize"`
 }
 
 type DescribeUserInformationRequest struct {
 	*tchttp.BaseRequest
 	
-	// 通话 ID（唯一标识一次通话）： sdkappid_roomgString（房间号_createTime（房间创建时间，unix时间戳，单位为s）例：1400353843_218695_1590065777。通过 DescribeRoomInformation（查询房间列表）接口获取（链接：https://cloud.tencent.com/document/product/647/44050）
+	// 通话 ID（唯一标识一次通话）： SdkAppId_RoomId（房间号）_ CreateTime（房间创建时间，unix时间戳，单位为s）例：1400xxxxxx_218695_1590065777。通过 DescribeRoomInfo（查询历史房间列表）接口获取（[查询历史房间列表](https://cloud.tencent.com/document/product/647/44050)）。
 	CommId *string `json:"CommId,omitempty" name:"CommId"`
 
-	// 查询开始时间，14天内。本地unix时间戳（1590065777）
+	// 查询开始时间，本地unix时间戳，单位为秒（如：1590065777）
+	// 注意：支持查询14天内的数据
 	StartTime *uint64 `json:"StartTime,omitempty" name:"StartTime"`
 
-	// 查询结束时间，本地unix时间戳（1590065877）
+	// 查询结束时间，本地unix时间戳，单位为秒（如：1590065877）
+	// 注意：与StartTime间隔时间不超过4小时。
 	EndTime *uint64 `json:"EndTime,omitempty" name:"EndTime"`
 
-	// 用户SDKAppID（1400353843）
+	// 用户SdkAppId（如：1400xxxxxx）
 	SdkAppId *string `json:"SdkAppId,omitempty" name:"SdkAppId"`
 
-	// 需查询的用户数组，不填默认返回6个用户,最多可填6个用户
+	// 需查询的用户数组，不填默认返回6个用户
+	// 范围：[1，100]。
 	UserIds []*string `json:"UserIds,omitempty" name:"UserIds"`
 
-	// 设置分页index，从0开始（PageNumber和PageSize 其中一个不填均默认返回6条数据）
+	// 当前页数，默认为0，
+	// 注意：PageNumber和PageSize 其中一个不填均默认返回6条数据。
 	PageNumber *string `json:"PageNumber,omitempty" name:"PageNumber"`
 
-	// 设置分页大小（PageNumber和PageSize 其中一个不填均默认返回6条数据,PageSize最大不超过100）
+	// 每页个数，默认为6，
+	// 范围：[1，100]。
 	PageSize *string `json:"PageSize,omitempty" name:"PageSize"`
 }
 
