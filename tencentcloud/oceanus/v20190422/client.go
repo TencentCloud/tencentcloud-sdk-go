@@ -86,6 +86,126 @@ func (c *Client) CheckSavepointWithContext(ctx context.Context, request *CheckSa
     return
 }
 
+func NewCopyJobsRequest() (request *CopyJobsRequest) {
+    request = &CopyJobsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("oceanus", APIVersion, "CopyJobs")
+    
+    
+    return
+}
+
+func NewCopyJobsResponse() (response *CopyJobsResponse) {
+    response = &CopyJobsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CopyJobs
+// 单条和批量复制作业
+//
+// https://iwiki.woa.com/pages/viewpage.action?pageId=1288112774
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CLS = "InternalError.CLS"
+//  INTERNALERROR_DB = "InternalError.DB"
+//  INTERNALERROR_STSNEWCLIENT = "InternalError.StsNewClient"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_NOPERMISSIONACCESS = "UnsupportedOperation.NoPermissionAccess"
+func (c *Client) CopyJobs(request *CopyJobsRequest) (response *CopyJobsResponse, err error) {
+    return c.CopyJobsWithContext(context.Background(), request)
+}
+
+// CopyJobs
+// 单条和批量复制作业
+//
+// https://iwiki.woa.com/pages/viewpage.action?pageId=1288112774
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CLS = "InternalError.CLS"
+//  INTERNALERROR_DB = "InternalError.DB"
+//  INTERNALERROR_STSNEWCLIENT = "InternalError.StsNewClient"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_NOPERMISSIONACCESS = "UnsupportedOperation.NoPermissionAccess"
+func (c *Client) CopyJobsWithContext(ctx context.Context, request *CopyJobsRequest) (response *CopyJobsResponse, err error) {
+    if request == nil {
+        request = NewCopyJobsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CopyJobs require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCopyJobsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateFolderRequest() (request *CreateFolderRequest) {
+    request = &CreateFolderRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("oceanus", APIVersion, "CreateFolder")
+    
+    
+    return
+}
+
+func NewCreateFolderResponse() (response *CreateFolderResponse) {
+    response = &CreateFolderResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateFolder
+// 作业列表页面新建文件夹请求
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNSUPPORTEDOPERATION_NOPERMISSIONACCESS = "UnsupportedOperation.NoPermissionAccess"
+func (c *Client) CreateFolder(request *CreateFolderRequest) (response *CreateFolderResponse, err error) {
+    return c.CreateFolderWithContext(context.Background(), request)
+}
+
+// CreateFolder
+// 作业列表页面新建文件夹请求
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNSUPPORTEDOPERATION_NOPERMISSIONACCESS = "UnsupportedOperation.NoPermissionAccess"
+func (c *Client) CreateFolderWithContext(ctx context.Context, request *CreateFolderRequest) (response *CreateFolderResponse, err error) {
+    if request == nil {
+        request = NewCreateFolderRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateFolder require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateFolderResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateJobRequest() (request *CreateJobRequest) {
     request = &CreateJobRequest{
         BaseRequest: &tchttp.BaseRequest{},

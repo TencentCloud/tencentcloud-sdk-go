@@ -519,6 +519,67 @@ func (c *Client) CreateCdcClusterWithContext(ctx context.Context, request *Creat
     return
 }
 
+func NewCreateConnectResourceRequest() (request *CreateConnectResourceRequest) {
+    request = &CreateConnectResourceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ckafka", APIVersion, "CreateConnectResource")
+    
+    
+    return
+}
+
+func NewCreateConnectResourceResponse() (response *CreateConnectResourceResponse) {
+    response = &CreateConnectResourceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateConnectResource
+// 创建Datahub连接源
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
+//  INVALIDPARAMETERVALUE_NOTALLOWEDEMPTY = "InvalidParameterValue.NotAllowedEmpty"
+//  INVALIDPARAMETERVALUE_REPETITIONVALUE = "InvalidParameterValue.RepetitionValue"
+func (c *Client) CreateConnectResource(request *CreateConnectResourceRequest) (response *CreateConnectResourceResponse, err error) {
+    return c.CreateConnectResourceWithContext(context.Background(), request)
+}
+
+// CreateConnectResource
+// 创建Datahub连接源
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
+//  INVALIDPARAMETERVALUE_NOTALLOWEDEMPTY = "InvalidParameterValue.NotAllowedEmpty"
+//  INVALIDPARAMETERVALUE_REPETITIONVALUE = "InvalidParameterValue.RepetitionValue"
+func (c *Client) CreateConnectResourceWithContext(ctx context.Context, request *CreateConnectResourceRequest) (response *CreateConnectResourceResponse, err error) {
+    if request == nil {
+        request = NewCreateConnectResourceRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateConnectResource require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateConnectResourceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateConsumerRequest() (request *CreateConsumerRequest) {
     request = &CreateConsumerRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -574,6 +635,69 @@ func (c *Client) CreateConsumerWithContext(ctx context.Context, request *CreateC
     request.SetContext(ctx)
     
     response = NewCreateConsumerResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateDatahubTaskRequest() (request *CreateDatahubTaskRequest) {
+    request = &CreateDatahubTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ckafka", APIVersion, "CreateDatahubTask")
+    
+    
+    return
+}
+
+func NewCreateDatahubTaskResponse() (response *CreateDatahubTaskResponse) {
+    response = &CreateDatahubTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateDatahubTask
+// 创建Datahub转储任务
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
+//  INVALIDPARAMETERVALUE_NOTALLOWEDEMPTY = "InvalidParameterValue.NotAllowedEmpty"
+//  INVALIDPARAMETERVALUE_REPETITIONVALUE = "InvalidParameterValue.RepetitionValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) CreateDatahubTask(request *CreateDatahubTaskRequest) (response *CreateDatahubTaskResponse, err error) {
+    return c.CreateDatahubTaskWithContext(context.Background(), request)
+}
+
+// CreateDatahubTask
+// 创建Datahub转储任务
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
+//  INVALIDPARAMETERVALUE_NOTALLOWEDEMPTY = "InvalidParameterValue.NotAllowedEmpty"
+//  INVALIDPARAMETERVALUE_REPETITIONVALUE = "InvalidParameterValue.RepetitionValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) CreateDatahubTaskWithContext(ctx context.Context, request *CreateDatahubTaskRequest) (response *CreateDatahubTaskResponse, err error) {
+    if request == nil {
+        request = NewCreateDatahubTaskRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateDatahubTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateDatahubTaskResponse()
     err = c.Send(request, response)
     return
 }

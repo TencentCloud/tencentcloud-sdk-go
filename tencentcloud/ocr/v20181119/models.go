@@ -7730,10 +7730,10 @@ type VatInvoiceVerifyRequestParams struct {
 	// 发票代码， 一张发票一天只能查询5次。
 	InvoiceCode *string `json:"InvoiceCode,omitempty" name:"InvoiceCode"`
 
-	// 发票号码（8位）。
+	// 发票号码（8位）
 	InvoiceNo *string `json:"InvoiceNo,omitempty" name:"InvoiceNo"`
 
-	// 开票日期（不支持当天发票查询，支持五年以内开具的发票），如：2019-12-20。
+	// 开票日期（不支持当天发票查询，支持五年以内开具的发票），格式：“YYYY-MM-DD”，如：2019-12-20。
 	InvoiceDate *string `json:"InvoiceDate,omitempty" name:"InvoiceDate"`
 
 	// 根据票种传递对应值，如果报参数错误，请仔细检查每个票种对应的值
@@ -7758,10 +7758,10 @@ type VatInvoiceVerifyRequest struct {
 	// 发票代码， 一张发票一天只能查询5次。
 	InvoiceCode *string `json:"InvoiceCode,omitempty" name:"InvoiceCode"`
 
-	// 发票号码（8位）。
+	// 发票号码（8位）
 	InvoiceNo *string `json:"InvoiceNo,omitempty" name:"InvoiceNo"`
 
-	// 开票日期（不支持当天发票查询，支持五年以内开具的发票），如：2019-12-20。
+	// 开票日期（不支持当天发票查询，支持五年以内开具的发票），格式：“YYYY-MM-DD”，如：2019-12-20。
 	InvoiceDate *string `json:"InvoiceDate,omitempty" name:"InvoiceDate"`
 
 	// 根据票种传递对应值，如果报参数错误，请仔细检查每个票种对应的值

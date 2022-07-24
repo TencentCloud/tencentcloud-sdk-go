@@ -2644,14 +2644,14 @@ type MappingResult struct {
 }
 
 type QueryFilter struct {
-	// 查询的字段
+	// 过滤key
 	FilterKey *string `json:"FilterKey,omitempty" name:"FilterKey"`
 
-	// 查询的值
-	FilterValue *string `json:"FilterValue,omitempty" name:"FilterValue"`
-
-	// 匹配类型，1等于；2大于；3小于；4大于等于；5小于等于；6不等于；7in；8not in；9模糊匹配
+	// 操作符(只支持32位)
 	FilterOperatorType *int64 `json:"FilterOperatorType,omitempty" name:"FilterOperatorType"`
+
+	// 过滤value
+	FilterValue *string `json:"FilterValue,omitempty" name:"FilterValue"`
 }
 
 type QuerySort struct {

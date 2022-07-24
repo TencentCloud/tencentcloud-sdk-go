@@ -1763,6 +1763,10 @@ func NewGeneralBasicOCRResponse() (response *GeneralBasicOCRResponse) {
 //
 //     </table>
 //
+// 
+//
+// 默认接口请求频率限制：20次/秒。
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
 //  FAILEDOPERATION_EMPTYIMAGEERROR = "FailedOperation.EmptyImageError"
@@ -1902,6 +1906,10 @@ func (c *Client) GeneralBasicOCR(request *GeneralBasicOCRRequest) (response *Gen
 //       </tbody>
 //
 //     </table>
+//
+// 
+//
+// 默认接口请求频率限制：20次/秒。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
@@ -5168,8 +5176,11 @@ func NewVatInvoiceVerifyResponse() (response *VatInvoiceVerifyResponse) {
 //  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
 //  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
+//  INVALIDPARAMETERVALUE_PRICEORVERIFICATIONPARAMETERVALUELIMIT = "InvalidParameterValue.PriceOrVerificationParameterValueLimit"
+//  INVALIDPARAMETERVALUE_TICKETDATEPARAMETERVALUELIMIT = "InvalidParameterValue.TicketDateParameterValueLimit"
 //  RESOURCENOTFOUND_NOINVOICE = "ResourceNotFound.NoInvoice"
 //  RESOURCENOTFOUND_NOTSUPPORTCURRENTINVOICEQUERY = "ResourceNotFound.NotSupportCurrentInvoiceQuery"
+//  RESOURCEUNAVAILABLE_TAXNETWORKERROR = "ResourceUnavailable.TaxNetworkError"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) VatInvoiceVerify(request *VatInvoiceVerifyRequest) (response *VatInvoiceVerifyResponse, err error) {
     return c.VatInvoiceVerifyWithContext(context.Background(), request)
@@ -5185,8 +5196,11 @@ func (c *Client) VatInvoiceVerify(request *VatInvoiceVerifyRequest) (response *V
 //  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
 //  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
+//  INVALIDPARAMETERVALUE_PRICEORVERIFICATIONPARAMETERVALUELIMIT = "InvalidParameterValue.PriceOrVerificationParameterValueLimit"
+//  INVALIDPARAMETERVALUE_TICKETDATEPARAMETERVALUELIMIT = "InvalidParameterValue.TicketDateParameterValueLimit"
 //  RESOURCENOTFOUND_NOINVOICE = "ResourceNotFound.NoInvoice"
 //  RESOURCENOTFOUND_NOTSUPPORTCURRENTINVOICEQUERY = "ResourceNotFound.NotSupportCurrentInvoiceQuery"
+//  RESOURCEUNAVAILABLE_TAXNETWORKERROR = "ResourceUnavailable.TaxNetworkError"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) VatInvoiceVerifyWithContext(ctx context.Context, request *VatInvoiceVerifyRequest) (response *VatInvoiceVerifyResponse, err error) {
     if request == nil {

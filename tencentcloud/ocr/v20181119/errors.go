@@ -59,7 +59,7 @@ const (
 	// 图片尺寸过大，请参考输出参数中关于图片大小限制的说明。
 	FAILEDOPERATION_IMAGESIZETOOLARGE = "FailedOperation.ImageSizeTooLarge"
 
-	// 发票数据不一致。
+	// 发票数据不一致。温馨提示：新版发票核验接口功能更完整，请尽快切换，如已切换请忽略。
 	FAILEDOPERATION_INVOICEMISMATCH = "FailedOperation.InvoiceMismatch"
 
 	// 输入的Language不支持。
@@ -125,7 +125,7 @@ const (
 	// 地区编码不存在。
 	RESOURCENOTFOUND_NOAREACODE = "ResourceNotFound.NoAreaCode"
 
-	// 发票不存在。
+	// 发票不存在。温馨提示：新版发票核验接口功能更完整，请尽快切换，如已切换请忽略。
 	RESOURCENOTFOUND_NOINVOICE = "ResourceNotFound.NoInvoice"
 
 	// 不支持当天发票查询。

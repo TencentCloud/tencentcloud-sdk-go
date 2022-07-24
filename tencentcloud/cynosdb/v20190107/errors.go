@@ -92,6 +92,9 @@ const (
 	// 未找到该接口。
 	INVALIDPARAMETER_CONTROLLERNOTFOUNDERROR = "InvalidParameter.ControllerNotFoundError"
 
+	// 未知参数，请检查参数是否有效。
+	INVALIDPARAMETER_INVALIDPARAMETERERROR = "InvalidParameter.InvalidParameterError"
+
 	// 当前实例不可隔离。
 	INVALIDPARAMETER_ISOLATENOTALLOWED = "InvalidParameter.IsolateNotAllowed"
 

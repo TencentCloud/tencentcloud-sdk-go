@@ -4254,6 +4254,9 @@ type DescribeIpStatusRequestParams struct {
 
 	// 是否以IP段的格式返回。
 	Segment *bool `json:"Segment,omitempty" name:"Segment"`
+
+	// 是否查询节点 IPV6 信息。
+	ShowIpv6 *bool `json:"ShowIpv6,omitempty" name:"ShowIpv6"`
 }
 
 type DescribeIpStatusRequest struct {
@@ -4276,6 +4279,9 @@ type DescribeIpStatusRequest struct {
 
 	// 是否以IP段的格式返回。
 	Segment *bool `json:"Segment,omitempty" name:"Segment"`
+
+	// 是否查询节点 IPV6 信息。
+	ShowIpv6 *bool `json:"ShowIpv6,omitempty" name:"ShowIpv6"`
 }
 
 func (r *DescribeIpStatusRequest) ToJsonString() string {
@@ -4294,6 +4300,7 @@ func (r *DescribeIpStatusRequest) FromJsonString(s string) error {
 	delete(f, "Layer")
 	delete(f, "Area")
 	delete(f, "Segment")
+	delete(f, "ShowIpv6")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeIpStatusRequest has unknown keys!", "")
 	}
@@ -7678,6 +7685,10 @@ type IpStatus struct {
 	// online：上线状态，正常调度服务中
 	// offline：下线状态
 	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 节点 IPV6
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Ipv6 *string `json:"Ipv6,omitempty" name:"Ipv6"`
 }
 
 type Ipv6 struct {

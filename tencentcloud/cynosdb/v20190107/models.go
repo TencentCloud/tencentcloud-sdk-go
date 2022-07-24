@@ -3275,6 +3275,129 @@ type InputAccount struct {
 	Host *string `json:"Host,omitempty" name:"Host"`
 }
 
+// Predefined struct for user
+type InquirePriceCreateRequestParams struct {
+	// 可用区,每个地域提供最佳实践
+	Zone *string `json:"Zone,omitempty" name:"Zone"`
+
+	// 购买商品数量
+	GoodsNum *int64 `json:"GoodsNum,omitempty" name:"GoodsNum"`
+
+	// 实例购买类型，可选值为：PREPAID, POSTPAID, SERVERLESS
+	InstancePayMode *string `json:"InstancePayMode,omitempty" name:"InstancePayMode"`
+
+	// 存储购买类型，可选值为：PREPAID, POSTPAID
+	StoragePayMode *string `json:"StoragePayMode,omitempty" name:"StoragePayMode"`
+
+	// CPU核数，PREPAID与POSTPAID实例类型必传
+	Cpu *int64 `json:"Cpu,omitempty" name:"Cpu"`
+
+	// 内存大小，单位G，PREPAID与POSTPAID实例类型必传
+	Memory *int64 `json:"Memory,omitempty" name:"Memory"`
+
+	// Ccu大小，serverless类型必传
+	Ccu *float64 `json:"Ccu,omitempty" name:"Ccu"`
+
+	// 存储大小，PREPAID存储类型必传
+	StorageLimit *int64 `json:"StorageLimit,omitempty" name:"StorageLimit"`
+
+	// 购买时长，PREPAID购买类型必传
+	TimeSpan *int64 `json:"TimeSpan,omitempty" name:"TimeSpan"`
+
+	// 时长单位，可选值为：m,d。PREPAID购买类型必传
+	TimeUnit *string `json:"TimeUnit,omitempty" name:"TimeUnit"`
+}
+
+type InquirePriceCreateRequest struct {
+	*tchttp.BaseRequest
+	
+	// 可用区,每个地域提供最佳实践
+	Zone *string `json:"Zone,omitempty" name:"Zone"`
+
+	// 购买商品数量
+	GoodsNum *int64 `json:"GoodsNum,omitempty" name:"GoodsNum"`
+
+	// 实例购买类型，可选值为：PREPAID, POSTPAID, SERVERLESS
+	InstancePayMode *string `json:"InstancePayMode,omitempty" name:"InstancePayMode"`
+
+	// 存储购买类型，可选值为：PREPAID, POSTPAID
+	StoragePayMode *string `json:"StoragePayMode,omitempty" name:"StoragePayMode"`
+
+	// CPU核数，PREPAID与POSTPAID实例类型必传
+	Cpu *int64 `json:"Cpu,omitempty" name:"Cpu"`
+
+	// 内存大小，单位G，PREPAID与POSTPAID实例类型必传
+	Memory *int64 `json:"Memory,omitempty" name:"Memory"`
+
+	// Ccu大小，serverless类型必传
+	Ccu *float64 `json:"Ccu,omitempty" name:"Ccu"`
+
+	// 存储大小，PREPAID存储类型必传
+	StorageLimit *int64 `json:"StorageLimit,omitempty" name:"StorageLimit"`
+
+	// 购买时长，PREPAID购买类型必传
+	TimeSpan *int64 `json:"TimeSpan,omitempty" name:"TimeSpan"`
+
+	// 时长单位，可选值为：m,d。PREPAID购买类型必传
+	TimeUnit *string `json:"TimeUnit,omitempty" name:"TimeUnit"`
+}
+
+func (r *InquirePriceCreateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *InquirePriceCreateRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Zone")
+	delete(f, "GoodsNum")
+	delete(f, "InstancePayMode")
+	delete(f, "StoragePayMode")
+	delete(f, "Cpu")
+	delete(f, "Memory")
+	delete(f, "Ccu")
+	delete(f, "StorageLimit")
+	delete(f, "TimeSpan")
+	delete(f, "TimeUnit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "InquirePriceCreateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type InquirePriceCreateResponseParams struct {
+	// 实例价格
+	InstancePrice *TradePrice `json:"InstancePrice,omitempty" name:"InstancePrice"`
+
+	// 存储价格
+	StoragePrice *TradePrice `json:"StoragePrice,omitempty" name:"StoragePrice"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type InquirePriceCreateResponse struct {
+	*tchttp.BaseResponse
+	Response *InquirePriceCreateResponseParams `json:"Response"`
+}
+
+func (r *InquirePriceCreateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *InquirePriceCreateResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type InstanceSpec struct {
 	// 实例CPU，单位：核
 	Cpu *uint64 `json:"Cpu,omitempty" name:"Cpu"`
@@ -4682,6 +4805,30 @@ type Tag struct {
 
 	// 标签值
 	TagValue *string `json:"TagValue,omitempty" name:"TagValue"`
+}
+
+type TradePrice struct {
+	// 预付费模式下资源总价，不包含优惠，单位:分
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalPrice *int64 `json:"TotalPrice,omitempty" name:"TotalPrice"`
+
+	// 总的折扣，100表示100%不打折
+	Discount *float64 `json:"Discount,omitempty" name:"Discount"`
+
+	// 预付费模式下的优惠后总价, 单位: 分,例如用户享有折扣 =TotalPrice × Discount
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalPriceDiscount *int64 `json:"TotalPriceDiscount,omitempty" name:"TotalPriceDiscount"`
+
+	// 后付费模式下的单位资源价格，不包含优惠，单位:分
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UnitPrice *int64 `json:"UnitPrice,omitempty" name:"UnitPrice"`
+
+	// 优惠后后付费模式下的单位资源价格, 单位: 分,例如用户享有折扣=UnitPricet × Discount
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UnitPriceDiscount *int64 `json:"UnitPriceDiscount,omitempty" name:"UnitPriceDiscount"`
+
+	// 计费价格单位
+	ChargeUnit *string `json:"ChargeUnit,omitempty" name:"ChargeUnit"`
 }
 
 // Predefined struct for user

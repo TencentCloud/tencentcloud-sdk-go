@@ -2964,6 +2964,9 @@ type DescribeInstancesRequestParams struct {
 
 	// 需要过滤的产品版本支持多个，"local"本地盘版，"cloud"云盘版，"cdc"独享集群版，如果不传则默认不过滤
 	ProductVersions []*string `json:"ProductVersions,omitempty" name:"ProductVersions"`
+
+	// 批量查询指定的实例
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
 }
 
 type DescribeInstancesRequest struct {
@@ -3043,6 +3046,9 @@ type DescribeInstancesRequest struct {
 
 	// 需要过滤的产品版本支持多个，"local"本地盘版，"cloud"云盘版，"cdc"独享集群版，如果不传则默认不过滤
 	ProductVersions []*string `json:"ProductVersions,omitempty" name:"ProductVersions"`
+
+	// 批量查询指定的实例
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
 }
 
 func (r *DescribeInstancesRequest) ToJsonString() string {
@@ -3082,6 +3088,7 @@ func (r *DescribeInstancesRequest) FromJsonString(s string) error {
 	delete(f, "InstanceTags")
 	delete(f, "TagKeys")
 	delete(f, "ProductVersions")
+	delete(f, "InstanceIds")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeInstancesRequest has unknown keys!", "")
 	}

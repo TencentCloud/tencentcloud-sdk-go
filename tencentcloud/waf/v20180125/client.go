@@ -299,53 +299,6 @@ func (c *Client) CreateAccessExportWithContext(ctx context.Context, request *Cre
     return
 }
 
-func NewCreateAttackDownloadTaskRequest() (request *CreateAttackDownloadTaskRequest) {
-    request = &CreateAttackDownloadTaskRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    request.Init().WithApiInfo("waf", APIVersion, "CreateAttackDownloadTask")
-    
-    
-    return
-}
-
-func NewCreateAttackDownloadTaskResponse() (response *CreateAttackDownloadTaskResponse) {
-    response = &CreateAttackDownloadTaskResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// CreateAttackDownloadTask
-// 创建攻击日志下载任务
-//
-// 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-func (c *Client) CreateAttackDownloadTask(request *CreateAttackDownloadTaskRequest) (response *CreateAttackDownloadTaskResponse, err error) {
-    return c.CreateAttackDownloadTaskWithContext(context.Background(), request)
-}
-
-// CreateAttackDownloadTask
-// 创建攻击日志下载任务
-//
-// 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-func (c *Client) CreateAttackDownloadTaskWithContext(ctx context.Context, request *CreateAttackDownloadTaskRequest) (response *CreateAttackDownloadTaskResponse, err error) {
-    if request == nil {
-        request = NewCreateAttackDownloadTaskRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("CreateAttackDownloadTask require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewCreateAttackDownloadTaskResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewDeleteAccessExportRequest() (request *DeleteAccessExportRequest) {
     request = &DeleteAccessExportRequest{
         BaseRequest: &tchttp.BaseRequest{},

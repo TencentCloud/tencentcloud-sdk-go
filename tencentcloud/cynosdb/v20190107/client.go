@@ -2009,6 +2009,61 @@ func (c *Client) GrantAccountPrivilegesWithContext(ctx context.Context, request 
     return
 }
 
+func NewInquirePriceCreateRequest() (request *InquirePriceCreateRequest) {
+    request = &InquirePriceCreateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cynosdb", APIVersion, "InquirePriceCreate")
+    
+    
+    return
+}
+
+func NewInquirePriceCreateResponse() (response *InquirePriceCreateResponse) {
+    response = &InquirePriceCreateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// InquirePriceCreate
+// 查询新购集群价格
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
+//  INVALIDPARAMETER_INVALIDPARAMETERERROR = "InvalidParameter.InvalidParameterError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  INVALIDPARAMETERVALUE_INVALIDZONEIDERROR = "InvalidParameterValue.InvalidZoneIdError"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) InquirePriceCreate(request *InquirePriceCreateRequest) (response *InquirePriceCreateResponse, err error) {
+    return c.InquirePriceCreateWithContext(context.Background(), request)
+}
+
+// InquirePriceCreate
+// 查询新购集群价格
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
+//  INVALIDPARAMETER_INVALIDPARAMETERERROR = "InvalidParameter.InvalidParameterError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  INVALIDPARAMETERVALUE_INVALIDZONEIDERROR = "InvalidParameterValue.InvalidZoneIdError"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) InquirePriceCreateWithContext(ctx context.Context, request *InquirePriceCreateRequest) (response *InquirePriceCreateResponse, err error) {
+    if request == nil {
+        request = NewInquirePriceCreateRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("InquirePriceCreate require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewInquirePriceCreateResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewIsolateClusterRequest() (request *IsolateClusterRequest) {
     request = &IsolateClusterRequest{
         BaseRequest: &tchttp.BaseRequest{},
