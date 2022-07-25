@@ -1839,6 +1839,7 @@ func NewStartMCUMixTranscodeResponse() (response *StartMCUMixTranscodeResponse) 
 // 3、客户端混流和服务端混流不能混用。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_REQUESTREJECTION = "FailedOperation.RequestRejection"
 //  FAILEDOPERATION_ROOMNOTEXIST = "FailedOperation.RoomNotExist"
 //  INTERNALERROR = "InternalError"
@@ -1873,6 +1874,7 @@ func NewStartMCUMixTranscodeResponse() (response *StartMCUMixTranscodeResponse) 
 //  MISSINGPARAMETER_STREAMID = "MissingParameter.StreamId"
 //  MISSINGPARAMETER_VIDEOENCODEPARAMS = "MissingParameter.VideoEncodeParams"
 //  RESOURCEINSUFFICIENT_REQUESTREJECTION = "ResourceInsufficient.RequestRejection"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNAUTHORIZEDOPERATION_SDKAPPID = "UnauthorizedOperation.SdkAppId"
 func (c *Client) StartMCUMixTranscode(request *StartMCUMixTranscodeRequest) (response *StartMCUMixTranscodeResponse, err error) {
     return c.StartMCUMixTranscodeWithContext(context.Background(), request)
@@ -1922,6 +1924,7 @@ func (c *Client) StartMCUMixTranscode(request *StartMCUMixTranscodeRequest) (res
 // 3、客户端混流和服务端混流不能混用。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_REQUESTREJECTION = "FailedOperation.RequestRejection"
 //  FAILEDOPERATION_ROOMNOTEXIST = "FailedOperation.RoomNotExist"
 //  INTERNALERROR = "InternalError"
@@ -1956,6 +1959,7 @@ func (c *Client) StartMCUMixTranscode(request *StartMCUMixTranscodeRequest) (res
 //  MISSINGPARAMETER_STREAMID = "MissingParameter.StreamId"
 //  MISSINGPARAMETER_VIDEOENCODEPARAMS = "MissingParameter.VideoEncodeParams"
 //  RESOURCEINSUFFICIENT_REQUESTREJECTION = "ResourceInsufficient.RequestRejection"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNAUTHORIZEDOPERATION_SDKAPPID = "UnauthorizedOperation.SdkAppId"
 func (c *Client) StartMCUMixTranscodeWithContext(ctx context.Context, request *StartMCUMixTranscodeRequest) (response *StartMCUMixTranscodeResponse, err error) {
     if request == nil {

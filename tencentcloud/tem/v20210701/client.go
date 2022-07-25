@@ -186,6 +186,7 @@ func NewCreateEnvironmentResponse() (response *CreateEnvironmentResponse) {
 //  INTERNALERROR_DEFAULTINTERNALERROR = "InternalError.DefaultInternalError"
 //  INVALIDPARAMETERVALUE_NAMESPACEDUPLICATEERROR = "InvalidParameterValue.NamespaceDuplicateError"
 //  INVALIDPARAMETERVALUE_NAMESPACEREACHMAXIMUM = "InvalidParameterValue.NamespaceReachMaximum"
+//  OPERATIONDENIED_BALANCENOTENOUGH = "OperationDenied.BalanceNotEnough"
 func (c *Client) CreateEnvironment(request *CreateEnvironmentRequest) (response *CreateEnvironmentResponse, err error) {
     return c.CreateEnvironmentWithContext(context.Background(), request)
 }
@@ -198,6 +199,7 @@ func (c *Client) CreateEnvironment(request *CreateEnvironmentRequest) (response 
 //  INTERNALERROR_DEFAULTINTERNALERROR = "InternalError.DefaultInternalError"
 //  INVALIDPARAMETERVALUE_NAMESPACEDUPLICATEERROR = "InvalidParameterValue.NamespaceDuplicateError"
 //  INVALIDPARAMETERVALUE_NAMESPACEREACHMAXIMUM = "InvalidParameterValue.NamespaceReachMaximum"
+//  OPERATIONDENIED_BALANCENOTENOUGH = "OperationDenied.BalanceNotEnough"
 func (c *Client) CreateEnvironmentWithContext(ctx context.Context, request *CreateEnvironmentRequest) (response *CreateEnvironmentResponse, err error) {
     if request == nil {
         request = NewCreateEnvironmentRequest()
@@ -670,6 +672,7 @@ func NewDescribeEnvironmentsResponse() (response *DescribeEnvironmentsResponse) 
 // 可能返回的错误码:
 //  INTERNALERROR_DEFAULTINTERNALERROR = "InternalError.DefaultInternalError"
 //  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
+//  RESOURCENOTFOUND_NAMESPACENOTFOUND = "ResourceNotFound.NamespaceNotFound"
 func (c *Client) DescribeEnvironments(request *DescribeEnvironmentsRequest) (response *DescribeEnvironmentsResponse, err error) {
     return c.DescribeEnvironmentsWithContext(context.Background(), request)
 }
@@ -680,6 +683,7 @@ func (c *Client) DescribeEnvironments(request *DescribeEnvironmentsRequest) (res
 // 可能返回的错误码:
 //  INTERNALERROR_DEFAULTINTERNALERROR = "InternalError.DefaultInternalError"
 //  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
+//  RESOURCENOTFOUND_NAMESPACENOTFOUND = "ResourceNotFound.NamespaceNotFound"
 func (c *Client) DescribeEnvironmentsWithContext(ctx context.Context, request *DescribeEnvironmentsRequest) (response *DescribeEnvironmentsResponse, err error) {
     if request == nil {
         request = NewDescribeEnvironmentsRequest()
@@ -1021,6 +1025,7 @@ func NewModifyApplicationReplicasResponse() (response *ModifyApplicationReplicas
 // 修改应用实例数量
 //
 // 可能返回的错误码:
+//  OPERATIONDENIED_RESOURCEISOLATED = "OperationDenied.ResourceIsolated"
 //  RESOURCENOTFOUND_SERVICERUNNINGVERSIONNOTFOUND = "ResourceNotFound.ServiceRunningVersionNotFound"
 func (c *Client) ModifyApplicationReplicas(request *ModifyApplicationReplicasRequest) (response *ModifyApplicationReplicasResponse, err error) {
     return c.ModifyApplicationReplicasWithContext(context.Background(), request)
@@ -1030,6 +1035,7 @@ func (c *Client) ModifyApplicationReplicas(request *ModifyApplicationReplicasReq
 // 修改应用实例数量
 //
 // 可能返回的错误码:
+//  OPERATIONDENIED_RESOURCEISOLATED = "OperationDenied.ResourceIsolated"
 //  RESOURCENOTFOUND_SERVICERUNNINGVERSIONNOTFOUND = "ResourceNotFound.ServiceRunningVersionNotFound"
 func (c *Client) ModifyApplicationReplicasWithContext(ctx context.Context, request *ModifyApplicationReplicasRequest) (response *ModifyApplicationReplicasResponse, err error) {
     if request == nil {
@@ -1070,6 +1076,7 @@ func NewModifyEnvironmentResponse() (response *ModifyEnvironmentResponse) {
 // 可能返回的错误码:
 //  INTERNALERROR_ADDNEWNODEERROR = "InternalError.AddNewNodeError"
 //  INTERNALERROR_DEFAULTINTERNALERROR = "InternalError.DefaultInternalError"
+//  OPERATIONDENIED_RESOURCEISOLATED = "OperationDenied.ResourceIsolated"
 func (c *Client) ModifyEnvironment(request *ModifyEnvironmentRequest) (response *ModifyEnvironmentResponse, err error) {
     return c.ModifyEnvironmentWithContext(context.Background(), request)
 }
@@ -1080,6 +1087,7 @@ func (c *Client) ModifyEnvironment(request *ModifyEnvironmentRequest) (response 
 // 可能返回的错误码:
 //  INTERNALERROR_ADDNEWNODEERROR = "InternalError.AddNewNodeError"
 //  INTERNALERROR_DEFAULTINTERNALERROR = "InternalError.DefaultInternalError"
+//  OPERATIONDENIED_RESOURCEISOLATED = "OperationDenied.ResourceIsolated"
 func (c *Client) ModifyEnvironmentWithContext(ctx context.Context, request *ModifyEnvironmentRequest) (response *ModifyEnvironmentResponse, err error) {
     if request == nil {
         request = NewModifyEnvironmentRequest()
@@ -1166,6 +1174,7 @@ func NewRestartApplicationResponse() (response *RestartApplicationResponse) {
 // 可能返回的错误码:
 //  INTERNALERROR_RESTARTAPPLICATIONERROR = "InternalError.RestartApplicationError"
 //  MISSINGPARAMETER_NAMESPACEIDNULL = "MissingParameter.NamespaceIdNull"
+//  OPERATIONDENIED_RESOURCEISOLATED = "OperationDenied.ResourceIsolated"
 //  RESOURCENOTFOUND_SERVICERUNNINGVERSIONNOTFOUND = "ResourceNotFound.ServiceRunningVersionNotFound"
 //  RESOURCENOTFOUND_VERSIONNAMESPACENOTFOUND = "ResourceNotFound.VersionNamespaceNotFound"
 func (c *Client) RestartApplication(request *RestartApplicationRequest) (response *RestartApplicationResponse, err error) {
@@ -1178,6 +1187,7 @@ func (c *Client) RestartApplication(request *RestartApplicationRequest) (respons
 // 可能返回的错误码:
 //  INTERNALERROR_RESTARTAPPLICATIONERROR = "InternalError.RestartApplicationError"
 //  MISSINGPARAMETER_NAMESPACEIDNULL = "MissingParameter.NamespaceIdNull"
+//  OPERATIONDENIED_RESOURCEISOLATED = "OperationDenied.ResourceIsolated"
 //  RESOURCENOTFOUND_SERVICERUNNINGVERSIONNOTFOUND = "ResourceNotFound.ServiceRunningVersionNotFound"
 //  RESOURCENOTFOUND_VERSIONNAMESPACENOTFOUND = "ResourceNotFound.VersionNamespaceNotFound"
 func (c *Client) RestartApplicationWithContext(ctx context.Context, request *RestartApplicationRequest) (response *RestartApplicationResponse, err error) {
@@ -1219,6 +1229,7 @@ func NewRestartApplicationPodResponse() (response *RestartApplicationPodResponse
 // 可能返回的错误码:
 //  INTERNALERROR_RESTARTAPPLICATIONERROR = "InternalError.RestartApplicationError"
 //  MISSINGPARAMETER_NAMESPACEIDNULL = "MissingParameter.NamespaceIdNull"
+//  OPERATIONDENIED_RESOURCEISOLATED = "OperationDenied.ResourceIsolated"
 //  RESOURCENOTFOUND_SERVICERUNNINGVERSIONNOTFOUND = "ResourceNotFound.ServiceRunningVersionNotFound"
 //  RESOURCENOTFOUND_VERSIONNAMESPACENOTFOUND = "ResourceNotFound.VersionNamespaceNotFound"
 func (c *Client) RestartApplicationPod(request *RestartApplicationPodRequest) (response *RestartApplicationPodResponse, err error) {
@@ -1231,6 +1242,7 @@ func (c *Client) RestartApplicationPod(request *RestartApplicationPodRequest) (r
 // 可能返回的错误码:
 //  INTERNALERROR_RESTARTAPPLICATIONERROR = "InternalError.RestartApplicationError"
 //  MISSINGPARAMETER_NAMESPACEIDNULL = "MissingParameter.NamespaceIdNull"
+//  OPERATIONDENIED_RESOURCEISOLATED = "OperationDenied.ResourceIsolated"
 //  RESOURCENOTFOUND_SERVICERUNNINGVERSIONNOTFOUND = "ResourceNotFound.ServiceRunningVersionNotFound"
 //  RESOURCENOTFOUND_VERSIONNAMESPACENOTFOUND = "ResourceNotFound.VersionNamespaceNotFound"
 func (c *Client) RestartApplicationPodWithContext(ctx context.Context, request *RestartApplicationPodRequest) (response *RestartApplicationPodResponse, err error) {

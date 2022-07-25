@@ -125,6 +125,12 @@ const (
 	// 镜像仓库还未就绪。
 	MISSINGPARAMETER_SVCREPONOTREADY = "MissingParameter.SvcRepoNotReady"
 
+	// 账户余额不足。
+	OPERATIONDENIED_BALANCENOTENOUGH = "OperationDenied.BalanceNotEnough"
+
+	// 账号欠费状态下不支持该操作，请冲正后重试。
+	OPERATIONDENIED_RESOURCEISOLATED = "OperationDenied.ResourceIsolated"
+
 	// 你操作的资源已被其他操作占用，请稍后重试。
 	RESOURCEINUSE_RESOURCEALREADYLOCKED = "ResourceInUse.ResourceAlreadyLocked"
 

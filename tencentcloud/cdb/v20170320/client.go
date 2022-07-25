@@ -760,6 +760,7 @@ func NewCreateBackupResponse() (response *CreateBackupResponse) {
 // 可能返回的错误码:
 //  CDBERROR = "CdbError"
 //  FAILEDOPERATION_STATUSCONFLICT = "FailedOperation.StatusConflict"
+//  INTERNALERROR_CDBERROR = "InternalError.CdbError"
 //  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
 //  INTERNALERROR_DESERROR = "InternalError.DesError"
 //  INTERNALERROR_UNDEFINEDERROR = "InternalError.UndefinedError"
@@ -779,6 +780,7 @@ func (c *Client) CreateBackup(request *CreateBackupRequest) (response *CreateBac
 // 可能返回的错误码:
 //  CDBERROR = "CdbError"
 //  FAILEDOPERATION_STATUSCONFLICT = "FailedOperation.StatusConflict"
+//  INTERNALERROR_CDBERROR = "InternalError.CdbError"
 //  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
 //  INTERNALERROR_DESERROR = "InternalError.DesError"
 //  INTERNALERROR_UNDEFINEDERROR = "InternalError.UndefinedError"
@@ -899,6 +901,7 @@ func NewCreateDBImportJobResponse() (response *CreateDBImportJobResponse) {
 //  CDBERROR = "CdbError"
 //  CDBERROR_IMPORTERROR = "CdbError.ImportError"
 //  FAILEDOPERATION_STATUSCONFLICT = "FailedOperation.StatusConflict"
+//  INTERNALERROR_CDBERROR = "InternalError.CdbError"
 //  INTERNALERROR_EXECUTESQLERROR = "InternalError.ExecuteSQLError"
 //  INTERNALERROR_UNDEFINEDERROR = "InternalError.UndefinedError"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -923,6 +926,7 @@ func (c *Client) CreateDBImportJob(request *CreateDBImportJobRequest) (response 
 //  CDBERROR = "CdbError"
 //  CDBERROR_IMPORTERROR = "CdbError.ImportError"
 //  FAILEDOPERATION_STATUSCONFLICT = "FailedOperation.StatusConflict"
+//  INTERNALERROR_CDBERROR = "InternalError.CdbError"
 //  INTERNALERROR_EXECUTESQLERROR = "InternalError.ExecuteSQLError"
 //  INTERNALERROR_UNDEFINEDERROR = "InternalError.UndefinedError"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -3105,6 +3109,7 @@ func NewDescribeDBInstanceCharsetResponse() (response *DescribeDBInstanceCharset
 //  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
 //  INTERNALERROR_EXESQLERROR = "InternalError.ExeSqlError"
 //  INTERNALERROR_OSSERROR = "InternalError.OssError"
+//  INTERNALERROR_PARAMERROR = "InternalError.ParamError"
 //  INTERNALERROR_UNDEFINEDERROR = "InternalError.UndefinedError"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -3122,6 +3127,7 @@ func (c *Client) DescribeDBInstanceCharset(request *DescribeDBInstanceCharsetReq
 //  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
 //  INTERNALERROR_EXESQLERROR = "InternalError.ExeSqlError"
 //  INTERNALERROR_OSSERROR = "InternalError.OssError"
+//  INTERNALERROR_PARAMERROR = "InternalError.ParamError"
 //  INTERNALERROR_UNDEFINEDERROR = "InternalError.UndefinedError"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -6734,6 +6740,7 @@ func NewModifyInstanceParamResponse() (response *ModifyInstanceParamResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
 //  INVALIDPARAMETERVALUE_DATACONVERTERROR = "InvalidParameterValue.DataConvertError"
+//  OPERATIONDENIED = "OperationDenied"
 func (c *Client) ModifyInstanceParam(request *ModifyInstanceParamRequest) (response *ModifyInstanceParamResponse, err error) {
     return c.ModifyInstanceParamWithContext(context.Background(), request)
 }
@@ -6753,6 +6760,7 @@ func (c *Client) ModifyInstanceParam(request *ModifyInstanceParamRequest) (respo
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
 //  INVALIDPARAMETERVALUE_DATACONVERTERROR = "InvalidParameterValue.DataConvertError"
+//  OPERATIONDENIED = "OperationDenied"
 func (c *Client) ModifyInstanceParamWithContext(ctx context.Context, request *ModifyInstanceParamRequest) (response *ModifyInstanceParamResponse, err error) {
     if request == nil {
         request = NewModifyInstanceParamRequest()
@@ -6868,6 +6876,7 @@ func NewModifyLocalBinlogConfigResponse() (response *ModifyLocalBinlogConfigResp
 //  INTERNALERROR_DBRECORDNOTEXISTERROR = "InternalError.DBRecordNotExistError"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  OPERATIONDENIED_INSTANCEUNSUPPORTEDOPERATEERROR = "OperationDenied.InstanceUnsupportedOperateError"
 func (c *Client) ModifyLocalBinlogConfig(request *ModifyLocalBinlogConfigRequest) (response *ModifyLocalBinlogConfigResponse, err error) {
     return c.ModifyLocalBinlogConfigWithContext(context.Background(), request)
 }
@@ -6879,6 +6888,7 @@ func (c *Client) ModifyLocalBinlogConfig(request *ModifyLocalBinlogConfigRequest
 //  INTERNALERROR_DBRECORDNOTEXISTERROR = "InternalError.DBRecordNotExistError"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  OPERATIONDENIED_INSTANCEUNSUPPORTEDOPERATEERROR = "OperationDenied.InstanceUnsupportedOperateError"
 func (c *Client) ModifyLocalBinlogConfigWithContext(ctx context.Context, request *ModifyLocalBinlogConfigRequest) (response *ModifyLocalBinlogConfigResponse, err error) {
     if request == nil {
         request = NewModifyLocalBinlogConfigRequest()
@@ -7229,7 +7239,9 @@ func NewOpenAuditServiceResponse() (response *OpenAuditServiceResponse) {
 // CDB实例开通审计服务
 //
 // 可能返回的错误码:
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
 //  INTERNALERROR_HTTPERROR = "InternalError.HttpError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETER_CONTROLLERNOTFOUNDERROR = "InvalidParameter.ControllerNotFoundError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
 //  OPERATIONDENIED_UNSUPPORTOPENAUDITERROR = "OperationDenied.UnsupportOpenAuditError"
@@ -7242,7 +7254,9 @@ func (c *Client) OpenAuditService(request *OpenAuditServiceRequest) (response *O
 // CDB实例开通审计服务
 //
 // 可能返回的错误码:
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
 //  INTERNALERROR_HTTPERROR = "InternalError.HttpError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETER_CONTROLLERNOTFOUNDERROR = "InvalidParameter.ControllerNotFoundError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
 //  OPERATIONDENIED_UNSUPPORTOPENAUDITERROR = "OperationDenied.UnsupportOpenAuditError"

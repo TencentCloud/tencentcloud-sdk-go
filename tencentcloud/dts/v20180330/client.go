@@ -385,6 +385,7 @@ func NewCreateSubscribeResponse() (response *CreateSubscribeResponse) {
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNALTRADEERROR = "InternalError.InternalTradeError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  OPERATIONDENIED = "OperationDenied"
 //  OPERATIONDENIED_OPERATIONDENIED = "OperationDenied.OperationDenied"
@@ -397,6 +398,7 @@ func (c *Client) CreateSubscribe(request *CreateSubscribeRequest) (response *Cre
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNALTRADEERROR = "InternalError.InternalTradeError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  OPERATIONDENIED = "OperationDenied"
 //  OPERATIONDENIED_OPERATIONDENIED = "OperationDenied.OperationDenied"

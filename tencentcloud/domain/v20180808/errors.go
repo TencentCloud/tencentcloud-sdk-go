@@ -203,6 +203,9 @@ const (
 	// 账户实名认证未通过。
 	UNSUPPORTEDOPERATION_ACCOUNTREALNAME = "UnsupportedOperation.AccountRealName"
 
+	// 当前域名未完成实名认证，无法完成该操作。
+	UNSUPPORTEDOPERATION_DOMAINNOTVERIFIED = "UnsupportedOperation.DomainNotVerified"
+
 	// 当前域名状态不支持修改。
 	UNSUPPORTEDOPERATION_MODIFYDOMAININFOUNSUPPORTED = "UnsupportedOperation.ModifyDomainInfoUnsupported"
 

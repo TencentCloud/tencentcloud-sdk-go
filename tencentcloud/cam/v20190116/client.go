@@ -653,6 +653,7 @@ func NewCreatePolicyVersionResponse() (response *CreatePolicyVersionResponse) {
 //  INVALIDPARAMETER_POLICYIDNOTEXIST = "InvalidParameter.PolicyIdNotExist"
 //  INVALIDPARAMETER_POLICYNAMEERROR = "InvalidParameter.PolicyNameError"
 //  INVALIDPARAMETER_PRINCIPALERROR = "InvalidParameter.PrincipalError"
+//  INVALIDPARAMETER_PRINCIPALQCSNOTEXIST = "InvalidParameter.PrincipalQcsNotExist"
 //  INVALIDPARAMETER_RESOURCECONTENTERROR = "InvalidParameter.ResourceContentError"
 //  INVALIDPARAMETER_RESOURCEERROR = "InvalidParameter.ResourceError"
 //  INVALIDPARAMETER_RESOURCEPROJECTERROR = "InvalidParameter.ResourceProjectError"
@@ -696,6 +697,7 @@ func (c *Client) CreatePolicyVersion(request *CreatePolicyVersionRequest) (respo
 //  INVALIDPARAMETER_POLICYIDNOTEXIST = "InvalidParameter.PolicyIdNotExist"
 //  INVALIDPARAMETER_POLICYNAMEERROR = "InvalidParameter.PolicyNameError"
 //  INVALIDPARAMETER_PRINCIPALERROR = "InvalidParameter.PrincipalError"
+//  INVALIDPARAMETER_PRINCIPALQCSNOTEXIST = "InvalidParameter.PrincipalQcsNotExist"
 //  INVALIDPARAMETER_RESOURCECONTENTERROR = "InvalidParameter.ResourceContentError"
 //  INVALIDPARAMETER_RESOURCEERROR = "InvalidParameter.ResourceError"
 //  INVALIDPARAMETER_RESOURCEPROJECTERROR = "InvalidParameter.ResourceProjectError"
@@ -1331,6 +1333,7 @@ func NewDeleteRoleResponse() (response *DeleteRoleResponse) {
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  INVALIDPARAMETER_POLICYNAMEERROR = "InvalidParameter.PolicyNameError"
 //  INVALIDPARAMETER_ROLENOTEXIST = "InvalidParameter.RoleNotExist"
+//  INVALIDPARAMETER_TAGPARAMERROR = "InvalidParameter.TagParamError"
 func (c *Client) DeleteRole(request *DeleteRoleRequest) (response *DeleteRoleResponse, err error) {
     return c.DeleteRoleWithContext(context.Background(), request)
 }
@@ -1343,6 +1346,7 @@ func (c *Client) DeleteRole(request *DeleteRoleRequest) (response *DeleteRoleRes
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  INVALIDPARAMETER_POLICYNAMEERROR = "InvalidParameter.PolicyNameError"
 //  INVALIDPARAMETER_ROLENOTEXIST = "InvalidParameter.RoleNotExist"
+//  INVALIDPARAMETER_TAGPARAMERROR = "InvalidParameter.TagParamError"
 func (c *Client) DeleteRoleWithContext(ctx context.Context, request *DeleteRoleRequest) (response *DeleteRoleResponse, err error) {
     if request == nil {
         request = NewDeleteRoleRequest()

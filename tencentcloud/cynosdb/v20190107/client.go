@@ -1564,6 +1564,55 @@ func (c *Client) DescribeMaintainPeriodWithContext(ctx context.Context, request 
     return
 }
 
+func NewDescribeParamTemplatesRequest() (request *DescribeParamTemplatesRequest) {
+    request = &DescribeParamTemplatesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cynosdb", APIVersion, "DescribeParamTemplates")
+    
+    
+    return
+}
+
+func NewDescribeParamTemplatesResponse() (response *DescribeParamTemplatesResponse) {
+    response = &DescribeParamTemplatesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeParamTemplates
+// 查询用户指定产品下的所有参数模板信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DescribeParamTemplates(request *DescribeParamTemplatesRequest) (response *DescribeParamTemplatesResponse, err error) {
+    return c.DescribeParamTemplatesWithContext(context.Background(), request)
+}
+
+// DescribeParamTemplates
+// 查询用户指定产品下的所有参数模板信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DescribeParamTemplatesWithContext(ctx context.Context, request *DescribeParamTemplatesRequest) (response *DescribeParamTemplatesResponse, err error) {
+    if request == nil {
+        request = NewDescribeParamTemplatesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeParamTemplates require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeParamTemplatesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeProjectSecurityGroupsRequest() (request *DescribeProjectSecurityGroupsRequest) {
     request = &DescribeProjectSecurityGroupsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2060,6 +2109,65 @@ func (c *Client) InquirePriceCreateWithContext(ctx context.Context, request *Inq
     request.SetContext(ctx)
     
     response = NewInquirePriceCreateResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewInquirePriceRenewRequest() (request *InquirePriceRenewRequest) {
+    request = &InquirePriceRenewRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cynosdb", APIVersion, "InquirePriceRenew")
+    
+    
+    return
+}
+
+func NewInquirePriceRenewResponse() (response *InquirePriceRenewResponse) {
+    response = &InquirePriceRenewResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// InquirePriceRenew
+// 查询续费集群价格
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_BATCHGETINSTANCEERROR = "FailedOperation.BatchGetInstanceError"
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
+//  INVALIDPARAMETERVALUE_INVALIDZONEIDERROR = "InvalidParameterValue.InvalidZoneIdError"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUNDERROR = "ResourceNotFound.ClusterNotFoundError"
+//  RESOURCENOTFOUND_INSTANCENOTFOUNDERROR = "ResourceNotFound.InstanceNotFoundError"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) InquirePriceRenew(request *InquirePriceRenewRequest) (response *InquirePriceRenewResponse, err error) {
+    return c.InquirePriceRenewWithContext(context.Background(), request)
+}
+
+// InquirePriceRenew
+// 查询续费集群价格
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_BATCHGETINSTANCEERROR = "FailedOperation.BatchGetInstanceError"
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
+//  INVALIDPARAMETERVALUE_INVALIDZONEIDERROR = "InvalidParameterValue.InvalidZoneIdError"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUNDERROR = "ResourceNotFound.ClusterNotFoundError"
+//  RESOURCENOTFOUND_INSTANCENOTFOUNDERROR = "ResourceNotFound.InstanceNotFoundError"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) InquirePriceRenewWithContext(ctx context.Context, request *InquirePriceRenewRequest) (response *InquirePriceRenewResponse, err error) {
+    if request == nil {
+        request = NewInquirePriceRenewRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("InquirePriceRenew require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewInquirePriceRenewResponse()
     err = c.Send(request, response)
     return
 }

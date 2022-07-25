@@ -2143,6 +2143,7 @@ func NewDescribePushResourceTaskStatisticsResponse() (response *DescribePushReso
 // 查询推送资源任务统计信息
 //
 // 可能返回的错误码:
+//  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
 //  RESOURCENOTFOUND_PRODUCTRESOURCENOTEXIST = "ResourceNotFound.ProductResourceNotExist"
 func (c *Client) DescribePushResourceTaskStatistics(request *DescribePushResourceTaskStatisticsRequest) (response *DescribePushResourceTaskStatisticsResponse, err error) {
     return c.DescribePushResourceTaskStatisticsWithContext(context.Background(), request)
@@ -2152,6 +2153,7 @@ func (c *Client) DescribePushResourceTaskStatistics(request *DescribePushResourc
 // 查询推送资源任务统计信息
 //
 // 可能返回的错误码:
+//  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
 //  RESOURCENOTFOUND_PRODUCTRESOURCENOTEXIST = "ResourceNotFound.ProductResourceNotExist"
 func (c *Client) DescribePushResourceTaskStatisticsWithContext(ctx context.Context, request *DescribePushResourceTaskStatisticsRequest) (response *DescribePushResourceTaskStatisticsResponse, err error) {
     if request == nil {
@@ -2190,6 +2192,7 @@ func NewDescribeResourceTasksResponse() (response *DescribeResourceTasksResponse
 // 查询资源推送任务列表
 //
 // 可能返回的错误码:
+//  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
 //  RESOURCENOTFOUND_PRODUCTRESOURCENOTEXIST = "ResourceNotFound.ProductResourceNotExist"
 func (c *Client) DescribeResourceTasks(request *DescribeResourceTasksRequest) (response *DescribeResourceTasksResponse, err error) {
     return c.DescribeResourceTasksWithContext(context.Background(), request)
@@ -2199,6 +2202,7 @@ func (c *Client) DescribeResourceTasks(request *DescribeResourceTasksRequest) (r
 // 查询资源推送任务列表
 //
 // 可能返回的错误码:
+//  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
 //  RESOURCENOTFOUND_PRODUCTRESOURCENOTEXIST = "ResourceNotFound.ProductResourceNotExist"
 func (c *Client) DescribeResourceTasksWithContext(ctx context.Context, request *DescribeResourceTasksRequest) (response *DescribeResourceTasksResponse, err error) {
     if request == nil {

@@ -1775,6 +1775,7 @@ func NewExportVideoByEditorTrackDataResponse() (response *ExportVideoByEditorTra
 //  LIMITEXCEEDED_BILLITEMVIDEOEDITEXPORTDURATION = "LimitExceeded.BillItemVideoEditExportDuration"
 //  OPERATIONDENIED_PERMISSIONDENY = "OperationDenied.PermissionDeny"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_PLATFORM = "ResourceNotFound.Platform"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) ExportVideoByEditorTrackData(request *ExportVideoByEditorTrackDataRequest) (response *ExportVideoByEditorTrackDataResponse, err error) {
     return c.ExportVideoByEditorTrackDataWithContext(context.Background(), request)
@@ -1801,6 +1802,7 @@ func (c *Client) ExportVideoByEditorTrackData(request *ExportVideoByEditorTrackD
 //  LIMITEXCEEDED_BILLITEMVIDEOEDITEXPORTDURATION = "LimitExceeded.BillItemVideoEditExportDuration"
 //  OPERATIONDENIED_PERMISSIONDENY = "OperationDenied.PermissionDeny"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_PLATFORM = "ResourceNotFound.Platform"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) ExportVideoByEditorTrackDataWithContext(ctx context.Context, request *ExportVideoByEditorTrackDataRequest) (response *ExportVideoByEditorTrackDataResponse, err error) {
     if request == nil {

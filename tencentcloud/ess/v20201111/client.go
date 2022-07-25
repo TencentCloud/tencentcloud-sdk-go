@@ -76,6 +76,7 @@ func NewCancelFlowResponse() (response *CancelFlowResponse) {
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  INVALIDPARAMETER_STATUS = "InvalidParameter.Status"
 //  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
 //  RESOURCENOTFOUND_FLOW = "ResourceNotFound.Flow"
 //  RESOURCENOTFOUND_NOTEXISTFLOW = "ResourceNotFound.NotExistFlow"
 func (c *Client) CancelFlow(request *CancelFlowRequest) (response *CancelFlowResponse, err error) {
@@ -96,6 +97,7 @@ func (c *Client) CancelFlow(request *CancelFlowRequest) (response *CancelFlowRes
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  INVALIDPARAMETER_STATUS = "InvalidParameter.Status"
 //  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
 //  RESOURCENOTFOUND_FLOW = "ResourceNotFound.Flow"
 //  RESOURCENOTFOUND_NOTEXISTFLOW = "ResourceNotFound.NotExistFlow"
 func (c *Client) CancelFlowWithContext(ctx context.Context, request *CancelFlowRequest) (response *CancelFlowResponse, err error) {
@@ -379,6 +381,7 @@ func NewCreateFlowByFilesResponse() (response *CreateFlowByFilesResponse) {
 //  INTERNALERROR_DBINSERT = "InternalError.DbInsert"
 //  INTERNALERROR_DEPENDSDB = "InternalError.DependsDb"
 //  INTERNALERROR_PDF = "InternalError.Pdf"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
@@ -417,6 +420,7 @@ func (c *Client) CreateFlowByFiles(request *CreateFlowByFilesRequest) (response 
 //  INTERNALERROR_DBINSERT = "InternalError.DbInsert"
 //  INTERNALERROR_DEPENDSDB = "InternalError.DependsDb"
 //  INTERNALERROR_PDF = "InternalError.Pdf"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
@@ -867,6 +871,7 @@ func NewDescribeFlowTemplatesResponse() (response *DescribeFlowTemplatesResponse
 //  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
 //  OPERATIONDENIED_NOIDENTITYVERIFY = "OperationDenied.NoIdentityVerify"
+//  OPERATIONDENIED_NOLOGIN = "OperationDenied.NoLogin"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) DescribeFlowTemplates(request *DescribeFlowTemplatesRequest) (response *DescribeFlowTemplatesResponse, err error) {
@@ -889,6 +894,7 @@ func (c *Client) DescribeFlowTemplates(request *DescribeFlowTemplatesRequest) (r
 //  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
 //  OPERATIONDENIED_NOIDENTITYVERIFY = "OperationDenied.NoIdentityVerify"
+//  OPERATIONDENIED_NOLOGIN = "OperationDenied.NoLogin"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) DescribeFlowTemplatesWithContext(ctx context.Context, request *DescribeFlowTemplatesRequest) (response *DescribeFlowTemplatesResponse, err error) {

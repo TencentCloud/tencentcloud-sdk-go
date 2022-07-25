@@ -1345,6 +1345,7 @@ func NewSetDomainAutoRenewResponse() (response *SetDomainAutoRenewResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION_DOMAINNOTVERIFIED = "UnsupportedOperation.DomainNotVerified"
 func (c *Client) SetDomainAutoRenew(request *SetDomainAutoRenewRequest) (response *SetDomainAutoRenewResponse, err error) {
     return c.SetDomainAutoRenewWithContext(context.Background(), request)
 }
@@ -1361,6 +1362,7 @@ func (c *Client) SetDomainAutoRenew(request *SetDomainAutoRenewRequest) (respons
 //  INVALIDPARAMETER = "InvalidParameter"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION_DOMAINNOTVERIFIED = "UnsupportedOperation.DomainNotVerified"
 func (c *Client) SetDomainAutoRenewWithContext(ctx context.Context, request *SetDomainAutoRenewRequest) (response *SetDomainAutoRenewResponse, err error) {
     if request == nil {
         request = NewSetDomainAutoRenewRequest()

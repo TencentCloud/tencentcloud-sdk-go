@@ -419,6 +419,9 @@ const (
 	// 应用名称已存在，请更换其他名称。
 	INVALIDPARAMETERVALUE_APPLICATIONNAMEEXIST = "InvalidParameterValue.ApplicationNameExist"
 
+	// 应用名称不能大于60字符。
+	INVALIDPARAMETERVALUE_APPLICATIONNAMELENGTH = "InvalidParameterValue.ApplicationNameLength"
+
 	// 应用名称不能为空。
 	INVALIDPARAMETERVALUE_APPLICATIONNAMENULL = "InvalidParameterValue.ApplicationNameNull"
 

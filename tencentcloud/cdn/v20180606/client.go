@@ -4448,6 +4448,7 @@ func NewListClsTopicDomainsResponse() (response *ListClsTopicDomainsResponse) {
 // ListClsTopicDomains 用于获取某日志主题下绑定的域名列表。
 //
 // 可能返回的错误码:
+//  INTERNALERROR_CDNDBERROR = "InternalError.CdnDbError"
 //  INTERNALERROR_CDNSYSTEMERROR = "InternalError.CdnSystemError"
 //  INTERNALERROR_CLSINTERNALERROR = "InternalError.ClsInternalError"
 //  INVALIDPARAMETER_CDNCLSDUPLICATETOPIC = "InvalidParameter.CdnClsDuplicateTopic"
@@ -4486,6 +4487,7 @@ func (c *Client) ListClsTopicDomains(request *ListClsTopicDomainsRequest) (respo
 // ListClsTopicDomains 用于获取某日志主题下绑定的域名列表。
 //
 // 可能返回的错误码:
+//  INTERNALERROR_CDNDBERROR = "InternalError.CdnDbError"
 //  INTERNALERROR_CDNSYSTEMERROR = "InternalError.CdnSystemError"
 //  INTERNALERROR_CLSINTERNALERROR = "InternalError.ClsInternalError"
 //  INVALIDPARAMETER_CDNCLSDUPLICATETOPIC = "InvalidParameter.CdnClsDuplicateTopic"
@@ -6246,6 +6248,8 @@ func NewUpdateDomainConfigResponse() (response *UpdateDomainConfigResponse) {
 //
 // 注意：如果需要更新复杂类型的配置项，必须传递整个对象的所有属性，未传递的属性将使用默认值，建议通过查询接口获取配置属性后，直接修改后传递给本接口。Https配置由于证书的特殊性，更新时不用传递证书和密钥字段。
 //
+// 云审计相关：接口的入参可能包含密钥等敏感信息，所以此接口的入参不会上报到云审计。
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION_CDNCONFIGERROR = "FailedOperation.CdnConfigError"
 //  INTERNALERROR_CAMSYSTEMERROR = "InternalError.CamSystemError"
@@ -6303,6 +6307,8 @@ func (c *Client) UpdateDomainConfig(request *UpdateDomainConfigRequest) (respons
 // UpdateDomainConfig 用于修改内容分发网络加速域名配置信息
 //
 // 注意：如果需要更新复杂类型的配置项，必须传递整个对象的所有属性，未传递的属性将使用默认值，建议通过查询接口获取配置属性后，直接修改后传递给本接口。Https配置由于证书的特殊性，更新时不用传递证书和密钥字段。
+//
+// 云审计相关：接口的入参可能包含密钥等敏感信息，所以此接口的入参不会上报到云审计。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CDNCONFIGERROR = "FailedOperation.CdnConfigError"

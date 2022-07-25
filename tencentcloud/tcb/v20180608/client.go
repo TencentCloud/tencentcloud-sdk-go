@@ -1801,6 +1801,7 @@ func NewDescribeCloudBaseRunServerVersionResponse() (response *DescribeCloudBase
 //  INVALIDPARAMETER_SERVICENOTEXIST = "InvalidParameter.ServiceNotExist"
 //  LIMITEXCEEDED_ERRNAMESPACEMAXLIMIT = "LimitExceeded.ErrNamespaceMaxLimit"
 //  LIMITEXCEEDED_ERRREPOMAXLIMIT = "LimitExceeded.ErrRepoMaxLimit"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeCloudBaseRunServerVersion(request *DescribeCloudBaseRunServerVersionRequest) (response *DescribeCloudBaseRunServerVersionResponse, err error) {
     return c.DescribeCloudBaseRunServerVersionWithContext(context.Background(), request)
 }
@@ -1814,6 +1815,7 @@ func (c *Client) DescribeCloudBaseRunServerVersion(request *DescribeCloudBaseRun
 //  INVALIDPARAMETER_SERVICENOTEXIST = "InvalidParameter.ServiceNotExist"
 //  LIMITEXCEEDED_ERRNAMESPACEMAXLIMIT = "LimitExceeded.ErrNamespaceMaxLimit"
 //  LIMITEXCEEDED_ERRREPOMAXLIMIT = "LimitExceeded.ErrRepoMaxLimit"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeCloudBaseRunServerVersionWithContext(ctx context.Context, request *DescribeCloudBaseRunServerVersionRequest) (response *DescribeCloudBaseRunServerVersionResponse, err error) {
     if request == nil {
         request = NewDescribeCloudBaseRunServerVersionRequest()

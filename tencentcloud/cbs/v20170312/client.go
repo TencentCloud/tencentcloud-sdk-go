@@ -2632,6 +2632,7 @@ func NewUnbindAutoSnapshotPolicyResponse() (response *UnbindAutoSnapshotPolicyRe
 //  INVALIDDISKID_NOTFOUND = "InvalidDiskId.NotFound"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEUNAVAILABLE_NOTSUPPORTED = "ResourceUnavailable.NotSupported"
 func (c *Client) UnbindAutoSnapshotPolicy(request *UnbindAutoSnapshotPolicyRequest) (response *UnbindAutoSnapshotPolicyResponse, err error) {
     return c.UnbindAutoSnapshotPolicyWithContext(context.Background(), request)
 }
@@ -2650,6 +2651,7 @@ func (c *Client) UnbindAutoSnapshotPolicy(request *UnbindAutoSnapshotPolicyReque
 //  INVALIDDISKID_NOTFOUND = "InvalidDiskId.NotFound"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEUNAVAILABLE_NOTSUPPORTED = "ResourceUnavailable.NotSupported"
 func (c *Client) UnbindAutoSnapshotPolicyWithContext(ctx context.Context, request *UnbindAutoSnapshotPolicyRequest) (response *UnbindAutoSnapshotPolicyResponse, err error) {
     if request == nil {
         request = NewUnbindAutoSnapshotPolicyRequest()

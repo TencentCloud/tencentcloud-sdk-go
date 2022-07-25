@@ -1264,6 +1264,7 @@ func NewCreateUsagePlanResponse() (response *CreateUsagePlanResponse) {
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
+//  INVALIDPARAMETERVALUE_INVALIDMAXREQUESTNUM = "InvalidParameterValue.InvalidMaxRequestNum"
 //  INVALIDPARAMETERVALUE_INVALIDREGION = "InvalidParameterValue.InvalidRegion"
 //  LIMITEXCEEDED_USAGEPLANLIMITEXCEEDED = "LimitExceeded.UsagePlanLimitExceeded"
 func (c *Client) CreateUsagePlan(request *CreateUsagePlanRequest) (response *CreateUsagePlanResponse, err error) {
@@ -1277,6 +1278,7 @@ func (c *Client) CreateUsagePlan(request *CreateUsagePlanRequest) (response *Cre
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
+//  INVALIDPARAMETERVALUE_INVALIDMAXREQUESTNUM = "InvalidParameterValue.InvalidMaxRequestNum"
 //  INVALIDPARAMETERVALUE_INVALIDREGION = "InvalidParameterValue.InvalidRegion"
 //  LIMITEXCEEDED_USAGEPLANLIMITEXCEEDED = "LimitExceeded.UsagePlanLimitExceeded"
 func (c *Client) CreateUsagePlanWithContext(ctx context.Context, request *CreateUsagePlanRequest) (response *CreateUsagePlanResponse, err error) {
@@ -4966,6 +4968,7 @@ func NewModifyPluginResponse() (response *ModifyPluginResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION_FORMATERROR = "FailedOperation.FormatError"
 //  INTERNALERROR_OSSEXCEPTION = "InternalError.OssException"
+//  INTERNALERROR_TSFEXCEPTION = "InternalError.TsfException"
 //  INTERNALERROR_VPCEXCEPTION = "InternalError.VpcException"
 //  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
 //  INVALIDPARAMETERVALUE_DUPLICATEPLUGINCONFIG = "InvalidParameterValue.DuplicatePluginConfig"
@@ -5002,6 +5005,7 @@ func (c *Client) ModifyPlugin(request *ModifyPluginRequest) (response *ModifyPlu
 // 可能返回的错误码:
 //  FAILEDOPERATION_FORMATERROR = "FailedOperation.FormatError"
 //  INTERNALERROR_OSSEXCEPTION = "InternalError.OssException"
+//  INTERNALERROR_TSFEXCEPTION = "InternalError.TsfException"
 //  INTERNALERROR_VPCEXCEPTION = "InternalError.VpcException"
 //  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
 //  INVALIDPARAMETERVALUE_DUPLICATEPLUGINCONFIG = "InvalidParameterValue.DuplicatePluginConfig"

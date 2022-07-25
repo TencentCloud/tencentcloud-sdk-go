@@ -191,6 +191,7 @@ func NewAssociateBusinessLogConfigResponse() (response *AssociateBusinessLogConf
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_GROUPQUERYFAILD = "FailedOperation.GroupQueryFaild"
+//  FAILEDOPERATION_UNHANDLEDEXCEPTION = "FailedOperation.UnhandledException"
 //  INTERNALERROR_TSFAPMBUSILOGCFGAPPRELATIONMASTERERROR = "InternalError.TsfApmBusiLogCfgAppRelationMasterError"
 //  INTERNALERROR_TSFAPMCOMMONERROR = "InternalError.TsfApmCommonError"
 //  INVALIDPARAMETER_TSFAPMBUSILOGCFGAPPRELATIONPARAMERROR = "InvalidParameter.TsfApmBusiLogCfgAppRelationParamError"
@@ -205,6 +206,7 @@ func (c *Client) AssociateBusinessLogConfig(request *AssociateBusinessLogConfigR
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_GROUPQUERYFAILD = "FailedOperation.GroupQueryFaild"
+//  FAILEDOPERATION_UNHANDLEDEXCEPTION = "FailedOperation.UnhandledException"
 //  INTERNALERROR_TSFAPMBUSILOGCFGAPPRELATIONMASTERERROR = "InternalError.TsfApmBusiLogCfgAppRelationMasterError"
 //  INTERNALERROR_TSFAPMCOMMONERROR = "InternalError.TsfApmCommonError"
 //  INVALIDPARAMETER_TSFAPMBUSILOGCFGAPPRELATIONPARAMERROR = "InvalidParameter.TsfApmBusiLogCfgAppRelationParamError"
@@ -681,6 +683,7 @@ func NewCreateApplicationResponse() (response *CreateApplicationResponse) {
 //  INTERNALERROR_CLOUDAPIPROXYERROR = "InternalError.CloudApiProxyError"
 //  INVALIDPARAMETERVALUE_APPLICATIONMICROTYPEINVALID = "InvalidParameterValue.ApplicationMicroTypeInvalid"
 //  INVALIDPARAMETERVALUE_APPLICATIONNAMEEXIST = "InvalidParameterValue.ApplicationNameExist"
+//  INVALIDPARAMETERVALUE_APPLICATIONNAMELENGTH = "InvalidParameterValue.ApplicationNameLength"
 //  INVALIDPARAMETERVALUE_APPLICATIONNAMENULL = "InvalidParameterValue.ApplicationNameNull"
 //  INVALIDPARAMETERVALUE_APPLICATIONNAMEREGXINVALID = "InvalidParameterValue.ApplicationNameRegxInvalid"
 //  INVALIDPARAMETERVALUE_APPLICATIONTYPEINVALID = "InvalidParameterValue.ApplicationTypeInvalid"
@@ -707,6 +710,7 @@ func (c *Client) CreateApplication(request *CreateApplicationRequest) (response 
 //  INTERNALERROR_CLOUDAPIPROXYERROR = "InternalError.CloudApiProxyError"
 //  INVALIDPARAMETERVALUE_APPLICATIONMICROTYPEINVALID = "InvalidParameterValue.ApplicationMicroTypeInvalid"
 //  INVALIDPARAMETERVALUE_APPLICATIONNAMEEXIST = "InvalidParameterValue.ApplicationNameExist"
+//  INVALIDPARAMETERVALUE_APPLICATIONNAMELENGTH = "InvalidParameterValue.ApplicationNameLength"
 //  INVALIDPARAMETERVALUE_APPLICATIONNAMENULL = "InvalidParameterValue.ApplicationNameNull"
 //  INVALIDPARAMETERVALUE_APPLICATIONNAMEREGXINVALID = "InvalidParameterValue.ApplicationNameRegxInvalid"
 //  INVALIDPARAMETERVALUE_APPLICATIONTYPEINVALID = "InvalidParameterValue.ApplicationTypeInvalid"
@@ -11471,6 +11475,7 @@ func NewUpdateHealthCheckSettingsResponse() (response *UpdateHealthCheckSettings
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CVMCAEMASTERHEALTHCHECKCONFIGERROR = "FailedOperation.CvmCaeMasterHealthCheckConfigError"
+//  INVALIDPARAMETER_BADREQUEST = "InvalidParameter.BadRequest"
 //  RESOURCENOTFOUND_GROUPNOTEXIST = "ResourceNotFound.GroupNotExist"
 func (c *Client) UpdateHealthCheckSettings(request *UpdateHealthCheckSettingsRequest) (response *UpdateHealthCheckSettingsResponse, err error) {
     return c.UpdateHealthCheckSettingsWithContext(context.Background(), request)
@@ -11481,6 +11486,7 @@ func (c *Client) UpdateHealthCheckSettings(request *UpdateHealthCheckSettingsReq
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CVMCAEMASTERHEALTHCHECKCONFIGERROR = "FailedOperation.CvmCaeMasterHealthCheckConfigError"
+//  INVALIDPARAMETER_BADREQUEST = "InvalidParameter.BadRequest"
 //  RESOURCENOTFOUND_GROUPNOTEXIST = "ResourceNotFound.GroupNotExist"
 func (c *Client) UpdateHealthCheckSettingsWithContext(ctx context.Context, request *UpdateHealthCheckSettingsRequest) (response *UpdateHealthCheckSettingsResponse, err error) {
     if request == nil {

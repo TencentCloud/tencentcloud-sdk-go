@@ -66,6 +66,7 @@ func NewAddSubStructureTasksResponse() (response *AddSubStructureTasksResponse) 
 // 如果主任务下的报告不满足需求，可以基于主任务批量添加子任务
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -78,6 +79,7 @@ func (c *Client) AddSubStructureTasks(request *AddSubStructureTasksRequest) (res
 // 如果主任务下的报告不满足需求，可以基于主任务批量添加子任务
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"

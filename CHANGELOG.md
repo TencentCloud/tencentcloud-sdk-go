@@ -1,3 +1,164 @@
+# Release v1.0.450
+
+## 弹性伸缩(as) 版本：2018-04-19
+
+### 第 53 次发布
+
+发布时间：2022-07-26 06:06:18
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateLaunchConfiguration](https://cloud.tencent.com/document/api/377/20447)
+
+	* 新增入参：Tags
+
+
+新增数据结构：
+
+* [InvocationResult](https://cloud.tencent.com/document/api/377/20453#InvocationResult)
+
+修改数据结构：
+
+* [Activity](https://cloud.tencent.com/document/api/377/20453#Activity)
+
+	* 新增成员：InvocationResultSet
+
+* [LaunchConfiguration](https://cloud.tencent.com/document/api/377/20453#LaunchConfiguration)
+
+	* 新增成员：Tags
+
+
+
+
+## 消息队列 Ckafka(ckafka) 版本：2019-08-19
+
+### 第 47 次发布
+
+发布时间：2022-07-26 06:10:15
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DeleteConnectResource](https://cloud.tencent.com/document/api/597/77800)
+* [DeleteDatahubTask](https://cloud.tencent.com/document/api/597/77799)
+* [DeleteDatahubTopic](https://cloud.tencent.com/document/api/597/77803)
+* [DescribeConnectResource](https://cloud.tencent.com/document/api/597/77798)
+* [DescribeConnectResources](https://cloud.tencent.com/document/api/597/77797)
+* [DescribeDatahubGroupOffsets](https://cloud.tencent.com/document/api/597/77792)
+* [DescribeDatahubTask](https://cloud.tencent.com/document/api/597/77796)
+* [DescribeDatahubTasks](https://cloud.tencent.com/document/api/597/77795)
+* [FetchDatahubMessageByOffset](https://cloud.tencent.com/document/api/597/77802)
+* [FetchLatestDatahubMessageList](https://cloud.tencent.com/document/api/597/77801)
+* [ModifyConnectResource](https://cloud.tencent.com/document/api/597/77794)
+* [ModifyDatahubTask](https://cloud.tencent.com/document/api/597/77793)
+
+新增数据结构：
+
+* [ClickHouseModifyConnectParam](https://cloud.tencent.com/document/api/597/40861#ClickHouseModifyConnectParam)
+* [Connection](https://cloud.tencent.com/document/api/597/40861#Connection)
+* [DatahubTaskIdRes](https://cloud.tencent.com/document/api/597/40861#DatahubTaskIdRes)
+* [DatahubTaskInfo](https://cloud.tencent.com/document/api/597/40861#DatahubTaskInfo)
+* [DescribeConnectResource](https://cloud.tencent.com/document/api/597/40861#DescribeConnectResource)
+* [DescribeConnectResourceResp](https://cloud.tencent.com/document/api/597/40861#DescribeConnectResourceResp)
+* [DescribeConnectResourcesResp](https://cloud.tencent.com/document/api/597/40861#DescribeConnectResourcesResp)
+* [DescribeDatahubTaskRes](https://cloud.tencent.com/document/api/597/40861#DescribeDatahubTaskRes)
+* [DescribeDatahubTasksRes](https://cloud.tencent.com/document/api/597/40861#DescribeDatahubTasksRes)
+* [DtsModifyConnectParam](https://cloud.tencent.com/document/api/597/40861#DtsModifyConnectParam)
+* [EsModifyConnectParam](https://cloud.tencent.com/document/api/597/40861#EsModifyConnectParam)
+* [MariaDBModifyConnectParam](https://cloud.tencent.com/document/api/597/40861#MariaDBModifyConnectParam)
+* [MongoDBModifyConnectParam](https://cloud.tencent.com/document/api/597/40861#MongoDBModifyConnectParam)
+* [MySQLModifyConnectParam](https://cloud.tencent.com/document/api/597/40861#MySQLModifyConnectParam)
+* [PostgreSQLModifyConnectParam](https://cloud.tencent.com/document/api/597/40861#PostgreSQLModifyConnectParam)
+* [SQLServerModifyConnectParam](https://cloud.tencent.com/document/api/597/40861#SQLServerModifyConnectParam)
+
+修改数据结构：
+
+* [TdwParam](https://cloud.tencent.com/document/api/597/40861#TdwParam)
+
+	* 新增成员：IsDomestic
+
+
+
+
+## 云原生数据库 TDSQL-C(cynosdb) 版本：2019-01-07
+
+### 第 21 次发布
+
+发布时间：2022-07-26 06:12:54
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeParamTemplates](https://cloud.tencent.com/document/api/1003/77805)
+* [InquirePriceRenew](https://cloud.tencent.com/document/api/1003/77804)
+
+新增数据结构：
+
+* [ParamTemplateListInfo](https://cloud.tencent.com/document/api/1003/48097#ParamTemplateListInfo)
+
+
+
+## 流计算 Oceanus(oceanus) 版本：2019-04-22
+
+### 第 23 次发布
+
+发布时间：2022-07-26 06:19:20
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CopyJobs](https://cloud.tencent.com/document/api/849/77740)
+
+	* 新增入参：JobItems, WorkSpaceId
+
+	* 新增出参：SuccessCount, FailCount, CopyJobsResults
+
+* [CreateFolder](https://cloud.tencent.com/document/api/849/77739)
+
+	* 新增入参：FolderName, ParentId
+
+	* 新增出参：FolderId
+
+
+新增数据结构：
+
+* [CopyJobItem](https://cloud.tencent.com/document/api/849/52010#CopyJobItem)
+* [CopyJobResult](https://cloud.tencent.com/document/api/849/52010#CopyJobResult)
+
+
+
+## 容器服务(tke) 版本：2018-05-25
+
+### 第 112 次发布
+
+发布时间：2022-07-26 06:23:55
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateEdgeLogConfig](https://cloud.tencent.com/document/api/#/#)
+* [DescribeClusterEndpoints](https://cloud.tencent.com/document/api/#/#)
+* [InstallEdgeLogAgent](https://cloud.tencent.com/document/api/#/#)
+* [UninstallEdgeLogAgent](https://cloud.tencent.com/document/api/#/#)
+
+
+
 # Release v1.0.449
 
 ## 内容分发网络(cdn) 版本：2018-06-06

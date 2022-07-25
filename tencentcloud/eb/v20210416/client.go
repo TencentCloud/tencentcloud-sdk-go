@@ -277,6 +277,7 @@ func NewCreateEventBusResponse() (response *CreateEventBusResponse) {
 //  INVALIDPARAMETERVALUE_EVENTBUSNAME = "InvalidParameterValue.EventBusName"
 //  INVALIDPARAMETERVALUE_EVENTTRACECONFIG = "InvalidParameterValue.EventTraceConfig"
 //  INVALIDPARAMETERVALUE_LINKMODE = "InvalidParameterValue.LinkMode"
+//  INVALIDPARAMETERVALUE_TAGS = "InvalidParameterValue.Tags"
 //  INVALIDPARAMETERVALUE_TYPE = "InvalidParameterValue.Type"
 //  LIMITEXCEEDED_EVENTBUS = "LimitExceeded.EventBus"
 //  LIMITEXCEEDED_INSUFFICIENTBALANCE = "LimitExceeded.InsufficientBalance"
@@ -297,6 +298,7 @@ func (c *Client) CreateEventBus(request *CreateEventBusRequest) (response *Creat
 //  INVALIDPARAMETERVALUE_EVENTBUSNAME = "InvalidParameterValue.EventBusName"
 //  INVALIDPARAMETERVALUE_EVENTTRACECONFIG = "InvalidParameterValue.EventTraceConfig"
 //  INVALIDPARAMETERVALUE_LINKMODE = "InvalidParameterValue.LinkMode"
+//  INVALIDPARAMETERVALUE_TAGS = "InvalidParameterValue.Tags"
 //  INVALIDPARAMETERVALUE_TYPE = "InvalidParameterValue.Type"
 //  LIMITEXCEEDED_EVENTBUS = "LimitExceeded.EventBus"
 //  LIMITEXCEEDED_INSUFFICIENTBALANCE = "LimitExceeded.InsufficientBalance"
@@ -344,6 +346,7 @@ func NewCreateRuleResponse() (response *CreateRuleResponse) {
 //  INVALIDPARAMETERVALUE_DESCRIPTION = "InvalidParameterValue.Description"
 //  INVALIDPARAMETERVALUE_EVENTPATTERN = "InvalidParameterValue.EventPattern"
 //  INVALIDPARAMETERVALUE_RULENAME = "InvalidParameterValue.RuleName"
+//  INVALIDPARAMETERVALUE_TAGS = "InvalidParameterValue.Tags"
 //  INVALIDPARAMETERVALUE_TYPE = "InvalidParameterValue.Type"
 //  LIMITEXCEEDED_RULE = "LimitExceeded.Rule"
 //  RESOURCENOTFOUND_EVENTBUS = "ResourceNotFound.EventBus"
@@ -359,6 +362,7 @@ func (c *Client) CreateRule(request *CreateRuleRequest) (response *CreateRuleRes
 //  INVALIDPARAMETERVALUE_DESCRIPTION = "InvalidParameterValue.Description"
 //  INVALIDPARAMETERVALUE_EVENTPATTERN = "InvalidParameterValue.EventPattern"
 //  INVALIDPARAMETERVALUE_RULENAME = "InvalidParameterValue.RuleName"
+//  INVALIDPARAMETERVALUE_TAGS = "InvalidParameterValue.Tags"
 //  INVALIDPARAMETERVALUE_TYPE = "InvalidParameterValue.Type"
 //  LIMITEXCEEDED_RULE = "LimitExceeded.Rule"
 //  RESOURCENOTFOUND_EVENTBUS = "ResourceNotFound.EventBus"
@@ -807,6 +811,7 @@ func NewDeleteTransformationResponse() (response *DeleteTransformationResponse) 
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_EVENTBUSID = "InvalidParameterValue.EventBusId"
 //  INVALIDPARAMETERVALUE_TRANSFORMATIONID = "InvalidParameterValue.TransformationID"
+//  RESOURCENOTFOUND_TRANSFORMATION = "ResourceNotFound.Transformation"
 func (c *Client) DeleteTransformation(request *DeleteTransformationRequest) (response *DeleteTransformationResponse, err error) {
     return c.DeleteTransformationWithContext(context.Background(), request)
 }
@@ -817,6 +822,7 @@ func (c *Client) DeleteTransformation(request *DeleteTransformationRequest) (res
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_EVENTBUSID = "InvalidParameterValue.EventBusId"
 //  INVALIDPARAMETERVALUE_TRANSFORMATIONID = "InvalidParameterValue.TransformationID"
+//  RESOURCENOTFOUND_TRANSFORMATION = "ResourceNotFound.Transformation"
 func (c *Client) DeleteTransformationWithContext(ctx context.Context, request *DeleteTransformationRequest) (response *DeleteTransformationResponse, err error) {
     if request == nil {
         request = NewDeleteTransformationRequest()

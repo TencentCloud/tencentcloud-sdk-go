@@ -938,6 +938,7 @@ func NewCreateSparkAppResponse() (response *CreateSparkAppResponse) {
 // 创建spark应用
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETER_INVALIDROLEARN = "InvalidParameter.InvalidRoleArn"
 func (c *Client) CreateSparkApp(request *CreateSparkAppRequest) (response *CreateSparkAppResponse, err error) {
     return c.CreateSparkAppWithContext(context.Background(), request)
@@ -947,6 +948,7 @@ func (c *Client) CreateSparkApp(request *CreateSparkAppRequest) (response *Creat
 // 创建spark应用
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETER_INVALIDROLEARN = "InvalidParameter.InvalidRoleArn"
 func (c *Client) CreateSparkAppWithContext(ctx context.Context, request *CreateSparkAppRequest) (response *CreateSparkAppResponse, err error) {
     if request == nil {
@@ -2148,7 +2150,7 @@ func NewDescribeSparkAppTasksResponse() (response *DescribeSparkAppTasksResponse
 // 查询spark应用的运行任务实例列表
 //
 // 可能返回的错误码:
-//  RESOURCENOTFOUND = "ResourceNotFound"
+//  FAILEDOPERATION = "FailedOperation"
 func (c *Client) DescribeSparkAppTasks(request *DescribeSparkAppTasksRequest) (response *DescribeSparkAppTasksResponse, err error) {
     return c.DescribeSparkAppTasksWithContext(context.Background(), request)
 }
@@ -2157,7 +2159,7 @@ func (c *Client) DescribeSparkAppTasks(request *DescribeSparkAppTasksRequest) (r
 // 查询spark应用的运行任务实例列表
 //
 // 可能返回的错误码:
-//  RESOURCENOTFOUND = "ResourceNotFound"
+//  FAILEDOPERATION = "FailedOperation"
 func (c *Client) DescribeSparkAppTasksWithContext(ctx context.Context, request *DescribeSparkAppTasksRequest) (response *DescribeSparkAppTasksResponse, err error) {
     if request == nil {
         request = NewDescribeSparkAppTasksRequest()
@@ -2410,6 +2412,7 @@ func NewDescribeTasksResponse() (response *DescribeTasksResponse) {
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) DescribeTasks(request *DescribeTasksRequest) (response *DescribeTasksResponse, err error) {
@@ -2421,6 +2424,7 @@ func (c *Client) DescribeTasks(request *DescribeTasksRequest) (response *Describ
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) DescribeTasksWithContext(ctx context.Context, request *DescribeTasksRequest) (response *DescribeTasksResponse, err error) {
@@ -2916,6 +2920,7 @@ func NewListTaskJobLogDetailResponse() (response *ListTaskJobLogDetailResponse) 
 // 本接口（ListTaskJobLogDetail）用于获取spark-jar日志列表
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_INVALIDSQL = "InvalidParameter.InvalidSQL"
@@ -2927,6 +2932,7 @@ func (c *Client) ListTaskJobLogDetail(request *ListTaskJobLogDetailRequest) (res
 // 本接口（ListTaskJobLogDetail）用于获取spark-jar日志列表
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_INVALIDSQL = "InvalidParameter.InvalidSQL"

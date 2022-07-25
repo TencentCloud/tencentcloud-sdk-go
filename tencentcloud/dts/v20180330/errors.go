@@ -56,6 +56,9 @@ const (
 	// 内部组件访问错误。
 	INTERNALERROR_INTERNALINNERCOMMONERROR = "InternalError.InternalInnerCommonError"
 
+	// 调用计费服务失败。
+	INTERNALERROR_INTERNALTRADEERROR = "InternalError.InternalTradeError"
+
 	// 锁冲突。
 	INTERNALERROR_LOCKERROR = "InternalError.LockError"
 

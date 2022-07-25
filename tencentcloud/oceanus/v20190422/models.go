@@ -250,14 +250,31 @@ type ClusterVersion struct {
 	SupportedFlink []*string `json:"SupportedFlink,omitempty" name:"SupportedFlink"`
 }
 
+type CopyJobItem struct {
+
+}
+
+type CopyJobResult struct {
+
+}
+
 // Predefined struct for user
 type CopyJobsRequestParams struct {
+	// 复制明细列表
+	JobItems []*CopyJobItem `json:"JobItems,omitempty" name:"JobItems"`
 
+	// 工作空间 SerialId
+	WorkSpaceId *string `json:"WorkSpaceId,omitempty" name:"WorkSpaceId"`
 }
 
 type CopyJobsRequest struct {
 	*tchttp.BaseRequest
 	
+	// 复制明细列表
+	JobItems []*CopyJobItem `json:"JobItems,omitempty" name:"JobItems"`
+
+	// 工作空间 SerialId
+	WorkSpaceId *string `json:"WorkSpaceId,omitempty" name:"WorkSpaceId"`
 }
 
 func (r *CopyJobsRequest) ToJsonString() string {
@@ -272,7 +289,8 @@ func (r *CopyJobsRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "JobItems")
+	delete(f, "WorkSpaceId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CopyJobsRequest has unknown keys!", "")
 	}
@@ -281,6 +299,18 @@ func (r *CopyJobsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CopyJobsResponseParams struct {
+	// 成功条数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SuccessCount *int64 `json:"SuccessCount,omitempty" name:"SuccessCount"`
+
+	// 失败条数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FailCount *int64 `json:"FailCount,omitempty" name:"FailCount"`
+
+	// 结果列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CopyJobsResults []*CopyJobResult `json:"CopyJobsResults,omitempty" name:"CopyJobsResults"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }
@@ -303,6 +333,12 @@ func (r *CopyJobsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateFolderRequestParams struct {
+	// 新建文件夹名
+	FolderName *string `json:"FolderName,omitempty" name:"FolderName"`
+
+	// 新建文件夹的父目录ID
+	ParentId *string `json:"ParentId,omitempty" name:"ParentId"`
+
 	// 文件夹类型，0是任务文件夹，1是依赖文件夹
 	FolderType *int64 `json:"FolderType,omitempty" name:"FolderType"`
 
@@ -313,6 +349,12 @@ type CreateFolderRequestParams struct {
 type CreateFolderRequest struct {
 	*tchttp.BaseRequest
 	
+	// 新建文件夹名
+	FolderName *string `json:"FolderName,omitempty" name:"FolderName"`
+
+	// 新建文件夹的父目录ID
+	ParentId *string `json:"ParentId,omitempty" name:"ParentId"`
+
 	// 文件夹类型，0是任务文件夹，1是依赖文件夹
 	FolderType *int64 `json:"FolderType,omitempty" name:"FolderType"`
 
@@ -332,6 +374,8 @@ func (r *CreateFolderRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "FolderName")
+	delete(f, "ParentId")
 	delete(f, "FolderType")
 	delete(f, "WorkSpaceId")
 	if len(f) > 0 {
@@ -342,6 +386,9 @@ func (r *CreateFolderRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateFolderResponseParams struct {
+	// 新建文件夹的唯一ID
+	FolderId *string `json:"FolderId,omitempty" name:"FolderId"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }

@@ -1149,6 +1149,7 @@ func NewCreateClusterRouteResponse() (response *CreateClusterRouteResponse) {
 // 创建集群路由
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_VPCCOMMON = "FailedOperation.VpcCommon"
 //  INTERNALERROR_CIDRCONFLICTWITHOTHERROUTE = "InternalError.CidrConflictWithOtherRoute"
 //  INTERNALERROR_CIDROUTOFROUTETABLE = "InternalError.CidrOutOfRouteTable"
 //  INTERNALERROR_CVMNOTFOUND = "InternalError.CvmNotFound"
@@ -1171,6 +1172,7 @@ func (c *Client) CreateClusterRoute(request *CreateClusterRouteRequest) (respons
 // 创建集群路由
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_VPCCOMMON = "FailedOperation.VpcCommon"
 //  INTERNALERROR_CIDRCONFLICTWITHOTHERROUTE = "InternalError.CidrConflictWithOtherRoute"
 //  INTERNALERROR_CIDROUTOFROUTETABLE = "InternalError.CidrOutOfRouteTable"
 //  INTERNALERROR_CVMNOTFOUND = "InternalError.CvmNotFound"
@@ -1469,6 +1471,55 @@ func (c *Client) CreateEKSContainerInstancesWithContext(ctx context.Context, req
     request.SetContext(ctx)
     
     response = NewCreateEKSContainerInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateEdgeLogConfigRequest() (request *CreateEdgeLogConfigRequest) {
+    request = &CreateEdgeLogConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tke", APIVersion, "CreateEdgeLogConfig")
+    
+    
+    return
+}
+
+func NewCreateEdgeLogConfigResponse() (response *CreateEdgeLogConfigResponse) {
+    response = &CreateEdgeLogConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateEdgeLogConfig
+// 创建边缘集群日志采集配置
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) CreateEdgeLogConfig(request *CreateEdgeLogConfigRequest) (response *CreateEdgeLogConfigResponse, err error) {
+    return c.CreateEdgeLogConfigWithContext(context.Background(), request)
+}
+
+// CreateEdgeLogConfig
+// 创建边缘集群日志采集配置
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) CreateEdgeLogConfigWithContext(ctx context.Context, request *CreateEdgeLogConfigRequest) (response *CreateEdgeLogConfigResponse, err error) {
+    if request == nil {
+        request = NewCreateEdgeLogConfigRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateEdgeLogConfig require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateEdgeLogConfigResponse()
     err = c.Send(request, response)
     return
 }
@@ -2474,6 +2525,7 @@ func NewDeleteClusterInstancesResponse() (response *DeleteClusterInstancesRespon
 //  FAILEDOPERATION_ASCOMMON = "FailedOperation.AsCommon"
 //  FAILEDOPERATION_CLUSTERNOTFOUND = "FailedOperation.ClusterNotFound"
 //  FAILEDOPERATION_CLUSTERSTATE = "FailedOperation.ClusterState"
+//  FAILEDOPERATION_DBRECORDNOTFOUND = "FailedOperation.DbRecordNotFound"
 //  FAILEDOPERATION_PARAM = "FailedOperation.Param"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_ASCOMMON = "InternalError.AsCommon"
@@ -2497,6 +2549,7 @@ func (c *Client) DeleteClusterInstances(request *DeleteClusterInstancesRequest) 
 //  FAILEDOPERATION_ASCOMMON = "FailedOperation.AsCommon"
 //  FAILEDOPERATION_CLUSTERNOTFOUND = "FailedOperation.ClusterNotFound"
 //  FAILEDOPERATION_CLUSTERSTATE = "FailedOperation.ClusterState"
+//  FAILEDOPERATION_DBRECORDNOTFOUND = "FailedOperation.DbRecordNotFound"
 //  FAILEDOPERATION_PARAM = "FailedOperation.Param"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_ASCOMMON = "InternalError.AsCommon"
@@ -4287,6 +4340,73 @@ func (c *Client) DescribeClusterEndpointVipStatusWithContext(ctx context.Context
     return
 }
 
+func NewDescribeClusterEndpointsRequest() (request *DescribeClusterEndpointsRequest) {
+    request = &DescribeClusterEndpointsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tke", APIVersion, "DescribeClusterEndpoints")
+    
+    
+    return
+}
+
+func NewDescribeClusterEndpointsResponse() (response *DescribeClusterEndpointsResponse) {
+    response = &DescribeClusterEndpointsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeClusterEndpoints
+// 获取集群的访问地址，包括内网地址，外网地址，外网域名，外网访问安全策略
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_COMPONENTCLIENTHTTP = "FailedOperation.ComponentClientHttp"
+//  FAILEDOPERATION_KUBERNETESCLIENTBUILDERROR = "FailedOperation.KubernetesClientBuildError"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_COMPONENTCLIENTHTTP = "InternalError.ComponentClientHttp"
+//  INTERNALERROR_KUBECLIENTCONNECTION = "InternalError.KubeClientConnection"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUND = "ResourceNotFound.ClusterNotFound"
+//  RESOURCENOTFOUND_KUBERESOURCENOTFOUND = "ResourceNotFound.KubeResourceNotFound"
+//  RESOURCEUNAVAILABLE_CLUSTERINABNORMALSTAT = "ResourceUnavailable.ClusterInAbnormalStat"
+//  UNAUTHORIZEDOPERATION_CAMNOAUTH = "UnauthorizedOperation.CamNoAuth"
+func (c *Client) DescribeClusterEndpoints(request *DescribeClusterEndpointsRequest) (response *DescribeClusterEndpointsResponse, err error) {
+    return c.DescribeClusterEndpointsWithContext(context.Background(), request)
+}
+
+// DescribeClusterEndpoints
+// 获取集群的访问地址，包括内网地址，外网地址，外网域名，外网访问安全策略
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_COMPONENTCLIENTHTTP = "FailedOperation.ComponentClientHttp"
+//  FAILEDOPERATION_KUBERNETESCLIENTBUILDERROR = "FailedOperation.KubernetesClientBuildError"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_COMPONENTCLIENTHTTP = "InternalError.ComponentClientHttp"
+//  INTERNALERROR_KUBECLIENTCONNECTION = "InternalError.KubeClientConnection"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUND = "ResourceNotFound.ClusterNotFound"
+//  RESOURCENOTFOUND_KUBERESOURCENOTFOUND = "ResourceNotFound.KubeResourceNotFound"
+//  RESOURCEUNAVAILABLE_CLUSTERINABNORMALSTAT = "ResourceUnavailable.ClusterInAbnormalStat"
+//  UNAUTHORIZEDOPERATION_CAMNOAUTH = "UnauthorizedOperation.CamNoAuth"
+func (c *Client) DescribeClusterEndpointsWithContext(ctx context.Context, request *DescribeClusterEndpointsRequest) (response *DescribeClusterEndpointsResponse, err error) {
+    if request == nil {
+        request = NewDescribeClusterEndpointsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeClusterEndpoints require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeClusterEndpointsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeClusterInstancesRequest() (request *DescribeClusterInstancesRequest) {
     request = &DescribeClusterInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4309,6 +4429,7 @@ func NewDescribeClusterInstancesResponse() (response *DescribeClusterInstancesRe
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DB = "FailedOperation.Db"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DB = "InternalError.Db"
 //  INTERNALERROR_DBAFFECTIVEDROWS = "InternalError.DbAffectivedRows"
@@ -4328,6 +4449,7 @@ func (c *Client) DescribeClusterInstances(request *DescribeClusterInstancesReque
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DB = "FailedOperation.Db"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DB = "InternalError.Db"
 //  INTERNALERROR_DBAFFECTIVEDROWS = "InternalError.DbAffectivedRows"
@@ -4723,6 +4845,7 @@ func NewDescribeClusterRoutesResponse() (response *DescribeClusterRoutesResponse
 // 查询集群路由
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DB = "FailedOperation.Db"
 //  INTERNALERROR_DB = "InternalError.Db"
 //  INTERNALERROR_PARAM = "InternalError.Param"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -4734,6 +4857,7 @@ func (c *Client) DescribeClusterRoutes(request *DescribeClusterRoutesRequest) (r
 // 查询集群路由
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DB = "FailedOperation.Db"
 //  INTERNALERROR_DB = "InternalError.Db"
 //  INTERNALERROR_PARAM = "InternalError.Param"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -8713,6 +8837,55 @@ func (c *Client) GetUpgradeInstanceProgressWithContext(ctx context.Context, requ
     return
 }
 
+func NewInstallEdgeLogAgentRequest() (request *InstallEdgeLogAgentRequest) {
+    request = &InstallEdgeLogAgentRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tke", APIVersion, "InstallEdgeLogAgent")
+    
+    
+    return
+}
+
+func NewInstallEdgeLogAgentResponse() (response *InstallEdgeLogAgentResponse) {
+    response = &InstallEdgeLogAgentResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// InstallEdgeLogAgent
+// 在tke@edge集群的边缘节点上安装日志采集组件
+//
+// 可能返回的错误码:
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+func (c *Client) InstallEdgeLogAgent(request *InstallEdgeLogAgentRequest) (response *InstallEdgeLogAgentResponse, err error) {
+    return c.InstallEdgeLogAgentWithContext(context.Background(), request)
+}
+
+// InstallEdgeLogAgent
+// 在tke@edge集群的边缘节点上安装日志采集组件
+//
+// 可能返回的错误码:
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+func (c *Client) InstallEdgeLogAgentWithContext(ctx context.Context, request *InstallEdgeLogAgentRequest) (response *InstallEdgeLogAgentResponse, err error) {
+    if request == nil {
+        request = NewInstallEdgeLogAgentRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("InstallEdgeLogAgent require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewInstallEdgeLogAgentResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewInstallLogAgentRequest() (request *InstallLogAgentRequest) {
     request = &InstallLogAgentRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -10242,6 +10415,53 @@ func (c *Client) SyncPrometheusTemplateWithContext(ctx context.Context, request 
     request.SetContext(ctx)
     
     response = NewSyncPrometheusTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUninstallEdgeLogAgentRequest() (request *UninstallEdgeLogAgentRequest) {
+    request = &UninstallEdgeLogAgentRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tke", APIVersion, "UninstallEdgeLogAgent")
+    
+    
+    return
+}
+
+func NewUninstallEdgeLogAgentResponse() (response *UninstallEdgeLogAgentResponse) {
+    response = &UninstallEdgeLogAgentResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// UninstallEdgeLogAgent
+// 从tke@edge集群边缘节点上卸载日志采集组件
+//
+// 可能返回的错误码:
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+func (c *Client) UninstallEdgeLogAgent(request *UninstallEdgeLogAgentRequest) (response *UninstallEdgeLogAgentResponse, err error) {
+    return c.UninstallEdgeLogAgentWithContext(context.Background(), request)
+}
+
+// UninstallEdgeLogAgent
+// 从tke@edge集群边缘节点上卸载日志采集组件
+//
+// 可能返回的错误码:
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+func (c *Client) UninstallEdgeLogAgentWithContext(ctx context.Context, request *UninstallEdgeLogAgentRequest) (response *UninstallEdgeLogAgentResponse, err error) {
+    if request == nil {
+        request = NewUninstallEdgeLogAgentRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UninstallEdgeLogAgent require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUninstallEdgeLogAgentResponse()
     err = c.Send(request, response)
     return
 }

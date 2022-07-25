@@ -74,6 +74,7 @@ func NewAttachInstancesResponse() (response *AttachInstancesResponse) {
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_CALLEEERROR = "InternalError.CalleeError"
 //  INTERNALERROR_REQUESTERROR = "InternalError.RequestError"
+//  INVALIDPARAMETER_ACTIONNOTFOUND = "InvalidParameter.ActionNotFound"
 //  INVALIDPARAMETERVALUE_INVALIDAUTOSCALINGGROUPID = "InvalidParameterValue.InvalidAutoScalingGroupId"
 //  INVALIDPARAMETERVALUE_INVALIDINSTANCEID = "InvalidParameterValue.InvalidInstanceId"
 //  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
@@ -103,6 +104,7 @@ func (c *Client) AttachInstances(request *AttachInstancesRequest) (response *Att
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_CALLEEERROR = "InternalError.CalleeError"
 //  INTERNALERROR_REQUESTERROR = "InternalError.RequestError"
+//  INVALIDPARAMETER_ACTIONNOTFOUND = "InvalidParameter.ActionNotFound"
 //  INVALIDPARAMETERVALUE_INVALIDAUTOSCALINGGROUPID = "InvalidParameterValue.InvalidAutoScalingGroupId"
 //  INVALIDPARAMETERVALUE_INVALIDINSTANCEID = "InvalidParameterValue.InvalidInstanceId"
 //  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
@@ -156,6 +158,7 @@ func NewAttachLoadBalancersResponse() (response *AttachLoadBalancersResponse) {
 //  FAILEDOPERATION_NOACTIVITYTOGENERATE = "FailedOperation.NoActivityToGenerate"
 //  INTERNALERROR_CALLLBERROR = "InternalError.CallLbError"
 //  INTERNALERROR_REQUESTERROR = "InternalError.RequestError"
+//  INVALIDPARAMETER_ACTIONNOTFOUND = "InvalidParameter.ActionNotFound"
 //  INVALIDPARAMETER_CONFLICT = "InvalidParameter.Conflict"
 //  INVALIDPARAMETER_INSCENARIO = "InvalidParameter.InScenario"
 //  INVALIDPARAMETER_MUSTONEPARAMETER = "InvalidParameter.MustOneParameter"
@@ -187,6 +190,7 @@ func (c *Client) AttachLoadBalancers(request *AttachLoadBalancersRequest) (respo
 //  FAILEDOPERATION_NOACTIVITYTOGENERATE = "FailedOperation.NoActivityToGenerate"
 //  INTERNALERROR_CALLLBERROR = "InternalError.CallLbError"
 //  INTERNALERROR_REQUESTERROR = "InternalError.RequestError"
+//  INVALIDPARAMETER_ACTIONNOTFOUND = "InvalidParameter.ActionNotFound"
 //  INVALIDPARAMETER_CONFLICT = "InvalidParameter.Conflict"
 //  INVALIDPARAMETER_INSCENARIO = "InvalidParameter.InScenario"
 //  INVALIDPARAMETER_MUSTONEPARAMETER = "InvalidParameter.MustOneParameter"
@@ -244,6 +248,7 @@ func NewClearLaunchConfigurationAttributesResponse() (response *ClearLaunchConfi
 // 本接口（ClearLaunchConfigurationAttributes）用于将启动配置内的特定属性完全清空。
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETER_ACTIONNOTFOUND = "InvalidParameter.ActionNotFound"
 //  INVALIDPARAMETERVALUE_INVALIDLAUNCHCONFIGURATIONID = "InvalidParameterValue.InvalidLaunchConfigurationId"
 func (c *Client) ClearLaunchConfigurationAttributes(request *ClearLaunchConfigurationAttributesRequest) (response *ClearLaunchConfigurationAttributesResponse, err error) {
     return c.ClearLaunchConfigurationAttributesWithContext(context.Background(), request)
@@ -253,6 +258,7 @@ func (c *Client) ClearLaunchConfigurationAttributes(request *ClearLaunchConfigur
 // 本接口（ClearLaunchConfigurationAttributes）用于将启动配置内的特定属性完全清空。
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETER_ACTIONNOTFOUND = "InvalidParameter.ActionNotFound"
 //  INVALIDPARAMETERVALUE_INVALIDLAUNCHCONFIGURATIONID = "InvalidParameterValue.InvalidLaunchConfigurationId"
 func (c *Client) ClearLaunchConfigurationAttributesWithContext(ctx context.Context, request *ClearLaunchConfigurationAttributesRequest) (response *ClearLaunchConfigurationAttributesResponse, err error) {
     if request == nil {
@@ -297,6 +303,7 @@ func NewCompleteLifecycleActionResponse() (response *CompleteLifecycleActionResp
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ACTIONNOTFOUND = "InvalidParameter.ActionNotFound"
 //  INVALIDPARAMETER_MUSTONEPARAMETER = "InvalidParameter.MustOneParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_INVALIDINSTANCEID = "InvalidParameterValue.InvalidInstanceId"
@@ -318,6 +325,7 @@ func (c *Client) CompleteLifecycleAction(request *CompleteLifecycleActionRequest
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ACTIONNOTFOUND = "InvalidParameter.ActionNotFound"
 //  INVALIDPARAMETER_MUSTONEPARAMETER = "InvalidParameter.MustOneParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_INVALIDINSTANCEID = "InvalidParameterValue.InvalidInstanceId"
@@ -368,6 +376,7 @@ func NewCreateAutoScalingGroupResponse() (response *CreateAutoScalingGroupRespon
 //  INTERNALERROR_CALLTVPCERROR = "InternalError.CallTvpcError"
 //  INTERNALERROR_CALLVPCERROR = "InternalError.CallVpcError"
 //  INTERNALERROR_REQUESTERROR = "InternalError.RequestError"
+//  INVALIDPARAMETER_ACTIONNOTFOUND = "InvalidParameter.ActionNotFound"
 //  INVALIDPARAMETER_INSCENARIO = "InvalidParameter.InScenario"
 //  INVALIDPARAMETERVALUE_BASECAPACITYTOOLARGE = "InvalidParameterValue.BaseCapacityTooLarge"
 //  INVALIDPARAMETERVALUE_CLASSICLB = "InvalidParameterValue.ClassicLb"
@@ -416,6 +425,7 @@ func (c *Client) CreateAutoScalingGroup(request *CreateAutoScalingGroupRequest) 
 //  INTERNALERROR_CALLTVPCERROR = "InternalError.CallTvpcError"
 //  INTERNALERROR_CALLVPCERROR = "InternalError.CallVpcError"
 //  INTERNALERROR_REQUESTERROR = "InternalError.RequestError"
+//  INVALIDPARAMETER_ACTIONNOTFOUND = "InvalidParameter.ActionNotFound"
 //  INVALIDPARAMETER_INSCENARIO = "InvalidParameter.InScenario"
 //  INVALIDPARAMETERVALUE_BASECAPACITYTOOLARGE = "InvalidParameterValue.BaseCapacityTooLarge"
 //  INVALIDPARAMETERVALUE_CLASSICLB = "InvalidParameterValue.ClassicLb"
@@ -496,6 +506,7 @@ func NewCreateAutoScalingGroupFromInstanceResponse() (response *CreateAutoScalin
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_CALLVPCERROR = "InternalError.CallVpcError"
 //  INTERNALERROR_CALLEEERROR = "InternalError.CalleeError"
+//  INVALIDPARAMETER_ACTIONNOTFOUND = "InvalidParameter.ActionNotFound"
 //  INVALIDPARAMETER_INSCENARIO = "InvalidParameter.InScenario"
 //  INVALIDPARAMETERVALUE_CVMCONFIGURATIONERROR = "InvalidParameterValue.CvmConfigurationError"
 //  INVALIDPARAMETERVALUE_CVMERROR = "InvalidParameterValue.CvmError"
@@ -532,6 +543,7 @@ func (c *Client) CreateAutoScalingGroupFromInstance(request *CreateAutoScalingGr
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_CALLVPCERROR = "InternalError.CallVpcError"
 //  INTERNALERROR_CALLEEERROR = "InternalError.CalleeError"
+//  INVALIDPARAMETER_ACTIONNOTFOUND = "InvalidParameter.ActionNotFound"
 //  INVALIDPARAMETER_INSCENARIO = "InvalidParameter.InScenario"
 //  INVALIDPARAMETERVALUE_CVMCONFIGURATIONERROR = "InvalidParameterValue.CvmConfigurationError"
 //  INVALIDPARAMETERVALUE_CVMERROR = "InvalidParameterValue.CvmError"
@@ -597,6 +609,7 @@ func NewCreateLaunchConfigurationResponse() (response *CreateLaunchConfiguration
 //
 // 可能返回的错误码:
 //  INTERNALERROR_CALLEEERROR = "InternalError.CalleeError"
+//  INVALIDPARAMETER_ACTIONNOTFOUND = "InvalidParameter.ActionNotFound"
 //  INVALIDPARAMETER_CONFLICT = "InvalidParameter.Conflict"
 //  INVALIDPARAMETER_HOSTNAMEUNAVAILABLE = "InvalidParameter.HostNameUnavailable"
 //  INVALIDPARAMETER_INVALIDCOMBINATION = "InvalidParameter.InvalidCombination"
@@ -639,6 +652,7 @@ func (c *Client) CreateLaunchConfiguration(request *CreateLaunchConfigurationReq
 //
 // 可能返回的错误码:
 //  INTERNALERROR_CALLEEERROR = "InternalError.CalleeError"
+//  INVALIDPARAMETER_ACTIONNOTFOUND = "InvalidParameter.ActionNotFound"
 //  INVALIDPARAMETER_CONFLICT = "InvalidParameter.Conflict"
 //  INVALIDPARAMETER_HOSTNAMEUNAVAILABLE = "InvalidParameter.HostNameUnavailable"
 //  INVALIDPARAMETER_INVALIDCOMBINATION = "InvalidParameter.InvalidCombination"
@@ -740,6 +754,7 @@ func NewCreateLifecycleHookResponse() (response *CreateLifecycleHookResponse) {
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_CALLEEERROR = "InternalError.CalleeError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ACTIONNOTFOUND = "InvalidParameter.ActionNotFound"
 //  INVALIDPARAMETER_CONFLICT = "InvalidParameter.Conflict"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_FILTER = "InvalidParameterValue.Filter"
@@ -801,6 +816,7 @@ func (c *Client) CreateLifecycleHook(request *CreateLifecycleHookRequest) (respo
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_CALLEEERROR = "InternalError.CalleeError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ACTIONNOTFOUND = "InvalidParameter.ActionNotFound"
 //  INVALIDPARAMETER_CONFLICT = "InvalidParameter.Conflict"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_FILTER = "InvalidParameterValue.Filter"
@@ -906,6 +922,7 @@ func NewCreateNotificationConfigurationResponse() (response *CreateNotificationC
 // ```
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETER_ACTIONNOTFOUND = "InvalidParameter.ActionNotFound"
 //  INVALIDPARAMETERVALUE_CONFLICTNOTIFICATIONTARGET = "InvalidParameterValue.ConflictNotificationTarget"
 //  INVALIDPARAMETERVALUE_INVALIDAUTOSCALINGGROUPID = "InvalidParameterValue.InvalidAutoScalingGroupId"
 //  INVALIDPARAMETERVALUE_INVALIDNOTIFICATIONUSERGROUPID = "InvalidParameterValue.InvalidNotificationUserGroupId"
@@ -982,6 +999,7 @@ func (c *Client) CreateNotificationConfiguration(request *CreateNotificationConf
 // ```
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETER_ACTIONNOTFOUND = "InvalidParameter.ActionNotFound"
 //  INVALIDPARAMETERVALUE_CONFLICTNOTIFICATIONTARGET = "InvalidParameterValue.ConflictNotificationTarget"
 //  INVALIDPARAMETERVALUE_INVALIDAUTOSCALINGGROUPID = "InvalidParameterValue.InvalidAutoScalingGroupId"
 //  INVALIDPARAMETERVALUE_INVALIDNOTIFICATIONUSERGROUPID = "InvalidParameterValue.InvalidNotificationUserGroupId"
@@ -1035,6 +1053,7 @@ func NewCreateScalingPolicyResponse() (response *CreateScalingPolicyResponse) {
 // 可能返回的错误码:
 //  INTERNALERROR_CALLNOTIFICATIONERROR = "InternalError.CallNotificationError"
 //  INTERNALERROR_REQUESTERROR = "InternalError.RequestError"
+//  INVALIDPARAMETER_ACTIONNOTFOUND = "InvalidParameter.ActionNotFound"
 //  INVALIDPARAMETERVALUE_INVALIDAUTOSCALINGGROUPID = "InvalidParameterValue.InvalidAutoScalingGroupId"
 //  INVALIDPARAMETERVALUE_INVALIDNOTIFICATIONUSERGROUPID = "InvalidParameterValue.InvalidNotificationUserGroupId"
 //  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
@@ -1055,6 +1074,7 @@ func (c *Client) CreateScalingPolicy(request *CreateScalingPolicyRequest) (respo
 // 可能返回的错误码:
 //  INTERNALERROR_CALLNOTIFICATIONERROR = "InternalError.CallNotificationError"
 //  INTERNALERROR_REQUESTERROR = "InternalError.RequestError"
+//  INVALIDPARAMETER_ACTIONNOTFOUND = "InvalidParameter.ActionNotFound"
 //  INVALIDPARAMETERVALUE_INVALIDAUTOSCALINGGROUPID = "InvalidParameterValue.InvalidAutoScalingGroupId"
 //  INVALIDPARAMETERVALUE_INVALIDNOTIFICATIONUSERGROUPID = "InvalidParameterValue.InvalidNotificationUserGroupId"
 //  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
@@ -1103,6 +1123,7 @@ func NewCreateScheduledActionResponse() (response *CreateScheduledActionResponse
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ACTIONNOTFOUND = "InvalidParameter.ActionNotFound"
 //  INVALIDPARAMETERVALUE_CRONEXPRESSIONILLEGAL = "InvalidParameterValue.CronExpressionIllegal"
 //  INVALIDPARAMETERVALUE_ENDTIMEBEFORESTARTTIME = "InvalidParameterValue.EndTimeBeforeStartTime"
 //  INVALIDPARAMETERVALUE_INVALIDAUTOSCALINGGROUPID = "InvalidParameterValue.InvalidAutoScalingGroupId"
@@ -1128,6 +1149,7 @@ func (c *Client) CreateScheduledAction(request *CreateScheduledActionRequest) (r
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ACTIONNOTFOUND = "InvalidParameter.ActionNotFound"
 //  INVALIDPARAMETERVALUE_CRONEXPRESSIONILLEGAL = "InvalidParameterValue.CronExpressionIllegal"
 //  INVALIDPARAMETERVALUE_ENDTIMEBEFORESTARTTIME = "InvalidParameterValue.EndTimeBeforeStartTime"
 //  INVALIDPARAMETERVALUE_INVALIDAUTOSCALINGGROUPID = "InvalidParameterValue.InvalidAutoScalingGroupId"
@@ -1185,6 +1207,7 @@ func NewDeleteAutoScalingGroupResponse() (response *DeleteAutoScalingGroupRespon
 //  INTERNALERROR_CALLERROR = "InternalError.CallError"
 //  INTERNALERROR_CALLMONITORERROR = "InternalError.CallMonitorError"
 //  INTERNALERROR_CALLTAGERROR = "InternalError.CallTagError"
+//  INVALIDPARAMETER_ACTIONNOTFOUND = "InvalidParameter.ActionNotFound"
 //  INVALIDPARAMETER_CONFLICT = "InvalidParameter.Conflict"
 //  INVALIDPARAMETERVALUE_INVALIDAUTOSCALINGGROUPID = "InvalidParameterValue.InvalidAutoScalingGroupId"
 //  RESOURCEINUSE_ACTIVITYINPROGRESS = "ResourceInUse.ActivityInProgress"
@@ -1202,6 +1225,7 @@ func (c *Client) DeleteAutoScalingGroup(request *DeleteAutoScalingGroupRequest) 
 //  INTERNALERROR_CALLERROR = "InternalError.CallError"
 //  INTERNALERROR_CALLMONITORERROR = "InternalError.CallMonitorError"
 //  INTERNALERROR_CALLTAGERROR = "InternalError.CallTagError"
+//  INVALIDPARAMETER_ACTIONNOTFOUND = "InvalidParameter.ActionNotFound"
 //  INVALIDPARAMETER_CONFLICT = "InvalidParameter.Conflict"
 //  INVALIDPARAMETERVALUE_INVALIDAUTOSCALINGGROUPID = "InvalidParameterValue.InvalidAutoScalingGroupId"
 //  RESOURCEINUSE_ACTIVITYINPROGRESS = "ResourceInUse.ActivityInProgress"
@@ -1248,6 +1272,7 @@ func NewDeleteLaunchConfigurationResponse() (response *DeleteLaunchConfiguration
 // * 若启动配置在伸缩组中属于生效状态，则该启动配置不允许删除。
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETER_ACTIONNOTFOUND = "InvalidParameter.ActionNotFound"
 //  INVALIDPARAMETERVALUE_INVALIDLAUNCHCONFIGURATIONID = "InvalidParameterValue.InvalidLaunchConfigurationId"
 //  RESOURCEINUSE_LAUNCHCONFIGURATIONIDINUSE = "ResourceInUse.LaunchConfigurationIdInUse"
 //  RESOURCENOTFOUND_LAUNCHCONFIGURATIONIDNOTFOUND = "ResourceNotFound.LaunchConfigurationIdNotFound"
@@ -1263,6 +1288,7 @@ func (c *Client) DeleteLaunchConfiguration(request *DeleteLaunchConfigurationReq
 // * 若启动配置在伸缩组中属于生效状态，则该启动配置不允许删除。
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETER_ACTIONNOTFOUND = "InvalidParameter.ActionNotFound"
 //  INVALIDPARAMETERVALUE_INVALIDLAUNCHCONFIGURATIONID = "InvalidParameterValue.InvalidLaunchConfigurationId"
 //  RESOURCEINUSE_LAUNCHCONFIGURATIONIDINUSE = "ResourceInUse.LaunchConfigurationIdInUse"
 //  RESOURCENOTFOUND_LAUNCHCONFIGURATIONIDNOTFOUND = "ResourceNotFound.LaunchConfigurationIdNotFound"
@@ -1305,6 +1331,7 @@ func NewDeleteLifecycleHookResponse() (response *DeleteLifecycleHookResponse) {
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ACTIONNOTFOUND = "InvalidParameter.ActionNotFound"
 //  INVALIDPARAMETERVALUE_INVALIDLIFECYCLEHOOKID = "InvalidParameterValue.InvalidLifecycleHookId"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_LIFECYCLEHOOKNOTFOUND = "ResourceNotFound.LifecycleHookNotFound"
@@ -1318,6 +1345,7 @@ func (c *Client) DeleteLifecycleHook(request *DeleteLifecycleHookRequest) (respo
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ACTIONNOTFOUND = "InvalidParameter.ActionNotFound"
 //  INVALIDPARAMETERVALUE_INVALIDLIFECYCLEHOOKID = "InvalidParameterValue.InvalidLifecycleHookId"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_LIFECYCLEHOOKNOTFOUND = "ResourceNotFound.LifecycleHookNotFound"
@@ -1358,6 +1386,7 @@ func NewDeleteNotificationConfigurationResponse() (response *DeleteNotificationC
 // 本接口（DeleteNotificationConfiguration）用于删除特定的通知。
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETER_ACTIONNOTFOUND = "InvalidParameter.ActionNotFound"
 //  INVALIDPARAMETERVALUE_INVALIDAUTOSCALINGNOTIFICATIONID = "InvalidParameterValue.InvalidAutoScalingNotificationId"
 //  RESOURCENOTFOUND_AUTOSCALINGNOTIFICATIONNOTFOUND = "ResourceNotFound.AutoScalingNotificationNotFound"
 func (c *Client) DeleteNotificationConfiguration(request *DeleteNotificationConfigurationRequest) (response *DeleteNotificationConfigurationResponse, err error) {
@@ -1368,6 +1397,7 @@ func (c *Client) DeleteNotificationConfiguration(request *DeleteNotificationConf
 // 本接口（DeleteNotificationConfiguration）用于删除特定的通知。
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETER_ACTIONNOTFOUND = "InvalidParameter.ActionNotFound"
 //  INVALIDPARAMETERVALUE_INVALIDAUTOSCALINGNOTIFICATIONID = "InvalidParameterValue.InvalidAutoScalingNotificationId"
 //  RESOURCENOTFOUND_AUTOSCALINGNOTIFICATIONNOTFOUND = "ResourceNotFound.AutoScalingNotificationNotFound"
 func (c *Client) DeleteNotificationConfigurationWithContext(ctx context.Context, request *DeleteNotificationConfigurationRequest) (response *DeleteNotificationConfigurationResponse, err error) {
@@ -1408,6 +1438,7 @@ func NewDeleteScalingPolicyResponse() (response *DeleteScalingPolicyResponse) {
 //
 // 可能返回的错误码:
 //  INTERNALERROR_REQUESTERROR = "InternalError.RequestError"
+//  INVALIDPARAMETER_ACTIONNOTFOUND = "InvalidParameter.ActionNotFound"
 //  INVALIDPARAMETERVALUE_INVALIDAUTOSCALINGPOLICYID = "InvalidParameterValue.InvalidAutoScalingPolicyId"
 //  RESOURCENOTFOUND_SCALINGPOLICYNOTFOUND = "ResourceNotFound.ScalingPolicyNotFound"
 func (c *Client) DeleteScalingPolicy(request *DeleteScalingPolicyRequest) (response *DeleteScalingPolicyResponse, err error) {
@@ -1419,6 +1450,7 @@ func (c *Client) DeleteScalingPolicy(request *DeleteScalingPolicyRequest) (respo
 //
 // 可能返回的错误码:
 //  INTERNALERROR_REQUESTERROR = "InternalError.RequestError"
+//  INVALIDPARAMETER_ACTIONNOTFOUND = "InvalidParameter.ActionNotFound"
 //  INVALIDPARAMETERVALUE_INVALIDAUTOSCALINGPOLICYID = "InvalidParameterValue.InvalidAutoScalingPolicyId"
 //  RESOURCENOTFOUND_SCALINGPOLICYNOTFOUND = "ResourceNotFound.ScalingPolicyNotFound"
 func (c *Client) DeleteScalingPolicyWithContext(ctx context.Context, request *DeleteScalingPolicyRequest) (response *DeleteScalingPolicyResponse, err error) {
@@ -1458,6 +1490,7 @@ func NewDeleteScheduledActionResponse() (response *DeleteScheduledActionResponse
 // 本接口（DeleteScheduledAction）用于删除特定的定时任务。
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETER_ACTIONNOTFOUND = "InvalidParameter.ActionNotFound"
 //  INVALIDPARAMETERVALUE_INVALIDSCHEDULEDACTIONID = "InvalidParameterValue.InvalidScheduledActionId"
 //  RESOURCENOTFOUND_SCHEDULEDACTIONNOTFOUND = "ResourceNotFound.ScheduledActionNotFound"
 func (c *Client) DeleteScheduledAction(request *DeleteScheduledActionRequest) (response *DeleteScheduledActionResponse, err error) {
@@ -1468,6 +1501,7 @@ func (c *Client) DeleteScheduledAction(request *DeleteScheduledActionRequest) (r
 // 本接口（DeleteScheduledAction）用于删除特定的定时任务。
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETER_ACTIONNOTFOUND = "InvalidParameter.ActionNotFound"
 //  INVALIDPARAMETERVALUE_INVALIDSCHEDULEDACTIONID = "InvalidParameterValue.InvalidScheduledActionId"
 //  RESOURCENOTFOUND_SCHEDULEDACTIONNOTFOUND = "ResourceNotFound.ScheduledActionNotFound"
 func (c *Client) DeleteScheduledActionWithContext(ctx context.Context, request *DeleteScheduledActionRequest) (response *DeleteScheduledActionResponse, err error) {
@@ -1508,6 +1542,7 @@ func NewDescribeAccountLimitsResponse() (response *DescribeAccountLimitsResponse
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ACTIONNOTFOUND = "InvalidParameter.ActionNotFound"
 func (c *Client) DescribeAccountLimits(request *DescribeAccountLimitsRequest) (response *DescribeAccountLimitsResponse, err error) {
     return c.DescribeAccountLimitsWithContext(context.Background(), request)
 }
@@ -1517,6 +1552,7 @@ func (c *Client) DescribeAccountLimits(request *DescribeAccountLimitsRequest) (r
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ACTIONNOTFOUND = "InvalidParameter.ActionNotFound"
 func (c *Client) DescribeAccountLimitsWithContext(ctx context.Context, request *DescribeAccountLimitsRequest) (response *DescribeAccountLimitsResponse, err error) {
     if request == nil {
         request = NewDescribeAccountLimitsRequest()
@@ -1555,6 +1591,7 @@ func NewDescribeAutoScalingActivitiesResponse() (response *DescribeAutoScalingAc
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ACTIONNOTFOUND = "InvalidParameter.ActionNotFound"
 //  INVALIDPARAMETER_CONFLICT = "InvalidParameter.Conflict"
 //  INVALIDPARAMETERVALUE_FILTER = "InvalidParameterValue.Filter"
 //  INVALIDPARAMETERVALUE_INVALIDACTIVITYID = "InvalidParameterValue.InvalidActivityId"
@@ -1571,6 +1608,7 @@ func (c *Client) DescribeAutoScalingActivities(request *DescribeAutoScalingActiv
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ACTIONNOTFOUND = "InvalidParameter.ActionNotFound"
 //  INVALIDPARAMETER_CONFLICT = "InvalidParameter.Conflict"
 //  INVALIDPARAMETERVALUE_FILTER = "InvalidParameterValue.Filter"
 //  INVALIDPARAMETERVALUE_INVALIDACTIVITYID = "InvalidParameterValue.InvalidActivityId"
@@ -1616,6 +1654,7 @@ func NewDescribeAutoScalingAdvicesResponse() (response *DescribeAutoScalingAdvic
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ACTIONNOTFOUND = "InvalidParameter.ActionNotFound"
 //  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
 func (c *Client) DescribeAutoScalingAdvices(request *DescribeAutoScalingAdvicesRequest) (response *DescribeAutoScalingAdvicesResponse, err error) {
     return c.DescribeAutoScalingAdvicesWithContext(context.Background(), request)
@@ -1626,6 +1665,7 @@ func (c *Client) DescribeAutoScalingAdvices(request *DescribeAutoScalingAdvicesR
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ACTIONNOTFOUND = "InvalidParameter.ActionNotFound"
 //  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
 func (c *Client) DescribeAutoScalingAdvicesWithContext(ctx context.Context, request *DescribeAutoScalingAdvicesRequest) (response *DescribeAutoScalingAdvicesResponse, err error) {
     if request == nil {
@@ -1665,6 +1705,7 @@ func NewDescribeAutoScalingGroupLastActivitiesResponse() (response *DescribeAuto
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ACTIONNOTFOUND = "InvalidParameter.ActionNotFound"
 //  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
 //  INVALIDPARAMETERVALUE_NORESOURCEPERMISSION = "InvalidParameterValue.NoResourcePermission"
 func (c *Client) DescribeAutoScalingGroupLastActivities(request *DescribeAutoScalingGroupLastActivitiesRequest) (response *DescribeAutoScalingGroupLastActivitiesResponse, err error) {
@@ -1676,6 +1717,7 @@ func (c *Client) DescribeAutoScalingGroupLastActivities(request *DescribeAutoSca
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ACTIONNOTFOUND = "InvalidParameter.ActionNotFound"
 //  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
 //  INVALIDPARAMETERVALUE_NORESOURCEPERMISSION = "InvalidParameterValue.NoResourcePermission"
 func (c *Client) DescribeAutoScalingGroupLastActivitiesWithContext(ctx context.Context, request *DescribeAutoScalingGroupLastActivitiesRequest) (response *DescribeAutoScalingGroupLastActivitiesResponse, err error) {
@@ -1721,6 +1763,7 @@ func NewDescribeAutoScalingGroupsResponse() (response *DescribeAutoScalingGroups
 // * 如果参数为空，返回当前用户一定数量（`Limit`所指定的数量，默认为20）的伸缩组。
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETER_ACTIONNOTFOUND = "InvalidParameter.ActionNotFound"
 //  INVALIDPARAMETER_CONFLICT = "InvalidParameter.Conflict"
 //  INVALIDPARAMETERCONFLICT = "InvalidParameterConflict"
 //  INVALIDPARAMETERVALUE_FILTER = "InvalidParameterValue.Filter"
@@ -1745,6 +1788,7 @@ func (c *Client) DescribeAutoScalingGroups(request *DescribeAutoScalingGroupsReq
 // * 如果参数为空，返回当前用户一定数量（`Limit`所指定的数量，默认为20）的伸缩组。
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETER_ACTIONNOTFOUND = "InvalidParameter.ActionNotFound"
 //  INVALIDPARAMETER_CONFLICT = "InvalidParameter.Conflict"
 //  INVALIDPARAMETERCONFLICT = "InvalidParameterConflict"
 //  INVALIDPARAMETERVALUE_FILTER = "InvalidParameterValue.Filter"
@@ -1799,6 +1843,7 @@ func NewDescribeAutoScalingInstancesResponse() (response *DescribeAutoScalingIns
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ACTIONNOTFOUND = "InvalidParameter.ActionNotFound"
 //  INVALIDPARAMETER_CONFLICT = "InvalidParameter.Conflict"
 //  INVALIDPARAMETERVALUE_FILTER = "InvalidParameterValue.Filter"
 //  INVALIDPARAMETERVALUE_INVALIDAUTOSCALINGGROUPID = "InvalidParameterValue.InvalidAutoScalingGroupId"
@@ -1820,6 +1865,7 @@ func (c *Client) DescribeAutoScalingInstances(request *DescribeAutoScalingInstan
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ACTIONNOTFOUND = "InvalidParameter.ActionNotFound"
 //  INVALIDPARAMETER_CONFLICT = "InvalidParameter.Conflict"
 //  INVALIDPARAMETERVALUE_FILTER = "InvalidParameterValue.Filter"
 //  INVALIDPARAMETERVALUE_INVALIDAUTOSCALINGGROUPID = "InvalidParameterValue.InvalidAutoScalingGroupId"
@@ -1871,6 +1917,7 @@ func NewDescribeLaunchConfigurationsResponse() (response *DescribeLaunchConfigur
 // 可能返回的错误码:
 //  INVALIDLAUNCHCONFIGURATION = "InvalidLaunchConfiguration"
 //  INVALIDLAUNCHCONFIGURATIONID = "InvalidLaunchConfigurationId"
+//  INVALIDPARAMETER_ACTIONNOTFOUND = "InvalidParameter.ActionNotFound"
 //  INVALIDPARAMETERCONFLICT = "InvalidParameterConflict"
 //  INVALIDPARAMETERVALUE_INVALIDFILTER = "InvalidParameterValue.InvalidFilter"
 //  INVALIDPARAMETERVALUE_INVALIDLAUNCHCONFIGURATIONID = "InvalidParameterValue.InvalidLaunchConfigurationId"
@@ -1892,6 +1939,7 @@ func (c *Client) DescribeLaunchConfigurations(request *DescribeLaunchConfigurati
 // 可能返回的错误码:
 //  INVALIDLAUNCHCONFIGURATION = "InvalidLaunchConfiguration"
 //  INVALIDLAUNCHCONFIGURATIONID = "InvalidLaunchConfigurationId"
+//  INVALIDPARAMETER_ACTIONNOTFOUND = "InvalidParameter.ActionNotFound"
 //  INVALIDPARAMETERCONFLICT = "InvalidParameterConflict"
 //  INVALIDPARAMETERVALUE_INVALIDFILTER = "InvalidParameterValue.InvalidFilter"
 //  INVALIDPARAMETERVALUE_INVALIDLAUNCHCONFIGURATIONID = "InvalidParameterValue.InvalidLaunchConfigurationId"
@@ -1942,6 +1990,7 @@ func NewDescribeLifecycleHooksResponse() (response *DescribeLifecycleHooksRespon
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ACTIONNOTFOUND = "InvalidParameter.ActionNotFound"
 //  INVALIDPARAMETER_CONFLICT = "InvalidParameter.Conflict"
 //  INVALIDPARAMETERVALUE_INVALIDAUTOSCALINGGROUPID = "InvalidParameterValue.InvalidAutoScalingGroupId"
 //  INVALIDPARAMETERVALUE_INVALIDFILTER = "InvalidParameterValue.InvalidFilter"
@@ -1963,6 +2012,7 @@ func (c *Client) DescribeLifecycleHooks(request *DescribeLifecycleHooksRequest) 
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ACTIONNOTFOUND = "InvalidParameter.ActionNotFound"
 //  INVALIDPARAMETER_CONFLICT = "InvalidParameter.Conflict"
 //  INVALIDPARAMETERVALUE_INVALIDAUTOSCALINGGROUPID = "InvalidParameterValue.InvalidAutoScalingGroupId"
 //  INVALIDPARAMETERVALUE_INVALIDFILTER = "InvalidParameterValue.InvalidFilter"
@@ -2011,6 +2061,7 @@ func NewDescribeNotificationConfigurationsResponse() (response *DescribeNotifica
 // 如果参数为空，返回当前用户一定数量（Limit所指定的数量，默认为20）的通知。
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETER_ACTIONNOTFOUND = "InvalidParameter.ActionNotFound"
 //  INVALIDPARAMETERCONFLICT = "InvalidParameterConflict"
 //  INVALIDPARAMETERVALUE_INVALIDAUTOSCALINGGROUPID = "InvalidParameterValue.InvalidAutoScalingGroupId"
 //  INVALIDPARAMETERVALUE_INVALIDAUTOSCALINGNOTIFICATIONID = "InvalidParameterValue.InvalidAutoScalingNotificationId"
@@ -2029,6 +2080,7 @@ func (c *Client) DescribeNotificationConfigurations(request *DescribeNotificatio
 // 如果参数为空，返回当前用户一定数量（Limit所指定的数量，默认为20）的通知。
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETER_ACTIONNOTFOUND = "InvalidParameter.ActionNotFound"
 //  INVALIDPARAMETERCONFLICT = "InvalidParameterConflict"
 //  INVALIDPARAMETERVALUE_INVALIDAUTOSCALINGGROUPID = "InvalidParameterValue.InvalidAutoScalingGroupId"
 //  INVALIDPARAMETERVALUE_INVALIDAUTOSCALINGNOTIFICATIONID = "InvalidParameterValue.InvalidAutoScalingNotificationId"
@@ -2072,6 +2124,7 @@ func NewDescribeScalingPoliciesResponse() (response *DescribeScalingPoliciesResp
 // 可能返回的错误码:
 //  INTERNALERROR_CALLMONITORERROR = "InternalError.CallMonitorError"
 //  INTERNALERROR_REQUESTERROR = "InternalError.RequestError"
+//  INVALIDPARAMETER_ACTIONNOTFOUND = "InvalidParameter.ActionNotFound"
 //  INVALIDPARAMETER_CONFLICT = "InvalidParameter.Conflict"
 //  INVALIDPARAMETERVALUE_INVALIDAUTOSCALINGGROUPID = "InvalidParameterValue.InvalidAutoScalingGroupId"
 //  INVALIDPARAMETERVALUE_INVALIDAUTOSCALINGPOLICYID = "InvalidParameterValue.InvalidAutoScalingPolicyId"
@@ -2087,6 +2140,7 @@ func (c *Client) DescribeScalingPolicies(request *DescribeScalingPoliciesRequest
 // 可能返回的错误码:
 //  INTERNALERROR_CALLMONITORERROR = "InternalError.CallMonitorError"
 //  INTERNALERROR_REQUESTERROR = "InternalError.RequestError"
+//  INVALIDPARAMETER_ACTIONNOTFOUND = "InvalidParameter.ActionNotFound"
 //  INVALIDPARAMETER_CONFLICT = "InvalidParameter.Conflict"
 //  INVALIDPARAMETERVALUE_INVALIDAUTOSCALINGGROUPID = "InvalidParameterValue.InvalidAutoScalingGroupId"
 //  INVALIDPARAMETERVALUE_INVALIDAUTOSCALINGPOLICYID = "InvalidParameterValue.InvalidAutoScalingPolicyId"
@@ -2136,6 +2190,7 @@ func NewDescribeScheduledActionsResponse() (response *DescribeScheduledActionsRe
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ACTIONNOTFOUND = "InvalidParameter.ActionNotFound"
 //  INVALIDPARAMETER_CONFLICT = "InvalidParameter.Conflict"
 //  INVALIDPARAMETERVALUE_FILTER = "InvalidParameterValue.Filter"
 //  INVALIDPARAMETERVALUE_INVALIDAUTOSCALINGGROUPID = "InvalidParameterValue.InvalidAutoScalingGroupId"
@@ -2157,6 +2212,7 @@ func (c *Client) DescribeScheduledActions(request *DescribeScheduledActionsReque
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ACTIONNOTFOUND = "InvalidParameter.ActionNotFound"
 //  INVALIDPARAMETER_CONFLICT = "InvalidParameter.Conflict"
 //  INVALIDPARAMETERVALUE_FILTER = "InvalidParameterValue.Filter"
 //  INVALIDPARAMETERVALUE_INVALIDAUTOSCALINGGROUPID = "InvalidParameterValue.InvalidAutoScalingGroupId"
@@ -2208,6 +2264,7 @@ func NewDetachInstancesResponse() (response *DetachInstancesResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION_NOACTIVITYTOGENERATE = "FailedOperation.NoActivityToGenerate"
 //  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ACTIONNOTFOUND = "InvalidParameter.ActionNotFound"
 //  INVALIDPARAMETERVALUE_INVALIDAUTOSCALINGGROUPID = "InvalidParameterValue.InvalidAutoScalingGroupId"
 //  INVALIDPARAMETERVALUE_INVALIDINSTANCEID = "InvalidParameterValue.InvalidInstanceId"
 //  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
@@ -2234,6 +2291,7 @@ func (c *Client) DetachInstances(request *DetachInstancesRequest) (response *Det
 // 可能返回的错误码:
 //  FAILEDOPERATION_NOACTIVITYTOGENERATE = "FailedOperation.NoActivityToGenerate"
 //  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ACTIONNOTFOUND = "InvalidParameter.ActionNotFound"
 //  INVALIDPARAMETERVALUE_INVALIDAUTOSCALINGGROUPID = "InvalidParameterValue.InvalidAutoScalingGroupId"
 //  INVALIDPARAMETERVALUE_INVALIDINSTANCEID = "InvalidParameterValue.InvalidInstanceId"
 //  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
@@ -2283,6 +2341,7 @@ func NewDetachLoadBalancersResponse() (response *DetachLoadBalancersResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION_NOACTIVITYTOGENERATE = "FailedOperation.NoActivityToGenerate"
 //  INTERNALERROR_REQUESTERROR = "InternalError.RequestError"
+//  INVALIDPARAMETER_ACTIONNOTFOUND = "InvalidParameter.ActionNotFound"
 //  INVALIDPARAMETER_CONFLICT = "InvalidParameter.Conflict"
 //  INVALIDPARAMETER_INSCENARIO = "InvalidParameter.InScenario"
 //  INVALIDPARAMETER_LOADBALANCERNOTINAUTOSCALINGGROUP = "InvalidParameter.LoadBalancerNotInAutoScalingGroup"
@@ -2313,6 +2372,7 @@ func (c *Client) DetachLoadBalancers(request *DetachLoadBalancersRequest) (respo
 // 可能返回的错误码:
 //  FAILEDOPERATION_NOACTIVITYTOGENERATE = "FailedOperation.NoActivityToGenerate"
 //  INTERNALERROR_REQUESTERROR = "InternalError.RequestError"
+//  INVALIDPARAMETER_ACTIONNOTFOUND = "InvalidParameter.ActionNotFound"
 //  INVALIDPARAMETER_CONFLICT = "InvalidParameter.Conflict"
 //  INVALIDPARAMETER_INSCENARIO = "InvalidParameter.InScenario"
 //  INVALIDPARAMETER_LOADBALANCERNOTINAUTOSCALINGGROUP = "InvalidParameter.LoadBalancerNotInAutoScalingGroup"
@@ -2397,6 +2457,7 @@ func NewDisableAutoScalingGroupResponse() (response *DisableAutoScalingGroupResp
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ACTIONNOTFOUND = "InvalidParameter.ActionNotFound"
 //  INVALIDPARAMETERVALUE_INVALIDAUTOSCALINGGROUPID = "InvalidParameterValue.InvalidAutoScalingGroupId"
 //  RESOURCENOTFOUND_AUTOSCALINGGROUPNOTFOUND = "ResourceNotFound.AutoScalingGroupNotFound"
 func (c *Client) DisableAutoScalingGroup(request *DisableAutoScalingGroupRequest) (response *DisableAutoScalingGroupResponse, err error) {
@@ -2434,6 +2495,7 @@ func (c *Client) DisableAutoScalingGroup(request *DisableAutoScalingGroupRequest
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ACTIONNOTFOUND = "InvalidParameter.ActionNotFound"
 //  INVALIDPARAMETERVALUE_INVALIDAUTOSCALINGGROUPID = "InvalidParameterValue.InvalidAutoScalingGroupId"
 //  RESOURCENOTFOUND_AUTOSCALINGGROUPNOTFOUND = "ResourceNotFound.AutoScalingGroupNotFound"
 func (c *Client) DisableAutoScalingGroupWithContext(ctx context.Context, request *DisableAutoScalingGroupRequest) (response *DisableAutoScalingGroupResponse, err error) {
@@ -2474,6 +2536,7 @@ func NewEnableAutoScalingGroupResponse() (response *EnableAutoScalingGroupRespon
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ACTIONNOTFOUND = "InvalidParameter.ActionNotFound"
 //  INVALIDPARAMETERVALUE_INVALIDAUTOSCALINGGROUPID = "InvalidParameterValue.InvalidAutoScalingGroupId"
 //  RESOURCENOTFOUND_AUTOSCALINGGROUPNOTFOUND = "ResourceNotFound.AutoScalingGroupNotFound"
 func (c *Client) EnableAutoScalingGroup(request *EnableAutoScalingGroupRequest) (response *EnableAutoScalingGroupResponse, err error) {
@@ -2485,6 +2548,7 @@ func (c *Client) EnableAutoScalingGroup(request *EnableAutoScalingGroupRequest) 
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ACTIONNOTFOUND = "InvalidParameter.ActionNotFound"
 //  INVALIDPARAMETERVALUE_INVALIDAUTOSCALINGGROUPID = "InvalidParameterValue.InvalidAutoScalingGroupId"
 //  RESOURCENOTFOUND_AUTOSCALINGGROUPNOTFOUND = "ResourceNotFound.AutoScalingGroupNotFound"
 func (c *Client) EnableAutoScalingGroupWithContext(ctx context.Context, request *EnableAutoScalingGroupRequest) (response *EnableAutoScalingGroupResponse, err error) {
@@ -2532,6 +2596,7 @@ func NewExecuteScalingPolicyResponse() (response *ExecuteScalingPolicyResponse) 
 // 可能返回的错误码:
 //  FAILEDOPERATION_NOACTIVITYTOGENERATE = "FailedOperation.NoActivityToGenerate"
 //  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ACTIONNOTFOUND = "InvalidParameter.ActionNotFound"
 //  INVALIDPARAMETERVALUE_INVALIDAUTOSCALINGPOLICYID = "InvalidParameterValue.InvalidAutoScalingPolicyId"
 //  RESOURCEINUSE_AUTOSCALINGGROUPNOTACTIVE = "ResourceInUse.AutoScalingGroupNotActive"
 //  RESOURCENOTFOUND_AUTOSCALINGGROUPNOTFOUND = "ResourceNotFound.AutoScalingGroupNotFound"
@@ -2554,6 +2619,7 @@ func (c *Client) ExecuteScalingPolicy(request *ExecuteScalingPolicyRequest) (res
 // 可能返回的错误码:
 //  FAILEDOPERATION_NOACTIVITYTOGENERATE = "FailedOperation.NoActivityToGenerate"
 //  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ACTIONNOTFOUND = "InvalidParameter.ActionNotFound"
 //  INVALIDPARAMETERVALUE_INVALIDAUTOSCALINGPOLICYID = "InvalidParameterValue.InvalidAutoScalingPolicyId"
 //  RESOURCEINUSE_AUTOSCALINGGROUPNOTACTIVE = "ResourceInUse.AutoScalingGroupNotActive"
 //  RESOURCENOTFOUND_AUTOSCALINGGROUPNOTFOUND = "ResourceNotFound.AutoScalingGroupNotFound"
@@ -2599,6 +2665,7 @@ func NewModifyAutoScalingGroupResponse() (response *ModifyAutoScalingGroupRespon
 // 可能返回的错误码:
 //  INTERNALERROR_CALLVPCERROR = "InternalError.CallVpcError"
 //  INTERNALERROR_REQUESTERROR = "InternalError.RequestError"
+//  INVALIDPARAMETER_ACTIONNOTFOUND = "InvalidParameter.ActionNotFound"
 //  INVALIDPARAMETER_CONFLICT = "InvalidParameter.Conflict"
 //  INVALIDPARAMETER_INSCENARIO = "InvalidParameter.InScenario"
 //  INVALIDPARAMETERVALUE_BASECAPACITYTOOLARGE = "InvalidParameterValue.BaseCapacityTooLarge"
@@ -2635,6 +2702,7 @@ func (c *Client) ModifyAutoScalingGroup(request *ModifyAutoScalingGroupRequest) 
 // 可能返回的错误码:
 //  INTERNALERROR_CALLVPCERROR = "InternalError.CallVpcError"
 //  INTERNALERROR_REQUESTERROR = "InternalError.RequestError"
+//  INVALIDPARAMETER_ACTIONNOTFOUND = "InvalidParameter.ActionNotFound"
 //  INVALIDPARAMETER_CONFLICT = "InvalidParameter.Conflict"
 //  INVALIDPARAMETER_INSCENARIO = "InvalidParameter.InScenario"
 //  INVALIDPARAMETERVALUE_BASECAPACITYTOOLARGE = "InvalidParameterValue.BaseCapacityTooLarge"
@@ -2699,6 +2767,7 @@ func NewModifyDesiredCapacityResponse() (response *ModifyDesiredCapacityResponse
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ACTIONNOTFOUND = "InvalidParameter.ActionNotFound"
 //  INVALIDPARAMETERVALUE_BASECAPACITYTOOLARGE = "InvalidParameterValue.BaseCapacityTooLarge"
 //  INVALIDPARAMETERVALUE_INVALIDAUTOSCALINGGROUPID = "InvalidParameterValue.InvalidAutoScalingGroupId"
 //  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
@@ -2716,6 +2785,7 @@ func (c *Client) ModifyDesiredCapacity(request *ModifyDesiredCapacityRequest) (r
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ACTIONNOTFOUND = "InvalidParameter.ActionNotFound"
 //  INVALIDPARAMETERVALUE_BASECAPACITYTOOLARGE = "InvalidParameterValue.BaseCapacityTooLarge"
 //  INVALIDPARAMETERVALUE_INVALIDAUTOSCALINGGROUPID = "InvalidParameterValue.InvalidAutoScalingGroupId"
 //  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
@@ -2767,6 +2837,7 @@ func NewModifyLaunchConfigurationAttributesResponse() (response *ModifyLaunchCon
 // * 本接口支持修改部分简单类型。
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETER_ACTIONNOTFOUND = "InvalidParameter.ActionNotFound"
 //  INVALIDPARAMETER_CONFLICT = "InvalidParameter.Conflict"
 //  INVALIDPARAMETER_HOSTNAMEUNAVAILABLE = "InvalidParameter.HostNameUnavailable"
 //  INVALIDPARAMETER_INSCENARIO = "InvalidParameter.InScenario"
@@ -2804,6 +2875,7 @@ func (c *Client) ModifyLaunchConfigurationAttributes(request *ModifyLaunchConfig
 // * 本接口支持修改部分简单类型。
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETER_ACTIONNOTFOUND = "InvalidParameter.ActionNotFound"
 //  INVALIDPARAMETER_CONFLICT = "InvalidParameter.Conflict"
 //  INVALIDPARAMETER_HOSTNAMEUNAVAILABLE = "InvalidParameter.HostNameUnavailable"
 //  INVALIDPARAMETER_INSCENARIO = "InvalidParameter.InScenario"
@@ -2865,6 +2937,7 @@ func NewModifyLifecycleHookResponse() (response *ModifyLifecycleHookResponse) {
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ACTIONNOTFOUND = "InvalidParameter.ActionNotFound"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
 //  RESOURCENOTFOUND_CMQQUEUENOTFOUND = "ResourceNotFound.CmqQueueNotFound"
@@ -2881,6 +2954,7 @@ func (c *Client) ModifyLifecycleHook(request *ModifyLifecycleHookRequest) (respo
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ACTIONNOTFOUND = "InvalidParameter.ActionNotFound"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
 //  RESOURCENOTFOUND_CMQQUEUENOTFOUND = "ResourceNotFound.CmqQueueNotFound"
@@ -2927,6 +3001,7 @@ func NewModifyLoadBalancerTargetAttributesResponse() (response *ModifyLoadBalanc
 // 可能返回的错误码:
 //  FAILEDOPERATION_NOACTIVITYTOGENERATE = "FailedOperation.NoActivityToGenerate"
 //  INTERNALERROR_REQUESTERROR = "InternalError.RequestError"
+//  INVALIDPARAMETER_ACTIONNOTFOUND = "InvalidParameter.ActionNotFound"
 //  INVALIDPARAMETER_CONFLICT = "InvalidParameter.Conflict"
 //  INVALIDPARAMETER_INSCENARIO = "InvalidParameter.InScenario"
 //  INVALIDPARAMETER_LOADBALANCERNOTINAUTOSCALINGGROUP = "InvalidParameter.LoadBalancerNotInAutoScalingGroup"
@@ -2957,6 +3032,7 @@ func (c *Client) ModifyLoadBalancerTargetAttributes(request *ModifyLoadBalancerT
 // 可能返回的错误码:
 //  FAILEDOPERATION_NOACTIVITYTOGENERATE = "FailedOperation.NoActivityToGenerate"
 //  INTERNALERROR_REQUESTERROR = "InternalError.RequestError"
+//  INVALIDPARAMETER_ACTIONNOTFOUND = "InvalidParameter.ActionNotFound"
 //  INVALIDPARAMETER_CONFLICT = "InvalidParameter.Conflict"
 //  INVALIDPARAMETER_INSCENARIO = "InvalidParameter.InScenario"
 //  INVALIDPARAMETER_LOADBALANCERNOTINAUTOSCALINGGROUP = "InvalidParameter.LoadBalancerNotInAutoScalingGroup"
@@ -3024,6 +3100,7 @@ func NewModifyLoadBalancersResponse() (response *ModifyLoadBalancersResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION_NOACTIVITYTOGENERATE = "FailedOperation.NoActivityToGenerate"
 //  INTERNALERROR_REQUESTERROR = "InternalError.RequestError"
+//  INVALIDPARAMETER_ACTIONNOTFOUND = "InvalidParameter.ActionNotFound"
 //  INVALIDPARAMETER_CONFLICT = "InvalidParameter.Conflict"
 //  INVALIDPARAMETER_INSCENARIO = "InvalidParameter.InScenario"
 //  INVALIDPARAMETERVALUE_CLASSICLB = "InvalidParameterValue.ClassicLb"
@@ -3060,6 +3137,7 @@ func (c *Client) ModifyLoadBalancers(request *ModifyLoadBalancersRequest) (respo
 // 可能返回的错误码:
 //  FAILEDOPERATION_NOACTIVITYTOGENERATE = "FailedOperation.NoActivityToGenerate"
 //  INTERNALERROR_REQUESTERROR = "InternalError.RequestError"
+//  INVALIDPARAMETER_ACTIONNOTFOUND = "InvalidParameter.ActionNotFound"
 //  INVALIDPARAMETER_CONFLICT = "InvalidParameter.Conflict"
 //  INVALIDPARAMETER_INSCENARIO = "InvalidParameter.InScenario"
 //  INVALIDPARAMETERVALUE_CLASSICLB = "InvalidParameterValue.ClassicLb"
@@ -3117,6 +3195,7 @@ func NewModifyNotificationConfigurationResponse() (response *ModifyNotificationC
 // * 通知的接收端类型不支持修改。
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETER_ACTIONNOTFOUND = "InvalidParameter.ActionNotFound"
 //  INVALIDPARAMETERVALUE_CONFLICTNOTIFICATIONTARGET = "InvalidParameterValue.ConflictNotificationTarget"
 //  INVALIDPARAMETERVALUE_INVALIDAUTOSCALINGNOTIFICATIONID = "InvalidParameterValue.InvalidAutoScalingNotificationId"
 //  INVALIDPARAMETERVALUE_INVALIDNOTIFICATIONUSERGROUPID = "InvalidParameterValue.InvalidNotificationUserGroupId"
@@ -3136,6 +3215,7 @@ func (c *Client) ModifyNotificationConfiguration(request *ModifyNotificationConf
 // * 通知的接收端类型不支持修改。
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETER_ACTIONNOTFOUND = "InvalidParameter.ActionNotFound"
 //  INVALIDPARAMETERVALUE_CONFLICTNOTIFICATIONTARGET = "InvalidParameterValue.ConflictNotificationTarget"
 //  INVALIDPARAMETERVALUE_INVALIDAUTOSCALINGNOTIFICATIONID = "InvalidParameterValue.InvalidAutoScalingNotificationId"
 //  INVALIDPARAMETERVALUE_INVALIDNOTIFICATIONUSERGROUPID = "InvalidParameterValue.InvalidNotificationUserGroupId"
@@ -3183,6 +3263,7 @@ func NewModifyScalingPolicyResponse() (response *ModifyScalingPolicyResponse) {
 //
 // 可能返回的错误码:
 //  INTERNALERROR_REQUESTERROR = "InternalError.RequestError"
+//  INVALIDPARAMETER_ACTIONNOTFOUND = "InvalidParameter.ActionNotFound"
 //  INVALIDPARAMETERVALUE_INVALIDAUTOSCALINGPOLICYID = "InvalidParameterValue.InvalidAutoScalingPolicyId"
 //  INVALIDPARAMETERVALUE_INVALIDNOTIFICATIONUSERGROUPID = "InvalidParameterValue.InvalidNotificationUserGroupId"
 //  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
@@ -3199,6 +3280,7 @@ func (c *Client) ModifyScalingPolicy(request *ModifyScalingPolicyRequest) (respo
 //
 // 可能返回的错误码:
 //  INTERNALERROR_REQUESTERROR = "InternalError.RequestError"
+//  INVALIDPARAMETER_ACTIONNOTFOUND = "InvalidParameter.ActionNotFound"
 //  INVALIDPARAMETERVALUE_INVALIDAUTOSCALINGPOLICYID = "InvalidParameterValue.InvalidAutoScalingPolicyId"
 //  INVALIDPARAMETERVALUE_INVALIDNOTIFICATIONUSERGROUPID = "InvalidParameterValue.InvalidNotificationUserGroupId"
 //  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
@@ -3244,6 +3326,7 @@ func NewModifyScheduledActionResponse() (response *ModifyScheduledActionResponse
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ACTIONNOTFOUND = "InvalidParameter.ActionNotFound"
 //  INVALIDPARAMETERVALUE_CRONEXPRESSIONILLEGAL = "InvalidParameterValue.CronExpressionIllegal"
 //  INVALIDPARAMETERVALUE_ENDTIMEBEFORESTARTTIME = "InvalidParameterValue.EndTimeBeforeStartTime"
 //  INVALIDPARAMETERVALUE_INVALIDSCHEDULEDACTIONID = "InvalidParameterValue.InvalidScheduledActionId"
@@ -3267,6 +3350,7 @@ func (c *Client) ModifyScheduledAction(request *ModifyScheduledActionRequest) (r
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ACTIONNOTFOUND = "InvalidParameter.ActionNotFound"
 //  INVALIDPARAMETERVALUE_CRONEXPRESSIONILLEGAL = "InvalidParameterValue.CronExpressionIllegal"
 //  INVALIDPARAMETERVALUE_ENDTIMEBEFORESTARTTIME = "InvalidParameterValue.EndTimeBeforeStartTime"
 //  INVALIDPARAMETERVALUE_INVALIDSCHEDULEDACTIONID = "InvalidParameterValue.InvalidScheduledActionId"
@@ -3325,6 +3409,7 @@ func NewRemoveInstancesResponse() (response *RemoveInstancesResponse) {
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ACTIONNOTFOUND = "InvalidParameter.ActionNotFound"
 //  INVALIDPARAMETERVALUE_INVALIDAUTOSCALINGGROUPID = "InvalidParameterValue.InvalidAutoScalingGroupId"
 //  INVALIDPARAMETERVALUE_INVALIDINSTANCEID = "InvalidParameterValue.InvalidInstanceId"
 //  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
@@ -3349,6 +3434,7 @@ func (c *Client) RemoveInstances(request *RemoveInstancesRequest) (response *Rem
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_ACTIONNOTFOUND = "InvalidParameter.ActionNotFound"
 //  INVALIDPARAMETERVALUE_INVALIDAUTOSCALINGGROUPID = "InvalidParameterValue.InvalidAutoScalingGroupId"
 //  INVALIDPARAMETERVALUE_INVALIDINSTANCEID = "InvalidParameterValue.InvalidInstanceId"
 //  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
@@ -3407,6 +3493,7 @@ func NewScaleInInstancesResponse() (response *ScaleInInstancesResponse) {
 // * 缩容如果失败或者部分成功，最后期望实例数只会扣减实际缩容成功的实例数量
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETER_ACTIONNOTFOUND = "InvalidParameter.ActionNotFound"
 //  INVALIDPARAMETERVALUE_INVALIDAUTOSCALINGGROUPID = "InvalidParameterValue.InvalidAutoScalingGroupId"
 //  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
 //  MISSINGPARAMETER = "MissingParameter"
@@ -3433,6 +3520,7 @@ func (c *Client) ScaleInInstances(request *ScaleInInstancesRequest) (response *S
 // * 缩容如果失败或者部分成功，最后期望实例数只会扣减实际缩容成功的实例数量
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETER_ACTIONNOTFOUND = "InvalidParameter.ActionNotFound"
 //  INVALIDPARAMETERVALUE_INVALIDAUTOSCALINGGROUPID = "InvalidParameterValue.InvalidAutoScalingGroupId"
 //  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
 //  MISSINGPARAMETER = "MissingParameter"
@@ -3484,6 +3572,7 @@ func NewScaleOutInstancesResponse() (response *ScaleOutInstancesResponse) {
 // * 扩容如果失败或者部分成功，最后期望实例数只会增加实际成功的实例数量
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETER_ACTIONNOTFOUND = "InvalidParameter.ActionNotFound"
 //  INVALIDPARAMETERVALUE_INVALIDAUTOSCALINGGROUPID = "InvalidParameterValue.InvalidAutoScalingGroupId"
 //  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
 //  LIMITEXCEEDED_DESIREDCAPACITYLIMITEXCEEDED = "LimitExceeded.DesiredCapacityLimitExceeded"
@@ -3506,6 +3595,7 @@ func (c *Client) ScaleOutInstances(request *ScaleOutInstancesRequest) (response 
 // * 扩容如果失败或者部分成功，最后期望实例数只会增加实际成功的实例数量
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETER_ACTIONNOTFOUND = "InvalidParameter.ActionNotFound"
 //  INVALIDPARAMETERVALUE_INVALIDAUTOSCALINGGROUPID = "InvalidParameterValue.InvalidAutoScalingGroupId"
 //  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
 //  LIMITEXCEEDED_DESIREDCAPACITYLIMITEXCEEDED = "LimitExceeded.DesiredCapacityLimitExceeded"
@@ -3551,6 +3641,7 @@ func NewSetInstancesProtectionResponse() (response *SetInstancesProtectionRespon
 // 实例设置保护之后，当发生不健康替换、报警策略、期望值变更等触发缩容时，将不对此实例缩容操作。
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETER_ACTIONNOTFOUND = "InvalidParameter.ActionNotFound"
 //  INVALIDPARAMETERVALUE_INVALIDAUTOSCALINGGROUPID = "InvalidParameterValue.InvalidAutoScalingGroupId"
 //  INVALIDPARAMETERVALUE_INVALIDINSTANCEID = "InvalidParameterValue.InvalidInstanceId"
 //  RESOURCENOTFOUND_AUTOSCALINGGROUPNOTFOUND = "ResourceNotFound.AutoScalingGroupNotFound"
@@ -3565,6 +3656,7 @@ func (c *Client) SetInstancesProtection(request *SetInstancesProtectionRequest) 
 // 实例设置保护之后，当发生不健康替换、报警策略、期望值变更等触发缩容时，将不对此实例缩容操作。
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETER_ACTIONNOTFOUND = "InvalidParameter.ActionNotFound"
 //  INVALIDPARAMETERVALUE_INVALIDAUTOSCALINGGROUPID = "InvalidParameterValue.InvalidAutoScalingGroupId"
 //  INVALIDPARAMETERVALUE_INVALIDINSTANCEID = "InvalidParameterValue.InvalidInstanceId"
 //  RESOURCENOTFOUND_AUTOSCALINGGROUPNOTFOUND = "ResourceNotFound.AutoScalingGroupNotFound"
@@ -3611,6 +3703,7 @@ func NewStartAutoScalingInstancesResponse() (response *StartAutoScalingInstances
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_NOACTIVITYTOGENERATE = "FailedOperation.NoActivityToGenerate"
+//  INVALIDPARAMETER_ACTIONNOTFOUND = "InvalidParameter.ActionNotFound"
 //  INVALIDPARAMETERVALUE_INVALIDAUTOSCALINGGROUPID = "InvalidParameterValue.InvalidAutoScalingGroupId"
 //  INVALIDPARAMETERVALUE_INVALIDINSTANCEID = "InvalidParameterValue.InvalidInstanceId"
 //  RESOURCEINSUFFICIENT_AUTOSCALINGGROUPABOVEMAXSIZE = "ResourceInsufficient.AutoScalingGroupAboveMaxSize"
@@ -3632,6 +3725,7 @@ func (c *Client) StartAutoScalingInstances(request *StartAutoScalingInstancesReq
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_NOACTIVITYTOGENERATE = "FailedOperation.NoActivityToGenerate"
+//  INVALIDPARAMETER_ACTIONNOTFOUND = "InvalidParameter.ActionNotFound"
 //  INVALIDPARAMETERVALUE_INVALIDAUTOSCALINGGROUPID = "InvalidParameterValue.InvalidAutoScalingGroupId"
 //  INVALIDPARAMETERVALUE_INVALIDINSTANCEID = "InvalidParameterValue.InvalidInstanceId"
 //  RESOURCEINSUFFICIENT_AUTOSCALINGGROUPABOVEMAXSIZE = "ResourceInsufficient.AutoScalingGroupAboveMaxSize"
@@ -3689,6 +3783,7 @@ func NewStopAutoScalingInstancesResponse() (response *StopAutoScalingInstancesRe
 //  FAILEDOPERATION_NOACTIVITYTOGENERATE = "FailedOperation.NoActivityToGenerate"
 //  INTERNALERROR_CALLEEERROR = "InternalError.CalleeError"
 //  INTERNALERROR_REQUESTERROR = "InternalError.RequestError"
+//  INVALIDPARAMETER_ACTIONNOTFOUND = "InvalidParameter.ActionNotFound"
 //  INVALIDPARAMETERVALUE_INVALIDAUTOSCALINGGROUPID = "InvalidParameterValue.InvalidAutoScalingGroupId"
 //  INVALIDPARAMETERVALUE_INVALIDINSTANCEID = "InvalidParameterValue.InvalidInstanceId"
 //  RESOURCEINSUFFICIENT_AUTOSCALINGGROUPBELOWMINSIZE = "ResourceInsufficient.AutoScalingGroupBelowMinSize"
@@ -3719,6 +3814,7 @@ func (c *Client) StopAutoScalingInstances(request *StopAutoScalingInstancesReque
 //  FAILEDOPERATION_NOACTIVITYTOGENERATE = "FailedOperation.NoActivityToGenerate"
 //  INTERNALERROR_CALLEEERROR = "InternalError.CalleeError"
 //  INTERNALERROR_REQUESTERROR = "InternalError.RequestError"
+//  INVALIDPARAMETER_ACTIONNOTFOUND = "InvalidParameter.ActionNotFound"
 //  INVALIDPARAMETERVALUE_INVALIDAUTOSCALINGGROUPID = "InvalidParameterValue.InvalidAutoScalingGroupId"
 //  INVALIDPARAMETERVALUE_INVALIDINSTANCEID = "InvalidParameterValue.InvalidInstanceId"
 //  RESOURCEINSUFFICIENT_AUTOSCALINGGROUPBELOWMINSIZE = "ResourceInsufficient.AutoScalingGroupBelowMinSize"
@@ -3775,6 +3871,7 @@ func NewUpgradeLaunchConfigurationResponse() (response *UpgradeLaunchConfigurati
 //  CALLCVMERROR = "CallCvmError"
 //  INTERNALERROR = "InternalError"
 //  INVALIDIMAGEID_NOTFOUND = "InvalidImageId.NotFound"
+//  INVALIDPARAMETER_ACTIONNOTFOUND = "InvalidParameter.ActionNotFound"
 //  INVALIDPARAMETER_CONFLICT = "InvalidParameter.Conflict"
 //  INVALIDPARAMETER_INVALIDCOMBINATION = "InvalidParameter.InvalidCombination"
 //  INVALIDPARAMETER_MUSTONEPARAMETER = "InvalidParameter.MustOneParameter"
@@ -3812,6 +3909,7 @@ func (c *Client) UpgradeLaunchConfiguration(request *UpgradeLaunchConfigurationR
 //  CALLCVMERROR = "CallCvmError"
 //  INTERNALERROR = "InternalError"
 //  INVALIDIMAGEID_NOTFOUND = "InvalidImageId.NotFound"
+//  INVALIDPARAMETER_ACTIONNOTFOUND = "InvalidParameter.ActionNotFound"
 //  INVALIDPARAMETER_CONFLICT = "InvalidParameter.Conflict"
 //  INVALIDPARAMETER_INVALIDCOMBINATION = "InvalidParameter.InvalidCombination"
 //  INVALIDPARAMETER_MUSTONEPARAMETER = "InvalidParameter.MustOneParameter"
@@ -3877,6 +3975,7 @@ func NewUpgradeLifecycleHookResponse() (response *UpgradeLifecycleHookResponse) 
 //  INTERNALERROR_CALLCMQERROR = "InternalError.CallCmqError"
 //  INTERNALERROR_CALLSTSERROR = "InternalError.CallStsError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ACTIONNOTFOUND = "InvalidParameter.ActionNotFound"
 //  INVALIDPARAMETER_CONFLICT = "InvalidParameter.Conflict"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_FILTER = "InvalidParameterValue.Filter"
@@ -3901,6 +4000,7 @@ func (c *Client) UpgradeLifecycleHook(request *UpgradeLifecycleHookRequest) (res
 //  INTERNALERROR_CALLCMQERROR = "InternalError.CallCmqError"
 //  INTERNALERROR_CALLSTSERROR = "InternalError.CallStsError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ACTIONNOTFOUND = "InvalidParameter.ActionNotFound"
 //  INVALIDPARAMETER_CONFLICT = "InvalidParameter.Conflict"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_FILTER = "InvalidParameterValue.Filter"

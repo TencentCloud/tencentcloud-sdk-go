@@ -192,6 +192,7 @@ func NewApplyParamsTemplateResponse() (response *ApplyParamsTemplateResponse) {
 // 应用参数模板到实例
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
 //  FAILEDOPERATION_UNSUPPORTERROR = "FailedOperation.UnSupportError"
 //  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
 //  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
@@ -213,6 +214,7 @@ func (c *Client) ApplyParamsTemplate(request *ApplyParamsTemplateRequest) (respo
 // 应用参数模板到实例
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
 //  FAILEDOPERATION_UNSUPPORTERROR = "FailedOperation.UnSupportError"
 //  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
 //  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"

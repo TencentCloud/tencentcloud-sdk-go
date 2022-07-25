@@ -2751,6 +2751,63 @@ func (r *DescribeMaintainPeriodResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeParamTemplatesRequestParams struct {
+
+}
+
+type DescribeParamTemplatesRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DescribeParamTemplatesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeParamTemplatesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeParamTemplatesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeParamTemplatesResponseParams struct {
+	// 参数模板数量
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 参数模板信息
+	Items []*ParamTemplateListInfo `json:"Items,omitempty" name:"Items"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeParamTemplatesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeParamTemplatesResponseParams `json:"Response"`
+}
+
+func (r *DescribeParamTemplatesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeParamTemplatesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeProjectSecurityGroupsRequestParams struct {
 	// 项目ID
 	ProjectId *int64 `json:"ProjectId,omitempty" name:"ProjectId"`
@@ -3395,6 +3452,89 @@ func (r *InquirePriceCreateResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *InquirePriceCreateResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type InquirePriceRenewRequestParams struct {
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 购买时长,与TimeUnit组合才能生效
+	TimeSpan *int64 `json:"TimeSpan,omitempty" name:"TimeSpan"`
+
+	// 购买时长单位, 与TimeSpan组合生效，可选:日:d,月:m
+	TimeUnit *string `json:"TimeUnit,omitempty" name:"TimeUnit"`
+}
+
+type InquirePriceRenewRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 购买时长,与TimeUnit组合才能生效
+	TimeSpan *int64 `json:"TimeSpan,omitempty" name:"TimeSpan"`
+
+	// 购买时长单位, 与TimeSpan组合生效，可选:日:d,月:m
+	TimeUnit *string `json:"TimeUnit,omitempty" name:"TimeUnit"`
+}
+
+func (r *InquirePriceRenewRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *InquirePriceRenewRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "TimeSpan")
+	delete(f, "TimeUnit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "InquirePriceRenewRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type InquirePriceRenewResponseParams struct {
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 实例ID列表
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
+
+	// 对应的询价结果数组
+	Prices []*TradePrice `json:"Prices,omitempty" name:"Prices"`
+
+	// 续费计算节点的总价格
+	InstanceRealTotalPrice *int64 `json:"InstanceRealTotalPrice,omitempty" name:"InstanceRealTotalPrice"`
+
+	// 续费存储节点的总价格
+	StorageRealTotalPrice *int64 `json:"StorageRealTotalPrice,omitempty" name:"StorageRealTotalPrice"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type InquirePriceRenewResponse struct {
+	*tchttp.BaseResponse
+	Response *InquirePriceRenewResponseParams `json:"Response"`
+}
+
+func (r *InquirePriceRenewResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *InquirePriceRenewResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -4305,6 +4445,20 @@ type ParamItem struct {
 
 	// 原有值
 	OldValue *string `json:"OldValue,omitempty" name:"OldValue"`
+}
+
+type ParamTemplateListInfo struct {
+	// 参数模板ID
+	Id *int64 `json:"Id,omitempty" name:"Id"`
+
+	// 参数模板名称
+	TemplateName *string `json:"TemplateName,omitempty" name:"TemplateName"`
+
+	// 参数模板描述
+	TemplateDescription *string `json:"TemplateDescription,omitempty" name:"TemplateDescription"`
+
+	// 引擎版本
+	EngineVersion *string `json:"EngineVersion,omitempty" name:"EngineVersion"`
 }
 
 // Predefined struct for user

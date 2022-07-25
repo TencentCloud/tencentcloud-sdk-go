@@ -31,6 +31,7 @@ type Activity struct {
 	// <li>SCALE_OUT：扩容活动<li>SCALE_IN：缩容活动<li>ATTACH_INSTANCES：添加实例<li>REMOVE_INSTANCES：销毁实例<li>DETACH_INSTANCES：移出实例<li>TERMINATE_INSTANCES_UNEXPECTEDLY：实例在CVM控制台被销毁<li>REPLACE_UNHEALTHY_INSTANCE：替换不健康实例
 	// <li>START_INSTANCES：开启实例
 	// <li>STOP_INSTANCES：关闭实例
+	// <li>INVOKE_COMMAND：执行命令
 	ActivityType *string `json:"ActivityType,omitempty" name:"ActivityType"`
 
 	// 伸缩活动状态。取值如下：<br>
@@ -71,6 +72,9 @@ type Activity struct {
 
 	// 伸缩活动状态详细描述。
 	DetailedStatusMessageSet []*DetailedStatusMessage `json:"DetailedStatusMessageSet,omitempty" name:"DetailedStatusMessageSet"`
+
+	// 执行命令结果。
+	InvocationResultSet []*InvocationResult `json:"InvocationResultSet,omitempty" name:"InvocationResultSet"`
 }
 
 type ActivtyRelatedInstance struct {
@@ -952,6 +956,9 @@ type CreateLaunchConfigurationRequestParams struct {
 	// `InstanceType`和`InstanceTypes`参数互斥，二者必填一个且只能填写一个。
 	InstanceTypes []*string `json:"InstanceTypes,omitempty" name:"InstanceTypes"`
 
+	// CAM角色名称。可通过DescribeRoleList接口返回值中的roleName获取。
+	CamRoleName *string `json:"CamRoleName,omitempty" name:"CamRoleName"`
+
 	// 实例类型校验策略，取值包括 ALL 和 ANY，默认取值为ANY。
 	// <br><li> ALL，所有实例类型（InstanceType）都可用则通过校验，否则校验报错。
 	// <br><li> ANY，存在任何一个实例类型（InstanceType）可用则通过校验，否则校验报错。
@@ -963,8 +970,8 @@ type CreateLaunchConfigurationRequestParams struct {
 	// 标签列表。通过指定该参数，可以为扩容的实例绑定标签。最多支持指定10个标签。
 	InstanceTags []*InstanceTag `json:"InstanceTags,omitempty" name:"InstanceTags"`
 
-	// CAM角色名称。可通过DescribeRoleList接口返回值中的roleName获取。
-	CamRoleName *string `json:"CamRoleName,omitempty" name:"CamRoleName"`
+	// 标签描述列表。通过指定该参数可以支持绑定标签到启动配置。每个启动配置最多支持30个标签。
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 
 	// 云服务器主机名（HostName）的相关设置。
 	HostNameSettings *HostNameSettings `json:"HostNameSettings,omitempty" name:"HostNameSettings"`
@@ -1033,6 +1040,9 @@ type CreateLaunchConfigurationRequest struct {
 	// `InstanceType`和`InstanceTypes`参数互斥，二者必填一个且只能填写一个。
 	InstanceTypes []*string `json:"InstanceTypes,omitempty" name:"InstanceTypes"`
 
+	// CAM角色名称。可通过DescribeRoleList接口返回值中的roleName获取。
+	CamRoleName *string `json:"CamRoleName,omitempty" name:"CamRoleName"`
+
 	// 实例类型校验策略，取值包括 ALL 和 ANY，默认取值为ANY。
 	// <br><li> ALL，所有实例类型（InstanceType）都可用则通过校验，否则校验报错。
 	// <br><li> ANY，存在任何一个实例类型（InstanceType）可用则通过校验，否则校验报错。
@@ -1044,8 +1054,8 @@ type CreateLaunchConfigurationRequest struct {
 	// 标签列表。通过指定该参数，可以为扩容的实例绑定标签。最多支持指定10个标签。
 	InstanceTags []*InstanceTag `json:"InstanceTags,omitempty" name:"InstanceTags"`
 
-	// CAM角色名称。可通过DescribeRoleList接口返回值中的roleName获取。
-	CamRoleName *string `json:"CamRoleName,omitempty" name:"CamRoleName"`
+	// 标签描述列表。通过指定该参数可以支持绑定标签到启动配置。每个启动配置最多支持30个标签。
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 
 	// 云服务器主机名（HostName）的相关设置。
 	HostNameSettings *HostNameSettings `json:"HostNameSettings,omitempty" name:"HostNameSettings"`
@@ -1089,9 +1099,10 @@ func (r *CreateLaunchConfigurationRequest) FromJsonString(s string) error {
 	delete(f, "InstanceChargeType")
 	delete(f, "InstanceMarketOptions")
 	delete(f, "InstanceTypes")
+	delete(f, "CamRoleName")
 	delete(f, "InstanceTypesCheckPolicy")
 	delete(f, "InstanceTags")
-	delete(f, "CamRoleName")
+	delete(f, "Tags")
 	delete(f, "HostNameSettings")
 	delete(f, "InstanceNameSettings")
 	delete(f, "InstanceChargePrepaid")
@@ -2384,6 +2395,10 @@ type DescribeLaunchConfigurationsRequestParams struct {
 	// <li> launch-configuration-id - String - 是否必填：否 -（过滤条件）按照启动配置ID过滤。</li>
 	// <li> launch-configuration-name - String - 是否必填：否 -（过滤条件）按照启动配置名称过滤。</li>
 	// <li> vague-launch-configuration-name - String - 是否必填：否 -（过滤条件）按照启动配置名称模糊搜索。</li>
+	// <li> tag-key - String - 是否必填：否 -（过滤条件）按照标签键进行过滤。</li>
+	// <li> tag-value - String - 是否必填：否 -（过滤条件）按照标签值进行过滤。</li>
+	// <li> tag:tag-key - String - 是否必填：否 -（过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。使用请参考示例3
+	// </li>
 	// 每次请求的`Filters`的上限为10，`Filter.Values`的上限为5。参数不支持同时指定`LaunchConfigurationIds`和`Filters`。
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
@@ -2404,6 +2419,10 @@ type DescribeLaunchConfigurationsRequest struct {
 	// <li> launch-configuration-id - String - 是否必填：否 -（过滤条件）按照启动配置ID过滤。</li>
 	// <li> launch-configuration-name - String - 是否必填：否 -（过滤条件）按照启动配置名称过滤。</li>
 	// <li> vague-launch-configuration-name - String - 是否必填：否 -（过滤条件）按照启动配置名称模糊搜索。</li>
+	// <li> tag-key - String - 是否必填：否 -（过滤条件）按照标签键进行过滤。</li>
+	// <li> tag-value - String - 是否必填：否 -（过滤条件）按照标签值进行过滤。</li>
+	// <li> tag:tag-key - String - 是否必填：否 -（过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。使用请参考示例3
+	// </li>
 	// 每次请求的`Filters`的上限为10，`Filter.Values`的上限为5。参数不支持同时指定`LaunchConfigurationIds`和`Filters`。
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
@@ -3324,6 +3343,32 @@ type InternetAccessible struct {
 	BandwidthPackageId *string `json:"BandwidthPackageId,omitempty" name:"BandwidthPackageId"`
 }
 
+type InvocationResult struct {
+	// 实例ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 执行活动ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InvocationId *string `json:"InvocationId,omitempty" name:"InvocationId"`
+
+	// 执行任务ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InvocationTaskId *string `json:"InvocationTaskId,omitempty" name:"InvocationTaskId"`
+
+	// 命令ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CommandId *string `json:"CommandId,omitempty" name:"CommandId"`
+
+	// 执行任务状态。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskStatus *string `json:"TaskStatus,omitempty" name:"TaskStatus"`
+
+	// 执行异常信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrorMessage *string `json:"ErrorMessage,omitempty" name:"ErrorMessage"`
+}
+
 type LaunchConfiguration struct {
 	// 实例所属项目ID。
 	ProjectId *int64 `json:"ProjectId,omitempty" name:"ProjectId"`
@@ -3383,8 +3428,12 @@ type LaunchConfiguration struct {
 	// 实例机型列表。
 	InstanceTypes []*string `json:"InstanceTypes,omitempty" name:"InstanceTypes"`
 
-	// 标签列表。
+	// 实例标签列表。扩容出来的实例会自动带上标签，最多支持10个标签。
 	InstanceTags []*InstanceTag `json:"InstanceTags,omitempty" name:"InstanceTags"`
+
+	// 标签列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 
 	// 版本号。
 	VersionNumber *int64 `json:"VersionNumber,omitempty" name:"VersionNumber"`

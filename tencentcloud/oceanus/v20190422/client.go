@@ -106,8 +106,6 @@ func NewCopyJobsResponse() (response *CopyJobsResponse) {
 // CopyJobs
 // 单条和批量复制作业
 //
-// https://iwiki.woa.com/pages/viewpage.action?pageId=1288112774
-//
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
@@ -125,8 +123,6 @@ func (c *Client) CopyJobs(request *CopyJobsRequest) (response *CopyJobsResponse,
 
 // CopyJobs
 // 单条和批量复制作业
-//
-// https://iwiki.woa.com/pages/viewpage.action?pageId=1288112774
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"

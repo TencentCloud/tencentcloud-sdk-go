@@ -456,7 +456,8 @@ func NewDescribeEmrApplicationStaticsResponse() (response *DescribeEmrApplicatio
 //  yarn applciation 统计接口查询
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CAMCGWERROR = "InternalError.CamCgwError"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
 func (c *Client) DescribeEmrApplicationStatics(request *DescribeEmrApplicationStaticsRequest) (response *DescribeEmrApplicationStaticsResponse, err error) {
     return c.DescribeEmrApplicationStaticsWithContext(context.Background(), request)
 }
@@ -465,7 +466,8 @@ func (c *Client) DescribeEmrApplicationStatics(request *DescribeEmrApplicationSt
 //  yarn applciation 统计接口查询
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CAMCGWERROR = "InternalError.CamCgwError"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
 func (c *Client) DescribeEmrApplicationStaticsWithContext(ctx context.Context, request *DescribeEmrApplicationStaticsRequest) (response *DescribeEmrApplicationStaticsResponse, err error) {
     if request == nil {
         request = NewDescribeEmrApplicationStaticsRequest()
@@ -596,6 +598,7 @@ func NewDescribeInstancesResponse() (response *DescribeInstancesResponse) {
 // 查询EMR实例
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_ACCOUNTCGWERROR = "InternalError.AccountCgwError"
 //  INTERNALERROR_CAMCGWERROR = "InternalError.CamCgwError"
@@ -630,6 +633,7 @@ func (c *Client) DescribeInstances(request *DescribeInstancesRequest) (response 
 // 查询EMR实例
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_ACCOUNTCGWERROR = "InternalError.AccountCgwError"
 //  INTERNALERROR_CAMCGWERROR = "InternalError.CamCgwError"
@@ -693,6 +697,7 @@ func NewDescribeInstancesListResponse() (response *DescribeInstancesListResponse
 // EMR集群实例列表查询
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_ACCOUNTCGWERROR = "InternalError.AccountCgwError"
 //  INTERNALERROR_CAMCGWERROR = "InternalError.CamCgwError"
@@ -724,6 +729,7 @@ func (c *Client) DescribeInstancesList(request *DescribeInstancesListRequest) (r
 // EMR集群实例列表查询
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_ACCOUNTCGWERROR = "InternalError.AccountCgwError"
 //  INTERNALERROR_CAMCGWERROR = "InternalError.CamCgwError"

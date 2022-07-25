@@ -676,6 +676,40 @@ type ClickHouseConnectParam struct {
 	IsUpdate *bool `json:"IsUpdate,omitempty" name:"IsUpdate"`
 }
 
+type ClickHouseModifyConnectParam struct {
+	// ClickHouse连接源的实例资源【不支持修改】
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Resource *string `json:"Resource,omitempty" name:"Resource"`
+
+	// ClickHouse的连接port【不支持修改】
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Port *int64 `json:"Port,omitempty" name:"Port"`
+
+	// ClickHouse连接源的实例vip【不支持修改】
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ServiceVip *string `json:"ServiceVip,omitempty" name:"ServiceVip"`
+
+	// ClickHouse连接源的vpcId【不支持修改】
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UniqVpcId *string `json:"UniqVpcId,omitempty" name:"UniqVpcId"`
+
+	// ClickHouse连接源的用户名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserName *string `json:"UserName,omitempty" name:"UserName"`
+
+	// ClickHouse连接源的密码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Password *string `json:"Password,omitempty" name:"Password"`
+
+	// ClickHouse连接源是否为自建集群【不支持修改】
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SelfBuilt *bool `json:"SelfBuilt,omitempty" name:"SelfBuilt"`
+
+	// 是否更新到关联的Datahub任务，默认为true
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsUpdate *bool `json:"IsUpdate,omitempty" name:"IsUpdate"`
+}
+
 type ClickHouseParam struct {
 	// ClickHouse的集群
 	Cluster *string `json:"Cluster,omitempty" name:"Cluster"`
@@ -825,6 +859,17 @@ type ConnectResourceResourceIdResp struct {
 	// 连接源的Id
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
+}
+
+type Connection struct {
+	// Topic名称
+	TopicName *string `json:"TopicName,omitempty" name:"TopicName"`
+
+	// 消费组ID
+	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
+
+	// Topic的Id
+	TopicId *string `json:"TopicId,omitempty" name:"TopicId"`
 }
 
 type ConsumerGroup struct {
@@ -2298,6 +2343,58 @@ type DatahubResource struct {
 	SQLServerParam *SQLServerParam `json:"SQLServerParam,omitempty" name:"SQLServerParam"`
 }
 
+type DatahubTaskIdRes struct {
+	// 任务id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+}
+
+type DatahubTaskInfo struct {
+	// 任务ID
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 任务名称
+	TaskName *string `json:"TaskName,omitempty" name:"TaskName"`
+
+	// 任务类型，SOURCE数据接入，SINK数据流出
+	TaskType *string `json:"TaskType,omitempty" name:"TaskType"`
+
+	// 状态，-1创建失败，0创建中，1运行中，2删除中，3已删除，4删除失败，5暂停中，6已暂停，7暂停失败，8恢复中，9恢复失败
+	Status *int64 `json:"Status,omitempty" name:"Status"`
+
+	// 数据源
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SourceResource *DatahubResource `json:"SourceResource,omitempty" name:"SourceResource"`
+
+	// 数据目标
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TargetResource *DatahubResource `json:"TargetResource,omitempty" name:"TargetResource"`
+
+	// 任务创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 异常信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrorMessage *string `json:"ErrorMessage,omitempty" name:"ErrorMessage"`
+
+	// 创建进度百分比
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskProgress *float64 `json:"TaskProgress,omitempty" name:"TaskProgress"`
+
+	// 任务当前处于的步骤
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskCurrentStep *string `json:"TaskCurrentStep,omitempty" name:"TaskCurrentStep"`
+
+	// Datahub转储Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DatahubId *string `json:"DatahubId,omitempty" name:"DatahubId"`
+
+	// 步骤列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StepList []*string `json:"StepList,omitempty" name:"StepList"`
+}
+
 type DateParam struct {
 	// 时间格式
 	Format *string `json:"Format,omitempty" name:"Format"`
@@ -2471,6 +2568,178 @@ func (r *DeleteAclRuleResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteAclRuleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteConnectResourceRequestParams struct {
+	// 连接源的Id
+	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
+}
+
+type DeleteConnectResourceRequest struct {
+	*tchttp.BaseRequest
+	
+	// 连接源的Id
+	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
+}
+
+func (r *DeleteConnectResourceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteConnectResourceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ResourceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteConnectResourceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteConnectResourceResponseParams struct {
+	// 连接源的Id
+	Result *ConnectResourceResourceIdResp `json:"Result,omitempty" name:"Result"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DeleteConnectResourceResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteConnectResourceResponseParams `json:"Response"`
+}
+
+func (r *DeleteConnectResourceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteConnectResourceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteDatahubTaskRequestParams struct {
+	// 任务id
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+}
+
+type DeleteDatahubTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// 任务id
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+}
+
+func (r *DeleteDatahubTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteDatahubTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteDatahubTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteDatahubTaskResponseParams struct {
+	// 任务id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Result *DatahubTaskIdRes `json:"Result,omitempty" name:"Result"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DeleteDatahubTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteDatahubTaskResponseParams `json:"Response"`
+}
+
+func (r *DeleteDatahubTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteDatahubTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteDatahubTopicRequestParams struct {
+	// Topic名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+}
+
+type DeleteDatahubTopicRequest struct {
+	*tchttp.BaseRequest
+	
+	// Topic名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+}
+
+func (r *DeleteDatahubTopicRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteDatahubTopicRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Name")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteDatahubTopicRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteDatahubTopicResponseParams struct {
+	// 返回的结果集
+	Result *JgwOperateResponse `json:"Result,omitempty" name:"Result"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DeleteDatahubTopicResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteDatahubTopicResponseParams `json:"Response"`
+}
+
+func (r *DeleteDatahubTopicResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteDatahubTopicResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -3139,6 +3408,275 @@ func (r *DescribeCkafkaZoneResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeConnectResource struct {
+	// 连接源的Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
+
+	// 连接源名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceName *string `json:"ResourceName,omitempty" name:"ResourceName"`
+
+	// 连接源描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 连接源类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 连接源的状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *int64 `json:"Status,omitempty" name:"Status"`
+
+	// 连接源的创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 连接源的异常信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrorMessage *string `json:"ErrorMessage,omitempty" name:"ErrorMessage"`
+
+	// 连接源的当前所处步骤
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CurrentStep *string `json:"CurrentStep,omitempty" name:"CurrentStep"`
+
+	// 该连接源关联的Datahub任务数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DatahubTaskCount *int64 `json:"DatahubTaskCount,omitempty" name:"DatahubTaskCount"`
+
+	// Dts配置，Type为DTS时返回
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DtsConnectParam *DtsConnectParam `json:"DtsConnectParam,omitempty" name:"DtsConnectParam"`
+
+	// MongoDB配置，Type为MONGODB时返回
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MongoDBConnectParam *MongoDBConnectParam `json:"MongoDBConnectParam,omitempty" name:"MongoDBConnectParam"`
+
+	// Es配置，Type为ES时返回
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EsConnectParam *EsConnectParam `json:"EsConnectParam,omitempty" name:"EsConnectParam"`
+
+	// ClickHouse配置，Type为CLICKHOUSE时返回
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClickHouseConnectParam *ClickHouseConnectParam `json:"ClickHouseConnectParam,omitempty" name:"ClickHouseConnectParam"`
+
+	// MySQL配置，Type为MYSQL时必填
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MySQLConnectParam *MySQLConnectParam `json:"MySQLConnectParam,omitempty" name:"MySQLConnectParam"`
+
+	// PostgreSQL配置，Type为POSTGRESQL或TDSQL_C_POSTGRESQL时必填
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PostgreSQLConnectParam *PostgreSQLConnectParam `json:"PostgreSQLConnectParam,omitempty" name:"PostgreSQLConnectParam"`
+}
+
+// Predefined struct for user
+type DescribeConnectResourceRequestParams struct {
+	// 连接源的Id
+	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
+}
+
+type DescribeConnectResourceRequest struct {
+	*tchttp.BaseRequest
+	
+	// 连接源的Id
+	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
+}
+
+func (r *DescribeConnectResourceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeConnectResourceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ResourceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeConnectResourceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeConnectResourceResp struct {
+	// 连接源的Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
+
+	// 连接源名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceName *string `json:"ResourceName,omitempty" name:"ResourceName"`
+
+	// 连接源描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 连接源类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 连接源的状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *int64 `json:"Status,omitempty" name:"Status"`
+
+	// 连接源的创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 连接源的异常信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrorMessage *string `json:"ErrorMessage,omitempty" name:"ErrorMessage"`
+
+	// 连接源的当前所处步骤
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CurrentStep *string `json:"CurrentStep,omitempty" name:"CurrentStep"`
+
+	// 步骤列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StepList []*string `json:"StepList,omitempty" name:"StepList"`
+
+	// MySQL配置，Type为MYSQL时返回
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MySQLConnectParam *MySQLConnectParam `json:"MySQLConnectParam,omitempty" name:"MySQLConnectParam"`
+
+	// PostgreSQL配置，Type为POSTGRESQL或TDSQL_C_POSTGRESQL时返回
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PostgreSQLConnectParam *PostgreSQLConnectParam `json:"PostgreSQLConnectParam,omitempty" name:"PostgreSQLConnectParam"`
+
+	// Dts配置，Type为DTS时返回
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DtsConnectParam *DtsConnectParam `json:"DtsConnectParam,omitempty" name:"DtsConnectParam"`
+
+	// MongoDB配置，Type为MONGODB时返回
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MongoDBConnectParam *MongoDBConnectParam `json:"MongoDBConnectParam,omitempty" name:"MongoDBConnectParam"`
+
+	// Es配置，Type为ES时返回
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EsConnectParam *EsConnectParam `json:"EsConnectParam,omitempty" name:"EsConnectParam"`
+
+	// ClickHouse配置，Type为CLICKHOUSE时返回
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClickHouseConnectParam *ClickHouseConnectParam `json:"ClickHouseConnectParam,omitempty" name:"ClickHouseConnectParam"`
+}
+
+// Predefined struct for user
+type DescribeConnectResourceResponseParams struct {
+	// 连接源的Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Result *DescribeConnectResourceResp `json:"Result,omitempty" name:"Result"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeConnectResourceResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeConnectResourceResponseParams `json:"Response"`
+}
+
+func (r *DescribeConnectResourceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeConnectResourceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeConnectResourcesRequestParams struct {
+	// 连接源类型
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 连接源名称的关键字查询
+	SearchWord *string `json:"SearchWord,omitempty" name:"SearchWord"`
+
+	// 分页偏移量，默认为0
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回数量，默认为20，最大值为100
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+type DescribeConnectResourcesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 连接源类型
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 连接源名称的关键字查询
+	SearchWord *string `json:"SearchWord,omitempty" name:"SearchWord"`
+
+	// 分页偏移量，默认为0
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回数量，默认为20，最大值为100
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribeConnectResourcesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeConnectResourcesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Type")
+	delete(f, "SearchWord")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeConnectResourcesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeConnectResourcesResp struct {
+	// 连接源个数
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 连接源数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConnectResourceList []*DescribeConnectResource `json:"ConnectResourceList,omitempty" name:"ConnectResourceList"`
+}
+
+// Predefined struct for user
+type DescribeConnectResourcesResponseParams struct {
+	// 连接源列表
+	Result *DescribeConnectResourcesResp `json:"Result,omitempty" name:"Result"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeConnectResourcesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeConnectResourcesResponseParams `json:"Response"`
+}
+
+func (r *DescribeConnectResourcesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeConnectResourcesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 // Predefined struct for user
 type DescribeConsumerGroupRequestParams struct {
 	// ckafka实例id。
@@ -3221,6 +3759,310 @@ func (r *DescribeConsumerGroupResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeConsumerGroupResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDatahubGroupOffsetsRequestParams struct {
+	// （过滤条件）按照实例 ID 过滤
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// Kafka 消费分组
+	Group *string `json:"Group,omitempty" name:"Group"`
+
+	// 模糊匹配 topicName
+	SearchWord *string `json:"SearchWord,omitempty" name:"SearchWord"`
+
+	// 本次查询的偏移位置，默认为0
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 本次返回结果的最大个数，默认为50，最大值为50
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+type DescribeDatahubGroupOffsetsRequest struct {
+	*tchttp.BaseRequest
+	
+	// （过滤条件）按照实例 ID 过滤
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// Kafka 消费分组
+	Group *string `json:"Group,omitempty" name:"Group"`
+
+	// 模糊匹配 topicName
+	SearchWord *string `json:"SearchWord,omitempty" name:"SearchWord"`
+
+	// 本次查询的偏移位置，默认为0
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 本次返回结果的最大个数，默认为50，最大值为50
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribeDatahubGroupOffsetsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDatahubGroupOffsetsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Name")
+	delete(f, "Group")
+	delete(f, "SearchWord")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDatahubGroupOffsetsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDatahubGroupOffsetsResponseParams struct {
+	// 返回的结果对象
+	Result *GroupOffsetResponse `json:"Result,omitempty" name:"Result"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeDatahubGroupOffsetsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDatahubGroupOffsetsResponseParams `json:"Response"`
+}
+
+func (r *DescribeDatahubGroupOffsetsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDatahubGroupOffsetsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDatahubTaskRequestParams struct {
+	// 任务id
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+}
+
+type DescribeDatahubTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// 任务id
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+}
+
+func (r *DescribeDatahubTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDatahubTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDatahubTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDatahubTaskRes struct {
+	// 任务ID
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 任务名称
+	TaskName *string `json:"TaskName,omitempty" name:"TaskName"`
+
+	// 任务类型，SOURCE数据接入，SINK数据流出
+	TaskType *string `json:"TaskType,omitempty" name:"TaskType"`
+
+	// 状态，-1创建失败，0创建中，1运行中，2删除中，3已删除，4删除失败，5暂停中，6已暂停，7暂停失败，8恢复中，9恢复失败
+	Status *int64 `json:"Status,omitempty" name:"Status"`
+
+	// 数据源
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SourceResource *DatahubResource `json:"SourceResource,omitempty" name:"SourceResource"`
+
+	// 数据目标
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TargetResource *DatahubResource `json:"TargetResource,omitempty" name:"TargetResource"`
+
+	// Connection列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Connections []*Connection `json:"Connections,omitempty" name:"Connections"`
+
+	// 任务创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 消息处理规则
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TransformParam *TransformParam `json:"TransformParam,omitempty" name:"TransformParam"`
+
+	// 数据接入ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DatahubId *string `json:"DatahubId,omitempty" name:"DatahubId"`
+
+	// 绑定的SchemaId
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SchemaId *string `json:"SchemaId,omitempty" name:"SchemaId"`
+
+	// 绑定的Schema名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SchemaName *string `json:"SchemaName,omitempty" name:"SchemaName"`
+
+	// 数据处理规则
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TransformsParam *TransformsParam `json:"TransformsParam,omitempty" name:"TransformsParam"`
+
+	// 异常信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrorMessage *string `json:"ErrorMessage,omitempty" name:"ErrorMessage"`
+}
+
+// Predefined struct for user
+type DescribeDatahubTaskResponseParams struct {
+	// 返回结果
+	Result *DescribeDatahubTaskRes `json:"Result,omitempty" name:"Result"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeDatahubTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDatahubTaskResponseParams `json:"Response"`
+}
+
+func (r *DescribeDatahubTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDatahubTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDatahubTasksRequestParams struct {
+	// 返回数量，默认为20，最大值为100
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 分页偏移量，默认为0
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 过滤条件，按照 TaskName 过滤，支持模糊查询
+	SearchWord *string `json:"SearchWord,omitempty" name:"SearchWord"`
+
+	// 转储的目标类型
+	TargetType *string `json:"TargetType,omitempty" name:"TargetType"`
+
+	// 任务类型，SOURCE数据接入，SINK数据流出
+	TaskType *string `json:"TaskType,omitempty" name:"TaskType"`
+
+	// 转储的源类型
+	SourceType *string `json:"SourceType,omitempty" name:"SourceType"`
+
+	// 转储的资源
+	Resource *string `json:"Resource,omitempty" name:"Resource"`
+}
+
+type DescribeDatahubTasksRequest struct {
+	*tchttp.BaseRequest
+	
+	// 返回数量，默认为20，最大值为100
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 分页偏移量，默认为0
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 过滤条件，按照 TaskName 过滤，支持模糊查询
+	SearchWord *string `json:"SearchWord,omitempty" name:"SearchWord"`
+
+	// 转储的目标类型
+	TargetType *string `json:"TargetType,omitempty" name:"TargetType"`
+
+	// 任务类型，SOURCE数据接入，SINK数据流出
+	TaskType *string `json:"TaskType,omitempty" name:"TaskType"`
+
+	// 转储的源类型
+	SourceType *string `json:"SourceType,omitempty" name:"SourceType"`
+
+	// 转储的资源
+	Resource *string `json:"Resource,omitempty" name:"Resource"`
+}
+
+func (r *DescribeDatahubTasksRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDatahubTasksRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "SearchWord")
+	delete(f, "TargetType")
+	delete(f, "TaskType")
+	delete(f, "SourceType")
+	delete(f, "Resource")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDatahubTasksRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDatahubTasksRes struct {
+	// 任务总数
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// Datahub任务信息列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskList []*DatahubTaskInfo `json:"TaskList,omitempty" name:"TaskList"`
+}
+
+// Predefined struct for user
+type DescribeDatahubTasksResponseParams struct {
+	// 返回任务查询结果
+	Result *DescribeDatahubTasksRes `json:"Result,omitempty" name:"Result"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeDatahubTasksResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDatahubTasksResponseParams `json:"Response"`
+}
+
+func (r *DescribeDatahubTasksResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDatahubTasksResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -4400,6 +5242,36 @@ type DtsConnectParam struct {
 	IsUpdate *bool `json:"IsUpdate,omitempty" name:"IsUpdate"`
 }
 
+type DtsModifyConnectParam struct {
+	// Dts实例Id【不支持修改】
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Resource *string `json:"Resource,omitempty" name:"Resource"`
+
+	// Dts的连接port【不支持修改】
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Port *int64 `json:"Port,omitempty" name:"Port"`
+
+	// Dts消费分组的Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
+
+	// Dts消费分组的账号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserName *string `json:"UserName,omitempty" name:"UserName"`
+
+	// Dts消费分组的密码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Password *string `json:"Password,omitempty" name:"Password"`
+
+	// 是否更新到关联的Datahub任务，默认为true
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsUpdate *bool `json:"IsUpdate,omitempty" name:"IsUpdate"`
+
+	// Dts订阅的topic【不支持修改】
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Topic *string `json:"Topic,omitempty" name:"Topic"`
+}
+
 type DtsParam struct {
 	// Dts实例Id
 	Resource *string `json:"Resource,omitempty" name:"Resource"`
@@ -4496,6 +5368,40 @@ type EsConnectParam struct {
 	IsUpdate *bool `json:"IsUpdate,omitempty" name:"IsUpdate"`
 }
 
+type EsModifyConnectParam struct {
+	// Es连接源的实例资源【不支持修改】
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Resource *string `json:"Resource,omitempty" name:"Resource"`
+
+	// Es的连接port【不支持修改】
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Port *int64 `json:"Port,omitempty" name:"Port"`
+
+	// Es连接源的实例vip【不支持修改】
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ServiceVip *string `json:"ServiceVip,omitempty" name:"ServiceVip"`
+
+	// Es连接源的vpcId【不支持修改】
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UniqVpcId *string `json:"UniqVpcId,omitempty" name:"UniqVpcId"`
+
+	// Es连接源的用户名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserName *string `json:"UserName,omitempty" name:"UserName"`
+
+	// Es连接源的密码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Password *string `json:"Password,omitempty" name:"Password"`
+
+	// Es连接源是否为自建集群【不支持修改】
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SelfBuilt *bool `json:"SelfBuilt,omitempty" name:"SelfBuilt"`
+
+	// 是否更新到关联的Datahub任务
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsUpdate *bool `json:"IsUpdate,omitempty" name:"IsUpdate"`
+}
+
 type EsParam struct {
 	// 实例资源
 	Resource *string `json:"Resource,omitempty" name:"Resource"`
@@ -4586,6 +5492,155 @@ type FailureParam struct {
 	// 死信队列类型，CKAFKA，TOPIC
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DlqType *string `json:"DlqType,omitempty" name:"DlqType"`
+}
+
+// Predefined struct for user
+type FetchDatahubMessageByOffsetRequestParams struct {
+	// 主题名
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 分区id
+	Partition *int64 `json:"Partition,omitempty" name:"Partition"`
+
+	// 位点信息，必填
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+}
+
+type FetchDatahubMessageByOffsetRequest struct {
+	*tchttp.BaseRequest
+	
+	// 主题名
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 分区id
+	Partition *int64 `json:"Partition,omitempty" name:"Partition"`
+
+	// 位点信息，必填
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+}
+
+func (r *FetchDatahubMessageByOffsetRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *FetchDatahubMessageByOffsetRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Name")
+	delete(f, "Partition")
+	delete(f, "Offset")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "FetchDatahubMessageByOffsetRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type FetchDatahubMessageByOffsetResponseParams struct {
+	// 返回结果
+	Result *ConsumerRecord `json:"Result,omitempty" name:"Result"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type FetchDatahubMessageByOffsetResponse struct {
+	*tchttp.BaseResponse
+	Response *FetchDatahubMessageByOffsetResponseParams `json:"Response"`
+}
+
+func (r *FetchDatahubMessageByOffsetResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *FetchDatahubMessageByOffsetResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type FetchLatestDatahubMessageListRequestParams struct {
+	// 主题名
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 分区id
+	Partition *int64 `json:"Partition,omitempty" name:"Partition"`
+
+	// 位点信息
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 最大查询条数，最小1，最大100
+	MessageCount *int64 `json:"MessageCount,omitempty" name:"MessageCount"`
+}
+
+type FetchLatestDatahubMessageListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 主题名
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 分区id
+	Partition *int64 `json:"Partition,omitempty" name:"Partition"`
+
+	// 位点信息
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 最大查询条数，最小1，最大100
+	MessageCount *int64 `json:"MessageCount,omitempty" name:"MessageCount"`
+}
+
+func (r *FetchLatestDatahubMessageListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *FetchLatestDatahubMessageListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Name")
+	delete(f, "Partition")
+	delete(f, "Offset")
+	delete(f, "MessageCount")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "FetchLatestDatahubMessageListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type FetchLatestDatahubMessageListResponseParams struct {
+	// 返回结果。
+	Result []*ConsumerRecord `json:"Result,omitempty" name:"Result"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type FetchLatestDatahubMessageListResponse struct {
+	*tchttp.BaseResponse
+	Response *FetchLatestDatahubMessageListResponseParams `json:"Response"`
+}
+
+func (r *FetchLatestDatahubMessageListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *FetchLatestDatahubMessageListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user
@@ -5206,6 +6261,36 @@ type MariaDBConnectParam struct {
 	IsUpdate *bool `json:"IsUpdate,omitempty" name:"IsUpdate"`
 }
 
+type MariaDBModifyConnectParam struct {
+	// MariaDB连接源的实例资源【不支持修改】
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Resource *string `json:"Resource,omitempty" name:"Resource"`
+
+	// MariaDB的连接port【不支持修改】
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Port *int64 `json:"Port,omitempty" name:"Port"`
+
+	// MariaDB连接源的实例vip【不支持修改】
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ServiceVip *string `json:"ServiceVip,omitempty" name:"ServiceVip"`
+
+	// MariaDB连接源的vpcId【不支持修改】
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UniqVpcId *string `json:"UniqVpcId,omitempty" name:"UniqVpcId"`
+
+	// MariaDB连接源的用户名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserName *string `json:"UserName,omitempty" name:"UserName"`
+
+	// MariaDB连接源的密码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Password *string `json:"Password,omitempty" name:"Password"`
+
+	// 是否更新到关联的Datahub任务
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsUpdate *bool `json:"IsUpdate,omitempty" name:"IsUpdate"`
+}
+
 type MariaDBParam struct {
 	// MariaDB的数据库名称，"*"为全数据库
 	Database *string `json:"Database,omitempty" name:"Database"`
@@ -5218,6 +6303,205 @@ type MariaDBParam struct {
 
 	// 复制存量信息(schema_only不复制, initial全量)，默认位initial
 	SnapshotMode *string `json:"SnapshotMode,omitempty" name:"SnapshotMode"`
+}
+
+// Predefined struct for user
+type ModifyConnectResourceRequestParams struct {
+	// 连接源的Id
+	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
+
+	// 连接源名称，为空时不修改
+	ResourceName *string `json:"ResourceName,omitempty" name:"ResourceName"`
+
+	// 连接源描述，为空时不修改
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 连接源类型，修改数据源参数时，需要与原Type相同，否则编辑数据源无效
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// Dts配置，Type为DTS时必填
+	DtsConnectParam *DtsModifyConnectParam `json:"DtsConnectParam,omitempty" name:"DtsConnectParam"`
+
+	// MongoDB配置，Type为MONGODB时必填
+	MongoDBConnectParam *MongoDBModifyConnectParam `json:"MongoDBConnectParam,omitempty" name:"MongoDBConnectParam"`
+
+	// Es配置，Type为ES时必填
+	EsConnectParam *EsModifyConnectParam `json:"EsConnectParam,omitempty" name:"EsConnectParam"`
+
+	// ClickHouse配置，Type为CLICKHOUSE时必填
+	ClickHouseConnectParam *ClickHouseModifyConnectParam `json:"ClickHouseConnectParam,omitempty" name:"ClickHouseConnectParam"`
+
+	// MySQL配置，Type为MYSQL或TDSQL_C_MYSQL时必填
+	MySQLConnectParam *MySQLModifyConnectParam `json:"MySQLConnectParam,omitempty" name:"MySQLConnectParam"`
+
+	// PostgreSQL配置，Type为POSTGRESQL或TDSQL_C_POSTGRESQL时必填
+	PostgreSQLConnectParam *PostgreSQLModifyConnectParam `json:"PostgreSQLConnectParam,omitempty" name:"PostgreSQLConnectParam"`
+
+	// MariaDB配置，Type为MARIADB时必填
+	MariaDBConnectParam *MariaDBModifyConnectParam `json:"MariaDBConnectParam,omitempty" name:"MariaDBConnectParam"`
+
+	// SQLServer配置，Type为SQLSERVER时必填
+	SQLServerConnectParam *SQLServerModifyConnectParam `json:"SQLServerConnectParam,omitempty" name:"SQLServerConnectParam"`
+}
+
+type ModifyConnectResourceRequest struct {
+	*tchttp.BaseRequest
+	
+	// 连接源的Id
+	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
+
+	// 连接源名称，为空时不修改
+	ResourceName *string `json:"ResourceName,omitempty" name:"ResourceName"`
+
+	// 连接源描述，为空时不修改
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 连接源类型，修改数据源参数时，需要与原Type相同，否则编辑数据源无效
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// Dts配置，Type为DTS时必填
+	DtsConnectParam *DtsModifyConnectParam `json:"DtsConnectParam,omitempty" name:"DtsConnectParam"`
+
+	// MongoDB配置，Type为MONGODB时必填
+	MongoDBConnectParam *MongoDBModifyConnectParam `json:"MongoDBConnectParam,omitempty" name:"MongoDBConnectParam"`
+
+	// Es配置，Type为ES时必填
+	EsConnectParam *EsModifyConnectParam `json:"EsConnectParam,omitempty" name:"EsConnectParam"`
+
+	// ClickHouse配置，Type为CLICKHOUSE时必填
+	ClickHouseConnectParam *ClickHouseModifyConnectParam `json:"ClickHouseConnectParam,omitempty" name:"ClickHouseConnectParam"`
+
+	// MySQL配置，Type为MYSQL或TDSQL_C_MYSQL时必填
+	MySQLConnectParam *MySQLModifyConnectParam `json:"MySQLConnectParam,omitempty" name:"MySQLConnectParam"`
+
+	// PostgreSQL配置，Type为POSTGRESQL或TDSQL_C_POSTGRESQL时必填
+	PostgreSQLConnectParam *PostgreSQLModifyConnectParam `json:"PostgreSQLConnectParam,omitempty" name:"PostgreSQLConnectParam"`
+
+	// MariaDB配置，Type为MARIADB时必填
+	MariaDBConnectParam *MariaDBModifyConnectParam `json:"MariaDBConnectParam,omitempty" name:"MariaDBConnectParam"`
+
+	// SQLServer配置，Type为SQLSERVER时必填
+	SQLServerConnectParam *SQLServerModifyConnectParam `json:"SQLServerConnectParam,omitempty" name:"SQLServerConnectParam"`
+}
+
+func (r *ModifyConnectResourceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyConnectResourceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ResourceId")
+	delete(f, "ResourceName")
+	delete(f, "Description")
+	delete(f, "Type")
+	delete(f, "DtsConnectParam")
+	delete(f, "MongoDBConnectParam")
+	delete(f, "EsConnectParam")
+	delete(f, "ClickHouseConnectParam")
+	delete(f, "MySQLConnectParam")
+	delete(f, "PostgreSQLConnectParam")
+	delete(f, "MariaDBConnectParam")
+	delete(f, "SQLServerConnectParam")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyConnectResourceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyConnectResourceResponseParams struct {
+	// 连接源的Id
+	Result *ConnectResourceResourceIdResp `json:"Result,omitempty" name:"Result"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ModifyConnectResourceResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyConnectResourceResponseParams `json:"Response"`
+}
+
+func (r *ModifyConnectResourceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyConnectResourceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyDatahubTaskRequestParams struct {
+	// 任务id
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 任务名称
+	TaskName *string `json:"TaskName,omitempty" name:"TaskName"`
+}
+
+type ModifyDatahubTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// 任务id
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 任务名称
+	TaskName *string `json:"TaskName,omitempty" name:"TaskName"`
+}
+
+func (r *ModifyDatahubTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDatahubTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	delete(f, "TaskName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyDatahubTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyDatahubTaskResponseParams struct {
+	// 任务id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Result *DatahubTaskIdRes `json:"Result,omitempty" name:"Result"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ModifyDatahubTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyDatahubTaskResponseParams `json:"Response"`
+}
+
+func (r *ModifyDatahubTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDatahubTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user
@@ -5809,6 +7093,40 @@ type MongoDBConnectParam struct {
 	IsUpdate *bool `json:"IsUpdate,omitempty" name:"IsUpdate"`
 }
 
+type MongoDBModifyConnectParam struct {
+	// MongoDB连接源的实例资源【不支持修改】
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Resource *string `json:"Resource,omitempty" name:"Resource"`
+
+	// MongoDB的连接port【不支持修改】
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Port *int64 `json:"Port,omitempty" name:"Port"`
+
+	// MongoDB连接源的实例vip【不支持修改】
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ServiceVip *string `json:"ServiceVip,omitempty" name:"ServiceVip"`
+
+	// MongoDB连接源的vpcId【不支持修改】
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UniqVpcId *string `json:"UniqVpcId,omitempty" name:"UniqVpcId"`
+
+	// MongoDB连接源的用户名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserName *string `json:"UserName,omitempty" name:"UserName"`
+
+	// MongoDB连接源的密码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Password *string `json:"Password,omitempty" name:"Password"`
+
+	// MongoDB连接源是否为自建集群【不支持修改】
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SelfBuilt *bool `json:"SelfBuilt,omitempty" name:"SelfBuilt"`
+
+	// 是否更新到关联的Datahub任务
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsUpdate *bool `json:"IsUpdate,omitempty" name:"IsUpdate"`
+}
+
 type MongoDBParam struct {
 	// MongoDB的数据库名称
 	Database *string `json:"Database,omitempty" name:"Database"`
@@ -5877,6 +7195,40 @@ type MySQLConnectParam struct {
 	IsUpdate *bool `json:"IsUpdate,omitempty" name:"IsUpdate"`
 
 	// 当type为TDSQL_C_MYSQL时，必填
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+}
+
+type MySQLModifyConnectParam struct {
+	// MySQL连接源的实例资源【不支持修改】
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Resource *string `json:"Resource,omitempty" name:"Resource"`
+
+	// MySQL的连接port【不支持修改】
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Port *int64 `json:"Port,omitempty" name:"Port"`
+
+	// MySQL连接源的实例vip【不支持修改】
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ServiceVip *string `json:"ServiceVip,omitempty" name:"ServiceVip"`
+
+	// MySQL连接源的vpcId【不支持修改】
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UniqVpcId *string `json:"UniqVpcId,omitempty" name:"UniqVpcId"`
+
+	// MySQL连接源的用户名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserName *string `json:"UserName,omitempty" name:"UserName"`
+
+	// MySQL连接源的密码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Password *string `json:"Password,omitempty" name:"Password"`
+
+	// 是否更新到关联的Datahub任务
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsUpdate *bool `json:"IsUpdate,omitempty" name:"IsUpdate"`
+
+	// 当type为TDSQL_C_MYSQL时
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 }
@@ -5977,6 +7329,40 @@ type PostgreSQLConnectParam struct {
 	UniqVpcId *string `json:"UniqVpcId,omitempty" name:"UniqVpcId"`
 
 	// 当type为TDSQL_C_POSTGRESQL时，必填
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 是否更新到关联的Datahub任务
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsUpdate *bool `json:"IsUpdate,omitempty" name:"IsUpdate"`
+}
+
+type PostgreSQLModifyConnectParam struct {
+	// PostgreSQL连接源的实例资源【不支持修改】
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Resource *string `json:"Resource,omitempty" name:"Resource"`
+
+	// PostgreSQL的连接port【不支持修改】
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Port *int64 `json:"Port,omitempty" name:"Port"`
+
+	// PostgreSQL连接源的实例vip【不支持修改】
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ServiceVip *string `json:"ServiceVip,omitempty" name:"ServiceVip"`
+
+	// PostgreSQL连接源的vpcId【不支持修改】
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UniqVpcId *string `json:"UniqVpcId,omitempty" name:"UniqVpcId"`
+
+	// PostgreSQL连接源的用户名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserName *string `json:"UserName,omitempty" name:"UserName"`
+
+	// PostgreSQL连接源的密码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Password *string `json:"Password,omitempty" name:"Password"`
+
+	// 当type为TDSQL_C_POSTGRESQL时，该参数才有值【不支持修改】
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 
@@ -6187,6 +7573,36 @@ type SQLServerConnectParam struct {
 	IsUpdate *bool `json:"IsUpdate,omitempty" name:"IsUpdate"`
 }
 
+type SQLServerModifyConnectParam struct {
+	// SQLServer连接源的实例资源【不支持修改】
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Resource *string `json:"Resource,omitempty" name:"Resource"`
+
+	// SQLServer的连接port【不支持修改】
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Port *int64 `json:"Port,omitempty" name:"Port"`
+
+	// SQLServer连接源的实例vip【不支持修改】
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ServiceVip *string `json:"ServiceVip,omitempty" name:"ServiceVip"`
+
+	// SQLServer连接源的vpcId【不支持修改】
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UniqVpcId *string `json:"UniqVpcId,omitempty" name:"UniqVpcId"`
+
+	// SQLServer连接源的用户名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserName *string `json:"UserName,omitempty" name:"UserName"`
+
+	// SQLServer连接源的密码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Password *string `json:"Password,omitempty" name:"Password"`
+
+	// 是否更新到关联的Dip任务
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsUpdate *bool `json:"IsUpdate,omitempty" name:"IsUpdate"`
+}
+
 type SQLServerParam struct {
 	// SQLServer的数据库名称
 	Database *string `json:"Database,omitempty" name:"Database"`
@@ -6327,6 +7743,9 @@ type TdwParam struct {
 
 	// Tdw的tid
 	Tid *string `json:"Tid,omitempty" name:"Tid"`
+
+	// 是否为国内站，默认true
+	IsDomestic *bool `json:"IsDomestic,omitempty" name:"IsDomestic"`
 }
 
 type Topic struct {

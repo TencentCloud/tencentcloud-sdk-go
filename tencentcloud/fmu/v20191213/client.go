@@ -186,6 +186,7 @@ func NewBeautifyVideoResponse() (response *BeautifyVideoResponse) {
 //  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
 //  INVALIDPARAMETERVALUE_PARAMETERVALUEERROR = "InvalidParameterValue.ParameterValueError"
 //  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_NOTEXIST = "ResourceUnavailable.NotExist"
 func (c *Client) BeautifyVideo(request *BeautifyVideoRequest) (response *BeautifyVideoResponse, err error) {
     return c.BeautifyVideoWithContext(context.Background(), request)
 }
@@ -203,6 +204,7 @@ func (c *Client) BeautifyVideo(request *BeautifyVideoRequest) (response *Beautif
 //  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
 //  INVALIDPARAMETERVALUE_PARAMETERVALUEERROR = "InvalidParameterValue.ParameterValueError"
 //  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_NOTEXIST = "ResourceUnavailable.NotExist"
 func (c *Client) BeautifyVideoWithContext(ctx context.Context, request *BeautifyVideoRequest) (response *BeautifyVideoResponse, err error) {
     if request == nil {
         request = NewBeautifyVideoRequest()

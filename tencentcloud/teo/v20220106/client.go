@@ -308,6 +308,7 @@ func NewCreateDnsRecordResponse() (response *CreateDnsRecordResponse) {
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_CONFLICTRECORD = "InvalidParameterValue.ConflictRecord"
+//  INVALIDPARAMETERVALUE_CONFLICTWITHDNSSEC = "InvalidParameterValue.ConflictWithDNSSEC"
 //  INVALIDPARAMETERVALUE_CONFLICTWITHLBRECORD = "InvalidParameterValue.ConflictWithLBRecord"
 //  INVALIDPARAMETERVALUE_CONFLICTWITHNSRECORD = "InvalidParameterValue.ConflictWithNSRecord"
 //  INVALIDPARAMETERVALUE_INVALIDDNSCONTENT = "InvalidParameterValue.InvalidDNSContent"
@@ -327,6 +328,7 @@ func (c *Client) CreateDnsRecord(request *CreateDnsRecordRequest) (response *Cre
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_CONFLICTRECORD = "InvalidParameterValue.ConflictRecord"
+//  INVALIDPARAMETERVALUE_CONFLICTWITHDNSSEC = "InvalidParameterValue.ConflictWithDNSSEC"
 //  INVALIDPARAMETERVALUE_CONFLICTWITHLBRECORD = "InvalidParameterValue.ConflictWithLBRecord"
 //  INVALIDPARAMETERVALUE_CONFLICTWITHNSRECORD = "InvalidParameterValue.ConflictWithNSRecord"
 //  INVALIDPARAMETERVALUE_INVALIDDNSCONTENT = "InvalidParameterValue.InvalidDNSContent"
@@ -375,6 +377,7 @@ func NewCreateLoadBalancingResponse() (response *CreateLoadBalancingResponse) {
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_CONFLICTRECORD = "InvalidParameterValue.ConflictRecord"
+//  INVALIDPARAMETERVALUE_CONFLICTWITHDNSSEC = "InvalidParameterValue.ConflictWithDNSSEC"
 //  INVALIDPARAMETERVALUE_CONFLICTWITHLBRECORD = "InvalidParameterValue.ConflictWithLBRecord"
 //  INVALIDPARAMETERVALUE_CONFLICTWITHNSRECORD = "InvalidParameterValue.ConflictWithNSRecord"
 //  INVALIDPARAMETERVALUE_INVALIDDNSCONTENT = "InvalidParameterValue.InvalidDNSContent"
@@ -394,6 +397,7 @@ func (c *Client) CreateLoadBalancing(request *CreateLoadBalancingRequest) (respo
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_CONFLICTRECORD = "InvalidParameterValue.ConflictRecord"
+//  INVALIDPARAMETERVALUE_CONFLICTWITHDNSSEC = "InvalidParameterValue.ConflictWithDNSSEC"
 //  INVALIDPARAMETERVALUE_CONFLICTWITHLBRECORD = "InvalidParameterValue.ConflictWithLBRecord"
 //  INVALIDPARAMETERVALUE_CONFLICTWITHNSRECORD = "InvalidParameterValue.ConflictWithNSRecord"
 //  INVALIDPARAMETERVALUE_INVALIDDNSCONTENT = "InvalidParameterValue.InvalidDNSContent"
@@ -1185,7 +1189,7 @@ func NewDescribeCnameStatusResponse() (response *DescribeCnameStatusResponse) {
 // 查询域名 CNAME 状态
 //
 // 可能返回的错误码:
-//  INVALIDPARAMETER_SECURITY = "InvalidParameter.Security"
+//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
 func (c *Client) DescribeCnameStatus(request *DescribeCnameStatusRequest) (response *DescribeCnameStatusResponse, err error) {
     return c.DescribeCnameStatusWithContext(context.Background(), request)
 }
@@ -1194,7 +1198,7 @@ func (c *Client) DescribeCnameStatus(request *DescribeCnameStatusRequest) (respo
 // 查询域名 CNAME 状态
 //
 // 可能返回的错误码:
-//  INVALIDPARAMETER_SECURITY = "InvalidParameter.Security"
+//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
 func (c *Client) DescribeCnameStatusWithContext(ctx context.Context, request *DescribeCnameStatusRequest) (response *DescribeCnameStatusResponse, err error) {
     if request == nil {
         request = NewDescribeCnameStatusRequest()
@@ -1232,7 +1236,7 @@ func NewDescribeDDoSPolicyResponse() (response *DescribeDDoSPolicyResponse) {
 // 查询DDoS防护配置详情
 //
 // 可能返回的错误码:
-//  INVALIDPARAMETER_SECURITY = "InvalidParameter.Security"
+//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
 func (c *Client) DescribeDDoSPolicy(request *DescribeDDoSPolicyRequest) (response *DescribeDDoSPolicyResponse, err error) {
     return c.DescribeDDoSPolicyWithContext(context.Background(), request)
 }
@@ -1241,7 +1245,7 @@ func (c *Client) DescribeDDoSPolicy(request *DescribeDDoSPolicyRequest) (respons
 // 查询DDoS防护配置详情
 //
 // 可能返回的错误码:
-//  INVALIDPARAMETER_SECURITY = "InvalidParameter.Security"
+//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
 func (c *Client) DescribeDDoSPolicyWithContext(ctx context.Context, request *DescribeDDoSPolicyRequest) (response *DescribeDDoSPolicyResponse, err error) {
     if request == nil {
         request = NewDescribeDDoSPolicyRequest()
@@ -1279,7 +1283,7 @@ func NewDescribeDDosAttackDataResponse() (response *DescribeDDosAttackDataRespon
 // 查询DDos攻击数据
 //
 // 可能返回的错误码:
-//  INVALIDPARAMETER_SECURITY = "InvalidParameter.Security"
+//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
 func (c *Client) DescribeDDosAttackData(request *DescribeDDosAttackDataRequest) (response *DescribeDDosAttackDataResponse, err error) {
     return c.DescribeDDosAttackDataWithContext(context.Background(), request)
 }
@@ -1288,7 +1292,7 @@ func (c *Client) DescribeDDosAttackData(request *DescribeDDosAttackDataRequest) 
 // 查询DDos攻击数据
 //
 // 可能返回的错误码:
-//  INVALIDPARAMETER_SECURITY = "InvalidParameter.Security"
+//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
 func (c *Client) DescribeDDosAttackDataWithContext(ctx context.Context, request *DescribeDDosAttackDataRequest) (response *DescribeDDosAttackDataResponse, err error) {
     if request == nil {
         request = NewDescribeDDosAttackDataRequest()
@@ -1326,7 +1330,7 @@ func NewDescribeDDosAttackEventResponse() (response *DescribeDDosAttackEventResp
 // 查询DDos攻击事件
 //
 // 可能返回的错误码:
-//  INVALIDPARAMETER_SECURITY = "InvalidParameter.Security"
+//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
 func (c *Client) DescribeDDosAttackEvent(request *DescribeDDosAttackEventRequest) (response *DescribeDDosAttackEventResponse, err error) {
     return c.DescribeDDosAttackEventWithContext(context.Background(), request)
 }
@@ -1335,7 +1339,7 @@ func (c *Client) DescribeDDosAttackEvent(request *DescribeDDosAttackEventRequest
 // 查询DDos攻击事件
 //
 // 可能返回的错误码:
-//  INVALIDPARAMETER_SECURITY = "InvalidParameter.Security"
+//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
 func (c *Client) DescribeDDosAttackEventWithContext(ctx context.Context, request *DescribeDDosAttackEventRequest) (response *DescribeDDosAttackEventResponse, err error) {
     if request == nil {
         request = NewDescribeDDosAttackEventRequest()
@@ -1563,6 +1567,8 @@ func NewDescribeDefaultCertificatesResponse() (response *DescribeDefaultCertific
 // 可能返回的错误码:
 //  OPERATIONDENIED = "OperationDenied"
 //  RESOURCEUNAVAILABLE_ZONENOTFOUND = "ResourceUnavailable.ZoneNotFound"
+//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
 func (c *Client) DescribeDefaultCertificates(request *DescribeDefaultCertificatesRequest) (response *DescribeDefaultCertificatesResponse, err error) {
     return c.DescribeDefaultCertificatesWithContext(context.Background(), request)
 }
@@ -1573,6 +1579,8 @@ func (c *Client) DescribeDefaultCertificates(request *DescribeDefaultCertificate
 // 可能返回的错误码:
 //  OPERATIONDENIED = "OperationDenied"
 //  RESOURCEUNAVAILABLE_ZONENOTFOUND = "ResourceUnavailable.ZoneNotFound"
+//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
 func (c *Client) DescribeDefaultCertificatesWithContext(ctx context.Context, request *DescribeDefaultCertificatesRequest) (response *DescribeDefaultCertificatesResponse, err error) {
     if request == nil {
         request = NewDescribeDefaultCertificatesRequest()
@@ -1758,6 +1766,7 @@ func NewDescribeHostsCertificateResponse() (response *DescribeHostsCertificateRe
 //  INTERNALERROR_PROXYSERVER = "InternalError.ProxyServer"
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
 //  OPERATIONDENIED = "OperationDenied"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
 func (c *Client) DescribeHostsCertificate(request *DescribeHostsCertificateRequest) (response *DescribeHostsCertificateResponse, err error) {
     return c.DescribeHostsCertificateWithContext(context.Background(), request)
 }
@@ -1769,6 +1778,7 @@ func (c *Client) DescribeHostsCertificate(request *DescribeHostsCertificateReque
 //  INTERNALERROR_PROXYSERVER = "InternalError.ProxyServer"
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
 //  OPERATIONDENIED = "OperationDenied"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
 func (c *Client) DescribeHostsCertificateWithContext(ctx context.Context, request *DescribeHostsCertificateRequest) (response *DescribeHostsCertificateResponse, err error) {
     if request == nil {
         request = NewDescribeHostsCertificateRequest()
@@ -1809,6 +1819,7 @@ func NewDescribeHostsSettingResponse() (response *DescribeHostsSettingResponse) 
 //  INVALIDPARAMETER = "InvalidParameter"
 //  OPERATIONDENIED = "OperationDenied"
 //  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
 func (c *Client) DescribeHostsSetting(request *DescribeHostsSettingRequest) (response *DescribeHostsSettingResponse, err error) {
     return c.DescribeHostsSettingWithContext(context.Background(), request)
 }
@@ -1820,6 +1831,7 @@ func (c *Client) DescribeHostsSetting(request *DescribeHostsSettingRequest) (res
 //  INVALIDPARAMETER = "InvalidParameter"
 //  OPERATIONDENIED = "OperationDenied"
 //  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
 func (c *Client) DescribeHostsSettingWithContext(ctx context.Context, request *DescribeHostsSettingRequest) (response *DescribeHostsSettingResponse, err error) {
     if request == nil {
         request = NewDescribeHostsSettingRequest()
@@ -1905,6 +1917,7 @@ func NewDescribeLoadBalancingResponse() (response *DescribeLoadBalancingResponse
 //
 // 可能返回的错误码:
 //  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
 func (c *Client) DescribeLoadBalancing(request *DescribeLoadBalancingRequest) (response *DescribeLoadBalancingResponse, err error) {
     return c.DescribeLoadBalancingWithContext(context.Background(), request)
 }
@@ -1914,6 +1927,7 @@ func (c *Client) DescribeLoadBalancing(request *DescribeLoadBalancingRequest) (r
 //
 // 可能返回的错误码:
 //  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
 func (c *Client) DescribeLoadBalancingWithContext(ctx context.Context, request *DescribeLoadBalancingRequest) (response *DescribeLoadBalancingResponse, err error) {
     if request == nil {
         request = NewDescribeLoadBalancingRequest()
@@ -3790,6 +3804,7 @@ func NewModifyDnsRecordResponse() (response *ModifyDnsRecordResponse) {
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_INVALIDDNSCONTENT = "InvalidParameterValue.InvalidDNSContent"
+//  INVALIDPARAMETERVALUE_RECORDALREADYEXISTS = "InvalidParameterValue.RecordAlreadyExists"
 //  INVALIDPARAMETERVALUE_RECORDNOTALLOWED = "InvalidParameterValue.RecordNotAllowed"
 //  OPERATIONDENIED = "OperationDenied"
 //  RESOURCEINUSE = "ResourceInUse"
@@ -3803,6 +3818,7 @@ func (c *Client) ModifyDnsRecord(request *ModifyDnsRecordRequest) (response *Mod
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_INVALIDDNSCONTENT = "InvalidParameterValue.InvalidDNSContent"
+//  INVALIDPARAMETERVALUE_RECORDALREADYEXISTS = "InvalidParameterValue.RecordAlreadyExists"
 //  INVALIDPARAMETERVALUE_RECORDNOTALLOWED = "InvalidParameterValue.RecordNotAllowed"
 //  OPERATIONDENIED = "OperationDenied"
 //  RESOURCEINUSE = "ResourceInUse"
@@ -4235,10 +4251,12 @@ func NewModifyZoneSettingResponse() (response *ModifyZoneSettingResponse) {
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_INVALIDCACHEONLYONSWITCH = "InvalidParameter.InvalidCacheOnlyOnSwitch"
+//  INVALIDPARAMETER_INVALIDCLIENTIPHEADERNAME = "InvalidParameter.InvalidClientIpHeaderName"
 //  INVALIDPARAMETER_INVALIDORIGIN = "InvalidParameter.InvalidOrigin"
 //  INVALIDPARAMETER_INVALIDREQUESTHEADERNAME = "InvalidParameter.InvalidRequestHeaderName"
 //  INVALIDPARAMETER_SETTINGINVALIDPARAM = "InvalidParameter.SettingInvalidParam"
 //  OPERATIONDENIED = "OperationDenied"
+//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
 //  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
 func (c *Client) ModifyZoneSetting(request *ModifyZoneSettingRequest) (response *ModifyZoneSettingResponse, err error) {
     return c.ModifyZoneSettingWithContext(context.Background(), request)
@@ -4249,10 +4267,12 @@ func (c *Client) ModifyZoneSetting(request *ModifyZoneSettingRequest) (response 
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_INVALIDCACHEONLYONSWITCH = "InvalidParameter.InvalidCacheOnlyOnSwitch"
+//  INVALIDPARAMETER_INVALIDCLIENTIPHEADERNAME = "InvalidParameter.InvalidClientIpHeaderName"
 //  INVALIDPARAMETER_INVALIDORIGIN = "InvalidParameter.InvalidOrigin"
 //  INVALIDPARAMETER_INVALIDREQUESTHEADERNAME = "InvalidParameter.InvalidRequestHeaderName"
 //  INVALIDPARAMETER_SETTINGINVALIDPARAM = "InvalidParameter.SettingInvalidParam"
 //  OPERATIONDENIED = "OperationDenied"
+//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
 //  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
 func (c *Client) ModifyZoneSettingWithContext(ctx context.Context, request *ModifyZoneSettingRequest) (response *ModifyZoneSettingResponse, err error) {
     if request == nil {
