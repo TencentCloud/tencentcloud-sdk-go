@@ -91,7 +91,7 @@ type CodeBatch struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProductName *string `json:"ProductName,omitempty" name:"ProductName"`
 
-	// 0
+	// 未使用
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Ext *Ext `json:"Ext,omitempty" name:"Ext"`
 
@@ -124,6 +124,9 @@ type CreateCodeBatchRequestParams struct {
 
 	// 备注
 	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 活动ID
+	MpTpl *string `json:"MpTpl,omitempty" name:"MpTpl"`
 }
 
 type CreateCodeBatchRequest struct {
@@ -146,6 +149,9 @@ type CreateCodeBatchRequest struct {
 
 	// 备注
 	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 活动ID
+	MpTpl *string `json:"MpTpl,omitempty" name:"MpTpl"`
 }
 
 func (r *CreateCodeBatchRequest) ToJsonString() string {
@@ -166,6 +172,7 @@ func (r *CreateCodeBatchRequest) FromJsonString(s string) error {
 	delete(f, "BatchType")
 	delete(f, "BatchId")
 	delete(f, "Remark")
+	delete(f, "MpTpl")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCodeBatchRequest has unknown keys!", "")
 	}
@@ -1903,6 +1910,15 @@ type ModifyCodeBatchRequestParams struct {
 
 	// 模板ID
 	MpTpl *string `json:"MpTpl,omitempty" name:"MpTpl"`
+
+	// 商户ID
+	MerchantId *string `json:"MerchantId,omitempty" name:"MerchantId"`
+
+	// 商品ID
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+
+	// 备注
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
 }
 
 type ModifyCodeBatchRequest struct {
@@ -1919,6 +1935,15 @@ type ModifyCodeBatchRequest struct {
 
 	// 模板ID
 	MpTpl *string `json:"MpTpl,omitempty" name:"MpTpl"`
+
+	// 商户ID
+	MerchantId *string `json:"MerchantId,omitempty" name:"MerchantId"`
+
+	// 商品ID
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+
+	// 备注
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
 }
 
 func (r *ModifyCodeBatchRequest) ToJsonString() string {
@@ -1937,6 +1962,9 @@ func (r *ModifyCodeBatchRequest) FromJsonString(s string) error {
 	delete(f, "CorpId")
 	delete(f, "Status")
 	delete(f, "MpTpl")
+	delete(f, "MerchantId")
+	delete(f, "ProductId")
+	delete(f, "Remark")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyCodeBatchRequest has unknown keys!", "")
 	}

@@ -45,6 +45,7 @@ import (
 	billingv20180709 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/billing/v20180709"
 	bizlivev20190313 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/bizlive/v20190313"
 	bmv20180423 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/bm/v20180423"
+	bmav20210624 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/bma/v20210624"
 	bmeipv20180625 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/bmeip/v20180625"
 	bmlbv20180625 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/bmlb/v20180625"
 	bmvpcv20180625 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/bmvpc/v20180625"
@@ -88,6 +89,7 @@ import (
 	cwsv20180312 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cws/v20180312"
 	cynosdbv20190107 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cynosdb/v20190107"
 	dasbv20191018 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/dasb/v20191018"
+	dataintegrationv20220613 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/dataintegration/v20220613"
 	dayuv20180709 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/dayu/v20180709"
 	dbbrainv20191016 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/dbbrain/v20191016"
 	dbbrainv20210527 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/dbbrain/v20210527"
@@ -579,6 +581,19 @@ func TestBmv20180423Import(t *testing.T) {
         profile.NewClientProfile())
     if err != nil || client == nil {
         t.Errorf("fail to init bm_v20180423 client: %v", err)
+    }
+}
+
+func TestBmav20210624Import(t *testing.T) {
+    credential := common.NewCredential(
+        os.Getenv("TENCENTCLOUD_SECRET_ID"),
+        os.Getenv("TENCENTCLOUD_SECRET_KEY"))
+    client, err := bmav20210624.NewClient(
+        credential,
+        regions.Guangzhou,
+        profile.NewClientProfile())
+    if err != nil || client == nil {
+        t.Errorf("fail to init bma_v20210624 client: %v", err)
     }
 }
 
@@ -1138,6 +1153,19 @@ func TestDasbv20191018Import(t *testing.T) {
         profile.NewClientProfile())
     if err != nil || client == nil {
         t.Errorf("fail to init dasb_v20191018 client: %v", err)
+    }
+}
+
+func TestDataintegrationv20220613Import(t *testing.T) {
+    credential := common.NewCredential(
+        os.Getenv("TENCENTCLOUD_SECRET_ID"),
+        os.Getenv("TENCENTCLOUD_SECRET_KEY"))
+    client, err := dataintegrationv20220613.NewClient(
+        credential,
+        regions.Guangzhou,
+        profile.NewClientProfile())
+    if err != nil || client == nil {
+        t.Errorf("fail to init dataintegration_v20220613 client: %v", err)
     }
 }
 

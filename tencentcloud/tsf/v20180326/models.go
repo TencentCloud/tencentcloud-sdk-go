@@ -10042,6 +10042,9 @@ type DescribeMicroserviceRequestParams struct {
 
 	// 可选，根据部署组ID进行过滤
 	GroupIds []*string `json:"GroupIds,omitempty" name:"GroupIds"`
+
+	// 过滤条件。多个 filter 之间是与关系，单个 filter 多个 value 之间是或关系。filter name 取值有：id（实例id）、name（实例名）、lan-ip（内网ip）、node-ip（所在节点ip）
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 }
 
 type DescribeMicroserviceRequest struct {
@@ -10058,6 +10061,9 @@ type DescribeMicroserviceRequest struct {
 
 	// 可选，根据部署组ID进行过滤
 	GroupIds []*string `json:"GroupIds,omitempty" name:"GroupIds"`
+
+	// 过滤条件。多个 filter 之间是与关系，单个 filter 多个 value 之间是或关系。filter name 取值有：id（实例id）、name（实例名）、lan-ip（内网ip）、node-ip（所在节点ip）
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 }
 
 func (r *DescribeMicroserviceRequest) ToJsonString() string {
@@ -10076,6 +10082,7 @@ func (r *DescribeMicroserviceRequest) FromJsonString(s string) error {
 	delete(f, "Offset")
 	delete(f, "Limit")
 	delete(f, "GroupIds")
+	delete(f, "Filters")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeMicroserviceRequest has unknown keys!", "")
 	}

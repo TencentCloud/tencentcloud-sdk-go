@@ -82,14 +82,14 @@ type Caller struct {
 
 // Predefined struct for user
 type CancelFlowRequestParams struct {
+	// 调用方用户信息，userId 必填
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
 	// 签署流程id
 	FlowId *string `json:"FlowId,omitempty" name:"FlowId"`
 
 	// 撤销原因，最长200个字符；
 	CancelMessage *string `json:"CancelMessage,omitempty" name:"CancelMessage"`
-
-	// 操作用户id
-	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 
 	// 应用相关信息
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
@@ -98,14 +98,14 @@ type CancelFlowRequestParams struct {
 type CancelFlowRequest struct {
 	*tchttp.BaseRequest
 	
+	// 调用方用户信息，userId 必填
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
 	// 签署流程id
 	FlowId *string `json:"FlowId,omitempty" name:"FlowId"`
 
 	// 撤销原因，最长200个字符；
 	CancelMessage *string `json:"CancelMessage,omitempty" name:"CancelMessage"`
-
-	// 操作用户id
-	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 
 	// 应用相关信息
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
@@ -123,9 +123,9 @@ func (r *CancelFlowRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "Operator")
 	delete(f, "FlowId")
 	delete(f, "CancelMessage")
-	delete(f, "Operator")
 	delete(f, "Agent")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CancelFlowRequest has unknown keys!", "")
@@ -303,6 +303,9 @@ type Component struct {
 
 // Predefined struct for user
 type CreateDocumentRequestParams struct {
+	// 调用方用户信息，userId 必填
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
 	// 签署流程编号,由CreateFlow接口返回
 	FlowId *string `json:"FlowId,omitempty" name:"FlowId"`
 
@@ -311,12 +314,6 @@ type CreateDocumentRequestParams struct {
 
 	// 文件名列表,单个文件名最大长度200个字符
 	FileNames []*string `json:"FileNames,omitempty" name:"FileNames"`
-
-	// 无
-	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
-
-	// 应用相关信息
-	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
 	// 内容控件信息数组
 	FormFields []*FormField `json:"FormFields,omitempty" name:"FormFields"`
@@ -327,11 +324,17 @@ type CreateDocumentRequestParams struct {
 
 	// 客户端Token，保持接口幂等性,最大长度64个字符
 	ClientToken *string `json:"ClientToken,omitempty" name:"ClientToken"`
+
+	// 应用相关信息
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 }
 
 type CreateDocumentRequest struct {
 	*tchttp.BaseRequest
 	
+	// 调用方用户信息，userId 必填
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
 	// 签署流程编号,由CreateFlow接口返回
 	FlowId *string `json:"FlowId,omitempty" name:"FlowId"`
 
@@ -340,12 +343,6 @@ type CreateDocumentRequest struct {
 
 	// 文件名列表,单个文件名最大长度200个字符
 	FileNames []*string `json:"FileNames,omitempty" name:"FileNames"`
-
-	// 无
-	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
-
-	// 应用相关信息
-	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
 	// 内容控件信息数组
 	FormFields []*FormField `json:"FormFields,omitempty" name:"FormFields"`
@@ -356,6 +353,9 @@ type CreateDocumentRequest struct {
 
 	// 客户端Token，保持接口幂等性,最大长度64个字符
 	ClientToken *string `json:"ClientToken,omitempty" name:"ClientToken"`
+
+	// 应用相关信息
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 }
 
 func (r *CreateDocumentRequest) ToJsonString() string {
@@ -370,14 +370,14 @@ func (r *CreateDocumentRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "Operator")
 	delete(f, "FlowId")
 	delete(f, "TemplateId")
 	delete(f, "FileNames")
-	delete(f, "Operator")
-	delete(f, "Agent")
 	delete(f, "FormFields")
 	delete(f, "NeedPreview")
 	delete(f, "ClientToken")
+	delete(f, "Agent")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDocumentRequest has unknown keys!", "")
 	}
@@ -415,6 +415,9 @@ func (r *CreateDocumentResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateFlowByFilesRequestParams struct {
+	// 调用方用户信息，userId 必填
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
 	// 签署流程名称,最大长度200个字符
 	FlowName *string `json:"FlowName,omitempty" name:"FlowName"`
 
@@ -424,11 +427,8 @@ type CreateFlowByFilesRequestParams struct {
 	// 签署pdf文件的资源编号列表，通过UploadFiles接口获取
 	FileIds []*string `json:"FileIds,omitempty" name:"FileIds"`
 
-	// 调用方用户信息
-	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
-
-	// 应用号信息
-	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+	// 签署流程的类型(如销售合同/入职合同等)，最大长度200个字符
+	FlowType *string `json:"FlowType,omitempty" name:"FlowType"`
 
 	// 经办人内容控件配置。可选类型为：
 	// TEXT - 内容文本控件
@@ -437,6 +437,17 @@ type CreateFlowByFilesRequestParams struct {
 	// ATTACHMENT - 附件
 	// 注：默认字体大小为 字号12
 	Components []*Component `json:"Components,omitempty" name:"Components"`
+
+	// 被抄送人的信息列表。
+	// 注:此功能为白名单功能，若有需要，请联系电子签客服开白使用
+	CcInfos []*CcInfo `json:"CcInfos,omitempty" name:"CcInfos"`
+
+	// 是否需要预览，true：预览模式，false：非预览（默认）；
+	// 预览链接有效期300秒；
+	NeedPreview *bool `json:"NeedPreview,omitempty" name:"NeedPreview"`
+
+	// 签署流程描述,最大长度1000个字符
+	FlowDescription *string `json:"FlowDescription,omitempty" name:"FlowDescription"`
 
 	// 签署流程的签署截止时间。
 	// 值为unix时间戳,精确到秒,不传默认为当前时间一年后
@@ -448,27 +459,19 @@ type CreateFlowByFilesRequestParams struct {
 	// 注：默认为false（有序签）
 	Unordered *bool `json:"Unordered,omitempty" name:"Unordered"`
 
-	// 是否需要预览，true：预览模式，false：非预览（默认）；
-	// 预览链接有效期300秒；
-	NeedPreview *bool `json:"NeedPreview,omitempty" name:"NeedPreview"`
-
-	// 签署流程描述,最大长度1000个字符
-	FlowDescription *string `json:"FlowDescription,omitempty" name:"FlowDescription"`
-
-	// 签署流程的类型(如销售合同/入职合同等)，最大长度200个字符
-	FlowType *string `json:"FlowType,omitempty" name:"FlowType"`
-
-	// 被抄送人的信息列表。
-	// 注:此功能为白名单功能，若有需要，请联系电子签客服开白使用
-	CcInfos []*CcInfo `json:"CcInfos,omitempty" name:"CcInfos"`
-
 	// 合同显示的页卡模板，说明：只支持{合同名称}, {发起方企业}, {发起方姓名}, {签署方N企业}, {签署方N姓名}，且N不能超过签署人的数量，N从1开始
 	CustomShowMap *string `json:"CustomShowMap,omitempty" name:"CustomShowMap"`
+
+	// 应用号信息
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 }
 
 type CreateFlowByFilesRequest struct {
 	*tchttp.BaseRequest
 	
+	// 调用方用户信息，userId 必填
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
 	// 签署流程名称,最大长度200个字符
 	FlowName *string `json:"FlowName,omitempty" name:"FlowName"`
 
@@ -478,11 +481,8 @@ type CreateFlowByFilesRequest struct {
 	// 签署pdf文件的资源编号列表，通过UploadFiles接口获取
 	FileIds []*string `json:"FileIds,omitempty" name:"FileIds"`
 
-	// 调用方用户信息
-	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
-
-	// 应用号信息
-	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+	// 签署流程的类型(如销售合同/入职合同等)，最大长度200个字符
+	FlowType *string `json:"FlowType,omitempty" name:"FlowType"`
 
 	// 经办人内容控件配置。可选类型为：
 	// TEXT - 内容文本控件
@@ -491,6 +491,17 @@ type CreateFlowByFilesRequest struct {
 	// ATTACHMENT - 附件
 	// 注：默认字体大小为 字号12
 	Components []*Component `json:"Components,omitempty" name:"Components"`
+
+	// 被抄送人的信息列表。
+	// 注:此功能为白名单功能，若有需要，请联系电子签客服开白使用
+	CcInfos []*CcInfo `json:"CcInfos,omitempty" name:"CcInfos"`
+
+	// 是否需要预览，true：预览模式，false：非预览（默认）；
+	// 预览链接有效期300秒；
+	NeedPreview *bool `json:"NeedPreview,omitempty" name:"NeedPreview"`
+
+	// 签署流程描述,最大长度1000个字符
+	FlowDescription *string `json:"FlowDescription,omitempty" name:"FlowDescription"`
 
 	// 签署流程的签署截止时间。
 	// 值为unix时间戳,精确到秒,不传默认为当前时间一年后
@@ -502,22 +513,11 @@ type CreateFlowByFilesRequest struct {
 	// 注：默认为false（有序签）
 	Unordered *bool `json:"Unordered,omitempty" name:"Unordered"`
 
-	// 是否需要预览，true：预览模式，false：非预览（默认）；
-	// 预览链接有效期300秒；
-	NeedPreview *bool `json:"NeedPreview,omitempty" name:"NeedPreview"`
-
-	// 签署流程描述,最大长度1000个字符
-	FlowDescription *string `json:"FlowDescription,omitempty" name:"FlowDescription"`
-
-	// 签署流程的类型(如销售合同/入职合同等)，最大长度200个字符
-	FlowType *string `json:"FlowType,omitempty" name:"FlowType"`
-
-	// 被抄送人的信息列表。
-	// 注:此功能为白名单功能，若有需要，请联系电子签客服开白使用
-	CcInfos []*CcInfo `json:"CcInfos,omitempty" name:"CcInfos"`
-
 	// 合同显示的页卡模板，说明：只支持{合同名称}, {发起方企业}, {发起方姓名}, {签署方N企业}, {签署方N姓名}，且N不能超过签署人的数量，N从1开始
 	CustomShowMap *string `json:"CustomShowMap,omitempty" name:"CustomShowMap"`
+
+	// 应用号信息
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 }
 
 func (r *CreateFlowByFilesRequest) ToJsonString() string {
@@ -532,19 +532,19 @@ func (r *CreateFlowByFilesRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "Operator")
 	delete(f, "FlowName")
 	delete(f, "Approvers")
 	delete(f, "FileIds")
-	delete(f, "Operator")
-	delete(f, "Agent")
+	delete(f, "FlowType")
 	delete(f, "Components")
-	delete(f, "Deadline")
-	delete(f, "Unordered")
+	delete(f, "CcInfos")
 	delete(f, "NeedPreview")
 	delete(f, "FlowDescription")
-	delete(f, "FlowType")
-	delete(f, "CcInfos")
+	delete(f, "Deadline")
+	delete(f, "Unordered")
 	delete(f, "CustomShowMap")
+	delete(f, "Agent")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateFlowByFilesRequest has unknown keys!", "")
 	}
@@ -582,30 +582,27 @@ func (r *CreateFlowByFilesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateFlowRequestParams struct {
+	// 调用方用户信息，userId 必填
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
 	// 签署流程名称,最大长度200个字符
 	FlowName *string `json:"FlowName,omitempty" name:"FlowName"`
 
 	// 签署流程参与者信息
 	Approvers []*FlowCreateApprover `json:"Approvers,omitempty" name:"Approvers"`
 
-	// 操作人信息
-	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+	// 签署流程的类型(如销售合同/入职合同等)，最大长度200个字符
+	FlowType *string `json:"FlowType,omitempty" name:"FlowType"`
 
-	// 应用相关信息
-	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+	// 客户端Token，保持接口幂等性,最大长度64个字符
+	ClientToken *string `json:"ClientToken,omitempty" name:"ClientToken"`
 
-	// 发送类型：
-	// true：无序签
-	// false：有序签
-	// 注：默认为false（有序签），请和模板中的配置保持一致
-	Unordered *bool `json:"Unordered,omitempty" name:"Unordered"`
+	// 暂未开放
+	CallbackUrl *string `json:"CallbackUrl,omitempty" name:"CallbackUrl"`
 
 	// 签署流程的签署截止时间。
 	// 值为unix时间戳,精确到秒,不传默认为当前时间一年后
 	DeadLine *int64 `json:"DeadLine,omitempty" name:"DeadLine"`
-
-	// 签署流程的类型(如销售合同/入职合同等)，最大长度200个字符
-	FlowType *string `json:"FlowType,omitempty" name:"FlowType"`
 
 	// 用户自定义字段(需进行base64 encode),回调的时候会进行透传, 长度需要小于20480
 	UserData *string `json:"UserData,omitempty" name:"UserData"`
@@ -613,8 +610,11 @@ type CreateFlowRequestParams struct {
 	// 签署流程描述,最大长度1000个字符
 	FlowDescription *string `json:"FlowDescription,omitempty" name:"FlowDescription"`
 
-	// 客户端Token，保持接口幂等性,最大长度64个字符
-	ClientToken *string `json:"ClientToken,omitempty" name:"ClientToken"`
+	// 发送类型：
+	// true：无序签
+	// false：有序签
+	// 注：默认为false（有序签），请和模板中的配置保持一致
+	Unordered *bool `json:"Unordered,omitempty" name:"Unordered"`
 
 	// 合同显示的页卡模板，说明：只支持{合同名称}, {发起方企业}, {发起方姓名}, {签署方N企业}, {签署方N姓名}，且N不能超过签署人的数量，N从1开始
 	CustomShowMap *string `json:"CustomShowMap,omitempty" name:"CustomShowMap"`
@@ -622,37 +622,34 @@ type CreateFlowRequestParams struct {
 	// 暂未开放
 	RelatedFlowId *string `json:"RelatedFlowId,omitempty" name:"RelatedFlowId"`
 
-	// 暂未开放
-	CallbackUrl *string `json:"CallbackUrl,omitempty" name:"CallbackUrl"`
+	// 应用相关信息
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 }
 
 type CreateFlowRequest struct {
 	*tchttp.BaseRequest
 	
+	// 调用方用户信息，userId 必填
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
 	// 签署流程名称,最大长度200个字符
 	FlowName *string `json:"FlowName,omitempty" name:"FlowName"`
 
 	// 签署流程参与者信息
 	Approvers []*FlowCreateApprover `json:"Approvers,omitempty" name:"Approvers"`
 
-	// 操作人信息
-	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+	// 签署流程的类型(如销售合同/入职合同等)，最大长度200个字符
+	FlowType *string `json:"FlowType,omitempty" name:"FlowType"`
 
-	// 应用相关信息
-	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+	// 客户端Token，保持接口幂等性,最大长度64个字符
+	ClientToken *string `json:"ClientToken,omitempty" name:"ClientToken"`
 
-	// 发送类型：
-	// true：无序签
-	// false：有序签
-	// 注：默认为false（有序签），请和模板中的配置保持一致
-	Unordered *bool `json:"Unordered,omitempty" name:"Unordered"`
+	// 暂未开放
+	CallbackUrl *string `json:"CallbackUrl,omitempty" name:"CallbackUrl"`
 
 	// 签署流程的签署截止时间。
 	// 值为unix时间戳,精确到秒,不传默认为当前时间一年后
 	DeadLine *int64 `json:"DeadLine,omitempty" name:"DeadLine"`
-
-	// 签署流程的类型(如销售合同/入职合同等)，最大长度200个字符
-	FlowType *string `json:"FlowType,omitempty" name:"FlowType"`
 
 	// 用户自定义字段(需进行base64 encode),回调的时候会进行透传, 长度需要小于20480
 	UserData *string `json:"UserData,omitempty" name:"UserData"`
@@ -660,8 +657,11 @@ type CreateFlowRequest struct {
 	// 签署流程描述,最大长度1000个字符
 	FlowDescription *string `json:"FlowDescription,omitempty" name:"FlowDescription"`
 
-	// 客户端Token，保持接口幂等性,最大长度64个字符
-	ClientToken *string `json:"ClientToken,omitempty" name:"ClientToken"`
+	// 发送类型：
+	// true：无序签
+	// false：有序签
+	// 注：默认为false（有序签），请和模板中的配置保持一致
+	Unordered *bool `json:"Unordered,omitempty" name:"Unordered"`
 
 	// 合同显示的页卡模板，说明：只支持{合同名称}, {发起方企业}, {发起方姓名}, {签署方N企业}, {签署方N姓名}，且N不能超过签署人的数量，N从1开始
 	CustomShowMap *string `json:"CustomShowMap,omitempty" name:"CustomShowMap"`
@@ -669,8 +669,8 @@ type CreateFlowRequest struct {
 	// 暂未开放
 	RelatedFlowId *string `json:"RelatedFlowId,omitempty" name:"RelatedFlowId"`
 
-	// 暂未开放
-	CallbackUrl *string `json:"CallbackUrl,omitempty" name:"CallbackUrl"`
+	// 应用相关信息
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 }
 
 func (r *CreateFlowRequest) ToJsonString() string {
@@ -685,19 +685,19 @@ func (r *CreateFlowRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "Operator")
 	delete(f, "FlowName")
 	delete(f, "Approvers")
-	delete(f, "Operator")
-	delete(f, "Agent")
-	delete(f, "Unordered")
-	delete(f, "DeadLine")
 	delete(f, "FlowType")
+	delete(f, "ClientToken")
+	delete(f, "CallbackUrl")
+	delete(f, "DeadLine")
 	delete(f, "UserData")
 	delete(f, "FlowDescription")
-	delete(f, "ClientToken")
+	delete(f, "Unordered")
 	delete(f, "CustomShowMap")
 	delete(f, "RelatedFlowId")
-	delete(f, "CallbackUrl")
+	delete(f, "Agent")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateFlowRequest has unknown keys!", "")
 	}
@@ -843,17 +843,11 @@ func (r *CreateMultiFlowSignQRCodeResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateSchemeUrlRequestParams struct {
-	// 调用方用户信息，参考通用结构
+	// 调用方用户信息，userId 必填
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 
-	// 应用相关信息
-	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
-
-	// 链接类型
-	// HTTP：跳转电子签小程序的http_url，
-	// APP：第三方APP或小程序跳转电子签小程序的path。
-	// 默认为HTTP类型
-	EndPoint *string `json:"EndPoint,omitempty" name:"EndPoint"`
+	// 企业名称
+	OrganizationName *string `json:"OrganizationName,omitempty" name:"OrganizationName"`
 
 	// 姓名,最大长度50个字符
 	Name *string `json:"Name,omitempty" name:"Name"`
@@ -861,8 +855,11 @@ type CreateSchemeUrlRequestParams struct {
 	// 手机号，大陆手机号11位
 	Mobile *string `json:"Mobile,omitempty" name:"Mobile"`
 
-	// 企业名称
-	OrganizationName *string `json:"OrganizationName,omitempty" name:"OrganizationName"`
+	// 链接类型
+	// HTTP：跳转电子签小程序的http_url，
+	// APP：第三方APP或小程序跳转电子签小程序的path。
+	// 默认为HTTP类型
+	EndPoint *string `json:"EndPoint,omitempty" name:"EndPoint"`
 
 	// 签署流程编号 (PathType=1时必传)
 	FlowId *string `json:"FlowId,omitempty" name:"FlowId"`
@@ -872,22 +869,19 @@ type CreateSchemeUrlRequestParams struct {
 
 	// 是否自动回跳 true：是， false：否。该参数只针对"APP" 类型的签署链接有效
 	AutoJumpBack *bool `json:"AutoJumpBack,omitempty" name:"AutoJumpBack"`
+
+	// 应用相关信息
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 }
 
 type CreateSchemeUrlRequest struct {
 	*tchttp.BaseRequest
 	
-	// 调用方用户信息，参考通用结构
+	// 调用方用户信息，userId 必填
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 
-	// 应用相关信息
-	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
-
-	// 链接类型
-	// HTTP：跳转电子签小程序的http_url，
-	// APP：第三方APP或小程序跳转电子签小程序的path。
-	// 默认为HTTP类型
-	EndPoint *string `json:"EndPoint,omitempty" name:"EndPoint"`
+	// 企业名称
+	OrganizationName *string `json:"OrganizationName,omitempty" name:"OrganizationName"`
 
 	// 姓名,最大长度50个字符
 	Name *string `json:"Name,omitempty" name:"Name"`
@@ -895,8 +889,11 @@ type CreateSchemeUrlRequest struct {
 	// 手机号，大陆手机号11位
 	Mobile *string `json:"Mobile,omitempty" name:"Mobile"`
 
-	// 企业名称
-	OrganizationName *string `json:"OrganizationName,omitempty" name:"OrganizationName"`
+	// 链接类型
+	// HTTP：跳转电子签小程序的http_url，
+	// APP：第三方APP或小程序跳转电子签小程序的path。
+	// 默认为HTTP类型
+	EndPoint *string `json:"EndPoint,omitempty" name:"EndPoint"`
 
 	// 签署流程编号 (PathType=1时必传)
 	FlowId *string `json:"FlowId,omitempty" name:"FlowId"`
@@ -906,6 +903,9 @@ type CreateSchemeUrlRequest struct {
 
 	// 是否自动回跳 true：是， false：否。该参数只针对"APP" 类型的签署链接有效
 	AutoJumpBack *bool `json:"AutoJumpBack,omitempty" name:"AutoJumpBack"`
+
+	// 应用相关信息
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 }
 
 func (r *CreateSchemeUrlRequest) ToJsonString() string {
@@ -921,14 +921,14 @@ func (r *CreateSchemeUrlRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "Operator")
-	delete(f, "Agent")
-	delete(f, "EndPoint")
+	delete(f, "OrganizationName")
 	delete(f, "Name")
 	delete(f, "Mobile")
-	delete(f, "OrganizationName")
+	delete(f, "EndPoint")
 	delete(f, "FlowId")
 	delete(f, "PathType")
 	delete(f, "AutoJumpBack")
+	delete(f, "Agent")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateSchemeUrlRequest has unknown keys!", "")
 	}
@@ -1102,11 +1102,11 @@ func (r *DescribeFileUrlsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeFlowBriefsRequestParams struct {
+	// 调用方用户信息，userId 必填
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
 	// 需要查询的流程ID列表
 	FlowIds []*string `json:"FlowIds,omitempty" name:"FlowIds"`
-
-	// 操作人信息
-	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 
 	// 应用相关信息
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
@@ -1115,11 +1115,11 @@ type DescribeFlowBriefsRequestParams struct {
 type DescribeFlowBriefsRequest struct {
 	*tchttp.BaseRequest
 	
+	// 调用方用户信息，userId 必填
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
 	// 需要查询的流程ID列表
 	FlowIds []*string `json:"FlowIds,omitempty" name:"FlowIds"`
-
-	// 操作人信息
-	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 
 	// 应用相关信息
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
@@ -1137,8 +1137,8 @@ func (r *DescribeFlowBriefsRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	delete(f, "FlowIds")
 	delete(f, "Operator")
+	delete(f, "FlowIds")
 	delete(f, "Agent")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeFlowBriefsRequest has unknown keys!", "")
@@ -1173,51 +1173,51 @@ func (r *DescribeFlowBriefsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeFlowTemplatesRequestParams struct {
-	// 操作人信息
+	// 调用方用户信息，userId 必填
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
-
-	// 查询偏移位置，默认0
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
-
-	// 查询个数，默认20，最大100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 搜索条件，具体参考Filter结构体。本接口取值：template-id：按照【 **模板唯一标识** 】进行过滤
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
-	// 应用相关信息
-	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+	// 查询个数，默认20，最大100
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 查询偏移位置，默认0
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 查询内容：0-模板列表及详情（默认），1-仅模板列表
+	ContentType *int64 `json:"ContentType,omitempty" name:"ContentType"`
 
 	// 暂未开放
 	GenerateSource *uint64 `json:"GenerateSource,omitempty" name:"GenerateSource"`
 
-	// 查询内容：0-模板列表及详情（默认），1-仅模板列表
-	ContentType *int64 `json:"ContentType,omitempty" name:"ContentType"`
+	// 应用相关信息
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 }
 
 type DescribeFlowTemplatesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 操作人信息
+	// 调用方用户信息，userId 必填
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
-
-	// 查询偏移位置，默认0
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
-
-	// 查询个数，默认20，最大100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 搜索条件，具体参考Filter结构体。本接口取值：template-id：按照【 **模板唯一标识** 】进行过滤
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
-	// 应用相关信息
-	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+	// 查询个数，默认20，最大100
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 查询偏移位置，默认0
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 查询内容：0-模板列表及详情（默认），1-仅模板列表
+	ContentType *int64 `json:"ContentType,omitempty" name:"ContentType"`
 
 	// 暂未开放
 	GenerateSource *uint64 `json:"GenerateSource,omitempty" name:"GenerateSource"`
 
-	// 查询内容：0-模板列表及详情（默认），1-仅模板列表
-	ContentType *int64 `json:"ContentType,omitempty" name:"ContentType"`
+	// 应用相关信息
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 }
 
 func (r *DescribeFlowTemplatesRequest) ToJsonString() string {
@@ -1233,12 +1233,12 @@ func (r *DescribeFlowTemplatesRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "Operator")
-	delete(f, "Offset")
-	delete(f, "Limit")
 	delete(f, "Filters")
-	delete(f, "Agent")
-	delete(f, "GenerateSource")
+	delete(f, "Limit")
+	delete(f, "Offset")
 	delete(f, "ContentType")
+	delete(f, "GenerateSource")
+	delete(f, "Agent")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeFlowTemplatesRequest has unknown keys!", "")
 	}
@@ -1506,33 +1506,33 @@ type SignQrCode struct {
 
 // Predefined struct for user
 type StartFlowRequestParams struct {
+	// 调用方用户信息，userId 必填
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
 	// 签署流程编号，由CreateFlow接口返回
 	FlowId *string `json:"FlowId,omitempty" name:"FlowId"`
 
-	// 用户信息
-	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+	// 客户端Token，保持接口幂等性,最大长度64个字符
+	ClientToken *string `json:"ClientToken,omitempty" name:"ClientToken"`
 
 	// 应用相关信息
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
-
-	// 客户端Token，保持接口幂等性,最大长度64个字符
-	ClientToken *string `json:"ClientToken,omitempty" name:"ClientToken"`
 }
 
 type StartFlowRequest struct {
 	*tchttp.BaseRequest
 	
+	// 调用方用户信息，userId 必填
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
 	// 签署流程编号，由CreateFlow接口返回
 	FlowId *string `json:"FlowId,omitempty" name:"FlowId"`
 
-	// 用户信息
-	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+	// 客户端Token，保持接口幂等性,最大长度64个字符
+	ClientToken *string `json:"ClientToken,omitempty" name:"ClientToken"`
 
 	// 应用相关信息
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
-
-	// 客户端Token，保持接口幂等性,最大长度64个字符
-	ClientToken *string `json:"ClientToken,omitempty" name:"ClientToken"`
 }
 
 func (r *StartFlowRequest) ToJsonString() string {
@@ -1547,10 +1547,10 @@ func (r *StartFlowRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	delete(f, "FlowId")
 	delete(f, "Operator")
-	delete(f, "Agent")
+	delete(f, "FlowId")
 	delete(f, "ClientToken")
+	delete(f, "Agent")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StartFlowRequest has unknown keys!", "")
 	}

@@ -66,6 +66,9 @@ type DBInstanceDetail struct {
 	// 分布式类型的实例的分片数
 	ShardNum *int64 `json:"ShardNum,omitempty" name:"ShardNum"`
 
+	// 地域
+	Region *string `json:"Region,omitempty" name:"Region"`
+
 	// 可用区
 	Zone *string `json:"Zone,omitempty" name:"Zone"`
 
@@ -77,6 +80,9 @@ type DBInstanceDetail struct {
 
 	// DB引擎，MySQL,Percona,MariaDB
 	DbEngine *string `json:"DbEngine,omitempty" name:"DbEngine"`
+
+	// 创建时间
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
 }
 
 // Predefined struct for user
@@ -261,10 +267,10 @@ type DescribeInstanceDetail struct {
 	// 产品ID, 0:CDB, 1:TDSQL
 	ProductId *int64 `json:"ProductId,omitempty" name:"ProductId"`
 
-	// 集群类型, 0:公有云, 1:金融围笼
+	// 集群类型, 0:公有云, 1:金融围笼, 2:CDC集群
 	Type *int64 `json:"Type,omitempty" name:"Type"`
 
-	// 主机类型, 0:物理机, 1:cvm本地盘, 2:cvm云盘
+	// 主机类型, 0:物理机, 1:CVM机型, 2:CDC机型
 	HostType *int64 `json:"HostType,omitempty" name:"HostType"`
 
 	// 自动续费标志, 0:未设置, 1:自动续费, 2:到期不续费
@@ -321,9 +327,13 @@ type DescribeInstanceDetail struct {
 	// 可用区
 	Zone *string `json:"Zone,omitempty" name:"Zone"`
 
-	// 围笼ID
+	// 金融围笼ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FenceId *string `json:"FenceId,omitempty" name:"FenceId"`
+
+	// 所属集群ID(默认集群为空)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 }
 
 // Predefined struct for user
@@ -432,9 +442,13 @@ type DescribeInstanceDetailResponseParams struct {
 	// 可用区
 	Zone *string `json:"Zone,omitempty" name:"Zone"`
 
-	// 围笼ID
+	// 金融围笼ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FenceId *string `json:"FenceId,omitempty" name:"FenceId"`
+
+	// 所属集群ID(默认集群为空)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -484,6 +498,9 @@ type DescribeInstanceListRequestParams struct {
 
 	// 按实例状态过滤, -1:已隔离, 0:创建中, 1:运行中, 2:扩容中, 3:删除中
 	Status []*int64 `json:"Status,omitempty" name:"Status"`
+
+	// 按所属集群ID过滤
+	ClusterId []*string `json:"ClusterId,omitempty" name:"ClusterId"`
 }
 
 type DescribeInstanceListRequest struct {
@@ -515,6 +532,9 @@ type DescribeInstanceListRequest struct {
 
 	// 按实例状态过滤, -1:已隔离, 0:创建中, 1:运行中, 2:扩容中, 3:删除中
 	Status []*int64 `json:"Status,omitempty" name:"Status"`
+
+	// 按所属集群ID过滤
+	ClusterId []*string `json:"ClusterId,omitempty" name:"ClusterId"`
 }
 
 func (r *DescribeInstanceListRequest) ToJsonString() string {
@@ -538,6 +558,7 @@ func (r *DescribeInstanceListRequest) FromJsonString(s string) error {
 	delete(f, "InstanceName")
 	delete(f, "FenceId")
 	delete(f, "Status")
+	delete(f, "ClusterId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeInstanceListRequest has unknown keys!", "")
 	}

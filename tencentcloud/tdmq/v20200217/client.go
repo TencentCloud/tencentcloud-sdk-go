@@ -5124,7 +5124,7 @@ func NewReceiveMessageResponse() (response *ReceiveMessageResponse) {
 }
 
 // ReceiveMessage
-// 接收发送到指定 topic 中的消息，当 Topic 中没有消息但还去尝试调用该接口时，会抛出 ReceiveTimeout 的异常。
+// 当前 ReceiveMessage 接口只支持 Partitioned 类型的 Topic。该接口用于接收发送到指定 Partitioned Topic 中的消息，当 Partitioned Topic 中没有消息但还去尝试调用该接口时，会抛出 ReceiveTimeout 的异常。
 //
 // 
 //
@@ -5181,7 +5181,7 @@ func (c *Client) ReceiveMessage(request *ReceiveMessageRequest) (response *Recei
 }
 
 // ReceiveMessage
-// 接收发送到指定 topic 中的消息，当 Topic 中没有消息但还去尝试调用该接口时，会抛出 ReceiveTimeout 的异常。
+// 当前 ReceiveMessage 接口只支持 Partitioned 类型的 Topic。该接口用于接收发送到指定 Partitioned Topic 中的消息，当 Partitioned Topic 中没有消息但还去尝试调用该接口时，会抛出 ReceiveTimeout 的异常。
 //
 // 
 //

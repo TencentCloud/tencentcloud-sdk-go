@@ -317,6 +317,10 @@ type BGPIPInstance struct {
 	// 注意：当资产实例不是全力防护套餐包的实例时，此字段为null
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AnycastOutPackRelation *AnycastOutPackRelation `json:"AnycastOutPackRelation,omitempty" name:"AnycastOutPackRelation"`
+
+	// 资源实例版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceVersion *uint64 `json:"InstanceVersion,omitempty" name:"InstanceVersion"`
 }
 
 type BGPIPInstanceSpecification struct {
@@ -6793,6 +6797,10 @@ type L4RuleSource struct {
 	// 8000
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Port *uint64 `json:"Port,omitempty" name:"Port"`
+
+	// 备份源站，1: 备份源站，0: 普通源站
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Backup *uint64 `json:"Backup,omitempty" name:"Backup"`
 }
 
 type L7RuleEntry struct {
@@ -6892,6 +6900,24 @@ type L7RuleHealth struct {
 
 	// 健康检查判定正常状态码，1xx =1, 2xx=2, 3xx=4, 4xx=8,5xx=16，多个状态码值加和
 	StatusCode *uint64 `json:"StatusCode,omitempty" name:"StatusCode"`
+
+	// 是否同时下发http和https规则健康检查配置
+	ProtocolFlag *uint64 `json:"ProtocolFlag,omitempty" name:"ProtocolFlag"`
+
+	// 被动探测开关，=1表示开启；=0表示关闭
+	PassiveEnable *uint64 `json:"PassiveEnable,omitempty" name:"PassiveEnable"`
+
+	// 被动探测不健康屏蔽时间
+	BlockInter *uint64 `json:"BlockInter,omitempty" name:"BlockInter"`
+
+	// 被动探测不健康统计间隔
+	FailedCountInter *uint64 `json:"FailedCountInter,omitempty" name:"FailedCountInter"`
+
+	// 被动探测不健康阈值
+	FailedThreshold *uint64 `json:"FailedThreshold,omitempty" name:"FailedThreshold"`
+
+	// 被动探测判定正常状态码，1xx =1, 2xx=2, 3xx=4, 4xx=8,5xx=16，多个状态码值加和
+	PassiveStatusCode *uint64 `json:"PassiveStatusCode,omitempty" name:"PassiveStatusCode"`
 }
 
 type Layer4Rule struct {

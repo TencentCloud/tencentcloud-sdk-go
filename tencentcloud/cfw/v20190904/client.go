@@ -358,7 +358,7 @@ func NewCreateNatFwInstanceResponse() (response *CreateNatFwInstanceResponse) {
 }
 
 // CreateNatFwInstance
-// 创建防火墙实例
+// 创建NAT防火墙实例（Region参数必填）
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -384,7 +384,7 @@ func (c *Client) CreateNatFwInstance(request *CreateNatFwInstanceRequest) (respo
 }
 
 // CreateNatFwInstance
-// 创建防火墙实例
+// 创建NAT防火墙实例（Region参数必填）
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"

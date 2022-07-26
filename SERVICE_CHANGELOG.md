@@ -1,10 +1,95 @@
 # 本版本更新包含以下内容：
 
-## 弹性伸缩(as) 版本：2018-04-19
+## DDoS 防护(antiddos) 版本：2020-03-09
 
-### 第 53 次发布
+### 第 38 次发布
 
-发布时间：2022-07-26 06:06:18
+发布时间：2022-07-27 06:03:19
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [BGPIPInstance](https://cloud.tencent.com/document/api/1021/57582#BGPIPInstance)
+
+	* 新增成员：InstanceVersion
+
+* [L4RuleSource](https://cloud.tencent.com/document/api/1021/57582#L4RuleSource)
+
+	* 新增成员：Backup
+
+* [L7RuleHealth](https://cloud.tencent.com/document/api/1021/57582#L7RuleHealth)
+
+	* 新增成员：ProtocolFlag, PassiveEnable, BlockInter, FailedCountInter, FailedThreshold, PassiveStatusCode
+
+
+
+
+## 品牌经营管家(bma) 版本：2021-06-24
+
+### 第 1 次发布
+
+发布时间：2022-07-26 14:16:47
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateCRBlock](https://cloud.tencent.com/document/api/1296/77824)
+* [CreateCRCompanyVerify](https://cloud.tencent.com/document/api/1296/77823)
+* [CreateCRRight](https://cloud.tencent.com/document/api/1296/77822)
+* [DescribeCRWorkInfo](https://cloud.tencent.com/document/api/1296/77821)
+
+
+
+## 企业收付平台(cpdp) 版本：2019-08-20
+
+### 第 78 次发布
+
+发布时间：2022-07-27 06:06:57
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [AmountBeforeTaxResult](https://cloud.tencent.com/document/api/1122/40683#AmountBeforeTaxResult)
+
+	* 新增成员：AmountBeforeTaxWithTwoDigitPrecision
+
+
+
+
+## 数据接入平台(dataintegration) 版本：2022-06-13
+
+### 第 1 次发布
+
+发布时间：2022-07-26 15:32:15
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [SendMessage](https://cloud.tencent.com/document/api/1591/77844)
+
+新增数据结构：
+
+* [BatchContent](https://cloud.tencent.com/document/api/1591/77845#BatchContent)
+
+
+
+## 云数据库独享集群(dbdc) 版本：2020-10-29
+
+### 第 3 次发布
+
+发布时间：2022-07-27 06:08:38
 
 本次发布包含了以下内容：
 
@@ -12,107 +97,33 @@
 
 修改接口：
 
-* [CreateLaunchConfiguration](https://cloud.tencent.com/document/api/377/20447)
+* [DescribeInstanceDetail](https://cloud.tencent.com/document/api/1322/74752)
 
-	* 新增入参：Tags
+	* 新增出参：ClusterId
 
+* [DescribeInstanceList](https://cloud.tencent.com/document/api/1322/74751)
 
-新增数据结构：
+	* 新增入参：ClusterId
 
-* [InvocationResult](https://cloud.tencent.com/document/api/377/20453#InvocationResult)
 
 修改数据结构：
 
-* [Activity](https://cloud.tencent.com/document/api/377/20453#Activity)
+* [DBInstanceDetail](https://cloud.tencent.com/document/api/1322/74754#DBInstanceDetail)
 
-	* 新增成员：InvocationResultSet
+	* 新增成员：Region, CreateTime
 
-* [LaunchConfiguration](https://cloud.tencent.com/document/api/377/20453#LaunchConfiguration)
+* [DescribeInstanceDetail](https://cloud.tencent.com/document/api/1322/74754#DescribeInstanceDetail)
 
-	* 新增成员：Tags
-
-
-
-
-## 消息队列 Ckafka(ckafka) 版本：2019-08-19
-
-### 第 47 次发布
-
-发布时间：2022-07-26 06:10:15
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DeleteConnectResource](https://cloud.tencent.com/document/api/597/77800)
-* [DeleteDatahubTask](https://cloud.tencent.com/document/api/597/77799)
-* [DeleteDatahubTopic](https://cloud.tencent.com/document/api/597/77803)
-* [DescribeConnectResource](https://cloud.tencent.com/document/api/597/77798)
-* [DescribeConnectResources](https://cloud.tencent.com/document/api/597/77797)
-* [DescribeDatahubGroupOffsets](https://cloud.tencent.com/document/api/597/77792)
-* [DescribeDatahubTask](https://cloud.tencent.com/document/api/597/77796)
-* [DescribeDatahubTasks](https://cloud.tencent.com/document/api/597/77795)
-* [FetchDatahubMessageByOffset](https://cloud.tencent.com/document/api/597/77802)
-* [FetchLatestDatahubMessageList](https://cloud.tencent.com/document/api/597/77801)
-* [ModifyConnectResource](https://cloud.tencent.com/document/api/597/77794)
-* [ModifyDatahubTask](https://cloud.tencent.com/document/api/597/77793)
-
-新增数据结构：
-
-* [ClickHouseModifyConnectParam](https://cloud.tencent.com/document/api/597/40861#ClickHouseModifyConnectParam)
-* [Connection](https://cloud.tencent.com/document/api/597/40861#Connection)
-* [DatahubTaskIdRes](https://cloud.tencent.com/document/api/597/40861#DatahubTaskIdRes)
-* [DatahubTaskInfo](https://cloud.tencent.com/document/api/597/40861#DatahubTaskInfo)
-* [DescribeConnectResource](https://cloud.tencent.com/document/api/597/40861#DescribeConnectResource)
-* [DescribeConnectResourceResp](https://cloud.tencent.com/document/api/597/40861#DescribeConnectResourceResp)
-* [DescribeConnectResourcesResp](https://cloud.tencent.com/document/api/597/40861#DescribeConnectResourcesResp)
-* [DescribeDatahubTaskRes](https://cloud.tencent.com/document/api/597/40861#DescribeDatahubTaskRes)
-* [DescribeDatahubTasksRes](https://cloud.tencent.com/document/api/597/40861#DescribeDatahubTasksRes)
-* [DtsModifyConnectParam](https://cloud.tencent.com/document/api/597/40861#DtsModifyConnectParam)
-* [EsModifyConnectParam](https://cloud.tencent.com/document/api/597/40861#EsModifyConnectParam)
-* [MariaDBModifyConnectParam](https://cloud.tencent.com/document/api/597/40861#MariaDBModifyConnectParam)
-* [MongoDBModifyConnectParam](https://cloud.tencent.com/document/api/597/40861#MongoDBModifyConnectParam)
-* [MySQLModifyConnectParam](https://cloud.tencent.com/document/api/597/40861#MySQLModifyConnectParam)
-* [PostgreSQLModifyConnectParam](https://cloud.tencent.com/document/api/597/40861#PostgreSQLModifyConnectParam)
-* [SQLServerModifyConnectParam](https://cloud.tencent.com/document/api/597/40861#SQLServerModifyConnectParam)
-
-修改数据结构：
-
-* [TdwParam](https://cloud.tencent.com/document/api/597/40861#TdwParam)
-
-	* 新增成员：IsDomestic
+	* 新增成员：ClusterId
 
 
 
 
-## 云原生数据库 TDSQL-C(cynosdb) 版本：2019-01-07
+## 全球应用加速(gaap) 版本：2018-05-29
 
-### 第 21 次发布
+### 第 33 次发布
 
-发布时间：2022-07-26 06:12:54
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DescribeParamTemplates](https://cloud.tencent.com/document/api/1003/77805)
-* [InquirePriceRenew](https://cloud.tencent.com/document/api/1003/77804)
-
-新增数据结构：
-
-* [ParamTemplateListInfo](https://cloud.tencent.com/document/api/1003/48097#ParamTemplateListInfo)
-
-
-
-## 流计算 Oceanus(oceanus) 版本：2019-04-22
-
-### 第 23 次发布
-
-发布时间：2022-07-26 06:19:20
+发布时间：2022-07-27 06:10:24
 
 本次发布包含了以下内容：
 
@@ -120,31 +131,52 @@
 
 修改接口：
 
-* [CopyJobs](https://cloud.tencent.com/document/api/849/77740)
+* [CreateUDPListeners](https://cloud.tencent.com/document/api/608/37004)
 
-	* 新增入参：JobItems, WorkSpaceId
+	* 新增入参：DelayLoop, ConnectTimeout, HealthyThreshold, UnhealthyThreshold, FailoverSwitch, HealthCheck, CheckType, CheckPort, ContextType, SendContext, RecvContext
 
-	* 新增出参：SuccessCount, FailCount, CopyJobsResults
+* [ModifyUDPListenerAttribute](https://cloud.tencent.com/document/api/608/36994)
 
-* [CreateFolder](https://cloud.tencent.com/document/api/849/77739)
-
-	* 新增入参：FolderName, ParentId
-
-	* 新增出参：FolderId
+	* 新增入参：DelayLoop, ConnectTimeout, HealthyThreshold, UnhealthyThreshold, FailoverSwitch, HealthCheck, CheckType, CheckPort, ContextType, SendContext, RecvContext
 
 
-新增数据结构：
+修改数据结构：
 
-* [CopyJobItem](https://cloud.tencent.com/document/api/849/52010#CopyJobItem)
-* [CopyJobResult](https://cloud.tencent.com/document/api/849/52010#CopyJobResult)
+* [BindRealServer](https://cloud.tencent.com/document/api/608/37023#BindRealServer)
+
+	* 新增成员：RealServerFailoverRole
+
+* [UDPListener](https://cloud.tencent.com/document/api/608/37023#UDPListener)
+
+	* 新增成员：DelayLoop, ConnectTimeout, HealthyThreshold, UnhealthyThreshold, FailoverSwitch, HealthCheck, CheckType, CheckPort, ContextType, SendContext, RecvContext
 
 
 
-## 容器服务(tke) 版本：2018-05-25
 
-### 第 112 次发布
+## 云数据库 MariaDB(mariadb) 版本：2017-03-12
 
-发布时间：2022-07-26 06:23:55
+### 第 40 次发布
+
+发布时间：2022-07-27 06:13:02
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateDedicatedClusterDBInstance](https://cloud.tencent.com/document/api/237/61370)
+
+	* 新增入参：RollbackInstanceId, RollbackTime
+
+
+
+
+## 云数据库 Redis(redis) 版本：2018-04-12
+
+### 第 52 次发布
+
+发布时间：2022-07-27 06:14:34
 
 本次发布包含了以下内容：
 
@@ -152,10 +184,50 @@
 
 新增接口：
 
-* [CreateEdgeLogConfig](https://cloud.tencent.com/document/api/#/#)
-* [DescribeClusterEndpoints](https://cloud.tencent.com/document/api/#/#)
-* [InstallEdgeLogAgent](https://cloud.tencent.com/document/api/#/#)
-* [UninstallEdgeLogAgent](https://cloud.tencent.com/document/api/#/#)
+* [ChangeInstanceRole](https://cloud.tencent.com/document/api/239/77863)
+* [ChangeMasterInstance](https://cloud.tencent.com/document/api/239/77862)
+
+
+
+## T-Sec-安心平台(RP)(trp) 版本：2021-05-15
+
+### 第 2 次发布
+
+发布时间：2022-07-27 06:17:54
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateCodeBatch](https://cloud.tencent.com/document/api/1458/75029)
+
+	* 新增入参：MpTpl
+
+* [ModifyCodeBatch](https://cloud.tencent.com/document/api/1458/75007)
+
+	* 新增入参：MerchantId, ProductId, Remark
+
+
+
+
+## 腾讯微服务平台 TSF(tsf) 版本：2018-03-26
+
+### 第 78 次发布
+
+发布时间：2022-07-27 06:18:08
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeMicroservice](https://cloud.tencent.com/document/api/649/36085)
+
+	* 新增入参：Filters
+
 
 
 
@@ -1552,6 +1624,29 @@
 
 
 ## DDoS 防护(antiddos) 版本：2020-03-09
+
+### 第 38 次发布
+
+发布时间：2022-07-27 06:03:19
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [BGPIPInstance](https://cloud.tencent.com/document/api/1021/57582#BGPIPInstance)
+
+	* 新增成员：InstanceVersion
+
+* [L4RuleSource](https://cloud.tencent.com/document/api/1021/57582#L4RuleSource)
+
+	* 新增成员：Backup
+
+* [L7RuleHealth](https://cloud.tencent.com/document/api/1021/57582#L7RuleHealth)
+
+	* 新增成员：ProtocolFlag, PassiveEnable, BlockInter, FailedCountInter, FailedThreshold, PassiveStatusCode
+
 
 ### 第 37 次发布
 
@@ -3499,7 +3594,7 @@
 
 新增数据结构：
 
-* [[InvocationResult](https://cloud.tencent.com/document/api/377/20453#InvocationResult)](https://cloud.tencent.com/document/api/377/20453#[InvocationResult](https://cloud.tencent.com/document/api/377/20453#InvocationResult))
+* [InvocationResult](https://cloud.tencent.com/document/api/377/20453#InvocationResult)
 
 修改数据结构：
 
@@ -7471,6 +7566,26 @@
 * [TaskInfo](https://cloud.tencent.com/document/api/386/18649#TaskInfo)
 * [TaskOperationLog](https://cloud.tencent.com/document/api/386/18649#TaskOperationLog)
 * [TaskType](https://cloud.tencent.com/document/api/386/18649#TaskType)
+
+
+
+
+## 品牌经营管家(bma) 版本：2021-06-24
+
+### 第 1 次发布
+
+发布时间：2022-07-26 14:16:47
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateCRBlock](https://cloud.tencent.com/document/api/1296/77824)](https://cloud.tencent.com/document/api/#/#)
+* [[CreateCRCompanyVerify](https://cloud.tencent.com/document/api/1296/77823)](https://cloud.tencent.com/document/api/#/#)
+* [[CreateCRRight](https://cloud.tencent.com/document/api/1296/77822)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeCRWorkInfo](https://cloud.tencent.com/document/api/1296/77821)](https://cloud.tencent.com/document/api/#/#)
 
 
 
@@ -16874,37 +16989,37 @@
 
 新增接口：
 
-* [[DeleteConnectResource](https://cloud.tencent.com/document/api/597/77800)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteDatahubTask](https://cloud.tencent.com/document/api/597/77799)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteDatahubTopic](https://cloud.tencent.com/document/api/597/77803)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeConnectResource](https://cloud.tencent.com/document/api/597/77798)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeConnectResources](https://cloud.tencent.com/document/api/597/77797)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeDatahubGroupOffsets](https://cloud.tencent.com/document/api/597/77792)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeDatahubTask](https://cloud.tencent.com/document/api/597/77796)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeDatahubTasks](https://cloud.tencent.com/document/api/597/77795)](https://cloud.tencent.com/document/api/#/#)
-* [[FetchDatahubMessageByOffset](https://cloud.tencent.com/document/api/597/77802)](https://cloud.tencent.com/document/api/#/#)
-* [[FetchLatestDatahubMessageList](https://cloud.tencent.com/document/api/597/77801)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyConnectResource](https://cloud.tencent.com/document/api/597/77794)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyDatahubTask](https://cloud.tencent.com/document/api/597/77793)](https://cloud.tencent.com/document/api/#/#)
+* [DeleteConnectResource](https://cloud.tencent.com/document/api/597/77800)
+* [DeleteDatahubTask](https://cloud.tencent.com/document/api/597/77799)
+* [DeleteDatahubTopic](https://cloud.tencent.com/document/api/597/77803)
+* [DescribeConnectResource](https://cloud.tencent.com/document/api/597/77798)
+* [DescribeConnectResources](https://cloud.tencent.com/document/api/597/77797)
+* [DescribeDatahubGroupOffsets](https://cloud.tencent.com/document/api/597/77792)
+* [DescribeDatahubTask](https://cloud.tencent.com/document/api/597/77796)
+* [DescribeDatahubTasks](https://cloud.tencent.com/document/api/597/77795)
+* [FetchDatahubMessageByOffset](https://cloud.tencent.com/document/api/597/77802)
+* [FetchLatestDatahubMessageList](https://cloud.tencent.com/document/api/597/77801)
+* [ModifyConnectResource](https://cloud.tencent.com/document/api/597/77794)
+* [ModifyDatahubTask](https://cloud.tencent.com/document/api/597/77793)
 
 新增数据结构：
 
-* [[ClickHouseModifyConnectParam](https://cloud.tencent.com/document/api/597/40861#ClickHouseModifyConnectParam)](https://cloud.tencent.com/document/api/597/40861#[ClickHouseModifyConnectParam](https://cloud.tencent.com/document/api/597/40861#ClickHouseModifyConnectParam))
-* [[Connection](https://cloud.tencent.com/document/api/597/40861#Connection)](https://cloud.tencent.com/document/api/597/40861#[Connection](https://cloud.tencent.com/document/api/597/40861#Connection))
-* [[DatahubTaskIdRes](https://cloud.tencent.com/document/api/597/40861#DatahubTaskIdRes)](https://cloud.tencent.com/document/api/597/40861#[DatahubTaskIdRes](https://cloud.tencent.com/document/api/597/40861#DatahubTaskIdRes))
-* [[DatahubTaskInfo](https://cloud.tencent.com/document/api/597/40861#DatahubTaskInfo)](https://cloud.tencent.com/document/api/597/40861#[DatahubTaskInfo](https://cloud.tencent.com/document/api/597/40861#DatahubTaskInfo))
-* [[DescribeConnectResource](https://cloud.tencent.com/document/api/597/40861#DescribeConnectResource)](https://cloud.tencent.com/document/api/597/40861#[DescribeConnectResource](https://cloud.tencent.com/document/api/597/40861#DescribeConnectResource))
-* [[DescribeConnectResourceResp](https://cloud.tencent.com/document/api/597/40861#DescribeConnectResourceResp)](https://cloud.tencent.com/document/api/597/40861#[DescribeConnectResourceResp](https://cloud.tencent.com/document/api/597/40861#DescribeConnectResourceResp))
-* [[DescribeConnectResourcesResp](https://cloud.tencent.com/document/api/597/40861#DescribeConnectResourcesResp)](https://cloud.tencent.com/document/api/597/40861#[DescribeConnectResourcesResp](https://cloud.tencent.com/document/api/597/40861#DescribeConnectResourcesResp))
-* [[DescribeDatahubTaskRes](https://cloud.tencent.com/document/api/597/40861#DescribeDatahubTaskRes)](https://cloud.tencent.com/document/api/597/40861#[DescribeDatahubTaskRes](https://cloud.tencent.com/document/api/597/40861#DescribeDatahubTaskRes))
-* [[DescribeDatahubTasksRes](https://cloud.tencent.com/document/api/597/40861#DescribeDatahubTasksRes)](https://cloud.tencent.com/document/api/597/40861#[DescribeDatahubTasksRes](https://cloud.tencent.com/document/api/597/40861#DescribeDatahubTasksRes))
-* [[DtsModifyConnectParam](https://cloud.tencent.com/document/api/597/40861#DtsModifyConnectParam)](https://cloud.tencent.com/document/api/597/40861#[DtsModifyConnectParam](https://cloud.tencent.com/document/api/597/40861#DtsModifyConnectParam))
-* [[EsModifyConnectParam](https://cloud.tencent.com/document/api/597/40861#EsModifyConnectParam)](https://cloud.tencent.com/document/api/597/40861#[EsModifyConnectParam](https://cloud.tencent.com/document/api/597/40861#EsModifyConnectParam))
-* [[MariaDBModifyConnectParam](https://cloud.tencent.com/document/api/597/40861#MariaDBModifyConnectParam)](https://cloud.tencent.com/document/api/597/40861#[MariaDBModifyConnectParam](https://cloud.tencent.com/document/api/597/40861#MariaDBModifyConnectParam))
-* [[MongoDBModifyConnectParam](https://cloud.tencent.com/document/api/597/40861#MongoDBModifyConnectParam)](https://cloud.tencent.com/document/api/597/40861#[MongoDBModifyConnectParam](https://cloud.tencent.com/document/api/597/40861#MongoDBModifyConnectParam))
-* [[MySQLModifyConnectParam](https://cloud.tencent.com/document/api/597/40861#MySQLModifyConnectParam)](https://cloud.tencent.com/document/api/597/40861#[MySQLModifyConnectParam](https://cloud.tencent.com/document/api/597/40861#MySQLModifyConnectParam))
-* [[PostgreSQLModifyConnectParam](https://cloud.tencent.com/document/api/597/40861#PostgreSQLModifyConnectParam)](https://cloud.tencent.com/document/api/597/40861#[PostgreSQLModifyConnectParam](https://cloud.tencent.com/document/api/597/40861#PostgreSQLModifyConnectParam))
-* [[SQLServerModifyConnectParam](https://cloud.tencent.com/document/api/597/40861#SQLServerModifyConnectParam)](https://cloud.tencent.com/document/api/597/40861#[SQLServerModifyConnectParam](https://cloud.tencent.com/document/api/597/40861#SQLServerModifyConnectParam))
+* [ClickHouseModifyConnectParam](https://cloud.tencent.com/document/api/597/40861#ClickHouseModifyConnectParam)
+* [Connection](https://cloud.tencent.com/document/api/597/40861#Connection)
+* [DatahubTaskIdRes](https://cloud.tencent.com/document/api/597/40861#DatahubTaskIdRes)
+* [DatahubTaskInfo](https://cloud.tencent.com/document/api/597/40861#DatahubTaskInfo)
+* [DescribeConnectResource](https://cloud.tencent.com/document/api/597/40861#DescribeConnectResource)
+* [DescribeConnectResourceResp](https://cloud.tencent.com/document/api/597/40861#DescribeConnectResourceResp)
+* [DescribeConnectResourcesResp](https://cloud.tencent.com/document/api/597/40861#DescribeConnectResourcesResp)
+* [DescribeDatahubTaskRes](https://cloud.tencent.com/document/api/597/40861#DescribeDatahubTaskRes)
+* [DescribeDatahubTasksRes](https://cloud.tencent.com/document/api/597/40861#DescribeDatahubTasksRes)
+* [DtsModifyConnectParam](https://cloud.tencent.com/document/api/597/40861#DtsModifyConnectParam)
+* [EsModifyConnectParam](https://cloud.tencent.com/document/api/597/40861#EsModifyConnectParam)
+* [MariaDBModifyConnectParam](https://cloud.tencent.com/document/api/597/40861#MariaDBModifyConnectParam)
+* [MongoDBModifyConnectParam](https://cloud.tencent.com/document/api/597/40861#MongoDBModifyConnectParam)
+* [MySQLModifyConnectParam](https://cloud.tencent.com/document/api/597/40861#MySQLModifyConnectParam)
+* [PostgreSQLModifyConnectParam](https://cloud.tencent.com/document/api/597/40861#PostgreSQLModifyConnectParam)
+* [SQLServerModifyConnectParam](https://cloud.tencent.com/document/api/597/40861#SQLServerModifyConnectParam)
 
 修改数据结构：
 
@@ -21847,6 +21962,21 @@
 
 
 ## 企业收付平台(cpdp) 版本：2019-08-20
+
+### 第 78 次发布
+
+发布时间：2022-07-27 06:06:57
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [AmountBeforeTaxResult](https://cloud.tencent.com/document/api/1122/40683#AmountBeforeTaxResult)
+
+	* 新增成员：AmountBeforeTaxWithTwoDigitPrecision
+
 
 ### 第 77 次发布
 
@@ -27515,12 +27645,12 @@
 
 新增接口：
 
-* [[DescribeParamTemplates](https://cloud.tencent.com/document/api/1003/77805)](https://cloud.tencent.com/document/api/#/#)
-* [[InquirePriceRenew](https://cloud.tencent.com/document/api/1003/77804)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeParamTemplates](https://cloud.tencent.com/document/api/1003/77805)
+* [InquirePriceRenew](https://cloud.tencent.com/document/api/1003/77804)
 
 新增数据结构：
 
-* [[ParamTemplateListInfo](https://cloud.tencent.com/document/api/1003/48097#ParamTemplateListInfo)](https://cloud.tencent.com/document/api/1003/48097#[ParamTemplateListInfo](https://cloud.tencent.com/document/api/1003/48097#ParamTemplateListInfo))
+* [ParamTemplateListInfo](https://cloud.tencent.com/document/api/1003/48097#ParamTemplateListInfo)
 
 ### 第 20 次发布
 
@@ -28012,6 +28142,27 @@
 * [Group](https://cloud.tencent.com/document/api/1025/74416#Group)
 * [Resource](https://cloud.tencent.com/document/api/1025/74416#Resource)
 * [User](https://cloud.tencent.com/document/api/1025/74416#User)
+
+
+
+
+## 数据接入平台(dataintegration) 版本：2022-06-13
+
+### 第 1 次发布
+
+发布时间：2022-07-26 15:32:15
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[SendMessage](https://cloud.tencent.com/document/api/1591/77844)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[BatchContent](https://cloud.tencent.com/document/api/1591/77845#BatchContent)](https://cloud.tencent.com/document/api/1591/77845#[BatchContent](https://cloud.tencent.com/document/api/1591/77845#BatchContent))
 
 
 
@@ -29026,6 +29177,36 @@
 
 
 ## 云数据库独享集群(dbdc) 版本：2020-10-29
+
+### 第 3 次发布
+
+发布时间：2022-07-27 06:08:38
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeInstanceDetail](https://cloud.tencent.com/document/api/1322/74752)
+
+	* 新增出参：ClusterId
+
+* [DescribeInstanceList](https://cloud.tencent.com/document/api/1322/74751)
+
+	* 新增入参：ClusterId
+
+
+修改数据结构：
+
+* [DBInstanceDetail](https://cloud.tencent.com/document/api/1322/74754#DBInstanceDetail)
+
+	* 新增成员：Region, CreateTime
+
+* [DescribeInstanceDetail](https://cloud.tencent.com/document/api/1322/74754#DescribeInstanceDetail)
+
+	* 新增成员：ClusterId
+
 
 ### 第 2 次发布
 
@@ -37893,6 +38074,36 @@
 
 
 ## 全球应用加速(gaap) 版本：2018-05-29
+
+### 第 33 次发布
+
+发布时间：2022-07-27 06:10:24
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateUDPListeners](https://cloud.tencent.com/document/api/608/37004)
+
+	* 新增入参：DelayLoop, ConnectTimeout, HealthyThreshold, UnhealthyThreshold, FailoverSwitch, HealthCheck, CheckType, CheckPort, ContextType, SendContext, RecvContext
+
+* [ModifyUDPListenerAttribute](https://cloud.tencent.com/document/api/608/36994)
+
+	* 新增入参：DelayLoop, ConnectTimeout, HealthyThreshold, UnhealthyThreshold, FailoverSwitch, HealthCheck, CheckType, CheckPort, ContextType, SendContext, RecvContext
+
+
+修改数据结构：
+
+* [BindRealServer](https://cloud.tencent.com/document/api/608/37023#BindRealServer)
+
+	* 新增成员：RealServerFailoverRole
+
+* [UDPListener](https://cloud.tencent.com/document/api/608/37023#UDPListener)
+
+	* 新增成员：DelayLoop, ConnectTimeout, HealthyThreshold, UnhealthyThreshold, FailoverSwitch, HealthCheck, CheckType, CheckPort, ContextType, SendContext, RecvContext
+
 
 ### 第 32 次发布
 
@@ -48489,6 +48700,21 @@
 
 ## 云数据库 MariaDB(mariadb) 版本：2017-03-12
 
+### 第 40 次发布
+
+发布时间：2022-07-27 06:13:02
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateDedicatedClusterDBInstance](https://cloud.tencent.com/document/api/237/61370)
+
+	* 新增入参：RollbackInstanceId, RollbackTime
+
+
 ### 第 39 次发布
 
 发布时间：2022-07-22 06:10:50
@@ -53646,8 +53872,8 @@
 
 新增数据结构：
 
-* [[CopyJobItem](https://cloud.tencent.com/document/api/849/52010#CopyJobItem)](https://cloud.tencent.com/document/api/849/52010#[CopyJobItem](https://cloud.tencent.com/document/api/849/52010#CopyJobItem))
-* [[CopyJobResult](https://cloud.tencent.com/document/api/849/52010#CopyJobResult)](https://cloud.tencent.com/document/api/849/52010#[CopyJobResult](https://cloud.tencent.com/document/api/849/52010#CopyJobResult))
+* [CopyJobItem](https://cloud.tencent.com/document/api/849/52010#CopyJobItem)
+* [CopyJobResult](https://cloud.tencent.com/document/api/849/52010#CopyJobResult)
 
 ### 第 22 次发布
 
@@ -57166,6 +57392,19 @@
 
 
 ## 云数据库 Redis(redis) 版本：2018-04-12
+
+### 第 52 次发布
+
+发布时间：2022-07-27 06:14:34
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[ChangeInstanceRole](https://cloud.tencent.com/document/api/239/77863)](https://cloud.tencent.com/document/api/#/#)
+* [[ChangeMasterInstance](https://cloud.tencent.com/document/api/239/77862)](https://cloud.tencent.com/document/api/#/#)
 
 ### 第 51 次发布
 
@@ -72224,10 +72463,10 @@
 
 新增接口：
 
-* [[CreateEdgeLogConfig](https://cloud.tencent.com/document/api/#/#)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeClusterEndpoints](https://cloud.tencent.com/document/api/#/#)](https://cloud.tencent.com/document/api/#/#)
-* [[InstallEdgeLogAgent](https://cloud.tencent.com/document/api/#/#)](https://cloud.tencent.com/document/api/#/#)
-* [[UninstallEdgeLogAgent](https://cloud.tencent.com/document/api/#/#)](https://cloud.tencent.com/document/api/#/#)
+* [CreateEdgeLogConfig](https://cloud.tencent.com/document/api/#/#)
+* [DescribeClusterEndpoints](https://cloud.tencent.com/document/api/#/#)
+* [InstallEdgeLogAgent](https://cloud.tencent.com/document/api/#/#)
+* [UninstallEdgeLogAgent](https://cloud.tencent.com/document/api/#/#)
 
 ### 第 111 次发布
 
@@ -74827,6 +75066,25 @@
 
 ## T-Sec-安心平台(RP)(trp) 版本：2021-05-15
 
+### 第 2 次发布
+
+发布时间：2022-07-27 06:17:54
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateCodeBatch](https://cloud.tencent.com/document/api/1458/75029)
+
+	* 新增入参：MpTpl
+
+* [ModifyCodeBatch](https://cloud.tencent.com/document/api/1458/75007)
+
+	* 新增入参：MerchantId, ProductId, Remark
+
+
 ### 第 1 次发布
 
 发布时间：2022-06-07 16:18:00
@@ -75953,6 +76211,21 @@
 
 
 ## 腾讯微服务平台 TSF(tsf) 版本：2018-03-26
+
+### 第 78 次发布
+
+发布时间：2022-07-27 06:18:08
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeMicroservice](https://cloud.tencent.com/document/api/649/36085)
+
+	* 新增入参：Filters
+
 
 ### 第 77 次发布
 

@@ -880,6 +880,12 @@ type CreateDedicatedClusterDBInstanceRequestParams struct {
 
 	// 指定从节点uuid，不填随机分配
 	SlaveHostIds []*string `json:"SlaveHostIds,omitempty" name:"SlaveHostIds"`
+
+	// 需要回档的源实例ID
+	RollbackInstanceId *string `json:"RollbackInstanceId,omitempty" name:"RollbackInstanceId"`
+
+	// 回档时间
+	RollbackTime *string `json:"RollbackTime,omitempty" name:"RollbackTime"`
 }
 
 type CreateDedicatedClusterDBInstanceRequest struct {
@@ -953,6 +959,12 @@ type CreateDedicatedClusterDBInstanceRequest struct {
 
 	// 指定从节点uuid，不填随机分配
 	SlaveHostIds []*string `json:"SlaveHostIds,omitempty" name:"SlaveHostIds"`
+
+	// 需要回档的源实例ID
+	RollbackInstanceId *string `json:"RollbackInstanceId,omitempty" name:"RollbackInstanceId"`
+
+	// 回档时间
+	RollbackTime *string `json:"RollbackTime,omitempty" name:"RollbackTime"`
 }
 
 func (r *CreateDedicatedClusterDBInstanceRequest) ToJsonString() string {
@@ -990,6 +1002,8 @@ func (r *CreateDedicatedClusterDBInstanceRequest) FromJsonString(s string) error
 	delete(f, "NodeNum")
 	delete(f, "MasterHostId")
 	delete(f, "SlaveHostIds")
+	delete(f, "RollbackInstanceId")
+	delete(f, "RollbackTime")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDedicatedClusterDBInstanceRequest has unknown keys!", "")
 	}

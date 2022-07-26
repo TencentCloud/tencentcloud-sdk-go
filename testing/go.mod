@@ -28,6 +28,7 @@ require (
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/billing v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/bizlive v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/bm v0.0.0
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/bma v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/bmeip v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/bmlb v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/bmvpc v0.0.0
@@ -61,7 +62,7 @@ require (
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cme v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cmq v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cms v0.0.0
-	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common v1.0.450
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common v1.0.451
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cpdp v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cr v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cvm v0.0.0
@@ -69,6 +70,7 @@ require (
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cws v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cynosdb v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/dasb v0.0.0
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/dataintegration v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/dayu v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/dbbrain v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/dbdc v0.0.0
@@ -244,6 +246,7 @@ replace (
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/billing => ../tencentcloud/billing
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/bizlive => ../tencentcloud/bizlive
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/bm => ../tencentcloud/bm
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/bma => ../tencentcloud/bma
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/bmeip => ../tencentcloud/bmeip
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/bmlb => ../tencentcloud/bmlb
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/bmvpc => ../tencentcloud/bmvpc
@@ -285,6 +288,7 @@ replace (
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cws => ../tencentcloud/cws
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cynosdb => ../tencentcloud/cynosdb
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/dasb => ../tencentcloud/dasb
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/dataintegration => ../tencentcloud/dataintegration
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/dayu => ../tencentcloud/dayu
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/dbbrain => ../tencentcloud/dbbrain
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/dbdc => ../tencentcloud/dbdc

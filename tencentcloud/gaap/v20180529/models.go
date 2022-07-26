@@ -303,6 +303,9 @@ type BindRealServer struct {
 
 	// 当源站为域名时，域名被解析成一个或者多个IP，该字段表示其中异常的IP列表。状态异常，但该字段为空时，表示域名解析异常。
 	DownIPList []*string `json:"DownIPList,omitempty" name:"DownIPList"`
+
+	// 源站主备角色：master表示主，slave表示备，该参数必须在监听器打开了源站主备模式。
+	RealServerFailoverRole *string `json:"RealServerFailoverRole,omitempty" name:"RealServerFailoverRole"`
 }
 
 type BindRealServerInfo struct {
@@ -1813,7 +1816,7 @@ type CreateRuleRequestParams struct {
 	// 转发规则对应源站的类型，支持IP和DOMAIN类型。
 	RealServerType *string `json:"RealServerType,omitempty" name:"RealServerType"`
 
-	// 规则转发源站调度策略，支持轮询（rr），加权轮询（wrr），最小连接数（lc）。
+	// 监听器源站访问策略，其中：rr表示轮询；wrr表示加权轮询；lc表示最小连接数；lrtt表示最小时延。
 	Scheduler *string `json:"Scheduler,omitempty" name:"Scheduler"`
 
 	// 规则是否开启健康检查，1开启，0关闭。
@@ -1854,7 +1857,7 @@ type CreateRuleRequest struct {
 	// 转发规则对应源站的类型，支持IP和DOMAIN类型。
 	RealServerType *string `json:"RealServerType,omitempty" name:"RealServerType"`
 
-	// 规则转发源站调度策略，支持轮询（rr），加权轮询（wrr），最小连接数（lc）。
+	// 监听器源站访问策略，其中：rr表示轮询；wrr表示加权轮询；lc表示最小连接数；lrtt表示最小时延。
 	Scheduler *string `json:"Scheduler,omitempty" name:"Scheduler"`
 
 	// 规则是否开启健康检查，1开启，0关闭。
@@ -2078,13 +2081,13 @@ type CreateTCPListenersRequestParams struct {
 	// 监听器端口列表。
 	Ports []*uint64 `json:"Ports,omitempty" name:"Ports"`
 
-	// 监听器源站调度策略，支持轮询（rr），加权轮询（wrr），最小连接数（lc）。
+	// 监听器源站访问策略，其中：rr表示轮询；wrr表示加权轮询；lc表示最小连接数；lrtt表示最小时延。
 	Scheduler *string `json:"Scheduler,omitempty" name:"Scheduler"`
 
 	// 源站是否开启健康检查：1开启，0关闭，UDP监听器不支持健康检查
 	HealthCheck *uint64 `json:"HealthCheck,omitempty" name:"HealthCheck"`
 
-	// 监听器对应源站类型，支持IP或者DOMAIN类型。DOMAIN源站类型不支持wrr的源站调度策略。
+	// 监听器绑定源站类型。IP表示IP地址，DOMAIN表示域名。
 	RealServerType *string `json:"RealServerType,omitempty" name:"RealServerType"`
 
 	// 通道ID，ProxyId和GroupId必须设置一个，但不能同时设置。
@@ -2124,13 +2127,13 @@ type CreateTCPListenersRequest struct {
 	// 监听器端口列表。
 	Ports []*uint64 `json:"Ports,omitempty" name:"Ports"`
 
-	// 监听器源站调度策略，支持轮询（rr），加权轮询（wrr），最小连接数（lc）。
+	// 监听器源站访问策略，其中：rr表示轮询；wrr表示加权轮询；lc表示最小连接数；lrtt表示最小时延。
 	Scheduler *string `json:"Scheduler,omitempty" name:"Scheduler"`
 
 	// 源站是否开启健康检查：1开启，0关闭，UDP监听器不支持健康检查
 	HealthCheck *uint64 `json:"HealthCheck,omitempty" name:"HealthCheck"`
 
-	// 监听器对应源站类型，支持IP或者DOMAIN类型。DOMAIN源站类型不支持wrr的源站调度策略。
+	// 监听器绑定源站类型。IP表示IP地址，DOMAIN表示域名。
 	RealServerType *string `json:"RealServerType,omitempty" name:"RealServerType"`
 
 	// 通道ID，ProxyId和GroupId必须设置一个，但不能同时设置。
@@ -2226,10 +2229,10 @@ type CreateUDPListenersRequestParams struct {
 	// 监听器端口列表
 	Ports []*uint64 `json:"Ports,omitempty" name:"Ports"`
 
-	// 监听器源站调度策略，支持轮询（rr），加权轮询（wrr），最小连接数（lc）
+	// 监听器源站访问策略，其中：rr表示轮询；wrr表示加权轮询；lc表示最小连接数；lrtt表示最小时延。
 	Scheduler *string `json:"Scheduler,omitempty" name:"Scheduler"`
 
-	// 监听器对应源站类型，支持IP或者DOMAIN类型
+	// 监听器绑定源站类型。IP表示IP地址，DOMAIN表示域名。
 	RealServerType *string `json:"RealServerType,omitempty" name:"RealServerType"`
 
 	// 通道ID，ProxyId和GroupId必须设置一个，但不能同时设置。
@@ -2240,6 +2243,39 @@ type CreateUDPListenersRequestParams struct {
 
 	// 源站端口列表，该参数仅支持v1版本监听器和通道组监听器
 	RealServerPorts []*uint64 `json:"RealServerPorts,omitempty" name:"RealServerPorts"`
+
+	// 源站健康检查时间间隔，单位：秒。时间间隔取值在[5，300]之间。
+	DelayLoop *uint64 `json:"DelayLoop,omitempty" name:"DelayLoop"`
+
+	// 源站健康检查响应超时时间，单位：秒。超时时间取值在[2，60]之间。超时时间应小于健康检查时间间隔DelayLoop。
+	ConnectTimeout *uint64 `json:"ConnectTimeout,omitempty" name:"ConnectTimeout"`
+
+	// 健康阈值，表示连续检查成功多少次后认定源站健康。范围为1到10
+	HealthyThreshold *uint64 `json:"HealthyThreshold,omitempty" name:"HealthyThreshold"`
+
+	// 不健康阈值，表示连续检查失败多少次数后认为源站不健康。范围为1到10
+	UnhealthyThreshold *uint64 `json:"UnhealthyThreshold,omitempty" name:"UnhealthyThreshold"`
+
+	// 源站是否开启主备模式：1开启，0关闭，DOMAIN类型源站不支持开启
+	FailoverSwitch *int64 `json:"FailoverSwitch,omitempty" name:"FailoverSwitch"`
+
+	// 源站是否开启健康检查：1开启，0关闭。
+	HealthCheck *uint64 `json:"HealthCheck,omitempty" name:"HealthCheck"`
+
+	// UDP源站健康类型。PORT表示检查端口，PING表示PING。
+	CheckType *string `json:"CheckType,omitempty" name:"CheckType"`
+
+	// UDP源站健康检查探测端口。
+	CheckPort *int64 `json:"CheckPort,omitempty" name:"CheckPort"`
+
+	// UDP源站健康检查端口探测报文类型：TEXT表示文本。仅在健康检查类型为PORT时使用。
+	ContextType *string `json:"ContextType,omitempty" name:"ContextType"`
+
+	// UDP源站健康检查端口探测发送报文。仅在健康检查类型为PORT时使用。
+	SendContext *string `json:"SendContext,omitempty" name:"SendContext"`
+
+	// UDP源站健康检查端口探测接收报文。仅在健康检查类型为PORT时使用。
+	RecvContext *string `json:"RecvContext,omitempty" name:"RecvContext"`
 }
 
 type CreateUDPListenersRequest struct {
@@ -2251,10 +2287,10 @@ type CreateUDPListenersRequest struct {
 	// 监听器端口列表
 	Ports []*uint64 `json:"Ports,omitempty" name:"Ports"`
 
-	// 监听器源站调度策略，支持轮询（rr），加权轮询（wrr），最小连接数（lc）
+	// 监听器源站访问策略，其中：rr表示轮询；wrr表示加权轮询；lc表示最小连接数；lrtt表示最小时延。
 	Scheduler *string `json:"Scheduler,omitempty" name:"Scheduler"`
 
-	// 监听器对应源站类型，支持IP或者DOMAIN类型
+	// 监听器绑定源站类型。IP表示IP地址，DOMAIN表示域名。
 	RealServerType *string `json:"RealServerType,omitempty" name:"RealServerType"`
 
 	// 通道ID，ProxyId和GroupId必须设置一个，但不能同时设置。
@@ -2265,6 +2301,39 @@ type CreateUDPListenersRequest struct {
 
 	// 源站端口列表，该参数仅支持v1版本监听器和通道组监听器
 	RealServerPorts []*uint64 `json:"RealServerPorts,omitempty" name:"RealServerPorts"`
+
+	// 源站健康检查时间间隔，单位：秒。时间间隔取值在[5，300]之间。
+	DelayLoop *uint64 `json:"DelayLoop,omitempty" name:"DelayLoop"`
+
+	// 源站健康检查响应超时时间，单位：秒。超时时间取值在[2，60]之间。超时时间应小于健康检查时间间隔DelayLoop。
+	ConnectTimeout *uint64 `json:"ConnectTimeout,omitempty" name:"ConnectTimeout"`
+
+	// 健康阈值，表示连续检查成功多少次后认定源站健康。范围为1到10
+	HealthyThreshold *uint64 `json:"HealthyThreshold,omitempty" name:"HealthyThreshold"`
+
+	// 不健康阈值，表示连续检查失败多少次数后认为源站不健康。范围为1到10
+	UnhealthyThreshold *uint64 `json:"UnhealthyThreshold,omitempty" name:"UnhealthyThreshold"`
+
+	// 源站是否开启主备模式：1开启，0关闭，DOMAIN类型源站不支持开启
+	FailoverSwitch *int64 `json:"FailoverSwitch,omitempty" name:"FailoverSwitch"`
+
+	// 源站是否开启健康检查：1开启，0关闭。
+	HealthCheck *uint64 `json:"HealthCheck,omitempty" name:"HealthCheck"`
+
+	// UDP源站健康类型。PORT表示检查端口，PING表示PING。
+	CheckType *string `json:"CheckType,omitempty" name:"CheckType"`
+
+	// UDP源站健康检查探测端口。
+	CheckPort *int64 `json:"CheckPort,omitempty" name:"CheckPort"`
+
+	// UDP源站健康检查端口探测报文类型：TEXT表示文本。仅在健康检查类型为PORT时使用。
+	ContextType *string `json:"ContextType,omitempty" name:"ContextType"`
+
+	// UDP源站健康检查端口探测发送报文。仅在健康检查类型为PORT时使用。
+	SendContext *string `json:"SendContext,omitempty" name:"SendContext"`
+
+	// UDP源站健康检查端口探测接收报文。仅在健康检查类型为PORT时使用。
+	RecvContext *string `json:"RecvContext,omitempty" name:"RecvContext"`
 }
 
 func (r *CreateUDPListenersRequest) ToJsonString() string {
@@ -2286,6 +2355,17 @@ func (r *CreateUDPListenersRequest) FromJsonString(s string) error {
 	delete(f, "ProxyId")
 	delete(f, "GroupId")
 	delete(f, "RealServerPorts")
+	delete(f, "DelayLoop")
+	delete(f, "ConnectTimeout")
+	delete(f, "HealthyThreshold")
+	delete(f, "UnhealthyThreshold")
+	delete(f, "FailoverSwitch")
+	delete(f, "HealthCheck")
+	delete(f, "CheckType")
+	delete(f, "CheckPort")
+	delete(f, "ContextType")
+	delete(f, "SendContext")
+	delete(f, "RecvContext")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateUDPListenersRequest has unknown keys!", "")
 	}
@@ -7256,10 +7336,7 @@ type ModifyRuleAttributeRequestParams struct {
 	// 转发规则ID
 	RuleId *string `json:"RuleId,omitempty" name:"RuleId"`
 
-	// 调度策略，其中：
-	// rr，轮询；
-	// wrr，加权轮询；
-	// lc，最小连接数。
+	// 监听器源站访问策略，其中：rr表示轮询；wrr表示加权轮询；lc表示最小连接数；lrtt表示最小时延。
 	Scheduler *string `json:"Scheduler,omitempty" name:"Scheduler"`
 
 	// 源站健康检查开关，其中：
@@ -7300,10 +7377,7 @@ type ModifyRuleAttributeRequest struct {
 	// 转发规则ID
 	RuleId *string `json:"RuleId,omitempty" name:"RuleId"`
 
-	// 调度策略，其中：
-	// rr，轮询；
-	// wrr，加权轮询；
-	// lc，最小连接数。
+	// 监听器源站访问策略，其中：rr表示轮询；wrr表示加权轮询；lc表示最小连接数；lrtt表示最小时延。
 	Scheduler *string `json:"Scheduler,omitempty" name:"Scheduler"`
 
 	// 源站健康检查开关，其中：
@@ -7504,7 +7578,7 @@ type ModifyTCPListenerAttributeRequestParams struct {
 	// 监听器名称
 	ListenerName *string `json:"ListenerName,omitempty" name:"ListenerName"`
 
-	// 监听器源站调度策略，支持轮询（rr），加权轮询（wrr），最小连接数（lc）。
+	// 监听器源站访问策略，其中：rr表示轮询；wrr表示加权轮询；lc表示最小连接数；lrtt表示最小时延。
 	Scheduler *string `json:"Scheduler,omitempty" name:"Scheduler"`
 
 	// 源站健康检查时间间隔，单位：秒。时间间隔取值在[5，300]之间。
@@ -7541,7 +7615,7 @@ type ModifyTCPListenerAttributeRequest struct {
 	// 监听器名称
 	ListenerName *string `json:"ListenerName,omitempty" name:"ListenerName"`
 
-	// 监听器源站调度策略，支持轮询（rr），加权轮询（wrr），最小连接数（lc）。
+	// 监听器源站访问策略，其中：rr表示轮询；wrr表示加权轮询；lc表示最小连接数；lrtt表示最小时延。
 	Scheduler *string `json:"Scheduler,omitempty" name:"Scheduler"`
 
 	// 源站健康检查时间间隔，单位：秒。时间间隔取值在[5，300]之间。
@@ -7628,8 +7702,41 @@ type ModifyUDPListenerAttributeRequestParams struct {
 	// 监听器名称
 	ListenerName *string `json:"ListenerName,omitempty" name:"ListenerName"`
 
-	// 监听器源站调度策略
+	// 监听器源站访问策略，其中：rr表示轮询；wrr表示加权轮询；lc表示最小连接数；lrtt表示最小时延。
 	Scheduler *string `json:"Scheduler,omitempty" name:"Scheduler"`
+
+	// 源站健康检查时间间隔，单位：秒。时间间隔取值在[5，300]之间。
+	DelayLoop *uint64 `json:"DelayLoop,omitempty" name:"DelayLoop"`
+
+	// 源站健康检查响应超时时间，单位：秒。超时时间取值在[2，60]之间。超时时间应小于健康检查时间间隔DelayLoop。
+	ConnectTimeout *uint64 `json:"ConnectTimeout,omitempty" name:"ConnectTimeout"`
+
+	// 健康阈值，表示连续检查成功多少次后认定源站健康。范围为1到10
+	HealthyThreshold *uint64 `json:"HealthyThreshold,omitempty" name:"HealthyThreshold"`
+
+	// 不健康阈值，表示连续检查失败多少次数后认为源站不健康。范围为1到10
+	UnhealthyThreshold *uint64 `json:"UnhealthyThreshold,omitempty" name:"UnhealthyThreshold"`
+
+	// 源站是否开启主备模式：1开启，0关闭，DOMAIN类型源站不支持开启
+	FailoverSwitch *int64 `json:"FailoverSwitch,omitempty" name:"FailoverSwitch"`
+
+	// 源站是否开启健康检查：1开启，0关闭。
+	HealthCheck *uint64 `json:"HealthCheck,omitempty" name:"HealthCheck"`
+
+	// UDP源站健康类型。PORT表示检查端口，PING表示PING。
+	CheckType *string `json:"CheckType,omitempty" name:"CheckType"`
+
+	// UDP源站健康检查探测端口。
+	CheckPort *int64 `json:"CheckPort,omitempty" name:"CheckPort"`
+
+	// UDP源站健康检查端口探测报文类型：TEXT表示文本。仅在健康检查类型为PORT时使用。
+	ContextType *string `json:"ContextType,omitempty" name:"ContextType"`
+
+	// UDP源站健康检查端口探测发送报文。仅在健康检查类型为PORT时使用。
+	SendContext *string `json:"SendContext,omitempty" name:"SendContext"`
+
+	// UDP源站健康检查端口探测接收报文。仅在健康检查类型为PORT时使用。
+	RecvContext *string `json:"RecvContext,omitempty" name:"RecvContext"`
 }
 
 type ModifyUDPListenerAttributeRequest struct {
@@ -7647,8 +7754,41 @@ type ModifyUDPListenerAttributeRequest struct {
 	// 监听器名称
 	ListenerName *string `json:"ListenerName,omitempty" name:"ListenerName"`
 
-	// 监听器源站调度策略
+	// 监听器源站访问策略，其中：rr表示轮询；wrr表示加权轮询；lc表示最小连接数；lrtt表示最小时延。
 	Scheduler *string `json:"Scheduler,omitempty" name:"Scheduler"`
+
+	// 源站健康检查时间间隔，单位：秒。时间间隔取值在[5，300]之间。
+	DelayLoop *uint64 `json:"DelayLoop,omitempty" name:"DelayLoop"`
+
+	// 源站健康检查响应超时时间，单位：秒。超时时间取值在[2，60]之间。超时时间应小于健康检查时间间隔DelayLoop。
+	ConnectTimeout *uint64 `json:"ConnectTimeout,omitempty" name:"ConnectTimeout"`
+
+	// 健康阈值，表示连续检查成功多少次后认定源站健康。范围为1到10
+	HealthyThreshold *uint64 `json:"HealthyThreshold,omitempty" name:"HealthyThreshold"`
+
+	// 不健康阈值，表示连续检查失败多少次数后认为源站不健康。范围为1到10
+	UnhealthyThreshold *uint64 `json:"UnhealthyThreshold,omitempty" name:"UnhealthyThreshold"`
+
+	// 源站是否开启主备模式：1开启，0关闭，DOMAIN类型源站不支持开启
+	FailoverSwitch *int64 `json:"FailoverSwitch,omitempty" name:"FailoverSwitch"`
+
+	// 源站是否开启健康检查：1开启，0关闭。
+	HealthCheck *uint64 `json:"HealthCheck,omitempty" name:"HealthCheck"`
+
+	// UDP源站健康类型。PORT表示检查端口，PING表示PING。
+	CheckType *string `json:"CheckType,omitempty" name:"CheckType"`
+
+	// UDP源站健康检查探测端口。
+	CheckPort *int64 `json:"CheckPort,omitempty" name:"CheckPort"`
+
+	// UDP源站健康检查端口探测报文类型：TEXT表示文本。仅在健康检查类型为PORT时使用。
+	ContextType *string `json:"ContextType,omitempty" name:"ContextType"`
+
+	// UDP源站健康检查端口探测发送报文。仅在健康检查类型为PORT时使用。
+	SendContext *string `json:"SendContext,omitempty" name:"SendContext"`
+
+	// UDP源站健康检查端口探测接收报文。仅在健康检查类型为PORT时使用。
+	RecvContext *string `json:"RecvContext,omitempty" name:"RecvContext"`
 }
 
 func (r *ModifyUDPListenerAttributeRequest) ToJsonString() string {
@@ -7668,6 +7808,17 @@ func (r *ModifyUDPListenerAttributeRequest) FromJsonString(s string) error {
 	delete(f, "ProxyId")
 	delete(f, "ListenerName")
 	delete(f, "Scheduler")
+	delete(f, "DelayLoop")
+	delete(f, "ConnectTimeout")
+	delete(f, "HealthyThreshold")
+	delete(f, "UnhealthyThreshold")
+	delete(f, "FailoverSwitch")
+	delete(f, "HealthCheck")
+	delete(f, "CheckType")
+	delete(f, "CheckPort")
+	delete(f, "ContextType")
+	delete(f, "SendContext")
+	delete(f, "RecvContext")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyUDPListenerAttributeRequest has unknown keys!", "")
 	}
@@ -8239,7 +8390,7 @@ type RealServerBindSetReq struct {
 	// 源站权重
 	RealServerWeight *uint64 `json:"RealServerWeight,omitempty" name:"RealServerWeight"`
 
-	// 源站主备角色：master主，slave备，该参数必须在监听器打开了源站主备模式，且监听器类型为TCP监听器
+	// 源站主备角色：master表示主，slave表示备，该参数必须在监听器打开了源站主备模式。
 	RealServerFailoverRole *string `json:"RealServerFailoverRole,omitempty" name:"RealServerFailoverRole"`
 }
 
@@ -8392,7 +8543,7 @@ type RuleInfo struct {
 	// 源站类型
 	RealServerType *string `json:"RealServerType,omitempty" name:"RealServerType"`
 
-	// 转发源站策略
+	// 监听器源站访问策略，其中：rr表示轮询；wrr表示加权轮询；lc表示最小连接数；lrtt表示最小时延。
 	Scheduler *string `json:"Scheduler,omitempty" name:"Scheduler"`
 
 	// 是否开启健康检查标志，1表示开启，0表示关闭
@@ -8658,10 +8809,7 @@ type TCPListener struct {
 	// 4表示配置变更中。
 	ListenerStatus *uint64 `json:"ListenerStatus,omitempty" name:"ListenerStatus"`
 
-	// 监听器源站访问策略，其中：
-	// rr表示轮询；
-	// wrr表示加权轮询；
-	// lc表示最小连接数。
+	// 监听器源站访问策略，其中：rr表示轮询；wrr表示加权轮询；lc表示最小连接数；lrtt表示最小时延。
 	Scheduler *string `json:"Scheduler,omitempty" name:"Scheduler"`
 
 	// 源站健康检查响应超时时间，单位：秒
@@ -8755,7 +8903,7 @@ type UDPListener struct {
 	// 4表示配置变更中。
 	ListenerStatus *uint64 `json:"ListenerStatus,omitempty" name:"ListenerStatus"`
 
-	// 监听器源站访问策略
+	// 监听器源站访问策略，其中：rr表示轮询；wrr表示加权轮询；lc表示最小连接数；lrtt表示最小时延。
 	Scheduler *string `json:"Scheduler,omitempty" name:"Scheduler"`
 
 	// 监听器绑定源站状态， 0表示正常，1表示IP异常，2表示域名解析异常
@@ -8770,4 +8918,48 @@ type UDPListener struct {
 	// 是否开启会话保持选项：0关闭， 非0开启，非0值为会话保持时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SessionPersist *uint64 `json:"SessionPersist,omitempty" name:"SessionPersist"`
+
+	// 源站健康检查时间间隔，单位：秒。时间间隔取值在[5，300]之间。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DelayLoop *uint64 `json:"DelayLoop,omitempty" name:"DelayLoop"`
+
+	// 源站健康检查响应超时时间，单位：秒。超时时间取值在[2，60]之间。超时时间应小于健康检查时间间隔DelayLoop。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConnectTimeout *uint64 `json:"ConnectTimeout,omitempty" name:"ConnectTimeout"`
+
+	// 健康阈值，表示连续检查成功多少次后认定源站健康。范围为1到10
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HealthyThreshold *uint64 `json:"HealthyThreshold,omitempty" name:"HealthyThreshold"`
+
+	// 不健康阈值，表示连续检查失败多少次数后认为源站不健康。范围为1到10
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UnhealthyThreshold *uint64 `json:"UnhealthyThreshold,omitempty" name:"UnhealthyThreshold"`
+
+	// 源站是否开启主备模式：1开启，0关闭，DOMAIN类型源站不支持开启
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FailoverSwitch *int64 `json:"FailoverSwitch,omitempty" name:"FailoverSwitch"`
+
+	// 源站是否开启健康检查：1开启，0关闭。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HealthCheck *uint64 `json:"HealthCheck,omitempty" name:"HealthCheck"`
+
+	// UDP源站健康类型。PORT表示检查端口，PING表示PING。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CheckType *string `json:"CheckType,omitempty" name:"CheckType"`
+
+	// UDP源站健康检查探测端口。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CheckPort *int64 `json:"CheckPort,omitempty" name:"CheckPort"`
+
+	// UDP源站健康检查端口探测报文类型：TEXT表示文本。仅在健康检查类型为PORT时使用。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ContextType *string `json:"ContextType,omitempty" name:"ContextType"`
+
+	// UDP源站健康检查端口探测发送报文。仅在健康检查类型为PORT时使用。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SendContext *string `json:"SendContext,omitempty" name:"SendContext"`
+
+	// UDP源站健康检查端口探测接收报文。仅在健康检查类型为PORT时使用。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RecvContext *string `json:"RecvContext,omitempty" name:"RecvContext"`
 }

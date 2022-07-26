@@ -1,3 +1,236 @@
+# Release v1.0.451
+
+## DDoS 防护(antiddos) 版本：2020-03-09
+
+### 第 38 次发布
+
+发布时间：2022-07-27 06:03:19
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [BGPIPInstance](https://cloud.tencent.com/document/api/1021/57582#BGPIPInstance)
+
+	* 新增成员：InstanceVersion
+
+* [L4RuleSource](https://cloud.tencent.com/document/api/1021/57582#L4RuleSource)
+
+	* 新增成员：Backup
+
+* [L7RuleHealth](https://cloud.tencent.com/document/api/1021/57582#L7RuleHealth)
+
+	* 新增成员：ProtocolFlag, PassiveEnable, BlockInter, FailedCountInter, FailedThreshold, PassiveStatusCode
+
+
+
+
+## 品牌经营管家(bma) 版本：2021-06-24
+
+### 第 1 次发布
+
+发布时间：2022-07-26 14:16:47
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateCRBlock](https://cloud.tencent.com/document/api/1296/77824)
+* [CreateCRCompanyVerify](https://cloud.tencent.com/document/api/1296/77823)
+* [CreateCRRight](https://cloud.tencent.com/document/api/1296/77822)
+* [DescribeCRWorkInfo](https://cloud.tencent.com/document/api/1296/77821)
+
+
+
+## 企业收付平台(cpdp) 版本：2019-08-20
+
+### 第 78 次发布
+
+发布时间：2022-07-27 06:06:57
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [AmountBeforeTaxResult](https://cloud.tencent.com/document/api/1122/40683#AmountBeforeTaxResult)
+
+	* 新增成员：AmountBeforeTaxWithTwoDigitPrecision
+
+
+
+
+## 数据接入平台(dataintegration) 版本：2022-06-13
+
+### 第 1 次发布
+
+发布时间：2022-07-26 15:32:15
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [SendMessage](https://cloud.tencent.com/document/api/1591/77844)
+
+新增数据结构：
+
+* [BatchContent](https://cloud.tencent.com/document/api/1591/77845#BatchContent)
+
+
+
+## 云数据库独享集群(dbdc) 版本：2020-10-29
+
+### 第 3 次发布
+
+发布时间：2022-07-27 06:08:38
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeInstanceDetail](https://cloud.tencent.com/document/api/1322/74752)
+
+	* 新增出参：ClusterId
+
+* [DescribeInstanceList](https://cloud.tencent.com/document/api/1322/74751)
+
+	* 新增入参：ClusterId
+
+
+修改数据结构：
+
+* [DBInstanceDetail](https://cloud.tencent.com/document/api/1322/74754#DBInstanceDetail)
+
+	* 新增成员：Region, CreateTime
+
+* [DescribeInstanceDetail](https://cloud.tencent.com/document/api/1322/74754#DescribeInstanceDetail)
+
+	* 新增成员：ClusterId
+
+
+
+
+## 全球应用加速(gaap) 版本：2018-05-29
+
+### 第 33 次发布
+
+发布时间：2022-07-27 06:10:24
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateUDPListeners](https://cloud.tencent.com/document/api/608/37004)
+
+	* 新增入参：DelayLoop, ConnectTimeout, HealthyThreshold, UnhealthyThreshold, FailoverSwitch, HealthCheck, CheckType, CheckPort, ContextType, SendContext, RecvContext
+
+* [ModifyUDPListenerAttribute](https://cloud.tencent.com/document/api/608/36994)
+
+	* 新增入参：DelayLoop, ConnectTimeout, HealthyThreshold, UnhealthyThreshold, FailoverSwitch, HealthCheck, CheckType, CheckPort, ContextType, SendContext, RecvContext
+
+
+修改数据结构：
+
+* [BindRealServer](https://cloud.tencent.com/document/api/608/37023#BindRealServer)
+
+	* 新增成员：RealServerFailoverRole
+
+* [UDPListener](https://cloud.tencent.com/document/api/608/37023#UDPListener)
+
+	* 新增成员：DelayLoop, ConnectTimeout, HealthyThreshold, UnhealthyThreshold, FailoverSwitch, HealthCheck, CheckType, CheckPort, ContextType, SendContext, RecvContext
+
+
+
+
+## 云数据库 MariaDB(mariadb) 版本：2017-03-12
+
+### 第 40 次发布
+
+发布时间：2022-07-27 06:13:02
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateDedicatedClusterDBInstance](https://cloud.tencent.com/document/api/237/61370)
+
+	* 新增入参：RollbackInstanceId, RollbackTime
+
+
+
+
+## 云数据库 Redis(redis) 版本：2018-04-12
+
+### 第 52 次发布
+
+发布时间：2022-07-27 06:14:34
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [ChangeInstanceRole](https://cloud.tencent.com/document/api/239/77863)
+* [ChangeMasterInstance](https://cloud.tencent.com/document/api/239/77862)
+
+
+
+## T-Sec-安心平台(RP)(trp) 版本：2021-05-15
+
+### 第 2 次发布
+
+发布时间：2022-07-27 06:17:54
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateCodeBatch](https://cloud.tencent.com/document/api/1458/75029)
+
+	* 新增入参：MpTpl
+
+* [ModifyCodeBatch](https://cloud.tencent.com/document/api/1458/75007)
+
+	* 新增入参：MerchantId, ProductId, Remark
+
+
+
+
+## 腾讯微服务平台 TSF(tsf) 版本：2018-03-26
+
+### 第 78 次发布
+
+发布时间：2022-07-27 06:18:08
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeMicroservice](https://cloud.tencent.com/document/api/649/36085)
+
+	* 新增入参：Filters
+
+
+
+
 # Release v1.0.450
 
 ## 弹性伸缩(as) 版本：2018-04-19
