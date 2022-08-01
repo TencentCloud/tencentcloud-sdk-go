@@ -1,3 +1,108 @@
+# Release v1.0.454
+
+## 云数据库 MySQL(cdb) 版本：2017-03-20
+
+### 第 96 次发布
+
+发布时间：2022-08-01 11:27:47
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [ModifyInstancePasswordComplexity](https://cloud.tencent.com/document/api/236/78162)
+
+
+
+## 日志服务(cls) 版本：2020-10-16
+
+### 第 26 次发布
+
+发布时间：2022-08-01 11:31:08
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ShipperInfo](https://cloud.tencent.com/document/api/614/56471#ShipperInfo)
+
+	* 新增成员：FilenameMode
+
+
+
+
+## 私有域解析 Private DNS(privatedns) 版本：2020-10-28
+
+### 第 8 次发布
+
+发布时间：2022-08-01 11:48:13
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [PrivateZoneRecord](https://cloud.tencent.com/document/api/1338/55947#PrivateZoneRecord)
+
+	* 新增成员：Enabled
+
+
+
+
+## 云开发 CloudBase(tcb) 版本：2018-06-08
+
+### 第 85 次发布
+
+发布时间：2022-08-01 11:52:06
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeBaasPackageList](https://cloud.tencent.com/document/api/876/78167)
+
+新增数据结构：
+
+* [BaasPackageInfo](https://cloud.tencent.com/document/api/876/34822#BaasPackageInfo)
+
+
+
+## 弹性微服务(tem) 版本：2021-07-01
+
+### 第 21 次发布
+
+发布时间：2022-08-01 11:54:48
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeApplications](https://cloud.tencent.com/document/api/1371/78169)
+* [DescribeEnvironmentStatus](https://cloud.tencent.com/document/api/1371/78168)
+
+新增数据结构：
+
+* [NamespaceStatusInfo](https://cloud.tencent.com/document/api/1371/60171#NamespaceStatusInfo)
+* [ServicePage](https://cloud.tencent.com/document/api/1371/60171#ServicePage)
+* [TemEnvironmentStartingStatus](https://cloud.tencent.com/document/api/1371/60171#TemEnvironmentStartingStatus)
+* [TemEnvironmentStoppingStatus](https://cloud.tencent.com/document/api/1371/60171#TemEnvironmentStoppingStatus)
+* [TemService](https://cloud.tencent.com/document/api/1371/60171#TemService)
+
+
+
+## 弹性微服务(tem) 版本：2020-12-21
+
+
+
 # Release v1.0.453
 
 ## 云数据库 MySQL(cdb) 版本：2017-03-20
