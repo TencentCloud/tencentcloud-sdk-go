@@ -10670,10 +10670,10 @@ type WorkflowTask struct {
 	// <li>FINISH：已完成。</li>
 	Status *string `json:"Status,omitempty" name:"Status"`
 
-	// 已弃用，请使用各个具体任务的 ErrCode。
+	// 源异常时返回非0错误码，返回0 时请使用各个具体任务的 ErrCode。
 	ErrCode *int64 `json:"ErrCode,omitempty" name:"ErrCode"`
 
-	// 已弃用，请使用各个具体任务的 Message。
+	// 源异常时返回对应异常Message，否则请使用各个具体任务的 Message。
 	Message *string `json:"Message,omitempty" name:"Message"`
 
 	// 媒体处理的目标文件信息。

@@ -294,6 +294,255 @@ func (c *Client) CreateCRRightWithContext(ctx context.Context, request *CreateCR
     return
 }
 
+func NewCreateCRWorkRequest() (request *CreateCRWorkRequest) {
+    request = &CreateCRWorkRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("bma", APIVersion, "CreateCRWork")
+    
+    
+    return
+}
+
+func NewCreateCRWorkResponse() (response *CreateCRWorkResponse) {
+    response = &CreateCRWorkResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateCRWork
+// 版权保护-添加作品接口
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDACTION = "InvalidAction"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  NOSUCHVERSION = "NoSuchVersion"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateCRWork(request *CreateCRWorkRequest) (response *CreateCRWorkResponse, err error) {
+    return c.CreateCRWorkWithContext(context.Background(), request)
+}
+
+// CreateCRWork
+// 版权保护-添加作品接口
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDACTION = "InvalidAction"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  NOSUCHVERSION = "NoSuchVersion"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateCRWorkWithContext(ctx context.Context, request *CreateCRWorkRequest) (response *CreateCRWorkResponse, err error) {
+    if request == nil {
+        request = NewCreateCRWorkRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateCRWork require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateCRWorkResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeCRMonitorDetailRequest() (request *DescribeCRMonitorDetailRequest) {
+    request = &DescribeCRMonitorDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("bma", APIVersion, "DescribeCRMonitorDetail")
+    
+    
+    return
+}
+
+func NewDescribeCRMonitorDetailResponse() (response *DescribeCRMonitorDetailResponse) {
+    response = &DescribeCRMonitorDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeCRMonitorDetail
+// 版权保护-查询作品监测详情接口
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDACTION = "InvalidAction"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  NOSUCHVERSION = "NoSuchVersion"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeCRMonitorDetail(request *DescribeCRMonitorDetailRequest) (response *DescribeCRMonitorDetailResponse, err error) {
+    return c.DescribeCRMonitorDetailWithContext(context.Background(), request)
+}
+
+// DescribeCRMonitorDetail
+// 版权保护-查询作品监测详情接口
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDACTION = "InvalidAction"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  NOSUCHVERSION = "NoSuchVersion"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeCRMonitorDetailWithContext(ctx context.Context, request *DescribeCRMonitorDetailRequest) (response *DescribeCRMonitorDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeCRMonitorDetailRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCRMonitorDetail require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCRMonitorDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeCRMonitorsRequest() (request *DescribeCRMonitorsRequest) {
+    request = &DescribeCRMonitorsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("bma", APIVersion, "DescribeCRMonitors")
+    
+    
+    return
+}
+
+func NewDescribeCRMonitorsResponse() (response *DescribeCRMonitorsResponse) {
+    response = &DescribeCRMonitorsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeCRMonitors
+// 版权保护-查询监测列表接口
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDACTION = "InvalidAction"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  NOSUCHVERSION = "NoSuchVersion"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeCRMonitors(request *DescribeCRMonitorsRequest) (response *DescribeCRMonitorsResponse, err error) {
+    return c.DescribeCRMonitorsWithContext(context.Background(), request)
+}
+
+// DescribeCRMonitors
+// 版权保护-查询监测列表接口
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDACTION = "InvalidAction"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  NOSUCHVERSION = "NoSuchVersion"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeCRMonitorsWithContext(ctx context.Context, request *DescribeCRMonitorsRequest) (response *DescribeCRMonitorsResponse, err error) {
+    if request == nil {
+        request = NewDescribeCRMonitorsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCRMonitors require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCRMonitorsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeCRWorkInfoRequest() (request *DescribeCRWorkInfoRequest) {
     request = &DescribeCRWorkInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -373,6 +622,421 @@ func (c *Client) DescribeCRWorkInfoWithContext(ctx context.Context, request *Des
     request.SetContext(ctx)
     
     response = NewDescribeCRWorkInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyCRBlockStatusRequest() (request *ModifyCRBlockStatusRequest) {
+    request = &ModifyCRBlockStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("bma", APIVersion, "ModifyCRBlockStatus")
+    
+    
+    return
+}
+
+func NewModifyCRBlockStatusResponse() (response *ModifyCRBlockStatusResponse) {
+    response = &ModifyCRBlockStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyCRBlockStatus
+// 版权保护-拦截申请接口
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDACTION = "InvalidAction"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  NOSUCHVERSION = "NoSuchVersion"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyCRBlockStatus(request *ModifyCRBlockStatusRequest) (response *ModifyCRBlockStatusResponse, err error) {
+    return c.ModifyCRBlockStatusWithContext(context.Background(), request)
+}
+
+// ModifyCRBlockStatus
+// 版权保护-拦截申请接口
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDACTION = "InvalidAction"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  NOSUCHVERSION = "NoSuchVersion"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyCRBlockStatusWithContext(ctx context.Context, request *ModifyCRBlockStatusRequest) (response *ModifyCRBlockStatusResponse, err error) {
+    if request == nil {
+        request = NewModifyCRBlockStatusRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyCRBlockStatus require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyCRBlockStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyCRMonitorRequest() (request *ModifyCRMonitorRequest) {
+    request = &ModifyCRMonitorRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("bma", APIVersion, "ModifyCRMonitor")
+    
+    
+    return
+}
+
+func NewModifyCRMonitorResponse() (response *ModifyCRMonitorResponse) {
+    response = &ModifyCRMonitorResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyCRMonitor
+// 版权保护-修改监测状态接口
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDACTION = "InvalidAction"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  NOSUCHVERSION = "NoSuchVersion"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyCRMonitor(request *ModifyCRMonitorRequest) (response *ModifyCRMonitorResponse, err error) {
+    return c.ModifyCRMonitorWithContext(context.Background(), request)
+}
+
+// ModifyCRMonitor
+// 版权保护-修改监测状态接口
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDACTION = "InvalidAction"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  NOSUCHVERSION = "NoSuchVersion"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyCRMonitorWithContext(ctx context.Context, request *ModifyCRMonitorRequest) (response *ModifyCRMonitorResponse, err error) {
+    if request == nil {
+        request = NewModifyCRMonitorRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyCRMonitor require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyCRMonitorResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyCRObtainStatusRequest() (request *ModifyCRObtainStatusRequest) {
+    request = &ModifyCRObtainStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("bma", APIVersion, "ModifyCRObtainStatus")
+    
+    
+    return
+}
+
+func NewModifyCRObtainStatusResponse() (response *ModifyCRObtainStatusResponse) {
+    response = &ModifyCRObtainStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyCRObtainStatus
+// 申请取证
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDACTION = "InvalidAction"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  NOSUCHVERSION = "NoSuchVersion"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyCRObtainStatus(request *ModifyCRObtainStatusRequest) (response *ModifyCRObtainStatusResponse, err error) {
+    return c.ModifyCRObtainStatusWithContext(context.Background(), request)
+}
+
+// ModifyCRObtainStatus
+// 申请取证
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDACTION = "InvalidAction"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  NOSUCHVERSION = "NoSuchVersion"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyCRObtainStatusWithContext(ctx context.Context, request *ModifyCRObtainStatusRequest) (response *ModifyCRObtainStatusResponse, err error) {
+    if request == nil {
+        request = NewModifyCRObtainStatusRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyCRObtainStatus require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyCRObtainStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyCRRightStatusRequest() (request *ModifyCRRightStatusRequest) {
+    request = &ModifyCRRightStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("bma", APIVersion, "ModifyCRRightStatus")
+    
+    
+    return
+}
+
+func NewModifyCRRightStatusResponse() (response *ModifyCRRightStatusResponse) {
+    response = &ModifyCRRightStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyCRRightStatus
+// 版权保护-维权申请接口
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDACTION = "InvalidAction"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  NOSUCHVERSION = "NoSuchVersion"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyCRRightStatus(request *ModifyCRRightStatusRequest) (response *ModifyCRRightStatusResponse, err error) {
+    return c.ModifyCRRightStatusWithContext(context.Background(), request)
+}
+
+// ModifyCRRightStatus
+// 版权保护-维权申请接口
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDACTION = "InvalidAction"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  NOSUCHVERSION = "NoSuchVersion"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyCRRightStatusWithContext(ctx context.Context, request *ModifyCRRightStatusRequest) (response *ModifyCRRightStatusResponse, err error) {
+    if request == nil {
+        request = NewModifyCRRightStatusRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyCRRightStatus require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyCRRightStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdateCRWorkRequest() (request *UpdateCRWorkRequest) {
+    request = &UpdateCRWorkRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("bma", APIVersion, "UpdateCRWork")
+    
+    
+    return
+}
+
+func NewUpdateCRWorkResponse() (response *UpdateCRWorkResponse) {
+    response = &UpdateCRWorkResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// UpdateCRWork
+// 更新作品
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDACTION = "InvalidAction"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  NOSUCHVERSION = "NoSuchVersion"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) UpdateCRWork(request *UpdateCRWorkRequest) (response *UpdateCRWorkResponse, err error) {
+    return c.UpdateCRWorkWithContext(context.Background(), request)
+}
+
+// UpdateCRWork
+// 更新作品
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDACTION = "InvalidAction"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  NOSUCHVERSION = "NoSuchVersion"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) UpdateCRWorkWithContext(ctx context.Context, request *UpdateCRWorkRequest) (response *UpdateCRWorkResponse, err error) {
+    if request == nil {
+        request = NewUpdateCRWorkRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateCRWork require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpdateCRWorkResponse()
     err = c.Send(request, response)
     return
 }

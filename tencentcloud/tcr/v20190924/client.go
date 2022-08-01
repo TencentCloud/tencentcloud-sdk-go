@@ -3222,6 +3222,7 @@ func NewDescribeInstancesResponse() (response *DescribeInstancesResponse) {
 // 查询实例信息
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DBERROR = "InternalError.DbError"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -3239,6 +3240,7 @@ func (c *Client) DescribeInstances(request *DescribeInstancesRequest) (response 
 // 查询实例信息
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DBERROR = "InternalError.DbError"
 //  INVALIDPARAMETER = "InvalidParameter"

@@ -824,93 +824,6 @@ func (r *DescribeImagesResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
-type DetectCelebrityRequestParams struct {
-	// 图片URL地址。 
-	// 图片限制： 
-	// • 图片格式：PNG、JPG、JPEG。 
-	// • 图片大小：所下载图片经Base64编码后不超过4M。图片下载时间不超过3秒。 
-	// 建议：
-	// • 图片像素：大于50*50像素，否则影响识别效果； 
-	// • 长宽比：长边：短边<5； 
-	// 接口响应时间会受到图片下载时间的影响，建议使用更可靠的存储服务，推荐将图片存储在腾讯云COS。
-	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
-
-	// 图片经过base64编码的内容。最大不超过4M。与ImageUrl同时存在时优先使用ImageUrl字段。
-	// **注意：图片需要base64编码，并且要去掉编码头部。**
-	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
-}
-
-type DetectCelebrityRequest struct {
-	*tchttp.BaseRequest
-	
-	// 图片URL地址。 
-	// 图片限制： 
-	// • 图片格式：PNG、JPG、JPEG。 
-	// • 图片大小：所下载图片经Base64编码后不超过4M。图片下载时间不超过3秒。 
-	// 建议：
-	// • 图片像素：大于50*50像素，否则影响识别效果； 
-	// • 长宽比：长边：短边<5； 
-	// 接口响应时间会受到图片下载时间的影响，建议使用更可靠的存储服务，推荐将图片存储在腾讯云COS。
-	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
-
-	// 图片经过base64编码的内容。最大不超过4M。与ImageUrl同时存在时优先使用ImageUrl字段。
-	// **注意：图片需要base64编码，并且要去掉编码头部。**
-	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
-}
-
-func (r *DetectCelebrityRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DetectCelebrityRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "ImageUrl")
-	delete(f, "ImageBase64")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DetectCelebrityRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DetectCelebrityResponseParams struct {
-	// 公众人物识别结果数组。如果检测不到人脸，返回为空；最多可以返回10个人脸识别结果。
-	Faces []*Face `json:"Faces,omitempty" name:"Faces"`
-
-	// 本服务在不同误识率水平下（将图片中的人物识别错误的比例）的推荐阈值，可以用于控制识别结果的精度。 
-	// FalseRate1Percent, FalseRate5Permil, FalseRate1Permil分别代表误识率在百分之一、千分之五、千分之一情况下的推荐阈值。 
-	// 因为阈值会存在变动，请勿将此处输出的固定值处理，而是每次取值与confidence对比，来判断本次的识别结果是否可信。
-	//  例如，如果您业务中可以接受的误识率是1%，则可以将所有confidence>=FalseRate1Percent的结论认为是正确的。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Threshold *Threshold `json:"Threshold,omitempty" name:"Threshold"`
-
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-}
-
-type DetectCelebrityResponse struct {
-	*tchttp.BaseResponse
-	Response *DetectCelebrityResponseParams `json:"Response"`
-}
-
-func (r *DetectCelebrityResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DetectCelebrityResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
 type DetectDisgustRequestParams struct {
 	// 图片URL地址。 
 	// 图片限制： 
@@ -1735,36 +1648,6 @@ func (r *EnhanceImageResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-type Face struct {
-	// 与图片中人脸最相似的公众人物的名字。
-	Name *string `json:"Name,omitempty" name:"Name"`
-
-	// 公众人物身份标签的数组，一个公众人物可能有多个身份标签。
-	Labels []*Labels `json:"Labels,omitempty" name:"Labels"`
-
-	// 对人物的简介。
-	BasicInfo *string `json:"BasicInfo,omitempty" name:"BasicInfo"`
-
-	// 算法对于Name的置信度（图像中人脸与公众人物的相似度），0-100之间，值越高，表示对于Name越确定。
-	Confidence *int64 `json:"Confidence,omitempty" name:"Confidence"`
-
-	// 人脸区域左上角横坐标。
-	X *int64 `json:"X,omitempty" name:"X"`
-
-	// 人脸区域左上角纵坐标。
-	Y *int64 `json:"Y,omitempty" name:"Y"`
-
-	// 人脸区域宽度。
-	Width *int64 `json:"Width,omitempty" name:"Width"`
-
-	// 人脸区域高度。
-	Height *int64 `json:"Height,omitempty" name:"Height"`
-
-	// 公众人物的唯一编号，可以用于区分同名人物、一个人物不同称呼等情况。唯一编号为8个字符构成的字符串。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	ID *string `json:"ID,omitempty" name:"ID"`
-}
-
 type GroupInfo struct {
 	// 图库Id。
 	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
@@ -1835,16 +1718,6 @@ type ImageTag struct {
 
 	// 置信度范围在0-100之间。值越高，表示目标为相应结果的可能性越高。
 	Confidence *float64 `json:"Confidence,omitempty" name:"Confidence"`
-}
-
-type Labels struct {
-	// 公众人物身份标签的一级分类，例如体育明星、娱乐明星等；
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	FirstLabel *string `json:"FirstLabel,omitempty" name:"FirstLabel"`
-
-	// 公众人物身份标签的二级分类，例如歌手（对应一级标签为“娱乐明星”）；
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	SecondLabel *string `json:"SecondLabel,omitempty" name:"SecondLabel"`
 }
 
 type LemmaInfo struct {
@@ -2319,15 +2192,4 @@ func (r *SearchImageResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *SearchImageResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
-}
-
-type Threshold struct {
-	// 误识率在百分之一时的推荐阈值。
-	FalseRate1Percent *int64 `json:"FalseRate1Percent,omitempty" name:"FalseRate1Percent"`
-
-	// 误识率在千分之五时的推荐阈值。
-	FalseRate5Permil *int64 `json:"FalseRate5Permil,omitempty" name:"FalseRate5Permil"`
-
-	// 误识率在千分之一时的推荐阈值。
-	FalseRate1Permil *int64 `json:"FalseRate1Permil,omitempty" name:"FalseRate1Permil"`
 }

@@ -123,6 +123,7 @@ func NewChannelCreateFlowByFilesResponse() (response *ChannelCreateFlowByFilesRe
 // 接口（ChannelCreateFlowByFiles）用于渠道版通过文件创建签署流程。此接口不可直接使用，需要运营申请
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_AGENOTACHIEVENORMALLEGAL = "FailedOperation.AgeNotAchieveNormalLegal"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DB = "InternalError.Db"
@@ -151,6 +152,7 @@ func (c *Client) ChannelCreateFlowByFiles(request *ChannelCreateFlowByFilesReque
 // 接口（ChannelCreateFlowByFiles）用于渠道版通过文件创建签署流程。此接口不可直接使用，需要运营申请
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_AGENOTACHIEVENORMALLEGAL = "FailedOperation.AgeNotAchieveNormalLegal"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DB = "InternalError.Db"
@@ -706,6 +708,7 @@ func NewDescribeTemplatesResponse() (response *DescribeTemplatesResponse) {
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DB = "InternalError.Db"
 //  INTERNALERROR_DBREAD = "InternalError.DbRead"
+//  INTERNALERROR_DEPENDSAPI = "InternalError.DependsApi"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_APPLICATION = "InvalidParameter.Application"
 //  INVALIDPARAMETER_DATANOTFOUND = "InvalidParameter.DataNotFound"
@@ -728,6 +731,7 @@ func (c *Client) DescribeTemplates(request *DescribeTemplatesRequest) (response 
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DB = "InternalError.Db"
 //  INTERNALERROR_DBREAD = "InternalError.DbRead"
+//  INTERNALERROR_DEPENDSAPI = "InternalError.DependsApi"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_APPLICATION = "InvalidParameter.Application"
 //  INVALIDPARAMETER_DATANOTFOUND = "InvalidParameter.DataNotFound"

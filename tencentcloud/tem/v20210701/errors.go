@@ -44,6 +44,9 @@ const (
 	// 版本部署调用失败。
 	INTERNALERROR_DEPLOYVERSIONERROR = "InternalError.DeployVersionError"
 
+	// 查询 ingress 失败。
+	INTERNALERROR_DESCRIBEINGRESSERROR = "InternalError.DescribeIngressError"
+
 	// 查询实例信息失败。
 	INTERNALERROR_DESCRIBERUNPODLISTERROR = "InternalError.DescribeRunPodListError"
 
@@ -100,6 +103,9 @@ const (
 
 	// 应用创建失败，达到上限。
 	INVALIDPARAMETERVALUE_SERVICEREACHMAXIMUM = "InvalidParameterValue.ServiceReachMaximum"
+
+	// 不是合法的TEM ID。
+	INVALIDPARAMETERVALUE_TEMIDINVALID = "InvalidParameterValue.TemIdInvalid"
 
 	// 非 JAVA 应用不支持链路追踪特性。
 	INVALIDPARAMETERVALUE_TRAITSTRACINGNOTSUPPORTED = "InvalidParameterValue.TraitsTracingNotSupported"

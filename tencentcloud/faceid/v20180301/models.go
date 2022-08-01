@@ -883,6 +883,9 @@ type DetectAuthRequestParams struct {
 
 	// 意愿核身使用的文案，若未使用意愿核身功能，该字段无需传入。默认为空，最长可接受120的字符串长度。
 	IntentionVerifyText *string `json:"IntentionVerifyText,omitempty" name:"IntentionVerifyText"`
+
+	// 意愿核身过程中播报文本/问题、用户朗读/回答的文本，当前支持一个播报文本+回答文本。
+	IntentionQuestions []*IntentionQuestion `json:"IntentionQuestions,omitempty" name:"IntentionQuestions"`
 }
 
 type DetectAuthRequest struct {
@@ -916,6 +919,9 @@ type DetectAuthRequest struct {
 
 	// 意愿核身使用的文案，若未使用意愿核身功能，该字段无需传入。默认为空，最长可接受120的字符串长度。
 	IntentionVerifyText *string `json:"IntentionVerifyText,omitempty" name:"IntentionVerifyText"`
+
+	// 意愿核身过程中播报文本/问题、用户朗读/回答的文本，当前支持一个播报文本+回答文本。
+	IntentionQuestions []*IntentionQuestion `json:"IntentionQuestions,omitempty" name:"IntentionQuestions"`
 }
 
 func (r *DetectAuthRequest) ToJsonString() string {
@@ -939,6 +945,7 @@ func (r *DetectAuthRequest) FromJsonString(s string) error {
 	delete(f, "ImageBase64")
 	delete(f, "Encryption")
 	delete(f, "IntentionVerifyText")
+	delete(f, "IntentionQuestions")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DetectAuthRequest has unknown keys!", "")
 	}
@@ -1063,12 +1070,29 @@ type DetectInfoIdCardData struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Avatar *string `json:"Avatar,omitempty" name:"Avatar"`
 
-	// 开启身份证防翻拍告警功能后才会返回，返回数组中可能出现的告警码如下：
-	// -9102 身份证复印件告警。
-	// -9103 身份证翻拍告警。
-	// -9106 身份证 PS 告警。
+	// 身份证人像面告警码，开启身份证告警功能后才会返回，返回数组中可能出现的告警码如下：
+	// -9100 身份证有效日期不合法告警，
+	// -9101 身份证边框不完整告警，
+	// -9102 身份证复印件告警，
+	// -9103 身份证翻拍告警，
+	// -9105 身份证框内遮挡告警，
+	// -9104 临时身份证告警，
+	// -9106 身份证 PS 告警，
+	// -9107 身份证反光告警。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	WarnInfos []*int64 `json:"WarnInfos,omitempty" name:"WarnInfos"`
+
+	// 身份证国徽面告警码，开启身份证告警功能后才会返回，返回数组中可能出现的告警码如下：
+	// -9100 身份证有效日期不合法告警，
+	// -9101 身份证边框不完整告警，
+	// -9102 身份证复印件告警，
+	// -9103 身份证翻拍告警，
+	// -9105 身份证框内遮挡告警，
+	// -9104 临时身份证告警，
+	// -9106 身份证 PS 告警，
+	// -9107 身份证反光告警。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BackWarnInfos []*int64 `json:"BackWarnInfos,omitempty" name:"BackWarnInfos"`
 }
 
 type DetectInfoText struct {
@@ -1454,6 +1478,10 @@ type GetDetectInfoEnhancedResponseParams struct {
 	// 意愿核身相关信息。若未使用意愿核身功能，该字段返回值可以不处理。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IntentionVerifyData *IntentionVerifyData `json:"IntentionVerifyData,omitempty" name:"IntentionVerifyData"`
+
+	// 意愿核身问答模式结果。若未使用该意愿核身功能，该字段返回值可以不处理。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IntentionQuestionResult *IntentionQuestionResult `json:"IntentionQuestionResult,omitempty" name:"IntentionQuestionResult"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2606,6 +2634,42 @@ func (r *ImageRecognitionResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *ImageRecognitionResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type IntentionQuestion struct {
+	// 系统播报的问题文本，问题最大长度为150个字符。
+	Question *string `json:"Question,omitempty" name:"Question"`
+
+	// 用户答案的标准文本列表，用于识别用户回答的语音与标准文本是否一致。列表长度最大为50，单个答案长度限制10个字符。
+	Answers []*string `json:"Answers,omitempty" name:"Answers"`
+}
+
+type IntentionQuestionResult struct {
+	// 意愿核身最终结果：
+	// 0：通过，-1：未通过
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FinalResultCode *string `json:"FinalResultCode,omitempty" name:"FinalResultCode"`
+
+	// 视频base64（其中包含全程问题和回答音频，mp4格式）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Video *string `json:"Video,omitempty" name:"Video"`
+
+	// 屏幕截图base64列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ScreenShot []*string `json:"ScreenShot,omitempty" name:"ScreenShot"`
+
+	// 和答案匹配结果列表
+	// 0：成功，-1：不匹配
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResultCode []*string `json:"ResultCode,omitempty" name:"ResultCode"`
+
+	// 回答问题语音识别结果列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AsrResult []*string `json:"AsrResult,omitempty" name:"AsrResult"`
+
+	// 答案录音音频
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Audios []*string `json:"Audios,omitempty" name:"Audios"`
 }
 
 type IntentionVerifyData struct {

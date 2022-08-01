@@ -197,6 +197,9 @@ const (
 	// 该实例不支持AnycastEIP。
 	INVALIDPARAMETERVALUE_INSTANCEDOESNOTSUPPORTANYCAST = "InvalidParameterValue.InstanceDoesNotSupportAnycast"
 
+	// 实例不存在公网IP。
+	INVALIDPARAMETERVALUE_INSTANCEHASNOWANIP = "InvalidParameterValue.InstanceHasNoWanIP"
+
 	// 该实例已有WanIP。
 	INVALIDPARAMETERVALUE_INSTANCEHASWANIP = "InvalidParameterValue.InstanceHasWanIP"
 

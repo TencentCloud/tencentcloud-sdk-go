@@ -7045,6 +7045,10 @@ type DescribeZoneDetailsResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 
+	// 计费资源
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Resources []*Resource `json:"Resources,omitempty" name:"Resources"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }
@@ -9959,6 +9963,40 @@ func (r *ReclaimZoneResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type Resource struct {
+	// 资源 ID
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 付费模式
+	// 0 为后付费
+	// 1 为预付费
+	PayMode *int64 `json:"PayMode,omitempty" name:"PayMode"`
+
+	// 创建时间
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 生效时间
+	EnableTime *string `json:"EnableTime,omitempty" name:"EnableTime"`
+
+	// 失效时间
+	ExpireTime *string `json:"ExpireTime,omitempty" name:"ExpireTime"`
+
+	// 套餐状态
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 询价参数
+	Sv []*Sv `json:"Sv,omitempty" name:"Sv"`
+
+	// 是否自动续费
+	// 0 表示默认状态
+	// 1 表示自动续费
+	// 2 表示不自动续费
+	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitempty" name:"AutoRenewFlag"`
+
+	// 套餐关联资源ID
+	PlanId *string `json:"PlanId,omitempty" name:"PlanId"`
+}
+
 // Predefined struct for user
 type ScanDnsRecordsRequestParams struct {
 	// 站点 ID
@@ -10168,6 +10206,14 @@ type SmartRouting struct {
 	// on：开启
 	// off：关闭
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
+}
+
+type Sv struct {
+	// 询价参数 key
+	Key *string `json:"Key,omitempty" name:"Key"`
+
+	// 询价参数 value
+	Value *string `json:"Value,omitempty" name:"Value"`
 }
 
 type SwitchConfig struct {
@@ -10508,6 +10554,16 @@ type Zone struct {
 	// 资源标签
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
+
+	// 计费资源
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Resources []*Resource `json:"Resources,omitempty" name:"Resources"`
+
+	// 是否开启cname加速
+	// - enabled 开启
+	// - disabled 关闭
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CnameSpeedUp *string `json:"CnameSpeedUp,omitempty" name:"CnameSpeedUp"`
 }
 
 type ZoneFilter struct {

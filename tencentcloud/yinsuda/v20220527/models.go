@@ -208,6 +208,11 @@ type DescribeKTVPlaylistsRequestParams struct {
 
 	// 用户标识。
 	UserId *string `json:"UserId,omitempty" name:"UserId"`
+
+	// 类型列表，取值有：
+	// <li>OfficialRec：官方推荐；</li>
+	// <li>Customize：自定义。</li>
+	Types []*string `json:"Types,omitempty" name:"Types"`
 }
 
 type DescribeKTVPlaylistsRequest struct {
@@ -218,6 +223,11 @@ type DescribeKTVPlaylistsRequest struct {
 
 	// 用户标识。
 	UserId *string `json:"UserId,omitempty" name:"UserId"`
+
+	// 类型列表，取值有：
+	// <li>OfficialRec：官方推荐；</li>
+	// <li>Customize：自定义。</li>
+	Types []*string `json:"Types,omitempty" name:"Types"`
 }
 
 func (r *DescribeKTVPlaylistsRequest) ToJsonString() string {
@@ -234,6 +244,7 @@ func (r *DescribeKTVPlaylistsRequest) FromJsonString(s string) error {
 	}
 	delete(f, "AppName")
 	delete(f, "UserId")
+	delete(f, "Types")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeKTVPlaylistsRequest has unknown keys!", "")
 	}

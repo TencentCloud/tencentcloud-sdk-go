@@ -1753,6 +1753,12 @@ type DBInstance struct {
 
 	// 跨地域备份保留天数，则默认7天
 	CrossBackupSaveDays *uint64 `json:"CrossBackupSaveDays,omitempty" name:"CrossBackupSaveDays"`
+
+	// 外网地址域名
+	DnsPodDomain *string `json:"DnsPodDomain,omitempty" name:"DnsPodDomain"`
+
+	// 外网端口号
+	TgwWanVPort *int64 `json:"TgwWanVPort,omitempty" name:"TgwWanVPort"`
 }
 
 type DBPrivilege struct {

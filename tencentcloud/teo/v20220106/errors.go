@@ -71,13 +71,22 @@ const (
 	// 无效的源站。
 	INVALIDPARAMETER_INVALIDORIGIN = "InvalidParameter.InvalidOrigin"
 
+	// 套餐包不支持最大上传大小。
+	INVALIDPARAMETER_INVALIDPOSTMAXSIZEBILLING = "InvalidParameter.InvalidPostMaxSizeBilling"
+
 	// 无效的请求头header。
 	INVALIDPARAMETER_INVALIDREQUESTHEADERNAME = "InvalidParameter.InvalidRequestHeaderName"
+
+	// 无套餐包。
+	INVALIDPARAMETER_INVALIDRESOURCEIDBILLING = "InvalidParameter.InvalidResourceIdBilling"
+
+	// 无效的WebSocket。
+	INVALIDPARAMETER_INVALIDWEBSOCKETTIMEOUT = "InvalidParameter.InvalidWebSocketTimeout"
 
 	// 参数错误。
 	INVALIDPARAMETER_PARAMETERERROR = "InvalidParameter.ParameterError"
 
-	// 安全参数错误。
+	// 参数错误
 	INVALIDPARAMETER_SECURITY = "InvalidParameter.Security"
 
 	// 域名配置错误。
@@ -124,6 +133,9 @@ const (
 
 	// 记录不允许添加。
 	INVALIDPARAMETERVALUE_RECORDNOTALLOWED = "InvalidParameterValue.RecordNotAllowed"
+
+	// 超过配额限制。
+	LIMITEXCEEDED = "LimitExceeded"
 
 	// 本次提交的资源数超过上限。
 	LIMITEXCEEDED_BATCHQUOTA = "LimitExceeded.BatchQuota"

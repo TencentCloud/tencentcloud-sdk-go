@@ -695,7 +695,7 @@ type DescribeFlySecMiniAppReportUrlRequestParams struct {
 	// 诊断方式 1:基础诊断，2:深度诊断
 	Mode *int64 `json:"Mode,omitempty" name:"Mode"`
 
-	// 诊断报告类型 0:基础诊断报告, 1:总裁版诊断报告
+	// 诊断报告类型 0:基础诊断报告，1:总裁版诊断报告，2:诊断报告json结果
 	ReportType *int64 `json:"ReportType,omitempty" name:"ReportType"`
 }
 
@@ -711,7 +711,7 @@ type DescribeFlySecMiniAppReportUrlRequest struct {
 	// 诊断方式 1:基础诊断，2:深度诊断
 	Mode *int64 `json:"Mode,omitempty" name:"Mode"`
 
-	// 诊断报告类型 0:基础诊断报告, 1:总裁版诊断报告
+	// 诊断报告类型 0:基础诊断报告，1:总裁版诊断报告，2:诊断报告json结果
 	ReportType *int64 `json:"ReportType,omitempty" name:"ReportType"`
 }
 
@@ -1284,7 +1284,7 @@ type DescribeScanTaskReportUrlRequestParams struct {
 	// 应用平台, 0:android, 1:ios, 2:小程序
 	Platform *int64 `json:"Platform,omitempty" name:"Platform"`
 
-	// 报告类型, 0:诊断报告, 1:堆栈报告
+	// 报告类型, 0:诊断报告, 1:堆栈报告(预留), 2:视频证据(预留), 3:报告json结果
 	ReportType *int64 `json:"ReportType,omitempty" name:"ReportType"`
 
 	// 任务类型, 0:基础版, 1:专家版, 2:本地化
@@ -1303,7 +1303,7 @@ type DescribeScanTaskReportUrlRequest struct {
 	// 应用平台, 0:android, 1:ios, 2:小程序
 	Platform *int64 `json:"Platform,omitempty" name:"Platform"`
 
-	// 报告类型, 0:诊断报告, 1:堆栈报告
+	// 报告类型, 0:诊断报告, 1:堆栈报告(预留), 2:视频证据(预留), 3:报告json结果
 	ReportType *int64 `json:"ReportType,omitempty" name:"ReportType"`
 
 	// 任务类型, 0:基础版, 1:专家版, 2:本地化

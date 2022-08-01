@@ -633,6 +633,24 @@ type BotStatPointItem struct {
 	Label *string `json:"Label,omitempty" name:"Label"`
 }
 
+type CdcCluster struct {
+	// cdc的集群id
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// cdc的集群名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitempty" name:"Name"`
+}
+
+type CdcRegion struct {
+	// 地域
+	Region *string `json:"Region,omitempty" name:"Region"`
+
+	// 该地域对应的集群信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Clusters []*CdcCluster `json:"Clusters,omitempty" name:"Clusters"`
+}
+
 // Predefined struct for user
 type CreateAccessExportRequestParams struct {
 	// 客户要查询的日志主题ID，每个客户都有对应的一个主题
@@ -2042,6 +2060,61 @@ func (r *DescribeIpHitItemsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeIpHitItemsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeUserCdcClbWafRegionsRequestParams struct {
+
+}
+
+type DescribeUserCdcClbWafRegionsRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DescribeUserCdcClbWafRegionsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeUserCdcClbWafRegionsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeUserCdcClbWafRegionsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeUserCdcClbWafRegionsResponseParams struct {
+	// CdcRegion的类型描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data []*CdcRegion `json:"Data,omitempty" name:"Data"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeUserCdcClbWafRegionsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeUserCdcClbWafRegionsResponseParams `json:"Response"`
+}
+
+func (r *DescribeUserCdcClbWafRegionsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeUserCdcClbWafRegionsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

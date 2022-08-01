@@ -164,6 +164,9 @@ const (
 	// 参数错误。
 	INVALIDPARAMETERVALUE_PARAMERROR = "InvalidParameterValue.ParamError"
 
+	// 参数值无效，超过允许范围。
+	INVALIDPARAMETERVALUE_PARAMETEROUTRANGEERROR = "InvalidParameterValue.ParameterOutRangeError"
+
 	// 预付费类型不允许该操作。
 	INVALIDPARAMETERVALUE_PREPAYPAYMODEERROR = "InvalidParameterValue.PrePayPayModeError"
 

@@ -145,7 +145,7 @@ func NewDescribeKTVPlaylistsResponse() (response *DescribeKTVPlaylistsResponse) 
 }
 
 // DescribeKTVPlaylists
-// 获取推荐歌单列表。
+// 获取歌单列表。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -154,7 +154,7 @@ func (c *Client) DescribeKTVPlaylists(request *DescribeKTVPlaylistsRequest) (res
 }
 
 // DescribeKTVPlaylists
-// 获取推荐歌单列表。
+// 获取歌单列表。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"

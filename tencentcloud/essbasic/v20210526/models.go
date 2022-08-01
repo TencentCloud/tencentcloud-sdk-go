@@ -153,6 +153,9 @@ type ChannelCreateFlowByFilesRequestParams struct {
 	// 合同显示的页卡模板，说明：只支持{合同名称}, {发起方企业}, {发起方姓名}, {签署方N企业}, {签署方N姓名}，且N不能超过签署人的数量，N从1开始
 	CustomShowMap *string `json:"CustomShowMap,omitempty" name:"CustomShowMap"`
 
+	// 渠道的业务信息，最大长度1000个字符。发起自动签署时，需设置对应自动签署场景，目前仅支持场景：处方单-E_PRESCRIPTION_AUTO_SIGN
+	CustomerData *string `json:"CustomerData,omitempty" name:"CustomerData"`
+
 	// 操作者的信息
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 }
@@ -193,6 +196,9 @@ type ChannelCreateFlowByFilesRequest struct {
 	// 合同显示的页卡模板，说明：只支持{合同名称}, {发起方企业}, {发起方姓名}, {签署方N企业}, {签署方N姓名}，且N不能超过签署人的数量，N从1开始
 	CustomShowMap *string `json:"CustomShowMap,omitempty" name:"CustomShowMap"`
 
+	// 渠道的业务信息，最大长度1000个字符。发起自动签署时，需设置对应自动签署场景，目前仅支持场景：处方单-E_PRESCRIPTION_AUTO_SIGN
+	CustomerData *string `json:"CustomerData,omitempty" name:"CustomerData"`
+
 	// 操作者的信息
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 }
@@ -220,6 +226,7 @@ func (r *ChannelCreateFlowByFilesRequest) FromJsonString(s string) error {
 	delete(f, "FlowType")
 	delete(f, "FlowDescription")
 	delete(f, "CustomShowMap")
+	delete(f, "CustomerData")
 	delete(f, "Operator")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ChannelCreateFlowByFilesRequest has unknown keys!", "")

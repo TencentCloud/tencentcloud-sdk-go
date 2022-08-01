@@ -432,6 +432,7 @@ func NewDeployApplicationResponse() (response *DeployApplicationResponse) {
 //  INVALIDPARAMETERVALUE_AUTOSCALERLARGERTHANONE = "InvalidParameterValue.AutoScalerLargerThanOne"
 //  INVALIDPARAMETERVALUE_INVALIDDEPLOYVERSION = "InvalidParameterValue.InvalidDeployVersion"
 //  INVALIDPARAMETERVALUE_SERVICEPODREACHMAXIMUM = "InvalidParameterValue.ServicePodReachMaximum"
+//  INVALIDPARAMETERVALUE_TEMIDINVALID = "InvalidParameterValue.TemIdInvalid"
 //  INVALIDPARAMETERVALUE_TRAITSTRACINGNOTSUPPORTED = "InvalidParameterValue.TraitsTracingNotSupported"
 //  INVALIDPARAMETERVALUE_VERSIONLOWERCASE = "InvalidParameterValue.VersionLowerCase"
 //  MISSINGPARAMETER_DEPLOYVERSIONNULL = "MissingParameter.DeployVersionNull"
@@ -456,6 +457,7 @@ func (c *Client) DeployApplication(request *DeployApplicationRequest) (response 
 //  INVALIDPARAMETERVALUE_AUTOSCALERLARGERTHANONE = "InvalidParameterValue.AutoScalerLargerThanOne"
 //  INVALIDPARAMETERVALUE_INVALIDDEPLOYVERSION = "InvalidParameterValue.InvalidDeployVersion"
 //  INVALIDPARAMETERVALUE_SERVICEPODREACHMAXIMUM = "InvalidParameterValue.ServicePodReachMaximum"
+//  INVALIDPARAMETERVALUE_TEMIDINVALID = "InvalidParameterValue.TemIdInvalid"
 //  INVALIDPARAMETERVALUE_TRAITSTRACINGNOTSUPPORTED = "InvalidParameterValue.TraitsTracingNotSupported"
 //  INVALIDPARAMETERVALUE_VERSIONLOWERCASE = "InvalidParameterValue.VersionLowerCase"
 //  MISSINGPARAMETER_DEPLOYVERSIONNULL = "MissingParameter.DeployVersionNull"
@@ -535,6 +537,57 @@ func (c *Client) DescribeApplicationPodsWithContext(ctx context.Context, request
     request.SetContext(ctx)
     
     response = NewDescribeApplicationPodsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeApplicationsRequest() (request *DescribeApplicationsRequest) {
+    request = &DescribeApplicationsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tem", APIVersion, "DescribeApplications")
+    
+    
+    return
+}
+
+func NewDescribeApplicationsResponse() (response *DescribeApplicationsResponse) {
+    response = &DescribeApplicationsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeApplications
+// 获取运行服务列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR_ACTIONREADTIMEOUT = "InternalError.ActionReadTimeout"
+//  INTERNALERROR_DEFAULTINTERNALERROR = "InternalError.DefaultInternalError"
+//  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
+func (c *Client) DescribeApplications(request *DescribeApplicationsRequest) (response *DescribeApplicationsResponse, err error) {
+    return c.DescribeApplicationsWithContext(context.Background(), request)
+}
+
+// DescribeApplications
+// 获取运行服务列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR_ACTIONREADTIMEOUT = "InternalError.ActionReadTimeout"
+//  INTERNALERROR_DEFAULTINTERNALERROR = "InternalError.DefaultInternalError"
+//  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
+func (c *Client) DescribeApplicationsWithContext(ctx context.Context, request *DescribeApplicationsRequest) (response *DescribeApplicationsResponse, err error) {
+    if request == nil {
+        request = NewDescribeApplicationsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeApplications require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeApplicationsResponse()
     err = c.Send(request, response)
     return
 }
@@ -649,6 +702,59 @@ func (c *Client) DescribeDeployApplicationDetailWithContext(ctx context.Context,
     return
 }
 
+func NewDescribeEnvironmentStatusRequest() (request *DescribeEnvironmentStatusRequest) {
+    request = &DescribeEnvironmentStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tem", APIVersion, "DescribeEnvironmentStatus")
+    
+    
+    return
+}
+
+func NewDescribeEnvironmentStatusResponse() (response *DescribeEnvironmentStatusResponse) {
+    response = &DescribeEnvironmentStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeEnvironmentStatus
+// 获取环境状态
+//
+// 可能返回的错误码:
+//  INTERNALERROR_ACTIONREADTIMEOUT = "InternalError.ActionReadTimeout"
+//  INTERNALERROR_DEFAULTINTERNALERROR = "InternalError.DefaultInternalError"
+//  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
+//  RESOURCENOTFOUND_NAMESPACENOTFOUND = "ResourceNotFound.NamespaceNotFound"
+func (c *Client) DescribeEnvironmentStatus(request *DescribeEnvironmentStatusRequest) (response *DescribeEnvironmentStatusResponse, err error) {
+    return c.DescribeEnvironmentStatusWithContext(context.Background(), request)
+}
+
+// DescribeEnvironmentStatus
+// 获取环境状态
+//
+// 可能返回的错误码:
+//  INTERNALERROR_ACTIONREADTIMEOUT = "InternalError.ActionReadTimeout"
+//  INTERNALERROR_DEFAULTINTERNALERROR = "InternalError.DefaultInternalError"
+//  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
+//  RESOURCENOTFOUND_NAMESPACENOTFOUND = "ResourceNotFound.NamespaceNotFound"
+func (c *Client) DescribeEnvironmentStatusWithContext(ctx context.Context, request *DescribeEnvironmentStatusRequest) (response *DescribeEnvironmentStatusResponse, err error) {
+    if request == nil {
+        request = NewDescribeEnvironmentStatusRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeEnvironmentStatus require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeEnvironmentStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeEnvironmentsRequest() (request *DescribeEnvironmentsRequest) {
     request = &DescribeEnvironmentsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -721,6 +827,8 @@ func NewDescribeIngressResponse() (response *DescribeIngressResponse) {
 // 查询 Ingress 规则
 //
 // 可能返回的错误码:
+//  INTERNALERROR_DESCRIBEINGRESSERROR = "InternalError.DescribeIngressError"
+//  INVALIDPARAMETERVALUE_TEMIDINVALID = "InvalidParameterValue.TemIdInvalid"
 //  RESOURCENOTFOUND_VERSIONNAMESPACENOTFOUND = "ResourceNotFound.VersionNamespaceNotFound"
 func (c *Client) DescribeIngress(request *DescribeIngressRequest) (response *DescribeIngressResponse, err error) {
     return c.DescribeIngressWithContext(context.Background(), request)
@@ -730,6 +838,8 @@ func (c *Client) DescribeIngress(request *DescribeIngressRequest) (response *Des
 // 查询 Ingress 规则
 //
 // 可能返回的错误码:
+//  INTERNALERROR_DESCRIBEINGRESSERROR = "InternalError.DescribeIngressError"
+//  INVALIDPARAMETERVALUE_TEMIDINVALID = "InvalidParameterValue.TemIdInvalid"
 //  RESOURCENOTFOUND_VERSIONNAMESPACENOTFOUND = "ResourceNotFound.VersionNamespaceNotFound"
 func (c *Client) DescribeIngressWithContext(ctx context.Context, request *DescribeIngressRequest) (response *DescribeIngressResponse, err error) {
     if request == nil {

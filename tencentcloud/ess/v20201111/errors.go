@@ -35,6 +35,15 @@ const (
 	// 流程已关联文档。
 	FAILEDOPERATION_FLOWHASDOCUMENT = "FailedOperation.FlowHasDocument"
 
+	// 企业经营状态与工商局信息不符。
+	FAILEDOPERATION_ORGANIZATIONEXPERIENCECHANGE = "FailedOperation.OrganizationExperienceChange"
+
+	// 企业名称与工商局信息不符。
+	FAILEDOPERATION_ORGANIZATIONNAMECHANGED = "FailedOperation.OrganizationNameChanged"
+
+	// 企业名称与工商局信息不符,需要超管修改。
+	FAILEDOPERATION_ORGANIZATIONNAMENEEDCHANGE = "FailedOperation.OrganizationNameNeedChange"
+
 	// 发起签署存在填写控件。
 	FAILEDOPERATION_QRCODECREATORSIGNCOMPONENTS = "FailedOperation.QrCodeCreatorSignComponents"
 

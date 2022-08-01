@@ -7195,6 +7195,64 @@ func (r *DescribeEdgeClusterInstancesResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeEdgeLogSwitchesRequestParams struct {
+	// 集群ID列表
+	ClusterIds []*string `json:"ClusterIds,omitempty" name:"ClusterIds"`
+}
+
+type DescribeEdgeLogSwitchesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群ID列表
+	ClusterIds []*string `json:"ClusterIds,omitempty" name:"ClusterIds"`
+}
+
+func (r *DescribeEdgeLogSwitchesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeEdgeLogSwitchesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeEdgeLogSwitchesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeEdgeLogSwitchesResponseParams struct {
+	// 集群日志开关集合
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SwitchSet []*string `json:"SwitchSet,omitempty" name:"SwitchSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeEdgeLogSwitchesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeEdgeLogSwitchesResponseParams `json:"Response"`
+}
+
+func (r *DescribeEdgeLogSwitchesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeEdgeLogSwitchesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeEksContainerInstanceLogRequestParams struct {
 	// Eks Container Instance Id，即容器实例Id
 	EksCiId *string `json:"EksCiId,omitempty" name:"EksCiId"`

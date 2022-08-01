@@ -11441,12 +11441,47 @@ func (r *DescribeNetDetectsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeNetworkAclQuintupleEntriesRequestParams struct {
+	// 网络ACL实例ID。形如：acl-12345678。
+	NetworkAclId *string `json:"NetworkAclId,omitempty" name:"NetworkAclId"`
 
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回数量，默认为20，最小值为1，最大值为100。
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 过滤条件，参数不支持同时指定`HaVipIds`和`Filters`。
+	// <li>protocol - String - 协议，形如：`TCP`。</li>
+	// <li>description - String - 描述。</li>
+	// <li>destination-cidr - String - 目的CIDR， 形如：'192.168.0.0/24'。</li>
+	// <li>source-cidr- String - 源CIDR， 形如：'192.168.0.0/24'。</li>
+	// <li>action - String - 动作，形如ACCEPT或DROP。</li>
+	// <li>network-acl-quintuple-entry-id - String - 五元组唯一ID，形如：'acli45-ahnu4rv5'。</li>
+	// <li>network-acl-direction - String - 方向，形如：'INGRESS'或'EGRESS'。</li>
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 }
 
 type DescribeNetworkAclQuintupleEntriesRequest struct {
 	*tchttp.BaseRequest
 	
+	// 网络ACL实例ID。形如：acl-12345678。
+	NetworkAclId *string `json:"NetworkAclId,omitempty" name:"NetworkAclId"`
+
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回数量，默认为20，最小值为1，最大值为100。
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 过滤条件，参数不支持同时指定`HaVipIds`和`Filters`。
+	// <li>protocol - String - 协议，形如：`TCP`。</li>
+	// <li>description - String - 描述。</li>
+	// <li>destination-cidr - String - 目的CIDR， 形如：'192.168.0.0/24'。</li>
+	// <li>source-cidr- String - 源CIDR， 形如：'192.168.0.0/24'。</li>
+	// <li>action - String - 动作，形如ACCEPT或DROP。</li>
+	// <li>network-acl-quintuple-entry-id - String - 五元组唯一ID，形如：'acli45-ahnu4rv5'。</li>
+	// <li>network-acl-direction - String - 方向，形如：'INGRESS'或'EGRESS'。</li>
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 }
 
 func (r *DescribeNetworkAclQuintupleEntriesRequest) ToJsonString() string {
@@ -11461,7 +11496,10 @@ func (r *DescribeNetworkAclQuintupleEntriesRequest) FromJsonString(s string) err
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "NetworkAclId")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Filters")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeNetworkAclQuintupleEntriesRequest has unknown keys!", "")
 	}

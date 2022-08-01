@@ -9956,6 +9956,9 @@ type PushUrlsCacheRequestParams struct {
 	// 注意事项：
 	// 此功能灰度发布中，敬请期待
 	DisableRange *bool `json:"DisableRange,omitempty" name:"DisableRange"`
+
+	// 是否对URL进行编码
+	UrlEncode *bool `json:"UrlEncode,omitempty" name:"UrlEncode"`
 }
 
 type PushUrlsCacheRequest struct {
@@ -9990,6 +9993,9 @@ type PushUrlsCacheRequest struct {
 	// 注意事项：
 	// 此功能灰度发布中，敬请期待
 	DisableRange *bool `json:"DisableRange,omitempty" name:"DisableRange"`
+
+	// 是否对URL进行编码
+	UrlEncode *bool `json:"UrlEncode,omitempty" name:"UrlEncode"`
 }
 
 func (r *PushUrlsCacheRequest) ToJsonString() string {
@@ -10010,6 +10016,7 @@ func (r *PushUrlsCacheRequest) FromJsonString(s string) error {
 	delete(f, "Layer")
 	delete(f, "ParseM3U8")
 	delete(f, "DisableRange")
+	delete(f, "UrlEncode")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "PushUrlsCacheRequest has unknown keys!", "")
 	}

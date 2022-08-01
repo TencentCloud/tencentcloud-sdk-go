@@ -1301,6 +1301,55 @@ func (c *Client) DescribeIpHitItemsWithContext(ctx context.Context, request *Des
     return
 }
 
+func NewDescribeUserCdcClbWafRegionsRequest() (request *DescribeUserCdcClbWafRegionsRequest) {
+    request = &DescribeUserCdcClbWafRegionsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("waf", APIVersion, "DescribeUserCdcClbWafRegions")
+    
+    
+    return
+}
+
+func NewDescribeUserCdcClbWafRegionsResponse() (response *DescribeUserCdcClbWafRegionsResponse) {
+    response = &DescribeUserCdcClbWafRegionsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeUserCdcClbWafRegions
+// 在CDC场景下，负载均衡型WAF的添加、编辑域名配置的时候，需要展示CDC负载均衡型WAF（cdc-clb-waf)支持的地域列表，通过DescribeUserCdcClbWafRegions既可以获得当前对客户已经开放的地域列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeUserCdcClbWafRegions(request *DescribeUserCdcClbWafRegionsRequest) (response *DescribeUserCdcClbWafRegionsResponse, err error) {
+    return c.DescribeUserCdcClbWafRegionsWithContext(context.Background(), request)
+}
+
+// DescribeUserCdcClbWafRegions
+// 在CDC场景下，负载均衡型WAF的添加、编辑域名配置的时候，需要展示CDC负载均衡型WAF（cdc-clb-waf)支持的地域列表，通过DescribeUserCdcClbWafRegions既可以获得当前对客户已经开放的地域列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeUserCdcClbWafRegionsWithContext(ctx context.Context, request *DescribeUserCdcClbWafRegionsRequest) (response *DescribeUserCdcClbWafRegionsResponse, err error) {
+    if request == nil {
+        request = NewDescribeUserCdcClbWafRegionsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeUserCdcClbWafRegions require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeUserCdcClbWafRegionsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeUserClbWafRegionsRequest() (request *DescribeUserClbWafRegionsRequest) {
     request = &DescribeUserClbWafRegionsRequest{
         BaseRequest: &tchttp.BaseRequest{},

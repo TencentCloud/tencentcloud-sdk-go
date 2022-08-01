@@ -77,6 +77,7 @@ func NewCancelFlowResponse() (response *CancelFlowResponse) {
 //  INVALIDPARAMETER_STATUS = "InvalidParameter.Status"
 //  OPERATIONDENIED = "OperationDenied"
 //  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
+//  OPERATIONDENIED_NOIDENTITYVERIFY = "OperationDenied.NoIdentityVerify"
 //  RESOURCENOTFOUND_FLOW = "ResourceNotFound.Flow"
 //  RESOURCENOTFOUND_NOTEXISTFLOW = "ResourceNotFound.NotExistFlow"
 func (c *Client) CancelFlow(request *CancelFlowRequest) (response *CancelFlowResponse, err error) {
@@ -98,6 +99,7 @@ func (c *Client) CancelFlow(request *CancelFlowRequest) (response *CancelFlowRes
 //  INVALIDPARAMETER_STATUS = "InvalidParameter.Status"
 //  OPERATIONDENIED = "OperationDenied"
 //  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
+//  OPERATIONDENIED_NOIDENTITYVERIFY = "OperationDenied.NoIdentityVerify"
 //  RESOURCENOTFOUND_FLOW = "ResourceNotFound.Flow"
 //  RESOURCENOTFOUND_NOTEXISTFLOW = "ResourceNotFound.NotExistFlow"
 func (c *Client) CancelFlowWithContext(ctx context.Context, request *CancelFlowRequest) (response *CancelFlowResponse, err error) {
@@ -163,6 +165,57 @@ func (c *Client) CancelMultiFlowSignQRCodeWithContext(ctx context.Context, reque
     request.SetContext(ctx)
     
     response = NewCancelMultiFlowSignQRCodeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateConvertTaskApiRequest() (request *CreateConvertTaskApiRequest) {
+    request = &CreateConvertTaskApiRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ess", APIVersion, "CreateConvertTaskApi")
+    
+    
+    return
+}
+
+func NewCreateConvertTaskApiResponse() (response *CreateConvertTaskApiResponse) {
+    response = &CreateConvertTaskApiResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateConvertTaskApi
+// 创建文件转换任务
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DEPENDSAPI = "InternalError.DependsApi"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  OPERATIONDENIED_NOIDENTITYVERIFY = "OperationDenied.NoIdentityVerify"
+func (c *Client) CreateConvertTaskApi(request *CreateConvertTaskApiRequest) (response *CreateConvertTaskApiResponse, err error) {
+    return c.CreateConvertTaskApiWithContext(context.Background(), request)
+}
+
+// CreateConvertTaskApi
+// 创建文件转换任务
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DEPENDSAPI = "InternalError.DependsApi"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  OPERATIONDENIED_NOIDENTITYVERIFY = "OperationDenied.NoIdentityVerify"
+func (c *Client) CreateConvertTaskApiWithContext(ctx context.Context, request *CreateConvertTaskApiRequest) (response *CreateConvertTaskApiResponse, err error) {
+    if request == nil {
+        request = NewCreateConvertTaskApiRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateConvertTaskApi require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateConvertTaskApiResponse()
     err = c.Send(request, response)
     return
 }
@@ -285,6 +338,9 @@ func NewCreateFlowResponse() (response *CreateFlowResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_AGENOTACHIEVENORMALLEGAL = "FailedOperation.AgeNotAchieveNormalLegal"
+//  FAILEDOPERATION_ORGANIZATIONEXPERIENCECHANGE = "FailedOperation.OrganizationExperienceChange"
+//  FAILEDOPERATION_ORGANIZATIONNAMECHANGED = "FailedOperation.OrganizationNameChanged"
+//  FAILEDOPERATION_ORGANIZATIONNAMENEEDCHANGE = "FailedOperation.OrganizationNameNeedChange"
 //  INTERNALERROR_DB = "InternalError.Db"
 //  INTERNALERROR_DBREAD = "InternalError.DbRead"
 //  INTERNALERROR_DECRYPTION = "InternalError.Decryption"
@@ -315,6 +371,9 @@ func (c *Client) CreateFlow(request *CreateFlowRequest) (response *CreateFlowRes
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_AGENOTACHIEVENORMALLEGAL = "FailedOperation.AgeNotAchieveNormalLegal"
+//  FAILEDOPERATION_ORGANIZATIONEXPERIENCECHANGE = "FailedOperation.OrganizationExperienceChange"
+//  FAILEDOPERATION_ORGANIZATIONNAMECHANGED = "FailedOperation.OrganizationNameChanged"
+//  FAILEDOPERATION_ORGANIZATIONNAMENEEDCHANGE = "FailedOperation.OrganizationNameNeedChange"
 //  INTERNALERROR_DB = "InternalError.Db"
 //  INTERNALERROR_DBREAD = "InternalError.DbRead"
 //  INTERNALERROR_DECRYPTION = "InternalError.Decryption"
@@ -376,6 +435,9 @@ func NewCreateFlowByFilesResponse() (response *CreateFlowByFilesResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_AGENOTACHIEVENORMALLEGAL = "FailedOperation.AgeNotAchieveNormalLegal"
+//  FAILEDOPERATION_ORGANIZATIONEXPERIENCECHANGE = "FailedOperation.OrganizationExperienceChange"
+//  FAILEDOPERATION_ORGANIZATIONNAMECHANGED = "FailedOperation.OrganizationNameChanged"
+//  FAILEDOPERATION_ORGANIZATIONNAMENEEDCHANGE = "FailedOperation.OrganizationNameNeedChange"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DB = "InternalError.Db"
 //  INTERNALERROR_DBINSERT = "InternalError.DbInsert"
@@ -415,6 +477,9 @@ func (c *Client) CreateFlowByFiles(request *CreateFlowByFilesRequest) (response 
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_AGENOTACHIEVENORMALLEGAL = "FailedOperation.AgeNotAchieveNormalLegal"
+//  FAILEDOPERATION_ORGANIZATIONEXPERIENCECHANGE = "FailedOperation.OrganizationExperienceChange"
+//  FAILEDOPERATION_ORGANIZATIONNAMECHANGED = "FailedOperation.OrganizationNameChanged"
+//  FAILEDOPERATION_ORGANIZATIONNAMENEEDCHANGE = "FailedOperation.OrganizationNameNeedChange"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DB = "InternalError.Db"
 //  INTERNALERROR_DBINSERT = "InternalError.DbInsert"
@@ -964,6 +1029,53 @@ func (c *Client) DescribeThirdPartyAuthCodeWithContext(ctx context.Context, requ
     request.SetContext(ctx)
     
     response = NewDescribeThirdPartyAuthCodeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewGetTaskResultApiRequest() (request *GetTaskResultApiRequest) {
+    request = &GetTaskResultApiRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ess", APIVersion, "GetTaskResultApi")
+    
+    
+    return
+}
+
+func NewGetTaskResultApiResponse() (response *GetTaskResultApiResponse) {
+    response = &GetTaskResultApiResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// GetTaskResultApi
+// 查询转换任务状态
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+func (c *Client) GetTaskResultApi(request *GetTaskResultApiRequest) (response *GetTaskResultApiResponse, err error) {
+    return c.GetTaskResultApiWithContext(context.Background(), request)
+}
+
+// GetTaskResultApi
+// 查询转换任务状态
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+func (c *Client) GetTaskResultApiWithContext(ctx context.Context, request *GetTaskResultApiRequest) (response *GetTaskResultApiResponse, err error) {
+    if request == nil {
+        request = NewGetTaskResultApiRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetTaskResultApi require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetTaskResultApiResponse()
     err = c.Send(request, response)
     return
 }

@@ -1159,6 +1159,61 @@ func (c *Client) DescribeAuthDomainsWithContext(ctx context.Context, request *De
     return
 }
 
+func NewDescribeBaasPackageListRequest() (request *DescribeBaasPackageListRequest) {
+    request = &DescribeBaasPackageListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tcb", APIVersion, "DescribeBaasPackageList")
+    
+    
+    return
+}
+
+func NewDescribeBaasPackageListResponse() (response *DescribeBaasPackageListResponse) {
+    response = &DescribeBaasPackageListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeBaasPackageList
+// 获取新套餐列表，含详情，如果传了PackageId，则只获取指定套餐详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_PARAM = "MissingParameter.Param"
+func (c *Client) DescribeBaasPackageList(request *DescribeBaasPackageListRequest) (response *DescribeBaasPackageListResponse, err error) {
+    return c.DescribeBaasPackageListWithContext(context.Background(), request)
+}
+
+// DescribeBaasPackageList
+// 获取新套餐列表，含详情，如果传了PackageId，则只获取指定套餐详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_PARAM = "MissingParameter.Param"
+func (c *Client) DescribeBaasPackageListWithContext(ctx context.Context, request *DescribeBaasPackageListRequest) (response *DescribeBaasPackageListResponse, err error) {
+    if request == nil {
+        request = NewDescribeBaasPackageListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBaasPackageList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeBaasPackageListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeCloudBaseBuildServiceRequest() (request *DescribeCloudBaseBuildServiceRequest) {
     request = &DescribeCloudBaseBuildServiceRequest{
         BaseRequest: &tchttp.BaseRequest{},

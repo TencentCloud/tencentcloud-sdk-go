@@ -256,6 +256,7 @@ func NewDescribeNacosServerInterfacesResponse() (response *DescribeNacosServerIn
 //
 // 可能返回的错误码:
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETERVALUE_QUERYERROR = "InvalidParameterValue.QueryError"
 func (c *Client) DescribeNacosServerInterfaces(request *DescribeNacosServerInterfacesRequest) (response *DescribeNacosServerInterfacesResponse, err error) {
     return c.DescribeNacosServerInterfacesWithContext(context.Background(), request)
 }
@@ -265,6 +266,7 @@ func (c *Client) DescribeNacosServerInterfaces(request *DescribeNacosServerInter
 //
 // 可能返回的错误码:
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETERVALUE_QUERYERROR = "InvalidParameterValue.QueryError"
 func (c *Client) DescribeNacosServerInterfacesWithContext(ctx context.Context, request *DescribeNacosServerInterfacesRequest) (response *DescribeNacosServerInterfacesResponse, err error) {
     if request == nil {
         request = NewDescribeNacosServerInterfacesRequest()

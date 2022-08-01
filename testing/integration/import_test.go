@@ -176,8 +176,10 @@ import (
 	pdsv20210701 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/pds/v20210701"
 	postgresv20170312 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/postgres/v20170312"
 	privatednsv20201028 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/privatedns/v20201028"
+	ptsv20210728 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/pts/v20210728"
 	rcev20201103 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/rce/v20201103"
 	redisv20180412 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/redis/v20180412"
+	regionv20220627 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/region/v20220627"
 	rkpv20191209 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/rkp/v20191209"
 	rpv20200224 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/rp/v20200224"
 	rumv20210622 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/rum/v20210622"
@@ -2287,6 +2289,19 @@ func TestPrivatednsv20201028Import(t *testing.T) {
     }
 }
 
+func TestPtsv20210728Import(t *testing.T) {
+    credential := common.NewCredential(
+        os.Getenv("TENCENTCLOUD_SECRET_ID"),
+        os.Getenv("TENCENTCLOUD_SECRET_KEY"))
+    client, err := ptsv20210728.NewClient(
+        credential,
+        regions.Guangzhou,
+        profile.NewClientProfile())
+    if err != nil || client == nil {
+        t.Errorf("fail to init pts_v20210728 client: %v", err)
+    }
+}
+
 func TestRcev20201103Import(t *testing.T) {
     credential := common.NewCredential(
         os.Getenv("TENCENTCLOUD_SECRET_ID"),
@@ -2310,6 +2325,19 @@ func TestRedisv20180412Import(t *testing.T) {
         profile.NewClientProfile())
     if err != nil || client == nil {
         t.Errorf("fail to init redis_v20180412 client: %v", err)
+    }
+}
+
+func TestRegionv20220627Import(t *testing.T) {
+    credential := common.NewCredential(
+        os.Getenv("TENCENTCLOUD_SECRET_ID"),
+        os.Getenv("TENCENTCLOUD_SECRET_KEY"))
+    client, err := regionv20220627.NewClient(
+        credential,
+        regions.Guangzhou,
+        profile.NewClientProfile())
+    if err != nil || client == nil {
+        t.Errorf("fail to init region_v20220627 client: %v", err)
     }
 }
 

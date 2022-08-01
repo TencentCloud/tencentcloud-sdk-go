@@ -713,6 +713,7 @@ func NewDeleteTableGroupResponse() (response *DeleteTableGroupResponse) {
 // 删除表格组
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
@@ -724,6 +725,7 @@ func (c *Client) DeleteTableGroup(request *DeleteTableGroupRequest) (response *D
 // 删除表格组
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"

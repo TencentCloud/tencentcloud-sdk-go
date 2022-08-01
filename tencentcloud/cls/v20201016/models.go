@@ -5959,6 +5959,10 @@ type ShipperInfo struct {
 
 	// 投递日志的创建时间
 	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 投递文件命名配置，0：随机数命名，1：投递时间命名，默认0（随机数命名）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FilenameMode *uint64 `json:"FilenameMode,omitempty" name:"FilenameMode"`
 }
 
 type ShipperTaskInfo struct {

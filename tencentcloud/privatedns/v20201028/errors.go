@@ -44,6 +44,9 @@ const (
 	// 当前私有域已关联 VPC，如需清空解析记录请先解除 VPC 关联。
 	FAILEDOPERATION_DELETELASTBINDVPCRECORDFAILED = "FailedOperation.DeleteLastBindVpcRecordFailed"
 
+	// 记录删除失败。
+	FAILEDOPERATION_DELETERECORDFAILED = "FailedOperation.DeleteRecordFailed"
+
 	// 解析域删除失败。
 	FAILEDOPERATION_DELETEZONEFAILED = "FailedOperation.DeleteZoneFailed"
 

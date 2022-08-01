@@ -1602,6 +1602,10 @@ type PrivateZoneRecord struct {
 	// 附加信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Extra *string `json:"Extra,omitempty" name:"Extra"`
+
+	// 0暂停，1启用
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Enabled *uint64 `json:"Enabled,omitempty" name:"Enabled"`
 }
 
 // Predefined struct for user

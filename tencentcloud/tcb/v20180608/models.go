@@ -90,6 +90,47 @@ type AuthDomain struct {
 	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
 }
 
+type BaasPackageInfo struct {
+	// DAU产品套餐ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PackageName *string `json:"PackageName,omitempty" name:"PackageName"`
+
+	// DAU套餐中文名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PackageTitle *string `json:"PackageTitle,omitempty" name:"PackageTitle"`
+
+	// 套餐分组
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GroupName *string `json:"GroupName,omitempty" name:"GroupName"`
+
+	// 套餐分组中文名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GroupTitle *string `json:"GroupTitle,omitempty" name:"GroupTitle"`
+
+	// json格式化计费标签，例如：
+	// {"pid":2, "cids":{"create": 2, "renew": 2, "modify": 2}, "productCode":"p_tcb_mp", "subProductCode":"sp_tcb_mp_cloudbase_dau"}
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BillTags *string `json:"BillTags,omitempty" name:"BillTags"`
+
+	// json格式化用户资源限制，例如：
+	// {"Qps":1000,"InvokeNum":{"TimeUnit":"m", "Unit":"万次", "MaxSize": 100},"Capacity":{"TimeUnit":"m", "Unit":"GB", "MaxSize": 100}, "Cdn":{"Flux":{"TimeUnit":"m", "Unit":"GB", "MaxSize": 100}, "BackFlux":{"TimeUnit":"m", "Unit":"GB", "MaxSize": 100}},"Scf":{"Concurrency":1000,"OutFlux":{"TimeUnit":"m", "Unit":"GB", "MaxSize": 100},"MemoryUse":{"TimeUnit":"m", "Unit":"WGBS", "MaxSize": 100000}}}
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceLimit *string `json:"ResourceLimit,omitempty" name:"ResourceLimit"`
+
+	// json格式化高级限制，例如：
+	// {"CMSEnable":false,"ProvisionedConcurrencyMem":512000, "PictureProcessing":false, "SecurityAudit":false, "RealTimePush":false, "TemplateMessageBatchPush":false, "Payment":false}
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AdvanceLimit *string `json:"AdvanceLimit,omitempty" name:"AdvanceLimit"`
+
+	// 套餐描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PackageDescription *string `json:"PackageDescription,omitempty" name:"PackageDescription"`
+
+	// 是否对外展示
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsExternal *bool `json:"IsExternal,omitempty" name:"IsExternal"`
+}
+
 type BackendServiceInfo struct {
 	// 服务名称
 	ServiceName *string `json:"ServiceName,omitempty" name:"ServiceName"`
@@ -2648,6 +2689,124 @@ func (r *DescribeAuthDomainsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeAuthDomainsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeBaasPackageListRequestParams struct {
+	// tcb产品套餐ID，不填拉取全量package信息。
+	PackageName *string `json:"PackageName,omitempty" name:"PackageName"`
+
+	// 环境ID
+	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
+
+	// 套餐归属方，填写后只返回对应的套餐 包含miniapp与qcloud两种 默认为miniapp
+	Source *string `json:"Source,omitempty" name:"Source"`
+
+	// 套餐归属环境渠道
+	EnvChannel *string `json:"EnvChannel,omitempty" name:"EnvChannel"`
+
+	// 拉取套餐用途：
+	// 1）new 新购
+	// 2）modify变配
+	// 3）renew续费
+	TargetAction *string `json:"TargetAction,omitempty" name:"TargetAction"`
+
+	// 预留字段，同一商品会对应多个类型套餐，对指标有不同侧重。
+	// 计算型calculation
+	// 流量型flux
+	// 容量型capactiy
+	GroupName *string `json:"GroupName,omitempty" name:"GroupName"`
+
+	// 类型分组过滤。默认为["default"]
+	PackageTypeList []*string `json:"PackageTypeList,omitempty" name:"PackageTypeList"`
+
+	// 付费渠道，与回包billTags中的计费参数相关，不填返回默认值。
+	PaymentChannel *string `json:"PaymentChannel,omitempty" name:"PaymentChannel"`
+}
+
+type DescribeBaasPackageListRequest struct {
+	*tchttp.BaseRequest
+	
+	// tcb产品套餐ID，不填拉取全量package信息。
+	PackageName *string `json:"PackageName,omitempty" name:"PackageName"`
+
+	// 环境ID
+	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
+
+	// 套餐归属方，填写后只返回对应的套餐 包含miniapp与qcloud两种 默认为miniapp
+	Source *string `json:"Source,omitempty" name:"Source"`
+
+	// 套餐归属环境渠道
+	EnvChannel *string `json:"EnvChannel,omitempty" name:"EnvChannel"`
+
+	// 拉取套餐用途：
+	// 1）new 新购
+	// 2）modify变配
+	// 3）renew续费
+	TargetAction *string `json:"TargetAction,omitempty" name:"TargetAction"`
+
+	// 预留字段，同一商品会对应多个类型套餐，对指标有不同侧重。
+	// 计算型calculation
+	// 流量型flux
+	// 容量型capactiy
+	GroupName *string `json:"GroupName,omitempty" name:"GroupName"`
+
+	// 类型分组过滤。默认为["default"]
+	PackageTypeList []*string `json:"PackageTypeList,omitempty" name:"PackageTypeList"`
+
+	// 付费渠道，与回包billTags中的计费参数相关，不填返回默认值。
+	PaymentChannel *string `json:"PaymentChannel,omitempty" name:"PaymentChannel"`
+}
+
+func (r *DescribeBaasPackageListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBaasPackageListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PackageName")
+	delete(f, "EnvId")
+	delete(f, "Source")
+	delete(f, "EnvChannel")
+	delete(f, "TargetAction")
+	delete(f, "GroupName")
+	delete(f, "PackageTypeList")
+	delete(f, "PaymentChannel")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBaasPackageListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeBaasPackageListResponseParams struct {
+	// 套餐列表
+	PackageList []*BaasPackageInfo `json:"PackageList,omitempty" name:"PackageList"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeBaasPackageListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeBaasPackageListResponseParams `json:"Response"`
+}
+
+func (r *DescribeBaasPackageListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBaasPackageListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -6429,6 +6588,10 @@ type EnvInfo struct {
 	// 是否是dau新套餐
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsDauPackage *bool `json:"IsDauPackage,omitempty" name:"IsDauPackage"`
+
+	// 套餐类型:空\baas\tcbr
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PackageType *string `json:"PackageType,omitempty" name:"PackageType"`
 }
 
 // Predefined struct for user
@@ -6860,6 +7023,10 @@ type LogServiceInfo struct {
 
 	// cls日志所属地域
 	Region *string `json:"Region,omitempty" name:"Region"`
+
+	// topic保存时长 默认7天
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Period *int64 `json:"Period,omitempty" name:"Period"`
 }
 
 type LoginStatistic struct {

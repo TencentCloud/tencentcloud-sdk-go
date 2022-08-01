@@ -7272,6 +7272,15 @@ type MySQLParam struct {
 
 	// 表与消息间的映射关系
 	DataTargetRecordMapping []*RecordMapping `json:"DataTargetRecordMapping,omitempty" name:"DataTargetRecordMapping"`
+
+	// 事件路由到特定主题的正则表达式，默认为(.*)
+	TopicRegex *string `json:"TopicRegex,omitempty" name:"TopicRegex"`
+
+	// TopicRegex的引用组，指定$1、$2等
+	TopicReplacement *string `json:"TopicReplacement,omitempty" name:"TopicReplacement"`
+
+	// 格式：库1.表1:字段1,字段2;库2.表2:字段2，表之间;（分号）隔开，字段之间,（逗号）隔开。不指定的表默认取表的主键
+	KeyColumns *string `json:"KeyColumns,omitempty" name:"KeyColumns"`
 }
 
 type OperateResponseData struct {
@@ -7744,8 +7753,14 @@ type TdwParam struct {
 	// Tdw的tid
 	Tid *string `json:"Tid,omitempty" name:"Tid"`
 
-	// 是否为国内站，默认true
+	// 默认true
 	IsDomestic *bool `json:"IsDomestic,omitempty" name:"IsDomestic"`
+
+	// TDW地址，默认tl-tdbank-tdmanager.tencent-distribute.com
+	TdwHost *string `json:"TdwHost,omitempty" name:"TdwHost"`
+
+	// TDW端口，默认8099
+	TdwPort *int64 `json:"TdwPort,omitempty" name:"TdwPort"`
 }
 
 type Topic struct {

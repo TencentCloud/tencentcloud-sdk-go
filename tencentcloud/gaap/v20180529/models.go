@@ -508,7 +508,7 @@ type CheckProxyCreateRequestParams struct {
 	// 通道套餐类型。Thunder表示标准通道组，Accelerator表示游戏加速器通道，CrossBorder表示跨境通道。
 	PackageType *string `json:"PackageType,omitempty" name:"PackageType"`
 
-	// 支持Http3的开关，其中：0，表示不需要支持Http3接入；1，表示需要支持Http3接入。注意：如果开启了Http3的功能，那么该通道就不再支持TCP/UDP接入的功能。该功能的启停无法在通道创建完毕后再修改。
+	// 该字段已废弃，当IPAddressVersion为IPv4时，所创建的通道默认支持Http3.0；当为IPv6，默认不支持Http3.0。
 	Http3Supported *int64 `json:"Http3Supported,omitempty" name:"Http3Supported"`
 }
 
@@ -539,7 +539,7 @@ type CheckProxyCreateRequest struct {
 	// 通道套餐类型。Thunder表示标准通道组，Accelerator表示游戏加速器通道，CrossBorder表示跨境通道。
 	PackageType *string `json:"PackageType,omitempty" name:"PackageType"`
 
-	// 支持Http3的开关，其中：0，表示不需要支持Http3接入；1，表示需要支持Http3接入。注意：如果开启了Http3的功能，那么该通道就不再支持TCP/UDP接入的功能。该功能的启停无法在通道创建完毕后再修改。
+	// 该字段已废弃，当IPAddressVersion为IPv4时，所创建的通道默认支持Http3.0；当为IPv6，默认不支持Http3.0。
 	Http3Supported *int64 `json:"Http3Supported,omitempty" name:"Http3Supported"`
 }
 
@@ -1552,11 +1552,7 @@ type CreateProxyGroupRequestParams struct {
 	// 通道组套餐类型，可取值：Thunder、Accelerator，默认值Thunder
 	PackageType *string `json:"PackageType,omitempty" name:"PackageType"`
 
-	// 支持Http3的开关，其中：
-	// 0，表示不需要支持Http3接入；
-	// 1，表示需要支持Http3接入。
-	// 注意：如果开启了Http3的功能，那么该通道组就不再支持TCP/UDP接入的功能。
-	// 该功能的启停无法在通道组创建完毕后再修改。
+	// 该字段已废弃，当IPAddressVersion为IPv4时，所创建的通道组默认支持Http3.0；当为IPv6，默认不支持Http3.0。
 	Http3Supported *int64 `json:"Http3Supported,omitempty" name:"Http3Supported"`
 }
 
@@ -1584,11 +1580,7 @@ type CreateProxyGroupRequest struct {
 	// 通道组套餐类型，可取值：Thunder、Accelerator，默认值Thunder
 	PackageType *string `json:"PackageType,omitempty" name:"PackageType"`
 
-	// 支持Http3的开关，其中：
-	// 0，表示不需要支持Http3接入；
-	// 1，表示需要支持Http3接入。
-	// 注意：如果开启了Http3的功能，那么该通道组就不再支持TCP/UDP接入的功能。
-	// 该功能的启停无法在通道组创建完毕后再修改。
+	// 该字段已废弃，当IPAddressVersion为IPv4时，所创建的通道组默认支持Http3.0；当为IPv6，默认不支持Http3.0。
 	Http3Supported *int64 `json:"Http3Supported,omitempty" name:"Http3Supported"`
 }
 
@@ -1689,7 +1681,7 @@ type CreateProxyRequestParams struct {
 	// 通道套餐类型，Thunder表示标准通道组，Accelerator表示游戏加速器通道，CrossBorder表示跨境通道。
 	PackageType *string `json:"PackageType,omitempty" name:"PackageType"`
 
-	// 支持Http3的开关，其中：0，表示不需要支持Http3接入；1，表示需要支持Http3接入。注意：如果开启了Http3的功能，那么该通道就不再支持TCP/UDP接入的功能。该功能的启停无法在通道创建完毕后再修改。
+	// 该字段已废弃，当IPAddressVersion为IPv4时，所创建的通道默认支持Http3.0；当为IPv6，默认不支持Http3.0。
 	Http3Supported *int64 `json:"Http3Supported,omitempty" name:"Http3Supported"`
 }
 
@@ -1740,7 +1732,7 @@ type CreateProxyRequest struct {
 	// 通道套餐类型，Thunder表示标准通道组，Accelerator表示游戏加速器通道，CrossBorder表示跨境通道。
 	PackageType *string `json:"PackageType,omitempty" name:"PackageType"`
 
-	// 支持Http3的开关，其中：0，表示不需要支持Http3接入；1，表示需要支持Http3接入。注意：如果开启了Http3的功能，那么该通道就不再支持TCP/UDP接入的功能。该功能的启停无法在通道创建完毕后再修改。
+	// 该字段已废弃，当IPAddressVersion为IPv4时，所创建的通道默认支持Http3.0；当为IPv6，默认不支持Http3.0。
 	Http3Supported *int64 `json:"Http3Supported,omitempty" name:"Http3Supported"`
 }
 
@@ -6317,7 +6309,7 @@ type InquiryPriceCreateProxyRequestParams struct {
 	// 通道套餐类型，Thunder表示标准通道组，Accelerator表示游戏加速器通道，CrossBorder表示跨境通道。
 	PackageType *string `json:"PackageType,omitempty" name:"PackageType"`
 
-	// 支持Http3的开关，其中：0，表示不需要支持Http3接入；1，表示需要支持Http3接入。注意：如果开启了Http3的功能，那么该通道就不再支持TCP/UDP接入的功能。该功能的启停无法在通道创建完毕后再修改。
+	// 该字段已废弃，当IPAddressVersion为IPv4时，所创建的通道默认支持Http3.0；当为IPv6，默认不支持Http3.0。
 	Http3Supported *int64 `json:"Http3Supported,omitempty" name:"Http3Supported"`
 }
 
@@ -6354,7 +6346,7 @@ type InquiryPriceCreateProxyRequest struct {
 	// 通道套餐类型，Thunder表示标准通道组，Accelerator表示游戏加速器通道，CrossBorder表示跨境通道。
 	PackageType *string `json:"PackageType,omitempty" name:"PackageType"`
 
-	// 支持Http3的开关，其中：0，表示不需要支持Http3接入；1，表示需要支持Http3接入。注意：如果开启了Http3的功能，那么该通道就不再支持TCP/UDP接入的功能。该功能的启停无法在通道创建完毕后再修改。
+	// 该字段已废弃，当IPAddressVersion为IPv4时，所创建的通道默认支持Http3.0；当为IPv6，默认不支持Http3.0。
 	Http3Supported *int64 `json:"Http3Supported,omitempty" name:"Http3Supported"`
 }
 
@@ -8135,6 +8127,21 @@ type ProxyGroupDetail struct {
 	// 1表示启用。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Http3Supported *int64 `json:"Http3Supported,omitempty" name:"Http3Supported"`
+
+	// 特性位图，每个bit位代表一种特性，其中：
+	// 0，表示不支持该特性；
+	// 1，表示支持该特性。
+	// 特性位图含义如下（从右往左）：
+	// 第1个bit，支持4层加速；
+	// 第2个bit，支持7层加速；
+	// 第3个bit，支持Http3接入；
+	// 第4个bit，支持IPv6；
+	// 第5个bit，支持精品BGP接入；
+	// 第6个bit，支持三网接入；
+	// 第7个bit，支持接入段Qos加速。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FeatureBitmap *int64 `json:"FeatureBitmap,omitempty" name:"FeatureBitmap"`
 }
 
 type ProxyGroupInfo struct {
@@ -8184,6 +8191,21 @@ type ProxyGroupInfo struct {
 	// 1表示启用。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Http3Supported *int64 `json:"Http3Supported,omitempty" name:"Http3Supported"`
+
+	// 特性位图，每个bit位代表一种特性，其中：
+	// 0，表示不支持该特性；
+	// 1，表示支持该特性。
+	// 特性位图含义如下（从右往左）：
+	// 第1个bit，支持4层加速；
+	// 第2个bit，支持7层加速；
+	// 第3个bit，支持Http3接入；
+	// 第4个bit，支持IPv6；
+	// 第5个bit，支持精品BGP接入；
+	// 第6个bit，支持三网接入；
+	// 第7个bit，支持接入段Qos加速。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FeatureBitmap *int64 `json:"FeatureBitmap,omitempty" name:"FeatureBitmap"`
 }
 
 type ProxyIdDict struct {
@@ -8328,6 +8350,21 @@ type ProxyInfo struct {
 	// 是否在封禁黑名单中，其中：0表示不在黑名单中，1表示在黑名单中。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InBanBlacklist *int64 `json:"InBanBlacklist,omitempty" name:"InBanBlacklist"`
+
+	// 特性位图，每个bit位代表一种特性，其中：
+	// 0，表示不支持该特性；
+	// 1，表示支持该特性。
+	// 特性位图含义如下（从右往左）：
+	// 第1个bit，支持4层加速；
+	// 第2个bit，支持7层加速；
+	// 第3个bit，支持Http3接入；
+	// 第4个bit，支持IPv6；
+	// 第5个bit，支持精品BGP接入；
+	// 第6个bit，支持三网接入；
+	// 第7个bit，支持接入段Qos加速。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FeatureBitmap *int64 `json:"FeatureBitmap,omitempty" name:"FeatureBitmap"`
 }
 
 type ProxySimpleInfo struct {

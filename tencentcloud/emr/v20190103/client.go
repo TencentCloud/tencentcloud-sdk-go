@@ -453,7 +453,7 @@ func NewDescribeEmrApplicationStaticsResponse() (response *DescribeEmrApplicatio
 }
 
 // DescribeEmrApplicationStatics
-//  yarn applciation 统计接口查询
+//  yarn application 统计接口查询
 //
 // 可能返回的错误码:
 //  INTERNALERROR_CAMCGWERROR = "InternalError.CamCgwError"
@@ -463,7 +463,7 @@ func (c *Client) DescribeEmrApplicationStatics(request *DescribeEmrApplicationSt
 }
 
 // DescribeEmrApplicationStatics
-//  yarn applciation 统计接口查询
+//  yarn application 统计接口查询
 //
 // 可能返回的错误码:
 //  INTERNALERROR_CAMCGWERROR = "InternalError.CamCgwError"

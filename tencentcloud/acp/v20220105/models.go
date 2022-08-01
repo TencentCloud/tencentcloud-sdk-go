@@ -472,15 +472,27 @@ func (r *DescribeFileTicketResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeResourceUsageInfoRequestParams struct {
-	// 资源计费项名称
+	// 资源计费项名称(为空时，则根据TaskType和Platform进行查询)
 	PriceName *string `json:"PriceName,omitempty" name:"PriceName"`
+
+	// 任务类型, 0:基础版, 1:专家版
+	TaskType *int64 `json:"TaskType,omitempty" name:"TaskType"`
+
+	// 应用平台, 0:android
+	Platform *int64 `json:"Platform,omitempty" name:"Platform"`
 }
 
 type DescribeResourceUsageInfoRequest struct {
 	*tchttp.BaseRequest
 	
-	// 资源计费项名称
+	// 资源计费项名称(为空时，则根据TaskType和Platform进行查询)
 	PriceName *string `json:"PriceName,omitempty" name:"PriceName"`
+
+	// 任务类型, 0:基础版, 1:专家版
+	TaskType *int64 `json:"TaskType,omitempty" name:"TaskType"`
+
+	// 应用平台, 0:android
+	Platform *int64 `json:"Platform,omitempty" name:"Platform"`
 }
 
 func (r *DescribeResourceUsageInfoRequest) ToJsonString() string {
@@ -496,6 +508,8 @@ func (r *DescribeResourceUsageInfoRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "PriceName")
+	delete(f, "TaskType")
+	delete(f, "Platform")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeResourceUsageInfoRequest has unknown keys!", "")
 	}
@@ -664,7 +678,7 @@ type DescribeScanTaskReportUrlRequestParams struct {
 	// 任务类型, 0:基础版, 1:专家版, 2:本地化
 	TaskType *int64 `json:"TaskType,omitempty" name:"TaskType"`
 
-	// 报告类型, 0:诊断报告, 1:堆栈报告
+	// 报告类型, 0:诊断报告, 1:堆栈报告, 2:视频证据(预留), 3:报告json结果
 	ReportType *int64 `json:"ReportType,omitempty" name:"ReportType"`
 }
 
@@ -683,7 +697,7 @@ type DescribeScanTaskReportUrlRequest struct {
 	// 任务类型, 0:基础版, 1:专家版, 2:本地化
 	TaskType *int64 `json:"TaskType,omitempty" name:"TaskType"`
 
-	// 报告类型, 0:诊断报告, 1:堆栈报告
+	// 报告类型, 0:诊断报告, 1:堆栈报告, 2:视频证据(预留), 3:报告json结果
 	ReportType *int64 `json:"ReportType,omitempty" name:"ReportType"`
 }
 
@@ -715,11 +729,11 @@ type DescribeScanTaskReportUrlResponseParams struct {
 	// 返回值, 0:成功, 其他值请查看“返回值”定义
 	Result *int64 `json:"Result,omitempty" name:"Result"`
 
-	// 诊断报告/堆栈信息下载链接
+	// 诊断报告/堆栈信息/报告json结果下载链接
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReportUrl *string `json:"ReportUrl,omitempty" name:"ReportUrl"`
 
-	// 诊断报告/堆栈名称
+	// 诊断报告/堆栈/报告json结果的名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReportTitle *string `json:"ReportTitle,omitempty" name:"ReportTitle"`
 

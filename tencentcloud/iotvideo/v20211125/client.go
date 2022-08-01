@@ -270,8 +270,6 @@ func NewCallDeviceActionSyncResponse() (response *CallDeviceActionSyncResponse) 
 // 同步调用设备行为
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CallDeviceActionSync(request *CallDeviceActionSyncRequest) (response *CallDeviceActionSyncResponse, err error) {
     return c.CallDeviceActionSyncWithContext(context.Background(), request)
@@ -281,8 +279,6 @@ func (c *Client) CallDeviceActionSync(request *CallDeviceActionSyncRequest) (res
 // 同步调用设备行为
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CallDeviceActionSyncWithContext(ctx context.Context, request *CallDeviceActionSyncRequest) (response *CallDeviceActionSyncResponse, err error) {
     if request == nil {
@@ -3078,6 +3074,7 @@ func NewDescribePackageConsumeTaskResponse() (response *DescribePackageConsumeTa
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribePackageConsumeTask(request *DescribePackageConsumeTaskRequest) (response *DescribePackageConsumeTaskResponse, err error) {
     return c.DescribePackageConsumeTaskWithContext(context.Background(), request)
 }
@@ -3089,6 +3086,7 @@ func (c *Client) DescribePackageConsumeTask(request *DescribePackageConsumeTaskR
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribePackageConsumeTaskWithContext(ctx context.Context, request *DescribePackageConsumeTaskRequest) (response *DescribePackageConsumeTaskResponse, err error) {
     if request == nil {
         request = NewDescribePackageConsumeTaskRequest()

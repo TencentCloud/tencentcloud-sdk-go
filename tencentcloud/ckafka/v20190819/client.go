@@ -121,6 +121,7 @@ func NewBatchCreateAclResponse() (response *BatchCreateAclResponse) {
 // 批量添加ACL策略
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) BatchCreateAcl(request *BatchCreateAclRequest) (response *BatchCreateAclResponse, err error) {
@@ -131,6 +132,7 @@ func (c *Client) BatchCreateAcl(request *BatchCreateAclRequest) (response *Batch
 // 批量添加ACL策略
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) BatchCreateAclWithContext(ctx context.Context, request *BatchCreateAclRequest) (response *BatchCreateAclResponse, err error) {

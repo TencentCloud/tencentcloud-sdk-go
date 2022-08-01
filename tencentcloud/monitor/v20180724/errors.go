@@ -125,6 +125,9 @@ const (
 	// 实例没有运行。
 	FAILEDOPERATION_INSTANCENOTRUNNING = "FailedOperation.InstanceNotRunning"
 
+	// 内部服务错误。
+	FAILEDOPERATION_INTERNALERROR = "FailedOperation.InternalError"
+
 	// 资源已经存在。
 	FAILEDOPERATION_RESOURCEEXIST = "FailedOperation.ResourceExist"
 

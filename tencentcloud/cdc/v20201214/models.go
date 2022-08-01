@@ -569,6 +569,18 @@ type DedicatedClusterOrder struct {
 	// 0代表未支付，1代表已支付
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PayStatus *int64 `json:"PayStatus,omitempty" name:"PayStatus"`
+
+	// 支付方式，一次性、按月、按年
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PayType *string `json:"PayType,omitempty" name:"PayType"`
+
+	// 购买时长的单位
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TimeUnit *string `json:"TimeUnit,omitempty" name:"TimeUnit"`
+
+	// 购买时长
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TimeSpan *int64 `json:"TimeSpan,omitempty" name:"TimeSpan"`
 }
 
 type DedicatedClusterOrderItem struct {
@@ -623,6 +635,14 @@ type DedicatedClusterOrderItem struct {
 	// 规格展示
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ComputeFormat *string `json:"ComputeFormat,omitempty" name:"ComputeFormat"`
+
+	// 规格类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TypeFamily *string `json:"TypeFamily,omitempty" name:"TypeFamily"`
+
+	// 0未支付，1已支付
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubOrderPayStatus *int64 `json:"SubOrderPayStatus,omitempty" name:"SubOrderPayStatus"`
 }
 
 type DedicatedClusterType struct {

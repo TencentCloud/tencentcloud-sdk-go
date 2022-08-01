@@ -9209,6 +9209,14 @@ type ForbidStreamInfo struct {
 
 	// 禁推过期时间。
 	ExpireTime *string `json:"ExpireTime,omitempty" name:"ExpireTime"`
+
+	// 推流路径。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AppName *string `json:"AppName,omitempty" name:"AppName"`
+
+	// 推流域名。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DomainName *string `json:"DomainName,omitempty" name:"DomainName"`
 }
 
 type GroupProIspDataInfo struct {

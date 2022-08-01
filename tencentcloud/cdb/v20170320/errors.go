@@ -176,6 +176,9 @@ const (
 	// sql错误。
 	INTERNALERROR_EXESQLERROR = "InternalError.ExeSqlError"
 
+	// 执行http请求错误。
+	INTERNALERROR_EXECHTTPREQUESTERROR = "InternalError.ExecHttpRequestError"
+
 	// sql执行失败。
 	INTERNALERROR_EXECUTESQLERROR = "InternalError.ExecuteSQLError"
 

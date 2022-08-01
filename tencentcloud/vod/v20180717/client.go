@@ -70,6 +70,7 @@ func NewApplyUploadResponse() (response *ApplyUploadResponse) {
 // * 上传流程请参考 [服务端上传综述](/document/product/266/9759)。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER_EXPIRETIME = "InvalidParameter.ExpireTime"
 //  INVALIDPARAMETERVALUE_COVERTYPE = "InvalidParameterValue.CoverType"
@@ -89,6 +90,7 @@ func (c *Client) ApplyUpload(request *ApplyUploadRequest) (response *ApplyUpload
 // * 上传流程请参考 [服务端上传综述](/document/product/266/9759)。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER_EXPIRETIME = "InvalidParameter.ExpireTime"
 //  INVALIDPARAMETERVALUE_COVERTYPE = "InvalidParameterValue.CoverType"

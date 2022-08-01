@@ -1221,6 +1221,98 @@ func (r *DescribeApplicationPodsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeApplicationsRequestParams struct {
+	// 命名空间ID
+	EnvironmentId *string `json:"EnvironmentId,omitempty" name:"EnvironmentId"`
+
+	// 分页Limit
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 分页offset
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 来源渠道
+	SourceChannel *int64 `json:"SourceChannel,omitempty" name:"SourceChannel"`
+
+	// 服务id
+	ApplicationId *string `json:"ApplicationId,omitempty" name:"ApplicationId"`
+
+	// 搜索关键字
+	Keyword *string `json:"Keyword,omitempty" name:"Keyword"`
+}
+
+type DescribeApplicationsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 命名空间ID
+	EnvironmentId *string `json:"EnvironmentId,omitempty" name:"EnvironmentId"`
+
+	// 分页Limit
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 分页offset
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 来源渠道
+	SourceChannel *int64 `json:"SourceChannel,omitempty" name:"SourceChannel"`
+
+	// 服务id
+	ApplicationId *string `json:"ApplicationId,omitempty" name:"ApplicationId"`
+
+	// 搜索关键字
+	Keyword *string `json:"Keyword,omitempty" name:"Keyword"`
+}
+
+func (r *DescribeApplicationsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeApplicationsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EnvironmentId")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "SourceChannel")
+	delete(f, "ApplicationId")
+	delete(f, "Keyword")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeApplicationsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeApplicationsResponseParams struct {
+	// 返回结果
+	Result *ServicePage `json:"Result,omitempty" name:"Result"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeApplicationsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeApplicationsResponseParams `json:"Response"`
+}
+
+func (r *DescribeApplicationsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeApplicationsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeApplicationsStatusRequestParams struct {
 	// 来源渠道
 	SourceChannel *int64 `json:"SourceChannel,omitempty" name:"SourceChannel"`
@@ -1352,6 +1444,70 @@ func (r *DescribeDeployApplicationDetailResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeDeployApplicationDetailResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeEnvironmentStatusRequestParams struct {
+	// 命名空间id
+	EnvironmentIds []*string `json:"EnvironmentIds,omitempty" name:"EnvironmentIds"`
+
+	// 来源Channel
+	SourceChannel *int64 `json:"SourceChannel,omitempty" name:"SourceChannel"`
+}
+
+type DescribeEnvironmentStatusRequest struct {
+	*tchttp.BaseRequest
+	
+	// 命名空间id
+	EnvironmentIds []*string `json:"EnvironmentIds,omitempty" name:"EnvironmentIds"`
+
+	// 来源Channel
+	SourceChannel *int64 `json:"SourceChannel,omitempty" name:"SourceChannel"`
+}
+
+func (r *DescribeEnvironmentStatusRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeEnvironmentStatusRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EnvironmentIds")
+	delete(f, "SourceChannel")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeEnvironmentStatusRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeEnvironmentStatusResponseParams struct {
+	// 返回状态列表
+	Result []*NamespaceStatusInfo `json:"Result,omitempty" name:"Result"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeEnvironmentStatusResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeEnvironmentStatusResponseParams `json:"Response"`
+}
+
+func (r *DescribeEnvironmentStatusResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeEnvironmentStatusResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2384,6 +2540,28 @@ type NamespacePage struct {
 	Pages *int64 `json:"Pages,omitempty" name:"Pages"`
 }
 
+type NamespaceStatusInfo struct {
+	// 命名空间id
+	EnvironmentId *string `json:"EnvironmentId,omitempty" name:"EnvironmentId"`
+
+	// 命名空间名称
+	EnvironmentName *string `json:"EnvironmentName,omitempty" name:"EnvironmentName"`
+
+	// TCB envId | EKS clusterId
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 环境状态
+	ClusterStatus *string `json:"ClusterStatus,omitempty" name:"ClusterStatus"`
+
+	// 环境启动状态（不在启动中为null）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EnvironmentStartingStatus *TemEnvironmentStartingStatus `json:"EnvironmentStartingStatus,omitempty" name:"EnvironmentStartingStatus"`
+
+	// 环境停止状态（不在停止中为null）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EnvironmentStoppingStatus *TemEnvironmentStoppingStatus `json:"EnvironmentStoppingStatus,omitempty" name:"EnvironmentStoppingStatus"`
+}
+
 type Pair struct {
 	// 键
 	Key *string `json:"Key,omitempty" name:"Key"`
@@ -2874,6 +3052,20 @@ type RunVersionPod struct {
 	ContainerState *string `json:"ContainerState,omitempty" name:"ContainerState"`
 }
 
+type ServicePage struct {
+	// 条目
+	Records []*TemService `json:"Records,omitempty" name:"Records"`
+
+	// 总数
+	Total *int64 `json:"Total,omitempty" name:"Total"`
+
+	// 条目
+	Size *int64 `json:"Size,omitempty" name:"Size"`
+
+	// 页数
+	Pages *int64 `json:"Pages,omitempty" name:"Pages"`
+}
+
 type ServiceVersionBrief struct {
 	// 版本名称
 	VersionName *string `json:"VersionName,omitempty" name:"VersionName"`
@@ -3076,6 +3268,26 @@ type TemDeployApplicationDetailInfo struct {
 	NextBatchStartTime *int64 `json:"NextBatchStartTime,omitempty" name:"NextBatchStartTime"`
 }
 
+type TemEnvironmentStartingStatus struct {
+	// 需要启动的应用数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApplicationNumNeedToStart *int64 `json:"ApplicationNumNeedToStart,omitempty" name:"ApplicationNumNeedToStart"`
+
+	// 已经启动的应用数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StartedApplicationNum *int64 `json:"StartedApplicationNum,omitempty" name:"StartedApplicationNum"`
+}
+
+type TemEnvironmentStoppingStatus struct {
+	// 需要停止的应用数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApplicationNumNeedToStop *int64 `json:"ApplicationNumNeedToStop,omitempty" name:"ApplicationNumNeedToStop"`
+
+	// 已经停止的应用数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StoppedApplicationNum *int64 `json:"StoppedApplicationNum,omitempty" name:"StoppedApplicationNum"`
+}
+
 type TemNamespaceInfo struct {
 	// 环境id
 	EnvironmentId *string `json:"EnvironmentId,omitempty" name:"EnvironmentId"`
@@ -3128,6 +3340,72 @@ type TemNamespaceInfo struct {
 
 	// 环境锁，1为上锁，0则为上锁
 	Locked *int64 `json:"Locked,omitempty" name:"Locked"`
+}
+
+type TemService struct {
+	// 主键
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApplicationId *string `json:"ApplicationId,omitempty" name:"ApplicationId"`
+
+	// 服务名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApplicationName *string `json:"ApplicationName,omitempty" name:"ApplicationName"`
+
+	// 描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 命名空间id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EnvironmentId *string `json:"EnvironmentId,omitempty" name:"EnvironmentId"`
+
+	// 创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateDate *string `json:"CreateDate,omitempty" name:"CreateDate"`
+
+	// 修改时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ModifyDate *string `json:"ModifyDate,omitempty" name:"ModifyDate"`
+
+	// 修改人
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Modifier *string `json:"Modifier,omitempty" name:"Modifier"`
+
+	// 创建者
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Creator *string `json:"Creator,omitempty" name:"Creator"`
+
+	// tcr个人版or企业版
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RepoType *int64 `json:"RepoType,omitempty" name:"RepoType"`
+
+	// 企业版实例id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 镜像仓库名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RepoName *string `json:"RepoName,omitempty" name:"RepoName"`
+
+	// 编程语言
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CodingLanguage *string `json:"CodingLanguage,omitempty" name:"CodingLanguage"`
+
+	// 部署方式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeployMode *string `json:"DeployMode,omitempty" name:"DeployMode"`
+
+	// 环境名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EnvironmentName *string `json:"EnvironmentName,omitempty" name:"EnvironmentName"`
+
+	// 服务当前运行环境的实例信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ActiveVersions []*ServiceVersionBrief `json:"ActiveVersions,omitempty" name:"ActiveVersions"`
+
+	// 是否启用链路追踪
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EnableTracing *uint64 `json:"EnableTracing,omitempty" name:"EnableTracing"`
 }
 
 type UseDefaultRepoParameters struct {
