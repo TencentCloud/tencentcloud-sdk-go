@@ -1,3 +1,39 @@
+# Release v1.0.463
+
+## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
+
+### 第 24 次发布
+
+发布时间：2022-08-02 11:36:28
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [ChannelCreateBatchCancelFlowUrl](https://cloud.tencent.com/document/api/1420/78264)
+
+修改接口：
+
+* [ChannelCreateMultiFlowSignQRCode](https://cloud.tencent.com/document/api/1420/75452)
+
+	* 新增入参：ApproverRestrictions
+
+	* 新增出参：SignUrls
+
+
+新增数据结构：
+
+* [ApproverRestriction](https://cloud.tencent.com/document/api/1420/61525#ApproverRestriction)
+* [SignUrl](https://cloud.tencent.com/document/api/1420/61525#SignUrl)
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
+
+
+
 # Release v1.0.462
 
 ## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
