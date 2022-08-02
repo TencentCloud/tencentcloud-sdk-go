@@ -484,6 +484,75 @@ func (c *Client) DeployApplicationWithContext(ctx context.Context, request *Depl
     return
 }
 
+func NewDescribeApplicationInfoRequest() (request *DescribeApplicationInfoRequest) {
+    request = &DescribeApplicationInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tem", APIVersion, "DescribeApplicationInfo")
+    
+    
+    return
+}
+
+func NewDescribeApplicationInfoResponse() (response *DescribeApplicationInfoResponse) {
+    response = &DescribeApplicationInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeApplicationInfo
+// 服务基本信息查看
+//
+// 可能返回的错误码:
+//  INTERNALERROR_ACTIONREADTIMEOUT = "InternalError.ActionReadTimeout"
+//  INTERNALERROR_DEFAULTINTERNALERROR = "InternalError.DefaultInternalError"
+//  INTERNALERROR_DESCRIBERUNPODLISTERROR = "InternalError.DescribeRunPodListError"
+//  INTERNALERROR_DESCRIBESERVICEERROR = "InternalError.DescribeServiceError"
+//  INVALIDPARAMETERVALUE_SERVICENOTBELONGTOAPPID = "InvalidParameterValue.ServiceNotBelongToAppid"
+//  INVALIDPARAMETERVALUE_TEMIDINVALID = "InvalidParameterValue.TemIdInvalid"
+//  MISSINGPARAMETER_SERVICEIDNULL = "MissingParameter.ServiceIdNull"
+//  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
+//  RESOURCENOTFOUND_SERVICENOTFOUND = "ResourceNotFound.ServiceNotFound"
+//  RESOURCENOTFOUND_SERVICERUNNINGVERSIONNOTFOUND = "ResourceNotFound.ServiceRunningVersionNotFound"
+//  RESOURCENOTFOUND_VERSIONNAMESPACENOTFOUND = "ResourceNotFound.VersionNamespaceNotFound"
+//  RESOURCENOTFOUND_VERSIONSERVICENOTFOUND = "ResourceNotFound.VersionServiceNotFound"
+func (c *Client) DescribeApplicationInfo(request *DescribeApplicationInfoRequest) (response *DescribeApplicationInfoResponse, err error) {
+    return c.DescribeApplicationInfoWithContext(context.Background(), request)
+}
+
+// DescribeApplicationInfo
+// 服务基本信息查看
+//
+// 可能返回的错误码:
+//  INTERNALERROR_ACTIONREADTIMEOUT = "InternalError.ActionReadTimeout"
+//  INTERNALERROR_DEFAULTINTERNALERROR = "InternalError.DefaultInternalError"
+//  INTERNALERROR_DESCRIBERUNPODLISTERROR = "InternalError.DescribeRunPodListError"
+//  INTERNALERROR_DESCRIBESERVICEERROR = "InternalError.DescribeServiceError"
+//  INVALIDPARAMETERVALUE_SERVICENOTBELONGTOAPPID = "InvalidParameterValue.ServiceNotBelongToAppid"
+//  INVALIDPARAMETERVALUE_TEMIDINVALID = "InvalidParameterValue.TemIdInvalid"
+//  MISSINGPARAMETER_SERVICEIDNULL = "MissingParameter.ServiceIdNull"
+//  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
+//  RESOURCENOTFOUND_SERVICENOTFOUND = "ResourceNotFound.ServiceNotFound"
+//  RESOURCENOTFOUND_SERVICERUNNINGVERSIONNOTFOUND = "ResourceNotFound.ServiceRunningVersionNotFound"
+//  RESOURCENOTFOUND_VERSIONNAMESPACENOTFOUND = "ResourceNotFound.VersionNamespaceNotFound"
+//  RESOURCENOTFOUND_VERSIONSERVICENOTFOUND = "ResourceNotFound.VersionServiceNotFound"
+func (c *Client) DescribeApplicationInfoWithContext(ctx context.Context, request *DescribeApplicationInfoRequest) (response *DescribeApplicationInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeApplicationInfoRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeApplicationInfo require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeApplicationInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeApplicationPodsRequest() (request *DescribeApplicationPodsRequest) {
     request = &DescribeApplicationPodsRequest{
         BaseRequest: &tchttp.BaseRequest{},

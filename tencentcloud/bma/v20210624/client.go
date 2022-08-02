@@ -45,6 +45,421 @@ func NewClient(credential common.CredentialIface, region string, clientProfile *
 }
 
 
+func NewCreateBPFakeURLRequest() (request *CreateBPFakeURLRequest) {
+    request = &CreateBPFakeURLRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("bma", APIVersion, "CreateBPFakeURL")
+    
+    
+    return
+}
+
+func NewCreateBPFakeURLResponse() (response *CreateBPFakeURLResponse) {
+    response = &CreateBPFakeURLResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateBPFakeURL
+// 添加仿冒链接（举报）
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDACTION = "InvalidAction"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  NOSUCHVERSION = "NoSuchVersion"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateBPFakeURL(request *CreateBPFakeURLRequest) (response *CreateBPFakeURLResponse, err error) {
+    return c.CreateBPFakeURLWithContext(context.Background(), request)
+}
+
+// CreateBPFakeURL
+// 添加仿冒链接（举报）
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDACTION = "InvalidAction"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  NOSUCHVERSION = "NoSuchVersion"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateBPFakeURLWithContext(ctx context.Context, request *CreateBPFakeURLRequest) (response *CreateBPFakeURLResponse, err error) {
+    if request == nil {
+        request = NewCreateBPFakeURLRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateBPFakeURL require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateBPFakeURLResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateBPFalseTicketRequest() (request *CreateBPFalseTicketRequest) {
+    request = &CreateBPFalseTicketRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("bma", APIVersion, "CreateBPFalseTicket")
+    
+    
+    return
+}
+
+func NewCreateBPFalseTicketResponse() (response *CreateBPFalseTicketResponse) {
+    response = &CreateBPFalseTicketResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateBPFalseTicket
+// 添加误报工单
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDACTION = "InvalidAction"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  NOSUCHVERSION = "NoSuchVersion"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateBPFalseTicket(request *CreateBPFalseTicketRequest) (response *CreateBPFalseTicketResponse, err error) {
+    return c.CreateBPFalseTicketWithContext(context.Background(), request)
+}
+
+// CreateBPFalseTicket
+// 添加误报工单
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDACTION = "InvalidAction"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  NOSUCHVERSION = "NoSuchVersion"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateBPFalseTicketWithContext(ctx context.Context, request *CreateBPFalseTicketRequest) (response *CreateBPFalseTicketResponse, err error) {
+    if request == nil {
+        request = NewCreateBPFalseTicketRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateBPFalseTicket require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateBPFalseTicketResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateBPOfflineAttachmentRequest() (request *CreateBPOfflineAttachmentRequest) {
+    request = &CreateBPOfflineAttachmentRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("bma", APIVersion, "CreateBPOfflineAttachment")
+    
+    
+    return
+}
+
+func NewCreateBPOfflineAttachmentResponse() (response *CreateBPOfflineAttachmentResponse) {
+    response = &CreateBPOfflineAttachmentResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateBPOfflineAttachment
+// 添加下线材料
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDACTION = "InvalidAction"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  NOSUCHVERSION = "NoSuchVersion"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateBPOfflineAttachment(request *CreateBPOfflineAttachmentRequest) (response *CreateBPOfflineAttachmentResponse, err error) {
+    return c.CreateBPOfflineAttachmentWithContext(context.Background(), request)
+}
+
+// CreateBPOfflineAttachment
+// 添加下线材料
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDACTION = "InvalidAction"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  NOSUCHVERSION = "NoSuchVersion"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateBPOfflineAttachmentWithContext(ctx context.Context, request *CreateBPOfflineAttachmentRequest) (response *CreateBPOfflineAttachmentResponse, err error) {
+    if request == nil {
+        request = NewCreateBPOfflineAttachmentRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateBPOfflineAttachment require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateBPOfflineAttachmentResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateBPOfflineTicketRequest() (request *CreateBPOfflineTicketRequest) {
+    request = &CreateBPOfflineTicketRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("bma", APIVersion, "CreateBPOfflineTicket")
+    
+    
+    return
+}
+
+func NewCreateBPOfflineTicketResponse() (response *CreateBPOfflineTicketResponse) {
+    response = &CreateBPOfflineTicketResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateBPOfflineTicket
+// 添加下线工单
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDACTION = "InvalidAction"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  NOSUCHVERSION = "NoSuchVersion"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateBPOfflineTicket(request *CreateBPOfflineTicketRequest) (response *CreateBPOfflineTicketResponse, err error) {
+    return c.CreateBPOfflineTicketWithContext(context.Background(), request)
+}
+
+// CreateBPOfflineTicket
+// 添加下线工单
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDACTION = "InvalidAction"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  NOSUCHVERSION = "NoSuchVersion"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateBPOfflineTicketWithContext(ctx context.Context, request *CreateBPOfflineTicketRequest) (response *CreateBPOfflineTicketResponse, err error) {
+    if request == nil {
+        request = NewCreateBPOfflineTicketRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateBPOfflineTicket require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateBPOfflineTicketResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateBPProtectURLsRequest() (request *CreateBPProtectURLsRequest) {
+    request = &CreateBPProtectURLsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("bma", APIVersion, "CreateBPProtectURLs")
+    
+    
+    return
+}
+
+func NewCreateBPProtectURLsResponse() (response *CreateBPProtectURLsResponse) {
+    response = &CreateBPProtectURLsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateBPProtectURLs
+// 添加保护网站
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDACTION = "InvalidAction"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  NOSUCHVERSION = "NoSuchVersion"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateBPProtectURLs(request *CreateBPProtectURLsRequest) (response *CreateBPProtectURLsResponse, err error) {
+    return c.CreateBPProtectURLsWithContext(context.Background(), request)
+}
+
+// CreateBPProtectURLs
+// 添加保护网站
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDACTION = "InvalidAction"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  NOSUCHVERSION = "NoSuchVersion"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateBPProtectURLsWithContext(ctx context.Context, request *CreateBPProtectURLsRequest) (response *CreateBPProtectURLsResponse, err error) {
+    if request == nil {
+        request = NewCreateBPProtectURLsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateBPProtectURLs require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateBPProtectURLsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateCRBlockRequest() (request *CreateCRBlockRequest) {
     request = &CreateCRBlockRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -377,6 +792,338 @@ func (c *Client) CreateCRWorkWithContext(ctx context.Context, request *CreateCRW
     return
 }
 
+func NewDescribeBPCompanyInfoRequest() (request *DescribeBPCompanyInfoRequest) {
+    request = &DescribeBPCompanyInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("bma", APIVersion, "DescribeBPCompanyInfo")
+    
+    
+    return
+}
+
+func NewDescribeBPCompanyInfoResponse() (response *DescribeBPCompanyInfoResponse) {
+    response = &DescribeBPCompanyInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeBPCompanyInfo
+// 查询企业信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDACTION = "InvalidAction"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  NOSUCHVERSION = "NoSuchVersion"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeBPCompanyInfo(request *DescribeBPCompanyInfoRequest) (response *DescribeBPCompanyInfoResponse, err error) {
+    return c.DescribeBPCompanyInfoWithContext(context.Background(), request)
+}
+
+// DescribeBPCompanyInfo
+// 查询企业信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDACTION = "InvalidAction"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  NOSUCHVERSION = "NoSuchVersion"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeBPCompanyInfoWithContext(ctx context.Context, request *DescribeBPCompanyInfoRequest) (response *DescribeBPCompanyInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeBPCompanyInfoRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBPCompanyInfo require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeBPCompanyInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeBPFakeURLsRequest() (request *DescribeBPFakeURLsRequest) {
+    request = &DescribeBPFakeURLsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("bma", APIVersion, "DescribeBPFakeURLs")
+    
+    
+    return
+}
+
+func NewDescribeBPFakeURLsResponse() (response *DescribeBPFakeURLsResponse) {
+    response = &DescribeBPFakeURLsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeBPFakeURLs
+// 查询仿冒链接
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDACTION = "InvalidAction"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  NOSUCHVERSION = "NoSuchVersion"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeBPFakeURLs(request *DescribeBPFakeURLsRequest) (response *DescribeBPFakeURLsResponse, err error) {
+    return c.DescribeBPFakeURLsWithContext(context.Background(), request)
+}
+
+// DescribeBPFakeURLs
+// 查询仿冒链接
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDACTION = "InvalidAction"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  NOSUCHVERSION = "NoSuchVersion"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeBPFakeURLsWithContext(ctx context.Context, request *DescribeBPFakeURLsRequest) (response *DescribeBPFakeURLsResponse, err error) {
+    if request == nil {
+        request = NewDescribeBPFakeURLsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBPFakeURLs require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeBPFakeURLsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeBPProtectURLsRequest() (request *DescribeBPProtectURLsRequest) {
+    request = &DescribeBPProtectURLsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("bma", APIVersion, "DescribeBPProtectURLs")
+    
+    
+    return
+}
+
+func NewDescribeBPProtectURLsResponse() (response *DescribeBPProtectURLsResponse) {
+    response = &DescribeBPProtectURLsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeBPProtectURLs
+// 查询保护网站
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDACTION = "InvalidAction"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  NOSUCHVERSION = "NoSuchVersion"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeBPProtectURLs(request *DescribeBPProtectURLsRequest) (response *DescribeBPProtectURLsResponse, err error) {
+    return c.DescribeBPProtectURLsWithContext(context.Background(), request)
+}
+
+// DescribeBPProtectURLs
+// 查询保护网站
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDACTION = "InvalidAction"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  NOSUCHVERSION = "NoSuchVersion"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeBPProtectURLsWithContext(ctx context.Context, request *DescribeBPProtectURLsRequest) (response *DescribeBPProtectURLsResponse, err error) {
+    if request == nil {
+        request = NewDescribeBPProtectURLsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBPProtectURLs require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeBPProtectURLsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeBPReportFakeURLsRequest() (request *DescribeBPReportFakeURLsRequest) {
+    request = &DescribeBPReportFakeURLsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("bma", APIVersion, "DescribeBPReportFakeURLs")
+    
+    
+    return
+}
+
+func NewDescribeBPReportFakeURLsResponse() (response *DescribeBPReportFakeURLsResponse) {
+    response = &DescribeBPReportFakeURLsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeBPReportFakeURLs
+// 查询举报列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDACTION = "InvalidAction"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  NOSUCHVERSION = "NoSuchVersion"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeBPReportFakeURLs(request *DescribeBPReportFakeURLsRequest) (response *DescribeBPReportFakeURLsResponse, err error) {
+    return c.DescribeBPReportFakeURLsWithContext(context.Background(), request)
+}
+
+// DescribeBPReportFakeURLs
+// 查询举报列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDACTION = "InvalidAction"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  NOSUCHVERSION = "NoSuchVersion"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeBPReportFakeURLsWithContext(ctx context.Context, request *DescribeBPReportFakeURLsRequest) (response *DescribeBPReportFakeURLsResponse, err error) {
+    if request == nil {
+        request = NewDescribeBPReportFakeURLsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBPReportFakeURLs require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeBPReportFakeURLsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeCRMonitorDetailRequest() (request *DescribeCRMonitorDetailRequest) {
     request = &DescribeCRMonitorDetailRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -622,6 +1369,89 @@ func (c *Client) DescribeCRWorkInfoWithContext(ctx context.Context, request *Des
     request.SetContext(ctx)
     
     response = NewDescribeCRWorkInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyBPOfflineAttachmentRequest() (request *ModifyBPOfflineAttachmentRequest) {
+    request = &ModifyBPOfflineAttachmentRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("bma", APIVersion, "ModifyBPOfflineAttachment")
+    
+    
+    return
+}
+
+func NewModifyBPOfflineAttachmentResponse() (response *ModifyBPOfflineAttachmentResponse) {
+    response = &ModifyBPOfflineAttachmentResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyBPOfflineAttachment
+// 修改下线材料
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDACTION = "InvalidAction"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  NOSUCHVERSION = "NoSuchVersion"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyBPOfflineAttachment(request *ModifyBPOfflineAttachmentRequest) (response *ModifyBPOfflineAttachmentResponse, err error) {
+    return c.ModifyBPOfflineAttachmentWithContext(context.Background(), request)
+}
+
+// ModifyBPOfflineAttachment
+// 修改下线材料
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDACTION = "InvalidAction"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  NOSUCHVERSION = "NoSuchVersion"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyBPOfflineAttachmentWithContext(ctx context.Context, request *ModifyBPOfflineAttachmentRequest) (response *ModifyBPOfflineAttachmentResponse, err error) {
+    if request == nil {
+        request = NewModifyBPOfflineAttachmentRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyBPOfflineAttachment require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyBPOfflineAttachmentResponse()
     err = c.Send(request, response)
     return
 }

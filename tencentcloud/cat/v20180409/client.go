@@ -240,6 +240,67 @@ func (c *Client) DescribeDetailedSingleProbeDataWithContext(ctx context.Context,
     return
 }
 
+func NewDescribeNodesRequest() (request *DescribeNodesRequest) {
+    request = &DescribeNodesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cat", APIVersion, "DescribeNodes")
+    
+    
+    return
+}
+
+func NewDescribeNodesResponse() (response *DescribeNodesResponse) {
+    response = &DescribeNodesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeNodes
+// 获取拨测节点
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBQUERYFAILED = "FailedOperation.DbQueryFailed"
+//  FAILEDOPERATION_ESQUERYERROR = "FailedOperation.ESQueryError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeNodes(request *DescribeNodesRequest) (response *DescribeNodesResponse, err error) {
+    return c.DescribeNodesWithContext(context.Background(), request)
+}
+
+// DescribeNodes
+// 获取拨测节点
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBQUERYFAILED = "FailedOperation.DbQueryFailed"
+//  FAILEDOPERATION_ESQUERYERROR = "FailedOperation.ESQueryError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeNodesWithContext(ctx context.Context, request *DescribeNodesRequest) (response *DescribeNodesResponse, err error) {
+    if request == nil {
+        request = NewDescribeNodesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeNodes require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeNodesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeProbeMetricDataRequest() (request *DescribeProbeMetricDataRequest) {
     request = &DescribeProbeMetricDataRequest{
         BaseRequest: &tchttp.BaseRequest{},

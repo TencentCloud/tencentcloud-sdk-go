@@ -9659,6 +9659,9 @@ type DescribeTKEEdgeScriptRequestParams struct {
 
 	// json格式的节点配置
 	Config *string `json:"Config,omitempty" name:"Config"`
+
+	// 可以下载某个历史版本的edgectl脚本，默认下载最新版本，edgectl版本信息可以在脚本里查看
+	ScriptVersion *string `json:"ScriptVersion,omitempty" name:"ScriptVersion"`
 }
 
 type DescribeTKEEdgeScriptRequest struct {
@@ -9675,6 +9678,9 @@ type DescribeTKEEdgeScriptRequest struct {
 
 	// json格式的节点配置
 	Config *string `json:"Config,omitempty" name:"Config"`
+
+	// 可以下载某个历史版本的edgectl脚本，默认下载最新版本，edgectl版本信息可以在脚本里查看
+	ScriptVersion *string `json:"ScriptVersion,omitempty" name:"ScriptVersion"`
 }
 
 func (r *DescribeTKEEdgeScriptRequest) ToJsonString() string {
@@ -9693,6 +9699,7 @@ func (r *DescribeTKEEdgeScriptRequest) FromJsonString(s string) error {
 	delete(f, "Interface")
 	delete(f, "NodeName")
 	delete(f, "Config")
+	delete(f, "ScriptVersion")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTKEEdgeScriptRequest has unknown keys!", "")
 	}
@@ -9709,6 +9716,10 @@ type DescribeTKEEdgeScriptResponseParams struct {
 
 	// 下载命令
 	Command *string `json:"Command,omitempty" name:"Command"`
+
+	// edgectl脚本版本，默认拉取最新版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ScriptVersion *string `json:"ScriptVersion,omitempty" name:"ScriptVersion"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -10201,6 +10212,14 @@ type EdgeClusterAdvancedSettings struct {
 	// 集群自定义参数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExtraArgs *EdgeClusterExtraArgs `json:"ExtraArgs,omitempty" name:"ExtraArgs"`
+
+	// 运行时类型，支持"docker"和"containerd"，默认为docker
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Runtime *string `json:"Runtime,omitempty" name:"Runtime"`
+
+	// 集群kube-proxy转发模式，支持"iptables"和"ipvs"，默认为iptables
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProxyMode *string `json:"ProxyMode,omitempty" name:"ProxyMode"`
 }
 
 type EdgeClusterExtraArgs struct {

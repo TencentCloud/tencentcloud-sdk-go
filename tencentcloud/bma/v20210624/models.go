@@ -20,6 +20,369 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+type BrandData struct {
+	// xxx
+	BrandName *string `json:"BrandName,omitempty" name:"BrandName"`
+
+	// xxx
+	BrandCertificateName *string `json:"BrandCertificateName,omitempty" name:"BrandCertificateName"`
+
+	// xxx
+	BrandStatus *int64 `json:"BrandStatus,omitempty" name:"BrandStatus"`
+
+	// xxx
+	BrandNote *string `json:"BrandNote,omitempty" name:"BrandNote"`
+
+	// xxx
+	TransferName *string `json:"TransferName,omitempty" name:"TransferName"`
+
+	// xxx
+	TransferStatus *int64 `json:"TransferStatus,omitempty" name:"TransferStatus"`
+
+	// xxx
+	TransferNote *string `json:"TransferNote,omitempty" name:"TransferNote"`
+}
+
+// Predefined struct for user
+type CreateBPFakeURLRequestParams struct {
+	// xxx
+	ProtectURLId *int64 `json:"ProtectURLId,omitempty" name:"ProtectURLId"`
+
+	// xxx
+	FakeURL *string `json:"FakeURL,omitempty" name:"FakeURL"`
+
+	// xxx
+	SnapshotNames []*string `json:"SnapshotNames,omitempty" name:"SnapshotNames"`
+
+	// xxx
+	Note *string `json:"Note,omitempty" name:"Note"`
+}
+
+type CreateBPFakeURLRequest struct {
+	*tchttp.BaseRequest
+	
+	// xxx
+	ProtectURLId *int64 `json:"ProtectURLId,omitempty" name:"ProtectURLId"`
+
+	// xxx
+	FakeURL *string `json:"FakeURL,omitempty" name:"FakeURL"`
+
+	// xxx
+	SnapshotNames []*string `json:"SnapshotNames,omitempty" name:"SnapshotNames"`
+
+	// xxx
+	Note *string `json:"Note,omitempty" name:"Note"`
+}
+
+func (r *CreateBPFakeURLRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateBPFakeURLRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProtectURLId")
+	delete(f, "FakeURL")
+	delete(f, "SnapshotNames")
+	delete(f, "Note")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateBPFakeURLRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateBPFakeURLResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateBPFakeURLResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateBPFakeURLResponseParams `json:"Response"`
+}
+
+func (r *CreateBPFakeURLResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateBPFakeURLResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateBPFalseTicketRequestParams struct {
+	// xxx
+	FakeURL *string `json:"FakeURL,omitempty" name:"FakeURL"`
+}
+
+type CreateBPFalseTicketRequest struct {
+	*tchttp.BaseRequest
+	
+	// xxx
+	FakeURL *string `json:"FakeURL,omitempty" name:"FakeURL"`
+}
+
+func (r *CreateBPFalseTicketRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateBPFalseTicketRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FakeURL")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateBPFalseTicketRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateBPFalseTicketResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateBPFalseTicketResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateBPFalseTicketResponseParams `json:"Response"`
+}
+
+func (r *CreateBPFalseTicketResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateBPFalseTicketResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateBPOfflineAttachmentRequestParams struct {
+	// xxx
+	BrandName *string `json:"BrandName,omitempty" name:"BrandName"`
+
+	// xx
+	BrandCertificateName *string `json:"BrandCertificateName,omitempty" name:"BrandCertificateName"`
+
+	// xx
+	TransferName *string `json:"TransferName,omitempty" name:"TransferName"`
+
+	// xx
+	AuthorizationName *string `json:"AuthorizationName,omitempty" name:"AuthorizationName"`
+}
+
+type CreateBPOfflineAttachmentRequest struct {
+	*tchttp.BaseRequest
+	
+	// xxx
+	BrandName *string `json:"BrandName,omitempty" name:"BrandName"`
+
+	// xx
+	BrandCertificateName *string `json:"BrandCertificateName,omitempty" name:"BrandCertificateName"`
+
+	// xx
+	TransferName *string `json:"TransferName,omitempty" name:"TransferName"`
+
+	// xx
+	AuthorizationName *string `json:"AuthorizationName,omitempty" name:"AuthorizationName"`
+}
+
+func (r *CreateBPOfflineAttachmentRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateBPOfflineAttachmentRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "BrandName")
+	delete(f, "BrandCertificateName")
+	delete(f, "TransferName")
+	delete(f, "AuthorizationName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateBPOfflineAttachmentRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateBPOfflineAttachmentResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateBPOfflineAttachmentResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateBPOfflineAttachmentResponseParams `json:"Response"`
+}
+
+func (r *CreateBPOfflineAttachmentResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateBPOfflineAttachmentResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateBPOfflineTicketRequestParams struct {
+	// xxx
+	FakeURLId *int64 `json:"FakeURLId,omitempty" name:"FakeURLId"`
+}
+
+type CreateBPOfflineTicketRequest struct {
+	*tchttp.BaseRequest
+	
+	// xxx
+	FakeURLId *int64 `json:"FakeURLId,omitempty" name:"FakeURLId"`
+}
+
+func (r *CreateBPOfflineTicketRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateBPOfflineTicketRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FakeURLId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateBPOfflineTicketRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateBPOfflineTicketResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateBPOfflineTicketResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateBPOfflineTicketResponseParams `json:"Response"`
+}
+
+func (r *CreateBPOfflineTicketResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateBPOfflineTicketResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateBPProtectURLsRequestParams struct {
+	// xxx
+	CompanyName *string `json:"CompanyName,omitempty" name:"CompanyName"`
+
+	// xxx
+	Phone *string `json:"Phone,omitempty" name:"Phone"`
+
+	// xxx
+	LicenseName *string `json:"LicenseName,omitempty" name:"LicenseName"`
+
+	// xxx
+	ProtectURLs []*string `json:"ProtectURLs,omitempty" name:"ProtectURLs"`
+
+	// xxx
+	ProtectWebs []*string `json:"ProtectWebs,omitempty" name:"ProtectWebs"`
+}
+
+type CreateBPProtectURLsRequest struct {
+	*tchttp.BaseRequest
+	
+	// xxx
+	CompanyName *string `json:"CompanyName,omitempty" name:"CompanyName"`
+
+	// xxx
+	Phone *string `json:"Phone,omitempty" name:"Phone"`
+
+	// xxx
+	LicenseName *string `json:"LicenseName,omitempty" name:"LicenseName"`
+
+	// xxx
+	ProtectURLs []*string `json:"ProtectURLs,omitempty" name:"ProtectURLs"`
+
+	// xxx
+	ProtectWebs []*string `json:"ProtectWebs,omitempty" name:"ProtectWebs"`
+}
+
+func (r *CreateBPProtectURLsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateBPProtectURLsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CompanyName")
+	delete(f, "Phone")
+	delete(f, "LicenseName")
+	delete(f, "ProtectURLs")
+	delete(f, "ProtectWebs")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateBPProtectURLsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateBPProtectURLsResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateBPProtectURLsResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateBPProtectURLsResponseParams `json:"Response"`
+}
+
+func (r *CreateBPProtectURLsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateBPProtectURLsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 // Predefined struct for user
 type CreateCRBlockRequestParams struct {
 	// 已存证的作品ID
@@ -681,6 +1044,305 @@ func (r *CreateCRWorkResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeBPCompanyInfoRequestParams struct {
+
+}
+
+type DescribeBPCompanyInfoRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DescribeBPCompanyInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBPCompanyInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBPCompanyInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeBPCompanyInfoResponseParams struct {
+	// xx
+	CompanyName *string `json:"CompanyName,omitempty" name:"CompanyName"`
+
+	// xx
+	Phone *string `json:"Phone,omitempty" name:"Phone"`
+
+	// xx
+	LicenseName *string `json:"LicenseName,omitempty" name:"LicenseName"`
+
+	// xx
+	LicenseStatus *int64 `json:"LicenseStatus,omitempty" name:"LicenseStatus"`
+
+	// xx
+	LicenseNote *string `json:"LicenseNote,omitempty" name:"LicenseNote"`
+
+	// xx
+	AuthorizationName *string `json:"AuthorizationName,omitempty" name:"AuthorizationName"`
+
+	// xx
+	AuthorizationStatus *int64 `json:"AuthorizationStatus,omitempty" name:"AuthorizationStatus"`
+
+	// xx
+	AuthorizationNote *string `json:"AuthorizationNote,omitempty" name:"AuthorizationNote"`
+
+	// xx
+	BrandDatas []*BrandData `json:"BrandDatas,omitempty" name:"BrandDatas"`
+
+	// xx
+	CompanyId *int64 `json:"CompanyId,omitempty" name:"CompanyId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeBPCompanyInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeBPCompanyInfoResponseParams `json:"Response"`
+}
+
+func (r *DescribeBPCompanyInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBPCompanyInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeBPFakeURLsRequestParams struct {
+	// xxx
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// xxx
+	PageSize *int64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// xxx
+	PageNumber *int64 `json:"PageNumber,omitempty" name:"PageNumber"`
+}
+
+type DescribeBPFakeURLsRequest struct {
+	*tchttp.BaseRequest
+	
+	// xxx
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// xxx
+	PageSize *int64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// xxx
+	PageNumber *int64 `json:"PageNumber,omitempty" name:"PageNumber"`
+}
+
+func (r *DescribeBPFakeURLsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBPFakeURLsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Filters")
+	delete(f, "PageSize")
+	delete(f, "PageNumber")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBPFakeURLsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeBPFakeURLsResponseParams struct {
+	// xxx
+	FakeURLInfos []*FakeURLInfo `json:"FakeURLInfos,omitempty" name:"FakeURLInfos"`
+
+	// xxx
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// xxx
+	ExportURL *string `json:"ExportURL,omitempty" name:"ExportURL"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeBPFakeURLsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeBPFakeURLsResponseParams `json:"Response"`
+}
+
+func (r *DescribeBPFakeURLsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBPFakeURLsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeBPProtectURLsRequestParams struct {
+	// xxx
+	PageSize *int64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// xxx
+	PageNumber *int64 `json:"PageNumber,omitempty" name:"PageNumber"`
+}
+
+type DescribeBPProtectURLsRequest struct {
+	*tchttp.BaseRequest
+	
+	// xxx
+	PageSize *int64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// xxx
+	PageNumber *int64 `json:"PageNumber,omitempty" name:"PageNumber"`
+}
+
+func (r *DescribeBPProtectURLsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBPProtectURLsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PageSize")
+	delete(f, "PageNumber")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBPProtectURLsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeBPProtectURLsResponseParams struct {
+	// xxx
+	ProtectURLInfos []*ProtectURLInfo `json:"ProtectURLInfos,omitempty" name:"ProtectURLInfos"`
+
+	// xxx
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeBPProtectURLsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeBPProtectURLsResponseParams `json:"Response"`
+}
+
+func (r *DescribeBPProtectURLsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBPProtectURLsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeBPReportFakeURLsRequestParams struct {
+	// xxx
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// xxx
+	PageSize *int64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// xxx
+	PageNumber *int64 `json:"PageNumber,omitempty" name:"PageNumber"`
+}
+
+type DescribeBPReportFakeURLsRequest struct {
+	*tchttp.BaseRequest
+	
+	// xxx
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// xxx
+	PageSize *int64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// xxx
+	PageNumber *int64 `json:"PageNumber,omitempty" name:"PageNumber"`
+}
+
+func (r *DescribeBPReportFakeURLsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBPReportFakeURLsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Filters")
+	delete(f, "PageSize")
+	delete(f, "PageNumber")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBPReportFakeURLsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeBPReportFakeURLsResponseParams struct {
+	// xxx
+	ReportFakeURLInfos []*ReportFakeURLInfo `json:"ReportFakeURLInfos,omitempty" name:"ReportFakeURLInfos"`
+
+	// xxx
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeBPReportFakeURLsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeBPReportFakeURLsResponseParams `json:"Response"`
+}
+
+func (r *DescribeBPReportFakeURLsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBPReportFakeURLsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeCRMonitorDetailRequestParams struct {
 	// 作品ID
 	WorkId *int64 `json:"WorkId,omitempty" name:"WorkId"`
@@ -907,8 +1569,140 @@ func (r *DescribeCRWorkInfoResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type FakeURLInfo struct {
+	// xxx
+	FakeURLId *int64 `json:"FakeURLId,omitempty" name:"FakeURLId"`
+
+	// xxx
+	ProtectWeb *string `json:"ProtectWeb,omitempty" name:"ProtectWeb"`
+
+	// xxx
+	DetectTime *string `json:"DetectTime,omitempty" name:"DetectTime"`
+
+	// xxx
+	FakeURL *string `json:"FakeURL,omitempty" name:"FakeURL"`
+
+	// xxx
+	Snapshot *string `json:"Snapshot,omitempty" name:"Snapshot"`
+
+	// xxx
+	IP *string `json:"IP,omitempty" name:"IP"`
+
+	// xxx
+	IPLoc *string `json:"IPLoc,omitempty" name:"IPLoc"`
+
+	// xxx
+	Heat *int64 `json:"Heat,omitempty" name:"Heat"`
+
+	// xxx
+	Status *int64 `json:"Status,omitempty" name:"Status"`
+
+	// xxx
+	Note *string `json:"Note,omitempty" name:"Note"`
+
+	// xxx
+	FakeURLCompany *string `json:"FakeURLCompany,omitempty" name:"FakeURLCompany"`
+
+	// xxx
+	FakeURLAttr *string `json:"FakeURLAttr,omitempty" name:"FakeURLAttr"`
+
+	// xxx
+	FakeURLName *string `json:"FakeURLName,omitempty" name:"FakeURLName"`
+
+	// xxx
+	FakeURLICP *string `json:"FakeURLICP,omitempty" name:"FakeURLICP"`
+
+	// xxx
+	FakeURLCreateTime *string `json:"FakeURLCreateTime,omitempty" name:"FakeURLCreateTime"`
+
+	// xxx
+	FakeURLExpireTime *string `json:"FakeURLExpireTime,omitempty" name:"FakeURLExpireTime"`
+}
+
 type Filter struct {
 
+}
+
+// Predefined struct for user
+type ModifyBPOfflineAttachmentRequestParams struct {
+	// xx
+	LicenseName *string `json:"LicenseName,omitempty" name:"LicenseName"`
+
+	// xx
+	AuthorizationName *string `json:"AuthorizationName,omitempty" name:"AuthorizationName"`
+
+	// xx
+	BrandName *string `json:"BrandName,omitempty" name:"BrandName"`
+
+	// xx
+	BrandCertificateName *string `json:"BrandCertificateName,omitempty" name:"BrandCertificateName"`
+
+	// xx
+	TransferName *string `json:"TransferName,omitempty" name:"TransferName"`
+}
+
+type ModifyBPOfflineAttachmentRequest struct {
+	*tchttp.BaseRequest
+	
+	// xx
+	LicenseName *string `json:"LicenseName,omitempty" name:"LicenseName"`
+
+	// xx
+	AuthorizationName *string `json:"AuthorizationName,omitempty" name:"AuthorizationName"`
+
+	// xx
+	BrandName *string `json:"BrandName,omitempty" name:"BrandName"`
+
+	// xx
+	BrandCertificateName *string `json:"BrandCertificateName,omitempty" name:"BrandCertificateName"`
+
+	// xx
+	TransferName *string `json:"TransferName,omitempty" name:"TransferName"`
+}
+
+func (r *ModifyBPOfflineAttachmentRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyBPOfflineAttachmentRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "LicenseName")
+	delete(f, "AuthorizationName")
+	delete(f, "BrandName")
+	delete(f, "BrandCertificateName")
+	delete(f, "TransferName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyBPOfflineAttachmentRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyBPOfflineAttachmentResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ModifyBPOfflineAttachmentResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyBPOfflineAttachmentResponseParams `json:"Response"`
+}
+
+func (r *ModifyBPOfflineAttachmentResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyBPOfflineAttachmentResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user
@@ -1240,6 +2034,82 @@ type MonitorTort struct {
 
 	// 1
 	WorkTitle *string `json:"WorkTitle,omitempty" name:"WorkTitle"`
+}
+
+type ProtectURLInfo struct {
+	// xxx
+	ProtectURLId *int64 `json:"ProtectURLId,omitempty" name:"ProtectURLId"`
+
+	// xxx
+	ProtectURL *string `json:"ProtectURL,omitempty" name:"ProtectURL"`
+
+	// xxx
+	ProtectWeb *string `json:"ProtectWeb,omitempty" name:"ProtectWeb"`
+
+	// xxx
+	ProtectURLStatus *int64 `json:"ProtectURLStatus,omitempty" name:"ProtectURLStatus"`
+
+	// xxx
+	ProtectURLNote *string `json:"ProtectURLNote,omitempty" name:"ProtectURLNote"`
+
+	// xxx
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+}
+
+type ReportFakeURLInfo struct {
+	// xxx
+	FakeURLId *int64 `json:"FakeURLId,omitempty" name:"FakeURLId"`
+
+	// xxx
+	DetectTime *string `json:"DetectTime,omitempty" name:"DetectTime"`
+
+	// xxx
+	ProtectURL *string `json:"ProtectURL,omitempty" name:"ProtectURL"`
+
+	// xxx
+	ProtectWeb *string `json:"ProtectWeb,omitempty" name:"ProtectWeb"`
+
+	// xxx
+	FakeURL *string `json:"FakeURL,omitempty" name:"FakeURL"`
+
+	// xxx
+	Snapshot *string `json:"Snapshot,omitempty" name:"Snapshot"`
+
+	// xxx
+	IP *string `json:"IP,omitempty" name:"IP"`
+
+	// xxx
+	IPLoc *string `json:"IPLoc,omitempty" name:"IPLoc"`
+
+	// xxx
+	Heat *int64 `json:"Heat,omitempty" name:"Heat"`
+
+	// xxx
+	Status *int64 `json:"Status,omitempty" name:"Status"`
+
+	// xxx
+	Note *string `json:"Note,omitempty" name:"Note"`
+
+	// xxx
+	FakeURLCompany *string `json:"FakeURLCompany,omitempty" name:"FakeURLCompany"`
+
+	// xxx
+	FakeURLAttr *string `json:"FakeURLAttr,omitempty" name:"FakeURLAttr"`
+
+	// xxx
+	FakeURLName *string `json:"FakeURLName,omitempty" name:"FakeURLName"`
+
+	// xxx
+	FakeURLICP *string `json:"FakeURLICP,omitempty" name:"FakeURLICP"`
+
+	// xxx
+	FakeURLCreateTime *string `json:"FakeURLCreateTime,omitempty" name:"FakeURLCreateTime"`
+
+	// xxx
+	FakeURLExpireTime *string `json:"FakeURLExpireTime,omitempty" name:"FakeURLExpireTime"`
+
+	// xxx
+	BlockTime *string `json:"BlockTime,omitempty" name:"BlockTime"`
 }
 
 // Predefined struct for user

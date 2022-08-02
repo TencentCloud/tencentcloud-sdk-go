@@ -674,6 +674,9 @@ type EnvBaseInfo struct {
 
 	// 环境类型 tcbr ｜ run
 	EnvType *string `json:"EnvType,omitempty" name:"EnvType"`
+
+	// 子网id
+	SubnetIds *string `json:"SubnetIds,omitempty" name:"SubnetIds"`
 }
 
 type EnvInfo struct {

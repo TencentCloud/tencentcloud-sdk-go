@@ -415,6 +415,127 @@ func (r *DescribeDetailedSingleProbeDataResponse) FromJsonString(s string) error
 }
 
 // Predefined struct for user
+type DescribeNodesRequestParams struct {
+	// 节点类型
+	// <li> 1 = IDC </li>
+	// <li> 2 = LastMile </li>
+	// <li> 3 = Mobile </li>
+	NodeType *int64 `json:"NodeType,omitempty" name:"NodeType"`
+
+	// 节点区域
+	// <li> 1 = 中国大陆 </li>
+	// <li> 2 = 港澳台 </li>
+	// <li> 3 = 海外 </li>
+	Location *int64 `json:"Location,omitempty" name:"Location"`
+
+	// 是否IPv6
+	IsIPv6 *bool `json:"IsIPv6,omitempty" name:"IsIPv6"`
+
+	// 名字模糊搜索
+	NodeName *string `json:"NodeName,omitempty" name:"NodeName"`
+
+	// 付费模式
+	// <li>1 = 试用版本</li>
+	// <li> 2 = 付费版本 </li>
+	PayMode *int64 `json:"PayMode,omitempty" name:"PayMode"`
+
+	// 任务类型
+	// <li>1 = 页面性能</li>
+	// <li>2 = 文件上传</li>
+	// <li>3 = 文件下载</li>
+	// <li>4 = 端口性能</li>
+	// <li>5 = 网络质量</li>
+	// <li>6 = 音视频体验</li>
+	TaskType *int64 `json:"TaskType,omitempty" name:"TaskType"`
+}
+
+type DescribeNodesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 节点类型
+	// <li> 1 = IDC </li>
+	// <li> 2 = LastMile </li>
+	// <li> 3 = Mobile </li>
+	NodeType *int64 `json:"NodeType,omitempty" name:"NodeType"`
+
+	// 节点区域
+	// <li> 1 = 中国大陆 </li>
+	// <li> 2 = 港澳台 </li>
+	// <li> 3 = 海外 </li>
+	Location *int64 `json:"Location,omitempty" name:"Location"`
+
+	// 是否IPv6
+	IsIPv6 *bool `json:"IsIPv6,omitempty" name:"IsIPv6"`
+
+	// 名字模糊搜索
+	NodeName *string `json:"NodeName,omitempty" name:"NodeName"`
+
+	// 付费模式
+	// <li>1 = 试用版本</li>
+	// <li> 2 = 付费版本 </li>
+	PayMode *int64 `json:"PayMode,omitempty" name:"PayMode"`
+
+	// 任务类型
+	// <li>1 = 页面性能</li>
+	// <li>2 = 文件上传</li>
+	// <li>3 = 文件下载</li>
+	// <li>4 = 端口性能</li>
+	// <li>5 = 网络质量</li>
+	// <li>6 = 音视频体验</li>
+	TaskType *int64 `json:"TaskType,omitempty" name:"TaskType"`
+}
+
+func (r *DescribeNodesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeNodesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "NodeType")
+	delete(f, "Location")
+	delete(f, "IsIPv6")
+	delete(f, "NodeName")
+	delete(f, "PayMode")
+	delete(f, "TaskType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeNodesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeNodesResponseParams struct {
+	// 节点列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NodeSet []*NodeDefineExt `json:"NodeSet,omitempty" name:"NodeSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeNodesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeNodesResponseParams `json:"Response"`
+}
+
+func (r *DescribeNodesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeNodesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeProbeMetricDataRequestParams struct {
 	// 分析任务类型，支持以下几种类型：
 	// AnalyzeTaskType_Network：网络质量
@@ -893,6 +1014,50 @@ type NodeDefine struct {
 	// 节点状态：1-运行,2-下线
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	NodeDefineStatus *uint64 `json:"NodeDefineStatus,omitempty" name:"NodeDefineStatus"`
+}
+
+type NodeDefineExt struct {
+	// 节点名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 节点代码
+	Code *string `json:"Code,omitempty" name:"Code"`
+
+	// 节点类型
+	// <li> 1 = IDC </li>
+	// <li> 2 = LastMile </li>
+	// <li> 3 = Mobile </li>
+	Type *int64 `json:"Type,omitempty" name:"Type"`
+
+	// 网络服务商
+	NetService *string `json:"NetService,omitempty" name:"NetService"`
+
+	// 区域
+	District *string `json:"District,omitempty" name:"District"`
+
+	// 城市
+	City *string `json:"City,omitempty" name:"City"`
+
+	// IP 类型
+	// <li> 1 = IPv4 </li>
+	// <li> 2 = IPv6 </li>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IPType *int64 `json:"IPType,omitempty" name:"IPType"`
+
+	// 区域
+	// <li> 1 = 中国大陆 </li>
+	// <li> 2 = 港澳台 </li>
+	// <li> 3 = 国外 </li>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Location *int64 `json:"Location,omitempty" name:"Location"`
+
+	// 节点类型  如果为base 则为可用性拨测点，为空则为高级拨测点
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CodeType *string `json:"CodeType,omitempty" name:"CodeType"`
+
+	// 节点支持的任务类型。1: 页面性能 2: 文件上传 3: 文件下载 4: 端口性能 5: 网络质量 6: 音视频体验
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskTypes []*int64 `json:"TaskTypes,omitempty" name:"TaskTypes"`
 }
 
 type ProbeTask struct {

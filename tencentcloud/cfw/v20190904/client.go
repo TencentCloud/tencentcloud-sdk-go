@@ -439,7 +439,7 @@ func NewCreateNatFwInstanceWithDomainResponse() (response *CreateNatFwInstanceWi
 }
 
 // CreateNatFwInstanceWithDomain
-// 创建防火墙实例和接入域名
+// 创建防火墙实例和接入域名（Region参数必填）
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -465,7 +465,7 @@ func (c *Client) CreateNatFwInstanceWithDomain(request *CreateNatFwInstanceWithD
 }
 
 // CreateNatFwInstanceWithDomain
-// 创建防火墙实例和接入域名
+// 创建防火墙实例和接入域名（Region参数必填）
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"

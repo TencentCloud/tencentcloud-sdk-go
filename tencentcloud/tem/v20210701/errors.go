@@ -50,6 +50,9 @@ const (
 	// 查询实例信息失败。
 	INTERNALERROR_DESCRIBERUNPODLISTERROR = "InternalError.DescribeRunPodListError"
 
+	// 查询service失败。
+	INTERNALERROR_DESCRIBESERVICEERROR = "InternalError.DescribeServiceError"
+
 	// 查询服务关联的 ingress 失败。
 	INTERNALERROR_DESCRIBESERVICEINGRESSERROR = "InternalError.DescribeServiceIngressError"
 
@@ -97,6 +100,9 @@ const (
 
 	// 应用名已存在。
 	INVALIDPARAMETERVALUE_SERVICENAMEDUPLICATEERROR = "InvalidParameterValue.ServiceNameDuplicateError"
+
+	// 应用不属于此账户。
+	INVALIDPARAMETERVALUE_SERVICENOTBELONGTOAPPID = "InvalidParameterValue.ServiceNotBelongToAppid"
 
 	// 实例创建失败，达到上限。
 	INVALIDPARAMETERVALUE_SERVICEPODREACHMAXIMUM = "InvalidParameterValue.ServicePodReachMaximum"

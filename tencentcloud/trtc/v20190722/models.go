@@ -46,6 +46,179 @@ type AbnormalExperience struct {
 	EventTime *uint64 `json:"EventTime,omitempty" name:"EventTime"`
 }
 
+type AudioParams struct {
+	// 音频采样率:
+	// 1：48000Hz（默认）;
+	// 2：44100Hz
+	// 3：16000Hz。
+	SampleRate *uint64 `json:"SampleRate,omitempty" name:"SampleRate"`
+
+	// 声道数:
+	// 1：单声道;
+	// 2：双声道（默认）。
+	Channel *uint64 `json:"Channel,omitempty" name:"Channel"`
+
+	// 音频码率: 取值范围[32000, 128000] ，单位bps，默认64000bps。
+	BitRate *uint64 `json:"BitRate,omitempty" name:"BitRate"`
+}
+
+type CloudStorage struct {
+	// 第三方云储存的供应商:
+	// 0：腾讯云存储 COS，暂不支持其他家。
+	Vendor *uint64 `json:"Vendor,omitempty" name:"Vendor"`
+
+	// 第三方云存储的地域信息。
+	Region *string `json:"Region,omitempty" name:"Region"`
+
+	// 第三方存储桶信息。
+	Bucket *string `json:"Bucket,omitempty" name:"Bucket"`
+
+	// 第三方存储的access_key账号信息。
+	AccessKey *string `json:"AccessKey,omitempty" name:"AccessKey"`
+
+	// 第三方存储的secret_key账号信息。
+	SecretKey *string `json:"SecretKey,omitempty" name:"SecretKey"`
+
+	// 第三方云存储bucket 的指定位置，由字符串数组组成。合法的字符串范围a~z,A~Z,0~9,'_'和'-'，举个例子，录制文件xxx.m3u8在 ["prefix1", "prefix2"]作用下，会变成prefix1/prefix2/TaskId/xxx.m3u8。
+	FileNamePrefix []*string `json:"FileNamePrefix,omitempty" name:"FileNamePrefix"`
+}
+
+type CloudVod struct {
+	// 腾讯云点播相关参数。
+	TencentVod *TencentVod `json:"TencentVod,omitempty" name:"TencentVod"`
+}
+
+// Predefined struct for user
+type CreateCloudRecordingRequestParams struct {
+	// TRTC的[SdkAppId](https://cloud.tencent.com/document/product/647/46351#sdkappid)，和录制的房间所对应的SdkAppId相同。
+	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// TRTC的[RoomId](https://cloud.tencent.com/document/product/647/46351#roomid)，录制的TRTC房间所对应的RoomId。
+	RoomId *string `json:"RoomId,omitempty" name:"RoomId"`
+
+	// 录制服务在TRTC房间使用的[UserId](https://cloud.tencent.com/document/product/647/46351#userid)，注意这个userId不能与其他TRTC或者录制服务等已经使用的UserId重复，建议可以把房间ID作为userId的标识的一部分。
+	UserId *string `json:"UserId,omitempty" name:"UserId"`
+
+	// 云端录制加入房间的用户签名，当前 UserId 对应的验证签名，相当于登录密码，具体计算方法请参考TRTC计算[UserSig](https://cloud.tencent.com/document/product/647/45910#UserSig)的方案。
+	UserSig *string `json:"UserSig,omitempty" name:"UserSig"`
+
+	// 云端录制控制参数。
+	RecordParams *RecordParams `json:"RecordParams,omitempty" name:"RecordParams"`
+
+	// 云端录制文件上传到云存储的参数。
+	StorageParams *StorageParams `json:"StorageParams,omitempty" name:"StorageParams"`
+
+	// TRTC房间号的类型，必须和录制的房间所对应的RoomId类型相同:
+	// 0: 字符串类型的RoomId
+	// 1: 32位整型的RoomId（默认）
+	RoomIdType *uint64 `json:"RoomIdType,omitempty" name:"RoomIdType"`
+
+	// 混流的转码参数，录制模式为混流的时候可以设置。
+	MixTranscodeParams *MixTranscodeParams `json:"MixTranscodeParams,omitempty" name:"MixTranscodeParams"`
+
+	// 混流的布局参数，录制模式为混流的时候可以设置。
+	MixLayoutParams *MixLayoutParams `json:"MixLayoutParams,omitempty" name:"MixLayoutParams"`
+
+	// 接口可以调用的时效性，从成功开启录制并获得任务ID后开始计算，超时后无法调用查询、更新和停止等接口，但是录制任务不会停止。 参数的单位是小时，默认72小时（3天），最大可设置720小时（30天），最小设置6小时。举例说明：如果不设置该参数，那么开始录制成功后，查询、更新和停止录制的调用时效为72个小时。
+	ResourceExpiredHour *uint64 `json:"ResourceExpiredHour,omitempty" name:"ResourceExpiredHour"`
+
+	// TRTC房间权限加密串，只有在TRTC控制台启用了高级权限控制的时候需要携带，在TRTC控制台如果开启高级权限控制后，TRTC 的后台服务系统会校验一个叫做 [PrivateMapKey]（https://cloud.tencent.com/document/product/647/32240） 的“权限票据”，权限票据中包含了一个加密后的 RoomId 和一个加密后的“权限位列表”。由于 PrivateMapKey 中包含 RoomId，所以只提供了 UserSig 没有提供 PrivateMapKey 时，并不能进入指定的房间。
+	PrivateMapKey *string `json:"PrivateMapKey,omitempty" name:"PrivateMapKey"`
+}
+
+type CreateCloudRecordingRequest struct {
+	*tchttp.BaseRequest
+	
+	// TRTC的[SdkAppId](https://cloud.tencent.com/document/product/647/46351#sdkappid)，和录制的房间所对应的SdkAppId相同。
+	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// TRTC的[RoomId](https://cloud.tencent.com/document/product/647/46351#roomid)，录制的TRTC房间所对应的RoomId。
+	RoomId *string `json:"RoomId,omitempty" name:"RoomId"`
+
+	// 录制服务在TRTC房间使用的[UserId](https://cloud.tencent.com/document/product/647/46351#userid)，注意这个userId不能与其他TRTC或者录制服务等已经使用的UserId重复，建议可以把房间ID作为userId的标识的一部分。
+	UserId *string `json:"UserId,omitempty" name:"UserId"`
+
+	// 云端录制加入房间的用户签名，当前 UserId 对应的验证签名，相当于登录密码，具体计算方法请参考TRTC计算[UserSig](https://cloud.tencent.com/document/product/647/45910#UserSig)的方案。
+	UserSig *string `json:"UserSig,omitempty" name:"UserSig"`
+
+	// 云端录制控制参数。
+	RecordParams *RecordParams `json:"RecordParams,omitempty" name:"RecordParams"`
+
+	// 云端录制文件上传到云存储的参数。
+	StorageParams *StorageParams `json:"StorageParams,omitempty" name:"StorageParams"`
+
+	// TRTC房间号的类型，必须和录制的房间所对应的RoomId类型相同:
+	// 0: 字符串类型的RoomId
+	// 1: 32位整型的RoomId（默认）
+	RoomIdType *uint64 `json:"RoomIdType,omitempty" name:"RoomIdType"`
+
+	// 混流的转码参数，录制模式为混流的时候可以设置。
+	MixTranscodeParams *MixTranscodeParams `json:"MixTranscodeParams,omitempty" name:"MixTranscodeParams"`
+
+	// 混流的布局参数，录制模式为混流的时候可以设置。
+	MixLayoutParams *MixLayoutParams `json:"MixLayoutParams,omitempty" name:"MixLayoutParams"`
+
+	// 接口可以调用的时效性，从成功开启录制并获得任务ID后开始计算，超时后无法调用查询、更新和停止等接口，但是录制任务不会停止。 参数的单位是小时，默认72小时（3天），最大可设置720小时（30天），最小设置6小时。举例说明：如果不设置该参数，那么开始录制成功后，查询、更新和停止录制的调用时效为72个小时。
+	ResourceExpiredHour *uint64 `json:"ResourceExpiredHour,omitempty" name:"ResourceExpiredHour"`
+
+	// TRTC房间权限加密串，只有在TRTC控制台启用了高级权限控制的时候需要携带，在TRTC控制台如果开启高级权限控制后，TRTC 的后台服务系统会校验一个叫做 [PrivateMapKey]（https://cloud.tencent.com/document/product/647/32240） 的“权限票据”，权限票据中包含了一个加密后的 RoomId 和一个加密后的“权限位列表”。由于 PrivateMapKey 中包含 RoomId，所以只提供了 UserSig 没有提供 PrivateMapKey 时，并不能进入指定的房间。
+	PrivateMapKey *string `json:"PrivateMapKey,omitempty" name:"PrivateMapKey"`
+}
+
+func (r *CreateCloudRecordingRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateCloudRecordingRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SdkAppId")
+	delete(f, "RoomId")
+	delete(f, "UserId")
+	delete(f, "UserSig")
+	delete(f, "RecordParams")
+	delete(f, "StorageParams")
+	delete(f, "RoomIdType")
+	delete(f, "MixTranscodeParams")
+	delete(f, "MixLayoutParams")
+	delete(f, "ResourceExpiredHour")
+	delete(f, "PrivateMapKey")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCloudRecordingRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateCloudRecordingResponseParams struct {
+	// 云录制服务分配的任务 ID。任务 ID 是对一次录制生命周期过程的唯一标识，结束录制时会失去意义。任务 ID需要业务保存下来，作为下次针对这个录制任务操作的参数。
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateCloudRecordingResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateCloudRecordingResponseParams `json:"Response"`
+}
+
+func (r *CreateCloudRecordingResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateCloudRecordingResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 // Predefined struct for user
 type CreatePictureRequestParams struct {
 	// 应用id
@@ -142,6 +315,70 @@ func (r *CreatePictureResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreatePictureResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteCloudRecordingRequestParams struct {
+	// TRTC的SDKAppId，和录制的房间所对应的SDKAppId相同。
+	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 录制任务的唯一Id，在启动录制成功后会返回。
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+}
+
+type DeleteCloudRecordingRequest struct {
+	*tchttp.BaseRequest
+	
+	// TRTC的SDKAppId，和录制的房间所对应的SDKAppId相同。
+	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 录制任务的唯一Id，在启动录制成功后会返回。
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+}
+
+func (r *DeleteCloudRecordingRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteCloudRecordingRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SdkAppId")
+	delete(f, "TaskId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteCloudRecordingRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteCloudRecordingResponseParams struct {
+	// 云录制服务分配的任务 ID。任务 ID 是对一次录制生命周期过程的唯一标识，结束录制时会失去意义。
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DeleteCloudRecordingResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteCloudRecordingResponseParams `json:"Response"`
+}
+
+func (r *DeleteCloudRecordingResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteCloudRecordingResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -590,6 +827,80 @@ func (r *DescribeCallDetailResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeCallDetailResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCloudRecordingRequestParams struct {
+	// TRTC的SDKAppId，和录制的房间所对应的SDKAppId相同。
+	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 录制任务的唯一Id，在启动录制成功后会返回。
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+}
+
+type DescribeCloudRecordingRequest struct {
+	*tchttp.BaseRequest
+	
+	// TRTC的SDKAppId，和录制的房间所对应的SDKAppId相同。
+	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 录制任务的唯一Id，在启动录制成功后会返回。
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+}
+
+func (r *DescribeCloudRecordingRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCloudRecordingRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SdkAppId")
+	delete(f, "TaskId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCloudRecordingRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCloudRecordingResponseParams struct {
+	// 录制任务的唯一Id。
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 云端录制任务的状态信息。
+	// Idle：表示当前录制任务空闲中
+	// InProgress：表示当前录制任务正在进行中。
+	// Exited：表示当前录制任务正在退出的过程中。
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 录制文件信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StorageFileList []*StorageFile `json:"StorageFileList,omitempty" name:"StorageFileList"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeCloudRecordingResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeCloudRecordingResponseParams `json:"Response"`
+}
+
+func (r *DescribeCloudRecordingResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCloudRecordingResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1984,6 +2295,179 @@ type LayoutParams struct {
 	WaterMarkParams *WaterMarkParams `json:"WaterMarkParams,omitempty" name:"WaterMarkParams"`
 }
 
+type MixLayout struct {
+	// 画布上该画面左上角的 y 轴坐标，取值范围 [0, 1920]，不能超过画布的高。
+	Top *uint64 `json:"Top,omitempty" name:"Top"`
+
+	// 画布上该画面左上角的 x 轴坐标，取值范围 [0, 1920]，不能超过画布的宽。
+	Left *uint64 `json:"Left,omitempty" name:"Left"`
+
+	// 画布上该画面宽度的相对值，取值范围 [0, 1920]，与Left相加不应超过画布的宽。
+	Width *uint64 `json:"Width,omitempty" name:"Width"`
+
+	// 画布上该画面高度的相对值，取值范围 [0, 1920]，与Top相加不应超过画布的高。
+	Height *uint64 `json:"Height,omitempty" name:"Height"`
+
+	// 字符串内容为待显示在该画面的主播对应的UserId，如果不指定，会按照主播加入房间的顺序匹配。
+	UserId *string `json:"UserId,omitempty" name:"UserId"`
+
+	// 画布的透明度值，取值范围[0, 255]。0表示不透明，255表示全透明。默认值为0。
+	Alpha *uint64 `json:"Alpha,omitempty" name:"Alpha"`
+
+	// 0 ：拉伸模式，这个模式下整个视频内容会全部显示，并填满子画面，在源视频和目的视频宽高比不一致的时候，画面不会缺少内容，但是画面可能产生形变；
+	// 
+	// 1 ：剪裁模式（默认），这个模式下会严格按照目的视频的宽高比对源视频剪裁之后再拉伸，并填满子画面画布，在源视频和目的视频宽高比不一致的时候，画面保持不变形，但是会被剪裁；
+	// 
+	// 2 ：填黑模式，这个模式下会严格保持源视频的宽高比进行等比缩放，在源视频和目的视频宽高比不一致的时候，画面的上下侧边缘或者左右侧边缘会露出子画面画布的背景；
+	// 
+	// 3 ：智能拉伸模式，这个模式类似剪裁模式，区别是在源视频和目的视频宽高比不一致的时候，限制了最大剪裁比例为画面的宽度或者高度的20%；
+	RenderMode *uint64 `json:"RenderMode,omitempty" name:"RenderMode"`
+
+	// 对应订阅流的主辅路标识：
+	// 0：主流（默认）；
+	// 1：辅流；
+	MediaId *uint64 `json:"MediaId,omitempty" name:"MediaId"`
+
+	// 该画布的图层顺序, 这个值越小表示图层越靠后。默认值为0。
+	ImageLayer *uint64 `json:"ImageLayer,omitempty" name:"ImageLayer"`
+
+	// 下载的url地址， 只支持jpg， png，大小限制不超过5M，宽高比不一致的处理方案同 RenderMode。
+	SubBackgroundImage *string `json:"SubBackgroundImage,omitempty" name:"SubBackgroundImage"`
+}
+
+type MixLayoutParams struct {
+	// 布局模式:
+	// 1：悬浮布局；
+	// 2：屏幕分享布局；
+	// 3：九宫格布局（默认）；
+	// 4：自定义布局；
+	// 
+	// 悬浮布局：默认第一个进入房间的主播（也可以指定一个主播）的视频画面会铺满整个屏幕。其他主播的视频画面从左下角开始依次按照进房顺序水平排列，显示为小画面，小画面悬浮于大画面之上。当画面数量小于等于17个时，每行4个（4 x 4排列）。当画面数量大于17个时，重新布局小画面为每行5个（5 x 5）排列。最多支持25个画面，如果用户只发送音频，仍然会占用画面位置。
+	// 
+	// 屏幕分享布局：指定一个主播在屏幕左侧的大画面位置（如果不指定，那么大画面位置为背景色），其他主播自上而下依次垂直排列于右侧。当画面数量少于17个的时候，右侧每列最多8人，最多占据两列。当画面数量多于17个的时候，超过17个画面的主播从左下角开始依次水平排列。最多支持25个画面，如果主播只发送音频，仍然会占用画面位置。
+	// 
+	// 九宫格布局：根据主播的数量自动调整每个画面的大小，每个主播的画面大小一致，最多支持25个画面。
+	// 
+	// 自定义布局：根据需要在MixLayoutList内定制每个主播画面的布局。
+	MixLayoutMode *uint64 `json:"MixLayoutMode,omitempty" name:"MixLayoutMode"`
+
+	// 如果MixLayoutMode 选择为4自定义布局模式的话，设置此参数为每个主播所对应的布局画面的详细信息，最大不超过25个。
+	MixLayoutList []*MixLayout `json:"MixLayoutList,omitempty" name:"MixLayoutList"`
+
+	// 录制背景颜色，RGB的颜色表的16进制表示，每个颜色通过8bit长度标识，默认为黑色。比如橙色对应的RGB为 R:255 G:165 B:0, 那么对应的字符串描述为#FFA500，格式规范：‘#‘开头，后面跟固定RGB的颜色值
+	BackGroundColor *string `json:"BackGroundColor,omitempty" name:"BackGroundColor"`
+
+	// 在布局模式为1：悬浮布局和 2：屏幕分享布局时，设定为显示大视频画面的UserId。不填的话：悬浮布局默认是第一个进房间的主播，屏幕分享布局默认是背景色
+	MaxResolutionUserId *string `json:"MaxResolutionUserId,omitempty" name:"MaxResolutionUserId"`
+
+	// 主辅路标识，
+	// 0：主流（默认）；
+	// 1：辅流（屏幕分享）；
+	// 这个位置的MediaId代表的是对应MaxResolutionUserId的主辅路，MixLayoutList内代表的是自定义用户的主辅路。
+	MediaId *uint64 `json:"MediaId,omitempty" name:"MediaId"`
+
+	// 下载的url地址， 只支持jpg， png，大小限制不超过5M。
+	BackgroundImageUrl *string `json:"BackgroundImageUrl,omitempty" name:"BackgroundImageUrl"`
+
+	// 设置为1时代表启用占位图功能，0时代表不启用占位图功能，默认为0。启用占位图功能时，在预设位置的用户没有上行视频时可显示对应的占位图。
+	PlaceHolderMode *uint64 `json:"PlaceHolderMode,omitempty" name:"PlaceHolderMode"`
+
+	// 背景画面宽高比不一致的时候处理方案，与MixLayoufList定义的RenderMode一致。
+	BackgroundImageRenderMode *uint64 `json:"BackgroundImageRenderMode,omitempty" name:"BackgroundImageRenderMode"`
+
+	// 下载的url地址， 只支持jpg， png，大小限制不超过5M，宽高比不一致的处理方案同 RenderMode。
+	DefaultSubBackgroundImage *string `json:"DefaultSubBackgroundImage,omitempty" name:"DefaultSubBackgroundImage"`
+
+	// 水印布局参数， 最多支持25个。
+	WaterMarkList []*WaterMark `json:"WaterMarkList,omitempty" name:"WaterMarkList"`
+}
+
+type MixTranscodeParams struct {
+	// 录制视频转码参数，注意如果设置了这个参数，那么里面的字段都是必填的，没有默认值，如果不填这个参数，那么取值为默认值。
+	VideoParams *VideoParams `json:"VideoParams,omitempty" name:"VideoParams"`
+
+	// 录制音频转码参数，注意如果设置了这个参数，那么里面的字段都是必填的，没有默认值，如果不填这个参数，那么取值为默认值。
+	AudioParams *AudioParams `json:"AudioParams,omitempty" name:"AudioParams"`
+}
+
+// Predefined struct for user
+type ModifyCloudRecordingRequestParams struct {
+	// TRTC的SDKAppId，和录制的房间所对应的SDKAppId相同。
+	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 录制任务的唯一Id，在启动录制成功后会返回。
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 需要更新的混流的布局参数。
+	MixLayoutParams *MixLayoutParams `json:"MixLayoutParams,omitempty" name:"MixLayoutParams"`
+
+	// 指定订阅流白名单或者黑名单。
+	SubscribeStreamUserIds *SubscribeStreamUserIds `json:"SubscribeStreamUserIds,omitempty" name:"SubscribeStreamUserIds"`
+}
+
+type ModifyCloudRecordingRequest struct {
+	*tchttp.BaseRequest
+	
+	// TRTC的SDKAppId，和录制的房间所对应的SDKAppId相同。
+	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 录制任务的唯一Id，在启动录制成功后会返回。
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 需要更新的混流的布局参数。
+	MixLayoutParams *MixLayoutParams `json:"MixLayoutParams,omitempty" name:"MixLayoutParams"`
+
+	// 指定订阅流白名单或者黑名单。
+	SubscribeStreamUserIds *SubscribeStreamUserIds `json:"SubscribeStreamUserIds,omitempty" name:"SubscribeStreamUserIds"`
+}
+
+func (r *ModifyCloudRecordingRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyCloudRecordingRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SdkAppId")
+	delete(f, "TaskId")
+	delete(f, "MixLayoutParams")
+	delete(f, "SubscribeStreamUserIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyCloudRecordingRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyCloudRecordingResponseParams struct {
+	// 云录制服务分配的任务 ID。任务 ID 是对一次录制生命周期过程的唯一标识，结束录制时会失去意义。
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ModifyCloudRecordingResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyCloudRecordingResponseParams `json:"Response"`
+}
+
+func (r *ModifyCloudRecordingResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyCloudRecordingResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 // Predefined struct for user
 type ModifyPictureRequestParams struct {
 	// 图片id
@@ -2171,6 +2655,28 @@ type QualityData struct {
 
 	// 数据类型
 	DataType *string `json:"DataType,omitempty" name:"DataType"`
+}
+
+type RecordParams struct {
+	// 录制模式：
+	// 1：单流录制，分别录制房间的订阅UserId的音频和视频，将录制文件（M3U8/TS）上传至云存储；
+	// 2：混流录制，将房间内订阅UserId的音视频混录成一个音视频文件，将录制文件[M3U8/TS]上传至云存储；
+	RecordMode *uint64 `json:"RecordMode,omitempty" name:"RecordMode"`
+
+	// 房间内持续没有主播的状态超过MaxIdleTime的时长，自动停止录制，单位：秒。默认值为 30 秒，该值需大于等于 5秒，且小于等于 86400秒(24小时)。
+	MaxIdleTime *uint64 `json:"MaxIdleTime,omitempty" name:"MaxIdleTime"`
+
+	// 录制的媒体流类型：
+	// 0：录制音频+视频流（默认）;
+	// 1：仅录制音频流；
+	// 2：仅录制视频流，
+	StreamType *uint64 `json:"StreamType,omitempty" name:"StreamType"`
+
+	// 指定订阅流白名单或者黑名单。
+	SubscribeStreamUserIds *SubscribeStreamUserIds `json:"SubscribeStreamUserIds,omitempty" name:"SubscribeStreamUserIds"`
+
+	// 输出文件的格式。0：(默认)输出文件为hls格式。1：输出文件格式为hls+mp4（hls录制完成后转mp4文件）
+	OutputFormat *uint64 `json:"OutputFormat,omitempty" name:"OutputFormat"`
 }
 
 type RecordUsage struct {
@@ -2719,6 +3225,71 @@ func (r *StopMCUMixTranscodeResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type StorageFile struct {
+	// 录制文件对应的UserId，如果是混流的话的这里返回的是空串。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserId *string `json:"UserId,omitempty" name:"UserId"`
+
+	// 录制索引文件名。
+	FileName *string `json:"FileName,omitempty" name:"FileName"`
+
+	// 录制文件流信息。
+	// video：视频录制文件
+	// audio：音频录制文件
+	// audio_video：音视频录制文件
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TrackType *string `json:"TrackType,omitempty" name:"TrackType"`
+
+	// 录制文件开始Unix时间戳。
+	BeginTimeStamp *uint64 `json:"BeginTimeStamp,omitempty" name:"BeginTimeStamp"`
+}
+
+type StorageParams struct {
+	// 第三方云存储的账号信息。
+	CloudStorage *CloudStorage `json:"CloudStorage,omitempty" name:"CloudStorage"`
+
+	// 第三方云点播的账号信息。
+	CloudVod *CloudVod `json:"CloudVod,omitempty" name:"CloudVod"`
+}
+
+type SubscribeStreamUserIds struct {
+	// 订阅音频流白名单，指定订阅哪几个UserId的音频流，例如["1", "2", "3"], 代表订阅UserId 1，2，3的音频流；["1.*$"], 代表订阅UserId前缀为1的音频流。默认不填订阅房间内所有的音频流，订阅列表用户数不超过32。
+	SubscribeAudioUserIds []*string `json:"SubscribeAudioUserIds,omitempty" name:"SubscribeAudioUserIds"`
+
+	// 订阅音频流黑名单，指定不订阅哪几个UserId的音频流，例如["1", "2", "3"], 代表不订阅UserId 1，2，3的音频流；["1.*$"], 代表不订阅UserId前缀为1的音频流。默认不填订阅房间内所有音频流，订阅列表用户数不超过32。
+	UnSubscribeAudioUserIds []*string `json:"UnSubscribeAudioUserIds,omitempty" name:"UnSubscribeAudioUserIds"`
+
+	// 订阅视频流白名单，指定订阅哪几个UserId的视频流，例如["1", "2", "3"], 代表订阅UserId  1，2，3的视频流；["1.*$"], 代表订阅UserId前缀为1的视频流。默认不填订阅房间内所有视频流，订阅列表用户数不超过32。
+	SubscribeVideoUserIds []*string `json:"SubscribeVideoUserIds,omitempty" name:"SubscribeVideoUserIds"`
+
+	// 订阅视频流黑名单，指定不订阅哪几个UserId的视频流，例如["1", "2", "3"], 代表不订阅UserId  1，2，3的视频流；["1.*$"], 代表不订阅UserId前缀为1的视频流。默认不填订阅房间内所有视频流，订阅列表用户数不超过32。
+	UnSubscribeVideoUserIds []*string `json:"UnSubscribeVideoUserIds,omitempty" name:"UnSubscribeVideoUserIds"`
+}
+
+type TencentVod struct {
+	// 媒体后续任务处理操作，即完成媒体上传后，可自动发起任务流操作。参数值为任务流模板名，云点播支持 创建任务流模板 并为模板命名。
+	Procedure *string `json:"Procedure,omitempty" name:"Procedure"`
+
+	// 媒体文件过期时间，为当前时间的绝对过期时间；保存一天，就填"86400"，永久保存就填"0"，默认永久保存。
+	ExpireTime *uint64 `json:"ExpireTime,omitempty" name:"ExpireTime"`
+
+	// 指定上传园区，仅适用于对上传地域有特殊需求的用户。
+	StorageRegion *string `json:"StorageRegion,omitempty" name:"StorageRegion"`
+
+	// 分类ID，用于对媒体进行分类管理，可通过 创建分类 接口，创建分类，获得分类 ID。
+	// 默认值：0，表示其他分类。
+	ClassId *uint64 `json:"ClassId,omitempty" name:"ClassId"`
+
+	// 点播 子应用 ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+
+	// 任务流上下文，任务完成回调时透传。
+	SessionContext *string `json:"SessionContext,omitempty" name:"SessionContext"`
+
+	// 上传上下文，上传完成回调时透传。
+	SourceContext *string `json:"SourceContext,omitempty" name:"SourceContext"`
+}
+
 type TimeValue struct {
 	// 时间，unix时间戳（1590065877s)
 	Time *uint64 `json:"Time,omitempty" name:"Time"`
@@ -2783,6 +3354,48 @@ type UserInformation struct {
 
 	// 判断用户是否已经离开房间
 	Finished *bool `json:"Finished,omitempty" name:"Finished"`
+}
+
+type VideoParams struct {
+	// 视频的宽度值，单位为像素，默认值360。不能超过1920，与height的乘积不能超过1920*1080。
+	Width *uint64 `json:"Width,omitempty" name:"Width"`
+
+	// 视频的高度值，单位为像素，默认值640。不能超过1920，与width的乘积不能超过1920*1080。
+	Height *uint64 `json:"Height,omitempty" name:"Height"`
+
+	// 视频的帧率，范围[1, 60]，默认15。
+	Fps *uint64 `json:"Fps,omitempty" name:"Fps"`
+
+	// 视频的码率,单位是bps，范围[64000, 8192000]，默认550000bps。
+	BitRate *uint64 `json:"BitRate,omitempty" name:"BitRate"`
+
+	// 视频关键帧时间间隔，单位秒，默认值10秒。
+	Gop *uint64 `json:"Gop,omitempty" name:"Gop"`
+}
+
+type WaterMark struct {
+	// 水印类型，0为图片（默认），1为文字（暂不支持）。
+	WaterMarkType *uint64 `json:"WaterMarkType,omitempty" name:"WaterMarkType"`
+
+	// 水印为图片时的参数列表，水印为图片时校验必填。
+	WaterMarkImage *WaterMarkImage `json:"WaterMarkImage,omitempty" name:"WaterMarkImage"`
+}
+
+type WaterMarkImage struct {
+	// 下载的url地址， 只支持jpg， png，大小限制不超过5M。
+	WaterMarkUrl *string `json:"WaterMarkUrl,omitempty" name:"WaterMarkUrl"`
+
+	// 画布上该画面左上角的 y 轴坐标，取值范围 [0, 2560]，不能超过画布的高。
+	Top *uint64 `json:"Top,omitempty" name:"Top"`
+
+	// 画布上该画面左上角的 x 轴坐标，取值范围 [0, 2560]，不能超过画布的宽。
+	Left *uint64 `json:"Left,omitempty" name:"Left"`
+
+	// 画布上该画面宽度的相对值，取值范围 [0, 2560]，与Left相加不应超过画布的宽。
+	Width *uint64 `json:"Width,omitempty" name:"Width"`
+
+	// 画布上该画面高度的相对值，取值范围 [0, 2560]，与Top相加不应超过画布的高。
+	Height *uint64 `json:"Height,omitempty" name:"Height"`
 }
 
 type WaterMarkParams struct {

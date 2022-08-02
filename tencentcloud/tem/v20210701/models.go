@@ -1116,6 +1116,77 @@ type DeployStrategyConf struct {
 }
 
 // Predefined struct for user
+type DescribeApplicationInfoRequestParams struct {
+	// 服务版本ID
+	ApplicationId *string `json:"ApplicationId,omitempty" name:"ApplicationId"`
+
+	// 来源渠道
+	SourceChannel *int64 `json:"SourceChannel,omitempty" name:"SourceChannel"`
+
+	// 环境ID
+	EnvironmentId *string `json:"EnvironmentId,omitempty" name:"EnvironmentId"`
+}
+
+type DescribeApplicationInfoRequest struct {
+	*tchttp.BaseRequest
+	
+	// 服务版本ID
+	ApplicationId *string `json:"ApplicationId,omitempty" name:"ApplicationId"`
+
+	// 来源渠道
+	SourceChannel *int64 `json:"SourceChannel,omitempty" name:"SourceChannel"`
+
+	// 环境ID
+	EnvironmentId *string `json:"EnvironmentId,omitempty" name:"EnvironmentId"`
+}
+
+func (r *DescribeApplicationInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeApplicationInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ApplicationId")
+	delete(f, "SourceChannel")
+	delete(f, "EnvironmentId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeApplicationInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeApplicationInfoResponseParams struct {
+	// 返回结果
+	Result *TemServiceVersionInfo `json:"Result,omitempty" name:"Result"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeApplicationInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeApplicationInfoResponseParams `json:"Response"`
+}
+
+func (r *DescribeApplicationInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeApplicationInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeApplicationPodsRequestParams struct {
 	// 环境id
 	EnvironmentId *string `json:"EnvironmentId,omitempty" name:"EnvironmentId"`
@@ -2562,6 +2633,27 @@ type NamespaceStatusInfo struct {
 	EnvironmentStoppingStatus *TemEnvironmentStoppingStatus `json:"EnvironmentStoppingStatus,omitempty" name:"EnvironmentStoppingStatus"`
 }
 
+type NodeInfo struct {
+	// node名字
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// node可用区
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Zone *string `json:"Zone,omitempty" name:"Zone"`
+
+	// node子网ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+
+	// 可用IP数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AvailableIpCount *string `json:"AvailableIpCount,omitempty" name:"AvailableIpCount"`
+
+	// cidr块
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Cidr *string `json:"Cidr,omitempty" name:"Cidr"`
+}
+
 type Pair struct {
 	// 键
 	Key *string `json:"Key,omitempty" name:"Key"`
@@ -3408,6 +3500,276 @@ type TemService struct {
 	EnableTracing *uint64 `json:"EnableTracing,omitempty" name:"EnableTracing"`
 }
 
+type TemServiceVersionInfo struct {
+	// 主键
+	VersionId *string `json:"VersionId,omitempty" name:"VersionId"`
+
+	// 服务id
+	ApplicationId *bool `json:"ApplicationId,omitempty" name:"ApplicationId"`
+
+	// 部署方式
+	DeployMode *string `json:"DeployMode,omitempty" name:"DeployMode"`
+
+	// jdk版本
+	JdkVersion *string `json:"JdkVersion,omitempty" name:"JdkVersion"`
+
+	// 描述
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 部署版本
+	DeployVersion *string `json:"DeployVersion,omitempty" name:"DeployVersion"`
+
+	// 发布方式
+	PublishMode *string `json:"PublishMode,omitempty" name:"PublishMode"`
+
+	// 启动参数
+	JvmOpts *string `json:"JvmOpts,omitempty" name:"JvmOpts"`
+
+	// 初始实例
+	InitPodNum *int64 `json:"InitPodNum,omitempty" name:"InitPodNum"`
+
+	// cpu规格
+	CpuSpec *float64 `json:"CpuSpec,omitempty" name:"CpuSpec"`
+
+	// 内存规格
+	MemorySpec *float64 `json:"MemorySpec,omitempty" name:"MemorySpec"`
+
+	// 镜像路径
+	ImgRepo *string `json:"ImgRepo,omitempty" name:"ImgRepo"`
+
+	// 镜像名称
+	ImgName *string `json:"ImgName,omitempty" name:"ImgName"`
+
+	// 镜像版本
+	ImgVersion *string `json:"ImgVersion,omitempty" name:"ImgVersion"`
+
+	// 弹性配置
+	EsInfo *EsInfo `json:"EsInfo,omitempty" name:"EsInfo"`
+
+	// 环境配置
+	EnvConf []*Pair `json:"EnvConf,omitempty" name:"EnvConf"`
+
+	// 存储配置
+	StorageConfs []*StorageConf `json:"StorageConfs,omitempty" name:"StorageConfs"`
+
+	// 运行状态
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 私有网络
+	Vpc *string `json:"Vpc,omitempty" name:"Vpc"`
+
+	// 子网网络
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+
+	// 创建时间
+	CreateDate *string `json:"CreateDate,omitempty" name:"CreateDate"`
+
+	// 修改时间
+	ModifyDate *string `json:"ModifyDate,omitempty" name:"ModifyDate"`
+
+	// 挂载配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StorageMountConfs []*StorageMountConf `json:"StorageMountConfs,omitempty" name:"StorageMountConfs"`
+
+	// 版本名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VersionName *string `json:"VersionName,omitempty" name:"VersionName"`
+
+	// 日志输出配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LogOutputConf *LogOutputConf `json:"LogOutputConf,omitempty" name:"LogOutputConf"`
+
+	// 服务名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApplicationName *string `json:"ApplicationName,omitempty" name:"ApplicationName"`
+
+	// 服务描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApplicationDescription *string `json:"ApplicationDescription,omitempty" name:"ApplicationDescription"`
+
+	// 环境名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EnvironmentName *string `json:"EnvironmentName,omitempty" name:"EnvironmentName"`
+
+	// 环境ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EnvironmentId *string `json:"EnvironmentId,omitempty" name:"EnvironmentId"`
+
+	// 公网地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PublicDomain *string `json:"PublicDomain,omitempty" name:"PublicDomain"`
+
+	// 是否开通公网访问
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EnablePublicAccess *bool `json:"EnablePublicAccess,omitempty" name:"EnablePublicAccess"`
+
+	// 现有的实例
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CurrentInstances *int64 `json:"CurrentInstances,omitempty" name:"CurrentInstances"`
+
+	// 期望的实例
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExpectedInstances *int64 `json:"ExpectedInstances,omitempty" name:"ExpectedInstances"`
+
+	// 编程语言
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CodingLanguage *string `json:"CodingLanguage,omitempty" name:"CodingLanguage"`
+
+	// 程序包名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PkgName *string `json:"PkgName,omitempty" name:"PkgName"`
+
+	// 是否启用弹性伸缩
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EsEnable *int64 `json:"EsEnable,omitempty" name:"EsEnable"`
+
+	// 弹性策略
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EsStrategy *int64 `json:"EsStrategy,omitempty" name:"EsStrategy"`
+
+	// 镜像tag
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ImageTag *string `json:"ImageTag,omitempty" name:"ImageTag"`
+
+	// 是否启用log
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LogEnable *int64 `json:"LogEnable,omitempty" name:"LogEnable"`
+
+	// 最小实例数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MinAliveInstances *int64 `json:"MinAliveInstances,omitempty" name:"MinAliveInstances"`
+
+	// 安全组
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" name:"SecurityGroupIds"`
+
+	// 镜像命令
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ImageCommand *string `json:"ImageCommand,omitempty" name:"ImageCommand"`
+
+	// 镜像命令参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ImageArgs []*string `json:"ImageArgs,omitempty" name:"ImageArgs"`
+
+	// 是否使用默认注册中心配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UseRegistryDefaultConfig *bool `json:"UseRegistryDefaultConfig,omitempty" name:"UseRegistryDefaultConfig"`
+
+	// eks 访问设置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Service *EksService `json:"Service,omitempty" name:"Service"`
+
+	// 挂载配置信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SettingConfs []*MountedSettingConf `json:"SettingConfs,omitempty" name:"SettingConfs"`
+
+	// log path数组信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LogConfs []*string `json:"LogConfs,omitempty" name:"LogConfs"`
+
+	// 启动后立即执行的脚本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PostStart *string `json:"PostStart,omitempty" name:"PostStart"`
+
+	// 停止前执行的脚本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PreStop *string `json:"PreStop,omitempty" name:"PreStop"`
+
+	// 存活探针配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Liveness *HealthCheckConfig `json:"Liveness,omitempty" name:"Liveness"`
+
+	// 就绪探针配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Readiness *HealthCheckConfig `json:"Readiness,omitempty" name:"Readiness"`
+
+	// 弹性策略
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HorizontalAutoscaler []*HorizontalAutoscaler `json:"HorizontalAutoscaler,omitempty" name:"HorizontalAutoscaler"`
+
+	// 定时弹性策略
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CronHorizontalAutoscaler []*CronHorizontalAutoscaler `json:"CronHorizontalAutoscaler,omitempty" name:"CronHorizontalAutoscaler"`
+
+	// 应用实际可用区
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Zones []*string `json:"Zones,omitempty" name:"Zones"`
+
+	// 最新部署时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LastDeployDate *string `json:"LastDeployDate,omitempty" name:"LastDeployDate"`
+
+	// 最新部署成功时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LastDeploySuccessDate *string `json:"LastDeploySuccessDate,omitempty" name:"LastDeploySuccessDate"`
+
+	// 应用所在node信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NodeInfos []*NodeInfo `json:"NodeInfos,omitempty" name:"NodeInfos"`
+
+	// image类型 -0 为demo -1为正常image
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ImageType *int64 `json:"ImageType,omitempty" name:"ImageType"`
+
+	// 是否启用调用链组件
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EnableTracing *uint64 `json:"EnableTracing,omitempty" name:"EnableTracing"`
+
+	// 是否开启调用链上报，只有 EnableTracing=1 时生效
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EnableTracingReport *uint64 `json:"EnableTracingReport,omitempty" name:"EnableTracingReport"`
+
+	// 镜像类型：0-个人镜像、1-企业镜像、2-公有镜像
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RepoType *uint64 `json:"RepoType,omitempty" name:"RepoType"`
+
+	// 分批发布子状态：batch_updating、batch_updating_waiting_confirm
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BatchDeployStatus *string `json:"BatchDeployStatus,omitempty" name:"BatchDeployStatus"`
+
+	// APM 资源 ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApmInstanceId *string `json:"ApmInstanceId,omitempty" name:"ApmInstanceId"`
+
+	// 工作负载信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WorkloadInfo *WorkloadInfo `json:"WorkloadInfo,omitempty" name:"WorkloadInfo"`
+
+	// 是否启用应用加速
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SpeedUp *bool `json:"SpeedUp,omitempty" name:"SpeedUp"`
+
+	// 启动检测探针配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StartupProbe *HealthCheckConfig `json:"StartupProbe,omitempty" name:"StartupProbe"`
+
+	// 操作系统版本，可选参数：
+	// - ALPINE
+	// - CENTOS
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OsFlavour *string `json:"OsFlavour,omitempty" name:"OsFlavour"`
+
+	// 镜像仓库server
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RepoServer *string `json:"RepoServer,omitempty" name:"RepoServer"`
+
+	// 是否正在发布中
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UnderDeploying *bool `json:"UnderDeploying,omitempty" name:"UnderDeploying"`
+
+	// 是否开启prometheus业务指标监控
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EnablePrometheusConf *EnablePrometheusConf `json:"EnablePrometheusConf,omitempty" name:"EnablePrometheusConf"`
+
+	// 是否为手动停止
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StoppedManually *bool `json:"StoppedManually,omitempty" name:"StoppedManually"`
+
+	// tcr实例ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TcrInstanceId *string `json:"TcrInstanceId,omitempty" name:"TcrInstanceId"`
+}
+
 type UseDefaultRepoParameters struct {
 	// 企业版实例名
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -3420,4 +3782,14 @@ type UseDefaultRepoParameters struct {
 	// 企业版规格：basic-基础班 ，standard-标准版，premium-高级版
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EnterpriseInstanceType *string `json:"EnterpriseInstanceType,omitempty" name:"EnterpriseInstanceType"`
+}
+
+type WorkloadInfo struct {
+	// 资源 ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 应用名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApplicationName *string `json:"ApplicationName,omitempty" name:"ApplicationName"`
 }
