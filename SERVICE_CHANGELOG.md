@@ -1,42 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 品牌经营管家(bma) 版本：2021-06-24
+## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
 
-### 第 4 次发布
+### 第 24 次发布
 
-发布时间：2022-08-02 06:05:09
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [CreateBPFakeURL](https://cloud.tencent.com/document/api/1296/78237)
-* [CreateBPFalseTicket](https://cloud.tencent.com/document/api/1296/78236)
-* [CreateBPOfflineAttachment](https://cloud.tencent.com/document/api/1296/78235)
-* [CreateBPOfflineTicket](https://cloud.tencent.com/document/api/1296/78234)
-* [CreateBPProtectURLs](https://cloud.tencent.com/document/api/1296/78233)
-* [DescribeBPCompanyInfo](https://cloud.tencent.com/document/api/1296/78232)
-* [DescribeBPFakeURLs](https://cloud.tencent.com/document/api/1296/78231)
-* [DescribeBPProtectURLs](https://cloud.tencent.com/document/api/1296/78230)
-* [DescribeBPReportFakeURLs](https://cloud.tencent.com/document/api/1296/78229)
-* [ModifyBPOfflineAttachment](https://cloud.tencent.com/document/api/1296/78228)
-
-新增数据结构：
-
-* [BrandData](https://cloud.tencent.com/document/api/1296/78030#BrandData)
-* [FakeURLInfo](https://cloud.tencent.com/document/api/1296/78030#FakeURLInfo)
-* [ProtectURLInfo](https://cloud.tencent.com/document/api/1296/78030#ProtectURLInfo)
-* [ReportFakeURLInfo](https://cloud.tencent.com/document/api/1296/78030#ReportFakeURLInfo)
-
-
-
-## 云拨测(cat) 版本：2018-04-09
-
-### 第 11 次发布
-
-发布时间：2022-08-02 06:06:56
+发布时间：2022-08-02 11:36:28
 
 本次发布包含了以下内容：
 
@@ -44,120 +12,25 @@
 
 新增接口：
 
-* [DescribeNodes](https://cloud.tencent.com/document/api/280/78238)
-
-新增数据结构：
-
-* [NodeDefineExt](https://cloud.tencent.com/document/api/280/40931#NodeDefineExt)
-
-
-
-## 云托管 CloudBase Run(tcbr) 版本：2022-02-17
-
-### 第 6 次发布
-
-发布时间：2022-08-02 06:31:39
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [EnvBaseInfo](https://cloud.tencent.com/document/api/1243/75713#EnvBaseInfo)
-
-	* 新增成员：SubnetIds
-
-
-
-
-## 弹性微服务(tem) 版本：2021-07-01
-
-### 第 22 次发布
-
-发布时间：2022-08-02 06:33:46
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DescribeApplicationInfo](https://cloud.tencent.com/document/api/1371/78239)
-
-新增数据结构：
-
-* [NodeInfo](https://cloud.tencent.com/document/api/1371/60171#NodeInfo)
-* [TemServiceVersionInfo](https://cloud.tencent.com/document/api/1371/60171#TemServiceVersionInfo)
-* [WorkloadInfo](https://cloud.tencent.com/document/api/1371/60171#WorkloadInfo)
-
-
-
-## 弹性微服务(tem) 版本：2020-12-21
-
-
-
-## 容器服务(tke) 版本：2018-05-25
-
-### 第 114 次发布
-
-发布时间：2022-08-02 06:35:11
-
-本次发布包含了以下内容：
-
-改善已有的文档。
+* [ChannelCreateBatchCancelFlowUrl](https://cloud.tencent.com/document/api/1420/78264)
 
 修改接口：
 
-* [DescribeTKEEdgeScript](https://cloud.tencent.com/document/api/457/70732)
+* [ChannelCreateMultiFlowSignQRCode](https://cloud.tencent.com/document/api/1420/75452)
 
-	* 新增入参：ScriptVersion
+	* 新增入参：ApproverRestrictions
 
-	* 新增出参：ScriptVersion
+	* 新增出参：SignUrls
 
-
-修改数据结构：
-
-* [EdgeClusterAdvancedSettings](https://cloud.tencent.com/document/api/457/31866#EdgeClusterAdvancedSettings)
-
-	* 新增成员：Runtime, ProxyMode
-
-
-
-
-## 实时音视频(trtc) 版本：2019-07-22
-
-### 第 36 次发布
-
-发布时间：2022-08-02 06:36:18
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [CreateCloudRecording](https://cloud.tencent.com/document/api/647/73786)
-* [DeleteCloudRecording](https://cloud.tencent.com/document/api/647/73785)
-* [DescribeCloudRecording](https://cloud.tencent.com/document/api/647/73784)
-* [ModifyCloudRecording](https://cloud.tencent.com/document/api/647/73783)
 
 新增数据结构：
 
-* [AudioParams](https://cloud.tencent.com/document/api/647/44055#AudioParams)
-* [CloudStorage](https://cloud.tencent.com/document/api/647/44055#CloudStorage)
-* [CloudVod](https://cloud.tencent.com/document/api/647/44055#CloudVod)
-* [MixLayout](https://cloud.tencent.com/document/api/647/44055#MixLayout)
-* [MixLayoutParams](https://cloud.tencent.com/document/api/647/44055#MixLayoutParams)
-* [MixTranscodeParams](https://cloud.tencent.com/document/api/647/44055#MixTranscodeParams)
-* [RecordParams](https://cloud.tencent.com/document/api/647/44055#RecordParams)
-* [StorageFile](https://cloud.tencent.com/document/api/647/44055#StorageFile)
-* [StorageParams](https://cloud.tencent.com/document/api/647/44055#StorageParams)
-* [SubscribeStreamUserIds](https://cloud.tencent.com/document/api/647/44055#SubscribeStreamUserIds)
-* [TencentVod](https://cloud.tencent.com/document/api/647/44055#TencentVod)
-* [VideoParams](https://cloud.tencent.com/document/api/647/44055#VideoParams)
-* [WaterMark](https://cloud.tencent.com/document/api/647/44055#WaterMark)
-* [WaterMarkImage](https://cloud.tencent.com/document/api/647/44055#WaterMarkImage)
+* [ApproverRestriction](https://cloud.tencent.com/document/api/1420/61525#ApproverRestriction)
+* [SignUrl](https://cloud.tencent.com/document/api/1420/61525#SignUrl)
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
 
 
 
@@ -7529,23 +7402,23 @@
 
 新增接口：
 
-* [[CreateBPFakeURL](https://cloud.tencent.com/document/api/1296/78237)](https://cloud.tencent.com/document/api/#/#)
-* [[CreateBPFalseTicket](https://cloud.tencent.com/document/api/1296/78236)](https://cloud.tencent.com/document/api/#/#)
-* [[CreateBPOfflineAttachment](https://cloud.tencent.com/document/api/1296/78235)](https://cloud.tencent.com/document/api/#/#)
-* [[CreateBPOfflineTicket](https://cloud.tencent.com/document/api/1296/78234)](https://cloud.tencent.com/document/api/#/#)
-* [[CreateBPProtectURLs](https://cloud.tencent.com/document/api/1296/78233)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeBPCompanyInfo](https://cloud.tencent.com/document/api/1296/78232)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeBPFakeURLs](https://cloud.tencent.com/document/api/1296/78231)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeBPProtectURLs](https://cloud.tencent.com/document/api/1296/78230)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeBPReportFakeURLs](https://cloud.tencent.com/document/api/1296/78229)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyBPOfflineAttachment](https://cloud.tencent.com/document/api/1296/78228)](https://cloud.tencent.com/document/api/#/#)
+* [CreateBPFakeURL](https://cloud.tencent.com/document/api/1296/78237)
+* [CreateBPFalseTicket](https://cloud.tencent.com/document/api/1296/78236)
+* [CreateBPOfflineAttachment](https://cloud.tencent.com/document/api/1296/78235)
+* [CreateBPOfflineTicket](https://cloud.tencent.com/document/api/1296/78234)
+* [CreateBPProtectURLs](https://cloud.tencent.com/document/api/1296/78233)
+* [DescribeBPCompanyInfo](https://cloud.tencent.com/document/api/1296/78232)
+* [DescribeBPFakeURLs](https://cloud.tencent.com/document/api/1296/78231)
+* [DescribeBPProtectURLs](https://cloud.tencent.com/document/api/1296/78230)
+* [DescribeBPReportFakeURLs](https://cloud.tencent.com/document/api/1296/78229)
+* [ModifyBPOfflineAttachment](https://cloud.tencent.com/document/api/1296/78228)
 
 新增数据结构：
 
-* [[BrandData](https://cloud.tencent.com/document/api/1296/78030#BrandData)](https://cloud.tencent.com/document/api/1296/78030#[BrandData](https://cloud.tencent.com/document/api/1296/78030#BrandData))
-* [[FakeURLInfo](https://cloud.tencent.com/document/api/1296/78030#FakeURLInfo)](https://cloud.tencent.com/document/api/1296/78030#[FakeURLInfo](https://cloud.tencent.com/document/api/1296/78030#FakeURLInfo))
-* [[ProtectURLInfo](https://cloud.tencent.com/document/api/1296/78030#ProtectURLInfo)](https://cloud.tencent.com/document/api/1296/78030#[ProtectURLInfo](https://cloud.tencent.com/document/api/1296/78030#ProtectURLInfo))
-* [[ReportFakeURLInfo](https://cloud.tencent.com/document/api/1296/78030#ReportFakeURLInfo)](https://cloud.tencent.com/document/api/1296/78030#[ReportFakeURLInfo](https://cloud.tencent.com/document/api/1296/78030#ReportFakeURLInfo))
+* [BrandData](https://cloud.tencent.com/document/api/1296/78030#BrandData)
+* [FakeURLInfo](https://cloud.tencent.com/document/api/1296/78030#FakeURLInfo)
+* [ProtectURLInfo](https://cloud.tencent.com/document/api/1296/78030#ProtectURLInfo)
+* [ReportFakeURLInfo](https://cloud.tencent.com/document/api/1296/78030#ReportFakeURLInfo)
 
 ### 第 3 次发布
 
@@ -9405,11 +9278,11 @@
 
 新增接口：
 
-* [[DescribeNodes](https://cloud.tencent.com/document/api/280/78238)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeNodes](https://cloud.tencent.com/document/api/280/78238)
 
 新增数据结构：
 
-* [[NodeDefineExt](https://cloud.tencent.com/document/api/280/40931#NodeDefineExt)](https://cloud.tencent.com/document/api/280/40931#[NodeDefineExt](https://cloud.tencent.com/document/api/280/40931#NodeDefineExt))
+* [NodeDefineExt](https://cloud.tencent.com/document/api/280/40931#NodeDefineExt)
 
 ### 第 10 次发布
 
@@ -36760,6 +36633,32 @@
 
 
 ## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
+
+### 第 24 次发布
+
+发布时间：2022-08-02 11:36:28
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[ChannelCreateBatchCancelFlowUrl](https://cloud.tencent.com/document/api/1420/78264)](https://cloud.tencent.com/document/api/#/#)
+
+修改接口：
+
+* [ChannelCreateMultiFlowSignQRCode](https://cloud.tencent.com/document/api/1420/75452)
+
+	* 新增入参：ApproverRestrictions
+
+	* 新增出参：SignUrls
+
+
+新增数据结构：
+
+* [[ApproverRestriction](https://cloud.tencent.com/document/api/1420/61525#ApproverRestriction)](https://cloud.tencent.com/document/api/1420/61525#[ApproverRestriction](https://cloud.tencent.com/document/api/1420/61525#ApproverRestriction))
+* [[SignUrl](https://cloud.tencent.com/document/api/1420/61525#SignUrl)](https://cloud.tencent.com/document/api/1420/61525#[SignUrl](https://cloud.tencent.com/document/api/1420/61525#SignUrl))
 
 ### 第 23 次发布
 
@@ -69944,13 +69843,13 @@
 
 新增接口：
 
-* [[DescribeApplicationInfo](https://cloud.tencent.com/document/api/1371/78239)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeApplicationInfo](https://cloud.tencent.com/document/api/1371/78239)
 
 新增数据结构：
 
-* [[NodeInfo](https://cloud.tencent.com/document/api/1371/60171#NodeInfo)](https://cloud.tencent.com/document/api/1371/60171#[NodeInfo](https://cloud.tencent.com/document/api/1371/60171#NodeInfo))
-* [[TemServiceVersionInfo](https://cloud.tencent.com/document/api/1371/60171#TemServiceVersionInfo)](https://cloud.tencent.com/document/api/1371/60171#[TemServiceVersionInfo](https://cloud.tencent.com/document/api/1371/60171#TemServiceVersionInfo))
-* [[WorkloadInfo](https://cloud.tencent.com/document/api/1371/60171#WorkloadInfo)](https://cloud.tencent.com/document/api/1371/60171#[WorkloadInfo](https://cloud.tencent.com/document/api/1371/60171#WorkloadInfo))
+* [NodeInfo](https://cloud.tencent.com/document/api/1371/60171#NodeInfo)
+* [TemServiceVersionInfo](https://cloud.tencent.com/document/api/1371/60171#TemServiceVersionInfo)
+* [WorkloadInfo](https://cloud.tencent.com/document/api/1371/60171#WorkloadInfo)
 
 ### 第 21 次发布
 
@@ -75731,27 +75630,27 @@
 
 新增接口：
 
-* [[CreateCloudRecording](https://cloud.tencent.com/document/api/647/73786)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteCloudRecording](https://cloud.tencent.com/document/api/647/73785)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeCloudRecording](https://cloud.tencent.com/document/api/647/73784)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyCloudRecording](https://cloud.tencent.com/document/api/647/73783)](https://cloud.tencent.com/document/api/#/#)
+* [CreateCloudRecording](https://cloud.tencent.com/document/api/647/73786)
+* [DeleteCloudRecording](https://cloud.tencent.com/document/api/647/73785)
+* [DescribeCloudRecording](https://cloud.tencent.com/document/api/647/73784)
+* [ModifyCloudRecording](https://cloud.tencent.com/document/api/647/73783)
 
 新增数据结构：
 
-* [[AudioParams](https://cloud.tencent.com/document/api/647/44055#AudioParams)](https://cloud.tencent.com/document/api/647/44055#[AudioParams](https://cloud.tencent.com/document/api/647/44055#AudioParams))
-* [[CloudStorage](https://cloud.tencent.com/document/api/647/44055#CloudStorage)](https://cloud.tencent.com/document/api/647/44055#[CloudStorage](https://cloud.tencent.com/document/api/647/44055#CloudStorage))
-* [[CloudVod](https://cloud.tencent.com/document/api/647/44055#CloudVod)](https://cloud.tencent.com/document/api/647/44055#[CloudVod](https://cloud.tencent.com/document/api/647/44055#CloudVod))
-* [[MixLayout](https://cloud.tencent.com/document/api/647/44055#MixLayout)](https://cloud.tencent.com/document/api/647/44055#[MixLayout](https://cloud.tencent.com/document/api/647/44055#MixLayout))
-* [[MixLayoutParams](https://cloud.tencent.com/document/api/647/44055#MixLayoutParams)](https://cloud.tencent.com/document/api/647/44055#[MixLayoutParams](https://cloud.tencent.com/document/api/647/44055#MixLayoutParams))
-* [[MixTranscodeParams](https://cloud.tencent.com/document/api/647/44055#MixTranscodeParams)](https://cloud.tencent.com/document/api/647/44055#[MixTranscodeParams](https://cloud.tencent.com/document/api/647/44055#MixTranscodeParams))
-* [[RecordParams](https://cloud.tencent.com/document/api/647/44055#RecordParams)](https://cloud.tencent.com/document/api/647/44055#[RecordParams](https://cloud.tencent.com/document/api/647/44055#RecordParams))
-* [[StorageFile](https://cloud.tencent.com/document/api/647/44055#StorageFile)](https://cloud.tencent.com/document/api/647/44055#[StorageFile](https://cloud.tencent.com/document/api/647/44055#StorageFile))
-* [[StorageParams](https://cloud.tencent.com/document/api/647/44055#StorageParams)](https://cloud.tencent.com/document/api/647/44055#[StorageParams](https://cloud.tencent.com/document/api/647/44055#StorageParams))
-* [[SubscribeStreamUserIds](https://cloud.tencent.com/document/api/647/44055#SubscribeStreamUserIds)](https://cloud.tencent.com/document/api/647/44055#[SubscribeStreamUserIds](https://cloud.tencent.com/document/api/647/44055#SubscribeStreamUserIds))
-* [[TencentVod](https://cloud.tencent.com/document/api/647/44055#TencentVod)](https://cloud.tencent.com/document/api/647/44055#[TencentVod](https://cloud.tencent.com/document/api/647/44055#TencentVod))
-* [[VideoParams](https://cloud.tencent.com/document/api/647/44055#VideoParams)](https://cloud.tencent.com/document/api/647/44055#[VideoParams](https://cloud.tencent.com/document/api/647/44055#VideoParams))
-* [[WaterMark](https://cloud.tencent.com/document/api/647/44055#WaterMark)](https://cloud.tencent.com/document/api/647/44055#[WaterMark](https://cloud.tencent.com/document/api/647/44055#WaterMark))
-* [[WaterMarkImage](https://cloud.tencent.com/document/api/647/44055#WaterMarkImage)](https://cloud.tencent.com/document/api/647/44055#[WaterMarkImage](https://cloud.tencent.com/document/api/647/44055#WaterMarkImage))
+* [AudioParams](https://cloud.tencent.com/document/api/647/44055#AudioParams)
+* [CloudStorage](https://cloud.tencent.com/document/api/647/44055#CloudStorage)
+* [CloudVod](https://cloud.tencent.com/document/api/647/44055#CloudVod)
+* [MixLayout](https://cloud.tencent.com/document/api/647/44055#MixLayout)
+* [MixLayoutParams](https://cloud.tencent.com/document/api/647/44055#MixLayoutParams)
+* [MixTranscodeParams](https://cloud.tencent.com/document/api/647/44055#MixTranscodeParams)
+* [RecordParams](https://cloud.tencent.com/document/api/647/44055#RecordParams)
+* [StorageFile](https://cloud.tencent.com/document/api/647/44055#StorageFile)
+* [StorageParams](https://cloud.tencent.com/document/api/647/44055#StorageParams)
+* [SubscribeStreamUserIds](https://cloud.tencent.com/document/api/647/44055#SubscribeStreamUserIds)
+* [TencentVod](https://cloud.tencent.com/document/api/647/44055#TencentVod)
+* [VideoParams](https://cloud.tencent.com/document/api/647/44055#VideoParams)
+* [WaterMark](https://cloud.tencent.com/document/api/647/44055#WaterMark)
+* [WaterMarkImage](https://cloud.tencent.com/document/api/647/44055#WaterMarkImage)
 
 ### 第 35 次发布
 

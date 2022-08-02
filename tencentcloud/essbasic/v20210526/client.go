@@ -102,6 +102,59 @@ func (c *Client) ChannelCancelMultiFlowSignQRCodeWithContext(ctx context.Context
     return
 }
 
+func NewChannelCreateBatchCancelFlowUrlRequest() (request *ChannelCreateBatchCancelFlowUrlRequest) {
+    request = &ChannelCreateBatchCancelFlowUrlRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("essbasic", APIVersion, "ChannelCreateBatchCancelFlowUrl")
+    
+    
+    return
+}
+
+func NewChannelCreateBatchCancelFlowUrlResponse() (response *ChannelCreateBatchCancelFlowUrlResponse) {
+    response = &ChannelCreateBatchCancelFlowUrlResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ChannelCreateBatchCancelFlowUrl
+// 指定需要批量撤回的签署流程Id，获取批量撤销链接
+//
+// 客户指定需要撤回的签署流程Id，最多100个，超过100不处理；接口调用成功返回批量撤回合同的链接，通过链接跳转到电子签小程序完成批量撤回
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) ChannelCreateBatchCancelFlowUrl(request *ChannelCreateBatchCancelFlowUrlRequest) (response *ChannelCreateBatchCancelFlowUrlResponse, err error) {
+    return c.ChannelCreateBatchCancelFlowUrlWithContext(context.Background(), request)
+}
+
+// ChannelCreateBatchCancelFlowUrl
+// 指定需要批量撤回的签署流程Id，获取批量撤销链接
+//
+// 客户指定需要撤回的签署流程Id，最多100个，超过100不处理；接口调用成功返回批量撤回合同的链接，通过链接跳转到电子签小程序完成批量撤回
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) ChannelCreateBatchCancelFlowUrlWithContext(ctx context.Context, request *ChannelCreateBatchCancelFlowUrlRequest) (response *ChannelCreateBatchCancelFlowUrlResponse, err error) {
+    if request == nil {
+        request = NewChannelCreateBatchCancelFlowUrlRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ChannelCreateBatchCancelFlowUrl require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewChannelCreateBatchCancelFlowUrlResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewChannelCreateFlowByFilesRequest() (request *ChannelCreateFlowByFilesRequest) {
     request = &ChannelCreateFlowByFilesRequest{
         BaseRequest: &tchttp.BaseRequest{},

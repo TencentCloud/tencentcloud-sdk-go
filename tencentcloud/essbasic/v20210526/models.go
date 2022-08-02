@@ -24,7 +24,7 @@ type Agent struct {
 	// 腾讯电子签颁发给渠道的应用ID，32位字符串
 	AppId *string `json:"AppId,omitempty" name:"AppId"`
 
-	// 渠道/平台合作企业的企业ID
+	// 渠道/平台合作企业的企业ID，最大64位字符串
 	ProxyOrganizationOpenId *string `json:"ProxyOrganizationOpenId,omitempty" name:"ProxyOrganizationOpenId"`
 
 	// 渠道/平台合作企业经办人（操作员）
@@ -33,8 +33,22 @@ type Agent struct {
 	// 腾讯电子签颁发给渠道侧合作企业的应用ID
 	ProxyAppId *string `json:"ProxyAppId,omitempty" name:"ProxyAppId"`
 
-	// 腾讯电子签颁发给渠道侧合作企业的企业ID
+	// 内部参数，腾讯电子签颁发给渠道侧合作企业的企业ID，不需要传
 	ProxyOrganizationId *string `json:"ProxyOrganizationId,omitempty" name:"ProxyOrganizationId"`
+}
+
+type ApproverRestriction struct {
+	// 指定签署人名字
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 指定签署人手机号
+	Mobile *string `json:"Mobile,omitempty" name:"Mobile"`
+
+	// 指定签署人证件类型
+	IdCardType *string `json:"IdCardType,omitempty" name:"IdCardType"`
+
+	// 指定签署人证件号码
+	IdCardNumber *string `json:"IdCardNumber,omitempty" name:"IdCardNumber"`
 }
 
 type AuthFailMessage struct {
@@ -115,6 +129,83 @@ func (r *ChannelCancelMultiFlowSignQRCodeResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ChannelCancelMultiFlowSignQRCodeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ChannelCreateBatchCancelFlowUrlRequestParams struct {
+	// 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+
+	// 签署流程Id数组
+	FlowIds []*string `json:"FlowIds,omitempty" name:"FlowIds"`
+
+	// 操作人信息
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+}
+
+type ChannelCreateBatchCancelFlowUrlRequest struct {
+	*tchttp.BaseRequest
+	
+	// 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+
+	// 签署流程Id数组
+	FlowIds []*string `json:"FlowIds,omitempty" name:"FlowIds"`
+
+	// 操作人信息
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+}
+
+func (r *ChannelCreateBatchCancelFlowUrlRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ChannelCreateBatchCancelFlowUrlRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Agent")
+	delete(f, "FlowIds")
+	delete(f, "Operator")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ChannelCreateBatchCancelFlowUrlRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ChannelCreateBatchCancelFlowUrlResponseParams struct {
+	// 批量撤回url
+	BatchCancelFlowUrl *string `json:"BatchCancelFlowUrl,omitempty" name:"BatchCancelFlowUrl"`
+
+	// 签署流程批量撤回失败原因
+	FailMessages []*string `json:"FailMessages,omitempty" name:"FailMessages"`
+
+	// 签署撤回url过期时间-年月日-时分秒
+	UrlExpireOn *string `json:"UrlExpireOn,omitempty" name:"UrlExpireOn"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ChannelCreateBatchCancelFlowUrlResponse struct {
+	*tchttp.BaseResponse
+	Response *ChannelCreateBatchCancelFlowUrlResponseParams `json:"Response"`
+}
+
+func (r *ChannelCreateBatchCancelFlowUrlResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ChannelCreateBatchCancelFlowUrlResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -286,6 +377,9 @@ type ChannelCreateMultiFlowSignQRCodeRequestParams struct {
 	// 回调时机:用户通过签署二维码发起合同时，企业额度不足导致失败
 	CallbackUrl *string `json:"CallbackUrl,omitempty" name:"CallbackUrl"`
 
+	// 限制二维码用户条件
+	ApproverRestrictions *ApproverRestriction `json:"ApproverRestrictions,omitempty" name:"ApproverRestrictions"`
+
 	// 用户信息
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 }
@@ -317,6 +411,9 @@ type ChannelCreateMultiFlowSignQRCodeRequest struct {
 	// 回调时机:用户通过签署二维码发起合同时，企业额度不足导致失败
 	CallbackUrl *string `json:"CallbackUrl,omitempty" name:"CallbackUrl"`
 
+	// 限制二维码用户条件
+	ApproverRestrictions *ApproverRestriction `json:"ApproverRestrictions,omitempty" name:"ApproverRestrictions"`
+
 	// 用户信息
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 }
@@ -340,6 +437,7 @@ func (r *ChannelCreateMultiFlowSignQRCodeRequest) FromJsonString(s string) error
 	delete(f, "FlowEffectiveDay")
 	delete(f, "QrEffectiveDay")
 	delete(f, "CallbackUrl")
+	delete(f, "ApproverRestrictions")
 	delete(f, "Operator")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ChannelCreateMultiFlowSignQRCodeRequest has unknown keys!", "")
@@ -351,6 +449,9 @@ func (r *ChannelCreateMultiFlowSignQRCodeRequest) FromJsonString(s string) error
 type ChannelCreateMultiFlowSignQRCodeResponseParams struct {
 	// 签署二维码对象
 	QrCode *SignQrCode `json:"QrCode,omitempty" name:"QrCode"`
+
+	// 签署链接对象
+	SignUrls *SignUrl `json:"SignUrls,omitempty" name:"SignUrls"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1780,6 +1881,17 @@ type SignQrCode struct {
 	ExpiredTime *int64 `json:"ExpiredTime,omitempty" name:"ExpiredTime"`
 }
 
+type SignUrl struct {
+	// 小程序签署链接
+	AppSignUrl *string `json:"AppSignUrl,omitempty" name:"AppSignUrl"`
+
+	// 签署链接有效时间
+	EffectiveTime *string `json:"EffectiveTime,omitempty" name:"EffectiveTime"`
+
+	// 移动端签署链接
+	HttpSignUrl *string `json:"HttpSignUrl,omitempty" name:"HttpSignUrl"`
+}
+
 type SignUrlInfo struct {
 	// 签署链接
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -2160,7 +2272,7 @@ type UsageDetail struct {
 }
 
 type UserInfo struct {
-	// 用户在渠道的编号
+	// 用户在渠道的编号，最大64位字符串
 	OpenId *string `json:"OpenId,omitempty" name:"OpenId"`
 
 	// 用户的来源渠道
