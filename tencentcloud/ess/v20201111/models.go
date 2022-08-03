@@ -66,6 +66,20 @@ type ApproverInfo struct {
 	PreReadTime *int64 `json:"PreReadTime,omitempty" name:"PreReadTime"`
 }
 
+type ApproverRestriction struct {
+	// 指定签署人名字
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 指定签署人手机号
+	Mobile *string `json:"Mobile,omitempty" name:"Mobile"`
+
+	// 指定签署人证件类型
+	IdCardType *string `json:"IdCardType,omitempty" name:"IdCardType"`
+
+	// 指定签署人证件号码
+	IdCardNumber *string `json:"IdCardNumber,omitempty" name:"IdCardNumber"`
+}
+
 type Caller struct {
 	// 应用号
 	ApplicationId *string `json:"ApplicationId,omitempty" name:"ApplicationId"`
@@ -306,6 +320,76 @@ type Component struct {
 
 	// 指定关键字时纵坐标偏移量，单位pt
 	OffsetY *float64 `json:"OffsetY,omitempty" name:"OffsetY"`
+}
+
+// Predefined struct for user
+type CreateBatchCancelFlowUrlRequestParams struct {
+	// 调用方用户信息，userId 必填
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
+	// 需要执行撤回的签署流程id数组，最多100个
+	FlowIds []*string `json:"FlowIds,omitempty" name:"FlowIds"`
+}
+
+type CreateBatchCancelFlowUrlRequest struct {
+	*tchttp.BaseRequest
+	
+	// 调用方用户信息，userId 必填
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
+	// 需要执行撤回的签署流程id数组，最多100个
+	FlowIds []*string `json:"FlowIds,omitempty" name:"FlowIds"`
+}
+
+func (r *CreateBatchCancelFlowUrlRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateBatchCancelFlowUrlRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Operator")
+	delete(f, "FlowIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateBatchCancelFlowUrlRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateBatchCancelFlowUrlResponseParams struct {
+	// 批量撤回签署流程链接
+	BatchCancelFlowUrl *string `json:"BatchCancelFlowUrl,omitempty" name:"BatchCancelFlowUrl"`
+
+	// 签署流程撤回失败信息
+	FailMessages []*string `json:"FailMessages,omitempty" name:"FailMessages"`
+
+	// 签署连接过期时间字符串：年月日-时分秒
+	UrlExpireOn *string `json:"UrlExpireOn,omitempty" name:"UrlExpireOn"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateBatchCancelFlowUrlResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateBatchCancelFlowUrlResponseParams `json:"Response"`
+}
+
+func (r *CreateBatchCancelFlowUrlResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateBatchCancelFlowUrlResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user
@@ -846,6 +930,9 @@ type CreateMultiFlowSignQRCodeRequestParams struct {
 
 	// 二维码有效天数 默认7天 最高设置不超过90天
 	QrEffectiveDay *int64 `json:"QrEffectiveDay,omitempty" name:"QrEffectiveDay"`
+
+	// 限制二维码用户条件
+	ApproverRestrictions *ApproverRestriction `json:"ApproverRestrictions,omitempty" name:"ApproverRestrictions"`
 }
 
 type CreateMultiFlowSignQRCodeRequest struct {
@@ -877,6 +964,9 @@ type CreateMultiFlowSignQRCodeRequest struct {
 
 	// 二维码有效天数 默认7天 最高设置不超过90天
 	QrEffectiveDay *int64 `json:"QrEffectiveDay,omitempty" name:"QrEffectiveDay"`
+
+	// 限制二维码用户条件
+	ApproverRestrictions *ApproverRestriction `json:"ApproverRestrictions,omitempty" name:"ApproverRestrictions"`
 }
 
 func (r *CreateMultiFlowSignQRCodeRequest) ToJsonString() string {
@@ -899,6 +989,7 @@ func (r *CreateMultiFlowSignQRCodeRequest) FromJsonString(s string) error {
 	delete(f, "MaxFlowNum")
 	delete(f, "FlowEffectiveDay")
 	delete(f, "QrEffectiveDay")
+	delete(f, "ApproverRestrictions")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateMultiFlowSignQRCodeRequest has unknown keys!", "")
 	}
@@ -909,6 +1000,9 @@ func (r *CreateMultiFlowSignQRCodeRequest) FromJsonString(s string) error {
 type CreateMultiFlowSignQRCodeResponseParams struct {
 	// 签署二维码对象
 	QrCode *SignQrCode `json:"QrCode,omitempty" name:"QrCode"`
+
+	// 签署链接对象
+	SignUrls *SignUrl `json:"SignUrls,omitempty" name:"SignUrls"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1700,6 +1794,17 @@ type SignQrCode struct {
 
 	// 二维码过期时间
 	ExpiredTime *int64 `json:"ExpiredTime,omitempty" name:"ExpiredTime"`
+}
+
+type SignUrl struct {
+	// 小程序签署链接
+	AppSignUrl *string `json:"AppSignUrl,omitempty" name:"AppSignUrl"`
+
+	// 签署链接有效时间
+	EffectiveTime *string `json:"EffectiveTime,omitempty" name:"EffectiveTime"`
+
+	// 移动端签署链接
+	HttpSignUrl *string `json:"HttpSignUrl,omitempty" name:"HttpSignUrl"`
 }
 
 // Predefined struct for user

@@ -1,10 +1,69 @@
 # 本版本更新包含以下内容：
 
-## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
+## 应用性能观测(apm) 版本：2021-06-22
 
-### 第 24 次发布
+### 第 13 次发布
 
-发布时间：2022-08-02 11:36:28
+发布时间：2022-08-03 06:04:22
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeMetricRecords](https://cloud.tencent.com/document/api/1463/68254)
+
+	* 新增入参：PageIndex, PageSize
+
+	* 新增出参：TotalCount
+
+
+
+
+## 应用云渲染(car) 版本：2022-01-10
+
+### 第 3 次发布
+
+发布时间：2022-08-03 06:08:12
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateSession](https://cloud.tencent.com/document/api/1547/72826)
+
+	* 新增入参：RunMode
+
+
+
+
+## Elasticsearch Service(es) 版本：2018-04-16
+
+### 第 32 次发布
+
+发布时间：2022-08-03 06:23:52
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeLogstashInstances](https://cloud.tencent.com/document/api/845/77239)
+
+	* 新增入参：VpcIds
+
+
+
+
+## 电子签服务(ess) 版本：2020-11-11
+
+### 第 12 次发布
+
+发布时间：2022-08-03 06:24:12
 
 本次发布包含了以下内容：
 
@@ -12,11 +71,11 @@
 
 新增接口：
 
-* [ChannelCreateBatchCancelFlowUrl](https://cloud.tencent.com/document/api/1420/78264)
+* [CreateBatchCancelFlowUrl](https://cloud.tencent.com/document/api/1323/78262)
 
 修改接口：
 
-* [ChannelCreateMultiFlowSignQRCode](https://cloud.tencent.com/document/api/1420/75452)
+* [CreateMultiFlowSignQRCode](https://cloud.tencent.com/document/api/1323/75450)
 
 	* 新增入参：ApproverRestrictions
 
@@ -25,12 +84,61 @@
 
 新增数据结构：
 
-* [ApproverRestriction](https://cloud.tencent.com/document/api/1420/61525#ApproverRestriction)
-* [SignUrl](https://cloud.tencent.com/document/api/1420/61525#SignUrl)
+* [ApproverRestriction](https://cloud.tencent.com/document/api/1323/70369#ApproverRestriction)
+* [SignUrl](https://cloud.tencent.com/document/api/1323/70369#SignUrl)
 
 
 
-## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
+## 弹性微服务(tem) 版本：2021-07-01
+
+### 第 23 次发布
+
+发布时间：2022-08-03 06:46:27
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateApplicationAutoscaler](https://cloud.tencent.com/document/api/1371/78341)
+* [CreateConfigData](https://cloud.tencent.com/document/api/1371/78337)
+* [DeleteApplicationAutoscaler](https://cloud.tencent.com/document/api/1371/78340)
+* [DescribeApplicationAutoscalerList](https://cloud.tencent.com/document/api/1371/78339)
+* [DescribeConfigData](https://cloud.tencent.com/document/api/1371/78336)
+* [DescribeConfigDataList](https://cloud.tencent.com/document/api/1371/78335)
+* [DestroyConfigData](https://cloud.tencent.com/document/api/1371/78334)
+* [ModifyApplicationAutoscaler](https://cloud.tencent.com/document/api/1371/78338)
+* [ModifyConfigData](https://cloud.tencent.com/document/api/1371/78333)
+
+新增数据结构：
+
+* [Autoscaler](https://cloud.tencent.com/document/api/1371/60171#Autoscaler)
+* [ConfigData](https://cloud.tencent.com/document/api/1371/60171#ConfigData)
+* [DescribeConfigDataListPage](https://cloud.tencent.com/document/api/1371/60171#DescribeConfigDataListPage)
+
+
+
+## 弹性微服务(tem) 版本：2020-12-21
+
+
+
+## 边缘安全加速平台(teo) 版本：2022-01-06
+
+### 第 15 次发布
+
+发布时间：2022-08-03 06:46:50
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [OriginRecord](https://cloud.tencent.com/document/api/1552/73155#OriginRecord)
+
+	* 新增成员：Proto
+
 
 
 
@@ -3206,6 +3314,23 @@
 
 
 ## 应用性能观测(apm) 版本：2021-06-22
+
+### 第 13 次发布
+
+发布时间：2022-08-03 06:04:22
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeMetricRecords](https://cloud.tencent.com/document/api/1463/68254)
+
+	* 新增入参：PageIndex, PageSize
+
+	* 新增出参：TotalCount
+
 
 ### 第 12 次发布
 
@@ -9216,6 +9341,21 @@
 
 
 ## 应用云渲染(car) 版本：2022-01-10
+
+### 第 3 次发布
+
+发布时间：2022-08-03 06:08:12
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateSession](https://cloud.tencent.com/document/api/1547/72826)
+
+	* 新增入参：RunMode
+
 
 ### 第 2 次发布
 
@@ -35583,6 +35723,21 @@
 
 ## Elasticsearch Service(es) 版本：2018-04-16
 
+### 第 32 次发布
+
+发布时间：2022-08-03 06:23:52
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeLogstashInstances](https://cloud.tencent.com/document/api/845/77239)
+
+	* 新增入参：VpcIds
+
+
 ### 第 31 次发布
 
 发布时间：2022-07-14 06:10:06
@@ -36320,6 +36475,32 @@
 
 ## 电子签服务(ess) 版本：2020-11-11
 
+### 第 12 次发布
+
+发布时间：2022-08-03 06:24:12
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateBatchCancelFlowUrl](https://cloud.tencent.com/document/api/1323/78262)](https://cloud.tencent.com/document/api/#/#)
+
+修改接口：
+
+* [CreateMultiFlowSignQRCode](https://cloud.tencent.com/document/api/1323/75450)
+
+	* 新增入参：ApproverRestrictions
+
+	* 新增出参：SignUrls
+
+
+新增数据结构：
+
+* [[ApproverRestriction](https://cloud.tencent.com/document/api/1323/70369#ApproverRestriction)](https://cloud.tencent.com/document/api/1323/70369#[ApproverRestriction](https://cloud.tencent.com/document/api/1323/70369#ApproverRestriction))
+* [[SignUrl](https://cloud.tencent.com/document/api/1323/70369#SignUrl)](https://cloud.tencent.com/document/api/1323/70369#[SignUrl](https://cloud.tencent.com/document/api/1323/70369#SignUrl))
+
 ### 第 11 次发布
 
 发布时间：2022-07-30 15:12:18
@@ -36644,7 +36825,7 @@
 
 新增接口：
 
-* [[ChannelCreateBatchCancelFlowUrl](https://cloud.tencent.com/document/api/1420/78264)](https://cloud.tencent.com/document/api/#/#)
+* [ChannelCreateBatchCancelFlowUrl](https://cloud.tencent.com/document/api/1420/78264)
 
 修改接口：
 
@@ -36657,8 +36838,8 @@
 
 新增数据结构：
 
-* [[ApproverRestriction](https://cloud.tencent.com/document/api/1420/61525#ApproverRestriction)](https://cloud.tencent.com/document/api/1420/61525#[ApproverRestriction](https://cloud.tencent.com/document/api/1420/61525#ApproverRestriction))
-* [[SignUrl](https://cloud.tencent.com/document/api/1420/61525#SignUrl)](https://cloud.tencent.com/document/api/1420/61525#[SignUrl](https://cloud.tencent.com/document/api/1420/61525#SignUrl))
+* [ApproverRestriction](https://cloud.tencent.com/document/api/1420/61525#ApproverRestriction)
+* [SignUrl](https://cloud.tencent.com/document/api/1420/61525#SignUrl)
 
 ### 第 23 次发布
 
@@ -69833,6 +70014,32 @@
 
 ## 弹性微服务(tem) 版本：2021-07-01
 
+### 第 23 次发布
+
+发布时间：2022-08-03 06:46:27
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateApplicationAutoscaler](https://cloud.tencent.com/document/api/1371/78341)](https://cloud.tencent.com/document/api/#/#)
+* [[CreateConfigData](https://cloud.tencent.com/document/api/1371/78337)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteApplicationAutoscaler](https://cloud.tencent.com/document/api/1371/78340)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeApplicationAutoscalerList](https://cloud.tencent.com/document/api/1371/78339)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeConfigData](https://cloud.tencent.com/document/api/1371/78336)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeConfigDataList](https://cloud.tencent.com/document/api/1371/78335)](https://cloud.tencent.com/document/api/#/#)
+* [[DestroyConfigData](https://cloud.tencent.com/document/api/1371/78334)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyApplicationAutoscaler](https://cloud.tencent.com/document/api/1371/78338)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyConfigData](https://cloud.tencent.com/document/api/1371/78333)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[Autoscaler](https://cloud.tencent.com/document/api/1371/60171#Autoscaler)](https://cloud.tencent.com/document/api/1371/60171#[Autoscaler](https://cloud.tencent.com/document/api/1371/60171#Autoscaler))
+* [[ConfigData](https://cloud.tencent.com/document/api/1371/60171#ConfigData)](https://cloud.tencent.com/document/api/1371/60171#[ConfigData](https://cloud.tencent.com/document/api/1371/60171#ConfigData))
+* [[DescribeConfigDataListPage](https://cloud.tencent.com/document/api/1371/60171#DescribeConfigDataListPage)](https://cloud.tencent.com/document/api/1371/60171#[DescribeConfigDataListPage](https://cloud.tencent.com/document/api/1371/60171#DescribeConfigDataListPage))
+
 ### 第 22 次发布
 
 发布时间：2022-08-02 06:33:46
@@ -70277,6 +70484,21 @@
 
 
 ## 边缘安全加速平台(teo) 版本：2022-01-06
+
+### 第 15 次发布
+
+发布时间：2022-08-03 06:46:50
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [OriginRecord](https://cloud.tencent.com/document/api/1552/73155#OriginRecord)
+
+	* 新增成员：Proto
+
 
 ### 第 14 次发布
 

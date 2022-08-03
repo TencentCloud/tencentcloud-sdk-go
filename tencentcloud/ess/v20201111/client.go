@@ -169,6 +169,57 @@ func (c *Client) CancelMultiFlowSignQRCodeWithContext(ctx context.Context, reque
     return
 }
 
+func NewCreateBatchCancelFlowUrlRequest() (request *CreateBatchCancelFlowUrlRequest) {
+    request = &CreateBatchCancelFlowUrlRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ess", APIVersion, "CreateBatchCancelFlowUrl")
+    
+    
+    return
+}
+
+func NewCreateBatchCancelFlowUrlResponse() (response *CreateBatchCancelFlowUrlResponse) {
+    response = &CreateBatchCancelFlowUrlResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateBatchCancelFlowUrl
+// 电子签企业版：指定需要批量撤回的签署流程Id，获取批量撤销链接
+//
+// 客户指定需要撤回的签署流程Id，最多100个，超过100不处理；接口调用成功返回批量撤回合同的链接，通过链接跳转到电子签小程序完成批量撤回
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) CreateBatchCancelFlowUrl(request *CreateBatchCancelFlowUrlRequest) (response *CreateBatchCancelFlowUrlResponse, err error) {
+    return c.CreateBatchCancelFlowUrlWithContext(context.Background(), request)
+}
+
+// CreateBatchCancelFlowUrl
+// 电子签企业版：指定需要批量撤回的签署流程Id，获取批量撤销链接
+//
+// 客户指定需要撤回的签署流程Id，最多100个，超过100不处理；接口调用成功返回批量撤回合同的链接，通过链接跳转到电子签小程序完成批量撤回
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) CreateBatchCancelFlowUrlWithContext(ctx context.Context, request *CreateBatchCancelFlowUrlRequest) (response *CreateBatchCancelFlowUrlResponse, err error) {
+    if request == nil {
+        request = NewCreateBatchCancelFlowUrlRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateBatchCancelFlowUrl require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateBatchCancelFlowUrlResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateConvertTaskApiRequest() (request *CreateConvertTaskApiRequest) {
     request = &CreateConvertTaskApiRequest{
         BaseRequest: &tchttp.BaseRequest{},

@@ -110,6 +110,108 @@ func (c *Client) CreateApplicationWithContext(ctx context.Context, request *Crea
     return
 }
 
+func NewCreateApplicationAutoscalerRequest() (request *CreateApplicationAutoscalerRequest) {
+    request = &CreateApplicationAutoscalerRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tem", APIVersion, "CreateApplicationAutoscaler")
+    
+    
+    return
+}
+
+func NewCreateApplicationAutoscalerResponse() (response *CreateApplicationAutoscalerResponse) {
+    response = &CreateApplicationAutoscalerResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateApplicationAutoscaler
+// 创建弹性伸缩策略组合
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_AUTOSCALERLARGERTHANONE = "InvalidParameterValue.AutoScalerLargerThanOne"
+//  INVALIDPARAMETERVALUE_CRONHPAREPLICASINVALID = "InvalidParameterValue.CronHpaReplicasInvalid"
+//  RESOURCENOTFOUND_SERVICERUNNINGVERSIONNOTFOUND = "ResourceNotFound.ServiceRunningVersionNotFound"
+//  RESOURCEUNAVAILABLE_APPLICATIONSTOPPED = "ResourceUnavailable.ApplicationStopped"
+func (c *Client) CreateApplicationAutoscaler(request *CreateApplicationAutoscalerRequest) (response *CreateApplicationAutoscalerResponse, err error) {
+    return c.CreateApplicationAutoscalerWithContext(context.Background(), request)
+}
+
+// CreateApplicationAutoscaler
+// 创建弹性伸缩策略组合
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_AUTOSCALERLARGERTHANONE = "InvalidParameterValue.AutoScalerLargerThanOne"
+//  INVALIDPARAMETERVALUE_CRONHPAREPLICASINVALID = "InvalidParameterValue.CronHpaReplicasInvalid"
+//  RESOURCENOTFOUND_SERVICERUNNINGVERSIONNOTFOUND = "ResourceNotFound.ServiceRunningVersionNotFound"
+//  RESOURCEUNAVAILABLE_APPLICATIONSTOPPED = "ResourceUnavailable.ApplicationStopped"
+func (c *Client) CreateApplicationAutoscalerWithContext(ctx context.Context, request *CreateApplicationAutoscalerRequest) (response *CreateApplicationAutoscalerResponse, err error) {
+    if request == nil {
+        request = NewCreateApplicationAutoscalerRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateApplicationAutoscaler require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateApplicationAutoscalerResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateConfigDataRequest() (request *CreateConfigDataRequest) {
+    request = &CreateConfigDataRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tem", APIVersion, "CreateConfigData")
+    
+    
+    return
+}
+
+func NewCreateConfigDataResponse() (response *CreateConfigDataResponse) {
+    response = &CreateConfigDataResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateConfigData
+// 创建配置
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CREATECONFIGDATAERROR = "InternalError.CreateConfigDataError"
+//  INVALIDPARAMETERVALUE_CONFIGDATAALREADYEXIST = "InvalidParameterValue.ConfigDataAlreadyExist"
+func (c *Client) CreateConfigData(request *CreateConfigDataRequest) (response *CreateConfigDataResponse, err error) {
+    return c.CreateConfigDataWithContext(context.Background(), request)
+}
+
+// CreateConfigData
+// 创建配置
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CREATECONFIGDATAERROR = "InternalError.CreateConfigDataError"
+//  INVALIDPARAMETERVALUE_CONFIGDATAALREADYEXIST = "InvalidParameterValue.ConfigDataAlreadyExist"
+func (c *Client) CreateConfigDataWithContext(ctx context.Context, request *CreateConfigDataRequest) (response *CreateConfigDataResponse, err error) {
+    if request == nil {
+        request = NewCreateConfigDataRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateConfigData require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateConfigDataResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateCosTokenRequest() (request *CreateCosTokenRequest) {
     request = &CreateCosTokenRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -356,6 +458,53 @@ func (c *Client) DeleteApplicationWithContext(ctx context.Context, request *Dele
     return
 }
 
+func NewDeleteApplicationAutoscalerRequest() (request *DeleteApplicationAutoscalerRequest) {
+    request = &DeleteApplicationAutoscalerRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tem", APIVersion, "DeleteApplicationAutoscaler")
+    
+    
+    return
+}
+
+func NewDeleteApplicationAutoscalerResponse() (response *DeleteApplicationAutoscalerResponse) {
+    response = &DeleteApplicationAutoscalerResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteApplicationAutoscaler
+// 删除应用弹性策略组合
+//
+// 可能返回的错误码:
+//  RESOURCEUNAVAILABLE_APPLICATIONSTOPPED = "ResourceUnavailable.ApplicationStopped"
+func (c *Client) DeleteApplicationAutoscaler(request *DeleteApplicationAutoscalerRequest) (response *DeleteApplicationAutoscalerResponse, err error) {
+    return c.DeleteApplicationAutoscalerWithContext(context.Background(), request)
+}
+
+// DeleteApplicationAutoscaler
+// 删除应用弹性策略组合
+//
+// 可能返回的错误码:
+//  RESOURCEUNAVAILABLE_APPLICATIONSTOPPED = "ResourceUnavailable.ApplicationStopped"
+func (c *Client) DeleteApplicationAutoscalerWithContext(ctx context.Context, request *DeleteApplicationAutoscalerRequest) (response *DeleteApplicationAutoscalerResponse, err error) {
+    if request == nil {
+        request = NewDeleteApplicationAutoscalerRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteApplicationAutoscaler require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteApplicationAutoscalerResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteIngressRequest() (request *DeleteIngressRequest) {
     request = &DeleteIngressRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -480,6 +629,53 @@ func (c *Client) DeployApplicationWithContext(ctx context.Context, request *Depl
     request.SetContext(ctx)
     
     response = NewDeployApplicationResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeApplicationAutoscalerListRequest() (request *DescribeApplicationAutoscalerListRequest) {
+    request = &DescribeApplicationAutoscalerListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tem", APIVersion, "DescribeApplicationAutoscalerList")
+    
+    
+    return
+}
+
+func NewDescribeApplicationAutoscalerListResponse() (response *DescribeApplicationAutoscalerListResponse) {
+    response = &DescribeApplicationAutoscalerListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeApplicationAutoscalerList
+// 获取应用弹性策略组合
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_VERSIONNAMESPACENOTFOUND = "ResourceNotFound.VersionNamespaceNotFound"
+func (c *Client) DescribeApplicationAutoscalerList(request *DescribeApplicationAutoscalerListRequest) (response *DescribeApplicationAutoscalerListResponse, err error) {
+    return c.DescribeApplicationAutoscalerListWithContext(context.Background(), request)
+}
+
+// DescribeApplicationAutoscalerList
+// 获取应用弹性策略组合
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_VERSIONNAMESPACENOTFOUND = "ResourceNotFound.VersionNamespaceNotFound"
+func (c *Client) DescribeApplicationAutoscalerListWithContext(ctx context.Context, request *DescribeApplicationAutoscalerListRequest) (response *DescribeApplicationAutoscalerListResponse, err error) {
+    if request == nil {
+        request = NewDescribeApplicationAutoscalerListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeApplicationAutoscalerList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeApplicationAutoscalerListResponse()
     err = c.Send(request, response)
     return
 }
@@ -706,6 +902,108 @@ func (c *Client) DescribeApplicationsStatusWithContext(ctx context.Context, requ
     request.SetContext(ctx)
     
     response = NewDescribeApplicationsStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeConfigDataRequest() (request *DescribeConfigDataRequest) {
+    request = &DescribeConfigDataRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tem", APIVersion, "DescribeConfigData")
+    
+    
+    return
+}
+
+func NewDescribeConfigDataResponse() (response *DescribeConfigDataResponse) {
+    response = &DescribeConfigDataResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeConfigData
+// 查询配置详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DEFAULTINTERNALERROR = "InternalError.DefaultInternalError"
+//  RESOURCENOTFOUND_VERSIONNAMESPACENOTFOUND = "ResourceNotFound.VersionNamespaceNotFound"
+func (c *Client) DescribeConfigData(request *DescribeConfigDataRequest) (response *DescribeConfigDataResponse, err error) {
+    return c.DescribeConfigDataWithContext(context.Background(), request)
+}
+
+// DescribeConfigData
+// 查询配置详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DEFAULTINTERNALERROR = "InternalError.DefaultInternalError"
+//  RESOURCENOTFOUND_VERSIONNAMESPACENOTFOUND = "ResourceNotFound.VersionNamespaceNotFound"
+func (c *Client) DescribeConfigDataWithContext(ctx context.Context, request *DescribeConfigDataRequest) (response *DescribeConfigDataResponse, err error) {
+    if request == nil {
+        request = NewDescribeConfigDataRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeConfigData require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeConfigDataResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeConfigDataListRequest() (request *DescribeConfigDataListRequest) {
+    request = &DescribeConfigDataListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tem", APIVersion, "DescribeConfigDataList")
+    
+    
+    return
+}
+
+func NewDescribeConfigDataListResponse() (response *DescribeConfigDataListResponse) {
+    response = &DescribeConfigDataListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeConfigDataList
+// 查询配置列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DEFAULTINTERNALERROR = "InternalError.DefaultInternalError"
+//  INTERNALERROR_DESCRIBECONFIGDATALISTERROR = "InternalError.DescribeConfigDataListError"
+//  INVALIDPARAMETERVALUE_NAMESPACENOTBELONGTOAPPID = "InvalidParameterValue.NamespaceNotBelongToAppid"
+//  RESOURCENOTFOUND_VERSIONNAMESPACENOTFOUND = "ResourceNotFound.VersionNamespaceNotFound"
+func (c *Client) DescribeConfigDataList(request *DescribeConfigDataListRequest) (response *DescribeConfigDataListResponse, err error) {
+    return c.DescribeConfigDataListWithContext(context.Background(), request)
+}
+
+// DescribeConfigDataList
+// 查询配置列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DEFAULTINTERNALERROR = "InternalError.DefaultInternalError"
+//  INTERNALERROR_DESCRIBECONFIGDATALISTERROR = "InternalError.DescribeConfigDataListError"
+//  INVALIDPARAMETERVALUE_NAMESPACENOTBELONGTOAPPID = "InvalidParameterValue.NamespaceNotBelongToAppid"
+//  RESOURCENOTFOUND_VERSIONNAMESPACENOTFOUND = "ResourceNotFound.VersionNamespaceNotFound"
+func (c *Client) DescribeConfigDataListWithContext(ctx context.Context, request *DescribeConfigDataListRequest) (response *DescribeConfigDataListResponse, err error) {
+    if request == nil {
+        request = NewDescribeConfigDataListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeConfigDataList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeConfigDataListResponse()
     err = c.Send(request, response)
     return
 }
@@ -1036,6 +1334,53 @@ func (c *Client) DescribeRelatedIngressesWithContext(ctx context.Context, reques
     return
 }
 
+func NewDestroyConfigDataRequest() (request *DestroyConfigDataRequest) {
+    request = &DestroyConfigDataRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tem", APIVersion, "DestroyConfigData")
+    
+    
+    return
+}
+
+func NewDestroyConfigDataResponse() (response *DestroyConfigDataResponse) {
+    response = &DestroyConfigDataResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DestroyConfigData
+// 销毁配置
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_VERSIONNAMESPACENOTFOUND = "ResourceNotFound.VersionNamespaceNotFound"
+func (c *Client) DestroyConfigData(request *DestroyConfigDataRequest) (response *DestroyConfigDataResponse, err error) {
+    return c.DestroyConfigDataWithContext(context.Background(), request)
+}
+
+// DestroyConfigData
+// 销毁配置
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_VERSIONNAMESPACENOTFOUND = "ResourceNotFound.VersionNamespaceNotFound"
+func (c *Client) DestroyConfigDataWithContext(ctx context.Context, request *DestroyConfigDataRequest) (response *DestroyConfigDataResponse, err error) {
+    if request == nil {
+        request = NewDestroyConfigDataRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DestroyConfigData require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDestroyConfigDataResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDestroyEnvironmentRequest() (request *DestroyEnvironmentRequest) {
     request = &DestroyEnvironmentRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1134,6 +1479,57 @@ func (c *Client) GenerateApplicationPackageDownloadUrlWithContext(ctx context.Co
     return
 }
 
+func NewModifyApplicationAutoscalerRequest() (request *ModifyApplicationAutoscalerRequest) {
+    request = &ModifyApplicationAutoscalerRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tem", APIVersion, "ModifyApplicationAutoscaler")
+    
+    
+    return
+}
+
+func NewModifyApplicationAutoscalerResponse() (response *ModifyApplicationAutoscalerResponse) {
+    response = &ModifyApplicationAutoscalerResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyApplicationAutoscaler
+// 修改弹性伸缩策略组合
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_CRONHPAREPLICASINVALID = "InvalidParameterValue.CronHpaReplicasInvalid"
+//  MISSINGPARAMETER_SCALERIDNULL = "MissingParameter.ScalerIdNull"
+//  RESOURCEUNAVAILABLE_APPLICATIONSTOPPED = "ResourceUnavailable.ApplicationStopped"
+func (c *Client) ModifyApplicationAutoscaler(request *ModifyApplicationAutoscalerRequest) (response *ModifyApplicationAutoscalerResponse, err error) {
+    return c.ModifyApplicationAutoscalerWithContext(context.Background(), request)
+}
+
+// ModifyApplicationAutoscaler
+// 修改弹性伸缩策略组合
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_CRONHPAREPLICASINVALID = "InvalidParameterValue.CronHpaReplicasInvalid"
+//  MISSINGPARAMETER_SCALERIDNULL = "MissingParameter.ScalerIdNull"
+//  RESOURCEUNAVAILABLE_APPLICATIONSTOPPED = "ResourceUnavailable.ApplicationStopped"
+func (c *Client) ModifyApplicationAutoscalerWithContext(ctx context.Context, request *ModifyApplicationAutoscalerRequest) (response *ModifyApplicationAutoscalerResponse, err error) {
+    if request == nil {
+        request = NewModifyApplicationAutoscalerRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyApplicationAutoscaler require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyApplicationAutoscalerResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyApplicationInfoRequest() (request *ModifyApplicationInfoRequest) {
     request = &ModifyApplicationInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1228,6 +1624,55 @@ func (c *Client) ModifyApplicationReplicasWithContext(ctx context.Context, reque
     request.SetContext(ctx)
     
     response = NewModifyApplicationReplicasResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyConfigDataRequest() (request *ModifyConfigDataRequest) {
+    request = &ModifyConfigDataRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tem", APIVersion, "ModifyConfigData")
+    
+    
+    return
+}
+
+func NewModifyConfigDataResponse() (response *ModifyConfigDataResponse) {
+    response = &ModifyConfigDataResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyConfigData
+// 编辑配置
+//
+// 可能返回的错误码:
+//  INTERNALERROR_MODIFYCONFIGDATAERROR = "InternalError.ModifyConfigDataError"
+//  INVALIDPARAMETERVALUE_CONFIGDATAINVALID = "InvalidParameterValue.ConfigDataInvalid"
+func (c *Client) ModifyConfigData(request *ModifyConfigDataRequest) (response *ModifyConfigDataResponse, err error) {
+    return c.ModifyConfigDataWithContext(context.Background(), request)
+}
+
+// ModifyConfigData
+// 编辑配置
+//
+// 可能返回的错误码:
+//  INTERNALERROR_MODIFYCONFIGDATAERROR = "InternalError.ModifyConfigDataError"
+//  INVALIDPARAMETERVALUE_CONFIGDATAINVALID = "InvalidParameterValue.ConfigDataInvalid"
+func (c *Client) ModifyConfigDataWithContext(ctx context.Context, request *ModifyConfigDataRequest) (response *ModifyConfigDataResponse, err error) {
+    if request == nil {
+        request = NewModifyConfigDataRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyConfigData require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyConfigDataResponse()
     err = c.Send(request, response)
     return
 }

@@ -1709,6 +1709,9 @@ type DescribeLogstashInstancesRequestParams struct {
 
 	// 排序方式<li>0：升序</li><li>1：降序</li>若传递了orderByKey未传递orderByType, 则默认升序
 	OrderByType *uint64 `json:"OrderByType,omitempty" name:"OrderByType"`
+
+	// VpcId 筛选项
+	VpcIds []*string `json:"VpcIds,omitempty" name:"VpcIds"`
 }
 
 type DescribeLogstashInstancesRequest struct {
@@ -1734,6 +1737,9 @@ type DescribeLogstashInstancesRequest struct {
 
 	// 排序方式<li>0：升序</li><li>1：降序</li>若传递了orderByKey未传递orderByType, 则默认升序
 	OrderByType *uint64 `json:"OrderByType,omitempty" name:"OrderByType"`
+
+	// VpcId 筛选项
+	VpcIds []*string `json:"VpcIds,omitempty" name:"VpcIds"`
 }
 
 func (r *DescribeLogstashInstancesRequest) ToJsonString() string {
@@ -1755,6 +1761,7 @@ func (r *DescribeLogstashInstancesRequest) FromJsonString(s string) error {
 	delete(f, "Limit")
 	delete(f, "OrderByKey")
 	delete(f, "OrderByType")
+	delete(f, "VpcIds")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLogstashInstancesRequest has unknown keys!", "")
 	}

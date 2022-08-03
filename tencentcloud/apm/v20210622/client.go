@@ -314,6 +314,9 @@ func NewDescribeMetricRecordsResponse() (response *DescribeMetricRecordsResponse
 //  FAILEDOPERATION_APPIDNOTMATCHINSTANCEINFO = "FailedOperation.AppIdNotMatchInstanceInfo"
 //  FAILEDOPERATION_INSTANCEIDISEMPTY = "FailedOperation.InstanceIdIsEmpty"
 //  FAILEDOPERATION_INSTANCENOTFOUND = "FailedOperation.InstanceNotFound"
+//  FAILEDOPERATION_INVALIDINSTANCEID = "FailedOperation.InvalidInstanceID"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeMetricRecords(request *DescribeMetricRecordsRequest) (response *DescribeMetricRecordsResponse, err error) {
     return c.DescribeMetricRecordsWithContext(context.Background(), request)
 }
@@ -326,6 +329,9 @@ func (c *Client) DescribeMetricRecords(request *DescribeMetricRecordsRequest) (r
 //  FAILEDOPERATION_APPIDNOTMATCHINSTANCEINFO = "FailedOperation.AppIdNotMatchInstanceInfo"
 //  FAILEDOPERATION_INSTANCEIDISEMPTY = "FailedOperation.InstanceIdIsEmpty"
 //  FAILEDOPERATION_INSTANCENOTFOUND = "FailedOperation.InstanceNotFound"
+//  FAILEDOPERATION_INVALIDINSTANCEID = "FailedOperation.InvalidInstanceID"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeMetricRecordsWithContext(ctx context.Context, request *DescribeMetricRecordsRequest) (response *DescribeMetricRecordsResponse, err error) {
     if request == nil {
         request = NewDescribeMetricRecordsRequest()

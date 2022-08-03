@@ -9709,7 +9709,10 @@ type OriginRecord struct {
 
 	// 当源站配置类型Type=weight时，表示权重
 	// 取值范围为[1-100]
-	// 源站组内多个源站权重总和应为100
+	// 源站组内多个源站权重总和应为100。
+	// 当源站配置类型Type=proto，表示权重
+	// 取值范围为[1-100]
+	// 源站组内Proto相同的多个源站权重总和应为100。
 	Weight *uint64 `json:"Weight,omitempty" name:"Weight"`
 
 	// 端口
@@ -9727,6 +9730,10 @@ type OriginRecord struct {
 	// 当源站类型Private=true时有效
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PrivateParameter []*OriginRecordPrivateParameter `json:"PrivateParameter,omitempty" name:"PrivateParameter"`
+
+	// 当源站配置类型Type=proto时，表示客户端请求协议，取值：http/https
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Proto *string `json:"Proto,omitempty" name:"Proto"`
 }
 
 type OriginRecordPrivateParameter struct {
@@ -10372,13 +10379,13 @@ type WafConfig struct {
 }
 
 type WafRule struct {
-	// 黑名单
+	// 黑名单，ID参考接口 DescribeSecurityPolicyManagedRules
 	BlockRuleIDs []*int64 `json:"BlockRuleIDs,omitempty" name:"BlockRuleIDs"`
 
-	// id的开关
+	// 托管规则 开关
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
 
-	// 观察模式
+	// 观察模式，ID参考接口 DescribeSecurityPolicyManagedRules
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ObserveRuleIDs []*int64 `json:"ObserveRuleIDs,omitempty" name:"ObserveRuleIDs"`
 }

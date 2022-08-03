@@ -628,6 +628,12 @@ type DescribeMetricRecordsRequestParams struct {
 
 	// 业务名称（默认值：taw）
 	BusinessName *string `json:"BusinessName,omitempty" name:"BusinessName"`
+
+	// 页码
+	PageIndex *int64 `json:"PageIndex,omitempty" name:"PageIndex"`
+
+	// 页长
+	PageSize *int64 `json:"PageSize,omitempty" name:"PageSize"`
 }
 
 type DescribeMetricRecordsRequest struct {
@@ -662,6 +668,12 @@ type DescribeMetricRecordsRequest struct {
 
 	// 业务名称（默认值：taw）
 	BusinessName *string `json:"BusinessName,omitempty" name:"BusinessName"`
+
+	// 页码
+	PageIndex *int64 `json:"PageIndex,omitempty" name:"PageIndex"`
+
+	// 页长
+	PageSize *int64 `json:"PageSize,omitempty" name:"PageSize"`
 }
 
 func (r *DescribeMetricRecordsRequest) ToJsonString() string {
@@ -686,6 +698,8 @@ func (r *DescribeMetricRecordsRequest) FromJsonString(s string) error {
 	delete(f, "Offset")
 	delete(f, "EndTime")
 	delete(f, "BusinessName")
+	delete(f, "PageIndex")
+	delete(f, "PageSize")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeMetricRecordsRequest has unknown keys!", "")
 	}
@@ -697,6 +711,10 @@ type DescribeMetricRecordsResponseParams struct {
 	// 指标结果集
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Records []*ApmMetricRecord `json:"Records,omitempty" name:"Records"`
+
+	// 查询指标结果集条数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`

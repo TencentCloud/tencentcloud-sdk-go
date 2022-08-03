@@ -319,7 +319,7 @@ type Column struct {
 }
 
 type CompressInfo struct {
-	// 压缩格式，支持gzip、lzop和none不压缩
+	// 压缩格式，支持gzip、lzop、snappy和none不压缩
 	Format *string `json:"Format,omitempty" name:"Format"`
 }
 

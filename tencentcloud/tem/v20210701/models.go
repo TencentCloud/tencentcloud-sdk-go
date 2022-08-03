@@ -20,6 +20,64 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+type Autoscaler struct {
+	// 弹性伸缩最小实例数
+	MinReplicas *int64 `json:"MinReplicas,omitempty" name:"MinReplicas"`
+
+	// 弹性伸缩最大实例数
+	MaxReplicas *int64 `json:"MaxReplicas,omitempty" name:"MaxReplicas"`
+
+	// 指标弹性伸缩策略
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HorizontalAutoscaler []*HorizontalAutoscaler `json:"HorizontalAutoscaler,omitempty" name:"HorizontalAutoscaler"`
+
+	// 定时弹性伸缩策略
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CronHorizontalAutoscaler []*CronHorizontalAutoscaler `json:"CronHorizontalAutoscaler,omitempty" name:"CronHorizontalAutoscaler"`
+
+	// 弹性伸缩ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AutoscalerId *string `json:"AutoscalerId,omitempty" name:"AutoscalerId"`
+
+	// 弹性伸缩名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AutoscalerName *string `json:"AutoscalerName,omitempty" name:"AutoscalerName"`
+
+	// 弹性伸缩描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 创建日期
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateDate *string `json:"CreateDate,omitempty" name:"CreateDate"`
+
+	// 修改时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ModifyDate *string `json:"ModifyDate,omitempty" name:"ModifyDate"`
+
+	// 启用时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EnableDate *string `json:"EnableDate,omitempty" name:"EnableDate"`
+
+	// 是否启用
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Enabled *bool `json:"Enabled,omitempty" name:"Enabled"`
+}
+
+type ConfigData struct {
+	// 配置名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 创建时间
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 关联的服务列表
+	RelatedApplications []*TemService `json:"RelatedApplications,omitempty" name:"RelatedApplications"`
+
+	// 配置条目
+	Data []*Pair `json:"Data,omitempty" name:"Data"`
+}
+
 type CosToken struct {
 	// 唯一请求 ID
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -47,6 +105,85 @@ type CosToken struct {
 
 	// 包完整路径
 	FullPath *string `json:"FullPath,omitempty" name:"FullPath"`
+}
+
+// Predefined struct for user
+type CreateApplicationAutoscalerRequestParams struct {
+	// 服务id
+	ApplicationId *string `json:"ApplicationId,omitempty" name:"ApplicationId"`
+
+	// 环境ID
+	EnvironmentId *string `json:"EnvironmentId,omitempty" name:"EnvironmentId"`
+
+	// 来源渠道
+	SourceChannel *int64 `json:"SourceChannel,omitempty" name:"SourceChannel"`
+
+	// 弹性伸缩策略
+	Autoscaler *Autoscaler `json:"Autoscaler,omitempty" name:"Autoscaler"`
+}
+
+type CreateApplicationAutoscalerRequest struct {
+	*tchttp.BaseRequest
+	
+	// 服务id
+	ApplicationId *string `json:"ApplicationId,omitempty" name:"ApplicationId"`
+
+	// 环境ID
+	EnvironmentId *string `json:"EnvironmentId,omitempty" name:"EnvironmentId"`
+
+	// 来源渠道
+	SourceChannel *int64 `json:"SourceChannel,omitempty" name:"SourceChannel"`
+
+	// 弹性伸缩策略
+	Autoscaler *Autoscaler `json:"Autoscaler,omitempty" name:"Autoscaler"`
+}
+
+func (r *CreateApplicationAutoscalerRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateApplicationAutoscalerRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ApplicationId")
+	delete(f, "EnvironmentId")
+	delete(f, "SourceChannel")
+	delete(f, "Autoscaler")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateApplicationAutoscalerRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateApplicationAutoscalerResponseParams struct {
+	// 弹性伸缩策略组合ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Result *string `json:"Result,omitempty" name:"Result"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateApplicationAutoscalerResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateApplicationAutoscalerResponseParams `json:"Response"`
+}
+
+func (r *CreateApplicationAutoscalerResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateApplicationAutoscalerResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user
@@ -197,6 +334,84 @@ func (r *CreateApplicationResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateApplicationResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateConfigDataRequestParams struct {
+	// 环境 ID
+	EnvironmentId *string `json:"EnvironmentId,omitempty" name:"EnvironmentId"`
+
+	// 配置名
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 来源渠道
+	SourceChannel *int64 `json:"SourceChannel,omitempty" name:"SourceChannel"`
+
+	// 配置信息
+	Data []*Pair `json:"Data,omitempty" name:"Data"`
+}
+
+type CreateConfigDataRequest struct {
+	*tchttp.BaseRequest
+	
+	// 环境 ID
+	EnvironmentId *string `json:"EnvironmentId,omitempty" name:"EnvironmentId"`
+
+	// 配置名
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 来源渠道
+	SourceChannel *int64 `json:"SourceChannel,omitempty" name:"SourceChannel"`
+
+	// 配置信息
+	Data []*Pair `json:"Data,omitempty" name:"Data"`
+}
+
+func (r *CreateConfigDataRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateConfigDataRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EnvironmentId")
+	delete(f, "Name")
+	delete(f, "SourceChannel")
+	delete(f, "Data")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateConfigDataRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateConfigDataResponseParams struct {
+	// 创建是否成功
+	Result *bool `json:"Result,omitempty" name:"Result"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateConfigDataResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateConfigDataResponseParams `json:"Response"`
+}
+
+func (r *CreateConfigDataResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateConfigDataResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -510,6 +725,85 @@ type CronHorizontalAutoscalerSchedule struct {
 	// 目标实例数（不大于50）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TargetReplicas *int64 `json:"TargetReplicas,omitempty" name:"TargetReplicas"`
+}
+
+// Predefined struct for user
+type DeleteApplicationAutoscalerRequestParams struct {
+	// 服务id
+	ApplicationId *string `json:"ApplicationId,omitempty" name:"ApplicationId"`
+
+	// 环境ID
+	EnvironmentId *string `json:"EnvironmentId,omitempty" name:"EnvironmentId"`
+
+	// 来源渠道
+	SourceChannel *int64 `json:"SourceChannel,omitempty" name:"SourceChannel"`
+
+	// 弹性伸缩策略ID
+	AutoscalerId *string `json:"AutoscalerId,omitempty" name:"AutoscalerId"`
+}
+
+type DeleteApplicationAutoscalerRequest struct {
+	*tchttp.BaseRequest
+	
+	// 服务id
+	ApplicationId *string `json:"ApplicationId,omitempty" name:"ApplicationId"`
+
+	// 环境ID
+	EnvironmentId *string `json:"EnvironmentId,omitempty" name:"EnvironmentId"`
+
+	// 来源渠道
+	SourceChannel *int64 `json:"SourceChannel,omitempty" name:"SourceChannel"`
+
+	// 弹性伸缩策略ID
+	AutoscalerId *string `json:"AutoscalerId,omitempty" name:"AutoscalerId"`
+}
+
+func (r *DeleteApplicationAutoscalerRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteApplicationAutoscalerRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ApplicationId")
+	delete(f, "EnvironmentId")
+	delete(f, "SourceChannel")
+	delete(f, "AutoscalerId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteApplicationAutoscalerRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteApplicationAutoscalerResponseParams struct {
+	// 是否成功
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Result *bool `json:"Result,omitempty" name:"Result"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DeleteApplicationAutoscalerResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteApplicationAutoscalerResponseParams `json:"Response"`
+}
+
+func (r *DeleteApplicationAutoscalerResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteApplicationAutoscalerResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user
@@ -1116,6 +1410,78 @@ type DeployStrategyConf struct {
 }
 
 // Predefined struct for user
+type DescribeApplicationAutoscalerListRequestParams struct {
+	// 服务id
+	ApplicationId *string `json:"ApplicationId,omitempty" name:"ApplicationId"`
+
+	// 环境ID
+	EnvironmentId *string `json:"EnvironmentId,omitempty" name:"EnvironmentId"`
+
+	// 来源渠道
+	SourceChannel *int64 `json:"SourceChannel,omitempty" name:"SourceChannel"`
+}
+
+type DescribeApplicationAutoscalerListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 服务id
+	ApplicationId *string `json:"ApplicationId,omitempty" name:"ApplicationId"`
+
+	// 环境ID
+	EnvironmentId *string `json:"EnvironmentId,omitempty" name:"EnvironmentId"`
+
+	// 来源渠道
+	SourceChannel *int64 `json:"SourceChannel,omitempty" name:"SourceChannel"`
+}
+
+func (r *DescribeApplicationAutoscalerListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeApplicationAutoscalerListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ApplicationId")
+	delete(f, "EnvironmentId")
+	delete(f, "SourceChannel")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeApplicationAutoscalerListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeApplicationAutoscalerListResponseParams struct {
+	// 弹性伸缩策略组合
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Result []*Autoscaler `json:"Result,omitempty" name:"Result"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeApplicationAutoscalerListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeApplicationAutoscalerListResponseParams `json:"Response"`
+}
+
+func (r *DescribeApplicationAutoscalerListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeApplicationAutoscalerListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeApplicationInfoRequestParams struct {
 	// 服务版本ID
 	ApplicationId *string `json:"ApplicationId,omitempty" name:"ApplicationId"`
@@ -1444,6 +1810,168 @@ func (r *DescribeApplicationsStatusResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeApplicationsStatusResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeConfigDataListPage struct {
+	// 记录
+	Records []*ConfigData `json:"Records,omitempty" name:"Records"`
+
+	// 分页游标，用以查询下一页
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ContinueToken *string `json:"ContinueToken,omitempty" name:"ContinueToken"`
+
+	// 剩余数目
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RemainingCount *int64 `json:"RemainingCount,omitempty" name:"RemainingCount"`
+}
+
+// Predefined struct for user
+type DescribeConfigDataListRequestParams struct {
+	// 环境 ID
+	EnvironmentId *string `json:"EnvironmentId,omitempty" name:"EnvironmentId"`
+
+	// 来源渠道
+	SourceChannel *int64 `json:"SourceChannel,omitempty" name:"SourceChannel"`
+
+	// 查询游标
+	ContinueToken *string `json:"ContinueToken,omitempty" name:"ContinueToken"`
+
+	// 分页 limit
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+type DescribeConfigDataListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 环境 ID
+	EnvironmentId *string `json:"EnvironmentId,omitempty" name:"EnvironmentId"`
+
+	// 来源渠道
+	SourceChannel *int64 `json:"SourceChannel,omitempty" name:"SourceChannel"`
+
+	// 查询游标
+	ContinueToken *string `json:"ContinueToken,omitempty" name:"ContinueToken"`
+
+	// 分页 limit
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribeConfigDataListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeConfigDataListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EnvironmentId")
+	delete(f, "SourceChannel")
+	delete(f, "ContinueToken")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeConfigDataListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeConfigDataListResponseParams struct {
+	// 配置列表
+	Result *DescribeConfigDataListPage `json:"Result,omitempty" name:"Result"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeConfigDataListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeConfigDataListResponseParams `json:"Response"`
+}
+
+func (r *DescribeConfigDataListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeConfigDataListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeConfigDataRequestParams struct {
+	// 环境 ID
+	EnvironmentId *string `json:"EnvironmentId,omitempty" name:"EnvironmentId"`
+
+	// 配置名
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 来源渠道
+	SourceChannel *int64 `json:"SourceChannel,omitempty" name:"SourceChannel"`
+}
+
+type DescribeConfigDataRequest struct {
+	*tchttp.BaseRequest
+	
+	// 环境 ID
+	EnvironmentId *string `json:"EnvironmentId,omitempty" name:"EnvironmentId"`
+
+	// 配置名
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 来源渠道
+	SourceChannel *int64 `json:"SourceChannel,omitempty" name:"SourceChannel"`
+}
+
+func (r *DescribeConfigDataRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeConfigDataRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EnvironmentId")
+	delete(f, "Name")
+	delete(f, "SourceChannel")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeConfigDataRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeConfigDataResponseParams struct {
+	// 配置
+	Result *ConfigData `json:"Result,omitempty" name:"Result"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeConfigDataResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeConfigDataResponseParams `json:"Response"`
+}
+
+func (r *DescribeConfigDataResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeConfigDataResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1907,6 +2435,77 @@ type DescribeRunPodPage struct {
 }
 
 // Predefined struct for user
+type DestroyConfigDataRequestParams struct {
+	// 环境 ID
+	EnvironmentId *string `json:"EnvironmentId,omitempty" name:"EnvironmentId"`
+
+	// 配置名
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 来源渠道
+	SourceChannel *int64 `json:"SourceChannel,omitempty" name:"SourceChannel"`
+}
+
+type DestroyConfigDataRequest struct {
+	*tchttp.BaseRequest
+	
+	// 环境 ID
+	EnvironmentId *string `json:"EnvironmentId,omitempty" name:"EnvironmentId"`
+
+	// 配置名
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 来源渠道
+	SourceChannel *int64 `json:"SourceChannel,omitempty" name:"SourceChannel"`
+}
+
+func (r *DestroyConfigDataRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DestroyConfigDataRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EnvironmentId")
+	delete(f, "Name")
+	delete(f, "SourceChannel")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DestroyConfigDataRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DestroyConfigDataResponseParams struct {
+	// 返回结果
+	Result *bool `json:"Result,omitempty" name:"Result"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DestroyConfigDataResponse struct {
+	*tchttp.BaseResponse
+	Response *DestroyConfigDataResponseParams `json:"Response"`
+}
+
+func (r *DestroyConfigDataResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DestroyConfigDataResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DestroyEnvironmentRequestParams struct {
 	// 命名空间ID
 	EnvironmentId *string `json:"EnvironmentId,omitempty" name:"EnvironmentId"`
@@ -2272,6 +2871,92 @@ type LogOutputConf struct {
 }
 
 // Predefined struct for user
+type ModifyApplicationAutoscalerRequestParams struct {
+	// 服务id
+	ApplicationId *string `json:"ApplicationId,omitempty" name:"ApplicationId"`
+
+	// 环境ID
+	EnvironmentId *string `json:"EnvironmentId,omitempty" name:"EnvironmentId"`
+
+	// 来源渠道
+	SourceChannel *int64 `json:"SourceChannel,omitempty" name:"SourceChannel"`
+
+	// 弹性伸缩策略ID
+	AutoscalerId *string `json:"AutoscalerId,omitempty" name:"AutoscalerId"`
+
+	// 弹性伸缩策略
+	Autoscaler *Autoscaler `json:"Autoscaler,omitempty" name:"Autoscaler"`
+}
+
+type ModifyApplicationAutoscalerRequest struct {
+	*tchttp.BaseRequest
+	
+	// 服务id
+	ApplicationId *string `json:"ApplicationId,omitempty" name:"ApplicationId"`
+
+	// 环境ID
+	EnvironmentId *string `json:"EnvironmentId,omitempty" name:"EnvironmentId"`
+
+	// 来源渠道
+	SourceChannel *int64 `json:"SourceChannel,omitempty" name:"SourceChannel"`
+
+	// 弹性伸缩策略ID
+	AutoscalerId *string `json:"AutoscalerId,omitempty" name:"AutoscalerId"`
+
+	// 弹性伸缩策略
+	Autoscaler *Autoscaler `json:"Autoscaler,omitempty" name:"Autoscaler"`
+}
+
+func (r *ModifyApplicationAutoscalerRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyApplicationAutoscalerRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ApplicationId")
+	delete(f, "EnvironmentId")
+	delete(f, "SourceChannel")
+	delete(f, "AutoscalerId")
+	delete(f, "Autoscaler")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyApplicationAutoscalerRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyApplicationAutoscalerResponseParams struct {
+	// 是否成功
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Result *bool `json:"Result,omitempty" name:"Result"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ModifyApplicationAutoscalerResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyApplicationAutoscalerResponseParams `json:"Response"`
+}
+
+func (r *ModifyApplicationAutoscalerResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyApplicationAutoscalerResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyApplicationInfoRequestParams struct {
 	// 应用ID
 	ApplicationId *string `json:"ApplicationId,omitempty" name:"ApplicationId"`
@@ -2422,6 +3107,84 @@ func (r *ModifyApplicationReplicasResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyApplicationReplicasResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyConfigDataRequestParams struct {
+	// 环境 ID
+	EnvironmentId *string `json:"EnvironmentId,omitempty" name:"EnvironmentId"`
+
+	// 配置名
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 来源渠道
+	SourceChannel *int64 `json:"SourceChannel,omitempty" name:"SourceChannel"`
+
+	// 配置信息
+	Data []*Pair `json:"Data,omitempty" name:"Data"`
+}
+
+type ModifyConfigDataRequest struct {
+	*tchttp.BaseRequest
+	
+	// 环境 ID
+	EnvironmentId *string `json:"EnvironmentId,omitempty" name:"EnvironmentId"`
+
+	// 配置名
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 来源渠道
+	SourceChannel *int64 `json:"SourceChannel,omitempty" name:"SourceChannel"`
+
+	// 配置信息
+	Data []*Pair `json:"Data,omitempty" name:"Data"`
+}
+
+func (r *ModifyConfigDataRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyConfigDataRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EnvironmentId")
+	delete(f, "Name")
+	delete(f, "SourceChannel")
+	delete(f, "Data")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyConfigDataRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyConfigDataResponseParams struct {
+	// 编辑是否成功
+	Result *bool `json:"Result,omitempty" name:"Result"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ModifyConfigDataResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyConfigDataResponseParams `json:"Response"`
+}
+
+func (r *ModifyConfigDataResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyConfigDataResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

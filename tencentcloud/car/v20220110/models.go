@@ -105,6 +105,11 @@ type CreateSessionRequestParams struct {
 
 	// 客户端session信息，从SDK请求中获得
 	ClientSession *string `json:"ClientSession,omitempty" name:"ClientSession"`
+
+	// 云端运行模式。
+	// RunWithoutClient：允许无客户端连接的情况下仍保持云端 App 运行
+	// 默认值（空）：要求必须有客户端连接才会保持云端 App 运行。
+	RunMode *string `json:"RunMode,omitempty" name:"RunMode"`
 }
 
 type CreateSessionRequest struct {
@@ -118,6 +123,11 @@ type CreateSessionRequest struct {
 
 	// 客户端session信息，从SDK请求中获得
 	ClientSession *string `json:"ClientSession,omitempty" name:"ClientSession"`
+
+	// 云端运行模式。
+	// RunWithoutClient：允许无客户端连接的情况下仍保持云端 App 运行
+	// 默认值（空）：要求必须有客户端连接才会保持云端 App 运行。
+	RunMode *string `json:"RunMode,omitempty" name:"RunMode"`
 }
 
 func (r *CreateSessionRequest) ToJsonString() string {
@@ -135,6 +145,7 @@ func (r *CreateSessionRequest) FromJsonString(s string) error {
 	delete(f, "UserId")
 	delete(f, "UserIp")
 	delete(f, "ClientSession")
+	delete(f, "RunMode")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateSessionRequest has unknown keys!", "")
 	}
