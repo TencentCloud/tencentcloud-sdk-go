@@ -3266,65 +3266,6 @@ func (c *Client) CreateRedInvoiceV2WithContext(ctx context.Context, request *Cre
     return
 }
 
-func NewCreateSinglePayRequest() (request *CreateSinglePayRequest) {
-    request = &CreateSinglePayRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    request.Init().WithApiInfo("cpdp", APIVersion, "CreateSinglePay")
-    
-    
-    return
-}
-
-func NewCreateSinglePayResponse() (response *CreateSinglePayResponse) {
-    response = &CreateSinglePayResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// CreateSinglePay
-// 银企直连-单笔支付接口
-//
-// 可能返回的错误码:
-//  INTERNALERROR_BACKENDERROR = "InternalError.BackendError"
-//  INTERNALERROR_SANDBOXACCESSERROR = "InternalError.SandBoxAccessError"
-//  INTERNALERROR_SIGGENERROR = "InternalError.SigGenError"
-//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
-//  INVALIDPARAMETER_LACKPARAMETER = "InvalidParameter.LackParameter"
-//  INVALIDPARAMETER_UNSUPPORTEDPARAMETER = "InvalidParameter.UnsupportedParameter"
-//  RESOURCENOTFOUND_PLATFORMINFONOTFOUND = "ResourceNotFound.PlatformInfoNotFound"
-func (c *Client) CreateSinglePay(request *CreateSinglePayRequest) (response *CreateSinglePayResponse, err error) {
-    return c.CreateSinglePayWithContext(context.Background(), request)
-}
-
-// CreateSinglePay
-// 银企直连-单笔支付接口
-//
-// 可能返回的错误码:
-//  INTERNALERROR_BACKENDERROR = "InternalError.BackendError"
-//  INTERNALERROR_SANDBOXACCESSERROR = "InternalError.SandBoxAccessError"
-//  INTERNALERROR_SIGGENERROR = "InternalError.SigGenError"
-//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
-//  INVALIDPARAMETER_LACKPARAMETER = "InvalidParameter.LackParameter"
-//  INVALIDPARAMETER_UNSUPPORTEDPARAMETER = "InvalidParameter.UnsupportedParameter"
-//  RESOURCENOTFOUND_PLATFORMINFONOTFOUND = "ResourceNotFound.PlatformInfoNotFound"
-func (c *Client) CreateSinglePayWithContext(ctx context.Context, request *CreateSinglePayRequest) (response *CreateSinglePayResponse, err error) {
-    if request == nil {
-        request = NewCreateSinglePayRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("CreateSinglePay require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewCreateSinglePayResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewCreateSinglePaymentRequest() (request *CreateSinglePaymentRequest) {
     request = &CreateSinglePaymentRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3346,12 +3287,20 @@ func NewCreateSinglePaymentResponse() (response *CreateSinglePaymentResponse) {
 // 灵云-单笔主播转账接口
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_BACKENDERROR = "FailedOperation.BackendError"
+//  FAILEDOPERATION_INVOICEEXIST = "FailedOperation.InvoiceExist"
+//  FAILEDOPERATION_UNKNOWN = "FailedOperation.Unknown"
 //  INTERNALERROR_BACKENDERROR = "InternalError.BackendError"
+//  INTERNALERROR_DUPLICATEKEYERROR = "InternalError.DuplicateKeyError"
 //  INTERNALERROR_SANDBOXACCESSERROR = "InternalError.SandBoxAccessError"
+//  INTERNALERROR_SAVEDBERROR = "InternalError.SaveDBError"
 //  INTERNALERROR_SIGGENERROR = "InternalError.SigGenError"
 //  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
 //  INVALIDPARAMETER_LACKPARAMETER = "InvalidParameter.LackParameter"
 //  INVALIDPARAMETER_UNSUPPORTEDPARAMETER = "InvalidParameter.UnsupportedParameter"
+//  RESOURCEINSUFFICIENT_THREADPOOLREJECT = "ResourceInsufficient.ThreadPoolReject"
+//  RESOURCENOTFOUND_INVOICENOTFOUND = "ResourceNotFound.InvoiceNotFound"
+//  RESOURCENOTFOUND_MERCHANTINFONOTFOUND = "ResourceNotFound.MerchantInfoNotFound"
 //  RESOURCENOTFOUND_PLATFORMINFONOTFOUND = "ResourceNotFound.PlatformInfoNotFound"
 func (c *Client) CreateSinglePayment(request *CreateSinglePaymentRequest) (response *CreateSinglePaymentResponse, err error) {
     return c.CreateSinglePaymentWithContext(context.Background(), request)
@@ -3361,12 +3310,20 @@ func (c *Client) CreateSinglePayment(request *CreateSinglePaymentRequest) (respo
 // 灵云-单笔主播转账接口
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_BACKENDERROR = "FailedOperation.BackendError"
+//  FAILEDOPERATION_INVOICEEXIST = "FailedOperation.InvoiceExist"
+//  FAILEDOPERATION_UNKNOWN = "FailedOperation.Unknown"
 //  INTERNALERROR_BACKENDERROR = "InternalError.BackendError"
+//  INTERNALERROR_DUPLICATEKEYERROR = "InternalError.DuplicateKeyError"
 //  INTERNALERROR_SANDBOXACCESSERROR = "InternalError.SandBoxAccessError"
+//  INTERNALERROR_SAVEDBERROR = "InternalError.SaveDBError"
 //  INTERNALERROR_SIGGENERROR = "InternalError.SigGenError"
 //  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
 //  INVALIDPARAMETER_LACKPARAMETER = "InvalidParameter.LackParameter"
 //  INVALIDPARAMETER_UNSUPPORTEDPARAMETER = "InvalidParameter.UnsupportedParameter"
+//  RESOURCEINSUFFICIENT_THREADPOOLREJECT = "ResourceInsufficient.ThreadPoolReject"
+//  RESOURCENOTFOUND_INVOICENOTFOUND = "ResourceNotFound.InvoiceNotFound"
+//  RESOURCENOTFOUND_MERCHANTINFONOTFOUND = "ResourceNotFound.MerchantInfoNotFound"
 //  RESOURCENOTFOUND_PLATFORMINFONOTFOUND = "ResourceNotFound.PlatformInfoNotFound"
 func (c *Client) CreateSinglePaymentWithContext(ctx context.Context, request *CreateSinglePaymentRequest) (response *CreateSinglePaymentResponse, err error) {
     if request == nil {
@@ -9661,63 +9618,6 @@ func (c *Client) QueryShopOpenIdWithContext(ctx context.Context, request *QueryS
     return
 }
 
-func NewQuerySinglePayRequest() (request *QuerySinglePayRequest) {
-    request = &QuerySinglePayRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    request.Init().WithApiInfo("cpdp", APIVersion, "QuerySinglePay")
-    
-    
-    return
-}
-
-func NewQuerySinglePayResponse() (response *QuerySinglePayResponse) {
-    response = &QuerySinglePayResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// QuerySinglePay
-// 银企直连-单笔支付状态查询接口
-//
-// 可能返回的错误码:
-//  INTERNALERROR_BACKENDERROR = "InternalError.BackendError"
-//  INTERNALERROR_SANDBOXACCESSERROR = "InternalError.SandBoxAccessError"
-//  INTERNALERROR_SIGGENERROR = "InternalError.SigGenError"
-//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
-//  INVALIDPARAMETER_LACKPARAMETER = "InvalidParameter.LackParameter"
-//  RESOURCENOTFOUND_PLATFORMINFONOTFOUND = "ResourceNotFound.PlatformInfoNotFound"
-func (c *Client) QuerySinglePay(request *QuerySinglePayRequest) (response *QuerySinglePayResponse, err error) {
-    return c.QuerySinglePayWithContext(context.Background(), request)
-}
-
-// QuerySinglePay
-// 银企直连-单笔支付状态查询接口
-//
-// 可能返回的错误码:
-//  INTERNALERROR_BACKENDERROR = "InternalError.BackendError"
-//  INTERNALERROR_SANDBOXACCESSERROR = "InternalError.SandBoxAccessError"
-//  INTERNALERROR_SIGGENERROR = "InternalError.SigGenError"
-//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
-//  INVALIDPARAMETER_LACKPARAMETER = "InvalidParameter.LackParameter"
-//  RESOURCENOTFOUND_PLATFORMINFONOTFOUND = "ResourceNotFound.PlatformInfoNotFound"
-func (c *Client) QuerySinglePayWithContext(ctx context.Context, request *QuerySinglePayRequest) (response *QuerySinglePayResponse, err error) {
-    if request == nil {
-        request = NewQuerySinglePayRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("QuerySinglePay require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewQuerySinglePayResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewQuerySinglePaymentResultRequest() (request *QuerySinglePaymentResultRequest) {
     request = &QuerySinglePaymentResultRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -9739,12 +9639,12 @@ func NewQuerySinglePaymentResultResponse() (response *QuerySinglePaymentResultRe
 // 灵云-单笔转账结果查询
 //
 // 可能返回的错误码:
-//  INTERNALERROR_BACKENDERROR = "InternalError.BackendError"
-//  INTERNALERROR_SANDBOXACCESSERROR = "InternalError.SandBoxAccessError"
-//  INTERNALERROR_SIGGENERROR = "InternalError.SigGenError"
-//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
-//  INVALIDPARAMETER_LACKPARAMETER = "InvalidParameter.LackParameter"
-//  RESOURCENOTFOUND_PLATFORMINFONOTFOUND = "ResourceNotFound.PlatformInfoNotFound"
+//  AUTHFAILURE_SECRETKEYNOTFOUND = "AuthFailure.SecretKeyNotFound"
+//  AUTHFAILURE_VERIFYERROR = "AuthFailure.VerifyError"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_APPDENY = "FailedOperation.AppDeny"
+//  FAILEDOPERATION_NORECORD = "FailedOperation.NoRecord"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) QuerySinglePaymentResult(request *QuerySinglePaymentResultRequest) (response *QuerySinglePaymentResultResponse, err error) {
     return c.QuerySinglePaymentResultWithContext(context.Background(), request)
 }
@@ -9753,12 +9653,12 @@ func (c *Client) QuerySinglePaymentResult(request *QuerySinglePaymentResultReque
 // 灵云-单笔转账结果查询
 //
 // 可能返回的错误码:
-//  INTERNALERROR_BACKENDERROR = "InternalError.BackendError"
-//  INTERNALERROR_SANDBOXACCESSERROR = "InternalError.SandBoxAccessError"
-//  INTERNALERROR_SIGGENERROR = "InternalError.SigGenError"
-//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
-//  INVALIDPARAMETER_LACKPARAMETER = "InvalidParameter.LackParameter"
-//  RESOURCENOTFOUND_PLATFORMINFONOTFOUND = "ResourceNotFound.PlatformInfoNotFound"
+//  AUTHFAILURE_SECRETKEYNOTFOUND = "AuthFailure.SecretKeyNotFound"
+//  AUTHFAILURE_VERIFYERROR = "AuthFailure.VerifyError"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_APPDENY = "FailedOperation.AppDeny"
+//  FAILEDOPERATION_NORECORD = "FailedOperation.NoRecord"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) QuerySinglePaymentResultWithContext(ctx context.Context, request *QuerySinglePaymentResultRequest) (response *QuerySinglePaymentResultResponse, err error) {
     if request == nil {
         request = NewQuerySinglePaymentResultRequest()

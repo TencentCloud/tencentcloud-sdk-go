@@ -730,6 +730,10 @@ type AdvancedCCRules struct {
 	// 七层限频具体配置
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Configure []*ScdnSevenLayerRules `json:"Configure,omitempty" name:"Configure"`
+
+	// 是否开启改规则 on 开启，off关闭
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
 }
 
 type AdvancedCache struct {
@@ -10509,6 +10513,10 @@ type ScdnConfig struct {
 	// 增强自定义 cc 防护规则
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AdvancedRules []*AdvancedCCRules `json:"AdvancedRules,omitempty" name:"AdvancedRules"`
+
+	// 增强自定义 cc 防护规则， 全局
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GlobalAdvancedRules []*AdvancedCCRules `json:"GlobalAdvancedRules,omitempty" name:"GlobalAdvancedRules"`
 }
 
 type ScdnDdosConfig struct {

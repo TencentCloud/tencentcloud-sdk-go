@@ -1870,31 +1870,39 @@ type DiskConfig struct {
 	// 配置是否可用。
 	Available *bool `json:"Available,omitempty" name:"Available"`
 
-	// 云盘介质类型。取值范围：<br><li>CLOUD_BASIC：表示普通云硬盘<br><li>CLOUD_PREMIUM：表示高性能云硬盘<br><li>CLOUD_SSD：SSD表示SSD云硬盘。
-	DiskType *string `json:"DiskType,omitempty" name:"DiskType"`
-
-	// 云盘类型。取值范围：<br><li>SYSTEM_DISK：表示系统盘<br><li>DATA_DISK：表示数据盘。
-	DiskUsage *string `json:"DiskUsage,omitempty" name:"DiskUsage"`
-
 	// 付费模式。取值范围：<br><li>PREPAID：表示预付费，即包年包月<br><li>POSTPAID_BY_HOUR：表示后付费，即按量计费。
 	DiskChargeType *string `json:"DiskChargeType,omitempty" name:"DiskChargeType"`
 
-	// 最大可配置云盘大小，单位GB。
-	MaxDiskSize *uint64 `json:"MaxDiskSize,omitempty" name:"MaxDiskSize"`
-
-	// 最小可配置云盘大小，单位GB。
-	MinDiskSize *uint64 `json:"MinDiskSize,omitempty" name:"MinDiskSize"`
-
 	// 云硬盘所属的[可用区](/document/product/213/15753#ZoneInfo)。
 	Zone *string `json:"Zone,omitempty" name:"Zone"`
+
+	// 实例机型系列。详见[实例类型](https://cloud.tencent.com/document/product/213/11518)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceFamily *string `json:"InstanceFamily,omitempty" name:"InstanceFamily"`
+
+	// 云盘介质类型。取值范围：<br><li>CLOUD_BASIC：表示普通云硬盘<br><li>CLOUD_PREMIUM：表示高性能云硬盘<br><li>CLOUD_SSD：SSD表示SSD云硬盘。
+	DiskType *string `json:"DiskType,omitempty" name:"DiskType"`
+
+	// 云盘大小变化的最小步长，单位GB。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StepSize *uint64 `json:"StepSize,omitempty" name:"StepSize"`
+
+	// 额外的性能区间。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExtraPerformanceRange []*int64 `json:"ExtraPerformanceRange,omitempty" name:"ExtraPerformanceRange"`
 
 	// 实例机型。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeviceClass *string `json:"DeviceClass,omitempty" name:"DeviceClass"`
 
-	// 实例机型系列。详见[实例类型](https://cloud.tencent.com/document/product/213/11518)
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	InstanceFamily *string `json:"InstanceFamily,omitempty" name:"InstanceFamily"`
+	// 云盘类型。取值范围：<br><li>SYSTEM_DISK：表示系统盘<br><li>DATA_DISK：表示数据盘。
+	DiskUsage *string `json:"DiskUsage,omitempty" name:"DiskUsage"`
+
+	// 最小可配置云盘大小，单位GB。
+	MinDiskSize *uint64 `json:"MinDiskSize,omitempty" name:"MinDiskSize"`
+
+	// 最大可配置云盘大小，单位GB。
+	MaxDiskSize *uint64 `json:"MaxDiskSize,omitempty" name:"MaxDiskSize"`
 }
 
 type DiskOperationLog struct {

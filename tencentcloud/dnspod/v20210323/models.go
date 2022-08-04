@@ -3826,4 +3826,7 @@ type UserInfo struct {
 
 	// 用户UIN
 	Uin *int64 `json:"Uin,omitempty" name:"Uin"`
+
+	// 所属 DNS 服务器
+	FreeNs []*string `json:"FreeNs,omitempty" name:"FreeNs"`
 }

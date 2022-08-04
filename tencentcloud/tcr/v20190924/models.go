@@ -7203,7 +7203,7 @@ type TcrRepositoryInfo struct {
 	// 命名空间名称
 	Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
 
-	// 创建时间
+	// 创建时间，格式"2006-01-02 15:04:05.999999999 -0700 MST"
 	CreationTime *string `json:"CreationTime,omitempty" name:"CreationTime"`
 
 	// 是否公开
@@ -7217,7 +7217,7 @@ type TcrRepositoryInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BriefDescription *string `json:"BriefDescription,omitempty" name:"BriefDescription"`
 
-	// 更新时间
+	// 更新时间，格式"2006-01-02 15:04:05.999999999 -0700 MST"
 	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
 }
 

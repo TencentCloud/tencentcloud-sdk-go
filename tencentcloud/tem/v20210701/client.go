@@ -318,6 +318,57 @@ func (c *Client) CreateEnvironmentWithContext(ctx context.Context, request *Crea
     return
 }
 
+func NewCreateLogConfigRequest() (request *CreateLogConfigRequest) {
+    request = &CreateLogConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tem", APIVersion, "CreateLogConfig")
+    
+    
+    return
+}
+
+func NewCreateLogConfigResponse() (response *CreateLogConfigResponse) {
+    response = &CreateLogConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateLogConfig
+// 创建日志收集配置
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CREATECONFIGDATAERROR = "InternalError.CreateConfigDataError"
+//  INVALIDPARAMETERVALUE_CONFIGDATAALREADYEXIST = "InvalidParameterValue.ConfigDataAlreadyExist"
+//  MISSINGPARAMETER_NAMESPACEIDNULL = "MissingParameter.NamespaceIdNull"
+func (c *Client) CreateLogConfig(request *CreateLogConfigRequest) (response *CreateLogConfigResponse, err error) {
+    return c.CreateLogConfigWithContext(context.Background(), request)
+}
+
+// CreateLogConfig
+// 创建日志收集配置
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CREATECONFIGDATAERROR = "InternalError.CreateConfigDataError"
+//  INVALIDPARAMETERVALUE_CONFIGDATAALREADYEXIST = "InvalidParameterValue.ConfigDataAlreadyExist"
+//  MISSINGPARAMETER_NAMESPACEIDNULL = "MissingParameter.NamespaceIdNull"
+func (c *Client) CreateLogConfigWithContext(ctx context.Context, request *CreateLogConfigRequest) (response *CreateLogConfigResponse, err error) {
+    if request == nil {
+        request = NewCreateLogConfigRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateLogConfig require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateLogConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateResourceRequest() (request *CreateResourceRequest) {
     request = &CreateResourceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1140,7 +1191,7 @@ func NewDescribeEnvironmentsResponse() (response *DescribeEnvironmentsResponse) 
 }
 
 // DescribeEnvironments
-// 获取租户环境列表
+// 获取环境列表
 //
 // 可能返回的错误码:
 //  INTERNALERROR_DEFAULTINTERNALERROR = "InternalError.DefaultInternalError"
@@ -1151,7 +1202,7 @@ func (c *Client) DescribeEnvironments(request *DescribeEnvironmentsRequest) (res
 }
 
 // DescribeEnvironments
-// 获取租户环境列表
+// 获取环境列表
 //
 // 可能返回的错误码:
 //  INTERNALERROR_DEFAULTINTERNALERROR = "InternalError.DefaultInternalError"
@@ -1273,6 +1324,110 @@ func (c *Client) DescribeIngressesWithContext(ctx context.Context, request *Desc
     request.SetContext(ctx)
     
     response = NewDescribeIngressesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeLogConfigRequest() (request *DescribeLogConfigRequest) {
+    request = &DescribeLogConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tem", APIVersion, "DescribeLogConfig")
+    
+    
+    return
+}
+
+func NewDescribeLogConfigResponse() (response *DescribeLogConfigResponse) {
+    response = &DescribeLogConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeLogConfig
+// 查询日志收集配置详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DESCRIBESERVICELISTERROR = "InternalError.DescribeServiceListError"
+//  MISSINGPARAMETER_NAMESPACEIDNULL = "MissingParameter.NamespaceIdNull"
+//  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
+//  RESOURCENOTFOUND_VERSIONNAMESPACENOTFOUND = "ResourceNotFound.VersionNamespaceNotFound"
+func (c *Client) DescribeLogConfig(request *DescribeLogConfigRequest) (response *DescribeLogConfigResponse, err error) {
+    return c.DescribeLogConfigWithContext(context.Background(), request)
+}
+
+// DescribeLogConfig
+// 查询日志收集配置详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DESCRIBESERVICELISTERROR = "InternalError.DescribeServiceListError"
+//  MISSINGPARAMETER_NAMESPACEIDNULL = "MissingParameter.NamespaceIdNull"
+//  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
+//  RESOURCENOTFOUND_VERSIONNAMESPACENOTFOUND = "ResourceNotFound.VersionNamespaceNotFound"
+func (c *Client) DescribeLogConfigWithContext(ctx context.Context, request *DescribeLogConfigRequest) (response *DescribeLogConfigResponse, err error) {
+    if request == nil {
+        request = NewDescribeLogConfigRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeLogConfig require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeLogConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribePagedLogConfigListRequest() (request *DescribePagedLogConfigListRequest) {
+    request = &DescribePagedLogConfigListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tem", APIVersion, "DescribePagedLogConfigList")
+    
+    
+    return
+}
+
+func NewDescribePagedLogConfigListResponse() (response *DescribePagedLogConfigListResponse) {
+    response = &DescribePagedLogConfigListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribePagedLogConfigList
+// 查询分页的日志收集配置列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DEFAULTINTERNALERROR = "InternalError.DefaultInternalError"
+//  INTERNALERROR_DESCRIBECONFIGDATALISTERROR = "InternalError.DescribeConfigDataListError"
+//  RESOURCENOTFOUND_VERSIONNAMESPACENOTFOUND = "ResourceNotFound.VersionNamespaceNotFound"
+func (c *Client) DescribePagedLogConfigList(request *DescribePagedLogConfigListRequest) (response *DescribePagedLogConfigListResponse, err error) {
+    return c.DescribePagedLogConfigListWithContext(context.Background(), request)
+}
+
+// DescribePagedLogConfigList
+// 查询分页的日志收集配置列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DEFAULTINTERNALERROR = "InternalError.DefaultInternalError"
+//  INTERNALERROR_DESCRIBECONFIGDATALISTERROR = "InternalError.DescribeConfigDataListError"
+//  RESOURCENOTFOUND_VERSIONNAMESPACENOTFOUND = "ResourceNotFound.VersionNamespaceNotFound"
+func (c *Client) DescribePagedLogConfigListWithContext(ctx context.Context, request *DescribePagedLogConfigListRequest) (response *DescribePagedLogConfigListResponse, err error) {
+    if request == nil {
+        request = NewDescribePagedLogConfigListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribePagedLogConfigList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribePagedLogConfigListResponse()
     err = c.Send(request, response)
     return
 }
@@ -1399,7 +1554,7 @@ func NewDestroyEnvironmentResponse() (response *DestroyEnvironmentResponse) {
 }
 
 // DestroyEnvironment
-// 销毁命名空间
+// 销毁环境
 //
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_VERSIONNAMESPACENOTFOUND = "ResourceNotFound.VersionNamespaceNotFound"
@@ -1409,7 +1564,7 @@ func (c *Client) DestroyEnvironment(request *DestroyEnvironmentRequest) (respons
 }
 
 // DestroyEnvironment
-// 销毁命名空间
+// 销毁环境
 //
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_VERSIONNAMESPACENOTFOUND = "ResourceNotFound.VersionNamespaceNotFound"
@@ -1426,6 +1581,53 @@ func (c *Client) DestroyEnvironmentWithContext(ctx context.Context, request *Des
     request.SetContext(ctx)
     
     response = NewDestroyEnvironmentResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDestroyLogConfigRequest() (request *DestroyLogConfigRequest) {
+    request = &DestroyLogConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tem", APIVersion, "DestroyLogConfig")
+    
+    
+    return
+}
+
+func NewDestroyLogConfigResponse() (response *DestroyLogConfigResponse) {
+    response = &DestroyLogConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DestroyLogConfig
+// 销毁日志收集配置
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_VERSIONNAMESPACENOTFOUND = "ResourceNotFound.VersionNamespaceNotFound"
+func (c *Client) DestroyLogConfig(request *DestroyLogConfigRequest) (response *DestroyLogConfigResponse, err error) {
+    return c.DestroyLogConfigWithContext(context.Background(), request)
+}
+
+// DestroyLogConfig
+// 销毁日志收集配置
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_VERSIONNAMESPACENOTFOUND = "ResourceNotFound.VersionNamespaceNotFound"
+func (c *Client) DestroyLogConfigWithContext(ctx context.Context, request *DestroyLogConfigRequest) (response *DestroyLogConfigResponse, err error) {
+    if request == nil {
+        request = NewDestroyLogConfigRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DestroyLogConfig require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDestroyLogConfigResponse()
     err = c.Send(request, response)
     return
 }
@@ -1452,7 +1654,6 @@ func NewGenerateApplicationPackageDownloadUrlResponse() (response *GenerateAppli
 //
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_VERSIONNAMESPACENOTFOUND = "ResourceNotFound.VersionNamespaceNotFound"
-//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
 func (c *Client) GenerateApplicationPackageDownloadUrl(request *GenerateApplicationPackageDownloadUrlRequest) (response *GenerateApplicationPackageDownloadUrlResponse, err error) {
     return c.GenerateApplicationPackageDownloadUrlWithContext(context.Background(), request)
 }
@@ -1462,7 +1663,6 @@ func (c *Client) GenerateApplicationPackageDownloadUrl(request *GenerateApplicat
 //
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_VERSIONNAMESPACENOTFOUND = "ResourceNotFound.VersionNamespaceNotFound"
-//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
 func (c *Client) GenerateApplicationPackageDownloadUrlWithContext(ctx context.Context, request *GenerateApplicationPackageDownloadUrlRequest) (response *GenerateApplicationPackageDownloadUrlResponse, err error) {
     if request == nil {
         request = NewGenerateApplicationPackageDownloadUrlRequest()
@@ -1771,6 +1971,55 @@ func (c *Client) ModifyIngressWithContext(ctx context.Context, request *ModifyIn
     request.SetContext(ctx)
     
     response = NewModifyIngressResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyLogConfigRequest() (request *ModifyLogConfigRequest) {
+    request = &ModifyLogConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tem", APIVersion, "ModifyLogConfig")
+    
+    
+    return
+}
+
+func NewModifyLogConfigResponse() (response *ModifyLogConfigResponse) {
+    response = &ModifyLogConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyLogConfig
+// 编辑日志收集配置
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DEFAULTINTERNALERROR = "InternalError.DefaultInternalError"
+//  INTERNALERROR_MODIFYCONFIGDATAERROR = "InternalError.ModifyConfigDataError"
+func (c *Client) ModifyLogConfig(request *ModifyLogConfigRequest) (response *ModifyLogConfigResponse, err error) {
+    return c.ModifyLogConfigWithContext(context.Background(), request)
+}
+
+// ModifyLogConfig
+// 编辑日志收集配置
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DEFAULTINTERNALERROR = "InternalError.DefaultInternalError"
+//  INTERNALERROR_MODIFYCONFIGDATAERROR = "InternalError.ModifyConfigDataError"
+func (c *Client) ModifyLogConfigWithContext(ctx context.Context, request *ModifyLogConfigRequest) (response *ModifyLogConfigResponse, err error) {
+    if request == nil {
+        request = NewModifyLogConfigRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyLogConfig require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyLogConfigResponse()
     err = c.Send(request, response)
     return
 }

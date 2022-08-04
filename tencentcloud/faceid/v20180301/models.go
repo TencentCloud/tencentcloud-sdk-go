@@ -1631,7 +1631,7 @@ type GetEidResultRequestParams struct {
 	// E证通流程的唯一标识，调用GetEidToken接口时生成。
 	EidToken *string `json:"EidToken,omitempty" name:"EidToken"`
 
-	// 指定拉取的结果信息，取值（0：全部；1：文本类；2：身份证信息；3：最佳截图信息；5：意愿核身相关结果；）。
+	// 指定拉取的结果信息，取值（0：全部；1：文本类；2：身份证信息；3：最佳截图信息；5：意愿核身朗读模式相关结果；6：意愿核身问答模式相关结果）。
 	// 如 13表示拉取文本类、最佳截图信息。
 	// 默认值：0
 	InfoType *string `json:"InfoType,omitempty" name:"InfoType"`
@@ -1646,7 +1646,7 @@ type GetEidResultRequest struct {
 	// E证通流程的唯一标识，调用GetEidToken接口时生成。
 	EidToken *string `json:"EidToken,omitempty" name:"EidToken"`
 
-	// 指定拉取的结果信息，取值（0：全部；1：文本类；2：身份证信息；3：最佳截图信息；5：意愿核身相关结果；）。
+	// 指定拉取的结果信息，取值（0：全部；1：文本类；2：身份证信息；3：最佳截图信息；5：意愿核身朗读模式相关结果；6：意愿核身问答模式相关结果）。
 	// 如 13表示拉取文本类、最佳截图信息。
 	// 默认值：0
 	InfoType *string `json:"InfoType,omitempty" name:"InfoType"`
@@ -1694,9 +1694,13 @@ type GetEidResultResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EidInfo *EidInfo `json:"EidInfo,omitempty" name:"EidInfo"`
 
-	// 意愿核身相关信息。若未使用意愿核身功能，该字段返回值可以不处理。
+	// 意愿核身朗读模式相关信息。若未使用意愿核身朗读功能，该字段返回值可以不处理。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IntentionVerifyData *IntentionVerifyData `json:"IntentionVerifyData,omitempty" name:"IntentionVerifyData"`
+
+	// 意愿核身问答模式相关信息。若未使用意愿核身问答模式功能，该字段返回值可以不处理。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IntentionQuestionResult *IntentionQuestionResult `json:"IntentionQuestionResult,omitempty" name:"IntentionQuestionResult"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1731,8 +1735,14 @@ type GetEidTokenConfig struct {
 	// 是否使用意愿核身，默认不使用。注意：如开启使用，则计费标签按【意愿核身】计费标签计价；如不开启，则计费标签按【E证通】计费标签计价，价格详见：[价格说明](https://cloud.tencent.com/document/product/1007/56804)。
 	UseIntentionVerify *bool `json:"UseIntentionVerify,omitempty" name:"UseIntentionVerify"`
 
-	// 意愿核身使用的文案，若未使用意愿核身功能，该字段无需传入。默认为空，最长可接受120的字符串长度。
+	// 意愿核身模式。枚举值：1( 朗读模式)，2（问答模式） 。默认值1
+	IntentionMode *string `json:"IntentionMode,omitempty" name:"IntentionMode"`
+
+	// 意愿核身朗读模式使用的文案，若未使用意愿核身朗读功能，该字段无需传入。默认为空，最长可接受120的字符串长度。
 	IntentionVerifyText *string `json:"IntentionVerifyText,omitempty" name:"IntentionVerifyText"`
+
+	// 意愿核身问答模式的配置列表。当前仅支持一个问答。
+	IntentionQuestions []*IntentionQuestion `json:"IntentionQuestions,omitempty" name:"IntentionQuestions"`
 }
 
 // Predefined struct for user

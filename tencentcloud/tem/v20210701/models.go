@@ -602,6 +602,126 @@ func (r *CreateEnvironmentResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateLogConfigRequestParams struct {
+	// 环境 ID
+	EnvironmentId *string `json:"EnvironmentId,omitempty" name:"EnvironmentId"`
+
+	// 配置名
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 收集类型，container_stdout 为标准输出；container_file 为文件；
+	InputType *string `json:"InputType,omitempty" name:"InputType"`
+
+	// 应用 ID
+	ApplicationId *string `json:"ApplicationId,omitempty" name:"ApplicationId"`
+
+	// 日志集 ID
+	LogsetId *string `json:"LogsetId,omitempty" name:"LogsetId"`
+
+	// 日志主题 ID
+	TopicId *string `json:"TopicId,omitempty" name:"TopicId"`
+
+	// 日志提取模式，minimalist_log 为单行全文；multiline_log 为多行全文；
+	LogType *string `json:"LogType,omitempty" name:"LogType"`
+
+	// 首行正则表达式，当LogType=multiline_log 时生效
+	BeginningRegex *string `json:"BeginningRegex,omitempty" name:"BeginningRegex"`
+
+	// 收集文件目录，当 InputType=container_file 时生效
+	LogPath *string `json:"LogPath,omitempty" name:"LogPath"`
+
+	// 收集文件名模式，当 InputType=container_file 时生效
+	FilePattern *string `json:"FilePattern,omitempty" name:"FilePattern"`
+}
+
+type CreateLogConfigRequest struct {
+	*tchttp.BaseRequest
+	
+	// 环境 ID
+	EnvironmentId *string `json:"EnvironmentId,omitempty" name:"EnvironmentId"`
+
+	// 配置名
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 收集类型，container_stdout 为标准输出；container_file 为文件；
+	InputType *string `json:"InputType,omitempty" name:"InputType"`
+
+	// 应用 ID
+	ApplicationId *string `json:"ApplicationId,omitempty" name:"ApplicationId"`
+
+	// 日志集 ID
+	LogsetId *string `json:"LogsetId,omitempty" name:"LogsetId"`
+
+	// 日志主题 ID
+	TopicId *string `json:"TopicId,omitempty" name:"TopicId"`
+
+	// 日志提取模式，minimalist_log 为单行全文；multiline_log 为多行全文；
+	LogType *string `json:"LogType,omitempty" name:"LogType"`
+
+	// 首行正则表达式，当LogType=multiline_log 时生效
+	BeginningRegex *string `json:"BeginningRegex,omitempty" name:"BeginningRegex"`
+
+	// 收集文件目录，当 InputType=container_file 时生效
+	LogPath *string `json:"LogPath,omitempty" name:"LogPath"`
+
+	// 收集文件名模式，当 InputType=container_file 时生效
+	FilePattern *string `json:"FilePattern,omitempty" name:"FilePattern"`
+}
+
+func (r *CreateLogConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateLogConfigRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EnvironmentId")
+	delete(f, "Name")
+	delete(f, "InputType")
+	delete(f, "ApplicationId")
+	delete(f, "LogsetId")
+	delete(f, "TopicId")
+	delete(f, "LogType")
+	delete(f, "BeginningRegex")
+	delete(f, "LogPath")
+	delete(f, "FilePattern")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateLogConfigRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateLogConfigResponseParams struct {
+	// 创建是否成功
+	Result *bool `json:"Result,omitempty" name:"Result"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateLogConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateLogConfigResponseParams `json:"Response"`
+}
+
+func (r *CreateLogConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateLogConfigResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateResourceRequestParams struct {
 	// 环境 Id
 	EnvironmentId *string `json:"EnvironmentId,omitempty" name:"EnvironmentId"`
@@ -2339,6 +2459,169 @@ func (r *DescribeIngressesResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeLogConfigRequestParams struct {
+	// 环境 ID
+	EnvironmentId *string `json:"EnvironmentId,omitempty" name:"EnvironmentId"`
+
+	// 配置名
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 应用 ID
+	ApplicationId *string `json:"ApplicationId,omitempty" name:"ApplicationId"`
+}
+
+type DescribeLogConfigRequest struct {
+	*tchttp.BaseRequest
+	
+	// 环境 ID
+	EnvironmentId *string `json:"EnvironmentId,omitempty" name:"EnvironmentId"`
+
+	// 配置名
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 应用 ID
+	ApplicationId *string `json:"ApplicationId,omitempty" name:"ApplicationId"`
+}
+
+func (r *DescribeLogConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLogConfigRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EnvironmentId")
+	delete(f, "Name")
+	delete(f, "ApplicationId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLogConfigRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeLogConfigResponseParams struct {
+	// 配置
+	Result *LogConfig `json:"Result,omitempty" name:"Result"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeLogConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeLogConfigResponseParams `json:"Response"`
+}
+
+func (r *DescribeLogConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLogConfigResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribePagedLogConfigListRequestParams struct {
+	// 环境 ID
+	EnvironmentId *string `json:"EnvironmentId,omitempty" name:"EnvironmentId"`
+
+	// 应用 ID
+	ApplicationId *string `json:"ApplicationId,omitempty" name:"ApplicationId"`
+
+	// 应用名
+	ApplicationName *string `json:"ApplicationName,omitempty" name:"ApplicationName"`
+
+	// 规则名
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 分页大小，默认 20
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 翻页游标
+	ContinueToken *string `json:"ContinueToken,omitempty" name:"ContinueToken"`
+}
+
+type DescribePagedLogConfigListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 环境 ID
+	EnvironmentId *string `json:"EnvironmentId,omitempty" name:"EnvironmentId"`
+
+	// 应用 ID
+	ApplicationId *string `json:"ApplicationId,omitempty" name:"ApplicationId"`
+
+	// 应用名
+	ApplicationName *string `json:"ApplicationName,omitempty" name:"ApplicationName"`
+
+	// 规则名
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 分页大小，默认 20
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 翻页游标
+	ContinueToken *string `json:"ContinueToken,omitempty" name:"ContinueToken"`
+}
+
+func (r *DescribePagedLogConfigListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePagedLogConfigListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EnvironmentId")
+	delete(f, "ApplicationId")
+	delete(f, "ApplicationName")
+	delete(f, "Name")
+	delete(f, "Limit")
+	delete(f, "ContinueToken")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePagedLogConfigListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribePagedLogConfigListResponseParams struct {
+	// 日志收集配置列表
+	Result *LogConfigListPage `json:"Result,omitempty" name:"Result"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribePagedLogConfigListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribePagedLogConfigListResponseParams `json:"Response"`
+}
+
+func (r *DescribePagedLogConfigListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePagedLogConfigListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeRelatedIngressesRequestParams struct {
 	// 环境 id
 	EnvironmentId *string `json:"EnvironmentId,omitempty" name:"EnvironmentId"`
@@ -2569,6 +2852,77 @@ func (r *DestroyEnvironmentResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DestroyLogConfigRequestParams struct {
+	// 环境 ID
+	EnvironmentId *string `json:"EnvironmentId,omitempty" name:"EnvironmentId"`
+
+	// 配置名
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 应用 ID
+	ApplicationId *string `json:"ApplicationId,omitempty" name:"ApplicationId"`
+}
+
+type DestroyLogConfigRequest struct {
+	*tchttp.BaseRequest
+	
+	// 环境 ID
+	EnvironmentId *string `json:"EnvironmentId,omitempty" name:"EnvironmentId"`
+
+	// 配置名
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 应用 ID
+	ApplicationId *string `json:"ApplicationId,omitempty" name:"ApplicationId"`
+}
+
+func (r *DestroyLogConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DestroyLogConfigRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EnvironmentId")
+	delete(f, "Name")
+	delete(f, "ApplicationId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DestroyLogConfigRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DestroyLogConfigResponseParams struct {
+	// 返回结果
+	Result *bool `json:"Result,omitempty" name:"Result"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DestroyLogConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *DestroyLogConfigResponseParams `json:"Response"`
+}
+
+func (r *DestroyLogConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DestroyLogConfigResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type EksService struct {
 	// service name
 	Name *string `json:"Name,omitempty" name:"Name"`
@@ -2613,6 +2967,26 @@ type EksService struct {
 	// 端口映射
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PortMappings []*PortMapping `json:"PortMappings,omitempty" name:"PortMappings"`
+
+	// 每种类型访问配置详情
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ServicePortMappingList []*ServicePortMapping `json:"ServicePortMappingList,omitempty" name:"ServicePortMappingList"`
+
+	// 刷新复写所有类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FlushAll *bool `json:"FlushAll,omitempty" name:"FlushAll"`
+
+	// 1: 下次部署自动注入注册中心信息；0：不注入
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EnableRegistryNextDeploy *int64 `json:"EnableRegistryNextDeploy,omitempty" name:"EnableRegistryNextDeploy"`
+
+	// 返回应用id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApplicationId *string `json:"ApplicationId,omitempty" name:"ApplicationId"`
+
+	// 所有服务IP是否已经ready
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AllIpDone *bool `json:"AllIpDone,omitempty" name:"AllIpDone"`
 }
 
 type EnablePrometheusConf struct {
@@ -2851,6 +3225,63 @@ type IngressTls struct {
 
 	// SSL Certificate Id
 	CertificateId *string `json:"CertificateId,omitempty" name:"CertificateId"`
+}
+
+type LogConfig struct {
+	// 名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 收集类型，container_stdout 为标准输出；container_file 为文件；
+	InputType *string `json:"InputType,omitempty" name:"InputType"`
+
+	// 日志集 ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LogsetId *string `json:"LogsetId,omitempty" name:"LogsetId"`
+
+	// 日志主题 ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TopicId *string `json:"TopicId,omitempty" name:"TopicId"`
+
+	// 日志提取模式，minimalist_log 为单行全文；multiline_log 为多行全文；
+	LogType *string `json:"LogType,omitempty" name:"LogType"`
+
+	// 首行正则表达式，当LogType=multiline_log 时生效
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BeginningRegex *string `json:"BeginningRegex,omitempty" name:"BeginningRegex"`
+
+	// 收集文件目录，当 InputType=container_file 时生效
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LogPath *string `json:"LogPath,omitempty" name:"LogPath"`
+
+	// 收集文件名模式，当 InputType=container_file 时生效
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FilePattern *string `json:"FilePattern,omitempty" name:"FilePattern"`
+
+	// 创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateDate *string `json:"CreateDate,omitempty" name:"CreateDate"`
+
+	// 更新时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ModifyDate *string `json:"ModifyDate,omitempty" name:"ModifyDate"`
+
+	// 应用 ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApplicationId *string `json:"ApplicationId,omitempty" name:"ApplicationId"`
+
+	// 应用名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApplicationName *string `json:"ApplicationName,omitempty" name:"ApplicationName"`
+}
+
+type LogConfigListPage struct {
+	// 记录
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Records []*LogConfig `json:"Records,omitempty" name:"Records"`
+
+	// 翻页游标
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ContinueToken *string `json:"ContinueToken,omitempty" name:"ContinueToken"`
 }
 
 type LogOutputConf struct {
@@ -3343,6 +3774,84 @@ func (r *ModifyIngressResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyIngressResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyLogConfigRequestParams struct {
+	// 环境 ID
+	EnvironmentId *string `json:"EnvironmentId,omitempty" name:"EnvironmentId"`
+
+	// 配置名
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 日志收集配置信息
+	Data *LogConfig `json:"Data,omitempty" name:"Data"`
+
+	// 应用 ID
+	ApplicationId *string `json:"ApplicationId,omitempty" name:"ApplicationId"`
+}
+
+type ModifyLogConfigRequest struct {
+	*tchttp.BaseRequest
+	
+	// 环境 ID
+	EnvironmentId *string `json:"EnvironmentId,omitempty" name:"EnvironmentId"`
+
+	// 配置名
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 日志收集配置信息
+	Data *LogConfig `json:"Data,omitempty" name:"Data"`
+
+	// 应用 ID
+	ApplicationId *string `json:"ApplicationId,omitempty" name:"ApplicationId"`
+}
+
+func (r *ModifyLogConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyLogConfigRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EnvironmentId")
+	delete(f, "Name")
+	delete(f, "Data")
+	delete(f, "ApplicationId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyLogConfigRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyLogConfigResponseParams struct {
+	// 编辑是否成功
+	Result *bool `json:"Result,omitempty" name:"Result"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ModifyLogConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyLogConfigResponseParams `json:"Response"`
+}
+
+func (r *ModifyLogConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyLogConfigResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -3919,6 +4428,62 @@ type ServicePage struct {
 
 	// 页数
 	Pages *int64 `json:"Pages,omitempty" name:"Pages"`
+}
+
+type ServicePortMapping struct {
+	// 服务类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 服务名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ServiceName *string `json:"ServiceName,omitempty" name:"ServiceName"`
+
+	// 集群内访问vip
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterIp *string `json:"ClusterIp,omitempty" name:"ClusterIp"`
+
+	// 集群外方位vip
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExternalIp *string `json:"ExternalIp,omitempty" name:"ExternalIp"`
+
+	// 子网id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+
+	// vpc id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// LoadBalance Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LoadBalanceId *string `json:"LoadBalanceId,omitempty" name:"LoadBalanceId"`
+
+	// yaml 内容
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Yaml *string `json:"Yaml,omitempty" name:"Yaml"`
+
+	// 暴露端口列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Ports []*int64 `json:"Ports,omitempty" name:"Ports"`
+
+	// 端口映射数组
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PortMappingItemList []*ServicePortMappingItem `json:"PortMappingItemList,omitempty" name:"PortMappingItemList"`
+}
+
+type ServicePortMappingItem struct {
+	// 应用访问端口
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Port *int64 `json:"Port,omitempty" name:"Port"`
+
+	// 应用监听端口
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TargetPort *int64 `json:"TargetPort,omitempty" name:"TargetPort"`
+
+	// 协议类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
 }
 
 type ServiceVersionBrief struct {

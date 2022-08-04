@@ -723,6 +723,10 @@ type Compression struct {
 	// on：开启
 	// off：关闭
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
+
+	// 支持的压缩算法列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Algorithms []*string `json:"Algorithms,omitempty" name:"Algorithms"`
 }
 
 // Predefined struct for user
@@ -1937,7 +1941,7 @@ type DDoSFeaturesFilter struct {
 }
 
 type DDoSGeoIp struct {
-	// 地域信息
+	// 地域信息，ID参考接口DescribeSecurityPolicyRegions
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RegionId []*int64 `json:"RegionId,omitempty" name:"RegionId"`
 
@@ -10370,7 +10374,7 @@ type WafConfig struct {
 	// 模式 block-阻断；observe-观察模式；close-关闭
 	Mode *string `json:"Mode,omitempty" name:"Mode"`
 
-	// 门神黑白名单
+	// 托管规则黑白名单
 	WafRules *WafRule `json:"WafRules,omitempty" name:"WafRules"`
 
 	// AI规则引擎防护

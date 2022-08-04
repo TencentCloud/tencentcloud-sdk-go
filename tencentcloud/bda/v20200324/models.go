@@ -678,6 +678,11 @@ type DetectBodyJointsRequestParams struct {
 	// 非腾讯云存储的Url速度和稳定性可能受一定影响。  
 	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
 	Url *string `json:"Url,omitempty" name:"Url"`
+
+	// 人体局部关键点识别，开启后对人体局部图（例如部分身体部位）进行关键点识别，输出人体关键点坐标，默认不开启
+	// 
+	// 注意：若开启人体局部图片关键点识别，则BoundBox、Confidence返回为空。
+	LocalBodySwitch *bool `json:"LocalBodySwitch,omitempty" name:"LocalBodySwitch"`
 }
 
 type DetectBodyJointsRequest struct {
@@ -693,6 +698,11 @@ type DetectBodyJointsRequest struct {
 	// 非腾讯云存储的Url速度和稳定性可能受一定影响。  
 	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
 	Url *string `json:"Url,omitempty" name:"Url"`
+
+	// 人体局部关键点识别，开启后对人体局部图（例如部分身体部位）进行关键点识别，输出人体关键点坐标，默认不开启
+	// 
+	// 注意：若开启人体局部图片关键点识别，则BoundBox、Confidence返回为空。
+	LocalBodySwitch *bool `json:"LocalBodySwitch,omitempty" name:"LocalBodySwitch"`
 }
 
 func (r *DetectBodyJointsRequest) ToJsonString() string {
@@ -709,6 +719,7 @@ func (r *DetectBodyJointsRequest) FromJsonString(s string) error {
 	}
 	delete(f, "Image")
 	delete(f, "Url")
+	delete(f, "LocalBodySwitch")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DetectBodyJointsRequest has unknown keys!", "")
 	}
@@ -1105,6 +1116,9 @@ type KeyPointInfo struct {
 
 	// 人体关键点纵坐标
 	Y *float64 `json:"Y,omitempty" name:"Y"`
+
+	// 关键点坐标置信度，分数取值在0-1之间，阈值建议为0.25，小于0.25认为在图中无人体关键点。
+	BodyScore *float64 `json:"BodyScore,omitempty" name:"BodyScore"`
 }
 
 type LowerBodyCloth struct {
