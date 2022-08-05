@@ -2003,7 +2003,7 @@ type DescribeBlockStaticListRequestParams struct {
 	// 结束时间
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
-	// 类型
+	// 列表类型，只能是下面三种之一：port、address、ip
 	QueryType *string `json:"QueryType,omitempty" name:"QueryType"`
 
 	// top数
@@ -2022,7 +2022,7 @@ type DescribeBlockStaticListRequest struct {
 	// 结束时间
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
-	// 类型
+	// 列表类型，只能是下面三种之一：port、address、ip
 	QueryType *string `json:"QueryType,omitempty" name:"QueryType"`
 
 	// top数

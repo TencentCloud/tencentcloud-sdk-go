@@ -194,6 +194,59 @@ func (c *Client) DescribeCardsWithContext(ctx context.Context, request *Describe
     return
 }
 
+func NewDescribeSmsRequest() (request *DescribeSmsRequest) {
+    request = &DescribeSmsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ic", APIVersion, "DescribeSms")
+    
+    
+    return
+}
+
+func NewDescribeSmsResponse() (response *DescribeSmsResponse) {
+    response = &DescribeSmsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeSms
+// 查询短信列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_APPNOTFOUND = "ResourceNotFound.AppNotFound"
+func (c *Client) DescribeSms(request *DescribeSmsRequest) (response *DescribeSmsResponse, err error) {
+    return c.DescribeSmsWithContext(context.Background(), request)
+}
+
+// DescribeSms
+// 查询短信列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_APPNOTFOUND = "ResourceNotFound.AppNotFound"
+func (c *Client) DescribeSmsWithContext(ctx context.Context, request *DescribeSmsRequest) (response *DescribeSmsResponse, err error) {
+    if request == nil {
+        request = NewDescribeSmsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSms require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeSmsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyUserCardRemarkRequest() (request *ModifyUserCardRemarkRequest) {
     request = &ModifyUserCardRemarkRequest{
         BaseRequest: &tchttp.BaseRequest{},

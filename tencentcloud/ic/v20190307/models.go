@@ -356,6 +356,117 @@ func (r *DescribeCardsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeSmsRequestParams struct {
+	// 应用ID
+	Sdkappid *int64 `json:"Sdkappid,omitempty" name:"Sdkappid"`
+
+	// 卡片ID
+	Iccid *string `json:"Iccid,omitempty" name:"Iccid"`
+
+	// 卡片号码
+	Msisdn *string `json:"Msisdn,omitempty" name:"Msisdn"`
+
+	// 短信类型
+	SmsType *int64 `json:"SmsType,omitempty" name:"SmsType"`
+
+	// 开始时间  YYYY-MM-DD HH:mm:ss
+	BeginTime *string `json:"BeginTime,omitempty" name:"BeginTime"`
+
+	// 结束时间  YYYY-MM-DD HH:mm:ss
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 偏移量
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 小于200
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+type DescribeSmsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 应用ID
+	Sdkappid *int64 `json:"Sdkappid,omitempty" name:"Sdkappid"`
+
+	// 卡片ID
+	Iccid *string `json:"Iccid,omitempty" name:"Iccid"`
+
+	// 卡片号码
+	Msisdn *string `json:"Msisdn,omitempty" name:"Msisdn"`
+
+	// 短信类型
+	SmsType *int64 `json:"SmsType,omitempty" name:"SmsType"`
+
+	// 开始时间  YYYY-MM-DD HH:mm:ss
+	BeginTime *string `json:"BeginTime,omitempty" name:"BeginTime"`
+
+	// 结束时间  YYYY-MM-DD HH:mm:ss
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 偏移量
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 小于200
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribeSmsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSmsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Sdkappid")
+	delete(f, "Iccid")
+	delete(f, "Msisdn")
+	delete(f, "SmsType")
+	delete(f, "BeginTime")
+	delete(f, "EndTime")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSmsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeSmsResponseParams struct {
+	// 总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Total *int64 `json:"Total,omitempty" name:"Total"`
+
+	// 短信列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	List []*ResSms `json:"List,omitempty" name:"List"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeSmsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeSmsResponseParams `json:"Response"`
+}
+
+func (r *DescribeSmsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSmsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyUserCardRemarkRequestParams struct {
 	// 应用ID
 	Sdkappid *int64 `json:"Sdkappid,omitempty" name:"Sdkappid"`
@@ -499,6 +610,44 @@ type ResRenew struct {
 	// 每一张续费卡片的订单ID数组
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OrderIds []*string `json:"OrderIds,omitempty" name:"OrderIds"`
+}
+
+type ResSms struct {
+	// 卡片ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Iccid *string `json:"Iccid,omitempty" name:"Iccid"`
+
+	// 卡片号码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Msisdn *string `json:"Msisdn,omitempty" name:"Msisdn"`
+
+	// 应用ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SdkAppid *int64 `json:"SdkAppid,omitempty" name:"SdkAppid"`
+
+	// 短信内容
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Content *string `json:"Content,omitempty" name:"Content"`
+
+	// 短信类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SmsType *int64 `json:"SmsType,omitempty" name:"SmsType"`
+
+	// 发送时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SendTime *string `json:"SendTime,omitempty" name:"SendTime"`
+
+	// 推送时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReportTime *string `json:"ReportTime,omitempty" name:"ReportTime"`
+
+	// SUCC：成功  FAIL 失败
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 回执状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *int64 `json:"Status,omitempty" name:"Status"`
 }
 
 // Predefined struct for user

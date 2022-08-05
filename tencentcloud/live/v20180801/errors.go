@@ -29,6 +29,9 @@ const (
 	// 改变任务状态失败。
 	FAILEDOPERATION_ALTERTASKSTATE = "FailedOperation.AlterTaskState"
 
+	// 请检查是否有权限。
+	FAILEDOPERATION_AUTHERROR = "FailedOperation.AuthError"
+
 	// 调用第三方服务失败。
 	FAILEDOPERATION_CALLOTHERSVRERROR = "FailedOperation.CallOtherSvrError"
 
@@ -38,14 +41,38 @@ const (
 	// 取消的混流 session 不存在。
 	FAILEDOPERATION_CANCELSESSIONNOTEXIST = "FailedOperation.CancelSessionNotExist"
 
+	// 该证书已颁发，不能删除。
+	FAILEDOPERATION_CANNOTBEDELETEDISSUED = "FailedOperation.CannotBeDeletedIssued"
+
+	// 免费证书申请1小时内不允许删除。
+	FAILEDOPERATION_CANNOTBEDELETEDWITHINHOUR = "FailedOperation.CannotBeDeletedWithinHour"
+
+	// 证书已存在。
+	FAILEDOPERATION_CERTIFICATEEXISTS = "FailedOperation.CertificateExists"
+
+	// 证书不符合标准。
+	FAILEDOPERATION_CERTIFICATEINVALID = "FailedOperation.CertificateInvalid"
+
+	// 证书与私钥不对应。
+	FAILEDOPERATION_CERTIFICATEMISMATCH = "FailedOperation.CertificateMismatch"
+
+	// 证书不存在。
+	FAILEDOPERATION_CERTIFICATENOTFOUND = "FailedOperation.CertificateNotFound"
+
 	// 模版使用中。
 	FAILEDOPERATION_CONFINUSED = "FailedOperation.ConfInUsed"
+
+	// 下发CDN平台失败。
+	FAILEDOPERATION_CONFIGCDNFAILED = "FailedOperation.ConfigCDNFailed"
 
 	// 2天内有产生流量，域名处于锁定期间，2天内无流量产生才允许删除域名。
 	FAILEDOPERATION_DELETEDOMAININLOCKEDTIME = "FailedOperation.DeleteDomainInLockedTime"
 
 	// 配置域名规则失败。
 	FAILEDOPERATION_DOMAINGSLBFAIL = "FailedOperation.DomainGslbFail"
+
+	// 免费证书数量超出限制。
+	FAILEDOPERATION_EXCEEDSFREELIMIT = "FailedOperation.ExceedsFreeLimit"
 
 	// 无法获取水印 url。
 	FAILEDOPERATION_GETPICTUREURLERROR = "FailedOperation.GetPictureUrlError"
@@ -59,6 +86,12 @@ const (
 	// 域名数量超过限制(100个）。
 	FAILEDOPERATION_HOSTOUTLIMIT = "FailedOperation.HostOutLimit"
 
+	// 证书状态不正确。
+	FAILEDOPERATION_INVALIDCERTIFICATESTATUSCODE = "FailedOperation.InvalidCertificateStatusCode"
+
+	// 参数有误。
+	FAILEDOPERATION_INVALIDPARAM = "FailedOperation.InvalidParam"
+
 	// 操作 CDN 接口失败。
 	FAILEDOPERATION_INVOKECDNAPIFAIL = "FailedOperation.InvokeCdnApiFail"
 
@@ -67,6 +100,15 @@ const (
 
 	// 计费平台返回余额不足。
 	FAILEDOPERATION_JIFEINOENOUGHFUND = "FailedOperation.JiFeiNoEnoughFund"
+
+	// 当前 CA 机构访问繁忙，请稍后重试。
+	FAILEDOPERATION_NETWORKERROR = "FailedOperation.NetworkError"
+
+	// 您没有该项目的操作权限。
+	FAILEDOPERATION_NOPROJECTPERMISSION = "FailedOperation.NoProjectPermission"
+
+	// 尚未通过实名认证。
+	FAILEDOPERATION_NOREALNAMEAUTH = "FailedOperation.NoRealNameAuth"
 
 	// 找不到记录。
 	FAILEDOPERATION_NOTFOUND = "FailedOperation.NotFound"
@@ -116,8 +158,23 @@ const (
 	// DB 连接错误。
 	INTERNALERROR_CONNECTDBERROR = "InternalError.ConnectDbError"
 
+	// 证书使用中。
+	INTERNALERROR_CRTDATEINUSING = "InternalError.CrtDateInUsing"
+
+	// 证书不存在。
+	INTERNALERROR_CRTDATENOTFOUND = "InternalError.CrtDateNotFound"
+
+	// 证书不合法。
+	INTERNALERROR_CRTDATENOTLEGAL = "InternalError.CrtDateNotLegal"
+
+	// 证书过期。
+	INTERNALERROR_CRTDATEOVERDUE = "InternalError.CrtDateOverdue"
+
 	// 没有相关域名。
 	INTERNALERROR_CRTDOMAINNOTFOUND = "InternalError.CrtDomainNotFound"
+
+	// 证书 Key 不匹配。
+	INTERNALERROR_CRTKEYNOTMATCH = "InternalError.CrtKeyNotMatch"
 
 	// DB执行错误。
 	INTERNALERROR_DBERROR = "InternalError.DBError"
@@ -242,8 +299,32 @@ const (
 	// 取消不存在的会话。
 	INVALIDPARAMETER_CANCELSESSIONNOTEXIST = "InvalidParameter.CancelSessionNotExist"
 
+	// 腾讯云证书托管 ID 错误。
+	INVALIDPARAMETER_CLOUDCRTIDERROR = "InvalidParameter.CloudCrtIdError"
+
 	// 赠送的腾讯云域名已过期。
 	INVALIDPARAMETER_CLOUDDOMAINISSTOP = "InvalidParameter.CloudDomainIsStop"
+
+	// 证书使用中。
+	INVALIDPARAMETER_CRTDATEINUSING = "InvalidParameter.CrtDateInUsing"
+
+	// 证书不存在。
+	INVALIDPARAMETER_CRTDATENOTFOUND = "InvalidParameter.CrtDateNotFound"
+
+	// 证书内容不合法。
+	INVALIDPARAMETER_CRTDATENOTLEGAL = "InvalidParameter.CrtDateNotLegal"
+
+	// 证书过期。
+	INVALIDPARAMETER_CRTDATEOVERDUE = "InvalidParameter.CrtDateOverdue"
+
+	// 证书没有相关域名。
+	INVALIDPARAMETER_CRTDOMAINNOTFOUND = "InvalidParameter.CrtDomainNotFound"
+
+	// 证书 Key 不匹配。
+	INVALIDPARAMETER_CRTKEYNOTMATCH = "InvalidParameter.CrtKeyNotMatch"
+
+	// 证书内容或者私钥未提供。
+	INVALIDPARAMETER_CRTORKEYNOTEXIST = "InvalidParameter.CrtOrKeyNotExist"
 
 	// 域名已经存在。
 	INVALIDPARAMETER_DOMAINALREADYEXIST = "InvalidParameter.DomainAlreadyExist"
@@ -347,6 +428,9 @@ const (
 	// 当天已创建任务数超限制。
 	LIMITEXCEEDED_MAXIMUMTASK = "LimitExceeded.MaximumTask"
 
+	// 单位时间内接口请求频率达到限制。
+	LIMITEXCEEDED_RATELIMITEXCEEDED = "LimitExceeded.RateLimitExceeded"
+
 	// 缺少参数错误。
 	MISSINGPARAMETER = "MissingParameter"
 
@@ -367,6 +451,9 @@ const (
 
 	// 频道不存在。
 	RESOURCENOTFOUND_CHANNELNOTEXIST = "ResourceNotFound.ChannelNotExist"
+
+	// 证书不存在。
+	RESOURCENOTFOUND_CRTDATENOTFOUND = "ResourceNotFound.CrtDateNotFound"
 
 	// 未找到证书信息。
 	RESOURCENOTFOUND_CRTDOMAINNOTFOUND = "ResourceNotFound.CrtDomainNotFound"

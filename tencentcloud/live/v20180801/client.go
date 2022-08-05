@@ -4042,6 +4042,69 @@ func (c *Client) DescribeLiveDomainCertWithContext(ctx context.Context, request 
     return
 }
 
+func NewDescribeLiveDomainCertBindingsRequest() (request *DescribeLiveDomainCertBindingsRequest) {
+    request = &DescribeLiveDomainCertBindingsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("live", APIVersion, "DescribeLiveDomainCertBindings")
+    
+    
+    return
+}
+
+func NewDescribeLiveDomainCertBindingsResponse() (response *DescribeLiveDomainCertBindingsResponse) {
+    response = &DescribeLiveDomainCertBindingsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeLiveDomainCertBindings
+// 查询绑定证书的域名列表。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CONNECTDBERROR = "InternalError.ConnectDbError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+func (c *Client) DescribeLiveDomainCertBindings(request *DescribeLiveDomainCertBindingsRequest) (response *DescribeLiveDomainCertBindingsResponse, err error) {
+    return c.DescribeLiveDomainCertBindingsWithContext(context.Background(), request)
+}
+
+// DescribeLiveDomainCertBindings
+// 查询绑定证书的域名列表。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CONNECTDBERROR = "InternalError.ConnectDbError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+func (c *Client) DescribeLiveDomainCertBindingsWithContext(ctx context.Context, request *DescribeLiveDomainCertBindingsRequest) (response *DescribeLiveDomainCertBindingsResponse, err error) {
+    if request == nil {
+        request = NewDescribeLiveDomainCertBindingsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeLiveDomainCertBindings require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeLiveDomainCertBindingsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeLiveDomainPlayInfoListRequest() (request *DescribeLiveDomainPlayInfoListRequest) {
     request = &DescribeLiveDomainPlayInfoListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -7571,6 +7634,139 @@ func (c *Client) ModifyLiveCallbackTemplateWithContext(ctx context.Context, requ
     request.SetContext(ctx)
     
     response = NewModifyLiveCallbackTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyLiveDomainCertBindingsRequest() (request *ModifyLiveDomainCertBindingsRequest) {
+    request = &ModifyLiveDomainCertBindingsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("live", APIVersion, "ModifyLiveDomainCertBindings")
+    
+    
+    return
+}
+
+func NewModifyLiveDomainCertBindingsResponse() (response *ModifyLiveDomainCertBindingsResponse) {
+    response = &ModifyLiveDomainCertBindingsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyLiveDomainCertBindings
+// 批量绑定证书对应的播放域名，并更新启用状态。
+//
+// 新建自有证书将自动上传至腾讯云ssl。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_AUTHERROR = "FailedOperation.AuthError"
+//  FAILEDOPERATION_CANNOTBEDELETEDISSUED = "FailedOperation.CannotBeDeletedIssued"
+//  FAILEDOPERATION_CANNOTBEDELETEDWITHINHOUR = "FailedOperation.CannotBeDeletedWithinHour"
+//  FAILEDOPERATION_CERTIFICATEEXISTS = "FailedOperation.CertificateExists"
+//  FAILEDOPERATION_CERTIFICATEINVALID = "FailedOperation.CertificateInvalid"
+//  FAILEDOPERATION_CERTIFICATEMISMATCH = "FailedOperation.CertificateMismatch"
+//  FAILEDOPERATION_CERTIFICATENOTFOUND = "FailedOperation.CertificateNotFound"
+//  FAILEDOPERATION_CONFIGCDNFAILED = "FailedOperation.ConfigCDNFailed"
+//  FAILEDOPERATION_EXCEEDSFREELIMIT = "FailedOperation.ExceedsFreeLimit"
+//  FAILEDOPERATION_INVALIDCERTIFICATESTATUSCODE = "FailedOperation.InvalidCertificateStatusCode"
+//  FAILEDOPERATION_INVALIDPARAM = "FailedOperation.InvalidParam"
+//  FAILEDOPERATION_NETWORKERROR = "FailedOperation.NetworkError"
+//  FAILEDOPERATION_NOPROJECTPERMISSION = "FailedOperation.NoProjectPermission"
+//  FAILEDOPERATION_NOREALNAMEAUTH = "FailedOperation.NoRealNameAuth"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CONNECTDBERROR = "InternalError.ConnectDbError"
+//  INTERNALERROR_CRTDATEINUSING = "InternalError.CrtDateInUsing"
+//  INTERNALERROR_CRTDATENOTFOUND = "InternalError.CrtDateNotFound"
+//  INTERNALERROR_CRTDATENOTLEGAL = "InternalError.CrtDateNotLegal"
+//  INTERNALERROR_CRTDATEOVERDUE = "InternalError.CrtDateOverdue"
+//  INTERNALERROR_CRTDOMAINNOTFOUND = "InternalError.CrtDomainNotFound"
+//  INTERNALERROR_CRTKEYNOTMATCH = "InternalError.CrtKeyNotMatch"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INTERNALERROR_NETWORKERROR = "InternalError.NetworkError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CLOUDCRTIDERROR = "InvalidParameter.CloudCrtIdError"
+//  INVALIDPARAMETER_CRTDATEINUSING = "InvalidParameter.CrtDateInUsing"
+//  INVALIDPARAMETER_CRTDATENOTFOUND = "InvalidParameter.CrtDateNotFound"
+//  INVALIDPARAMETER_CRTDATENOTLEGAL = "InvalidParameter.CrtDateNotLegal"
+//  INVALIDPARAMETER_CRTDATEOVERDUE = "InvalidParameter.CrtDateOverdue"
+//  INVALIDPARAMETER_CRTDOMAINNOTFOUND = "InvalidParameter.CrtDomainNotFound"
+//  INVALIDPARAMETER_CRTKEYNOTMATCH = "InvalidParameter.CrtKeyNotMatch"
+//  INVALIDPARAMETER_CRTORKEYNOTEXIST = "InvalidParameter.CrtOrKeyNotExist"
+//  LIMITEXCEEDED_RATELIMITEXCEEDED = "LimitExceeded.RateLimitExceeded"
+//  RESOURCENOTFOUND_CRTDATENOTFOUND = "ResourceNotFound.CrtDateNotFound"
+//  RESOURCENOTFOUND_CRTDOMAINNOTFOUND = "ResourceNotFound.CrtDomainNotFound"
+//  RESOURCENOTFOUND_DOMAINNOTEXIST = "ResourceNotFound.DomainNotExist"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+func (c *Client) ModifyLiveDomainCertBindings(request *ModifyLiveDomainCertBindingsRequest) (response *ModifyLiveDomainCertBindingsResponse, err error) {
+    return c.ModifyLiveDomainCertBindingsWithContext(context.Background(), request)
+}
+
+// ModifyLiveDomainCertBindings
+// 批量绑定证书对应的播放域名，并更新启用状态。
+//
+// 新建自有证书将自动上传至腾讯云ssl。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_AUTHERROR = "FailedOperation.AuthError"
+//  FAILEDOPERATION_CANNOTBEDELETEDISSUED = "FailedOperation.CannotBeDeletedIssued"
+//  FAILEDOPERATION_CANNOTBEDELETEDWITHINHOUR = "FailedOperation.CannotBeDeletedWithinHour"
+//  FAILEDOPERATION_CERTIFICATEEXISTS = "FailedOperation.CertificateExists"
+//  FAILEDOPERATION_CERTIFICATEINVALID = "FailedOperation.CertificateInvalid"
+//  FAILEDOPERATION_CERTIFICATEMISMATCH = "FailedOperation.CertificateMismatch"
+//  FAILEDOPERATION_CERTIFICATENOTFOUND = "FailedOperation.CertificateNotFound"
+//  FAILEDOPERATION_CONFIGCDNFAILED = "FailedOperation.ConfigCDNFailed"
+//  FAILEDOPERATION_EXCEEDSFREELIMIT = "FailedOperation.ExceedsFreeLimit"
+//  FAILEDOPERATION_INVALIDCERTIFICATESTATUSCODE = "FailedOperation.InvalidCertificateStatusCode"
+//  FAILEDOPERATION_INVALIDPARAM = "FailedOperation.InvalidParam"
+//  FAILEDOPERATION_NETWORKERROR = "FailedOperation.NetworkError"
+//  FAILEDOPERATION_NOPROJECTPERMISSION = "FailedOperation.NoProjectPermission"
+//  FAILEDOPERATION_NOREALNAMEAUTH = "FailedOperation.NoRealNameAuth"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CONNECTDBERROR = "InternalError.ConnectDbError"
+//  INTERNALERROR_CRTDATEINUSING = "InternalError.CrtDateInUsing"
+//  INTERNALERROR_CRTDATENOTFOUND = "InternalError.CrtDateNotFound"
+//  INTERNALERROR_CRTDATENOTLEGAL = "InternalError.CrtDateNotLegal"
+//  INTERNALERROR_CRTDATEOVERDUE = "InternalError.CrtDateOverdue"
+//  INTERNALERROR_CRTDOMAINNOTFOUND = "InternalError.CrtDomainNotFound"
+//  INTERNALERROR_CRTKEYNOTMATCH = "InternalError.CrtKeyNotMatch"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INTERNALERROR_NETWORKERROR = "InternalError.NetworkError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CLOUDCRTIDERROR = "InvalidParameter.CloudCrtIdError"
+//  INVALIDPARAMETER_CRTDATEINUSING = "InvalidParameter.CrtDateInUsing"
+//  INVALIDPARAMETER_CRTDATENOTFOUND = "InvalidParameter.CrtDateNotFound"
+//  INVALIDPARAMETER_CRTDATENOTLEGAL = "InvalidParameter.CrtDateNotLegal"
+//  INVALIDPARAMETER_CRTDATEOVERDUE = "InvalidParameter.CrtDateOverdue"
+//  INVALIDPARAMETER_CRTDOMAINNOTFOUND = "InvalidParameter.CrtDomainNotFound"
+//  INVALIDPARAMETER_CRTKEYNOTMATCH = "InvalidParameter.CrtKeyNotMatch"
+//  INVALIDPARAMETER_CRTORKEYNOTEXIST = "InvalidParameter.CrtOrKeyNotExist"
+//  LIMITEXCEEDED_RATELIMITEXCEEDED = "LimitExceeded.RateLimitExceeded"
+//  RESOURCENOTFOUND_CRTDATENOTFOUND = "ResourceNotFound.CrtDateNotFound"
+//  RESOURCENOTFOUND_CRTDOMAINNOTFOUND = "ResourceNotFound.CrtDomainNotFound"
+//  RESOURCENOTFOUND_DOMAINNOTEXIST = "ResourceNotFound.DomainNotExist"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+func (c *Client) ModifyLiveDomainCertBindingsWithContext(ctx context.Context, request *ModifyLiveDomainCertBindingsRequest) (response *ModifyLiveDomainCertBindingsResponse, err error) {
+    if request == nil {
+        request = NewModifyLiveDomainCertBindingsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyLiveDomainCertBindings require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyLiveDomainCertBindingsResponse()
     err = c.Send(request, response)
     return
 }

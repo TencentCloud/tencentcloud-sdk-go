@@ -19650,7 +19650,7 @@ type VulInfoList struct {
 	// 影响主机数
 	HostCount *uint64 `json:"HostCount,omitempty" name:"HostCount"`
 
-	// 漏洞等级 1:低 2:中 3:高 4:提示
+	// 漏洞等级 1:低 2:中 3:高 4:严重
 	Level *uint64 `json:"Level,omitempty" name:"Level"`
 
 	// 废弃字段

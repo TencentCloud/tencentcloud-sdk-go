@@ -1,146 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 人体分析(bda) 版本：2020-03-24
+## 物联卡(ic) 版本：2019-03-07
 
-### 第 8 次发布
+### 第 6 次发布
 
-发布时间：2022-08-04 06:09:29
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [DetectBodyJoints](https://cloud.tencent.com/document/api/1208/45846)
-
-	* 新增入参：LocalBodySwitch
-
-
-修改数据结构：
-
-* [KeyPointInfo](https://cloud.tencent.com/document/api/1208/42985#KeyPointInfo)
-
-	* 新增成员：BodyScore
-
-
-
-
-## 云硬盘(cbs) 版本：2017-03-12
-
-### 第 43 次发布
-
-发布时间：2022-08-04 06:12:23
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [DiskConfig](https://cloud.tencent.com/document/api/362/15669#DiskConfig)
-
-	* 新增成员：StepSize, ExtraPerformanceRange
-
-
-
-
-## 内容分发网络(cdn) 版本：2018-06-06
-
-### 第 110 次发布
-
-发布时间：2022-08-04 06:14:18
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [AdvancedCCRules](https://cloud.tencent.com/document/api/228/30987#AdvancedCCRules)
-
-	* 新增成员：Switch
-
-* [ScdnConfig](https://cloud.tencent.com/document/api/228/30987#ScdnConfig)
-
-	* 新增成员：GlobalAdvancedRules
-
-
-
-
-## 企业收付平台(cpdp) 版本：2019-08-20
-
-### 第 79 次发布
-
-发布时间：2022-08-04 06:19:24
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-<font color="#dd0000">**删除接口**：</font>
-
-* CreateSinglePay
-* QuerySinglePay
-
-<font color="#dd0000">**删除数据结构**：</font>
-
-* CreateSinglePayResult
-* QuerySinglePayItem
-* QuerySinglePayResult
-
-
-
-## DNSPod(dnspod) 版本：2021-03-23
-
-### 第 7 次发布
-
-发布时间：2022-08-04 06:26:58
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [UserInfo](https://cloud.tencent.com/document/api/1427/56185#UserInfo)
-
-	* 新增成员：FreeNs
-
-
-
-
-## 人脸核身(faceid) 版本：2018-03-01
-
-### 第 44 次发布
-
-发布时间：2022-08-03 18:41:29
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [GetEidResult](https://cloud.tencent.com/document/api/1007/54090)
-
-	* 新增出参：IntentionQuestionResult
-
-
-修改数据结构：
-
-* [GetEidTokenConfig](https://cloud.tencent.com/document/api/1007/41958#GetEidTokenConfig)
-
-	* 新增成员：IntentionMode, IntentionQuestions
-
-
-
-
-## 弹性微服务(tem) 版本：2021-07-01
-
-### 第 24 次发布
-
-发布时间：2022-08-04 06:55:33
+发布时间：2022-08-05 06:23:27
 
 本次发布包含了以下内容：
 
@@ -148,48 +12,54 @@
 
 新增接口：
 
-* [CreateLogConfig](https://cloud.tencent.com/document/api/1371/78465)
-* [DescribeLogConfig](https://cloud.tencent.com/document/api/1371/78470)
-* [DescribePagedLogConfigList](https://cloud.tencent.com/document/api/1371/78469)
-* [DestroyLogConfig](https://cloud.tencent.com/document/api/1371/78468)
-* [ModifyLogConfig](https://cloud.tencent.com/document/api/1371/78467)
+* [DescribeSms](https://cloud.tencent.com/document/api/636/78654)
 
 新增数据结构：
 
-* [LogConfig](https://cloud.tencent.com/document/api/1371/60171#LogConfig)
-* [LogConfigListPage](https://cloud.tencent.com/document/api/1371/60171#LogConfigListPage)
-* [ServicePortMapping](https://cloud.tencent.com/document/api/1371/60171#ServicePortMapping)
-* [ServicePortMappingItem](https://cloud.tencent.com/document/api/1371/60171#ServicePortMappingItem)
-
-修改数据结构：
-
-* [EksService](https://cloud.tencent.com/document/api/1371/60171#EksService)
-
-	* 新增成员：ServicePortMappingList, FlushAll, EnableRegistryNextDeploy, ApplicationId, AllIpDone
+* [ResSms](https://cloud.tencent.com/document/api/636/33881#ResSms)
 
 
 
+## 云直播(live) 版本：2018-08-01
 
-## 弹性微服务(tem) 版本：2020-12-21
+### 第 83 次发布
 
-
-
-## 边缘安全加速平台(teo) 版本：2022-01-06
-
-### 第 16 次发布
-
-发布时间：2022-08-04 06:55:59
+发布时间：2022-08-05 06:27:26
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-修改数据结构：
+新增接口：
 
-* [Compression](https://cloud.tencent.com/document/api/1552/73155#Compression)
+* [DescribeLiveDomainCertBindings](https://cloud.tencent.com/document/api/267/78656)
+* [ModifyLiveDomainCertBindings](https://cloud.tencent.com/document/api/267/78655)
 
-	* 新增成员：Algorithms
+新增数据结构：
 
+* [LiveCertDomainInfo](https://cloud.tencent.com/document/api/267/20474#LiveCertDomainInfo)
+
+
+
+## 全栈式风控引擎(rce) 版本：2020-11-03
+
+### 第 7 次发布
+
+发布时间：2022-08-05 06:32:35
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除接口**：</font>
+
+* DescribeRiskModel
+
+<font color="#dd0000">**删除数据结构**：</font>
+
+* InputDescribeRiskModelData
+* OutputDescribeRiskModel
+* OutputDescribeRiskModelValue
 
 
 
@@ -41739,6 +41609,22 @@
 
 ## 物联卡(ic) 版本：2019-03-07
 
+### 第 6 次发布
+
+发布时间：2022-08-05 06:23:27
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeSms](https://cloud.tencent.com/document/api/636/78654)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[ResSms](https://cloud.tencent.com/document/api/636/33881#ResSms)](https://cloud.tencent.com/document/api/636/33881#[ResSms](https://cloud.tencent.com/document/api/636/33881#ResSms))
+
 ### 第 5 次发布
 
 发布时间：2021-08-09 08:00:38
@@ -47438,6 +47324,23 @@
 
 
 ## 云直播(live) 版本：2018-08-01
+
+### 第 83 次发布
+
+发布时间：2022-08-05 06:27:26
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeLiveDomainCertBindings](https://cloud.tencent.com/document/api/267/78656)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyLiveDomainCertBindings](https://cloud.tencent.com/document/api/267/78655)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[LiveCertDomainInfo](https://cloud.tencent.com/document/api/267/20474#LiveCertDomainInfo)](https://cloud.tencent.com/document/api/267/20474#[LiveCertDomainInfo](https://cloud.tencent.com/document/api/267/20474#LiveCertDomainInfo))
 
 ### 第 82 次发布
 
@@ -57881,6 +57784,24 @@
 
 
 ## 全栈式风控引擎(rce) 版本：2020-11-03
+
+### 第 7 次发布
+
+发布时间：2022-08-05 06:32:35
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除接口**：</font>
+
+* DescribeRiskModel
+
+<font color="#dd0000">**删除数据结构**：</font>
+
+* InputDescribeRiskModelData
+* OutputDescribeRiskModel
+* OutputDescribeRiskModelValue
 
 ### 第 6 次发布
 
@@ -70187,18 +70108,18 @@
 
 新增接口：
 
-* [[CreateLogConfig](https://cloud.tencent.com/document/api/1371/78465)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeLogConfig](https://cloud.tencent.com/document/api/1371/78470)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribePagedLogConfigList](https://cloud.tencent.com/document/api/1371/78469)](https://cloud.tencent.com/document/api/#/#)
-* [[DestroyLogConfig](https://cloud.tencent.com/document/api/1371/78468)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyLogConfig](https://cloud.tencent.com/document/api/1371/78467)](https://cloud.tencent.com/document/api/#/#)
+* [CreateLogConfig](https://cloud.tencent.com/document/api/1371/78465)
+* [DescribeLogConfig](https://cloud.tencent.com/document/api/1371/78470)
+* [DescribePagedLogConfigList](https://cloud.tencent.com/document/api/1371/78469)
+* [DestroyLogConfig](https://cloud.tencent.com/document/api/1371/78468)
+* [ModifyLogConfig](https://cloud.tencent.com/document/api/1371/78467)
 
 新增数据结构：
 
-* [[LogConfig](https://cloud.tencent.com/document/api/1371/60171#LogConfig)](https://cloud.tencent.com/document/api/1371/60171#[LogConfig](https://cloud.tencent.com/document/api/1371/60171#LogConfig))
-* [[LogConfigListPage](https://cloud.tencent.com/document/api/1371/60171#LogConfigListPage)](https://cloud.tencent.com/document/api/1371/60171#[LogConfigListPage](https://cloud.tencent.com/document/api/1371/60171#LogConfigListPage))
-* [[ServicePortMapping](https://cloud.tencent.com/document/api/1371/60171#ServicePortMapping)](https://cloud.tencent.com/document/api/1371/60171#[ServicePortMapping](https://cloud.tencent.com/document/api/1371/60171#ServicePortMapping))
-* [[ServicePortMappingItem](https://cloud.tencent.com/document/api/1371/60171#ServicePortMappingItem)](https://cloud.tencent.com/document/api/1371/60171#[ServicePortMappingItem](https://cloud.tencent.com/document/api/1371/60171#ServicePortMappingItem))
+* [LogConfig](https://cloud.tencent.com/document/api/1371/60171#LogConfig)
+* [LogConfigListPage](https://cloud.tencent.com/document/api/1371/60171#LogConfigListPage)
+* [ServicePortMapping](https://cloud.tencent.com/document/api/1371/60171#ServicePortMapping)
+* [ServicePortMappingItem](https://cloud.tencent.com/document/api/1371/60171#ServicePortMappingItem)
 
 修改数据结构：
 

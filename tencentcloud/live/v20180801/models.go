@@ -4749,6 +4749,94 @@ func (r *DescribeLiveDelayInfoListResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeLiveDomainCertBindingsRequestParams struct {
+	// 要搜索的域名字符串。
+	DomainSearch *string `json:"DomainSearch,omitempty" name:"DomainSearch"`
+
+	// 记录行的位置，从0开始。默认0。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 记录行的最大数目。默认50。
+	// 若不传，则最多返回50条数据。
+	Length *int64 `json:"Length,omitempty" name:"Length"`
+
+	// 要查询的单个域名。
+	DomainName *string `json:"DomainName,omitempty" name:"DomainName"`
+
+	// 可取值：
+	// ExpireTimeAsc：证书过期时间降序。
+	// ExpireTimeDesc：证书过期时间升序。
+	OrderBy *string `json:"OrderBy,omitempty" name:"OrderBy"`
+}
+
+type DescribeLiveDomainCertBindingsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 要搜索的域名字符串。
+	DomainSearch *string `json:"DomainSearch,omitempty" name:"DomainSearch"`
+
+	// 记录行的位置，从0开始。默认0。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 记录行的最大数目。默认50。
+	// 若不传，则最多返回50条数据。
+	Length *int64 `json:"Length,omitempty" name:"Length"`
+
+	// 要查询的单个域名。
+	DomainName *string `json:"DomainName,omitempty" name:"DomainName"`
+
+	// 可取值：
+	// ExpireTimeAsc：证书过期时间降序。
+	// ExpireTimeDesc：证书过期时间升序。
+	OrderBy *string `json:"OrderBy,omitempty" name:"OrderBy"`
+}
+
+func (r *DescribeLiveDomainCertBindingsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLiveDomainCertBindingsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DomainSearch")
+	delete(f, "Offset")
+	delete(f, "Length")
+	delete(f, "DomainName")
+	delete(f, "OrderBy")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLiveDomainCertBindingsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeLiveDomainCertBindingsResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeLiveDomainCertBindingsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeLiveDomainCertBindingsResponseParams `json:"Response"`
+}
+
+func (r *DescribeLiveDomainCertBindingsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLiveDomainCertBindingsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeLiveDomainCertRequestParams struct {
 	// 播放域名。
 	DomainName *string `json:"DomainName,omitempty" name:"DomainName"`
@@ -9273,6 +9361,17 @@ type HttpStatusInfo struct {
 	Num *uint64 `json:"Num,omitempty" name:"Num"`
 }
 
+type LiveCertDomainInfo struct {
+	// 域名。
+	DomainName *string `json:"DomainName,omitempty" name:"DomainName"`
+
+	// 是否启用域名的https规则。
+	// 1：启用
+	// 0：禁用
+	// -1：保持不变
+	Status *int64 `json:"Status,omitempty" name:"Status"`
+}
+
 type LivePackageInfo struct {
 	// 包 ID。
 	Id *string `json:"Id,omitempty" name:"Id"`
@@ -9440,6 +9539,99 @@ func (r *ModifyLiveCallbackTemplateResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyLiveCallbackTemplateResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyLiveDomainCertBindingsRequestParams struct {
+	// 要绑定证书的播放域名/状态 信息列表。
+	// 如果CloudCertId和证书公钥私钥对均不传，且域名列表已有绑定规则，只批量更新域名https规则的启用状态，并把未上传至腾讯云ssl的已有自有证书上传。
+	DomainInfos []*LiveCertDomainInfo `json:"DomainInfos,omitempty" name:"DomainInfos"`
+
+	// 腾讯云ssl的证书Id。
+	// 见 https://cloud.tencent.com/document/api/400/41665
+	CloudCertId *string `json:"CloudCertId,omitempty" name:"CloudCertId"`
+
+	// 证书公钥。
+	// CloudCertId和公钥私钥对二选一，若CloudCertId将会舍弃公钥和私钥参数，否则将自动先把公钥私钥对上传至ssl新建证书，并使用上传成功后返回的CloudCertId。
+	CertificatePublicKey *string `json:"CertificatePublicKey,omitempty" name:"CertificatePublicKey"`
+
+	// 证书私钥。
+	// CloudCertId和公钥私钥对二选一，若传CloudCertId将会舍弃公钥和私钥参数，否则将自动先把公钥私钥对上传至ssl新建证书，并使用上传成功后返回的CloudCertId。
+	CertificatePrivateKey *string `json:"CertificatePrivateKey,omitempty" name:"CertificatePrivateKey"`
+
+	// 上传至ssl证书中心的备注信息，只有新建证书时有效。传CloudCertId时会忽略。
+	CertificateAlias *string `json:"CertificateAlias,omitempty" name:"CertificateAlias"`
+}
+
+type ModifyLiveDomainCertBindingsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 要绑定证书的播放域名/状态 信息列表。
+	// 如果CloudCertId和证书公钥私钥对均不传，且域名列表已有绑定规则，只批量更新域名https规则的启用状态，并把未上传至腾讯云ssl的已有自有证书上传。
+	DomainInfos []*LiveCertDomainInfo `json:"DomainInfos,omitempty" name:"DomainInfos"`
+
+	// 腾讯云ssl的证书Id。
+	// 见 https://cloud.tencent.com/document/api/400/41665
+	CloudCertId *string `json:"CloudCertId,omitempty" name:"CloudCertId"`
+
+	// 证书公钥。
+	// CloudCertId和公钥私钥对二选一，若CloudCertId将会舍弃公钥和私钥参数，否则将自动先把公钥私钥对上传至ssl新建证书，并使用上传成功后返回的CloudCertId。
+	CertificatePublicKey *string `json:"CertificatePublicKey,omitempty" name:"CertificatePublicKey"`
+
+	// 证书私钥。
+	// CloudCertId和公钥私钥对二选一，若传CloudCertId将会舍弃公钥和私钥参数，否则将自动先把公钥私钥对上传至ssl新建证书，并使用上传成功后返回的CloudCertId。
+	CertificatePrivateKey *string `json:"CertificatePrivateKey,omitempty" name:"CertificatePrivateKey"`
+
+	// 上传至ssl证书中心的备注信息，只有新建证书时有效。传CloudCertId时会忽略。
+	CertificateAlias *string `json:"CertificateAlias,omitempty" name:"CertificateAlias"`
+}
+
+func (r *ModifyLiveDomainCertBindingsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyLiveDomainCertBindingsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DomainInfos")
+	delete(f, "CloudCertId")
+	delete(f, "CertificatePublicKey")
+	delete(f, "CertificatePrivateKey")
+	delete(f, "CertificateAlias")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyLiveDomainCertBindingsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyLiveDomainCertBindingsResponseParams struct {
+	// DomainNames 入参中，与证书不匹配的域名列表，将会跳过处理。
+	MismatchedDomainNames []*string `json:"MismatchedDomainNames,omitempty" name:"MismatchedDomainNames"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ModifyLiveDomainCertBindingsResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyLiveDomainCertBindingsResponseParams `json:"Response"`
+}
+
+func (r *ModifyLiveDomainCertBindingsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyLiveDomainCertBindingsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

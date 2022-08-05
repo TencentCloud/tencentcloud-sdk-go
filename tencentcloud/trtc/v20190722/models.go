@@ -2659,8 +2659,8 @@ type QualityData struct {
 
 type RecordParams struct {
 	// 录制模式：
-	// 1：单流录制，分别录制房间的订阅UserId的音频和视频，将录制文件（M3U8/TS）上传至云存储；
-	// 2：混流录制，将房间内订阅UserId的音视频混录成一个音视频文件，将录制文件[M3U8/TS]上传至云存储；
+	// 1：单流录制，分别录制房间的订阅UserId的音频和视频，将录制文件上传至云存储；
+	// 2：混流录制，将房间内订阅UserId的音视频混录成一个音视频文件，将录制文件上传至云存储；
 	RecordMode *uint64 `json:"RecordMode,omitempty" name:"RecordMode"`
 
 	// 房间内持续没有主播的状态超过MaxIdleTime的时长，自动停止录制，单位：秒。默认值为 30 秒，该值需大于等于 5秒，且小于等于 86400秒(24小时)。
@@ -2675,7 +2675,7 @@ type RecordParams struct {
 	// 指定订阅流白名单或者黑名单。
 	SubscribeStreamUserIds *SubscribeStreamUserIds `json:"SubscribeStreamUserIds,omitempty" name:"SubscribeStreamUserIds"`
 
-	// 输出文件的格式。0：(默认)输出文件为hls格式。1：输出文件格式为hls+mp4（hls录制完成后转mp4文件）
+	// 输出文件的格式，上传到云点播时此参数无效。0：(默认)输出文件为hls格式。1：输出文件格式为hls+mp4（hls录制完成后转mp4文件）
 	OutputFormat *uint64 `json:"OutputFormat,omitempty" name:"OutputFormat"`
 }
 

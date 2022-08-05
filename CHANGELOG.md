@@ -1,3 +1,68 @@
+# Release v1.0.466
+
+## 物联卡(ic) 版本：2019-03-07
+
+### 第 6 次发布
+
+发布时间：2022-08-05 06:23:27
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeSms](https://cloud.tencent.com/document/api/636/78654)
+
+新增数据结构：
+
+* [ResSms](https://cloud.tencent.com/document/api/636/33881#ResSms)
+
+
+
+## 云直播(live) 版本：2018-08-01
+
+### 第 83 次发布
+
+发布时间：2022-08-05 06:27:26
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeLiveDomainCertBindings](https://cloud.tencent.com/document/api/267/78656)
+* [ModifyLiveDomainCertBindings](https://cloud.tencent.com/document/api/267/78655)
+
+新增数据结构：
+
+* [LiveCertDomainInfo](https://cloud.tencent.com/document/api/267/20474#LiveCertDomainInfo)
+
+
+
+## 全栈式风控引擎(rce) 版本：2020-11-03
+
+### 第 7 次发布
+
+发布时间：2022-08-05 06:32:35
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除接口**：</font>
+
+* DescribeRiskModel
+
+<font color="#dd0000">**删除数据结构**：</font>
+
+* InputDescribeRiskModelData
+* OutputDescribeRiskModel
+* OutputDescribeRiskModelValue
+
+
+
 # Release v1.0.465
 
 ## 人体分析(bda) 版本：2020-03-24

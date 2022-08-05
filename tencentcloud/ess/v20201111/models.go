@@ -1559,12 +1559,17 @@ type FlowBrief struct {
 	FlowType *string `json:"FlowType,omitempty" name:"FlowType"`
 
 	// 流程状态
-	// - `1` 未签署
+	// - `0`  还没有发起
+	// - `1`  未签署
 	// - `2`  部分签署
 	// - `3`  已退回
 	// - `4`  完成签署
 	// - `5`  已过期
 	// - `6`  已取消
+	// - `7`  还没有预发起
+	// - `8`  等待填写
+	// - `9`  部分填写
+	// - `10`  拒填
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FlowStatus *int64 `json:"FlowStatus,omitempty" name:"FlowStatus"`
 

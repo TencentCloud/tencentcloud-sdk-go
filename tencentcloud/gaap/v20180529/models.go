@@ -8236,7 +8236,7 @@ type ProxyInfo struct {
 	// 带宽，单位：Mbps。
 	Bandwidth *int64 `json:"Bandwidth,omitempty" name:"Bandwidth"`
 
-	// 并发，单位：个/秒。
+	// 并发，单位：万个/秒。
 	Concurrent *int64 `json:"Concurrent,omitempty" name:"Concurrent"`
 
 	// 通道状态。其中：
