@@ -473,6 +473,80 @@ func (r *DeleteTagsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeProjectsRequestParams struct {
+	// 传1拉取所有项目（包括隐藏项目），不传或传0拉取显示项目
+	AllList *uint64 `json:"AllList,omitempty" name:"AllList"`
+
+	// 分页条数，固定值1000。
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 分页偏移量。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+}
+
+type DescribeProjectsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 传1拉取所有项目（包括隐藏项目），不传或传0拉取显示项目
+	AllList *uint64 `json:"AllList,omitempty" name:"AllList"`
+
+	// 分页条数，固定值1000。
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 分页偏移量。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+}
+
+func (r *DescribeProjectsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeProjectsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AllList")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeProjectsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeProjectsResponseParams struct {
+	// 数据总条数
+	Total *uint64 `json:"Total,omitempty" name:"Total"`
+
+	// 项目列表
+	Projects []*Project `json:"Projects,omitempty" name:"Projects"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeProjectsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeProjectsResponseParams `json:"Response"`
+}
+
+func (r *DescribeProjectsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeProjectsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeResourceTagsByResourceIdsRequestParams struct {
 	// 业务类型
 	ServiceType *string `json:"ServiceType,omitempty" name:"ServiceType"`
@@ -2186,6 +2260,23 @@ func (r *ModifyResourcesTagValueResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *ModifyResourcesTagValueResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type Project struct {
+	// 项目ID
+	ProjectId *uint64 `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 项目名称
+	ProjectName *string `json:"ProjectName,omitempty" name:"ProjectName"`
+
+	// 创建人uin
+	CreatorUin *uint64 `json:"CreatorUin,omitempty" name:"CreatorUin"`
+
+	// 项目描述
+	ProjectInfo *string `json:"ProjectInfo,omitempty" name:"ProjectInfo"`
+
+	// 创建时间
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
 }
 
 type ResourceIdTag struct {

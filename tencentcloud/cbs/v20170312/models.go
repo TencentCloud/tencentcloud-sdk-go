@@ -1022,26 +1022,26 @@ type DescribeDiskConfigQuotaRequestParams struct {
 	// 查询类别，取值范围。<br><li>INQUIRY_CBS_CONFIG：查询云盘配置列表<br><li>INQUIRY_CVM_CONFIG：查询云盘与实例搭配的配置列表。
 	InquiryType *string `json:"InquiryType,omitempty" name:"InquiryType"`
 
-	// 查询一个或多个[可用区](/document/product/213/15753#ZoneInfo)下的配置。
-	Zones []*string `json:"Zones,omitempty" name:"Zones"`
-
 	// 付费模式。取值范围：<br><li>PREPAID：预付费<br><li>POSTPAID_BY_HOUR：后付费。
 	DiskChargeType *string `json:"DiskChargeType,omitempty" name:"DiskChargeType"`
-
-	// 硬盘介质类型。取值范围：<br><li>CLOUD_BASIC：表示普通云硬盘<br><li>CLOUD_PREMIUM：表示高性能云硬盘<br><li>CLOUD_SSD：表示SSD云硬盘<br><li>CLOUD_HSSD：表示增强型SSD云硬盘。
-	DiskTypes []*string `json:"DiskTypes,omitempty" name:"DiskTypes"`
-
-	// 系统盘或数据盘。取值范围：<br><li>SYSTEM_DISK：表示系统盘<br><li>DATA_DISK：表示数据盘。
-	DiskUsage *string `json:"DiskUsage,omitempty" name:"DiskUsage"`
 
 	// 按照实例机型系列过滤。实例机型系列形如：S1、I1、M1等。详见[实例类型](https://cloud.tencent.com/document/product/213/11518)
 	InstanceFamilies []*string `json:"InstanceFamilies,omitempty" name:"InstanceFamilies"`
 
-	// 实例CPU核数。
-	CPU *uint64 `json:"CPU,omitempty" name:"CPU"`
+	// 硬盘介质类型。取值范围：<br><li>CLOUD_BASIC：表示普通云硬盘<br><li>CLOUD_PREMIUM：表示高性能云硬盘<br><li>CLOUD_SSD：表示SSD云硬盘<br><li>CLOUD_HSSD：表示增强型SSD云硬盘。
+	DiskTypes []*string `json:"DiskTypes,omitempty" name:"DiskTypes"`
+
+	// 查询一个或多个[可用区](/document/product/213/15753#ZoneInfo)下的配置。
+	Zones []*string `json:"Zones,omitempty" name:"Zones"`
 
 	// 实例内存大小。
 	Memory *uint64 `json:"Memory,omitempty" name:"Memory"`
+
+	// 系统盘或数据盘。取值范围：<br><li>SYSTEM_DISK：表示系统盘<br><li>DATA_DISK：表示数据盘。
+	DiskUsage *string `json:"DiskUsage,omitempty" name:"DiskUsage"`
+
+	// 实例CPU核数。
+	CPU *uint64 `json:"CPU,omitempty" name:"CPU"`
 }
 
 type DescribeDiskConfigQuotaRequest struct {
@@ -1050,26 +1050,26 @@ type DescribeDiskConfigQuotaRequest struct {
 	// 查询类别，取值范围。<br><li>INQUIRY_CBS_CONFIG：查询云盘配置列表<br><li>INQUIRY_CVM_CONFIG：查询云盘与实例搭配的配置列表。
 	InquiryType *string `json:"InquiryType,omitempty" name:"InquiryType"`
 
-	// 查询一个或多个[可用区](/document/product/213/15753#ZoneInfo)下的配置。
-	Zones []*string `json:"Zones,omitempty" name:"Zones"`
-
 	// 付费模式。取值范围：<br><li>PREPAID：预付费<br><li>POSTPAID_BY_HOUR：后付费。
 	DiskChargeType *string `json:"DiskChargeType,omitempty" name:"DiskChargeType"`
-
-	// 硬盘介质类型。取值范围：<br><li>CLOUD_BASIC：表示普通云硬盘<br><li>CLOUD_PREMIUM：表示高性能云硬盘<br><li>CLOUD_SSD：表示SSD云硬盘<br><li>CLOUD_HSSD：表示增强型SSD云硬盘。
-	DiskTypes []*string `json:"DiskTypes,omitempty" name:"DiskTypes"`
-
-	// 系统盘或数据盘。取值范围：<br><li>SYSTEM_DISK：表示系统盘<br><li>DATA_DISK：表示数据盘。
-	DiskUsage *string `json:"DiskUsage,omitempty" name:"DiskUsage"`
 
 	// 按照实例机型系列过滤。实例机型系列形如：S1、I1、M1等。详见[实例类型](https://cloud.tencent.com/document/product/213/11518)
 	InstanceFamilies []*string `json:"InstanceFamilies,omitempty" name:"InstanceFamilies"`
 
-	// 实例CPU核数。
-	CPU *uint64 `json:"CPU,omitempty" name:"CPU"`
+	// 硬盘介质类型。取值范围：<br><li>CLOUD_BASIC：表示普通云硬盘<br><li>CLOUD_PREMIUM：表示高性能云硬盘<br><li>CLOUD_SSD：表示SSD云硬盘<br><li>CLOUD_HSSD：表示增强型SSD云硬盘。
+	DiskTypes []*string `json:"DiskTypes,omitempty" name:"DiskTypes"`
+
+	// 查询一个或多个[可用区](/document/product/213/15753#ZoneInfo)下的配置。
+	Zones []*string `json:"Zones,omitempty" name:"Zones"`
 
 	// 实例内存大小。
 	Memory *uint64 `json:"Memory,omitempty" name:"Memory"`
+
+	// 系统盘或数据盘。取值范围：<br><li>SYSTEM_DISK：表示系统盘<br><li>DATA_DISK：表示数据盘。
+	DiskUsage *string `json:"DiskUsage,omitempty" name:"DiskUsage"`
+
+	// 实例CPU核数。
+	CPU *uint64 `json:"CPU,omitempty" name:"CPU"`
 }
 
 func (r *DescribeDiskConfigQuotaRequest) ToJsonString() string {
@@ -1085,13 +1085,13 @@ func (r *DescribeDiskConfigQuotaRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "InquiryType")
-	delete(f, "Zones")
 	delete(f, "DiskChargeType")
-	delete(f, "DiskTypes")
-	delete(f, "DiskUsage")
 	delete(f, "InstanceFamilies")
-	delete(f, "CPU")
+	delete(f, "DiskTypes")
+	delete(f, "Zones")
 	delete(f, "Memory")
+	delete(f, "DiskUsage")
+	delete(f, "CPU")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDiskConfigQuotaRequest has unknown keys!", "")
 	}

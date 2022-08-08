@@ -96,16 +96,16 @@ type CreateCloudRecordingRequestParams struct {
 	// TRTC的[RoomId](https://cloud.tencent.com/document/product/647/46351#roomid)，录制的TRTC房间所对应的RoomId。
 	RoomId *string `json:"RoomId,omitempty" name:"RoomId"`
 
-	// 录制服务在TRTC房间使用的[UserId](https://cloud.tencent.com/document/product/647/46351#userid)，注意这个userId不能与其他TRTC或者录制服务等已经使用的UserId重复，建议可以把房间ID作为userId的标识的一部分。
+	// 录制机器人用于进入TRTC房间拉流的[UserId](https://cloud.tencent.com/document/product/647/46351#userid)，注意这个UserId不能与其他TRTC功能或者录制服务等已经使用的UserId重复，建议可以把房间ID作为userId的标识的一部分。
 	UserId *string `json:"UserId,omitempty" name:"UserId"`
 
-	// 云端录制加入房间的用户签名，当前 UserId 对应的验证签名，相当于登录密码，具体计算方法请参考TRTC计算[UserSig](https://cloud.tencent.com/document/product/647/45910#UserSig)的方案。
+	// 录制机器人用于进入TRTC房间拉流的用户签名，当前 UserId 对应的验证签名，相当于登录密码，具体计算方法请参考TRTC计算[UserSig](https://cloud.tencent.com/document/product/647/45910#UserSig)的方案。
 	UserSig *string `json:"UserSig,omitempty" name:"UserSig"`
 
 	// 云端录制控制参数。
 	RecordParams *RecordParams `json:"RecordParams,omitempty" name:"RecordParams"`
 
-	// 云端录制文件上传到云存储的参数。
+	// 云端录制文件上传到云存储的参数(目前只支持使用腾讯云点播作为存储)。
 	StorageParams *StorageParams `json:"StorageParams,omitempty" name:"StorageParams"`
 
 	// TRTC房间号的类型，必须和录制的房间所对应的RoomId类型相同:
@@ -135,16 +135,16 @@ type CreateCloudRecordingRequest struct {
 	// TRTC的[RoomId](https://cloud.tencent.com/document/product/647/46351#roomid)，录制的TRTC房间所对应的RoomId。
 	RoomId *string `json:"RoomId,omitempty" name:"RoomId"`
 
-	// 录制服务在TRTC房间使用的[UserId](https://cloud.tencent.com/document/product/647/46351#userid)，注意这个userId不能与其他TRTC或者录制服务等已经使用的UserId重复，建议可以把房间ID作为userId的标识的一部分。
+	// 录制机器人用于进入TRTC房间拉流的[UserId](https://cloud.tencent.com/document/product/647/46351#userid)，注意这个UserId不能与其他TRTC功能或者录制服务等已经使用的UserId重复，建议可以把房间ID作为userId的标识的一部分。
 	UserId *string `json:"UserId,omitempty" name:"UserId"`
 
-	// 云端录制加入房间的用户签名，当前 UserId 对应的验证签名，相当于登录密码，具体计算方法请参考TRTC计算[UserSig](https://cloud.tencent.com/document/product/647/45910#UserSig)的方案。
+	// 录制机器人用于进入TRTC房间拉流的用户签名，当前 UserId 对应的验证签名，相当于登录密码，具体计算方法请参考TRTC计算[UserSig](https://cloud.tencent.com/document/product/647/45910#UserSig)的方案。
 	UserSig *string `json:"UserSig,omitempty" name:"UserSig"`
 
 	// 云端录制控制参数。
 	RecordParams *RecordParams `json:"RecordParams,omitempty" name:"RecordParams"`
 
-	// 云端录制文件上传到云存储的参数。
+	// 云端录制文件上传到云存储的参数(目前只支持使用腾讯云点播作为存储)。
 	StorageParams *StorageParams `json:"StorageParams,omitempty" name:"StorageParams"`
 
 	// TRTC房间号的类型，必须和录制的房间所对应的RoomId类型相同:
@@ -444,89 +444,6 @@ func (r *DeletePictureResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
-type DescribeAbnormalEventRequestParams struct {
-	// 用户SdkAppId（如：1400xxxxxx）
-	SdkAppId *string `json:"SdkAppId,omitempty" name:"SdkAppId"`
-
-	// 查询开始时间，本地unix时间戳，单位为秒（如：1590065777）
-	// 注意：支持查询14天内的数据
-	StartTime *uint64 `json:"StartTime,omitempty" name:"StartTime"`
-
-	// 查询结束时间，本地unix时间戳，单位为秒（如：1590065877）注意：与StartTime间隔时间不超过1小时。
-	EndTime *uint64 `json:"EndTime,omitempty" name:"EndTime"`
-
-	// 房间号，查询房间内任意20条以内异常体验事件
-	RoomId *string `json:"RoomId,omitempty" name:"RoomId"`
-}
-
-type DescribeAbnormalEventRequest struct {
-	*tchttp.BaseRequest
-	
-	// 用户SdkAppId（如：1400xxxxxx）
-	SdkAppId *string `json:"SdkAppId,omitempty" name:"SdkAppId"`
-
-	// 查询开始时间，本地unix时间戳，单位为秒（如：1590065777）
-	// 注意：支持查询14天内的数据
-	StartTime *uint64 `json:"StartTime,omitempty" name:"StartTime"`
-
-	// 查询结束时间，本地unix时间戳，单位为秒（如：1590065877）注意：与StartTime间隔时间不超过1小时。
-	EndTime *uint64 `json:"EndTime,omitempty" name:"EndTime"`
-
-	// 房间号，查询房间内任意20条以内异常体验事件
-	RoomId *string `json:"RoomId,omitempty" name:"RoomId"`
-}
-
-func (r *DescribeAbnormalEventRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeAbnormalEventRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "SdkAppId")
-	delete(f, "StartTime")
-	delete(f, "EndTime")
-	delete(f, "RoomId")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAbnormalEventRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DescribeAbnormalEventResponseParams struct {
-	// 返回的数据总条数
-	Total *uint64 `json:"Total,omitempty" name:"Total"`
-
-	// 异常体验列表
-	AbnormalExperienceList []*AbnormalExperience `json:"AbnormalExperienceList,omitempty" name:"AbnormalExperienceList"`
-
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-}
-
-type DescribeAbnormalEventResponse struct {
-	*tchttp.BaseResponse
-	Response *DescribeAbnormalEventResponseParams `json:"Response"`
-}
-
-func (r *DescribeAbnormalEventResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeAbnormalEventResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
 type DescribeCallDetailInfoRequestParams struct {
 	// 通话 ID（唯一标识一次通话）： SdkAppId_RoomId（房间号）_ CreateTime（房间创建时间，unix时间戳，单位为s）例：1400xxxxxx_218695_1590065777。通过 DescribeRoomInfo（查询历史房间列表）接口获取（[查询历史房间列表](https://cloud.tencent.com/document/product/647/44050)）。
 	CommId *string `json:"CommId,omitempty" name:"CommId"`
@@ -679,158 +596,6 @@ func (r *DescribeCallDetailInfoResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
-type DescribeCallDetailRequestParams struct {
-	// 通话 ID（唯一标识一次通话）： SdkAppId_RoomId（房间号）_ CreateTime（房间创建时间，unix时间戳，单位为s）例：1400xxxxxx_218695_1590065777。通过 DescribeRoomInfo（查询历史房间列表）接口获取（[查询历史房间列表](https://cloud.tencent.com/document/product/647/44050)）。
-	CommId *string `json:"CommId,omitempty" name:"CommId"`
-
-	// 查询开始时间，本地unix时间戳，单位为秒（如：1590065777），
-	// 注意：支持查询14天内的数据。
-	StartTime *uint64 `json:"StartTime,omitempty" name:"StartTime"`
-
-	// 查询结束时间，本地unix时间戳，单位为秒（如：1590065877）
-	// 注意：DataType 不为null ，与StartTime间隔时间不超过1小时；DataType 为null，与StartTime间隔时间不超过4小时。
-	EndTime *uint64 `json:"EndTime,omitempty" name:"EndTime"`
-
-	// 用户SdkAppId（如：1400xxxxxx）。
-	SdkAppId *string `json:"SdkAppId,omitempty" name:"SdkAppId"`
-
-	// 需查询的用户数组，默认不填返回6个用户。
-	UserIds []*string `json:"UserIds,omitempty" name:"UserIds"`
-
-	// 需查询的指标，不填则只返回用户列表，填all则返回所有指标。
-	// appCpu：APP CPU使用率；
-	// sysCpu：系统 CPU使用率；
-	// aBit：上/下行音频码率；单位：bps
-	// aBlock：音频卡顿时长；单位：ms
-	// bigvBit：上/下行视频码率；单位：bps
-	// bigvCapFps：视频采集帧率；
-	// bigvEncFps：视频发送帧率；
-	// bigvDecFps：渲染帧率；
-	// bigvBlock：视频卡顿时长；单位：ms
-	// aLoss：上/下行音频丢包率；
-	// bigvLoss：上/下行视频丢包率；
-	// bigvWidth：上/下行分辨率宽；
-	// bigvHeight：上/下行分辨率高
-	DataType []*string `json:"DataType,omitempty" name:"DataType"`
-
-	// 当前页数，默认为0，
-	// 注意：PageNumber和PageSize 其中一个不填均默认返回6条数据。
-	PageNumber *string `json:"PageNumber,omitempty" name:"PageNumber"`
-
-	// 每页个数，默认为6，
-	// 范围：[1，100]
-	// 注意：DataType不为null，UserIds长度不能超过6，PageSize最大值不超过6；
-	// DataType 为null，UserIds长度不超过100，PageSize最大不超过100。
-	PageSize *string `json:"PageSize,omitempty" name:"PageSize"`
-}
-
-type DescribeCallDetailRequest struct {
-	*tchttp.BaseRequest
-	
-	// 通话 ID（唯一标识一次通话）： SdkAppId_RoomId（房间号）_ CreateTime（房间创建时间，unix时间戳，单位为s）例：1400xxxxxx_218695_1590065777。通过 DescribeRoomInfo（查询历史房间列表）接口获取（[查询历史房间列表](https://cloud.tencent.com/document/product/647/44050)）。
-	CommId *string `json:"CommId,omitempty" name:"CommId"`
-
-	// 查询开始时间，本地unix时间戳，单位为秒（如：1590065777），
-	// 注意：支持查询14天内的数据。
-	StartTime *uint64 `json:"StartTime,omitempty" name:"StartTime"`
-
-	// 查询结束时间，本地unix时间戳，单位为秒（如：1590065877）
-	// 注意：DataType 不为null ，与StartTime间隔时间不超过1小时；DataType 为null，与StartTime间隔时间不超过4小时。
-	EndTime *uint64 `json:"EndTime,omitempty" name:"EndTime"`
-
-	// 用户SdkAppId（如：1400xxxxxx）。
-	SdkAppId *string `json:"SdkAppId,omitempty" name:"SdkAppId"`
-
-	// 需查询的用户数组，默认不填返回6个用户。
-	UserIds []*string `json:"UserIds,omitempty" name:"UserIds"`
-
-	// 需查询的指标，不填则只返回用户列表，填all则返回所有指标。
-	// appCpu：APP CPU使用率；
-	// sysCpu：系统 CPU使用率；
-	// aBit：上/下行音频码率；单位：bps
-	// aBlock：音频卡顿时长；单位：ms
-	// bigvBit：上/下行视频码率；单位：bps
-	// bigvCapFps：视频采集帧率；
-	// bigvEncFps：视频发送帧率；
-	// bigvDecFps：渲染帧率；
-	// bigvBlock：视频卡顿时长；单位：ms
-	// aLoss：上/下行音频丢包率；
-	// bigvLoss：上/下行视频丢包率；
-	// bigvWidth：上/下行分辨率宽；
-	// bigvHeight：上/下行分辨率高
-	DataType []*string `json:"DataType,omitempty" name:"DataType"`
-
-	// 当前页数，默认为0，
-	// 注意：PageNumber和PageSize 其中一个不填均默认返回6条数据。
-	PageNumber *string `json:"PageNumber,omitempty" name:"PageNumber"`
-
-	// 每页个数，默认为6，
-	// 范围：[1，100]
-	// 注意：DataType不为null，UserIds长度不能超过6，PageSize最大值不超过6；
-	// DataType 为null，UserIds长度不超过100，PageSize最大不超过100。
-	PageSize *string `json:"PageSize,omitempty" name:"PageSize"`
-}
-
-func (r *DescribeCallDetailRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeCallDetailRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "CommId")
-	delete(f, "StartTime")
-	delete(f, "EndTime")
-	delete(f, "SdkAppId")
-	delete(f, "UserIds")
-	delete(f, "DataType")
-	delete(f, "PageNumber")
-	delete(f, "PageSize")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCallDetailRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DescribeCallDetailResponseParams struct {
-	// 返回的用户总条数
-	Total *uint64 `json:"Total,omitempty" name:"Total"`
-
-	// 用户信息列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	UserList []*UserInformation `json:"UserList,omitempty" name:"UserList"`
-
-	// 质量数据
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Data []*QualityData `json:"Data,omitempty" name:"Data"`
-
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-}
-
-type DescribeCallDetailResponse struct {
-	*tchttp.BaseResponse
-	Response *DescribeCallDetailResponseParams `json:"Response"`
-}
-
-func (r *DescribeCallDetailResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeCallDetailResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
 type DescribeCloudRecordingRequestParams struct {
 	// TRTC的SDKAppId，和录制的房间所对应的SDKAppId相同。
 	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
@@ -901,95 +666,6 @@ func (r *DescribeCloudRecordingResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeCloudRecordingResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DescribeDetailEventRequestParams struct {
-	// 通话 ID（唯一标识一次通话）： SdkAppId_RoomId（房间号）_ CreateTime（房间创建时间，unix时间戳，单位为s）例：1400xxxxxx_218695_1590065777。通过 DescribeRoomInfo（查询历史房间列表）接口获取（[查询历史房间列表](https://cloud.tencent.com/document/product/647/44050)）。
-	CommId *string `json:"CommId,omitempty" name:"CommId"`
-
-	// 查询开始时间，本地unix时间戳，单位为秒（如：1590065777）
-	// 注意：支持查询14天内的数据
-	StartTime *uint64 `json:"StartTime,omitempty" name:"StartTime"`
-
-	// 查询结束时间，本地unix时间戳，单位为秒（如：1590065877）
-	// 注意：查询时间大于房间结束时间，以房间结束时间为准。
-	EndTime *uint64 `json:"EndTime,omitempty" name:"EndTime"`
-
-	// 用户UserId
-	UserId *string `json:"UserId,omitempty" name:"UserId"`
-
-	// 房间号（如：223）
-	RoomId *string `json:"RoomId,omitempty" name:"RoomId"`
-}
-
-type DescribeDetailEventRequest struct {
-	*tchttp.BaseRequest
-	
-	// 通话 ID（唯一标识一次通话）： SdkAppId_RoomId（房间号）_ CreateTime（房间创建时间，unix时间戳，单位为s）例：1400xxxxxx_218695_1590065777。通过 DescribeRoomInfo（查询历史房间列表）接口获取（[查询历史房间列表](https://cloud.tencent.com/document/product/647/44050)）。
-	CommId *string `json:"CommId,omitempty" name:"CommId"`
-
-	// 查询开始时间，本地unix时间戳，单位为秒（如：1590065777）
-	// 注意：支持查询14天内的数据
-	StartTime *uint64 `json:"StartTime,omitempty" name:"StartTime"`
-
-	// 查询结束时间，本地unix时间戳，单位为秒（如：1590065877）
-	// 注意：查询时间大于房间结束时间，以房间结束时间为准。
-	EndTime *uint64 `json:"EndTime,omitempty" name:"EndTime"`
-
-	// 用户UserId
-	UserId *string `json:"UserId,omitempty" name:"UserId"`
-
-	// 房间号（如：223）
-	RoomId *string `json:"RoomId,omitempty" name:"RoomId"`
-}
-
-func (r *DescribeDetailEventRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeDetailEventRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "CommId")
-	delete(f, "StartTime")
-	delete(f, "EndTime")
-	delete(f, "UserId")
-	delete(f, "RoomId")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDetailEventRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DescribeDetailEventResponseParams struct {
-	// 返回的事件列表，若没有数据，会返回空数组。
-	Data []*EventList `json:"Data,omitempty" name:"Data"`
-
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-}
-
-type DescribeDetailEventResponse struct {
-	*tchttp.BaseResponse
-	Response *DescribeDetailEventResponseParams `json:"Response"`
-}
-
-func (r *DescribeDetailEventResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeDetailEventResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1067,85 +743,6 @@ func (r *DescribeExternalTrtcMeasureResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeExternalTrtcMeasureResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DescribeHistoryScaleRequestParams struct {
-	// 用户SdkAppId（如：1400xxxxxx）
-	SdkAppId *string `json:"SdkAppId,omitempty" name:"SdkAppId"`
-
-	// 查询开始时间，本地unix时间戳，单位为秒（如：1590065777）
-	// 注意：支持查询14天内的数据。
-	StartTime *uint64 `json:"StartTime,omitempty" name:"StartTime"`
-
-	// 查询结束时间，本地unix时间戳，单位为秒（如：1590065877），建议与StartTime间隔时间超过24小时。
-	// 注意：按天统计，结束时间小于前一天，否则查询数据为空（如：需查询20号数据，结束时间需小于20号0点）。
-	EndTime *uint64 `json:"EndTime,omitempty" name:"EndTime"`
-}
-
-type DescribeHistoryScaleRequest struct {
-	*tchttp.BaseRequest
-	
-	// 用户SdkAppId（如：1400xxxxxx）
-	SdkAppId *string `json:"SdkAppId,omitempty" name:"SdkAppId"`
-
-	// 查询开始时间，本地unix时间戳，单位为秒（如：1590065777）
-	// 注意：支持查询14天内的数据。
-	StartTime *uint64 `json:"StartTime,omitempty" name:"StartTime"`
-
-	// 查询结束时间，本地unix时间戳，单位为秒（如：1590065877），建议与StartTime间隔时间超过24小时。
-	// 注意：按天统计，结束时间小于前一天，否则查询数据为空（如：需查询20号数据，结束时间需小于20号0点）。
-	EndTime *uint64 `json:"EndTime,omitempty" name:"EndTime"`
-}
-
-func (r *DescribeHistoryScaleRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeHistoryScaleRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "SdkAppId")
-	delete(f, "StartTime")
-	delete(f, "EndTime")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeHistoryScaleRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DescribeHistoryScaleResponseParams struct {
-	// 返回的数据条数
-	Total *uint64 `json:"Total,omitempty" name:"Total"`
-
-	// 返回的数据
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	ScaleList []*ScaleInfomation `json:"ScaleList,omitempty" name:"ScaleList"`
-
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-}
-
-type DescribeHistoryScaleResponse struct {
-	*tchttp.BaseResponse
-	Response *DescribeHistoryScaleResponseParams `json:"Response"`
-}
-
-func (r *DescribeHistoryScaleResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeHistoryScaleResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1403,109 +1000,6 @@ func (r *DescribeRoomInfoResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeRoomInfoResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DescribeRoomInformationRequestParams struct {
-	// 用户SdkAppId（如：1400xxxxxx）
-	SdkAppId *string `json:"SdkAppId,omitempty" name:"SdkAppId"`
-
-	// 查询开始时间，本地unix时间戳，单位为秒（如：1590065777）
-	// 注意：支持查询14天内的数据
-	StartTime *uint64 `json:"StartTime,omitempty" name:"StartTime"`
-
-	// 查询结束时间，本地unix时间戳，单位为秒（如：1590065877）
-	// 注意：与StartTime间隔时间不超过24小时。
-	EndTime *uint64 `json:"EndTime,omitempty" name:"EndTime"`
-
-	// 房间号（如：223)
-	RoomId *string `json:"RoomId,omitempty" name:"RoomId"`
-
-	// 当前页数，默认为0，
-	// 注意：PageNumber和PageSize 其中一个不填均默认返回10条数据。
-	PageNumber *string `json:"PageNumber,omitempty" name:"PageNumber"`
-
-	// 每页个数，默认为10，
-	// 范围：[1，100]
-	PageSize *string `json:"PageSize,omitempty" name:"PageSize"`
-}
-
-type DescribeRoomInformationRequest struct {
-	*tchttp.BaseRequest
-	
-	// 用户SdkAppId（如：1400xxxxxx）
-	SdkAppId *string `json:"SdkAppId,omitempty" name:"SdkAppId"`
-
-	// 查询开始时间，本地unix时间戳，单位为秒（如：1590065777）
-	// 注意：支持查询14天内的数据
-	StartTime *uint64 `json:"StartTime,omitempty" name:"StartTime"`
-
-	// 查询结束时间，本地unix时间戳，单位为秒（如：1590065877）
-	// 注意：与StartTime间隔时间不超过24小时。
-	EndTime *uint64 `json:"EndTime,omitempty" name:"EndTime"`
-
-	// 房间号（如：223)
-	RoomId *string `json:"RoomId,omitempty" name:"RoomId"`
-
-	// 当前页数，默认为0，
-	// 注意：PageNumber和PageSize 其中一个不填均默认返回10条数据。
-	PageNumber *string `json:"PageNumber,omitempty" name:"PageNumber"`
-
-	// 每页个数，默认为10，
-	// 范围：[1，100]
-	PageSize *string `json:"PageSize,omitempty" name:"PageSize"`
-}
-
-func (r *DescribeRoomInformationRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeRoomInformationRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "SdkAppId")
-	delete(f, "StartTime")
-	delete(f, "EndTime")
-	delete(f, "RoomId")
-	delete(f, "PageNumber")
-	delete(f, "PageSize")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRoomInformationRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DescribeRoomInformationResponseParams struct {
-	// 返回当页数据总数
-	Total *int64 `json:"Total,omitempty" name:"Total"`
-
-	// 房间信息列表
-	RoomList []*RoomState `json:"RoomList,omitempty" name:"RoomList"`
-
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-}
-
-type DescribeRoomInformationResponse struct {
-	*tchttp.BaseResponse
-	Response *DescribeRoomInformationResponseParams `json:"Response"`
-}
-
-func (r *DescribeRoomInformationResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeRoomInformationResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1951,119 +1445,6 @@ func (r *DescribeUserInfoResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeUserInfoResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DescribeUserInformationRequestParams struct {
-	// 通话 ID（唯一标识一次通话）： SdkAppId_RoomId（房间号）_ CreateTime（房间创建时间，unix时间戳，单位为s）例：1400xxxxxx_218695_1590065777。通过 DescribeRoomInfo（查询历史房间列表）接口获取（[查询历史房间列表](https://cloud.tencent.com/document/product/647/44050)）。
-	CommId *string `json:"CommId,omitempty" name:"CommId"`
-
-	// 查询开始时间，本地unix时间戳，单位为秒（如：1590065777）
-	// 注意：支持查询14天内的数据
-	StartTime *uint64 `json:"StartTime,omitempty" name:"StartTime"`
-
-	// 查询结束时间，本地unix时间戳，单位为秒（如：1590065877）
-	// 注意：与StartTime间隔时间不超过4小时。
-	EndTime *uint64 `json:"EndTime,omitempty" name:"EndTime"`
-
-	// 用户SdkAppId（如：1400xxxxxx）
-	SdkAppId *string `json:"SdkAppId,omitempty" name:"SdkAppId"`
-
-	// 需查询的用户数组，不填默认返回6个用户
-	// 范围：[1，100]。
-	UserIds []*string `json:"UserIds,omitempty" name:"UserIds"`
-
-	// 当前页数，默认为0，
-	// 注意：PageNumber和PageSize 其中一个不填均默认返回6条数据。
-	PageNumber *string `json:"PageNumber,omitempty" name:"PageNumber"`
-
-	// 每页个数，默认为6，
-	// 范围：[1，100]。
-	PageSize *string `json:"PageSize,omitempty" name:"PageSize"`
-}
-
-type DescribeUserInformationRequest struct {
-	*tchttp.BaseRequest
-	
-	// 通话 ID（唯一标识一次通话）： SdkAppId_RoomId（房间号）_ CreateTime（房间创建时间，unix时间戳，单位为s）例：1400xxxxxx_218695_1590065777。通过 DescribeRoomInfo（查询历史房间列表）接口获取（[查询历史房间列表](https://cloud.tencent.com/document/product/647/44050)）。
-	CommId *string `json:"CommId,omitempty" name:"CommId"`
-
-	// 查询开始时间，本地unix时间戳，单位为秒（如：1590065777）
-	// 注意：支持查询14天内的数据
-	StartTime *uint64 `json:"StartTime,omitempty" name:"StartTime"`
-
-	// 查询结束时间，本地unix时间戳，单位为秒（如：1590065877）
-	// 注意：与StartTime间隔时间不超过4小时。
-	EndTime *uint64 `json:"EndTime,omitempty" name:"EndTime"`
-
-	// 用户SdkAppId（如：1400xxxxxx）
-	SdkAppId *string `json:"SdkAppId,omitempty" name:"SdkAppId"`
-
-	// 需查询的用户数组，不填默认返回6个用户
-	// 范围：[1，100]。
-	UserIds []*string `json:"UserIds,omitempty" name:"UserIds"`
-
-	// 当前页数，默认为0，
-	// 注意：PageNumber和PageSize 其中一个不填均默认返回6条数据。
-	PageNumber *string `json:"PageNumber,omitempty" name:"PageNumber"`
-
-	// 每页个数，默认为6，
-	// 范围：[1，100]。
-	PageSize *string `json:"PageSize,omitempty" name:"PageSize"`
-}
-
-func (r *DescribeUserInformationRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeUserInformationRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "CommId")
-	delete(f, "StartTime")
-	delete(f, "EndTime")
-	delete(f, "SdkAppId")
-	delete(f, "UserIds")
-	delete(f, "PageNumber")
-	delete(f, "PageSize")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeUserInformationRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DescribeUserInformationResponseParams struct {
-	// 返回的用户总条数
-	Total *uint64 `json:"Total,omitempty" name:"Total"`
-
-	// 用户信息列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	UserList []*UserInformation `json:"UserList,omitempty" name:"UserList"`
-
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-}
-
-type DescribeUserInformationResponse struct {
-	*tchttp.BaseResponse
-	Response *DescribeUserInformationResponseParams `json:"Response"`
-}
-
-func (r *DescribeUserInformationResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeUserInformationResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

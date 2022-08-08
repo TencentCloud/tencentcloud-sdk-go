@@ -63,13 +63,13 @@ func NewCreateCloudRecordingResponse() (response *CreateCloudRecordingResponse) 
 }
 
 // CreateCloudRecording
-// ###接口说明：
+// 接口说明：
 //
 // 启动云端录制功能，完成房间内的音视频录制，并上传到指定的云存储。您可以通过此 API 接口把TRTC 房间中的每一路音视频流做单独的录制有或者多路视频画面混流一路。
 //
 // 
 //
-// ###您可以通过此接口实现如下目标：
+// 您可以通过此接口实现如下目标：
 //
 // * 指定订阅流参数（RecordParams）来指定需要录制的主播的黑名单或者白名单。
 //
@@ -81,11 +81,11 @@ func NewCreateCloudRecordingResponse() (response *CreateCloudRecordingResponse) 
 //
 // 
 //
-// ###关键名词：
+// 关键名词：
 //
-// * 单流录制：分别录制房间的订阅UserId的音频和视频。录制服务会实时将录制文件（M3U8/TS）上传至云存储。
+// * 单流录制：分别录制房间的订阅UserId的音频和视频。录制服务会实时将录制文件上传至云点播存储。
 //
-// * 混流录制：将房间内订阅UserId的音视频混录成一个音视频文件，并将录制文件（M3U8/TS）上传至云存储。
+// * 合流录制：将房间内订阅UserId的音视频混录成一个音视频文件，并将录制文件上传至云点播存储。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -117,13 +117,13 @@ func (c *Client) CreateCloudRecording(request *CreateCloudRecordingRequest) (res
 }
 
 // CreateCloudRecording
-// ###接口说明：
+// 接口说明：
 //
 // 启动云端录制功能，完成房间内的音视频录制，并上传到指定的云存储。您可以通过此 API 接口把TRTC 房间中的每一路音视频流做单独的录制有或者多路视频画面混流一路。
 //
 // 
 //
-// ###您可以通过此接口实现如下目标：
+// 您可以通过此接口实现如下目标：
 //
 // * 指定订阅流参数（RecordParams）来指定需要录制的主播的黑名单或者白名单。
 //
@@ -135,11 +135,11 @@ func (c *Client) CreateCloudRecording(request *CreateCloudRecordingRequest) (res
 //
 // 
 //
-// ###关键名词：
+// 关键名词：
 //
-// * 单流录制：分别录制房间的订阅UserId的音频和视频。录制服务会实时将录制文件（M3U8/TS）上传至云存储。
+// * 单流录制：分别录制房间的订阅UserId的音频和视频。录制服务会实时将录制文件上传至云点播存储。
 //
-// * 混流录制：将房间内订阅UserId的音视频混录成一个音视频文件，并将录制文件（M3U8/TS）上传至云存储。
+// * 合流录制：将房间内订阅UserId的音视频混录成一个音视频文件，并将录制文件上传至云点播存储。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -259,7 +259,7 @@ func NewDeleteCloudRecordingResponse() (response *DeleteCloudRecordingResponse) 
 }
 
 // DeleteCloudRecording
-// 成功开启录制后，可以使用此接口来停止录制任务。仅在录制任务进行时有效，录制退出后更新将会返回错误。停止录制成功后不代表文件全部传输完成，如果未完成后台将会继续上传文件，成功后通过事件回调通知客户文件全部传输完成状态。
+// 成功开启录制后，可以使用此接口来停止录制任务。停止录制成功后不代表文件全部传输完成，如果未完成后台将会继续上传文件，成功后通过事件回调通知客户文件全部传输完成状态。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -279,7 +279,7 @@ func (c *Client) DeleteCloudRecording(request *DeleteCloudRecordingRequest) (res
 }
 
 // DeleteCloudRecording
-// 成功开启录制后，可以使用此接口来停止录制任务。仅在录制任务进行时有效，录制退出后更新将会返回错误。停止录制成功后不代表文件全部传输完成，如果未完成后台将会继续上传文件，成功后通过事件回调通知客户文件全部传输完成状态。
+// 成功开启录制后，可以使用此接口来停止录制任务。停止录制成功后不代表文件全部传输完成，如果未完成后台将会继续上传文件，成功后通过事件回调通知客户文件全部传输完成状态。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -363,186 +363,6 @@ func (c *Client) DeletePictureWithContext(ctx context.Context, request *DeletePi
     request.SetContext(ctx)
     
     response = NewDeletePictureResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewDescribeAbnormalEventRequest() (request *DescribeAbnormalEventRequest) {
-    request = &DescribeAbnormalEventRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    request.Init().WithApiInfo("trtc", APIVersion, "DescribeAbnormalEvent")
-    
-    
-    return
-}
-
-func NewDescribeAbnormalEventResponse() (response *DescribeAbnormalEventResponse) {
-    response = &DescribeAbnormalEventResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// DescribeAbnormalEvent
-// 查询SdkAppId下任意20条异常体验事件，返回异常体验ID与可能产生异常体验的原因。可查询14天内数据，查询起止时间不超过1个小时。支持跨天查询。
-//
-// 异常体验ID映射见：https://cloud.tencent.com/document/product/647/44916
-//
-// 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INTERNALERROR_DBERROR = "InternalError.DBError"
-//  INTERNALERROR_ESQUERYERROR = "InternalError.EsQueryError"
-//  INTERNALERROR_HTTPPARASEFALIED = "InternalError.HttpParaseFalied"
-//  INTERNALERROR_INTERFACEERR = "InternalError.InterfaceErr"
-//  INTERNALERROR_METHODERR = "InternalError.MethodErr"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_BODYPARAMSERROR = "InvalidParameter.BodyParamsError"
-//  INVALIDPARAMETER_ENCODEPARAMS = "InvalidParameter.EncodeParams"
-//  INVALIDPARAMETER_QUERYSCALEOVERSIZE = "InvalidParameter.QueryScaleOversize"
-//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
-//  INVALIDPARAMETER_STARTTIMEEXPIRE = "InvalidParameter.StartTimeExpire"
-//  INVALIDPARAMETER_STARTTS = "InvalidParameter.StartTs"
-//  INVALIDPARAMETER_STARTTSOVERSIZE = "InvalidParameter.StartTsOversize"
-//  MISSINGPARAMETER = "MissingParameter"
-//  MISSINGPARAMETER_ENDTS = "MissingParameter.EndTs"
-//  MISSINGPARAMETER_SDKAPPID = "MissingParameter.SdkAppId"
-//  MISSINGPARAMETER_STARTTS = "MissingParameter.StartTs"
-func (c *Client) DescribeAbnormalEvent(request *DescribeAbnormalEventRequest) (response *DescribeAbnormalEventResponse, err error) {
-    return c.DescribeAbnormalEventWithContext(context.Background(), request)
-}
-
-// DescribeAbnormalEvent
-// 查询SdkAppId下任意20条异常体验事件，返回异常体验ID与可能产生异常体验的原因。可查询14天内数据，查询起止时间不超过1个小时。支持跨天查询。
-//
-// 异常体验ID映射见：https://cloud.tencent.com/document/product/647/44916
-//
-// 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INTERNALERROR_DBERROR = "InternalError.DBError"
-//  INTERNALERROR_ESQUERYERROR = "InternalError.EsQueryError"
-//  INTERNALERROR_HTTPPARASEFALIED = "InternalError.HttpParaseFalied"
-//  INTERNALERROR_INTERFACEERR = "InternalError.InterfaceErr"
-//  INTERNALERROR_METHODERR = "InternalError.MethodErr"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_BODYPARAMSERROR = "InvalidParameter.BodyParamsError"
-//  INVALIDPARAMETER_ENCODEPARAMS = "InvalidParameter.EncodeParams"
-//  INVALIDPARAMETER_QUERYSCALEOVERSIZE = "InvalidParameter.QueryScaleOversize"
-//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
-//  INVALIDPARAMETER_STARTTIMEEXPIRE = "InvalidParameter.StartTimeExpire"
-//  INVALIDPARAMETER_STARTTS = "InvalidParameter.StartTs"
-//  INVALIDPARAMETER_STARTTSOVERSIZE = "InvalidParameter.StartTsOversize"
-//  MISSINGPARAMETER = "MissingParameter"
-//  MISSINGPARAMETER_ENDTS = "MissingParameter.EndTs"
-//  MISSINGPARAMETER_SDKAPPID = "MissingParameter.SdkAppId"
-//  MISSINGPARAMETER_STARTTS = "MissingParameter.StartTs"
-func (c *Client) DescribeAbnormalEventWithContext(ctx context.Context, request *DescribeAbnormalEventRequest) (response *DescribeAbnormalEventResponse, err error) {
-    if request == nil {
-        request = NewDescribeAbnormalEventRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeAbnormalEvent require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeAbnormalEventResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewDescribeCallDetailRequest() (request *DescribeCallDetailRequest) {
-    request = &DescribeCallDetailRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    request.Init().WithApiInfo("trtc", APIVersion, "DescribeCallDetail")
-    
-    
-    return
-}
-
-func NewDescribeCallDetailResponse() (response *DescribeCallDetailResponse) {
-    response = &DescribeCallDetailResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// DescribeCallDetail
-// 查询指定时间内的用户列表及用户通话质量数据，可查询14天内数据。DataType 不为null，查询起止时间不超过1个小时，查询用户不超过6个，支持跨天查询。DataType为null时，查询起止时间不超过4个小时， 默认查询6个用户，同时支持每页查询100以内用户个数（PageSize不超过100）。接口用于查询质量问题，不推荐作为计费使用。
-//
-// **注意**：该接口只用于历史数据统计或核对数据使用，实时类关键业务逻辑不能使用。
-//
-// 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INTERNALERROR_DBERROR = "InternalError.DBError"
-//  INTERNALERROR_ESQUERYERROR = "InternalError.EsQueryError"
-//  INTERNALERROR_HTTPPARASEFALIED = "InternalError.HttpParaseFalied"
-//  INTERNALERROR_INTERFACEERR = "InternalError.InterfaceErr"
-//  INTERNALERROR_METHODERR = "InternalError.MethodErr"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_BODYPARAMSERROR = "InvalidParameter.BodyParamsError"
-//  INVALIDPARAMETER_ENCODEPARAMS = "InvalidParameter.EncodeParams"
-//  INVALIDPARAMETER_PAGENUMBER = "InvalidParameter.PageNumber"
-//  INVALIDPARAMETER_PAGESIZE = "InvalidParameter.PageSize"
-//  INVALIDPARAMETER_PAGESIZEOVERSIZE = "InvalidParameter.PageSizeOversize"
-//  INVALIDPARAMETER_QUERYSCALEOVERSIZE = "InvalidParameter.QueryScaleOversize"
-//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
-//  INVALIDPARAMETER_STARTTS = "InvalidParameter.StartTs"
-//  INVALIDPARAMETER_STARTTSOVERSIZE = "InvalidParameter.StartTsOversize"
-//  INVALIDPARAMETER_USERIDSMORETHANSIX = "InvalidParameter.UserIdsMorethanSix"
-//  MISSINGPARAMETER = "MissingParameter"
-//  MISSINGPARAMETER_COMMID = "MissingParameter.CommId"
-//  MISSINGPARAMETER_COMMIDORSDKAPPID = "MissingParameter.CommIdOrSdkAppId"
-//  MISSINGPARAMETER_ENDTS = "MissingParameter.EndTs"
-//  MISSINGPARAMETER_SDKAPPID = "MissingParameter.SdkAppId"
-//  MISSINGPARAMETER_STARTTS = "MissingParameter.StartTs"
-func (c *Client) DescribeCallDetail(request *DescribeCallDetailRequest) (response *DescribeCallDetailResponse, err error) {
-    return c.DescribeCallDetailWithContext(context.Background(), request)
-}
-
-// DescribeCallDetail
-// 查询指定时间内的用户列表及用户通话质量数据，可查询14天内数据。DataType 不为null，查询起止时间不超过1个小时，查询用户不超过6个，支持跨天查询。DataType为null时，查询起止时间不超过4个小时， 默认查询6个用户，同时支持每页查询100以内用户个数（PageSize不超过100）。接口用于查询质量问题，不推荐作为计费使用。
-//
-// **注意**：该接口只用于历史数据统计或核对数据使用，实时类关键业务逻辑不能使用。
-//
-// 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INTERNALERROR_DBERROR = "InternalError.DBError"
-//  INTERNALERROR_ESQUERYERROR = "InternalError.EsQueryError"
-//  INTERNALERROR_HTTPPARASEFALIED = "InternalError.HttpParaseFalied"
-//  INTERNALERROR_INTERFACEERR = "InternalError.InterfaceErr"
-//  INTERNALERROR_METHODERR = "InternalError.MethodErr"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_BODYPARAMSERROR = "InvalidParameter.BodyParamsError"
-//  INVALIDPARAMETER_ENCODEPARAMS = "InvalidParameter.EncodeParams"
-//  INVALIDPARAMETER_PAGENUMBER = "InvalidParameter.PageNumber"
-//  INVALIDPARAMETER_PAGESIZE = "InvalidParameter.PageSize"
-//  INVALIDPARAMETER_PAGESIZEOVERSIZE = "InvalidParameter.PageSizeOversize"
-//  INVALIDPARAMETER_QUERYSCALEOVERSIZE = "InvalidParameter.QueryScaleOversize"
-//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
-//  INVALIDPARAMETER_STARTTS = "InvalidParameter.StartTs"
-//  INVALIDPARAMETER_STARTTSOVERSIZE = "InvalidParameter.StartTsOversize"
-//  INVALIDPARAMETER_USERIDSMORETHANSIX = "InvalidParameter.UserIdsMorethanSix"
-//  MISSINGPARAMETER = "MissingParameter"
-//  MISSINGPARAMETER_COMMID = "MissingParameter.CommId"
-//  MISSINGPARAMETER_COMMIDORSDKAPPID = "MissingParameter.CommIdOrSdkAppId"
-//  MISSINGPARAMETER_ENDTS = "MissingParameter.EndTs"
-//  MISSINGPARAMETER_SDKAPPID = "MissingParameter.SdkAppId"
-//  MISSINGPARAMETER_STARTTS = "MissingParameter.StartTs"
-func (c *Client) DescribeCallDetailWithContext(ctx context.Context, request *DescribeCallDetailRequest) (response *DescribeCallDetailResponse, err error) {
-    if request == nil {
-        request = NewDescribeCallDetailRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeCallDetail require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeCallDetailResponse()
     err = c.Send(request, response)
     return
 }
@@ -662,6 +482,8 @@ func NewDescribeCloudRecordingResponse() (response *DescribeCloudRecordingRespon
 // DescribeCloudRecording
 // 成功开启录制后，可以使用此接口来查询录制状态。仅在录制任务进行时有效，录制退出后查询将会返回错误。
 //
+// 录制文件上传到云点播VOD时，StorageFileList中不会返回录制文件信息，请订阅相关录制文件回调事件，获取录制文件信息。
+//
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  AUTHFAILURE_UNREALNAMEAUTHENTICATED = "AuthFailure.UnRealNameAuthenticated"
@@ -683,6 +505,8 @@ func (c *Client) DescribeCloudRecording(request *DescribeCloudRecordingRequest) 
 
 // DescribeCloudRecording
 // 成功开启录制后，可以使用此接口来查询录制状态。仅在录制任务进行时有效，录制退出后查询将会返回错误。
+//
+// 录制文件上传到云点播VOD时，StorageFileList中不会返回录制文件信息，请订阅相关录制文件回调事件，获取录制文件信息。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -711,91 +535,6 @@ func (c *Client) DescribeCloudRecordingWithContext(ctx context.Context, request 
     request.SetContext(ctx)
     
     response = NewDescribeCloudRecordingResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewDescribeDetailEventRequest() (request *DescribeDetailEventRequest) {
-    request = &DescribeDetailEventRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    request.Init().WithApiInfo("trtc", APIVersion, "DescribeDetailEvent")
-    
-    
-    return
-}
-
-func NewDescribeDetailEventResponse() (response *DescribeDetailEventResponse) {
-    response = &DescribeDetailEventResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// DescribeDetailEvent
-// 查询用户某次通话内的进退房，视频开关等详细事件。可查询14天内数据。
-//
-// 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INTERNALERROR_ESQUERYERROR = "InternalError.EsQueryError"
-//  INTERNALERROR_HTTPPARASEFALIED = "InternalError.HttpParaseFalied"
-//  INTERNALERROR_INTERFACEERR = "InternalError.InterfaceErr"
-//  INTERNALERROR_METHODERR = "InternalError.MethodErr"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_BODYPARAMSERROR = "InvalidParameter.BodyParamsError"
-//  INVALIDPARAMETER_ENDTS = "InvalidParameter.EndTs"
-//  INVALIDPARAMETER_STARTTS = "InvalidParameter.StartTs"
-//  INVALIDPARAMETER_STARTTSOVERSIZE = "InvalidParameter.StartTsOversize"
-//  INVALIDPARAMETER_URLPARAMSERROR = "InvalidParameter.UrlParamsError"
-//  INVALIDPARAMETER_USERID = "InvalidParameter.UserId"
-//  MISSINGPARAMETER = "MissingParameter"
-//  MISSINGPARAMETER_APPID = "MissingParameter.AppId"
-//  MISSINGPARAMETER_COMMID = "MissingParameter.CommId"
-//  MISSINGPARAMETER_COMMIDORSDKAPPID = "MissingParameter.CommIdOrSdkAppId"
-//  MISSINGPARAMETER_ENDTS = "MissingParameter.EndTs"
-//  MISSINGPARAMETER_ROOMID = "MissingParameter.RoomId"
-//  MISSINGPARAMETER_STARTTS = "MissingParameter.StartTs"
-//  MISSINGPARAMETER_USERID = "MissingParameter.UserId"
-func (c *Client) DescribeDetailEvent(request *DescribeDetailEventRequest) (response *DescribeDetailEventResponse, err error) {
-    return c.DescribeDetailEventWithContext(context.Background(), request)
-}
-
-// DescribeDetailEvent
-// 查询用户某次通话内的进退房，视频开关等详细事件。可查询14天内数据。
-//
-// 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INTERNALERROR_ESQUERYERROR = "InternalError.EsQueryError"
-//  INTERNALERROR_HTTPPARASEFALIED = "InternalError.HttpParaseFalied"
-//  INTERNALERROR_INTERFACEERR = "InternalError.InterfaceErr"
-//  INTERNALERROR_METHODERR = "InternalError.MethodErr"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_BODYPARAMSERROR = "InvalidParameter.BodyParamsError"
-//  INVALIDPARAMETER_ENDTS = "InvalidParameter.EndTs"
-//  INVALIDPARAMETER_STARTTS = "InvalidParameter.StartTs"
-//  INVALIDPARAMETER_STARTTSOVERSIZE = "InvalidParameter.StartTsOversize"
-//  INVALIDPARAMETER_URLPARAMSERROR = "InvalidParameter.UrlParamsError"
-//  INVALIDPARAMETER_USERID = "InvalidParameter.UserId"
-//  MISSINGPARAMETER = "MissingParameter"
-//  MISSINGPARAMETER_APPID = "MissingParameter.AppId"
-//  MISSINGPARAMETER_COMMID = "MissingParameter.CommId"
-//  MISSINGPARAMETER_COMMIDORSDKAPPID = "MissingParameter.CommIdOrSdkAppId"
-//  MISSINGPARAMETER_ENDTS = "MissingParameter.EndTs"
-//  MISSINGPARAMETER_ROOMID = "MissingParameter.RoomId"
-//  MISSINGPARAMETER_STARTTS = "MissingParameter.StartTs"
-//  MISSINGPARAMETER_USERID = "MissingParameter.UserId"
-func (c *Client) DescribeDetailEventWithContext(ctx context.Context, request *DescribeDetailEventRequest) (response *DescribeDetailEventResponse, err error) {
-    if request == nil {
-        request = NewDescribeDetailEventRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeDetailEvent require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeDetailEventResponse()
     err = c.Send(request, response)
     return
 }
@@ -843,79 +582,6 @@ func (c *Client) DescribeExternalTrtcMeasureWithContext(ctx context.Context, req
     request.SetContext(ctx)
     
     response = NewDescribeExternalTrtcMeasureResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewDescribeHistoryScaleRequest() (request *DescribeHistoryScaleRequest) {
-    request = &DescribeHistoryScaleRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    request.Init().WithApiInfo("trtc", APIVersion, "DescribeHistoryScale")
-    
-    
-    return
-}
-
-func NewDescribeHistoryScaleResponse() (response *DescribeHistoryScaleResponse) {
-    response = &DescribeHistoryScaleResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// DescribeHistoryScale
-// 可查询SdkAppId每天的房间数和用户数，按天统计，可查询最近14天的数据。当天未结束，数据未统计完成，无法查到当天的房间数与用户数
-//
-// 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INTERNALERROR_DBERROR = "InternalError.DBError"
-//  INTERNALERROR_HTTPPARASEFALIED = "InternalError.HttpParaseFalied"
-//  INTERNALERROR_INTERFACEERR = "InternalError.InterfaceErr"
-//  INTERNALERROR_METHODERR = "InternalError.MethodErr"
-//  INVALIDPARAMETER_BODYPARAMSERROR = "InvalidParameter.BodyParamsError"
-//  INVALIDPARAMETER_ENDTS = "InvalidParameter.EndTs"
-//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
-//  INVALIDPARAMETER_STARTTS = "InvalidParameter.StartTs"
-//  INVALIDPARAMETER_STARTTSOVERSIZE = "InvalidParameter.StartTsOversize"
-//  INVALIDPARAMETER_USERIDSMORETHANSIX = "InvalidParameter.UserIdsMorethanSix"
-//  MISSINGPARAMETER_ENDTS = "MissingParameter.EndTs"
-//  MISSINGPARAMETER_SDKAPPID = "MissingParameter.SdkAppId"
-//  MISSINGPARAMETER_STARTTS = "MissingParameter.StartTs"
-func (c *Client) DescribeHistoryScale(request *DescribeHistoryScaleRequest) (response *DescribeHistoryScaleResponse, err error) {
-    return c.DescribeHistoryScaleWithContext(context.Background(), request)
-}
-
-// DescribeHistoryScale
-// 可查询SdkAppId每天的房间数和用户数，按天统计，可查询最近14天的数据。当天未结束，数据未统计完成，无法查到当天的房间数与用户数
-//
-// 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INTERNALERROR_DBERROR = "InternalError.DBError"
-//  INTERNALERROR_HTTPPARASEFALIED = "InternalError.HttpParaseFalied"
-//  INTERNALERROR_INTERFACEERR = "InternalError.InterfaceErr"
-//  INTERNALERROR_METHODERR = "InternalError.MethodErr"
-//  INVALIDPARAMETER_BODYPARAMSERROR = "InvalidParameter.BodyParamsError"
-//  INVALIDPARAMETER_ENDTS = "InvalidParameter.EndTs"
-//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
-//  INVALIDPARAMETER_STARTTS = "InvalidParameter.StartTs"
-//  INVALIDPARAMETER_STARTTSOVERSIZE = "InvalidParameter.StartTsOversize"
-//  INVALIDPARAMETER_USERIDSMORETHANSIX = "InvalidParameter.UserIdsMorethanSix"
-//  MISSINGPARAMETER_ENDTS = "MissingParameter.EndTs"
-//  MISSINGPARAMETER_SDKAPPID = "MissingParameter.SdkAppId"
-//  MISSINGPARAMETER_STARTTS = "MissingParameter.StartTs"
-func (c *Client) DescribeHistoryScaleWithContext(ctx context.Context, request *DescribeHistoryScaleRequest) (response *DescribeHistoryScaleResponse, err error) {
-    if request == nil {
-        request = NewDescribeHistoryScaleRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeHistoryScale require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeHistoryScaleResponse()
     err = c.Send(request, response)
     return
 }
@@ -1143,99 +809,6 @@ func (c *Client) DescribeRoomInfoWithContext(ctx context.Context, request *Descr
     request.SetContext(ctx)
     
     response = NewDescribeRoomInfoResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewDescribeRoomInformationRequest() (request *DescribeRoomInformationRequest) {
-    request = &DescribeRoomInformationRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    request.Init().WithApiInfo("trtc", APIVersion, "DescribeRoomInformation")
-    
-    
-    return
-}
-
-func NewDescribeRoomInformationResponse() (response *DescribeRoomInformationResponse) {
-    response = &DescribeRoomInformationResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// DescribeRoomInformation
-// 查询SdkAppId下的房间列表。默认返回10条通话，一次最多返回100条通话。可查询14天内的数据。
-//
-// **注意**：该接口只用于历史数据统计或核对数据使用，实时类关键业务逻辑不能使用。
-//
-// 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INTERNALERROR_DBERROR = "InternalError.DBError"
-//  INTERNALERROR_ESQUERYERROR = "InternalError.EsQueryError"
-//  INTERNALERROR_HTTPPARASEFALIED = "InternalError.HttpParaseFalied"
-//  INTERNALERROR_INTERFACEERR = "InternalError.InterfaceErr"
-//  INTERNALERROR_METHODERR = "InternalError.MethodErr"
-//  INVALIDPARAMETER_BODYPARAMSERROR = "InvalidParameter.BodyParamsError"
-//  INVALIDPARAMETER_ENDTS = "InvalidParameter.EndTs"
-//  INVALIDPARAMETER_PAGENUMBER = "InvalidParameter.PageNumber"
-//  INVALIDPARAMETER_PAGESIZE = "InvalidParameter.PageSize"
-//  INVALIDPARAMETER_PAGESIZEOVERSIZE = "InvalidParameter.PageSizeOversize"
-//  INVALIDPARAMETER_QUERYSCALEOVERSIZE = "InvalidParameter.QueryScaleOversize"
-//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
-//  INVALIDPARAMETER_STARTTS = "InvalidParameter.StartTs"
-//  INVALIDPARAMETER_STARTTSOVERSIZE = "InvalidParameter.StartTsOversize"
-//  INVALIDPARAMETER_URLPARAMSERROR = "InvalidParameter.UrlParamsError"
-//  INVALIDPARAMETER_USERID = "InvalidParameter.UserId"
-//  MISSINGPARAMETER_COMMIDORSDKAPPID = "MissingParameter.CommIdOrSdkAppId"
-//  MISSINGPARAMETER_ENDTS = "MissingParameter.EndTs"
-//  MISSINGPARAMETER_ROOMNUM = "MissingParameter.RoomNum"
-//  MISSINGPARAMETER_SDKAPPID = "MissingParameter.SdkAppId"
-//  MISSINGPARAMETER_STARTTS = "MissingParameter.StartTs"
-func (c *Client) DescribeRoomInformation(request *DescribeRoomInformationRequest) (response *DescribeRoomInformationResponse, err error) {
-    return c.DescribeRoomInformationWithContext(context.Background(), request)
-}
-
-// DescribeRoomInformation
-// 查询SdkAppId下的房间列表。默认返回10条通话，一次最多返回100条通话。可查询14天内的数据。
-//
-// **注意**：该接口只用于历史数据统计或核对数据使用，实时类关键业务逻辑不能使用。
-//
-// 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INTERNALERROR_DBERROR = "InternalError.DBError"
-//  INTERNALERROR_ESQUERYERROR = "InternalError.EsQueryError"
-//  INTERNALERROR_HTTPPARASEFALIED = "InternalError.HttpParaseFalied"
-//  INTERNALERROR_INTERFACEERR = "InternalError.InterfaceErr"
-//  INTERNALERROR_METHODERR = "InternalError.MethodErr"
-//  INVALIDPARAMETER_BODYPARAMSERROR = "InvalidParameter.BodyParamsError"
-//  INVALIDPARAMETER_ENDTS = "InvalidParameter.EndTs"
-//  INVALIDPARAMETER_PAGENUMBER = "InvalidParameter.PageNumber"
-//  INVALIDPARAMETER_PAGESIZE = "InvalidParameter.PageSize"
-//  INVALIDPARAMETER_PAGESIZEOVERSIZE = "InvalidParameter.PageSizeOversize"
-//  INVALIDPARAMETER_QUERYSCALEOVERSIZE = "InvalidParameter.QueryScaleOversize"
-//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
-//  INVALIDPARAMETER_STARTTS = "InvalidParameter.StartTs"
-//  INVALIDPARAMETER_STARTTSOVERSIZE = "InvalidParameter.StartTsOversize"
-//  INVALIDPARAMETER_URLPARAMSERROR = "InvalidParameter.UrlParamsError"
-//  INVALIDPARAMETER_USERID = "InvalidParameter.UserId"
-//  MISSINGPARAMETER_COMMIDORSDKAPPID = "MissingParameter.CommIdOrSdkAppId"
-//  MISSINGPARAMETER_ENDTS = "MissingParameter.EndTs"
-//  MISSINGPARAMETER_ROOMNUM = "MissingParameter.RoomNum"
-//  MISSINGPARAMETER_SDKAPPID = "MissingParameter.SdkAppId"
-//  MISSINGPARAMETER_STARTTS = "MissingParameter.StartTs"
-func (c *Client) DescribeRoomInformationWithContext(ctx context.Context, request *DescribeRoomInformationRequest) (response *DescribeRoomInformationResponse, err error) {
-    if request == nil {
-        request = NewDescribeRoomInformationRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeRoomInformation require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeRoomInformationResponse()
     err = c.Send(request, response)
     return
 }
@@ -1639,97 +1212,6 @@ func (c *Client) DescribeUserInfoWithContext(ctx context.Context, request *Descr
     request.SetContext(ctx)
     
     response = NewDescribeUserInfoResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewDescribeUserInformationRequest() (request *DescribeUserInformationRequest) {
-    request = &DescribeUserInformationRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    request.Init().WithApiInfo("trtc", APIVersion, "DescribeUserInformation")
-    
-    
-    return
-}
-
-func NewDescribeUserInformationResponse() (response *DescribeUserInformationResponse) {
-    response = &DescribeUserInformationResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// DescribeUserInformation
-// 查询指定时间内的用户列表，可查询14天内数据，查询起止时间不超过4小时。默认每页查询6个用户，支持每页最大查询100个用户PageSize不超过100）。
-//
-// **注意**：该接口只用于历史数据统计或核对数据使用，实时类关键业务逻辑不能使用。
-//
-// 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INTERNALERROR_DBERROR = "InternalError.DBError"
-//  INTERNALERROR_HTTPPARASEFALIED = "InternalError.HttpParaseFalied"
-//  INTERNALERROR_INTERFACEERR = "InternalError.InterfaceErr"
-//  INTERNALERROR_METHODERR = "InternalError.MethodErr"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_BODYPARAMSERROR = "InvalidParameter.BodyParamsError"
-//  INVALIDPARAMETER_ENCODEPARAMS = "InvalidParameter.EncodeParams"
-//  INVALIDPARAMETER_PAGENUMBER = "InvalidParameter.PageNumber"
-//  INVALIDPARAMETER_PAGESIZE = "InvalidParameter.PageSize"
-//  INVALIDPARAMETER_PAGESIZEOVERSIZE = "InvalidParameter.PageSizeOversize"
-//  INVALIDPARAMETER_QUERYSCALEOVERSIZE = "InvalidParameter.QueryScaleOversize"
-//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
-//  INVALIDPARAMETER_STARTTS = "InvalidParameter.StartTs"
-//  INVALIDPARAMETER_STARTTSOVERSIZE = "InvalidParameter.StartTsOversize"
-//  MISSINGPARAMETER = "MissingParameter"
-//  MISSINGPARAMETER_COMMID = "MissingParameter.CommId"
-//  MISSINGPARAMETER_COMMIDORSDKAPPID = "MissingParameter.CommIdOrSdkAppId"
-//  MISSINGPARAMETER_ENDTS = "MissingParameter.EndTs"
-//  MISSINGPARAMETER_SDKAPPID = "MissingParameter.SdkAppId"
-//  MISSINGPARAMETER_STARTTS = "MissingParameter.StartTs"
-func (c *Client) DescribeUserInformation(request *DescribeUserInformationRequest) (response *DescribeUserInformationResponse, err error) {
-    return c.DescribeUserInformationWithContext(context.Background(), request)
-}
-
-// DescribeUserInformation
-// 查询指定时间内的用户列表，可查询14天内数据，查询起止时间不超过4小时。默认每页查询6个用户，支持每页最大查询100个用户PageSize不超过100）。
-//
-// **注意**：该接口只用于历史数据统计或核对数据使用，实时类关键业务逻辑不能使用。
-//
-// 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INTERNALERROR_DBERROR = "InternalError.DBError"
-//  INTERNALERROR_HTTPPARASEFALIED = "InternalError.HttpParaseFalied"
-//  INTERNALERROR_INTERFACEERR = "InternalError.InterfaceErr"
-//  INTERNALERROR_METHODERR = "InternalError.MethodErr"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_BODYPARAMSERROR = "InvalidParameter.BodyParamsError"
-//  INVALIDPARAMETER_ENCODEPARAMS = "InvalidParameter.EncodeParams"
-//  INVALIDPARAMETER_PAGENUMBER = "InvalidParameter.PageNumber"
-//  INVALIDPARAMETER_PAGESIZE = "InvalidParameter.PageSize"
-//  INVALIDPARAMETER_PAGESIZEOVERSIZE = "InvalidParameter.PageSizeOversize"
-//  INVALIDPARAMETER_QUERYSCALEOVERSIZE = "InvalidParameter.QueryScaleOversize"
-//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
-//  INVALIDPARAMETER_STARTTS = "InvalidParameter.StartTs"
-//  INVALIDPARAMETER_STARTTSOVERSIZE = "InvalidParameter.StartTsOversize"
-//  MISSINGPARAMETER = "MissingParameter"
-//  MISSINGPARAMETER_COMMID = "MissingParameter.CommId"
-//  MISSINGPARAMETER_COMMIDORSDKAPPID = "MissingParameter.CommIdOrSdkAppId"
-//  MISSINGPARAMETER_ENDTS = "MissingParameter.EndTs"
-//  MISSINGPARAMETER_SDKAPPID = "MissingParameter.SdkAppId"
-//  MISSINGPARAMETER_STARTTS = "MissingParameter.StartTs"
-func (c *Client) DescribeUserInformationWithContext(ctx context.Context, request *DescribeUserInformationRequest) (response *DescribeUserInformationResponse, err error) {
-    if request == nil {
-        request = NewDescribeUserInformationRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeUserInformation require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeUserInformationResponse()
     err = c.Send(request, response)
     return
 }

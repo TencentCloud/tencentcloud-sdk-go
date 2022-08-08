@@ -210,6 +210,98 @@ func (r *ChannelCreateBatchCancelFlowUrlResponse) FromJsonString(s string) error
 }
 
 // Predefined struct for user
+type ChannelCreateConvertTaskApiRequestParams struct {
+	// 无
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+
+	// 资源Id
+	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
+
+	// 资源类型 取值范围doc,docx,html之一
+	ResourceType *string `json:"ResourceType,omitempty" name:"ResourceType"`
+
+	// 资源名称
+	ResourceName *string `json:"ResourceName,omitempty" name:"ResourceName"`
+
+	// 无
+	Organization *OrganizationInfo `json:"Organization,omitempty" name:"Organization"`
+
+	// 无
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+}
+
+type ChannelCreateConvertTaskApiRequest struct {
+	*tchttp.BaseRequest
+	
+	// 无
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+
+	// 资源Id
+	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
+
+	// 资源类型 取值范围doc,docx,html之一
+	ResourceType *string `json:"ResourceType,omitempty" name:"ResourceType"`
+
+	// 资源名称
+	ResourceName *string `json:"ResourceName,omitempty" name:"ResourceName"`
+
+	// 无
+	Organization *OrganizationInfo `json:"Organization,omitempty" name:"Organization"`
+
+	// 无
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+}
+
+func (r *ChannelCreateConvertTaskApiRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ChannelCreateConvertTaskApiRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Agent")
+	delete(f, "ResourceId")
+	delete(f, "ResourceType")
+	delete(f, "ResourceName")
+	delete(f, "Organization")
+	delete(f, "Operator")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ChannelCreateConvertTaskApiRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ChannelCreateConvertTaskApiResponseParams struct {
+	// 任务id
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ChannelCreateConvertTaskApiResponse struct {
+	*tchttp.BaseResponse
+	Response *ChannelCreateConvertTaskApiResponseParams `json:"Response"`
+}
+
+func (r *ChannelCreateConvertTaskApiResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ChannelCreateConvertTaskApiResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ChannelCreateFlowByFilesRequestParams struct {
 	// 渠道应用相关信息
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
@@ -473,6 +565,93 @@ func (r *ChannelCreateMultiFlowSignQRCodeResponse) FromJsonString(s string) erro
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ChannelGetTaskResultApiRequestParams struct {
+	// 渠道信息
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+
+	// 任务Id
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 企业信息
+	Organization *OrganizationInfo `json:"Organization,omitempty" name:"Organization"`
+
+	// 操作人信息
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+}
+
+type ChannelGetTaskResultApiRequest struct {
+	*tchttp.BaseRequest
+	
+	// 渠道信息
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+
+	// 任务Id
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 企业信息
+	Organization *OrganizationInfo `json:"Organization,omitempty" name:"Organization"`
+
+	// 操作人信息
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+}
+
+func (r *ChannelGetTaskResultApiRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ChannelGetTaskResultApiRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Agent")
+	delete(f, "TaskId")
+	delete(f, "Organization")
+	delete(f, "Operator")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ChannelGetTaskResultApiRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ChannelGetTaskResultApiResponseParams struct {
+	// 任务Id
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 任务状态
+	TaskStatus *int64 `json:"TaskStatus,omitempty" name:"TaskStatus"`
+
+	// 状态描述
+	TaskMessage *string `json:"TaskMessage,omitempty" name:"TaskMessage"`
+
+	// 资源Id
+	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ChannelGetTaskResultApiResponse struct {
+	*tchttp.BaseResponse
+	Response *ChannelGetTaskResultApiResponseParams `json:"Response"`
+}
+
+func (r *ChannelGetTaskResultApiResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ChannelGetTaskResultApiResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type Component struct {
 	// 控件编号
 	// 
@@ -488,13 +667,18 @@ type Component struct {
 
 	// 如果是Component控件类型，则可选的字段为：
 	// TEXT - 普通文本控件；
-	// DATE - 普通日期控件；跟TEXT相比会有校验逻辑
-	// DYNAMIC_TABLE-动态表格控件；
+	// MULTI_LINE_TEXT - 多行文本控件；
+	// CHECK_BOX - 勾选框控件；
+	// FILL_IMAGE - 图片控件；
+	// DYNAMIC_TABLE - 动态表格控件；
+	// ATTACHMENT - 附件控件；
+	// SELECTOR - 选择器控件；
+	// 
 	// 如果是SignComponent控件类型，则可选的字段为
 	// SIGN_SEAL - 签署印章控件；
 	// SIGN_DATE - 签署日期控件；
 	// SIGN_SIGNATURE - 用户签名控件；
-	// SIGN_PERSONAL_SEAL - 个人签署印章控件；
+	// SIGN_PERSONAL_SEAL - 个人签署印章控件（使用文件发起暂不支持此类型）；
 	// 
 	// 表单域的控件不能作为印章和签名控件
 	ComponentType *string `json:"ComponentType,omitempty" name:"ComponentType"`
@@ -537,8 +721,13 @@ type Component struct {
 	// 例如：{"FontSize":12}
 	ComponentExtra *string `json:"ComponentExtra,omitempty" name:"ComponentExtra"`
 
-	// 印章 ID，传参 DEFAULT_COMPANY_SEAL 表示使用默认印章。
-	// 控件填入内容，印章控件里面，如果是手写签名内容为PNG图片格式的base64编码
+	// 控件填充vaule，ComponentType和传入值类型对应关系：
+	// TEXT - 文本内容
+	// MULTI_LINE_TEXT - 文本内容
+	// CHECK_BOX - true/false
+	// FILL_IMAGE、ATTACHMENT - 附件的FileId，需要通过UploadFiles接口上传获取
+	// SELECTOR - 选项值
+	// DYNAMIC_TABLE - 传入json格式的表格内容，具体见数据结构FlowInfo：https://cloud.tencent.com/document/api/1420/61525#FlowInfo
 	ComponentValue *string `json:"ComponentValue,omitempty" name:"ComponentValue"`
 
 	// 日期签署控件的字号，默认为 12
@@ -1534,7 +1723,13 @@ type FlowResourceUrlInfo struct {
 }
 
 type FormField struct {
-	// 表单域或控件的Value
+	// 控件填充vaule，ComponentType和传入值类型对应关系：
+	// TEXT - 文本内容
+	// MULTI_LINE_TEXT - 文本内容
+	// CHECK_BOX - true/false
+	// FILL_IMAGE、ATTACHMENT - 附件的FileId，需要通过UploadFiles接口上传获取
+	// SELECTOR - 选项值
+	// DYNAMIC_TABLE - 传入json格式的表格内容，具体见数据结构FlowInfo：https://cloud.tencent.com/document/api/1420/61525#FlowInfo
 	ComponentValue *string `json:"ComponentValue,omitempty" name:"ComponentValue"`
 
 	// 表单域或控件的ID，跟ComponentName二选一，不能全为空
@@ -1728,6 +1923,23 @@ func (r *OperateChannelTemplateResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *OperateChannelTemplateResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type OrganizationInfo struct {
+	// 用户在渠道的机构编号
+	OrganizationOpenId *string `json:"OrganizationOpenId,omitempty" name:"OrganizationOpenId"`
+
+	// 用户真实的IP
+	ClientIp *string `json:"ClientIp,omitempty" name:"ClientIp"`
+
+	// 机构的代理IP
+	ProxyIp *string `json:"ProxyIp,omitempty" name:"ProxyIp"`
+
+	// 机构在平台的编号
+	OrganizationId *string `json:"OrganizationId,omitempty" name:"OrganizationId"`
+
+	// 用户渠道
+	Channel *string `json:"Channel,omitempty" name:"Channel"`
 }
 
 // Predefined struct for user

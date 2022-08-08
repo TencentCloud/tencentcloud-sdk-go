@@ -264,7 +264,7 @@ type Candidate struct {
 	// 人员ID
 	PersonId *string `json:"PersonId,omitempty" name:"PersonId"`
 
-	// 人脸ID
+	// 人脸ID，仅在SearchFaces/SearchFacesReturnsByGroup接口返回时有效。人员搜索类接口采用融合特征方式检索，该字段无意义
 	FaceId *string `json:"FaceId,omitempty" name:"FaceId"`
 
 	// 候选者的匹配得分。 
@@ -3120,7 +3120,7 @@ type SearchFacesReturnsByGroupRequestParams struct {
 	MinFaceSize *uint64 `json:"MinFaceSize,omitempty" name:"MinFaceSize"`
 
 	// 被检测到的人脸，对应最多返回的最相似人员数目。默认值为5，最大值为10。  
-	// 例，设MaxFaceNum为3，MaxPersonNum为5，则最多可能返回3*5=15个人员。
+	// 例，设MaxFaceNum为3，MaxPersonNumPerGroup为5，GroupIds长度为3，则最多可能返回3*5*3=45个人员。
 	MaxPersonNumPerGroup *uint64 `json:"MaxPersonNumPerGroup,omitempty" name:"MaxPersonNumPerGroup"`
 
 	// 是否返回人员具体信息。0 为关闭，1 为开启。默认为 0。其他非0非1值默认为0
@@ -3171,7 +3171,7 @@ type SearchFacesReturnsByGroupRequest struct {
 	MinFaceSize *uint64 `json:"MinFaceSize,omitempty" name:"MinFaceSize"`
 
 	// 被检测到的人脸，对应最多返回的最相似人员数目。默认值为5，最大值为10。  
-	// 例，设MaxFaceNum为3，MaxPersonNum为5，则最多可能返回3*5=15个人员。
+	// 例，设MaxFaceNum为3，MaxPersonNumPerGroup为5，GroupIds长度为3，则最多可能返回3*5*3=45个人员。
 	MaxPersonNumPerGroup *uint64 `json:"MaxPersonNumPerGroup,omitempty" name:"MaxPersonNumPerGroup"`
 
 	// 是否返回人员具体信息。0 为关闭，1 为开启。默认为 0。其他非0非1值默认为0

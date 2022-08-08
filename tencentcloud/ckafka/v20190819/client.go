@@ -3781,6 +3781,55 @@ func (c *Client) FetchMessageByOffsetWithContext(ctx context.Context, request *F
     return
 }
 
+func NewFetchMessageListByOffsetRequest() (request *FetchMessageListByOffsetRequest) {
+    request = &FetchMessageListByOffsetRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("ckafka", APIVersion, "FetchMessageListByOffset")
+    
+    
+    return
+}
+
+func NewFetchMessageListByOffsetResponse() (response *FetchMessageListByOffsetResponse) {
+    response = &FetchMessageListByOffsetResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// FetchMessageListByOffset
+// 根据位点查询消息列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+func (c *Client) FetchMessageListByOffset(request *FetchMessageListByOffsetRequest) (response *FetchMessageListByOffsetResponse, err error) {
+    return c.FetchMessageListByOffsetWithContext(context.Background(), request)
+}
+
+// FetchMessageListByOffset
+// 根据位点查询消息列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+func (c *Client) FetchMessageListByOffsetWithContext(ctx context.Context, request *FetchMessageListByOffsetRequest) (response *FetchMessageListByOffsetResponse, err error) {
+    if request == nil {
+        request = NewFetchMessageListByOffsetRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("FetchMessageListByOffset require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewFetchMessageListByOffsetResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyConnectResourceRequest() (request *ModifyConnectResourceRequest) {
     request = &ModifyConnectResourceRequest{
         BaseRequest: &tchttp.BaseRequest{},

@@ -155,6 +155,55 @@ func (c *Client) ChannelCreateBatchCancelFlowUrlWithContext(ctx context.Context,
     return
 }
 
+func NewChannelCreateConvertTaskApiRequest() (request *ChannelCreateConvertTaskApiRequest) {
+    request = &ChannelCreateConvertTaskApiRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("essbasic", APIVersion, "ChannelCreateConvertTaskApi")
+    
+    
+    return
+}
+
+func NewChannelCreateConvertTaskApiResponse() (response *ChannelCreateConvertTaskApiResponse) {
+    response = &ChannelCreateConvertTaskApiResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ChannelCreateConvertTaskApi
+// 渠道创建文件转换任务
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DEPENDSAPI = "InternalError.DependsApi"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+func (c *Client) ChannelCreateConvertTaskApi(request *ChannelCreateConvertTaskApiRequest) (response *ChannelCreateConvertTaskApiResponse, err error) {
+    return c.ChannelCreateConvertTaskApiWithContext(context.Background(), request)
+}
+
+// ChannelCreateConvertTaskApi
+// 渠道创建文件转换任务
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DEPENDSAPI = "InternalError.DependsApi"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+func (c *Client) ChannelCreateConvertTaskApiWithContext(ctx context.Context, request *ChannelCreateConvertTaskApiRequest) (response *ChannelCreateConvertTaskApiResponse, err error) {
+    if request == nil {
+        request = NewChannelCreateConvertTaskApiRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ChannelCreateConvertTaskApi require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewChannelCreateConvertTaskApiResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewChannelCreateFlowByFilesRequest() (request *ChannelCreateFlowByFilesRequest) {
     request = &ChannelCreateFlowByFilesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -271,6 +320,7 @@ func NewChannelCreateMultiFlowSignQRCodeResponse() (response *ChannelCreateMulti
 //  FAILEDOPERATION_QRCODETEMPLATEID = "FailedOperation.QrCodeTemplateId"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED_NOQUOTA = "OperationDenied.NoQuota"
 //  RESOURCENOTFOUND = "ResourceNotFound"
@@ -291,6 +341,7 @@ func (c *Client) ChannelCreateMultiFlowSignQRCode(request *ChannelCreateMultiFlo
 //  FAILEDOPERATION_QRCODETEMPLATEID = "FailedOperation.QrCodeTemplateId"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED_NOQUOTA = "OperationDenied.NoQuota"
 //  RESOURCENOTFOUND = "ResourceNotFound"
@@ -307,6 +358,53 @@ func (c *Client) ChannelCreateMultiFlowSignQRCodeWithContext(ctx context.Context
     request.SetContext(ctx)
     
     response = NewChannelCreateMultiFlowSignQRCodeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewChannelGetTaskResultApiRequest() (request *ChannelGetTaskResultApiRequest) {
+    request = &ChannelGetTaskResultApiRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("essbasic", APIVersion, "ChannelGetTaskResultApi")
+    
+    
+    return
+}
+
+func NewChannelGetTaskResultApiResponse() (response *ChannelGetTaskResultApiResponse) {
+    response = &ChannelGetTaskResultApiResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ChannelGetTaskResultApi
+// 渠道版查询转换任务状态
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+func (c *Client) ChannelGetTaskResultApi(request *ChannelGetTaskResultApiRequest) (response *ChannelGetTaskResultApiResponse, err error) {
+    return c.ChannelGetTaskResultApiWithContext(context.Background(), request)
+}
+
+// ChannelGetTaskResultApi
+// 渠道版查询转换任务状态
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+func (c *Client) ChannelGetTaskResultApiWithContext(ctx context.Context, request *ChannelGetTaskResultApiRequest) (response *ChannelGetTaskResultApiResponse, err error) {
+    if request == nil {
+        request = NewChannelGetTaskResultApiRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ChannelGetTaskResultApi require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewChannelGetTaskResultApiResponse()
     err = c.Send(request, response)
     return
 }
@@ -1099,6 +1197,7 @@ func NewPrepareFlowsResponse() (response *PrepareFlowsResponse) {
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_API = "InternalError.Api"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_DATANOTFOUND = "InvalidParameter.DataNotFound"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
@@ -1122,6 +1221,7 @@ func (c *Client) PrepareFlows(request *PrepareFlowsRequest) (response *PrepareFl
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_API = "InternalError.Api"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_DATANOTFOUND = "InvalidParameter.DataNotFound"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"

@@ -322,6 +322,17 @@ type BandwidthInfo struct {
 	Bandwidth *float64 `json:"Bandwidth,omitempty" name:"Bandwidth"`
 }
 
+type BatchDomainOperateErrors struct {
+	// 操作失败的域名。
+	DomainName *string `json:"DomainName,omitempty" name:"DomainName"`
+
+	// API3.0错误码。
+	Code *string `json:"Code,omitempty" name:"Code"`
+
+	// API3.0错误信息。
+	Message *string `json:"Message,omitempty" name:"Message"`
+}
+
 type BillAreaInfo struct {
 	// 大区名称
 	Name *string `json:"Name,omitempty" name:"Name"`
@@ -4764,8 +4775,8 @@ type DescribeLiveDomainCertBindingsRequestParams struct {
 	DomainName *string `json:"DomainName,omitempty" name:"DomainName"`
 
 	// 可取值：
-	// ExpireTimeAsc：证书过期时间降序。
-	// ExpireTimeDesc：证书过期时间升序。
+	// ExpireTimeAsc：证书过期时间升序。
+	// ExpireTimeDesc：证书过期时间降序。
 	OrderBy *string `json:"OrderBy,omitempty" name:"OrderBy"`
 }
 
@@ -4786,8 +4797,8 @@ type DescribeLiveDomainCertBindingsRequest struct {
 	DomainName *string `json:"DomainName,omitempty" name:"DomainName"`
 
 	// 可取值：
-	// ExpireTimeAsc：证书过期时间降序。
-	// ExpireTimeDesc：证书过期时间升序。
+	// ExpireTimeAsc：证书过期时间升序。
+	// ExpireTimeDesc：证书过期时间降序。
 	OrderBy *string `json:"OrderBy,omitempty" name:"OrderBy"`
 }
 
@@ -4816,6 +4827,12 @@ func (r *DescribeLiveDomainCertBindingsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeLiveDomainCertBindingsResponseParams struct {
+	// 有绑定证书的域名信息数组。
+	LiveDomainCertBindings []*LiveDomainCertBindings `json:"LiveDomainCertBindings,omitempty" name:"LiveDomainCertBindings"`
+
+	// 总的记录行数，便于分页。
+	TotalNum *int64 `json:"TotalNum,omitempty" name:"TotalNum"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }
@@ -9372,6 +9389,37 @@ type LiveCertDomainInfo struct {
 	Status *int64 `json:"Status,omitempty" name:"Status"`
 }
 
+type LiveDomainCertBindings struct {
+	// 域名。
+	DomainName *string `json:"DomainName,omitempty" name:"DomainName"`
+
+	// 证书备注。与CertName同义。
+	CertificateAlias *string `json:"CertificateAlias,omitempty" name:"CertificateAlias"`
+
+	// 证书类型。
+	// 0：自有证书
+	// 1：腾讯云ssl托管证书
+	CertType *int64 `json:"CertType,omitempty" name:"CertType"`
+
+	// https状态。
+	// 1：已开启。
+	// 0：已关闭。
+	Status *int64 `json:"Status,omitempty" name:"Status"`
+
+	// 证书过期时间。
+	CertExpireTime *string `json:"CertExpireTime,omitempty" name:"CertExpireTime"`
+
+	// 证书Id。
+	CertId *int64 `json:"CertId,omitempty" name:"CertId"`
+
+	// 腾讯云ssl的证书Id。
+	CloudCertId *string `json:"CloudCertId,omitempty" name:"CloudCertId"`
+
+	// 规则最后更新时间。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+}
+
 type LivePackageInfo struct {
 	// 包 ID。
 	Id *string `json:"Id,omitempty" name:"Id"`
@@ -9614,6 +9662,10 @@ func (r *ModifyLiveDomainCertBindingsRequest) FromJsonString(s string) error {
 type ModifyLiveDomainCertBindingsResponseParams struct {
 	// DomainNames 入参中，与证书不匹配的域名列表，将会跳过处理。
 	MismatchedDomainNames []*string `json:"MismatchedDomainNames,omitempty" name:"MismatchedDomainNames"`
+
+	// 操作失败的域名及错误码，错误信息，包括MismatchedDomainNames中的域名。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Errors []*BatchDomainOperateErrors `json:"Errors,omitempty" name:"Errors"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`

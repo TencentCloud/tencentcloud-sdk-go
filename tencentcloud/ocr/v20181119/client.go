@@ -347,6 +347,10 @@ func NewBizLicenseOCRResponse() (response *BizLicenseOCRResponse) {
 // BizLicenseOCR
 // 本接口支持快速精准识别营业执照上的字段，包括统一社会信用代码、公司名称、经营场所、主体类型、法定代表人、注册资金、组成形式、成立日期、营业期限和经营范围等字段。
 //
+// 
+//
+// 默认接口请求频率限制：10次/秒。
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
 //  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
@@ -362,6 +366,10 @@ func (c *Client) BizLicenseOCR(request *BizLicenseOCRRequest) (response *BizLice
 
 // BizLicenseOCR
 // 本接口支持快速精准识别营业执照上的字段，包括统一社会信用代码、公司名称、经营场所、主体类型、法定代表人、注册资金、组成形式、成立日期、营业期限和经营范围等字段。
+//
+// 
+//
+// 默认接口请求频率限制：10次/秒。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
@@ -676,6 +684,10 @@ func NewDriverLicenseOCRResponse() (response *DriverLicenseOCRResponse) {
 //
 // 电子驾驶证正页：包括证号、姓名、性别、国籍、出生日期、初次领证日期、准驾车型、有效期开始时间、有效期截止时间、档案编号、状态、累积记分。
 //
+// 
+//
+// 默认接口请求频率限制：10次/秒。
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
 //  FAILEDOPERATION_EMPTYIMAGEERROR = "FailedOperation.EmptyImageError"
@@ -712,6 +724,10 @@ func (c *Client) DriverLicenseOCR(request *DriverLicenseOCRRequest) (response *D
 // 
 //
 // 电子驾驶证正页：包括证号、姓名、性别、国籍、出生日期、初次领证日期、准驾车型、有效期开始时间、有效期截止时间、档案编号、状态、累积记分。
+//
+// 
+//
+// 默认接口请求频率限制：10次/秒。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
@@ -889,6 +905,10 @@ func NewEnglishOCRResponse() (response *EnglishOCRResponse) {
 // EnglishOCR
 // 本接口支持图像英文文字的检测和识别，返回文字框位置与文字内容。支持多场景、任意版面下的英文、字母、数字和常见字符的识别，同时覆盖英文印刷体和英文手写体识别。
 //
+// 
+//
+// 默认接口请求频率限制：10次/秒。
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
 //  FAILEDOPERATION_EMPTYIMAGEERROR = "FailedOperation.EmptyImageError"
@@ -907,6 +927,10 @@ func (c *Client) EnglishOCR(request *EnglishOCRRequest) (response *EnglishOCRRes
 
 // EnglishOCR
 // 本接口支持图像英文文字的检测和识别，返回文字框位置与文字内容。支持多场景、任意版面下的英文、字母、数字和常见字符的识别，同时覆盖英文印刷体和英文手写体识别。
+//
+// 
+//
+// 默认接口请求频率限制：10次/秒。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
@@ -3344,6 +3368,10 @@ func NewMixedInvoiceOCRResponse() (response *MixedInvoiceOCRResponse) {
 // MixedInvoiceOCR
 // 本接口支持 单张、多张、多类型 票据的混合识别，同时支持自选需要识别的票据类型，已支持票种包括：增值税发票（专票、普票、卷票）、全电发票、非税发票、定额发票、通用机打发票、购车发票、火车票、出租车发票、机票行程单、汽车票、轮船票、过路过桥费发票共14种标准报销发票，并支持其他类发票的识别。
 //
+// 
+//
+// 默认接口请求频率限制：5次/秒。
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
 //  FAILEDOPERATION_IMAGEBLUR = "FailedOperation.ImageBlur"
@@ -3360,6 +3388,10 @@ func (c *Client) MixedInvoiceOCR(request *MixedInvoiceOCRRequest) (response *Mix
 
 // MixedInvoiceOCR
 // 本接口支持 单张、多张、多类型 票据的混合识别，同时支持自选需要识别的票据类型，已支持票种包括：增值税发票（专票、普票、卷票）、全电发票、非税发票、定额发票、通用机打发票、购车发票、火车票、出租车发票、机票行程单、汽车票、轮船票、过路过桥费发票共14种标准报销发票，并支持其他类发票的识别。
+//
+// 
+//
+// 默认接口请求频率限制：5次/秒。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
@@ -3921,6 +3953,10 @@ func NewRecognizeHealthCodeOCRResponse() (response *RecognizeHealthCodeOCRRespon
 // RecognizeHealthCodeOCR
 // 本接口支持北京、上海、广东、江苏、吉林、黑龙江、天津、辽宁、浙江、河南、四川、贵州、山东、安徽、福建、江西、湖南等省份健康码的识别，包括持码人姓名、持码人身份证号、健康码更新时间、健康码颜色、核酸检测结果、核酸检测间隔时长、核酸检测时间，疫苗接种信息，八个字段的识别结果输出。不同省市健康码显示的字段信息有所不同，上述字段的识别结果可能为空，以图片上具体展示的信息为准。
 //
+// 
+//
+// 默认接口请求频率限制：10次/秒。
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
 //  FAILEDOPERATION_EMPTYIMAGEERROR = "FailedOperation.EmptyImageError"
@@ -3939,6 +3975,10 @@ func (c *Client) RecognizeHealthCodeOCR(request *RecognizeHealthCodeOCRRequest) 
 
 // RecognizeHealthCodeOCR
 // 本接口支持北京、上海、广东、江苏、吉林、黑龙江、天津、辽宁、浙江、河南、四川、贵州、山东、安徽、福建、江西、湖南等省份健康码的识别，包括持码人姓名、持码人身份证号、健康码更新时间、健康码颜色、核酸检测结果、核酸检测间隔时长、核酸检测时间，疫苗接种信息，八个字段的识别结果输出。不同省市健康码显示的字段信息有所不同，上述字段的识别结果可能为空，以图片上具体展示的信息为准。
+//
+// 
+//
+// 默认接口请求频率限制：10次/秒。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
@@ -4766,6 +4806,10 @@ func NewSmartStructuralOCRResponse() (response *SmartStructuralOCRResponse) {
 // SmartStructuralOCR
 // 本接口支持识别并提取各类证照、票据、表单、合同等结构化场景的字段信息。无需任何配置，灵活高效。适用于各类结构化信息录入场景。
 //
+// 
+//
+// 默认接口请求频率限制：5次/秒。
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
 //  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
@@ -4781,6 +4825,10 @@ func (c *Client) SmartStructuralOCR(request *SmartStructuralOCRRequest) (respons
 
 // SmartStructuralOCR
 // 本接口支持识别并提取各类证照、票据、表单、合同等结构化场景的字段信息。无需任何配置，灵活高效。适用于各类结构化信息录入场景。
+//
+// 
+//
+// 默认接口请求频率限制：5次/秒。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
@@ -5154,6 +5202,10 @@ func NewVatInvoiceOCRResponse() (response *VatInvoiceOCRResponse) {
 // VatInvoiceOCR
 // 本接口支持增值税专用发票、增值税普通发票、增值税电子发票全字段的内容检测和识别，包括发票代码、发票号码、打印发票代码、打印发票号码、开票日期、合计金额、校验码、税率、合计税额、价税合计、购买方识别号、复核、销售方识别号、开票人、密码区1、密码区2、密码区3、密码区4、发票名称、购买方名称、销售方名称、服务名称、备注、规格型号、数量、单价、金额、税额、收款人等字段。
 //
+// 
+//
+// 默认接口请求频率限制：10次/秒。
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
 //  FAILEDOPERATION_EMPTYIMAGEERROR = "FailedOperation.EmptyImageError"
@@ -5174,6 +5226,10 @@ func (c *Client) VatInvoiceOCR(request *VatInvoiceOCRRequest) (response *VatInvo
 
 // VatInvoiceOCR
 // 本接口支持增值税专用发票、增值税普通发票、增值税电子发票全字段的内容检测和识别，包括发票代码、发票号码、打印发票代码、打印发票号码、开票日期、合计金额、校验码、税率、合计税额、价税合计、购买方识别号、复核、销售方识别号、开票人、密码区1、密码区2、密码区3、密码区4、发票名称、购买方名称、销售方名称、服务名称、备注、规格型号、数量、单价、金额、税额、收款人等字段。
+//
+// 
+//
+// 默认接口请求频率限制：10次/秒。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
@@ -5442,6 +5498,10 @@ func NewVehicleLicenseOCRResponse() (response *VehicleLicenseOCRResponse) {
 //
 // 另外，本接口还支持复印件、翻拍和PS告警功能。
 //
+// 
+//
+// 默认接口请求频率限制：10次/秒。
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
 //  FAILEDOPERATION_EMPTYIMAGEERROR = "FailedOperation.EmptyImageError"
@@ -5474,6 +5534,10 @@ func (c *Client) VehicleLicenseOCR(request *VehicleLicenseOCRRequest) (response 
 // 
 //
 // 另外，本接口还支持复印件、翻拍和PS告警功能。
+//
+// 
+//
+// 默认接口请求频率限制：10次/秒。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"

@@ -5721,6 +5721,91 @@ func (r *FetchMessageByOffsetResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type FetchMessageListByOffsetRequestParams struct {
+	// 实例Id
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 主题名
+	Topic *string `json:"Topic,omitempty" name:"Topic"`
+
+	// 分区id
+	Partition *int64 `json:"Partition,omitempty" name:"Partition"`
+
+	// 位点信息
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 最大查询条数，默认20，最大20
+	SinglePartitionRecordNumber *int64 `json:"SinglePartitionRecordNumber,omitempty" name:"SinglePartitionRecordNumber"`
+}
+
+type FetchMessageListByOffsetRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例Id
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 主题名
+	Topic *string `json:"Topic,omitempty" name:"Topic"`
+
+	// 分区id
+	Partition *int64 `json:"Partition,omitempty" name:"Partition"`
+
+	// 位点信息
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 最大查询条数，默认20，最大20
+	SinglePartitionRecordNumber *int64 `json:"SinglePartitionRecordNumber,omitempty" name:"SinglePartitionRecordNumber"`
+}
+
+func (r *FetchMessageListByOffsetRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *FetchMessageListByOffsetRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "Topic")
+	delete(f, "Partition")
+	delete(f, "Offset")
+	delete(f, "SinglePartitionRecordNumber")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "FetchMessageListByOffsetRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type FetchMessageListByOffsetResponseParams struct {
+	// 返回结果。注意，列表中不返回具体的消息内容（key、value），如果需要查询具体消息内容，请使用FetchMessageByOffset接口
+	Result []*ConsumerRecord `json:"Result,omitempty" name:"Result"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type FetchMessageListByOffsetResponse struct {
+	*tchttp.BaseResponse
+	Response *FetchMessageListByOffsetResponseParams `json:"Response"`
+}
+
+func (r *FetchMessageListByOffsetResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *FetchMessageListByOffsetResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type FieldParam struct {
 	// 解析
 	Analyse *AnalyseParam `json:"Analyse,omitempty" name:"Analyse"`

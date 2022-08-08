@@ -29,9 +29,6 @@ const (
 	// 业务系统逻辑错误。
 	INTERNALERROR_BACKENDLOGICERROR = "InternalError.BackendLogicError"
 
-	// 连接数据库超时。
-	INTERNALERROR_CONNECTDBTIMEOUT = "InternalError.ConnectDBTimeout"
-
 	// Sign后端错误。
 	INTERNALERROR_SIGNBACKENDERROR = "InternalError.SignBackendError"
 
@@ -58,21 +55,6 @@ const (
 
 	// HTTP方法错误。
 	INVALIDPARAMETERVALUE_HTTPMETHODERROR = "InvalidParameterValue.HttpMethodError"
-
-	// 日期取值错误。
-	INVALIDPARAMETERVALUE_INVALIDDATE = "InvalidParameterValue.InvalidDate"
-
-	// PageLimit取值错误。
-	INVALIDPARAMETERVALUE_INVALIDLIMIT = "InvalidParameterValue.InvalidLimit"
-
-	// PageNum取值错误。
-	INVALIDPARAMETERVALUE_INVALIDNUM = "InvalidParameterValue.InvalidNum"
-
-	// SrvId取值错误。
-	INVALIDPARAMETERVALUE_INVALIDSRVID = "InvalidParameterValue.InvalidSrvId"
-
-	// Stride取值错误。
-	INVALIDPARAMETERVALUE_INVALIDSTRIDE = "InvalidParameterValue.InvalidStride"
 
 	// 超过配额。
 	LIMITEXCEEDED_FREQCNT = "LimitExceeded.FreqCnt"

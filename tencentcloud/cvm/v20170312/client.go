@@ -1467,6 +1467,55 @@ func (c *Client) DescribeAccountQuotaWithContext(ctx context.Context, request *D
     return
 }
 
+func NewDescribeChcDeniedActionsRequest() (request *DescribeChcDeniedActionsRequest) {
+    request = &DescribeChcDeniedActionsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("cvm", APIVersion, "DescribeChcDeniedActions")
+    
+    
+    return
+}
+
+func NewDescribeChcDeniedActionsResponse() (response *DescribeChcDeniedActionsResponse) {
+    response = &DescribeChcDeniedActionsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeChcDeniedActions
+// 查询CHC物理服务器禁止做的操作，返回给用户
+//
+// 可能返回的错误码:
+//  ACCOUNTQUALIFICATIONRESTRICTIONS = "AccountQualificationRestrictions"
+//  INVALIDPARAMETERVALUE_CHCHOSTSNOTFOUND = "InvalidParameterValue.ChcHostsNotFound"
+func (c *Client) DescribeChcDeniedActions(request *DescribeChcDeniedActionsRequest) (response *DescribeChcDeniedActionsResponse, err error) {
+    return c.DescribeChcDeniedActionsWithContext(context.Background(), request)
+}
+
+// DescribeChcDeniedActions
+// 查询CHC物理服务器禁止做的操作，返回给用户
+//
+// 可能返回的错误码:
+//  ACCOUNTQUALIFICATIONRESTRICTIONS = "AccountQualificationRestrictions"
+//  INVALIDPARAMETERVALUE_CHCHOSTSNOTFOUND = "InvalidParameterValue.ChcHostsNotFound"
+func (c *Client) DescribeChcDeniedActionsWithContext(ctx context.Context, request *DescribeChcDeniedActionsRequest) (response *DescribeChcDeniedActionsResponse, err error) {
+    if request == nil {
+        request = NewDescribeChcDeniedActionsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeChcDeniedActions require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeChcDeniedActionsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeChcHostsRequest() (request *DescribeChcHostsRequest) {
     request = &DescribeChcHostsRequest{
         BaseRequest: &tchttp.BaseRequest{},
