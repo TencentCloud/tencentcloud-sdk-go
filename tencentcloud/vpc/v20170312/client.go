@@ -332,6 +332,7 @@ func NewAdjustPublicAddressResponse() (response *AdjustPublicAddressResponse) {
 //  INVALIDPARAMETERVALUE_ADDRESSATTACKED = "InvalidParameterValue.AddressAttacked"
 //  INVALIDPARAMETERVALUE_ADDRESSIPNOTAVAILABLE = "InvalidParameterValue.AddressIpNotAvailable"
 //  INVALIDPARAMETERVALUE_ADDRESSNOTFOUND = "InvalidParameterValue.AddressNotFound"
+//  INVALIDPARAMETERVALUE_INSTANCEHASNOWANIP = "InvalidParameterValue.InstanceHasNoWanIP"
 //  INVALIDPARAMETERVALUE_INSTANCEIDMALFORMED = "InvalidParameterValue.InstanceIdMalformed"
 //  INVALIDPARAMETERVALUE_INSTANCENOWANIP = "InvalidParameterValue.InstanceNoWanIP"
 //  INVALIDPARAMETERVALUE_RESOURCENOTSUPPORT = "InvalidParameterValue.ResourceNotSupport"
@@ -358,6 +359,7 @@ func (c *Client) AdjustPublicAddress(request *AdjustPublicAddressRequest) (respo
 //  INVALIDPARAMETERVALUE_ADDRESSATTACKED = "InvalidParameterValue.AddressAttacked"
 //  INVALIDPARAMETERVALUE_ADDRESSIPNOTAVAILABLE = "InvalidParameterValue.AddressIpNotAvailable"
 //  INVALIDPARAMETERVALUE_ADDRESSNOTFOUND = "InvalidParameterValue.AddressNotFound"
+//  INVALIDPARAMETERVALUE_INSTANCEHASNOWANIP = "InvalidParameterValue.InstanceHasNoWanIP"
 //  INVALIDPARAMETERVALUE_INSTANCEIDMALFORMED = "InvalidParameterValue.InstanceIdMalformed"
 //  INVALIDPARAMETERVALUE_INSTANCENOWANIP = "InvalidParameterValue.InstanceNoWanIP"
 //  INVALIDPARAMETERVALUE_RESOURCENOTSUPPORT = "InvalidParameterValue.ResourceNotSupport"
@@ -1930,6 +1932,7 @@ func NewCreateAddressTemplateResponse() (response *CreateAddressTemplateResponse
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_DUPLICATE = "InvalidParameterValue.Duplicate"
 //  INVALIDPARAMETERVALUE_EMPTY = "InvalidParameterValue.Empty"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
 //  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
 //  LIMITEXCEEDED = "LimitExceeded"
@@ -1944,6 +1947,7 @@ func (c *Client) CreateAddressTemplate(request *CreateAddressTemplateRequest) (r
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_DUPLICATE = "InvalidParameterValue.Duplicate"
 //  INVALIDPARAMETERVALUE_EMPTY = "InvalidParameterValue.Empty"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
 //  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
 //  LIMITEXCEEDED = "LimitExceeded"
@@ -6958,6 +6962,7 @@ func NewDeleteVpcResponse() (response *DeleteVpcResponse) {
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION_APPIDMISMATCH = "UnsupportedOperation.AppIdMismatch"
 //  UNSUPPORTEDOPERATION_RECORDNOTEXISTS = "UnsupportedOperation.RecordNotExists"
+//  UNSUPPORTEDOPERATION_ROUTETABLEHASSUBNETRULE = "UnsupportedOperation.RouteTableHasSubnetRule"
 func (c *Client) DeleteVpc(request *DeleteVpcRequest) (response *DeleteVpcResponse, err error) {
     return c.DeleteVpcWithContext(context.Background(), request)
 }
@@ -6976,6 +6981,7 @@ func (c *Client) DeleteVpc(request *DeleteVpcRequest) (response *DeleteVpcRespon
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION_APPIDMISMATCH = "UnsupportedOperation.AppIdMismatch"
 //  UNSUPPORTEDOPERATION_RECORDNOTEXISTS = "UnsupportedOperation.RecordNotExists"
+//  UNSUPPORTEDOPERATION_ROUTETABLEHASSUBNETRULE = "UnsupportedOperation.RouteTableHasSubnetRule"
 func (c *Client) DeleteVpcWithContext(ctx context.Context, request *DeleteVpcRequest) (response *DeleteVpcResponse, err error) {
     if request == nil {
         request = NewDeleteVpcRequest()
@@ -7856,6 +7862,7 @@ func NewDescribeBandwidthPackageResourcesResponse() (response *DescribeBandwidth
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFILTER = "InvalidParameter.InvalidFilter"
 //  INVALIDPARAMETERVALUE_BANDWIDTHPACKAGEIDMALFORMED = "InvalidParameterValue.BandwidthPackageIdMalformed"
 //  INVALIDPARAMETERVALUE_BANDWIDTHPACKAGENOTFOUND = "InvalidParameterValue.BandwidthPackageNotFound"
 //  INVALIDPARAMETERVALUE_RESOURCEIDMALFORMED = "InvalidParameterValue.ResourceIdMalformed"
@@ -7868,6 +7875,7 @@ func (c *Client) DescribeBandwidthPackageResources(request *DescribeBandwidthPac
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFILTER = "InvalidParameter.InvalidFilter"
 //  INVALIDPARAMETERVALUE_BANDWIDTHPACKAGEIDMALFORMED = "InvalidParameterValue.BandwidthPackageIdMalformed"
 //  INVALIDPARAMETERVALUE_BANDWIDTHPACKAGENOTFOUND = "InvalidParameterValue.BandwidthPackageNotFound"
 //  INVALIDPARAMETERVALUE_RESOURCEIDMALFORMED = "InvalidParameterValue.ResourceIdMalformed"
@@ -8686,6 +8694,7 @@ func NewDescribeFlowLogsResponse() (response *DescribeFlowLogsResponse) {
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
 //  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
+//  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeFlowLogs(request *DescribeFlowLogsRequest) (response *DescribeFlowLogsResponse, err error) {
     return c.DescribeFlowLogsWithContext(context.Background(), request)
@@ -8697,6 +8706,7 @@ func (c *Client) DescribeFlowLogs(request *DescribeFlowLogsRequest) (response *D
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
 //  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
+//  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeFlowLogsWithContext(ctx context.Context, request *DescribeFlowLogsRequest) (response *DescribeFlowLogsResponse, err error) {
     if request == nil {
@@ -10358,6 +10368,7 @@ func NewDescribeSubnetsResponse() (response *DescribeSubnetsResponse) {
 // 本接口（DescribeSubnets）用于查询子网列表。
 //
 // 可能返回的错误码:
+//  INTERNALERROR_MODULEERROR = "InternalError.ModuleError"
 //  INVALIDPARAMETER_COEXIST = "InvalidParameter.Coexist"
 //  INVALIDPARAMETER_FILTERINVALIDKEY = "InvalidParameter.FilterInvalidKey"
 //  INVALIDPARAMETER_FILTERNOTDICT = "InvalidParameter.FilterNotDict"
@@ -10377,6 +10388,7 @@ func (c *Client) DescribeSubnets(request *DescribeSubnetsRequest) (response *Des
 // 本接口（DescribeSubnets）用于查询子网列表。
 //
 // 可能返回的错误码:
+//  INTERNALERROR_MODULEERROR = "InternalError.ModuleError"
 //  INVALIDPARAMETER_COEXIST = "InvalidParameter.Coexist"
 //  INVALIDPARAMETER_FILTERINVALIDKEY = "InvalidParameter.FilterInvalidKey"
 //  INVALIDPARAMETER_FILTERNOTDICT = "InvalidParameter.FilterNotDict"
@@ -11197,6 +11209,7 @@ func NewDescribeVpcsResponse() (response *DescribeVpcsResponse) {
 // 本接口（DescribeVpcs）用于查询私有网络列表。
 //
 // 可能返回的错误码:
+//  INTERNALERROR_MODULEERROR = "InternalError.ModuleError"
 //  INVALIDPARAMETER_COEXIST = "InvalidParameter.Coexist"
 //  INVALIDPARAMETER_FILTERINVALIDKEY = "InvalidParameter.FilterInvalidKey"
 //  INVALIDPARAMETER_FILTERNOTDICT = "InvalidParameter.FilterNotDict"
@@ -11214,6 +11227,7 @@ func (c *Client) DescribeVpcs(request *DescribeVpcsRequest) (response *DescribeV
 // 本接口（DescribeVpcs）用于查询私有网络列表。
 //
 // 可能返回的错误码:
+//  INTERNALERROR_MODULEERROR = "InternalError.ModuleError"
 //  INVALIDPARAMETER_COEXIST = "InvalidParameter.Coexist"
 //  INVALIDPARAMETER_FILTERINVALIDKEY = "InvalidParameter.FilterInvalidKey"
 //  INVALIDPARAMETER_FILTERNOTDICT = "InvalidParameter.FilterNotDict"

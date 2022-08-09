@@ -50,6 +50,9 @@ const (
 	// 创建Ckafka路由失败，请稍后重试。
 	INTERNALERROR_CREATECKAFKAROUTEERROR = "InternalError.CreateCkafkaRouteError"
 
+	// 内部模块错误。
+	INTERNALERROR_MODULEERROR = "InternalError.ModuleError"
+
 	// 操作内部错误。
 	INTERNALSERVERERROR = "InternalServerError"
 

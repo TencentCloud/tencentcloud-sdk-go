@@ -2375,74 +2375,6 @@ type DefaultAlarmThreshold struct {
 }
 
 // Predefined struct for user
-type DeleteBlackWhiteIpListRequestParams struct {
-	// 资源实例ID
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
-
-	// IP列表
-	IpList []*string `json:"IpList,omitempty" name:"IpList"`
-
-	// IP类型，取值[black(黑名单IP), white(白名单IP)]
-	Type *string `json:"Type,omitempty" name:"Type"`
-}
-
-type DeleteBlackWhiteIpListRequest struct {
-	*tchttp.BaseRequest
-	
-	// 资源实例ID
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
-
-	// IP列表
-	IpList []*string `json:"IpList,omitempty" name:"IpList"`
-
-	// IP类型，取值[black(黑名单IP), white(白名单IP)]
-	Type *string `json:"Type,omitempty" name:"Type"`
-}
-
-func (r *DeleteBlackWhiteIpListRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DeleteBlackWhiteIpListRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "InstanceId")
-	delete(f, "IpList")
-	delete(f, "Type")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteBlackWhiteIpListRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DeleteBlackWhiteIpListResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-}
-
-type DeleteBlackWhiteIpListResponse struct {
-	*tchttp.BaseResponse
-	Response *DeleteBlackWhiteIpListResponseParams `json:"Response"`
-}
-
-func (r *DeleteBlackWhiteIpListResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DeleteBlackWhiteIpListResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
 type DeleteCCLevelPolicyRequestParams struct {
 	// 实例Id
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
@@ -3320,6 +3252,107 @@ func (r *DescribeBasicDeviceStatusResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeBasicDeviceStatusResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeBgpBizTrendRequestParams struct {
+	// 大禹子产品代号（bgp-multip表示高防包）
+	Business *string `json:"Business,omitempty" name:"Business"`
+
+	// 统计开始时间。 例：“2020-09-22 00:00:00”
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 统计结束时间。 例：“2020-09-22 00:00:00”
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 统计纬度，可取值intraffic, outtraffic, inpkg, outpkg
+	MetricName *string `json:"MetricName,omitempty" name:"MetricName"`
+
+	// 资源实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 0表示固定时间，1表示自定义时间
+	Flag *uint64 `json:"Flag,omitempty" name:"Flag"`
+}
+
+type DescribeBgpBizTrendRequest struct {
+	*tchttp.BaseRequest
+	
+	// 大禹子产品代号（bgp-multip表示高防包）
+	Business *string `json:"Business,omitempty" name:"Business"`
+
+	// 统计开始时间。 例：“2020-09-22 00:00:00”
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 统计结束时间。 例：“2020-09-22 00:00:00”
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 统计纬度，可取值intraffic, outtraffic, inpkg, outpkg
+	MetricName *string `json:"MetricName,omitempty" name:"MetricName"`
+
+	// 资源实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 0表示固定时间，1表示自定义时间
+	Flag *uint64 `json:"Flag,omitempty" name:"Flag"`
+}
+
+func (r *DescribeBgpBizTrendRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBgpBizTrendRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Business")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "MetricName")
+	delete(f, "InstanceId")
+	delete(f, "Flag")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBgpBizTrendRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeBgpBizTrendResponseParams struct {
+	// 曲线图各个时间点的值
+	DataList []*uint64 `json:"DataList,omitempty" name:"DataList"`
+
+	// 曲线图取值个数
+	Total *uint64 `json:"Total,omitempty" name:"Total"`
+
+	// 统计纬度
+	MetricName *string `json:"MetricName,omitempty" name:"MetricName"`
+
+	// 返回数组最大值
+	MaxData *uint64 `json:"MaxData,omitempty" name:"MaxData"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeBgpBizTrendResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeBgpBizTrendResponseParams `json:"Response"`
+}
+
+func (r *DescribeBgpBizTrendResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBgpBizTrendResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
