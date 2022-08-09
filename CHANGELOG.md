@@ -1,3 +1,253 @@
+# Release v1.0.468
+
+## 活动防刷(aa) 版本：2020-02-24
+
+### 第 7 次发布
+
+发布时间：2022-08-08 06:02:45
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除接口**：</font>
+
+* ManageMarketingRisk
+* QueryActivityAntiRushAdvanced
+
+<font color="#dd0000">**删除数据结构**：</font>
+
+* AccountInfo
+* CrowdAntiRushInfo
+* InputActivityAntiRushAdvanced
+* InputDetails
+* InputManageMarketingRisk
+* OnlineScamInfo
+* OtherAccountInfo
+* OutputActivityAntiRushAdvanced
+* OutputActivityAntiRushAdvancedValue
+* OutputManageMarketingRisk
+* OutputManageMarketingRiskValue
+* QQAccountInfo
+* SponsorInfo
+* WeChatAccountInfo
+
+
+
+## 消息队列 Ckafka(ckafka) 版本：2019-08-19
+
+### 第 49 次发布
+
+发布时间：2022-08-08 06:10:42
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [FetchMessageListByOffset](https://cloud.tencent.com/document/api/597/47896)
+
+
+
+## 云服务器(cvm) 版本：2017-03-12
+
+### 第 92 次发布
+
+发布时间：2022-08-08 06:14:02
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeChcDeniedActions](https://cloud.tencent.com/document/api/213/78724)
+
+新增数据结构：
+
+* [ChcHostDeniedActions](https://cloud.tencent.com/document/api/213/15753#ChcHostDeniedActions)
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
+
+### 第 25 次发布
+
+发布时间：2022-08-08 10:31:46
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [ChannelCreateConvertTaskApi](https://cloud.tencent.com/document/api/1420/78774)
+* [ChannelGetTaskResultApi](https://cloud.tencent.com/document/api/1420/78773)
+
+新增数据结构：
+
+* [OrganizationInfo](https://cloud.tencent.com/document/api/1420/61525#OrganizationInfo)
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
+
+
+
+## 云直播(live) 版本：2018-08-01
+
+### 第 84 次发布
+
+发布时间：2022-08-08 06:27:50
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeLiveDomainCertBindings](https://cloud.tencent.com/document/api/267/78656)
+
+	* 新增出参：LiveDomainCertBindings, TotalNum
+
+* [ModifyLiveDomainCertBindings](https://cloud.tencent.com/document/api/267/78655)
+
+	* 新增出参：Errors
+
+
+新增数据结构：
+
+* [BatchDomainOperateErrors](https://cloud.tencent.com/document/api/267/20474#BatchDomainOperateErrors)
+* [LiveDomainCertBindings](https://cloud.tencent.com/document/api/267/20474#LiveDomainCertBindings)
+
+
+
+## 标签(tag) 版本：2018-08-13
+
+### 第 11 次发布
+
+发布时间：2022-08-08 06:36:01
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeProjects](https://cloud.tencent.com/document/api/651/78725)
+
+新增数据结构：
+
+* [Project](https://cloud.tencent.com/document/api/651/35327#Project)
+
+
+
+## 实时音视频(trtc) 版本：2019-07-22
+
+### 第 37 次发布
+
+发布时间：2022-08-08 06:44:27
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除接口**：</font>
+
+* DescribeAbnormalEvent
+* DescribeCallDetail
+* DescribeDetailEvent
+* DescribeHistoryScale
+* DescribeRoomInformation
+* DescribeUserInformation
+
+
+
+## 数据开发治理平台 WeData(wedata) 版本：2021-08-20
+
+### 第 3 次发布
+
+发布时间：2022-08-05 15:51:29
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [BatchDeleteTasksNew](https://cloud.tencent.com/document/api/1267/78714)
+* [BatchModifyOwnersNew](https://cloud.tencent.com/document/api/1267/78713)
+* [BatchStopTasksNew](https://cloud.tencent.com/document/api/1267/78712)
+* [CreateFolder](https://cloud.tencent.com/document/api/1267/78711)
+* [CreateTask](https://cloud.tencent.com/document/api/1267/78710)
+* [CreateWorkflow](https://cloud.tencent.com/document/api/1267/78709)
+* [DeleteFolder](https://cloud.tencent.com/document/api/1267/78708)
+* [DeleteWorkflowNew](https://cloud.tencent.com/document/api/1267/78707)
+* [DescribeDependTasksNew](https://cloud.tencent.com/document/api/1267/78706)
+* [DescribeFolderList](https://cloud.tencent.com/document/api/1267/78705)
+* [DescribeFolderWorkflowList](https://cloud.tencent.com/document/api/1267/78704)
+* [DescribeInstanceLogs](https://cloud.tencent.com/document/api/1267/78703)
+* [DescribeTaskDetail](https://cloud.tencent.com/document/api/1267/78702)
+* [DescribeTaskScript](https://cloud.tencent.com/document/api/1267/78701)
+* [DescribeTasksByPage](https://cloud.tencent.com/document/api/1267/78700)
+* [ForceSucInstances](https://cloud.tencent.com/document/api/1267/78699)
+* [FreezeTasks](https://cloud.tencent.com/document/api/1267/78698)
+* [FreezeTasksByMultiWorkflow](https://cloud.tencent.com/document/api/1267/78697)
+* [KillInstances](https://cloud.tencent.com/document/api/1267/78696)
+* [MakeUpTasksNew](https://cloud.tencent.com/document/api/1267/78695)
+* [MakeUpWorkflowNew](https://cloud.tencent.com/document/api/1267/78694)
+* [ModifyFolder](https://cloud.tencent.com/document/api/1267/78693)
+* [ModifyTaskInfo](https://cloud.tencent.com/document/api/1267/78692)
+* [ModifyTaskLinks](https://cloud.tencent.com/document/api/1267/78691)
+* [ModifyTaskScript](https://cloud.tencent.com/document/api/1267/78690)
+* [ModifyWorkflowInfo](https://cloud.tencent.com/document/api/1267/78689)
+* [ModifyWorkflowSchedule](https://cloud.tencent.com/document/api/1267/78688)
+* [RegisterEvent](https://cloud.tencent.com/document/api/1267/78687)
+* [RegisterEventListener](https://cloud.tencent.com/document/api/1267/78686)
+* [RerunInstances](https://cloud.tencent.com/document/api/1267/78685)
+* [RunTask](https://cloud.tencent.com/document/api/1267/78684)
+* [SetTaskAlarmNew](https://cloud.tencent.com/document/api/1267/78683)
+* [SubmitTask](https://cloud.tencent.com/document/api/1267/78682)
+* [SubmitWorkflow](https://cloud.tencent.com/document/api/1267/78681)
+* [TriggerEvent](https://cloud.tencent.com/document/api/1267/78680)
+
+新增数据结构：
+
+* [AlarmInfo](https://cloud.tencent.com/document/api/1267/76336#AlarmInfo)
+* [BatchOperateResult](https://cloud.tencent.com/document/api/1267/76336#BatchOperateResult)
+* [BatchResult](https://cloud.tencent.com/document/api/1267/76336#BatchResult)
+* [BatchReturn](https://cloud.tencent.com/document/api/1267/76336#BatchReturn)
+* [CanvasInfo](https://cloud.tencent.com/document/api/1267/76336#CanvasInfo)
+* [CommonContent](https://cloud.tencent.com/document/api/1267/76336#CommonContent)
+* [CommonId](https://cloud.tencent.com/document/api/1267/76336#CommonId)
+* [DependencyConfig](https://cloud.tencent.com/document/api/1267/76336#DependencyConfig)
+* [DescribeFolderListData](https://cloud.tencent.com/document/api/1267/76336#DescribeFolderListData)
+* [DescribeFolderWorkflowListData](https://cloud.tencent.com/document/api/1267/76336#DescribeFolderWorkflowListData)
+* [Folder](https://cloud.tencent.com/document/api/1267/76336#Folder)
+* [GeneralTaskParam](https://cloud.tencent.com/document/api/1267/76336#GeneralTaskParam)
+* [InstanceInfo](https://cloud.tencent.com/document/api/1267/76336#InstanceInfo)
+* [InstanceLog](https://cloud.tencent.com/document/api/1267/76336#InstanceLog)
+* [IntegrationNodeDetail](https://cloud.tencent.com/document/api/1267/76336#IntegrationNodeDetail)
+* [IntegrationNodeMapping](https://cloud.tencent.com/document/api/1267/76336#IntegrationNodeMapping)
+* [IntegrationNodeSchema](https://cloud.tencent.com/document/api/1267/76336#IntegrationNodeSchema)
+* [IntegrationNodeSchemaMapping](https://cloud.tencent.com/document/api/1267/76336#IntegrationNodeSchemaMapping)
+* [OperateResult](https://cloud.tencent.com/document/api/1267/76336#OperateResult)
+* [ParamInfo](https://cloud.tencent.com/document/api/1267/76336#ParamInfo)
+* [RecordField](https://cloud.tencent.com/document/api/1267/76336#RecordField)
+* [SimpleTaskInfo](https://cloud.tencent.com/document/api/1267/76336#SimpleTaskInfo)
+* [SubmitWorkflow](https://cloud.tencent.com/document/api/1267/76336#SubmitWorkflow)
+* [TaskCanvasInfo](https://cloud.tencent.com/document/api/1267/76336#TaskCanvasInfo)
+* [TaskExtInfo](https://cloud.tencent.com/document/api/1267/76336#TaskExtInfo)
+* [TaskInfoData](https://cloud.tencent.com/document/api/1267/76336#TaskInfoData)
+* [TaskInfoDataPage](https://cloud.tencent.com/document/api/1267/76336#TaskInfoDataPage)
+* [TaskInnerInfo](https://cloud.tencent.com/document/api/1267/76336#TaskInnerInfo)
+* [TaskLinkInfo](https://cloud.tencent.com/document/api/1267/76336#TaskLinkInfo)
+* [TaskScriptContent](https://cloud.tencent.com/document/api/1267/76336#TaskScriptContent)
+* [Workflow](https://cloud.tencent.com/document/api/1267/76336#Workflow)
+
+
+
 # Release v1.0.467
 
 ## 活动防刷(aa) 版本：2020-02-24
