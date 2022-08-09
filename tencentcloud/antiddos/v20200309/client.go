@@ -1485,55 +1485,6 @@ func (c *Client) CreateWaterPrintKeyWithContext(ctx context.Context, request *Cr
     return
 }
 
-func NewDeleteBlackWhiteIpListRequest() (request *DeleteBlackWhiteIpListRequest) {
-    request = &DeleteBlackWhiteIpListRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    request.Init().WithApiInfo("antiddos", APIVersion, "DeleteBlackWhiteIpList")
-    
-    
-    return
-}
-
-func NewDeleteBlackWhiteIpListResponse() (response *DeleteBlackWhiteIpListResponse) {
-    response = &DeleteBlackWhiteIpListResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// DeleteBlackWhiteIpList
-// 删除DDoS防护的IP黑白名单
-//
-// 可能返回的错误码:
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-func (c *Client) DeleteBlackWhiteIpList(request *DeleteBlackWhiteIpListRequest) (response *DeleteBlackWhiteIpListResponse, err error) {
-    return c.DeleteBlackWhiteIpListWithContext(context.Background(), request)
-}
-
-// DeleteBlackWhiteIpList
-// 删除DDoS防护的IP黑白名单
-//
-// 可能返回的错误码:
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-func (c *Client) DeleteBlackWhiteIpListWithContext(ctx context.Context, request *DeleteBlackWhiteIpListRequest) (response *DeleteBlackWhiteIpListResponse, err error) {
-    if request == nil {
-        request = NewDeleteBlackWhiteIpListRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DeleteBlackWhiteIpList require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDeleteBlackWhiteIpListResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewDeleteCCLevelPolicyRequest() (request *DeleteCCLevelPolicyRequest) {
     request = &DeleteCCLevelPolicyRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2366,6 +2317,55 @@ func (c *Client) DescribeBasicDeviceStatusWithContext(ctx context.Context, reque
     request.SetContext(ctx)
     
     response = NewDescribeBasicDeviceStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeBgpBizTrendRequest() (request *DescribeBgpBizTrendRequest) {
+    request = &DescribeBgpBizTrendRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("antiddos", APIVersion, "DescribeBgpBizTrend")
+    
+    
+    return
+}
+
+func NewDescribeBgpBizTrendResponse() (response *DescribeBgpBizTrendResponse) {
+    response = &DescribeBgpBizTrendResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeBgpBizTrend
+// 获取高防包流量折线图
+//
+// 可能返回的错误码:
+//  RESOURCEINUSE = "ResourceInUse"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeBgpBizTrend(request *DescribeBgpBizTrendRequest) (response *DescribeBgpBizTrendResponse, err error) {
+    return c.DescribeBgpBizTrendWithContext(context.Background(), request)
+}
+
+// DescribeBgpBizTrend
+// 获取高防包流量折线图
+//
+// 可能返回的错误码:
+//  RESOURCEINUSE = "ResourceInUse"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeBgpBizTrendWithContext(ctx context.Context, request *DescribeBgpBizTrendRequest) (response *DescribeBgpBizTrendResponse, err error) {
+    if request == nil {
+        request = NewDescribeBgpBizTrendRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBgpBizTrend require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeBgpBizTrendResponse()
     err = c.Send(request, response)
     return
 }

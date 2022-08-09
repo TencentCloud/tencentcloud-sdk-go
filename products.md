@@ -8,7 +8,7 @@
 | afc | [定制建模](https://cloud.tencent.com/document/product/1029) | 2022-05-23 06:01:56 |
 | ame | [正版曲库直通车](https://cloud.tencent.com/document/product/1155) | 2022-04-15 06:01:25 |
 | ams | [音频内容检测](https://cloud.tencent.com/document/product/1219) | 2022-06-23 06:06:13 |
-| antiddos | [DDoS 防护](https://cloud.tencent.com/document/product/1021) | 2022-07-29 06:02:11 |
+| antiddos | [DDoS 防护](https://cloud.tencent.com/document/product/1021) | 2022-08-09 10:41:42 |
 | apcas | [汽车精准获客服务](https://cloud.tencent.com/document/product/1244) | 2022-04-04 06:05:36 |
 | ape | [正版图库直通车](https://cloud.tencent.com/document/product/1181) | 2022-04-04 06:05:40 |
 | api | [云 API](https://cloud.tencent.com/document/product/1278) | 2022-06-07 06:00:45 |
@@ -20,7 +20,7 @@
 | ba | [网站备案](https://cloud.tencent.com/document/product/243) | 2022-04-04 06:08:45 |
 | batch | [批量计算](https://cloud.tencent.com/document/product/599) | 2022-08-08 06:04:56 |
 | bda | [人体分析](https://cloud.tencent.com/document/product/1208) | 2022-08-04 06:09:29 |
-| bi | [商业智能分析 BI](https://cloud.tencent.com/document/product/590) | 2022-05-13 18:34:36 |
+| bi | [商业智能分析 BI](https://cloud.tencent.com/document/product/590) | 2022-08-09 10:42:14 |
 | billing | [计费相关](https://cloud.tencent.com/document/product/555) | 2022-06-08 06:04:08 |
 | bizlive | [商业直播](https://cloud.tencent.com/document/product) | 2020-03-10 01:08:07 |
 | bm | [黑石物理服务器1.0](https://cloud.tencent.com/document/product/386) | 2021-11-10 08:02:45 |

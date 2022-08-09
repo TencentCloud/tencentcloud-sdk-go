@@ -19,4 +19,7 @@ const (
 
 	// 内部错误。
 	INTERNALERROR = "InternalError"
+
+	// 资源不存在。
+	RESOURCENOTFOUND = "ResourceNotFound"
 )

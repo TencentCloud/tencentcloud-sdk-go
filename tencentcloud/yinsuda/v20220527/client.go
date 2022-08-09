@@ -105,12 +105,18 @@ func NewDescribeKTVPlaylistDetailResponse() (response *DescribeKTVPlaylistDetail
 
 // DescribeKTVPlaylistDetail
 // 根据歌单 Id 获取歌单详情。
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeKTVPlaylistDetail(request *DescribeKTVPlaylistDetailRequest) (response *DescribeKTVPlaylistDetailResponse, err error) {
     return c.DescribeKTVPlaylistDetailWithContext(context.Background(), request)
 }
 
 // DescribeKTVPlaylistDetail
 // 根据歌单 Id 获取歌单详情。
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeKTVPlaylistDetailWithContext(ctx context.Context, request *DescribeKTVPlaylistDetailRequest) (response *DescribeKTVPlaylistDetailResponse, err error) {
     if request == nil {
         request = NewDescribeKTVPlaylistDetailRequest()
