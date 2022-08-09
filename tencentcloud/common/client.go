@@ -7,6 +7,7 @@ import (
 	"log"
 	"net/http"
 	"net/http/httputil"
+	"net/url"
 	"os"
 	"strconv"
 	"strings"
@@ -342,7 +343,7 @@ func (c *Client) GetRegion() string {
 }
 
 func (c *Client) Init(region string) *Client {
-	c.httpClient = &http.Client{}
+	c.httpClient = &http.Client{Transport: http.DefaultTransport.(*http.Transport).Clone()}
 	c.region = region
 	c.signMethod = "TC3-HMAC-SHA256"
 	c.debug = false
@@ -374,6 +375,13 @@ func (c *Client) WithProfile(clientProfile *profile.ClientProfile) *Client {
 	c.httpProfile = clientProfile.HttpProfile
 	c.debug = clientProfile.Debug
 	c.httpClient.Timeout = time.Duration(c.httpProfile.ReqTimeout) * time.Second
+	if c.httpProfile.Proxy != "" {
+		u, err := url.Parse(c.httpProfile.Proxy)
+		if err != nil {
+			panic(err)
+		}
+		c.httpClient.Transport.(*http.Transport).Proxy = http.ProxyURL(u)
+	}
 	return c
 }
 
