@@ -501,7 +501,7 @@ func (c *Client) DescribeInstances(request *DescribeInstancesRequest) (response 
 ```
 
 ## http 代理
-[RunInstancesRequest示例](examples/cvm/v20170312/describe_instances.go)
+[DescribeInstances示例](examples/cvm/v20170312/describe_instances.go)
 ```go
     // with authentication
     clientProfile.HttpProfile.Proxy = "http://username:password@127.0.0.1:1080"
