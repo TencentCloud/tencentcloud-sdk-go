@@ -8,6 +8,7 @@ type HttpProfile struct {
 	Endpoint   string
 	// Deprecated, use Scheme instead
 	Protocol string
+	Proxy    string
 }
 
 func NewHttpProfile() *HttpProfile {

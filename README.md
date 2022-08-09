@@ -485,19 +485,28 @@ func (c *Client) DescribeInstances(request *DescribeInstancesRequest) (response 
 
 [RunInstancesRequest示例](examples/cvm/v20170312/run_instances.go)
 ```go
-   request := cvm.NewRunInstancesRequest()
-   request.SetHeader(map[string]string{
-       "X-TC-TraceId": "ffe0c072-8a5d-4e17-8887-a8a60252abca",
-   })
+    request := cvm.NewRunInstancesRequest()
+	request.SetHeader(map[string]string{
+        "X-TC-TraceId": "ffe0c072-8a5d-4e17-8887-a8a60252abca",
+    })
 ```
 
 [CommonRequest示例](examples/common/common_client.go)
 
 ```go
-   request := tchttp.NewCommonRequest("cvm", "2017-03-12", "DescribeZones")
-   request.SetHeader(map[string]string{
-       "X-TC-TraceId": "ffe0c072-8a5d-4e17-8887-a8a60252abca",
-   })
+    request := tchttp.NewCommonRequest("cvm", "2017-03-12", "DescribeZones")
+    request.SetHeader(map[string]string{
+        "X-TC-TraceId": "ffe0c072-8a5d-4e17-8887-a8a60252abca",
+    })
+```
+
+## http 代理
+[DescribeInstances示例](examples/cvm/v20170312/describe_instances.go)
+```go
+    // with authentication
+    clientProfile.HttpProfile.Proxy = "http://username:password@127.0.0.1:1080"
+    // without authentication
+    clientProfile.HttpProfile.Proxy = "http://127.0.0.1:1080"
 ```
 
 # 请求重试
