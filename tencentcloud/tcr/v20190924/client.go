@@ -926,6 +926,7 @@ func NewCreateReplicationInstanceResponse() (response *CreateReplicationInstance
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_UNSUPPORTEDREGION = "InvalidParameter.UnsupportedRegion"
 //  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
@@ -946,6 +947,7 @@ func (c *Client) CreateReplicationInstance(request *CreateReplicationInstanceReq
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_UNSUPPORTEDREGION = "InvalidParameter.UnsupportedRegion"
 //  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
@@ -1997,6 +1999,7 @@ func NewDeleteNamespaceResponse() (response *DeleteNamespaceResponse) {
 //  FAILEDOPERATION_ERRORTCRUNAUTHORIZED = "FailedOperation.ErrorTcrUnauthorized"
 //  FAILEDOPERATION_GETDBDATAERROR = "FailedOperation.GetDBDataError"
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DbError"
 //  INTERNALERROR_ERRORTCRINTERNAL = "InternalError.ErrorTcrInternal"
 //  INTERNALERROR_ERRORTCRINVALIDMEDIATYPE = "InternalError.ErrorTcrInvalidMediaType"
 //  INTERNALERROR_ERRORTCRRESOURCECONFLICT = "InternalError.ErrorTcrResourceConflict"
@@ -2021,6 +2024,7 @@ func (c *Client) DeleteNamespace(request *DeleteNamespaceRequest) (response *Del
 //  FAILEDOPERATION_ERRORTCRUNAUTHORIZED = "FailedOperation.ErrorTcrUnauthorized"
 //  FAILEDOPERATION_GETDBDATAERROR = "FailedOperation.GetDBDataError"
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DbError"
 //  INTERNALERROR_ERRORTCRINTERNAL = "InternalError.ErrorTcrInternal"
 //  INTERNALERROR_ERRORTCRINVALIDMEDIATYPE = "InternalError.ErrorTcrInvalidMediaType"
 //  INTERNALERROR_ERRORTCRRESOURCECONFLICT = "InternalError.ErrorTcrResourceConflict"
@@ -3952,6 +3956,7 @@ func NewDescribeSecurityPoliciesResponse() (response *DescribeSecurityPoliciesRe
 // 查询实例公网访问白名单策略
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_ERRORGETDBDATAERROR = "FailedOperation.ErrorGetDBDataError"
 //  FAILEDOPERATION_GETDBDATAERROR = "FailedOperation.GetDBDataError"
 //  FAILEDOPERATION_GETSECURITYPOLICYFAIL = "FailedOperation.GetSecurityPolicyFail"
 //  FAILEDOPERATION_GETTCRCLIENT = "FailedOperation.GetTcrClient"
@@ -3972,6 +3977,7 @@ func (c *Client) DescribeSecurityPolicies(request *DescribeSecurityPoliciesReque
 // 查询实例公网访问白名单策略
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_ERRORGETDBDATAERROR = "FailedOperation.ErrorGetDBDataError"
 //  FAILEDOPERATION_GETDBDATAERROR = "FailedOperation.GetDBDataError"
 //  FAILEDOPERATION_GETSECURITYPOLICYFAIL = "FailedOperation.GetSecurityPolicyFail"
 //  FAILEDOPERATION_GETTCRCLIENT = "FailedOperation.GetTcrClient"

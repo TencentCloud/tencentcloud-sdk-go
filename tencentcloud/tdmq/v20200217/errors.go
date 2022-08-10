@@ -167,6 +167,9 @@ const (
 	// 参数错误。
 	INVALIDPARAMETER = "InvalidParameter"
 
+	// 错误的分区数。
+	INVALIDPARAMETER_PARTITION = "InvalidParameter.Partition"
+
 	// 上传的 tenant name 错误。
 	INVALIDPARAMETER_TENANTNOTFOUND = "InvalidParameter.TenantNotFound"
 

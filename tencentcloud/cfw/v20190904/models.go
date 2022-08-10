@@ -4521,10 +4521,10 @@ type ModifyBlockIgnoreListRequestParams struct {
 	// 可选值：delete（删除）、edit（编辑）、add（添加）  其他值无效
 	IocAction *string `json:"IocAction,omitempty" name:"IocAction"`
 
-	// 时间格式：yyyy-MM-dd HH:mm:ss
+	// 时间格式：yyyy-MM-dd HH:mm:ss，IocAction 为edit或add时必填
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
 
-	// 时间格式：yyyy-MM-dd HH:mm:ss
+	// 时间格式：yyyy-MM-dd HH:mm:ss，IocAction 为edit或add时必填
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 }
 
@@ -4540,10 +4540,10 @@ type ModifyBlockIgnoreListRequest struct {
 	// 可选值：delete（删除）、edit（编辑）、add（添加）  其他值无效
 	IocAction *string `json:"IocAction,omitempty" name:"IocAction"`
 
-	// 时间格式：yyyy-MM-dd HH:mm:ss
+	// 时间格式：yyyy-MM-dd HH:mm:ss，IocAction 为edit或add时必填
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
 
-	// 时间格式：yyyy-MM-dd HH:mm:ss
+	// 时间格式：yyyy-MM-dd HH:mm:ss，IocAction 为edit或add时必填
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 }
 

@@ -179,6 +179,59 @@ func (c *Client) DeleteEngineWithContext(ctx context.Context, request *DeleteEng
     return
 }
 
+func NewDescribeCloudNativeAPIGatewayNodesRequest() (request *DescribeCloudNativeAPIGatewayNodesRequest) {
+    request = &DescribeCloudNativeAPIGatewayNodesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tse", APIVersion, "DescribeCloudNativeAPIGatewayNodes")
+    
+    
+    return
+}
+
+func NewDescribeCloudNativeAPIGatewayNodesResponse() (response *DescribeCloudNativeAPIGatewayNodesResponse) {
+    response = &DescribeCloudNativeAPIGatewayNodesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeCloudNativeAPIGatewayNodes
+// 获取云原生网关节点列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
+//  INVALIDPARAMETERVALUE_ACTION = "InvalidParameterValue.Action"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+func (c *Client) DescribeCloudNativeAPIGatewayNodes(request *DescribeCloudNativeAPIGatewayNodesRequest) (response *DescribeCloudNativeAPIGatewayNodesResponse, err error) {
+    return c.DescribeCloudNativeAPIGatewayNodesWithContext(context.Background(), request)
+}
+
+// DescribeCloudNativeAPIGatewayNodes
+// 获取云原生网关节点列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
+//  INVALIDPARAMETERVALUE_ACTION = "InvalidParameterValue.Action"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+func (c *Client) DescribeCloudNativeAPIGatewayNodesWithContext(ctx context.Context, request *DescribeCloudNativeAPIGatewayNodesRequest) (response *DescribeCloudNativeAPIGatewayNodesResponse, err error) {
+    if request == nil {
+        request = NewDescribeCloudNativeAPIGatewayNodesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCloudNativeAPIGatewayNodes require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCloudNativeAPIGatewayNodesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeNacosReplicasRequest() (request *DescribeNacosReplicasRequest) {
     request = &DescribeNacosReplicasRequest{
         BaseRequest: &tchttp.BaseRequest{},

@@ -327,6 +327,7 @@ func NewCheckEidTokenStatusResponse() (response *CheckEidTokenStatusResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE_BIZTOKENEXPIRED = "InvalidParameterValue.BizTokenExpired"
 //  INVALIDPARAMETERVALUE_BIZTOKENILLEGAL = "InvalidParameterValue.BizTokenIllegal"
+//  UNAUTHORIZEDOPERATION_NONACTIVATED = "UnauthorizedOperation.Nonactivated"
 func (c *Client) CheckEidTokenStatus(request *CheckEidTokenStatusRequest) (response *CheckEidTokenStatusResponse, err error) {
     return c.CheckEidTokenStatusWithContext(context.Background(), request)
 }
@@ -340,6 +341,7 @@ func (c *Client) CheckEidTokenStatus(request *CheckEidTokenStatusRequest) (respo
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE_BIZTOKENEXPIRED = "InvalidParameterValue.BizTokenExpired"
 //  INVALIDPARAMETERVALUE_BIZTOKENILLEGAL = "InvalidParameterValue.BizTokenIllegal"
+//  UNAUTHORIZEDOPERATION_NONACTIVATED = "UnauthorizedOperation.Nonactivated"
 func (c *Client) CheckEidTokenStatusWithContext(ctx context.Context, request *CheckEidTokenStatusRequest) (response *CheckEidTokenStatusResponse, err error) {
     if request == nil {
         request = NewCheckEidTokenStatusRequest()

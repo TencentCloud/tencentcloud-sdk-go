@@ -1798,6 +1798,7 @@ func NewCreateAnchorResponse() (response *CreateAnchorResponse) {
 // 直播平台-主播入驻
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_ACTION = "FailedOperation.Action"
 //  FAILEDOPERATION_CREATEAGENT = "FailedOperation.CreateAgent"
 //  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
 //  MISSINGPARAMETER_ACTION = "MissingParameter.Action"
@@ -1810,6 +1811,7 @@ func (c *Client) CreateAnchor(request *CreateAnchorRequest) (response *CreateAnc
 // 直播平台-主播入驻
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_ACTION = "FailedOperation.Action"
 //  FAILEDOPERATION_CREATEAGENT = "FailedOperation.CreateAgent"
 //  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
 //  MISSINGPARAMETER_ACTION = "MissingParameter.Action"
@@ -1851,6 +1853,7 @@ func NewCreateBatchPaymentResponse() (response *CreateBatchPaymentResponse) {
 // 灵云-批量主播转账接口
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_ACTION = "FailedOperation.Action"
 //  FAILEDOPERATION_CREATEAGENT = "FailedOperation.CreateAgent"
 //  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
 //  MISSINGPARAMETER_ACTION = "MissingParameter.Action"
@@ -1863,6 +1866,7 @@ func (c *Client) CreateBatchPayment(request *CreateBatchPaymentRequest) (respons
 // 灵云-批量主播转账接口
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_ACTION = "FailedOperation.Action"
 //  FAILEDOPERATION_CREATEAGENT = "FailedOperation.CreateAgent"
 //  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
 //  MISSINGPARAMETER_ACTION = "MissingParameter.Action"

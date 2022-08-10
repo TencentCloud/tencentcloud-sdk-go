@@ -9089,6 +9089,9 @@ func (r *DescribeSubAppIdsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeSuperPlayerConfigsRequestParams struct {
+	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+
 	// 播放器配置名字过滤条件，数组长度限制：100。
 	Names []*string `json:"Names,omitempty" name:"Names"`
 
@@ -9102,14 +9105,14 @@ type DescribeSuperPlayerConfigsRequestParams struct {
 	// <li>Preset：系统预置配置；</li>
 	// <li>Custom：用户自定义配置。</li>
 	Type *string `json:"Type,omitempty" name:"Type"`
-
-	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
 type DescribeSuperPlayerConfigsRequest struct {
 	*tchttp.BaseRequest
 	
+	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+
 	// 播放器配置名字过滤条件，数组长度限制：100。
 	Names []*string `json:"Names,omitempty" name:"Names"`
 
@@ -9123,9 +9126,6 @@ type DescribeSuperPlayerConfigsRequest struct {
 	// <li>Preset：系统预置配置；</li>
 	// <li>Custom：用户自定义配置。</li>
 	Type *string `json:"Type,omitempty" name:"Type"`
-
-	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
 func (r *DescribeSuperPlayerConfigsRequest) ToJsonString() string {
@@ -9140,11 +9140,11 @@ func (r *DescribeSuperPlayerConfigsRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "SubAppId")
 	delete(f, "Names")
 	delete(f, "Offset")
 	delete(f, "Limit")
 	delete(f, "Type")
-	delete(f, "SubAppId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSuperPlayerConfigsRequest has unknown keys!", "")
 	}
@@ -14008,6 +14008,9 @@ type ModifySuperPlayerConfigRequestParams struct {
 	// 播放器配置名称。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
+	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+
 	// 播放的音视频类型，可选值：
 	// <li>AdaptiveDynamicStream：自适应码流输出；</li>
 	// <li>Transcode：转码输出；</li>
@@ -14045,9 +14048,6 @@ type ModifySuperPlayerConfigRequestParams struct {
 
 	// 模板描述信息，长度限制：256 个字符。
 	Comment *string `json:"Comment,omitempty" name:"Comment"`
-
-	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
 type ModifySuperPlayerConfigRequest struct {
@@ -14056,6 +14056,9 @@ type ModifySuperPlayerConfigRequest struct {
 	// 播放器配置名称。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
+	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+
 	// 播放的音视频类型，可选值：
 	// <li>AdaptiveDynamicStream：自适应码流输出；</li>
 	// <li>Transcode：转码输出；</li>
@@ -14093,9 +14096,6 @@ type ModifySuperPlayerConfigRequest struct {
 
 	// 模板描述信息，长度限制：256 个字符。
 	Comment *string `json:"Comment,omitempty" name:"Comment"`
-
-	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
 func (r *ModifySuperPlayerConfigRequest) ToJsonString() string {
@@ -14111,6 +14111,7 @@ func (r *ModifySuperPlayerConfigRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "Name")
+	delete(f, "SubAppId")
 	delete(f, "AudioVideoType")
 	delete(f, "DrmSwitch")
 	delete(f, "AdaptiveDynamicStreamingDefinition")
@@ -14121,7 +14122,6 @@ func (r *ModifySuperPlayerConfigRequest) FromJsonString(s string) error {
 	delete(f, "Domain")
 	delete(f, "Scheme")
 	delete(f, "Comment")
-	delete(f, "SubAppId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifySuperPlayerConfigRequest has unknown keys!", "")
 	}
@@ -14914,6 +14914,12 @@ type PlayerConfig struct {
 	// <li>Custom：用户自定义配置。</li>
 	Type *string `json:"Type,omitempty" name:"Type"`
 
+	// 播放的音视频类型，可选值有：
+	// <li>AdaptiveDynamicStream：自适应码流输出；</li>
+	// <li>Transcode：转码输出；</li>
+	// <li>Original：原始音视频。</li>
+	AudioVideoType *string `json:"AudioVideoType,omitempty" name:"AudioVideoType"`
+
 	// 播放 DRM 保护的自适应码流开关：
 	// <li>ON：开启，表示仅播放 DRM  保护的自适应码流输出；</li>
 	// <li>OFF：关闭，表示播放未加密的自适应码流输出。</li>
@@ -14925,6 +14931,9 @@ type PlayerConfig struct {
 	// 允许输出的 DRM 自适应码流模板内容。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DrmStreamingsInfo *DrmStreamingsInfo `json:"DrmStreamingsInfo,omitempty" name:"DrmStreamingsInfo"`
+
+	// 允许输出的转码模板 ID。
+	TranscodeDefinition *uint64 `json:"TranscodeDefinition,omitempty" name:"TranscodeDefinition"`
 
 	// 允许输出的雪碧图模板 ID。
 	ImageSpriteDefinition *uint64 `json:"ImageSpriteDefinition,omitempty" name:"ImageSpriteDefinition"`

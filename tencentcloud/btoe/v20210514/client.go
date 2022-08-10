@@ -553,6 +553,7 @@ func NewCreateVideoDepositResponse() (response *CreateVideoDepositResponse) {
 //  INVALIDPARAMETERVALUE_INVALIDFILESUFFIX = "InvalidParameterValue.InvalidFileSuffix"
 //  INVALIDPARAMETERVALUE_INVALIDURL = "InvalidParameterValue.InvalidURL"
 //  INVALIDPARAMETERVALUE_TOOLARGEFILEERROR = "InvalidParameterValue.TooLargeFileError"
+//  RESOURCEINSUFFICIENT_LOWBALANCE = "ResourceInsufficient.LowBalance"
 //  RESOURCENOTFOUND_DOWNLOADERROR = "ResourceNotFound.DownLoadError"
 //  RESOURCEUNAVAILABLE_RESOURCENOTOPENED = "ResourceUnavailable.ResourceNotOpened"
 func (c *Client) CreateVideoDeposit(request *CreateVideoDepositRequest) (response *CreateVideoDepositResponse, err error) {
@@ -575,6 +576,7 @@ func (c *Client) CreateVideoDeposit(request *CreateVideoDepositRequest) (respons
 //  INVALIDPARAMETERVALUE_INVALIDFILESUFFIX = "InvalidParameterValue.InvalidFileSuffix"
 //  INVALIDPARAMETERVALUE_INVALIDURL = "InvalidParameterValue.InvalidURL"
 //  INVALIDPARAMETERVALUE_TOOLARGEFILEERROR = "InvalidParameterValue.TooLargeFileError"
+//  RESOURCEINSUFFICIENT_LOWBALANCE = "ResourceInsufficient.LowBalance"
 //  RESOURCENOTFOUND_DOWNLOADERROR = "ResourceNotFound.DownLoadError"
 //  RESOURCEUNAVAILABLE_RESOURCENOTOPENED = "ResourceUnavailable.ResourceNotOpened"
 func (c *Client) CreateVideoDepositWithContext(ctx context.Context, request *CreateVideoDepositRequest) (response *CreateVideoDepositResponse, err error) {

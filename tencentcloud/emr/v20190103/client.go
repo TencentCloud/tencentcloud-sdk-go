@@ -1482,6 +1482,7 @@ func NewModifyResourcePoolsResponse() (response *ModifyResourcePoolsResponse) {
 //  INTERNALERROR_CAMCGWERROR = "InternalError.CamCgwError"
 //  INTERNALERROR_WOODSERVERERROR = "InternalError.WoodServerError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
 func (c *Client) ModifyResourcePools(request *ModifyResourcePoolsRequest) (response *ModifyResourcePoolsResponse, err error) {
     return c.ModifyResourcePoolsWithContext(context.Background(), request)
 }
@@ -1494,6 +1495,7 @@ func (c *Client) ModifyResourcePools(request *ModifyResourcePoolsRequest) (respo
 //  INTERNALERROR_CAMCGWERROR = "InternalError.CamCgwError"
 //  INTERNALERROR_WOODSERVERERROR = "InternalError.WoodServerError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
 func (c *Client) ModifyResourcePoolsWithContext(ctx context.Context, request *ModifyResourcePoolsRequest) (response *ModifyResourcePoolsResponse, err error) {
     if request == nil {
         request = NewModifyResourcePoolsRequest()
@@ -1535,6 +1537,7 @@ func NewModifyResourceScheduleConfigResponse() (response *ModifyResourceSchedule
 //  INTERNALERROR_CAMCGWERROR = "InternalError.CamCgwError"
 //  INTERNALERROR_WOODSERVERERROR = "InternalError.WoodServerError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
 func (c *Client) ModifyResourceScheduleConfig(request *ModifyResourceScheduleConfigRequest) (response *ModifyResourceScheduleConfigResponse, err error) {
     return c.ModifyResourceScheduleConfigWithContext(context.Background(), request)
 }
@@ -1547,6 +1550,7 @@ func (c *Client) ModifyResourceScheduleConfig(request *ModifyResourceScheduleCon
 //  INTERNALERROR_CAMCGWERROR = "InternalError.CamCgwError"
 //  INTERNALERROR_WOODSERVERERROR = "InternalError.WoodServerError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
 func (c *Client) ModifyResourceScheduleConfigWithContext(ctx context.Context, request *ModifyResourceScheduleConfigRequest) (response *ModifyResourceScheduleConfigResponse, err error) {
     if request == nil {
         request = NewModifyResourceScheduleConfigRequest()
@@ -1586,6 +1590,7 @@ func NewModifyResourceSchedulerResponse() (response *ModifyResourceSchedulerResp
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
 func (c *Client) ModifyResourceScheduler(request *ModifyResourceSchedulerRequest) (response *ModifyResourceSchedulerResponse, err error) {
     return c.ModifyResourceSchedulerWithContext(context.Background(), request)
 }
@@ -1596,6 +1601,7 @@ func (c *Client) ModifyResourceScheduler(request *ModifyResourceSchedulerRequest
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
 func (c *Client) ModifyResourceSchedulerWithContext(ctx context.Context, request *ModifyResourceSchedulerRequest) (response *ModifyResourceSchedulerResponse, err error) {
     if request == nil {
         request = NewModifyResourceSchedulerRequest()

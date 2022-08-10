@@ -149,6 +149,9 @@ const (
 	// 权益点ID列表无效。
 	INVALIDPARAMETER_PACKAGEIDSINVALID = "InvalidParameter.PackageIdsInvalid"
 
+	// 参数有误。
+	INVALIDPARAMETER_WITHDETAILREASON = "InvalidParameter.WithDetailReason"
+
 	// 参数取值错误。
 	INVALIDPARAMETERVALUE = "InvalidParameterValue"
 

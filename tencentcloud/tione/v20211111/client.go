@@ -251,6 +251,7 @@ func NewCreateTrainingTaskResponse() (response *CreateTrainingTaskResponse) {
 //  INVALIDPARAMETERVALUE_FRAMEWORKVERSIONNOTSUPPORT = "InvalidParameterValue.FrameworkVersionNotSupport"
 //  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED_BALANCEINSUFFICIENT = "OperationDenied.BalanceInsufficient"
+//  OPERATIONDENIED_MIYINGBALANCEINSUFFICIENT = "OperationDenied.MIYINGBalanceInsufficient"
 //  OPERATIONDENIED_WHITELISTQUOTAEXCEED = "OperationDenied.WhitelistQuotaExceed"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) CreateTrainingTask(request *CreateTrainingTaskRequest) (response *CreateTrainingTaskResponse, err error) {
@@ -270,6 +271,7 @@ func (c *Client) CreateTrainingTask(request *CreateTrainingTaskRequest) (respons
 //  INVALIDPARAMETERVALUE_FRAMEWORKVERSIONNOTSUPPORT = "InvalidParameterValue.FrameworkVersionNotSupport"
 //  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED_BALANCEINSUFFICIENT = "OperationDenied.BalanceInsufficient"
+//  OPERATIONDENIED_MIYINGBALANCEINSUFFICIENT = "OperationDenied.MIYINGBalanceInsufficient"
 //  OPERATIONDENIED_WHITELISTQUOTAEXCEED = "OperationDenied.WhitelistQuotaExceed"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) CreateTrainingTaskWithContext(ctx context.Context, request *CreateTrainingTaskRequest) (response *CreateTrainingTaskResponse, err error) {
@@ -481,6 +483,7 @@ func NewDeleteTrainingModelVersionResponse() (response *DeleteTrainingModelVersi
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) DeleteTrainingModelVersion(request *DeleteTrainingModelVersionRequest) (response *DeleteTrainingModelVersionResponse, err error) {
     return c.DeleteTrainingModelVersionWithContext(context.Background(), request)
@@ -498,6 +501,7 @@ func (c *Client) DeleteTrainingModelVersion(request *DeleteTrainingModelVersionR
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) DeleteTrainingModelVersionWithContext(ctx context.Context, request *DeleteTrainingModelVersionRequest) (response *DeleteTrainingModelVersionResponse, err error) {
     if request == nil {
@@ -601,6 +605,8 @@ func NewDescribeBillingResourceGroupsResponse() (response *DescribeBillingResour
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_VALIDATEERROR = "InvalidParameter.ValidateError"
+//  INVALIDPARAMETERVALUE_INVALIDFILTER = "InvalidParameterValue.InvalidFilter"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeBillingResourceGroups(request *DescribeBillingResourceGroupsRequest) (response *DescribeBillingResourceGroupsResponse, err error) {
     return c.DescribeBillingResourceGroupsWithContext(context.Background(), request)
@@ -622,6 +628,8 @@ func (c *Client) DescribeBillingResourceGroups(request *DescribeBillingResourceG
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_VALIDATEERROR = "InvalidParameter.ValidateError"
+//  INVALIDPARAMETERVALUE_INVALIDFILTER = "InvalidParameterValue.InvalidFilter"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeBillingResourceGroupsWithContext(ctx context.Context, request *DescribeBillingResourceGroupsRequest) (response *DescribeBillingResourceGroupsResponse, err error) {
     if request == nil {
@@ -1329,6 +1337,7 @@ func NewDescribeTrainingModelVersionResponse() (response *DescribeTrainingModelV
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) DescribeTrainingModelVersion(request *DescribeTrainingModelVersionRequest) (response *DescribeTrainingModelVersionResponse, err error) {
     return c.DescribeTrainingModelVersionWithContext(context.Background(), request)
@@ -1346,6 +1355,7 @@ func (c *Client) DescribeTrainingModelVersion(request *DescribeTrainingModelVers
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) DescribeTrainingModelVersionWithContext(ctx context.Context, request *DescribeTrainingModelVersionRequest) (response *DescribeTrainingModelVersionResponse, err error) {
     if request == nil {
@@ -1734,6 +1744,9 @@ func NewStartTrainingTaskResponse() (response *StartTrainingTaskResponse) {
 //  INTERNALERROR_NOTALLOW = "InternalError.NotAllow"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE_FRAMEWORKVERSIONNOTSUPPORT = "InvalidParameterValue.FrameworkVersionNotSupport"
+//  OPERATIONDENIED_BALANCEINSUFFICIENT = "OperationDenied.BalanceInsufficient"
+//  OPERATIONDENIED_MIYINGBALANCEINSUFFICIENT = "OperationDenied.MIYINGBalanceInsufficient"
+//  OPERATIONDENIED_WHITELISTQUOTAEXCEED = "OperationDenied.WhitelistQuotaExceed"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) StartTrainingTask(request *StartTrainingTaskRequest) (response *StartTrainingTaskResponse, err error) {
@@ -1748,6 +1761,9 @@ func (c *Client) StartTrainingTask(request *StartTrainingTaskRequest) (response 
 //  INTERNALERROR_NOTALLOW = "InternalError.NotAllow"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE_FRAMEWORKVERSIONNOTSUPPORT = "InvalidParameterValue.FrameworkVersionNotSupport"
+//  OPERATIONDENIED_BALANCEINSUFFICIENT = "OperationDenied.BalanceInsufficient"
+//  OPERATIONDENIED_MIYINGBALANCEINSUFFICIENT = "OperationDenied.MIYINGBalanceInsufficient"
+//  OPERATIONDENIED_WHITELISTQUOTAEXCEED = "OperationDenied.WhitelistQuotaExceed"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) StartTrainingTaskWithContext(ctx context.Context, request *StartTrainingTaskRequest) (response *StartTrainingTaskResponse, err error) {
@@ -1790,6 +1806,7 @@ func NewStopTrainingTaskResponse() (response *StopTrainingTaskResponse) {
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_NOTALLOW = "InternalError.NotAllow"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) StopTrainingTask(request *StopTrainingTaskRequest) (response *StopTrainingTaskResponse, err error) {
     return c.StopTrainingTaskWithContext(context.Background(), request)
@@ -1802,6 +1819,7 @@ func (c *Client) StopTrainingTask(request *StopTrainingTaskRequest) (response *S
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_NOTALLOW = "InternalError.NotAllow"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) StopTrainingTaskWithContext(ctx context.Context, request *StopTrainingTaskRequest) (response *StopTrainingTaskResponse, err error) {
     if request == nil {

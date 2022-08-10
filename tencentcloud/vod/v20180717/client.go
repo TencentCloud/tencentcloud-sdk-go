@@ -1451,7 +1451,7 @@ func NewCreateSuperPlayerConfigResponse() (response *CreateSuperPlayerConfigResp
 }
 
 // CreateSuperPlayerConfig
-// 创建超级播放器配置，数量上限：100。
+// 创建播放器配置，数量上限：100。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1465,7 +1465,7 @@ func (c *Client) CreateSuperPlayerConfig(request *CreateSuperPlayerConfigRequest
 }
 
 // CreateSuperPlayerConfig
-// 创建超级播放器配置，数量上限：100。
+// 创建播放器配置，数量上限：100。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -2598,7 +2598,7 @@ func NewDeleteSuperPlayerConfigResponse() (response *DeleteSuperPlayerConfigResp
 }
 
 // DeleteSuperPlayerConfig
-// 删除超级播放器配置。  
+// 删除播放器配置。  
 //
 // *注：系统预置播放器配置不允许删除。*
 //
@@ -2613,7 +2613,7 @@ func (c *Client) DeleteSuperPlayerConfig(request *DeleteSuperPlayerConfigRequest
 }
 
 // DeleteSuperPlayerConfig
-// 删除超级播放器配置。  
+// 删除播放器配置。  
 //
 // *注：系统预置播放器配置不允许删除。*
 //
@@ -5010,7 +5010,7 @@ func NewDescribeSuperPlayerConfigsResponse() (response *DescribeSuperPlayerConfi
 }
 
 // DescribeSuperPlayerConfigs
-// 查询超级播放器配置，支持根据条件，分页查询。
+// 查询播放器配置，支持根据条件，分页查询。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -5023,7 +5023,7 @@ func (c *Client) DescribeSuperPlayerConfigs(request *DescribeSuperPlayerConfigsR
 }
 
 // DescribeSuperPlayerConfigs
-// 查询超级播放器配置，支持根据条件，分页查询。
+// 查询播放器配置，支持根据条件，分页查询。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -7101,7 +7101,7 @@ func NewModifySuperPlayerConfigResponse() (response *ModifySuperPlayerConfigResp
 }
 
 // ModifySuperPlayerConfig
-// 修改超级播放器配置。
+// 修改播放器配置。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -7114,7 +7114,7 @@ func (c *Client) ModifySuperPlayerConfig(request *ModifySuperPlayerConfigRequest
 }
 
 // ModifySuperPlayerConfig
-// 修改超级播放器配置。
+// 修改播放器配置。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

@@ -172,6 +172,7 @@ func NewCreateFolderResponse() (response *CreateFolderResponse) {
 // 作业列表页面新建文件夹请求
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  UNSUPPORTEDOPERATION_NOPERMISSIONACCESS = "UnsupportedOperation.NoPermissionAccess"
@@ -183,6 +184,7 @@ func (c *Client) CreateFolder(request *CreateFolderRequest) (response *CreateFol
 // 作业列表页面新建文件夹请求
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  UNSUPPORTEDOPERATION_NOPERMISSIONACCESS = "UnsupportedOperation.NoPermissionAccess"
@@ -409,6 +411,7 @@ func NewCreateResourceResponse() (response *CreateResourceResponse) {
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_COSCLIENT = "InternalError.COSClient"
 //  INTERNALERROR_DB = "InternalError.DB"
@@ -428,6 +431,7 @@ func (c *Client) CreateResource(request *CreateResourceRequest) (response *Creat
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_COSCLIENT = "InternalError.COSClient"
 //  INTERNALERROR_DB = "InternalError.DB"
@@ -1043,6 +1047,7 @@ func NewDescribeResourceConfigsResponse() (response *DescribeResourceConfigsResp
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DB = "InternalError.DB"
 //  INVALIDPARAMETER_APPIDRESOURCENOTMATCH = "InvalidParameter.AppIdResourceNotMatch"
@@ -1063,6 +1068,7 @@ func (c *Client) DescribeResourceConfigs(request *DescribeResourceConfigsRequest
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DB = "InternalError.DB"
 //  INVALIDPARAMETER_APPIDRESOURCENOTMATCH = "InvalidParameter.AppIdResourceNotMatch"
@@ -1112,6 +1118,7 @@ func NewDescribeResourceRelatedJobsResponse() (response *DescribeResourceRelated
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DB = "InternalError.DB"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -1127,6 +1134,7 @@ func (c *Client) DescribeResourceRelatedJobs(request *DescribeResourceRelatedJob
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DB = "InternalError.DB"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"

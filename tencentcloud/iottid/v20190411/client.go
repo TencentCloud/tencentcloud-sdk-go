@@ -185,6 +185,7 @@ func NewDeliverTidNotifyResponse() (response *DeliverTidNotifyResponse) {
 //  INVALIDPARAMETERVALUE_EMPTYSTRING = "InvalidParameterValue.EmptyString"
 //  INVALIDPARAMETERVALUE_ORDERID = "InvalidParameterValue.OrderId"
 //  INVALIDPARAMETERVALUE_OVERLIMIT = "InvalidParameterValue.OverLimit"
+//  INVALIDPARAMETERVALUE_PERMISSIONDENIED = "InvalidParameterValue.PermissionDenied"
 //  INVALIDPARAMETERVALUE_TID = "InvalidParameterValue.Tid"
 func (c *Client) DeliverTidNotify(request *DeliverTidNotifyRequest) (response *DeliverTidNotifyResponse, err error) {
     return c.DeliverTidNotifyWithContext(context.Background(), request)
@@ -199,6 +200,7 @@ func (c *Client) DeliverTidNotify(request *DeliverTidNotifyRequest) (response *D
 //  INVALIDPARAMETERVALUE_EMPTYSTRING = "InvalidParameterValue.EmptyString"
 //  INVALIDPARAMETERVALUE_ORDERID = "InvalidParameterValue.OrderId"
 //  INVALIDPARAMETERVALUE_OVERLIMIT = "InvalidParameterValue.OverLimit"
+//  INVALIDPARAMETERVALUE_PERMISSIONDENIED = "InvalidParameterValue.PermissionDenied"
 //  INVALIDPARAMETERVALUE_TID = "InvalidParameterValue.Tid"
 func (c *Client) DeliverTidNotifyWithContext(ctx context.Context, request *DeliverTidNotifyRequest) (response *DeliverTidNotifyResponse, err error) {
     if request == nil {

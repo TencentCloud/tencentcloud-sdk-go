@@ -10206,6 +10206,10 @@ type EdgeCluster struct {
 	// 节点最大Pod数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxNodePodNum *int64 `json:"MaxNodePodNum,omitempty" name:"MaxNodePodNum"`
+
+	// 集群高级设置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterAdvancedSettings *EdgeClusterAdvancedSettings `json:"ClusterAdvancedSettings,omitempty" name:"ClusterAdvancedSettings"`
 }
 
 type EdgeClusterAdvancedSettings struct {

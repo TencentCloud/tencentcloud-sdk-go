@@ -229,11 +229,7 @@ func NewCopyScenarioResponse() (response *CopyScenarioResponse) {
 // 复制场景
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_DBQUERYFAILED = "FailedOperation.DbQueryFailed"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  RESOURCENOTFOUND = "ResourceNotFound"
+//  FAILEDOPERATION_RESOURCENOTFOUND = "FailedOperation.ResourceNotFound"
 func (c *Client) CopyScenario(request *CopyScenarioRequest) (response *CopyScenarioResponse, err error) {
     return c.CopyScenarioWithContext(context.Background(), request)
 }
@@ -242,11 +238,7 @@ func (c *Client) CopyScenario(request *CopyScenarioRequest) (response *CopyScena
 // 复制场景
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_DBQUERYFAILED = "FailedOperation.DbQueryFailed"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  RESOURCENOTFOUND = "ResourceNotFound"
+//  FAILEDOPERATION_RESOURCENOTFOUND = "FailedOperation.ResourceNotFound"
 func (c *Client) CopyScenarioWithContext(ctx context.Context, request *CopyScenarioRequest) (response *CopyScenarioResponse, err error) {
     if request == nil {
         request = NewCopyScenarioRequest()
@@ -1086,6 +1078,7 @@ func NewDescribeCheckSummaryResponse() (response *DescribeCheckSummaryResponse) 
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_RESOURCENOTFOUND = "FailedOperation.ResourceNotFound"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -1099,6 +1092,7 @@ func (c *Client) DescribeCheckSummary(request *DescribeCheckSummaryRequest) (res
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_RESOURCENOTFOUND = "FailedOperation.ResourceNotFound"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -1141,6 +1135,7 @@ func NewDescribeCronJobsResponse() (response *DescribeCronJobsResponse) {
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_RESOURCENOTFOUND = "FailedOperation.ResourceNotFound"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -1154,6 +1149,7 @@ func (c *Client) DescribeCronJobs(request *DescribeCronJobsRequest) (response *D
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_RESOURCENOTFOUND = "FailedOperation.ResourceNotFound"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -1196,6 +1192,7 @@ func NewDescribeFilesResponse() (response *DescribeFilesResponse) {
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_RESOURCENOTFOUND = "FailedOperation.ResourceNotFound"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -1209,6 +1206,7 @@ func (c *Client) DescribeFiles(request *DescribeFilesRequest) (response *Describ
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_RESOURCENOTFOUND = "FailedOperation.ResourceNotFound"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -1312,6 +1310,7 @@ func NewDescribeLabelValuesResponse() (response *DescribeLabelValuesResponse) {
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_RESOURCENOTFOUND = "FailedOperation.ResourceNotFound"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -1325,6 +1324,7 @@ func (c *Client) DescribeLabelValues(request *DescribeLabelValuesRequest) (respo
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_RESOURCENOTFOUND = "FailedOperation.ResourceNotFound"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -1367,6 +1367,7 @@ func NewDescribeMetricLabelWithValuesResponse() (response *DescribeMetricLabelWi
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_RESOURCENOTFOUND = "FailedOperation.ResourceNotFound"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeMetricLabelWithValues(request *DescribeMetricLabelWithValuesRequest) (response *DescribeMetricLabelWithValuesResponse, err error) {
@@ -1379,6 +1380,7 @@ func (c *Client) DescribeMetricLabelWithValues(request *DescribeMetricLabelWithV
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_RESOURCENOTFOUND = "FailedOperation.ResourceNotFound"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeMetricLabelWithValuesWithContext(ctx context.Context, request *DescribeMetricLabelWithValuesRequest) (response *DescribeMetricLabelWithValuesResponse, err error) {
@@ -1605,6 +1607,7 @@ func NewDescribeRequestSummaryResponse() (response *DescribeRequestSummaryRespon
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_RESOURCENOTFOUND = "FailedOperation.ResourceNotFound"
 //  INTERNALERROR = "InternalError"
 func (c *Client) DescribeRequestSummary(request *DescribeRequestSummaryRequest) (response *DescribeRequestSummaryResponse, err error) {
     return c.DescribeRequestSummaryWithContext(context.Background(), request)
@@ -1616,6 +1619,7 @@ func (c *Client) DescribeRequestSummary(request *DescribeRequestSummaryRequest) 
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_RESOURCENOTFOUND = "FailedOperation.ResourceNotFound"
 //  INTERNALERROR = "InternalError"
 func (c *Client) DescribeRequestSummaryWithContext(ctx context.Context, request *DescribeRequestSummaryRequest) (response *DescribeRequestSummaryResponse, err error) {
     if request == nil {
@@ -1821,6 +1825,7 @@ func NewDescribeSampleMatrixQueryResponse() (response *DescribeSampleMatrixQuery
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_RESOURCENOTFOUND = "FailedOperation.ResourceNotFound"
 //  INTERNALERROR = "InternalError"
 func (c *Client) DescribeSampleMatrixQuery(request *DescribeSampleMatrixQueryRequest) (response *DescribeSampleMatrixQueryResponse, err error) {
     return c.DescribeSampleMatrixQueryWithContext(context.Background(), request)
@@ -1832,6 +1837,7 @@ func (c *Client) DescribeSampleMatrixQuery(request *DescribeSampleMatrixQueryReq
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_RESOURCENOTFOUND = "FailedOperation.ResourceNotFound"
 //  INTERNALERROR = "InternalError"
 func (c *Client) DescribeSampleMatrixQueryWithContext(ctx context.Context, request *DescribeSampleMatrixQueryRequest) (response *DescribeSampleMatrixQueryResponse, err error) {
     if request == nil {
@@ -1872,6 +1878,7 @@ func NewDescribeSampleQueryResponse() (response *DescribeSampleQueryResponse) {
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_RESOURCENOTFOUND = "FailedOperation.ResourceNotFound"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -1885,6 +1892,7 @@ func (c *Client) DescribeSampleQuery(request *DescribeSampleQueryRequest) (respo
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_RESOURCENOTFOUND = "FailedOperation.ResourceNotFound"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"

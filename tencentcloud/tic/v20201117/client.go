@@ -320,6 +320,7 @@ func NewDeleteStackVersionResponse() (response *DeleteStackVersionResponse) {
 //  INTERNALERROR_DBERROR = "InternalError.DbError"
 //  INTERNALERROR_SYSTEM = "InternalError.System"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 func (c *Client) DeleteStackVersion(request *DeleteStackVersionRequest) (response *DeleteStackVersionResponse, err error) {
     return c.DeleteStackVersionWithContext(context.Background(), request)
 }
@@ -334,6 +335,7 @@ func (c *Client) DeleteStackVersion(request *DeleteStackVersionRequest) (respons
 //  INTERNALERROR_DBERROR = "InternalError.DbError"
 //  INTERNALERROR_SYSTEM = "InternalError.System"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 func (c *Client) DeleteStackVersionWithContext(ctx context.Context, request *DeleteStackVersionRequest) (response *DeleteStackVersionResponse, err error) {
     if request == nil {
         request = NewDeleteStackVersionRequest()
@@ -771,6 +773,7 @@ func NewUpdateStackResponse() (response *UpdateStackResponse) {
 // 本接口（UpdateStack）用于更新资源栈的名称和描述。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_NOTEXIST = "FailedOperation.NotExist"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_COSERROR = "InternalError.CosError"
 //  INTERNALERROR_DBERROR = "InternalError.DbError"
@@ -784,6 +787,7 @@ func (c *Client) UpdateStack(request *UpdateStackRequest) (response *UpdateStack
 // 本接口（UpdateStack）用于更新资源栈的名称和描述。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_NOTEXIST = "FailedOperation.NotExist"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_COSERROR = "InternalError.CosError"
 //  INTERNALERROR_DBERROR = "InternalError.DbError"

@@ -401,45 +401,45 @@ func (r *CreateBatchCancelFlowUrlResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateConvertTaskApiRequestParams struct {
-	// 资源Id
-	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
-
 	// 资源类型 取值范围doc,docx,html之一
 	ResourceType *string `json:"ResourceType,omitempty" name:"ResourceType"`
 
-	// 资源名称
+	// 资源名称，长度限制为256字符
 	ResourceName *string `json:"ResourceName,omitempty" name:"ResourceName"`
 
-	// 无
-	Organization *OrganizationInfo `json:"Organization,omitempty" name:"Organization"`
+	// 资源Id，通过UploadFiles获取
+	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
 
-	// 无
+	// 操作者信息
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 
-	// 无
+	// 应用号信息
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+
+	// 暂未开放
+	Organization *OrganizationInfo `json:"Organization,omitempty" name:"Organization"`
 }
 
 type CreateConvertTaskApiRequest struct {
 	*tchttp.BaseRequest
 	
-	// 资源Id
-	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
-
 	// 资源类型 取值范围doc,docx,html之一
 	ResourceType *string `json:"ResourceType,omitempty" name:"ResourceType"`
 
-	// 资源名称
+	// 资源名称，长度限制为256字符
 	ResourceName *string `json:"ResourceName,omitempty" name:"ResourceName"`
 
-	// 无
-	Organization *OrganizationInfo `json:"Organization,omitempty" name:"Organization"`
+	// 资源Id，通过UploadFiles获取
+	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
 
-	// 无
+	// 操作者信息
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 
-	// 无
+	// 应用号信息
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+
+	// 暂未开放
+	Organization *OrganizationInfo `json:"Organization,omitempty" name:"Organization"`
 }
 
 func (r *CreateConvertTaskApiRequest) ToJsonString() string {
@@ -454,12 +454,12 @@ func (r *CreateConvertTaskApiRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	delete(f, "ResourceId")
 	delete(f, "ResourceType")
 	delete(f, "ResourceName")
-	delete(f, "Organization")
+	delete(f, "ResourceId")
 	delete(f, "Operator")
 	delete(f, "Agent")
+	delete(f, "Organization")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateConvertTaskApiRequest has unknown keys!", "")
 	}
@@ -1295,7 +1295,7 @@ type DescribeFlowBriefsRequestParams struct {
 	// 调用方用户信息，userId 必填
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 
-	// 需要查询的流程ID列表
+	// 需要查询的流程ID列表，限制最大20个
 	FlowIds []*string `json:"FlowIds,omitempty" name:"FlowIds"`
 
 	// 应用相关信息
@@ -1308,7 +1308,7 @@ type DescribeFlowBriefsRequest struct {
 	// 调用方用户信息，userId 必填
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 
-	// 需要查询的流程ID列表
+	// 需要查询的流程ID列表，限制最大20个
 	FlowIds []*string `json:"FlowIds,omitempty" name:"FlowIds"`
 
 	// 应用相关信息
@@ -1369,7 +1369,7 @@ type DescribeFlowTemplatesRequestParams struct {
 	// 搜索条件，具体参考Filter结构体。本接口取值：template-id：按照【 **模板唯一标识** 】进行过滤
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
-	// 查询个数，默认20，最大100
+	// 查询个数，默认20，最大200
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 查询偏移位置，默认0
@@ -1394,7 +1394,7 @@ type DescribeFlowTemplatesRequest struct {
 	// 搜索条件，具体参考Filter结构体。本接口取值：template-id：按照【 **模板唯一标识** 】进行过滤
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
-	// 查询个数，默认20，最大100
+	// 查询个数，默认20，最大200
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 查询偏移位置，默认0
@@ -1655,33 +1655,33 @@ type FormField struct {
 
 // Predefined struct for user
 type GetTaskResultApiRequestParams struct {
-	// 任务Id
+	// 任务Id，通过CreateConvertTaskApi得到
 	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
-
-	// 企业信息
-	Organization *OrganizationInfo `json:"Organization,omitempty" name:"Organization"`
 
 	// 操作人信息
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 
-	// 渠道信息
+	// 应用号信息
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+
+	// 暂未开放
+	Organization *OrganizationInfo `json:"Organization,omitempty" name:"Organization"`
 }
 
 type GetTaskResultApiRequest struct {
 	*tchttp.BaseRequest
 	
-	// 任务Id
+	// 任务Id，通过CreateConvertTaskApi得到
 	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
-
-	// 企业信息
-	Organization *OrganizationInfo `json:"Organization,omitempty" name:"Organization"`
 
 	// 操作人信息
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 
-	// 渠道信息
+	// 应用号信息
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+
+	// 暂未开放
+	Organization *OrganizationInfo `json:"Organization,omitempty" name:"Organization"`
 }
 
 func (r *GetTaskResultApiRequest) ToJsonString() string {
@@ -1697,9 +1697,9 @@ func (r *GetTaskResultApiRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "TaskId")
-	delete(f, "Organization")
 	delete(f, "Operator")
 	delete(f, "Agent")
+	delete(f, "Organization")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetTaskResultApiRequest has unknown keys!", "")
 	}
@@ -1711,13 +1711,25 @@ type GetTaskResultApiResponseParams struct {
 	// 任务Id
 	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
 
-	// 任务状态
+	// 任务状态，需要关注的状态
+	// 0  :NeedTranform   - 任务已提交
+	// 4  :Processing     - 文档转换中
+	// 8  :TaskEnd        - 任务处理完成
+	// -2 :DownloadFailed - 下载失败
+	// -6 :ProcessFailed  - 转换失败
+	// -13:ProcessTimeout - 转换文件超时
 	TaskStatus *int64 `json:"TaskStatus,omitempty" name:"TaskStatus"`
 
-	// 状态描述
+	// 状态描述，需要关注的状态
+	// NeedTranform   - 任务已提交
+	// Processing     - 文档转换中
+	// TaskEnd        - 任务处理完成
+	// DownloadFailed - 下载失败
+	// ProcessFailed  - 转换失败
+	// ProcessTimeout - 转换文件超时
 	TaskMessage *string `json:"TaskMessage,omitempty" name:"TaskMessage"`
 
-	// 资源Id
+	// 资源Id，也是FileId，用于文件发起使用
 	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1953,8 +1965,8 @@ type UploadFile struct {
 // Predefined struct for user
 type UploadFilesRequestParams struct {
 	// 文件对应业务类型，用于区分文件存储路径：
-	// 1. TEMPLATE - 模板； 文件类型：.pdf/.html
-	// 2. DOCUMENT - 签署过程及签署后的合同文档 文件类型：.pdf/.html
+	// 1. TEMPLATE - 模板； 文件类型：.pdf .doc .docx .html
+	// 2. DOCUMENT - 签署过程及签署后的合同文档/图片控件 文件类型：.pdf/.jpg/.png
 	// 3. SEAL - 印章； 文件类型：.jpg/.jpeg/.png
 	BusinessType *string `json:"BusinessType,omitempty" name:"BusinessType"`
 
@@ -1984,8 +1996,8 @@ type UploadFilesRequest struct {
 	*tchttp.BaseRequest
 	
 	// 文件对应业务类型，用于区分文件存储路径：
-	// 1. TEMPLATE - 模板； 文件类型：.pdf/.html
-	// 2. DOCUMENT - 签署过程及签署后的合同文档 文件类型：.pdf/.html
+	// 1. TEMPLATE - 模板； 文件类型：.pdf .doc .docx .html
+	// 2. DOCUMENT - 签署过程及签署后的合同文档/图片控件 文件类型：.pdf/.jpg/.png
 	// 3. SEAL - 印章； 文件类型：.jpg/.jpeg/.png
 	BusinessType *string `json:"BusinessType,omitempty" name:"BusinessType"`
 

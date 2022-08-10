@@ -238,7 +238,7 @@ type CreateTrainingModelRequestParams struct {
 	// 模型存储cos目录
 	ModelOutputPath *CosPathInfo `json:"ModelOutputPath,omitempty" name:"ModelOutputPath"`
 
-	// 模型来源 （JOB/COS/AUTO_ML）
+	// 模型来源 （JOB/COS）
 	TrainingModelSource *string `json:"TrainingModelSource,omitempty" name:"TrainingModelSource"`
 
 	// 模型偏好
@@ -257,6 +257,9 @@ type CreateTrainingModelRequestParams struct {
 
 	// 模型格式 （PYTORCH/TORCH_SCRIPT/DETECTRON2/SAVED_MODEL/FROZEN_GRAPH/PMML）
 	ModelFormat *string `json:"ModelFormat,omitempty" name:"ModelFormat"`
+
+	// 推理镜像ID
+	ReasoningEnvironmentId *string `json:"ReasoningEnvironmentId,omitempty" name:"ReasoningEnvironmentId"`
 }
 
 type CreateTrainingModelRequest struct {
@@ -307,7 +310,7 @@ type CreateTrainingModelRequest struct {
 	// 模型存储cos目录
 	ModelOutputPath *CosPathInfo `json:"ModelOutputPath,omitempty" name:"ModelOutputPath"`
 
-	// 模型来源 （JOB/COS/AUTO_ML）
+	// 模型来源 （JOB/COS）
 	TrainingModelSource *string `json:"TrainingModelSource,omitempty" name:"TrainingModelSource"`
 
 	// 模型偏好
@@ -326,6 +329,9 @@ type CreateTrainingModelRequest struct {
 
 	// 模型格式 （PYTORCH/TORCH_SCRIPT/DETECTRON2/SAVED_MODEL/FROZEN_GRAPH/PMML）
 	ModelFormat *string `json:"ModelFormat,omitempty" name:"ModelFormat"`
+
+	// 推理镜像ID
+	ReasoningEnvironmentId *string `json:"ReasoningEnvironmentId,omitempty" name:"ReasoningEnvironmentId"`
 }
 
 func (r *CreateTrainingModelRequest) ToJsonString() string {
@@ -361,6 +367,7 @@ func (r *CreateTrainingModelRequest) FromJsonString(s string) error {
 	delete(f, "TrainingJobVersion")
 	delete(f, "ModelVersionType")
 	delete(f, "ModelFormat")
+	delete(f, "ReasoningEnvironmentId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateTrainingModelRequest has unknown keys!", "")
 	}
@@ -905,6 +912,9 @@ type DeleteTrainingModelRequestParams struct {
 
 	// 是否同步清理cos
 	EnableDeleteCos *bool `json:"EnableDeleteCos,omitempty" name:"EnableDeleteCos"`
+
+	// 删除模型类型，枚举值：NORMAL 普通，ACCELERATE 加速，不传则删除所有
+	ModelVersionType *string `json:"ModelVersionType,omitempty" name:"ModelVersionType"`
 }
 
 type DeleteTrainingModelRequest struct {
@@ -915,6 +925,9 @@ type DeleteTrainingModelRequest struct {
 
 	// 是否同步清理cos
 	EnableDeleteCos *bool `json:"EnableDeleteCos,omitempty" name:"EnableDeleteCos"`
+
+	// 删除模型类型，枚举值：NORMAL 普通，ACCELERATE 加速，不传则删除所有
+	ModelVersionType *string `json:"ModelVersionType,omitempty" name:"ModelVersionType"`
 }
 
 func (r *DeleteTrainingModelRequest) ToJsonString() string {
@@ -931,6 +944,7 @@ func (r *DeleteTrainingModelRequest) FromJsonString(s string) error {
 	}
 	delete(f, "TrainingModelId")
 	delete(f, "EnableDeleteCos")
+	delete(f, "ModelVersionType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteTrainingModelRequest has unknown keys!", "")
 	}
@@ -3326,6 +3340,10 @@ type TrainingTaskDetail struct {
 	// 预付费专用资源组名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceGroupName *string `json:"ResourceGroupName,omitempty" name:"ResourceGroupName"`
+
+	// 任务信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Message *string `json:"Message,omitempty" name:"Message"`
 }
 
 type TrainingTaskSetItem struct {
@@ -3401,4 +3419,8 @@ type TrainingTaskSetItem struct {
 	// 自定义镜像信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ImageInfo *ImageInfo `json:"ImageInfo,omitempty" name:"ImageInfo"`
+
+	// 任务信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Message *string `json:"Message,omitempty" name:"Message"`
 }

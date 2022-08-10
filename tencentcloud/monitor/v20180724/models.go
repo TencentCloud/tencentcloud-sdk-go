@@ -4283,6 +4283,9 @@ type DescribeMonitorTypesResponseParams struct {
 	// 监控类型，云产品监控为 MT_QCE
 	MonitorTypes []*string `json:"MonitorTypes,omitempty" name:"MonitorTypes"`
 
+	// 监控类型详情
+	MonitorTypeInfos []*MonitorTypeInfo `json:"MonitorTypeInfos,omitempty" name:"MonitorTypeInfos"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }
@@ -7280,6 +7283,17 @@ func (r *ModifyPrometheusInstanceAttributesResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *ModifyPrometheusInstanceAttributesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type MonitorTypeInfo struct {
+	// 监控类型ID
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 监控类型
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 排列顺序
+	SortId *int64 `json:"SortId,omitempty" name:"SortId"`
 }
 
 type MonitorTypeNamespace struct {

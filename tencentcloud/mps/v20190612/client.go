@@ -1323,6 +1323,7 @@ func NewDeletePersonSampleResponse() (response *DeletePersonSampleResponse) {
 // 该接口用于根据素材 ID，删除素材样本。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
 //  INTERNALERROR = "InternalError"
 //  RESOURCENOTFOUND_PERSON = "ResourceNotFound.Person"
 func (c *Client) DeletePersonSample(request *DeletePersonSampleRequest) (response *DeletePersonSampleResponse, err error) {
@@ -1333,6 +1334,7 @@ func (c *Client) DeletePersonSample(request *DeletePersonSampleRequest) (respons
 // 该接口用于根据素材 ID，删除素材样本。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
 //  INTERNALERROR = "InternalError"
 //  RESOURCENOTFOUND_PERSON = "ResourceNotFound.Person"
 func (c *Client) DeletePersonSampleWithContext(ctx context.Context, request *DeletePersonSampleRequest) (response *DeletePersonSampleResponse, err error) {
@@ -2757,6 +2759,7 @@ func NewExecuteFunctionResponse() (response *ExecuteFunctionResponse) {
 // 本接口仅用于定制开发的特殊场景，除非云媒体处理客服人员主动告知您需要使用本接口，其它情况请勿调用。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
 //  FAILEDOPERATION_INVALIDUSER = "FailedOperation.InvalidUser"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE_FUNCTIONARG = "InvalidParameterValue.FunctionArg"
@@ -2770,6 +2773,7 @@ func (c *Client) ExecuteFunction(request *ExecuteFunctionRequest) (response *Exe
 // 本接口仅用于定制开发的特殊场景，除非云媒体处理客服人员主动告知您需要使用本接口，其它情况请勿调用。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
 //  FAILEDOPERATION_INVALIDUSER = "FailedOperation.InvalidUser"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE_FUNCTIONARG = "InvalidParameterValue.FunctionArg"
@@ -3310,6 +3314,7 @@ func NewModifyPersonSampleResponse() (response *ModifyPersonSampleResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_FACEDUPLICATE = "InvalidParameterValue.FaceDuplicate"
@@ -3324,6 +3329,7 @@ func (c *Client) ModifyPersonSample(request *ModifyPersonSampleRequest) (respons
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_FACEDUPLICATE = "InvalidParameterValue.FaceDuplicate"

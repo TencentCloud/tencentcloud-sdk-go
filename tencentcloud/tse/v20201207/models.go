@@ -53,6 +53,14 @@ type BoundK8SInfo struct {
 	SyncMode *string `json:"SyncMode,omitempty" name:"SyncMode"`
 }
 
+type CloudNativeAPIGatewayNode struct {
+	// 云原生网关节点 id
+	NodeId *string `json:"NodeId,omitempty" name:"NodeId"`
+
+	// 节点 ip
+	NodeIp *string `json:"NodeIp,omitempty" name:"NodeIp"`
+}
+
 // Predefined struct for user
 type CreateEngineRequestParams struct {
 	// 引擎类型。参考值：
@@ -365,6 +373,85 @@ func (r *DeleteEngineResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeCloudNativeAPIGatewayNodesRequestParams struct {
+	// 云原生API网关实例ID。
+	GatewayId *string `json:"GatewayId,omitempty" name:"GatewayId"`
+
+	// 翻页从第几个开始获取
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 翻页获取多少个
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+type DescribeCloudNativeAPIGatewayNodesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 云原生API网关实例ID。
+	GatewayId *string `json:"GatewayId,omitempty" name:"GatewayId"`
+
+	// 翻页从第几个开始获取
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 翻页获取多少个
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribeCloudNativeAPIGatewayNodesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCloudNativeAPIGatewayNodesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GatewayId")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCloudNativeAPIGatewayNodesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCloudNativeAPIGatewayNodesResponseParams struct {
+	// 获取云原生网关节点列表结果。
+	Result *DescribeCloudNativeAPIGatewayNodesResult `json:"Result,omitempty" name:"Result"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeCloudNativeAPIGatewayNodesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeCloudNativeAPIGatewayNodesResponseParams `json:"Response"`
+}
+
+func (r *DescribeCloudNativeAPIGatewayNodesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCloudNativeAPIGatewayNodesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCloudNativeAPIGatewayNodesResult struct {
+	// 获取云原生API网关节点列表响应结果。
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 云原生API网关节点列表。
+	NodeList []*CloudNativeAPIGatewayNode `json:"NodeList,omitempty" name:"NodeList"`
+}
+
+// Predefined struct for user
 type DescribeNacosReplicasRequestParams struct {
 	// 引擎实例ID
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
@@ -526,6 +613,9 @@ type DescribeSREInstanceAccessAddressRequestParams struct {
 
 	// 引擎其他组件名称（pushgateway）
 	Workload *string `json:"Workload,omitempty" name:"Workload"`
+
+	// 部署地域
+	EngineRegion *string `json:"EngineRegion,omitempty" name:"EngineRegion"`
 }
 
 type DescribeSREInstanceAccessAddressRequest struct {
@@ -542,6 +632,9 @@ type DescribeSREInstanceAccessAddressRequest struct {
 
 	// 引擎其他组件名称（pushgateway）
 	Workload *string `json:"Workload,omitempty" name:"Workload"`
+
+	// 部署地域
+	EngineRegion *string `json:"EngineRegion,omitempty" name:"EngineRegion"`
 }
 
 func (r *DescribeSREInstanceAccessAddressRequest) ToJsonString() string {
@@ -560,6 +653,7 @@ func (r *DescribeSREInstanceAccessAddressRequest) FromJsonString(s string) error
 	delete(f, "VpcId")
 	delete(f, "SubnetId")
 	delete(f, "Workload")
+	delete(f, "EngineRegion")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSREInstanceAccessAddressRequest has unknown keys!", "")
 	}
@@ -1139,6 +1233,10 @@ type ZookeeperReplica struct {
 	// 可用区ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
+
+	// 别名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AliasName *string `json:"AliasName,omitempty" name:"AliasName"`
 }
 
 type ZookeeperServerInterface struct {

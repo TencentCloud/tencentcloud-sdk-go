@@ -500,6 +500,7 @@ func NewQueryBeautifyVideoJobResponse() (response *QueryBeautifyVideoJobResponse
 //  FAILEDOPERATION_JOBSTOPPROCESSING = "FailedOperation.JobStopProcessing"
 //  INVALIDPARAMETERVALUE_PARAMETERVALUEERROR = "InvalidParameterValue.ParameterValueError"
 //  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_NOTEXIST = "ResourceUnavailable.NotExist"
 func (c *Client) QueryBeautifyVideoJob(request *QueryBeautifyVideoJobRequest) (response *QueryBeautifyVideoJobResponse, err error) {
     return c.QueryBeautifyVideoJobWithContext(context.Background(), request)
 }
@@ -516,6 +517,7 @@ func (c *Client) QueryBeautifyVideoJob(request *QueryBeautifyVideoJobRequest) (r
 //  FAILEDOPERATION_JOBSTOPPROCESSING = "FailedOperation.JobStopProcessing"
 //  INVALIDPARAMETERVALUE_PARAMETERVALUEERROR = "InvalidParameterValue.ParameterValueError"
 //  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_NOTEXIST = "ResourceUnavailable.NotExist"
 func (c *Client) QueryBeautifyVideoJobWithContext(ctx context.Context, request *QueryBeautifyVideoJobRequest) (response *QueryBeautifyVideoJobResponse, err error) {
     if request == nil {
         request = NewQueryBeautifyVideoJobRequest()

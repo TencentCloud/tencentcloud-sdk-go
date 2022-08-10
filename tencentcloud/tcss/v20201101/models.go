@@ -7990,6 +7990,9 @@ type DescribeAssetSummaryResponseParams struct {
 	// 风险镜像个数
 	ImageUnsafeCnt *uint64 `json:"ImageUnsafeCnt,omitempty" name:"ImageUnsafeCnt"`
 
+	// 主机未安装agent数量
+	HostUnInstallCnt *uint64 `json:"HostUnInstallCnt,omitempty" name:"HostUnInstallCnt"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }
@@ -9251,6 +9254,9 @@ type DescribeContainerAssetSummaryResponseParams struct {
 
 	// 镜像总数
 	ImageTotalCnt *uint64 `json:"ImageTotalCnt,omitempty" name:"ImageTotalCnt"`
+
+	// 主机未安装agent数量
+	HostUnInstallCnt *uint64 `json:"HostUnInstallCnt,omitempty" name:"HostUnInstallCnt"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`

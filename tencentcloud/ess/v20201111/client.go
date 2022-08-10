@@ -243,6 +243,7 @@ func NewCreateConvertTaskApiResponse() (response *CreateConvertTaskApiResponse) 
 // 可能返回的错误码:
 //  INTERNALERROR_DEPENDSAPI = "InternalError.DependsApi"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
 //  OPERATIONDENIED_NOIDENTITYVERIFY = "OperationDenied.NoIdentityVerify"
 func (c *Client) CreateConvertTaskApi(request *CreateConvertTaskApiRequest) (response *CreateConvertTaskApiResponse, err error) {
     return c.CreateConvertTaskApiWithContext(context.Background(), request)
@@ -254,6 +255,7 @@ func (c *Client) CreateConvertTaskApi(request *CreateConvertTaskApiRequest) (res
 // 可能返回的错误码:
 //  INTERNALERROR_DEPENDSAPI = "InternalError.DependsApi"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
 //  OPERATIONDENIED_NOIDENTITYVERIFY = "OperationDenied.NoIdentityVerify"
 func (c *Client) CreateConvertTaskApiWithContext(ctx context.Context, request *CreateConvertTaskApiRequest) (response *CreateConvertTaskApiResponse, err error) {
     if request == nil {
@@ -853,6 +855,8 @@ func NewDescribeFlowBriefsResponse() (response *DescribeFlowBriefsResponse) {
 //
 // 适用场景：可用于主动查询某个合同流程的签署状态信息。可以配合回调通知使用。
 //
+// 日调用量默认10W
+//
 // 可能返回的错误码:
 //  DRYRUNOPERATION = "DryRunOperation"
 //  FAILEDOPERATION = "FailedOperation"
@@ -899,6 +903,8 @@ func (c *Client) DescribeFlowBriefs(request *DescribeFlowBriefsRequest) (respons
 // 查询流程摘要
 //
 // 适用场景：可用于主动查询某个合同流程的签署状态信息。可以配合回调通知使用。
+//
+// 日调用量默认10W
 //
 // 可能返回的错误码:
 //  DRYRUNOPERATION = "DryRunOperation"
@@ -1106,6 +1112,7 @@ func NewGetTaskResultApiResponse() (response *GetTaskResultApiResponse) {
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
 func (c *Client) GetTaskResultApi(request *GetTaskResultApiRequest) (response *GetTaskResultApiResponse, err error) {
     return c.GetTaskResultApiWithContext(context.Background(), request)
 }
@@ -1115,6 +1122,7 @@ func (c *Client) GetTaskResultApi(request *GetTaskResultApiRequest) (response *G
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
 func (c *Client) GetTaskResultApiWithContext(ctx context.Context, request *GetTaskResultApiRequest) (response *GetTaskResultApiResponse, err error) {
     if request == nil {
         request = NewGetTaskResultApiRequest()

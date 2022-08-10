@@ -159,6 +159,7 @@ func NewAddLiveDomainResponse() (response *AddLiveDomainResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION_CALLOTHERSVRFAILED = "FailedOperation.CallOtherSvrFailed"
 //  FAILEDOPERATION_DELETEDOMAININLOCKEDTIME = "FailedOperation.DeleteDomainInLockedTime"
+//  FAILEDOPERATION_DOMAINNEEDVERIFYOWNER = "FailedOperation.DomainNeedVerifyOwner"
 //  FAILEDOPERATION_HOSTOUTLIMIT = "FailedOperation.HostOutLimit"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_CHINESECHARACTERDETECTED = "InternalError.ChineseCharacterDetected"
@@ -198,6 +199,7 @@ func (c *Client) AddLiveDomain(request *AddLiveDomainRequest) (response *AddLive
 // 可能返回的错误码:
 //  FAILEDOPERATION_CALLOTHERSVRFAILED = "FailedOperation.CallOtherSvrFailed"
 //  FAILEDOPERATION_DELETEDOMAININLOCKEDTIME = "FailedOperation.DeleteDomainInLockedTime"
+//  FAILEDOPERATION_DOMAINNEEDVERIFYOWNER = "FailedOperation.DomainNeedVerifyOwner"
 //  FAILEDOPERATION_HOSTOUTLIMIT = "FailedOperation.HostOutLimit"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_CHINESECHARACTERDETECTED = "InternalError.ChineseCharacterDetected"
@@ -1821,6 +1823,7 @@ func NewDeleteLiveCallbackRuleResponse() (response *DeleteLiveCallbackRuleRespon
 //  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
 //  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+//  UNSUPPORTEDOPERATION_NOTLVBCODEMODE = "UnsupportedOperation.NotLVBCodeMode"
 func (c *Client) DeleteLiveCallbackRule(request *DeleteLiveCallbackRuleRequest) (response *DeleteLiveCallbackRuleResponse, err error) {
     return c.DeleteLiveCallbackRuleWithContext(context.Background(), request)
 }
@@ -1839,6 +1842,7 @@ func (c *Client) DeleteLiveCallbackRule(request *DeleteLiveCallbackRuleRequest) 
 //  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
 //  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+//  UNSUPPORTEDOPERATION_NOTLVBCODEMODE = "UnsupportedOperation.NotLVBCodeMode"
 func (c *Client) DeleteLiveCallbackRuleWithContext(ctx context.Context, request *DeleteLiveCallbackRuleRequest) (response *DeleteLiveCallbackRuleResponse, err error) {
     if request == nil {
         request = NewDeleteLiveCallbackRuleRequest()
@@ -8565,6 +8569,7 @@ func NewResumeDelayLiveStreamResponse() (response *ResumeDelayLiveStreamResponse
 //  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
 //  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNKNOWNPARAMETER = "UnknownParameter"
@@ -8600,6 +8605,7 @@ func (c *Client) ResumeDelayLiveStream(request *ResumeDelayLiveStreamRequest) (r
 //  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
 //  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNKNOWNPARAMETER = "UnknownParameter"

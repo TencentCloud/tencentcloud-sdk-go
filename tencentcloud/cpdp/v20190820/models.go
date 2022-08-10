@@ -1479,6 +1479,9 @@ type ApplyFlexPaymentRequestParams struct {
 	// __test__:测试环境
 	// 缺省默认为生产环境
 	Environment *string `json:"Environment,omitempty" name:"Environment"`
+
+	// 支付结果通知回调地址
+	NotifyUrl *string `json:"NotifyUrl,omitempty" name:"NotifyUrl"`
 }
 
 type ApplyFlexPaymentRequest struct {
@@ -1510,6 +1513,9 @@ type ApplyFlexPaymentRequest struct {
 	// __test__:测试环境
 	// 缺省默认为生产环境
 	Environment *string `json:"Environment,omitempty" name:"Environment"`
+
+	// 支付结果通知回调地址
+	NotifyUrl *string `json:"NotifyUrl,omitempty" name:"NotifyUrl"`
 }
 
 func (r *ApplyFlexPaymentRequest) ToJsonString() string {
@@ -1531,6 +1537,7 @@ func (r *ApplyFlexPaymentRequest) FromJsonString(s string) error {
 	delete(f, "FundingAccountInfo")
 	delete(f, "Remark")
 	delete(f, "Environment")
+	delete(f, "NotifyUrl")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ApplyFlexPaymentRequest has unknown keys!", "")
 	}

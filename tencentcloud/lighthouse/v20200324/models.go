@@ -3326,6 +3326,25 @@ func (r *DetachDisksResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DetailPrice struct {
+	// 描述计费项目名称，目前取值
+	// <li>"DiskSpace"代表云硬盘空间收费项。</li>
+	// <li>"DiskBackupQuota"代表云硬盘备份点配额收费项。</li>
+	PriceName *string `json:"PriceName,omitempty" name:"PriceName"`
+
+	// 云硬盘计费项维度单价。
+	OriginUnitPrice *float64 `json:"OriginUnitPrice,omitempty" name:"OriginUnitPrice"`
+
+	// 云硬盘计费项维度总价。
+	OriginalPrice *float64 `json:"OriginalPrice,omitempty" name:"OriginalPrice"`
+
+	// 云硬盘在计费项维度折扣。
+	Discount *float64 `json:"Discount,omitempty" name:"Discount"`
+
+	// 云硬盘在计费项维度折后总价。
+	DiscountPrice *float64 `json:"DiscountPrice,omitempty" name:"DiscountPrice"`
+}
+
 // Predefined struct for user
 type DisassociateInstancesKeyPairsRequestParams struct {
 	// 密钥对 ID 列表。每次请求批量密钥对的上限为 100。
@@ -3453,16 +3472,25 @@ type Disk struct {
 	// 上一次请求ID
 	LatestOperationRequestId *string `json:"LatestOperationRequestId,omitempty" name:"LatestOperationRequestId"`
 
-	// 创建时间
+	// 创建时间。按照 ISO8601 标准表示，并且使用 UTC 时间。 
+	// 格式为： YYYY-MM-DDThh:mm:ssZ。
 	CreatedTime *string `json:"CreatedTime,omitempty" name:"CreatedTime"`
 
-	// 到期时间
+	// 到期时间。按照 ISO8601 标准表示，并且使用 UTC 时间。 
+	// 格式为： YYYY-MM-DDThh:mm:ssZ。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExpiredTime *string `json:"ExpiredTime,omitempty" name:"ExpiredTime"`
 
-	// 隔离时间
+	// 隔离时间。按照 ISO8601 标准表示，并且使用 UTC 时间。 
+	// 格式为： YYYY-MM-DDThh:mm:ssZ。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsolatedTime *string `json:"IsolatedTime,omitempty" name:"IsolatedTime"`
+
+	// 云硬盘的已有备份点数量。
+	DiskBackupCount *int64 `json:"DiskBackupCount,omitempty" name:"DiskBackupCount"`
+
+	// 云硬盘的备份点配额数量。
+	DiskBackupQuota *int64 `json:"DiskBackupQuota,omitempty" name:"DiskBackupQuota"`
 }
 
 type DiskChargePrepaid struct {
@@ -3516,6 +3544,9 @@ type DiskPrice struct {
 
 	// 折后总价。
 	DiscountPrice *float64 `json:"DiscountPrice,omitempty" name:"DiscountPrice"`
+
+	// 计费项目明细列表。
+	DetailPrices []*DetailPrice `json:"DetailPrices,omitempty" name:"DetailPrices"`
 }
 
 type DiskReturnable struct {

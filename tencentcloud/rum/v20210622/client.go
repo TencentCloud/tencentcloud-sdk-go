@@ -132,6 +132,7 @@ func NewCreateOfflineLogConfigResponse() (response *CreateOfflineLogConfigRespon
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) CreateOfflineLogConfig(request *CreateOfflineLogConfigRequest) (response *CreateOfflineLogConfigResponse, err error) {
     return c.CreateOfflineLogConfigWithContext(context.Background(), request)
 }
@@ -141,6 +142,7 @@ func (c *Client) CreateOfflineLogConfig(request *CreateOfflineLogConfigRequest) 
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) CreateOfflineLogConfigWithContext(ctx context.Context, request *CreateOfflineLogConfigRequest) (response *CreateOfflineLogConfigResponse, err error) {
     if request == nil {
         request = NewCreateOfflineLogConfigRequest()
@@ -796,27 +798,7 @@ func NewDeleteOfflineLogRecordResponse() (response *DeleteOfflineLogRecordRespon
 // 删除对应的离线日志记录
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  DRYRUNOPERATION = "DryRunOperation"
-//  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_CLSCALLFAIL = "FailedOperation.ClsCallFail"
-//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
-//  OPERATIONDENIED = "OperationDenied"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 //  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCENOTFOUND_NOINSTANCE = "ResourceNotFound.NoInstance"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  RESOURCESSOLDOUT = "ResourcesSoldOut"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteOfflineLogRecord(request *DeleteOfflineLogRecordRequest) (response *DeleteOfflineLogRecordResponse, err error) {
     return c.DeleteOfflineLogRecordWithContext(context.Background(), request)
 }
@@ -825,27 +807,7 @@ func (c *Client) DeleteOfflineLogRecord(request *DeleteOfflineLogRecordRequest) 
 // 删除对应的离线日志记录
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  DRYRUNOPERATION = "DryRunOperation"
-//  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_CLSCALLFAIL = "FailedOperation.ClsCallFail"
-//  FAILEDOPERATION_DATABASEEXCEPTION = "FailedOperation.DataBaseException"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
-//  OPERATIONDENIED = "OperationDenied"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 //  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCENOTFOUND_NOINSTANCE = "ResourceNotFound.NoInstance"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  RESOURCESSOLDOUT = "ResourcesSoldOut"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteOfflineLogRecordWithContext(ctx context.Context, request *DeleteOfflineLogRecordRequest) (response *DeleteOfflineLogRecordResponse, err error) {
     if request == nil {
         request = NewDeleteOfflineLogRecordRequest()

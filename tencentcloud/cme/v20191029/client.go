@@ -128,6 +128,7 @@ func NewCopyProjectResponse() (response *CopyProjectResponse) {
 //  INVALIDPARAMETERVALUE_PLATFORM = "InvalidParameterValue.Platform"
 //  INVALIDPARAMETERVALUE_PROJECTID = "InvalidParameterValue.ProjectId"
 //  OPERATIONDENIED_PERMISSIONDENY = "OperationDenied.PermissionDeny"
+//  RESOURCENOTFOUND_PLATFORM = "ResourceNotFound.Platform"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) CopyProject(request *CopyProjectRequest) (response *CopyProjectResponse, err error) {
     return c.CopyProjectWithContext(context.Background(), request)
@@ -142,6 +143,7 @@ func (c *Client) CopyProject(request *CopyProjectRequest) (response *CopyProject
 //  INVALIDPARAMETERVALUE_PLATFORM = "InvalidParameterValue.Platform"
 //  INVALIDPARAMETERVALUE_PROJECTID = "InvalidParameterValue.ProjectId"
 //  OPERATIONDENIED_PERMISSIONDENY = "OperationDenied.PermissionDeny"
+//  RESOURCENOTFOUND_PLATFORM = "ResourceNotFound.Platform"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) CopyProjectWithContext(ctx context.Context, request *CopyProjectRequest) (response *CopyProjectResponse, err error) {
     if request == nil {
@@ -482,6 +484,7 @@ func NewCreateVideoEncodingPresetResponse() (response *CreateVideoEncodingPreset
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_PLATFORM = "ResourceNotFound.Platform"
 func (c *Client) CreateVideoEncodingPreset(request *CreateVideoEncodingPresetRequest) (response *CreateVideoEncodingPresetResponse, err error) {
     return c.CreateVideoEncodingPresetWithContext(context.Background(), request)
 }
@@ -492,6 +495,7 @@ func (c *Client) CreateVideoEncodingPreset(request *CreateVideoEncodingPresetReq
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_PLATFORM = "ResourceNotFound.Platform"
 func (c *Client) CreateVideoEncodingPresetWithContext(ctx context.Context, request *CreateVideoEncodingPresetRequest) (response *CreateVideoEncodingPresetResponse, err error) {
     if request == nil {
         request = NewCreateVideoEncodingPresetRequest()
@@ -647,6 +651,7 @@ func NewDeleteMaterialResponse() (response *DeleteMaterialResponse) {
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  OPERATIONDENIED_PERMISSIONDENY = "OperationDenied.PermissionDeny"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_PLATFORM = "ResourceNotFound.Platform"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DeleteMaterial(request *DeleteMaterialRequest) (response *DeleteMaterialResponse, err error) {
     return c.DeleteMaterialWithContext(context.Background(), request)
@@ -660,6 +665,7 @@ func (c *Client) DeleteMaterial(request *DeleteMaterialRequest) (response *Delet
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  OPERATIONDENIED_PERMISSIONDENY = "OperationDenied.PermissionDeny"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_PLATFORM = "ResourceNotFound.Platform"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DeleteMaterialWithContext(ctx context.Context, request *DeleteMaterialRequest) (response *DeleteMaterialResponse, err error) {
     if request == nil {
@@ -704,6 +710,7 @@ func NewDeleteProjectResponse() (response *DeleteProjectResponse) {
 //  INVALIDPARAMETERVALUE_PLATFORM = "InvalidParameterValue.Platform"
 //  INVALIDPARAMETERVALUE_PROJECTID = "InvalidParameterValue.ProjectId"
 //  OPERATIONDENIED_PERMISSIONDENY = "OperationDenied.PermissionDeny"
+//  RESOURCENOTFOUND_PLATFORM = "ResourceNotFound.Platform"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DeleteProject(request *DeleteProjectRequest) (response *DeleteProjectResponse, err error) {
     return c.DeleteProjectWithContext(context.Background(), request)
@@ -719,6 +726,7 @@ func (c *Client) DeleteProject(request *DeleteProjectRequest) (response *DeleteP
 //  INVALIDPARAMETERVALUE_PLATFORM = "InvalidParameterValue.Platform"
 //  INVALIDPARAMETERVALUE_PROJECTID = "InvalidParameterValue.ProjectId"
 //  OPERATIONDENIED_PERMISSIONDENY = "OperationDenied.PermissionDeny"
+//  RESOURCENOTFOUND_PLATFORM = "ResourceNotFound.Platform"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DeleteProjectWithContext(ctx context.Context, request *DeleteProjectRequest) (response *DeleteProjectResponse, err error) {
     if request == nil {
@@ -765,6 +773,7 @@ func NewDeleteTeamResponse() (response *DeleteTeamResponse) {
 //  INVALIDPARAMETERVALUE_PLATFORM = "InvalidParameterValue.Platform"
 //  INVALIDPARAMETERVALUE_TEAMNOTEXIST = "InvalidParameterValue.TeamNotExist"
 //  OPERATIONDENIED_PERMISSIONDENY = "OperationDenied.PermissionDeny"
+//  RESOURCENOTFOUND_PLATFORM = "ResourceNotFound.Platform"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DeleteTeam(request *DeleteTeamRequest) (response *DeleteTeamResponse, err error) {
     return c.DeleteTeamWithContext(context.Background(), request)
@@ -782,6 +791,7 @@ func (c *Client) DeleteTeam(request *DeleteTeamRequest) (response *DeleteTeamRes
 //  INVALIDPARAMETERVALUE_PLATFORM = "InvalidParameterValue.Platform"
 //  INVALIDPARAMETERVALUE_TEAMNOTEXIST = "InvalidParameterValue.TeamNotExist"
 //  OPERATIONDENIED_PERMISSIONDENY = "OperationDenied.PermissionDeny"
+//  RESOURCENOTFOUND_PLATFORM = "ResourceNotFound.Platform"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DeleteTeamWithContext(ctx context.Context, request *DeleteTeamRequest) (response *DeleteTeamResponse, err error) {
     if request == nil {
@@ -1055,6 +1065,7 @@ func NewDescribeJoinTeamsResponse() (response *DescribeJoinTeamsResponse) {
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_PLATFORM = "InvalidParameterValue.Platform"
 //  OPERATIONDENIED_PERMISSIONDENY = "OperationDenied.PermissionDeny"
+//  RESOURCENOTFOUND_PLATFORM = "ResourceNotFound.Platform"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeJoinTeams(request *DescribeJoinTeamsRequest) (response *DescribeJoinTeamsResponse, err error) {
     return c.DescribeJoinTeamsWithContext(context.Background(), request)
@@ -1069,6 +1080,7 @@ func (c *Client) DescribeJoinTeams(request *DescribeJoinTeamsRequest) (response 
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_PLATFORM = "InvalidParameterValue.Platform"
 //  OPERATIONDENIED_PERMISSIONDENY = "OperationDenied.PermissionDeny"
+//  RESOURCENOTFOUND_PLATFORM = "ResourceNotFound.Platform"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeJoinTeamsWithContext(ctx context.Context, request *DescribeJoinTeamsRequest) (response *DescribeJoinTeamsResponse, err error) {
     if request == nil {
@@ -1364,6 +1376,7 @@ func NewDescribeResourceAuthorizationResponse() (response *DescribeResourceAutho
 //  INVALIDPARAMETERVALUE_PLATFORM = "InvalidParameterValue.Platform"
 //  OPERATIONDENIED_PERMISSIONDENY = "OperationDenied.PermissionDeny"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_PLATFORM = "ResourceNotFound.Platform"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeResourceAuthorization(request *DescribeResourceAuthorizationRequest) (response *DescribeResourceAuthorizationResponse, err error) {
     return c.DescribeResourceAuthorizationWithContext(context.Background(), request)
@@ -1378,6 +1391,7 @@ func (c *Client) DescribeResourceAuthorization(request *DescribeResourceAuthoriz
 //  INVALIDPARAMETERVALUE_PLATFORM = "InvalidParameterValue.Platform"
 //  OPERATIONDENIED_PERMISSIONDENY = "OperationDenied.PermissionDeny"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_PLATFORM = "ResourceNotFound.Platform"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeResourceAuthorizationWithContext(ctx context.Context, request *DescribeResourceAuthorizationRequest) (response *DescribeResourceAuthorizationResponse, err error) {
     if request == nil {
@@ -1535,6 +1549,7 @@ func NewDescribeTasksResponse() (response *DescribeTasksResponse) {
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE_PLATFORM = "InvalidParameterValue.Platform"
 //  OPERATIONDENIED_PERMISSIONDENY = "OperationDenied.PermissionDeny"
+//  RESOURCENOTFOUND_PLATFORM = "ResourceNotFound.Platform"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeTasks(request *DescribeTasksRequest) (response *DescribeTasksResponse, err error) {
     return c.DescribeTasksWithContext(context.Background(), request)
@@ -1547,6 +1562,7 @@ func (c *Client) DescribeTasks(request *DescribeTasksRequest) (response *Describ
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE_PLATFORM = "InvalidParameterValue.Platform"
 //  OPERATIONDENIED_PERMISSIONDENY = "OperationDenied.PermissionDeny"
+//  RESOURCENOTFOUND_PLATFORM = "ResourceNotFound.Platform"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeTasksWithContext(ctx context.Context, request *DescribeTasksRequest) (response *DescribeTasksResponse, err error) {
     if request == nil {
@@ -1593,6 +1609,7 @@ func NewDescribeTeamMembersResponse() (response *DescribeTeamMembersResponse) {
 //  INVALIDPARAMETERVALUE_PLATFORM = "InvalidParameterValue.Platform"
 //  INVALIDPARAMETERVALUE_TEAMNOTEXIST = "InvalidParameterValue.TeamNotExist"
 //  OPERATIONDENIED_PERMISSIONDENY = "OperationDenied.PermissionDeny"
+//  RESOURCENOTFOUND_PLATFORM = "ResourceNotFound.Platform"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeTeamMembers(request *DescribeTeamMembersRequest) (response *DescribeTeamMembersResponse, err error) {
     return c.DescribeTeamMembersWithContext(context.Background(), request)
@@ -1610,6 +1627,7 @@ func (c *Client) DescribeTeamMembers(request *DescribeTeamMembersRequest) (respo
 //  INVALIDPARAMETERVALUE_PLATFORM = "InvalidParameterValue.Platform"
 //  INVALIDPARAMETERVALUE_TEAMNOTEXIST = "InvalidParameterValue.TeamNotExist"
 //  OPERATIONDENIED_PERMISSIONDENY = "OperationDenied.PermissionDeny"
+//  RESOURCENOTFOUND_PLATFORM = "ResourceNotFound.Platform"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeTeamMembersWithContext(ctx context.Context, request *DescribeTeamMembersRequest) (response *DescribeTeamMembersResponse, err error) {
     if request == nil {
@@ -1654,6 +1672,7 @@ func NewDescribeTeamsResponse() (response *DescribeTeamsResponse) {
 //  INVALIDPARAMETERVALUE_PLATFORM = "InvalidParameterValue.Platform"
 //  INVALIDPARAMETERVALUE_TEAMNOTEXIST = "InvalidParameterValue.TeamNotExist"
 //  OPERATIONDENIED_PERMISSIONDENY = "OperationDenied.PermissionDeny"
+//  RESOURCENOTFOUND_PLATFORM = "ResourceNotFound.Platform"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeTeams(request *DescribeTeamsRequest) (response *DescribeTeamsResponse, err error) {
     return c.DescribeTeamsWithContext(context.Background(), request)
@@ -1669,6 +1688,7 @@ func (c *Client) DescribeTeams(request *DescribeTeamsRequest) (response *Describ
 //  INVALIDPARAMETERVALUE_PLATFORM = "InvalidParameterValue.Platform"
 //  INVALIDPARAMETERVALUE_TEAMNOTEXIST = "InvalidParameterValue.TeamNotExist"
 //  OPERATIONDENIED_PERMISSIONDENY = "OperationDenied.PermissionDeny"
+//  RESOURCENOTFOUND_PLATFORM = "ResourceNotFound.Platform"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeTeamsWithContext(ctx context.Context, request *DescribeTeamsRequest) (response *DescribeTeamsResponse, err error) {
     if request == nil {
@@ -1710,6 +1730,7 @@ func NewDescribeVideoEncodingPresetsResponse() (response *DescribeVideoEncodingP
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE_PLATFORM = "InvalidParameterValue.Platform"
+//  RESOURCENOTFOUND_PLATFORM = "ResourceNotFound.Platform"
 func (c *Client) DescribeVideoEncodingPresets(request *DescribeVideoEncodingPresetsRequest) (response *DescribeVideoEncodingPresetsResponse, err error) {
     return c.DescribeVideoEncodingPresetsWithContext(context.Background(), request)
 }
@@ -1721,6 +1742,7 @@ func (c *Client) DescribeVideoEncodingPresets(request *DescribeVideoEncodingPres
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE_PLATFORM = "InvalidParameterValue.Platform"
+//  RESOURCENOTFOUND_PLATFORM = "ResourceNotFound.Platform"
 func (c *Client) DescribeVideoEncodingPresetsWithContext(ctx context.Context, request *DescribeVideoEncodingPresetsRequest) (response *DescribeVideoEncodingPresetsResponse, err error) {
     if request == nil {
         request = NewDescribeVideoEncodingPresetsRequest()
@@ -2630,6 +2652,7 @@ func NewModifyMaterialResponse() (response *ModifyMaterialResponse) {
 //  INVALIDPARAMETERVALUE_OWNERID = "InvalidParameterValue.OwnerId"
 //  INVALIDPARAMETERVALUE_OWNERTYPE = "InvalidParameterValue.OwnerType"
 //  OPERATIONDENIED_PERMISSIONDENY = "OperationDenied.PermissionDeny"
+//  RESOURCENOTFOUND_PLATFORM = "ResourceNotFound.Platform"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) ModifyMaterial(request *ModifyMaterialRequest) (response *ModifyMaterialResponse, err error) {
     return c.ModifyMaterialWithContext(context.Background(), request)
@@ -2644,6 +2667,7 @@ func (c *Client) ModifyMaterial(request *ModifyMaterialRequest) (response *Modif
 //  INVALIDPARAMETERVALUE_OWNERID = "InvalidParameterValue.OwnerId"
 //  INVALIDPARAMETERVALUE_OWNERTYPE = "InvalidParameterValue.OwnerType"
 //  OPERATIONDENIED_PERMISSIONDENY = "OperationDenied.PermissionDeny"
+//  RESOURCENOTFOUND_PLATFORM = "ResourceNotFound.Platform"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) ModifyMaterialWithContext(ctx context.Context, request *ModifyMaterialRequest) (response *ModifyMaterialResponse, err error) {
     if request == nil {
@@ -2691,6 +2715,7 @@ func NewModifyProjectResponse() (response *ModifyProjectResponse) {
 //  INVALIDPARAMETERVALUE_PLATFORM = "InvalidParameterValue.Platform"
 //  INVALIDPARAMETERVALUE_PROJECTID = "InvalidParameterValue.ProjectId"
 //  OPERATIONDENIED_PERMISSIONDENY = "OperationDenied.PermissionDeny"
+//  RESOURCENOTFOUND_PLATFORM = "ResourceNotFound.Platform"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) ModifyProject(request *ModifyProjectRequest) (response *ModifyProjectResponse, err error) {
     return c.ModifyProjectWithContext(context.Background(), request)
@@ -2709,6 +2734,7 @@ func (c *Client) ModifyProject(request *ModifyProjectRequest) (response *ModifyP
 //  INVALIDPARAMETERVALUE_PLATFORM = "InvalidParameterValue.Platform"
 //  INVALIDPARAMETERVALUE_PROJECTID = "InvalidParameterValue.ProjectId"
 //  OPERATIONDENIED_PERMISSIONDENY = "OperationDenied.PermissionDeny"
+//  RESOURCENOTFOUND_PLATFORM = "ResourceNotFound.Platform"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) ModifyProjectWithContext(ctx context.Context, request *ModifyProjectRequest) (response *ModifyProjectResponse, err error) {
     if request == nil {
@@ -2754,6 +2780,7 @@ func NewModifyTeamResponse() (response *ModifyTeamResponse) {
 //  INVALIDPARAMETERVALUE_PLATFORM = "InvalidParameterValue.Platform"
 //  INVALIDPARAMETERVALUE_TEAMNOTEXIST = "InvalidParameterValue.TeamNotExist"
 //  OPERATIONDENIED_PERMISSIONDENY = "OperationDenied.PermissionDeny"
+//  RESOURCENOTFOUND_PLATFORM = "ResourceNotFound.Platform"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) ModifyTeam(request *ModifyTeamRequest) (response *ModifyTeamResponse, err error) {
     return c.ModifyTeamWithContext(context.Background(), request)
@@ -2770,6 +2797,7 @@ func (c *Client) ModifyTeam(request *ModifyTeamRequest) (response *ModifyTeamRes
 //  INVALIDPARAMETERVALUE_PLATFORM = "InvalidParameterValue.Platform"
 //  INVALIDPARAMETERVALUE_TEAMNOTEXIST = "InvalidParameterValue.TeamNotExist"
 //  OPERATIONDENIED_PERMISSIONDENY = "OperationDenied.PermissionDeny"
+//  RESOURCENOTFOUND_PLATFORM = "ResourceNotFound.Platform"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) ModifyTeamWithContext(ctx context.Context, request *ModifyTeamRequest) (response *ModifyTeamResponse, err error) {
     if request == nil {
@@ -2815,6 +2843,7 @@ func NewModifyTeamMemberResponse() (response *ModifyTeamMemberResponse) {
 //  INVALIDPARAMETERVALUE_ROLE = "InvalidParameterValue.Role"
 //  INVALIDPARAMETERVALUE_TEAMNOTEXIST = "InvalidParameterValue.TeamNotExist"
 //  OPERATIONDENIED_PERMISSIONDENY = "OperationDenied.PermissionDeny"
+//  RESOURCENOTFOUND_PLATFORM = "ResourceNotFound.Platform"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) ModifyTeamMember(request *ModifyTeamMemberRequest) (response *ModifyTeamMemberResponse, err error) {
     return c.ModifyTeamMemberWithContext(context.Background(), request)
@@ -2831,6 +2860,7 @@ func (c *Client) ModifyTeamMember(request *ModifyTeamMemberRequest) (response *M
 //  INVALIDPARAMETERVALUE_ROLE = "InvalidParameterValue.Role"
 //  INVALIDPARAMETERVALUE_TEAMNOTEXIST = "InvalidParameterValue.TeamNotExist"
 //  OPERATIONDENIED_PERMISSIONDENY = "OperationDenied.PermissionDeny"
+//  RESOURCENOTFOUND_PLATFORM = "ResourceNotFound.Platform"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) ModifyTeamMemberWithContext(ctx context.Context, request *ModifyTeamMemberRequest) (response *ModifyTeamMemberResponse, err error) {
     if request == nil {
@@ -2876,6 +2906,7 @@ func NewModifyVideoEncodingPresetResponse() (response *ModifyVideoEncodingPreset
 //  INVALIDPARAMETERVALUE_ROLE = "InvalidParameterValue.Role"
 //  INVALIDPARAMETERVALUE_TEAMNOTEXIST = "InvalidParameterValue.TeamNotExist"
 //  OPERATIONDENIED_PERMISSIONDENY = "OperationDenied.PermissionDeny"
+//  RESOURCENOTFOUND_PLATFORM = "ResourceNotFound.Platform"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) ModifyVideoEncodingPreset(request *ModifyVideoEncodingPresetRequest) (response *ModifyVideoEncodingPresetResponse, err error) {
     return c.ModifyVideoEncodingPresetWithContext(context.Background(), request)
@@ -2892,6 +2923,7 @@ func (c *Client) ModifyVideoEncodingPreset(request *ModifyVideoEncodingPresetReq
 //  INVALIDPARAMETERVALUE_ROLE = "InvalidParameterValue.Role"
 //  INVALIDPARAMETERVALUE_TEAMNOTEXIST = "InvalidParameterValue.TeamNotExist"
 //  OPERATIONDENIED_PERMISSIONDENY = "OperationDenied.PermissionDeny"
+//  RESOURCENOTFOUND_PLATFORM = "ResourceNotFound.Platform"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) ModifyVideoEncodingPresetWithContext(ctx context.Context, request *ModifyVideoEncodingPresetRequest) (response *ModifyVideoEncodingPresetResponse, err error) {
     if request == nil {
@@ -3082,6 +3114,7 @@ func NewParseEventResponse() (response *ParseEventResponse) {
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_PLATFORM = "InvalidParameter.Platform"
+//  RESOURCENOTFOUND_PLATFORM = "ResourceNotFound.Platform"
 func (c *Client) ParseEvent(request *ParseEventRequest) (response *ParseEventResponse, err error) {
     return c.ParseEventWithContext(context.Background(), request)
 }
@@ -3094,6 +3127,7 @@ func (c *Client) ParseEvent(request *ParseEventRequest) (response *ParseEventRes
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_PLATFORM = "InvalidParameter.Platform"
+//  RESOURCENOTFOUND_PLATFORM = "ResourceNotFound.Platform"
 func (c *Client) ParseEventWithContext(ctx context.Context, request *ParseEventRequest) (response *ParseEventResponse, err error) {
     if request == nil {
         request = NewParseEventRequest()

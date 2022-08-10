@@ -990,6 +990,53 @@ func (c *Client) ModifyRoomInfoWithContext(ctx context.Context, request *ModifyR
     return
 }
 
+func NewModifyUserMicStatusRequest() (request *ModifyUserMicStatusRequest) {
+    request = &ModifyUserMicStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("gme", APIVersion, "ModifyUserMicStatus")
+    
+    
+    return
+}
+
+func NewModifyUserMicStatusResponse() (response *ModifyUserMicStatusResponse) {
+    response = &ModifyUserMicStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyUserMicStatus
+// 修改用户麦克风状态。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) ModifyUserMicStatus(request *ModifyUserMicStatusRequest) (response *ModifyUserMicStatusResponse, err error) {
+    return c.ModifyUserMicStatusWithContext(context.Background(), request)
+}
+
+// ModifyUserMicStatus
+// 修改用户麦克风状态。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) ModifyUserMicStatusWithContext(ctx context.Context, request *ModifyUserMicStatusRequest) (response *ModifyUserMicStatusResponse, err error) {
+    if request == nil {
+        request = NewModifyUserMicStatusRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyUserMicStatus require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyUserMicStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewScanVoiceRequest() (request *ScanVoiceRequest) {
     request = &ScanVoiceRequest{
         BaseRequest: &tchttp.BaseRequest{},

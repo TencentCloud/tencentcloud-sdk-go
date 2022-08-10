@@ -23100,6 +23100,25 @@ type VpnConnection struct {
 
 	// 通道健康检查状态，AVAILABLE：正常，UNAVAILABLE：不正常。 未配置健康检查不返回该对象
 	HealthCheckStatus *string `json:"HealthCheckStatus,omitempty" name:"HealthCheckStatus"`
+
+	// DPD探测开关。默认为0，表示关闭DPD探测。可选值：0（关闭），1（开启）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DpdEnable *int64 `json:"DpdEnable,omitempty" name:"DpdEnable"`
+
+	// DPD超时时间。即探测确认对端不存在需要的时间。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DpdTimeout *string `json:"DpdTimeout,omitempty" name:"DpdTimeout"`
+
+	// DPD超时后的动作。默认为clear。dpdEnable为1（开启）时有效。可取值为clear（断开）和restart（重试）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DpdAction *string `json:"DpdAction,omitempty" name:"DpdAction"`
+
+	// 标签键值对数组
+	TagSet []*Tag `json:"TagSet,omitempty" name:"TagSet"`
+
+	// 协商类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NegotiationType *string `json:"NegotiationType,omitempty" name:"NegotiationType"`
 }
 
 type VpnGateway struct {

@@ -345,6 +345,7 @@ func NewModifyInstanceNameResponse() (response *ModifyInstanceNameResponse) {
 //  DRYRUNOPERATION = "DryRunOperation"
 //  FAILEDOPERATION_MODIFYRESOURCEINFOERROR = "FailedOperation.ModifyResourceInfoError"
 //  FAILEDOPERATION_QUERYRESOURCEERROR = "FailedOperation.QueryResourceError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
 func (c *Client) ModifyInstanceName(request *ModifyInstanceNameRequest) (response *ModifyInstanceNameResponse, err error) {
     return c.ModifyInstanceNameWithContext(context.Background(), request)
 }
@@ -357,6 +358,7 @@ func (c *Client) ModifyInstanceName(request *ModifyInstanceNameRequest) (respons
 //  DRYRUNOPERATION = "DryRunOperation"
 //  FAILEDOPERATION_MODIFYRESOURCEINFOERROR = "FailedOperation.ModifyResourceInfoError"
 //  FAILEDOPERATION_QUERYRESOURCEERROR = "FailedOperation.QueryResourceError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
 func (c *Client) ModifyInstanceNameWithContext(ctx context.Context, request *ModifyInstanceNameRequest) (response *ModifyInstanceNameResponse, err error) {
     if request == nil {
         request = NewModifyInstanceNameRequest()

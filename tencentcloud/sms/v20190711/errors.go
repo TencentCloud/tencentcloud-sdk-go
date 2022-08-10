@@ -56,7 +56,7 @@ const (
 	// 未知错误，如有需要请联系 [腾讯云短信小助手](https://cloud.tencent.com/document/product/382/3773#.E6.8A.80.E6.9C.AF.E4.BA.A4.E6.B5.81)。
 	FAILEDOPERATION_PARAMETERSOTHERERROR = "FailedOperation.ParametersOtherError"
 
-	// 手机号在黑名单库中，通常是用户退订或者命中运营商黑名单导致的，可联系 [腾讯云短信小助手](https://cloud.tencent.com/document/product/382/3773#.E6.8A.80.E6.9C.AF.E4.BA.A4.E6.B5.81) 解决。
+	// 手机号在免打扰名单库中，通常是用户退订或者命中运营商免打扰名单导致的，可联系 [腾讯云短信小助手](https://cloud.tencent.com/document/product/382/3773#.E6.8A.80.E6.9C.AF.E4.BA.A4.E6.B5.81) 解决。
 	FAILEDOPERATION_PHONENUMBERINBLACKLIST = "FailedOperation.PhoneNumberInBlacklist"
 
 	// 签名个数达到最大值。
@@ -76,6 +76,12 @@ const (
 
 	// 模板个数达到最大值。
 	FAILEDOPERATION_TEMPLATENUMBERLIMIT = "FailedOperation.TemplateNumberLimit"
+
+	// 请求内容与审核通过的模板内容不匹配。请检查请求中模板参数的个数是否与申请的模板一致。若存在疑问可联系 [腾讯云短信小助手](https://cloud.tencent.com/document/product/382/3773#.E6.8A.80.E6.9C.AF.E4.BA.A4.E6.B5.81)。
+	FAILEDOPERATION_TEMPLATEPARAMSETNOTMATCHAPPROVEDTEMPLATE = "FailedOperation.TemplateParamSetNotMatchApprovedTemplate"
+
+	// 模板未审批或不存在。可登陆 [短信控制台](https://console.cloud.tencent.com/smsv2)，核查模板是否已审批并审批通过。若存在疑问可联系 [腾讯云短信小助手](https://cloud.tencent.com/document/product/382/3773#.E6.8A.80.E6.9C.AF.E4.BA.A4.E6.B5.81)。
+	FAILEDOPERATION_TEMPLATEUNAPPROVEDORNOTEXIST = "FailedOperation.TemplateUnapprovedOrNotExist"
 
 	// 后台构造用户参数失败，可联系 [sms helper](https://cloud.tencent.com/document/product/382/3773#.E6.8A.80.E6.9C.AF.E4.BA.A4.E6.B5.81) 。
 	INTERNALERROR_CONSTRUCTUSERDATAFAIL = "InternalError.ConstructUserDataFail"
@@ -161,19 +167,19 @@ const (
 	// 单个模板变量字符数超过12个，企业认证用户不限制单个变量值字数，您可以 [变更实名认证模式](https://cloud.tencent.com/document/product/378/34075)，变更为企业认证用户后，该限制变更约1小时左右生效。
 	INVALIDPARAMETERVALUE_TEMPLATEPARAMETERLENGTHLIMIT = "InvalidParameterValue.TemplateParameterLengthLimit"
 
-	// 业务短信国家/地区日下发条数超过设定的上限，可自行到控制台调整短信频率限制策略。
+	// 业务短信国家/地区日下发条数超过设定的上限，可自行到控制台应用管理>基础配置下调整国际港澳台短信发送限制。
 	LIMITEXCEEDED_APPCOUNTRYORREGIONDAILYLIMIT = "LimitExceeded.AppCountryOrRegionDailyLimit"
 
-	// 业务短信国家/地区在黑名单中，可自行到控制台调整短信限制策略。
+	// 业务短信国家/地区不在国际港澳台短信发送限制设置的列表中而禁发，可自行到控制台应用管理>基础配置下调整国际港澳台短信发送限制。
 	LIMITEXCEEDED_APPCOUNTRYORREGIONINBLACKLIST = "LimitExceeded.AppCountryOrRegionInBlacklist"
 
 	// 业务短信日下发条数超过设定的上限 ，可自行到控制台调整短信频率限制策略。
 	LIMITEXCEEDED_APPDAILYLIMIT = "LimitExceeded.AppDailyLimit"
 
-	// 业务短信国际/港澳台日下发条数超过设定的上限，可自行到控制台调整短信频率限制策略。
+	// 业务短信国际/港澳台日下发条数超过设定的上限，可自行到控制台应用管理>基础配置下调整发送总量阈值。
 	LIMITEXCEEDED_APPGLOBALDAILYLIMIT = "LimitExceeded.AppGlobalDailyLimit"
 
-	// 业务短信中国大陆日下发条数超过设定的上限，可自行到控制台调整短信频率限制策略。
+	// 业务短信中国大陆日下发条数超过设定的上限，可自行到控制台应用管理>基础配置下调整发送总量阈值。
 	LIMITEXCEEDED_APPMAINLANDCHINADAILYLIMIT = "LimitExceeded.AppMainlandChinaDailyLimit"
 
 	// 短信日下发条数超过设定的上限 (国际/港澳台)，如需调整限制，可联系 [腾讯云短信小助手](https://cloud.tencent.com/document/product/382/3773)。
@@ -227,8 +233,14 @@ const (
 	// 不支持该请求。
 	UNSUPPORTEDOPERATION_ = "UnsupportedOperation."
 
-	// 群发请求里既有国内手机号也有国际手机号。请排查是否存在（1）使用国内签名或模板却发送短信到国际手机号；（2）使用国际签名或模板却发送短信到国内手机号；
+	// 国内短信模板不支持发送国际/港澳台手机号。发送国际/港澳台手机号请使用国际/港澳台短信正文模板。
+	UNSUPPORTEDOPERATION_CHINESEMAINLANDTEMPLATETOGLOBALPHONE = "UnsupportedOperation.ChineseMainlandTemplateToGlobalPhone"
+
+	// 群发请求里既有国内手机号也有国际手机号。请排查是否存在（1）使用国内签名或模板却发送短信到国际手机号；（2）使用国际签名或模板却发送短信到国内手机号。
 	UNSUPPORTEDOPERATION_CONTAINDOMESTICANDINTERNATIONALPHONENUMBER = "UnsupportedOperation.ContainDomesticAndInternationalPhoneNumber"
+
+	// 国际/港澳台短信模板不支持发送国内手机号。发送国内手机号请使用国内短信正文模板。
+	UNSUPPORTEDOPERATION_GLOBALTEMPLATETOCHINESEMAINLANDPHONE = "UnsupportedOperation.GlobalTemplateToChineseMainlandPhone"
 
 	// 不支持该地区短信下发。
 	UNSUPPORTEDOPERATION_UNSUPORTEDREGION = "UnsupportedOperation.UnsuportedRegion"

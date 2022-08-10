@@ -489,6 +489,7 @@ func NewCreateUserGroupResponse() (response *CreateUserGroupResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) CreateUserGroup(request *CreateUserGroupRequest) (response *CreateUserGroupResponse, err error) {
     return c.CreateUserGroupWithContext(context.Background(), request)
 }
@@ -502,6 +503,7 @@ func (c *Client) CreateUserGroup(request *CreateUserGroupRequest) (response *Cre
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) CreateUserGroupWithContext(ctx context.Context, request *CreateUserGroupRequest) (response *CreateUserGroupResponse, err error) {
     if request == nil {
         request = NewCreateUserGroupRequest()

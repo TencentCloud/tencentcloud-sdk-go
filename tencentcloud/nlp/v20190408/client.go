@@ -444,6 +444,7 @@ func NewDependencyParsingResponse() (response *DependencyParsingResponse) {
 //  RESOURCEINSUFFICIENT_QUOTARUNOUT = "ResourceInsufficient.QuotaRunOut"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  RESOURCEUNAVAILABLE_SERVICENOTOPENEDERROR = "ResourceUnavailable.ServiceNotOpenedError"
+//  UNAUTHORIZEDOPERATION_AUTHENTICATEFAILED = "UnauthorizedOperation.AuthenticateFailed"
 func (c *Client) DependencyParsing(request *DependencyParsingRequest) (response *DependencyParsingResponse, err error) {
     return c.DependencyParsingWithContext(context.Background(), request)
 }
@@ -458,6 +459,7 @@ func (c *Client) DependencyParsing(request *DependencyParsingRequest) (response 
 //  RESOURCEINSUFFICIENT_QUOTARUNOUT = "ResourceInsufficient.QuotaRunOut"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  RESOURCEUNAVAILABLE_SERVICENOTOPENEDERROR = "ResourceUnavailable.ServiceNotOpenedError"
+//  UNAUTHORIZEDOPERATION_AUTHENTICATEFAILED = "UnauthorizedOperation.AuthenticateFailed"
 func (c *Client) DependencyParsingWithContext(ctx context.Context, request *DependencyParsingRequest) (response *DependencyParsingResponse, err error) {
     if request == nil {
         request = NewDependencyParsingRequest()
@@ -761,6 +763,7 @@ func NewLexicalAnalysisResponse() (response *LexicalAnalysisResponse) {
 //  RESOURCEINSUFFICIENT_QUOTARUNOUT = "ResourceInsufficient.QuotaRunOut"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  RESOURCEUNAVAILABLE_SERVICENOTOPENEDERROR = "ResourceUnavailable.ServiceNotOpenedError"
+//  UNAUTHORIZEDOPERATION_AUTHENTICATEFAILED = "UnauthorizedOperation.AuthenticateFailed"
 func (c *Client) LexicalAnalysis(request *LexicalAnalysisRequest) (response *LexicalAnalysisResponse, err error) {
     return c.LexicalAnalysisWithContext(context.Background(), request)
 }
@@ -793,6 +796,7 @@ func (c *Client) LexicalAnalysis(request *LexicalAnalysisRequest) (response *Lex
 //  RESOURCEINSUFFICIENT_QUOTARUNOUT = "ResourceInsufficient.QuotaRunOut"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  RESOURCEUNAVAILABLE_SERVICENOTOPENEDERROR = "ResourceUnavailable.ServiceNotOpenedError"
+//  UNAUTHORIZEDOPERATION_AUTHENTICATEFAILED = "UnauthorizedOperation.AuthenticateFailed"
 func (c *Client) LexicalAnalysisWithContext(ctx context.Context, request *LexicalAnalysisRequest) (response *LexicalAnalysisResponse, err error) {
     if request == nil {
         request = NewLexicalAnalysisRequest()
@@ -1331,6 +1335,7 @@ func NewTextSimilarityResponse() (response *TextSimilarityResponse) {
 //  RESOURCEINSUFFICIENT_QUOTARUNOUT = "ResourceInsufficient.QuotaRunOut"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  RESOURCEUNAVAILABLE_SERVICENOTOPENEDERROR = "ResourceUnavailable.ServiceNotOpenedError"
+//  UNAUTHORIZEDOPERATION_AUTHENTICATEFAILED = "UnauthorizedOperation.AuthenticateFailed"
 func (c *Client) TextSimilarity(request *TextSimilarityRequest) (response *TextSimilarityResponse, err error) {
     return c.TextSimilarityWithContext(context.Background(), request)
 }
@@ -1357,6 +1362,7 @@ func (c *Client) TextSimilarity(request *TextSimilarityRequest) (response *TextS
 //  RESOURCEINSUFFICIENT_QUOTARUNOUT = "ResourceInsufficient.QuotaRunOut"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  RESOURCEUNAVAILABLE_SERVICENOTOPENEDERROR = "ResourceUnavailable.ServiceNotOpenedError"
+//  UNAUTHORIZEDOPERATION_AUTHENTICATEFAILED = "UnauthorizedOperation.AuthenticateFailed"
 func (c *Client) TextSimilarityWithContext(ctx context.Context, request *TextSimilarityRequest) (response *TextSimilarityResponse, err error) {
     if request == nil {
         request = NewTextSimilarityRequest()

@@ -268,7 +268,7 @@ type Candidate struct {
 	// 人员ID
 	PersonId *string `json:"PersonId,omitempty" name:"PersonId"`
 
-	// 人脸ID
+	// 人脸ID，仅在SearchFaces/SearchFacesReturnsByGroup接口返回时有效。人员搜索类接口采用融合特征方式检索，该字段无意义
 	FaceId *string `json:"FaceId,omitempty" name:"FaceId"`
 
 	// 候选者的匹配得分。 

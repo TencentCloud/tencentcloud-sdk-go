@@ -1318,6 +1318,80 @@ func (r *ModifyRoomInfoResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifyUserMicStatusRequestParams struct {
+	// 应用ID
+	BizId *int64 `json:"BizId,omitempty" name:"BizId"`
+
+	// 房间ID
+	RoomId *string `json:"RoomId,omitempty" name:"RoomId"`
+
+	// 用户麦克风状态，数组长度不超过20
+	Users []*UserMicStatus `json:"Users,omitempty" name:"Users"`
+}
+
+type ModifyUserMicStatusRequest struct {
+	*tchttp.BaseRequest
+	
+	// 应用ID
+	BizId *int64 `json:"BizId,omitempty" name:"BizId"`
+
+	// 房间ID
+	RoomId *string `json:"RoomId,omitempty" name:"RoomId"`
+
+	// 用户麦克风状态，数组长度不超过20
+	Users []*UserMicStatus `json:"Users,omitempty" name:"Users"`
+}
+
+func (r *ModifyUserMicStatusRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyUserMicStatusRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "BizId")
+	delete(f, "RoomId")
+	delete(f, "Users")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyUserMicStatusRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyUserMicStatusResponseParams struct {
+	// 返回结果：0为成功，非0为失败
+	Result *int64 `json:"Result,omitempty" name:"Result"`
+
+	// 错误信息
+	ErrMsg *string `json:"ErrMsg,omitempty" name:"ErrMsg"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ModifyUserMicStatusResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyUserMicStatusResponseParams `json:"Response"`
+}
+
+func (r *ModifyUserMicStatusResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyUserMicStatusResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type RealTimeSpeechStatisticsItem struct {
 	// 大陆地区DAU
 	MainLandDau *uint64 `json:"MainLandDau,omitempty" name:"MainLandDau"`
@@ -1694,6 +1768,14 @@ func (r *UpdateScanUsersResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *UpdateScanUsersResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type UserMicStatus struct {
+	// 用户ID
+	Uid *int64 `json:"Uid,omitempty" name:"Uid"`
+
+	// 是否开麦 。1闭麦  2开麦
+	EnableMic *int64 `json:"EnableMic,omitempty" name:"EnableMic"`
 }
 
 type VoiceFilter struct {

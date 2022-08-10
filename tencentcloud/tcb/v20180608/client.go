@@ -973,6 +973,7 @@ func NewDeleteWxGatewayRouteResponse() (response *DeleteWxGatewayRouteResponse) 
 //  LIMITEXCEEDED_ERRNAMESPACEMAXLIMIT = "LimitExceeded.ErrNamespaceMaxLimit"
 //  LIMITEXCEEDED_ERRREPOMAXLIMIT = "LimitExceeded.ErrRepoMaxLimit"
 //  RESOURCEINUSE = "ResourceInUse"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteWxGatewayRoute(request *DeleteWxGatewayRouteRequest) (response *DeleteWxGatewayRouteResponse, err error) {
     return c.DeleteWxGatewayRouteWithContext(context.Background(), request)
 }
@@ -986,6 +987,7 @@ func (c *Client) DeleteWxGatewayRoute(request *DeleteWxGatewayRouteRequest) (res
 //  LIMITEXCEEDED_ERRNAMESPACEMAXLIMIT = "LimitExceeded.ErrNamespaceMaxLimit"
 //  LIMITEXCEEDED_ERRREPOMAXLIMIT = "LimitExceeded.ErrRepoMaxLimit"
 //  RESOURCEINUSE = "ResourceInUse"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteWxGatewayRouteWithContext(ctx context.Context, request *DeleteWxGatewayRouteRequest) (response *DeleteWxGatewayRouteResponse, err error) {
     if request == nil {
         request = NewDeleteWxGatewayRouteRequest()
