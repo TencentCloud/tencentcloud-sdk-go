@@ -2167,6 +2167,70 @@ func (r *DescribeDeployApplicationDetailResponse) FromJsonString(s string) error
 }
 
 // Predefined struct for user
+type DescribeEnvironmentRequestParams struct {
+	// 命名空间id
+	EnvironmentId *string `json:"EnvironmentId,omitempty" name:"EnvironmentId"`
+
+	// 来源Channel
+	SourceChannel *int64 `json:"SourceChannel,omitempty" name:"SourceChannel"`
+}
+
+type DescribeEnvironmentRequest struct {
+	*tchttp.BaseRequest
+	
+	// 命名空间id
+	EnvironmentId *string `json:"EnvironmentId,omitempty" name:"EnvironmentId"`
+
+	// 来源Channel
+	SourceChannel *int64 `json:"SourceChannel,omitempty" name:"SourceChannel"`
+}
+
+func (r *DescribeEnvironmentRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeEnvironmentRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EnvironmentId")
+	delete(f, "SourceChannel")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeEnvironmentRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeEnvironmentResponseParams struct {
+	// 环境信息
+	Result *NamespaceInfo `json:"Result,omitempty" name:"Result"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeEnvironmentResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeEnvironmentResponseParams `json:"Response"`
+}
+
+func (r *DescribeEnvironmentResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeEnvironmentResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeEnvironmentStatusRequestParams struct {
 	// 命名空间id
 	EnvironmentIds []*string `json:"EnvironmentIds,omitempty" name:"EnvironmentIds"`
@@ -3867,6 +3931,41 @@ type MountedSettingConf struct {
 
 	// 加密配置名称
 	SecretDataName *string `json:"SecretDataName,omitempty" name:"SecretDataName"`
+}
+
+type NamespaceInfo struct {
+	// ID 信息
+	EnvironmentId *string `json:"EnvironmentId,omitempty" name:"EnvironmentId"`
+
+	// 名字（已弃用）
+	NamespaceName *string `json:"NamespaceName,omitempty" name:"NamespaceName"`
+
+	// 地域
+	Region *string `json:"Region,omitempty" name:"Region"`
+
+	// vpc id
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// subnet id 数组
+	SubnetIds []*string `json:"SubnetIds,omitempty" name:"SubnetIds"`
+
+	// 描述
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 创建时间
+	CreatedDate *string `json:"CreatedDate,omitempty" name:"CreatedDate"`
+
+	// 环境名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EnvironmentName *string `json:"EnvironmentName,omitempty" name:"EnvironmentName"`
+
+	// APM 资源 ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApmInstanceId *string `json:"ApmInstanceId,omitempty" name:"ApmInstanceId"`
+
+	// 环境是否上锁，1为上锁，0则未上锁
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Locked *int64 `json:"Locked,omitempty" name:"Locked"`
 }
 
 type NamespacePage struct {

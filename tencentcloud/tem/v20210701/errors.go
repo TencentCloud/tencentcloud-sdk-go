@@ -104,6 +104,9 @@ const (
 	// 命名空间不属于用户。
 	INVALIDPARAMETERVALUE_NAMESPACENOTBELONGTOAPPID = "InvalidParameterValue.NamespaceNotBelongToAppid"
 
+	// 环境不存在。
+	INVALIDPARAMETERVALUE_NAMESPACENOTFOUND = "InvalidParameterValue.NamespaceNotFound"
+
 	// 环境创建失败，达到上限。
 	INVALIDPARAMETERVALUE_NAMESPACEREACHMAXIMUM = "InvalidParameterValue.NamespaceReachMaximum"
 

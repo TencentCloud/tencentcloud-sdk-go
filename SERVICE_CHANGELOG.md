@@ -1,66 +1,26 @@
 # 本版本更新包含以下内容：
 
-## 容器服务(tke) 版本：2018-05-25
-
-### 第 115 次发布
-
-发布时间：2022-08-10 06:54:09
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [EdgeCluster](https://cloud.tencent.com/document/api/457/31866#EdgeCluster)
-
-	* 新增成员：ClusterAdvancedSettings
-
-
-
-
-## 腾讯云微服务引擎(tse) 版本：2020-12-07
+## 弹性微服务(tem) 版本：2021-07-01
 
 ### 第 25 次发布
 
-发布时间：2022-08-10 06:55:45
+发布时间：2022-08-10 16:02:58
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-修改接口：
+新增接口：
 
-* [DescribeSREInstanceAccessAddress](https://cloud.tencent.com/document/api/1364/54941)
+* [DescribeEnvironment](https://cloud.tencent.com/document/api/1371/78842)
 
-	* 新增入参：EngineRegion
+新增数据结构：
 
-
-修改数据结构：
-
-* [ZookeeperReplica](https://cloud.tencent.com/document/api/1364/54942#ZookeeperReplica)
-
-	* 新增成员：AliasName
+* [NamespaceInfo](https://cloud.tencent.com/document/api/1371/60171#NamespaceInfo)
 
 
 
-
-## 私有网络(vpc) 版本：2017-03-12
-
-### 第 122 次发布
-
-发布时间：2022-08-10 06:57:28
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [VpnConnection](https://cloud.tencent.com/document/api/215/15824#VpnConnection)
-
-	* 新增成员：DpdEnable, DpdTimeout, DpdAction, TagSet, NegotiationType
-
+## 弹性微服务(tem) 版本：2020-12-21
 
 
 
@@ -70321,6 +70281,22 @@
 
 
 ## 弹性微服务(tem) 版本：2021-07-01
+
+### 第 25 次发布
+
+发布时间：2022-08-10 16:02:58
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeEnvironment](https://cloud.tencent.com/document/api/1371/78842)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[NamespaceInfo](https://cloud.tencent.com/document/api/1371/60171#NamespaceInfo)](https://cloud.tencent.com/document/api/1371/60171#[NamespaceInfo](https://cloud.tencent.com/document/api/1371/60171#NamespaceInfo))
 
 ### 第 24 次发布
 

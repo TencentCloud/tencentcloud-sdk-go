@@ -1142,6 +1142,61 @@ func (c *Client) DescribeDeployApplicationDetailWithContext(ctx context.Context,
     return
 }
 
+func NewDescribeEnvironmentRequest() (request *DescribeEnvironmentRequest) {
+    request = &DescribeEnvironmentRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tem", APIVersion, "DescribeEnvironment")
+    
+    
+    return
+}
+
+func NewDescribeEnvironmentResponse() (response *DescribeEnvironmentResponse) {
+    response = &DescribeEnvironmentResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeEnvironment
+// 获取环境基础信息
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_NAMESPACENOTBELONGTOAPPID = "InvalidParameterValue.NamespaceNotBelongToAppid"
+//  INVALIDPARAMETERVALUE_NAMESPACENOTFOUND = "InvalidParameterValue.NamespaceNotFound"
+//  INVALIDPARAMETERVALUE_TEMIDINVALID = "InvalidParameterValue.TemIdInvalid"
+//  MISSINGPARAMETER_NAMESPACEIDNULL = "MissingParameter.NamespaceIdNull"
+//  RESOURCENOTFOUND_VERSIONNAMESPACENOTFOUND = "ResourceNotFound.VersionNamespaceNotFound"
+func (c *Client) DescribeEnvironment(request *DescribeEnvironmentRequest) (response *DescribeEnvironmentResponse, err error) {
+    return c.DescribeEnvironmentWithContext(context.Background(), request)
+}
+
+// DescribeEnvironment
+// 获取环境基础信息
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_NAMESPACENOTBELONGTOAPPID = "InvalidParameterValue.NamespaceNotBelongToAppid"
+//  INVALIDPARAMETERVALUE_NAMESPACENOTFOUND = "InvalidParameterValue.NamespaceNotFound"
+//  INVALIDPARAMETERVALUE_TEMIDINVALID = "InvalidParameterValue.TemIdInvalid"
+//  MISSINGPARAMETER_NAMESPACEIDNULL = "MissingParameter.NamespaceIdNull"
+//  RESOURCENOTFOUND_VERSIONNAMESPACENOTFOUND = "ResourceNotFound.VersionNamespaceNotFound"
+func (c *Client) DescribeEnvironmentWithContext(ctx context.Context, request *DescribeEnvironmentRequest) (response *DescribeEnvironmentResponse, err error) {
+    if request == nil {
+        request = NewDescribeEnvironmentRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeEnvironment require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeEnvironmentResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeEnvironmentStatusRequest() (request *DescribeEnvironmentStatusRequest) {
     request = &DescribeEnvironmentStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},
