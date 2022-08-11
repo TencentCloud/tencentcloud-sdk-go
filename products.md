@@ -87,7 +87,7 @@
 | emr | [弹性 MapReduce](https://cloud.tencent.com/document/product/589) | 2022-07-28 06:11:30 |
 | es | [Elasticsearch Service](https://cloud.tencent.com/document/product/845) | 2022-08-03 06:23:52 |
 | ess | [电子签服务](https://cloud.tencent.com/document/product/1323) | 2022-08-11 07:02:49 |
-| essbasic | [腾讯电子签（基础版）](https://cloud.tencent.com/document/product/1420) | 2022-08-11 07:03:11 |
+| essbasic | [腾讯电子签（基础版）](https://cloud.tencent.com/document/product/1420) | 2022-08-11 15:03:00 |
 | facefusion | [人脸融合](https://cloud.tencent.com/document/product/670) | 2022-06-15 06:09:10 |
 | faceid | [人脸核身](https://cloud.tencent.com/document/product/1007) | 2022-08-11 06:31:43 |
 | fmu | [人脸试妆](https://cloud.tencent.com/document/product/1172) | 2022-04-04 06:43:06 |
@@ -180,7 +180,7 @@
 | tdcpg | [TDSQL-C PostgreSQL 版](https://cloud.tencent.com/document/product/1556) | 2022-07-05 06:21:49 |
 | tdid | [分布式身份](https://cloud.tencent.com/document/product/1439) | 2022-04-04 07:15:50 |
 | tdmq | [分布式消息队列](https://cloud.tencent.com/document/product/1179) | 2022-07-29 06:15:49 |
-| tem | [弹性微服务](https://cloud.tencent.com/document/product/1371) | 2022-08-11 07:11:15 |
+| tem | [弹性微服务](https://cloud.tencent.com/document/product/1371) | 2022-08-11 15:11:54 |
 | teo | [边缘安全加速平台](https://cloud.tencent.com/document/product/1552) | 2022-08-11 06:53:53 |
 | thpc | [高性能计算平台](https://cloud.tencent.com/document/product/1527) | 2022-06-02 06:15:03 |
 | tia | [智能钛机器学习](https://cloud.tencent.com/document/product/851) | 2021-10-21 11:12:52 |

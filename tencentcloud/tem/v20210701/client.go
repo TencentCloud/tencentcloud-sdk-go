@@ -1711,6 +1711,100 @@ func (c *Client) DestroyLogConfigWithContext(ctx context.Context, request *Destr
     return
 }
 
+func NewDisableApplicationAutoscalerRequest() (request *DisableApplicationAutoscalerRequest) {
+    request = &DisableApplicationAutoscalerRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tem", APIVersion, "DisableApplicationAutoscaler")
+    
+    
+    return
+}
+
+func NewDisableApplicationAutoscalerResponse() (response *DisableApplicationAutoscalerResponse) {
+    response = &DisableApplicationAutoscalerResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DisableApplicationAutoscaler
+// 关闭应用弹性策略组合
+//
+// 可能返回的错误码:
+//  RESOURCEUNAVAILABLE_APPLICATIONSTOPPED = "ResourceUnavailable.ApplicationStopped"
+func (c *Client) DisableApplicationAutoscaler(request *DisableApplicationAutoscalerRequest) (response *DisableApplicationAutoscalerResponse, err error) {
+    return c.DisableApplicationAutoscalerWithContext(context.Background(), request)
+}
+
+// DisableApplicationAutoscaler
+// 关闭应用弹性策略组合
+//
+// 可能返回的错误码:
+//  RESOURCEUNAVAILABLE_APPLICATIONSTOPPED = "ResourceUnavailable.ApplicationStopped"
+func (c *Client) DisableApplicationAutoscalerWithContext(ctx context.Context, request *DisableApplicationAutoscalerRequest) (response *DisableApplicationAutoscalerResponse, err error) {
+    if request == nil {
+        request = NewDisableApplicationAutoscalerRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DisableApplicationAutoscaler require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDisableApplicationAutoscalerResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewEnableApplicationAutoscalerRequest() (request *EnableApplicationAutoscalerRequest) {
+    request = &EnableApplicationAutoscalerRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tem", APIVersion, "EnableApplicationAutoscaler")
+    
+    
+    return
+}
+
+func NewEnableApplicationAutoscalerResponse() (response *EnableApplicationAutoscalerResponse) {
+    response = &EnableApplicationAutoscalerResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// EnableApplicationAutoscaler
+// 启用应用弹性策略组合
+//
+// 可能返回的错误码:
+//  RESOURCEUNAVAILABLE_APPLICATIONSTOPPED = "ResourceUnavailable.ApplicationStopped"
+func (c *Client) EnableApplicationAutoscaler(request *EnableApplicationAutoscalerRequest) (response *EnableApplicationAutoscalerResponse, err error) {
+    return c.EnableApplicationAutoscalerWithContext(context.Background(), request)
+}
+
+// EnableApplicationAutoscaler
+// 启用应用弹性策略组合
+//
+// 可能返回的错误码:
+//  RESOURCEUNAVAILABLE_APPLICATIONSTOPPED = "ResourceUnavailable.ApplicationStopped"
+func (c *Client) EnableApplicationAutoscalerWithContext(ctx context.Context, request *EnableApplicationAutoscalerRequest) (response *EnableApplicationAutoscalerResponse, err error) {
+    if request == nil {
+        request = NewEnableApplicationAutoscalerRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("EnableApplicationAutoscaler require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewEnableApplicationAutoscalerResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewGenerateApplicationPackageDownloadUrlRequest() (request *GenerateApplicationPackageDownloadUrlRequest) {
     request = &GenerateApplicationPackageDownloadUrlRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1732,8 +1826,7 @@ func NewGenerateApplicationPackageDownloadUrlResponse() (response *GenerateAppli
 // 生成应用程序包预签名下载链接
 //
 // 可能返回的错误码:
-//  INVALIDPARAMETERVALUE_TEMIDINVALID = "InvalidParameterValue.TemIdInvalid"
-//  RESOURCENOTFOUND_VERSIONNAMESPACENOTFOUND = "ResourceNotFound.VersionNamespaceNotFound"
+//  RESOURCEUNAVAILABLE_APPLICATIONSTOPPED = "ResourceUnavailable.ApplicationStopped"
 func (c *Client) GenerateApplicationPackageDownloadUrl(request *GenerateApplicationPackageDownloadUrlRequest) (response *GenerateApplicationPackageDownloadUrlResponse, err error) {
     return c.GenerateApplicationPackageDownloadUrlWithContext(context.Background(), request)
 }
@@ -1742,8 +1835,7 @@ func (c *Client) GenerateApplicationPackageDownloadUrl(request *GenerateApplicat
 // 生成应用程序包预签名下载链接
 //
 // 可能返回的错误码:
-//  INVALIDPARAMETERVALUE_TEMIDINVALID = "InvalidParameterValue.TemIdInvalid"
-//  RESOURCENOTFOUND_VERSIONNAMESPACENOTFOUND = "ResourceNotFound.VersionNamespaceNotFound"
+//  RESOURCEUNAVAILABLE_APPLICATIONSTOPPED = "ResourceUnavailable.ApplicationStopped"
 func (c *Client) GenerateApplicationPackageDownloadUrlWithContext(ctx context.Context, request *GenerateApplicationPackageDownloadUrlRequest) (response *GenerateApplicationPackageDownloadUrlResponse, err error) {
     if request == nil {
         request = NewGenerateApplicationPackageDownloadUrlRequest()

@@ -451,6 +451,87 @@ func (r *ChannelCreateFlowByFilesResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ChannelCreateFlowSignReviewRequestParams struct {
+	// 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+
+	// 签署流程编号
+	FlowId *string `json:"FlowId,omitempty" name:"FlowId"`
+
+	// 企业内部审核结果
+	// PASS: 通过
+	// REJECT: 拒绝
+	ReviewType *string `json:"ReviewType,omitempty" name:"ReviewType"`
+
+	// 审核原因 
+	// 当ReviewType 是REJECT 时此字段必填,字符串长度不超过200
+	ReviewMessage *string `json:"ReviewMessage,omitempty" name:"ReviewMessage"`
+}
+
+type ChannelCreateFlowSignReviewRequest struct {
+	*tchttp.BaseRequest
+	
+	// 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+
+	// 签署流程编号
+	FlowId *string `json:"FlowId,omitempty" name:"FlowId"`
+
+	// 企业内部审核结果
+	// PASS: 通过
+	// REJECT: 拒绝
+	ReviewType *string `json:"ReviewType,omitempty" name:"ReviewType"`
+
+	// 审核原因 
+	// 当ReviewType 是REJECT 时此字段必填,字符串长度不超过200
+	ReviewMessage *string `json:"ReviewMessage,omitempty" name:"ReviewMessage"`
+}
+
+func (r *ChannelCreateFlowSignReviewRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ChannelCreateFlowSignReviewRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Agent")
+	delete(f, "FlowId")
+	delete(f, "ReviewType")
+	delete(f, "ReviewMessage")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ChannelCreateFlowSignReviewRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ChannelCreateFlowSignReviewResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ChannelCreateFlowSignReviewResponse struct {
+	*tchttp.BaseResponse
+	Response *ChannelCreateFlowSignReviewResponseParams `json:"Response"`
+}
+
+func (r *ChannelCreateFlowSignReviewResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ChannelCreateFlowSignReviewResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ChannelCreateMultiFlowSignQRCodeRequestParams struct {
 	// 渠道应用相关信息。
 	// 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 必填。

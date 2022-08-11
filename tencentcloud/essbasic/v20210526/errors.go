@@ -101,6 +101,9 @@ const (
 	// 参数错误。
 	INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 
+	// 状态异常。
+	INVALIDPARAMETER_STATUS = "InvalidParameter.Status"
+
 	// 参数取值错误。
 	INVALIDPARAMETERVALUE = "InvalidParameterValue"
 

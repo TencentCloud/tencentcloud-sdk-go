@@ -1,3 +1,46 @@
+# Release v1.0.472
+
+## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
+
+### 第 27 次发布
+
+发布时间：2022-08-11 15:03:00
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [ChannelCreateFlowSignReview](https://cloud.tencent.com/document/api/1420/78953)
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
+
+
+
+## 弹性微服务(tem) 版本：2021-07-01
+
+### 第 27 次发布
+
+发布时间：2022-08-11 15:11:54
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DisableApplicationAutoscaler](https://cloud.tencent.com/document/api/1371/78955)
+* [EnableApplicationAutoscaler](https://cloud.tencent.com/document/api/1371/78954)
+
+
+
+## 弹性微服务(tem) 版本：2020-12-21
+
+
+
 # Release v1.0.471
 
 ## 弹性伸缩(as) 版本：2018-04-19
