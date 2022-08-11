@@ -4932,7 +4932,7 @@ type TemServiceVersionInfo struct {
 	VersionId *string `json:"VersionId,omitempty" name:"VersionId"`
 
 	// 服务id
-	ApplicationId *bool `json:"ApplicationId,omitempty" name:"ApplicationId"`
+	ApplicationId *string `json:"ApplicationId,omitempty" name:"ApplicationId"`
 
 	// 部署方式
 	DeployMode *string `json:"DeployMode,omitempty" name:"DeployMode"`
@@ -4971,6 +4971,7 @@ type TemServiceVersionInfo struct {
 	ImgVersion *string `json:"ImgVersion,omitempty" name:"ImgVersion"`
 
 	// 弹性配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	EsInfo *EsInfo `json:"EsInfo,omitempty" name:"EsInfo"`
 
 	// 环境配置
@@ -5064,7 +5065,7 @@ type TemServiceVersionInfo struct {
 
 	// 最小实例数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	MinAliveInstances *int64 `json:"MinAliveInstances,omitempty" name:"MinAliveInstances"`
+	MinAliveInstances *string `json:"MinAliveInstances,omitempty" name:"MinAliveInstances"`
 
 	// 安全组
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -5142,7 +5143,7 @@ type TemServiceVersionInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EnableTracing *uint64 `json:"EnableTracing,omitempty" name:"EnableTracing"`
 
-	// 是否开启调用链上报，只有 EnableTracing=1 时生效
+	// 是否开启调用链上报，只有 EnableTracing=1 时生效（参数已弃用）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EnableTracingReport *uint64 `json:"EnableTracingReport,omitempty" name:"EnableTracingReport"`
 
@@ -5184,7 +5185,7 @@ type TemServiceVersionInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UnderDeploying *bool `json:"UnderDeploying,omitempty" name:"UnderDeploying"`
 
-	// 是否开启prometheus业务指标监控
+	// 监控业务指标监控
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EnablePrometheusConf *EnablePrometheusConf `json:"EnablePrometheusConf,omitempty" name:"EnablePrometheusConf"`
 
@@ -5195,6 +5196,11 @@ type TemServiceVersionInfo struct {
 	// tcr实例ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TcrInstanceId *string `json:"TcrInstanceId,omitempty" name:"TcrInstanceId"`
+
+	// 1：开始自动metrics采集（open-telemetry）；
+	// 0：关闭metrics采集；
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EnableMetrics *int64 `json:"EnableMetrics,omitempty" name:"EnableMetrics"`
 }
 
 type UseDefaultRepoParameters struct {

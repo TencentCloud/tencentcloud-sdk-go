@@ -987,6 +987,10 @@ type CreateLaunchConfigurationRequestParams struct {
 	// <br><li>ORIGINAL：使用设置的云盘类型
 	// <br><li>AUTOMATIC：自动选择当前可用的云盘类型
 	DiskTypePolicy *string `json:"DiskTypePolicy,omitempty" name:"DiskTypePolicy"`
+
+	// 高性能计算集群ID。<br>
+	// 注意：此字段默认为空。
+	HpcClusterId *string `json:"HpcClusterId,omitempty" name:"HpcClusterId"`
 }
 
 type CreateLaunchConfigurationRequest struct {
@@ -1071,6 +1075,10 @@ type CreateLaunchConfigurationRequest struct {
 	// <br><li>ORIGINAL：使用设置的云盘类型
 	// <br><li>AUTOMATIC：自动选择当前可用的云盘类型
 	DiskTypePolicy *string `json:"DiskTypePolicy,omitempty" name:"DiskTypePolicy"`
+
+	// 高性能计算集群ID。<br>
+	// 注意：此字段默认为空。
+	HpcClusterId *string `json:"HpcClusterId,omitempty" name:"HpcClusterId"`
 }
 
 func (r *CreateLaunchConfigurationRequest) ToJsonString() string {
@@ -1107,6 +1115,7 @@ func (r *CreateLaunchConfigurationRequest) FromJsonString(s string) error {
 	delete(f, "InstanceNameSettings")
 	delete(f, "InstanceChargePrepaid")
 	delete(f, "DiskTypePolicy")
+	delete(f, "HpcClusterId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateLaunchConfigurationRequest has unknown keys!", "")
 	}
@@ -3460,6 +3469,10 @@ type LaunchConfiguration struct {
 	// <br><li>ORIGINAL：使用设置的云盘类型
 	// <br><li>AUTOMATIC：自动选择当前可用区下可用的云盘类型
 	DiskTypePolicy *string `json:"DiskTypePolicy,omitempty" name:"DiskTypePolicy"`
+
+	// 高性能计算集群ID。<br>
+	// 注意：此字段默认为空。
+	HpcClusterId *string `json:"HpcClusterId,omitempty" name:"HpcClusterId"`
 }
 
 type LifecycleActionResultInfo struct {
@@ -3949,6 +3962,10 @@ type ModifyLaunchConfigurationAttributesRequestParams struct {
 
 	// CAM角色名称。可通过DescribeRoleList接口返回值中的roleName获取。
 	CamRoleName *string `json:"CamRoleName,omitempty" name:"CamRoleName"`
+
+	// 高性能计算集群ID。<br>
+	// 注意：此字段默认为空。
+	HpcClusterId *string `json:"HpcClusterId,omitempty" name:"HpcClusterId"`
 }
 
 type ModifyLaunchConfigurationAttributesRequest struct {
@@ -4032,6 +4049,10 @@ type ModifyLaunchConfigurationAttributesRequest struct {
 
 	// CAM角色名称。可通过DescribeRoleList接口返回值中的roleName获取。
 	CamRoleName *string `json:"CamRoleName,omitempty" name:"CamRoleName"`
+
+	// 高性能计算集群ID。<br>
+	// 注意：此字段默认为空。
+	HpcClusterId *string `json:"HpcClusterId,omitempty" name:"HpcClusterId"`
 }
 
 func (r *ModifyLaunchConfigurationAttributesRequest) ToJsonString() string {
@@ -4064,6 +4085,7 @@ func (r *ModifyLaunchConfigurationAttributesRequest) FromJsonString(s string) er
 	delete(f, "InstanceNameSettings")
 	delete(f, "EnhancedService")
 	delete(f, "CamRoleName")
+	delete(f, "HpcClusterId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyLaunchConfigurationAttributesRequest has unknown keys!", "")
 	}

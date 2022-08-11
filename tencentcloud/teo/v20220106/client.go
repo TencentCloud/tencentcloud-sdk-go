@@ -1266,7 +1266,7 @@ func NewDescribeDDosAttackDataResponse() (response *DescribeDDosAttackDataRespon
 }
 
 // DescribeDDosAttackData
-// 查询DDos攻击数据
+// 查询DDos攻击时序数据
 //
 // 可能返回的错误码:
 //  INTERNALERROR_PROXYSERVER = "InternalError.ProxyServer"
@@ -1276,7 +1276,7 @@ func (c *Client) DescribeDDosAttackData(request *DescribeDDosAttackDataRequest) 
 }
 
 // DescribeDDosAttackData
-// 查询DDos攻击数据
+// 查询DDos攻击时序数据
 //
 // 可能返回的错误码:
 //  INTERNALERROR_PROXYSERVER = "InternalError.ProxyServer"
@@ -1411,7 +1411,7 @@ func NewDescribeDDosAttackSourceEventResponse() (response *DescribeDDosAttackSou
 }
 
 // DescribeDDosAttackSourceEvent
-// 查询DDos攻击源
+// 查询DDos攻击源信息
 //
 // 可能返回的错误码:
 //  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
@@ -1420,7 +1420,7 @@ func (c *Client) DescribeDDosAttackSourceEvent(request *DescribeDDosAttackSource
 }
 
 // DescribeDDosAttackSourceEvent
-// 查询DDos攻击源
+// 查询DDos攻击源信息
 //
 // 可能返回的错误码:
 //  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
@@ -2846,7 +2846,7 @@ func NewDescribeWebManagedRulesDataResponse() (response *DescribeWebManagedRules
 }
 
 // DescribeWebManagedRulesData
-// 查询Web托管规则数据
+// 查询waf攻击时序数据
 //
 // 可能返回的错误码:
 //  RESOURCENOTFOUND = "ResourceNotFound"
@@ -2855,7 +2855,7 @@ func (c *Client) DescribeWebManagedRulesData(request *DescribeWebManagedRulesDat
 }
 
 // DescribeWebManagedRulesData
-// 查询Web托管规则数据
+// 查询waf攻击时序数据
 //
 // 可能返回的错误码:
 //  RESOURCENOTFOUND = "ResourceNotFound"
@@ -2893,7 +2893,7 @@ func NewDescribeWebManagedRulesLogResponse() (response *DescribeWebManagedRulesL
 }
 
 // DescribeWebManagedRulesLog
-// 查询Web托管日志
+// 查询waf攻击日志
 //
 // 可能返回的错误码:
 //  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
@@ -2902,7 +2902,7 @@ func (c *Client) DescribeWebManagedRulesLog(request *DescribeWebManagedRulesLogR
 }
 
 // DescribeWebManagedRulesLog
-// 查询Web托管日志
+// 查询waf攻击日志
 //
 // 可能返回的错误码:
 //  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
@@ -2940,7 +2940,7 @@ func NewDescribeWebManagedRulesTopDataResponse() (response *DescribeWebManagedRu
 }
 
 // DescribeWebManagedRulesTopData
-// 查询Web托管规则Top数据
+// 查询waf攻击top数据
 //
 // 可能返回的错误码:
 //  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
@@ -2949,7 +2949,7 @@ func (c *Client) DescribeWebManagedRulesTopData(request *DescribeWebManagedRules
 }
 
 // DescribeWebManagedRulesTopData
-// 查询Web托管规则Top数据
+// 查询waf攻击top数据
 //
 // 可能返回的错误码:
 //  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
@@ -3034,7 +3034,7 @@ func NewDescribeWebProtectionDataResponse() (response *DescribeWebProtectionData
 }
 
 // DescribeWebProtectionData
-// 查询web防护数据
+// 查询CC防护时序数据
 //
 // 可能返回的错误码:
 //  RESOURCENOTFOUND = "ResourceNotFound"
@@ -3043,7 +3043,7 @@ func (c *Client) DescribeWebProtectionData(request *DescribeWebProtectionDataReq
 }
 
 // DescribeWebProtectionData
-// 查询web防护数据
+// 查询CC防护时序数据
 //
 // 可能返回的错误码:
 //  RESOURCENOTFOUND = "ResourceNotFound"
@@ -3081,7 +3081,7 @@ func NewDescribeWebProtectionLogResponse() (response *DescribeWebProtectionLogRe
 }
 
 // DescribeWebProtectionLog
-// 查询web防护日志
+// 查询CC防护日志
 //
 // 可能返回的错误码:
 //  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
@@ -3090,7 +3090,7 @@ func (c *Client) DescribeWebProtectionLog(request *DescribeWebProtectionLogReque
 }
 
 // DescribeWebProtectionLog
-// 查询web防护日志
+// 查询CC防护日志
 //
 // 可能返回的错误码:
 //  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"

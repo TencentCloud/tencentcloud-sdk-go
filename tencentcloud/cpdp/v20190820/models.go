@@ -4470,6 +4470,14 @@ type CloudExternalPromptInfo struct {
 	ExternalPromptName *string `json:"ExternalPromptName,omitempty" name:"ExternalPromptName"`
 }
 
+type CloudExternalUserInfo struct {
+	// 渠道方用户类型
+	ExternalUserType *string `json:"ExternalUserType,omitempty" name:"ExternalUserType"`
+
+	// 渠道方用户ID
+	ExternalUserId *string `json:"ExternalUserId,omitempty" name:"ExternalUserId"`
+}
+
 type CloudGlobalPayTimeInfo struct {
 	// 订单开始时间。
 	// 不指定时默认为当前时间。
@@ -28682,6 +28690,9 @@ type UnifiedCloudOrderRequestParams struct {
 	// ORDER_RECEIVE_MODE_V_COMBINE - 虚拟合单支付
 	// 若不传入该字段，则会根据是否传入子单来判断是 普通支付 还是 合单支付
 	OrderReceiveMode *string `json:"OrderReceiveMode,omitempty" name:"OrderReceiveMode"`
+
+	// 渠道方用户信息列表
+	ExternalUserInfoList []*CloudExternalUserInfo `json:"ExternalUserInfoList,omitempty" name:"ExternalUserInfoList"`
 }
 
 type UnifiedCloudOrderRequest struct {
@@ -28865,6 +28876,9 @@ type UnifiedCloudOrderRequest struct {
 	// ORDER_RECEIVE_MODE_V_COMBINE - 虚拟合单支付
 	// 若不传入该字段，则会根据是否传入子单来判断是 普通支付 还是 合单支付
 	OrderReceiveMode *string `json:"OrderReceiveMode,omitempty" name:"OrderReceiveMode"`
+
+	// 渠道方用户信息列表
+	ExternalUserInfoList []*CloudExternalUserInfo `json:"ExternalUserInfoList,omitempty" name:"ExternalUserInfoList"`
 }
 
 func (r *UnifiedCloudOrderRequest) ToJsonString() string {
@@ -28917,6 +28931,7 @@ func (r *UnifiedCloudOrderRequest) FromJsonString(s string) error {
 	delete(f, "ClientInfo")
 	delete(f, "ExternalPromptGroupList")
 	delete(f, "OrderReceiveMode")
+	delete(f, "ExternalUserInfoList")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UnifiedCloudOrderRequest has unknown keys!", "")
 	}

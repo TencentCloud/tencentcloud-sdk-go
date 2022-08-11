@@ -1416,80 +1416,6 @@ func (r *DescribeProtectedTelCdrResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
-type DescribeSeatUserListRequestParams struct {
-	// 实例ID
-	InstanceId *int64 `json:"InstanceId,omitempty" name:"InstanceId"`
-
-	// 偏移量
-	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
-
-	// 返回数量
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
-}
-
-type DescribeSeatUserListRequest struct {
-	*tchttp.BaseRequest
-	
-	// 实例ID
-	InstanceId *int64 `json:"InstanceId,omitempty" name:"InstanceId"`
-
-	// 偏移量
-	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
-
-	// 返回数量
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
-}
-
-func (r *DescribeSeatUserListRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeSeatUserListRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "InstanceId")
-	delete(f, "Offset")
-	delete(f, "Limit")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSeatUserListRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DescribeSeatUserListResponseParams struct {
-	// 此实例的坐席用户总数
-	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-	// 坐席用户信息列表
-	SeatUsers []*SeatUserInfo `json:"SeatUsers,omitempty" name:"SeatUsers"`
-
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-}
-
-type DescribeSeatUserListResponse struct {
-	*tchttp.BaseResponse
-	Response *DescribeSeatUserListResponseParams `json:"Response"`
-}
-
-func (r *DescribeSeatUserListResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeSeatUserListResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
 type DescribeSkillGroupInfoListRequestParams struct {
 	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
 	SdkAppId *int64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
@@ -1505,6 +1431,9 @@ type DescribeSkillGroupInfoListRequestParams struct {
 
 	// 查询修改时间大于等于ModifiedTime的技能组时使用
 	ModifiedTime *int64 `json:"ModifiedTime,omitempty" name:"ModifiedTime"`
+
+	// 技能组名称
+	SkillGroupName *string `json:"SkillGroupName,omitempty" name:"SkillGroupName"`
 }
 
 type DescribeSkillGroupInfoListRequest struct {
@@ -1524,6 +1453,9 @@ type DescribeSkillGroupInfoListRequest struct {
 
 	// 查询修改时间大于等于ModifiedTime的技能组时使用
 	ModifiedTime *int64 `json:"ModifiedTime,omitempty" name:"ModifiedTime"`
+
+	// 技能组名称
+	SkillGroupName *string `json:"SkillGroupName,omitempty" name:"SkillGroupName"`
 }
 
 func (r *DescribeSkillGroupInfoListRequest) ToJsonString() string {
@@ -1543,6 +1475,7 @@ func (r *DescribeSkillGroupInfoListRequest) FromJsonString(s string) error {
 	delete(f, "PageNumber")
 	delete(f, "SkillGroupId")
 	delete(f, "ModifiedTime")
+	delete(f, "SkillGroupName")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSkillGroupInfoListRequest has unknown keys!", "")
 	}
@@ -2095,6 +2028,12 @@ type ModifyStaffRequestParams struct {
 
 	// 绑定技能组ID列表
 	SkillGroupIds []*int64 `json:"SkillGroupIds,omitempty" name:"SkillGroupIds"`
+
+	// 是否开启手机外呼开关
+	UseMobileCallOut *bool `json:"UseMobileCallOut,omitempty" name:"UseMobileCallOut"`
+
+	// 手机接听模式 0 - 关闭 | 1 - 仅离线 | 2 - 始终
+	UseMobileAccept *int64 `json:"UseMobileAccept,omitempty" name:"UseMobileAccept"`
 }
 
 type ModifyStaffRequest struct {
@@ -2117,6 +2056,12 @@ type ModifyStaffRequest struct {
 
 	// 绑定技能组ID列表
 	SkillGroupIds []*int64 `json:"SkillGroupIds,omitempty" name:"SkillGroupIds"`
+
+	// 是否开启手机外呼开关
+	UseMobileCallOut *bool `json:"UseMobileCallOut,omitempty" name:"UseMobileCallOut"`
+
+	// 手机接听模式 0 - 关闭 | 1 - 仅离线 | 2 - 始终
+	UseMobileAccept *int64 `json:"UseMobileAccept,omitempty" name:"UseMobileAccept"`
 }
 
 func (r *ModifyStaffRequest) ToJsonString() string {
@@ -2137,6 +2082,8 @@ func (r *ModifyStaffRequest) FromJsonString(s string) error {
 	delete(f, "Phone")
 	delete(f, "Nick")
 	delete(f, "SkillGroupIds")
+	delete(f, "UseMobileCallOut")
+	delete(f, "UseMobileAccept")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyStaffRequest has unknown keys!", "")
 	}
@@ -2534,6 +2481,12 @@ type StaffStatusMetrics struct {
 
 	// 是否预约示忙
 	ReserveNotReady *bool `json:"ReserveNotReady,omitempty" name:"ReserveNotReady"`
+
+	// 手机接听模式： 0 - 关闭 | 1 - 仅离线 | 2- 始终
+	UseMobileAccept *int64 `json:"UseMobileAccept,omitempty" name:"UseMobileAccept"`
+
+	// 手机外呼开关
+	UseMobileCallOut *bool `json:"UseMobileCallOut,omitempty" name:"UseMobileCallOut"`
 }
 
 // Predefined struct for user

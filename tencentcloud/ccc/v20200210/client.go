@@ -901,67 +901,6 @@ func (c *Client) DescribeProtectedTelCdrWithContext(ctx context.Context, request
     return
 }
 
-func NewDescribeSeatUserListRequest() (request *DescribeSeatUserListRequest) {
-    request = &DescribeSeatUserListRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    request.Init().WithApiInfo("ccc", APIVersion, "DescribeSeatUserList")
-    
-    
-    return
-}
-
-func NewDescribeSeatUserListResponse() (response *DescribeSeatUserListResponse) {
-    response = &DescribeSeatUserListResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// DescribeSeatUserList
-// 废弃接口下架
-//
-// 
-//
-// 获取坐席用户列表（废弃）
-//
-// 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER_INSTANCENOTEXIST = "InvalidParameter.InstanceNotExist"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
-func (c *Client) DescribeSeatUserList(request *DescribeSeatUserListRequest) (response *DescribeSeatUserListResponse, err error) {
-    return c.DescribeSeatUserListWithContext(context.Background(), request)
-}
-
-// DescribeSeatUserList
-// 废弃接口下架
-//
-// 
-//
-// 获取坐席用户列表（废弃）
-//
-// 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER_INSTANCENOTEXIST = "InvalidParameter.InstanceNotExist"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
-func (c *Client) DescribeSeatUserListWithContext(ctx context.Context, request *DescribeSeatUserListRequest) (response *DescribeSeatUserListResponse, err error) {
-    if request == nil {
-        request = NewDescribeSeatUserListRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeSeatUserList require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeSeatUserListResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewDescribeSkillGroupInfoListRequest() (request *DescribeSkillGroupInfoListRequest) {
     request = &DescribeSkillGroupInfoListRequest{
         BaseRequest: &tchttp.BaseRequest{},

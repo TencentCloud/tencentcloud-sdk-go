@@ -5189,6 +5189,10 @@ type DescribeLiveDomainsResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateLimitCount *int64 `json:"CreateLimitCount,omitempty" name:"CreateLimitCount"`
 
+	// 启用的播放域名加速区域统计，数组元素分别为：中国大陆（境内），全球地区，国际/港澳台（境外）域名数量。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PlayTypeCount []*int64 `json:"PlayTypeCount,omitempty" name:"PlayTypeCount"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }

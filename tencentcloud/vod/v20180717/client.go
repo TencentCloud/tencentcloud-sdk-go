@@ -3381,6 +3381,71 @@ func (c *Client) DescribeCdnLogsWithContext(ctx context.Context, request *Descri
     return
 }
 
+func NewDescribeClientUploadAccelerationUsageDataRequest() (request *DescribeClientUploadAccelerationUsageDataRequest) {
+    request = &DescribeClientUploadAccelerationUsageDataRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("vod", APIVersion, "DescribeClientUploadAccelerationUsageData")
+    
+    
+    return
+}
+
+func NewDescribeClientUploadAccelerationUsageDataResponse() (response *DescribeClientUploadAccelerationUsageDataResponse) {
+    response = &DescribeClientUploadAccelerationUsageDataResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeClientUploadAccelerationUsageData
+// 该接口返回查询时间范围内客户端上传加速统计信息。
+//
+//    1. 可以查询最近365天内的客户端上传加速统计数据。
+//
+//    2. 查询时间跨度不超过90天。
+//
+//    3. 查询时间跨度超过1天的，返回以天为粒度的数据，否则，返回以5分钟为粒度的数据。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INVALIDVODUSER = "FailedOperation.InvalidVodUser"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DescribeClientUploadAccelerationUsageData(request *DescribeClientUploadAccelerationUsageDataRequest) (response *DescribeClientUploadAccelerationUsageDataResponse, err error) {
+    return c.DescribeClientUploadAccelerationUsageDataWithContext(context.Background(), request)
+}
+
+// DescribeClientUploadAccelerationUsageData
+// 该接口返回查询时间范围内客户端上传加速统计信息。
+//
+//    1. 可以查询最近365天内的客户端上传加速统计数据。
+//
+//    2. 查询时间跨度不超过90天。
+//
+//    3. 查询时间跨度超过1天的，返回以天为粒度的数据，否则，返回以5分钟为粒度的数据。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INVALIDVODUSER = "FailedOperation.InvalidVodUser"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DescribeClientUploadAccelerationUsageDataWithContext(ctx context.Context, request *DescribeClientUploadAccelerationUsageDataRequest) (response *DescribeClientUploadAccelerationUsageDataResponse, err error) {
+    if request == nil {
+        request = NewDescribeClientUploadAccelerationUsageDataRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeClientUploadAccelerationUsageData require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeClientUploadAccelerationUsageDataResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeContentReviewTemplatesRequest() (request *DescribeContentReviewTemplatesRequest) {
     request = &DescribeContentReviewTemplatesRequest{
         BaseRequest: &tchttp.BaseRequest{},

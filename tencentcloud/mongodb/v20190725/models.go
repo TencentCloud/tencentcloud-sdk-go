@@ -133,14 +133,6 @@ type BackupDownloadTaskStatus struct {
 	Status *int64 `json:"Status,omitempty" name:"Status"`
 }
 
-type BackupFile struct {
-	// 备份文件所属的副本集/分片ID
-	ReplicateSetId *string `json:"ReplicateSetId,omitempty" name:"ReplicateSetId"`
-
-	// 备份文件保存路径
-	File *string `json:"File,omitempty" name:"File"`
-}
-
 type BackupInfo struct {
 	// 实例ID
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
@@ -890,76 +882,6 @@ func (r *DescribeAsyncRequestInfoResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeAsyncRequestInfoResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DescribeBackupAccessRequestParams struct {
-	// 实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
-
-	// 需要获取下载授权的备份文件名
-	BackupName *string `json:"BackupName,omitempty" name:"BackupName"`
-}
-
-type DescribeBackupAccessRequest struct {
-	*tchttp.BaseRequest
-	
-	// 实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
-
-	// 需要获取下载授权的备份文件名
-	BackupName *string `json:"BackupName,omitempty" name:"BackupName"`
-}
-
-func (r *DescribeBackupAccessRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeBackupAccessRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "InstanceId")
-	delete(f, "BackupName")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBackupAccessRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DescribeBackupAccessResponseParams struct {
-	// 实例所属地域
-	Region *string `json:"Region,omitempty" name:"Region"`
-
-	// 备份文件所在存储桶
-	Bucket *string `json:"Bucket,omitempty" name:"Bucket"`
-
-	// 备份文件的存储信息
-	Files []*BackupFile `json:"Files,omitempty" name:"Files"`
-
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-}
-
-type DescribeBackupAccessResponse struct {
-	*tchttp.BaseResponse
-	Response *DescribeBackupAccessResponseParams `json:"Response"`
-}
-
-func (r *DescribeBackupAccessResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeBackupAccessResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

@@ -50,6 +50,9 @@ const (
 	// 查询时间范围错误。
 	INVALIDPARAMETER_TIMERANGEERROR = "InvalidParameter.TimeRangeError"
 
+	// 超过配额限制。
+	LIMITEXCEEDED = "LimitExceeded"
+
 	// 创建应用数已达上限。
 	LIMITEXCEEDED_APPLICATION = "LimitExceeded.Application"
 

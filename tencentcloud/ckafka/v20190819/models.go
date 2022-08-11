@@ -7366,6 +7366,12 @@ type MySQLParam struct {
 
 	// 格式：库1.表1:字段1,字段2;库2.表2:字段2，表之间;（分号）隔开，字段之间,（逗号）隔开。不指定的表默认取表的主键
 	KeyColumns *string `json:"KeyColumns,omitempty" name:"KeyColumns"`
+
+	// Mysql 是否抛弃解析失败的消息，默认为true
+	DropInvalidMessage *bool `json:"DropInvalidMessage,omitempty" name:"DropInvalidMessage"`
+
+	// 当设置成员参数DropInvalidMessageToCls设置为true时,DropInvalidMessage参数失效
+	DropCls *DropCls `json:"DropCls,omitempty" name:"DropCls"`
 }
 
 type OperateResponseData struct {

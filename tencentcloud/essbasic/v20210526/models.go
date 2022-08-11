@@ -303,7 +303,7 @@ func (r *ChannelCreateConvertTaskApiResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ChannelCreateFlowByFilesRequestParams struct {
-	// 渠道应用相关信息
+	// 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
 	// 签署流程名称，长度不超过200个字符
@@ -338,6 +338,9 @@ type ChannelCreateFlowByFilesRequestParams struct {
 
 	// 渠道的业务信息，最大长度1000个字符。发起自动签署时，需设置对应自动签署场景，目前仅支持场景：处方单-E_PRESCRIPTION_AUTO_SIGN
 	CustomerData *string `json:"CustomerData,omitempty" name:"CustomerData"`
+
+	// 发起方企业的签署人进行签署操作是否需要企业内部审批。 若设置为true,审核结果需通过接口 ChannelCreateFlowSignReview 通知电子签，审核通过后，发起方企业签署人方可进行签署操作，否则会阻塞其签署操作。  注：企业可以通过此功能与企业内部的审批流程进行关联，支持手动、静默签署合同。
+	NeedSignReview *bool `json:"NeedSignReview,omitempty" name:"NeedSignReview"`
 
 	// 操作者的信息
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
@@ -346,7 +349,7 @@ type ChannelCreateFlowByFilesRequestParams struct {
 type ChannelCreateFlowByFilesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 渠道应用相关信息
+	// 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
 	// 签署流程名称，长度不超过200个字符
@@ -381,6 +384,9 @@ type ChannelCreateFlowByFilesRequest struct {
 
 	// 渠道的业务信息，最大长度1000个字符。发起自动签署时，需设置对应自动签署场景，目前仅支持场景：处方单-E_PRESCRIPTION_AUTO_SIGN
 	CustomerData *string `json:"CustomerData,omitempty" name:"CustomerData"`
+
+	// 发起方企业的签署人进行签署操作是否需要企业内部审批。 若设置为true,审核结果需通过接口 ChannelCreateFlowSignReview 通知电子签，审核通过后，发起方企业签署人方可进行签署操作，否则会阻塞其签署操作。  注：企业可以通过此功能与企业内部的审批流程进行关联，支持手动、静默签署合同。
+	NeedSignReview *bool `json:"NeedSignReview,omitempty" name:"NeedSignReview"`
 
 	// 操作者的信息
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
@@ -410,6 +416,7 @@ func (r *ChannelCreateFlowByFilesRequest) FromJsonString(s string) error {
 	delete(f, "FlowDescription")
 	delete(f, "CustomShowMap")
 	delete(f, "CustomerData")
+	delete(f, "NeedSignReview")
 	delete(f, "Operator")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ChannelCreateFlowByFilesRequest has unknown keys!", "")
@@ -1722,6 +1729,12 @@ type FlowInfo struct {
 
 	// 被抄送人的信息列表，抄送功能暂不开放
 	CcInfos []*CcInfo `json:"CcInfos,omitempty" name:"CcInfos"`
+
+	// 发起方企业的签署人进行签署操作是否需要企业内部审批。
+	// 若设置为true,审核结果需通过接口 ChannelCreateFlowSignReview 通知电子签，审核通过后，发起方企业签署人方可进行签署操作，否则会阻塞其签署操作。
+	// 
+	// 注：企业可以通过此功能与企业内部的审批流程进行关联，支持手动、静默签署合同。
+	NeedSignReview *bool `json:"NeedSignReview,omitempty" name:"NeedSignReview"`
 }
 
 type FlowResourceUrlInfo struct {

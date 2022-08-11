@@ -7415,6 +7415,9 @@ type DescribeAssetImageVirusListExportResponseParams struct {
 	// excel文件下载地址
 	DownloadUrl *string `json:"DownloadUrl,omitempty" name:"DownloadUrl"`
 
+	// 任务ID
+	JobId *string `json:"JobId,omitempty" name:"JobId"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }
@@ -11944,6 +11947,15 @@ type DescribeVirusDetailResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ContainerIsolateOperationSrc *string `json:"ContainerIsolateOperationSrc,omitempty" name:"ContainerIsolateOperationSrc"`
 
+	// 检测平台
+	// 1: 云查杀引擎
+	// 2: tav
+	// 3: binaryAi
+	// 4: 异常行为
+	// 5: 威胁情报
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CheckPlatform []*string `json:"CheckPlatform,omitempty" name:"CheckPlatform"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }
@@ -13325,6 +13337,15 @@ type ImageVirusInfo struct {
 	// 文件名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FileName *string `json:"FileName,omitempty" name:"FileName"`
+
+	// 检测平台
+	// 1: 云查杀引擎
+	// 2: tav
+	// 3: binaryAi
+	// 4: 异常行为
+	// 5: 威胁情报
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CheckPlatform []*string `json:"CheckPlatform,omitempty" name:"CheckPlatform"`
 }
 
 type ImageVul struct {
@@ -16395,6 +16416,19 @@ type VirusInfo struct {
 	// md5值
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MD5 *string `json:"MD5,omitempty" name:"MD5"`
+
+	// 风险等级 RISK_CRITICAL, RISK_HIGH, RISK_MEDIUM, RISK_LOW, RISK_NOTICE。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RiskLevel *string `json:"RiskLevel,omitempty" name:"RiskLevel"`
+
+	// 检测平台
+	// 1: 云查杀引擎
+	// 2: tav
+	// 3: binaryAi
+	// 4: 异常行为
+	// 5: 威胁情报
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CheckPlatform []*string `json:"CheckPlatform,omitempty" name:"CheckPlatform"`
 }
 
 type VirusTaskInfo struct {

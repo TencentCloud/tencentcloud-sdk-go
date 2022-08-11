@@ -438,7 +438,7 @@ type ConsumerContent struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EnableTag *bool `json:"EnableTag,omitempty" name:"EnableTag"`
 
-	// 需要投递的元数据列表，目前仅支持：\_\_SOURCE\_\_，\_\_FILENAME\_\_和\_\_TIMESTAMP\_\_
+	// 需要投递的元数据列表，目前仅支持：\_\_SOURCE\_\_，\_\_FILENAME\_\_，\_\_TIMESTAMP\_\_，\_\_HOSTNAME\_\_和\_\_PKGID\_\_
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MetaFields []*string `json:"MetaFields,omitempty" name:"MetaFields"`
 
@@ -1035,6 +1035,9 @@ type CreateConsumerRequestParams struct {
 
 	// CKafka的描述
 	Ckafka *Ckafka `json:"Ckafka,omitempty" name:"Ckafka"`
+
+	// 投递时压缩方式，取值0，2，3。[0:NONE；2:SNAPPY；3:LZ4]
+	Compression *int64 `json:"Compression,omitempty" name:"Compression"`
 }
 
 type CreateConsumerRequest struct {
@@ -1051,6 +1054,9 @@ type CreateConsumerRequest struct {
 
 	// CKafka的描述
 	Ckafka *Ckafka `json:"Ckafka,omitempty" name:"Ckafka"`
+
+	// 投递时压缩方式，取值0，2，3。[0:NONE；2:SNAPPY；3:LZ4]
+	Compression *int64 `json:"Compression,omitempty" name:"Compression"`
 }
 
 func (r *CreateConsumerRequest) ToJsonString() string {
@@ -1069,6 +1075,7 @@ func (r *CreateConsumerRequest) FromJsonString(s string) error {
 	delete(f, "NeedContent")
 	delete(f, "Content")
 	delete(f, "Ckafka")
+	delete(f, "Compression")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateConsumerRequest has unknown keys!", "")
 	}
@@ -2885,6 +2892,10 @@ type DescribeConsumerResponseParams struct {
 
 	// CKafka的描述
 	Ckafka *Ckafka `json:"Ckafka,omitempty" name:"Ckafka"`
+
+	// 压缩方式[0:NONE；2:SNAPPY；3:LZ4]
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Compression *int64 `json:"Compression,omitempty" name:"Compression"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -4992,6 +5003,9 @@ type ModifyConsumerRequestParams struct {
 
 	// CKafka的描述
 	Ckafka *Ckafka `json:"Ckafka,omitempty" name:"Ckafka"`
+
+	// 投递时压缩方式，取值0，2，3。[0:NONE；2:SNAPPY；3:LZ4]
+	Compression *int64 `json:"Compression,omitempty" name:"Compression"`
 }
 
 type ModifyConsumerRequest struct {
@@ -5011,6 +5025,9 @@ type ModifyConsumerRequest struct {
 
 	// CKafka的描述
 	Ckafka *Ckafka `json:"Ckafka,omitempty" name:"Ckafka"`
+
+	// 投递时压缩方式，取值0，2，3。[0:NONE；2:SNAPPY；3:LZ4]
+	Compression *int64 `json:"Compression,omitempty" name:"Compression"`
 }
 
 func (r *ModifyConsumerRequest) ToJsonString() string {
@@ -5030,6 +5047,7 @@ func (r *ModifyConsumerRequest) FromJsonString(s string) error {
 	delete(f, "NeedContent")
 	delete(f, "Content")
 	delete(f, "Ckafka")
+	delete(f, "Compression")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyConsumerRequest has unknown keys!", "")
 	}

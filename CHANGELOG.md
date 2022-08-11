@@ -1,3 +1,500 @@
+# Release v1.0.471
+
+## 弹性伸缩(as) 版本：2018-04-19
+
+### 第 54 次发布
+
+发布时间：2022-08-11 06:10:05
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateLaunchConfiguration](https://cloud.tencent.com/document/api/377/20447)
+
+	* 新增入参：HpcClusterId
+
+* [ModifyLaunchConfigurationAttributes](https://cloud.tencent.com/document/api/377/31298)
+
+	* 新增入参：HpcClusterId
+
+
+修改数据结构：
+
+* [LaunchConfiguration](https://cloud.tencent.com/document/api/377/20453#LaunchConfiguration)
+
+	* 新增成员：HpcClusterId
+
+
+
+
+## 云呼叫中心(ccc) 版本：2020-02-10
+
+### 第 28 次发布
+
+发布时间：2022-08-11 06:14:26
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除接口**：</font>
+
+* DescribeSeatUserList
+
+修改接口：
+
+* [DescribeSkillGroupInfoList](https://cloud.tencent.com/document/api/679/53310)
+
+	* 新增入参：SkillGroupName
+
+* [ModifyStaff](https://cloud.tencent.com/document/api/679/76322)
+
+	* 新增入参：UseMobileCallOut, UseMobileAccept
+
+
+修改数据结构：
+
+* [StaffStatusMetrics](https://cloud.tencent.com/document/api/679/47715#StaffStatusMetrics)
+
+	* 新增成员：UseMobileAccept, UseMobileCallOut
+
+
+
+
+## 消息队列 Ckafka(ckafka) 版本：2019-08-19
+
+### 第 50 次发布
+
+发布时间：2022-08-11 06:18:51
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [MySQLParam](https://cloud.tencent.com/document/api/597/40861#MySQLParam)
+
+	* 新增成员：DropInvalidMessage, DropCls
+
+
+
+
+## 日志服务(cls) 版本：2020-10-16
+
+### 第 27 次发布
+
+发布时间：2022-08-11 06:20:21
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateConsumer](https://cloud.tencent.com/document/api/614/66228)
+
+	* 新增入参：Compression
+
+* [DescribeConsumer](https://cloud.tencent.com/document/api/614/66226)
+
+	* 新增出参：Compression
+
+* [ModifyConsumer](https://cloud.tencent.com/document/api/614/66225)
+
+	* 新增入参：Compression
+
+
+
+
+## 企业收付平台(cpdp) 版本：2019-08-20
+
+### 第 81 次发布
+
+发布时间：2022-08-11 06:21:37
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [UnifiedCloudOrder](https://cloud.tencent.com/document/api/1122/72599)
+
+	* 新增入参：ExternalUserInfoList
+
+
+新增数据结构：
+
+* [CloudExternalUserInfo](https://cloud.tencent.com/document/api/1122/40683#CloudExternalUserInfo)
+
+
+
+## 电子签服务(ess) 版本：2020-11-11
+
+### 第 13 次发布
+
+发布时间：2022-08-11 07:02:49
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateFlow](https://cloud.tencent.com/document/api/1323/70361)
+
+	* 新增入参：NeedSignReview
+
+* [CreateFlowByFiles](https://cloud.tencent.com/document/api/1323/70360)
+
+	* 新增入参：NeedSignReview
+
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
+
+### 第 26 次发布
+
+发布时间：2022-08-11 07:03:11
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ChannelCreateFlowByFiles](https://cloud.tencent.com/document/api/1420/73068)
+
+	* 新增入参：NeedSignReview
+
+
+修改数据结构：
+
+* [FlowInfo](https://cloud.tencent.com/document/api/1420/61525#FlowInfo)
+
+	* 新增成员：NeedSignReview
+
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
+
+
+
+## 游戏多媒体引擎(gme) 版本：2018-07-11
+
+### 第 21 次发布
+
+发布时间：2022-08-11 06:32:55
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateCustomization](https://cloud.tencent.com/document/api/607/78906)
+* [DeleteCustomization](https://cloud.tencent.com/document/api/607/78905)
+* [GetCustomizationList](https://cloud.tencent.com/document/api/607/78904)
+* [ModifyCustomization](https://cloud.tencent.com/document/api/607/78903)
+* [ModifyCustomizationState](https://cloud.tencent.com/document/api/607/78902)
+
+新增数据结构：
+
+* [CustomizationConfigs](https://cloud.tencent.com/document/api/607/35375#CustomizationConfigs)
+
+
+
+## 轻量应用服务器(lighthouse) 版本：2020-03-24
+
+### 第 33 次发布
+
+发布时间：2022-08-11 06:38:25
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeDiskDiscount](https://cloud.tencent.com/document/api/1207/66094)
+
+	* 新增入参：DiskBackupQuota
+
+* [InquirePriceCreateDisks](https://cloud.tencent.com/document/api/1207/66089)
+
+	* 新增入参：DiskBackupQuota
+
+
+
+
+## 云直播(live) 版本：2018-08-01
+
+### 第 85 次发布
+
+发布时间：2022-08-11 06:39:01
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeLiveDomains](https://cloud.tencent.com/document/api/267/33856)
+
+	* 新增出参：PlayTypeCount
+
+
+
+
+## 云数据库 MongoDB(mongodb) 版本：2019-07-25
+
+### 第 22 次发布
+
+发布时间：2022-08-11 06:40:51
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除接口**：</font>
+
+* DescribeBackupAccess
+
+<font color="#dd0000">**删除数据结构**：</font>
+
+* BackupFile
+
+
+
+## 云数据库 MongoDB(mongodb) 版本：2018-04-08
+
+
+
+## 云数据库 Redis(redis) 版本：2018-04-12
+
+### 第 53 次发布
+
+发布时间：2022-08-11 06:44:49
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [SwitchProxy](https://cloud.tencent.com/document/api/239/78841)
+
+
+
+## 云数据库 SQL Server(sqlserver) 版本：2018-03-28
+
+### 第 36 次发布
+
+发布时间：2022-08-11 06:47:08
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateBasicDBInstances](https://cloud.tencent.com/document/api/238/46808)
+
+	* 新增入参：Collation, TimeZone
+
+* [CreateDBInstances](https://cloud.tencent.com/document/api/238/19973)
+
+	* 新增入参：Collation, TimeZone
+
+* [CreateReadOnlyDBInstances](https://cloud.tencent.com/document/api/238/46807)
+
+	* 新增入参：Collation, TimeZone
+
+
+修改数据结构：
+
+* [DBInstance](https://cloud.tencent.com/document/api/238/19976#DBInstance)
+
+	* 新增成员：Collation, TimeZone
+
+
+
+
+## 流量反欺诈(taf) 版本：2020-02-10
+
+### 第 14 次发布
+
+发布时间：2022-08-11 06:48:40
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除接口**：</font>
+
+* RecognizeEffectiveFlow
+
+<font color="#dd0000">**删除数据结构**：</font>
+
+* InputRecognizeEffectiveFlow
+* OutputRecognizeEffectiveFlow
+* OutputRecognizeEffectiveFlowValue
+
+
+
+## TBaaS(tbaas) 版本：2018-04-16
+
+### 第 13 次发布
+
+发布时间：2022-08-11 06:49:15
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除接口**：</font>
+
+* BlockByNumberHandler
+* DeployDynamicContractHandler
+* GetBlockListHandler
+* GetTransByHashHandler
+* GetTransListHandler
+* SendTransactionHandler
+* TransByDynamicContractHandler
+
+
+
+## 容器安全服务(tcss) 版本：2020-11-01
+
+### 第 23 次发布
+
+发布时间：2022-08-11 06:51:30
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeAssetImageVirusListExport](https://cloud.tencent.com/document/api/1285/65482)
+
+	* 新增出参：JobId
+
+* [DescribeVirusDetail](https://cloud.tencent.com/document/api/1285/65583)
+
+	* 新增出参：CheckPlatform
+
+
+修改数据结构：
+
+* [ImageVirusInfo](https://cloud.tencent.com/document/api/1285/65614#ImageVirusInfo)
+
+	* 新增成员：CheckPlatform
+
+* [VirusInfo](https://cloud.tencent.com/document/api/1285/65614#VirusInfo)
+
+	* 新增成员：RiskLevel, CheckPlatform
+
+
+
+
+## 弹性微服务(tem) 版本：2021-07-01
+
+### 第 26 次发布
+
+发布时间：2022-08-11 07:11:15
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [TemServiceVersionInfo](https://cloud.tencent.com/document/api/1371/60171#TemServiceVersionInfo)
+
+	* 新增成员：EnableMetrics
+
+	* <font color="#dd0000">**修改成员**：</font>ApplicationId, MinAliveInstances
+
+
+
+
+## 弹性微服务(tem) 版本：2020-12-21
+
+
+
+## 边缘安全加速平台(teo) 版本：2022-01-06
+
+### 第 17 次发布
+
+发布时间：2022-08-11 06:53:53
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeWebManagedRulesData](https://cloud.tencent.com/document/api/1552/75651)
+
+	* 新增入参：QueryCondition
+
+* [DescribeWebManagedRulesTopData](https://cloud.tencent.com/document/api/1552/75649)
+
+	* 新增入参：Interval, QueryCondition
+
+* [DescribeWebProtectionData](https://cloud.tencent.com/document/api/1552/75647)
+
+	* 新增入参：QueryCondition
+
+* [DescribeWebProtectionLog](https://cloud.tencent.com/document/api/1552/75646)
+
+	* 新增入参：EntityType
+
+
+新增数据结构：
+
+* [SecRuleRelatedInfo](https://cloud.tencent.com/document/api/1552/73155#SecRuleRelatedInfo)
+
+修改数据结构：
+
+* [BotLog](https://cloud.tencent.com/document/api/1552/73155#BotLog)
+
+	* 新增成员：RuleDetailList, Label
+
+* [CCLog](https://cloud.tencent.com/document/api/1552/73155#CCLog)
+
+	* 新增成员：Ua, RequestMethod, RuleDetailList
+
+* [WebLogs](https://cloud.tencent.com/document/api/1552/73155#WebLogs)
+
+	* 新增成员：RuleDetailList
+
+
+
+
+## 云点播(vod) 版本：2018-07-17
+
+### 第 112 次发布
+
+发布时间：2022-08-11 07:05:14
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeClientUploadAccelerationUsageData](https://cloud.tencent.com/document/api/266/78907)
+
+
+
 # Release v1.0.470
 
 ## 弹性微服务(tem) 版本：2021-07-01

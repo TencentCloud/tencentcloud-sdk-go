@@ -308,6 +308,70 @@ func (r *CreateAppResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateCustomizationRequestParams struct {
+	// 应用 ID，登录控制台创建应用得到的AppID
+	BizId *int64 `json:"BizId,omitempty" name:"BizId"`
+
+	// 文本文件的下载地址，服务会从该地址下载文件，目前仅支持腾讯云cos
+	TextUrl *string `json:"TextUrl,omitempty" name:"TextUrl"`
+}
+
+type CreateCustomizationRequest struct {
+	*tchttp.BaseRequest
+	
+	// 应用 ID，登录控制台创建应用得到的AppID
+	BizId *int64 `json:"BizId,omitempty" name:"BizId"`
+
+	// 文本文件的下载地址，服务会从该地址下载文件，目前仅支持腾讯云cos
+	TextUrl *string `json:"TextUrl,omitempty" name:"TextUrl"`
+}
+
+func (r *CreateCustomizationRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateCustomizationRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "BizId")
+	delete(f, "TextUrl")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCustomizationRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateCustomizationResponseParams struct {
+	// 模型ID
+	ModelId *string `json:"ModelId,omitempty" name:"ModelId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateCustomizationResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateCustomizationResponseParams `json:"Response"`
+}
+
+func (r *CreateCustomizationResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateCustomizationResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateScanUserRequestParams struct {
 	// 应用ID，登录控制台 - 服务管理创建应用得到的AppID
 	BizId *uint64 `json:"BizId,omitempty" name:"BizId"`
@@ -368,6 +432,81 @@ func (r *CreateScanUserResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateScanUserResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type CustomizationConfigs struct {
+	// 应用 ID，登录控制台创建应用得到的AppID
+	BizId *int64 `json:"BizId,omitempty" name:"BizId"`
+
+	// 模型ID
+	ModelId *string `json:"ModelId,omitempty" name:"ModelId"`
+
+	// 模型状态，-1下线状态，1上线状态, 0训练中, -2训练失败
+	ModelState *int64 `json:"ModelState,omitempty" name:"ModelState"`
+}
+
+// Predefined struct for user
+type DeleteCustomizationRequestParams struct {
+	// 要删除的模型ID
+	ModelId *string `json:"ModelId,omitempty" name:"ModelId"`
+
+	// 应用 ID，登录控制台创建应用得到的AppID
+	BizId *int64 `json:"BizId,omitempty" name:"BizId"`
+}
+
+type DeleteCustomizationRequest struct {
+	*tchttp.BaseRequest
+	
+	// 要删除的模型ID
+	ModelId *string `json:"ModelId,omitempty" name:"ModelId"`
+
+	// 应用 ID，登录控制台创建应用得到的AppID
+	BizId *int64 `json:"BizId,omitempty" name:"BizId"`
+}
+
+func (r *DeleteCustomizationRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteCustomizationRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ModelId")
+	delete(f, "BizId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteCustomizationRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteCustomizationResponseParams struct {
+	// 返回值。0为成功，非0为失败。
+	ErrorCode *int64 `json:"ErrorCode,omitempty" name:"ErrorCode"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DeleteCustomizationResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteCustomizationResponseParams `json:"Response"`
+}
+
+func (r *DeleteCustomizationResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteCustomizationResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1158,6 +1297,64 @@ func (r *DescribeUserInAndOutTimeResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type GetCustomizationListRequestParams struct {
+	// 应用 ID，登录控制台创建应用得到的AppID
+	BizId *int64 `json:"BizId,omitempty" name:"BizId"`
+}
+
+type GetCustomizationListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 应用 ID，登录控制台创建应用得到的AppID
+	BizId *int64 `json:"BizId,omitempty" name:"BizId"`
+}
+
+func (r *GetCustomizationListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetCustomizationListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "BizId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetCustomizationListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetCustomizationListResponseParams struct {
+	// 语音消息转文本自学习模型配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CustomizationConfigs []*CustomizationConfigs `json:"CustomizationConfigs,omitempty" name:"CustomizationConfigs"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type GetCustomizationListResponse struct {
+	*tchttp.BaseResponse
+	Response *GetCustomizationListResponseParams `json:"Response"`
+}
+
+func (r *GetCustomizationListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetCustomizationListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type InOutTimeInfo struct {
 	// 进入房间时间
 	StartTime *int64 `json:"StartTime,omitempty" name:"StartTime"`
@@ -1235,6 +1432,154 @@ func (r *ModifyAppStatusResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyAppStatusResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyCustomizationRequestParams struct {
+	// 应用 ID，登录控制台创建应用得到的AppID
+	BizId *int64 `json:"BizId,omitempty" name:"BizId"`
+
+	// 文本文件
+	TextUrl *string `json:"TextUrl,omitempty" name:"TextUrl"`
+
+	// 要修改的模型ID
+	ModelId *string `json:"ModelId,omitempty" name:"ModelId"`
+}
+
+type ModifyCustomizationRequest struct {
+	*tchttp.BaseRequest
+	
+	// 应用 ID，登录控制台创建应用得到的AppID
+	BizId *int64 `json:"BizId,omitempty" name:"BizId"`
+
+	// 文本文件
+	TextUrl *string `json:"TextUrl,omitempty" name:"TextUrl"`
+
+	// 要修改的模型ID
+	ModelId *string `json:"ModelId,omitempty" name:"ModelId"`
+}
+
+func (r *ModifyCustomizationRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyCustomizationRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "BizId")
+	delete(f, "TextUrl")
+	delete(f, "ModelId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyCustomizationRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyCustomizationResponseParams struct {
+	// 返回值。0为成功，非0为失败。
+	ErrorCode *int64 `json:"ErrorCode,omitempty" name:"ErrorCode"`
+
+	// 自学习模型ID
+	ModelId *string `json:"ModelId,omitempty" name:"ModelId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ModifyCustomizationResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyCustomizationResponseParams `json:"Response"`
+}
+
+func (r *ModifyCustomizationResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyCustomizationResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyCustomizationStateRequestParams struct {
+	// 自学习模型ID
+	ModelId *string `json:"ModelId,omitempty" name:"ModelId"`
+
+	// 想要变换的模型状态，-1代表下线，1代表上线
+	ToState *int64 `json:"ToState,omitempty" name:"ToState"`
+
+	// 应用 ID，登录控制台创建应用得到的AppID
+	BizId *int64 `json:"BizId,omitempty" name:"BizId"`
+}
+
+type ModifyCustomizationStateRequest struct {
+	*tchttp.BaseRequest
+	
+	// 自学习模型ID
+	ModelId *string `json:"ModelId,omitempty" name:"ModelId"`
+
+	// 想要变换的模型状态，-1代表下线，1代表上线
+	ToState *int64 `json:"ToState,omitempty" name:"ToState"`
+
+	// 应用 ID，登录控制台创建应用得到的AppID
+	BizId *int64 `json:"BizId,omitempty" name:"BizId"`
+}
+
+func (r *ModifyCustomizationStateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyCustomizationStateRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ModelId")
+	delete(f, "ToState")
+	delete(f, "BizId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyCustomizationStateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyCustomizationStateResponseParams struct {
+	// 自学习模型ID
+	ModelId *string `json:"ModelId,omitempty" name:"ModelId"`
+
+	// 返回值。0为成功，非0为失败。
+	ErrorCode *int64 `json:"ErrorCode,omitempty" name:"ErrorCode"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ModifyCustomizationStateResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyCustomizationStateResponseParams `json:"Response"`
+}
+
+func (r *ModifyCustomizationStateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyCustomizationStateResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

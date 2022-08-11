@@ -157,10 +157,16 @@ func NewAddLiveDomainResponse() (response *AddLiveDomainResponse) {
 // 添加域名，一次只能提交一个域名。域名必须已备案。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_CALLOTHERSVRFAILED = "FailedOperation.CallOtherSvrFailed"
 //  FAILEDOPERATION_DELETEDOMAININLOCKEDTIME = "FailedOperation.DeleteDomainInLockedTime"
+//  FAILEDOPERATION_DOMAINADDED = "FailedOperation.DomainAdded"
+//  FAILEDOPERATION_DOMAINGSLBFAIL = "FailedOperation.DomainGslbFail"
+//  FAILEDOPERATION_DOMAINNEEDREALNAME = "FailedOperation.DomainNeedRealName"
 //  FAILEDOPERATION_DOMAINNEEDVERIFYOWNER = "FailedOperation.DomainNeedVerifyOwner"
 //  FAILEDOPERATION_HOSTOUTLIMIT = "FailedOperation.HostOutLimit"
+//  FAILEDOPERATION_PARENTDOMAINADDED = "FailedOperation.ParentDomainAdded"
+//  FAILEDOPERATION_SUBDOMAINADDED = "FailedOperation.SubDomainAdded"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_CHINESECHARACTERDETECTED = "InternalError.ChineseCharacterDetected"
 //  INTERNALERROR_CONNECTDBERROR = "InternalError.ConnectDbError"
@@ -175,6 +181,7 @@ func NewAddLiveDomainResponse() (response *AddLiveDomainResponse) {
 //  INTERNALERROR_INVALIDINPUT = "InternalError.InvalidInput"
 //  INTERNALERROR_INVALIDUSER = "InternalError.InvalidUser"
 //  INTERNALERROR_NETWORKERROR = "InternalError.NetworkError"
+//  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_DOMAINALREADYEXIST = "InvalidParameter.DomainAlreadyExist"
 //  INVALIDPARAMETER_DOMAINFORMATERROR = "InvalidParameter.DomainFormatError"
 //  INVALIDPARAMETER_DOMAINHITBLACKLIST = "InvalidParameter.DomainHitBlackList"
@@ -197,10 +204,16 @@ func (c *Client) AddLiveDomain(request *AddLiveDomainRequest) (response *AddLive
 // 添加域名，一次只能提交一个域名。域名必须已备案。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_CALLOTHERSVRFAILED = "FailedOperation.CallOtherSvrFailed"
 //  FAILEDOPERATION_DELETEDOMAININLOCKEDTIME = "FailedOperation.DeleteDomainInLockedTime"
+//  FAILEDOPERATION_DOMAINADDED = "FailedOperation.DomainAdded"
+//  FAILEDOPERATION_DOMAINGSLBFAIL = "FailedOperation.DomainGslbFail"
+//  FAILEDOPERATION_DOMAINNEEDREALNAME = "FailedOperation.DomainNeedRealName"
 //  FAILEDOPERATION_DOMAINNEEDVERIFYOWNER = "FailedOperation.DomainNeedVerifyOwner"
 //  FAILEDOPERATION_HOSTOUTLIMIT = "FailedOperation.HostOutLimit"
+//  FAILEDOPERATION_PARENTDOMAINADDED = "FailedOperation.ParentDomainAdded"
+//  FAILEDOPERATION_SUBDOMAINADDED = "FailedOperation.SubDomainAdded"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_CHINESECHARACTERDETECTED = "InternalError.ChineseCharacterDetected"
 //  INTERNALERROR_CONNECTDBERROR = "InternalError.ConnectDbError"
@@ -215,6 +228,7 @@ func (c *Client) AddLiveDomain(request *AddLiveDomainRequest) (response *AddLive
 //  INTERNALERROR_INVALIDINPUT = "InternalError.InvalidInput"
 //  INTERNALERROR_INVALIDUSER = "InternalError.InvalidUser"
 //  INTERNALERROR_NETWORKERROR = "InternalError.NetworkError"
+//  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_DOMAINALREADYEXIST = "InvalidParameter.DomainAlreadyExist"
 //  INVALIDPARAMETER_DOMAINFORMATERROR = "InvalidParameter.DomainFormatError"
 //  INVALIDPARAMETER_DOMAINHITBLACKLIST = "InvalidParameter.DomainHitBlackList"

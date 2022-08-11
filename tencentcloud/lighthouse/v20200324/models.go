@@ -1564,6 +1564,9 @@ type DescribeDiskDiscountRequestParams struct {
 
 	// 云硬盘大小。
 	DiskSize *int64 `json:"DiskSize,omitempty" name:"DiskSize"`
+
+	// 指定云硬盘备份点配额，不传时默认为不带备份点配额。目前只支持不带或设置1个云硬盘备份点配额。
+	DiskBackupQuota *int64 `json:"DiskBackupQuota,omitempty" name:"DiskBackupQuota"`
 }
 
 type DescribeDiskDiscountRequest struct {
@@ -1574,6 +1577,9 @@ type DescribeDiskDiscountRequest struct {
 
 	// 云硬盘大小。
 	DiskSize *int64 `json:"DiskSize,omitempty" name:"DiskSize"`
+
+	// 指定云硬盘备份点配额，不传时默认为不带备份点配额。目前只支持不带或设置1个云硬盘备份点配额。
+	DiskBackupQuota *int64 `json:"DiskBackupQuota,omitempty" name:"DiskBackupQuota"`
 }
 
 func (r *DescribeDiskDiscountRequest) ToJsonString() string {
@@ -1590,6 +1596,7 @@ func (r *DescribeDiskDiscountRequest) FromJsonString(s string) error {
 	}
 	delete(f, "DiskType")
 	delete(f, "DiskSize")
+	delete(f, "DiskBackupQuota")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDiskDiscountRequest has unknown keys!", "")
 	}
@@ -1707,11 +1714,13 @@ type DescribeDisksRequestParams struct {
 	// 按照【云硬盘类型】进行过滤。
 	// 类型：String
 	// 必选：否
+	// 取值：SYSTEM_DISK或DATA_DISK
 	// disk-state
 	// 按照【云硬盘状态】进行过滤。
 	// 类型：String
 	// 必选：否
-	// 每次请求的 Filters 的上限为 10，Filter.Values 的上限为 5。参数不支持同时指定 DiskIds 和 Filters。
+	// 取值：参考数据结构[Disk](https://cloud.tencent.com/document/api/1207/47576#Disk)中DiskState取值。
+	// 每次请求的 Filters 的上限为 10，Filter.Values 的上限为 100。参数不支持同时指定 DiskIds 和 Filters。
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 返回数量，默认为20，最大值为100。
@@ -1754,11 +1763,13 @@ type DescribeDisksRequest struct {
 	// 按照【云硬盘类型】进行过滤。
 	// 类型：String
 	// 必选：否
+	// 取值：SYSTEM_DISK或DATA_DISK
 	// disk-state
 	// 按照【云硬盘状态】进行过滤。
 	// 类型：String
 	// 必选：否
-	// 每次请求的 Filters 的上限为 10，Filter.Values 的上限为 5。参数不支持同时指定 DiskIds 和 Filters。
+	// 取值：参考数据结构[Disk](https://cloud.tencent.com/document/api/1207/47576#Disk)中DiskState取值。
+	// 每次请求的 Filters 的上限为 10，Filter.Values 的上限为 100。参数不支持同时指定 DiskIds 和 Filters。
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 返回数量，默认为20，最大值为100。
@@ -3454,7 +3465,17 @@ type Disk struct {
 	// 续费标识
 	RenewFlag *string `json:"RenewFlag,omitempty" name:"RenewFlag"`
 
-	// 磁盘状态
+	// 磁盘状态，取值范围：
+	// <li>PENDING：创建中。 </li>
+	// <li>UNATTACHED：未挂载。</li>
+	// <li>ATTACHING：挂载中。</li>
+	// <li>ATTACHED：已挂载。</li>
+	// <li>DETACHING：卸载中。 </li>
+	// <li> SHUTDOWN：已隔离。</li>
+	// <li> CREATED_FAILED：创建失败。</li>
+	// <li>TERMINATING：销毁中。</li>
+	// <li> DELETING：删除中。</li>
+	// <li> FREEZING：冻结中。</li>
 	DiskState *string `json:"DiskState,omitempty" name:"DiskState"`
 
 	// 磁盘挂载状态
@@ -3797,6 +3818,9 @@ type InquirePriceCreateDisksRequestParams struct {
 
 	// 云硬盘个数, 默认值: 1。
 	DiskCount *int64 `json:"DiskCount,omitempty" name:"DiskCount"`
+
+	// 指定云硬盘备份点配额，不传时默认为不带备份点配额。目前只支持不带或设置1个云硬盘备份点配额。
+	DiskBackupQuota *int64 `json:"DiskBackupQuota,omitempty" name:"DiskBackupQuota"`
 }
 
 type InquirePriceCreateDisksRequest struct {
@@ -3813,6 +3837,9 @@ type InquirePriceCreateDisksRequest struct {
 
 	// 云硬盘个数, 默认值: 1。
 	DiskCount *int64 `json:"DiskCount,omitempty" name:"DiskCount"`
+
+	// 指定云硬盘备份点配额，不传时默认为不带备份点配额。目前只支持不带或设置1个云硬盘备份点配额。
+	DiskBackupQuota *int64 `json:"DiskBackupQuota,omitempty" name:"DiskBackupQuota"`
 }
 
 func (r *InquirePriceCreateDisksRequest) ToJsonString() string {
@@ -3831,6 +3858,7 @@ func (r *InquirePriceCreateDisksRequest) FromJsonString(s string) error {
 	delete(f, "DiskType")
 	delete(f, "DiskChargePrepaid")
 	delete(f, "DiskCount")
+	delete(f, "DiskBackupQuota")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "InquirePriceCreateDisksRequest has unknown keys!", "")
 	}

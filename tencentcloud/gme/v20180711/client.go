@@ -203,6 +203,53 @@ func (c *Client) CreateAppWithContext(ctx context.Context, request *CreateAppReq
     return
 }
 
+func NewCreateCustomizationRequest() (request *CreateCustomizationRequest) {
+    request = &CreateCustomizationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("gme", APIVersion, "CreateCustomization")
+    
+    
+    return
+}
+
+func NewCreateCustomizationResponse() (response *CreateCustomizationResponse) {
+    response = &CreateCustomizationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateCustomization
+// 用户使用该接口可以创建语音消息转文本自学习模型，以供识别调用
+//
+// 可能返回的错误码:
+//  LIMITEXCEEDED = "LimitExceeded"
+func (c *Client) CreateCustomization(request *CreateCustomizationRequest) (response *CreateCustomizationResponse, err error) {
+    return c.CreateCustomizationWithContext(context.Background(), request)
+}
+
+// CreateCustomization
+// 用户使用该接口可以创建语音消息转文本自学习模型，以供识别调用
+//
+// 可能返回的错误码:
+//  LIMITEXCEEDED = "LimitExceeded"
+func (c *Client) CreateCustomizationWithContext(ctx context.Context, request *CreateCustomizationRequest) (response *CreateCustomizationResponse, err error) {
+    if request == nil {
+        request = NewCreateCustomizationRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateCustomization require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateCustomizationResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateScanUserRequest() (request *CreateScanUserRequest) {
     request = &CreateScanUserRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -224,17 +271,7 @@ func NewCreateScanUserResponse() (response *CreateScanUserResponse) {
 // 新增自定义送检用户
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_USERFEENEGATIVE = "FailedOperation.UserFeeNegative"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_TAGKEY = "InvalidParameter.TagKey"
-//  LIMITEXCEEDED_APPLICATION = "LimitExceeded.Application"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNAUTHORIZEDOPERATION_CREATEAPPDENIED = "UnauthorizedOperation.CreateAppDenied"
-//  UNAUTHORIZEDOPERATION_UNREALNAMEAUTH = "UnauthorizedOperation.UnRealNameAuth"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  LIMITEXCEEDED = "LimitExceeded"
 func (c *Client) CreateScanUser(request *CreateScanUserRequest) (response *CreateScanUserResponse, err error) {
     return c.CreateScanUserWithContext(context.Background(), request)
 }
@@ -243,17 +280,7 @@ func (c *Client) CreateScanUser(request *CreateScanUserRequest) (response *Creat
 // 新增自定义送检用户
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_USERFEENEGATIVE = "FailedOperation.UserFeeNegative"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_TAGKEY = "InvalidParameter.TagKey"
-//  LIMITEXCEEDED_APPLICATION = "LimitExceeded.Application"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNAUTHORIZEDOPERATION_CREATEAPPDENIED = "UnauthorizedOperation.CreateAppDenied"
-//  UNAUTHORIZEDOPERATION_UNREALNAMEAUTH = "UnauthorizedOperation.UnRealNameAuth"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  LIMITEXCEEDED = "LimitExceeded"
 func (c *Client) CreateScanUserWithContext(ctx context.Context, request *CreateScanUserRequest) (response *CreateScanUserResponse, err error) {
     if request == nil {
         request = NewCreateScanUserRequest()
@@ -266,6 +293,53 @@ func (c *Client) CreateScanUserWithContext(ctx context.Context, request *CreateS
     request.SetContext(ctx)
     
     response = NewCreateScanUserResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteCustomizationRequest() (request *DeleteCustomizationRequest) {
+    request = &DeleteCustomizationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("gme", APIVersion, "DeleteCustomization")
+    
+    
+    return
+}
+
+func NewDeleteCustomizationResponse() (response *DeleteCustomizationResponse) {
+    response = &DeleteCustomizationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteCustomization
+// 用户通过该接口可以删除语音消息转文本自学习模型
+//
+// 可能返回的错误码:
+//  LIMITEXCEEDED = "LimitExceeded"
+func (c *Client) DeleteCustomization(request *DeleteCustomizationRequest) (response *DeleteCustomizationResponse, err error) {
+    return c.DeleteCustomizationWithContext(context.Background(), request)
+}
+
+// DeleteCustomization
+// 用户通过该接口可以删除语音消息转文本自学习模型
+//
+// 可能返回的错误码:
+//  LIMITEXCEEDED = "LimitExceeded"
+func (c *Client) DeleteCustomizationWithContext(ctx context.Context, request *DeleteCustomizationRequest) (response *DeleteCustomizationResponse, err error) {
+    if request == nil {
+        request = NewDeleteCustomizationRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteCustomization require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteCustomizationResponse()
     err = c.Send(request, response)
     return
 }
@@ -291,17 +365,7 @@ func NewDeleteScanUserResponse() (response *DeleteScanUserResponse) {
 // 删除自定义送检用户
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_USERFEENEGATIVE = "FailedOperation.UserFeeNegative"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_TAGKEY = "InvalidParameter.TagKey"
-//  LIMITEXCEEDED_APPLICATION = "LimitExceeded.Application"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNAUTHORIZEDOPERATION_CREATEAPPDENIED = "UnauthorizedOperation.CreateAppDenied"
-//  UNAUTHORIZEDOPERATION_UNREALNAMEAUTH = "UnauthorizedOperation.UnRealNameAuth"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  LIMITEXCEEDED = "LimitExceeded"
 func (c *Client) DeleteScanUser(request *DeleteScanUserRequest) (response *DeleteScanUserResponse, err error) {
     return c.DeleteScanUserWithContext(context.Background(), request)
 }
@@ -310,17 +374,7 @@ func (c *Client) DeleteScanUser(request *DeleteScanUserRequest) (response *Delet
 // 删除自定义送检用户
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_USERFEENEGATIVE = "FailedOperation.UserFeeNegative"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_TAGKEY = "InvalidParameter.TagKey"
-//  LIMITEXCEEDED_APPLICATION = "LimitExceeded.Application"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNAUTHORIZEDOPERATION_CREATEAPPDENIED = "UnauthorizedOperation.CreateAppDenied"
-//  UNAUTHORIZEDOPERATION_UNREALNAMEAUTH = "UnauthorizedOperation.UnRealNameAuth"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  LIMITEXCEEDED = "LimitExceeded"
 func (c *Client) DeleteScanUserWithContext(ctx context.Context, request *DeleteScanUserRequest) (response *DeleteScanUserResponse, err error) {
     if request == nil {
         request = NewDeleteScanUserRequest()
@@ -872,6 +926,91 @@ func (c *Client) DescribeUserInAndOutTimeWithContext(ctx context.Context, reques
     return
 }
 
+func NewGetCustomizationListRequest() (request *GetCustomizationListRequest) {
+    request = &GetCustomizationListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("gme", APIVersion, "GetCustomizationList")
+    
+    
+    return
+}
+
+func NewGetCustomizationListResponse() (response *GetCustomizationListResponse) {
+    response = &GetCustomizationListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// GetCustomizationList
+// 查询语音消息转文本自学习模型列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_LOGINFAILED = "FailedOperation.LoginFailed"
+//  FAILEDOPERATION_USERFEENEGATIVE = "FailedOperation.UserFeeNegative"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CALLBACKADDRESS = "InvalidParameter.CallbackAddress"
+//  INVALIDPARAMETER_DATEINVALID = "InvalidParameter.DateInvalid"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_BIZIDISNOTFOUND = "ResourceNotFound.BizidIsNotFound"
+//  RESOURCENOTFOUND_TASKNOTFOUND = "ResourceNotFound.TaskNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_CREATEAPPDENIED = "UnauthorizedOperation.CreateAppDenied"
+//  UNAUTHORIZEDOPERATION_UNREALNAMEAUTH = "UnauthorizedOperation.UnRealNameAuth"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) GetCustomizationList(request *GetCustomizationListRequest) (response *GetCustomizationListResponse, err error) {
+    return c.GetCustomizationListWithContext(context.Background(), request)
+}
+
+// GetCustomizationList
+// 查询语音消息转文本自学习模型列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_LOGINFAILED = "FailedOperation.LoginFailed"
+//  FAILEDOPERATION_USERFEENEGATIVE = "FailedOperation.UserFeeNegative"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CALLBACKADDRESS = "InvalidParameter.CallbackAddress"
+//  INVALIDPARAMETER_DATEINVALID = "InvalidParameter.DateInvalid"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_BIZIDISNOTFOUND = "ResourceNotFound.BizidIsNotFound"
+//  RESOURCENOTFOUND_TASKNOTFOUND = "ResourceNotFound.TaskNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_CREATEAPPDENIED = "UnauthorizedOperation.CreateAppDenied"
+//  UNAUTHORIZEDOPERATION_UNREALNAMEAUTH = "UnauthorizedOperation.UnRealNameAuth"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) GetCustomizationListWithContext(ctx context.Context, request *GetCustomizationListRequest) (response *GetCustomizationListResponse, err error) {
+    if request == nil {
+        request = NewGetCustomizationListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetCustomizationList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetCustomizationListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyAppStatusRequest() (request *ModifyAppStatusRequest) {
     request = &ModifyAppStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -933,6 +1072,100 @@ func (c *Client) ModifyAppStatusWithContext(ctx context.Context, request *Modify
     request.SetContext(ctx)
     
     response = NewModifyAppStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyCustomizationRequest() (request *ModifyCustomizationRequest) {
+    request = &ModifyCustomizationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("gme", APIVersion, "ModifyCustomization")
+    
+    
+    return
+}
+
+func NewModifyCustomizationResponse() (response *ModifyCustomizationResponse) {
+    response = &ModifyCustomizationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyCustomization
+// 用户通过该接口可以更新语音消息转文本自学习模型。
+//
+// 可能返回的错误码:
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) ModifyCustomization(request *ModifyCustomizationRequest) (response *ModifyCustomizationResponse, err error) {
+    return c.ModifyCustomizationWithContext(context.Background(), request)
+}
+
+// ModifyCustomization
+// 用户通过该接口可以更新语音消息转文本自学习模型。
+//
+// 可能返回的错误码:
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) ModifyCustomizationWithContext(ctx context.Context, request *ModifyCustomizationRequest) (response *ModifyCustomizationResponse, err error) {
+    if request == nil {
+        request = NewModifyCustomizationRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyCustomization require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyCustomizationResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyCustomizationStateRequest() (request *ModifyCustomizationStateRequest) {
+    request = &ModifyCustomizationStateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("gme", APIVersion, "ModifyCustomizationState")
+    
+    
+    return
+}
+
+func NewModifyCustomizationStateResponse() (response *ModifyCustomizationStateResponse) {
+    response = &ModifyCustomizationStateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyCustomizationState
+// 通过该接口，用户可以修改语音消息转文本自学习模型状态，上下线自学习模型
+//
+// 可能返回的错误码:
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) ModifyCustomizationState(request *ModifyCustomizationStateRequest) (response *ModifyCustomizationStateResponse, err error) {
+    return c.ModifyCustomizationStateWithContext(context.Background(), request)
+}
+
+// ModifyCustomizationState
+// 通过该接口，用户可以修改语音消息转文本自学习模型状态，上下线自学习模型
+//
+// 可能返回的错误码:
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) ModifyCustomizationStateWithContext(ctx context.Context, request *ModifyCustomizationStateRequest) (response *ModifyCustomizationStateResponse, err error) {
+    if request == nil {
+        request = NewModifyCustomizationStateRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyCustomizationState require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyCustomizationStateResponse()
     err = c.Send(request, response)
     return
 }

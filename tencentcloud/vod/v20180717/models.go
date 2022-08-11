@@ -7031,6 +7031,90 @@ func (r *DescribeCdnLogsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeClientUploadAccelerationUsageDataRequestParams struct {
+	// 起始日期。使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#52)。
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束日期，需大于等于起始日期。使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#52)。
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// <b>点播 [子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+
+	// 客户端上传加速类型，取值有：
+	// <li> AccelerationWithHTTP：HTTP 传输方式的上传加速。</li>
+	// <li> AccelerationWithQUIC：QUIC 传输方式的上传加速。</li>
+	// 默认查询所有加速类型的用量 。
+	Type *string `json:"Type,omitempty" name:"Type"`
+}
+
+type DescribeClientUploadAccelerationUsageDataRequest struct {
+	*tchttp.BaseRequest
+	
+	// 起始日期。使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#52)。
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束日期，需大于等于起始日期。使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#52)。
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// <b>点播 [子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+
+	// 客户端上传加速类型，取值有：
+	// <li> AccelerationWithHTTP：HTTP 传输方式的上传加速。</li>
+	// <li> AccelerationWithQUIC：QUIC 传输方式的上传加速。</li>
+	// 默认查询所有加速类型的用量 。
+	Type *string `json:"Type,omitempty" name:"Type"`
+}
+
+func (r *DescribeClientUploadAccelerationUsageDataRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeClientUploadAccelerationUsageDataRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "SubAppId")
+	delete(f, "Type")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeClientUploadAccelerationUsageDataRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeClientUploadAccelerationUsageDataResponseParams struct {
+	// 客户端上传加速统计数据。
+	ClientUploadAccelerationUsageDataSet []*StatDataItem `json:"ClientUploadAccelerationUsageDataSet,omitempty" name:"ClientUploadAccelerationUsageDataSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeClientUploadAccelerationUsageDataResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeClientUploadAccelerationUsageDataResponseParams `json:"Response"`
+}
+
+func (r *DescribeClientUploadAccelerationUsageDataResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeClientUploadAccelerationUsageDataResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeContentReviewTemplatesRequestParams struct {
 	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
@@ -10200,6 +10284,7 @@ type EventContent struct {
 	// <li>WechatPublishComplete：微信发布完成；</li>
 	// <li>ComposeMediaComplete：制作媒体文件完成；</li>
 	// <li>WechatMiniProgramPublishComplete：微信小程序发布完成。</li>
+	// <li>FastClipMediaComplete：快速剪辑完成。</li>
 	// <b>兼容 2017 版的事件类型：</b>
 	// <li>TranscodeComplete：视频转码完成；</li>
 	// <li>ConcatComplete：视频拼接完成；</li>
@@ -17983,23 +18068,23 @@ type TranscodeTaskInput struct {
 	// 溯源水印。
 	TraceWatermark *TraceWatermarkInput `json:"TraceWatermark,omitempty" name:"TraceWatermark"`
 
-	// 片头片尾列表，支持多片头片尾，最大可支持 10 个。
-	HeadTailSet []*HeadTailTaskInput `json:"HeadTailSet,omitempty" name:"HeadTailSet"`
-
 	// 马赛克列表，最大可支持 10 张。
 	MosaicSet []*MosaicInput `json:"MosaicSet,omitempty" name:"MosaicSet"`
 
-	// 转码后视频的终止时间偏移，单位：秒。
-	// <li>不填或填0，表示转码后的视频持续到原始视频的末尾终止；</li>
-	// <li>当数值大于0时（假设为 n），表示转码后的视频持续到原始视频第 n 秒时终止；</li>
-	// <li>当数值小于0时（假设为 -n），表示转码后的视频持续到原始视频结束 n 秒前终止。</li>
-	EndTimeOffset *float64 `json:"EndTimeOffset,omitempty" name:"EndTimeOffset"`
+	// 片头片尾列表，支持多片头片尾，最大可支持 10 个。
+	HeadTailSet []*HeadTailTaskInput `json:"HeadTailSet,omitempty" name:"HeadTailSet"`
 
 	// 转码后的视频的起始时间偏移，单位：秒。
 	// <li>不填或填0，表示转码后的视频从原始视频的起始位置开始；</li>
 	// <li>当数值大于0时（假设为 n），表示转码后的视频从原始视频的第 n 秒位置开始；</li>
 	// <li>当数值小于0时（假设为 -n），表示转码后的视频从原始视频结束 n 秒前的位置开始。</li>
 	StartTimeOffset *float64 `json:"StartTimeOffset,omitempty" name:"StartTimeOffset"`
+
+	// 转码后视频的终止时间偏移，单位：秒。
+	// <li>不填或填0，表示转码后的视频持续到原始视频的末尾终止；</li>
+	// <li>当数值大于0时（假设为 n），表示转码后的视频持续到原始视频第 n 秒时终止；</li>
+	// <li>当数值小于0时（假设为 -n），表示转码后的视频持续到原始视频结束 n 秒前终止。</li>
+	EndTimeOffset *float64 `json:"EndTimeOffset,omitempty" name:"EndTimeOffset"`
 }
 
 type TranscodeTemplate struct {

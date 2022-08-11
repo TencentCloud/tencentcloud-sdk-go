@@ -721,6 +721,12 @@ type CreateBasicDBInstancesRequestParams struct {
 
 	// 新建实例绑定的标签集合
 	ResourceTags []*ResourceTag `json:"ResourceTags,omitempty" name:"ResourceTags"`
+
+	// 系统字符集排序规则，默认：Chinese_PRC_CI_AS
+	Collation *string `json:"Collation,omitempty" name:"Collation"`
+
+	// 系统时区，默认：China Standard Time
+	TimeZone *string `json:"TimeZone,omitempty" name:"TimeZone"`
 }
 
 type CreateBasicDBInstancesRequest struct {
@@ -785,6 +791,12 @@ type CreateBasicDBInstancesRequest struct {
 
 	// 新建实例绑定的标签集合
 	ResourceTags []*ResourceTag `json:"ResourceTags,omitempty" name:"ResourceTags"`
+
+	// 系统字符集排序规则，默认：Chinese_PRC_CI_AS
+	Collation *string `json:"Collation,omitempty" name:"Collation"`
+
+	// 系统时区，默认：China Standard Time
+	TimeZone *string `json:"TimeZone,omitempty" name:"TimeZone"`
 }
 
 func (r *CreateBasicDBInstancesRequest) ToJsonString() string {
@@ -819,6 +831,8 @@ func (r *CreateBasicDBInstancesRequest) FromJsonString(s string) error {
 	delete(f, "StartTime")
 	delete(f, "Span")
 	delete(f, "ResourceTags")
+	delete(f, "Collation")
+	delete(f, "TimeZone")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateBasicDBInstancesRequest has unknown keys!", "")
 	}
@@ -911,6 +925,12 @@ type CreateDBInstancesRequestParams struct {
 
 	// 新建实例绑定的标签集合
 	ResourceTags []*ResourceTag `json:"ResourceTags,omitempty" name:"ResourceTags"`
+
+	// 系统字符集排序规则，默认：Chinese_PRC_CI_AS
+	Collation *string `json:"Collation,omitempty" name:"Collation"`
+
+	// 系统时区，默认：China Standard Time
+	TimeZone *string `json:"TimeZone,omitempty" name:"TimeZone"`
 }
 
 type CreateDBInstancesRequest struct {
@@ -975,6 +995,12 @@ type CreateDBInstancesRequest struct {
 
 	// 新建实例绑定的标签集合
 	ResourceTags []*ResourceTag `json:"ResourceTags,omitempty" name:"ResourceTags"`
+
+	// 系统字符集排序规则，默认：Chinese_PRC_CI_AS
+	Collation *string `json:"Collation,omitempty" name:"Collation"`
+
+	// 系统时区，默认：China Standard Time
+	TimeZone *string `json:"TimeZone,omitempty" name:"TimeZone"`
 }
 
 func (r *CreateDBInstancesRequest) ToJsonString() string {
@@ -1009,6 +1035,8 @@ func (r *CreateDBInstancesRequest) FromJsonString(s string) error {
 	delete(f, "HAType")
 	delete(f, "MultiZones")
 	delete(f, "ResourceTags")
+	delete(f, "Collation")
+	delete(f, "TimeZone")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDBInstancesRequest has unknown keys!", "")
 	}
@@ -1423,6 +1451,12 @@ type CreateReadOnlyDBInstancesRequestParams struct {
 
 	// 新建实例绑定的标签集合
 	ResourceTags []*ResourceTag `json:"ResourceTags,omitempty" name:"ResourceTags"`
+
+	// 系统字符集排序规则，默认：Chinese_PRC_CI_AS
+	Collation *string `json:"Collation,omitempty" name:"Collation"`
+
+	// 系统时区，默认：China Standard Time
+	TimeZone *string `json:"TimeZone,omitempty" name:"TimeZone"`
 }
 
 type CreateReadOnlyDBInstancesRequest struct {
@@ -1487,6 +1521,12 @@ type CreateReadOnlyDBInstancesRequest struct {
 
 	// 新建实例绑定的标签集合
 	ResourceTags []*ResourceTag `json:"ResourceTags,omitempty" name:"ResourceTags"`
+
+	// 系统字符集排序规则，默认：Chinese_PRC_CI_AS
+	Collation *string `json:"Collation,omitempty" name:"Collation"`
+
+	// 系统时区，默认：China Standard Time
+	TimeZone *string `json:"TimeZone,omitempty" name:"TimeZone"`
 }
 
 func (r *CreateReadOnlyDBInstancesRequest) ToJsonString() string {
@@ -1521,6 +1561,8 @@ func (r *CreateReadOnlyDBInstancesRequest) FromJsonString(s string) error {
 	delete(f, "AutoVoucher")
 	delete(f, "VoucherIds")
 	delete(f, "ResourceTags")
+	delete(f, "Collation")
+	delete(f, "TimeZone")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateReadOnlyDBInstancesRequest has unknown keys!", "")
 	}
@@ -1759,6 +1801,12 @@ type DBInstance struct {
 
 	// 外网端口号
 	TgwWanVPort *int64 `json:"TgwWanVPort,omitempty" name:"TgwWanVPort"`
+
+	// 系统字符集排序规则，默认：Chinese_PRC_CI_AS
+	Collation *string `json:"Collation,omitempty" name:"Collation"`
+
+	// 系统时区，默认：China Standard Time
+	TimeZone *string `json:"TimeZone,omitempty" name:"TimeZone"`
 }
 
 type DBPrivilege struct {

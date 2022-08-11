@@ -421,65 +421,6 @@ func (c *Client) DescribeAsyncRequestInfoWithContext(ctx context.Context, reques
     return
 }
 
-func NewDescribeBackupAccessRequest() (request *DescribeBackupAccessRequest) {
-    request = &DescribeBackupAccessRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    request.Init().WithApiInfo("mongodb", APIVersion, "DescribeBackupAccess")
-    
-    
-    return
-}
-
-func NewDescribeBackupAccessResponse() (response *DescribeBackupAccessResponse) {
-    response = &DescribeBackupAccessResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// DescribeBackupAccess
-// 备份下载功能已调整，此接口即将下线
-//
-// 
-//
-// 本接口（DescribeBackupAccess）用于获取备份文件的下载授权，具体的备份文件信息可通过查询实例备份列表（DescribeDBBackups）接口获取
-//
-// 可能返回的错误码:
-//  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
-//  INVALIDPARAMETERVALUE_BACKUPFILENOTFOUND = "InvalidParameterValue.BackupFileNotFound"
-//  INVALIDPARAMETERVALUE_NOTFOUNDINSTANCE = "InvalidParameterValue.NotFoundInstance"
-func (c *Client) DescribeBackupAccess(request *DescribeBackupAccessRequest) (response *DescribeBackupAccessResponse, err error) {
-    return c.DescribeBackupAccessWithContext(context.Background(), request)
-}
-
-// DescribeBackupAccess
-// 备份下载功能已调整，此接口即将下线
-//
-// 
-//
-// 本接口（DescribeBackupAccess）用于获取备份文件的下载授权，具体的备份文件信息可通过查询实例备份列表（DescribeDBBackups）接口获取
-//
-// 可能返回的错误码:
-//  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
-//  INVALIDPARAMETERVALUE_BACKUPFILENOTFOUND = "InvalidParameterValue.BackupFileNotFound"
-//  INVALIDPARAMETERVALUE_NOTFOUNDINSTANCE = "InvalidParameterValue.NotFoundInstance"
-func (c *Client) DescribeBackupAccessWithContext(ctx context.Context, request *DescribeBackupAccessRequest) (response *DescribeBackupAccessResponse, err error) {
-    if request == nil {
-        request = NewDescribeBackupAccessRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeBackupAccess require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeBackupAccessResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewDescribeBackupDownloadTaskRequest() (request *DescribeBackupDownloadTaskRequest) {
     request = &DescribeBackupDownloadTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},

@@ -122,10 +122,6 @@ type InputKolDataList struct {
 	IsAuthorized *uint64 `json:"IsAuthorized,omitempty" name:"IsAuthorized"`
 }
 
-type InputRecognizeEffectiveFlow struct {
-
-}
-
 type InputRecognizeTargetAudience struct {
 	// 模型ID列表
 	ModelIdList []*int64 `json:"ModelIdList,omitempty" name:"ModelIdList"`
@@ -303,30 +299,6 @@ type OutputKolValue struct {
 	EvilPScore *int64 `json:"EvilPScore,omitempty" name:"EvilPScore"`
 }
 
-type OutputRecognizeEffectiveFlow struct {
-	// 返回码。0表示成功，非0标识失败错误码
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Code *int64 `json:"Code,omitempty" name:"Code"`
-
-	// UTF-8编码，出错消息。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Message *string `json:"Message,omitempty" name:"Message"`
-
-	// 业务入参
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Value *OutputRecognizeEffectiveFlowValue `json:"Value,omitempty" name:"Value"`
-}
-
-type OutputRecognizeEffectiveFlowValue struct {
-	// 返回标签
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Lable *string `json:"Lable,omitempty" name:"Lable"`
-
-	// 返回分值
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Score *float64 `json:"Score,omitempty" name:"Score"`
-}
-
 type OutputRecognizeTargetAudience struct {
 	// 返回码（0，成功，其他失败）
 	Code *int64 `json:"Code,omitempty" name:"Code"`
@@ -422,63 +394,6 @@ func (r *RecognizeCustomizedAudienceResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *RecognizeCustomizedAudienceResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type RecognizeEffectiveFlowRequestParams struct {
-	// 业务入参
-	BusinessSecurityData *InputRecognizeEffectiveFlow `json:"BusinessSecurityData,omitempty" name:"BusinessSecurityData"`
-}
-
-type RecognizeEffectiveFlowRequest struct {
-	*tchttp.BaseRequest
-	
-	// 业务入参
-	BusinessSecurityData *InputRecognizeEffectiveFlow `json:"BusinessSecurityData,omitempty" name:"BusinessSecurityData"`
-}
-
-func (r *RecognizeEffectiveFlowRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *RecognizeEffectiveFlowRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "BusinessSecurityData")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RecognizeEffectiveFlowRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type RecognizeEffectiveFlowResponseParams struct {
-	// 业务出参
-	Data *OutputRecognizeEffectiveFlow `json:"Data,omitempty" name:"Data"`
-
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-}
-
-type RecognizeEffectiveFlowResponse struct {
-	*tchttp.BaseResponse
-	Response *RecognizeEffectiveFlowResponseParams `json:"Response"`
-}
-
-func (r *RecognizeEffectiveFlowResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *RecognizeEffectiveFlowResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
