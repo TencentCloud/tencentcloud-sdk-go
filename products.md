@@ -86,7 +86,7 @@
 | eis | [企业集成服务](https://cloud.tencent.com/document/product/1270) | 2022-06-16 06:06:58 |
 | emr | [弹性 MapReduce](https://cloud.tencent.com/document/product/589) | 2022-07-28 06:11:30 |
 | es | [Elasticsearch Service](https://cloud.tencent.com/document/product/845) | 2022-08-03 06:23:52 |
-| ess | [电子签服务](https://cloud.tencent.com/document/product/1323) | 2022-08-11 07:02:49 |
+| ess | [电子签服务](https://cloud.tencent.com/document/product/1323) | 2022-08-11 22:36:30 |
 | essbasic | [腾讯电子签（基础版）](https://cloud.tencent.com/document/product/1420) | 2022-08-11 15:03:00 |
 | facefusion | [人脸融合](https://cloud.tencent.com/document/product/670) | 2022-06-15 06:09:10 |
 | faceid | [人脸核身](https://cloud.tencent.com/document/product/1007) | 2022-08-11 06:31:43 |
@@ -135,7 +135,7 @@
 | nlp | [自然语言处理](https://cloud.tencent.com/document/product/271) | 2022-04-13 07:00:13 |
 | npp | [号码保护](https://cloud.tencent.com/document/product) | 2020-04-22 08:00:22 |
 | oceanus | [流计算 Oceanus](https://cloud.tencent.com/document/product/849) | 2022-07-26 06:19:20 |
-| ocr | [文字识别](https://cloud.tencent.com/document/product/866) | 2022-08-11 07:04:35 |
+| ocr | [文字识别](https://cloud.tencent.com/document/product/866) | 2022-08-12 11:13:38 |
 | organization | [企业组织](https://cloud.tencent.com/document/product/850) | 2022-07-21 06:14:50 |
 | partners | [渠道合作伙伴](https://cloud.tencent.com/document/product/563) | 2022-06-13 06:15:36 |
 | pds | [私域安全](https://cloud.tencent.com/document/product/1473) | 2022-04-04 07:02:02 |
@@ -180,7 +180,7 @@
 | tdcpg | [TDSQL-C PostgreSQL 版](https://cloud.tencent.com/document/product/1556) | 2022-07-05 06:21:49 |
 | tdid | [分布式身份](https://cloud.tencent.com/document/product/1439) | 2022-04-04 07:15:50 |
 | tdmq | [分布式消息队列](https://cloud.tencent.com/document/product/1179) | 2022-07-29 06:15:49 |
-| tem | [弹性微服务](https://cloud.tencent.com/document/product/1371) | 2022-08-11 15:11:54 |
+| tem | [弹性微服务](https://cloud.tencent.com/document/product/1371) | 2022-08-12 11:47:08 |
 | teo | [边缘安全加速平台](https://cloud.tencent.com/document/product/1552) | 2022-08-11 06:53:53 |
 | thpc | [高性能计算平台](https://cloud.tencent.com/document/product/1527) | 2022-06-02 06:15:03 |
 | tia | [智能钛机器学习](https://cloud.tencent.com/document/product/851) | 2021-10-21 11:12:52 |

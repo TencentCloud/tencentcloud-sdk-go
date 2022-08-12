@@ -35,7 +35,7 @@ const (
 	// 模板签署人不存在。
 	FAILEDOPERATION_QRCODESIGNUSERS = "FailedOperation.QrCodeSignUsers"
 
-	// 一码多人二维码模板有误。
+	// 签署二维码模板信息有误，请检查参数后重试。
 	FAILEDOPERATION_QRCODETEMPLATEID = "FailedOperation.QrCodeTemplateId"
 
 	// 员工已实名。
@@ -131,7 +131,7 @@ const (
 	// 流程配额不足。
 	OPERATIONDENIED_NOQUOTA = "OperationDenied.NoQuota"
 
-	// 用户不在当前企业中。
+	// 用户不归属于当前企业，无法操作，请检查后重试。
 	OPERATIONDENIED_USERNOTINORGANIZATION = "OperationDenied.UserNotInOrganization"
 
 	// 资源不存在。

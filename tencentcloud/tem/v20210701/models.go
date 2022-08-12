@@ -1215,12 +1215,16 @@ type DeployApplicationRequestParams struct {
 	// - TENCENTOS
 	OsFlavour *string `json:"OsFlavour,omitempty" name:"OsFlavour"`
 
-	// 是否开启prometheus 业务指标监控
+	// metrics业务指标监控配置
 	EnablePrometheusConf *EnablePrometheusConf `json:"EnablePrometheusConf,omitempty" name:"EnablePrometheusConf"`
 
-	// 1：开始apm采集（skywalking）；
+	// 1：开始自动apm采集（skywalking）；
 	// 0：关闭apm采集；
 	EnableTracing *int64 `json:"EnableTracing,omitempty" name:"EnableTracing"`
+
+	// 1：开始自动metrics采集（open-telemetry）；
+	// 0：关闭metrics采集；
+	EnableMetrics *int64 `json:"EnableMetrics,omitempty" name:"EnableMetrics"`
 }
 
 type DeployApplicationRequest struct {
@@ -1357,12 +1361,16 @@ type DeployApplicationRequest struct {
 	// - TENCENTOS
 	OsFlavour *string `json:"OsFlavour,omitempty" name:"OsFlavour"`
 
-	// 是否开启prometheus 业务指标监控
+	// metrics业务指标监控配置
 	EnablePrometheusConf *EnablePrometheusConf `json:"EnablePrometheusConf,omitempty" name:"EnablePrometheusConf"`
 
-	// 1：开始apm采集（skywalking）；
+	// 1：开始自动apm采集（skywalking）；
 	// 0：关闭apm采集；
 	EnableTracing *int64 `json:"EnableTracing,omitempty" name:"EnableTracing"`
+
+	// 1：开始自动metrics采集（open-telemetry）；
+	// 0：关闭metrics采集；
+	EnableMetrics *int64 `json:"EnableMetrics,omitempty" name:"EnableMetrics"`
 }
 
 func (r *DeployApplicationRequest) ToJsonString() string {
@@ -1418,6 +1426,7 @@ func (r *DeployApplicationRequest) FromJsonString(s string) error {
 	delete(f, "OsFlavour")
 	delete(f, "EnablePrometheusConf")
 	delete(f, "EnableTracing")
+	delete(f, "EnableMetrics")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeployApplicationRequest has unknown keys!", "")
 	}

@@ -1,3 +1,63 @@
+# Release v1.0.473
+
+## 电子签服务(ess) 版本：2020-11-11
+
+### 第 14 次发布
+
+发布时间：2022-08-11 22:36:30
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateFlowSignReview](https://cloud.tencent.com/document/api/1323/78980)
+
+
+
+## 文字识别(ocr) 版本：2018-11-19
+
+### 第 74 次发布
+
+发布时间：2022-08-12 11:13:38
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [SingleInvoiceInfo](https://cloud.tencent.com/document/api/866/33527#SingleInvoiceInfo)
+
+	* 新增成员：Row
+
+
+
+
+## 弹性微服务(tem) 版本：2021-07-01
+
+### 第 28 次发布
+
+发布时间：2022-08-12 11:47:08
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DeployApplication](https://cloud.tencent.com/document/api/1371/60158)
+
+	* 新增入参：EnableMetrics
+
+
+
+
+## 弹性微服务(tem) 版本：2020-12-21
+
+
+
 # Release v1.0.472
 
 ## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26

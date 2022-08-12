@@ -1,10 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
+## 电子签服务(ess) 版本：2020-11-11
 
-### 第 27 次发布
+### 第 14 次发布
 
-发布时间：2022-08-11 15:03:00
+发布时间：2022-08-11 22:36:30
 
 本次发布包含了以下内容：
 
@@ -12,28 +12,45 @@
 
 新增接口：
 
-* [ChannelCreateFlowSignReview](https://cloud.tencent.com/document/api/1420/78953)
+* [CreateFlowSignReview](https://cloud.tencent.com/document/api/1323/78980)
 
 
 
-## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
+## 文字识别(ocr) 版本：2018-11-19
+
+### 第 74 次发布
+
+发布时间：2022-08-12 11:13:38
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [SingleInvoiceInfo](https://cloud.tencent.com/document/api/866/33527#SingleInvoiceInfo)
+
+	* 新增成员：Row
+
 
 
 
 ## 弹性微服务(tem) 版本：2021-07-01
 
-### 第 27 次发布
+### 第 28 次发布
 
-发布时间：2022-08-11 15:11:54
+发布时间：2022-08-12 11:47:08
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-新增接口：
+修改接口：
 
-* [DisableApplicationAutoscaler](https://cloud.tencent.com/document/api/1371/78955)
-* [EnableApplicationAutoscaler](https://cloud.tencent.com/document/api/1371/78954)
+* [DeployApplication](https://cloud.tencent.com/document/api/1371/60158)
+
+	* 新增入参：EnableMetrics
+
 
 
 
@@ -36666,6 +36683,18 @@
 
 ## 电子签服务(ess) 版本：2020-11-11
 
+### 第 14 次发布
+
+发布时间：2022-08-11 22:36:30
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateFlowSignReview](https://cloud.tencent.com/document/api/1323/78980)](https://cloud.tencent.com/document/api/#/#)
+
 ### 第 13 次发布
 
 发布时间：2022-08-11 07:02:49
@@ -37035,7 +37064,7 @@
 
 新增接口：
 
-* [[ChannelCreateFlowSignReview](https://cloud.tencent.com/document/api/1420/78953)](https://cloud.tencent.com/document/api/#/#)
+* [ChannelCreateFlowSignReview](https://cloud.tencent.com/document/api/1420/78953)
 
 ### 第 26 次发布
 
@@ -55121,6 +55150,21 @@
 
 ## 文字识别(ocr) 版本：2018-11-19
 
+### 第 74 次发布
+
+发布时间：2022-08-12 11:13:38
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [SingleInvoiceInfo](https://cloud.tencent.com/document/api/866/33527#SingleInvoiceInfo)
+
+	* 新增成员：Row
+
+
 ### 第 73 次发布
 
 发布时间：2022-07-19 06:15:45
@@ -70643,6 +70687,21 @@
 
 ## 弹性微服务(tem) 版本：2021-07-01
 
+### 第 28 次发布
+
+发布时间：2022-08-12 11:47:08
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DeployApplication](https://cloud.tencent.com/document/api/1371/60158)
+
+	* 新增入参：EnableMetrics
+
+
 ### 第 27 次发布
 
 发布时间：2022-08-11 15:11:54
@@ -70653,8 +70712,8 @@
 
 新增接口：
 
-* [[DisableApplicationAutoscaler](https://cloud.tencent.com/document/api/1371/78955)](https://cloud.tencent.com/document/api/#/#)
-* [[EnableApplicationAutoscaler](https://cloud.tencent.com/document/api/1371/78954)](https://cloud.tencent.com/document/api/#/#)
+* [DisableApplicationAutoscaler](https://cloud.tencent.com/document/api/1371/78955)
+* [EnableApplicationAutoscaler](https://cloud.tencent.com/document/api/1371/78954)
 
 ### 第 26 次发布
 
