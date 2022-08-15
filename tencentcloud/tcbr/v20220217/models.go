@@ -1084,6 +1084,9 @@ type ServerBaseInfo struct {
 
 	// 更新时间
 	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+
+	// 公网访问类型
+	AccessTypes []*string `json:"AccessTypes,omitempty" name:"AccessTypes"`
 }
 
 type ServerManageTaskInfo struct {

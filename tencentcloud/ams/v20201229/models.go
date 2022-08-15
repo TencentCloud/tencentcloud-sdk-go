@@ -114,6 +114,24 @@ type AudioResultDetailMoanResult struct {
 	SubLabel *string `json:"SubLabel,omitempty" name:"SubLabel"`
 }
 
+type AudioResultDetailSpeakerResult struct {
+	// 该字段用于返回检测结果需要检测的内容类型。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Label *string `json:"Label,omitempty" name:"Label"`
+
+	// 该字段用于返回呻吟检测的置信度，取值范围：0（置信度最低）-100（置信度最高），越高代表音频越有可能属于说话人声纹。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Score *int64 `json:"Score,omitempty" name:"Score"`
+
+	// 该字段用于返回对应说话人的片段在音频文件内的开始时间，单位为毫秒。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StartTime *float64 `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 该字段用于返回对应说话人的片段在音频文件内的结束时间，单位为毫秒。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EndTime *float64 `json:"EndTime,omitempty" name:"EndTime"`
+}
+
 type AudioResultDetailTextResult struct {
 	// 该字段用于返回检测结果所对应的恶意标签。<br>返回值：**Normal**：正常，**Porn**：色情，**Abuse**：谩骂，**Ad**：广告，**Custom**：自定义违规；以及其他令人反感、不安全或不适宜的内容类型。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -231,19 +249,19 @@ type CreateAudioModerationSyncTaskRequestParams struct {
 	// 数据标识，可以由英文字母、数字、下划线、-、@#组成，不超过64个字符
 	DataId *string `json:"DataId,omitempty" name:"DataId"`
 
-	// 音频文件资源格式，当前为mp3，wav，请按照实际文件格式填入
+	// 音频文件资源格式，当前支持格式：wav、mp3、m4a，请按照实际文件格式填入。
 	FileFormat *string `json:"FileFormat,omitempty" name:"FileFormat"`
 
 	// 文件名称，可以由英文字母、数字、下划线、-、@#组成，不超过64个字符
 	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 数据Base64编码，短音频同步接口仅传入可音频内容；
-	// 支持范围：文件大小不能超过5M，时长不可超过60s，码率范围为8-16Kbps；
-	// 支持格式：wav、mp3
+	// 支持范围：文件大小不能超过5M，时长不可超过60s；
+	// 支持格式：wav (PCM编码)、mp3、m4a (采样率：16kHz~48kHz，位深：16bit 小端，声道数：单声道/双声道，建议格式：16kHz/16bit/单声道)。
 	FileContent *string `json:"FileContent,omitempty" name:"FileContent"`
 
 	// 音频资源访问链接，与FileContent参数必须二选一输入；
-	// 支持范围：同FileContent；
+	// 支持范围及格式：同FileContent；
 	FileUrl *string `json:"FileUrl,omitempty" name:"FileUrl"`
 }
 
@@ -256,19 +274,19 @@ type CreateAudioModerationSyncTaskRequest struct {
 	// 数据标识，可以由英文字母、数字、下划线、-、@#组成，不超过64个字符
 	DataId *string `json:"DataId,omitempty" name:"DataId"`
 
-	// 音频文件资源格式，当前为mp3，wav，请按照实际文件格式填入
+	// 音频文件资源格式，当前支持格式：wav、mp3、m4a，请按照实际文件格式填入。
 	FileFormat *string `json:"FileFormat,omitempty" name:"FileFormat"`
 
 	// 文件名称，可以由英文字母、数字、下划线、-、@#组成，不超过64个字符
 	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 数据Base64编码，短音频同步接口仅传入可音频内容；
-	// 支持范围：文件大小不能超过5M，时长不可超过60s，码率范围为8-16Kbps；
-	// 支持格式：wav、mp3
+	// 支持范围：文件大小不能超过5M，时长不可超过60s；
+	// 支持格式：wav (PCM编码)、mp3、m4a (采样率：16kHz~48kHz，位深：16bit 小端，声道数：单声道/双声道，建议格式：16kHz/16bit/单声道)。
 	FileContent *string `json:"FileContent,omitempty" name:"FileContent"`
 
 	// 音频资源访问链接，与FileContent参数必须二选一输入；
-	// 支持范围：同FileContent；
+	// 支持范围及格式：同FileContent；
 	FileUrl *string `json:"FileUrl,omitempty" name:"FileUrl"`
 }
 
@@ -331,6 +349,23 @@ type CreateAudioModerationSyncTaskResponseParams struct {
 	// 音频中低俗内容审核结果；
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MoanResults []*MoanResult `json:"MoanResults,omitempty" name:"MoanResults"`
+
+	// 该字段用于返回当前标签（Lable）下的二级标签。
+	// 注意：此字段可能返回null，表示取不到有效值。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubLabel *string `json:"SubLabel,omitempty" name:"SubLabel"`
+
+	// 该字段用于返回音频小语种检测的详细审核结果。具体结果内容请参见AudioResultDetailLanguageResult数据结构的细节描述。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LanguageResults []*AudioResultDetailLanguageResult `json:"LanguageResults,omitempty" name:"LanguageResults"`
+
+	// 音频中说话人识别返回结果；
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SpeakerResults []*AudioResultDetailSpeakerResult `json:"SpeakerResults,omitempty" name:"SpeakerResults"`
+
+	// 识别类标签结果信息列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RecognitionResults []*RecognitionResult `json:"RecognitionResults,omitempty" name:"RecognitionResults"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`

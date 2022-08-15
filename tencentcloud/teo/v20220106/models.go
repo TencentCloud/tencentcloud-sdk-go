@@ -99,123 +99,120 @@ type AiRule struct {
 }
 
 type ApplicationProxy struct {
-	// 代理ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 代理ID。
 	ProxyId *string `json:"ProxyId,omitempty" name:"ProxyId"`
 
-	// 代理名称
-	// 当ProxyType=hostname时，表示域名或者子域名
-	// 当ProxyType=instance时，表示实例名称
+	// 当ProxyType=hostname时，表示域名或子域名；
+	// 当ProxyType=instance时，表示代理名称。
 	ProxyName *string `json:"ProxyName,omitempty" name:"ProxyName"`
 
-	// 调度模式：
-	// ip表示Anycast IP
-	// domain表示CNAME
+	// 调度模式，取值有：
+	// <li>ip：表示Anycast IP调度；</li>
+	// <li>domain：表示CNAME调度。</li>
 	PlatType *string `json:"PlatType,omitempty" name:"PlatType"`
 
-	// 0关闭安全，1开启安全
+	// 是否开启安全，取值有：
+	// <li>0：关闭安全；</li>
+	// <li>1：开启安全。</li>
 	SecurityType *int64 `json:"SecurityType,omitempty" name:"SecurityType"`
 
-	// 0关闭加速，1开启加速
+	// 是否开启加速，取值有：
+	// <li>0：关闭加速；</li>
+	// <li>1：开启加速。</li>
 	AccelerateType *int64 `json:"AccelerateType,omitempty" name:"AccelerateType"`
 
-	// 字段已经移至Rule.ForwardClientIp
+	// 字段已经废弃。
 	ForwardClientIp *string `json:"ForwardClientIp,omitempty" name:"ForwardClientIp"`
 
-	// 字段已经移至Rule.SessionPersist
+	// 字段已经废弃。
 	SessionPersist *bool `json:"SessionPersist,omitempty" name:"SessionPersist"`
 
-	// 规则列表
+	// 规则列表。
 	Rule []*ApplicationProxyRule `json:"Rule,omitempty" name:"Rule"`
 
-	// 状态：
-	// online：启用
-	// offline：停用
-	// progress：部署中
-	// stopping：停用中
-	// fail：部署失败/停用失败
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 状态，取值有：
+	// <li>online：启用；</li>
+	// <li>offline：停用；</li>
+	// <li>progress：部署中；</li>
+	// <li>stopping：停用中；</li>
+	// <li>fail：部署失败/停用失败。</li>
 	Status *string `json:"Status,omitempty" name:"Status"`
 
-	// 调度信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 调度信息。
 	ScheduleValue []*string `json:"ScheduleValue,omitempty" name:"ScheduleValue"`
 
-	// 更新时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 更新时间。
 	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
 
-	// 站点ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 站点ID。
 	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
 
-	// 站点名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 站点名称。
 	ZoneName *string `json:"ZoneName,omitempty" name:"ZoneName"`
 
-	// 会话保持时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 会话保持时间。
 	SessionPersistTime *uint64 `json:"SessionPersistTime,omitempty" name:"SessionPersistTime"`
 
-	// 服务类型
-	// hostname：子域名模式
-	// instance：实例模式
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 四层代理模式，取值有：
+	// <li>hostname：表示子域名模式；</li>
+	// <li>instance：表示实例模式。</li>
 	ProxyType *string `json:"ProxyType,omitempty" name:"ProxyType"`
 
 	// 当ProxyType=hostname时：
-	// ProxyName为域名，如：test.123.com
-	// HostId表示该域名，即test.123.com对应的代理加速唯一标识
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 表示代理加速唯一标识。
 	HostId *string `json:"HostId,omitempty" name:"HostId"`
+
+	// Ipv6访问配置。
+	Ipv6 *Ipv6Access `json:"Ipv6,omitempty" name:"Ipv6"`
 }
 
 type ApplicationProxyRule struct {
-	// 协议，取值为TCP或者UDP
+	// 协议，取值有：
+	// <li>TCP：TCP协议；</li>
+	// <li>UDP：UDP协议。</li>
 	Proto *string `json:"Proto,omitempty" name:"Proto"`
 
 	// 端口，支持格式：
-	// 80：80端口
-	// 81-90：81至90端口
+	// 单个端口，如：80。
+	// 端口段，如：81-82。表示81，82两个端口。
+	// 注意：一条规则最多可填写20个端口。
 	Port []*string `json:"Port,omitempty" name:"Port"`
 
-	// 源站类型，取值：
-	// custom：手动添加
-	// origins：源站组
+	// 源站类型，取值有：
+	// <li>custom：手动添加；</li>
+	// <li>origins：源站组。</li>
 	OriginType *string `json:"OriginType,omitempty" name:"OriginType"`
 
 	// 源站信息：
 	// 当OriginType=custom时，表示一个或多个源站，如：
 	// OriginValue=["8.8.8.8:80","9.9.9.9:80"]
-	// OriginValue=["test.com:80"]
-	// 
-	// 当OriginType=origins时，包含一个元素，表示源站组ID，如：
-	// OriginValue=["origin-xxx"]
+	// OriginValue=["test.com:80"]；
+	// 当OriginType=origins时，要求有且仅有一个元素，表示源站组ID，如：
+	// OriginValue=["origin-537f5b41-162a-11ed-abaa-525400c5da15"]。
 	OriginValue []*string `json:"OriginValue,omitempty" name:"OriginValue"`
 
-	// 规则ID
+	// 规则ID。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RuleId *string `json:"RuleId,omitempty" name:"RuleId"`
 
-	// 状态：
-	// online：启用
-	// offline：停用
-	// progress：部署中
-	// stopping：停用中
-	// fail：部署失败/停用失败
+	// 状态，取值有：
+	// <li>online：启用；</li>
+	// <li>offline：停用；</li>
+	// <li>progress：部署中；</li>
+	// <li>stopping：停用中；</li>
+	// <li>fail：部署失败/停用失败。</li>
 	Status *string `json:"Status,omitempty" name:"Status"`
 
-	// 传递客户端IP，当Proto=TCP时，取值：
-	// TOA：TOA
-	// PPV1: Proxy Protocol传递，协议版本V1
-	// PPV2: Proxy Protocol传递，协议版本V2
-	// OFF：不传递
-	// 当Proto=UDP时，取值：
-	// PPV2: Proxy Protocol传递，协议版本V2
-	// OFF：不传递
+	// 传递客户端IP，取值有：
+	// <li>TOA：TOA（仅Proto=TCP时可选）；</li>
+	// <li>PPV1：Proxy Protocol传递，协议版本V1（仅Proto=TCP时可选）；</li>
+	// <li>PPV2：Proxy Protocol传递，协议版本V2；</li>
+	// <li>OFF：不传递。</li>
 	ForwardClientIp *string `json:"ForwardClientIp,omitempty" name:"ForwardClientIp"`
 
-	// 是否开启会话保持
+	// 是否开启会话保持，取值有：
+	// <li>true：开启；</li>
+	// <li>false：关闭。</li>
 	SessionPersist *bool `json:"SessionPersist,omitempty" name:"SessionPersist"`
 }
 
@@ -532,75 +529,79 @@ type CCLogData struct {
 }
 
 type CacheConfig struct {
-	// 缓存配置
+	// 缓存配置。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Cache *CacheConfigCache `json:"Cache,omitempty" name:"Cache"`
 
-	// 不缓存配置
+	// 不缓存配置。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	NoCache *CacheConfigNoCache `json:"NoCache,omitempty" name:"NoCache"`
 
-	// 遵循源站配置
+	// 遵循源站配置。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FollowOrigin *CacheConfigFollowOrigin `json:"FollowOrigin,omitempty" name:"FollowOrigin"`
 }
 
 type CacheConfigCache struct {
-	// 缓存配置开关
-	// on：开启
-	// off：关闭
+	// 缓存配置开关，取值有：
+	// <li>on：开启；</li>
+	// <li>off：关闭。</li>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
 
-	// 缓存过期时间设置
-	// 单位为秒，最大可设置为 365 天
+	// 缓存过期时间设置。
+	// 单位为秒，最大可设置为 365 天。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CacheTime *int64 `json:"CacheTime,omitempty" name:"CacheTime"`
 
-	// 是否开启强制缓存
-	// 开启：on
-	// 关闭：off
+	// 是否开启强制缓存，取值有：
+	// <li>on：开启；</li>
+	// <li>off：关闭。</li>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IgnoreCacheControl *string `json:"IgnoreCacheControl,omitempty" name:"IgnoreCacheControl"`
 }
 
 type CacheConfigFollowOrigin struct {
-	// 遵循源站配置开关
-	// on：开启
-	// off：关闭
+	// 遵循源站配置开关，取值有：
+	// <li>on：开启；</li>
+	// <li>off：关闭。</li>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
 }
 
 type CacheConfigNoCache struct {
-	// 不缓存配置开关
-	// on：开启
-	// off：关闭
+	// 不缓存配置开关，取值有：
+	// <li>on：开启；</li>
+	// <li>off：关闭。</li>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
 }
 
 type CacheKey struct {
-	// 是否开启全路径缓存
-	// on：开启全路径缓存（即关闭参数忽略）
-	// off：关闭全路径缓存（即开启参数忽略）
+	// 是否开启全路径缓存，取值有：
+	// <li>on：开启全路径缓存（即关闭参数忽略）；</li>
+	// <li>off：关闭全路径缓存（即开启参数忽略）。</li>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FullUrlCache *string `json:"FullUrlCache,omitempty" name:"FullUrlCache"`
 
-	// 是否忽略大小写缓存
+	// 是否忽略大小写缓存，取值有：
+	// <li>on：忽略；</li>
+	// <li>off：不忽略。</li>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IgnoreCase *string `json:"IgnoreCase,omitempty" name:"IgnoreCase"`
 
-	// CacheKey中包含请求参数
+	// CacheKey中包含请求参数。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	QueryString *QueryString `json:"QueryString,omitempty" name:"QueryString"`
 }
 
 type CachePrefresh struct {
-	// 缓存预刷新配置开关
+	// 缓存预刷新配置开关，取值有：
+	// <li>on：开启；</li>
+	// <li>off：关闭。</li>
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
 
-	// 缓存预刷新百分比：1-99
+	// 缓存预刷新百分比，取值范围：1-99。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Percent *int64 `json:"Percent,omitempty" name:"Percent"`
 }
@@ -694,11 +695,14 @@ func (r *CheckCertificateResponse) FromJsonString(s string) error {
 }
 
 type ClientIp struct {
-	// 客户端IP头部配置开关
+	// 配置开关，取值有：
+	// <li>on：开启；</li>
+	// <li>off：关闭。</li>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
 
-	// 回源客户端IP请求头名称
+	// 回源时，存放客户端IP的请求头名称。
+	// 为空则使用默认值：X-Forwarded-IP。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	HeaderName *string `json:"HeaderName,omitempty" name:"HeaderName"`
 }
@@ -719,99 +723,117 @@ type CnameStatus struct {
 }
 
 type Compression struct {
-	// 智能压缩配置开关
-	// on：开启
-	// off：关闭
+	// 智能压缩配置开关，取值有：
+	// <li>on：开启；</li>
+	// <li>off：关闭。</li>
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
 
-	// 支持的压缩算法列表
+	// 支持的压缩算法列表，取值有：
+	// <li>brotli：brotli算法；</li>
+	// <li>gzip：gzip算法。</li>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Algorithms []*string `json:"Algorithms,omitempty" name:"Algorithms"`
 }
 
 // Predefined struct for user
 type CreateApplicationProxyRequestParams struct {
-	// 站点ID
+	// 站点ID。
 	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
 
-	// 站点名称
+	// 站点名称。
 	ZoneName *string `json:"ZoneName,omitempty" name:"ZoneName"`
 
-	// 代理名称
-	// 当ProxyType=hostname时，表示域名或者子域名
-	// 当ProxyType=instance时，表示实例名称
-	ProxyName *string `json:"ProxyName,omitempty" name:"ProxyName"`
-
-	// 调度模式：
-	// ip表示Anycast IP
-	// domain表示CNAME
-	PlatType *string `json:"PlatType,omitempty" name:"PlatType"`
-
-	// 0关闭安全，1开启安全
-	SecurityType *int64 `json:"SecurityType,omitempty" name:"SecurityType"`
-
-	// 0关闭加速，1开启加速
-	AccelerateType *int64 `json:"AccelerateType,omitempty" name:"AccelerateType"`
-
-	// 字段已经移至Rule.ForwardClientIp
-	ForwardClientIp *string `json:"ForwardClientIp,omitempty" name:"ForwardClientIp"`
-
-	// 字段已经移至Rule.SessionPersist
-	SessionPersist *bool `json:"SessionPersist,omitempty" name:"SessionPersist"`
-
-	// 规则详细信息
+	// 规则详细信息。
 	Rule []*ApplicationProxyRule `json:"Rule,omitempty" name:"Rule"`
 
-	// 会话保持时间，取值范围：30-3600，单位：秒
+	// 当ProxyType=hostname时，表示域名或子域名；
+	// 当ProxyType=instance时，表示代理名称。
+	ProxyName *string `json:"ProxyName,omitempty" name:"ProxyName"`
+
+	// 调度模式，取值有：
+	// <li>ip：表示Anycast IP调度；</li>
+	// <li>domain：表示CNAME调度。</li>
+	PlatType *string `json:"PlatType,omitempty" name:"PlatType"`
+
+	// 是否开启安全，取值有：
+	// <li>0：关闭安全；</li>
+	// <li>1：开启安全。</li>
+	SecurityType *int64 `json:"SecurityType,omitempty" name:"SecurityType"`
+
+	// 是否开启加速，取值有：
+	// <li>0：关闭加速；</li>
+	// <li>1：开启加速。</li>
+	AccelerateType *int64 `json:"AccelerateType,omitempty" name:"AccelerateType"`
+
+	// 字段已经废弃。
+	SessionPersist *bool `json:"SessionPersist,omitempty" name:"SessionPersist"`
+
+	// 字段已经废弃。
+	ForwardClientIp *string `json:"ForwardClientIp,omitempty" name:"ForwardClientIp"`
+
+	// 四层代理模式，取值有：
+	// <li>hostname：表示子域名模式；</li>
+	// <li>instance：表示实例模式。</li>不填写使用默认值instance。
+	ProxyType *string `json:"ProxyType,omitempty" name:"ProxyType"`
+
+	// 会话保持时间，取值范围：30-3600，单位：秒。
+	// 不填写使用默认值600。
 	SessionPersistTime *uint64 `json:"SessionPersistTime,omitempty" name:"SessionPersistTime"`
 
-	// 服务类型
-	// hostname：子域名模式
-	// instance：实例模式
-	ProxyType *string `json:"ProxyType,omitempty" name:"ProxyType"`
+	// Ipv6访问配置。
+	// 不填写表示关闭Ipv6访问。
+	Ipv6 *Ipv6Access `json:"Ipv6,omitempty" name:"Ipv6"`
 }
 
 type CreateApplicationProxyRequest struct {
 	*tchttp.BaseRequest
 	
-	// 站点ID
+	// 站点ID。
 	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
 
-	// 站点名称
+	// 站点名称。
 	ZoneName *string `json:"ZoneName,omitempty" name:"ZoneName"`
 
-	// 代理名称
-	// 当ProxyType=hostname时，表示域名或者子域名
-	// 当ProxyType=instance时，表示实例名称
-	ProxyName *string `json:"ProxyName,omitempty" name:"ProxyName"`
-
-	// 调度模式：
-	// ip表示Anycast IP
-	// domain表示CNAME
-	PlatType *string `json:"PlatType,omitempty" name:"PlatType"`
-
-	// 0关闭安全，1开启安全
-	SecurityType *int64 `json:"SecurityType,omitempty" name:"SecurityType"`
-
-	// 0关闭加速，1开启加速
-	AccelerateType *int64 `json:"AccelerateType,omitempty" name:"AccelerateType"`
-
-	// 字段已经移至Rule.ForwardClientIp
-	ForwardClientIp *string `json:"ForwardClientIp,omitempty" name:"ForwardClientIp"`
-
-	// 字段已经移至Rule.SessionPersist
-	SessionPersist *bool `json:"SessionPersist,omitempty" name:"SessionPersist"`
-
-	// 规则详细信息
+	// 规则详细信息。
 	Rule []*ApplicationProxyRule `json:"Rule,omitempty" name:"Rule"`
 
-	// 会话保持时间，取值范围：30-3600，单位：秒
+	// 当ProxyType=hostname时，表示域名或子域名；
+	// 当ProxyType=instance时，表示代理名称。
+	ProxyName *string `json:"ProxyName,omitempty" name:"ProxyName"`
+
+	// 调度模式，取值有：
+	// <li>ip：表示Anycast IP调度；</li>
+	// <li>domain：表示CNAME调度。</li>
+	PlatType *string `json:"PlatType,omitempty" name:"PlatType"`
+
+	// 是否开启安全，取值有：
+	// <li>0：关闭安全；</li>
+	// <li>1：开启安全。</li>
+	SecurityType *int64 `json:"SecurityType,omitempty" name:"SecurityType"`
+
+	// 是否开启加速，取值有：
+	// <li>0：关闭加速；</li>
+	// <li>1：开启加速。</li>
+	AccelerateType *int64 `json:"AccelerateType,omitempty" name:"AccelerateType"`
+
+	// 字段已经废弃。
+	SessionPersist *bool `json:"SessionPersist,omitempty" name:"SessionPersist"`
+
+	// 字段已经废弃。
+	ForwardClientIp *string `json:"ForwardClientIp,omitempty" name:"ForwardClientIp"`
+
+	// 四层代理模式，取值有：
+	// <li>hostname：表示子域名模式；</li>
+	// <li>instance：表示实例模式。</li>不填写使用默认值instance。
+	ProxyType *string `json:"ProxyType,omitempty" name:"ProxyType"`
+
+	// 会话保持时间，取值范围：30-3600，单位：秒。
+	// 不填写使用默认值600。
 	SessionPersistTime *uint64 `json:"SessionPersistTime,omitempty" name:"SessionPersistTime"`
 
-	// 服务类型
-	// hostname：子域名模式
-	// instance：实例模式
-	ProxyType *string `json:"ProxyType,omitempty" name:"ProxyType"`
+	// Ipv6访问配置。
+	// 不填写表示关闭Ipv6访问。
+	Ipv6 *Ipv6Access `json:"Ipv6,omitempty" name:"Ipv6"`
 }
 
 func (r *CreateApplicationProxyRequest) ToJsonString() string {
@@ -828,15 +850,16 @@ func (r *CreateApplicationProxyRequest) FromJsonString(s string) error {
 	}
 	delete(f, "ZoneId")
 	delete(f, "ZoneName")
+	delete(f, "Rule")
 	delete(f, "ProxyName")
 	delete(f, "PlatType")
 	delete(f, "SecurityType")
 	delete(f, "AccelerateType")
-	delete(f, "ForwardClientIp")
 	delete(f, "SessionPersist")
-	delete(f, "Rule")
-	delete(f, "SessionPersistTime")
+	delete(f, "ForwardClientIp")
 	delete(f, "ProxyType")
+	delete(f, "SessionPersistTime")
+	delete(f, "Ipv6")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateApplicationProxyRequest has unknown keys!", "")
 	}
@@ -845,7 +868,7 @@ func (r *CreateApplicationProxyRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateApplicationProxyResponseParams struct {
-	// 新增的四层代理应用ID
+	// 新增的四层代理应用ID。
 	ProxyId *string `json:"ProxyId,omitempty" name:"ProxyId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -2648,20 +2671,20 @@ func (r *DeleteZoneResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeApplicationProxyDetailRequestParams struct {
-	// 站点ID
+	// 站点ID。
 	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
 
-	// 实例ID
+	// 实例ID。
 	ProxyId *string `json:"ProxyId,omitempty" name:"ProxyId"`
 }
 
 type DescribeApplicationProxyDetailRequest struct {
 	*tchttp.BaseRequest
 	
-	// 站点ID
+	// 站点ID。
 	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
 
-	// 实例ID
+	// 实例ID。
 	ProxyId *string `json:"ProxyId,omitempty" name:"ProxyId"`
 }
 
@@ -2687,64 +2710,69 @@ func (r *DescribeApplicationProxyDetailRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeApplicationProxyDetailResponseParams struct {
-	// 实例ID
+	// 实例ID。
 	ProxyId *string `json:"ProxyId,omitempty" name:"ProxyId"`
 
-	// 代理名称
-	// 当ProxyType=hostname时，表示域名或者子域名
-	// 当ProxyType=instance时，表示实例名称
+	// 当ProxyType=hostname时，表示域名或子域名；
+	// 当ProxyType=instance时，表示代理名称。
 	ProxyName *string `json:"ProxyName,omitempty" name:"ProxyName"`
 
-	// 调度模式：
-	// ip表示Anycast IP
-	// domain表示CNAME
+	// 调度模式，取值有：
+	// <li>ip：表示Anycast IP调度；</li>
+	// <li>domain：表示CNAME调度。</li>
 	PlatType *string `json:"PlatType,omitempty" name:"PlatType"`
 
-	// 0关闭安全，1开启安全
+	// 是否开启安全，取值有：
+	// <li>0：关闭安全；</li>
+	// <li>1：开启安全。</li>
 	SecurityType *int64 `json:"SecurityType,omitempty" name:"SecurityType"`
 
-	// 0关闭加速，1开启加速
+	// 是否开启加速，取值有：
+	// <li>0：关闭加速；</li>
+	// <li>1：开启加速。</li>
 	AccelerateType *int64 `json:"AccelerateType,omitempty" name:"AccelerateType"`
 
-	// 字段已经移至Rule.ForwardClientIp
+	// 字段已经废弃。
 	ForwardClientIp *string `json:"ForwardClientIp,omitempty" name:"ForwardClientIp"`
 
-	// 字段已经移至Rule.SessionPersist
+	// 字段已经废弃。
 	SessionPersist *bool `json:"SessionPersist,omitempty" name:"SessionPersist"`
 
-	// 规则列表
+	// 规则列表。
 	Rule []*ApplicationProxyRule `json:"Rule,omitempty" name:"Rule"`
 
-	// 状态：
-	// online：启用
-	// offline：停用
-	// progress：部署中
+	// 状态，取值有：
+	// <li>online：启用；</li>
+	// <li>offline：停用；</li>
+	// <li>progress：部署中。</li>
 	Status *string `json:"Status,omitempty" name:"Status"`
 
-	// 调度信息
+	// 调度信息。
 	ScheduleValue []*string `json:"ScheduleValue,omitempty" name:"ScheduleValue"`
 
-	// 更新时间
+	// 更新时间。
 	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
 
-	// 站点ID
+	// 站点ID。
 	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
 
-	// 站点名称
+	// 站点名称。
 	ZoneName *string `json:"ZoneName,omitempty" name:"ZoneName"`
 
-	// 会话保持时间
+	// 会话保持时间。
 	SessionPersistTime *uint64 `json:"SessionPersistTime,omitempty" name:"SessionPersistTime"`
 
-	// 服务类型
-	// hostname：子域名模式
-	// instance：实例模式
+	// 四层代理模式，取值有：
+	// <li>hostname：表示子域名模式；</li>
+	// <li>instance：表示实例模式。</li>
 	ProxyType *string `json:"ProxyType,omitempty" name:"ProxyType"`
 
 	// 当ProxyType=hostname时：
-	// ProxyName为域名，如：test.123.com
-	// HostId表示该域名，即test.123.com对应的代理加速唯一标识
+	// 表示代理加速唯一标识。
 	HostId *string `json:"HostId,omitempty" name:"HostId"`
+
+	// IPv6访问配置。
+	Ipv6 *Ipv6Access `json:"Ipv6,omitempty" name:"Ipv6"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2768,27 +2796,35 @@ func (r *DescribeApplicationProxyDetailResponse) FromJsonString(s string) error 
 
 // Predefined struct for user
 type DescribeApplicationProxyRequestParams struct {
-	// 站点ID
+	// 站点ID。
 	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
 
-	// 分页参数Offset
+	// 分页查询偏移量，默认为0。
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 分页参数Limit
+	// 分页查询限制数目，默认为10，最大可设置为1000。
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 代理ID。
+	// 当ProxyId为空时，表示查询站点下所有应用代理的列表。
+	ProxyId *string `json:"ProxyId,omitempty" name:"ProxyId"`
 }
 
 type DescribeApplicationProxyRequest struct {
 	*tchttp.BaseRequest
 	
-	// 站点ID
+	// 站点ID。
 	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
 
-	// 分页参数Offset
+	// 分页查询偏移量，默认为0。
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 分页参数Limit
+	// 分页查询限制数目，默认为10，最大可设置为1000。
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 代理ID。
+	// 当ProxyId为空时，表示查询站点下所有应用代理的列表。
+	ProxyId *string `json:"ProxyId,omitempty" name:"ProxyId"`
 }
 
 func (r *DescribeApplicationProxyRequest) ToJsonString() string {
@@ -2806,6 +2842,7 @@ func (r *DescribeApplicationProxyRequest) FromJsonString(s string) error {
 	delete(f, "ZoneId")
 	delete(f, "Offset")
 	delete(f, "Limit")
+	delete(f, "ProxyId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeApplicationProxyRequest has unknown keys!", "")
 	}
@@ -2814,24 +2851,19 @@ func (r *DescribeApplicationProxyRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeApplicationProxyResponseParams struct {
-	// 数据列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 应用代理列表。
 	Data []*ApplicationProxy `json:"Data,omitempty" name:"Data"`
 
-	// 记录总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 记录总数。
 	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
-	// 字段已废弃
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 字段已废弃。
 	Quota *int64 `json:"Quota,omitempty" name:"Quota"`
 
-	// 表示套餐内PlatType为ip的Anycast IP实例数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 当ProxyId为空时，表示套餐内PlatType为ip的Anycast IP的实例数量。
 	IpCount *uint64 `json:"IpCount,omitempty" name:"IpCount"`
 
-	// 表示套餐内PlatType为domain的CNAME实例数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 当ProxyId为空时，表示套餐内PlatType为domain的CNAME的实例数量。
 	DomainCount *uint64 `json:"DomainCount,omitempty" name:"DomainCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -7279,14 +7311,14 @@ func (r *DescribeZoneDetailsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeZoneSettingRequestParams struct {
-	// 站点ID
+	// 站点ID。
 	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
 }
 
 type DescribeZoneSettingRequest struct {
 	*tchttp.BaseRequest
 	
-	// 站点ID
+	// 站点ID。
 	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
 }
 
@@ -7311,71 +7343,75 @@ func (r *DescribeZoneSettingRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeZoneSettingResponseParams struct {
-	// 缓存过期时间配置
+	// 站点ID。
+	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
+
+	// 站点名称。
+	Zone *string `json:"Zone,omitempty" name:"Zone"`
+
+	// 缓存过期时间配置。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Cache *CacheConfig `json:"Cache,omitempty" name:"Cache"`
 
-	// 节点缓存键配置
+	// 节点缓存键配置。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CacheKey *CacheKey `json:"CacheKey,omitempty" name:"CacheKey"`
 
-	// 浏览器缓存配置
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	MaxAge *MaxAge `json:"MaxAge,omitempty" name:"MaxAge"`
-
-	// 离线缓存
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	OfflineCache *OfflineCache `json:"OfflineCache,omitempty" name:"OfflineCache"`
-
-	// Quic访问
+	// Quic访问配置。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Quic *Quic `json:"Quic,omitempty" name:"Quic"`
 
-	// POST请求传输配置
+	// POST请求传输配置。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PostMaxSize *PostMaxSize `json:"PostMaxSize,omitempty" name:"PostMaxSize"`
 
-	// 智能压缩配置
+	// 智能压缩配置。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Compression *Compression `json:"Compression,omitempty" name:"Compression"`
 
-	// http2回源配置
+	// Http2回源配置。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpstreamHttp2 *UpstreamHttp2 `json:"UpstreamHttp2,omitempty" name:"UpstreamHttp2"`
 
-	// 访问协议强制https跳转配置
+	// 访问协议强制Https跳转配置。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ForceRedirect *ForceRedirect `json:"ForceRedirect,omitempty" name:"ForceRedirect"`
 
-	// Https 加速配置
+	// Https 加速配置。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Https *Https `json:"Https,omitempty" name:"Https"`
 
-	// 源站配置
+	// 源站配置。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Origin *Origin `json:"Origin,omitempty" name:"Origin"`
 
-	// 动态加速配置
+	// 智能加速配置。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SmartRouting *SmartRouting `json:"SmartRouting,omitempty" name:"SmartRouting"`
 
-	// 站点ID
-	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
+	// 浏览器缓存配置。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MaxAge *MaxAge `json:"MaxAge,omitempty" name:"MaxAge"`
 
-	// 站点域名
-	Zone *string `json:"Zone,omitempty" name:"Zone"`
+	// 离线缓存配置。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OfflineCache *OfflineCache `json:"OfflineCache,omitempty" name:"OfflineCache"`
 
-	// WebSocket配置
+	// WebSocket配置。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	WebSocket *WebSocket `json:"WebSocket,omitempty" name:"WebSocket"`
 
-	// 客户端IP回源请求头配置
+	// 客户端IP回源请求头配置。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClientIpHeader *ClientIp `json:"ClientIpHeader,omitempty" name:"ClientIpHeader"`
 
-	// 缓存预刷新配置
+	// 缓存预刷新配置。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CachePrefresh *CachePrefresh `json:"CachePrefresh,omitempty" name:"CachePrefresh"`
+
+	// Ipv6访问配置。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Ipv6 *Ipv6Access `json:"Ipv6,omitempty" name:"Ipv6"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -7756,14 +7792,14 @@ type Filter struct {
 }
 
 type ForceRedirect struct {
-	// 访问强制跳转配置开关
-	// on：开启
-	// off：关闭
+	// 访问强制跳转配置开关，取值有：
+	// <li>on：开启；</li>
+	// <li>off：关闭。</li>
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
 
-	// 重定向状态码
-	// 301
-	// 302
+	// 重定向状态码，取值有：
+	// <li>301：301跳转；</li>
+	// <li>302：302跳转。</li>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RedirectStatusCode *int64 `json:"RedirectStatusCode,omitempty" name:"RedirectStatusCode"`
 }
@@ -7804,37 +7840,46 @@ type HostCertSetting struct {
 }
 
 type Hsts struct {
-	// 是否开启，on或off。
+	// 是否开启，取值有：
+	// <li>on：开启；</li>
+	// <li>off：关闭。</li>
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
 
-	// MaxAge数值。
+	// MaxAge数值。单位为秒，最大值为1天。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxAge *int64 `json:"MaxAge,omitempty" name:"MaxAge"`
 
-	// 是否包含子域名，on或off。
+	// 是否包含子域名，取值有：
+	// <li>on：开启；</li>
+	// <li>off：关闭。</li>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IncludeSubDomains *string `json:"IncludeSubDomains,omitempty" name:"IncludeSubDomains"`
 
-	// 是否预加载，on或off。
+	// 是否开启预加载，取值有：
+	// <li>on：开启；</li>
+	// <li>off：关闭。</li>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Preload *string `json:"Preload,omitempty" name:"Preload"`
 }
 
 type Https struct {
-	// http2 配置开关
-	// on：开启
-	// off：关闭
+	// http2 配置开关，取值有：
+	// <li>on：开启；</li>
+	// <li>off：关闭。</li>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Http2 *string `json:"Http2,omitempty" name:"Http2"`
 
-	// OCSP 配置开关
-	// on：开启
-	// off：关闭
-	// 默认为关闭状态
+	// OCSP 配置开关，取值有：
+	// <li>on：开启；</li>
+	// <li>off：关闭。</li>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OcspStapling *string `json:"OcspStapling,omitempty" name:"OcspStapling"`
 
-	// Tls版本设置，支持设置 TLSv1, TLSV1.1, TLSV1.2, TLSv1.3，修改时必须开启连续的版本
+	// Tls版本设置，取值有：
+	// <li>TLSv1：TLSv1版本；</li>
+	// <li>TLSV1.1：TLSv1.1版本；</li>
+	// <li>TLSV1.2：TLSv1.2版本；</li>
+	// <li>TLSv1.3：TLSv1.3版本。</li>修改时必须开启连续的版本。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TlsVersion []*string `json:"TlsVersion,omitempty" name:"TlsVersion"`
 
@@ -8025,6 +8070,13 @@ type IpTableRule struct {
 	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
 }
 
+type Ipv6Access struct {
+	// Ipv6访问功能配置，取值有：
+	// <li>on：开启Ipv6访问功能；</li>
+	// <li>off：关闭Ipv6访问功能。</li>
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
+}
+
 type L7OfflineLog struct {
 	// 日志打包开始时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -8115,71 +8167,75 @@ type ManagedRule struct {
 }
 
 type MaxAge struct {
-	// MaxAge 时间设置，单位秒，最大365天
-	// 注意：时间为0，即不缓存。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	MaxAgeTime *int64 `json:"MaxAgeTime,omitempty" name:"MaxAgeTime"`
-
-	// 是否遵循源站，on或off，开启时忽略时间设置。
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 是否遵循源站，取值有：
+	// <li>on：遵循源站，忽略MaxAge 时间设置；</li>
+	// <li>off：不遵循源站，使用MaxAge 时间设置。</li>
 	FollowOrigin *string `json:"FollowOrigin,omitempty" name:"FollowOrigin"`
+
+	// MaxAge 时间设置，单位秒，最大365天。
+	// 注意：时间为0，即不缓存。
+	MaxAgeTime *int64 `json:"MaxAgeTime,omitempty" name:"MaxAgeTime"`
 }
 
 // Predefined struct for user
 type ModifyApplicationProxyRequestParams struct {
-	// 站点ID
+	// 站点ID。
 	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
 
-	// 代理ID
+	// 代理ID。
 	ProxyId *string `json:"ProxyId,omitempty" name:"ProxyId"`
 
-	// 代理名称
-	// 当ProxyType=hostname时，表示域名或者子域名
-	// 当ProxyType=instance时，表示实例名称
+	// 当ProxyType=hostname时，表示域名或子域名；
+	// 当ProxyType=instance时，表示代理名称。
 	ProxyName *string `json:"ProxyName,omitempty" name:"ProxyName"`
 
-	// 参数已经废弃
+	// 参数已经废弃。
 	ForwardClientIp *string `json:"ForwardClientIp,omitempty" name:"ForwardClientIp"`
 
-	// 参数已经废弃
+	// 参数已经废弃。
 	SessionPersist *bool `json:"SessionPersist,omitempty" name:"SessionPersist"`
 
-	// 会话保持时间，取值范围：30-3600，单位：秒
+	// 会话保持时间，不填写保持原有配置。取值范围：30-3600，单位：秒。
 	SessionPersistTime *uint64 `json:"SessionPersistTime,omitempty" name:"SessionPersistTime"`
 
-	// 服务类型
-	// hostname：子域名模式
-	// instance：实例模式
+	// 四层代理模式，取值有：
+	// <li>hostname：表示子域名模式；</li>
+	// <li>instance：表示实例模式。</li>不填写保持原有配置。
 	ProxyType *string `json:"ProxyType,omitempty" name:"ProxyType"`
+
+	// Ipv6访问配置，不填写保持原有配置。
+	Ipv6 *Ipv6Access `json:"Ipv6,omitempty" name:"Ipv6"`
 }
 
 type ModifyApplicationProxyRequest struct {
 	*tchttp.BaseRequest
 	
-	// 站点ID
+	// 站点ID。
 	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
 
-	// 代理ID
+	// 代理ID。
 	ProxyId *string `json:"ProxyId,omitempty" name:"ProxyId"`
 
-	// 代理名称
-	// 当ProxyType=hostname时，表示域名或者子域名
-	// 当ProxyType=instance时，表示实例名称
+	// 当ProxyType=hostname时，表示域名或子域名；
+	// 当ProxyType=instance时，表示代理名称。
 	ProxyName *string `json:"ProxyName,omitempty" name:"ProxyName"`
 
-	// 参数已经废弃
+	// 参数已经废弃。
 	ForwardClientIp *string `json:"ForwardClientIp,omitempty" name:"ForwardClientIp"`
 
-	// 参数已经废弃
+	// 参数已经废弃。
 	SessionPersist *bool `json:"SessionPersist,omitempty" name:"SessionPersist"`
 
-	// 会话保持时间，取值范围：30-3600，单位：秒
+	// 会话保持时间，不填写保持原有配置。取值范围：30-3600，单位：秒。
 	SessionPersistTime *uint64 `json:"SessionPersistTime,omitempty" name:"SessionPersistTime"`
 
-	// 服务类型
-	// hostname：子域名模式
-	// instance：实例模式
+	// 四层代理模式，取值有：
+	// <li>hostname：表示子域名模式；</li>
+	// <li>instance：表示实例模式。</li>不填写保持原有配置。
 	ProxyType *string `json:"ProxyType,omitempty" name:"ProxyType"`
+
+	// Ipv6访问配置，不填写保持原有配置。
+	Ipv6 *Ipv6Access `json:"Ipv6,omitempty" name:"Ipv6"`
 }
 
 func (r *ModifyApplicationProxyRequest) ToJsonString() string {
@@ -8201,6 +8257,7 @@ func (r *ModifyApplicationProxyRequest) FromJsonString(s string) error {
 	delete(f, "SessionPersist")
 	delete(f, "SessionPersistTime")
 	delete(f, "ProxyType")
+	delete(f, "Ipv6")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyApplicationProxyRequest has unknown keys!", "")
 	}
@@ -8209,7 +8266,7 @@ func (r *ModifyApplicationProxyRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyApplicationProxyResponseParams struct {
-	// 代理ID
+	// 代理ID。
 	ProxyId *string `json:"ProxyId,omitempty" name:"ProxyId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -9587,105 +9644,143 @@ func (r *ModifyZoneResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyZoneSettingRequestParams struct {
-	// 待变更的站点ID
+	// 待变更的站点ID。
 	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
 
-	// 缓存过期时间配置
+	// 缓存过期时间配置。
+	// 不填写表示保持原有配置。
 	Cache *CacheConfig `json:"Cache,omitempty" name:"Cache"`
 
-	// 节点缓存键配置
+	// 节点缓存键配置。
+	// 不填写表示保持原有配置。
 	CacheKey *CacheKey `json:"CacheKey,omitempty" name:"CacheKey"`
 
-	// 浏览器缓存配置
+	// 浏览器缓存配置。
+	// 不填写表示保持原有配置。
 	MaxAge *MaxAge `json:"MaxAge,omitempty" name:"MaxAge"`
 
-	// 离线缓存
+	// 离线缓存配置。
+	// 不填写表示保持原有配置。
 	OfflineCache *OfflineCache `json:"OfflineCache,omitempty" name:"OfflineCache"`
 
-	// Quic访问
+	// Quic访问配置。
+	// 不填写表示保持原有配置。
 	Quic *Quic `json:"Quic,omitempty" name:"Quic"`
 
-	// POST请求传输配置
+	// Post请求传输配置。
+	// 不填写表示保持原有配置。
 	PostMaxSize *PostMaxSize `json:"PostMaxSize,omitempty" name:"PostMaxSize"`
 
-	// 智能压缩配置
+	// 智能压缩配置。
+	// 不填写表示保持原有配置。
 	Compression *Compression `json:"Compression,omitempty" name:"Compression"`
 
-	// http2回源配置
+	// Http2回源配置。
+	// 不填写表示保持原有配置。
 	UpstreamHttp2 *UpstreamHttp2 `json:"UpstreamHttp2,omitempty" name:"UpstreamHttp2"`
 
-	// 访问协议强制https跳转配置
+	// 访问协议强制Https跳转配置。
+	// 不填写表示保持原有配置。
 	ForceRedirect *ForceRedirect `json:"ForceRedirect,omitempty" name:"ForceRedirect"`
 
-	// Https 加速配置
+	// Https加速配置。
+	// 不填写表示保持原有配置。
 	Https *Https `json:"Https,omitempty" name:"Https"`
 
-	// 源站配置
+	// 源站配置。
+	// 不填写表示保持原有配置。
 	Origin *Origin `json:"Origin,omitempty" name:"Origin"`
 
-	// 智能加速配置
+	// 智能加速配置。
+	// 不填写表示保持原有配置。
 	SmartRouting *SmartRouting `json:"SmartRouting,omitempty" name:"SmartRouting"`
 
-	// WebSocket配置
+	// WebSocket配置。
+	// 不填写表示保持原有配置。
 	WebSocket *WebSocket `json:"WebSocket,omitempty" name:"WebSocket"`
 
-	// 客户端IP回源请求头配置
+	// 客户端IP回源请求头配置。
+	// 不填写表示保持原有配置。
 	ClientIpHeader *ClientIp `json:"ClientIpHeader,omitempty" name:"ClientIpHeader"`
 
-	// 缓存预刷新配置
+	// 缓存预刷新配置。
+	// 不填写表示保持原有配置。
 	CachePrefresh *CachePrefresh `json:"CachePrefresh,omitempty" name:"CachePrefresh"`
+
+	// Ipv6访问配置。
+	// 不填写表示保持原有配置。
+	Ipv6 *Ipv6Access `json:"Ipv6,omitempty" name:"Ipv6"`
 }
 
 type ModifyZoneSettingRequest struct {
 	*tchttp.BaseRequest
 	
-	// 待变更的站点ID
+	// 待变更的站点ID。
 	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
 
-	// 缓存过期时间配置
+	// 缓存过期时间配置。
+	// 不填写表示保持原有配置。
 	Cache *CacheConfig `json:"Cache,omitempty" name:"Cache"`
 
-	// 节点缓存键配置
+	// 节点缓存键配置。
+	// 不填写表示保持原有配置。
 	CacheKey *CacheKey `json:"CacheKey,omitempty" name:"CacheKey"`
 
-	// 浏览器缓存配置
+	// 浏览器缓存配置。
+	// 不填写表示保持原有配置。
 	MaxAge *MaxAge `json:"MaxAge,omitempty" name:"MaxAge"`
 
-	// 离线缓存
+	// 离线缓存配置。
+	// 不填写表示保持原有配置。
 	OfflineCache *OfflineCache `json:"OfflineCache,omitempty" name:"OfflineCache"`
 
-	// Quic访问
+	// Quic访问配置。
+	// 不填写表示保持原有配置。
 	Quic *Quic `json:"Quic,omitempty" name:"Quic"`
 
-	// POST请求传输配置
+	// Post请求传输配置。
+	// 不填写表示保持原有配置。
 	PostMaxSize *PostMaxSize `json:"PostMaxSize,omitempty" name:"PostMaxSize"`
 
-	// 智能压缩配置
+	// 智能压缩配置。
+	// 不填写表示保持原有配置。
 	Compression *Compression `json:"Compression,omitempty" name:"Compression"`
 
-	// http2回源配置
+	// Http2回源配置。
+	// 不填写表示保持原有配置。
 	UpstreamHttp2 *UpstreamHttp2 `json:"UpstreamHttp2,omitempty" name:"UpstreamHttp2"`
 
-	// 访问协议强制https跳转配置
+	// 访问协议强制Https跳转配置。
+	// 不填写表示保持原有配置。
 	ForceRedirect *ForceRedirect `json:"ForceRedirect,omitempty" name:"ForceRedirect"`
 
-	// Https 加速配置
+	// Https加速配置。
+	// 不填写表示保持原有配置。
 	Https *Https `json:"Https,omitempty" name:"Https"`
 
-	// 源站配置
+	// 源站配置。
+	// 不填写表示保持原有配置。
 	Origin *Origin `json:"Origin,omitempty" name:"Origin"`
 
-	// 智能加速配置
+	// 智能加速配置。
+	// 不填写表示保持原有配置。
 	SmartRouting *SmartRouting `json:"SmartRouting,omitempty" name:"SmartRouting"`
 
-	// WebSocket配置
+	// WebSocket配置。
+	// 不填写表示保持原有配置。
 	WebSocket *WebSocket `json:"WebSocket,omitempty" name:"WebSocket"`
 
-	// 客户端IP回源请求头配置
+	// 客户端IP回源请求头配置。
+	// 不填写表示保持原有配置。
 	ClientIpHeader *ClientIp `json:"ClientIpHeader,omitempty" name:"ClientIpHeader"`
 
-	// 缓存预刷新配置
+	// 缓存预刷新配置。
+	// 不填写表示保持原有配置。
 	CachePrefresh *CachePrefresh `json:"CachePrefresh,omitempty" name:"CachePrefresh"`
+
+	// Ipv6访问配置。
+	// 不填写表示保持原有配置。
+	Ipv6 *Ipv6Access `json:"Ipv6,omitempty" name:"Ipv6"`
 }
 
 func (r *ModifyZoneSettingRequest) ToJsonString() string {
@@ -9716,6 +9811,7 @@ func (r *ModifyZoneSettingRequest) FromJsonString(s string) error {
 	delete(f, "WebSocket")
 	delete(f, "ClientIpHeader")
 	delete(f, "CachePrefresh")
+	delete(f, "Ipv6")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyZoneSettingRequest has unknown keys!", "")
 	}
@@ -9724,7 +9820,7 @@ func (r *ModifyZoneSettingRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyZoneSettingResponseParams struct {
-	// 站点ID
+	// 站点ID。
 	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -9827,18 +9923,32 @@ func (r *ModifyZoneStatusResponse) FromJsonString(s string) error {
 }
 
 type OfflineCache struct {
-	// on | off, 离线缓存是否开启
+	// 离线缓存是否开启，取值有：
+	// <li>on：开启；</li>
+	// <li>off：关闭。</li>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
 }
 
 type Origin struct {
-	// 回源协议配置
-	// http：强制 http 回源
-	// follow：协议跟随回源
-	// https：强制 https 回源，https 回源时仅支持源站 443 端口
+	// 主源站列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Origins []*string `json:"Origins,omitempty" name:"Origins"`
+
+	// 备源站列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BackupOrigins []*string `json:"BackupOrigins,omitempty" name:"BackupOrigins"`
+
+	// 回源协议配置，取值有：
+	// <li>http：强制 http 回源；</li>
+	// <li>follow：协议跟随回源；</li>
+	// <li>https：强制 https 回源，https 回源时仅支持源站 443 端口。</li>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OriginPullProtocol *string `json:"OriginPullProtocol,omitempty" name:"OriginPullProtocol"`
+
+	// OriginType 为对象存储（COS）时，可以指定是否允许访问私有 bucket。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CosPrivateAccess *string `json:"CosPrivateAccess,omitempty" name:"CosPrivateAccess"`
 }
 
 type OriginCheckOriginStatus struct {
@@ -9977,12 +10087,12 @@ type PortraitManagedRuleDetail struct {
 }
 
 type PostMaxSize struct {
-	// 是调整POST请求限制，平台默认为32MB。
-	// 关闭：off，
-	// 开启：on。
+	// 是否开启POST请求上传文件限制，平台默认为限制为32MB，取值有：
+	// <li>on：开启限制；</li>
+	// <li>off：关闭限制。</li>
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
 
-	// 最大限制，取值在1MB和500MB之间。单位字节
+	// 最大限制，取值在1MB和500MB之间。单位字节。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxSize *int64 `json:"MaxSize,omitempty" name:"MaxSize"`
 }
@@ -9999,22 +10109,27 @@ type QueryCondition struct {
 }
 
 type QueryString struct {
-	// on | off CacheKey是否由QueryString组成
+	// CacheKey是否由QueryString组成，取值有：
+	// <li>on：是；</li>
+	// <li>off：否。</li>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
 
-	// includeCustom:使用部分url参数
-	// excludeCustom:排除部分url参数
+	// CacheKey使用QueryString的方式，取值有：
+	// <li>includeCustom：使用部分url参数；</li>
+	// <li>excludeCustom：排除部分url参数。</li>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Action *string `json:"Action,omitempty" name:"Action"`
 
-	// 使用/排除的url参数数组
+	// 使用/排除的url参数数组。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Value []*string `json:"Value,omitempty" name:"Value"`
 }
 
 type Quic struct {
-	// 是否启动Quic配置
+	// 是否开启Quic配置，取值有：
+	// <li>on：开启；</li>
+	// <li>off：关闭。</li>
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
 }
 
@@ -10449,9 +10564,9 @@ type ShieldArea struct {
 }
 
 type SmartRouting struct {
-	// 智能加速配置开关
-	// on：开启
-	// off：关闭
+	// 智能加速配置开关，取值有：
+	// <li>on：开启；</li>
+	// <li>off：关闭。</li>
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
 }
 
@@ -10576,9 +10691,9 @@ type TopNEntryValue struct {
 }
 
 type UpstreamHttp2 struct {
-	// http2回源配置开关
-	// on：开启
-	// off：关闭
+	// http2回源配置开关，取值有：
+	// <li>on：开启；</li>
+	// <li>off：关闭。</li>
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
 }
 
@@ -10744,10 +10859,12 @@ type WebLogs struct {
 }
 
 type WebSocket struct {
-	// WebSocket 超时配置开关, 开关为off时，平台仍支持WebSocket连接，此时超时时间默认为15秒，若需要调整超时时间，将开关置为on.
+	// WebSocket 超时时间配置开关，取值有：
+	// <li>on：使用Timeout作为WebSocket超时时间；</li>
+	// <li>off：平台仍支持WebSocket连接，此时使用系统默认的15秒为超时时间。</li>
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
 
-	// 设置超时时间，单位为秒，最大超时时间120秒。
+	// 超时时间，单位为秒，最大超时时间120秒。
 	Timeout *int64 `json:"Timeout,omitempty" name:"Timeout"`
 }
 

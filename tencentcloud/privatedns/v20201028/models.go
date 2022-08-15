@@ -254,7 +254,7 @@ type CreatePrivateZoneRequestParams struct {
 	// 备注
 	Remark *string `json:"Remark,omitempty" name:"Remark"`
 
-	// 是否开启子域名递归, ENABLED， DISABLED。默认值为DISABLED
+	// 是否开启子域名递归, ENABLED， DISABLED。默认值为ENABLED
 	DnsForwardStatus *string `json:"DnsForwardStatus,omitempty" name:"DnsForwardStatus"`
 
 	// 创建私有域的同时，将其关联至VPC
@@ -262,6 +262,9 @@ type CreatePrivateZoneRequestParams struct {
 
 	// 创建私有域同时绑定关联账号的VPC
 	AccountVpcSet []*AccountVpcInfo `json:"AccountVpcSet,omitempty" name:"AccountVpcSet"`
+
+	// 是否CNAME加速：ENABLED，DISABLED，默认值为ENABLED
+	CnameSpeedupStatus *string `json:"CnameSpeedupStatus,omitempty" name:"CnameSpeedupStatus"`
 }
 
 type CreatePrivateZoneRequest struct {
@@ -279,7 +282,7 @@ type CreatePrivateZoneRequest struct {
 	// 备注
 	Remark *string `json:"Remark,omitempty" name:"Remark"`
 
-	// 是否开启子域名递归, ENABLED， DISABLED。默认值为DISABLED
+	// 是否开启子域名递归, ENABLED， DISABLED。默认值为ENABLED
 	DnsForwardStatus *string `json:"DnsForwardStatus,omitempty" name:"DnsForwardStatus"`
 
 	// 创建私有域的同时，将其关联至VPC
@@ -287,6 +290,9 @@ type CreatePrivateZoneRequest struct {
 
 	// 创建私有域同时绑定关联账号的VPC
 	AccountVpcSet []*AccountVpcInfo `json:"AccountVpcSet,omitempty" name:"AccountVpcSet"`
+
+	// 是否CNAME加速：ENABLED，DISABLED，默认值为ENABLED
+	CnameSpeedupStatus *string `json:"CnameSpeedupStatus,omitempty" name:"CnameSpeedupStatus"`
 }
 
 func (r *CreatePrivateZoneRequest) ToJsonString() string {
@@ -308,6 +314,7 @@ func (r *CreatePrivateZoneRequest) FromJsonString(s string) error {
 	delete(f, "DnsForwardStatus")
 	delete(f, "Vpcs")
 	delete(f, "AccountVpcSet")
+	delete(f, "CnameSpeedupStatus")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreatePrivateZoneRequest has unknown keys!", "")
 	}
@@ -1373,6 +1380,9 @@ type ModifyPrivateZoneRequestParams struct {
 
 	// 是否开启子域名递归, ENABLED， DISABLED
 	DnsForwardStatus *string `json:"DnsForwardStatus,omitempty" name:"DnsForwardStatus"`
+
+	// 是否开启CNAME加速：ENABLED， DISABLED
+	CnameSpeedupStatus *string `json:"CnameSpeedupStatus,omitempty" name:"CnameSpeedupStatus"`
 }
 
 type ModifyPrivateZoneRequest struct {
@@ -1386,6 +1396,9 @@ type ModifyPrivateZoneRequest struct {
 
 	// 是否开启子域名递归, ENABLED， DISABLED
 	DnsForwardStatus *string `json:"DnsForwardStatus,omitempty" name:"DnsForwardStatus"`
+
+	// 是否开启CNAME加速：ENABLED， DISABLED
+	CnameSpeedupStatus *string `json:"CnameSpeedupStatus,omitempty" name:"CnameSpeedupStatus"`
 }
 
 func (r *ModifyPrivateZoneRequest) ToJsonString() string {
@@ -1403,6 +1416,7 @@ func (r *ModifyPrivateZoneRequest) FromJsonString(s string) error {
 	delete(f, "ZoneId")
 	delete(f, "Remark")
 	delete(f, "DnsForwardStatus")
+	delete(f, "CnameSpeedupStatus")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyPrivateZoneRequest has unknown keys!", "")
 	}
@@ -1561,6 +1575,9 @@ type PrivateZone struct {
 	// 是否自定义TLD
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsCustomTld *bool `json:"IsCustomTld,omitempty" name:"IsCustomTld"`
+
+	// CNAME加速状态：开通：ENABLED, 关闭，DISABLED
+	CnameSpeedupStatus *string `json:"CnameSpeedupStatus,omitempty" name:"CnameSpeedupStatus"`
 }
 
 type PrivateZoneRecord struct {

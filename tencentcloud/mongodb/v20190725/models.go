@@ -3330,3 +3330,57 @@ type TagInfo struct {
 	// 标签值
 	TagValue *string `json:"TagValue,omitempty" name:"TagValue"`
 }
+
+// Predefined struct for user
+type TerminateDBInstancesRequestParams struct {
+	// 实例Id列表
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+}
+
+type TerminateDBInstancesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例Id列表
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+}
+
+func (r *TerminateDBInstancesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *TerminateDBInstancesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "TerminateDBInstancesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type TerminateDBInstancesResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type TerminateDBInstancesResponse struct {
+	*tchttp.BaseResponse
+	Response *TerminateDBInstancesResponseParams `json:"Response"`
+}
+
+func (r *TerminateDBInstancesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *TerminateDBInstancesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}

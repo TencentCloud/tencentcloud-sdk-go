@@ -226,6 +226,23 @@ func (r *DescribeTtsTaskStatusResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type Subtitle struct {
+	// ⽂本信息。
+	Text *string `json:"Text,omitempty" name:"Text"`
+
+	// ⽂本对应tts语⾳开始时间戳，单位ms。
+	BeginTime *int64 `json:"BeginTime,omitempty" name:"BeginTime"`
+
+	// ⽂本对应tts语⾳结束时间戳，单位ms。
+	EndTime *int64 `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 该字在整句中的开始位置，从0开始。
+	BeginIndex *int64 `json:"BeginIndex,omitempty" name:"BeginIndex"`
+
+	// 该字在整句中的结束位置，从0开始。
+	EndIndex *int64 `json:"EndIndex,omitempty" name:"EndIndex"`
+}
+
 // Predefined struct for user
 type TextToVoiceRequestParams struct {
 	// 合成语音的源文本，按UTF-8编码统一计算。
@@ -258,6 +275,9 @@ type TextToVoiceRequestParams struct {
 
 	// 返回音频格式，可取值：wav（默认），mp3，pcm
 	Codec *string `json:"Codec,omitempty" name:"Codec"`
+
+	// 是否开启时间戳功能，默认为false。
+	EnableSubtitle *bool `json:"EnableSubtitle,omitempty" name:"EnableSubtitle"`
 }
 
 type TextToVoiceRequest struct {
@@ -293,6 +313,9 @@ type TextToVoiceRequest struct {
 
 	// 返回音频格式，可取值：wav（默认），mp3，pcm
 	Codec *string `json:"Codec,omitempty" name:"Codec"`
+
+	// 是否开启时间戳功能，默认为false。
+	EnableSubtitle *bool `json:"EnableSubtitle,omitempty" name:"EnableSubtitle"`
 }
 
 func (r *TextToVoiceRequest) ToJsonString() string {
@@ -317,6 +340,7 @@ func (r *TextToVoiceRequest) FromJsonString(s string) error {
 	delete(f, "PrimaryLanguage")
 	delete(f, "SampleRate")
 	delete(f, "Codec")
+	delete(f, "EnableSubtitle")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "TextToVoiceRequest has unknown keys!", "")
 	}
@@ -330,6 +354,9 @@ type TextToVoiceResponseParams struct {
 
 	// 一次请求对应一个SessionId
 	SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
+
+	// 时间戳信息，若未开启时间戳，则返回空数组。
+	Subtitles []*Subtitle `json:"Subtitles,omitempty" name:"Subtitles"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`

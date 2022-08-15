@@ -3388,6 +3388,9 @@ type DescribeImagesRequestParams struct {
 
 	// 页数，默认值为1
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 指定镜像 Digest 进行查找
+	Digest *string `json:"Digest,omitempty" name:"Digest"`
 }
 
 type DescribeImagesRequest struct {
@@ -3410,6 +3413,9 @@ type DescribeImagesRequest struct {
 
 	// 页数，默认值为1
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 指定镜像 Digest 进行查找
+	Digest *string `json:"Digest,omitempty" name:"Digest"`
 }
 
 func (r *DescribeImagesRequest) ToJsonString() string {
@@ -3430,6 +3436,7 @@ func (r *DescribeImagesRequest) FromJsonString(s string) error {
 	delete(f, "ImageVersion")
 	delete(f, "Limit")
 	delete(f, "Offset")
+	delete(f, "Digest")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeImagesRequest has unknown keys!", "")
 	}
@@ -3961,6 +3968,9 @@ type DescribeNamespacesRequestParams struct {
 
 	// 过滤条件
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 仅查询启用了 KMS 镜像签名的空间
+	KmsSignPolicy *bool `json:"KmsSignPolicy,omitempty" name:"KmsSignPolicy"`
 }
 
 type DescribeNamespacesRequest struct {
@@ -3983,6 +3993,9 @@ type DescribeNamespacesRequest struct {
 
 	// 过滤条件
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 仅查询启用了 KMS 镜像签名的空间
+	KmsSignPolicy *bool `json:"KmsSignPolicy,omitempty" name:"KmsSignPolicy"`
 }
 
 func (r *DescribeNamespacesRequest) ToJsonString() string {
@@ -4003,6 +4016,7 @@ func (r *DescribeNamespacesRequest) FromJsonString(s string) error {
 	delete(f, "Offset")
 	delete(f, "All")
 	delete(f, "Filters")
+	delete(f, "KmsSignPolicy")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeNamespacesRequest has unknown keys!", "")
 	}
@@ -5369,6 +5383,14 @@ type ImmutableTagRule struct {
 
 	// 命名空间
 	NsName *string `json:"NsName,omitempty" name:"NsName"`
+}
+
+type KeyValueString struct {
+	// 键
+	Key *string `json:"Key,omitempty" name:"Key"`
+
+	// 值
+	Value *string `json:"Value,omitempty" name:"Value"`
 }
 
 type Limit struct {
@@ -7148,7 +7170,7 @@ type TcrImageInfo struct {
 	// 哈希值
 	Digest *string `json:"Digest,omitempty" name:"Digest"`
 
-	// 镜像大小
+	// 镜像体积（单位：字节）
 	Size *int64 `json:"Size,omitempty" name:"Size"`
 
 	// Tag名称
@@ -7156,6 +7178,14 @@ type TcrImageInfo struct {
 
 	// 更新时间
 	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+
+	// 制品类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Kind *string `json:"Kind,omitempty" name:"Kind"`
+
+	// KMS 签名信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	KmsSignature *string `json:"KmsSignature,omitempty" name:"KmsSignature"`
 }
 
 type TcrInstanceToken struct {
@@ -7194,6 +7224,10 @@ type TcrNamespaceInfo struct {
 	// 实例云标签
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TagSpecification *TagSpecification `json:"TagSpecification,omitempty" name:"TagSpecification"`
+
+	// 命名空间元数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Metadata []*KeyValueString `json:"Metadata,omitempty" name:"Metadata"`
 }
 
 type TcrRepositoryInfo struct {

@@ -110,7 +110,7 @@ type CreateCloudRecordingRequestParams struct {
 
 	// TRTC房间号的类型，必须和录制的房间所对应的RoomId类型相同:
 	// 0: 字符串类型的RoomId
-	// 1: 32位整型的RoomId（默认）
+	// 1: 32位整型的RoomId
 	RoomIdType *uint64 `json:"RoomIdType,omitempty" name:"RoomIdType"`
 
 	// 混流的转码参数，录制模式为混流的时候可以设置。
@@ -149,7 +149,7 @@ type CreateCloudRecordingRequest struct {
 
 	// TRTC房间号的类型，必须和录制的房间所对应的RoomId类型相同:
 	// 0: 字符串类型的RoomId
-	// 1: 32位整型的RoomId（默认）
+	// 1: 32位整型的RoomId
 	RoomIdType *uint64 `json:"RoomIdType,omitempty" name:"RoomIdType"`
 
 	// 混流的转码参数，录制模式为混流的时候可以设置。

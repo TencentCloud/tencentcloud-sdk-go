@@ -8351,6 +8351,18 @@ type DescribeClusterSummaryResponseParams struct {
 	// 无风险的集群数量
 	NoRiskClusterCount *uint64 `json:"NoRiskClusterCount,omitempty" name:"NoRiskClusterCount"`
 
+	// 已经检查集群数
+	CheckedClusterCount *uint64 `json:"CheckedClusterCount,omitempty" name:"CheckedClusterCount"`
+
+	// 自动检查集群数
+	AutoCheckClusterCount *uint64 `json:"AutoCheckClusterCount,omitempty" name:"AutoCheckClusterCount"`
+
+	// 手动检查集群数
+	ManualCheckClusterCount *uint64 `json:"ManualCheckClusterCount,omitempty" name:"ManualCheckClusterCount"`
+
+	// 检查失败集群数
+	FailedClusterCount *uint64 `json:"FailedClusterCount,omitempty" name:"FailedClusterCount"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }

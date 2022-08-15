@@ -146,7 +146,7 @@ const (
 	// 返回数量不在合法范围内。
 	INVALIDPARAMETERVALUE_LIMITEXCEED = "InvalidParameterValue.LimitExceed"
 
-	// 图片已经存在。
+	// 图片名称重复。
 	INVALIDPARAMETERVALUE_PICNAMEALREADYEXIST = "InvalidParameterValue.PicNameAlreadyExist"
 
 	// 图片名称为空。

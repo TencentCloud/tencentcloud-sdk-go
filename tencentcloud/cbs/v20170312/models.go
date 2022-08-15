@@ -2483,14 +2483,14 @@ type ModifyDiskAttributesRequestParams struct {
 	// 一个或多个待操作的云硬盘ID。如果传入多个云盘ID，仅支持所有云盘修改为同一属性。
 	DiskIds []*string `json:"DiskIds,omitempty" name:"DiskIds"`
 
-	// 新的云硬盘项目ID，只支持修改弹性云盘的项目ID。通过[DescribeProject](/document/api/378/4400)接口查询可用项目及其ID。
-	ProjectId *uint64 `json:"ProjectId,omitempty" name:"ProjectId"`
-
 	// 新的云硬盘名称。
 	DiskName *string `json:"DiskName,omitempty" name:"DiskName"`
 
 	// 是否为弹性云盘，FALSE表示非弹性云盘，TRUE表示弹性云盘。仅支持非弹性云盘修改为弹性云盘。
 	Portable *bool `json:"Portable,omitempty" name:"Portable"`
+
+	// 新的云硬盘项目ID，只支持修改弹性云盘的项目ID。通过[DescribeProject](/document/api/378/4400)接口查询可用项目及其ID。
+	ProjectId *uint64 `json:"ProjectId,omitempty" name:"ProjectId"`
 
 	// 成功挂载到云主机后该云硬盘是否随云主机销毁，TRUE表示随云主机销毁，FALSE表示不随云主机销毁。仅支持按量计费云硬盘数据盘。
 	DeleteWithInstance *bool `json:"DeleteWithInstance,omitempty" name:"DeleteWithInstance"`
@@ -2505,14 +2505,14 @@ type ModifyDiskAttributesRequest struct {
 	// 一个或多个待操作的云硬盘ID。如果传入多个云盘ID，仅支持所有云盘修改为同一属性。
 	DiskIds []*string `json:"DiskIds,omitempty" name:"DiskIds"`
 
-	// 新的云硬盘项目ID，只支持修改弹性云盘的项目ID。通过[DescribeProject](/document/api/378/4400)接口查询可用项目及其ID。
-	ProjectId *uint64 `json:"ProjectId,omitempty" name:"ProjectId"`
-
 	// 新的云硬盘名称。
 	DiskName *string `json:"DiskName,omitempty" name:"DiskName"`
 
 	// 是否为弹性云盘，FALSE表示非弹性云盘，TRUE表示弹性云盘。仅支持非弹性云盘修改为弹性云盘。
 	Portable *bool `json:"Portable,omitempty" name:"Portable"`
+
+	// 新的云硬盘项目ID，只支持修改弹性云盘的项目ID。通过[DescribeProject](/document/api/378/4400)接口查询可用项目及其ID。
+	ProjectId *uint64 `json:"ProjectId,omitempty" name:"ProjectId"`
 
 	// 成功挂载到云主机后该云硬盘是否随云主机销毁，TRUE表示随云主机销毁，FALSE表示不随云主机销毁。仅支持按量计费云硬盘数据盘。
 	DeleteWithInstance *bool `json:"DeleteWithInstance,omitempty" name:"DeleteWithInstance"`
@@ -2534,9 +2534,9 @@ func (r *ModifyDiskAttributesRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "DiskIds")
-	delete(f, "ProjectId")
 	delete(f, "DiskName")
 	delete(f, "Portable")
+	delete(f, "ProjectId")
 	delete(f, "DeleteWithInstance")
 	delete(f, "DiskType")
 	if len(f) > 0 {

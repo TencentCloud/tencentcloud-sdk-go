@@ -63,13 +63,17 @@ func NewBatchDeleteTasksNewResponse() (response *BatchDeleteTasksNewResponse) {
 }
 
 // BatchDeleteTasksNew
-// 批量删除任务，仅对任务状态为”已停止“有效；（Beta版本）
+// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
+//
+// 批量删除任务，仅对任务状态为”已停止“有效；
 func (c *Client) BatchDeleteTasksNew(request *BatchDeleteTasksNewRequest) (response *BatchDeleteTasksNewResponse, err error) {
     return c.BatchDeleteTasksNewWithContext(context.Background(), request)
 }
 
 // BatchDeleteTasksNew
-// 批量删除任务，仅对任务状态为”已停止“有效；（Beta版本）
+// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
+//
+// 批量删除任务，仅对任务状态为”已停止“有效；
 func (c *Client) BatchDeleteTasksNewWithContext(ctx context.Context, request *BatchDeleteTasksNewRequest) (response *BatchDeleteTasksNewResponse, err error) {
     if request == nil {
         request = NewBatchDeleteTasksNewRequest()
@@ -104,13 +108,17 @@ func NewBatchModifyOwnersNewResponse() (response *BatchModifyOwnersNewResponse) 
 }
 
 // BatchModifyOwnersNew
-// 批量修改任务责任人（Beta版本）
+// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
+//
+// 批量修改任务责任人
 func (c *Client) BatchModifyOwnersNew(request *BatchModifyOwnersNewRequest) (response *BatchModifyOwnersNewResponse, err error) {
     return c.BatchModifyOwnersNewWithContext(context.Background(), request)
 }
 
 // BatchModifyOwnersNew
-// 批量修改任务责任人（Beta版本）
+// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
+//
+// 批量修改任务责任人
 func (c *Client) BatchModifyOwnersNewWithContext(ctx context.Context, request *BatchModifyOwnersNewRequest) (response *BatchModifyOwnersNewResponse, err error) {
     if request == nil {
         request = NewBatchModifyOwnersNewRequest()
@@ -145,7 +153,9 @@ func NewBatchStopTasksNewResponse() (response *BatchStopTasksNewResponse) {
 }
 
 // BatchStopTasksNew
-// 仅对任务状态为”调度中“和”已暂停“有效，对所选任务的任务实例进行终止，并停止调度（Beta版本）
+// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
+//
+// 仅对任务状态为”调度中“和”已暂停“有效，对所选任务的任务实例进行终止，并停止调度
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -154,7 +164,9 @@ func (c *Client) BatchStopTasksNew(request *BatchStopTasksNewRequest) (response 
 }
 
 // BatchStopTasksNew
-// 仅对任务状态为”调度中“和”已暂停“有效，对所选任务的任务实例进行终止，并停止调度（Beta版本）
+// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
+//
+// 仅对任务状态为”调度中“和”已暂停“有效，对所选任务的任务实例进行终止，并停止调度
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -192,7 +204,9 @@ func NewCreateFolderResponse() (response *CreateFolderResponse) {
 }
 
 // CreateFolder
-// 创建文件夹（Beta版本）
+// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
+//
+// 创建文件夹
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -201,7 +215,9 @@ func (c *Client) CreateFolder(request *CreateFolderRequest) (response *CreateFol
 }
 
 // CreateFolder
-// 创建文件夹（Beta版本）
+// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
+//
+// 创建文件夹
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -239,7 +255,9 @@ func NewCreateTaskResponse() (response *CreateTaskResponse) {
 }
 
 // CreateTask
-// 创建任务（Beta版本）
+// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
+//
+// 创建任务
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -248,7 +266,9 @@ func (c *Client) CreateTask(request *CreateTaskRequest) (response *CreateTaskRes
 }
 
 // CreateTask
-// 创建任务（Beta版本）
+// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
+//
+// 创建任务
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -286,7 +306,9 @@ func NewCreateWorkflowResponse() (response *CreateWorkflowResponse) {
 }
 
 // CreateWorkflow
-// 创建工作流（Beta版本）
+// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
+//
+// 创建工作流
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -295,7 +317,9 @@ func (c *Client) CreateWorkflow(request *CreateWorkflowRequest) (response *Creat
 }
 
 // CreateWorkflow
-// 创建工作流（Beta版本）
+// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
+//
+// 创建工作流
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -333,7 +357,9 @@ func NewDeleteFolderResponse() (response *DeleteFolderResponse) {
 }
 
 // DeleteFolder
-// 删除文件夹（Beta版本）
+// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
+//
+// 删除文件夹
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -342,7 +368,9 @@ func (c *Client) DeleteFolder(request *DeleteFolderRequest) (response *DeleteFol
 }
 
 // DeleteFolder
-// 删除文件夹（Beta版本）
+// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
+//
+// 删除文件夹
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -380,7 +408,9 @@ func NewDeleteWorkflowNewResponse() (response *DeleteWorkflowNewResponse) {
 }
 
 // DeleteWorkflowNew
-// 删除工作流（Beta版本）
+// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
+//
+// 删除工作流
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -389,7 +419,9 @@ func (c *Client) DeleteWorkflowNew(request *DeleteWorkflowNewRequest) (response 
 }
 
 // DeleteWorkflowNew
-// 删除工作流（Beta版本）
+// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
+//
+// 删除工作流
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -427,7 +459,9 @@ func NewDescribeDependTasksNewResponse() (response *DescribeDependTasksNewRespon
 }
 
 // DescribeDependTasksNew
-// 根据层级查找上/下游任务节点（Beta版本）
+// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
+//
+// 根据层级查找上/下游任务节点
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -436,7 +470,9 @@ func (c *Client) DescribeDependTasksNew(request *DescribeDependTasksNewRequest) 
 }
 
 // DescribeDependTasksNew
-// 根据层级查找上/下游任务节点（Beta版本）
+// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
+//
+// 根据层级查找上/下游任务节点
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -474,7 +510,9 @@ func NewDescribeFolderListResponse() (response *DescribeFolderListResponse) {
 }
 
 // DescribeFolderList
-// 拉取文件夹目录（Beta版本）
+// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
+//
+// 拉取文件夹目录
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -483,7 +521,9 @@ func (c *Client) DescribeFolderList(request *DescribeFolderListRequest) (respons
 }
 
 // DescribeFolderList
-// 拉取文件夹目录（Beta版本）
+// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
+//
+// 拉取文件夹目录
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -521,7 +561,9 @@ func NewDescribeFolderWorkflowListResponse() (response *DescribeFolderWorkflowLi
 }
 
 // DescribeFolderWorkflowList
-// 拉取文件夹下的工作流（Beta版本）
+// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
+//
+// 拉取文件夹下的工作流
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -530,7 +572,9 @@ func (c *Client) DescribeFolderWorkflowList(request *DescribeFolderWorkflowListR
 }
 
 // DescribeFolderWorkflowList
-// 拉取文件夹下的工作流（Beta版本）
+// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
+//
+// 拉取文件夹下的工作流
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -568,7 +612,9 @@ func NewDescribeInstanceLogsResponse() (response *DescribeInstanceLogsResponse) 
 }
 
 // DescribeInstanceLogs
-// 获取实例日志列表（Beta版本）
+// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
+//
+// 获取实例日志列表
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -577,7 +623,9 @@ func (c *Client) DescribeInstanceLogs(request *DescribeInstanceLogsRequest) (res
 }
 
 // DescribeInstanceLogs
-// 获取实例日志列表（Beta版本）
+// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
+//
+// 获取实例日志列表
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -713,7 +761,9 @@ func NewDescribeTaskDetailResponse() (response *DescribeTaskDetailResponse) {
 }
 
 // DescribeTaskDetail
-// 查询任务具体详情（Beta版本）
+// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
+//
+// 查询任务具体详情
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -723,7 +773,9 @@ func (c *Client) DescribeTaskDetail(request *DescribeTaskDetailRequest) (respons
 }
 
 // DescribeTaskDetail
-// 查询任务具体详情（Beta版本）
+// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
+//
+// 查询任务具体详情
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -811,7 +863,9 @@ func NewDescribeTaskScriptResponse() (response *DescribeTaskScriptResponse) {
 }
 
 // DescribeTaskScript
-// 查询任务脚本（Beta版本）
+// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
+//
+// 查询任务脚本
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -821,7 +875,9 @@ func (c *Client) DescribeTaskScript(request *DescribeTaskScriptRequest) (respons
 }
 
 // DescribeTaskScript
-// 查询任务脚本（Beta版本）
+// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
+//
+// 查询任务脚本
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -860,7 +916,9 @@ func NewDescribeTasksByPageResponse() (response *DescribeTasksByPageResponse) {
 }
 
 // DescribeTasksByPage
-// 根据工作流分页查询任务（Beta版本）
+// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
+//
+// 根据工作流分页查询任务
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -870,7 +928,9 @@ func (c *Client) DescribeTasksByPage(request *DescribeTasksByPageRequest) (respo
 }
 
 // DescribeTasksByPage
-// 根据工作流分页查询任务（Beta版本）
+// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
+//
+// 根据工作流分页查询任务
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -909,7 +969,9 @@ func NewForceSucInstancesResponse() (response *ForceSucInstancesResponse) {
 }
 
 // ForceSucInstances
-// 实例批量置成功（Beta版本）
+// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
+//
+// 实例批量置成功
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -919,7 +981,9 @@ func (c *Client) ForceSucInstances(request *ForceSucInstancesRequest) (response 
 }
 
 // ForceSucInstances
-// 实例批量置成功（Beta版本）
+// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
+//
+// 实例批量置成功
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -958,7 +1022,9 @@ func NewFreezeTasksResponse() (response *FreezeTasksResponse) {
 }
 
 // FreezeTasks
-// 批量冻结任务（Beta版本）
+// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
+//
+// 批量冻结任务
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -968,7 +1034,9 @@ func (c *Client) FreezeTasks(request *FreezeTasksRequest) (response *FreezeTasks
 }
 
 // FreezeTasks
-// 批量冻结任务（Beta版本）
+// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
+//
+// 批量冻结任务
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1007,7 +1075,9 @@ func NewFreezeTasksByMultiWorkflowResponse() (response *FreezeTasksByMultiWorkfl
 }
 
 // FreezeTasksByMultiWorkflow
-// 基于多个工作流进行批量冻结任务操作（Beta版本）
+// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
+//
+// 基于多个工作流进行批量冻结任务操作
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1017,7 +1087,9 @@ func (c *Client) FreezeTasksByMultiWorkflow(request *FreezeTasksByMultiWorkflowR
 }
 
 // FreezeTasksByMultiWorkflow
-// 基于多个工作流进行批量冻结任务操作（Beta版本）
+// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
+//
+// 基于多个工作流进行批量冻结任务操作
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1056,7 +1128,9 @@ func NewKillInstancesResponse() (response *KillInstancesResponse) {
 }
 
 // KillInstances
-// 实例批量终止操作（Beta版本）
+// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
+//
+// 实例批量终止操作
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1066,7 +1140,9 @@ func (c *Client) KillInstances(request *KillInstancesRequest) (response *KillIns
 }
 
 // KillInstances
-// 实例批量终止操作（Beta版本）
+// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
+//
+// 实例批量终止操作
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1105,7 +1181,13 @@ func NewMakeUpTasksNewResponse() (response *MakeUpTasksNewResponse) {
 }
 
 // MakeUpTasksNew
-// 任务批量补录，调度状态任务才可以补录；（Beta版本）
+// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
+//
+// 任务批量补录，调度状态任务才可以补录；
+//
+// 
+//
+// 
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1114,7 +1196,13 @@ func (c *Client) MakeUpTasksNew(request *MakeUpTasksNewRequest) (response *MakeU
 }
 
 // MakeUpTasksNew
-// 任务批量补录，调度状态任务才可以补录；（Beta版本）
+// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
+//
+// 任务批量补录，调度状态任务才可以补录；
+//
+// 
+//
+// 
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1152,7 +1240,9 @@ func NewMakeUpWorkflowNewResponse() (response *MakeUpWorkflowNewResponse) {
 }
 
 // MakeUpWorkflowNew
-// 工作流下所有任务的补录（Beta版本）
+// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
+//
+// 工作流下所有任务的补录
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1161,7 +1251,9 @@ func (c *Client) MakeUpWorkflowNew(request *MakeUpWorkflowNewRequest) (response 
 }
 
 // MakeUpWorkflowNew
-// 工作流下所有任务的补录（Beta版本）
+// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
+//
+// 工作流下所有任务的补录
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1199,7 +1291,9 @@ func NewModifyFolderResponse() (response *ModifyFolderResponse) {
 }
 
 // ModifyFolder
-// 文件夹更新（Beta版本）
+// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
+//
+// 文件夹更新
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1208,7 +1302,9 @@ func (c *Client) ModifyFolder(request *ModifyFolderRequest) (response *ModifyFol
 }
 
 // ModifyFolder
-// 文件夹更新（Beta版本）
+// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
+//
+// 文件夹更新
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1246,7 +1342,9 @@ func NewModifyTaskInfoResponse() (response *ModifyTaskInfoResponse) {
 }
 
 // ModifyTaskInfo
-// 更新任务（Beta版本）
+// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
+//
+// 更新任务
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1255,7 +1353,9 @@ func (c *Client) ModifyTaskInfo(request *ModifyTaskInfoRequest) (response *Modif
 }
 
 // ModifyTaskInfo
-// 更新任务（Beta版本）
+// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
+//
+// 更新任务
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1293,7 +1393,9 @@ func NewModifyTaskLinksResponse() (response *ModifyTaskLinksResponse) {
 }
 
 // ModifyTaskLinks
-// 添加父任务依赖（Beta版本）
+// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
+//
+// 添加父任务依赖
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1302,7 +1404,9 @@ func (c *Client) ModifyTaskLinks(request *ModifyTaskLinksRequest) (response *Mod
 }
 
 // ModifyTaskLinks
-// 添加父任务依赖（Beta版本）
+// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
+//
+// 添加父任务依赖
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1340,7 +1444,9 @@ func NewModifyTaskScriptResponse() (response *ModifyTaskScriptResponse) {
 }
 
 // ModifyTaskScript
-// 修改任务脚本（Beta版本）
+// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
+//
+// 修改任务脚本
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1349,7 +1455,9 @@ func (c *Client) ModifyTaskScript(request *ModifyTaskScriptRequest) (response *M
 }
 
 // ModifyTaskScript
-// 修改任务脚本（Beta版本）
+// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
+//
+// 修改任务脚本
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1387,7 +1495,9 @@ func NewModifyWorkflowInfoResponse() (response *ModifyWorkflowInfoResponse) {
 }
 
 // ModifyWorkflowInfo
-// 更新工作流（Beta版本）
+// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
+//
+// 更新工作流
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1396,7 +1506,9 @@ func (c *Client) ModifyWorkflowInfo(request *ModifyWorkflowInfoRequest) (respons
 }
 
 // ModifyWorkflowInfo
-// 更新工作流（Beta版本）
+// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
+//
+// 更新工作流
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1434,7 +1546,9 @@ func NewModifyWorkflowScheduleResponse() (response *ModifyWorkflowScheduleRespon
 }
 
 // ModifyWorkflowSchedule
-// 更新工作流调度（Beta版本）
+// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
+//
+// 更新工作流调度
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1443,7 +1557,9 @@ func (c *Client) ModifyWorkflowSchedule(request *ModifyWorkflowScheduleRequest) 
 }
 
 // ModifyWorkflowSchedule
-// 更新工作流调度（Beta版本）
+// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
+//
+// 更新工作流调度
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1481,7 +1597,9 @@ func NewRegisterEventResponse() (response *RegisterEventResponse) {
 }
 
 // RegisterEvent
-// 注册事件（Beta版本）
+// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
+//
+// 注册事件
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1490,7 +1608,9 @@ func (c *Client) RegisterEvent(request *RegisterEventRequest) (response *Registe
 }
 
 // RegisterEvent
-// 注册事件（Beta版本）
+// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
+//
+// 注册事件
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1528,7 +1648,9 @@ func NewRegisterEventListenerResponse() (response *RegisterEventListenerResponse
 }
 
 // RegisterEventListener
-// 注册事件监听器（Beta版本）
+// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
+//
+// 注册事件监听器
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1537,7 +1659,9 @@ func (c *Client) RegisterEventListener(request *RegisterEventListenerRequest) (r
 }
 
 // RegisterEventListener
-// 注册事件监听器（Beta版本）
+// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
+//
+// 注册事件监听器
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1575,7 +1699,9 @@ func NewRerunInstancesResponse() (response *RerunInstancesResponse) {
 }
 
 // RerunInstances
-// 实例批量重跑（Beta版本）
+// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
+//
+// 实例批量重跑
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1584,7 +1710,9 @@ func (c *Client) RerunInstances(request *RerunInstancesRequest) (response *Rerun
 }
 
 // RerunInstances
-// 实例批量重跑（Beta版本）
+// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
+//
+// 实例批量重跑
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1622,7 +1750,9 @@ func NewRunTaskResponse() (response *RunTaskResponse) {
 }
 
 // RunTask
-// 运行任务（Beta版本）
+// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
+//
+// 运行任务
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1631,7 +1761,9 @@ func (c *Client) RunTask(request *RunTaskRequest) (response *RunTaskResponse, er
 }
 
 // RunTask
-// 运行任务（Beta版本）
+// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
+//
+// 运行任务
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1669,7 +1801,9 @@ func NewSetTaskAlarmNewResponse() (response *SetTaskAlarmNewResponse) {
 }
 
 // SetTaskAlarmNew
-// 设置任务告警，新建/更新告警信息（最新）（Beta版本）
+// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
+//
+// 设置任务告警，新建/更新告警信息（最新）
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1678,7 +1812,9 @@ func (c *Client) SetTaskAlarmNew(request *SetTaskAlarmNewRequest) (response *Set
 }
 
 // SetTaskAlarmNew
-// 设置任务告警，新建/更新告警信息（最新）（Beta版本）
+// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
+//
+// 设置任务告警，新建/更新告警信息（最新）
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1716,7 +1852,9 @@ func NewSubmitTaskResponse() (response *SubmitTaskResponse) {
 }
 
 // SubmitTask
-// 提交任务（Beta版本）
+// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
+//
+// 提交任务
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1725,7 +1863,9 @@ func (c *Client) SubmitTask(request *SubmitTaskRequest) (response *SubmitTaskRes
 }
 
 // SubmitTask
-// 提交任务（Beta版本）
+// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
+//
+// 提交任务
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1763,7 +1903,9 @@ func NewSubmitWorkflowResponse() (response *SubmitWorkflowResponse) {
 }
 
 // SubmitWorkflow
-// 提交工作流（Beta版本）
+// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
+//
+// 提交工作流
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1772,7 +1914,9 @@ func (c *Client) SubmitWorkflow(request *SubmitWorkflowRequest) (response *Submi
 }
 
 // SubmitWorkflow
-// 提交工作流（Beta版本）
+// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
+//
+// 提交工作流
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1810,7 +1954,9 @@ func NewTriggerEventResponse() (response *TriggerEventResponse) {
 }
 
 // TriggerEvent
-// 触发事件（Beta版本）
+// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
+//
+// 触发事件
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1819,7 +1965,9 @@ func (c *Client) TriggerEvent(request *TriggerEventRequest) (response *TriggerEv
 }
 
 // TriggerEvent
-// 触发事件（Beta版本）
+// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
+//
+// 触发事件
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

@@ -1,45 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 电子签服务(ess) 版本：2020-11-11
+## 音频内容检测(ams) 版本：2020-12-29
 
-### 第 14 次发布
+### 第 7 次发布
 
-发布时间：2022-08-11 22:36:30
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [CreateFlowSignReview](https://cloud.tencent.com/document/api/1323/78980)
-
-
-
-## 文字识别(ocr) 版本：2018-11-19
-
-### 第 74 次发布
-
-发布时间：2022-08-12 11:13:38
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [SingleInvoiceInfo](https://cloud.tencent.com/document/api/866/33527#SingleInvoiceInfo)
-
-	* 新增成员：Row
-
-
-
-
-## 弹性微服务(tem) 版本：2021-07-01
-
-### 第 28 次发布
-
-发布时间：2022-08-12 11:47:08
+发布时间：2022-08-15 06:07:00
 
 本次发布包含了以下内容：
 
@@ -47,14 +12,313 @@
 
 修改接口：
 
-* [DeployApplication](https://cloud.tencent.com/document/api/1371/60158)
+* [CreateAudioModerationSyncTask](https://cloud.tencent.com/document/api/1219/56755)
 
-	* 新增入参：EnableMetrics
-
-
+	* 新增出参：SubLabel, LanguageResults, SpeakerResults, RecognitionResults
 
 
-## 弹性微服务(tem) 版本：2020-12-21
+新增数据结构：
+
+* [AudioResultDetailSpeakerResult](https://cloud.tencent.com/document/api/1219/53259#AudioResultDetailSpeakerResult)
+
+
+
+## 音频内容检测(ams) 版本：2020-06-08
+
+
+
+## 计费相关(billing) 版本：2018-07-09
+
+### 第 35 次发布
+
+发布时间：2022-08-15 06:09:23
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [BusinessSummaryOverviewItem](https://cloud.tencent.com/document/api/555/19183#BusinessSummaryOverviewItem)
+
+	* 新增成员：TransferPayAmount
+
+* [BusinessSummaryTotal](https://cloud.tencent.com/document/api/555/19183#BusinessSummaryTotal)
+
+	* 新增成员：TransferPayAmount
+
+* [PayModeSummaryOverviewItem](https://cloud.tencent.com/document/api/555/19183#PayModeSummaryOverviewItem)
+
+	* 新增成员：TransferPayAmount
+
+* [ProjectSummaryOverviewItem](https://cloud.tencent.com/document/api/555/19183#ProjectSummaryOverviewItem)
+
+	* 新增成员：TransferPayAmount
+
+* [RegionSummaryOverviewItem](https://cloud.tencent.com/document/api/555/19183#RegionSummaryOverviewItem)
+
+	* 新增成员：TransferPayAmount
+
+* [TagSummaryOverviewItem](https://cloud.tencent.com/document/api/555/19183#TagSummaryOverviewItem)
+
+	* 新增成员：CashPayAmount, IncentivePayAmount, VoucherPayAmount, TransferPayAmount
+
+
+
+
+## 智能推荐平台(irp) 版本：2022-08-05
+
+### 第 1 次发布
+
+发布时间：2022-08-12 14:06:35
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [FeedRecommend](https://cloud.tencent.com/document/api/1541/78995)
+* [ReportFeedBehavior](https://cloud.tencent.com/document/api/1541/78994)
+* [ReportFeedItem](https://cloud.tencent.com/document/api/1541/78993)
+* [ReportFeedUser](https://cloud.tencent.com/document/api/1541/78992)
+
+新增数据结构：
+
+* [DislikeInfo](https://cloud.tencent.com/document/api/1541/78996#DislikeInfo)
+* [DocItem](https://cloud.tencent.com/document/api/1541/78996#DocItem)
+* [FeedBehaviorInfo](https://cloud.tencent.com/document/api/1541/78996#FeedBehaviorInfo)
+* [FeedUserInfo](https://cloud.tencent.com/document/api/1541/78996#FeedUserInfo)
+* [RecItemData](https://cloud.tencent.com/document/api/1541/78996#RecItemData)
+* [UserIdInfo](https://cloud.tencent.com/document/api/1541/78996#UserIdInfo)
+
+
+
+## 智能推荐平台(irp) 版本：2022-03-24
+
+
+
+## 云数据库 MongoDB(mongodb) 版本：2019-07-25
+
+### 第 23 次发布
+
+发布时间：2022-08-15 06:31:24
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [TerminateDBInstances](https://cloud.tencent.com/document/api/240/79047)
+
+
+
+## 云数据库 MongoDB(mongodb) 版本：2018-04-08
+
+
+
+## 私有域解析 Private DNS(privatedns) 版本：2020-10-28
+
+### 第 9 次发布
+
+发布时间：2022-08-15 06:34:53
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreatePrivateZone](https://cloud.tencent.com/document/api/1338/55946)
+
+	* 新增入参：CnameSpeedupStatus
+
+* [ModifyPrivateZone](https://cloud.tencent.com/document/api/1338/55935)
+
+	* 新增入参：CnameSpeedupStatus
+
+
+修改数据结构：
+
+* [PrivateZone](https://cloud.tencent.com/document/api/1338/55947#PrivateZone)
+
+	* 新增成员：CnameSpeedupStatus
+
+
+
+
+## 性能测试服务(pts) 版本：2021-07-28
+
+### 第 2 次发布
+
+发布时间：2022-08-15 06:35:03
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeScenarioWithJobs](https://cloud.tencent.com/document/api/1484/78066)
+
+	* 新增入参：IgnoreDataset
+
+
+
+
+## 云托管 CloudBase Run(tcbr) 版本：2022-02-17
+
+### 第 7 次发布
+
+发布时间：2022-08-15 06:39:26
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ServerBaseInfo](https://cloud.tencent.com/document/api/1243/75713#ServerBaseInfo)
+
+	* 新增成员：AccessTypes
+
+
+
+
+## 容器镜像服务(tcr) 版本：2019-09-24
+
+### 第 42 次发布
+
+发布时间：2022-08-15 06:39:36
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeImages](https://cloud.tencent.com/document/api/1141/42723)
+
+	* 新增入参：Digest
+
+* [DescribeNamespaces](https://cloud.tencent.com/document/api/1141/42765)
+
+	* 新增入参：KmsSignPolicy
+
+
+新增数据结构：
+
+* [KeyValueString](https://cloud.tencent.com/document/api/1141/41603#KeyValueString)
+
+修改数据结构：
+
+* [TcrImageInfo](https://cloud.tencent.com/document/api/1141/41603#TcrImageInfo)
+
+	* 新增成员：Kind, KmsSignature
+
+* [TcrNamespaceInfo](https://cloud.tencent.com/document/api/1141/41603#TcrNamespaceInfo)
+
+	* 新增成员：Metadata
+
+
+
+
+## 容器安全服务(tcss) 版本：2020-11-01
+
+### 第 24 次发布
+
+发布时间：2022-08-15 06:40:11
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeClusterSummary](https://cloud.tencent.com/document/api/1285/65447)
+
+	* 新增出参：CheckedClusterCount, AutoCheckClusterCount, ManualCheckClusterCount, FailedClusterCount
+
+
+
+
+## 边缘安全加速平台(teo) 版本：2022-01-06
+
+### 第 18 次发布
+
+发布时间：2022-08-15 06:42:02
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateApplicationProxy](https://cloud.tencent.com/document/api/1552/74833)
+
+	* 新增入参：Ipv6
+
+* [DescribeApplicationProxy](https://cloud.tencent.com/document/api/1552/74828)
+
+	* 新增入参：ProxyId
+
+* [DescribeApplicationProxyDetail](https://cloud.tencent.com/document/api/1552/74827)
+
+	* 新增出参：Ipv6
+
+* [DescribeZoneSetting](https://cloud.tencent.com/document/api/1552/74820)
+
+	* 新增出参：Ipv6
+
+* [ModifyApplicationProxy](https://cloud.tencent.com/document/api/1552/74826)
+
+	* 新增入参：Ipv6
+
+* [ModifyZoneSetting](https://cloud.tencent.com/document/api/1552/74819)
+
+	* 新增入参：Ipv6
+
+
+新增数据结构：
+
+* [Ipv6Access](https://cloud.tencent.com/document/api/1552/73155#Ipv6Access)
+
+修改数据结构：
+
+* [ApplicationProxy](https://cloud.tencent.com/document/api/1552/73155#ApplicationProxy)
+
+	* 新增成员：Ipv6
+
+* [Origin](https://cloud.tencent.com/document/api/1552/73155#Origin)
+
+	* 新增成员：Origins, BackupOrigins, CosPrivateAccess
+
+
+
+
+## 语音合成(tts) 版本：2019-08-23
+
+### 第 7 次发布
+
+发布时间：2022-08-15 06:46:14
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [TextToVoice](https://cloud.tencent.com/document/api/1073/37995)
+
+	* 新增入参：EnableSubtitle
+
+	* 新增出参：Subtitles
+
+
+新增数据结构：
+
+* [Subtitle](https://cloud.tencent.com/document/api/1073/57374#Subtitle)
 
 
 
@@ -1363,6 +1627,25 @@
 
 
 ## 音频内容检测(ams) 版本：2020-12-29
+
+### 第 7 次发布
+
+发布时间：2022-08-15 06:07:00
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateAudioModerationSyncTask](https://cloud.tencent.com/document/api/1219/56755)
+
+	* 新增出参：SubLabel, LanguageResults, SpeakerResults, RecognitionResults
+
+
+新增数据结构：
+
+* [[AudioResultDetailSpeakerResult](https://cloud.tencent.com/document/api/1219/53259#AudioResultDetailSpeakerResult)](https://cloud.tencent.com/document/api/1219/53259#[AudioResultDetailSpeakerResult](https://cloud.tencent.com/document/api/1219/53259#AudioResultDetailSpeakerResult))
 
 ### 第 6 次发布
 
@@ -6310,6 +6593,41 @@
 
 
 ## 计费相关(billing) 版本：2018-07-09
+
+### 第 35 次发布
+
+发布时间：2022-08-15 06:09:23
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [BusinessSummaryOverviewItem](https://cloud.tencent.com/document/api/555/19183#BusinessSummaryOverviewItem)
+
+	* 新增成员：TransferPayAmount
+
+* [BusinessSummaryTotal](https://cloud.tencent.com/document/api/555/19183#BusinessSummaryTotal)
+
+	* 新增成员：TransferPayAmount
+
+* [PayModeSummaryOverviewItem](https://cloud.tencent.com/document/api/555/19183#PayModeSummaryOverviewItem)
+
+	* 新增成员：TransferPayAmount
+
+* [ProjectSummaryOverviewItem](https://cloud.tencent.com/document/api/555/19183#ProjectSummaryOverviewItem)
+
+	* 新增成员：TransferPayAmount
+
+* [RegionSummaryOverviewItem](https://cloud.tencent.com/document/api/555/19183#RegionSummaryOverviewItem)
+
+	* 新增成员：TransferPayAmount
+
+* [TagSummaryOverviewItem](https://cloud.tencent.com/document/api/555/19183#TagSummaryOverviewItem)
+
+	* 新增成员：CashPayAmount, IncentivePayAmount, VoucherPayAmount, TransferPayAmount
+
 
 ### 第 34 次发布
 
@@ -36693,7 +37011,7 @@
 
 新增接口：
 
-* [[CreateFlowSignReview](https://cloud.tencent.com/document/api/1323/78980)](https://cloud.tencent.com/document/api/#/#)
+* [CreateFlowSignReview](https://cloud.tencent.com/document/api/1323/78980)
 
 ### 第 13 次发布
 
@@ -46460,6 +46778,34 @@
 
 
 
+## 智能推荐平台(irp) 版本：2022-08-05
+
+### 第 1 次发布
+
+发布时间：2022-08-12 14:06:35
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[FeedRecommend](https://cloud.tencent.com/document/api/1541/78995)](https://cloud.tencent.com/document/api/#/#)
+* [[ReportFeedBehavior](https://cloud.tencent.com/document/api/1541/78994)](https://cloud.tencent.com/document/api/#/#)
+* [[ReportFeedItem](https://cloud.tencent.com/document/api/1541/78993)](https://cloud.tencent.com/document/api/#/#)
+* [[ReportFeedUser](https://cloud.tencent.com/document/api/1541/78992)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[DislikeInfo](https://cloud.tencent.com/document/api/1541/78996#DislikeInfo)](https://cloud.tencent.com/document/api/1541/78996#[DislikeInfo](https://cloud.tencent.com/document/api/1541/78996#DislikeInfo))
+* [[DocItem](https://cloud.tencent.com/document/api/1541/78996#DocItem)](https://cloud.tencent.com/document/api/1541/78996#[DocItem](https://cloud.tencent.com/document/api/1541/78996#DocItem))
+* [[FeedBehaviorInfo](https://cloud.tencent.com/document/api/1541/78996#FeedBehaviorInfo)](https://cloud.tencent.com/document/api/1541/78996#[FeedBehaviorInfo](https://cloud.tencent.com/document/api/1541/78996#FeedBehaviorInfo))
+* [[FeedUserInfo](https://cloud.tencent.com/document/api/1541/78996#FeedUserInfo)](https://cloud.tencent.com/document/api/1541/78996#[FeedUserInfo](https://cloud.tencent.com/document/api/1541/78996#FeedUserInfo))
+* [[RecItemData](https://cloud.tencent.com/document/api/1541/78996#RecItemData)](https://cloud.tencent.com/document/api/1541/78996#[RecItemData](https://cloud.tencent.com/document/api/1541/78996#RecItemData))
+* [[UserIdInfo](https://cloud.tencent.com/document/api/1541/78996#UserIdInfo)](https://cloud.tencent.com/document/api/1541/78996#[UserIdInfo](https://cloud.tencent.com/document/api/1541/78996#UserIdInfo))
+
+
+
 
 ## 视频智能标签(ivld) 版本：2021-09-03
 
@@ -50861,6 +51207,18 @@
 
 
 ## 云数据库 MongoDB(mongodb) 版本：2019-07-25
+
+### 第 23 次发布
+
+发布时间：2022-08-15 06:31:24
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[TerminateDBInstances](https://cloud.tencent.com/document/api/240/79047)](https://cloud.tencent.com/document/api/#/#)
 
 ### 第 22 次发布
 
@@ -57947,6 +58305,32 @@
 
 ## 私有域解析 Private DNS(privatedns) 版本：2020-10-28
 
+### 第 9 次发布
+
+发布时间：2022-08-15 06:34:53
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreatePrivateZone](https://cloud.tencent.com/document/api/1338/55946)
+
+	* 新增入参：CnameSpeedupStatus
+
+* [ModifyPrivateZone](https://cloud.tencent.com/document/api/1338/55935)
+
+	* 新增入参：CnameSpeedupStatus
+
+
+修改数据结构：
+
+* [PrivateZone](https://cloud.tencent.com/document/api/1338/55947#PrivateZone)
+
+	* 新增成员：CnameSpeedupStatus
+
+
 ### 第 8 次发布
 
 发布时间：2022-08-01 11:48:13
@@ -58118,6 +58502,21 @@
 
 
 ## 性能测试服务(pts) 版本：2021-07-28
+
+### 第 2 次发布
+
+发布时间：2022-08-15 06:35:03
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeScenarioWithJobs](https://cloud.tencent.com/document/api/1484/78066)
+
+	* 新增入参：IgnoreDataset
+
 
 ### 第 1 次发布
 
@@ -67039,6 +67438,21 @@
 
 ## 云托管 CloudBase Run(tcbr) 版本：2022-02-17
 
+### 第 7 次发布
+
+发布时间：2022-08-15 06:39:26
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ServerBaseInfo](https://cloud.tencent.com/document/api/1243/75713#ServerBaseInfo)
+
+	* 新增成员：AccessTypes
+
+
 ### 第 6 次发布
 
 发布时间：2022-08-02 06:31:39
@@ -67758,6 +68172,40 @@
 
 
 ## 容器镜像服务(tcr) 版本：2019-09-24
+
+### 第 42 次发布
+
+发布时间：2022-08-15 06:39:36
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeImages](https://cloud.tencent.com/document/api/1141/42723)
+
+	* 新增入参：Digest
+
+* [DescribeNamespaces](https://cloud.tencent.com/document/api/1141/42765)
+
+	* 新增入参：KmsSignPolicy
+
+
+新增数据结构：
+
+* [[KeyValueString](https://cloud.tencent.com/document/api/1141/41603#KeyValueString)](https://cloud.tencent.com/document/api/1141/41603#[KeyValueString](https://cloud.tencent.com/document/api/1141/41603#KeyValueString))
+
+修改数据结构：
+
+* [TcrImageInfo](https://cloud.tencent.com/document/api/1141/41603#TcrImageInfo)
+
+	* 新增成员：Kind, KmsSignature
+
+* [TcrNamespaceInfo](https://cloud.tencent.com/document/api/1141/41603#TcrNamespaceInfo)
+
+	* 新增成员：Metadata
+
 
 ### 第 41 次发布
 
@@ -68553,6 +69001,21 @@
 
 
 ## 容器安全服务(tcss) 版本：2020-11-01
+
+### 第 24 次发布
+
+发布时间：2022-08-15 06:40:11
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeClusterSummary](https://cloud.tencent.com/document/api/1285/65447)
+
+	* 新增出参：CheckedClusterCount, AutoCheckClusterCount, ManualCheckClusterCount, FailedClusterCount
+
 
 ### 第 23 次发布
 
@@ -71248,6 +71711,56 @@
 
 
 ## 边缘安全加速平台(teo) 版本：2022-01-06
+
+### 第 18 次发布
+
+发布时间：2022-08-15 06:42:02
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateApplicationProxy](https://cloud.tencent.com/document/api/1552/74833)
+
+	* 新增入参：Ipv6
+
+* [DescribeApplicationProxy](https://cloud.tencent.com/document/api/1552/74828)
+
+	* 新增入参：ProxyId
+
+* [DescribeApplicationProxyDetail](https://cloud.tencent.com/document/api/1552/74827)
+
+	* 新增出参：Ipv6
+
+* [DescribeZoneSetting](https://cloud.tencent.com/document/api/1552/74820)
+
+	* 新增出参：Ipv6
+
+* [ModifyApplicationProxy](https://cloud.tencent.com/document/api/1552/74826)
+
+	* 新增入参：Ipv6
+
+* [ModifyZoneSetting](https://cloud.tencent.com/document/api/1552/74819)
+
+	* 新增入参：Ipv6
+
+
+新增数据结构：
+
+* [[Ipv6Access](https://cloud.tencent.com/document/api/1552/73155#Ipv6Access)](https://cloud.tencent.com/document/api/1552/73155#[Ipv6Access](https://cloud.tencent.com/document/api/1552/73155#Ipv6Access))
+
+修改数据结构：
+
+* [ApplicationProxy](https://cloud.tencent.com/document/api/1552/73155#ApplicationProxy)
+
+	* 新增成员：Ipv6
+
+* [Origin](https://cloud.tencent.com/document/api/1552/73155#Origin)
+
+	* 新增成员：Origins, BackupOrigins, CosPrivateAccess
+
 
 ### 第 17 次发布
 
@@ -80031,6 +80544,27 @@
 
 
 ## 语音合成(tts) 版本：2019-08-23
+
+### 第 7 次发布
+
+发布时间：2022-08-15 06:46:14
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [TextToVoice](https://cloud.tencent.com/document/api/1073/37995)
+
+	* 新增入参：EnableSubtitle
+
+	* 新增出参：Subtitles
+
+
+新增数据结构：
+
+* [[Subtitle](https://cloud.tencent.com/document/api/1073/57374#Subtitle)](https://cloud.tencent.com/document/api/1073/57374#[Subtitle](https://cloud.tencent.com/document/api/1073/57374#Subtitle))
 
 ### 第 6 次发布
 

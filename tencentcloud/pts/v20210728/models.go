@@ -3228,6 +3228,9 @@ type DescribeScenarioWithJobsRequestParams struct {
 
 	// 是否需要返回场景的脚本内容
 	IgnoreScript *bool `json:"IgnoreScript,omitempty" name:"IgnoreScript"`
+
+	// 是否需要返回测试数据文件信息
+	IgnoreDataset *bool `json:"IgnoreDataset,omitempty" name:"IgnoreDataset"`
 }
 
 type DescribeScenarioWithJobsRequest struct {
@@ -3262,6 +3265,9 @@ type DescribeScenarioWithJobsRequest struct {
 
 	// 是否需要返回场景的脚本内容
 	IgnoreScript *bool `json:"IgnoreScript,omitempty" name:"IgnoreScript"`
+
+	// 是否需要返回测试数据文件信息
+	IgnoreDataset *bool `json:"IgnoreDataset,omitempty" name:"IgnoreDataset"`
 }
 
 func (r *DescribeScenarioWithJobsRequest) ToJsonString() string {
@@ -3286,6 +3292,7 @@ func (r *DescribeScenarioWithJobsRequest) FromJsonString(s string) error {
 	delete(f, "Ascend")
 	delete(f, "ScenarioRelatedJobsParams")
 	delete(f, "IgnoreScript")
+	delete(f, "IgnoreDataset")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeScenarioWithJobsRequest has unknown keys!", "")
 	}

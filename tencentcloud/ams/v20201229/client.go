@@ -140,31 +140,31 @@ func NewCreateAudioModerationSyncTaskResponse() (response *CreateAudioModeration
 }
 
 // CreateAudioModerationSyncTask
-// 本接口（CreateAudioModerationSyncTask） 用于提交短音频内容进行智能审核任务，使用前请您登录控制台开通音频内容安全服务。
+// 本接口（CreateAudioModerationSyncTask） 用于提交短音频内容进行智能审核任务，使用前请您使用腾讯云主账号登录控制台 [开通音频内容安全服务](https://console.cloud.tencent.com/cms/audio/package) 并调整好对应的业务配置。
 //
 // 
 //
-// 功能使用说明：
+// ### 接口使用说明：
 //
-// 前往“内容安全控制台-音频内容安全”开启使用音频内容安全服务，首次开通可获得10小时免费调用时长；
+// - 前往“[内容安全控制台-图片内容安全](https://console.cloud.tencent.com/cms/audio/package)”开启使用音频内容安全服务，首次开通服务的用户可免费领用试用套餐包，包含**10小时**免费调用时长，有效期为1个月。
+//
+// - 该接口为收费接口，计费方式敬请参见 [腾讯云音频内容安全定价](https://cloud.tencent.com/product/ams/pricing)。
 //
 // 
 //
-// 接口限制：
+// ### 接口调用说明：
 //
-// - 音频文件大小支持：文件 < 5M;
+// - 音频文件大小支持：**文件 < 5M**;
 //
-// - 音频文件时长小于60s，超过60s音频调用则报错；
+// - 音频文件**时长小于60s**，超过60s音频调用则报错；
 //
-// - 音频码率类型支持：8Kbps - 16Kbps；
-//
-// - 音频文件支持格式：wav、mp3；
+// - 音频文件支持格式：**wav (PCM编码)** 、**mp3**、**m4a** (采样率：16kHz~48kHz，位深：16bit 小端，声道数：单声道/双声道，建议格式：**16kHz/16bit/单声道**)；
 //
 // - 接口仅限音频文件传入，视频文件传入请调用长音频异步接口；
 //
-// - 接口默认QPS为10，默认接口请求频率限制20次/秒，如需要更高的并发或请求频率，请工单咨询；
+// - 接口**默认QPS为20**，如需自定义配置并发或请求频率，请工单咨询；
 //
-// - 接口超时为5s，每一次请求超过该时长会报错；
+// - 接口**默认超时为5s**，请求如超过该时长则接口会报错。
 //
 // 可能返回的错误码:
 //  DRYRUNOPERATION = "DryRunOperation"
@@ -201,31 +201,31 @@ func (c *Client) CreateAudioModerationSyncTask(request *CreateAudioModerationSyn
 }
 
 // CreateAudioModerationSyncTask
-// 本接口（CreateAudioModerationSyncTask） 用于提交短音频内容进行智能审核任务，使用前请您登录控制台开通音频内容安全服务。
+// 本接口（CreateAudioModerationSyncTask） 用于提交短音频内容进行智能审核任务，使用前请您使用腾讯云主账号登录控制台 [开通音频内容安全服务](https://console.cloud.tencent.com/cms/audio/package) 并调整好对应的业务配置。
 //
 // 
 //
-// 功能使用说明：
+// ### 接口使用说明：
 //
-// 前往“内容安全控制台-音频内容安全”开启使用音频内容安全服务，首次开通可获得10小时免费调用时长；
+// - 前往“[内容安全控制台-图片内容安全](https://console.cloud.tencent.com/cms/audio/package)”开启使用音频内容安全服务，首次开通服务的用户可免费领用试用套餐包，包含**10小时**免费调用时长，有效期为1个月。
+//
+// - 该接口为收费接口，计费方式敬请参见 [腾讯云音频内容安全定价](https://cloud.tencent.com/product/ams/pricing)。
 //
 // 
 //
-// 接口限制：
+// ### 接口调用说明：
 //
-// - 音频文件大小支持：文件 < 5M;
+// - 音频文件大小支持：**文件 < 5M**;
 //
-// - 音频文件时长小于60s，超过60s音频调用则报错；
+// - 音频文件**时长小于60s**，超过60s音频调用则报错；
 //
-// - 音频码率类型支持：8Kbps - 16Kbps；
-//
-// - 音频文件支持格式：wav、mp3；
+// - 音频文件支持格式：**wav (PCM编码)** 、**mp3**、**m4a** (采样率：16kHz~48kHz，位深：16bit 小端，声道数：单声道/双声道，建议格式：**16kHz/16bit/单声道**)；
 //
 // - 接口仅限音频文件传入，视频文件传入请调用长音频异步接口；
 //
-// - 接口默认QPS为10，默认接口请求频率限制20次/秒，如需要更高的并发或请求频率，请工单咨询；
+// - 接口**默认QPS为20**，如需自定义配置并发或请求频率，请工单咨询；
 //
-// - 接口超时为5s，每一次请求超过该时长会报错；
+// - 接口**默认超时为5s**，请求如超过该时长则接口会报错。
 //
 // 可能返回的错误码:
 //  DRYRUNOPERATION = "DryRunOperation"
