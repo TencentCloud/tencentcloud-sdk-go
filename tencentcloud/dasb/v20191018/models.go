@@ -100,6 +100,10 @@ type Acl struct {
 
 	// 访问权限状态，1 - 已生效，2 - 未生效，3 - 已过期
 	Status *uint64 `json:"Status,omitempty" name:"Status"`
+
+	// 所属部门的信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Department *Department `json:"Department,omitempty" name:"Department"`
 }
 
 // Predefined struct for user
@@ -371,6 +375,9 @@ type CreateAclRequestParams struct {
 	// 访问权限失效时间，如:"2021-09-23T00:00:00+00:00"
 	// 生效、失效时间不填则访问权限长期有效
 	ValidateTo *string `json:"ValidateTo,omitempty" name:"ValidateTo"`
+
+	// 访问权限所属部门的ID
+	DepartmentId *string `json:"DepartmentId,omitempty" name:"DepartmentId"`
 }
 
 type CreateAclRequest struct {
@@ -449,6 +456,9 @@ type CreateAclRequest struct {
 	// 访问权限失效时间，如:"2021-09-23T00:00:00+00:00"
 	// 生效、失效时间不填则访问权限长期有效
 	ValidateTo *string `json:"ValidateTo,omitempty" name:"ValidateTo"`
+
+	// 访问权限所属部门的ID
+	DepartmentId *string `json:"DepartmentId,omitempty" name:"DepartmentId"`
 }
 
 func (r *CreateAclRequest) ToJsonString() string {
@@ -487,6 +497,7 @@ func (r *CreateAclRequest) FromJsonString(s string) error {
 	delete(f, "AllowFileDel")
 	delete(f, "ValidateFrom")
 	delete(f, "ValidateTo")
+	delete(f, "DepartmentId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAclRequest has unknown keys!", "")
 	}
@@ -522,6 +533,9 @@ func (r *CreateAclResponse) FromJsonString(s string) error {
 type CreateDeviceGroupRequestParams struct {
 	// 资产组名，最大长度32字符
 	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 资产组所属部门ID，如：1.2.3
+	DepartmentId *string `json:"DepartmentId,omitempty" name:"DepartmentId"`
 }
 
 type CreateDeviceGroupRequest struct {
@@ -529,6 +543,9 @@ type CreateDeviceGroupRequest struct {
 	
 	// 资产组名，最大长度32字符
 	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 资产组所属部门ID，如：1.2.3
+	DepartmentId *string `json:"DepartmentId,omitempty" name:"DepartmentId"`
 }
 
 func (r *CreateDeviceGroupRequest) ToJsonString() string {
@@ -544,6 +561,7 @@ func (r *CreateDeviceGroupRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "Name")
+	delete(f, "DepartmentId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDeviceGroupRequest has unknown keys!", "")
 	}
@@ -579,6 +597,9 @@ func (r *CreateDeviceGroupResponse) FromJsonString(s string) error {
 type CreateUserGroupRequestParams struct {
 	// 用户组名，最大长度32字符
 	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 用户组所属部门的ID，如：1.2.3
+	DepartmentId *string `json:"DepartmentId,omitempty" name:"DepartmentId"`
 }
 
 type CreateUserGroupRequest struct {
@@ -586,6 +607,9 @@ type CreateUserGroupRequest struct {
 	
 	// 用户组名，最大长度32字符
 	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 用户组所属部门的ID，如：1.2.3
+	DepartmentId *string `json:"DepartmentId,omitempty" name:"DepartmentId"`
 }
 
 func (r *CreateUserGroupRequest) ToJsonString() string {
@@ -601,6 +625,7 @@ func (r *CreateUserGroupRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "Name")
+	delete(f, "DepartmentId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateUserGroupRequest has unknown keys!", "")
 	}
@@ -662,6 +687,9 @@ type CreateUserRequestParams struct {
 
 	// 访问时间段限制， 由0、1组成的字符串，长度168(7 × 24)，代表该用户在一周中允许访问的时间段。字符串中第N个字符代表在一周中的第N个小时， 0 - 代表不允许访问，1 - 代表允许访问
 	ValidateTime *string `json:"ValidateTime,omitempty" name:"ValidateTime"`
+
+	// 所属部门ID，如：“1.2.3”
+	DepartmentId *string `json:"DepartmentId,omitempty" name:"DepartmentId"`
 }
 
 type CreateUserRequest struct {
@@ -695,6 +723,9 @@ type CreateUserRequest struct {
 
 	// 访问时间段限制， 由0、1组成的字符串，长度168(7 × 24)，代表该用户在一周中允许访问的时间段。字符串中第N个字符代表在一周中的第N个小时， 0 - 代表不允许访问，1 - 代表允许访问
 	ValidateTime *string `json:"ValidateTime,omitempty" name:"ValidateTime"`
+
+	// 所属部门ID，如：“1.2.3”
+	DepartmentId *string `json:"DepartmentId,omitempty" name:"DepartmentId"`
 }
 
 func (r *CreateUserRequest) ToJsonString() string {
@@ -718,6 +749,7 @@ func (r *CreateUserRequest) FromJsonString(s string) error {
 	delete(f, "GroupIdSet")
 	delete(f, "AuthType")
 	delete(f, "ValidateTime")
+	delete(f, "DepartmentId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateUserRequest has unknown keys!", "")
 	}
@@ -1087,6 +1119,18 @@ func (r *DeleteUsersResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type Department struct {
+	// 部门ID
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 部门名称，1 - 256个字符
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 部门管理员账号ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Managers []*string `json:"Managers,omitempty" name:"Managers"`
+}
+
 // Predefined struct for user
 type DescribeAclsRequestParams struct {
 	// 访问权限ID集合
@@ -1112,6 +1156,9 @@ type DescribeAclsRequestParams struct {
 
 	// 访问权限状态，1 - 已生效，2 - 未生效，3 - 已过期
 	Status *uint64 `json:"Status,omitempty" name:"Status"`
+
+	// 部门ID，用于过滤属于某个部门的访问权限
+	DepartmentId *string `json:"DepartmentId,omitempty" name:"DepartmentId"`
 }
 
 type DescribeAclsRequest struct {
@@ -1140,6 +1187,9 @@ type DescribeAclsRequest struct {
 
 	// 访问权限状态，1 - 已生效，2 - 未生效，3 - 已过期
 	Status *uint64 `json:"Status,omitempty" name:"Status"`
+
+	// 部门ID，用于过滤属于某个部门的访问权限
+	DepartmentId *string `json:"DepartmentId,omitempty" name:"DepartmentId"`
 }
 
 func (r *DescribeAclsRequest) ToJsonString() string {
@@ -1162,6 +1212,7 @@ func (r *DescribeAclsRequest) FromJsonString(s string) error {
 	delete(f, "AuthorizedUserIdSet")
 	delete(f, "AuthorizedDeviceIdSet")
 	delete(f, "Status")
+	delete(f, "DepartmentId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAclsRequest has unknown keys!", "")
 	}
@@ -1272,6 +1323,9 @@ type DescribeDeviceGroupMembersRequestParams struct {
 
 	// 资产类型，1 - Linux，2 - Windows，3 - MySQL，4 - SQLServer
 	Kind *uint64 `json:"Kind,omitempty" name:"Kind"`
+
+	// 所属部门ID
+	DepartmentId *string `json:"DepartmentId,omitempty" name:"DepartmentId"`
 }
 
 type DescribeDeviceGroupMembersRequest struct {
@@ -1294,6 +1348,9 @@ type DescribeDeviceGroupMembersRequest struct {
 
 	// 资产类型，1 - Linux，2 - Windows，3 - MySQL，4 - SQLServer
 	Kind *uint64 `json:"Kind,omitempty" name:"Kind"`
+
+	// 所属部门ID
+	DepartmentId *string `json:"DepartmentId,omitempty" name:"DepartmentId"`
 }
 
 func (r *DescribeDeviceGroupMembersRequest) ToJsonString() string {
@@ -1314,6 +1371,7 @@ func (r *DescribeDeviceGroupMembersRequest) FromJsonString(s string) error {
 	delete(f, "Offset")
 	delete(f, "Limit")
 	delete(f, "Kind")
+	delete(f, "DepartmentId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDeviceGroupMembersRequest has unknown keys!", "")
 	}
@@ -1361,6 +1419,9 @@ type DescribeDeviceGroupsRequestParams struct {
 
 	// 每页条目数量，缺省20，最大500
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 部门ID，用于过滤属于某个部门的资产组
+	DepartmentId *string `json:"DepartmentId,omitempty" name:"DepartmentId"`
 }
 
 type DescribeDeviceGroupsRequest struct {
@@ -1377,6 +1438,9 @@ type DescribeDeviceGroupsRequest struct {
 
 	// 每页条目数量，缺省20，最大500
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 部门ID，用于过滤属于某个部门的资产组
+	DepartmentId *string `json:"DepartmentId,omitempty" name:"DepartmentId"`
 }
 
 func (r *DescribeDeviceGroupsRequest) ToJsonString() string {
@@ -1395,6 +1459,7 @@ func (r *DescribeDeviceGroupsRequest) FromJsonString(s string) error {
 	delete(f, "Name")
 	delete(f, "Offset")
 	delete(f, "Limit")
+	delete(f, "DepartmentId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDeviceGroupsRequest has unknown keys!", "")
 	}
@@ -1460,6 +1525,9 @@ type DescribeDevicesRequestParams struct {
 
 	// 可提供按照多种类型过滤, 1 - Linux, 2 - Windows, 3 - MySQL, 4 - SQLServer
 	KindSet []*uint64 `json:"KindSet,omitempty" name:"KindSet"`
+
+	// 过滤条件，可按照部门ID进行过滤
+	DepartmentId *string `json:"DepartmentId,omitempty" name:"DepartmentId"`
 }
 
 type DescribeDevicesRequest struct {
@@ -1494,6 +1562,9 @@ type DescribeDevicesRequest struct {
 
 	// 可提供按照多种类型过滤, 1 - Linux, 2 - Windows, 3 - MySQL, 4 - SQLServer
 	KindSet []*uint64 `json:"KindSet,omitempty" name:"KindSet"`
+
+	// 过滤条件，可按照部门ID进行过滤
+	DepartmentId *string `json:"DepartmentId,omitempty" name:"DepartmentId"`
 }
 
 func (r *DescribeDevicesRequest) ToJsonString() string {
@@ -1518,6 +1589,7 @@ func (r *DescribeDevicesRequest) FromJsonString(s string) error {
 	delete(f, "AuthorizedUserIdSet")
 	delete(f, "ResourceIdSet")
 	delete(f, "KindSet")
+	delete(f, "DepartmentId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDevicesRequest has unknown keys!", "")
 	}
@@ -1639,6 +1711,9 @@ type DescribeUserGroupMembersRequestParams struct {
 
 	// 每页条目数量，默认20, 最大500
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 所属部门ID
+	DepartmentId *string `json:"DepartmentId,omitempty" name:"DepartmentId"`
 }
 
 type DescribeUserGroupMembersRequest struct {
@@ -1658,6 +1733,9 @@ type DescribeUserGroupMembersRequest struct {
 
 	// 每页条目数量，默认20, 最大500
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 所属部门ID
+	DepartmentId *string `json:"DepartmentId,omitempty" name:"DepartmentId"`
 }
 
 func (r *DescribeUserGroupMembersRequest) ToJsonString() string {
@@ -1677,6 +1755,7 @@ func (r *DescribeUserGroupMembersRequest) FromJsonString(s string) error {
 	delete(f, "Name")
 	delete(f, "Offset")
 	delete(f, "Limit")
+	delete(f, "DepartmentId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeUserGroupMembersRequest has unknown keys!", "")
 	}
@@ -1724,6 +1803,9 @@ type DescribeUserGroupsRequestParams struct {
 
 	// 每页条目数量，缺省20，最大500
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 部门ID，用于过滤属于某个部门的用户组
+	DepartmentId *string `json:"DepartmentId,omitempty" name:"DepartmentId"`
 }
 
 type DescribeUserGroupsRequest struct {
@@ -1740,6 +1822,9 @@ type DescribeUserGroupsRequest struct {
 
 	// 每页条目数量，缺省20，最大500
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 部门ID，用于过滤属于某个部门的用户组
+	DepartmentId *string `json:"DepartmentId,omitempty" name:"DepartmentId"`
 }
 
 func (r *DescribeUserGroupsRequest) ToJsonString() string {
@@ -1758,6 +1843,7 @@ func (r *DescribeUserGroupsRequest) FromJsonString(s string) error {
 	delete(f, "Name")
 	delete(f, "Offset")
 	delete(f, "Limit")
+	delete(f, "DepartmentId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeUserGroupsRequest has unknown keys!", "")
 	}
@@ -1818,6 +1904,9 @@ type DescribeUsersRequestParams struct {
 
 	// 认证方式，0 - 本地, 1 - LDAP, 2 - OAuth, 不传为全部
 	AuthTypeSet []*uint64 `json:"AuthTypeSet,omitempty" name:"AuthTypeSet"`
+
+	// 部门ID，用于过滤属于某个部门的用户
+	DepartmentId *string `json:"DepartmentId,omitempty" name:"DepartmentId"`
 }
 
 type DescribeUsersRequest struct {
@@ -1847,6 +1936,9 @@ type DescribeUsersRequest struct {
 
 	// 认证方式，0 - 本地, 1 - LDAP, 2 - OAuth, 不传为全部
 	AuthTypeSet []*uint64 `json:"AuthTypeSet,omitempty" name:"AuthTypeSet"`
+
+	// 部门ID，用于过滤属于某个部门的用户
+	DepartmentId *string `json:"DepartmentId,omitempty" name:"DepartmentId"`
 }
 
 func (r *DescribeUsersRequest) ToJsonString() string {
@@ -1869,6 +1961,7 @@ func (r *DescribeUsersRequest) FromJsonString(s string) error {
 	delete(f, "Phone")
 	delete(f, "AuthorizedDeviceIdSet")
 	delete(f, "AuthTypeSet")
+	delete(f, "DepartmentId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeUsersRequest has unknown keys!", "")
 	}
@@ -1946,6 +2039,10 @@ type Device struct {
 	// 堡垒机服务信息，注意没有绑定服务时为null
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Resource *Resource `json:"Resource,omitempty" name:"Resource"`
+
+	// 资产所属部门
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Department *Department `json:"Department,omitempty" name:"Department"`
 }
 
 type Group struct {
@@ -1954,6 +2051,10 @@ type Group struct {
 
 	// 组名称
 	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 所属部门信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Department *Department `json:"Department,omitempty" name:"Department"`
 }
 
 // Predefined struct for user
@@ -2034,6 +2135,9 @@ type ModifyAclRequestParams struct {
 	// 访问权限失效时间，如:"2021-09-23T00:00:00+00:00"
 	// 生效、失效时间不填则访问权限长期有效
 	ValidateTo *string `json:"ValidateTo,omitempty" name:"ValidateTo"`
+
+	// 权限所属部门的ID，如：1.2.3
+	DepartmentId *string `json:"DepartmentId,omitempty" name:"DepartmentId"`
 }
 
 type ModifyAclRequest struct {
@@ -2115,6 +2219,9 @@ type ModifyAclRequest struct {
 	// 访问权限失效时间，如:"2021-09-23T00:00:00+00:00"
 	// 生效、失效时间不填则访问权限长期有效
 	ValidateTo *string `json:"ValidateTo,omitempty" name:"ValidateTo"`
+
+	// 权限所属部门的ID，如：1.2.3
+	DepartmentId *string `json:"DepartmentId,omitempty" name:"DepartmentId"`
 }
 
 func (r *ModifyAclRequest) ToJsonString() string {
@@ -2154,6 +2261,7 @@ func (r *ModifyAclRequest) FromJsonString(s string) error {
 	delete(f, "AllowFileDel")
 	delete(f, "ValidateFrom")
 	delete(f, "ValidateTo")
+	delete(f, "DepartmentId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyAclRequest has unknown keys!", "")
 	}
@@ -2212,6 +2320,9 @@ type ModifyUserRequestParams struct {
 
 	// 访问时间段限制， 由0、1组成的字符串，长度168(7 × 24)，代表该用户在一周中允许访问的时间段。字符串中第N个字符代表在一周中的第N个小时， 0 - 代表不允许访问，1 - 代表允许访问
 	ValidateTime *string `json:"ValidateTime,omitempty" name:"ValidateTime"`
+
+	// 用户所属部门的ID，如1.2.3
+	DepartmentId *string `json:"DepartmentId,omitempty" name:"DepartmentId"`
 }
 
 type ModifyUserRequest struct {
@@ -2245,6 +2356,9 @@ type ModifyUserRequest struct {
 
 	// 访问时间段限制， 由0、1组成的字符串，长度168(7 × 24)，代表该用户在一周中允许访问的时间段。字符串中第N个字符代表在一周中的第N个小时， 0 - 代表不允许访问，1 - 代表允许访问
 	ValidateTime *string `json:"ValidateTime,omitempty" name:"ValidateTime"`
+
+	// 用户所属部门的ID，如1.2.3
+	DepartmentId *string `json:"DepartmentId,omitempty" name:"DepartmentId"`
 }
 
 func (r *ModifyUserRequest) ToJsonString() string {
@@ -2268,6 +2382,7 @@ func (r *ModifyUserRequest) FromJsonString(s string) error {
 	delete(f, "GroupIdSet")
 	delete(f, "AuthType")
 	delete(f, "ValidateTime")
+	delete(f, "DepartmentId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyUserRequest has unknown keys!", "")
 	}
@@ -2414,4 +2529,12 @@ type User struct {
 
 	// 访问时间段限制， 由0、1组成的字符串，长度168(7 × 24)，代表该用户在一周中允许访问的时间段。字符串中第N个字符代表在一周中的第N个小时， 0 - 代表不允许访问，1 - 代表允许访问
 	ValidateTime *string `json:"ValidateTime,omitempty" name:"ValidateTime"`
+
+	// 用户所属部门（用于出参）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Department *Department `json:"Department,omitempty" name:"Department"`
+
+	// 用户所属部门（用于入参）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DepartmentId *string `json:"DepartmentId,omitempty" name:"DepartmentId"`
 }

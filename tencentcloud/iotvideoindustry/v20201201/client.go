@@ -1110,10 +1110,6 @@ func NewCreateRecordingPlanResponse() (response *CreateRecordingPlanResponse) {
 //
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
-//  RESOURCENOTFOUND_TEMPLATENOTEXIST = "ResourceNotFound.TemplateNotExist"
-//  UNSUPPORTEDOPERATION_DEVICEBINDEXIST = "UnsupportedOperation.DeviceBindExist"
-//  UNSUPPORTEDOPERATION_RECORDPLANEXIST = "UnsupportedOperation.RecordPlanExist"
-//  UNSUPPORTEDOPERATION_TEMPLATEEXIST = "UnsupportedOperation.TemplateExist"
 func (c *Client) CreateRecordingPlan(request *CreateRecordingPlanRequest) (response *CreateRecordingPlanResponse, err error) {
     return c.CreateRecordingPlanWithContext(context.Background(), request)
 }
@@ -1123,10 +1119,6 @@ func (c *Client) CreateRecordingPlan(request *CreateRecordingPlanRequest) (respo
 //
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
-//  RESOURCENOTFOUND_TEMPLATENOTEXIST = "ResourceNotFound.TemplateNotExist"
-//  UNSUPPORTEDOPERATION_DEVICEBINDEXIST = "UnsupportedOperation.DeviceBindExist"
-//  UNSUPPORTEDOPERATION_RECORDPLANEXIST = "UnsupportedOperation.RecordPlanExist"
-//  UNSUPPORTEDOPERATION_TEMPLATEEXIST = "UnsupportedOperation.TemplateExist"
 func (c *Client) CreateRecordingPlanWithContext(ctx context.Context, request *CreateRecordingPlanRequest) (response *CreateRecordingPlanResponse, err error) {
     if request == nil {
         request = NewCreateRecordingPlanRequest()

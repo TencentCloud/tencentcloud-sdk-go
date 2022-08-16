@@ -116,6 +116,9 @@ const (
 	// 当前发票余额不足，无法退费。
 	RESOURCEUNAVAILABLE_INVOICEAMOUNTLACK = "ResourceUnavailable.InvoiceAmountLack"
 
+	// 云项目oAuth授权失效（即RefreshToken过期）。
+	RESOURCEUNAVAILABLE_REFRESHTOKENEXPIRED = "ResourceUnavailable.RefreshTokenExpired"
+
 	// 资源过期。
 	RESOURCEUNAVAILABLE_RESOURCEOVERDUE = "ResourceUnavailable.ResourceOverdue"
 

@@ -363,6 +363,7 @@ func NewCreatePrivateCAResponse() (response *CreatePrivateCAResponse) {
 // 创建私有CA证书
 //
 // 可能返回的错误码:
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
 //  INVALIDPARAMETERVALUE_CACERTINVALID = "InvalidParameterValue.CACertInvalid"
 //  INVALIDPARAMETERVALUE_CACERTNOTMATCH = "InvalidParameterValue.CACertNotMatch"
 //  LIMITEXCEEDED_CACERTNAMEREPEAT = "LimitExceeded.CACertNameRepeat"
@@ -375,6 +376,7 @@ func (c *Client) CreatePrivateCA(request *CreatePrivateCARequest) (response *Cre
 // 创建私有CA证书
 //
 // 可能返回的错误码:
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
 //  INVALIDPARAMETERVALUE_CACERTINVALID = "InvalidParameterValue.CACertInvalid"
 //  INVALIDPARAMETERVALUE_CACERTNOTMATCH = "InvalidParameterValue.CACertNotMatch"
 //  LIMITEXCEEDED_CACERTNAMEREPEAT = "LimitExceeded.CACertNameRepeat"
@@ -747,6 +749,57 @@ func (c *Client) DeleteDeviceResourceWithContext(ctx context.Context, request *D
     return
 }
 
+func NewDeleteDeviceShadowRequest() (request *DeleteDeviceShadowRequest) {
+    request = &DeleteDeviceShadowRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("iotcloud", APIVersion, "DeleteDeviceShadow")
+    
+    
+    return
+}
+
+func NewDeleteDeviceShadowResponse() (response *DeleteDeviceShadowResponse) {
+    response = &DeleteDeviceShadowResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteDeviceShadow
+// 本接口（DeleteDeviceShadow）用于删除设备影子 
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_DEVICESHADOWNOTEXIST = "ResourceNotFound.DeviceShadowNotExist"
+func (c *Client) DeleteDeviceShadow(request *DeleteDeviceShadowRequest) (response *DeleteDeviceShadowResponse, err error) {
+    return c.DeleteDeviceShadowWithContext(context.Background(), request)
+}
+
+// DeleteDeviceShadow
+// 本接口（DeleteDeviceShadow）用于删除设备影子 
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_DEVICESHADOWNOTEXIST = "ResourceNotFound.DeviceShadowNotExist"
+func (c *Client) DeleteDeviceShadowWithContext(ctx context.Context, request *DeleteDeviceShadowRequest) (response *DeleteDeviceShadowResponse, err error) {
+    if request == nil {
+        request = NewDeleteDeviceShadowRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteDeviceShadow require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteDeviceShadowResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeletePrivateCARequest() (request *DeletePrivateCARequest) {
     request = &DeletePrivateCARequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -768,6 +821,7 @@ func NewDeletePrivateCAResponse() (response *DeletePrivateCAResponse) {
 // 删除私有CA证书
 //
 // 可能返回的错误码:
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
 //  LIMITEXCEEDED_CAALREADYBINDPRODUCT = "LimitExceeded.CAAlreadyBindProduct"
 //  RESOURCENOTFOUND_CACERTNOTEXIST = "ResourceNotFound.CACertNotExist"
 func (c *Client) DeletePrivateCA(request *DeletePrivateCARequest) (response *DeletePrivateCAResponse, err error) {
@@ -778,6 +832,7 @@ func (c *Client) DeletePrivateCA(request *DeletePrivateCARequest) (response *Del
 // 删除私有CA证书
 //
 // 可能返回的错误码:
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
 //  LIMITEXCEEDED_CAALREADYBINDPRODUCT = "LimitExceeded.CAAlreadyBindProduct"
 //  RESOURCENOTFOUND_CACERTNOTEXIST = "ResourceNotFound.CACertNotExist"
 func (c *Client) DeletePrivateCAWithContext(ctx context.Context, request *DeletePrivateCARequest) (response *DeletePrivateCAResponse, err error) {
@@ -1144,6 +1199,7 @@ func NewDescribeDeviceResourcesResponse() (response *DescribeDeviceResourcesResp
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
 func (c *Client) DescribeDeviceResources(request *DescribeDeviceResourcesRequest) (response *DescribeDeviceResourcesResponse, err error) {
@@ -1155,6 +1211,7 @@ func (c *Client) DescribeDeviceResources(request *DescribeDeviceResourcesRequest
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
 func (c *Client) DescribeDeviceResourcesWithContext(ctx context.Context, request *DescribeDeviceResourcesRequest) (response *DescribeDeviceResourcesResponse, err error) {
@@ -1585,6 +1642,7 @@ func NewDescribeGatewayBindDevicesResponse() (response *DescribeGatewayBindDevic
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
 func (c *Client) DescribeGatewayBindDevices(request *DescribeGatewayBindDevicesRequest) (response *DescribeGatewayBindDevicesResponse, err error) {
@@ -1596,6 +1654,7 @@ func (c *Client) DescribeGatewayBindDevices(request *DescribeGatewayBindDevicesR
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
 func (c *Client) DescribeGatewayBindDevicesWithContext(ctx context.Context, request *DescribeGatewayBindDevicesRequest) (response *DescribeGatewayBindDevicesResponse, err error) {
@@ -1635,6 +1694,7 @@ func NewDescribePrivateCAResponse() (response *DescribePrivateCAResponse) {
 // 查询私有化CA信息
 //
 // 可能返回的错误码:
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
 //  RESOURCENOTFOUND_CACERTNOTEXIST = "ResourceNotFound.CACertNotExist"
 func (c *Client) DescribePrivateCA(request *DescribePrivateCARequest) (response *DescribePrivateCAResponse, err error) {
     return c.DescribePrivateCAWithContext(context.Background(), request)
@@ -1644,6 +1704,7 @@ func (c *Client) DescribePrivateCA(request *DescribePrivateCARequest) (response 
 // 查询私有化CA信息
 //
 // 可能返回的错误码:
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
 //  RESOURCENOTFOUND_CACERTNOTEXIST = "ResourceNotFound.CACertNotExist"
 func (c *Client) DescribePrivateCAWithContext(ctx context.Context, request *DescribePrivateCARequest) (response *DescribePrivateCAResponse, err error) {
     if request == nil {
@@ -1682,7 +1743,7 @@ func NewDescribePrivateCABindedProductsResponse() (response *DescribePrivateCABi
 // 查询私有CA绑定的产品列表
 //
 // 可能返回的错误码:
-//  RESOURCENOTFOUND_CACERTNOTEXIST = "ResourceNotFound.CACertNotExist"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
 func (c *Client) DescribePrivateCABindedProducts(request *DescribePrivateCABindedProductsRequest) (response *DescribePrivateCABindedProductsResponse, err error) {
     return c.DescribePrivateCABindedProductsWithContext(context.Background(), request)
 }
@@ -1691,7 +1752,7 @@ func (c *Client) DescribePrivateCABindedProducts(request *DescribePrivateCABinde
 // 查询私有CA绑定的产品列表
 //
 // 可能返回的错误码:
-//  RESOURCENOTFOUND_CACERTNOTEXIST = "ResourceNotFound.CACertNotExist"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
 func (c *Client) DescribePrivateCABindedProductsWithContext(ctx context.Context, request *DescribePrivateCABindedProductsRequest) (response *DescribePrivateCABindedProductsResponse, err error) {
     if request == nil {
         request = NewDescribePrivateCABindedProductsRequest()
@@ -2359,6 +2420,7 @@ func NewEditFirmwareResponse() (response *EditFirmwareResponse) {
 // 编辑固件信息
 //
 // 可能返回的错误码:
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
 //  RESOURCENOTFOUND_DEVICEHASNOFIRMWARE = "ResourceNotFound.DeviceHasNoFirmware"
 func (c *Client) EditFirmware(request *EditFirmwareRequest) (response *EditFirmwareResponse, err error) {
     return c.EditFirmwareWithContext(context.Background(), request)
@@ -2368,6 +2430,7 @@ func (c *Client) EditFirmware(request *EditFirmwareRequest) (response *EditFirmw
 // 编辑固件信息
 //
 // 可能返回的错误码:
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
 //  RESOURCENOTFOUND_DEVICEHASNOFIRMWARE = "ResourceNotFound.DeviceHasNoFirmware"
 func (c *Client) EditFirmwareWithContext(ctx context.Context, request *EditFirmwareRequest) (response *EditFirmwareResponse, err error) {
     if request == nil {
@@ -2482,6 +2545,7 @@ func NewGetAllVersionResponse() (response *GetAllVersionResponse) {
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) GetAllVersion(request *GetAllVersionRequest) (response *GetAllVersionResponse, err error) {
     return c.GetAllVersionWithContext(context.Background(), request)
@@ -2492,6 +2556,7 @@ func (c *Client) GetAllVersion(request *GetAllVersionRequest) (response *GetAllV
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) GetAllVersionWithContext(ctx context.Context, request *GetAllVersionRequest) (response *GetAllVersionResponse, err error) {
     if request == nil {
@@ -2886,6 +2951,7 @@ func NewPublishBroadcastMessageResponse() (response *PublishBroadcastMessageResp
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_BROADCASTTASKISRUNNING = "FailedOperation.BroadcastTaskIsRunning"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
 //  INVALIDPARAMETERVALUE_PAYLOADOVERLIMIT = "InvalidParameterValue.PayloadOverLimit"
 //  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
 func (c *Client) PublishBroadcastMessage(request *PublishBroadcastMessageRequest) (response *PublishBroadcastMessageResponse, err error) {
@@ -2897,6 +2963,7 @@ func (c *Client) PublishBroadcastMessage(request *PublishBroadcastMessageRequest
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_BROADCASTTASKISRUNNING = "FailedOperation.BroadcastTaskIsRunning"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
 //  INVALIDPARAMETERVALUE_PAYLOADOVERLIMIT = "InvalidParameterValue.PayloadOverLimit"
 //  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
 func (c *Client) PublishBroadcastMessageWithContext(ctx context.Context, request *PublishBroadcastMessageRequest) (response *PublishBroadcastMessageResponse, err error) {
@@ -3301,6 +3368,7 @@ func NewUnbindDevicesResponse() (response *UnbindDevicesResponse) {
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
 func (c *Client) UnbindDevices(request *UnbindDevicesRequest) (response *UnbindDevicesResponse, err error) {
@@ -3312,6 +3380,7 @@ func (c *Client) UnbindDevices(request *UnbindDevicesRequest) (response *UnbindD
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
 func (c *Client) UnbindDevicesWithContext(ctx context.Context, request *UnbindDevicesRequest) (response *UnbindDevicesResponse, err error) {
@@ -3407,6 +3476,7 @@ func NewUpdateDeviceLogLevelResponse() (response *UpdateDeviceLogLevelResponse) 
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
 //  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
 //  UNAUTHORIZEDOPERATION_DEVICEISNOTENABLED = "UnauthorizedOperation.DeviceIsNotEnabled"
 func (c *Client) UpdateDeviceLogLevel(request *UpdateDeviceLogLevelRequest) (response *UpdateDeviceLogLevelResponse, err error) {
@@ -3418,6 +3488,7 @@ func (c *Client) UpdateDeviceLogLevel(request *UpdateDeviceLogLevelRequest) (res
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
 //  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
 //  UNAUTHORIZEDOPERATION_DEVICEISNOTENABLED = "UnauthorizedOperation.DeviceIsNotEnabled"
 func (c *Client) UpdateDeviceLogLevelWithContext(ctx context.Context, request *UpdateDeviceLogLevelRequest) (response *UpdateDeviceLogLevelResponse, err error) {
@@ -3458,6 +3529,7 @@ func NewUpdateDevicePSKResponse() (response *UpdateDevicePSKResponse) {
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
 //  UNAUTHORIZEDOPERATION_PRODUCTNOTSUPPORTPSK = "UnauthorizedOperation.ProductNotSupportPSK"
@@ -3470,6 +3542,7 @@ func (c *Client) UpdateDevicePSK(request *UpdateDevicePSKRequest) (response *Upd
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
 //  UNAUTHORIZEDOPERATION_PRODUCTNOTSUPPORTPSK = "UnauthorizedOperation.ProductNotSupportPSK"
@@ -3576,6 +3649,7 @@ func NewUpdateDevicesEnableStateResponse() (response *UpdateDevicesEnableStateRe
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
 //  INVALIDPARAMETERVALUE_PRODUCTTYPENOTSUPPORT = "InvalidParameterValue.ProductTypeNotSupport"
 //  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
 //  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
@@ -3590,6 +3664,7 @@ func (c *Client) UpdateDevicesEnableState(request *UpdateDevicesEnableStateReque
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
 //  INVALIDPARAMETERVALUE_PRODUCTTYPENOTSUPPORT = "InvalidParameterValue.ProductTypeNotSupport"
 //  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
 //  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"

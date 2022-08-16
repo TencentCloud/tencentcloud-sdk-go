@@ -281,6 +281,15 @@ type ListRuntimeDeployedInstancesMCRequestParams struct {
 
 	// 1:3.0版本新控制台传1；否则传0
 	ApiVersion *int64 `json:"ApiVersion,omitempty" name:"ApiVersion"`
+
+	// -1:不按项目筛选，获取所有
+	// >=0: 按项目id筛选
+	GroupId *int64 `json:"GroupId,omitempty" name:"GroupId"`
+
+	// -2: 不按状态筛选，获取所有
+	// 0: 运行中
+	// 2: 已停止
+	Status *int64 `json:"Status,omitempty" name:"Status"`
 }
 
 type ListRuntimeDeployedInstancesMCRequest struct {
@@ -306,6 +315,15 @@ type ListRuntimeDeployedInstancesMCRequest struct {
 
 	// 1:3.0版本新控制台传1；否则传0
 	ApiVersion *int64 `json:"ApiVersion,omitempty" name:"ApiVersion"`
+
+	// -1:不按项目筛选，获取所有
+	// >=0: 按项目id筛选
+	GroupId *int64 `json:"GroupId,omitempty" name:"GroupId"`
+
+	// -2: 不按状态筛选，获取所有
+	// 0: 运行中
+	// 2: 已停止
+	Status *int64 `json:"Status,omitempty" name:"Status"`
 }
 
 func (r *ListRuntimeDeployedInstancesMCRequest) ToJsonString() string {
@@ -327,6 +345,8 @@ func (r *ListRuntimeDeployedInstancesMCRequest) FromJsonString(s string) error {
 	delete(f, "Sort")
 	delete(f, "Zone")
 	delete(f, "ApiVersion")
+	delete(f, "GroupId")
+	delete(f, "Status")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListRuntimeDeployedInstancesMCRequest has unknown keys!", "")
 	}

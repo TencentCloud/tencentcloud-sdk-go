@@ -623,6 +623,7 @@ func NewAssignIpv6AddressesResponse() (response *AssignIpv6AddressesResponse) {
 //  LIMITEXCEEDED_ADDRESS = "LimitExceeded.Address"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINUSE_ADDRESS = "ResourceInUse.Address"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 //  UNSUPPORTEDOPERATION_INVALIDSTATE = "UnsupportedOperation.InvalidState"
@@ -654,6 +655,7 @@ func (c *Client) AssignIpv6Addresses(request *AssignIpv6AddressesRequest) (respo
 //  LIMITEXCEEDED_ADDRESS = "LimitExceeded.Address"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINUSE_ADDRESS = "ResourceInUse.Address"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 //  UNSUPPORTEDOPERATION_INVALIDSTATE = "UnsupportedOperation.InvalidState"
@@ -3393,6 +3395,7 @@ func NewCreateNatGatewaySourceIpTranslationNatRuleResponse() (response *CreateNa
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION_NATGATEWAYRULEPIPEXISTS = "UnsupportedOperation.NatGatewayRulePipExists"
+//  UNSUPPORTEDOPERATION_NATGATEWAYSNATPIPNEEDVM = "UnsupportedOperation.NatGatewaySnatPipNeedVm"
 //  UNSUPPORTEDOPERATION_NATGATEWAYTYPENOTSUPPORTSNAT = "UnsupportedOperation.NatGatewayTypeNotSupportSNAT"
 //  UNSUPPORTEDOPERATION_UNBINDEIP = "UnsupportedOperation.UnbindEIP"
 func (c *Client) CreateNatGatewaySourceIpTranslationNatRule(request *CreateNatGatewaySourceIpTranslationNatRuleRequest) (response *CreateNatGatewaySourceIpTranslationNatRuleResponse, err error) {
@@ -3413,6 +3416,7 @@ func (c *Client) CreateNatGatewaySourceIpTranslationNatRule(request *CreateNatGa
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION_NATGATEWAYRULEPIPEXISTS = "UnsupportedOperation.NatGatewayRulePipExists"
+//  UNSUPPORTEDOPERATION_NATGATEWAYSNATPIPNEEDVM = "UnsupportedOperation.NatGatewaySnatPipNeedVm"
 //  UNSUPPORTEDOPERATION_NATGATEWAYTYPENOTSUPPORTSNAT = "UnsupportedOperation.NatGatewayTypeNotSupportSNAT"
 //  UNSUPPORTEDOPERATION_UNBINDEIP = "UnsupportedOperation.UnbindEIP"
 func (c *Client) CreateNatGatewaySourceIpTranslationNatRuleWithContext(ctx context.Context, request *CreateNatGatewaySourceIpTranslationNatRuleRequest) (response *CreateNatGatewaySourceIpTranslationNatRuleResponse, err error) {
@@ -5593,6 +5597,7 @@ func NewDeleteCcnResponse() (response *DeleteCcnResponse) {
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_APPIDMISMATCH = "UnsupportedOperation.AppIdMismatch"
 //  UNSUPPORTEDOPERATION_BANDWIDTHNOTEXPIRED = "UnsupportedOperation.BandwidthNotExpired"
 //  UNSUPPORTEDOPERATION_CCNHASFLOWLOG = "UnsupportedOperation.CcnHasFlowLog"
 func (c *Client) DeleteCcn(request *DeleteCcnRequest) (response *DeleteCcnResponse, err error) {
@@ -5612,6 +5617,7 @@ func (c *Client) DeleteCcn(request *DeleteCcnRequest) (response *DeleteCcnRespon
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_APPIDMISMATCH = "UnsupportedOperation.AppIdMismatch"
 //  UNSUPPORTEDOPERATION_BANDWIDTHNOTEXPIRED = "UnsupportedOperation.BandwidthNotExpired"
 //  UNSUPPORTEDOPERATION_CCNHASFLOWLOG = "UnsupportedOperation.CcnHasFlowLog"
 func (c *Client) DeleteCcnWithContext(ctx context.Context, request *DeleteCcnRequest) (response *DeleteCcnResponse, err error) {
@@ -6849,6 +6855,7 @@ func NewDeleteSubnetResponse() (response *DeleteSubnetResponse) {
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION_RECORDNOTEXISTS = "UnsupportedOperation.RecordNotExists"
 func (c *Client) DeleteSubnet(request *DeleteSubnetRequest) (response *DeleteSubnetResponse, err error) {
     return c.DeleteSubnetWithContext(context.Background(), request)
 }
@@ -6862,6 +6869,7 @@ func (c *Client) DeleteSubnet(request *DeleteSubnetRequest) (response *DeleteSub
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION_RECORDNOTEXISTS = "UnsupportedOperation.RecordNotExists"
 func (c *Client) DeleteSubnetWithContext(ctx context.Context, request *DeleteSubnetRequest) (response *DeleteSubnetResponse, err error) {
     if request == nil {
         request = NewDeleteSubnetRequest()
@@ -13641,6 +13649,7 @@ func NewModifyAddressInternetChargeTypeResponse() (response *ModifyAddressIntern
 //  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  LIMITEXCEEDED_MODIFYADDRESSINTERNETCHARGETYPEQUOTA = "LimitExceeded.ModifyAddressInternetChargeTypeQuota"
+//  OPERATIONDENIED_ADDRESSINARREARS = "OperationDenied.AddressInArrears"
 //  UNSUPPORTEDOPERATION_ADDRESSSTATUSNOTPERMIT = "UnsupportedOperation.AddressStatusNotPermit"
 //  UNSUPPORTEDOPERATION_INVALIDACTION = "UnsupportedOperation.InvalidAction"
 //  UNSUPPORTEDOPERATION_INVALIDADDRESSINTERNETCHARGETYPE = "UnsupportedOperation.InvalidAddressInternetChargeType"
@@ -13671,6 +13680,7 @@ func (c *Client) ModifyAddressInternetChargeType(request *ModifyAddressInternetC
 //  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  LIMITEXCEEDED_MODIFYADDRESSINTERNETCHARGETYPEQUOTA = "LimitExceeded.ModifyAddressInternetChargeTypeQuota"
+//  OPERATIONDENIED_ADDRESSINARREARS = "OperationDenied.AddressInArrears"
 //  UNSUPPORTEDOPERATION_ADDRESSSTATUSNOTPERMIT = "UnsupportedOperation.AddressStatusNotPermit"
 //  UNSUPPORTEDOPERATION_INVALIDACTION = "UnsupportedOperation.InvalidAction"
 //  UNSUPPORTEDOPERATION_INVALIDADDRESSINTERNETCHARGETYPE = "UnsupportedOperation.InvalidAddressInternetChargeType"
@@ -14303,6 +14313,7 @@ func NewModifyDirectConnectGatewayAttributeResponse() (response *ModifyDirectCon
 //  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_APPIDMISMATCH = "UnsupportedOperation.AppIdMismatch"
 //  UNSUPPORTEDOPERATION_DIRECTCONNECTGATEWAYISUPDATINGCOMMUNITY = "UnsupportedOperation.DirectConnectGatewayIsUpdatingCommunity"
 func (c *Client) ModifyDirectConnectGatewayAttribute(request *ModifyDirectConnectGatewayAttributeRequest) (response *ModifyDirectConnectGatewayAttributeResponse, err error) {
     return c.ModifyDirectConnectGatewayAttributeWithContext(context.Background(), request)
@@ -14317,6 +14328,7 @@ func (c *Client) ModifyDirectConnectGatewayAttribute(request *ModifyDirectConnec
 //  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_APPIDMISMATCH = "UnsupportedOperation.AppIdMismatch"
 //  UNSUPPORTEDOPERATION_DIRECTCONNECTGATEWAYISUPDATINGCOMMUNITY = "UnsupportedOperation.DirectConnectGatewayIsUpdatingCommunity"
 func (c *Client) ModifyDirectConnectGatewayAttributeWithContext(ctx context.Context, request *ModifyDirectConnectGatewayAttributeRequest) (response *ModifyDirectConnectGatewayAttributeResponse, err error) {
     if request == nil {

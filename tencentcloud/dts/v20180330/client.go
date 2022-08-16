@@ -226,6 +226,7 @@ func NewCreateMigrateCheckJobResponse() (response *CreateMigrateCheckJobResponse
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  INVALIDPARAMETER_INVALIDIPADDRESS = "InvalidParameter.InvalidIpAddress"
 //  LIMITEXCEEDED_MAXUNUSEDJOBS = "LimitExceeded.MaxUnusedJobs"
 //  OPERATIONDENIED = "OperationDenied"
 //  OPERATIONDENIED_JOBOPERATIONDENIEDERROR = "OperationDenied.JobOperationDeniedError"
@@ -260,6 +261,7 @@ func (c *Client) CreateMigrateCheckJob(request *CreateMigrateCheckJobRequest) (r
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  INVALIDPARAMETER_INVALIDIPADDRESS = "InvalidParameter.InvalidIpAddress"
 //  LIMITEXCEEDED_MAXUNUSEDJOBS = "LimitExceeded.MaxUnusedJobs"
 //  OPERATIONDENIED = "OperationDenied"
 //  OPERATIONDENIED_JOBOPERATIONDENIEDERROR = "OperationDenied.JobOperationDeniedError"
@@ -649,6 +651,7 @@ func NewDescribeMigrateJobsResponse() (response *DescribeMigrateJobsResponse) {
 //  INTERNALERROR_UNDEFINEDERROR = "InternalError.UndefinedError"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_BIZINVALIDPARAMETERVALUEERROR = "InvalidParameterValue.BizInvalidParameterValueError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
 //  UNAUTHORIZEDOPERATION_NOTENOUGHPRIVILEGES = "UnauthorizedOperation.NotEnoughPrivileges"
 func (c *Client) DescribeMigrateJobs(request *DescribeMigrateJobsRequest) (response *DescribeMigrateJobsResponse, err error) {
@@ -668,6 +671,7 @@ func (c *Client) DescribeMigrateJobs(request *DescribeMigrateJobsRequest) (respo
 //  INTERNALERROR_UNDEFINEDERROR = "InternalError.UndefinedError"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_BIZINVALIDPARAMETERVALUEERROR = "InvalidParameterValue.BizInvalidParameterValueError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
 //  UNAUTHORIZEDOPERATION_NOTENOUGHPRIVILEGES = "UnauthorizedOperation.NotEnoughPrivileges"
 func (c *Client) DescribeMigrateJobsWithContext(ctx context.Context, request *DescribeMigrateJobsRequest) (response *DescribeMigrateJobsResponse, err error) {

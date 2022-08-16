@@ -132,6 +132,9 @@ type Box struct {
 
 	// 置信度。
 	Score *float64 `json:"Score,omitempty" name:"Score"`
+
+	// 主体区域类目ID
+	CategoryId *int64 `json:"CategoryId,omitempty" name:"CategoryId"`
 }
 
 type CarPlateContent struct {
@@ -1777,7 +1780,7 @@ type ObjectInfo struct {
 	// 属性信息。
 	Attributes []*Attribute `json:"Attributes,omitempty" name:"Attributes"`
 
-	// 图像的所有主体区域。
+	// 图像的所有主体区域，置信度，以及主体区域类别ID。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AllBox []*Box `json:"AllBox,omitempty" name:"AllBox"`
 }

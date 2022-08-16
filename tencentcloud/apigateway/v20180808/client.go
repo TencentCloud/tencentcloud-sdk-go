@@ -927,6 +927,7 @@ func NewCreateIPStrategyResponse() (response *CreateIPStrategyResponse) {
 // 本接口（CreateIPStrategy）用于创建服务IP策略。
 //
 // 可能返回的错误码:
+//  INTERNALERROR_OSSEXCEPTION = "InternalError.OssException"
 //  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
 //  LIMITEXCEEDED_IPSTRATEGYLIMITEXCEEDED = "LimitExceeded.IpStrategyLimitExceeded"
 //  RESOURCENOTFOUND_INVALIDSERVICE = "ResourceNotFound.InvalidService"
@@ -939,6 +940,7 @@ func (c *Client) CreateIPStrategy(request *CreateIPStrategyRequest) (response *C
 // 本接口（CreateIPStrategy）用于创建服务IP策略。
 //
 // 可能返回的错误码:
+//  INTERNALERROR_OSSEXCEPTION = "InternalError.OssException"
 //  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
 //  LIMITEXCEEDED_IPSTRATEGYLIMITEXCEEDED = "LimitExceeded.IpStrategyLimitExceeded"
 //  RESOURCENOTFOUND_INVALIDSERVICE = "ResourceNotFound.InvalidService"

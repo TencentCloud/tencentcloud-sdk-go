@@ -425,10 +425,10 @@ type CreateTrainingTaskRequestParams struct {
 	// 是否上报日志
 	LogEnable *bool `json:"LogEnable,omitempty" name:"LogEnable"`
 
-	// 训练框架名称，通过DescribeTrainingFrameworks接口查询，eg：SPARK、TENSORFLOW、PYTORCH、LIGHT
+	// 训练框架名称，通过DescribeTrainingFrameworks接口查询，eg：SPARK、PYSPARK、TENSORFLOW、PYTORCH
 	FrameworkName *string `json:"FrameworkName,omitempty" name:"FrameworkName"`
 
-	// 训练框架版本，通过DescribeTrainingFrameworks接口查询，eg：1.15-py3.6-cpu、1.9-py3.6-cuda11.1-gpu
+	// 训练框架版本，通过DescribeTrainingFrameworks接口查询，eg：tf1.15-py3.7-cpu、torch1.9-py3.8-cuda11.1-gpu
 	FrameworkVersion *string `json:"FrameworkVersion,omitempty" name:"FrameworkVersion"`
 
 	// 预付费专用资源组ID，通过DescribeBillingResourceGroups接口查询
@@ -489,10 +489,10 @@ type CreateTrainingTaskRequest struct {
 	// 是否上报日志
 	LogEnable *bool `json:"LogEnable,omitempty" name:"LogEnable"`
 
-	// 训练框架名称，通过DescribeTrainingFrameworks接口查询，eg：SPARK、TENSORFLOW、PYTORCH、LIGHT
+	// 训练框架名称，通过DescribeTrainingFrameworks接口查询，eg：SPARK、PYSPARK、TENSORFLOW、PYTORCH
 	FrameworkName *string `json:"FrameworkName,omitempty" name:"FrameworkName"`
 
-	// 训练框架版本，通过DescribeTrainingFrameworks接口查询，eg：1.15-py3.6-cpu、1.9-py3.6-cuda11.1-gpu
+	// 训练框架版本，通过DescribeTrainingFrameworks接口查询，eg：tf1.15-py3.7-cpu、torch1.9-py3.8-cuda11.1-gpu
 	FrameworkVersion *string `json:"FrameworkVersion,omitempty" name:"FrameworkVersion"`
 
 	// 预付费专用资源组ID，通过DescribeBillingResourceGroups接口查询

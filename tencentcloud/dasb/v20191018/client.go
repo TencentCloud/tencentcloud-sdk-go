@@ -1319,6 +1319,7 @@ func NewModifyAclResponse() (response *ModifyAclResponse) {
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_DUPLICATEDATA = "FailedOperation.DuplicateData"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -1339,6 +1340,7 @@ func (c *Client) ModifyAcl(request *ModifyAclRequest) (response *ModifyAclRespon
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_DUPLICATEDATA = "FailedOperation.DuplicateData"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -1388,6 +1390,7 @@ func NewModifyUserResponse() (response *ModifyUserResponse) {
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_DUPLICATEDATA = "FailedOperation.DuplicateData"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -1414,6 +1417,7 @@ func (c *Client) ModifyUser(request *ModifyUserRequest) (response *ModifyUserRes
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_DUPLICATEDATA = "FailedOperation.DuplicateData"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"

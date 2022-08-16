@@ -3952,6 +3952,7 @@ func NewDescribeBusinessLogConfigsResponse() (response *DescribeBusinessLogConfi
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  INVALIDPARAMETER_TSFAPMBUSILOGCFGLIMITPARAMERROR = "InvalidParameter.TsfApmBusiLogCfgLimitParamError"
 //  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
+//  UNAUTHORIZEDOPERATION_NOLICENSE = "UnauthorizedOperation.NoLicense"
 //  UNAUTHORIZEDOPERATION_NOPRIVILEGE = "UnauthorizedOperation.NoPrivilege"
 func (c *Client) DescribeBusinessLogConfigs(request *DescribeBusinessLogConfigsRequest) (response *DescribeBusinessLogConfigsResponse, err error) {
     return c.DescribeBusinessLogConfigsWithContext(context.Background(), request)
@@ -3967,6 +3968,7 @@ func (c *Client) DescribeBusinessLogConfigs(request *DescribeBusinessLogConfigsR
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  INVALIDPARAMETER_TSFAPMBUSILOGCFGLIMITPARAMERROR = "InvalidParameter.TsfApmBusiLogCfgLimitParamError"
 //  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
+//  UNAUTHORIZEDOPERATION_NOLICENSE = "UnauthorizedOperation.NoLicense"
 //  UNAUTHORIZEDOPERATION_NOPRIVILEGE = "UnauthorizedOperation.NoPrivilege"
 func (c *Client) DescribeBusinessLogConfigsWithContext(ctx context.Context, request *DescribeBusinessLogConfigsRequest) (response *DescribeBusinessLogConfigsResponse, err error) {
     if request == nil {
@@ -5256,6 +5258,7 @@ func NewDescribeGroupAttributeResponse() (response *DescribeGroupAttributeRespon
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  INVALIDPARAMETER_REPOPACKAGEPARAMERROR = "InvalidParameter.RepoPackageParamError"
 //  RESOURCENOTFOUND_GROUPNOTEXIST = "ResourceNotFound.GroupNotExist"
+//  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
 func (c *Client) DescribeGroupAttribute(request *DescribeGroupAttributeRequest) (response *DescribeGroupAttributeResponse, err error) {
     return c.DescribeGroupAttributeWithContext(context.Background(), request)
 }
@@ -5273,6 +5276,7 @@ func (c *Client) DescribeGroupAttribute(request *DescribeGroupAttributeRequest) 
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  INVALIDPARAMETER_REPOPACKAGEPARAMERROR = "InvalidParameter.RepoPackageParamError"
 //  RESOURCENOTFOUND_GROUPNOTEXIST = "ResourceNotFound.GroupNotExist"
+//  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
 func (c *Client) DescribeGroupAttributeWithContext(ctx context.Context, request *DescribeGroupAttributeRequest) (response *DescribeGroupAttributeResponse, err error) {
     if request == nil {
         request = NewDescribeGroupAttributeRequest()
@@ -5467,6 +5471,7 @@ func NewDescribeGroupInstancesResponse() (response *DescribeGroupInstancesRespon
 // 可能返回的错误码:
 //  FAILEDOPERATION_GROUPQUERYFAILD = "FailedOperation.GroupQueryFaild"
 //  FAILEDOPERATION_TSFPRIVILEGEERROR = "FailedOperation.TsfPrivilegeError"
+//  INTERNALERROR_CAMROLEREQUESTERROR = "InternalError.CamRoleRequestError"
 //  INTERNALERROR_CLOUDAPIPROXYERROR = "InternalError.CloudApiProxyError"
 //  INTERNALERROR_INSTANCECOMMONERROR = "InternalError.InstanceCommonError"
 //  INTERNALERROR_UNHANDLEDEXCEPTION = "InternalError.UnhandledException"
@@ -5487,6 +5492,7 @@ func (c *Client) DescribeGroupInstances(request *DescribeGroupInstancesRequest) 
 // 可能返回的错误码:
 //  FAILEDOPERATION_GROUPQUERYFAILD = "FailedOperation.GroupQueryFaild"
 //  FAILEDOPERATION_TSFPRIVILEGEERROR = "FailedOperation.TsfPrivilegeError"
+//  INTERNALERROR_CAMROLEREQUESTERROR = "InternalError.CamRoleRequestError"
 //  INTERNALERROR_CLOUDAPIPROXYERROR = "InternalError.CloudApiProxyError"
 //  INTERNALERROR_INSTANCECOMMONERROR = "InternalError.InstanceCommonError"
 //  INTERNALERROR_UNHANDLEDEXCEPTION = "InternalError.UnhandledException"
@@ -6214,6 +6220,8 @@ func NewDescribeJvmMonitorResponse() (response *DescribeJvmMonitorResponse) {
 //  INTERNALERROR_TSFMONITORINTERNALERROR = "InternalError.TsfMonitorInternalError"
 //  INVALIDPARAMETER_BADREQUEST = "InvalidParameter.BadRequest"
 //  INVALIDPARAMETER_TSFMONITORREQUESTPARAMILLEGAL = "InvalidParameter.TsfMonitorRequestParamIllegal"
+//  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
+//  UNAUTHORIZEDOPERATION_NOLICENSE = "UnauthorizedOperation.NoLicense"
 //  UNAUTHORIZEDOPERATION_NOPRIVILEGE = "UnauthorizedOperation.NoPrivilege"
 func (c *Client) DescribeJvmMonitor(request *DescribeJvmMonitorRequest) (response *DescribeJvmMonitorResponse, err error) {
     return c.DescribeJvmMonitorWithContext(context.Background(), request)
@@ -6229,6 +6237,8 @@ func (c *Client) DescribeJvmMonitor(request *DescribeJvmMonitorRequest) (respons
 //  INTERNALERROR_TSFMONITORINTERNALERROR = "InternalError.TsfMonitorInternalError"
 //  INVALIDPARAMETER_BADREQUEST = "InvalidParameter.BadRequest"
 //  INVALIDPARAMETER_TSFMONITORREQUESTPARAMILLEGAL = "InvalidParameter.TsfMonitorRequestParamIllegal"
+//  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
+//  UNAUTHORIZEDOPERATION_NOLICENSE = "UnauthorizedOperation.NoLicense"
 //  UNAUTHORIZEDOPERATION_NOPRIVILEGE = "UnauthorizedOperation.NoPrivilege"
 func (c *Client) DescribeJvmMonitorWithContext(ctx context.Context, request *DescribeJvmMonitorRequest) (response *DescribeJvmMonitorResponse, err error) {
     if request == nil {

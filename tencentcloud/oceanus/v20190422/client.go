@@ -612,6 +612,7 @@ func NewDeleteResourceConfigsResponse() (response *DeleteResourceConfigsResponse
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DB = "InternalError.DB"
 //  INTERNALERROR_RESOURCECONFIGCANNOTDELETE = "InternalError.ResourceConfigCanNotDelete"
@@ -632,6 +633,7 @@ func (c *Client) DeleteResourceConfigs(request *DeleteResourceConfigsRequest) (r
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DB = "InternalError.DB"
 //  INTERNALERROR_RESOURCECONFIGCANNOTDELETE = "InternalError.ResourceConfigCanNotDelete"

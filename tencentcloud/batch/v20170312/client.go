@@ -574,6 +574,7 @@ func NewDescribeAvailableCvmInstanceTypesResponse() (response *DescribeAvailable
 //  INVALIDFILTER = "InvalidFilter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_INVALIDFILTER = "InvalidParameterValue.InvalidFilter"
+//  INVALIDPARAMETERVALUE_INVALIDZONEMISMATCHREGION = "InvalidParameterValue.InvalidZoneMismatchRegion"
 //  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
 //  INVALIDZONE_MISMATCHREGION = "InvalidZone.MismatchRegion"
 func (c *Client) DescribeAvailableCvmInstanceTypes(request *DescribeAvailableCvmInstanceTypesRequest) (response *DescribeAvailableCvmInstanceTypesResponse, err error) {
@@ -589,6 +590,7 @@ func (c *Client) DescribeAvailableCvmInstanceTypes(request *DescribeAvailableCvm
 //  INVALIDFILTER = "InvalidFilter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_INVALIDFILTER = "InvalidParameterValue.InvalidFilter"
+//  INVALIDPARAMETERVALUE_INVALIDZONEMISMATCHREGION = "InvalidParameterValue.InvalidZoneMismatchRegion"
 //  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
 //  INVALIDZONE_MISMATCHREGION = "InvalidZone.MismatchRegion"
 func (c *Client) DescribeAvailableCvmInstanceTypesWithContext(ctx context.Context, request *DescribeAvailableCvmInstanceTypesRequest) (response *DescribeAvailableCvmInstanceTypesResponse, err error) {

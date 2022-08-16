@@ -2496,6 +2496,14 @@ type InstanceInfo struct {
 	// 集群可维护时间段
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OperationDuration *OperationDuration `json:"OperationDuration,omitempty" name:"OperationDuration"`
+
+	// web节点列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OptionalWebServiceInfos []*OptionalWebServiceInfo `json:"OptionalWebServiceInfos,omitempty" name:"OptionalWebServiceInfos"`
+
+	// 自治索引开关
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AutoIndexEnabled *bool `json:"AutoIndexEnabled,omitempty" name:"AutoIndexEnabled"`
 }
 
 type InstanceLog struct {
@@ -2937,6 +2945,36 @@ type OperationDurationUpdated struct {
 
 	// ES集群ID数组
 	MoreInstances []*string `json:"MoreInstances,omitempty" name:"MoreInstances"`
+}
+
+type OptionalWebServiceInfo struct {
+	// 类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *int64 `json:"Status,omitempty" name:"Status"`
+
+	// 公网url
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PublicUrl *string `json:"PublicUrl,omitempty" name:"PublicUrl"`
+
+	// 内网url
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PrivateUrl *string `json:"PrivateUrl,omitempty" name:"PrivateUrl"`
+
+	// 公网访问权限
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PublicAccess *string `json:"PublicAccess,omitempty" name:"PublicAccess"`
+
+	// 内网访问权限
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PrivateAccess *string `json:"PrivateAccess,omitempty" name:"PrivateAccess"`
+
+	// 版本号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Version *string `json:"Version,omitempty" name:"Version"`
 }
 
 // Predefined struct for user
@@ -3611,6 +3649,9 @@ type UpdateIndexRequestParams struct {
 
 	// 集群访问密码
 	Password *string `json:"Password,omitempty" name:"Password"`
+
+	// 是否滚动后备索引
+	RolloverBackingIndex *bool `json:"RolloverBackingIndex,omitempty" name:"RolloverBackingIndex"`
 }
 
 type UpdateIndexRequest struct {
@@ -3633,6 +3674,9 @@ type UpdateIndexRequest struct {
 
 	// 集群访问密码
 	Password *string `json:"Password,omitempty" name:"Password"`
+
+	// 是否滚动后备索引
+	RolloverBackingIndex *bool `json:"RolloverBackingIndex,omitempty" name:"RolloverBackingIndex"`
 }
 
 func (r *UpdateIndexRequest) ToJsonString() string {
@@ -3653,6 +3697,7 @@ func (r *UpdateIndexRequest) FromJsonString(s string) error {
 	delete(f, "UpdateMetaJson")
 	delete(f, "Username")
 	delete(f, "Password")
+	delete(f, "RolloverBackingIndex")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateIndexRequest has unknown keys!", "")
 	}

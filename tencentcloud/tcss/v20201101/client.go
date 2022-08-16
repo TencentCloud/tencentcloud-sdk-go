@@ -1212,6 +1212,7 @@ func NewCreateVirusScanTaskResponse() (response *CreateVirusScanTaskResponse) {
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_MAINDBFAIL = "InternalError.MainDBFail"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) CreateVirusScanTask(request *CreateVirusScanTaskRequest) (response *CreateVirusScanTaskResponse, err error) {
@@ -1223,6 +1224,7 @@ func (c *Client) CreateVirusScanTask(request *CreateVirusScanTaskRequest) (respo
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_MAINDBFAIL = "InternalError.MainDBFail"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) CreateVirusScanTaskWithContext(ctx context.Context, request *CreateVirusScanTaskRequest) (response *CreateVirusScanTaskResponse, err error) {

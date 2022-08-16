@@ -127,6 +127,7 @@ func NewChannelCreateBatchCancelFlowUrlResponse() (response *ChannelCreateBatchC
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ChannelCreateBatchCancelFlowUrl(request *ChannelCreateBatchCancelFlowUrlRequest) (response *ChannelCreateBatchCancelFlowUrlResponse, err error) {
     return c.ChannelCreateBatchCancelFlowUrlWithContext(context.Background(), request)
 }
@@ -139,6 +140,7 @@ func (c *Client) ChannelCreateBatchCancelFlowUrl(request *ChannelCreateBatchCanc
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ChannelCreateBatchCancelFlowUrlWithContext(ctx context.Context, request *ChannelCreateBatchCancelFlowUrlRequest) (response *ChannelCreateBatchCancelFlowUrlResponse, err error) {
     if request == nil {
         request = NewChannelCreateBatchCancelFlowUrlRequest()
@@ -233,6 +235,7 @@ func NewChannelCreateFlowByFilesResponse() (response *ChannelCreateFlowByFilesRe
 //  INTERNALERROR_DECRYPTION = "InternalError.Decryption"
 //  INTERNALERROR_ENCRYPTION = "InternalError.Encryption"
 //  INTERNALERROR_GENERATEID = "InternalError.GenerateId"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
 //  INTERNALERROR_THIRDPARTY = "InternalError.ThirdParty"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_APPLICATION = "InvalidParameter.Application"
@@ -244,6 +247,7 @@ func NewChannelCreateFlowByFilesResponse() (response *ChannelCreateFlowByFilesRe
 //  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
 //  OPERATIONDENIED_NOIDENTITYVERIFY = "OperationDenied.NoIdentityVerify"
+//  OPERATIONDENIED_NOQUOTA = "OperationDenied.NoQuota"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_APPLICATION = "ResourceNotFound.Application"
 func (c *Client) ChannelCreateFlowByFiles(request *ChannelCreateFlowByFilesRequest) (response *ChannelCreateFlowByFilesResponse, err error) {
@@ -262,6 +266,7 @@ func (c *Client) ChannelCreateFlowByFiles(request *ChannelCreateFlowByFilesReque
 //  INTERNALERROR_DECRYPTION = "InternalError.Decryption"
 //  INTERNALERROR_ENCRYPTION = "InternalError.Encryption"
 //  INTERNALERROR_GENERATEID = "InternalError.GenerateId"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
 //  INTERNALERROR_THIRDPARTY = "InternalError.ThirdParty"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_APPLICATION = "InvalidParameter.Application"
@@ -273,6 +278,7 @@ func (c *Client) ChannelCreateFlowByFiles(request *ChannelCreateFlowByFilesReque
 //  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
 //  OPERATIONDENIED_NOIDENTITYVERIFY = "OperationDenied.NoIdentityVerify"
+//  OPERATIONDENIED_NOQUOTA = "OperationDenied.NoQuota"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_APPLICATION = "ResourceNotFound.Application"
 func (c *Client) ChannelCreateFlowByFilesWithContext(ctx context.Context, request *ChannelCreateFlowByFilesRequest) (response *ChannelCreateFlowByFilesResponse, err error) {

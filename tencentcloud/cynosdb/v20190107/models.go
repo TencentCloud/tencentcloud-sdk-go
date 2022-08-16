@@ -4277,6 +4277,18 @@ type NetAddr struct {
 	// 网络类型（ro-只读,rw/ha-读写）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	NetType *string `json:"NetType,omitempty" name:"NetType"`
+
+	// 子网ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UniqSubnetId *string `json:"UniqSubnetId,omitempty" name:"UniqSubnetId"`
+
+	// 私有网络ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UniqVpcId *string `json:"UniqVpcId,omitempty" name:"UniqVpcId"`
+
+	// 描述信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitempty" name:"Description"`
 }
 
 type NewAccount struct {

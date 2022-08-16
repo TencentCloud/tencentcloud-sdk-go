@@ -896,6 +896,7 @@ func NewDeleteAlarmNoticesResponse() (response *DeleteAlarmNoticesResponse) {
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteAlarmNotices(request *DeleteAlarmNoticesRequest) (response *DeleteAlarmNoticesResponse, err error) {
     return c.DeleteAlarmNoticesWithContext(context.Background(), request)
 }
@@ -909,6 +910,7 @@ func (c *Client) DeleteAlarmNotices(request *DeleteAlarmNoticesRequest) (respons
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteAlarmNoticesWithContext(ctx context.Context, request *DeleteAlarmNoticesRequest) (response *DeleteAlarmNoticesResponse, err error) {
     if request == nil {
         request = NewDeleteAlarmNoticesRequest()
@@ -951,6 +953,7 @@ func NewDeleteAlarmPolicyResponse() (response *DeleteAlarmPolicyResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteAlarmPolicy(request *DeleteAlarmPolicyRequest) (response *DeleteAlarmPolicyResponse, err error) {
     return c.DeleteAlarmPolicyWithContext(context.Background(), request)
 }
@@ -964,6 +967,7 @@ func (c *Client) DeleteAlarmPolicy(request *DeleteAlarmPolicyRequest) (response 
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteAlarmPolicyWithContext(ctx context.Context, request *DeleteAlarmPolicyRequest) (response *DeleteAlarmPolicyResponse, err error) {
     if request == nil {
         request = NewDeleteAlarmPolicyRequest()

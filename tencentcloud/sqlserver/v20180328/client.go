@@ -2919,6 +2919,7 @@ func NewDescribePublishSubscribeResponse() (response *DescribePublishSubscribeRe
 // 本接口（DescribePublishSubscribe）用于查询发布订阅关系列表。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_GCSERROR = "FailedOperation.GcsError"
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
 //  INTERNALERROR_GCSERROR = "InternalError.GcsError"
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
@@ -2934,6 +2935,7 @@ func (c *Client) DescribePublishSubscribe(request *DescribePublishSubscribeReque
 // 本接口（DescribePublishSubscribe）用于查询发布订阅关系列表。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_GCSERROR = "FailedOperation.GcsError"
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
 //  INTERNALERROR_GCSERROR = "InternalError.GcsError"
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"

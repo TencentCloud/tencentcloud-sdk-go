@@ -321,6 +321,7 @@ func NewCreateDnsRecordResponse() (response *CreateDnsRecordResponse) {
 //  INVALIDPARAMETERVALUE_RECORDNOTALLOWED = "InvalidParameterValue.RecordNotAllowed"
 //  OPERATIONDENIED = "OperationDenied"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
 func (c *Client) CreateDnsRecord(request *CreateDnsRecordRequest) (response *CreateDnsRecordResponse, err error) {
     return c.CreateDnsRecordWithContext(context.Background(), request)
 }
@@ -341,6 +342,7 @@ func (c *Client) CreateDnsRecord(request *CreateDnsRecordRequest) (response *Cre
 //  INVALIDPARAMETERVALUE_RECORDNOTALLOWED = "InvalidParameterValue.RecordNotAllowed"
 //  OPERATIONDENIED = "OperationDenied"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
 func (c *Client) CreateDnsRecordWithContext(ctx context.Context, request *CreateDnsRecordRequest) (response *CreateDnsRecordResponse, err error) {
     if request == nil {
         request = NewCreateDnsRecordRequest()
@@ -551,6 +553,7 @@ func NewCreatePurgeTaskResponse() (response *CreatePurgeTaskResponse) {
 //  INVALIDPARAMETER_UPLOADURL = "InvalidParameter.UploadUrl"
 //  LIMITEXCEEDED_BATCHQUOTA = "LimitExceeded.BatchQuota"
 //  LIMITEXCEEDED_DAILYQUOTA = "LimitExceeded.DailyQuota"
+//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
 func (c *Client) CreatePurgeTask(request *CreatePurgeTaskRequest) (response *CreatePurgeTaskResponse, err error) {
     return c.CreatePurgeTaskWithContext(context.Background(), request)
 }
@@ -569,6 +572,7 @@ func (c *Client) CreatePurgeTask(request *CreatePurgeTaskRequest) (response *Cre
 //  INVALIDPARAMETER_UPLOADURL = "InvalidParameter.UploadUrl"
 //  LIMITEXCEEDED_BATCHQUOTA = "LimitExceeded.BatchQuota"
 //  LIMITEXCEEDED_DAILYQUOTA = "LimitExceeded.DailyQuota"
+//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
 func (c *Client) CreatePurgeTaskWithContext(ctx context.Context, request *CreatePurgeTaskRequest) (response *CreatePurgeTaskResponse, err error) {
     if request == nil {
         request = NewCreatePurgeTaskRequest()
@@ -1269,7 +1273,6 @@ func NewDescribeDDosAttackDataResponse() (response *DescribeDDosAttackDataRespon
 // 查询DDos攻击时序数据
 //
 // 可能返回的错误码:
-//  INTERNALERROR_PROXYSERVER = "InternalError.ProxyServer"
 //  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
 func (c *Client) DescribeDDosAttackData(request *DescribeDDosAttackDataRequest) (response *DescribeDDosAttackDataResponse, err error) {
     return c.DescribeDDosAttackDataWithContext(context.Background(), request)
@@ -1279,7 +1282,6 @@ func (c *Client) DescribeDDosAttackData(request *DescribeDDosAttackDataRequest) 
 // 查询DDos攻击时序数据
 //
 // 可能返回的错误码:
-//  INTERNALERROR_PROXYSERVER = "InternalError.ProxyServer"
 //  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
 func (c *Client) DescribeDDosAttackDataWithContext(ctx context.Context, request *DescribeDDosAttackDataRequest) (response *DescribeDDosAttackDataResponse, err error) {
     if request == nil {
@@ -1318,7 +1320,6 @@ func NewDescribeDDosAttackEventResponse() (response *DescribeDDosAttackEventResp
 // 查询DDos攻击事件
 //
 // 可能返回的错误码:
-//  INTERNALERROR_PROXYSERVER = "InternalError.ProxyServer"
 //  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
 func (c *Client) DescribeDDosAttackEvent(request *DescribeDDosAttackEventRequest) (response *DescribeDDosAttackEventResponse, err error) {
     return c.DescribeDDosAttackEventWithContext(context.Background(), request)
@@ -1328,7 +1329,6 @@ func (c *Client) DescribeDDosAttackEvent(request *DescribeDDosAttackEventRequest
 // 查询DDos攻击事件
 //
 // 可能返回的错误码:
-//  INTERNALERROR_PROXYSERVER = "InternalError.ProxyServer"
 //  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
 func (c *Client) DescribeDDosAttackEventWithContext(ctx context.Context, request *DescribeDDosAttackEventRequest) (response *DescribeDDosAttackEventResponse, err error) {
     if request == nil {
@@ -1508,6 +1508,7 @@ func NewDescribeDDosMajorAttackEventResponse() (response *DescribeDDosMajorAttac
 // 查询DDos主攻击事件
 //
 // 可能返回的错误码:
+//  LIMITEXCEEDED = "LimitExceeded"
 //  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
 func (c *Client) DescribeDDosMajorAttackEvent(request *DescribeDDosMajorAttackEventRequest) (response *DescribeDDosMajorAttackEventResponse, err error) {
     return c.DescribeDDosMajorAttackEventWithContext(context.Background(), request)
@@ -1517,6 +1518,7 @@ func (c *Client) DescribeDDosMajorAttackEvent(request *DescribeDDosMajorAttackEv
 // 查询DDos主攻击事件
 //
 // 可能返回的错误码:
+//  LIMITEXCEEDED = "LimitExceeded"
 //  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
 func (c *Client) DescribeDDosMajorAttackEventWithContext(ctx context.Context, request *DescribeDDosMajorAttackEventRequest) (response *DescribeDDosMajorAttackEventResponse, err error) {
     if request == nil {
@@ -1611,6 +1613,7 @@ func NewDescribeDnsDataResponse() (response *DescribeDnsDataResponse) {
 //
 // 可能返回的错误码:
 //  OPERATIONDENIED = "OperationDenied"
+//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
 func (c *Client) DescribeDnsData(request *DescribeDnsDataRequest) (response *DescribeDnsDataResponse, err error) {
     return c.DescribeDnsDataWithContext(context.Background(), request)
 }
@@ -1620,6 +1623,7 @@ func (c *Client) DescribeDnsData(request *DescribeDnsDataRequest) (response *Des
 //
 // 可能返回的错误码:
 //  OPERATIONDENIED = "OperationDenied"
+//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
 func (c *Client) DescribeDnsDataWithContext(ctx context.Context, request *DescribeDnsDataRequest) (response *DescribeDnsDataResponse, err error) {
     if request == nil {
         request = NewDescribeDnsDataRequest()
@@ -2800,8 +2804,7 @@ func NewDescribeWebManagedRulesAttackEventsResponse() (response *DescribeWebMana
 // 查询Web托管攻击事件
 //
 // 可能返回的错误码:
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeWebManagedRulesAttackEvents(request *DescribeWebManagedRulesAttackEventsRequest) (response *DescribeWebManagedRulesAttackEventsResponse, err error) {
     return c.DescribeWebManagedRulesAttackEventsWithContext(context.Background(), request)
 }
@@ -2810,8 +2813,7 @@ func (c *Client) DescribeWebManagedRulesAttackEvents(request *DescribeWebManaged
 // 查询Web托管攻击事件
 //
 // 可能返回的错误码:
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeWebManagedRulesAttackEventsWithContext(ctx context.Context, request *DescribeWebManagedRulesAttackEventsRequest) (response *DescribeWebManagedRulesAttackEventsResponse, err error) {
     if request == nil {
         request = NewDescribeWebManagedRulesAttackEventsRequest()
@@ -2849,6 +2851,7 @@ func NewDescribeWebManagedRulesDataResponse() (response *DescribeWebManagedRules
 // 查询waf攻击时序数据
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeWebManagedRulesData(request *DescribeWebManagedRulesDataRequest) (response *DescribeWebManagedRulesDataResponse, err error) {
     return c.DescribeWebManagedRulesDataWithContext(context.Background(), request)
@@ -2858,6 +2861,7 @@ func (c *Client) DescribeWebManagedRulesData(request *DescribeWebManagedRulesDat
 // 查询waf攻击时序数据
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeWebManagedRulesDataWithContext(ctx context.Context, request *DescribeWebManagedRulesDataRequest) (response *DescribeWebManagedRulesDataResponse, err error) {
     if request == nil {
@@ -2943,6 +2947,9 @@ func NewDescribeWebManagedRulesTopDataResponse() (response *DescribeWebManagedRu
 // 查询waf攻击top数据
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
 func (c *Client) DescribeWebManagedRulesTopData(request *DescribeWebManagedRulesTopDataRequest) (response *DescribeWebManagedRulesTopDataResponse, err error) {
     return c.DescribeWebManagedRulesTopDataWithContext(context.Background(), request)
@@ -2952,6 +2959,9 @@ func (c *Client) DescribeWebManagedRulesTopData(request *DescribeWebManagedRules
 // 查询waf攻击top数据
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
 func (c *Client) DescribeWebManagedRulesTopDataWithContext(ctx context.Context, request *DescribeWebManagedRulesTopDataRequest) (response *DescribeWebManagedRulesTopDataResponse, err error) {
     if request == nil {
@@ -2990,7 +3000,7 @@ func NewDescribeWebProtectionAttackEventsResponse() (response *DescribeWebProtec
 // 查询web防护攻击事件
 //
 // 可能返回的错误码:
-//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeWebProtectionAttackEvents(request *DescribeWebProtectionAttackEventsRequest) (response *DescribeWebProtectionAttackEventsResponse, err error) {
     return c.DescribeWebProtectionAttackEventsWithContext(context.Background(), request)
 }
@@ -2999,7 +3009,7 @@ func (c *Client) DescribeWebProtectionAttackEvents(request *DescribeWebProtectio
 // 查询web防护攻击事件
 //
 // 可能返回的错误码:
-//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeWebProtectionAttackEventsWithContext(ctx context.Context, request *DescribeWebProtectionAttackEventsRequest) (response *DescribeWebProtectionAttackEventsResponse, err error) {
     if request == nil {
         request = NewDescribeWebProtectionAttackEventsRequest()
@@ -3037,6 +3047,7 @@ func NewDescribeWebProtectionDataResponse() (response *DescribeWebProtectionData
 // 查询CC防护时序数据
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeWebProtectionData(request *DescribeWebProtectionDataRequest) (response *DescribeWebProtectionDataResponse, err error) {
     return c.DescribeWebProtectionDataWithContext(context.Background(), request)
@@ -3046,6 +3057,7 @@ func (c *Client) DescribeWebProtectionData(request *DescribeWebProtectionDataReq
 // 查询CC防护时序数据
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeWebProtectionDataWithContext(ctx context.Context, request *DescribeWebProtectionDataRequest) (response *DescribeWebProtectionDataResponse, err error) {
     if request == nil {
@@ -3341,6 +3353,7 @@ func NewDownloadL7LogsResponse() (response *DownloadL7LogsResponse) {
 // 可能返回的错误码:
 //  OPERATIONDENIED = "OperationDenied"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
 func (c *Client) DownloadL7Logs(request *DownloadL7LogsRequest) (response *DownloadL7LogsResponse, err error) {
     return c.DownloadL7LogsWithContext(context.Background(), request)
 }
@@ -3351,6 +3364,7 @@ func (c *Client) DownloadL7Logs(request *DownloadL7LogsRequest) (response *Downl
 // 可能返回的错误码:
 //  OPERATIONDENIED = "OperationDenied"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
 func (c *Client) DownloadL7LogsWithContext(ctx context.Context, request *DownloadL7LogsRequest) (response *DownloadL7LogsResponse, err error) {
     if request == nil {
         request = NewDownloadL7LogsRequest()
@@ -3822,11 +3836,13 @@ func NewModifyDnsRecordResponse() (response *ModifyDnsRecordResponse) {
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_INVALIDDNSCONTENT = "InvalidParameterValue.InvalidDNSContent"
+//  INVALIDPARAMETERVALUE_INVALIDDNSNAME = "InvalidParameterValue.InvalidDNSName"
 //  INVALIDPARAMETERVALUE_RECORDALREADYEXISTS = "InvalidParameterValue.RecordAlreadyExists"
 //  INVALIDPARAMETERVALUE_RECORDNOTALLOWED = "InvalidParameterValue.RecordNotAllowed"
 //  OPERATIONDENIED = "OperationDenied"
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
 func (c *Client) ModifyDnsRecord(request *ModifyDnsRecordRequest) (response *ModifyDnsRecordResponse, err error) {
     return c.ModifyDnsRecordWithContext(context.Background(), request)
 }
@@ -3836,11 +3852,13 @@ func (c *Client) ModifyDnsRecord(request *ModifyDnsRecordRequest) (response *Mod
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_INVALIDDNSCONTENT = "InvalidParameterValue.InvalidDNSContent"
+//  INVALIDPARAMETERVALUE_INVALIDDNSNAME = "InvalidParameterValue.InvalidDNSName"
 //  INVALIDPARAMETERVALUE_RECORDALREADYEXISTS = "InvalidParameterValue.RecordAlreadyExists"
 //  INVALIDPARAMETERVALUE_RECORDNOTALLOWED = "InvalidParameterValue.RecordNotAllowed"
 //  OPERATIONDENIED = "OperationDenied"
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
 func (c *Client) ModifyDnsRecordWithContext(ctx context.Context, request *ModifyDnsRecordRequest) (response *ModifyDnsRecordResponse, err error) {
     if request == nil {
         request = NewModifyDnsRecordRequest()

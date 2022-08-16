@@ -924,6 +924,7 @@ func NewCreateRocketMQClusterResponse() (response *CreateRocketMQClusterResponse
 //  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCEUNAVAILABLE_FUNDREQUIRED = "ResourceUnavailable.FundRequired"
 func (c *Client) CreateRocketMQCluster(request *CreateRocketMQClusterRequest) (response *CreateRocketMQClusterResponse, err error) {
     return c.CreateRocketMQClusterWithContext(context.Background(), request)
 }
@@ -942,6 +943,7 @@ func (c *Client) CreateRocketMQCluster(request *CreateRocketMQClusterRequest) (r
 //  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCEUNAVAILABLE_FUNDREQUIRED = "ResourceUnavailable.FundRequired"
 func (c *Client) CreateRocketMQClusterWithContext(ctx context.Context, request *CreateRocketMQClusterRequest) (response *CreateRocketMQClusterResponse, err error) {
     if request == nil {
         request = NewCreateRocketMQClusterRequest()
@@ -4920,6 +4922,7 @@ func NewModifyRocketMQTopicResponse() (response *ModifyRocketMQTopicResponse) {
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARTITION = "InvalidParameter.Partition"
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ModifyRocketMQTopic(request *ModifyRocketMQTopicRequest) (response *ModifyRocketMQTopicResponse, err error) {
@@ -4933,6 +4936,7 @@ func (c *Client) ModifyRocketMQTopic(request *ModifyRocketMQTopicRequest) (respo
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARTITION = "InvalidParameter.Partition"
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ModifyRocketMQTopicWithContext(ctx context.Context, request *ModifyRocketMQTopicRequest) (response *ModifyRocketMQTopicResponse, err error) {

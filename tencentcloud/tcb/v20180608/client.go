@@ -231,6 +231,7 @@ func NewCreateAndDeployCloudBaseProjectResponse() (response *CreateAndDeployClou
 //  MISSINGPARAMETER_PARAM = "MissingParameter.Param"
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE_REFRESHTOKENEXPIRED = "ResourceUnavailable.RefreshTokenExpired"
 //  UNAUTHORIZEDOPERATION_CODEOAUTHUNAUTHORIZED = "UnauthorizedOperation.CodeOAuthUnauthorized"
 func (c *Client) CreateAndDeployCloudBaseProject(request *CreateAndDeployCloudBaseProjectRequest) (response *CreateAndDeployCloudBaseProjectResponse, err error) {
     return c.CreateAndDeployCloudBaseProjectWithContext(context.Background(), request)
@@ -246,6 +247,7 @@ func (c *Client) CreateAndDeployCloudBaseProject(request *CreateAndDeployCloudBa
 //  MISSINGPARAMETER_PARAM = "MissingParameter.Param"
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE_REFRESHTOKENEXPIRED = "ResourceUnavailable.RefreshTokenExpired"
 //  UNAUTHORIZEDOPERATION_CODEOAUTHUNAUTHORIZED = "UnauthorizedOperation.CodeOAuthUnauthorized"
 func (c *Client) CreateAndDeployCloudBaseProjectWithContext(ctx context.Context, request *CreateAndDeployCloudBaseProjectRequest) (response *CreateAndDeployCloudBaseProjectResponse, err error) {
     if request == nil {
@@ -2423,6 +2425,7 @@ func NewDescribeEnvDealRegionResponse() (response *DescribeEnvDealRegionResponse
 //  MISSINGPARAMETER = "MissingParameter"
 //  MISSINGPARAMETER_PARAM = "MissingParameter.Param"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) DescribeEnvDealRegion(request *DescribeEnvDealRegionRequest) (response *DescribeEnvDealRegionResponse, err error) {
     return c.DescribeEnvDealRegionWithContext(context.Background(), request)
 }
@@ -2439,6 +2442,7 @@ func (c *Client) DescribeEnvDealRegion(request *DescribeEnvDealRegionRequest) (r
 //  MISSINGPARAMETER = "MissingParameter"
 //  MISSINGPARAMETER_PARAM = "MissingParameter.Param"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) DescribeEnvDealRegionWithContext(ctx context.Context, request *DescribeEnvDealRegionRequest) (response *DescribeEnvDealRegionResponse, err error) {
     if request == nil {
         request = NewDescribeEnvDealRegionRequest()

@@ -1096,6 +1096,67 @@ func (r *DeleteDeviceResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DeleteDeviceShadowRequestParams struct {
+	// 产品ID
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+
+	// 设备名称
+	DeviceName *string `json:"DeviceName,omitempty" name:"DeviceName"`
+}
+
+type DeleteDeviceShadowRequest struct {
+	*tchttp.BaseRequest
+	
+	// 产品ID
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+
+	// 设备名称
+	DeviceName *string `json:"DeviceName,omitempty" name:"DeviceName"`
+}
+
+func (r *DeleteDeviceShadowRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteDeviceShadowRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProductId")
+	delete(f, "DeviceName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteDeviceShadowRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteDeviceShadowResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DeleteDeviceShadowResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteDeviceShadowResponseParams `json:"Response"`
+}
+
+func (r *DeleteDeviceShadowResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteDeviceShadowResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DeletePrivateCARequestParams struct {
 	// 私有CA证书名称
 	CertName *string `json:"CertName,omitempty" name:"CertName"`

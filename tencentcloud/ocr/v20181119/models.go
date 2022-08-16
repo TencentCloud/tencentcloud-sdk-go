@@ -6355,6 +6355,9 @@ type SmartStructuralOCRRequestParams struct {
 
 	// 需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
 	PdfPageNumber *uint64 `json:"PdfPageNumber,omitempty" name:"PdfPageNumber"`
+
+	// 是否开启全文字段识别，默认值为false，开启后可返回全文字段识别结果。
+	ReturnFullText *bool `json:"ReturnFullText,omitempty" name:"ReturnFullText"`
 }
 
 type SmartStructuralOCRRequest struct {
@@ -6383,6 +6386,9 @@ type SmartStructuralOCRRequest struct {
 
 	// 需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
 	PdfPageNumber *uint64 `json:"PdfPageNumber,omitempty" name:"PdfPageNumber"`
+
+	// 是否开启全文字段识别，默认值为false，开启后可返回全文字段识别结果。
+	ReturnFullText *bool `json:"ReturnFullText,omitempty" name:"ReturnFullText"`
 }
 
 func (r *SmartStructuralOCRRequest) ToJsonString() string {
@@ -6402,6 +6408,7 @@ func (r *SmartStructuralOCRRequest) FromJsonString(s string) error {
 	delete(f, "ItemNames")
 	delete(f, "IsPdf")
 	delete(f, "PdfPageNumber")
+	delete(f, "ReturnFullText")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SmartStructuralOCRRequest has unknown keys!", "")
 	}

@@ -219,8 +219,6 @@ func NewCallDeviceActionAsyncResponse() (response *CallDeviceActionAsyncResponse
 // 异步调用设备行为
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CallDeviceActionAsync(request *CallDeviceActionAsyncRequest) (response *CallDeviceActionAsyncResponse, err error) {
     return c.CallDeviceActionAsyncWithContext(context.Background(), request)
@@ -230,8 +228,6 @@ func (c *Client) CallDeviceActionAsync(request *CallDeviceActionAsyncRequest) (r
 // 异步调用设备行为
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CallDeviceActionAsyncWithContext(ctx context.Context, request *CallDeviceActionAsyncRequest) (response *CallDeviceActionAsyncResponse, err error) {
     if request == nil {

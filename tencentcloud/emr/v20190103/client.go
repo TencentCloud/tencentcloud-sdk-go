@@ -1589,6 +1589,7 @@ func NewModifyResourceSchedulerResponse() (response *ModifyResourceSchedulerResp
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CAMCGWERROR = "InternalError.CamCgwError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
 func (c *Client) ModifyResourceScheduler(request *ModifyResourceSchedulerRequest) (response *ModifyResourceSchedulerResponse, err error) {
@@ -1600,6 +1601,7 @@ func (c *Client) ModifyResourceScheduler(request *ModifyResourceSchedulerRequest
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CAMCGWERROR = "InternalError.CamCgwError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
 func (c *Client) ModifyResourceSchedulerWithContext(ctx context.Context, request *ModifyResourceSchedulerRequest) (response *ModifyResourceSchedulerResponse, err error) {

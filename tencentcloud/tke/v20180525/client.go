@@ -9972,6 +9972,7 @@ func NewModifyPrometheusTempResponse() (response *ModifyPrometheusTempResponse) 
 //  INTERNALERROR_PARAM = "InternalError.Param"
 //  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
 //  INVALIDPARAMETER_RESOURCENOTFOUND = "InvalidParameter.ResourceNotFound"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ModifyPrometheusTemp(request *ModifyPrometheusTempRequest) (response *ModifyPrometheusTempResponse, err error) {
     return c.ModifyPrometheusTempWithContext(context.Background(), request)
 }
@@ -9985,6 +9986,7 @@ func (c *Client) ModifyPrometheusTemp(request *ModifyPrometheusTempRequest) (res
 //  INTERNALERROR_PARAM = "InternalError.Param"
 //  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
 //  INVALIDPARAMETER_RESOURCENOTFOUND = "InvalidParameter.ResourceNotFound"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ModifyPrometheusTempWithContext(ctx context.Context, request *ModifyPrometheusTempRequest) (response *ModifyPrometheusTempResponse, err error) {
     if request == nil {
         request = NewModifyPrometheusTempRequest()

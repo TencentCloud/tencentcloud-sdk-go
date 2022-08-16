@@ -6303,6 +6303,14 @@ type KafkaParam struct {
 	// Qps 限制
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	QpsLimit *uint64 `json:"QpsLimit,omitempty" name:"QpsLimit"`
+
+	// Table到Topic的路由，「分发到多个topic」开关打开时必传
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TableMappings []*TableMapping `json:"TableMappings,omitempty" name:"TableMappings"`
+
+	// 「分发到多个topic」开关，默认为false
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UseTableMapping *bool `json:"UseTableMapping,omitempty" name:"UseTableMapping"`
 }
 
 type MapParam struct {
@@ -7282,6 +7290,10 @@ type MySQLConnectParam struct {
 	// 当type为TDSQL_C_MYSQL时，必填
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// Mysql 连接源是否为自建集群
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SelfBuilt *bool `json:"SelfBuilt,omitempty" name:"SelfBuilt"`
 }
 
 type MySQLModifyConnectParam struct {
@@ -7372,6 +7384,18 @@ type MySQLParam struct {
 
 	// 当设置成员参数DropInvalidMessageToCls设置为true时,DropInvalidMessage参数失效
 	DropCls *DropCls `json:"DropCls,omitempty" name:"DropCls"`
+
+	// 输出格式，DEFAULT、CANAL_1、CANAL_2
+	OutputFormat *string `json:"OutputFormat,omitempty" name:"OutputFormat"`
+
+	// 当Table输入的是前缀时，该项值为true，否则为false
+	IsTablePrefix *bool `json:"IsTablePrefix,omitempty" name:"IsTablePrefix"`
+
+	// 如果该值为all，则DDL数据以及DML数据也会写入到选中的topic；若该值为dml，则只有DML数据写入到选中的topic
+	IncludeContentChanges *string `json:"IncludeContentChanges,omitempty" name:"IncludeContentChanges"`
+
+	// 如果该值为true，且MySQL中"binlog_rows_query_log_events"配置项的值为"ON"，则流入到topic的数据包含原SQL语句；若该值为false，流入到topic的数据不包含原SQL语句
+	IncludeQuery *bool `json:"IncludeQuery,omitempty" name:"IncludeQuery"`
 }
 
 type OperateResponseData struct {
@@ -7435,6 +7459,10 @@ type PostgreSQLConnectParam struct {
 	// 是否更新到关联的Datahub任务
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsUpdate *bool `json:"IsUpdate,omitempty" name:"IsUpdate"`
+
+	// PostgreSQL连接源是否为自建集群
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SelfBuilt *bool `json:"SelfBuilt,omitempty" name:"SelfBuilt"`
 }
 
 type PostgreSQLModifyConnectParam struct {
@@ -7827,6 +7855,20 @@ type SubstrParam struct {
 
 	// 截取截止位置
 	End *int64 `json:"End,omitempty" name:"End"`
+}
+
+type TableMapping struct {
+	// 库名
+	Database *string `json:"Database,omitempty" name:"Database"`
+
+	// 表名，多个表,（逗号）隔开
+	Table *string `json:"Table,omitempty" name:"Table"`
+
+	// Topic名称
+	Topic *string `json:"Topic,omitempty" name:"Topic"`
+
+	// Topic ID
+	TopicId *string `json:"TopicId,omitempty" name:"TopicId"`
 }
 
 type Tag struct {

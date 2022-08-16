@@ -47,6 +47,9 @@ const (
 	// 版本部署调用失败。
 	INTERNALERROR_DEPLOYVERSIONERROR = "InternalError.DeployVersionError"
 
+	// 查询配置详情失败。
+	INTERNALERROR_DESCRIBECONFIGDATAERROR = "InternalError.DescribeConfigDataError"
+
 	// 查询配置列表失败。
 	INTERNALERROR_DESCRIBECONFIGDATALISTERROR = "InternalError.DescribeConfigDataListError"
 
@@ -92,8 +95,17 @@ const (
 	// 定时弹性伸缩目标实例数不合法。
 	INVALIDPARAMETERVALUE_CRONHPAREPLICASINVALID = "InvalidParameterValue.CronHpaReplicasInvalid"
 
+	// 弹性伸缩启用中，请停用后再删除。
+	INVALIDPARAMETERVALUE_DISABLESCALERBEFOREDELETE = "InvalidParameterValue.DisableScalerBeforeDelete"
+
 	// 弹性伸缩指标不合法。
 	INVALIDPARAMETERVALUE_HPAMETRICSINVALID = "InvalidParameterValue.HpaMetricsInvalid"
+
+	// 弹性伸缩最小值/最大值不合法。
+	INVALIDPARAMETERVALUE_HPAMINMAXINVALID = "InvalidParameterValue.HpaMinMaxInvalid"
+
+	// 无效的定时伸缩周期。
+	INVALIDPARAMETERVALUE_INVALIDCRONSCALERPERIOD = "InvalidParameterValue.InvalidCronScalerPeriod"
 
 	// 版本号格式非法。
 	INVALIDPARAMETERVALUE_INVALIDDEPLOYVERSION = "InvalidParameterValue.InvalidDeployVersion"
@@ -118,6 +130,9 @@ const (
 
 	// 公有镜像参数错误。
 	INVALIDPARAMETERVALUE_PUBLICREPOTYPEPARAMETERERROR = "InvalidParameterValue.PublicRepoTypeParameterError"
+
+	// 弹性伸缩名称已存在。
+	INVALIDPARAMETERVALUE_SCALERNAMEDUPLICATED = "InvalidParameterValue.ScalerNameDuplicated"
 
 	// 应用存在正在运行的实例。
 	INVALIDPARAMETERVALUE_SERVICEFOUNDRUNNINGVERSION = "InvalidParameterValue.ServiceFoundRunningVersion"

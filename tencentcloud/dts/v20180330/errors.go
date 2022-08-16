@@ -80,6 +80,9 @@ const (
 	// 实例不存在。
 	INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
 
+	// ip地址错误。
+	INVALIDPARAMETER_INVALIDIPADDRESS = "InvalidParameter.InvalidIpAddress"
+
 	// 业务参数错误。
 	INVALIDPARAMETERVALUE_BIZINVALIDPARAMETERVALUEERROR = "InvalidParameterValue.BizInvalidParameterValueError"
 

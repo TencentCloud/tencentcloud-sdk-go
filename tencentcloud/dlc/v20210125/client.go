@@ -571,11 +571,7 @@ func NewCheckLockMetaDataResponse() (response *CheckLockMetaDataResponse) {
 // 元数据锁检查
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_ANOTHERREQUESTPROCESSING = "FailedOperation.AnotherRequestProcessing"
-//  FAILEDOPERATION_HTTPCLIENTDOREQUESTFAILED = "FailedOperation.HttpClientDoRequestFailed"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER_INVALIDTASKID = "InvalidParameter.InvalidTaskId"
-//  INVALIDPARAMETER_TASKALREADYFINISHED = "InvalidParameter.TaskAlreadyFinished"
+//  FAILEDOPERATION = "FailedOperation"
 func (c *Client) CheckLockMetaData(request *CheckLockMetaDataRequest) (response *CheckLockMetaDataResponse, err error) {
     return c.CheckLockMetaDataWithContext(context.Background(), request)
 }
@@ -584,11 +580,7 @@ func (c *Client) CheckLockMetaData(request *CheckLockMetaDataRequest) (response 
 // 元数据锁检查
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_ANOTHERREQUESTPROCESSING = "FailedOperation.AnotherRequestProcessing"
-//  FAILEDOPERATION_HTTPCLIENTDOREQUESTFAILED = "FailedOperation.HttpClientDoRequestFailed"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER_INVALIDTASKID = "InvalidParameter.InvalidTaskId"
-//  INVALIDPARAMETER_TASKALREADYFINISHED = "InvalidParameter.TaskAlreadyFinished"
+//  FAILEDOPERATION = "FailedOperation"
 func (c *Client) CheckLockMetaDataWithContext(ctx context.Context, request *CheckLockMetaDataRequest) (response *CheckLockMetaDataResponse, err error) {
     if request == nil {
         request = NewCheckLockMetaDataRequest()
@@ -3173,8 +3165,7 @@ func NewReportHeartbeatMetaDataResponse() (response *ReportHeartbeatMetaDataResp
 // 上报元数据心跳
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  UNAUTHORIZEDOPERATION_MODIFYWORKGROUPINFO = "UnauthorizedOperation.ModifyWorkgroupInfo"
+//  FAILEDOPERATION = "FailedOperation"
 func (c *Client) ReportHeartbeatMetaData(request *ReportHeartbeatMetaDataRequest) (response *ReportHeartbeatMetaDataResponse, err error) {
     return c.ReportHeartbeatMetaDataWithContext(context.Background(), request)
 }
@@ -3183,8 +3174,7 @@ func (c *Client) ReportHeartbeatMetaData(request *ReportHeartbeatMetaDataRequest
 // 上报元数据心跳
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  UNAUTHORIZEDOPERATION_MODIFYWORKGROUPINFO = "UnauthorizedOperation.ModifyWorkgroupInfo"
+//  FAILEDOPERATION = "FailedOperation"
 func (c *Client) ReportHeartbeatMetaDataWithContext(ctx context.Context, request *ReportHeartbeatMetaDataRequest) (response *ReportHeartbeatMetaDataResponse, err error) {
     if request == nil {
         request = NewReportHeartbeatMetaDataRequest()
@@ -3273,9 +3263,7 @@ func NewUnlockMetaDataResponse() (response *UnlockMetaDataResponse) {
 // 元数据解锁
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER_DUPLICATEUSERNAME = "InvalidParameter.DuplicateUserName"
-//  UNAUTHORIZEDOPERATION_UNBINDWORKGROUPSFROMUSER = "UnauthorizedOperation.UnbindWorkgroupsFromUser"
+//  FAILEDOPERATION = "FailedOperation"
 func (c *Client) UnlockMetaData(request *UnlockMetaDataRequest) (response *UnlockMetaDataResponse, err error) {
     return c.UnlockMetaDataWithContext(context.Background(), request)
 }
@@ -3284,9 +3272,7 @@ func (c *Client) UnlockMetaData(request *UnlockMetaDataRequest) (response *Unloc
 // 元数据解锁
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER_DUPLICATEUSERNAME = "InvalidParameter.DuplicateUserName"
-//  UNAUTHORIZEDOPERATION_UNBINDWORKGROUPSFROMUSER = "UnauthorizedOperation.UnbindWorkgroupsFromUser"
+//  FAILEDOPERATION = "FailedOperation"
 func (c *Client) UnlockMetaDataWithContext(ctx context.Context, request *UnlockMetaDataRequest) (response *UnlockMetaDataResponse, err error) {
     if request == nil {
         request = NewUnlockMetaDataRequest()

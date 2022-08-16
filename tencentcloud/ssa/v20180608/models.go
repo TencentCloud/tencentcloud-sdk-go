@@ -2016,7 +2016,7 @@ type DescribeSocAlertListRequestParams struct {
 	// 页码
 	PageIndex *int64 `json:"PageIndex,omitempty" name:"PageIndex"`
 
-	// 业务场景 参考ScenesType
+	// 1:急需关注 2.重保监控 3.全量告警
 	Scenes *int64 `json:"Scenes,omitempty" name:"Scenes"`
 
 	// 查询参数
@@ -2038,7 +2038,7 @@ type DescribeSocAlertListRequest struct {
 	// 页码
 	PageIndex *int64 `json:"PageIndex,omitempty" name:"PageIndex"`
 
-	// 业务场景 参考ScenesType
+	// 1:急需关注 2.重保监控 3.全量告警
 	Scenes *int64 `json:"Scenes,omitempty" name:"Scenes"`
 
 	// 查询参数

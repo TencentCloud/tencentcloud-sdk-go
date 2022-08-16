@@ -186,6 +186,7 @@ func NewDescribeInstanceDetailResponse() (response *DescribeInstanceDetailRespon
 //  DRYRUNOPERATION = "DryRunOperation"
 //  FAILEDOPERATION_QUERYRESOURCEERROR = "FailedOperation.QueryResourceError"
 //  FAILEDOPERATION_QUERYSPECINFOERROR = "FailedOperation.QuerySpecInfoError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
 func (c *Client) DescribeInstanceDetail(request *DescribeInstanceDetailRequest) (response *DescribeInstanceDetailResponse, err error) {
     return c.DescribeInstanceDetailWithContext(context.Background(), request)
 }
@@ -198,6 +199,7 @@ func (c *Client) DescribeInstanceDetail(request *DescribeInstanceDetailRequest) 
 //  DRYRUNOPERATION = "DryRunOperation"
 //  FAILEDOPERATION_QUERYRESOURCEERROR = "FailedOperation.QueryResourceError"
 //  FAILEDOPERATION_QUERYSPECINFOERROR = "FailedOperation.QuerySpecInfoError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
 func (c *Client) DescribeInstanceDetailWithContext(ctx context.Context, request *DescribeInstanceDetailRequest) (response *DescribeInstanceDetailResponse, err error) {
     if request == nil {
         request = NewDescribeInstanceDetailRequest()

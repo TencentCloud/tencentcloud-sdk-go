@@ -5517,10 +5517,10 @@ func (r *DescribeAssetSystemPackageListResponse) FromJsonString(s string) error 
 
 // Predefined struct for user
 type DescribeAssetUserInfoRequestParams struct {
-	// 服务器Quuid
+	// 云服务器UUID
 	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
 
-	// 服务器Uuid
+	// 主机安全UUID
 	Uuid *string `json:"Uuid,omitempty" name:"Uuid"`
 
 	// 账户名
@@ -5530,10 +5530,10 @@ type DescribeAssetUserInfoRequestParams struct {
 type DescribeAssetUserInfoRequest struct {
 	*tchttp.BaseRequest
 	
-	// 服务器Quuid
+	// 云服务器UUID
 	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
 
-	// 服务器Uuid
+	// 主机安全UUID
 	Uuid *string `json:"Uuid,omitempty" name:"Uuid"`
 
 	// 账户名

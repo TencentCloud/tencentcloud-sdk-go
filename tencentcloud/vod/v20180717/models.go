@@ -9268,7 +9268,7 @@ type DescribeTaskDetailRequestParams struct {
 	// 视频处理任务的任务 ID。
 	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
 
-	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
@@ -9278,7 +9278,7 @@ type DescribeTaskDetailRequest struct {
 	// 视频处理任务的任务 ID。
 	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
 
-	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
 	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
 }
 
@@ -9311,15 +9311,9 @@ type DescribeTaskDetailResponseParams struct {
 	// <li>ComposeMedia：制作媒体文件任务；</li>
 	// <li>WechatPublish：微信发布任务；</li>
 	// <li>WechatMiniProgramPublish：微信小程序视频发布任务；</li>
-	// <li>PullUpload：拉取上传媒体文件任务。</li>
-	// <li>FastClipMedia：快速剪辑任务。</li>
-	// 
-	// 兼容 2017 版的任务类型：
-	// <li>Transcode：视频转码任务；</li>
-	// <li>SnapshotByTimeOffset：视频截图任务；</li>
-	// <li>Concat：视频拼接任务；</li>
-	// <li>Clip：视频剪辑任务；</li>
-	// <li>ImageSprites：截取雪碧图任务。</li>
+	// <li>PullUpload：拉取上传媒体文件任务；</li>
+	// <li>FastClipMedia：快速剪辑任务；</li>
+	// <li>ReduceMediaBitrate：降码率任务。</li>
 	TaskType *string `json:"TaskType,omitempty" name:"TaskType"`
 
 	// 任务状态，取值：

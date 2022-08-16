@@ -632,19 +632,7 @@ func NewDeleteLogExportResponse() (response *DeleteLogExportResponse) {
 // 默认接口请求频率限制：20次/秒。
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
-//  OPERATIONDENIED = "OperationDenied"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteLogExport(request *DeleteLogExportRequest) (response *DeleteLogExportResponse, err error) {
     return c.DeleteLogExportWithContext(context.Background(), request)
 }
@@ -661,19 +649,7 @@ func (c *Client) DeleteLogExport(request *DeleteLogExportRequest) (response *Del
 // 默认接口请求频率限制：20次/秒。
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
-//  OPERATIONDENIED = "OperationDenied"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNKNOWNPARAMETER = "UnknownParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteLogExportWithContext(ctx context.Context, request *DeleteLogExportRequest) (response *DeleteLogExportResponse, err error) {
     if request == nil {
         request = NewDeleteLogExportRequest()

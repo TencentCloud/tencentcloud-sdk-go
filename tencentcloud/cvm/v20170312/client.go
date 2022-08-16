@@ -325,11 +325,16 @@ func NewConfigureChcAssistVpcResponse() (response *ConfigureChcAssistVpcResponse
 // 可能返回的错误码:
 //  ACCOUNTQUALIFICATIONRESTRICTIONS = "AccountQualificationRestrictions"
 //  INVALIDHOST_NOTSUPPORTED = "InvalidHost.NotSupported"
+//  INVALIDINSTANCE_NOTSUPPORTED = "InvalidInstance.NotSupported"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE_AMOUNTNOTEQUAL = "InvalidParameterValue.AmountNotEqual"
 //  INVALIDPARAMETERVALUE_CHCHOSTSNOTFOUND = "InvalidParameterValue.ChcHostsNotFound"
+//  INVALIDPARAMETERVALUE_IPADDRESSMALFORMED = "InvalidParameterValue.IPAddressMalformed"
+//  INVALIDPARAMETERVALUE_INCORRECTFORMAT = "InvalidParameterValue.IncorrectFormat"
 //  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
 //  INVALIDPARAMETERVALUE_MUSTDHCPENABLEDVPC = "InvalidParameterValue.MustDhcpEnabledVpc"
+//  VPCADDRNOTINSUBNET = "VpcAddrNotInSubNet"
+//  VPCIPISUSED = "VpcIpIsUsed"
 func (c *Client) ConfigureChcAssistVpc(request *ConfigureChcAssistVpcRequest) (response *ConfigureChcAssistVpcResponse, err error) {
     return c.ConfigureChcAssistVpcWithContext(context.Background(), request)
 }
@@ -340,11 +345,16 @@ func (c *Client) ConfigureChcAssistVpc(request *ConfigureChcAssistVpcRequest) (r
 // 可能返回的错误码:
 //  ACCOUNTQUALIFICATIONRESTRICTIONS = "AccountQualificationRestrictions"
 //  INVALIDHOST_NOTSUPPORTED = "InvalidHost.NotSupported"
+//  INVALIDINSTANCE_NOTSUPPORTED = "InvalidInstance.NotSupported"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE_AMOUNTNOTEQUAL = "InvalidParameterValue.AmountNotEqual"
 //  INVALIDPARAMETERVALUE_CHCHOSTSNOTFOUND = "InvalidParameterValue.ChcHostsNotFound"
+//  INVALIDPARAMETERVALUE_IPADDRESSMALFORMED = "InvalidParameterValue.IPAddressMalformed"
+//  INVALIDPARAMETERVALUE_INCORRECTFORMAT = "InvalidParameterValue.IncorrectFormat"
 //  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
 //  INVALIDPARAMETERVALUE_MUSTDHCPENABLEDVPC = "InvalidParameterValue.MustDhcpEnabledVpc"
+//  VPCADDRNOTINSUBNET = "VpcAddrNotInSubNet"
+//  VPCIPISUSED = "VpcIpIsUsed"
 func (c *Client) ConfigureChcAssistVpcWithContext(ctx context.Context, request *ConfigureChcAssistVpcRequest) (response *ConfigureChcAssistVpcResponse, err error) {
     if request == nil {
         request = NewConfigureChcAssistVpcRequest()
@@ -382,10 +392,13 @@ func NewConfigureChcDeployVpcResponse() (response *ConfigureChcDeployVpcResponse
 // 配置CHC物理服务器部署网络
 //
 // 可能返回的错误码:
+//  INVALIDHOST_NOTSUPPORTED = "InvalidHost.NotSupported"
+//  INVALIDINSTANCE_NOTSUPPORTED = "InvalidInstance.NotSupported"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE_AMOUNTNOTEQUAL = "InvalidParameterValue.AmountNotEqual"
 //  INVALIDPARAMETERVALUE_DEPLOYVPCALREADYEXISTS = "InvalidParameterValue.DeployVpcAlreadyExists"
 //  INVALIDPARAMETERVALUE_MUSTDHCPENABLEDVPC = "InvalidParameterValue.MustDhcpEnabledVpc"
+//  VPCADDRNOTINSUBNET = "VpcAddrNotInSubNet"
 //  VPCIPISUSED = "VpcIpIsUsed"
 func (c *Client) ConfigureChcDeployVpc(request *ConfigureChcDeployVpcRequest) (response *ConfigureChcDeployVpcResponse, err error) {
     return c.ConfigureChcDeployVpcWithContext(context.Background(), request)
@@ -395,10 +408,13 @@ func (c *Client) ConfigureChcDeployVpc(request *ConfigureChcDeployVpcRequest) (r
 // 配置CHC物理服务器部署网络
 //
 // 可能返回的错误码:
+//  INVALIDHOST_NOTSUPPORTED = "InvalidHost.NotSupported"
+//  INVALIDINSTANCE_NOTSUPPORTED = "InvalidInstance.NotSupported"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE_AMOUNTNOTEQUAL = "InvalidParameterValue.AmountNotEqual"
 //  INVALIDPARAMETERVALUE_DEPLOYVPCALREADYEXISTS = "InvalidParameterValue.DeployVpcAlreadyExists"
 //  INVALIDPARAMETERVALUE_MUSTDHCPENABLEDVPC = "InvalidParameterValue.MustDhcpEnabledVpc"
+//  VPCADDRNOTINSUBNET = "VpcAddrNotInSubNet"
 //  VPCIPISUSED = "VpcIpIsUsed"
 func (c *Client) ConfigureChcDeployVpcWithContext(ctx context.Context, request *ConfigureChcDeployVpcRequest) (response *ConfigureChcDeployVpcResponse, err error) {
     if request == nil {
@@ -6997,6 +7013,7 @@ func NewRunInstancesResponse() (response *RunInstancesResponse) {
 //  INVALIDPARAMETERVALUE_DUPLICATETAGS = "InvalidParameterValue.DuplicateTags"
 //  INVALIDPARAMETERVALUE_IPADDRESSMALFORMED = "InvalidParameterValue.IPAddressMalformed"
 //  INVALIDPARAMETERVALUE_ILLEGALHOSTNAME = "InvalidParameterValue.IllegalHostName"
+//  INVALIDPARAMETERVALUE_INCORRECTFORMAT = "InvalidParameterValue.IncorrectFormat"
 //  INVALIDPARAMETERVALUE_INSTANCETYPENOTFOUND = "InvalidParameterValue.InstanceTypeNotFound"
 //  INVALIDPARAMETERVALUE_INSTANCETYPENOTSUPPORTHPCCLUSTER = "InvalidParameterValue.InstanceTypeNotSupportHpcCluster"
 //  INVALIDPARAMETERVALUE_INSTANCETYPEREQUIREDHPCCLUSTER = "InvalidParameterValue.InstanceTypeRequiredHpcCluster"
@@ -7136,6 +7153,7 @@ func (c *Client) RunInstances(request *RunInstancesRequest) (response *RunInstan
 //  INVALIDPARAMETERVALUE_DUPLICATETAGS = "InvalidParameterValue.DuplicateTags"
 //  INVALIDPARAMETERVALUE_IPADDRESSMALFORMED = "InvalidParameterValue.IPAddressMalformed"
 //  INVALIDPARAMETERVALUE_ILLEGALHOSTNAME = "InvalidParameterValue.IllegalHostName"
+//  INVALIDPARAMETERVALUE_INCORRECTFORMAT = "InvalidParameterValue.IncorrectFormat"
 //  INVALIDPARAMETERVALUE_INSTANCETYPENOTFOUND = "InvalidParameterValue.InstanceTypeNotFound"
 //  INVALIDPARAMETERVALUE_INSTANCETYPENOTSUPPORTHPCCLUSTER = "InvalidParameterValue.InstanceTypeNotSupportHpcCluster"
 //  INVALIDPARAMETERVALUE_INSTANCETYPEREQUIREDHPCCLUSTER = "InvalidParameterValue.InstanceTypeRequiredHpcCluster"

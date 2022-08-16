@@ -5792,6 +5792,7 @@ func NewSearchClsLogResponse() (response *SearchClsLogResponse) {
 // SearchClsLog 用于 CLS 日志检索。支持检索今天，24小时（可选近7中的某一天），近7天的日志数据。
 //
 // 可能返回的错误码:
+//  INTERNALERROR_CAMSYSTEMERROR = "InternalError.CamSystemError"
 //  INTERNALERROR_CDNDBERROR = "InternalError.CdnDbError"
 //  INTERNALERROR_CDNSYSTEMERROR = "InternalError.CdnSystemError"
 //  INTERNALERROR_CLSINTERNALERROR = "InternalError.ClsInternalError"
@@ -5832,6 +5833,7 @@ func (c *Client) SearchClsLog(request *SearchClsLogRequest) (response *SearchCls
 // SearchClsLog 用于 CLS 日志检索。支持检索今天，24小时（可选近7中的某一天），近7天的日志数据。
 //
 // 可能返回的错误码:
+//  INTERNALERROR_CAMSYSTEMERROR = "InternalError.CamSystemError"
 //  INTERNALERROR_CDNDBERROR = "InternalError.CdnDbError"
 //  INTERNALERROR_CDNSYSTEMERROR = "InternalError.CdnSystemError"
 //  INTERNALERROR_CLSINTERNALERROR = "InternalError.ClsInternalError"

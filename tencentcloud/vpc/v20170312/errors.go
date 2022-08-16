@@ -707,6 +707,9 @@ const (
 	// SNAT/DNAT转换规则所指定的内网IP已绑定了其他的规则，无法重复绑定。
 	UNSUPPORTEDOPERATION_NATGATEWAYRULEPIPEXISTS = "UnsupportedOperation.NatGatewayRulePipExists"
 
+	// SNAT转换规则的内网IP需为虚拟机上网卡所用的IP。
+	UNSUPPORTEDOPERATION_NATGATEWAYSNATPIPNEEDVM = "UnsupportedOperation.NatGatewaySnatPipNeedVm"
+
 	// NAT网关类型不支持SNAT规则。
 	UNSUPPORTEDOPERATION_NATGATEWAYTYPENOTSUPPORTSNAT = "UnsupportedOperation.NatGatewayTypeNotSupportSNAT"
 

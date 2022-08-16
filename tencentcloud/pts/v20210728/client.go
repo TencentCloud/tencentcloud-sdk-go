@@ -1772,6 +1772,7 @@ func NewDescribeSampleMatrixBatchQueryResponse() (response *DescribeSampleMatrix
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_RESOURCENOTFOUND = "FailedOperation.ResourceNotFound"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeSampleMatrixBatchQuery(request *DescribeSampleMatrixBatchQueryRequest) (response *DescribeSampleMatrixBatchQueryResponse, err error) {
@@ -1784,6 +1785,7 @@ func (c *Client) DescribeSampleMatrixBatchQuery(request *DescribeSampleMatrixBat
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_RESOURCENOTFOUND = "FailedOperation.ResourceNotFound"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeSampleMatrixBatchQueryWithContext(ctx context.Context, request *DescribeSampleMatrixBatchQueryRequest) (response *DescribeSampleMatrixBatchQueryResponse, err error) {
