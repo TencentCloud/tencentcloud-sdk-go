@@ -2082,26 +2082,26 @@ func (r *DescribeBlockStaticListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeCfwEipsRequestParams struct {
-	// 0：cfw新增模式，1：cfw接入模式
+	// 1：cfw接入模式，目前仅支持接入模式实例
 	Mode *uint64 `json:"Mode,omitempty" name:"Mode"`
 
 	// ALL：查询所有弹性公网ip; nat-xxxxx：接入模式场景指定网关的弹性公网ip
 	NatGatewayId *string `json:"NatGatewayId,omitempty" name:"NatGatewayId"`
 
-	// 防火墙实例id
+	// 防火墙实例id，当前仅支持接入模式的实例
 	CfwInstance *string `json:"CfwInstance,omitempty" name:"CfwInstance"`
 }
 
 type DescribeCfwEipsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 0：cfw新增模式，1：cfw接入模式
+	// 1：cfw接入模式，目前仅支持接入模式实例
 	Mode *uint64 `json:"Mode,omitempty" name:"Mode"`
 
 	// ALL：查询所有弹性公网ip; nat-xxxxx：接入模式场景指定网关的弹性公网ip
 	NatGatewayId *string `json:"NatGatewayId,omitempty" name:"NatGatewayId"`
 
-	// 防火墙实例id
+	// 防火墙实例id，当前仅支持接入模式的实例
 	CfwInstance *string `json:"CfwInstance,omitempty" name:"CfwInstance"`
 }
 

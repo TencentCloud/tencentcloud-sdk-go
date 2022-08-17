@@ -1099,7 +1099,7 @@ type CreateLivePullStreamTaskRequestParams struct {
 	Comment *string `json:"Comment,omitempty" name:"Comment"`
 
 	// 完整目标 URL 地址。
-	// 用法注意：如果使用该参数来传完整目标地址，则 DomainName, AppName, StreamName 需要传入空值，任务将会使用该 ToUrl 参数指定的目标地址。
+	// 用法注意：如果使用该参数来传完整目标地址，则 DomainName, AppName, StreamName 需要传入空字符串，任务将会使用该 ToUrl 参数指定的目标地址。
 	// 
 	// 注意：签名时间需要超过任务结束时间，避免因签名过期造成任务失败。
 	ToUrl *string `json:"ToUrl,omitempty" name:"ToUrl"`
@@ -1116,6 +1116,13 @@ type CreateLivePullStreamTaskRequestParams struct {
 	// 备源 URL。
 	// 只允许填一个备源 URL
 	BackupSourceUrl *string `json:"BackupSourceUrl,omitempty" name:"BackupSourceUrl"`
+
+	// 水印信息列表。
+	// 注意：
+	// 1. 最多支持4个不同位置的水印。
+	// 2. 水印图片 URL 请使用合法外网可访问地址。
+	// 3. 支持的水印图片格式：png，jpg，gif 等。
+	WatermarkList []*PullPushWatermarkInfo `json:"WatermarkList,omitempty" name:"WatermarkList"`
 }
 
 type CreateLivePullStreamTaskRequest struct {
@@ -1218,7 +1225,7 @@ type CreateLivePullStreamTaskRequest struct {
 	Comment *string `json:"Comment,omitempty" name:"Comment"`
 
 	// 完整目标 URL 地址。
-	// 用法注意：如果使用该参数来传完整目标地址，则 DomainName, AppName, StreamName 需要传入空值，任务将会使用该 ToUrl 参数指定的目标地址。
+	// 用法注意：如果使用该参数来传完整目标地址，则 DomainName, AppName, StreamName 需要传入空字符串，任务将会使用该 ToUrl 参数指定的目标地址。
 	// 
 	// 注意：签名时间需要超过任务结束时间，避免因签名过期造成任务失败。
 	ToUrl *string `json:"ToUrl,omitempty" name:"ToUrl"`
@@ -1235,6 +1242,13 @@ type CreateLivePullStreamTaskRequest struct {
 	// 备源 URL。
 	// 只允许填一个备源 URL
 	BackupSourceUrl *string `json:"BackupSourceUrl,omitempty" name:"BackupSourceUrl"`
+
+	// 水印信息列表。
+	// 注意：
+	// 1. 最多支持4个不同位置的水印。
+	// 2. 水印图片 URL 请使用合法外网可访问地址。
+	// 3. 支持的水印图片格式：png，jpg，gif 等。
+	WatermarkList []*PullPushWatermarkInfo `json:"WatermarkList,omitempty" name:"WatermarkList"`
 }
 
 func (r *CreateLivePullStreamTaskRequest) ToJsonString() string {
@@ -1267,6 +1281,7 @@ func (r *CreateLivePullStreamTaskRequest) FromJsonString(s string) error {
 	delete(f, "ToUrl")
 	delete(f, "BackupSourceType")
 	delete(f, "BackupSourceUrl")
+	delete(f, "WatermarkList")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateLivePullStreamTaskRequest has unknown keys!", "")
 	}
@@ -10006,6 +10021,17 @@ type ModifyLivePullStreamTaskRequestParams struct {
 	// 备源 URL。
 	// 只允许填一个备源 URL
 	BackupSourceUrl *string `json:"BackupSourceUrl,omitempty" name:"BackupSourceUrl"`
+
+	// 水印信息列表。
+	// 注意：
+	// 1. 最多支持4个不同位置的水印。
+	// 2. 水印图片 URL 请使用合法外网可访问地址。
+	// 3. 支持的水印图片格式：png，jpg等。
+	// 4. 轮播任务修改水印后，轮播到下一个文件时新水印生效。
+	// 5. 直播源任务修改水印后，水印立即生效。
+	// 6. 清除水印时，需携带该水印列表参数，内容为空数组。
+	// 7. 暂不支持动图水印。
+	WatermarkList []*PullPushWatermarkInfo `json:"WatermarkList,omitempty" name:"WatermarkList"`
 }
 
 type ModifyLivePullStreamTaskRequest struct {
@@ -10091,6 +10117,17 @@ type ModifyLivePullStreamTaskRequest struct {
 	// 备源 URL。
 	// 只允许填一个备源 URL
 	BackupSourceUrl *string `json:"BackupSourceUrl,omitempty" name:"BackupSourceUrl"`
+
+	// 水印信息列表。
+	// 注意：
+	// 1. 最多支持4个不同位置的水印。
+	// 2. 水印图片 URL 请使用合法外网可访问地址。
+	// 3. 支持的水印图片格式：png，jpg等。
+	// 4. 轮播任务修改水印后，轮播到下一个文件时新水印生效。
+	// 5. 直播源任务修改水印后，水印立即生效。
+	// 6. 清除水印时，需携带该水印列表参数，内容为空数组。
+	// 7. 暂不支持动图水印。
+	WatermarkList []*PullPushWatermarkInfo `json:"WatermarkList,omitempty" name:"WatermarkList"`
 }
 
 func (r *ModifyLivePullStreamTaskRequest) ToJsonString() string {
@@ -10120,6 +10157,7 @@ func (r *ModifyLivePullStreamTaskRequest) FromJsonString(s string) error {
 	delete(f, "Comment")
 	delete(f, "BackupSourceType")
 	delete(f, "BackupSourceUrl")
+	delete(f, "WatermarkList")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyLivePullStreamTaskRequest has unknown keys!", "")
 	}
@@ -11087,6 +11125,32 @@ type PublishTime struct {
 	PublishTime *string `json:"PublishTime,omitempty" name:"PublishTime"`
 }
 
+type PullPushWatermarkInfo struct {
+	// 水印图片 URL。
+	// URL中禁止包含的字符：
+	// ;(){}$>`#"'|
+	PictureUrl *string `json:"PictureUrl,omitempty" name:"PictureUrl"`
+
+	// 显示位置，X轴偏移，单位是百分比，默认 0。
+	XPosition *int64 `json:"XPosition,omitempty" name:"XPosition"`
+
+	// 显示位置，Y轴偏移，单位是百分比，默认 0。
+	YPosition *int64 `json:"YPosition,omitempty" name:"YPosition"`
+
+	// 水印宽度，占直播原始画面宽度百分比，建议高宽只设置一项，另外一项会自适应缩放，避免变形。默认原始宽度。
+	Width *int64 `json:"Width,omitempty" name:"Width"`
+
+	// 水印高度，占直播原始画面高度百分比，建议高宽只设置一项，另外一项会自适应缩放，避免变形。默认原始高度。
+	Height *int64 `json:"Height,omitempty" name:"Height"`
+
+	// 水印位置，默认 0。
+	// 0：左上角。
+	// 1：右上角。
+	// 2：右下角。
+	// 3：左下角。
+	Location *int64 `json:"Location,omitempty" name:"Location"`
+}
+
 type PullStreamConfig struct {
 	// 拉流配置 ID。
 	ConfigId *string `json:"ConfigId,omitempty" name:"ConfigId"`
@@ -11238,6 +11302,20 @@ type PullStreamTaskInfo struct {
 
 	// 任务备注信息。
 	Comment *string `json:"Comment,omitempty" name:"Comment"`
+
+	// 备源类型：
+	// PullLivePushLive -直播，
+	// PullVodPushLive -点播。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BackupSourceType *string `json:"BackupSourceType,omitempty" name:"BackupSourceType"`
+
+	// 备源URL。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BackupSourceUrl *string `json:"BackupSourceUrl,omitempty" name:"BackupSourceUrl"`
+
+	// 水印信息列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WatermarkList []*PullPushWatermarkInfo `json:"WatermarkList,omitempty" name:"WatermarkList"`
 }
 
 type PushAuthKeyInfo struct {

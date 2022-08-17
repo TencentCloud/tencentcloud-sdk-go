@@ -2451,6 +2451,105 @@ func (r *CreateEKSContainerInstancesResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateEdgeCVMInstancesRequestParams struct {
+	// 集群id
+	ClusterID *string `json:"ClusterID,omitempty" name:"ClusterID"`
+
+	// CVM创建透传参数，json化字符串格式，如需要保证扩展集群节点请求幂等性需要在此参数添加ClientToken字段，详见[CVM创建实例](https://cloud.tencent.com/document/product/213/15730)接口。
+	RunInstancePara *string `json:"RunInstancePara,omitempty" name:"RunInstancePara"`
+
+	// CVM所属Region
+	CvmRegion *string `json:"CvmRegion,omitempty" name:"CvmRegion"`
+
+	// CVM数量
+	CvmCount *int64 `json:"CvmCount,omitempty" name:"CvmCount"`
+
+	// 实例扩展信息
+	External *string `json:"External,omitempty" name:"External"`
+
+	// 用户自定义脚本
+	UserScript *string `json:"UserScript,omitempty" name:"UserScript"`
+
+	// 是否开启弹性网卡功能
+	EnableEni *bool `json:"EnableEni,omitempty" name:"EnableEni"`
+}
+
+type CreateEdgeCVMInstancesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群id
+	ClusterID *string `json:"ClusterID,omitempty" name:"ClusterID"`
+
+	// CVM创建透传参数，json化字符串格式，如需要保证扩展集群节点请求幂等性需要在此参数添加ClientToken字段，详见[CVM创建实例](https://cloud.tencent.com/document/product/213/15730)接口。
+	RunInstancePara *string `json:"RunInstancePara,omitempty" name:"RunInstancePara"`
+
+	// CVM所属Region
+	CvmRegion *string `json:"CvmRegion,omitempty" name:"CvmRegion"`
+
+	// CVM数量
+	CvmCount *int64 `json:"CvmCount,omitempty" name:"CvmCount"`
+
+	// 实例扩展信息
+	External *string `json:"External,omitempty" name:"External"`
+
+	// 用户自定义脚本
+	UserScript *string `json:"UserScript,omitempty" name:"UserScript"`
+
+	// 是否开启弹性网卡功能
+	EnableEni *bool `json:"EnableEni,omitempty" name:"EnableEni"`
+}
+
+func (r *CreateEdgeCVMInstancesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateEdgeCVMInstancesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterID")
+	delete(f, "RunInstancePara")
+	delete(f, "CvmRegion")
+	delete(f, "CvmCount")
+	delete(f, "External")
+	delete(f, "UserScript")
+	delete(f, "EnableEni")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateEdgeCVMInstancesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateEdgeCVMInstancesResponseParams struct {
+	// cvm id 列表
+	CvmIdSet []*string `json:"CvmIdSet,omitempty" name:"CvmIdSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateEdgeCVMInstancesResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateEdgeCVMInstancesResponseParams `json:"Response"`
+}
+
+func (r *CreateEdgeCVMInstancesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateEdgeCVMInstancesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateEdgeLogConfigRequestParams struct {
 	// 集群ID
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`

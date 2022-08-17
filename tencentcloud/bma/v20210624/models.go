@@ -795,6 +795,94 @@ func (r *CreateCRRightResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateCRUserVerifyRequestParams struct {
+	// 用户真实姓名
+	UserName *string `json:"UserName,omitempty" name:"UserName"`
+
+	// 用户身份证ID
+	UserID *string `json:"UserID,omitempty" name:"UserID"`
+
+	// 用户手机号码
+	UserPhone *string `json:"UserPhone,omitempty" name:"UserPhone"`
+
+	// 短信验证码
+	VerificationCode *string `json:"VerificationCode,omitempty" name:"VerificationCode"`
+
+	// xxx
+	Type *string `json:"Type,omitempty" name:"Type"`
+}
+
+type CreateCRUserVerifyRequest struct {
+	*tchttp.BaseRequest
+	
+	// 用户真实姓名
+	UserName *string `json:"UserName,omitempty" name:"UserName"`
+
+	// 用户身份证ID
+	UserID *string `json:"UserID,omitempty" name:"UserID"`
+
+	// 用户手机号码
+	UserPhone *string `json:"UserPhone,omitempty" name:"UserPhone"`
+
+	// 短信验证码
+	VerificationCode *string `json:"VerificationCode,omitempty" name:"VerificationCode"`
+
+	// xxx
+	Type *string `json:"Type,omitempty" name:"Type"`
+}
+
+func (r *CreateCRUserVerifyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateCRUserVerifyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "UserName")
+	delete(f, "UserID")
+	delete(f, "UserPhone")
+	delete(f, "VerificationCode")
+	delete(f, "Type")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCRUserVerifyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateCRUserVerifyResponseParams struct {
+	// 认证状态 0-认证成功 1-认证失败
+	Status *int64 `json:"Status,omitempty" name:"Status"`
+
+	// 认证结果返回
+	Note *string `json:"Note,omitempty" name:"Note"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateCRUserVerifyResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateCRUserVerifyResponseParams `json:"Response"`
+}
+
+func (r *CreateCRUserVerifyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateCRUserVerifyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateCRWorkRequestParams struct {
 	// 作品名称
 	WorkName *string `json:"WorkName,omitempty" name:"WorkName"`

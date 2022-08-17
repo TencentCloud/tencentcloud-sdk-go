@@ -1481,6 +1481,75 @@ func (c *Client) CreateEKSContainerInstancesWithContext(ctx context.Context, req
     return
 }
 
+func NewCreateEdgeCVMInstancesRequest() (request *CreateEdgeCVMInstancesRequest) {
+    request = &CreateEdgeCVMInstancesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("tke", APIVersion, "CreateEdgeCVMInstances")
+    
+    
+    return
+}
+
+func NewCreateEdgeCVMInstancesResponse() (response *CreateEdgeCVMInstancesResponse) {
+    response = &CreateEdgeCVMInstancesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateEdgeCVMInstances
+// 创建边缘容器CVM机器
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CAMNOAUTH = "InternalError.CamNoAuth"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateEdgeCVMInstances(request *CreateEdgeCVMInstancesRequest) (response *CreateEdgeCVMInstancesResponse, err error) {
+    return c.CreateEdgeCVMInstancesWithContext(context.Background(), request)
+}
+
+// CreateEdgeCVMInstances
+// 创建边缘容器CVM机器
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CAMNOAUTH = "InternalError.CamNoAuth"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateEdgeCVMInstancesWithContext(ctx context.Context, request *CreateEdgeCVMInstancesRequest) (response *CreateEdgeCVMInstancesResponse, err error) {
+    if request == nil {
+        request = NewCreateEdgeCVMInstancesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateEdgeCVMInstances require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateEdgeCVMInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateEdgeLogConfigRequest() (request *CreateEdgeLogConfigRequest) {
     request = &CreateEdgeLogConfigRequest{
         BaseRequest: &tchttp.BaseRequest{},

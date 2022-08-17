@@ -1515,7 +1515,7 @@ type DescribeStaffInfoListRequestParams struct {
 	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
 	SdkAppId *int64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
 
-	// 分页尺寸，上限 100
+	// 分页尺寸，上限 9999
 	PageSize *int64 `json:"PageSize,omitempty" name:"PageSize"`
 
 	// 分页页码，从 0 开始
@@ -1526,6 +1526,9 @@ type DescribeStaffInfoListRequestParams struct {
 
 	// 查询修改时间大于等于ModifiedTime的坐席时使用
 	ModifiedTime *int64 `json:"ModifiedTime,omitempty" name:"ModifiedTime"`
+
+	// 技能组ID
+	SkillGroupId *int64 `json:"SkillGroupId,omitempty" name:"SkillGroupId"`
 }
 
 type DescribeStaffInfoListRequest struct {
@@ -1534,7 +1537,7 @@ type DescribeStaffInfoListRequest struct {
 	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
 	SdkAppId *int64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
 
-	// 分页尺寸，上限 100
+	// 分页尺寸，上限 9999
 	PageSize *int64 `json:"PageSize,omitempty" name:"PageSize"`
 
 	// 分页页码，从 0 开始
@@ -1545,6 +1548,9 @@ type DescribeStaffInfoListRequest struct {
 
 	// 查询修改时间大于等于ModifiedTime的坐席时使用
 	ModifiedTime *int64 `json:"ModifiedTime,omitempty" name:"ModifiedTime"`
+
+	// 技能组ID
+	SkillGroupId *int64 `json:"SkillGroupId,omitempty" name:"SkillGroupId"`
 }
 
 func (r *DescribeStaffInfoListRequest) ToJsonString() string {
@@ -1564,6 +1570,7 @@ func (r *DescribeStaffInfoListRequest) FromJsonString(s string) error {
 	delete(f, "PageNumber")
 	delete(f, "StaffMail")
 	delete(f, "ModifiedTime")
+	delete(f, "SkillGroupId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeStaffInfoListRequest has unknown keys!", "")
 	}

@@ -1409,6 +1409,59 @@ func (c *Client) PullSmsSendStatusByPhoneNumberWithContext(ctx context.Context, 
     return
 }
 
+func NewReportConversionRequest() (request *ReportConversionRequest) {
+    request = &ReportConversionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("sms", APIVersion, "ReportConversion")
+    
+    
+    return
+}
+
+func NewReportConversionResponse() (response *ReportConversionResponse) {
+    response = &ReportConversionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ReportConversion
+// 短信转化率上报。将已接收到短信的流水号上报到腾讯云短信服务。
+//
+// >- 注：当前接口以白名单方式对外开放，如有需要请联系 [腾讯云短信小助手](https://cloud.tencent.com/document/product/382/3773#.E6.8A.80.E6.9C.AF.E4.BA.A4.E6.B5.81) 开通。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_SENDANDRECVFAIL = "InternalError.SendAndRecvFail"
+//  UNAUTHORIZEDOPERATION_SMSSDKAPPIDVERIFYFAIL = "UnauthorizedOperation.SmsSdkAppIdVerifyFail"
+func (c *Client) ReportConversion(request *ReportConversionRequest) (response *ReportConversionResponse, err error) {
+    return c.ReportConversionWithContext(context.Background(), request)
+}
+
+// ReportConversion
+// 短信转化率上报。将已接收到短信的流水号上报到腾讯云短信服务。
+//
+// >- 注：当前接口以白名单方式对外开放，如有需要请联系 [腾讯云短信小助手](https://cloud.tencent.com/document/product/382/3773#.E6.8A.80.E6.9C.AF.E4.BA.A4.E6.B5.81) 开通。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_SENDANDRECVFAIL = "InternalError.SendAndRecvFail"
+//  UNAUTHORIZEDOPERATION_SMSSDKAPPIDVERIFYFAIL = "UnauthorizedOperation.SmsSdkAppIdVerifyFail"
+func (c *Client) ReportConversionWithContext(ctx context.Context, request *ReportConversionRequest) (response *ReportConversionResponse, err error) {
+    if request == nil {
+        request = NewReportConversionRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ReportConversion require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewReportConversionResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewSendSmsRequest() (request *SendSmsRequest) {
     request = &SendSmsRequest{
         BaseRequest: &tchttp.BaseRequest{},

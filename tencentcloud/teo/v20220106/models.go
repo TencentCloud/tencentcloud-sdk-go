@@ -1804,70 +1804,89 @@ func (r *CreateZoneResponse) FromJsonString(s string) error {
 }
 
 type DDoSAcl struct {
-	// 目的端口end
+	// 目的端口结束，取值范围0-65535。
 	DportEnd *int64 `json:"DportEnd,omitempty" name:"DportEnd"`
 
-	// 目的端口start
+	// 目的端口开始，取值范围0-65535。
 	DportStart *int64 `json:"DportStart,omitempty" name:"DportStart"`
 
-	// 源端口end
+	// 源端口结束，取值范围0-65535。
 	SportEnd *int64 `json:"SportEnd,omitempty" name:"SportEnd"`
 
-	// 源端口start
+	// 源端口开始，取值范围0-65535。
 	SportStart *int64 `json:"SportStart,omitempty" name:"SportStart"`
 
-	// 协议 'tcp', 'udp', 'all'
+	// 协议，取值有：
+	// <li>tcp ：tcp协议 ；</li>
+	// <li>udp ：udp协议 ；</li>
+	// <li>all ：全部协议 。</li>
 	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
 
-	// 动作  drop-丢弃,；transmit-放行； forward-继续防护
+	// 执行动作，取值为：
+	// <li>drop ：丢弃 ；</li>
+	// <li>transmit ：放行 ；</li>
+	// <li>forward ：继续防护 。</li>
 	Action *string `json:"Action,omitempty" name:"Action"`
 
-	// 是否为系统配置 0-人工配置；1-系统配置
+	// 是否为系统配置，取值为：
+	// <li>0 ：修改配置 ；</li>
+	// <li>1 ：系统默认配置 。</li>
 	Default *int64 `json:"Default,omitempty" name:"Default"`
 }
 
 type DDoSAntiPly struct {
-	// tcp协议封禁 on-开；off-关
+	// tcp协议封禁，取值有：
+	// <li>off ：关闭 ；</li>
+	// <li>on ：开启 。</li>
 	DropTcp *string `json:"DropTcp,omitempty" name:"DropTcp"`
 
-	// udp协议封禁 on-开；off-关
+	// udp协议封禁，取值有：
+	// <li>off ：关闭 ；</li>
+	// <li>on ：开启 。</li>
 	DropUdp *string `json:"DropUdp,omitempty" name:"DropUdp"`
 
-	// icmp协议封禁 on-开；off-关
+	// icmp协议封禁，取值有：
+	// <li>off ：关闭 ；</li>
+	// <li>on ：开启 。</li>
 	DropIcmp *string `json:"DropIcmp,omitempty" name:"DropIcmp"`
 
-	// 其他协议封禁 on-开；off-关
+	// 其他协议封禁，取值有：
+	// <li>off ：关闭 ；</li>
+	// <li>on ：开启 。</li>
 	DropOther *string `json:"DropOther,omitempty" name:"DropOther"`
 
-	// 源每秒新建数限制  0-4294967295
+	// 源站每秒新连接限速，取值范围0-4294967295。
 	SourceCreateLimit *int64 `json:"SourceCreateLimit,omitempty" name:"SourceCreateLimit"`
 
-	// 源并发连接控制 0-4294967295
+	// 源站并发连接控制，取值范围0-4294967295。
 	SourceConnectLimit *int64 `json:"SourceConnectLimit,omitempty" name:"SourceConnectLimit"`
 
-	// 目的每秒新建数限制 0-4294967295
+	// 目的端口每秒新连接限速，取值范围0-4294967295。
 	DestinationCreateLimit *int64 `json:"DestinationCreateLimit,omitempty" name:"DestinationCreateLimit"`
 
-	// 目的端口的并发连接控制 0-4294967295
+	// 目的端口并发连接控制，取值范围0-4294967295。
 	DestinationConnectLimit *int64 `json:"DestinationConnectLimit,omitempty" name:"DestinationConnectLimit"`
 
-	// 异常连接数阈值  0-4294967295
+	// 每秒异常连接数阈值，取值范围0-4294967295。
 	AbnormalConnectNum *int64 `json:"AbnormalConnectNum,omitempty" name:"AbnormalConnectNum"`
 
-	// syn占比异常阈值 0-100
+	// 异常syn报文百分比阈值，取值范围0-100。
 	AbnormalSynRatio *int64 `json:"AbnormalSynRatio,omitempty" name:"AbnormalSynRatio"`
 
-	// syn个数异常阈值 0-65535
+	// 异常syn报文阈值，取值范围0-65535。
 	AbnormalSynNum *int64 `json:"AbnormalSynNum,omitempty" name:"AbnormalSynNum"`
 
-	// 连接超时检测 0-65535
+	// 每秒连接超时检测，取值范围0-65535。
 	ConnectTimeout *int64 `json:"ConnectTimeout,omitempty" name:"ConnectTimeout"`
 
-	// 空连接防护开启 0-1
+	// 空连接防护开启，取值有：
+	// <li>off ：关闭 ；</li>
+	// <li>on ：开启 。</li>
 	EmptyConnectProtect *string `json:"EmptyConnectProtect,omitempty" name:"EmptyConnectProtect"`
 
-	// UDP分片开关；off-关闭，on-开启
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// UDP分片开关，取值有：
+	// <li>off ：关闭 ；</li>
+	// <li>on ：开启 。</li>
 	UdpShard *string `json:"UdpShard,omitempty" name:"UdpShard"`
 }
 
@@ -1899,114 +1918,135 @@ type DDoSConfig struct {
 }
 
 type DDoSFeaturesFilter struct {
-	// 动作 drop-丢弃；transmit-放行；drop_block-丢弃并拉黑；forward-继续防护
+	// 执行动作，取值有：
+	// <li>drop ：丢弃 ；</li>
+	// <li>transmit ：放行 ；</li>
+	// <li>drop_block ：丢弃并拉黑 ；</li>
+	// <li>forward ：继续防护 。</li>
 	Action *string `json:"Action,omitempty" name:"Action"`
 
-	// 深度值1
-	Depth *int64 `json:"Depth,omitempty" name:"Depth"`
-
-	// 深度值2
-	Depth2 *int64 `json:"Depth2,omitempty" name:"Depth2"`
-
-	// 目标端口结束
-	DportEnd *int64 `json:"DportEnd,omitempty" name:"DportEnd"`
-
-	// 目标端口开始
-	DportStart *int64 `json:"DportStart,omitempty" name:"DportStart"`
-
-	// 取非判断1
-	IsNot *int64 `json:"IsNot,omitempty" name:"IsNot"`
-
-	// 取非判断2
-	IsNot2 *int64 `json:"IsNot2,omitempty" name:"IsNot2"`
-
-	// 多特征关系（单特征时(none)，第二特征相关配置可不填） none；and；or
-	MatchLogic *string `json:"MatchLogic,omitempty" name:"MatchLogic"`
-
-	// 匹配方式1 pcre-正则匹配, sunday-字符串匹配
-	MatchType *string `json:"MatchType,omitempty" name:"MatchType"`
-
-	// 匹配方式2 pcre-正则匹配, sunday-字符串匹配
-	MatchType2 *string `json:"MatchType2,omitempty" name:"MatchType2"`
-
-	// 偏移量1
-	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
-
-	// 偏移量2
-	Offset2 *int64 `json:"Offset2,omitempty" name:"Offset2"`
-
-	// 最大包长
-	PacketMax *int64 `json:"PacketMax,omitempty" name:"PacketMax"`
-
-	// 最小包长
-	PacketMin *int64 `json:"PacketMin,omitempty" name:"PacketMin"`
-
-	// 协议 tcp；udp；icmp；all
+	// 协议，取值有：
+	// <li>tcp ：tcp协议 ；</li>
+	// <li>udp ：udp协议 ；</li>
+	// <li>icmp ：icmp协议 ；</li>
+	// <li>all ：全部协议 。</li>
 	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
 
-	// 源端口结束
-	SportEnd *int64 `json:"SportEnd,omitempty" name:"SportEnd"`
+	// 目标端口开始，取值范围0-65535。
+	DportStart *int64 `json:"DportStart,omitempty" name:"DportStart"`
 
-	// 源端口开始
+	// 目标端口结束，取值范围0-65535。
+	DportEnd *int64 `json:"DportEnd,omitempty" name:"DportEnd"`
+
+	// 最小包长，取值范围0-1500。
+	PacketMin *int64 `json:"PacketMin,omitempty" name:"PacketMin"`
+
+	// 最大包长，取值范围0-1500。
+	PacketMax *int64 `json:"PacketMax,omitempty" name:"PacketMax"`
+
+	// 源端口开始，取值范围0-65535。
 	SportStart *int64 `json:"SportStart,omitempty" name:"SportStart"`
 
-	// 匹配字符串1
-	Str *string `json:"Str,omitempty" name:"Str"`
+	// 源端口结束，取值范围0-65535。
+	SportEnd *int64 `json:"SportEnd,omitempty" name:"SportEnd"`
 
-	// 匹配字符串2
-	Str2 *string `json:"Str2,omitempty" name:"Str2"`
+	// 匹配方式1，【特征1】，取值有：
+	// <li>pcre ：正则匹配 ；</li>
+	// <li>sunday ：字符串匹配 。</li>默认为空字符串。
+	MatchType *string `json:"MatchType,omitempty" name:"MatchType"`
 
-	// 匹配开始层级，层级参考计算机网络结构 begin_l5, no_match, begin_l3, begin_l4
+	// 取非判断，该参数对MatchType配合使用，【特征1】，取值有：
+	// <li>0 ：匹配 ；</li>
+	// <li>1 ：不匹配 。</li>
+	IsNot *int64 `json:"IsNot,omitempty" name:"IsNot"`
+
+	// 偏移量1，【特征1】，取值范围0-1500。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 检测包字符深度，【特征1】，取值范围1-1500。
+	Depth *int64 `json:"Depth,omitempty" name:"Depth"`
+
+	// 匹配开始层级，层级参考计算机网络结构，取值有：
+	// <li>begin_l5 ：载荷开始检测 ；</li>
+	// <li>begin_l4 ：tcp/udp首部开始检测 ；</li>
+	// <li>begin_l3 ：ip首部开始检测 。</li>
 	MatchBegin *string `json:"MatchBegin,omitempty" name:"MatchBegin"`
 
-	// 匹配开始层级，层级参考计算机网络结构 begin_l5, no_match, begin_l3, begin_l4
+	// 正则或字符串匹配的内容，【特征1】。
+	Str *string `json:"Str,omitempty" name:"Str"`
+
+	// 匹配方式2，【特征2】，取值有：
+	// <li>pcre ：正则匹配 ；</li>
+	// <li>sunday ：字符串匹配 。</li>默认为空字符串。
+	MatchType2 *string `json:"MatchType2,omitempty" name:"MatchType2"`
+
+	// 取非判断2，该参数对MatchType2配合使用，【特征2】，取值有：
+	// <li>0 ：匹配 ；</li>
+	// <li>1 ：不匹配 。</li>
+	IsNot2 *int64 `json:"IsNot2,omitempty" name:"IsNot2"`
+
+	// 偏移量2，【特征2】，取值范围0-1500。
+	Offset2 *int64 `json:"Offset2,omitempty" name:"Offset2"`
+
+	// 检测包字符深度，【特征2】，取值范围1-1500。
+	Depth2 *int64 `json:"Depth2,omitempty" name:"Depth2"`
+
+	// 匹配开始层级，层级参考计算机网络结构，取值有：
+	// <li>begin_l5 ：载荷开始检测 ；</li>
+	// <li>begin_l4 ：tcp/udp首部开始检测；</li>
+	// <li>begin_l3 ：ip首部开始检测 。</li>
 	MatchBegin2 *string `json:"MatchBegin2,omitempty" name:"MatchBegin2"`
+
+	// 正则或字符串匹配的内容，【特征2】。
+	Str2 *string `json:"Str2,omitempty" name:"Str2"`
+
+	// 多特征关系，仅配置【特征1】时填 none，存在【特征2】配置可不填。
+	MatchLogic *string `json:"MatchLogic,omitempty" name:"MatchLogic"`
 }
 
 type DDoSGeoIp struct {
-	// 地域信息，ID参考接口DescribeSecurityPolicyRegions
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	RegionId []*int64 `json:"RegionId,omitempty" name:"RegionId"`
-
-	// 区域封禁清空标识
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 区域封禁清空标识，取值有：
+	// <li>off ：清空地域封禁列表 ；</li>
+	// <li>on ：不做处理 。</li>
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
+
+	// 地域信息，ID参考[DescribeSecurityPolicyRegions](https://tcloud4api.woa.com/document/product/1657/76031?!preview&!document=1)。
+	RegionId []*int64 `json:"RegionId,omitempty" name:"RegionId"`
 }
 
 type DDoSStatusInfo struct {
-	// 不支持，填off
+	// 暂不支持，默认值off。
 	AiStatus *string `json:"AiStatus,omitempty" name:"AiStatus"`
 
-	// 用户appid
+	// 废弃字段。
 	Appid *string `json:"Appid,omitempty" name:"Appid"`
 
-	// 策略等级 low, middle, high
+	// 策略等级，取值有:
+	// <li>low ：宽松 ；</li>
+	// <li>middle ：适中 ；</li>
+	// <li>high : 严格。 </li>
 	PlyLevel *string `json:"PlyLevel,omitempty" name:"PlyLevel"`
 }
 
 type DDoSUserAllowBlockIP struct {
-	// 用户ip
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 客户端IP。
 	Ip *string `json:"Ip,omitempty" name:"Ip"`
 
-	// 掩码
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 掩码。
 	Mask *int64 `json:"Mask,omitempty" name:"Mask"`
 
-	// 类型 block-丢弃；allow-允许
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 类型，取值有：
+	// <li>block ：丢弃 ；</li>
+	// <li>allow ：允许。</li>
 	Type *string `json:"Type,omitempty" name:"Type"`
 
-	// 时间戳
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 10位时间戳，例如1199116800。
 	UpdateTime *int64 `json:"UpdateTime,omitempty" name:"UpdateTime"`
 
-	// 用户ip范围截止
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 客户端IP2，设置IP范围时使用，例如 1.1.1.1-1.1.1.2。
 	Ip2 *string `json:"Ip2,omitempty" name:"Ip2"`
 
-	// 掩码截止范围
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 掩码2，设置IP网段范围时使用，例如 1.1.1.0/24-1.1.2.0/24。
 	Mask2 *int64 `json:"Mask2,omitempty" name:"Mask2"`
 }
 
@@ -2182,61 +2222,81 @@ type DataItem struct {
 }
 
 type DdosAcls struct {
-	// 开关 off清空规则标识
-	Switch *string `json:"Switch,omitempty" name:"Switch"`
-
-	// 端口过了详细参数
+	// 端口过滤规则数组。
 	Acl []*DDoSAcl `json:"Acl,omitempty" name:"Acl"`
+
+	// 清空规则标识，取值有：
+	// <li>off ：清空端口过滤规则列表，Acl无需填写。 ；</li>
+	// <li>on ：配置端口过滤规则，需填写Acl参数。</li>默认值为on。
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
 }
 
 type DdosAllowBlock struct {
-	// 开关标识防护是否清空
-	Switch *string `json:"Switch,omitempty" name:"Switch"`
-
-	// 黑白名单数组
+	// 黑白名单数组。
 	UserAllowBlockIp []*DDoSUserAllowBlockIP `json:"UserAllowBlockIp,omitempty" name:"UserAllowBlockIp"`
+
+	// 开关标识防护是否清空，取值有：
+	// <li>off ：清空黑白名单列表，UserAllowBlockIp无需填写。 ；</li>
+	// <li>on ：配置黑白名单，需填写UserAllowBlockIp参数。</li>默认值为on。
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
 }
 
 type DdosPacketFilter struct {
-	// 特征过滤清空标识，off清空处理
-	Switch *string `json:"Switch,omitempty" name:"Switch"`
-
-	// 特征过滤数组
+	// 特征过滤规则数组。
 	PacketFilter []*DDoSFeaturesFilter `json:"PacketFilter,omitempty" name:"PacketFilter"`
+
+	// 特征过滤清空标识，取值有：
+	// <li>off ：清空特征过滤规则，无需填写 PacketFilter 参数 ；</li>
+	// <li>on ：配置特征过滤规则，需填写 PacketFilter 参数。</li>默认值为on。
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
 }
 
 type DdosRule struct {
-	// DDoS防护等级
+	// DDoS防护等级。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DdosStatusInfo *DDoSStatusInfo `json:"DdosStatusInfo,omitempty" name:"DdosStatusInfo"`
 
-	// DDoS地域封禁
+	// DDoS地域封禁。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DdosGeoIp *DDoSGeoIp `json:"DdosGeoIp,omitempty" name:"DdosGeoIp"`
 
-	// DDoS黑白名单
+	// DDoS黑白名单。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DdosAllowBlock *DdosAllowBlock `json:"DdosAllowBlock,omitempty" name:"DdosAllowBlock"`
 
-	// DDoS 协议封禁+连接防护
+	// DDoS 协议封禁+连接防护。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DdosAntiPly *DDoSAntiPly `json:"DdosAntiPly,omitempty" name:"DdosAntiPly"`
 
-	// DDoS特征过滤
+	// DDoS特征过滤。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DdosPacketFilter *DdosPacketFilter `json:"DdosPacketFilter,omitempty" name:"DdosPacketFilter"`
 
-	// DDoS端口过滤
+	// DDoS端口过滤。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DdosAcl *DdosAcls `json:"DdosAcl,omitempty" name:"DdosAcl"`
 
-	// DDoS开关 on-开启；off-关闭
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// DDoS开关，取值有:
+	// <li>on ：开启 ；</li>
+	// <li>off ：关闭 。</li>
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
 
-	// UDP分片功能是否支持，off-不支持，on-支持
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// UDP分片功能是否支持，取值有:
+	// <li>on ：支持 ；</li>
+	// <li>off ：不支持 。</li>
 	UdpShardOpen *string `json:"UdpShardOpen,omitempty" name:"UdpShardOpen"`
+
+	// DDoS源站访问速率限制。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DdosSpeedLimit *DdosSpeedLimit `json:"DdosSpeedLimit,omitempty" name:"DdosSpeedLimit"`
+}
+
+type DdosSpeedLimit struct {
+	// 源站包量限制，支持单位有pps、Kpps、Mpps、Gpps。支持范围1 pps-10000 Gpps。"0 pps"或其他单位数值为0，即不限包。""为不更新。
+	PackageLimit *string `json:"PackageLimit,omitempty" name:"PackageLimit"`
+
+	// 源站流量限制，支持单位有bps、Kbps、Mbps、Gbps，支持范围1 bps-10000 Gbps。"0 bps"或其他单位数值为0，即不限流。""为不更新。
+	FluxLimit *string `json:"FluxLimit,omitempty" name:"FluxLimit"`
 }
 
 type DefaultServerCertInfo struct {
@@ -8680,26 +8740,26 @@ func (r *ModifyDDoSPolicyHostResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyDDoSPolicyRequestParams struct {
-	// 策略组ID
+	// 策略id。
 	PolicyId *int64 `json:"PolicyId,omitempty" name:"PolicyId"`
 
-	// 一级域名
+	// 站点id。
 	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
 
-	// DDoS具体防护配置
+	// DDoS防护配置详情。
 	DdosRule *DdosRule `json:"DdosRule,omitempty" name:"DdosRule"`
 }
 
 type ModifyDDoSPolicyRequest struct {
 	*tchttp.BaseRequest
 	
-	// 策略组ID
+	// 策略id。
 	PolicyId *int64 `json:"PolicyId,omitempty" name:"PolicyId"`
 
-	// 一级域名
+	// 站点id。
 	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
 
-	// DDoS具体防护配置
+	// DDoS防护配置详情。
 	DdosRule *DdosRule `json:"DdosRule,omitempty" name:"DdosRule"`
 }
 
@@ -8726,7 +8786,7 @@ func (r *ModifyDDoSPolicyRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyDDoSPolicyResponseParams struct {
-	// 策略组ID
+	// 策略id。
 	PolicyId *int64 `json:"PolicyId,omitempty" name:"PolicyId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。

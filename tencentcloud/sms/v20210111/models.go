@@ -1445,6 +1445,85 @@ func (r *PullSmsSendStatusResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ReportConversionRequestParams struct {
+	// 短信应用ID。在 [短信控制台](https://console.cloud.tencent.com/smsv2/app-manage)  添加应用后生成的实际 SdkAppId，示例如1400006666。
+	SmsSdkAppId *string `json:"SmsSdkAppId,omitempty" name:"SmsSdkAppId"`
+
+	// 发送短信返回的流水号。
+	SerialNo *string `json:"SerialNo,omitempty" name:"SerialNo"`
+
+	// 用户回填时间，UNIX 时间戳（单位：秒）。
+	ConversionTime *uint64 `json:"ConversionTime,omitempty" name:"ConversionTime"`
+}
+
+type ReportConversionRequest struct {
+	*tchttp.BaseRequest
+	
+	// 短信应用ID。在 [短信控制台](https://console.cloud.tencent.com/smsv2/app-manage)  添加应用后生成的实际 SdkAppId，示例如1400006666。
+	SmsSdkAppId *string `json:"SmsSdkAppId,omitempty" name:"SmsSdkAppId"`
+
+	// 发送短信返回的流水号。
+	SerialNo *string `json:"SerialNo,omitempty" name:"SerialNo"`
+
+	// 用户回填时间，UNIX 时间戳（单位：秒）。
+	ConversionTime *uint64 `json:"ConversionTime,omitempty" name:"ConversionTime"`
+}
+
+func (r *ReportConversionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ReportConversionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SmsSdkAppId")
+	delete(f, "SerialNo")
+	delete(f, "ConversionTime")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ReportConversionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ReportConversionResponseParams struct {
+	// 转化率上报响应包体。
+	ReportConversionStatus *ReportConversionStatus `json:"ReportConversionStatus,omitempty" name:"ReportConversionStatus"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ReportConversionResponse struct {
+	*tchttp.BaseResponse
+	Response *ReportConversionResponseParams `json:"Response"`
+}
+
+func (r *ReportConversionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ReportConversionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ReportConversionStatus struct {
+	// 错误码。上报成功返回 ok。
+	Code *string `json:"Code,omitempty" name:"Code"`
+
+	// 错误码描述。
+	Message *string `json:"Message,omitempty" name:"Message"`
+}
+
+// Predefined struct for user
 type SendSmsRequestParams struct {
 	// 下发手机号码，采用 E.164 标准，格式为+[国家或地区码][手机号]，单次请求最多支持200个手机号且要求全为境内手机号或全为境外手机号。
 	// 例如：+8613711112222， 其中前面有一个+号 ，86为国家码，13711112222为手机号。

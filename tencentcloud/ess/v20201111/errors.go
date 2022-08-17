@@ -332,7 +332,7 @@ const (
 	// 查询限频，请先联系客服了解限频策略，稍后重试。
 	OPERATIONDENIED_OUTQUERYLIMIT = "OperationDenied.OutQueryLimit"
 
-	// 当前不支持海外用户，请联系客服咨询处理。
+	// 当前不支持境外用户，请联系客服咨询处理。
 	OPERATIONDENIED_OVERSEAFORBID = "OperationDenied.OverSeaForbid"
 
 	// 个人名下没用可使用的签名，请联系个人配置签名后重试。

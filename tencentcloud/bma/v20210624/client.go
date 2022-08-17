@@ -709,6 +709,89 @@ func (c *Client) CreateCRRightWithContext(ctx context.Context, request *CreateCR
     return
 }
 
+func NewCreateCRUserVerifyRequest() (request *CreateCRUserVerifyRequest) {
+    request = &CreateCRUserVerifyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    request.Init().WithApiInfo("bma", APIVersion, "CreateCRUserVerify")
+    
+    
+    return
+}
+
+func NewCreateCRUserVerifyResponse() (response *CreateCRUserVerifyResponse) {
+    response = &CreateCRUserVerifyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateCRUserVerify
+// 品牌经营管家-版权保护个人认证接口
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDACTION = "InvalidAction"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  NOSUCHVERSION = "NoSuchVersion"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateCRUserVerify(request *CreateCRUserVerifyRequest) (response *CreateCRUserVerifyResponse, err error) {
+    return c.CreateCRUserVerifyWithContext(context.Background(), request)
+}
+
+// CreateCRUserVerify
+// 品牌经营管家-版权保护个人认证接口
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDACTION = "InvalidAction"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  NOSUCHVERSION = "NoSuchVersion"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateCRUserVerifyWithContext(ctx context.Context, request *CreateCRUserVerifyRequest) (response *CreateCRUserVerifyResponse, err error) {
+    if request == nil {
+        request = NewCreateCRUserVerifyRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateCRUserVerify require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateCRUserVerifyResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateCRWorkRequest() (request *CreateCRWorkRequest) {
     request = &CreateCRWorkRequest{
         BaseRequest: &tchttp.BaseRequest{},
