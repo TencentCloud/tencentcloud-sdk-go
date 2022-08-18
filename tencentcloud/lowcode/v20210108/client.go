@@ -49,6 +49,7 @@ func NewDescribeDataSourceListRequest() (request *DescribeDataSourceListRequest)
     request = &DescribeDataSourceListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("lowcode", APIVersion, "DescribeDataSourceList")
     
     

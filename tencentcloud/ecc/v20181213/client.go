@@ -49,6 +49,7 @@ func NewCorrectMultiImageRequest() (request *CorrectMultiImageRequest) {
     request = &CorrectMultiImageRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ecc", APIVersion, "CorrectMultiImage")
     
     
@@ -152,6 +153,7 @@ func NewDescribeTaskRequest() (request *DescribeTaskRequest) {
     request = &DescribeTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ecc", APIVersion, "DescribeTask")
     
     
@@ -249,6 +251,7 @@ func NewECCRequest() (request *ECCRequest) {
     request = &ECCRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ecc", APIVersion, "ECC")
     
     
@@ -308,6 +311,7 @@ func NewEHOCRRequest() (request *EHOCRRequest) {
     request = &EHOCRRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ecc", APIVersion, "EHOCR")
     
     

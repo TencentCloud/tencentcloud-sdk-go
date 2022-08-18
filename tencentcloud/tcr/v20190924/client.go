@@ -49,6 +49,7 @@ func NewBatchDeleteImagePersonalRequest() (request *BatchDeleteImagePersonalRequ
     request = &BatchDeleteImagePersonalRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcr", APIVersion, "BatchDeleteImagePersonal")
     
     
@@ -102,6 +103,7 @@ func NewBatchDeleteRepositoryPersonalRequest() (request *BatchDeleteRepositoryPe
     request = &BatchDeleteRepositoryPersonalRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcr", APIVersion, "BatchDeleteRepositoryPersonal")
     
     
@@ -155,6 +157,7 @@ func NewCheckInstanceRequest() (request *CheckInstanceRequest) {
     request = &CheckInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcr", APIVersion, "CheckInstance")
     
     
@@ -230,6 +233,7 @@ func NewCheckInstanceNameRequest() (request *CheckInstanceNameRequest) {
     request = &CheckInstanceNameRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcr", APIVersion, "CheckInstanceName")
     
     
@@ -305,6 +309,7 @@ func NewCreateApplicationTriggerPersonalRequest() (request *CreateApplicationTri
     request = &CreateApplicationTriggerPersonalRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcr", APIVersion, "CreateApplicationTriggerPersonal")
     
     
@@ -364,6 +369,7 @@ func NewCreateImageLifecyclePersonalRequest() (request *CreateImageLifecyclePers
     request = &CreateImageLifecyclePersonalRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcr", APIVersion, "CreateImageLifecyclePersonal")
     
     
@@ -417,6 +423,7 @@ func NewCreateImmutableTagRulesRequest() (request *CreateImmutableTagRulesReques
     request = &CreateImmutableTagRulesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcr", APIVersion, "CreateImmutableTagRules")
     
     
@@ -474,6 +481,7 @@ func NewCreateInstanceRequest() (request *CreateInstanceRequest) {
     request = &CreateInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcr", APIVersion, "CreateInstance")
     
     
@@ -565,6 +573,7 @@ func NewCreateInstanceTokenRequest() (request *CreateInstanceTokenRequest) {
     request = &CreateInstanceTokenRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcr", APIVersion, "CreateInstanceToken")
     
     
@@ -626,6 +635,7 @@ func NewCreateInternalEndpointDnsRequest() (request *CreateInternalEndpointDnsRe
     request = &CreateInternalEndpointDnsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcr", APIVersion, "CreateInternalEndpointDns")
     
     
@@ -695,6 +705,7 @@ func NewCreateMultipleSecurityPolicyRequest() (request *CreateMultipleSecurityPo
     request = &CreateMultipleSecurityPolicyRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcr", APIVersion, "CreateMultipleSecurityPolicy")
     
     
@@ -762,6 +773,7 @@ func NewCreateNamespaceRequest() (request *CreateNamespaceRequest) {
     request = &CreateNamespaceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcr", APIVersion, "CreateNamespace")
     
     
@@ -843,6 +855,7 @@ func NewCreateNamespacePersonalRequest() (request *CreateNamespacePersonalReques
     request = &CreateNamespacePersonalRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcr", APIVersion, "CreateNamespacePersonal")
     
     
@@ -900,6 +913,7 @@ func NewCreateReplicationInstanceRequest() (request *CreateReplicationInstanceRe
     request = &CreateReplicationInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcr", APIVersion, "CreateReplicationInstance")
     
     
@@ -971,6 +985,7 @@ func NewCreateRepositoryRequest() (request *CreateRepositoryRequest) {
     request = &CreateRepositoryRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcr", APIVersion, "CreateRepository")
     
     
@@ -1038,6 +1053,7 @@ func NewCreateRepositoryPersonalRequest() (request *CreateRepositoryPersonalRequ
     request = &CreateRepositoryPersonalRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcr", APIVersion, "CreateRepositoryPersonal")
     
     
@@ -1093,6 +1109,7 @@ func NewCreateSecurityPolicyRequest() (request *CreateSecurityPolicyRequest) {
     request = &CreateSecurityPolicyRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcr", APIVersion, "CreateSecurityPolicy")
     
     
@@ -1154,6 +1171,7 @@ func NewCreateTagRetentionExecutionRequest() (request *CreateTagRetentionExecuti
     request = &CreateTagRetentionExecutionRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcr", APIVersion, "CreateTagRetentionExecution")
     
     
@@ -1223,6 +1241,7 @@ func NewCreateTagRetentionRuleRequest() (request *CreateTagRetentionRuleRequest)
     request = &CreateTagRetentionRuleRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcr", APIVersion, "CreateTagRetentionRule")
     
     
@@ -1294,6 +1313,7 @@ func NewCreateUserPersonalRequest() (request *CreateUserPersonalRequest) {
     request = &CreateUserPersonalRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcr", APIVersion, "CreateUserPersonal")
     
     
@@ -1345,6 +1365,7 @@ func NewCreateWebhookTriggerRequest() (request *CreateWebhookTriggerRequest) {
     request = &CreateWebhookTriggerRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcr", APIVersion, "CreateWebhookTrigger")
     
     
@@ -1404,6 +1425,7 @@ func NewDeleteApplicationTriggerPersonalRequest() (request *DeleteApplicationTri
     request = &DeleteApplicationTriggerPersonalRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcr", APIVersion, "DeleteApplicationTriggerPersonal")
     
     
@@ -1455,6 +1477,7 @@ func NewDeleteImageRequest() (request *DeleteImageRequest) {
     request = &DeleteImageRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcr", APIVersion, "DeleteImage")
     
     
@@ -1522,6 +1545,7 @@ func NewDeleteImageLifecycleGlobalPersonalRequest() (request *DeleteImageLifecyc
     request = &DeleteImageLifecycleGlobalPersonalRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcr", APIVersion, "DeleteImageLifecycleGlobalPersonal")
     
     
@@ -1569,6 +1593,7 @@ func NewDeleteImageLifecyclePersonalRequest() (request *DeleteImageLifecyclePers
     request = &DeleteImageLifecyclePersonalRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcr", APIVersion, "DeleteImageLifecyclePersonal")
     
     
@@ -1620,6 +1645,7 @@ func NewDeleteImagePersonalRequest() (request *DeleteImagePersonalRequest) {
     request = &DeleteImagePersonalRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcr", APIVersion, "DeleteImagePersonal")
     
     
@@ -1673,6 +1699,7 @@ func NewDeleteImmutableTagRulesRequest() (request *DeleteImmutableTagRulesReques
     request = &DeleteImmutableTagRulesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcr", APIVersion, "DeleteImmutableTagRules")
     
     
@@ -1728,6 +1755,7 @@ func NewDeleteInstanceRequest() (request *DeleteInstanceRequest) {
     request = &DeleteInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcr", APIVersion, "DeleteInstance")
     
     
@@ -1791,6 +1819,7 @@ func NewDeleteInstanceTokenRequest() (request *DeleteInstanceTokenRequest) {
     request = &DeleteInstanceTokenRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcr", APIVersion, "DeleteInstanceToken")
     
     
@@ -1850,6 +1879,7 @@ func NewDeleteInternalEndpointDnsRequest() (request *DeleteInternalEndpointDnsRe
     request = &DeleteInternalEndpointDnsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcr", APIVersion, "DeleteInternalEndpointDns")
     
     
@@ -1917,6 +1947,7 @@ func NewDeleteMultipleSecurityPolicyRequest() (request *DeleteMultipleSecurityPo
     request = &DeleteMultipleSecurityPolicyRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcr", APIVersion, "DeleteMultipleSecurityPolicy")
     
     
@@ -1976,6 +2007,7 @@ func NewDeleteNamespaceRequest() (request *DeleteNamespaceRequest) {
     request = &DeleteNamespaceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcr", APIVersion, "DeleteNamespace")
     
     
@@ -2055,6 +2087,7 @@ func NewDeleteNamespacePersonalRequest() (request *DeleteNamespacePersonalReques
     request = &DeleteNamespacePersonalRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcr", APIVersion, "DeleteNamespacePersonal")
     
     
@@ -2110,6 +2143,7 @@ func NewDeleteRepositoryRequest() (request *DeleteRepositoryRequest) {
     request = &DeleteRepositoryRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcr", APIVersion, "DeleteRepository")
     
     
@@ -2177,6 +2211,7 @@ func NewDeleteRepositoryPersonalRequest() (request *DeleteRepositoryPersonalRequ
     request = &DeleteRepositoryPersonalRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcr", APIVersion, "DeleteRepositoryPersonal")
     
     
@@ -2230,6 +2265,7 @@ func NewDeleteSecurityPolicyRequest() (request *DeleteSecurityPolicyRequest) {
     request = &DeleteSecurityPolicyRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcr", APIVersion, "DeleteSecurityPolicy")
     
     
@@ -2291,6 +2327,7 @@ func NewDeleteTagRetentionRuleRequest() (request *DeleteTagRetentionRuleRequest)
     request = &DeleteTagRetentionRuleRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcr", APIVersion, "DeleteTagRetentionRule")
     
     
@@ -2362,6 +2399,7 @@ func NewDeleteWebhookTriggerRequest() (request *DeleteWebhookTriggerRequest) {
     request = &DeleteWebhookTriggerRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcr", APIVersion, "DeleteWebhookTrigger")
     
     
@@ -2421,6 +2459,7 @@ func NewDescribeApplicationTriggerLogPersonalRequest() (request *DescribeApplica
     request = &DescribeApplicationTriggerLogPersonalRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcr", APIVersion, "DescribeApplicationTriggerLogPersonal")
     
     
@@ -2470,6 +2509,7 @@ func NewDescribeApplicationTriggerPersonalRequest() (request *DescribeApplicatio
     request = &DescribeApplicationTriggerPersonalRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcr", APIVersion, "DescribeApplicationTriggerPersonal")
     
     
@@ -2521,6 +2561,7 @@ func NewDescribeChartDownloadInfoRequest() (request *DescribeChartDownloadInfoRe
     request = &DescribeChartDownloadInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcr", APIVersion, "DescribeChartDownloadInfo")
     
     
@@ -2574,6 +2615,7 @@ func NewDescribeExternalEndpointStatusRequest() (request *DescribeExternalEndpoi
     request = &DescribeExternalEndpointStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcr", APIVersion, "DescribeExternalEndpointStatus")
     
     
@@ -2643,6 +2685,7 @@ func NewDescribeFavorRepositoryPersonalRequest() (request *DescribeFavorReposito
     request = &DescribeFavorRepositoryPersonalRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcr", APIVersion, "DescribeFavorRepositoryPersonal")
     
     
@@ -2692,6 +2735,7 @@ func NewDescribeImageFilterPersonalRequest() (request *DescribeImageFilterPerson
     request = &DescribeImageFilterPersonalRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcr", APIVersion, "DescribeImageFilterPersonal")
     
     
@@ -2745,6 +2789,7 @@ func NewDescribeImageLifecycleGlobalPersonalRequest() (request *DescribeImageLif
     request = &DescribeImageLifecycleGlobalPersonalRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcr", APIVersion, "DescribeImageLifecycleGlobalPersonal")
     
     
@@ -2792,6 +2837,7 @@ func NewDescribeImageLifecyclePersonalRequest() (request *DescribeImageLifecycle
     request = &DescribeImageLifecyclePersonalRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcr", APIVersion, "DescribeImageLifecyclePersonal")
     
     
@@ -2841,6 +2887,7 @@ func NewDescribeImageManifestsRequest() (request *DescribeImageManifestsRequest)
     request = &DescribeImageManifestsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcr", APIVersion, "DescribeImageManifests")
     
     
@@ -2910,6 +2957,7 @@ func NewDescribeImagePersonalRequest() (request *DescribeImagePersonalRequest) {
     request = &DescribeImagePersonalRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcr", APIVersion, "DescribeImagePersonal")
     
     
@@ -2963,6 +3011,7 @@ func NewDescribeImagesRequest() (request *DescribeImagesRequest) {
     request = &DescribeImagesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcr", APIVersion, "DescribeImages")
     
     
@@ -3030,6 +3079,7 @@ func NewDescribeImmutableTagRulesRequest() (request *DescribeImmutableTagRulesRe
     request = &DescribeImmutableTagRulesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcr", APIVersion, "DescribeImmutableTagRules")
     
     
@@ -3093,6 +3143,7 @@ func NewDescribeInstanceStatusRequest() (request *DescribeInstanceStatusRequest)
     request = &DescribeInstanceStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcr", APIVersion, "DescribeInstanceStatus")
     
     
@@ -3152,6 +3203,7 @@ func NewDescribeInstanceTokenRequest() (request *DescribeInstanceTokenRequest) {
     request = &DescribeInstanceTokenRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcr", APIVersion, "DescribeInstanceToken")
     
     
@@ -3209,6 +3261,7 @@ func NewDescribeInstancesRequest() (request *DescribeInstancesRequest) {
     request = &DescribeInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcr", APIVersion, "DescribeInstances")
     
     
@@ -3274,6 +3327,7 @@ func NewDescribeInternalEndpointDnsStatusRequest() (request *DescribeInternalEnd
     request = &DescribeInternalEndpointDnsStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcr", APIVersion, "DescribeInternalEndpointDnsStatus")
     
     
@@ -3341,6 +3395,7 @@ func NewDescribeInternalEndpointsRequest() (request *DescribeInternalEndpointsRe
     request = &DescribeInternalEndpointsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcr", APIVersion, "DescribeInternalEndpoints")
     
     
@@ -3400,6 +3455,7 @@ func NewDescribeNamespacePersonalRequest() (request *DescribeNamespacePersonalRe
     request = &DescribeNamespacePersonalRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcr", APIVersion, "DescribeNamespacePersonal")
     
     
@@ -3451,6 +3507,7 @@ func NewDescribeNamespacesRequest() (request *DescribeNamespacesRequest) {
     request = &DescribeNamespacesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcr", APIVersion, "DescribeNamespaces")
     
     
@@ -3536,6 +3593,7 @@ func NewDescribeReplicationInstanceCreateTasksRequest() (request *DescribeReplic
     request = &DescribeReplicationInstanceCreateTasksRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcr", APIVersion, "DescribeReplicationInstanceCreateTasks")
     
     
@@ -3595,6 +3653,7 @@ func NewDescribeReplicationInstanceSyncStatusRequest() (request *DescribeReplica
     request = &DescribeReplicationInstanceSyncStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcr", APIVersion, "DescribeReplicationInstanceSyncStatus")
     
     
@@ -3654,6 +3713,7 @@ func NewDescribeReplicationInstancesRequest() (request *DescribeReplicationInsta
     request = &DescribeReplicationInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcr", APIVersion, "DescribeReplicationInstances")
     
     
@@ -3717,6 +3777,7 @@ func NewDescribeRepositoriesRequest() (request *DescribeRepositoriesRequest) {
     request = &DescribeRepositoriesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcr", APIVersion, "DescribeRepositories")
     
     
@@ -3784,6 +3845,7 @@ func NewDescribeRepositoryFilterPersonalRequest() (request *DescribeRepositoryFi
     request = &DescribeRepositoryFilterPersonalRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcr", APIVersion, "DescribeRepositoryFilterPersonal")
     
     
@@ -3835,6 +3897,7 @@ func NewDescribeRepositoryOwnerPersonalRequest() (request *DescribeRepositoryOwn
     request = &DescribeRepositoryOwnerPersonalRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcr", APIVersion, "DescribeRepositoryOwnerPersonal")
     
     
@@ -3888,6 +3951,7 @@ func NewDescribeRepositoryPersonalRequest() (request *DescribeRepositoryPersonal
     request = &DescribeRepositoryPersonalRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcr", APIVersion, "DescribeRepositoryPersonal")
     
     
@@ -3939,6 +4003,7 @@ func NewDescribeSecurityPoliciesRequest() (request *DescribeSecurityPoliciesRequ
     request = &DescribeSecurityPoliciesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcr", APIVersion, "DescribeSecurityPolicies")
     
     
@@ -4010,6 +4075,7 @@ func NewDescribeTagRetentionExecutionRequest() (request *DescribeTagRetentionExe
     request = &DescribeTagRetentionExecutionRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcr", APIVersion, "DescribeTagRetentionExecution")
     
     
@@ -4079,6 +4145,7 @@ func NewDescribeTagRetentionExecutionTaskRequest() (request *DescribeTagRetentio
     request = &DescribeTagRetentionExecutionTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcr", APIVersion, "DescribeTagRetentionExecutionTask")
     
     
@@ -4148,6 +4215,7 @@ func NewDescribeTagRetentionRulesRequest() (request *DescribeTagRetentionRulesRe
     request = &DescribeTagRetentionRulesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcr", APIVersion, "DescribeTagRetentionRules")
     
     
@@ -4219,6 +4287,7 @@ func NewDescribeUserQuotaPersonalRequest() (request *DescribeUserQuotaPersonalRe
     request = &DescribeUserQuotaPersonalRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcr", APIVersion, "DescribeUserQuotaPersonal")
     
     
@@ -4266,6 +4335,7 @@ func NewDescribeWebhookTriggerRequest() (request *DescribeWebhookTriggerRequest)
     request = &DescribeWebhookTriggerRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcr", APIVersion, "DescribeWebhookTrigger")
     
     
@@ -4327,6 +4397,7 @@ func NewDescribeWebhookTriggerLogRequest() (request *DescribeWebhookTriggerLogRe
     request = &DescribeWebhookTriggerLogRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcr", APIVersion, "DescribeWebhookTriggerLog")
     
     
@@ -4386,6 +4457,7 @@ func NewDownloadHelmChartRequest() (request *DownloadHelmChartRequest) {
     request = &DownloadHelmChartRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcr", APIVersion, "DownloadHelmChart")
     
     
@@ -4439,6 +4511,7 @@ func NewDuplicateImagePersonalRequest() (request *DuplicateImagePersonalRequest)
     request = &DuplicateImagePersonalRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcr", APIVersion, "DuplicateImagePersonal")
     
     
@@ -4492,6 +4565,7 @@ func NewManageExternalEndpointRequest() (request *ManageExternalEndpointRequest)
     request = &ManageExternalEndpointRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcr", APIVersion, "ManageExternalEndpoint")
     
     
@@ -4551,6 +4625,7 @@ func NewManageImageLifecycleGlobalPersonalRequest() (request *ManageImageLifecyc
     request = &ManageImageLifecycleGlobalPersonalRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcr", APIVersion, "ManageImageLifecycleGlobalPersonal")
     
     
@@ -4598,6 +4673,7 @@ func NewManageInternalEndpointRequest() (request *ManageInternalEndpointRequest)
     request = &ManageInternalEndpointRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcr", APIVersion, "ManageInternalEndpoint")
     
     
@@ -4667,6 +4743,7 @@ func NewManageReplicationRequest() (request *ManageReplicationRequest) {
     request = &ManageReplicationRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcr", APIVersion, "ManageReplication")
     
     
@@ -4740,6 +4817,7 @@ func NewModifyApplicationTriggerPersonalRequest() (request *ModifyApplicationTri
     request = &ModifyApplicationTriggerPersonalRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcr", APIVersion, "ModifyApplicationTriggerPersonal")
     
     
@@ -4795,6 +4873,7 @@ func NewModifyImmutableTagRulesRequest() (request *ModifyImmutableTagRulesReques
     request = &ModifyImmutableTagRulesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcr", APIVersion, "ModifyImmutableTagRules")
     
     
@@ -4852,6 +4931,7 @@ func NewModifyInstanceRequest() (request *ModifyInstanceRequest) {
     request = &ModifyInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcr", APIVersion, "ModifyInstance")
     
     
@@ -4917,6 +4997,7 @@ func NewModifyInstanceTokenRequest() (request *ModifyInstanceTokenRequest) {
     request = &ModifyInstanceTokenRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcr", APIVersion, "ModifyInstanceToken")
     
     
@@ -4976,6 +5057,7 @@ func NewModifyNamespaceRequest() (request *ModifyNamespaceRequest) {
     request = &ModifyNamespaceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcr", APIVersion, "ModifyNamespace")
     
     
@@ -5045,6 +5127,7 @@ func NewModifyRepositoryRequest() (request *ModifyRepositoryRequest) {
     request = &ModifyRepositoryRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcr", APIVersion, "ModifyRepository")
     
     
@@ -5110,6 +5193,7 @@ func NewModifyRepositoryAccessPersonalRequest() (request *ModifyRepositoryAccess
     request = &ModifyRepositoryAccessPersonalRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcr", APIVersion, "ModifyRepositoryAccessPersonal")
     
     
@@ -5163,6 +5247,7 @@ func NewModifyRepositoryInfoPersonalRequest() (request *ModifyRepositoryInfoPers
     request = &ModifyRepositoryInfoPersonalRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcr", APIVersion, "ModifyRepositoryInfoPersonal")
     
     
@@ -5216,6 +5301,7 @@ func NewModifySecurityPolicyRequest() (request *ModifySecurityPolicyRequest) {
     request = &ModifySecurityPolicyRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcr", APIVersion, "ModifySecurityPolicy")
     
     
@@ -5275,6 +5361,7 @@ func NewModifyTagRetentionRuleRequest() (request *ModifyTagRetentionRuleRequest)
     request = &ModifyTagRetentionRuleRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcr", APIVersion, "ModifyTagRetentionRule")
     
     
@@ -5346,6 +5433,7 @@ func NewModifyUserPasswordPersonalRequest() (request *ModifyUserPasswordPersonal
     request = &ModifyUserPasswordPersonalRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcr", APIVersion, "ModifyUserPasswordPersonal")
     
     
@@ -5397,6 +5485,7 @@ func NewModifyWebhookTriggerRequest() (request *ModifyWebhookTriggerRequest) {
     request = &ModifyWebhookTriggerRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcr", APIVersion, "ModifyWebhookTrigger")
     
     
@@ -5456,6 +5545,7 @@ func NewRenewInstanceRequest() (request *RenewInstanceRequest) {
     request = &RenewInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcr", APIVersion, "RenewInstance")
     
     
@@ -5531,6 +5621,7 @@ func NewValidateNamespaceExistPersonalRequest() (request *ValidateNamespaceExist
     request = &ValidateNamespaceExistPersonalRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcr", APIVersion, "ValidateNamespaceExistPersonal")
     
     
@@ -5580,6 +5671,7 @@ func NewValidateRepositoryExistPersonalRequest() (request *ValidateRepositoryExi
     request = &ValidateRepositoryExistPersonalRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcr", APIVersion, "ValidateRepositoryExistPersonal")
     
     

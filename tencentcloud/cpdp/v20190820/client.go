@@ -49,6 +49,7 @@ func NewAddContractRequest() (request *AddContractRequest) {
     request = &AddContractRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "AddContract")
     
     
@@ -90,6 +91,7 @@ func NewAddFlexIdInfoRequest() (request *AddFlexIdInfoRequest) {
     request = &AddFlexIdInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "AddFlexIdInfo")
     
     
@@ -137,6 +139,7 @@ func NewAddFlexPhoneNoRequest() (request *AddFlexPhoneNoRequest) {
     request = &AddFlexPhoneNoRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "AddFlexPhoneNo")
     
     
@@ -184,6 +187,7 @@ func NewAddMerchantRequest() (request *AddMerchantRequest) {
     request = &AddMerchantRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "AddMerchant")
     
     
@@ -231,6 +235,7 @@ func NewAddShopRequest() (request *AddShopRequest) {
     request = &AddShopRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "AddShop")
     
     
@@ -278,6 +283,7 @@ func NewApplyApplicationMaterialRequest() (request *ApplyApplicationMaterialRequ
     request = &ApplyApplicationMaterialRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "ApplyApplicationMaterial")
     
     
@@ -329,6 +335,7 @@ func NewApplyFlexPaymentRequest() (request *ApplyFlexPaymentRequest) {
     request = &ApplyFlexPaymentRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "ApplyFlexPayment")
     
     
@@ -380,6 +387,7 @@ func NewApplyFlexSettlementRequest() (request *ApplyFlexSettlementRequest) {
     request = &ApplyFlexSettlementRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "ApplyFlexSettlement")
     
     
@@ -431,6 +439,7 @@ func NewApplyOpenBankOrderDetailReceiptRequest() (request *ApplyOpenBankOrderDet
     request = &ApplyOpenBankOrderDetailReceiptRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "ApplyOpenBankOrderDetailReceipt")
     
     
@@ -478,6 +487,7 @@ func NewApplyOutwardOrderRequest() (request *ApplyOutwardOrderRequest) {
     request = &ApplyOutwardOrderRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "ApplyOutwardOrder")
     
     
@@ -529,6 +539,7 @@ func NewApplyPayerInfoRequest() (request *ApplyPayerInfoRequest) {
     request = &ApplyPayerInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "ApplyPayerInfo")
     
     
@@ -580,6 +591,7 @@ func NewApplyReWithdrawalRequest() (request *ApplyReWithdrawalRequest) {
     request = &ApplyReWithdrawalRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "ApplyReWithdrawal")
     
     
@@ -637,6 +649,7 @@ func NewApplyReconciliationFileRequest() (request *ApplyReconciliationFileReques
     request = &ApplyReconciliationFileRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "ApplyReconciliationFile")
     
     
@@ -694,6 +707,7 @@ func NewApplyTradeRequest() (request *ApplyTradeRequest) {
     request = &ApplyTradeRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "ApplyTrade")
     
     
@@ -745,6 +759,7 @@ func NewApplyWithdrawalRequest() (request *ApplyWithdrawalRequest) {
     request = &ApplyWithdrawalRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "ApplyWithdrawal")
     
     
@@ -800,6 +815,7 @@ func NewBindAccountRequest() (request *BindAccountRequest) {
     request = &BindAccountRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "BindAccount")
     
     
@@ -855,6 +871,7 @@ func NewBindAcctRequest() (request *BindAcctRequest) {
     request = &BindAcctRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "BindAcct")
     
     
@@ -910,6 +927,7 @@ func NewBindOpenBankExternalSubMerchantBankAccountRequest() (request *BindOpenBa
     request = &BindOpenBankExternalSubMerchantBankAccountRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "BindOpenBankExternalSubMerchantBankAccount")
     
     
@@ -965,6 +983,7 @@ func NewBindRelateAccReUnionPayRequest() (request *BindRelateAccReUnionPayReques
     request = &BindRelateAccReUnionPayRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "BindRelateAccReUnionPay")
     
     
@@ -1028,6 +1047,7 @@ func NewBindRelateAcctSmallAmountRequest() (request *BindRelateAcctSmallAmountRe
     request = &BindRelateAcctSmallAmountRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "BindRelateAcctSmallAmount")
     
     
@@ -1103,6 +1123,7 @@ func NewBindRelateAcctUnionPayRequest() (request *BindRelateAcctUnionPayRequest)
     request = &BindRelateAcctUnionPayRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "BindRelateAcctUnionPay")
     
     
@@ -1182,6 +1203,7 @@ func NewCheckAcctRequest() (request *CheckAcctRequest) {
     request = &CheckAcctRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "CheckAcct")
     
     
@@ -1237,6 +1259,7 @@ func NewCheckAmountRequest() (request *CheckAmountRequest) {
     request = &CheckAmountRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "CheckAmount")
     
     
@@ -1300,6 +1323,7 @@ func NewCloseCloudOrderRequest() (request *CloseCloudOrderRequest) {
     request = &CloseCloudOrderRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "CloseCloudOrder")
     
     
@@ -1425,6 +1449,7 @@ func NewCloseOpenBankPaymentOrderRequest() (request *CloseOpenBankPaymentOrderRe
     request = &CloseOpenBankPaymentOrderRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "CloseOpenBankPaymentOrder")
     
     
@@ -1472,6 +1497,7 @@ func NewCloseOrderRequest() (request *CloseOrderRequest) {
     request = &CloseOrderRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "CloseOrder")
     
     
@@ -1529,6 +1555,7 @@ func NewConfirmOrderRequest() (request *ConfirmOrderRequest) {
     request = &ConfirmOrderRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "ConfirmOrder")
     
     
@@ -1580,6 +1607,7 @@ func NewContractOrderRequest() (request *ContractOrderRequest) {
     request = &ContractOrderRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "ContractOrder")
     
     
@@ -1667,6 +1695,7 @@ func NewCreateAcctRequest() (request *CreateAcctRequest) {
     request = &CreateAcctRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "CreateAcct")
     
     
@@ -1724,6 +1753,7 @@ func NewCreateAgentTaxPaymentInfosRequest() (request *CreateAgentTaxPaymentInfos
     request = &CreateAgentTaxPaymentInfosRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "CreateAgentTaxPaymentInfos")
     
     
@@ -1781,6 +1811,7 @@ func NewCreateAnchorRequest() (request *CreateAnchorRequest) {
     request = &CreateAnchorRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "CreateAnchor")
     
     
@@ -1836,6 +1867,7 @@ func NewCreateBatchPaymentRequest() (request *CreateBatchPaymentRequest) {
     request = &CreateBatchPaymentRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "CreateBatchPayment")
     
     
@@ -1891,6 +1923,7 @@ func NewCreateCloudSubMerchantRequest() (request *CreateCloudSubMerchantRequest)
     request = &CreateCloudSubMerchantRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "CreateCloudSubMerchant")
     
     
@@ -2016,6 +2049,7 @@ func NewCreateCustAcctIdRequest() (request *CreateCustAcctIdRequest) {
     request = &CreateCustAcctIdRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "CreateCustAcctId")
     
     
@@ -2085,6 +2119,7 @@ func NewCreateExternalAnchorRequest() (request *CreateExternalAnchorRequest) {
     request = &CreateExternalAnchorRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "CreateExternalAnchor")
     
     
@@ -2150,6 +2185,7 @@ func NewCreateFlexPayeeRequest() (request *CreateFlexPayeeRequest) {
     request = &CreateFlexPayeeRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "CreateFlexPayee")
     
     
@@ -2197,6 +2233,7 @@ func NewCreateInvoiceRequest() (request *CreateInvoiceRequest) {
     request = &CreateInvoiceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "CreateInvoice")
     
     
@@ -2274,6 +2311,7 @@ func NewCreateInvoiceV2Request() (request *CreateInvoiceV2Request) {
     request = &CreateInvoiceV2Request{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "CreateInvoiceV2")
     
     
@@ -2321,6 +2359,7 @@ func NewCreateMerchantRequest() (request *CreateMerchantRequest) {
     request = &CreateMerchantRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "CreateMerchant")
     
     
@@ -2382,6 +2421,7 @@ func NewCreateOpenBankAggregatedSubMerchantRegistrationRequest() (request *Creat
     request = &CreateOpenBankAggregatedSubMerchantRegistrationRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "CreateOpenBankAggregatedSubMerchantRegistration")
     
     
@@ -2443,6 +2483,7 @@ func NewCreateOpenBankExternalSubMerchantAccountBookRequest() (request *CreateOp
     request = &CreateOpenBankExternalSubMerchantAccountBookRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "CreateOpenBankExternalSubMerchantAccountBook")
     
     
@@ -2504,6 +2545,7 @@ func NewCreateOpenBankExternalSubMerchantRegistrationRequest() (request *CreateO
     request = &CreateOpenBankExternalSubMerchantRegistrationRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "CreateOpenBankExternalSubMerchantRegistration")
     
     
@@ -2551,6 +2593,7 @@ func NewCreateOpenBankMerchantRequest() (request *CreateOpenBankMerchantRequest)
     request = &CreateOpenBankMerchantRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "CreateOpenBankMerchant")
     
     
@@ -2598,6 +2641,7 @@ func NewCreateOpenBankPaymentOrderRequest() (request *CreateOpenBankPaymentOrder
     request = &CreateOpenBankPaymentOrderRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "CreateOpenBankPaymentOrder")
     
     
@@ -2645,6 +2689,7 @@ func NewCreateOpenBankRechargeOrderRequest() (request *CreateOpenBankRechargeOrd
     request = &CreateOpenBankRechargeOrderRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "CreateOpenBankRechargeOrder")
     
     
@@ -2692,6 +2737,7 @@ func NewCreateOpenBankSubMerchantRateConfigureRequest() (request *CreateOpenBank
     request = &CreateOpenBankSubMerchantRateConfigureRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "CreateOpenBankSubMerchantRateConfigure")
     
     
@@ -2739,6 +2785,7 @@ func NewCreateOpenBankUnifiedOrderRequest() (request *CreateOpenBankUnifiedOrder
     request = &CreateOpenBankUnifiedOrderRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "CreateOpenBankUnifiedOrder")
     
     
@@ -2786,6 +2833,7 @@ func NewCreateOpenBankVerificationOrderRequest() (request *CreateOpenBankVerific
     request = &CreateOpenBankVerificationOrderRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "CreateOpenBankVerificationOrder")
     
     
@@ -2833,6 +2881,7 @@ func NewCreateOrderRequest() (request *CreateOrderRequest) {
     request = &CreateOrderRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "CreateOrder")
     
     
@@ -2888,6 +2937,7 @@ func NewCreatePayMerchantRequest() (request *CreatePayMerchantRequest) {
     request = &CreatePayMerchantRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "CreatePayMerchant")
     
     
@@ -2947,6 +2997,7 @@ func NewCreatePayRollPreOrderRequest() (request *CreatePayRollPreOrderRequest) {
     request = &CreatePayRollPreOrderRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "CreatePayRollPreOrder")
     
     
@@ -3006,6 +3057,7 @@ func NewCreatePayRollPreOrderWithAuthRequest() (request *CreatePayRollPreOrderWi
     request = &CreatePayRollPreOrderWithAuthRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "CreatePayRollPreOrderWithAuth")
     
     
@@ -3065,6 +3117,7 @@ func NewCreatePayRollTokenRequest() (request *CreatePayRollTokenRequest) {
     request = &CreatePayRollTokenRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "CreatePayRollToken")
     
     
@@ -3124,6 +3177,7 @@ func NewCreateRedInvoiceRequest() (request *CreateRedInvoiceRequest) {
     request = &CreateRedInvoiceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "CreateRedInvoice")
     
     
@@ -3199,6 +3253,7 @@ func NewCreateRedInvoiceV2Request() (request *CreateRedInvoiceV2Request) {
     request = &CreateRedInvoiceV2Request{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "CreateRedInvoiceV2")
     
     
@@ -3274,6 +3329,7 @@ func NewCreateSinglePaymentRequest() (request *CreateSinglePaymentRequest) {
     request = &CreateSinglePaymentRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "CreateSinglePayment")
     
     
@@ -3349,6 +3405,7 @@ func NewCreateTransferBatchRequest() (request *CreateTransferBatchRequest) {
     request = &CreateTransferBatchRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "CreateTransferBatch")
     
     
@@ -3420,6 +3477,7 @@ func NewDeduceQuotaRequest() (request *DeduceQuotaRequest) {
     request = &DeduceQuotaRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "DeduceQuota")
     
     
@@ -3491,6 +3549,7 @@ func NewDeleteAgentTaxPaymentInfoRequest() (request *DeleteAgentTaxPaymentInfoRe
     request = &DeleteAgentTaxPaymentInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "DeleteAgentTaxPaymentInfo")
     
     
@@ -3548,6 +3607,7 @@ func NewDeleteAgentTaxPaymentInfosRequest() (request *DeleteAgentTaxPaymentInfos
     request = &DeleteAgentTaxPaymentInfosRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "DeleteAgentTaxPaymentInfos")
     
     
@@ -3605,6 +3665,7 @@ func NewDescribeChargeDetailRequest() (request *DescribeChargeDetailRequest) {
     request = &DescribeChargeDetailRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "DescribeChargeDetail")
     
     
@@ -3662,6 +3723,7 @@ func NewDescribeOrderStatusRequest() (request *DescribeOrderStatusRequest) {
     request = &DescribeOrderStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "DescribeOrderStatus")
     
     
@@ -3711,6 +3773,7 @@ func NewDistributeAccreditQueryRequest() (request *DistributeAccreditQueryReques
     request = &DistributeAccreditQueryRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "DistributeAccreditQuery")
     
     
@@ -3760,6 +3823,7 @@ func NewDistributeAccreditTlinxRequest() (request *DistributeAccreditTlinxReques
     request = &DistributeAccreditTlinxRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "DistributeAccreditTlinx")
     
     
@@ -3809,6 +3873,7 @@ func NewDistributeAddReceiverRequest() (request *DistributeAddReceiverRequest) {
     request = &DistributeAddReceiverRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "DistributeAddReceiver")
     
     
@@ -3858,6 +3923,7 @@ func NewDistributeApplyRequest() (request *DistributeApplyRequest) {
     request = &DistributeApplyRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "DistributeApply")
     
     
@@ -3907,6 +3973,7 @@ func NewDistributeCancelRequest() (request *DistributeCancelRequest) {
     request = &DistributeCancelRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "DistributeCancel")
     
     
@@ -3956,6 +4023,7 @@ func NewDistributeQueryRequest() (request *DistributeQueryRequest) {
     request = &DistributeQueryRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "DistributeQuery")
     
     
@@ -4005,6 +4073,7 @@ func NewDistributeQueryReceiverRequest() (request *DistributeQueryReceiverReques
     request = &DistributeQueryReceiverRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "DistributeQueryReceiver")
     
     
@@ -4054,6 +4123,7 @@ func NewDistributeRemoveReceiverRequest() (request *DistributeRemoveReceiverRequ
     request = &DistributeRemoveReceiverRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "DistributeRemoveReceiver")
     
     
@@ -4103,6 +4173,7 @@ func NewDownloadBillRequest() (request *DownloadBillRequest) {
     request = &DownloadBillRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "DownloadBill")
     
     
@@ -4162,6 +4233,7 @@ func NewDownloadOrgFileRequest() (request *DownloadOrgFileRequest) {
     request = &DownloadOrgFileRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "DownloadOrgFile")
     
     
@@ -4221,6 +4293,7 @@ func NewDownloadReconciliationUrlRequest() (request *DownloadReconciliationUrlRe
     request = &DownloadReconciliationUrlRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "DownloadReconciliationUrl")
     
     
@@ -4272,6 +4345,7 @@ func NewExecuteMemberTransactionRequest() (request *ExecuteMemberTransactionRequ
     request = &ExecuteMemberTransactionRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "ExecuteMemberTransaction")
     
     
@@ -4323,6 +4397,7 @@ func NewFreezeFlexBalanceRequest() (request *FreezeFlexBalanceRequest) {
     request = &FreezeFlexBalanceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "FreezeFlexBalance")
     
     
@@ -4374,6 +4449,7 @@ func NewGetBillDownloadUrlRequest() (request *GetBillDownloadUrlRequest) {
     request = &GetBillDownloadUrlRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "GetBillDownloadUrl")
     
     
@@ -4429,6 +4505,7 @@ func NewGetDistributeBillDownloadUrlRequest() (request *GetDistributeBillDownloa
     request = &GetDistributeBillDownloadUrlRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "GetDistributeBillDownloadUrl")
     
     
@@ -4484,6 +4561,7 @@ func NewGetPayRollAuthRequest() (request *GetPayRollAuthRequest) {
     request = &GetPayRollAuthRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "GetPayRollAuth")
     
     
@@ -4543,6 +4621,7 @@ func NewGetPayRollAuthListRequest() (request *GetPayRollAuthListRequest) {
     request = &GetPayRollAuthListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "GetPayRollAuthList")
     
     
@@ -4602,6 +4681,7 @@ func NewGetPayRollAuthResultRequest() (request *GetPayRollAuthResultRequest) {
     request = &GetPayRollAuthResultRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "GetPayRollAuthResult")
     
     
@@ -4661,6 +4741,7 @@ func NewMigrateOrderRefundRequest() (request *MigrateOrderRefundRequest) {
     request = &MigrateOrderRefundRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "MigrateOrderRefund")
     
     
@@ -4742,6 +4823,7 @@ func NewMigrateOrderRefundQueryRequest() (request *MigrateOrderRefundQueryReques
     request = &MigrateOrderRefundQueryRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "MigrateOrderRefundQuery")
     
     
@@ -4819,6 +4901,7 @@ func NewModifyAgentTaxPaymentInfoRequest() (request *ModifyAgentTaxPaymentInfoRe
     request = &ModifyAgentTaxPaymentInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "ModifyAgentTaxPaymentInfo")
     
     
@@ -4876,6 +4959,7 @@ func NewModifyBindedAccountRequest() (request *ModifyBindedAccountRequest) {
     request = &ModifyBindedAccountRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "ModifyBindedAccount")
     
     
@@ -4933,6 +5017,7 @@ func NewModifyFlexPayeeAccountRightStatusRequest() (request *ModifyFlexPayeeAcco
     request = &ModifyFlexPayeeAccountRightStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "ModifyFlexPayeeAccountRightStatus")
     
     
@@ -4980,6 +5065,7 @@ func NewModifyMerchantRequest() (request *ModifyMerchantRequest) {
     request = &ModifyMerchantRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "ModifyMerchant")
     
     
@@ -5031,6 +5117,7 @@ func NewModifyMntMbrBindRelateAcctBankCodeRequest() (request *ModifyMntMbrBindRe
     request = &ModifyMntMbrBindRelateAcctBankCodeRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "ModifyMntMbrBindRelateAcctBankCode")
     
     
@@ -5094,6 +5181,7 @@ func NewQueryAcctBindingRequest() (request *QueryAcctBindingRequest) {
     request = &QueryAcctBindingRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "QueryAcctBinding")
     
     
@@ -5153,6 +5241,7 @@ func NewQueryAcctInfoRequest() (request *QueryAcctInfoRequest) {
     request = &QueryAcctInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "QueryAcctInfo")
     
     
@@ -5212,6 +5301,7 @@ func NewQueryAcctInfoListRequest() (request *QueryAcctInfoListRequest) {
     request = &QueryAcctInfoListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "QueryAcctInfoList")
     
     
@@ -5269,6 +5359,7 @@ func NewQueryAgentStatementsRequest() (request *QueryAgentStatementsRequest) {
     request = &QueryAgentStatementsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "QueryAgentStatements")
     
     
@@ -5328,6 +5419,7 @@ func NewQueryAgentTaxPaymentBatchRequest() (request *QueryAgentTaxPaymentBatchRe
     request = &QueryAgentTaxPaymentBatchRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "QueryAgentTaxPaymentBatch")
     
     
@@ -5385,6 +5477,7 @@ func NewQueryAnchorContractInfoRequest() (request *QueryAnchorContractInfoReques
     request = &QueryAnchorContractInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "QueryAnchorContractInfo")
     
     
@@ -5440,6 +5533,7 @@ func NewQueryApplicationMaterialRequest() (request *QueryApplicationMaterialRequ
     request = &QueryApplicationMaterialRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "QueryApplicationMaterial")
     
     
@@ -5491,6 +5585,7 @@ func NewQueryAssignmentRequest() (request *QueryAssignmentRequest) {
     request = &QueryAssignmentRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "QueryAssignment")
     
     
@@ -5542,6 +5637,7 @@ func NewQueryBalanceRequest() (request *QueryBalanceRequest) {
     request = &QueryBalanceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "QueryBalance")
     
     
@@ -5599,6 +5695,7 @@ func NewQueryBankClearRequest() (request *QueryBankClearRequest) {
     request = &QueryBankClearRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "QueryBankClear")
     
     
@@ -5662,6 +5759,7 @@ func NewQueryBankTransactionDetailsRequest() (request *QueryBankTransactionDetai
     request = &QueryBankTransactionDetailsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "QueryBankTransactionDetails")
     
     
@@ -5725,6 +5823,7 @@ func NewQueryBankWithdrawCashDetailsRequest() (request *QueryBankWithdrawCashDet
     request = &QueryBankWithdrawCashDetailsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "QueryBankWithdrawCashDetails")
     
     
@@ -5788,6 +5887,7 @@ func NewQueryBatchPaymentResultRequest() (request *QueryBatchPaymentResultReques
     request = &QueryBatchPaymentResultRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "QueryBatchPaymentResult")
     
     
@@ -5851,6 +5951,7 @@ func NewQueryBillDownloadURLRequest() (request *QueryBillDownloadURLRequest) {
     request = &QueryBillDownloadURLRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "QueryBillDownloadURL")
     
     
@@ -5914,6 +6015,7 @@ func NewQueryCityCodeRequest() (request *QueryCityCodeRequest) {
     request = &QueryCityCodeRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "QueryCityCode")
     
     
@@ -5977,6 +6079,7 @@ func NewQueryCloudChannelDataRequest() (request *QueryCloudChannelDataRequest) {
     request = &QueryCloudChannelDataRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "QueryCloudChannelData")
     
     
@@ -6102,6 +6205,7 @@ func NewQueryCloudOrderRequest() (request *QueryCloudOrderRequest) {
     request = &QueryCloudOrderRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "QueryCloudOrder")
     
     
@@ -6227,6 +6331,7 @@ func NewQueryCloudRefundOrderRequest() (request *QueryCloudRefundOrderRequest) {
     request = &QueryCloudRefundOrderRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "QueryCloudRefundOrder")
     
     
@@ -6352,6 +6457,7 @@ func NewQueryCommonTransferRechargeRequest() (request *QueryCommonTransferRechar
     request = &QueryCommonTransferRechargeRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "QueryCommonTransferRecharge")
     
     
@@ -6415,6 +6521,7 @@ func NewQueryContractRequest() (request *QueryContractRequest) {
     request = &QueryContractRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "QueryContract")
     
     
@@ -6532,6 +6639,7 @@ func NewQueryContractPayFeeRequest() (request *QueryContractPayFeeRequest) {
     request = &QueryContractPayFeeRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "QueryContractPayFee")
     
     
@@ -6649,6 +6757,7 @@ func NewQueryContractPayWayListRequest() (request *QueryContractPayWayListReques
     request = &QueryContractPayWayListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "QueryContractPayWayList")
     
     
@@ -6766,6 +6875,7 @@ func NewQueryContractRelateShopRequest() (request *QueryContractRelateShopReques
     request = &QueryContractRelateShopRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "QueryContractRelateShop")
     
     
@@ -6883,6 +6993,7 @@ func NewQueryCustAcctIdBalanceRequest() (request *QueryCustAcctIdBalanceRequest)
     request = &QueryCustAcctIdBalanceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "QueryCustAcctIdBalance")
     
     
@@ -6946,6 +7057,7 @@ func NewQueryDownloadBillURLRequest() (request *QueryDownloadBillURLRequest) {
     request = &QueryDownloadBillURLRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "QueryDownloadBillURL")
     
     
@@ -6999,6 +7111,7 @@ func NewQueryExceedingInfoRequest() (request *QueryExceedingInfoRequest) {
     request = &QueryExceedingInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "QueryExceedingInfo")
     
     
@@ -7052,6 +7165,7 @@ func NewQueryExchangeRateRequest() (request *QueryExchangeRateRequest) {
     request = &QueryExchangeRateRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "QueryExchangeRate")
     
     
@@ -7103,6 +7217,7 @@ func NewQueryFlexAmountBeforeTaxRequest() (request *QueryFlexAmountBeforeTaxRequ
     request = &QueryFlexAmountBeforeTaxRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "QueryFlexAmountBeforeTax")
     
     
@@ -7154,6 +7269,7 @@ func NewQueryFlexBillDownloadUrlRequest() (request *QueryFlexBillDownloadUrlRequ
     request = &QueryFlexBillDownloadUrlRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "QueryFlexBillDownloadUrl")
     
     
@@ -7205,6 +7321,7 @@ func NewQueryFlexFreezeOrderListRequest() (request *QueryFlexFreezeOrderListRequ
     request = &QueryFlexFreezeOrderListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "QueryFlexFreezeOrderList")
     
     
@@ -7256,6 +7373,7 @@ func NewQueryFlexOrderSummaryListRequest() (request *QueryFlexOrderSummaryListRe
     request = &QueryFlexOrderSummaryListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "QueryFlexOrderSummaryList")
     
     
@@ -7303,6 +7421,7 @@ func NewQueryFlexPayeeAccountBalanceRequest() (request *QueryFlexPayeeAccountBal
     request = &QueryFlexPayeeAccountBalanceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "QueryFlexPayeeAccountBalance")
     
     
@@ -7350,6 +7469,7 @@ func NewQueryFlexPayeeAccountInfoRequest() (request *QueryFlexPayeeAccountInfoRe
     request = &QueryFlexPayeeAccountInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "QueryFlexPayeeAccountInfo")
     
     
@@ -7397,6 +7517,7 @@ func NewQueryFlexPayeeAccountListRequest() (request *QueryFlexPayeeAccountListRe
     request = &QueryFlexPayeeAccountListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "QueryFlexPayeeAccountList")
     
     
@@ -7444,6 +7565,7 @@ func NewQueryFlexPayeeInfoRequest() (request *QueryFlexPayeeInfoRequest) {
     request = &QueryFlexPayeeInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "QueryFlexPayeeInfo")
     
     
@@ -7491,6 +7613,7 @@ func NewQueryFlexPaymentOrderListRequest() (request *QueryFlexPaymentOrderListRe
     request = &QueryFlexPaymentOrderListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "QueryFlexPaymentOrderList")
     
     
@@ -7538,6 +7661,7 @@ func NewQueryFlexPaymentOrderStatusRequest() (request *QueryFlexPaymentOrderStat
     request = &QueryFlexPaymentOrderStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "QueryFlexPaymentOrderStatus")
     
     
@@ -7585,6 +7709,7 @@ func NewQueryFlexSettlementOrderListRequest() (request *QueryFlexSettlementOrder
     request = &QueryFlexSettlementOrderListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "QueryFlexSettlementOrderList")
     
     
@@ -7632,6 +7757,7 @@ func NewQueryFundsTransactionDetailsRequest() (request *QueryFundsTransactionDet
     request = &QueryFundsTransactionDetailsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "QueryFundsTransactionDetails")
     
     
@@ -7679,6 +7805,7 @@ func NewQueryInvoiceRequest() (request *QueryInvoiceRequest) {
     request = &QueryInvoiceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "QueryInvoice")
     
     
@@ -7756,6 +7883,7 @@ func NewQueryInvoiceV2Request() (request *QueryInvoiceV2Request) {
     request = &QueryInvoiceV2Request{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "QueryInvoiceV2")
     
     
@@ -7803,6 +7931,7 @@ func NewQueryMaliciousRegistrationRequest() (request *QueryMaliciousRegistration
     request = &QueryMaliciousRegistrationRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "QueryMaliciousRegistration")
     
     
@@ -7850,6 +7979,7 @@ func NewQueryMemberBindRequest() (request *QueryMemberBindRequest) {
     request = &QueryMemberBindRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "QueryMemberBind")
     
     
@@ -7917,6 +8047,7 @@ func NewQueryMemberTransactionRequest() (request *QueryMemberTransactionRequest)
     request = &QueryMemberTransactionRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "QueryMemberTransaction")
     
     
@@ -7980,6 +8111,7 @@ func NewQueryMemberTransactionDetailsRequest() (request *QueryMemberTransactionD
     request = &QueryMemberTransactionDetailsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "QueryMemberTransactionDetails")
     
     
@@ -8043,6 +8175,7 @@ func NewQueryMerchantRequest() (request *QueryMerchantRequest) {
     request = &QueryMerchantRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "QueryMerchant")
     
     
@@ -8096,6 +8229,7 @@ func NewQueryMerchantBalanceRequest() (request *QueryMerchantBalanceRequest) {
     request = &QueryMerchantBalanceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "QueryMerchantBalance")
     
     
@@ -8147,6 +8281,7 @@ func NewQueryMerchantClassificationRequest() (request *QueryMerchantClassificati
     request = &QueryMerchantClassificationRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "QueryMerchantClassification")
     
     
@@ -8198,6 +8333,7 @@ func NewQueryMerchantInfoForManagementRequest() (request *QueryMerchantInfoForMa
     request = &QueryMerchantInfoForManagementRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "QueryMerchantInfoForManagement")
     
     
@@ -8261,6 +8397,7 @@ func NewQueryMerchantOrderRequest() (request *QueryMerchantOrderRequest) {
     request = &QueryMerchantOrderRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "QueryMerchantOrder")
     
     
@@ -8314,6 +8451,7 @@ func NewQueryMerchantPayWayListRequest() (request *QueryMerchantPayWayListReques
     request = &QueryMerchantPayWayListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "QueryMerchantPayWayList")
     
     
@@ -8367,6 +8505,7 @@ func NewQueryOpenBankBankAccountBalanceRequest() (request *QueryOpenBankBankAcco
     request = &QueryOpenBankBankAccountBalanceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "QueryOpenBankBankAccountBalance")
     
     
@@ -8414,6 +8553,7 @@ func NewQueryOpenBankBankBranchListRequest() (request *QueryOpenBankBankBranchLi
     request = &QueryOpenBankBankBranchListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "QueryOpenBankBankBranchList")
     
     
@@ -8461,6 +8601,7 @@ func NewQueryOpenBankBillDataPageRequest() (request *QueryOpenBankBillDataPageRe
     request = &QueryOpenBankBillDataPageRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "QueryOpenBankBillDataPage")
     
     
@@ -8508,6 +8649,7 @@ func NewQueryOpenBankBindExternalSubMerchantBankAccountRequest() (request *Query
     request = &QueryOpenBankBindExternalSubMerchantBankAccountRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "QueryOpenBankBindExternalSubMerchantBankAccount")
     
     
@@ -8555,6 +8697,7 @@ func NewQueryOpenBankDailyReceiptDownloadUrlRequest() (request *QueryOpenBankDai
     request = &QueryOpenBankDailyReceiptDownloadUrlRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "QueryOpenBankDailyReceiptDownloadUrl")
     
     
@@ -8602,6 +8745,7 @@ func NewQueryOpenBankDownLoadUrlRequest() (request *QueryOpenBankDownLoadUrlRequ
     request = &QueryOpenBankDownLoadUrlRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "QueryOpenBankDownLoadUrl")
     
     
@@ -8649,6 +8793,7 @@ func NewQueryOpenBankExternalSubAccountBookBalanceRequest() (request *QueryOpenB
     request = &QueryOpenBankExternalSubAccountBookBalanceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "QueryOpenBankExternalSubAccountBookBalance")
     
     
@@ -8696,6 +8841,7 @@ func NewQueryOpenBankExternalSubMerchantBankAccountRequest() (request *QueryOpen
     request = &QueryOpenBankExternalSubMerchantBankAccountRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "QueryOpenBankExternalSubMerchantBankAccount")
     
     
@@ -8743,6 +8889,7 @@ func NewQueryOpenBankExternalSubMerchantRegistrationRequest() (request *QueryOpe
     request = &QueryOpenBankExternalSubMerchantRegistrationRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "QueryOpenBankExternalSubMerchantRegistration")
     
     
@@ -8790,6 +8937,7 @@ func NewQueryOpenBankOrderDetailReceiptInfoRequest() (request *QueryOpenBankOrde
     request = &QueryOpenBankOrderDetailReceiptInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "QueryOpenBankOrderDetailReceiptInfo")
     
     
@@ -8837,6 +8985,7 @@ func NewQueryOpenBankPaymentOrderRequest() (request *QueryOpenBankPaymentOrderRe
     request = &QueryOpenBankPaymentOrderRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "QueryOpenBankPaymentOrder")
     
     
@@ -8884,6 +9033,7 @@ func NewQueryOpenBankRefundOrderRequest() (request *QueryOpenBankRefundOrderRequ
     request = &QueryOpenBankRefundOrderRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "QueryOpenBankRefundOrder")
     
     
@@ -8931,6 +9081,7 @@ func NewQueryOpenBankSubMerchantCredentialRequest() (request *QueryOpenBankSubMe
     request = &QueryOpenBankSubMerchantCredentialRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "QueryOpenBankSubMerchantCredential")
     
     
@@ -8978,6 +9129,7 @@ func NewQueryOpenBankSubMerchantRateConfigureRequest() (request *QueryOpenBankSu
     request = &QueryOpenBankSubMerchantRateConfigureRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "QueryOpenBankSubMerchantRateConfigure")
     
     
@@ -9025,6 +9177,7 @@ func NewQueryOpenBankSupportBankListRequest() (request *QueryOpenBankSupportBank
     request = &QueryOpenBankSupportBankListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "QueryOpenBankSupportBankList")
     
     
@@ -9072,6 +9225,7 @@ func NewQueryOpenBankUnbindExternalSubMerchantBankAccountRequest() (request *Que
     request = &QueryOpenBankUnbindExternalSubMerchantBankAccountRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "QueryOpenBankUnbindExternalSubMerchantBankAccount")
     
     
@@ -9119,6 +9273,7 @@ func NewQueryOpenBankVerificationOrderRequest() (request *QueryOpenBankVerificat
     request = &QueryOpenBankVerificationOrderRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "QueryOpenBankVerificationOrder")
     
     
@@ -9166,6 +9321,7 @@ func NewQueryOrderRequest() (request *QueryOrderRequest) {
     request = &QueryOrderRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "QueryOrder")
     
     
@@ -9225,6 +9381,7 @@ func NewQueryOrderStatusRequest() (request *QueryOrderStatusRequest) {
     request = &QueryOrderStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "QueryOrderStatus")
     
     
@@ -9284,6 +9441,7 @@ func NewQueryOutwardOrderRequest() (request *QueryOutwardOrderRequest) {
     request = &QueryOutwardOrderRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "QueryOutwardOrder")
     
     
@@ -9335,6 +9493,7 @@ func NewQueryPayerInfoRequest() (request *QueryPayerInfoRequest) {
     request = &QueryPayerInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "QueryPayerInfo")
     
     
@@ -9386,6 +9545,7 @@ func NewQueryReconciliationDocumentRequest() (request *QueryReconciliationDocume
     request = &QueryReconciliationDocumentRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "QueryReconciliationDocument")
     
     
@@ -9449,6 +9609,7 @@ func NewQueryReconciliationFileApplyInfoRequest() (request *QueryReconciliationF
     request = &QueryReconciliationFileApplyInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "QueryReconciliationFileApplyInfo")
     
     
@@ -9512,6 +9673,7 @@ func NewQueryRefundRequest() (request *QueryRefundRequest) {
     request = &QueryRefundRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "QueryRefund")
     
     
@@ -9569,6 +9731,7 @@ func NewQueryShopOpenIdRequest() (request *QueryShopOpenIdRequest) {
     request = &QueryShopOpenIdRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "QueryShopOpenId")
     
     
@@ -9626,6 +9789,7 @@ func NewQuerySinglePaymentResultRequest() (request *QuerySinglePaymentResultRequ
     request = &QuerySinglePaymentResultRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "QuerySinglePaymentResult")
     
     
@@ -9683,6 +9847,7 @@ func NewQuerySingleTransactionStatusRequest() (request *QuerySingleTransactionSt
     request = &QuerySingleTransactionStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "QuerySingleTransactionStatus")
     
     
@@ -9746,6 +9911,7 @@ func NewQuerySmallAmountTransferRequest() (request *QuerySmallAmountTransferRequ
     request = &QuerySmallAmountTransferRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "QuerySmallAmountTransfer")
     
     
@@ -9809,6 +9975,7 @@ func NewQueryTradeRequest() (request *QueryTradeRequest) {
     request = &QueryTradeRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "QueryTrade")
     
     
@@ -9860,6 +10027,7 @@ func NewQueryTransferBatchRequest() (request *QueryTransferBatchRequest) {
     request = &QueryTransferBatchRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "QueryTransferBatch")
     
     
@@ -9931,6 +10099,7 @@ func NewQueryTransferDetailRequest() (request *QueryTransferDetailRequest) {
     request = &QueryTransferDetailRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "QueryTransferDetail")
     
     
@@ -10002,6 +10171,7 @@ func NewQueryTransferResultRequest() (request *QueryTransferResultRequest) {
     request = &QueryTransferResultRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "QueryTransferResult")
     
     
@@ -10073,6 +10243,7 @@ func NewRechargeByThirdPayRequest() (request *RechargeByThirdPayRequest) {
     request = &RechargeByThirdPayRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "RechargeByThirdPay")
     
     
@@ -10122,6 +10293,7 @@ func NewRechargeMemberThirdPayRequest() (request *RechargeMemberThirdPayRequest)
     request = &RechargeMemberThirdPayRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "RechargeMemberThirdPay")
     
     
@@ -10185,6 +10357,7 @@ func NewRefundRequest() (request *RefundRequest) {
     request = &RefundRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "Refund")
     
     
@@ -10274,6 +10447,7 @@ func NewRefundCloudOrderRequest() (request *RefundCloudOrderRequest) {
     request = &RefundCloudOrderRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "RefundCloudOrder")
     
     
@@ -10399,6 +10573,7 @@ func NewRefundMemberTransactionRequest() (request *RefundMemberTransactionReques
     request = &RefundMemberTransactionRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "RefundMemberTransaction")
     
     
@@ -10450,6 +10625,7 @@ func NewRefundOpenBankOrderRequest() (request *RefundOpenBankOrderRequest) {
     request = &RefundOpenBankOrderRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "RefundOpenBankOrder")
     
     
@@ -10501,6 +10677,7 @@ func NewRefundOrderRequest() (request *RefundOrderRequest) {
     request = &RefundOrderRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "RefundOrder")
     
     
@@ -10554,6 +10731,7 @@ func NewRefundTlinxOrderRequest() (request *RefundTlinxOrderRequest) {
     request = &RefundTlinxOrderRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "RefundTlinxOrder")
     
     
@@ -10607,6 +10785,7 @@ func NewRegisterBehaviorRequest() (request *RegisterBehaviorRequest) {
     request = &RegisterBehaviorRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "RegisterBehavior")
     
     
@@ -10664,6 +10843,7 @@ func NewRegisterBillRequest() (request *RegisterBillRequest) {
     request = &RegisterBillRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "RegisterBill")
     
     
@@ -10719,6 +10899,7 @@ func NewRegisterBillSupportWithdrawRequest() (request *RegisterBillSupportWithdr
     request = &RegisterBillSupportWithdrawRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "RegisterBillSupportWithdraw")
     
     
@@ -10782,6 +10963,7 @@ func NewRevResigterBillSupportWithdrawRequest() (request *RevResigterBillSupport
     request = &RevResigterBillSupportWithdrawRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "RevResigterBillSupportWithdraw")
     
     
@@ -10845,6 +11027,7 @@ func NewReviseMbrPropertyRequest() (request *ReviseMbrPropertyRequest) {
     request = &ReviseMbrPropertyRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "ReviseMbrProperty")
     
     
@@ -10908,6 +11091,7 @@ func NewRevokeMemberRechargeThirdPayRequest() (request *RevokeMemberRechargeThir
     request = &RevokeMemberRechargeThirdPayRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "RevokeMemberRechargeThirdPay")
     
     
@@ -10971,6 +11155,7 @@ func NewRevokeRechargeByThirdPayRequest() (request *RevokeRechargeByThirdPayRequ
     request = &RevokeRechargeByThirdPayRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "RevokeRechargeByThirdPay")
     
     
@@ -11020,6 +11205,7 @@ func NewSyncContractDataRequest() (request *SyncContractDataRequest) {
     request = &SyncContractDataRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "SyncContractData")
     
     
@@ -11125,6 +11311,7 @@ func NewTerminateContractRequest() (request *TerminateContractRequest) {
     request = &TerminateContractRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "TerminateContract")
     
     
@@ -11238,6 +11425,7 @@ func NewTransferSinglePayRequest() (request *TransferSinglePayRequest) {
     request = &TransferSinglePayRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "TransferSinglePay")
     
     
@@ -11351,6 +11539,7 @@ func NewUnBindAcctRequest() (request *UnBindAcctRequest) {
     request = &UnBindAcctRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "UnBindAcct")
     
     
@@ -11408,6 +11597,7 @@ func NewUnbindOpenBankExternalSubMerchantBankAccountRequest() (request *UnbindOp
     request = &UnbindOpenBankExternalSubMerchantBankAccountRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "UnbindOpenBankExternalSubMerchantBankAccount")
     
     
@@ -11465,6 +11655,7 @@ func NewUnbindRelateAcctRequest() (request *UnbindRelateAcctRequest) {
     request = &UnbindRelateAcctRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "UnbindRelateAcct")
     
     
@@ -11528,6 +11719,7 @@ func NewUnifiedCloudOrderRequest() (request *UnifiedCloudOrderRequest) {
     request = &UnifiedCloudOrderRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "UnifiedCloudOrder")
     
     
@@ -11655,6 +11847,7 @@ func NewUnifiedOrderRequest() (request *UnifiedOrderRequest) {
     request = &UnifiedOrderRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "UnifiedOrder")
     
     
@@ -11724,6 +11917,7 @@ func NewUnifiedTlinxOrderRequest() (request *UnifiedTlinxOrderRequest) {
     request = &UnifiedTlinxOrderRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "UnifiedTlinxOrder")
     
     
@@ -11793,6 +11987,7 @@ func NewUploadExternalAnchorInfoRequest() (request *UploadExternalAnchorInfoRequ
     request = &UploadExternalAnchorInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "UploadExternalAnchorInfo")
     
     
@@ -11862,6 +12057,7 @@ func NewUploadFileRequest() (request *UploadFileRequest) {
     request = &UploadFileRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "UploadFile")
     
     
@@ -11915,6 +12111,7 @@ func NewUploadOpenBankSubMerchantCredentialRequest() (request *UploadOpenBankSub
     request = &UploadOpenBankSubMerchantCredentialRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "UploadOpenBankSubMerchantCredential")
     
     
@@ -11968,6 +12165,7 @@ func NewUploadOrgFileRequest() (request *UploadOrgFileRequest) {
     request = &UploadOrgFileRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "UploadOrgFile")
     
     
@@ -12021,6 +12219,7 @@ func NewUploadTaxListRequest() (request *UploadTaxListRequest) {
     request = &UploadTaxListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "UploadTaxList")
     
     
@@ -12076,6 +12275,7 @@ func NewUploadTaxPaymentRequest() (request *UploadTaxPaymentRequest) {
     request = &UploadTaxPaymentRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "UploadTaxPayment")
     
     
@@ -12133,6 +12333,7 @@ func NewVerifyOpenBankAccountRequest() (request *VerifyOpenBankAccountRequest) {
     request = &VerifyOpenBankAccountRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "VerifyOpenBankAccount")
     
     
@@ -12190,6 +12391,7 @@ func NewViewContractRequest() (request *ViewContractRequest) {
     request = &ViewContractRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "ViewContract")
     
     
@@ -12247,6 +12449,7 @@ func NewViewMerchantRequest() (request *ViewMerchantRequest) {
     request = &ViewMerchantRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "ViewMerchant")
     
     
@@ -12304,6 +12507,7 @@ func NewViewShopRequest() (request *ViewShopRequest) {
     request = &ViewShopRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "ViewShop")
     
     
@@ -12361,6 +12565,7 @@ func NewWithdrawCashMembershipRequest() (request *WithdrawCashMembershipRequest)
     request = &WithdrawCashMembershipRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cpdp", APIVersion, "WithdrawCashMembership")
     
     

@@ -49,6 +49,7 @@ func NewAddClusterInstancesRequest() (request *AddClusterInstancesRequest) {
     request = &AddClusterInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "AddClusterInstances")
     
     
@@ -122,6 +123,7 @@ func NewAddInstancesRequest() (request *AddInstancesRequest) {
     request = &AddInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "AddInstances")
     
     
@@ -173,6 +175,7 @@ func NewAssociateBusinessLogConfigRequest() (request *AssociateBusinessLogConfig
     request = &AssociateBusinessLogConfigRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "AssociateBusinessLogConfig")
     
     
@@ -232,6 +235,7 @@ func NewAssociateConfigWithGroupRequest() (request *AssociateConfigWithGroupRequ
     request = &AssociateConfigWithGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "AssociateConfigWithGroup")
     
     
@@ -281,6 +285,7 @@ func NewBindApiGroupRequest() (request *BindApiGroupRequest) {
     request = &BindApiGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "BindApiGroup")
     
     
@@ -332,6 +337,7 @@ func NewBindPluginRequest() (request *BindPluginRequest) {
     request = &BindPluginRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "BindPlugin")
     
     
@@ -383,6 +389,7 @@ func NewChangeApiUsableStatusRequest() (request *ChangeApiUsableStatusRequest) {
     request = &ChangeApiUsableStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "ChangeApiUsableStatus")
     
     
@@ -430,6 +437,7 @@ func NewContinueRunFailedTaskBatchRequest() (request *ContinueRunFailedTaskBatch
     request = &ContinueRunFailedTaskBatchRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "ContinueRunFailedTaskBatch")
     
     
@@ -503,6 +511,7 @@ func NewCreateAllGatewayApiAsyncRequest() (request *CreateAllGatewayApiAsyncRequ
     request = &CreateAllGatewayApiAsyncRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "CreateAllGatewayApiAsync")
     
     
@@ -550,6 +559,7 @@ func NewCreateApiGroupRequest() (request *CreateApiGroupRequest) {
     request = &CreateApiGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "CreateApiGroup")
     
     
@@ -605,6 +615,7 @@ func NewCreateApiRateLimitRuleRequest() (request *CreateApiRateLimitRuleRequest)
     request = &CreateApiRateLimitRuleRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "CreateApiRateLimitRule")
     
     
@@ -658,6 +669,7 @@ func NewCreateApplicationRequest() (request *CreateApplicationRequest) {
     request = &CreateApplicationRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "CreateApplication")
     
     
@@ -741,6 +753,7 @@ func NewCreateClusterRequest() (request *CreateClusterRequest) {
     request = &CreateClusterRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "CreateCluster")
     
     
@@ -826,6 +839,7 @@ func NewCreateConfigRequest() (request *CreateConfigRequest) {
     request = &CreateConfigRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "CreateConfig")
     
     
@@ -903,6 +917,7 @@ func NewCreateContainGroupRequest() (request *CreateContainGroupRequest) {
     request = &CreateContainGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "CreateContainGroup")
     
     
@@ -990,6 +1005,7 @@ func NewCreateFileConfigRequest() (request *CreateFileConfigRequest) {
     request = &CreateFileConfigRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "CreateFileConfig")
     
     
@@ -1057,6 +1073,7 @@ func NewCreateGatewayApiRequest() (request *CreateGatewayApiRequest) {
     request = &CreateGatewayApiRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "CreateGatewayApi")
     
     
@@ -1112,6 +1129,7 @@ func NewCreateGroupRequest() (request *CreateGroupRequest) {
     request = &CreateGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "CreateGroup")
     
     
@@ -1183,6 +1201,7 @@ func NewCreateLaneRequest() (request *CreateLaneRequest) {
     request = &CreateLaneRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "CreateLane")
     
     
@@ -1326,6 +1345,7 @@ func NewCreateLaneRuleRequest() (request *CreateLaneRuleRequest) {
     request = &CreateLaneRuleRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "CreateLaneRule")
     
     
@@ -1465,6 +1485,7 @@ func NewCreateMicroserviceRequest() (request *CreateMicroserviceRequest) {
     request = &CreateMicroserviceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "CreateMicroservice")
     
     
@@ -1518,6 +1539,7 @@ func NewCreateNamespaceRequest() (request *CreateNamespaceRequest) {
     request = &CreateNamespaceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "CreateNamespace")
     
     
@@ -1587,6 +1609,7 @@ func NewCreatePathRewritesRequest() (request *CreatePathRewritesRequest) {
     request = &CreatePathRewritesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "CreatePathRewrites")
     
     
@@ -1638,6 +1661,7 @@ func NewCreatePublicConfigRequest() (request *CreatePublicConfigRequest) {
     request = &CreatePublicConfigRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "CreatePublicConfig")
     
     
@@ -1693,6 +1717,7 @@ func NewCreateRepositoryRequest() (request *CreateRepositoryRequest) {
     request = &CreateRepositoryRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "CreateRepository")
     
     
@@ -1744,6 +1769,7 @@ func NewCreateTaskRequest() (request *CreateTaskRequest) {
     request = &CreateTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "CreateTask")
     
     
@@ -1819,6 +1845,7 @@ func NewCreateTaskFlowRequest() (request *CreateTaskFlowRequest) {
     request = &CreateTaskFlowRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "CreateTaskFlow")
     
     
@@ -1888,6 +1915,7 @@ func NewCreateUnitRuleRequest() (request *CreateUnitRuleRequest) {
     request = &CreateUnitRuleRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "CreateUnitRule")
     
     
@@ -1939,6 +1967,7 @@ func NewDeleteApiGroupRequest() (request *DeleteApiGroupRequest) {
     request = &DeleteApiGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "DeleteApiGroup")
     
     
@@ -1986,6 +2015,7 @@ func NewDeleteApplicationRequest() (request *DeleteApplicationRequest) {
     request = &DeleteApplicationRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "DeleteApplication")
     
     
@@ -2045,6 +2075,7 @@ func NewDeleteConfigRequest() (request *DeleteConfigRequest) {
     request = &DeleteConfigRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "DeleteConfig")
     
     
@@ -2096,6 +2127,7 @@ func NewDeleteContainerGroupRequest() (request *DeleteContainerGroupRequest) {
     request = &DeleteContainerGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "DeleteContainerGroup")
     
     
@@ -2157,6 +2189,7 @@ func NewDeleteGroupRequest() (request *DeleteGroupRequest) {
     request = &DeleteGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "DeleteGroup")
     
     
@@ -2210,6 +2243,7 @@ func NewDeleteImageTagsRequest() (request *DeleteImageTagsRequest) {
     request = &DeleteImageTagsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "DeleteImageTags")
     
     
@@ -2259,6 +2293,7 @@ func NewDeleteLaneRequest() (request *DeleteLaneRequest) {
     request = &DeleteLaneRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "DeleteLane")
     
     
@@ -2394,6 +2429,7 @@ func NewDeleteLaneRuleRequest() (request *DeleteLaneRuleRequest) {
     request = &DeleteLaneRuleRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "DeleteLaneRule")
     
     
@@ -2529,6 +2565,7 @@ func NewDeleteMicroserviceRequest() (request *DeleteMicroserviceRequest) {
     request = &DeleteMicroserviceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "DeleteMicroservice")
     
     
@@ -2580,6 +2617,7 @@ func NewDeleteNamespaceRequest() (request *DeleteNamespaceRequest) {
     request = &DeleteNamespaceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "DeleteNamespace")
     
     
@@ -2641,6 +2679,7 @@ func NewDeletePathRewritesRequest() (request *DeletePathRewritesRequest) {
     request = &DeletePathRewritesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "DeletePathRewrites")
     
     
@@ -2690,6 +2729,7 @@ func NewDeletePkgsRequest() (request *DeletePkgsRequest) {
     request = &DeletePkgsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "DeletePkgs")
     
     
@@ -2749,6 +2789,7 @@ func NewDeletePublicConfigRequest() (request *DeletePublicConfigRequest) {
     request = &DeletePublicConfigRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "DeletePublicConfig")
     
     
@@ -2800,6 +2841,7 @@ func NewDeleteRepositoryRequest() (request *DeleteRepositoryRequest) {
     request = &DeleteRepositoryRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "DeleteRepository")
     
     
@@ -2853,6 +2895,7 @@ func NewDeleteServerlessGroupRequest() (request *DeleteServerlessGroupRequest) {
     request = &DeleteServerlessGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "DeleteServerlessGroup")
     
     
@@ -2906,6 +2949,7 @@ func NewDeleteTaskRequest() (request *DeleteTaskRequest) {
     request = &DeleteTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "DeleteTask")
     
     
@@ -2969,6 +3013,7 @@ func NewDeleteUnitNamespacesRequest() (request *DeleteUnitNamespacesRequest) {
     request = &DeleteUnitNamespacesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "DeleteUnitNamespaces")
     
     
@@ -3020,6 +3065,7 @@ func NewDeleteUnitRuleRequest() (request *DeleteUnitRuleRequest) {
     request = &DeleteUnitRuleRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "DeleteUnitRule")
     
     
@@ -3071,6 +3117,7 @@ func NewDeployContainerGroupRequest() (request *DeployContainerGroupRequest) {
     request = &DeployContainerGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "DeployContainerGroup")
     
     
@@ -3186,6 +3233,7 @@ func NewDeployGroupRequest() (request *DeployGroupRequest) {
     request = &DeployGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "DeployGroup")
     
     
@@ -3255,6 +3303,7 @@ func NewDescribeApiDetailRequest() (request *DescribeApiDetailRequest) {
     request = &DescribeApiDetailRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "DescribeApiDetail")
     
     
@@ -3310,6 +3359,7 @@ func NewDescribeApiGroupRequest() (request *DescribeApiGroupRequest) {
     request = &DescribeApiGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "DescribeApiGroup")
     
     
@@ -3361,6 +3411,7 @@ func NewDescribeApiGroupsRequest() (request *DescribeApiGroupsRequest) {
     request = &DescribeApiGroupsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "DescribeApiGroups")
     
     
@@ -3414,6 +3465,7 @@ func NewDescribeApiRateLimitRulesRequest() (request *DescribeApiRateLimitRulesRe
     request = &DescribeApiRateLimitRulesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "DescribeApiRateLimitRules")
     
     
@@ -3463,6 +3515,7 @@ func NewDescribeApiUseDetailRequest() (request *DescribeApiUseDetailRequest) {
     request = &DescribeApiUseDetailRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "DescribeApiUseDetail")
     
     
@@ -3518,6 +3571,7 @@ func NewDescribeApiVersionsRequest() (request *DescribeApiVersionsRequest) {
     request = &DescribeApiVersionsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "DescribeApiVersions")
     
     
@@ -3571,6 +3625,7 @@ func NewDescribeApplicationRequest() (request *DescribeApplicationRequest) {
     request = &DescribeApplicationRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "DescribeApplication")
     
     
@@ -3632,6 +3687,7 @@ func NewDescribeApplicationAttributeRequest() (request *DescribeApplicationAttri
     request = &DescribeApplicationAttributeRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "DescribeApplicationAttribute")
     
     
@@ -3703,6 +3759,7 @@ func NewDescribeApplicationBusinessLogConfigRequest() (request *DescribeApplicat
     request = &DescribeApplicationBusinessLogConfigRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "DescribeApplicationBusinessLogConfig")
     
     
@@ -3750,6 +3807,7 @@ func NewDescribeApplicationsRequest() (request *DescribeApplicationsRequest) {
     request = &DescribeApplicationsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "DescribeApplications")
     
     
@@ -3813,6 +3871,7 @@ func NewDescribeBasicResourceUsageRequest() (request *DescribeBasicResourceUsage
     request = &DescribeBasicResourceUsageRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "DescribeBasicResourceUsage")
     
     
@@ -3874,6 +3933,7 @@ func NewDescribeBusinessLogConfigRequest() (request *DescribeBusinessLogConfigRe
     request = &DescribeBusinessLogConfigRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "DescribeBusinessLogConfig")
     
     
@@ -3929,6 +3989,7 @@ func NewDescribeBusinessLogConfigsRequest() (request *DescribeBusinessLogConfigs
     request = &DescribeBusinessLogConfigsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "DescribeBusinessLogConfigs")
     
     
@@ -3990,6 +4051,7 @@ func NewDescribeClusterInstancesRequest() (request *DescribeClusterInstancesRequ
     request = &DescribeClusterInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "DescribeClusterInstances")
     
     
@@ -4067,6 +4129,7 @@ func NewDescribeConfigRequest() (request *DescribeConfigRequest) {
     request = &DescribeConfigRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "DescribeConfig")
     
     
@@ -4116,6 +4179,7 @@ func NewDescribeConfigReleaseLogsRequest() (request *DescribeConfigReleaseLogsRe
     request = &DescribeConfigReleaseLogsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "DescribeConfigReleaseLogs")
     
     
@@ -4163,6 +4227,7 @@ func NewDescribeConfigReleasesRequest() (request *DescribeConfigReleasesRequest)
     request = &DescribeConfigReleasesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "DescribeConfigReleases")
     
     
@@ -4222,6 +4287,7 @@ func NewDescribeConfigSummaryRequest() (request *DescribeConfigSummaryRequest) {
     request = &DescribeConfigSummaryRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "DescribeConfigSummary")
     
     
@@ -4277,6 +4343,7 @@ func NewDescribeConfigsRequest() (request *DescribeConfigsRequest) {
     request = &DescribeConfigsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "DescribeConfigs")
     
     
@@ -4338,6 +4405,7 @@ func NewDescribeContainerEventsRequest() (request *DescribeContainerEventsReques
     request = &DescribeContainerEventsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "DescribeContainerEvents")
     
     
@@ -4399,6 +4467,7 @@ func NewDescribeContainerGroupDeployInfoRequest() (request *DescribeContainerGro
     request = &DescribeContainerGroupDeployInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "DescribeContainerGroupDeployInfo")
     
     
@@ -4462,6 +4531,7 @@ func NewDescribeContainerGroupDetailRequest() (request *DescribeContainerGroupDe
     request = &DescribeContainerGroupDetailRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "DescribeContainerGroupDetail")
     
     
@@ -4531,6 +4601,7 @@ func NewDescribeContainerGroupsRequest() (request *DescribeContainerGroupsReques
     request = &DescribeContainerGroupsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "DescribeContainerGroups")
     
     
@@ -4590,6 +4661,7 @@ func NewDescribeCreateGatewayApiStatusRequest() (request *DescribeCreateGatewayA
     request = &DescribeCreateGatewayApiStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "DescribeCreateGatewayApiStatus")
     
     
@@ -4637,6 +4709,7 @@ func NewDescribeDeliveryConfigRequest() (request *DescribeDeliveryConfigRequest)
     request = &DescribeDeliveryConfigRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "DescribeDeliveryConfig")
     
     
@@ -4686,6 +4759,7 @@ func NewDescribeDeliveryConfigByGroupIdRequest() (request *DescribeDeliveryConfi
     request = &DescribeDeliveryConfigByGroupIdRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "DescribeDeliveryConfigByGroupId")
     
     
@@ -4733,6 +4807,7 @@ func NewDescribeDeliveryConfigsRequest() (request *DescribeDeliveryConfigsReques
     request = &DescribeDeliveryConfigsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "DescribeDeliveryConfigs")
     
     
@@ -4786,6 +4861,7 @@ func NewDescribeDownloadInfoRequest() (request *DescribeDownloadInfoRequest) {
     request = &DescribeDownloadInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "DescribeDownloadInfo")
     
     
@@ -4839,6 +4915,7 @@ func NewDescribeEnabledUnitRuleRequest() (request *DescribeEnabledUnitRuleReques
     request = &DescribeEnabledUnitRuleRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "DescribeEnabledUnitRule")
     
     
@@ -4890,6 +4967,7 @@ func NewDescribeFileConfigsRequest() (request *DescribeFileConfigsRequest) {
     request = &DescribeFileConfigsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "DescribeFileConfigs")
     
     
@@ -4937,6 +5015,7 @@ func NewDescribeFlowLastBatchStateRequest() (request *DescribeFlowLastBatchState
     request = &DescribeFlowLastBatchStateRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "DescribeFlowLastBatchState")
     
     
@@ -5000,6 +5079,7 @@ func NewDescribeGatewayAllGroupApisRequest() (request *DescribeGatewayAllGroupAp
     request = &DescribeGatewayAllGroupApisRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "DescribeGatewayAllGroupApis")
     
     
@@ -5051,6 +5131,7 @@ func NewDescribeGatewayApisRequest() (request *DescribeGatewayApisRequest) {
     request = &DescribeGatewayApisRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "DescribeGatewayApis")
     
     
@@ -5106,6 +5187,7 @@ func NewDescribeGatewayMonitorOverviewRequest() (request *DescribeGatewayMonitor
     request = &DescribeGatewayMonitorOverviewRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "DescribeGatewayMonitorOverview")
     
     
@@ -5165,6 +5247,7 @@ func NewDescribeGroupRequest() (request *DescribeGroupRequest) {
     request = &DescribeGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "DescribeGroup")
     
     
@@ -5232,6 +5315,7 @@ func NewDescribeGroupAttributeRequest() (request *DescribeGroupAttributeRequest)
     request = &DescribeGroupAttributeRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "DescribeGroupAttribute")
     
     
@@ -5297,6 +5381,7 @@ func NewDescribeGroupBindedGatewaysRequest() (request *DescribeGroupBindedGatewa
     request = &DescribeGroupBindedGatewaysRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "DescribeGroupBindedGateways")
     
     
@@ -5348,6 +5433,7 @@ func NewDescribeGroupBusinessLogConfigsRequest() (request *DescribeGroupBusiness
     request = &DescribeGroupBusinessLogConfigsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "DescribeGroupBusinessLogConfigs")
     
     
@@ -5399,6 +5485,7 @@ func NewDescribeGroupGatewaysRequest() (request *DescribeGroupGatewaysRequest) {
     request = &DescribeGroupGatewaysRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "DescribeGroupGateways")
     
     
@@ -5452,6 +5539,7 @@ func NewDescribeGroupInstancesRequest() (request *DescribeGroupInstancesRequest)
     request = &DescribeGroupInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "DescribeGroupInstances")
     
     
@@ -5523,6 +5611,7 @@ func NewDescribeGroupReleaseRequest() (request *DescribeGroupReleaseRequest) {
     request = &DescribeGroupReleaseRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "DescribeGroupRelease")
     
     
@@ -5572,6 +5661,7 @@ func NewDescribeGroupUseDetailRequest() (request *DescribeGroupUseDetailRequest)
     request = &DescribeGroupUseDetailRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "DescribeGroupUseDetail")
     
     
@@ -5623,6 +5713,7 @@ func NewDescribeGroupsRequest() (request *DescribeGroupsRequest) {
     request = &DescribeGroupsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "DescribeGroups")
     
     
@@ -5694,6 +5785,7 @@ func NewDescribeGroupsWithPluginRequest() (request *DescribeGroupsWithPluginRequ
     request = &DescribeGroupsWithPluginRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "DescribeGroupsWithPlugin")
     
     
@@ -5765,6 +5857,7 @@ func NewDescribeImageRepositoryRequest() (request *DescribeImageRepositoryReques
     request = &DescribeImageRepositoryRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "DescribeImageRepository")
     
     
@@ -5822,6 +5915,7 @@ func NewDescribeImageTagsRequest() (request *DescribeImageTagsRequest) {
     request = &DescribeImageTagsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "DescribeImageTags")
     
     
@@ -5889,6 +5983,7 @@ func NewDescribeInovcationIndicatorsRequest() (request *DescribeInovcationIndica
     request = &DescribeInovcationIndicatorsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "DescribeInovcationIndicators")
     
     
@@ -5946,6 +6041,7 @@ func NewDescribeInstancesRequest() (request *DescribeInstancesRequest) {
     request = &DescribeInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "DescribeInstances")
     
     
@@ -6001,6 +6097,7 @@ func NewDescribeInvocationMetricDataCurveRequest() (request *DescribeInvocationM
     request = &DescribeInvocationMetricDataCurveRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "DescribeInvocationMetricDataCurve")
     
     
@@ -6052,6 +6149,7 @@ func NewDescribeInvocationMetricDataDimensionRequest() (request *DescribeInvocat
     request = &DescribeInvocationMetricDataDimensionRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "DescribeInvocationMetricDataDimension")
     
     
@@ -6099,6 +6197,7 @@ func NewDescribeInvocationMetricDataPointRequest() (request *DescribeInvocationM
     request = &DescribeInvocationMetricDataPointRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "DescribeInvocationMetricDataPoint")
     
     
@@ -6146,6 +6245,7 @@ func NewDescribeInvocationMetricScatterPlotRequest() (request *DescribeInvocatio
     request = &DescribeInvocationMetricScatterPlotRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "DescribeInvocationMetricScatterPlot")
     
     
@@ -6197,6 +6297,7 @@ func NewDescribeJvmMonitorRequest() (request *DescribeJvmMonitorRequest) {
     request = &DescribeJvmMonitorRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "DescribeJvmMonitor")
     
     
@@ -6260,6 +6361,7 @@ func NewDescribeLaneRulesRequest() (request *DescribeLaneRulesRequest) {
     request = &DescribeLaneRulesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "DescribeLaneRules")
     
     
@@ -6405,6 +6507,7 @@ func NewDescribeLanesRequest() (request *DescribeLanesRequest) {
     request = &DescribeLanesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "DescribeLanes")
     
     
@@ -6544,6 +6647,7 @@ func NewDescribeMicroserviceRequest() (request *DescribeMicroserviceRequest) {
     request = &DescribeMicroserviceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "DescribeMicroservice")
     
     
@@ -6611,6 +6715,7 @@ func NewDescribeMicroservicesRequest() (request *DescribeMicroservicesRequest) {
     request = &DescribeMicroservicesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "DescribeMicroservices")
     
     
@@ -6680,6 +6785,7 @@ func NewDescribeMsApiListRequest() (request *DescribeMsApiListRequest) {
     request = &DescribeMsApiListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "DescribeMsApiList")
     
     
@@ -6737,6 +6843,7 @@ func NewDescribeOverviewInvocationRequest() (request *DescribeOverviewInvocation
     request = &DescribeOverviewInvocationRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "DescribeOverviewInvocation")
     
     
@@ -6792,6 +6899,7 @@ func NewDescribePathRewriteRequest() (request *DescribePathRewriteRequest) {
     request = &DescribePathRewriteRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "DescribePathRewrite")
     
     
@@ -6841,6 +6949,7 @@ func NewDescribePathRewritesRequest() (request *DescribePathRewritesRequest) {
     request = &DescribePathRewritesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "DescribePathRewrites")
     
     
@@ -6892,6 +7001,7 @@ func NewDescribePkgsRequest() (request *DescribePkgsRequest) {
     request = &DescribePkgsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "DescribePkgs")
     
     
@@ -6941,6 +7051,7 @@ func NewDescribePluginInstancesRequest() (request *DescribePluginInstancesReques
     request = &DescribePluginInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "DescribePluginInstances")
     
     
@@ -6990,6 +7101,7 @@ func NewDescribePodInstancesRequest() (request *DescribePodInstancesRequest) {
     request = &DescribePodInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "DescribePodInstances")
     
     
@@ -7061,6 +7173,7 @@ func NewDescribeProgramsRequest() (request *DescribeProgramsRequest) {
     request = &DescribeProgramsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "DescribePrograms")
     
     
@@ -7108,6 +7221,7 @@ func NewDescribePublicConfigRequest() (request *DescribePublicConfigRequest) {
     request = &DescribePublicConfigRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "DescribePublicConfig")
     
     
@@ -7159,6 +7273,7 @@ func NewDescribePublicConfigReleaseLogsRequest() (request *DescribePublicConfigR
     request = &DescribePublicConfigReleaseLogsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "DescribePublicConfigReleaseLogs")
     
     
@@ -7210,6 +7325,7 @@ func NewDescribePublicConfigReleasesRequest() (request *DescribePublicConfigRele
     request = &DescribePublicConfigReleasesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "DescribePublicConfigReleases")
     
     
@@ -7267,6 +7383,7 @@ func NewDescribePublicConfigSummaryRequest() (request *DescribePublicConfigSumma
     request = &DescribePublicConfigSummaryRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "DescribePublicConfigSummary")
     
     
@@ -7316,6 +7433,7 @@ func NewDescribePublicConfigsRequest() (request *DescribePublicConfigsRequest) {
     request = &DescribePublicConfigsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "DescribePublicConfigs")
     
     
@@ -7365,6 +7483,7 @@ func NewDescribeReleasedConfigRequest() (request *DescribeReleasedConfigRequest)
     request = &DescribeReleasedConfigRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "DescribeReleasedConfig")
     
     
@@ -7420,6 +7539,7 @@ func NewDescribeRepositoriesRequest() (request *DescribeRepositoriesRequest) {
     request = &DescribeRepositoriesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "DescribeRepositories")
     
     
@@ -7469,6 +7589,7 @@ func NewDescribeRepositoryRequest() (request *DescribeRepositoryRequest) {
     request = &DescribeRepositoryRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "DescribeRepository")
     
     
@@ -7520,6 +7641,7 @@ func NewDescribeSimpleApplicationsRequest() (request *DescribeSimpleApplications
     request = &DescribeSimpleApplicationsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "DescribeSimpleApplications")
     
     
@@ -7575,6 +7697,7 @@ func NewDescribeSimpleClustersRequest() (request *DescribeSimpleClustersRequest)
     request = &DescribeSimpleClustersRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "DescribeSimpleClusters")
     
     
@@ -7630,6 +7753,7 @@ func NewDescribeSimpleGroupsRequest() (request *DescribeSimpleGroupsRequest) {
     request = &DescribeSimpleGroupsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "DescribeSimpleGroups")
     
     
@@ -7689,6 +7813,7 @@ func NewDescribeSimpleNamespacesRequest() (request *DescribeSimpleNamespacesRequ
     request = &DescribeSimpleNamespacesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "DescribeSimpleNamespaces")
     
     
@@ -7752,6 +7877,7 @@ func NewDescribeStatisticsRequest() (request *DescribeStatisticsRequest) {
     request = &DescribeStatisticsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "DescribeStatistics")
     
     
@@ -7813,6 +7939,7 @@ func NewDescribeTaskDetailRequest() (request *DescribeTaskDetailRequest) {
     request = &DescribeTaskDetailRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "DescribeTaskDetail")
     
     
@@ -7878,6 +8005,7 @@ func NewDescribeTaskLastStatusRequest() (request *DescribeTaskLastStatusRequest)
     request = &DescribeTaskLastStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "DescribeTaskLastStatus")
     
     
@@ -7937,6 +8065,7 @@ func NewDescribeTaskRecordsRequest() (request *DescribeTaskRecordsRequest) {
     request = &DescribeTaskRecordsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "DescribeTaskRecords")
     
     
@@ -8000,6 +8129,7 @@ func NewDescribeUnitApiUseDetailRequest() (request *DescribeUnitApiUseDetailRequ
     request = &DescribeUnitApiUseDetailRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "DescribeUnitApiUseDetail")
     
     
@@ -8053,6 +8183,7 @@ func NewDescribeUnitNamespacesRequest() (request *DescribeUnitNamespacesRequest)
     request = &DescribeUnitNamespacesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "DescribeUnitNamespaces")
     
     
@@ -8104,6 +8235,7 @@ func NewDescribeUnitRuleRequest() (request *DescribeUnitRuleRequest) {
     request = &DescribeUnitRuleRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "DescribeUnitRule")
     
     
@@ -8155,6 +8287,7 @@ func NewDescribeUnitRulesRequest() (request *DescribeUnitRulesRequest) {
     request = &DescribeUnitRulesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "DescribeUnitRules")
     
     
@@ -8206,6 +8339,7 @@ func NewDescribeUploadInfoRequest() (request *DescribeUploadInfoRequest) {
     request = &DescribeUploadInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "DescribeUploadInfo")
     
     
@@ -8265,6 +8399,7 @@ func NewDescribeUsableUnitNamespacesRequest() (request *DescribeUsableUnitNamesp
     request = &DescribeUsableUnitNamespacesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "DescribeUsableUnitNamespaces")
     
     
@@ -8316,6 +8451,7 @@ func NewDisableTaskRequest() (request *DisableTaskRequest) {
     request = &DisableTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "DisableTask")
     
     
@@ -8377,6 +8513,7 @@ func NewDisableTaskFlowRequest() (request *DisableTaskFlowRequest) {
     request = &DisableTaskFlowRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "DisableTaskFlow")
     
     
@@ -8438,6 +8575,7 @@ func NewDisableUnitRouteRequest() (request *DisableUnitRouteRequest) {
     request = &DisableUnitRouteRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "DisableUnitRoute")
     
     
@@ -8487,6 +8625,7 @@ func NewDisableUnitRuleRequest() (request *DisableUnitRuleRequest) {
     request = &DisableUnitRuleRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "DisableUnitRule")
     
     
@@ -8538,6 +8677,7 @@ func NewDisassociateBusinessLogConfigRequest() (request *DisassociateBusinessLog
     request = &DisassociateBusinessLogConfigRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "DisassociateBusinessLogConfig")
     
     
@@ -8585,6 +8725,7 @@ func NewDisassociateKafkaConfigRequest() (request *DisassociateKafkaConfigReques
     request = &DisassociateKafkaConfigRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "DisassociateKafkaConfig")
     
     
@@ -8634,6 +8775,7 @@ func NewDraftApiGroupRequest() (request *DraftApiGroupRequest) {
     request = &DraftApiGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "DraftApiGroup")
     
     
@@ -8681,6 +8823,7 @@ func NewEnableTaskRequest() (request *EnableTaskRequest) {
     request = &EnableTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "EnableTask")
     
     
@@ -8746,6 +8889,7 @@ func NewEnableTaskFlowRequest() (request *EnableTaskFlowRequest) {
     request = &EnableTaskFlowRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "EnableTaskFlow")
     
     
@@ -8809,6 +8953,7 @@ func NewEnableUnitRouteRequest() (request *EnableUnitRouteRequest) {
     request = &EnableUnitRouteRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "EnableUnitRoute")
     
     
@@ -8860,6 +9005,7 @@ func NewEnableUnitRuleRequest() (request *EnableUnitRuleRequest) {
     request = &EnableUnitRuleRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "EnableUnitRule")
     
     
@@ -8911,6 +9057,7 @@ func NewExecuteTaskRequest() (request *ExecuteTaskRequest) {
     request = &ExecuteTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "ExecuteTask")
     
     
@@ -8978,6 +9125,7 @@ func NewExecuteTaskFlowRequest() (request *ExecuteTaskFlowRequest) {
     request = &ExecuteTaskFlowRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "ExecuteTaskFlow")
     
     
@@ -9045,6 +9193,7 @@ func NewExpandGroupRequest() (request *ExpandGroupRequest) {
     request = &ExpandGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "ExpandGroup")
     
     
@@ -9100,6 +9249,7 @@ func NewModifyContainerGroupRequest() (request *ModifyContainerGroupRequest) {
     request = &ModifyContainerGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "ModifyContainerGroup")
     
     
@@ -9149,6 +9299,7 @@ func NewModifyContainerReplicasRequest() (request *ModifyContainerReplicasReques
     request = &ModifyContainerReplicasRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "ModifyContainerReplicas")
     
     
@@ -9210,6 +9361,7 @@ func NewModifyLaneRequest() (request *ModifyLaneRequest) {
     request = &ModifyLaneRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "ModifyLane")
     
     
@@ -9347,6 +9499,7 @@ func NewModifyLaneRuleRequest() (request *ModifyLaneRuleRequest) {
     request = &ModifyLaneRuleRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "ModifyLaneRule")
     
     
@@ -9482,6 +9635,7 @@ func NewModifyMicroserviceRequest() (request *ModifyMicroserviceRequest) {
     request = &ModifyMicroserviceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "ModifyMicroservice")
     
     
@@ -9529,6 +9683,7 @@ func NewModifyPathRewriteRequest() (request *ModifyPathRewriteRequest) {
     request = &ModifyPathRewriteRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "ModifyPathRewrite")
     
     
@@ -9578,6 +9733,7 @@ func NewModifyTaskRequest() (request *ModifyTaskRequest) {
     request = &ModifyTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "ModifyTask")
     
     
@@ -9645,6 +9801,7 @@ func NewModifyUploadInfoRequest() (request *ModifyUploadInfoRequest) {
     request = &ModifyUploadInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "ModifyUploadInfo")
     
     
@@ -9700,6 +9857,7 @@ func NewOperateApplicationTcrBindingRequest() (request *OperateApplicationTcrBin
     request = &OperateApplicationTcrBindingRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "OperateApplicationTcrBinding")
     
     
@@ -9753,6 +9911,7 @@ func NewReassociateBusinessLogConfigRequest() (request *ReassociateBusinessLogCo
     request = &ReassociateBusinessLogConfigRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "ReassociateBusinessLogConfig")
     
     
@@ -9806,6 +9965,7 @@ func NewRedoTaskRequest() (request *RedoTaskRequest) {
     request = &RedoTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "RedoTask")
     
     
@@ -9879,6 +10039,7 @@ func NewRedoTaskBatchRequest() (request *RedoTaskBatchRequest) {
     request = &RedoTaskBatchRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "RedoTaskBatch")
     
     
@@ -9944,6 +10105,7 @@ func NewRedoTaskExecuteRequest() (request *RedoTaskExecuteRequest) {
     request = &RedoTaskExecuteRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "RedoTaskExecute")
     
     
@@ -10011,6 +10173,7 @@ func NewRedoTaskFlowBatchRequest() (request *RedoTaskFlowBatchRequest) {
     request = &RedoTaskFlowBatchRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "RedoTaskFlowBatch")
     
     
@@ -10078,6 +10241,7 @@ func NewReleaseApiGroupRequest() (request *ReleaseApiGroupRequest) {
     request = &ReleaseApiGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "ReleaseApiGroup")
     
     
@@ -10129,6 +10293,7 @@ func NewReleaseConfigRequest() (request *ReleaseConfigRequest) {
     request = &ReleaseConfigRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "ReleaseConfig")
     
     
@@ -10196,6 +10361,7 @@ func NewReleaseFileConfigRequest() (request *ReleaseFileConfigRequest) {
     request = &ReleaseFileConfigRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "ReleaseFileConfig")
     
     
@@ -10253,6 +10419,7 @@ func NewReleasePublicConfigRequest() (request *ReleasePublicConfigRequest) {
     request = &ReleasePublicConfigRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "ReleasePublicConfig")
     
     
@@ -10312,6 +10479,7 @@ func NewRemoveInstancesRequest() (request *RemoveInstancesRequest) {
     request = &RemoveInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "RemoveInstances")
     
     
@@ -10369,6 +10537,7 @@ func NewRevocationConfigRequest() (request *RevocationConfigRequest) {
     request = &RevocationConfigRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "RevocationConfig")
     
     
@@ -10422,6 +10591,7 @@ func NewRevocationPublicConfigRequest() (request *RevocationPublicConfigRequest)
     request = &RevocationPublicConfigRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "RevocationPublicConfig")
     
     
@@ -10471,6 +10641,7 @@ func NewRollbackConfigRequest() (request *RollbackConfigRequest) {
     request = &RollbackConfigRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "RollbackConfig")
     
     
@@ -10524,6 +10695,7 @@ func NewSearchBusinessLogRequest() (request *SearchBusinessLogRequest) {
     request = &SearchBusinessLogRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "SearchBusinessLog")
     
     
@@ -10583,6 +10755,7 @@ func NewSearchStdoutLogRequest() (request *SearchStdoutLogRequest) {
     request = &SearchStdoutLogRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "SearchStdoutLog")
     
     
@@ -10638,6 +10811,7 @@ func NewShrinkGroupRequest() (request *ShrinkGroupRequest) {
     request = &ShrinkGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "ShrinkGroup")
     
     
@@ -10685,6 +10859,7 @@ func NewShrinkInstancesRequest() (request *ShrinkInstancesRequest) {
     request = &ShrinkInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "ShrinkInstances")
     
     
@@ -10742,6 +10917,7 @@ func NewStartContainerGroupRequest() (request *StartContainerGroupRequest) {
     request = &StartContainerGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "StartContainerGroup")
     
     
@@ -10801,6 +10977,7 @@ func NewStartGroupRequest() (request *StartGroupRequest) {
     request = &StartGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "StartGroup")
     
     
@@ -10854,6 +11031,7 @@ func NewStopContainerGroupRequest() (request *StopContainerGroupRequest) {
     request = &StopContainerGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "StopContainerGroup")
     
     
@@ -10909,6 +11087,7 @@ func NewStopGroupRequest() (request *StopGroupRequest) {
     request = &StopGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "StopGroup")
     
     
@@ -10966,6 +11145,7 @@ func NewStopTaskBatchRequest() (request *StopTaskBatchRequest) {
     request = &StopTaskBatchRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "StopTaskBatch")
     
     
@@ -11035,6 +11215,7 @@ func NewStopTaskExecuteRequest() (request *StopTaskExecuteRequest) {
     request = &StopTaskExecuteRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "StopTaskExecute")
     
     
@@ -11106,6 +11287,7 @@ func NewTerminateTaskFlowBatchRequest() (request *TerminateTaskFlowBatchRequest)
     request = &TerminateTaskFlowBatchRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "TerminateTaskFlowBatch")
     
     
@@ -11171,6 +11353,7 @@ func NewUnbindApiGroupRequest() (request *UnbindApiGroupRequest) {
     request = &UnbindApiGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "UnbindApiGroup")
     
     
@@ -11218,6 +11401,7 @@ func NewUpdateApiGroupRequest() (request *UpdateApiGroupRequest) {
     request = &UpdateApiGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "UpdateApiGroup")
     
     
@@ -11267,6 +11451,7 @@ func NewUpdateApiRateLimitRuleRequest() (request *UpdateApiRateLimitRuleRequest)
     request = &UpdateApiRateLimitRuleRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "UpdateApiRateLimitRule")
     
     
@@ -11320,6 +11505,7 @@ func NewUpdateApiRateLimitRulesRequest() (request *UpdateApiRateLimitRulesReques
     request = &UpdateApiRateLimitRulesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "UpdateApiRateLimitRules")
     
     
@@ -11375,6 +11561,7 @@ func NewUpdateApiTimeoutsRequest() (request *UpdateApiTimeoutsRequest) {
     request = &UpdateApiTimeoutsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "UpdateApiTimeouts")
     
     
@@ -11426,6 +11613,7 @@ func NewUpdateGatewayApiRequest() (request *UpdateGatewayApiRequest) {
     request = &UpdateGatewayApiRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "UpdateGatewayApi")
     
     
@@ -11475,6 +11663,7 @@ func NewUpdateHealthCheckSettingsRequest() (request *UpdateHealthCheckSettingsRe
     request = &UpdateHealthCheckSettingsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "UpdateHealthCheckSettings")
     
     
@@ -11526,6 +11715,7 @@ func NewUpdateRepositoryRequest() (request *UpdateRepositoryRequest) {
     request = &UpdateRepositoryRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "UpdateRepository")
     
     
@@ -11575,6 +11765,7 @@ func NewUpdateUnitRuleRequest() (request *UpdateUnitRuleRequest) {
     request = &UpdateUnitRuleRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsf", APIVersion, "UpdateUnitRule")
     
     

@@ -49,6 +49,7 @@ func NewDeregisterMigrationTaskRequest() (request *DeregisterMigrationTaskReques
     request = &DeregisterMigrationTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("msp", APIVersion, "DeregisterMigrationTask")
     
     
@@ -98,6 +99,7 @@ func NewDescribeMigrationTaskRequest() (request *DescribeMigrationTaskRequest) {
     request = &DescribeMigrationTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("msp", APIVersion, "DescribeMigrationTask")
     
     
@@ -145,6 +147,7 @@ func NewListMigrationProjectRequest() (request *ListMigrationProjectRequest) {
     request = &ListMigrationProjectRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("msp", APIVersion, "ListMigrationProject")
     
     
@@ -192,6 +195,7 @@ func NewListMigrationTaskRequest() (request *ListMigrationTaskRequest) {
     request = &ListMigrationTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("msp", APIVersion, "ListMigrationTask")
     
     
@@ -239,6 +243,7 @@ func NewModifyMigrationTaskBelongToProjectRequest() (request *ModifyMigrationTas
     request = &ModifyMigrationTaskBelongToProjectRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("msp", APIVersion, "ModifyMigrationTaskBelongToProject")
     
     
@@ -288,6 +293,7 @@ func NewModifyMigrationTaskStatusRequest() (request *ModifyMigrationTaskStatusRe
     request = &ModifyMigrationTaskStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("msp", APIVersion, "ModifyMigrationTaskStatus")
     
     
@@ -335,6 +341,7 @@ func NewRegisterMigrationTaskRequest() (request *RegisterMigrationTaskRequest) {
     request = &RegisterMigrationTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("msp", APIVersion, "RegisterMigrationTask")
     
     

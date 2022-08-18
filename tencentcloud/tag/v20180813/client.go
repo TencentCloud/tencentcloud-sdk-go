@@ -49,6 +49,7 @@ func NewAddResourceTagRequest() (request *AddResourceTagRequest) {
     request = &AddResourceTagRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tag", APIVersion, "AddResourceTag")
     
     
@@ -118,6 +119,7 @@ func NewAttachResourcesTagRequest() (request *AttachResourcesTagRequest) {
     request = &AttachResourcesTagRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tag", APIVersion, "AttachResourcesTag")
     
     
@@ -203,6 +205,7 @@ func NewCreateTagRequest() (request *CreateTagRequest) {
     request = &CreateTagRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tag", APIVersion, "CreateTag")
     
     
@@ -272,6 +275,7 @@ func NewCreateTagsRequest() (request *CreateTagsRequest) {
     request = &CreateTagsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tag", APIVersion, "CreateTags")
     
     
@@ -343,6 +347,7 @@ func NewDeleteResourceTagRequest() (request *DeleteResourceTagRequest) {
     request = &DeleteResourceTagRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tag", APIVersion, "DeleteResourceTag")
     
     
@@ -402,6 +407,7 @@ func NewDeleteTagRequest() (request *DeleteTagRequest) {
     request = &DeleteTagRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tag", APIVersion, "DeleteTag")
     
     
@@ -463,6 +469,7 @@ func NewDeleteTagsRequest() (request *DeleteTagsRequest) {
     request = &DeleteTagsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tag", APIVersion, "DeleteTags")
     
     
@@ -530,6 +537,7 @@ func NewDescribeProjectsRequest() (request *DescribeProjectsRequest) {
     request = &DescribeProjectsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tag", APIVersion, "DescribeProjects")
     
     
@@ -583,6 +591,7 @@ func NewDescribeResourceTagsRequest() (request *DescribeResourceTagsRequest) {
     request = &DescribeResourceTagsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tag", APIVersion, "DescribeResourceTags")
     
     
@@ -630,6 +639,7 @@ func NewDescribeResourceTagsByResourceIdsRequest() (request *DescribeResourceTag
     request = &DescribeResourceTagsByResourceIdsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tag", APIVersion, "DescribeResourceTagsByResourceIds")
     
     
@@ -689,6 +699,7 @@ func NewDescribeResourceTagsByResourceIdsSeqRequest() (request *DescribeResource
     request = &DescribeResourceTagsByResourceIdsSeqRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tag", APIVersion, "DescribeResourceTagsByResourceIdsSeq")
     
     
@@ -746,6 +757,7 @@ func NewDescribeResourceTagsByTagKeysRequest() (request *DescribeResourceTagsByT
     request = &DescribeResourceTagsByTagKeysRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tag", APIVersion, "DescribeResourceTagsByTagKeys")
     
     
@@ -807,6 +819,7 @@ func NewDescribeResourcesByTagsRequest() (request *DescribeResourcesByTagsReques
     request = &DescribeResourcesByTagsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tag", APIVersion, "DescribeResourcesByTags")
     
     
@@ -862,6 +875,7 @@ func NewDescribeResourcesByTagsUnionRequest() (request *DescribeResourcesByTagsU
     request = &DescribeResourcesByTagsUnionRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tag", APIVersion, "DescribeResourcesByTagsUnion")
     
     
@@ -915,6 +929,7 @@ func NewDescribeTagKeysRequest() (request *DescribeTagKeysRequest) {
     request = &DescribeTagKeysRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tag", APIVersion, "DescribeTagKeys")
     
     
@@ -964,6 +979,7 @@ func NewDescribeTagValuesRequest() (request *DescribeTagValuesRequest) {
     request = &DescribeTagValuesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tag", APIVersion, "DescribeTagValues")
     
     
@@ -1013,6 +1029,7 @@ func NewDescribeTagValuesSeqRequest() (request *DescribeTagValuesSeqRequest) {
     request = &DescribeTagValuesSeqRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tag", APIVersion, "DescribeTagValuesSeq")
     
     
@@ -1062,6 +1079,7 @@ func NewDescribeTagsRequest() (request *DescribeTagsRequest) {
     request = &DescribeTagsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tag", APIVersion, "DescribeTags")
     
     
@@ -1111,6 +1129,7 @@ func NewDescribeTagsSeqRequest() (request *DescribeTagsSeqRequest) {
     request = &DescribeTagsSeqRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tag", APIVersion, "DescribeTagsSeq")
     
     
@@ -1160,6 +1179,7 @@ func NewDetachResourcesTagRequest() (request *DetachResourcesTagRequest) {
     request = &DetachResourcesTagRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tag", APIVersion, "DetachResourcesTag")
     
     
@@ -1231,6 +1251,7 @@ func NewGetResourcesRequest() (request *GetResourcesRequest) {
     request = &GetResourcesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tag", APIVersion, "GetResources")
     
     
@@ -1308,6 +1329,7 @@ func NewGetTagKeysRequest() (request *GetTagKeysRequest) {
     request = &GetTagKeysRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tag", APIVersion, "GetTagKeys")
     
     
@@ -1363,6 +1385,7 @@ func NewGetTagValuesRequest() (request *GetTagValuesRequest) {
     request = &GetTagValuesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tag", APIVersion, "GetTagValues")
     
     
@@ -1418,6 +1441,7 @@ func NewGetTagsRequest() (request *GetTagsRequest) {
     request = &GetTagsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tag", APIVersion, "GetTags")
     
     
@@ -1473,6 +1497,7 @@ func NewModifyResourceTagsRequest() (request *ModifyResourceTagsRequest) {
     request = &ModifyResourceTagsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tag", APIVersion, "ModifyResourceTags")
     
     
@@ -1546,6 +1571,7 @@ func NewModifyResourcesTagValueRequest() (request *ModifyResourcesTagValueReques
     request = &ModifyResourcesTagValueRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tag", APIVersion, "ModifyResourcesTagValue")
     
     
@@ -1625,6 +1651,7 @@ func NewTagResourcesRequest() (request *TagResourcesRequest) {
     request = &TagResourcesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tag", APIVersion, "TagResources")
     
     
@@ -1706,6 +1733,7 @@ func NewUnTagResourcesRequest() (request *UnTagResourcesRequest) {
     request = &UnTagResourcesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tag", APIVersion, "UnTagResources")
     
     
@@ -1777,6 +1805,7 @@ func NewUpdateResourceTagValueRequest() (request *UpdateResourceTagValueRequest)
     request = &UpdateResourceTagValueRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tag", APIVersion, "UpdateResourceTagValue")
     
     

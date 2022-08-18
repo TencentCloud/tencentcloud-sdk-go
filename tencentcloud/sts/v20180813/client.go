@@ -49,6 +49,7 @@ func NewAssumeRoleRequest() (request *AssumeRoleRequest) {
     request = &AssumeRoleRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("sts", APIVersion, "AssumeRole")
     
     
@@ -140,6 +141,7 @@ func NewAssumeRoleWithSAMLRequest() (request *AssumeRoleWithSAMLRequest) {
     request = &AssumeRoleWithSAMLRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    request.SetSkipSign(true)
     request.Init().WithApiInfo("sts", APIVersion, "AssumeRoleWithSAML")
     
     
@@ -223,6 +225,7 @@ func NewAssumeRoleWithWebIdentityRequest() (request *AssumeRoleWithWebIdentityRe
     request = &AssumeRoleWithWebIdentityRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    request.SetSkipSign(true)
     request.Init().WithApiInfo("sts", APIVersion, "AssumeRoleWithWebIdentity")
     
     
@@ -276,6 +279,7 @@ func NewGetCallerIdentityRequest() (request *GetCallerIdentityRequest) {
     request = &GetCallerIdentityRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("sts", APIVersion, "GetCallerIdentity")
     
     
@@ -331,6 +335,7 @@ func NewGetFederationTokenRequest() (request *GetFederationTokenRequest) {
     request = &GetFederationTokenRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("sts", APIVersion, "GetFederationToken")
     
     
@@ -410,6 +415,7 @@ func NewQueryApiKeyRequest() (request *QueryApiKeyRequest) {
     request = &QueryApiKeyRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("sts", APIVersion, "QueryApiKey")
     
     

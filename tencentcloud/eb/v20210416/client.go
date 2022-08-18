@@ -49,6 +49,7 @@ func NewCheckRuleRequest() (request *CheckRuleRequest) {
     request = &CheckRuleRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("eb", APIVersion, "CheckRule")
     
     
@@ -106,6 +107,7 @@ func NewCheckTransformationRequest() (request *CheckTransformationRequest) {
     request = &CheckTransformationRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("eb", APIVersion, "CheckTransformation")
     
     
@@ -163,6 +165,7 @@ func NewCreateConnectionRequest() (request *CreateConnectionRequest) {
     request = &CreateConnectionRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("eb", APIVersion, "CreateConnection")
     
     
@@ -254,6 +257,7 @@ func NewCreateEventBusRequest() (request *CreateEventBusRequest) {
     request = &CreateEventBusRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("eb", APIVersion, "CreateEventBus")
     
     
@@ -325,6 +329,7 @@ func NewCreateRuleRequest() (request *CreateRuleRequest) {
     request = &CreateRuleRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("eb", APIVersion, "CreateRule")
     
     
@@ -386,6 +391,7 @@ func NewCreateTargetRequest() (request *CreateTargetRequest) {
     request = &CreateTargetRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("eb", APIVersion, "CreateTarget")
     
     
@@ -499,6 +505,7 @@ func NewCreateTransformationRequest() (request *CreateTransformationRequest) {
     request = &CreateTransformationRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("eb", APIVersion, "CreateTransformation")
     
     
@@ -550,6 +557,7 @@ func NewDeleteConnectionRequest() (request *DeleteConnectionRequest) {
     request = &DeleteConnectionRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("eb", APIVersion, "DeleteConnection")
     
     
@@ -615,6 +623,7 @@ func NewDeleteEventBusRequest() (request *DeleteEventBusRequest) {
     request = &DeleteEventBusRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("eb", APIVersion, "DeleteEventBus")
     
     
@@ -668,6 +677,7 @@ func NewDeleteRuleRequest() (request *DeleteRuleRequest) {
     request = &DeleteRuleRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("eb", APIVersion, "DeleteRule")
     
     
@@ -725,6 +735,7 @@ func NewDeleteTargetRequest() (request *DeleteTargetRequest) {
     request = &DeleteTargetRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("eb", APIVersion, "DeleteTarget")
     
     
@@ -792,6 +803,7 @@ func NewDeleteTransformationRequest() (request *DeleteTransformationRequest) {
     request = &DeleteTransformationRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("eb", APIVersion, "DeleteTransformation")
     
     
@@ -843,6 +855,7 @@ func NewGetEventBusRequest() (request *GetEventBusRequest) {
     request = &GetEventBusRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("eb", APIVersion, "GetEventBus")
     
     
@@ -892,6 +905,7 @@ func NewGetRuleRequest() (request *GetRuleRequest) {
     request = &GetRuleRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("eb", APIVersion, "GetRule")
     
     
@@ -947,6 +961,7 @@ func NewGetTransformationRequest() (request *GetTransformationRequest) {
     request = &GetTransformationRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("eb", APIVersion, "GetTransformation")
     
     
@@ -1000,6 +1015,7 @@ func NewListConnectionsRequest() (request *ListConnectionsRequest) {
     request = &ListConnectionsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("eb", APIVersion, "ListConnections")
     
     
@@ -1057,6 +1073,7 @@ func NewListEventBusesRequest() (request *ListEventBusesRequest) {
     request = &ListEventBusesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("eb", APIVersion, "ListEventBuses")
     
     
@@ -1116,6 +1133,7 @@ func NewListRulesRequest() (request *ListRulesRequest) {
     request = &ListRulesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("eb", APIVersion, "ListRules")
     
     
@@ -1169,6 +1187,7 @@ func NewListTargetsRequest() (request *ListTargetsRequest) {
     request = &ListTargetsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("eb", APIVersion, "ListTargets")
     
     
@@ -1232,6 +1251,7 @@ func NewPublishEventRequest() (request *PublishEventRequest) {
     request = &PublishEventRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("eb", APIVersion, "PublishEvent")
     
     
@@ -1295,6 +1315,7 @@ func NewPutEventsRequest() (request *PutEventsRequest) {
     request = &PutEventsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("eb", APIVersion, "PutEvents")
     
     
@@ -1360,6 +1381,7 @@ func NewUpdateConnectionRequest() (request *UpdateConnectionRequest) {
     request = &UpdateConnectionRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("eb", APIVersion, "UpdateConnection")
     
     
@@ -1417,6 +1439,7 @@ func NewUpdateEventBusRequest() (request *UpdateEventBusRequest) {
     request = &UpdateEventBusRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("eb", APIVersion, "UpdateEventBus")
     
     
@@ -1476,6 +1499,7 @@ func NewUpdateRuleRequest() (request *UpdateRuleRequest) {
     request = &UpdateRuleRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("eb", APIVersion, "UpdateRule")
     
     
@@ -1541,6 +1565,7 @@ func NewUpdateTargetRequest() (request *UpdateTargetRequest) {
     request = &UpdateTargetRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("eb", APIVersion, "UpdateTarget")
     
     
@@ -1612,6 +1637,7 @@ func NewUpdateTransformationRequest() (request *UpdateTransformationRequest) {
     request = &UpdateTransformationRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("eb", APIVersion, "UpdateTransformation")
     
     

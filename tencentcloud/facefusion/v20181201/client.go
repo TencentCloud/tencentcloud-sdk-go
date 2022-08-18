@@ -49,6 +49,7 @@ func NewDescribeMaterialListRequest() (request *DescribeMaterialListRequest) {
     request = &DescribeMaterialListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("facefusion", APIVersion, "DescribeMaterialList")
     
     
@@ -110,6 +111,7 @@ func NewFaceFusionRequest() (request *FaceFusionRequest) {
     request = &FaceFusionRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("facefusion", APIVersion, "FaceFusion")
     
     
@@ -247,6 +249,7 @@ func NewFaceFusionLiteRequest() (request *FaceFusionLiteRequest) {
     request = &FaceFusionLiteRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("facefusion", APIVersion, "FaceFusionLite")
     
     
@@ -368,6 +371,7 @@ func NewFuseFaceRequest() (request *FuseFaceRequest) {
     request = &FuseFaceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("facefusion", APIVersion, "FuseFace")
     
     

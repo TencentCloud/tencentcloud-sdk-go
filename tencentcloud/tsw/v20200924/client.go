@@ -49,6 +49,7 @@ func NewDescribeAgentShellRequest() (request *DescribeAgentShellRequest) {
     request = &DescribeAgentShellRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tsw", APIVersion, "DescribeAgentShell")
     
     

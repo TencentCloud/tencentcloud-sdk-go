@@ -49,6 +49,7 @@ func NewAutoSummarizationRequest() (request *AutoSummarizationRequest) {
     request = &AutoSummarizationRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("nlp", APIVersion, "AutoSummarization")
     
     
@@ -114,6 +115,7 @@ func NewChatBotRequest() (request *ChatBotRequest) {
     request = &ChatBotRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("nlp", APIVersion, "ChatBot")
     
     
@@ -179,6 +181,7 @@ func NewCreateDictRequest() (request *CreateDictRequest) {
     request = &CreateDictRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("nlp", APIVersion, "CreateDict")
     
     
@@ -262,6 +265,7 @@ func NewCreateWordItemsRequest() (request *CreateWordItemsRequest) {
     request = &CreateWordItemsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("nlp", APIVersion, "CreateWordItems")
     
     
@@ -315,6 +319,7 @@ func NewDeleteDictRequest() (request *DeleteDictRequest) {
     request = &DeleteDictRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("nlp", APIVersion, "DeleteDict")
     
     
@@ -368,6 +373,7 @@ func NewDeleteWordItemsRequest() (request *DeleteWordItemsRequest) {
     request = &DeleteWordItemsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("nlp", APIVersion, "DeleteWordItems")
     
     
@@ -421,6 +427,7 @@ func NewDependencyParsingRequest() (request *DependencyParsingRequest) {
     request = &DependencyParsingRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("nlp", APIVersion, "DependencyParsing")
     
     
@@ -480,6 +487,7 @@ func NewDescribeDictRequest() (request *DescribeDictRequest) {
     request = &DescribeDictRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("nlp", APIVersion, "DescribeDict")
     
     
@@ -537,6 +545,7 @@ func NewDescribeDictsRequest() (request *DescribeDictsRequest) {
     request = &DescribeDictsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("nlp", APIVersion, "DescribeDicts")
     
     
@@ -596,6 +605,7 @@ func NewDescribeWordItemsRequest() (request *DescribeWordItemsRequest) {
     request = &DescribeWordItemsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("nlp", APIVersion, "DescribeWordItems")
     
     
@@ -655,6 +665,7 @@ func NewKeywordsExtractionRequest() (request *KeywordsExtractionRequest) {
     request = &KeywordsExtractionRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("nlp", APIVersion, "KeywordsExtraction")
     
     
@@ -722,6 +733,7 @@ func NewLexicalAnalysisRequest() (request *LexicalAnalysisRequest) {
     request = &LexicalAnalysisRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("nlp", APIVersion, "LexicalAnalysis")
     
     
@@ -817,6 +829,7 @@ func NewSearchWordItemsRequest() (request *SearchWordItemsRequest) {
     request = &SearchWordItemsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("nlp", APIVersion, "SearchWordItems")
     
     
@@ -872,6 +885,7 @@ func NewSentenceEmbeddingRequest() (request *SentenceEmbeddingRequest) {
     request = &SentenceEmbeddingRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("nlp", APIVersion, "SentenceEmbedding")
     
     
@@ -941,6 +955,7 @@ func NewSentimentAnalysisRequest() (request *SentimentAnalysisRequest) {
     request = &SentimentAnalysisRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("nlp", APIVersion, "SentimentAnalysis")
     
     
@@ -1012,6 +1027,7 @@ func NewSimilarWordsRequest() (request *SimilarWordsRequest) {
     request = &SimilarWordsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("nlp", APIVersion, "SimilarWords")
     
     
@@ -1075,6 +1091,7 @@ func NewTextClassificationRequest() (request *TextClassificationRequest) {
     request = &TextClassificationRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("nlp", APIVersion, "TextClassification")
     
     
@@ -1160,6 +1177,7 @@ func NewTextCorrectionRequest() (request *TextCorrectionRequest) {
     request = &TextCorrectionRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("nlp", APIVersion, "TextCorrection")
     
     
@@ -1225,6 +1243,7 @@ func NewTextCorrectionProRequest() (request *TextCorrectionProRequest) {
     request = &TextCorrectionProRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("nlp", APIVersion, "TextCorrectionPro")
     
     
@@ -1300,6 +1319,7 @@ func NewTextSimilarityRequest() (request *TextSimilarityRequest) {
     request = &TextSimilarityRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("nlp", APIVersion, "TextSimilarity")
     
     
@@ -1383,6 +1403,7 @@ func NewTextSimilarityProRequest() (request *TextSimilarityProRequest) {
     request = &TextSimilarityProRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("nlp", APIVersion, "TextSimilarityPro")
     
     
@@ -1468,6 +1489,7 @@ func NewUpdateDictRequest() (request *UpdateDictRequest) {
     request = &UpdateDictRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("nlp", APIVersion, "UpdateDict")
     
     
@@ -1525,6 +1547,7 @@ func NewWordEmbeddingRequest() (request *WordEmbeddingRequest) {
     request = &WordEmbeddingRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("nlp", APIVersion, "WordEmbedding")
     
     
@@ -1620,6 +1643,7 @@ func NewWordSimilarityRequest() (request *WordSimilarityRequest) {
     request = &WordSimilarityRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("nlp", APIVersion, "WordSimilarity")
     
     

@@ -49,6 +49,7 @@ func NewAIAssistantRequest() (request *AIAssistantRequest) {
     request = &AIAssistantRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tci", APIVersion, "AIAssistant")
     
     
@@ -104,6 +105,7 @@ func NewCancelTaskRequest() (request *CancelTaskRequest) {
     request = &CancelTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tci", APIVersion, "CancelTask")
     
     
@@ -153,6 +155,7 @@ func NewCheckFacePhotoRequest() (request *CheckFacePhotoRequest) {
     request = &CheckFacePhotoRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tci", APIVersion, "CheckFacePhoto")
     
     
@@ -202,6 +205,7 @@ func NewCreateFaceRequest() (request *CreateFaceRequest) {
     request = &CreateFaceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tci", APIVersion, "CreateFace")
     
     
@@ -251,6 +255,7 @@ func NewCreateLibraryRequest() (request *CreateLibraryRequest) {
     request = &CreateLibraryRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tci", APIVersion, "CreateLibrary")
     
     
@@ -300,6 +305,7 @@ func NewCreatePersonRequest() (request *CreatePersonRequest) {
     request = &CreatePersonRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tci", APIVersion, "CreatePerson")
     
     
@@ -349,6 +355,7 @@ func NewCreateVocabRequest() (request *CreateVocabRequest) {
     request = &CreateVocabRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tci", APIVersion, "CreateVocab")
     
     
@@ -402,6 +409,7 @@ func NewCreateVocabLibRequest() (request *CreateVocabLibRequest) {
     request = &CreateVocabLibRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tci", APIVersion, "CreateVocabLib")
     
     
@@ -455,6 +463,7 @@ func NewDeleteFaceRequest() (request *DeleteFaceRequest) {
     request = &DeleteFaceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tci", APIVersion, "DeleteFace")
     
     
@@ -506,6 +515,7 @@ func NewDeleteLibraryRequest() (request *DeleteLibraryRequest) {
     request = &DeleteLibraryRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tci", APIVersion, "DeleteLibrary")
     
     
@@ -557,6 +567,7 @@ func NewDeletePersonRequest() (request *DeletePersonRequest) {
     request = &DeletePersonRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tci", APIVersion, "DeletePerson")
     
     
@@ -608,6 +619,7 @@ func NewDeleteVocabRequest() (request *DeleteVocabRequest) {
     request = &DeleteVocabRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tci", APIVersion, "DeleteVocab")
     
     
@@ -661,6 +673,7 @@ func NewDeleteVocabLibRequest() (request *DeleteVocabLibRequest) {
     request = &DeleteVocabLibRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tci", APIVersion, "DeleteVocabLib")
     
     
@@ -714,6 +727,7 @@ func NewDescribeAITaskResultRequest() (request *DescribeAITaskResultRequest) {
     request = &DescribeAITaskResultRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tci", APIVersion, "DescribeAITaskResult")
     
     
@@ -767,6 +781,7 @@ func NewDescribeAttendanceResultRequest() (request *DescribeAttendanceResultRequ
     request = &DescribeAttendanceResultRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tci", APIVersion, "DescribeAttendanceResult")
     
     
@@ -832,6 +847,7 @@ func NewDescribeAudioTaskRequest() (request *DescribeAudioTaskRequest) {
     request = &DescribeAudioTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tci", APIVersion, "DescribeAudioTask")
     
     
@@ -883,6 +899,7 @@ func NewDescribeConversationTaskRequest() (request *DescribeConversationTaskRequ
     request = &DescribeConversationTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tci", APIVersion, "DescribeConversationTask")
     
     
@@ -934,6 +951,7 @@ func NewDescribeHighlightResultRequest() (request *DescribeHighlightResultReques
     request = &DescribeHighlightResultRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tci", APIVersion, "DescribeHighlightResult")
     
     
@@ -1089,6 +1107,7 @@ func NewDescribeImageTaskRequest() (request *DescribeImageTaskRequest) {
     request = &DescribeImageTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tci", APIVersion, "DescribeImageTask")
     
     
@@ -1140,6 +1159,7 @@ func NewDescribeImageTaskStatisticRequest() (request *DescribeImageTaskStatistic
     request = &DescribeImageTaskStatisticRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tci", APIVersion, "DescribeImageTaskStatistic")
     
     
@@ -1191,6 +1211,7 @@ func NewDescribeLibrariesRequest() (request *DescribeLibrariesRequest) {
     request = &DescribeLibrariesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tci", APIVersion, "DescribeLibraries")
     
     
@@ -1240,6 +1261,7 @@ func NewDescribePersonRequest() (request *DescribePersonRequest) {
     request = &DescribePersonRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tci", APIVersion, "DescribePerson")
     
     
@@ -1291,6 +1313,7 @@ func NewDescribePersonsRequest() (request *DescribePersonsRequest) {
     request = &DescribePersonsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tci", APIVersion, "DescribePersons")
     
     
@@ -1342,6 +1365,7 @@ func NewDescribeVocabRequest() (request *DescribeVocabRequest) {
     request = &DescribeVocabRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tci", APIVersion, "DescribeVocab")
     
     
@@ -1395,6 +1419,7 @@ func NewDescribeVocabLibRequest() (request *DescribeVocabLibRequest) {
     request = &DescribeVocabLibRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tci", APIVersion, "DescribeVocabLib")
     
     
@@ -1448,6 +1473,7 @@ func NewModifyLibraryRequest() (request *ModifyLibraryRequest) {
     request = &ModifyLibraryRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tci", APIVersion, "ModifyLibrary")
     
     
@@ -1499,6 +1525,7 @@ func NewModifyPersonRequest() (request *ModifyPersonRequest) {
     request = &ModifyPersonRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tci", APIVersion, "ModifyPerson")
     
     
@@ -1550,6 +1577,7 @@ func NewSubmitAudioTaskRequest() (request *SubmitAudioTaskRequest) {
     request = &SubmitAudioTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tci", APIVersion, "SubmitAudioTask")
     
     
@@ -1601,6 +1629,7 @@ func NewSubmitCheckAttendanceTaskRequest() (request *SubmitCheckAttendanceTaskRe
     request = &SubmitCheckAttendanceTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tci", APIVersion, "SubmitCheckAttendanceTask")
     
     
@@ -1718,6 +1747,7 @@ func NewSubmitCheckAttendanceTaskPlusRequest() (request *SubmitCheckAttendanceTa
     request = &SubmitCheckAttendanceTaskPlusRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tci", APIVersion, "SubmitCheckAttendanceTaskPlus")
     
     
@@ -1781,6 +1811,7 @@ func NewSubmitConversationTaskRequest() (request *SubmitConversationTaskRequest)
     request = &SubmitConversationTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tci", APIVersion, "SubmitConversationTask")
     
     
@@ -1832,6 +1863,7 @@ func NewSubmitDoubleVideoHighlightsRequest() (request *SubmitDoubleVideoHighligh
     request = &SubmitDoubleVideoHighlightsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tci", APIVersion, "SubmitDoubleVideoHighlights")
     
     
@@ -1911,6 +1943,7 @@ func NewSubmitFullBodyClassTaskRequest() (request *SubmitFullBodyClassTaskReques
     request = &SubmitFullBodyClassTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tci", APIVersion, "SubmitFullBodyClassTask")
     
     
@@ -2100,6 +2133,7 @@ func NewSubmitHighlightsRequest() (request *SubmitHighlightsRequest) {
     request = &SubmitHighlightsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tci", APIVersion, "SubmitHighlights")
     
     
@@ -2251,6 +2285,7 @@ func NewSubmitImageTaskRequest() (request *SubmitImageTaskRequest) {
     request = &SubmitImageTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tci", APIVersion, "SubmitImageTask")
     
     
@@ -2302,6 +2337,7 @@ func NewSubmitImageTaskPlusRequest() (request *SubmitImageTaskPlusRequest) {
     request = &SubmitImageTaskPlusRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tci", APIVersion, "SubmitImageTaskPlus")
     
     
@@ -2489,6 +2525,7 @@ func NewSubmitOneByOneClassTaskRequest() (request *SubmitOneByOneClassTaskReques
     request = &SubmitOneByOneClassTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tci", APIVersion, "SubmitOneByOneClassTask")
     
     
@@ -2682,6 +2719,7 @@ func NewSubmitOpenClassTaskRequest() (request *SubmitOpenClassTaskRequest) {
     request = &SubmitOpenClassTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tci", APIVersion, "SubmitOpenClassTask")
     
     
@@ -2873,6 +2911,7 @@ func NewSubmitPartialBodyClassTaskRequest() (request *SubmitPartialBodyClassTask
     request = &SubmitPartialBodyClassTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tci", APIVersion, "SubmitPartialBodyClassTask")
     
     
@@ -3064,6 +3103,7 @@ func NewSubmitTraditionalClassTaskRequest() (request *SubmitTraditionalClassTask
     request = &SubmitTraditionalClassTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tci", APIVersion, "SubmitTraditionalClassTask")
     
     
@@ -3261,6 +3301,7 @@ func NewTransmitAudioStreamRequest() (request *TransmitAudioStreamRequest) {
     request = &TransmitAudioStreamRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tci", APIVersion, "TransmitAudioStream")
     
     

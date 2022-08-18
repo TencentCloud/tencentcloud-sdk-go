@@ -49,6 +49,7 @@ func NewCheckVcodeRequest() (request *CheckVcodeRequest) {
     request = &CheckVcodeRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ds", APIVersion, "CheckVcode")
     
     
@@ -130,6 +131,7 @@ func NewCreateContractByUploadRequest() (request *CreateContractByUploadRequest)
     request = &CreateContractByUploadRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ds", APIVersion, "CreateContractByUpload")
     
     
@@ -205,6 +207,7 @@ func NewCreateEnterpriseAccountRequest() (request *CreateEnterpriseAccountReques
     request = &CreateEnterpriseAccountRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ds", APIVersion, "CreateEnterpriseAccount")
     
     
@@ -288,6 +291,7 @@ func NewCreatePersonalAccountRequest() (request *CreatePersonalAccountRequest) {
     request = &CreatePersonalAccountRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ds", APIVersion, "CreatePersonalAccount")
     
     
@@ -361,6 +365,7 @@ func NewCreateSealRequest() (request *CreateSealRequest) {
     request = &CreateSealRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ds", APIVersion, "CreateSeal")
     
     
@@ -440,6 +445,7 @@ func NewDeleteAccountRequest() (request *DeleteAccountRequest) {
     request = &DeleteAccountRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ds", APIVersion, "DeleteAccount")
     
     
@@ -499,6 +505,7 @@ func NewDeleteSealRequest() (request *DeleteSealRequest) {
     request = &DeleteSealRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ds", APIVersion, "DeleteSeal")
     
     
@@ -566,6 +573,7 @@ func NewDescribeTaskStatusRequest() (request *DescribeTaskStatusRequest) {
     request = &DescribeTaskStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ds", APIVersion, "DescribeTaskStatus")
     
     
@@ -623,6 +631,7 @@ func NewDownloadContractRequest() (request *DownloadContractRequest) {
     request = &DownloadContractRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ds", APIVersion, "DownloadContract")
     
     
@@ -682,6 +691,7 @@ func NewSendVcodeRequest() (request *SendVcodeRequest) {
     request = &SendVcodeRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ds", APIVersion, "SendVcode")
     
     
@@ -755,6 +765,7 @@ func NewSignContractByCoordinateRequest() (request *SignContractByCoordinateRequ
     request = &SignContractByCoordinateRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ds", APIVersion, "SignContractByCoordinate")
     
     
@@ -852,6 +863,7 @@ func NewSignContractByKeywordRequest() (request *SignContractByKeywordRequest) {
     request = &SignContractByKeywordRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ds", APIVersion, "SignContractByKeyword")
     
     

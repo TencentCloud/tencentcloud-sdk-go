@@ -49,6 +49,7 @@ func NewDescribeMeshRequest() (request *DescribeMeshRequest) {
     request = &DescribeMeshRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcm", APIVersion, "DescribeMesh")
     
     
@@ -104,6 +105,7 @@ func NewDescribeMeshListRequest() (request *DescribeMeshListRequest) {
     request = &DescribeMeshListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcm", APIVersion, "DescribeMeshList")
     
     

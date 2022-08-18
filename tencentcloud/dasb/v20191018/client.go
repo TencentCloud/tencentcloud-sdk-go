@@ -49,6 +49,7 @@ func NewAddDeviceGroupMembersRequest() (request *AddDeviceGroupMembersRequest) {
     request = &AddDeviceGroupMembersRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dasb", APIVersion, "AddDeviceGroupMembers")
     
     
@@ -102,6 +103,7 @@ func NewAddUserGroupMembersRequest() (request *AddUserGroupMembersRequest) {
     request = &AddUserGroupMembersRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dasb", APIVersion, "AddUserGroupMembers")
     
     
@@ -153,6 +155,7 @@ func NewBindDeviceResourceRequest() (request *BindDeviceResourceRequest) {
     request = &BindDeviceResourceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dasb", APIVersion, "BindDeviceResource")
     
     
@@ -236,6 +239,7 @@ func NewCreateAclRequest() (request *CreateAclRequest) {
     request = &CreateAclRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dasb", APIVersion, "CreateAcl")
     
     
@@ -301,6 +305,7 @@ func NewCreateDeviceGroupRequest() (request *CreateDeviceGroupRequest) {
     request = &CreateDeviceGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dasb", APIVersion, "CreateDeviceGroup")
     
     
@@ -384,6 +389,7 @@ func NewCreateUserRequest() (request *CreateUserRequest) {
     request = &CreateUserRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dasb", APIVersion, "CreateUser")
     
     
@@ -467,6 +473,7 @@ func NewCreateUserGroupRequest() (request *CreateUserGroupRequest) {
     request = &CreateUserGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dasb", APIVersion, "CreateUserGroup")
     
     
@@ -524,6 +531,7 @@ func NewDeleteAclsRequest() (request *DeleteAclsRequest) {
     request = &DeleteAclsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dasb", APIVersion, "DeleteAcls")
     
     
@@ -575,6 +583,7 @@ func NewDeleteDeviceGroupMembersRequest() (request *DeleteDeviceGroupMembersRequ
     request = &DeleteDeviceGroupMembersRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dasb", APIVersion, "DeleteDeviceGroupMembers")
     
     
@@ -626,6 +635,7 @@ func NewDeleteDeviceGroupsRequest() (request *DeleteDeviceGroupsRequest) {
     request = &DeleteDeviceGroupsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dasb", APIVersion, "DeleteDeviceGroups")
     
     
@@ -677,6 +687,7 @@ func NewDeleteUserGroupMembersRequest() (request *DeleteUserGroupMembersRequest)
     request = &DeleteUserGroupMembersRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dasb", APIVersion, "DeleteUserGroupMembers")
     
     
@@ -728,6 +739,7 @@ func NewDeleteUserGroupsRequest() (request *DeleteUserGroupsRequest) {
     request = &DeleteUserGroupsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dasb", APIVersion, "DeleteUserGroups")
     
     
@@ -779,6 +791,7 @@ func NewDeleteUsersRequest() (request *DeleteUsersRequest) {
     request = &DeleteUsersRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dasb", APIVersion, "DeleteUsers")
     
     
@@ -830,6 +843,7 @@ func NewDescribeAclsRequest() (request *DescribeAclsRequest) {
     request = &DescribeAclsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dasb", APIVersion, "DescribeAcls")
     
     
@@ -883,6 +897,7 @@ func NewDescribeDasbImageIdsRequest() (request *DescribeDasbImageIdsRequest) {
     request = &DescribeDasbImageIdsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dasb", APIVersion, "DescribeDasbImageIds")
     
     
@@ -936,6 +951,7 @@ func NewDescribeDeviceGroupMembersRequest() (request *DescribeDeviceGroupMembers
     request = &DescribeDeviceGroupMembersRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dasb", APIVersion, "DescribeDeviceGroupMembers")
     
     
@@ -987,6 +1003,7 @@ func NewDescribeDeviceGroupsRequest() (request *DescribeDeviceGroupsRequest) {
     request = &DescribeDeviceGroupsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dasb", APIVersion, "DescribeDeviceGroups")
     
     
@@ -1040,6 +1057,7 @@ func NewDescribeDevicesRequest() (request *DescribeDevicesRequest) {
     request = &DescribeDevicesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dasb", APIVersion, "DescribeDevices")
     
     
@@ -1093,6 +1111,7 @@ func NewDescribeResourcesRequest() (request *DescribeResourcesRequest) {
     request = &DescribeResourcesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dasb", APIVersion, "DescribeResources")
     
     
@@ -1144,6 +1163,7 @@ func NewDescribeUserGroupMembersRequest() (request *DescribeUserGroupMembersRequ
     request = &DescribeUserGroupMembersRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dasb", APIVersion, "DescribeUserGroupMembers")
     
     
@@ -1195,6 +1215,7 @@ func NewDescribeUserGroupsRequest() (request *DescribeUserGroupsRequest) {
     request = &DescribeUserGroupsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dasb", APIVersion, "DescribeUserGroups")
     
     
@@ -1248,6 +1269,7 @@ func NewDescribeUsersRequest() (request *DescribeUsersRequest) {
     request = &DescribeUsersRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dasb", APIVersion, "DescribeUsers")
     
     
@@ -1301,6 +1323,7 @@ func NewModifyAclRequest() (request *ModifyAclRequest) {
     request = &ModifyAclRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dasb", APIVersion, "ModifyAcl")
     
     
@@ -1372,6 +1395,7 @@ func NewModifyUserRequest() (request *ModifyUserRequest) {
     request = &ModifyUserRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dasb", APIVersion, "ModifyUser")
     
     

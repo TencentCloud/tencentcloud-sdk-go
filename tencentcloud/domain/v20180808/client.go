@@ -49,6 +49,7 @@ func NewBatchModifyDomainInfoRequest() (request *BatchModifyDomainInfoRequest) {
     request = &BatchModifyDomainInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("domain", APIVersion, "BatchModifyDomainInfo")
     
     
@@ -118,6 +119,7 @@ func NewCheckBatchStatusRequest() (request *CheckBatchStatusRequest) {
     request = &CheckBatchStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("domain", APIVersion, "CheckBatchStatus")
     
     
@@ -167,6 +169,7 @@ func NewCheckDomainRequest() (request *CheckDomainRequest) {
     request = &CheckDomainRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("domain", APIVersion, "CheckDomain")
     
     
@@ -222,6 +225,7 @@ func NewCreateDomainBatchRequest() (request *CreateDomainBatchRequest) {
     request = &CreateDomainBatchRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("domain", APIVersion, "CreateDomainBatch")
     
     
@@ -299,6 +303,7 @@ func NewCreatePhoneEmailRequest() (request *CreatePhoneEmailRequest) {
     request = &CreatePhoneEmailRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("domain", APIVersion, "CreatePhoneEmail")
     
     
@@ -356,6 +361,7 @@ func NewCreateTemplateRequest() (request *CreateTemplateRequest) {
     request = &CreateTemplateRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("domain", APIVersion, "CreateTemplate")
     
     
@@ -459,6 +465,7 @@ func NewDeletePhoneEmailRequest() (request *DeletePhoneEmailRequest) {
     request = &DeletePhoneEmailRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("domain", APIVersion, "DeletePhoneEmail")
     
     
@@ -514,6 +521,7 @@ func NewDeleteTemplateRequest() (request *DeleteTemplateRequest) {
     request = &DeleteTemplateRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("domain", APIVersion, "DeleteTemplate")
     
     
@@ -571,6 +579,7 @@ func NewDescribeBatchOperationLogDetailsRequest() (request *DescribeBatchOperati
     request = &DescribeBatchOperationLogDetailsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("domain", APIVersion, "DescribeBatchOperationLogDetails")
     
     
@@ -622,6 +631,7 @@ func NewDescribeBatchOperationLogsRequest() (request *DescribeBatchOperationLogs
     request = &DescribeBatchOperationLogsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("domain", APIVersion, "DescribeBatchOperationLogs")
     
     
@@ -673,6 +683,7 @@ func NewDescribeDomainBaseInfoRequest() (request *DescribeDomainBaseInfoRequest)
     request = &DescribeDomainBaseInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("domain", APIVersion, "DescribeDomainBaseInfo")
     
     
@@ -730,6 +741,7 @@ func NewDescribeDomainNameListRequest() (request *DescribeDomainNameListRequest)
     request = &DescribeDomainNameListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("domain", APIVersion, "DescribeDomainNameList")
     
     
@@ -779,6 +791,7 @@ func NewDescribeDomainPriceListRequest() (request *DescribeDomainPriceListReques
     request = &DescribeDomainPriceListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("domain", APIVersion, "DescribeDomainPriceList")
     
     
@@ -832,6 +845,7 @@ func NewDescribeDomainSimpleInfoRequest() (request *DescribeDomainSimpleInfoRequ
     request = &DescribeDomainSimpleInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("domain", APIVersion, "DescribeDomainSimpleInfo")
     
     
@@ -887,6 +901,7 @@ func NewDescribePhoneEmailListRequest() (request *DescribePhoneEmailListRequest)
     request = &DescribePhoneEmailListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("domain", APIVersion, "DescribePhoneEmailList")
     
     
@@ -936,6 +951,7 @@ func NewDescribeTemplateRequest() (request *DescribeTemplateRequest) {
     request = &DescribeTemplateRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("domain", APIVersion, "DescribeTemplate")
     
     
@@ -999,6 +1015,7 @@ func NewDescribeTemplateListRequest() (request *DescribeTemplateListRequest) {
     request = &DescribeTemplateListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("domain", APIVersion, "DescribeTemplateList")
     
     
@@ -1058,6 +1075,7 @@ func NewModifyDomainDNSBatchRequest() (request *ModifyDomainDNSBatchRequest) {
     request = &ModifyDomainDNSBatchRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("domain", APIVersion, "ModifyDomainDNSBatch")
     
     
@@ -1133,6 +1151,7 @@ func NewModifyDomainOwnerBatchRequest() (request *ModifyDomainOwnerBatchRequest)
     request = &ModifyDomainOwnerBatchRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("domain", APIVersion, "ModifyDomainOwnerBatch")
     
     
@@ -1192,6 +1211,7 @@ func NewRenewDomainBatchRequest() (request *RenewDomainBatchRequest) {
     request = &RenewDomainBatchRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("domain", APIVersion, "RenewDomainBatch")
     
     
@@ -1257,6 +1277,7 @@ func NewSendPhoneEmailCodeRequest() (request *SendPhoneEmailCodeRequest) {
     request = &SendPhoneEmailCodeRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("domain", APIVersion, "SendPhoneEmailCode")
     
     
@@ -1320,6 +1341,7 @@ func NewSetDomainAutoRenewRequest() (request *SetDomainAutoRenewRequest) {
     request = &SetDomainAutoRenewRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("domain", APIVersion, "SetDomainAutoRenew")
     
     
@@ -1383,6 +1405,7 @@ func NewTransferInDomainBatchRequest() (request *TransferInDomainBatchRequest) {
     request = &TransferInDomainBatchRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("domain", APIVersion, "TransferInDomainBatch")
     
     
@@ -1454,6 +1477,7 @@ func NewTransferProhibitionBatchRequest() (request *TransferProhibitionBatchRequ
     request = &TransferProhibitionBatchRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("domain", APIVersion, "TransferProhibitionBatch")
     
     
@@ -1517,6 +1541,7 @@ func NewUpdateProhibitionBatchRequest() (request *UpdateProhibitionBatchRequest)
     request = &UpdateProhibitionBatchRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("domain", APIVersion, "UpdateProhibitionBatch")
     
     
@@ -1580,6 +1605,7 @@ func NewUploadImageRequest() (request *UploadImageRequest) {
     request = &UploadImageRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("domain", APIVersion, "UploadImage")
     
     

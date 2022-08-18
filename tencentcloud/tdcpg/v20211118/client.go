@@ -49,6 +49,7 @@ func NewCloneClusterToPointInTimeRequest() (request *CloneClusterToPointInTimeRe
     request = &CloneClusterToPointInTimeRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tdcpg", APIVersion, "CloneClusterToPointInTime")
     
     
@@ -148,6 +149,7 @@ func NewCreateClusterRequest() (request *CreateClusterRequest) {
     request = &CreateClusterRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tdcpg", APIVersion, "CreateCluster")
     
     
@@ -251,6 +253,7 @@ func NewCreateClusterInstancesRequest() (request *CreateClusterInstancesRequest)
     request = &CreateClusterInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tdcpg", APIVersion, "CreateClusterInstances")
     
     
@@ -330,6 +333,7 @@ func NewDeleteClusterRequest() (request *DeleteClusterRequest) {
     request = &DeleteClusterRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tdcpg", APIVersion, "DeleteCluster")
     
     
@@ -387,6 +391,7 @@ func NewDeleteClusterInstancesRequest() (request *DeleteClusterInstancesRequest)
     request = &DeleteClusterInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tdcpg", APIVersion, "DeleteClusterInstances")
     
     
@@ -452,6 +457,7 @@ func NewDescribeAccountsRequest() (request *DescribeAccountsRequest) {
     request = &DescribeAccountsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tdcpg", APIVersion, "DescribeAccounts")
     
     
@@ -513,6 +519,7 @@ func NewDescribeClusterBackupsRequest() (request *DescribeClusterBackupsRequest)
     request = &DescribeClusterBackupsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tdcpg", APIVersion, "DescribeClusterBackups")
     
     
@@ -572,6 +579,7 @@ func NewDescribeClusterEndpointsRequest() (request *DescribeClusterEndpointsRequ
     request = &DescribeClusterEndpointsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tdcpg", APIVersion, "DescribeClusterEndpoints")
     
     
@@ -631,6 +639,7 @@ func NewDescribeClusterInstancesRequest() (request *DescribeClusterInstancesRequ
     request = &DescribeClusterInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tdcpg", APIVersion, "DescribeClusterInstances")
     
     
@@ -688,6 +697,7 @@ func NewDescribeClusterRecoveryTimeRangeRequest() (request *DescribeClusterRecov
     request = &DescribeClusterRecoveryTimeRangeRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tdcpg", APIVersion, "DescribeClusterRecoveryTimeRange")
     
     
@@ -761,6 +771,7 @@ func NewDescribeClustersRequest() (request *DescribeClustersRequest) {
     request = &DescribeClustersRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tdcpg", APIVersion, "DescribeClusters")
     
     
@@ -820,6 +831,7 @@ func NewDescribeResourcesByDealNameRequest() (request *DescribeResourcesByDealNa
     request = &DescribeResourcesByDealNameRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tdcpg", APIVersion, "DescribeResourcesByDealName")
     
     
@@ -879,6 +891,7 @@ func NewIsolateClusterRequest() (request *IsolateClusterRequest) {
     request = &IsolateClusterRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tdcpg", APIVersion, "IsolateCluster")
     
     
@@ -952,6 +965,7 @@ func NewIsolateClusterInstancesRequest() (request *IsolateClusterInstancesReques
     request = &IsolateClusterInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tdcpg", APIVersion, "IsolateClusterInstances")
     
     
@@ -1029,6 +1043,7 @@ func NewModifyAccountDescriptionRequest() (request *ModifyAccountDescriptionRequ
     request = &ModifyAccountDescriptionRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tdcpg", APIVersion, "ModifyAccountDescription")
     
     
@@ -1094,6 +1109,7 @@ func NewModifyClusterEndpointWanStatusRequest() (request *ModifyClusterEndpointW
     request = &ModifyClusterEndpointWanStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tdcpg", APIVersion, "ModifyClusterEndpointWanStatus")
     
     
@@ -1159,6 +1175,7 @@ func NewModifyClusterInstancesSpecRequest() (request *ModifyClusterInstancesSpec
     request = &ModifyClusterInstancesSpecRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tdcpg", APIVersion, "ModifyClusterInstancesSpec")
     
     
@@ -1240,6 +1257,7 @@ func NewModifyClusterNameRequest() (request *ModifyClusterNameRequest) {
     request = &ModifyClusterNameRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tdcpg", APIVersion, "ModifyClusterName")
     
     
@@ -1303,6 +1321,7 @@ func NewModifyClustersAutoRenewFlagRequest() (request *ModifyClustersAutoRenewFl
     request = &ModifyClustersAutoRenewFlagRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tdcpg", APIVersion, "ModifyClustersAutoRenewFlag")
     
     
@@ -1366,6 +1385,7 @@ func NewRecoverClusterRequest() (request *RecoverClusterRequest) {
     request = &RecoverClusterRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tdcpg", APIVersion, "RecoverCluster")
     
     
@@ -1433,6 +1453,7 @@ func NewRecoverClusterInstancesRequest() (request *RecoverClusterInstancesReques
     request = &RecoverClusterInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tdcpg", APIVersion, "RecoverClusterInstances")
     
     
@@ -1512,6 +1533,7 @@ func NewRenewClusterRequest() (request *RenewClusterRequest) {
     request = &RenewClusterRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tdcpg", APIVersion, "RenewCluster")
     
     
@@ -1577,6 +1599,7 @@ func NewResetAccountPasswordRequest() (request *ResetAccountPasswordRequest) {
     request = &ResetAccountPasswordRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tdcpg", APIVersion, "ResetAccountPassword")
     
     
@@ -1642,6 +1665,7 @@ func NewRestartClusterInstancesRequest() (request *RestartClusterInstancesReques
     request = &RestartClusterInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tdcpg", APIVersion, "RestartClusterInstances")
     
     
@@ -1707,6 +1731,7 @@ func NewTransformClusterPayModeRequest() (request *TransformClusterPayModeReques
     request = &TransformClusterPayModeRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tdcpg", APIVersion, "TransformClusterPayMode")
     
     

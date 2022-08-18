@@ -49,6 +49,7 @@ func NewBatchDescribeKTVMusicDetailsRequest() (request *BatchDescribeKTVMusicDet
     request = &BatchDescribeKTVMusicDetailsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("yinsuda", APIVersion, "BatchDescribeKTVMusicDetails")
     
     
@@ -90,6 +91,7 @@ func NewDescribeKTVPlaylistDetailRequest() (request *DescribeKTVPlaylistDetailRe
     request = &DescribeKTVPlaylistDetailRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("yinsuda", APIVersion, "DescribeKTVPlaylistDetail")
     
     
@@ -137,6 +139,7 @@ func NewDescribeKTVPlaylistsRequest() (request *DescribeKTVPlaylistsRequest) {
     request = &DescribeKTVPlaylistsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("yinsuda", APIVersion, "DescribeKTVPlaylists")
     
     
@@ -184,6 +187,7 @@ func NewDescribeKTVSuggestionsRequest() (request *DescribeKTVSuggestionsRequest)
     request = &DescribeKTVSuggestionsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("yinsuda", APIVersion, "DescribeKTVSuggestions")
     
     
@@ -231,6 +235,7 @@ func NewSearchKTVMusicsRequest() (request *SearchKTVMusicsRequest) {
     request = &SearchKTVMusicsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("yinsuda", APIVersion, "SearchKTVMusics")
     
     

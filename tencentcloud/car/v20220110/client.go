@@ -49,6 +49,7 @@ func NewApplyConcurrentRequest() (request *ApplyConcurrentRequest) {
     request = &ApplyConcurrentRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("car", APIVersion, "ApplyConcurrent")
     
     
@@ -110,6 +111,7 @@ func NewCreateSessionRequest() (request *CreateSessionRequest) {
     request = &CreateSessionRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("car", APIVersion, "CreateSession")
     
     
@@ -179,6 +181,7 @@ func NewDestroySessionRequest() (request *DestroySessionRequest) {
     request = &DestroySessionRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("car", APIVersion, "DestroySession")
     
     

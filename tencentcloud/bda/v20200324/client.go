@@ -49,6 +49,7 @@ func NewCreateGroupRequest() (request *CreateGroupRequest) {
     request = &CreateGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bda", APIVersion, "CreateGroup")
     
     
@@ -156,6 +157,7 @@ func NewCreatePersonRequest() (request *CreatePersonRequest) {
     request = &CreatePersonRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bda", APIVersion, "CreatePerson")
     
     
@@ -281,6 +283,7 @@ func NewCreateSegmentationTaskRequest() (request *CreateSegmentationTaskRequest)
     request = &CreateSegmentationTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bda", APIVersion, "CreateSegmentationTask")
     
     
@@ -348,6 +351,7 @@ func NewCreateTraceRequest() (request *CreateTraceRequest) {
     request = &CreateTraceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bda", APIVersion, "CreateTrace")
     
     
@@ -459,6 +463,7 @@ func NewDeleteGroupRequest() (request *DeleteGroupRequest) {
     request = &DeleteGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bda", APIVersion, "DeleteGroup")
     
     
@@ -528,6 +533,7 @@ func NewDeletePersonRequest() (request *DeletePersonRequest) {
     request = &DeletePersonRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bda", APIVersion, "DeletePerson")
     
     
@@ -593,6 +599,7 @@ func NewDescribeSegmentationTaskRequest() (request *DescribeSegmentationTaskRequ
     request = &DescribeSegmentationTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bda", APIVersion, "DescribeSegmentationTask")
     
     
@@ -652,6 +659,7 @@ func NewDetectBodyRequest() (request *DetectBodyRequest) {
     request = &DetectBodyRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bda", APIVersion, "DetectBody")
     
     
@@ -737,6 +745,7 @@ func NewDetectBodyJointsRequest() (request *DetectBodyJointsRequest) {
     request = &DetectBodyJointsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bda", APIVersion, "DetectBodyJoints")
     
     
@@ -824,6 +833,7 @@ func NewGetGroupListRequest() (request *GetGroupListRequest) {
     request = &GetGroupListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bda", APIVersion, "GetGroupList")
     
     
@@ -891,6 +901,7 @@ func NewGetPersonListRequest() (request *GetPersonListRequest) {
     request = &GetPersonListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bda", APIVersion, "GetPersonList")
     
     
@@ -962,6 +973,7 @@ func NewGetSummaryInfoRequest() (request *GetSummaryInfoRequest) {
     request = &GetSummaryInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bda", APIVersion, "GetSummaryInfo")
     
     
@@ -1027,6 +1039,7 @@ func NewModifyGroupRequest() (request *ModifyGroupRequest) {
     request = &ModifyGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bda", APIVersion, "ModifyGroup")
     
     
@@ -1100,6 +1113,7 @@ func NewModifyPersonInfoRequest() (request *ModifyPersonInfoRequest) {
     request = &ModifyPersonInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bda", APIVersion, "ModifyPersonInfo")
     
     
@@ -1167,6 +1181,7 @@ func NewSearchTraceRequest() (request *SearchTraceRequest) {
     request = &SearchTraceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bda", APIVersion, "SearchTrace")
     
     
@@ -1282,6 +1297,7 @@ func NewSegmentCustomizedPortraitPicRequest() (request *SegmentCustomizedPortrai
     request = &SegmentCustomizedPortraitPicRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bda", APIVersion, "SegmentCustomizedPortraitPic")
     
     
@@ -1373,6 +1389,7 @@ func NewSegmentPortraitPicRequest() (request *SegmentPortraitPicRequest) {
     request = &SegmentPortraitPicRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bda", APIVersion, "SegmentPortraitPic")
     
     
@@ -1462,6 +1479,7 @@ func NewTerminateSegmentationTaskRequest() (request *TerminateSegmentationTaskRe
     request = &TerminateSegmentationTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bda", APIVersion, "TerminateSegmentationTask")
     
     

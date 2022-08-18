@@ -49,6 +49,7 @@ func NewCreateCallBackRequest() (request *CreateCallBackRequest) {
     request = &CreateCallBackRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("npp", APIVersion, "CreateCallBack")
     
     
@@ -90,6 +91,7 @@ func NewDelVirtualNumRequest() (request *DelVirtualNumRequest) {
     request = &DelVirtualNumRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("npp", APIVersion, "DelVirtualNum")
     
     
@@ -131,6 +133,7 @@ func NewDeleteCallBackRequest() (request *DeleteCallBackRequest) {
     request = &DeleteCallBackRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("npp", APIVersion, "DeleteCallBack")
     
     
@@ -172,6 +175,7 @@ func NewDescribeCallBackCdrRequest() (request *DescribeCallBackCdrRequest) {
     request = &DescribeCallBackCdrRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("npp", APIVersion, "DescribeCallBackCdr")
     
     
@@ -213,6 +217,7 @@ func NewDescribeCallBackStatusRequest() (request *DescribeCallBackStatusRequest)
     request = &DescribeCallBackStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("npp", APIVersion, "DescribeCallBackStatus")
     
     
@@ -254,6 +259,7 @@ func NewDescribeCallerDisplayListRequest() (request *DescribeCallerDisplayListRe
     request = &DescribeCallerDisplayListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("npp", APIVersion, "DescribeCallerDisplayList")
     
     
@@ -295,6 +301,7 @@ func NewGet400CdrRequest() (request *Get400CdrRequest) {
     request = &Get400CdrRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("npp", APIVersion, "Get400Cdr")
     
     
@@ -336,6 +343,7 @@ func NewGetVirtualNumRequest() (request *GetVirtualNumRequest) {
     request = &GetVirtualNumRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("npp", APIVersion, "GetVirtualNum")
     
     

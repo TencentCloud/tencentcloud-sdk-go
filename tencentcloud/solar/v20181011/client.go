@@ -49,6 +49,7 @@ func NewCheckStaffChUserRequest() (request *CheckStaffChUserRequest) {
     request = &CheckStaffChUserRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("solar", APIVersion, "CheckStaffChUser")
     
     
@@ -98,6 +99,7 @@ func NewCopyActivityChannelRequest() (request *CopyActivityChannelRequest) {
     request = &CopyActivityChannelRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("solar", APIVersion, "CopyActivityChannel")
     
     
@@ -149,6 +151,7 @@ func NewCreateProjectRequest() (request *CreateProjectRequest) {
     request = &CreateProjectRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("solar", APIVersion, "CreateProject")
     
     
@@ -200,6 +203,7 @@ func NewCreateSubProjectRequest() (request *CreateSubProjectRequest) {
     request = &CreateSubProjectRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("solar", APIVersion, "CreateSubProject")
     
     
@@ -251,6 +255,7 @@ func NewDeleteProjectRequest() (request *DeleteProjectRequest) {
     request = &DeleteProjectRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("solar", APIVersion, "DeleteProject")
     
     
@@ -298,6 +303,7 @@ func NewDescribeCustomerRequest() (request *DescribeCustomerRequest) {
     request = &DescribeCustomerRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("solar", APIVersion, "DescribeCustomer")
     
     
@@ -345,6 +351,7 @@ func NewDescribeCustomersRequest() (request *DescribeCustomersRequest) {
     request = &DescribeCustomersRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("solar", APIVersion, "DescribeCustomers")
     
     
@@ -392,6 +399,7 @@ func NewDescribeProjectRequest() (request *DescribeProjectRequest) {
     request = &DescribeProjectRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("solar", APIVersion, "DescribeProject")
     
     
@@ -439,6 +447,7 @@ func NewDescribeProjectStockRequest() (request *DescribeProjectStockRequest) {
     request = &DescribeProjectStockRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("solar", APIVersion, "DescribeProjectStock")
     
     
@@ -486,6 +495,7 @@ func NewDescribeProjectsRequest() (request *DescribeProjectsRequest) {
     request = &DescribeProjectsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("solar", APIVersion, "DescribeProjects")
     
     
@@ -533,6 +543,7 @@ func NewDescribeResourceTemplateHeadersRequest() (request *DescribeResourceTempl
     request = &DescribeResourceTemplateHeadersRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("solar", APIVersion, "DescribeResourceTemplateHeaders")
     
     
@@ -582,6 +593,7 @@ func NewDescribeSubProjectRequest() (request *DescribeSubProjectRequest) {
     request = &DescribeSubProjectRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("solar", APIVersion, "DescribeSubProject")
     
     
@@ -631,6 +643,7 @@ func NewExpireFlowRequest() (request *ExpireFlowRequest) {
     request = &ExpireFlowRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("solar", APIVersion, "ExpireFlow")
     
     
@@ -680,6 +693,7 @@ func NewModifyProjectRequest() (request *ModifyProjectRequest) {
     request = &ModifyProjectRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("solar", APIVersion, "ModifyProject")
     
     
@@ -729,6 +743,7 @@ func NewOffLineProjectRequest() (request *OffLineProjectRequest) {
     request = &OffLineProjectRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("solar", APIVersion, "OffLineProject")
     
     
@@ -776,6 +791,7 @@ func NewReplenishProjectStockRequest() (request *ReplenishProjectStockRequest) {
     request = &ReplenishProjectStockRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("solar", APIVersion, "ReplenishProjectStock")
     
     
@@ -823,6 +839,7 @@ func NewSendWxTouchTaskRequest() (request *SendWxTouchTaskRequest) {
     request = &SendWxTouchTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("solar", APIVersion, "SendWxTouchTask")
     
     

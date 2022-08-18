@@ -49,6 +49,7 @@ func NewCreateDomainRequest() (request *CreateDomainRequest) {
     request = &CreateDomainRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("sslpod", APIVersion, "CreateDomain")
     
     
@@ -120,6 +121,7 @@ func NewDeleteDomainRequest() (request *DeleteDomainRequest) {
     request = &DeleteDomainRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("sslpod", APIVersion, "DeleteDomain")
     
     
@@ -169,6 +171,7 @@ func NewDescribeDashboardRequest() (request *DescribeDashboardRequest) {
     request = &DescribeDashboardRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("sslpod", APIVersion, "DescribeDashboard")
     
     
@@ -216,6 +219,7 @@ func NewDescribeDomainCertsRequest() (request *DescribeDomainCertsRequest) {
     request = &DescribeDomainCertsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("sslpod", APIVersion, "DescribeDomainCerts")
     
     
@@ -265,6 +269,7 @@ func NewDescribeDomainTagsRequest() (request *DescribeDomainTagsRequest) {
     request = &DescribeDomainTagsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("sslpod", APIVersion, "DescribeDomainTags")
     
     
@@ -312,6 +317,7 @@ func NewDescribeDomainsRequest() (request *DescribeDomainsRequest) {
     request = &DescribeDomainsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("sslpod", APIVersion, "DescribeDomains")
     
     
@@ -361,6 +367,7 @@ func NewDescribeNoticeInfoRequest() (request *DescribeNoticeInfoRequest) {
     request = &DescribeNoticeInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("sslpod", APIVersion, "DescribeNoticeInfo")
     
     
@@ -408,6 +415,7 @@ func NewModifyDomainTagsRequest() (request *ModifyDomainTagsRequest) {
     request = &ModifyDomainTagsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("sslpod", APIVersion, "ModifyDomainTags")
     
     
@@ -461,6 +469,7 @@ func NewRefreshDomainRequest() (request *RefreshDomainRequest) {
     request = &RefreshDomainRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("sslpod", APIVersion, "RefreshDomain")
     
     
@@ -512,6 +521,7 @@ func NewResolveDomainRequest() (request *ResolveDomainRequest) {
     request = &ResolveDomainRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("sslpod", APIVersion, "ResolveDomain")
     
     

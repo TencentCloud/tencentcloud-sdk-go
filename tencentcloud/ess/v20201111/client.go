@@ -49,6 +49,7 @@ func NewCancelFlowRequest() (request *CancelFlowRequest) {
     request = &CancelFlowRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ess", APIVersion, "CancelFlow")
     
     
@@ -130,6 +131,7 @@ func NewCancelMultiFlowSignQRCodeRequest() (request *CancelMultiFlowSignQRCodeRe
     request = &CancelMultiFlowSignQRCodeRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ess", APIVersion, "CancelMultiFlowSignQRCode")
     
     
@@ -195,6 +197,7 @@ func NewCreateBatchCancelFlowUrlRequest() (request *CreateBatchCancelFlowUrlRequ
     request = &CreateBatchCancelFlowUrlRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ess", APIVersion, "CreateBatchCancelFlowUrl")
     
     
@@ -246,6 +249,7 @@ func NewCreateConvertTaskApiRequest() (request *CreateConvertTaskApiRequest) {
     request = &CreateConvertTaskApiRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ess", APIVersion, "CreateConvertTaskApi")
     
     
@@ -299,6 +303,7 @@ func NewCreateDocumentRequest() (request *CreateDocumentRequest) {
     request = &CreateDocumentRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ess", APIVersion, "CreateDocument")
     
     
@@ -428,6 +433,7 @@ func NewCreateFlowRequest() (request *CreateFlowRequest) {
     request = &CreateFlowRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ess", APIVersion, "CreateFlow")
     
     
@@ -617,6 +623,7 @@ func NewCreateFlowByFilesRequest() (request *CreateFlowByFilesRequest) {
     request = &CreateFlowByFilesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ess", APIVersion, "CreateFlowByFiles")
     
     
@@ -912,6 +919,7 @@ func NewCreateFlowSignReviewRequest() (request *CreateFlowSignReviewRequest) {
     request = &CreateFlowSignReviewRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ess", APIVersion, "CreateFlowSignReview")
     
     
@@ -1011,6 +1019,7 @@ func NewCreateMultiFlowSignQRCodeRequest() (request *CreateMultiFlowSignQRCodeRe
     request = &CreateMultiFlowSignQRCodeRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ess", APIVersion, "CreateMultiFlowSignQRCode")
     
     
@@ -1108,6 +1117,7 @@ func NewCreateSchemeUrlRequest() (request *CreateSchemeUrlRequest) {
     request = &CreateSchemeUrlRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ess", APIVersion, "CreateSchemeUrl")
     
     
@@ -1219,6 +1229,7 @@ func NewDescribeFileUrlsRequest() (request *DescribeFileUrlsRequest) {
     request = &DescribeFileUrlsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ess", APIVersion, "DescribeFileUrls")
     
     
@@ -1300,6 +1311,7 @@ func NewDescribeFlowBriefsRequest() (request *DescribeFlowBriefsRequest) {
     request = &DescribeFlowBriefsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ess", APIVersion, "DescribeFlowBriefs")
     
     
@@ -1427,6 +1439,7 @@ func NewDescribeFlowTemplatesRequest() (request *DescribeFlowTemplatesRequest) {
     request = &DescribeFlowTemplatesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ess", APIVersion, "DescribeFlowTemplates")
     
     
@@ -1510,6 +1523,7 @@ func NewDescribeThirdPartyAuthCodeRequest() (request *DescribeThirdPartyAuthCode
     request = &DescribeThirdPartyAuthCodeRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ess", APIVersion, "DescribeThirdPartyAuthCode")
     
     
@@ -1571,6 +1585,7 @@ func NewGetTaskResultApiRequest() (request *GetTaskResultApiRequest) {
     request = &GetTaskResultApiRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ess", APIVersion, "GetTaskResultApi")
     
     
@@ -1626,6 +1641,7 @@ func NewStartFlowRequest() (request *StartFlowRequest) {
     request = &StartFlowRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ess", APIVersion, "StartFlow")
     
     
@@ -1751,6 +1767,7 @@ func NewUploadFilesRequest() (request *UploadFilesRequest) {
     request = &UploadFilesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ess", APIVersion, "UploadFiles")
     
     

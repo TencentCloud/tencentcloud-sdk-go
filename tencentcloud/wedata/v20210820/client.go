@@ -49,6 +49,7 @@ func NewBatchDeleteTasksNewRequest() (request *BatchDeleteTasksNewRequest) {
     request = &BatchDeleteTasksNewRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("wedata", APIVersion, "BatchDeleteTasksNew")
     
     
@@ -94,6 +95,7 @@ func NewBatchModifyOwnersNewRequest() (request *BatchModifyOwnersNewRequest) {
     request = &BatchModifyOwnersNewRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("wedata", APIVersion, "BatchModifyOwnersNew")
     
     
@@ -139,6 +141,7 @@ func NewBatchStopTasksNewRequest() (request *BatchStopTasksNewRequest) {
     request = &BatchStopTasksNewRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("wedata", APIVersion, "BatchStopTasksNew")
     
     
@@ -190,6 +193,7 @@ func NewCreateFolderRequest() (request *CreateFolderRequest) {
     request = &CreateFolderRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("wedata", APIVersion, "CreateFolder")
     
     
@@ -241,6 +245,7 @@ func NewCreateTaskRequest() (request *CreateTaskRequest) {
     request = &CreateTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("wedata", APIVersion, "CreateTask")
     
     
@@ -292,6 +297,7 @@ func NewCreateWorkflowRequest() (request *CreateWorkflowRequest) {
     request = &CreateWorkflowRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("wedata", APIVersion, "CreateWorkflow")
     
     
@@ -343,6 +349,7 @@ func NewDeleteFolderRequest() (request *DeleteFolderRequest) {
     request = &DeleteFolderRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("wedata", APIVersion, "DeleteFolder")
     
     
@@ -394,6 +401,7 @@ func NewDeleteWorkflowNewRequest() (request *DeleteWorkflowNewRequest) {
     request = &DeleteWorkflowNewRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("wedata", APIVersion, "DeleteWorkflowNew")
     
     
@@ -445,6 +453,7 @@ func NewDescribeDependTasksNewRequest() (request *DescribeDependTasksNewRequest)
     request = &DescribeDependTasksNewRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("wedata", APIVersion, "DescribeDependTasksNew")
     
     
@@ -496,6 +505,7 @@ func NewDescribeFolderListRequest() (request *DescribeFolderListRequest) {
     request = &DescribeFolderListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("wedata", APIVersion, "DescribeFolderList")
     
     
@@ -547,6 +557,7 @@ func NewDescribeFolderWorkflowListRequest() (request *DescribeFolderWorkflowList
     request = &DescribeFolderWorkflowListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("wedata", APIVersion, "DescribeFolderWorkflowList")
     
     
@@ -598,6 +609,7 @@ func NewDescribeInstanceLogsRequest() (request *DescribeInstanceLogsRequest) {
     request = &DescribeInstanceLogsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("wedata", APIVersion, "DescribeInstanceLogs")
     
     
@@ -649,6 +661,7 @@ func NewDescribeProjectRequest() (request *DescribeProjectRequest) {
     request = &DescribeProjectRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("wedata", APIVersion, "DescribeProject")
     
     
@@ -698,6 +711,7 @@ func NewDescribeRelatedInstancesRequest() (request *DescribeRelatedInstancesRequ
     request = &DescribeRelatedInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("wedata", APIVersion, "DescribeRelatedInstances")
     
     
@@ -747,6 +761,7 @@ func NewDescribeTaskDetailRequest() (request *DescribeTaskDetailRequest) {
     request = &DescribeTaskDetailRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("wedata", APIVersion, "DescribeTaskDetail")
     
     
@@ -800,6 +815,7 @@ func NewDescribeTaskInstancesRequest() (request *DescribeTaskInstancesRequest) {
     request = &DescribeTaskInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("wedata", APIVersion, "DescribeTaskInstances")
     
     
@@ -849,6 +865,7 @@ func NewDescribeTaskScriptRequest() (request *DescribeTaskScriptRequest) {
     request = &DescribeTaskScriptRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("wedata", APIVersion, "DescribeTaskScript")
     
     
@@ -902,6 +919,7 @@ func NewDescribeTasksByPageRequest() (request *DescribeTasksByPageRequest) {
     request = &DescribeTasksByPageRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("wedata", APIVersion, "DescribeTasksByPage")
     
     
@@ -955,6 +973,7 @@ func NewForceSucInstancesRequest() (request *ForceSucInstancesRequest) {
     request = &ForceSucInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("wedata", APIVersion, "ForceSucInstances")
     
     
@@ -1008,6 +1027,7 @@ func NewFreezeTasksRequest() (request *FreezeTasksRequest) {
     request = &FreezeTasksRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("wedata", APIVersion, "FreezeTasks")
     
     
@@ -1061,6 +1081,7 @@ func NewFreezeTasksByMultiWorkflowRequest() (request *FreezeTasksByMultiWorkflow
     request = &FreezeTasksByMultiWorkflowRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("wedata", APIVersion, "FreezeTasksByMultiWorkflow")
     
     
@@ -1114,6 +1135,7 @@ func NewKillInstancesRequest() (request *KillInstancesRequest) {
     request = &KillInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("wedata", APIVersion, "KillInstances")
     
     
@@ -1167,6 +1189,7 @@ func NewMakeUpTasksNewRequest() (request *MakeUpTasksNewRequest) {
     request = &MakeUpTasksNewRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("wedata", APIVersion, "MakeUpTasksNew")
     
     
@@ -1226,6 +1249,7 @@ func NewMakeUpWorkflowNewRequest() (request *MakeUpWorkflowNewRequest) {
     request = &MakeUpWorkflowNewRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("wedata", APIVersion, "MakeUpWorkflowNew")
     
     
@@ -1277,6 +1301,7 @@ func NewModifyFolderRequest() (request *ModifyFolderRequest) {
     request = &ModifyFolderRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("wedata", APIVersion, "ModifyFolder")
     
     
@@ -1328,6 +1353,7 @@ func NewModifyTaskInfoRequest() (request *ModifyTaskInfoRequest) {
     request = &ModifyTaskInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("wedata", APIVersion, "ModifyTaskInfo")
     
     
@@ -1379,6 +1405,7 @@ func NewModifyTaskLinksRequest() (request *ModifyTaskLinksRequest) {
     request = &ModifyTaskLinksRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("wedata", APIVersion, "ModifyTaskLinks")
     
     
@@ -1430,6 +1457,7 @@ func NewModifyTaskScriptRequest() (request *ModifyTaskScriptRequest) {
     request = &ModifyTaskScriptRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("wedata", APIVersion, "ModifyTaskScript")
     
     
@@ -1481,6 +1509,7 @@ func NewModifyWorkflowInfoRequest() (request *ModifyWorkflowInfoRequest) {
     request = &ModifyWorkflowInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("wedata", APIVersion, "ModifyWorkflowInfo")
     
     
@@ -1532,6 +1561,7 @@ func NewModifyWorkflowScheduleRequest() (request *ModifyWorkflowScheduleRequest)
     request = &ModifyWorkflowScheduleRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("wedata", APIVersion, "ModifyWorkflowSchedule")
     
     
@@ -1583,6 +1613,7 @@ func NewRegisterEventRequest() (request *RegisterEventRequest) {
     request = &RegisterEventRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("wedata", APIVersion, "RegisterEvent")
     
     
@@ -1634,6 +1665,7 @@ func NewRegisterEventListenerRequest() (request *RegisterEventListenerRequest) {
     request = &RegisterEventListenerRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("wedata", APIVersion, "RegisterEventListener")
     
     
@@ -1685,6 +1717,7 @@ func NewRerunInstancesRequest() (request *RerunInstancesRequest) {
     request = &RerunInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("wedata", APIVersion, "RerunInstances")
     
     
@@ -1736,6 +1769,7 @@ func NewRunTaskRequest() (request *RunTaskRequest) {
     request = &RunTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("wedata", APIVersion, "RunTask")
     
     
@@ -1787,6 +1821,7 @@ func NewSetTaskAlarmNewRequest() (request *SetTaskAlarmNewRequest) {
     request = &SetTaskAlarmNewRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("wedata", APIVersion, "SetTaskAlarmNew")
     
     
@@ -1838,6 +1873,7 @@ func NewSubmitTaskRequest() (request *SubmitTaskRequest) {
     request = &SubmitTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("wedata", APIVersion, "SubmitTask")
     
     
@@ -1889,6 +1925,7 @@ func NewSubmitWorkflowRequest() (request *SubmitWorkflowRequest) {
     request = &SubmitWorkflowRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("wedata", APIVersion, "SubmitWorkflow")
     
     
@@ -1940,6 +1977,7 @@ func NewTriggerEventRequest() (request *TriggerEventRequest) {
     request = &TriggerEventRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("wedata", APIVersion, "TriggerEvent")
     
     

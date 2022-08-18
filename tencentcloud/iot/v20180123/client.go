@@ -49,6 +49,7 @@ func NewActivateRuleRequest() (request *ActivateRuleRequest) {
     request = &ActivateRuleRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iot", APIVersion, "ActivateRule")
     
     
@@ -118,6 +119,7 @@ func NewAddDeviceRequest() (request *AddDeviceRequest) {
     request = &AddDeviceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iot", APIVersion, "AddDevice")
     
     
@@ -181,6 +183,7 @@ func NewAddProductRequest() (request *AddProductRequest) {
     request = &AddProductRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iot", APIVersion, "AddProduct")
     
     
@@ -250,6 +253,7 @@ func NewAddRuleRequest() (request *AddRuleRequest) {
     request = &AddRuleRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iot", APIVersion, "AddRule")
     
     
@@ -313,6 +317,7 @@ func NewAddTopicRequest() (request *AddTopicRequest) {
     request = &AddTopicRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iot", APIVersion, "AddTopic")
     
     
@@ -372,6 +377,7 @@ func NewAppAddUserRequest() (request *AppAddUserRequest) {
     request = &AppAddUserRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iot", APIVersion, "AppAddUser")
     
     
@@ -427,6 +433,7 @@ func NewAppDeleteDeviceRequest() (request *AppDeleteDeviceRequest) {
     request = &AppDeleteDeviceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iot", APIVersion, "AppDeleteDevice")
     
     
@@ -482,6 +489,7 @@ func NewAppGetDeviceRequest() (request *AppGetDeviceRequest) {
     request = &AppGetDeviceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iot", APIVersion, "AppGetDevice")
     
     
@@ -535,6 +543,7 @@ func NewAppGetDeviceDataRequest() (request *AppGetDeviceDataRequest) {
     request = &AppGetDeviceDataRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iot", APIVersion, "AppGetDeviceData")
     
     
@@ -592,6 +601,7 @@ func NewAppGetDeviceStatusesRequest() (request *AppGetDeviceStatusesRequest) {
     request = &AppGetDeviceStatusesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iot", APIVersion, "AppGetDeviceStatuses")
     
     
@@ -651,6 +661,7 @@ func NewAppGetDevicesRequest() (request *AppGetDevicesRequest) {
     request = &AppGetDevicesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iot", APIVersion, "AppGetDevices")
     
     
@@ -700,6 +711,7 @@ func NewAppGetTokenRequest() (request *AppGetTokenRequest) {
     request = &AppGetTokenRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iot", APIVersion, "AppGetToken")
     
     
@@ -755,6 +767,7 @@ func NewAppGetUserRequest() (request *AppGetUserRequest) {
     request = &AppGetUserRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iot", APIVersion, "AppGetUser")
     
     
@@ -810,6 +823,7 @@ func NewAppIssueDeviceControlRequest() (request *AppIssueDeviceControlRequest) {
     request = &AppIssueDeviceControlRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iot", APIVersion, "AppIssueDeviceControl")
     
     
@@ -857,6 +871,7 @@ func NewAppResetPasswordRequest() (request *AppResetPasswordRequest) {
     request = &AppResetPasswordRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iot", APIVersion, "AppResetPassword")
     
     
@@ -908,6 +923,7 @@ func NewAppSecureAddDeviceRequest() (request *AppSecureAddDeviceRequest) {
     request = &AppSecureAddDeviceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iot", APIVersion, "AppSecureAddDevice")
     
     
@@ -969,6 +985,7 @@ func NewAppUpdateDeviceRequest() (request *AppUpdateDeviceRequest) {
     request = &AppUpdateDeviceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iot", APIVersion, "AppUpdateDevice")
     
     
@@ -1026,6 +1043,7 @@ func NewAppUpdateUserRequest() (request *AppUpdateUserRequest) {
     request = &AppUpdateUserRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iot", APIVersion, "AppUpdateUser")
     
     
@@ -1077,6 +1095,7 @@ func NewAssociateSubDeviceToGatewayProductRequest() (request *AssociateSubDevice
     request = &AssociateSubDeviceToGatewayProductRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iot", APIVersion, "AssociateSubDeviceToGatewayProduct")
     
     
@@ -1126,6 +1145,7 @@ func NewDeactivateRuleRequest() (request *DeactivateRuleRequest) {
     request = &DeactivateRuleRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iot", APIVersion, "DeactivateRule")
     
     
@@ -1187,6 +1207,7 @@ func NewDeleteDeviceRequest() (request *DeleteDeviceRequest) {
     request = &DeleteDeviceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iot", APIVersion, "DeleteDevice")
     
     
@@ -1246,6 +1267,7 @@ func NewDeleteProductRequest() (request *DeleteProductRequest) {
     request = &DeleteProductRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iot", APIVersion, "DeleteProduct")
     
     
@@ -1309,6 +1331,7 @@ func NewDeleteRuleRequest() (request *DeleteRuleRequest) {
     request = &DeleteRuleRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iot", APIVersion, "DeleteRule")
     
     
@@ -1366,6 +1389,7 @@ func NewDeleteTopicRequest() (request *DeleteTopicRequest) {
     request = &DeleteTopicRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iot", APIVersion, "DeleteTopic")
     
     
@@ -1421,6 +1445,7 @@ func NewGetDataHistoryRequest() (request *GetDataHistoryRequest) {
     request = &GetDataHistoryRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iot", APIVersion, "GetDataHistory")
     
     
@@ -1476,6 +1501,7 @@ func NewGetDebugLogRequest() (request *GetDebugLogRequest) {
     request = &GetDebugLogRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iot", APIVersion, "GetDebugLog")
     
     
@@ -1533,6 +1559,7 @@ func NewGetDeviceRequest() (request *GetDeviceRequest) {
     request = &GetDeviceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iot", APIVersion, "GetDevice")
     
     
@@ -1584,6 +1611,7 @@ func NewGetDeviceDataRequest() (request *GetDeviceDataRequest) {
     request = &GetDeviceDataRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iot", APIVersion, "GetDeviceData")
     
     
@@ -1639,6 +1667,7 @@ func NewGetDeviceLogRequest() (request *GetDeviceLogRequest) {
     request = &GetDeviceLogRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iot", APIVersion, "GetDeviceLog")
     
     
@@ -1696,6 +1725,7 @@ func NewGetDeviceSignaturesRequest() (request *GetDeviceSignaturesRequest) {
     request = &GetDeviceSignaturesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iot", APIVersion, "GetDeviceSignatures")
     
     
@@ -1751,6 +1781,7 @@ func NewGetDeviceStatisticsRequest() (request *GetDeviceStatisticsRequest) {
     request = &GetDeviceStatisticsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iot", APIVersion, "GetDeviceStatistics")
     
     
@@ -1808,6 +1839,7 @@ func NewGetDeviceStatusesRequest() (request *GetDeviceStatusesRequest) {
     request = &GetDeviceStatusesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iot", APIVersion, "GetDeviceStatuses")
     
     
@@ -1861,6 +1893,7 @@ func NewGetDevicesRequest() (request *GetDevicesRequest) {
     request = &GetDevicesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iot", APIVersion, "GetDevices")
     
     
@@ -1912,6 +1945,7 @@ func NewGetProductRequest() (request *GetProductRequest) {
     request = &GetProductRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iot", APIVersion, "GetProduct")
     
     
@@ -1965,6 +1999,7 @@ func NewGetProductsRequest() (request *GetProductsRequest) {
     request = &GetProductsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iot", APIVersion, "GetProducts")
     
     
@@ -2014,6 +2049,7 @@ func NewGetRuleRequest() (request *GetRuleRequest) {
     request = &GetRuleRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iot", APIVersion, "GetRule")
     
     
@@ -2065,6 +2101,7 @@ func NewGetRulesRequest() (request *GetRulesRequest) {
     request = &GetRulesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iot", APIVersion, "GetRules")
     
     
@@ -2114,6 +2151,7 @@ func NewGetTopicRequest() (request *GetTopicRequest) {
     request = &GetTopicRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iot", APIVersion, "GetTopic")
     
     
@@ -2165,6 +2203,7 @@ func NewGetTopicsRequest() (request *GetTopicsRequest) {
     request = &GetTopicsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iot", APIVersion, "GetTopics")
     
     
@@ -2214,6 +2253,7 @@ func NewIssueDeviceControlRequest() (request *IssueDeviceControlRequest) {
     request = &IssueDeviceControlRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iot", APIVersion, "IssueDeviceControl")
     
     
@@ -2271,6 +2311,7 @@ func NewPublishMsgRequest() (request *PublishMsgRequest) {
     request = &PublishMsgRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iot", APIVersion, "PublishMsg")
     
     
@@ -2332,6 +2373,7 @@ func NewResetDeviceRequest() (request *ResetDeviceRequest) {
     request = &ResetDeviceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iot", APIVersion, "ResetDevice")
     
     
@@ -2393,6 +2435,7 @@ func NewUnassociateSubDeviceFromGatewayProductRequest() (request *UnassociateSub
     request = &UnassociateSubDeviceFromGatewayProductRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iot", APIVersion, "UnassociateSubDeviceFromGatewayProduct")
     
     
@@ -2442,6 +2485,7 @@ func NewUpdateProductRequest() (request *UpdateProductRequest) {
     request = &UpdateProductRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iot", APIVersion, "UpdateProduct")
     
     
@@ -2501,6 +2545,7 @@ func NewUpdateRuleRequest() (request *UpdateRuleRequest) {
     request = &UpdateRuleRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iot", APIVersion, "UpdateRule")
     
     

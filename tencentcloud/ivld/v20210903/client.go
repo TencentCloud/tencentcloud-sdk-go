@@ -49,6 +49,7 @@ func NewAddCustomPersonImageRequest() (request *AddCustomPersonImageRequest) {
     request = &AddCustomPersonImageRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ivld", APIVersion, "AddCustomPersonImage")
     
     
@@ -140,6 +141,7 @@ func NewCreateCustomCategoryRequest() (request *CreateCustomCategoryRequest) {
     request = &CreateCustomCategoryRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ivld", APIVersion, "CreateCustomCategory")
     
     
@@ -217,6 +219,7 @@ func NewCreateCustomGroupRequest() (request *CreateCustomGroupRequest) {
     request = &CreateCustomGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ivld", APIVersion, "CreateCustomGroup")
     
     
@@ -320,6 +323,7 @@ func NewCreateCustomPersonRequest() (request *CreateCustomPersonRequest) {
     request = &CreateCustomPersonRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ivld", APIVersion, "CreateCustomPerson")
     
     
@@ -433,6 +437,7 @@ func NewCreateDefaultCategoriesRequest() (request *CreateDefaultCategoriesReques
     request = &CreateDefaultCategoriesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ivld", APIVersion, "CreateDefaultCategories")
     
     
@@ -494,6 +499,7 @@ func NewCreateTaskRequest() (request *CreateTaskRequest) {
     request = &CreateTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ivld", APIVersion, "CreateTask")
     
     
@@ -591,6 +597,7 @@ func NewDeleteCustomCategoryRequest() (request *DeleteCustomCategoryRequest) {
     request = &DeleteCustomCategoryRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ivld", APIVersion, "DeleteCustomCategory")
     
     
@@ -656,6 +663,7 @@ func NewDeleteCustomPersonRequest() (request *DeleteCustomPersonRequest) {
     request = &DeleteCustomPersonRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ivld", APIVersion, "DeleteCustomPerson")
     
     
@@ -717,6 +725,7 @@ func NewDeleteCustomPersonImageRequest() (request *DeleteCustomPersonImageReques
     request = &DeleteCustomPersonImageRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ivld", APIVersion, "DeleteCustomPersonImage")
     
     
@@ -784,6 +793,7 @@ func NewDeleteMediaRequest() (request *DeleteMediaRequest) {
     request = &DeleteMediaRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ivld", APIVersion, "DeleteMedia")
     
     
@@ -861,6 +871,7 @@ func NewDeleteTaskRequest() (request *DeleteTaskRequest) {
     request = &DeleteTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ivld", APIVersion, "DeleteTask")
     
     
@@ -936,6 +947,7 @@ func NewDescribeCustomCategoriesRequest() (request *DescribeCustomCategoriesRequ
     request = &DescribeCustomCategoriesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ivld", APIVersion, "DescribeCustomCategories")
     
     
@@ -993,6 +1005,7 @@ func NewDescribeCustomGroupRequest() (request *DescribeCustomGroupRequest) {
     request = &DescribeCustomGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ivld", APIVersion, "DescribeCustomGroup")
     
     
@@ -1056,6 +1069,7 @@ func NewDescribeCustomPersonDetailRequest() (request *DescribeCustomPersonDetail
     request = &DescribeCustomPersonDetailRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ivld", APIVersion, "DescribeCustomPersonDetail")
     
     
@@ -1117,6 +1131,7 @@ func NewDescribeCustomPersonsRequest() (request *DescribeCustomPersonsRequest) {
     request = &DescribeCustomPersonsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ivld", APIVersion, "DescribeCustomPersons")
     
     
@@ -1196,6 +1211,7 @@ func NewDescribeMediaRequest() (request *DescribeMediaRequest) {
     request = &DescribeMediaRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ivld", APIVersion, "DescribeMedia")
     
     
@@ -1269,6 +1285,7 @@ func NewDescribeMediasRequest() (request *DescribeMediasRequest) {
     request = &DescribeMediasRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ivld", APIVersion, "DescribeMedias")
     
     
@@ -1370,6 +1387,7 @@ func NewDescribeTaskRequest() (request *DescribeTaskRequest) {
     request = &DescribeTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ivld", APIVersion, "DescribeTask")
     
     
@@ -1443,6 +1461,7 @@ func NewDescribeTaskDetailRequest() (request *DescribeTaskDetailRequest) {
     request = &DescribeTaskDetailRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ivld", APIVersion, "DescribeTaskDetail")
     
     
@@ -1508,6 +1527,7 @@ func NewDescribeTasksRequest() (request *DescribeTasksRequest) {
     request = &DescribeTasksRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ivld", APIVersion, "DescribeTasks")
     
     
@@ -1587,6 +1607,7 @@ func NewImportMediaRequest() (request *ImportMediaRequest) {
     request = &ImportMediaRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ivld", APIVersion, "ImportMedia")
     
     
@@ -1838,6 +1859,7 @@ func NewModifyCallbackRequest() (request *ModifyCallbackRequest) {
     request = &ModifyCallbackRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ivld", APIVersion, "ModifyCallback")
     
     
@@ -2047,6 +2069,7 @@ func NewQueryCallbackRequest() (request *QueryCallbackRequest) {
     request = &QueryCallbackRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ivld", APIVersion, "QueryCallback")
     
     
@@ -2108,6 +2131,7 @@ func NewUpdateCustomCategoryRequest() (request *UpdateCustomCategoryRequest) {
     request = &UpdateCustomCategoryRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ivld", APIVersion, "UpdateCustomCategory")
     
     
@@ -2191,6 +2215,7 @@ func NewUpdateCustomPersonRequest() (request *UpdateCustomPersonRequest) {
     request = &UpdateCustomPersonRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ivld", APIVersion, "UpdateCustomPerson")
     
     

@@ -49,6 +49,7 @@ func NewCreateApmInstanceRequest() (request *CreateApmInstanceRequest) {
     request = &CreateApmInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("apm", APIVersion, "CreateApmInstance")
     
     
@@ -100,6 +101,7 @@ func NewDescribeApmAgentRequest() (request *DescribeApmAgentRequest) {
     request = &DescribeApmAgentRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("apm", APIVersion, "DescribeApmAgent")
     
     
@@ -163,6 +165,7 @@ func NewDescribeApmInstancesRequest() (request *DescribeApmInstancesRequest) {
     request = &DescribeApmInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("apm", APIVersion, "DescribeApmInstances")
     
     
@@ -214,6 +217,7 @@ func NewDescribeGeneralMetricDataRequest() (request *DescribeGeneralMetricDataRe
     request = &DescribeGeneralMetricDataRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("apm", APIVersion, "DescribeGeneralMetricData")
     
     
@@ -293,6 +297,7 @@ func NewDescribeMetricRecordsRequest() (request *DescribeMetricRecordsRequest) {
     request = &DescribeMetricRecordsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("apm", APIVersion, "DescribeMetricRecords")
     
     
@@ -352,6 +357,7 @@ func NewDescribeServiceOverviewRequest() (request *DescribeServiceOverviewReques
     request = &DescribeServiceOverviewRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("apm", APIVersion, "DescribeServiceOverview")
     
     

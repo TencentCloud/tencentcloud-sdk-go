@@ -49,6 +49,7 @@ func NewCreateDedicatedClusterRequest() (request *CreateDedicatedClusterRequest)
     request = &CreateDedicatedClusterRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdc", APIVersion, "CreateDedicatedCluster")
     
     
@@ -100,6 +101,7 @@ func NewCreateDedicatedClusterOrderRequest() (request *CreateDedicatedClusterOrd
     request = &CreateDedicatedClusterOrderRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdc", APIVersion, "CreateDedicatedClusterOrder")
     
     
@@ -159,6 +161,7 @@ func NewCreateSiteRequest() (request *CreateSiteRequest) {
     request = &CreateSiteRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdc", APIVersion, "CreateSite")
     
     
@@ -208,6 +211,7 @@ func NewDeleteDedicatedClustersRequest() (request *DeleteDedicatedClustersReques
     request = &DeleteDedicatedClustersRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdc", APIVersion, "DeleteDedicatedClusters")
     
     
@@ -255,6 +259,7 @@ func NewDeleteSitesRequest() (request *DeleteSitesRequest) {
     request = &DeleteSitesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdc", APIVersion, "DeleteSites")
     
     
@@ -306,6 +311,7 @@ func NewDescribeDedicatedClusterCosCapacityRequest() (request *DescribeDedicated
     request = &DescribeDedicatedClusterCosCapacityRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdc", APIVersion, "DescribeDedicatedClusterCosCapacity")
     
     
@@ -355,6 +361,7 @@ func NewDescribeDedicatedClusterHostStatisticsRequest() (request *DescribeDedica
     request = &DescribeDedicatedClusterHostStatisticsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdc", APIVersion, "DescribeDedicatedClusterHostStatistics")
     
     
@@ -406,6 +413,7 @@ func NewDescribeDedicatedClusterHostsRequest() (request *DescribeDedicatedCluste
     request = &DescribeDedicatedClusterHostsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdc", APIVersion, "DescribeDedicatedClusterHosts")
     
     
@@ -457,6 +465,7 @@ func NewDescribeDedicatedClusterInstanceTypesRequest() (request *DescribeDedicat
     request = &DescribeDedicatedClusterInstanceTypesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdc", APIVersion, "DescribeDedicatedClusterInstanceTypes")
     
     
@@ -506,6 +515,7 @@ func NewDescribeDedicatedClusterOrdersRequest() (request *DescribeDedicatedClust
     request = &DescribeDedicatedClusterOrdersRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdc", APIVersion, "DescribeDedicatedClusterOrders")
     
     
@@ -555,6 +565,7 @@ func NewDescribeDedicatedClusterOverviewRequest() (request *DescribeDedicatedClu
     request = &DescribeDedicatedClusterOverviewRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdc", APIVersion, "DescribeDedicatedClusterOverview")
     
     
@@ -604,6 +615,7 @@ func NewDescribeDedicatedClusterTypesRequest() (request *DescribeDedicatedCluste
     request = &DescribeDedicatedClusterTypesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdc", APIVersion, "DescribeDedicatedClusterTypes")
     
     
@@ -653,6 +665,7 @@ func NewDescribeDedicatedClustersRequest() (request *DescribeDedicatedClustersRe
     request = &DescribeDedicatedClustersRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdc", APIVersion, "DescribeDedicatedClusters")
     
     
@@ -702,6 +715,7 @@ func NewDescribeDedicatedSupportedZonesRequest() (request *DescribeDedicatedSupp
     request = &DescribeDedicatedSupportedZonesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdc", APIVersion, "DescribeDedicatedSupportedZones")
     
     
@@ -751,6 +765,7 @@ func NewDescribeSitesRequest() (request *DescribeSitesRequest) {
     request = &DescribeSitesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdc", APIVersion, "DescribeSites")
     
     
@@ -800,6 +815,7 @@ func NewDescribeSitesDetailRequest() (request *DescribeSitesDetailRequest) {
     request = &DescribeSitesDetailRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdc", APIVersion, "DescribeSitesDetail")
     
     
@@ -847,6 +863,7 @@ func NewModifyDedicatedClusterInfoRequest() (request *ModifyDedicatedClusterInfo
     request = &ModifyDedicatedClusterInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdc", APIVersion, "ModifyDedicatedClusterInfo")
     
     
@@ -908,6 +925,7 @@ func NewModifyOrderStatusRequest() (request *ModifyOrderStatusRequest) {
     request = &ModifyOrderStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdc", APIVersion, "ModifyOrderStatus")
     
     
@@ -955,6 +973,7 @@ func NewModifySiteDeviceInfoRequest() (request *ModifySiteDeviceInfoRequest) {
     request = &ModifySiteDeviceInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdc", APIVersion, "ModifySiteDeviceInfo")
     
     
@@ -1002,6 +1021,7 @@ func NewModifySiteInfoRequest() (request *ModifySiteInfoRequest) {
     request = &ModifySiteInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdc", APIVersion, "ModifySiteInfo")
     
     

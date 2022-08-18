@@ -49,6 +49,7 @@ func NewBatchDescribeOrderCertificateRequest() (request *BatchDescribeOrderCerti
     request = &BatchDescribeOrderCertificateRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ape", APIVersion, "BatchDescribeOrderCertificate")
     
     
@@ -104,6 +105,7 @@ func NewBatchDescribeOrderImageRequest() (request *BatchDescribeOrderImageReques
     request = &BatchDescribeOrderImageRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ape", APIVersion, "BatchDescribeOrderImage")
     
     
@@ -161,6 +163,7 @@ func NewCreateOrderAndDownloadsRequest() (request *CreateOrderAndDownloadsReques
     request = &CreateOrderAndDownloadsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ape", APIVersion, "CreateOrderAndDownloads")
     
     
@@ -216,6 +219,7 @@ func NewCreateOrderAndPayRequest() (request *CreateOrderAndPayRequest) {
     request = &CreateOrderAndPayRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ape", APIVersion, "CreateOrderAndPay")
     
     
@@ -277,6 +281,7 @@ func NewDescribeAuthUsersRequest() (request *DescribeAuthUsersRequest) {
     request = &DescribeAuthUsersRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ape", APIVersion, "DescribeAuthUsers")
     
     
@@ -328,6 +333,7 @@ func NewDescribeDownloadInfosRequest() (request *DescribeDownloadInfosRequest) {
     request = &DescribeDownloadInfosRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ape", APIVersion, "DescribeDownloadInfos")
     
     
@@ -377,6 +383,7 @@ func NewDescribeImageRequest() (request *DescribeImageRequest) {
     request = &DescribeImageRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ape", APIVersion, "DescribeImage")
     
     
@@ -438,6 +445,7 @@ func NewDescribeImagesRequest() (request *DescribeImagesRequest) {
     request = &DescribeImagesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ape", APIVersion, "DescribeImages")
     
     

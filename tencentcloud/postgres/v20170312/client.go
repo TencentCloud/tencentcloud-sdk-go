@@ -49,6 +49,7 @@ func NewAddDBInstanceToReadOnlyGroupRequest() (request *AddDBInstanceToReadOnlyG
     request = &AddDBInstanceToReadOnlyGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("postgres", APIVersion, "AddDBInstanceToReadOnlyGroup")
     
     
@@ -140,6 +141,7 @@ func NewCloneDBInstanceRequest() (request *CloneDBInstanceRequest) {
     request = &CloneDBInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("postgres", APIVersion, "CloneDBInstance")
     
     
@@ -223,6 +225,7 @@ func NewCloseDBExtranetAccessRequest() (request *CloseDBExtranetAccessRequest) {
     request = &CloseDBExtranetAccessRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("postgres", APIVersion, "CloseDBExtranetAccess")
     
     
@@ -306,6 +309,7 @@ func NewCloseServerlessDBExtranetAccessRequest() (request *CloseServerlessDBExtr
     request = &CloseServerlessDBExtranetAccessRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("postgres", APIVersion, "CloseServerlessDBExtranetAccess")
     
     
@@ -427,6 +431,7 @@ func NewCreateDBInstanceNetworkAccessRequest() (request *CreateDBInstanceNetwork
     request = &CreateDBInstanceNetworkAccessRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("postgres", APIVersion, "CreateDBInstanceNetworkAccess")
     
     
@@ -514,6 +519,7 @@ func NewCreateDBInstancesRequest() (request *CreateDBInstancesRequest) {
     request = &CreateDBInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("postgres", APIVersion, "CreateDBInstances")
     
     
@@ -697,6 +703,7 @@ func NewCreateInstancesRequest() (request *CreateInstancesRequest) {
     request = &CreateInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("postgres", APIVersion, "CreateInstances")
     
     
@@ -888,6 +895,7 @@ func NewCreateReadOnlyDBInstanceRequest() (request *CreateReadOnlyDBInstanceRequ
     request = &CreateReadOnlyDBInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("postgres", APIVersion, "CreateReadOnlyDBInstance")
     
     
@@ -1077,6 +1085,7 @@ func NewCreateReadOnlyGroupRequest() (request *CreateReadOnlyGroupRequest) {
     request = &CreateReadOnlyGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("postgres", APIVersion, "CreateReadOnlyGroup")
     
     
@@ -1176,6 +1185,7 @@ func NewCreateReadOnlyGroupNetworkAccessRequest() (request *CreateReadOnlyGroupN
     request = &CreateReadOnlyGroupNetworkAccessRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("postgres", APIVersion, "CreateReadOnlyGroupNetworkAccess")
     
     
@@ -1255,6 +1265,7 @@ func NewCreateServerlessDBInstanceRequest() (request *CreateServerlessDBInstance
     request = &CreateServerlessDBInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("postgres", APIVersion, "CreateServerlessDBInstance")
     
     
@@ -1376,6 +1387,7 @@ func NewDeleteDBInstanceNetworkAccessRequest() (request *DeleteDBInstanceNetwork
     request = &DeleteDBInstanceNetworkAccessRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("postgres", APIVersion, "DeleteDBInstanceNetworkAccess")
     
     
@@ -1455,6 +1467,7 @@ func NewDeleteReadOnlyGroupRequest() (request *DeleteReadOnlyGroupRequest) {
     request = &DeleteReadOnlyGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("postgres", APIVersion, "DeleteReadOnlyGroup")
     
     
@@ -1534,6 +1547,7 @@ func NewDeleteReadOnlyGroupNetworkAccessRequest() (request *DeleteReadOnlyGroupN
     request = &DeleteReadOnlyGroupNetworkAccessRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("postgres", APIVersion, "DeleteReadOnlyGroupNetworkAccess")
     
     
@@ -1605,6 +1619,7 @@ func NewDeleteServerlessDBInstanceRequest() (request *DeleteServerlessDBInstance
     request = &DeleteServerlessDBInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("postgres", APIVersion, "DeleteServerlessDBInstance")
     
     
@@ -1694,6 +1709,7 @@ func NewDescribeAccountsRequest() (request *DescribeAccountsRequest) {
     request = &DescribeAccountsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("postgres", APIVersion, "DescribeAccounts")
     
     
@@ -1763,6 +1779,7 @@ func NewDescribeAvailableRecoveryTimeRequest() (request *DescribeAvailableRecove
     request = &DescribeAvailableRecoveryTimeRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("postgres", APIVersion, "DescribeAvailableRecoveryTime")
     
     
@@ -1824,6 +1841,7 @@ func NewDescribeBackupPlansRequest() (request *DescribeBackupPlansRequest) {
     request = &DescribeBackupPlansRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("postgres", APIVersion, "DescribeBackupPlans")
     
     
@@ -1889,6 +1907,7 @@ func NewDescribeCloneDBInstanceSpecRequest() (request *DescribeCloneDBInstanceSp
     request = &DescribeCloneDBInstanceSpecRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("postgres", APIVersion, "DescribeCloneDBInstanceSpec")
     
     
@@ -1950,6 +1969,7 @@ func NewDescribeDBBackupsRequest() (request *DescribeDBBackupsRequest) {
     request = &DescribeDBBackupsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("postgres", APIVersion, "DescribeDBBackups")
     
     
@@ -2037,6 +2057,7 @@ func NewDescribeDBErrlogsRequest() (request *DescribeDBErrlogsRequest) {
     request = &DescribeDBErrlogsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("postgres", APIVersion, "DescribeDBErrlogs")
     
     
@@ -2118,6 +2139,7 @@ func NewDescribeDBInstanceAttributeRequest() (request *DescribeDBInstanceAttribu
     request = &DescribeDBInstanceAttributeRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("postgres", APIVersion, "DescribeDBInstanceAttribute")
     
     
@@ -2201,6 +2223,7 @@ func NewDescribeDBInstanceParametersRequest() (request *DescribeDBInstanceParame
     request = &DescribeDBInstanceParametersRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("postgres", APIVersion, "DescribeDBInstanceParameters")
     
     
@@ -2260,6 +2283,7 @@ func NewDescribeDBInstancesRequest() (request *DescribeDBInstancesRequest) {
     request = &DescribeDBInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("postgres", APIVersion, "DescribeDBInstances")
     
     
@@ -2355,6 +2379,7 @@ func NewDescribeDBSlowlogsRequest() (request *DescribeDBSlowlogsRequest) {
     request = &DescribeDBSlowlogsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("postgres", APIVersion, "DescribeDBSlowlogs")
     
     
@@ -2432,6 +2457,7 @@ func NewDescribeDBXlogsRequest() (request *DescribeDBXlogsRequest) {
     request = &DescribeDBXlogsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("postgres", APIVersion, "DescribeDBXlogs")
     
     
@@ -2519,6 +2545,7 @@ func NewDescribeDatabasesRequest() (request *DescribeDatabasesRequest) {
     request = &DescribeDatabasesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("postgres", APIVersion, "DescribeDatabases")
     
     
@@ -2608,6 +2635,7 @@ func NewDescribeEncryptionKeysRequest() (request *DescribeEncryptionKeysRequest)
     request = &DescribeEncryptionKeysRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("postgres", APIVersion, "DescribeEncryptionKeys")
     
     
@@ -2659,6 +2687,7 @@ func NewDescribeOrdersRequest() (request *DescribeOrdersRequest) {
     request = &DescribeOrdersRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("postgres", APIVersion, "DescribeOrders")
     
     
@@ -2732,6 +2761,7 @@ func NewDescribeParamsEventRequest() (request *DescribeParamsEventRequest) {
     request = &DescribeParamsEventRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("postgres", APIVersion, "DescribeParamsEvent")
     
     
@@ -2791,6 +2821,7 @@ func NewDescribeProductConfigRequest() (request *DescribeProductConfigRequest) {
     request = &DescribeProductConfigRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("postgres", APIVersion, "DescribeProductConfig")
     
     
@@ -2866,6 +2897,7 @@ func NewDescribeReadOnlyGroupsRequest() (request *DescribeReadOnlyGroupsRequest)
     request = &DescribeReadOnlyGroupsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("postgres", APIVersion, "DescribeReadOnlyGroups")
     
     
@@ -2939,6 +2971,7 @@ func NewDescribeRegionsRequest() (request *DescribeRegionsRequest) {
     request = &DescribeRegionsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("postgres", APIVersion, "DescribeRegions")
     
     
@@ -3016,6 +3049,7 @@ func NewDescribeServerlessDBInstancesRequest() (request *DescribeServerlessDBIns
     request = &DescribeServerlessDBInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("postgres", APIVersion, "DescribeServerlessDBInstances")
     
     
@@ -3113,6 +3147,7 @@ func NewDescribeSlowQueryAnalysisRequest() (request *DescribeSlowQueryAnalysisRe
     request = &DescribeSlowQueryAnalysisRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("postgres", APIVersion, "DescribeSlowQueryAnalysis")
     
     
@@ -3170,6 +3205,7 @@ func NewDescribeSlowQueryListRequest() (request *DescribeSlowQueryListRequest) {
     request = &DescribeSlowQueryListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("postgres", APIVersion, "DescribeSlowQueryList")
     
     
@@ -3227,6 +3263,7 @@ func NewDescribeZonesRequest() (request *DescribeZonesRequest) {
     request = &DescribeZonesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("postgres", APIVersion, "DescribeZones")
     
     
@@ -3304,6 +3341,7 @@ func NewDestroyDBInstanceRequest() (request *DestroyDBInstanceRequest) {
     request = &DestroyDBInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("postgres", APIVersion, "DestroyDBInstance")
     
     
@@ -3417,6 +3455,7 @@ func NewDisIsolateDBInstancesRequest() (request *DisIsolateDBInstancesRequest) {
     request = &DisIsolateDBInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("postgres", APIVersion, "DisIsolateDBInstances")
     
     
@@ -3530,6 +3569,7 @@ func NewInitDBInstancesRequest() (request *InitDBInstancesRequest) {
     request = &InitDBInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("postgres", APIVersion, "InitDBInstances")
     
     
@@ -3629,6 +3669,7 @@ func NewInquiryPriceCreateDBInstancesRequest() (request *InquiryPriceCreateDBIns
     request = &InquiryPriceCreateDBInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("postgres", APIVersion, "InquiryPriceCreateDBInstances")
     
     
@@ -3716,6 +3757,7 @@ func NewInquiryPriceRenewDBInstanceRequest() (request *InquiryPriceRenewDBInstan
     request = &InquiryPriceRenewDBInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("postgres", APIVersion, "InquiryPriceRenewDBInstance")
     
     
@@ -3801,6 +3843,7 @@ func NewInquiryPriceUpgradeDBInstanceRequest() (request *InquiryPriceUpgradeDBIn
     request = &InquiryPriceUpgradeDBInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("postgres", APIVersion, "InquiryPriceUpgradeDBInstance")
     
     
@@ -3896,6 +3939,7 @@ func NewIsolateDBInstancesRequest() (request *IsolateDBInstancesRequest) {
     request = &IsolateDBInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("postgres", APIVersion, "IsolateDBInstances")
     
     
@@ -4009,6 +4053,7 @@ func NewModifyAccountRemarkRequest() (request *ModifyAccountRemarkRequest) {
     request = &ModifyAccountRemarkRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("postgres", APIVersion, "ModifyAccountRemark")
     
     
@@ -4082,6 +4127,7 @@ func NewModifyBackupPlanRequest() (request *ModifyBackupPlanRequest) {
     request = &ModifyBackupPlanRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("postgres", APIVersion, "ModifyBackupPlan")
     
     
@@ -4145,6 +4191,7 @@ func NewModifyDBInstanceDeploymentRequest() (request *ModifyDBInstanceDeployment
     request = &ModifyDBInstanceDeploymentRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("postgres", APIVersion, "ModifyDBInstanceDeployment")
     
     
@@ -4206,6 +4253,7 @@ func NewModifyDBInstanceNameRequest() (request *ModifyDBInstanceNameRequest) {
     request = &ModifyDBInstanceNameRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("postgres", APIVersion, "ModifyDBInstanceName")
     
     
@@ -4287,6 +4335,7 @@ func NewModifyDBInstanceParametersRequest() (request *ModifyDBInstanceParameters
     request = &ModifyDBInstanceParametersRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("postgres", APIVersion, "ModifyDBInstanceParameters")
     
     
@@ -4344,6 +4393,7 @@ func NewModifyDBInstanceReadOnlyGroupRequest() (request *ModifyDBInstanceReadOnl
     request = &ModifyDBInstanceReadOnlyGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("postgres", APIVersion, "ModifyDBInstanceReadOnlyGroup")
     
     
@@ -4429,6 +4479,7 @@ func NewModifyDBInstanceSpecRequest() (request *ModifyDBInstanceSpecRequest) {
     request = &ModifyDBInstanceSpecRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("postgres", APIVersion, "ModifyDBInstanceSpec")
     
     
@@ -4500,6 +4551,7 @@ func NewModifyDBInstancesProjectRequest() (request *ModifyDBInstancesProjectRequ
     request = &ModifyDBInstancesProjectRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("postgres", APIVersion, "ModifyDBInstancesProject")
     
     
@@ -4579,6 +4631,7 @@ func NewModifyReadOnlyGroupConfigRequest() (request *ModifyReadOnlyGroupConfigRe
     request = &ModifyReadOnlyGroupConfigRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("postgres", APIVersion, "ModifyReadOnlyGroupConfig")
     
     
@@ -4668,6 +4721,7 @@ func NewModifySwitchTimePeriodRequest() (request *ModifySwitchTimePeriodRequest)
     request = &ModifySwitchTimePeriodRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("postgres", APIVersion, "ModifySwitchTimePeriod")
     
     
@@ -4741,6 +4795,7 @@ func NewOpenDBExtranetAccessRequest() (request *OpenDBExtranetAccessRequest) {
     request = &OpenDBExtranetAccessRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("postgres", APIVersion, "OpenDBExtranetAccess")
     
     
@@ -4824,6 +4879,7 @@ func NewOpenServerlessDBExtranetAccessRequest() (request *OpenServerlessDBExtran
     request = &OpenServerlessDBExtranetAccessRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("postgres", APIVersion, "OpenServerlessDBExtranetAccess")
     
     
@@ -4943,6 +4999,7 @@ func NewRebalanceReadOnlyGroupRequest() (request *RebalanceReadOnlyGroupRequest)
     request = &RebalanceReadOnlyGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("postgres", APIVersion, "RebalanceReadOnlyGroup")
     
     
@@ -5022,6 +5079,7 @@ func NewRemoveDBInstanceFromReadOnlyGroupRequest() (request *RemoveDBInstanceFro
     request = &RemoveDBInstanceFromReadOnlyGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("postgres", APIVersion, "RemoveDBInstanceFromReadOnlyGroup")
     
     
@@ -5107,6 +5165,7 @@ func NewRenewInstanceRequest() (request *RenewInstanceRequest) {
     request = &RenewInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("postgres", APIVersion, "RenewInstance")
     
     
@@ -5212,6 +5271,7 @@ func NewResetAccountPasswordRequest() (request *ResetAccountPasswordRequest) {
     request = &ResetAccountPasswordRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("postgres", APIVersion, "ResetAccountPassword")
     
     
@@ -5297,6 +5357,7 @@ func NewRestartDBInstanceRequest() (request *RestartDBInstanceRequest) {
     request = &RestartDBInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("postgres", APIVersion, "RestartDBInstance")
     
     
@@ -5378,6 +5439,7 @@ func NewSetAutoRenewFlagRequest() (request *SetAutoRenewFlagRequest) {
     request = &SetAutoRenewFlagRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("postgres", APIVersion, "SetAutoRenewFlag")
     
     
@@ -5459,6 +5521,7 @@ func NewUpgradeDBInstanceRequest() (request *UpgradeDBInstanceRequest) {
     request = &UpgradeDBInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("postgres", APIVersion, "UpgradeDBInstance")
     
     

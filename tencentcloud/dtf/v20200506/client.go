@@ -49,6 +49,7 @@ func NewDescribeTransactionsRequest() (request *DescribeTransactionsRequest) {
     request = &DescribeTransactionsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dtf", APIVersion, "DescribeTransactions")
     
     

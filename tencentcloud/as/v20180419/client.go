@@ -49,6 +49,7 @@ func NewAttachInstancesRequest() (request *AttachInstancesRequest) {
     request = &AttachInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("as", APIVersion, "AttachInstances")
     
     
@@ -138,6 +139,7 @@ func NewAttachLoadBalancersRequest() (request *AttachLoadBalancersRequest) {
     request = &AttachLoadBalancersRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("as", APIVersion, "AttachLoadBalancers")
     
     
@@ -231,6 +233,7 @@ func NewClearLaunchConfigurationAttributesRequest() (request *ClearLaunchConfigu
     request = &ClearLaunchConfigurationAttributesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("as", APIVersion, "ClearLaunchConfigurationAttributes")
     
     
@@ -280,6 +283,7 @@ func NewCompleteLifecycleActionRequest() (request *CompleteLifecycleActionReques
     request = &CompleteLifecycleActionRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("as", APIVersion, "CompleteLifecycleAction")
     
     
@@ -353,6 +357,7 @@ func NewCreateAutoScalingGroupRequest() (request *CreateAutoScalingGroupRequest)
     request = &CreateAutoScalingGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("as", APIVersion, "CreateAutoScalingGroup")
     
     
@@ -480,6 +485,7 @@ func NewCreateAutoScalingGroupFromInstanceRequest() (request *CreateAutoScalingG
     request = &CreateAutoScalingGroupFromInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("as", APIVersion, "CreateAutoScalingGroupFromInstance")
     
     
@@ -585,6 +591,7 @@ func NewCreateLaunchConfigurationRequest() (request *CreateLaunchConfigurationRe
     request = &CreateLaunchConfigurationRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("as", APIVersion, "CreateLaunchConfiguration")
     
     
@@ -702,6 +709,7 @@ func NewCreateLifecycleHookRequest() (request *CreateLifecycleHookRequest) {
     request = &CreateLifecycleHookRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("as", APIVersion, "CreateLifecycleHook")
     
     
@@ -855,6 +863,7 @@ func NewCreateNotificationConfigurationRequest() (request *CreateNotificationCon
     request = &CreateNotificationConfigurationRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("as", APIVersion, "CreateNotificationConfiguration")
     
     
@@ -1038,6 +1047,7 @@ func NewCreateScalingPolicyRequest() (request *CreateScalingPolicyRequest) {
     request = &CreateScalingPolicyRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("as", APIVersion, "CreateScalingPolicy")
     
     
@@ -1109,6 +1119,7 @@ func NewCreateScheduledActionRequest() (request *CreateScheduledActionRequest) {
     request = &CreateScheduledActionRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("as", APIVersion, "CreateScheduledAction")
     
     
@@ -1190,6 +1201,7 @@ func NewDeleteAutoScalingGroupRequest() (request *DeleteAutoScalingGroupRequest)
     request = &DeleteAutoScalingGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("as", APIVersion, "DeleteAutoScalingGroup")
     
     
@@ -1255,6 +1267,7 @@ func NewDeleteLaunchConfigurationRequest() (request *DeleteLaunchConfigurationRe
     request = &DeleteLaunchConfigurationRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("as", APIVersion, "DeleteLaunchConfiguration")
     
     
@@ -1316,6 +1329,7 @@ func NewDeleteLifecycleHookRequest() (request *DeleteLifecycleHookRequest) {
     request = &DeleteLifecycleHookRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("as", APIVersion, "DeleteLifecycleHook")
     
     
@@ -1373,6 +1387,7 @@ func NewDeleteNotificationConfigurationRequest() (request *DeleteNotificationCon
     request = &DeleteNotificationConfigurationRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("as", APIVersion, "DeleteNotificationConfiguration")
     
     
@@ -1424,6 +1439,7 @@ func NewDeleteScalingPolicyRequest() (request *DeleteScalingPolicyRequest) {
     request = &DeleteScalingPolicyRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("as", APIVersion, "DeleteScalingPolicy")
     
     
@@ -1477,6 +1493,7 @@ func NewDeleteScheduledActionRequest() (request *DeleteScheduledActionRequest) {
     request = &DeleteScheduledActionRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("as", APIVersion, "DeleteScheduledAction")
     
     
@@ -1528,6 +1545,7 @@ func NewDescribeAccountLimitsRequest() (request *DescribeAccountLimitsRequest) {
     request = &DescribeAccountLimitsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("as", APIVersion, "DescribeAccountLimits")
     
     
@@ -1577,6 +1595,7 @@ func NewDescribeAutoScalingActivitiesRequest() (request *DescribeAutoScalingActi
     request = &DescribeAutoScalingActivitiesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("as", APIVersion, "DescribeAutoScalingActivities")
     
     
@@ -1640,6 +1659,7 @@ func NewDescribeAutoScalingAdvicesRequest() (request *DescribeAutoScalingAdvices
     request = &DescribeAutoScalingAdvicesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("as", APIVersion, "DescribeAutoScalingAdvices")
     
     
@@ -1691,6 +1711,7 @@ func NewDescribeAutoScalingGroupLastActivitiesRequest() (request *DescribeAutoSc
     request = &DescribeAutoScalingGroupLastActivitiesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("as", APIVersion, "DescribeAutoScalingGroupLastActivities")
     
     
@@ -1744,6 +1765,7 @@ func NewDescribeAutoScalingGroupsRequest() (request *DescribeAutoScalingGroupsRe
     request = &DescribeAutoScalingGroupsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("as", APIVersion, "DescribeAutoScalingGroups")
     
     
@@ -1823,6 +1845,7 @@ func NewDescribeAutoScalingInstancesRequest() (request *DescribeAutoScalingInsta
     request = &DescribeAutoScalingInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("as", APIVersion, "DescribeAutoScalingInstances")
     
     
@@ -1896,6 +1919,7 @@ func NewDescribeLaunchConfigurationsRequest() (request *DescribeLaunchConfigurat
     request = &DescribeLaunchConfigurationsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("as", APIVersion, "DescribeLaunchConfigurations")
     
     
@@ -1969,6 +1993,7 @@ func NewDescribeLifecycleHooksRequest() (request *DescribeLifecycleHooksRequest)
     request = &DescribeLifecycleHooksRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("as", APIVersion, "DescribeLifecycleHooks")
     
     
@@ -2042,6 +2067,7 @@ func NewDescribeNotificationConfigurationsRequest() (request *DescribeNotificati
     request = &DescribeNotificationConfigurationsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("as", APIVersion, "DescribeNotificationConfigurations")
     
     
@@ -2109,6 +2135,7 @@ func NewDescribeScalingPoliciesRequest() (request *DescribeScalingPoliciesReques
     request = &DescribeScalingPoliciesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("as", APIVersion, "DescribeScalingPolicies")
     
     
@@ -2170,6 +2197,7 @@ func NewDescribeScheduledActionsRequest() (request *DescribeScheduledActionsRequ
     request = &DescribeScheduledActionsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("as", APIVersion, "DescribeScheduledActions")
     
     
@@ -2243,6 +2271,7 @@ func NewDetachInstancesRequest() (request *DetachInstancesRequest) {
     request = &DetachInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("as", APIVersion, "DetachInstances")
     
     
@@ -2326,6 +2355,7 @@ func NewDetachLoadBalancersRequest() (request *DetachLoadBalancersRequest) {
     request = &DetachLoadBalancersRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("as", APIVersion, "DetachLoadBalancers")
     
     
@@ -2417,6 +2447,7 @@ func NewDisableAutoScalingGroupRequest() (request *DisableAutoScalingGroupReques
     request = &DisableAutoScalingGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("as", APIVersion, "DisableAutoScalingGroup")
     
     
@@ -2522,6 +2553,7 @@ func NewEnableAutoScalingGroupRequest() (request *EnableAutoScalingGroupRequest)
     request = &EnableAutoScalingGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("as", APIVersion, "EnableAutoScalingGroup")
     
     
@@ -2575,6 +2607,7 @@ func NewExecuteScalingPolicyRequest() (request *ExecuteScalingPolicyRequest) {
     request = &ExecuteScalingPolicyRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("as", APIVersion, "ExecuteScalingPolicy")
     
     
@@ -2650,6 +2683,7 @@ func NewModifyAutoScalingGroupRequest() (request *ModifyAutoScalingGroupRequest)
     request = &ModifyAutoScalingGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("as", APIVersion, "ModifyAutoScalingGroup")
     
     
@@ -2753,6 +2787,7 @@ func NewModifyDesiredCapacityRequest() (request *ModifyDesiredCapacityRequest) {
     request = &ModifyDesiredCapacityRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("as", APIVersion, "ModifyDesiredCapacity")
     
     
@@ -2818,6 +2853,7 @@ func NewModifyLaunchConfigurationAttributesRequest() (request *ModifyLaunchConfi
     request = &ModifyLaunchConfigurationAttributesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("as", APIVersion, "ModifyLaunchConfigurationAttributes")
     
     
@@ -2925,6 +2961,7 @@ func NewModifyLifecycleHookRequest() (request *ModifyLifecycleHookRequest) {
     request = &ModifyLifecycleHookRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("as", APIVersion, "ModifyLifecycleHook")
     
     
@@ -2988,6 +3025,7 @@ func NewModifyLoadBalancerTargetAttributesRequest() (request *ModifyLoadBalancer
     request = &ModifyLoadBalancerTargetAttributesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("as", APIVersion, "ModifyLoadBalancerTargetAttributes")
     
     
@@ -3079,6 +3117,7 @@ func NewModifyLoadBalancersRequest() (request *ModifyLoadBalancersRequest) {
     request = &ModifyLoadBalancersRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("as", APIVersion, "ModifyLoadBalancers")
     
     
@@ -3184,6 +3223,7 @@ func NewModifyNotificationConfigurationRequest() (request *ModifyNotificationCon
     request = &ModifyNotificationConfigurationRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("as", APIVersion, "ModifyNotificationConfiguration")
     
     
@@ -3253,6 +3293,7 @@ func NewModifyScalingPolicyRequest() (request *ModifyScalingPolicyRequest) {
     request = &ModifyScalingPolicyRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("as", APIVersion, "ModifyScalingPolicy")
     
     
@@ -3316,6 +3357,7 @@ func NewModifyScheduledActionRequest() (request *ModifyScheduledActionRequest) {
     request = &ModifyScheduledActionRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("as", APIVersion, "ModifyScheduledAction")
     
     
@@ -3393,6 +3435,7 @@ func NewRemoveInstancesRequest() (request *RemoveInstancesRequest) {
     request = &RemoveInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("as", APIVersion, "RemoveInstances")
     
     
@@ -3472,6 +3515,7 @@ func NewScaleInInstancesRequest() (request *ScaleInInstancesRequest) {
     request = &ScaleInInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("as", APIVersion, "ScaleInInstances")
     
     
@@ -3555,6 +3599,7 @@ func NewScaleOutInstancesRequest() (request *ScaleOutInstancesRequest) {
     request = &ScaleOutInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("as", APIVersion, "ScaleOutInstances")
     
     
@@ -3630,6 +3675,7 @@ func NewSetInstancesProtectionRequest() (request *SetInstancesProtectionRequest)
     request = &SetInstancesProtectionRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("as", APIVersion, "SetInstancesProtection")
     
     
@@ -3689,6 +3735,7 @@ func NewStartAutoScalingInstancesRequest() (request *StartAutoScalingInstancesRe
     request = &StartAutoScalingInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("as", APIVersion, "StartAutoScalingInstances")
     
     
@@ -3762,6 +3809,7 @@ func NewStopAutoScalingInstancesRequest() (request *StopAutoScalingInstancesRequ
     request = &StopAutoScalingInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("as", APIVersion, "StopAutoScalingInstances")
     
     
@@ -3853,6 +3901,7 @@ func NewUpgradeLaunchConfigurationRequest() (request *UpgradeLaunchConfiguration
     request = &UpgradeLaunchConfigurationRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("as", APIVersion, "UpgradeLaunchConfiguration")
     
     
@@ -3958,6 +4007,7 @@ func NewUpgradeLifecycleHookRequest() (request *UpgradeLifecycleHookRequest) {
     request = &UpgradeLifecycleHookRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("as", APIVersion, "UpgradeLifecycleHook")
     
     

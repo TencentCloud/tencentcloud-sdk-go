@@ -49,6 +49,7 @@ func NewAddAssetImageRegistryRegistryDetailRequest() (request *AddAssetImageRegi
     request = &AddAssetImageRegistryRegistryDetailRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "AddAssetImageRegistryRegistryDetail")
     
     
@@ -112,6 +113,7 @@ func NewAddCompliancePolicyItemToWhitelistRequest() (request *AddCompliancePolic
     request = &AddCompliancePolicyItemToWhitelistRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "AddCompliancePolicyItemToWhitelist")
     
     
@@ -171,6 +173,7 @@ func NewAddEditAbnormalProcessRuleRequest() (request *AddEditAbnormalProcessRule
     request = &AddEditAbnormalProcessRuleRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "AddEditAbnormalProcessRule")
     
     
@@ -244,6 +247,7 @@ func NewAddEditAccessControlRuleRequest() (request *AddEditAccessControlRuleRequ
     request = &AddEditAccessControlRuleRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "AddEditAccessControlRule")
     
     
@@ -315,6 +319,7 @@ func NewAddEditReverseShellWhiteListRequest() (request *AddEditReverseShellWhite
     request = &AddEditReverseShellWhiteListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "AddEditReverseShellWhiteList")
     
     
@@ -392,6 +397,7 @@ func NewAddEditRiskSyscallWhiteListRequest() (request *AddEditRiskSyscallWhiteLi
     request = &AddEditRiskSyscallWhiteListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "AddEditRiskSyscallWhiteList")
     
     
@@ -463,6 +469,7 @@ func NewAddEditWarningRulesRequest() (request *AddEditWarningRulesRequest) {
     request = &AddEditWarningRulesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "AddEditWarningRules")
     
     
@@ -514,6 +521,7 @@ func NewCheckRepeatAssetImageRegistryRequest() (request *CheckRepeatAssetImageRe
     request = &CheckRepeatAssetImageRegistryRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "CheckRepeatAssetImageRegistry")
     
     
@@ -577,6 +585,7 @@ func NewCreateAssetImageRegistryScanTaskRequest() (request *CreateAssetImageRegi
     request = &CreateAssetImageRegistryScanTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "CreateAssetImageRegistryScanTask")
     
     
@@ -626,6 +635,7 @@ func NewCreateAssetImageRegistryScanTaskOneKeyRequest() (request *CreateAssetIma
     request = &CreateAssetImageRegistryScanTaskOneKeyRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "CreateAssetImageRegistryScanTaskOneKey")
     
     
@@ -675,6 +685,7 @@ func NewCreateAssetImageScanSettingRequest() (request *CreateAssetImageScanSetti
     request = &CreateAssetImageScanSettingRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "CreateAssetImageScanSetting")
     
     
@@ -728,6 +739,7 @@ func NewCreateAssetImageScanTaskRequest() (request *CreateAssetImageScanTaskRequ
     request = &CreateAssetImageScanTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "CreateAssetImageScanTask")
     
     
@@ -783,6 +795,7 @@ func NewCreateCheckComponentRequest() (request *CreateCheckComponentRequest) {
     request = &CreateCheckComponentRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "CreateCheckComponent")
     
     
@@ -842,6 +855,7 @@ func NewCreateClusterCheckTaskRequest() (request *CreateClusterCheckTaskRequest)
     request = &CreateClusterCheckTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "CreateClusterCheckTask")
     
     
@@ -901,6 +915,7 @@ func NewCreateComplianceTaskRequest() (request *CreateComplianceTaskRequest) {
     request = &CreateComplianceTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "CreateComplianceTask")
     
     
@@ -962,6 +977,7 @@ func NewCreateExportComplianceStatusListJobRequest() (request *CreateExportCompl
     request = &CreateExportComplianceStatusListJobRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "CreateExportComplianceStatusListJob")
     
     
@@ -1021,6 +1037,7 @@ func NewCreateOrModifyPostPayCoresRequest() (request *CreateOrModifyPostPayCores
     request = &CreateOrModifyPostPayCoresRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "CreateOrModifyPostPayCores")
     
     
@@ -1074,6 +1091,7 @@ func NewCreateRefreshTaskRequest() (request *CreateRefreshTaskRequest) {
     request = &CreateRefreshTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "CreateRefreshTask")
     
     
@@ -1133,6 +1151,7 @@ func NewCreateVirusScanAgainRequest() (request *CreateVirusScanAgainRequest) {
     request = &CreateVirusScanAgainRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "CreateVirusScanAgain")
     
     
@@ -1194,6 +1213,7 @@ func NewCreateVirusScanTaskRequest() (request *CreateVirusScanTaskRequest) {
     request = &CreateVirusScanTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "CreateVirusScanTask")
     
     
@@ -1247,6 +1267,7 @@ func NewDeleteAbnormalProcessRulesRequest() (request *DeleteAbnormalProcessRules
     request = &DeleteAbnormalProcessRulesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "DeleteAbnormalProcessRules")
     
     
@@ -1306,6 +1327,7 @@ func NewDeleteAccessControlRulesRequest() (request *DeleteAccessControlRulesRequ
     request = &DeleteAccessControlRulesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "DeleteAccessControlRules")
     
     
@@ -1365,6 +1387,7 @@ func NewDeleteCompliancePolicyItemFromWhitelistRequest() (request *DeleteComplia
     request = &DeleteCompliancePolicyItemFromWhitelistRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "DeleteCompliancePolicyItemFromWhitelist")
     
     
@@ -1422,6 +1445,7 @@ func NewDeleteReverseShellWhiteListsRequest() (request *DeleteReverseShellWhiteL
     request = &DeleteReverseShellWhiteListsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "DeleteReverseShellWhiteLists")
     
     
@@ -1479,6 +1503,7 @@ func NewDeleteRiskSyscallWhiteListsRequest() (request *DeleteRiskSyscallWhiteLis
     request = &DeleteRiskSyscallWhiteListsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "DeleteRiskSyscallWhiteLists")
     
     
@@ -1536,6 +1561,7 @@ func NewDescribeAbnormalProcessDetailRequest() (request *DescribeAbnormalProcess
     request = &DescribeAbnormalProcessDetailRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "DescribeAbnormalProcessDetail")
     
     
@@ -1597,6 +1623,7 @@ func NewDescribeAbnormalProcessEventsRequest() (request *DescribeAbnormalProcess
     request = &DescribeAbnormalProcessEventsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "DescribeAbnormalProcessEvents")
     
     
@@ -1656,6 +1683,7 @@ func NewDescribeAbnormalProcessEventsExportRequest() (request *DescribeAbnormalP
     request = &DescribeAbnormalProcessEventsExportRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "DescribeAbnormalProcessEventsExport")
     
     
@@ -1715,6 +1743,7 @@ func NewDescribeAbnormalProcessRuleDetailRequest() (request *DescribeAbnormalPro
     request = &DescribeAbnormalProcessRuleDetailRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "DescribeAbnormalProcessRuleDetail")
     
     
@@ -1776,6 +1805,7 @@ func NewDescribeAbnormalProcessRulesRequest() (request *DescribeAbnormalProcessR
     request = &DescribeAbnormalProcessRulesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "DescribeAbnormalProcessRules")
     
     
@@ -1835,6 +1865,7 @@ func NewDescribeAbnormalProcessRulesExportRequest() (request *DescribeAbnormalPr
     request = &DescribeAbnormalProcessRulesExportRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "DescribeAbnormalProcessRulesExport")
     
     
@@ -1894,6 +1925,7 @@ func NewDescribeAccessControlDetailRequest() (request *DescribeAccessControlDeta
     request = &DescribeAccessControlDetailRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "DescribeAccessControlDetail")
     
     
@@ -1957,6 +1989,7 @@ func NewDescribeAccessControlEventsRequest() (request *DescribeAccessControlEven
     request = &DescribeAccessControlEventsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "DescribeAccessControlEvents")
     
     
@@ -2016,6 +2049,7 @@ func NewDescribeAccessControlEventsExportRequest() (request *DescribeAccessContr
     request = &DescribeAccessControlEventsExportRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "DescribeAccessControlEventsExport")
     
     
@@ -2075,6 +2109,7 @@ func NewDescribeAccessControlRuleDetailRequest() (request *DescribeAccessControl
     request = &DescribeAccessControlRuleDetailRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "DescribeAccessControlRuleDetail")
     
     
@@ -2136,6 +2171,7 @@ func NewDescribeAccessControlRulesRequest() (request *DescribeAccessControlRules
     request = &DescribeAccessControlRulesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "DescribeAccessControlRules")
     
     
@@ -2195,6 +2231,7 @@ func NewDescribeAccessControlRulesExportRequest() (request *DescribeAccessContro
     request = &DescribeAccessControlRulesExportRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "DescribeAccessControlRulesExport")
     
     
@@ -2254,6 +2291,7 @@ func NewDescribeAffectedClusterCountRequest() (request *DescribeAffectedClusterC
     request = &DescribeAffectedClusterCountRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "DescribeAffectedClusterCount")
     
     
@@ -2313,6 +2351,7 @@ func NewDescribeAffectedNodeListRequest() (request *DescribeAffectedNodeListRequ
     request = &DescribeAffectedNodeListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "DescribeAffectedNodeList")
     
     
@@ -2372,6 +2411,7 @@ func NewDescribeAffectedWorkloadListRequest() (request *DescribeAffectedWorkload
     request = &DescribeAffectedWorkloadListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "DescribeAffectedWorkloadList")
     
     
@@ -2431,6 +2471,7 @@ func NewDescribeAssetAppServiceListRequest() (request *DescribeAssetAppServiceLi
     request = &DescribeAssetAppServiceListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "DescribeAssetAppServiceList")
     
     
@@ -2484,6 +2525,7 @@ func NewDescribeAssetComponentListRequest() (request *DescribeAssetComponentList
     request = &DescribeAssetComponentListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "DescribeAssetComponentList")
     
     
@@ -2537,6 +2579,7 @@ func NewDescribeAssetContainerDetailRequest() (request *DescribeAssetContainerDe
     request = &DescribeAssetContainerDetailRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "DescribeAssetContainerDetail")
     
     
@@ -2590,6 +2633,7 @@ func NewDescribeAssetContainerListRequest() (request *DescribeAssetContainerList
     request = &DescribeAssetContainerListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "DescribeAssetContainerList")
     
     
@@ -2643,6 +2687,7 @@ func NewDescribeAssetDBServiceListRequest() (request *DescribeAssetDBServiceList
     request = &DescribeAssetDBServiceListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "DescribeAssetDBServiceList")
     
     
@@ -2696,6 +2741,7 @@ func NewDescribeAssetHostDetailRequest() (request *DescribeAssetHostDetailReques
     request = &DescribeAssetHostDetailRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "DescribeAssetHostDetail")
     
     
@@ -2749,6 +2795,7 @@ func NewDescribeAssetHostListRequest() (request *DescribeAssetHostListRequest) {
     request = &DescribeAssetHostListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "DescribeAssetHostList")
     
     
@@ -2802,6 +2849,7 @@ func NewDescribeAssetImageBindRuleInfoRequest() (request *DescribeAssetImageBind
     request = &DescribeAssetImageBindRuleInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "DescribeAssetImageBindRuleInfo")
     
     
@@ -2861,6 +2909,7 @@ func NewDescribeAssetImageDetailRequest() (request *DescribeAssetImageDetailRequ
     request = &DescribeAssetImageDetailRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "DescribeAssetImageDetail")
     
     
@@ -2916,6 +2965,7 @@ func NewDescribeAssetImageHostListRequest() (request *DescribeAssetImageHostList
     request = &DescribeAssetImageHostListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "DescribeAssetImageHostList")
     
     
@@ -2969,6 +3019,7 @@ func NewDescribeAssetImageListRequest() (request *DescribeAssetImageListRequest)
     request = &DescribeAssetImageListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "DescribeAssetImageList")
     
     
@@ -3022,6 +3073,7 @@ func NewDescribeAssetImageListExportRequest() (request *DescribeAssetImageListEx
     request = &DescribeAssetImageListExportRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "DescribeAssetImageListExport")
     
     
@@ -3075,6 +3127,7 @@ func NewDescribeAssetImageRegistryAssetStatusRequest() (request *DescribeAssetIm
     request = &DescribeAssetImageRegistryAssetStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "DescribeAssetImageRegistryAssetStatus")
     
     
@@ -3128,6 +3181,7 @@ func NewDescribeAssetImageRegistryDetailRequest() (request *DescribeAssetImageRe
     request = &DescribeAssetImageRegistryDetailRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "DescribeAssetImageRegistryDetail")
     
     
@@ -3177,6 +3231,7 @@ func NewDescribeAssetImageRegistryListRequest() (request *DescribeAssetImageRegi
     request = &DescribeAssetImageRegistryListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "DescribeAssetImageRegistryList")
     
     
@@ -3226,6 +3281,7 @@ func NewDescribeAssetImageRegistryListExportRequest() (request *DescribeAssetIma
     request = &DescribeAssetImageRegistryListExportRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "DescribeAssetImageRegistryListExport")
     
     
@@ -3275,6 +3331,7 @@ func NewDescribeAssetImageRegistryRegistryDetailRequest() (request *DescribeAsse
     request = &DescribeAssetImageRegistryRegistryDetailRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "DescribeAssetImageRegistryRegistryDetail")
     
     
@@ -3338,6 +3395,7 @@ func NewDescribeAssetImageRegistryRegistryListRequest() (request *DescribeAssetI
     request = &DescribeAssetImageRegistryRegistryListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "DescribeAssetImageRegistryRegistryList")
     
     
@@ -3387,6 +3445,7 @@ func NewDescribeAssetImageRegistryRiskInfoListRequest() (request *DescribeAssetI
     request = &DescribeAssetImageRegistryRiskInfoListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "DescribeAssetImageRegistryRiskInfoList")
     
     
@@ -3440,6 +3499,7 @@ func NewDescribeAssetImageRegistryRiskListExportRequest() (request *DescribeAsse
     request = &DescribeAssetImageRegistryRiskListExportRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "DescribeAssetImageRegistryRiskListExport")
     
     
@@ -3489,6 +3549,7 @@ func NewDescribeAssetImageRegistryScanStatusOneKeyRequest() (request *DescribeAs
     request = &DescribeAssetImageRegistryScanStatusOneKeyRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "DescribeAssetImageRegistryScanStatusOneKey")
     
     
@@ -3540,6 +3601,7 @@ func NewDescribeAssetImageRegistrySummaryRequest() (request *DescribeAssetImageR
     request = &DescribeAssetImageRegistrySummaryRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "DescribeAssetImageRegistrySummary")
     
     
@@ -3589,6 +3651,7 @@ func NewDescribeAssetImageRegistryVirusListRequest() (request *DescribeAssetImag
     request = &DescribeAssetImageRegistryVirusListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "DescribeAssetImageRegistryVirusList")
     
     
@@ -3638,6 +3701,7 @@ func NewDescribeAssetImageRegistryVirusListExportRequest() (request *DescribeAss
     request = &DescribeAssetImageRegistryVirusListExportRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "DescribeAssetImageRegistryVirusListExport")
     
     
@@ -3687,6 +3751,7 @@ func NewDescribeAssetImageRegistryVulListRequest() (request *DescribeAssetImageR
     request = &DescribeAssetImageRegistryVulListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "DescribeAssetImageRegistryVulList")
     
     
@@ -3736,6 +3801,7 @@ func NewDescribeAssetImageRegistryVulListExportRequest() (request *DescribeAsset
     request = &DescribeAssetImageRegistryVulListExportRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "DescribeAssetImageRegistryVulListExport")
     
     
@@ -3785,6 +3851,7 @@ func NewDescribeAssetImageRiskListRequest() (request *DescribeAssetImageRiskList
     request = &DescribeAssetImageRiskListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "DescribeAssetImageRiskList")
     
     
@@ -3840,6 +3907,7 @@ func NewDescribeAssetImageRiskListExportRequest() (request *DescribeAssetImageRi
     request = &DescribeAssetImageRiskListExportRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "DescribeAssetImageRiskListExport")
     
     
@@ -3893,6 +3961,7 @@ func NewDescribeAssetImageScanSettingRequest() (request *DescribeAssetImageScanS
     request = &DescribeAssetImageScanSettingRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "DescribeAssetImageScanSetting")
     
     
@@ -3944,6 +4013,7 @@ func NewDescribeAssetImageScanStatusRequest() (request *DescribeAssetImageScanSt
     request = &DescribeAssetImageScanStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "DescribeAssetImageScanStatus")
     
     
@@ -3999,6 +4069,7 @@ func NewDescribeAssetImageScanTaskRequest() (request *DescribeAssetImageScanTask
     request = &DescribeAssetImageScanTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "DescribeAssetImageScanTask")
     
     
@@ -4052,6 +4123,7 @@ func NewDescribeAssetImageSimpleListRequest() (request *DescribeAssetImageSimple
     request = &DescribeAssetImageSimpleListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "DescribeAssetImageSimpleList")
     
     
@@ -4105,6 +4177,7 @@ func NewDescribeAssetImageVirusListRequest() (request *DescribeAssetImageVirusLi
     request = &DescribeAssetImageVirusListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "DescribeAssetImageVirusList")
     
     
@@ -4160,6 +4233,7 @@ func NewDescribeAssetImageVirusListExportRequest() (request *DescribeAssetImageV
     request = &DescribeAssetImageVirusListExportRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "DescribeAssetImageVirusListExport")
     
     
@@ -4213,6 +4287,7 @@ func NewDescribeAssetImageVulListRequest() (request *DescribeAssetImageVulListRe
     request = &DescribeAssetImageVulListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "DescribeAssetImageVulList")
     
     
@@ -4268,6 +4343,7 @@ func NewDescribeAssetImageVulListExportRequest() (request *DescribeAssetImageVul
     request = &DescribeAssetImageVulListExportRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "DescribeAssetImageVulListExport")
     
     
@@ -4321,6 +4397,7 @@ func NewDescribeAssetPortListRequest() (request *DescribeAssetPortListRequest) {
     request = &DescribeAssetPortListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "DescribeAssetPortList")
     
     
@@ -4374,6 +4451,7 @@ func NewDescribeAssetProcessListRequest() (request *DescribeAssetProcessListRequ
     request = &DescribeAssetProcessListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "DescribeAssetProcessList")
     
     
@@ -4427,6 +4505,7 @@ func NewDescribeAssetSummaryRequest() (request *DescribeAssetSummaryRequest) {
     request = &DescribeAssetSummaryRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "DescribeAssetSummary")
     
     
@@ -4480,6 +4559,7 @@ func NewDescribeAssetWebServiceListRequest() (request *DescribeAssetWebServiceLi
     request = &DescribeAssetWebServiceListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "DescribeAssetWebServiceList")
     
     
@@ -4533,6 +4613,7 @@ func NewDescribeCheckItemListRequest() (request *DescribeCheckItemListRequest) {
     request = &DescribeCheckItemListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "DescribeCheckItemList")
     
     
@@ -4592,6 +4673,7 @@ func NewDescribeClusterDetailRequest() (request *DescribeClusterDetailRequest) {
     request = &DescribeClusterDetailRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "DescribeClusterDetail")
     
     
@@ -4651,6 +4733,7 @@ func NewDescribeClusterSummaryRequest() (request *DescribeClusterSummaryRequest)
     request = &DescribeClusterSummaryRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "DescribeClusterSummary")
     
     
@@ -4710,6 +4793,7 @@ func NewDescribeComplianceAssetDetailInfoRequest() (request *DescribeComplianceA
     request = &DescribeComplianceAssetDetailInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "DescribeComplianceAssetDetailInfo")
     
     
@@ -4769,6 +4853,7 @@ func NewDescribeComplianceAssetListRequest() (request *DescribeComplianceAssetLi
     request = &DescribeComplianceAssetListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "DescribeComplianceAssetList")
     
     
@@ -4826,6 +4911,7 @@ func NewDescribeComplianceAssetPolicyItemListRequest() (request *DescribeComplia
     request = &DescribeComplianceAssetPolicyItemListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "DescribeComplianceAssetPolicyItemList")
     
     
@@ -4885,6 +4971,7 @@ func NewDescribeCompliancePeriodTaskListRequest() (request *DescribeCompliancePe
     request = &DescribeCompliancePeriodTaskListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "DescribeCompliancePeriodTaskList")
     
     
@@ -4940,6 +5027,7 @@ func NewDescribeCompliancePolicyItemAffectedAssetListRequest() (request *Describ
     request = &DescribeCompliancePolicyItemAffectedAssetListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "DescribeCompliancePolicyItemAffectedAssetList")
     
     
@@ -4997,6 +5085,7 @@ func NewDescribeCompliancePolicyItemAffectedSummaryRequest() (request *DescribeC
     request = &DescribeCompliancePolicyItemAffectedSummaryRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "DescribeCompliancePolicyItemAffectedSummary")
     
     
@@ -5054,6 +5143,7 @@ func NewDescribeComplianceScanFailedAssetListRequest() (request *DescribeComplia
     request = &DescribeComplianceScanFailedAssetListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "DescribeComplianceScanFailedAssetList")
     
     
@@ -5111,6 +5201,7 @@ func NewDescribeComplianceTaskAssetSummaryRequest() (request *DescribeCompliance
     request = &DescribeComplianceTaskAssetSummaryRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "DescribeComplianceTaskAssetSummary")
     
     
@@ -5168,6 +5259,7 @@ func NewDescribeComplianceTaskPolicyItemSummaryListRequest() (request *DescribeC
     request = &DescribeComplianceTaskPolicyItemSummaryListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "DescribeComplianceTaskPolicyItemSummaryList")
     
     
@@ -5227,6 +5319,7 @@ func NewDescribeComplianceWhitelistItemListRequest() (request *DescribeComplianc
     request = &DescribeComplianceWhitelistItemListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "DescribeComplianceWhitelistItemList")
     
     
@@ -5284,6 +5377,7 @@ func NewDescribeContainerAssetSummaryRequest() (request *DescribeContainerAssetS
     request = &DescribeContainerAssetSummaryRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "DescribeContainerAssetSummary")
     
     
@@ -5335,6 +5429,7 @@ func NewDescribeContainerSecEventSummaryRequest() (request *DescribeContainerSec
     request = &DescribeContainerSecEventSummaryRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "DescribeContainerSecEventSummary")
     
     
@@ -5384,6 +5479,7 @@ func NewDescribeEscapeEventDetailRequest() (request *DescribeEscapeEventDetailRe
     request = &DescribeEscapeEventDetailRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "DescribeEscapeEventDetail")
     
     
@@ -5437,6 +5533,7 @@ func NewDescribeEscapeEventInfoRequest() (request *DescribeEscapeEventInfoReques
     request = &DescribeEscapeEventInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "DescribeEscapeEventInfo")
     
     
@@ -5488,6 +5585,7 @@ func NewDescribeEscapeEventsExportRequest() (request *DescribeEscapeEventsExport
     request = &DescribeEscapeEventsExportRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "DescribeEscapeEventsExport")
     
     
@@ -5539,6 +5637,7 @@ func NewDescribeEscapeRuleInfoRequest() (request *DescribeEscapeRuleInfoRequest)
     request = &DescribeEscapeRuleInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "DescribeEscapeRuleInfo")
     
     
@@ -5588,6 +5687,7 @@ func NewDescribeEscapeSafeStateRequest() (request *DescribeEscapeSafeStateReques
     request = &DescribeEscapeSafeStateRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "DescribeEscapeSafeState")
     
     
@@ -5637,6 +5737,7 @@ func NewDescribeExportJobResultRequest() (request *DescribeExportJobResultReques
     request = &DescribeExportJobResultRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "DescribeExportJobResult")
     
     
@@ -5696,6 +5797,7 @@ func NewDescribeImageAuthorizedInfoRequest() (request *DescribeImageAuthorizedIn
     request = &DescribeImageAuthorizedInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "DescribeImageAuthorizedInfo")
     
     
@@ -5745,6 +5847,7 @@ func NewDescribeImageRegistryTimingScanTaskRequest() (request *DescribeImageRegi
     request = &DescribeImageRegistryTimingScanTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "DescribeImageRegistryTimingScanTask")
     
     
@@ -5794,6 +5897,7 @@ func NewDescribeImageRiskSummaryRequest() (request *DescribeImageRiskSummaryRequ
     request = &DescribeImageRiskSummaryRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "DescribeImageRiskSummary")
     
     
@@ -5843,6 +5947,7 @@ func NewDescribeImageRiskTendencyRequest() (request *DescribeImageRiskTendencyRe
     request = &DescribeImageRiskTendencyRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "DescribeImageRiskTendency")
     
     
@@ -5902,6 +6007,7 @@ func NewDescribeImageSimpleListRequest() (request *DescribeImageSimpleListReques
     request = &DescribeImageSimpleListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "DescribeImageSimpleList")
     
     
@@ -5953,6 +6059,7 @@ func NewDescribePostPayDetailRequest() (request *DescribePostPayDetailRequest) {
     request = &DescribePostPayDetailRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "DescribePostPayDetail")
     
     
@@ -6002,6 +6109,7 @@ func NewDescribeProVersionInfoRequest() (request *DescribeProVersionInfoRequest)
     request = &DescribeProVersionInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "DescribeProVersionInfo")
     
     
@@ -6055,6 +6163,7 @@ func NewDescribePurchaseStateInfoRequest() (request *DescribePurchaseStateInfoRe
     request = &DescribePurchaseStateInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "DescribePurchaseStateInfo")
     
     
@@ -6108,6 +6217,7 @@ func NewDescribeRefreshTaskRequest() (request *DescribeRefreshTaskRequest) {
     request = &DescribeRefreshTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "DescribeRefreshTask")
     
     
@@ -6167,6 +6277,7 @@ func NewDescribeReverseShellDetailRequest() (request *DescribeReverseShellDetail
     request = &DescribeReverseShellDetailRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "DescribeReverseShellDetail")
     
     
@@ -6228,6 +6339,7 @@ func NewDescribeReverseShellEventsRequest() (request *DescribeReverseShellEvents
     request = &DescribeReverseShellEventsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "DescribeReverseShellEvents")
     
     
@@ -6287,6 +6399,7 @@ func NewDescribeReverseShellEventsExportRequest() (request *DescribeReverseShell
     request = &DescribeReverseShellEventsExportRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "DescribeReverseShellEventsExport")
     
     
@@ -6346,6 +6459,7 @@ func NewDescribeReverseShellWhiteListDetailRequest() (request *DescribeReverseSh
     request = &DescribeReverseShellWhiteListDetailRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "DescribeReverseShellWhiteListDetail")
     
     
@@ -6407,6 +6521,7 @@ func NewDescribeReverseShellWhiteListsRequest() (request *DescribeReverseShellWh
     request = &DescribeReverseShellWhiteListsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "DescribeReverseShellWhiteLists")
     
     
@@ -6464,6 +6579,7 @@ func NewDescribeRiskListRequest() (request *DescribeRiskListRequest) {
     request = &DescribeRiskListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "DescribeRiskList")
     
     
@@ -6523,6 +6639,7 @@ func NewDescribeRiskSyscallDetailRequest() (request *DescribeRiskSyscallDetailRe
     request = &DescribeRiskSyscallDetailRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "DescribeRiskSyscallDetail")
     
     
@@ -6584,6 +6701,7 @@ func NewDescribeRiskSyscallEventsRequest() (request *DescribeRiskSyscallEventsRe
     request = &DescribeRiskSyscallEventsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "DescribeRiskSyscallEvents")
     
     
@@ -6645,6 +6763,7 @@ func NewDescribeRiskSyscallEventsExportRequest() (request *DescribeRiskSyscallEv
     request = &DescribeRiskSyscallEventsExportRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "DescribeRiskSyscallEventsExport")
     
     
@@ -6704,6 +6823,7 @@ func NewDescribeRiskSyscallNamesRequest() (request *DescribeRiskSyscallNamesRequ
     request = &DescribeRiskSyscallNamesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "DescribeRiskSyscallNames")
     
     
@@ -6763,6 +6883,7 @@ func NewDescribeRiskSyscallWhiteListDetailRequest() (request *DescribeRiskSyscal
     request = &DescribeRiskSyscallWhiteListDetailRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "DescribeRiskSyscallWhiteListDetail")
     
     
@@ -6824,6 +6945,7 @@ func NewDescribeRiskSyscallWhiteListsRequest() (request *DescribeRiskSyscallWhit
     request = &DescribeRiskSyscallWhiteListsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "DescribeRiskSyscallWhiteLists")
     
     
@@ -6881,6 +7003,7 @@ func NewDescribeSecEventsTendencyRequest() (request *DescribeSecEventsTendencyRe
     request = &DescribeSecEventsTendencyRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "DescribeSecEventsTendency")
     
     
@@ -6940,6 +7063,7 @@ func NewDescribeTaskResultSummaryRequest() (request *DescribeTaskResultSummaryRe
     request = &DescribeTaskResultSummaryRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "DescribeTaskResultSummary")
     
     
@@ -6999,6 +7123,7 @@ func NewDescribeUnfinishRefreshTaskRequest() (request *DescribeUnfinishRefreshTa
     request = &DescribeUnfinishRefreshTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "DescribeUnfinishRefreshTask")
     
     
@@ -7058,6 +7183,7 @@ func NewDescribeUserClusterRequest() (request *DescribeUserClusterRequest) {
     request = &DescribeUserClusterRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "DescribeUserCluster")
     
     
@@ -7117,6 +7243,7 @@ func NewDescribeValueAddedSrvInfoRequest() (request *DescribeValueAddedSrvInfoRe
     request = &DescribeValueAddedSrvInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "DescribeValueAddedSrvInfo")
     
     
@@ -7166,6 +7293,7 @@ func NewDescribeVirusDetailRequest() (request *DescribeVirusDetailRequest) {
     request = &DescribeVirusDetailRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "DescribeVirusDetail")
     
     
@@ -7219,6 +7347,7 @@ func NewDescribeVirusListRequest() (request *DescribeVirusListRequest) {
     request = &DescribeVirusListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "DescribeVirusList")
     
     
@@ -7274,6 +7403,7 @@ func NewDescribeVirusMonitorSettingRequest() (request *DescribeVirusMonitorSetti
     request = &DescribeVirusMonitorSettingRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "DescribeVirusMonitorSetting")
     
     
@@ -7325,6 +7455,7 @@ func NewDescribeVirusScanSettingRequest() (request *DescribeVirusScanSettingRequ
     request = &DescribeVirusScanSettingRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "DescribeVirusScanSetting")
     
     
@@ -7376,6 +7507,7 @@ func NewDescribeVirusScanTaskStatusRequest() (request *DescribeVirusScanTaskStat
     request = &DescribeVirusScanTaskStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "DescribeVirusScanTaskStatus")
     
     
@@ -7427,6 +7559,7 @@ func NewDescribeVirusScanTimeoutSettingRequest() (request *DescribeVirusScanTime
     request = &DescribeVirusScanTimeoutSettingRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "DescribeVirusScanTimeoutSetting")
     
     
@@ -7474,6 +7607,7 @@ func NewDescribeVirusSummaryRequest() (request *DescribeVirusSummaryRequest) {
     request = &DescribeVirusSummaryRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "DescribeVirusSummary")
     
     
@@ -7527,6 +7661,7 @@ func NewDescribeVirusTaskListRequest() (request *DescribeVirusTaskListRequest) {
     request = &DescribeVirusTaskListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "DescribeVirusTaskList")
     
     
@@ -7582,6 +7717,7 @@ func NewDescribeWarningRulesRequest() (request *DescribeWarningRulesRequest) {
     request = &DescribeWarningRulesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "DescribeWarningRules")
     
     
@@ -7635,6 +7771,7 @@ func NewExportVirusListRequest() (request *ExportVirusListRequest) {
     request = &ExportVirusListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "ExportVirusList")
     
     
@@ -7686,6 +7823,7 @@ func NewInitializeUserComplianceEnvironmentRequest() (request *InitializeUserCom
     request = &InitializeUserComplianceEnvironmentRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "InitializeUserComplianceEnvironment")
     
     
@@ -7745,6 +7883,7 @@ func NewModifyAbnormalProcessRuleStatusRequest() (request *ModifyAbnormalProcess
     request = &ModifyAbnormalProcessRuleStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "ModifyAbnormalProcessRuleStatus")
     
     
@@ -7804,6 +7943,7 @@ func NewModifyAbnormalProcessStatusRequest() (request *ModifyAbnormalProcessStat
     request = &ModifyAbnormalProcessStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "ModifyAbnormalProcessStatus")
     
     
@@ -7863,6 +8003,7 @@ func NewModifyAccessControlRuleStatusRequest() (request *ModifyAccessControlRule
     request = &ModifyAccessControlRuleStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "ModifyAccessControlRuleStatus")
     
     
@@ -7922,6 +8063,7 @@ func NewModifyAccessControlStatusRequest() (request *ModifyAccessControlStatusRe
     request = &ModifyAccessControlStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "ModifyAccessControlStatus")
     
     
@@ -7981,6 +8123,7 @@ func NewModifyAssetRequest() (request *ModifyAssetRequest) {
     request = &ModifyAssetRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "ModifyAsset")
     
     
@@ -8036,6 +8179,7 @@ func NewModifyAssetImageRegistryScanStopRequest() (request *ModifyAssetImageRegi
     request = &ModifyAssetImageRegistryScanStopRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "ModifyAssetImageRegistryScanStop")
     
     
@@ -8085,6 +8229,7 @@ func NewModifyAssetImageRegistryScanStopOneKeyRequest() (request *ModifyAssetIma
     request = &ModifyAssetImageRegistryScanStopOneKeyRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "ModifyAssetImageRegistryScanStopOneKey")
     
     
@@ -8134,6 +8279,7 @@ func NewModifyAssetImageScanStopRequest() (request *ModifyAssetImageScanStopRequ
     request = &ModifyAssetImageScanStopRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "ModifyAssetImageScanStop")
     
     
@@ -8193,6 +8339,7 @@ func NewModifyCompliancePeriodTaskRequest() (request *ModifyCompliancePeriodTask
     request = &ModifyCompliancePeriodTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "ModifyCompliancePeriodTask")
     
     
@@ -8250,6 +8397,7 @@ func NewModifyEscapeEventStatusRequest() (request *ModifyEscapeEventStatusReques
     request = &ModifyEscapeEventStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "ModifyEscapeEventStatus")
     
     
@@ -8301,6 +8449,7 @@ func NewModifyEscapeRuleRequest() (request *ModifyEscapeRuleRequest) {
     request = &ModifyEscapeRuleRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "ModifyEscapeRule")
     
     
@@ -8356,6 +8505,7 @@ func NewModifyReverseShellStatusRequest() (request *ModifyReverseShellStatusRequ
     request = &ModifyReverseShellStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "ModifyReverseShellStatus")
     
     
@@ -8415,6 +8565,7 @@ func NewModifyRiskSyscallStatusRequest() (request *ModifyRiskSyscallStatusReques
     request = &ModifyRiskSyscallStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "ModifyRiskSyscallStatus")
     
     
@@ -8474,6 +8625,7 @@ func NewModifyVirusFileStatusRequest() (request *ModifyVirusFileStatusRequest) {
     request = &ModifyVirusFileStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "ModifyVirusFileStatus")
     
     
@@ -8533,6 +8685,7 @@ func NewModifyVirusMonitorSettingRequest() (request *ModifyVirusMonitorSettingRe
     request = &ModifyVirusMonitorSettingRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "ModifyVirusMonitorSetting")
     
     
@@ -8584,6 +8737,7 @@ func NewModifyVirusScanSettingRequest() (request *ModifyVirusScanSettingRequest)
     request = &ModifyVirusScanSettingRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "ModifyVirusScanSetting")
     
     
@@ -8637,6 +8791,7 @@ func NewModifyVirusScanTimeoutSettingRequest() (request *ModifyVirusScanTimeoutS
     request = &ModifyVirusScanTimeoutSettingRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "ModifyVirusScanTimeoutSetting")
     
     
@@ -8688,6 +8843,7 @@ func NewRemoveAssetImageRegistryRegistryDetailRequest() (request *RemoveAssetIma
     request = &RemoveAssetImageRegistryRegistryDetailRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "RemoveAssetImageRegistryRegistryDetail")
     
     
@@ -8751,6 +8907,7 @@ func NewRenewImageAuthorizeStateRequest() (request *RenewImageAuthorizeStateRequ
     request = &RenewImageAuthorizeStateRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "RenewImageAuthorizeState")
     
     
@@ -8804,6 +8961,7 @@ func NewScanComplianceAssetsRequest() (request *ScanComplianceAssetsRequest) {
     request = &ScanComplianceAssetsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "ScanComplianceAssets")
     
     
@@ -8863,6 +9021,7 @@ func NewScanComplianceAssetsByPolicyItemRequest() (request *ScanComplianceAssets
     request = &ScanComplianceAssetsByPolicyItemRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "ScanComplianceAssetsByPolicyItem")
     
     
@@ -8922,6 +9081,7 @@ func NewScanCompliancePolicyItemsRequest() (request *ScanCompliancePolicyItemsRe
     request = &ScanCompliancePolicyItemsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "ScanCompliancePolicyItems")
     
     
@@ -8981,6 +9141,7 @@ func NewScanComplianceScanFailedAssetsRequest() (request *ScanComplianceScanFail
     request = &ScanComplianceScanFailedAssetsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "ScanComplianceScanFailedAssets")
     
     
@@ -9040,6 +9201,7 @@ func NewSetCheckModeRequest() (request *SetCheckModeRequest) {
     request = &SetCheckModeRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "SetCheckMode")
     
     
@@ -9099,6 +9261,7 @@ func NewStopVirusScanTaskRequest() (request *StopVirusScanTaskRequest) {
     request = &StopVirusScanTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "StopVirusScanTask")
     
     
@@ -9156,6 +9319,7 @@ func NewSyncAssetImageRegistryAssetRequest() (request *SyncAssetImageRegistryAss
     request = &SyncAssetImageRegistryAssetRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "SyncAssetImageRegistryAsset")
     
     
@@ -9209,6 +9373,7 @@ func NewUpdateAssetImageRegistryRegistryDetailRequest() (request *UpdateAssetIma
     request = &UpdateAssetImageRegistryRegistryDetailRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "UpdateAssetImageRegistryRegistryDetail")
     
     
@@ -9272,6 +9437,7 @@ func NewUpdateImageRegistryTimingScanTaskRequest() (request *UpdateImageRegistry
     request = &UpdateImageRegistryTimingScanTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcss", APIVersion, "UpdateImageRegistryTimingScanTask")
     
     

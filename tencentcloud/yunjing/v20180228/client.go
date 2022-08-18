@@ -49,6 +49,7 @@ func NewAddLoginWhiteListRequest() (request *AddLoginWhiteListRequest) {
     request = &AddLoginWhiteListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("yunjing", APIVersion, "AddLoginWhiteList")
     
     
@@ -102,6 +103,7 @@ func NewAddMachineTagRequest() (request *AddMachineTagRequest) {
     request = &AddMachineTagRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("yunjing", APIVersion, "AddMachineTag")
     
     
@@ -155,6 +157,7 @@ func NewCloseProVersionRequest() (request *CloseProVersionRequest) {
     request = &CloseProVersionRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("yunjing", APIVersion, "CloseProVersion")
     
     
@@ -216,6 +219,7 @@ func NewCreateBaselineStrategyRequest() (request *CreateBaselineStrategyRequest)
     request = &CreateBaselineStrategyRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("yunjing", APIVersion, "CreateBaselineStrategy")
     
     
@@ -273,6 +277,7 @@ func NewCreateOpenPortTaskRequest() (request *CreateOpenPortTaskRequest) {
     request = &CreateOpenPortTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("yunjing", APIVersion, "CreateOpenPortTask")
     
     
@@ -328,6 +333,7 @@ func NewCreateProcessTaskRequest() (request *CreateProcessTaskRequest) {
     request = &CreateProcessTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("yunjing", APIVersion, "CreateProcessTask")
     
     
@@ -387,6 +393,7 @@ func NewCreateUsualLoginPlacesRequest() (request *CreateUsualLoginPlacesRequest)
     request = &CreateUsualLoginPlacesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("yunjing", APIVersion, "CreateUsualLoginPlaces")
     
     
@@ -442,6 +449,7 @@ func NewDeleteAttackLogsRequest() (request *DeleteAttackLogsRequest) {
     request = &DeleteAttackLogsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("yunjing", APIVersion, "DeleteAttackLogs")
     
     
@@ -499,6 +507,7 @@ func NewDeleteBashEventsRequest() (request *DeleteBashEventsRequest) {
     request = &DeleteBashEventsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("yunjing", APIVersion, "DeleteBashEvents")
     
     
@@ -560,6 +569,7 @@ func NewDeleteBashRulesRequest() (request *DeleteBashRulesRequest) {
     request = &DeleteBashRulesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("yunjing", APIVersion, "DeleteBashRules")
     
     
@@ -625,6 +635,7 @@ func NewDeleteBruteAttacksRequest() (request *DeleteBruteAttacksRequest) {
     request = &DeleteBruteAttacksRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("yunjing", APIVersion, "DeleteBruteAttacks")
     
     
@@ -678,6 +689,7 @@ func NewDeleteLoginWhiteListRequest() (request *DeleteLoginWhiteListRequest) {
     request = &DeleteLoginWhiteListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("yunjing", APIVersion, "DeleteLoginWhiteList")
     
     
@@ -731,6 +743,7 @@ func NewDeleteMachineRequest() (request *DeleteMachineRequest) {
     request = &DeleteMachineRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("yunjing", APIVersion, "DeleteMachine")
     
     
@@ -788,6 +801,7 @@ func NewDeleteMachineTagRequest() (request *DeleteMachineTagRequest) {
     request = &DeleteMachineTagRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("yunjing", APIVersion, "DeleteMachineTag")
     
     
@@ -841,6 +855,7 @@ func NewDeleteMaliciousRequestsRequest() (request *DeleteMaliciousRequestsReques
     request = &DeleteMaliciousRequestsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("yunjing", APIVersion, "DeleteMaliciousRequests")
     
     
@@ -890,6 +905,7 @@ func NewDeleteMalwaresRequest() (request *DeleteMalwaresRequest) {
     request = &DeleteMalwaresRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("yunjing", APIVersion, "DeleteMalwares")
     
     
@@ -943,6 +959,7 @@ func NewDeleteNonlocalLoginPlacesRequest() (request *DeleteNonlocalLoginPlacesRe
     request = &DeleteNonlocalLoginPlacesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("yunjing", APIVersion, "DeleteNonlocalLoginPlaces")
     
     
@@ -996,6 +1013,7 @@ func NewDeletePrivilegeEventsRequest() (request *DeletePrivilegeEventsRequest) {
     request = &DeletePrivilegeEventsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("yunjing", APIVersion, "DeletePrivilegeEvents")
     
     
@@ -1053,6 +1071,7 @@ func NewDeletePrivilegeRulesRequest() (request *DeletePrivilegeRulesRequest) {
     request = &DeletePrivilegeRulesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("yunjing", APIVersion, "DeletePrivilegeRules")
     
     
@@ -1118,6 +1137,7 @@ func NewDeleteReverseShellEventsRequest() (request *DeleteReverseShellEventsRequ
     request = &DeleteReverseShellEventsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("yunjing", APIVersion, "DeleteReverseShellEvents")
     
     
@@ -1177,6 +1197,7 @@ func NewDeleteReverseShellRulesRequest() (request *DeleteReverseShellRulesReques
     request = &DeleteReverseShellRulesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("yunjing", APIVersion, "DeleteReverseShellRules")
     
     
@@ -1244,6 +1265,7 @@ func NewDeleteTagsRequest() (request *DeleteTagsRequest) {
     request = &DeleteTagsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("yunjing", APIVersion, "DeleteTags")
     
     
@@ -1297,6 +1319,7 @@ func NewDeleteUsualLoginPlacesRequest() (request *DeleteUsualLoginPlacesRequest)
     request = &DeleteUsualLoginPlacesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("yunjing", APIVersion, "DeleteUsualLoginPlaces")
     
     
@@ -1350,6 +1373,7 @@ func NewDescribeAccountStatisticsRequest() (request *DescribeAccountStatisticsRe
     request = &DescribeAccountStatisticsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("yunjing", APIVersion, "DescribeAccountStatistics")
     
     
@@ -1405,6 +1429,7 @@ func NewDescribeAccountsRequest() (request *DescribeAccountsRequest) {
     request = &DescribeAccountsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("yunjing", APIVersion, "DescribeAccounts")
     
     
@@ -1458,6 +1483,7 @@ func NewDescribeAgentVulsRequest() (request *DescribeAgentVulsRequest) {
     request = &DescribeAgentVulsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("yunjing", APIVersion, "DescribeAgentVuls")
     
     
@@ -1511,6 +1537,7 @@ func NewDescribeAlarmAttributeRequest() (request *DescribeAlarmAttributeRequest)
     request = &DescribeAlarmAttributeRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("yunjing", APIVersion, "DescribeAlarmAttribute")
     
     
@@ -1558,6 +1585,7 @@ func NewDescribeAttackLogInfoRequest() (request *DescribeAttackLogInfoRequest) {
     request = &DescribeAttackLogInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("yunjing", APIVersion, "DescribeAttackLogInfo")
     
     
@@ -1613,6 +1641,7 @@ func NewDescribeAttackLogsRequest() (request *DescribeAttackLogsRequest) {
     request = &DescribeAttackLogsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("yunjing", APIVersion, "DescribeAttackLogs")
     
     
@@ -1666,6 +1695,7 @@ func NewDescribeBashEventsRequest() (request *DescribeBashEventsRequest) {
     request = &DescribeBashEventsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("yunjing", APIVersion, "DescribeBashEvents")
     
     
@@ -1725,6 +1755,7 @@ func NewDescribeBashRulesRequest() (request *DescribeBashRulesRequest) {
     request = &DescribeBashRulesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("yunjing", APIVersion, "DescribeBashRules")
     
     
@@ -1784,6 +1815,7 @@ func NewDescribeBruteAttacksRequest() (request *DescribeBruteAttacksRequest) {
     request = &DescribeBruteAttacksRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("yunjing", APIVersion, "DescribeBruteAttacks")
     
     
@@ -1837,6 +1869,7 @@ func NewDescribeComponentInfoRequest() (request *DescribeComponentInfoRequest) {
     request = &DescribeComponentInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("yunjing", APIVersion, "DescribeComponentInfo")
     
     
@@ -1894,6 +1927,7 @@ func NewDescribeComponentStatisticsRequest() (request *DescribeComponentStatisti
     request = &DescribeComponentStatisticsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("yunjing", APIVersion, "DescribeComponentStatistics")
     
     
@@ -1949,6 +1983,7 @@ func NewDescribeComponentsRequest() (request *DescribeComponentsRequest) {
     request = &DescribeComponentsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("yunjing", APIVersion, "DescribeComponents")
     
     
@@ -2002,6 +2037,7 @@ func NewDescribeHistoryAccountsRequest() (request *DescribeHistoryAccountsReques
     request = &DescribeHistoryAccountsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("yunjing", APIVersion, "DescribeHistoryAccounts")
     
     
@@ -2057,6 +2093,7 @@ func NewDescribeImpactedHostsRequest() (request *DescribeImpactedHostsRequest) {
     request = &DescribeImpactedHostsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("yunjing", APIVersion, "DescribeImpactedHosts")
     
     
@@ -2110,6 +2147,7 @@ func NewDescribeLoginWhiteListRequest() (request *DescribeLoginWhiteListRequest)
     request = &DescribeLoginWhiteListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("yunjing", APIVersion, "DescribeLoginWhiteList")
     
     
@@ -2163,6 +2201,7 @@ func NewDescribeMachineInfoRequest() (request *DescribeMachineInfoRequest) {
     request = &DescribeMachineInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("yunjing", APIVersion, "DescribeMachineInfo")
     
     
@@ -2218,6 +2257,7 @@ func NewDescribeMachinesRequest() (request *DescribeMachinesRequest) {
     request = &DescribeMachinesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("yunjing", APIVersion, "DescribeMachines")
     
     
@@ -2273,6 +2313,7 @@ func NewDescribeMaliciousRequestsRequest() (request *DescribeMaliciousRequestsRe
     request = &DescribeMaliciousRequestsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("yunjing", APIVersion, "DescribeMaliciousRequests")
     
     
@@ -2322,6 +2363,7 @@ func NewDescribeMalwaresRequest() (request *DescribeMalwaresRequest) {
     request = &DescribeMalwaresRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("yunjing", APIVersion, "DescribeMalwares")
     
     
@@ -2375,6 +2417,7 @@ func NewDescribeNonlocalLoginPlacesRequest() (request *DescribeNonlocalLoginPlac
     request = &DescribeNonlocalLoginPlacesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("yunjing", APIVersion, "DescribeNonlocalLoginPlaces")
     
     
@@ -2428,6 +2471,7 @@ func NewDescribeOpenPortStatisticsRequest() (request *DescribeOpenPortStatistics
     request = &DescribeOpenPortStatisticsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("yunjing", APIVersion, "DescribeOpenPortStatistics")
     
     
@@ -2479,6 +2523,7 @@ func NewDescribeOpenPortTaskStatusRequest() (request *DescribeOpenPortTaskStatus
     request = &DescribeOpenPortTaskStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("yunjing", APIVersion, "DescribeOpenPortTaskStatus")
     
     
@@ -2534,6 +2579,7 @@ func NewDescribeOpenPortsRequest() (request *DescribeOpenPortsRequest) {
     request = &DescribeOpenPortsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("yunjing", APIVersion, "DescribeOpenPorts")
     
     
@@ -2587,6 +2633,7 @@ func NewDescribeOverviewStatisticsRequest() (request *DescribeOverviewStatistics
     request = &DescribeOverviewStatisticsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("yunjing", APIVersion, "DescribeOverviewStatistics")
     
     
@@ -2638,6 +2685,7 @@ func NewDescribePrivilegeEventsRequest() (request *DescribePrivilegeEventsReques
     request = &DescribePrivilegeEventsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("yunjing", APIVersion, "DescribePrivilegeEvents")
     
     
@@ -2697,6 +2745,7 @@ func NewDescribePrivilegeRulesRequest() (request *DescribePrivilegeRulesRequest)
     request = &DescribePrivilegeRulesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("yunjing", APIVersion, "DescribePrivilegeRules")
     
     
@@ -2756,6 +2805,7 @@ func NewDescribeProVersionInfoRequest() (request *DescribeProVersionInfoRequest)
     request = &DescribeProVersionInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("yunjing", APIVersion, "DescribeProVersionInfo")
     
     
@@ -2803,6 +2853,7 @@ func NewDescribeProcessStatisticsRequest() (request *DescribeProcessStatisticsRe
     request = &DescribeProcessStatisticsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("yunjing", APIVersion, "DescribeProcessStatistics")
     
     
@@ -2858,6 +2909,7 @@ func NewDescribeProcessTaskStatusRequest() (request *DescribeProcessTaskStatusRe
     request = &DescribeProcessTaskStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("yunjing", APIVersion, "DescribeProcessTaskStatus")
     
     
@@ -2917,6 +2969,7 @@ func NewDescribeProcessesRequest() (request *DescribeProcessesRequest) {
     request = &DescribeProcessesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("yunjing", APIVersion, "DescribeProcesses")
     
     
@@ -2972,6 +3025,7 @@ func NewDescribeReverseShellEventsRequest() (request *DescribeReverseShellEvents
     request = &DescribeReverseShellEventsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("yunjing", APIVersion, "DescribeReverseShellEvents")
     
     
@@ -3031,6 +3085,7 @@ func NewDescribeReverseShellRulesRequest() (request *DescribeReverseShellRulesRe
     request = &DescribeReverseShellRulesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("yunjing", APIVersion, "DescribeReverseShellRules")
     
     
@@ -3096,6 +3151,7 @@ func NewDescribeSecurityDynamicsRequest() (request *DescribeSecurityDynamicsRequ
     request = &DescribeSecurityDynamicsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("yunjing", APIVersion, "DescribeSecurityDynamics")
     
     
@@ -3147,6 +3203,7 @@ func NewDescribeSecurityTrendsRequest() (request *DescribeSecurityTrendsRequest)
     request = &DescribeSecurityTrendsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("yunjing", APIVersion, "DescribeSecurityTrends")
     
     
@@ -3200,6 +3257,7 @@ func NewDescribeTagMachinesRequest() (request *DescribeTagMachinesRequest) {
     request = &DescribeTagMachinesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("yunjing", APIVersion, "DescribeTagMachines")
     
     
@@ -3253,6 +3311,7 @@ func NewDescribeTagsRequest() (request *DescribeTagsRequest) {
     request = &DescribeTagsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("yunjing", APIVersion, "DescribeTags")
     
     
@@ -3308,6 +3367,7 @@ func NewDescribeUsualLoginPlacesRequest() (request *DescribeUsualLoginPlacesRequ
     request = &DescribeUsualLoginPlacesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("yunjing", APIVersion, "DescribeUsualLoginPlaces")
     
     
@@ -3363,6 +3423,7 @@ func NewDescribeVulInfoRequest() (request *DescribeVulInfoRequest) {
     request = &DescribeVulInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("yunjing", APIVersion, "DescribeVulInfo")
     
     
@@ -3418,6 +3479,7 @@ func NewDescribeVulScanResultRequest() (request *DescribeVulScanResultRequest) {
     request = &DescribeVulScanResultRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("yunjing", APIVersion, "DescribeVulScanResult")
     
     
@@ -3471,6 +3533,7 @@ func NewDescribeVulsRequest() (request *DescribeVulsRequest) {
     request = &DescribeVulsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("yunjing", APIVersion, "DescribeVuls")
     
     
@@ -3522,6 +3585,7 @@ func NewDescribeWeeklyReportBruteAttacksRequest() (request *DescribeWeeklyReport
     request = &DescribeWeeklyReportBruteAttacksRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("yunjing", APIVersion, "DescribeWeeklyReportBruteAttacks")
     
     
@@ -3573,6 +3637,7 @@ func NewDescribeWeeklyReportInfoRequest() (request *DescribeWeeklyReportInfoRequ
     request = &DescribeWeeklyReportInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("yunjing", APIVersion, "DescribeWeeklyReportInfo")
     
     
@@ -3622,6 +3687,7 @@ func NewDescribeWeeklyReportMalwaresRequest() (request *DescribeWeeklyReportMalw
     request = &DescribeWeeklyReportMalwaresRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("yunjing", APIVersion, "DescribeWeeklyReportMalwares")
     
     
@@ -3673,6 +3739,7 @@ func NewDescribeWeeklyReportNonlocalLoginPlacesRequest() (request *DescribeWeekl
     request = &DescribeWeeklyReportNonlocalLoginPlacesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("yunjing", APIVersion, "DescribeWeeklyReportNonlocalLoginPlaces")
     
     
@@ -3724,6 +3791,7 @@ func NewDescribeWeeklyReportVulsRequest() (request *DescribeWeeklyReportVulsRequ
     request = &DescribeWeeklyReportVulsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("yunjing", APIVersion, "DescribeWeeklyReportVuls")
     
     
@@ -3775,6 +3843,7 @@ func NewDescribeWeeklyReportsRequest() (request *DescribeWeeklyReportsRequest) {
     request = &DescribeWeeklyReportsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("yunjing", APIVersion, "DescribeWeeklyReports")
     
     
@@ -3824,6 +3893,7 @@ func NewEditBashRuleRequest() (request *EditBashRuleRequest) {
     request = &EditBashRuleRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("yunjing", APIVersion, "EditBashRule")
     
     
@@ -3887,6 +3957,7 @@ func NewEditPrivilegeRuleRequest() (request *EditPrivilegeRuleRequest) {
     request = &EditPrivilegeRuleRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("yunjing", APIVersion, "EditPrivilegeRule")
     
     
@@ -3954,6 +4025,7 @@ func NewEditReverseShellRuleRequest() (request *EditReverseShellRuleRequest) {
     request = &EditReverseShellRuleRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("yunjing", APIVersion, "EditReverseShellRule")
     
     
@@ -4025,6 +4097,7 @@ func NewEditTagsRequest() (request *EditTagsRequest) {
     request = &EditTagsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("yunjing", APIVersion, "EditTags")
     
     
@@ -4082,6 +4155,7 @@ func NewExportAttackLogsRequest() (request *ExportAttackLogsRequest) {
     request = &ExportAttackLogsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("yunjing", APIVersion, "ExportAttackLogs")
     
     
@@ -4131,6 +4205,7 @@ func NewExportBashEventsRequest() (request *ExportBashEventsRequest) {
     request = &ExportBashEventsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("yunjing", APIVersion, "ExportBashEvents")
     
     
@@ -4180,6 +4255,7 @@ func NewExportBruteAttacksRequest() (request *ExportBruteAttacksRequest) {
     request = &ExportBruteAttacksRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("yunjing", APIVersion, "ExportBruteAttacks")
     
     
@@ -4229,6 +4305,7 @@ func NewExportMaliciousRequestsRequest() (request *ExportMaliciousRequestsReques
     request = &ExportMaliciousRequestsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("yunjing", APIVersion, "ExportMaliciousRequests")
     
     
@@ -4278,6 +4355,7 @@ func NewExportMalwaresRequest() (request *ExportMalwaresRequest) {
     request = &ExportMalwaresRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("yunjing", APIVersion, "ExportMalwares")
     
     
@@ -4327,6 +4405,7 @@ func NewExportNonlocalLoginPlacesRequest() (request *ExportNonlocalLoginPlacesRe
     request = &ExportNonlocalLoginPlacesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("yunjing", APIVersion, "ExportNonlocalLoginPlaces")
     
     
@@ -4376,6 +4455,7 @@ func NewExportPrivilegeEventsRequest() (request *ExportPrivilegeEventsRequest) {
     request = &ExportPrivilegeEventsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("yunjing", APIVersion, "ExportPrivilegeEvents")
     
     
@@ -4425,6 +4505,7 @@ func NewExportReverseShellEventsRequest() (request *ExportReverseShellEventsRequ
     request = &ExportReverseShellEventsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("yunjing", APIVersion, "ExportReverseShellEvents")
     
     
@@ -4482,6 +4563,7 @@ func NewIgnoreImpactedHostsRequest() (request *IgnoreImpactedHostsRequest) {
     request = &IgnoreImpactedHostsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("yunjing", APIVersion, "IgnoreImpactedHosts")
     
     
@@ -4537,6 +4619,7 @@ func NewInquiryPriceOpenProVersionPrepaidRequest() (request *InquiryPriceOpenPro
     request = &InquiryPriceOpenProVersionPrepaidRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("yunjing", APIVersion, "InquiryPriceOpenProVersionPrepaid")
     
     
@@ -4588,6 +4671,7 @@ func NewMisAlarmNonlocalLoginPlacesRequest() (request *MisAlarmNonlocalLoginPlac
     request = &MisAlarmNonlocalLoginPlacesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("yunjing", APIVersion, "MisAlarmNonlocalLoginPlaces")
     
     
@@ -4641,6 +4725,7 @@ func NewModifyAlarmAttributeRequest() (request *ModifyAlarmAttributeRequest) {
     request = &ModifyAlarmAttributeRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("yunjing", APIVersion, "ModifyAlarmAttribute")
     
     
@@ -4694,6 +4779,7 @@ func NewModifyAutoOpenProVersionConfigRequest() (request *ModifyAutoOpenProVersi
     request = &ModifyAutoOpenProVersionConfigRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("yunjing", APIVersion, "ModifyAutoOpenProVersionConfig")
     
     
@@ -4741,6 +4827,7 @@ func NewModifyLoginWhiteListRequest() (request *ModifyLoginWhiteListRequest) {
     request = &ModifyLoginWhiteListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("yunjing", APIVersion, "ModifyLoginWhiteList")
     
     
@@ -4794,6 +4881,7 @@ func NewModifyProVersionRenewFlagRequest() (request *ModifyProVersionRenewFlagRe
     request = &ModifyProVersionRenewFlagRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("yunjing", APIVersion, "ModifyProVersionRenewFlag")
     
     
@@ -4845,6 +4933,7 @@ func NewOpenProVersionRequest() (request *OpenProVersionRequest) {
     request = &OpenProVersionRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("yunjing", APIVersion, "OpenProVersion")
     
     
@@ -4904,6 +4993,7 @@ func NewOpenProVersionPrepaidRequest() (request *OpenProVersionPrepaidRequest) {
     request = &OpenProVersionPrepaidRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("yunjing", APIVersion, "OpenProVersionPrepaid")
     
     
@@ -4955,6 +5045,7 @@ func NewRecoverMalwaresRequest() (request *RecoverMalwaresRequest) {
     request = &RecoverMalwaresRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("yunjing", APIVersion, "RecoverMalwares")
     
     
@@ -5010,6 +5101,7 @@ func NewRenewProVersionRequest() (request *RenewProVersionRequest) {
     request = &RenewProVersionRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("yunjing", APIVersion, "RenewProVersion")
     
     
@@ -5063,6 +5155,7 @@ func NewRescanImpactedHostRequest() (request *RescanImpactedHostRequest) {
     request = &RescanImpactedHostRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("yunjing", APIVersion, "RescanImpactedHost")
     
     
@@ -5122,6 +5215,7 @@ func NewSeparateMalwaresRequest() (request *SeparateMalwaresRequest) {
     request = &SeparateMalwaresRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("yunjing", APIVersion, "SeparateMalwares")
     
     
@@ -5179,6 +5273,7 @@ func NewSetBashEventsStatusRequest() (request *SetBashEventsStatusRequest) {
     request = &SetBashEventsStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("yunjing", APIVersion, "SetBashEventsStatus")
     
     
@@ -5236,6 +5331,7 @@ func NewSwitchBashRulesRequest() (request *SwitchBashRulesRequest) {
     request = &SwitchBashRulesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("yunjing", APIVersion, "SwitchBashRules")
     
     
@@ -5301,6 +5397,7 @@ func NewTrustMaliciousRequestRequest() (request *TrustMaliciousRequestRequest) {
     request = &TrustMaliciousRequestRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("yunjing", APIVersion, "TrustMaliciousRequest")
     
     
@@ -5350,6 +5447,7 @@ func NewTrustMalwaresRequest() (request *TrustMalwaresRequest) {
     request = &TrustMalwaresRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("yunjing", APIVersion, "TrustMalwares")
     
     
@@ -5405,6 +5503,7 @@ func NewUntrustMaliciousRequestRequest() (request *UntrustMaliciousRequestReques
     request = &UntrustMaliciousRequestRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("yunjing", APIVersion, "UntrustMaliciousRequest")
     
     
@@ -5456,6 +5555,7 @@ func NewUntrustMalwaresRequest() (request *UntrustMalwaresRequest) {
     request = &UntrustMalwaresRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("yunjing", APIVersion, "UntrustMalwares")
     
     

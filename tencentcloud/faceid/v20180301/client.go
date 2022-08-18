@@ -49,6 +49,7 @@ func NewBankCard2EVerificationRequest() (request *BankCard2EVerificationRequest)
     request = &BankCard2EVerificationRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("faceid", APIVersion, "BankCard2EVerification")
     
     
@@ -114,6 +115,7 @@ func NewBankCard4EVerificationRequest() (request *BankCard4EVerificationRequest)
     request = &BankCard4EVerificationRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("faceid", APIVersion, "BankCard4EVerification")
     
     
@@ -179,6 +181,7 @@ func NewBankCardVerificationRequest() (request *BankCardVerificationRequest) {
     request = &BankCardVerificationRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("faceid", APIVersion, "BankCardVerification")
     
     
@@ -244,6 +247,7 @@ func NewCheckBankCardInformationRequest() (request *CheckBankCardInformationRequ
     request = &CheckBankCardInformationRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("faceid", APIVersion, "CheckBankCardInformation")
     
     
@@ -305,6 +309,7 @@ func NewCheckEidTokenStatusRequest() (request *CheckEidTokenStatusRequest) {
     request = &CheckEidTokenStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("faceid", APIVersion, "CheckEidTokenStatus")
     
     
@@ -362,6 +367,7 @@ func NewCheckIdCardInformationRequest() (request *CheckIdCardInformationRequest)
     request = &CheckIdCardInformationRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("faceid", APIVersion, "CheckIdCardInformation")
     
     
@@ -471,6 +477,7 @@ func NewCheckIdNameDateRequest() (request *CheckIdNameDateRequest) {
     request = &CheckIdNameDateRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("faceid", APIVersion, "CheckIdNameDate")
     
     
@@ -534,6 +541,7 @@ func NewCheckPhoneAndNameRequest() (request *CheckPhoneAndNameRequest) {
     request = &CheckPhoneAndNameRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("faceid", APIVersion, "CheckPhoneAndName")
     
     
@@ -595,6 +603,7 @@ func NewDetectAuthRequest() (request *DetectAuthRequest) {
     request = &DetectAuthRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("faceid", APIVersion, "DetectAuth")
     
     
@@ -662,6 +671,7 @@ func NewEncryptedPhoneVerificationRequest() (request *EncryptedPhoneVerification
     request = &EncryptedPhoneVerificationRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("faceid", APIVersion, "EncryptedPhoneVerification")
     
     
@@ -727,6 +737,7 @@ func NewGetActionSequenceRequest() (request *GetActionSequenceRequest) {
     request = &GetActionSequenceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("faceid", APIVersion, "GetActionSequence")
     
     
@@ -788,6 +799,7 @@ func NewGetDetectInfoRequest() (request *GetDetectInfoRequest) {
     request = &GetDetectInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("faceid", APIVersion, "GetDetectInfo")
     
     
@@ -851,6 +863,7 @@ func NewGetDetectInfoEnhancedRequest() (request *GetDetectInfoEnhancedRequest) {
     request = &GetDetectInfoEnhancedRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("faceid", APIVersion, "GetDetectInfoEnhanced")
     
     
@@ -918,6 +931,7 @@ func NewGetEidResultRequest() (request *GetEidResultRequest) {
     request = &GetEidResultRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("faceid", APIVersion, "GetEidResult")
     
     
@@ -985,6 +999,7 @@ func NewGetEidTokenRequest() (request *GetEidTokenRequest) {
     request = &GetEidTokenRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("faceid", APIVersion, "GetEidToken")
     
     
@@ -1052,6 +1067,7 @@ func NewGetFaceIdResultRequest() (request *GetFaceIdResultRequest) {
     request = &GetFaceIdResultRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("faceid", APIVersion, "GetFaceIdResult")
     
     
@@ -1107,6 +1123,7 @@ func NewGetFaceIdTokenRequest() (request *GetFaceIdTokenRequest) {
     request = &GetFaceIdTokenRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("faceid", APIVersion, "GetFaceIdToken")
     
     
@@ -1162,6 +1179,7 @@ func NewGetLiveCodeRequest() (request *GetLiveCodeRequest) {
     request = &GetLiveCodeRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("faceid", APIVersion, "GetLiveCode")
     
     
@@ -1223,6 +1241,7 @@ func NewGetRealNameAuthResultRequest() (request *GetRealNameAuthResultRequest) {
     request = &GetRealNameAuthResultRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("faceid", APIVersion, "GetRealNameAuthResult")
     
     
@@ -1280,6 +1299,7 @@ func NewGetRealNameAuthTokenRequest() (request *GetRealNameAuthTokenRequest) {
     request = &GetRealNameAuthTokenRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("faceid", APIVersion, "GetRealNameAuthToken")
     
     
@@ -1341,6 +1361,7 @@ func NewGetWeChatBillDetailsRequest() (request *GetWeChatBillDetailsRequest) {
     request = &GetWeChatBillDetailsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("faceid", APIVersion, "GetWeChatBillDetails")
     
     
@@ -1392,6 +1413,7 @@ func NewIdCardOCRVerificationRequest() (request *IdCardOCRVerificationRequest) {
     request = &IdCardOCRVerificationRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("faceid", APIVersion, "IdCardOCRVerification")
     
     
@@ -1471,6 +1493,7 @@ func NewIdCardVerificationRequest() (request *IdCardVerificationRequest) {
     request = &IdCardVerificationRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("faceid", APIVersion, "IdCardVerification")
     
     
@@ -1536,6 +1559,7 @@ func NewImageRecognitionRequest() (request *ImageRecognitionRequest) {
     request = &ImageRecognitionRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("faceid", APIVersion, "ImageRecognition")
     
     
@@ -1635,6 +1659,7 @@ func NewLivenessRequest() (request *LivenessRequest) {
     request = &LivenessRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("faceid", APIVersion, "Liveness")
     
     
@@ -1766,6 +1791,7 @@ func NewLivenessCompareRequest() (request *LivenessCompareRequest) {
     request = &LivenessCompareRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("faceid", APIVersion, "LivenessCompare")
     
     
@@ -1915,6 +1941,7 @@ func NewLivenessRecognitionRequest() (request *LivenessRecognitionRequest) {
     request = &LivenessRecognitionRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("faceid", APIVersion, "LivenessRecognition")
     
     
@@ -2068,6 +2095,7 @@ func NewMinorsVerificationRequest() (request *MinorsVerificationRequest) {
     request = &MinorsVerificationRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("faceid", APIVersion, "MinorsVerification")
     
     
@@ -2131,6 +2159,7 @@ func NewMobileNetworkTimeVerificationRequest() (request *MobileNetworkTimeVerifi
     request = &MobileNetworkTimeVerificationRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("faceid", APIVersion, "MobileNetworkTimeVerification")
     
     
@@ -2200,6 +2229,7 @@ func NewMobileStatusRequest() (request *MobileStatusRequest) {
     request = &MobileStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("faceid", APIVersion, "MobileStatus")
     
     
@@ -2265,6 +2295,7 @@ func NewParseNfcDataRequest() (request *ParseNfcDataRequest) {
     request = &ParseNfcDataRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("faceid", APIVersion, "ParseNfcData")
     
     
@@ -2316,6 +2347,7 @@ func NewPhoneVerificationRequest() (request *PhoneVerificationRequest) {
     request = &PhoneVerificationRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("faceid", APIVersion, "PhoneVerification")
     
     
@@ -2381,6 +2413,7 @@ func NewPhoneVerificationCMCCRequest() (request *PhoneVerificationCMCCRequest) {
     request = &PhoneVerificationCMCCRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("faceid", APIVersion, "PhoneVerificationCMCC")
     
     
@@ -2446,6 +2479,7 @@ func NewPhoneVerificationCTCCRequest() (request *PhoneVerificationCTCCRequest) {
     request = &PhoneVerificationCTCCRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("faceid", APIVersion, "PhoneVerificationCTCC")
     
     
@@ -2511,6 +2545,7 @@ func NewPhoneVerificationCUCCRequest() (request *PhoneVerificationCUCCRequest) {
     request = &PhoneVerificationCUCCRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("faceid", APIVersion, "PhoneVerificationCUCC")
     
     

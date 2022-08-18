@@ -49,6 +49,7 @@ func NewApplyBlackListRequest() (request *ApplyBlackListRequest) {
     request = &ApplyBlackListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cr", APIVersion, "ApplyBlackList")
     
     
@@ -100,6 +101,7 @@ func NewApplyBlackListDataRequest() (request *ApplyBlackListDataRequest) {
     request = &ApplyBlackListDataRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cr", APIVersion, "ApplyBlackListData")
     
     
@@ -153,6 +155,7 @@ func NewApplyCreditAuditRequest() (request *ApplyCreditAuditRequest) {
     request = &ApplyCreditAuditRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cr", APIVersion, "ApplyCreditAudit")
     
     
@@ -206,6 +209,7 @@ func NewChangeBotCallStatusRequest() (request *ChangeBotCallStatusRequest) {
     request = &ChangeBotCallStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cr", APIVersion, "ChangeBotCallStatus")
     
     
@@ -265,6 +269,7 @@ func NewChangeBotTaskStatusRequest() (request *ChangeBotTaskStatusRequest) {
     request = &ChangeBotTaskStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cr", APIVersion, "ChangeBotTaskStatus")
     
     
@@ -316,6 +321,7 @@ func NewCreateBotTaskRequest() (request *CreateBotTaskRequest) {
     request = &CreateBotTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cr", APIVersion, "CreateBotTask")
     
     
@@ -369,6 +375,7 @@ func NewDescribeBotFlowRequest() (request *DescribeBotFlowRequest) {
     request = &DescribeBotFlowRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cr", APIVersion, "DescribeBotFlow")
     
     
@@ -422,6 +429,7 @@ func NewDescribeCreditResultRequest() (request *DescribeCreditResultRequest) {
     request = &DescribeCreditResultRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cr", APIVersion, "DescribeCreditResult")
     
     
@@ -475,6 +483,7 @@ func NewDescribeFileModelRequest() (request *DescribeFileModelRequest) {
     request = &DescribeFileModelRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cr", APIVersion, "DescribeFileModel")
     
     
@@ -526,6 +535,7 @@ func NewDescribeRecordsRequest() (request *DescribeRecordsRequest) {
     request = &DescribeRecordsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cr", APIVersion, "DescribeRecords")
     
     
@@ -577,6 +587,7 @@ func NewDescribeTaskStatusRequest() (request *DescribeTaskStatusRequest) {
     request = &DescribeTaskStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cr", APIVersion, "DescribeTaskStatus")
     
     
@@ -630,6 +641,7 @@ func NewDownloadBotRecordRequest() (request *DownloadBotRecordRequest) {
     request = &DownloadBotRecordRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cr", APIVersion, "DownloadBotRecord")
     
     
@@ -683,6 +695,7 @@ func NewDownloadDialogueTextRequest() (request *DownloadDialogueTextRequest) {
     request = &DownloadDialogueTextRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cr", APIVersion, "DownloadDialogueText")
     
     
@@ -736,6 +749,7 @@ func NewDownloadRecordListRequest() (request *DownloadRecordListRequest) {
     request = &DownloadRecordListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cr", APIVersion, "DownloadRecordList")
     
     
@@ -793,6 +807,7 @@ func NewDownloadReportRequest() (request *DownloadReportRequest) {
     request = &DownloadReportRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cr", APIVersion, "DownloadReport")
     
     
@@ -848,6 +863,7 @@ func NewExportBotDataRequest() (request *ExportBotDataRequest) {
     request = &ExportBotDataRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cr", APIVersion, "ExportBotData")
     
     
@@ -899,6 +915,7 @@ func NewQueryBlackListDataRequest() (request *QueryBlackListDataRequest) {
     request = &QueryBlackListDataRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cr", APIVersion, "QueryBlackListData")
     
     
@@ -954,6 +971,7 @@ func NewQueryBotListRequest() (request *QueryBotListRequest) {
     request = &QueryBotListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cr", APIVersion, "QueryBotList")
     
     
@@ -1001,6 +1019,7 @@ func NewQueryCallListRequest() (request *QueryCallListRequest) {
     request = &QueryCallListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cr", APIVersion, "QueryCallList")
     
     
@@ -1056,6 +1075,7 @@ func NewQueryInstantDataRequest() (request *QueryInstantDataRequest) {
     request = &QueryInstantDataRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cr", APIVersion, "QueryInstantData")
     
     
@@ -1105,6 +1125,7 @@ func NewQueryProductsRequest() (request *QueryProductsRequest) {
     request = &QueryProductsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cr", APIVersion, "QueryProducts")
     
     
@@ -1158,6 +1179,7 @@ func NewQueryRecordListRequest() (request *QueryRecordListRequest) {
     request = &QueryRecordListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cr", APIVersion, "QueryRecordList")
     
     
@@ -1205,6 +1227,7 @@ func NewUpdateBotTaskRequest() (request *UpdateBotTaskRequest) {
     request = &UpdateBotTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cr", APIVersion, "UpdateBotTask")
     
     
@@ -1258,6 +1281,7 @@ func NewUploadBotDataRequest() (request *UploadBotDataRequest) {
     request = &UploadBotDataRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cr", APIVersion, "UploadBotData")
     
     
@@ -1313,6 +1337,7 @@ func NewUploadBotFileRequest() (request *UploadBotFileRequest) {
     request = &UploadBotFileRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cr", APIVersion, "UploadBotFile")
     
     
@@ -1366,6 +1391,7 @@ func NewUploadDataFileRequest() (request *UploadDataFileRequest) {
     request = &UploadDataFileRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cr", APIVersion, "UploadDataFile")
     
     
@@ -1419,6 +1445,7 @@ func NewUploadDataJsonRequest() (request *UploadDataJsonRequest) {
     request = &UploadDataJsonRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cr", APIVersion, "UploadDataJson")
     
     
@@ -1470,6 +1497,7 @@ func NewUploadFileRequest() (request *UploadFileRequest) {
     request = &UploadFileRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cr", APIVersion, "UploadFile")
     
     

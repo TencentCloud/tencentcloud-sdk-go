@@ -49,6 +49,7 @@ func NewApplyEmbedIntervalRequest() (request *ApplyEmbedIntervalRequest) {
     request = &ApplyEmbedIntervalRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bi", APIVersion, "ApplyEmbedInterval")
     
     
@@ -126,6 +127,7 @@ func NewCreateEmbedTokenRequest() (request *CreateEmbedTokenRequest) {
     request = &CreateEmbedTokenRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bi", APIVersion, "CreateEmbedToken")
     
     

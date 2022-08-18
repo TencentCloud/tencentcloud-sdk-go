@@ -49,6 +49,7 @@ func NewDescribeDBInstancesRequest() (request *DescribeDBInstancesRequest) {
     request = &DescribeDBInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dbdc", APIVersion, "DescribeDBInstances")
     
     
@@ -108,6 +109,7 @@ func NewDescribeHostListRequest() (request *DescribeHostListRequest) {
     request = &DescribeHostListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dbdc", APIVersion, "DescribeHostList")
     
     
@@ -165,6 +167,7 @@ func NewDescribeInstanceDetailRequest() (request *DescribeInstanceDetailRequest)
     request = &DescribeInstanceDetailRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dbdc", APIVersion, "DescribeInstanceDetail")
     
     
@@ -220,6 +223,7 @@ func NewDescribeInstanceListRequest() (request *DescribeInstanceListRequest) {
     request = &DescribeInstanceListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dbdc", APIVersion, "DescribeInstanceList")
     
     
@@ -275,6 +279,7 @@ func NewDescribeInstancesRequest() (request *DescribeInstancesRequest) {
     request = &DescribeInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dbdc", APIVersion, "DescribeInstances")
     
     
@@ -326,6 +331,7 @@ func NewModifyInstanceNameRequest() (request *ModifyInstanceNameRequest) {
     request = &ModifyInstanceNameRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dbdc", APIVersion, "ModifyInstanceName")
     
     

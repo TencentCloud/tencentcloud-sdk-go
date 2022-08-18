@@ -49,6 +49,7 @@ func NewBindStaffSkillGroupListRequest() (request *BindStaffSkillGroupListReques
     request = &BindStaffSkillGroupListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ccc", APIVersion, "BindStaffSkillGroupList")
     
     
@@ -102,6 +103,7 @@ func NewCreateAutoCalloutTaskRequest() (request *CreateAutoCalloutTaskRequest) {
     request = &CreateAutoCalloutTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ccc", APIVersion, "CreateAutoCalloutTask")
     
     
@@ -155,6 +157,7 @@ func NewCreateCCCSkillGroupRequest() (request *CreateCCCSkillGroupRequest) {
     request = &CreateCCCSkillGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ccc", APIVersion, "CreateCCCSkillGroup")
     
     
@@ -208,6 +211,7 @@ func NewCreateCallOutSessionRequest() (request *CreateCallOutSessionRequest) {
     request = &CreateCallOutSessionRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ccc", APIVersion, "CreateCallOutSession")
     
     
@@ -265,6 +269,7 @@ func NewCreateSDKLoginTokenRequest() (request *CreateSDKLoginTokenRequest) {
     request = &CreateSDKLoginTokenRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ccc", APIVersion, "CreateSDKLoginToken")
     
     
@@ -320,6 +325,7 @@ func NewCreateStaffRequest() (request *CreateStaffRequest) {
     request = &CreateStaffRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ccc", APIVersion, "CreateStaff")
     
     
@@ -379,6 +385,7 @@ func NewCreateUserSigRequest() (request *CreateUserSigRequest) {
     request = &CreateUserSigRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ccc", APIVersion, "CreateUserSig")
     
     
@@ -432,6 +439,7 @@ func NewDeleteStaffRequest() (request *DeleteStaffRequest) {
     request = &DeleteStaffRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ccc", APIVersion, "DeleteStaff")
     
     
@@ -483,6 +491,7 @@ func NewDescribeAutoCalloutTaskRequest() (request *DescribeAutoCalloutTaskReques
     request = &DescribeAutoCalloutTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ccc", APIVersion, "DescribeAutoCalloutTask")
     
     
@@ -534,6 +543,7 @@ func NewDescribeAutoCalloutTasksRequest() (request *DescribeAutoCalloutTasksRequ
     request = &DescribeAutoCalloutTasksRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ccc", APIVersion, "DescribeAutoCalloutTasks")
     
     
@@ -585,6 +595,7 @@ func NewDescribeCCCBuyInfoListRequest() (request *DescribeCCCBuyInfoListRequest)
     request = &DescribeCCCBuyInfoListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ccc", APIVersion, "DescribeCCCBuyInfoList")
     
     
@@ -640,6 +651,7 @@ func NewDescribeCallInMetricsRequest() (request *DescribeCallInMetricsRequest) {
     request = &DescribeCallInMetricsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ccc", APIVersion, "DescribeCallInMetrics")
     
     
@@ -695,6 +707,7 @@ func NewDescribeChatMessagesRequest() (request *DescribeChatMessagesRequest) {
     request = &DescribeChatMessagesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ccc", APIVersion, "DescribeChatMessages")
     
     
@@ -750,6 +763,7 @@ func NewDescribeIMCdrsRequest() (request *DescribeIMCdrsRequest) {
     request = &DescribeIMCdrsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ccc", APIVersion, "DescribeIMCdrs")
     
     
@@ -801,6 +815,7 @@ func NewDescribePSTNActiveSessionListRequest() (request *DescribePSTNActiveSessi
     request = &DescribePSTNActiveSessionListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ccc", APIVersion, "DescribePSTNActiveSessionList")
     
     
@@ -850,6 +865,7 @@ func NewDescribeProtectedTelCdrRequest() (request *DescribeProtectedTelCdrReques
     request = &DescribeProtectedTelCdrRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ccc", APIVersion, "DescribeProtectedTelCdr")
     
     
@@ -905,6 +921,7 @@ func NewDescribeSkillGroupInfoListRequest() (request *DescribeSkillGroupInfoList
     request = &DescribeSkillGroupInfoListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ccc", APIVersion, "DescribeSkillGroupInfoList")
     
     
@@ -960,6 +977,7 @@ func NewDescribeStaffInfoListRequest() (request *DescribeStaffInfoListRequest) {
     request = &DescribeStaffInfoListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ccc", APIVersion, "DescribeStaffInfoList")
     
     
@@ -1013,6 +1031,7 @@ func NewDescribeStaffStatusMetricsRequest() (request *DescribeStaffStatusMetrics
     request = &DescribeStaffStatusMetricsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ccc", APIVersion, "DescribeStaffStatusMetrics")
     
     
@@ -1066,6 +1085,7 @@ func NewDescribeTelCallInfoRequest() (request *DescribeTelCallInfoRequest) {
     request = &DescribeTelCallInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ccc", APIVersion, "DescribeTelCallInfo")
     
     
@@ -1123,6 +1143,7 @@ func NewDescribeTelCdrRequest() (request *DescribeTelCdrRequest) {
     request = &DescribeTelCdrRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ccc", APIVersion, "DescribeTelCdr")
     
     
@@ -1178,6 +1199,7 @@ func NewDescribeTelSessionRequest() (request *DescribeTelSessionRequest) {
     request = &DescribeTelSessionRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ccc", APIVersion, "DescribeTelSession")
     
     
@@ -1229,6 +1251,7 @@ func NewModifyStaffRequest() (request *ModifyStaffRequest) {
     request = &ModifyStaffRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ccc", APIVersion, "ModifyStaff")
     
     
@@ -1288,6 +1311,7 @@ func NewStopAutoCalloutTaskRequest() (request *StopAutoCalloutTaskRequest) {
     request = &StopAutoCalloutTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ccc", APIVersion, "StopAutoCalloutTask")
     
     
@@ -1341,6 +1365,7 @@ func NewUnbindStaffSkillGroupListRequest() (request *UnbindStaffSkillGroupListRe
     request = &UnbindStaffSkillGroupListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ccc", APIVersion, "UnbindStaffSkillGroupList")
     
     

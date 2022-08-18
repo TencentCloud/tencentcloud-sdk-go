@@ -49,6 +49,7 @@ func NewDescribeStatusRequest() (request *DescribeStatusRequest) {
     request = &DescribeStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("habo", APIVersion, "DescribeStatus")
     
     
@@ -90,6 +91,7 @@ func NewStartAnalyseRequest() (request *StartAnalyseRequest) {
     request = &StartAnalyseRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("habo", APIVersion, "StartAnalyse")
     
     

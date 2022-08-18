@@ -49,6 +49,7 @@ func NewBeautifyPicRequest() (request *BeautifyPicRequest) {
     request = &BeautifyPicRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("fmu", APIVersion, "BeautifyPic")
     
     
@@ -160,6 +161,7 @@ func NewBeautifyVideoRequest() (request *BeautifyVideoRequest) {
     request = &BeautifyVideoRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("fmu", APIVersion, "BeautifyVideo")
     
     
@@ -225,6 +227,7 @@ func NewCancelBeautifyVideoJobRequest() (request *CancelBeautifyVideoJobRequest)
     request = &CancelBeautifyVideoJobRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("fmu", APIVersion, "CancelBeautifyVideoJob")
     
     
@@ -284,6 +287,7 @@ func NewCreateModelRequest() (request *CreateModelRequest) {
     request = &CreateModelRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("fmu", APIVersion, "CreateModel")
     
     
@@ -363,6 +367,7 @@ func NewDeleteModelRequest() (request *DeleteModelRequest) {
     request = &DeleteModelRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("fmu", APIVersion, "DeleteModel")
     
     
@@ -420,6 +425,7 @@ func NewGetModelListRequest() (request *GetModelListRequest) {
     request = &GetModelListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("fmu", APIVersion, "GetModelList")
     
     
@@ -475,6 +481,7 @@ func NewQueryBeautifyVideoJobRequest() (request *QueryBeautifyVideoJobRequest) {
     request = &QueryBeautifyVideoJobRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("fmu", APIVersion, "QueryBeautifyVideoJob")
     
     
@@ -538,6 +545,7 @@ func NewStyleImageRequest() (request *StyleImageRequest) {
     request = &StyleImageRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("fmu", APIVersion, "StyleImage")
     
     
@@ -619,6 +627,7 @@ func NewStyleImageProRequest() (request *StyleImageProRequest) {
     request = &StyleImageProRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("fmu", APIVersion, "StyleImagePro")
     
     
@@ -702,6 +711,7 @@ func NewTryLipstickPicRequest() (request *TryLipstickPicRequest) {
     request = &TryLipstickPicRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("fmu", APIVersion, "TryLipstickPic")
     
     

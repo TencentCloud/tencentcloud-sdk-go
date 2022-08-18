@@ -49,6 +49,7 @@ func NewCreateTaskFromTemplateRequest() (request *CreateTaskFromTemplateRequest)
     request = &CreateTaskFromTemplateRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cfg", APIVersion, "CreateTaskFromTemplate")
     
     
@@ -108,6 +109,7 @@ func NewDeleteTaskRequest() (request *DeleteTaskRequest) {
     request = &DeleteTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cfg", APIVersion, "DeleteTask")
     
     
@@ -163,6 +165,7 @@ func NewDescribeTaskRequest() (request *DescribeTaskRequest) {
     request = &DescribeTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cfg", APIVersion, "DescribeTask")
     
     
@@ -244,6 +247,7 @@ func NewDescribeTaskExecuteLogsRequest() (request *DescribeTaskExecuteLogsReques
     request = &DescribeTaskExecuteLogsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cfg", APIVersion, "DescribeTaskExecuteLogs")
     
     
@@ -301,6 +305,7 @@ func NewDescribeTaskListRequest() (request *DescribeTaskListRequest) {
     request = &DescribeTaskListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cfg", APIVersion, "DescribeTaskList")
     
     
@@ -356,6 +361,7 @@ func NewDescribeTemplateRequest() (request *DescribeTemplateRequest) {
     request = &DescribeTemplateRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cfg", APIVersion, "DescribeTemplate")
     
     
@@ -425,6 +431,7 @@ func NewDescribeTemplateListRequest() (request *DescribeTemplateListRequest) {
     request = &DescribeTemplateListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cfg", APIVersion, "DescribeTemplateList")
     
     
@@ -480,6 +487,7 @@ func NewExecuteTaskRequest() (request *ExecuteTaskRequest) {
     request = &ExecuteTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cfg", APIVersion, "ExecuteTask")
     
     
@@ -535,6 +543,7 @@ func NewExecuteTaskInstanceRequest() (request *ExecuteTaskInstanceRequest) {
     request = &ExecuteTaskInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cfg", APIVersion, "ExecuteTaskInstance")
     
     
@@ -604,6 +613,7 @@ func NewModifyTaskRunStatusRequest() (request *ModifyTaskRunStatusRequest) {
     request = &ModifyTaskRunStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cfg", APIVersion, "ModifyTaskRunStatus")
     
     

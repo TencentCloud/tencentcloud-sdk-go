@@ -49,6 +49,7 @@ func NewCheckCertificateRequest() (request *CheckCertificateRequest) {
     request = &CheckCertificateRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("teo", APIVersion, "CheckCertificate")
     
     
@@ -98,6 +99,7 @@ func NewCreateApplicationProxyRequest() (request *CreateApplicationProxyRequest)
     request = &CreateApplicationProxyRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("teo", APIVersion, "CreateApplicationProxy")
     
     
@@ -151,6 +153,7 @@ func NewCreateApplicationProxyRuleRequest() (request *CreateApplicationProxyRule
     request = &CreateApplicationProxyRuleRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("teo", APIVersion, "CreateApplicationProxyRule")
     
     
@@ -198,6 +201,7 @@ func NewCreateApplicationProxyRulesRequest() (request *CreateApplicationProxyRul
     request = &CreateApplicationProxyRulesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("teo", APIVersion, "CreateApplicationProxyRules")
     
     
@@ -245,6 +249,7 @@ func NewCreateCustomErrorPageRequest() (request *CreateCustomErrorPageRequest) {
     request = &CreateCustomErrorPageRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("teo", APIVersion, "CreateCustomErrorPage")
     
     
@@ -292,6 +297,7 @@ func NewCreateDnsRecordRequest() (request *CreateDnsRecordRequest) {
     request = &CreateDnsRecordRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("teo", APIVersion, "CreateDnsRecord")
     
     
@@ -363,6 +369,7 @@ func NewCreateLoadBalancingRequest() (request *CreateLoadBalancingRequest) {
     request = &CreateLoadBalancingRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("teo", APIVersion, "CreateLoadBalancing")
     
     
@@ -410,6 +417,7 @@ func NewCreateOriginGroupRequest() (request *CreateOriginGroupRequest) {
     request = &CreateOriginGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("teo", APIVersion, "CreateOriginGroup")
     
     
@@ -459,6 +467,7 @@ func NewCreatePrefetchTaskRequest() (request *CreatePrefetchTaskRequest) {
     request = &CreatePrefetchTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("teo", APIVersion, "CreatePrefetchTask")
     
     
@@ -526,6 +535,7 @@ func NewCreatePurgeTaskRequest() (request *CreatePurgeTaskRequest) {
     request = &CreatePurgeTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("teo", APIVersion, "CreatePurgeTask")
     
     
@@ -593,6 +603,7 @@ func NewCreateZoneRequest() (request *CreateZoneRequest) {
     request = &CreateZoneRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("teo", APIVersion, "CreateZone")
     
     
@@ -648,6 +659,7 @@ func NewDeleteApplicationProxyRequest() (request *DeleteApplicationProxyRequest)
     request = &DeleteApplicationProxyRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("teo", APIVersion, "DeleteApplicationProxy")
     
     
@@ -703,6 +715,7 @@ func NewDeleteApplicationProxyRuleRequest() (request *DeleteApplicationProxyRule
     request = &DeleteApplicationProxyRuleRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("teo", APIVersion, "DeleteApplicationProxyRule")
     
     
@@ -758,6 +771,7 @@ func NewDeleteDnsRecordsRequest() (request *DeleteDnsRecordsRequest) {
     request = &DeleteDnsRecordsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("teo", APIVersion, "DeleteDnsRecords")
     
     
@@ -809,6 +823,7 @@ func NewDeleteLoadBalancingRequest() (request *DeleteLoadBalancingRequest) {
     request = &DeleteLoadBalancingRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("teo", APIVersion, "DeleteLoadBalancing")
     
     
@@ -860,6 +875,7 @@ func NewDeleteOriginGroupRequest() (request *DeleteOriginGroupRequest) {
     request = &DeleteOriginGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("teo", APIVersion, "DeleteOriginGroup")
     
     
@@ -911,6 +927,7 @@ func NewDeleteZoneRequest() (request *DeleteZoneRequest) {
     request = &DeleteZoneRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("teo", APIVersion, "DeleteZone")
     
     
@@ -962,6 +979,7 @@ func NewDescribeApplicationProxyRequest() (request *DescribeApplicationProxyRequ
     request = &DescribeApplicationProxyRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("teo", APIVersion, "DescribeApplicationProxy")
     
     
@@ -1013,6 +1031,7 @@ func NewDescribeApplicationProxyDetailRequest() (request *DescribeApplicationPro
     request = &DescribeApplicationProxyDetailRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("teo", APIVersion, "DescribeApplicationProxyDetail")
     
     
@@ -1062,6 +1081,7 @@ func NewDescribeBotLogRequest() (request *DescribeBotLogRequest) {
     request = &DescribeBotLogRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("teo", APIVersion, "DescribeBotLog")
     
     
@@ -1111,6 +1131,7 @@ func NewDescribeBotManagedRulesRequest() (request *DescribeBotManagedRulesReques
     request = &DescribeBotManagedRulesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("teo", APIVersion, "DescribeBotManagedRules")
     
     
@@ -1158,6 +1179,7 @@ func NewDescribeCnameStatusRequest() (request *DescribeCnameStatusRequest) {
     request = &DescribeCnameStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("teo", APIVersion, "DescribeCnameStatus")
     
     
@@ -1207,6 +1229,7 @@ func NewDescribeDDoSPolicyRequest() (request *DescribeDDoSPolicyRequest) {
     request = &DescribeDDoSPolicyRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("teo", APIVersion, "DescribeDDoSPolicy")
     
     
@@ -1256,6 +1279,7 @@ func NewDescribeDDosAttackDataRequest() (request *DescribeDDosAttackDataRequest)
     request = &DescribeDDosAttackDataRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("teo", APIVersion, "DescribeDDosAttackData")
     
     
@@ -1303,6 +1327,7 @@ func NewDescribeDDosAttackEventRequest() (request *DescribeDDosAttackEventReques
     request = &DescribeDDosAttackEventRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("teo", APIVersion, "DescribeDDosAttackEvent")
     
     
@@ -1350,6 +1375,7 @@ func NewDescribeDDosAttackEventDetailRequest() (request *DescribeDDosAttackEvent
     request = &DescribeDDosAttackEventDetailRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("teo", APIVersion, "DescribeDDosAttackEventDetail")
     
     
@@ -1397,6 +1423,7 @@ func NewDescribeDDosAttackSourceEventRequest() (request *DescribeDDosAttackSourc
     request = &DescribeDDosAttackSourceEventRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("teo", APIVersion, "DescribeDDosAttackSourceEvent")
     
     
@@ -1444,6 +1471,7 @@ func NewDescribeDDosAttackTopDataRequest() (request *DescribeDDosAttackTopDataRe
     request = &DescribeDDosAttackTopDataRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("teo", APIVersion, "DescribeDDosAttackTopData")
     
     
@@ -1491,6 +1519,7 @@ func NewDescribeDDosMajorAttackEventRequest() (request *DescribeDDosMajorAttackE
     request = &DescribeDDosMajorAttackEventRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("teo", APIVersion, "DescribeDDosMajorAttackEvent")
     
     
@@ -1540,6 +1569,7 @@ func NewDescribeDefaultCertificatesRequest() (request *DescribeDefaultCertificat
     request = &DescribeDefaultCertificatesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("teo", APIVersion, "DescribeDefaultCertificates")
     
     
@@ -1595,6 +1625,7 @@ func NewDescribeDnsDataRequest() (request *DescribeDnsDataRequest) {
     request = &DescribeDnsDataRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("teo", APIVersion, "DescribeDnsData")
     
     
@@ -1644,6 +1675,7 @@ func NewDescribeDnsRecordsRequest() (request *DescribeDnsRecordsRequest) {
     request = &DescribeDnsRecordsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("teo", APIVersion, "DescribeDnsRecords")
     
     
@@ -1693,6 +1725,7 @@ func NewDescribeDnssecRequest() (request *DescribeDnssecRequest) {
     request = &DescribeDnssecRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("teo", APIVersion, "DescribeDnssec")
     
     
@@ -1742,6 +1775,7 @@ func NewDescribeHostsCertificateRequest() (request *DescribeHostsCertificateRequ
     request = &DescribeHostsCertificateRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("teo", APIVersion, "DescribeHostsCertificate")
     
     
@@ -1797,6 +1831,7 @@ func NewDescribeHostsSettingRequest() (request *DescribeHostsSettingRequest) {
     request = &DescribeHostsSettingRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("teo", APIVersion, "DescribeHostsSetting")
     
     
@@ -1850,6 +1885,7 @@ func NewDescribeIdentificationRequest() (request *DescribeIdentificationRequest)
     request = &DescribeIdentificationRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("teo", APIVersion, "DescribeIdentification")
     
     
@@ -1897,6 +1933,7 @@ func NewDescribeLoadBalancingRequest() (request *DescribeLoadBalancingRequest) {
     request = &DescribeLoadBalancingRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("teo", APIVersion, "DescribeLoadBalancing")
     
     
@@ -1946,6 +1983,7 @@ func NewDescribeLoadBalancingDetailRequest() (request *DescribeLoadBalancingDeta
     request = &DescribeLoadBalancingDetailRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("teo", APIVersion, "DescribeLoadBalancingDetail")
     
     
@@ -1993,6 +2031,7 @@ func NewDescribeOriginGroupRequest() (request *DescribeOriginGroupRequest) {
     request = &DescribeOriginGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("teo", APIVersion, "DescribeOriginGroup")
     
     
@@ -2040,6 +2079,7 @@ func NewDescribeOriginGroupDetailRequest() (request *DescribeOriginGroupDetailRe
     request = &DescribeOriginGroupDetailRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("teo", APIVersion, "DescribeOriginGroupDetail")
     
     
@@ -2087,6 +2127,7 @@ func NewDescribeOverviewL7DataRequest() (request *DescribeOverviewL7DataRequest)
     request = &DescribeOverviewL7DataRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("teo", APIVersion, "DescribeOverviewL7Data")
     
     
@@ -2138,6 +2179,7 @@ func NewDescribePrefetchTasksRequest() (request *DescribePrefetchTasksRequest) {
     request = &DescribePrefetchTasksRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("teo", APIVersion, "DescribePrefetchTasks")
     
     
@@ -2191,6 +2233,7 @@ func NewDescribePurgeTasksRequest() (request *DescribePurgeTasksRequest) {
     request = &DescribePurgeTasksRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("teo", APIVersion, "DescribePurgeTasks")
     
     
@@ -2242,6 +2285,7 @@ func NewDescribeSecurityPolicyRequest() (request *DescribeSecurityPolicyRequest)
     request = &DescribeSecurityPolicyRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("teo", APIVersion, "DescribeSecurityPolicy")
     
     
@@ -2293,6 +2337,7 @@ func NewDescribeSecurityPolicyListRequest() (request *DescribeSecurityPolicyList
     request = &DescribeSecurityPolicyListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("teo", APIVersion, "DescribeSecurityPolicyList")
     
     
@@ -2340,6 +2385,7 @@ func NewDescribeSecurityPolicyManagedRulesRequest() (request *DescribeSecurityPo
     request = &DescribeSecurityPolicyManagedRulesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("teo", APIVersion, "DescribeSecurityPolicyManagedRules")
     
     
@@ -2387,6 +2433,7 @@ func NewDescribeSecurityPolicyManagedRulesIdRequest() (request *DescribeSecurity
     request = &DescribeSecurityPolicyManagedRulesIdRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("teo", APIVersion, "DescribeSecurityPolicyManagedRulesId")
     
     
@@ -2434,6 +2481,7 @@ func NewDescribeSecurityPolicyRegionsRequest() (request *DescribeSecurityPolicyR
     request = &DescribeSecurityPolicyRegionsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("teo", APIVersion, "DescribeSecurityPolicyRegions")
     
     
@@ -2481,6 +2529,7 @@ func NewDescribeSecurityPortraitRulesRequest() (request *DescribeSecurityPortrai
     request = &DescribeSecurityPortraitRulesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("teo", APIVersion, "DescribeSecurityPortraitRules")
     
     
@@ -2530,6 +2579,7 @@ func NewDescribeTimingL4DataRequest() (request *DescribeTimingL4DataRequest) {
     request = &DescribeTimingL4DataRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("teo", APIVersion, "DescribeTimingL4Data")
     
     
@@ -2581,6 +2631,7 @@ func NewDescribeTimingL7AnalysisDataRequest() (request *DescribeTimingL7Analysis
     request = &DescribeTimingL7AnalysisDataRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("teo", APIVersion, "DescribeTimingL7AnalysisData")
     
     
@@ -2634,6 +2685,7 @@ func NewDescribeTimingL7CacheDataRequest() (request *DescribeTimingL7CacheDataRe
     request = &DescribeTimingL7CacheDataRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("teo", APIVersion, "DescribeTimingL7CacheData")
     
     
@@ -2683,6 +2735,7 @@ func NewDescribeTopL7AnalysisDataRequest() (request *DescribeTopL7AnalysisDataRe
     request = &DescribeTopL7AnalysisDataRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("teo", APIVersion, "DescribeTopL7AnalysisData")
     
     
@@ -2738,6 +2791,7 @@ func NewDescribeTopL7CacheDataRequest() (request *DescribeTopL7CacheDataRequest)
     request = &DescribeTopL7CacheDataRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("teo", APIVersion, "DescribeTopL7CacheData")
     
     
@@ -2787,6 +2841,7 @@ func NewDescribeWebManagedRulesAttackEventsRequest() (request *DescribeWebManage
     request = &DescribeWebManagedRulesAttackEventsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("teo", APIVersion, "DescribeWebManagedRulesAttackEvents")
     
     
@@ -2834,6 +2889,7 @@ func NewDescribeWebManagedRulesDataRequest() (request *DescribeWebManagedRulesDa
     request = &DescribeWebManagedRulesDataRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("teo", APIVersion, "DescribeWebManagedRulesData")
     
     
@@ -2883,6 +2939,7 @@ func NewDescribeWebManagedRulesLogRequest() (request *DescribeWebManagedRulesLog
     request = &DescribeWebManagedRulesLogRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("teo", APIVersion, "DescribeWebManagedRulesLog")
     
     
@@ -2930,6 +2987,7 @@ func NewDescribeWebManagedRulesTopDataRequest() (request *DescribeWebManagedRule
     request = &DescribeWebManagedRulesTopDataRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("teo", APIVersion, "DescribeWebManagedRulesTopData")
     
     
@@ -2983,6 +3041,7 @@ func NewDescribeWebProtectionAttackEventsRequest() (request *DescribeWebProtecti
     request = &DescribeWebProtectionAttackEventsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("teo", APIVersion, "DescribeWebProtectionAttackEvents")
     
     
@@ -3030,6 +3089,7 @@ func NewDescribeWebProtectionDataRequest() (request *DescribeWebProtectionDataRe
     request = &DescribeWebProtectionDataRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("teo", APIVersion, "DescribeWebProtectionData")
     
     
@@ -3079,6 +3139,7 @@ func NewDescribeWebProtectionLogRequest() (request *DescribeWebProtectionLogRequ
     request = &DescribeWebProtectionLogRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("teo", APIVersion, "DescribeWebProtectionLog")
     
     
@@ -3126,6 +3187,7 @@ func NewDescribeZoneDDoSPolicyRequest() (request *DescribeZoneDDoSPolicyRequest)
     request = &DescribeZoneDDoSPolicyRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("teo", APIVersion, "DescribeZoneDDoSPolicy")
     
     
@@ -3177,6 +3239,7 @@ func NewDescribeZoneDetailsRequest() (request *DescribeZoneDetailsRequest) {
     request = &DescribeZoneDetailsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("teo", APIVersion, "DescribeZoneDetails")
     
     
@@ -3228,6 +3291,7 @@ func NewDescribeZoneSettingRequest() (request *DescribeZoneSettingRequest) {
     request = &DescribeZoneSettingRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("teo", APIVersion, "DescribeZoneSetting")
     
     
@@ -3283,6 +3347,7 @@ func NewDescribeZonesRequest() (request *DescribeZonesRequest) {
     request = &DescribeZonesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("teo", APIVersion, "DescribeZones")
     
     
@@ -3334,6 +3399,7 @@ func NewDownloadL7LogsRequest() (request *DownloadL7LogsRequest) {
     request = &DownloadL7LogsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("teo", APIVersion, "DownloadL7Logs")
     
     
@@ -3385,6 +3451,7 @@ func NewIdentifyZoneRequest() (request *IdentifyZoneRequest) {
     request = &IdentifyZoneRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("teo", APIVersion, "IdentifyZone")
     
     
@@ -3434,6 +3501,7 @@ func NewImportDnsRecordsRequest() (request *ImportDnsRecordsRequest) {
     request = &ImportDnsRecordsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("teo", APIVersion, "ImportDnsRecords")
     
     
@@ -3483,6 +3551,7 @@ func NewModifyApplicationProxyRequest() (request *ModifyApplicationProxyRequest)
     request = &ModifyApplicationProxyRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("teo", APIVersion, "ModifyApplicationProxy")
     
     
@@ -3532,6 +3601,7 @@ func NewModifyApplicationProxyRuleRequest() (request *ModifyApplicationProxyRule
     request = &ModifyApplicationProxyRuleRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("teo", APIVersion, "ModifyApplicationProxyRule")
     
     
@@ -3579,6 +3649,7 @@ func NewModifyApplicationProxyRuleStatusRequest() (request *ModifyApplicationPro
     request = &ModifyApplicationProxyRuleStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("teo", APIVersion, "ModifyApplicationProxyRuleStatus")
     
     
@@ -3626,6 +3697,7 @@ func NewModifyApplicationProxyStatusRequest() (request *ModifyApplicationProxySt
     request = &ModifyApplicationProxyStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("teo", APIVersion, "ModifyApplicationProxyStatus")
     
     
@@ -3673,6 +3745,7 @@ func NewModifyDDoSPolicyRequest() (request *ModifyDDoSPolicyRequest) {
     request = &ModifyDDoSPolicyRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("teo", APIVersion, "ModifyDDoSPolicy")
     
     
@@ -3720,6 +3793,7 @@ func NewModifyDDoSPolicyHostRequest() (request *ModifyDDoSPolicyHostRequest) {
     request = &ModifyDDoSPolicyHostRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("teo", APIVersion, "ModifyDDoSPolicyHost")
     
     
@@ -3767,6 +3841,7 @@ func NewModifyDefaultCertificateRequest() (request *ModifyDefaultCertificateRequ
     request = &ModifyDefaultCertificateRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("teo", APIVersion, "ModifyDefaultCertificate")
     
     
@@ -3818,6 +3893,7 @@ func NewModifyDnsRecordRequest() (request *ModifyDnsRecordRequest) {
     request = &ModifyDnsRecordRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("teo", APIVersion, "ModifyDnsRecord")
     
     
@@ -3879,6 +3955,7 @@ func NewModifyDnssecRequest() (request *ModifyDnssecRequest) {
     request = &ModifyDnssecRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("teo", APIVersion, "ModifyDnssec")
     
     
@@ -3926,6 +4003,7 @@ func NewModifyHostsCertificateRequest() (request *ModifyHostsCertificateRequest)
     request = &ModifyHostsCertificateRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("teo", APIVersion, "ModifyHostsCertificate")
     
     
@@ -3983,6 +4061,7 @@ func NewModifyLoadBalancingRequest() (request *ModifyLoadBalancingRequest) {
     request = &ModifyLoadBalancingRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("teo", APIVersion, "ModifyLoadBalancing")
     
     
@@ -4030,6 +4109,7 @@ func NewModifyLoadBalancingStatusRequest() (request *ModifyLoadBalancingStatusRe
     request = &ModifyLoadBalancingStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("teo", APIVersion, "ModifyLoadBalancingStatus")
     
     
@@ -4077,6 +4157,7 @@ func NewModifyOriginGroupRequest() (request *ModifyOriginGroupRequest) {
     request = &ModifyOriginGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("teo", APIVersion, "ModifyOriginGroup")
     
     
@@ -4124,6 +4205,7 @@ func NewModifySecurityPolicyRequest() (request *ModifySecurityPolicyRequest) {
     request = &ModifySecurityPolicyRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("teo", APIVersion, "ModifySecurityPolicy")
     
     
@@ -4175,6 +4257,7 @@ func NewModifyZoneRequest() (request *ModifyZoneRequest) {
     request = &ModifyZoneRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("teo", APIVersion, "ModifyZone")
     
     
@@ -4224,6 +4307,7 @@ func NewModifyZoneCnameSpeedUpRequest() (request *ModifyZoneCnameSpeedUpRequest)
     request = &ModifyZoneCnameSpeedUpRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("teo", APIVersion, "ModifyZoneCnameSpeedUp")
     
     
@@ -4273,6 +4357,7 @@ func NewModifyZoneSettingRequest() (request *ModifyZoneSettingRequest) {
     request = &ModifyZoneSettingRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("teo", APIVersion, "ModifyZoneSetting")
     
     
@@ -4342,6 +4427,7 @@ func NewModifyZoneStatusRequest() (request *ModifyZoneStatusRequest) {
     request = &ModifyZoneStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("teo", APIVersion, "ModifyZoneStatus")
     
     
@@ -4391,6 +4477,7 @@ func NewReclaimZoneRequest() (request *ReclaimZoneRequest) {
     request = &ReclaimZoneRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("teo", APIVersion, "ReclaimZone")
     
     
@@ -4440,6 +4527,7 @@ func NewScanDnsRecordsRequest() (request *ScanDnsRecordsRequest) {
     request = &ScanDnsRecordsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("teo", APIVersion, "ScanDnsRecords")
     
     

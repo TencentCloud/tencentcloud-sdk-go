@@ -49,6 +49,7 @@ func NewCreateProductSecretRequest() (request *CreateProductSecretRequest) {
     request = &CreateProductSecretRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ssm", APIVersion, "CreateProductSecret")
     
     
@@ -148,6 +149,7 @@ func NewCreateSSHKeyPairSecretRequest() (request *CreateSSHKeyPairSecretRequest)
     request = &CreateSSHKeyPairSecretRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ssm", APIVersion, "CreateSSHKeyPairSecret")
     
     
@@ -227,6 +229,7 @@ func NewCreateSecretRequest() (request *CreateSecretRequest) {
     request = &CreateSecretRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ssm", APIVersion, "CreateSecret")
     
     
@@ -290,6 +293,7 @@ func NewDeleteSecretRequest() (request *DeleteSecretRequest) {
     request = &DeleteSecretRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ssm", APIVersion, "DeleteSecret")
     
     
@@ -349,6 +353,7 @@ func NewDeleteSecretVersionRequest() (request *DeleteSecretVersionRequest) {
     request = &DeleteSecretVersionRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ssm", APIVersion, "DeleteSecretVersion")
     
     
@@ -412,6 +417,7 @@ func NewDescribeAsyncRequestInfoRequest() (request *DescribeAsyncRequestInfoRequ
     request = &DescribeAsyncRequestInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ssm", APIVersion, "DescribeAsyncRequestInfo")
     
     
@@ -515,6 +521,7 @@ func NewDescribeRotationDetailRequest() (request *DescribeRotationDetailRequest)
     request = &DescribeRotationDetailRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ssm", APIVersion, "DescribeRotationDetail")
     
     
@@ -622,6 +629,7 @@ func NewDescribeRotationHistoryRequest() (request *DescribeRotationHistoryReques
     request = &DescribeRotationHistoryRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ssm", APIVersion, "DescribeRotationHistory")
     
     
@@ -729,6 +737,7 @@ func NewDescribeSecretRequest() (request *DescribeSecretRequest) {
     request = &DescribeSecretRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ssm", APIVersion, "DescribeSecret")
     
     
@@ -788,6 +797,7 @@ func NewDescribeSupportedProductsRequest() (request *DescribeSupportedProductsRe
     request = &DescribeSupportedProductsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ssm", APIVersion, "DescribeSupportedProducts")
     
     
@@ -891,6 +901,7 @@ func NewDisableSecretRequest() (request *DisableSecretRequest) {
     request = &DisableSecretRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ssm", APIVersion, "DisableSecret")
     
     
@@ -950,6 +961,7 @@ func NewEnableSecretRequest() (request *EnableSecretRequest) {
     request = &EnableSecretRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ssm", APIVersion, "EnableSecret")
     
     
@@ -1009,6 +1021,7 @@ func NewGetRegionsRequest() (request *GetRegionsRequest) {
     request = &GetRegionsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ssm", APIVersion, "GetRegions")
     
     
@@ -1058,6 +1071,7 @@ func NewGetSSHKeyPairValueRequest() (request *GetSSHKeyPairValueRequest) {
     request = &GetSSHKeyPairValueRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ssm", APIVersion, "GetSSHKeyPairValue")
     
     
@@ -1135,6 +1149,7 @@ func NewGetSecretValueRequest() (request *GetSecretValueRequest) {
     request = &GetSecretValueRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ssm", APIVersion, "GetSecretValue")
     
     
@@ -1208,6 +1223,7 @@ func NewGetServiceStatusRequest() (request *GetServiceStatusRequest) {
     request = &GetServiceStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ssm", APIVersion, "GetServiceStatus")
     
     
@@ -1257,6 +1273,7 @@ func NewListSecretVersionIdsRequest() (request *ListSecretVersionIdsRequest) {
     request = &ListSecretVersionIdsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ssm", APIVersion, "ListSecretVersionIds")
     
     
@@ -1314,6 +1331,7 @@ func NewListSecretsRequest() (request *ListSecretsRequest) {
     request = &ListSecretsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ssm", APIVersion, "ListSecrets")
     
     
@@ -1367,6 +1385,7 @@ func NewPutSecretValueRequest() (request *PutSecretValueRequest) {
     request = &PutSecretValueRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ssm", APIVersion, "PutSecretValue")
     
     
@@ -1436,6 +1455,7 @@ func NewRestoreSecretRequest() (request *RestoreSecretRequest) {
     request = &RestoreSecretRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ssm", APIVersion, "RestoreSecret")
     
     
@@ -1493,6 +1513,7 @@ func NewRotateProductSecretRequest() (request *RotateProductSecretRequest) {
     request = &RotateProductSecretRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ssm", APIVersion, "RotateProductSecret")
     
     
@@ -1604,6 +1625,7 @@ func NewUpdateDescriptionRequest() (request *UpdateDescriptionRequest) {
     request = &UpdateDescriptionRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ssm", APIVersion, "UpdateDescription")
     
     
@@ -1659,6 +1681,7 @@ func NewUpdateRotationStatusRequest() (request *UpdateRotationStatusRequest) {
     request = &UpdateRotationStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ssm", APIVersion, "UpdateRotationStatus")
     
     
@@ -1776,6 +1799,7 @@ func NewUpdateSecretRequest() (request *UpdateSecretRequest) {
     request = &UpdateSecretRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ssm", APIVersion, "UpdateSecret")
     
     

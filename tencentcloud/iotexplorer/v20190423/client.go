@@ -49,6 +49,7 @@ func NewBindDevicesRequest() (request *BindDevicesRequest) {
     request = &BindDevicesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotexplorer", APIVersion, "BindDevices")
     
     
@@ -112,6 +113,7 @@ func NewBindProductsRequest() (request *BindProductsRequest) {
     request = &BindProductsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotexplorer", APIVersion, "BindProducts")
     
     
@@ -181,6 +183,7 @@ func NewCallDeviceActionAsyncRequest() (request *CallDeviceActionAsyncRequest) {
     request = &CallDeviceActionAsyncRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotexplorer", APIVersion, "CallDeviceActionAsync")
     
     
@@ -252,6 +255,7 @@ func NewCallDeviceActionSyncRequest() (request *CallDeviceActionSyncRequest) {
     request = &CallDeviceActionSyncRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotexplorer", APIVersion, "CallDeviceActionSync")
     
     
@@ -327,6 +331,7 @@ func NewControlDeviceDataRequest() (request *ControlDeviceDataRequest) {
     request = &ControlDeviceDataRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotexplorer", APIVersion, "ControlDeviceData")
     
     
@@ -412,6 +417,7 @@ func NewCreateBatchProductionRequest() (request *CreateBatchProductionRequest) {
     request = &CreateBatchProductionRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotexplorer", APIVersion, "CreateBatchProduction")
     
     
@@ -493,6 +499,7 @@ func NewCreateDeviceRequest() (request *CreateDeviceRequest) {
     request = &CreateDeviceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotexplorer", APIVersion, "CreateDevice")
     
     
@@ -574,6 +581,7 @@ func NewCreateFenceBindRequest() (request *CreateFenceBindRequest) {
     request = &CreateFenceBindRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotexplorer", APIVersion, "CreateFenceBind")
     
     
@@ -631,6 +639,7 @@ func NewCreateLoRaFrequencyRequest() (request *CreateLoRaFrequencyRequest) {
     request = &CreateLoRaFrequencyRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotexplorer", APIVersion, "CreateLoRaFrequency")
     
     
@@ -682,6 +691,7 @@ func NewCreateLoRaGatewayRequest() (request *CreateLoRaGatewayRequest) {
     request = &CreateLoRaGatewayRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotexplorer", APIVersion, "CreateLoRaGateway")
     
     
@@ -737,6 +747,7 @@ func NewCreatePositionFenceRequest() (request *CreatePositionFenceRequest) {
     request = &CreatePositionFenceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotexplorer", APIVersion, "CreatePositionFence")
     
     
@@ -796,6 +807,7 @@ func NewCreatePositionSpaceRequest() (request *CreatePositionSpaceRequest) {
     request = &CreatePositionSpaceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotexplorer", APIVersion, "CreatePositionSpace")
     
     
@@ -855,6 +867,7 @@ func NewCreateProjectRequest() (request *CreateProjectRequest) {
     request = &CreateProjectRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotexplorer", APIVersion, "CreateProject")
     
     
@@ -942,6 +955,7 @@ func NewCreateStudioProductRequest() (request *CreateStudioProductRequest) {
     request = &CreateStudioProductRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotexplorer", APIVersion, "CreateStudioProduct")
     
     
@@ -1045,6 +1059,7 @@ func NewCreateTopicPolicyRequest() (request *CreateTopicPolicyRequest) {
     request = &CreateTopicPolicyRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotexplorer", APIVersion, "CreateTopicPolicy")
     
     
@@ -1102,6 +1117,7 @@ func NewCreateTopicRuleRequest() (request *CreateTopicRuleRequest) {
     request = &CreateTopicRuleRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotexplorer", APIVersion, "CreateTopicRule")
     
     
@@ -1167,6 +1183,7 @@ func NewDeleteDeviceRequest() (request *DeleteDeviceRequest) {
     request = &DeleteDeviceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotexplorer", APIVersion, "DeleteDevice")
     
     
@@ -1238,6 +1255,7 @@ func NewDeleteDevicesRequest() (request *DeleteDevicesRequest) {
     request = &DeleteDevicesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotexplorer", APIVersion, "DeleteDevices")
     
     
@@ -1305,6 +1323,7 @@ func NewDeleteFenceBindRequest() (request *DeleteFenceBindRequest) {
     request = &DeleteFenceBindRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotexplorer", APIVersion, "DeleteFenceBind")
     
     
@@ -1362,6 +1381,7 @@ func NewDeleteLoRaFrequencyRequest() (request *DeleteLoRaFrequencyRequest) {
     request = &DeleteLoRaFrequencyRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotexplorer", APIVersion, "DeleteLoRaFrequency")
     
     
@@ -1417,6 +1437,7 @@ func NewDeleteLoRaGatewayRequest() (request *DeleteLoRaGatewayRequest) {
     request = &DeleteLoRaGatewayRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotexplorer", APIVersion, "DeleteLoRaGateway")
     
     
@@ -1474,6 +1495,7 @@ func NewDeletePositionFenceRequest() (request *DeletePositionFenceRequest) {
     request = &DeletePositionFenceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotexplorer", APIVersion, "DeletePositionFence")
     
     
@@ -1535,6 +1557,7 @@ func NewDeletePositionSpaceRequest() (request *DeletePositionSpaceRequest) {
     request = &DeletePositionSpaceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotexplorer", APIVersion, "DeletePositionSpace")
     
     
@@ -1592,6 +1615,7 @@ func NewDeleteProjectRequest() (request *DeleteProjectRequest) {
     request = &DeleteProjectRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotexplorer", APIVersion, "DeleteProject")
     
     
@@ -1649,6 +1673,7 @@ func NewDeleteStudioProductRequest() (request *DeleteStudioProductRequest) {
     request = &DeleteStudioProductRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotexplorer", APIVersion, "DeleteStudioProduct")
     
     
@@ -1714,6 +1739,7 @@ func NewDeleteTopicPolicyRequest() (request *DeleteTopicPolicyRequest) {
     request = &DeleteTopicPolicyRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotexplorer", APIVersion, "DeleteTopicPolicy")
     
     
@@ -1767,6 +1793,7 @@ func NewDeleteTopicRuleRequest() (request *DeleteTopicRuleRequest) {
     request = &DeleteTopicRuleRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotexplorer", APIVersion, "DeleteTopicRule")
     
     
@@ -1822,6 +1849,7 @@ func NewDescribeBatchProductionRequest() (request *DescribeBatchProductionReques
     request = &DescribeBatchProductionRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotexplorer", APIVersion, "DescribeBatchProduction")
     
     
@@ -1885,6 +1913,7 @@ func NewDescribeBindedProductsRequest() (request *DescribeBindedProductsRequest)
     request = &DescribeBindedProductsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotexplorer", APIVersion, "DescribeBindedProducts")
     
     
@@ -1946,6 +1975,7 @@ func NewDescribeDeviceRequest() (request *DescribeDeviceRequest) {
     request = &DescribeDeviceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotexplorer", APIVersion, "DescribeDevice")
     
     
@@ -2013,6 +2043,7 @@ func NewDescribeDeviceBindGatewayRequest() (request *DescribeDeviceBindGatewayRe
     request = &DescribeDeviceBindGatewayRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotexplorer", APIVersion, "DescribeDeviceBindGateway")
     
     
@@ -2082,6 +2113,7 @@ func NewDescribeDeviceDataRequest() (request *DescribeDeviceDataRequest) {
     request = &DescribeDeviceDataRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotexplorer", APIVersion, "DescribeDeviceData")
     
     
@@ -2151,6 +2183,7 @@ func NewDescribeDeviceDataHistoryRequest() (request *DescribeDeviceDataHistoryRe
     request = &DescribeDeviceDataHistoryRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotexplorer", APIVersion, "DescribeDeviceDataHistory")
     
     
@@ -2218,6 +2251,7 @@ func NewDescribeDevicePositionListRequest() (request *DescribeDevicePositionList
     request = &DescribeDevicePositionListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotexplorer", APIVersion, "DescribeDevicePositionList")
     
     
@@ -2267,6 +2301,7 @@ func NewDescribeFenceBindListRequest() (request *DescribeFenceBindListRequest) {
     request = &DescribeFenceBindListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotexplorer", APIVersion, "DescribeFenceBindList")
     
     
@@ -2322,6 +2357,7 @@ func NewDescribeFenceEventListRequest() (request *DescribeFenceEventListRequest)
     request = &DescribeFenceEventListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotexplorer", APIVersion, "DescribeFenceEventList")
     
     
@@ -2387,6 +2423,7 @@ func NewDescribeFirmwareTaskRequest() (request *DescribeFirmwareTaskRequest) {
     request = &DescribeFirmwareTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotexplorer", APIVersion, "DescribeFirmwareTask")
     
     
@@ -2438,6 +2475,7 @@ func NewDescribeGatewayBindDevicesRequest() (request *DescribeGatewayBindDevices
     request = &DescribeGatewayBindDevicesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotexplorer", APIVersion, "DescribeGatewayBindDevices")
     
     
@@ -2499,6 +2537,7 @@ func NewDescribeGatewaySubDeviceListRequest() (request *DescribeGatewaySubDevice
     request = &DescribeGatewaySubDeviceListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotexplorer", APIVersion, "DescribeGatewaySubDeviceList")
     
     
@@ -2558,6 +2597,7 @@ func NewDescribeGatewaySubProductsRequest() (request *DescribeGatewaySubProducts
     request = &DescribeGatewaySubProductsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotexplorer", APIVersion, "DescribeGatewaySubProducts")
     
     
@@ -2619,6 +2659,7 @@ func NewDescribeLoRaFrequencyRequest() (request *DescribeLoRaFrequencyRequest) {
     request = &DescribeLoRaFrequencyRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotexplorer", APIVersion, "DescribeLoRaFrequency")
     
     
@@ -2670,6 +2711,7 @@ func NewDescribeModelDefinitionRequest() (request *DescribeModelDefinitionReques
     request = &DescribeModelDefinitionRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotexplorer", APIVersion, "DescribeModelDefinition")
     
     
@@ -2773,6 +2815,7 @@ func NewDescribePositionFenceListRequest() (request *DescribePositionFenceListRe
     request = &DescribePositionFenceListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotexplorer", APIVersion, "DescribePositionFenceList")
     
     
@@ -2832,6 +2875,7 @@ func NewDescribeProjectRequest() (request *DescribeProjectRequest) {
     request = &DescribeProjectRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotexplorer", APIVersion, "DescribeProject")
     
     
@@ -2887,6 +2931,7 @@ func NewDescribeSpaceFenceEventListRequest() (request *DescribeSpaceFenceEventLi
     request = &DescribeSpaceFenceEventListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotexplorer", APIVersion, "DescribeSpaceFenceEventList")
     
     
@@ -2946,6 +2991,7 @@ func NewDescribeStudioProductRequest() (request *DescribeStudioProductRequest) {
     request = &DescribeStudioProductRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotexplorer", APIVersion, "DescribeStudioProduct")
     
     
@@ -3001,6 +3047,7 @@ func NewDescribeTopicPolicyRequest() (request *DescribeTopicPolicyRequest) {
     request = &DescribeTopicPolicyRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotexplorer", APIVersion, "DescribeTopicPolicy")
     
     
@@ -3054,6 +3101,7 @@ func NewDescribeTopicRuleRequest() (request *DescribeTopicRuleRequest) {
     request = &DescribeTopicRuleRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotexplorer", APIVersion, "DescribeTopicRule")
     
     
@@ -3115,6 +3163,7 @@ func NewDirectBindDeviceInFamilyRequest() (request *DirectBindDeviceInFamilyRequ
     request = &DirectBindDeviceInFamilyRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotexplorer", APIVersion, "DirectBindDeviceInFamily")
     
     
@@ -3188,6 +3237,7 @@ func NewDisableTopicRuleRequest() (request *DisableTopicRuleRequest) {
     request = &DisableTopicRuleRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotexplorer", APIVersion, "DisableTopicRule")
     
     
@@ -3249,6 +3299,7 @@ func NewEnableTopicRuleRequest() (request *EnableTopicRuleRequest) {
     request = &EnableTopicRuleRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotexplorer", APIVersion, "EnableTopicRule")
     
     
@@ -3320,6 +3371,7 @@ func NewGenSingleDeviceSignatureOfPublicRequest() (request *GenSingleDeviceSigna
     request = &GenSingleDeviceSignatureOfPublicRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotexplorer", APIVersion, "GenSingleDeviceSignatureOfPublic")
     
     
@@ -3391,6 +3443,7 @@ func NewGetBatchProductionsListRequest() (request *GetBatchProductionsListReques
     request = &GetBatchProductionsListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotexplorer", APIVersion, "GetBatchProductionsList")
     
     
@@ -3448,6 +3501,7 @@ func NewGetCOSURLRequest() (request *GetCOSURLRequest) {
     request = &GetCOSURLRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotexplorer", APIVersion, "GetCOSURL")
     
     
@@ -3501,6 +3555,7 @@ func NewGetDeviceListRequest() (request *GetDeviceListRequest) {
     request = &GetDeviceListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotexplorer", APIVersion, "GetDeviceList")
     
     
@@ -3566,6 +3621,7 @@ func NewGetDeviceLocationHistoryRequest() (request *GetDeviceLocationHistoryRequ
     request = &GetDeviceLocationHistoryRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotexplorer", APIVersion, "GetDeviceLocationHistory")
     
     
@@ -3631,6 +3687,7 @@ func NewGetFamilyDeviceUserListRequest() (request *GetFamilyDeviceUserListReques
     request = &GetFamilyDeviceUserListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotexplorer", APIVersion, "GetFamilyDeviceUserList")
     
     
@@ -3694,6 +3751,7 @@ func NewGetGatewaySubDeviceListRequest() (request *GetGatewaySubDeviceListReques
     request = &GetGatewaySubDeviceListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotexplorer", APIVersion, "GetGatewaySubDeviceList")
     
     
@@ -3753,6 +3811,7 @@ func NewGetLoRaGatewayListRequest() (request *GetLoRaGatewayListRequest) {
     request = &GetLoRaGatewayListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotexplorer", APIVersion, "GetLoRaGatewayList")
     
     
@@ -3810,6 +3869,7 @@ func NewGetPositionSpaceListRequest() (request *GetPositionSpaceListRequest) {
     request = &GetPositionSpaceListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotexplorer", APIVersion, "GetPositionSpaceList")
     
     
@@ -3865,6 +3925,7 @@ func NewGetProjectListRequest() (request *GetProjectListRequest) {
     request = &GetProjectListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotexplorer", APIVersion, "GetProjectList")
     
     
@@ -3928,6 +3989,7 @@ func NewGetStudioProductListRequest() (request *GetStudioProductListRequest) {
     request = &GetStudioProductListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotexplorer", APIVersion, "GetStudioProductList")
     
     
@@ -3979,6 +4041,7 @@ func NewGetTopicRuleListRequest() (request *GetTopicRuleListRequest) {
     request = &GetTopicRuleListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotexplorer", APIVersion, "GetTopicRuleList")
     
     
@@ -4034,6 +4097,7 @@ func NewListEventHistoryRequest() (request *ListEventHistoryRequest) {
     request = &ListEventHistoryRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotexplorer", APIVersion, "ListEventHistory")
     
     
@@ -4111,6 +4175,7 @@ func NewListFirmwaresRequest() (request *ListFirmwaresRequest) {
     request = &ListFirmwaresRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotexplorer", APIVersion, "ListFirmwares")
     
     
@@ -4170,6 +4235,7 @@ func NewListTopicPolicyRequest() (request *ListTopicPolicyRequest) {
     request = &ListTopicPolicyRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotexplorer", APIVersion, "ListTopicPolicy")
     
     
@@ -4223,6 +4289,7 @@ func NewModifyFenceBindRequest() (request *ModifyFenceBindRequest) {
     request = &ModifyFenceBindRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotexplorer", APIVersion, "ModifyFenceBind")
     
     
@@ -4280,6 +4347,7 @@ func NewModifyLoRaFrequencyRequest() (request *ModifyLoRaFrequencyRequest) {
     request = &ModifyLoRaFrequencyRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotexplorer", APIVersion, "ModifyLoRaFrequency")
     
     
@@ -4341,6 +4409,7 @@ func NewModifyLoRaGatewayRequest() (request *ModifyLoRaGatewayRequest) {
     request = &ModifyLoRaGatewayRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotexplorer", APIVersion, "ModifyLoRaGateway")
     
     
@@ -4400,6 +4469,7 @@ func NewModifyModelDefinitionRequest() (request *ModifyModelDefinitionRequest) {
     request = &ModifyModelDefinitionRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotexplorer", APIVersion, "ModifyModelDefinition")
     
     
@@ -4543,6 +4613,7 @@ func NewModifyPositionFenceRequest() (request *ModifyPositionFenceRequest) {
     request = &ModifyPositionFenceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotexplorer", APIVersion, "ModifyPositionFence")
     
     
@@ -4600,6 +4671,7 @@ func NewModifyPositionSpaceRequest() (request *ModifyPositionSpaceRequest) {
     request = &ModifyPositionSpaceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotexplorer", APIVersion, "ModifyPositionSpace")
     
     
@@ -4657,6 +4729,7 @@ func NewModifyProjectRequest() (request *ModifyProjectRequest) {
     request = &ModifyProjectRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotexplorer", APIVersion, "ModifyProject")
     
     
@@ -4718,6 +4791,7 @@ func NewModifySpacePropertyRequest() (request *ModifySpacePropertyRequest) {
     request = &ModifySpacePropertyRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotexplorer", APIVersion, "ModifySpaceProperty")
     
     
@@ -4775,6 +4849,7 @@ func NewModifyStudioProductRequest() (request *ModifyStudioProductRequest) {
     request = &ModifyStudioProductRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotexplorer", APIVersion, "ModifyStudioProduct")
     
     
@@ -4858,6 +4933,7 @@ func NewModifyTopicPolicyRequest() (request *ModifyTopicPolicyRequest) {
     request = &ModifyTopicPolicyRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotexplorer", APIVersion, "ModifyTopicPolicy")
     
     
@@ -4915,6 +4991,7 @@ func NewModifyTopicRuleRequest() (request *ModifyTopicRuleRequest) {
     request = &ModifyTopicRuleRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotexplorer", APIVersion, "ModifyTopicRule")
     
     
@@ -4990,6 +5067,7 @@ func NewPublishBroadcastMessageRequest() (request *PublishBroadcastMessageReques
     request = &PublishBroadcastMessageRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotexplorer", APIVersion, "PublishBroadcastMessage")
     
     
@@ -5047,6 +5125,7 @@ func NewPublishMessageRequest() (request *PublishMessageRequest) {
     request = &PublishMessageRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotexplorer", APIVersion, "PublishMessage")
     
     
@@ -5120,6 +5199,7 @@ func NewPublishRRPCMessageRequest() (request *PublishRRPCMessageRequest) {
     request = &PublishRRPCMessageRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotexplorer", APIVersion, "PublishRRPCMessage")
     
     
@@ -5185,6 +5265,7 @@ func NewReleaseStudioProductRequest() (request *ReleaseStudioProductRequest) {
     request = &ReleaseStudioProductRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotexplorer", APIVersion, "ReleaseStudioProduct")
     
     
@@ -5244,6 +5325,7 @@ func NewSearchPositionSpaceRequest() (request *SearchPositionSpaceRequest) {
     request = &SearchPositionSpaceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotexplorer", APIVersion, "SearchPositionSpace")
     
     
@@ -5299,6 +5381,7 @@ func NewSearchStudioProductRequest() (request *SearchStudioProductRequest) {
     request = &SearchStudioProductRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotexplorer", APIVersion, "SearchStudioProduct")
     
     
@@ -5352,6 +5435,7 @@ func NewSearchTopicRuleRequest() (request *SearchTopicRuleRequest) {
     request = &SearchTopicRuleRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotexplorer", APIVersion, "SearchTopicRule")
     
     
@@ -5405,6 +5489,7 @@ func NewUnbindDevicesRequest() (request *UnbindDevicesRequest) {
     request = &UnbindDevicesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotexplorer", APIVersion, "UnbindDevices")
     
     
@@ -5464,6 +5549,7 @@ func NewUnbindProductsRequest() (request *UnbindProductsRequest) {
     request = &UnbindProductsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotexplorer", APIVersion, "UnbindProducts")
     
     
@@ -5523,6 +5609,7 @@ func NewUpdateDevicesEnableStateRequest() (request *UpdateDevicesEnableStateRequ
     request = &UpdateDevicesEnableStateRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotexplorer", APIVersion, "UpdateDevicesEnableState")
     
     
@@ -5588,6 +5675,7 @@ func NewUpdateFirmwareRequest() (request *UpdateFirmwareRequest) {
     request = &UpdateFirmwareRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotexplorer", APIVersion, "UpdateFirmware")
     
     
@@ -5661,6 +5749,7 @@ func NewUploadFirmwareRequest() (request *UploadFirmwareRequest) {
     request = &UploadFirmwareRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotexplorer", APIVersion, "UploadFirmware")
     
     

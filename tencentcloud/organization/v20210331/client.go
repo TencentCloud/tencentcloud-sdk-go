@@ -49,6 +49,7 @@ func NewBindOrganizationMemberAuthAccountRequest() (request *BindOrganizationMem
     request = &BindOrganizationMemberAuthAccountRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("organization", APIVersion, "BindOrganizationMemberAuthAccount")
     
     
@@ -112,6 +113,7 @@ func NewCreateOrganizationMemberRequest() (request *CreateOrganizationMemberRequ
     request = &CreateOrganizationMemberRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("organization", APIVersion, "CreateOrganizationMember")
     
     
@@ -221,6 +223,7 @@ func NewCreateOrganizationMemberPolicyRequest() (request *CreateOrganizationMemb
     request = &CreateOrganizationMemberPolicyRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("organization", APIVersion, "CreateOrganizationMemberPolicy")
     
     
@@ -282,6 +285,7 @@ func NewDescribeOrganizationRequest() (request *DescribeOrganizationRequest) {
     request = &DescribeOrganizationRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("organization", APIVersion, "DescribeOrganization")
     
     
@@ -335,6 +339,7 @@ func NewDescribeOrganizationMembersRequest() (request *DescribeOrganizationMembe
     request = &DescribeOrganizationMembersRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("organization", APIVersion, "DescribeOrganizationMembers")
     
     

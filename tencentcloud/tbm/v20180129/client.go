@@ -49,6 +49,7 @@ func NewDescribeBrandCommentCountRequest() (request *DescribeBrandCommentCountRe
     request = &DescribeBrandCommentCountRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tbm", APIVersion, "DescribeBrandCommentCount")
     
     
@@ -102,6 +103,7 @@ func NewDescribeBrandExposureRequest() (request *DescribeBrandExposureRequest) {
     request = &DescribeBrandExposureRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tbm", APIVersion, "DescribeBrandExposure")
     
     
@@ -157,6 +159,7 @@ func NewDescribeBrandMediaReportRequest() (request *DescribeBrandMediaReportRequ
     request = &DescribeBrandMediaReportRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tbm", APIVersion, "DescribeBrandMediaReport")
     
     
@@ -212,6 +215,7 @@ func NewDescribeBrandNegCommentsRequest() (request *DescribeBrandNegCommentsRequ
     request = &DescribeBrandNegCommentsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tbm", APIVersion, "DescribeBrandNegComments")
     
     
@@ -263,6 +267,7 @@ func NewDescribeBrandPosCommentsRequest() (request *DescribeBrandPosCommentsRequ
     request = &DescribeBrandPosCommentsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tbm", APIVersion, "DescribeBrandPosComments")
     
     
@@ -314,6 +319,7 @@ func NewDescribeBrandSocialOpinionRequest() (request *DescribeBrandSocialOpinion
     request = &DescribeBrandSocialOpinionRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tbm", APIVersion, "DescribeBrandSocialOpinion")
     
     
@@ -369,6 +375,7 @@ func NewDescribeBrandSocialReportRequest() (request *DescribeBrandSocialReportRe
     request = &DescribeBrandSocialReportRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tbm", APIVersion, "DescribeBrandSocialReport")
     
     
@@ -424,6 +431,7 @@ func NewDescribeIndustryNewsRequest() (request *DescribeIndustryNewsRequest) {
     request = &DescribeIndustryNewsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tbm", APIVersion, "DescribeIndustryNews")
     
     
@@ -479,6 +487,7 @@ func NewDescribeUserPortraitRequest() (request *DescribeUserPortraitRequest) {
     request = &DescribeUserPortraitRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tbm", APIVersion, "DescribeUserPortrait")
     
     

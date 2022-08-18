@@ -49,6 +49,7 @@ func NewCreateCodeBatchRequest() (request *CreateCodeBatchRequest) {
     request = &CreateCodeBatchRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("trp", APIVersion, "CreateCodeBatch")
     
     
@@ -100,6 +101,7 @@ func NewCreateCodePackRequest() (request *CreateCodePackRequest) {
     request = &CreateCodePackRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("trp", APIVersion, "CreateCodePack")
     
     
@@ -151,6 +153,7 @@ func NewCreateMerchantRequest() (request *CreateMerchantRequest) {
     request = &CreateMerchantRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("trp", APIVersion, "CreateMerchant")
     
     
@@ -202,6 +205,7 @@ func NewCreateProductRequest() (request *CreateProductRequest) {
     request = &CreateProductRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("trp", APIVersion, "CreateProduct")
     
     
@@ -253,6 +257,7 @@ func NewCreateTraceChainRequest() (request *CreateTraceChainRequest) {
     request = &CreateTraceChainRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("trp", APIVersion, "CreateTraceChain")
     
     
@@ -304,6 +309,7 @@ func NewCreateTraceCodesRequest() (request *CreateTraceCodesRequest) {
     request = &CreateTraceCodesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("trp", APIVersion, "CreateTraceCodes")
     
     
@@ -355,6 +361,7 @@ func NewCreateTraceDataRequest() (request *CreateTraceDataRequest) {
     request = &CreateTraceDataRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("trp", APIVersion, "CreateTraceData")
     
     
@@ -406,6 +413,7 @@ func NewDeleteCodeBatchRequest() (request *DeleteCodeBatchRequest) {
     request = &DeleteCodeBatchRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("trp", APIVersion, "DeleteCodeBatch")
     
     
@@ -457,6 +465,7 @@ func NewDeleteMerchantRequest() (request *DeleteMerchantRequest) {
     request = &DeleteMerchantRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("trp", APIVersion, "DeleteMerchant")
     
     
@@ -508,6 +517,7 @@ func NewDeleteProductRequest() (request *DeleteProductRequest) {
     request = &DeleteProductRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("trp", APIVersion, "DeleteProduct")
     
     
@@ -559,6 +569,7 @@ func NewDeleteTraceDataRequest() (request *DeleteTraceDataRequest) {
     request = &DeleteTraceDataRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("trp", APIVersion, "DeleteTraceData")
     
     
@@ -610,6 +621,7 @@ func NewDescribeCodeBatchByIdRequest() (request *DescribeCodeBatchByIdRequest) {
     request = &DescribeCodeBatchByIdRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("trp", APIVersion, "DescribeCodeBatchById")
     
     
@@ -661,6 +673,7 @@ func NewDescribeCodeBatchsRequest() (request *DescribeCodeBatchsRequest) {
     request = &DescribeCodeBatchsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("trp", APIVersion, "DescribeCodeBatchs")
     
     
@@ -712,6 +725,7 @@ func NewDescribeCodePacksRequest() (request *DescribeCodePacksRequest) {
     request = &DescribeCodePacksRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("trp", APIVersion, "DescribeCodePacks")
     
     
@@ -763,6 +777,7 @@ func NewDescribeCodesByPackRequest() (request *DescribeCodesByPackRequest) {
     request = &DescribeCodesByPackRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("trp", APIVersion, "DescribeCodesByPack")
     
     
@@ -814,6 +829,7 @@ func NewDescribeMerchantByIdRequest() (request *DescribeMerchantByIdRequest) {
     request = &DescribeMerchantByIdRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("trp", APIVersion, "DescribeMerchantById")
     
     
@@ -865,6 +881,7 @@ func NewDescribeMerchantsRequest() (request *DescribeMerchantsRequest) {
     request = &DescribeMerchantsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("trp", APIVersion, "DescribeMerchants")
     
     
@@ -918,6 +935,7 @@ func NewDescribeProductByIdRequest() (request *DescribeProductByIdRequest) {
     request = &DescribeProductByIdRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("trp", APIVersion, "DescribeProductById")
     
     
@@ -969,6 +987,7 @@ func NewDescribeProductsRequest() (request *DescribeProductsRequest) {
     request = &DescribeProductsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("trp", APIVersion, "DescribeProducts")
     
     
@@ -1020,6 +1039,7 @@ func NewDescribeTraceCodeByIdRequest() (request *DescribeTraceCodeByIdRequest) {
     request = &DescribeTraceCodeByIdRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("trp", APIVersion, "DescribeTraceCodeById")
     
     
@@ -1071,6 +1091,7 @@ func NewDescribeTraceCodesRequest() (request *DescribeTraceCodesRequest) {
     request = &DescribeTraceCodesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("trp", APIVersion, "DescribeTraceCodes")
     
     
@@ -1122,6 +1143,7 @@ func NewDescribeTraceDataListRequest() (request *DescribeTraceDataListRequest) {
     request = &DescribeTraceDataListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("trp", APIVersion, "DescribeTraceDataList")
     
     
@@ -1173,6 +1195,7 @@ func NewModifyCodeBatchRequest() (request *ModifyCodeBatchRequest) {
     request = &ModifyCodeBatchRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("trp", APIVersion, "ModifyCodeBatch")
     
     
@@ -1224,6 +1247,7 @@ func NewModifyMerchantRequest() (request *ModifyMerchantRequest) {
     request = &ModifyMerchantRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("trp", APIVersion, "ModifyMerchant")
     
     
@@ -1275,6 +1299,7 @@ func NewModifyProductRequest() (request *ModifyProductRequest) {
     request = &ModifyProductRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("trp", APIVersion, "ModifyProduct")
     
     
@@ -1326,6 +1351,7 @@ func NewModifyTraceCodeRequest() (request *ModifyTraceCodeRequest) {
     request = &ModifyTraceCodeRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("trp", APIVersion, "ModifyTraceCode")
     
     
@@ -1377,6 +1403,7 @@ func NewModifyTraceDataRequest() (request *ModifyTraceDataRequest) {
     request = &ModifyTraceDataRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("trp", APIVersion, "ModifyTraceData")
     
     
@@ -1428,6 +1455,7 @@ func NewModifyTraceDataRanksRequest() (request *ModifyTraceDataRanksRequest) {
     request = &ModifyTraceDataRanksRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("trp", APIVersion, "ModifyTraceDataRanks")
     
     

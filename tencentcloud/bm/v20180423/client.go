@@ -49,6 +49,7 @@ func NewAttachCamRoleRequest() (request *AttachCamRoleRequest) {
     request = &AttachCamRoleRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bm", APIVersion, "AttachCamRole")
     
     
@@ -96,6 +97,7 @@ func NewBindPsaTagRequest() (request *BindPsaTagRequest) {
     request = &BindPsaTagRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bm", APIVersion, "BindPsaTag")
     
     
@@ -153,6 +155,7 @@ func NewBuyDevicesRequest() (request *BuyDevicesRequest) {
     request = &BuyDevicesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bm", APIVersion, "BuyDevices")
     
     
@@ -214,6 +217,7 @@ func NewCreateCustomImageRequest() (request *CreateCustomImageRequest) {
     request = &CreateCustomImageRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bm", APIVersion, "CreateCustomImage")
     
     
@@ -275,6 +279,7 @@ func NewCreatePsaRegulationRequest() (request *CreatePsaRegulationRequest) {
     request = &CreatePsaRegulationRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bm", APIVersion, "CreatePsaRegulation")
     
     
@@ -328,6 +333,7 @@ func NewCreateSpotDeviceRequest() (request *CreateSpotDeviceRequest) {
     request = &CreateSpotDeviceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bm", APIVersion, "CreateSpotDevice")
     
     
@@ -379,6 +385,7 @@ func NewCreateUserCmdRequest() (request *CreateUserCmdRequest) {
     request = &CreateUserCmdRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bm", APIVersion, "CreateUserCmd")
     
     
@@ -434,6 +441,7 @@ func NewDeleteCustomImagesRequest() (request *DeleteCustomImagesRequest) {
     request = &DeleteCustomImagesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bm", APIVersion, "DeleteCustomImages")
     
     
@@ -489,6 +497,7 @@ func NewDeletePsaRegulationRequest() (request *DeletePsaRegulationRequest) {
     request = &DeletePsaRegulationRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bm", APIVersion, "DeletePsaRegulation")
     
     
@@ -540,6 +549,7 @@ func NewDeleteUserCmdsRequest() (request *DeleteUserCmdsRequest) {
     request = &DeleteUserCmdsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bm", APIVersion, "DeleteUserCmds")
     
     
@@ -591,6 +601,7 @@ func NewDescribeCustomImageProcessRequest() (request *DescribeCustomImageProcess
     request = &DescribeCustomImageProcessRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bm", APIVersion, "DescribeCustomImageProcess")
     
     
@@ -642,6 +653,7 @@ func NewDescribeCustomImagesRequest() (request *DescribeCustomImagesRequest) {
     request = &DescribeCustomImagesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bm", APIVersion, "DescribeCustomImages")
     
     
@@ -697,6 +709,7 @@ func NewDescribeDeviceClassRequest() (request *DescribeDeviceClassRequest) {
     request = &DescribeDeviceClassRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bm", APIVersion, "DescribeDeviceClass")
     
     
@@ -752,6 +765,7 @@ func NewDescribeDeviceClassPartitionRequest() (request *DescribeDeviceClassParti
     request = &DescribeDeviceClassPartitionRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bm", APIVersion, "DescribeDeviceClassPartition")
     
     
@@ -801,6 +815,7 @@ func NewDescribeDeviceHardwareInfoRequest() (request *DescribeDeviceHardwareInfo
     request = &DescribeDeviceHardwareInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bm", APIVersion, "DescribeDeviceHardwareInfo")
     
     
@@ -852,6 +867,7 @@ func NewDescribeDeviceInventoryRequest() (request *DescribeDeviceInventoryReques
     request = &DescribeDeviceInventoryRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bm", APIVersion, "DescribeDeviceInventory")
     
     
@@ -901,6 +917,7 @@ func NewDescribeDeviceOperationLogRequest() (request *DescribeDeviceOperationLog
     request = &DescribeDeviceOperationLogRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bm", APIVersion, "DescribeDeviceOperationLog")
     
     
@@ -952,6 +969,7 @@ func NewDescribeDevicePartitionRequest() (request *DescribeDevicePartitionReques
     request = &DescribeDevicePartitionRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bm", APIVersion, "DescribeDevicePartition")
     
     
@@ -1003,6 +1021,7 @@ func NewDescribeDevicePositionRequest() (request *DescribeDevicePositionRequest)
     request = &DescribeDevicePositionRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bm", APIVersion, "DescribeDevicePosition")
     
     
@@ -1050,6 +1069,7 @@ func NewDescribeDevicePriceInfoRequest() (request *DescribeDevicePriceInfoReques
     request = &DescribeDevicePriceInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bm", APIVersion, "DescribeDevicePriceInfo")
     
     
@@ -1101,6 +1121,7 @@ func NewDescribeDevicesRequest() (request *DescribeDevicesRequest) {
     request = &DescribeDevicesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bm", APIVersion, "DescribeDevices")
     
     
@@ -1152,6 +1173,7 @@ func NewDescribeHardwareSpecificationRequest() (request *DescribeHardwareSpecifi
     request = &DescribeHardwareSpecificationRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bm", APIVersion, "DescribeHardwareSpecification")
     
     
@@ -1203,6 +1225,7 @@ func NewDescribeHostedDeviceOutBandInfoRequest() (request *DescribeHostedDeviceO
     request = &DescribeHostedDeviceOutBandInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bm", APIVersion, "DescribeHostedDeviceOutBandInfo")
     
     
@@ -1256,6 +1279,7 @@ func NewDescribeOperationResultRequest() (request *DescribeOperationResultReques
     request = &DescribeOperationResultRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bm", APIVersion, "DescribeOperationResult")
     
     
@@ -1307,6 +1331,7 @@ func NewDescribeOsInfoRequest() (request *DescribeOsInfoRequest) {
     request = &DescribeOsInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bm", APIVersion, "DescribeOsInfo")
     
     
@@ -1356,6 +1381,7 @@ func NewDescribePsaRegulationsRequest() (request *DescribePsaRegulationsRequest)
     request = &DescribePsaRegulationsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bm", APIVersion, "DescribePsaRegulations")
     
     
@@ -1407,6 +1433,7 @@ func NewDescribeRegionsRequest() (request *DescribeRegionsRequest) {
     request = &DescribeRegionsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bm", APIVersion, "DescribeRegions")
     
     
@@ -1458,6 +1485,7 @@ func NewDescribeRepairTaskConstantRequest() (request *DescribeRepairTaskConstant
     request = &DescribeRepairTaskConstantRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bm", APIVersion, "DescribeRepairTaskConstant")
     
     
@@ -1509,6 +1537,7 @@ func NewDescribeTaskInfoRequest() (request *DescribeTaskInfoRequest) {
     request = &DescribeTaskInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bm", APIVersion, "DescribeTaskInfo")
     
     
@@ -1592,6 +1621,7 @@ func NewDescribeTaskOperationLogRequest() (request *DescribeTaskOperationLogRequ
     request = &DescribeTaskOperationLogRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bm", APIVersion, "DescribeTaskOperationLog")
     
     
@@ -1643,6 +1673,7 @@ func NewDescribeUserCmdTaskInfoRequest() (request *DescribeUserCmdTaskInfoReques
     request = &DescribeUserCmdTaskInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bm", APIVersion, "DescribeUserCmdTaskInfo")
     
     
@@ -1694,6 +1725,7 @@ func NewDescribeUserCmdTasksRequest() (request *DescribeUserCmdTasksRequest) {
     request = &DescribeUserCmdTasksRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bm", APIVersion, "DescribeUserCmdTasks")
     
     
@@ -1745,6 +1777,7 @@ func NewDescribeUserCmdsRequest() (request *DescribeUserCmdsRequest) {
     request = &DescribeUserCmdsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bm", APIVersion, "DescribeUserCmds")
     
     
@@ -1798,6 +1831,7 @@ func NewDetachCamRoleRequest() (request *DetachCamRoleRequest) {
     request = &DetachCamRoleRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bm", APIVersion, "DetachCamRole")
     
     
@@ -1845,6 +1879,7 @@ func NewModifyCustomImageAttributeRequest() (request *ModifyCustomImageAttribute
     request = &ModifyCustomImageAttributeRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bm", APIVersion, "ModifyCustomImageAttribute")
     
     
@@ -1896,6 +1931,7 @@ func NewModifyDeviceAliasesRequest() (request *ModifyDeviceAliasesRequest) {
     request = &ModifyDeviceAliasesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bm", APIVersion, "ModifyDeviceAliases")
     
     
@@ -1947,6 +1983,7 @@ func NewModifyDeviceAutoRenewFlagRequest() (request *ModifyDeviceAutoRenewFlagRe
     request = &ModifyDeviceAutoRenewFlagRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bm", APIVersion, "ModifyDeviceAutoRenewFlag")
     
     
@@ -1998,6 +2035,7 @@ func NewModifyLanIpRequest() (request *ModifyLanIpRequest) {
     request = &ModifyLanIpRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bm", APIVersion, "ModifyLanIp")
     
     
@@ -2057,6 +2095,7 @@ func NewModifyPayModePre2PostRequest() (request *ModifyPayModePre2PostRequest) {
     request = &ModifyPayModePre2PostRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bm", APIVersion, "ModifyPayModePre2Post")
     
     
@@ -2110,6 +2149,7 @@ func NewModifyPsaRegulationRequest() (request *ModifyPsaRegulationRequest) {
     request = &ModifyPsaRegulationRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bm", APIVersion, "ModifyPsaRegulation")
     
     
@@ -2161,6 +2201,7 @@ func NewModifyUserCmdRequest() (request *ModifyUserCmdRequest) {
     request = &ModifyUserCmdRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bm", APIVersion, "ModifyUserCmd")
     
     
@@ -2216,6 +2257,7 @@ func NewOfflineDevicesRequest() (request *OfflineDevicesRequest) {
     request = &OfflineDevicesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bm", APIVersion, "OfflineDevices")
     
     
@@ -2267,6 +2309,7 @@ func NewRebootDevicesRequest() (request *RebootDevicesRequest) {
     request = &RebootDevicesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bm", APIVersion, "RebootDevices")
     
     
@@ -2318,6 +2361,7 @@ func NewRecoverDevicesRequest() (request *RecoverDevicesRequest) {
     request = &RecoverDevicesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bm", APIVersion, "RecoverDevices")
     
     
@@ -2367,6 +2411,7 @@ func NewReloadDeviceOsRequest() (request *ReloadDeviceOsRequest) {
     request = &ReloadDeviceOsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bm", APIVersion, "ReloadDeviceOs")
     
     
@@ -2420,6 +2465,7 @@ func NewRepairTaskControlRequest() (request *RepairTaskControlRequest) {
     request = &RepairTaskControlRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bm", APIVersion, "RepairTaskControl")
     
     
@@ -2559,6 +2605,7 @@ func NewResetDevicePasswordRequest() (request *ResetDevicePasswordRequest) {
     request = &ResetDevicePasswordRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bm", APIVersion, "ResetDevicePassword")
     
     
@@ -2612,6 +2659,7 @@ func NewReturnDevicesRequest() (request *ReturnDevicesRequest) {
     request = &ReturnDevicesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bm", APIVersion, "ReturnDevices")
     
     
@@ -2661,6 +2709,7 @@ func NewRunUserCmdRequest() (request *RunUserCmdRequest) {
     request = &RunUserCmdRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bm", APIVersion, "RunUserCmd")
     
     
@@ -2712,6 +2761,7 @@ func NewSetOutBandVpnAuthPasswordRequest() (request *SetOutBandVpnAuthPasswordRe
     request = &SetOutBandVpnAuthPasswordRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bm", APIVersion, "SetOutBandVpnAuthPassword")
     
     
@@ -2765,6 +2815,7 @@ func NewShutdownDevicesRequest() (request *ShutdownDevicesRequest) {
     request = &ShutdownDevicesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bm", APIVersion, "ShutdownDevices")
     
     
@@ -2816,6 +2867,7 @@ func NewStartDevicesRequest() (request *StartDevicesRequest) {
     request = &StartDevicesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bm", APIVersion, "StartDevices")
     
     
@@ -2867,6 +2919,7 @@ func NewUnbindPsaTagRequest() (request *UnbindPsaTagRequest) {
     request = &UnbindPsaTagRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bm", APIVersion, "UnbindPsaTag")
     
     

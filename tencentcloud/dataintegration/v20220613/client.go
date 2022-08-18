@@ -49,6 +49,7 @@ func NewSendMessageRequest() (request *SendMessageRequest) {
     request = &SendMessageRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dataintegration", APIVersion, "SendMessage")
     
     

@@ -49,6 +49,7 @@ func NewCreateFlowServiceRequest() (request *CreateFlowServiceRequest) {
     request = &CreateFlowServiceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("asw", APIVersion, "CreateFlowService")
     
     
@@ -102,6 +103,7 @@ func NewDescribeExecutionRequest() (request *DescribeExecutionRequest) {
     request = &DescribeExecutionRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("asw", APIVersion, "DescribeExecution")
     
     
@@ -157,6 +159,7 @@ func NewDescribeExecutionHistoryRequest() (request *DescribeExecutionHistoryRequ
     request = &DescribeExecutionHistoryRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("asw", APIVersion, "DescribeExecutionHistory")
     
     
@@ -210,6 +213,7 @@ func NewDescribeExecutionsRequest() (request *DescribeExecutionsRequest) {
     request = &DescribeExecutionsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("asw", APIVersion, "DescribeExecutions")
     
     
@@ -261,6 +265,7 @@ func NewDescribeFlowServiceDetailRequest() (request *DescribeFlowServiceDetailRe
     request = &DescribeFlowServiceDetailRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("asw", APIVersion, "DescribeFlowServiceDetail")
     
     
@@ -316,6 +321,7 @@ func NewDescribeFlowServicesRequest() (request *DescribeFlowServicesRequest) {
     request = &DescribeFlowServicesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("asw", APIVersion, "DescribeFlowServices")
     
     
@@ -369,6 +375,7 @@ func NewModifyFlowServiceRequest() (request *ModifyFlowServiceRequest) {
     request = &ModifyFlowServiceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("asw", APIVersion, "ModifyFlowService")
     
     
@@ -422,6 +429,7 @@ func NewStartExecutionRequest() (request *StartExecutionRequest) {
     request = &StartExecutionRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("asw", APIVersion, "StartExecution")
     
     
@@ -475,6 +483,7 @@ func NewStopExecutionRequest() (request *StopExecutionRequest) {
     request = &StopExecutionRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("asw", APIVersion, "StopExecution")
     
     

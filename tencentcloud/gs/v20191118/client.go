@@ -49,6 +49,7 @@ func NewCreateSessionRequest() (request *CreateSessionRequest) {
     request = &CreateSessionRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("gs", APIVersion, "CreateSession")
     
     
@@ -124,6 +125,7 @@ func NewDescribeInstancesCountRequest() (request *DescribeInstancesCountRequest)
     request = &DescribeInstancesCountRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("gs", APIVersion, "DescribeInstancesCount")
     
     
@@ -175,6 +177,7 @@ func NewSaveGameArchiveRequest() (request *SaveGameArchiveRequest) {
     request = &SaveGameArchiveRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("gs", APIVersion, "SaveGameArchive")
     
     
@@ -236,6 +239,7 @@ func NewStartPublishStreamRequest() (request *StartPublishStreamRequest) {
     request = &StartPublishStreamRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("gs", APIVersion, "StartPublishStream")
     
     
@@ -295,6 +299,7 @@ func NewStopGameRequest() (request *StopGameRequest) {
     request = &StopGameRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("gs", APIVersion, "StopGame")
     
     
@@ -350,6 +355,7 @@ func NewStopPublishStreamRequest() (request *StopPublishStreamRequest) {
     request = &StopPublishStreamRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("gs", APIVersion, "StopPublishStream")
     
     
@@ -409,6 +415,7 @@ func NewSwitchGameArchiveRequest() (request *SwitchGameArchiveRequest) {
     request = &SwitchGameArchiveRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("gs", APIVersion, "SwitchGameArchive")
     
     
@@ -470,6 +477,7 @@ func NewTrylockWorkerRequest() (request *TrylockWorkerRequest) {
     request = &TrylockWorkerRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("gs", APIVersion, "TrylockWorker")
     
     

@@ -49,6 +49,7 @@ func NewAddTimeWindowRequest() (request *AddTimeWindowRequest) {
     request = &AddTimeWindowRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdb", APIVersion, "AddTimeWindow")
     
     
@@ -102,6 +103,7 @@ func NewApplyCDBProxyRequest() (request *ApplyCDBProxyRequest) {
     request = &ApplyCDBProxyRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdb", APIVersion, "ApplyCDBProxy")
     
     
@@ -151,6 +153,7 @@ func NewAssociateSecurityGroupsRequest() (request *AssociateSecurityGroupsReques
     request = &AssociateSecurityGroupsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdb", APIVersion, "AssociateSecurityGroups")
     
     
@@ -210,6 +213,7 @@ func NewBalanceRoGroupLoadRequest() (request *BalanceRoGroupLoadRequest) {
     request = &BalanceRoGroupLoadRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdb", APIVersion, "BalanceRoGroupLoad")
     
     
@@ -269,6 +273,7 @@ func NewCloseCDBProxyRequest() (request *CloseCDBProxyRequest) {
     request = &CloseCDBProxyRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdb", APIVersion, "CloseCDBProxy")
     
     
@@ -322,6 +327,7 @@ func NewCloseWanServiceRequest() (request *CloseWanServiceRequest) {
     request = &CloseWanServiceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdb", APIVersion, "CloseWanService")
     
     
@@ -379,6 +385,7 @@ func NewCreateAccountsRequest() (request *CreateAccountsRequest) {
     request = &CreateAccountsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdb", APIVersion, "CreateAccounts")
     
     
@@ -488,6 +495,7 @@ func NewCreateAuditLogFileRequest() (request *CreateAuditLogFileRequest) {
     request = &CreateAuditLogFileRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdb", APIVersion, "CreateAuditLogFile")
     
     
@@ -563,6 +571,7 @@ func NewCreateAuditPolicyRequest() (request *CreateAuditPolicyRequest) {
     request = &CreateAuditPolicyRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdb", APIVersion, "CreateAuditPolicy")
     
     
@@ -676,6 +685,7 @@ func NewCreateAuditRuleRequest() (request *CreateAuditRuleRequest) {
     request = &CreateAuditRuleRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdb", APIVersion, "CreateAuditRule")
     
     
@@ -745,6 +755,7 @@ func NewCreateBackupRequest() (request *CreateBackupRequest) {
     request = &CreateBackupRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdb", APIVersion, "CreateBackup")
     
     
@@ -814,6 +825,7 @@ func NewCreateCloneInstanceRequest() (request *CreateCloneInstanceRequest) {
     request = &CreateCloneInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdb", APIVersion, "CreateCloneInstance")
     
     
@@ -881,6 +893,7 @@ func NewCreateDBImportJobRequest() (request *CreateDBImportJobRequest) {
     request = &CreateDBImportJobRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdb", APIVersion, "CreateDBImportJob")
     
     
@@ -960,6 +973,7 @@ func NewCreateDBInstanceRequest() (request *CreateDBInstanceRequest) {
     request = &CreateDBInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdb", APIVersion, "CreateDBInstance")
     
     
@@ -1075,6 +1089,7 @@ func NewCreateDBInstanceHourRequest() (request *CreateDBInstanceHourRequest) {
     request = &CreateDBInstanceHourRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdb", APIVersion, "CreateDBInstanceHour")
     
     
@@ -1180,6 +1195,7 @@ func NewCreateDeployGroupRequest() (request *CreateDeployGroupRequest) {
     request = &CreateDeployGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdb", APIVersion, "CreateDeployGroup")
     
     
@@ -1239,6 +1255,7 @@ func NewCreateParamTemplateRequest() (request *CreateParamTemplateRequest) {
     request = &CreateParamTemplateRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdb", APIVersion, "CreateParamTemplate")
     
     
@@ -1300,6 +1317,7 @@ func NewCreateRoInstanceIpRequest() (request *CreateRoInstanceIpRequest) {
     request = &CreateRoInstanceIpRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdb", APIVersion, "CreateRoInstanceIp")
     
     
@@ -1377,6 +1395,7 @@ func NewDeleteAccountsRequest() (request *DeleteAccountsRequest) {
     request = &DeleteAccountsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdb", APIVersion, "DeleteAccounts")
     
     
@@ -1480,6 +1499,7 @@ func NewDeleteAuditLogFileRequest() (request *DeleteAuditLogFileRequest) {
     request = &DeleteAuditLogFileRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdb", APIVersion, "DeleteAuditLogFile")
     
     
@@ -1533,6 +1553,7 @@ func NewDeleteAuditPolicyRequest() (request *DeleteAuditPolicyRequest) {
     request = &DeleteAuditPolicyRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdb", APIVersion, "DeleteAuditPolicy")
     
     
@@ -1606,6 +1627,7 @@ func NewDeleteAuditRuleRequest() (request *DeleteAuditRuleRequest) {
     request = &DeleteAuditRuleRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdb", APIVersion, "DeleteAuditRule")
     
     
@@ -1673,6 +1695,7 @@ func NewDeleteBackupRequest() (request *DeleteBackupRequest) {
     request = &DeleteBackupRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdb", APIVersion, "DeleteBackup")
     
     
@@ -1730,6 +1753,7 @@ func NewDeleteDeployGroupsRequest() (request *DeleteDeployGroupsRequest) {
     request = &DeleteDeployGroupsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdb", APIVersion, "DeleteDeployGroups")
     
     
@@ -1789,6 +1813,7 @@ func NewDeleteParamTemplateRequest() (request *DeleteParamTemplateRequest) {
     request = &DeleteParamTemplateRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdb", APIVersion, "DeleteParamTemplate")
     
     
@@ -1840,6 +1865,7 @@ func NewDeleteTimeWindowRequest() (request *DeleteTimeWindowRequest) {
     request = &DeleteTimeWindowRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdb", APIVersion, "DeleteTimeWindow")
     
     
@@ -1891,6 +1917,7 @@ func NewDescribeAccountPrivilegesRequest() (request *DescribeAccountPrivilegesRe
     request = &DescribeAccountPrivilegesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdb", APIVersion, "DescribeAccountPrivileges")
     
     
@@ -2000,6 +2027,7 @@ func NewDescribeAccountsRequest() (request *DescribeAccountsRequest) {
     request = &DescribeAccountsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdb", APIVersion, "DescribeAccounts")
     
     
@@ -2117,6 +2145,7 @@ func NewDescribeAsyncRequestInfoRequest() (request *DescribeAsyncRequestInfoRequ
     request = &DescribeAsyncRequestInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdb", APIVersion, "DescribeAsyncRequestInfo")
     
     
@@ -2176,6 +2205,7 @@ func NewDescribeAuditConfigRequest() (request *DescribeAuditConfigRequest) {
     request = &DescribeAuditConfigRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdb", APIVersion, "DescribeAuditConfig")
     
     
@@ -2233,6 +2263,7 @@ func NewDescribeAuditLogFilesRequest() (request *DescribeAuditLogFilesRequest) {
     request = &DescribeAuditLogFilesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdb", APIVersion, "DescribeAuditLogFiles")
     
     
@@ -2288,6 +2319,7 @@ func NewDescribeAuditPoliciesRequest() (request *DescribeAuditPoliciesRequest) {
     request = &DescribeAuditPoliciesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdb", APIVersion, "DescribeAuditPolicies")
     
     
@@ -2351,6 +2383,7 @@ func NewDescribeAuditRulesRequest() (request *DescribeAuditRulesRequest) {
     request = &DescribeAuditRulesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdb", APIVersion, "DescribeAuditRules")
     
     
@@ -2408,6 +2441,7 @@ func NewDescribeBackupConfigRequest() (request *DescribeBackupConfigRequest) {
     request = &DescribeBackupConfigRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdb", APIVersion, "DescribeBackupConfig")
     
     
@@ -2469,6 +2503,7 @@ func NewDescribeBackupDatabasesRequest() (request *DescribeBackupDatabasesReques
     request = &DescribeBackupDatabasesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdb", APIVersion, "DescribeBackupDatabases")
     
     
@@ -2536,6 +2571,7 @@ func NewDescribeBackupDownloadRestrictionRequest() (request *DescribeBackupDownl
     request = &DescribeBackupDownloadRestrictionRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdb", APIVersion, "DescribeBackupDownloadRestriction")
     
     
@@ -2587,6 +2623,7 @@ func NewDescribeBackupOverviewRequest() (request *DescribeBackupOverviewRequest)
     request = &DescribeBackupOverviewRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdb", APIVersion, "DescribeBackupOverview")
     
     
@@ -2640,6 +2677,7 @@ func NewDescribeBackupSummariesRequest() (request *DescribeBackupSummariesReques
     request = &DescribeBackupSummariesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdb", APIVersion, "DescribeBackupSummaries")
     
     
@@ -2697,6 +2735,7 @@ func NewDescribeBackupTablesRequest() (request *DescribeBackupTablesRequest) {
     request = &DescribeBackupTablesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdb", APIVersion, "DescribeBackupTables")
     
     
@@ -2764,6 +2803,7 @@ func NewDescribeBackupsRequest() (request *DescribeBackupsRequest) {
     request = &DescribeBackupsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdb", APIVersion, "DescribeBackups")
     
     
@@ -2829,6 +2869,7 @@ func NewDescribeBinlogBackupOverviewRequest() (request *DescribeBinlogBackupOver
     request = &DescribeBinlogBackupOverviewRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdb", APIVersion, "DescribeBinlogBackupOverview")
     
     
@@ -2882,6 +2923,7 @@ func NewDescribeBinlogsRequest() (request *DescribeBinlogsRequest) {
     request = &DescribeBinlogsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdb", APIVersion, "DescribeBinlogs")
     
     
@@ -2941,6 +2983,7 @@ func NewDescribeCDBProxyRequest() (request *DescribeCDBProxyRequest) {
     request = &DescribeCDBProxyRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdb", APIVersion, "DescribeCDBProxy")
     
     
@@ -2994,6 +3037,7 @@ func NewDescribeCloneListRequest() (request *DescribeCloneListRequest) {
     request = &DescribeCloneListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdb", APIVersion, "DescribeCloneList")
     
     
@@ -3045,6 +3089,7 @@ func NewDescribeDBImportRecordsRequest() (request *DescribeDBImportRecordsReques
     request = &DescribeDBImportRecordsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdb", APIVersion, "DescribeDBImportRecords")
     
     
@@ -3098,6 +3143,7 @@ func NewDescribeDBInstanceCharsetRequest() (request *DescribeDBInstanceCharsetRe
     request = &DescribeDBInstanceCharsetRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdb", APIVersion, "DescribeDBInstanceCharset")
     
     
@@ -3163,6 +3209,7 @@ func NewDescribeDBInstanceConfigRequest() (request *DescribeDBInstanceConfigRequ
     request = &DescribeDBInstanceConfigRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdb", APIVersion, "DescribeDBInstanceConfig")
     
     
@@ -3226,6 +3273,7 @@ func NewDescribeDBInstanceGTIDRequest() (request *DescribeDBInstanceGTIDRequest)
     request = &DescribeDBInstanceGTIDRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdb", APIVersion, "DescribeDBInstanceGTID")
     
     
@@ -3283,6 +3331,7 @@ func NewDescribeDBInstanceInfoRequest() (request *DescribeDBInstanceInfoRequest)
     request = &DescribeDBInstanceInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdb", APIVersion, "DescribeDBInstanceInfo")
     
     
@@ -3336,6 +3385,7 @@ func NewDescribeDBInstanceRebootTimeRequest() (request *DescribeDBInstanceReboot
     request = &DescribeDBInstanceRebootTimeRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdb", APIVersion, "DescribeDBInstanceRebootTime")
     
     
@@ -3385,6 +3435,7 @@ func NewDescribeDBInstancesRequest() (request *DescribeDBInstancesRequest) {
     request = &DescribeDBInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdb", APIVersion, "DescribeDBInstances")
     
     
@@ -3464,6 +3515,7 @@ func NewDescribeDBPriceRequest() (request *DescribeDBPriceRequest) {
     request = &DescribeDBPriceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdb", APIVersion, "DescribeDBPrice")
     
     
@@ -3529,6 +3581,7 @@ func NewDescribeDBSecurityGroupsRequest() (request *DescribeDBSecurityGroupsRequ
     request = &DescribeDBSecurityGroupsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdb", APIVersion, "DescribeDBSecurityGroups")
     
     
@@ -3598,6 +3651,7 @@ func NewDescribeDBSwitchRecordsRequest() (request *DescribeDBSwitchRecordsReques
     request = &DescribeDBSwitchRecordsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdb", APIVersion, "DescribeDBSwitchRecords")
     
     
@@ -3655,6 +3709,7 @@ func NewDescribeDBZoneConfigRequest() (request *DescribeDBZoneConfigRequest) {
     request = &DescribeDBZoneConfigRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdb", APIVersion, "DescribeDBZoneConfig")
     
     
@@ -3708,6 +3763,7 @@ func NewDescribeDataBackupOverviewRequest() (request *DescribeDataBackupOverview
     request = &DescribeDataBackupOverviewRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdb", APIVersion, "DescribeDataBackupOverview")
     
     
@@ -3759,6 +3815,7 @@ func NewDescribeDatabasesRequest() (request *DescribeDatabasesRequest) {
     request = &DescribeDatabasesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdb", APIVersion, "DescribeDatabases")
     
     
@@ -3826,6 +3883,7 @@ func NewDescribeDefaultParamsRequest() (request *DescribeDefaultParamsRequest) {
     request = &DescribeDefaultParamsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdb", APIVersion, "DescribeDefaultParams")
     
     
@@ -3883,6 +3941,7 @@ func NewDescribeDeployGroupListRequest() (request *DescribeDeployGroupListReques
     request = &DescribeDeployGroupListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdb", APIVersion, "DescribeDeployGroupList")
     
     
@@ -3942,6 +4001,7 @@ func NewDescribeDeviceMonitorInfoRequest() (request *DescribeDeviceMonitorInfoRe
     request = &DescribeDeviceMonitorInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdb", APIVersion, "DescribeDeviceMonitorInfo")
     
     
@@ -4011,6 +4071,7 @@ func NewDescribeErrorLogDataRequest() (request *DescribeErrorLogDataRequest) {
     request = &DescribeErrorLogDataRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdb", APIVersion, "DescribeErrorLogData")
     
     
@@ -4086,6 +4147,7 @@ func NewDescribeInstanceParamRecordsRequest() (request *DescribeInstanceParamRec
     request = &DescribeInstanceParamRecordsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdb", APIVersion, "DescribeInstanceParamRecords")
     
     
@@ -4141,6 +4203,7 @@ func NewDescribeInstanceParamsRequest() (request *DescribeInstanceParamsRequest)
     request = &DescribeInstanceParamsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdb", APIVersion, "DescribeInstanceParams")
     
     
@@ -4204,6 +4267,7 @@ func NewDescribeLocalBinlogConfigRequest() (request *DescribeLocalBinlogConfigRe
     request = &DescribeLocalBinlogConfigRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdb", APIVersion, "DescribeLocalBinlogConfig")
     
     
@@ -4253,6 +4317,7 @@ func NewDescribeParamTemplateInfoRequest() (request *DescribeParamTemplateInfoRe
     request = &DescribeParamTemplateInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdb", APIVersion, "DescribeParamTemplateInfo")
     
     
@@ -4308,6 +4373,7 @@ func NewDescribeParamTemplatesRequest() (request *DescribeParamTemplatesRequest)
     request = &DescribeParamTemplatesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdb", APIVersion, "DescribeParamTemplates")
     
     
@@ -4363,6 +4429,7 @@ func NewDescribeProjectSecurityGroupsRequest() (request *DescribeProjectSecurity
     request = &DescribeProjectSecurityGroupsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdb", APIVersion, "DescribeProjectSecurityGroups")
     
     
@@ -4422,6 +4489,7 @@ func NewDescribeProxyConnectionPoolConfRequest() (request *DescribeProxyConnecti
     request = &DescribeProxyConnectionPoolConfRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdb", APIVersion, "DescribeProxyConnectionPoolConf")
     
     
@@ -4469,6 +4537,7 @@ func NewDescribeProxyCustomConfRequest() (request *DescribeProxyCustomConfReques
     request = &DescribeProxyCustomConfRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdb", APIVersion, "DescribeProxyCustomConf")
     
     
@@ -4516,6 +4585,7 @@ func NewDescribeRoGroupsRequest() (request *DescribeRoGroupsRequest) {
     request = &DescribeRoGroupsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdb", APIVersion, "DescribeRoGroups")
     
     
@@ -4577,6 +4647,7 @@ func NewDescribeRoMinScaleRequest() (request *DescribeRoMinScaleRequest) {
     request = &DescribeRoMinScaleRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdb", APIVersion, "DescribeRoMinScale")
     
     
@@ -4634,6 +4705,7 @@ func NewDescribeRollbackRangeTimeRequest() (request *DescribeRollbackRangeTimeRe
     request = &DescribeRollbackRangeTimeRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdb", APIVersion, "DescribeRollbackRangeTime")
     
     
@@ -4691,6 +4763,7 @@ func NewDescribeRollbackTaskDetailRequest() (request *DescribeRollbackTaskDetail
     request = &DescribeRollbackTaskDetailRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdb", APIVersion, "DescribeRollbackTaskDetail")
     
     
@@ -4744,6 +4817,7 @@ func NewDescribeSlowLogDataRequest() (request *DescribeSlowLogDataRequest) {
     request = &DescribeSlowLogDataRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdb", APIVersion, "DescribeSlowLogData")
     
     
@@ -4821,6 +4895,7 @@ func NewDescribeSlowLogsRequest() (request *DescribeSlowLogsRequest) {
     request = &DescribeSlowLogsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdb", APIVersion, "DescribeSlowLogs")
     
     
@@ -4888,6 +4963,7 @@ func NewDescribeSupportedPrivilegesRequest() (request *DescribeSupportedPrivileg
     request = &DescribeSupportedPrivilegesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdb", APIVersion, "DescribeSupportedPrivileges")
     
     
@@ -4987,6 +5063,7 @@ func NewDescribeTablesRequest() (request *DescribeTablesRequest) {
     request = &DescribeTablesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdb", APIVersion, "DescribeTables")
     
     
@@ -5046,6 +5123,7 @@ func NewDescribeTagsOfInstanceIdsRequest() (request *DescribeTagsOfInstanceIdsRe
     request = &DescribeTagsOfInstanceIdsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdb", APIVersion, "DescribeTagsOfInstanceIds")
     
     
@@ -5113,6 +5191,7 @@ func NewDescribeTasksRequest() (request *DescribeTasksRequest) {
     request = &DescribeTasksRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdb", APIVersion, "DescribeTasks")
     
     
@@ -5178,6 +5257,7 @@ func NewDescribeTimeWindowRequest() (request *DescribeTimeWindowRequest) {
     request = &DescribeTimeWindowRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdb", APIVersion, "DescribeTimeWindow")
     
     
@@ -5229,6 +5309,7 @@ func NewDescribeUploadedFilesRequest() (request *DescribeUploadedFilesRequest) {
     request = &DescribeUploadedFilesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdb", APIVersion, "DescribeUploadedFiles")
     
     
@@ -5282,6 +5363,7 @@ func NewDisassociateSecurityGroupsRequest() (request *DisassociateSecurityGroups
     request = &DisassociateSecurityGroupsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdb", APIVersion, "DisassociateSecurityGroups")
     
     
@@ -5341,6 +5423,7 @@ func NewInitDBInstancesRequest() (request *InitDBInstancesRequest) {
     request = &InitDBInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdb", APIVersion, "InitDBInstances")
     
     
@@ -5396,6 +5479,7 @@ func NewInquiryPriceUpgradeInstancesRequest() (request *InquiryPriceUpgradeInsta
     request = &InquiryPriceUpgradeInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdb", APIVersion, "InquiryPriceUpgradeInstances")
     
     
@@ -5453,6 +5537,7 @@ func NewIsolateDBInstanceRequest() (request *IsolateDBInstanceRequest) {
     request = &IsolateDBInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdb", APIVersion, "IsolateDBInstance")
     
     
@@ -5530,6 +5615,7 @@ func NewModifyAccountDescriptionRequest() (request *ModifyAccountDescriptionRequ
     request = &ModifyAccountDescriptionRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdb", APIVersion, "ModifyAccountDescription")
     
     
@@ -5633,6 +5719,7 @@ func NewModifyAccountHostRequest() (request *ModifyAccountHostRequest) {
     request = &ModifyAccountHostRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdb", APIVersion, "ModifyAccountHost")
     
     
@@ -5724,6 +5811,7 @@ func NewModifyAccountMaxUserConnectionsRequest() (request *ModifyAccountMaxUserC
     request = &ModifyAccountMaxUserConnectionsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdb", APIVersion, "ModifyAccountMaxUserConnections")
     
     
@@ -5779,6 +5867,7 @@ func NewModifyAccountPasswordRequest() (request *ModifyAccountPasswordRequest) {
     request = &ModifyAccountPasswordRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdb", APIVersion, "ModifyAccountPassword")
     
     
@@ -5888,6 +5977,7 @@ func NewModifyAccountPrivilegesRequest() (request *ModifyAccountPrivilegesReques
     request = &ModifyAccountPrivilegesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdb", APIVersion, "ModifyAccountPrivileges")
     
     
@@ -6007,6 +6097,7 @@ func NewModifyAuditConfigRequest() (request *ModifyAuditConfigRequest) {
     request = &ModifyAuditConfigRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdb", APIVersion, "ModifyAuditConfig")
     
     
@@ -6074,6 +6165,7 @@ func NewModifyAuditRuleRequest() (request *ModifyAuditRuleRequest) {
     request = &ModifyAuditRuleRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdb", APIVersion, "ModifyAuditRule")
     
     
@@ -6143,6 +6235,7 @@ func NewModifyAutoRenewFlagRequest() (request *ModifyAutoRenewFlagRequest) {
     request = &ModifyAutoRenewFlagRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdb", APIVersion, "ModifyAutoRenewFlag")
     
     
@@ -6198,6 +6291,7 @@ func NewModifyBackupConfigRequest() (request *ModifyBackupConfigRequest) {
     request = &ModifyBackupConfigRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdb", APIVersion, "ModifyBackupConfig")
     
     
@@ -6257,6 +6351,7 @@ func NewModifyBackupDownloadRestrictionRequest() (request *ModifyBackupDownloadR
     request = &ModifyBackupDownloadRestrictionRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdb", APIVersion, "ModifyBackupDownloadRestriction")
     
     
@@ -6310,6 +6405,7 @@ func NewModifyCDBProxyRequest() (request *ModifyCDBProxyRequest) {
     request = &ModifyCDBProxyRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdb", APIVersion, "ModifyCDBProxy")
     
     
@@ -6359,6 +6455,7 @@ func NewModifyCDBProxyConnectionPoolRequest() (request *ModifyCDBProxyConnection
     request = &ModifyCDBProxyConnectionPoolRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdb", APIVersion, "ModifyCDBProxyConnectionPool")
     
     
@@ -6408,6 +6505,7 @@ func NewModifyCDBProxyDescRequest() (request *ModifyCDBProxyDescRequest) {
     request = &ModifyCDBProxyDescRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdb", APIVersion, "ModifyCDBProxyDesc")
     
     
@@ -6455,6 +6553,7 @@ func NewModifyCDBProxyVipVPortRequest() (request *ModifyCDBProxyVipVPortRequest)
     request = &ModifyCDBProxyVipVPortRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdb", APIVersion, "ModifyCDBProxyVipVPort")
     
     
@@ -6506,6 +6605,7 @@ func NewModifyDBInstanceNameRequest() (request *ModifyDBInstanceNameRequest) {
     request = &ModifyDBInstanceNameRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdb", APIVersion, "ModifyDBInstanceName")
     
     
@@ -6561,6 +6661,7 @@ func NewModifyDBInstanceProjectRequest() (request *ModifyDBInstanceProjectReques
     request = &ModifyDBInstanceProjectRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdb", APIVersion, "ModifyDBInstanceProject")
     
     
@@ -6618,6 +6719,7 @@ func NewModifyDBInstanceSecurityGroupsRequest() (request *ModifyDBInstanceSecuri
     request = &ModifyDBInstanceSecurityGroupsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdb", APIVersion, "ModifyDBInstanceSecurityGroups")
     
     
@@ -6675,6 +6777,7 @@ func NewModifyDBInstanceVipVportRequest() (request *ModifyDBInstanceVipVportRequ
     request = &ModifyDBInstanceVipVportRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdb", APIVersion, "ModifyDBInstanceVipVport")
     
     
@@ -6734,6 +6837,7 @@ func NewModifyInstanceParamRequest() (request *ModifyInstanceParamRequest) {
     request = &ModifyInstanceParamRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdb", APIVersion, "ModifyInstanceParam")
     
     
@@ -6805,6 +6909,7 @@ func NewModifyInstancePasswordComplexityRequest() (request *ModifyInstancePasswo
     request = &ModifyInstancePasswordComplexityRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdb", APIVersion, "ModifyInstancePasswordComplexity")
     
     
@@ -6880,6 +6985,7 @@ func NewModifyInstanceTagRequest() (request *ModifyInstanceTagRequest) {
     request = &ModifyInstanceTagRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdb", APIVersion, "ModifyInstanceTag")
     
     
@@ -6955,6 +7061,7 @@ func NewModifyLocalBinlogConfigRequest() (request *ModifyLocalBinlogConfigReques
     request = &ModifyLocalBinlogConfigRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdb", APIVersion, "ModifyLocalBinlogConfig")
     
     
@@ -7008,6 +7115,7 @@ func NewModifyNameOrDescByDpIdRequest() (request *ModifyNameOrDescByDpIdRequest)
     request = &ModifyNameOrDescByDpIdRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdb", APIVersion, "ModifyNameOrDescByDpId")
     
     
@@ -7065,6 +7173,7 @@ func NewModifyParamTemplateRequest() (request *ModifyParamTemplateRequest) {
     request = &ModifyParamTemplateRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdb", APIVersion, "ModifyParamTemplate")
     
     
@@ -7122,6 +7231,7 @@ func NewModifyRoGroupInfoRequest() (request *ModifyRoGroupInfoRequest) {
     request = &ModifyRoGroupInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdb", APIVersion, "ModifyRoGroupInfo")
     
     
@@ -7197,6 +7307,7 @@ func NewModifyTimeWindowRequest() (request *ModifyTimeWindowRequest) {
     request = &ModifyTimeWindowRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdb", APIVersion, "ModifyTimeWindow")
     
     
@@ -7256,6 +7367,7 @@ func NewOfflineIsolatedInstancesRequest() (request *OfflineIsolatedInstancesRequ
     request = &OfflineIsolatedInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdb", APIVersion, "OfflineIsolatedInstances")
     
     
@@ -7323,6 +7435,7 @@ func NewOpenAuditServiceRequest() (request *OpenAuditServiceRequest) {
     request = &OpenAuditServiceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdb", APIVersion, "OpenAuditService")
     
     
@@ -7386,6 +7499,7 @@ func NewOpenDBInstanceGTIDRequest() (request *OpenDBInstanceGTIDRequest) {
     request = &OpenDBInstanceGTIDRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdb", APIVersion, "OpenDBInstanceGTID")
     
     
@@ -7439,6 +7553,7 @@ func NewOpenWanServiceRequest() (request *OpenWanServiceRequest) {
     request = &OpenWanServiceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdb", APIVersion, "OpenWanService")
     
     
@@ -7506,6 +7621,7 @@ func NewQueryCDBProxyRequest() (request *QueryCDBProxyRequest) {
     request = &QueryCDBProxyRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdb", APIVersion, "QueryCDBProxy")
     
     
@@ -7559,6 +7675,7 @@ func NewReleaseIsolatedDBInstancesRequest() (request *ReleaseIsolatedDBInstances
     request = &ReleaseIsolatedDBInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdb", APIVersion, "ReleaseIsolatedDBInstances")
     
     
@@ -7616,6 +7733,7 @@ func NewReloadBalanceProxyNodeRequest() (request *ReloadBalanceProxyNodeRequest)
     request = &ReloadBalanceProxyNodeRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdb", APIVersion, "ReloadBalanceProxyNode")
     
     
@@ -7663,6 +7781,7 @@ func NewRenewDBInstanceRequest() (request *RenewDBInstanceRequest) {
     request = &RenewDBInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdb", APIVersion, "RenewDBInstance")
     
     
@@ -7722,6 +7841,7 @@ func NewResetRootAccountRequest() (request *ResetRootAccountRequest) {
     request = &ResetRootAccountRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdb", APIVersion, "ResetRootAccount")
     
     
@@ -7775,6 +7895,7 @@ func NewRestartDBInstancesRequest() (request *RestartDBInstancesRequest) {
     request = &RestartDBInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdb", APIVersion, "RestartDBInstances")
     
     
@@ -7852,6 +7973,7 @@ func NewStartBatchRollbackRequest() (request *StartBatchRollbackRequest) {
     request = &StartBatchRollbackRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdb", APIVersion, "StartBatchRollback")
     
     
@@ -7915,6 +8037,7 @@ func NewStartReplicationRequest() (request *StartReplicationRequest) {
     request = &StartReplicationRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdb", APIVersion, "StartReplication")
     
     
@@ -7972,6 +8095,7 @@ func NewStopDBImportJobRequest() (request *StopDBImportJobRequest) {
     request = &StopDBImportJobRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdb", APIVersion, "StopDBImportJob")
     
     
@@ -8027,6 +8151,7 @@ func NewStopReplicationRequest() (request *StopReplicationRequest) {
     request = &StopReplicationRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdb", APIVersion, "StopReplication")
     
     
@@ -8086,6 +8211,7 @@ func NewStopRollbackRequest() (request *StopRollbackRequest) {
     request = &StopRollbackRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdb", APIVersion, "StopRollback")
     
     
@@ -8147,6 +8273,7 @@ func NewSwitchCDBProxyRequest() (request *SwitchCDBProxyRequest) {
     request = &SwitchCDBProxyRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdb", APIVersion, "SwitchCDBProxy")
     
     
@@ -8198,6 +8325,7 @@ func NewSwitchDBInstanceMasterSlaveRequest() (request *SwitchDBInstanceMasterSla
     request = &SwitchDBInstanceMasterSlaveRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdb", APIVersion, "SwitchDBInstanceMasterSlave")
     
     
@@ -8259,6 +8387,7 @@ func NewSwitchDrInstanceToMasterRequest() (request *SwitchDrInstanceToMasterRequ
     request = &SwitchDrInstanceToMasterRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdb", APIVersion, "SwitchDrInstanceToMaster")
     
     
@@ -8314,6 +8443,7 @@ func NewSwitchForUpgradeRequest() (request *SwitchForUpgradeRequest) {
     request = &SwitchForUpgradeRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdb", APIVersion, "SwitchForUpgrade")
     
     
@@ -8369,6 +8499,7 @@ func NewUpgradeCDBProxyRequest() (request *UpgradeCDBProxyRequest) {
     request = &UpgradeCDBProxyRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdb", APIVersion, "UpgradeCDBProxy")
     
     
@@ -8420,6 +8551,7 @@ func NewUpgradeCDBProxyVersionRequest() (request *UpgradeCDBProxyVersionRequest)
     request = &UpgradeCDBProxyVersionRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdb", APIVersion, "UpgradeCDBProxyVersion")
     
     
@@ -8469,6 +8601,7 @@ func NewUpgradeDBInstanceRequest() (request *UpgradeDBInstanceRequest) {
     request = &UpgradeDBInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdb", APIVersion, "UpgradeDBInstance")
     
     
@@ -8538,6 +8671,7 @@ func NewUpgradeDBInstanceEngineVersionRequest() (request *UpgradeDBInstanceEngin
     request = &UpgradeDBInstanceEngineVersionRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdb", APIVersion, "UpgradeDBInstanceEngineVersion")
     
     
@@ -8603,6 +8737,7 @@ func NewVerifyRootAccountRequest() (request *VerifyRootAccountRequest) {
     request = &VerifyRootAccountRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cdb", APIVersion, "VerifyRootAccount")
     
     

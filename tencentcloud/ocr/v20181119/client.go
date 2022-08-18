@@ -49,6 +49,7 @@ func NewAdvertiseOCRRequest() (request *AdvertiseOCRRequest) {
     request = &AdvertiseOCRRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ocr", APIVersion, "AdvertiseOCR")
     
     
@@ -126,6 +127,7 @@ func NewArithmeticOCRRequest() (request *ArithmeticOCRRequest) {
     request = &ArithmeticOCRRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ocr", APIVersion, "ArithmeticOCR")
     
     
@@ -193,6 +195,7 @@ func NewBankCardOCRRequest() (request *BankCardOCRRequest) {
     request = &BankCardOCRRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ocr", APIVersion, "BankCardOCR")
     
     
@@ -264,6 +267,7 @@ func NewBankSlipOCRRequest() (request *BankSlipOCRRequest) {
     request = &BankSlipOCRRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ocr", APIVersion, "BankSlipOCR")
     
     
@@ -331,6 +335,7 @@ func NewBizLicenseOCRRequest() (request *BizLicenseOCRRequest) {
     request = &BizLicenseOCRRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ocr", APIVersion, "BizLicenseOCR")
     
     
@@ -400,6 +405,7 @@ func NewBusInvoiceOCRRequest() (request *BusInvoiceOCRRequest) {
     request = &BusInvoiceOCRRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ocr", APIVersion, "BusInvoiceOCR")
     
     
@@ -461,6 +467,7 @@ func NewBusinessCardOCRRequest() (request *BusinessCardOCRRequest) {
     request = &BusinessCardOCRRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ocr", APIVersion, "BusinessCardOCR")
     
     
@@ -526,6 +533,7 @@ func NewCarInvoiceOCRRequest() (request *CarInvoiceOCRRequest) {
     request = &CarInvoiceOCRRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ocr", APIVersion, "CarInvoiceOCR")
     
     
@@ -587,6 +595,7 @@ func NewClassifyDetectOCRRequest() (request *ClassifyDetectOCRRequest) {
     request = &ClassifyDetectOCRRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ocr", APIVersion, "ClassifyDetectOCR")
     
     
@@ -652,6 +661,7 @@ func NewDriverLicenseOCRRequest() (request *DriverLicenseOCRRequest) {
     request = &DriverLicenseOCRRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ocr", APIVersion, "DriverLicenseOCR")
     
     
@@ -763,6 +773,7 @@ func NewDutyPaidProofOCRRequest() (request *DutyPaidProofOCRRequest) {
     request = &DutyPaidProofOCRRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ocr", APIVersion, "DutyPaidProofOCR")
     
     
@@ -824,6 +835,7 @@ func NewEduPaperOCRRequest() (request *EduPaperOCRRequest) {
     request = &EduPaperOCRRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ocr", APIVersion, "EduPaperOCR")
     
     
@@ -889,6 +901,7 @@ func NewEnglishOCRRequest() (request *EnglishOCRRequest) {
     request = &EnglishOCRRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ocr", APIVersion, "EnglishOCR")
     
     
@@ -964,6 +977,7 @@ func NewEnterpriseLicenseOCRRequest() (request *EnterpriseLicenseOCRRequest) {
     request = &EnterpriseLicenseOCRRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ocr", APIVersion, "EnterpriseLicenseOCR")
     
     
@@ -1025,6 +1039,7 @@ func NewEstateCertOCRRequest() (request *EstateCertOCRRequest) {
     request = &EstateCertOCRRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ocr", APIVersion, "EstateCertOCR")
     
     
@@ -1094,6 +1109,7 @@ func NewFinanBillOCRRequest() (request *FinanBillOCRRequest) {
     request = &FinanBillOCRRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ocr", APIVersion, "FinanBillOCR")
     
     
@@ -1157,6 +1173,7 @@ func NewFinanBillSliceOCRRequest() (request *FinanBillSliceOCRRequest) {
     request = &FinanBillSliceOCRRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ocr", APIVersion, "FinanBillSliceOCR")
     
     
@@ -1220,6 +1237,7 @@ func NewFlightInvoiceOCRRequest() (request *FlightInvoiceOCRRequest) {
     request = &FlightInvoiceOCRRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ocr", APIVersion, "FlightInvoiceOCR")
     
     
@@ -1281,6 +1299,7 @@ func NewFormulaOCRRequest() (request *FormulaOCRRequest) {
     request = &FormulaOCRRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ocr", APIVersion, "FormulaOCR")
     
     
@@ -1346,6 +1365,7 @@ func NewGeneralAccurateOCRRequest() (request *GeneralAccurateOCRRequest) {
     request = &GeneralAccurateOCRRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ocr", APIVersion, "GeneralAccurateOCR")
     
     
@@ -1667,6 +1687,7 @@ func NewGeneralBasicOCRRequest() (request *GeneralBasicOCRRequest) {
     request = &GeneralBasicOCRRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ocr", APIVersion, "GeneralBasicOCR")
     
     
@@ -1984,6 +2005,7 @@ func NewGeneralEfficientOCRRequest() (request *GeneralEfficientOCRRequest) {
     request = &GeneralEfficientOCRRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ocr", APIVersion, "GeneralEfficientOCR")
     
     
@@ -2297,6 +2319,7 @@ func NewGeneralFastOCRRequest() (request *GeneralFastOCRRequest) {
     request = &GeneralFastOCRRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ocr", APIVersion, "GeneralFastOCR")
     
     
@@ -2372,6 +2395,7 @@ func NewGeneralHandwritingOCRRequest() (request *GeneralHandwritingOCRRequest) {
     request = &GeneralHandwritingOCRRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ocr", APIVersion, "GeneralHandwritingOCR")
     
     
@@ -2451,6 +2475,7 @@ func NewHKIDCardOCRRequest() (request *HKIDCardOCRRequest) {
     request = &HKIDCardOCRRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ocr", APIVersion, "HKIDCardOCR")
     
     
@@ -2514,6 +2539,7 @@ func NewHmtResidentPermitOCRRequest() (request *HmtResidentPermitOCRRequest) {
     request = &HmtResidentPermitOCRRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ocr", APIVersion, "HmtResidentPermitOCR")
     
     
@@ -2579,6 +2605,7 @@ func NewIDCardOCRRequest() (request *IDCardOCRRequest) {
     request = &IDCardOCRRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ocr", APIVersion, "IDCardOCR")
     
     
@@ -2842,6 +2869,7 @@ func NewInstitutionOCRRequest() (request *InstitutionOCRRequest) {
     request = &InstitutionOCRRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ocr", APIVersion, "InstitutionOCR")
     
     
@@ -2903,6 +2931,7 @@ func NewInsuranceBillOCRRequest() (request *InsuranceBillOCRRequest) {
     request = &InsuranceBillOCRRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ocr", APIVersion, "InsuranceBillOCR")
     
     
@@ -2968,6 +2997,7 @@ func NewInvoiceGeneralOCRRequest() (request *InvoiceGeneralOCRRequest) {
     request = &InvoiceGeneralOCRRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ocr", APIVersion, "InvoiceGeneralOCR")
     
     
@@ -3029,6 +3059,7 @@ func NewLicensePlateOCRRequest() (request *LicensePlateOCRRequest) {
     request = &LicensePlateOCRRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ocr", APIVersion, "LicensePlateOCR")
     
     
@@ -3098,6 +3129,7 @@ func NewMLIDCardOCRRequest() (request *MLIDCardOCRRequest) {
     request = &MLIDCardOCRRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ocr", APIVersion, "MLIDCardOCR")
     
     
@@ -3167,6 +3199,7 @@ func NewMLIDPassportOCRRequest() (request *MLIDPassportOCRRequest) {
     request = &MLIDPassportOCRRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ocr", APIVersion, "MLIDPassportOCR")
     
     
@@ -3230,6 +3263,7 @@ func NewMainlandPermitOCRRequest() (request *MainlandPermitOCRRequest) {
     request = &MainlandPermitOCRRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ocr", APIVersion, "MainlandPermitOCR")
     
     
@@ -3291,6 +3325,7 @@ func NewMixedInvoiceDetectRequest() (request *MixedInvoiceDetectRequest) {
     request = &MixedInvoiceDetectRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ocr", APIVersion, "MixedInvoiceDetect")
     
     
@@ -3352,6 +3387,7 @@ func NewMixedInvoiceOCRRequest() (request *MixedInvoiceOCRRequest) {
     request = &MixedInvoiceOCRRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ocr", APIVersion, "MixedInvoiceOCR")
     
     
@@ -3423,6 +3459,7 @@ func NewOrgCodeCertOCRRequest() (request *OrgCodeCertOCRRequest) {
     request = &OrgCodeCertOCRRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ocr", APIVersion, "OrgCodeCertOCR")
     
     
@@ -3484,6 +3521,7 @@ func NewPassportOCRRequest() (request *PassportOCRRequest) {
     request = &PassportOCRRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ocr", APIVersion, "PassportOCR")
     
     
@@ -3547,6 +3585,7 @@ func NewPermitOCRRequest() (request *PermitOCRRequest) {
     request = &PermitOCRRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ocr", APIVersion, "PermitOCR")
     
     
@@ -3608,6 +3647,7 @@ func NewPropOwnerCertOCRRequest() (request *PropOwnerCertOCRRequest) {
     request = &PropOwnerCertOCRRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ocr", APIVersion, "PropOwnerCertOCR")
     
     
@@ -3679,6 +3719,7 @@ func NewQrcodeOCRRequest() (request *QrcodeOCRRequest) {
     request = &QrcodeOCRRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ocr", APIVersion, "QrcodeOCR")
     
     
@@ -3750,6 +3791,7 @@ func NewQueryBarCodeRequest() (request *QueryBarCodeRequest) {
     request = &QueryBarCodeRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ocr", APIVersion, "QueryBarCode")
     
     
@@ -3813,6 +3855,7 @@ func NewQuotaInvoiceOCRRequest() (request *QuotaInvoiceOCRRequest) {
     request = &QuotaInvoiceOCRRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ocr", APIVersion, "QuotaInvoiceOCR")
     
     
@@ -3874,6 +3917,7 @@ func NewRecognizeContainerOCRRequest() (request *RecognizeContainerOCRRequest) {
     request = &RecognizeContainerOCRRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ocr", APIVersion, "RecognizeContainerOCR")
     
     
@@ -3937,6 +3981,7 @@ func NewRecognizeHealthCodeOCRRequest() (request *RecognizeHealthCodeOCRRequest)
     request = &RecognizeHealthCodeOCRRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ocr", APIVersion, "RecognizeHealthCodeOCR")
     
     
@@ -4012,6 +4057,7 @@ func NewRecognizeIndonesiaIDCardOCRRequest() (request *RecognizeIndonesiaIDCardO
     request = &RecognizeIndonesiaIDCardOCRRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ocr", APIVersion, "RecognizeIndonesiaIDCardOCR")
     
     
@@ -4073,6 +4119,7 @@ func NewRecognizeOnlineTaxiItineraryOCRRequest() (request *RecognizeOnlineTaxiIt
     request = &RecognizeOnlineTaxiItineraryOCRRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ocr", APIVersion, "RecognizeOnlineTaxiItineraryOCR")
     
     
@@ -4134,6 +4181,7 @@ func NewRecognizePhilippinesDrivingLicenseOCRRequest() (request *RecognizePhilip
     request = &RecognizePhilippinesDrivingLicenseOCRRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ocr", APIVersion, "RecognizePhilippinesDrivingLicenseOCR")
     
     
@@ -4197,6 +4245,7 @@ func NewRecognizePhilippinesVoteIDOCRRequest() (request *RecognizePhilippinesVot
     request = &RecognizePhilippinesVoteIDOCRRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ocr", APIVersion, "RecognizePhilippinesVoteIDOCR")
     
     
@@ -4260,6 +4309,7 @@ func NewRecognizeTableOCRRequest() (request *RecognizeTableOCRRequest) {
     request = &RecognizeTableOCRRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ocr", APIVersion, "RecognizeTableOCR")
     
     
@@ -4325,6 +4375,7 @@ func NewRecognizeThaiIDCardOCRRequest() (request *RecognizeThaiIDCardOCRRequest)
     request = &RecognizeThaiIDCardOCRRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ocr", APIVersion, "RecognizeThaiIDCardOCR")
     
     
@@ -4394,6 +4445,7 @@ func NewRecognizeTravelCardOCRRequest() (request *RecognizeTravelCardOCRRequest)
     request = &RecognizeTravelCardOCRRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ocr", APIVersion, "RecognizeTravelCardOCR")
     
     
@@ -4469,6 +4521,7 @@ func NewResidenceBookletOCRRequest() (request *ResidenceBookletOCRRequest) {
     request = &ResidenceBookletOCRRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ocr", APIVersion, "ResidenceBookletOCR")
     
     
@@ -4536,6 +4589,7 @@ func NewRideHailingDriverLicenseOCRRequest() (request *RideHailingDriverLicenseO
     request = &RideHailingDriverLicenseOCRRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ocr", APIVersion, "RideHailingDriverLicenseOCR")
     
     
@@ -4599,6 +4653,7 @@ func NewRideHailingTransportLicenseOCRRequest() (request *RideHailingTransportLi
     request = &RideHailingTransportLicenseOCRRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ocr", APIVersion, "RideHailingTransportLicenseOCR")
     
     
@@ -4666,6 +4721,7 @@ func NewSealOCRRequest() (request *SealOCRRequest) {
     request = &SealOCRRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ocr", APIVersion, "SealOCR")
     
     
@@ -4729,6 +4785,7 @@ func NewShipInvoiceOCRRequest() (request *ShipInvoiceOCRRequest) {
     request = &ShipInvoiceOCRRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ocr", APIVersion, "ShipInvoiceOCR")
     
     
@@ -4790,6 +4847,7 @@ func NewSmartStructuralOCRRequest() (request *SmartStructuralOCRRequest) {
     request = &SmartStructuralOCRRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ocr", APIVersion, "SmartStructuralOCR")
     
     
@@ -4859,6 +4917,7 @@ func NewTableOCRRequest() (request *TableOCRRequest) {
     request = &TableOCRRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ocr", APIVersion, "TableOCR")
     
     
@@ -4938,6 +4997,7 @@ func NewTaxiInvoiceOCRRequest() (request *TaxiInvoiceOCRRequest) {
     request = &TaxiInvoiceOCRRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ocr", APIVersion, "TaxiInvoiceOCR")
     
     
@@ -4999,6 +5059,7 @@ func NewTextDetectRequest() (request *TextDetectRequest) {
     request = &TextDetectRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ocr", APIVersion, "TextDetect")
     
     
@@ -5062,6 +5123,7 @@ func NewTollInvoiceOCRRequest() (request *TollInvoiceOCRRequest) {
     request = &TollInvoiceOCRRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ocr", APIVersion, "TollInvoiceOCR")
     
     
@@ -5123,6 +5185,7 @@ func NewTrainTicketOCRRequest() (request *TrainTicketOCRRequest) {
     request = &TrainTicketOCRRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ocr", APIVersion, "TrainTicketOCR")
     
     
@@ -5186,6 +5249,7 @@ func NewVatInvoiceOCRRequest() (request *VatInvoiceOCRRequest) {
     request = &VatInvoiceOCRRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ocr", APIVersion, "VatInvoiceOCR")
     
     
@@ -5265,6 +5329,7 @@ func NewVatInvoiceVerifyRequest() (request *VatInvoiceVerifyRequest) {
     request = &VatInvoiceVerifyRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ocr", APIVersion, "VatInvoiceVerify")
     
     
@@ -5334,6 +5399,7 @@ func NewVatInvoiceVerifyNewRequest() (request *VatInvoiceVerifyNewRequest) {
     request = &VatInvoiceVerifyNewRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ocr", APIVersion, "VatInvoiceVerifyNew")
     
     
@@ -5409,6 +5475,7 @@ func NewVatRollInvoiceOCRRequest() (request *VatRollInvoiceOCRRequest) {
     request = &VatRollInvoiceOCRRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ocr", APIVersion, "VatRollInvoiceOCR")
     
     
@@ -5470,6 +5537,7 @@ func NewVehicleLicenseOCRRequest() (request *VehicleLicenseOCRRequest) {
     request = &VehicleLicenseOCRRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ocr", APIVersion, "VehicleLicenseOCR")
     
     
@@ -5573,6 +5641,7 @@ func NewVehicleRegCertOCRRequest() (request *VehicleRegCertOCRRequest) {
     request = &VehicleRegCertOCRRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ocr", APIVersion, "VehicleRegCertOCR")
     
     
@@ -5634,6 +5703,7 @@ func NewVerifyBasicBizLicenseRequest() (request *VerifyBasicBizLicenseRequest) {
     request = &VerifyBasicBizLicenseRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ocr", APIVersion, "VerifyBasicBizLicense")
     
     
@@ -5707,6 +5777,7 @@ func NewVerifyBizLicenseRequest() (request *VerifyBizLicenseRequest) {
     request = &VerifyBizLicenseRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ocr", APIVersion, "VerifyBizLicense")
     
     
@@ -5788,6 +5859,7 @@ func NewVerifyEnterpriseFourFactorsRequest() (request *VerifyEnterpriseFourFacto
     request = &VerifyEnterpriseFourFactorsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ocr", APIVersion, "VerifyEnterpriseFourFactors")
     
     
@@ -5841,6 +5913,7 @@ func NewVerifyOfdVatInvoiceOCRRequest() (request *VerifyOfdVatInvoiceOCRRequest)
     request = &VerifyOfdVatInvoiceOCRRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ocr", APIVersion, "VerifyOfdVatInvoiceOCR")
     
     
@@ -5896,6 +5969,7 @@ func NewVinOCRRequest() (request *VinOCRRequest) {
     request = &VinOCRRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ocr", APIVersion, "VinOCR")
     
     
@@ -5959,6 +6033,7 @@ func NewWaybillOCRRequest() (request *WaybillOCRRequest) {
     request = &WaybillOCRRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ocr", APIVersion, "WaybillOCR")
     
     

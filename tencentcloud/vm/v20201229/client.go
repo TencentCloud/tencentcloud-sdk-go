@@ -49,6 +49,7 @@ func NewCancelTaskRequest() (request *CancelTaskRequest) {
     request = &CancelTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("vm", APIVersion, "CancelTask")
     
     
@@ -134,6 +135,7 @@ func NewCreateVideoModerationTaskRequest() (request *CreateVideoModerationTaskRe
     request = &CreateVideoModerationTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("vm", APIVersion, "CreateVideoModerationTask")
     
     
@@ -363,6 +365,7 @@ func NewDescribeTaskDetailRequest() (request *DescribeTaskDetailRequest) {
     request = &DescribeTaskDetailRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("vm", APIVersion, "DescribeTaskDetail")
     
     
@@ -450,6 +453,7 @@ func NewDescribeTasksRequest() (request *DescribeTasksRequest) {
     request = &DescribeTasksRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("vm", APIVersion, "DescribeTasks")
     
     

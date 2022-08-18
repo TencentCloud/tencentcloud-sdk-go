@@ -49,6 +49,7 @@ func NewCreateAppScanTaskRequest() (request *CreateAppScanTaskRequest) {
     request = &CreateAppScanTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("acp", APIVersion, "CreateAppScanTask")
     
     
@@ -96,6 +97,7 @@ func NewCreateAppScanTaskRepeatRequest() (request *CreateAppScanTaskRepeatReques
     request = &CreateAppScanTaskRepeatRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("acp", APIVersion, "CreateAppScanTaskRepeat")
     
     
@@ -143,6 +145,7 @@ func NewDescribeFileTicketRequest() (request *DescribeFileTicketRequest) {
     request = &DescribeFileTicketRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("acp", APIVersion, "DescribeFileTicket")
     
     
@@ -190,6 +193,7 @@ func NewDescribeResourceUsageInfoRequest() (request *DescribeResourceUsageInfoRe
     request = &DescribeResourceUsageInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("acp", APIVersion, "DescribeResourceUsageInfo")
     
     
@@ -237,6 +241,7 @@ func NewDescribeScanTaskListRequest() (request *DescribeScanTaskListRequest) {
     request = &DescribeScanTaskListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("acp", APIVersion, "DescribeScanTaskList")
     
     
@@ -284,6 +289,7 @@ func NewDescribeScanTaskReportUrlRequest() (request *DescribeScanTaskReportUrlRe
     request = &DescribeScanTaskReportUrlRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("acp", APIVersion, "DescribeScanTaskReportUrl")
     
     
@@ -331,6 +337,7 @@ func NewDescribeScanTaskStatusRequest() (request *DescribeScanTaskStatusRequest)
     request = &DescribeScanTaskStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("acp", APIVersion, "DescribeScanTaskStatus")
     
     

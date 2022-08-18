@@ -49,6 +49,7 @@ func NewFlowProductRemindRequest() (request *FlowProductRemindRequest) {
     request = &FlowProductRemindRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("market", APIVersion, "FlowProductRemind")
     
     
@@ -90,6 +91,7 @@ func NewGetUsagePlanUsageAmountRequest() (request *GetUsagePlanUsageAmountReques
     request = &GetUsagePlanUsageAmountRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("market", APIVersion, "GetUsagePlanUsageAmount")
     
     

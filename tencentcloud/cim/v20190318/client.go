@@ -49,6 +49,7 @@ func NewDescribeSdkAppidRequest() (request *DescribeSdkAppidRequest) {
     request = &DescribeSdkAppidRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cim", APIVersion, "DescribeSdkAppid")
     
     

@@ -49,6 +49,7 @@ func NewCreateCloudRunEnvRequest() (request *CreateCloudRunEnvRequest) {
     request = &CreateCloudRunEnvRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcbr", APIVersion, "CreateCloudRunEnv")
     
     
@@ -104,6 +105,7 @@ func NewCreateCloudRunServerRequest() (request *CreateCloudRunServerRequest) {
     request = &CreateCloudRunServerRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcbr", APIVersion, "CreateCloudRunServer")
     
     
@@ -153,6 +155,7 @@ func NewDescribeCloudRunEnvsRequest() (request *DescribeCloudRunEnvsRequest) {
     request = &DescribeCloudRunEnvsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcbr", APIVersion, "DescribeCloudRunEnvs")
     
     
@@ -206,6 +209,7 @@ func NewDescribeCloudRunServerDetailRequest() (request *DescribeCloudRunServerDe
     request = &DescribeCloudRunServerDetailRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcbr", APIVersion, "DescribeCloudRunServerDetail")
     
     
@@ -253,6 +257,7 @@ func NewDescribeCloudRunServersRequest() (request *DescribeCloudRunServersReques
     request = &DescribeCloudRunServersRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcbr", APIVersion, "DescribeCloudRunServers")
     
     
@@ -300,6 +305,7 @@ func NewDescribeEnvBaseInfoRequest() (request *DescribeEnvBaseInfoRequest) {
     request = &DescribeEnvBaseInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcbr", APIVersion, "DescribeEnvBaseInfo")
     
     
@@ -351,6 +357,7 @@ func NewDescribeServerManageTaskRequest() (request *DescribeServerManageTaskRequ
     request = &DescribeServerManageTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcbr", APIVersion, "DescribeServerManageTask")
     
     
@@ -400,6 +407,7 @@ func NewOperateServerManageRequest() (request *OperateServerManageRequest) {
     request = &OperateServerManageRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcbr", APIVersion, "OperateServerManage")
     
     
@@ -449,6 +457,7 @@ func NewReleaseGrayRequest() (request *ReleaseGrayRequest) {
     request = &ReleaseGrayRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcbr", APIVersion, "ReleaseGray")
     
     
@@ -498,6 +507,7 @@ func NewUpdateCloudRunServerRequest() (request *UpdateCloudRunServerRequest) {
     request = &UpdateCloudRunServerRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tcbr", APIVersion, "UpdateCloudRunServer")
     
     

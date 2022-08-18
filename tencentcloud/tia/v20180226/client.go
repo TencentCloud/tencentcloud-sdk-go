@@ -49,6 +49,7 @@ func NewCreateJobRequest() (request *CreateJobRequest) {
     request = &CreateJobRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tia", APIVersion, "CreateJob")
     
     
@@ -108,6 +109,7 @@ func NewCreateModelRequest() (request *CreateModelRequest) {
     request = &CreateModelRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tia", APIVersion, "CreateModel")
     
     
@@ -195,6 +197,7 @@ func NewDeleteJobRequest() (request *DeleteJobRequest) {
     request = &DeleteJobRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tia", APIVersion, "DeleteJob")
     
     
@@ -246,6 +249,7 @@ func NewDeleteModelRequest() (request *DeleteModelRequest) {
     request = &DeleteModelRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tia", APIVersion, "DeleteModel")
     
     
@@ -311,6 +315,7 @@ func NewDescribeJobRequest() (request *DescribeJobRequest) {
     request = &DescribeJobRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tia", APIVersion, "DescribeJob")
     
     
@@ -370,6 +375,7 @@ func NewDescribeModelRequest() (request *DescribeModelRequest) {
     request = &DescribeModelRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tia", APIVersion, "DescribeModel")
     
     
@@ -431,6 +437,7 @@ func NewInstallAgentRequest() (request *InstallAgentRequest) {
     request = &InstallAgentRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tia", APIVersion, "InstallAgent")
     
     
@@ -486,6 +493,7 @@ func NewListJobsRequest() (request *ListJobsRequest) {
     request = &ListJobsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tia", APIVersion, "ListJobs")
     
     
@@ -543,6 +551,7 @@ func NewListModelsRequest() (request *ListModelsRequest) {
     request = &ListModelsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tia", APIVersion, "ListModels")
     
     
@@ -612,6 +621,7 @@ func NewQueryLogsRequest() (request *QueryLogsRequest) {
     request = &QueryLogsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tia", APIVersion, "QueryLogs")
     
     

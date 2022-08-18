@@ -49,6 +49,7 @@ func NewCreateCredentialRequest() (request *CreateCredentialRequest) {
     request = &CreateCredentialRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tdid", APIVersion, "CreateCredential")
     
     
@@ -108,6 +109,7 @@ func NewCreateSelectiveCredentialRequest() (request *CreateSelectiveCredentialRe
     request = &CreateSelectiveCredentialRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tdid", APIVersion, "CreateSelectiveCredential")
     
     
@@ -179,6 +181,7 @@ func NewCreateTDidRequest() (request *CreateTDidRequest) {
     request = &CreateTDidRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tdid", APIVersion, "CreateTDid")
     
     
@@ -246,6 +249,7 @@ func NewCreateTDidByPublicKeyRequest() (request *CreateTDidByPublicKeyRequest) {
     request = &CreateTDidByPublicKeyRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tdid", APIVersion, "CreateTDidByPublicKey")
     
     
@@ -317,6 +321,7 @@ func NewGetAuthorityIssuerRequest() (request *GetAuthorityIssuerRequest) {
     request = &GetAuthorityIssuerRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tdid", APIVersion, "GetAuthorityIssuer")
     
     
@@ -388,6 +393,7 @@ func NewGetDidDocumentRequest() (request *GetDidDocumentRequest) {
     request = &GetDidDocumentRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tdid", APIVersion, "GetDidDocument")
     
     
@@ -459,6 +465,7 @@ func NewSetCredentialStatusRequest() (request *SetCredentialStatusRequest) {
     request = &SetCredentialStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tdid", APIVersion, "SetCredentialStatus")
     
     
@@ -530,6 +537,7 @@ func NewVerifyCredentialRequest() (request *VerifyCredentialRequest) {
     request = &VerifyCredentialRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tdid", APIVersion, "VerifyCredential")
     
     

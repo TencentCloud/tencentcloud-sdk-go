@@ -49,6 +49,7 @@ func NewAddSubStructureTasksRequest() (request *AddSubStructureTasksRequest) {
     request = &AddSubStructureTasksRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cii", APIVersion, "AddSubStructureTasks")
     
     
@@ -104,6 +105,7 @@ func NewCreateAutoClassifyStructureTaskRequest() (request *CreateAutoClassifyStr
     request = &CreateAutoClassifyStructureTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cii", APIVersion, "CreateAutoClassifyStructureTask")
     
     
@@ -163,6 +165,7 @@ func NewCreateStructureTaskRequest() (request *CreateStructureTaskRequest) {
     request = &CreateStructureTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cii", APIVersion, "CreateStructureTask")
     
     
@@ -224,6 +227,7 @@ func NewCreateUnderwriteTaskByIdRequest() (request *CreateUnderwriteTaskByIdRequ
     request = &CreateUnderwriteTaskByIdRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cii", APIVersion, "CreateUnderwriteTaskById")
     
     
@@ -283,6 +287,7 @@ func NewDescribeMachineUnderwriteRequest() (request *DescribeMachineUnderwriteRe
     request = &DescribeMachineUnderwriteRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cii", APIVersion, "DescribeMachineUnderwrite")
     
     
@@ -338,6 +343,7 @@ func NewDescribeQualityScoreRequest() (request *DescribeQualityScoreRequest) {
     request = &DescribeQualityScoreRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cii", APIVersion, "DescribeQualityScore")
     
     
@@ -401,6 +407,7 @@ func NewDescribeReportClassifyRequest() (request *DescribeReportClassifyRequest)
     request = &DescribeReportClassifyRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cii", APIVersion, "DescribeReportClassify")
     
     
@@ -460,6 +467,7 @@ func NewDescribeStructCompareDataRequest() (request *DescribeStructCompareDataRe
     request = &DescribeStructCompareDataRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cii", APIVersion, "DescribeStructCompareData")
     
     
@@ -511,6 +519,7 @@ func NewDescribeStructureDifferenceRequest() (request *DescribeStructureDifferen
     request = &DescribeStructureDifferenceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cii", APIVersion, "DescribeStructureDifference")
     
     
@@ -562,6 +571,7 @@ func NewDescribeStructureResultRequest() (request *DescribeStructureResultReques
     request = &DescribeStructureResultRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cii", APIVersion, "DescribeStructureResult")
     
     
@@ -625,6 +635,7 @@ func NewDescribeStructureTaskResultRequest() (request *DescribeStructureTaskResu
     request = &DescribeStructureTaskResultRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cii", APIVersion, "DescribeStructureTaskResult")
     
     
@@ -686,6 +697,7 @@ func NewDescribeUnderwriteTaskRequest() (request *DescribeUnderwriteTaskRequest)
     request = &DescribeUnderwriteTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cii", APIVersion, "DescribeUnderwriteTask")
     
     
@@ -743,6 +755,7 @@ func NewUploadMedicalFileRequest() (request *UploadMedicalFileRequest) {
     request = &UploadMedicalFileRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cii", APIVersion, "UploadMedicalFile")
     
     

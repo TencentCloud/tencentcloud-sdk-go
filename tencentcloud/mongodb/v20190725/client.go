@@ -49,6 +49,7 @@ func NewAssignProjectRequest() (request *AssignProjectRequest) {
     request = &AssignProjectRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("mongodb", APIVersion, "AssignProject")
     
     
@@ -102,6 +103,7 @@ func NewCreateBackupDBInstanceRequest() (request *CreateBackupDBInstanceRequest)
     request = &CreateBackupDBInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("mongodb", APIVersion, "CreateBackupDBInstance")
     
     
@@ -161,6 +163,7 @@ func NewCreateBackupDownloadTaskRequest() (request *CreateBackupDownloadTaskRequ
     request = &CreateBackupDownloadTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("mongodb", APIVersion, "CreateBackupDownloadTask")
     
     
@@ -216,6 +219,7 @@ func NewCreateDBInstanceRequest() (request *CreateDBInstanceRequest) {
     request = &CreateDBInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("mongodb", APIVersion, "CreateDBInstance")
     
     
@@ -295,6 +299,7 @@ func NewCreateDBInstanceHourRequest() (request *CreateDBInstanceHourRequest) {
     request = &CreateDBInstanceHourRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("mongodb", APIVersion, "CreateDBInstanceHour")
     
     
@@ -374,6 +379,7 @@ func NewDescribeAsyncRequestInfoRequest() (request *DescribeAsyncRequestInfoRequ
     request = &DescribeAsyncRequestInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("mongodb", APIVersion, "DescribeAsyncRequestInfo")
     
     
@@ -425,6 +431,7 @@ func NewDescribeBackupDownloadTaskRequest() (request *DescribeBackupDownloadTask
     request = &DescribeBackupDownloadTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("mongodb", APIVersion, "DescribeBackupDownloadTask")
     
     
@@ -480,6 +487,7 @@ func NewDescribeClientConnectionsRequest() (request *DescribeClientConnectionsRe
     request = &DescribeClientConnectionsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("mongodb", APIVersion, "DescribeClientConnections")
     
     
@@ -535,6 +543,7 @@ func NewDescribeCurrentOpRequest() (request *DescribeCurrentOpRequest) {
     request = &DescribeCurrentOpRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("mongodb", APIVersion, "DescribeCurrentOp")
     
     
@@ -590,6 +599,7 @@ func NewDescribeDBBackupsRequest() (request *DescribeDBBackupsRequest) {
     request = &DescribeDBBackupsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("mongodb", APIVersion, "DescribeDBBackups")
     
     
@@ -641,6 +651,7 @@ func NewDescribeDBInstanceDealRequest() (request *DescribeDBInstanceDealRequest)
     request = &DescribeDBInstanceDealRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("mongodb", APIVersion, "DescribeDBInstanceDeal")
     
     
@@ -692,6 +703,7 @@ func NewDescribeDBInstancesRequest() (request *DescribeDBInstancesRequest) {
     request = &DescribeDBInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("mongodb", APIVersion, "DescribeDBInstances")
     
     
@@ -749,6 +761,7 @@ func NewDescribeInstanceParamsRequest() (request *DescribeInstanceParamsRequest)
     request = &DescribeInstanceParamsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("mongodb", APIVersion, "DescribeInstanceParams")
     
     
@@ -806,6 +819,7 @@ func NewDescribeSecurityGroupRequest() (request *DescribeSecurityGroupRequest) {
     request = &DescribeSecurityGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("mongodb", APIVersion, "DescribeSecurityGroup")
     
     
@@ -859,6 +873,7 @@ func NewDescribeSlowLogPatternsRequest() (request *DescribeSlowLogPatternsReques
     request = &DescribeSlowLogPatternsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("mongodb", APIVersion, "DescribeSlowLogPatterns")
     
     
@@ -920,6 +935,7 @@ func NewDescribeSlowLogsRequest() (request *DescribeSlowLogsRequest) {
     request = &DescribeSlowLogsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("mongodb", APIVersion, "DescribeSlowLogs")
     
     
@@ -981,6 +997,7 @@ func NewDescribeSpecInfoRequest() (request *DescribeSpecInfoRequest) {
     request = &DescribeSpecInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("mongodb", APIVersion, "DescribeSpecInfo")
     
     
@@ -1032,6 +1049,7 @@ func NewFlushInstanceRouterConfigRequest() (request *FlushInstanceRouterConfigRe
     request = &FlushInstanceRouterConfigRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("mongodb", APIVersion, "FlushInstanceRouterConfig")
     
     
@@ -1083,6 +1101,7 @@ func NewInquirePriceCreateDBInstancesRequest() (request *InquirePriceCreateDBIns
     request = &InquirePriceCreateDBInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("mongodb", APIVersion, "InquirePriceCreateDBInstances")
     
     
@@ -1146,6 +1165,7 @@ func NewInquirePriceModifyDBInstanceSpecRequest() (request *InquirePriceModifyDB
     request = &InquirePriceModifyDBInstanceSpecRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("mongodb", APIVersion, "InquirePriceModifyDBInstanceSpec")
     
     
@@ -1197,6 +1217,7 @@ func NewInquirePriceRenewDBInstancesRequest() (request *InquirePriceRenewDBInsta
     request = &InquirePriceRenewDBInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("mongodb", APIVersion, "InquirePriceRenewDBInstances")
     
     
@@ -1252,6 +1273,7 @@ func NewIsolateDBInstanceRequest() (request *IsolateDBInstanceRequest) {
     request = &IsolateDBInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("mongodb", APIVersion, "IsolateDBInstance")
     
     
@@ -1313,6 +1335,7 @@ func NewKillOpsRequest() (request *KillOpsRequest) {
     request = &KillOpsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("mongodb", APIVersion, "KillOps")
     
     
@@ -1362,6 +1385,7 @@ func NewModifyDBInstanceNetworkAddressRequest() (request *ModifyDBInstanceNetwor
     request = &ModifyDBInstanceNetworkAddressRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("mongodb", APIVersion, "ModifyDBInstanceNetworkAddress")
     
     
@@ -1419,6 +1443,7 @@ func NewModifyDBInstanceSecurityGroupRequest() (request *ModifyDBInstanceSecurit
     request = &ModifyDBInstanceSecurityGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("mongodb", APIVersion, "ModifyDBInstanceSecurityGroup")
     
     
@@ -1472,6 +1497,7 @@ func NewModifyDBInstanceSpecRequest() (request *ModifyDBInstanceSpecRequest) {
     request = &ModifyDBInstanceSpecRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("mongodb", APIVersion, "ModifyDBInstanceSpec")
     
     
@@ -1533,6 +1559,7 @@ func NewOfflineIsolatedDBInstanceRequest() (request *OfflineIsolatedDBInstanceRe
     request = &OfflineIsolatedDBInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("mongodb", APIVersion, "OfflineIsolatedDBInstance")
     
     
@@ -1588,6 +1615,7 @@ func NewRenameInstanceRequest() (request *RenameInstanceRequest) {
     request = &RenameInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("mongodb", APIVersion, "RenameInstance")
     
     
@@ -1645,6 +1673,7 @@ func NewRenewDBInstancesRequest() (request *RenewDBInstancesRequest) {
     request = &RenewDBInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("mongodb", APIVersion, "RenewDBInstances")
     
     
@@ -1694,6 +1723,7 @@ func NewResetDBInstancePasswordRequest() (request *ResetDBInstancePasswordReques
     request = &ResetDBInstancePasswordRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("mongodb", APIVersion, "ResetDBInstancePassword")
     
     
@@ -1757,6 +1787,7 @@ func NewSetAccountUserPrivilegeRequest() (request *SetAccountUserPrivilegeReques
     request = &SetAccountUserPrivilegeRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("mongodb", APIVersion, "SetAccountUserPrivilege")
     
     
@@ -1808,6 +1839,7 @@ func NewTerminateDBInstancesRequest() (request *TerminateDBInstancesRequest) {
     request = &TerminateDBInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("mongodb", APIVersion, "TerminateDBInstances")
     
     

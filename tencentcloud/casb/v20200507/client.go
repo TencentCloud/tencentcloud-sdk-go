@@ -49,6 +49,7 @@ func NewCopyCryptoColumnPolicyRequest() (request *CopyCryptoColumnPolicyRequest)
     request = &CopyCryptoColumnPolicyRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("casb", APIVersion, "CopyCryptoColumnPolicy")
     
     

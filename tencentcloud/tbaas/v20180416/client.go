@@ -49,6 +49,7 @@ func NewApplyUserCertRequest() (request *ApplyUserCertRequest) {
     request = &ApplyUserCertRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tbaas", APIVersion, "ApplyUserCert")
     
     
@@ -138,6 +139,7 @@ func NewCreateChaincodeAndInstallForUserRequest() (request *CreateChaincodeAndIn
     request = &CreateChaincodeAndInstallForUserRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tbaas", APIVersion, "CreateChaincodeAndInstallForUser")
     
     
@@ -223,6 +225,7 @@ func NewDeployDynamicBcosContractRequest() (request *DeployDynamicBcosContractRe
     request = &DeployDynamicBcosContractRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tbaas", APIVersion, "DeployDynamicBcosContract")
     
     
@@ -350,6 +353,7 @@ func NewDownloadUserCertRequest() (request *DownloadUserCertRequest) {
     request = &DownloadUserCertRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tbaas", APIVersion, "DownloadUserCert")
     
     
@@ -437,6 +441,7 @@ func NewGetBcosBlockByNumberRequest() (request *GetBcosBlockByNumberRequest) {
     request = &GetBcosBlockByNumberRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tbaas", APIVersion, "GetBcosBlockByNumber")
     
     
@@ -560,6 +565,7 @@ func NewGetBcosBlockListRequest() (request *GetBcosBlockListRequest) {
     request = &GetBcosBlockListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tbaas", APIVersion, "GetBcosBlockList")
     
     
@@ -685,6 +691,7 @@ func NewGetBcosTransByHashRequest() (request *GetBcosTransByHashRequest) {
     request = &GetBcosTransByHashRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tbaas", APIVersion, "GetBcosTransByHash")
     
     
@@ -810,6 +817,7 @@ func NewGetBcosTransListRequest() (request *GetBcosTransListRequest) {
     request = &GetBcosTransListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tbaas", APIVersion, "GetBcosTransList")
     
     
@@ -937,6 +945,7 @@ func NewGetBlockListRequest() (request *GetBlockListRequest) {
     request = &GetBlockListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tbaas", APIVersion, "GetBlockList")
     
     
@@ -1008,6 +1017,7 @@ func NewGetBlockTransactionListForUserRequest() (request *GetBlockTransactionLis
     request = &GetBlockTransactionListForUserRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tbaas", APIVersion, "GetBlockTransactionListForUser")
     
     
@@ -1089,6 +1099,7 @@ func NewGetChaincodeCompileLogForUserRequest() (request *GetChaincodeCompileLogF
     request = &GetChaincodeCompileLogForUserRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tbaas", APIVersion, "GetChaincodeCompileLogForUser")
     
     
@@ -1174,6 +1185,7 @@ func NewGetChaincodeInitializeResultForUserRequest() (request *GetChaincodeIniti
     request = &GetChaincodeInitializeResultForUserRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tbaas", APIVersion, "GetChaincodeInitializeResultForUser")
     
     
@@ -1259,6 +1271,7 @@ func NewGetChaincodeLogForUserRequest() (request *GetChaincodeLogForUserRequest)
     request = &GetChaincodeLogForUserRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tbaas", APIVersion, "GetChaincodeLogForUser")
     
     
@@ -1344,6 +1357,7 @@ func NewGetChannelListForUserRequest() (request *GetChannelListForUserRequest) {
     request = &GetChannelListForUserRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tbaas", APIVersion, "GetChannelListForUser")
     
     
@@ -1429,6 +1443,7 @@ func NewGetClusterListForUserRequest() (request *GetClusterListForUserRequest) {
     request = &GetClusterListForUserRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tbaas", APIVersion, "GetClusterListForUser")
     
     
@@ -1514,6 +1529,7 @@ func NewGetClusterSummaryRequest() (request *GetClusterSummaryRequest) {
     request = &GetClusterSummaryRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tbaas", APIVersion, "GetClusterSummary")
     
     
@@ -1579,6 +1595,7 @@ func NewGetInvokeTxRequest() (request *GetInvokeTxRequest) {
     request = &GetInvokeTxRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tbaas", APIVersion, "GetInvokeTx")
     
     
@@ -1656,6 +1673,7 @@ func NewGetLatesdTransactionListRequest() (request *GetLatesdTransactionListRequ
     request = &GetLatesdTransactionListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tbaas", APIVersion, "GetLatesdTransactionList")
     
     
@@ -1727,6 +1745,7 @@ func NewGetPeerLogForUserRequest() (request *GetPeerLogForUserRequest) {
     request = &GetPeerLogForUserRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tbaas", APIVersion, "GetPeerLogForUser")
     
     
@@ -1812,6 +1831,7 @@ func NewGetTransactionDetailForUserRequest() (request *GetTransactionDetailForUs
     request = &GetTransactionDetailForUserRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tbaas", APIVersion, "GetTransactionDetailForUser")
     
     
@@ -1887,6 +1907,7 @@ func NewInitializeChaincodeForUserRequest() (request *InitializeChaincodeForUser
     request = &InitializeChaincodeForUserRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tbaas", APIVersion, "InitializeChaincodeForUser")
     
     
@@ -1972,6 +1993,7 @@ func NewInvokeRequest() (request *InvokeRequest) {
     request = &InvokeRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tbaas", APIVersion, "Invoke")
     
     
@@ -2069,6 +2091,7 @@ func NewInvokeBcosTransRequest() (request *InvokeBcosTransRequest) {
     request = &InvokeBcosTransRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tbaas", APIVersion, "InvokeBcosTrans")
     
     
@@ -2196,6 +2219,7 @@ func NewInvokeChainMakerContractRequest() (request *InvokeChainMakerContractRequ
     request = &InvokeChainMakerContractRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tbaas", APIVersion, "InvokeChainMakerContract")
     
     
@@ -2325,6 +2349,7 @@ func NewInvokeChainMakerDemoContractRequest() (request *InvokeChainMakerDemoCont
     request = &InvokeChainMakerDemoContractRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tbaas", APIVersion, "InvokeChainMakerDemoContract")
     
     
@@ -2390,6 +2415,7 @@ func NewQueryRequest() (request *QueryRequest) {
     request = &QueryRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tbaas", APIVersion, "Query")
     
     
@@ -2483,6 +2509,7 @@ func NewQueryChainMakerBlockTransactionRequest() (request *QueryChainMakerBlockT
     request = &QueryChainMakerBlockTransactionRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tbaas", APIVersion, "QueryChainMakerBlockTransaction")
     
     
@@ -2616,6 +2643,7 @@ func NewQueryChainMakerContractRequest() (request *QueryChainMakerContractReques
     request = &QueryChainMakerContractRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tbaas", APIVersion, "QueryChainMakerContract")
     
     
@@ -2745,6 +2773,7 @@ func NewQueryChainMakerDemoBlockTransactionRequest() (request *QueryChainMakerDe
     request = &QueryChainMakerDemoBlockTransactionRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tbaas", APIVersion, "QueryChainMakerDemoBlockTransaction")
     
     
@@ -2808,6 +2837,7 @@ func NewQueryChainMakerDemoContractRequest() (request *QueryChainMakerDemoContra
     request = &QueryChainMakerDemoContractRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tbaas", APIVersion, "QueryChainMakerDemoContract")
     
     
@@ -2871,6 +2901,7 @@ func NewQueryChainMakerDemoTransactionRequest() (request *QueryChainMakerDemoTra
     request = &QueryChainMakerDemoTransactionRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tbaas", APIVersion, "QueryChainMakerDemoTransaction")
     
     
@@ -2934,6 +2965,7 @@ func NewQueryChainMakerTransactionRequest() (request *QueryChainMakerTransaction
     request = &QueryChainMakerTransactionRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tbaas", APIVersion, "QueryChainMakerTransaction")
     
     
@@ -3061,6 +3093,7 @@ func NewSrvInvokeRequest() (request *SrvInvokeRequest) {
     request = &SrvInvokeRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tbaas", APIVersion, "SrvInvoke")
     
     

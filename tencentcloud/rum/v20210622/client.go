@@ -49,6 +49,7 @@ func NewCreateLogExportRequest() (request *CreateLogExportRequest) {
     request = &CreateLogExportRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("rum", APIVersion, "CreateLogExport")
     
     
@@ -114,6 +115,7 @@ func NewCreateOfflineLogConfigRequest() (request *CreateOfflineLogConfigRequest)
     request = &CreateOfflineLogConfigRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("rum", APIVersion, "CreateOfflineLogConfig")
     
     
@@ -163,6 +165,7 @@ func NewCreateProjectRequest() (request *CreateProjectRequest) {
     request = &CreateProjectRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("rum", APIVersion, "CreateProject")
     
     
@@ -226,6 +229,7 @@ func NewCreateReleaseFileRequest() (request *CreateReleaseFileRequest) {
     request = &CreateReleaseFileRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("rum", APIVersion, "CreateReleaseFile")
     
     
@@ -313,6 +317,7 @@ func NewCreateStarProjectRequest() (request *CreateStarProjectRequest) {
     request = &CreateStarProjectRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("rum", APIVersion, "CreateStarProject")
     
     
@@ -398,6 +403,7 @@ func NewCreateTawInstanceRequest() (request *CreateTawInstanceRequest) {
     request = &CreateTawInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("rum", APIVersion, "CreateTawInstance")
     
     
@@ -451,6 +457,7 @@ func NewCreateWhitelistRequest() (request *CreateWhitelistRequest) {
     request = &CreateWhitelistRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("rum", APIVersion, "CreateWhitelist")
     
     
@@ -536,6 +543,7 @@ func NewDeleteInstanceRequest() (request *DeleteInstanceRequest) {
     request = &DeleteInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("rum", APIVersion, "DeleteInstance")
     
     
@@ -607,6 +615,7 @@ func NewDeleteLogExportRequest() (request *DeleteLogExportRequest) {
     request = &DeleteLogExportRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("rum", APIVersion, "DeleteLogExport")
     
     
@@ -670,6 +679,7 @@ func NewDeleteOfflineLogConfigRequest() (request *DeleteOfflineLogConfigRequest)
     request = &DeleteOfflineLogConfigRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("rum", APIVersion, "DeleteOfflineLogConfig")
     
     
@@ -757,6 +767,7 @@ func NewDeleteOfflineLogRecordRequest() (request *DeleteOfflineLogRecordRequest)
     request = &DeleteOfflineLogRecordRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("rum", APIVersion, "DeleteOfflineLogRecord")
     
     
@@ -804,6 +815,7 @@ func NewDeleteProjectRequest() (request *DeleteProjectRequest) {
     request = &DeleteProjectRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("rum", APIVersion, "DeleteProject")
     
     
@@ -853,6 +865,7 @@ func NewDeleteReleaseFileRequest() (request *DeleteReleaseFileRequest) {
     request = &DeleteReleaseFileRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("rum", APIVersion, "DeleteReleaseFile")
     
     
@@ -940,6 +953,7 @@ func NewDeleteStarProjectRequest() (request *DeleteStarProjectRequest) {
     request = &DeleteStarProjectRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("rum", APIVersion, "DeleteStarProject")
     
     
@@ -1025,6 +1039,7 @@ func NewDeleteWhitelistRequest() (request *DeleteWhitelistRequest) {
     request = &DeleteWhitelistRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("rum", APIVersion, "DeleteWhitelist")
     
     
@@ -1110,6 +1125,7 @@ func NewDescribeDataRequest() (request *DescribeDataRequest) {
     request = &DescribeDataRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("rum", APIVersion, "DescribeData")
     
     
@@ -1199,6 +1215,7 @@ func NewDescribeDataCustomUrlRequest() (request *DescribeDataCustomUrlRequest) {
     request = &DescribeDataCustomUrlRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("rum", APIVersion, "DescribeDataCustomUrl")
     
     
@@ -1288,6 +1305,7 @@ func NewDescribeDataEventUrlRequest() (request *DescribeDataEventUrlRequest) {
     request = &DescribeDataEventUrlRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("rum", APIVersion, "DescribeDataEventUrl")
     
     
@@ -1377,6 +1395,7 @@ func NewDescribeDataFetchProjectRequest() (request *DescribeDataFetchProjectRequ
     request = &DescribeDataFetchProjectRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("rum", APIVersion, "DescribeDataFetchProject")
     
     
@@ -1466,6 +1485,7 @@ func NewDescribeDataFetchUrlRequest() (request *DescribeDataFetchUrlRequest) {
     request = &DescribeDataFetchUrlRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("rum", APIVersion, "DescribeDataFetchUrl")
     
     
@@ -1555,6 +1575,7 @@ func NewDescribeDataFetchUrlInfoRequest() (request *DescribeDataFetchUrlInfoRequ
     request = &DescribeDataFetchUrlInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("rum", APIVersion, "DescribeDataFetchUrlInfo")
     
     
@@ -1644,6 +1665,7 @@ func NewDescribeDataLogUrlInfoRequest() (request *DescribeDataLogUrlInfoRequest)
     request = &DescribeDataLogUrlInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("rum", APIVersion, "DescribeDataLogUrlInfo")
     
     
@@ -1733,6 +1755,7 @@ func NewDescribeDataLogUrlStatisticsRequest() (request *DescribeDataLogUrlStatis
     request = &DescribeDataLogUrlStatisticsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("rum", APIVersion, "DescribeDataLogUrlStatistics")
     
     
@@ -1820,6 +1843,7 @@ func NewDescribeDataPerformancePageRequest() (request *DescribeDataPerformancePa
     request = &DescribeDataPerformancePageRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("rum", APIVersion, "DescribeDataPerformancePage")
     
     
@@ -1909,6 +1933,7 @@ func NewDescribeDataPerformanceProjectRequest() (request *DescribeDataPerformanc
     request = &DescribeDataPerformanceProjectRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("rum", APIVersion, "DescribeDataPerformanceProject")
     
     
@@ -1996,6 +2021,7 @@ func NewDescribeDataPvUrlInfoRequest() (request *DescribeDataPvUrlInfoRequest) {
     request = &DescribeDataPvUrlInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("rum", APIVersion, "DescribeDataPvUrlInfo")
     
     
@@ -2085,6 +2111,7 @@ func NewDescribeDataPvUrlStatisticsRequest() (request *DescribeDataPvUrlStatisti
     request = &DescribeDataPvUrlStatisticsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("rum", APIVersion, "DescribeDataPvUrlStatistics")
     
     
@@ -2174,6 +2201,7 @@ func NewDescribeDataReportCountRequest() (request *DescribeDataReportCountReques
     request = &DescribeDataReportCountRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("rum", APIVersion, "DescribeDataReportCount")
     
     
@@ -2263,6 +2291,7 @@ func NewDescribeDataSetUrlStatisticsRequest() (request *DescribeDataSetUrlStatis
     request = &DescribeDataSetUrlStatisticsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("rum", APIVersion, "DescribeDataSetUrlStatistics")
     
     
@@ -2352,6 +2381,7 @@ func NewDescribeDataStaticProjectRequest() (request *DescribeDataStaticProjectRe
     request = &DescribeDataStaticProjectRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("rum", APIVersion, "DescribeDataStaticProject")
     
     
@@ -2441,6 +2471,7 @@ func NewDescribeDataStaticResourceRequest() (request *DescribeDataStaticResource
     request = &DescribeDataStaticResourceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("rum", APIVersion, "DescribeDataStaticResource")
     
     
@@ -2530,6 +2561,7 @@ func NewDescribeDataStaticUrlRequest() (request *DescribeDataStaticUrlRequest) {
     request = &DescribeDataStaticUrlRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("rum", APIVersion, "DescribeDataStaticUrl")
     
     
@@ -2619,6 +2651,7 @@ func NewDescribeDataWebVitalsPageRequest() (request *DescribeDataWebVitalsPageRe
     request = &DescribeDataWebVitalsPageRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("rum", APIVersion, "DescribeDataWebVitalsPage")
     
     
@@ -2712,6 +2745,7 @@ func NewDescribeErrorRequest() (request *DescribeErrorRequest) {
     request = &DescribeErrorRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("rum", APIVersion, "DescribeError")
     
     
@@ -2797,6 +2831,7 @@ func NewDescribeLogExportsRequest() (request *DescribeLogExportsRequest) {
     request = &DescribeLogExportsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("rum", APIVersion, "DescribeLogExports")
     
     
@@ -2862,6 +2897,7 @@ func NewDescribeLogListRequest() (request *DescribeLogListRequest) {
     request = &DescribeLogListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("rum", APIVersion, "DescribeLogList")
     
     
@@ -2947,6 +2983,7 @@ func NewDescribeOfflineLogConfigsRequest() (request *DescribeOfflineLogConfigsRe
     request = &DescribeOfflineLogConfigsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("rum", APIVersion, "DescribeOfflineLogConfigs")
     
     
@@ -2994,6 +3031,7 @@ func NewDescribeOfflineLogRecordsRequest() (request *DescribeOfflineLogRecordsRe
     request = &DescribeOfflineLogRecordsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("rum", APIVersion, "DescribeOfflineLogRecords")
     
     
@@ -3041,6 +3079,7 @@ func NewDescribeOfflineLogsRequest() (request *DescribeOfflineLogsRequest) {
     request = &DescribeOfflineLogsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("rum", APIVersion, "DescribeOfflineLogs")
     
     
@@ -3088,6 +3127,7 @@ func NewDescribeProjectLimitsRequest() (request *DescribeProjectLimitsRequest) {
     request = &DescribeProjectLimitsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("rum", APIVersion, "DescribeProjectLimits")
     
     
@@ -3177,6 +3217,7 @@ func NewDescribeProjectsRequest() (request *DescribeProjectsRequest) {
     request = &DescribeProjectsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("rum", APIVersion, "DescribeProjects")
     
     
@@ -3242,6 +3283,7 @@ func NewDescribePvListRequest() (request *DescribePvListRequest) {
     request = &DescribePvListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("rum", APIVersion, "DescribePvList")
     
     
@@ -3327,6 +3369,7 @@ func NewDescribeReleaseFileSignRequest() (request *DescribeReleaseFileSignReques
     request = &DescribeReleaseFileSignRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("rum", APIVersion, "DescribeReleaseFileSign")
     
     
@@ -3414,6 +3457,7 @@ func NewDescribeReleaseFilesRequest() (request *DescribeReleaseFilesRequest) {
     request = &DescribeReleaseFilesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("rum", APIVersion, "DescribeReleaseFiles")
     
     
@@ -3501,6 +3545,7 @@ func NewDescribeScoresRequest() (request *DescribeScoresRequest) {
     request = &DescribeScoresRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("rum", APIVersion, "DescribeScores")
     
     
@@ -3586,6 +3631,7 @@ func NewDescribeTawAreasRequest() (request *DescribeTawAreasRequest) {
     request = &DescribeTawAreasRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("rum", APIVersion, "DescribeTawAreas")
     
     
@@ -3639,6 +3685,7 @@ func NewDescribeTawInstancesRequest() (request *DescribeTawInstancesRequest) {
     request = &DescribeTawInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("rum", APIVersion, "DescribeTawInstances")
     
     
@@ -3692,6 +3739,7 @@ func NewDescribeUvListRequest() (request *DescribeUvListRequest) {
     request = &DescribeUvListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("rum", APIVersion, "DescribeUvList")
     
     
@@ -3777,6 +3825,7 @@ func NewDescribeWhitelistsRequest() (request *DescribeWhitelistsRequest) {
     request = &DescribeWhitelistsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("rum", APIVersion, "DescribeWhitelists")
     
     
@@ -3860,6 +3909,7 @@ func NewModifyInstanceRequest() (request *ModifyInstanceRequest) {
     request = &ModifyInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("rum", APIVersion, "ModifyInstance")
     
     
@@ -3929,6 +3979,7 @@ func NewModifyProjectRequest() (request *ModifyProjectRequest) {
     request = &ModifyProjectRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("rum", APIVersion, "ModifyProject")
     
     
@@ -3978,6 +4029,7 @@ func NewModifyProjectLimitRequest() (request *ModifyProjectLimitRequest) {
     request = &ModifyProjectLimitRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("rum", APIVersion, "ModifyProjectLimit")
     
     
@@ -4067,6 +4119,7 @@ func NewResumeInstanceRequest() (request *ResumeInstanceRequest) {
     request = &ResumeInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("rum", APIVersion, "ResumeInstance")
     
     
@@ -4138,6 +4191,7 @@ func NewStopInstanceRequest() (request *StopInstanceRequest) {
     request = &StopInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("rum", APIVersion, "StopInstance")
     
     

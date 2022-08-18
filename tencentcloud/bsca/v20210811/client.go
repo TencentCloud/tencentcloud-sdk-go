@@ -49,6 +49,7 @@ func NewDescribeKBComponentRequest() (request *DescribeKBComponentRequest) {
     request = &DescribeKBComponentRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bsca", APIVersion, "DescribeKBComponent")
     
     
@@ -100,6 +101,7 @@ func NewDescribeKBComponentVulnerabilityRequest() (request *DescribeKBComponentV
     request = &DescribeKBComponentVulnerabilityRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bsca", APIVersion, "DescribeKBComponentVulnerability")
     
     
@@ -153,6 +155,7 @@ func NewDescribeKBLicenseRequest() (request *DescribeKBLicenseRequest) {
     request = &DescribeKBLicenseRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bsca", APIVersion, "DescribeKBLicense")
     
     
@@ -208,6 +211,7 @@ func NewDescribeKBVulnerabilityRequest() (request *DescribeKBVulnerabilityReques
     request = &DescribeKBVulnerabilityRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bsca", APIVersion, "DescribeKBVulnerability")
     
     
@@ -261,6 +265,7 @@ func NewMatchKBPURLListRequest() (request *MatchKBPURLListRequest) {
     request = &MatchKBPURLListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bsca", APIVersion, "MatchKBPURLList")
     
     

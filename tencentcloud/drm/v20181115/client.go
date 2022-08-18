@@ -49,6 +49,7 @@ func NewAddFairPlayPemRequest() (request *AddFairPlayPemRequest) {
     request = &AddFairPlayPemRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("drm", APIVersion, "AddFairPlayPem")
     
     
@@ -110,6 +111,7 @@ func NewCreateEncryptKeysRequest() (request *CreateEncryptKeysRequest) {
     request = &CreateEncryptKeysRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("drm", APIVersion, "CreateEncryptKeys")
     
     
@@ -163,6 +165,7 @@ func NewCreateLicenseRequest() (request *CreateLicenseRequest) {
     request = &CreateLicenseRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("drm", APIVersion, "CreateLicense")
     
     
@@ -220,6 +223,7 @@ func NewDeleteFairPlayPemRequest() (request *DeleteFairPlayPemRequest) {
     request = &DeleteFairPlayPemRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("drm", APIVersion, "DeleteFairPlayPem")
     
     
@@ -281,6 +285,7 @@ func NewDescribeAllKeysRequest() (request *DescribeAllKeysRequest) {
     request = &DescribeAllKeysRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("drm", APIVersion, "DescribeAllKeys")
     
     
@@ -334,6 +339,7 @@ func NewDescribeFairPlayPemRequest() (request *DescribeFairPlayPemRequest) {
     request = &DescribeFairPlayPemRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("drm", APIVersion, "DescribeFairPlayPem")
     
     
@@ -387,6 +393,7 @@ func NewDescribeKeysRequest() (request *DescribeKeysRequest) {
     request = &DescribeKeysRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("drm", APIVersion, "DescribeKeys")
     
     
@@ -444,6 +451,7 @@ func NewModifyFairPlayPemRequest() (request *ModifyFairPlayPemRequest) {
     request = &ModifyFairPlayPemRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("drm", APIVersion, "ModifyFairPlayPem")
     
     
@@ -505,6 +513,7 @@ func NewStartEncryptionRequest() (request *StartEncryptionRequest) {
     request = &StartEncryptionRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("drm", APIVersion, "StartEncryption")
     
     

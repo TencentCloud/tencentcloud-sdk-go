@@ -49,6 +49,7 @@ func NewArchiveKeyRequest() (request *ArchiveKeyRequest) {
     request = &ArchiveKeyRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("kms", APIVersion, "ArchiveKey")
     
     
@@ -112,6 +113,7 @@ func NewAsymmetricRsaDecryptRequest() (request *AsymmetricRsaDecryptRequest) {
     request = &AsymmetricRsaDecryptRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("kms", APIVersion, "AsymmetricRsaDecrypt")
     
     
@@ -173,6 +175,7 @@ func NewAsymmetricSm2DecryptRequest() (request *AsymmetricSm2DecryptRequest) {
     request = &AsymmetricSm2DecryptRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("kms", APIVersion, "AsymmetricSm2Decrypt")
     
     
@@ -236,6 +239,7 @@ func NewBindCloudResourceRequest() (request *BindCloudResourceRequest) {
     request = &BindCloudResourceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("kms", APIVersion, "BindCloudResource")
     
     
@@ -295,6 +299,7 @@ func NewCancelKeyArchiveRequest() (request *CancelKeyArchiveRequest) {
     request = &CancelKeyArchiveRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("kms", APIVersion, "CancelKeyArchive")
     
     
@@ -356,6 +361,7 @@ func NewCancelKeyDeletionRequest() (request *CancelKeyDeletionRequest) {
     request = &CancelKeyDeletionRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("kms", APIVersion, "CancelKeyDeletion")
     
     
@@ -413,6 +419,7 @@ func NewCreateKeyRequest() (request *CreateKeyRequest) {
     request = &CreateKeyRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("kms", APIVersion, "CreateKey")
     
     
@@ -486,6 +493,7 @@ func NewCreateWhiteBoxKeyRequest() (request *CreateWhiteBoxKeyRequest) {
     request = &CreateWhiteBoxKeyRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("kms", APIVersion, "CreateWhiteBoxKey")
     
     
@@ -549,6 +557,7 @@ func NewDecryptRequest() (request *DecryptRequest) {
     request = &DecryptRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("kms", APIVersion, "Decrypt")
     
     
@@ -608,6 +617,7 @@ func NewDeleteImportedKeyMaterialRequest() (request *DeleteImportedKeyMaterialRe
     request = &DeleteImportedKeyMaterialRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("kms", APIVersion, "DeleteImportedKeyMaterial")
     
     
@@ -669,6 +679,7 @@ func NewDeleteWhiteBoxKeyRequest() (request *DeleteWhiteBoxKeyRequest) {
     request = &DeleteWhiteBoxKeyRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("kms", APIVersion, "DeleteWhiteBoxKey")
     
     
@@ -726,6 +737,7 @@ func NewDescribeKeyRequest() (request *DescribeKeyRequest) {
     request = &DescribeKeyRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("kms", APIVersion, "DescribeKey")
     
     
@@ -781,6 +793,7 @@ func NewDescribeKeysRequest() (request *DescribeKeysRequest) {
     request = &DescribeKeysRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("kms", APIVersion, "DescribeKeys")
     
     
@@ -838,6 +851,7 @@ func NewDescribeWhiteBoxDecryptKeyRequest() (request *DescribeWhiteBoxDecryptKey
     request = &DescribeWhiteBoxDecryptKeyRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("kms", APIVersion, "DescribeWhiteBoxDecryptKey")
     
     
@@ -893,6 +907,7 @@ func NewDescribeWhiteBoxDeviceFingerprintsRequest() (request *DescribeWhiteBoxDe
     request = &DescribeWhiteBoxDeviceFingerprintsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("kms", APIVersion, "DescribeWhiteBoxDeviceFingerprints")
     
     
@@ -948,6 +963,7 @@ func NewDescribeWhiteBoxKeyRequest() (request *DescribeWhiteBoxKeyRequest) {
     request = &DescribeWhiteBoxKeyRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("kms", APIVersion, "DescribeWhiteBoxKey")
     
     
@@ -1003,6 +1019,7 @@ func NewDescribeWhiteBoxKeyDetailsRequest() (request *DescribeWhiteBoxKeyDetails
     request = &DescribeWhiteBoxKeyDetailsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("kms", APIVersion, "DescribeWhiteBoxKeyDetails")
     
     
@@ -1056,6 +1073,7 @@ func NewDescribeWhiteBoxServiceStatusRequest() (request *DescribeWhiteBoxService
     request = &DescribeWhiteBoxServiceStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("kms", APIVersion, "DescribeWhiteBoxServiceStatus")
     
     
@@ -1107,6 +1125,7 @@ func NewDisableKeyRequest() (request *DisableKeyRequest) {
     request = &DisableKeyRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("kms", APIVersion, "DisableKey")
     
     
@@ -1168,6 +1187,7 @@ func NewDisableKeyRotationRequest() (request *DisableKeyRotationRequest) {
     request = &DisableKeyRotationRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("kms", APIVersion, "DisableKeyRotation")
     
     
@@ -1223,6 +1243,7 @@ func NewDisableKeysRequest() (request *DisableKeysRequest) {
     request = &DisableKeysRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("kms", APIVersion, "DisableKeys")
     
     
@@ -1286,6 +1307,7 @@ func NewDisableWhiteBoxKeyRequest() (request *DisableWhiteBoxKeyRequest) {
     request = &DisableWhiteBoxKeyRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("kms", APIVersion, "DisableWhiteBoxKey")
     
     
@@ -1341,6 +1363,7 @@ func NewDisableWhiteBoxKeysRequest() (request *DisableWhiteBoxKeysRequest) {
     request = &DisableWhiteBoxKeysRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("kms", APIVersion, "DisableWhiteBoxKeys")
     
     
@@ -1400,6 +1423,7 @@ func NewEnableKeyRequest() (request *EnableKeyRequest) {
     request = &EnableKeyRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("kms", APIVersion, "EnableKey")
     
     
@@ -1459,6 +1483,7 @@ func NewEnableKeyRotationRequest() (request *EnableKeyRotationRequest) {
     request = &EnableKeyRotationRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("kms", APIVersion, "EnableKeyRotation")
     
     
@@ -1520,6 +1545,7 @@ func NewEnableKeysRequest() (request *EnableKeysRequest) {
     request = &EnableKeysRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("kms", APIVersion, "EnableKeys")
     
     
@@ -1581,6 +1607,7 @@ func NewEnableWhiteBoxKeyRequest() (request *EnableWhiteBoxKeyRequest) {
     request = &EnableWhiteBoxKeyRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("kms", APIVersion, "EnableWhiteBoxKey")
     
     
@@ -1636,6 +1663,7 @@ func NewEnableWhiteBoxKeysRequest() (request *EnableWhiteBoxKeysRequest) {
     request = &EnableWhiteBoxKeysRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("kms", APIVersion, "EnableWhiteBoxKeys")
     
     
@@ -1695,6 +1723,7 @@ func NewEncryptRequest() (request *EncryptRequest) {
     request = &EncryptRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("kms", APIVersion, "Encrypt")
     
     
@@ -1756,6 +1785,7 @@ func NewEncryptByWhiteBoxRequest() (request *EncryptByWhiteBoxRequest) {
     request = &EncryptByWhiteBoxRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("kms", APIVersion, "EncryptByWhiteBox")
     
     
@@ -1815,6 +1845,7 @@ func NewGenerateDataKeyRequest() (request *GenerateDataKeyRequest) {
     request = &GenerateDataKeyRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("kms", APIVersion, "GenerateDataKey")
     
     
@@ -1876,6 +1907,7 @@ func NewGenerateRandomRequest() (request *GenerateRandomRequest) {
     request = &GenerateRandomRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("kms", APIVersion, "GenerateRandom")
     
     
@@ -1927,6 +1959,7 @@ func NewGetKeyRotationStatusRequest() (request *GetKeyRotationStatusRequest) {
     request = &GetKeyRotationStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("kms", APIVersion, "GetKeyRotationStatus")
     
     
@@ -1982,6 +2015,7 @@ func NewGetParametersForImportRequest() (request *GetParametersForImportRequest)
     request = &GetParametersForImportRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("kms", APIVersion, "GetParametersForImport")
     
     
@@ -2039,6 +2073,7 @@ func NewGetPublicKeyRequest() (request *GetPublicKeyRequest) {
     request = &GetPublicKeyRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("kms", APIVersion, "GetPublicKey")
     
     
@@ -2096,6 +2131,7 @@ func NewGetRegionsRequest() (request *GetRegionsRequest) {
     request = &GetRegionsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("kms", APIVersion, "GetRegions")
     
     
@@ -2143,6 +2179,7 @@ func NewGetServiceStatusRequest() (request *GetServiceStatusRequest) {
     request = &GetServiceStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("kms", APIVersion, "GetServiceStatus")
     
     
@@ -2192,6 +2229,7 @@ func NewImportKeyMaterialRequest() (request *ImportKeyMaterialRequest) {
     request = &ImportKeyMaterialRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("kms", APIVersion, "ImportKeyMaterial")
     
     
@@ -2261,6 +2299,7 @@ func NewListAlgorithmsRequest() (request *ListAlgorithmsRequest) {
     request = &ListAlgorithmsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("kms", APIVersion, "ListAlgorithms")
     
     
@@ -2310,6 +2349,7 @@ func NewListKeyDetailRequest() (request *ListKeyDetailRequest) {
     request = &ListKeyDetailRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("kms", APIVersion, "ListKeyDetail")
     
     
@@ -2363,6 +2403,7 @@ func NewListKeysRequest() (request *ListKeysRequest) {
     request = &ListKeysRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("kms", APIVersion, "ListKeys")
     
     
@@ -2416,6 +2457,7 @@ func NewOverwriteWhiteBoxDeviceFingerprintsRequest() (request *OverwriteWhiteBox
     request = &OverwriteWhiteBoxDeviceFingerprintsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("kms", APIVersion, "OverwriteWhiteBoxDeviceFingerprints")
     
     
@@ -2475,6 +2517,7 @@ func NewReEncryptRequest() (request *ReEncryptRequest) {
     request = &ReEncryptRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("kms", APIVersion, "ReEncrypt")
     
     
@@ -2534,6 +2577,7 @@ func NewScheduleKeyDeletionRequest() (request *ScheduleKeyDeletionRequest) {
     request = &ScheduleKeyDeletionRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("kms", APIVersion, "ScheduleKeyDeletion")
     
     
@@ -2597,6 +2641,7 @@ func NewSignByAsymmetricKeyRequest() (request *SignByAsymmetricKeyRequest) {
     request = &SignByAsymmetricKeyRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("kms", APIVersion, "SignByAsymmetricKey")
     
     
@@ -2660,6 +2705,7 @@ func NewUnbindCloudResourceRequest() (request *UnbindCloudResourceRequest) {
     request = &UnbindCloudResourceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("kms", APIVersion, "UnbindCloudResource")
     
     
@@ -2719,6 +2765,7 @@ func NewUpdateAliasRequest() (request *UpdateAliasRequest) {
     request = &UpdateAliasRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("kms", APIVersion, "UpdateAlias")
     
     
@@ -2780,6 +2827,7 @@ func NewUpdateKeyDescriptionRequest() (request *UpdateKeyDescriptionRequest) {
     request = &UpdateKeyDescriptionRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("kms", APIVersion, "UpdateKeyDescription")
     
     
@@ -2837,6 +2885,7 @@ func NewVerifyByAsymmetricKeyRequest() (request *VerifyByAsymmetricKeyRequest) {
     request = &VerifyByAsymmetricKeyRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("kms", APIVersion, "VerifyByAsymmetricKey")
     
     

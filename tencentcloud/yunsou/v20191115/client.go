@@ -49,6 +49,7 @@ func NewDataManipulationRequest() (request *DataManipulationRequest) {
     request = &DataManipulationRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("yunsou", APIVersion, "DataManipulation")
     
     
@@ -110,6 +111,7 @@ func NewDataSearchRequest() (request *DataSearchRequest) {
     request = &DataSearchRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("yunsou", APIVersion, "DataSearch")
     
     

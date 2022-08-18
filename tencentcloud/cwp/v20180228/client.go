@@ -49,6 +49,7 @@ func NewCancelIgnoreVulRequest() (request *CancelIgnoreVulRequest) {
     request = &CancelIgnoreVulRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "CancelIgnoreVul")
     
     
@@ -106,6 +107,7 @@ func NewChangeRuleEventsIgnoreStatusRequest() (request *ChangeRuleEventsIgnoreSt
     request = &ChangeRuleEventsIgnoreStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "ChangeRuleEventsIgnoreStatus")
     
     
@@ -163,6 +165,7 @@ func NewCheckBashRuleParamsRequest() (request *CheckBashRuleParamsRequest) {
     request = &CheckBashRuleParamsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "CheckBashRuleParams")
     
     
@@ -218,6 +221,7 @@ func NewCreateBaselineStrategyRequest() (request *CreateBaselineStrategyRequest)
     request = &CreateBaselineStrategyRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "CreateBaselineStrategy")
     
     
@@ -285,6 +289,7 @@ func NewCreateEmergencyVulScanRequest() (request *CreateEmergencyVulScanRequest)
     request = &CreateEmergencyVulScanRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "CreateEmergencyVulScan")
     
     
@@ -350,6 +355,7 @@ func NewCreateProtectServerRequest() (request *CreateProtectServerRequest) {
     request = &CreateProtectServerRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "CreateProtectServer")
     
     
@@ -407,6 +413,7 @@ func NewCreateScanMalwareSettingRequest() (request *CreateScanMalwareSettingRequ
     request = &CreateScanMalwareSettingRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "CreateScanMalwareSetting")
     
     
@@ -480,6 +487,7 @@ func NewCreateSearchLogRequest() (request *CreateSearchLogRequest) {
     request = &CreateSearchLogRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "CreateSearchLog")
     
     
@@ -533,6 +541,7 @@ func NewCreateSearchTemplateRequest() (request *CreateSearchTemplateRequest) {
     request = &CreateSearchTemplateRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "CreateSearchTemplate")
     
     
@@ -590,6 +599,7 @@ func NewDeleteAttackLogsRequest() (request *DeleteAttackLogsRequest) {
     request = &DeleteAttackLogsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "DeleteAttackLogs")
     
     
@@ -653,6 +663,7 @@ func NewDeleteBaselineStrategyRequest() (request *DeleteBaselineStrategyRequest)
     request = &DeleteBaselineStrategyRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "DeleteBaselineStrategy")
     
     
@@ -712,6 +723,7 @@ func NewDeleteBashEventsRequest() (request *DeleteBashEventsRequest) {
     request = &DeleteBashEventsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "DeleteBashEvents")
     
     
@@ -777,6 +789,7 @@ func NewDeleteBashRulesRequest() (request *DeleteBashRulesRequest) {
     request = &DeleteBashRulesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "DeleteBashRules")
     
     
@@ -842,6 +855,7 @@ func NewDeleteBruteAttacksRequest() (request *DeleteBruteAttacksRequest) {
     request = &DeleteBruteAttacksRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "DeleteBruteAttacks")
     
     
@@ -901,6 +915,7 @@ func NewDeleteLoginWhiteListRequest() (request *DeleteLoginWhiteListRequest) {
     request = &DeleteLoginWhiteListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "DeleteLoginWhiteList")
     
     
@@ -960,6 +975,7 @@ func NewDeleteMachineRequest() (request *DeleteMachineRequest) {
     request = &DeleteMachineRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "DeleteMachine")
     
     
@@ -1029,6 +1045,7 @@ func NewDeleteMachineTagRequest() (request *DeleteMachineTagRequest) {
     request = &DeleteMachineTagRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "DeleteMachineTag")
     
     
@@ -1088,6 +1105,7 @@ func NewDeleteMaliciousRequestsRequest() (request *DeleteMaliciousRequestsReques
     request = &DeleteMaliciousRequestsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "DeleteMaliciousRequests")
     
     
@@ -1145,6 +1163,7 @@ func NewDeleteMalwareScanTaskRequest() (request *DeleteMalwareScanTaskRequest) {
     request = &DeleteMalwareScanTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "DeleteMalwareScanTask")
     
     
@@ -1204,6 +1223,7 @@ func NewDeleteMalwaresRequest() (request *DeleteMalwaresRequest) {
     request = &DeleteMalwaresRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "DeleteMalwares")
     
     
@@ -1263,6 +1283,7 @@ func NewDeleteNonlocalLoginPlacesRequest() (request *DeleteNonlocalLoginPlacesRe
     request = &DeleteNonlocalLoginPlacesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "DeleteNonlocalLoginPlaces")
     
     
@@ -1328,6 +1349,7 @@ func NewDeletePrivilegeEventsRequest() (request *DeletePrivilegeEventsRequest) {
     request = &DeletePrivilegeEventsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "DeletePrivilegeEvents")
     
     
@@ -1389,6 +1411,7 @@ func NewDeletePrivilegeRulesRequest() (request *DeletePrivilegeRulesRequest) {
     request = &DeletePrivilegeRulesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "DeletePrivilegeRules")
     
     
@@ -1458,6 +1481,7 @@ func NewDeleteProtectDirRequest() (request *DeleteProtectDirRequest) {
     request = &DeleteProtectDirRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "DeleteProtectDir")
     
     
@@ -1523,6 +1547,7 @@ func NewDeleteReverseShellEventsRequest() (request *DeleteReverseShellEventsRequ
     request = &DeleteReverseShellEventsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "DeleteReverseShellEvents")
     
     
@@ -1586,6 +1611,7 @@ func NewDeleteReverseShellRulesRequest() (request *DeleteReverseShellRulesReques
     request = &DeleteReverseShellRulesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "DeleteReverseShellRules")
     
     
@@ -1657,6 +1683,7 @@ func NewDeleteSearchTemplateRequest() (request *DeleteSearchTemplateRequest) {
     request = &DeleteSearchTemplateRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "DeleteSearchTemplate")
     
     
@@ -1712,6 +1739,7 @@ func NewDeleteTagsRequest() (request *DeleteTagsRequest) {
     request = &DeleteTagsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "DeleteTags")
     
     
@@ -1767,6 +1795,7 @@ func NewDeleteWebPageEventLogRequest() (request *DeleteWebPageEventLogRequest) {
     request = &DeleteWebPageEventLogRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "DeleteWebPageEventLog")
     
     
@@ -1824,6 +1853,7 @@ func NewDescribeAccountStatisticsRequest() (request *DescribeAccountStatisticsRe
     request = &DescribeAccountStatisticsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeAccountStatistics")
     
     
@@ -1883,6 +1913,7 @@ func NewDescribeAssetAppListRequest() (request *DescribeAssetAppListRequest) {
     request = &DescribeAssetAppListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeAssetAppList")
     
     
@@ -1944,6 +1975,7 @@ func NewDescribeAssetAppProcessListRequest() (request *DescribeAssetAppProcessLi
     request = &DescribeAssetAppProcessListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeAssetAppProcessList")
     
     
@@ -1997,6 +2029,7 @@ func NewDescribeAssetCoreModuleInfoRequest() (request *DescribeAssetCoreModuleIn
     request = &DescribeAssetCoreModuleInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeAssetCoreModuleInfo")
     
     
@@ -2050,6 +2083,7 @@ func NewDescribeAssetCoreModuleListRequest() (request *DescribeAssetCoreModuleLi
     request = &DescribeAssetCoreModuleListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeAssetCoreModuleList")
     
     
@@ -2111,6 +2145,7 @@ func NewDescribeAssetDatabaseInfoRequest() (request *DescribeAssetDatabaseInfoRe
     request = &DescribeAssetDatabaseInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeAssetDatabaseInfo")
     
     
@@ -2164,6 +2199,7 @@ func NewDescribeAssetDatabaseListRequest() (request *DescribeAssetDatabaseListRe
     request = &DescribeAssetDatabaseListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeAssetDatabaseList")
     
     
@@ -2225,6 +2261,7 @@ func NewDescribeAssetEnvListRequest() (request *DescribeAssetEnvListRequest) {
     request = &DescribeAssetEnvListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeAssetEnvList")
     
     
@@ -2286,6 +2323,7 @@ func NewDescribeAssetInfoRequest() (request *DescribeAssetInfoRequest) {
     request = &DescribeAssetInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeAssetInfo")
     
     
@@ -2339,6 +2377,7 @@ func NewDescribeAssetInitServiceListRequest() (request *DescribeAssetInitService
     request = &DescribeAssetInitServiceListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeAssetInitServiceList")
     
     
@@ -2394,6 +2433,7 @@ func NewDescribeAssetJarInfoRequest() (request *DescribeAssetJarInfoRequest) {
     request = &DescribeAssetJarInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeAssetJarInfo")
     
     
@@ -2447,6 +2487,7 @@ func NewDescribeAssetJarListRequest() (request *DescribeAssetJarListRequest) {
     request = &DescribeAssetJarListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeAssetJarList")
     
     
@@ -2508,6 +2549,7 @@ func NewDescribeAssetMachineDetailRequest() (request *DescribeAssetMachineDetail
     request = &DescribeAssetMachineDetailRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeAssetMachineDetail")
     
     
@@ -2561,6 +2603,7 @@ func NewDescribeAssetMachineListRequest() (request *DescribeAssetMachineListRequ
     request = &DescribeAssetMachineListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeAssetMachineList")
     
     
@@ -2616,6 +2659,7 @@ func NewDescribeAssetPlanTaskListRequest() (request *DescribeAssetPlanTaskListRe
     request = &DescribeAssetPlanTaskListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeAssetPlanTaskList")
     
     
@@ -2677,6 +2721,7 @@ func NewDescribeAssetPortInfoListRequest() (request *DescribeAssetPortInfoListRe
     request = &DescribeAssetPortInfoListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeAssetPortInfoList")
     
     
@@ -2732,6 +2777,7 @@ func NewDescribeAssetProcessInfoListRequest() (request *DescribeAssetProcessInfo
     request = &DescribeAssetProcessInfoListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeAssetProcessInfoList")
     
     
@@ -2787,6 +2833,7 @@ func NewDescribeAssetRecentMachineInfoRequest() (request *DescribeAssetRecentMac
     request = &DescribeAssetRecentMachineInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeAssetRecentMachineInfo")
     
     
@@ -2846,6 +2893,7 @@ func NewDescribeAssetSystemPackageListRequest() (request *DescribeAssetSystemPac
     request = &DescribeAssetSystemPackageListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeAssetSystemPackageList")
     
     
@@ -2899,6 +2947,7 @@ func NewDescribeAssetUserInfoRequest() (request *DescribeAssetUserInfoRequest) {
     request = &DescribeAssetUserInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeAssetUserInfo")
     
     
@@ -2950,6 +2999,7 @@ func NewDescribeAssetUserListRequest() (request *DescribeAssetUserListRequest) {
     request = &DescribeAssetUserListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeAssetUserList")
     
     
@@ -3005,6 +3055,7 @@ func NewDescribeAssetWebAppListRequest() (request *DescribeAssetWebAppListReques
     request = &DescribeAssetWebAppListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeAssetWebAppList")
     
     
@@ -3060,6 +3111,7 @@ func NewDescribeAssetWebAppPluginListRequest() (request *DescribeAssetWebAppPlug
     request = &DescribeAssetWebAppPluginListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeAssetWebAppPluginList")
     
     
@@ -3113,6 +3165,7 @@ func NewDescribeAssetWebFrameListRequest() (request *DescribeAssetWebFrameListRe
     request = &DescribeAssetWebFrameListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeAssetWebFrameList")
     
     
@@ -3166,6 +3219,7 @@ func NewDescribeAssetWebLocationInfoRequest() (request *DescribeAssetWebLocation
     request = &DescribeAssetWebLocationInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeAssetWebLocationInfo")
     
     
@@ -3219,6 +3273,7 @@ func NewDescribeAssetWebLocationListRequest() (request *DescribeAssetWebLocation
     request = &DescribeAssetWebLocationListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeAssetWebLocationList")
     
     
@@ -3272,6 +3327,7 @@ func NewDescribeAssetWebServiceInfoListRequest() (request *DescribeAssetWebServi
     request = &DescribeAssetWebServiceInfoListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeAssetWebServiceInfoList")
     
     
@@ -3333,6 +3389,7 @@ func NewDescribeAssetWebServiceProcessListRequest() (request *DescribeAssetWebSe
     request = &DescribeAssetWebServiceProcessListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeAssetWebServiceProcessList")
     
     
@@ -3386,6 +3443,7 @@ func NewDescribeAttackLogInfoRequest() (request *DescribeAttackLogInfoRequest) {
     request = &DescribeAttackLogInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeAttackLogInfo")
     
     
@@ -3449,6 +3507,7 @@ func NewDescribeAttackLogsRequest() (request *DescribeAttackLogsRequest) {
     request = &DescribeAttackLogsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeAttackLogs")
     
     
@@ -3510,6 +3569,7 @@ func NewDescribeAttackVulTypeListRequest() (request *DescribeAttackVulTypeListRe
     request = &DescribeAttackVulTypeListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeAttackVulTypeList")
     
     
@@ -3557,6 +3617,7 @@ func NewDescribeAvailableExpertServiceDetailRequest() (request *DescribeAvailabl
     request = &DescribeAvailableExpertServiceDetailRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeAvailableExpertServiceDetail")
     
     
@@ -3608,6 +3669,7 @@ func NewDescribeBanModeRequest() (request *DescribeBanModeRequest) {
     request = &DescribeBanModeRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeBanMode")
     
     
@@ -3665,6 +3727,7 @@ func NewDescribeBanRegionsRequest() (request *DescribeBanRegionsRequest) {
     request = &DescribeBanRegionsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeBanRegions")
     
     
@@ -3722,6 +3785,7 @@ func NewDescribeBanStatusRequest() (request *DescribeBanStatusRequest) {
     request = &DescribeBanStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeBanStatus")
     
     
@@ -3783,6 +3847,7 @@ func NewDescribeBanWhiteListRequest() (request *DescribeBanWhiteListRequest) {
     request = &DescribeBanWhiteListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeBanWhiteList")
     
     
@@ -3844,6 +3909,7 @@ func NewDescribeBaselineAnalysisDataRequest() (request *DescribeBaselineAnalysis
     request = &DescribeBaselineAnalysisDataRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeBaselineAnalysisData")
     
     
@@ -3903,6 +3969,7 @@ func NewDescribeBaselineBasicInfoRequest() (request *DescribeBaselineBasicInfoRe
     request = &DescribeBaselineBasicInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeBaselineBasicInfo")
     
     
@@ -3960,6 +4027,7 @@ func NewDescribeBaselineDetailRequest() (request *DescribeBaselineDetailRequest)
     request = &DescribeBaselineDetailRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeBaselineDetail")
     
     
@@ -4017,6 +4085,7 @@ func NewDescribeBaselineEffectHostListRequest() (request *DescribeBaselineEffect
     request = &DescribeBaselineEffectHostListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeBaselineEffectHostList")
     
     
@@ -4074,6 +4143,7 @@ func NewDescribeBaselineHostTopRequest() (request *DescribeBaselineHostTopReques
     request = &DescribeBaselineHostTopRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeBaselineHostTop")
     
     
@@ -4133,6 +4203,7 @@ func NewDescribeBaselineListRequest() (request *DescribeBaselineListRequest) {
     request = &DescribeBaselineListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeBaselineList")
     
     
@@ -4192,6 +4263,7 @@ func NewDescribeBaselineRuleRequest() (request *DescribeBaselineRuleRequest) {
     request = &DescribeBaselineRuleRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeBaselineRule")
     
     
@@ -4249,6 +4321,7 @@ func NewDescribeBaselineScanScheduleRequest() (request *DescribeBaselineScanSche
     request = &DescribeBaselineScanScheduleRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeBaselineScanSchedule")
     
     
@@ -4308,6 +4381,7 @@ func NewDescribeBaselineStrategyDetailRequest() (request *DescribeBaselineStrate
     request = &DescribeBaselineStrategyDetailRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeBaselineStrategyDetail")
     
     
@@ -4367,6 +4441,7 @@ func NewDescribeBaselineStrategyListRequest() (request *DescribeBaselineStrategy
     request = &DescribeBaselineStrategyListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeBaselineStrategyList")
     
     
@@ -4426,6 +4501,7 @@ func NewDescribeBaselineTopRequest() (request *DescribeBaselineTopRequest) {
     request = &DescribeBaselineTopRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeBaselineTop")
     
     
@@ -4485,6 +4561,7 @@ func NewDescribeBashEventsRequest() (request *DescribeBashEventsRequest) {
     request = &DescribeBashEventsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeBashEvents")
     
     
@@ -4548,6 +4625,7 @@ func NewDescribeBashRulesRequest() (request *DescribeBashRulesRequest) {
     request = &DescribeBashRulesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeBashRules")
     
     
@@ -4611,6 +4689,7 @@ func NewDescribeBruteAttackListRequest() (request *DescribeBruteAttackListReques
     request = &DescribeBruteAttackListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeBruteAttackList")
     
     
@@ -4672,6 +4751,7 @@ func NewDescribeBruteAttackRulesRequest() (request *DescribeBruteAttackRulesRequ
     request = &DescribeBruteAttackRulesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeBruteAttackRules")
     
     
@@ -4719,6 +4799,7 @@ func NewDescribeComponentStatisticsRequest() (request *DescribeComponentStatisti
     request = &DescribeComponentStatisticsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeComponentStatistics")
     
     
@@ -4778,6 +4859,7 @@ func NewDescribeESAggregationsRequest() (request *DescribeESAggregationsRequest)
     request = &DescribeESAggregationsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeESAggregations")
     
     
@@ -4833,6 +4915,7 @@ func NewDescribeESHitsRequest() (request *DescribeESHitsRequest) {
     request = &DescribeESHitsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeESHits")
     
     
@@ -4890,6 +4973,7 @@ func NewDescribeEmergencyResponseListRequest() (request *DescribeEmergencyRespon
     request = &DescribeEmergencyResponseListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeEmergencyResponseList")
     
     
@@ -4943,6 +5027,7 @@ func NewDescribeEmergencyVulListRequest() (request *DescribeEmergencyVulListRequ
     request = &DescribeEmergencyVulListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeEmergencyVulList")
     
     
@@ -5000,6 +5085,7 @@ func NewDescribeExpertServiceListRequest() (request *DescribeExpertServiceListRe
     request = &DescribeExpertServiceListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeExpertServiceList")
     
     
@@ -5053,6 +5139,7 @@ func NewDescribeExpertServiceOrderListRequest() (request *DescribeExpertServiceO
     request = &DescribeExpertServiceOrderListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeExpertServiceOrderList")
     
     
@@ -5106,6 +5193,7 @@ func NewDescribeExportMachinesRequest() (request *DescribeExportMachinesRequest)
     request = &DescribeExportMachinesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeExportMachines")
     
     
@@ -5163,6 +5251,7 @@ func NewDescribeGeneralStatRequest() (request *DescribeGeneralStatRequest) {
     request = &DescribeGeneralStatRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeGeneralStat")
     
     
@@ -5220,6 +5309,7 @@ func NewDescribeHistoryAccountsRequest() (request *DescribeHistoryAccountsReques
     request = &DescribeHistoryAccountsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeHistoryAccounts")
     
     
@@ -5279,6 +5369,7 @@ func NewDescribeHistoryServiceRequest() (request *DescribeHistoryServiceRequest)
     request = &DescribeHistoryServiceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeHistoryService")
     
     
@@ -5326,6 +5417,7 @@ func NewDescribeHostLoginListRequest() (request *DescribeHostLoginListRequest) {
     request = &DescribeHostLoginListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeHostLoginList")
     
     
@@ -5385,6 +5477,7 @@ func NewDescribeIgnoreBaselineRuleRequest() (request *DescribeIgnoreBaselineRule
     request = &DescribeIgnoreBaselineRuleRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeIgnoreBaselineRule")
     
     
@@ -5442,6 +5535,7 @@ func NewDescribeIgnoreRuleEffectHostListRequest() (request *DescribeIgnoreRuleEf
     request = &DescribeIgnoreRuleEffectHostListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeIgnoreRuleEffectHostList")
     
     
@@ -5501,6 +5595,7 @@ func NewDescribeImportMachineInfoRequest() (request *DescribeImportMachineInfoRe
     request = &DescribeImportMachineInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeImportMachineInfo")
     
     
@@ -5558,6 +5653,7 @@ func NewDescribeIndexListRequest() (request *DescribeIndexListRequest) {
     request = &DescribeIndexListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeIndexList")
     
     
@@ -5607,6 +5703,7 @@ func NewDescribeLogStorageStatisticRequest() (request *DescribeLogStorageStatist
     request = &DescribeLogStorageStatisticRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeLogStorageStatistic")
     
     
@@ -5654,6 +5751,7 @@ func NewDescribeLoginWhiteCombinedListRequest() (request *DescribeLoginWhiteComb
     request = &DescribeLoginWhiteCombinedListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeLoginWhiteCombinedList")
     
     
@@ -5711,6 +5809,7 @@ func NewDescribeLoginWhiteListRequest() (request *DescribeLoginWhiteListRequest)
     request = &DescribeLoginWhiteListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeLoginWhiteList")
     
     
@@ -5768,6 +5867,7 @@ func NewDescribeMachineInfoRequest() (request *DescribeMachineInfoRequest) {
     request = &DescribeMachineInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeMachineInfo")
     
     
@@ -5825,6 +5925,7 @@ func NewDescribeMachineListRequest() (request *DescribeMachineListRequest) {
     request = &DescribeMachineListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeMachineList")
     
     
@@ -5886,6 +5987,7 @@ func NewDescribeMachineOsListRequest() (request *DescribeMachineOsListRequest) {
     request = &DescribeMachineOsListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeMachineOsList")
     
     
@@ -5933,6 +6035,7 @@ func NewDescribeMachineRegionsRequest() (request *DescribeMachineRegionsRequest)
     request = &DescribeMachineRegionsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeMachineRegions")
     
     
@@ -5988,6 +6091,7 @@ func NewDescribeMachinesRequest() (request *DescribeMachinesRequest) {
     request = &DescribeMachinesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeMachines")
     
     
@@ -6047,6 +6151,7 @@ func NewDescribeMalWareListRequest() (request *DescribeMalWareListRequest) {
     request = &DescribeMalWareListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeMalWareList")
     
     
@@ -6108,6 +6213,7 @@ func NewDescribeMaliciousRequestWhiteListRequest() (request *DescribeMaliciousRe
     request = &DescribeMaliciousRequestWhiteListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeMaliciousRequestWhiteList")
     
     
@@ -6167,6 +6273,7 @@ func NewDescribeMalwareFileRequest() (request *DescribeMalwareFileRequest) {
     request = &DescribeMalwareFileRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeMalwareFile")
     
     
@@ -6230,6 +6337,7 @@ func NewDescribeMalwareInfoRequest() (request *DescribeMalwareInfoRequest) {
     request = &DescribeMalwareInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeMalwareInfo")
     
     
@@ -6293,6 +6401,7 @@ func NewDescribeMalwareRiskWarningRequest() (request *DescribeMalwareRiskWarning
     request = &DescribeMalwareRiskWarningRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeMalwareRiskWarning")
     
     
@@ -6340,6 +6449,7 @@ func NewDescribeMalwareTimingScanSettingRequest() (request *DescribeMalwareTimin
     request = &DescribeMalwareTimingScanSettingRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeMalwareTimingScanSetting")
     
     
@@ -6387,6 +6497,7 @@ func NewDescribeMonthInspectionReportRequest() (request *DescribeMonthInspection
     request = &DescribeMonthInspectionReportRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeMonthInspectionReport")
     
     
@@ -6448,6 +6559,7 @@ func NewDescribeOpenPortStatisticsRequest() (request *DescribeOpenPortStatistics
     request = &DescribeOpenPortStatisticsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeOpenPortStatistics")
     
     
@@ -6505,6 +6617,7 @@ func NewDescribeOverviewStatisticsRequest() (request *DescribeOverviewStatistics
     request = &DescribeOverviewStatisticsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeOverviewStatistics")
     
     
@@ -6558,6 +6671,7 @@ func NewDescribePrivilegeEventsRequest() (request *DescribePrivilegeEventsReques
     request = &DescribePrivilegeEventsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "DescribePrivilegeEvents")
     
     
@@ -6621,6 +6735,7 @@ func NewDescribePrivilegeRulesRequest() (request *DescribePrivilegeRulesRequest)
     request = &DescribePrivilegeRulesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "DescribePrivilegeRules")
     
     
@@ -6684,6 +6799,7 @@ func NewDescribeProVersionInfoRequest() (request *DescribeProVersionInfoRequest)
     request = &DescribeProVersionInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeProVersionInfo")
     
     
@@ -6731,6 +6847,7 @@ func NewDescribeProVersionStatusRequest() (request *DescribeProVersionStatusRequ
     request = &DescribeProVersionStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeProVersionStatus")
     
     
@@ -6790,6 +6907,7 @@ func NewDescribeProcessStatisticsRequest() (request *DescribeProcessStatisticsRe
     request = &DescribeProcessStatisticsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeProcessStatistics")
     
     
@@ -6847,6 +6965,7 @@ func NewDescribeProtectDirListRequest() (request *DescribeProtectDirListRequest)
     request = &DescribeProtectDirListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeProtectDirList")
     
     
@@ -6906,6 +7025,7 @@ func NewDescribeProtectDirRelatedServerRequest() (request *DescribeProtectDirRel
     request = &DescribeProtectDirRelatedServerRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeProtectDirRelatedServer")
     
     
@@ -6959,6 +7079,7 @@ func NewDescribeProtectNetListRequest() (request *DescribeProtectNetListRequest)
     request = &DescribeProtectNetListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeProtectNetList")
     
     
@@ -7012,6 +7133,7 @@ func NewDescribeReverseShellEventsRequest() (request *DescribeReverseShellEvents
     request = &DescribeReverseShellEventsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeReverseShellEvents")
     
     
@@ -7075,6 +7197,7 @@ func NewDescribeReverseShellRulesRequest() (request *DescribeReverseShellRulesRe
     request = &DescribeReverseShellRulesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeReverseShellRules")
     
     
@@ -7144,6 +7267,7 @@ func NewDescribeRiskDnsListRequest() (request *DescribeRiskDnsListRequest) {
     request = &DescribeRiskDnsListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeRiskDnsList")
     
     
@@ -7203,6 +7327,7 @@ func NewDescribeSaveOrUpdateWarningsRequest() (request *DescribeSaveOrUpdateWarn
     request = &DescribeSaveOrUpdateWarningsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeSaveOrUpdateWarnings")
     
     
@@ -7262,6 +7387,7 @@ func NewDescribeScanMalwareScheduleRequest() (request *DescribeScanMalwareSchedu
     request = &DescribeScanMalwareScheduleRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeScanMalwareSchedule")
     
     
@@ -7321,6 +7447,7 @@ func NewDescribeScanScheduleRequest() (request *DescribeScanScheduleRequest) {
     request = &DescribeScanScheduleRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeScanSchedule")
     
     
@@ -7380,6 +7507,7 @@ func NewDescribeScanStateRequest() (request *DescribeScanStateRequest) {
     request = &DescribeScanStateRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeScanState")
     
     
@@ -7443,6 +7571,7 @@ func NewDescribeScanTaskDetailsRequest() (request *DescribeScanTaskDetailsReques
     request = &DescribeScanTaskDetailsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeScanTaskDetails")
     
     
@@ -7500,6 +7629,7 @@ func NewDescribeScanTaskStatusRequest() (request *DescribeScanTaskStatusRequest)
     request = &DescribeScanTaskStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeScanTaskStatus")
     
     
@@ -7559,6 +7689,7 @@ func NewDescribeScanVulSettingRequest() (request *DescribeScanVulSettingRequest)
     request = &DescribeScanVulSettingRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeScanVulSetting")
     
     
@@ -7616,6 +7747,7 @@ func NewDescribeSearchExportListRequest() (request *DescribeSearchExportListRequ
     request = &DescribeSearchExportListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeSearchExportList")
     
     
@@ -7669,6 +7801,7 @@ func NewDescribeSearchLogsRequest() (request *DescribeSearchLogsRequest) {
     request = &DescribeSearchLogsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeSearchLogs")
     
     
@@ -7716,6 +7849,7 @@ func NewDescribeSearchTemplatesRequest() (request *DescribeSearchTemplatesReques
     request = &DescribeSearchTemplatesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeSearchTemplates")
     
     
@@ -7769,6 +7903,7 @@ func NewDescribeSecurityDynamicsRequest() (request *DescribeSecurityDynamicsRequ
     request = &DescribeSecurityDynamicsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeSecurityDynamics")
     
     
@@ -7820,6 +7955,7 @@ func NewDescribeSecurityEventStatRequest() (request *DescribeSecurityEventStatRe
     request = &DescribeSecurityEventStatRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeSecurityEventStat")
     
     
@@ -7867,6 +8003,7 @@ func NewDescribeSecurityEventsCntRequest() (request *DescribeSecurityEventsCntRe
     request = &DescribeSecurityEventsCntRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeSecurityEventsCnt")
     
     
@@ -7918,6 +8055,7 @@ func NewDescribeSecurityTrendsRequest() (request *DescribeSecurityTrendsRequest)
     request = &DescribeSecurityTrendsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeSecurityTrends")
     
     
@@ -7977,6 +8115,7 @@ func NewDescribeServerRelatedDirInfoRequest() (request *DescribeServerRelatedDir
     request = &DescribeServerRelatedDirInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeServerRelatedDirInfo")
     
     
@@ -8030,6 +8169,7 @@ func NewDescribeServersAndRiskAndFirstInfoRequest() (request *DescribeServersAnd
     request = &DescribeServersAndRiskAndFirstInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeServersAndRiskAndFirstInfo")
     
     
@@ -8077,6 +8217,7 @@ func NewDescribeStrategyExistRequest() (request *DescribeStrategyExistRequest) {
     request = &DescribeStrategyExistRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeStrategyExist")
     
     
@@ -8134,6 +8275,7 @@ func NewDescribeTagMachinesRequest() (request *DescribeTagMachinesRequest) {
     request = &DescribeTagMachinesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeTagMachines")
     
     
@@ -8191,6 +8333,7 @@ func NewDescribeTagsRequest() (request *DescribeTagsRequest) {
     request = &DescribeTagsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeTags")
     
     
@@ -8254,6 +8397,7 @@ func NewDescribeUndoVulCountsRequest() (request *DescribeUndoVulCountsRequest) {
     request = &DescribeUndoVulCountsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeUndoVulCounts")
     
     
@@ -8309,6 +8453,7 @@ func NewDescribeUsualLoginPlacesRequest() (request *DescribeUsualLoginPlacesRequ
     request = &DescribeUsualLoginPlacesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeUsualLoginPlaces")
     
     
@@ -8370,6 +8515,7 @@ func NewDescribeVersionStatisticsRequest() (request *DescribeVersionStatisticsRe
     request = &DescribeVersionStatisticsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeVersionStatistics")
     
     
@@ -8429,6 +8575,7 @@ func NewDescribeVulCountByDatesRequest() (request *DescribeVulCountByDatesReques
     request = &DescribeVulCountByDatesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeVulCountByDates")
     
     
@@ -8486,6 +8633,7 @@ func NewDescribeVulEffectHostListRequest() (request *DescribeVulEffectHostListRe
     request = &DescribeVulEffectHostListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeVulEffectHostList")
     
     
@@ -8547,6 +8695,7 @@ func NewDescribeVulHostCountScanTimeRequest() (request *DescribeVulHostCountScan
     request = &DescribeVulHostCountScanTimeRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeVulHostCountScanTime")
     
     
@@ -8594,6 +8743,7 @@ func NewDescribeVulHostTopRequest() (request *DescribeVulHostTopRequest) {
     request = &DescribeVulHostTopRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeVulHostTop")
     
     
@@ -8653,6 +8803,7 @@ func NewDescribeVulInfoCvssRequest() (request *DescribeVulInfoCvssRequest) {
     request = &DescribeVulInfoCvssRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeVulInfoCvss")
     
     
@@ -8714,6 +8865,7 @@ func NewDescribeVulLevelCountRequest() (request *DescribeVulLevelCountRequest) {
     request = &DescribeVulLevelCountRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeVulLevelCount")
     
     
@@ -8761,6 +8913,7 @@ func NewDescribeVulListRequest() (request *DescribeVulListRequest) {
     request = &DescribeVulListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeVulList")
     
     
@@ -8818,6 +8971,7 @@ func NewDescribeVulTopRequest() (request *DescribeVulTopRequest) {
     request = &DescribeVulTopRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeVulTop")
     
     
@@ -8877,6 +9031,7 @@ func NewDescribeWarningListRequest() (request *DescribeWarningListRequest) {
     request = &DescribeWarningListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeWarningList")
     
     
@@ -8924,6 +9079,7 @@ func NewDescribeWebPageEventListRequest() (request *DescribeWebPageEventListRequ
     request = &DescribeWebPageEventListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeWebPageEventList")
     
     
@@ -8979,6 +9135,7 @@ func NewDescribeWebPageGeneralizeRequest() (request *DescribeWebPageGeneralizeRe
     request = &DescribeWebPageGeneralizeRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeWebPageGeneralize")
     
     
@@ -9026,6 +9183,7 @@ func NewDescribeWebPageProtectStatRequest() (request *DescribeWebPageProtectStat
     request = &DescribeWebPageProtectStatRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeWebPageProtectStat")
     
     
@@ -9073,6 +9231,7 @@ func NewDescribeWebPageServiceInfoRequest() (request *DescribeWebPageServiceInfo
     request = &DescribeWebPageServiceInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "DescribeWebPageServiceInfo")
     
     
@@ -9120,6 +9279,7 @@ func NewEditBashRulesRequest() (request *EditBashRulesRequest) {
     request = &EditBashRulesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "EditBashRules")
     
     
@@ -9187,6 +9347,7 @@ func NewEditTagsRequest() (request *EditTagsRequest) {
     request = &EditTagsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "EditTags")
     
     
@@ -9250,6 +9411,7 @@ func NewExportAssetCoreModuleListRequest() (request *ExportAssetCoreModuleListRe
     request = &ExportAssetCoreModuleListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "ExportAssetCoreModuleList")
     
     
@@ -9311,6 +9473,7 @@ func NewExportAssetWebServiceInfoListRequest() (request *ExportAssetWebServiceIn
     request = &ExportAssetWebServiceInfoListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "ExportAssetWebServiceInfoList")
     
     
@@ -9370,6 +9533,7 @@ func NewExportAttackLogsRequest() (request *ExportAttackLogsRequest) {
     request = &ExportAttackLogsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "ExportAttackLogs")
     
     
@@ -9427,6 +9591,7 @@ func NewExportBaselineEffectHostListRequest() (request *ExportBaselineEffectHost
     request = &ExportBaselineEffectHostListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "ExportBaselineEffectHostList")
     
     
@@ -9484,6 +9649,7 @@ func NewExportBaselineListRequest() (request *ExportBaselineListRequest) {
     request = &ExportBaselineListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "ExportBaselineList")
     
     
@@ -9543,6 +9709,7 @@ func NewExportBashEventsRequest() (request *ExportBashEventsRequest) {
     request = &ExportBashEventsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "ExportBashEvents")
     
     
@@ -9598,6 +9765,7 @@ func NewExportBruteAttacksRequest() (request *ExportBruteAttacksRequest) {
     request = &ExportBruteAttacksRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "ExportBruteAttacks")
     
     
@@ -9651,6 +9819,7 @@ func NewExportIgnoreBaselineRuleRequest() (request *ExportIgnoreBaselineRuleRequ
     request = &ExportIgnoreBaselineRuleRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "ExportIgnoreBaselineRule")
     
     
@@ -9708,6 +9877,7 @@ func NewExportIgnoreRuleEffectHostListRequest() (request *ExportIgnoreRuleEffect
     request = &ExportIgnoreRuleEffectHostListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "ExportIgnoreRuleEffectHostList")
     
     
@@ -9765,6 +9935,7 @@ func NewExportMaliciousRequestsRequest() (request *ExportMaliciousRequestsReques
     request = &ExportMaliciousRequestsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "ExportMaliciousRequests")
     
     
@@ -9816,6 +9987,7 @@ func NewExportMalwaresRequest() (request *ExportMalwaresRequest) {
     request = &ExportMalwaresRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "ExportMalwares")
     
     
@@ -9875,6 +10047,7 @@ func NewExportNonlocalLoginPlacesRequest() (request *ExportNonlocalLoginPlacesRe
     request = &ExportNonlocalLoginPlacesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "ExportNonlocalLoginPlaces")
     
     
@@ -9930,6 +10103,7 @@ func NewExportPrivilegeEventsRequest() (request *ExportPrivilegeEventsRequest) {
     request = &ExportPrivilegeEventsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "ExportPrivilegeEvents")
     
     
@@ -9983,6 +10157,7 @@ func NewExportProtectDirListRequest() (request *ExportProtectDirListRequest) {
     request = &ExportProtectDirListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "ExportProtectDirList")
     
     
@@ -10042,6 +10217,7 @@ func NewExportReverseShellEventsRequest() (request *ExportReverseShellEventsRequ
     request = &ExportReverseShellEventsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "ExportReverseShellEvents")
     
     
@@ -10103,6 +10279,7 @@ func NewExportScanTaskDetailsRequest() (request *ExportScanTaskDetailsRequest) {
     request = &ExportScanTaskDetailsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "ExportScanTaskDetails")
     
     
@@ -10158,6 +10335,7 @@ func NewExportSecurityTrendsRequest() (request *ExportSecurityTrendsRequest) {
     request = &ExportSecurityTrendsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "ExportSecurityTrends")
     
     
@@ -10205,6 +10383,7 @@ func NewExportTasksRequest() (request *ExportTasksRequest) {
     request = &ExportTasksRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "ExportTasks")
     
     
@@ -10254,6 +10433,7 @@ func NewExportVulDetectionExcelRequest() (request *ExportVulDetectionExcelReques
     request = &ExportVulDetectionExcelRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "ExportVulDetectionExcel")
     
     
@@ -10309,6 +10489,7 @@ func NewExportVulDetectionReportRequest() (request *ExportVulDetectionReportRequ
     request = &ExportVulDetectionReportRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "ExportVulDetectionReport")
     
     
@@ -10364,6 +10545,7 @@ func NewExportVulEffectHostListRequest() (request *ExportVulEffectHostListReques
     request = &ExportVulEffectHostListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "ExportVulEffectHostList")
     
     
@@ -10425,6 +10607,7 @@ func NewExportVulListRequest() (request *ExportVulListRequest) {
     request = &ExportVulListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "ExportVulList")
     
     
@@ -10480,6 +10663,7 @@ func NewExportWebPageEventListRequest() (request *ExportWebPageEventListRequest)
     request = &ExportWebPageEventListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "ExportWebPageEventList")
     
     
@@ -10535,6 +10719,7 @@ func NewIgnoreImpactedHostsRequest() (request *IgnoreImpactedHostsRequest) {
     request = &IgnoreImpactedHostsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "IgnoreImpactedHosts")
     
     
@@ -10596,6 +10781,7 @@ func NewModifyAutoOpenProVersionConfigRequest() (request *ModifyAutoOpenProVersi
     request = &ModifyAutoOpenProVersionConfigRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "ModifyAutoOpenProVersionConfig")
     
     
@@ -10651,6 +10837,7 @@ func NewModifyBanModeRequest() (request *ModifyBanModeRequest) {
     request = &ModifyBanModeRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "ModifyBanMode")
     
     
@@ -10710,6 +10897,7 @@ func NewModifyBanStatusRequest() (request *ModifyBanStatusRequest) {
     request = &ModifyBanStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "ModifyBanStatus")
     
     
@@ -10769,6 +10957,7 @@ func NewModifyBruteAttackRulesRequest() (request *ModifyBruteAttackRulesRequest)
     request = &ModifyBruteAttackRulesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "ModifyBruteAttackRules")
     
     
@@ -10828,6 +11017,7 @@ func NewModifyMalwareTimingScanSettingsRequest() (request *ModifyMalwareTimingSc
     request = &ModifyMalwareTimingScanSettingsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "ModifyMalwareTimingScanSettings")
     
     
@@ -10897,6 +11087,7 @@ func NewModifyWarningSettingRequest() (request *ModifyWarningSettingRequest) {
     request = &ModifyWarningSettingRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "ModifyWarningSetting")
     
     
@@ -10956,6 +11147,7 @@ func NewModifyWebPageProtectDirRequest() (request *ModifyWebPageProtectDirReques
     request = &ModifyWebPageProtectDirRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "ModifyWebPageProtectDir")
     
     
@@ -11029,6 +11221,7 @@ func NewModifyWebPageProtectSettingRequest() (request *ModifyWebPageProtectSetti
     request = &ModifyWebPageProtectSettingRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "ModifyWebPageProtectSetting")
     
     
@@ -11086,6 +11279,7 @@ func NewModifyWebPageProtectSwitchRequest() (request *ModifyWebPageProtectSwitch
     request = &ModifyWebPageProtectSwitchRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "ModifyWebPageProtectSwitch")
     
     
@@ -11153,6 +11347,7 @@ func NewRecoverMalwaresRequest() (request *RecoverMalwaresRequest) {
     request = &RecoverMalwaresRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "RecoverMalwares")
     
     
@@ -11216,6 +11411,7 @@ func NewScanAssetRequest() (request *ScanAssetRequest) {
     request = &ScanAssetRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "ScanAsset")
     
     
@@ -11281,6 +11477,7 @@ func NewScanVulRequest() (request *ScanVulRequest) {
     request = &ScanVulRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "ScanVul")
     
     
@@ -11350,6 +11547,7 @@ func NewScanVulAgainRequest() (request *ScanVulAgainRequest) {
     request = &ScanVulAgainRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "ScanVulAgain")
     
     
@@ -11417,6 +11615,7 @@ func NewScanVulSettingRequest() (request *ScanVulSettingRequest) {
     request = &ScanVulSettingRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "ScanVulSetting")
     
     
@@ -11476,6 +11675,7 @@ func NewSeparateMalwaresRequest() (request *SeparateMalwaresRequest) {
     request = &SeparateMalwaresRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "SeparateMalwares")
     
     
@@ -11539,6 +11739,7 @@ func NewSetBashEventsStatusRequest() (request *SetBashEventsStatusRequest) {
     request = &SetBashEventsStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "SetBashEventsStatus")
     
     
@@ -11598,6 +11799,7 @@ func NewStopNoticeBanTipsRequest() (request *StopNoticeBanTipsRequest) {
     request = &StopNoticeBanTipsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "StopNoticeBanTips")
     
     
@@ -11645,6 +11847,7 @@ func NewSwitchBashRulesRequest() (request *SwitchBashRulesRequest) {
     request = &SwitchBashRulesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "SwitchBashRules")
     
     
@@ -11714,6 +11917,7 @@ func NewSyncAssetScanRequest() (request *SyncAssetScanRequest) {
     request = &SyncAssetScanRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "SyncAssetScan")
     
     
@@ -11771,6 +11975,7 @@ func NewTrustMalwaresRequest() (request *TrustMalwaresRequest) {
     request = &TrustMalwaresRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "TrustMalwares")
     
     
@@ -11832,6 +12037,7 @@ func NewUntrustMalwaresRequest() (request *UntrustMalwaresRequest) {
     request = &UntrustMalwaresRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "UntrustMalwares")
     
     
@@ -11893,6 +12099,7 @@ func NewUpdateBaselineStrategyRequest() (request *UpdateBaselineStrategyRequest)
     request = &UpdateBaselineStrategyRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "UpdateBaselineStrategy")
     
     
@@ -11954,6 +12161,7 @@ func NewUpdateMachineTagsRequest() (request *UpdateMachineTagsRequest) {
     request = &UpdateMachineTagsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cwp", APIVersion, "UpdateMachineTags")
     
     

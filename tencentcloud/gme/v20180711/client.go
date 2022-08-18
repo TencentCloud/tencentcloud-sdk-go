@@ -49,6 +49,7 @@ func NewCreateAgeDetectTaskRequest() (request *CreateAgeDetectTaskRequest) {
     request = &CreateAgeDetectTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("gme", APIVersion, "CreateAgeDetectTask")
     
     
@@ -140,6 +141,7 @@ func NewCreateAppRequest() (request *CreateAppRequest) {
     request = &CreateAppRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("gme", APIVersion, "CreateApp")
     
     
@@ -207,6 +209,7 @@ func NewCreateCustomizationRequest() (request *CreateCustomizationRequest) {
     request = &CreateCustomizationRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("gme", APIVersion, "CreateCustomization")
     
     
@@ -254,6 +257,7 @@ func NewCreateScanUserRequest() (request *CreateScanUserRequest) {
     request = &CreateScanUserRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("gme", APIVersion, "CreateScanUser")
     
     
@@ -301,6 +305,7 @@ func NewDeleteCustomizationRequest() (request *DeleteCustomizationRequest) {
     request = &DeleteCustomizationRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("gme", APIVersion, "DeleteCustomization")
     
     
@@ -348,6 +353,7 @@ func NewDeleteScanUserRequest() (request *DeleteScanUserRequest) {
     request = &DeleteScanUserRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("gme", APIVersion, "DeleteScanUser")
     
     
@@ -395,6 +401,7 @@ func NewDescribeAgeDetectTaskRequest() (request *DescribeAgeDetectTaskRequest) {
     request = &DescribeAgeDetectTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("gme", APIVersion, "DescribeAgeDetectTask")
     
     
@@ -446,6 +453,7 @@ func NewDescribeAppStatisticsRequest() (request *DescribeAppStatisticsRequest) {
     request = &DescribeAppStatisticsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("gme", APIVersion, "DescribeAppStatistics")
     
     
@@ -511,6 +519,7 @@ func NewDescribeApplicationDataRequest() (request *DescribeApplicationDataReques
     request = &DescribeApplicationDataRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("gme", APIVersion, "DescribeApplicationData")
     
     
@@ -566,6 +575,7 @@ func NewDescribeRealtimeScanConfigRequest() (request *DescribeRealtimeScanConfig
     request = &DescribeRealtimeScanConfigRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("gme", APIVersion, "DescribeRealtimeScanConfig")
     
     
@@ -613,6 +623,7 @@ func NewDescribeRoomInfoRequest() (request *DescribeRoomInfoRequest) {
     request = &DescribeRoomInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("gme", APIVersion, "DescribeRoomInfo")
     
     
@@ -666,6 +677,7 @@ func NewDescribeScanResultListRequest() (request *DescribeScanResultListRequest)
     request = &DescribeScanResultListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("gme", APIVersion, "DescribeScanResultList")
     
     
@@ -735,6 +747,7 @@ func NewDescribeUserInAndOutTimeRequest() (request *DescribeUserInAndOutTimeRequ
     request = &DescribeUserInAndOutTimeRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("gme", APIVersion, "DescribeUserInAndOutTime")
     
     
@@ -820,6 +833,7 @@ func NewGetCustomizationListRequest() (request *GetCustomizationListRequest) {
     request = &GetCustomizationListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("gme", APIVersion, "GetCustomizationList")
     
     
@@ -905,6 +919,7 @@ func NewModifyAppStatusRequest() (request *ModifyAppStatusRequest) {
     request = &ModifyAppStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("gme", APIVersion, "ModifyAppStatus")
     
     
@@ -970,6 +985,7 @@ func NewModifyCustomizationRequest() (request *ModifyCustomizationRequest) {
     request = &ModifyCustomizationRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("gme", APIVersion, "ModifyCustomization")
     
     
@@ -1017,6 +1033,7 @@ func NewModifyCustomizationStateRequest() (request *ModifyCustomizationStateRequ
     request = &ModifyCustomizationStateRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("gme", APIVersion, "ModifyCustomizationState")
     
     
@@ -1064,6 +1081,7 @@ func NewModifyRoomInfoRequest() (request *ModifyRoomInfoRequest) {
     request = &ModifyRoomInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("gme", APIVersion, "ModifyRoomInfo")
     
     
@@ -1117,6 +1135,7 @@ func NewModifyUserMicStatusRequest() (request *ModifyUserMicStatusRequest) {
     request = &ModifyUserMicStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("gme", APIVersion, "ModifyUserMicStatus")
     
     
@@ -1164,6 +1183,7 @@ func NewScanVoiceRequest() (request *ScanVoiceRequest) {
     request = &ScanVoiceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("gme", APIVersion, "ScanVoice")
     
     
@@ -1767,6 +1787,7 @@ func NewUpdateScanRoomsRequest() (request *UpdateScanRoomsRequest) {
     request = &UpdateScanRoomsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("gme", APIVersion, "UpdateScanRooms")
     
     
@@ -1834,6 +1855,7 @@ func NewUpdateScanUsersRequest() (request *UpdateScanUsersRequest) {
     request = &UpdateScanUsersRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("gme", APIVersion, "UpdateScanUsers")
     
     

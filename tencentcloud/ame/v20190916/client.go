@@ -49,6 +49,7 @@ func NewBatchDescribeKTVMusicDetailsRequest() (request *BatchDescribeKTVMusicDet
     request = &BatchDescribeKTVMusicDetailsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ame", APIVersion, "BatchDescribeKTVMusicDetails")
     
     
@@ -104,6 +105,7 @@ func NewCreateKTVRobotRequest() (request *CreateKTVRobotRequest) {
     request = &CreateKTVRobotRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ame", APIVersion, "CreateKTVRobot")
     
     
@@ -163,6 +165,7 @@ func NewDescribeAuthInfoRequest() (request *DescribeAuthInfoRequest) {
     request = &DescribeAuthInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ame", APIVersion, "DescribeAuthInfo")
     
     
@@ -230,6 +233,7 @@ func NewDescribeCloudMusicRequest() (request *DescribeCloudMusicRequest) {
     request = &DescribeCloudMusicRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ame", APIVersion, "DescribeCloudMusic")
     
     
@@ -287,6 +291,7 @@ func NewDescribeCloudMusicPurchasedRequest() (request *DescribeCloudMusicPurchas
     request = &DescribeCloudMusicPurchasedRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ame", APIVersion, "DescribeCloudMusicPurchased")
     
     
@@ -364,6 +369,7 @@ func NewDescribeItemByIdRequest() (request *DescribeItemByIdRequest) {
     request = &DescribeItemByIdRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ame", APIVersion, "DescribeItemById")
     
     
@@ -415,6 +421,7 @@ func NewDescribeItemsRequest() (request *DescribeItemsRequest) {
     request = &DescribeItemsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ame", APIVersion, "DescribeItems")
     
     
@@ -472,6 +479,7 @@ func NewDescribeKTVMusicDetailRequest() (request *DescribeKTVMusicDetailRequest)
     request = &DescribeKTVMusicDetailRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ame", APIVersion, "DescribeKTVMusicDetail")
     
     
@@ -527,6 +535,7 @@ func NewDescribeKTVMusicTagsRequest() (request *DescribeKTVMusicTagsRequest) {
     request = &DescribeKTVMusicTagsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ame", APIVersion, "DescribeKTVMusicTags")
     
     
@@ -582,6 +591,7 @@ func NewDescribeKTVPlaylistDetailRequest() (request *DescribeKTVPlaylistDetailRe
     request = &DescribeKTVPlaylistDetailRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ame", APIVersion, "DescribeKTVPlaylistDetail")
     
     
@@ -647,6 +657,7 @@ func NewDescribeKTVPlaylistsRequest() (request *DescribeKTVPlaylistsRequest) {
     request = &DescribeKTVPlaylistsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ame", APIVersion, "DescribeKTVPlaylists")
     
     
@@ -714,6 +725,7 @@ func NewDescribeKTVRobotsRequest() (request *DescribeKTVRobotsRequest) {
     request = &DescribeKTVRobotsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ame", APIVersion, "DescribeKTVRobots")
     
     
@@ -773,6 +785,7 @@ func NewDescribeKTVSingerCategoriesRequest() (request *DescribeKTVSingerCategori
     request = &DescribeKTVSingerCategoriesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ame", APIVersion, "DescribeKTVSingerCategories")
     
     
@@ -824,6 +837,7 @@ func NewDescribeKTVSingerMusicsRequest() (request *DescribeKTVSingerMusicsReques
     request = &DescribeKTVSingerMusicsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ame", APIVersion, "DescribeKTVSingerMusics")
     
     
@@ -883,6 +897,7 @@ func NewDescribeKTVSingersRequest() (request *DescribeKTVSingersRequest) {
     request = &DescribeKTVSingersRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ame", APIVersion, "DescribeKTVSingers")
     
     
@@ -934,6 +949,7 @@ func NewDescribeKTVSuggestionsRequest() (request *DescribeKTVSuggestionsRequest)
     request = &DescribeKTVSuggestionsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ame", APIVersion, "DescribeKTVSuggestions")
     
     
@@ -985,6 +1001,7 @@ func NewDescribeKTVTopListRequest() (request *DescribeKTVTopListRequest) {
     request = &DescribeKTVTopListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ame", APIVersion, "DescribeKTVTopList")
     
     
@@ -1038,6 +1055,7 @@ func NewDescribeLyricRequest() (request *DescribeLyricRequest) {
     request = &DescribeLyricRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ame", APIVersion, "DescribeLyric")
     
     
@@ -1089,6 +1107,7 @@ func NewDescribeMusicRequest() (request *DescribeMusicRequest) {
     request = &DescribeMusicRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ame", APIVersion, "DescribeMusic")
     
     
@@ -1146,6 +1165,7 @@ func NewDescribeMusicSaleStatusRequest() (request *DescribeMusicSaleStatusReques
     request = &DescribeMusicSaleStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ame", APIVersion, "DescribeMusicSaleStatus")
     
     
@@ -1207,6 +1227,7 @@ func NewDescribePackageItemsRequest() (request *DescribePackageItemsRequest) {
     request = &DescribePackageItemsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ame", APIVersion, "DescribePackageItems")
     
     
@@ -1266,6 +1287,7 @@ func NewDescribePackagesRequest() (request *DescribePackagesRequest) {
     request = &DescribePackagesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ame", APIVersion, "DescribePackages")
     
     
@@ -1325,6 +1347,7 @@ func NewDescribePkgOfflineMusicRequest() (request *DescribePkgOfflineMusicReques
     request = &DescribePkgOfflineMusicRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ame", APIVersion, "DescribePkgOfflineMusic")
     
     
@@ -1390,6 +1413,7 @@ func NewDescribeStationsRequest() (request *DescribeStationsRequest) {
     request = &DescribeStationsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ame", APIVersion, "DescribeStations")
     
     
@@ -1447,6 +1471,7 @@ func NewDestroyKTVRobotRequest() (request *DestroyKTVRobotRequest) {
     request = &DestroyKTVRobotRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ame", APIVersion, "DestroyKTVRobot")
     
     
@@ -1506,6 +1531,7 @@ func NewModifyMusicOnShelvesRequest() (request *ModifyMusicOnShelvesRequest) {
     request = &ModifyMusicOnShelvesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ame", APIVersion, "ModifyMusicOnShelves")
     
     
@@ -1571,6 +1597,7 @@ func NewPutMusicOnTheShelvesRequest() (request *PutMusicOnTheShelvesRequest) {
     request = &PutMusicOnTheShelvesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ame", APIVersion, "PutMusicOnTheShelves")
     
     
@@ -1636,6 +1663,7 @@ func NewReportDataRequest() (request *ReportDataRequest) {
     request = &ReportDataRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ame", APIVersion, "ReportData")
     
     
@@ -1687,6 +1715,7 @@ func NewSearchKTVMusicsRequest() (request *SearchKTVMusicsRequest) {
     request = &SearchKTVMusicsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ame", APIVersion, "SearchKTVMusics")
     
     
@@ -1740,6 +1769,7 @@ func NewSyncKTVRobotCommandRequest() (request *SyncKTVRobotCommandRequest) {
     request = &SyncKTVRobotCommandRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ame", APIVersion, "SyncKTVRobotCommand")
     
     
@@ -1799,6 +1829,7 @@ func NewTakeMusicOffShelvesRequest() (request *TakeMusicOffShelvesRequest) {
     request = &TakeMusicOffShelvesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ame", APIVersion, "TakeMusicOffShelves")
     
     

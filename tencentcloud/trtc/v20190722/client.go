@@ -49,6 +49,7 @@ func NewCreateCloudRecordingRequest() (request *CreateCloudRecordingRequest) {
     request = &CreateCloudRecordingRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("trtc", APIVersion, "CreateCloudRecording")
     
     
@@ -186,6 +187,7 @@ func NewCreatePictureRequest() (request *CreatePictureRequest) {
     request = &CreatePictureRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("trtc", APIVersion, "CreatePicture")
     
     
@@ -245,6 +247,7 @@ func NewDeleteCloudRecordingRequest() (request *DeleteCloudRecordingRequest) {
     request = &DeleteCloudRecordingRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("trtc", APIVersion, "DeleteCloudRecording")
     
     
@@ -314,6 +317,7 @@ func NewDeletePictureRequest() (request *DeletePictureRequest) {
     request = &DeletePictureRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("trtc", APIVersion, "DeletePicture")
     
     
@@ -371,6 +375,7 @@ func NewDescribeCallDetailInfoRequest() (request *DescribeCallDetailInfoRequest)
     request = &DescribeCallDetailInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("trtc", APIVersion, "DescribeCallDetailInfo")
     
     
@@ -466,6 +471,7 @@ func NewDescribeCloudRecordingRequest() (request *DescribeCloudRecordingRequest)
     request = &DescribeCloudRecordingRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("trtc", APIVersion, "DescribeCloudRecording")
     
     
@@ -543,6 +549,7 @@ func NewDescribeExternalTrtcMeasureRequest() (request *DescribeExternalTrtcMeasu
     request = &DescribeExternalTrtcMeasureRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("trtc", APIVersion, "DescribeExternalTrtcMeasure")
     
     
@@ -590,6 +597,7 @@ func NewDescribePictureRequest() (request *DescribePictureRequest) {
     request = &DescribePictureRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("trtc", APIVersion, "DescribePicture")
     
     
@@ -647,6 +655,7 @@ func NewDescribeRecordStatisticRequest() (request *DescribeRecordStatisticReques
     request = &DescribeRecordStatisticRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("trtc", APIVersion, "DescribeRecordStatistic")
     
     
@@ -724,6 +733,7 @@ func NewDescribeRoomInfoRequest() (request *DescribeRoomInfoRequest) {
     request = &DescribeRoomInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("trtc", APIVersion, "DescribeRoomInfo")
     
     
@@ -817,6 +827,7 @@ func NewDescribeScaleInfoRequest() (request *DescribeScaleInfoRequest) {
     request = &DescribeScaleInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("trtc", APIVersion, "DescribeScaleInfo")
     
     
@@ -890,6 +901,7 @@ func NewDescribeTrtcMcuTranscodeTimeRequest() (request *DescribeTrtcMcuTranscode
     request = &DescribeTrtcMcuTranscodeTimeRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("trtc", APIVersion, "DescribeTrtcMcuTranscodeTime")
     
     
@@ -959,6 +971,7 @@ func NewDescribeUnusualEventRequest() (request *DescribeUnusualEventRequest) {
     request = &DescribeUnusualEventRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("trtc", APIVersion, "DescribeUnusualEvent")
     
     
@@ -1044,6 +1057,7 @@ func NewDescribeUserEventRequest() (request *DescribeUserEventRequest) {
     request = &DescribeUserEventRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("trtc", APIVersion, "DescribeUserEvent")
     
     
@@ -1129,6 +1143,7 @@ func NewDescribeUserInfoRequest() (request *DescribeUserInfoRequest) {
     request = &DescribeUserInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("trtc", APIVersion, "DescribeUserInfo")
     
     
@@ -1220,6 +1235,7 @@ func NewDismissRoomRequest() (request *DismissRoomRequest) {
     request = &DismissRoomRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("trtc", APIVersion, "DismissRoom")
     
     
@@ -1285,6 +1301,7 @@ func NewDismissRoomByStrRoomIdRequest() (request *DismissRoomByStrRoomIdRequest)
     request = &DismissRoomByStrRoomIdRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("trtc", APIVersion, "DismissRoomByStrRoomId")
     
     
@@ -1348,6 +1365,7 @@ func NewModifyCloudRecordingRequest() (request *ModifyCloudRecordingRequest) {
     request = &ModifyCloudRecordingRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("trtc", APIVersion, "ModifyCloudRecording")
     
     
@@ -1419,6 +1437,7 @@ func NewModifyPictureRequest() (request *ModifyPictureRequest) {
     request = &ModifyPictureRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("trtc", APIVersion, "ModifyPicture")
     
     
@@ -1478,6 +1497,7 @@ func NewRemoveUserRequest() (request *RemoveUserRequest) {
     request = &RemoveUserRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("trtc", APIVersion, "RemoveUser")
     
     
@@ -1547,6 +1567,7 @@ func NewRemoveUserByStrRoomIdRequest() (request *RemoveUserByStrRoomIdRequest) {
     request = &RemoveUserByStrRoomIdRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("trtc", APIVersion, "RemoveUserByStrRoomId")
     
     
@@ -1614,6 +1635,7 @@ func NewStartMCUMixTranscodeRequest() (request *StartMCUMixTranscodeRequest) {
     request = &StartMCUMixTranscodeRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("trtc", APIVersion, "StartMCUMixTranscode")
     
     
@@ -1813,6 +1835,7 @@ func NewStartMCUMixTranscodeByStrRoomIdRequest() (request *StartMCUMixTranscodeB
     request = &StartMCUMixTranscodeByStrRoomIdRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("trtc", APIVersion, "StartMCUMixTranscodeByStrRoomId")
     
     
@@ -2002,6 +2025,7 @@ func NewStopMCUMixTranscodeRequest() (request *StopMCUMixTranscodeRequest) {
     request = &StopMCUMixTranscodeRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("trtc", APIVersion, "StopMCUMixTranscode")
     
     
@@ -2071,6 +2095,7 @@ func NewStopMCUMixTranscodeByStrRoomIdRequest() (request *StopMCUMixTranscodeByS
     request = &StopMCUMixTranscodeByStrRoomIdRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("trtc", APIVersion, "StopMCUMixTranscodeByStrRoomId")
     
     

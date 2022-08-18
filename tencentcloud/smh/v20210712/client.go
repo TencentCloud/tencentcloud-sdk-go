@@ -49,6 +49,7 @@ func NewCreateLibraryRequest() (request *CreateLibraryRequest) {
     request = &CreateLibraryRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("smh", APIVersion, "CreateLibrary")
     
     
@@ -114,6 +115,7 @@ func NewDeleteLibraryRequest() (request *DeleteLibraryRequest) {
     request = &DeleteLibraryRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("smh", APIVersion, "DeleteLibrary")
     
     
@@ -165,6 +167,7 @@ func NewDescribeLibrariesRequest() (request *DescribeLibrariesRequest) {
     request = &DescribeLibrariesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("smh", APIVersion, "DescribeLibraries")
     
     
@@ -214,6 +217,7 @@ func NewDescribeLibrarySecretRequest() (request *DescribeLibrarySecretRequest) {
     request = &DescribeLibrarySecretRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("smh", APIVersion, "DescribeLibrarySecret")
     
     
@@ -263,6 +267,7 @@ func NewDescribeOfficialInstancesRequest() (request *DescribeOfficialInstancesRe
     request = &DescribeOfficialInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("smh", APIVersion, "DescribeOfficialInstances")
     
     
@@ -312,6 +317,7 @@ func NewDescribeOfficialOverviewRequest() (request *DescribeOfficialOverviewRequ
     request = &DescribeOfficialOverviewRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("smh", APIVersion, "DescribeOfficialOverview")
     
     
@@ -359,6 +365,7 @@ func NewDescribeTrafficPackagesRequest() (request *DescribeTrafficPackagesReques
     request = &DescribeTrafficPackagesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("smh", APIVersion, "DescribeTrafficPackages")
     
     
@@ -408,6 +415,7 @@ func NewModifyLibraryRequest() (request *ModifyLibraryRequest) {
     request = &ModifyLibraryRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("smh", APIVersion, "ModifyLibrary")
     
     
@@ -459,6 +467,7 @@ func NewSendSmsCodeRequest() (request *SendSmsCodeRequest) {
     request = &SendSmsCodeRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("smh", APIVersion, "SendSmsCode")
     
     
@@ -518,6 +527,7 @@ func NewVerifySmsCodeRequest() (request *VerifySmsCodeRequest) {
     request = &VerifySmsCodeRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("smh", APIVersion, "VerifySmsCode")
     
     

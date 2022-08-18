@@ -49,6 +49,7 @@ func NewApplyMarketComponentRequest() (request *ApplyMarketComponentRequest) {
     request = &ApplyMarketComponentRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iecp", APIVersion, "ApplyMarketComponent")
     
     
@@ -120,6 +121,7 @@ func NewBuildMessageRouteRequest() (request *BuildMessageRouteRequest) {
     request = &BuildMessageRouteRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iecp", APIVersion, "BuildMessageRoute")
     
     
@@ -191,6 +193,7 @@ func NewCreateApplicationVisualizationRequest() (request *CreateApplicationVisua
     request = &CreateApplicationVisualizationRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iecp", APIVersion, "CreateApplicationVisualization")
     
     
@@ -262,6 +265,7 @@ func NewCreateConfigMapRequest() (request *CreateConfigMapRequest) {
     request = &CreateConfigMapRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iecp", APIVersion, "CreateConfigMap")
     
     
@@ -333,6 +337,7 @@ func NewCreateEdgeNodeRequest() (request *CreateEdgeNodeRequest) {
     request = &CreateEdgeNodeRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iecp", APIVersion, "CreateEdgeNode")
     
     
@@ -406,6 +411,7 @@ func NewCreateEdgeNodeBatchRequest() (request *CreateEdgeNodeBatchRequest) {
     request = &CreateEdgeNodeBatchRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iecp", APIVersion, "CreateEdgeNodeBatch")
     
     
@@ -491,6 +497,7 @@ func NewCreateEdgeNodeGroupRequest() (request *CreateEdgeNodeGroupRequest) {
     request = &CreateEdgeNodeGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iecp", APIVersion, "CreateEdgeNodeGroup")
     
     
@@ -562,6 +569,7 @@ func NewCreateEdgeNodeUnitTemplateRequest() (request *CreateEdgeNodeUnitTemplate
     request = &CreateEdgeNodeUnitTemplateRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iecp", APIVersion, "CreateEdgeNodeUnitTemplate")
     
     
@@ -633,6 +641,7 @@ func NewCreateEdgeUnitApplicationVisualizationRequest() (request *CreateEdgeUnit
     request = &CreateEdgeUnitApplicationVisualizationRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iecp", APIVersion, "CreateEdgeUnitApplicationVisualization")
     
     
@@ -704,6 +713,7 @@ func NewCreateEdgeUnitApplicationYamlRequest() (request *CreateEdgeUnitApplicati
     request = &CreateEdgeUnitApplicationYamlRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iecp", APIVersion, "CreateEdgeUnitApplicationYaml")
     
     
@@ -775,6 +785,7 @@ func NewCreateEdgeUnitCloudRequest() (request *CreateEdgeUnitCloudRequest) {
     request = &CreateEdgeUnitCloudRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iecp", APIVersion, "CreateEdgeUnitCloud")
     
     
@@ -860,6 +871,7 @@ func NewCreateEdgeUnitDevicesRequest() (request *CreateEdgeUnitDevicesRequest) {
     request = &CreateEdgeUnitDevicesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iecp", APIVersion, "CreateEdgeUnitDevices")
     
     
@@ -931,6 +943,7 @@ func NewCreateIotDeviceRequest() (request *CreateIotDeviceRequest) {
     request = &CreateIotDeviceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iecp", APIVersion, "CreateIotDevice")
     
     
@@ -1002,6 +1015,7 @@ func NewCreateMessageRouteRequest() (request *CreateMessageRouteRequest) {
     request = &CreateMessageRouteRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iecp", APIVersion, "CreateMessageRoute")
     
     
@@ -1073,6 +1087,7 @@ func NewCreateNamespaceRequest() (request *CreateNamespaceRequest) {
     request = &CreateNamespaceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iecp", APIVersion, "CreateNamespace")
     
     
@@ -1144,6 +1159,7 @@ func NewCreateSecretRequest() (request *CreateSecretRequest) {
     request = &CreateSecretRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iecp", APIVersion, "CreateSecret")
     
     
@@ -1215,6 +1231,7 @@ func NewCreateUpdateNodeUnitRequest() (request *CreateUpdateNodeUnitRequest) {
     request = &CreateUpdateNodeUnitRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iecp", APIVersion, "CreateUpdateNodeUnit")
     
     
@@ -1286,6 +1303,7 @@ func NewCreateUserTokenRequest() (request *CreateUserTokenRequest) {
     request = &CreateUserTokenRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iecp", APIVersion, "CreateUserToken")
     
     
@@ -1357,6 +1375,7 @@ func NewDeleteApplicationsRequest() (request *DeleteApplicationsRequest) {
     request = &DeleteApplicationsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iecp", APIVersion, "DeleteApplications")
     
     
@@ -1442,6 +1461,7 @@ func NewDeleteConfigMapRequest() (request *DeleteConfigMapRequest) {
     request = &DeleteConfigMapRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iecp", APIVersion, "DeleteConfigMap")
     
     
@@ -1513,6 +1533,7 @@ func NewDeleteEdgeNodeGroupRequest() (request *DeleteEdgeNodeGroupRequest) {
     request = &DeleteEdgeNodeGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iecp", APIVersion, "DeleteEdgeNodeGroup")
     
     
@@ -1584,6 +1605,7 @@ func NewDeleteEdgeNodeUnitTemplatesRequest() (request *DeleteEdgeNodeUnitTemplat
     request = &DeleteEdgeNodeUnitTemplatesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iecp", APIVersion, "DeleteEdgeNodeUnitTemplates")
     
     
@@ -1655,6 +1677,7 @@ func NewDeleteEdgeNodesRequest() (request *DeleteEdgeNodesRequest) {
     request = &DeleteEdgeNodesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iecp", APIVersion, "DeleteEdgeNodes")
     
     
@@ -1726,6 +1749,7 @@ func NewDeleteEdgeUnitApplicationsRequest() (request *DeleteEdgeUnitApplications
     request = &DeleteEdgeUnitApplicationsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iecp", APIVersion, "DeleteEdgeUnitApplications")
     
     
@@ -1797,6 +1821,7 @@ func NewDeleteEdgeUnitCloudRequest() (request *DeleteEdgeUnitCloudRequest) {
     request = &DeleteEdgeUnitCloudRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iecp", APIVersion, "DeleteEdgeUnitCloud")
     
     
@@ -1882,6 +1907,7 @@ func NewDeleteEdgeUnitDeployGridItemRequest() (request *DeleteEdgeUnitDeployGrid
     request = &DeleteEdgeUnitDeployGridItemRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iecp", APIVersion, "DeleteEdgeUnitDeployGridItem")
     
     
@@ -1953,6 +1979,7 @@ func NewDeleteEdgeUnitDevicesRequest() (request *DeleteEdgeUnitDevicesRequest) {
     request = &DeleteEdgeUnitDevicesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iecp", APIVersion, "DeleteEdgeUnitDevices")
     
     
@@ -2024,6 +2051,7 @@ func NewDeleteEdgeUnitPodRequest() (request *DeleteEdgeUnitPodRequest) {
     request = &DeleteEdgeUnitPodRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iecp", APIVersion, "DeleteEdgeUnitPod")
     
     
@@ -2095,6 +2123,7 @@ func NewDeleteIotDeviceRequest() (request *DeleteIotDeviceRequest) {
     request = &DeleteIotDeviceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iecp", APIVersion, "DeleteIotDevice")
     
     
@@ -2166,6 +2195,7 @@ func NewDeleteIotDeviceBatchRequest() (request *DeleteIotDeviceBatchRequest) {
     request = &DeleteIotDeviceBatchRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iecp", APIVersion, "DeleteIotDeviceBatch")
     
     
@@ -2237,6 +2267,7 @@ func NewDeleteMessageRouteRequest() (request *DeleteMessageRouteRequest) {
     request = &DeleteMessageRouteRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iecp", APIVersion, "DeleteMessageRoute")
     
     
@@ -2308,6 +2339,7 @@ func NewDeleteNamespaceRequest() (request *DeleteNamespaceRequest) {
     request = &DeleteNamespaceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iecp", APIVersion, "DeleteNamespace")
     
     
@@ -2379,6 +2411,7 @@ func NewDeleteNodeUnitRequest() (request *DeleteNodeUnitRequest) {
     request = &DeleteNodeUnitRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iecp", APIVersion, "DeleteNodeUnit")
     
     
@@ -2450,6 +2483,7 @@ func NewDeleteSecretRequest() (request *DeleteSecretRequest) {
     request = &DeleteSecretRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iecp", APIVersion, "DeleteSecret")
     
     
@@ -2521,6 +2555,7 @@ func NewDescribeApplicationVisualizationRequest() (request *DescribeApplicationV
     request = &DescribeApplicationVisualizationRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iecp", APIVersion, "DescribeApplicationVisualization")
     
     
@@ -2592,6 +2627,7 @@ func NewDescribeApplicationYamlRequest() (request *DescribeApplicationYamlReques
     request = &DescribeApplicationYamlRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iecp", APIVersion, "DescribeApplicationYaml")
     
     
@@ -2675,6 +2711,7 @@ func NewDescribeApplicationYamlErrorRequest() (request *DescribeApplicationYamlE
     request = &DescribeApplicationYamlErrorRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iecp", APIVersion, "DescribeApplicationYamlError")
     
     
@@ -2746,6 +2783,7 @@ func NewDescribeApplicationsRequest() (request *DescribeApplicationsRequest) {
     request = &DescribeApplicationsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iecp", APIVersion, "DescribeApplications")
     
     
@@ -2831,6 +2869,7 @@ func NewDescribeConfigMapRequest() (request *DescribeConfigMapRequest) {
     request = &DescribeConfigMapRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iecp", APIVersion, "DescribeConfigMap")
     
     
@@ -2902,6 +2941,7 @@ func NewDescribeConfigMapYamlErrorRequest() (request *DescribeConfigMapYamlError
     request = &DescribeConfigMapYamlErrorRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iecp", APIVersion, "DescribeConfigMapYamlError")
     
     
@@ -2973,6 +3013,7 @@ func NewDescribeConfigMapsRequest() (request *DescribeConfigMapsRequest) {
     request = &DescribeConfigMapsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iecp", APIVersion, "DescribeConfigMaps")
     
     
@@ -3044,6 +3085,7 @@ func NewDescribeDracoEdgeNodeInstallerRequest() (request *DescribeDracoEdgeNodeI
     request = &DescribeDracoEdgeNodeInstallerRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iecp", APIVersion, "DescribeDracoEdgeNodeInstaller")
     
     
@@ -3125,6 +3167,7 @@ func NewDescribeEdgeAgentNodeInstallerRequest() (request *DescribeEdgeAgentNodeI
     request = &DescribeEdgeAgentNodeInstallerRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iecp", APIVersion, "DescribeEdgeAgentNodeInstaller")
     
     
@@ -3196,6 +3239,7 @@ func NewDescribeEdgeDefaultVpcRequest() (request *DescribeEdgeDefaultVpcRequest)
     request = &DescribeEdgeDefaultVpcRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iecp", APIVersion, "DescribeEdgeDefaultVpc")
     
     
@@ -3271,6 +3315,7 @@ func NewDescribeEdgeNodeRequest() (request *DescribeEdgeNodeRequest) {
     request = &DescribeEdgeNodeRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iecp", APIVersion, "DescribeEdgeNode")
     
     
@@ -3342,6 +3387,7 @@ func NewDescribeEdgeNodePodContainersRequest() (request *DescribeEdgeNodePodCont
     request = &DescribeEdgeNodePodContainersRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iecp", APIVersion, "DescribeEdgeNodePodContainers")
     
     
@@ -3413,6 +3459,7 @@ func NewDescribeEdgeNodePodsRequest() (request *DescribeEdgeNodePodsRequest) {
     request = &DescribeEdgeNodePodsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iecp", APIVersion, "DescribeEdgeNodePods")
     
     
@@ -3484,6 +3531,7 @@ func NewDescribeEdgeNodeRemarkListRequest() (request *DescribeEdgeNodeRemarkList
     request = &DescribeEdgeNodeRemarkListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iecp", APIVersion, "DescribeEdgeNodeRemarkList")
     
     
@@ -3569,6 +3617,7 @@ func NewDescribeEdgeNodesRequest() (request *DescribeEdgeNodesRequest) {
     request = &DescribeEdgeNodesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iecp", APIVersion, "DescribeEdgeNodes")
     
     
@@ -3640,6 +3689,7 @@ func NewDescribeEdgeOperationLogsRequest() (request *DescribeEdgeOperationLogsRe
     request = &DescribeEdgeOperationLogsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iecp", APIVersion, "DescribeEdgeOperationLogs")
     
     
@@ -3711,6 +3761,7 @@ func NewDescribeEdgePodRequest() (request *DescribeEdgePodRequest) {
     request = &DescribeEdgePodRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iecp", APIVersion, "DescribeEdgePod")
     
     
@@ -3782,6 +3833,7 @@ func NewDescribeEdgeSnNodesRequest() (request *DescribeEdgeSnNodesRequest) {
     request = &DescribeEdgeSnNodesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iecp", APIVersion, "DescribeEdgeSnNodes")
     
     
@@ -3855,6 +3907,7 @@ func NewDescribeEdgeUnitApplicationEventsRequest() (request *DescribeEdgeUnitApp
     request = &DescribeEdgeUnitApplicationEventsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iecp", APIVersion, "DescribeEdgeUnitApplicationEvents")
     
     
@@ -3926,6 +3979,7 @@ func NewDescribeEdgeUnitApplicationLogsRequest() (request *DescribeEdgeUnitAppli
     request = &DescribeEdgeUnitApplicationLogsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iecp", APIVersion, "DescribeEdgeUnitApplicationLogs")
     
     
@@ -3997,6 +4051,7 @@ func NewDescribeEdgeUnitApplicationPodContainersRequest() (request *DescribeEdge
     request = &DescribeEdgeUnitApplicationPodContainersRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iecp", APIVersion, "DescribeEdgeUnitApplicationPodContainers")
     
     
@@ -4068,6 +4123,7 @@ func NewDescribeEdgeUnitApplicationPodsRequest() (request *DescribeEdgeUnitAppli
     request = &DescribeEdgeUnitApplicationPodsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iecp", APIVersion, "DescribeEdgeUnitApplicationPods")
     
     
@@ -4139,6 +4195,7 @@ func NewDescribeEdgeUnitApplicationVisualizationRequest() (request *DescribeEdge
     request = &DescribeEdgeUnitApplicationVisualizationRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iecp", APIVersion, "DescribeEdgeUnitApplicationVisualization")
     
     
@@ -4210,6 +4267,7 @@ func NewDescribeEdgeUnitApplicationYamlRequest() (request *DescribeEdgeUnitAppli
     request = &DescribeEdgeUnitApplicationYamlRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iecp", APIVersion, "DescribeEdgeUnitApplicationYaml")
     
     
@@ -4281,6 +4339,7 @@ func NewDescribeEdgeUnitApplicationYamlErrorRequest() (request *DescribeEdgeUnit
     request = &DescribeEdgeUnitApplicationYamlErrorRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iecp", APIVersion, "DescribeEdgeUnitApplicationYamlError")
     
     
@@ -4352,6 +4411,7 @@ func NewDescribeEdgeUnitApplicationsRequest() (request *DescribeEdgeUnitApplicat
     request = &DescribeEdgeUnitApplicationsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iecp", APIVersion, "DescribeEdgeUnitApplications")
     
     
@@ -4423,6 +4483,7 @@ func NewDescribeEdgeUnitCloudRequest() (request *DescribeEdgeUnitCloudRequest) {
     request = &DescribeEdgeUnitCloudRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iecp", APIVersion, "DescribeEdgeUnitCloud")
     
     
@@ -4508,6 +4569,7 @@ func NewDescribeEdgeUnitDeployGridRequest() (request *DescribeEdgeUnitDeployGrid
     request = &DescribeEdgeUnitDeployGridRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iecp", APIVersion, "DescribeEdgeUnitDeployGrid")
     
     
@@ -4579,6 +4641,7 @@ func NewDescribeEdgeUnitDeployGridItemRequest() (request *DescribeEdgeUnitDeploy
     request = &DescribeEdgeUnitDeployGridItemRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iecp", APIVersion, "DescribeEdgeUnitDeployGridItem")
     
     
@@ -4650,6 +4713,7 @@ func NewDescribeEdgeUnitDeployGridItemYamlRequest() (request *DescribeEdgeUnitDe
     request = &DescribeEdgeUnitDeployGridItemYamlRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iecp", APIVersion, "DescribeEdgeUnitDeployGridItemYaml")
     
     
@@ -4721,6 +4785,7 @@ func NewDescribeEdgeUnitExtraRequest() (request *DescribeEdgeUnitExtraRequest) {
     request = &DescribeEdgeUnitExtraRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iecp", APIVersion, "DescribeEdgeUnitExtra")
     
     
@@ -4792,6 +4857,7 @@ func NewDescribeEdgeUnitGridEventsRequest() (request *DescribeEdgeUnitGridEvents
     request = &DescribeEdgeUnitGridEventsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iecp", APIVersion, "DescribeEdgeUnitGridEvents")
     
     
@@ -4863,6 +4929,7 @@ func NewDescribeEdgeUnitGridPodsRequest() (request *DescribeEdgeUnitGridPodsRequ
     request = &DescribeEdgeUnitGridPodsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iecp", APIVersion, "DescribeEdgeUnitGridPods")
     
     
@@ -4934,6 +5001,7 @@ func NewDescribeEdgeUnitMonitorStatusRequest() (request *DescribeEdgeUnitMonitor
     request = &DescribeEdgeUnitMonitorStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iecp", APIVersion, "DescribeEdgeUnitMonitorStatus")
     
     
@@ -5005,6 +5073,7 @@ func NewDescribeEdgeUnitNodeGroupRequest() (request *DescribeEdgeUnitNodeGroupRe
     request = &DescribeEdgeUnitNodeGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iecp", APIVersion, "DescribeEdgeUnitNodeGroup")
     
     
@@ -5090,6 +5159,7 @@ func NewDescribeEdgeUnitNodeUnitTemplatesRequest() (request *DescribeEdgeUnitNod
     request = &DescribeEdgeUnitNodeUnitTemplatesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iecp", APIVersion, "DescribeEdgeUnitNodeUnitTemplates")
     
     
@@ -5161,6 +5231,7 @@ func NewDescribeEdgeUnitsCloudRequest() (request *DescribeEdgeUnitsCloudRequest)
     request = &DescribeEdgeUnitsCloudRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iecp", APIVersion, "DescribeEdgeUnitsCloud")
     
     
@@ -5244,6 +5315,7 @@ func NewDescribeIotDeviceRequest() (request *DescribeIotDeviceRequest) {
     request = &DescribeIotDeviceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iecp", APIVersion, "DescribeIotDevice")
     
     
@@ -5315,6 +5387,7 @@ func NewDescribeIotDevicesRequest() (request *DescribeIotDevicesRequest) {
     request = &DescribeIotDevicesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iecp", APIVersion, "DescribeIotDevices")
     
     
@@ -5386,6 +5459,7 @@ func NewDescribeMessageRouteListRequest() (request *DescribeMessageRouteListRequ
     request = &DescribeMessageRouteListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iecp", APIVersion, "DescribeMessageRouteList")
     
     
@@ -5457,6 +5531,7 @@ func NewDescribeMonitorMetricsRequest() (request *DescribeMonitorMetricsRequest)
     request = &DescribeMonitorMetricsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iecp", APIVersion, "DescribeMonitorMetrics")
     
     
@@ -5528,6 +5603,7 @@ func NewDescribeNamespaceRequest() (request *DescribeNamespaceRequest) {
     request = &DescribeNamespaceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iecp", APIVersion, "DescribeNamespace")
     
     
@@ -5599,6 +5675,7 @@ func NewDescribeNamespaceResourcesRequest() (request *DescribeNamespaceResources
     request = &DescribeNamespaceResourcesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iecp", APIVersion, "DescribeNamespaceResources")
     
     
@@ -5670,6 +5747,7 @@ func NewDescribeNamespacesRequest() (request *DescribeNamespacesRequest) {
     request = &DescribeNamespacesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iecp", APIVersion, "DescribeNamespaces")
     
     
@@ -5741,6 +5819,7 @@ func NewDescribeNodeUnitRequest() (request *DescribeNodeUnitRequest) {
     request = &DescribeNodeUnitRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iecp", APIVersion, "DescribeNodeUnit")
     
     
@@ -5812,6 +5891,7 @@ func NewDescribeNodeUnitTemplateOnNodeGroupRequest() (request *DescribeNodeUnitT
     request = &DescribeNodeUnitTemplateOnNodeGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iecp", APIVersion, "DescribeNodeUnitTemplateOnNodeGroup")
     
     
@@ -5883,6 +5963,7 @@ func NewDescribeSecretRequest() (request *DescribeSecretRequest) {
     request = &DescribeSecretRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iecp", APIVersion, "DescribeSecret")
     
     
@@ -5954,6 +6035,7 @@ func NewDescribeSecretYamlErrorRequest() (request *DescribeSecretYamlErrorReques
     request = &DescribeSecretYamlErrorRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iecp", APIVersion, "DescribeSecretYamlError")
     
     
@@ -6025,6 +6107,7 @@ func NewDescribeSecretsRequest() (request *DescribeSecretsRequest) {
     request = &DescribeSecretsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iecp", APIVersion, "DescribeSecrets")
     
     
@@ -6096,6 +6179,7 @@ func NewDescribeYeheResourceLimitRequest() (request *DescribeYeheResourceLimitRe
     request = &DescribeYeheResourceLimitRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iecp", APIVersion, "DescribeYeheResourceLimit")
     
     
@@ -6167,6 +6251,7 @@ func NewGetMarketComponentRequest() (request *GetMarketComponentRequest) {
     request = &GetMarketComponentRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iecp", APIVersion, "GetMarketComponent")
     
     
@@ -6238,6 +6323,7 @@ func NewGetMarketComponentListRequest() (request *GetMarketComponentListRequest)
     request = &GetMarketComponentListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iecp", APIVersion, "GetMarketComponentList")
     
     
@@ -6309,6 +6395,7 @@ func NewModifyApplicationBasicInfoRequest() (request *ModifyApplicationBasicInfo
     request = &ModifyApplicationBasicInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iecp", APIVersion, "ModifyApplicationBasicInfo")
     
     
@@ -6394,6 +6481,7 @@ func NewModifyApplicationVisualizationRequest() (request *ModifyApplicationVisua
     request = &ModifyApplicationVisualizationRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iecp", APIVersion, "ModifyApplicationVisualization")
     
     
@@ -6465,6 +6553,7 @@ func NewModifyConfigMapRequest() (request *ModifyConfigMapRequest) {
     request = &ModifyConfigMapRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iecp", APIVersion, "ModifyConfigMap")
     
     
@@ -6536,6 +6625,7 @@ func NewModifyEdgeDracoNodeRequest() (request *ModifyEdgeDracoNodeRequest) {
     request = &ModifyEdgeDracoNodeRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iecp", APIVersion, "ModifyEdgeDracoNode")
     
     
@@ -6621,6 +6711,7 @@ func NewModifyEdgeNodeLabelsRequest() (request *ModifyEdgeNodeLabelsRequest) {
     request = &ModifyEdgeNodeLabelsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iecp", APIVersion, "ModifyEdgeNodeLabels")
     
     
@@ -6692,6 +6783,7 @@ func NewModifyEdgeUnitRequest() (request *ModifyEdgeUnitRequest) {
     request = &ModifyEdgeUnitRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iecp", APIVersion, "ModifyEdgeUnit")
     
     
@@ -6777,6 +6869,7 @@ func NewModifyEdgeUnitApplicationBasicInfoRequest() (request *ModifyEdgeUnitAppl
     request = &ModifyEdgeUnitApplicationBasicInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iecp", APIVersion, "ModifyEdgeUnitApplicationBasicInfo")
     
     
@@ -6848,6 +6941,7 @@ func NewModifyEdgeUnitApplicationVisualizationRequest() (request *ModifyEdgeUnit
     request = &ModifyEdgeUnitApplicationVisualizationRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iecp", APIVersion, "ModifyEdgeUnitApplicationVisualization")
     
     
@@ -6919,6 +7013,7 @@ func NewModifyEdgeUnitApplicationYamlRequest() (request *ModifyEdgeUnitApplicati
     request = &ModifyEdgeUnitApplicationYamlRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iecp", APIVersion, "ModifyEdgeUnitApplicationYaml")
     
     
@@ -6990,6 +7085,7 @@ func NewModifyEdgeUnitCloudApiRequest() (request *ModifyEdgeUnitCloudApiRequest)
     request = &ModifyEdgeUnitCloudApiRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iecp", APIVersion, "ModifyEdgeUnitCloudApi")
     
     
@@ -7061,6 +7157,7 @@ func NewModifyEdgeUnitDeployGridItemRequest() (request *ModifyEdgeUnitDeployGrid
     request = &ModifyEdgeUnitDeployGridItemRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iecp", APIVersion, "ModifyEdgeUnitDeployGridItem")
     
     
@@ -7132,6 +7229,7 @@ func NewModifyIotDeviceRequest() (request *ModifyIotDeviceRequest) {
     request = &ModifyIotDeviceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iecp", APIVersion, "ModifyIotDevice")
     
     
@@ -7203,6 +7301,7 @@ func NewModifyNodeUnitTemplateRequest() (request *ModifyNodeUnitTemplateRequest)
     request = &ModifyNodeUnitTemplateRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iecp", APIVersion, "ModifyNodeUnitTemplate")
     
     
@@ -7274,6 +7373,7 @@ func NewModifySecretRequest() (request *ModifySecretRequest) {
     request = &ModifySecretRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iecp", APIVersion, "ModifySecret")
     
     
@@ -7345,6 +7445,7 @@ func NewRedeployEdgeUnitApplicationRequest() (request *RedeployEdgeUnitApplicati
     request = &RedeployEdgeUnitApplicationRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iecp", APIVersion, "RedeployEdgeUnitApplication")
     
     
@@ -7416,6 +7517,7 @@ func NewSetRouteOnOffRequest() (request *SetRouteOnOffRequest) {
     request = &SetRouteOnOffRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iecp", APIVersion, "SetRouteOnOff")
     
     

@@ -49,6 +49,7 @@ func NewEvaluationRequest() (request *EvaluationRequest) {
     request = &EvaluationRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("hcm", APIVersion, "Evaluation")
     
     

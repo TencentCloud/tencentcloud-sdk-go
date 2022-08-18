@@ -49,6 +49,7 @@ func NewCreateProbeTasksRequest() (request *CreateProbeTasksRequest) {
     request = &CreateProbeTasksRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cat", APIVersion, "CreateProbeTasks")
     
     
@@ -116,6 +117,7 @@ func NewDeleteProbeTaskRequest() (request *DeleteProbeTaskRequest) {
     request = &DeleteProbeTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cat", APIVersion, "DeleteProbeTask")
     
     
@@ -183,6 +185,7 @@ func NewDescribeDetailedSingleProbeDataRequest() (request *DescribeDetailedSingl
     request = &DescribeDetailedSingleProbeDataRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cat", APIVersion, "DescribeDetailedSingleProbeData")
     
     
@@ -244,6 +247,7 @@ func NewDescribeNodesRequest() (request *DescribeNodesRequest) {
     request = &DescribeNodesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cat", APIVersion, "DescribeNodes")
     
     
@@ -305,6 +309,7 @@ func NewDescribeProbeMetricDataRequest() (request *DescribeProbeMetricDataReques
     request = &DescribeProbeMetricDataRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cat", APIVersion, "DescribeProbeMetricData")
     
     
@@ -352,6 +357,7 @@ func NewDescribeProbeNodesRequest() (request *DescribeProbeNodesRequest) {
     request = &DescribeProbeNodesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cat", APIVersion, "DescribeProbeNodes")
     
     
@@ -401,6 +407,7 @@ func NewDescribeProbeTasksRequest() (request *DescribeProbeTasksRequest) {
     request = &DescribeProbeTasksRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cat", APIVersion, "DescribeProbeTasks")
     
     
@@ -462,6 +469,7 @@ func NewResumeProbeTaskRequest() (request *ResumeProbeTaskRequest) {
     request = &ResumeProbeTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cat", APIVersion, "ResumeProbeTask")
     
     
@@ -531,6 +539,7 @@ func NewSuspendProbeTaskRequest() (request *SuspendProbeTaskRequest) {
     request = &SuspendProbeTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cat", APIVersion, "SuspendProbeTask")
     
     
@@ -596,6 +605,7 @@ func NewUpdateProbeTaskConfigurationListRequest() (request *UpdateProbeTaskConfi
     request = &UpdateProbeTaskConfigurationListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cat", APIVersion, "UpdateProbeTaskConfigurationList")
     
     

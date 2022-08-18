@@ -49,6 +49,7 @@ func NewAuthorizeTokenRequest() (request *AuthorizeTokenRequest) {
     request = &AuthorizeTokenRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ckafka", APIVersion, "AuthorizeToken")
     
     
@@ -104,6 +105,7 @@ func NewBatchCreateAclRequest() (request *BatchCreateAclRequest) {
     request = &BatchCreateAclRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ckafka", APIVersion, "BatchCreateAcl")
     
     
@@ -155,6 +157,7 @@ func NewBatchModifyGroupOffsetsRequest() (request *BatchModifyGroupOffsetsReques
     request = &BatchModifyGroupOffsetsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ckafka", APIVersion, "BatchModifyGroupOffsets")
     
     
@@ -210,6 +213,7 @@ func NewBatchModifyTopicAttributesRequest() (request *BatchModifyTopicAttributes
     request = &BatchModifyTopicAttributesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ckafka", APIVersion, "BatchModifyTopicAttributes")
     
     
@@ -269,6 +273,7 @@ func NewCancelAuthorizationTokenRequest() (request *CancelAuthorizationTokenRequ
     request = &CancelAuthorizationTokenRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ckafka", APIVersion, "CancelAuthorizationToken")
     
     
@@ -324,6 +329,7 @@ func NewCheckCdcClusterRequest() (request *CheckCdcClusterRequest) {
     request = &CheckCdcClusterRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ckafka", APIVersion, "CheckCdcCluster")
     
     
@@ -379,6 +385,7 @@ func NewCreateAclRequest() (request *CreateAclRequest) {
     request = &CreateAclRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ckafka", APIVersion, "CreateAcl")
     
     
@@ -452,6 +459,7 @@ func NewCreateCdcClusterRequest() (request *CreateCdcClusterRequest) {
     request = &CreateCdcClusterRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ckafka", APIVersion, "CreateCdcCluster")
     
     
@@ -525,6 +533,7 @@ func NewCreateConnectResourceRequest() (request *CreateConnectResourceRequest) {
     request = &CreateConnectResourceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ckafka", APIVersion, "CreateConnectResource")
     
     
@@ -586,6 +595,7 @@ func NewCreateConsumerRequest() (request *CreateConsumerRequest) {
     request = &CreateConsumerRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ckafka", APIVersion, "CreateConsumer")
     
     
@@ -645,6 +655,7 @@ func NewCreateDatahubTaskRequest() (request *CreateDatahubTaskRequest) {
     request = &CreateDatahubTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ckafka", APIVersion, "CreateDatahubTask")
     
     
@@ -708,6 +719,7 @@ func NewCreateInstancePreRequest() (request *CreateInstancePreRequest) {
     request = &CreateInstancePreRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ckafka", APIVersion, "CreateInstancePre")
     
     
@@ -783,6 +795,7 @@ func NewCreatePartitionRequest() (request *CreatePartitionRequest) {
     request = &CreatePartitionRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ckafka", APIVersion, "CreatePartition")
     
     
@@ -858,6 +871,7 @@ func NewCreateRouteRequest() (request *CreateRouteRequest) {
     request = &CreateRouteRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ckafka", APIVersion, "CreateRoute")
     
     
@@ -939,6 +953,7 @@ func NewCreateTokenRequest() (request *CreateTokenRequest) {
     request = &CreateTokenRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ckafka", APIVersion, "CreateToken")
     
     
@@ -994,6 +1009,7 @@ func NewCreateTopicRequest() (request *CreateTopicRequest) {
     request = &CreateTopicRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ckafka", APIVersion, "CreateTopic")
     
     
@@ -1071,6 +1087,7 @@ func NewCreateTopicIpWhiteListRequest() (request *CreateTopicIpWhiteListRequest)
     request = &CreateTopicIpWhiteListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ckafka", APIVersion, "CreateTopicIpWhiteList")
     
     
@@ -1142,6 +1159,7 @@ func NewCreateUserRequest() (request *CreateUserRequest) {
     request = &CreateUserRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ckafka", APIVersion, "CreateUser")
     
     
@@ -1215,6 +1233,7 @@ func NewDeleteAclRequest() (request *DeleteAclRequest) {
     request = &DeleteAclRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ckafka", APIVersion, "DeleteAcl")
     
     
@@ -1288,6 +1307,7 @@ func NewDeleteAclRuleRequest() (request *DeleteAclRuleRequest) {
     request = &DeleteAclRuleRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ckafka", APIVersion, "DeleteAclRule")
     
     
@@ -1363,6 +1383,7 @@ func NewDeleteConnectResourceRequest() (request *DeleteConnectResourceRequest) {
     request = &DeleteConnectResourceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ckafka", APIVersion, "DeleteConnectResource")
     
     
@@ -1424,6 +1445,7 @@ func NewDeleteDatahubTaskRequest() (request *DeleteDatahubTaskRequest) {
     request = &DeleteDatahubTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ckafka", APIVersion, "DeleteDatahubTask")
     
     
@@ -1481,6 +1503,7 @@ func NewDeleteDatahubTopicRequest() (request *DeleteDatahubTopicRequest) {
     request = &DeleteDatahubTopicRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ckafka", APIVersion, "DeleteDatahubTopic")
     
     
@@ -1558,6 +1581,7 @@ func NewDeleteGroupRequest() (request *DeleteGroupRequest) {
     request = &DeleteGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ckafka", APIVersion, "DeleteGroup")
     
     
@@ -1629,6 +1653,7 @@ func NewDeleteInstancePreRequest() (request *DeleteInstancePreRequest) {
     request = &DeleteInstancePreRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ckafka", APIVersion, "DeleteInstancePre")
     
     
@@ -1678,6 +1703,7 @@ func NewDeleteRouteRequest() (request *DeleteRouteRequest) {
     request = &DeleteRouteRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ckafka", APIVersion, "DeleteRoute")
     
     
@@ -1755,6 +1781,7 @@ func NewDeleteRouteTriggerTimeRequest() (request *DeleteRouteTriggerTimeRequest)
     request = &DeleteRouteTriggerTimeRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ckafka", APIVersion, "DeleteRouteTriggerTime")
     
     
@@ -1810,6 +1837,7 @@ func NewDeleteTopicRequest() (request *DeleteTopicRequest) {
     request = &DeleteTopicRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ckafka", APIVersion, "DeleteTopic")
     
     
@@ -1887,6 +1915,7 @@ func NewDeleteTopicIpWhiteListRequest() (request *DeleteTopicIpWhiteListRequest)
     request = &DeleteTopicIpWhiteListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ckafka", APIVersion, "DeleteTopicIpWhiteList")
     
     
@@ -1958,6 +1987,7 @@ func NewDeleteUserRequest() (request *DeleteUserRequest) {
     request = &DeleteUserRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ckafka", APIVersion, "DeleteUser")
     
     
@@ -2031,6 +2061,7 @@ func NewDescribeACLRequest() (request *DescribeACLRequest) {
     request = &DescribeACLRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ckafka", APIVersion, "DescribeACL")
     
     
@@ -2104,6 +2135,7 @@ func NewDescribeAppInfoRequest() (request *DescribeAppInfoRequest) {
     request = &DescribeAppInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ckafka", APIVersion, "DescribeAppInfo")
     
     
@@ -2175,6 +2207,7 @@ func NewDescribeCkafkaZoneRequest() (request *DescribeCkafkaZoneRequest) {
     request = &DescribeCkafkaZoneRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ckafka", APIVersion, "DescribeCkafkaZone")
     
     
@@ -2250,6 +2283,7 @@ func NewDescribeConnectResourceRequest() (request *DescribeConnectResourceReques
     request = &DescribeConnectResourceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ckafka", APIVersion, "DescribeConnectResource")
     
     
@@ -2311,6 +2345,7 @@ func NewDescribeConnectResourcesRequest() (request *DescribeConnectResourcesRequ
     request = &DescribeConnectResourcesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ckafka", APIVersion, "DescribeConnectResources")
     
     
@@ -2372,6 +2407,7 @@ func NewDescribeConsumerGroupRequest() (request *DescribeConsumerGroupRequest) {
     request = &DescribeConsumerGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ckafka", APIVersion, "DescribeConsumerGroup")
     
     
@@ -2445,6 +2481,7 @@ func NewDescribeDatahubGroupOffsetsRequest() (request *DescribeDatahubGroupOffse
     request = &DescribeDatahubGroupOffsetsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ckafka", APIVersion, "DescribeDatahubGroupOffsets")
     
     
@@ -2518,6 +2555,7 @@ func NewDescribeDatahubTaskRequest() (request *DescribeDatahubTaskRequest) {
     request = &DescribeDatahubTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ckafka", APIVersion, "DescribeDatahubTask")
     
     
@@ -2573,6 +2611,7 @@ func NewDescribeDatahubTasksRequest() (request *DescribeDatahubTasksRequest) {
     request = &DescribeDatahubTasksRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ckafka", APIVersion, "DescribeDatahubTasks")
     
     
@@ -2632,6 +2671,7 @@ func NewDescribeGroupRequest() (request *DescribeGroupRequest) {
     request = &DescribeGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ckafka", APIVersion, "DescribeGroup")
     
     
@@ -2705,6 +2745,7 @@ func NewDescribeGroupInfoRequest() (request *DescribeGroupInfoRequest) {
     request = &DescribeGroupInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ckafka", APIVersion, "DescribeGroupInfo")
     
     
@@ -2778,6 +2819,7 @@ func NewDescribeGroupOffsetsRequest() (request *DescribeGroupOffsetsRequest) {
     request = &DescribeGroupOffsetsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ckafka", APIVersion, "DescribeGroupOffsets")
     
     
@@ -2851,6 +2893,7 @@ func NewDescribeInstanceAttributesRequest() (request *DescribeInstanceAttributes
     request = &DescribeInstanceAttributesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ckafka", APIVersion, "DescribeInstanceAttributes")
     
     
@@ -2926,6 +2969,7 @@ func NewDescribeInstancesRequest() (request *DescribeInstancesRequest) {
     request = &DescribeInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ckafka", APIVersion, "DescribeInstances")
     
     
@@ -2993,6 +3037,7 @@ func NewDescribeInstancesDetailRequest() (request *DescribeInstancesDetailReques
     request = &DescribeInstancesDetailRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ckafka", APIVersion, "DescribeInstancesDetail")
     
     
@@ -3068,6 +3113,7 @@ func NewDescribeRegionRequest() (request *DescribeRegionRequest) {
     request = &DescribeRegionRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ckafka", APIVersion, "DescribeRegion")
     
     
@@ -3141,6 +3187,7 @@ func NewDescribeRouteRequest() (request *DescribeRouteRequest) {
     request = &DescribeRouteRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ckafka", APIVersion, "DescribeRoute")
     
     
@@ -3216,6 +3263,7 @@ func NewDescribeTopicRequest() (request *DescribeTopicRequest) {
     request = &DescribeTopicRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ckafka", APIVersion, "DescribeTopic")
     
     
@@ -3295,6 +3343,7 @@ func NewDescribeTopicAttributesRequest() (request *DescribeTopicAttributesReques
     request = &DescribeTopicAttributesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ckafka", APIVersion, "DescribeTopicAttributes")
     
     
@@ -3370,6 +3419,7 @@ func NewDescribeTopicDetailRequest() (request *DescribeTopicDetailRequest) {
     request = &DescribeTopicDetailRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ckafka", APIVersion, "DescribeTopicDetail")
     
     
@@ -3437,6 +3487,7 @@ func NewDescribeTopicSubscribeGroupRequest() (request *DescribeTopicSubscribeGro
     request = &DescribeTopicSubscribeGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ckafka", APIVersion, "DescribeTopicSubscribeGroup")
     
     
@@ -3520,6 +3571,7 @@ func NewDescribeTopicSyncReplicaRequest() (request *DescribeTopicSyncReplicaRequ
     request = &DescribeTopicSyncReplicaRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ckafka", APIVersion, "DescribeTopicSyncReplica")
     
     
@@ -3577,6 +3629,7 @@ func NewDescribeUserRequest() (request *DescribeUserRequest) {
     request = &DescribeUserRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ckafka", APIVersion, "DescribeUser")
     
     
@@ -3648,6 +3701,7 @@ func NewFetchDatahubMessageByOffsetRequest() (request *FetchDatahubMessageByOffs
     request = &FetchDatahubMessageByOffsetRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ckafka", APIVersion, "FetchDatahubMessageByOffset")
     
     
@@ -3695,6 +3749,7 @@ func NewFetchLatestDatahubMessageListRequest() (request *FetchLatestDatahubMessa
     request = &FetchLatestDatahubMessageListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ckafka", APIVersion, "FetchLatestDatahubMessageList")
     
     
@@ -3744,6 +3799,7 @@ func NewFetchMessageByOffsetRequest() (request *FetchMessageByOffsetRequest) {
     request = &FetchMessageByOffsetRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ckafka", APIVersion, "FetchMessageByOffset")
     
     
@@ -3791,6 +3847,7 @@ func NewFetchMessageListByOffsetRequest() (request *FetchMessageListByOffsetRequ
     request = &FetchMessageListByOffsetRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ckafka", APIVersion, "FetchMessageListByOffset")
     
     
@@ -3840,6 +3897,7 @@ func NewModifyConnectResourceRequest() (request *ModifyConnectResourceRequest) {
     request = &ModifyConnectResourceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ckafka", APIVersion, "ModifyConnectResource")
     
     
@@ -3901,6 +3959,7 @@ func NewModifyDatahubTaskRequest() (request *ModifyDatahubTaskRequest) {
     request = &ModifyDatahubTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ckafka", APIVersion, "ModifyDatahubTask")
     
     
@@ -3960,6 +4019,7 @@ func NewModifyGroupOffsetsRequest() (request *ModifyGroupOffsetsRequest) {
     request = &ModifyGroupOffsetsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ckafka", APIVersion, "ModifyGroupOffsets")
     
     
@@ -4033,6 +4093,7 @@ func NewModifyInstanceAttributesRequest() (request *ModifyInstanceAttributesRequ
     request = &ModifyInstanceAttributesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ckafka", APIVersion, "ModifyInstanceAttributes")
     
     
@@ -4106,6 +4167,7 @@ func NewModifyInstancePreRequest() (request *ModifyInstancePreRequest) {
     request = &ModifyInstancePreRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ckafka", APIVersion, "ModifyInstancePre")
     
     
@@ -4177,6 +4239,7 @@ func NewModifyPasswordRequest() (request *ModifyPasswordRequest) {
     request = &ModifyPasswordRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ckafka", APIVersion, "ModifyPassword")
     
     
@@ -4250,6 +4313,7 @@ func NewModifyTopicAttributesRequest() (request *ModifyTopicAttributesRequest) {
     request = &ModifyTopicAttributesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ckafka", APIVersion, "ModifyTopicAttributes")
     
     
@@ -4323,6 +4387,7 @@ func NewSendMessageRequest() (request *SendMessageRequest) {
     request = &SendMessageRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ckafka", APIVersion, "SendMessage")
     
     

@@ -49,6 +49,7 @@ func NewRecommendContentRequest() (request *RecommendContentRequest) {
     request = &RecommendContentRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("irp", APIVersion, "RecommendContent")
     
     
@@ -104,6 +105,7 @@ func NewReportActionRequest() (request *ReportActionRequest) {
     request = &ReportActionRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("irp", APIVersion, "ReportAction")
     
     
@@ -159,6 +161,7 @@ func NewReportMaterialRequest() (request *ReportMaterialRequest) {
     request = &ReportMaterialRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("irp", APIVersion, "ReportMaterial")
     
     
@@ -214,6 +217,7 @@ func NewReportPortraitRequest() (request *ReportPortraitRequest) {
     request = &ReportPortraitRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("irp", APIVersion, "ReportPortrait")
     
     

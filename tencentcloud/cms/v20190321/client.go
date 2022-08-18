@@ -49,6 +49,7 @@ func NewCreateFileSampleRequest() (request *CreateFileSampleRequest) {
     request = &CreateFileSampleRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cms", APIVersion, "CreateFileSample")
     
     
@@ -104,6 +105,7 @@ func NewCreateTextSampleRequest() (request *CreateTextSampleRequest) {
     request = &CreateTextSampleRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cms", APIVersion, "CreateTextSample")
     
     
@@ -159,6 +161,7 @@ func NewDeleteFileSampleRequest() (request *DeleteFileSampleRequest) {
     request = &DeleteFileSampleRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cms", APIVersion, "DeleteFileSample")
     
     
@@ -214,6 +217,7 @@ func NewDeleteTextSampleRequest() (request *DeleteTextSampleRequest) {
     request = &DeleteTextSampleRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cms", APIVersion, "DeleteTextSample")
     
     
@@ -269,6 +273,7 @@ func NewDescribeFileSampleRequest() (request *DescribeFileSampleRequest) {
     request = &DescribeFileSampleRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cms", APIVersion, "DescribeFileSample")
     
     
@@ -324,6 +329,7 @@ func NewDescribeTextSampleRequest() (request *DescribeTextSampleRequest) {
     request = &DescribeTextSampleRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cms", APIVersion, "DescribeTextSample")
     
     
@@ -379,6 +385,7 @@ func NewImageModerationRequest() (request *ImageModerationRequest) {
     request = &ImageModerationRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cms", APIVersion, "ImageModeration")
     
     
@@ -448,6 +455,7 @@ func NewManualReviewRequest() (request *ManualReviewRequest) {
     request = &ManualReviewRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cms", APIVersion, "ManualReview")
     
     
@@ -525,6 +533,7 @@ func NewTextModerationRequest() (request *TextModerationRequest) {
     request = &TextModerationRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cms", APIVersion, "TextModeration")
     
     

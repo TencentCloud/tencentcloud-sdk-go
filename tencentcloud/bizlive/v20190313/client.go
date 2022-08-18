@@ -49,6 +49,7 @@ func NewCreateSessionRequest() (request *CreateSessionRequest) {
     request = &CreateSessionRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bizlive", APIVersion, "CreateSession")
     
     
@@ -102,6 +103,7 @@ func NewDescribeStreamPlayInfoListRequest() (request *DescribeStreamPlayInfoList
     request = &DescribeStreamPlayInfoListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bizlive", APIVersion, "DescribeStreamPlayInfoList")
     
     
@@ -155,6 +157,7 @@ func NewDescribeWorkersRequest() (request *DescribeWorkersRequest) {
     request = &DescribeWorkersRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bizlive", APIVersion, "DescribeWorkers")
     
     
@@ -202,6 +205,7 @@ func NewForbidLiveStreamRequest() (request *ForbidLiveStreamRequest) {
     request = &ForbidLiveStreamRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bizlive", APIVersion, "ForbidLiveStream")
     
     
@@ -271,6 +275,7 @@ func NewRegisterIMRequest() (request *RegisterIMRequest) {
     request = &RegisterIMRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bizlive", APIVersion, "RegisterIM")
     
     
@@ -326,6 +331,7 @@ func NewStopGameRequest() (request *StopGameRequest) {
     request = &StopGameRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bizlive", APIVersion, "StopGame")
     
     

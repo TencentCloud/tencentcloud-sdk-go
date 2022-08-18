@@ -49,6 +49,7 @@ func NewFeedRecommendRequest() (request *FeedRecommendRequest) {
     request = &FeedRecommendRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("irp", APIVersion, "FeedRecommend")
     
     
@@ -104,6 +105,7 @@ func NewReportFeedBehaviorRequest() (request *ReportFeedBehaviorRequest) {
     request = &ReportFeedBehaviorRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("irp", APIVersion, "ReportFeedBehavior")
     
     
@@ -159,6 +161,7 @@ func NewReportFeedItemRequest() (request *ReportFeedItemRequest) {
     request = &ReportFeedItemRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("irp", APIVersion, "ReportFeedItem")
     
     
@@ -214,6 +217,7 @@ func NewReportFeedUserRequest() (request *ReportFeedUserRequest) {
     request = &ReportFeedUserRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("irp", APIVersion, "ReportFeedUser")
     
     

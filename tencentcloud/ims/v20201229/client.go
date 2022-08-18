@@ -49,6 +49,7 @@ func NewImageModerationRequest() (request *ImageModerationRequest) {
     request = &ImageModerationRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ims", APIVersion, "ImageModeration")
     
     

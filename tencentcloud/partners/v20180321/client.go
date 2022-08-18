@@ -49,6 +49,7 @@ func NewAgentPayDealsRequest() (request *AgentPayDealsRequest) {
     request = &AgentPayDealsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("partners", APIVersion, "AgentPayDeals")
     
     
@@ -102,6 +103,7 @@ func NewAgentTransferMoneyRequest() (request *AgentTransferMoneyRequest) {
     request = &AgentTransferMoneyRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("partners", APIVersion, "AgentTransferMoney")
     
     
@@ -155,6 +157,7 @@ func NewAuditApplyClientRequest() (request *AuditApplyClientRequest) {
     request = &AuditApplyClientRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("partners", APIVersion, "AuditApplyClient")
     
     
@@ -206,6 +209,7 @@ func NewCreatePayRelationForClientRequest() (request *CreatePayRelationForClient
     request = &CreatePayRelationForClientRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("partners", APIVersion, "CreatePayRelationForClient")
     
     
@@ -253,6 +257,7 @@ func NewDescribeAgentAuditedClientsRequest() (request *DescribeAgentAuditedClien
     request = &DescribeAgentAuditedClientsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("partners", APIVersion, "DescribeAgentAuditedClients")
     
     
@@ -304,6 +309,7 @@ func NewDescribeAgentBillsRequest() (request *DescribeAgentBillsRequest) {
     request = &DescribeAgentBillsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("partners", APIVersion, "DescribeAgentBills")
     
     
@@ -353,6 +359,7 @@ func NewDescribeAgentClientGradeRequest() (request *DescribeAgentClientGradeRequ
     request = &DescribeAgentClientGradeRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("partners", APIVersion, "DescribeAgentClientGrade")
     
     
@@ -406,6 +413,7 @@ func NewDescribeAgentClientsRequest() (request *DescribeAgentClientsRequest) {
     request = &DescribeAgentClientsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("partners", APIVersion, "DescribeAgentClients")
     
     
@@ -455,6 +463,7 @@ func NewDescribeAgentDealsByCacheRequest() (request *DescribeAgentDealsByCacheRe
     request = &DescribeAgentDealsByCacheRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("partners", APIVersion, "DescribeAgentDealsByCache")
     
     
@@ -508,6 +517,7 @@ func NewDescribeAgentDealsCacheRequest() (request *DescribeAgentDealsCacheReques
     request = &DescribeAgentDealsCacheRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("partners", APIVersion, "DescribeAgentDealsCache")
     
     
@@ -561,6 +571,7 @@ func NewDescribeAgentPayDealsRequest() (request *DescribeAgentPayDealsRequest) {
     request = &DescribeAgentPayDealsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("partners", APIVersion, "DescribeAgentPayDeals")
     
     
@@ -614,6 +625,7 @@ func NewDescribeAgentPayDealsV2Request() (request *DescribeAgentPayDealsV2Reques
     request = &DescribeAgentPayDealsV2Request{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("partners", APIVersion, "DescribeAgentPayDealsV2")
     
     
@@ -667,6 +679,7 @@ func NewDescribeAgentSelfPayDealsRequest() (request *DescribeAgentSelfPayDealsRe
     request = &DescribeAgentSelfPayDealsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("partners", APIVersion, "DescribeAgentSelfPayDeals")
     
     
@@ -720,6 +733,7 @@ func NewDescribeAgentSelfPayDealsV2Request() (request *DescribeAgentSelfPayDeals
     request = &DescribeAgentSelfPayDealsV2Request{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("partners", APIVersion, "DescribeAgentSelfPayDealsV2")
     
     
@@ -773,6 +787,7 @@ func NewDescribeClientBalanceRequest() (request *DescribeClientBalanceRequest) {
     request = &DescribeClientBalanceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("partners", APIVersion, "DescribeClientBalance")
     
     
@@ -824,6 +839,7 @@ func NewDescribeClientBalanceNewRequest() (request *DescribeClientBalanceNewRequ
     request = &DescribeClientBalanceNewRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("partners", APIVersion, "DescribeClientBalanceNew")
     
     
@@ -875,6 +891,7 @@ func NewDescribeRebateInfosRequest() (request *DescribeRebateInfosRequest) {
     request = &DescribeRebateInfosRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("partners", APIVersion, "DescribeRebateInfos")
     
     
@@ -924,6 +941,7 @@ func NewDescribeSalesmansRequest() (request *DescribeSalesmansRequest) {
     request = &DescribeSalesmansRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("partners", APIVersion, "DescribeSalesmans")
     
     
@@ -977,6 +995,7 @@ func NewDescribeUnbindClientListRequest() (request *DescribeUnbindClientListRequ
     request = &DescribeUnbindClientListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("partners", APIVersion, "DescribeUnbindClientList")
     
     
@@ -1030,6 +1049,7 @@ func NewModifyClientRemarkRequest() (request *ModifyClientRemarkRequest) {
     request = &ModifyClientRemarkRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("partners", APIVersion, "ModifyClientRemark")
     
     
@@ -1079,6 +1099,7 @@ func NewRemovePayRelationForClientRequest() (request *RemovePayRelationForClient
     request = &RemovePayRelationForClientRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("partners", APIVersion, "RemovePayRelationForClient")
     
     

@@ -49,6 +49,7 @@ func NewCreateEngineRequest() (request *CreateEngineRequest) {
     request = &CreateEngineRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tse", APIVersion, "CreateEngine")
     
     
@@ -124,6 +125,7 @@ func NewDeleteEngineRequest() (request *DeleteEngineRequest) {
     request = &DeleteEngineRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tse", APIVersion, "DeleteEngine")
     
     
@@ -183,6 +185,7 @@ func NewDescribeCloudNativeAPIGatewayNodesRequest() (request *DescribeCloudNativ
     request = &DescribeCloudNativeAPIGatewayNodesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tse", APIVersion, "DescribeCloudNativeAPIGatewayNodes")
     
     
@@ -236,6 +239,7 @@ func NewDescribeNacosReplicasRequest() (request *DescribeNacosReplicasRequest) {
     request = &DescribeNacosReplicasRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tse", APIVersion, "DescribeNacosReplicas")
     
     
@@ -291,6 +295,7 @@ func NewDescribeNacosServerInterfacesRequest() (request *DescribeNacosServerInte
     request = &DescribeNacosServerInterfacesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tse", APIVersion, "DescribeNacosServerInterfaces")
     
     
@@ -340,6 +345,7 @@ func NewDescribeSREInstanceAccessAddressRequest() (request *DescribeSREInstanceA
     request = &DescribeSREInstanceAccessAddressRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tse", APIVersion, "DescribeSREInstanceAccessAddress")
     
     
@@ -393,6 +399,7 @@ func NewDescribeSREInstancesRequest() (request *DescribeSREInstancesRequest) {
     request = &DescribeSREInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tse", APIVersion, "DescribeSREInstances")
     
     
@@ -456,6 +463,7 @@ func NewDescribeZookeeperReplicasRequest() (request *DescribeZookeeperReplicasRe
     request = &DescribeZookeeperReplicasRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tse", APIVersion, "DescribeZookeeperReplicas")
     
     
@@ -511,6 +519,7 @@ func NewDescribeZookeeperServerInterfacesRequest() (request *DescribeZookeeperSe
     request = &DescribeZookeeperServerInterfacesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tse", APIVersion, "DescribeZookeeperServerInterfaces")
     
     

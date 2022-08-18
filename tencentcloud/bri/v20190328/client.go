@@ -49,6 +49,7 @@ func NewDescribeBRIRequest() (request *DescribeBRIRequest) {
     request = &DescribeBRIRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bri", APIVersion, "DescribeBRI")
     
     

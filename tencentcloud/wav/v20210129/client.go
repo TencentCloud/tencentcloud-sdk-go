@@ -49,6 +49,7 @@ func NewCreateChannelCodeRequest() (request *CreateChannelCodeRequest) {
     request = &CreateChannelCodeRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("wav", APIVersion, "CreateChannelCode")
     
     
@@ -90,6 +91,7 @@ func NewCreateCorpTagRequest() (request *CreateCorpTagRequest) {
     request = &CreateCorpTagRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("wav", APIVersion, "CreateCorpTag")
     
     
@@ -151,6 +153,7 @@ func NewCreateLeadRequest() (request *CreateLeadRequest) {
     request = &CreateLeadRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("wav", APIVersion, "CreateLead")
     
     
@@ -220,6 +223,7 @@ func NewQueryActivityJoinListRequest() (request *QueryActivityJoinListRequest) {
     request = &QueryActivityJoinListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("wav", APIVersion, "QueryActivityJoinList")
     
     
@@ -273,6 +277,7 @@ func NewQueryActivityListRequest() (request *QueryActivityListRequest) {
     request = &QueryActivityListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("wav", APIVersion, "QueryActivityList")
     
     
@@ -326,6 +331,7 @@ func NewQueryActivityLiveCodeListRequest() (request *QueryActivityLiveCodeListRe
     request = &QueryActivityLiveCodeListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("wav", APIVersion, "QueryActivityLiveCodeList")
     
     
@@ -377,6 +383,7 @@ func NewQueryChannelCodeListRequest() (request *QueryChannelCodeListRequest) {
     request = &QueryChannelCodeListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("wav", APIVersion, "QueryChannelCodeList")
     
     
@@ -428,6 +435,7 @@ func NewQueryChatArchivingListRequest() (request *QueryChatArchivingListRequest)
     request = &QueryChatArchivingListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("wav", APIVersion, "QueryChatArchivingList")
     
     
@@ -479,6 +487,7 @@ func NewQueryClueInfoListRequest() (request *QueryClueInfoListRequest) {
     request = &QueryClueInfoListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("wav", APIVersion, "QueryClueInfoList")
     
     
@@ -536,6 +545,7 @@ func NewQueryCrmStatisticsRequest() (request *QueryCrmStatisticsRequest) {
     request = &QueryCrmStatisticsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("wav", APIVersion, "QueryCrmStatistics")
     
     
@@ -589,6 +599,7 @@ func NewQueryCustomerEventDetailStatisticsRequest() (request *QueryCustomerEvent
     request = &QueryCustomerEventDetailStatisticsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("wav", APIVersion, "QueryCustomerEventDetailStatistics")
     
     
@@ -642,6 +653,7 @@ func NewQueryDealerInfoListRequest() (request *QueryDealerInfoListRequest) {
     request = &QueryDealerInfoListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("wav", APIVersion, "QueryDealerInfoList")
     
     
@@ -699,6 +711,7 @@ func NewQueryExternalContactDetailRequest() (request *QueryExternalContactDetail
     request = &QueryExternalContactDetailRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("wav", APIVersion, "QueryExternalContactDetail")
     
     
@@ -762,6 +775,7 @@ func NewQueryExternalContactListRequest() (request *QueryExternalContactListRequ
     request = &QueryExternalContactListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("wav", APIVersion, "QueryExternalContactList")
     
     
@@ -817,6 +831,7 @@ func NewQueryExternalUserEventListRequest() (request *QueryExternalUserEventList
     request = &QueryExternalUserEventListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("wav", APIVersion, "QueryExternalUserEventList")
     
     
@@ -882,6 +897,7 @@ func NewQueryExternalUserMappingInfoRequest() (request *QueryExternalUserMapping
     request = &QueryExternalUserMappingInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("wav", APIVersion, "QueryExternalUserMappingInfo")
     
     
@@ -937,6 +953,7 @@ func NewQueryLicenseInfoRequest() (request *QueryLicenseInfoRequest) {
     request = &QueryLicenseInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("wav", APIVersion, "QueryLicenseInfo")
     
     
@@ -990,6 +1007,7 @@ func NewQueryMaterialListRequest() (request *QueryMaterialListRequest) {
     request = &QueryMaterialListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("wav", APIVersion, "QueryMaterialList")
     
     
@@ -1055,6 +1073,7 @@ func NewQueryMiniAppCodeListRequest() (request *QueryMiniAppCodeListRequest) {
     request = &QueryMiniAppCodeListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("wav", APIVersion, "QueryMiniAppCodeList")
     
     
@@ -1116,6 +1135,7 @@ func NewQueryStaffEventDetailStatisticsRequest() (request *QueryStaffEventDetail
     request = &QueryStaffEventDetailStatisticsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("wav", APIVersion, "QueryStaffEventDetailStatistics")
     
     
@@ -1169,6 +1189,7 @@ func NewQueryUserInfoListRequest() (request *QueryUserInfoListRequest) {
     request = &QueryUserInfoListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("wav", APIVersion, "QueryUserInfoList")
     
     
@@ -1230,6 +1251,7 @@ func NewQueryVehicleInfoListRequest() (request *QueryVehicleInfoListRequest) {
     request = &QueryVehicleInfoListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("wav", APIVersion, "QueryVehicleInfoList")
     
     

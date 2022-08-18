@@ -49,6 +49,7 @@ func NewDescribeCaptchaAppIdInfoRequest() (request *DescribeCaptchaAppIdInfoRequ
     request = &DescribeCaptchaAppIdInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("captcha", APIVersion, "DescribeCaptchaAppIdInfo")
     
     
@@ -102,6 +103,7 @@ func NewDescribeCaptchaDataRequest() (request *DescribeCaptchaDataRequest) {
     request = &DescribeCaptchaDataRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("captcha", APIVersion, "DescribeCaptchaData")
     
     
@@ -155,6 +157,7 @@ func NewDescribeCaptchaDataSumRequest() (request *DescribeCaptchaDataSumRequest)
     request = &DescribeCaptchaDataSumRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("captcha", APIVersion, "DescribeCaptchaDataSum")
     
     
@@ -208,6 +211,7 @@ func NewDescribeCaptchaMiniDataRequest() (request *DescribeCaptchaMiniDataReques
     request = &DescribeCaptchaMiniDataRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("captcha", APIVersion, "DescribeCaptchaMiniData")
     
     
@@ -261,6 +265,7 @@ func NewDescribeCaptchaMiniDataSumRequest() (request *DescribeCaptchaMiniDataSum
     request = &DescribeCaptchaMiniDataSumRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("captcha", APIVersion, "DescribeCaptchaMiniDataSum")
     
     
@@ -314,6 +319,7 @@ func NewDescribeCaptchaMiniOperDataRequest() (request *DescribeCaptchaMiniOperDa
     request = &DescribeCaptchaMiniOperDataRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("captcha", APIVersion, "DescribeCaptchaMiniOperData")
     
     
@@ -367,6 +373,7 @@ func NewDescribeCaptchaMiniResultRequest() (request *DescribeCaptchaMiniResultRe
     request = &DescribeCaptchaMiniResultRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("captcha", APIVersion, "DescribeCaptchaMiniResult")
     
     
@@ -420,6 +427,7 @@ func NewDescribeCaptchaMiniRiskResultRequest() (request *DescribeCaptchaMiniRisk
     request = &DescribeCaptchaMiniRiskResultRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("captcha", APIVersion, "DescribeCaptchaMiniRiskResult")
     
     
@@ -473,6 +481,7 @@ func NewDescribeCaptchaOperDataRequest() (request *DescribeCaptchaOperDataReques
     request = &DescribeCaptchaOperDataRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("captcha", APIVersion, "DescribeCaptchaOperData")
     
     
@@ -526,6 +535,7 @@ func NewDescribeCaptchaResultRequest() (request *DescribeCaptchaResultRequest) {
     request = &DescribeCaptchaResultRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("captcha", APIVersion, "DescribeCaptchaResult")
     
     
@@ -579,6 +589,7 @@ func NewDescribeCaptchaTicketDataRequest() (request *DescribeCaptchaTicketDataRe
     request = &DescribeCaptchaTicketDataRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("captcha", APIVersion, "DescribeCaptchaTicketData")
     
     
@@ -632,6 +643,7 @@ func NewDescribeCaptchaUserAllAppIdRequest() (request *DescribeCaptchaUserAllApp
     request = &DescribeCaptchaUserAllAppIdRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("captcha", APIVersion, "DescribeCaptchaUserAllAppId")
     
     
@@ -685,6 +697,7 @@ func NewUpdateCaptchaAppIdInfoRequest() (request *UpdateCaptchaAppIdInfoRequest)
     request = &UpdateCaptchaAppIdInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("captcha", APIVersion, "UpdateCaptchaAppIdInfo")
     
     

@@ -49,6 +49,7 @@ func NewAddDMSPartitionsRequest() (request *AddDMSPartitionsRequest) {
     request = &AddDMSPartitionsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dlc", APIVersion, "AddDMSPartitions")
     
     
@@ -102,6 +103,7 @@ func NewAddUsersToWorkGroupRequest() (request *AddUsersToWorkGroupRequest) {
     request = &AddUsersToWorkGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dlc", APIVersion, "AddUsersToWorkGroup")
     
     
@@ -155,6 +157,7 @@ func NewAlterDMSDatabaseRequest() (request *AlterDMSDatabaseRequest) {
     request = &AlterDMSDatabaseRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dlc", APIVersion, "AlterDMSDatabase")
     
     
@@ -208,6 +211,7 @@ func NewAlterDMSPartitionRequest() (request *AlterDMSPartitionRequest) {
     request = &AlterDMSPartitionRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dlc", APIVersion, "AlterDMSPartition")
     
     
@@ -261,6 +265,7 @@ func NewAlterDMSTableRequest() (request *AlterDMSTableRequest) {
     request = &AlterDMSTableRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dlc", APIVersion, "AlterDMSTable")
     
     
@@ -314,6 +319,7 @@ func NewAttachUserPolicyRequest() (request *AttachUserPolicyRequest) {
     request = &AttachUserPolicyRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dlc", APIVersion, "AttachUserPolicy")
     
     
@@ -383,6 +389,7 @@ func NewAttachWorkGroupPolicyRequest() (request *AttachWorkGroupPolicyRequest) {
     request = &AttachWorkGroupPolicyRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dlc", APIVersion, "AttachWorkGroupPolicy")
     
     
@@ -446,6 +453,7 @@ func NewBindWorkGroupsToUserRequest() (request *BindWorkGroupsToUserRequest) {
     request = &BindWorkGroupsToUserRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dlc", APIVersion, "BindWorkGroupsToUser")
     
     
@@ -499,6 +507,7 @@ func NewCancelTaskRequest() (request *CancelTaskRequest) {
     request = &CancelTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dlc", APIVersion, "CancelTask")
     
     
@@ -554,6 +563,7 @@ func NewCheckLockMetaDataRequest() (request *CheckLockMetaDataRequest) {
     request = &CheckLockMetaDataRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dlc", APIVersion, "CheckLockMetaData")
     
     
@@ -601,6 +611,7 @@ func NewCreateDMSDatabaseRequest() (request *CreateDMSDatabaseRequest) {
     request = &CreateDMSDatabaseRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dlc", APIVersion, "CreateDMSDatabase")
     
     
@@ -654,6 +665,7 @@ func NewCreateDMSTableRequest() (request *CreateDMSTableRequest) {
     request = &CreateDMSTableRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dlc", APIVersion, "CreateDMSTable")
     
     
@@ -707,6 +719,7 @@ func NewCreateDatabaseRequest() (request *CreateDatabaseRequest) {
     request = &CreateDatabaseRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dlc", APIVersion, "CreateDatabase")
     
     
@@ -756,6 +769,7 @@ func NewCreateExportTaskRequest() (request *CreateExportTaskRequest) {
     request = &CreateExportTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dlc", APIVersion, "CreateExportTask")
     
     
@@ -811,6 +825,7 @@ func NewCreateImportTaskRequest() (request *CreateImportTaskRequest) {
     request = &CreateImportTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dlc", APIVersion, "CreateImportTask")
     
     
@@ -864,6 +879,7 @@ func NewCreateScriptRequest() (request *CreateScriptRequest) {
     request = &CreateScriptRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dlc", APIVersion, "CreateScript")
     
     
@@ -915,6 +931,7 @@ func NewCreateSparkAppRequest() (request *CreateSparkAppRequest) {
     request = &CreateSparkAppRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dlc", APIVersion, "CreateSparkApp")
     
     
@@ -964,6 +981,7 @@ func NewCreateSparkAppTaskRequest() (request *CreateSparkAppTaskRequest) {
     request = &CreateSparkAppTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dlc", APIVersion, "CreateSparkAppTask")
     
     
@@ -1017,6 +1035,7 @@ func NewCreateStoreLocationRequest() (request *CreateStoreLocationRequest) {
     request = &CreateStoreLocationRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dlc", APIVersion, "CreateStoreLocation")
     
     
@@ -1068,6 +1087,7 @@ func NewCreateTableRequest() (request *CreateTableRequest) {
     request = &CreateTableRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dlc", APIVersion, "CreateTable")
     
     
@@ -1119,6 +1139,7 @@ func NewCreateTaskRequest() (request *CreateTaskRequest) {
     request = &CreateTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dlc", APIVersion, "CreateTask")
     
     
@@ -1186,6 +1207,7 @@ func NewCreateTasksRequest() (request *CreateTasksRequest) {
     request = &CreateTasksRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dlc", APIVersion, "CreateTasks")
     
     
@@ -1257,6 +1279,7 @@ func NewCreateTasksInOrderRequest() (request *CreateTasksInOrderRequest) {
     request = &CreateTasksInOrderRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dlc", APIVersion, "CreateTasksInOrder")
     
     
@@ -1310,6 +1333,7 @@ func NewCreateUserRequest() (request *CreateUserRequest) {
     request = &CreateUserRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dlc", APIVersion, "CreateUser")
     
     
@@ -1381,6 +1405,7 @@ func NewCreateWorkGroupRequest() (request *CreateWorkGroupRequest) {
     request = &CreateWorkGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dlc", APIVersion, "CreateWorkGroup")
     
     
@@ -1450,6 +1475,7 @@ func NewDeleteScriptRequest() (request *DeleteScriptRequest) {
     request = &DeleteScriptRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dlc", APIVersion, "DeleteScript")
     
     
@@ -1499,6 +1525,7 @@ func NewDeleteSparkAppRequest() (request *DeleteSparkAppRequest) {
     request = &DeleteSparkAppRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dlc", APIVersion, "DeleteSparkApp")
     
     
@@ -1548,6 +1575,7 @@ func NewDeleteUserRequest() (request *DeleteUserRequest) {
     request = &DeleteUserRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dlc", APIVersion, "DeleteUser")
     
     
@@ -1609,6 +1637,7 @@ func NewDeleteUsersFromWorkGroupRequest() (request *DeleteUsersFromWorkGroupRequ
     request = &DeleteUsersFromWorkGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dlc", APIVersion, "DeleteUsersFromWorkGroup")
     
     
@@ -1660,6 +1689,7 @@ func NewDeleteWorkGroupRequest() (request *DeleteWorkGroupRequest) {
     request = &DeleteWorkGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dlc", APIVersion, "DeleteWorkGroup")
     
     
@@ -1713,6 +1743,7 @@ func NewDescribeDMSDatabaseRequest() (request *DescribeDMSDatabaseRequest) {
     request = &DescribeDMSDatabaseRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dlc", APIVersion, "DescribeDMSDatabase")
     
     
@@ -1766,6 +1797,7 @@ func NewDescribeDMSPartitionsRequest() (request *DescribeDMSPartitionsRequest) {
     request = &DescribeDMSPartitionsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dlc", APIVersion, "DescribeDMSPartitions")
     
     
@@ -1819,6 +1851,7 @@ func NewDescribeDMSTableRequest() (request *DescribeDMSTableRequest) {
     request = &DescribeDMSTableRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dlc", APIVersion, "DescribeDMSTable")
     
     
@@ -1872,6 +1905,7 @@ func NewDescribeDMSTablesRequest() (request *DescribeDMSTablesRequest) {
     request = &DescribeDMSTablesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dlc", APIVersion, "DescribeDMSTables")
     
     
@@ -1925,6 +1959,7 @@ func NewDescribeDatabasesRequest() (request *DescribeDatabasesRequest) {
     request = &DescribeDatabasesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dlc", APIVersion, "DescribeDatabases")
     
     
@@ -1980,6 +2015,7 @@ func NewDescribeScriptsRequest() (request *DescribeScriptsRequest) {
     request = &DescribeScriptsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dlc", APIVersion, "DescribeScripts")
     
     
@@ -2031,6 +2067,7 @@ func NewDescribeSparkAppJobRequest() (request *DescribeSparkAppJobRequest) {
     request = &DescribeSparkAppJobRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dlc", APIVersion, "DescribeSparkAppJob")
     
     
@@ -2082,6 +2119,7 @@ func NewDescribeSparkAppJobsRequest() (request *DescribeSparkAppJobsRequest) {
     request = &DescribeSparkAppJobsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dlc", APIVersion, "DescribeSparkAppJobs")
     
     
@@ -2129,6 +2167,7 @@ func NewDescribeSparkAppTasksRequest() (request *DescribeSparkAppTasksRequest) {
     request = &DescribeSparkAppTasksRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dlc", APIVersion, "DescribeSparkAppTasks")
     
     
@@ -2176,6 +2215,7 @@ func NewDescribeStoreLocationRequest() (request *DescribeStoreLocationRequest) {
     request = &DescribeStoreLocationRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dlc", APIVersion, "DescribeStoreLocation")
     
     
@@ -2225,6 +2265,7 @@ func NewDescribeTableRequest() (request *DescribeTableRequest) {
     request = &DescribeTableRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dlc", APIVersion, "DescribeTable")
     
     
@@ -2284,6 +2325,7 @@ func NewDescribeTablesRequest() (request *DescribeTablesRequest) {
     request = &DescribeTablesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dlc", APIVersion, "DescribeTables")
     
     
@@ -2335,6 +2377,7 @@ func NewDescribeTaskResultRequest() (request *DescribeTaskResultRequest) {
     request = &DescribeTaskResultRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dlc", APIVersion, "DescribeTaskResult")
     
     
@@ -2390,6 +2433,7 @@ func NewDescribeTasksRequest() (request *DescribeTasksRequest) {
     request = &DescribeTasksRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dlc", APIVersion, "DescribeTasks")
     
     
@@ -2443,6 +2487,7 @@ func NewDescribeUsersRequest() (request *DescribeUsersRequest) {
     request = &DescribeUsersRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dlc", APIVersion, "DescribeUsers")
     
     
@@ -2502,6 +2547,7 @@ func NewDescribeViewsRequest() (request *DescribeViewsRequest) {
     request = &DescribeViewsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dlc", APIVersion, "DescribeViews")
     
     
@@ -2553,6 +2599,7 @@ func NewDescribeWorkGroupsRequest() (request *DescribeWorkGroupsRequest) {
     request = &DescribeWorkGroupsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dlc", APIVersion, "DescribeWorkGroups")
     
     
@@ -2612,6 +2659,7 @@ func NewDetachUserPolicyRequest() (request *DetachUserPolicyRequest) {
     request = &DetachUserPolicyRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dlc", APIVersion, "DetachUserPolicy")
     
     
@@ -2679,6 +2727,7 @@ func NewDetachWorkGroupPolicyRequest() (request *DetachWorkGroupPolicyRequest) {
     request = &DetachWorkGroupPolicyRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dlc", APIVersion, "DetachWorkGroupPolicy")
     
     
@@ -2740,6 +2789,7 @@ func NewDropDMSDatabaseRequest() (request *DropDMSDatabaseRequest) {
     request = &DropDMSDatabaseRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dlc", APIVersion, "DropDMSDatabase")
     
     
@@ -2793,6 +2843,7 @@ func NewDropDMSPartitionsRequest() (request *DropDMSPartitionsRequest) {
     request = &DropDMSPartitionsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dlc", APIVersion, "DropDMSPartitions")
     
     
@@ -2846,6 +2897,7 @@ func NewDropDMSTableRequest() (request *DropDMSTableRequest) {
     request = &DropDMSTableRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dlc", APIVersion, "DropDMSTable")
     
     
@@ -2899,6 +2951,7 @@ func NewListTaskJobLogDetailRequest() (request *ListTaskJobLogDetailRequest) {
     request = &ListTaskJobLogDetailRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dlc", APIVersion, "ListTaskJobLogDetail")
     
     
@@ -2952,6 +3005,7 @@ func NewLockMetaDataRequest() (request *LockMetaDataRequest) {
     request = &LockMetaDataRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dlc", APIVersion, "LockMetaData")
     
     
@@ -2999,6 +3053,7 @@ func NewModifySparkAppRequest() (request *ModifySparkAppRequest) {
     request = &ModifySparkAppRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dlc", APIVersion, "ModifySparkApp")
     
     
@@ -3046,6 +3101,7 @@ func NewModifyUserRequest() (request *ModifyUserRequest) {
     request = &ModifyUserRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dlc", APIVersion, "ModifyUser")
     
     
@@ -3099,6 +3155,7 @@ func NewModifyWorkGroupRequest() (request *ModifyWorkGroupRequest) {
     request = &ModifyWorkGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dlc", APIVersion, "ModifyWorkGroup")
     
     
@@ -3148,6 +3205,7 @@ func NewReportHeartbeatMetaDataRequest() (request *ReportHeartbeatMetaDataReques
     request = &ReportHeartbeatMetaDataRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dlc", APIVersion, "ReportHeartbeatMetaData")
     
     
@@ -3195,6 +3253,7 @@ func NewUnbindWorkGroupsFromUserRequest() (request *UnbindWorkGroupsFromUserRequ
     request = &UnbindWorkGroupsFromUserRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dlc", APIVersion, "UnbindWorkGroupsFromUser")
     
     
@@ -3246,6 +3305,7 @@ func NewUnlockMetaDataRequest() (request *UnlockMetaDataRequest) {
     request = &UnlockMetaDataRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dlc", APIVersion, "UnlockMetaData")
     
     

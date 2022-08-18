@@ -49,6 +49,7 @@ func NewCreateContainerInstanceRequest() (request *CreateContainerInstanceReques
     request = &CreateContainerInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cis", APIVersion, "CreateContainerInstance")
     
     
@@ -98,6 +99,7 @@ func NewDeleteContainerInstanceRequest() (request *DeleteContainerInstanceReques
     request = &DeleteContainerInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cis", APIVersion, "DeleteContainerInstance")
     
     
@@ -147,6 +149,7 @@ func NewDescribeContainerInstanceRequest() (request *DescribeContainerInstanceRe
     request = &DescribeContainerInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cis", APIVersion, "DescribeContainerInstance")
     
     
@@ -196,6 +199,7 @@ func NewDescribeContainerInstanceEventsRequest() (request *DescribeContainerInst
     request = &DescribeContainerInstanceEventsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cis", APIVersion, "DescribeContainerInstanceEvents")
     
     
@@ -245,6 +249,7 @@ func NewDescribeContainerInstancesRequest() (request *DescribeContainerInstances
     request = &DescribeContainerInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cis", APIVersion, "DescribeContainerInstances")
     
     
@@ -294,6 +299,7 @@ func NewDescribeContainerLogRequest() (request *DescribeContainerLogRequest) {
     request = &DescribeContainerLogRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cis", APIVersion, "DescribeContainerLog")
     
     
@@ -343,6 +349,7 @@ func NewInquiryPriceCreateCisRequest() (request *InquiryPriceCreateCisRequest) {
     request = &InquiryPriceCreateCisRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cis", APIVersion, "InquiryPriceCreateCis")
     
     

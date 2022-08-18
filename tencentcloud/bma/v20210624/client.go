@@ -49,6 +49,7 @@ func NewCreateBPFakeURLRequest() (request *CreateBPFakeURLRequest) {
     request = &CreateBPFakeURLRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bma", APIVersion, "CreateBPFakeURL")
     
     
@@ -132,6 +133,7 @@ func NewCreateBPFalseTicketRequest() (request *CreateBPFalseTicketRequest) {
     request = &CreateBPFalseTicketRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bma", APIVersion, "CreateBPFalseTicket")
     
     
@@ -215,6 +217,7 @@ func NewCreateBPOfflineAttachmentRequest() (request *CreateBPOfflineAttachmentRe
     request = &CreateBPOfflineAttachmentRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bma", APIVersion, "CreateBPOfflineAttachment")
     
     
@@ -298,6 +301,7 @@ func NewCreateBPOfflineTicketRequest() (request *CreateBPOfflineTicketRequest) {
     request = &CreateBPOfflineTicketRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bma", APIVersion, "CreateBPOfflineTicket")
     
     
@@ -381,6 +385,7 @@ func NewCreateBPProtectURLsRequest() (request *CreateBPProtectURLsRequest) {
     request = &CreateBPProtectURLsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bma", APIVersion, "CreateBPProtectURLs")
     
     
@@ -464,6 +469,7 @@ func NewCreateCRBlockRequest() (request *CreateCRBlockRequest) {
     request = &CreateCRBlockRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bma", APIVersion, "CreateCRBlock")
     
     
@@ -547,6 +553,7 @@ func NewCreateCRCompanyVerifyRequest() (request *CreateCRCompanyVerifyRequest) {
     request = &CreateCRCompanyVerifyRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bma", APIVersion, "CreateCRCompanyVerify")
     
     
@@ -630,6 +637,7 @@ func NewCreateCRRightRequest() (request *CreateCRRightRequest) {
     request = &CreateCRRightRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bma", APIVersion, "CreateCRRight")
     
     
@@ -713,6 +721,7 @@ func NewCreateCRUserVerifyRequest() (request *CreateCRUserVerifyRequest) {
     request = &CreateCRUserVerifyRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bma", APIVersion, "CreateCRUserVerify")
     
     
@@ -796,6 +805,7 @@ func NewCreateCRWorkRequest() (request *CreateCRWorkRequest) {
     request = &CreateCRWorkRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bma", APIVersion, "CreateCRWork")
     
     
@@ -879,6 +889,7 @@ func NewDescribeBPCompanyInfoRequest() (request *DescribeBPCompanyInfoRequest) {
     request = &DescribeBPCompanyInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bma", APIVersion, "DescribeBPCompanyInfo")
     
     
@@ -962,6 +973,7 @@ func NewDescribeBPFakeURLsRequest() (request *DescribeBPFakeURLsRequest) {
     request = &DescribeBPFakeURLsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bma", APIVersion, "DescribeBPFakeURLs")
     
     
@@ -1045,6 +1057,7 @@ func NewDescribeBPProtectURLsRequest() (request *DescribeBPProtectURLsRequest) {
     request = &DescribeBPProtectURLsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bma", APIVersion, "DescribeBPProtectURLs")
     
     
@@ -1128,6 +1141,7 @@ func NewDescribeBPReportFakeURLsRequest() (request *DescribeBPReportFakeURLsRequ
     request = &DescribeBPReportFakeURLsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bma", APIVersion, "DescribeBPReportFakeURLs")
     
     
@@ -1211,6 +1225,7 @@ func NewDescribeCRMonitorDetailRequest() (request *DescribeCRMonitorDetailReques
     request = &DescribeCRMonitorDetailRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bma", APIVersion, "DescribeCRMonitorDetail")
     
     
@@ -1294,6 +1309,7 @@ func NewDescribeCRMonitorsRequest() (request *DescribeCRMonitorsRequest) {
     request = &DescribeCRMonitorsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bma", APIVersion, "DescribeCRMonitors")
     
     
@@ -1377,6 +1393,7 @@ func NewDescribeCRWorkInfoRequest() (request *DescribeCRWorkInfoRequest) {
     request = &DescribeCRWorkInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bma", APIVersion, "DescribeCRWorkInfo")
     
     
@@ -1460,6 +1477,7 @@ func NewModifyBPOfflineAttachmentRequest() (request *ModifyBPOfflineAttachmentRe
     request = &ModifyBPOfflineAttachmentRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bma", APIVersion, "ModifyBPOfflineAttachment")
     
     
@@ -1543,6 +1561,7 @@ func NewModifyCRBlockStatusRequest() (request *ModifyCRBlockStatusRequest) {
     request = &ModifyCRBlockStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bma", APIVersion, "ModifyCRBlockStatus")
     
     
@@ -1626,6 +1645,7 @@ func NewModifyCRMonitorRequest() (request *ModifyCRMonitorRequest) {
     request = &ModifyCRMonitorRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bma", APIVersion, "ModifyCRMonitor")
     
     
@@ -1709,6 +1729,7 @@ func NewModifyCRObtainStatusRequest() (request *ModifyCRObtainStatusRequest) {
     request = &ModifyCRObtainStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bma", APIVersion, "ModifyCRObtainStatus")
     
     
@@ -1792,6 +1813,7 @@ func NewModifyCRRightStatusRequest() (request *ModifyCRRightStatusRequest) {
     request = &ModifyCRRightStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bma", APIVersion, "ModifyCRRightStatus")
     
     
@@ -1875,6 +1897,7 @@ func NewUpdateCRWorkRequest() (request *UpdateCRWorkRequest) {
     request = &UpdateCRWorkRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bma", APIVersion, "UpdateCRWork")
     
     

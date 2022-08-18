@@ -49,6 +49,7 @@ func NewChatRequest() (request *ChatRequest) {
     request = &ChatRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("aai", APIVersion, "Chat")
     
     
@@ -122,6 +123,7 @@ func NewSentenceRecognitionRequest() (request *SentenceRecognitionRequest) {
     request = &SentenceRecognitionRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("aai", APIVersion, "SentenceRecognition")
     
     
@@ -223,6 +225,7 @@ func NewSimultaneousInterpretingRequest() (request *SimultaneousInterpretingRequ
     request = &SimultaneousInterpretingRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("aai", APIVersion, "SimultaneousInterpreting")
     
     
@@ -310,6 +313,7 @@ func NewTextToVoiceRequest() (request *TextToVoiceRequest) {
     request = &TextToVoiceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("aai", APIVersion, "TextToVoice")
     
     

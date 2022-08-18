@@ -49,6 +49,7 @@ func NewBindL4BackendsRequest() (request *BindL4BackendsRequest) {
     request = &BindL4BackendsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bmlb", APIVersion, "BindL4Backends")
     
     
@@ -104,6 +105,7 @@ func NewBindL7BackendsRequest() (request *BindL7BackendsRequest) {
     request = &BindL7BackendsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bmlb", APIVersion, "BindL7Backends")
     
     
@@ -159,6 +161,7 @@ func NewBindTrafficMirrorListenersRequest() (request *BindTrafficMirrorListeners
     request = &BindTrafficMirrorListenersRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bmlb", APIVersion, "BindTrafficMirrorListeners")
     
     
@@ -214,6 +217,7 @@ func NewBindTrafficMirrorReceiversRequest() (request *BindTrafficMirrorReceivers
     request = &BindTrafficMirrorReceiversRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bmlb", APIVersion, "BindTrafficMirrorReceivers")
     
     
@@ -269,6 +273,7 @@ func NewCreateL4ListenersRequest() (request *CreateL4ListenersRequest) {
     request = &CreateL4ListenersRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bmlb", APIVersion, "CreateL4Listeners")
     
     
@@ -324,6 +329,7 @@ func NewCreateL7ListenersRequest() (request *CreateL7ListenersRequest) {
     request = &CreateL7ListenersRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bmlb", APIVersion, "CreateL7Listeners")
     
     
@@ -379,6 +385,7 @@ func NewCreateL7RulesRequest() (request *CreateL7RulesRequest) {
     request = &CreateL7RulesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bmlb", APIVersion, "CreateL7Rules")
     
     
@@ -434,6 +441,7 @@ func NewCreateLoadBalancersRequest() (request *CreateLoadBalancersRequest) {
     request = &CreateLoadBalancersRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bmlb", APIVersion, "CreateLoadBalancers")
     
     
@@ -489,6 +497,7 @@ func NewCreateTrafficMirrorRequest() (request *CreateTrafficMirrorRequest) {
     request = &CreateTrafficMirrorRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bmlb", APIVersion, "CreateTrafficMirror")
     
     
@@ -544,6 +553,7 @@ func NewDeleteL7DomainsRequest() (request *DeleteL7DomainsRequest) {
     request = &DeleteL7DomainsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bmlb", APIVersion, "DeleteL7Domains")
     
     
@@ -599,6 +609,7 @@ func NewDeleteL7RulesRequest() (request *DeleteL7RulesRequest) {
     request = &DeleteL7RulesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bmlb", APIVersion, "DeleteL7Rules")
     
     
@@ -654,6 +665,7 @@ func NewDeleteListenersRequest() (request *DeleteListenersRequest) {
     request = &DeleteListenersRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bmlb", APIVersion, "DeleteListeners")
     
     
@@ -709,6 +721,7 @@ func NewDeleteLoadBalancerRequest() (request *DeleteLoadBalancerRequest) {
     request = &DeleteLoadBalancerRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bmlb", APIVersion, "DeleteLoadBalancer")
     
     
@@ -764,6 +777,7 @@ func NewDeleteTrafficMirrorRequest() (request *DeleteTrafficMirrorRequest) {
     request = &DeleteTrafficMirrorRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bmlb", APIVersion, "DeleteTrafficMirror")
     
     
@@ -819,6 +833,7 @@ func NewDescribeCertDetailRequest() (request *DescribeCertDetailRequest) {
     request = &DescribeCertDetailRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bmlb", APIVersion, "DescribeCertDetail")
     
     
@@ -874,6 +889,7 @@ func NewDescribeDevicesBindInfoRequest() (request *DescribeDevicesBindInfoReques
     request = &DescribeDevicesBindInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bmlb", APIVersion, "DescribeDevicesBindInfo")
     
     
@@ -929,6 +945,7 @@ func NewDescribeL4BackendsRequest() (request *DescribeL4BackendsRequest) {
     request = &DescribeL4BackendsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bmlb", APIVersion, "DescribeL4Backends")
     
     
@@ -984,6 +1001,7 @@ func NewDescribeL4ListenerInfoRequest() (request *DescribeL4ListenerInfoRequest)
     request = &DescribeL4ListenerInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bmlb", APIVersion, "DescribeL4ListenerInfo")
     
     
@@ -1039,6 +1057,7 @@ func NewDescribeL4ListenersRequest() (request *DescribeL4ListenersRequest) {
     request = &DescribeL4ListenersRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bmlb", APIVersion, "DescribeL4Listeners")
     
     
@@ -1094,6 +1113,7 @@ func NewDescribeL7BackendsRequest() (request *DescribeL7BackendsRequest) {
     request = &DescribeL7BackendsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bmlb", APIVersion, "DescribeL7Backends")
     
     
@@ -1149,6 +1169,7 @@ func NewDescribeL7ListenerInfoRequest() (request *DescribeL7ListenerInfoRequest)
     request = &DescribeL7ListenerInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bmlb", APIVersion, "DescribeL7ListenerInfo")
     
     
@@ -1204,6 +1225,7 @@ func NewDescribeL7ListenersRequest() (request *DescribeL7ListenersRequest) {
     request = &DescribeL7ListenersRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bmlb", APIVersion, "DescribeL7Listeners")
     
     
@@ -1259,6 +1281,7 @@ func NewDescribeL7ListenersExRequest() (request *DescribeL7ListenersExRequest) {
     request = &DescribeL7ListenersExRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bmlb", APIVersion, "DescribeL7ListenersEx")
     
     
@@ -1314,6 +1337,7 @@ func NewDescribeL7RulesRequest() (request *DescribeL7RulesRequest) {
     request = &DescribeL7RulesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bmlb", APIVersion, "DescribeL7Rules")
     
     
@@ -1369,6 +1393,7 @@ func NewDescribeLoadBalancerPortInfoRequest() (request *DescribeLoadBalancerPort
     request = &DescribeLoadBalancerPortInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bmlb", APIVersion, "DescribeLoadBalancerPortInfo")
     
     
@@ -1424,6 +1449,7 @@ func NewDescribeLoadBalancerTaskResultRequest() (request *DescribeLoadBalancerTa
     request = &DescribeLoadBalancerTaskResultRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bmlb", APIVersion, "DescribeLoadBalancerTaskResult")
     
     
@@ -1479,6 +1505,7 @@ func NewDescribeLoadBalancersRequest() (request *DescribeLoadBalancersRequest) {
     request = &DescribeLoadBalancersRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bmlb", APIVersion, "DescribeLoadBalancers")
     
     
@@ -1534,6 +1561,7 @@ func NewDescribeTrafficMirrorListenersRequest() (request *DescribeTrafficMirrorL
     request = &DescribeTrafficMirrorListenersRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bmlb", APIVersion, "DescribeTrafficMirrorListeners")
     
     
@@ -1589,6 +1617,7 @@ func NewDescribeTrafficMirrorReceiverHealthStatusRequest() (request *DescribeTra
     request = &DescribeTrafficMirrorReceiverHealthStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bmlb", APIVersion, "DescribeTrafficMirrorReceiverHealthStatus")
     
     
@@ -1644,6 +1673,7 @@ func NewDescribeTrafficMirrorReceiversRequest() (request *DescribeTrafficMirrorR
     request = &DescribeTrafficMirrorReceiversRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bmlb", APIVersion, "DescribeTrafficMirrorReceivers")
     
     
@@ -1699,6 +1729,7 @@ func NewDescribeTrafficMirrorsRequest() (request *DescribeTrafficMirrorsRequest)
     request = &DescribeTrafficMirrorsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bmlb", APIVersion, "DescribeTrafficMirrors")
     
     
@@ -1754,6 +1785,7 @@ func NewModifyL4BackendPortRequest() (request *ModifyL4BackendPortRequest) {
     request = &ModifyL4BackendPortRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bmlb", APIVersion, "ModifyL4BackendPort")
     
     
@@ -1809,6 +1841,7 @@ func NewModifyL4BackendProbePortRequest() (request *ModifyL4BackendProbePortRequ
     request = &ModifyL4BackendProbePortRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bmlb", APIVersion, "ModifyL4BackendProbePort")
     
     
@@ -1864,6 +1897,7 @@ func NewModifyL4BackendWeightRequest() (request *ModifyL4BackendWeightRequest) {
     request = &ModifyL4BackendWeightRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bmlb", APIVersion, "ModifyL4BackendWeight")
     
     
@@ -1919,6 +1953,7 @@ func NewModifyL4ListenerRequest() (request *ModifyL4ListenerRequest) {
     request = &ModifyL4ListenerRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bmlb", APIVersion, "ModifyL4Listener")
     
     
@@ -1974,6 +2009,7 @@ func NewModifyL7BackendPortRequest() (request *ModifyL7BackendPortRequest) {
     request = &ModifyL7BackendPortRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bmlb", APIVersion, "ModifyL7BackendPort")
     
     
@@ -2029,6 +2065,7 @@ func NewModifyL7BackendWeightRequest() (request *ModifyL7BackendWeightRequest) {
     request = &ModifyL7BackendWeightRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bmlb", APIVersion, "ModifyL7BackendWeight")
     
     
@@ -2084,6 +2121,7 @@ func NewModifyL7ListenerRequest() (request *ModifyL7ListenerRequest) {
     request = &ModifyL7ListenerRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bmlb", APIVersion, "ModifyL7Listener")
     
     
@@ -2139,6 +2177,7 @@ func NewModifyL7LocationsRequest() (request *ModifyL7LocationsRequest) {
     request = &ModifyL7LocationsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bmlb", APIVersion, "ModifyL7Locations")
     
     
@@ -2194,6 +2233,7 @@ func NewModifyLoadBalancerRequest() (request *ModifyLoadBalancerRequest) {
     request = &ModifyLoadBalancerRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bmlb", APIVersion, "ModifyLoadBalancer")
     
     
@@ -2249,6 +2289,7 @@ func NewModifyLoadBalancerChargeModeRequest() (request *ModifyLoadBalancerCharge
     request = &ModifyLoadBalancerChargeModeRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bmlb", APIVersion, "ModifyLoadBalancerChargeMode")
     
     
@@ -2304,6 +2345,7 @@ func NewReplaceCertRequest() (request *ReplaceCertRequest) {
     request = &ReplaceCertRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bmlb", APIVersion, "ReplaceCert")
     
     
@@ -2359,6 +2401,7 @@ func NewSetTrafficMirrorAliasRequest() (request *SetTrafficMirrorAliasRequest) {
     request = &SetTrafficMirrorAliasRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bmlb", APIVersion, "SetTrafficMirrorAlias")
     
     
@@ -2414,6 +2457,7 @@ func NewSetTrafficMirrorHealthSwitchRequest() (request *SetTrafficMirrorHealthSw
     request = &SetTrafficMirrorHealthSwitchRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bmlb", APIVersion, "SetTrafficMirrorHealthSwitch")
     
     
@@ -2469,6 +2513,7 @@ func NewUnbindL4BackendsRequest() (request *UnbindL4BackendsRequest) {
     request = &UnbindL4BackendsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bmlb", APIVersion, "UnbindL4Backends")
     
     
@@ -2524,6 +2569,7 @@ func NewUnbindL7BackendsRequest() (request *UnbindL7BackendsRequest) {
     request = &UnbindL7BackendsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bmlb", APIVersion, "UnbindL7Backends")
     
     
@@ -2579,6 +2625,7 @@ func NewUnbindTrafficMirrorListenersRequest() (request *UnbindTrafficMirrorListe
     request = &UnbindTrafficMirrorListenersRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bmlb", APIVersion, "UnbindTrafficMirrorListeners")
     
     
@@ -2634,6 +2681,7 @@ func NewUnbindTrafficMirrorReceiversRequest() (request *UnbindTrafficMirrorRecei
     request = &UnbindTrafficMirrorReceiversRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bmlb", APIVersion, "UnbindTrafficMirrorReceivers")
     
     
@@ -2689,6 +2737,7 @@ func NewUploadCertRequest() (request *UploadCertRequest) {
     request = &UploadCertRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bmlb", APIVersion, "UploadCert")
     
     

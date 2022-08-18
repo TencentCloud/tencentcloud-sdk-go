@@ -49,6 +49,7 @@ func NewQueryActivityAntiRushRequest() (request *QueryActivityAntiRushRequest) {
     request = &QueryActivityAntiRushRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("aa", APIVersion, "QueryActivityAntiRush")
     
     

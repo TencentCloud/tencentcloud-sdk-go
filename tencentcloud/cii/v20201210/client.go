@@ -49,6 +49,7 @@ func NewCreateStructureTaskRequest() (request *CreateStructureTaskRequest) {
     request = &CreateStructureTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cii", APIVersion, "CreateStructureTask")
     
     
@@ -106,6 +107,7 @@ func NewDescribeStructCompareDataRequest() (request *DescribeStructCompareDataRe
     request = &DescribeStructCompareDataRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cii", APIVersion, "DescribeStructCompareData")
     
     
@@ -157,6 +159,7 @@ func NewDescribeStructureTaskResultRequest() (request *DescribeStructureTaskResu
     request = &DescribeStructureTaskResultRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("cii", APIVersion, "DescribeStructureTaskResult")
     
     

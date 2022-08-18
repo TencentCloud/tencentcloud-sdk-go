@@ -49,6 +49,7 @@ func NewCreateBlockNodeRecordsRequest() (request *CreateBlockNodeRecordsRequest)
     request = &CreateBlockNodeRecordsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tan", APIVersion, "CreateBlockNodeRecords")
     
     

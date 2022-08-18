@@ -49,6 +49,7 @@ func NewFileTranslateRequest() (request *FileTranslateRequest) {
     request = &FileTranslateRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tmt", APIVersion, "FileTranslate")
     
     
@@ -102,6 +103,7 @@ func NewGetFileTranslateRequest() (request *GetFileTranslateRequest) {
     request = &GetFileTranslateRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tmt", APIVersion, "GetFileTranslate")
     
     
@@ -157,6 +159,7 @@ func NewImageTranslateRequest() (request *ImageTranslateRequest) {
     request = &ImageTranslateRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tmt", APIVersion, "ImageTranslate")
     
     
@@ -240,6 +243,7 @@ func NewLanguageDetectRequest() (request *LanguageDetectRequest) {
     request = &LanguageDetectRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tmt", APIVersion, "LanguageDetect")
     
     
@@ -325,6 +329,7 @@ func NewSpeechTranslateRequest() (request *SpeechTranslateRequest) {
     request = &SpeechTranslateRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tmt", APIVersion, "SpeechTranslate")
     
     
@@ -424,6 +429,7 @@ func NewTextTranslateRequest() (request *TextTranslateRequest) {
     request = &TextTranslateRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tmt", APIVersion, "TextTranslate")
     
     
@@ -509,6 +515,7 @@ func NewTextTranslateBatchRequest() (request *TextTranslateBatchRequest) {
     request = &TextTranslateBatchRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tmt", APIVersion, "TextTranslateBatch")
     
     

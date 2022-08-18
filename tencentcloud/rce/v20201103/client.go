@@ -49,6 +49,7 @@ func NewDescribeRiskAssessmentRequest() (request *DescribeRiskAssessmentRequest)
     request = &DescribeRiskAssessmentRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("rce", APIVersion, "DescribeRiskAssessment")
     
     
@@ -182,6 +183,7 @@ func NewDescribeRiskTrendsRequest() (request *DescribeRiskTrendsRequest) {
     request = &DescribeRiskTrendsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("rce", APIVersion, "DescribeRiskTrends")
     
     
@@ -281,6 +283,7 @@ func NewManageMarketingRiskRequest() (request *ManageMarketingRiskRequest) {
     request = &ManageMarketingRiskRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("rce", APIVersion, "ManageMarketingRisk")
     
     

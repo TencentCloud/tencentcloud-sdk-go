@@ -49,6 +49,7 @@ func NewCreateEditingTaskRequest() (request *CreateEditingTaskRequest) {
     request = &CreateEditingTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ie", APIVersion, "CreateEditingTask")
     
     
@@ -136,6 +137,7 @@ func NewCreateMediaProcessTaskRequest() (request *CreateMediaProcessTaskRequest)
     request = &CreateMediaProcessTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ie", APIVersion, "CreateMediaProcessTask")
     
     
@@ -219,6 +221,7 @@ func NewCreateMediaQualityRestorationTaskRequest() (request *CreateMediaQualityR
     request = &CreateMediaQualityRestorationTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ie", APIVersion, "CreateMediaQualityRestorationTask")
     
     
@@ -288,6 +291,7 @@ func NewCreateQualityControlTaskRequest() (request *CreateQualityControlTaskRequ
     request = &CreateQualityControlTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ie", APIVersion, "CreateQualityControlTask")
     
     
@@ -357,6 +361,7 @@ func NewDescribeEditingTaskResultRequest() (request *DescribeEditingTaskResultRe
     request = &DescribeEditingTaskResultRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ie", APIVersion, "DescribeEditingTaskResult")
     
     
@@ -412,6 +417,7 @@ func NewDescribeMediaProcessTaskResultRequest() (request *DescribeMediaProcessTa
     request = &DescribeMediaProcessTaskResultRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ie", APIVersion, "DescribeMediaProcessTaskResult")
     
     
@@ -459,6 +465,7 @@ func NewDescribeMediaQualityRestorationTaskRusultRequest() (request *DescribeMed
     request = &DescribeMediaQualityRestorationTaskRusultRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ie", APIVersion, "DescribeMediaQualityRestorationTaskRusult")
     
     
@@ -538,6 +545,7 @@ func NewDescribeQualityControlTaskResultRequest() (request *DescribeQualityContr
     request = &DescribeQualityControlTaskResultRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ie", APIVersion, "DescribeQualityControlTaskResult")
     
     
@@ -609,6 +617,7 @@ func NewStopMediaProcessTaskRequest() (request *StopMediaProcessTaskRequest) {
     request = &StopMediaProcessTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ie", APIVersion, "StopMediaProcessTask")
     
     
@@ -664,6 +673,7 @@ func NewStopMediaQualityRestorationTaskRequest() (request *StopMediaQualityResto
     request = &StopMediaQualityRestorationTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ie", APIVersion, "StopMediaQualityRestorationTask")
     
     

@@ -49,6 +49,7 @@ func NewAssociateAccessGroupsRequest() (request *AssociateAccessGroupsRequest) {
     request = &AssociateAccessGroupsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("chdfs", APIVersion, "AssociateAccessGroups")
     
     
@@ -116,6 +117,7 @@ func NewCreateAccessGroupRequest() (request *CreateAccessGroupRequest) {
     request = &CreateAccessGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("chdfs", APIVersion, "CreateAccessGroup")
     
     
@@ -187,6 +189,7 @@ func NewCreateAccessRulesRequest() (request *CreateAccessRulesRequest) {
     request = &CreateAccessRulesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("chdfs", APIVersion, "CreateAccessRules")
     
     
@@ -256,6 +259,7 @@ func NewCreateFileSystemRequest() (request *CreateFileSystemRequest) {
     request = &CreateFileSystemRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("chdfs", APIVersion, "CreateFileSystem")
     
     
@@ -325,6 +329,7 @@ func NewCreateLifeCycleRulesRequest() (request *CreateLifeCycleRulesRequest) {
     request = &CreateLifeCycleRulesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("chdfs", APIVersion, "CreateLifeCycleRules")
     
     
@@ -396,6 +401,7 @@ func NewCreateMountPointRequest() (request *CreateMountPointRequest) {
     request = &CreateMountPointRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("chdfs", APIVersion, "CreateMountPoint")
     
     
@@ -465,6 +471,7 @@ func NewCreateRestoreTasksRequest() (request *CreateRestoreTasksRequest) {
     request = &CreateRestoreTasksRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("chdfs", APIVersion, "CreateRestoreTasks")
     
     
@@ -534,6 +541,7 @@ func NewDeleteAccessGroupRequest() (request *DeleteAccessGroupRequest) {
     request = &DeleteAccessGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("chdfs", APIVersion, "DeleteAccessGroup")
     
     
@@ -597,6 +605,7 @@ func NewDeleteAccessRulesRequest() (request *DeleteAccessRulesRequest) {
     request = &DeleteAccessRulesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("chdfs", APIVersion, "DeleteAccessRules")
     
     
@@ -656,6 +665,7 @@ func NewDeleteFileSystemRequest() (request *DeleteFileSystemRequest) {
     request = &DeleteFileSystemRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("chdfs", APIVersion, "DeleteFileSystem")
     
     
@@ -721,6 +731,7 @@ func NewDeleteLifeCycleRulesRequest() (request *DeleteLifeCycleRulesRequest) {
     request = &DeleteLifeCycleRulesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("chdfs", APIVersion, "DeleteLifeCycleRules")
     
     
@@ -780,6 +791,7 @@ func NewDeleteMountPointRequest() (request *DeleteMountPointRequest) {
     request = &DeleteMountPointRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("chdfs", APIVersion, "DeleteMountPoint")
     
     
@@ -841,6 +853,7 @@ func NewDescribeAccessGroupRequest() (request *DescribeAccessGroupRequest) {
     request = &DescribeAccessGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("chdfs", APIVersion, "DescribeAccessGroup")
     
     
@@ -902,6 +915,7 @@ func NewDescribeAccessGroupsRequest() (request *DescribeAccessGroupsRequest) {
     request = &DescribeAccessGroupsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("chdfs", APIVersion, "DescribeAccessGroups")
     
     
@@ -963,6 +977,7 @@ func NewDescribeAccessRulesRequest() (request *DescribeAccessRulesRequest) {
     request = &DescribeAccessRulesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("chdfs", APIVersion, "DescribeAccessRules")
     
     
@@ -1024,6 +1039,7 @@ func NewDescribeFileSystemRequest() (request *DescribeFileSystemRequest) {
     request = &DescribeFileSystemRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("chdfs", APIVersion, "DescribeFileSystem")
     
     
@@ -1087,6 +1103,7 @@ func NewDescribeFileSystemsRequest() (request *DescribeFileSystemsRequest) {
     request = &DescribeFileSystemsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("chdfs", APIVersion, "DescribeFileSystems")
     
     
@@ -1144,6 +1161,7 @@ func NewDescribeLifeCycleRulesRequest() (request *DescribeLifeCycleRulesRequest)
     request = &DescribeLifeCycleRulesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("chdfs", APIVersion, "DescribeLifeCycleRules")
     
     
@@ -1209,6 +1227,7 @@ func NewDescribeMountPointRequest() (request *DescribeMountPointRequest) {
     request = &DescribeMountPointRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("chdfs", APIVersion, "DescribeMountPoint")
     
     
@@ -1270,6 +1289,7 @@ func NewDescribeMountPointsRequest() (request *DescribeMountPointsRequest) {
     request = &DescribeMountPointsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("chdfs", APIVersion, "DescribeMountPoints")
     
     
@@ -1337,6 +1357,7 @@ func NewDescribeResourceTagsRequest() (request *DescribeResourceTagsRequest) {
     request = &DescribeResourceTagsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("chdfs", APIVersion, "DescribeResourceTags")
     
     
@@ -1400,6 +1421,7 @@ func NewDescribeRestoreTasksRequest() (request *DescribeRestoreTasksRequest) {
     request = &DescribeRestoreTasksRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("chdfs", APIVersion, "DescribeRestoreTasks")
     
     
@@ -1463,6 +1485,7 @@ func NewDisassociateAccessGroupsRequest() (request *DisassociateAccessGroupsRequ
     request = &DisassociateAccessGroupsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("chdfs", APIVersion, "DisassociateAccessGroups")
     
     
@@ -1528,6 +1551,7 @@ func NewModifyAccessGroupRequest() (request *ModifyAccessGroupRequest) {
     request = &ModifyAccessGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("chdfs", APIVersion, "ModifyAccessGroup")
     
     
@@ -1593,6 +1617,7 @@ func NewModifyAccessRulesRequest() (request *ModifyAccessRulesRequest) {
     request = &ModifyAccessRulesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("chdfs", APIVersion, "ModifyAccessRules")
     
     
@@ -1654,6 +1679,7 @@ func NewModifyFileSystemRequest() (request *ModifyFileSystemRequest) {
     request = &ModifyFileSystemRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("chdfs", APIVersion, "ModifyFileSystem")
     
     
@@ -1725,6 +1751,7 @@ func NewModifyLifeCycleRulesRequest() (request *ModifyLifeCycleRulesRequest) {
     request = &ModifyLifeCycleRulesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("chdfs", APIVersion, "ModifyLifeCycleRules")
     
     
@@ -1786,6 +1813,7 @@ func NewModifyMountPointRequest() (request *ModifyMountPointRequest) {
     request = &ModifyMountPointRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("chdfs", APIVersion, "ModifyMountPoint")
     
     
@@ -1849,6 +1877,7 @@ func NewModifyResourceTagsRequest() (request *ModifyResourceTagsRequest) {
     request = &ModifyResourceTagsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("chdfs", APIVersion, "ModifyResourceTags")
     
     

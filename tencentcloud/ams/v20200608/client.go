@@ -49,6 +49,7 @@ func NewCancelTaskRequest() (request *CancelTaskRequest) {
     request = &CancelTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ams", APIVersion, "CancelTask")
     
     
@@ -126,6 +127,7 @@ func NewCreateAudioModerationTaskRequest() (request *CreateAudioModerationTaskRe
     request = &CreateAudioModerationTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ams", APIVersion, "CreateAudioModerationTask")
     
     
@@ -297,6 +299,7 @@ func NewCreateBizConfigRequest() (request *CreateBizConfigRequest) {
     request = &CreateBizConfigRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ams", APIVersion, "CreateBizConfig")
     
     
@@ -392,6 +395,7 @@ func NewDescribeAmsListRequest() (request *DescribeAmsListRequest) {
     request = &DescribeAmsListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ams", APIVersion, "DescribeAmsList")
     
     
@@ -443,6 +447,7 @@ func NewDescribeAudioStatRequest() (request *DescribeAudioStatRequest) {
     request = &DescribeAudioStatRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ams", APIVersion, "DescribeAudioStat")
     
     
@@ -496,6 +501,7 @@ func NewDescribeBizConfigRequest() (request *DescribeBizConfigRequest) {
     request = &DescribeBizConfigRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ams", APIVersion, "DescribeBizConfig")
     
     
@@ -575,6 +581,7 @@ func NewDescribeTaskDetailRequest() (request *DescribeTaskDetailRequest) {
     request = &DescribeTaskDetailRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ams", APIVersion, "DescribeTaskDetail")
     
     

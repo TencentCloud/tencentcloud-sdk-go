@@ -49,6 +49,7 @@ func NewActivateSubscribeRequest() (request *ActivateSubscribeRequest) {
     request = &ActivateSubscribeRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dts", APIVersion, "ActivateSubscribe")
     
     
@@ -112,6 +113,7 @@ func NewCompleteMigrateJobRequest() (request *CompleteMigrateJobRequest) {
     request = &CompleteMigrateJobRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dts", APIVersion, "CompleteMigrateJob")
     
     
@@ -189,6 +191,7 @@ func NewCreateMigrateCheckJobRequest() (request *CreateMigrateCheckJobRequest) {
     request = &CreateMigrateCheckJobRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dts", APIVersion, "CreateMigrateCheckJob")
     
     
@@ -288,6 +291,7 @@ func NewCreateMigrateJobRequest() (request *CreateMigrateJobRequest) {
     request = &CreateMigrateJobRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dts", APIVersion, "CreateMigrateJob")
     
     
@@ -371,6 +375,7 @@ func NewCreateSubscribeRequest() (request *CreateSubscribeRequest) {
     request = &CreateSubscribeRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dts", APIVersion, "CreateSubscribe")
     
     
@@ -426,6 +431,7 @@ func NewDeleteMigrateJobRequest() (request *DeleteMigrateJobRequest) {
     request = &DeleteMigrateJobRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dts", APIVersion, "DeleteMigrateJob")
     
     
@@ -503,6 +509,7 @@ func NewDescribeAsyncRequestInfoRequest() (request *DescribeAsyncRequestInfoRequ
     request = &DescribeAsyncRequestInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dts", APIVersion, "DescribeAsyncRequestInfo")
     
     
@@ -560,6 +567,7 @@ func NewDescribeMigrateCheckJobRequest() (request *DescribeMigrateCheckJobReques
     request = &DescribeMigrateCheckJobRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dts", APIVersion, "DescribeMigrateCheckJob")
     
     
@@ -625,6 +633,7 @@ func NewDescribeMigrateJobsRequest() (request *DescribeMigrateJobsRequest) {
     request = &DescribeMigrateJobsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dts", APIVersion, "DescribeMigrateJobs")
     
     
@@ -694,6 +703,7 @@ func NewDescribeRegionConfRequest() (request *DescribeRegionConfRequest) {
     request = &DescribeRegionConfRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dts", APIVersion, "DescribeRegionConf")
     
     
@@ -745,6 +755,7 @@ func NewDescribeSubscribeConfRequest() (request *DescribeSubscribeConfRequest) {
     request = &DescribeSubscribeConfRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dts", APIVersion, "DescribeSubscribeConf")
     
     
@@ -804,6 +815,7 @@ func NewDescribeSubscribesRequest() (request *DescribeSubscribesRequest) {
     request = &DescribeSubscribesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dts", APIVersion, "DescribeSubscribes")
     
     
@@ -857,6 +869,7 @@ func NewIsolateSubscribeRequest() (request *IsolateSubscribeRequest) {
     request = &IsolateSubscribeRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dts", APIVersion, "IsolateSubscribe")
     
     
@@ -914,6 +927,7 @@ func NewModifyMigrateJobRequest() (request *ModifyMigrateJobRequest) {
     request = &ModifyMigrateJobRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dts", APIVersion, "ModifyMigrateJob")
     
     
@@ -991,6 +1005,7 @@ func NewModifySubscribeAutoRenewFlagRequest() (request *ModifySubscribeAutoRenew
     request = &ModifySubscribeAutoRenewFlagRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dts", APIVersion, "ModifySubscribeAutoRenewFlag")
     
     
@@ -1042,6 +1057,7 @@ func NewModifySubscribeConsumeTimeRequest() (request *ModifySubscribeConsumeTime
     request = &ModifySubscribeConsumeTimeRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dts", APIVersion, "ModifySubscribeConsumeTime")
     
     
@@ -1097,6 +1113,7 @@ func NewModifySubscribeNameRequest() (request *ModifySubscribeNameRequest) {
     request = &ModifySubscribeNameRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dts", APIVersion, "ModifySubscribeName")
     
     
@@ -1148,6 +1165,7 @@ func NewModifySubscribeObjectsRequest() (request *ModifySubscribeObjectsRequest)
     request = &ModifySubscribeObjectsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dts", APIVersion, "ModifySubscribeObjects")
     
     
@@ -1205,6 +1223,7 @@ func NewModifySubscribeVipVportRequest() (request *ModifySubscribeVipVportReques
     request = &ModifySubscribeVipVportRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dts", APIVersion, "ModifySubscribeVipVport")
     
     
@@ -1258,6 +1277,7 @@ func NewOfflineIsolatedSubscribeRequest() (request *OfflineIsolatedSubscribeRequ
     request = &OfflineIsolatedSubscribeRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dts", APIVersion, "OfflineIsolatedSubscribe")
     
     
@@ -1313,6 +1333,7 @@ func NewResetSubscribeRequest() (request *ResetSubscribeRequest) {
     request = &ResetSubscribeRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dts", APIVersion, "ResetSubscribe")
     
     
@@ -1368,6 +1389,7 @@ func NewStartMigrateJobRequest() (request *StartMigrateJobRequest) {
     request = &StartMigrateJobRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dts", APIVersion, "StartMigrateJob")
     
     
@@ -1449,6 +1471,7 @@ func NewStopMigrateJobRequest() (request *StopMigrateJobRequest) {
     request = &StopMigrateJobRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dts", APIVersion, "StopMigrateJob")
     
     

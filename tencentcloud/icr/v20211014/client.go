@@ -49,6 +49,7 @@ func NewGetIndustryV1HomeMembersRequest() (request *GetIndustryV1HomeMembersRequ
     request = &GetIndustryV1HomeMembersRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("icr", APIVersion, "GetIndustryV1HomeMembers")
     
     

@@ -49,6 +49,7 @@ func NewActiveHourDCDBInstanceRequest() (request *ActiveHourDCDBInstanceRequest)
     request = &ActiveHourDCDBInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dcdb", APIVersion, "ActiveHourDCDBInstance")
     
     
@@ -102,6 +103,7 @@ func NewAssociateSecurityGroupsRequest() (request *AssociateSecurityGroupsReques
     request = &AssociateSecurityGroupsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dcdb", APIVersion, "AssociateSecurityGroups")
     
     
@@ -201,6 +203,7 @@ func NewCancelDcnJobRequest() (request *CancelDcnJobRequest) {
     request = &CancelDcnJobRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dcdb", APIVersion, "CancelDcnJob")
     
     
@@ -260,6 +263,7 @@ func NewCloneAccountRequest() (request *CloneAccountRequest) {
     request = &CloneAccountRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dcdb", APIVersion, "CloneAccount")
     
     
@@ -323,6 +327,7 @@ func NewCloseDBExtranetAccessRequest() (request *CloseDBExtranetAccessRequest) {
     request = &CloseDBExtranetAccessRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dcdb", APIVersion, "CloseDBExtranetAccess")
     
     
@@ -386,6 +391,7 @@ func NewCopyAccountPrivilegesRequest() (request *CopyAccountPrivilegesRequest) {
     request = &CopyAccountPrivilegesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dcdb", APIVersion, "CopyAccountPrivileges")
     
     
@@ -453,6 +459,7 @@ func NewCreateAccountRequest() (request *CreateAccountRequest) {
     request = &CreateAccountRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dcdb", APIVersion, "CreateAccount")
     
     
@@ -528,6 +535,7 @@ func NewCreateDCDBInstanceRequest() (request *CreateDCDBInstanceRequest) {
     request = &CreateDCDBInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dcdb", APIVersion, "CreateDCDBInstance")
     
     
@@ -607,6 +615,7 @@ func NewCreateDedicatedClusterDCDBInstanceRequest() (request *CreateDedicatedClu
     request = &CreateDedicatedClusterDCDBInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dcdb", APIVersion, "CreateDedicatedClusterDCDBInstance")
     
     
@@ -680,6 +689,7 @@ func NewCreateHourDCDBInstanceRequest() (request *CreateHourDCDBInstanceRequest)
     request = &CreateHourDCDBInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dcdb", APIVersion, "CreateHourDCDBInstance")
     
     
@@ -755,6 +765,7 @@ func NewDeleteAccountRequest() (request *DeleteAccountRequest) {
     request = &DeleteAccountRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dcdb", APIVersion, "DeleteAccount")
     
     
@@ -816,6 +827,7 @@ func NewDescribeAccountPrivilegesRequest() (request *DescribeAccountPrivilegesRe
     request = &DescribeAccountPrivilegesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dcdb", APIVersion, "DescribeAccountPrivileges")
     
     
@@ -881,6 +893,7 @@ func NewDescribeAccountsRequest() (request *DescribeAccountsRequest) {
     request = &DescribeAccountsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dcdb", APIVersion, "DescribeAccounts")
     
     
@@ -940,6 +953,7 @@ func NewDescribeDBLogFilesRequest() (request *DescribeDBLogFilesRequest) {
     request = &DescribeDBLogFilesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dcdb", APIVersion, "DescribeDBLogFiles")
     
     
@@ -1013,6 +1027,7 @@ func NewDescribeDBParametersRequest() (request *DescribeDBParametersRequest) {
     request = &DescribeDBParametersRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dcdb", APIVersion, "DescribeDBParameters")
     
     
@@ -1074,6 +1089,7 @@ func NewDescribeDBSecurityGroupsRequest() (request *DescribeDBSecurityGroupsRequ
     request = &DescribeDBSecurityGroupsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dcdb", APIVersion, "DescribeDBSecurityGroups")
     
     
@@ -1153,6 +1169,7 @@ func NewDescribeDBSlowLogsRequest() (request *DescribeDBSlowLogsRequest) {
     request = &DescribeDBSlowLogsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dcdb", APIVersion, "DescribeDBSlowLogs")
     
     
@@ -1214,6 +1231,7 @@ func NewDescribeDBSyncModeRequest() (request *DescribeDBSyncModeRequest) {
     request = &DescribeDBSyncModeRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dcdb", APIVersion, "DescribeDBSyncMode")
     
     
@@ -1277,6 +1295,7 @@ func NewDescribeDCDBInstanceNodeInfoRequest() (request *DescribeDCDBInstanceNode
     request = &DescribeDCDBInstanceNodeInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dcdb", APIVersion, "DescribeDCDBInstanceNodeInfo")
     
     
@@ -1330,6 +1349,7 @@ func NewDescribeDCDBInstancesRequest() (request *DescribeDCDBInstancesRequest) {
     request = &DescribeDCDBInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dcdb", APIVersion, "DescribeDCDBInstances")
     
     
@@ -1399,6 +1419,7 @@ func NewDescribeDCDBPriceRequest() (request *DescribeDCDBPriceRequest) {
     request = &DescribeDCDBPriceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dcdb", APIVersion, "DescribeDCDBPrice")
     
     
@@ -1456,6 +1477,7 @@ func NewDescribeDCDBRenewalPriceRequest() (request *DescribeDCDBRenewalPriceRequ
     request = &DescribeDCDBRenewalPriceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dcdb", APIVersion, "DescribeDCDBRenewalPrice")
     
     
@@ -1515,6 +1537,7 @@ func NewDescribeDCDBSaleInfoRequest() (request *DescribeDCDBSaleInfoRequest) {
     request = &DescribeDCDBSaleInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dcdb", APIVersion, "DescribeDCDBSaleInfo")
     
     
@@ -1568,6 +1591,7 @@ func NewDescribeDCDBShardsRequest() (request *DescribeDCDBShardsRequest) {
     request = &DescribeDCDBShardsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dcdb", APIVersion, "DescribeDCDBShards")
     
     
@@ -1637,6 +1661,7 @@ func NewDescribeDCDBUpgradePriceRequest() (request *DescribeDCDBUpgradePriceRequ
     request = &DescribeDCDBUpgradePriceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dcdb", APIVersion, "DescribeDCDBUpgradePrice")
     
     
@@ -1700,6 +1725,7 @@ func NewDescribeDatabaseObjectsRequest() (request *DescribeDatabaseObjectsReques
     request = &DescribeDatabaseObjectsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dcdb", APIVersion, "DescribeDatabaseObjects")
     
     
@@ -1759,6 +1785,7 @@ func NewDescribeDatabaseTableRequest() (request *DescribeDatabaseTableRequest) {
     request = &DescribeDatabaseTableRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dcdb", APIVersion, "DescribeDatabaseTable")
     
     
@@ -1818,6 +1845,7 @@ func NewDescribeDatabasesRequest() (request *DescribeDatabasesRequest) {
     request = &DescribeDatabasesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dcdb", APIVersion, "DescribeDatabases")
     
     
@@ -1877,6 +1905,7 @@ func NewDescribeDcnDetailRequest() (request *DescribeDcnDetailRequest) {
     request = &DescribeDcnDetailRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dcdb", APIVersion, "DescribeDcnDetail")
     
     
@@ -1932,6 +1961,7 @@ func NewDescribeFileDownloadUrlRequest() (request *DescribeFileDownloadUrlReques
     request = &DescribeFileDownloadUrlRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dcdb", APIVersion, "DescribeFileDownloadUrl")
     
     
@@ -1987,6 +2017,7 @@ func NewDescribeFlowRequest() (request *DescribeFlowRequest) {
     request = &DescribeFlowRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dcdb", APIVersion, "DescribeFlow")
     
     
@@ -2038,6 +2069,7 @@ func NewDescribeOrdersRequest() (request *DescribeOrdersRequest) {
     request = &DescribeOrdersRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dcdb", APIVersion, "DescribeOrders")
     
     
@@ -2093,6 +2125,7 @@ func NewDescribeProjectSecurityGroupsRequest() (request *DescribeProjectSecurity
     request = &DescribeProjectSecurityGroupsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dcdb", APIVersion, "DescribeProjectSecurityGroups")
     
     
@@ -2142,6 +2175,7 @@ func NewDescribeProjectsRequest() (request *DescribeProjectsRequest) {
     request = &DescribeProjectsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dcdb", APIVersion, "DescribeProjects")
     
     
@@ -2191,6 +2225,7 @@ func NewDescribeShardSpecRequest() (request *DescribeShardSpecRequest) {
     request = &DescribeShardSpecRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dcdb", APIVersion, "DescribeShardSpec")
     
     
@@ -2244,6 +2279,7 @@ func NewDescribeSqlLogsRequest() (request *DescribeSqlLogsRequest) {
     request = &DescribeSqlLogsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dcdb", APIVersion, "DescribeSqlLogs")
     
     
@@ -2301,6 +2337,7 @@ func NewDescribeUserTasksRequest() (request *DescribeUserTasksRequest) {
     request = &DescribeUserTasksRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dcdb", APIVersion, "DescribeUserTasks")
     
     
@@ -2350,6 +2387,7 @@ func NewDestroyDCDBInstanceRequest() (request *DestroyDCDBInstanceRequest) {
     request = &DestroyDCDBInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dcdb", APIVersion, "DestroyDCDBInstance")
     
     
@@ -2409,6 +2447,7 @@ func NewDestroyHourDCDBInstanceRequest() (request *DestroyHourDCDBInstanceReques
     request = &DestroyHourDCDBInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dcdb", APIVersion, "DestroyHourDCDBInstance")
     
     
@@ -2468,6 +2507,7 @@ func NewDisassociateSecurityGroupsRequest() (request *DisassociateSecurityGroups
     request = &DisassociateSecurityGroupsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dcdb", APIVersion, "DisassociateSecurityGroups")
     
     
@@ -2549,6 +2589,7 @@ func NewFlushBinlogRequest() (request *FlushBinlogRequest) {
     request = &FlushBinlogRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dcdb", APIVersion, "FlushBinlog")
     
     
@@ -2610,6 +2651,7 @@ func NewGrantAccountPrivilegesRequest() (request *GrantAccountPrivilegesRequest)
     request = &GrantAccountPrivilegesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dcdb", APIVersion, "GrantAccountPrivileges")
     
     
@@ -2685,6 +2727,7 @@ func NewInitDCDBInstancesRequest() (request *InitDCDBInstancesRequest) {
     request = &InitDCDBInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dcdb", APIVersion, "InitDCDBInstances")
     
     
@@ -2744,6 +2787,7 @@ func NewIsolateHourDCDBInstanceRequest() (request *IsolateHourDCDBInstanceReques
     request = &IsolateHourDCDBInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dcdb", APIVersion, "IsolateHourDCDBInstance")
     
     
@@ -2797,6 +2841,7 @@ func NewKillSessionRequest() (request *KillSessionRequest) {
     request = &KillSessionRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dcdb", APIVersion, "KillSession")
     
     
@@ -2850,6 +2895,7 @@ func NewModifyAccountDescriptionRequest() (request *ModifyAccountDescriptionRequ
     request = &ModifyAccountDescriptionRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dcdb", APIVersion, "ModifyAccountDescription")
     
     
@@ -2909,6 +2955,7 @@ func NewModifyDBInstanceNameRequest() (request *ModifyDBInstanceNameRequest) {
     request = &ModifyDBInstanceNameRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dcdb", APIVersion, "ModifyDBInstanceName")
     
     
@@ -2962,6 +3009,7 @@ func NewModifyDBInstanceSecurityGroupsRequest() (request *ModifyDBInstanceSecuri
     request = &ModifyDBInstanceSecurityGroupsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dcdb", APIVersion, "ModifyDBInstanceSecurityGroups")
     
     
@@ -3051,6 +3099,7 @@ func NewModifyDBInstancesProjectRequest() (request *ModifyDBInstancesProjectRequ
     request = &ModifyDBInstancesProjectRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dcdb", APIVersion, "ModifyDBInstancesProject")
     
     
@@ -3106,6 +3155,7 @@ func NewModifyDBParametersRequest() (request *ModifyDBParametersRequest) {
     request = &ModifyDBParametersRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dcdb", APIVersion, "ModifyDBParameters")
     
     
@@ -3167,6 +3217,7 @@ func NewModifyDBSyncModeRequest() (request *ModifyDBSyncModeRequest) {
     request = &ModifyDBSyncModeRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dcdb", APIVersion, "ModifyDBSyncMode")
     
     
@@ -3234,6 +3285,7 @@ func NewModifyRealServerAccessStrategyRequest() (request *ModifyRealServerAccess
     request = &ModifyRealServerAccessStrategyRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dcdb", APIVersion, "ModifyRealServerAccessStrategy")
     
     
@@ -3317,6 +3369,7 @@ func NewOpenDBExtranetAccessRequest() (request *OpenDBExtranetAccessRequest) {
     request = &OpenDBExtranetAccessRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dcdb", APIVersion, "OpenDBExtranetAccess")
     
     
@@ -3380,6 +3433,7 @@ func NewRenewDCDBInstanceRequest() (request *RenewDCDBInstanceRequest) {
     request = &RenewDCDBInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dcdb", APIVersion, "RenewDCDBInstance")
     
     
@@ -3445,6 +3499,7 @@ func NewResetAccountPasswordRequest() (request *ResetAccountPasswordRequest) {
     request = &ResetAccountPasswordRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dcdb", APIVersion, "ResetAccountPassword")
     
     
@@ -3512,6 +3567,7 @@ func NewSwitchDBInstanceHARequest() (request *SwitchDBInstanceHARequest) {
     request = &SwitchDBInstanceHARequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dcdb", APIVersion, "SwitchDBInstanceHA")
     
     
@@ -3571,6 +3627,7 @@ func NewTerminateDedicatedDBInstanceRequest() (request *TerminateDedicatedDBInst
     request = &TerminateDedicatedDBInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dcdb", APIVersion, "TerminateDedicatedDBInstance")
     
     
@@ -3628,6 +3685,7 @@ func NewUpgradeDCDBInstanceRequest() (request *UpgradeDCDBInstanceRequest) {
     request = &UpgradeDCDBInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dcdb", APIVersion, "UpgradeDCDBInstance")
     
     

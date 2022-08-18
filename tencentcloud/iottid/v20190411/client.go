@@ -49,6 +49,7 @@ func NewAuthTestTidRequest() (request *AuthTestTidRequest) {
     request = &AuthTestTidRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iottid", APIVersion, "AuthTestTid")
     
     
@@ -104,6 +105,7 @@ func NewBurnTidNotifyRequest() (request *BurnTidNotifyRequest) {
     request = &BurnTidNotifyRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iottid", APIVersion, "BurnTidNotify")
     
     
@@ -163,6 +165,7 @@ func NewDeliverTidNotifyRequest() (request *DeliverTidNotifyRequest) {
     request = &DeliverTidNotifyRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iottid", APIVersion, "DeliverTidNotify")
     
     
@@ -222,6 +225,7 @@ func NewDeliverTidsRequest() (request *DeliverTidsRequest) {
     request = &DeliverTidsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iottid", APIVersion, "DeliverTids")
     
     
@@ -279,6 +283,7 @@ func NewDescribeAvailableLibCountRequest() (request *DescribeAvailableLibCountRe
     request = &DescribeAvailableLibCountRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iottid", APIVersion, "DescribeAvailableLibCount")
     
     
@@ -332,6 +337,7 @@ func NewDescribePermissionRequest() (request *DescribePermissionRequest) {
     request = &DescribePermissionRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iottid", APIVersion, "DescribePermission")
     
     
@@ -385,6 +391,7 @@ func NewDownloadTidsRequest() (request *DownloadTidsRequest) {
     request = &DownloadTidsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iottid", APIVersion, "DownloadTids")
     
     
@@ -442,6 +449,7 @@ func NewUploadDeviceUniqueCodeRequest() (request *UploadDeviceUniqueCodeRequest)
     request = &UploadDeviceUniqueCodeRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iottid", APIVersion, "UploadDeviceUniqueCode")
     
     
@@ -501,6 +509,7 @@ func NewVerifyChipBurnInfoRequest() (request *VerifyChipBurnInfoRequest) {
     request = &VerifyChipBurnInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iottid", APIVersion, "VerifyChipBurnInfo")
     
     

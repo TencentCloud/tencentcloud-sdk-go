@@ -49,6 +49,7 @@ func NewRecognizeProductRequest() (request *RecognizeProductRequest) {
     request = &RecognizeProductRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iir", APIVersion, "RecognizeProduct")
     
     

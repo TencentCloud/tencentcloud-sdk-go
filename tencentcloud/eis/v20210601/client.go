@@ -49,6 +49,7 @@ func NewGetRuntimeMCRequest() (request *GetRuntimeMCRequest) {
     request = &GetRuntimeMCRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("eis", APIVersion, "GetRuntimeMC")
     
     
@@ -118,6 +119,7 @@ func NewGetRuntimeResourceMonitorMetricMCRequest() (request *GetRuntimeResourceM
     request = &GetRuntimeResourceMonitorMetricMCRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("eis", APIVersion, "GetRuntimeResourceMonitorMetricMC")
     
     
@@ -185,6 +187,7 @@ func NewListDeployableRuntimesMCRequest() (request *ListDeployableRuntimesMCRequ
     request = &ListDeployableRuntimesMCRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("eis", APIVersion, "ListDeployableRuntimesMC")
     
     
@@ -238,6 +241,7 @@ func NewListRuntimeDeployedInstancesMCRequest() (request *ListRuntimeDeployedIns
     request = &ListRuntimeDeployedInstancesMCRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("eis", APIVersion, "ListRuntimeDeployedInstancesMC")
     
     
@@ -301,6 +305,7 @@ func NewListRuntimesMCRequest() (request *ListRuntimesMCRequest) {
     request = &ListRuntimesMCRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("eis", APIVersion, "ListRuntimesMC")
     
     

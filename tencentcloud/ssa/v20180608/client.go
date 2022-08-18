@@ -49,6 +49,7 @@ func NewDescribeAssetDetailRequest() (request *DescribeAssetDetailRequest) {
     request = &DescribeAssetDetailRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ssa", APIVersion, "DescribeAssetDetail")
     
     
@@ -98,6 +99,7 @@ func NewDescribeAssetListRequest() (request *DescribeAssetListRequest) {
     request = &DescribeAssetListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ssa", APIVersion, "DescribeAssetList")
     
     
@@ -149,6 +151,7 @@ func NewDescribeAssetsMappingListRequest() (request *DescribeAssetsMappingListRe
     request = &DescribeAssetsMappingListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ssa", APIVersion, "DescribeAssetsMappingList")
     
     
@@ -202,6 +205,7 @@ func NewDescribeCheckConfigAssetListRequest() (request *DescribeCheckConfigAsset
     request = &DescribeCheckConfigAssetListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ssa", APIVersion, "DescribeCheckConfigAssetList")
     
     
@@ -255,6 +259,7 @@ func NewDescribeCheckConfigDetailRequest() (request *DescribeCheckConfigDetailRe
     request = &DescribeCheckConfigDetailRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ssa", APIVersion, "DescribeCheckConfigDetail")
     
     
@@ -310,6 +315,7 @@ func NewDescribeComplianceAssetListRequest() (request *DescribeComplianceAssetLi
     request = &DescribeComplianceAssetListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ssa", APIVersion, "DescribeComplianceAssetList")
     
     
@@ -361,6 +367,7 @@ func NewDescribeComplianceDetailRequest() (request *DescribeComplianceDetailRequ
     request = &DescribeComplianceDetailRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ssa", APIVersion, "DescribeComplianceDetail")
     
     
@@ -416,6 +423,7 @@ func NewDescribeComplianceListRequest() (request *DescribeComplianceListRequest)
     request = &DescribeComplianceListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ssa", APIVersion, "DescribeComplianceList")
     
     
@@ -471,6 +479,7 @@ func NewDescribeConfigListRequest() (request *DescribeConfigListRequest) {
     request = &DescribeConfigListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ssa", APIVersion, "DescribeConfigList")
     
     
@@ -522,6 +531,7 @@ func NewDescribeEventDetailRequest() (request *DescribeEventDetailRequest) {
     request = &DescribeEventDetailRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ssa", APIVersion, "DescribeEventDetail")
     
     
@@ -569,6 +579,7 @@ func NewDescribeLeakDetectionListRequest() (request *DescribeLeakDetectionListRe
     request = &DescribeLeakDetectionListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ssa", APIVersion, "DescribeLeakDetectionList")
     
     
@@ -618,6 +629,7 @@ func NewDescribeMappingResultsRequest() (request *DescribeMappingResultsRequest)
     request = &DescribeMappingResultsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ssa", APIVersion, "DescribeMappingResults")
     
     
@@ -667,6 +679,7 @@ func NewDescribeSafetyEventListRequest() (request *DescribeSafetyEventListReques
     request = &DescribeSafetyEventListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ssa", APIVersion, "DescribeSafetyEventList")
     
     
@@ -718,6 +731,7 @@ func NewDescribeSocAlertDetailsRequest() (request *DescribeSocAlertDetailsReques
     request = &DescribeSocAlertDetailsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ssa", APIVersion, "DescribeSocAlertDetails")
     
     
@@ -769,6 +783,7 @@ func NewDescribeSocAlertListRequest() (request *DescribeSocAlertListRequest) {
     request = &DescribeSocAlertListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ssa", APIVersion, "DescribeSocAlertList")
     
     
@@ -816,6 +831,7 @@ func NewDescribeSocCheckItemListRequest() (request *DescribeSocCheckItemListRequ
     request = &DescribeSocCheckItemListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ssa", APIVersion, "DescribeSocCheckItemList")
     
     
@@ -867,6 +883,7 @@ func NewDescribeSocCheckResultListRequest() (request *DescribeSocCheckResultList
     request = &DescribeSocCheckResultListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ssa", APIVersion, "DescribeSocCheckResultList")
     
     
@@ -918,6 +935,7 @@ func NewDescribeSocCspmComplianceRequest() (request *DescribeSocCspmComplianceRe
     request = &DescribeSocCspmComplianceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ssa", APIVersion, "DescribeSocCspmCompliance")
     
     
@@ -1005,6 +1023,7 @@ func NewDescribeVulDetailRequest() (request *DescribeVulDetailRequest) {
     request = &DescribeVulDetailRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ssa", APIVersion, "DescribeVulDetail")
     
     
@@ -1052,6 +1071,7 @@ func NewDescribeVulListRequest() (request *DescribeVulListRequest) {
     request = &DescribeVulListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ssa", APIVersion, "DescribeVulList")
     
     
@@ -1103,6 +1123,7 @@ func NewSaDivulgeDataQueryPubRequest() (request *SaDivulgeDataQueryPubRequest) {
     request = &SaDivulgeDataQueryPubRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("ssa", APIVersion, "SaDivulgeDataQueryPub")
     
     

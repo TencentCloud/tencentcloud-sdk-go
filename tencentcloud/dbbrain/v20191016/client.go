@@ -49,6 +49,7 @@ func NewAddUserContactRequest() (request *AddUserContactRequest) {
     request = &AddUserContactRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dbbrain", APIVersion, "AddUserContact")
     
     
@@ -114,6 +115,7 @@ func NewCreateDBDiagReportTaskRequest() (request *CreateDBDiagReportTaskRequest)
     request = &CreateDBDiagReportTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dbbrain", APIVersion, "CreateDBDiagReportTask")
     
     
@@ -165,6 +167,7 @@ func NewCreateDBDiagReportUrlRequest() (request *CreateDBDiagReportUrlRequest) {
     request = &CreateDBDiagReportUrlRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dbbrain", APIVersion, "CreateDBDiagReportUrl")
     
     
@@ -226,6 +229,7 @@ func NewCreateMailProfileRequest() (request *CreateMailProfileRequest) {
     request = &CreateMailProfileRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dbbrain", APIVersion, "CreateMailProfile")
     
     
@@ -291,6 +295,7 @@ func NewCreateSchedulerMailProfileRequest() (request *CreateSchedulerMailProfile
     request = &CreateSchedulerMailProfileRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dbbrain", APIVersion, "CreateSchedulerMailProfile")
     
     
@@ -356,6 +361,7 @@ func NewCreateSecurityAuditLogExportTaskRequest() (request *CreateSecurityAuditL
     request = &CreateSecurityAuditLogExportTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dbbrain", APIVersion, "CreateSecurityAuditLogExportTask")
     
     
@@ -413,6 +419,7 @@ func NewDeleteSecurityAuditLogExportTasksRequest() (request *DeleteSecurityAudit
     request = &DeleteSecurityAuditLogExportTasksRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dbbrain", APIVersion, "DeleteSecurityAuditLogExportTasks")
     
     
@@ -468,6 +475,7 @@ func NewDescribeAllUserContactRequest() (request *DescribeAllUserContactRequest)
     request = &DescribeAllUserContactRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dbbrain", APIVersion, "DescribeAllUserContact")
     
     
@@ -525,6 +533,7 @@ func NewDescribeAllUserGroupRequest() (request *DescribeAllUserGroupRequest) {
     request = &DescribeAllUserGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dbbrain", APIVersion, "DescribeAllUserGroup")
     
     
@@ -578,6 +587,7 @@ func NewDescribeDBDiagEventRequest() (request *DescribeDBDiagEventRequest) {
     request = &DescribeDBDiagEventRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dbbrain", APIVersion, "DescribeDBDiagEvent")
     
     
@@ -633,6 +643,7 @@ func NewDescribeDBDiagHistoryRequest() (request *DescribeDBDiagHistoryRequest) {
     request = &DescribeDBDiagHistoryRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dbbrain", APIVersion, "DescribeDBDiagHistory")
     
     
@@ -688,6 +699,7 @@ func NewDescribeDBDiagReportTasksRequest() (request *DescribeDBDiagReportTasksRe
     request = &DescribeDBDiagReportTasksRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dbbrain", APIVersion, "DescribeDBDiagReportTasks")
     
     
@@ -745,6 +757,7 @@ func NewDescribeDBSpaceStatusRequest() (request *DescribeDBSpaceStatusRequest) {
     request = &DescribeDBSpaceStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dbbrain", APIVersion, "DescribeDBSpaceStatus")
     
     
@@ -800,6 +813,7 @@ func NewDescribeDiagDBInstancesRequest() (request *DescribeDiagDBInstancesReques
     request = &DescribeDiagDBInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dbbrain", APIVersion, "DescribeDiagDBInstances")
     
     
@@ -863,6 +877,7 @@ func NewDescribeHealthScoreRequest() (request *DescribeHealthScoreRequest) {
     request = &DescribeHealthScoreRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dbbrain", APIVersion, "DescribeHealthScore")
     
     
@@ -928,6 +943,7 @@ func NewDescribeMailProfileRequest() (request *DescribeMailProfileRequest) {
     request = &DescribeMailProfileRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dbbrain", APIVersion, "DescribeMailProfile")
     
     
@@ -979,6 +995,7 @@ func NewDescribeSecurityAuditLogDownloadUrlsRequest() (request *DescribeSecurity
     request = &DescribeSecurityAuditLogDownloadUrlsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dbbrain", APIVersion, "DescribeSecurityAuditLogDownloadUrls")
     
     
@@ -1032,6 +1049,7 @@ func NewDescribeSecurityAuditLogExportTasksRequest() (request *DescribeSecurityA
     request = &DescribeSecurityAuditLogExportTasksRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dbbrain", APIVersion, "DescribeSecurityAuditLogExportTasks")
     
     
@@ -1083,6 +1101,7 @@ func NewDescribeSlowLogTimeSeriesStatsRequest() (request *DescribeSlowLogTimeSer
     request = &DescribeSlowLogTimeSeriesStatsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dbbrain", APIVersion, "DescribeSlowLogTimeSeriesStats")
     
     
@@ -1130,6 +1149,7 @@ func NewDescribeSlowLogTopSqlsRequest() (request *DescribeSlowLogTopSqlsRequest)
     request = &DescribeSlowLogTopSqlsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dbbrain", APIVersion, "DescribeSlowLogTopSqls")
     
     
@@ -1183,6 +1203,7 @@ func NewDescribeSlowLogUserHostStatsRequest() (request *DescribeSlowLogUserHostS
     request = &DescribeSlowLogUserHostStatsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dbbrain", APIVersion, "DescribeSlowLogUserHostStats")
     
     
@@ -1238,6 +1259,7 @@ func NewDescribeTopSpaceSchemaTimeSeriesRequest() (request *DescribeTopSpaceSche
     request = &DescribeTopSpaceSchemaTimeSeriesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dbbrain", APIVersion, "DescribeTopSpaceSchemaTimeSeries")
     
     
@@ -1297,6 +1319,7 @@ func NewDescribeTopSpaceSchemasRequest() (request *DescribeTopSpaceSchemasReques
     request = &DescribeTopSpaceSchemasRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dbbrain", APIVersion, "DescribeTopSpaceSchemas")
     
     
@@ -1356,6 +1379,7 @@ func NewDescribeTopSpaceTableTimeSeriesRequest() (request *DescribeTopSpaceTable
     request = &DescribeTopSpaceTableTimeSeriesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dbbrain", APIVersion, "DescribeTopSpaceTableTimeSeries")
     
     
@@ -1409,6 +1433,7 @@ func NewDescribeTopSpaceTablesRequest() (request *DescribeTopSpaceTablesRequest)
     request = &DescribeTopSpaceTablesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dbbrain", APIVersion, "DescribeTopSpaceTables")
     
     
@@ -1464,6 +1489,7 @@ func NewDescribeUserSqlAdviceRequest() (request *DescribeUserSqlAdviceRequest) {
     request = &DescribeUserSqlAdviceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dbbrain", APIVersion, "DescribeUserSqlAdvice")
     
     
@@ -1523,6 +1549,7 @@ func NewModifyDiagDBInstanceConfRequest() (request *ModifyDiagDBInstanceConfRequ
     request = &ModifyDiagDBInstanceConfRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dbbrain", APIVersion, "ModifyDiagDBInstanceConf")
     
     

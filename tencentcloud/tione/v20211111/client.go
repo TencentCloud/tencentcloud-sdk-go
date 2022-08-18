@@ -49,6 +49,7 @@ func NewCreateDatasetRequest() (request *CreateDatasetRequest) {
     request = &CreateDatasetRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tione", APIVersion, "CreateDataset")
     
     
@@ -148,6 +149,7 @@ func NewCreateTrainingModelRequest() (request *CreateTrainingModelRequest) {
     request = &CreateTrainingModelRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tione", APIVersion, "CreateTrainingModel")
     
     
@@ -225,6 +227,7 @@ func NewCreateTrainingTaskRequest() (request *CreateTrainingTaskRequest) {
     request = &CreateTrainingTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tione", APIVersion, "CreateTrainingTask")
     
     
@@ -294,6 +297,7 @@ func NewDeleteDatasetRequest() (request *DeleteDatasetRequest) {
     request = &DeleteDatasetRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tione", APIVersion, "DeleteDataset")
     
     
@@ -393,6 +397,7 @@ func NewDeleteTrainingModelRequest() (request *DeleteTrainingModelRequest) {
     request = &DeleteTrainingModelRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tione", APIVersion, "DeleteTrainingModel")
     
     
@@ -458,6 +463,7 @@ func NewDeleteTrainingModelVersionRequest() (request *DeleteTrainingModelVersion
     request = &DeleteTrainingModelVersionRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tione", APIVersion, "DeleteTrainingModelVersion")
     
     
@@ -523,6 +529,7 @@ func NewDeleteTrainingTaskRequest() (request *DeleteTrainingTaskRequest) {
     request = &DeleteTrainingTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tione", APIVersion, "DeleteTrainingTask")
     
     
@@ -576,6 +583,7 @@ func NewDescribeBillingResourceGroupsRequest() (request *DescribeBillingResource
     request = &DescribeBillingResourceGroupsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tione", APIVersion, "DescribeBillingResourceGroups")
     
     
@@ -651,6 +659,7 @@ func NewDescribeBillingSpecsPriceRequest() (request *DescribeBillingSpecsPriceRe
     request = &DescribeBillingSpecsPriceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tione", APIVersion, "DescribeBillingSpecsPrice")
     
     
@@ -704,6 +713,7 @@ func NewDescribeDatasetDetailStructuredRequest() (request *DescribeDatasetDetail
     request = &DescribeDatasetDetailStructuredRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tione", APIVersion, "DescribeDatasetDetailStructured")
     
     
@@ -803,6 +813,7 @@ func NewDescribeDatasetDetailUnstructuredRequest() (request *DescribeDatasetDeta
     request = &DescribeDatasetDetailUnstructuredRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tione", APIVersion, "DescribeDatasetDetailUnstructured")
     
     
@@ -902,6 +913,7 @@ func NewDescribeDatasetsRequest() (request *DescribeDatasetsRequest) {
     request = &DescribeDatasetsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tione", APIVersion, "DescribeDatasets")
     
     
@@ -999,6 +1011,7 @@ func NewDescribeInferTemplatesRequest() (request *DescribeInferTemplatesRequest)
     request = &DescribeInferTemplatesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tione", APIVersion, "DescribeInferTemplates")
     
     
@@ -1076,6 +1089,7 @@ func NewDescribeLatestTrainingMetricsRequest() (request *DescribeLatestTrainingM
     request = &DescribeLatestTrainingMetricsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tione", APIVersion, "DescribeLatestTrainingMetrics")
     
     
@@ -1159,6 +1173,7 @@ func NewDescribeLogsRequest() (request *DescribeLogsRequest) {
     request = &DescribeLogsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tione", APIVersion, "DescribeLogs")
     
     
@@ -1208,6 +1223,7 @@ func NewDescribeTrainingFrameworksRequest() (request *DescribeTrainingFrameworks
     request = &DescribeTrainingFrameworksRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tione", APIVersion, "DescribeTrainingFrameworks")
     
     
@@ -1259,6 +1275,7 @@ func NewDescribeTrainingMetricsRequest() (request *DescribeTrainingMetricsReques
     request = &DescribeTrainingMetricsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tione", APIVersion, "DescribeTrainingMetrics")
     
     
@@ -1312,6 +1329,7 @@ func NewDescribeTrainingModelVersionRequest() (request *DescribeTrainingModelVer
     request = &DescribeTrainingModelVersionRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tione", APIVersion, "DescribeTrainingModelVersion")
     
     
@@ -1377,6 +1395,7 @@ func NewDescribeTrainingModelVersionsRequest() (request *DescribeTrainingModelVe
     request = &DescribeTrainingModelVersionsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tione", APIVersion, "DescribeTrainingModelVersions")
     
     
@@ -1446,6 +1465,7 @@ func NewDescribeTrainingModelsRequest() (request *DescribeTrainingModelsRequest)
     request = &DescribeTrainingModelsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tione", APIVersion, "DescribeTrainingModels")
     
     
@@ -1515,6 +1535,7 @@ func NewDescribeTrainingTaskRequest() (request *DescribeTrainingTaskRequest) {
     request = &DescribeTrainingTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tione", APIVersion, "DescribeTrainingTask")
     
     
@@ -1564,6 +1585,7 @@ func NewDescribeTrainingTaskPodsRequest() (request *DescribeTrainingTaskPodsRequ
     request = &DescribeTrainingTaskPodsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tione", APIVersion, "DescribeTrainingTaskPods")
     
     
@@ -1617,6 +1639,7 @@ func NewDescribeTrainingTasksRequest() (request *DescribeTrainingTasksRequest) {
     request = &DescribeTrainingTasksRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tione", APIVersion, "DescribeTrainingTasks")
     
     
@@ -1668,6 +1691,7 @@ func NewPushTrainingMetricsRequest() (request *PushTrainingMetricsRequest) {
     request = &PushTrainingMetricsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tione", APIVersion, "PushTrainingMetrics")
     
     
@@ -1723,6 +1747,7 @@ func NewStartTrainingTaskRequest() (request *StartTrainingTaskRequest) {
     request = &StartTrainingTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tione", APIVersion, "StartTrainingTask")
     
     
@@ -1786,6 +1811,7 @@ func NewStopTrainingTaskRequest() (request *StopTrainingTaskRequest) {
     request = &StopTrainingTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tione", APIVersion, "StopTrainingTask")
     
     

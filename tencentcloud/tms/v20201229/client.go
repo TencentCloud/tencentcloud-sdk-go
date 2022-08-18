@@ -49,6 +49,7 @@ func NewTextModerationRequest() (request *TextModerationRequest) {
     request = &TextModerationRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tms", APIVersion, "TextModeration")
     
     

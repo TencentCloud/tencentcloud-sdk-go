@@ -49,6 +49,7 @@ func NewCreateAppScanTaskRequest() (request *CreateAppScanTaskRequest) {
     request = &CreateAppScanTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("mmps", APIVersion, "CreateAppScanTask")
     
     
@@ -96,6 +97,7 @@ func NewCreateAppScanTaskRepeatRequest() (request *CreateAppScanTaskRepeatReques
     request = &CreateAppScanTaskRepeatRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("mmps", APIVersion, "CreateAppScanTaskRepeat")
     
     
@@ -143,6 +145,7 @@ func NewCreateFlySecMiniAppProfessionalScanTaskRequest() (request *CreateFlySecM
     request = &CreateFlySecMiniAppProfessionalScanTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("mmps", APIVersion, "CreateFlySecMiniAppProfessionalScanTask")
     
     
@@ -190,6 +193,7 @@ func NewCreateFlySecMiniAppScanTaskRequest() (request *CreateFlySecMiniAppScanTa
     request = &CreateFlySecMiniAppScanTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("mmps", APIVersion, "CreateFlySecMiniAppScanTask")
     
     
@@ -237,6 +241,7 @@ func NewCreateFlySecMiniAppScanTaskRepeatRequest() (request *CreateFlySecMiniApp
     request = &CreateFlySecMiniAppScanTaskRepeatRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("mmps", APIVersion, "CreateFlySecMiniAppScanTaskRepeat")
     
     
@@ -284,6 +289,7 @@ func NewDescribeBasicDiagnosisResourceUsageInfoRequest() (request *DescribeBasic
     request = &DescribeBasicDiagnosisResourceUsageInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("mmps", APIVersion, "DescribeBasicDiagnosisResourceUsageInfo")
     
     
@@ -331,6 +337,7 @@ func NewDescribeFlySecMiniAppReportUrlRequest() (request *DescribeFlySecMiniAppR
     request = &DescribeFlySecMiniAppReportUrlRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("mmps", APIVersion, "DescribeFlySecMiniAppReportUrl")
     
     
@@ -378,6 +385,7 @@ func NewDescribeFlySecMiniAppScanReportListRequest() (request *DescribeFlySecMin
     request = &DescribeFlySecMiniAppScanReportListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("mmps", APIVersion, "DescribeFlySecMiniAppScanReportList")
     
     
@@ -425,6 +433,7 @@ func NewDescribeFlySecMiniAppScanTaskListRequest() (request *DescribeFlySecMiniA
     request = &DescribeFlySecMiniAppScanTaskListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("mmps", APIVersion, "DescribeFlySecMiniAppScanTaskList")
     
     
@@ -472,6 +481,7 @@ func NewDescribeFlySecMiniAppScanTaskParamRequest() (request *DescribeFlySecMini
     request = &DescribeFlySecMiniAppScanTaskParamRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("mmps", APIVersion, "DescribeFlySecMiniAppScanTaskParam")
     
     
@@ -519,6 +529,7 @@ func NewDescribeFlySecMiniAppScanTaskStatusRequest() (request *DescribeFlySecMin
     request = &DescribeFlySecMiniAppScanTaskStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("mmps", APIVersion, "DescribeFlySecMiniAppScanTaskStatus")
     
     
@@ -566,6 +577,7 @@ func NewDescribeResourceUsageInfoRequest() (request *DescribeResourceUsageInfoRe
     request = &DescribeResourceUsageInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("mmps", APIVersion, "DescribeResourceUsageInfo")
     
     
@@ -613,6 +625,7 @@ func NewDescribeScanTaskListRequest() (request *DescribeScanTaskListRequest) {
     request = &DescribeScanTaskListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("mmps", APIVersion, "DescribeScanTaskList")
     
     
@@ -660,6 +673,7 @@ func NewDescribeScanTaskReportUrlRequest() (request *DescribeScanTaskReportUrlRe
     request = &DescribeScanTaskReportUrlRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("mmps", APIVersion, "DescribeScanTaskReportUrl")
     
     
@@ -707,6 +721,7 @@ func NewDescribeScanTaskStatusRequest() (request *DescribeScanTaskStatusRequest)
     request = &DescribeScanTaskStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("mmps", APIVersion, "DescribeScanTaskStatus")
     
     

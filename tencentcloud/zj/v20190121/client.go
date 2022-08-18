@@ -49,6 +49,7 @@ func NewAddCrowdPackInfoRequest() (request *AddCrowdPackInfoRequest) {
     request = &AddCrowdPackInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("zj", APIVersion, "AddCrowdPackInfo")
     
     
@@ -96,6 +97,7 @@ func NewAddSmsSignRequest() (request *AddSmsSignRequest) {
     request = &AddSmsSignRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("zj", APIVersion, "AddSmsSign")
     
     
@@ -153,6 +155,7 @@ func NewAddSmsTemplateRequest() (request *AddSmsTemplateRequest) {
     request = &AddSmsTemplateRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("zj", APIVersion, "AddSmsTemplate")
     
     
@@ -212,6 +215,7 @@ func NewCancelCampaignRequest() (request *CancelCampaignRequest) {
     request = &CancelCampaignRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("zj", APIVersion, "CancelCampaign")
     
     
@@ -269,6 +273,7 @@ func NewCreateCampaignRequest() (request *CreateCampaignRequest) {
     request = &CreateCampaignRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("zj", APIVersion, "CreateCampaign")
     
     
@@ -328,6 +333,7 @@ func NewCreateMmsInstanceRequest() (request *CreateMmsInstanceRequest) {
     request = &CreateMmsInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("zj", APIVersion, "CreateMmsInstance")
     
     
@@ -385,6 +391,7 @@ func NewDelCrowdPackRequest() (request *DelCrowdPackRequest) {
     request = &DelCrowdPackRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("zj", APIVersion, "DelCrowdPack")
     
     
@@ -440,6 +447,7 @@ func NewDelTemplateRequest() (request *DelTemplateRequest) {
     request = &DelTemplateRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("zj", APIVersion, "DelTemplate")
     
     
@@ -493,6 +501,7 @@ func NewDeleteMmsInstanceRequest() (request *DeleteMmsInstanceRequest) {
     request = &DeleteMmsInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("zj", APIVersion, "DeleteMmsInstance")
     
     
@@ -550,6 +559,7 @@ func NewDescribeMmsInstanceInfoRequest() (request *DescribeMmsInstanceInfoReques
     request = &DescribeMmsInstanceInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("zj", APIVersion, "DescribeMmsInstanceInfo")
     
     
@@ -605,6 +615,7 @@ func NewDescribeMmsInstanceListRequest() (request *DescribeMmsInstanceListReques
     request = &DescribeMmsInstanceListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("zj", APIVersion, "DescribeMmsInstanceList")
     
     
@@ -660,6 +671,7 @@ func NewDescribeSmsCampaignStatisticsRequest() (request *DescribeSmsCampaignStat
     request = &DescribeSmsCampaignStatisticsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("zj", APIVersion, "DescribeSmsCampaignStatistics")
     
     
@@ -717,6 +729,7 @@ func NewDescribeSmsSignListRequest() (request *DescribeSmsSignListRequest) {
     request = &DescribeSmsSignListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("zj", APIVersion, "DescribeSmsSignList")
     
     
@@ -774,6 +787,7 @@ func NewDescribeSmsTemplateListRequest() (request *DescribeSmsTemplateListReques
     request = &DescribeSmsTemplateListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("zj", APIVersion, "DescribeSmsTemplateList")
     
     
@@ -831,6 +845,7 @@ func NewGetCrowdPackListRequest() (request *GetCrowdPackListRequest) {
     request = &GetCrowdPackListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("zj", APIVersion, "GetCrowdPackList")
     
     
@@ -886,6 +901,7 @@ func NewGetCrowdUploadInfoRequest() (request *GetCrowdUploadInfoRequest) {
     request = &GetCrowdUploadInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("zj", APIVersion, "GetCrowdUploadInfo")
     
     
@@ -941,6 +957,7 @@ func NewGetSmsAmountInfoRequest() (request *GetSmsAmountInfoRequest) {
     request = &GetSmsAmountInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("zj", APIVersion, "GetSmsAmountInfo")
     
     
@@ -996,6 +1013,7 @@ func NewGetSmsCampaignStatusRequest() (request *GetSmsCampaignStatusRequest) {
     request = &GetSmsCampaignStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("zj", APIVersion, "GetSmsCampaignStatus")
     
     
@@ -1051,6 +1069,7 @@ func NewModifySmsTemplateRequest() (request *ModifySmsTemplateRequest) {
     request = &ModifySmsTemplateRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("zj", APIVersion, "ModifySmsTemplate")
     
     
@@ -1136,6 +1155,7 @@ func NewPushMmsContentRequest() (request *PushMmsContentRequest) {
     request = &PushMmsContentRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("zj", APIVersion, "PushMmsContent")
     
     
@@ -1193,6 +1213,7 @@ func NewSendSmsRequest() (request *SendSmsRequest) {
     request = &SendSmsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("zj", APIVersion, "SendSms")
     
     

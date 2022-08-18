@@ -49,6 +49,7 @@ func NewDescribeAccountBalanceRequest() (request *DescribeAccountBalanceRequest)
     request = &DescribeAccountBalanceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("billing", APIVersion, "DescribeAccountBalance")
     
     
@@ -106,6 +107,7 @@ func NewDescribeBillDetailRequest() (request *DescribeBillDetailRequest) {
     request = &DescribeBillDetailRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("billing", APIVersion, "DescribeBillDetail")
     
     
@@ -163,6 +165,7 @@ func NewDescribeBillListRequest() (request *DescribeBillListRequest) {
     request = &DescribeBillListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("billing", APIVersion, "DescribeBillList")
     
     
@@ -216,6 +219,7 @@ func NewDescribeBillResourceSummaryRequest() (request *DescribeBillResourceSumma
     request = &DescribeBillResourceSummaryRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("billing", APIVersion, "DescribeBillResourceSummary")
     
     
@@ -265,6 +269,7 @@ func NewDescribeBillSummaryByPayModeRequest() (request *DescribeBillSummaryByPay
     request = &DescribeBillSummaryByPayModeRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("billing", APIVersion, "DescribeBillSummaryByPayMode")
     
     
@@ -318,6 +323,7 @@ func NewDescribeBillSummaryByProductRequest() (request *DescribeBillSummaryByPro
     request = &DescribeBillSummaryByProductRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("billing", APIVersion, "DescribeBillSummaryByProduct")
     
     
@@ -373,6 +379,7 @@ func NewDescribeBillSummaryByProjectRequest() (request *DescribeBillSummaryByPro
     request = &DescribeBillSummaryByProjectRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("billing", APIVersion, "DescribeBillSummaryByProject")
     
     
@@ -426,6 +433,7 @@ func NewDescribeBillSummaryByRegionRequest() (request *DescribeBillSummaryByRegi
     request = &DescribeBillSummaryByRegionRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("billing", APIVersion, "DescribeBillSummaryByRegion")
     
     
@@ -479,6 +487,7 @@ func NewDescribeBillSummaryByTagRequest() (request *DescribeBillSummaryByTagRequ
     request = &DescribeBillSummaryByTagRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("billing", APIVersion, "DescribeBillSummaryByTag")
     
     
@@ -534,6 +543,7 @@ func NewDescribeCostDetailRequest() (request *DescribeCostDetailRequest) {
     request = &DescribeCostDetailRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("billing", APIVersion, "DescribeCostDetail")
     
     
@@ -589,6 +599,7 @@ func NewDescribeCostSummaryByProductRequest() (request *DescribeCostSummaryByPro
     request = &DescribeCostSummaryByProductRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("billing", APIVersion, "DescribeCostSummaryByProduct")
     
     
@@ -636,6 +647,7 @@ func NewDescribeCostSummaryByProjectRequest() (request *DescribeCostSummaryByPro
     request = &DescribeCostSummaryByProjectRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("billing", APIVersion, "DescribeCostSummaryByProject")
     
     
@@ -683,6 +695,7 @@ func NewDescribeCostSummaryByRegionRequest() (request *DescribeCostSummaryByRegi
     request = &DescribeCostSummaryByRegionRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("billing", APIVersion, "DescribeCostSummaryByRegion")
     
     
@@ -730,6 +743,7 @@ func NewDescribeCostSummaryByResourceRequest() (request *DescribeCostSummaryByRe
     request = &DescribeCostSummaryByResourceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("billing", APIVersion, "DescribeCostSummaryByResource")
     
     
@@ -777,6 +791,7 @@ func NewDescribeDealsByCondRequest() (request *DescribeDealsByCondRequest) {
     request = &DescribeDealsByCondRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("billing", APIVersion, "DescribeDealsByCond")
     
     
@@ -824,6 +839,7 @@ func NewDescribeDosageCosDetailByDateRequest() (request *DescribeDosageCosDetail
     request = &DescribeDosageCosDetailByDateRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("billing", APIVersion, "DescribeDosageCosDetailByDate")
     
     
@@ -871,6 +887,7 @@ func NewDescribeDosageDetailByDateRequest() (request *DescribeDosageDetailByDate
     request = &DescribeDosageDetailByDateRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("billing", APIVersion, "DescribeDosageDetailByDate")
     
     
@@ -918,6 +935,7 @@ func NewDescribeVoucherInfoRequest() (request *DescribeVoucherInfoRequest) {
     request = &DescribeVoucherInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("billing", APIVersion, "DescribeVoucherInfo")
     
     
@@ -971,6 +989,7 @@ func NewDescribeVoucherUsageDetailsRequest() (request *DescribeVoucherUsageDetai
     request = &DescribeVoucherUsageDetailsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("billing", APIVersion, "DescribeVoucherUsageDetails")
     
     
@@ -1026,6 +1045,7 @@ func NewPayDealsRequest() (request *PayDealsRequest) {
     request = &PayDealsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("billing", APIVersion, "PayDeals")
     
     

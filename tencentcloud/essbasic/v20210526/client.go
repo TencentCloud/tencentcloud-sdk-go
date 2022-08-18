@@ -49,6 +49,7 @@ func NewChannelCancelMultiFlowSignQRCodeRequest() (request *ChannelCancelMultiFl
     request = &ChannelCancelMultiFlowSignQRCodeRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("essbasic", APIVersion, "ChannelCancelMultiFlowSignQRCode")
     
     
@@ -106,6 +107,7 @@ func NewChannelCreateBatchCancelFlowUrlRequest() (request *ChannelCreateBatchCan
     request = &ChannelCreateBatchCancelFlowUrlRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("essbasic", APIVersion, "ChannelCreateBatchCancelFlowUrl")
     
     
@@ -161,6 +163,7 @@ func NewChannelCreateConvertTaskApiRequest() (request *ChannelCreateConvertTaskA
     request = &ChannelCreateConvertTaskApiRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("essbasic", APIVersion, "ChannelCreateConvertTaskApi")
     
     
@@ -210,6 +213,7 @@ func NewChannelCreateFlowByFilesRequest() (request *ChannelCreateFlowByFilesRequ
     request = &ChannelCreateFlowByFilesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("essbasic", APIVersion, "ChannelCreateFlowByFiles")
     
     
@@ -301,6 +305,7 @@ func NewChannelCreateFlowSignReviewRequest() (request *ChannelCreateFlowSignRevi
     request = &ChannelCreateFlowSignReviewRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("essbasic", APIVersion, "ChannelCreateFlowSignReview")
     
     
@@ -378,6 +383,7 @@ func NewChannelCreateMultiFlowSignQRCodeRequest() (request *ChannelCreateMultiFl
     request = &ChannelCreateMultiFlowSignQRCodeRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("essbasic", APIVersion, "ChannelCreateMultiFlowSignQRCode")
     
     
@@ -449,6 +455,7 @@ func NewChannelGetTaskResultApiRequest() (request *ChannelGetTaskResultApiReques
     request = &ChannelGetTaskResultApiRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("essbasic", APIVersion, "ChannelGetTaskResultApi")
     
     
@@ -496,6 +503,7 @@ func NewCreateConsoleLoginUrlRequest() (request *CreateConsoleLoginUrlRequest) {
     request = &CreateConsoleLoginUrlRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("essbasic", APIVersion, "CreateConsoleLoginUrl")
     
     
@@ -575,6 +583,7 @@ func NewCreateFlowsByTemplatesRequest() (request *CreateFlowsByTemplatesRequest)
     request = &CreateFlowsByTemplatesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("essbasic", APIVersion, "CreateFlowsByTemplates")
     
     
@@ -660,6 +669,7 @@ func NewCreateSealByImageRequest() (request *CreateSealByImageRequest) {
     request = &CreateSealByImageRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("essbasic", APIVersion, "CreateSealByImage")
     
     
@@ -707,6 +717,7 @@ func NewCreateSignUrlsRequest() (request *CreateSignUrlsRequest) {
     request = &CreateSignUrlsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("essbasic", APIVersion, "CreateSignUrls")
     
     
@@ -784,6 +795,7 @@ func NewDescribeFlowDetailInfoRequest() (request *DescribeFlowDetailInfoRequest)
     request = &DescribeFlowDetailInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("essbasic", APIVersion, "DescribeFlowDetailInfo")
     
     
@@ -847,6 +859,7 @@ func NewDescribeResourceUrlsByFlowsRequest() (request *DescribeResourceUrlsByFlo
     request = &DescribeResourceUrlsByFlowsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("essbasic", APIVersion, "DescribeResourceUrlsByFlows")
     
     
@@ -922,6 +935,7 @@ func NewDescribeTemplatesRequest() (request *DescribeTemplatesRequest) {
     request = &DescribeTemplatesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("essbasic", APIVersion, "DescribeTemplates")
     
     
@@ -997,6 +1011,7 @@ func NewDescribeUsageRequest() (request *DescribeUsageRequest) {
     request = &DescribeUsageRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("essbasic", APIVersion, "DescribeUsage")
     
     
@@ -1072,6 +1087,7 @@ func NewGetDownloadFlowUrlRequest() (request *GetDownloadFlowUrlRequest) {
     request = &GetDownloadFlowUrlRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("essbasic", APIVersion, "GetDownloadFlowUrl")
     
     
@@ -1151,6 +1167,7 @@ func NewOperateChannelTemplateRequest() (request *OperateChannelTemplateRequest)
     request = &OperateChannelTemplateRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("essbasic", APIVersion, "OperateChannelTemplate")
     
     
@@ -1256,6 +1273,7 @@ func NewPrepareFlowsRequest() (request *PrepareFlowsRequest) {
     request = &PrepareFlowsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("essbasic", APIVersion, "PrepareFlows")
     
     
@@ -1333,6 +1351,7 @@ func NewSyncProxyOrganizationRequest() (request *SyncProxyOrganizationRequest) {
     request = &SyncProxyOrganizationRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("essbasic", APIVersion, "SyncProxyOrganization")
     
     
@@ -1406,6 +1425,7 @@ func NewSyncProxyOrganizationOperatorsRequest() (request *SyncProxyOrganizationO
     request = &SyncProxyOrganizationOperatorsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("essbasic", APIVersion, "SyncProxyOrganizationOperators")
     
     
@@ -1493,6 +1513,7 @@ func NewUploadFilesRequest() (request *UploadFilesRequest) {
     request = &UploadFilesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("essbasic", APIVersion, "UploadFiles")
     
     

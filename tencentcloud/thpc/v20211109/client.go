@@ -49,6 +49,7 @@ func NewBindAutoScalingGroupRequest() (request *BindAutoScalingGroupRequest) {
     request = &BindAutoScalingGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("thpc", APIVersion, "BindAutoScalingGroup")
     
     
@@ -106,6 +107,7 @@ func NewCreateClusterRequest() (request *CreateClusterRequest) {
     request = &CreateClusterRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("thpc", APIVersion, "CreateCluster")
     
     
@@ -165,6 +167,7 @@ func NewDeleteClusterRequest() (request *DeleteClusterRequest) {
     request = &DeleteClusterRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("thpc", APIVersion, "DeleteCluster")
     
     
@@ -216,6 +219,7 @@ func NewDescribeClustersRequest() (request *DescribeClustersRequest) {
     request = &DescribeClustersRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("thpc", APIVersion, "DescribeClusters")
     
     

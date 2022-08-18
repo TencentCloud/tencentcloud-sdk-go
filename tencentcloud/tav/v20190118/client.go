@@ -49,6 +49,7 @@ func NewGetLocalEngineRequest() (request *GetLocalEngineRequest) {
     request = &GetLocalEngineRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tav", APIVersion, "GetLocalEngine")
     
     
@@ -90,6 +91,7 @@ func NewGetScanResultRequest() (request *GetScanResultRequest) {
     request = &GetScanResultRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tav", APIVersion, "GetScanResult")
     
     
@@ -131,6 +133,7 @@ func NewScanFileRequest() (request *ScanFileRequest) {
     request = &ScanFileRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tav", APIVersion, "ScanFile")
     
     
@@ -172,6 +175,7 @@ func NewScanFileHashRequest() (request *ScanFileHashRequest) {
     request = &ScanFileHashRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("tav", APIVersion, "ScanFileHash")
     
     

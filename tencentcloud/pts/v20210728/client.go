@@ -49,6 +49,7 @@ func NewAbortCronJobsRequest() (request *AbortCronJobsRequest) {
     request = &AbortCronJobsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("pts", APIVersion, "AbortCronJobs")
     
     
@@ -90,6 +91,7 @@ func NewAbortJobRequest() (request *AbortJobRequest) {
     request = &AbortJobRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("pts", APIVersion, "AbortJob")
     
     
@@ -157,6 +159,7 @@ func NewAdjustJobSpeedRequest() (request *AdjustJobSpeedRequest) {
     request = &AdjustJobSpeedRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("pts", APIVersion, "AdjustJobSpeed")
     
     
@@ -212,6 +215,7 @@ func NewCopyScenarioRequest() (request *CopyScenarioRequest) {
     request = &CopyScenarioRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("pts", APIVersion, "CopyScenario")
     
     
@@ -259,6 +263,7 @@ func NewCreateAlertChannelRequest() (request *CreateAlertChannelRequest) {
     request = &CreateAlertChannelRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("pts", APIVersion, "CreateAlertChannel")
     
     
@@ -306,6 +311,7 @@ func NewCreateCronJobRequest() (request *CreateCronJobRequest) {
     request = &CreateCronJobRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("pts", APIVersion, "CreateCronJob")
     
     
@@ -353,6 +359,7 @@ func NewCreateFileRequest() (request *CreateFileRequest) {
     request = &CreateFileRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("pts", APIVersion, "CreateFile")
     
     
@@ -400,6 +407,7 @@ func NewCreateProjectRequest() (request *CreateProjectRequest) {
     request = &CreateProjectRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("pts", APIVersion, "CreateProject")
     
     
@@ -465,6 +473,7 @@ func NewCreateScenarioRequest() (request *CreateScenarioRequest) {
     request = &CreateScenarioRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("pts", APIVersion, "CreateScenario")
     
     
@@ -518,6 +527,7 @@ func NewDeleteAlertChannelRequest() (request *DeleteAlertChannelRequest) {
     request = &DeleteAlertChannelRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("pts", APIVersion, "DeleteAlertChannel")
     
     
@@ -571,6 +581,7 @@ func NewDeleteCronJobsRequest() (request *DeleteCronJobsRequest) {
     request = &DeleteCronJobsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("pts", APIVersion, "DeleteCronJobs")
     
     
@@ -624,6 +635,7 @@ func NewDeleteFilesRequest() (request *DeleteFilesRequest) {
     request = &DeleteFilesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("pts", APIVersion, "DeleteFiles")
     
     
@@ -677,6 +689,7 @@ func NewDeleteJobsRequest() (request *DeleteJobsRequest) {
     request = &DeleteJobsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("pts", APIVersion, "DeleteJobs")
     
     
@@ -742,6 +755,7 @@ func NewDeleteProjectsRequest() (request *DeleteProjectsRequest) {
     request = &DeleteProjectsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("pts", APIVersion, "DeleteProjects")
     
     
@@ -807,6 +821,7 @@ func NewDeleteScenariosRequest() (request *DeleteScenariosRequest) {
     request = &DeleteScenariosRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("pts", APIVersion, "DeleteScenarios")
     
     
@@ -870,6 +885,7 @@ func NewDescribeAlertChannelsRequest() (request *DescribeAlertChannelsRequest) {
     request = &DescribeAlertChannelsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("pts", APIVersion, "DescribeAlertChannels")
     
     
@@ -933,6 +949,7 @@ func NewDescribeAlertRecordsRequest() (request *DescribeAlertRecordsRequest) {
     request = &DescribeAlertRecordsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("pts", APIVersion, "DescribeAlertRecords")
     
     
@@ -996,6 +1013,7 @@ func NewDescribeAvailableMetricsRequest() (request *DescribeAvailableMetricsRequ
     request = &DescribeAvailableMetricsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("pts", APIVersion, "DescribeAvailableMetrics")
     
     
@@ -1059,6 +1077,7 @@ func NewDescribeCheckSummaryRequest() (request *DescribeCheckSummaryRequest) {
     request = &DescribeCheckSummaryRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("pts", APIVersion, "DescribeCheckSummary")
     
     
@@ -1116,6 +1135,7 @@ func NewDescribeCronJobsRequest() (request *DescribeCronJobsRequest) {
     request = &DescribeCronJobsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("pts", APIVersion, "DescribeCronJobs")
     
     
@@ -1173,6 +1193,7 @@ func NewDescribeFilesRequest() (request *DescribeFilesRequest) {
     request = &DescribeFilesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("pts", APIVersion, "DescribeFiles")
     
     
@@ -1230,6 +1251,7 @@ func NewDescribeJobsRequest() (request *DescribeJobsRequest) {
     request = &DescribeJobsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("pts", APIVersion, "DescribeJobs")
     
     
@@ -1291,6 +1313,7 @@ func NewDescribeLabelValuesRequest() (request *DescribeLabelValuesRequest) {
     request = &DescribeLabelValuesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("pts", APIVersion, "DescribeLabelValues")
     
     
@@ -1348,6 +1371,7 @@ func NewDescribeMetricLabelWithValuesRequest() (request *DescribeMetricLabelWith
     request = &DescribeMetricLabelWithValuesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("pts", APIVersion, "DescribeMetricLabelWithValues")
     
     
@@ -1403,6 +1427,7 @@ func NewDescribeNormalLogsRequest() (request *DescribeNormalLogsRequest) {
     request = &DescribeNormalLogsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("pts", APIVersion, "DescribeNormalLogs")
     
     
@@ -1460,6 +1485,7 @@ func NewDescribeProjectsRequest() (request *DescribeProjectsRequest) {
     request = &DescribeProjectsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("pts", APIVersion, "DescribeProjects")
     
     
@@ -1529,6 +1555,7 @@ func NewDescribeRegionsRequest() (request *DescribeRegionsRequest) {
     request = &DescribeRegionsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("pts", APIVersion, "DescribeRegions")
     
     
@@ -1588,6 +1615,7 @@ func NewDescribeRequestSummaryRequest() (request *DescribeRequestSummaryRequest)
     request = &DescribeRequestSummaryRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("pts", APIVersion, "DescribeRequestSummary")
     
     
@@ -1641,6 +1669,7 @@ func NewDescribeSampleBatchQueryRequest() (request *DescribeSampleBatchQueryRequ
     request = &DescribeSampleBatchQueryRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("pts", APIVersion, "DescribeSampleBatchQuery")
     
     
@@ -1698,6 +1727,7 @@ func NewDescribeSampleLogsRequest() (request *DescribeSampleLogsRequest) {
     request = &DescribeSampleLogsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("pts", APIVersion, "DescribeSampleLogs")
     
     
@@ -1753,6 +1783,7 @@ func NewDescribeSampleMatrixBatchQueryRequest() (request *DescribeSampleMatrixBa
     request = &DescribeSampleMatrixBatchQueryRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("pts", APIVersion, "DescribeSampleMatrixBatchQuery")
     
     
@@ -1808,6 +1839,7 @@ func NewDescribeSampleMatrixQueryRequest() (request *DescribeSampleMatrixQueryRe
     request = &DescribeSampleMatrixQueryRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("pts", APIVersion, "DescribeSampleMatrixQuery")
     
     
@@ -1861,6 +1893,7 @@ func NewDescribeSampleQueryRequest() (request *DescribeSampleQueryRequest) {
     request = &DescribeSampleQueryRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("pts", APIVersion, "DescribeSampleQuery")
     
     
@@ -1918,6 +1951,7 @@ func NewDescribeScenarioWithJobsRequest() (request *DescribeScenarioWithJobsRequ
     request = &DescribeScenarioWithJobsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("pts", APIVersion, "DescribeScenarioWithJobs")
     
     
@@ -1973,6 +2007,7 @@ func NewDescribeScenariosRequest() (request *DescribeScenariosRequest) {
     request = &DescribeScenariosRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("pts", APIVersion, "DescribeScenarios")
     
     
@@ -2028,6 +2063,7 @@ func NewGenerateTmpKeyRequest() (request *GenerateTmpKeyRequest) {
     request = &GenerateTmpKeyRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("pts", APIVersion, "GenerateTmpKey")
     
     
@@ -2085,6 +2121,7 @@ func NewRestartCronJobsRequest() (request *RestartCronJobsRequest) {
     request = &RestartCronJobsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("pts", APIVersion, "RestartCronJobs")
     
     
@@ -2142,6 +2179,7 @@ func NewStartJobRequest() (request *StartJobRequest) {
     request = &StartJobRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("pts", APIVersion, "StartJob")
     
     
@@ -2203,6 +2241,7 @@ func NewUpdateCronJobRequest() (request *UpdateCronJobRequest) {
     request = &UpdateCronJobRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("pts", APIVersion, "UpdateCronJob")
     
     
@@ -2250,6 +2289,7 @@ func NewUpdateFileScenarioRelationRequest() (request *UpdateFileScenarioRelation
     request = &UpdateFileScenarioRelationRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("pts", APIVersion, "UpdateFileScenarioRelation")
     
     
@@ -2297,6 +2337,7 @@ func NewUpdateJobRequest() (request *UpdateJobRequest) {
     request = &UpdateJobRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("pts", APIVersion, "UpdateJob")
     
     
@@ -2360,6 +2401,7 @@ func NewUpdateProjectRequest() (request *UpdateProjectRequest) {
     request = &UpdateProjectRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("pts", APIVersion, "UpdateProject")
     
     
@@ -2427,6 +2469,7 @@ func NewUpdateScenarioRequest() (request *UpdateScenarioRequest) {
     request = &UpdateScenarioRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("pts", APIVersion, "UpdateScenario")
     
     

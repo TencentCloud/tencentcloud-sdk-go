@@ -49,6 +49,7 @@ func NewCreateIndexRequest() (request *CreateIndexRequest) {
     request = &CreateIndexRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("es", APIVersion, "CreateIndex")
     
     
@@ -122,6 +123,7 @@ func NewCreateInstanceRequest() (request *CreateInstanceRequest) {
     request = &CreateInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("es", APIVersion, "CreateInstance")
     
     
@@ -191,6 +193,7 @@ func NewCreateLogstashInstanceRequest() (request *CreateLogstashInstanceRequest)
     request = &CreateLogstashInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("es", APIVersion, "CreateLogstashInstance")
     
     
@@ -254,6 +257,7 @@ func NewDeleteIndexRequest() (request *DeleteIndexRequest) {
     request = &DeleteIndexRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("es", APIVersion, "DeleteIndex")
     
     
@@ -327,6 +331,7 @@ func NewDeleteInstanceRequest() (request *DeleteInstanceRequest) {
     request = &DeleteInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("es", APIVersion, "DeleteInstance")
     
     
@@ -380,6 +385,7 @@ func NewDeleteLogstashInstanceRequest() (request *DeleteLogstashInstanceRequest)
     request = &DeleteLogstashInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("es", APIVersion, "DeleteLogstashInstance")
     
     
@@ -433,6 +439,7 @@ func NewDeleteLogstashPipelinesRequest() (request *DeleteLogstashPipelinesReques
     request = &DeleteLogstashPipelinesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("es", APIVersion, "DeleteLogstashPipelines")
     
     
@@ -484,6 +491,7 @@ func NewDescribeIndexListRequest() (request *DescribeIndexListRequest) {
     request = &DescribeIndexListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("es", APIVersion, "DescribeIndexList")
     
     
@@ -557,6 +565,7 @@ func NewDescribeIndexMetaRequest() (request *DescribeIndexMetaRequest) {
     request = &DescribeIndexMetaRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("es", APIVersion, "DescribeIndexMeta")
     
     
@@ -630,6 +639,7 @@ func NewDescribeInstanceLogsRequest() (request *DescribeInstanceLogsRequest) {
     request = &DescribeInstanceLogsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("es", APIVersion, "DescribeInstanceLogs")
     
     
@@ -679,6 +689,7 @@ func NewDescribeInstanceOperationsRequest() (request *DescribeInstanceOperations
     request = &DescribeInstanceOperationsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("es", APIVersion, "DescribeInstanceOperations")
     
     
@@ -730,6 +741,7 @@ func NewDescribeInstancesRequest() (request *DescribeInstancesRequest) {
     request = &DescribeInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("es", APIVersion, "DescribeInstances")
     
     
@@ -783,6 +795,7 @@ func NewDescribeLogstashInstanceLogsRequest() (request *DescribeLogstashInstance
     request = &DescribeLogstashInstanceLogsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("es", APIVersion, "DescribeLogstashInstanceLogs")
     
     
@@ -832,6 +845,7 @@ func NewDescribeLogstashInstanceOperationsRequest() (request *DescribeLogstashIn
     request = &DescribeLogstashInstanceOperationsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("es", APIVersion, "DescribeLogstashInstanceOperations")
     
     
@@ -883,6 +897,7 @@ func NewDescribeLogstashInstancesRequest() (request *DescribeLogstashInstancesRe
     request = &DescribeLogstashInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("es", APIVersion, "DescribeLogstashInstances")
     
     
@@ -934,6 +949,7 @@ func NewDescribeLogstashPipelinesRequest() (request *DescribeLogstashPipelinesRe
     request = &DescribeLogstashPipelinesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("es", APIVersion, "DescribeLogstashPipelines")
     
     
@@ -983,6 +999,7 @@ func NewDescribeViewsRequest() (request *DescribeViewsRequest) {
     request = &DescribeViewsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("es", APIVersion, "DescribeViews")
     
     
@@ -1034,6 +1051,7 @@ func NewDiagnoseInstanceRequest() (request *DiagnoseInstanceRequest) {
     request = &DiagnoseInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("es", APIVersion, "DiagnoseInstance")
     
     
@@ -1091,6 +1109,7 @@ func NewGetRequestTargetNodeTypesRequest() (request *GetRequestTargetNodeTypesRe
     request = &GetRequestTargetNodeTypesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("es", APIVersion, "GetRequestTargetNodeTypes")
     
     
@@ -1142,6 +1161,7 @@ func NewRestartInstanceRequest() (request *RestartInstanceRequest) {
     request = &RestartInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("es", APIVersion, "RestartInstance")
     
     
@@ -1195,6 +1215,7 @@ func NewRestartKibanaRequest() (request *RestartKibanaRequest) {
     request = &RestartKibanaRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("es", APIVersion, "RestartKibana")
     
     
@@ -1246,6 +1267,7 @@ func NewRestartLogstashInstanceRequest() (request *RestartLogstashInstanceReques
     request = &RestartLogstashInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("es", APIVersion, "RestartLogstashInstance")
     
     
@@ -1301,6 +1323,7 @@ func NewRestartNodesRequest() (request *RestartNodesRequest) {
     request = &RestartNodesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("es", APIVersion, "RestartNodes")
     
     
@@ -1356,6 +1379,7 @@ func NewSaveAndDeployLogstashPipelineRequest() (request *SaveAndDeployLogstashPi
     request = &SaveAndDeployLogstashPipelineRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("es", APIVersion, "SaveAndDeployLogstashPipeline")
     
     
@@ -1403,6 +1427,7 @@ func NewStartLogstashPipelinesRequest() (request *StartLogstashPipelinesRequest)
     request = &StartLogstashPipelinesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("es", APIVersion, "StartLogstashPipelines")
     
     
@@ -1452,6 +1477,7 @@ func NewStopLogstashPipelinesRequest() (request *StopLogstashPipelinesRequest) {
     request = &StopLogstashPipelinesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("es", APIVersion, "StopLogstashPipelines")
     
     
@@ -1503,6 +1529,7 @@ func NewUpdateDiagnoseSettingsRequest() (request *UpdateDiagnoseSettingsRequest)
     request = &UpdateDiagnoseSettingsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("es", APIVersion, "UpdateDiagnoseSettings")
     
     
@@ -1560,6 +1587,7 @@ func NewUpdateDictionariesRequest() (request *UpdateDictionariesRequest) {
     request = &UpdateDictionariesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("es", APIVersion, "UpdateDictionaries")
     
     
@@ -1617,6 +1645,7 @@ func NewUpdateIndexRequest() (request *UpdateIndexRequest) {
     request = &UpdateIndexRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("es", APIVersion, "UpdateIndex")
     
     
@@ -1690,6 +1719,7 @@ func NewUpdateInstanceRequest() (request *UpdateInstanceRequest) {
     request = &UpdateInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("es", APIVersion, "UpdateInstance")
     
     
@@ -1793,6 +1823,7 @@ func NewUpdateJdkRequest() (request *UpdateJdkRequest) {
     request = &UpdateJdkRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("es", APIVersion, "UpdateJdk")
     
     
@@ -1864,6 +1895,7 @@ func NewUpdateLogstashInstanceRequest() (request *UpdateLogstashInstanceRequest)
     request = &UpdateLogstashInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("es", APIVersion, "UpdateLogstashInstance")
     
     
@@ -1951,6 +1983,7 @@ func NewUpdateLogstashPipelineDescRequest() (request *UpdateLogstashPipelineDesc
     request = &UpdateLogstashPipelineDescRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("es", APIVersion, "UpdateLogstashPipelineDesc")
     
     
@@ -2002,6 +2035,7 @@ func NewUpdatePluginsRequest() (request *UpdatePluginsRequest) {
     request = &UpdatePluginsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("es", APIVersion, "UpdatePlugins")
     
     
@@ -2067,6 +2101,7 @@ func NewUpdateRequestTargetNodeTypesRequest() (request *UpdateRequestTargetNodeT
     request = &UpdateRequestTargetNodeTypesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("es", APIVersion, "UpdateRequestTargetNodeTypes")
     
     
@@ -2124,6 +2159,7 @@ func NewUpgradeInstanceRequest() (request *UpgradeInstanceRequest) {
     request = &UpgradeInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("es", APIVersion, "UpgradeInstance")
     
     
@@ -2189,6 +2225,7 @@ func NewUpgradeLicenseRequest() (request *UpgradeLicenseRequest) {
     request = &UpgradeLicenseRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("es", APIVersion, "UpgradeLicense")
     
     

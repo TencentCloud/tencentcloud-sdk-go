@@ -49,6 +49,7 @@ func NewAddCustomRuleRequest() (request *AddCustomRuleRequest) {
     request = &AddCustomRuleRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("waf", APIVersion, "AddCustomRule")
     
     
@@ -100,6 +101,7 @@ func NewAddDomainWhiteRuleRequest() (request *AddDomainWhiteRuleRequest) {
     request = &AddDomainWhiteRuleRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("waf", APIVersion, "AddDomainWhiteRule")
     
     
@@ -147,6 +149,7 @@ func NewAddSpartaProtectionRequest() (request *AddSpartaProtectionRequest) {
     request = &AddSpartaProtectionRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("waf", APIVersion, "AddSpartaProtection")
     
     
@@ -218,6 +221,7 @@ func NewCreateAccessExportRequest() (request *CreateAccessExportRequest) {
     request = &CreateAccessExportRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("waf", APIVersion, "CreateAccessExport")
     
     
@@ -303,6 +307,7 @@ func NewDeleteAccessExportRequest() (request *DeleteAccessExportRequest) {
     request = &DeleteAccessExportRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("waf", APIVersion, "DeleteAccessExport")
     
     
@@ -388,6 +393,7 @@ func NewDeleteAttackDownloadRecordRequest() (request *DeleteAttackDownloadRecord
     request = &DeleteAttackDownloadRecordRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("waf", APIVersion, "DeleteAttackDownloadRecord")
     
     
@@ -437,6 +443,7 @@ func NewDeleteDomainWhiteRulesRequest() (request *DeleteDomainWhiteRulesRequest)
     request = &DeleteDomainWhiteRulesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("waf", APIVersion, "DeleteDomainWhiteRules")
     
     
@@ -488,6 +495,7 @@ func NewDeleteDownloadRecordRequest() (request *DeleteDownloadRecordRequest) {
     request = &DeleteDownloadRecordRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("waf", APIVersion, "DeleteDownloadRecord")
     
     
@@ -535,6 +543,7 @@ func NewDeleteIpAccessControlRequest() (request *DeleteIpAccessControlRequest) {
     request = &DeleteIpAccessControlRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("waf", APIVersion, "DeleteIpAccessControl")
     
     
@@ -584,6 +593,7 @@ func NewDeleteSessionRequest() (request *DeleteSessionRequest) {
     request = &DeleteSessionRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("waf", APIVersion, "DeleteSession")
     
     
@@ -631,6 +641,7 @@ func NewDescribeAccessExportsRequest() (request *DescribeAccessExportsRequest) {
     request = &DescribeAccessExportsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("waf", APIVersion, "DescribeAccessExports")
     
     
@@ -716,6 +727,7 @@ func NewDescribeAccessFastAnalysisRequest() (request *DescribeAccessFastAnalysis
     request = &DescribeAccessFastAnalysisRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("waf", APIVersion, "DescribeAccessFastAnalysis")
     
     
@@ -801,6 +813,7 @@ func NewDescribeAccessIndexRequest() (request *DescribeAccessIndexRequest) {
     request = &DescribeAccessIndexRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("waf", APIVersion, "DescribeAccessIndex")
     
     
@@ -886,6 +899,7 @@ func NewDescribeAutoDenyIPRequest() (request *DescribeAutoDenyIPRequest) {
     request = &DescribeAutoDenyIPRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("waf", APIVersion, "DescribeAutoDenyIP")
     
     
@@ -935,6 +949,7 @@ func NewDescribeDomainWhiteRulesRequest() (request *DescribeDomainWhiteRulesRequ
     request = &DescribeDomainWhiteRulesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("waf", APIVersion, "DescribeDomainWhiteRules")
     
     
@@ -986,6 +1001,7 @@ func NewDescribeDomainsRequest() (request *DescribeDomainsRequest) {
     request = &DescribeDomainsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("waf", APIVersion, "DescribeDomains")
     
     
@@ -1071,6 +1087,7 @@ func NewDescribeFlowTrendRequest() (request *DescribeFlowTrendRequest) {
     request = &DescribeFlowTrendRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("waf", APIVersion, "DescribeFlowTrend")
     
     
@@ -1124,6 +1141,7 @@ func NewDescribeInstancesRequest() (request *DescribeInstancesRequest) {
     request = &DescribeInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("waf", APIVersion, "DescribeInstances")
     
     
@@ -1209,6 +1227,7 @@ func NewDescribeIpAccessControlRequest() (request *DescribeIpAccessControlReques
     request = &DescribeIpAccessControlRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("waf", APIVersion, "DescribeIpAccessControl")
     
     
@@ -1256,6 +1275,7 @@ func NewDescribeIpHitItemsRequest() (request *DescribeIpHitItemsRequest) {
     request = &DescribeIpHitItemsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("waf", APIVersion, "DescribeIpHitItems")
     
     
@@ -1305,6 +1325,7 @@ func NewDescribeUserCdcClbWafRegionsRequest() (request *DescribeUserCdcClbWafReg
     request = &DescribeUserCdcClbWafRegionsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("waf", APIVersion, "DescribeUserCdcClbWafRegions")
     
     
@@ -1354,6 +1375,7 @@ func NewDescribeUserClbWafRegionsRequest() (request *DescribeUserClbWafRegionsRe
     request = &DescribeUserClbWafRegionsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("waf", APIVersion, "DescribeUserClbWafRegions")
     
     
@@ -1429,6 +1451,7 @@ func NewDescribeWafAutoDenyRulesRequest() (request *DescribeWafAutoDenyRulesRequ
     request = &DescribeWafAutoDenyRulesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("waf", APIVersion, "DescribeWafAutoDenyRules")
     
     
@@ -1476,6 +1499,7 @@ func NewDescribeWafAutoDenyStatusRequest() (request *DescribeWafAutoDenyStatusRe
     request = &DescribeWafAutoDenyStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("waf", APIVersion, "DescribeWafAutoDenyStatus")
     
     
@@ -1525,6 +1549,7 @@ func NewDescribeWafThreatenIntelligenceRequest() (request *DescribeWafThreatenIn
     request = &DescribeWafThreatenIntelligenceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("waf", APIVersion, "DescribeWafThreatenIntelligence")
     
     
@@ -1574,6 +1599,7 @@ func NewGetAttackDownloadRecordsRequest() (request *GetAttackDownloadRecordsRequ
     request = &GetAttackDownloadRecordsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("waf", APIVersion, "GetAttackDownloadRecords")
     
     
@@ -1623,6 +1649,7 @@ func NewModifyAccessPeriodRequest() (request *ModifyAccessPeriodRequest) {
     request = &ModifyAccessPeriodRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("waf", APIVersion, "ModifyAccessPeriod")
     
     
@@ -1708,6 +1735,7 @@ func NewModifyCustomRuleStatusRequest() (request *ModifyCustomRuleStatusRequest)
     request = &ModifyCustomRuleStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("waf", APIVersion, "ModifyCustomRuleStatus")
     
     
@@ -1755,6 +1783,7 @@ func NewModifyDomainWhiteRuleRequest() (request *ModifyDomainWhiteRuleRequest) {
     request = &ModifyDomainWhiteRuleRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("waf", APIVersion, "ModifyDomainWhiteRule")
     
     
@@ -1802,6 +1831,7 @@ func NewModifyWafAutoDenyRulesRequest() (request *ModifyWafAutoDenyRulesRequest)
     request = &ModifyWafAutoDenyRulesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("waf", APIVersion, "ModifyWafAutoDenyRules")
     
     
@@ -1849,6 +1879,7 @@ func NewModifyWafAutoDenyStatusRequest() (request *ModifyWafAutoDenyStatusReques
     request = &ModifyWafAutoDenyStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("waf", APIVersion, "ModifyWafAutoDenyStatus")
     
     
@@ -1898,6 +1929,7 @@ func NewModifyWafThreatenIntelligenceRequest() (request *ModifyWafThreatenIntell
     request = &ModifyWafThreatenIntelligenceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("waf", APIVersion, "ModifyWafThreatenIntelligence")
     
     
@@ -1947,6 +1979,7 @@ func NewPostAttackDownloadTaskRequest() (request *PostAttackDownloadTaskRequest)
     request = &PostAttackDownloadTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("waf", APIVersion, "PostAttackDownloadTask")
     
     
@@ -1994,6 +2027,7 @@ func NewSearchAccessLogRequest() (request *SearchAccessLogRequest) {
     request = &SearchAccessLogRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("waf", APIVersion, "SearchAccessLog")
     
     
@@ -2079,6 +2113,7 @@ func NewUpsertIpAccessControlRequest() (request *UpsertIpAccessControlRequest) {
     request = &UpsertIpAccessControlRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("waf", APIVersion, "UpsertIpAccessControl")
     
     

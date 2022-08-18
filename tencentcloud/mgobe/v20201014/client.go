@@ -49,6 +49,7 @@ func NewChangeRoomPlayerProfileRequest() (request *ChangeRoomPlayerProfileReques
     request = &ChangeRoomPlayerProfileRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("mgobe", APIVersion, "ChangeRoomPlayerProfile")
     
     
@@ -138,6 +139,7 @@ func NewChangeRoomPlayerStatusRequest() (request *ChangeRoomPlayerStatusRequest)
     request = &ChangeRoomPlayerStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("mgobe", APIVersion, "ChangeRoomPlayerStatus")
     
     
@@ -811,6 +813,7 @@ func NewDescribePlayerRequest() (request *DescribePlayerRequest) {
     request = &DescribePlayerRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("mgobe", APIVersion, "DescribePlayer")
     
     
@@ -1486,6 +1489,7 @@ func NewDescribeRoomRequest() (request *DescribeRoomRequest) {
     request = &DescribeRoomRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("mgobe", APIVersion, "DescribeRoom")
     
     
@@ -2161,6 +2165,7 @@ func NewDismissRoomRequest() (request *DismissRoomRequest) {
     request = &DismissRoomRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("mgobe", APIVersion, "DismissRoom")
     
     
@@ -2834,6 +2839,7 @@ func NewModifyRoomRequest() (request *ModifyRoomRequest) {
     request = &ModifyRoomRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("mgobe", APIVersion, "ModifyRoom")
     
     
@@ -3507,6 +3513,7 @@ func NewRemoveRoomPlayerRequest() (request *RemoveRoomPlayerRequest) {
     request = &RemoveRoomPlayerRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("mgobe", APIVersion, "RemoveRoomPlayer")
     
     

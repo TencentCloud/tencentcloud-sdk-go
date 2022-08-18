@@ -49,6 +49,7 @@ func NewApplyAIModelRequest() (request *ApplyAIModelRequest) {
     request = &ApplyAIModelRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotvideo", APIVersion, "ApplyAIModel")
     
     
@@ -100,6 +101,7 @@ func NewBatchUpdateFirmwareRequest() (request *BatchUpdateFirmwareRequest) {
     request = &BatchUpdateFirmwareRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotvideo", APIVersion, "BatchUpdateFirmware")
     
     
@@ -151,6 +153,7 @@ func NewBindCloudStorageUserRequest() (request *BindCloudStorageUserRequest) {
     request = &BindCloudStorageUserRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotvideo", APIVersion, "BindCloudStorageUser")
     
     
@@ -202,6 +205,7 @@ func NewCancelAIModelApplicationRequest() (request *CancelAIModelApplicationRequ
     request = &CancelAIModelApplicationRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotvideo", APIVersion, "CancelAIModelApplication")
     
     
@@ -253,6 +257,7 @@ func NewCancelDeviceFirmwareTaskRequest() (request *CancelDeviceFirmwareTaskRequ
     request = &CancelDeviceFirmwareTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotvideo", APIVersion, "CancelDeviceFirmwareTask")
     
     
@@ -304,6 +309,7 @@ func NewCheckForwardAuthRequest() (request *CheckForwardAuthRequest) {
     request = &CheckForwardAuthRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotvideo", APIVersion, "CheckForwardAuth")
     
     
@@ -355,6 +361,7 @@ func NewControlDeviceDataRequest() (request *ControlDeviceDataRequest) {
     request = &ControlDeviceDataRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotvideo", APIVersion, "ControlDeviceData")
     
     
@@ -406,6 +413,7 @@ func NewCreateAIDetectionRequest() (request *CreateAIDetectionRequest) {
     request = &CreateAIDetectionRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotvideo", APIVersion, "CreateAIDetection")
     
     
@@ -457,6 +465,7 @@ func NewCreateBatchRequest() (request *CreateBatchRequest) {
     request = &CreateBatchRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotvideo", APIVersion, "CreateBatch")
     
     
@@ -508,6 +517,7 @@ func NewCreateCOSCredentialsRequest() (request *CreateCOSCredentialsRequest) {
     request = &CreateCOSCredentialsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotvideo", APIVersion, "CreateCOSCredentials")
     
     
@@ -559,6 +569,7 @@ func NewCreateCloudStorageRequest() (request *CreateCloudStorageRequest) {
     request = &CreateCloudStorageRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotvideo", APIVersion, "CreateCloudStorage")
     
     
@@ -610,6 +621,7 @@ func NewCreateDataForwardRequest() (request *CreateDataForwardRequest) {
     request = &CreateDataForwardRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotvideo", APIVersion, "CreateDataForward")
     
     
@@ -661,6 +673,7 @@ func NewCreateForwardRuleRequest() (request *CreateForwardRuleRequest) {
     request = &CreateForwardRuleRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotvideo", APIVersion, "CreateForwardRule")
     
     
@@ -712,6 +725,7 @@ func NewCreateProductRequest() (request *CreateProductRequest) {
     request = &CreateProductRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotvideo", APIVersion, "CreateProduct")
     
     
@@ -765,6 +779,7 @@ func NewCreateTaskFileUrlRequest() (request *CreateTaskFileUrlRequest) {
     request = &CreateTaskFileUrlRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotvideo", APIVersion, "CreateTaskFileUrl")
     
     
@@ -814,6 +829,7 @@ func NewDeleteDeviceRequest() (request *DeleteDeviceRequest) {
     request = &DeleteDeviceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotvideo", APIVersion, "DeleteDevice")
     
     
@@ -865,6 +881,7 @@ func NewDeleteFirmwareRequest() (request *DeleteFirmwareRequest) {
     request = &DeleteFirmwareRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotvideo", APIVersion, "DeleteFirmware")
     
     
@@ -916,6 +933,7 @@ func NewDeleteForwardRuleRequest() (request *DeleteForwardRuleRequest) {
     request = &DeleteForwardRuleRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotvideo", APIVersion, "DeleteForwardRule")
     
     
@@ -967,6 +985,7 @@ func NewDeleteProductRequest() (request *DeleteProductRequest) {
     request = &DeleteProductRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotvideo", APIVersion, "DeleteProduct")
     
     
@@ -1018,6 +1037,7 @@ func NewDescribeAIModelApplicationsRequest() (request *DescribeAIModelApplicatio
     request = &DescribeAIModelApplicationsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotvideo", APIVersion, "DescribeAIModelApplications")
     
     
@@ -1069,6 +1089,7 @@ func NewDescribeAIModelChannelRequest() (request *DescribeAIModelChannelRequest)
     request = &DescribeAIModelChannelRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotvideo", APIVersion, "DescribeAIModelChannel")
     
     
@@ -1120,6 +1141,7 @@ func NewDescribeAIModelUsageRequest() (request *DescribeAIModelUsageRequest) {
     request = &DescribeAIModelUsageRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotvideo", APIVersion, "DescribeAIModelUsage")
     
     
@@ -1171,6 +1193,7 @@ func NewDescribeAIModelsRequest() (request *DescribeAIModelsRequest) {
     request = &DescribeAIModelsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotvideo", APIVersion, "DescribeAIModels")
     
     
@@ -1222,6 +1245,7 @@ func NewDescribeBalanceRequest() (request *DescribeBalanceRequest) {
     request = &DescribeBalanceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotvideo", APIVersion, "DescribeBalance")
     
     
@@ -1273,6 +1297,7 @@ func NewDescribeBalanceTransactionsRequest() (request *DescribeBalanceTransactio
     request = &DescribeBalanceTransactionsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotvideo", APIVersion, "DescribeBalanceTransactions")
     
     
@@ -1324,6 +1349,7 @@ func NewDescribeBatchRequest() (request *DescribeBatchRequest) {
     request = &DescribeBatchRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotvideo", APIVersion, "DescribeBatch")
     
     
@@ -1375,6 +1401,7 @@ func NewDescribeBatchsRequest() (request *DescribeBatchsRequest) {
     request = &DescribeBatchsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotvideo", APIVersion, "DescribeBatchs")
     
     
@@ -1426,6 +1453,7 @@ func NewDescribeCategoryRequest() (request *DescribeCategoryRequest) {
     request = &DescribeCategoryRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotvideo", APIVersion, "DescribeCategory")
     
     
@@ -1477,6 +1505,7 @@ func NewDescribeCloudStorageRequest() (request *DescribeCloudStorageRequest) {
     request = &DescribeCloudStorageRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotvideo", APIVersion, "DescribeCloudStorage")
     
     
@@ -1526,6 +1555,7 @@ func NewDescribeCloudStorageDateRequest() (request *DescribeCloudStorageDateRequ
     request = &DescribeCloudStorageDateRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotvideo", APIVersion, "DescribeCloudStorageDate")
     
     
@@ -1577,6 +1607,7 @@ func NewDescribeCloudStorageEventsRequest() (request *DescribeCloudStorageEvents
     request = &DescribeCloudStorageEventsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotvideo", APIVersion, "DescribeCloudStorageEvents")
     
     
@@ -1628,6 +1659,7 @@ func NewDescribeCloudStorageThumbnailRequest() (request *DescribeCloudStorageThu
     request = &DescribeCloudStorageThumbnailRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotvideo", APIVersion, "DescribeCloudStorageThumbnail")
     
     
@@ -1679,6 +1711,7 @@ func NewDescribeCloudStorageTimeRequest() (request *DescribeCloudStorageTimeRequ
     request = &DescribeCloudStorageTimeRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotvideo", APIVersion, "DescribeCloudStorageTime")
     
     
@@ -1730,6 +1763,7 @@ func NewDescribeCloudStorageUsersRequest() (request *DescribeCloudStorageUsersRe
     request = &DescribeCloudStorageUsersRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotvideo", APIVersion, "DescribeCloudStorageUsers")
     
     
@@ -1781,6 +1815,7 @@ func NewDescribeDataForwardListRequest() (request *DescribeDataForwardListReques
     request = &DescribeDataForwardListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotvideo", APIVersion, "DescribeDataForwardList")
     
     
@@ -1832,6 +1867,7 @@ func NewDescribeDeviceRequest() (request *DescribeDeviceRequest) {
     request = &DescribeDeviceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotvideo", APIVersion, "DescribeDevice")
     
     
@@ -1883,6 +1919,7 @@ func NewDescribeDeviceActionHistoryRequest() (request *DescribeDeviceActionHisto
     request = &DescribeDeviceActionHistoryRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotvideo", APIVersion, "DescribeDeviceActionHistory")
     
     
@@ -1934,6 +1971,7 @@ func NewDescribeDeviceCommLogRequest() (request *DescribeDeviceCommLogRequest) {
     request = &DescribeDeviceCommLogRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotvideo", APIVersion, "DescribeDeviceCommLog")
     
     
@@ -1985,6 +2023,7 @@ func NewDescribeDeviceDataRequest() (request *DescribeDeviceDataRequest) {
     request = &DescribeDeviceDataRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotvideo", APIVersion, "DescribeDeviceData")
     
     
@@ -2036,6 +2075,7 @@ func NewDescribeDeviceDataHistoryRequest() (request *DescribeDeviceDataHistoryRe
     request = &DescribeDeviceDataHistoryRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotvideo", APIVersion, "DescribeDeviceDataHistory")
     
     
@@ -2087,6 +2127,7 @@ func NewDescribeDeviceEventHistoryRequest() (request *DescribeDeviceEventHistory
     request = &DescribeDeviceEventHistoryRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotvideo", APIVersion, "DescribeDeviceEventHistory")
     
     
@@ -2138,6 +2179,7 @@ func NewDescribeDeviceStatusLogRequest() (request *DescribeDeviceStatusLogReques
     request = &DescribeDeviceStatusLogRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotvideo", APIVersion, "DescribeDeviceStatusLog")
     
     
@@ -2189,6 +2231,7 @@ func NewDescribeDevicesRequest() (request *DescribeDevicesRequest) {
     request = &DescribeDevicesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotvideo", APIVersion, "DescribeDevices")
     
     
@@ -2240,6 +2283,7 @@ func NewDescribeFirmwareRequest() (request *DescribeFirmwareRequest) {
     request = &DescribeFirmwareRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotvideo", APIVersion, "DescribeFirmware")
     
     
@@ -2287,6 +2331,7 @@ func NewDescribeFirmwareTaskRequest() (request *DescribeFirmwareTaskRequest) {
     request = &DescribeFirmwareTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotvideo", APIVersion, "DescribeFirmwareTask")
     
     
@@ -2334,6 +2379,7 @@ func NewDescribeFirmwareTaskDevicesRequest() (request *DescribeFirmwareTaskDevic
     request = &DescribeFirmwareTaskDevicesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotvideo", APIVersion, "DescribeFirmwareTaskDevices")
     
     
@@ -2385,6 +2431,7 @@ func NewDescribeFirmwareTaskDistributionRequest() (request *DescribeFirmwareTask
     request = &DescribeFirmwareTaskDistributionRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotvideo", APIVersion, "DescribeFirmwareTaskDistribution")
     
     
@@ -2436,6 +2483,7 @@ func NewDescribeFirmwareTaskStatisticsRequest() (request *DescribeFirmwareTaskSt
     request = &DescribeFirmwareTaskStatisticsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotvideo", APIVersion, "DescribeFirmwareTaskStatistics")
     
     
@@ -2487,6 +2535,7 @@ func NewDescribeFirmwareTasksRequest() (request *DescribeFirmwareTasksRequest) {
     request = &DescribeFirmwareTasksRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotvideo", APIVersion, "DescribeFirmwareTasks")
     
     
@@ -2538,6 +2587,7 @@ func NewDescribeForwardRuleRequest() (request *DescribeForwardRuleRequest) {
     request = &DescribeForwardRuleRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotvideo", APIVersion, "DescribeForwardRule")
     
     
@@ -2589,6 +2639,7 @@ func NewDescribeModelDefinitionRequest() (request *DescribeModelDefinitionReques
     request = &DescribeModelDefinitionRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotvideo", APIVersion, "DescribeModelDefinition")
     
     
@@ -2640,6 +2691,7 @@ func NewDescribeProductRequest() (request *DescribeProductRequest) {
     request = &DescribeProductRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotvideo", APIVersion, "DescribeProduct")
     
     
@@ -2691,6 +2743,7 @@ func NewDescribeProductDynamicRegisterRequest() (request *DescribeProductDynamic
     request = &DescribeProductDynamicRegisterRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotvideo", APIVersion, "DescribeProductDynamicRegister")
     
     
@@ -2742,6 +2795,7 @@ func NewDescribeProductsRequest() (request *DescribeProductsRequest) {
     request = &DescribeProductsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotvideo", APIVersion, "DescribeProducts")
     
     
@@ -2793,6 +2847,7 @@ func NewDescribeSDKLogRequest() (request *DescribeSDKLogRequest) {
     request = &DescribeSDKLogRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotvideo", APIVersion, "DescribeSDKLog")
     
     
@@ -2844,6 +2899,7 @@ func NewEditFirmwareRequest() (request *EditFirmwareRequest) {
     request = &EditFirmwareRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotvideo", APIVersion, "EditFirmware")
     
     
@@ -2891,6 +2947,7 @@ func NewGenerateSignedVideoURLRequest() (request *GenerateSignedVideoURLRequest)
     request = &GenerateSignedVideoURLRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotvideo", APIVersion, "GenerateSignedVideoURL")
     
     
@@ -2942,6 +2999,7 @@ func NewGetAllFirmwareVersionRequest() (request *GetAllFirmwareVersionRequest) {
     request = &GetAllFirmwareVersionRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotvideo", APIVersion, "GetAllFirmwareVersion")
     
     
@@ -2993,6 +3051,7 @@ func NewGetFirmwareURLRequest() (request *GetFirmwareURLRequest) {
     request = &GetFirmwareURLRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotvideo", APIVersion, "GetFirmwareURL")
     
     
@@ -3042,6 +3101,7 @@ func NewImportModelDefinitionRequest() (request *ImportModelDefinitionRequest) {
     request = &ImportModelDefinitionRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotvideo", APIVersion, "ImportModelDefinition")
     
     
@@ -3093,6 +3153,7 @@ func NewInheritCloudStorageUserRequest() (request *InheritCloudStorageUserReques
     request = &InheritCloudStorageUserRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotvideo", APIVersion, "InheritCloudStorageUser")
     
     
@@ -3144,6 +3205,7 @@ func NewListFirmwaresRequest() (request *ListFirmwaresRequest) {
     request = &ListFirmwaresRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotvideo", APIVersion, "ListFirmwares")
     
     
@@ -3197,6 +3259,7 @@ func NewModifyDataForwardRequest() (request *ModifyDataForwardRequest) {
     request = &ModifyDataForwardRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotvideo", APIVersion, "ModifyDataForward")
     
     
@@ -3248,6 +3311,7 @@ func NewModifyDataForwardStatusRequest() (request *ModifyDataForwardStatusReques
     request = &ModifyDataForwardStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotvideo", APIVersion, "ModifyDataForwardStatus")
     
     
@@ -3299,6 +3363,7 @@ func NewModifyDeviceRequest() (request *ModifyDeviceRequest) {
     request = &ModifyDeviceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotvideo", APIVersion, "ModifyDevice")
     
     
@@ -3350,6 +3415,7 @@ func NewModifyDeviceLogLevelRequest() (request *ModifyDeviceLogLevelRequest) {
     request = &ModifyDeviceLogLevelRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotvideo", APIVersion, "ModifyDeviceLogLevel")
     
     
@@ -3401,6 +3467,7 @@ func NewModifyForwardRuleRequest() (request *ModifyForwardRuleRequest) {
     request = &ModifyForwardRuleRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotvideo", APIVersion, "ModifyForwardRule")
     
     
@@ -3452,6 +3519,7 @@ func NewModifyModelDefinitionRequest() (request *ModifyModelDefinitionRequest) {
     request = &ModifyModelDefinitionRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotvideo", APIVersion, "ModifyModelDefinition")
     
     
@@ -3503,6 +3571,7 @@ func NewModifyProductRequest() (request *ModifyProductRequest) {
     request = &ModifyProductRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotvideo", APIVersion, "ModifyProduct")
     
     
@@ -3554,6 +3623,7 @@ func NewModifyProductDynamicRegisterRequest() (request *ModifyProductDynamicRegi
     request = &ModifyProductDynamicRegisterRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotvideo", APIVersion, "ModifyProductDynamicRegister")
     
     
@@ -3605,6 +3675,7 @@ func NewPublishMessageRequest() (request *PublishMessageRequest) {
     request = &PublishMessageRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotvideo", APIVersion, "PublishMessage")
     
     
@@ -3656,6 +3727,7 @@ func NewReportAliveDeviceRequest() (request *ReportAliveDeviceRequest) {
     request = &ReportAliveDeviceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotvideo", APIVersion, "ReportAliveDevice")
     
     
@@ -3707,6 +3779,7 @@ func NewResetCloudStorageRequest() (request *ResetCloudStorageRequest) {
     request = &ResetCloudStorageRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotvideo", APIVersion, "ResetCloudStorage")
     
     
@@ -3758,6 +3831,7 @@ func NewRetryDeviceFirmwareTaskRequest() (request *RetryDeviceFirmwareTaskReques
     request = &RetryDeviceFirmwareTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotvideo", APIVersion, "RetryDeviceFirmwareTask")
     
     
@@ -3813,6 +3887,7 @@ func NewSetForwardAuthRequest() (request *SetForwardAuthRequest) {
     request = &SetForwardAuthRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotvideo", APIVersion, "SetForwardAuth")
     
     
@@ -3864,6 +3939,7 @@ func NewTransferCloudStorageRequest() (request *TransferCloudStorageRequest) {
     request = &TransferCloudStorageRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotvideo", APIVersion, "TransferCloudStorage")
     
     
@@ -3915,6 +3991,7 @@ func NewUpdateAIModelChannelRequest() (request *UpdateAIModelChannelRequest) {
     request = &UpdateAIModelChannelRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotvideo", APIVersion, "UpdateAIModelChannel")
     
     
@@ -3966,6 +4043,7 @@ func NewUploadFirmwareRequest() (request *UploadFirmwareRequest) {
     request = &UploadFirmwareRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotvideo", APIVersion, "UploadFirmware")
     
     
@@ -4017,6 +4095,7 @@ func NewWakeUpDeviceRequest() (request *WakeUpDeviceRequest) {
     request = &WakeUpDeviceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("iotvideo", APIVersion, "WakeUpDevice")
     
     

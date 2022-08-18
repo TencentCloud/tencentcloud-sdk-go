@@ -49,6 +49,7 @@ func NewAcceptVpcPeerConnectionRequest() (request *AcceptVpcPeerConnectionReques
     request = &AcceptVpcPeerConnectionRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bmvpc", APIVersion, "AcceptVpcPeerConnection")
     
     
@@ -108,6 +109,7 @@ func NewAsyncRegisterIpsRequest() (request *AsyncRegisterIpsRequest) {
     request = &AsyncRegisterIpsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bmvpc", APIVersion, "AsyncRegisterIps")
     
     
@@ -155,6 +157,7 @@ func NewBindEipsToNatGatewayRequest() (request *BindEipsToNatGatewayRequest) {
     request = &BindEipsToNatGatewayRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bmvpc", APIVersion, "BindEipsToNatGateway")
     
     
@@ -208,6 +211,7 @@ func NewBindIpsToNatGatewayRequest() (request *BindIpsToNatGatewayRequest) {
     request = &BindIpsToNatGatewayRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bmvpc", APIVersion, "BindIpsToNatGateway")
     
     
@@ -263,6 +267,7 @@ func NewBindSubnetsToNatGatewayRequest() (request *BindSubnetsToNatGatewayReques
     request = &BindSubnetsToNatGatewayRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bmvpc", APIVersion, "BindSubnetsToNatGateway")
     
     
@@ -318,6 +323,7 @@ func NewCreateCustomerGatewayRequest() (request *CreateCustomerGatewayRequest) {
     request = &CreateCustomerGatewayRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bmvpc", APIVersion, "CreateCustomerGateway")
     
     
@@ -375,6 +381,7 @@ func NewCreateDockerSubnetWithVlanRequest() (request *CreateDockerSubnetWithVlan
     request = &CreateDockerSubnetWithVlanRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bmvpc", APIVersion, "CreateDockerSubnetWithVlan")
     
     
@@ -424,6 +431,7 @@ func NewCreateHostedInterfaceRequest() (request *CreateHostedInterfaceRequest) {
     request = &CreateHostedInterfaceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bmvpc", APIVersion, "CreateHostedInterface")
     
     
@@ -491,6 +499,7 @@ func NewCreateInterfacesRequest() (request *CreateInterfacesRequest) {
     request = &CreateInterfacesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bmvpc", APIVersion, "CreateInterfaces")
     
     
@@ -546,6 +555,7 @@ func NewCreateNatGatewayRequest() (request *CreateNatGatewayRequest) {
     request = &CreateNatGatewayRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bmvpc", APIVersion, "CreateNatGateway")
     
     
@@ -603,6 +613,7 @@ func NewCreateRoutePoliciesRequest() (request *CreateRoutePoliciesRequest) {
     request = &CreateRoutePoliciesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bmvpc", APIVersion, "CreateRoutePolicies")
     
     
@@ -660,6 +671,7 @@ func NewCreateSubnetRequest() (request *CreateSubnetRequest) {
     request = &CreateSubnetRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bmvpc", APIVersion, "CreateSubnet")
     
     
@@ -717,6 +729,7 @@ func NewCreateVirtualSubnetWithVlanRequest() (request *CreateVirtualSubnetWithVl
     request = &CreateVirtualSubnetWithVlanRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bmvpc", APIVersion, "CreateVirtualSubnetWithVlan")
     
     
@@ -766,6 +779,7 @@ func NewCreateVpcRequest() (request *CreateVpcRequest) {
     request = &CreateVpcRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bmvpc", APIVersion, "CreateVpc")
     
     
@@ -817,6 +831,7 @@ func NewCreateVpcPeerConnectionRequest() (request *CreateVpcPeerConnectionReques
     request = &CreateVpcPeerConnectionRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bmvpc", APIVersion, "CreateVpcPeerConnection")
     
     
@@ -878,6 +893,7 @@ func NewDeleteCustomerGatewayRequest() (request *DeleteCustomerGatewayRequest) {
     request = &DeleteCustomerGatewayRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bmvpc", APIVersion, "DeleteCustomerGateway")
     
     
@@ -935,6 +951,7 @@ func NewDeleteHostedInterfaceRequest() (request *DeleteHostedInterfaceRequest) {
     request = &DeleteHostedInterfaceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bmvpc", APIVersion, "DeleteHostedInterface")
     
     
@@ -994,6 +1011,7 @@ func NewDeleteHostedInterfacesRequest() (request *DeleteHostedInterfacesRequest)
     request = &DeleteHostedInterfacesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bmvpc", APIVersion, "DeleteHostedInterfaces")
     
     
@@ -1047,6 +1065,7 @@ func NewDeleteInterfacesRequest() (request *DeleteInterfacesRequest) {
     request = &DeleteInterfacesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bmvpc", APIVersion, "DeleteInterfaces")
     
     
@@ -1100,6 +1119,7 @@ func NewDeleteNatGatewayRequest() (request *DeleteNatGatewayRequest) {
     request = &DeleteNatGatewayRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bmvpc", APIVersion, "DeleteNatGateway")
     
     
@@ -1153,6 +1173,7 @@ func NewDeleteRoutePolicyRequest() (request *DeleteRoutePolicyRequest) {
     request = &DeleteRoutePolicyRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bmvpc", APIVersion, "DeleteRoutePolicy")
     
     
@@ -1208,6 +1229,7 @@ func NewDeleteSubnetRequest() (request *DeleteSubnetRequest) {
     request = &DeleteSubnetRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bmvpc", APIVersion, "DeleteSubnet")
     
     
@@ -1267,6 +1289,7 @@ func NewDeleteVirtualIpRequest() (request *DeleteVirtualIpRequest) {
     request = &DeleteVirtualIpRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bmvpc", APIVersion, "DeleteVirtualIp")
     
     
@@ -1320,6 +1343,7 @@ func NewDeleteVpcRequest() (request *DeleteVpcRequest) {
     request = &DeleteVpcRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bmvpc", APIVersion, "DeleteVpc")
     
     
@@ -1385,6 +1409,7 @@ func NewDeleteVpcPeerConnectionRequest() (request *DeleteVpcPeerConnectionReques
     request = &DeleteVpcPeerConnectionRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bmvpc", APIVersion, "DeleteVpcPeerConnection")
     
     
@@ -1444,6 +1469,7 @@ func NewDeleteVpnConnectionRequest() (request *DeleteVpnConnectionRequest) {
     request = &DeleteVpnConnectionRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bmvpc", APIVersion, "DeleteVpnConnection")
     
     
@@ -1511,6 +1537,7 @@ func NewDeleteVpnGatewayRequest() (request *DeleteVpnGatewayRequest) {
     request = &DeleteVpnGatewayRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bmvpc", APIVersion, "DeleteVpnGateway")
     
     
@@ -1564,6 +1591,7 @@ func NewDeregisterIpsRequest() (request *DeregisterIpsRequest) {
     request = &DeregisterIpsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bmvpc", APIVersion, "DeregisterIps")
     
     
@@ -1617,6 +1645,7 @@ func NewDescribeCustomerGatewaysRequest() (request *DescribeCustomerGatewaysRequ
     request = &DescribeCustomerGatewaysRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bmvpc", APIVersion, "DescribeCustomerGateways")
     
     
@@ -1666,6 +1695,7 @@ func NewDescribeNatGatewaysRequest() (request *DescribeNatGatewaysRequest) {
     request = &DescribeNatGatewaysRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bmvpc", APIVersion, "DescribeNatGateways")
     
     
@@ -1719,6 +1749,7 @@ func NewDescribeNatSubnetsRequest() (request *DescribeNatSubnetsRequest) {
     request = &DescribeNatSubnetsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bmvpc", APIVersion, "DescribeNatSubnets")
     
     
@@ -1772,6 +1803,7 @@ func NewDescribeRoutePoliciesRequest() (request *DescribeRoutePoliciesRequest) {
     request = &DescribeRoutePoliciesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bmvpc", APIVersion, "DescribeRoutePolicies")
     
     
@@ -1825,6 +1857,7 @@ func NewDescribeRouteTablesRequest() (request *DescribeRouteTablesRequest) {
     request = &DescribeRouteTablesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bmvpc", APIVersion, "DescribeRouteTables")
     
     
@@ -1876,6 +1909,7 @@ func NewDescribeSubnetAvailableIpsRequest() (request *DescribeSubnetAvailableIps
     request = &DescribeSubnetAvailableIpsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bmvpc", APIVersion, "DescribeSubnetAvailableIps")
     
     
@@ -1925,6 +1959,7 @@ func NewDescribeSubnetByDeviceRequest() (request *DescribeSubnetByDeviceRequest)
     request = &DescribeSubnetByDeviceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bmvpc", APIVersion, "DescribeSubnetByDevice")
     
     
@@ -1974,6 +2009,7 @@ func NewDescribeSubnetByHostedDeviceRequest() (request *DescribeSubnetByHostedDe
     request = &DescribeSubnetByHostedDeviceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bmvpc", APIVersion, "DescribeSubnetByHostedDevice")
     
     
@@ -2023,6 +2059,7 @@ func NewDescribeSubnetsRequest() (request *DescribeSubnetsRequest) {
     request = &DescribeSubnetsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bmvpc", APIVersion, "DescribeSubnets")
     
     
@@ -2074,6 +2111,7 @@ func NewDescribeTaskStatusRequest() (request *DescribeTaskStatusRequest) {
     request = &DescribeTaskStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bmvpc", APIVersion, "DescribeTaskStatus")
     
     
@@ -2125,6 +2163,7 @@ func NewDescribeVpcPeerConnectionsRequest() (request *DescribeVpcPeerConnections
     request = &DescribeVpcPeerConnectionsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bmvpc", APIVersion, "DescribeVpcPeerConnections")
     
     
@@ -2174,6 +2213,7 @@ func NewDescribeVpcQuotaRequest() (request *DescribeVpcQuotaRequest) {
     request = &DescribeVpcQuotaRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bmvpc", APIVersion, "DescribeVpcQuota")
     
     
@@ -2225,6 +2265,7 @@ func NewDescribeVpcResourceRequest() (request *DescribeVpcResourceRequest) {
     request = &DescribeVpcResourceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bmvpc", APIVersion, "DescribeVpcResource")
     
     
@@ -2276,6 +2317,7 @@ func NewDescribeVpcViewRequest() (request *DescribeVpcViewRequest) {
     request = &DescribeVpcViewRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bmvpc", APIVersion, "DescribeVpcView")
     
     
@@ -2329,6 +2371,7 @@ func NewDescribeVpcsRequest() (request *DescribeVpcsRequest) {
     request = &DescribeVpcsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bmvpc", APIVersion, "DescribeVpcs")
     
     
@@ -2382,6 +2425,7 @@ func NewDescribeVpnConnectionsRequest() (request *DescribeVpnConnectionsRequest)
     request = &DescribeVpnConnectionsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bmvpc", APIVersion, "DescribeVpnConnections")
     
     
@@ -2431,6 +2475,7 @@ func NewDescribeVpnGatewaysRequest() (request *DescribeVpnGatewaysRequest) {
     request = &DescribeVpnGatewaysRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bmvpc", APIVersion, "DescribeVpnGateways")
     
     
@@ -2480,6 +2525,7 @@ func NewDownloadCustomerGatewayConfigurationRequest() (request *DownloadCustomer
     request = &DownloadCustomerGatewayConfigurationRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bmvpc", APIVersion, "DownloadCustomerGatewayConfiguration")
     
     
@@ -2531,6 +2577,7 @@ func NewModifyCustomerGatewayAttributeRequest() (request *ModifyCustomerGatewayA
     request = &ModifyCustomerGatewayAttributeRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bmvpc", APIVersion, "ModifyCustomerGatewayAttribute")
     
     
@@ -2588,6 +2635,7 @@ func NewModifyRoutePolicyRequest() (request *ModifyRoutePolicyRequest) {
     request = &ModifyRoutePolicyRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bmvpc", APIVersion, "ModifyRoutePolicy")
     
     
@@ -2643,6 +2691,7 @@ func NewModifyRouteTableRequest() (request *ModifyRouteTableRequest) {
     request = &ModifyRouteTableRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bmvpc", APIVersion, "ModifyRouteTable")
     
     
@@ -2696,6 +2745,7 @@ func NewModifySubnetAttributeRequest() (request *ModifySubnetAttributeRequest) {
     request = &ModifySubnetAttributeRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bmvpc", APIVersion, "ModifySubnetAttribute")
     
     
@@ -2749,6 +2799,7 @@ func NewModifySubnetDHCPRelayRequest() (request *ModifySubnetDHCPRelayRequest) {
     request = &ModifySubnetDHCPRelayRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bmvpc", APIVersion, "ModifySubnetDHCPRelay")
     
     
@@ -2802,6 +2853,7 @@ func NewModifyVpcAttributeRequest() (request *ModifyVpcAttributeRequest) {
     request = &ModifyVpcAttributeRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bmvpc", APIVersion, "ModifyVpcAttribute")
     
     
@@ -2855,6 +2907,7 @@ func NewModifyVpcPeerConnectionRequest() (request *ModifyVpcPeerConnectionReques
     request = &ModifyVpcPeerConnectionRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bmvpc", APIVersion, "ModifyVpcPeerConnection")
     
     
@@ -2914,6 +2967,7 @@ func NewModifyVpnConnectionAttributeRequest() (request *ModifyVpnConnectionAttri
     request = &ModifyVpnConnectionAttributeRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bmvpc", APIVersion, "ModifyVpnConnectionAttribute")
     
     
@@ -2983,6 +3037,7 @@ func NewModifyVpnGatewayAttributeRequest() (request *ModifyVpnGatewayAttributeRe
     request = &ModifyVpnGatewayAttributeRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bmvpc", APIVersion, "ModifyVpnGatewayAttribute")
     
     
@@ -3036,6 +3091,7 @@ func NewRejectVpcPeerConnectionRequest() (request *RejectVpcPeerConnectionReques
     request = &RejectVpcPeerConnectionRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bmvpc", APIVersion, "RejectVpcPeerConnection")
     
     
@@ -3097,6 +3153,7 @@ func NewResetVpnConnectionRequest() (request *ResetVpnConnectionRequest) {
     request = &ResetVpnConnectionRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bmvpc", APIVersion, "ResetVpnConnection")
     
     
@@ -3152,6 +3209,7 @@ func NewUnbindEipsFromNatGatewayRequest() (request *UnbindEipsFromNatGatewayRequ
     request = &UnbindEipsFromNatGatewayRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bmvpc", APIVersion, "UnbindEipsFromNatGateway")
     
     
@@ -3207,6 +3265,7 @@ func NewUnbindIpsFromNatGatewayRequest() (request *UnbindIpsFromNatGatewayReques
     request = &UnbindIpsFromNatGatewayRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bmvpc", APIVersion, "UnbindIpsFromNatGateway")
     
     
@@ -3260,6 +3319,7 @@ func NewUnbindSubnetsFromNatGatewayRequest() (request *UnbindSubnetsFromNatGatew
     request = &UnbindSubnetsFromNatGatewayRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bmvpc", APIVersion, "UnbindSubnetsFromNatGateway")
     
     
@@ -3313,6 +3373,7 @@ func NewUpgradeNatGatewayRequest() (request *UpgradeNatGatewayRequest) {
     request = &UpgradeNatGatewayRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("bmvpc", APIVersion, "UpgradeNatGateway")
     
     

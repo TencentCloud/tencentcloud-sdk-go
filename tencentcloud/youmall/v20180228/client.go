@@ -49,6 +49,7 @@ func NewCreateAccountRequest() (request *CreateAccountRequest) {
     request = &CreateAccountRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("youmall", APIVersion, "CreateAccount")
     
     
@@ -110,6 +111,7 @@ func NewCreateFacePictureRequest() (request *CreateFacePictureRequest) {
     request = &CreateFacePictureRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("youmall", APIVersion, "CreateFacePicture")
     
     
@@ -171,6 +173,7 @@ func NewDeletePersonFeatureRequest() (request *DeletePersonFeatureRequest) {
     request = &DeletePersonFeatureRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("youmall", APIVersion, "DeletePersonFeature")
     
     
@@ -250,6 +253,7 @@ func NewDescribeCameraPersonRequest() (request *DescribeCameraPersonRequest) {
     request = &DescribeCameraPersonRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("youmall", APIVersion, "DescribeCameraPerson")
     
     
@@ -301,6 +305,7 @@ func NewDescribeClusterPersonArrivedMallRequest() (request *DescribeClusterPerso
     request = &DescribeClusterPersonArrivedMallRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("youmall", APIVersion, "DescribeClusterPersonArrivedMall")
     
     
@@ -364,6 +369,7 @@ func NewDescribeClusterPersonTraceRequest() (request *DescribeClusterPersonTrace
     request = &DescribeClusterPersonTraceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("youmall", APIVersion, "DescribeClusterPersonTrace")
     
     
@@ -427,6 +433,7 @@ func NewDescribeFaceIdByTempIdRequest() (request *DescribeFaceIdByTempIdRequest)
     request = &DescribeFaceIdByTempIdRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("youmall", APIVersion, "DescribeFaceIdByTempId")
     
     
@@ -498,6 +505,7 @@ func NewDescribeHistoryNetworkInfoRequest() (request *DescribeHistoryNetworkInfo
     request = &DescribeHistoryNetworkInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("youmall", APIVersion, "DescribeHistoryNetworkInfo")
     
     
@@ -553,6 +561,7 @@ func NewDescribeNetworkInfoRequest() (request *DescribeNetworkInfoRequest) {
     request = &DescribeNetworkInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("youmall", APIVersion, "DescribeNetworkInfo")
     
     
@@ -608,6 +617,7 @@ func NewDescribePersonRequest() (request *DescribePersonRequest) {
     request = &DescribePersonRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("youmall", APIVersion, "DescribePerson")
     
     
@@ -673,6 +683,7 @@ func NewDescribePersonArrivedMallRequest() (request *DescribePersonArrivedMallRe
     request = &DescribePersonArrivedMallRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("youmall", APIVersion, "DescribePersonArrivedMall")
     
     
@@ -742,6 +753,7 @@ func NewDescribePersonInfoRequest() (request *DescribePersonInfoRequest) {
     request = &DescribePersonInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("youmall", APIVersion, "DescribePersonInfo")
     
     
@@ -797,6 +809,7 @@ func NewDescribePersonInfoByFacePictureRequest() (request *DescribePersonInfoByF
     request = &DescribePersonInfoByFacePictureRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("youmall", APIVersion, "DescribePersonInfoByFacePicture")
     
     
@@ -876,6 +889,7 @@ func NewDescribePersonTraceRequest() (request *DescribePersonTraceRequest) {
     request = &DescribePersonTraceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("youmall", APIVersion, "DescribePersonTrace")
     
     
@@ -941,6 +955,7 @@ func NewDescribePersonTraceDetailRequest() (request *DescribePersonTraceDetailRe
     request = &DescribePersonTraceDetailRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("youmall", APIVersion, "DescribePersonTraceDetail")
     
     
@@ -1004,6 +1019,7 @@ func NewDescribePersonVisitInfoRequest() (request *DescribePersonVisitInfoReques
     request = &DescribePersonVisitInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("youmall", APIVersion, "DescribePersonVisitInfo")
     
     
@@ -1057,6 +1073,7 @@ func NewDescribeShopHourTrafficInfoRequest() (request *DescribeShopHourTrafficIn
     request = &DescribeShopHourTrafficInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("youmall", APIVersion, "DescribeShopHourTrafficInfo")
     
     
@@ -1112,6 +1129,7 @@ func NewDescribeShopInfoRequest() (request *DescribeShopInfoRequest) {
     request = &DescribeShopInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("youmall", APIVersion, "DescribeShopInfo")
     
     
@@ -1167,6 +1185,7 @@ func NewDescribeShopTrafficInfoRequest() (request *DescribeShopTrafficInfoReques
     request = &DescribeShopTrafficInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("youmall", APIVersion, "DescribeShopTrafficInfo")
     
     
@@ -1222,6 +1241,7 @@ func NewDescribeTrajectoryDataRequest() (request *DescribeTrajectoryDataRequest)
     request = &DescribeTrajectoryDataRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("youmall", APIVersion, "DescribeTrajectoryData")
     
     
@@ -1281,6 +1301,7 @@ func NewDescribeZoneFlowAgeInfoByZoneIdRequest() (request *DescribeZoneFlowAgeIn
     request = &DescribeZoneFlowAgeInfoByZoneIdRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("youmall", APIVersion, "DescribeZoneFlowAgeInfoByZoneId")
     
     
@@ -1340,6 +1361,7 @@ func NewDescribeZoneFlowAndStayTimeRequest() (request *DescribeZoneFlowAndStayTi
     request = &DescribeZoneFlowAndStayTimeRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("youmall", APIVersion, "DescribeZoneFlowAndStayTime")
     
     
@@ -1399,6 +1421,7 @@ func NewDescribeZoneFlowDailyByZoneIdRequest() (request *DescribeZoneFlowDailyBy
     request = &DescribeZoneFlowDailyByZoneIdRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("youmall", APIVersion, "DescribeZoneFlowDailyByZoneId")
     
     
@@ -1458,6 +1481,7 @@ func NewDescribeZoneFlowGenderAvrStayTimeByZoneIdRequest() (request *DescribeZon
     request = &DescribeZoneFlowGenderAvrStayTimeByZoneIdRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("youmall", APIVersion, "DescribeZoneFlowGenderAvrStayTimeByZoneId")
     
     
@@ -1517,6 +1541,7 @@ func NewDescribeZoneFlowGenderInfoByZoneIdRequest() (request *DescribeZoneFlowGe
     request = &DescribeZoneFlowGenderInfoByZoneIdRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("youmall", APIVersion, "DescribeZoneFlowGenderInfoByZoneId")
     
     
@@ -1576,6 +1601,7 @@ func NewDescribeZoneFlowHourlyByZoneIdRequest() (request *DescribeZoneFlowHourly
     request = &DescribeZoneFlowHourlyByZoneIdRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("youmall", APIVersion, "DescribeZoneFlowHourlyByZoneId")
     
     
@@ -1635,6 +1661,7 @@ func NewDescribeZoneTrafficInfoRequest() (request *DescribeZoneTrafficInfoReques
     request = &DescribeZoneTrafficInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("youmall", APIVersion, "DescribeZoneTrafficInfo")
     
     
@@ -1690,6 +1717,7 @@ func NewModifyPersonFeatureInfoRequest() (request *ModifyPersonFeatureInfoReques
     request = &ModifyPersonFeatureInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("youmall", APIVersion, "ModifyPersonFeatureInfo")
     
     
@@ -1759,6 +1787,7 @@ func NewModifyPersonTagInfoRequest() (request *ModifyPersonTagInfoRequest) {
     request = &ModifyPersonTagInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("youmall", APIVersion, "ModifyPersonTagInfo")
     
     
@@ -1812,6 +1841,7 @@ func NewModifyPersonTypeRequest() (request *ModifyPersonTypeRequest) {
     request = &ModifyPersonTypeRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("youmall", APIVersion, "ModifyPersonType")
     
     
@@ -1891,6 +1921,7 @@ func NewRegisterCallbackRequest() (request *RegisterCallbackRequest) {
     request = &RegisterCallbackRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("youmall", APIVersion, "RegisterCallback")
     
     

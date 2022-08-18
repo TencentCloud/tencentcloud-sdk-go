@@ -49,6 +49,7 @@ func NewCheckSavepointRequest() (request *CheckSavepointRequest) {
     request = &CheckSavepointRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("oceanus", APIVersion, "CheckSavepoint")
     
     
@@ -90,6 +91,7 @@ func NewCopyJobsRequest() (request *CopyJobsRequest) {
     request = &CopyJobsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("oceanus", APIVersion, "CopyJobs")
     
     
@@ -155,6 +157,7 @@ func NewCreateFolderRequest() (request *CreateFolderRequest) {
     request = &CreateFolderRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("oceanus", APIVersion, "CreateFolder")
     
     
@@ -208,6 +211,7 @@ func NewCreateJobRequest() (request *CreateJobRequest) {
     request = &CreateJobRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("oceanus", APIVersion, "CreateJob")
     
     
@@ -295,6 +299,7 @@ func NewCreateJobConfigRequest() (request *CreateJobConfigRequest) {
     request = &CreateJobConfigRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("oceanus", APIVersion, "CreateJobConfig")
     
     
@@ -392,6 +397,7 @@ func NewCreateResourceRequest() (request *CreateResourceRequest) {
     request = &CreateResourceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("oceanus", APIVersion, "CreateResource")
     
     
@@ -461,6 +467,7 @@ func NewCreateResourceConfigRequest() (request *CreateResourceConfigRequest) {
     request = &CreateResourceConfigRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("oceanus", APIVersion, "CreateResourceConfig")
     
     
@@ -522,6 +529,7 @@ func NewDeleteJobsRequest() (request *DeleteJobsRequest) {
     request = &DeleteJobsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("oceanus", APIVersion, "DeleteJobs")
     
     
@@ -593,6 +601,7 @@ func NewDeleteResourceConfigsRequest() (request *DeleteResourceConfigsRequest) {
     request = &DeleteResourceConfigsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("oceanus", APIVersion, "DeleteResourceConfigs")
     
     
@@ -664,6 +673,7 @@ func NewDeleteResourcesRequest() (request *DeleteResourcesRequest) {
     request = &DeleteResourcesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("oceanus", APIVersion, "DeleteResources")
     
     
@@ -729,6 +739,7 @@ func NewDeleteTableConfigRequest() (request *DeleteTableConfigRequest) {
     request = &DeleteTableConfigRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("oceanus", APIVersion, "DeleteTableConfig")
     
     
@@ -782,6 +793,7 @@ func NewDescribeClustersRequest() (request *DescribeClustersRequest) {
     request = &DescribeClustersRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("oceanus", APIVersion, "DescribeClusters")
     
     
@@ -845,6 +857,7 @@ func NewDescribeJobConfigsRequest() (request *DescribeJobConfigsRequest) {
     request = &DescribeJobConfigsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("oceanus", APIVersion, "DescribeJobConfigs")
     
     
@@ -912,6 +925,7 @@ func NewDescribeJobSavepointRequest() (request *DescribeJobSavepointRequest) {
     request = &DescribeJobSavepointRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("oceanus", APIVersion, "DescribeJobSavepoint")
     
     
@@ -965,6 +979,7 @@ func NewDescribeJobsRequest() (request *DescribeJobsRequest) {
     request = &DescribeJobsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("oceanus", APIVersion, "DescribeJobs")
     
     
@@ -1030,6 +1045,7 @@ func NewDescribeResourceConfigsRequest() (request *DescribeResourceConfigsReques
     request = &DescribeResourceConfigsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("oceanus", APIVersion, "DescribeResourceConfigs")
     
     
@@ -1101,6 +1117,7 @@ func NewDescribeResourceRelatedJobsRequest() (request *DescribeResourceRelatedJo
     request = &DescribeResourceRelatedJobsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("oceanus", APIVersion, "DescribeResourceRelatedJobs")
     
     
@@ -1162,6 +1179,7 @@ func NewDescribeResourcesRequest() (request *DescribeResourcesRequest) {
     request = &DescribeResourcesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("oceanus", APIVersion, "DescribeResources")
     
     
@@ -1227,6 +1245,7 @@ func NewDescribeSystemResourcesRequest() (request *DescribeSystemResourcesReques
     request = &DescribeSystemResourcesRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("oceanus", APIVersion, "DescribeSystemResources")
     
     
@@ -1288,6 +1307,7 @@ func NewDescribeTreeJobsRequest() (request *DescribeTreeJobsRequest) {
     request = &DescribeTreeJobsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("oceanus", APIVersion, "DescribeTreeJobs")
     
     
@@ -1341,6 +1361,7 @@ func NewModifyJobRequest() (request *ModifyJobRequest) {
     request = &ModifyJobRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("oceanus", APIVersion, "ModifyJob")
     
     
@@ -1438,6 +1459,7 @@ func NewRunJobsRequest() (request *RunJobsRequest) {
     request = &RunJobsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("oceanus", APIVersion, "RunJobs")
     
     
@@ -1537,6 +1559,7 @@ func NewStopJobsRequest() (request *StopJobsRequest) {
     request = &StopJobsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("oceanus", APIVersion, "StopJobs")
     
     
@@ -1612,6 +1635,7 @@ func NewTriggerJobSavepointRequest() (request *TriggerJobSavepointRequest) {
     request = &TriggerJobSavepointRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("oceanus", APIVersion, "TriggerJobSavepoint")
     
     

@@ -49,6 +49,7 @@ func NewCreateDealRequest() (request *CreateDealRequest) {
     request = &CreateDealRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dnspod", APIVersion, "CreateDeal")
     
     
@@ -284,6 +285,7 @@ func NewCreateDomainRequest() (request *CreateDomainRequest) {
     request = &CreateDomainRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dnspod", APIVersion, "CreateDomain")
     
     
@@ -347,6 +349,7 @@ func NewCreateDomainAliasRequest() (request *CreateDomainAliasRequest) {
     request = &CreateDomainAliasRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dnspod", APIVersion, "CreateDomainAlias")
     
     
@@ -434,6 +437,7 @@ func NewCreateDomainBatchRequest() (request *CreateDomainBatchRequest) {
     request = &CreateDomainBatchRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dnspod", APIVersion, "CreateDomainBatch")
     
     
@@ -513,6 +517,7 @@ func NewCreateDomainGroupRequest() (request *CreateDomainGroupRequest) {
     request = &CreateDomainGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dnspod", APIVersion, "CreateDomainGroup")
     
     
@@ -578,6 +583,7 @@ func NewCreateRecordRequest() (request *CreateRecordRequest) {
     request = &CreateRecordRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dnspod", APIVersion, "CreateRecord")
     
     
@@ -723,6 +729,7 @@ func NewCreateRecordBatchRequest() (request *CreateRecordBatchRequest) {
     request = &CreateRecordBatchRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dnspod", APIVersion, "CreateRecordBatch")
     
     
@@ -804,6 +811,7 @@ func NewDeleteDomainRequest() (request *DeleteDomainRequest) {
     request = &DeleteDomainRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dnspod", APIVersion, "DeleteDomain")
     
     
@@ -873,6 +881,7 @@ func NewDeleteDomainAliasRequest() (request *DeleteDomainAliasRequest) {
     request = &DeleteDomainAliasRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dnspod", APIVersion, "DeleteDomainAlias")
     
     
@@ -952,6 +961,7 @@ func NewDeleteRecordRequest() (request *DeleteRecordRequest) {
     request = &DeleteRecordRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dnspod", APIVersion, "DeleteRecord")
     
     
@@ -1049,6 +1059,7 @@ func NewDeleteShareDomainRequest() (request *DeleteShareDomainRequest) {
     request = &DeleteShareDomainRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dnspod", APIVersion, "DeleteShareDomain")
     
     
@@ -1114,6 +1125,7 @@ func NewDescribeBatchTaskRequest() (request *DescribeBatchTaskRequest) {
     request = &DescribeBatchTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dnspod", APIVersion, "DescribeBatchTask")
     
     
@@ -1165,6 +1177,7 @@ func NewDescribeDomainRequest() (request *DescribeDomainRequest) {
     request = &DescribeDomainRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dnspod", APIVersion, "DescribeDomain")
     
     
@@ -1222,6 +1235,7 @@ func NewDescribeDomainAliasListRequest() (request *DescribeDomainAliasListReques
     request = &DescribeDomainAliasListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dnspod", APIVersion, "DescribeDomainAliasList")
     
     
@@ -1295,6 +1309,7 @@ func NewDescribeDomainAnalyticsRequest() (request *DescribeDomainAnalyticsReques
     request = &DescribeDomainAnalyticsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dnspod", APIVersion, "DescribeDomainAnalytics")
     
     
@@ -1354,6 +1369,7 @@ func NewDescribeDomainListRequest() (request *DescribeDomainListRequest) {
     request = &DescribeDomainListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dnspod", APIVersion, "DescribeDomainList")
     
     
@@ -1429,6 +1445,7 @@ func NewDescribeDomainLogListRequest() (request *DescribeDomainLogListRequest) {
     request = &DescribeDomainLogListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dnspod", APIVersion, "DescribeDomainLogList")
     
     
@@ -1488,6 +1505,7 @@ func NewDescribeDomainPurviewRequest() (request *DescribeDomainPurviewRequest) {
     request = &DescribeDomainPurviewRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dnspod", APIVersion, "DescribeDomainPurview")
     
     
@@ -1573,6 +1591,7 @@ func NewDescribeDomainShareInfoRequest() (request *DescribeDomainShareInfoReques
     request = &DescribeDomainShareInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dnspod", APIVersion, "DescribeDomainShareInfo")
     
     
@@ -1630,6 +1649,7 @@ func NewDescribeRecordRequest() (request *DescribeRecordRequest) {
     request = &DescribeRecordRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dnspod", APIVersion, "DescribeRecord")
     
     
@@ -1719,6 +1739,7 @@ func NewDescribeRecordLineListRequest() (request *DescribeRecordLineListRequest)
     request = &DescribeRecordLineListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dnspod", APIVersion, "DescribeRecordLineList")
     
     
@@ -1804,6 +1825,7 @@ func NewDescribeRecordListRequest() (request *DescribeRecordListRequest) {
     request = &DescribeRecordListRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dnspod", APIVersion, "DescribeRecordList")
     
     
@@ -1891,6 +1913,7 @@ func NewDescribeRecordTypeRequest() (request *DescribeRecordTypeRequest) {
     request = &DescribeRecordTypeRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dnspod", APIVersion, "DescribeRecordType")
     
     
@@ -1974,6 +1997,7 @@ func NewDescribeSubdomainAnalyticsRequest() (request *DescribeSubdomainAnalytics
     request = &DescribeSubdomainAnalyticsRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dnspod", APIVersion, "DescribeSubdomainAnalytics")
     
     
@@ -2033,6 +2057,7 @@ func NewDescribeUserDetailRequest() (request *DescribeUserDetailRequest) {
     request = &DescribeUserDetailRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dnspod", APIVersion, "DescribeUserDetail")
     
     
@@ -2092,6 +2117,7 @@ func NewModifyDomainLockRequest() (request *ModifyDomainLockRequest) {
     request = &ModifyDomainLockRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dnspod", APIVersion, "ModifyDomainLock")
     
     
@@ -2185,6 +2211,7 @@ func NewModifyDomainOwnerRequest() (request *ModifyDomainOwnerRequest) {
     request = &ModifyDomainOwnerRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dnspod", APIVersion, "ModifyDomainOwner")
     
     
@@ -2266,6 +2293,7 @@ func NewModifyDomainRemarkRequest() (request *ModifyDomainRemarkRequest) {
     request = &ModifyDomainRemarkRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dnspod", APIVersion, "ModifyDomainRemark")
     
     
@@ -2357,6 +2385,7 @@ func NewModifyDomainStatusRequest() (request *ModifyDomainStatusRequest) {
     request = &ModifyDomainStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dnspod", APIVersion, "ModifyDomainStatus")
     
     
@@ -2420,6 +2449,7 @@ func NewModifyDomainUnlockRequest() (request *ModifyDomainUnlockRequest) {
     request = &ModifyDomainUnlockRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dnspod", APIVersion, "ModifyDomainUnlock")
     
     
@@ -2513,6 +2543,7 @@ func NewModifyDynamicDNSRequest() (request *ModifyDynamicDNSRequest) {
     request = &ModifyDynamicDNSRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dnspod", APIVersion, "ModifyDynamicDNS")
     
     
@@ -2646,6 +2677,7 @@ func NewModifyPackageAutoRenewRequest() (request *ModifyPackageAutoRenewRequest)
     request = &ModifyPackageAutoRenewRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dnspod", APIVersion, "ModifyPackageAutoRenew")
     
     
@@ -2885,6 +2917,7 @@ func NewModifyRecordRequest() (request *ModifyRecordRequest) {
     request = &ModifyRecordRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dnspod", APIVersion, "ModifyRecord")
     
     
@@ -3032,6 +3065,7 @@ func NewModifyRecordBatchRequest() (request *ModifyRecordBatchRequest) {
     request = &ModifyRecordBatchRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dnspod", APIVersion, "ModifyRecordBatch")
     
     
@@ -3123,6 +3157,7 @@ func NewModifyRecordRemarkRequest() (request *ModifyRecordRemarkRequest) {
     request = &ModifyRecordRemarkRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dnspod", APIVersion, "ModifyRecordRemark")
     
     
@@ -3220,6 +3255,7 @@ func NewModifyRecordStatusRequest() (request *ModifyRecordStatusRequest) {
     request = &ModifyRecordStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dnspod", APIVersion, "ModifyRecordStatus")
     
     
@@ -3353,6 +3389,7 @@ func NewModifySubdomainStatusRequest() (request *ModifySubdomainStatusRequest) {
     request = &ModifySubdomainStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dnspod", APIVersion, "ModifySubdomainStatus")
     
     
@@ -3488,6 +3525,7 @@ func NewModifyVasAutoRenewStatusRequest() (request *ModifyVasAutoRenewStatusRequ
     request = &ModifyVasAutoRenewStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dnspod", APIVersion, "ModifyVasAutoRenewStatus")
     
     
@@ -3729,6 +3767,7 @@ func NewPayOrderWithBalanceRequest() (request *PayOrderWithBalanceRequest) {
     request = &PayOrderWithBalanceRequest{
         BaseRequest: &tchttp.BaseRequest{},
     }
+    
     request.Init().WithApiInfo("dnspod", APIVersion, "PayOrderWithBalance")
     
     
