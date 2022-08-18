@@ -35,6 +35,12 @@ const (
 	// 签署流程已有关联文档，请检查参数修改后重试。
 	FAILEDOPERATION_FLOWHASDOCUMENT = "FailedOperation.FlowHasDocument"
 
+	// 流程未找到关联的电子文件信息，请检查操作步骤，检查参数，并在修改后重试。
+	FAILEDOPERATION_FLOWHASNODOCUMENT = "FailedOperation.FlowHasNoDocument"
+
+	// 签署审核未通过，请先完成审核。
+	FAILEDOPERATION_NOSIGNREVIEWPASS = "FailedOperation.NoSignReviewPass"
+
 	// 企业经营状态与工商局信息不符。
 	FAILEDOPERATION_ORGANIZATIONEXPERIENCECHANGE = "FailedOperation.OrganizationExperienceChange"
 
@@ -104,6 +110,9 @@ const (
 	// 不合法的签署人类型，请检查后重试。
 	INVALIDPARAMETER_APPROVERTYPE = "InvalidParameter.ApproverType"
 
+	// 不合法的撤销取消理由，将检查长度，内容，并在修改后重试。
+	INVALIDPARAMETER_CANCELREASON = "InvalidParameter.CancelReason"
+
 	// 不合法的证件信息，请检查证件号证件类型是否正确。
 	INVALIDPARAMETER_CARDNUMBER = "InvalidParameter.CardNumber"
 
@@ -125,8 +134,14 @@ const (
 	// 不合法的控件大小或坐标，请检查控件坐标，大小是否合理，并在修改后重试。
 	INVALIDPARAMETER_COMPONENTPOSITION = "InvalidParameter.ComponentPosition"
 
+	// 控件的类型与输入值不匹配，请检查参数修改后重试。
+	INVALIDPARAMETER_COMPONENTTYPENOMATCHVALUE = "InvalidParameter.ComponentTypeNoMatchValue"
+
 	// 不合法的控件内容，请检查控件是否必填，检查控件内容是否正确设置，并在修改后重试。
 	INVALIDPARAMETER_COMPONENTVALUE = "InvalidParameter.ComponentValue"
+
+	// 不合法的模板查询类型，请检查后重试。
+	INVALIDPARAMETER_CONTENTTYPE = "InvalidParameter.ContentType"
 
 	// 数据已存在。
 	INVALIDPARAMETER_DATAEXISTS = "InvalidParameter.DataExists"
@@ -166,6 +181,9 @@ const (
 
 	// Channel不正确。
 	INVALIDPARAMETER_INVALIDCHANNEL = "InvalidParameter.InvalidChannel"
+
+	// id类型参数不合法，请检查后重试。
+	INVALIDPARAMETER_INVALIDID = "InvalidParameter.InvalidId"
 
 	// 手机号码不正确。
 	INVALIDPARAMETER_INVALIDMOBILE = "InvalidParameter.InvalidMobile"
@@ -218,8 +236,23 @@ const (
 	// 不合法的阅读时长限制，请联系客服了解阅读时长设置规则，修改后重试。
 	INVALIDPARAMETER_PREREADTIME = "InvalidParameter.PreReadTime"
 
+	// 签署二维码的有效期不合法，请联系客服了解规则，并修稿后重试。
+	INVALIDPARAMETER_QREFFECTDAY = "InvalidParameter.QrEffectDay"
+
+	// 二维码合同的有效期不合法，请联系客服了解规则，并修稿后重试。
+	INVALIDPARAMETER_QRFLOWEFFECTDAY = "InvalidParameter.QrFlowEffectDay"
+
+	// 不合法的资源类型，请联系客服了解，并在修改后重试。
+	INVALIDPARAMETER_RESOURCETYPE = "InvalidParameter.ResourceType"
+
+	// 不合法的印章id，请检查印章id是够正确，并在修改后重试。
+	INVALIDPARAMETER_SEALID = "InvalidParameter.SealId"
+
 	// 参数Status不正确。
 	INVALIDPARAMETER_STATUS = "InvalidParameter.Status"
+
+	// 不合法的签署二维码模板id，请检查修改后重试。
+	INVALIDPARAMETER_TEMPLATEID = "InvalidParameter.TemplateId"
 
 	// 不合法的认证渠道，请联系客户了解电子签支持的认证渠道，并在修改后重试。
 	INVALIDPARAMETER_VERIFYCHANNEL = "InvalidParameter.VerifyChannel"
@@ -251,8 +284,17 @@ const (
 	// 缺少签署人签署控件配置，请联系客服了解控件传递规则，并在修改后重试。
 	MISSINGPARAMETER_APPROVERSIGNCOMPONENT = "MissingParameter.ApproverSignComponent"
 
+	// 授权码为空，请检查后重试。
+	MISSINGPARAMETER_AUTHCODE = "MissingParameter.AuthCode"
+
+	// 缺少撤销取消理由，请检查修改后重试。
+	MISSINGPARAMETER_CANCELREASON = "MissingParameter.CancelReason"
+
 	// 未找到表单域配置信息，请检查控件传参，检查文件资源配置，并在修改后重试。
 	MISSINGPARAMETER_FIELD = "MissingParameter.Field"
+
+	// 文件名为空，请检查参数修改后重试。
+	MISSINGPARAMETER_FILENAMES = "MissingParameter.FileNames"
 
 	// 缺少签署流程签署人信息，请指定签署人信息后重试。
 	MISSINGPARAMETER_FLOWAPPROVER = "MissingParameter.FlowApprover"
@@ -263,8 +305,17 @@ const (
 	// 未找到关键字配置信息，请检查控件传参，检查文件资源配置，并在修改后重试。
 	MISSINGPARAMETER_KEYWORD = "MissingParameter.KeyWord"
 
+	// 缺少签署二维码id，请检查后重试。
+	MISSINGPARAMETER_QRCODEID = "MissingParameter.QrCodeId"
+
+	// 缺少模板签署人信息，请检查后重试。
+	MISSINGPARAMETER_RECIPIENT = "MissingParameter.Recipient"
+
 	// 缺少文件资源ID，请检查后重试。
 	MISSINGPARAMETER_RESOURCEID = "MissingParameter.ResourceId"
+
+	// 缺少资源名称，请检查修改后重试。
+	MISSINGPARAMETER_RESOURCENAME = "MissingParameter.ResourceName"
 
 	// 缺少静默签印章id，请检查修改后重试。
 	MISSINGPARAMETER_SERVERSIGNSEALID = "MissingParameter.ServerSignSealId"
@@ -272,11 +323,20 @@ const (
 	// 缺少签署控件参数。
 	MISSINGPARAMETER_SIGNCOMPONENTS = "MissingParameter.SignComponents"
 
+	// 缺少用户id，请检查后重试。
+	MISSINGPARAMETER_USERID = "MissingParameter.UserId"
+
 	// 操作被拒绝。
 	OPERATIONDENIED = "OperationDenied"
 
+	// 签署人设置与模板中签署人配置信息不一致，请检查模板修改参数后重试。
+	OPERATIONDENIED_APPROVERNOMATCHTEMPLATE = "OperationDenied.ApproverNoMatchTemplate"
+
 	// 签署人重复，请联系客服了解发起签署流程签署人规则，修改后重试。
 	OPERATIONDENIED_APPROVERREPEAT = "OperationDenied.ApproverRepeat"
+
+	// 授权码已失效，请检查是否传递正确，是否已经过期，并在修改后重试。
+	OPERATIONDENIED_AUTHCODEINVALID = "OperationDenied.AuthCodeInvalid"
 
 	// 子公司不能发起本方母体公司的合同。
 	OPERATIONDENIED_BRANCHSENDFLOWTOPARENTNOTALLOW = "OperationDenied.BranchSendFlowToParentNotAllow"
@@ -287,8 +347,26 @@ const (
 	// 抄送方存在相同抄送人，请检查修改后重试。
 	OPERATIONDENIED_CCUSERREPEAT = "OperationDenied.CcUserRepeat"
 
+	// 电子文档不可用，请稍后重试。
+	OPERATIONDENIED_DOCUMENTNOAVAILABLE = "OperationDenied.DocumentNoAvailable"
+
 	// 个人签署方不支持设置企业名称，请确认签署人类型后重试。
 	OPERATIONDENIED_ERRNOSUPPORTINDIVIDUALHASORGANIZATIONNAME = "OperationDenied.ErrNoSupportIndividualHasOrganizationName"
+
+	// 文件与资源不匹配，请检查文件名与资源id数量以及对应关系，并在修改后重试。
+	OPERATIONDENIED_FILENOMATCHRESOURCE = "OperationDenied.FileNoMatchResource"
+
+	// 签署流程无法撤销，请检查签署流程状态，检查签署流程归属企业，检查当前操作人是否有权限，并在修改后重试。
+	OPERATIONDENIED_FLOWCANCELFORBID = "OperationDenied.FlowCancelForbid"
+
+	// 签署流程已经被发起，请检查。
+	OPERATIONDENIED_FLOWHASSTARTED = "OperationDenied.FlowHasStarted"
+
+	// 签署流程已经被终止，请检查。
+	OPERATIONDENIED_FLOWHASTERMINATED = "OperationDenied.FlowHasTerminated"
+
+	// 签署流程不需要进行审核,请修改后重试。
+	OPERATIONDENIED_FLOWNONEEDREVIEW = "OperationDenied.FlowNoNeedReview"
 
 	// 签署流程状态不正确，请检查后重试。
 	OPERATIONDENIED_FLOWSTATUSFORBID = "OperationDenied.FlowStatusForbid"
@@ -298,6 +376,9 @@ const (
 
 	// 资源id超过使用上限限制，请联系客服了解规则，并在修改后重试。
 	OPERATIONDENIED_MANYRESOURCEID = "OperationDenied.ManyResourceId"
+
+	// 无权限操作签署流程，请联系客服了解权限，并在修改后重试。
+	OPERATIONDENIED_NOFLOWPERMISSION = "OperationDenied.NoFlowPermission"
 
 	// 未通过个人实名认证。
 	OPERATIONDENIED_NOIDENTITYVERIFY = "OperationDenied.NoIdentityVerify"
@@ -323,6 +404,9 @@ const (
 	// 不支持的跳转页，请联系客服了解跳转配置规则，修改后重试。
 	OPERATIONDENIED_NOSUPPORTJUMPPAGE = "OperationDenied.NoSupportJumpPage"
 
+	// 未完成实名认证，请检查后重试。
+	OPERATIONDENIED_NOVERIFY = "OperationDenied.NoVerify"
+
 	// 此社会信用编码未查询到结果，请检查后重试。
 	OPERATIONDENIED_ORGUNIFORMSOCIALCREDITCODEERR = "OperationDenied.OrgUniformSocialCreditCodeErr"
 
@@ -344,11 +428,23 @@ const (
 	// 拒绝个人静默签，请检查个人静默签签署人，并在修改后重试。
 	OPERATIONDENIED_PERSONSERVERSIGNFORBID = "OperationDenied.PersonServerSignForbid"
 
+	// 签署二维码已过期，请检查后重试。
+	OPERATIONDENIED_QRHASEXPIRE = "OperationDenied.QrHasExpire"
+
+	// 签署二维码不可用，请检查后重试。
+	OPERATIONDENIED_QRINVALID = "OperationDenied.QrInvalid"
+
 	// 必填控件未设置填写内容，将检查修改后重试。
 	OPERATIONDENIED_REQUIREDCOMPONENTNOTFILL = "OperationDenied.RequiredComponentNotFill"
 
+	// 静默签署方不允许有填写控件，请修改模板，修改参数后重试。
+	OPERATIONDENIED_SERVERSIGNNOALLOWCOMPONENT = "OperationDenied.ServerSignNoAllowComponent"
+
 	// 静默签署不支持手写签名，请配置印章并使用印章重试。
 	OPERATIONDENIED_SERVERSIGNNOSUPPORTSIGNATURE = "OperationDenied.ServerSignNoSupportSignature"
+
+	// 用户不归属于当前企业，无法操作，请检查后重试。
+	OPERATIONDENIED_USERNOTINORGANIZATION = "OperationDenied.UserNotInOrganization"
 
 	// 未开通功能白名单，请联系客服处理。
 	OPERATIONDENIED_WHITELISTFORBID = "OperationDenied.WhiteListForbid"
@@ -397,6 +493,9 @@ const (
 
 	// 机构不存在或者未完成认证，请检查机构信息。
 	RESOURCENOTFOUND_ORGANIZATION = "ResourceNotFound.Organization"
+
+	// 签署二维码信息不存在，请检查后重试。
+	RESOURCENOTFOUND_QRINFO = "ResourceNotFound.QrInfo"
 
 	// 未获取到文件资源，请检查资源是否完成上传，是否有效，并在修改后重试。
 	RESOURCENOTFOUND_RESOURCE = "ResourceNotFound.Resource"

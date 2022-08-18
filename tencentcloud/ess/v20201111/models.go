@@ -502,7 +502,7 @@ type CreateDocumentRequestParams struct {
 	// 用户上传的模板ID
 	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
 
-	// 文件名列表,单个文件名最大长度200个字符
+	// 文件名列表，单个文件名最大长度200个字符，暂时仅支持单文件发起
 	FileNames []*string `json:"FileNames,omitempty" name:"FileNames"`
 
 	// 内容控件信息数组
@@ -531,7 +531,7 @@ type CreateDocumentRequest struct {
 	// 用户上传的模板ID
 	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
 
-	// 文件名列表,单个文件名最大长度200个字符
+	// 文件名列表，单个文件名最大长度200个字符，暂时仅支持单文件发起
 	FileNames []*string `json:"FileNames,omitempty" name:"FileNames"`
 
 	// 内容控件信息数组
@@ -614,7 +614,7 @@ type CreateFlowByFilesRequestParams struct {
 	// 签署参与者信息，最大限制50方
 	Approvers []*ApproverInfo `json:"Approvers,omitempty" name:"Approvers"`
 
-	// 签署pdf文件的资源编号列表，通过UploadFiles接口获取
+	// 签署pdf文件的资源编号列表，通过UploadFiles接口获取，暂时仅支持单文件发起
 	FileIds []*string `json:"FileIds,omitempty" name:"FileIds"`
 
 	// 签署流程的类型(如销售合同/入职合同等)，最大长度200个字符
@@ -669,7 +669,7 @@ type CreateFlowByFilesRequest struct {
 	// 签署参与者信息，最大限制50方
 	Approvers []*ApproverInfo `json:"Approvers,omitempty" name:"Approvers"`
 
-	// 签署pdf文件的资源编号列表，通过UploadFiles接口获取
+	// 签署pdf文件的资源编号列表，通过UploadFiles接口获取，暂时仅支持单文件发起
 	FileIds []*string `json:"FileIds,omitempty" name:"FileIds"`
 
 	// 签署流程的类型(如销售合同/入职合同等)，最大长度200个字符

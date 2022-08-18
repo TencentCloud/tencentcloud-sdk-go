@@ -5590,6 +5590,9 @@ type NoticeReceiver struct {
 type OpenKafkaConsumerRequestParams struct {
 	// CLS控制台创建的TopicId
 	FromTopicId *string `json:"FromTopicId,omitempty" name:"FromTopicId"`
+
+	// 压缩方式[0:NONE；2:SNAPPY；3:LZ4]
+	Compression *int64 `json:"Compression,omitempty" name:"Compression"`
 }
 
 type OpenKafkaConsumerRequest struct {
@@ -5597,6 +5600,9 @@ type OpenKafkaConsumerRequest struct {
 	
 	// CLS控制台创建的TopicId
 	FromTopicId *string `json:"FromTopicId,omitempty" name:"FromTopicId"`
+
+	// 压缩方式[0:NONE；2:SNAPPY；3:LZ4]
+	Compression *int64 `json:"Compression,omitempty" name:"Compression"`
 }
 
 func (r *OpenKafkaConsumerRequest) ToJsonString() string {
@@ -5612,6 +5618,7 @@ func (r *OpenKafkaConsumerRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "FromTopicId")
+	delete(f, "Compression")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "OpenKafkaConsumerRequest has unknown keys!", "")
 	}

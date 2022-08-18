@@ -39,7 +39,7 @@ type AgentAuditedClient struct {
 	// 代客名称（首选实名认证名称）
 	ClientName *string `json:"ClientName,omitempty" name:"ClientName"`
 
-	// 认证类型, 0：个人，1：企业；其他：未认证
+	// 认证类型, 0：个人，1：企业；其他：未认证或无效值
 	AuthType *string `json:"AuthType,omitempty" name:"AuthType"`
 
 	// 代客APPID
@@ -576,6 +576,7 @@ type AuditApplyClientResponseParams struct {
 	AuditResult *string `json:"AuditResult,omitempty" name:"AuditResult"`
 
 	// 关联时间对应的时间戳
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	AgentTime *uint64 `json:"AgentTime,omitempty" name:"AgentTime"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1872,7 +1873,7 @@ func (r *DescribeClientBalanceRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeClientBalanceResponseParams struct {
-	// 账户可用余额，单位分 （可用余额 = 现金余额 - 冻结金额）
+	// 账户可用余额，单位分 （可用余额 = 现金余额 - 冻结金额）  【注：该数据准确性存疑，请切换至DescribeClientBalanceNew取值】
 	Balance *uint64 `json:"Balance,omitempty" name:"Balance"`
 
 	// 账户现金余额，单位分

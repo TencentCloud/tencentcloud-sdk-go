@@ -3362,6 +3362,15 @@ type CreateTKEEdgeClusterRequestParams struct {
 
 	// 边缘计算集群公网访问LB信息
 	PublicLB *EdgeClusterPublicLB `json:"PublicLB,omitempty" name:"PublicLB"`
+
+	// 集群的级别
+	ClusterLevel *string `json:"ClusterLevel,omitempty" name:"ClusterLevel"`
+
+	// 集群是否支持自动升配
+	AutoUpgradeClusterLevel *bool `json:"AutoUpgradeClusterLevel,omitempty" name:"AutoUpgradeClusterLevel"`
+
+	// 集群计费方式
+	ChargeType *string `json:"ChargeType,omitempty" name:"ChargeType"`
 }
 
 type CreateTKEEdgeClusterRequest struct {
@@ -3393,6 +3402,15 @@ type CreateTKEEdgeClusterRequest struct {
 
 	// 边缘计算集群公网访问LB信息
 	PublicLB *EdgeClusterPublicLB `json:"PublicLB,omitempty" name:"PublicLB"`
+
+	// 集群的级别
+	ClusterLevel *string `json:"ClusterLevel,omitempty" name:"ClusterLevel"`
+
+	// 集群是否支持自动升配
+	AutoUpgradeClusterLevel *bool `json:"AutoUpgradeClusterLevel,omitempty" name:"AutoUpgradeClusterLevel"`
+
+	// 集群计费方式
+	ChargeType *string `json:"ChargeType,omitempty" name:"ChargeType"`
 }
 
 func (r *CreateTKEEdgeClusterRequest) ToJsonString() string {
@@ -3416,6 +3434,9 @@ func (r *CreateTKEEdgeClusterRequest) FromJsonString(s string) error {
 	delete(f, "ClusterAdvancedSettings")
 	delete(f, "MaxNodePodNum")
 	delete(f, "PublicLB")
+	delete(f, "ClusterLevel")
+	delete(f, "AutoUpgradeClusterLevel")
+	delete(f, "ChargeType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateTKEEdgeClusterRequest has unknown keys!", "")
 	}
