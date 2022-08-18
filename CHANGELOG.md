@@ -1,3 +1,112 @@
+# Release v1.0.478
+
+## 日志服务(cls) 版本：2020-10-16
+
+### 第 28 次发布
+
+发布时间：2022-08-18 06:14:59
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [OpenKafkaConsumer](https://cloud.tencent.com/document/api/614/72339)
+
+	* 新增入参：Compression
+
+
+
+
+## 云监控(monitor) 版本：2018-07-24
+
+### 第 53 次发布
+
+发布时间：2022-08-18 06:31:02
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CleanGrafanaInstance](https://cloud.tencent.com/document/api/248/79220)
+* [CreateGrafanaInstance](https://cloud.tencent.com/document/api/248/79219)
+* [CreateGrafanaIntegration](https://cloud.tencent.com/document/api/248/79218)
+* [CreateGrafanaNotificationChannel](https://cloud.tencent.com/document/api/248/79217)
+* [CreateSSOAccount](https://cloud.tencent.com/document/api/248/79216)
+* [DeleteGrafanaInstance](https://cloud.tencent.com/document/api/248/79215)
+* [DeleteGrafanaIntegration](https://cloud.tencent.com/document/api/248/79214)
+* [DeleteGrafanaNotificationChannel](https://cloud.tencent.com/document/api/248/79213)
+* [DeleteSSOAccount](https://cloud.tencent.com/document/api/248/79212)
+* [DescribeDNSConfig](https://cloud.tencent.com/document/api/248/79211)
+* [DescribeGrafanaConfig](https://cloud.tencent.com/document/api/248/79210)
+* [DescribeGrafanaEnvironments](https://cloud.tencent.com/document/api/248/79209)
+* [DescribeGrafanaInstances](https://cloud.tencent.com/document/api/248/79208)
+* [DescribeGrafanaIntegrations](https://cloud.tencent.com/document/api/248/79207)
+* [DescribeGrafanaNotificationChannels](https://cloud.tencent.com/document/api/248/79206)
+* [DescribeGrafanaWhiteList](https://cloud.tencent.com/document/api/248/79205)
+* [DescribeInstalledPlugins](https://cloud.tencent.com/document/api/248/79204)
+* [DescribePluginOverviews](https://cloud.tencent.com/document/api/248/79203)
+* [DescribeSSOAccount](https://cloud.tencent.com/document/api/248/79202)
+* [EnableGrafanaInternet](https://cloud.tencent.com/document/api/248/79201)
+* [EnableGrafanaSSO](https://cloud.tencent.com/document/api/248/79200)
+* [EnableSSOCamCheck](https://cloud.tencent.com/document/api/248/79199)
+* [InstallPlugins](https://cloud.tencent.com/document/api/248/79198)
+* [ModifyGrafanaInstance](https://cloud.tencent.com/document/api/248/79197)
+* [ResumeGrafanaInstance](https://cloud.tencent.com/document/api/248/79196)
+* [UninstallGrafanaPlugins](https://cloud.tencent.com/document/api/248/79195)
+* [UpdateDNSConfig](https://cloud.tencent.com/document/api/248/79194)
+* [UpdateGrafanaConfig](https://cloud.tencent.com/document/api/248/79193)
+* [UpdateGrafanaEnvironments](https://cloud.tencent.com/document/api/248/79192)
+* [UpdateGrafanaIntegration](https://cloud.tencent.com/document/api/248/79191)
+* [UpdateGrafanaNotificationChannel](https://cloud.tencent.com/document/api/248/79190)
+* [UpdateGrafanaWhiteList](https://cloud.tencent.com/document/api/248/79189)
+* [UpdateSSOAccount](https://cloud.tencent.com/document/api/248/79188)
+* [UpgradeGrafanaInstance](https://cloud.tencent.com/document/api/248/79187)
+
+修改接口：
+
+* [DeleteExporterIntegration](https://cloud.tencent.com/document/api/248/76016)
+
+	* <font color="#dd0000">**修改入参**：</font>KubeType, ClusterId
+
+* [DescribeExporterIntegrations](https://cloud.tencent.com/document/api/248/76014)
+
+	* <font color="#dd0000">**修改入参**：</font>KubeType, ClusterId
+
+
+新增数据结构：
+
+* [GrafanaAccountInfo](https://cloud.tencent.com/document/api/248/30354#GrafanaAccountInfo)
+* [GrafanaAccountRole](https://cloud.tencent.com/document/api/248/30354#GrafanaAccountRole)
+* [GrafanaInstanceInfo](https://cloud.tencent.com/document/api/248/30354#GrafanaInstanceInfo)
+* [GrafanaIntegrationConfig](https://cloud.tencent.com/document/api/248/30354#GrafanaIntegrationConfig)
+* [GrafanaNotificationChannel](https://cloud.tencent.com/document/api/248/30354#GrafanaNotificationChannel)
+* [GrafanaPlugin](https://cloud.tencent.com/document/api/248/30354#GrafanaPlugin)
+
+
+
+## 容器服务(tke) 版本：2018-05-25
+
+### 第 117 次发布
+
+发布时间：2022-08-18 06:44:32
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateTKEEdgeCluster](https://cloud.tencent.com/document/api/457/74868)
+
+	* 新增入参：ClusterLevel, AutoUpgradeClusterLevel, ChargeType
+
+
+
+
 # Release v1.0.477
 
 ## 日志服务(cls) 版本：2020-10-16
