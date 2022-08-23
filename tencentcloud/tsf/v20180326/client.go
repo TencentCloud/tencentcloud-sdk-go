@@ -5343,6 +5343,7 @@ func NewDescribeGroupAttributeResponse() (response *DescribeGroupAttributeRespon
 //  INVALIDPARAMETER_REPOPACKAGEPARAMERROR = "InvalidParameter.RepoPackageParamError"
 //  RESOURCENOTFOUND_GROUPNOTEXIST = "ResourceNotFound.GroupNotExist"
 //  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
+//  UNAUTHORIZEDOPERATION_NOLICENSE = "UnauthorizedOperation.NoLicense"
 func (c *Client) DescribeGroupAttribute(request *DescribeGroupAttributeRequest) (response *DescribeGroupAttributeResponse, err error) {
     return c.DescribeGroupAttributeWithContext(context.Background(), request)
 }
@@ -5361,6 +5362,7 @@ func (c *Client) DescribeGroupAttribute(request *DescribeGroupAttributeRequest) 
 //  INVALIDPARAMETER_REPOPACKAGEPARAMERROR = "InvalidParameter.RepoPackageParamError"
 //  RESOURCENOTFOUND_GROUPNOTEXIST = "ResourceNotFound.GroupNotExist"
 //  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
+//  UNAUTHORIZEDOPERATION_NOLICENSE = "UnauthorizedOperation.NoLicense"
 func (c *Client) DescribeGroupAttributeWithContext(ctx context.Context, request *DescribeGroupAttributeRequest) (response *DescribeGroupAttributeResponse, err error) {
     if request == nil {
         request = NewDescribeGroupAttributeRequest()
@@ -6317,6 +6319,7 @@ func NewDescribeJvmMonitorResponse() (response *DescribeJvmMonitorResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION_TSFCMONITORCTSDBCLIENTREQUESTFAIL = "FailedOperation.TsfCmonitorCtsdbClientRequestFail"
 //  FAILEDOPERATION_TSFMONITORWAITEDTIMEOUT = "FailedOperation.TsfMonitorWaitedTimeout"
+//  FAILEDOPERATION_TSFPRIVILEGEERROR = "FailedOperation.TsfPrivilegeError"
 //  INTERNALERROR_TSFMONITORDATEPARSEFAILED = "InternalError.TsfMonitorDateParseFailed"
 //  INTERNALERROR_TSFMONITORINTERNALERROR = "InternalError.TsfMonitorInternalError"
 //  INVALIDPARAMETER_BADREQUEST = "InvalidParameter.BadRequest"
@@ -6334,6 +6337,7 @@ func (c *Client) DescribeJvmMonitor(request *DescribeJvmMonitorRequest) (respons
 // 可能返回的错误码:
 //  FAILEDOPERATION_TSFCMONITORCTSDBCLIENTREQUESTFAIL = "FailedOperation.TsfCmonitorCtsdbClientRequestFail"
 //  FAILEDOPERATION_TSFMONITORWAITEDTIMEOUT = "FailedOperation.TsfMonitorWaitedTimeout"
+//  FAILEDOPERATION_TSFPRIVILEGEERROR = "FailedOperation.TsfPrivilegeError"
 //  INTERNALERROR_TSFMONITORDATEPARSEFAILED = "InternalError.TsfMonitorDateParseFailed"
 //  INTERNALERROR_TSFMONITORINTERNALERROR = "InternalError.TsfMonitorInternalError"
 //  INVALIDPARAMETER_BADREQUEST = "InvalidParameter.BadRequest"

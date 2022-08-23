@@ -612,6 +612,7 @@ func NewDeleteSessionResponse() (response *DeleteSessionResponse) {
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteSession(request *DeleteSessionRequest) (response *DeleteSessionResponse, err error) {
     return c.DeleteSessionWithContext(context.Background(), request)
 }
@@ -621,6 +622,7 @@ func (c *Client) DeleteSession(request *DeleteSessionRequest) (response *DeleteS
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteSessionWithContext(ctx context.Context, request *DeleteSessionRequest) (response *DeleteSessionResponse, err error) {
     if request == nil {
         request = NewDeleteSessionRequest()

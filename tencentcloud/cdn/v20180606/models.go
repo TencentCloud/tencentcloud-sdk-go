@@ -1203,7 +1203,6 @@ type BandwidthAlert struct {
 	BpsThreshold *int64 `json:"BpsThreshold,omitempty" name:"BpsThreshold"`
 
 	// 达到阈值后的操作
-	// RESOLVE_DNS_TO_ORIGIN：直接回源，仅自有源站域名支持
 	// RETURN_404：全部请求返回 404
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CounterMeasure *string `json:"CounterMeasure,omitempty" name:"CounterMeasure"`

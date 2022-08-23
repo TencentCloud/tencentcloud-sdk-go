@@ -4529,12 +4529,21 @@ func (r *DeletePrometheusAlertRuleResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeletePrometheusClusterAgentRequestParams struct {
+	// agent列表
+	Agents []*PrometheusAgentInfo `json:"Agents,omitempty" name:"Agents"`
 
+	// 实例id
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 }
 
 type DeletePrometheusClusterAgentRequest struct {
 	*tchttp.BaseRequest
 	
+	// agent列表
+	Agents []*PrometheusAgentInfo `json:"Agents,omitempty" name:"Agents"`
+
+	// 实例id
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 }
 
 func (r *DeletePrometheusClusterAgentRequest) ToJsonString() string {
@@ -4549,7 +4558,8 @@ func (r *DeletePrometheusClusterAgentRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "Agents")
+	delete(f, "InstanceId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeletePrometheusClusterAgentRequest has unknown keys!", "")
 	}
@@ -13252,6 +13262,17 @@ type Probe struct {
 	// Minimum consecutive failures for the probe to be considered failed after having succeeded.Defaults to 3. Minimum value is 1.
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FailureThreshold *int64 `json:"FailureThreshold,omitempty" name:"FailureThreshold"`
+}
+
+type PrometheusAgentInfo struct {
+	// 集群类型
+	ClusterType *string `json:"ClusterType,omitempty" name:"ClusterType"`
+
+	// 集群id
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 备注
+	Describe *string `json:"Describe,omitempty" name:"Describe"`
 }
 
 type PrometheusAgentOverview struct {

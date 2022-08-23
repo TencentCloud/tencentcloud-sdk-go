@@ -2032,6 +2032,9 @@ type UpdateRuleRequestParams struct {
 	// 规则描述，不限字符类型，200字符描述以内。
 	Description *string `json:"Description,omitempty" name:"Description"`
 
+	// 参考：[事件模式](https://cloud.tencent.com/document/product/1359/56084)
+	EventPattern *string `json:"EventPattern,omitempty" name:"EventPattern"`
+
 	// 事件规则名称，只能包含字母、数字、下划线、连字符，以字母开头，以数字或字母结尾，2~60个字符
 	RuleName *string `json:"RuleName,omitempty" name:"RuleName"`
 }
@@ -2050,6 +2053,9 @@ type UpdateRuleRequest struct {
 
 	// 规则描述，不限字符类型，200字符描述以内。
 	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 参考：[事件模式](https://cloud.tencent.com/document/product/1359/56084)
+	EventPattern *string `json:"EventPattern,omitempty" name:"EventPattern"`
 
 	// 事件规则名称，只能包含字母、数字、下划线、连字符，以字母开头，以数字或字母结尾，2~60个字符
 	RuleName *string `json:"RuleName,omitempty" name:"RuleName"`
@@ -2071,6 +2077,7 @@ func (r *UpdateRuleRequest) FromJsonString(s string) error {
 	delete(f, "EventBusId")
 	delete(f, "Enable")
 	delete(f, "Description")
+	delete(f, "EventPattern")
 	delete(f, "RuleName")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateRuleRequest has unknown keys!", "")

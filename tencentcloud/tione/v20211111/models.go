@@ -211,7 +211,7 @@ type CreateTrainingModelRequestParams struct {
 	// 训练任务名称
 	TrainingJobName *string `json:"TrainingJobName,omitempty" name:"TrainingJobName"`
 
-	// 算法框架 （PYTORCH/TENSORFLOW/DETECTRON2/PMML)
+	// 算法框架 （PYTORCH/TENSORFLOW/DETECTRON2/PMML/MMDETECTION)
 	AlgorithmFramework *string `json:"AlgorithmFramework,omitempty" name:"AlgorithmFramework"`
 
 	// 推理环境
@@ -244,7 +244,7 @@ type CreateTrainingModelRequestParams struct {
 	// 模型偏好
 	TrainingPreference *string `json:"TrainingPreference,omitempty" name:"TrainingPreference"`
 
-	// 自动学习任务ID
+	// 自动学习任务ID（已废弃）
 	AutoMLTaskId *string `json:"AutoMLTaskId,omitempty" name:"AutoMLTaskId"`
 
 	// 任务版本
@@ -283,7 +283,7 @@ type CreateTrainingModelRequest struct {
 	// 训练任务名称
 	TrainingJobName *string `json:"TrainingJobName,omitempty" name:"TrainingJobName"`
 
-	// 算法框架 （PYTORCH/TENSORFLOW/DETECTRON2/PMML)
+	// 算法框架 （PYTORCH/TENSORFLOW/DETECTRON2/PMML/MMDETECTION)
 	AlgorithmFramework *string `json:"AlgorithmFramework,omitempty" name:"AlgorithmFramework"`
 
 	// 推理环境
@@ -316,7 +316,7 @@ type CreateTrainingModelRequest struct {
 	// 模型偏好
 	TrainingPreference *string `json:"TrainingPreference,omitempty" name:"TrainingPreference"`
 
-	// 自动学习任务ID
+	// 自动学习任务ID（已废弃）
 	AutoMLTaskId *string `json:"AutoMLTaskId,omitempty" name:"AutoMLTaskId"`
 
 	// 任务版本

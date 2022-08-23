@@ -14282,11 +14282,29 @@ type ModifyEscapeEventStatusRequestParams struct {
 	// 处理事件ids
 	EventIdSet []*string `json:"EventIdSet,omitempty" name:"EventIdSet"`
 
-	// 标记事件的状态：EVENT_UNDEAL:未处理（取消忽略），EVENT_DEALED:已处理，EVENT_IGNORE:忽略，EVENT_DELETE：已删除
+	// 标记事件的状态：
+	// EVENT_UNDEAL:未处理（取消忽略），
+	// EVENT_DEALED:已处理，
+	// EVENT_IGNORE:忽略，
+	// EVENT_DELETE：已删除
+	// EVENT_ADD_WHITE：加白
 	Status *string `json:"Status,omitempty" name:"Status"`
 
 	// 备注
 	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 加白镜像ID数组
+	ImageIDs []*string `json:"ImageIDs,omitempty" name:"ImageIDs"`
+
+	// 加白事件类型
+	//    ESCAPE_CGROUPS：利用cgroup机制逃逸
+	//    ESCAPE_TAMPER_SENSITIVE_FILE：篡改敏感文件逃逸
+	//    ESCAPE_DOCKER_API：访问Docker API接口逃逸
+	//    ESCAPE_VUL_OCCURRED：逃逸漏洞利用
+	//    MOUNT_SENSITIVE_PTAH：敏感路径挂载
+	//    PRIVILEGE_CONTAINER_START：特权容器
+	//    PRIVILEGE：程序提权逃逸
+	EventType []*string `json:"EventType,omitempty" name:"EventType"`
 }
 
 type ModifyEscapeEventStatusRequest struct {
@@ -14295,11 +14313,29 @@ type ModifyEscapeEventStatusRequest struct {
 	// 处理事件ids
 	EventIdSet []*string `json:"EventIdSet,omitempty" name:"EventIdSet"`
 
-	// 标记事件的状态：EVENT_UNDEAL:未处理（取消忽略），EVENT_DEALED:已处理，EVENT_IGNORE:忽略，EVENT_DELETE：已删除
+	// 标记事件的状态：
+	// EVENT_UNDEAL:未处理（取消忽略），
+	// EVENT_DEALED:已处理，
+	// EVENT_IGNORE:忽略，
+	// EVENT_DELETE：已删除
+	// EVENT_ADD_WHITE：加白
 	Status *string `json:"Status,omitempty" name:"Status"`
 
 	// 备注
 	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 加白镜像ID数组
+	ImageIDs []*string `json:"ImageIDs,omitempty" name:"ImageIDs"`
+
+	// 加白事件类型
+	//    ESCAPE_CGROUPS：利用cgroup机制逃逸
+	//    ESCAPE_TAMPER_SENSITIVE_FILE：篡改敏感文件逃逸
+	//    ESCAPE_DOCKER_API：访问Docker API接口逃逸
+	//    ESCAPE_VUL_OCCURRED：逃逸漏洞利用
+	//    MOUNT_SENSITIVE_PTAH：敏感路径挂载
+	//    PRIVILEGE_CONTAINER_START：特权容器
+	//    PRIVILEGE：程序提权逃逸
+	EventType []*string `json:"EventType,omitempty" name:"EventType"`
 }
 
 func (r *ModifyEscapeEventStatusRequest) ToJsonString() string {
@@ -14317,6 +14353,8 @@ func (r *ModifyEscapeEventStatusRequest) FromJsonString(s string) error {
 	delete(f, "EventIdSet")
 	delete(f, "Status")
 	delete(f, "Remark")
+	delete(f, "ImageIDs")
+	delete(f, "EventType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyEscapeEventStatusRequest has unknown keys!", "")
 	}

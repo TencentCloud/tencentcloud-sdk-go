@@ -7815,6 +7815,10 @@ type VideoProduct struct {
 	// 连接类型，wifi表示WIFI连接，cellular表示4G连接
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	NetType *string `json:"NetType,omitempty" name:"NetType"`
+
+	// 产品品类,113:摄像头,567:儿童手表,595:可视对讲门锁
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CategoryId *uint64 `json:"CategoryId,omitempty" name:"CategoryId"`
 }
 
 // Predefined struct for user

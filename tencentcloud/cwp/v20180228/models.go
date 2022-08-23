@@ -13721,6 +13721,12 @@ type DescribeVulHostCountScanTimeResponseParams struct {
 	// 运行中的任务号, 没有任务则为0
 	TaskId *uint64 `json:"TaskId,omitempty" name:"TaskId"`
 
+	// 最后一次修复漏洞的时间
+	LastFixTime *string `json:"LastFixTime,omitempty" name:"LastFixTime"`
+
+	// 是否有支持自动修复的漏洞事件
+	hadAutoFixVul *bool `json:"hadAutoFixVul,omitempty" name:"hadAutoFixVul"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }
@@ -13906,6 +13912,14 @@ type DescribeVulInfoCvssResponseParams struct {
 	// 已防御的攻击次数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DefenseAttackCount *uint64 `json:"DefenseAttackCount,omitempty" name:"DefenseAttackCount"`
+
+	// 全网修复成功次数, 不支持自动修复的漏洞默认返回0
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SuccessFixCount *uint64 `json:"SuccessFixCount,omitempty" name:"SuccessFixCount"`
+
+	// 修复是否支持：0-windows/linux均不支持修复 ;1-windows/linux 均支持修复 ;2-仅linux支持修复;3-仅windows支持修复
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FixSwitch *int64 `json:"FixSwitch,omitempty" name:"FixSwitch"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -16941,8 +16955,12 @@ type Machine struct {
 	// 内核版本
 	KernelVersion *string `json:"KernelVersion,omitempty" name:"KernelVersion"`
 
-	// 防护版本 BASIC_VERSION 基础版, PRO_VERSION 专业版 Flagship 旗舰版.
+	// 防护版本：BASIC_VERSION 基础版， PRO_VERSION 专业版，Flagship 旗舰版，GENERAL_DISCOUNT 普惠版
 	ProtectType *string `json:"ProtectType,omitempty" name:"ProtectType"`
+
+	// 云标签信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CloudTags []*Tags `json:"CloudTags,omitempty" name:"CloudTags"`
 }
 
 type MachineTag struct {
@@ -19172,6 +19190,14 @@ type TagMachine struct {
 
 	// 主机区域类型
 	MachineType *string `json:"MachineType,omitempty" name:"MachineType"`
+}
+
+type Tags struct {
+	// 标签键
+	TagKey *string `json:"TagKey,omitempty" name:"TagKey"`
+
+	// 标签值
+	TagValue *string `json:"TagValue,omitempty" name:"TagValue"`
 }
 
 type TaskStatus struct {

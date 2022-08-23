@@ -20,71 +20,6 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
-// Predefined struct for user
-type DetectFraudKOLRequestParams struct {
-	// 业务数据
-	BspData *InputKolBspData `json:"BspData,omitempty" name:"BspData"`
-
-	// 业务加密数据
-	BusinessEncryptData *InputBusinessEncryptData `json:"BusinessEncryptData,omitempty" name:"BusinessEncryptData"`
-}
-
-type DetectFraudKOLRequest struct {
-	*tchttp.BaseRequest
-	
-	// 业务数据
-	BspData *InputKolBspData `json:"BspData,omitempty" name:"BspData"`
-
-	// 业务加密数据
-	BusinessEncryptData *InputBusinessEncryptData `json:"BusinessEncryptData,omitempty" name:"BusinessEncryptData"`
-}
-
-func (r *DetectFraudKOLRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DetectFraudKOLRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "BspData")
-	delete(f, "BusinessEncryptData")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DetectFraudKOLRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DetectFraudKOLResponseParams struct {
-	// 回包数据
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Data *OutputKolData `json:"Data,omitempty" name:"Data"`
-
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-}
-
-type DetectFraudKOLResponse struct {
-	*tchttp.BaseResponse
-	Response *DetectFraudKOLResponseParams `json:"Response"`
-}
-
-func (r *DetectFraudKOLResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DetectFraudKOLResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type Device struct {
 	// 业务入参id
 	DeviceId *string `json:"DeviceId,omitempty" name:"DeviceId"`
@@ -95,31 +30,6 @@ type Device struct {
 
 type InputBusinessEncryptData struct {
 
-}
-
-type InputKolBspData struct {
-	// BspData
-	DataList []*InputKolDataList `json:"DataList,omitempty" name:"DataList"`
-}
-
-type InputKolDataList struct {
-	// 账号类型[1：微信；2：qq；3：微博]
-	Type *uint64 `json:"Type,omitempty" name:"Type"`
-
-	// KOL账号ID[比如微信公众号ID]
-	Id *string `json:"Id,omitempty" name:"Id"`
-
-	// KOL名称
-	Name *string `json:"Name,omitempty" name:"Name"`
-
-	// 手机号
-	Phone *string `json:"Phone,omitempty" name:"Phone"`
-
-	// 代理商名称
-	AgentInfo *string `json:"AgentInfo,omitempty" name:"AgentInfo"`
-
-	// 是否授权
-	IsAuthorized *uint64 `json:"IsAuthorized,omitempty" name:"IsAuthorized"`
 }
 
 type InputRecognizeTargetAudience struct {
@@ -265,38 +175,6 @@ type InputSendTrafficSecuritySmsMsg struct {
 
 	// 加密数据
 	EncryptData *string `json:"EncryptData,omitempty" name:"EncryptData"`
-}
-
-type OutputKolData struct {
-	// 错误码[0:成功；非0：失败的错误码]
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Code *int64 `json:"Code,omitempty" name:"Code"`
-
-	// 错误信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Message *string `json:"Message,omitempty" name:"Message"`
-
-	// 业务返回数据
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Value []*OutputKolValue `json:"Value,omitempty" name:"Value"`
-}
-
-type OutputKolValue struct {
-	// KOL账号ID[比如微信公众号ID]
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Id *string `json:"Id,omitempty" name:"Id"`
-
-	// 是否查得[0：未查得；1：查得]
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	IsCheck *int64 `json:"IsCheck,omitempty" name:"IsCheck"`
-
-	// 作弊的可能性[0～100]
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	FraudPScore *int64 `json:"FraudPScore,omitempty" name:"FraudPScore"`
-
-	// 作弊的严重性[0～100]
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	EvilPScore *int64 `json:"EvilPScore,omitempty" name:"EvilPScore"`
 }
 
 type OutputRecognizeTargetAudience struct {

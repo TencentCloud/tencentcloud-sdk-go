@@ -730,7 +730,6 @@ func NewDescribeRelatedInstancesResponse() (response *DescribeRelatedInstancesRe
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
-//  INVALIDPARAMETER_WORKSPACENOTEXIST = "InvalidParameter.WorkspaceNotExist"
 func (c *Client) DescribeRelatedInstances(request *DescribeRelatedInstancesRequest) (response *DescribeRelatedInstancesResponse, err error) {
     return c.DescribeRelatedInstancesWithContext(context.Background(), request)
 }
@@ -740,7 +739,6 @@ func (c *Client) DescribeRelatedInstances(request *DescribeRelatedInstancesReque
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
-//  INVALIDPARAMETER_WORKSPACENOTEXIST = "InvalidParameter.WorkspaceNotExist"
 func (c *Client) DescribeRelatedInstancesWithContext(ctx context.Context, request *DescribeRelatedInstancesRequest) (response *DescribeRelatedInstancesResponse, err error) {
     if request == nil {
         request = NewDescribeRelatedInstancesRequest()
@@ -782,7 +780,6 @@ func NewDescribeTaskDetailResponse() (response *DescribeTaskDetailResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
-//  INVALIDPARAMETER_WORKSPACENOTEXIST = "InvalidParameter.WorkspaceNotExist"
 func (c *Client) DescribeTaskDetail(request *DescribeTaskDetailRequest) (response *DescribeTaskDetailResponse, err error) {
     return c.DescribeTaskDetailWithContext(context.Background(), request)
 }
@@ -794,7 +791,6 @@ func (c *Client) DescribeTaskDetail(request *DescribeTaskDetailRequest) (respons
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
-//  INVALIDPARAMETER_WORKSPACENOTEXIST = "InvalidParameter.WorkspaceNotExist"
 func (c *Client) DescribeTaskDetailWithContext(ctx context.Context, request *DescribeTaskDetailRequest) (response *DescribeTaskDetailResponse, err error) {
     if request == nil {
         request = NewDescribeTaskDetailRequest()
@@ -834,7 +830,6 @@ func NewDescribeTaskInstancesResponse() (response *DescribeTaskInstancesResponse
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
-//  INVALIDPARAMETER_WORKSPACENOTEXIST = "InvalidParameter.WorkspaceNotExist"
 func (c *Client) DescribeTaskInstances(request *DescribeTaskInstancesRequest) (response *DescribeTaskInstancesResponse, err error) {
     return c.DescribeTaskInstancesWithContext(context.Background(), request)
 }
@@ -844,7 +839,6 @@ func (c *Client) DescribeTaskInstances(request *DescribeTaskInstancesRequest) (r
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
-//  INVALIDPARAMETER_WORKSPACENOTEXIST = "InvalidParameter.WorkspaceNotExist"
 func (c *Client) DescribeTaskInstancesWithContext(ctx context.Context, request *DescribeTaskInstancesRequest) (response *DescribeTaskInstancesResponse, err error) {
     if request == nil {
         request = NewDescribeTaskInstancesRequest()
@@ -886,7 +880,6 @@ func NewDescribeTaskScriptResponse() (response *DescribeTaskScriptResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
-//  INVALIDPARAMETER_WORKSPACENOTEXIST = "InvalidParameter.WorkspaceNotExist"
 func (c *Client) DescribeTaskScript(request *DescribeTaskScriptRequest) (response *DescribeTaskScriptResponse, err error) {
     return c.DescribeTaskScriptWithContext(context.Background(), request)
 }
@@ -898,7 +891,6 @@ func (c *Client) DescribeTaskScript(request *DescribeTaskScriptRequest) (respons
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
-//  INVALIDPARAMETER_WORKSPACENOTEXIST = "InvalidParameter.WorkspaceNotExist"
 func (c *Client) DescribeTaskScriptWithContext(ctx context.Context, request *DescribeTaskScriptRequest) (response *DescribeTaskScriptResponse, err error) {
     if request == nil {
         request = NewDescribeTaskScriptRequest()
@@ -940,7 +932,6 @@ func NewDescribeTasksByPageResponse() (response *DescribeTasksByPageResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
-//  INVALIDPARAMETER_WORKSPACENOTEXIST = "InvalidParameter.WorkspaceNotExist"
 func (c *Client) DescribeTasksByPage(request *DescribeTasksByPageRequest) (response *DescribeTasksByPageResponse, err error) {
     return c.DescribeTasksByPageWithContext(context.Background(), request)
 }
@@ -952,7 +943,6 @@ func (c *Client) DescribeTasksByPage(request *DescribeTasksByPageRequest) (respo
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
-//  INVALIDPARAMETER_WORKSPACENOTEXIST = "InvalidParameter.WorkspaceNotExist"
 func (c *Client) DescribeTasksByPageWithContext(ctx context.Context, request *DescribeTasksByPageRequest) (response *DescribeTasksByPageResponse, err error) {
     if request == nil {
         request = NewDescribeTasksByPageRequest()
@@ -994,7 +984,6 @@ func NewForceSucInstancesResponse() (response *ForceSucInstancesResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
-//  INVALIDPARAMETER_WORKSPACENOTEXIST = "InvalidParameter.WorkspaceNotExist"
 func (c *Client) ForceSucInstances(request *ForceSucInstancesRequest) (response *ForceSucInstancesResponse, err error) {
     return c.ForceSucInstancesWithContext(context.Background(), request)
 }
@@ -1006,7 +995,6 @@ func (c *Client) ForceSucInstances(request *ForceSucInstancesRequest) (response 
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
-//  INVALIDPARAMETER_WORKSPACENOTEXIST = "InvalidParameter.WorkspaceNotExist"
 func (c *Client) ForceSucInstancesWithContext(ctx context.Context, request *ForceSucInstancesRequest) (response *ForceSucInstancesResponse, err error) {
     if request == nil {
         request = NewForceSucInstancesRequest()
@@ -1048,7 +1036,6 @@ func NewFreezeTasksResponse() (response *FreezeTasksResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
-//  INVALIDPARAMETER_WORKSPACENOTEXIST = "InvalidParameter.WorkspaceNotExist"
 func (c *Client) FreezeTasks(request *FreezeTasksRequest) (response *FreezeTasksResponse, err error) {
     return c.FreezeTasksWithContext(context.Background(), request)
 }
@@ -1060,7 +1047,6 @@ func (c *Client) FreezeTasks(request *FreezeTasksRequest) (response *FreezeTasks
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
-//  INVALIDPARAMETER_WORKSPACENOTEXIST = "InvalidParameter.WorkspaceNotExist"
 func (c *Client) FreezeTasksWithContext(ctx context.Context, request *FreezeTasksRequest) (response *FreezeTasksResponse, err error) {
     if request == nil {
         request = NewFreezeTasksRequest()
@@ -1102,7 +1088,6 @@ func NewFreezeTasksByMultiWorkflowResponse() (response *FreezeTasksByMultiWorkfl
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
-//  INVALIDPARAMETER_WORKSPACENOTEXIST = "InvalidParameter.WorkspaceNotExist"
 func (c *Client) FreezeTasksByMultiWorkflow(request *FreezeTasksByMultiWorkflowRequest) (response *FreezeTasksByMultiWorkflowResponse, err error) {
     return c.FreezeTasksByMultiWorkflowWithContext(context.Background(), request)
 }
@@ -1114,7 +1099,6 @@ func (c *Client) FreezeTasksByMultiWorkflow(request *FreezeTasksByMultiWorkflowR
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
-//  INVALIDPARAMETER_WORKSPACENOTEXIST = "InvalidParameter.WorkspaceNotExist"
 func (c *Client) FreezeTasksByMultiWorkflowWithContext(ctx context.Context, request *FreezeTasksByMultiWorkflowRequest) (response *FreezeTasksByMultiWorkflowResponse, err error) {
     if request == nil {
         request = NewFreezeTasksByMultiWorkflowRequest()
@@ -1156,7 +1140,6 @@ func NewKillInstancesResponse() (response *KillInstancesResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
-//  INVALIDPARAMETER_WORKSPACENOTEXIST = "InvalidParameter.WorkspaceNotExist"
 func (c *Client) KillInstances(request *KillInstancesRequest) (response *KillInstancesResponse, err error) {
     return c.KillInstancesWithContext(context.Background(), request)
 }
@@ -1168,7 +1151,6 @@ func (c *Client) KillInstances(request *KillInstancesRequest) (response *KillIns
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
-//  INVALIDPARAMETER_WORKSPACENOTEXIST = "InvalidParameter.WorkspaceNotExist"
 func (c *Client) KillInstancesWithContext(ctx context.Context, request *KillInstancesRequest) (response *KillInstancesResponse, err error) {
     if request == nil {
         request = NewKillInstancesRequest()

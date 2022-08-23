@@ -6739,6 +6739,9 @@ type ModifyInstanceAttributesRequestParams struct {
 
 	// 动态硬盘扩容策略配置
 	DynamicDiskConfig *DynamicDiskConfig `json:"DynamicDiskConfig,omitempty" name:"DynamicDiskConfig"`
+
+	// 实例级别单条消息大小（单位byte)
+	MaxMessageByte *uint64 `json:"MaxMessageByte,omitempty" name:"MaxMessageByte"`
 }
 
 type ModifyInstanceAttributesRequest struct {
@@ -6767,6 +6770,9 @@ type ModifyInstanceAttributesRequest struct {
 
 	// 动态硬盘扩容策略配置
 	DynamicDiskConfig *DynamicDiskConfig `json:"DynamicDiskConfig,omitempty" name:"DynamicDiskConfig"`
+
+	// 实例级别单条消息大小（单位byte)
+	MaxMessageByte *uint64 `json:"MaxMessageByte,omitempty" name:"MaxMessageByte"`
 }
 
 func (r *ModifyInstanceAttributesRequest) ToJsonString() string {
@@ -6789,6 +6795,7 @@ func (r *ModifyInstanceAttributesRequest) FromJsonString(s string) error {
 	delete(f, "RebalanceTime")
 	delete(f, "PublicNetwork")
 	delete(f, "DynamicDiskConfig")
+	delete(f, "MaxMessageByte")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyInstanceAttributesRequest has unknown keys!", "")
 	}
@@ -7328,6 +7335,10 @@ type MySQLModifyConnectParam struct {
 	// 当type为TDSQL_C_MYSQL时
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 是否是自建的集群
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SelfBuilt *bool `json:"SelfBuilt,omitempty" name:"SelfBuilt"`
 }
 
 type MySQLParam struct {
@@ -7497,6 +7508,10 @@ type PostgreSQLModifyConnectParam struct {
 	// 是否更新到关联的Datahub任务
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsUpdate *bool `json:"IsUpdate,omitempty" name:"IsUpdate"`
+
+	// 是否为自建集群
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SelfBuilt *bool `json:"SelfBuilt,omitempty" name:"SelfBuilt"`
 }
 
 type PostgreSQLParam struct {
@@ -7642,6 +7657,19 @@ type RouteResponse struct {
 	// 路由信息列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Routers []*Route `json:"Routers,omitempty" name:"Routers"`
+}
+
+type RowParam struct {
+	// 行内容，KEY_VALUE，VALUE
+	RowContent *string `json:"RowContent,omitempty" name:"RowContent"`
+
+	// key和value间的分隔符
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	KeyValueDelimiter *string `json:"KeyValueDelimiter,omitempty" name:"KeyValueDelimiter"`
+
+	// 元素建的分隔符
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EntryDelimiter *string `json:"EntryDelimiter,omitempty" name:"EntryDelimiter"`
 }
 
 type SMTParam struct {
@@ -8175,9 +8203,13 @@ type TransformsParam struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SourceType *string `json:"SourceType,omitempty" name:"SourceType"`
 
-	// 输出格式
+	// 输出格式，JSON，ROW，默认为JSON
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OutputFormat *string `json:"OutputFormat,omitempty" name:"OutputFormat"`
+
+	// 输出格式为ROW必填
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RowParam *RowParam `json:"RowParam,omitempty" name:"RowParam"`
 }
 
 type User struct {

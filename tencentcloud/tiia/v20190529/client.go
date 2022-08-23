@@ -1464,6 +1464,12 @@ func NewEnhanceImageResponse() (response *EnhanceImageResponse) {
 }
 
 // EnhanceImage
+// >!
+//
+// - 图像清晰度增强接口将于2022年8月31日结束免费公测，2022年9月1日起正式转入计费。若您不需要使用本服务，请及时停止使用。价格详情在[计费概述](https://cloud.tencent.com/document/product/865/17627)中提前公示，请您参阅。
+//
+// 
+//
 // 传入一张图片，输出清晰度提升后的图片。
 //
 // 
@@ -1495,6 +1501,12 @@ func (c *Client) EnhanceImage(request *EnhanceImageRequest) (response *EnhanceIm
 }
 
 // EnhanceImage
+// >!
+//
+// - 图像清晰度增强接口将于2022年8月31日结束免费公测，2022年9月1日起正式转入计费。若您不需要使用本服务，请及时停止使用。价格详情在[计费概述](https://cloud.tencent.com/document/product/865/17627)中提前公示，请您参阅。
+//
+// 
+//
 // 传入一张图片，输出清晰度提升后的图片。
 //
 // 

@@ -6501,6 +6501,14 @@ type EnvBillingInfoItem struct {
 	// 免费配额信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FreeQuota *string `json:"FreeQuota,omitempty" name:"FreeQuota"`
+
+	// 是否开启 `超过套餐额度部分转按量付费`
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EnableOverrun *bool `json:"EnableOverrun,omitempty" name:"EnableOverrun"`
+
+	// 环境套餐类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExtPackageType *string `json:"ExtPackageType,omitempty" name:"ExtPackageType"`
 }
 
 type EnvInfo struct {

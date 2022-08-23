@@ -1087,6 +1087,9 @@ type ServerBaseInfo struct {
 
 	// 公网访问类型
 	AccessTypes []*string `json:"AccessTypes,omitempty" name:"AccessTypes"`
+
+	// 展示自定义域名
+	CustomDomainNames []*string `json:"CustomDomainNames,omitempty" name:"CustomDomainNames"`
 }
 
 type ServerManageTaskInfo struct {

@@ -77,6 +77,7 @@ func NewAutoSummarizationResponse() (response *AutoSummarizationResponse) {
 //  RESOURCEINSUFFICIENT_QUOTARUNOUT = "ResourceInsufficient.QuotaRunOut"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  RESOURCEUNAVAILABLE_SERVICENOTOPENEDERROR = "ResourceUnavailable.ServiceNotOpenedError"
+//  UNAUTHORIZEDOPERATION_AUTHENTICATEFAILED = "UnauthorizedOperation.AuthenticateFailed"
 func (c *Client) AutoSummarization(request *AutoSummarizationRequest) (response *AutoSummarizationResponse, err error) {
     return c.AutoSummarizationWithContext(context.Background(), request)
 }
@@ -95,6 +96,7 @@ func (c *Client) AutoSummarization(request *AutoSummarizationRequest) (response 
 //  RESOURCEINSUFFICIENT_QUOTARUNOUT = "ResourceInsufficient.QuotaRunOut"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  RESOURCEUNAVAILABLE_SERVICENOTOPENEDERROR = "ResourceUnavailable.ServiceNotOpenedError"
+//  UNAUTHORIZEDOPERATION_AUTHENTICATEFAILED = "UnauthorizedOperation.AuthenticateFailed"
 func (c *Client) AutoSummarizationWithContext(ctx context.Context, request *AutoSummarizationRequest) (response *AutoSummarizationResponse, err error) {
     if request == nil {
         request = NewAutoSummarizationRequest()
@@ -630,6 +632,7 @@ func NewDescribeWordItemsResponse() (response *DescribeWordItemsResponse) {
 //  INVALIDPARAMETERVALUE_TEXTTOOLONG = "InvalidParameterValue.TextTooLong"
 //  INVALIDPARAMETERVALUE_VALUERANGEERROR = "InvalidParameterValue.ValueRangeError"
 //  RESOURCEUNAVAILABLE_SERVICENOTOPENEDERROR = "ResourceUnavailable.ServiceNotOpenedError"
+//  UNAUTHORIZEDOPERATION_AUTHENTICATEFAILED = "UnauthorizedOperation.AuthenticateFailed"
 func (c *Client) DescribeWordItems(request *DescribeWordItemsRequest) (response *DescribeWordItemsResponse, err error) {
     return c.DescribeWordItemsWithContext(context.Background(), request)
 }
@@ -645,6 +648,7 @@ func (c *Client) DescribeWordItems(request *DescribeWordItemsRequest) (response 
 //  INVALIDPARAMETERVALUE_TEXTTOOLONG = "InvalidParameterValue.TextTooLong"
 //  INVALIDPARAMETERVALUE_VALUERANGEERROR = "InvalidParameterValue.ValueRangeError"
 //  RESOURCEUNAVAILABLE_SERVICENOTOPENEDERROR = "ResourceUnavailable.ServiceNotOpenedError"
+//  UNAUTHORIZEDOPERATION_AUTHENTICATEFAILED = "UnauthorizedOperation.AuthenticateFailed"
 func (c *Client) DescribeWordItemsWithContext(ctx context.Context, request *DescribeWordItemsRequest) (response *DescribeWordItemsResponse, err error) {
     if request == nil {
         request = NewDescribeWordItemsRequest()
@@ -1129,6 +1133,7 @@ func NewTextClassificationResponse() (response *TextClassificationResponse) {
 //  RESOURCEINSUFFICIENT_QUOTARUNOUT = "ResourceInsufficient.QuotaRunOut"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  RESOURCEUNAVAILABLE_SERVICENOTOPENEDERROR = "ResourceUnavailable.ServiceNotOpenedError"
+//  UNAUTHORIZEDOPERATION_AUTHENTICATEFAILED = "UnauthorizedOperation.AuthenticateFailed"
 func (c *Client) TextClassification(request *TextClassificationRequest) (response *TextClassificationResponse, err error) {
     return c.TextClassificationWithContext(context.Background(), request)
 }
@@ -1157,6 +1162,7 @@ func (c *Client) TextClassification(request *TextClassificationRequest) (respons
 //  RESOURCEINSUFFICIENT_QUOTARUNOUT = "ResourceInsufficient.QuotaRunOut"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  RESOURCEUNAVAILABLE_SERVICENOTOPENEDERROR = "ResourceUnavailable.ServiceNotOpenedError"
+//  UNAUTHORIZEDOPERATION_AUTHENTICATEFAILED = "UnauthorizedOperation.AuthenticateFailed"
 func (c *Client) TextClassificationWithContext(ctx context.Context, request *TextClassificationRequest) (response *TextClassificationResponse, err error) {
     if request == nil {
         request = NewTextClassificationRequest()

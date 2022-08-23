@@ -10977,11 +10977,27 @@ type LiveRealTimeClipRequestParams struct {
 	// 剪辑固化后的视频点播任务流处理，详见[上传指定任务流](https://cloud.tencent.com/document/product/266/9759)。仅 IsPersistence 为 1 时有效。
 	Procedure *string `json:"Procedure,omitempty" name:"Procedure"`
 
+	// 分类ID，用于对媒体进行分类管理，可通过 [创建分类](/document/product/266/7812) 接口，创建分类，获得分类 ID。
+	// <li>默认值：0，表示其他分类。</li>
+	// 仅 IsPersistence 为 1 时有效。
+	ClassId *int64 `json:"ClassId,omitempty" name:"ClassId"`
+
+	// 来源上下文，用于透传用户请求信息，[上传完成回调](/document/product/266/7830) 将返回该字段值，最长 250 个字符。仅 IsPersistence 为 1 时有效。
+	SourceContext *string `json:"SourceContext,omitempty" name:"SourceContext"`
+
+	// 会话上下文，用于透传用户请求信息，当指定 Procedure 参数后，[任务流状态变更回调](/document/product/266/9636) 将返回该字段值，最长 1000 个字符。仅 IsPersistence 为 1 时有效。
+	SessionContext *string `json:"SessionContext,omitempty" name:"SessionContext"`
+
 	// 是否需要返回剪辑后的视频元信息。0 不需要，1 需要。默认不需要。
 	MetaDataRequired *uint64 `json:"MetaDataRequired,omitempty" name:"MetaDataRequired"`
 
 	// 云点播中添加的用于时移播放的域名，必须在云直播已经[关联录制模板和开通时移服务](https://cloud.tencent.com/document/product/266/52220#.E6.AD.A5.E9.AA.A43.EF.BC.9A.E5.85.B3.E8.81.94.E5.BD.95.E5.88.B6.E6.A8.A1.E6.9D.BF.3Ca-id.3D.22step3.22.3E.3C.2Fa.3E)。**如果本接口的首次调用时间在 2021-01-01T00:00:00Z 之后，则此字段为必选字段。**
 	Host *string `json:"Host,omitempty" name:"Host"`
+
+	// 剪辑的直播流信息：
+	// <li>默认剪辑直播原始流。</li>
+	// <li>当StreamInfo中指定的Type为Transcoding，则剪辑TemplateId对应的直播转码流。</li>
+	StreamInfo *LiveRealTimeClipStreamInfo `json:"StreamInfo,omitempty" name:"StreamInfo"`
 
 	// 系统保留字段，请勿填写。
 	ExtInfo *string `json:"ExtInfo,omitempty" name:"ExtInfo"`
@@ -11011,11 +11027,27 @@ type LiveRealTimeClipRequest struct {
 	// 剪辑固化后的视频点播任务流处理，详见[上传指定任务流](https://cloud.tencent.com/document/product/266/9759)。仅 IsPersistence 为 1 时有效。
 	Procedure *string `json:"Procedure,omitempty" name:"Procedure"`
 
+	// 分类ID，用于对媒体进行分类管理，可通过 [创建分类](/document/product/266/7812) 接口，创建分类，获得分类 ID。
+	// <li>默认值：0，表示其他分类。</li>
+	// 仅 IsPersistence 为 1 时有效。
+	ClassId *int64 `json:"ClassId,omitempty" name:"ClassId"`
+
+	// 来源上下文，用于透传用户请求信息，[上传完成回调](/document/product/266/7830) 将返回该字段值，最长 250 个字符。仅 IsPersistence 为 1 时有效。
+	SourceContext *string `json:"SourceContext,omitempty" name:"SourceContext"`
+
+	// 会话上下文，用于透传用户请求信息，当指定 Procedure 参数后，[任务流状态变更回调](/document/product/266/9636) 将返回该字段值，最长 1000 个字符。仅 IsPersistence 为 1 时有效。
+	SessionContext *string `json:"SessionContext,omitempty" name:"SessionContext"`
+
 	// 是否需要返回剪辑后的视频元信息。0 不需要，1 需要。默认不需要。
 	MetaDataRequired *uint64 `json:"MetaDataRequired,omitempty" name:"MetaDataRequired"`
 
 	// 云点播中添加的用于时移播放的域名，必须在云直播已经[关联录制模板和开通时移服务](https://cloud.tencent.com/document/product/266/52220#.E6.AD.A5.E9.AA.A43.EF.BC.9A.E5.85.B3.E8.81.94.E5.BD.95.E5.88.B6.E6.A8.A1.E6.9D.BF.3Ca-id.3D.22step3.22.3E.3C.2Fa.3E)。**如果本接口的首次调用时间在 2021-01-01T00:00:00Z 之后，则此字段为必选字段。**
 	Host *string `json:"Host,omitempty" name:"Host"`
+
+	// 剪辑的直播流信息：
+	// <li>默认剪辑直播原始流。</li>
+	// <li>当StreamInfo中指定的Type为Transcoding，则剪辑TemplateId对应的直播转码流。</li>
+	StreamInfo *LiveRealTimeClipStreamInfo `json:"StreamInfo,omitempty" name:"StreamInfo"`
 
 	// 系统保留字段，请勿填写。
 	ExtInfo *string `json:"ExtInfo,omitempty" name:"ExtInfo"`
@@ -11040,8 +11072,12 @@ func (r *LiveRealTimeClipRequest) FromJsonString(s string) error {
 	delete(f, "IsPersistence")
 	delete(f, "ExpireTime")
 	delete(f, "Procedure")
+	delete(f, "ClassId")
+	delete(f, "SourceContext")
+	delete(f, "SessionContext")
 	delete(f, "MetaDataRequired")
 	delete(f, "Host")
+	delete(f, "StreamInfo")
 	delete(f, "ExtInfo")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "LiveRealTimeClipRequest has unknown keys!", "")
@@ -11085,6 +11121,17 @@ func (r *LiveRealTimeClipResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *LiveRealTimeClipResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type LiveRealTimeClipStreamInfo struct {
+	// 直播流类型，可选值：
+	// <li>Original（原始流，<b>默认值</b>）。</li>
+	// <li>Transcoding（转码流）。</li>
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 直播转码模板ID。
+	// <b>当Type值为"Transcoding"时，必须填写。</b>
+	TemplateId *uint64 `json:"TemplateId,omitempty" name:"TemplateId"`
 }
 
 // Predefined struct for user
@@ -16373,6 +16420,98 @@ func (r *RefreshUrlCacheResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type RemoveWatermarkRequestParams struct {
+	// 媒体文件 ID 。
+	FileId *string `json:"FileId,omitempty" name:"FileId"`
+
+	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+
+	// 用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
+	SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
+
+	// 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。
+	SessionContext *string `json:"SessionContext,omitempty" name:"SessionContext"`
+
+	// 任务流的优先级，数值越大优先级越高，取值范围是 -10 到 10，不填代表 0。
+	TasksPriority *int64 `json:"TasksPriority,omitempty" name:"TasksPriority"`
+
+	// 该字段已无效。
+	TasksNotifyMode *string `json:"TasksNotifyMode,omitempty" name:"TasksNotifyMode"`
+}
+
+type RemoveWatermarkRequest struct {
+	*tchttp.BaseRequest
+	
+	// 媒体文件 ID 。
+	FileId *string `json:"FileId,omitempty" name:"FileId"`
+
+	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+
+	// 用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
+	SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
+
+	// 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。
+	SessionContext *string `json:"SessionContext,omitempty" name:"SessionContext"`
+
+	// 任务流的优先级，数值越大优先级越高，取值范围是 -10 到 10，不填代表 0。
+	TasksPriority *int64 `json:"TasksPriority,omitempty" name:"TasksPriority"`
+
+	// 该字段已无效。
+	TasksNotifyMode *string `json:"TasksNotifyMode,omitempty" name:"TasksNotifyMode"`
+}
+
+func (r *RemoveWatermarkRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RemoveWatermarkRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FileId")
+	delete(f, "SubAppId")
+	delete(f, "SessionId")
+	delete(f, "SessionContext")
+	delete(f, "TasksPriority")
+	delete(f, "TasksNotifyMode")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RemoveWatermarkRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RemoveWatermarkResponseParams struct {
+	// 任务 ID 。
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type RemoveWatermarkResponse struct {
+	*tchttp.BaseResponse
+	Response *RemoveWatermarkResponseParams `json:"Response"`
+}
+
+func (r *RemoveWatermarkResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RemoveWatermarkResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ResetProcedureTemplateRequestParams struct {
 	// 任务流名字
 	Name *string `json:"Name,omitempty" name:"Name"`
@@ -17106,6 +17245,23 @@ type SimpleHlsClipRequestParams struct {
 
 	// 是否固化。0 不固化，1 固化。默认不固化。
 	IsPersistence *int64 `json:"IsPersistence,omitempty" name:"IsPersistence"`
+
+	// 剪辑固化后的视频存储过期时间。格式参照 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。填“9999-12-31T23:59:59Z”表示永不过期。过期后该媒体文件及其相关资源（转码结果、雪碧图等）将被永久删除。仅 IsPersistence 为 1 时有效，默认剪辑固化的视频永不过期。
+	ExpireTime *string `json:"ExpireTime,omitempty" name:"ExpireTime"`
+
+	// 剪辑固化后的视频点播任务流处理，详见[上传指定任务流](https://cloud.tencent.com/document/product/266/9759)。仅 IsPersistence 为 1 时有效。
+	Procedure *string `json:"Procedure,omitempty" name:"Procedure"`
+
+	// 分类ID，用于对媒体进行分类管理，可通过 [创建分类](/document/product/266/7812) 接口，创建分类，获得分类 ID。
+	// <li>默认值：0，表示其他分类。</li>
+	// 仅 IsPersistence 为 1 时有效。
+	ClassId *int64 `json:"ClassId,omitempty" name:"ClassId"`
+
+	// 来源上下文，用于透传用户请求信息，[上传完成回调](/document/product/266/7830) 将返回该字段值，最长 250 个字符。仅 IsPersistence 为 1 时有效。
+	SourceContext *string `json:"SourceContext,omitempty" name:"SourceContext"`
+
+	// 会话上下文，用于透传用户请求信息，当指定 Procedure 参数后，[任务流状态变更回调](/document/product/266/9636) 将返回该字段值，最长 1000 个字符。仅 IsPersistence 为 1 时有效。
+	SessionContext *string `json:"SessionContext,omitempty" name:"SessionContext"`
 }
 
 type SimpleHlsClipRequest struct {
@@ -17125,6 +17281,23 @@ type SimpleHlsClipRequest struct {
 
 	// 是否固化。0 不固化，1 固化。默认不固化。
 	IsPersistence *int64 `json:"IsPersistence,omitempty" name:"IsPersistence"`
+
+	// 剪辑固化后的视频存储过期时间。格式参照 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。填“9999-12-31T23:59:59Z”表示永不过期。过期后该媒体文件及其相关资源（转码结果、雪碧图等）将被永久删除。仅 IsPersistence 为 1 时有效，默认剪辑固化的视频永不过期。
+	ExpireTime *string `json:"ExpireTime,omitempty" name:"ExpireTime"`
+
+	// 剪辑固化后的视频点播任务流处理，详见[上传指定任务流](https://cloud.tencent.com/document/product/266/9759)。仅 IsPersistence 为 1 时有效。
+	Procedure *string `json:"Procedure,omitempty" name:"Procedure"`
+
+	// 分类ID，用于对媒体进行分类管理，可通过 [创建分类](/document/product/266/7812) 接口，创建分类，获得分类 ID。
+	// <li>默认值：0，表示其他分类。</li>
+	// 仅 IsPersistence 为 1 时有效。
+	ClassId *int64 `json:"ClassId,omitempty" name:"ClassId"`
+
+	// 来源上下文，用于透传用户请求信息，[上传完成回调](/document/product/266/7830) 将返回该字段值，最长 250 个字符。仅 IsPersistence 为 1 时有效。
+	SourceContext *string `json:"SourceContext,omitempty" name:"SourceContext"`
+
+	// 会话上下文，用于透传用户请求信息，当指定 Procedure 参数后，[任务流状态变更回调](/document/product/266/9636) 将返回该字段值，最长 1000 个字符。仅 IsPersistence 为 1 时有效。
+	SessionContext *string `json:"SessionContext,omitempty" name:"SessionContext"`
 }
 
 func (r *SimpleHlsClipRequest) ToJsonString() string {
@@ -17144,6 +17317,11 @@ func (r *SimpleHlsClipRequest) FromJsonString(s string) error {
 	delete(f, "StartTimeOffset")
 	delete(f, "EndTimeOffset")
 	delete(f, "IsPersistence")
+	delete(f, "ExpireTime")
+	delete(f, "Procedure")
+	delete(f, "ClassId")
+	delete(f, "SourceContext")
+	delete(f, "SessionContext")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SimpleHlsClipRequest has unknown keys!", "")
 	}
@@ -17160,6 +17338,9 @@ type SimpleHlsClipResponseParams struct {
 
 	// 剪辑固化后的视频的媒体文件的唯一标识。
 	FileId *string `json:"FileId,omitempty" name:"FileId"`
+
+	// 剪辑固化后的视频任务流 ID。
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`

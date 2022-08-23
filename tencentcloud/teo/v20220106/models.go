@@ -164,6 +164,19 @@ type ApplicationProxy struct {
 
 	// Ipv6访问配置。
 	Ipv6 *Ipv6Access `json:"Ipv6,omitempty" name:"Ipv6"`
+
+	// 加速区域，取值有：
+	// <li>mainland：中国大陆境内;</li>
+	// <li>overseas：全球（不含中国大陆）。</li>
+	// 默认值：overseas
+	Area *string `json:"Area,omitempty" name:"Area"`
+
+	// 封禁状态，取值有：
+	// <li>banned：已封禁;</li>
+	// <li>banning：封禁中；</li>
+	// <li>recover：已解封；</li>
+	// <li>recovering：解封禁中。</li>
+	BanStatus *string `json:"BanStatus,omitempty" name:"BanStatus"`
 }
 
 type ApplicationProxyRule struct {
@@ -192,7 +205,6 @@ type ApplicationProxyRule struct {
 	OriginValue []*string `json:"OriginValue,omitempty" name:"OriginValue"`
 
 	// 规则ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RuleId *string `json:"RuleId,omitempty" name:"RuleId"`
 
 	// 状态，取值有：
@@ -546,7 +558,6 @@ type CacheConfigCache struct {
 	// 缓存配置开关，取值有：
 	// <li>on：开启；</li>
 	// <li>off：关闭。</li>
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
 
 	// 缓存过期时间设置。
@@ -565,7 +576,6 @@ type CacheConfigFollowOrigin struct {
 	// 遵循源站配置开关，取值有：
 	// <li>on：开启；</li>
 	// <li>off：关闭。</li>
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
 }
 
@@ -573,7 +583,6 @@ type CacheConfigNoCache struct {
 	// 不缓存配置开关，取值有：
 	// <li>on：开启；</li>
 	// <li>off：关闭。</li>
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
 }
 
@@ -698,7 +707,6 @@ type ClientIp struct {
 	// 配置开关，取值有：
 	// <li>on：开启；</li>
 	// <li>off：关闭。</li>
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
 
 	// 回源时，存放客户端IP的请求头名称。
@@ -743,9 +751,6 @@ type CreateApplicationProxyRequestParams struct {
 	// 站点名称。
 	ZoneName *string `json:"ZoneName,omitempty" name:"ZoneName"`
 
-	// 规则详细信息。
-	Rule []*ApplicationProxyRule `json:"Rule,omitempty" name:"Rule"`
-
 	// 当ProxyType=hostname时，表示域名或子域名；
 	// 当ProxyType=instance时，表示代理名称。
 	ProxyName *string `json:"ProxyName,omitempty" name:"ProxyName"`
@@ -770,6 +775,9 @@ type CreateApplicationProxyRequestParams struct {
 
 	// 字段已经废弃。
 	ForwardClientIp *string `json:"ForwardClientIp,omitempty" name:"ForwardClientIp"`
+
+	// 规则详细信息。
+	Rule []*ApplicationProxyRule `json:"Rule,omitempty" name:"Rule"`
 
 	// 四层代理模式，取值有：
 	// <li>hostname：表示子域名模式；</li>
@@ -794,9 +802,6 @@ type CreateApplicationProxyRequest struct {
 	// 站点名称。
 	ZoneName *string `json:"ZoneName,omitempty" name:"ZoneName"`
 
-	// 规则详细信息。
-	Rule []*ApplicationProxyRule `json:"Rule,omitempty" name:"Rule"`
-
 	// 当ProxyType=hostname时，表示域名或子域名；
 	// 当ProxyType=instance时，表示代理名称。
 	ProxyName *string `json:"ProxyName,omitempty" name:"ProxyName"`
@@ -821,6 +826,9 @@ type CreateApplicationProxyRequest struct {
 
 	// 字段已经废弃。
 	ForwardClientIp *string `json:"ForwardClientIp,omitempty" name:"ForwardClientIp"`
+
+	// 规则详细信息。
+	Rule []*ApplicationProxyRule `json:"Rule,omitempty" name:"Rule"`
 
 	// 四层代理模式，取值有：
 	// <li>hostname：表示子域名模式；</li>
@@ -850,13 +858,13 @@ func (r *CreateApplicationProxyRequest) FromJsonString(s string) error {
 	}
 	delete(f, "ZoneId")
 	delete(f, "ZoneName")
-	delete(f, "Rule")
 	delete(f, "ProxyName")
 	delete(f, "PlatType")
 	delete(f, "SecurityType")
 	delete(f, "AccelerateType")
 	delete(f, "SessionPersist")
 	delete(f, "ForwardClientIp")
+	delete(f, "Rule")
 	delete(f, "ProxyType")
 	delete(f, "SessionPersistTime")
 	delete(f, "Ipv6")
@@ -2834,6 +2842,11 @@ type DescribeApplicationProxyDetailResponseParams struct {
 	// IPv6访问配置。
 	Ipv6 *Ipv6Access `json:"Ipv6,omitempty" name:"Ipv6"`
 
+	// 加速区域，取值有：
+	// <li>mainland：中国大陆境内;</li>
+	// <li>overseas：全球（不含中国大陆）。</li>
+	Area *string `json:"Area,omitempty" name:"Area"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }
@@ -2976,6 +2989,11 @@ type DescribeBotLogRequestParams struct {
 	// <li>requestMethod ：请求方法 ；</li>
 	// <li>uri ：统一资源标识符 。</li>
 	QueryCondition []*QueryCondition `json:"QueryCondition,omitempty" name:"QueryCondition"`
+
+	// 数据归属地区，取值有：
+	// <li>overseas ：全球（除中国大陆地区）数据 ；</li>
+	// <li>mainland ：中国大陆地区数据 。</li>不填默认查询overseas。
+	Area *string `json:"Area,omitempty" name:"Area"`
 }
 
 type DescribeBotLogRequest struct {
@@ -3009,6 +3027,11 @@ type DescribeBotLogRequest struct {
 	// <li>requestMethod ：请求方法 ；</li>
 	// <li>uri ：统一资源标识符 。</li>
 	QueryCondition []*QueryCondition `json:"QueryCondition,omitempty" name:"QueryCondition"`
+
+	// 数据归属地区，取值有：
+	// <li>overseas ：全球（除中国大陆地区）数据 ；</li>
+	// <li>mainland ：中国大陆地区数据 。</li>不填默认查询overseas。
+	Area *string `json:"Area,omitempty" name:"Area"`
 }
 
 func (r *DescribeBotLogRequest) ToJsonString() string {
@@ -3030,6 +3053,7 @@ func (r *DescribeBotLogRequest) FromJsonString(s string) error {
 	delete(f, "ZoneIds")
 	delete(f, "Domains")
 	delete(f, "QueryCondition")
+	delete(f, "Area")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBotLogRequest has unknown keys!", "")
 	}
@@ -3327,6 +3351,11 @@ type DescribeDDosAttackDataRequestParams struct {
 	// <li>hour ：1小时 ；</li>
 	// <li>day ：1天 。</li>
 	Interval *string `json:"Interval,omitempty" name:"Interval"`
+
+	// 数据归属地区，取值有：
+	// <li>overseas ：全球（除中国大陆地区）数据 ；</li>
+	// <li>mainland ：中国大陆地区数据 。</li>不填默认查询overseas。
+	Area *string `json:"Area,omitempty" name:"Area"`
 }
 
 type DescribeDDosAttackDataRequest struct {
@@ -3372,6 +3401,11 @@ type DescribeDDosAttackDataRequest struct {
 	// <li>hour ：1小时 ；</li>
 	// <li>day ：1天 。</li>
 	Interval *string `json:"Interval,omitempty" name:"Interval"`
+
+	// 数据归属地区，取值有：
+	// <li>overseas ：全球（除中国大陆地区）数据 ；</li>
+	// <li>mainland ：中国大陆地区数据 。</li>不填默认查询overseas。
+	Area *string `json:"Area,omitempty" name:"Area"`
 }
 
 func (r *DescribeDDosAttackDataRequest) ToJsonString() string {
@@ -3395,6 +3429,7 @@ func (r *DescribeDDosAttackDataRequest) FromJsonString(s string) error {
 	delete(f, "ProtocolType")
 	delete(f, "AttackType")
 	delete(f, "Interval")
+	delete(f, "Area")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDDosAttackDataRequest has unknown keys!", "")
 	}
@@ -3446,6 +3481,11 @@ func (r *DescribeDDosAttackDataResponse) FromJsonString(s string) error {
 type DescribeDDosAttackEventDetailRequestParams struct {
 	// 事件id。
 	EventId *string `json:"EventId,omitempty" name:"EventId"`
+
+	// 数据归属地区，取值有：
+	// <li>overseas ：全球（除中国大陆地区）数据 ；</li>
+	// <li>mainland ：中国大陆地区数据 。</li>不填默认查询overseas。
+	Area *string `json:"Area,omitempty" name:"Area"`
 }
 
 type DescribeDDosAttackEventDetailRequest struct {
@@ -3453,6 +3493,11 @@ type DescribeDDosAttackEventDetailRequest struct {
 	
 	// 事件id。
 	EventId *string `json:"EventId,omitempty" name:"EventId"`
+
+	// 数据归属地区，取值有：
+	// <li>overseas ：全球（除中国大陆地区）数据 ；</li>
+	// <li>mainland ：中国大陆地区数据 。</li>不填默认查询overseas。
+	Area *string `json:"Area,omitempty" name:"Area"`
 }
 
 func (r *DescribeDDosAttackEventDetailRequest) ToJsonString() string {
@@ -3468,6 +3513,7 @@ func (r *DescribeDDosAttackEventDetailRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "EventId")
+	delete(f, "Area")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDDosAttackEventDetailRequest has unknown keys!", "")
 	}
@@ -3537,6 +3583,11 @@ type DescribeDDosAttackEventRequestParams struct {
 	// <li>Y ：展示 ；</li>
 	// <li>N ：不展示 。</li>默认为Y。
 	IsShowDetail *string `json:"IsShowDetail,omitempty" name:"IsShowDetail"`
+
+	// 数据归属地区，取值有：
+	// <li>overseas ：全球（除中国大陆地区）数据 ；</li>
+	// <li>mainland ：中国大陆地区数据 。</li>不填默认查询overseas。
+	Area *string `json:"Area,omitempty" name:"Area"`
 }
 
 type DescribeDDosAttackEventRequest struct {
@@ -3570,6 +3621,11 @@ type DescribeDDosAttackEventRequest struct {
 	// <li>Y ：展示 ；</li>
 	// <li>N ：不展示 。</li>默认为Y。
 	IsShowDetail *string `json:"IsShowDetail,omitempty" name:"IsShowDetail"`
+
+	// 数据归属地区，取值有：
+	// <li>overseas ：全球（除中国大陆地区）数据 ；</li>
+	// <li>mainland ：中国大陆地区数据 。</li>不填默认查询overseas。
+	Area *string `json:"Area,omitempty" name:"Area"`
 }
 
 func (r *DescribeDDosAttackEventRequest) ToJsonString() string {
@@ -3592,6 +3648,7 @@ func (r *DescribeDDosAttackEventRequest) FromJsonString(s string) error {
 	delete(f, "ZoneIds")
 	delete(f, "ProtocolType")
 	delete(f, "IsShowDetail")
+	delete(f, "Area")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDDosAttackEventRequest has unknown keys!", "")
 	}
@@ -3656,6 +3713,11 @@ type DescribeDDosAttackSourceEventRequestParams struct {
 	// <li>udp ；</li>
 	// <li>all 。</li>
 	ProtocolType *string `json:"ProtocolType,omitempty" name:"ProtocolType"`
+
+	// 数据归属地区，取值有：
+	// <li>overseas ：全球（除中国大陆地区）数据 ；</li>
+	// <li>mainland ：中国大陆地区数据 。</li>不填默认查询overseas。
+	Area *string `json:"Area,omitempty" name:"Area"`
 }
 
 type DescribeDDosAttackSourceEventRequest struct {
@@ -3684,6 +3746,11 @@ type DescribeDDosAttackSourceEventRequest struct {
 	// <li>udp ；</li>
 	// <li>all 。</li>
 	ProtocolType *string `json:"ProtocolType,omitempty" name:"ProtocolType"`
+
+	// 数据归属地区，取值有：
+	// <li>overseas ：全球（除中国大陆地区）数据 ；</li>
+	// <li>mainland ：中国大陆地区数据 。</li>不填默认查询overseas。
+	Area *string `json:"Area,omitempty" name:"Area"`
 }
 
 func (r *DescribeDDosAttackSourceEventRequest) ToJsonString() string {
@@ -3705,6 +3772,7 @@ func (r *DescribeDDosAttackSourceEventRequest) FromJsonString(s string) error {
 	delete(f, "PolicyIds")
 	delete(f, "ZoneIds")
 	delete(f, "ProtocolType")
+	delete(f, "Area")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDDosAttackSourceEventRequest has unknown keys!", "")
 	}
@@ -3784,6 +3852,11 @@ type DescribeDDosAttackTopDataRequestParams struct {
 	// <li>icmpFlood ；</li>
 	// <li>all 。</li>
 	AttackType *string `json:"AttackType,omitempty" name:"AttackType"`
+
+	// 数据归属地区，取值有：
+	// <li>overseas ：全球（除中国大陆地区）数据 ；</li>
+	// <li>mainland ：中国大陆地区数据 。</li>不填默认查询overseas。
+	Area *string `json:"Area,omitempty" name:"Area"`
 }
 
 type DescribeDDosAttackTopDataRequest struct {
@@ -3827,6 +3900,11 @@ type DescribeDDosAttackTopDataRequest struct {
 	// <li>icmpFlood ；</li>
 	// <li>all 。</li>
 	AttackType *string `json:"AttackType,omitempty" name:"AttackType"`
+
+	// 数据归属地区，取值有：
+	// <li>overseas ：全球（除中国大陆地区）数据 ；</li>
+	// <li>mainland ：中国大陆地区数据 。</li>不填默认查询overseas。
+	Area *string `json:"Area,omitempty" name:"Area"`
 }
 
 func (r *DescribeDDosAttackTopDataRequest) ToJsonString() string {
@@ -3850,6 +3928,7 @@ func (r *DescribeDDosAttackTopDataRequest) FromJsonString(s string) error {
 	delete(f, "Port")
 	delete(f, "ProtocolType")
 	delete(f, "AttackType")
+	delete(f, "Area")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDDosAttackTopDataRequest has unknown keys!", "")
 	}
@@ -3914,6 +3993,11 @@ type DescribeDDosMajorAttackEventRequestParams struct {
 
 	// 站点id列表，不填默认选择全部站点。
 	ZoneIds []*string `json:"ZoneIds,omitempty" name:"ZoneIds"`
+
+	// 数据归属地区，取值有：
+	// <li>overseas ：全球（除中国大陆地区）数据 ；</li>
+	// <li>mainland ：中国大陆地区数据 。</li>不填默认查询overseas。
+	Area *string `json:"Area,omitempty" name:"Area"`
 }
 
 type DescribeDDosMajorAttackEventRequest struct {
@@ -3942,6 +4026,11 @@ type DescribeDDosMajorAttackEventRequest struct {
 
 	// 站点id列表，不填默认选择全部站点。
 	ZoneIds []*string `json:"ZoneIds,omitempty" name:"ZoneIds"`
+
+	// 数据归属地区，取值有：
+	// <li>overseas ：全球（除中国大陆地区）数据 ；</li>
+	// <li>mainland ：中国大陆地区数据 。</li>不填默认查询overseas。
+	Area *string `json:"Area,omitempty" name:"Area"`
 }
 
 func (r *DescribeDDosMajorAttackEventRequest) ToJsonString() string {
@@ -3963,6 +4052,7 @@ func (r *DescribeDDosMajorAttackEventRequest) FromJsonString(s string) error {
 	delete(f, "PolicyIds")
 	delete(f, "ProtocolType")
 	delete(f, "ZoneIds")
+	delete(f, "Area")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDDosMajorAttackEventRequest has unknown keys!", "")
 	}
@@ -4956,6 +5046,7 @@ type DescribeOverviewL7DataRequestParams struct {
 	// l7Flow_outFlux: 访问流量
 	// l7Flow_request: 访问请求数
 	// l7Flow_outBandwidth: 访问带宽
+	//  l7Flow_hit_outFlux: 缓存命中流量
 	MetricNames []*string `json:"MetricNames,omitempty" name:"MetricNames"`
 
 	// 时间间隔，选填{min, 5min, hour, day, week}
@@ -4969,6 +5060,11 @@ type DescribeOverviewL7DataRequestParams struct {
 
 	// 协议类型， 选填{http,http2,https,all}
 	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
+
+	// 加速区域，取值有：
+	// <li>mainland：中国大陆境内;</li>
+	// <li>overseas：全球（不含中国大陆）。</li>
+	Area *string `json:"Area,omitempty" name:"Area"`
 }
 
 type DescribeOverviewL7DataRequest struct {
@@ -4984,6 +5080,7 @@ type DescribeOverviewL7DataRequest struct {
 	// l7Flow_outFlux: 访问流量
 	// l7Flow_request: 访问请求数
 	// l7Flow_outBandwidth: 访问带宽
+	//  l7Flow_hit_outFlux: 缓存命中流量
 	MetricNames []*string `json:"MetricNames,omitempty" name:"MetricNames"`
 
 	// 时间间隔，选填{min, 5min, hour, day, week}
@@ -4997,6 +5094,11 @@ type DescribeOverviewL7DataRequest struct {
 
 	// 协议类型， 选填{http,http2,https,all}
 	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
+
+	// 加速区域，取值有：
+	// <li>mainland：中国大陆境内;</li>
+	// <li>overseas：全球（不含中国大陆）。</li>
+	Area *string `json:"Area,omitempty" name:"Area"`
 }
 
 func (r *DescribeOverviewL7DataRequest) ToJsonString() string {
@@ -5018,6 +5120,7 @@ func (r *DescribeOverviewL7DataRequest) FromJsonString(s string) error {
 	delete(f, "ZoneIds")
 	delete(f, "Domains")
 	delete(f, "Protocol")
+	delete(f, "Area")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeOverviewL7DataRequest has unknown keys!", "")
 	}
@@ -5738,6 +5841,11 @@ type DescribeTimingL4DataRequestParams struct {
 
 	// 四层实例列表
 	ProxyIds []*string `json:"ProxyIds,omitempty" name:"ProxyIds"`
+
+	// 加速区域，取值有：
+	// <li>mainland：中国大陆境内;</li>
+	// <li>overseas：全球（不含中国大陆）。</li>
+	Area *string `json:"Area,omitempty" name:"Area"`
 }
 
 type DescribeTimingL4DataRequest struct {
@@ -5776,6 +5884,11 @@ type DescribeTimingL4DataRequest struct {
 
 	// 四层实例列表
 	ProxyIds []*string `json:"ProxyIds,omitempty" name:"ProxyIds"`
+
+	// 加速区域，取值有：
+	// <li>mainland：中国大陆境内;</li>
+	// <li>overseas：全球（不含中国大陆）。</li>
+	Area *string `json:"Area,omitempty" name:"Area"`
 }
 
 func (r *DescribeTimingL4DataRequest) ToJsonString() string {
@@ -5800,6 +5913,7 @@ func (r *DescribeTimingL4DataRequest) FromJsonString(s string) error {
 	delete(f, "RuleId")
 	delete(f, "Filters")
 	delete(f, "ProxyIds")
+	delete(f, "Area")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTimingL4DataRequest has unknown keys!", "")
 	}
@@ -5860,6 +5974,11 @@ type DescribeTimingL7AnalysisDataRequestParams struct {
 
 	// 筛选条件
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 加速区域，取值有：
+	// <li>mainland：中国大陆境内;</li>
+	// <li>overseas：全球（不含中国大陆）。</li>
+	Area *string `json:"Area,omitempty" name:"Area"`
 }
 
 type DescribeTimingL7AnalysisDataRequest struct {
@@ -5885,6 +6004,11 @@ type DescribeTimingL7AnalysisDataRequest struct {
 
 	// 筛选条件
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 加速区域，取值有：
+	// <li>mainland：中国大陆境内;</li>
+	// <li>overseas：全球（不含中国大陆）。</li>
+	Area *string `json:"Area,omitempty" name:"Area"`
 }
 
 func (r *DescribeTimingL7AnalysisDataRequest) ToJsonString() string {
@@ -5905,6 +6029,7 @@ func (r *DescribeTimingL7AnalysisDataRequest) FromJsonString(s string) error {
 	delete(f, "Interval")
 	delete(f, "ZoneIds")
 	delete(f, "Filters")
+	delete(f, "Area")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTimingL7AnalysisDataRequest has unknown keys!", "")
 	}
@@ -5966,6 +6091,11 @@ type DescribeTimingL7CacheDataRequestParams struct {
 	// EO响应：{Key: "cacheType", Value: ["hit"], Operator: "equals"}；
 	// 源站响应：{Key: "cacheType", Value: ["miss", "dynamic"], Operator: "equals"}
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 加速区域，取值有：
+	// <li>mainland：中国大陆境内;</li>
+	// <li>overseas：全球（不含中国大陆）。</li>
+	Area *string `json:"Area,omitempty" name:"Area"`
 }
 
 type DescribeTimingL7CacheDataRequest struct {
@@ -5992,6 +6122,11 @@ type DescribeTimingL7CacheDataRequest struct {
 	// EO响应：{Key: "cacheType", Value: ["hit"], Operator: "equals"}；
 	// 源站响应：{Key: "cacheType", Value: ["miss", "dynamic"], Operator: "equals"}
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 加速区域，取值有：
+	// <li>mainland：中国大陆境内;</li>
+	// <li>overseas：全球（不含中国大陆）。</li>
+	Area *string `json:"Area,omitempty" name:"Area"`
 }
 
 func (r *DescribeTimingL7CacheDataRequest) ToJsonString() string {
@@ -6012,6 +6147,7 @@ func (r *DescribeTimingL7CacheDataRequest) FromJsonString(s string) error {
 	delete(f, "Interval")
 	delete(f, "ZoneIds")
 	delete(f, "Filters")
+	delete(f, "Area")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTimingL7CacheDataRequest has unknown keys!", "")
 	}
@@ -6072,6 +6208,11 @@ type DescribeTopL7AnalysisDataRequestParams struct {
 
 	// 筛选条件
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 加速区域，取值有：
+	// <li>mainland：中国大陆境内;</li>
+	// <li>overseas：全球（不含中国大陆）。</li>
+	Area *string `json:"Area,omitempty" name:"Area"`
 }
 
 type DescribeTopL7AnalysisDataRequest struct {
@@ -6097,6 +6238,11 @@ type DescribeTopL7AnalysisDataRequest struct {
 
 	// 筛选条件
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 加速区域，取值有：
+	// <li>mainland：中国大陆境内;</li>
+	// <li>overseas：全球（不含中国大陆）。</li>
+	Area *string `json:"Area,omitempty" name:"Area"`
 }
 
 func (r *DescribeTopL7AnalysisDataRequest) ToJsonString() string {
@@ -6118,6 +6264,7 @@ func (r *DescribeTopL7AnalysisDataRequest) FromJsonString(s string) error {
 	delete(f, "Interval")
 	delete(f, "ZoneIds")
 	delete(f, "Filters")
+	delete(f, "Area")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTopL7AnalysisDataRequest has unknown keys!", "")
 	}
@@ -6178,6 +6325,11 @@ type DescribeTopL7CacheDataRequestParams struct {
 
 	// 筛选条件
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 加速区域，取值有：
+	// <li>mainland：中国大陆境内;</li>
+	// <li>overseas：全球（不含中国大陆）。</li>
+	Area *string `json:"Area,omitempty" name:"Area"`
 }
 
 type DescribeTopL7CacheDataRequest struct {
@@ -6203,6 +6355,11 @@ type DescribeTopL7CacheDataRequest struct {
 
 	// 筛选条件
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 加速区域，取值有：
+	// <li>mainland：中国大陆境内;</li>
+	// <li>overseas：全球（不含中国大陆）。</li>
+	Area *string `json:"Area,omitempty" name:"Area"`
 }
 
 func (r *DescribeTopL7CacheDataRequest) ToJsonString() string {
@@ -6224,6 +6381,7 @@ func (r *DescribeTopL7CacheDataRequest) FromJsonString(s string) error {
 	delete(f, "Interval")
 	delete(f, "ZoneIds")
 	delete(f, "Filters")
+	delete(f, "Area")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTopL7CacheDataRequest has unknown keys!", "")
 	}
@@ -6408,6 +6566,11 @@ type DescribeWebManagedRulesDataRequestParams struct {
 	// 筛选条件，取值有：
 	// <li>action ：执行动作 。</li>
 	QueryCondition []*QueryCondition `json:"QueryCondition,omitempty" name:"QueryCondition"`
+
+	// 数据归属地区，取值有：
+	// <li>overseas ：全球（除中国大陆地区）数据 ；</li>
+	// <li>mainland ：中国大陆地区数据 。</li>不填默认查询overseas。
+	Area *string `json:"Area,omitempty" name:"Area"`
 }
 
 type DescribeWebManagedRulesDataRequest struct {
@@ -6445,6 +6608,11 @@ type DescribeWebManagedRulesDataRequest struct {
 	// 筛选条件，取值有：
 	// <li>action ：执行动作 。</li>
 	QueryCondition []*QueryCondition `json:"QueryCondition,omitempty" name:"QueryCondition"`
+
+	// 数据归属地区，取值有：
+	// <li>overseas ：全球（除中国大陆地区）数据 ；</li>
+	// <li>mainland ：中国大陆地区数据 。</li>不填默认查询overseas。
+	Area *string `json:"Area,omitempty" name:"Area"`
 }
 
 func (r *DescribeWebManagedRulesDataRequest) ToJsonString() string {
@@ -6468,6 +6636,7 @@ func (r *DescribeWebManagedRulesDataRequest) FromJsonString(s string) error {
 	delete(f, "AttackType")
 	delete(f, "Interval")
 	delete(f, "QueryCondition")
+	delete(f, "Area")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeWebManagedRulesDataRequest has unknown keys!", "")
 	}
@@ -6548,6 +6717,11 @@ type DescribeWebManagedRulesLogRequestParams struct {
 	// <li>requestMethod ：请求方法 ；</li>
 	// <li>uri ：统一资源标识符 。</li>
 	QueryCondition []*QueryCondition `json:"QueryCondition,omitempty" name:"QueryCondition"`
+
+	// 数据归属地区，取值有：
+	// <li>overseas ：全球（除中国大陆地区）数据 ；</li>
+	// <li>mainland ：中国大陆地区数据 。</li>不填默认查询overseas。
+	Area *string `json:"Area,omitempty" name:"Area"`
 }
 
 type DescribeWebManagedRulesLogRequest struct {
@@ -6584,6 +6758,11 @@ type DescribeWebManagedRulesLogRequest struct {
 	// <li>requestMethod ：请求方法 ；</li>
 	// <li>uri ：统一资源标识符 。</li>
 	QueryCondition []*QueryCondition `json:"QueryCondition,omitempty" name:"QueryCondition"`
+
+	// 数据归属地区，取值有：
+	// <li>overseas ：全球（除中国大陆地区）数据 ；</li>
+	// <li>mainland ：中国大陆地区数据 。</li>不填默认查询overseas。
+	Area *string `json:"Area,omitempty" name:"Area"`
 }
 
 func (r *DescribeWebManagedRulesLogRequest) ToJsonString() string {
@@ -6605,6 +6784,7 @@ func (r *DescribeWebManagedRulesLogRequest) FromJsonString(s string) error {
 	delete(f, "ZoneIds")
 	delete(f, "Domains")
 	delete(f, "QueryCondition")
+	delete(f, "Area")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeWebManagedRulesLogRequest has unknown keys!", "")
 	}
@@ -6689,6 +6869,11 @@ type DescribeWebManagedRulesTopDataRequestParams struct {
 	// 筛选条件，取值有：
 	// <li>action ：执行动作 。</li>
 	QueryCondition []*QueryCondition `json:"QueryCondition,omitempty" name:"QueryCondition"`
+
+	// 数据归属地区，取值有：
+	// <li>overseas ：全球（除中国大陆地区）数据 ；</li>
+	// <li>mainland ：中国大陆地区数据 。</li>不填默认查询overseas。
+	Area *string `json:"Area,omitempty" name:"Area"`
 }
 
 type DescribeWebManagedRulesTopDataRequest struct {
@@ -6737,6 +6922,11 @@ type DescribeWebManagedRulesTopDataRequest struct {
 	// 筛选条件，取值有：
 	// <li>action ：执行动作 。</li>
 	QueryCondition []*QueryCondition `json:"QueryCondition,omitempty" name:"QueryCondition"`
+
+	// 数据归属地区，取值有：
+	// <li>overseas ：全球（除中国大陆地区）数据 ；</li>
+	// <li>mainland ：中国大陆地区数据 。</li>不填默认查询overseas。
+	Area *string `json:"Area,omitempty" name:"Area"`
 }
 
 func (r *DescribeWebManagedRulesTopDataRequest) ToJsonString() string {
@@ -6763,6 +6953,7 @@ func (r *DescribeWebManagedRulesTopDataRequest) FromJsonString(s string) error {
 	delete(f, "Domains")
 	delete(f, "Interval")
 	delete(f, "QueryCondition")
+	delete(f, "Area")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeWebManagedRulesTopDataRequest has unknown keys!", "")
 	}
@@ -6935,6 +7126,11 @@ type DescribeWebProtectionDataRequestParams struct {
 	// 筛选条件，取值有：
 	// <li>action ：执行动作 。</li>
 	QueryCondition []*QueryCondition `json:"QueryCondition,omitempty" name:"QueryCondition"`
+
+	// 数据归属地区，取值有：
+	// <li>overseas ：全球（除中国大陆地区）数据 ；</li>
+	// <li>mainland ：中国大陆地区数据 。</li>不填默认查询overseas。
+	Area *string `json:"Area,omitempty" name:"Area"`
 }
 
 type DescribeWebProtectionDataRequest struct {
@@ -6973,6 +7169,11 @@ type DescribeWebProtectionDataRequest struct {
 	// 筛选条件，取值有：
 	// <li>action ：执行动作 。</li>
 	QueryCondition []*QueryCondition `json:"QueryCondition,omitempty" name:"QueryCondition"`
+
+	// 数据归属地区，取值有：
+	// <li>overseas ：全球（除中国大陆地区）数据 ；</li>
+	// <li>mainland ：中国大陆地区数据 。</li>不填默认查询overseas。
+	Area *string `json:"Area,omitempty" name:"Area"`
 }
 
 func (r *DescribeWebProtectionDataRequest) ToJsonString() string {
@@ -6996,6 +7197,7 @@ func (r *DescribeWebProtectionDataRequest) FromJsonString(s string) error {
 	delete(f, "AttackType")
 	delete(f, "Interval")
 	delete(f, "QueryCondition")
+	delete(f, "Area")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeWebProtectionDataRequest has unknown keys!", "")
 	}
@@ -7084,6 +7286,11 @@ type DescribeWebProtectionLogRequestParams struct {
 	// <li>rate ：限速日志 ；</li>
 	// <li>acl ：自定义规则日志 。</li>不填默认为rate。
 	EntityType *string `json:"EntityType,omitempty" name:"EntityType"`
+
+	// 数据归属地区，取值有：
+	// <li>overseas ：全球（除中国大陆地区）数据 ；</li>
+	// <li>mainland ：中国大陆地区数据 。</li>不填默认查询overseas。
+	Area *string `json:"Area,omitempty" name:"Area"`
 }
 
 type DescribeWebProtectionLogRequest struct {
@@ -7128,6 +7335,11 @@ type DescribeWebProtectionLogRequest struct {
 	// <li>rate ：限速日志 ；</li>
 	// <li>acl ：自定义规则日志 。</li>不填默认为rate。
 	EntityType *string `json:"EntityType,omitempty" name:"EntityType"`
+
+	// 数据归属地区，取值有：
+	// <li>overseas ：全球（除中国大陆地区）数据 ；</li>
+	// <li>mainland ：中国大陆地区数据 。</li>不填默认查询overseas。
+	Area *string `json:"Area,omitempty" name:"Area"`
 }
 
 func (r *DescribeWebProtectionLogRequest) ToJsonString() string {
@@ -7150,6 +7362,7 @@ func (r *DescribeWebProtectionLogRequest) FromJsonString(s string) error {
 	delete(f, "Domains")
 	delete(f, "QueryCondition")
 	delete(f, "EntityType")
+	delete(f, "Area")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeWebProtectionLogRequest has unknown keys!", "")
 	}
@@ -7294,11 +7507,9 @@ type DescribeZoneDetailsResponseParams struct {
 	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 用户当前使用的 NS 列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	OriginalNameServers []*string `json:"OriginalNameServers,omitempty" name:"OriginalNameServers"`
 
 	// 腾讯云分配给用户的 NS 列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	NameServers []*string `json:"NameServers,omitempty" name:"NameServers"`
 
 	// 站点状态
@@ -7316,20 +7527,6 @@ type DescribeZoneDetailsResponseParams struct {
 	// 站点是否关闭
 	Paused *bool `json:"Paused,omitempty" name:"Paused"`
 
-	// 站点创建时间
-	CreatedOn *string `json:"CreatedOn,omitempty" name:"CreatedOn"`
-
-	// 站点修改时间
-	ModifiedOn *string `json:"ModifiedOn,omitempty" name:"ModifiedOn"`
-
-	// 用户自定义 NS 信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	VanityNameServers *VanityNameServers `json:"VanityNameServers,omitempty" name:"VanityNameServers"`
-
-	// 用户自定义 NS IP 信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	VanityNameServersIps []*VanityNameServersIps `json:"VanityNameServersIps,omitempty" name:"VanityNameServersIps"`
-
 	// 是否开启 CNAME 加速
 	// - enabled：开启
 	// - disabled：关闭
@@ -7338,16 +7535,35 @@ type DescribeZoneDetailsResponseParams struct {
 	// cname切换验证状态
 	// - finished 切换完成
 	// - pending 切换验证中
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	CnameStatus *string `json:"CnameStatus,omitempty" name:"CnameStatus"`
 
 	// 资源标签
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 
+	// 站点接入地域，取值为：
+	// <li> global：全球；</li>
+	// <li> mainland：中国大陆；</li>
+	// <li> overseas：境外区域。</li>
+	Area *string `json:"Area,omitempty" name:"Area"`
+
 	// 计费资源
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Resources []*Resource `json:"Resources,omitempty" name:"Resources"`
+
+	// 站点修改时间
+	ModifiedOn *string `json:"ModifiedOn,omitempty" name:"ModifiedOn"`
+
+	// 站点创建时间
+	CreatedOn *string `json:"CreatedOn,omitempty" name:"CreatedOn"`
+
+	// 用户自定义 NS 信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VanityNameServers *VanityNameServers `json:"VanityNameServers,omitempty" name:"VanityNameServers"`
+
+	// 用户自定义 NS IP 信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VanityNameServersIps []*VanityNameServersIps `json:"VanityNameServersIps,omitempty" name:"VanityNameServersIps"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -7473,6 +7689,11 @@ type DescribeZoneSettingResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Ipv6 *Ipv6Access `json:"Ipv6,omitempty" name:"Ipv6"`
 
+	// 站点加速区域信息，取值有：
+	// <li>mainland：中国境内加速；</li>
+	// <li>overseas：中国境外加速。</li>
+	Area *string `json:"Area,omitempty" name:"Area"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }
@@ -7495,26 +7716,26 @@ func (r *DescribeZoneSettingResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeZonesRequestParams struct {
-	// 分页参数，页偏移
+	// 分页查询偏移量。默认值：0，最小值：0。
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 分页参数，每页返回的站点个数
+	// 分页查询限制数目。默认值：1000，最大值：1000。
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 查询条件过滤器，复杂类型
+	// 查询条件过滤器，复杂类型。
 	Filters []*ZoneFilter `json:"Filters,omitempty" name:"Filters"`
 }
 
 type DescribeZonesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 分页参数，页偏移
+	// 分页查询偏移量。默认值：0，最小值：0。
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 分页参数，每页返回的站点个数
+	// 分页查询限制数目。默认值：1000，最大值：1000。
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 查询条件过滤器，复杂类型
+	// 查询条件过滤器，复杂类型。
 	Filters []*ZoneFilter `json:"Filters,omitempty" name:"Filters"`
 }
 
@@ -7541,11 +7762,10 @@ func (r *DescribeZonesRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeZonesResponseParams struct {
-	// 符合条件的站点数
+	// 符合条件的站点个数。
 	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
-	// 站点详细信息列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 站点详细信息列表。
 	Zones []*Zone `json:"Zones,omitempty" name:"Zones"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -8157,6 +8377,11 @@ type L7OfflineLog struct {
 	// 日志数据包名
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LogPacketName *string `json:"LogPacketName,omitempty" name:"LogPacketName"`
+
+	// 加速区域，取值有：
+	// <li>mainland：中国大陆境内;</li>
+	// <li>overseas：全球（不含中国大陆）。</li>
+	Area *string `json:"Area,omitempty" name:"Area"`
 }
 
 type LoadBalancing struct {
@@ -9986,7 +10211,6 @@ type OfflineCache struct {
 	// 离线缓存是否开启，取值有：
 	// <li>on：开启；</li>
 	// <li>off：关闭。</li>
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
 }
 
@@ -10172,7 +10396,6 @@ type QueryString struct {
 	// CacheKey是否由QueryString组成，取值有：
 	// <li>on：是；</li>
 	// <li>off：否。</li>
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
 
 	// CacheKey使用QueryString的方式，取值有：
@@ -10354,37 +10577,44 @@ func (r *ReclaimZoneResponse) FromJsonString(s string) error {
 }
 
 type Resource struct {
-	// 资源 ID
+	// 资源 ID。
 	Id *string `json:"Id,omitempty" name:"Id"`
 
-	// 付费模式
-	// 0 为后付费
-	// 1 为预付费
+	// 付费模式，取值有：
+	// <li>0：后付费。</li>
 	PayMode *int64 `json:"PayMode,omitempty" name:"PayMode"`
 
-	// 创建时间
+	// 创建时间。
 	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
 
-	// 生效时间
+	// 生效时间。
 	EnableTime *string `json:"EnableTime,omitempty" name:"EnableTime"`
 
-	// 失效时间
+	// 失效时间。
 	ExpireTime *string `json:"ExpireTime,omitempty" name:"ExpireTime"`
 
-	// 套餐状态
+	// 套餐状态，取值有：
+	// <li>normal：正常；</li>
+	// <li>isolated：隔离；</li>
+	// <li>destroyed：销毁。</li>
 	Status *string `json:"Status,omitempty" name:"Status"`
 
-	// 询价参数
+	// 询价参数。
 	Sv []*Sv `json:"Sv,omitempty" name:"Sv"`
 
-	// 是否自动续费
-	// 0 表示默认状态
-	// 1 表示自动续费
-	// 2 表示不自动续费
+	// 是否自动续费，取值有：
+	// <li>0：默认状态；</li>
+	// <li>1：自动续费；</li>
+	// <li>2：不自动续费。</li>
 	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitempty" name:"AutoRenewFlag"`
 
-	// 套餐关联资源ID
+	// 套餐关联资源 ID。
 	PlanId *string `json:"PlanId,omitempty" name:"PlanId"`
+
+	// 地域，取值有：
+	// <li>mainland：国内；</li>
+	// <li>overseas：海外。</li>
+	Area *string `json:"Area,omitempty" name:"Area"`
 }
 
 // Predefined struct for user
@@ -10631,10 +10861,10 @@ type SmartRouting struct {
 }
 
 type Sv struct {
-	// 询价参数 key
+	// 询价参数键。
 	Key *string `json:"Key,omitempty" name:"Key"`
 
-	// 询价参数 value
+	// 询价参数值。
 	Value *string `json:"Value,omitempty" name:"Value"`
 }
 
@@ -10929,71 +11159,73 @@ type WebSocket struct {
 }
 
 type Zone struct {
-	// 站点ID
+	// 站点ID。
 	Id *string `json:"Id,omitempty" name:"Id"`
 
-	// 站点名称
+	// 站点名称。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
-	// 站点当前使用的 NS 列表
+	// 站点当前使用的 NS 列表。
 	OriginalNameServers []*string `json:"OriginalNameServers,omitempty" name:"OriginalNameServers"`
 
-	// 腾讯云分配的 NS 列表
+	// 腾讯云分配的 NS 列表。
 	NameServers []*string `json:"NameServers,omitempty" name:"NameServers"`
 
-	// 站点状态
-	// - active：NS 已切换
-	// - pending：NS 未切换
-	// - moved：NS 已切走
-	// - deactivated：被封禁
+	// 站点状态，取值有：
+	// <li> active：NS 已切换； </li>
+	// <li> pending：NS 未切换；</li>
+	// <li> moved：NS 已切走；</li>
+	// <li> deactivated：被封禁。 </li>
 	Status *string `json:"Status,omitempty" name:"Status"`
 
-	// 站点接入方式
-	// - full：NS 接入
-	// - partial：CNAME 接入
+	// 站点接入方式，取值有
+	// <li> full：NS 接入； </li>
+	// <li> partial：CNAME 接入。</li>
 	Type *string `json:"Type,omitempty" name:"Type"`
 
-	// 站点是否关闭
+	// 站点是否关闭。
 	Paused *bool `json:"Paused,omitempty" name:"Paused"`
 
-	// 站点创建时间
-	CreatedOn *string `json:"CreatedOn,omitempty" name:"CreatedOn"`
+	// 是否开启cname加速，取值有：
+	// <li> enabled：开启；</li>
+	// <li> disabled：关闭。</li>
+	CnameSpeedUp *string `json:"CnameSpeedUp,omitempty" name:"CnameSpeedUp"`
 
-	// 站点修改时间
-	ModifiedOn *string `json:"ModifiedOn,omitempty" name:"ModifiedOn"`
-
-	// cname 接入状态
-	// - finished 站点已验证
-	// - pending 站点验证中
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// cname 接入状态，取值有：
+	// <li> finished：站点已验证；</li>
+	// <li> pending：站点验证中。</li>
 	CnameStatus *string `json:"CnameStatus,omitempty" name:"CnameStatus"`
 
-	// 资源标签
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 资源标签列表。
 	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 
-	// 计费资源
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 计费资源列表。
 	Resources []*Resource `json:"Resources,omitempty" name:"Resources"`
 
-	// 是否开启cname加速
-	// - enabled 开启
-	// - disabled 关闭
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	CnameSpeedUp *string `json:"CnameSpeedUp,omitempty" name:"CnameSpeedUp"`
+	// 站点创建时间。
+	CreatedOn *string `json:"CreatedOn,omitempty" name:"CreatedOn"`
+
+	// 站点修改时间。
+	ModifiedOn *string `json:"ModifiedOn,omitempty" name:"ModifiedOn"`
+
+	// 站点接入地域，取值为：
+	// <li> global：全球；</li>
+	// <li> mainland：中国大陆；</li>
+	// <li> overseas：境外区域。</li>
+	Area *string `json:"Area,omitempty" name:"Area"`
 }
 
 type ZoneFilter struct {
 	// 过滤字段名，支持的列表如下：
-	// - name: 站点名。
-	// - status: 站点状态
-	// - tagKey: 标签键
-	// - tagValue: 标签值
+	// <li> name：站点名；</li>
+	// <li> status：站点状态；</li>
+	// <li> tagKey：标签键；</li>
+	// <li> tagValue: 标签值。</li>
 	Name *string `json:"Name,omitempty" name:"Name"`
 
-	// 过滤字段值
+	// 过滤字段值。
 	Values []*string `json:"Values,omitempty" name:"Values"`
 
-	// 是否启用模糊查询，仅支持过滤字段名为name。模糊查询时，Values长度最大为1
+	// 是否启用模糊查询，仅支持过滤字段名为name。模糊查询时，Values长度最大为1。默认为false。
 	Fuzzy *bool `json:"Fuzzy,omitempty" name:"Fuzzy"`
 }

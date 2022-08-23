@@ -110,6 +110,12 @@ const (
 	// 不合法的签署人类型，请检查后重试。
 	INVALIDPARAMETER_APPROVERTYPE = "InvalidParameter.ApproverType"
 
+	// 不合法的业务id，请检查是否传递，检查是否超过接口上限数量，并在修改后重试。
+	INVALIDPARAMETER_BUSINESSID = "InvalidParameter.BusinessId"
+
+	// 不合法的业务类型，请检查后重试。
+	INVALIDPARAMETER_BUSINESSTYPE = "InvalidParameter.BusinessType"
+
 	// 不合法的撤销取消理由，将检查长度，内容，并在修改后重试。
 	INVALIDPARAMETER_CANCELREASON = "InvalidParameter.CancelReason"
 
@@ -337,6 +343,9 @@ const (
 
 	// 授权码已失效，请检查是否传递正确，是否已经过期，并在修改后重试。
 	OPERATIONDENIED_AUTHCODEINVALID = "OperationDenied.AuthCodeInvalid"
+
+	// 不允许批量撤销签署流程，请检查批量撤销合同信息。
+	OPERATIONDENIED_BATCHCANCELFORBID = "OperationDenied.BatchCancelForbid"
 
 	// 子公司不能发起本方母体公司的合同。
 	OPERATIONDENIED_BRANCHSENDFLOWTOPARENTNOTALLOW = "OperationDenied.BranchSendFlowToParentNotAllow"

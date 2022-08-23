@@ -6040,7 +6040,7 @@ func NewDescribeLiveTranscodeTotalInfoResponse() (response *DescribeLiveTranscod
 }
 
 // DescribeLiveTranscodeTotalInfo
-// 查询转码总量数据，可查询近30天内数据。
+// 查询转码总量数据，可查询近三个月内的数据。
 //
 // 注意：
 //
@@ -6062,7 +6062,7 @@ func (c *Client) DescribeLiveTranscodeTotalInfo(request *DescribeLiveTranscodeTo
 }
 
 // DescribeLiveTranscodeTotalInfo
-// 查询转码总量数据，可查询近30天内数据。
+// 查询转码总量数据，可查询近三个月内的数据。
 //
 // 注意：
 //

@@ -334,10 +334,10 @@ type BatchDomainOperateErrors struct {
 }
 
 type BillAreaInfo struct {
-	// 大区名称
+	// 大区名称。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
-	// 国家明细数据
+	// 国家或地区明细数据。
 	Countrys []*BillCountryInfo `json:"Countrys,omitempty" name:"Countrys"`
 }
 
@@ -8417,7 +8417,7 @@ type DescribeStreamPlayInfoListRequestParams struct {
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
 
 	// 结束时间，北京时间，格式为yyyy-mm-dd HH:MM:SS，
-	// 结束时间 和 开始时间跨度不支持超过24小时，支持距当前时间15天内的数据查询。
+	// 结束时间 和 开始时间跨度不支持超过24小时，支持距当前时间一个月内的数据查询。
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
 	// 播放域名，
@@ -8444,7 +8444,7 @@ type DescribeStreamPlayInfoListRequest struct {
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
 
 	// 结束时间，北京时间，格式为yyyy-mm-dd HH:MM:SS，
-	// 结束时间 和 开始时间跨度不支持超过24小时，支持距当前时间15天内的数据查询。
+	// 结束时间 和 开始时间跨度不支持超过24小时，支持距当前时间一个月内的数据查询。
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
 	// 播放域名，

@@ -103,6 +103,80 @@ type ChorusClip struct {
 }
 
 // Predefined struct for user
+type DescribeKTVMatchMusicsRequestParams struct {
+	// 应用名称。
+	AppName *string `json:"AppName,omitempty" name:"AppName"`
+
+	// 用户标识。
+	UserId *string `json:"UserId,omitempty" name:"UserId"`
+
+	// 匹配规则列表。
+	Rules []*KTVMatchRule `json:"Rules,omitempty" name:"Rules"`
+}
+
+type DescribeKTVMatchMusicsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 应用名称。
+	AppName *string `json:"AppName,omitempty" name:"AppName"`
+
+	// 用户标识。
+	UserId *string `json:"UserId,omitempty" name:"UserId"`
+
+	// 匹配规则列表。
+	Rules []*KTVMatchRule `json:"Rules,omitempty" name:"Rules"`
+}
+
+func (r *DescribeKTVMatchMusicsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeKTVMatchMusicsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AppName")
+	delete(f, "UserId")
+	delete(f, "Rules")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeKTVMatchMusicsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeKTVMatchMusicsResponseParams struct {
+	// 匹配到的歌曲列表。
+	MatchMusicSet []*KTVMatchMusic `json:"MatchMusicSet,omitempty" name:"MatchMusicSet"`
+
+	// 未匹配的规则列表。
+	NotMatchRuleSet []*KTVMatchRule `json:"NotMatchRuleSet,omitempty" name:"NotMatchRuleSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeKTVMatchMusicsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeKTVMatchMusicsResponseParams `json:"Response"`
+}
+
+func (r *DescribeKTVMatchMusicsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeKTVMatchMusicsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeKTVPlaylistDetailRequestParams struct {
 	// 应用名称。
 	AppName *string `json:"AppName,omitempty" name:"AppName"`
@@ -345,6 +419,31 @@ func (r *DescribeKTVSuggestionsResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *DescribeKTVSuggestionsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type KTVMatchMusic struct {
+	// 匹配到的歌曲基础信息。
+	KTVMusicBaseInfo *KTVMusicBaseInfo `json:"KTVMusicBaseInfo,omitempty" name:"KTVMusicBaseInfo"`
+
+	// 命中规则。
+	MatchRule *KTVMatchRule `json:"MatchRule,omitempty" name:"MatchRule"`
+}
+
+type KTVMatchRule struct {
+	// AME 曲库 Id。
+	AMEMusicId *string `json:"AMEMusicId,omitempty" name:"AMEMusicId"`
+
+	// 歌曲匹配信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MusicInfo *KTVMatchRuleMusicInfo `json:"MusicInfo,omitempty" name:"MusicInfo"`
+}
+
+type KTVMatchRuleMusicInfo struct {
+	// 歌曲名称。
+	MusicName *string `json:"MusicName,omitempty" name:"MusicName"`
+
+	// 歌手列表。
+	SingerSet []*string `json:"SingerSet,omitempty" name:"SingerSet"`
 }
 
 type KTVMusicBaseInfo struct {

@@ -4263,6 +4263,49 @@ type SnapshotResult struct {
 	SnapshotStatus *uint64 `json:"SnapshotStatus,omitempty" name:"SnapshotStatus"`
 }
 
+type SyncTableField struct {
+	// TcaplusDB表字段名称
+	SourceName *string `json:"SourceName,omitempty" name:"SourceName"`
+
+	// 目标缓写表的字段名称
+	TargetName *string `json:"TargetName,omitempty" name:"TargetName"`
+}
+
+type SyncTableInfo struct {
+	// 目标缓写表的分表数目
+	TargetTableSplitNum *uint64 `json:"TargetTableSplitNum,omitempty" name:"TargetTableSplitNum"`
+
+	// 目标缓写表名前缀
+	TargetTableNamePrefix []*string `json:"TargetTableNamePrefix,omitempty" name:"TargetTableNamePrefix"`
+
+	// 缓写数据库实例ID
+	TargetSyncDBInstanceId *string `json:"TargetSyncDBInstanceId,omitempty" name:"TargetSyncDBInstanceId"`
+
+	// 缓写表所在数据库名称
+	TargetDatabaseName *string `json:"TargetDatabaseName,omitempty" name:"TargetDatabaseName"`
+
+	// 缓写状态，0：创建中，1：进行中，2：关闭，-1：被删除
+	Status *int64 `json:"Status,omitempty" name:"Status"`
+
+	// 表格所在集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 表格所在表格组ID
+	TableGroupId *uint64 `json:"TableGroupId,omitempty" name:"TableGroupId"`
+
+	// 表格名称
+	TableName *string `json:"TableName,omitempty" name:"TableName"`
+
+	// 表格ID
+	TableId *string `json:"TableId,omitempty" name:"TableId"`
+
+	// TcaplusDB表主键字段到目标缓写表字段的映射
+	KeyFieldMapping []*SyncTableField `json:"KeyFieldMapping,omitempty" name:"KeyFieldMapping"`
+
+	// TcaplusDB表字段到目标缓写表字段的映射
+	ValueFieldMapping []*SyncTableField `json:"ValueFieldMapping,omitempty" name:"ValueFieldMapping"`
+}
+
 type TableGroupInfo struct {
 	// 表格组ID
 	TableGroupId *string `json:"TableGroupId,omitempty" name:"TableGroupId"`
@@ -4392,6 +4435,10 @@ type TableInfoNew struct {
 	// 表格Txh备份文件多少天后过期删除
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TxhBackupExpireDay *uint64 `json:"TxhBackupExpireDay,omitempty" name:"TxhBackupExpireDay"`
+
+	// 表格的缓写信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SyncTableInfo *SyncTableInfo `json:"SyncTableInfo,omitempty" name:"SyncTableInfo"`
 }
 
 type TableResultNew struct {

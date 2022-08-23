@@ -768,6 +768,20 @@ type CommonNamespace struct {
 	DashboardId *string `json:"DashboardId,omitempty" name:"DashboardId"`
 }
 
+type CommonNamespaceNew struct {
+	// 命名空间标示
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 命名空间名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 监控类型
+	MonitorType *string `json:"MonitorType,omitempty" name:"MonitorType"`
+
+	// 维度信息
+	Dimensions []*DimensionNew `json:"Dimensions,omitempty" name:"Dimensions"`
+}
+
 type Condition struct {
 	// 告警通知频率
 	AlarmNotifyPeriod *int64 `json:"AlarmNotifyPeriod,omitempty" name:"AlarmNotifyPeriod"`
@@ -4183,6 +4197,10 @@ type DescribeAllNamespacesResponseParams struct {
 	// 其他告警策略类型，暂不支持
 	CustomNamespacesNew []*CommonNamespace `json:"CustomNamespacesNew,omitempty" name:"CustomNamespacesNew"`
 
+	// 通用告警策略类型(包括：应用性能监控，前端性能监控，云拨测)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CommonNamespaces []*CommonNamespaceNew `json:"CommonNamespaces,omitempty" name:"CommonNamespaces"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }
@@ -4481,6 +4499,10 @@ type DescribeBasicAlarmListResponseParams struct {
 	// 总数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Total *int64 `json:"Total,omitempty" name:"Total"`
+
+	// 备注信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Warning *string `json:"Warning,omitempty" name:"Warning"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -6248,6 +6270,10 @@ type DescribePolicyGroupListResponseParams struct {
 	// 策略组总数
 	Total *int64 `json:"Total,omitempty" name:"Total"`
 
+	// 备注信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Warning *string `json:"Warning,omitempty" name:"Warning"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }
@@ -7395,6 +7421,45 @@ type Dimension struct {
 
 	// 实例维度值
 	Value *string `json:"Value,omitempty" name:"Value"`
+}
+
+type DimensionNew struct {
+	// 维度 key 标示，后台英文名
+	Key *string `json:"Key,omitempty" name:"Key"`
+
+	// 维度 key 名称，中英文前台展示名
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 是否必选
+	IsRequired *bool `json:"IsRequired,omitempty" name:"IsRequired"`
+
+	// 支持的操作符列表
+	Operators []*Operator `json:"Operators,omitempty" name:"Operators"`
+
+	// 是否支持多选
+	IsMultiple *bool `json:"IsMultiple,omitempty" name:"IsMultiple"`
+
+	// 创建后是否可以修改
+	IsMutable *bool `json:"IsMutable,omitempty" name:"IsMutable"`
+
+	// 是否展示给用户
+	IsVisible *bool `json:"IsVisible,omitempty" name:"IsVisible"`
+
+	// 能否用来过滤策略列表
+	CanFilterPolicy *bool `json:"CanFilterPolicy,omitempty" name:"CanFilterPolicy"`
+
+	// 能否用来过滤告警历史
+	CanFilterHistory *bool `json:"CanFilterHistory,omitempty" name:"CanFilterHistory"`
+
+	// 能否作为聚合维度
+	CanGroupBy *bool `json:"CanGroupBy,omitempty" name:"CanGroupBy"`
+
+	// 是否必须作为聚合维度
+	MustGroupBy *bool `json:"MustGroupBy,omitempty" name:"MustGroupBy"`
+
+	// 前端翻译要替换的 key
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ShowValueReplace *string `json:"ShowValueReplace,omitempty" name:"ShowValueReplace"`
 }
 
 type DimensionsDesc struct {
@@ -8995,6 +9060,14 @@ type MonitorTypeNamespace struct {
 
 	// 策略类型值
 	Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
+}
+
+type Operator struct {
+	// 运算符标识
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 运算符展示名
+	Name *string `json:"Name,omitempty" name:"Name"`
 }
 
 type PeriodsSt struct {

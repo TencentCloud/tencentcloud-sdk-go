@@ -213,6 +213,9 @@ type DescribeInstancesCountRequestParams struct {
 
 	// 实例分组ID
 	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
+
+	// 游戏区域
+	GameRegion *string `json:"GameRegion,omitempty" name:"GameRegion"`
 }
 
 type DescribeInstancesCountRequest struct {
@@ -223,6 +226,9 @@ type DescribeInstancesCountRequest struct {
 
 	// 实例分组ID
 	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
+
+	// 游戏区域
+	GameRegion *string `json:"GameRegion,omitempty" name:"GameRegion"`
 }
 
 func (r *DescribeInstancesCountRequest) ToJsonString() string {
@@ -239,6 +245,7 @@ func (r *DescribeInstancesCountRequest) FromJsonString(s string) error {
 	}
 	delete(f, "GameId")
 	delete(f, "GroupId")
+	delete(f, "GameRegion")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeInstancesCountRequest has unknown keys!", "")
 	}

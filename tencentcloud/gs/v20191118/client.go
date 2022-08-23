@@ -140,7 +140,7 @@ func NewDescribeInstancesCountResponse() (response *DescribeInstancesCountRespon
 }
 
 // DescribeInstancesCount
-// 获取实例总数和运行数
+// 获取并发总数和运行数
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -151,7 +151,7 @@ func (c *Client) DescribeInstancesCount(request *DescribeInstancesCountRequest) 
 }
 
 // DescribeInstancesCount
-// 获取实例总数和运行数
+// 获取并发总数和运行数
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"

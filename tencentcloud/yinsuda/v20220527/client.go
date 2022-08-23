@@ -87,6 +87,48 @@ func (c *Client) BatchDescribeKTVMusicDetailsWithContext(ctx context.Context, re
     return
 }
 
+func NewDescribeKTVMatchMusicsRequest() (request *DescribeKTVMatchMusicsRequest) {
+    request = &DescribeKTVMatchMusicsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("yinsuda", APIVersion, "DescribeKTVMatchMusics")
+    
+    
+    return
+}
+
+func NewDescribeKTVMatchMusicsResponse() (response *DescribeKTVMatchMusicsResponse) {
+    response = &DescribeKTVMatchMusicsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeKTVMatchMusics
+// 根据输入的规则匹配曲库中的歌曲。
+func (c *Client) DescribeKTVMatchMusics(request *DescribeKTVMatchMusicsRequest) (response *DescribeKTVMatchMusicsResponse, err error) {
+    return c.DescribeKTVMatchMusicsWithContext(context.Background(), request)
+}
+
+// DescribeKTVMatchMusics
+// 根据输入的规则匹配曲库中的歌曲。
+func (c *Client) DescribeKTVMatchMusicsWithContext(ctx context.Context, request *DescribeKTVMatchMusicsRequest) (response *DescribeKTVMatchMusicsResponse, err error) {
+    if request == nil {
+        request = NewDescribeKTVMatchMusicsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeKTVMatchMusics require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeKTVMatchMusicsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeKTVPlaylistDetailRequest() (request *DescribeKTVPlaylistDetailRequest) {
     request = &DescribeKTVPlaylistDetailRequest{
         BaseRequest: &tchttp.BaseRequest{},

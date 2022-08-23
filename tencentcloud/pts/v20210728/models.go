@@ -3880,6 +3880,14 @@ type NormalLog struct {
 	Body *string `json:"Body,omitempty" name:"Body"`
 }
 
+type Notification struct {
+	// 发生事件
+	Events []*string `json:"Events,omitempty" name:"Events"`
+
+	// webhook的网址
+	URL *string `json:"URL,omitempty" name:"URL"`
+}
+
 type Project struct {
 	// 项目ID
 	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
@@ -4888,6 +4896,9 @@ type UpdateScenarioRequestParams struct {
 
 	// 域名解析配置
 	DomainNameConfig *DomainNameConfig `json:"DomainNameConfig,omitempty" name:"DomainNameConfig"`
+
+	// WebHook请求配置
+	NotificationHooks []*Notification `json:"NotificationHooks,omitempty" name:"NotificationHooks"`
 }
 
 type UpdateScenarioRequest struct {
@@ -4949,6 +4960,9 @@ type UpdateScenarioRequest struct {
 
 	// 域名解析配置
 	DomainNameConfig *DomainNameConfig `json:"DomainNameConfig,omitempty" name:"DomainNameConfig"`
+
+	// WebHook请求配置
+	NotificationHooks []*Notification `json:"NotificationHooks,omitempty" name:"NotificationHooks"`
 }
 
 func (r *UpdateScenarioRequest) ToJsonString() string {
@@ -4982,6 +4996,7 @@ func (r *UpdateScenarioRequest) FromJsonString(s string) error {
 	delete(f, "SLAPolicy")
 	delete(f, "Plugins")
 	delete(f, "DomainNameConfig")
+	delete(f, "NotificationHooks")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateScenarioRequest has unknown keys!", "")
 	}
