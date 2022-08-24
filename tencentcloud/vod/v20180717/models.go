@@ -183,6 +183,12 @@ type AdaptiveDynamicStreamingTemplate struct {
 	// 如果取值为空字符串，代表不对视频做 DRM 保护。
 	DrmType *string `json:"DrmType,omitempty" name:"DrmType"`
 
+	// DRM 的密钥提供商，取值范围：
+	// <li>SDMC：华曦达；</li>
+	// <li>VOD：云点播。</li>
+	// 默认值为 VOD 。
+	DrmKeyProvider *string `json:"DrmKeyProvider,omitempty" name:"DrmKeyProvider"`
+
 	// 自适应转码输入流参数信息，最多输入10路流。
 	StreamInfos []*AdaptiveStreamTemplate `json:"StreamInfos,omitempty" name:"StreamInfos"`
 
@@ -599,11 +605,24 @@ type AiRecognitionTaskAsrFullTextResultOutput struct {
 	// 语音全文识别片段列表文件 URL。文件的内容为 JSON，数据结构与 SegmentSet 字段一致。 （文件不会永久存储，到达SegmentSetFileUrlExpireTime 时间点后文件将被删除）。
 	SegmentSetFileUrl *string `json:"SegmentSetFileUrl,omitempty" name:"SegmentSetFileUrl"`
 
-	// 语音全文识别片段列表文件 URL 失效时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。。
+	// 语音全文识别片段列表文件 URL 失效时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
 	SegmentSetFileUrlExpireTime *string `json:"SegmentSetFileUrlExpireTime,omitempty" name:"SegmentSetFileUrlExpireTime"`
 
-	// 字幕文件 Url。
+	// 生成的字幕列表，对应 [语音全文识别任务控制参数](https://cloud.tencent.com/document/api/266/31773#AsrFullTextConfigureInfo) SubtitleFormats。
+	SubtitleSet []*AiRecognitionTaskAsrFullTextResultOutputSubtitleItem `json:"SubtitleSet,omitempty" name:"SubtitleSet"`
+
+	// 生成的字幕文件 Url，对应 [语音全文识别任务控制参数](https://cloud.tencent.com/document/api/266/31773#AsrFullTextConfigureInfo) SubtitleFormat。
 	SubtitleUrl *string `json:"SubtitleUrl,omitempty" name:"SubtitleUrl"`
+}
+
+type AiRecognitionTaskAsrFullTextResultOutputSubtitleItem struct {
+	// 字幕文件格式，取值范围：
+	// <li>vtt：WebVTT 字幕文件；</li>
+	// <li>srt：SRT 字幕文件。</li>
+	Format *string `json:"Format,omitempty" name:"Format"`
+
+	// 字幕文件 Url。
+	Url *string `json:"Url,omitempty" name:"Url"`
 }
 
 type AiRecognitionTaskAsrFullTextSegmentItem struct {
@@ -1843,8 +1862,15 @@ type AsrFullTextConfigureInfo struct {
 	// <li>OFF：关闭智能语音全文识别任务。</li>
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
 
+	// 生成的字幕文件格式列表，不填或者填空数组表示不生成字幕文件，可选值：
+	// <li>vtt：生成 WebVTT 字幕文件；</li>
+	// <li>srt：生成 SRT 字幕文件。</li>
+	SubtitleFormats []*string `json:"SubtitleFormats,omitempty" name:"SubtitleFormats"`
+
 	// 生成的字幕文件格式，不填或者填空字符串表示不生成字幕文件，可选值：
-	// <li>vtt：生成 WebVTT 字幕文件。</li>
+	// <li>vtt：生成 WebVTT 字幕文件；</li>
+	// <li>srt：生成 SRT 字幕文件。</li>
+	// <font color='red'>注意：此字段已废弃，建议使用 SubtitleFormats。</font>
 	SubtitleFormat *string `json:"SubtitleFormat,omitempty" name:"SubtitleFormat"`
 }
 
@@ -1854,8 +1880,13 @@ type AsrFullTextConfigureInfoForUpdate struct {
 	// <li>OFF：关闭智能语音全文识别任务。</li>
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
 
-	// 生成的字幕文件格式，填空字符串表示不生成字幕文件，可选值：
-	// <li>vtt：生成 WebVTT 字幕文件。</li>
+	// 字幕格式列表操作信息。
+	SubtitleFormatsOperation *SubtitleFormatsOperation `json:"SubtitleFormatsOperation,omitempty" name:"SubtitleFormatsOperation"`
+
+	// 生成的字幕文件格式，<font color='red'>填空字符串</font>表示不生成字幕文件，可选值：
+	// <li>vtt：生成 WebVTT 字幕文件；</li>
+	// <li>srt：生成 SRT 字幕文件。</li>
+	// <font color='red'>注意：此字段已废弃，建议使用 SubtitleFormatsOperation。</font>
 	SubtitleFormat *string `json:"SubtitleFormat,omitempty" name:"SubtitleFormat"`
 }
 
@@ -2934,6 +2965,12 @@ type CreateAdaptiveDynamicStreamingTemplateRequestParams struct {
 	// 如果取值为空字符串，代表不对视频做 DRM 保护。
 	DrmType *string `json:"DrmType,omitempty" name:"DrmType"`
 
+	// DRM 的密钥提供商，取值范围：
+	// <li>SDMC：华曦达；</li>
+	// <li>VOD：云点播。</li>
+	// 默认为 VOD 。
+	DrmKeyProvider *string `json:"DrmKeyProvider,omitempty" name:"DrmKeyProvider"`
+
 	// 是否禁止视频低码率转高码率，取值范围：
 	// <li>0：否，</li>
 	// <li>1：是。</li>
@@ -2975,6 +3012,12 @@ type CreateAdaptiveDynamicStreamingTemplateRequest struct {
 	// 如果取值为空字符串，代表不对视频做 DRM 保护。
 	DrmType *string `json:"DrmType,omitempty" name:"DrmType"`
 
+	// DRM 的密钥提供商，取值范围：
+	// <li>SDMC：华曦达；</li>
+	// <li>VOD：云点播。</li>
+	// 默认为 VOD 。
+	DrmKeyProvider *string `json:"DrmKeyProvider,omitempty" name:"DrmKeyProvider"`
+
 	// 是否禁止视频低码率转高码率，取值范围：
 	// <li>0：否，</li>
 	// <li>1：是。</li>
@@ -3008,6 +3051,7 @@ func (r *CreateAdaptiveDynamicStreamingTemplateRequest) FromJsonString(s string)
 	delete(f, "SubAppId")
 	delete(f, "Name")
 	delete(f, "DrmType")
+	delete(f, "DrmKeyProvider")
 	delete(f, "DisableHigherVideoBitrate")
 	delete(f, "DisableHigherVideoResolution")
 	delete(f, "Comment")
@@ -9313,7 +9357,7 @@ type DescribeTaskDetailResponseParams struct {
 	// <li>WechatMiniProgramPublish：微信小程序视频发布任务；</li>
 	// <li>PullUpload：拉取上传媒体文件任务；</li>
 	// <li>FastClipMedia：快速剪辑任务；</li>
-	// <li>ReduceMediaBitrate：降码率任务。</li>
+	// <li>RemoveWatermarkTask：智能去除水印任务。</li>
 	TaskType *string `json:"TaskType,omitempty" name:"TaskType"`
 
 	// 任务状态，取值：
@@ -9378,6 +9422,10 @@ type DescribeTaskDetailResponseParams struct {
 	// 视频指定时间点截图任务信息，仅当 TaskType 为 SnapshotByTimeOffset，该字段有值。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SnapshotByTimeOffsetTask *SnapshotByTimeOffsetTask2017 `json:"SnapshotByTimeOffsetTask,omitempty" name:"SnapshotByTimeOffsetTask"`
+
+	// 智能去除水印任务信息，仅当 TaskType 为 RemoveWatermark，该字段有值。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RemoveWatermarkTask *RemoveWatermarkTask `json:"RemoveWatermarkTask,omitempty" name:"RemoveWatermarkTask"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -10342,6 +10390,10 @@ type EventContent struct {
 	// 微信小程序发布任务完成事件，当事件类型为 WechatMiniProgramPublishComplete 时有效。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	WechatMiniProgramPublishCompleteEvent *WechatMiniProgramPublishTask `json:"WechatMiniProgramPublishCompleteEvent,omitempty" name:"WechatMiniProgramPublishCompleteEvent"`
+
+	// 智能去除水印任务完成事件，当事件类型为 RemoveWatermark 有效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RemoveWatermarkCompleteEvent *RemoveWatermarkTask `json:"RemoveWatermarkCompleteEvent,omitempty" name:"RemoveWatermarkCompleteEvent"`
 
 	// 视频取回完成事件，当事件类型为RestoreMediaComplete 时有效。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -12025,6 +12077,10 @@ type MediaSourceData struct {
 
 	// 用户创建文件时透传的字段
 	SourceContext *string `json:"SourceContext,omitempty" name:"SourceContext"`
+
+	// TRTC 伴生录制信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TrtcRecordInfo *TrtcRecordInfo `json:"TrtcRecordInfo,omitempty" name:"TrtcRecordInfo"`
 }
 
 type MediaSubtitleInfo struct {
@@ -16419,6 +16475,19 @@ func (r *RefreshUrlCacheResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type RemoveWaterMarkTaskInput struct {
+	// 媒体文件 ID。
+	FileId *string `json:"FileId,omitempty" name:"FileId"`
+}
+
+type RemoveWaterMarkTaskOutput struct {
+	// 视频 ID。
+	FileId *string `json:"FileId,omitempty" name:"FileId"`
+
+	// 元信息。包括大小、时长、视频流信息、音频流信息等。
+	MetaData *MediaMetaData `json:"MetaData,omitempty" name:"MetaData"`
+}
+
 // Predefined struct for user
 type RemoveWatermarkRequestParams struct {
 	// 媒体文件 ID 。
@@ -16509,6 +16578,42 @@ func (r *RemoveWatermarkResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *RemoveWatermarkResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type RemoveWatermarkTask struct {
+	// 任务 ID 。
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 任务流状态，取值：
+	// <li>PROCESSING：处理中；</li>
+	// <li>FINISH：已完成。</li>
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/266/50368#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+	ErrCodeExt *string `json:"ErrCodeExt,omitempty" name:"ErrCodeExt"`
+
+	// 错误码，0 表示成功，其他值表示失败：
+	// <li>40000：输入参数不合法，请检查输入参数；</li>
+	// <li>60000：源文件错误（如视频数据损坏），请确认源文件是否正常；</li>
+	// <li>70000：内部服务错误，建议重试。</li>
+	ErrCode *int64 `json:"ErrCode,omitempty" name:"ErrCode"`
+
+	// 错误信息。
+	Message *string `json:"Message,omitempty" name:"Message"`
+
+	// 智能去除水印任务的输入。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Input *RemoveWaterMarkTaskInput `json:"Input,omitempty" name:"Input"`
+
+	// 智能去除水印任务的输出。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Output *RemoveWaterMarkTaskOutput `json:"Output,omitempty" name:"Output"`
+
+	// 用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
+	SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
+
+	// 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。
+	SessionContext *string `json:"SessionContext,omitempty" name:"SessionContext"`
 }
 
 // Predefined struct for user
@@ -17791,6 +17896,19 @@ type SubAppIdInfo struct {
 	Name *string `json:"Name,omitempty" name:"Name"`
 }
 
+type SubtitleFormatsOperation struct {
+	// 操作类型，取值范围：
+	// <li>add：添加 Formats 指定的格式列表；</li>
+	// <li>delete：删除 Formats 指定的格式列表；<l/i>
+	// <li>reset：将已配置的格式列表重置为  Formats 指定的格式列表。</li>
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 字幕格式列表，取值范围：
+	// <li>vtt：生成 WebVTT 字幕文件；</li>
+	// <li>srt：生成 SRT 字幕文件。</li>
+	Formats []*string `json:"Formats,omitempty" name:"Formats"`
+}
+
 type SvgWatermarkInput struct {
 	// 水印的宽度，支持 px，%，W%，H%，S%，L% 六种格式：
 	// <li>当字符串以 px 结尾，表示水印 Width 单位为像素，如 100px 表示 Width 为 100 像素；当填 0px 且
@@ -18363,6 +18481,20 @@ type TransitionOpertion struct {
 	// </li>
 	// </ul>
 	Type *string `json:"Type,omitempty" name:"Type"`
+}
+
+type TrtcRecordInfo struct {
+	// TRTC 应用 ID。
+	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// TRTC 房间 ID。
+	RoomId *string `json:"RoomId,omitempty" name:"RoomId"`
+
+	// 录制任务 ID。
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 参与录制的用户 ID 列表。
+	UserIds []*string `json:"UserIds,omitempty" name:"UserIds"`
 }
 
 type UrlSignatureAuthPolicy struct {

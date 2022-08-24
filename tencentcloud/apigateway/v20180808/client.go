@@ -4519,6 +4519,78 @@ func (c *Client) GenerateApiDocumentWithContext(ctx context.Context, request *Ge
     return
 }
 
+func NewImportOpenApiRequest() (request *ImportOpenApiRequest) {
+    request = &ImportOpenApiRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("apigateway", APIVersion, "ImportOpenApi")
+    
+    
+    return
+}
+
+func NewImportOpenApiResponse() (response *ImportOpenApiResponse) {
+    response = &ImportOpenApiResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ImportOpenApi
+// 本接口（ImportOpenApi）用于将OpenAPI规范定义的API导入到API网关。 
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_APIERROR = "FailedOperation.ApiError"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_OSSEXCEPTION = "InternalError.OssException"
+//  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDSERVICECONFIG = "InvalidParameterValue.InvalidServiceConfig"
+//  INVALIDPARAMETERVALUE_UNSUPPORTEDPARAMETER = "InvalidParameterValue.UnsupportedParameter"
+//  LIMITEXCEEDED_APICOUNTLIMITEXCEEDED = "LimitExceeded.ApiCountLimitExceeded"
+//  MISSINGPARAMETER_BACKENDSPECIFICPARAM = "MissingParameter.BackendSpecificParam"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION_ACCESSRESOURCE = "UnauthorizedOperation.AccessResource"
+//  UNSUPPORTEDOPERATION_INVALIDACTION = "UnsupportedOperation.InvalidAction"
+func (c *Client) ImportOpenApi(request *ImportOpenApiRequest) (response *ImportOpenApiResponse, err error) {
+    return c.ImportOpenApiWithContext(context.Background(), request)
+}
+
+// ImportOpenApi
+// 本接口（ImportOpenApi）用于将OpenAPI规范定义的API导入到API网关。 
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_APIERROR = "FailedOperation.ApiError"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_OSSEXCEPTION = "InternalError.OssException"
+//  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDSERVICECONFIG = "InvalidParameterValue.InvalidServiceConfig"
+//  INVALIDPARAMETERVALUE_UNSUPPORTEDPARAMETER = "InvalidParameterValue.UnsupportedParameter"
+//  LIMITEXCEEDED_APICOUNTLIMITEXCEEDED = "LimitExceeded.ApiCountLimitExceeded"
+//  MISSINGPARAMETER_BACKENDSPECIFICPARAM = "MissingParameter.BackendSpecificParam"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION_ACCESSRESOURCE = "UnauthorizedOperation.AccessResource"
+//  UNSUPPORTEDOPERATION_INVALIDACTION = "UnsupportedOperation.InvalidAction"
+func (c *Client) ImportOpenApiWithContext(ctx context.Context, request *ImportOpenApiRequest) (response *ImportOpenApiResponse, err error) {
+    if request == nil {
+        request = NewImportOpenApiRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ImportOpenApi require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewImportOpenApiResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyAPIDocRequest() (request *ModifyAPIDocRequest) {
     request = &ModifyAPIDocRequest{
         BaseRequest: &tchttp.BaseRequest{},

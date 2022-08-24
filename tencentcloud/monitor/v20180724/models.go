@@ -690,14 +690,14 @@ type CLSNotice struct {
 
 // Predefined struct for user
 type CleanGrafanaInstanceRequestParams struct {
-	// 实例名
+	// 实例 ID
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 }
 
 type CleanGrafanaInstanceRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例名
+	// 实例 ID
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 }
 
@@ -1388,7 +1388,7 @@ func (r *CreateGrafanaInstanceResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateGrafanaIntegrationRequestParams struct {
-	// 实例名
+	// 实例 ID
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
 	// 类型
@@ -1401,7 +1401,7 @@ type CreateGrafanaIntegrationRequestParams struct {
 type CreateGrafanaIntegrationRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例名
+	// 实例 ID
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
 	// 类型
@@ -1456,7 +1456,7 @@ func (r *CreateGrafanaIntegrationResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateGrafanaNotificationChannelRequestParams struct {
-	// 实例名
+	// 实例 ID
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
 	// 渠道名
@@ -1475,7 +1475,7 @@ type CreateGrafanaNotificationChannelRequestParams struct {
 type CreateGrafanaNotificationChannelRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例名
+	// 实例 ID
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
 	// 渠道名
@@ -4787,14 +4787,14 @@ func (r *DescribeConditionsTemplateListResponse) FromJsonString(s string) error 
 
 // Predefined struct for user
 type DescribeDNSConfigRequestParams struct {
-	// 实例名
+	// 实例 ID
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 }
 
 type DescribeDNSConfigRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例名
+	// 实例 ID
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 }
 
@@ -4935,14 +4935,14 @@ func (r *DescribeExporterIntegrationsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeGrafanaConfigRequestParams struct {
-	// 无
+	// 实例 ID
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 }
 
 type DescribeGrafanaConfigRequest struct {
 	*tchttp.BaseRequest
 	
-	// 无
+	// 实例 ID
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 }
 
@@ -4992,14 +4992,14 @@ func (r *DescribeGrafanaConfigResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeGrafanaEnvironmentsRequestParams struct {
-	// 实例名
+	// 实例 ID
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 }
 
 type DescribeGrafanaEnvironmentsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例名
+	// 实例 ID
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 }
 
@@ -5147,7 +5147,7 @@ func (r *DescribeGrafanaInstancesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeGrafanaIntegrationsRequestParams struct {
-	// 实例名
+	// 实例 ID
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
 	// 集成 ID
@@ -5160,7 +5160,7 @@ type DescribeGrafanaIntegrationsRequestParams struct {
 type DescribeGrafanaIntegrationsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例名
+	// 实例 ID
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
 	// 集成 ID
@@ -5218,7 +5218,7 @@ func (r *DescribeGrafanaIntegrationsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeGrafanaNotificationChannelsRequestParams struct {
-	// 实例名
+	// 实例 ID
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
 	// 偏移量
@@ -5240,7 +5240,7 @@ type DescribeGrafanaNotificationChannelsRequestParams struct {
 type DescribeGrafanaNotificationChannelsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例名
+	// 实例 ID
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
 	// 偏移量
@@ -5310,14 +5310,14 @@ func (r *DescribeGrafanaNotificationChannelsResponse) FromJsonString(s string) e
 
 // Predefined struct for user
 type DescribeGrafanaWhiteListRequestParams struct {
-	// 实例名
+	// 实例 ID
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 }
 
 type DescribeGrafanaWhiteListRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例名
+	// 实例 ID
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 }
 
@@ -10558,7 +10558,7 @@ func (r *UpdateAlertRuleStateResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type UpdateDNSConfigRequestParams struct {
-	// 实例名
+	// 实例 ID
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
 	// DNS 数组
@@ -10568,7 +10568,7 @@ type UpdateDNSConfigRequestParams struct {
 type UpdateDNSConfigRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例名
+	// 实例 ID
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
 	// DNS 数组
@@ -10707,7 +10707,7 @@ func (r *UpdateExporterIntegrationResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type UpdateGrafanaConfigRequestParams struct {
-	// 无
+	// 实例 ID
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
 	// JSON 编码后的字符串
@@ -10717,7 +10717,7 @@ type UpdateGrafanaConfigRequestParams struct {
 type UpdateGrafanaConfigRequest struct {
 	*tchttp.BaseRequest
 	
-	// 无
+	// 实例 ID
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
 	// JSON 编码后的字符串
@@ -10768,7 +10768,7 @@ func (r *UpdateGrafanaConfigResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type UpdateGrafanaEnvironmentsRequestParams struct {
-	// 实例名
+	// 实例 ID
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
 	// 环境变量字符串
@@ -10778,7 +10778,7 @@ type UpdateGrafanaEnvironmentsRequestParams struct {
 type UpdateGrafanaEnvironmentsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例名
+	// 实例 ID
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
 	// 环境变量字符串
@@ -10907,7 +10907,7 @@ type UpdateGrafanaNotificationChannelRequestParams struct {
 	// 通道 ID
 	ChannelId *string `json:"ChannelId,omitempty" name:"ChannelId"`
 
-	// 实例名
+	// 实例 ID
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
 	// 渠道名
@@ -10926,7 +10926,7 @@ type UpdateGrafanaNotificationChannelRequest struct {
 	// 通道 ID
 	ChannelId *string `json:"ChannelId,omitempty" name:"ChannelId"`
 
-	// 实例名
+	// 实例 ID
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
 	// 渠道名
@@ -11551,7 +11551,7 @@ func (r *UpgradeGrafanaDashboardResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type UpgradeGrafanaInstanceRequestParams struct {
-	// 实例名
+	// 实例 ID
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
 	// 版本别名
@@ -11561,7 +11561,7 @@ type UpgradeGrafanaInstanceRequestParams struct {
 type UpgradeGrafanaInstanceRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例名
+	// 实例 ID
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
 	// 版本别名

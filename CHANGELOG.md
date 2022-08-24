@@ -1,3 +1,222 @@
+# Release v1.0.481
+
+## 应用合规平台(acp) 版本：2022-01-05
+
+### 第 4 次发布
+
+发布时间：2022-08-24 06:06:48
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeResourceUsageInfo](https://cloud.tencent.com/document/api/1553/75518)
+
+	* 新增入参：Source
+
+* [DescribeScanTaskReportUrl](https://cloud.tencent.com/document/api/1553/75162)
+
+	* 新增出参：ReportResult
+
+
+
+
+## API网关(apigateway) 版本：2018-08-08
+
+### 第 32 次发布
+
+发布时间：2022-08-24 06:08:44
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [ImportOpenApi](https://cloud.tencent.com/document/api/628/79383)
+
+新增数据结构：
+
+* [CreateApiRspSet](https://cloud.tencent.com/document/api/628/45244#CreateApiRspSet)
+
+
+
+## 日志服务(cls) 版本：2020-10-16
+
+### 第 29 次发布
+
+发布时间：2022-08-24 06:18:24
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateShipper](https://cloud.tencent.com/document/api/614/58747)
+
+	* 新增入参：FilenameMode
+
+* [ModifyShipper](https://cloud.tencent.com/document/api/614/58743)
+
+	* 新增入参：FilenameMode
+
+
+
+
+## 多媒体创作引擎(cme) 版本：2019-10-29
+
+### 第 51 次发布
+
+发布时间：2022-08-24 06:19:05
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [MediaCastDestinationInfo](https://cloud.tencent.com/document/api/1156/40360#MediaCastDestinationInfo)
+* [MediaCastDestinationInterruptInfo](https://cloud.tencent.com/document/api/1156/40360#MediaCastDestinationInterruptInfo)
+* [MediaCastOutputMediaSetting](https://cloud.tencent.com/document/api/1156/40360#MediaCastOutputMediaSetting)
+* [MediaCastPlaySetting](https://cloud.tencent.com/document/api/1156/40360#MediaCastPlaySetting)
+* [MediaCastProjectInfo](https://cloud.tencent.com/document/api/1156/40360#MediaCastProjectInfo)
+* [MediaCastSourceInfo](https://cloud.tencent.com/document/api/1156/40360#MediaCastSourceInfo)
+* [MediaCastSourceInterruptInfo](https://cloud.tencent.com/document/api/1156/40360#MediaCastSourceInterruptInfo)
+* [MediaCastVideoSetting](https://cloud.tencent.com/document/api/1156/40360#MediaCastVideoSetting)
+* [ProjectMediaCastStatusChangedEvent](https://cloud.tencent.com/document/api/1156/40360#ProjectMediaCastStatusChangedEvent)
+
+修改数据结构：
+
+* [EventContent](https://cloud.tencent.com/document/api/1156/40360#EventContent)
+
+	* 新增成员：ProjectMediaCastStatusChangedEvent
+
+* [ProjectInfo](https://cloud.tencent.com/document/api/1156/40360#ProjectInfo)
+
+	* 新增成员：MediaCastProjectInfo
+
+
+
+
+## 腾讯云微服务引擎(tse) 版本：2020-12-07
+
+### 第 26 次发布
+
+发布时间：2022-08-24 06:56:05
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [DescribeInstanceRegionInfo](https://cloud.tencent.com/document/api/1364/54942#DescribeInstanceRegionInfo)
+
+修改数据结构：
+
+* [SREInstance](https://cloud.tencent.com/document/api/1364/54942#SREInstance)
+
+	* 新增成员：RegionInfos
+
+
+
+
+## 云点播(vod) 版本：2018-07-17
+
+### 第 115 次发布
+
+发布时间：2022-08-24 06:58:00
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateAdaptiveDynamicStreamingTemplate](https://cloud.tencent.com/document/api/266/43068)
+
+	* 新增入参：DrmKeyProvider
+
+* [DescribeTaskDetail](https://cloud.tencent.com/document/api/266/33431)
+
+	* 新增出参：RemoveWatermarkTask
+
+
+新增数据结构：
+
+* [AiRecognitionTaskAsrFullTextResultOutputSubtitleItem](https://cloud.tencent.com/document/api/266/31773#AiRecognitionTaskAsrFullTextResultOutputSubtitleItem)
+* [RemoveWaterMarkTaskInput](https://cloud.tencent.com/document/api/266/31773#RemoveWaterMarkTaskInput)
+* [RemoveWaterMarkTaskOutput](https://cloud.tencent.com/document/api/266/31773#RemoveWaterMarkTaskOutput)
+* [RemoveWatermarkTask](https://cloud.tencent.com/document/api/266/31773#RemoveWatermarkTask)
+* [SubtitleFormatsOperation](https://cloud.tencent.com/document/api/266/31773#SubtitleFormatsOperation)
+* [TrtcRecordInfo](https://cloud.tencent.com/document/api/266/31773#TrtcRecordInfo)
+
+修改数据结构：
+
+* [AdaptiveDynamicStreamingTemplate](https://cloud.tencent.com/document/api/266/31773#AdaptiveDynamicStreamingTemplate)
+
+	* 新增成员：DrmKeyProvider
+
+* [AiRecognitionTaskAsrFullTextResultOutput](https://cloud.tencent.com/document/api/266/31773#AiRecognitionTaskAsrFullTextResultOutput)
+
+	* 新增成员：SubtitleSet
+
+* [AsrFullTextConfigureInfo](https://cloud.tencent.com/document/api/266/31773#AsrFullTextConfigureInfo)
+
+	* 新增成员：SubtitleFormats
+
+* [AsrFullTextConfigureInfoForUpdate](https://cloud.tencent.com/document/api/266/31773#AsrFullTextConfigureInfoForUpdate)
+
+	* 新增成员：SubtitleFormatsOperation
+
+* [EventContent](https://cloud.tencent.com/document/api/266/31773#EventContent)
+
+	* 新增成员：RemoveWatermarkCompleteEvent
+
+* [MediaSourceData](https://cloud.tencent.com/document/api/266/31773#MediaSourceData)
+
+	* 新增成员：TrtcRecordInfo
+
+
+
+
+## 音速达直播音乐版权引擎(yinsuda) 版本：2022-05-27
+
+### 第 6 次发布
+
+发布时间：2022-08-24 07:02:00
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateKTVRobot](https://cloud.tencent.com/document/api/1592/79388)
+* [DescribeKTVRobots](https://cloud.tencent.com/document/api/1592/79387)
+* [DestroyKTVRobot](https://cloud.tencent.com/document/api/1592/79386)
+* [SyncKTVRobotCommand](https://cloud.tencent.com/document/api/1592/79385)
+
+新增数据结构：
+
+* [JoinRoomInput](https://cloud.tencent.com/document/api/1592/76191#JoinRoomInput)
+* [KTVRobotInfo](https://cloud.tencent.com/document/api/1592/76191#KTVRobotInfo)
+* [PlayCommandInput](https://cloud.tencent.com/document/api/1592/76191#PlayCommandInput)
+* [SeekCommandInput](https://cloud.tencent.com/document/api/1592/76191#SeekCommandInput)
+* [SendMessageCommandInput](https://cloud.tencent.com/document/api/1592/76191#SendMessageCommandInput)
+* [SetAudioParamCommandInput](https://cloud.tencent.com/document/api/1592/76191#SetAudioParamCommandInput)
+* [SetDestroyModeCommandInput](https://cloud.tencent.com/document/api/1592/76191#SetDestroyModeCommandInput)
+* [SetPlayModeCommandInput](https://cloud.tencent.com/document/api/1592/76191#SetPlayModeCommandInput)
+* [SetPlaylistCommandInput](https://cloud.tencent.com/document/api/1592/76191#SetPlaylistCommandInput)
+* [SyncRobotCommand](https://cloud.tencent.com/document/api/1592/76191#SyncRobotCommand)
+* [TRTCJoinRoomInput](https://cloud.tencent.com/document/api/1592/76191#TRTCJoinRoomInput)
+* [TimeRange](https://cloud.tencent.com/document/api/1592/76191#TimeRange)
+
+
+
 # Release v1.0.480
 
 ## 消息队列 Ckafka(ckafka) 版本：2019-08-19

@@ -101,7 +101,7 @@ type AppTaskData struct {
 
 // Predefined struct for user
 type CreateAppScanTaskRepeatRequestParams struct {
-	// 任务来源, 0:小程序诊断, 1:预留字段(暂未使用), 2:app诊断(android);
+	// 任务来源, 0:小程序诊断, 1:预留字段(暂未使用), 2:app诊断(android), 3:app漏洞扫描;
 	Source *int64 `json:"Source,omitempty" name:"Source"`
 
 	// 应用平台, 0:android, 1:ios, 2:小程序
@@ -135,7 +135,7 @@ type CreateAppScanTaskRepeatRequestParams struct {
 type CreateAppScanTaskRepeatRequest struct {
 	*tchttp.BaseRequest
 	
-	// 任务来源, 0:小程序诊断, 1:预留字段(暂未使用), 2:app诊断(android);
+	// 任务来源, 0:小程序诊断, 1:预留字段(暂未使用), 2:app诊断(android), 3:app漏洞扫描;
 	Source *int64 `json:"Source,omitempty" name:"Source"`
 
 	// 应用平台, 0:android, 1:ios, 2:小程序
@@ -227,7 +227,7 @@ type CreateAppScanTaskRequestParams struct {
 	// 任务类型, 0:基础版, 1:专家版, 2:本地化
 	TaskType *int64 `json:"TaskType,omitempty" name:"TaskType"`
 
-	// 任务来源, 0:小程序诊断, 1:预留字段(暂未使用), 2:app诊断(android);
+	// 任务来源, 0:小程序诊断, 1:预留字段(暂未使用), 2:app诊断(android), 3:app漏洞扫描;
 	Source *int64 `json:"Source,omitempty" name:"Source"`
 
 	// 应用平台, 0:android, 1:ios, 2:小程序
@@ -282,7 +282,7 @@ type CreateAppScanTaskRequest struct {
 	// 任务类型, 0:基础版, 1:专家版, 2:本地化
 	TaskType *int64 `json:"TaskType,omitempty" name:"TaskType"`
 
-	// 任务来源, 0:小程序诊断, 1:预留字段(暂未使用), 2:app诊断(android);
+	// 任务来源, 0:小程序诊断, 1:预留字段(暂未使用), 2:app诊断(android), 3:app漏洞扫描;
 	Source *int64 `json:"Source,omitempty" name:"Source"`
 
 	// 应用平台, 0:android, 1:ios, 2:小程序
@@ -397,7 +397,7 @@ func (r *CreateAppScanTaskResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeFileTicketRequestParams struct {
-	// 任务来源, 0:小程序诊断, 1:预留字段(暂未使用), 2:app诊断(android);
+	// 任务来源, 0:小程序诊断, 1:预留字段(暂未使用), 2:app诊断(android), 3:app漏洞扫描;
 	Source *int64 `json:"Source,omitempty" name:"Source"`
 
 	// 应用平台, 0:android, 1:ios, 2:小程序
@@ -407,7 +407,7 @@ type DescribeFileTicketRequestParams struct {
 type DescribeFileTicketRequest struct {
 	*tchttp.BaseRequest
 	
-	// 任务来源, 0:小程序诊断, 1:预留字段(暂未使用), 2:app诊断(android);
+	// 任务来源, 0:小程序诊断, 1:预留字段(暂未使用), 2:app诊断(android), 3:app漏洞扫描;
 	Source *int64 `json:"Source,omitempty" name:"Source"`
 
 	// 应用平台, 0:android, 1:ios, 2:小程序
@@ -472,7 +472,7 @@ func (r *DescribeFileTicketResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeResourceUsageInfoRequestParams struct {
-	// 资源计费项名称(为空时，则根据TaskType和Platform进行查询)
+	// 资源计费项名称(为空时，则根据Source，TaskType和Platform进行查询)
 	PriceName *string `json:"PriceName,omitempty" name:"PriceName"`
 
 	// 任务类型, 0:基础版, 1:专家版
@@ -480,12 +480,15 @@ type DescribeResourceUsageInfoRequestParams struct {
 
 	// 应用平台, 0:android
 	Platform *int64 `json:"Platform,omitempty" name:"Platform"`
+
+	// 任务来源, 0:小程序诊断, 1:预留字段(暂未使用), 2:app诊断(android), 3:app漏洞扫描;
+	Source *int64 `json:"Source,omitempty" name:"Source"`
 }
 
 type DescribeResourceUsageInfoRequest struct {
 	*tchttp.BaseRequest
 	
-	// 资源计费项名称(为空时，则根据TaskType和Platform进行查询)
+	// 资源计费项名称(为空时，则根据Source，TaskType和Platform进行查询)
 	PriceName *string `json:"PriceName,omitempty" name:"PriceName"`
 
 	// 任务类型, 0:基础版, 1:专家版
@@ -493,6 +496,9 @@ type DescribeResourceUsageInfoRequest struct {
 
 	// 应用平台, 0:android
 	Platform *int64 `json:"Platform,omitempty" name:"Platform"`
+
+	// 任务来源, 0:小程序诊断, 1:预留字段(暂未使用), 2:app诊断(android), 3:app漏洞扫描;
+	Source *int64 `json:"Source,omitempty" name:"Source"`
 }
 
 func (r *DescribeResourceUsageInfoRequest) ToJsonString() string {
@@ -510,6 +516,7 @@ func (r *DescribeResourceUsageInfoRequest) FromJsonString(s string) error {
 	delete(f, "PriceName")
 	delete(f, "TaskType")
 	delete(f, "Platform")
+	delete(f, "Source")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeResourceUsageInfoRequest has unknown keys!", "")
 	}
@@ -546,7 +553,7 @@ func (r *DescribeResourceUsageInfoResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeScanTaskListRequestParams struct {
-	// 任务来源, -1:所有, 0:小程序诊断, 1:预留字段(暂未使用), 2:app诊断(android);
+	// 任务来源, -1:所有, 0:小程序诊断, 1:预留字段(暂未使用), 2:app诊断(android), 3:app漏洞扫描;
 	Source *int64 `json:"Source,omitempty" name:"Source"`
 
 	// 应用平台, 0:android, 1:ios, 2:小程序
@@ -577,7 +584,7 @@ type DescribeScanTaskListRequestParams struct {
 type DescribeScanTaskListRequest struct {
 	*tchttp.BaseRequest
 	
-	// 任务来源, -1:所有, 0:小程序诊断, 1:预留字段(暂未使用), 2:app诊断(android);
+	// 任务来源, -1:所有, 0:小程序诊断, 1:预留字段(暂未使用), 2:app诊断(android), 3:app漏洞扫描;
 	Source *int64 `json:"Source,omitempty" name:"Source"`
 
 	// 应用平台, 0:android, 1:ios, 2:小程序
@@ -666,7 +673,7 @@ func (r *DescribeScanTaskListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeScanTaskReportUrlRequestParams struct {
-	// 任务来源, 0:小程序诊断, 1:预留字段(暂未使用), 2:app诊断(android);
+	// 任务来源, 0:小程序诊断, 1:预留字段(暂未使用), 2:app诊断(android), 3:app漏洞扫描;
 	Source *int64 `json:"Source,omitempty" name:"Source"`
 
 	// 应用平台, 0:android, 1:ios, 2:小程序
@@ -685,7 +692,7 @@ type DescribeScanTaskReportUrlRequestParams struct {
 type DescribeScanTaskReportUrlRequest struct {
 	*tchttp.BaseRequest
 	
-	// 任务来源, 0:小程序诊断, 1:预留字段(暂未使用), 2:app诊断(android);
+	// 任务来源, 0:小程序诊断, 1:预留字段(暂未使用), 2:app诊断(android), 3:app漏洞扫描;
 	Source *int64 `json:"Source,omitempty" name:"Source"`
 
 	// 应用平台, 0:android, 1:ios, 2:小程序
@@ -737,6 +744,10 @@ type DescribeScanTaskReportUrlResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReportTitle *string `json:"ReportTitle,omitempty" name:"ReportTitle"`
 
+	// 诊断json结果内容
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReportResult *string `json:"ReportResult,omitempty" name:"ReportResult"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }
@@ -759,7 +770,7 @@ func (r *DescribeScanTaskReportUrlResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeScanTaskStatusRequestParams struct {
-	// 任务来源, 0:小程序诊断, 1:预留字段(暂未使用), 2:app诊断(android);
+	// 任务来源, 0:小程序诊断, 1:预留字段(暂未使用), 2:app诊断(android), 3:app漏洞扫描;
 	Source *int64 `json:"Source,omitempty" name:"Source"`
 
 	// 应用平台, 0:android, 1:ios, 2:小程序
@@ -775,7 +786,7 @@ type DescribeScanTaskStatusRequestParams struct {
 type DescribeScanTaskStatusRequest struct {
 	*tchttp.BaseRequest
 	
-	// 任务来源, 0:小程序诊断, 1:预留字段(暂未使用), 2:app诊断(android);
+	// 任务来源, 0:小程序诊断, 1:预留字段(暂未使用), 2:app诊断(android), 3:app漏洞扫描;
 	Source *int64 `json:"Source,omitempty" name:"Source"`
 
 	// 应用平台, 0:android, 1:ios, 2:小程序

@@ -1479,6 +1479,9 @@ type CreateShipperRequestParams struct {
 
 	// 投递日志的内容格式配置
 	Content *ContentInfo `json:"Content,omitempty" name:"Content"`
+
+	// 投递文件命名配置，0：随机数命名，1：投递时间命名，默认0（随机数命名）
+	FilenameMode *uint64 `json:"FilenameMode,omitempty" name:"FilenameMode"`
 }
 
 type CreateShipperRequest struct {
@@ -1513,6 +1516,9 @@ type CreateShipperRequest struct {
 
 	// 投递日志的内容格式配置
 	Content *ContentInfo `json:"Content,omitempty" name:"Content"`
+
+	// 投递文件命名配置，0：随机数命名，1：投递时间命名，默认0（随机数命名）
+	FilenameMode *uint64 `json:"FilenameMode,omitempty" name:"FilenameMode"`
 }
 
 func (r *CreateShipperRequest) ToJsonString() string {
@@ -1537,6 +1543,7 @@ func (r *CreateShipperRequest) FromJsonString(s string) error {
 	delete(f, "Partition")
 	delete(f, "Compress")
 	delete(f, "Content")
+	delete(f, "FilenameMode")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateShipperRequest has unknown keys!", "")
 	}
@@ -4257,7 +4264,7 @@ type JsonInfo struct {
 	// 启用标志
 	EnableTag *bool `json:"EnableTag,omitempty" name:"EnableTag"`
 
-	// 元数据信息列表, 可选值为 __SOURCE__、__FILENAME__、__TIMESTAMP__。
+	// 元数据信息列表, 可选值为 __SOURCE__、__FILENAME__、__TIMESTAMP__、__HOSTNAME__。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MetaFields []*string `json:"MetaFields,omitempty" name:"MetaFields"`
 }
@@ -5363,6 +5370,9 @@ type ModifyShipperRequestParams struct {
 
 	// 投递日志的内容格式配置
 	Content *ContentInfo `json:"Content,omitempty" name:"Content"`
+
+	// 投递文件命名配置，0：随机数命名，1：投递时间命名，默认0（随机数命名）
+	FilenameMode *uint64 `json:"FilenameMode,omitempty" name:"FilenameMode"`
 }
 
 type ModifyShipperRequest struct {
@@ -5400,6 +5410,9 @@ type ModifyShipperRequest struct {
 
 	// 投递日志的内容格式配置
 	Content *ContentInfo `json:"Content,omitempty" name:"Content"`
+
+	// 投递文件命名配置，0：随机数命名，1：投递时间命名，默认0（随机数命名）
+	FilenameMode *uint64 `json:"FilenameMode,omitempty" name:"FilenameMode"`
 }
 
 func (r *ModifyShipperRequest) ToJsonString() string {
@@ -5425,6 +5438,7 @@ func (r *ModifyShipperRequest) FromJsonString(s string) error {
 	delete(f, "Partition")
 	delete(f, "Compress")
 	delete(f, "Content")
+	delete(f, "FilenameMode")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyShipperRequest has unknown keys!", "")
 	}
