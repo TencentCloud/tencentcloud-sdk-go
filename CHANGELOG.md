@@ -1,3 +1,207 @@
+# Release v1.0.483
+
+## 批量计算(batch) 版本：2017-03-12
+
+### 第 42 次发布
+
+发布时间：2022-08-25 06:10:07
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Docker](https://cloud.tencent.com/document/api/599/15912#Docker)
+
+	* 新增成员：MaxRetryCount, DelayOnRetry
+
+
+
+
+## 云原生数据库 TDSQL-C(cynosdb) 版本：2019-01-07
+
+### 第 23 次发布
+
+发布时间：2022-08-25 06:22:53
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [AddClusterSlaveZone](https://cloud.tencent.com/document/api/1003/79555)
+* [DescribeClusterParams](https://cloud.tencent.com/document/api/1003/79556)
+* [ModifyClusterSlaveZone](https://cloud.tencent.com/document/api/1003/79554)
+* [RemoveClusterSlaveZone](https://cloud.tencent.com/document/api/1003/79553)
+* [SwitchClusterZone](https://cloud.tencent.com/document/api/1003/79552)
+
+修改接口：
+
+* [DescribeRollbackTimeRange](https://cloud.tencent.com/document/api/1003/48092)
+
+	* 新增出参：RollbackTimeRanges
+
+
+新增数据结构：
+
+* [ParamInfo](https://cloud.tencent.com/document/api/1003/48097#ParamInfo)
+* [RollbackTimeRange](https://cloud.tencent.com/document/api/1003/48097#RollbackTimeRange)
+
+
+
+## 分布式数据库 TDSQL(dcdb) 版本：2018-04-11
+
+### 第 44 次发布
+
+发布时间：2022-08-25 06:25:03
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateDedicatedClusterDCDBInstance](https://cloud.tencent.com/document/api/557/61369)
+
+	* 新增入参：RollbackInstanceId, RollbackTime
+
+
+
+
+## 全球应用加速(gaap) 版本：2018-05-29
+
+### 第 35 次发布
+
+发布时间：2022-08-25 06:30:05
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateGlobalDomain](https://cloud.tencent.com/document/api/608/79567)
+* [CreateGlobalDomainDns](https://cloud.tencent.com/document/api/608/79566)
+* [DeleteGlobalDomain](https://cloud.tencent.com/document/api/608/79565)
+* [DeleteGlobalDomainDns](https://cloud.tencent.com/document/api/608/79564)
+* [DescribeGlobalDomainDns](https://cloud.tencent.com/document/api/608/79563)
+* [DescribeGlobalDomains](https://cloud.tencent.com/document/api/608/79562)
+* [DisableGlobalDomain](https://cloud.tencent.com/document/api/608/79561)
+* [EnableGlobalDomain](https://cloud.tencent.com/document/api/608/79560)
+* [ModifyGlobalDomainAttribute](https://cloud.tencent.com/document/api/608/79559)
+* [ModifyGlobalDomainDns](https://cloud.tencent.com/document/api/608/79558)
+
+新增数据结构：
+
+* [Domain](https://cloud.tencent.com/document/api/608/37023#Domain)
+* [GlobalDns](https://cloud.tencent.com/document/api/608/37023#GlobalDns)
+* [ProxyAccessInfo](https://cloud.tencent.com/document/api/608/37023#ProxyAccessInfo)
+
+
+
+## 小程序安全(mmps) 版本：2020-07-10
+
+### 第 7 次发布
+
+发布时间：2022-08-25 06:38:57
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeScanTaskReportUrl](https://cloud.tencent.com/document/api/1223/75156)
+
+	* 新增出参：ReportResult
+
+
+
+
+## 流计算 Oceanus(oceanus) 版本：2019-04-22
+
+### 第 24 次发布
+
+发布时间：2022-08-25 06:41:36
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeTreeResources](https://cloud.tencent.com/document/api/849/79568)
+
+
+
+## 容器镜像服务(tcr) 版本：2019-09-24
+
+### 第 43 次发布
+
+发布时间：2022-08-25 06:49:32
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateImageAccelerationService](https://cloud.tencent.com/document/api/1141/79580)
+* [CreateInstanceCustomizedDomain](https://cloud.tencent.com/document/api/1141/79579)
+* [CreateSecurityPolicies](https://cloud.tencent.com/document/api/1141/79578)
+* [CreateSignature](https://cloud.tencent.com/document/api/1141/79571)
+* [CreateSignaturePolicy](https://cloud.tencent.com/document/api/1141/79584)
+* [DeleteImageAccelerateService](https://cloud.tencent.com/document/api/1141/79577)
+* [DeleteInstanceCustomizedDomain](https://cloud.tencent.com/document/api/1141/79576)
+* [DeleteReplicationInstance](https://cloud.tencent.com/document/api/1141/79581)
+* [DeleteRepositoryTags](https://cloud.tencent.com/document/api/1141/79570)
+* [DeleteSignaturePolicy](https://cloud.tencent.com/document/api/1141/79583)
+* [DescribeGCJobs](https://cloud.tencent.com/document/api/1141/79569)
+* [DescribeImageAccelerateService](https://cloud.tencent.com/document/api/1141/79575)
+* [DescribeInstanceAll](https://cloud.tencent.com/document/api/1141/79574)
+* [DescribeInstanceAllNamespaces](https://cloud.tencent.com/document/api/1141/79582)
+* [DescribeInstanceCustomizedDomain](https://cloud.tencent.com/document/api/1141/79573)
+* [DescribeRegions](https://cloud.tencent.com/document/api/1141/79572)
+
+新增数据结构：
+
+* [CustomizedDomainInfo](https://cloud.tencent.com/document/api/1141/41603#CustomizedDomainInfo)
+* [GCJobInfo](https://cloud.tencent.com/document/api/1141/41603#GCJobInfo)
+* [Region](https://cloud.tencent.com/document/api/1141/41603#Region)
+* [Schedule](https://cloud.tencent.com/document/api/1141/41603#Schedule)
+
+
+
+## 云点播(vod) 版本：2018-07-17
+
+### 第 116 次发布
+
+发布时间：2022-08-25 06:58:49
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeDrmKeyProviderInfo](https://cloud.tencent.com/document/api/266/79586)
+* [SetDrmKeyProviderInfo](https://cloud.tencent.com/document/api/266/79585)
+
+修改接口：
+
+* [SearchMedia](https://cloud.tencent.com/document/api/266/31813)
+
+	* 新增入参：TrtcSdkAppIds, TrtcRoomIds
+
+
+新增数据结构：
+
+* [SDMCDrmKeyProviderInfo](https://cloud.tencent.com/document/api/266/31773#SDMCDrmKeyProviderInfo)
+
+
+
 # Release v1.0.482
 
 ## 批量计算(batch) 版本：2017-03-12
