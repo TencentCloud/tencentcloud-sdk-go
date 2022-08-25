@@ -1261,6 +1261,152 @@ func (r *CreateFirstLinkSessionResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateGlobalDomainDnsRequestParams struct {
+	// 域名ID
+	DomainId *string `json:"DomainId,omitempty" name:"DomainId"`
+
+	// 通道ID列表
+	ProxyIdList []*string `json:"ProxyIdList,omitempty" name:"ProxyIdList"`
+
+	// 国家ID列表
+	NationCountryInnerCodes []*string `json:"NationCountryInnerCodes,omitempty" name:"NationCountryInnerCodes"`
+}
+
+type CreateGlobalDomainDnsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 域名ID
+	DomainId *string `json:"DomainId,omitempty" name:"DomainId"`
+
+	// 通道ID列表
+	ProxyIdList []*string `json:"ProxyIdList,omitempty" name:"ProxyIdList"`
+
+	// 国家ID列表
+	NationCountryInnerCodes []*string `json:"NationCountryInnerCodes,omitempty" name:"NationCountryInnerCodes"`
+}
+
+func (r *CreateGlobalDomainDnsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateGlobalDomainDnsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DomainId")
+	delete(f, "ProxyIdList")
+	delete(f, "NationCountryInnerCodes")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateGlobalDomainDnsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateGlobalDomainDnsResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateGlobalDomainDnsResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateGlobalDomainDnsResponseParams `json:"Response"`
+}
+
+func (r *CreateGlobalDomainDnsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateGlobalDomainDnsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateGlobalDomainRequestParams struct {
+	// 域名所属项目ID
+	ProjectId *int64 `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 域名默认入口
+	DefaultValue *string `json:"DefaultValue,omitempty" name:"DefaultValue"`
+
+	// 别名
+	Alias *string `json:"Alias,omitempty" name:"Alias"`
+
+	// 标签列表
+	TagSet []*TagPair `json:"TagSet,omitempty" name:"TagSet"`
+}
+
+type CreateGlobalDomainRequest struct {
+	*tchttp.BaseRequest
+	
+	// 域名所属项目ID
+	ProjectId *int64 `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 域名默认入口
+	DefaultValue *string `json:"DefaultValue,omitempty" name:"DefaultValue"`
+
+	// 别名
+	Alias *string `json:"Alias,omitempty" name:"Alias"`
+
+	// 标签列表
+	TagSet []*TagPair `json:"TagSet,omitempty" name:"TagSet"`
+}
+
+func (r *CreateGlobalDomainRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateGlobalDomainRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProjectId")
+	delete(f, "DefaultValue")
+	delete(f, "Alias")
+	delete(f, "TagSet")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateGlobalDomainRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateGlobalDomainResponseParams struct {
+	// 域名ID
+	DomainId *string `json:"DomainId,omitempty" name:"DomainId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateGlobalDomainResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateGlobalDomainResponseParams `json:"Response"`
+}
+
+func (r *CreateGlobalDomainResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateGlobalDomainResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateHTTPListenerRequestParams struct {
 	// 监听器名称
 	ListenerName *string `json:"ListenerName,omitempty" name:"ListenerName"`
@@ -2622,6 +2768,114 @@ func (r *DeleteFirstLinkSessionResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DeleteGlobalDomainDnsRequestParams struct {
+	// 解析记录的ID
+	DnsRecordId *uint64 `json:"DnsRecordId,omitempty" name:"DnsRecordId"`
+}
+
+type DeleteGlobalDomainDnsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 解析记录的ID
+	DnsRecordId *uint64 `json:"DnsRecordId,omitempty" name:"DnsRecordId"`
+}
+
+func (r *DeleteGlobalDomainDnsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteGlobalDomainDnsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DnsRecordId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteGlobalDomainDnsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteGlobalDomainDnsResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DeleteGlobalDomainDnsResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteGlobalDomainDnsResponseParams `json:"Response"`
+}
+
+func (r *DeleteGlobalDomainDnsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteGlobalDomainDnsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteGlobalDomainRequestParams struct {
+	// 域名ID
+	DomainId *string `json:"DomainId,omitempty" name:"DomainId"`
+}
+
+type DeleteGlobalDomainRequest struct {
+	*tchttp.BaseRequest
+	
+	// 域名ID
+	DomainId *string `json:"DomainId,omitempty" name:"DomainId"`
+}
+
+func (r *DeleteGlobalDomainRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteGlobalDomainRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DomainId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteGlobalDomainRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteGlobalDomainResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DeleteGlobalDomainResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteGlobalDomainResponseParams `json:"Response"`
+}
+
+func (r *DeleteGlobalDomainResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteGlobalDomainResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DeleteListenersRequestParams struct {
 	// 待删除的监听器ID列表
 	ListenerIds []*string `json:"ListenerIds,omitempty" name:"ListenerIds"`
@@ -3707,6 +3961,153 @@ func (r *DescribeFirstLinkSessionResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeFirstLinkSessionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeGlobalDomainDnsRequestParams struct {
+	// 域名ID
+	DomainId *string `json:"DomainId,omitempty" name:"DomainId"`
+}
+
+type DescribeGlobalDomainDnsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 域名ID
+	DomainId *string `json:"DomainId,omitempty" name:"DomainId"`
+}
+
+func (r *DescribeGlobalDomainDnsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeGlobalDomainDnsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DomainId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeGlobalDomainDnsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeGlobalDomainDnsResponseParams struct {
+	// DNS解析记录详细信息列表
+	GlobalDnsList []*GlobalDns `json:"GlobalDnsList,omitempty" name:"GlobalDnsList"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeGlobalDomainDnsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeGlobalDomainDnsResponseParams `json:"Response"`
+}
+
+func (r *DescribeGlobalDomainDnsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeGlobalDomainDnsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeGlobalDomainsRequestParams struct {
+	// 项目ID
+	ProjectId *int64 `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 分页偏移量
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 分页数量限制
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 过滤条件
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 标签列表，当存在该字段时，拉取对应标签下的资源列表。
+	// 最多支持5个标签，当存在两个或两个以上的标签时，满足其中任意一个标签时，域名会被拉取出来。
+	TagSet []*TagPair `json:"TagSet,omitempty" name:"TagSet"`
+}
+
+type DescribeGlobalDomainsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 项目ID
+	ProjectId *int64 `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 分页偏移量
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 分页数量限制
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 过滤条件
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 标签列表，当存在该字段时，拉取对应标签下的资源列表。
+	// 最多支持5个标签，当存在两个或两个以上的标签时，满足其中任意一个标签时，域名会被拉取出来。
+	TagSet []*TagPair `json:"TagSet,omitempty" name:"TagSet"`
+}
+
+func (r *DescribeGlobalDomainsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeGlobalDomainsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProjectId")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Filters")
+	delete(f, "TagSet")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeGlobalDomainsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeGlobalDomainsResponseParams struct {
+	// 域名信息列表
+	Domains []*Domain `json:"Domains,omitempty" name:"Domains"`
+
+	// 总记录数
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeGlobalDomainsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeGlobalDomainsResponseParams `json:"Response"`
+}
+
+func (r *DescribeGlobalDomainsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeGlobalDomainsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -6012,6 +6413,102 @@ type DeviceInfo struct {
 	Wireless *int64 `json:"Wireless,omitempty" name:"Wireless"`
 }
 
+// Predefined struct for user
+type DisableGlobalDomainRequestParams struct {
+	// 域名ID
+	DomainId *string `json:"DomainId,omitempty" name:"DomainId"`
+}
+
+type DisableGlobalDomainRequest struct {
+	*tchttp.BaseRequest
+	
+	// 域名ID
+	DomainId *string `json:"DomainId,omitempty" name:"DomainId"`
+}
+
+func (r *DisableGlobalDomainRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DisableGlobalDomainRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DomainId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DisableGlobalDomainRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DisableGlobalDomainResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DisableGlobalDomainResponse struct {
+	*tchttp.BaseResponse
+	Response *DisableGlobalDomainResponseParams `json:"Response"`
+}
+
+func (r *DisableGlobalDomainResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DisableGlobalDomainResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type Domain struct {
+	// 域名ID
+	DomainId *string `json:"DomainId,omitempty" name:"DomainId"`
+
+	// 完整域名记录
+	FullDomain *string `json:"FullDomain,omitempty" name:"FullDomain"`
+
+	// 别名
+	Alias *string `json:"Alias,omitempty" name:"Alias"`
+
+	// 类型
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 状态，1表示关闭，0表示开启，2表示关闭中，3表示开启中
+	Status *uint64 `json:"Status,omitempty" name:"Status"`
+
+	// 所属项目
+	ProjectId *int64 `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 默认入口
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DefaultValue *string `json:"DefaultValue,omitempty" name:"DefaultValue"`
+
+	// 通道数量
+	ProxyCount *uint64 `json:"ProxyCount,omitempty" name:"ProxyCount"`
+
+	// 创建时间，使用UNIX时间戳
+	CreateTime *uint64 `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 更新时间，使用UNIX时间戳
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateTime *uint64 `json:"UpdateTime,omitempty" name:"UpdateTime"`
+
+	// 标签列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TagSet []*TagPair `json:"TagSet,omitempty" name:"TagSet"`
+
+	// 封禁解封状态：BANNED表示已封禁，RECOVER表示已解封或未封禁，BANNING表示封禁中，RECOVERING表示解封中，BAN_FAILED表示封禁失败，RECOVER_FAILED表示解封失败。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BanStatus *string `json:"BanStatus,omitempty" name:"BanStatus"`
+}
+
 type DomainAccessRegionDict struct {
 	// 就近接入区域
 	NationCountryInnerList []*NationCountryInnerInfo `json:"NationCountryInnerList,omitempty" name:"NationCountryInnerList"`
@@ -6161,12 +6658,80 @@ type DomainRuleSet struct {
 	Http3Supported *int64 `json:"Http3Supported,omitempty" name:"Http3Supported"`
 }
 
+// Predefined struct for user
+type EnableGlobalDomainRequestParams struct {
+	// 域名ID
+	DomainId *string `json:"DomainId,omitempty" name:"DomainId"`
+}
+
+type EnableGlobalDomainRequest struct {
+	*tchttp.BaseRequest
+	
+	// 域名ID
+	DomainId *string `json:"DomainId,omitempty" name:"DomainId"`
+}
+
+func (r *EnableGlobalDomainRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *EnableGlobalDomainRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DomainId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "EnableGlobalDomainRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type EnableGlobalDomainResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type EnableGlobalDomainResponse struct {
+	*tchttp.BaseResponse
+	Response *EnableGlobalDomainResponseParams `json:"Response"`
+}
+
+func (r *EnableGlobalDomainResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *EnableGlobalDomainResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type Filter struct {
 	// 过滤条件
 	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 过滤值
 	Values []*string `json:"Values,omitempty" name:"Values"`
+}
+
+type GlobalDns struct {
+	// 解析记录ID
+	DnsRecordId *uint64 `json:"DnsRecordId,omitempty" name:"DnsRecordId"`
+
+	// 域名就近接入地域信息列表
+	CountryAreaList []*CountryAreaMap `json:"CountryAreaList,omitempty" name:"CountryAreaList"`
+
+	// 域名解析对应的通道接入点信息列表
+	AccessList []*ProxyAccessInfo `json:"AccessList,omitempty" name:"AccessList"`
+
+	// 解析状态：1表示运行中，2表示创建中，3表示修改中，4表示删除中
+	Status *int64 `json:"Status,omitempty" name:"Status"`
 }
 
 type GroupStatisticsInfo struct {
@@ -6707,6 +7272,156 @@ func (r *ModifyDomainResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyDomainResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyGlobalDomainAttributeRequestParams struct {
+	// 域名ID
+	DomainId *string `json:"DomainId,omitempty" name:"DomainId"`
+
+	// 项目ID
+	ProjectId *uint64 `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 别名
+	Alias *string `json:"Alias,omitempty" name:"Alias"`
+
+	// 默认入口
+	DefaultValue *string `json:"DefaultValue,omitempty" name:"DefaultValue"`
+}
+
+type ModifyGlobalDomainAttributeRequest struct {
+	*tchttp.BaseRequest
+	
+	// 域名ID
+	DomainId *string `json:"DomainId,omitempty" name:"DomainId"`
+
+	// 项目ID
+	ProjectId *uint64 `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 别名
+	Alias *string `json:"Alias,omitempty" name:"Alias"`
+
+	// 默认入口
+	DefaultValue *string `json:"DefaultValue,omitempty" name:"DefaultValue"`
+}
+
+func (r *ModifyGlobalDomainAttributeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyGlobalDomainAttributeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DomainId")
+	delete(f, "ProjectId")
+	delete(f, "Alias")
+	delete(f, "DefaultValue")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyGlobalDomainAttributeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyGlobalDomainAttributeResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ModifyGlobalDomainAttributeResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyGlobalDomainAttributeResponseParams `json:"Response"`
+}
+
+func (r *ModifyGlobalDomainAttributeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyGlobalDomainAttributeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyGlobalDomainDnsRequestParams struct {
+	// 解析记录ID
+	DnsRecordId *uint64 `json:"DnsRecordId,omitempty" name:"DnsRecordId"`
+
+	// 域名ID
+	DomainId *string `json:"DomainId,omitempty" name:"DomainId"`
+
+	// 国家ID列表
+	NationCountryInnerCodes []*string `json:"NationCountryInnerCodes,omitempty" name:"NationCountryInnerCodes"`
+
+	// 通道ID列表
+	ProxyIdList []*string `json:"ProxyIdList,omitempty" name:"ProxyIdList"`
+}
+
+type ModifyGlobalDomainDnsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 解析记录ID
+	DnsRecordId *uint64 `json:"DnsRecordId,omitempty" name:"DnsRecordId"`
+
+	// 域名ID
+	DomainId *string `json:"DomainId,omitempty" name:"DomainId"`
+
+	// 国家ID列表
+	NationCountryInnerCodes []*string `json:"NationCountryInnerCodes,omitempty" name:"NationCountryInnerCodes"`
+
+	// 通道ID列表
+	ProxyIdList []*string `json:"ProxyIdList,omitempty" name:"ProxyIdList"`
+}
+
+func (r *ModifyGlobalDomainDnsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyGlobalDomainDnsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DnsRecordId")
+	delete(f, "DomainId")
+	delete(f, "NationCountryInnerCodes")
+	delete(f, "ProxyIdList")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyGlobalDomainDnsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyGlobalDomainDnsResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ModifyGlobalDomainDnsResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyGlobalDomainDnsResponseParams `json:"Response"`
+}
+
+func (r *ModifyGlobalDomainDnsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyGlobalDomainDnsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -8053,6 +8768,32 @@ func (r *OpenSecurityPolicyResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *OpenSecurityPolicyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type ProxyAccessInfo struct {
+	// 地域ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RegionId *string `json:"RegionId,omitempty" name:"RegionId"`
+
+	// 地域名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RegionName *string `json:"RegionName,omitempty" name:"RegionName"`
+
+	// 通道ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProxyId *string `json:"ProxyId,omitempty" name:"ProxyId"`
+
+	// 通道接入ip
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Vip *string `json:"Vip,omitempty" name:"Vip"`
+
+	// 三网通道VIP列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VipList []*IPDetail `json:"VipList,omitempty" name:"VipList"`
+
+	// 接入点IDC类型。ec或dc
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SourceRegionIdcType *string `json:"SourceRegionIdcType,omitempty" name:"SourceRegionIdcType"`
 }
 
 type ProxyGroupDetail struct {

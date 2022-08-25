@@ -2071,6 +2071,12 @@ type Docker struct {
 
 	// Docker Hub 可以不填，但确保具有公网访问能力。或者是 Tencent Registry 服务地址“ccr.ccs.tencentyun.com”
 	Server *string `json:"Server,omitempty" name:"Server"`
+
+	// 拉取Docker镜像重试次数。默认值：0。
+	MaxRetryCount *uint64 `json:"MaxRetryCount,omitempty" name:"MaxRetryCount"`
+
+	// 拉取Docker镜像失败时延迟时间。单位：秒。
+	DelayOnRetry *uint64 `json:"DelayOnRetry,omitempty" name:"DelayOnRetry"`
 }
 
 type EnhancedService struct {

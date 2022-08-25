@@ -1345,6 +1345,10 @@ type DescribeScanTaskReportUrlResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReportTitle *string `json:"ReportTitle,omitempty" name:"ReportTitle"`
 
+	// 诊断json结果内容
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReportResult *string `json:"ReportResult,omitempty" name:"ReportResult"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }

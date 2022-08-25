@@ -103,6 +103,93 @@ type ChorusClip struct {
 }
 
 // Predefined struct for user
+type CreateKTVRobotRequestParams struct {
+	// 应用名称。
+	AppName *string `json:"AppName,omitempty" name:"AppName"`
+
+	// 用户标识。
+	UserId *string `json:"UserId,omitempty" name:"UserId"`
+
+	// RTC厂商类型，取值有：
+	// <li>TRTC</li>
+	RTCSystem *string `json:"RTCSystem,omitempty" name:"RTCSystem"`
+
+	// 进房参数。
+	JoinRoomInput *JoinRoomInput `json:"JoinRoomInput,omitempty" name:"JoinRoomInput"`
+
+	// 创建机器人时初始化参数。
+	SyncRobotCommands []*SyncRobotCommand `json:"SyncRobotCommands,omitempty" name:"SyncRobotCommands"`
+}
+
+type CreateKTVRobotRequest struct {
+	*tchttp.BaseRequest
+	
+	// 应用名称。
+	AppName *string `json:"AppName,omitempty" name:"AppName"`
+
+	// 用户标识。
+	UserId *string `json:"UserId,omitempty" name:"UserId"`
+
+	// RTC厂商类型，取值有：
+	// <li>TRTC</li>
+	RTCSystem *string `json:"RTCSystem,omitempty" name:"RTCSystem"`
+
+	// 进房参数。
+	JoinRoomInput *JoinRoomInput `json:"JoinRoomInput,omitempty" name:"JoinRoomInput"`
+
+	// 创建机器人时初始化参数。
+	SyncRobotCommands []*SyncRobotCommand `json:"SyncRobotCommands,omitempty" name:"SyncRobotCommands"`
+}
+
+func (r *CreateKTVRobotRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateKTVRobotRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AppName")
+	delete(f, "UserId")
+	delete(f, "RTCSystem")
+	delete(f, "JoinRoomInput")
+	delete(f, "SyncRobotCommands")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateKTVRobotRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateKTVRobotResponseParams struct {
+	// 机器人Id。
+	RobotId *string `json:"RobotId,omitempty" name:"RobotId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateKTVRobotResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateKTVRobotResponseParams `json:"Response"`
+}
+
+func (r *CreateKTVRobotResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateKTVRobotResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeKTVMatchMusicsRequestParams struct {
 	// 应用名称。
 	AppName *string `json:"AppName,omitempty" name:"AppName"`
@@ -351,6 +438,116 @@ func (r *DescribeKTVPlaylistsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeKTVRobotsRequestParams struct {
+	// 应用名称。
+	AppName *string `json:"AppName,omitempty" name:"AppName"`
+
+	// 用户标识。
+	UserId *string `json:"UserId,omitempty" name:"UserId"`
+
+	// 机器人Id列表。
+	RobotIds []*string `json:"RobotIds,omitempty" name:"RobotIds"`
+
+	// 机器人状态，取值有：
+	// <li>Play：播放</li>
+	// <li>Pause：暂停</li>
+	// <li>Destroy：销毁</li>
+	Statuses []*string `json:"Statuses,omitempty" name:"Statuses"`
+
+	// 匹配创建时间在此时间段内的机器人。
+	// <li>包含所指定的头尾时间点。</li>
+	CreateTime *TimeRange `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 分页返回的起始偏移量，默认值：0。将返回第 Offset 到第 Offset+Limit-1 条。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 分页返回的起始偏移量，默认值：10。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+type DescribeKTVRobotsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 应用名称。
+	AppName *string `json:"AppName,omitempty" name:"AppName"`
+
+	// 用户标识。
+	UserId *string `json:"UserId,omitempty" name:"UserId"`
+
+	// 机器人Id列表。
+	RobotIds []*string `json:"RobotIds,omitempty" name:"RobotIds"`
+
+	// 机器人状态，取值有：
+	// <li>Play：播放</li>
+	// <li>Pause：暂停</li>
+	// <li>Destroy：销毁</li>
+	Statuses []*string `json:"Statuses,omitempty" name:"Statuses"`
+
+	// 匹配创建时间在此时间段内的机器人。
+	// <li>包含所指定的头尾时间点。</li>
+	CreateTime *TimeRange `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 分页返回的起始偏移量，默认值：0。将返回第 Offset 到第 Offset+Limit-1 条。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 分页返回的起始偏移量，默认值：10。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribeKTVRobotsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeKTVRobotsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AppName")
+	delete(f, "UserId")
+	delete(f, "RobotIds")
+	delete(f, "Statuses")
+	delete(f, "CreateTime")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeKTVRobotsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeKTVRobotsResponseParams struct {
+	// 机器人总数。
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 机器人信息集合。
+	KTVRobotInfoSet []*KTVRobotInfo `json:"KTVRobotInfoSet,omitempty" name:"KTVRobotInfoSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeKTVRobotsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeKTVRobotsResponseParams `json:"Response"`
+}
+
+func (r *DescribeKTVRobotsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeKTVRobotsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeKTVSuggestionsRequestParams struct {
 	// 应用名称。
 	AppName *string `json:"AppName,omitempty" name:"AppName"`
@@ -419,6 +616,79 @@ func (r *DescribeKTVSuggestionsResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *DescribeKTVSuggestionsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DestroyKTVRobotRequestParams struct {
+	// 应用名称。
+	AppName *string `json:"AppName,omitempty" name:"AppName"`
+
+	// 用户标识。
+	UserId *string `json:"UserId,omitempty" name:"UserId"`
+
+	// 机器人Id。
+	RobotId *string `json:"RobotId,omitempty" name:"RobotId"`
+}
+
+type DestroyKTVRobotRequest struct {
+	*tchttp.BaseRequest
+	
+	// 应用名称。
+	AppName *string `json:"AppName,omitempty" name:"AppName"`
+
+	// 用户标识。
+	UserId *string `json:"UserId,omitempty" name:"UserId"`
+
+	// 机器人Id。
+	RobotId *string `json:"RobotId,omitempty" name:"RobotId"`
+}
+
+func (r *DestroyKTVRobotRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DestroyKTVRobotRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AppName")
+	delete(f, "UserId")
+	delete(f, "RobotId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DestroyKTVRobotRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DestroyKTVRobotResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DestroyKTVRobotResponse struct {
+	*tchttp.BaseResponse
+	Response *DestroyKTVRobotResponseParams `json:"Response"`
+}
+
+func (r *DestroyKTVRobotResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DestroyKTVRobotResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type JoinRoomInput struct {
+	// TRTC进房参数
+	TRTCJoinRoomInput *TRTCJoinRoomInput `json:"TRTCJoinRoomInput,omitempty" name:"TRTCJoinRoomInput"`
 }
 
 type KTVMatchMusic struct {
@@ -508,6 +778,43 @@ type KTVPlaylistBaseInfo struct {
 	Title *string `json:"Title,omitempty" name:"Title"`
 }
 
+type KTVRobotInfo struct {
+	// 机器人Id。
+	RobotId *string `json:"RobotId,omitempty" name:"RobotId"`
+
+	// 状态，取值有：
+	// <li>Play：播放</li>
+	// <li>Pause：暂停</li>
+	// <li>Destroy：销毁</li>
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 播放列表。
+	Playlists []*string `json:"Playlists,omitempty" name:"Playlists"`
+
+	// 当前歌单索引位置。
+	CurIndex *int64 `json:"CurIndex,omitempty" name:"CurIndex"`
+
+	// 播放进度，单位：毫秒。
+	Position *uint64 `json:"Position,omitempty" name:"Position"`
+
+	// 音频参数。
+	SetAudioParamInput *SetAudioParamCommandInput `json:"SetAudioParamInput,omitempty" name:"SetAudioParamInput"`
+
+	// 进房信息。
+	JoinRoomInput *JoinRoomInput `json:"JoinRoomInput,omitempty" name:"JoinRoomInput"`
+
+	// RTC厂商类型，取值有：
+	// <li>TRTC</li>
+	RTCSystem *string `json:"RTCSystem,omitempty" name:"RTCSystem"`
+
+	// 播放模式，PlayMode取值有：
+	// <li>RepeatPlaylist：列表循环</li>
+	// <li>Order：顺序播放</li>
+	// <li>RepeatSingle：单曲循环</li>
+	// <li>Shuffle：随机播放</li>
+	SetPlayModeInput *SetPlayModeCommandInput `json:"SetPlayModeInput,omitempty" name:"SetPlayModeInput"`
+}
+
 type KTVSuggestionInfo struct {
 	// 联想词。
 	Suggestion *string `json:"Suggestion,omitempty" name:"Suggestion"`
@@ -530,6 +837,11 @@ type MusicAlbumInfo struct {
 
 	// 封面列表。
 	CoverInfoSet []*MusicAlbumCoverInfo `json:"CoverInfoSet,omitempty" name:"CoverInfoSet"`
+}
+
+type PlayCommandInput struct {
+	// 歌曲位置索引。
+	Index *int64 `json:"Index,omitempty" name:"Index"`
 }
 
 // Predefined struct for user
@@ -629,4 +941,200 @@ func (r *SearchKTVMusicsResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *SearchKTVMusicsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type SeekCommandInput struct {
+	// 播放位置，单位：毫秒。
+	Position *uint64 `json:"Position,omitempty" name:"Position"`
+}
+
+type SendMessageCommandInput struct {
+	// 自定义消息，json格式字符串。
+	Message *string `json:"Message,omitempty" name:"Message"`
+
+	// 消息重复次数，默认为 1。
+	Repeat *uint64 `json:"Repeat,omitempty" name:"Repeat"`
+}
+
+type SetAudioParamCommandInput struct {
+	// 音频类型，取值有：
+	// <li>Original：原唱</li>
+	// <li>Accompaniment：伴奏</li>
+	Type *string `json:"Type,omitempty" name:"Type"`
+}
+
+type SetDestroyModeCommandInput struct {
+	// 销毁模式，取值有：
+	// <li>Auto：房间没人时自动销毁</li>
+	// <li>Expire：房间没人时过期自动销毁</li>
+	// <li>Never：不自动销毁，需手动销毁</li>默认为：Auto。
+	DestroyMode *string `json:"DestroyMode,omitempty" name:"DestroyMode"`
+
+	// 过期销毁时间，单位：秒，当DestroyMode取Expire时必填。
+	DestroyExpireTime *int64 `json:"DestroyExpireTime,omitempty" name:"DestroyExpireTime"`
+}
+
+type SetPlayModeCommandInput struct {
+	// 播放模式，取值有：
+	// <li>RepeatPlaylist：列表循环</li>
+	// <li>Order：顺序播放</li>
+	// <li>RepeatSingle：单曲循环</li>
+	// <li>Shuffle：随机播放</li>
+	PlayMode *string `json:"PlayMode,omitempty" name:"PlayMode"`
+}
+
+type SetPlaylistCommandInput struct {
+	// 变更类型，取值有：
+	// <li>Add：添加</li>
+	// <li>Delete：删除</li>
+	// <li>ClearList：清空歌曲列表</li>
+	// <li>Move：移动歌曲</li>
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 歌单索引位置，
+	// 当 Type 取 Add 时，-1表示添加在列表最后位置，大于-1表示要添加的位置；
+	// 当 Type 取 Delete 时，表示待删除歌曲的位置；
+	// 当 Type 取 Move 时，表示待调整歌曲的位置。
+	Index *int64 `json:"Index,omitempty" name:"Index"`
+
+	// 当 Type 取 Move 时，必填，表示移动歌曲的目标位置。
+	ChangedIndex *int64 `json:"ChangedIndex,omitempty" name:"ChangedIndex"`
+
+	// 歌曲 ID 列表，当 Type 取 Add 时，必填。
+	MusicIds []*string `json:"MusicIds,omitempty" name:"MusicIds"`
+}
+
+// Predefined struct for user
+type SyncKTVRobotCommandRequestParams struct {
+	// 应用名称。
+	AppName *string `json:"AppName,omitempty" name:"AppName"`
+
+	// 用户标识。
+	UserId *string `json:"UserId,omitempty" name:"UserId"`
+
+	// 机器人Id。
+	RobotId *string `json:"RobotId,omitempty" name:"RobotId"`
+
+	// 指令及指令参数数组。
+	SyncRobotCommands []*SyncRobotCommand `json:"SyncRobotCommands,omitempty" name:"SyncRobotCommands"`
+}
+
+type SyncKTVRobotCommandRequest struct {
+	*tchttp.BaseRequest
+	
+	// 应用名称。
+	AppName *string `json:"AppName,omitempty" name:"AppName"`
+
+	// 用户标识。
+	UserId *string `json:"UserId,omitempty" name:"UserId"`
+
+	// 机器人Id。
+	RobotId *string `json:"RobotId,omitempty" name:"RobotId"`
+
+	// 指令及指令参数数组。
+	SyncRobotCommands []*SyncRobotCommand `json:"SyncRobotCommands,omitempty" name:"SyncRobotCommands"`
+}
+
+func (r *SyncKTVRobotCommandRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SyncKTVRobotCommandRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AppName")
+	delete(f, "UserId")
+	delete(f, "RobotId")
+	delete(f, "SyncRobotCommands")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SyncKTVRobotCommandRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SyncKTVRobotCommandResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type SyncKTVRobotCommandResponse struct {
+	*tchttp.BaseResponse
+	Response *SyncKTVRobotCommandResponseParams `json:"Response"`
+}
+
+func (r *SyncKTVRobotCommandResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SyncKTVRobotCommandResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type SyncRobotCommand struct {
+	// 可同时传入多个指令，顺序执行。取值有：
+	// <li>Play：播放</li>
+	// <li>Pause：暂停</li>
+	// <li>SwitchPrevious：上一首</li>
+	// <li>SwitchNext：下一首</li>
+	// <li>SetPlayMode：设置播放模式</li>
+	// <li>Seek：调整播放进度</li>
+	// <li>SetPlaylist：歌单变更</li>
+	// <li>SetAudioParam：音频参数变更</li>
+	// <li>SendMessage：发送自定义消息</li>
+	// <li>SetDestroyMode：设置销毁模式</li>
+	Command *string `json:"Command,omitempty" name:"Command"`
+
+	// 播放参数。
+	PlayCommandInput *PlayCommandInput `json:"PlayCommandInput,omitempty" name:"PlayCommandInput"`
+
+	// 播放列表变更信息，当Command取SetPlaylist时，必填。
+	SetPlaylistCommandInput *SetPlaylistCommandInput `json:"SetPlaylistCommandInput,omitempty" name:"SetPlaylistCommandInput"`
+
+	// 播放进度，当Command取Seek时，必填。
+	SeekCommandInput *SeekCommandInput `json:"SeekCommandInput,omitempty" name:"SeekCommandInput"`
+
+	// 音频参数，当Command取SetAudioParam时，必填。
+	SetAudioParamCommandInput *SetAudioParamCommandInput `json:"SetAudioParamCommandInput,omitempty" name:"SetAudioParamCommandInput"`
+
+	// 自定义消息，当Command取SendMessage时，必填。
+	SendMessageCommandInput *SendMessageCommandInput `json:"SendMessageCommandInput,omitempty" name:"SendMessageCommandInput"`
+
+	// 播放模式，当Command取SetPlayMode时，必填。
+	SetPlayModeCommandInput *SetPlayModeCommandInput `json:"SetPlayModeCommandInput,omitempty" name:"SetPlayModeCommandInput"`
+
+	// 销毁模式，当Command取SetDestroyMode时，必填。
+	SetDestroyModeCommandInput *SetDestroyModeCommandInput `json:"SetDestroyModeCommandInput,omitempty" name:"SetDestroyModeCommandInput"`
+}
+
+type TRTCJoinRoomInput struct {
+	// 签名。
+	Sign *string `json:"Sign,omitempty" name:"Sign"`
+
+	// 房间号。
+	RoomId *string `json:"RoomId,omitempty" name:"RoomId"`
+
+	// 推流应用ID。
+	SdkAppId *string `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 用户唯一标识。
+	UserId *string `json:"UserId,omitempty" name:"UserId"`
+}
+
+type TimeRange struct {
+	// <li>大于等于此时间（起始时间）。</li>
+	// <li>格式按照 ISO 8601标准表示，详见 <a href="https://cloud.tencent.com/document/product/266/11732#I" target="_blank">ISO 日期格式说明</a>。</li>
+	Before *string `json:"Before,omitempty" name:"Before"`
+
+	// <li>小于此时间（结束时间）。</li>
+	// <li>格式按照 ISO 8601标准表示，详见 <a href="https://cloud.tencent.com/document/product/266/11732#I" target="_blank">ISO 日期格式说明</a>。</li>
+	After *string `json:"After,omitempty" name:"After"`
 }

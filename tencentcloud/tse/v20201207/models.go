@@ -451,6 +451,28 @@ type DescribeCloudNativeAPIGatewayNodesResult struct {
 	NodeList []*CloudNativeAPIGatewayNode `json:"NodeList,omitempty" name:"NodeList"`
 }
 
+type DescribeInstanceRegionInfo struct {
+	// 引擎部署地域信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EngineRegion *string `json:"EngineRegion,omitempty" name:"EngineRegion"`
+
+	// 引擎在该地域的副本数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Replica *int64 `json:"Replica,omitempty" name:"Replica"`
+
+	// 引擎在该地域的规格id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SpecId *string `json:"SpecId,omitempty" name:"SpecId"`
+
+	// 内网的网络信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IntranetVpcInfos []*VpcInfo `json:"IntranetVpcInfos,omitempty" name:"IntranetVpcInfos"`
+
+	// 是否开公网
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EnableClientInternet *bool `json:"EnableClientInternet,omitempty" name:"EnableClientInternet"`
+}
+
 // Predefined struct for user
 type DescribeNacosReplicasRequestParams struct {
 	// 引擎实例ID
@@ -1175,6 +1197,10 @@ type SREInstance struct {
 	// 隔离开始时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsolateTime *string `json:"IsolateTime,omitempty" name:"IsolateTime"`
+
+	// 实例地域相关的描述信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RegionInfos []*DescribeInstanceRegionInfo `json:"RegionInfos,omitempty" name:"RegionInfos"`
 }
 
 type ServiceGovernanceInfo struct {

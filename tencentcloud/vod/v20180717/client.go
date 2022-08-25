@@ -3837,6 +3837,58 @@ func (c *Client) DescribeDrmDataKeyWithContext(ctx context.Context, request *Des
     return
 }
 
+func NewDescribeDrmKeyProviderInfoRequest() (request *DescribeDrmKeyProviderInfoRequest) {
+    request = &DescribeDrmKeyProviderInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vod", APIVersion, "DescribeDrmKeyProviderInfo")
+    
+    
+    return
+}
+
+func NewDescribeDrmKeyProviderInfoResponse() (response *DescribeDrmKeyProviderInfoResponse) {
+    response = &DescribeDrmKeyProviderInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeDrmKeyProviderInfo
+// 查询 DRM 密钥提供商信息。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INVALIDVODUSER = "FailedOperation.InvalidVodUser"
+//  INTERNALERROR = "InternalError"
+func (c *Client) DescribeDrmKeyProviderInfo(request *DescribeDrmKeyProviderInfoRequest) (response *DescribeDrmKeyProviderInfoResponse, err error) {
+    return c.DescribeDrmKeyProviderInfoWithContext(context.Background(), request)
+}
+
+// DescribeDrmKeyProviderInfo
+// 查询 DRM 密钥提供商信息。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INVALIDVODUSER = "FailedOperation.InvalidVodUser"
+//  INTERNALERROR = "InternalError"
+func (c *Client) DescribeDrmKeyProviderInfoWithContext(ctx context.Context, request *DescribeDrmKeyProviderInfoRequest) (response *DescribeDrmKeyProviderInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeDrmKeyProviderInfoRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDrmKeyProviderInfo require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDrmKeyProviderInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeEventConfigRequest() (request *DescribeEventConfigRequest) {
     request = &DescribeEventConfigRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -8736,6 +8788,10 @@ func NewSearchMediaResponse() (response *SearchMediaResponse) {
 //
 // - 指定媒体的创建时间范围筛选媒体。
 //
+// - 指定 TRTC 应用 ID 集合筛选媒体。
+//
+// - 指定 TRTC 房间 ID 集合筛选媒体。
+//
 // - （不推荐：应使用 Names、NamePrefixes 或 Descriptions 替代）指定单个文本 Text 对媒体文件名或描述信息进行模糊搜索。
 //
 // - （不推荐：应使用 SourceTypes 替代）指定单个媒体文件来源 SourceType 进行搜索。
@@ -8834,6 +8890,10 @@ func (c *Client) SearchMedia(request *SearchMediaRequest) (response *SearchMedia
 //
 // - 指定媒体的创建时间范围筛选媒体。
 //
+// - 指定 TRTC 应用 ID 集合筛选媒体。
+//
+// - 指定 TRTC 房间 ID 集合筛选媒体。
+//
 // - （不推荐：应使用 Names、NamePrefixes 或 Descriptions 替代）指定单个文本 Text 对媒体文件名或描述信息进行模糊搜索。
 //
 // - （不推荐：应使用 SourceTypes 替代）指定单个媒体文件来源 SourceType 进行搜索。
@@ -8917,6 +8977,62 @@ func (c *Client) SearchMediaWithContext(ctx context.Context, request *SearchMedi
     request.SetContext(ctx)
     
     response = NewSearchMediaResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSetDrmKeyProviderInfoRequest() (request *SetDrmKeyProviderInfoRequest) {
+    request = &SetDrmKeyProviderInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vod", APIVersion, "SetDrmKeyProviderInfo")
+    
+    
+    return
+}
+
+func NewSetDrmKeyProviderInfoResponse() (response *SetDrmKeyProviderInfoResponse) {
+    response = &SetDrmKeyProviderInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// SetDrmKeyProviderInfo
+// 设置 DRM 密钥提供商信息。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INVALIDVODUSER = "FailedOperation.InvalidVodUser"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) SetDrmKeyProviderInfo(request *SetDrmKeyProviderInfoRequest) (response *SetDrmKeyProviderInfoResponse, err error) {
+    return c.SetDrmKeyProviderInfoWithContext(context.Background(), request)
+}
+
+// SetDrmKeyProviderInfo
+// 设置 DRM 密钥提供商信息。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INVALIDVODUSER = "FailedOperation.InvalidVodUser"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) SetDrmKeyProviderInfoWithContext(ctx context.Context, request *SetDrmKeyProviderInfoRequest) (response *SetDrmKeyProviderInfoResponse, err error) {
+    if request == nil {
+        request = NewSetDrmKeyProviderInfoRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SetDrmKeyProviderInfo require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewSetDrmKeyProviderInfoResponse()
     err = c.Send(request, response)
     return
 }

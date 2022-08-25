@@ -26,6 +26,9 @@ const (
 	// 操作失败。
 	FAILEDOPERATION = "FailedOperation"
 
+	// 数据库连接失败，请检查参数是否填写正确。
+	FAILEDOPERATION_DATASOURCECONNECTIONFAILED = "FailedOperation.DataSourceConnectionFailed"
+
 	// 重复的作业名。
 	FAILEDOPERATION_DUPLICATEDJOBNAME = "FailedOperation.DuplicatedJobName"
 
@@ -82,6 +85,9 @@ const (
 
 	// 系统错误。
 	INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+
+	// 参数错误。
+	INVALIDPARAMETER = "InvalidParameter"
 
 	// AppId资源不匹配。
 	INVALIDPARAMETER_APPIDRESOURCENOTMATCH = "InvalidParameter.AppIdResourceNotMatch"

@@ -115,6 +115,62 @@ func (c *Client) ActivateInstanceWithContext(ctx context.Context, request *Activ
     return
 }
 
+func NewAddClusterSlaveZoneRequest() (request *AddClusterSlaveZoneRequest) {
+    request = &AddClusterSlaveZoneRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cynosdb", APIVersion, "AddClusterSlaveZone")
+    
+    
+    return
+}
+
+func NewAddClusterSlaveZoneResponse() (response *AddClusterSlaveZoneResponse) {
+    response = &AddClusterSlaveZoneResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// AddClusterSlaveZone
+// 增加从可用区
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  OPERATIONDENIED_CLUSTERSTATUSDENIEDERROR = "OperationDenied.ClusterStatusDeniedError"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUNDERROR = "ResourceNotFound.ClusterNotFoundError"
+func (c *Client) AddClusterSlaveZone(request *AddClusterSlaveZoneRequest) (response *AddClusterSlaveZoneResponse, err error) {
+    return c.AddClusterSlaveZoneWithContext(context.Background(), request)
+}
+
+// AddClusterSlaveZone
+// 增加从可用区
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  OPERATIONDENIED_CLUSTERSTATUSDENIEDERROR = "OperationDenied.ClusterStatusDeniedError"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUNDERROR = "ResourceNotFound.ClusterNotFoundError"
+func (c *Client) AddClusterSlaveZoneWithContext(ctx context.Context, request *AddClusterSlaveZoneRequest) (response *AddClusterSlaveZoneResponse, err error) {
+    if request == nil {
+        request = NewAddClusterSlaveZoneRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AddClusterSlaveZone require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewAddClusterSlaveZoneResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewAddInstancesRequest() (request *AddInstancesRequest) {
     request = &AddInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1181,6 +1237,72 @@ func (c *Client) DescribeClusterParamLogsWithContext(ctx context.Context, reques
     request.SetContext(ctx)
     
     response = NewDescribeClusterParamLogsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeClusterParamsRequest() (request *DescribeClusterParamsRequest) {
+    request = &DescribeClusterParamsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cynosdb", APIVersion, "DescribeClusterParams")
+    
+    
+    return
+}
+
+func NewDescribeClusterParamsResponse() (response *DescribeClusterParamsResponse) {
+    response = &DescribeClusterParamsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeClusterParams
+// 本接口（DescribeClusterParams）用于查询集群参数
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_FLOWCREATEERROR = "FailedOperation.FlowCreateError"
+//  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETERVALUE_INSTANCENOTFOUND = "InvalidParameterValue.InstanceNotFound"
+//  OPERATIONDENIED_CLUSTEROPNOTALLOWEDERROR = "OperationDenied.ClusterOpNotAllowedError"
+//  OPERATIONDENIED_SERVERLESSCLUSTERSTATUSDENIED = "OperationDenied.ServerlessClusterStatusDenied"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUNDERROR = "ResourceNotFound.ClusterNotFoundError"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DescribeClusterParams(request *DescribeClusterParamsRequest) (response *DescribeClusterParamsResponse, err error) {
+    return c.DescribeClusterParamsWithContext(context.Background(), request)
+}
+
+// DescribeClusterParams
+// 本接口（DescribeClusterParams）用于查询集群参数
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_FLOWCREATEERROR = "FailedOperation.FlowCreateError"
+//  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETERVALUE_INSTANCENOTFOUND = "InvalidParameterValue.InstanceNotFound"
+//  OPERATIONDENIED_CLUSTEROPNOTALLOWEDERROR = "OperationDenied.ClusterOpNotAllowedError"
+//  OPERATIONDENIED_SERVERLESSCLUSTERSTATUSDENIED = "OperationDenied.ServerlessClusterStatusDenied"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUNDERROR = "ResourceNotFound.ClusterNotFoundError"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) DescribeClusterParamsWithContext(ctx context.Context, request *DescribeClusterParamsRequest) (response *DescribeClusterParamsResponse, err error) {
+    if request == nil {
+        request = NewDescribeClusterParamsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeClusterParams require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeClusterParamsResponse()
     err = c.Send(request, response)
     return
 }
@@ -2711,6 +2833,60 @@ func (c *Client) ModifyClusterParamWithContext(ctx context.Context, request *Mod
     return
 }
 
+func NewModifyClusterSlaveZoneRequest() (request *ModifyClusterSlaveZoneRequest) {
+    request = &ModifyClusterSlaveZoneRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cynosdb", APIVersion, "ModifyClusterSlaveZone")
+    
+    
+    return
+}
+
+func NewModifyClusterSlaveZoneResponse() (response *ModifyClusterSlaveZoneResponse) {
+    response = &ModifyClusterSlaveZoneResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyClusterSlaveZone
+// 修改从可用区
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUNDERROR = "ResourceNotFound.ClusterNotFoundError"
+func (c *Client) ModifyClusterSlaveZone(request *ModifyClusterSlaveZoneRequest) (response *ModifyClusterSlaveZoneResponse, err error) {
+    return c.ModifyClusterSlaveZoneWithContext(context.Background(), request)
+}
+
+// ModifyClusterSlaveZone
+// 修改从可用区
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUNDERROR = "ResourceNotFound.ClusterNotFoundError"
+func (c *Client) ModifyClusterSlaveZoneWithContext(ctx context.Context, request *ModifyClusterSlaveZoneRequest) (response *ModifyClusterSlaveZoneResponse, err error) {
+    if request == nil {
+        request = NewModifyClusterSlaveZoneRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyClusterSlaveZone require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyClusterSlaveZoneResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyDBInstanceSecurityGroupsRequest() (request *ModifyDBInstanceSecurityGroupsRequest) {
     request = &ModifyDBInstanceSecurityGroupsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3079,6 +3255,60 @@ func (c *Client) PauseServerlessWithContext(ctx context.Context, request *PauseS
     return
 }
 
+func NewRemoveClusterSlaveZoneRequest() (request *RemoveClusterSlaveZoneRequest) {
+    request = &RemoveClusterSlaveZoneRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cynosdb", APIVersion, "RemoveClusterSlaveZone")
+    
+    
+    return
+}
+
+func NewRemoveClusterSlaveZoneResponse() (response *RemoveClusterSlaveZoneResponse) {
+    response = &RemoveClusterSlaveZoneResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// RemoveClusterSlaveZone
+// 删除从可用区
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
+//  OPERATIONDENIED_CLUSTERSTATUSDENIEDERROR = "OperationDenied.ClusterStatusDeniedError"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUNDERROR = "ResourceNotFound.ClusterNotFoundError"
+func (c *Client) RemoveClusterSlaveZone(request *RemoveClusterSlaveZoneRequest) (response *RemoveClusterSlaveZoneResponse, err error) {
+    return c.RemoveClusterSlaveZoneWithContext(context.Background(), request)
+}
+
+// RemoveClusterSlaveZone
+// 删除从可用区
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
+//  OPERATIONDENIED_CLUSTERSTATUSDENIEDERROR = "OperationDenied.ClusterStatusDeniedError"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUNDERROR = "ResourceNotFound.ClusterNotFoundError"
+func (c *Client) RemoveClusterSlaveZoneWithContext(ctx context.Context, request *RemoveClusterSlaveZoneRequest) (response *RemoveClusterSlaveZoneResponse, err error) {
+    if request == nil {
+        request = NewRemoveClusterSlaveZoneRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RemoveClusterSlaveZone require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewRemoveClusterSlaveZoneResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewResumeServerlessRequest() (request *ResumeServerlessRequest) {
     request = &ResumeServerlessRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3399,6 +3629,60 @@ func (c *Client) SetRenewFlagWithContext(ctx context.Context, request *SetRenewF
     request.SetContext(ctx)
     
     response = NewSetRenewFlagResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSwitchClusterZoneRequest() (request *SwitchClusterZoneRequest) {
+    request = &SwitchClusterZoneRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cynosdb", APIVersion, "SwitchClusterZone")
+    
+    
+    return
+}
+
+func NewSwitchClusterZoneResponse() (response *SwitchClusterZoneResponse) {
+    response = &SwitchClusterZoneResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// SwitchClusterZone
+// 切换到从可用区
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  OPERATIONDENIED_CLUSTERSTATUSDENIEDERROR = "OperationDenied.ClusterStatusDeniedError"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUNDERROR = "ResourceNotFound.ClusterNotFoundError"
+func (c *Client) SwitchClusterZone(request *SwitchClusterZoneRequest) (response *SwitchClusterZoneResponse, err error) {
+    return c.SwitchClusterZoneWithContext(context.Background(), request)
+}
+
+// SwitchClusterZone
+// 切换到从可用区
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  OPERATIONDENIED_CLUSTERSTATUSDENIEDERROR = "OperationDenied.ClusterStatusDeniedError"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUNDERROR = "ResourceNotFound.ClusterNotFoundError"
+func (c *Client) SwitchClusterZoneWithContext(ctx context.Context, request *SwitchClusterZoneRequest) (response *SwitchClusterZoneResponse, err error) {
+    if request == nil {
+        request = NewSwitchClusterZoneRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SwitchClusterZone require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewSwitchClusterZoneResponse()
     err = c.Send(request, response)
     return
 }

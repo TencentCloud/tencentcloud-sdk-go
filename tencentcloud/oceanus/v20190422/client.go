@@ -1357,6 +1357,66 @@ func (c *Client) DescribeTreeJobsWithContext(ctx context.Context, request *Descr
     return
 }
 
+func NewDescribeTreeResourcesRequest() (request *DescribeTreeResourcesRequest) {
+    request = &DescribeTreeResourcesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("oceanus", APIVersion, "DescribeTreeResources")
+    
+    
+    return
+}
+
+func NewDescribeTreeResourcesResponse() (response *DescribeTreeResourcesResponse) {
+    response = &DescribeTreeResourcesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeTreeResources
+// 查询树状结构资源列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DATASOURCECONNECTIONFAILED = "FailedOperation.DataSourceConnectionFailed"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION_NOPERMISSIONACCESS = "UnsupportedOperation.NoPermissionAccess"
+func (c *Client) DescribeTreeResources(request *DescribeTreeResourcesRequest) (response *DescribeTreeResourcesResponse, err error) {
+    return c.DescribeTreeResourcesWithContext(context.Background(), request)
+}
+
+// DescribeTreeResources
+// 查询树状结构资源列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DATASOURCECONNECTIONFAILED = "FailedOperation.DataSourceConnectionFailed"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION_NOPERMISSIONACCESS = "UnsupportedOperation.NoPermissionAccess"
+func (c *Client) DescribeTreeResourcesWithContext(ctx context.Context, request *DescribeTreeResourcesRequest) (response *DescribeTreeResourcesResponse, err error) {
+    if request == nil {
+        request = NewDescribeTreeResourcesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTreeResources require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTreeResourcesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyJobRequest() (request *ModifyJobRequest) {
     request = &ModifyJobRequest{
         BaseRequest: &tchttp.BaseRequest{},

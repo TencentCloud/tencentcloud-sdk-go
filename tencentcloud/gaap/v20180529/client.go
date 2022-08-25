@@ -1101,6 +1101,134 @@ func (c *Client) CreateFirstLinkSessionWithContext(ctx context.Context, request 
     return
 }
 
+func NewCreateGlobalDomainRequest() (request *CreateGlobalDomainRequest) {
+    request = &CreateGlobalDomainRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("gaap", APIVersion, "CreateGlobalDomain")
+    
+    
+    return
+}
+
+func NewCreateGlobalDomainResponse() (response *CreateGlobalDomainResponse) {
+    response = &CreateGlobalDomainResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateGlobalDomain
+// 用来创建统一域名
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_NOTENTERPRISEAUTHORIZATION = "AuthFailure.NotEnterpriseAuthorization"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TAGRESOURCESFAILED = "FailedOperation.TagResourcesFailed"
+//  FAILEDOPERATION_UNTAGRESOURCESFAILED = "FailedOperation.UnTagResourcesFailed"
+//  FAILEDOPERATION_USERNOTCONFIRMPROTOCOL = "FailedOperation.UserNotConfirmProtocol"
+//  INVALIDPARAMETERVALUE_GLOBALDOMAINHITBANBLACKLIST = "InvalidParameterValue.GlobalDomainHitBanBlacklist"
+//  LIMITEXCEEDED_DOMAIN = "LimitExceeded.Domain"
+//  LIMITEXCEEDED_TAGQUOTA = "LimitExceeded.TagQuota"
+//  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
+func (c *Client) CreateGlobalDomain(request *CreateGlobalDomainRequest) (response *CreateGlobalDomainResponse, err error) {
+    return c.CreateGlobalDomainWithContext(context.Background(), request)
+}
+
+// CreateGlobalDomain
+// 用来创建统一域名
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_NOTENTERPRISEAUTHORIZATION = "AuthFailure.NotEnterpriseAuthorization"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TAGRESOURCESFAILED = "FailedOperation.TagResourcesFailed"
+//  FAILEDOPERATION_UNTAGRESOURCESFAILED = "FailedOperation.UnTagResourcesFailed"
+//  FAILEDOPERATION_USERNOTCONFIRMPROTOCOL = "FailedOperation.UserNotConfirmProtocol"
+//  INVALIDPARAMETERVALUE_GLOBALDOMAINHITBANBLACKLIST = "InvalidParameterValue.GlobalDomainHitBanBlacklist"
+//  LIMITEXCEEDED_DOMAIN = "LimitExceeded.Domain"
+//  LIMITEXCEEDED_TAGQUOTA = "LimitExceeded.TagQuota"
+//  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
+func (c *Client) CreateGlobalDomainWithContext(ctx context.Context, request *CreateGlobalDomainRequest) (response *CreateGlobalDomainResponse, err error) {
+    if request == nil {
+        request = NewCreateGlobalDomainRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateGlobalDomain require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateGlobalDomainResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateGlobalDomainDnsRequest() (request *CreateGlobalDomainDnsRequest) {
+    request = &CreateGlobalDomainDnsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("gaap", APIVersion, "CreateGlobalDomainDns")
+    
+    
+    return
+}
+
+func NewCreateGlobalDomainDnsResponse() (response *CreateGlobalDomainDnsResponse) {
+    response = &CreateGlobalDomainDnsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateGlobalDomainDns
+// 创建域名解析记录
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_NOTENTERPRISEAUTHORIZATION = "AuthFailure.NotEnterpriseAuthorization"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_USERNOTCONFIRMPROTOCOL = "FailedOperation.UserNotConfirmProtocol"
+//  INVALIDPARAMETERVALUE_HITBANBLACKLIST = "InvalidParameterValue.HitBanBlacklist"
+//  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
+func (c *Client) CreateGlobalDomainDns(request *CreateGlobalDomainDnsRequest) (response *CreateGlobalDomainDnsResponse, err error) {
+    return c.CreateGlobalDomainDnsWithContext(context.Background(), request)
+}
+
+// CreateGlobalDomainDns
+// 创建域名解析记录
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_NOTENTERPRISEAUTHORIZATION = "AuthFailure.NotEnterpriseAuthorization"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_USERNOTCONFIRMPROTOCOL = "FailedOperation.UserNotConfirmProtocol"
+//  INVALIDPARAMETERVALUE_HITBANBLACKLIST = "InvalidParameterValue.HitBanBlacklist"
+//  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
+func (c *Client) CreateGlobalDomainDnsWithContext(ctx context.Context, request *CreateGlobalDomainDnsRequest) (response *CreateGlobalDomainDnsResponse, err error) {
+    if request == nil {
+        request = NewCreateGlobalDomainDnsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateGlobalDomainDns require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateGlobalDomainDnsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateHTTPListenerRequest() (request *CreateHTTPListenerRequest) {
     request = &CreateHTTPListenerRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2277,6 +2405,122 @@ func (c *Client) DeleteFirstLinkSessionWithContext(ctx context.Context, request 
     request.SetContext(ctx)
     
     response = NewDeleteFirstLinkSessionResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteGlobalDomainRequest() (request *DeleteGlobalDomainRequest) {
+    request = &DeleteGlobalDomainRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("gaap", APIVersion, "DeleteGlobalDomain")
+    
+    
+    return
+}
+
+func NewDeleteGlobalDomainResponse() (response *DeleteGlobalDomainResponse) {
+    response = &DeleteGlobalDomainResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteGlobalDomain
+// 删除统一域名
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_NOTENTERPRISEAUTHORIZATION = "AuthFailure.NotEnterpriseAuthorization"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION_UNTAGRESOURCESFAILED = "FailedOperation.UnTagResourcesFailed"
+//  FAILEDOPERATION_USERNOTCONFIRMPROTOCOL = "FailedOperation.UserNotConfirmProtocol"
+//  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
+func (c *Client) DeleteGlobalDomain(request *DeleteGlobalDomainRequest) (response *DeleteGlobalDomainResponse, err error) {
+    return c.DeleteGlobalDomainWithContext(context.Background(), request)
+}
+
+// DeleteGlobalDomain
+// 删除统一域名
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_NOTENTERPRISEAUTHORIZATION = "AuthFailure.NotEnterpriseAuthorization"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION_UNTAGRESOURCESFAILED = "FailedOperation.UnTagResourcesFailed"
+//  FAILEDOPERATION_USERNOTCONFIRMPROTOCOL = "FailedOperation.UserNotConfirmProtocol"
+//  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
+func (c *Client) DeleteGlobalDomainWithContext(ctx context.Context, request *DeleteGlobalDomainRequest) (response *DeleteGlobalDomainResponse, err error) {
+    if request == nil {
+        request = NewDeleteGlobalDomainRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteGlobalDomain require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteGlobalDomainResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteGlobalDomainDnsRequest() (request *DeleteGlobalDomainDnsRequest) {
+    request = &DeleteGlobalDomainDnsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("gaap", APIVersion, "DeleteGlobalDomainDns")
+    
+    
+    return
+}
+
+func NewDeleteGlobalDomainDnsResponse() (response *DeleteGlobalDomainDnsResponse) {
+    response = &DeleteGlobalDomainDnsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteGlobalDomainDns
+// 删除域名的某条解析记录
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_NOTENTERPRISEAUTHORIZATION = "AuthFailure.NotEnterpriseAuthorization"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_USERNOTCONFIRMPROTOCOL = "FailedOperation.UserNotConfirmProtocol"
+//  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
+func (c *Client) DeleteGlobalDomainDns(request *DeleteGlobalDomainDnsRequest) (response *DeleteGlobalDomainDnsResponse, err error) {
+    return c.DeleteGlobalDomainDnsWithContext(context.Background(), request)
+}
+
+// DeleteGlobalDomainDns
+// 删除域名的某条解析记录
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_NOTENTERPRISEAUTHORIZATION = "AuthFailure.NotEnterpriseAuthorization"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_USERNOTCONFIRMPROTOCOL = "FailedOperation.UserNotConfirmProtocol"
+//  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
+func (c *Client) DeleteGlobalDomainDnsWithContext(ctx context.Context, request *DeleteGlobalDomainDnsRequest) (response *DeleteGlobalDomainDnsResponse, err error) {
+    if request == nil {
+        request = NewDeleteGlobalDomainDnsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteGlobalDomainDns require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteGlobalDomainDnsResponse()
     err = c.Send(request, response)
     return
 }
@@ -3517,6 +3761,122 @@ func (c *Client) DescribeFirstLinkSessionWithContext(ctx context.Context, reques
     request.SetContext(ctx)
     
     response = NewDescribeFirstLinkSessionResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeGlobalDomainDnsRequest() (request *DescribeGlobalDomainDnsRequest) {
+    request = &DescribeGlobalDomainDnsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("gaap", APIVersion, "DescribeGlobalDomainDns")
+    
+    
+    return
+}
+
+func NewDescribeGlobalDomainDnsResponse() (response *DescribeGlobalDomainDnsResponse) {
+    response = &DescribeGlobalDomainDnsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeGlobalDomainDns
+// 查询域名解析列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_NOTENTERPRISEAUTHORIZATION = "AuthFailure.NotEnterpriseAuthorization"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_USERNOTCONFIRMPROTOCOL = "FailedOperation.UserNotConfirmProtocol"
+//  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
+func (c *Client) DescribeGlobalDomainDns(request *DescribeGlobalDomainDnsRequest) (response *DescribeGlobalDomainDnsResponse, err error) {
+    return c.DescribeGlobalDomainDnsWithContext(context.Background(), request)
+}
+
+// DescribeGlobalDomainDns
+// 查询域名解析列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_NOTENTERPRISEAUTHORIZATION = "AuthFailure.NotEnterpriseAuthorization"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_USERNOTCONFIRMPROTOCOL = "FailedOperation.UserNotConfirmProtocol"
+//  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
+func (c *Client) DescribeGlobalDomainDnsWithContext(ctx context.Context, request *DescribeGlobalDomainDnsRequest) (response *DescribeGlobalDomainDnsResponse, err error) {
+    if request == nil {
+        request = NewDescribeGlobalDomainDnsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeGlobalDomainDns require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeGlobalDomainDnsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeGlobalDomainsRequest() (request *DescribeGlobalDomainsRequest) {
+    request = &DescribeGlobalDomainsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("gaap", APIVersion, "DescribeGlobalDomains")
+    
+    
+    return
+}
+
+func NewDescribeGlobalDomainsResponse() (response *DescribeGlobalDomainsResponse) {
+    response = &DescribeGlobalDomainsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeGlobalDomains
+// 查询域名列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_NOTENTERPRISEAUTHORIZATION = "AuthFailure.NotEnterpriseAuthorization"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION_USERNOTCONFIRMPROTOCOL = "FailedOperation.UserNotConfirmProtocol"
+//  INVALIDPARAMETERVALUE_INVALIDTAGS = "InvalidParameterValue.InvalidTags"
+//  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
+func (c *Client) DescribeGlobalDomains(request *DescribeGlobalDomainsRequest) (response *DescribeGlobalDomainsResponse, err error) {
+    return c.DescribeGlobalDomainsWithContext(context.Background(), request)
+}
+
+// DescribeGlobalDomains
+// 查询域名列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_NOTENTERPRISEAUTHORIZATION = "AuthFailure.NotEnterpriseAuthorization"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION_USERNOTCONFIRMPROTOCOL = "FailedOperation.UserNotConfirmProtocol"
+//  INVALIDPARAMETERVALUE_INVALIDTAGS = "InvalidParameterValue.InvalidTags"
+//  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
+func (c *Client) DescribeGlobalDomainsWithContext(ctx context.Context, request *DescribeGlobalDomainsRequest) (response *DescribeGlobalDomainsResponse, err error) {
+    if request == nil {
+        request = NewDescribeGlobalDomainsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeGlobalDomains require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeGlobalDomainsResponse()
     err = c.Send(request, response)
     return
 }
@@ -5495,6 +5855,118 @@ func (c *Client) DestroyProxiesWithContext(ctx context.Context, request *Destroy
     return
 }
 
+func NewDisableGlobalDomainRequest() (request *DisableGlobalDomainRequest) {
+    request = &DisableGlobalDomainRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("gaap", APIVersion, "DisableGlobalDomain")
+    
+    
+    return
+}
+
+func NewDisableGlobalDomainResponse() (response *DisableGlobalDomainResponse) {
+    response = &DisableGlobalDomainResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DisableGlobalDomain
+// 暂停域名解析
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_NOTENTERPRISEAUTHORIZATION = "AuthFailure.NotEnterpriseAuthorization"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION_USERNOTCONFIRMPROTOCOL = "FailedOperation.UserNotConfirmProtocol"
+//  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
+func (c *Client) DisableGlobalDomain(request *DisableGlobalDomainRequest) (response *DisableGlobalDomainResponse, err error) {
+    return c.DisableGlobalDomainWithContext(context.Background(), request)
+}
+
+// DisableGlobalDomain
+// 暂停域名解析
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_NOTENTERPRISEAUTHORIZATION = "AuthFailure.NotEnterpriseAuthorization"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION_USERNOTCONFIRMPROTOCOL = "FailedOperation.UserNotConfirmProtocol"
+//  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
+func (c *Client) DisableGlobalDomainWithContext(ctx context.Context, request *DisableGlobalDomainRequest) (response *DisableGlobalDomainResponse, err error) {
+    if request == nil {
+        request = NewDisableGlobalDomainRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DisableGlobalDomain require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDisableGlobalDomainResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewEnableGlobalDomainRequest() (request *EnableGlobalDomainRequest) {
+    request = &EnableGlobalDomainRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("gaap", APIVersion, "EnableGlobalDomain")
+    
+    
+    return
+}
+
+func NewEnableGlobalDomainResponse() (response *EnableGlobalDomainResponse) {
+    response = &EnableGlobalDomainResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// EnableGlobalDomain
+// 开启域名解析
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_NOTENTERPRISEAUTHORIZATION = "AuthFailure.NotEnterpriseAuthorization"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION_USERNOTCONFIRMPROTOCOL = "FailedOperation.UserNotConfirmProtocol"
+//  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
+func (c *Client) EnableGlobalDomain(request *EnableGlobalDomainRequest) (response *EnableGlobalDomainResponse, err error) {
+    return c.EnableGlobalDomainWithContext(context.Background(), request)
+}
+
+// EnableGlobalDomain
+// 开启域名解析
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_NOTENTERPRISEAUTHORIZATION = "AuthFailure.NotEnterpriseAuthorization"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION_USERNOTCONFIRMPROTOCOL = "FailedOperation.UserNotConfirmProtocol"
+//  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
+func (c *Client) EnableGlobalDomainWithContext(ctx context.Context, request *EnableGlobalDomainRequest) (response *EnableGlobalDomainResponse, err error) {
+    if request == nil {
+        request = NewEnableGlobalDomainRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("EnableGlobalDomain require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewEnableGlobalDomainResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewInquiryPriceCreateProxyRequest() (request *InquiryPriceCreateProxyRequest) {
     request = &InquiryPriceCreateProxyRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -5819,6 +6291,124 @@ func (c *Client) ModifyDomainWithContext(ctx context.Context, request *ModifyDom
     request.SetContext(ctx)
     
     response = NewModifyDomainResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyGlobalDomainAttributeRequest() (request *ModifyGlobalDomainAttributeRequest) {
+    request = &ModifyGlobalDomainAttributeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("gaap", APIVersion, "ModifyGlobalDomainAttribute")
+    
+    
+    return
+}
+
+func NewModifyGlobalDomainAttributeResponse() (response *ModifyGlobalDomainAttributeResponse) {
+    response = &ModifyGlobalDomainAttributeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyGlobalDomainAttribute
+// 修改域名属性
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_NOTENTERPRISEAUTHORIZATION = "AuthFailure.NotEnterpriseAuthorization"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_USERNOTCONFIRMPROTOCOL = "FailedOperation.UserNotConfirmProtocol"
+//  INVALIDPARAMETERVALUE_GLOBALDOMAINHITBANBLACKLIST = "InvalidParameterValue.GlobalDomainHitBanBlacklist"
+//  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
+func (c *Client) ModifyGlobalDomainAttribute(request *ModifyGlobalDomainAttributeRequest) (response *ModifyGlobalDomainAttributeResponse, err error) {
+    return c.ModifyGlobalDomainAttributeWithContext(context.Background(), request)
+}
+
+// ModifyGlobalDomainAttribute
+// 修改域名属性
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_NOTENTERPRISEAUTHORIZATION = "AuthFailure.NotEnterpriseAuthorization"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_USERNOTCONFIRMPROTOCOL = "FailedOperation.UserNotConfirmProtocol"
+//  INVALIDPARAMETERVALUE_GLOBALDOMAINHITBANBLACKLIST = "InvalidParameterValue.GlobalDomainHitBanBlacklist"
+//  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
+func (c *Client) ModifyGlobalDomainAttributeWithContext(ctx context.Context, request *ModifyGlobalDomainAttributeRequest) (response *ModifyGlobalDomainAttributeResponse, err error) {
+    if request == nil {
+        request = NewModifyGlobalDomainAttributeRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyGlobalDomainAttribute require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyGlobalDomainAttributeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyGlobalDomainDnsRequest() (request *ModifyGlobalDomainDnsRequest) {
+    request = &ModifyGlobalDomainDnsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("gaap", APIVersion, "ModifyGlobalDomainDns")
+    
+    
+    return
+}
+
+func NewModifyGlobalDomainDnsResponse() (response *ModifyGlobalDomainDnsResponse) {
+    response = &ModifyGlobalDomainDnsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyGlobalDomainDns
+// 修改域名解析记录
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_NOTENTERPRISEAUTHORIZATION = "AuthFailure.NotEnterpriseAuthorization"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_USERNOTCONFIRMPROTOCOL = "FailedOperation.UserNotConfirmProtocol"
+//  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
+func (c *Client) ModifyGlobalDomainDns(request *ModifyGlobalDomainDnsRequest) (response *ModifyGlobalDomainDnsResponse, err error) {
+    return c.ModifyGlobalDomainDnsWithContext(context.Background(), request)
+}
+
+// ModifyGlobalDomainDns
+// 修改域名解析记录
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_NOTENTERPRISEAUTHORIZATION = "AuthFailure.NotEnterpriseAuthorization"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_USERNOTCONFIRMPROTOCOL = "FailedOperation.UserNotConfirmProtocol"
+//  RESOURCEUNAVAILABLE_ACCOUNTVIOLATION = "ResourceUnavailable.AccountViolation"
+func (c *Client) ModifyGlobalDomainDnsWithContext(ctx context.Context, request *ModifyGlobalDomainDnsRequest) (response *ModifyGlobalDomainDnsResponse, err error) {
+    if request == nil {
+        request = NewModifyGlobalDomainDnsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyGlobalDomainDns require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyGlobalDomainDnsResponse()
     err = c.Send(request, response)
     return
 }

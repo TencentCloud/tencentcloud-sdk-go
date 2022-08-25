@@ -1960,6 +1960,14 @@ type CreateApiRsp struct {
 	ApiName *string `json:"ApiName,omitempty" name:"ApiName"`
 }
 
+type CreateApiRspSet struct {
+	// 个数
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 返回的数组
+	ApiSet []*CreateApiRsp `json:"ApiSet,omitempty" name:"ApiSet"`
+}
+
 // Predefined struct for user
 type CreateIPStrategyRequestParams struct {
 	// 服务的唯一ID。
@@ -6857,6 +6865,84 @@ type IPStrategysStatus struct {
 	// 策略列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	StrategySet []*IPStrategy `json:"StrategySet,omitempty" name:"StrategySet"`
+}
+
+// Predefined struct for user
+type ImportOpenApiRequestParams struct {
+	// API所在的服务唯一ID。
+	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+
+	// openAPI正文内容。
+	Content *string `json:"Content,omitempty" name:"Content"`
+
+	// Content格式，只能是YAML或者JSON，默认是YAML。
+	EncodeType *string `json:"EncodeType,omitempty" name:"EncodeType"`
+
+	// Content版本，默认是openAPI，目前只支持openAPI。
+	ContentVersion *string `json:"ContentVersion,omitempty" name:"ContentVersion"`
+}
+
+type ImportOpenApiRequest struct {
+	*tchttp.BaseRequest
+	
+	// API所在的服务唯一ID。
+	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+
+	// openAPI正文内容。
+	Content *string `json:"Content,omitempty" name:"Content"`
+
+	// Content格式，只能是YAML或者JSON，默认是YAML。
+	EncodeType *string `json:"EncodeType,omitempty" name:"EncodeType"`
+
+	// Content版本，默认是openAPI，目前只支持openAPI。
+	ContentVersion *string `json:"ContentVersion,omitempty" name:"ContentVersion"`
+}
+
+func (r *ImportOpenApiRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ImportOpenApiRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ServiceId")
+	delete(f, "Content")
+	delete(f, "EncodeType")
+	delete(f, "ContentVersion")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ImportOpenApiRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ImportOpenApiResponseParams struct {
+	// 导入OpenApi返回参数。
+	Result *CreateApiRspSet `json:"Result,omitempty" name:"Result"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ImportOpenApiResponse struct {
+	*tchttp.BaseResponse
+	Response *ImportOpenApiResponseParams `json:"Response"`
+}
+
+func (r *ImportOpenApiResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ImportOpenApiResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type InstanceChargePrepaid struct {

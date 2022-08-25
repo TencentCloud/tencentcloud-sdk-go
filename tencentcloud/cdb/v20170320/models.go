@@ -1677,7 +1677,7 @@ type CreateDBInstanceHourRequestParams struct {
 	// 实例类型，默认为 master，支持值包括：master - 表示主实例，dr - 表示灾备实例，ro - 表示只读实例。
 	InstanceRole *string `json:"InstanceRole,omitempty" name:"InstanceRole"`
 
-	// 主实例的可用区信息，购买灾备实例时必填。
+	// 主实例的可用区信息，购买灾备、RO实例时必填。
 	MasterRegion *string `json:"MasterRegion,omitempty" name:"MasterRegion"`
 
 	// 自定义端口，端口支持范围：[ 1024-65535 ] 。
@@ -1728,7 +1728,7 @@ type CreateDBInstanceHourRequestParams struct {
 	// 参数模板id。
 	ParamTemplateId *int64 `json:"ParamTemplateId,omitempty" name:"ParamTemplateId"`
 
-	// 告警策略id数组。
+	// 告警策略id数组。云监控DescribeAlarmPolicy接口返回的OriginId。
 	AlarmPolicyList []*int64 `json:"AlarmPolicyList,omitempty" name:"AlarmPolicyList"`
 
 	// 实例节点数。对于 RO 和 基础版实例， 该值默认为1。 如果需要购买三节点实例， 请将该值设置为3 或指定 BackupZone 参数。当购买主实例，且未指定该参数和 BackupZone 参数时，该值默认是 2， 即购买两节点实例。
@@ -1792,7 +1792,7 @@ type CreateDBInstanceHourRequest struct {
 	// 实例类型，默认为 master，支持值包括：master - 表示主实例，dr - 表示灾备实例，ro - 表示只读实例。
 	InstanceRole *string `json:"InstanceRole,omitempty" name:"InstanceRole"`
 
-	// 主实例的可用区信息，购买灾备实例时必填。
+	// 主实例的可用区信息，购买灾备、RO实例时必填。
 	MasterRegion *string `json:"MasterRegion,omitempty" name:"MasterRegion"`
 
 	// 自定义端口，端口支持范围：[ 1024-65535 ] 。
@@ -1843,7 +1843,7 @@ type CreateDBInstanceHourRequest struct {
 	// 参数模板id。
 	ParamTemplateId *int64 `json:"ParamTemplateId,omitempty" name:"ParamTemplateId"`
 
-	// 告警策略id数组。
+	// 告警策略id数组。云监控DescribeAlarmPolicy接口返回的OriginId。
 	AlarmPolicyList []*int64 `json:"AlarmPolicyList,omitempty" name:"AlarmPolicyList"`
 
 	// 实例节点数。对于 RO 和 基础版实例， 该值默认为1。 如果需要购买三节点实例， 请将该值设置为3 或指定 BackupZone 参数。当购买主实例，且未指定该参数和 BackupZone 参数时，该值默认是 2， 即购买两节点实例。
@@ -2016,7 +2016,7 @@ type CreateDBInstanceRequestParams struct {
 	// 自动续费标记，可选值为：0 - 不自动续费；1 - 自动续费。
 	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitempty" name:"AutoRenewFlag"`
 
-	// 主实例地域信息，购买灾备实例时，该字段必填。
+	// 主实例地域信息，购买灾备、RO实例时，该字段必填。
 	MasterRegion *string `json:"MasterRegion,omitempty" name:"MasterRegion"`
 
 	// 安全组参数，可使用 [查询项目安全组信息](https://cloud.tencent.com/document/api/236/15850) 接口查询某个项目的安全组详情。
@@ -2043,7 +2043,7 @@ type CreateDBInstanceRequestParams struct {
 	// 参数模板id。
 	ParamTemplateId *int64 `json:"ParamTemplateId,omitempty" name:"ParamTemplateId"`
 
-	// 告警策略id数组。
+	// 告警策略id数组。云监控DescribeAlarmPolicy接口返回的OriginId。
 	AlarmPolicyList []*int64 `json:"AlarmPolicyList,omitempty" name:"AlarmPolicyList"`
 
 	// 实例节点数。对于 RO 和 基础版实例， 该值默认为1。 如果需要购买三节点实例， 请将该值设置为3 或指定 BackupZone 参数。当购买主实例，且未指定该参数和 BackupZone 参数时，该值默认是 2， 即购买两节点实例。
@@ -2134,7 +2134,7 @@ type CreateDBInstanceRequest struct {
 	// 自动续费标记，可选值为：0 - 不自动续费；1 - 自动续费。
 	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitempty" name:"AutoRenewFlag"`
 
-	// 主实例地域信息，购买灾备实例时，该字段必填。
+	// 主实例地域信息，购买灾备、RO实例时，该字段必填。
 	MasterRegion *string `json:"MasterRegion,omitempty" name:"MasterRegion"`
 
 	// 安全组参数，可使用 [查询项目安全组信息](https://cloud.tencent.com/document/api/236/15850) 接口查询某个项目的安全组详情。
@@ -2161,7 +2161,7 @@ type CreateDBInstanceRequest struct {
 	// 参数模板id。
 	ParamTemplateId *int64 `json:"ParamTemplateId,omitempty" name:"ParamTemplateId"`
 
-	// 告警策略id数组。
+	// 告警策略id数组。云监控DescribeAlarmPolicy接口返回的OriginId。
 	AlarmPolicyList []*int64 `json:"AlarmPolicyList,omitempty" name:"AlarmPolicyList"`
 
 	// 实例节点数。对于 RO 和 基础版实例， 该值默认为1。 如果需要购买三节点实例， 请将该值设置为3 或指定 BackupZone 参数。当购买主实例，且未指定该参数和 BackupZone 参数时，该值默认是 2， 即购买两节点实例。
