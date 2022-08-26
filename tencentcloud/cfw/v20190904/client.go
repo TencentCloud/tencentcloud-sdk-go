@@ -4475,60 +4475,6 @@ func (c *Client) RemoveEnterpriseSecurityGroupRuleWithContext(ctx context.Contex
     return
 }
 
-func NewRunSyncAssetRequest() (request *RunSyncAssetRequest) {
-    request = &RunSyncAssetRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("cfw", APIVersion, "RunSyncAsset")
-    
-    
-    return
-}
-
-func NewRunSyncAssetResponse() (response *RunSyncAssetResponse) {
-    response = &RunSyncAssetResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// RunSyncAsset
-// 同步资产-互联网&VPC
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-func (c *Client) RunSyncAsset(request *RunSyncAssetRequest) (response *RunSyncAssetResponse, err error) {
-    return c.RunSyncAssetWithContext(context.Background(), request)
-}
-
-// RunSyncAsset
-// 同步资产-互联网&VPC
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-func (c *Client) RunSyncAssetWithContext(ctx context.Context, request *RunSyncAssetRequest) (response *RunSyncAssetResponse, err error) {
-    if request == nil {
-        request = NewRunSyncAssetRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("RunSyncAsset require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewRunSyncAssetResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewSetNatFwDnatRuleRequest() (request *SetNatFwDnatRuleRequest) {
     request = &SetNatFwDnatRuleRequest{
         BaseRequest: &tchttp.BaseRequest{},

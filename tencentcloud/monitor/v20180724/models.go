@@ -9557,7 +9557,7 @@ func (r *PutMonitorDataResponse) FromJsonString(s string) error {
 }
 
 type ReceiverInfo struct {
-	// 告警时间段开始时间。范围[0,86400)，作为unix时间戳转成北京时间后去掉日期，例如7200表示"10:0:0"
+	// 告警时间段开始时间。范围[0,86400)，作为 UNIX 时间戳转成北京时间后去掉日期，例如7200表示"10:0:0"
 	StartTime *int64 `json:"StartTime,omitempty" name:"StartTime"`
 
 	// 告警时间段结束时间。含义同StartTime
@@ -9575,7 +9575,7 @@ type ReceiverInfo struct {
 	// 电话告警通知时机。可选"OCCUR"(告警时通知),"RECOVER"(恢复时通知)
 	SendFor []*string `json:"SendFor,omitempty" name:"SendFor"`
 
-	// 电话告警接收者uid
+	// 电话告警接收者 UID
 	UidList []*int64 `json:"UidList,omitempty" name:"UidList"`
 
 	// 电话告警轮数
@@ -9593,10 +9593,10 @@ type ReceiverInfo struct {
 	// 是否需要电话告警触达提示。0不需要，1需要
 	NeedSendNotice *int64 `json:"NeedSendNotice,omitempty" name:"NeedSendNotice"`
 
-	// 接收组列表。通过平台接口查询到的接收组id列表
+	// 接收组列表。通过平台接口查询到的接收组 ID 列表
 	ReceiverGroupList []*int64 `json:"ReceiverGroupList,omitempty" name:"ReceiverGroupList"`
 
-	// 接收人列表。通过平台接口查询到的接收人id列表
+	// 接收人列表。通过平台接口查询到的接收人 ID 列表
 	ReceiverUserList []*int64 `json:"ReceiverUserList,omitempty" name:"ReceiverUserList"`
 
 	// 告警接收语言，枚举值（zh-CN，en-US）

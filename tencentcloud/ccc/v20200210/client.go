@@ -230,6 +230,10 @@ func NewCreateCallOutSessionResponse() (response *CreateCallOutSessionResponse) 
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CALLOUTFAILED = "FailedOperation.CallOutFailed"
+//  FAILEDOPERATION_CALLEEISLIMITED = "FailedOperation.CalleeIsLimited"
+//  FAILEDOPERATION_CALLEROVERFREQUENCY = "FailedOperation.CallerOverFrequency"
+//  FAILEDOPERATION_NOCALLOUTNUMBER = "FailedOperation.NoCallOutNumber"
+//  FAILEDOPERATION_SEATSTATUSBUSY = "FailedOperation.SeatStatusBusy"
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
 //  INVALIDPARAMETER_INSTANCENOTEXIST = "InvalidParameter.InstanceNotExist"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -244,6 +248,10 @@ func (c *Client) CreateCallOutSession(request *CreateCallOutSessionRequest) (res
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CALLOUTFAILED = "FailedOperation.CallOutFailed"
+//  FAILEDOPERATION_CALLEEISLIMITED = "FailedOperation.CalleeIsLimited"
+//  FAILEDOPERATION_CALLEROVERFREQUENCY = "FailedOperation.CallerOverFrequency"
+//  FAILEDOPERATION_NOCALLOUTNUMBER = "FailedOperation.NoCallOutNumber"
+//  FAILEDOPERATION_SEATSTATUSBUSY = "FailedOperation.SeatStatusBusy"
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
 //  INVALIDPARAMETER_INSTANCENOTEXIST = "InvalidParameter.InstanceNotExist"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"

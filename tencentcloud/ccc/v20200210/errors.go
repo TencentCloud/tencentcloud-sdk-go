@@ -20,11 +20,23 @@ const (
 	// 外呼失败。
 	FAILEDOPERATION_CALLOUTFAILED = "FailedOperation.CallOutFailed"
 
+	// 被叫号码外呼受限。
+	FAILEDOPERATION_CALLEEISLIMITED = "FailedOperation.CalleeIsLimited"
+
+	// 主叫号码外呼超频。
+	FAILEDOPERATION_CALLEROVERFREQUENCY = "FailedOperation.CallerOverFrequency"
+
 	// 重复账号。
 	FAILEDOPERATION_DUPLICATEDACCOUNT = "FailedOperation.DuplicatedAccount"
 
+	// 无可用的外呼号码。
+	FAILEDOPERATION_NOCALLOUTNUMBER = "FailedOperation.NoCallOutNumber"
+
 	// 权限不足。
 	FAILEDOPERATION_PERMISSIONDENIED = "FailedOperation.PermissionDenied"
+
+	// 坐席处于忙碌状态。
+	FAILEDOPERATION_SEATSTATUSBUSY = "FailedOperation.SeatStatusBusy"
 
 	// 内部错误。
 	INTERNALERROR = "InternalError"

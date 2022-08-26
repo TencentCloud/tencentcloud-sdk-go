@@ -5946,63 +5946,6 @@ type RuleInfoData struct {
 	CountryName *string `json:"CountryName,omitempty" name:"CountryName"`
 }
 
-// Predefined struct for user
-type RunSyncAssetRequestParams struct {
-	// 0: 互联网防火墙开关，1：vpc 防火墙开关
-	Type *uint64 `json:"Type,omitempty" name:"Type"`
-}
-
-type RunSyncAssetRequest struct {
-	*tchttp.BaseRequest
-	
-	// 0: 互联网防火墙开关，1：vpc 防火墙开关
-	Type *uint64 `json:"Type,omitempty" name:"Type"`
-}
-
-func (r *RunSyncAssetRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *RunSyncAssetRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "Type")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RunSyncAssetRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type RunSyncAssetResponseParams struct {
-	// 0：同步成功，1：资产更新中，2：后台同步调用失败
-	Status *int64 `json:"Status,omitempty" name:"Status"`
-
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-}
-
-type RunSyncAssetResponse struct {
-	*tchttp.BaseResponse
-	Response *RunSyncAssetResponseParams `json:"Response"`
-}
-
-func (r *RunSyncAssetResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *RunSyncAssetResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
 type ScanInfo struct {
 	// 扫描结果信息
 	ScanResultInfo *ScanResultInfo `json:"ScanResultInfo,omitempty" name:"ScanResultInfo"`

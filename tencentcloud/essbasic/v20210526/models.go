@@ -1838,7 +1838,8 @@ type FormField struct {
 	// DYNAMIC_TABLE - 传入json格式的表格内容，具体见数据结构FlowInfo：https://cloud.tencent.com/document/api/1420/61525#FlowInfo
 	ComponentValue *string `json:"ComponentValue,omitempty" name:"ComponentValue"`
 
-	// 表单域或控件的ID，跟ComponentName二选一，不能全为空
+	// 表单域或控件的ID，跟ComponentName二选一，不能全为空；
+	// CreateFlowsByTemplates 接口不使用此字段。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ComponentId *string `json:"ComponentId,omitempty" name:"ComponentId"`
 
