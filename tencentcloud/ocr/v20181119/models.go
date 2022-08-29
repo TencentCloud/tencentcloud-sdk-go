@@ -7460,6 +7460,12 @@ type VatInvoice struct {
 
 	// 项目明细
 	Items []*VatInvoiceItem `json:"Items,omitempty" name:"Items"`
+
+	// 所属税局
+	TaxBureau *string `json:"TaxBureau,omitempty" name:"TaxBureau"`
+
+	// 通行费标志:Y、是;N、否
+	TrafficFreeFlag *string `json:"TrafficFreeFlag,omitempty" name:"TrafficFreeFlag"`
 }
 
 type VatInvoiceGoodsInfo struct {
@@ -7515,6 +7521,9 @@ type VatInvoiceItem struct {
 
 	// 税额
 	TaxAmount *string `json:"TaxAmount,omitempty" name:"TaxAmount"`
+
+	// 税收分类编码
+	TaxClassifyCode *string `json:"TaxClassifyCode,omitempty" name:"TaxClassifyCode"`
 }
 
 // Predefined struct for user
@@ -7990,6 +7999,9 @@ type VehicleInvoiceInfo struct {
 
 	// 销售电话
 	SellerTel *string `json:"SellerTel,omitempty" name:"SellerTel"`
+
+	// 购方身份证
+	BuyerNo *string `json:"BuyerNo,omitempty" name:"BuyerNo"`
 }
 
 // Predefined struct for user

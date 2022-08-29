@@ -893,60 +893,6 @@ func (c *Client) DeleteResourceGroupWithContext(ctx context.Context, request *De
     return
 }
 
-func NewDeleteSecurityGroupAllRuleRequest() (request *DeleteSecurityGroupAllRuleRequest) {
-    request = &DeleteSecurityGroupAllRuleRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("cfw", APIVersion, "DeleteSecurityGroupAllRule")
-    
-    
-    return
-}
-
-func NewDeleteSecurityGroupAllRuleResponse() (response *DeleteSecurityGroupAllRuleResponse) {
-    response = &DeleteSecurityGroupAllRuleResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// DeleteSecurityGroupAllRule
-// 删除全部规则
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-func (c *Client) DeleteSecurityGroupAllRule(request *DeleteSecurityGroupAllRuleRequest) (response *DeleteSecurityGroupAllRuleResponse, err error) {
-    return c.DeleteSecurityGroupAllRuleWithContext(context.Background(), request)
-}
-
-// DeleteSecurityGroupAllRule
-// 删除全部规则
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-func (c *Client) DeleteSecurityGroupAllRuleWithContext(ctx context.Context, request *DeleteSecurityGroupAllRuleRequest) (response *DeleteSecurityGroupAllRuleResponse, err error) {
-    if request == nil {
-        request = NewDeleteSecurityGroupAllRuleRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DeleteSecurityGroupAllRule require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDeleteSecurityGroupAllRuleResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewDeleteSecurityGroupRuleRequest() (request *DeleteSecurityGroupRuleRequest) {
     request = &DeleteSecurityGroupRuleRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2075,60 +2021,6 @@ func (c *Client) DescribeNatFwVpcDnsLstWithContext(ctx context.Context, request 
     request.SetContext(ctx)
     
     response = NewDescribeNatFwVpcDnsLstResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewDescribeNatRuleOverviewRequest() (request *DescribeNatRuleOverviewRequest) {
-    request = &DescribeNatRuleOverviewRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("cfw", APIVersion, "DescribeNatRuleOverview")
-    
-    
-    return
-}
-
-func NewDescribeNatRuleOverviewResponse() (response *DescribeNatRuleOverviewResponse) {
-    response = &DescribeNatRuleOverviewResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// DescribeNatRuleOverview
-// nat规则列表概况
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-func (c *Client) DescribeNatRuleOverview(request *DescribeNatRuleOverviewRequest) (response *DescribeNatRuleOverviewResponse, err error) {
-    return c.DescribeNatRuleOverviewWithContext(context.Background(), request)
-}
-
-// DescribeNatRuleOverview
-// nat规则列表概况
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-func (c *Client) DescribeNatRuleOverviewWithContext(ctx context.Context, request *DescribeNatRuleOverviewRequest) (response *DescribeNatRuleOverviewResponse, err error) {
-    if request == nil {
-        request = NewDescribeNatRuleOverviewRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeNatRuleOverview require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeNatRuleOverviewResponse()
     err = c.Send(request, response)
     return
 }

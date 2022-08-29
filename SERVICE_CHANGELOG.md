@@ -1,29 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 云拨测(cat) 版本：2018-04-09
-
-### 第 12 次发布
-
-发布时间：2022-08-26 06:12:22
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [UpdateProbeTaskConfigurationList](https://cloud.tencent.com/document/api/280/66201)
-
-	* 新增入参：ResourceIDs
-
-
-
-
 ## 云防火墙(cfw) 版本：2019-09-04
 
-### 第 20 次发布
+### 第 21 次发布
 
-发布时间：2022-08-26 06:15:17
+发布时间：2022-08-29 06:15:32
 
 本次发布包含了以下内容：
 
@@ -31,41 +12,39 @@
 
 <font color="#dd0000">**删除接口**：</font>
 
-* RunSyncAsset
+* DeleteSecurityGroupAllRule
+* DescribeNatRuleOverview
 
 
 
-## 人脸核身(faceid) 版本：2018-03-01
+## 消息队列 Ckafka(ckafka) 版本：2019-08-19
 
-### 第 45 次发布
+### 第 55 次发布
 
-发布时间：2022-08-26 06:28:34
+发布时间：2022-08-29 06:16:32
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-修改接口：
-
-* [GetDetectInfoEnhanced](https://cloud.tencent.com/document/api/1007/41957)
-
-	* 新增入参：Encryption
-
-
 修改数据结构：
 
-* [Encryption](https://cloud.tencent.com/document/api/1007/41958#Encryption)
+* [MySQLParam](https://cloud.tencent.com/document/api/597/40861#MySQLParam)
 
-	* 新增成员：Algorithm, TagList
+	* 新增成员：RecordWithSchema
+
+* [PostgreSQLParam](https://cloud.tencent.com/document/api/597/40861#PostgreSQLParam)
+
+	* 新增成员：DataFormat, DataTargetInsertMode, DataTargetPrimaryKeyField, DataTargetRecordMapping, DropInvalidMessage
 
 
 
 
-## 边缘安全加速平台(teo) 版本：2022-01-06
+## 电子签服务(ess) 版本：2020-11-11
 
-### 第 22 次发布
+### 第 15 次发布
 
-发布时间：2022-08-26 06:50:57
+发布时间：2022-08-29 00:06:53
 
 本次发布包含了以下内容：
 
@@ -73,34 +52,69 @@
 
 新增接口：
 
-* [CreatePlanForZone](https://cloud.tencent.com/document/api/1552/79666)
-* [CreateRule](https://cloud.tencent.com/document/api/1552/79672)
-* [DeleteRules](https://cloud.tencent.com/document/api/1552/79671)
-* [DescribeAvailablePlans](https://cloud.tencent.com/document/api/1552/79665)
-* [DescribeRules](https://cloud.tencent.com/document/api/1552/79670)
-* [DescribeRulesSetting](https://cloud.tencent.com/document/api/1552/79669)
-* [ModifyRule](https://cloud.tencent.com/document/api/1552/79668)
-* [ModifyRulePriority](https://cloud.tencent.com/document/api/1552/79667)
+* [CreateFlowEvidenceReport](https://cloud.tencent.com/document/api/1323/79686)
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
+
+### 第 28 次发布
+
+发布时间：2022-08-29 00:07:08
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateChannelFlowEvidenceReport](https://cloud.tencent.com/document/api/1420/79688)
+
+修改接口：
+
+* [ChannelGetTaskResultApi](https://cloud.tencent.com/document/api/1420/78773)
+
+	* 新增出参：PreviewUrl
+
+* [CreateFlowsByTemplates](https://cloud.tencent.com/document/api/1420/61523)
+
+	* 新增出参：TaskInfos
+
 
 新增数据结构：
 
-* [PlanInfo](https://cloud.tencent.com/document/api/1552/73155#PlanInfo)
-* [RuleAction](https://cloud.tencent.com/document/api/1552/73155#RuleAction)
-* [RuleAndConditions](https://cloud.tencent.com/document/api/1552/73155#RuleAndConditions)
-* [RuleChoicePropertiesItem](https://cloud.tencent.com/document/api/1552/73155#RuleChoicePropertiesItem)
-* [RuleCodeAction](https://cloud.tencent.com/document/api/1552/73155#RuleCodeAction)
-* [RuleCodeActionParams](https://cloud.tencent.com/document/api/1552/73155#RuleCodeActionParams)
-* [RuleCondition](https://cloud.tencent.com/document/api/1552/73155#RuleCondition)
-* [RuleExtraParameter](https://cloud.tencent.com/document/api/1552/73155#RuleExtraParameter)
-* [RuleFilter](https://cloud.tencent.com/document/api/1552/73155#RuleFilter)
-* [RuleItem](https://cloud.tencent.com/document/api/1552/73155#RuleItem)
-* [RuleNormalAction](https://cloud.tencent.com/document/api/1552/73155#RuleNormalAction)
-* [RuleNormalActionParams](https://cloud.tencent.com/document/api/1552/73155#RuleNormalActionParams)
-* [RuleRewriteAction](https://cloud.tencent.com/document/api/1552/73155#RuleRewriteAction)
-* [RuleRewriteActionParams](https://cloud.tencent.com/document/api/1552/73155#RuleRewriteActionParams)
-* [RuleSettingDetail](https://cloud.tencent.com/document/api/1552/73155#RuleSettingDetail)
-* [RulesProperties](https://cloud.tencent.com/document/api/1552/73155#RulesProperties)
-* [RulesSettingAction](https://cloud.tencent.com/document/api/1552/73155#RulesSettingAction)
+* [TaskInfo](https://cloud.tencent.com/document/api/1420/61525#TaskInfo)
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
+
+
+
+## 文字识别(ocr) 版本：2018-11-19
+
+### 第 76 次发布
+
+发布时间：2022-08-29 06:40:32
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [VatInvoice](https://cloud.tencent.com/document/api/866/33527#VatInvoice)
+
+	* 新增成员：TaxBureau, TrafficFreeFlag
+
+* [VatInvoiceItem](https://cloud.tencent.com/document/api/866/33527#VatInvoiceItem)
+
+	* 新增成员：TaxClassifyCode
+
+* [VehicleInvoiceInfo](https://cloud.tencent.com/document/api/866/33527#VehicleInvoiceInfo)
+
+	* 新增成员：BuyerNo
+
 
 
 
@@ -16208,6 +16222,19 @@
 
 ## 云防火墙(cfw) 版本：2019-09-04
 
+### 第 21 次发布
+
+发布时间：2022-08-29 06:15:32
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除接口**：</font>
+
+* DeleteSecurityGroupAllRule
+* DescribeNatRuleOverview
+
 ### 第 20 次发布
 
 发布时间：2022-08-26 06:15:17
@@ -17361,6 +17388,25 @@
 
 
 ## 消息队列 Ckafka(ckafka) 版本：2019-08-19
+
+### 第 55 次发布
+
+发布时间：2022-08-29 06:16:32
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [MySQLParam](https://cloud.tencent.com/document/api/597/40861#MySQLParam)
+
+	* 新增成员：RecordWithSchema
+
+* [PostgreSQLParam](https://cloud.tencent.com/document/api/597/40861#PostgreSQLParam)
+
+	* 新增成员：DataFormat, DataTargetInsertMode, DataTargetPrimaryKeyField, DataTargetRecordMapping, DropInvalidMessage
+
 
 ### 第 54 次发布
 
@@ -37298,6 +37344,18 @@
 
 ## 电子签服务(ess) 版本：2020-11-11
 
+### 第 15 次发布
+
+发布时间：2022-08-29 00:06:53
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateFlowEvidenceReport](https://cloud.tencent.com/document/api/1323/79686)](https://cloud.tencent.com/document/api/#/#)
+
 ### 第 14 次发布
 
 发布时间：2022-08-11 22:36:30
@@ -37668,6 +37726,33 @@
 
 
 ## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
+
+### 第 28 次发布
+
+发布时间：2022-08-29 00:07:08
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateChannelFlowEvidenceReport](https://cloud.tencent.com/document/api/1420/79688)](https://cloud.tencent.com/document/api/#/#)
+
+修改接口：
+
+* [ChannelGetTaskResultApi](https://cloud.tencent.com/document/api/1420/78773)
+
+	* 新增出参：PreviewUrl
+
+* [CreateFlowsByTemplates](https://cloud.tencent.com/document/api/1420/61523)
+
+	* 新增出参：TaskInfos
+
+
+新增数据结构：
+
+* [[TaskInfo](https://cloud.tencent.com/document/api/1420/61525#TaskInfo)](https://cloud.tencent.com/document/api/1420/61525#[TaskInfo](https://cloud.tencent.com/document/api/1420/61525#TaskInfo))
 
 ### 第 27 次发布
 
@@ -56077,6 +56162,29 @@
 
 ## 文字识别(ocr) 版本：2018-11-19
 
+### 第 76 次发布
+
+发布时间：2022-08-29 06:40:32
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [VatInvoice](https://cloud.tencent.com/document/api/866/33527#VatInvoice)
+
+	* 新增成员：TaxBureau, TrafficFreeFlag
+
+* [VatInvoiceItem](https://cloud.tencent.com/document/api/866/33527#VatInvoiceItem)
+
+	* 新增成员：TaxClassifyCode
+
+* [VehicleInvoiceInfo](https://cloud.tencent.com/document/api/866/33527#VehicleInvoiceInfo)
+
+	* 新增成员：BuyerNo
+
+
 ### 第 75 次发布
 
 发布时间：2022-08-16 06:34:58
@@ -72459,34 +72567,34 @@
 
 新增接口：
 
-* [[CreatePlanForZone](https://cloud.tencent.com/document/api/1552/79666)](https://cloud.tencent.com/document/api/#/#)
-* [[CreateRule](https://cloud.tencent.com/document/api/1552/79672)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteRules](https://cloud.tencent.com/document/api/1552/79671)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeAvailablePlans](https://cloud.tencent.com/document/api/1552/79665)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeRules](https://cloud.tencent.com/document/api/1552/79670)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeRulesSetting](https://cloud.tencent.com/document/api/1552/79669)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyRule](https://cloud.tencent.com/document/api/1552/79668)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyRulePriority](https://cloud.tencent.com/document/api/1552/79667)](https://cloud.tencent.com/document/api/#/#)
+* [CreatePlanForZone](https://cloud.tencent.com/document/api/1552/79666)
+* [CreateRule](https://cloud.tencent.com/document/api/1552/79672)
+* [DeleteRules](https://cloud.tencent.com/document/api/1552/79671)
+* [DescribeAvailablePlans](https://cloud.tencent.com/document/api/1552/79665)
+* [DescribeRules](https://cloud.tencent.com/document/api/1552/79670)
+* [DescribeRulesSetting](https://cloud.tencent.com/document/api/1552/79669)
+* [ModifyRule](https://cloud.tencent.com/document/api/1552/79668)
+* [ModifyRulePriority](https://cloud.tencent.com/document/api/1552/79667)
 
 新增数据结构：
 
-* [[PlanInfo](https://cloud.tencent.com/document/api/1552/73155#PlanInfo)](https://cloud.tencent.com/document/api/1552/73155#[PlanInfo](https://cloud.tencent.com/document/api/1552/73155#PlanInfo))
-* [[RuleAction](https://cloud.tencent.com/document/api/1552/73155#RuleAction)](https://cloud.tencent.com/document/api/1552/73155#[RuleAction](https://cloud.tencent.com/document/api/1552/73155#RuleAction))
-* [[RuleAndConditions](https://cloud.tencent.com/document/api/1552/73155#RuleAndConditions)](https://cloud.tencent.com/document/api/1552/73155#[RuleAndConditions](https://cloud.tencent.com/document/api/1552/73155#RuleAndConditions))
-* [[RuleChoicePropertiesItem](https://cloud.tencent.com/document/api/1552/73155#RuleChoicePropertiesItem)](https://cloud.tencent.com/document/api/1552/73155#[RuleChoicePropertiesItem](https://cloud.tencent.com/document/api/1552/73155#RuleChoicePropertiesItem))
-* [[RuleCodeAction](https://cloud.tencent.com/document/api/1552/73155#RuleCodeAction)](https://cloud.tencent.com/document/api/1552/73155#[RuleCodeAction](https://cloud.tencent.com/document/api/1552/73155#RuleCodeAction))
-* [[RuleCodeActionParams](https://cloud.tencent.com/document/api/1552/73155#RuleCodeActionParams)](https://cloud.tencent.com/document/api/1552/73155#[RuleCodeActionParams](https://cloud.tencent.com/document/api/1552/73155#RuleCodeActionParams))
-* [[RuleCondition](https://cloud.tencent.com/document/api/1552/73155#RuleCondition)](https://cloud.tencent.com/document/api/1552/73155#[RuleCondition](https://cloud.tencent.com/document/api/1552/73155#RuleCondition))
-* [[RuleExtraParameter](https://cloud.tencent.com/document/api/1552/73155#RuleExtraParameter)](https://cloud.tencent.com/document/api/1552/73155#[RuleExtraParameter](https://cloud.tencent.com/document/api/1552/73155#RuleExtraParameter))
-* [[RuleFilter](https://cloud.tencent.com/document/api/1552/73155#RuleFilter)](https://cloud.tencent.com/document/api/1552/73155#[RuleFilter](https://cloud.tencent.com/document/api/1552/73155#RuleFilter))
-* [[RuleItem](https://cloud.tencent.com/document/api/1552/73155#RuleItem)](https://cloud.tencent.com/document/api/1552/73155#[RuleItem](https://cloud.tencent.com/document/api/1552/73155#RuleItem))
-* [[RuleNormalAction](https://cloud.tencent.com/document/api/1552/73155#RuleNormalAction)](https://cloud.tencent.com/document/api/1552/73155#[RuleNormalAction](https://cloud.tencent.com/document/api/1552/73155#RuleNormalAction))
-* [[RuleNormalActionParams](https://cloud.tencent.com/document/api/1552/73155#RuleNormalActionParams)](https://cloud.tencent.com/document/api/1552/73155#[RuleNormalActionParams](https://cloud.tencent.com/document/api/1552/73155#RuleNormalActionParams))
-* [[RuleRewriteAction](https://cloud.tencent.com/document/api/1552/73155#RuleRewriteAction)](https://cloud.tencent.com/document/api/1552/73155#[RuleRewriteAction](https://cloud.tencent.com/document/api/1552/73155#RuleRewriteAction))
-* [[RuleRewriteActionParams](https://cloud.tencent.com/document/api/1552/73155#RuleRewriteActionParams)](https://cloud.tencent.com/document/api/1552/73155#[RuleRewriteActionParams](https://cloud.tencent.com/document/api/1552/73155#RuleRewriteActionParams))
-* [[RuleSettingDetail](https://cloud.tencent.com/document/api/1552/73155#RuleSettingDetail)](https://cloud.tencent.com/document/api/1552/73155#[RuleSettingDetail](https://cloud.tencent.com/document/api/1552/73155#RuleSettingDetail))
-* [[RulesProperties](https://cloud.tencent.com/document/api/1552/73155#RulesProperties)](https://cloud.tencent.com/document/api/1552/73155#[RulesProperties](https://cloud.tencent.com/document/api/1552/73155#RulesProperties))
-* [[RulesSettingAction](https://cloud.tencent.com/document/api/1552/73155#RulesSettingAction)](https://cloud.tencent.com/document/api/1552/73155#[RulesSettingAction](https://cloud.tencent.com/document/api/1552/73155#RulesSettingAction))
+* [PlanInfo](https://cloud.tencent.com/document/api/1552/73155#PlanInfo)
+* [RuleAction](https://cloud.tencent.com/document/api/1552/73155#RuleAction)
+* [RuleAndConditions](https://cloud.tencent.com/document/api/1552/73155#RuleAndConditions)
+* [RuleChoicePropertiesItem](https://cloud.tencent.com/document/api/1552/73155#RuleChoicePropertiesItem)
+* [RuleCodeAction](https://cloud.tencent.com/document/api/1552/73155#RuleCodeAction)
+* [RuleCodeActionParams](https://cloud.tencent.com/document/api/1552/73155#RuleCodeActionParams)
+* [RuleCondition](https://cloud.tencent.com/document/api/1552/73155#RuleCondition)
+* [RuleExtraParameter](https://cloud.tencent.com/document/api/1552/73155#RuleExtraParameter)
+* [RuleFilter](https://cloud.tencent.com/document/api/1552/73155#RuleFilter)
+* [RuleItem](https://cloud.tencent.com/document/api/1552/73155#RuleItem)
+* [RuleNormalAction](https://cloud.tencent.com/document/api/1552/73155#RuleNormalAction)
+* [RuleNormalActionParams](https://cloud.tencent.com/document/api/1552/73155#RuleNormalActionParams)
+* [RuleRewriteAction](https://cloud.tencent.com/document/api/1552/73155#RuleRewriteAction)
+* [RuleRewriteActionParams](https://cloud.tencent.com/document/api/1552/73155#RuleRewriteActionParams)
+* [RuleSettingDetail](https://cloud.tencent.com/document/api/1552/73155#RuleSettingDetail)
+* [RulesProperties](https://cloud.tencent.com/document/api/1552/73155#RulesProperties)
+* [RulesSettingAction](https://cloud.tencent.com/document/api/1552/73155#RulesSettingAction)
 
 ### 第 21 次发布
 

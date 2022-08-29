@@ -774,6 +774,70 @@ func (r *CreateFlowByFilesResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateFlowEvidenceReportRequestParams struct {
+	// 调用方用户信息，userId 必填
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
+	// 签署流程编号
+	FlowId *string `json:"FlowId,omitempty" name:"FlowId"`
+}
+
+type CreateFlowEvidenceReportRequest struct {
+	*tchttp.BaseRequest
+	
+	// 调用方用户信息，userId 必填
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
+	// 签署流程编号
+	FlowId *string `json:"FlowId,omitempty" name:"FlowId"`
+}
+
+func (r *CreateFlowEvidenceReportRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateFlowEvidenceReportRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Operator")
+	delete(f, "FlowId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateFlowEvidenceReportRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateFlowEvidenceReportResponseParams struct {
+	// 出证报告 URL（有效期5分钟）
+	ReportUrl *string `json:"ReportUrl,omitempty" name:"ReportUrl"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateFlowEvidenceReportResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateFlowEvidenceReportResponseParams `json:"Response"`
+}
+
+func (r *CreateFlowEvidenceReportResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateFlowEvidenceReportResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateFlowRequestParams struct {
 	// 调用方用户信息，userId 必填
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`

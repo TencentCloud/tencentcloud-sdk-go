@@ -732,6 +732,10 @@ type ChannelGetTaskResultApiResponseParams struct {
 	// 资源Id，也是FileId，用于文件发起使用
 	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
 
+	// 预览文件Url，有效期30分钟
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PreviewUrl *string `json:"PreviewUrl,omitempty" name:"PreviewUrl"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }
@@ -846,6 +850,77 @@ type Component struct {
 
 	// 指定关键字时纵坐标偏移量，单位pt
 	OffsetY *float64 `json:"OffsetY,omitempty" name:"OffsetY"`
+}
+
+// Predefined struct for user
+type CreateChannelFlowEvidenceReportRequestParams struct {
+	// 签署流程编号
+	FlowId *string `json:"FlowId,omitempty" name:"FlowId"`
+
+	// 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+
+	// 操作者的信息
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+}
+
+type CreateChannelFlowEvidenceReportRequest struct {
+	*tchttp.BaseRequest
+	
+	// 签署流程编号
+	FlowId *string `json:"FlowId,omitempty" name:"FlowId"`
+
+	// 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+
+	// 操作者的信息
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+}
+
+func (r *CreateChannelFlowEvidenceReportRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateChannelFlowEvidenceReportRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FlowId")
+	delete(f, "Agent")
+	delete(f, "Operator")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateChannelFlowEvidenceReportRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateChannelFlowEvidenceReportResponseParams struct {
+	// 出证报告 URL（有效五分钟）
+	ReportUrl *string `json:"ReportUrl,omitempty" name:"ReportUrl"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateChannelFlowEvidenceReportResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateChannelFlowEvidenceReportResponseParams `json:"Response"`
+}
+
+func (r *CreateChannelFlowEvidenceReportResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateChannelFlowEvidenceReportResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user
@@ -1029,6 +1104,9 @@ type CreateFlowsByTemplatesResponseParams struct {
 
 	// 预览模式下返回的预览文件url数组
 	PreviewUrls []*string `json:"PreviewUrls,omitempty" name:"PreviewUrls"`
+
+	// 复杂文档合成任务的任务信息数组
+	TaskInfos []*TaskInfo `json:"TaskInfos,omitempty" name:"TaskInfos"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2441,6 +2519,16 @@ func (r *SyncProxyOrganizationResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *SyncProxyOrganizationResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type TaskInfo struct {
+	// 合成任务Id，可以通过 ChannelGetTaskResultApi 接口获取任务信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 任务状态：READY - 任务已完成；NOTREADY - 任务未完成；
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskStatus *string `json:"TaskStatus,omitempty" name:"TaskStatus"`
 }
 
 type TemplateInfo struct {
