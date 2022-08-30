@@ -121,7 +121,7 @@ func (c *Client) sendWithoutSignature(request tchttp.Request, response tchttp.Re
 	if c.region != "" {
 		headers["X-TC-Region"] = c.region
 	}
-	if c.credential.GetToken() != "" {
+	if c.credential != nil && c.credential.GetToken() != "" {
 		headers["X-TC-Token"] = c.credential.GetToken()
 	}
 	if request.GetHttpMethod() == "GET" {
