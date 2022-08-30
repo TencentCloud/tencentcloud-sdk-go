@@ -13,7 +13,7 @@ type RoleArnCredential struct {
 	token           string
 	tmpSecretId     string
 	tmpSecretKey    string
-	source          *RoleArnProvider
+	source          Provider
 }
 
 func (c *RoleArnCredential) GetSecretId() string {
