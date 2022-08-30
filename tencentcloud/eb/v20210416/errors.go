@@ -47,7 +47,7 @@ const (
 	// ES集群操作失败。
 	FAILEDOPERATION_ESREQUESTFAILED = "FailedOperation.ESRequestFailed"
 
-	// ES索引模版冲突错误。
+	// ES索引模板冲突错误。
 	FAILEDOPERATION_ESTEMPLATECONFLICT = "FailedOperation.ESTemplateConflict"
 
 	// 规则与事件不匹配，请修正后再试。

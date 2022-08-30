@@ -1308,14 +1308,20 @@ func (r *EncryptedPhoneVerificationResponse) FromJsonString(s string) error {
 }
 
 type Encryption struct {
-	// 有加密需求的用户，接入传入kms的CiphertextBlob，关于数据加密可查阅<a href="https://cloud.tencent.com/document/product/1007/47180">数据加密</a> 文档。
-	CiphertextBlob *string `json:"CiphertextBlob,omitempty" name:"CiphertextBlob"`
-
 	// 在使用加密服务时，填入要被加密的字段。本接口中可填入加密后的一个或多个字段
 	EncryptList []*string `json:"EncryptList,omitempty" name:"EncryptList"`
 
+	// 有加密需求的用户，接入传入kms的CiphertextBlob，关于数据加密可查阅<a href="https://cloud.tencent.com/document/product/1007/47180">数据加密</a> 文档。
+	CiphertextBlob *string `json:"CiphertextBlob,omitempty" name:"CiphertextBlob"`
+
 	// 有加密需求的用户，传入CBC加密的初始向量（客户自定义字符串，长度16字符）。
 	Iv *string `json:"Iv,omitempty" name:"Iv"`
+
+	// 加密使用的算法（支持'AES-256-CBC'、'SM4-GCM'），不传默认为'AES-256-CBC'
+	Algorithm *string `json:"Algorithm,omitempty" name:"Algorithm"`
+
+	// SM4-GCM算法生成的消息摘要（校验消息完整性时使用）
+	TagList []*string `json:"TagList,omitempty" name:"TagList"`
 }
 
 // Predefined struct for user
@@ -1397,8 +1403,11 @@ type GetDetectInfoEnhancedRequestParams struct {
 	// 是否需要从身份证中抠出头像。默认为false。（InfoType需要包含2）
 	IsNeedIdCardAvatar *bool `json:"IsNeedIdCardAvatar,omitempty" name:"IsNeedIdCardAvatar"`
 
-	// 是否需要对返回中的敏感信息进行加密。其中敏感信息包括：Response.Text.IdCard、Response.Text.Name、Response.Text.OcrIdCard、Response.Text.OcrName
+	// 已弃用。
 	IsEncrypt *bool `json:"IsEncrypt,omitempty" name:"IsEncrypt"`
+
+	// 是否需要对返回中的敏感信息进行加密。仅指定加密算法Algorithm即可，其余字段传入默认值。其中敏感信息包括：Response.Text.IdCard、Response.Text.Name、Response.Text.OcrIdCard、Response.Text.OcrName
+	Encryption *Encryption `json:"Encryption,omitempty" name:"Encryption"`
 }
 
 type GetDetectInfoEnhancedRequest struct {
@@ -1424,8 +1433,11 @@ type GetDetectInfoEnhancedRequest struct {
 	// 是否需要从身份证中抠出头像。默认为false。（InfoType需要包含2）
 	IsNeedIdCardAvatar *bool `json:"IsNeedIdCardAvatar,omitempty" name:"IsNeedIdCardAvatar"`
 
-	// 是否需要对返回中的敏感信息进行加密。其中敏感信息包括：Response.Text.IdCard、Response.Text.Name、Response.Text.OcrIdCard、Response.Text.OcrName
+	// 已弃用。
 	IsEncrypt *bool `json:"IsEncrypt,omitempty" name:"IsEncrypt"`
+
+	// 是否需要对返回中的敏感信息进行加密。仅指定加密算法Algorithm即可，其余字段传入默认值。其中敏感信息包括：Response.Text.IdCard、Response.Text.Name、Response.Text.OcrIdCard、Response.Text.OcrName
+	Encryption *Encryption `json:"Encryption,omitempty" name:"Encryption"`
 }
 
 func (r *GetDetectInfoEnhancedRequest) ToJsonString() string {
@@ -1447,6 +1459,7 @@ func (r *GetDetectInfoEnhancedRequest) FromJsonString(s string) error {
 	delete(f, "IsCutIdCardImage")
 	delete(f, "IsNeedIdCardAvatar")
 	delete(f, "IsEncrypt")
+	delete(f, "Encryption")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetDetectInfoEnhancedRequest has unknown keys!", "")
 	}

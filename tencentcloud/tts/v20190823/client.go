@@ -78,7 +78,7 @@ func NewCreateTtsTaskResponse() (response *CreateTtsTaskResponse) {
 //
 // <li>支持回调或轮询的方式获取结果，结果获取请参考 长文本语音合成结果查询。</li>
 //
-// <li>长文本语音合成任务完成后，合成音频结果在服务端可保存24小时</li>
+// <li>提交长文本语音合成请求后，合成结果在3小时内完成，音频文件在服务端可保存24小时</li>
 //
 // 
 //
@@ -158,7 +158,7 @@ func (c *Client) CreateTtsTask(request *CreateTtsTaskRequest) (response *CreateT
 //
 // <li>支持回调或轮询的方式获取结果，结果获取请参考 长文本语音合成结果查询。</li>
 //
-// <li>长文本语音合成任务完成后，合成音频结果在服务端可保存24小时</li>
+// <li>提交长文本语音合成请求后，合成结果在3小时内完成，音频文件在服务端可保存24小时</li>
 //
 // 
 //

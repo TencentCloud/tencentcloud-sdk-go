@@ -1,10 +1,27 @@
 # 本版本更新包含以下内容：
 
-## 批量计算(batch) 版本：2017-03-12
+## 云防火墙(cfw) 版本：2019-09-04
 
-### 第 42 次发布
+### 第 21 次发布
 
-发布时间：2022-08-25 06:10:07
+发布时间：2022-08-29 06:15:32
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除接口**：</font>
+
+* DeleteSecurityGroupAllRule
+* DescribeNatRuleOverview
+
+
+
+## 消息队列 Ckafka(ckafka) 版本：2019-08-19
+
+### 第 55 次发布
+
+发布时间：2022-08-29 06:16:32
 
 本次发布包含了以下内容：
 
@@ -12,18 +29,22 @@
 
 修改数据结构：
 
-* [Docker](https://cloud.tencent.com/document/api/599/15912#Docker)
+* [MySQLParam](https://cloud.tencent.com/document/api/597/40861#MySQLParam)
 
-	* 新增成员：MaxRetryCount, DelayOnRetry
+	* 新增成员：RecordWithSchema
+
+* [PostgreSQLParam](https://cloud.tencent.com/document/api/597/40861#PostgreSQLParam)
+
+	* 新增成员：DataFormat, DataTargetInsertMode, DataTargetPrimaryKeyField, DataTargetRecordMapping, DropInvalidMessage
 
 
 
 
-## 云原生数据库 TDSQL-C(cynosdb) 版本：2019-01-07
+## 电子签服务(ess) 版本：2020-11-11
 
-### 第 23 次发布
+### 第 15 次发布
 
-发布时间：2022-08-25 06:22:53
+发布时间：2022-08-29 00:06:53
 
 本次发布包含了以下内容：
 
@@ -31,174 +52,69 @@
 
 新增接口：
 
-* [AddClusterSlaveZone](https://cloud.tencent.com/document/api/1003/79555)
-* [DescribeClusterParams](https://cloud.tencent.com/document/api/1003/79556)
-* [ModifyClusterSlaveZone](https://cloud.tencent.com/document/api/1003/79554)
-* [RemoveClusterSlaveZone](https://cloud.tencent.com/document/api/1003/79553)
-* [SwitchClusterZone](https://cloud.tencent.com/document/api/1003/79552)
+* [CreateFlowEvidenceReport](https://cloud.tencent.com/document/api/1323/79686)
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
+
+### 第 28 次发布
+
+发布时间：2022-08-29 00:07:08
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateChannelFlowEvidenceReport](https://cloud.tencent.com/document/api/1420/79688)
 
 修改接口：
 
-* [DescribeRollbackTimeRange](https://cloud.tencent.com/document/api/1003/48092)
+* [ChannelGetTaskResultApi](https://cloud.tencent.com/document/api/1420/78773)
 
-	* 新增出参：RollbackTimeRanges
+	* 新增出参：PreviewUrl
+
+* [CreateFlowsByTemplates](https://cloud.tencent.com/document/api/1420/61523)
+
+	* 新增出参：TaskInfos
 
 
 新增数据结构：
 
-* [ParamInfo](https://cloud.tencent.com/document/api/1003/48097#ParamInfo)
-* [RollbackTimeRange](https://cloud.tencent.com/document/api/1003/48097#RollbackTimeRange)
+* [TaskInfo](https://cloud.tencent.com/document/api/1420/61525#TaskInfo)
 
 
 
-## 分布式数据库 TDSQL(dcdb) 版本：2018-04-11
-
-### 第 44 次发布
-
-发布时间：2022-08-25 06:25:03
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CreateDedicatedClusterDCDBInstance](https://cloud.tencent.com/document/api/557/61369)
-
-	* 新增入参：RollbackInstanceId, RollbackTime
+## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
 
 
 
+## 文字识别(ocr) 版本：2018-11-19
 
-## 全球应用加速(gaap) 版本：2018-05-29
+### 第 76 次发布
 
-### 第 35 次发布
-
-发布时间：2022-08-25 06:30:05
+发布时间：2022-08-29 06:40:32
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-新增接口：
+修改数据结构：
 
-* [CreateGlobalDomain](https://cloud.tencent.com/document/api/608/79567)
-* [CreateGlobalDomainDns](https://cloud.tencent.com/document/api/608/79566)
-* [DeleteGlobalDomain](https://cloud.tencent.com/document/api/608/79565)
-* [DeleteGlobalDomainDns](https://cloud.tencent.com/document/api/608/79564)
-* [DescribeGlobalDomainDns](https://cloud.tencent.com/document/api/608/79563)
-* [DescribeGlobalDomains](https://cloud.tencent.com/document/api/608/79562)
-* [DisableGlobalDomain](https://cloud.tencent.com/document/api/608/79561)
-* [EnableGlobalDomain](https://cloud.tencent.com/document/api/608/79560)
-* [ModifyGlobalDomainAttribute](https://cloud.tencent.com/document/api/608/79559)
-* [ModifyGlobalDomainDns](https://cloud.tencent.com/document/api/608/79558)
+* [VatInvoice](https://cloud.tencent.com/document/api/866/33527#VatInvoice)
 
-新增数据结构：
+	* 新增成员：TaxBureau, TrafficFreeFlag
 
-* [Domain](https://cloud.tencent.com/document/api/608/37023#Domain)
-* [GlobalDns](https://cloud.tencent.com/document/api/608/37023#GlobalDns)
-* [ProxyAccessInfo](https://cloud.tencent.com/document/api/608/37023#ProxyAccessInfo)
+* [VatInvoiceItem](https://cloud.tencent.com/document/api/866/33527#VatInvoiceItem)
 
+	* 新增成员：TaxClassifyCode
 
+* [VehicleInvoiceInfo](https://cloud.tencent.com/document/api/866/33527#VehicleInvoiceInfo)
 
-## 小程序安全(mmps) 版本：2020-07-10
+	* 新增成员：BuyerNo
 
-### 第 7 次发布
-
-发布时间：2022-08-25 06:38:57
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [DescribeScanTaskReportUrl](https://cloud.tencent.com/document/api/1223/75156)
-
-	* 新增出参：ReportResult
-
-
-
-
-## 流计算 Oceanus(oceanus) 版本：2019-04-22
-
-### 第 24 次发布
-
-发布时间：2022-08-25 06:41:36
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DescribeTreeResources](https://cloud.tencent.com/document/api/849/79568)
-
-
-
-## 容器镜像服务(tcr) 版本：2019-09-24
-
-### 第 43 次发布
-
-发布时间：2022-08-25 06:49:32
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [CreateImageAccelerationService](https://cloud.tencent.com/document/api/1141/79580)
-* [CreateInstanceCustomizedDomain](https://cloud.tencent.com/document/api/1141/79579)
-* [CreateSecurityPolicies](https://cloud.tencent.com/document/api/1141/79578)
-* [CreateSignature](https://cloud.tencent.com/document/api/1141/79571)
-* [CreateSignaturePolicy](https://cloud.tencent.com/document/api/1141/79584)
-* [DeleteImageAccelerateService](https://cloud.tencent.com/document/api/1141/79577)
-* [DeleteInstanceCustomizedDomain](https://cloud.tencent.com/document/api/1141/79576)
-* [DeleteReplicationInstance](https://cloud.tencent.com/document/api/1141/79581)
-* [DeleteRepositoryTags](https://cloud.tencent.com/document/api/1141/79570)
-* [DeleteSignaturePolicy](https://cloud.tencent.com/document/api/1141/79583)
-* [DescribeGCJobs](https://cloud.tencent.com/document/api/1141/79569)
-* [DescribeImageAccelerateService](https://cloud.tencent.com/document/api/1141/79575)
-* [DescribeInstanceAll](https://cloud.tencent.com/document/api/1141/79574)
-* [DescribeInstanceAllNamespaces](https://cloud.tencent.com/document/api/1141/79582)
-* [DescribeInstanceCustomizedDomain](https://cloud.tencent.com/document/api/1141/79573)
-* [DescribeRegions](https://cloud.tencent.com/document/api/1141/79572)
-
-新增数据结构：
-
-* [CustomizedDomainInfo](https://cloud.tencent.com/document/api/1141/41603#CustomizedDomainInfo)
-* [GCJobInfo](https://cloud.tencent.com/document/api/1141/41603#GCJobInfo)
-* [Region](https://cloud.tencent.com/document/api/1141/41603#Region)
-* [Schedule](https://cloud.tencent.com/document/api/1141/41603#Schedule)
-
-
-
-## 云点播(vod) 版本：2018-07-17
-
-### 第 116 次发布
-
-发布时间：2022-08-25 06:58:49
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DescribeDrmKeyProviderInfo](https://cloud.tencent.com/document/api/266/79586)
-* [SetDrmKeyProviderInfo](https://cloud.tencent.com/document/api/266/79585)
-
-修改接口：
-
-* [SearchMedia](https://cloud.tencent.com/document/api/266/31813)
-
-	* 新增入参：TrtcSdkAppIds, TrtcRoomIds
-
-
-新增数据结构：
-
-* [SDMCDrmKeyProviderInfo](https://cloud.tencent.com/document/api/266/31773#SDMCDrmKeyProviderInfo)
 
 
 
@@ -9693,6 +9609,21 @@
 
 ## 云拨测(cat) 版本：2018-04-09
 
+### 第 12 次发布
+
+发布时间：2022-08-26 06:12:22
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [UpdateProbeTaskConfigurationList](https://cloud.tencent.com/document/api/280/66201)
+
+	* 新增入参：ResourceIDs
+
+
 ### 第 11 次发布
 
 发布时间：2022-08-02 06:06:56
@@ -16291,6 +16222,31 @@
 
 ## 云防火墙(cfw) 版本：2019-09-04
 
+### 第 21 次发布
+
+发布时间：2022-08-29 06:15:32
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除接口**：</font>
+
+* DeleteSecurityGroupAllRule
+* DescribeNatRuleOverview
+
+### 第 20 次发布
+
+发布时间：2022-08-26 06:15:17
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除接口**：</font>
+
+* RunSyncAsset
+
 ### 第 19 次发布
 
 发布时间：2022-05-12 06:07:30
@@ -17432,6 +17388,25 @@
 
 
 ## 消息队列 Ckafka(ckafka) 版本：2019-08-19
+
+### 第 55 次发布
+
+发布时间：2022-08-29 06:16:32
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [MySQLParam](https://cloud.tencent.com/document/api/597/40861#MySQLParam)
+
+	* 新增成员：RecordWithSchema
+
+* [PostgreSQLParam](https://cloud.tencent.com/document/api/597/40861#PostgreSQLParam)
+
+	* 新增成员：DataFormat, DataTargetInsertMode, DataTargetPrimaryKeyField, DataTargetRecordMapping, DropInvalidMessage
+
 
 ### 第 54 次发布
 
@@ -28448,11 +28423,11 @@
 
 新增接口：
 
-* [[AddClusterSlaveZone](https://cloud.tencent.com/document/api/1003/79555)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeClusterParams](https://cloud.tencent.com/document/api/1003/79556)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyClusterSlaveZone](https://cloud.tencent.com/document/api/1003/79554)](https://cloud.tencent.com/document/api/#/#)
-* [[RemoveClusterSlaveZone](https://cloud.tencent.com/document/api/1003/79553)](https://cloud.tencent.com/document/api/#/#)
-* [[SwitchClusterZone](https://cloud.tencent.com/document/api/1003/79552)](https://cloud.tencent.com/document/api/#/#)
+* [AddClusterSlaveZone](https://cloud.tencent.com/document/api/1003/79555)
+* [DescribeClusterParams](https://cloud.tencent.com/document/api/1003/79556)
+* [ModifyClusterSlaveZone](https://cloud.tencent.com/document/api/1003/79554)
+* [RemoveClusterSlaveZone](https://cloud.tencent.com/document/api/1003/79553)
+* [SwitchClusterZone](https://cloud.tencent.com/document/api/1003/79552)
 
 修改接口：
 
@@ -28463,8 +28438,8 @@
 
 新增数据结构：
 
-* [[ParamInfo](https://cloud.tencent.com/document/api/1003/48097#ParamInfo)](https://cloud.tencent.com/document/api/1003/48097#[ParamInfo](https://cloud.tencent.com/document/api/1003/48097#ParamInfo))
-* [[RollbackTimeRange](https://cloud.tencent.com/document/api/1003/48097#RollbackTimeRange)](https://cloud.tencent.com/document/api/1003/48097#[RollbackTimeRange](https://cloud.tencent.com/document/api/1003/48097#RollbackTimeRange))
+* [ParamInfo](https://cloud.tencent.com/document/api/1003/48097#ParamInfo)
+* [RollbackTimeRange](https://cloud.tencent.com/document/api/1003/48097#RollbackTimeRange)
 
 ### 第 22 次发布
 
@@ -37369,6 +37344,18 @@
 
 ## 电子签服务(ess) 版本：2020-11-11
 
+### 第 15 次发布
+
+发布时间：2022-08-29 00:06:53
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateFlowEvidenceReport](https://cloud.tencent.com/document/api/1323/79686)](https://cloud.tencent.com/document/api/#/#)
+
 ### 第 14 次发布
 
 发布时间：2022-08-11 22:36:30
@@ -37739,6 +37726,33 @@
 
 
 ## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
+
+### 第 28 次发布
+
+发布时间：2022-08-29 00:07:08
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateChannelFlowEvidenceReport](https://cloud.tencent.com/document/api/1420/79688)](https://cloud.tencent.com/document/api/#/#)
+
+修改接口：
+
+* [ChannelGetTaskResultApi](https://cloud.tencent.com/document/api/1420/78773)
+
+	* 新增出参：PreviewUrl
+
+* [CreateFlowsByTemplates](https://cloud.tencent.com/document/api/1420/61523)
+
+	* 新增出参：TaskInfos
+
+
+新增数据结构：
+
+* [[TaskInfo](https://cloud.tencent.com/document/api/1420/61525#TaskInfo)](https://cloud.tencent.com/document/api/1420/61525#[TaskInfo](https://cloud.tencent.com/document/api/1420/61525#TaskInfo))
 
 ### 第 27 次发布
 
@@ -38364,6 +38378,28 @@
 
 
 ## 人脸核身(faceid) 版本：2018-03-01
+
+### 第 45 次发布
+
+发布时间：2022-08-26 06:28:34
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [GetDetectInfoEnhanced](https://cloud.tencent.com/document/api/1007/41957)
+
+	* 新增入参：Encryption
+
+
+修改数据结构：
+
+* [Encryption](https://cloud.tencent.com/document/api/1007/41958#Encryption)
+
+	* 新增成员：Algorithm, TagList
+
 
 ### 第 44 次发布
 
@@ -39367,22 +39403,22 @@
 
 新增接口：
 
-* [[CreateGlobalDomain](https://cloud.tencent.com/document/api/608/79567)](https://cloud.tencent.com/document/api/#/#)
-* [[CreateGlobalDomainDns](https://cloud.tencent.com/document/api/608/79566)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteGlobalDomain](https://cloud.tencent.com/document/api/608/79565)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteGlobalDomainDns](https://cloud.tencent.com/document/api/608/79564)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeGlobalDomainDns](https://cloud.tencent.com/document/api/608/79563)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeGlobalDomains](https://cloud.tencent.com/document/api/608/79562)](https://cloud.tencent.com/document/api/#/#)
-* [[DisableGlobalDomain](https://cloud.tencent.com/document/api/608/79561)](https://cloud.tencent.com/document/api/#/#)
-* [[EnableGlobalDomain](https://cloud.tencent.com/document/api/608/79560)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyGlobalDomainAttribute](https://cloud.tencent.com/document/api/608/79559)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyGlobalDomainDns](https://cloud.tencent.com/document/api/608/79558)](https://cloud.tencent.com/document/api/#/#)
+* [CreateGlobalDomain](https://cloud.tencent.com/document/api/608/79567)
+* [CreateGlobalDomainDns](https://cloud.tencent.com/document/api/608/79566)
+* [DeleteGlobalDomain](https://cloud.tencent.com/document/api/608/79565)
+* [DeleteGlobalDomainDns](https://cloud.tencent.com/document/api/608/79564)
+* [DescribeGlobalDomainDns](https://cloud.tencent.com/document/api/608/79563)
+* [DescribeGlobalDomains](https://cloud.tencent.com/document/api/608/79562)
+* [DisableGlobalDomain](https://cloud.tencent.com/document/api/608/79561)
+* [EnableGlobalDomain](https://cloud.tencent.com/document/api/608/79560)
+* [ModifyGlobalDomainAttribute](https://cloud.tencent.com/document/api/608/79559)
+* [ModifyGlobalDomainDns](https://cloud.tencent.com/document/api/608/79558)
 
 新增数据结构：
 
-* [[Domain](https://cloud.tencent.com/document/api/608/37023#Domain)](https://cloud.tencent.com/document/api/608/37023#[Domain](https://cloud.tencent.com/document/api/608/37023#Domain))
-* [[GlobalDns](https://cloud.tencent.com/document/api/608/37023#GlobalDns)](https://cloud.tencent.com/document/api/608/37023#[GlobalDns](https://cloud.tencent.com/document/api/608/37023#GlobalDns))
-* [[ProxyAccessInfo](https://cloud.tencent.com/document/api/608/37023#ProxyAccessInfo)](https://cloud.tencent.com/document/api/608/37023#[ProxyAccessInfo](https://cloud.tencent.com/document/api/608/37023#ProxyAccessInfo))
+* [Domain](https://cloud.tencent.com/document/api/608/37023#Domain)
+* [GlobalDns](https://cloud.tencent.com/document/api/608/37023#GlobalDns)
+* [ProxyAccessInfo](https://cloud.tencent.com/document/api/608/37023#ProxyAccessInfo)
 
 ### 第 34 次发布
 
@@ -55640,7 +55676,7 @@
 
 新增接口：
 
-* [[DescribeTreeResources](https://cloud.tencent.com/document/api/849/79568)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeTreeResources](https://cloud.tencent.com/document/api/849/79568)
 
 ### 第 23 次发布
 
@@ -56125,6 +56161,29 @@
 
 
 ## 文字识别(ocr) 版本：2018-11-19
+
+### 第 76 次发布
+
+发布时间：2022-08-29 06:40:32
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [VatInvoice](https://cloud.tencent.com/document/api/866/33527#VatInvoice)
+
+	* 新增成员：TaxBureau, TrafficFreeFlag
+
+* [VatInvoiceItem](https://cloud.tencent.com/document/api/866/33527#VatInvoiceItem)
+
+	* 新增成员：TaxClassifyCode
+
+* [VehicleInvoiceInfo](https://cloud.tencent.com/document/api/866/33527#VehicleInvoiceInfo)
+
+	* 新增成员：BuyerNo
+
 
 ### 第 75 次发布
 
@@ -68920,29 +68979,29 @@
 
 新增接口：
 
-* [[CreateImageAccelerationService](https://cloud.tencent.com/document/api/1141/79580)](https://cloud.tencent.com/document/api/#/#)
-* [[CreateInstanceCustomizedDomain](https://cloud.tencent.com/document/api/1141/79579)](https://cloud.tencent.com/document/api/#/#)
-* [[CreateSecurityPolicies](https://cloud.tencent.com/document/api/1141/79578)](https://cloud.tencent.com/document/api/#/#)
-* [[CreateSignature](https://cloud.tencent.com/document/api/1141/79571)](https://cloud.tencent.com/document/api/#/#)
-* [[CreateSignaturePolicy](https://cloud.tencent.com/document/api/1141/79584)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteImageAccelerateService](https://cloud.tencent.com/document/api/1141/79577)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteInstanceCustomizedDomain](https://cloud.tencent.com/document/api/1141/79576)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteReplicationInstance](https://cloud.tencent.com/document/api/1141/79581)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteRepositoryTags](https://cloud.tencent.com/document/api/1141/79570)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteSignaturePolicy](https://cloud.tencent.com/document/api/1141/79583)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeGCJobs](https://cloud.tencent.com/document/api/1141/79569)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeImageAccelerateService](https://cloud.tencent.com/document/api/1141/79575)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeInstanceAll](https://cloud.tencent.com/document/api/1141/79574)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeInstanceAllNamespaces](https://cloud.tencent.com/document/api/1141/79582)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeInstanceCustomizedDomain](https://cloud.tencent.com/document/api/1141/79573)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeRegions](https://cloud.tencent.com/document/api/1141/79572)](https://cloud.tencent.com/document/api/#/#)
+* [CreateImageAccelerationService](https://cloud.tencent.com/document/api/1141/79580)
+* [CreateInstanceCustomizedDomain](https://cloud.tencent.com/document/api/1141/79579)
+* [CreateSecurityPolicies](https://cloud.tencent.com/document/api/1141/79578)
+* [CreateSignature](https://cloud.tencent.com/document/api/1141/79571)
+* [CreateSignaturePolicy](https://cloud.tencent.com/document/api/1141/79584)
+* [DeleteImageAccelerateService](https://cloud.tencent.com/document/api/1141/79577)
+* [DeleteInstanceCustomizedDomain](https://cloud.tencent.com/document/api/1141/79576)
+* [DeleteReplicationInstance](https://cloud.tencent.com/document/api/1141/79581)
+* [DeleteRepositoryTags](https://cloud.tencent.com/document/api/1141/79570)
+* [DeleteSignaturePolicy](https://cloud.tencent.com/document/api/1141/79583)
+* [DescribeGCJobs](https://cloud.tencent.com/document/api/1141/79569)
+* [DescribeImageAccelerateService](https://cloud.tencent.com/document/api/1141/79575)
+* [DescribeInstanceAll](https://cloud.tencent.com/document/api/1141/79574)
+* [DescribeInstanceAllNamespaces](https://cloud.tencent.com/document/api/1141/79582)
+* [DescribeInstanceCustomizedDomain](https://cloud.tencent.com/document/api/1141/79573)
+* [DescribeRegions](https://cloud.tencent.com/document/api/1141/79572)
 
 新增数据结构：
 
-* [[CustomizedDomainInfo](https://cloud.tencent.com/document/api/1141/41603#CustomizedDomainInfo)](https://cloud.tencent.com/document/api/1141/41603#[CustomizedDomainInfo](https://cloud.tencent.com/document/api/1141/41603#CustomizedDomainInfo))
-* [[GCJobInfo](https://cloud.tencent.com/document/api/1141/41603#GCJobInfo)](https://cloud.tencent.com/document/api/1141/41603#[GCJobInfo](https://cloud.tencent.com/document/api/1141/41603#GCJobInfo))
-* [[Region](https://cloud.tencent.com/document/api/1141/41603#Region)](https://cloud.tencent.com/document/api/1141/41603#[Region](https://cloud.tencent.com/document/api/1141/41603#Region))
-* [[Schedule](https://cloud.tencent.com/document/api/1141/41603#Schedule)](https://cloud.tencent.com/document/api/1141/41603#[Schedule](https://cloud.tencent.com/document/api/1141/41603#Schedule))
+* [CustomizedDomainInfo](https://cloud.tencent.com/document/api/1141/41603#CustomizedDomainInfo)
+* [GCJobInfo](https://cloud.tencent.com/document/api/1141/41603#GCJobInfo)
+* [Region](https://cloud.tencent.com/document/api/1141/41603#Region)
+* [Schedule](https://cloud.tencent.com/document/api/1141/41603#Schedule)
 
 ### 第 42 次发布
 
@@ -72497,6 +72556,45 @@
 
 
 ## 边缘安全加速平台(teo) 版本：2022-01-06
+
+### 第 22 次发布
+
+发布时间：2022-08-26 06:50:57
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreatePlanForZone](https://cloud.tencent.com/document/api/1552/79666)
+* [CreateRule](https://cloud.tencent.com/document/api/1552/79672)
+* [DeleteRules](https://cloud.tencent.com/document/api/1552/79671)
+* [DescribeAvailablePlans](https://cloud.tencent.com/document/api/1552/79665)
+* [DescribeRules](https://cloud.tencent.com/document/api/1552/79670)
+* [DescribeRulesSetting](https://cloud.tencent.com/document/api/1552/79669)
+* [ModifyRule](https://cloud.tencent.com/document/api/1552/79668)
+* [ModifyRulePriority](https://cloud.tencent.com/document/api/1552/79667)
+
+新增数据结构：
+
+* [PlanInfo](https://cloud.tencent.com/document/api/1552/73155#PlanInfo)
+* [RuleAction](https://cloud.tencent.com/document/api/1552/73155#RuleAction)
+* [RuleAndConditions](https://cloud.tencent.com/document/api/1552/73155#RuleAndConditions)
+* [RuleChoicePropertiesItem](https://cloud.tencent.com/document/api/1552/73155#RuleChoicePropertiesItem)
+* [RuleCodeAction](https://cloud.tencent.com/document/api/1552/73155#RuleCodeAction)
+* [RuleCodeActionParams](https://cloud.tencent.com/document/api/1552/73155#RuleCodeActionParams)
+* [RuleCondition](https://cloud.tencent.com/document/api/1552/73155#RuleCondition)
+* [RuleExtraParameter](https://cloud.tencent.com/document/api/1552/73155#RuleExtraParameter)
+* [RuleFilter](https://cloud.tencent.com/document/api/1552/73155#RuleFilter)
+* [RuleItem](https://cloud.tencent.com/document/api/1552/73155#RuleItem)
+* [RuleNormalAction](https://cloud.tencent.com/document/api/1552/73155#RuleNormalAction)
+* [RuleNormalActionParams](https://cloud.tencent.com/document/api/1552/73155#RuleNormalActionParams)
+* [RuleRewriteAction](https://cloud.tencent.com/document/api/1552/73155#RuleRewriteAction)
+* [RuleRewriteActionParams](https://cloud.tencent.com/document/api/1552/73155#RuleRewriteActionParams)
+* [RuleSettingDetail](https://cloud.tencent.com/document/api/1552/73155#RuleSettingDetail)
+* [RulesProperties](https://cloud.tencent.com/document/api/1552/73155#RulesProperties)
+* [RulesSettingAction](https://cloud.tencent.com/document/api/1552/73155#RulesSettingAction)
 
 ### 第 21 次发布
 
@@ -82001,8 +82099,8 @@
 
 新增接口：
 
-* [[DescribeDrmKeyProviderInfo](https://cloud.tencent.com/document/api/266/79586)](https://cloud.tencent.com/document/api/#/#)
-* [[SetDrmKeyProviderInfo](https://cloud.tencent.com/document/api/266/79585)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeDrmKeyProviderInfo](https://cloud.tencent.com/document/api/266/79586)
+* [SetDrmKeyProviderInfo](https://cloud.tencent.com/document/api/266/79585)
 
 修改接口：
 
@@ -82013,7 +82111,7 @@
 
 新增数据结构：
 
-* [[SDMCDrmKeyProviderInfo](https://cloud.tencent.com/document/api/266/31773#SDMCDrmKeyProviderInfo)](https://cloud.tencent.com/document/api/266/31773#[SDMCDrmKeyProviderInfo](https://cloud.tencent.com/document/api/266/31773#SDMCDrmKeyProviderInfo))
+* [SDMCDrmKeyProviderInfo](https://cloud.tencent.com/document/api/266/31773#SDMCDrmKeyProviderInfo)
 
 ### 第 115 次发布
 

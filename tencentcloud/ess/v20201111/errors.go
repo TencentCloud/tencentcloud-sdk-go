@@ -416,6 +416,9 @@ const (
 	// 未完成实名认证，请检查后重试。
 	OPERATIONDENIED_NOVERIFY = "OperationDenied.NoVerify"
 
+	// 不属于企业超管或者法人。
+	OPERATIONDENIED_NOTBELONGSUPERADMINORLEGALPERSON = "OperationDenied.NotBelongSuperAdminOrLegalPerson"
+
 	// 此社会信用编码未查询到结果，请检查后重试。
 	OPERATIONDENIED_ORGUNIFORMSOCIALCREDITCODEERR = "OperationDenied.OrgUniformSocialCreditCodeErr"
 
@@ -514,6 +517,9 @@ const (
 
 	// 模板不存在，请检查模板参数，模板配置，并稍后重试。
 	RESOURCENOTFOUND_TEMPLATE = "ResourceNotFound.Template"
+
+	// Url不存在。
+	RESOURCENOTFOUND_URL = "ResourceNotFound.Url"
 
 	// 用户或者员工信息不存在，请检查参数后重试。
 	RESOURCENOTFOUND_USER = "ResourceNotFound.User"

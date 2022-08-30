@@ -1263,7 +1263,7 @@ func (r *SignUpCfsServiceRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type SignUpCfsServiceResponseParams struct {
-	// 该用户当前 CFS 服务的状态，none 是未开通，creating 是开通中，created 是已开通
+	// 该用户当前 CFS 服务的状态，creating 是开通中，created 是已开通
 	CfsServiceStatus *string `json:"CfsServiceStatus,omitempty" name:"CfsServiceStatus"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。

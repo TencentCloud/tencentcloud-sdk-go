@@ -1512,6 +1512,89 @@ func (r *CreateOriginGroupResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreatePlanForZoneRequestParams struct {
+	// 站点ID。
+	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
+
+	// 所要购买套餐的类型，取值有：
+	// <li> sta: 全球内容分发网络（不包括中国大陆）标准版套餐； </li>
+	// <li> sta_with_bot: 全球内容分发网络（不包括中国大陆）标准版套餐附带bot管理；</li>
+	// <li> sta_cm: 中国大陆内容分发网络标准版套餐； </li>
+	// <li> sta_cm_with_bot: 中国大陆内容分发网络标准版套餐附带bot管理；</li>
+	// <li> ent: 全球内容分发网络（不包括中国大陆）企业版套餐； </li>
+	// <li> ent_with_bot: 全球内容分发网络（不包括中国大陆）企业版套餐附带bot管理；</li>
+	// <li> ent_cm: 中国大陆内容分发网络企业版套餐； </li>
+	// <li> ent_cm_with_bot: 中国大陆内容分发网络企业版套餐附带bot管理。</li>当前账户可购买套餐类型请以<a href="https://tcloud4api.woa.com/document/product/1657/80124?!preview&!document=1">DescribeAvailablePlans</a>返回为准。
+	PlanType *string `json:"PlanType,omitempty" name:"PlanType"`
+}
+
+type CreatePlanForZoneRequest struct {
+	*tchttp.BaseRequest
+	
+	// 站点ID。
+	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
+
+	// 所要购买套餐的类型，取值有：
+	// <li> sta: 全球内容分发网络（不包括中国大陆）标准版套餐； </li>
+	// <li> sta_with_bot: 全球内容分发网络（不包括中国大陆）标准版套餐附带bot管理；</li>
+	// <li> sta_cm: 中国大陆内容分发网络标准版套餐； </li>
+	// <li> sta_cm_with_bot: 中国大陆内容分发网络标准版套餐附带bot管理；</li>
+	// <li> ent: 全球内容分发网络（不包括中国大陆）企业版套餐； </li>
+	// <li> ent_with_bot: 全球内容分发网络（不包括中国大陆）企业版套餐附带bot管理；</li>
+	// <li> ent_cm: 中国大陆内容分发网络企业版套餐； </li>
+	// <li> ent_cm_with_bot: 中国大陆内容分发网络企业版套餐附带bot管理。</li>当前账户可购买套餐类型请以<a href="https://tcloud4api.woa.com/document/product/1657/80124?!preview&!document=1">DescribeAvailablePlans</a>返回为准。
+	PlanType *string `json:"PlanType,omitempty" name:"PlanType"`
+}
+
+func (r *CreatePlanForZoneRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreatePlanForZoneRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ZoneId")
+	delete(f, "PlanType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreatePlanForZoneRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreatePlanForZoneResponseParams struct {
+	// 购买的资源名字列表。
+	ResourceNames []*string `json:"ResourceNames,omitempty" name:"ResourceNames"`
+
+	// 购买的订单号列表。
+	DealNames []*string `json:"DealNames,omitempty" name:"DealNames"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreatePlanForZoneResponse struct {
+	*tchttp.BaseResponse
+	Response *CreatePlanForZoneResponseParams `json:"Response"`
+}
+
+func (r *CreatePlanForZoneResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreatePlanForZoneResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreatePrefetchTaskRequestParams struct {
 	// Zone ID
 	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
@@ -1702,6 +1785,88 @@ func (r *CreatePurgeTaskResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreatePurgeTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateRuleRequestParams struct {
+	// 站点 ID。
+	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
+
+	// 规则名称，名称字符串长度 1～255。
+	RuleName *string `json:"RuleName,omitempty" name:"RuleName"`
+
+	// 规则状态，取值有：
+	// <li> enable: 启用； </li>
+	// <li> disable: 未启用。</li>
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 规则内容。
+	Rules []*RuleItem `json:"Rules,omitempty" name:"Rules"`
+}
+
+type CreateRuleRequest struct {
+	*tchttp.BaseRequest
+	
+	// 站点 ID。
+	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
+
+	// 规则名称，名称字符串长度 1～255。
+	RuleName *string `json:"RuleName,omitempty" name:"RuleName"`
+
+	// 规则状态，取值有：
+	// <li> enable: 启用； </li>
+	// <li> disable: 未启用。</li>
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 规则内容。
+	Rules []*RuleItem `json:"Rules,omitempty" name:"Rules"`
+}
+
+func (r *CreateRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateRuleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ZoneId")
+	delete(f, "RuleName")
+	delete(f, "Status")
+	delete(f, "Rules")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateRuleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateRuleResponseParams struct {
+	// 规则 ID。
+	RuleId *string `json:"RuleId,omitempty" name:"RuleId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateRuleResponseParams `json:"Response"`
+}
+
+func (r *CreateRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateRuleResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2681,6 +2846,67 @@ func (r *DeleteOriginGroupResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DeleteRulesRequestParams struct {
+	// 站点 ID。
+	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
+
+	// 指定删除的规则 ID 列表。
+	RuleIds []*string `json:"RuleIds,omitempty" name:"RuleIds"`
+}
+
+type DeleteRulesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 站点 ID。
+	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
+
+	// 指定删除的规则 ID 列表。
+	RuleIds []*string `json:"RuleIds,omitempty" name:"RuleIds"`
+}
+
+func (r *DeleteRulesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteRulesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ZoneId")
+	delete(f, "RuleIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteRulesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteRulesResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DeleteRulesResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteRulesResponseParams `json:"Response"`
+}
+
+func (r *DeleteRulesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteRulesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DeleteZoneRequestParams struct {
 	// 站点 ID
 	Id *string `json:"Id,omitempty" name:"Id"`
@@ -2956,6 +3182,61 @@ func (r *DescribeApplicationProxyResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeApplicationProxyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAvailablePlansRequestParams struct {
+
+}
+
+type DescribeAvailablePlansRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DescribeAvailablePlansRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAvailablePlansRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAvailablePlansRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAvailablePlansResponseParams struct {
+	// 当前账户可购买套餐类型及相关信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PlanInfoList []*PlanInfo `json:"PlanInfoList,omitempty" name:"PlanInfoList"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeAvailablePlansResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAvailablePlansResponseParams `json:"Response"`
+}
+
+func (r *DescribeAvailablePlansResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAvailablePlansResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -5398,6 +5679,127 @@ func (r *DescribePurgeTasksResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribePurgeTasksResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRulesRequestParams struct {
+	// 站点 ID。
+	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
+
+	// 过滤参数，不填默认不过滤。
+	Filters []*RuleFilter `json:"Filters,omitempty" name:"Filters"`
+}
+
+type DescribeRulesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 站点 ID。
+	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
+
+	// 过滤参数，不填默认不过滤。
+	Filters []*RuleFilter `json:"Filters,omitempty" name:"Filters"`
+}
+
+func (r *DescribeRulesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRulesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ZoneId")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRulesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRulesResponseParams struct {
+	// 站点 ID。
+	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
+
+	// 规则列表，按规则执行顺序从先往后排序。
+	RuleList []*RuleSettingDetail `json:"RuleList,omitempty" name:"RuleList"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeRulesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeRulesResponseParams `json:"Response"`
+}
+
+func (r *DescribeRulesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRulesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRulesSettingRequestParams struct {
+
+}
+
+type DescribeRulesSettingRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DescribeRulesSettingRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRulesSettingRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRulesSettingRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRulesSettingResponseParams struct {
+	// 规则引擎可应用匹配请求的设置列表及其详细建议配置信息。
+	Actions []*RulesSettingAction `json:"Actions,omitempty" name:"Actions"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeRulesSettingResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeRulesSettingResponseParams `json:"Response"`
+}
+
+func (r *DescribeRulesSettingResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRulesSettingResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -9674,6 +10076,156 @@ func (r *ModifyOriginGroupResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyRulePriorityRequestParams struct {
+	// 站点 ID。
+	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
+
+	// 规则 ID 的顺序，多条规则执行顺序依次往下。
+	RuleIds []*string `json:"RuleIds,omitempty" name:"RuleIds"`
+}
+
+type ModifyRulePriorityRequest struct {
+	*tchttp.BaseRequest
+	
+	// 站点 ID。
+	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
+
+	// 规则 ID 的顺序，多条规则执行顺序依次往下。
+	RuleIds []*string `json:"RuleIds,omitempty" name:"RuleIds"`
+}
+
+func (r *ModifyRulePriorityRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyRulePriorityRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ZoneId")
+	delete(f, "RuleIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyRulePriorityRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyRulePriorityResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ModifyRulePriorityResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyRulePriorityResponseParams `json:"Response"`
+}
+
+func (r *ModifyRulePriorityResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyRulePriorityResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyRuleRequestParams struct {
+	// 站点 ID。
+	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
+
+	// 规则名称，字符串名称长度 1~255。
+	RuleName *string `json:"RuleName,omitempty" name:"RuleName"`
+
+	// 规则内容。
+	Rules []*RuleItem `json:"Rules,omitempty" name:"Rules"`
+
+	// 规则 ID。
+	RuleId *string `json:"RuleId,omitempty" name:"RuleId"`
+
+	// 规则状态，取值有：
+	// <li> enable: 启用； </li>
+	// <li> disable: 未启用。</li>
+	Status *string `json:"Status,omitempty" name:"Status"`
+}
+
+type ModifyRuleRequest struct {
+	*tchttp.BaseRequest
+	
+	// 站点 ID。
+	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
+
+	// 规则名称，字符串名称长度 1~255。
+	RuleName *string `json:"RuleName,omitempty" name:"RuleName"`
+
+	// 规则内容。
+	Rules []*RuleItem `json:"Rules,omitempty" name:"Rules"`
+
+	// 规则 ID。
+	RuleId *string `json:"RuleId,omitempty" name:"RuleId"`
+
+	// 规则状态，取值有：
+	// <li> enable: 启用； </li>
+	// <li> disable: 未启用。</li>
+	Status *string `json:"Status,omitempty" name:"Status"`
+}
+
+func (r *ModifyRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyRuleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ZoneId")
+	delete(f, "RuleName")
+	delete(f, "Rules")
+	delete(f, "RuleId")
+	delete(f, "Status")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyRuleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyRuleResponseParams struct {
+	// 规则 ID。
+	RuleId *string `json:"RuleId,omitempty" name:"RuleId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ModifyRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyRuleResponseParams `json:"Response"`
+}
+
+func (r *ModifyRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyRuleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifySecurityPolicyRequestParams struct {
 	// 一级域名
 	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
@@ -10348,6 +10900,44 @@ type OriginRecordPrivateParameter struct {
 	Value *string `json:"Value,omitempty" name:"Value"`
 }
 
+type PlanInfo struct {
+	// 结算货币类型，取值有：
+	// <li> CNY ：人民币结算； </li>
+	// <li> USD ：美元结算。</li>
+	Currency *string `json:"Currency,omitempty" name:"Currency"`
+
+	// 套餐所含流量（单位：字节）
+	Flux *uint64 `json:"Flux,omitempty" name:"Flux"`
+
+	// 结算周期，取值有：
+	// <li> y ：按年结算； </li>
+	// <li> m ：按月结算；</li>
+	// <li> h ：按小时结算； </li>
+	// <li> M ：按分钟结算；</li>
+	// <li> s ：按秒结算。 </li>
+	Frequency *string `json:"Frequency,omitempty" name:"Frequency"`
+
+	// 套餐类型，取值有：
+	// <li> sta ：全球内容分发网络（不包括中国大陆）标准版套餐； </li>
+	// <li> sta_with_bot ：全球内容分发网络（不包括中国大陆）标准版套餐附带bot管理；</li>
+	// <li> sta_cm ：中国大陆内容分发网络标准版套餐； </li>
+	// <li> sta_cm_with_bot ：中国大陆内容分发网络标准版套餐附带bot管理；</li>
+	// <li> ent ：全球内容分发网络（不包括中国大陆）企业版套餐； </li>
+	// <li> ent_with_bot ： 全球内容分发网络（不包括中国大陆）企业版套餐附带bot管理；</li>
+	// <li> ent_cm ：中国大陆内容分发网络企业版套餐； </li>
+	// <li> ent_cm_with_bot ：中国大陆内容分发网络企业版套餐附带bot管理。</li>
+	PlanType *string `json:"PlanType,omitempty" name:"PlanType"`
+
+	// 套餐价格（单位：分）
+	Price *float64 `json:"Price,omitempty" name:"Price"`
+
+	// 套餐所含请求次数（单位：字节）
+	Request *uint64 `json:"Request,omitempty" name:"Request"`
+
+	// 套餐所能绑定的站点个数。
+	SiteNumber *uint64 `json:"SiteNumber,omitempty" name:"SiteNumber"`
+}
+
 type PortraitManagedRuleDetail struct {
 	// 规则唯一id
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -10615,6 +11205,293 @@ type Resource struct {
 	// <li>mainland：国内；</li>
 	// <li>overseas：海外。</li>
 	Area *string `json:"Area,omitempty" name:"Area"`
+}
+
+type RuleAction struct {
+	// 常规功能操作，选择该类型的功能项有：
+	// <li> 访问URL 重写（AccessUrlRedirect）；</li>
+	// <li> 回源 URL 重写 （UpstreamUrlRedirect）；</li>
+	// <li> QUIC（QUIC）；</li>
+	// <li> WebSocket （WebSocket）；</li>
+	// <li> 视频拖拽（VideoSeek）；</li>
+	// <li> Token 鉴权（Authentication）；</li>
+	// <li> 自定义CacheKey（CacheKey）；</li>
+	// <li> 节点缓存 TTL （Cache）；</li>
+	// <li> 浏览器缓存 TTL（MaxAge）；</li>
+	// <li> 离线缓存（OfflineCache）；</li>
+	// <li> 智能加速（SmartRouting）；</li>
+	// <li> 分片回源（RangeOriginPull）；</li>
+	// <li> HTTP/2 回源（UpstreamHttp2）；</li>
+	// <li> Host Header 重写（HostHeader）；</li>
+	// <li> 强制 HTTPS（ForceRedirect）；</li>
+	// <li> 回源 HTTPS（OriginPullProtocol）；</li>
+	// <li> 缓存预刷新（CachePrefresh）；</li>
+	// <li> 智能压缩（Compression）；</li>
+	// <li> Hsts；</li>
+	// <li> ClientIpHeader；</li>
+	// <li> TlsVersion；</li>
+	// <li> OcspStapling。</li>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NormalAction *RuleNormalAction `json:"NormalAction,omitempty" name:"NormalAction"`
+
+	// 带有请求头/响应头的功能操作，选择该类型的功能项有：
+	// <li> 修改 HTTP 请求头（RequestHeader）；</li>
+	// <li> 修改HTTP响应头（ResponseHeader）。</li>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RewriteAction *RuleRewriteAction `json:"RewriteAction,omitempty" name:"RewriteAction"`
+
+	// 带有状态码的功能操作，选择该类型的功能项有：
+	// <li> 自定义错误页面（ErrorPage）；</li>
+	// <li> 状态码缓存 TTL（StatusCodeCache）。</li>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CodeAction *RuleCodeAction `json:"CodeAction,omitempty" name:"CodeAction"`
+}
+
+type RuleAndConditions struct {
+	// 规则引擎条件，该数组内所有项全部满足即判断该条件满足。
+	Conditions []*RuleCondition `json:"Conditions,omitempty" name:"Conditions"`
+}
+
+type RuleChoicePropertiesItem struct {
+	// 参数名称。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 参数值类型。
+	// <li> CHOICE：参数值只能在 ChoicesValue 中选择； </li>
+	// <li> TOGGLE：参数值为开关类型，可在 ChoicesValue 中选择；</li>
+	// <li> CUSTOM_NUM：参数值用户自定义，整型类型；</li>
+	// <li> CUSTOM_STRING：参数值用户自定义，字符串类型。</li>
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 参数值的可选值。
+	// 注意：若参数值为用户自定义则该数组为空数组。
+	ChoicesValue []*string `json:"ChoicesValue,omitempty" name:"ChoicesValue"`
+
+	// 数值参数的最小值，非数值参数或 Min 和 Max 值都为 0 则此项无意义。
+	Min *int64 `json:"Min,omitempty" name:"Min"`
+
+	// 数值参数的最大值，非数值参数或 Min 和 Max 值都为 0 则此项无意义。
+	Max *int64 `json:"Max,omitempty" name:"Max"`
+
+	// 参数值是否支持多选或者填写多个。
+	IsMultiple *bool `json:"IsMultiple,omitempty" name:"IsMultiple"`
+
+	// 是否允许为空。
+	IsAllowEmpty *bool `json:"IsAllowEmpty,omitempty" name:"IsAllowEmpty"`
+
+	// 特殊参数。
+	// <li> 为 NULL：RuleAction 选择 NormalAction；</li>
+	// <li> 成员参数 Id 为 Action：RuleAction 选择 RewirteAction；</li>
+	// <li> 成员参数 Id 为 StatusCode：RuleAction 选择 CodeAction。</li>
+	ExtraParameter *RuleExtraParameter `json:"ExtraParameter,omitempty" name:"ExtraParameter"`
+}
+
+type RuleCodeAction struct {
+	// 功能名称，功能名称填写规范可调用接口 [查询规则引擎的设置参数](https://tcloud4api.woa.com/document/product/1657/79433?!preview&!document=1) 查看。
+	Action *string `json:"Action,omitempty" name:"Action"`
+
+	// 操作参数。
+	Parameters []*RuleCodeActionParams `json:"Parameters,omitempty" name:"Parameters"`
+}
+
+type RuleCodeActionParams struct {
+	// 状态 Code。
+	StatusCode *int64 `json:"StatusCode,omitempty" name:"StatusCode"`
+
+	// 参数名称，参数填写规范可调用接口 [查询规则引擎的设置参数](https://tcloud4api.woa.com/document/product/1657/79433?!preview&!document=1) 查看。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 参数值。
+	Values []*string `json:"Values,omitempty" name:"Values"`
+}
+
+type RuleCondition struct {
+	// 运算符，取值有：
+	// <li> equal: 等于； </li>
+	// <li> notequal: 不等于。</li>
+	Operator *string `json:"Operator,omitempty" name:"Operator"`
+
+	// 匹配类型，取值有：
+	// <li> 全部（站点任意请求）: host。 </li>
+	// <li> 文件名: filename； </li>
+	// <li> 文件后缀: extension； </li>
+	// <li> HOST: host； </li>
+	// <li> URL Full: full_url，当前站点下完整 URL 路径，必须包含 HTTP 协议，Host 和 路径； </li>
+	// <li> URL Path: url，当前站点下 URL 路径的请求。 </li>
+	Target *string `json:"Target,omitempty" name:"Target"`
+
+	// 对应匹配类型的参数值，对应匹配类型的取值有：
+	// <li> 文件后缀：jpg、txt等文件后缀；</li>
+	// <li> 文件名称：例如 foo.jpg 中的 foo；</li>
+	// <li> 全部（站点任意请求）： all； </li>
+	// <li> HOST：当前站点下的 host ，例如www.maxx55.com；</li>
+	// <li> URL Path：当前站点下 URL 路径的请求，例如：/example；</li>
+	// <li> URL Full：当前站点下完整 URL 请求，必须包含 HTTP 协议，Host 和 路径，例如：https://www.maxx55.cn/example。</li>
+	Values []*string `json:"Values,omitempty" name:"Values"`
+}
+
+type RuleExtraParameter struct {
+	// 参数名，取值有：
+	// <li> Action：修改 HTTP 头部所需参数，RuleAction 选择 RewirteAction；</li>
+	// <li> StatusCode：状态码相关功能所需参数，RuleAction 选择 CodeAction。</li>
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 参数值类型。
+	// <li> CHOICE：参数值只能在 Values 中选择； </li>
+	// <li> CUSTOM_NUM：参数值用户自定义，整型类型；</li>
+	// <li> CUSTOM_STRING：参数值用户自定义，字符串类型。</li>
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 可选参数值。
+	// 注意：当 Id 的值为 StatusCode 时数组中的值为整型，填写参数值时请填写字符串的整型数值。
+	Choices *string `json:"Choices,omitempty" name:"Choices"`
+}
+
+type RuleFilter struct {
+	// 过滤参数，取值有：
+	// <li> RULE_ID：规则 ID。 </li>
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 参数值。
+	Values []*string `json:"Values,omitempty" name:"Values"`
+}
+
+type RuleItem struct {
+	// 执行功能判断条件。
+	// 注意：满足该数组内任意一项条件，功能即可执行。
+	Conditions []*RuleAndConditions `json:"Conditions,omitempty" name:"Conditions"`
+
+	// 执行的功能。
+	Actions []*RuleAction `json:"Actions,omitempty" name:"Actions"`
+}
+
+type RuleNormalAction struct {
+	// 功能名称，功能名称填写规范可调用接口 [查询规则引擎的设置参数](https://tcloud4api.woa.com/document/product/1657/79433?!preview&!document=1) 查看。
+	Action *string `json:"Action,omitempty" name:"Action"`
+
+	// 参数。
+	Parameters []*RuleNormalActionParams `json:"Parameters,omitempty" name:"Parameters"`
+}
+
+type RuleNormalActionParams struct {
+	// 参数名称，参数填写规范可调用接口 [查询规则引擎的设置参数](https://tcloud4api.woa.com/document/product/1657/79433?!preview&!document=1) 查看。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 参数值。
+	Values []*string `json:"Values,omitempty" name:"Values"`
+}
+
+type RuleRewriteAction struct {
+	// 功能名称，功能名称填写规范可调用接口 [查询规则引擎的设置参数](https://tcloud4api.woa.com/document/product/1657/79433?!preview&!document=1) 查看。
+	Action *string `json:"Action,omitempty" name:"Action"`
+
+	// 参数。
+	Parameters []*RuleRewriteActionParams `json:"Parameters,omitempty" name:"Parameters"`
+}
+
+type RuleRewriteActionParams struct {
+	// 功能参数名称，参数填写规范可调用接口 [查询规则引擎的设置参数](https://tcloud4api.woa.com/document/product/1657/79433?!preview&!document=1) 查看。现在只有三种取值：
+	// <li> add：添加 HTTP 头部；</li>
+	// <li> set：重写 HTTP 头部；</li>
+	// <li> del：删除 HTTP 头部。</li>
+	Action *string `json:"Action,omitempty" name:"Action"`
+
+	// 参数名称。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 参数值。
+	Values []*string `json:"Values,omitempty" name:"Values"`
+}
+
+type RuleSettingDetail struct {
+	// 规则ID。
+	RuleId *string `json:"RuleId,omitempty" name:"RuleId"`
+
+	// 规则名称，名称字符串长度 1~255。
+	RuleName *string `json:"RuleName,omitempty" name:"RuleName"`
+
+	// 规则状态，取值有:
+	// <li> enable: 启用； </li>
+	// <li> disable: 未启用。 </li>
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 规则内容。
+	Rules []*RuleItem `json:"Rules,omitempty" name:"Rules"`
+
+	// 规则优先级, 值越大优先级越高，最小为 1。
+	RulePriority *int64 `json:"RulePriority,omitempty" name:"RulePriority"`
+}
+
+type RulesProperties struct {
+	// 值为参数名称。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 数值参数的最小值，非数值参数或 Min 和 Max 值都为 0 则此项无意义。
+	Min *int64 `json:"Min,omitempty" name:"Min"`
+
+	// 参数值的可选值。
+	// 注意：若参数值为用户自定义则该数组为空数组。
+	ChoicesValue []*string `json:"ChoicesValue,omitempty" name:"ChoicesValue"`
+
+	// 参数值类型。
+	// <li> CHOICE：参数值只能在 ChoicesValue 中选择； </li>
+	// <li> TOGGLE：参数值为开关类型，可在 ChoicesValue 中选择；</li>
+	// <li> OBJECT：参数值为对象类型，ChoiceProperties 为改对象类型关联的属性；</li>
+	// <li> CUSTOM_NUM：参数值用户自定义，整型类型；</li>
+	// <li> CUSTOM_STRING：参数值用户自定义，字符串类型。</li>注意：当参数类型为 OBJECT 类型时，请注意参考 [示例2 参数为 OBJECT 类型的创建](https://tcloud4api.woa.com/document/product/1657/79382?!preview&!document=1)
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 数值参数的最大值，非数值参数或 Min 和 Max 值都为 0 则此项无意义。
+	Max *int64 `json:"Max,omitempty" name:"Max"`
+
+	// 参数值是否支持多选或者填写多个。
+	IsMultiple *bool `json:"IsMultiple,omitempty" name:"IsMultiple"`
+
+	// 是否允许为空。
+	IsAllowEmpty *bool `json:"IsAllowEmpty,omitempty" name:"IsAllowEmpty"`
+
+	// 该参数对应的关联配置参数，属于调用接口的必填参数。
+	// 注意：如果可选参数无特殊新增参数则该数组为空数组。
+	ChoiceProperties []*RuleChoicePropertiesItem `json:"ChoiceProperties,omitempty" name:"ChoiceProperties"`
+
+	// <li> 为 NULL：无特殊参数，RuleAction 选择 NormalAction；</li>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExtraParameter *RuleExtraParameter `json:"ExtraParameter,omitempty" name:"ExtraParameter"`
+}
+
+type RulesSettingAction struct {
+	// 功能名称，取值有：
+	// <li> 访问URL 重写（AccessUrlRedirect）；</li>
+	// <li> 回源 URL 重写 （UpstreamUrlRedirect）；</li>
+	// <li> 自定义错误页面
+	// (ErrorPage)；</li>
+	// <li> QUIC（QUIC）；</li>
+	// <li> WebSocket （WebSocket）；</li>
+	// <li> 视频拖拽（VideoSeek）；</li>
+	// <li> Token 鉴权（Authentication）；</li>
+	// <li> 自定义CacheKey（CacheKey）；</li>
+	// <li> 节点缓存 TTL （Cache）；</li>
+	// <li> 浏览器缓存 TTL（MaxAge）；</li>
+	// <li> 离线缓存（OfflineCache）；</li>
+	// <li> 智能加速（SmartRouting）；</li>
+	// <li> 分片回源（RangeOriginPull）；</li>
+	// <li> HTTP/2 回源（UpstreamHttp2）；</li>
+	// <li> Host Header 重写（HostHeader）；</li>
+	// <li> 强制 HTTPS（ForceRedirect）；</li>
+	// <li> 回源 HTTPS（OriginPullProtocol）；</li>
+	// <li> 缓存预刷新（CachePrefresh）；</li>
+	// <li> 智能压缩（Compression）；</li>
+	// <li> 修改 HTTP 请求头（RequestHeader）；</li>
+	// <li> 修改HTTP响应头（ResponseHeader）;</li>
+	// <li> 状态码缓存 TTL（StatusCodeCache）;</li>
+	// <li> Hsts；</li>
+	// <li> ClientIpHeader；</li>
+	// <li> TlsVersion；</li>
+	// <li> OcspStapling。</li>
+	Action *string `json:"Action,omitempty" name:"Action"`
+
+	// 参数信息。
+	Properties []*RulesProperties `json:"Properties,omitempty" name:"Properties"`
 }
 
 // Predefined struct for user

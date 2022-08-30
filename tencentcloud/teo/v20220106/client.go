@@ -467,6 +467,56 @@ func (c *Client) CreateOriginGroupWithContext(ctx context.Context, request *Crea
     return
 }
 
+func NewCreatePlanForZoneRequest() (request *CreatePlanForZoneRequest) {
+    request = &CreatePlanForZoneRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("teo", APIVersion, "CreatePlanForZone")
+    
+    
+    return
+}
+
+func NewCreatePlanForZoneResponse() (response *CreatePlanForZoneResponse) {
+    response = &CreatePlanForZoneResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreatePlanForZone
+// 为未购买套餐的站点购买套餐
+//
+// 可能返回的错误码:
+//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+func (c *Client) CreatePlanForZone(request *CreatePlanForZoneRequest) (response *CreatePlanForZoneResponse, err error) {
+    return c.CreatePlanForZoneWithContext(context.Background(), request)
+}
+
+// CreatePlanForZone
+// 为未购买套餐的站点购买套餐
+//
+// 可能返回的错误码:
+//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+func (c *Client) CreatePlanForZoneWithContext(ctx context.Context, request *CreatePlanForZoneRequest) (response *CreatePlanForZoneResponse, err error) {
+    if request == nil {
+        request = NewCreatePlanForZoneRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreatePlanForZone require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreatePlanForZoneResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreatePrefetchTaskRequest() (request *CreatePrefetchTaskRequest) {
     request = &CreatePrefetchTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -599,6 +649,74 @@ func (c *Client) CreatePurgeTaskWithContext(ctx context.Context, request *Create
     request.SetContext(ctx)
     
     response = NewCreatePurgeTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateRuleRequest() (request *CreateRuleRequest) {
+    request = &CreateRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("teo", APIVersion, "CreateRule")
+    
+    
+    return
+}
+
+func NewCreateRuleResponse() (response *CreateRuleResponse) {
+    response = &CreateRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateRule
+// 规则引擎创建规则。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_BACKENDERROR = "InternalError.BackendError"
+//  INTERNALERROR_DOMAINCONFIG = "InternalError.DomainConfig"
+//  INTERNALERROR_QUOTASYSTEM = "InternalError.QuotaSystem"
+//  INVALIDPARAMETER_DOMAINNOTFOUND = "InvalidParameter.DomainNotFound"
+//  INVALIDPARAMETER_PARAMETERERROR = "InvalidParameter.ParameterError"
+//  INVALIDPARAMETER_TARGET = "InvalidParameter.Target"
+//  INVALIDPARAMETER_TASKNOTGENERATED = "InvalidParameter.TaskNotGenerated"
+//  INVALIDPARAMETER_UPLOADURL = "InvalidParameter.UploadUrl"
+//  LIMITEXCEEDED_BATCHQUOTA = "LimitExceeded.BatchQuota"
+//  LIMITEXCEEDED_DAILYQUOTA = "LimitExceeded.DailyQuota"
+//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
+func (c *Client) CreateRule(request *CreateRuleRequest) (response *CreateRuleResponse, err error) {
+    return c.CreateRuleWithContext(context.Background(), request)
+}
+
+// CreateRule
+// 规则引擎创建规则。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_BACKENDERROR = "InternalError.BackendError"
+//  INTERNALERROR_DOMAINCONFIG = "InternalError.DomainConfig"
+//  INTERNALERROR_QUOTASYSTEM = "InternalError.QuotaSystem"
+//  INVALIDPARAMETER_DOMAINNOTFOUND = "InvalidParameter.DomainNotFound"
+//  INVALIDPARAMETER_PARAMETERERROR = "InvalidParameter.ParameterError"
+//  INVALIDPARAMETER_TARGET = "InvalidParameter.Target"
+//  INVALIDPARAMETER_TASKNOTGENERATED = "InvalidParameter.TaskNotGenerated"
+//  INVALIDPARAMETER_UPLOADURL = "InvalidParameter.UploadUrl"
+//  LIMITEXCEEDED_BATCHQUOTA = "LimitExceeded.BatchQuota"
+//  LIMITEXCEEDED_DAILYQUOTA = "LimitExceeded.DailyQuota"
+//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
+func (c *Client) CreateRuleWithContext(ctx context.Context, request *CreateRuleRequest) (response *CreateRuleResponse, err error) {
+    if request == nil {
+        request = NewCreateRuleRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateRule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateRuleResponse()
     err = c.Send(request, response)
     return
 }
@@ -927,6 +1045,58 @@ func (c *Client) DeleteOriginGroupWithContext(ctx context.Context, request *Dele
     return
 }
 
+func NewDeleteRulesRequest() (request *DeleteRulesRequest) {
+    request = &DeleteRulesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("teo", APIVersion, "DeleteRules")
+    
+    
+    return
+}
+
+func NewDeleteRulesResponse() (response *DeleteRulesResponse) {
+    response = &DeleteRulesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteRules
+// 批量删除规则引擎规则。
+//
+// 可能返回的错误码:
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DeleteRules(request *DeleteRulesRequest) (response *DeleteRulesResponse, err error) {
+    return c.DeleteRulesWithContext(context.Background(), request)
+}
+
+// DeleteRules
+// 批量删除规则引擎规则。
+//
+// 可能返回的错误码:
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DeleteRulesWithContext(ctx context.Context, request *DeleteRulesRequest) (response *DeleteRulesResponse, err error) {
+    if request == nil {
+        request = NewDeleteRulesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteRules require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteRulesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteZoneRequest() (request *DeleteZoneRequest) {
     request = &DeleteZoneRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1077,6 +1247,56 @@ func (c *Client) DescribeApplicationProxyDetailWithContext(ctx context.Context, 
     request.SetContext(ctx)
     
     response = NewDescribeApplicationProxyDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAvailablePlansRequest() (request *DescribeAvailablePlansRequest) {
+    request = &DescribeAvailablePlansRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("teo", APIVersion, "DescribeAvailablePlans")
+    
+    
+    return
+}
+
+func NewDescribeAvailablePlansResponse() (response *DescribeAvailablePlansResponse) {
+    response = &DescribeAvailablePlansResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeAvailablePlans
+// 查询当前账户可用套餐信息列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR_PROXYSERVER = "InternalError.ProxyServer"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeAvailablePlans(request *DescribeAvailablePlansRequest) (response *DescribeAvailablePlansResponse, err error) {
+    return c.DescribeAvailablePlansWithContext(context.Background(), request)
+}
+
+// DescribeAvailablePlans
+// 查询当前账户可用套餐信息列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR_PROXYSERVER = "InternalError.ProxyServer"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeAvailablePlansWithContext(ctx context.Context, request *DescribeAvailablePlansRequest) (response *DescribeAvailablePlansResponse, err error) {
+    if request == nil {
+        request = NewDescribeAvailablePlansRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAvailablePlans require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAvailablePlansResponse()
     err = c.Send(request, response)
     return
 }
@@ -2291,6 +2511,110 @@ func (c *Client) DescribePurgeTasksWithContext(ctx context.Context, request *Des
     request.SetContext(ctx)
     
     response = NewDescribePurgeTasksResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeRulesRequest() (request *DescribeRulesRequest) {
+    request = &DescribeRulesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("teo", APIVersion, "DescribeRules")
+    
+    
+    return
+}
+
+func NewDescribeRulesResponse() (response *DescribeRulesResponse) {
+    response = &DescribeRulesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeRules
+// 查询规则引擎规则。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_PARAMETERERROR = "InvalidParameter.ParameterError"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) DescribeRules(request *DescribeRulesRequest) (response *DescribeRulesResponse, err error) {
+    return c.DescribeRulesWithContext(context.Background(), request)
+}
+
+// DescribeRules
+// 查询规则引擎规则。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_PARAMETERERROR = "InvalidParameter.ParameterError"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) DescribeRulesWithContext(ctx context.Context, request *DescribeRulesRequest) (response *DescribeRulesResponse, err error) {
+    if request == nil {
+        request = NewDescribeRulesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRules require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeRulesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeRulesSettingRequest() (request *DescribeRulesSettingRequest) {
+    request = &DescribeRulesSettingRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("teo", APIVersion, "DescribeRulesSetting")
+    
+    
+    return
+}
+
+func NewDescribeRulesSettingResponse() (response *DescribeRulesSettingResponse) {
+    response = &DescribeRulesSettingResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeRulesSetting
+// 返回规则引擎可应用匹配请求的设置列表及其详细建议配置信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_PARAMETERERROR = "InvalidParameter.ParameterError"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) DescribeRulesSetting(request *DescribeRulesSettingRequest) (response *DescribeRulesSettingResponse, err error) {
+    return c.DescribeRulesSettingWithContext(context.Background(), request)
+}
+
+// DescribeRulesSetting
+// 返回规则引擎可应用匹配请求的设置列表及其详细建议配置信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_PARAMETERERROR = "InvalidParameter.ParameterError"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) DescribeRulesSettingWithContext(ctx context.Context, request *DescribeRulesSettingRequest) (response *DescribeRulesSettingResponse, err error) {
+    if request == nil {
+        request = NewDescribeRulesSettingRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRulesSetting require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeRulesSettingResponse()
     err = c.Send(request, response)
     return
 }
@@ -4217,6 +4541,102 @@ func (c *Client) ModifyOriginGroupWithContext(ctx context.Context, request *Modi
     request.SetContext(ctx)
     
     response = NewModifyOriginGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyRuleRequest() (request *ModifyRuleRequest) {
+    request = &ModifyRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("teo", APIVersion, "ModifyRule")
+    
+    
+    return
+}
+
+func NewModifyRuleResponse() (response *ModifyRuleResponse) {
+    response = &ModifyRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyRule
+// 修改规则引擎规则。
+//
+// 可能返回的错误码:
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) ModifyRule(request *ModifyRuleRequest) (response *ModifyRuleResponse, err error) {
+    return c.ModifyRuleWithContext(context.Background(), request)
+}
+
+// ModifyRule
+// 修改规则引擎规则。
+//
+// 可能返回的错误码:
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) ModifyRuleWithContext(ctx context.Context, request *ModifyRuleRequest) (response *ModifyRuleResponse, err error) {
+    if request == nil {
+        request = NewModifyRuleRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyRule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyRulePriorityRequest() (request *ModifyRulePriorityRequest) {
+    request = &ModifyRulePriorityRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("teo", APIVersion, "ModifyRulePriority")
+    
+    
+    return
+}
+
+func NewModifyRulePriorityResponse() (response *ModifyRulePriorityResponse) {
+    response = &ModifyRulePriorityResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyRulePriority
+// 修改规则引擎规则优先级
+//
+// 可能返回的错误码:
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) ModifyRulePriority(request *ModifyRulePriorityRequest) (response *ModifyRulePriorityResponse, err error) {
+    return c.ModifyRulePriorityWithContext(context.Background(), request)
+}
+
+// ModifyRulePriority
+// 修改规则引擎规则优先级
+//
+// 可能返回的错误码:
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) ModifyRulePriorityWithContext(ctx context.Context, request *ModifyRulePriorityRequest) (response *ModifyRulePriorityResponse, err error) {
+    if request == nil {
+        request = NewModifyRulePriorityRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyRulePriority require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyRulePriorityResponse()
     err = c.Send(request, response)
     return
 }

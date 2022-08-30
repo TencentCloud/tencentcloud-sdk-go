@@ -925,6 +925,68 @@ func (c *Client) CreateFlowByFilesWithContext(ctx context.Context, request *Crea
     return
 }
 
+func NewCreateFlowEvidenceReportRequest() (request *CreateFlowEvidenceReportRequest) {
+    request = &CreateFlowEvidenceReportRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ess", APIVersion, "CreateFlowEvidenceReport")
+    
+    
+    return
+}
+
+func NewCreateFlowEvidenceReportResponse() (response *CreateFlowEvidenceReportResponse) {
+    response = &CreateFlowEvidenceReportResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateFlowEvidenceReport
+// 创建出证报告，返回报告 URL
+//
+// 可能返回的错误码:
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  MISSINGPARAMETER_FLOWID = "MissingParameter.FlowId"
+//  OPERATIONDENIED_FLOWSTATUSFORBID = "OperationDenied.FlowStatusForbid"
+//  OPERATIONDENIED_NOTBELONGSUPERADMINORLEGALPERSON = "OperationDenied.NotBelongSuperAdminOrLegalPerson"
+//  OPERATIONDENIED_WHITELISTFORBID = "OperationDenied.WhiteListForbid"
+//  RESOURCENOTFOUND_FLOW = "ResourceNotFound.Flow"
+//  RESOURCENOTFOUND_FLOWAPPROVER = "ResourceNotFound.FlowApprover"
+//  RESOURCENOTFOUND_URL = "ResourceNotFound.Url"
+func (c *Client) CreateFlowEvidenceReport(request *CreateFlowEvidenceReportRequest) (response *CreateFlowEvidenceReportResponse, err error) {
+    return c.CreateFlowEvidenceReportWithContext(context.Background(), request)
+}
+
+// CreateFlowEvidenceReport
+// 创建出证报告，返回报告 URL
+//
+// 可能返回的错误码:
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  MISSINGPARAMETER_FLOWID = "MissingParameter.FlowId"
+//  OPERATIONDENIED_FLOWSTATUSFORBID = "OperationDenied.FlowStatusForbid"
+//  OPERATIONDENIED_NOTBELONGSUPERADMINORLEGALPERSON = "OperationDenied.NotBelongSuperAdminOrLegalPerson"
+//  OPERATIONDENIED_WHITELISTFORBID = "OperationDenied.WhiteListForbid"
+//  RESOURCENOTFOUND_FLOW = "ResourceNotFound.Flow"
+//  RESOURCENOTFOUND_FLOWAPPROVER = "ResourceNotFound.FlowApprover"
+//  RESOURCENOTFOUND_URL = "ResourceNotFound.Url"
+func (c *Client) CreateFlowEvidenceReportWithContext(ctx context.Context, request *CreateFlowEvidenceReportRequest) (response *CreateFlowEvidenceReportResponse, err error) {
+    if request == nil {
+        request = NewCreateFlowEvidenceReportRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateFlowEvidenceReport require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateFlowEvidenceReportResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateFlowSignReviewRequest() (request *CreateFlowSignReviewRequest) {
     request = &CreateFlowSignReviewRequest{
         BaseRequest: &tchttp.BaseRequest{},

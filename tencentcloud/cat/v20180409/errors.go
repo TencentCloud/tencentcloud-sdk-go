@@ -41,6 +41,9 @@ const (
 	// 账单欠费。
 	FAILEDOPERATION_ORDEROUTOFCREDIT = "FailedOperation.OrderOutOfCredit"
 
+	// 预付费资源id绑定错误。
+	FAILEDOPERATION_PRERESOURCEIDFAILED = "FailedOperation.PreResourceIDFailed"
+
 	// 资源不存在。
 	FAILEDOPERATION_RESOURCENOTFOUND = "FailedOperation.ResourceNotFound"
 

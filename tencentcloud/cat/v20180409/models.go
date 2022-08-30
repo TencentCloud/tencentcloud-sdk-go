@@ -1292,6 +1292,10 @@ type UpdateProbeTaskConfigurationListRequestParams struct {
 
 	// 定时任务cron表达式
 	Cron *string `json:"Cron,omitempty" name:"Cron"`
+
+	// 预付费套餐id
+	// 需要与taskId对应
+	ResourceIDs []*string `json:"ResourceIDs,omitempty" name:"ResourceIDs"`
 }
 
 type UpdateProbeTaskConfigurationListRequest struct {
@@ -1311,6 +1315,10 @@ type UpdateProbeTaskConfigurationListRequest struct {
 
 	// 定时任务cron表达式
 	Cron *string `json:"Cron,omitempty" name:"Cron"`
+
+	// 预付费套餐id
+	// 需要与taskId对应
+	ResourceIDs []*string `json:"ResourceIDs,omitempty" name:"ResourceIDs"`
 }
 
 func (r *UpdateProbeTaskConfigurationListRequest) ToJsonString() string {
@@ -1330,6 +1338,7 @@ func (r *UpdateProbeTaskConfigurationListRequest) FromJsonString(s string) error
 	delete(f, "Interval")
 	delete(f, "Parameters")
 	delete(f, "Cron")
+	delete(f, "ResourceIDs")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateProbeTaskConfigurationListRequest has unknown keys!", "")
 	}
