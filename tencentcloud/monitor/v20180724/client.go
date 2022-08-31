@@ -4759,6 +4759,8 @@ func NewGetMonitorDataResponse() (response *GetMonitorDataResponse) {
 // 若您需要调用的指标、对象较多，可能存在因限频出现拉取失败的情况，建议尽量将请求按时间维度均摊。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_ERRNOTOPEN = "FailedOperation.ErrNotOpen"
+//  FAILEDOPERATION_ERROWED = "FailedOperation.ErrOwed"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
@@ -4776,6 +4778,8 @@ func (c *Client) GetMonitorData(request *GetMonitorDataRequest) (response *GetMo
 // 若您需要调用的指标、对象较多，可能存在因限频出现拉取失败的情况，建议尽量将请求按时间维度均摊。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_ERRNOTOPEN = "FailedOperation.ErrNotOpen"
+//  FAILEDOPERATION_ERROWED = "FailedOperation.ErrOwed"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"

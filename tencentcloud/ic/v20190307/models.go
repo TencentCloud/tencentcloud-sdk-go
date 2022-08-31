@@ -535,6 +535,77 @@ func (r *ModifyUserCardRemarkResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type PayForExtendDataRequestParams struct {
+	// 卡片ICCID
+	Iccid *string `json:"Iccid,omitempty" name:"Iccid"`
+
+	// 套外流量,单位MB
+	ExtentData *uint64 `json:"ExtentData,omitempty" name:"ExtentData"`
+
+	// 应用ID
+	Sdkappid *uint64 `json:"Sdkappid,omitempty" name:"Sdkappid"`
+}
+
+type PayForExtendDataRequest struct {
+	*tchttp.BaseRequest
+	
+	// 卡片ICCID
+	Iccid *string `json:"Iccid,omitempty" name:"Iccid"`
+
+	// 套外流量,单位MB
+	ExtentData *uint64 `json:"ExtentData,omitempty" name:"ExtentData"`
+
+	// 应用ID
+	Sdkappid *uint64 `json:"Sdkappid,omitempty" name:"Sdkappid"`
+}
+
+func (r *PayForExtendDataRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *PayForExtendDataRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Iccid")
+	delete(f, "ExtentData")
+	delete(f, "Sdkappid")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "PayForExtendDataRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type PayForExtendDataResponseParams struct {
+	// 订单号
+	Data *ResOrderIds `json:"Data,omitempty" name:"Data"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type PayForExtendDataResponse struct {
+	*tchttp.BaseResponse
+	Response *PayForExtendDataResponseParams `json:"Response"`
+}
+
+func (r *PayForExtendDataResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *PayForExtendDataResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type RenewCardsRequestParams struct {
 	// 应用ID
 	Sdkappid *uint64 `json:"Sdkappid,omitempty" name:"Sdkappid"`
@@ -604,6 +675,12 @@ func (r *RenewCardsResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *RenewCardsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type ResOrderIds struct {
+	// 每一张续费卡片的订单ID数组
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OrderIds []*string `json:"OrderIds,omitempty" name:"OrderIds"`
 }
 
 type ResRenew struct {

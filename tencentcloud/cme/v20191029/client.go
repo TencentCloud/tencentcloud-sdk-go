@@ -1913,6 +1913,7 @@ func NewExportVideoByTemplateResponse() (response *ExportVideoByTemplateResponse
 //  LIMITEXCEEDED_BILLITEMVIDEOEDITEXPORTDURATION = "LimitExceeded.BillItemVideoEditExportDuration"
 //  OPERATIONDENIED_PERMISSIONDENY = "OperationDenied.PermissionDeny"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_PLATFORM = "ResourceNotFound.Platform"
 func (c *Client) ExportVideoByTemplate(request *ExportVideoByTemplateRequest) (response *ExportVideoByTemplateResponse, err error) {
     return c.ExportVideoByTemplateWithContext(context.Background(), request)
 }
@@ -1941,6 +1942,7 @@ func (c *Client) ExportVideoByTemplate(request *ExportVideoByTemplateRequest) (r
 //  LIMITEXCEEDED_BILLITEMVIDEOEDITEXPORTDURATION = "LimitExceeded.BillItemVideoEditExportDuration"
 //  OPERATIONDENIED_PERMISSIONDENY = "OperationDenied.PermissionDeny"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_PLATFORM = "ResourceNotFound.Platform"
 func (c *Client) ExportVideoByTemplateWithContext(ctx context.Context, request *ExportVideoByTemplateRequest) (response *ExportVideoByTemplateResponse, err error) {
     if request == nil {
         request = NewExportVideoByTemplateRequest()

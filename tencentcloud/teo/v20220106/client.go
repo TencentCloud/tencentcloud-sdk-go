@@ -439,6 +439,7 @@ func NewCreateOriginGroupResponse() (response *CreateOriginGroupResponse) {
 // 源站组创建
 //
 // 可能返回的错误码:
+//  OPERATIONDENIED = "OperationDenied"
 //  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
 //  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
 func (c *Client) CreateOriginGroup(request *CreateOriginGroupRequest) (response *CreateOriginGroupResponse, err error) {
@@ -449,6 +450,7 @@ func (c *Client) CreateOriginGroup(request *CreateOriginGroupRequest) (response 
 // 源站组创建
 //
 // 可能返回的错误码:
+//  OPERATIONDENIED = "OperationDenied"
 //  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
 //  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
 func (c *Client) CreateOriginGroupWithContext(ctx context.Context, request *CreateOriginGroupRequest) (response *CreateOriginGroupResponse, err error) {
@@ -489,6 +491,7 @@ func NewCreatePlanForZoneResponse() (response *CreatePlanForZoneResponse) {
 // 为未购买套餐的站点购买套餐
 //
 // 可能返回的错误码:
+//  OPERATIONDENIED = "OperationDenied"
 //  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
 //  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
 func (c *Client) CreatePlanForZone(request *CreatePlanForZoneRequest) (response *CreatePlanForZoneResponse, err error) {
@@ -499,6 +502,7 @@ func (c *Client) CreatePlanForZone(request *CreatePlanForZoneRequest) (response 
 // 为未购买套餐的站点购买套餐
 //
 // 可能返回的错误码:
+//  OPERATIONDENIED = "OperationDenied"
 //  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
 //  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
 func (c *Client) CreatePlanForZoneWithContext(ctx context.Context, request *CreatePlanForZoneRequest) (response *CreatePlanForZoneResponse, err error) {
@@ -675,17 +679,7 @@ func NewCreateRuleResponse() (response *CreateRuleResponse) {
 // 规则引擎创建规则。
 //
 // 可能返回的错误码:
-//  INTERNALERROR_BACKENDERROR = "InternalError.BackendError"
-//  INTERNALERROR_DOMAINCONFIG = "InternalError.DomainConfig"
-//  INTERNALERROR_QUOTASYSTEM = "InternalError.QuotaSystem"
-//  INVALIDPARAMETER_DOMAINNOTFOUND = "InvalidParameter.DomainNotFound"
-//  INVALIDPARAMETER_PARAMETERERROR = "InvalidParameter.ParameterError"
-//  INVALIDPARAMETER_TARGET = "InvalidParameter.Target"
-//  INVALIDPARAMETER_TASKNOTGENERATED = "InvalidParameter.TaskNotGenerated"
-//  INVALIDPARAMETER_UPLOADURL = "InvalidParameter.UploadUrl"
-//  LIMITEXCEEDED_BATCHQUOTA = "LimitExceeded.BatchQuota"
-//  LIMITEXCEEDED_DAILYQUOTA = "LimitExceeded.DailyQuota"
-//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
+//  INVALIDPARAMETER_INVALIDRULEENGINETARGET = "InvalidParameter.InvalidRuleEngineTarget"
 func (c *Client) CreateRule(request *CreateRuleRequest) (response *CreateRuleResponse, err error) {
     return c.CreateRuleWithContext(context.Background(), request)
 }
@@ -694,17 +688,7 @@ func (c *Client) CreateRule(request *CreateRuleRequest) (response *CreateRuleRes
 // 规则引擎创建规则。
 //
 // 可能返回的错误码:
-//  INTERNALERROR_BACKENDERROR = "InternalError.BackendError"
-//  INTERNALERROR_DOMAINCONFIG = "InternalError.DomainConfig"
-//  INTERNALERROR_QUOTASYSTEM = "InternalError.QuotaSystem"
-//  INVALIDPARAMETER_DOMAINNOTFOUND = "InvalidParameter.DomainNotFound"
-//  INVALIDPARAMETER_PARAMETERERROR = "InvalidParameter.ParameterError"
-//  INVALIDPARAMETER_TARGET = "InvalidParameter.Target"
-//  INVALIDPARAMETER_TASKNOTGENERATED = "InvalidParameter.TaskNotGenerated"
-//  INVALIDPARAMETER_UPLOADURL = "InvalidParameter.UploadUrl"
-//  LIMITEXCEEDED_BATCHQUOTA = "LimitExceeded.BatchQuota"
-//  LIMITEXCEEDED_DAILYQUOTA = "LimitExceeded.DailyQuota"
-//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
+//  INVALIDPARAMETER_INVALIDRULEENGINETARGET = "InvalidParameter.InvalidRuleEngineTarget"
 func (c *Client) CreateRuleWithContext(ctx context.Context, request *CreateRuleRequest) (response *CreateRuleResponse, err error) {
     if request == nil {
         request = NewCreateRuleRequest()
@@ -4567,7 +4551,7 @@ func NewModifyRuleResponse() (response *ModifyRuleResponse) {
 // 修改规则引擎规则。
 //
 // 可能返回的错误码:
-//  OPERATIONDENIED = "OperationDenied"
+//  INVALIDPARAMETER_INVALIDRULEENGINETARGETSEXTENSION = "InvalidParameter.InvalidRuleEngineTargetsExtension"
 func (c *Client) ModifyRule(request *ModifyRuleRequest) (response *ModifyRuleResponse, err error) {
     return c.ModifyRuleWithContext(context.Background(), request)
 }
@@ -4576,7 +4560,7 @@ func (c *Client) ModifyRule(request *ModifyRuleRequest) (response *ModifyRuleRes
 // 修改规则引擎规则。
 //
 // 可能返回的错误码:
-//  OPERATIONDENIED = "OperationDenied"
+//  INVALIDPARAMETER_INVALIDRULEENGINETARGETSEXTENSION = "InvalidParameter.InvalidRuleEngineTargetsExtension"
 func (c *Client) ModifyRuleWithContext(ctx context.Context, request *ModifyRuleRequest) (response *ModifyRuleResponse, err error) {
     if request == nil {
         request = NewModifyRuleRequest()
@@ -4615,7 +4599,7 @@ func NewModifyRulePriorityResponse() (response *ModifyRulePriorityResponse) {
 // 修改规则引擎规则优先级
 //
 // 可能返回的错误码:
-//  OPERATIONDENIED = "OperationDenied"
+//  INVALIDPARAMETER_INVALIDRULEENGINETARGETSEXTENSION = "InvalidParameter.InvalidRuleEngineTargetsExtension"
 func (c *Client) ModifyRulePriority(request *ModifyRulePriorityRequest) (response *ModifyRulePriorityResponse, err error) {
     return c.ModifyRulePriorityWithContext(context.Background(), request)
 }
@@ -4624,7 +4608,7 @@ func (c *Client) ModifyRulePriority(request *ModifyRulePriorityRequest) (respons
 // 修改规则引擎规则优先级
 //
 // 可能返回的错误码:
-//  OPERATIONDENIED = "OperationDenied"
+//  INVALIDPARAMETER_INVALIDRULEENGINETARGETSEXTENSION = "InvalidParameter.InvalidRuleEngineTargetsExtension"
 func (c *Client) ModifyRulePriorityWithContext(ctx context.Context, request *ModifyRulePriorityRequest) (response *ModifyRulePriorityResponse, err error) {
     if request == nil {
         request = NewModifyRulePriorityRequest()
@@ -4717,6 +4701,7 @@ func NewModifyZoneResponse() (response *ModifyZoneResponse) {
 // 可能返回的错误码:
 //  OPERATIONDENIED = "OperationDenied"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) ModifyZone(request *ModifyZoneRequest) (response *ModifyZoneResponse, err error) {
     return c.ModifyZoneWithContext(context.Background(), request)
 }
@@ -4727,6 +4712,7 @@ func (c *Client) ModifyZone(request *ModifyZoneRequest) (response *ModifyZoneRes
 // 可能返回的错误码:
 //  OPERATIONDENIED = "OperationDenied"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) ModifyZoneWithContext(ctx context.Context, request *ModifyZoneRequest) (response *ModifyZoneResponse, err error) {
     if request == nil {
         request = NewModifyZoneRequest()
@@ -4817,6 +4803,7 @@ func NewModifyZoneSettingResponse() (response *ModifyZoneSettingResponse) {
 // 可能返回的错误码:
 //  INVALIDPARAMETER_INVALIDCACHEONLYONSWITCH = "InvalidParameter.InvalidCacheOnlyOnSwitch"
 //  INVALIDPARAMETER_INVALIDCLIENTIPHEADERNAME = "InvalidParameter.InvalidClientIpHeaderName"
+//  INVALIDPARAMETER_INVALIDDYNAMICROUTINEBILLING = "InvalidParameter.InvalidDynamicRoutineBilling"
 //  INVALIDPARAMETER_INVALIDORIGIN = "InvalidParameter.InvalidOrigin"
 //  INVALIDPARAMETER_INVALIDPOSTMAXSIZEBILLING = "InvalidParameter.InvalidPostMaxSizeBilling"
 //  INVALIDPARAMETER_INVALIDREQUESTHEADERNAME = "InvalidParameter.InvalidRequestHeaderName"
@@ -4837,6 +4824,7 @@ func (c *Client) ModifyZoneSetting(request *ModifyZoneSettingRequest) (response 
 // 可能返回的错误码:
 //  INVALIDPARAMETER_INVALIDCACHEONLYONSWITCH = "InvalidParameter.InvalidCacheOnlyOnSwitch"
 //  INVALIDPARAMETER_INVALIDCLIENTIPHEADERNAME = "InvalidParameter.InvalidClientIpHeaderName"
+//  INVALIDPARAMETER_INVALIDDYNAMICROUTINEBILLING = "InvalidParameter.InvalidDynamicRoutineBilling"
 //  INVALIDPARAMETER_INVALIDORIGIN = "InvalidParameter.InvalidOrigin"
 //  INVALIDPARAMETER_INVALIDPOSTMAXSIZEBILLING = "InvalidParameter.InvalidPostMaxSizeBilling"
 //  INVALIDPARAMETER_INVALIDREQUESTHEADERNAME = "InvalidParameter.InvalidRequestHeaderName"

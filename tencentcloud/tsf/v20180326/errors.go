@@ -182,6 +182,9 @@ const (
 	// TSF云API调用申请角色临时凭证调用请求失败。
 	INTERNALERROR_CAMROLEREQUESTERROR = "InternalError.CamRoleRequestError"
 
+	// 配置发布失败：无法连接配置中心服务器。
+	INTERNALERROR_CANNOTCONNCONSULSERVER = "InternalError.CanNotConnConsulServer"
+
 	// TSF云API请求调用失败。
 	INTERNALERROR_CLOUDAPIPROXYERROR = "InternalError.CloudApiProxyError"
 

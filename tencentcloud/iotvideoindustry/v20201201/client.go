@@ -8741,9 +8741,7 @@ func NewModifyBindPlanLiveChannelResponse() (response *ModifyBindPlanLiveChannel
 // 直播录制计划绑定解绑直播频道
 //
 // 可能返回的错误码:
-//  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
-//  UNSUPPORTEDOPERATION_DEVICEMISSMATCH = "UnsupportedOperation.DeviceMissMatch"
-//  UNSUPPORTEDOPERATION_DEVICESIPCOMMANDFAIL = "UnsupportedOperation.DeviceSipCommandFail"
+//  UNSUPPORTEDOPERATION_LIVECHANNELBINDEXIST = "UnsupportedOperation.LiveChannelBindExist"
 func (c *Client) ModifyBindPlanLiveChannel(request *ModifyBindPlanLiveChannelRequest) (response *ModifyBindPlanLiveChannelResponse, err error) {
     return c.ModifyBindPlanLiveChannelWithContext(context.Background(), request)
 }
@@ -8752,9 +8750,7 @@ func (c *Client) ModifyBindPlanLiveChannel(request *ModifyBindPlanLiveChannelReq
 // 直播录制计划绑定解绑直播频道
 //
 // 可能返回的错误码:
-//  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
-//  UNSUPPORTEDOPERATION_DEVICEMISSMATCH = "UnsupportedOperation.DeviceMissMatch"
-//  UNSUPPORTEDOPERATION_DEVICESIPCOMMANDFAIL = "UnsupportedOperation.DeviceSipCommandFail"
+//  UNSUPPORTEDOPERATION_LIVECHANNELBINDEXIST = "UnsupportedOperation.LiveChannelBindExist"
 func (c *Client) ModifyBindPlanLiveChannelWithContext(ctx context.Context, request *ModifyBindPlanLiveChannelRequest) (response *ModifyBindPlanLiveChannelResponse, err error) {
     if request == nil {
         request = NewModifyBindPlanLiveChannelRequest()

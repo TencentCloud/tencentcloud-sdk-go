@@ -204,6 +204,10 @@ type GetFileTranslateData struct {
 	// 错误提示
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Message *string `json:"Message,omitempty" name:"Message"`
+
+	// 翻译进度
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Progress *int64 `json:"Progress,omitempty" name:"Progress"`
 }
 
 // Predefined struct for user

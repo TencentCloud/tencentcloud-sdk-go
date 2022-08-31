@@ -786,6 +786,10 @@ type ClsParam struct {
 	// 当DecodeJson为false时必填
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ContentKey *string `json:"ContentKey,omitempty" name:"ContentKey"`
+
+	// 指定消息中的某字段内容作为cls日志的时间。
+	// 字段内容格式需要是秒级时间戳
+	TimeField *string `json:"TimeField,omitempty" name:"TimeField"`
 }
 
 type ClusterInfo struct {

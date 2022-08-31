@@ -165,6 +165,10 @@ type AlarmNotice struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PolicyIds []*string `json:"PolicyIds,omitempty" name:"PolicyIds"`
 
+	// 后台 amp consumer id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AMPConsumerId *string `json:"AMPConsumerId,omitempty" name:"AMPConsumerId"`
+
 	// 推送cls渠道
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CLSNotices []*CLSNotice `json:"CLSNotices,omitempty" name:"CLSNotices"`

@@ -678,6 +678,7 @@ func NewDescribeCertificateDetailResponse() (response *DescribeCertificateDetail
 //  FAILEDOPERATION_NOPROJECTPERMISSION = "FailedOperation.NoProjectPermission"
 //  FAILEDOPERATION_NOREALNAMEAUTH = "FailedOperation.NoRealNameAuth"
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_BACKENDRESPONSEEMPTY = "InternalError.BackendResponseEmpty"
 //  LIMITEXCEEDED_RATELIMITEXCEEDED = "LimitExceeded.RateLimitExceeded"
 func (c *Client) DescribeCertificateDetail(request *DescribeCertificateDetailRequest) (response *DescribeCertificateDetailResponse, err error) {
     return c.DescribeCertificateDetailWithContext(context.Background(), request)
@@ -694,6 +695,7 @@ func (c *Client) DescribeCertificateDetail(request *DescribeCertificateDetailReq
 //  FAILEDOPERATION_NOPROJECTPERMISSION = "FailedOperation.NoProjectPermission"
 //  FAILEDOPERATION_NOREALNAMEAUTH = "FailedOperation.NoRealNameAuth"
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_BACKENDRESPONSEEMPTY = "InternalError.BackendResponseEmpty"
 //  LIMITEXCEEDED_RATELIMITEXCEEDED = "LimitExceeded.RateLimitExceeded"
 func (c *Client) DescribeCertificateDetailWithContext(ctx context.Context, request *DescribeCertificateDetailRequest) (response *DescribeCertificateDetailResponse, err error) {
     if request == nil {
@@ -1438,6 +1440,7 @@ func NewSubmitAuditManagerResponse() (response *SubmitAuditManagerResponse) {
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_ILLEGALMANAGERSTATUS = "FailedOperation.IllegalManagerStatus"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND_MANAGER = "ResourceNotFound.Manager"
@@ -1450,6 +1453,7 @@ func (c *Client) SubmitAuditManager(request *SubmitAuditManagerRequest) (respons
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_ILLEGALMANAGERSTATUS = "FailedOperation.IllegalManagerStatus"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND_MANAGER = "ResourceNotFound.Manager"

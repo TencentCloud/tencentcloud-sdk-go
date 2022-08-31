@@ -29,9 +29,6 @@ const (
 	// 伸缩组资源创建报错。
 	FAILEDOPERATION_ASCOMMON = "FailedOperation.AsCommon"
 
-	// CLB 未知错误。
-	FAILEDOPERATION_CLBUNEXPECTEDERROR = "FailedOperation.CLBUnexpectedError"
-
 	// CVM未知错误。
 	FAILEDOPERATION_CVMUNEXPECTEDERROR = "FailedOperation.CVMUnexpectedError"
 

@@ -71,6 +71,9 @@ const (
 	// 无效的客户端IP请求头。
 	INVALIDPARAMETER_INVALIDCLIENTIPHEADERNAME = "InvalidParameter.InvalidClientIpHeaderName"
 
+	// 套餐包不支持智能加速配置。
+	INVALIDPARAMETER_INVALIDDYNAMICROUTINEBILLING = "InvalidParameter.InvalidDynamicRoutineBilling"
+
 	// 无效的源站。
 	INVALIDPARAMETER_INVALIDORIGIN = "InvalidParameter.InvalidOrigin"
 
@@ -82,6 +85,12 @@ const (
 
 	// 无套餐包。
 	INVALIDPARAMETER_INVALIDRESOURCEIDBILLING = "InvalidParameter.InvalidResourceIdBilling"
+
+	// 无效的规则引擎条件。
+	INVALIDPARAMETER_INVALIDRULEENGINETARGET = "InvalidParameter.InvalidRuleEngineTarget"
+
+	// 无效的规则引擎文件后缀条件。
+	INVALIDPARAMETER_INVALIDRULEENGINETARGETSEXTENSION = "InvalidParameter.InvalidRuleEngineTargetsExtension"
 
 	// 无效的WebSocket。
 	INVALIDPARAMETER_INVALIDWEBSOCKETTIMEOUT = "InvalidParameter.InvalidWebSocketTimeout"

@@ -4210,40 +4210,40 @@ type GPUInfo struct {
 }
 
 type HostItem struct {
-	// cdh实例所在的位置。通过该参数可以指定实例所属可用区，所属项目等属性。
+	// 专用宿主机实例所在的位置。通过该参数可以指定实例所属可用区，所属项目等属性。
 	Placement *Placement `json:"Placement,omitempty" name:"Placement"`
 
-	// cdh实例id
+	// 专用宿主机实例id
 	HostId *string `json:"HostId,omitempty" name:"HostId"`
 
-	// cdh实例类型
+	// 专用宿主机实例类型
 	HostType *string `json:"HostType,omitempty" name:"HostType"`
 
-	// cdh实例名称
+	// 专用宿主机实例名称
 	HostName *string `json:"HostName,omitempty" name:"HostName"`
 
-	// cdh实例付费模式
+	// 专用宿主机实例付费模式
 	HostChargeType *string `json:"HostChargeType,omitempty" name:"HostChargeType"`
 
-	// cdh实例自动续费标记
+	// 专用宿主机实例自动续费标记
 	RenewFlag *string `json:"RenewFlag,omitempty" name:"RenewFlag"`
 
-	// cdh实例创建时间
+	// 专用宿主机实例创建时间
 	CreatedTime *string `json:"CreatedTime,omitempty" name:"CreatedTime"`
 
-	// cdh实例过期时间
+	// 专用宿主机实例过期时间
 	ExpiredTime *string `json:"ExpiredTime,omitempty" name:"ExpiredTime"`
 
-	// cdh实例上已创建云子机的实例id列表
+	// 专用宿主机实例上已创建云子机的实例id列表
 	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
 
-	// cdh实例状态
+	// 专用宿主机实例状态
 	HostState *string `json:"HostState,omitempty" name:"HostState"`
 
-	// cdh实例ip
+	// 专用宿主机实例ip
 	HostIp *string `json:"HostIp,omitempty" name:"HostIp"`
 
-	// cdh实例资源信息
+	// 专用宿主机实例资源信息
 	HostResource *HostResource `json:"HostResource,omitempty" name:"HostResource"`
 
 	// 专用宿主机所属的围笼ID。该字段仅对金融专区围笼内的专用宿主机有效。

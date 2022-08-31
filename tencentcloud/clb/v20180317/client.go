@@ -786,6 +786,7 @@ func NewCreateLoadBalancerSnatIpsResponse() (response *CreateLoadBalancerSnatIps
 //  INVALIDPARAMETER_LBIDNOTFOUND = "InvalidParameter.LBIdNotFound"
 //  INVALIDPARAMETER_REGIONNOTFOUND = "InvalidParameter.RegionNotFound"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_LENGTH = "InvalidParameterValue.Length"
 //  LIMITEXCEEDED = "LimitExceeded"
 func (c *Client) CreateLoadBalancerSnatIps(request *CreateLoadBalancerSnatIpsRequest) (response *CreateLoadBalancerSnatIpsResponse, err error) {
     return c.CreateLoadBalancerSnatIpsWithContext(context.Background(), request)
@@ -804,6 +805,7 @@ func (c *Client) CreateLoadBalancerSnatIps(request *CreateLoadBalancerSnatIpsReq
 //  INVALIDPARAMETER_LBIDNOTFOUND = "InvalidParameter.LBIdNotFound"
 //  INVALIDPARAMETER_REGIONNOTFOUND = "InvalidParameter.RegionNotFound"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_LENGTH = "InvalidParameterValue.Length"
 //  LIMITEXCEEDED = "LimitExceeded"
 func (c *Client) CreateLoadBalancerSnatIpsWithContext(ctx context.Context, request *CreateLoadBalancerSnatIpsRequest) (response *CreateLoadBalancerSnatIpsResponse, err error) {
     if request == nil {
@@ -2427,6 +2429,76 @@ func (c *Client) DescribeExclusiveClustersWithContext(ctx context.Context, reque
     request.SetContext(ctx)
     
     response = NewDescribeExclusiveClustersResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeIdleLoadBalancersRequest() (request *DescribeIdleLoadBalancersRequest) {
+    request = &DescribeIdleLoadBalancersRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("clb", APIVersion, "DescribeIdleLoadBalancers")
+    
+    
+    return
+}
+
+func NewDescribeIdleLoadBalancersResponse() (response *DescribeIdleLoadBalancersResponse) {
+    response = &DescribeIdleLoadBalancersResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeIdleLoadBalancers
+// 闲置实例是指创建超过7天后付费实例，且没有创建规则或创建规则没有绑定子机的负载均衡实例。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INVALIDLBSTATUS = "FailedOperation.InvalidLBStatus"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
+//  INVALIDPARAMETER_INVALIDFILTER = "InvalidParameter.InvalidFilter"
+//  INVALIDPARAMETER_LBIDNOTFOUND = "InvalidParameter.LBIdNotFound"
+//  INVALIDPARAMETER_LISTENERIDNOTFOUND = "InvalidParameter.ListenerIdNotFound"
+//  INVALIDPARAMETER_LOCATIONNOTFOUND = "InvalidParameter.LocationNotFound"
+//  INVALIDPARAMETER_PORTCHECKFAILED = "InvalidParameter.PortCheckFailed"
+func (c *Client) DescribeIdleLoadBalancers(request *DescribeIdleLoadBalancersRequest) (response *DescribeIdleLoadBalancersResponse, err error) {
+    return c.DescribeIdleLoadBalancersWithContext(context.Background(), request)
+}
+
+// DescribeIdleLoadBalancers
+// 闲置实例是指创建超过7天后付费实例，且没有创建规则或创建规则没有绑定子机的负载均衡实例。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INVALIDLBSTATUS = "FailedOperation.InvalidLBStatus"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
+//  INVALIDPARAMETER_INVALIDFILTER = "InvalidParameter.InvalidFilter"
+//  INVALIDPARAMETER_LBIDNOTFOUND = "InvalidParameter.LBIdNotFound"
+//  INVALIDPARAMETER_LISTENERIDNOTFOUND = "InvalidParameter.ListenerIdNotFound"
+//  INVALIDPARAMETER_LOCATIONNOTFOUND = "InvalidParameter.LocationNotFound"
+//  INVALIDPARAMETER_PORTCHECKFAILED = "InvalidParameter.PortCheckFailed"
+func (c *Client) DescribeIdleLoadBalancersWithContext(ctx context.Context, request *DescribeIdleLoadBalancersRequest) (response *DescribeIdleLoadBalancersResponse, err error) {
+    if request == nil {
+        request = NewDescribeIdleLoadBalancersRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeIdleLoadBalancers require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeIdleLoadBalancersResponse()
     err = c.Send(request, response)
     return
 }

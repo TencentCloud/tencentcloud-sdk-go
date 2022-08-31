@@ -1660,7 +1660,7 @@ type LayoutParams struct {
 	// 屏幕分享模板有效。设置为1时代表大画面居右，小画面居左布局。默认为0。
 	MainVideoRightAlign *uint64 `json:"MainVideoRightAlign,omitempty" name:"MainVideoRightAlign"`
 
-	// 悬浮模板、九宫格、屏幕分享模板有效。设置此参数后，输出流混合此参数中包含用户的音视频，以及其他用户的纯音频。最多可设置16个用户。
+	// 指定混视频的用户ID列表。设置此参数后，输出流混合此参数中包含用户的音视频，以及其他用户的纯音频。悬浮模板、九宫格、屏幕分享模板有效，最多可设置16个用户。
 	MixVideoUids []*string `json:"MixVideoUids,omitempty" name:"MixVideoUids"`
 
 	// 自定义模板中有效，指定用户视频在混合画面中的位置。
@@ -2626,7 +2626,7 @@ type StorageFile struct {
 }
 
 type StorageParams struct {
-	// 第三方云存储的账号信息。
+	// 第三方云存储的账号信息（暂不支持）。
 	CloudStorage *CloudStorage `json:"CloudStorage,omitempty" name:"CloudStorage"`
 
 	// 第三方云点播的账号信息。
@@ -2686,28 +2686,28 @@ type TrtcTimeNewUsage struct {
 	// 通话人数。仅供参考。在线人数以仪表盘查询结果为准。
 	VoiceUserNum *uint64 `json:"VoiceUserNum,omitempty" name:"VoiceUserNum"`
 
-	// 音视频通话时长。单位：秒。
+	// 音视频通话收费时长。单位：秒。
 	VideoTime *uint64 `json:"VideoTime,omitempty" name:"VideoTime"`
 
-	// 标清视频通话时长。单位：秒。
+	// 标清视频通话收费时长。单位：秒。
 	Class1VideoTime *uint64 `json:"Class1VideoTime,omitempty" name:"Class1VideoTime"`
 
-	// 高清视频通话时长。单位：秒。
+	// 高清视频通话收费时长。单位：秒。
 	Class2VideoTime *uint64 `json:"Class2VideoTime,omitempty" name:"Class2VideoTime"`
 
-	// 超高清视频通话时长。单位：秒。
+	// 超高清视频通话收费时长。单位：秒。
 	Class3VideoTime *uint64 `json:"Class3VideoTime,omitempty" name:"Class3VideoTime"`
 
-	// 音频通话时长。单位：秒。
+	// 音频通话收费时长。单位：秒。
 	AudioTime *uint64 `json:"AudioTime,omitempty" name:"AudioTime"`
 
 	// 带宽。单位：Mbps。
 	Bandwidth *float64 `json:"Bandwidth,omitempty" name:"Bandwidth"`
 
-	// 2k视频通话时长。单位：秒。
+	// 2k视频通话收费时长。单位：秒。
 	Video2KTime *uint64 `json:"Video2KTime,omitempty" name:"Video2KTime"`
 
-	// 4k视频通话时长。单位：秒。
+	// 4k视频通话收费时长。单位：秒。
 	Video4KTime *uint64 `json:"Video4KTime,omitempty" name:"Video4KTime"`
 }
 

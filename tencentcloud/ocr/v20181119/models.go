@@ -3635,7 +3635,7 @@ type MLIDPassportOCRResponseParams struct {
 	// 发行国
 	IssuingCountry *string `json:"IssuingCountry,omitempty" name:"IssuingCountry"`
 
-	// 国籍
+	// 国家地区代码
 	Nationality *string `json:"Nationality,omitempty" name:"Nationality"`
 
 	// 告警码

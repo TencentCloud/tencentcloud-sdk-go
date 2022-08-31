@@ -1,3 +1,131 @@
+# Release v1.0.486
+
+## 企业收付平台(cpdp) 版本：2019-08-20
+
+### 第 83 次发布
+
+发布时间：2022-08-31 06:18:54
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [ApplyOpenBankSettleOrder](https://cloud.tencent.com/document/api/1122/79773)
+* [ApplyOpenBankSubMerchantSignOnline](https://cloud.tencent.com/document/api/1122/79772)
+* [QueryOpenBankSettleOrder](https://cloud.tencent.com/document/api/1122/79771)
+* [QueryOpenBankSubMerchantSignOnline](https://cloud.tencent.com/document/api/1122/79770)
+
+修改接口：
+
+* [AddFlexIdInfo](https://cloud.tencent.com/document/api/1122/76412)
+
+	* 新增入参：Name
+
+* [RefundOpenBankOrder](https://cloud.tencent.com/document/api/1122/76089)
+
+	* 新增入参：ProfitShareInfoList
+
+
+新增数据结构：
+
+* [ApplyOpenBankSettleOrderResult](https://cloud.tencent.com/document/api/1122/40683#ApplyOpenBankSettleOrderResult)
+* [ApplyOpenBankSubMerchantSignOnlineResult](https://cloud.tencent.com/document/api/1122/40683#ApplyOpenBankSubMerchantSignOnlineResult)
+* [OpenBankProfitShareRespInfo](https://cloud.tencent.com/document/api/1122/40683#OpenBankProfitShareRespInfo)
+* [QueryOpenBankSettleOrderResult](https://cloud.tencent.com/document/api/1122/40683#QueryOpenBankSettleOrderResult)
+* [QueryOpenBankSubMerchantSignOnlineResult](https://cloud.tencent.com/document/api/1122/40683#QueryOpenBankSubMerchantSignOnlineResult)
+
+修改数据结构：
+
+* [OpenBankQueryRefundOrderResult](https://cloud.tencent.com/document/api/1122/40683#OpenBankQueryRefundOrderResult)
+
+	* 新增成员：ProfitShareRespInfoList
+
+* [QueryOpenBankPaymentOrderResult](https://cloud.tencent.com/document/api/1122/40683#QueryOpenBankPaymentOrderResult)
+
+	* 新增成员：ProfitShareRespInfoList
+
+
+
+
+## 分布式数据库 TDSQL(dcdb) 版本：2018-04-11
+
+### 第 45 次发布
+
+发布时间：2022-08-31 06:24:58
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除接口**：</font>
+
+* CreateDedicatedClusterDCDBInstance
+
+
+
+## 云监控(monitor) 版本：2018-07-24
+
+### 第 56 次发布
+
+发布时间：2022-08-31 06:39:03
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [AlarmNotice](https://cloud.tencent.com/document/api/248/30354#AlarmNotice)
+
+	* 新增成员：AMPConsumerId
+
+
+
+
+## 图像分析(tiia) 版本：2019-05-29
+
+### 第 28 次发布
+
+发布时间：2022-08-31 06:53:49
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [CarPlateContent](https://cloud.tencent.com/document/api/865/35474#CarPlateContent)
+
+	* 新增成员：PlateStatus, PlateStatusConfidence, PlateAngle
+
+* [CarTagItem](https://cloud.tencent.com/document/api/865/35474#CarTagItem)
+
+	* 新增成员：Orientation, OrientationConfidence
+
+
+
+
+## 机器翻译(tmt) 版本：2018-03-21
+
+### 第 8 次发布
+
+发布时间：2022-08-31 06:55:53
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [GetFileTranslateData](https://cloud.tencent.com/document/api/551/17233#GetFileTranslateData)
+
+	* 新增成员：Progress
+
+
+
+
 # Release v1.0.485
 
 ## 云防火墙(cfw) 版本：2019-09-04

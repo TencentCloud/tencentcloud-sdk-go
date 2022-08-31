@@ -1735,6 +1735,7 @@ func NewDescribeRoleListResponse() (response *DescribeRoleListResponse) {
 // 本接口（DescribeRoleList）用于获取账号下的角色列表。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 func (c *Client) DescribeRoleList(request *DescribeRoleListRequest) (response *DescribeRoleListResponse, err error) {
@@ -1745,6 +1746,7 @@ func (c *Client) DescribeRoleList(request *DescribeRoleListRequest) (response *D
 // 本接口（DescribeRoleList）用于获取账号下的角色列表。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 func (c *Client) DescribeRoleListWithContext(ctx context.Context, request *DescribeRoleListRequest) (response *DescribeRoleListResponse, err error) {

@@ -967,9 +967,7 @@ func NewDescribeKTVSuggestionsResponse() (response *DescribeKTVSuggestionsRespon
 // 获取直播互动曲库联想词
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) DescribeKTVSuggestions(request *DescribeKTVSuggestionsRequest) (response *DescribeKTVSuggestionsResponse, err error) {
     return c.DescribeKTVSuggestionsWithContext(context.Background(), request)
 }
@@ -978,9 +976,7 @@ func (c *Client) DescribeKTVSuggestions(request *DescribeKTVSuggestionsRequest) 
 // 获取直播互动曲库联想词
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) DescribeKTVSuggestionsWithContext(ctx context.Context, request *DescribeKTVSuggestionsRequest) (response *DescribeKTVSuggestionsResponse, err error) {
     if request == nil {
         request = NewDescribeKTVSuggestionsRequest()

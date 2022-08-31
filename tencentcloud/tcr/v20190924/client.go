@@ -1451,16 +1451,7 @@ func NewCreateSignaturePolicyResponse() (response *CreateSignaturePolicyResponse
 // 创建镜像签名策略
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_OPERATIONCANCEL = "FailedOperation.OperationCancel"
-//  INTERNALERROR = "InternalError"
-//  INTERNALERROR_ERRORTCRINTERNAL = "InternalError.ErrorTcrInternal"
-//  INTERNALERROR_ERRORTCRINVALIDMEDIATYPE = "InternalError.ErrorTcrInvalidMediaType"
-//  INTERNALERROR_ERRORTCRRESOURCECONFLICT = "InternalError.ErrorTcrResourceConflict"
-//  INTERNALERROR_ERRORTCRUNAUTHORIZED = "InternalError.ErrorTcrUnauthorized"
-//  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_ERRORTCRINVALIDPARAMETER = "InvalidParameter.ErrorTcrInvalidParameter"
-//  OPERATIONDENIED = "OperationDenied"
-//  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateSignaturePolicy(request *CreateSignaturePolicyRequest) (response *CreateSignaturePolicyResponse, err error) {
     return c.CreateSignaturePolicyWithContext(context.Background(), request)
@@ -1470,16 +1461,7 @@ func (c *Client) CreateSignaturePolicy(request *CreateSignaturePolicyRequest) (r
 // 创建镜像签名策略
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_OPERATIONCANCEL = "FailedOperation.OperationCancel"
-//  INTERNALERROR = "InternalError"
-//  INTERNALERROR_ERRORTCRINTERNAL = "InternalError.ErrorTcrInternal"
-//  INTERNALERROR_ERRORTCRINVALIDMEDIATYPE = "InternalError.ErrorTcrInvalidMediaType"
-//  INTERNALERROR_ERRORTCRRESOURCECONFLICT = "InternalError.ErrorTcrResourceConflict"
-//  INTERNALERROR_ERRORTCRUNAUTHORIZED = "InternalError.ErrorTcrUnauthorized"
-//  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_ERRORTCRINVALIDPARAMETER = "InvalidParameter.ErrorTcrInvalidParameter"
-//  OPERATIONDENIED = "OperationDenied"
-//  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateSignaturePolicyWithContext(ctx context.Context, request *CreateSignaturePolicyRequest) (response *CreateSignaturePolicyResponse, err error) {
     if request == nil {

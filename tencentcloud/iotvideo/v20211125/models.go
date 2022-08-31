@@ -3099,6 +3099,80 @@ func (r *DescribeCloudStorageResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeCloudStorageStreamDataRequestParams struct {
+	// 产品ID
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+
+	// 设备名称
+	DeviceName *string `json:"DeviceName,omitempty" name:"DeviceName"`
+
+	// 图片流事件开始时间
+	StartTime *uint64 `json:"StartTime,omitempty" name:"StartTime"`
+}
+
+type DescribeCloudStorageStreamDataRequest struct {
+	*tchttp.BaseRequest
+	
+	// 产品ID
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+
+	// 设备名称
+	DeviceName *string `json:"DeviceName,omitempty" name:"DeviceName"`
+
+	// 图片流事件开始时间
+	StartTime *uint64 `json:"StartTime,omitempty" name:"StartTime"`
+}
+
+func (r *DescribeCloudStorageStreamDataRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCloudStorageStreamDataRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProductId")
+	delete(f, "DeviceName")
+	delete(f, "StartTime")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCloudStorageStreamDataRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCloudStorageStreamDataResponseParams struct {
+	// 图片流视频地址
+	VideoStream *string `json:"VideoStream,omitempty" name:"VideoStream"`
+
+	// 图片流音频地址
+	AudioStream *string `json:"AudioStream,omitempty" name:"AudioStream"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeCloudStorageStreamDataResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeCloudStorageStreamDataResponseParams `json:"Response"`
+}
+
+func (r *DescribeCloudStorageStreamDataResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCloudStorageStreamDataResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeCloudStorageThumbnailRequestParams struct {
 	// 产品ID
 	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`

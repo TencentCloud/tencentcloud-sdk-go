@@ -611,80 +611,6 @@ func (c *Client) CreateDCDBInstanceWithContext(ctx context.Context, request *Cre
     return
 }
 
-func NewCreateDedicatedClusterDCDBInstanceRequest() (request *CreateDedicatedClusterDCDBInstanceRequest) {
-    request = &CreateDedicatedClusterDCDBInstanceRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("dcdb", APIVersion, "CreateDedicatedClusterDCDBInstance")
-    
-    
-    return
-}
-
-func NewCreateDedicatedClusterDCDBInstanceResponse() (response *CreateDedicatedClusterDCDBInstanceResponse) {
-    response = &CreateDedicatedClusterDCDBInstanceResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// CreateDedicatedClusterDCDBInstance
-// 创建独享集群DCDB实例
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION_TAGQUOTAEXCEEDLIMIT = "FailedOperation.TagQuotaExceedLimit"
-//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
-//  INTERNALERROR_FENCEERROR = "InternalError.FenceError"
-//  INTERNALERROR_GETSUBNETFAILED = "InternalError.GetSubnetFailed"
-//  INTERNALERROR_GETVPCFAILED = "InternalError.GetVpcFailed"
-//  INTERNALERROR_INNERSYSTEMERROR = "InternalError.InnerSystemError"
-//  INTERNALERROR_OPERATEDATABASEFAILED = "InternalError.OperateDatabaseFailed"
-//  INVALIDPARAMETER_VPCNOTFOUND = "InvalidParameter.VpcNotFound"
-//  INVALIDPARAMETERVALUE_ILLEGALEXCLUSTERID = "InvalidParameterValue.IllegalExclusterID"
-//  INVALIDPARAMETERVALUE_ILLEGALZONE = "InvalidParameterValue.IllegalZone"
-//  INVALIDPARAMETERVALUE_SPECIDILLEGAL = "InvalidParameterValue.SpecIdIllegal"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
-//  RESOURCEUNAVAILABLE_EXCLUSTERSTATUSABNORMAL = "ResourceUnavailable.ExclusterStatusAbnormal"
-//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
-func (c *Client) CreateDedicatedClusterDCDBInstance(request *CreateDedicatedClusterDCDBInstanceRequest) (response *CreateDedicatedClusterDCDBInstanceResponse, err error) {
-    return c.CreateDedicatedClusterDCDBInstanceWithContext(context.Background(), request)
-}
-
-// CreateDedicatedClusterDCDBInstance
-// 创建独享集群DCDB实例
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION_TAGQUOTAEXCEEDLIMIT = "FailedOperation.TagQuotaExceedLimit"
-//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
-//  INTERNALERROR_FENCEERROR = "InternalError.FenceError"
-//  INTERNALERROR_GETSUBNETFAILED = "InternalError.GetSubnetFailed"
-//  INTERNALERROR_GETVPCFAILED = "InternalError.GetVpcFailed"
-//  INTERNALERROR_INNERSYSTEMERROR = "InternalError.InnerSystemError"
-//  INTERNALERROR_OPERATEDATABASEFAILED = "InternalError.OperateDatabaseFailed"
-//  INVALIDPARAMETER_VPCNOTFOUND = "InvalidParameter.VpcNotFound"
-//  INVALIDPARAMETERVALUE_ILLEGALEXCLUSTERID = "InvalidParameterValue.IllegalExclusterID"
-//  INVALIDPARAMETERVALUE_ILLEGALZONE = "InvalidParameterValue.IllegalZone"
-//  INVALIDPARAMETERVALUE_SPECIDILLEGAL = "InvalidParameterValue.SpecIdIllegal"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
-//  RESOURCEUNAVAILABLE_EXCLUSTERSTATUSABNORMAL = "ResourceUnavailable.ExclusterStatusAbnormal"
-//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
-func (c *Client) CreateDedicatedClusterDCDBInstanceWithContext(ctx context.Context, request *CreateDedicatedClusterDCDBInstanceRequest) (response *CreateDedicatedClusterDCDBInstanceResponse, err error) {
-    if request == nil {
-        request = NewCreateDedicatedClusterDCDBInstanceRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("CreateDedicatedClusterDCDBInstance require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewCreateDedicatedClusterDCDBInstanceResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewCreateHourDCDBInstanceRequest() (request *CreateHourDCDBInstanceRequest) {
     request = &CreateHourDCDBInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1925,6 +1851,7 @@ func NewDescribeDcnDetailResponse() (response *DescribeDcnDetailResponse) {
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INTERNALERROR_INNERSYSTEMERROR = "InternalError.InnerSystemError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
 //  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
@@ -1938,6 +1865,7 @@ func (c *Client) DescribeDcnDetail(request *DescribeDcnDetailRequest) (response 
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INTERNALERROR_INNERSYSTEMERROR = "InternalError.InnerSystemError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
 //  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
@@ -2145,6 +2073,7 @@ func NewDescribeProjectSecurityGroupsResponse() (response *DescribeProjectSecuri
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  INVALIDPARAMETER_ILLEGALPARAMETERERROR = "InvalidParameter.IllegalParameterError"
+//  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
 func (c *Client) DescribeProjectSecurityGroups(request *DescribeProjectSecurityGroupsRequest) (response *DescribeProjectSecurityGroupsResponse, err error) {
     return c.DescribeProjectSecurityGroupsWithContext(context.Background(), request)
 }
@@ -2155,6 +2084,7 @@ func (c *Client) DescribeProjectSecurityGroups(request *DescribeProjectSecurityG
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  INVALIDPARAMETER_ILLEGALPARAMETERERROR = "InvalidParameter.IllegalParameterError"
+//  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
 func (c *Client) DescribeProjectSecurityGroupsWithContext(ctx context.Context, request *DescribeProjectSecurityGroupsRequest) (response *DescribeProjectSecurityGroupsResponse, err error) {
     if request == nil {
         request = NewDescribeProjectSecurityGroupsRequest()
@@ -2751,6 +2681,7 @@ func NewInitDCDBInstancesResponse() (response *InitDCDBInstancesResponse) {
 //  INVALIDPARAMETER_GENERICPARAMETERERROR = "InvalidParameter.GenericParameterError"
 //  INVALIDPARAMETERVALUE_ILLEGALINITPARAM = "InvalidParameterValue.IllegalInitParam"
 //  RESOURCEUNAVAILABLE_BADINSTANCESTATUS = "ResourceUnavailable.BadInstanceStatus"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSABNORMAL = "ResourceUnavailable.InstanceStatusAbnormal"
 //  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) InitDCDBInstances(request *InitDCDBInstancesRequest) (response *InitDCDBInstancesResponse, err error) {
     return c.InitDCDBInstancesWithContext(context.Background(), request)
@@ -2766,6 +2697,7 @@ func (c *Client) InitDCDBInstances(request *InitDCDBInstancesRequest) (response 
 //  INVALIDPARAMETER_GENERICPARAMETERERROR = "InvalidParameter.GenericParameterError"
 //  INVALIDPARAMETERVALUE_ILLEGALINITPARAM = "InvalidParameterValue.IllegalInitParam"
 //  RESOURCEUNAVAILABLE_BADINSTANCESTATUS = "ResourceUnavailable.BadInstanceStatus"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSABNORMAL = "ResourceUnavailable.InstanceStatusAbnormal"
 //  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) InitDCDBInstancesWithContext(ctx context.Context, request *InitDCDBInstancesRequest) (response *InitDCDBInstancesResponse, err error) {
     if request == nil {

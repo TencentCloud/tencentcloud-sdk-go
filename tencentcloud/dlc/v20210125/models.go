@@ -4033,7 +4033,7 @@ type DescribeTaskResultRequestParams struct {
 	// 任务唯一ID
 	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
 
-	// 上一次请求响应返回的分页信息。第一次可以不带，从头开始返回数据，每次返回1000行数据。
+	// 上一次请求响应返回的分页信息。第一次可以不带，从头开始返回数据，每次返回MaxResults字段设置的数据量。
 	NextToken *string `json:"NextToken,omitempty" name:"NextToken"`
 
 	// 返回结果的最大行数，范围0~1000，默认为1000.
@@ -4046,7 +4046,7 @@ type DescribeTaskResultRequest struct {
 	// 任务唯一ID
 	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
 
-	// 上一次请求响应返回的分页信息。第一次可以不带，从头开始返回数据，每次返回1000行数据。
+	// 上一次请求响应返回的分页信息。第一次可以不带，从头开始返回数据，每次返回MaxResults字段设置的数据量。
 	NextToken *string `json:"NextToken,omitempty" name:"NextToken"`
 
 	// 返回结果的最大行数，范围0~1000，默认为1000.
@@ -4198,6 +4198,10 @@ type DescribeTasksResponseParams struct {
 
 	// 实例总数。
 	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 任务概览信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TasksOverview *TasksOverview `json:"TasksOverview,omitempty" name:"TasksOverview"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -5938,7 +5942,7 @@ type TaskResponseInfo struct {
 	// 任务Id。
 	Id *string `json:"Id,omitempty" name:"Id"`
 
-	// 计算时长，单位： ms。
+	// 计算耗时，单位： ms
 	UsedTime *int64 `json:"UsedTime,omitempty" name:"UsedTime"`
 
 	// 任务输出路径。
@@ -6033,6 +6037,10 @@ type TaskResponseInfo struct {
 	// spark ui url
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UiUrl *string `json:"UiUrl,omitempty" name:"UiUrl"`
+
+	// 任务耗时，单位： ms
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalTime *int64 `json:"TotalTime,omitempty" name:"TotalTime"`
 }
 
 type TaskResultInfo struct {
@@ -6059,7 +6067,7 @@ type TaskResultInfo struct {
 	// 扫描的数据量，单位byte
 	DataAmount *int64 `json:"DataAmount,omitempty" name:"DataAmount"`
 
-	// 任务执行耗时，单位秒
+	// 计算耗时，单位： ms
 	UsedTime *int64 `json:"UsedTime,omitempty" name:"UsedTime"`
 
 	// 任务结果输出的COS桶地址
@@ -6093,6 +6101,9 @@ type TaskResultInfo struct {
 
 	// 控制台展示格式。table：表格展示 text：文本展示
 	DisplayFormat *string `json:"DisplayFormat,omitempty" name:"DisplayFormat"`
+
+	// 任务耗时，单位： ms
+	TotalTime *int64 `json:"TotalTime,omitempty" name:"TotalTime"`
 }
 
 type TasksInfo struct {
@@ -6110,6 +6121,20 @@ type TasksInfo struct {
 
 	// 任务的用户自定义参数信息
 	Params []*KVPair `json:"Params,omitempty" name:"Params"`
+}
+
+type TasksOverview struct {
+	// 正在排队的任务个数
+	TaskQueuedCount *int64 `json:"TaskQueuedCount,omitempty" name:"TaskQueuedCount"`
+
+	// 初始化的任务个数
+	TaskInitCount *int64 `json:"TaskInitCount,omitempty" name:"TaskInitCount"`
+
+	// 正在执行的任务个数
+	TaskRunningCount *int64 `json:"TaskRunningCount,omitempty" name:"TaskRunningCount"`
+
+	// 当前时间范围的总任务个数
+	TotalTaskCount *int64 `json:"TotalTaskCount,omitempty" name:"TotalTaskCount"`
 }
 
 type TextFile struct {

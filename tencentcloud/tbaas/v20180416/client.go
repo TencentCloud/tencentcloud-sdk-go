@@ -3022,6 +3022,7 @@ func NewQueryChainMakerTransactionResponse() (response *QueryChainMakerTransacti
 //  INVALIDPARAMETER_REDEPLOYEDCONTRACT = "InvalidParameter.ReDeployedContract"
 //  INVALIDPARAMETER_REDEPLOYINGCONTRACT = "InvalidParameter.ReDeployingContract"
 //  INVALIDPARAMETER_ROLEINVALID = "InvalidParameter.RoleInvalid"
+//  INVALIDPARAMETERVALUE_ILLEGALVALUE = "InvalidParameterValue.IllegalValue"
 //  MISSINGPARAMETER_EMPTYPARAM = "MissingParameter.EmptyParam"
 //  RESOURCENOTFOUND_EMPTYDATA = "ResourceNotFound.EmptyData"
 func (c *Client) QueryChainMakerTransaction(request *QueryChainMakerTransactionRequest) (response *QueryChainMakerTransactionResponse, err error) {
@@ -3071,6 +3072,7 @@ func (c *Client) QueryChainMakerTransaction(request *QueryChainMakerTransactionR
 //  INVALIDPARAMETER_REDEPLOYEDCONTRACT = "InvalidParameter.ReDeployedContract"
 //  INVALIDPARAMETER_REDEPLOYINGCONTRACT = "InvalidParameter.ReDeployingContract"
 //  INVALIDPARAMETER_ROLEINVALID = "InvalidParameter.RoleInvalid"
+//  INVALIDPARAMETERVALUE_ILLEGALVALUE = "InvalidParameterValue.IllegalValue"
 //  MISSINGPARAMETER_EMPTYPARAM = "MissingParameter.EmptyParam"
 //  RESOURCENOTFOUND_EMPTYDATA = "ResourceNotFound.EmptyData"
 func (c *Client) QueryChainMakerTransactionWithContext(ctx context.Context, request *QueryChainMakerTransactionRequest) (response *QueryChainMakerTransactionResponse, err error) {

@@ -1649,6 +1649,7 @@ func NewDescribeDisksDeniedActionsResponse() (response *DescribeDisksDeniedActio
 // 本接口（DescribeDisksDeniedActions）用于查询一个或多个云硬盘的操作限制列表信息。
 //
 // 可能返回的错误码:
+//  INTERNALERROR_DESCRIBEINSTANCESTATUS = "InternalError.DescribeInstanceStatus"
 //  INTERNALERROR_INVALIDCOMMANDNOTFOUND = "InternalError.InvalidCommandNotFound"
 //  INVALIDPARAMETERVALUE_INVALIDDISKIDMALFORMED = "InvalidParameterValue.InvalidDiskIdMalformed"
 //  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
@@ -1660,6 +1661,7 @@ func (c *Client) DescribeDisksDeniedActions(request *DescribeDisksDeniedActionsR
 // 本接口（DescribeDisksDeniedActions）用于查询一个或多个云硬盘的操作限制列表信息。
 //
 // 可能返回的错误码:
+//  INTERNALERROR_DESCRIBEINSTANCESTATUS = "InternalError.DescribeInstanceStatus"
 //  INTERNALERROR_INVALIDCOMMANDNOTFOUND = "InternalError.InvalidCommandNotFound"
 //  INVALIDPARAMETERVALUE_INVALIDDISKIDMALFORMED = "InvalidParameterValue.InvalidDiskIdMalformed"
 //  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
@@ -3004,6 +3006,7 @@ func NewDetachDisksResponse() (response *DetachDisksResponse) {
 //  RESOURCENOTFOUND_DISKIDNOTFOUND = "ResourceNotFound.DiskIdNotFound"
 //  RESOURCENOTFOUND_DISKNOTFOUND = "ResourceNotFound.DiskNotFound"
 //  UNSUPPORTEDOPERATION_INVALIDDISKSTATE = "UnsupportedOperation.InvalidDiskState"
+//  UNSUPPORTEDOPERATION_INVALIDINSTANCESTATE = "UnsupportedOperation.InvalidInstanceState"
 //  UNSUPPORTEDOPERATION_LATESTOPERATIONUNFINISHED = "UnsupportedOperation.LatestOperationUnfinished"
 func (c *Client) DetachDisks(request *DetachDisksRequest) (response *DetachDisksResponse, err error) {
     return c.DetachDisksWithContext(context.Background(), request)
@@ -3020,6 +3023,7 @@ func (c *Client) DetachDisks(request *DetachDisksRequest) (response *DetachDisks
 //  RESOURCENOTFOUND_DISKIDNOTFOUND = "ResourceNotFound.DiskIdNotFound"
 //  RESOURCENOTFOUND_DISKNOTFOUND = "ResourceNotFound.DiskNotFound"
 //  UNSUPPORTEDOPERATION_INVALIDDISKSTATE = "UnsupportedOperation.InvalidDiskState"
+//  UNSUPPORTEDOPERATION_INVALIDINSTANCESTATE = "UnsupportedOperation.InvalidInstanceState"
 //  UNSUPPORTEDOPERATION_LATESTOPERATIONUNFINISHED = "UnsupportedOperation.LatestOperationUnfinished"
 func (c *Client) DetachDisksWithContext(ctx context.Context, request *DetachDisksRequest) (response *DetachDisksResponse, err error) {
     if request == nil {
@@ -3605,6 +3609,7 @@ func NewModifyBlueprintAttributeResponse() (response *ModifyBlueprintAttributeRe
 //  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_BLUEPRINTIDNOTFOUND = "ResourceNotFound.BlueprintIdNotFound"
+//  RESOURCENOTFOUND_PRIVATEBLUEPRINTNOTFOUND = "ResourceNotFound.PrivateBlueprintNotFound"
 //  UNSUPPORTEDOPERATION_BLUEPRINTCURSTATEINVALID = "UnsupportedOperation.BlueprintCurStateInvalid"
 //  UNSUPPORTEDOPERATION_NOTSUPPORTSHAREDBLUEPRINT = "UnsupportedOperation.NotSupportSharedBlueprint"
 func (c *Client) ModifyBlueprintAttribute(request *ModifyBlueprintAttributeRequest) (response *ModifyBlueprintAttributeResponse, err error) {
@@ -3621,6 +3626,7 @@ func (c *Client) ModifyBlueprintAttribute(request *ModifyBlueprintAttributeReque
 //  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_BLUEPRINTIDNOTFOUND = "ResourceNotFound.BlueprintIdNotFound"
+//  RESOURCENOTFOUND_PRIVATEBLUEPRINTNOTFOUND = "ResourceNotFound.PrivateBlueprintNotFound"
 //  UNSUPPORTEDOPERATION_BLUEPRINTCURSTATEINVALID = "UnsupportedOperation.BlueprintCurStateInvalid"
 //  UNSUPPORTEDOPERATION_NOTSUPPORTSHAREDBLUEPRINT = "UnsupportedOperation.NotSupportSharedBlueprint"
 func (c *Client) ModifyBlueprintAttributeWithContext(ctx context.Context, request *ModifyBlueprintAttributeRequest) (response *ModifyBlueprintAttributeResponse, err error) {

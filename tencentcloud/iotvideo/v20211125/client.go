@@ -1969,6 +1969,58 @@ func (c *Client) DescribeCloudStoragePackageConsumeStatsWithContext(ctx context.
     return
 }
 
+func NewDescribeCloudStorageStreamDataRequest() (request *DescribeCloudStorageStreamDataRequest) {
+    request = &DescribeCloudStorageStreamDataRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotvideo", APIVersion, "DescribeCloudStorageStreamData")
+    
+    
+    return
+}
+
+func NewDescribeCloudStorageStreamDataResponse() (response *DescribeCloudStorageStreamDataResponse) {
+    response = &DescribeCloudStorageStreamDataResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeCloudStorageStreamData
+// 获取设备图片流数据
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeCloudStorageStreamData(request *DescribeCloudStorageStreamDataRequest) (response *DescribeCloudStorageStreamDataResponse, err error) {
+    return c.DescribeCloudStorageStreamDataWithContext(context.Background(), request)
+}
+
+// DescribeCloudStorageStreamData
+// 获取设备图片流数据
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeCloudStorageStreamDataWithContext(ctx context.Context, request *DescribeCloudStorageStreamDataRequest) (response *DescribeCloudStorageStreamDataResponse, err error) {
+    if request == nil {
+        request = NewDescribeCloudStorageStreamDataRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCloudStorageStreamData require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCloudStorageStreamDataResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeCloudStorageThumbnailRequest() (request *DescribeCloudStorageThumbnailRequest) {
     request = &DescribeCloudStorageThumbnailRequest{
         BaseRequest: &tchttp.BaseRequest{},

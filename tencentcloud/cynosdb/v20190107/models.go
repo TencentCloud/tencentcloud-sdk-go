@@ -2626,6 +2626,9 @@ type DescribeInstanceSpecsRequestParams struct {
 	// 数据库类型，取值范围: 
 	// <li> MYSQL </li>
 	DbType *string `json:"DbType,omitempty" name:"DbType"`
+
+	// 是否需要返回可用区信息
+	IncludeZoneStocks *bool `json:"IncludeZoneStocks,omitempty" name:"IncludeZoneStocks"`
 }
 
 type DescribeInstanceSpecsRequest struct {
@@ -2634,6 +2637,9 @@ type DescribeInstanceSpecsRequest struct {
 	// 数据库类型，取值范围: 
 	// <li> MYSQL </li>
 	DbType *string `json:"DbType,omitempty" name:"DbType"`
+
+	// 是否需要返回可用区信息
+	IncludeZoneStocks *bool `json:"IncludeZoneStocks,omitempty" name:"IncludeZoneStocks"`
 }
 
 func (r *DescribeInstanceSpecsRequest) ToJsonString() string {
@@ -2649,6 +2655,7 @@ func (r *DescribeInstanceSpecsRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "DbType")
+	delete(f, "IncludeZoneStocks")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeInstanceSpecsRequest has unknown keys!", "")
 	}
@@ -3677,6 +3684,22 @@ type InstanceSpec struct {
 
 	// 实例最小可用存储，单位：GB
 	MinStorageSize *uint64 `json:"MinStorageSize,omitempty" name:"MinStorageSize"`
+
+	// 是否有库存
+	HasStock *bool `json:"HasStock,omitempty" name:"HasStock"`
+
+	// 机器类型
+	MachineType *string `json:"MachineType,omitempty" name:"MachineType"`
+
+	// 最大IOPS
+	MaxIops *int64 `json:"MaxIops,omitempty" name:"MaxIops"`
+
+	// 最大IO带宽
+	MaxIoBandWidth *int64 `json:"MaxIoBandWidth,omitempty" name:"MaxIoBandWidth"`
+
+	// 地域库存信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ZoneStockInfos []*ZoneStockInfo `json:"ZoneStockInfos,omitempty" name:"ZoneStockInfos"`
 }
 
 // Predefined struct for user
@@ -5493,4 +5516,12 @@ func (r *UpgradeInstanceResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *UpgradeInstanceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type ZoneStockInfo struct {
+	// 可用区
+	Zone *string `json:"Zone,omitempty" name:"Zone"`
+
+	// 是否有库存
+	HasStock *bool `json:"HasStock,omitempty" name:"HasStock"`
 }

@@ -3337,6 +3337,81 @@ func (r *DescribeExclusiveClustersResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeIdleLoadBalancersRequestParams struct {
+	// 数据偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回负载均衡实例的数量，默认为20，最大值为100。
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 负载均衡所在地域。
+	LoadBalancerRegion *string `json:"LoadBalancerRegion,omitempty" name:"LoadBalancerRegion"`
+}
+
+type DescribeIdleLoadBalancersRequest struct {
+	*tchttp.BaseRequest
+	
+	// 数据偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回负载均衡实例的数量，默认为20，最大值为100。
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 负载均衡所在地域。
+	LoadBalancerRegion *string `json:"LoadBalancerRegion,omitempty" name:"LoadBalancerRegion"`
+}
+
+func (r *DescribeIdleLoadBalancersRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeIdleLoadBalancersRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "LoadBalancerRegion")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeIdleLoadBalancersRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeIdleLoadBalancersResponseParams struct {
+	// 闲置实例列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IdleLoadBalancers []*IdleLoadBalancer `json:"IdleLoadBalancers,omitempty" name:"IdleLoadBalancers"`
+
+	// 所有闲置实例数目
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeIdleLoadBalancersResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeIdleLoadBalancersResponseParams `json:"Response"`
+}
+
+func (r *DescribeIdleLoadBalancersResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeIdleLoadBalancersResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeLBListenersRequestParams struct {
 	// 需要查询的内网ip列表
 	Backends []*LbRsItem `json:"Backends,omitempty" name:"Backends"`
@@ -4773,6 +4848,30 @@ type HealthCheck struct {
 	// GRPC健康检查状态码（仅适用于后端转发协议为GRPC的规则）。默认值为 12，可输入值为数值、多个数值、或者范围，例如 20 或 20,25 或 0-99
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExtendedCode *string `json:"ExtendedCode,omitempty" name:"ExtendedCode"`
+}
+
+type IdleLoadBalancer struct {
+	// 负载均衡ID
+	LoadBalancerId *string `json:"LoadBalancerId,omitempty" name:"LoadBalancerId"`
+
+	// 负载均衡名字
+	LoadBalancerName *string `json:"LoadBalancerName,omitempty" name:"LoadBalancerName"`
+
+	// 负载均衡所在地域
+	Region *string `json:"Region,omitempty" name:"Region"`
+
+	// 负载均衡的vip
+	Vip *string `json:"Vip,omitempty" name:"Vip"`
+
+	// 闲置原因。NO_RULES：没有规则，NO_RS：有规则没有绑定子机。
+	IdleReason *string `json:"IdleReason,omitempty" name:"IdleReason"`
+
+	// 负载均衡实例的状态，包括
+	// 0：创建中，1：正常运行。
+	Status *uint64 `json:"Status,omitempty" name:"Status"`
+
+	// 负载均衡类型标识，1：负载均衡，0：传统型负载均衡。
+	Forward *uint64 `json:"Forward,omitempty" name:"Forward"`
 }
 
 type InternetAccessible struct {

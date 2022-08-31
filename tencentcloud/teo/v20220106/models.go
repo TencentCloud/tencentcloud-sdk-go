@@ -3570,6 +3570,9 @@ func (r *DescribeDDoSPolicyRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDDoSPolicyResponseParams struct {
+	// DDoS防护配置
+	DdosRule *DdosRule `json:"DdosRule,omitempty" name:"DdosRule"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }
@@ -11231,6 +11234,7 @@ type RuleAction struct {
 	// <li> ClientIpHeader；</li>
 	// <li> TlsVersion；</li>
 	// <li> OcspStapling。</li>
+	// <li> HTTP/2 访问（Http2）。</li>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	NormalAction *RuleNormalAction `json:"NormalAction,omitempty" name:"NormalAction"`
 

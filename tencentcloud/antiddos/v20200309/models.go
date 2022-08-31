@@ -6013,6 +6013,73 @@ func (r *DescribeListWaterPrintConfigResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeNewL7RulesErrHealthRequestParams struct {
+	// 大禹子产品代号(bgpip表示高防IP)
+	Business *string `json:"Business,omitempty" name:"Business"`
+
+	// 规则Id列表
+	RuleIdList []*string `json:"RuleIdList,omitempty" name:"RuleIdList"`
+}
+
+type DescribeNewL7RulesErrHealthRequest struct {
+	*tchttp.BaseRequest
+	
+	// 大禹子产品代号(bgpip表示高防IP)
+	Business *string `json:"Business,omitempty" name:"Business"`
+
+	// 规则Id列表
+	RuleIdList []*string `json:"RuleIdList,omitempty" name:"RuleIdList"`
+}
+
+func (r *DescribeNewL7RulesErrHealthRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeNewL7RulesErrHealthRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Business")
+	delete(f, "RuleIdList")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeNewL7RulesErrHealthRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeNewL7RulesErrHealthResponseParams struct {
+	// 异常规则列表，返回值说明: Key值为规则ID，Value值为异常IP及错误信息，多个IP用","分割
+	ErrHealths []*KeyValue `json:"ErrHealths,omitempty" name:"ErrHealths"`
+
+	// 异常规则的总数
+	Total *uint64 `json:"Total,omitempty" name:"Total"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeNewL7RulesErrHealthResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeNewL7RulesErrHealthResponseParams `json:"Response"`
+}
+
+func (r *DescribeNewL7RulesErrHealthResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeNewL7RulesErrHealthResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeNewL7RulesRequestParams struct {
 	// 大禹子产品代号（bgpip表示高防IP）
 	Business *string `json:"Business,omitempty" name:"Business"`

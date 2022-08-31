@@ -464,6 +464,9 @@ type CreateJobConfigRequestParams struct {
 
 	// 日志级别
 	LogLevel *string `json:"LogLevel,omitempty" name:"LogLevel"`
+
+	// Oceanus 平台恢复作业开关 1:开启 -1: 关闭
+	AutoRecover *int64 `json:"AutoRecover,omitempty" name:"AutoRecover"`
 }
 
 type CreateJobConfigRequest struct {
@@ -522,6 +525,9 @@ type CreateJobConfigRequest struct {
 
 	// 日志级别
 	LogLevel *string `json:"LogLevel,omitempty" name:"LogLevel"`
+
+	// Oceanus 平台恢复作业开关 1:开启 -1: 关闭
+	AutoRecover *int64 `json:"AutoRecover,omitempty" name:"AutoRecover"`
 }
 
 func (r *CreateJobConfigRequest) ToJsonString() string {
@@ -554,6 +560,7 @@ func (r *CreateJobConfigRequest) FromJsonString(s string) error {
 	delete(f, "PythonVersion")
 	delete(f, "WorkSpaceId")
 	delete(f, "LogLevel")
+	delete(f, "AutoRecover")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateJobConfigRequest has unknown keys!", "")
 	}
@@ -2097,6 +2104,14 @@ type JobConfig struct {
 	// pyflink作业运行的python版本
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PythonVersion *string `json:"PythonVersion,omitempty" name:"PythonVersion"`
+
+	// Oceanus 平台恢复作业开关 1:开启 -1: 关闭
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AutoRecover *int64 `json:"AutoRecover,omitempty" name:"AutoRecover"`
+
+	// 日志级别
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LogLevel *string `json:"LogLevel,omitempty" name:"LogLevel"`
 }
 
 type JobV1 struct {

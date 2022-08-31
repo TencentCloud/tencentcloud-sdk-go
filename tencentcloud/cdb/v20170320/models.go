@@ -6273,6 +6273,15 @@ func (r *DescribeParamTemplateInfoResponse) FromJsonString(s string) error {
 type DescribeParamTemplatesRequestParams struct {
 	// 引擎版本，缺省则查询所有
 	EngineVersions []*string `json:"EngineVersions,omitempty" name:"EngineVersions"`
+
+	// 引擎类型，缺省则查询所有
+	EngineTypes []*string `json:"EngineTypes,omitempty" name:"EngineTypes"`
+
+	// 模板名称，缺省则查询所有
+	TemplateNames []*string `json:"TemplateNames,omitempty" name:"TemplateNames"`
+
+	// 模板id，缺省则查询所有
+	TemplateIds []*int64 `json:"TemplateIds,omitempty" name:"TemplateIds"`
 }
 
 type DescribeParamTemplatesRequest struct {
@@ -6280,6 +6289,15 @@ type DescribeParamTemplatesRequest struct {
 	
 	// 引擎版本，缺省则查询所有
 	EngineVersions []*string `json:"EngineVersions,omitempty" name:"EngineVersions"`
+
+	// 引擎类型，缺省则查询所有
+	EngineTypes []*string `json:"EngineTypes,omitempty" name:"EngineTypes"`
+
+	// 模板名称，缺省则查询所有
+	TemplateNames []*string `json:"TemplateNames,omitempty" name:"TemplateNames"`
+
+	// 模板id，缺省则查询所有
+	TemplateIds []*int64 `json:"TemplateIds,omitempty" name:"TemplateIds"`
 }
 
 func (r *DescribeParamTemplatesRequest) ToJsonString() string {
@@ -6295,6 +6313,9 @@ func (r *DescribeParamTemplatesRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "EngineVersions")
+	delete(f, "EngineTypes")
+	delete(f, "TemplateNames")
+	delete(f, "TemplateIds")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeParamTemplatesRequest has unknown keys!", "")
 	}

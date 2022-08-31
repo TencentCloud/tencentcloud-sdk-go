@@ -74,7 +74,7 @@ func NewCreateCloudRecordingResponse() (response *CreateCloudRecordingResponse) 
 //
 // * 指定订阅流参数（RecordParams）来指定需要录制的主播的黑名单或者白名单。
 //
-// * 指定第三方存储的参数（StorageParams）来指定上传到您希望的云存储
+// * 指定第三方存储的参数（StorageParams）来指定上传到您希望的云存储，目前仅支持云点播存储（CloudVod）
 //
 // * 指定混流模式下的音视频转码详细参数（MixTranscodeParams），包括视频分辨率、视频码率、视频帧率、以及声音质量等
 //
@@ -114,6 +114,7 @@ func NewCreateCloudRecordingResponse() (response *CreateCloudRecordingResponse) 
 //  MISSINGPARAMETER_USERID = "MissingParameter.UserId"
 //  MISSINGPARAMETER_USERSIG = "MissingParameter.UserSig"
 //  MISSINGPARAMETER_VENDOR = "MissingParameter.Vendor"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateCloudRecording(request *CreateCloudRecordingRequest) (response *CreateCloudRecordingResponse, err error) {
     return c.CreateCloudRecordingWithContext(context.Background(), request)
 }
@@ -129,7 +130,7 @@ func (c *Client) CreateCloudRecording(request *CreateCloudRecordingRequest) (res
 //
 // * 指定订阅流参数（RecordParams）来指定需要录制的主播的黑名单或者白名单。
 //
-// * 指定第三方存储的参数（StorageParams）来指定上传到您希望的云存储
+// * 指定第三方存储的参数（StorageParams）来指定上传到您希望的云存储，目前仅支持云点播存储（CloudVod）
 //
 // * 指定混流模式下的音视频转码详细参数（MixTranscodeParams），包括视频分辨率、视频码率、视频帧率、以及声音质量等
 //
@@ -169,6 +170,7 @@ func (c *Client) CreateCloudRecording(request *CreateCloudRecordingRequest) (res
 //  MISSINGPARAMETER_USERID = "MissingParameter.UserId"
 //  MISSINGPARAMETER_USERSIG = "MissingParameter.UserSig"
 //  MISSINGPARAMETER_VENDOR = "MissingParameter.Vendor"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateCloudRecordingWithContext(ctx context.Context, request *CreateCloudRecordingRequest) (response *CreateCloudRecordingResponse, err error) {
     if request == nil {
         request = NewCreateCloudRecordingRequest()
@@ -394,7 +396,11 @@ func NewDescribeCallDetailInfoResponse() (response *DescribeCallDetailInfoRespon
 // DescribeCallDetailInfo
 // 查询指定时间内的用户列表及用户通话质量数据，可查询14天内数据。DataType 不为null，查询起止时间不超过1个小时，查询用户不超过6个，支持跨天查询。DataType为null时，查询起止时间不超过4个小时， 默认查询6个用户，同时支持每页查询100以内用户个数（PageSize不超过100）。接口用于查询质量问题，不推荐作为计费使用。（同老接口DescribeCallDetail）
 //
-// **注意**：该接口只用于历史数据统计或核对数据使用，实时类关键业务逻辑不能使用。
+// **注意**：
+//
+// 1.该接口只用于历史数据统计或核对数据使用，实时类关键业务逻辑不能使用。
+//
+// 2.该接口目前免费提供中，监控仪表盘商业化计费后该接口需要订阅付费版后方可调用，仪表盘商业化说明请见：https://cloud.tencent.com/document/product/647/77735
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -427,7 +433,11 @@ func (c *Client) DescribeCallDetailInfo(request *DescribeCallDetailInfoRequest) 
 // DescribeCallDetailInfo
 // 查询指定时间内的用户列表及用户通话质量数据，可查询14天内数据。DataType 不为null，查询起止时间不超过1个小时，查询用户不超过6个，支持跨天查询。DataType为null时，查询起止时间不超过4个小时， 默认查询6个用户，同时支持每页查询100以内用户个数（PageSize不超过100）。接口用于查询质量问题，不推荐作为计费使用。（同老接口DescribeCallDetail）
 //
-// **注意**：该接口只用于历史数据统计或核对数据使用，实时类关键业务逻辑不能使用。
+// **注意**：
+//
+// 1.该接口只用于历史数据统计或核对数据使用，实时类关键业务逻辑不能使用。
+//
+// 2.该接口目前免费提供中，监控仪表盘商业化计费后该接口需要订阅付费版后方可调用，仪表盘商业化说明请见：https://cloud.tencent.com/document/product/647/77735
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -752,7 +762,11 @@ func NewDescribeRoomInfoResponse() (response *DescribeRoomInfoResponse) {
 // DescribeRoomInfo
 // 查询SdkAppId下的房间列表。默认返回10条通话，一次最多返回100条通话。可查询14天内的数据。（同老接口DescribeRoomInformation）
 //
-// **注意**：该接口只用于历史数据统计或核对数据使用，实时类关键业务逻辑不能使用。
+// **注意**：
+//
+// 1.该接口只用于历史数据统计或核对数据使用，实时类关键业务逻辑不能使用。
+//
+// 2.该接口目前免费提供中，监控仪表盘商业化计费后该接口需要订阅付费版后方可调用，仪表盘商业化说明请见：https://cloud.tencent.com/document/product/647/77735
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -784,7 +798,11 @@ func (c *Client) DescribeRoomInfo(request *DescribeRoomInfoRequest) (response *D
 // DescribeRoomInfo
 // 查询SdkAppId下的房间列表。默认返回10条通话，一次最多返回100条通话。可查询14天内的数据。（同老接口DescribeRoomInformation）
 //
-// **注意**：该接口只用于历史数据统计或核对数据使用，实时类关键业务逻辑不能使用。
+// **注意**：
+//
+// 1.该接口只用于历史数据统计或核对数据使用，实时类关键业务逻辑不能使用。
+//
+// 2.该接口目前免费提供中，监控仪表盘商业化计费后该接口需要订阅付费版后方可调用，仪表盘商业化说明请见：https://cloud.tencent.com/document/product/647/77735
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -1162,7 +1180,11 @@ func NewDescribeUserInfoResponse() (response *DescribeUserInfoResponse) {
 // DescribeUserInfo
 // 查询指定时间内的用户列表，可查询14天内数据，查询起止时间不超过4小时。默认每页查询6个用户，支持每页最大查询100个用户PageSize不超过100）。（同老接口DescribeUserInformation）
 //
-// **注意**：该接口只用于历史数据统计或核对数据使用，实时类关键业务逻辑不能使用。
+// **注意**：
+//
+// 1.该接口只用于历史数据统计或核对数据使用，实时类关键业务逻辑不能使用。
+//
+// 2.该接口目前免费提供中，监控仪表盘商业化计费后该接口需要订阅付费版后方可调用，仪表盘商业化说明请见：https://cloud.tencent.com/document/product/647/77735
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -1193,7 +1215,11 @@ func (c *Client) DescribeUserInfo(request *DescribeUserInfoRequest) (response *D
 // DescribeUserInfo
 // 查询指定时间内的用户列表，可查询14天内数据，查询起止时间不超过4小时。默认每页查询6个用户，支持每页最大查询100个用户PageSize不超过100）。（同老接口DescribeUserInformation）
 //
-// **注意**：该接口只用于历史数据统计或核对数据使用，实时类关键业务逻辑不能使用。
+// **注意**：
+//
+// 1.该接口只用于历史数据统计或核对数据使用，实时类关键业务逻辑不能使用。
+//
+// 2.该接口目前免费提供中，监控仪表盘商业化计费后该接口需要订阅付费版后方可调用，仪表盘商业化说明请见：https://cloud.tencent.com/document/product/647/77735
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -1925,6 +1951,7 @@ func NewStartMCUMixTranscodeByStrRoomIdResponse() (response *StartMCUMixTranscod
 //  MISSINGPARAMETER_PUBLISHCDNURLS = "MissingParameter.PublishCdnUrls"
 //  MISSINGPARAMETER_STREAMID = "MissingParameter.StreamId"
 //  MISSINGPARAMETER_VIDEOENCODEPARAMS = "MissingParameter.VideoEncodeParams"
+//  RESOURCEINSUFFICIENT_REQUESTREJECTION = "ResourceInsufficient.RequestRejection"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNAUTHORIZEDOPERATION_SDKAPPID = "UnauthorizedOperation.SdkAppId"
 func (c *Client) StartMCUMixTranscodeByStrRoomId(request *StartMCUMixTranscodeByStrRoomIdRequest) (response *StartMCUMixTranscodeByStrRoomIdResponse, err error) {
@@ -2005,6 +2032,7 @@ func (c *Client) StartMCUMixTranscodeByStrRoomId(request *StartMCUMixTranscodeBy
 //  MISSINGPARAMETER_PUBLISHCDNURLS = "MissingParameter.PublishCdnUrls"
 //  MISSINGPARAMETER_STREAMID = "MissingParameter.StreamId"
 //  MISSINGPARAMETER_VIDEOENCODEPARAMS = "MissingParameter.VideoEncodeParams"
+//  RESOURCEINSUFFICIENT_REQUESTREJECTION = "ResourceInsufficient.RequestRejection"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNAUTHORIZEDOPERATION_SDKAPPID = "UnauthorizedOperation.SdkAppId"
 func (c *Client) StartMCUMixTranscodeByStrRoomIdWithContext(ctx context.Context, request *StartMCUMixTranscodeByStrRoomIdRequest) (response *StartMCUMixTranscodeByStrRoomIdResponse, err error) {

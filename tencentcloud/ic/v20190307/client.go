@@ -305,6 +305,60 @@ func (c *Client) ModifyUserCardRemarkWithContext(ctx context.Context, request *M
     return
 }
 
+func NewPayForExtendDataRequest() (request *PayForExtendDataRequest) {
+    request = &PayForExtendDataRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ic", APIVersion, "PayForExtendData")
+    
+    
+    return
+}
+
+func NewPayForExtendDataResponse() (response *PayForExtendDataResponse) {
+    response = &PayForExtendDataResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// PayForExtendData
+// 购买套外流量包
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) PayForExtendData(request *PayForExtendDataRequest) (response *PayForExtendDataResponse, err error) {
+    return c.PayForExtendDataWithContext(context.Background(), request)
+}
+
+// PayForExtendData
+// 购买套外流量包
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) PayForExtendDataWithContext(ctx context.Context, request *PayForExtendDataRequest) (response *PayForExtendDataResponse, err error) {
+    if request == nil {
+        request = NewPayForExtendDataRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("PayForExtendData require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewPayForExtendDataResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewRenewCardsRequest() (request *RenewCardsRequest) {
     request = &RenewCardsRequest{
         BaseRequest: &tchttp.BaseRequest{},

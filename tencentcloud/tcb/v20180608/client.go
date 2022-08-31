@@ -1785,6 +1785,7 @@ func NewDescribeCloudBaseRunServerResponse() (response *DescribeCloudBaseRunServ
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeCloudBaseRunServer(request *DescribeCloudBaseRunServerRequest) (response *DescribeCloudBaseRunServerResponse, err error) {
     return c.DescribeCloudBaseRunServerWithContext(context.Background(), request)
@@ -1796,6 +1797,7 @@ func (c *Client) DescribeCloudBaseRunServer(request *DescribeCloudBaseRunServerR
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeCloudBaseRunServerWithContext(ctx context.Context, request *DescribeCloudBaseRunServerRequest) (response *DescribeCloudBaseRunServerResponse, err error) {
     if request == nil {

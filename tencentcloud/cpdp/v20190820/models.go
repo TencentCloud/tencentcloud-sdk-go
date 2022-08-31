@@ -350,6 +350,9 @@ type AddFlexIdInfoRequestParams struct {
 	// __test__:测试环境
 	// 缺省默认为生产环境
 	Environment *string `json:"Environment,omitempty" name:"Environment"`
+
+	// 姓名
+	Name *string `json:"Name,omitempty" name:"Name"`
 }
 
 type AddFlexIdInfoRequest struct {
@@ -372,6 +375,9 @@ type AddFlexIdInfoRequest struct {
 	// __test__:测试环境
 	// 缺省默认为生产环境
 	Environment *string `json:"Environment,omitempty" name:"Environment"`
+
+	// 姓名
+	Name *string `json:"Name,omitempty" name:"Name"`
 }
 
 func (r *AddFlexIdInfoRequest) ToJsonString() string {
@@ -390,6 +396,7 @@ func (r *AddFlexIdInfoRequest) FromJsonString(s string) error {
 	delete(f, "IdNo")
 	delete(f, "PayeeId")
 	delete(f, "Environment")
+	delete(f, "Name")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AddFlexIdInfoRequest has unknown keys!", "")
 	}
@@ -1850,6 +1857,238 @@ type ApplyOpenBankOrderDetailReceiptResult struct {
 	// 过期时间，yyyy-MM-dd HH:mm:ss格式。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExpireTime *string `json:"ExpireTime,omitempty" name:"ExpireTime"`
+}
+
+// Predefined struct for user
+type ApplyOpenBankSettleOrderRequestParams struct {
+	// 渠道商户号
+	ChannelMerchantId *string `json:"ChannelMerchantId,omitempty" name:"ChannelMerchantId"`
+
+	// 外部结算流水号
+	OutSettleId *string `json:"OutSettleId,omitempty" name:"OutSettleId"`
+
+	// 结算金额
+	SettleAmount *int64 `json:"SettleAmount,omitempty" name:"SettleAmount"`
+
+	// 渠道名称。详见附录-枚举类型-ChannelName。
+	ChannelName *string `json:"ChannelName,omitempty" name:"ChannelName"`
+
+	// 渠道子商户号
+	ChannelSubMerchantId *string `json:"ChannelSubMerchantId,omitempty" name:"ChannelSubMerchantId"`
+
+	// 结算备注
+	SettleDetail *string `json:"SettleDetail,omitempty" name:"SettleDetail"`
+
+	// 结算成功回调地址
+	NotifyUrl *string `json:"NotifyUrl,omitempty" name:"NotifyUrl"`
+}
+
+type ApplyOpenBankSettleOrderRequest struct {
+	*tchttp.BaseRequest
+	
+	// 渠道商户号
+	ChannelMerchantId *string `json:"ChannelMerchantId,omitempty" name:"ChannelMerchantId"`
+
+	// 外部结算流水号
+	OutSettleId *string `json:"OutSettleId,omitempty" name:"OutSettleId"`
+
+	// 结算金额
+	SettleAmount *int64 `json:"SettleAmount,omitempty" name:"SettleAmount"`
+
+	// 渠道名称。详见附录-枚举类型-ChannelName。
+	ChannelName *string `json:"ChannelName,omitempty" name:"ChannelName"`
+
+	// 渠道子商户号
+	ChannelSubMerchantId *string `json:"ChannelSubMerchantId,omitempty" name:"ChannelSubMerchantId"`
+
+	// 结算备注
+	SettleDetail *string `json:"SettleDetail,omitempty" name:"SettleDetail"`
+
+	// 结算成功回调地址
+	NotifyUrl *string `json:"NotifyUrl,omitempty" name:"NotifyUrl"`
+}
+
+func (r *ApplyOpenBankSettleOrderRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ApplyOpenBankSettleOrderRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ChannelMerchantId")
+	delete(f, "OutSettleId")
+	delete(f, "SettleAmount")
+	delete(f, "ChannelName")
+	delete(f, "ChannelSubMerchantId")
+	delete(f, "SettleDetail")
+	delete(f, "NotifyUrl")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ApplyOpenBankSettleOrderRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ApplyOpenBankSettleOrderResponseParams struct {
+	// 错误码。
+	ErrCode *string `json:"ErrCode,omitempty" name:"ErrCode"`
+
+	// 错误信息。
+	ErrMessage *string `json:"ErrMessage,omitempty" name:"ErrMessage"`
+
+	// 返回结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Result *ApplyOpenBankSettleOrderResult `json:"Result,omitempty" name:"Result"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ApplyOpenBankSettleOrderResponse struct {
+	*tchttp.BaseResponse
+	Response *ApplyOpenBankSettleOrderResponseParams `json:"Response"`
+}
+
+func (r *ApplyOpenBankSettleOrderResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ApplyOpenBankSettleOrderResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ApplyOpenBankSettleOrderResult struct {
+	// 外部结算流水号
+	OutSettleId *string `json:"OutSettleId,omitempty" name:"OutSettleId"`
+
+	// 渠道结算流水号
+	ChannelSettleId *string `json:"ChannelSettleId,omitempty" name:"ChannelSettleId"`
+
+	// 退款状态。
+	// SUCCESS：结算成功；
+	// FAILED：结算失败；
+	// PROCESSING：结算中;
+	// INIT:初始化;
+	// ACCEPT_FAILED:受理失败,底层银行返回订单不存在
+	// ACCEPTED：受理成功
+	// _UNKNOWN：默认未知
+	SettleStatus *string `json:"SettleStatus,omitempty" name:"SettleStatus"`
+}
+
+// Predefined struct for user
+type ApplyOpenBankSubMerchantSignOnlineRequestParams struct {
+	// 渠道商户号。外部平台接入云企付平台下发。必填。
+	ChannelMerchantId *string `json:"ChannelMerchantId,omitempty" name:"ChannelMerchantId"`
+
+	// 渠道名称。详见附录-枚举类型-ChannelName。
+	ChannelName *string `json:"ChannelName,omitempty" name:"ChannelName"`
+
+	// 外部子商户ID。
+	OutSubMerchantId *string `json:"OutSubMerchantId,omitempty" name:"OutSubMerchantId"`
+
+	// 渠道子商户ID。
+	ChannelSubMerchantId *string `json:"ChannelSubMerchantId,omitempty" name:"ChannelSubMerchantId"`
+
+	// 签约成功回调地址。
+	NotifyUrl *string `json:"NotifyUrl,omitempty" name:"NotifyUrl"`
+}
+
+type ApplyOpenBankSubMerchantSignOnlineRequest struct {
+	*tchttp.BaseRequest
+	
+	// 渠道商户号。外部平台接入云企付平台下发。必填。
+	ChannelMerchantId *string `json:"ChannelMerchantId,omitempty" name:"ChannelMerchantId"`
+
+	// 渠道名称。详见附录-枚举类型-ChannelName。
+	ChannelName *string `json:"ChannelName,omitempty" name:"ChannelName"`
+
+	// 外部子商户ID。
+	OutSubMerchantId *string `json:"OutSubMerchantId,omitempty" name:"OutSubMerchantId"`
+
+	// 渠道子商户ID。
+	ChannelSubMerchantId *string `json:"ChannelSubMerchantId,omitempty" name:"ChannelSubMerchantId"`
+
+	// 签约成功回调地址。
+	NotifyUrl *string `json:"NotifyUrl,omitempty" name:"NotifyUrl"`
+}
+
+func (r *ApplyOpenBankSubMerchantSignOnlineRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ApplyOpenBankSubMerchantSignOnlineRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ChannelMerchantId")
+	delete(f, "ChannelName")
+	delete(f, "OutSubMerchantId")
+	delete(f, "ChannelSubMerchantId")
+	delete(f, "NotifyUrl")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ApplyOpenBankSubMerchantSignOnlineRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ApplyOpenBankSubMerchantSignOnlineResponseParams struct {
+	// 错误码。
+	ErrCode *string `json:"ErrCode,omitempty" name:"ErrCode"`
+
+	// 错误信息。
+	ErrMessage *string `json:"ErrMessage,omitempty" name:"ErrMessage"`
+
+	// 返回结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Result *ApplyOpenBankSubMerchantSignOnlineResult `json:"Result,omitempty" name:"Result"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ApplyOpenBankSubMerchantSignOnlineResponse struct {
+	*tchttp.BaseResponse
+	Response *ApplyOpenBankSubMerchantSignOnlineResponseParams `json:"Response"`
+}
+
+func (r *ApplyOpenBankSubMerchantSignOnlineResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ApplyOpenBankSubMerchantSignOnlineResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ApplyOpenBankSubMerchantSignOnlineResult struct {
+	// 处理状态
+	//   SUCCESS：签约成功
+	//   FAILED：签约失败
+	//   PROCESSING“签约中
+	SignStatus *string `json:"SignStatus,omitempty" name:"SignStatus"`
+
+	// 上传返回描述，例如失败原因等
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SignMessage *string `json:"SignMessage,omitempty" name:"SignMessage"`
+
+	// 第三方渠道返回信息，见渠道特殊说明
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExternalReturnData *string `json:"ExternalReturnData,omitempty" name:"ExternalReturnData"`
 }
 
 type ApplyOutwardOrderData struct {
@@ -8170,6 +8409,12 @@ type CreateOpenBankPaymentOrderRequestParams struct {
 	// 分润信息，配合ProfitShareFlag使用。
 	ProfitShareInfoList []*OpenBankProfitShareInfo `json:"ProfitShareInfoList,omitempty" name:"ProfitShareInfoList"`
 
+	// 商企付-担保支付（PaymentMode为 FREEZE ）时需设置该参数
+	SettlementRulesInfo *OpenBankSettlementRulesInfo `json:"SettlementRulesInfo,omitempty" name:"SettlementRulesInfo"`
+
+	// 底层支付渠道特殊字段，若无特殊说明时，可以为空
+	ExternalPaymentData *string `json:"ExternalPaymentData,omitempty" name:"ExternalPaymentData"`
+
 	// 备注信息。
 	Remark *string `json:"Remark,omitempty" name:"Remark"`
 
@@ -8252,6 +8497,12 @@ type CreateOpenBankPaymentOrderRequest struct {
 	// 分润信息，配合ProfitShareFlag使用。
 	ProfitShareInfoList []*OpenBankProfitShareInfo `json:"ProfitShareInfoList,omitempty" name:"ProfitShareInfoList"`
 
+	// 商企付-担保支付（PaymentMode为 FREEZE ）时需设置该参数
+	SettlementRulesInfo *OpenBankSettlementRulesInfo `json:"SettlementRulesInfo,omitempty" name:"SettlementRulesInfo"`
+
+	// 底层支付渠道特殊字段，若无特殊说明时，可以为空
+	ExternalPaymentData *string `json:"ExternalPaymentData,omitempty" name:"ExternalPaymentData"`
+
 	// 备注信息。
 	Remark *string `json:"Remark,omitempty" name:"Remark"`
 
@@ -8292,6 +8543,8 @@ func (r *CreateOpenBankPaymentOrderRequest) FromJsonString(s string) error {
 	delete(f, "Attachment")
 	delete(f, "ProfitShareFlag")
 	delete(f, "ProfitShareInfoList")
+	delete(f, "SettlementRulesInfo")
+	delete(f, "ExternalPaymentData")
 	delete(f, "Remark")
 	delete(f, "Environment")
 	if len(f) > 0 {
@@ -13940,6 +14193,26 @@ type OpenBankProfitShareInfo struct {
 	ProfitShareFee *int64 `json:"ProfitShareFee,omitempty" name:"ProfitShareFee"`
 }
 
+type OpenBankProfitShareRespInfo struct {
+	// 接收方企业ID
+	RecvId *string `json:"RecvId,omitempty" name:"RecvId"`
+
+	// 分润金额（分）
+	ProfitShareFee *int64 `json:"ProfitShareFee,omitempty" name:"ProfitShareFee"`
+
+	// 实际分账金额
+	RealProfitShareFee *int64 `json:"RealProfitShareFee,omitempty" name:"RealProfitShareFee"`
+
+	// 分账状态
+	ProfitShareStatus *string `json:"ProfitShareStatus,omitempty" name:"ProfitShareStatus"`
+
+	// 分账完成时间
+	ProfitFinishTime *string `json:"ProfitFinishTime,omitempty" name:"ProfitFinishTime"`
+
+	// 分账类型
+	ProfitShareType *int64 `json:"ProfitShareType,omitempty" name:"ProfitShareType"`
+}
+
 type OpenBankQueryRefundOrderResult struct {
 	// 外部商户退款单号
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -13984,6 +14257,10 @@ type OpenBankQueryRefundOrderResult struct {
 	// 退款返回描述，比如失败原因等。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RefundMessage *string `json:"RefundMessage,omitempty" name:"RefundMessage"`
+
+	// 分账信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProfitShareRespInfoList []*OpenBankProfitShareRespInfo `json:"ProfitShareRespInfoList,omitempty" name:"ProfitShareRespInfoList"`
 }
 
 type OpenBankRechargePayeeInfo struct {
@@ -14083,6 +14360,18 @@ type OpenBankSceneInfo struct {
 	// 终端设备类型。MOBILE_BROWSER:手机浏览器，MOBILE_APP:手机应用程序，TABLET:平板；WATCH:手表，PC:电脑PC，OTHER:其他。
 	// 汇付渠道必填。
 	DeviceType *string `json:"DeviceType,omitempty" name:"DeviceType"`
+}
+
+type OpenBankSettlementRulesInfo struct {
+	// ONCE：仅单次解冻（默认）
+	// MULTI：多次解冻
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UnfreezeRule *string `json:"UnfreezeRule,omitempty" name:"UnfreezeRule"`
+
+	// ONCE：仅单次退款（默认）
+	// MULTI：多次退款
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RefundRule *string `json:"RefundRule,omitempty" name:"RefundRule"`
 }
 
 type OpenBankStoreInfo struct {
@@ -21909,6 +22198,10 @@ type QueryOpenBankPaymentOrderResult struct {
 	// 手续费费率
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FeeRate *int64 `json:"FeeRate,omitempty" name:"FeeRate"`
+
+	// 分账信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProfitShareRespInfoList []*OpenBankProfitShareRespInfo `json:"ProfitShareRespInfoList,omitempty" name:"ProfitShareRespInfoList"`
 }
 
 // Predefined struct for user
@@ -22001,6 +22294,132 @@ func (r *QueryOpenBankRefundOrderResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *QueryOpenBankRefundOrderResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type QueryOpenBankSettleOrderRequestParams struct {
+	// 渠道商户号
+	ChannelMerchantId *string `json:"ChannelMerchantId,omitempty" name:"ChannelMerchantId"`
+
+	// 渠道子商户号
+	ChannelSubMerchantId *string `json:"ChannelSubMerchantId,omitempty" name:"ChannelSubMerchantId"`
+
+	// 外部结算流水号，与渠道结算流水号二选一
+	OutSettleId *string `json:"OutSettleId,omitempty" name:"OutSettleId"`
+
+	// 渠道结算流水号，与外部结算流水号二选一
+	ChannelSettleId *string `json:"ChannelSettleId,omitempty" name:"ChannelSettleId"`
+}
+
+type QueryOpenBankSettleOrderRequest struct {
+	*tchttp.BaseRequest
+	
+	// 渠道商户号
+	ChannelMerchantId *string `json:"ChannelMerchantId,omitempty" name:"ChannelMerchantId"`
+
+	// 渠道子商户号
+	ChannelSubMerchantId *string `json:"ChannelSubMerchantId,omitempty" name:"ChannelSubMerchantId"`
+
+	// 外部结算流水号，与渠道结算流水号二选一
+	OutSettleId *string `json:"OutSettleId,omitempty" name:"OutSettleId"`
+
+	// 渠道结算流水号，与外部结算流水号二选一
+	ChannelSettleId *string `json:"ChannelSettleId,omitempty" name:"ChannelSettleId"`
+}
+
+func (r *QueryOpenBankSettleOrderRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryOpenBankSettleOrderRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ChannelMerchantId")
+	delete(f, "ChannelSubMerchantId")
+	delete(f, "OutSettleId")
+	delete(f, "ChannelSettleId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryOpenBankSettleOrderRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type QueryOpenBankSettleOrderResponseParams struct {
+	// 错误码
+	ErrCode *string `json:"ErrCode,omitempty" name:"ErrCode"`
+
+	// 错误消息
+	ErrMessage *string `json:"ErrMessage,omitempty" name:"ErrMessage"`
+
+	// 返回结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Result *QueryOpenBankSettleOrderResult `json:"Result,omitempty" name:"Result"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type QueryOpenBankSettleOrderResponse struct {
+	*tchttp.BaseResponse
+	Response *QueryOpenBankSettleOrderResponseParams `json:"Response"`
+}
+
+func (r *QueryOpenBankSettleOrderResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryOpenBankSettleOrderResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryOpenBankSettleOrderResult struct {
+	// 外部结算流水号
+	OutSettleId *string `json:"OutSettleId,omitempty" name:"OutSettleId"`
+
+	// 渠道结算流水号
+	ChannelSettleId *string `json:"ChannelSettleId,omitempty" name:"ChannelSettleId"`
+
+	// 退款状态。
+	// SUCCESS：结算成功；
+	// FAILED：结算失败；
+	// PROCESSING：结算中;
+	// INIT:初始化;
+	// ACCEPT_FAILED:受理失败,底层银行返回订单不存在
+	// ACCEPTED：受理成功
+	// _UNKNOWN：默认未知
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SettleStatus *string `json:"SettleStatus,omitempty" name:"SettleStatus"`
+
+	// 结算金额
+	SettleAmount *int64 `json:"SettleAmount,omitempty" name:"SettleAmount"`
+
+	// 结算日期，格式YYYYMMdd
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SettleDate *string `json:"SettleDate,omitempty" name:"SettleDate"`
+
+	// 结算类型（T1/D1）
+	SettleType *string `json:"SettleType,omitempty" name:"SettleType"`
+
+	// 失败原因
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FailReason *string `json:"FailReason,omitempty" name:"FailReason"`
+
+	// 完成时间，格式yyyy-MM-dd HH:mm:ss
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TimeFinish *string `json:"TimeFinish,omitempty" name:"TimeFinish"`
+
+	// 结算手续费
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SettleFee *string `json:"SettleFee,omitempty" name:"SettleFee"`
 }
 
 // Predefined struct for user
@@ -22263,6 +22682,103 @@ type QueryOpenBankSubMerchantRateConfigureResult struct {
 	// 处理描述
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DealMessage *string `json:"DealMessage,omitempty" name:"DealMessage"`
+}
+
+// Predefined struct for user
+type QueryOpenBankSubMerchantSignOnlineRequestParams struct {
+	// 渠道商户号。外部平台接入云企付平台下发。必填。
+	ChannelMerchantId *string `json:"ChannelMerchantId,omitempty" name:"ChannelMerchantId"`
+
+	// 渠道名称。详见附录-枚举类型-ChannelName。
+	ChannelName *string `json:"ChannelName,omitempty" name:"ChannelName"`
+
+	// 外部子商户ID。
+	OutSubMerchantId *string `json:"OutSubMerchantId,omitempty" name:"OutSubMerchantId"`
+
+	// 渠道子商户ID。
+	ChannelSubMerchantId *string `json:"ChannelSubMerchantId,omitempty" name:"ChannelSubMerchantId"`
+}
+
+type QueryOpenBankSubMerchantSignOnlineRequest struct {
+	*tchttp.BaseRequest
+	
+	// 渠道商户号。外部平台接入云企付平台下发。必填。
+	ChannelMerchantId *string `json:"ChannelMerchantId,omitempty" name:"ChannelMerchantId"`
+
+	// 渠道名称。详见附录-枚举类型-ChannelName。
+	ChannelName *string `json:"ChannelName,omitempty" name:"ChannelName"`
+
+	// 外部子商户ID。
+	OutSubMerchantId *string `json:"OutSubMerchantId,omitempty" name:"OutSubMerchantId"`
+
+	// 渠道子商户ID。
+	ChannelSubMerchantId *string `json:"ChannelSubMerchantId,omitempty" name:"ChannelSubMerchantId"`
+}
+
+func (r *QueryOpenBankSubMerchantSignOnlineRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryOpenBankSubMerchantSignOnlineRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ChannelMerchantId")
+	delete(f, "ChannelName")
+	delete(f, "OutSubMerchantId")
+	delete(f, "ChannelSubMerchantId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryOpenBankSubMerchantSignOnlineRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type QueryOpenBankSubMerchantSignOnlineResponseParams struct {
+	// 错误码。
+	ErrCode *string `json:"ErrCode,omitempty" name:"ErrCode"`
+
+	// 错误信息。
+	ErrMessage *string `json:"ErrMessage,omitempty" name:"ErrMessage"`
+
+	// 返回结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Result *QueryOpenBankSubMerchantSignOnlineResult `json:"Result,omitempty" name:"Result"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type QueryOpenBankSubMerchantSignOnlineResponse struct {
+	*tchttp.BaseResponse
+	Response *QueryOpenBankSubMerchantSignOnlineResponseParams `json:"Response"`
+}
+
+func (r *QueryOpenBankSubMerchantSignOnlineResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryOpenBankSubMerchantSignOnlineResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type QueryOpenBankSubMerchantSignOnlineResult struct {
+	// 处理状态
+	//   SUCCESS：签约成功
+	//   FAILED：签约失败
+	//   PROCESSING“签约中
+	SignStatus *string `json:"SignStatus,omitempty" name:"SignStatus"`
+
+	// 上传返回描述，例如失败原因等
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SignMessage *string `json:"SignMessage,omitempty" name:"SignMessage"`
 }
 
 // Predefined struct for user
@@ -25643,6 +26159,9 @@ type RefundOpenBankOrderRequestParams struct {
 	// __sandbox__:沙箱环境
 	// _不填默认为生产环境_
 	Environment *string `json:"Environment,omitempty" name:"Environment"`
+
+	// 分账信息列表。
+	ProfitShareInfoList []*OpenBankProfitShareInfo `json:"ProfitShareInfoList,omitempty" name:"ProfitShareInfoList"`
 }
 
 type RefundOpenBankOrderRequest struct {
@@ -25682,6 +26201,9 @@ type RefundOpenBankOrderRequest struct {
 	// __sandbox__:沙箱环境
 	// _不填默认为生产环境_
 	Environment *string `json:"Environment,omitempty" name:"Environment"`
+
+	// 分账信息列表。
+	ProfitShareInfoList []*OpenBankProfitShareInfo `json:"ProfitShareInfoList,omitempty" name:"ProfitShareInfoList"`
 }
 
 func (r *RefundOpenBankOrderRequest) ToJsonString() string {
@@ -25706,6 +26228,7 @@ func (r *RefundOpenBankOrderRequest) FromJsonString(s string) error {
 	delete(f, "ExternalRefundData")
 	delete(f, "Remark")
 	delete(f, "Environment")
+	delete(f, "ProfitShareInfoList")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RefundOpenBankOrderRequest has unknown keys!", "")
 	}

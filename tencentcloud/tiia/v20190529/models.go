@@ -153,6 +153,18 @@ type CarPlateContent struct {
 	// 车牌在图片中的坐标信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PlateLocation []*Coord `json:"PlateLocation,omitempty" name:"PlateLocation"`
+
+	// 判断车牌是否遮挡。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PlateStatus *string `json:"PlateStatus,omitempty" name:"PlateStatus"`
+
+	// 车牌遮挡的置信度，0-100。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PlateStatusConfidence *int64 `json:"PlateStatusConfidence,omitempty" name:"PlateStatusConfidence"`
+
+	// 车牌角度。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PlateAngle *float64 `json:"PlateAngle,omitempty" name:"PlateAngle"`
 }
 
 type CarTagItem struct {
@@ -192,6 +204,14 @@ type CarTagItem struct {
 	// 车辆颜色置信度，0-100，仅车辆识别（增强版）支持
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ColorConfidence *int64 `json:"ColorConfidence,omitempty" name:"ColorConfidence"`
+
+	// 车辆朝向，仅车辆识别（增强版）支持
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Orientation *string `json:"Orientation,omitempty" name:"Orientation"`
+
+	// 车辆朝向置信度，0-100，仅车辆识别（增强版）支持
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OrientationConfidence *int64 `json:"OrientationConfidence,omitempty" name:"OrientationConfidence"`
 }
 
 type ColorInfo struct {

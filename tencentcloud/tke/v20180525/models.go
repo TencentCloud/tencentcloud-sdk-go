@@ -461,6 +461,20 @@ type AutoscalingAdded struct {
 	Total *int64 `json:"Total,omitempty" name:"Total"`
 }
 
+type CUDNN struct {
+	// cuDNN的版本
+	Version *string `json:"Version,omitempty" name:"Version"`
+
+	// cuDNN的名字
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// cuDNN的Doc名字
+	DocName *string `json:"DocName,omitempty" name:"DocName"`
+
+	// cuDNN的Dev名字
+	DevName *string `json:"DevName,omitempty" name:"DevName"`
+}
+
 type Capabilities struct {
 	// 启用安全能力项列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -3468,6 +3482,12 @@ func (r *CreateTKEEdgeClusterResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type CustomDriver struct {
+	// 自定义GPU驱动地址链接
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Address *string `json:"Address,omitempty" name:"Address"`
+}
+
 type DNSConfig struct {
 	// DNS 服务器IP地址列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -5654,6 +5674,18 @@ type DescribeClusterEndpointsResponseParams struct {
 	// 集群APIServer的外网访问ACL列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClusterExternalACL []*string `json:"ClusterExternalACL,omitempty" name:"ClusterExternalACL"`
+
+	// 外网域名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterExternalDomain *string `json:"ClusterExternalDomain,omitempty" name:"ClusterExternalDomain"`
+
+	// 内网域名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterIntranetDomain *string `json:"ClusterIntranetDomain,omitempty" name:"ClusterIntranetDomain"`
+
+	// 外网安全组
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SecurityGroup *string `json:"SecurityGroup,omitempty" name:"SecurityGroup"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -10230,6 +10262,14 @@ type DnsServerConf struct {
 	DnsServers []*string `json:"DnsServers,omitempty" name:"DnsServers"`
 }
 
+type DriverVersion struct {
+	// GPU驱动或者CUDA的版本
+	Version *string `json:"Version,omitempty" name:"Version"`
+
+	// GPU驱动或者CUDA的名字
+	Name *string `json:"Name,omitempty" name:"Name"`
+}
+
 type ECMEnhancedService struct {
 	// 是否开启云监控服务
 	SecurityService *ECMRunMonitorServiceEnabled `json:"SecurityService,omitempty" name:"SecurityService"`
@@ -11196,6 +11236,27 @@ func (r *ForwardTKEEdgeApplicationRequestV3Response) FromJsonString(s string) er
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type GPUArgs struct {
+	// 是否启用MIG特性
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MIGEnable *bool `json:"MIGEnable,omitempty" name:"MIGEnable"`
+
+	// GPU驱动版本信息
+	Driver *DriverVersion `json:"Driver,omitempty" name:"Driver"`
+
+	// CUDA版本信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CUDA *DriverVersion `json:"CUDA,omitempty" name:"CUDA"`
+
+	// cuDNN版本信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CUDNN *CUDNN `json:"CUDNN,omitempty" name:"CUDNN"`
+
+	// 自定义GPU驱动信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CustomDriver *CustomDriver `json:"CustomDriver,omitempty" name:"CustomDriver"`
+}
+
 // Predefined struct for user
 type GetClusterLevelPriceRequestParams struct {
 	// 集群规格，托管集群询价
@@ -11778,6 +11839,10 @@ type InstanceAdvancedSettings struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DesiredPodNumber *int64 `json:"DesiredPodNumber,omitempty" name:"DesiredPodNumber"`
 
+	// GPU驱动相关参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GPUArgs *GPUArgs `json:"GPUArgs,omitempty" name:"GPUArgs"`
+
 	// base64 编码的用户脚本，在初始化节点之前执行，目前只对添加已有节点生效
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PreStartUserScript *string `json:"PreStartUserScript,omitempty" name:"PreStartUserScript"`
@@ -12236,6 +12301,9 @@ type ModifyClusterEndpointSPRequestParams struct {
 
 	// 安全策略放通单个IP或CIDR(例如: "192.168.1.0/24",默认为拒绝所有)
 	SecurityPolicies []*string `json:"SecurityPolicies,omitempty" name:"SecurityPolicies"`
+
+	// 修改外网访问安全组
+	SecurityGroup *string `json:"SecurityGroup,omitempty" name:"SecurityGroup"`
 }
 
 type ModifyClusterEndpointSPRequest struct {
@@ -12246,6 +12314,9 @@ type ModifyClusterEndpointSPRequest struct {
 
 	// 安全策略放通单个IP或CIDR(例如: "192.168.1.0/24",默认为拒绝所有)
 	SecurityPolicies []*string `json:"SecurityPolicies,omitempty" name:"SecurityPolicies"`
+
+	// 修改外网访问安全组
+	SecurityGroup *string `json:"SecurityGroup,omitempty" name:"SecurityGroup"`
 }
 
 func (r *ModifyClusterEndpointSPRequest) ToJsonString() string {
@@ -12262,6 +12333,7 @@ func (r *ModifyClusterEndpointSPRequest) FromJsonString(s string) error {
 	}
 	delete(f, "ClusterId")
 	delete(f, "SecurityPolicies")
+	delete(f, "SecurityGroup")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyClusterEndpointSPRequest has unknown keys!", "")
 	}
@@ -14525,6 +14597,9 @@ type SubnetInfos struct {
 
 	// 子网节点名称
 	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 安全组id
+	SecurityGroups []*string `json:"SecurityGroups,omitempty" name:"SecurityGroups"`
 }
 
 // Predefined struct for user

@@ -483,6 +483,102 @@ func (c *Client) ApplyOpenBankOrderDetailReceiptWithContext(ctx context.Context,
     return
 }
 
+func NewApplyOpenBankSettleOrderRequest() (request *ApplyOpenBankSettleOrderRequest) {
+    request = &ApplyOpenBankSettleOrderRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cpdp", APIVersion, "ApplyOpenBankSettleOrder")
+    
+    
+    return
+}
+
+func NewApplyOpenBankSettleOrderResponse() (response *ApplyOpenBankSettleOrderResponse) {
+    response = &ApplyOpenBankSettleOrderResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ApplyOpenBankSettleOrder
+// 云企付结算申请接口
+//
+// 可能返回的错误码:
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+func (c *Client) ApplyOpenBankSettleOrder(request *ApplyOpenBankSettleOrderRequest) (response *ApplyOpenBankSettleOrderResponse, err error) {
+    return c.ApplyOpenBankSettleOrderWithContext(context.Background(), request)
+}
+
+// ApplyOpenBankSettleOrder
+// 云企付结算申请接口
+//
+// 可能返回的错误码:
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+func (c *Client) ApplyOpenBankSettleOrderWithContext(ctx context.Context, request *ApplyOpenBankSettleOrderRequest) (response *ApplyOpenBankSettleOrderResponse, err error) {
+    if request == nil {
+        request = NewApplyOpenBankSettleOrderRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ApplyOpenBankSettleOrder require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewApplyOpenBankSettleOrderResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewApplyOpenBankSubMerchantSignOnlineRequest() (request *ApplyOpenBankSubMerchantSignOnlineRequest) {
+    request = &ApplyOpenBankSubMerchantSignOnlineRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cpdp", APIVersion, "ApplyOpenBankSubMerchantSignOnline")
+    
+    
+    return
+}
+
+func NewApplyOpenBankSubMerchantSignOnlineResponse() (response *ApplyOpenBankSubMerchantSignOnlineResponse) {
+    response = &ApplyOpenBankSubMerchantSignOnlineResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ApplyOpenBankSubMerchantSignOnline
+// 子商户在线签约
+//
+// 可能返回的错误码:
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+func (c *Client) ApplyOpenBankSubMerchantSignOnline(request *ApplyOpenBankSubMerchantSignOnlineRequest) (response *ApplyOpenBankSubMerchantSignOnlineResponse, err error) {
+    return c.ApplyOpenBankSubMerchantSignOnlineWithContext(context.Background(), request)
+}
+
+// ApplyOpenBankSubMerchantSignOnline
+// 子商户在线签约
+//
+// 可能返回的错误码:
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+func (c *Client) ApplyOpenBankSubMerchantSignOnlineWithContext(ctx context.Context, request *ApplyOpenBankSubMerchantSignOnlineRequest) (response *ApplyOpenBankSubMerchantSignOnlineResponse, err error) {
+    if request == nil {
+        request = NewApplyOpenBankSubMerchantSignOnlineRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ApplyOpenBankSubMerchantSignOnline require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewApplyOpenBankSubMerchantSignOnlineResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewApplyOutwardOrderRequest() (request *ApplyOutwardOrderRequest) {
     request = &ApplyOutwardOrderRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -9077,6 +9173,54 @@ func (c *Client) QueryOpenBankRefundOrderWithContext(ctx context.Context, reques
     return
 }
 
+func NewQueryOpenBankSettleOrderRequest() (request *QueryOpenBankSettleOrderRequest) {
+    request = &QueryOpenBankSettleOrderRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cpdp", APIVersion, "QueryOpenBankSettleOrder")
+    
+    
+    return
+}
+
+func NewQueryOpenBankSettleOrderResponse() (response *QueryOpenBankSettleOrderResponse) {
+    response = &QueryOpenBankSettleOrderResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// QueryOpenBankSettleOrder
+// 云企付结算单查询结果
+//
+// 可能返回的错误码:
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+func (c *Client) QueryOpenBankSettleOrder(request *QueryOpenBankSettleOrderRequest) (response *QueryOpenBankSettleOrderResponse, err error) {
+    return c.QueryOpenBankSettleOrderWithContext(context.Background(), request)
+}
+
+// QueryOpenBankSettleOrder
+// 云企付结算单查询结果
+//
+// 可能返回的错误码:
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+func (c *Client) QueryOpenBankSettleOrderWithContext(ctx context.Context, request *QueryOpenBankSettleOrderRequest) (response *QueryOpenBankSettleOrderResponse, err error) {
+    if request == nil {
+        request = NewQueryOpenBankSettleOrderRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryOpenBankSettleOrder require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewQueryOpenBankSettleOrderResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewQueryOpenBankSubMerchantCredentialRequest() (request *QueryOpenBankSubMerchantCredentialRequest) {
     request = &QueryOpenBankSubMerchantCredentialRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -9169,6 +9313,54 @@ func (c *Client) QueryOpenBankSubMerchantRateConfigureWithContext(ctx context.Co
     request.SetContext(ctx)
     
     response = NewQueryOpenBankSubMerchantRateConfigureResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewQueryOpenBankSubMerchantSignOnlineRequest() (request *QueryOpenBankSubMerchantSignOnlineRequest) {
+    request = &QueryOpenBankSubMerchantSignOnlineRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cpdp", APIVersion, "QueryOpenBankSubMerchantSignOnline")
+    
+    
+    return
+}
+
+func NewQueryOpenBankSubMerchantSignOnlineResponse() (response *QueryOpenBankSubMerchantSignOnlineResponse) {
+    response = &QueryOpenBankSubMerchantSignOnlineResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// QueryOpenBankSubMerchantSignOnline
+// 子商户在线签约查询
+//
+// 可能返回的错误码:
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+func (c *Client) QueryOpenBankSubMerchantSignOnline(request *QueryOpenBankSubMerchantSignOnlineRequest) (response *QueryOpenBankSubMerchantSignOnlineResponse, err error) {
+    return c.QueryOpenBankSubMerchantSignOnlineWithContext(context.Background(), request)
+}
+
+// QueryOpenBankSubMerchantSignOnline
+// 子商户在线签约查询
+//
+// 可能返回的错误码:
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+func (c *Client) QueryOpenBankSubMerchantSignOnlineWithContext(ctx context.Context, request *QueryOpenBankSubMerchantSignOnlineRequest) (response *QueryOpenBankSubMerchantSignOnlineResponse, err error) {
+    if request == nil {
+        request = NewQueryOpenBankSubMerchantSignOnlineRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryOpenBankSubMerchantSignOnline require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewQueryOpenBankSubMerchantSignOnlineResponse()
     err = c.Send(request, response)
     return
 }
@@ -11877,6 +12069,7 @@ func NewUnifiedOrderResponse() (response *UnifiedOrderResponse) {
 //  FAILEDOPERATION_PORTALERROR = "FailedOperation.PortalError"
 //  FAILEDOPERATION_WECHATERROR = "FailedOperation.WechatError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_BACKENDCGIERROR = "InvalidParameter.BackendCgiError"
 func (c *Client) UnifiedOrder(request *UnifiedOrderRequest) (response *UnifiedOrderResponse, err error) {
     return c.UnifiedOrderWithContext(context.Background(), request)
 }
@@ -11897,6 +12090,7 @@ func (c *Client) UnifiedOrder(request *UnifiedOrderRequest) (response *UnifiedOr
 //  FAILEDOPERATION_PORTALERROR = "FailedOperation.PortalError"
 //  FAILEDOPERATION_WECHATERROR = "FailedOperation.WechatError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_BACKENDCGIERROR = "InvalidParameter.BackendCgiError"
 func (c *Client) UnifiedOrderWithContext(ctx context.Context, request *UnifiedOrderRequest) (response *UnifiedOrderResponse, err error) {
     if request == nil {
         request = NewUnifiedOrderRequest()
@@ -11947,6 +12141,7 @@ func NewUnifiedTlinxOrderResponse() (response *UnifiedTlinxOrderResponse) {
 //  FAILEDOPERATION_PORTALERROR = "FailedOperation.PortalError"
 //  FAILEDOPERATION_WECHATERROR = "FailedOperation.WechatError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_BACKENDCGIERROR = "InvalidParameter.BackendCgiError"
 func (c *Client) UnifiedTlinxOrder(request *UnifiedTlinxOrderRequest) (response *UnifiedTlinxOrderResponse, err error) {
     return c.UnifiedTlinxOrderWithContext(context.Background(), request)
 }
@@ -11967,6 +12162,7 @@ func (c *Client) UnifiedTlinxOrder(request *UnifiedTlinxOrderRequest) (response 
 //  FAILEDOPERATION_PORTALERROR = "FailedOperation.PortalError"
 //  FAILEDOPERATION_WECHATERROR = "FailedOperation.WechatError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_BACKENDCGIERROR = "InvalidParameter.BackendCgiError"
 func (c *Client) UnifiedTlinxOrderWithContext(ctx context.Context, request *UnifiedTlinxOrderRequest) (response *UnifiedTlinxOrderResponse, err error) {
     if request == nil {
         request = NewUnifiedTlinxOrderRequest()
@@ -12017,6 +12213,7 @@ func NewUploadExternalAnchorInfoResponse() (response *UploadExternalAnchorInfoRe
 //  FAILEDOPERATION_PORTALERROR = "FailedOperation.PortalError"
 //  FAILEDOPERATION_WECHATERROR = "FailedOperation.WechatError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_BACKENDCGIERROR = "InvalidParameter.BackendCgiError"
 func (c *Client) UploadExternalAnchorInfo(request *UploadExternalAnchorInfoRequest) (response *UploadExternalAnchorInfoResponse, err error) {
     return c.UploadExternalAnchorInfoWithContext(context.Background(), request)
 }
@@ -12037,6 +12234,7 @@ func (c *Client) UploadExternalAnchorInfo(request *UploadExternalAnchorInfoReque
 //  FAILEDOPERATION_PORTALERROR = "FailedOperation.PortalError"
 //  FAILEDOPERATION_WECHATERROR = "FailedOperation.WechatError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_BACKENDCGIERROR = "InvalidParameter.BackendCgiError"
 func (c *Client) UploadExternalAnchorInfoWithContext(ctx context.Context, request *UploadExternalAnchorInfoRequest) (response *UploadExternalAnchorInfoResponse, err error) {
     if request == nil {
         request = NewUploadExternalAnchorInfoRequest()

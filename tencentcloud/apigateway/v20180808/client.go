@@ -996,6 +996,7 @@ func NewCreatePluginResponse() (response *CreatePluginResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SERVICEINOPERATION = "FailedOperation.ServiceInOperation"
+//  FAILEDOPERATION_TAGBINDSERVICEERROR = "FailedOperation.TagBindServiceError"
 //  INTERNALERROR_OSSEXCEPTION = "InternalError.OssException"
 //  INTERNALERROR_TSFEXCEPTION = "InternalError.TsfException"
 //  INTERNALERROR_VPCEXCEPTION = "InternalError.VpcException"
@@ -1031,6 +1032,7 @@ func (c *Client) CreatePlugin(request *CreatePluginRequest) (response *CreatePlu
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SERVICEINOPERATION = "FailedOperation.ServiceInOperation"
+//  FAILEDOPERATION_TAGBINDSERVICEERROR = "FailedOperation.TagBindServiceError"
 //  INTERNALERROR_OSSEXCEPTION = "InternalError.OssException"
 //  INTERNALERROR_TSFEXCEPTION = "InternalError.TsfException"
 //  INTERNALERROR_VPCEXCEPTION = "InternalError.VpcException"

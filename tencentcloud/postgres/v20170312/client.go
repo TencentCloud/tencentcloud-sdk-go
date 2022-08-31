@@ -172,6 +172,7 @@ func NewCloneDBInstanceResponse() (response *CloneDBInstanceResponse) {
 //  FAILEDOPERATION_QUERYVPCFAILED = "FailedOperation.QueryVpcFailed"
 //  FAILEDOPERATION_QUERYVPCFALIED = "FailedOperation.QueryVpcFalied"
 //  INTERNALERROR_INTERNALHTTPSERVERERROR = "InternalError.InternalHttpServerError"
+//  INVALIDPARAMETER_PARAMETERCHECKERROR = "InvalidParameter.ParameterCheckError"
 //  INVALIDPARAMETERVALUE_ILLEGALPROJECTID = "InvalidParameterValue.IllegalProjectId"
 //  INVALIDPARAMETERVALUE_ILLEGALREGION = "InvalidParameterValue.IllegalRegion"
 //  INVALIDPARAMETERVALUE_ILLEGALZONE = "InvalidParameterValue.IllegalZone"
@@ -199,6 +200,7 @@ func (c *Client) CloneDBInstance(request *CloneDBInstanceRequest) (response *Clo
 //  FAILEDOPERATION_QUERYVPCFAILED = "FailedOperation.QueryVpcFailed"
 //  FAILEDOPERATION_QUERYVPCFALIED = "FailedOperation.QueryVpcFalied"
 //  INTERNALERROR_INTERNALHTTPSERVERERROR = "InternalError.InternalHttpServerError"
+//  INVALIDPARAMETER_PARAMETERCHECKERROR = "InvalidParameter.ParameterCheckError"
 //  INVALIDPARAMETERVALUE_ILLEGALPROJECTID = "InvalidParameterValue.IllegalProjectId"
 //  INVALIDPARAMETERVALUE_ILLEGALREGION = "InvalidParameterValue.IllegalRegion"
 //  INVALIDPARAMETERVALUE_ILLEGALZONE = "InvalidParameterValue.IllegalZone"
@@ -1933,6 +1935,7 @@ func NewDescribeCloneDBInstanceSpecResponse() (response *DescribeCloneDBInstance
 //  OPERATIONDENIED_CAMDENIEDERROR = "OperationDenied.CamDeniedError"
 //  OPERATIONDENIED_INSTANCEACCESSDENIEDERROR = "OperationDenied.InstanceAccessDeniedError"
 //  OPERATIONDENIED_INSTANCESTATUSLIMITOPERROR = "OperationDenied.InstanceStatusLimitOpError"
+//  RESOURCENOTFOUND_INSTANCENOTFOUNDERROR = "ResourceNotFound.InstanceNotFoundError"
 func (c *Client) DescribeCloneDBInstanceSpec(request *DescribeCloneDBInstanceSpecRequest) (response *DescribeCloneDBInstanceSpecResponse, err error) {
     return c.DescribeCloneDBInstanceSpecWithContext(context.Background(), request)
 }
@@ -1949,6 +1952,7 @@ func (c *Client) DescribeCloneDBInstanceSpec(request *DescribeCloneDBInstanceSpe
 //  OPERATIONDENIED_CAMDENIEDERROR = "OperationDenied.CamDeniedError"
 //  OPERATIONDENIED_INSTANCEACCESSDENIEDERROR = "OperationDenied.InstanceAccessDeniedError"
 //  OPERATIONDENIED_INSTANCESTATUSLIMITOPERROR = "OperationDenied.InstanceStatusLimitOpError"
+//  RESOURCENOTFOUND_INSTANCENOTFOUNDERROR = "ResourceNotFound.InstanceNotFoundError"
 func (c *Client) DescribeCloneDBInstanceSpecWithContext(ctx context.Context, request *DescribeCloneDBInstanceSpecRequest) (response *DescribeCloneDBInstanceSpecResponse, err error) {
     if request == nil {
         request = NewDescribeCloneDBInstanceSpecRequest()

@@ -3862,6 +3862,7 @@ func NewDescribeDrmKeyProviderInfoResponse() (response *DescribeDrmKeyProviderIn
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_INVALIDVODUSER = "FailedOperation.InvalidVodUser"
 //  INTERNALERROR = "InternalError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeDrmKeyProviderInfo(request *DescribeDrmKeyProviderInfoRequest) (response *DescribeDrmKeyProviderInfoResponse, err error) {
     return c.DescribeDrmKeyProviderInfoWithContext(context.Background(), request)
 }
@@ -3873,6 +3874,7 @@ func (c *Client) DescribeDrmKeyProviderInfo(request *DescribeDrmKeyProviderInfoR
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_INVALIDVODUSER = "FailedOperation.InvalidVodUser"
 //  INTERNALERROR = "InternalError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeDrmKeyProviderInfoWithContext(ctx context.Context, request *DescribeDrmKeyProviderInfoRequest) (response *DescribeDrmKeyProviderInfoResponse, err error) {
     if request == nil {
         request = NewDescribeDrmKeyProviderInfoRequest()

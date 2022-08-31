@@ -706,6 +706,7 @@ func NewCreateAssetImageScanSettingResponse() (response *CreateAssetImageScanSet
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) CreateAssetImageScanSetting(request *CreateAssetImageScanSettingRequest) (response *CreateAssetImageScanSettingResponse, err error) {
     return c.CreateAssetImageScanSettingWithContext(context.Background(), request)
@@ -718,6 +719,7 @@ func (c *Client) CreateAssetImageScanSetting(request *CreateAssetImageScanSettin
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) CreateAssetImageScanSettingWithContext(ctx context.Context, request *CreateAssetImageScanSettingRequest) (response *CreateAssetImageScanSettingResponse, err error) {
     if request == nil {
