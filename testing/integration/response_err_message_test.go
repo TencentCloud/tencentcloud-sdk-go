@@ -40,7 +40,7 @@ func TestResponseMessage(t *testing.T) {
 	if err == nil {
 		t.Fatalf("unexpected success")
 	}
-	if strings.Index(err.Error(), "InvalidInstanceId.Malformed") == -1 {
+	if strings.Index(err.Error(), "InvalidParameterValue.InstanceIdMalformed") == -1 {
 		t.Fatalf("The error code %s is not expected value", err.Error())
 	}
 }
