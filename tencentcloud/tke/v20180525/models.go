@@ -752,6 +752,10 @@ type Cluster struct {
 	// 是否开启QGPU共享
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	QGPUShareEnable *bool `json:"QGPUShareEnable,omitempty" name:"QGPUShareEnable"`
+
+	// 运行时版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuntimeVersion *string `json:"RuntimeVersion,omitempty" name:"RuntimeVersion"`
 }
 
 type ClusterAdvancedSettings struct {

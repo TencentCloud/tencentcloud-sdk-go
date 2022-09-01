@@ -131,6 +131,9 @@ const (
 	// 参数为空。
 	INVALIDPARAMETER_EMPTYPARAMS = "InvalidParameter.EmptyParams"
 
+	// 不合法的EndPoint，请检查修改后重试。
+	INVALIDPARAMETER_ENDPOINT = "InvalidParameter.EndPoint"
+
 	// 文件类型不合法。
 	INVALIDPARAMETER_FILETYPE = "InvalidParameter.FileType"
 

@@ -1,127 +1,124 @@
 # 本版本更新包含以下内容：
 
-## 企业收付平台(cpdp) 版本：2019-08-20
+## 弹性伸缩(as) 版本：2018-04-19
 
-### 第 83 次发布
+### 第 56 次发布
 
-发布时间：2022-08-31 06:18:54
+发布时间：2022-09-01 06:08:45
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-新增接口：
+修改数据结构：
 
-* [ApplyOpenBankSettleOrder](https://cloud.tencent.com/document/api/1122/79773)
-* [ApplyOpenBankSubMerchantSignOnline](https://cloud.tencent.com/document/api/1122/79772)
-* [QueryOpenBankSettleOrder](https://cloud.tencent.com/document/api/1122/79771)
-* [QueryOpenBankSubMerchantSignOnline](https://cloud.tencent.com/document/api/1122/79770)
+* [LifecycleCommand](https://cloud.tencent.com/document/api/377/20453#LifecycleCommand)
+
+	* <font color="#dd0000">**修改成员**：</font>Parameters
+
+
+
+
+## 全球应用加速(gaap) 版本：2018-05-29
+
+### 第 36 次发布
+
+发布时间：2022-09-01 06:29:26
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [HTTPSListener](https://cloud.tencent.com/document/api/608/37023#HTTPSListener)
+
+	* 新增成员：Http3Supported
+
+
+
+
+## 容器服务(tke) 版本：2018-05-25
+
+### 第 120 次发布
+
+发布时间：2022-09-01 06:53:50
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Cluster](https://cloud.tencent.com/document/api/457/31866#Cluster)
+
+	* 新增成员：RuntimeVersion
+
+
+
+
+## T-Sec-安心平台(RP)(trp) 版本：2021-05-15
+
+### 第 3 次发布
+
+发布时间：2022-09-01 06:55:12
+
+本次发布包含了以下内容：
+
+改善已有的文档。
 
 修改接口：
 
-* [AddFlexIdInfo](https://cloud.tencent.com/document/api/1122/76412)
+* [CreateTraceData](https://cloud.tencent.com/document/api/1458/75023)
 
-	* 新增入参：Name
+	* 新增入参：Status, PhaseData
 
-* [RefundOpenBankOrder](https://cloud.tencent.com/document/api/1122/76089)
+* [ModifyTraceData](https://cloud.tencent.com/document/api/1458/75003)
 
-	* 新增入参：ProfitShareInfoList
+	* 新增入参：PhaseData
 
 
 新增数据结构：
 
-* [ApplyOpenBankSettleOrderResult](https://cloud.tencent.com/document/api/1122/40683#ApplyOpenBankSettleOrderResult)
-* [ApplyOpenBankSubMerchantSignOnlineResult](https://cloud.tencent.com/document/api/1122/40683#ApplyOpenBankSubMerchantSignOnlineResult)
-* [OpenBankProfitShareRespInfo](https://cloud.tencent.com/document/api/1122/40683#OpenBankProfitShareRespInfo)
-* [QueryOpenBankSettleOrderResult](https://cloud.tencent.com/document/api/1122/40683#QueryOpenBankSettleOrderResult)
-* [QueryOpenBankSubMerchantSignOnlineResult](https://cloud.tencent.com/document/api/1122/40683#QueryOpenBankSubMerchantSignOnlineResult)
+* [PhaseData](https://cloud.tencent.com/document/api/1458/75030#PhaseData)
 
 修改数据结构：
 
-* [OpenBankQueryRefundOrderResult](https://cloud.tencent.com/document/api/1122/40683#OpenBankQueryRefundOrderResult)
+* [TraceItem](https://cloud.tencent.com/document/api/1458/75030#TraceItem)
 
-	* 新增成员：ProfitShareRespInfoList
-
-* [QueryOpenBankPaymentOrderResult](https://cloud.tencent.com/document/api/1122/40683#QueryOpenBankPaymentOrderResult)
-
-	* 新增成员：ProfitShareRespInfoList
+	* 新增成员：Key
 
 
 
 
-## 分布式数据库 TDSQL(dcdb) 版本：2018-04-11
+## 云点播(vod) 版本：2018-07-17
 
-### 第 45 次发布
+### 第 117 次发布
 
-发布时间：2022-08-31 06:24:58
+发布时间：2022-09-01 06:57:37
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-<font color="#dd0000">**删除接口**：</font>
+修改接口：
 
-* CreateDedicatedClusterDCDBInstance
+* [DescribeTaskDetail](https://cloud.tencent.com/document/api/266/33431)
+
+	* 新增出参：ReviewAudioVideoTask
 
 
+新增数据结构：
 
-## 云监控(monitor) 版本：2018-07-24
-
-### 第 56 次发布
-
-发布时间：2022-08-31 06:39:03
-
-本次发布包含了以下内容：
-
-改善已有的文档。
+* [ReviewAudioVideoSegmentItem](https://cloud.tencent.com/document/api/266/31773#ReviewAudioVideoSegmentItem)
+* [ReviewAudioVideoTask](https://cloud.tencent.com/document/api/266/31773#ReviewAudioVideoTask)
+* [ReviewAudioVideoTaskOutput](https://cloud.tencent.com/document/api/266/31773#ReviewAudioVideoTaskOutput)
 
 修改数据结构：
 
-* [AlarmNotice](https://cloud.tencent.com/document/api/248/30354#AlarmNotice)
+* [EventContent](https://cloud.tencent.com/document/api/266/31773#EventContent)
 
-	* 新增成员：AMPConsumerId
-
-
-
-
-## 图像分析(tiia) 版本：2019-05-29
-
-### 第 28 次发布
-
-发布时间：2022-08-31 06:53:49
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [CarPlateContent](https://cloud.tencent.com/document/api/865/35474#CarPlateContent)
-
-	* 新增成员：PlateStatus, PlateStatusConfidence, PlateAngle
-
-* [CarTagItem](https://cloud.tencent.com/document/api/865/35474#CarTagItem)
-
-	* 新增成员：Orientation, OrientationConfidence
-
-
-
-
-## 机器翻译(tmt) 版本：2018-03-21
-
-### 第 8 次发布
-
-发布时间：2022-08-31 06:55:53
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [GetFileTranslateData](https://cloud.tencent.com/document/api/551/17233#GetFileTranslateData)
-
-	* 新增成员：Progress
+	* 新增成员：ReviewAudioVideoCompleteEvent
 
 
 
@@ -3632,6 +3629,21 @@
 
 
 ## 弹性伸缩(as) 版本：2018-04-19
+
+### 第 56 次发布
+
+发布时间：2022-09-01 06:08:45
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [LifecycleCommand](https://cloud.tencent.com/document/api/377/20453#LifecycleCommand)
+
+	* <font color="#dd0000">**修改成员**：</font>Parameters
+
 
 ### 第 55 次发布
 
@@ -22733,10 +22745,10 @@
 
 新增接口：
 
-* [[ApplyOpenBankSettleOrder](https://cloud.tencent.com/document/api/1122/79773)](https://cloud.tencent.com/document/api/#/#)
-* [[ApplyOpenBankSubMerchantSignOnline](https://cloud.tencent.com/document/api/1122/79772)](https://cloud.tencent.com/document/api/#/#)
-* [[QueryOpenBankSettleOrder](https://cloud.tencent.com/document/api/1122/79771)](https://cloud.tencent.com/document/api/#/#)
-* [[QueryOpenBankSubMerchantSignOnline](https://cloud.tencent.com/document/api/1122/79770)](https://cloud.tencent.com/document/api/#/#)
+* [ApplyOpenBankSettleOrder](https://cloud.tencent.com/document/api/1122/79773)
+* [ApplyOpenBankSubMerchantSignOnline](https://cloud.tencent.com/document/api/1122/79772)
+* [QueryOpenBankSettleOrder](https://cloud.tencent.com/document/api/1122/79771)
+* [QueryOpenBankSubMerchantSignOnline](https://cloud.tencent.com/document/api/1122/79770)
 
 修改接口：
 
@@ -22751,11 +22763,11 @@
 
 新增数据结构：
 
-* [[ApplyOpenBankSettleOrderResult](https://cloud.tencent.com/document/api/1122/40683#ApplyOpenBankSettleOrderResult)](https://cloud.tencent.com/document/api/1122/40683#[ApplyOpenBankSettleOrderResult](https://cloud.tencent.com/document/api/1122/40683#ApplyOpenBankSettleOrderResult))
-* [[ApplyOpenBankSubMerchantSignOnlineResult](https://cloud.tencent.com/document/api/1122/40683#ApplyOpenBankSubMerchantSignOnlineResult)](https://cloud.tencent.com/document/api/1122/40683#[ApplyOpenBankSubMerchantSignOnlineResult](https://cloud.tencent.com/document/api/1122/40683#ApplyOpenBankSubMerchantSignOnlineResult))
-* [[OpenBankProfitShareRespInfo](https://cloud.tencent.com/document/api/1122/40683#OpenBankProfitShareRespInfo)](https://cloud.tencent.com/document/api/1122/40683#[OpenBankProfitShareRespInfo](https://cloud.tencent.com/document/api/1122/40683#OpenBankProfitShareRespInfo))
-* [[QueryOpenBankSettleOrderResult](https://cloud.tencent.com/document/api/1122/40683#QueryOpenBankSettleOrderResult)](https://cloud.tencent.com/document/api/1122/40683#[QueryOpenBankSettleOrderResult](https://cloud.tencent.com/document/api/1122/40683#QueryOpenBankSettleOrderResult))
-* [[QueryOpenBankSubMerchantSignOnlineResult](https://cloud.tencent.com/document/api/1122/40683#QueryOpenBankSubMerchantSignOnlineResult)](https://cloud.tencent.com/document/api/1122/40683#[QueryOpenBankSubMerchantSignOnlineResult](https://cloud.tencent.com/document/api/1122/40683#QueryOpenBankSubMerchantSignOnlineResult))
+* [ApplyOpenBankSettleOrderResult](https://cloud.tencent.com/document/api/1122/40683#ApplyOpenBankSettleOrderResult)
+* [ApplyOpenBankSubMerchantSignOnlineResult](https://cloud.tencent.com/document/api/1122/40683#ApplyOpenBankSubMerchantSignOnlineResult)
+* [OpenBankProfitShareRespInfo](https://cloud.tencent.com/document/api/1122/40683#OpenBankProfitShareRespInfo)
+* [QueryOpenBankSettleOrderResult](https://cloud.tencent.com/document/api/1122/40683#QueryOpenBankSettleOrderResult)
+* [QueryOpenBankSubMerchantSignOnlineResult](https://cloud.tencent.com/document/api/1122/40683#QueryOpenBankSubMerchantSignOnlineResult)
 
 修改数据结构：
 
@@ -39620,6 +39632,21 @@
 
 
 ## 全球应用加速(gaap) 版本：2018-05-29
+
+### 第 36 次发布
+
+发布时间：2022-09-01 06:29:26
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [HTTPSListener](https://cloud.tencent.com/document/api/608/37023#HTTPSListener)
+
+	* 新增成员：Http3Supported
+
 
 ### 第 35 次发布
 
@@ -75859,6 +75886,21 @@
 
 ## 容器服务(tke) 版本：2018-05-25
 
+### 第 120 次发布
+
+发布时间：2022-09-01 06:53:50
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Cluster](https://cloud.tencent.com/document/api/457/31866#Cluster)
+
+	* 新增成员：RuntimeVersion
+
+
 ### 第 119 次发布
 
 发布时间：2022-08-30 06:57:14
@@ -78620,6 +78662,36 @@
 
 
 ## T-Sec-安心平台(RP)(trp) 版本：2021-05-15
+
+### 第 3 次发布
+
+发布时间：2022-09-01 06:55:12
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateTraceData](https://cloud.tencent.com/document/api/1458/75023)
+
+	* 新增入参：Status, PhaseData
+
+* [ModifyTraceData](https://cloud.tencent.com/document/api/1458/75003)
+
+	* 新增入参：PhaseData
+
+
+新增数据结构：
+
+* [[PhaseData](https://cloud.tencent.com/document/api/1458/75030#PhaseData)](https://cloud.tencent.com/document/api/1458/75030#[PhaseData](https://cloud.tencent.com/document/api/1458/75030#PhaseData))
+
+修改数据结构：
+
+* [TraceItem](https://cloud.tencent.com/document/api/1458/75030#TraceItem)
+
+	* 新增成员：Key
+
 
 ### 第 2 次发布
 
@@ -82467,6 +82539,34 @@
 
 
 ## 云点播(vod) 版本：2018-07-17
+
+### 第 117 次发布
+
+发布时间：2022-09-01 06:57:37
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeTaskDetail](https://cloud.tencent.com/document/api/266/33431)
+
+	* 新增出参：ReviewAudioVideoTask
+
+
+新增数据结构：
+
+* [[ReviewAudioVideoSegmentItem](https://cloud.tencent.com/document/api/266/31773#ReviewAudioVideoSegmentItem)](https://cloud.tencent.com/document/api/266/31773#[ReviewAudioVideoSegmentItem](https://cloud.tencent.com/document/api/266/31773#ReviewAudioVideoSegmentItem))
+* [[ReviewAudioVideoTask](https://cloud.tencent.com/document/api/266/31773#ReviewAudioVideoTask)](https://cloud.tencent.com/document/api/266/31773#[ReviewAudioVideoTask](https://cloud.tencent.com/document/api/266/31773#ReviewAudioVideoTask))
+* [[ReviewAudioVideoTaskOutput](https://cloud.tencent.com/document/api/266/31773#ReviewAudioVideoTaskOutput)](https://cloud.tencent.com/document/api/266/31773#[ReviewAudioVideoTaskOutput](https://cloud.tencent.com/document/api/266/31773#ReviewAudioVideoTaskOutput))
+
+修改数据结构：
+
+* [EventContent](https://cloud.tencent.com/document/api/266/31773#EventContent)
+
+	* 新增成员：ReviewAudioVideoCompleteEvent
+
 
 ### 第 116 次发布
 

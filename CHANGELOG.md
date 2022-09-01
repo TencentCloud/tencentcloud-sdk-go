@@ -1,3 +1,128 @@
+# Release v1.0.488
+
+## 弹性伸缩(as) 版本：2018-04-19
+
+### 第 56 次发布
+
+发布时间：2022-09-01 06:08:45
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [LifecycleCommand](https://cloud.tencent.com/document/api/377/20453#LifecycleCommand)
+
+	* <font color="#dd0000">**修改成员**：</font>Parameters
+
+
+
+
+## 全球应用加速(gaap) 版本：2018-05-29
+
+### 第 36 次发布
+
+发布时间：2022-09-01 06:29:26
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [HTTPSListener](https://cloud.tencent.com/document/api/608/37023#HTTPSListener)
+
+	* 新增成员：Http3Supported
+
+
+
+
+## 容器服务(tke) 版本：2018-05-25
+
+### 第 120 次发布
+
+发布时间：2022-09-01 06:53:50
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Cluster](https://cloud.tencent.com/document/api/457/31866#Cluster)
+
+	* 新增成员：RuntimeVersion
+
+
+
+
+## T-Sec-安心平台(RP)(trp) 版本：2021-05-15
+
+### 第 3 次发布
+
+发布时间：2022-09-01 06:55:12
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateTraceData](https://cloud.tencent.com/document/api/1458/75023)
+
+	* 新增入参：Status, PhaseData
+
+* [ModifyTraceData](https://cloud.tencent.com/document/api/1458/75003)
+
+	* 新增入参：PhaseData
+
+
+新增数据结构：
+
+* [PhaseData](https://cloud.tencent.com/document/api/1458/75030#PhaseData)
+
+修改数据结构：
+
+* [TraceItem](https://cloud.tencent.com/document/api/1458/75030#TraceItem)
+
+	* 新增成员：Key
+
+
+
+
+## 云点播(vod) 版本：2018-07-17
+
+### 第 117 次发布
+
+发布时间：2022-09-01 06:57:37
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeTaskDetail](https://cloud.tencent.com/document/api/266/33431)
+
+	* 新增出参：ReviewAudioVideoTask
+
+
+新增数据结构：
+
+* [ReviewAudioVideoSegmentItem](https://cloud.tencent.com/document/api/266/31773#ReviewAudioVideoSegmentItem)
+* [ReviewAudioVideoTask](https://cloud.tencent.com/document/api/266/31773#ReviewAudioVideoTask)
+* [ReviewAudioVideoTaskOutput](https://cloud.tencent.com/document/api/266/31773#ReviewAudioVideoTaskOutput)
+
+修改数据结构：
+
+* [EventContent](https://cloud.tencent.com/document/api/266/31773#EventContent)
+
+	* 新增成员：ReviewAudioVideoCompleteEvent
+
+
+
+
 # Release v1.0.487
 
 ## 企业收付平台(cpdp) 版本：2019-08-20

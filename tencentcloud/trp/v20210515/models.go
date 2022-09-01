@@ -658,6 +658,12 @@ type CreateTraceDataRequestParams struct {
 
 	// 溯源信息
 	TraceItems []*TraceItem `json:"TraceItems,omitempty" name:"TraceItems"`
+
+	// 溯源状态 0: 无效, 1: 有效
+	Status *uint64 `json:"Status,omitempty" name:"Status"`
+
+	// 环节数据
+	PhaseData *PhaseData `json:"PhaseData,omitempty" name:"PhaseData"`
 }
 
 type CreateTraceDataRequest struct {
@@ -689,6 +695,12 @@ type CreateTraceDataRequest struct {
 
 	// 溯源信息
 	TraceItems []*TraceItem `json:"TraceItems,omitempty" name:"TraceItems"`
+
+	// 溯源状态 0: 无效, 1: 有效
+	Status *uint64 `json:"Status,omitempty" name:"Status"`
+
+	// 环节数据
+	PhaseData *PhaseData `json:"PhaseData,omitempty" name:"PhaseData"`
 }
 
 func (r *CreateTraceDataRequest) ToJsonString() string {
@@ -712,6 +724,8 @@ func (r *CreateTraceDataRequest) FromJsonString(s string) error {
 	delete(f, "Type")
 	delete(f, "TraceId")
 	delete(f, "TraceItems")
+	delete(f, "Status")
+	delete(f, "PhaseData")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateTraceDataRequest has unknown keys!", "")
 	}
@@ -2369,8 +2383,11 @@ type ModifyTraceDataRequestParams struct {
 	// 企业ID
 	CorpId *uint64 `json:"CorpId,omitempty" name:"CorpId"`
 
-	// [无效] 溯源状态
+	// 溯源状态 0: 无效, 1: 有效
 	Status *uint64 `json:"Status,omitempty" name:"Status"`
+
+	// 环节数据
+	PhaseData *PhaseData `json:"PhaseData,omitempty" name:"PhaseData"`
 }
 
 type ModifyTraceDataRequest struct {
@@ -2421,8 +2438,11 @@ type ModifyTraceDataRequest struct {
 	// 企业ID
 	CorpId *uint64 `json:"CorpId,omitempty" name:"CorpId"`
 
-	// [无效] 溯源状态
+	// 溯源状态 0: 无效, 1: 有效
 	Status *uint64 `json:"Status,omitempty" name:"Status"`
+
+	// 环节数据
+	PhaseData *PhaseData `json:"PhaseData,omitempty" name:"PhaseData"`
 }
 
 func (r *ModifyTraceDataRequest) ToJsonString() string {
@@ -2453,6 +2473,7 @@ func (r *ModifyTraceDataRequest) FromJsonString(s string) error {
 	delete(f, "ChainData")
 	delete(f, "CorpId")
 	delete(f, "Status")
+	delete(f, "PhaseData")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyTraceDataRequest has unknown keys!", "")
 	}
@@ -2493,6 +2514,26 @@ type PackSpec struct {
 
 	// 数量
 	Amount *uint64 `json:"Amount,omitempty" name:"Amount"`
+}
+
+type PhaseData struct {
+	// 启用头
+	HeadEnabled *bool `json:"HeadEnabled,omitempty" name:"HeadEnabled"`
+
+	// 标题
+	HeadTitle *string `json:"HeadTitle,omitempty" name:"HeadTitle"`
+
+	// 标识符
+	Key *string `json:"Key,omitempty" name:"Key"`
+
+	// 小程序AppId
+	AppId *string `json:"AppId,omitempty" name:"AppId"`
+
+	// 小程序AppPath
+	AppPath *string `json:"AppPath,omitempty" name:"AppPath"`
+
+	// 小程序名称AppName
+	AppName *string `json:"AppName,omitempty" name:"AppName"`
 }
 
 type Product struct {
@@ -2650,4 +2691,8 @@ type TraceItem struct {
 	// 多个值
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Values []*string `json:"Values,omitempty" name:"Values"`
+
+	// 类型标识
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Key *string `json:"Key,omitempty" name:"Key"`
 }

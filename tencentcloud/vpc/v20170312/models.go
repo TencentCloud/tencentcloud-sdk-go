@@ -12141,8 +12141,8 @@ type DescribeSecurityGroupPoliciesRequestParams struct {
 	// 安全组实例ID，例如：sg-33ocnj9n，可通过DescribeSecurityGroups获取。
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" name:"SecurityGroupId"`
 
-	// 过滤条件,不支持同时指定SecurityGroupId和Filters参数。
-	// <li>security-group-id - String - 安全组ID。</li>
+	// 过滤条件。
+	// <li>security-group-id - String - 规则中的安全组ID。</li>
 	// <li>ip - String - IP，支持IPV4和IPV6模糊匹配。</li>
 	// <li>address-module - String - IP地址模板或IP地址组模板ID。</li>
 	// <li>service-module - String - 协议端口模板或协议端口组模板ID。</li>
@@ -12160,8 +12160,8 @@ type DescribeSecurityGroupPoliciesRequest struct {
 	// 安全组实例ID，例如：sg-33ocnj9n，可通过DescribeSecurityGroups获取。
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" name:"SecurityGroupId"`
 
-	// 过滤条件,不支持同时指定SecurityGroupId和Filters参数。
-	// <li>security-group-id - String - 安全组ID。</li>
+	// 过滤条件。
+	// <li>security-group-id - String - 规则中的安全组ID。</li>
 	// <li>ip - String - IP，支持IPV4和IPV6模糊匹配。</li>
 	// <li>address-module - String - IP地址模板或IP地址组模板ID。</li>
 	// <li>service-module - String - 协议端口模板或协议端口组模板ID。</li>

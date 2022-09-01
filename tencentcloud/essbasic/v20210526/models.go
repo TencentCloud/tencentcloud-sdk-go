@@ -315,7 +315,7 @@ type ChannelCreateFlowByFilesRequestParams struct {
 	// 签署文件资源Id列表，目前仅支持单个文件
 	FileIds []*string `json:"FileIds,omitempty" name:"FileIds"`
 
-	// 签署文件中的控件，如：填写控件等
+	// 签署文件中的发起方的填写控件，需要在发起的时候进行填充
 	Components []*Component `json:"Components,omitempty" name:"Components"`
 
 	// 签署流程截止时间，十位数时间戳，最大值为33162419560，即3020年
@@ -361,7 +361,7 @@ type ChannelCreateFlowByFilesRequest struct {
 	// 签署文件资源Id列表，目前仅支持单个文件
 	FileIds []*string `json:"FileIds,omitempty" name:"FileIds"`
 
-	// 签署文件中的控件，如：填写控件等
+	// 签署文件中的发起方的填写控件，需要在发起的时候进行填充
 	Components []*Component `json:"Components,omitempty" name:"Components"`
 
 	// 签署流程截止时间，十位数时间戳，最大值为33162419560，即3020年

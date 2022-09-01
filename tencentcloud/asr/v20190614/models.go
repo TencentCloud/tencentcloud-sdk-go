@@ -435,10 +435,10 @@ type CreateRecTaskRequestParams struct {
 	// 是否过滤脏词（目前支持中文普通话引擎）。0：不过滤脏词；1：过滤脏词；2：将脏词替换为 * 。默认值为 0。
 	FilterDirty *int64 `json:"FilterDirty,omitempty" name:"FilterDirty"`
 
-	// 热词表id。如不设置该参数，自动生效默认热词表；如果设置了该参数，那么将生效对应的热词表。
+	// 热词表id。如不设置该参数，自动生效默认热词表；如设置了该参数，那么将生效对应的热词表。
 	HotwordId *string `json:"HotwordId,omitempty" name:"HotwordId"`
 
-	// 自学习模型 id。如不设置该参数，自动生效最后一次上线的自学习模型；如果设置了该参数，那么将生效对应的自学习模型。
+	// 自学习模型 id。如设置了该参数，将生效对应的自学习模型。
 	CustomizationId *string `json:"CustomizationId,omitempty" name:"CustomizationId"`
 
 	// 附加参数(该参数无意义，忽略即可)
@@ -506,10 +506,10 @@ type CreateRecTaskRequest struct {
 	// 是否过滤脏词（目前支持中文普通话引擎）。0：不过滤脏词；1：过滤脏词；2：将脏词替换为 * 。默认值为 0。
 	FilterDirty *int64 `json:"FilterDirty,omitempty" name:"FilterDirty"`
 
-	// 热词表id。如不设置该参数，自动生效默认热词表；如果设置了该参数，那么将生效对应的热词表。
+	// 热词表id。如不设置该参数，自动生效默认热词表；如设置了该参数，那么将生效对应的热词表。
 	HotwordId *string `json:"HotwordId,omitempty" name:"HotwordId"`
 
-	// 自学习模型 id。如不设置该参数，自动生效最后一次上线的自学习模型；如果设置了该参数，那么将生效对应的自学习模型。
+	// 自学习模型 id。如设置了该参数，将生效对应的自学习模型。
 	CustomizationId *string `json:"CustomizationId,omitempty" name:"CustomizationId"`
 
 	// 附加参数(该参数无意义，忽略即可)

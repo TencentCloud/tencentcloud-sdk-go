@@ -146,7 +146,10 @@ type CarPlateContent struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Color *string `json:"Color,omitempty" name:"Color"`
 
-	// 车牌类型；渣土车车牌遮挡时,该值为枚举值“异常”。
+	// 车牌类型，包含：0普通蓝牌，1双层黄牌，2单层黄牌，3新能源车牌，4使馆车牌，5领馆车牌，6澳门车牌，7香港车牌，8警用车牌，9教练车牌，10武警车牌，11军用车牌   -2遮挡污损模糊车牌/异常   其他无牌
+	// 注意：
+	// 此字段可能返回 null，表示取不到有效值。
+	// 此字段结果遮挡污损模糊车牌/异常：包含PlateStatus参数的“遮挡污损模糊车牌”，针对车牌异常，建议参考此字段，更全面
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Type *string `json:"Type,omitempty" name:"Type"`
 
@@ -154,7 +157,7 @@ type CarPlateContent struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PlateLocation []*Coord `json:"PlateLocation,omitempty" name:"PlateLocation"`
 
-	// 判断车牌是否遮挡。
+	// 判断车牌是否遮挡：“遮挡污损模糊车牌”和"正常车牌"。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PlateStatus *string `json:"PlateStatus,omitempty" name:"PlateStatus"`
 

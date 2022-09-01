@@ -6821,6 +6821,13 @@ type HTTPSListener struct {
 	// 多客户端CA证书别名信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PolyClientCertificateAliasInfo []*CertificateAliasInfo `json:"PolyClientCertificateAliasInfo,omitempty" name:"PolyClientCertificateAliasInfo"`
+
+	// 是否支持Http3，其中：
+	// 0，不支持Http3接入；
+	// 1，持Http3接入。
+	// 注意：如果支持了Http3的功能，那么该监听器会占用对应的UDP接入端口，不可再创建相同端口的UDP监听器。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Http3Supported *int64 `json:"Http3Supported,omitempty" name:"Http3Supported"`
 }
 
 type HttpHeaderParam struct {
