@@ -3471,7 +3471,7 @@ type InquirePriceCreateRequestParams struct {
 	// 可用区,每个地域提供最佳实践
 	Zone *string `json:"Zone,omitempty" name:"Zone"`
 
-	// 购买商品数量
+	// 购买计算节点个数
 	GoodsNum *int64 `json:"GoodsNum,omitempty" name:"GoodsNum"`
 
 	// 实例购买类型，可选值为：PREPAID, POSTPAID, SERVERLESS
@@ -3505,7 +3505,7 @@ type InquirePriceCreateRequest struct {
 	// 可用区,每个地域提供最佳实践
 	Zone *string `json:"Zone,omitempty" name:"Zone"`
 
-	// 购买商品数量
+	// 购买计算节点个数
 	GoodsNum *int64 `json:"GoodsNum,omitempty" name:"GoodsNum"`
 
 	// 实例购买类型，可选值为：PREPAID, POSTPAID, SERVERLESS

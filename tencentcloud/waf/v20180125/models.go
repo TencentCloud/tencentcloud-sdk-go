@@ -617,6 +617,27 @@ type BotPkg struct {
 	// 使用数量
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UsedNum *int64 `json:"UsedNum,omitempty" name:"UsedNum"`
+
+	// 子产品code
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *string `json:"Type,omitempty" name:"Type"`
+}
+
+type BotQPS struct {
+	// 资源id
+	ResourceIds *string `json:"ResourceIds,omitempty" name:"ResourceIds"`
+
+	// 有效时间
+	ValidTime *string `json:"ValidTime,omitempty" name:"ValidTime"`
+
+	// 资源数量
+	Count *uint64 `json:"Count,omitempty" name:"Count"`
+
+	// 资源所在地区
+	Region *string `json:"Region,omitempty" name:"Region"`
+
+	// 使用qps的最大值
+	MaxBotQPS *uint64 `json:"MaxBotQPS,omitempty" name:"MaxBotQPS"`
 }
 
 type BotStatPointItem struct {
@@ -2607,6 +2628,10 @@ type InstanceInfo struct {
 	// Bot资源包
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BotPkg *BotPkg `json:"BotPkg,omitempty" name:"BotPkg"`
+
+	// bot的qps详情
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BotQPS *BotQPS `json:"BotQPS,omitempty" name:"BotQPS"`
 }
 
 type IpAccessControlData struct {

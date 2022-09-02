@@ -65,6 +65,15 @@ const (
 	// 下发CDN平台失败。
 	FAILEDOPERATION_CONFIGCDNFAILED = "FailedOperation.ConfigCDNFailed"
 
+	// Cos bucket 不存在。
+	FAILEDOPERATION_COSBUCKETNOTEXIST = "FailedOperation.CosBucketNotExist"
+
+	// 无权限访问 Cos bucket。
+	FAILEDOPERATION_COSBUCKETNOTPERMISSION = "FailedOperation.CosBucketNotPermission"
+
+	// Cos 角色不存在。
+	FAILEDOPERATION_COSROLENOTEXISTS = "FailedOperation.CosRoleNotExists"
+
 	// 2天内有产生流量，域名处于锁定期间，2天内无流量产生才允许删除域名。
 	FAILEDOPERATION_DELETEDOMAININLOCKEDTIME = "FailedOperation.DeleteDomainInLockedTime"
 

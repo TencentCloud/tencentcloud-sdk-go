@@ -1756,6 +1756,9 @@ type GetEidTokenConfig struct {
 
 	// 意愿核身问答模式的配置列表。当前仅支持一个问答。
 	IntentionQuestions []*IntentionQuestion `json:"IntentionQuestions,omitempty" name:"IntentionQuestions"`
+
+	// 意愿核身过程中识别用户的回答意图，开启后除了IntentionQuestions的Answers列表中的标准回答会通过，近似意图的回答也会通过，默认不开启。
+	IntentionRecognition *bool `json:"IntentionRecognition,omitempty" name:"IntentionRecognition"`
 }
 
 // Predefined struct for user

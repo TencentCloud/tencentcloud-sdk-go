@@ -311,6 +311,9 @@ type CreateInstanceRequestParams struct {
 
 	// 可维护时间段
 	OperationDuration *OperationDuration `json:"OperationDuration,omitempty" name:"OperationDuration"`
+
+	// 是否开启存算分离
+	EnableHybridStorage *bool `json:"EnableHybridStorage,omitempty" name:"EnableHybridStorage"`
 }
 
 type CreateInstanceRequest struct {
@@ -416,6 +419,9 @@ type CreateInstanceRequest struct {
 
 	// 可维护时间段
 	OperationDuration *OperationDuration `json:"OperationDuration,omitempty" name:"OperationDuration"`
+
+	// 是否开启存算分离
+	EnableHybridStorage *bool `json:"EnableHybridStorage,omitempty" name:"EnableHybridStorage"`
 }
 
 func (r *CreateInstanceRequest) ToJsonString() string {
@@ -461,6 +467,7 @@ func (r *CreateInstanceRequest) FromJsonString(s string) error {
 	delete(f, "WebNodeTypeInfo")
 	delete(f, "Protocol")
 	delete(f, "OperationDuration")
+	delete(f, "EnableHybridStorage")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateInstanceRequest has unknown keys!", "")
 	}
@@ -2504,6 +2511,10 @@ type InstanceInfo struct {
 	// 自治索引开关
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AutoIndexEnabled *bool `json:"AutoIndexEnabled,omitempty" name:"AutoIndexEnabled"`
+
+	// 是否支持存储计算分离
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EnableHybridStorage *bool `json:"EnableHybridStorage,omitempty" name:"EnableHybridStorage"`
 }
 
 type InstanceLog struct {

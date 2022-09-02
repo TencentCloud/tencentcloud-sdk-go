@@ -235,6 +235,7 @@ import (
 	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ump"
 	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/vm"
 	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/vm"
+	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/vm"
 	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/vms"
 	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/vod"
 	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/vpc"

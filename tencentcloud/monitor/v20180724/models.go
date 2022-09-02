@@ -9400,6 +9400,14 @@ type PrometheusInstancesItem struct {
 	// 绑定的 Grafana 实例 ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	GrafanaInstanceId *string `json:"GrafanaInstanceId,omitempty" name:"GrafanaInstanceId"`
+
+	// 告警规则限制
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AlertRuleLimit *int64 `json:"AlertRuleLimit,omitempty" name:"AlertRuleLimit"`
+
+	// 预聚合规则限制
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RecordingRuleLimit *int64 `json:"RecordingRuleLimit,omitempty" name:"RecordingRuleLimit"`
 }
 
 type PrometheusRuleKV struct {

@@ -127,6 +127,9 @@ type CreateCodeBatchRequestParams struct {
 
 	// 活动ID
 	MpTpl *string `json:"MpTpl,omitempty" name:"MpTpl"`
+
+	// 克隆批次ID
+	CloneId *string `json:"CloneId,omitempty" name:"CloneId"`
 }
 
 type CreateCodeBatchRequest struct {
@@ -152,6 +155,9 @@ type CreateCodeBatchRequest struct {
 
 	// 活动ID
 	MpTpl *string `json:"MpTpl,omitempty" name:"MpTpl"`
+
+	// 克隆批次ID
+	CloneId *string `json:"CloneId,omitempty" name:"CloneId"`
 }
 
 func (r *CreateCodeBatchRequest) ToJsonString() string {
@@ -173,6 +179,7 @@ func (r *CreateCodeBatchRequest) FromJsonString(s string) error {
 	delete(f, "BatchId")
 	delete(f, "Remark")
 	delete(f, "MpTpl")
+	delete(f, "CloneId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCodeBatchRequest has unknown keys!", "")
 	}

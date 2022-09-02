@@ -176,7 +176,7 @@ const (
 	// 模板参数必须为json格式。
 	INVALIDPARAMETERVALUE_TEMPLATEDATAERROR = "InvalidParameterValue.TemplateDataError"
 
-	// 收件人地址附带的模板参数长度超过限制
+	// 单条收件人地址附带的模板参数(整个 JSON 结构)， 长度超过限制 800 bytes
 	INVALIDPARAMETERVALUE_TEMPLATEDATALENLIMIT = "InvalidParameterValue.TemplateDataLenLimit"
 
 	// 模板名字不合法，请检查字符内容及大小。
@@ -197,7 +197,7 @@ const (
 	// 超过配额限制。
 	LIMITEXCEEDED = "LimitExceeded"
 
-	// 收件人地址数量超过限制。
+	// 收件人个数限制20000个以内。
 	LIMITEXCEEDED_EXCEEDRECEIVERDETAILLIMIT = "LimitExceeded.ExceedReceiverDetailLimit"
 
 	// 收件人列表数量超过限制。

@@ -247,6 +247,7 @@ import (
 	umpv20200918 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ump/v20200918"
 	vmv20200709 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/vm/v20200709"
 	vmv20201229 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/vm/v20201229"
+	vmv20210922 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/vm/v20210922"
 	vmsv20200902 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/vms/v20200902"
 	vodv20180717 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/vod/v20180717"
 	vpcv20170312 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/vpc/v20170312"
@@ -3210,6 +3211,19 @@ func TestVmv20201229Import(t *testing.T) {
         profile.NewClientProfile())
     if err != nil || client == nil {
         t.Errorf("fail to init vm_v20201229 client: %v", err)
+    }
+}
+
+func TestVmv20210922Import(t *testing.T) {
+    credential := common.NewCredential(
+        os.Getenv("TENCENTCLOUD_SECRET_ID"),
+        os.Getenv("TENCENTCLOUD_SECRET_KEY"))
+    client, err := vmv20210922.NewClient(
+        credential,
+        regions.Guangzhou,
+        profile.NewClientProfile())
+    if err != nil || client == nil {
+        t.Errorf("fail to init vm_v20210922 client: %v", err)
     }
 }
 

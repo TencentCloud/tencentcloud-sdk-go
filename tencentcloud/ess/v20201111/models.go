@@ -64,6 +64,15 @@ type ApproverInfo struct {
 
 	// 合同的强制预览时间：3~300s，未指定则按合同页数计算
 	PreReadTime *int64 `json:"PreReadTime,omitempty" name:"PreReadTime"`
+
+	// 签署人userId，非企微场景不使用此字段
+	UserId *string `json:"UserId,omitempty" name:"UserId"`
+
+	// 签署人用户来源,企微侧用户请传入：WEWORKAPP
+	ApproverSource *string `json:"ApproverSource,omitempty" name:"ApproverSource"`
+
+	// 客户自定义签署人标识，64位长度，保证唯一，非企微场景不使用此字段
+	CustomApproverTag *string `json:"CustomApproverTag,omitempty" name:"CustomApproverTag"`
 }
 
 type ApproverRestriction struct {
@@ -600,6 +609,74 @@ func (r *CreateDocumentResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateDocumentResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateFlowApproversRequestParams struct {
+	// 调用方用户信息，userId 必填
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
+	// 签署流程编号
+	FlowId *string `json:"FlowId,omitempty" name:"FlowId"`
+
+	// 补充签署人信息
+	Approvers []*FillApproverInfo `json:"Approvers,omitempty" name:"Approvers"`
+}
+
+type CreateFlowApproversRequest struct {
+	*tchttp.BaseRequest
+	
+	// 调用方用户信息，userId 必填
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
+	// 签署流程编号
+	FlowId *string `json:"FlowId,omitempty" name:"FlowId"`
+
+	// 补充签署人信息
+	Approvers []*FillApproverInfo `json:"Approvers,omitempty" name:"Approvers"`
+}
+
+func (r *CreateFlowApproversRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateFlowApproversRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Operator")
+	delete(f, "FlowId")
+	delete(f, "Approvers")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateFlowApproversRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateFlowApproversResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateFlowApproversResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateFlowApproversResponseParams `json:"Response"`
+}
+
+func (r *CreateFlowApproversResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateFlowApproversResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1540,6 +1617,70 @@ func (r *DescribeFlowBriefsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeFlowInfoRequestParams struct {
+	// 需要查询的流程ID列表，限制最大100个
+	FlowIds []*string `json:"FlowIds,omitempty" name:"FlowIds"`
+
+	// 调用方用户信息
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+}
+
+type DescribeFlowInfoRequest struct {
+	*tchttp.BaseRequest
+	
+	// 需要查询的流程ID列表，限制最大100个
+	FlowIds []*string `json:"FlowIds,omitempty" name:"FlowIds"`
+
+	// 调用方用户信息
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+}
+
+func (r *DescribeFlowInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeFlowInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FlowIds")
+	delete(f, "Operator")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeFlowInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeFlowInfoResponseParams struct {
+	// 签署流程信息
+	FlowDetailInfos []*FlowDetailInfo `json:"FlowDetailInfos,omitempty" name:"FlowDetailInfos"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeFlowInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeFlowInfoResponseParams `json:"Response"`
+}
+
+func (r *DescribeFlowInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeFlowInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeFlowTemplatesRequestParams struct {
 	// 调用方用户信息，userId 必填
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
@@ -1721,12 +1862,73 @@ type FileUrl struct {
 	Option *string `json:"Option,omitempty" name:"Option"`
 }
 
+type FillApproverInfo struct {
+	// 签署人签署Id
+	RecipientId *string `json:"RecipientId,omitempty" name:"RecipientId"`
+
+	// 签署人来源
+	// WEWORKAPP: 企业微信
+	ApproverSource *string `json:"ApproverSource,omitempty" name:"ApproverSource"`
+
+	// 企业自定义账号Id
+	// WEWORKAPP场景下指企业自有应用获取企微明文的userid
+	CustomUserId *string `json:"CustomUserId,omitempty" name:"CustomUserId"`
+}
+
 type Filter struct {
 	// 查询过滤条件的Key
 	Key *string `json:"Key,omitempty" name:"Key"`
 
 	// 查询过滤条件的Value列表
 	Values []*string `json:"Values,omitempty" name:"Values"`
+}
+
+type FlowApproverDetail struct {
+	// 签署人信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApproveMessage *string `json:"ApproveMessage,omitempty" name:"ApproveMessage"`
+
+	// 签署人名字
+	ApproveName *string `json:"ApproveName,omitempty" name:"ApproveName"`
+
+	// 签署人的状态
+	ApproveStatus *int64 `json:"ApproveStatus,omitempty" name:"ApproveStatus"`
+
+	// 模板配置时候的签署人id,与控件绑定
+	ReceiptId *string `json:"ReceiptId,omitempty" name:"ReceiptId"`
+
+	// 客户自定义userId
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CustomUserId *string `json:"CustomUserId,omitempty" name:"CustomUserId"`
+
+	// 签署人手机号
+	Mobile *string `json:"Mobile,omitempty" name:"Mobile"`
+
+	// 签署顺序
+	SignOrder *int64 `json:"SignOrder,omitempty" name:"SignOrder"`
+
+	// 签署人签署时间
+	ApproveTime *int64 `json:"ApproveTime,omitempty" name:"ApproveTime"`
+
+	// 参与者类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApproveType *string `json:"ApproveType,omitempty" name:"ApproveType"`
+
+	// 签署人侧用户来源
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApproverSource *string `json:"ApproverSource,omitempty" name:"ApproverSource"`
+
+	// 客户自定义签署人标识
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CustomApproverTag *string `json:"CustomApproverTag,omitempty" name:"CustomApproverTag"`
+
+	// 签署人企业Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OrganizationId *string `json:"OrganizationId,omitempty" name:"OrganizationId"`
+
+	// 签署人企业名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OrganizationName *string `json:"OrganizationName,omitempty" name:"OrganizationName"`
 }
 
 type FlowBrief struct {
@@ -1807,11 +2009,46 @@ type FlowCreateApprover struct {
 	// 签署前置条件：阅读时长限制，默认为不需要
 	PreReadTime *uint64 `json:"PreReadTime,omitempty" name:"PreReadTime"`
 
-	// 签署方经办人的用户ID,和签署方经办人姓名+手机号+证件必须有一个
+	// 签署方经办人的用户ID,和签署方经办人姓名+手机号+证件必须有一个。非企微场景不使用此字段
 	UserId *string `json:"UserId,omitempty" name:"UserId"`
 
 	// 当前只支持true，默认为true
 	Required *bool `json:"Required,omitempty" name:"Required"`
+
+	// 签署人用户来源,企微侧用户请传入：WEWORKAPP
+	ApproverSource *string `json:"ApproverSource,omitempty" name:"ApproverSource"`
+
+	// 客户自定义签署人标识，64位长度，保证唯一。非企微场景不使用此字段
+	CustomApproverTag *string `json:"CustomApproverTag,omitempty" name:"CustomApproverTag"`
+}
+
+type FlowDetailInfo struct {
+	// 合同(流程)的Id
+	FlowId *string `json:"FlowId,omitempty" name:"FlowId"`
+
+	// 合同(流程)的名字
+	FlowName *string `json:"FlowName,omitempty" name:"FlowName"`
+
+	// 合同(流程)的类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FlowType *string `json:"FlowType,omitempty" name:"FlowType"`
+
+	// 合同(流程)的状态
+	FlowStatus *int64 `json:"FlowStatus,omitempty" name:"FlowStatus"`
+
+	// 合同(流程)的信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FlowMessage *string `json:"FlowMessage,omitempty" name:"FlowMessage"`
+
+	// 流程的描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FlowDescription *string `json:"FlowDescription,omitempty" name:"FlowDescription"`
+
+	// 合同(流程)的创建时间戳
+	CreatedOn *int64 `json:"CreatedOn,omitempty" name:"CreatedOn"`
+
+	// 合同(流程)的签署人数组
+	FlowApproverInfos []*FlowApproverDetail `json:"FlowApproverInfos,omitempty" name:"FlowApproverInfos"`
 }
 
 type FormField struct {

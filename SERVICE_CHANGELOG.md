@@ -2,9 +2,111 @@
 
 ## 弹性伸缩(as) 版本：2018-04-19
 
-### 第 56 次发布
+### 第 57 次发布
 
-发布时间：2022-09-01 06:08:45
+发布时间：2022-09-02 06:09:13
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ModifyLifecycleHook](https://cloud.tencent.com/document/api/377/73060)
+
+	* 新增入参：LifecycleCommand
+
+* [UpgradeLifecycleHook](https://cloud.tencent.com/document/api/377/34451)
+
+	* 新增入参：LifecycleCommand
+
+
+
+
+## 语音识别(asr) 版本：2019-06-14
+
+### 第 20 次发布
+
+发布时间：2022-09-02 06:09:54
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [SentenceRecognition](https://cloud.tencent.com/document/api/1093/35646)
+
+	* 新增入参：CustomizationId
+
+
+
+
+## Elasticsearch Service(es) 版本：2018-04-16
+
+### 第 34 次发布
+
+发布时间：2022-09-02 06:30:38
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateInstance](https://cloud.tencent.com/document/api/845/30633)
+
+	* 新增入参：EnableHybridStorage
+
+
+修改数据结构：
+
+* [InstanceInfo](https://cloud.tencent.com/document/api/845/30634#InstanceInfo)
+
+	* 新增成员：EnableHybridStorage
+
+
+
+
+## 电子签服务(ess) 版本：2020-11-11
+
+### 第 16 次发布
+
+发布时间：2022-09-02 06:31:01
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateFlowApprovers](https://cloud.tencent.com/document/api/1323/80033)
+* [DescribeFlowInfo](https://cloud.tencent.com/document/api/1323/80032)
+
+新增数据结构：
+
+* [FillApproverInfo](https://cloud.tencent.com/document/api/1323/70369#FillApproverInfo)
+* [FlowApproverDetail](https://cloud.tencent.com/document/api/1323/70369#FlowApproverDetail)
+* [FlowDetailInfo](https://cloud.tencent.com/document/api/1323/70369#FlowDetailInfo)
+
+修改数据结构：
+
+* [ApproverInfo](https://cloud.tencent.com/document/api/1323/70369#ApproverInfo)
+
+	* 新增成员：UserId, ApproverSource, CustomApproverTag
+
+* [FlowCreateApprover](https://cloud.tencent.com/document/api/1323/70369#FlowCreateApprover)
+
+	* 新增成员：ApproverSource, CustomApproverTag
+
+
+
+
+## 人脸核身(faceid) 版本：2018-03-01
+
+### 第 46 次发布
+
+发布时间：2022-09-02 06:31:36
 
 本次发布包含了以下内容：
 
@@ -12,37 +114,18 @@
 
 修改数据结构：
 
-* [LifecycleCommand](https://cloud.tencent.com/document/api/377/20453#LifecycleCommand)
+* [GetEidTokenConfig](https://cloud.tencent.com/document/api/1007/41958#GetEidTokenConfig)
 
-	* <font color="#dd0000">**修改成员**：</font>Parameters
-
-
-
-
-## 全球应用加速(gaap) 版本：2018-05-29
-
-### 第 36 次发布
-
-发布时间：2022-09-01 06:29:26
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [HTTPSListener](https://cloud.tencent.com/document/api/608/37023#HTTPSListener)
-
-	* 新增成员：Http3Supported
+	* 新增成员：IntentionRecognition
 
 
 
 
-## 容器服务(tke) 版本：2018-05-25
+## 云监控(monitor) 版本：2018-07-24
 
-### 第 120 次发布
+### 第 57 次发布
 
-发布时间：2022-09-01 06:53:50
+发布时间：2022-09-02 06:42:08
 
 本次发布包含了以下内容：
 
@@ -50,18 +133,18 @@
 
 修改数据结构：
 
-* [Cluster](https://cloud.tencent.com/document/api/457/31866#Cluster)
+* [PrometheusInstancesItem](https://cloud.tencent.com/document/api/248/30354#PrometheusInstancesItem)
 
-	* 新增成员：RuntimeVersion
+	* 新增成员：AlertRuleLimit, RecordingRuleLimit
 
 
 
 
 ## T-Sec-安心平台(RP)(trp) 版本：2021-05-15
 
-### 第 3 次发布
+### 第 4 次发布
 
-发布时间：2022-09-01 06:55:12
+发布时间：2022-09-02 07:00:24
 
 本次发布包含了以下内容：
 
@@ -69,56 +152,104 @@
 
 修改接口：
 
-* [CreateTraceData](https://cloud.tencent.com/document/api/1458/75023)
+* [CreateCodeBatch](https://cloud.tencent.com/document/api/1458/75029)
 
-	* 新增入参：Status, PhaseData
+	* 新增入参：CloneId
 
-* [ModifyTraceData](https://cloud.tencent.com/document/api/1458/75003)
 
-	* 新增入参：PhaseData
 
+
+## 视频内容安全(vm) 版本：2021-09-22
+
+### 第 1 次发布
+
+发布时间：2022-09-01 20:31:39
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CancelTask](https://cloud.tencent.com/document/api/1265/80018)
+* [CreateVideoModerationTask](https://cloud.tencent.com/document/api/1265/80017)
+* [DescribeTaskDetail](https://cloud.tencent.com/document/api/1265/80016)
+* [DescribeTasks](https://cloud.tencent.com/document/api/1265/80015)
 
 新增数据结构：
 
-* [PhaseData](https://cloud.tencent.com/document/api/1458/75030#PhaseData)
+* [AudioResult](https://cloud.tencent.com/document/api/1265/80019#AudioResult)
+* [AudioResultDetailLanguageResult](https://cloud.tencent.com/document/api/1265/80019#AudioResultDetailLanguageResult)
+* [AudioResultDetailMoanResult](https://cloud.tencent.com/document/api/1265/80019#AudioResultDetailMoanResult)
+* [AudioResultDetailTextResult](https://cloud.tencent.com/document/api/1265/80019#AudioResultDetailTextResult)
+* [AudioSegments](https://cloud.tencent.com/document/api/1265/80019#AudioSegments)
+* [BucketInfo](https://cloud.tencent.com/document/api/1265/80019#BucketInfo)
+* [ImageResult](https://cloud.tencent.com/document/api/1265/80019#ImageResult)
+* [ImageResultResult](https://cloud.tencent.com/document/api/1265/80019#ImageResultResult)
+* [ImageResultsResultDetail](https://cloud.tencent.com/document/api/1265/80019#ImageResultsResultDetail)
+* [ImageResultsResultDetailLocation](https://cloud.tencent.com/document/api/1265/80019#ImageResultsResultDetailLocation)
+* [ImageSegments](https://cloud.tencent.com/document/api/1265/80019#ImageSegments)
+* [InputInfo](https://cloud.tencent.com/document/api/1265/80019#InputInfo)
+* [MediaInfo](https://cloud.tencent.com/document/api/1265/80019#MediaInfo)
+* [StorageInfo](https://cloud.tencent.com/document/api/1265/80019#StorageInfo)
+* [TaskData](https://cloud.tencent.com/document/api/1265/80019#TaskData)
+* [TaskFilter](https://cloud.tencent.com/document/api/1265/80019#TaskFilter)
+* [TaskInput](https://cloud.tencent.com/document/api/1265/80019#TaskInput)
+* [TaskLabel](https://cloud.tencent.com/document/api/1265/80019#TaskLabel)
+* [TaskResult](https://cloud.tencent.com/document/api/1265/80019#TaskResult)
 
-修改数据结构：
 
-* [TraceItem](https://cloud.tencent.com/document/api/1458/75030#TraceItem)
 
-	* 新增成员：Key
+## 视频内容安全(vm) 版本：2020-12-29
 
+
+
+## 视频内容安全(vm) 版本：2020-07-09
 
 
 
 ## 云点播(vod) 版本：2018-07-17
 
-### 第 117 次发布
+### 第 118 次发布
 
-发布时间：2022-09-01 06:57:37
+发布时间：2022-09-02 07:03:01
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-修改接口：
+修改数据结构：
 
-* [DescribeTaskDetail](https://cloud.tencent.com/document/api/266/33431)
+* [ProductInstance](https://cloud.tencent.com/document/api/266/31773#ProductInstance)
 
-	* 新增出参：ReviewAudioVideoTask
+	* 新增成员：RenewStatus
 
+
+
+
+## Web 应用防火墙(waf) 版本：2018-01-25
+
+### 第 16 次发布
+
+发布时间：2022-09-02 07:06:31
+
+本次发布包含了以下内容：
+
+改善已有的文档。
 
 新增数据结构：
 
-* [ReviewAudioVideoSegmentItem](https://cloud.tencent.com/document/api/266/31773#ReviewAudioVideoSegmentItem)
-* [ReviewAudioVideoTask](https://cloud.tencent.com/document/api/266/31773#ReviewAudioVideoTask)
-* [ReviewAudioVideoTaskOutput](https://cloud.tencent.com/document/api/266/31773#ReviewAudioVideoTaskOutput)
+* [BotQPS](https://cloud.tencent.com/document/api/627/53609#BotQPS)
 
 修改数据结构：
 
-* [EventContent](https://cloud.tencent.com/document/api/266/31773#EventContent)
+* [BotPkg](https://cloud.tencent.com/document/api/627/53609#BotPkg)
 
-	* 新增成员：ReviewAudioVideoCompleteEvent
+	* 新增成员：Type
+
+* [InstanceInfo](https://cloud.tencent.com/document/api/627/53609#InstanceInfo)
+
+	* 新增成员：BotQPS
 
 
 
@@ -3630,6 +3761,25 @@
 
 ## 弹性伸缩(as) 版本：2018-04-19
 
+### 第 57 次发布
+
+发布时间：2022-09-02 06:09:13
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ModifyLifecycleHook](https://cloud.tencent.com/document/api/377/73060)
+
+	* 新增入参：LifecycleCommand
+
+* [UpgradeLifecycleHook](https://cloud.tencent.com/document/api/377/34451)
+
+	* 新增入参：LifecycleCommand
+
+
 ### 第 56 次发布
 
 发布时间：2022-09-01 06:08:45
@@ -4879,6 +5029,21 @@
 
 
 ## 语音识别(asr) 版本：2019-06-14
+
+### 第 20 次发布
+
+发布时间：2022-09-02 06:09:54
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [SentenceRecognition](https://cloud.tencent.com/document/api/1093/35646)
+
+	* 新增入参：CustomizationId
+
 
 ### 第 19 次发布
 
@@ -36806,6 +36971,28 @@
 
 ## Elasticsearch Service(es) 版本：2018-04-16
 
+### 第 34 次发布
+
+发布时间：2022-09-02 06:30:38
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateInstance](https://cloud.tencent.com/document/api/845/30633)
+
+	* 新增入参：EnableHybridStorage
+
+
+修改数据结构：
+
+* [InstanceInfo](https://cloud.tencent.com/document/api/845/30634#InstanceInfo)
+
+	* 新增成员：EnableHybridStorage
+
+
 ### 第 33 次发布
 
 发布时间：2022-08-16 06:24:00
@@ -37583,6 +37770,36 @@
 
 
 ## 电子签服务(ess) 版本：2020-11-11
+
+### 第 16 次发布
+
+发布时间：2022-09-02 06:31:01
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateFlowApprovers](https://cloud.tencent.com/document/api/1323/80033)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeFlowInfo](https://cloud.tencent.com/document/api/1323/80032)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[FillApproverInfo](https://cloud.tencent.com/document/api/1323/70369#FillApproverInfo)](https://cloud.tencent.com/document/api/1323/70369#[FillApproverInfo](https://cloud.tencent.com/document/api/1323/70369#FillApproverInfo))
+* [[FlowApproverDetail](https://cloud.tencent.com/document/api/1323/70369#FlowApproverDetail)](https://cloud.tencent.com/document/api/1323/70369#[FlowApproverDetail](https://cloud.tencent.com/document/api/1323/70369#FlowApproverDetail))
+* [[FlowDetailInfo](https://cloud.tencent.com/document/api/1323/70369#FlowDetailInfo)](https://cloud.tencent.com/document/api/1323/70369#[FlowDetailInfo](https://cloud.tencent.com/document/api/1323/70369#FlowDetailInfo))
+
+修改数据结构：
+
+* [ApproverInfo](https://cloud.tencent.com/document/api/1323/70369#ApproverInfo)
+
+	* 新增成员：UserId, ApproverSource, CustomApproverTag
+
+* [FlowCreateApprover](https://cloud.tencent.com/document/api/1323/70369#FlowCreateApprover)
+
+	* 新增成员：ApproverSource, CustomApproverTag
+
 
 ### 第 15 次发布
 
@@ -38618,6 +38835,21 @@
 
 
 ## 人脸核身(faceid) 版本：2018-03-01
+
+### 第 46 次发布
+
+发布时间：2022-09-02 06:31:36
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [GetEidTokenConfig](https://cloud.tencent.com/document/api/1007/41958#GetEidTokenConfig)
+
+	* 新增成员：IntentionRecognition
+
 
 ### 第 45 次发布
 
@@ -52446,6 +52678,21 @@
 
 
 ## 云监控(monitor) 版本：2018-07-24
+
+### 第 57 次发布
+
+发布时间：2022-09-02 06:42:08
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [PrometheusInstancesItem](https://cloud.tencent.com/document/api/248/30354#PrometheusInstancesItem)
+
+	* 新增成员：AlertRuleLimit, RecordingRuleLimit
+
 
 ### 第 56 次发布
 
@@ -78663,6 +78910,21 @@
 
 ## T-Sec-安心平台(RP)(trp) 版本：2021-05-15
 
+### 第 4 次发布
+
+发布时间：2022-09-02 07:00:24
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateCodeBatch](https://cloud.tencent.com/document/api/1458/75029)
+
+	* 新增入参：CloneId
+
+
 ### 第 3 次发布
 
 发布时间：2022-09-01 06:55:12
@@ -78684,7 +78946,7 @@
 
 新增数据结构：
 
-* [[PhaseData](https://cloud.tencent.com/document/api/1458/75030#PhaseData)](https://cloud.tencent.com/document/api/1458/75030#[PhaseData](https://cloud.tencent.com/document/api/1458/75030#PhaseData))
+* [PhaseData](https://cloud.tencent.com/document/api/1458/75030#PhaseData)
 
 修改数据结构：
 
@@ -82500,6 +82762,47 @@
 
 
 
+## 视频内容安全(vm) 版本：2021-09-22
+
+### 第 1 次发布
+
+发布时间：2022-09-01 20:31:39
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CancelTask](https://cloud.tencent.com/document/api/1265/80018)](https://cloud.tencent.com/document/api/#/#)
+* [[CreateVideoModerationTask](https://cloud.tencent.com/document/api/1265/80017)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeTaskDetail](https://cloud.tencent.com/document/api/1265/80016)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeTasks](https://cloud.tencent.com/document/api/1265/80015)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[AudioResult](https://cloud.tencent.com/document/api/1265/80019#AudioResult)](https://cloud.tencent.com/document/api/1265/80019#[AudioResult](https://cloud.tencent.com/document/api/1265/80019#AudioResult))
+* [[AudioResultDetailLanguageResult](https://cloud.tencent.com/document/api/1265/80019#AudioResultDetailLanguageResult)](https://cloud.tencent.com/document/api/1265/80019#[AudioResultDetailLanguageResult](https://cloud.tencent.com/document/api/1265/80019#AudioResultDetailLanguageResult))
+* [[AudioResultDetailMoanResult](https://cloud.tencent.com/document/api/1265/80019#AudioResultDetailMoanResult)](https://cloud.tencent.com/document/api/1265/80019#[AudioResultDetailMoanResult](https://cloud.tencent.com/document/api/1265/80019#AudioResultDetailMoanResult))
+* [[AudioResultDetailTextResult](https://cloud.tencent.com/document/api/1265/80019#AudioResultDetailTextResult)](https://cloud.tencent.com/document/api/1265/80019#[AudioResultDetailTextResult](https://cloud.tencent.com/document/api/1265/80019#AudioResultDetailTextResult))
+* [[AudioSegments](https://cloud.tencent.com/document/api/1265/80019#AudioSegments)](https://cloud.tencent.com/document/api/1265/80019#[AudioSegments](https://cloud.tencent.com/document/api/1265/80019#AudioSegments))
+* [[BucketInfo](https://cloud.tencent.com/document/api/1265/80019#BucketInfo)](https://cloud.tencent.com/document/api/1265/80019#[BucketInfo](https://cloud.tencent.com/document/api/1265/80019#BucketInfo))
+* [[ImageResult](https://cloud.tencent.com/document/api/1265/80019#ImageResult)](https://cloud.tencent.com/document/api/1265/80019#[ImageResult](https://cloud.tencent.com/document/api/1265/80019#ImageResult))
+* [[ImageResultResult](https://cloud.tencent.com/document/api/1265/80019#ImageResultResult)](https://cloud.tencent.com/document/api/1265/80019#[ImageResultResult](https://cloud.tencent.com/document/api/1265/80019#ImageResultResult))
+* [[ImageResultsResultDetail](https://cloud.tencent.com/document/api/1265/80019#ImageResultsResultDetail)](https://cloud.tencent.com/document/api/1265/80019#[ImageResultsResultDetail](https://cloud.tencent.com/document/api/1265/80019#ImageResultsResultDetail))
+* [[ImageResultsResultDetailLocation](https://cloud.tencent.com/document/api/1265/80019#ImageResultsResultDetailLocation)](https://cloud.tencent.com/document/api/1265/80019#[ImageResultsResultDetailLocation](https://cloud.tencent.com/document/api/1265/80019#ImageResultsResultDetailLocation))
+* [[ImageSegments](https://cloud.tencent.com/document/api/1265/80019#ImageSegments)](https://cloud.tencent.com/document/api/1265/80019#[ImageSegments](https://cloud.tencent.com/document/api/1265/80019#ImageSegments))
+* [[InputInfo](https://cloud.tencent.com/document/api/1265/80019#InputInfo)](https://cloud.tencent.com/document/api/1265/80019#[InputInfo](https://cloud.tencent.com/document/api/1265/80019#InputInfo))
+* [[MediaInfo](https://cloud.tencent.com/document/api/1265/80019#MediaInfo)](https://cloud.tencent.com/document/api/1265/80019#[MediaInfo](https://cloud.tencent.com/document/api/1265/80019#MediaInfo))
+* [[StorageInfo](https://cloud.tencent.com/document/api/1265/80019#StorageInfo)](https://cloud.tencent.com/document/api/1265/80019#[StorageInfo](https://cloud.tencent.com/document/api/1265/80019#StorageInfo))
+* [[TaskData](https://cloud.tencent.com/document/api/1265/80019#TaskData)](https://cloud.tencent.com/document/api/1265/80019#[TaskData](https://cloud.tencent.com/document/api/1265/80019#TaskData))
+* [[TaskFilter](https://cloud.tencent.com/document/api/1265/80019#TaskFilter)](https://cloud.tencent.com/document/api/1265/80019#[TaskFilter](https://cloud.tencent.com/document/api/1265/80019#TaskFilter))
+* [[TaskInput](https://cloud.tencent.com/document/api/1265/80019#TaskInput)](https://cloud.tencent.com/document/api/1265/80019#[TaskInput](https://cloud.tencent.com/document/api/1265/80019#TaskInput))
+* [[TaskLabel](https://cloud.tencent.com/document/api/1265/80019#TaskLabel)](https://cloud.tencent.com/document/api/1265/80019#[TaskLabel](https://cloud.tencent.com/document/api/1265/80019#TaskLabel))
+* [[TaskResult](https://cloud.tencent.com/document/api/1265/80019#TaskResult)](https://cloud.tencent.com/document/api/1265/80019#[TaskResult](https://cloud.tencent.com/document/api/1265/80019#TaskResult))
+
+
+
 
 ## 语音消息(vms) 版本：2020-09-02
 
@@ -82540,6 +82843,21 @@
 
 ## 云点播(vod) 版本：2018-07-17
 
+### 第 118 次发布
+
+发布时间：2022-09-02 07:03:01
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ProductInstance](https://cloud.tencent.com/document/api/266/31773#ProductInstance)
+
+	* 新增成员：RenewStatus
+
+
 ### 第 117 次发布
 
 发布时间：2022-09-01 06:57:37
@@ -82557,9 +82875,9 @@
 
 新增数据结构：
 
-* [[ReviewAudioVideoSegmentItem](https://cloud.tencent.com/document/api/266/31773#ReviewAudioVideoSegmentItem)](https://cloud.tencent.com/document/api/266/31773#[ReviewAudioVideoSegmentItem](https://cloud.tencent.com/document/api/266/31773#ReviewAudioVideoSegmentItem))
-* [[ReviewAudioVideoTask](https://cloud.tencent.com/document/api/266/31773#ReviewAudioVideoTask)](https://cloud.tencent.com/document/api/266/31773#[ReviewAudioVideoTask](https://cloud.tencent.com/document/api/266/31773#ReviewAudioVideoTask))
-* [[ReviewAudioVideoTaskOutput](https://cloud.tencent.com/document/api/266/31773#ReviewAudioVideoTaskOutput)](https://cloud.tencent.com/document/api/266/31773#[ReviewAudioVideoTaskOutput](https://cloud.tencent.com/document/api/266/31773#ReviewAudioVideoTaskOutput))
+* [ReviewAudioVideoSegmentItem](https://cloud.tencent.com/document/api/266/31773#ReviewAudioVideoSegmentItem)
+* [ReviewAudioVideoTask](https://cloud.tencent.com/document/api/266/31773#ReviewAudioVideoTask)
+* [ReviewAudioVideoTaskOutput](https://cloud.tencent.com/document/api/266/31773#ReviewAudioVideoTaskOutput)
 
 修改数据结构：
 
@@ -88620,6 +88938,29 @@
 
 
 ## Web 应用防火墙(waf) 版本：2018-01-25
+
+### 第 16 次发布
+
+发布时间：2022-09-02 07:06:31
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [[BotQPS](https://cloud.tencent.com/document/api/627/53609#BotQPS)](https://cloud.tencent.com/document/api/627/53609#[BotQPS](https://cloud.tencent.com/document/api/627/53609#BotQPS))
+
+修改数据结构：
+
+* [BotPkg](https://cloud.tencent.com/document/api/627/53609#BotPkg)
+
+	* 新增成员：Type
+
+* [InstanceInfo](https://cloud.tencent.com/document/api/627/53609#InstanceInfo)
+
+	* 新增成员：BotQPS
+
 
 ### 第 15 次发布
 

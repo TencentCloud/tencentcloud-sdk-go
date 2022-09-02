@@ -1164,16 +1164,16 @@ type CreateLifecycleHookRequestParams struct {
 	// 生命周期挂钩超时之前可以经过的最长时间（以秒为单位），范围从30到7200秒，默认值为300秒
 	HeartbeatTimeout *int64 `json:"HeartbeatTimeout,omitempty" name:"HeartbeatTimeout"`
 
-	// 弹性伸缩向通知目标发送的附加信息，默认值为空字符串""。最大长度不能超过1024个字节。
+	// 弹性伸缩向通知目标发送的附加信息，配置通知时使用,默认值为空字符串""。最大长度不能超过1024个字节。
 	NotificationMetadata *string `json:"NotificationMetadata,omitempty" name:"NotificationMetadata"`
 
-	// 通知目标
+	// 通知目标。NotificationTarget和LifecycleCommand参数互斥，二者不可同时指定。
 	NotificationTarget *NotificationTarget `json:"NotificationTarget,omitempty" name:"NotificationTarget"`
 
 	// 进行生命周期挂钩的场景类型，取值范围包括NORMAL 和 EXTENSION。说明：设置为EXTENSION值，在AttachInstances、DetachInstances、RemoveInstaces接口时会触发生命周期挂钩操作，值为NORMAL则不会在这些接口中触发生命周期挂钩。
 	LifecycleTransitionType *string `json:"LifecycleTransitionType,omitempty" name:"LifecycleTransitionType"`
 
-	// 远程命令执行对象。NotificationTarget和CommandInfo参数互斥，二者不可同时指定。
+	// 远程命令执行对象。NotificationTarget和LifecycleCommand参数互斥，二者不可同时指定。
 	LifecycleCommand *LifecycleCommand `json:"LifecycleCommand,omitempty" name:"LifecycleCommand"`
 }
 
@@ -1195,16 +1195,16 @@ type CreateLifecycleHookRequest struct {
 	// 生命周期挂钩超时之前可以经过的最长时间（以秒为单位），范围从30到7200秒，默认值为300秒
 	HeartbeatTimeout *int64 `json:"HeartbeatTimeout,omitempty" name:"HeartbeatTimeout"`
 
-	// 弹性伸缩向通知目标发送的附加信息，默认值为空字符串""。最大长度不能超过1024个字节。
+	// 弹性伸缩向通知目标发送的附加信息，配置通知时使用,默认值为空字符串""。最大长度不能超过1024个字节。
 	NotificationMetadata *string `json:"NotificationMetadata,omitempty" name:"NotificationMetadata"`
 
-	// 通知目标
+	// 通知目标。NotificationTarget和LifecycleCommand参数互斥，二者不可同时指定。
 	NotificationTarget *NotificationTarget `json:"NotificationTarget,omitempty" name:"NotificationTarget"`
 
 	// 进行生命周期挂钩的场景类型，取值范围包括NORMAL 和 EXTENSION。说明：设置为EXTENSION值，在AttachInstances、DetachInstances、RemoveInstaces接口时会触发生命周期挂钩操作，值为NORMAL则不会在这些接口中触发生命周期挂钩。
 	LifecycleTransitionType *string `json:"LifecycleTransitionType,omitempty" name:"LifecycleTransitionType"`
 
-	// 远程命令执行对象。NotificationTarget和CommandInfo参数互斥，二者不可同时指定。
+	// 远程命令执行对象。NotificationTarget和LifecycleCommand参数互斥，二者不可同时指定。
 	LifecycleCommand *LifecycleCommand `json:"LifecycleCommand,omitempty" name:"LifecycleCommand"`
 }
 
@@ -3498,7 +3498,7 @@ type LifecycleActionResultInfo struct {
 	// <li>NONE</li>
 	InvokeCommandResult *string `json:"InvokeCommandResult,omitempty" name:"InvokeCommandResult"`
 
-	// 通知的结果，表示通知CMQ/TCMQ是否成功。<br>
+	// 通知的结果，表示通知CMQ/TDMQ是否成功。<br>
 	// <li>SUCCESSFUL 通知成功</li>
 	// <li>FAILED 通知失败</li>
 	// <li>NONE</li>
@@ -4187,6 +4187,9 @@ type ModifyLifecycleHookRequestParams struct {
 
 	// 通知目标信息。
 	NotificationTarget *NotificationTarget `json:"NotificationTarget,omitempty" name:"NotificationTarget"`
+
+	// 远程命令执行对象。
+	LifecycleCommand *LifecycleCommand `json:"LifecycleCommand,omitempty" name:"LifecycleCommand"`
 }
 
 type ModifyLifecycleHookRequest struct {
@@ -4219,6 +4222,9 @@ type ModifyLifecycleHookRequest struct {
 
 	// 通知目标信息。
 	NotificationTarget *NotificationTarget `json:"NotificationTarget,omitempty" name:"NotificationTarget"`
+
+	// 远程命令执行对象。
+	LifecycleCommand *LifecycleCommand `json:"LifecycleCommand,omitempty" name:"LifecycleCommand"`
 }
 
 func (r *ModifyLifecycleHookRequest) ToJsonString() string {
@@ -4241,6 +4247,7 @@ func (r *ModifyLifecycleHookRequest) FromJsonString(s string) error {
 	delete(f, "NotificationMetadata")
 	delete(f, "LifecycleTransitionType")
 	delete(f, "NotificationTarget")
+	delete(f, "LifecycleCommand")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyLifecycleHookRequest has unknown keys!", "")
 	}
@@ -5508,14 +5515,17 @@ type UpgradeLifecycleHookRequestParams struct {
 	// 生命周期挂钩超时之前可以经过的最长时间（以秒为单位），范围从30到7200秒，默认值为300秒
 	HeartbeatTimeout *int64 `json:"HeartbeatTimeout,omitempty" name:"HeartbeatTimeout"`
 
-	// 弹性伸缩向通知目标发送的附加信息，默认值为空字符串""
+	// 弹性伸缩向通知目标发送的附加信息，配置通知时使用，默认值为空字符串""
 	NotificationMetadata *string `json:"NotificationMetadata,omitempty" name:"NotificationMetadata"`
 
-	// 通知目标
+	// 通知目标。NotificationTarget和LifecycleCommand参数互斥，二者不可同时指定。
 	NotificationTarget *NotificationTarget `json:"NotificationTarget,omitempty" name:"NotificationTarget"`
 
 	// 进行生命周期挂钩的场景类型，取值范围包括NORMAL 和 EXTENSION。说明：设置为EXTENSION值，在AttachInstances、DetachInstances、RemoveInstaces接口时会触发生命周期挂钩操作，值为NORMAL则不会在这些接口中触发生命周期挂钩。
 	LifecycleTransitionType *string `json:"LifecycleTransitionType,omitempty" name:"LifecycleTransitionType"`
+
+	// 远程命令执行对象。NotificationTarget和LifecycleCommand参数互斥，二者不可同时指定。
+	LifecycleCommand *LifecycleCommand `json:"LifecycleCommand,omitempty" name:"LifecycleCommand"`
 }
 
 type UpgradeLifecycleHookRequest struct {
@@ -5536,14 +5546,17 @@ type UpgradeLifecycleHookRequest struct {
 	// 生命周期挂钩超时之前可以经过的最长时间（以秒为单位），范围从30到7200秒，默认值为300秒
 	HeartbeatTimeout *int64 `json:"HeartbeatTimeout,omitempty" name:"HeartbeatTimeout"`
 
-	// 弹性伸缩向通知目标发送的附加信息，默认值为空字符串""
+	// 弹性伸缩向通知目标发送的附加信息，配置通知时使用，默认值为空字符串""
 	NotificationMetadata *string `json:"NotificationMetadata,omitempty" name:"NotificationMetadata"`
 
-	// 通知目标
+	// 通知目标。NotificationTarget和LifecycleCommand参数互斥，二者不可同时指定。
 	NotificationTarget *NotificationTarget `json:"NotificationTarget,omitempty" name:"NotificationTarget"`
 
 	// 进行生命周期挂钩的场景类型，取值范围包括NORMAL 和 EXTENSION。说明：设置为EXTENSION值，在AttachInstances、DetachInstances、RemoveInstaces接口时会触发生命周期挂钩操作，值为NORMAL则不会在这些接口中触发生命周期挂钩。
 	LifecycleTransitionType *string `json:"LifecycleTransitionType,omitempty" name:"LifecycleTransitionType"`
+
+	// 远程命令执行对象。NotificationTarget和LifecycleCommand参数互斥，二者不可同时指定。
+	LifecycleCommand *LifecycleCommand `json:"LifecycleCommand,omitempty" name:"LifecycleCommand"`
 }
 
 func (r *UpgradeLifecycleHookRequest) ToJsonString() string {
@@ -5566,6 +5579,7 @@ func (r *UpgradeLifecycleHookRequest) FromJsonString(s string) error {
 	delete(f, "NotificationMetadata")
 	delete(f, "NotificationTarget")
 	delete(f, "LifecycleTransitionType")
+	delete(f, "LifecycleCommand")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpgradeLifecycleHookRequest has unknown keys!", "")
 	}

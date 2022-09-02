@@ -1208,11 +1208,15 @@ func NewCreateLiveSnapshotTemplateResponse() (response *CreateLiveSnapshotTempla
 }
 
 // CreateLiveSnapshotTemplate
-// 创建截图模板，成功返回模板id后，需要调用[CreateLiveSnapshotRule](/document/product/267/32625)接口，将模板id绑定到流使用。
+// 创建截图模板，数量上限：50，成功返回模板id后，需要调用[CreateLiveSnapshotRule](/document/product/267/32625)接口，将模板id绑定到流使用。
 //
 // <br>截图相关文档：[直播截图](/document/product/267/32737)。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_CALLOTHERSVRFAILED = "FailedOperation.CallOtherSvrFailed"
+//  FAILEDOPERATION_COSBUCKETNOTEXIST = "FailedOperation.CosBucketNotExist"
+//  FAILEDOPERATION_COSBUCKETNOTPERMISSION = "FailedOperation.CosBucketNotPermission"
+//  FAILEDOPERATION_COSROLENOTEXISTS = "FailedOperation.CosRoleNotExists"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_ARGSNOTMATCH = "InternalError.ArgsNotMatch"
 //  INTERNALERROR_CONFINUSED = "InternalError.ConfInUsed"
@@ -1237,11 +1241,15 @@ func (c *Client) CreateLiveSnapshotTemplate(request *CreateLiveSnapshotTemplateR
 }
 
 // CreateLiveSnapshotTemplate
-// 创建截图模板，成功返回模板id后，需要调用[CreateLiveSnapshotRule](/document/product/267/32625)接口，将模板id绑定到流使用。
+// 创建截图模板，数量上限：50，成功返回模板id后，需要调用[CreateLiveSnapshotRule](/document/product/267/32625)接口，将模板id绑定到流使用。
 //
 // <br>截图相关文档：[直播截图](/document/product/267/32737)。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_CALLOTHERSVRFAILED = "FailedOperation.CallOtherSvrFailed"
+//  FAILEDOPERATION_COSBUCKETNOTEXIST = "FailedOperation.CosBucketNotExist"
+//  FAILEDOPERATION_COSBUCKETNOTPERMISSION = "FailedOperation.CosBucketNotPermission"
+//  FAILEDOPERATION_COSROLENOTEXISTS = "FailedOperation.CosRoleNotExists"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_ARGSNOTMATCH = "InternalError.ArgsNotMatch"
 //  INTERNALERROR_CONFINUSED = "InternalError.ConfInUsed"
@@ -8367,6 +8375,10 @@ func NewModifyLiveSnapshotTemplateResponse() (response *ModifyLiveSnapshotTempla
 // 修改截图模板配置。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_CALLOTHERSVRFAILED = "FailedOperation.CallOtherSvrFailed"
+//  FAILEDOPERATION_COSBUCKETNOTEXIST = "FailedOperation.CosBucketNotExist"
+//  FAILEDOPERATION_COSBUCKETNOTPERMISSION = "FailedOperation.CosBucketNotPermission"
+//  FAILEDOPERATION_COSROLENOTEXISTS = "FailedOperation.CosRoleNotExists"
 //  FAILEDOPERATION_NOTFOUND = "FailedOperation.NotFound"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_ARGSNOTMATCH = "InternalError.ArgsNotMatch"
@@ -8394,6 +8406,10 @@ func (c *Client) ModifyLiveSnapshotTemplate(request *ModifyLiveSnapshotTemplateR
 // 修改截图模板配置。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_CALLOTHERSVRFAILED = "FailedOperation.CallOtherSvrFailed"
+//  FAILEDOPERATION_COSBUCKETNOTEXIST = "FailedOperation.CosBucketNotExist"
+//  FAILEDOPERATION_COSBUCKETNOTPERMISSION = "FailedOperation.CosBucketNotPermission"
+//  FAILEDOPERATION_COSROLENOTEXISTS = "FailedOperation.CosRoleNotExists"
 //  FAILEDOPERATION_NOTFOUND = "FailedOperation.NotFound"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_ARGSNOTMATCH = "InternalError.ArgsNotMatch"

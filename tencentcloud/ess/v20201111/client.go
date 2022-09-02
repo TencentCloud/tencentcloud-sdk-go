@@ -629,6 +629,204 @@ func (c *Client) CreateFlowWithContext(ctx context.Context, request *CreateFlowR
     return
 }
 
+func NewCreateFlowApproversRequest() (request *CreateFlowApproversRequest) {
+    request = &CreateFlowApproversRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ess", APIVersion, "CreateFlowApprovers")
+    
+    
+    return
+}
+
+func NewCreateFlowApproversResponse() (response *CreateFlowApproversResponse) {
+    response = &CreateFlowApproversResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateFlowApprovers
+// 补充签署流程本企业签署人信息
+//
+// 适用场景：在通过模版或者文件发起合同时，若未指定本企业签署人信息，则流程发起后，可以调用此接口补充签署人。
+//
+// 同一签署人可以补充多个员工作为候选签署人,最终签署人取决于谁先领取合同完成签署。
+//
+// 
+//
+// 注：目前暂时只支持补充来源于企业微信的员工作为候选签署人
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_AGENOTACHIEVENORMALLEGAL = "FailedOperation.AgeNotAchieveNormalLegal"
+//  FAILEDOPERATION_FLOWHASDOCUMENT = "FailedOperation.FlowHasDocument"
+//  FAILEDOPERATION_ORGANIZATIONEXPERIENCECHANGE = "FailedOperation.OrganizationExperienceChange"
+//  FAILEDOPERATION_ORGANIZATIONNAMECHANGED = "FailedOperation.OrganizationNameChanged"
+//  FAILEDOPERATION_ORGANIZATIONNAMENEEDCHANGE = "FailedOperation.OrganizationNameNeedChange"
+//  FAILEDOPERATION_REQUESTLIMITEXCEEDED = "FailedOperation.RequestLimitExceeded"
+//  FAILEDOPERATION_USERINFONOMATCH = "FailedOperation.UserInfoNoMatch"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_DBREAD = "InternalError.DbRead"
+//  INTERNALERROR_DECRYPTION = "InternalError.Decryption"
+//  INTERNALERROR_DEPENDSAPI = "InternalError.DependsApi"
+//  INTERNALERROR_DEPENDSDB = "InternalError.DependsDb"
+//  INTERNALERROR_ENCRYPTION = "InternalError.Encryption"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETER_APPROVERTYPE = "InvalidParameter.ApproverType"
+//  INVALIDPARAMETER_CARDNUMBER = "InvalidParameter.CardNumber"
+//  INVALIDPARAMETER_CARDTYPE = "InvalidParameter.CardType"
+//  INVALIDPARAMETER_CCNUM = "InvalidParameter.CcNum"
+//  INVALIDPARAMETER_CLIENTTOKEN = "InvalidParameter.ClientToken"
+//  INVALIDPARAMETER_FLOWCALLBACKURL = "InvalidParameter.FlowCallbackUrl"
+//  INVALIDPARAMETER_FLOWDEADLINE = "InvalidParameter.FlowDeadLine"
+//  INVALIDPARAMETER_FLOWDESCRIPTION = "InvalidParameter.FlowDescription"
+//  INVALIDPARAMETER_FLOWNAME = "InvalidParameter.FlowName"
+//  INVALIDPARAMETER_FLOWTYPE = "InvalidParameter.FlowType"
+//  INVALIDPARAMETER_FLOWUSERDATA = "InvalidParameter.FlowUserData"
+//  INVALIDPARAMETER_FROMSOURCE = "InvalidParameter.FromSource"
+//  INVALIDPARAMETER_IDCARDVALIDITYOVERLIMIT = "InvalidParameter.IdCardValidityOverLimit"
+//  INVALIDPARAMETER_INVALIDMOBILE = "InvalidParameter.InvalidMobile"
+//  INVALIDPARAMETER_INVALIDNAME = "InvalidParameter.InvalidName"
+//  INVALIDPARAMETER_MOBILE = "InvalidParameter.Mobile"
+//  INVALIDPARAMETER_NAME = "InvalidParameter.Name"
+//  INVALIDPARAMETER_NOTIFYTYPE = "InvalidParameter.NotifyType"
+//  INVALIDPARAMETER_ORGANIZATIONNAME = "InvalidParameter.OrganizationName"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETER_PERSONAUTOSIGNTAG = "InvalidParameter.PersonAutoSignTag"
+//  INVALIDPARAMETER_PREREADTIME = "InvalidParameter.PreReadTime"
+//  INVALIDPARAMETERVALUE_MASK = "InvalidParameterValue.Mask"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER_APPROVERMOBILE = "MissingParameter.ApproverMobile"
+//  MISSINGPARAMETER_APPROVERNAME = "MissingParameter.ApproverName"
+//  MISSINGPARAMETER_APPROVERORGANIZATIONINFO = "MissingParameter.ApproverOrganizationInfo"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_APPROVERREPEAT = "OperationDenied.ApproverRepeat"
+//  OPERATIONDENIED_BRANCHSENDFLOWTOPARENTNOTALLOW = "OperationDenied.BranchSendFlowToParentNotAllow"
+//  OPERATIONDENIED_CCFORBID = "OperationDenied.CcForbid"
+//  OPERATIONDENIED_CCUSERREPEAT = "OperationDenied.CcUserRepeat"
+//  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
+//  OPERATIONDENIED_NOIDENTITYVERIFY = "OperationDenied.NoIdentityVerify"
+//  OPERATIONDENIED_NOLOGIN = "OperationDenied.NoLogin"
+//  OPERATIONDENIED_NOOPENSERVERSIGN = "OperationDenied.NoOpenServerSign"
+//  OPERATIONDENIED_NOQUOTA = "OperationDenied.NoQuota"
+//  OPERATIONDENIED_ORGUNIFORMSOCIALCREDITCODEERR = "OperationDenied.OrgUniformSocialCreditCodeErr"
+//  OPERATIONDENIED_ORGANIZATIONNOTACTIVATED = "OperationDenied.OrganizationNotActivated"
+//  OPERATIONDENIED_OUTQUERYLIMIT = "OperationDenied.OutQueryLimit"
+//  OPERATIONDENIED_OVERSEAFORBID = "OperationDenied.OverSeaForbid"
+//  OPERATIONDENIED_PERSONHASNOSIGNATURE = "OperationDenied.PersonHasNoSignature"
+//  OPERATIONDENIED_PERSONNOOPENSERVERSIGN = "OperationDenied.PersonNoOpenServerSign"
+//  OPERATIONDENIED_WHITELISTFORBID = "OperationDenied.WhiteListForbid"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_APPLICATION = "ResourceNotFound.Application"
+//  RESOURCENOTFOUND_AUTHACTIVEORGANIZATION = "ResourceNotFound.AuthActiveOrganization"
+//  RESOURCENOTFOUND_FLOWAPPROVER = "ResourceNotFound.FlowApprover"
+//  RESOURCENOTFOUND_ORGANIZATION = "ResourceNotFound.Organization"
+//  RESOURCENOTFOUND_SUPERADMIN = "ResourceNotFound.SuperAdmin"
+//  RESOURCENOTFOUND_USER = "ResourceNotFound.User"
+//  RESOURCENOTFOUND_VERIFYUSER = "ResourceNotFound.VerifyUser"
+func (c *Client) CreateFlowApprovers(request *CreateFlowApproversRequest) (response *CreateFlowApproversResponse, err error) {
+    return c.CreateFlowApproversWithContext(context.Background(), request)
+}
+
+// CreateFlowApprovers
+// 补充签署流程本企业签署人信息
+//
+// 适用场景：在通过模版或者文件发起合同时，若未指定本企业签署人信息，则流程发起后，可以调用此接口补充签署人。
+//
+// 同一签署人可以补充多个员工作为候选签署人,最终签署人取决于谁先领取合同完成签署。
+//
+// 
+//
+// 注：目前暂时只支持补充来源于企业微信的员工作为候选签署人
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_AGENOTACHIEVENORMALLEGAL = "FailedOperation.AgeNotAchieveNormalLegal"
+//  FAILEDOPERATION_FLOWHASDOCUMENT = "FailedOperation.FlowHasDocument"
+//  FAILEDOPERATION_ORGANIZATIONEXPERIENCECHANGE = "FailedOperation.OrganizationExperienceChange"
+//  FAILEDOPERATION_ORGANIZATIONNAMECHANGED = "FailedOperation.OrganizationNameChanged"
+//  FAILEDOPERATION_ORGANIZATIONNAMENEEDCHANGE = "FailedOperation.OrganizationNameNeedChange"
+//  FAILEDOPERATION_REQUESTLIMITEXCEEDED = "FailedOperation.RequestLimitExceeded"
+//  FAILEDOPERATION_USERINFONOMATCH = "FailedOperation.UserInfoNoMatch"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_DBREAD = "InternalError.DbRead"
+//  INTERNALERROR_DECRYPTION = "InternalError.Decryption"
+//  INTERNALERROR_DEPENDSAPI = "InternalError.DependsApi"
+//  INTERNALERROR_DEPENDSDB = "InternalError.DependsDb"
+//  INTERNALERROR_ENCRYPTION = "InternalError.Encryption"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETER_APPROVERTYPE = "InvalidParameter.ApproverType"
+//  INVALIDPARAMETER_CARDNUMBER = "InvalidParameter.CardNumber"
+//  INVALIDPARAMETER_CARDTYPE = "InvalidParameter.CardType"
+//  INVALIDPARAMETER_CCNUM = "InvalidParameter.CcNum"
+//  INVALIDPARAMETER_CLIENTTOKEN = "InvalidParameter.ClientToken"
+//  INVALIDPARAMETER_FLOWCALLBACKURL = "InvalidParameter.FlowCallbackUrl"
+//  INVALIDPARAMETER_FLOWDEADLINE = "InvalidParameter.FlowDeadLine"
+//  INVALIDPARAMETER_FLOWDESCRIPTION = "InvalidParameter.FlowDescription"
+//  INVALIDPARAMETER_FLOWNAME = "InvalidParameter.FlowName"
+//  INVALIDPARAMETER_FLOWTYPE = "InvalidParameter.FlowType"
+//  INVALIDPARAMETER_FLOWUSERDATA = "InvalidParameter.FlowUserData"
+//  INVALIDPARAMETER_FROMSOURCE = "InvalidParameter.FromSource"
+//  INVALIDPARAMETER_IDCARDVALIDITYOVERLIMIT = "InvalidParameter.IdCardValidityOverLimit"
+//  INVALIDPARAMETER_INVALIDMOBILE = "InvalidParameter.InvalidMobile"
+//  INVALIDPARAMETER_INVALIDNAME = "InvalidParameter.InvalidName"
+//  INVALIDPARAMETER_MOBILE = "InvalidParameter.Mobile"
+//  INVALIDPARAMETER_NAME = "InvalidParameter.Name"
+//  INVALIDPARAMETER_NOTIFYTYPE = "InvalidParameter.NotifyType"
+//  INVALIDPARAMETER_ORGANIZATIONNAME = "InvalidParameter.OrganizationName"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETER_PERSONAUTOSIGNTAG = "InvalidParameter.PersonAutoSignTag"
+//  INVALIDPARAMETER_PREREADTIME = "InvalidParameter.PreReadTime"
+//  INVALIDPARAMETERVALUE_MASK = "InvalidParameterValue.Mask"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER_APPROVERMOBILE = "MissingParameter.ApproverMobile"
+//  MISSINGPARAMETER_APPROVERNAME = "MissingParameter.ApproverName"
+//  MISSINGPARAMETER_APPROVERORGANIZATIONINFO = "MissingParameter.ApproverOrganizationInfo"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_APPROVERREPEAT = "OperationDenied.ApproverRepeat"
+//  OPERATIONDENIED_BRANCHSENDFLOWTOPARENTNOTALLOW = "OperationDenied.BranchSendFlowToParentNotAllow"
+//  OPERATIONDENIED_CCFORBID = "OperationDenied.CcForbid"
+//  OPERATIONDENIED_CCUSERREPEAT = "OperationDenied.CcUserRepeat"
+//  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
+//  OPERATIONDENIED_NOIDENTITYVERIFY = "OperationDenied.NoIdentityVerify"
+//  OPERATIONDENIED_NOLOGIN = "OperationDenied.NoLogin"
+//  OPERATIONDENIED_NOOPENSERVERSIGN = "OperationDenied.NoOpenServerSign"
+//  OPERATIONDENIED_NOQUOTA = "OperationDenied.NoQuota"
+//  OPERATIONDENIED_ORGUNIFORMSOCIALCREDITCODEERR = "OperationDenied.OrgUniformSocialCreditCodeErr"
+//  OPERATIONDENIED_ORGANIZATIONNOTACTIVATED = "OperationDenied.OrganizationNotActivated"
+//  OPERATIONDENIED_OUTQUERYLIMIT = "OperationDenied.OutQueryLimit"
+//  OPERATIONDENIED_OVERSEAFORBID = "OperationDenied.OverSeaForbid"
+//  OPERATIONDENIED_PERSONHASNOSIGNATURE = "OperationDenied.PersonHasNoSignature"
+//  OPERATIONDENIED_PERSONNOOPENSERVERSIGN = "OperationDenied.PersonNoOpenServerSign"
+//  OPERATIONDENIED_WHITELISTFORBID = "OperationDenied.WhiteListForbid"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_APPLICATION = "ResourceNotFound.Application"
+//  RESOURCENOTFOUND_AUTHACTIVEORGANIZATION = "ResourceNotFound.AuthActiveOrganization"
+//  RESOURCENOTFOUND_FLOWAPPROVER = "ResourceNotFound.FlowApprover"
+//  RESOURCENOTFOUND_ORGANIZATION = "ResourceNotFound.Organization"
+//  RESOURCENOTFOUND_SUPERADMIN = "ResourceNotFound.SuperAdmin"
+//  RESOURCENOTFOUND_USER = "ResourceNotFound.User"
+//  RESOURCENOTFOUND_VERIFYUSER = "ResourceNotFound.VerifyUser"
+func (c *Client) CreateFlowApproversWithContext(ctx context.Context, request *CreateFlowApproversRequest) (response *CreateFlowApproversResponse, err error) {
+    if request == nil {
+        request = NewCreateFlowApproversRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateFlowApprovers require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateFlowApproversResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateFlowByFilesRequest() (request *CreateFlowByFilesRequest) {
     request = &CreateFlowByFilesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1521,6 +1719,60 @@ func (c *Client) DescribeFlowBriefsWithContext(ctx context.Context, request *Des
     request.SetContext(ctx)
     
     response = NewDescribeFlowBriefsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeFlowInfoRequest() (request *DescribeFlowInfoRequest) {
+    request = &DescribeFlowInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ess", APIVersion, "DescribeFlowInfo")
+    
+    
+    return
+}
+
+func NewDescribeFlowInfoResponse() (response *DescribeFlowInfoResponse) {
+    response = &DescribeFlowInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeFlowInfo
+// 查询合同详情
+//
+// 适用场景：可用于主动查询某个合同详情信息。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeFlowInfo(request *DescribeFlowInfoRequest) (response *DescribeFlowInfoResponse, err error) {
+    return c.DescribeFlowInfoWithContext(context.Background(), request)
+}
+
+// DescribeFlowInfo
+// 查询合同详情
+//
+// 适用场景：可用于主动查询某个合同详情信息。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeFlowInfoWithContext(ctx context.Context, request *DescribeFlowInfoRequest) (response *DescribeFlowInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeFlowInfoRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeFlowInfo require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeFlowInfoResponse()
     err = c.Send(request, response)
     return
 }
