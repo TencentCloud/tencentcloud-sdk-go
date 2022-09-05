@@ -12801,6 +12801,93 @@ func (r *DescribeTenantCcnsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeTrafficPackagesRequestParams struct {
+	// 共享流量包ID，支持批量
+	TrafficPackageIds []*string `json:"TrafficPackageIds,omitempty" name:"TrafficPackageIds"`
+
+	// 每次请求的`Filters`的上限为10。参数不支持同时指定`TrafficPackageIds`和`Filters`。详细的过滤条件如下：
+	// <li> traffic-package_id - String - 是否必填：否 - （过滤条件）按照共享流量包的唯一标识ID过滤。</li>
+	// <li> traffic-package-name - String - 是否必填：否 - （过滤条件）按照共享流量包名称过滤。不支持模糊过滤。</li>
+	// <li> status - String - 是否必填：否 - （过滤条件）按照共享流量包状态过滤。可选状态：[AVAILABLE|EXPIRED|EXHAUSTED]</li>
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 分页参数
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 分页参数
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+type DescribeTrafficPackagesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 共享流量包ID，支持批量
+	TrafficPackageIds []*string `json:"TrafficPackageIds,omitempty" name:"TrafficPackageIds"`
+
+	// 每次请求的`Filters`的上限为10。参数不支持同时指定`TrafficPackageIds`和`Filters`。详细的过滤条件如下：
+	// <li> traffic-package_id - String - 是否必填：否 - （过滤条件）按照共享流量包的唯一标识ID过滤。</li>
+	// <li> traffic-package-name - String - 是否必填：否 - （过滤条件）按照共享流量包名称过滤。不支持模糊过滤。</li>
+	// <li> status - String - 是否必填：否 - （过滤条件）按照共享流量包状态过滤。可选状态：[AVAILABLE|EXPIRED|EXHAUSTED]</li>
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 分页参数
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 分页参数
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribeTrafficPackagesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTrafficPackagesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TrafficPackageIds")
+	delete(f, "Filters")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTrafficPackagesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeTrafficPackagesResponseParams struct {
+	// 按照条件查询出来的流量包数量
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 流量包信息
+	TrafficPackageSet []*TrafficPackage `json:"TrafficPackageSet,omitempty" name:"TrafficPackageSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeTrafficPackagesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeTrafficPackagesResponseParams `json:"Response"`
+}
+
+func (r *DescribeTrafficPackagesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTrafficPackagesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeVpcEndPointRequestParams struct {
 	// 过滤条件。
 	// <li> end-point-service-id- String - （过滤条件）终端节点服务ID。</li>
@@ -22543,6 +22630,40 @@ type TemplateLimit struct {
 
 	// 参数模板协议端口组成员配额。
 	ServiceTemplateGroupMemberLimit *uint64 `json:"ServiceTemplateGroupMemberLimit,omitempty" name:"ServiceTemplateGroupMemberLimit"`
+}
+
+type TrafficPackage struct {
+	// 流量包唯一ID
+	TrafficPackageId *string `json:"TrafficPackageId,omitempty" name:"TrafficPackageId"`
+
+	// 流量包名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TrafficPackageName *string `json:"TrafficPackageName,omitempty" name:"TrafficPackageName"`
+
+	// 流量包总量，单位GB
+	TotalAmount *float64 `json:"TotalAmount,omitempty" name:"TotalAmount"`
+
+	// 流量包剩余量，单位GB
+	RemainingAmount *float64 `json:"RemainingAmount,omitempty" name:"RemainingAmount"`
+
+	// 流量包状态，可能的值有: AVAILABLE-可用状态， EXPIRED-已过期， EXHAUSTED-已用完， REFUNDED-已退还， DELETED-已删除
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 流量包创建时间
+	CreatedTime *string `json:"CreatedTime,omitempty" name:"CreatedTime"`
+
+	// 流量包截止时间
+	Deadline *string `json:"Deadline,omitempty" name:"Deadline"`
+
+	// 已使用的流量，单位GB
+	UsedAmount *float64 `json:"UsedAmount,omitempty" name:"UsedAmount"`
+
+	// 流量包标签
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TagSet []*Tag `json:"TagSet,omitempty" name:"TagSet"`
+
+	// 区分闲时流量包与全时流量包
+	DeductType *string `json:"DeductType,omitempty" name:"DeductType"`
 }
 
 // Predefined struct for user

@@ -35,65 +35,81 @@ type ACLCondition struct {
 }
 
 type ACLUserRule struct {
-	// 规则名
+	// 规则名。
 	RuleName *string `json:"RuleName,omitempty" name:"RuleName"`
 
-	// 动作
+	// 处罚动作。
+	// 1. trans 放行
+	// 2. drop 拦截
+	// 3. monitor 观察
+	// 4. ban IP封禁
+	// 5. redirect 重定向
+	// 6. page 指定页面
+	// 7. alg Javascript挑战
 	Action *string `json:"Action,omitempty" name:"Action"`
 
-	// 状态
+	// 规则状态。
+	// 1. on 规则生效
+	// 2. off 规则失效
 	RuleStatus *string `json:"RuleStatus,omitempty" name:"RuleStatus"`
 
-	// ACL规则
+	// ACL规则。
 	Conditions []*ACLCondition `json:"Conditions,omitempty" name:"Conditions"`
 
-	// 规则优先级
+	// 规则优先级，0-100。
 	RulePriority *int64 `json:"RulePriority,omitempty" name:"RulePriority"`
 
-	// 规则id
+	// 规则id。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RuleID *int64 `json:"RuleID,omitempty" name:"RuleID"`
 
-	// 更新时间
+	// 更新时间。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
 
-	// ip封禁的惩罚时间
+	// ip封禁的惩罚时间，0-2天
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PunishTime *int64 `json:"PunishTime,omitempty" name:"PunishTime"`
 
-	// ip封禁的惩罚时间单位
+	// ip封禁的惩罚时间单位。
+	// 1. second 秒
+	// 2. 分钟 minutes
+	// 3. hour 小时
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PunishTimeUnit *string `json:"PunishTimeUnit,omitempty" name:"PunishTimeUnit"`
 
-	// 自定义返回页面的名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Name *string `json:"Name,omitempty" name:"Name"`
-
-	// 自定义返回页面的实例id
+	// 自定义返回页面的实例id。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PageId *int64 `json:"PageId,omitempty" name:"PageId"`
 
-	// 重定向时候的地址，必须为本用户接入的站点子域名
+	// 自定义返回页面的名称。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 重定向时候的地址，必须为本用户接入的站点子域名。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RedirectUrl *string `json:"RedirectUrl,omitempty" name:"RedirectUrl"`
 
-	// 重定向时候的返回码
+	// 重定向时候的返回码。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResponseCode *int64 `json:"ResponseCode,omitempty" name:"ResponseCode"`
 }
 
 type AclConfig struct {
-	// 开关
+	// 开关。
+	// 1. on 开启
+	// 2. off 关闭
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
 
-	// ACL用户规则
+	// 自定义-用户规则。
 	UserRules []*ACLUserRule `json:"UserRules,omitempty" name:"UserRules"`
 }
 
 type AiRule struct {
-	// smart_status_close-关闭；smart_status_open-拦截处置；
-	// smart_status_observe-观察处置
+	// AI规则引擎状态，取值有：
+	// <li> smart_status_close：关闭；</li>
+	// <li> smart_status_open：拦截处置；</li>
+	// <li> smart_status_observe：观察处置。</li>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Mode *string `json:"Mode,omitempty" name:"Mode"`
 }
@@ -229,22 +245,24 @@ type ApplicationProxyRule struct {
 }
 
 type BotConfig struct {
-	// bot开关
+	// 开关。
+	// 1. on 开启
+	// 2. off 关闭
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
 
-	// 预置规则
+	// 通用详细基础规则。
 	ManagedRule *BotManagedRule `json:"ManagedRule,omitempty" name:"ManagedRule"`
 
-	// 保留
+	// ua基础规则。
 	UaBotRule *BotManagedRule `json:"UaBotRule,omitempty" name:"UaBotRule"`
 
-	// 保留
+	// isp基础规则。
 	IspBotRule *BotManagedRule `json:"IspBotRule,omitempty" name:"IspBotRule"`
 
-	// 用户画像规则
+	// 用户画像规则。
 	PortraitRule *BotPortraitRule `json:"PortraitRule,omitempty" name:"PortraitRule"`
 
-	// Bot智能分析
+	// Bot智能分析。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IntelligenceRule *IntelligenceRule `json:"IntelligenceRule,omitempty" name:"IntelligenceRule"`
 }
@@ -341,59 +359,63 @@ type BotLogData struct {
 }
 
 type BotManagedRule struct {
-	// 想开启的规则id
+	// 本规则的ID。
+	RuleID *int64 `json:"RuleID,omitempty" name:"RuleID"`
+
+	// 老版本的通用规则ID。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ManagedIds []*int64 `json:"ManagedIds,omitempty" name:"ManagedIds"`
 
-	// 本规则的id
-	RuleID *int64 `json:"RuleID,omitempty" name:"RuleID"`
-
-	// drop/trans/monitor/alg
+	// 触发规则后的处置方式。
+	// 1. drop 拦截
+	// 2. trans 放行
+	// 3. monitor 观察
+	// 4. alg Javascript挑战
 	Action *string `json:"Action,omitempty" name:"Action"`
 
-	// ip封禁的惩罚时间
+	// 封禁的惩罚时间。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PunishTime *int64 `json:"PunishTime,omitempty" name:"PunishTime"`
 
-	// 单位
+	// 封禁的惩罚时间单位。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PunishTimeUnit *string `json:"PunishTimeUnit,omitempty" name:"PunishTimeUnit"`
 
-	// 自定义返回页面的名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Name *string `json:"Name,omitempty" name:"Name"`
-
-	// 自定义返回页面的实例id
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	PageId *int64 `json:"PageId,omitempty" name:"PageId"`
-
-	// 重定向时候的地址，必须为本用户接入的站点子域名，使用URLENCODE
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	RedirectUrl *string `json:"RedirectUrl,omitempty" name:"RedirectUrl"`
-
-	// 重定向时候的返回码
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	ResponseCode *int64 `json:"ResponseCode,omitempty" name:"ResponseCode"`
-
-	// 放行的规则ID
+	// 放行的规则ID。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TransManagedIds []*int64 `json:"TransManagedIds,omitempty" name:"TransManagedIds"`
 
-	// JS挑战的规则ID
+	// JS挑战的规则ID。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AlgManagedIds []*int64 `json:"AlgManagedIds,omitempty" name:"AlgManagedIds"`
 
-	// 数字验证码的规则ID
+	// 数字验证码的规则ID。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CapManagedIds []*int64 `json:"CapManagedIds,omitempty" name:"CapManagedIds"`
 
-	// 观察的规则ID
+	// 观察的规则ID。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MonManagedIds []*int64 `json:"MonManagedIds,omitempty" name:"MonManagedIds"`
 
-	// 拦截的规则ID
+	// 拦截的规则ID。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DropManagedIds []*int64 `json:"DropManagedIds,omitempty" name:"DropManagedIds"`
+
+	// 自定义返回页面的实例id。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PageId *int64 `json:"PageId,omitempty" name:"PageId"`
+
+	// 自定义返回页面的名称。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 重定向时候的地址，必须为本用户接入的站点子域名，使用URLENCODE。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RedirectUrl *string `json:"RedirectUrl,omitempty" name:"RedirectUrl"`
+
+	// 重定向时候的返回码。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResponseCode *int64 `json:"ResponseCode,omitempty" name:"ResponseCode"`
 }
 
 type BotManagedRuleDetail struct {
@@ -411,29 +433,39 @@ type BotManagedRuleDetail struct {
 }
 
 type BotPortraitRule struct {
-	// 本规则的id
+	// 本功能的开关。
+	// 1. on 开启
+	// 2. off 关闭
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
+
+	// 本规则的ID。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RuleID *int64 `json:"RuleID,omitempty" name:"RuleID"`
 
-	// JS挑战的规则ID
+	// JS挑战的规则ID。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AlgManagedIds []*int64 `json:"AlgManagedIds,omitempty" name:"AlgManagedIds"`
 
-	// 数字验证码的规则ID
+	// 数字验证码的规则ID。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CapManagedIds []*int64 `json:"CapManagedIds,omitempty" name:"CapManagedIds"`
 
-	// 观察的规则ID
+	// 观察的规则ID。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MonManagedIds []*int64 `json:"MonManagedIds,omitempty" name:"MonManagedIds"`
 
-	// 拦截的规则ID
+	// 拦截的规则ID。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DropManagedIds []*int64 `json:"DropManagedIds,omitempty" name:"DropManagedIds"`
 
-	// 本功能的开关
+	// 保留。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Switch *string `json:"Switch,omitempty" name:"Switch"`
+	ManagedIds []*int64 `json:"ManagedIds,omitempty" name:"ManagedIds"`
+
+	// 保留。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TransManagedIds []*int64 `json:"TransManagedIds,omitempty" name:"TransManagedIds"`
 }
 
 type CCInterceptEvent struct {
@@ -8456,6 +8488,111 @@ func (r *DownloadL7LogsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DropPageConfig struct {
+	// 配置开关。
+	// 1. on 开启
+	// 2. off 关闭
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
+
+	// Waf(托管规则)模块的拦截页面配置。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Waf *DropPageDetail `json:"Waf,omitempty" name:"Waf"`
+
+	// 自定义页面的拦截页面配置。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Acl *DropPageDetail `json:"Acl,omitempty" name:"Acl"`
+}
+
+type DropPageDetail struct {
+	// 拦截页面的唯一Id。系统默认包含一个自带拦截页面，Id值为0。
+	// 该Id可通过创建拦截页面接口进行上传获取。如传入0，代表使用系统默认拦截页面
+	PageId *int64 `json:"PageId,omitempty" name:"PageId"`
+
+	// 拦截页面的HTTP状态码。状态码范围是 100 - 600。
+	StatusCode *int64 `json:"StatusCode,omitempty" name:"StatusCode"`
+
+	// 页面的元信息，文件名或url。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 页面的类型。
+	Type *string `json:"Type,omitempty" name:"Type"`
+}
+
+type ExceptConfig struct {
+	// 开关。
+	// 1. on 开启
+	// 2. off 关闭
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
+
+	// 例外规则详情。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserRules []*ExceptUserRule `json:"UserRules,omitempty" name:"UserRules"`
+}
+
+type ExceptUserRule struct {
+	// 规则ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleID *int64 `json:"RuleID,omitempty" name:"RuleID"`
+
+	// 规则名称。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleName *string `json:"RuleName,omitempty" name:"RuleName"`
+
+	// 规则的处置方式。
+	// 1. skip 跳过
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Action *string `json:"Action,omitempty" name:"Action"`
+
+	// 规则生效状态。
+	// 1. on 生效
+	// 2. off 失效
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleStatus *string `json:"RuleStatus,omitempty" name:"RuleStatus"`
+
+	// 更新时间。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+
+	// 匹配条件。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Conditions []*ExceptUserRuleCondition `json:"Conditions,omitempty" name:"Conditions"`
+
+	// 规则生效的范围。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Scope *ExceptUserRuleScope `json:"Scope,omitempty" name:"Scope"`
+
+	// 优先级。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RulePriority *int64 `json:"RulePriority,omitempty" name:"RulePriority"`
+}
+
+type ExceptUserRuleCondition struct {
+	// 匹配项。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MatchFrom *string `json:"MatchFrom,omitempty" name:"MatchFrom"`
+
+	// 匹配项的参数。当 MatchFrom 为 header 时，可以填入 header 的 key 作为参数。
+	MatchParam *string `json:"MatchParam,omitempty" name:"MatchParam"`
+
+	// 匹配操作符。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Operator *string `json:"Operator,omitempty" name:"Operator"`
+
+	// 匹配值。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MatchContent *string `json:"MatchContent,omitempty" name:"MatchContent"`
+}
+
+type ExceptUserRuleScope struct {
+	// 生效的模块
+	// 
+	// 1. waf Waf防护
+	// 2. bot Bot防护
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Modules []*string `json:"Modules,omitempty" name:"Modules"`
+}
+
 type FailReason struct {
 	// 失败原因
 	Reason *string `json:"Reason,omitempty" name:"Reason"`
@@ -8704,53 +8841,73 @@ func (r *ImportDnsRecordsResponse) FromJsonString(s string) error {
 }
 
 type IntelligenceRule struct {
-	// 开关
+	// 开关。
+	// 1. on 开启
+	// 2. off 关闭
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
 
-	// 规则详情
+	// 规则详情。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Items []*IntelligenceRuleItem `json:"Items,omitempty" name:"Items"`
 }
 
 type IntelligenceRuleItem struct {
-	// 恶意BOT
+	// 智能分析标签。
+	// 1. evil_bot 恶意
+	// 2. suspect_bot 疑似恶意
+	// 3. good_bot 好的
+	// 4. normal 正常
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Label *string `json:"Label,omitempty" name:"Label"`
 
-	// 动作
+	// 触发智能分析标签对应的处置方式。
+	// 1. drop 拦截
+	// 2. trans 放行
+	// 3. monitor 监控
+	// 4. alg Javascript挑战
+	// 5. captcha 数字验证码
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Action *string `json:"Action,omitempty" name:"Action"`
 }
 
 type IpTableConfig struct {
-	// 开关
+	// 开关。
+	// 1. on 开启
+	// 2. off 关闭
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
 
-	// []
+	// 基础管控规则。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Rules []*IpTableRule `json:"Rules,omitempty" name:"Rules"`
 }
 
 type IpTableRule struct {
-	// 动作: drop拦截，trans放行，monitor观察
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Action *string `json:"Action,omitempty" name:"Action"`
-
-	// 根据类型匹配：ip(根据ip), area(根据区域)
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	MatchFrom *string `json:"MatchFrom,omitempty" name:"MatchFrom"`
-
-	// 匹配内容
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	MatchContent *string `json:"MatchContent,omitempty" name:"MatchContent"`
-
-	// 规则id
+	// 规则ID。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RuleID *int64 `json:"RuleID,omitempty" name:"RuleID"`
 
-	// 更新时间
+	// 处置动作。
+	// 1. drop 拦截
+	// 2. trans放行
+	// 3. monitor观察
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Action *string `json:"Action,omitempty" name:"Action"`
+
+	// 类型匹配。
+	// 1. ip 根据ip
+	// 2. area 根据区域
+	// 3. ua 根据User-Agent
+	// 4. referer 根据Referer
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MatchFrom *string `json:"MatchFrom,omitempty" name:"MatchFrom"`
+
+	// 匹配内容。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MatchContent *string `json:"MatchContent,omitempty" name:"MatchContent"`
+
+	// 更新时间。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
 }
@@ -11010,104 +11167,130 @@ type Quic struct {
 }
 
 type RateLimitConfig struct {
-	// 开关
+	// 开关。
+	// 1. on 开启RateLimit；
+	// 2. off 关闭RateLimit
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
 
-	// 用户规则
+	// 速率限制-用户规则列表。
 	UserRules []*RateLimitUserRule `json:"UserRules,omitempty" name:"UserRules"`
 
-	// 默认模板
+	// 速率限制模板功能。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Template *RateLimitTemplate `json:"Template,omitempty" name:"Template"`
 
-	// 智能客户端过滤
+	// 智能客户端过滤。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Intelligence *RateLimitIntelligence `json:"Intelligence,omitempty" name:"Intelligence"`
 }
 
 type RateLimitIntelligence struct {
-	// 功能开关
+	// 功能开关。
+	// 1. on 开启
+	// 2. off 关闭
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
 
-	// 执行动作 monitor(观察), alg(挑战)
+	// 执行动作 
+	// 1. monitor(观察)
+	// 2. alg(挑战)
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Action *string `json:"Action,omitempty" name:"Action"`
 }
 
 type RateLimitTemplate struct {
-	// 模板名称
+	// 模板等级名称。
+	// 1. sup_loose 自适应 - 超级宽松
+	// 2. loose     自适应 - 宽松
+	// 3. emergency 自适应 - 紧急
+	// 4. normal    自适应 - 适中
+	// 5. strict    固定阈值 - 严格
+	// 6. close     关闭 - 仅精准速率限制生效
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Mode *string `json:"Mode,omitempty" name:"Mode"`
 
-	// 模板值详情
+	// 模板值详情。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Detail *RateLimitTemplateDetail `json:"Detail,omitempty" name:"Detail"`
 }
 
 type RateLimitTemplateDetail struct {
-	// 模板名称
+	// 模板等级名称。
+	// 1. sup_loose 自适应 - 超级宽松
+	// 2. loose     自适应 - 宽松
+	// 3. emergency 自适应 - 紧急
+	// 4. normal    自适应 - 适中
+	// 5. strict    固定阈值 - 严格
+	// 6. close     关闭 - 仅精准速率限制生效
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Mode *string `json:"Mode,omitempty" name:"Mode"`
 
-	// 唯一id
+	// 唯一id。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ID *int64 `json:"ID,omitempty" name:"ID"`
 
-	// 处置动作
+	// 处置动作。模板阀值触发后的处罚行为。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Action *string `json:"Action,omitempty" name:"Action"`
 
-	// 惩罚时间，秒
+	// 惩罚时间，单位是秒。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PunishTime *int64 `json:"PunishTime,omitempty" name:"PunishTime"`
 
-	// 阈值
+	// 阈值。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Threshold *int64 `json:"Threshold,omitempty" name:"Threshold"`
 
-	// 统计周期
+	// 统计周期。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Period *int64 `json:"Period,omitempty" name:"Period"`
 }
 
 type RateLimitUserRule struct {
-	// RateLimit统计阈值
+	// RateLimit统计阈值，单位是次，取值范围0-4294967294。
 	Threshold *int64 `json:"Threshold,omitempty" name:"Threshold"`
 
-	// RateLimit统计时间
+	// RateLimit统计时间，取值范围 10/20/30/40/50/60 单位是秒。
 	Period *int64 `json:"Period,omitempty" name:"Period"`
 
-	// 规则名
+	// 规则名，只能以英文字符，数字，下划线组合，且不能以下划线开头。
 	RuleName *string `json:"RuleName,omitempty" name:"RuleName"`
 
-	// 动作：monitor(观察), drop(拦截)
+	// 处置动作。
+	// 1. monitor(观察)；
+	// 2. drop(拦截)；
+	// 3. alg(Javascript挑战)
 	Action *string `json:"Action,omitempty" name:"Action"`
 
-	// 惩罚时长
+	// 惩罚时长，0-100。
 	PunishTime *int64 `json:"PunishTime,omitempty" name:"PunishTime"`
 
-	// 处罚时长单位，second
+	// 处罚时长单位。
+	// 1. second 秒; 
+	// 2. minutes 分钟
+	// 3. hour 小时
 	PunishTimeUnit *string `json:"PunishTimeUnit,omitempty" name:"PunishTimeUnit"`
 
-	// 规则状态
+	// 规则状态。
+	// 1. on 生效
+	// 2. off 不生效
 	RuleStatus *string `json:"RuleStatus,omitempty" name:"RuleStatus"`
 
-	// 规则
+	// 规则。
 	Conditions []*ACLCondition `json:"Conditions,omitempty" name:"Conditions"`
 
-	// 规则权重
+	// 规则权重，取值范围0-100。
 	RulePriority *int64 `json:"RulePriority,omitempty" name:"RulePriority"`
 
-	// 规则id
+	// 规则id。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RuleID *int64 `json:"RuleID,omitempty" name:"RuleID"`
 
-	// 过滤词
+	// 过滤词。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FreqFields []*string `json:"FreqFields,omitempty" name:"FreqFields"`
 
-	// 更新时间
+	// 更新时间.
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
 }
@@ -11625,33 +11808,41 @@ type SecRuleRelatedInfo struct {
 }
 
 type SecurityConfig struct {
-	// 门神配置
+	// 托管规则。如果为null，默认使用历史配置。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	WafConfig *WafConfig `json:"WafConfig,omitempty" name:"WafConfig"`
 
-	// RateLimit配置
+	// 速率限制。如果为null，默认使用历史配置。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RateLimitConfig *RateLimitConfig `json:"RateLimitConfig,omitempty" name:"RateLimitConfig"`
 
-	// DDoS配置
+	// DDoS配置。如果为null，默认使用历史配置。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DdosConfig *DDoSConfig `json:"DdosConfig,omitempty" name:"DdosConfig"`
 
-	// ACL配置
+	// 自定义规则。如果为null，默认使用历史配置。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AclConfig *AclConfig `json:"AclConfig,omitempty" name:"AclConfig"`
 
-	// Bot配置
+	// Bot配置。如果为null，默认使用历史配置。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BotConfig *BotConfig `json:"BotConfig,omitempty" name:"BotConfig"`
 
-	// 总开关
+	// 七层防护总开关。如果为null，默认使用历史配置。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SwitchConfig *SwitchConfig `json:"SwitchConfig,omitempty" name:"SwitchConfig"`
 
-	// IP黑白名单
+	// 基础访问管控。如果为null，默认使用历史配置。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IpTableConfig *IpTableConfig `json:"IpTableConfig,omitempty" name:"IpTableConfig"`
+
+	// 例外规则配置。如果为null，默认使用历史配置。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExceptConfig *ExceptConfig `json:"ExceptConfig,omitempty" name:"ExceptConfig"`
+
+	// 自定义拦截页面配置。如果为null，默认使用历史配置。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DropPageConfig *DropPageConfig `json:"DropPageConfig,omitempty" name:"DropPageConfig"`
 }
 
 type SecurityEntity struct {
@@ -11750,7 +11941,9 @@ type Sv struct {
 }
 
 type SwitchConfig struct {
-	// Web类型的安全总开关：Web基础防护，自定义规则，速率限制
+	// Web类型的安全总开关生效范围，Waf，自定义规则，速率限制。
+	// 1. on 开启
+	// 2. off 关闭
 	WebSwitch *string `json:"WebSwitch,omitempty" name:"WebSwitch"`
 }
 
@@ -11887,31 +12080,40 @@ type VanityNameServersIps struct {
 }
 
 type WafConfig struct {
-	// 开关
+	// WafConfig开关，取值有：
+	// <li> on：开启；</li>
+	// <li> off：关闭。</li>开关仅与配置是否生效有关，即使为off（关闭），也可以正常修改配置的内容。
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
 
-	// 防护级别，loose/normal/strict/stricter/custom
+	// 防护级别，取值有：
+	// <li> loose：宽松；</li>
+	// <li> normal：正常；</li>
+	// <li> strict：严格；</li>
+	// <li> stricter：超严格；</li>
+	// <li> custom：自定义。</li>
 	Level *string `json:"Level,omitempty" name:"Level"`
 
-	// 模式 block-阻断；observe-观察模式；close-关闭
+	// 全局WAF模式，取值有：
+	// <li> block：阻断（全局阻断，但可对详细规则配置观察）；</li>
+	// <li> observe：观察（无论详细规则配置什么，都为观察）。</li>
 	Mode *string `json:"Mode,omitempty" name:"Mode"`
 
-	// 托管规则黑白名单
+	// 托管规则详细配置。
 	WafRules *WafRule `json:"WafRules,omitempty" name:"WafRules"`
 
-	// AI规则引擎防护
+	// AI规则引擎防护配置。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AiRule *AiRule `json:"AiRule,omitempty" name:"AiRule"`
 }
 
 type WafRule struct {
-	// 黑名单，ID参考接口 DescribeSecurityPolicyManagedRules
-	BlockRuleIDs []*int64 `json:"BlockRuleIDs,omitempty" name:"BlockRuleIDs"`
-
-	// 托管规则 开关
+	// 托管规则开关。 on为开启
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
 
-	// 观察模式，ID参考接口 DescribeSecurityPolicyManagedRules
+	// 黑名单ID列表，将规则ID加入本参数列表中代表该ID关闭，即该规则ID不再生效。ID参考接口 [DescribeSecurityPolicyManagedRules](https://tcloud4api.woa.com/document/product/1657/76030?!preview&!document=1)。
+	BlockRuleIDs []*int64 `json:"BlockRuleIDs,omitempty" name:"BlockRuleIDs"`
+
+	// 观察模式ID列表，将规则ID加入本参数列表中代表该ID使用观察模式生效，即该规则ID进入观察模式。ID参考接口 [DescribeSecurityPolicyManagedRules](https://tcloud4api.woa.com/document/product/1657/76030?!preview&!document=1)。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ObserveRuleIDs []*int64 `json:"ObserveRuleIDs,omitempty" name:"ObserveRuleIDs"`
 }

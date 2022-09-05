@@ -1,3 +1,105 @@
+# Release v1.0.491
+
+## 品牌经营管家(bma) 版本：2021-06-24
+
+### 第 6 次发布
+
+发布时间：2022-09-05 06:10:17
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateCRRightFile](https://cloud.tencent.com/document/api/1296/80089)
+* [CreateCRTort](https://cloud.tencent.com/document/api/1296/80088)
+* [ModifyCRWhiteList](https://cloud.tencent.com/document/api/1296/80087)
+
+修改接口：
+
+* [ModifyCRMonitor](https://cloud.tencent.com/document/api/1296/78025)
+
+	* 新增入参：MonitorEnd
+
+
+新增数据结构：
+
+* [File](https://cloud.tencent.com/document/api/1296/78030#File)
+
+
+
+## 企业收付平台(cpdp) 版本：2019-08-20
+
+### 第 84 次发布
+
+发布时间：2022-09-05 06:18:54
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateAcct](https://cloud.tencent.com/document/api/1122/40674)
+
+	* 新增入参：SubMerchantIdType, SubMerchantIdCode
+
+
+
+
+## 边缘安全加速平台(teo) 版本：2022-01-06
+
+### 第 24 次发布
+
+发布时间：2022-09-05 06:51:57
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [DropPageConfig](https://cloud.tencent.com/document/api/1552/73155#DropPageConfig)
+* [DropPageDetail](https://cloud.tencent.com/document/api/1552/73155#DropPageDetail)
+* [ExceptConfig](https://cloud.tencent.com/document/api/1552/73155#ExceptConfig)
+* [ExceptUserRule](https://cloud.tencent.com/document/api/1552/73155#ExceptUserRule)
+* [ExceptUserRuleCondition](https://cloud.tencent.com/document/api/1552/73155#ExceptUserRuleCondition)
+* [ExceptUserRuleScope](https://cloud.tencent.com/document/api/1552/73155#ExceptUserRuleScope)
+
+修改数据结构：
+
+* [BotPortraitRule](https://cloud.tencent.com/document/api/1552/73155#BotPortraitRule)
+
+	* 新增成员：ManagedIds, TransManagedIds
+
+* [SecurityConfig](https://cloud.tencent.com/document/api/1552/73155#SecurityConfig)
+
+	* 新增成员：ExceptConfig, DropPageConfig
+
+
+
+
+## 私有网络(vpc) 版本：2017-03-12
+
+### 第 123 次发布
+
+发布时间：2022-09-05 06:59:01
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeTrafficPackages](https://cloud.tencent.com/document/api/215/80090)
+
+新增数据结构：
+
+* [TrafficPackage](https://cloud.tencent.com/document/api/215/15824#TrafficPackage)
+
+
+
 # Release v1.0.490
 
 ## 弹性伸缩(as) 版本：2018-04-19

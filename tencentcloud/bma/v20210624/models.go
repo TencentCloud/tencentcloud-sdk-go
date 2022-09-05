@@ -637,6 +637,70 @@ func (r *CreateCRCompanyVerifyResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateCRRightFileRequestParams struct {
+	// xxx
+	WorkId *int64 `json:"WorkId,omitempty" name:"WorkId"`
+
+	// xxx
+	FileList []*File `json:"FileList,omitempty" name:"FileList"`
+}
+
+type CreateCRRightFileRequest struct {
+	*tchttp.BaseRequest
+	
+	// xxx
+	WorkId *int64 `json:"WorkId,omitempty" name:"WorkId"`
+
+	// xxx
+	FileList []*File `json:"FileList,omitempty" name:"FileList"`
+}
+
+func (r *CreateCRRightFileRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateCRRightFileRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "WorkId")
+	delete(f, "FileList")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCRRightFileRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateCRRightFileResponseParams struct {
+	// xxx
+	FileIds []*int64 `json:"FileIds,omitempty" name:"FileIds"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateCRRightFileResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateCRRightFileResponseParams `json:"Response"`
+}
+
+func (r *CreateCRRightFileResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateCRRightFileResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateCRRightRequestParams struct {
 	// 已存证的作品ID
 	WorkId *int64 `json:"WorkId,omitempty" name:"WorkId"`
@@ -791,6 +855,102 @@ func (r *CreateCRRightResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateCRRightResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateCRTortRequestParams struct {
+	// xx
+	WorkId *int64 `json:"WorkId,omitempty" name:"WorkId"`
+
+	// xx
+	TortURL *string `json:"TortURL,omitempty" name:"TortURL"`
+
+	// xx
+	TortPlat *string `json:"TortPlat,omitempty" name:"TortPlat"`
+
+	// xx
+	TortTitle *string `json:"TortTitle,omitempty" name:"TortTitle"`
+}
+
+type CreateCRTortRequest struct {
+	*tchttp.BaseRequest
+	
+	// xx
+	WorkId *int64 `json:"WorkId,omitempty" name:"WorkId"`
+
+	// xx
+	TortURL *string `json:"TortURL,omitempty" name:"TortURL"`
+
+	// xx
+	TortPlat *string `json:"TortPlat,omitempty" name:"TortPlat"`
+
+	// xx
+	TortTitle *string `json:"TortTitle,omitempty" name:"TortTitle"`
+}
+
+func (r *CreateCRTortRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateCRTortRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "WorkId")
+	delete(f, "TortURL")
+	delete(f, "TortPlat")
+	delete(f, "TortTitle")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCRTortRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateCRTortResponseParams struct {
+	// xx
+	WorkId *int64 `json:"WorkId,omitempty" name:"WorkId"`
+
+	// xx
+	TortId *int64 `json:"TortId,omitempty" name:"TortId"`
+
+	// xx
+	TortTitle *string `json:"TortTitle,omitempty" name:"TortTitle"`
+
+	// xx
+	TortPlat *string `json:"TortPlat,omitempty" name:"TortPlat"`
+
+	// xx
+	TortURL *string `json:"TortURL,omitempty" name:"TortURL"`
+
+	// xx
+	TortDomain *string `json:"TortDomain,omitempty" name:"TortDomain"`
+
+	// xx
+	TortBodyName *string `json:"TortBodyName,omitempty" name:"TortBodyName"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateCRTortResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateCRTortResponseParams `json:"Response"`
+}
+
+func (r *CreateCRTortResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateCRTortResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1707,6 +1867,20 @@ type FakeURLInfo struct {
 	FakeURLExpireTime *string `json:"FakeURLExpireTime,omitempty" name:"FakeURLExpireTime"`
 }
 
+type File struct {
+	// xxx
+	FileUrl *string `json:"FileUrl,omitempty" name:"FileUrl"`
+
+	// xxx
+	FileType *int64 `json:"FileType,omitempty" name:"FileType"`
+
+	// xxx
+	ValidStartDate *string `json:"ValidStartDate,omitempty" name:"ValidStartDate"`
+
+	// xxx
+	ValidEndDate *string `json:"ValidEndDate,omitempty" name:"ValidEndDate"`
+}
+
 type Filter struct {
 
 }
@@ -1859,8 +2033,11 @@ type ModifyCRMonitorRequestParams struct {
 	// 作品ID
 	WorkId *int64 `json:"WorkId,omitempty" name:"WorkId"`
 
-	// 监测状态 1-开启监测 2-关闭监测 默认为1
+	// 监测状态 1-开启监测 2-关闭监测
 	MonitorStatus *string `json:"MonitorStatus,omitempty" name:"MonitorStatus"`
+
+	// 默认不停止，支持续期
+	MonitorEnd *string `json:"MonitorEnd,omitempty" name:"MonitorEnd"`
 }
 
 type ModifyCRMonitorRequest struct {
@@ -1869,8 +2046,11 @@ type ModifyCRMonitorRequest struct {
 	// 作品ID
 	WorkId *int64 `json:"WorkId,omitempty" name:"WorkId"`
 
-	// 监测状态 1-开启监测 2-关闭监测 默认为1
+	// 监测状态 1-开启监测 2-关闭监测
 	MonitorStatus *string `json:"MonitorStatus,omitempty" name:"MonitorStatus"`
+
+	// 默认不停止，支持续期
+	MonitorEnd *string `json:"MonitorEnd,omitempty" name:"MonitorEnd"`
 }
 
 func (r *ModifyCRMonitorRequest) ToJsonString() string {
@@ -1887,6 +2067,7 @@ func (r *ModifyCRMonitorRequest) FromJsonString(s string) error {
 	}
 	delete(f, "WorkId")
 	delete(f, "MonitorStatus")
+	delete(f, "MonitorEnd")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyCRMonitorRequest has unknown keys!", "")
 	}
@@ -2048,6 +2229,102 @@ func (r *ModifyCRRightStatusResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyCRRightStatusResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyCRWhiteListRequestParams struct {
+	// 白名单ID
+	WhiteListId *int64 `json:"WhiteListId,omitempty" name:"WhiteListId"`
+
+	// 平台名称
+	PlatForm *string `json:"PlatForm,omitempty" name:"PlatForm"`
+
+	// 平台站点链接
+	PlatUrl *string `json:"PlatUrl,omitempty" name:"PlatUrl"`
+
+	// 作者ID
+	AuthorId *string `json:"AuthorId,omitempty" name:"AuthorId"`
+
+	// 作品ID
+	WorksId *int64 `json:"WorksId,omitempty" name:"WorksId"`
+
+	// xxx
+	WorkId *int64 `json:"WorkId,omitempty" name:"WorkId"`
+
+	// xxx
+	WhiteSites *string `json:"WhiteSites,omitempty" name:"WhiteSites"`
+}
+
+type ModifyCRWhiteListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 白名单ID
+	WhiteListId *int64 `json:"WhiteListId,omitempty" name:"WhiteListId"`
+
+	// 平台名称
+	PlatForm *string `json:"PlatForm,omitempty" name:"PlatForm"`
+
+	// 平台站点链接
+	PlatUrl *string `json:"PlatUrl,omitempty" name:"PlatUrl"`
+
+	// 作者ID
+	AuthorId *string `json:"AuthorId,omitempty" name:"AuthorId"`
+
+	// 作品ID
+	WorksId *int64 `json:"WorksId,omitempty" name:"WorksId"`
+
+	// xxx
+	WorkId *int64 `json:"WorkId,omitempty" name:"WorkId"`
+
+	// xxx
+	WhiteSites *string `json:"WhiteSites,omitempty" name:"WhiteSites"`
+}
+
+func (r *ModifyCRWhiteListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyCRWhiteListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "WhiteListId")
+	delete(f, "PlatForm")
+	delete(f, "PlatUrl")
+	delete(f, "AuthorId")
+	delete(f, "WorksId")
+	delete(f, "WorkId")
+	delete(f, "WhiteSites")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyCRWhiteListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyCRWhiteListResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ModifyCRWhiteListResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyCRWhiteListResponseParams `json:"Response"`
+}
+
+func (r *ModifyCRWhiteListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyCRWhiteListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

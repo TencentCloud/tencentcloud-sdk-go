@@ -10761,6 +10761,56 @@ func (c *Client) DescribeTenantCcnsWithContext(ctx context.Context, request *Des
     return
 }
 
+func NewDescribeTrafficPackagesRequest() (request *DescribeTrafficPackagesRequest) {
+    request = &DescribeTrafficPackagesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vpc", APIVersion, "DescribeTrafficPackages")
+    
+    
+    return
+}
+
+func NewDescribeTrafficPackagesResponse() (response *DescribeTrafficPackagesResponse) {
+    response = &DescribeTrafficPackagesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeTrafficPackages
+// 本接口 (DescribeTrafficPackages)  用于查询共享流量包详细信息，包括共享流量包唯一标识ID，名称，流量使用信息等
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_INVALIDFILTER = "InvalidParameter.InvalidFilter"
+//  INVALIDPARAMETERVALUE_TRAFFICPACKAGEIDMALFORMED = "InvalidParameterValue.TrafficPackageIdMalformed"
+func (c *Client) DescribeTrafficPackages(request *DescribeTrafficPackagesRequest) (response *DescribeTrafficPackagesResponse, err error) {
+    return c.DescribeTrafficPackagesWithContext(context.Background(), request)
+}
+
+// DescribeTrafficPackages
+// 本接口 (DescribeTrafficPackages)  用于查询共享流量包详细信息，包括共享流量包唯一标识ID，名称，流量使用信息等
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_INVALIDFILTER = "InvalidParameter.InvalidFilter"
+//  INVALIDPARAMETERVALUE_TRAFFICPACKAGEIDMALFORMED = "InvalidParameterValue.TrafficPackageIdMalformed"
+func (c *Client) DescribeTrafficPackagesWithContext(ctx context.Context, request *DescribeTrafficPackagesRequest) (response *DescribeTrafficPackagesResponse, err error) {
+    if request == nil {
+        request = NewDescribeTrafficPackagesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTrafficPackages require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTrafficPackagesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeVpcEndPointRequest() (request *DescribeVpcEndPointRequest) {
     request = &DescribeVpcEndPointRequest{
         BaseRequest: &tchttp.BaseRequest{},
