@@ -2,7 +2,7 @@ package common
 
 import (
 	"bytes"
-	"io"
+	"compress/gzip"
 	"io/ioutil"
 	"net/http"
 	"time"
@@ -28,7 +28,10 @@ func (c *Client) sendWithRateLimitRetry(req *http.Request, retryable bool) (resp
 			return
 		}
 
-		resp.Body, shadow = shadowRead(resp.Body)
+		shadow, err = shadowRead(resp)
+		if err != nil {
+			return resp, err
+		}
 
 		err = tchttp.ParseErrorFromHTTPResponse(shadow)
 		// should not sleep on last request
@@ -48,10 +51,22 @@ func (c *Client) sendWithRateLimitRetry(req *http.Request, retryable bool) (resp
 	return resp, err
 }
 
-func shadowRead(reader io.ReadCloser) (io.ReadCloser, []byte) {
+func shadowRead(resp *http.Response) ([]byte, error) {
+	var reader = resp.Body
+	var err error
+	if resp.Header.Get("Content-Encoding") == "gzip" {
+		reader, err = gzip.NewReader(resp.Body)
+		if err != nil {
+			return nil, err
+		}
+	}
+
 	val, err := ioutil.ReadAll(reader)
 	if err != nil {
-		return reader, nil
+		return nil, err
 	}
-	return ioutil.NopCloser(bytes.NewBuffer(val)), val
+	resp.Body = ioutil.NopCloser(bytes.NewReader(val))
+	// delete the header in case the caller mistake the body being encoded
+	delete(resp.Header, "Content-Encoding")
+	return val, nil
 }
