@@ -137,6 +137,9 @@ const (
 	// 邮件地址不合法，请检查邮件地址格式。
 	INVALIDPARAMETERVALUE_ILLEGALEMAILADDRESS = "InvalidParameterValue.IllegalEmailAddress"
 
+	// 发信人别名错误。
+	INVALIDPARAMETERVALUE_ILLEGALSENDERNAME = "InvalidParameterValue.IllegalSenderName"
+
 	// 收件人地址附带的模板参数不能包含html标签。
 	INVALIDPARAMETERVALUE_INVALIDTEMPLATEDATA = "InvalidParameterValue.InValidTemplateData"
 
@@ -151,6 +154,9 @@ const (
 
 	// 收件人列表描述不合法，描述不可包含特殊字符，字符长度范围:1~300。
 	INVALIDPARAMETERVALUE_RECEIVERDESCILLEGAL = "InvalidParameterValue.ReceiverDescIllegal"
+
+	// 收件人地址错误。
+	INVALIDPARAMETERVALUE_RECEIVEREMAILINVALID = "InvalidParameterValue.ReceiverEmailInvalid"
 
 	// 收件人列表名字不合法，请检查字符内容及大小。
 	INVALIDPARAMETERVALUE_RECEIVERNAMEILLEGAL = "InvalidParameterValue.ReceiverNameIllegal"

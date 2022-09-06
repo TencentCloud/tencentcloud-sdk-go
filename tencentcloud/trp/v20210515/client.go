@@ -692,6 +692,7 @@ func NewDescribeCodeBatchsResponse() (response *DescribeCodeBatchsResponse) {
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_CORPEXPIRED = "AuthFailure.CorpExpired"
 //  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeCodeBatchs(request *DescribeCodeBatchsRequest) (response *DescribeCodeBatchsResponse, err error) {
@@ -703,6 +704,7 @@ func (c *Client) DescribeCodeBatchs(request *DescribeCodeBatchsRequest) (respons
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_CORPEXPIRED = "AuthFailure.CorpExpired"
 //  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeCodeBatchsWithContext(ctx context.Context, request *DescribeCodeBatchsRequest) (response *DescribeCodeBatchsResponse, err error) {

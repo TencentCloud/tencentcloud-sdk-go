@@ -53,11 +53,14 @@ const (
 	// 后端服务路由地址错误。
 	INTERNALERROR_ROUTEERROR = "InternalError.RouteError"
 
-	// 内部错误。
+	// 系统错误。
 	INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
 
 	// 参数错误。
 	INVALIDPARAMETER = "InvalidParameter"
+
+	// 操作频繁，请稍后重试。
+	INVALIDPARAMETER_ACTIONINPROGRESS = "InvalidParameter.ActionInProgress"
 
 	// 域名不存在或不属于该账号。
 	INVALIDPARAMETER_DOMAINNOTFOUND = "InvalidParameter.DomainNotFound"
@@ -74,17 +77,35 @@ const (
 	// 套餐包不支持智能加速配置。
 	INVALIDPARAMETER_INVALIDDYNAMICROUTINEBILLING = "InvalidParameter.InvalidDynamicRoutineBilling"
 
+	// 不合法的过滤字段。
+	INVALIDPARAMETER_INVALIDFILTERNAME = "InvalidParameter.InvalidFilterName"
+
+	// 无效的强制HTTPS跳转。
+	INVALIDPARAMETER_INVALIDFORCEREDIRECTTYPE = "InvalidParameter.InvalidForceRedirectType"
+
 	// 无效的源站。
 	INVALIDPARAMETER_INVALIDORIGIN = "InvalidParameter.InvalidOrigin"
 
 	// 套餐包不支持最大上传大小。
 	INVALIDPARAMETER_INVALIDPOSTMAXSIZEBILLING = "InvalidParameter.InvalidPostMaxSizeBilling"
 
+	// 无效的最大上传大小。
+	INVALIDPARAMETER_INVALIDPOSTSIZEVALUE = "InvalidParameter.InvalidPostSizeValue"
+
 	// 无效的请求头header。
 	INVALIDPARAMETER_INVALIDREQUESTHEADERNAME = "InvalidParameter.InvalidRequestHeaderName"
 
+	// 无效的请求头header。
+	INVALIDPARAMETER_INVALIDREQUESTHEADERVALUE = "InvalidParameter.InvalidRequestHeaderValue"
+
 	// 无套餐包。
 	INVALIDPARAMETER_INVALIDRESOURCEIDBILLING = "InvalidParameter.InvalidResourceIdBilling"
+
+	// 无效的响应头header。
+	INVALIDPARAMETER_INVALIDRESPONSEHEADERVALUE = "InvalidParameter.InvalidResponseHeaderValue"
+
+	// 无效的规则引擎操作。
+	INVALIDPARAMETER_INVALIDRULEENGINEACTION = "InvalidParameter.InvalidRuleEngineAction"
 
 	// 无效的规则引擎条件。
 	INVALIDPARAMETER_INVALIDRULEENGINETARGET = "InvalidParameter.InvalidRuleEngineTarget"

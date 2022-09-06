@@ -180,6 +180,7 @@ func NewAdjustJobSpeedResponse() (response *AdjustJobSpeedResponse) {
 //  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_DBQUERYFAILED = "FailedOperation.DbQueryFailed"
+//  FAILEDOPERATION_RESOURCENOTFOUND = "FailedOperation.ResourceNotFound"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) AdjustJobSpeed(request *AdjustJobSpeedRequest) (response *AdjustJobSpeedResponse, err error) {
@@ -193,6 +194,7 @@ func (c *Client) AdjustJobSpeed(request *AdjustJobSpeedRequest) (response *Adjus
 //  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_DBQUERYFAILED = "FailedOperation.DbQueryFailed"
+//  FAILEDOPERATION_RESOURCENOTFOUND = "FailedOperation.ResourceNotFound"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) AdjustJobSpeedWithContext(ctx context.Context, request *AdjustJobSpeedRequest) (response *AdjustJobSpeedResponse, err error) {

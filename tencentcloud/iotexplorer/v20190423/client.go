@@ -535,6 +535,8 @@ func NewCreateDeviceResponse() (response *CreateDeviceResponse) {
 //  UNSUPPORTEDOPERATION_DEVICEDUPKEYEXIST = "UnsupportedOperation.DeviceDupKeyExist"
 //  UNSUPPORTEDOPERATION_DEVICEEXCEEDLIMIT = "UnsupportedOperation.DeviceExceedLimit"
 //  UNSUPPORTEDOPERATION_INSTANCEISOLATED = "UnsupportedOperation.InstanceIsolated"
+//  UNSUPPORTEDOPERATION_VIDEOACCOUNTNOTEXIST = "UnsupportedOperation.VideoAccountNotExist"
+//  UNSUPPORTEDOPERATION_VIDEOINSUFFICIENTLICENSES = "UnsupportedOperation.VideoInsufficientLicenses"
 func (c *Client) CreateDevice(request *CreateDeviceRequest) (response *CreateDeviceResponse, err error) {
     return c.CreateDeviceWithContext(context.Background(), request)
 }
@@ -561,6 +563,8 @@ func (c *Client) CreateDevice(request *CreateDeviceRequest) (response *CreateDev
 //  UNSUPPORTEDOPERATION_DEVICEDUPKEYEXIST = "UnsupportedOperation.DeviceDupKeyExist"
 //  UNSUPPORTEDOPERATION_DEVICEEXCEEDLIMIT = "UnsupportedOperation.DeviceExceedLimit"
 //  UNSUPPORTEDOPERATION_INSTANCEISOLATED = "UnsupportedOperation.InstanceIsolated"
+//  UNSUPPORTEDOPERATION_VIDEOACCOUNTNOTEXIST = "UnsupportedOperation.VideoAccountNotExist"
+//  UNSUPPORTEDOPERATION_VIDEOINSUFFICIENTLICENSES = "UnsupportedOperation.VideoInsufficientLicenses"
 func (c *Client) CreateDeviceWithContext(ctx context.Context, request *CreateDeviceRequest) (response *CreateDeviceResponse, err error) {
     if request == nil {
         request = NewCreateDeviceRequest()

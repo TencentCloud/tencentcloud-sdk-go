@@ -477,6 +477,7 @@ func NewReleaseGrayResponse() (response *ReleaseGrayResponse) {
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) ReleaseGray(request *ReleaseGrayRequest) (response *ReleaseGrayResponse, err error) {
     return c.ReleaseGrayWithContext(context.Background(), request)
 }
@@ -487,6 +488,7 @@ func (c *Client) ReleaseGray(request *ReleaseGrayRequest) (response *ReleaseGray
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) ReleaseGrayWithContext(ctx context.Context, request *ReleaseGrayRequest) (response *ReleaseGrayResponse, err error) {
     if request == nil {
         request = NewReleaseGrayRequest()

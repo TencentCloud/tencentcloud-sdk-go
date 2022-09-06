@@ -59,6 +59,9 @@ const (
 	// 人脸检测失败。
 	FAILEDOPERATION_IMAGEFACEDETECTFAILED = "FailedOperation.ImageFacedetectFailed"
 
+	// 图片不存在前景。
+	FAILEDOPERATION_IMAGENOTFOREGROUND = "FailedOperation.ImageNotForeground"
+
 	// 不支持的图片文件。
 	FAILEDOPERATION_IMAGENOTSUPPORTED = "FailedOperation.ImageNotSupported"
 

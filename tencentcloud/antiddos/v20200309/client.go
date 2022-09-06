@@ -5813,56 +5813,6 @@ func (c *Client) ModifyDomainUsrNameWithContext(ctx context.Context, request *Mo
     return
 }
 
-func NewModifyL7RulesEdgeRequest() (request *ModifyL7RulesEdgeRequest) {
-    request = &ModifyL7RulesEdgeRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("antiddos", APIVersion, "ModifyL7RulesEdge")
-    
-    
-    return
-}
-
-func NewModifyL7RulesEdgeResponse() (response *ModifyL7RulesEdgeResponse) {
-    response = &ModifyL7RulesEdgeResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// ModifyL7RulesEdge
-// 修改边界防护L7转发规则
-//
-// 可能返回的错误码:
-//  RESOURCEINUSE = "ResourceInUse"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
-func (c *Client) ModifyL7RulesEdge(request *ModifyL7RulesEdgeRequest) (response *ModifyL7RulesEdgeResponse, err error) {
-    return c.ModifyL7RulesEdgeWithContext(context.Background(), request)
-}
-
-// ModifyL7RulesEdge
-// 修改边界防护L7转发规则
-//
-// 可能返回的错误码:
-//  RESOURCEINUSE = "ResourceInUse"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
-func (c *Client) ModifyL7RulesEdgeWithContext(ctx context.Context, request *ModifyL7RulesEdgeRequest) (response *ModifyL7RulesEdgeResponse, err error) {
-    if request == nil {
-        request = NewModifyL7RulesEdgeRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("ModifyL7RulesEdge require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewModifyL7RulesEdgeResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewModifyNewDomainRulesRequest() (request *ModifyNewDomainRulesRequest) {
     request = &ModifyNewDomainRulesRequest{
         BaseRequest: &tchttp.BaseRequest{},

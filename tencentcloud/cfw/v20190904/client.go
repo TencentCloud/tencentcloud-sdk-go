@@ -4151,58 +4151,6 @@ func (c *Client) ModifyTableStatusWithContext(ctx context.Context, request *Modi
     return
 }
 
-func NewModifyVPCSwitchStatusRequest() (request *ModifyVPCSwitchStatusRequest) {
-    request = &ModifyVPCSwitchStatusRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("cfw", APIVersion, "ModifyVPCSwitchStatus")
-    
-    
-    return
-}
-
-func NewModifyVPCSwitchStatusResponse() (response *ModifyVPCSwitchStatusResponse) {
-    response = &ModifyVPCSwitchStatusResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// ModifyVPCSwitchStatus
-// 单个修改VPC火墙开关
-//
-// 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  FAILEDOPERATION = "FailedOperation"
-//  INVALIDPARAMETER = "InvalidParameter"
-func (c *Client) ModifyVPCSwitchStatus(request *ModifyVPCSwitchStatusRequest) (response *ModifyVPCSwitchStatusResponse, err error) {
-    return c.ModifyVPCSwitchStatusWithContext(context.Background(), request)
-}
-
-// ModifyVPCSwitchStatus
-// 单个修改VPC火墙开关
-//
-// 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  FAILEDOPERATION = "FailedOperation"
-//  INVALIDPARAMETER = "InvalidParameter"
-func (c *Client) ModifyVPCSwitchStatusWithContext(ctx context.Context, request *ModifyVPCSwitchStatusRequest) (response *ModifyVPCSwitchStatusResponse, err error) {
-    if request == nil {
-        request = NewModifyVPCSwitchStatusRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("ModifyVPCSwitchStatus require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewModifyVPCSwitchStatusResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewRemoveAcRuleRequest() (request *RemoveAcRuleRequest) {
     request = &RemoveAcRuleRequest{
         BaseRequest: &tchttp.BaseRequest{},

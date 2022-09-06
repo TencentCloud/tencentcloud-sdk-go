@@ -24,15 +24,15 @@ type Attachment struct {
 	// 附件名称，最大支持255个字符长度，不支持部分附件类型，详情请参考[附件类型](https://cloud.tencent.com/document/product/1288/51951)。
 	FileName *string `json:"FileName,omitempty" name:"FileName"`
 
-	// base64之后的附件内容，您可以发送的附件大小上限为4 MB。 注意：腾讯云api目前要求请求包大小不得超过8 MB。如果您要发送多个附件，那么这些附件的总大小不能超过8 MB。
+	// Base64之后的附件内容，你可以发送的附件大小上限为4M。注意：腾讯云接口请求最大支持 8M 的请求包，附件内容经过 Base64 预期扩大1.5倍。应该控制所有附件的总大小最大在 4M 以内，整体请求超出 8M 接口会返回错误。
 	Content *string `json:"Content,omitempty" name:"Content"`
 }
 
 // Predefined struct for user
 type BatchSendEmailRequestParams struct {
 	// 发信邮件地址。请填写发件人邮箱地址，例如：noreply@mail.qcloud.com。如需填写发件人说明，请按照
-	// 发信人 <邮件地址> 的方式填写，例如：
-	// 腾讯云团队 <noreply@mail.qcloud.com>
+	// 发信人 &lt;邮件地址&gt; 的方式填写，例如：
+	// 腾讯云团队 &lt;noreply@mail.qcloud.com&gt;
 	FromEmailAddress *string `json:"FromEmailAddress,omitempty" name:"FromEmailAddress"`
 
 	// 收件人列表ID
@@ -73,8 +73,8 @@ type BatchSendEmailRequest struct {
 	*tchttp.BaseRequest
 	
 	// 发信邮件地址。请填写发件人邮箱地址，例如：noreply@mail.qcloud.com。如需填写发件人说明，请按照
-	// 发信人 <邮件地址> 的方式填写，例如：
-	// 腾讯云团队 <noreply@mail.qcloud.com>
+	// 发信人 &lt;邮件地址&gt; 的方式填写，例如：
+	// 腾讯云团队 &lt;noreply@mail.qcloud.com&gt;
 	FromEmailAddress *string `json:"FromEmailAddress,omitempty" name:"FromEmailAddress"`
 
 	// 收件人列表ID
@@ -428,7 +428,7 @@ type CreateReceiverDetailWithDataRequestParams struct {
 	// 收件人列表ID
 	ReceiverId *uint64 `json:"ReceiverId,omitempty" name:"ReceiverId"`
 
-	// 收信人邮箱以及模板参数，数组形式
+	// 收信人邮箱以及模板参数，数组形式。收件人个数限制20000个以内。
 	Datas []*ReceiverInputData `json:"Datas,omitempty" name:"Datas"`
 }
 
@@ -438,7 +438,7 @@ type CreateReceiverDetailWithDataRequest struct {
 	// 收件人列表ID
 	ReceiverId *uint64 `json:"ReceiverId,omitempty" name:"ReceiverId"`
 
-	// 收信人邮箱以及模板参数，数组形式
+	// 收信人邮箱以及模板参数，数组形式。收件人个数限制20000个以内。
 	Datas []*ReceiverInputData `json:"Datas,omitempty" name:"Datas"`
 }
 
@@ -1635,7 +1635,7 @@ type ReceiverInputData struct {
 	Email *string `json:"Email,omitempty" name:"Email"`
 
 	// 模板中的变量参数，请使用json.dump将json对象格式化为string类型。该对象是一组键值对，每个Key代表模板中的一个变量，模板中的变量使用{{键}}表示，相应的值在发送时会被替换为{{值}}。
-	// 注意：参数值不能是html等复杂类型的数据。
+	// 注意：参数值不能是html等复杂类型的数据。TemplateData (整个 JSON 结构) 总长度限制为 800 bytes。
 	TemplateData *string `json:"TemplateData,omitempty" name:"TemplateData"`
 }
 
@@ -1655,13 +1655,13 @@ type SendEmailRequestParams struct {
 	// 邮件的“回复”电子邮件地址。可以填写您能收到邮件的邮箱地址，可以是个人邮箱。如果不填，收件人的回复邮件将会发送失败。
 	ReplyToAddresses *string `json:"ReplyToAddresses,omitempty" name:"ReplyToAddresses"`
 
-	// 使用模板发送时，填写的模板相关参数
+	// 使用模板发送时，填写的模板相关参数。因 Simple 已经废除使用，Template 为必填项
 	Template *Template `json:"Template,omitempty" name:"Template"`
 
 	// 已废弃
 	Simple *Simple `json:"Simple,omitempty" name:"Simple"`
 
-	// 需要发送附件时，填写附件相关参数。
+	// 需要发送附件时，填写附件相关参数。腾讯云接口请求最大支持 8M 的请求包，附件内容经过 Base64 预期扩大1.5倍，应该控制所有附件的总大小最大在 4M 以内，整体请求超出 8M 时接口会返回错误
 	Attachments []*Attachment `json:"Attachments,omitempty" name:"Attachments"`
 
 	// 退订选项 1: 加入退订链接 0: 不加入退订链接
@@ -1688,13 +1688,13 @@ type SendEmailRequest struct {
 	// 邮件的“回复”电子邮件地址。可以填写您能收到邮件的邮箱地址，可以是个人邮箱。如果不填，收件人的回复邮件将会发送失败。
 	ReplyToAddresses *string `json:"ReplyToAddresses,omitempty" name:"ReplyToAddresses"`
 
-	// 使用模板发送时，填写的模板相关参数
+	// 使用模板发送时，填写的模板相关参数。因 Simple 已经废除使用，Template 为必填项
 	Template *Template `json:"Template,omitempty" name:"Template"`
 
 	// 已废弃
 	Simple *Simple `json:"Simple,omitempty" name:"Simple"`
 
-	// 需要发送附件时，填写附件相关参数。
+	// 需要发送附件时，填写附件相关参数。腾讯云接口请求最大支持 8M 的请求包，附件内容经过 Base64 预期扩大1.5倍，应该控制所有附件的总大小最大在 4M 以内，整体请求超出 8M 时接口会返回错误
 	Attachments []*Attachment `json:"Attachments,omitempty" name:"Attachments"`
 
 	// 退订选项 1: 加入退订链接 0: 不加入退订链接
@@ -1776,12 +1776,14 @@ type SendEmailStatus struct {
 	// 1005: 内部系统异常
 	// 1006: 触发频率控制，短时间内对同一地址发送过多邮件
 	// 1007: 邮件地址在黑名单中
+	// 1008: 域名被收件人拒收
 	// 1009: 内部系统异常
 	// 1010: 超出了每日发送限制
 	// 1011: 无发送自定义内容权限，必须使用模板
+	// 1013: 域名被收件人取消订阅
 	// 2001: 找不到相关记录
 	// 3007: 模板ID无效或者不可用
-	// 3008: 模板状态异常
+	// 3008: 被收信域名临时封禁
 	// 3009: 无权限使用该模板
 	// 3010: TemplateData字段格式不正确 
 	// 3014: 发件域名没有经过认证，无法发送

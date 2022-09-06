@@ -7103,19 +7103,7 @@ func NewModifyEdgeUnitCloudApiResponse() (response *ModifyEdgeUnitCloudApiRespon
 // 更新边缘单元信息
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INTERNALERROR_DBERROR = "InternalError.DBError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  INVALIDPARAMETERVALUE_DUPLICATENAME = "InvalidParameterValue.DuplicateName"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  RESOURCESSOLDOUT = "ResourcesSoldOut"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ModifyEdgeUnitCloudApi(request *ModifyEdgeUnitCloudApiRequest) (response *ModifyEdgeUnitCloudApiResponse, err error) {
     return c.ModifyEdgeUnitCloudApiWithContext(context.Background(), request)
 }
@@ -7124,19 +7112,7 @@ func (c *Client) ModifyEdgeUnitCloudApi(request *ModifyEdgeUnitCloudApiRequest) 
 // 更新边缘单元信息
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INTERNALERROR_DBERROR = "InternalError.DBError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  INVALIDPARAMETERVALUE_DUPLICATENAME = "InvalidParameterValue.DuplicateName"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  RESOURCESSOLDOUT = "ResourcesSoldOut"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ModifyEdgeUnitCloudApiWithContext(ctx context.Context, request *ModifyEdgeUnitCloudApiRequest) (response *ModifyEdgeUnitCloudApiResponse, err error) {
     if request == nil {
         request = NewModifyEdgeUnitCloudApiRequest()

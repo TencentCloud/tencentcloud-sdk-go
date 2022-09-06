@@ -514,4 +514,10 @@ const (
 
 	// 存在重复VPN。
 	UNSUPPORTEDOPERATION_VPNDUPKEYEXIST = "UnsupportedOperation.VPNDupKeyExist"
+
+	// Video账户未创建，请检查后重新操作。
+	UNSUPPORTEDOPERATION_VIDEOACCOUNTNOTEXIST = "UnsupportedOperation.VideoAccountNotExist"
+
+	// Video平台license数量不足。
+	UNSUPPORTEDOPERATION_VIDEOINSUFFICIENTLICENSES = "UnsupportedOperation.VideoInsufficientLicenses"
 )

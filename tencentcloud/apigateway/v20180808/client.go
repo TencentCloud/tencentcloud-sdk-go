@@ -3187,6 +3187,7 @@ func NewDescribeLogSearchResponse() (response *DescribeLogSearchResponse) {
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_INVALIDREGION = "InvalidParameterValue.InvalidRegion"
 //  UNSUPPORTEDOPERATION_CLSSEARCHTIME = "UnsupportedOperation.ClsSearchTime"
+//  UNSUPPORTEDOPERATION_INVALIDACTION = "UnsupportedOperation.InvalidAction"
 func (c *Client) DescribeLogSearch(request *DescribeLogSearchRequest) (response *DescribeLogSearchResponse, err error) {
     return c.DescribeLogSearchWithContext(context.Background(), request)
 }
@@ -3197,6 +3198,7 @@ func (c *Client) DescribeLogSearch(request *DescribeLogSearchRequest) (response 
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_INVALIDREGION = "InvalidParameterValue.InvalidRegion"
 //  UNSUPPORTEDOPERATION_CLSSEARCHTIME = "UnsupportedOperation.ClsSearchTime"
+//  UNSUPPORTEDOPERATION_INVALIDACTION = "UnsupportedOperation.InvalidAction"
 func (c *Client) DescribeLogSearchWithContext(ctx context.Context, request *DescribeLogSearchRequest) (response *DescribeLogSearchResponse, err error) {
     if request == nil {
         request = NewDescribeLogSearchRequest()

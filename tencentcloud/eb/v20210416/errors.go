@@ -260,6 +260,9 @@ const (
 	// 不支持操作当前ES版本。
 	OPERATIONDENIED_ESVERSIONUNSUPPORTED = "OperationDenied.ESVersionUnsupported"
 
+	// 技术架构升级，该资源临时锁定中，预计持续3~5分钟，事件推送流程无影响。
+	OPERATIONDENIED_EVENTBUSRESOURCEISLOCKED = "OperationDenied.EventBusResourceIsLocked"
+
 	// 操作失败，该资源不可修改或删除。
 	OPERATIONDENIED_RESOURCEIMMUTABLE = "OperationDenied.ResourceImmutable"
 

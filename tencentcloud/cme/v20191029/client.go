@@ -2362,6 +2362,7 @@ func NewHandleStreamConnectProjectResponse() (response *HandleStreamConnectProje
 //  INVALIDPARAMETERVALUE_STREAMINPUT = "InvalidParameterValue.StreamInput"
 //  LIMITEXCEEDED_BILLITEMLIVEDISPATCHDURATION = "LimitExceeded.BillItemLiveDispatchDuration"
 //  LIMITEXCEEDED_BILLITEMLIVEDISPATCHMAXCOUNT = "LimitExceeded.BillItemLiveDispatchMaxCount"
+//  OPERATIONDENIED_PERMISSIONDENY = "OperationDenied.PermissionDeny"
 //  RESOURCENOTFOUND_PLATFORM = "ResourceNotFound.Platform"
 func (c *Client) HandleStreamConnectProject(request *HandleStreamConnectProjectRequest) (response *HandleStreamConnectProjectResponse, err error) {
     return c.HandleStreamConnectProjectWithContext(context.Background(), request)
@@ -2418,6 +2419,7 @@ func (c *Client) HandleStreamConnectProject(request *HandleStreamConnectProjectR
 //  INVALIDPARAMETERVALUE_STREAMINPUT = "InvalidParameterValue.StreamInput"
 //  LIMITEXCEEDED_BILLITEMLIVEDISPATCHDURATION = "LimitExceeded.BillItemLiveDispatchDuration"
 //  LIMITEXCEEDED_BILLITEMLIVEDISPATCHMAXCOUNT = "LimitExceeded.BillItemLiveDispatchMaxCount"
+//  OPERATIONDENIED_PERMISSIONDENY = "OperationDenied.PermissionDeny"
 //  RESOURCENOTFOUND_PLATFORM = "ResourceNotFound.Platform"
 func (c *Client) HandleStreamConnectProjectWithContext(ctx context.Context, request *HandleStreamConnectProjectRequest) (response *HandleStreamConnectProjectResponse, err error) {
     if request == nil {

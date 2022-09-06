@@ -1,39 +1,26 @@
 # 本版本更新包含以下内容：
 
-## 品牌经营管家(bma) 版本：2021-06-24
+## DDoS 防护(antiddos) 版本：2020-03-09
 
-### 第 6 次发布
+### 第 41 次发布
 
-发布时间：2022-09-05 06:10:17
+发布时间：2022-09-06 06:07:26
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-新增接口：
+<font color="#dd0000">**删除接口**：</font>
 
-* [CreateCRRightFile](https://cloud.tencent.com/document/api/1296/80089)
-* [CreateCRTort](https://cloud.tencent.com/document/api/1296/80088)
-* [ModifyCRWhiteList](https://cloud.tencent.com/document/api/1296/80087)
-
-修改接口：
-
-* [ModifyCRMonitor](https://cloud.tencent.com/document/api/1296/78025)
-
-	* 新增入参：MonitorEnd
-
-
-新增数据结构：
-
-* [File](https://cloud.tencent.com/document/api/1296/78030#File)
+* ModifyL7RulesEdge
 
 
 
-## 企业收付平台(cpdp) 版本：2019-08-20
+## 人体分析(bda) 版本：2020-03-24
 
-### 第 84 次发布
+### 第 9 次发布
 
-发布时间：2022-09-05 06:18:54
+发布时间：2022-09-06 06:10:38
 
 本次发布包含了以下内容：
 
@@ -41,62 +28,138 @@
 
 修改接口：
 
-* [CreateAcct](https://cloud.tencent.com/document/api/1122/40674)
+* [SegmentPortraitPic](https://cloud.tencent.com/document/api/1208/42970)
 
-	* 新增入参：SubMerchantIdType, SubMerchantIdCode
+	* 新增入参：RspImgType
+
+	* 新增出参：HasForeground, ResultImageUrl, ResultMaskUrl
 
 
 
 
-## 边缘安全加速平台(teo) 版本：2022-01-06
+## 云呼叫中心(ccc) 版本：2020-02-10
 
-### 第 24 次发布
+### 第 30 次发布
 
-发布时间：2022-09-05 06:51:57
+发布时间：2022-09-06 06:13:56
 
 本次发布包含了以下内容：
 
 改善已有的文档。
-
-新增数据结构：
-
-* [DropPageConfig](https://cloud.tencent.com/document/api/1552/73155#DropPageConfig)
-* [DropPageDetail](https://cloud.tencent.com/document/api/1552/73155#DropPageDetail)
-* [ExceptConfig](https://cloud.tencent.com/document/api/1552/73155#ExceptConfig)
-* [ExceptUserRule](https://cloud.tencent.com/document/api/1552/73155#ExceptUserRule)
-* [ExceptUserRuleCondition](https://cloud.tencent.com/document/api/1552/73155#ExceptUserRuleCondition)
-* [ExceptUserRuleScope](https://cloud.tencent.com/document/api/1552/73155#ExceptUserRuleScope)
 
 修改数据结构：
 
-* [BotPortraitRule](https://cloud.tencent.com/document/api/1552/73155#BotPortraitRule)
+* [AutoCalloutTaskCalleeInfo](https://cloud.tencent.com/document/api/679/47715#AutoCalloutTaskCalleeInfo)
 
-	* 新增成员：ManagedIds, TransManagedIds
-
-* [SecurityConfig](https://cloud.tencent.com/document/api/1552/73155#SecurityConfig)
-
-	* 新增成员：ExceptConfig, DropPageConfig
+	* 新增成员：Sessions
 
 
 
 
-## 私有网络(vpc) 版本：2017-03-12
+## 云防火墙(cfw) 版本：2019-09-04
 
-### 第 123 次发布
+### 第 22 次发布
 
-发布时间：2022-09-05 06:59:01
+发布时间：2022-09-06 06:16:40
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-新增接口：
+<font color="#dd0000">**删除接口**：</font>
 
-* [DescribeTrafficPackages](https://cloud.tencent.com/document/api/215/80090)
+* ModifyVPCSwitchStatus
 
-新增数据结构：
 
-* [TrafficPackage](https://cloud.tencent.com/document/api/215/15824#TrafficPackage)
+
+## 弹性 MapReduce(emr) 版本：2019-01-03
+
+### 第 37 次发布
+
+发布时间：2022-09-06 06:30:34
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeClusterNodes](https://cloud.tencent.com/document/api/589/41707)
+
+	* 新增入参：OrderField, Asc
+
+
+修改数据结构：
+
+* [JobResult](https://cloud.tencent.com/document/api/589/33981#JobResult)
+
+	* 新增成员：ApplicationId
+
+* [NodeHardwareInfo](https://cloud.tencent.com/document/api/589/33981#NodeHardwareInfo)
+
+	* 新增成员：CurrentTime, IsFederation, DeviceName, ServiceClient
+
+
+
+
+## 游戏多媒体引擎(gme) 版本：2018-07-11
+
+### 第 23 次发布
+
+发布时间：2022-09-06 06:33:02
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeUserInAndOutTime](https://cloud.tencent.com/document/api/607/50480)
+
+	* 新增入参：UserIdStr, RoomIdStr
+
+
+
+
+## 云监控(monitor) 版本：2018-07-24
+
+### 第 58 次发布
+
+发布时间：2022-09-06 06:42:23
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateGrafanaNotificationChannel](https://cloud.tencent.com/document/api/248/79217)
+
+	* 新增出参：ChannelId
+
+* [CreateSSOAccount](https://cloud.tencent.com/document/api/248/79216)
+
+	* 新增出参：UserId
+
+* [DescribeInstalledPlugins](https://cloud.tencent.com/document/api/248/79204)
+
+	* 新增入参：PluginId
+
+* [DescribeSSOAccount](https://cloud.tencent.com/document/api/248/79202)
+
+	* 新增入参：UserId
+
+* [InstallPlugins](https://cloud.tencent.com/document/api/248/79198)
+
+	* 新增出参：PluginIds
+
+
+修改数据结构：
+
+* [GrafanaNotificationChannel](https://cloud.tencent.com/document/api/248/30354#GrafanaNotificationChannel)
+
+	* 新增成员：OrgId, ExtraOrgIds, OrgIds
+
 
 
 
@@ -1593,6 +1656,18 @@
 
 
 ## DDoS 防护(antiddos) 版本：2020-03-09
+
+### 第 41 次发布
+
+发布时间：2022-09-06 06:07:26
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除接口**：</font>
+
+* ModifyL7RulesEdge
 
 ### 第 40 次发布
 
@@ -6323,6 +6398,23 @@
 
 ## 人体分析(bda) 版本：2020-03-24
 
+### 第 9 次发布
+
+发布时间：2022-09-06 06:10:38
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [SegmentPortraitPic](https://cloud.tencent.com/document/api/1208/42970)
+
+	* 新增入参：RspImgType
+
+	* 新增出参：HasForeground, ResultImageUrl, ResultMaskUrl
+
+
 ### 第 8 次发布
 
 发布时间：2022-08-04 06:09:29
@@ -7789,9 +7881,9 @@
 
 新增接口：
 
-* [[CreateCRRightFile](https://cloud.tencent.com/document/api/1296/80089)](https://cloud.tencent.com/document/api/#/#)
-* [[CreateCRTort](https://cloud.tencent.com/document/api/1296/80088)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyCRWhiteList](https://cloud.tencent.com/document/api/1296/80087)](https://cloud.tencent.com/document/api/#/#)
+* [CreateCRRightFile](https://cloud.tencent.com/document/api/1296/80089)
+* [CreateCRTort](https://cloud.tencent.com/document/api/1296/80088)
+* [ModifyCRWhiteList](https://cloud.tencent.com/document/api/1296/80087)
 
 修改接口：
 
@@ -7802,7 +7894,7 @@
 
 新增数据结构：
 
-* [[File](https://cloud.tencent.com/document/api/1296/78030#File)](https://cloud.tencent.com/document/api/1296/78030#[File](https://cloud.tencent.com/document/api/1296/78030#File))
+* [File](https://cloud.tencent.com/document/api/1296/78030#File)
 
 ### 第 5 次发布
 
@@ -10887,6 +10979,21 @@
 
 
 ## 云呼叫中心(ccc) 版本：2020-02-10
+
+### 第 30 次发布
+
+发布时间：2022-09-06 06:13:56
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [AutoCalloutTaskCalleeInfo](https://cloud.tencent.com/document/api/679/47715#AutoCalloutTaskCalleeInfo)
+
+	* 新增成员：Sessions
+
 
 ### 第 29 次发布
 
@@ -16334,6 +16441,18 @@
 
 
 ## 云防火墙(cfw) 版本：2019-09-04
+
+### 第 22 次发布
+
+发布时间：2022-09-06 06:16:40
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除接口**：</font>
+
+* ModifyVPCSwitchStatus
 
 ### 第 21 次发布
 
@@ -35957,6 +36076,32 @@
 
 ## 弹性 MapReduce(emr) 版本：2019-01-03
 
+### 第 37 次发布
+
+发布时间：2022-09-06 06:30:34
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeClusterNodes](https://cloud.tencent.com/document/api/589/41707)
+
+	* 新增入参：OrderField, Asc
+
+
+修改数据结构：
+
+* [JobResult](https://cloud.tencent.com/document/api/589/33981#JobResult)
+
+	* 新增成员：ApplicationId
+
+* [NodeHardwareInfo](https://cloud.tencent.com/document/api/589/33981#NodeHardwareInfo)
+
+	* 新增成员：CurrentTime, IsFederation, DeviceName, ServiceClient
+
+
 ### 第 36 次发布
 
 发布时间：2022-07-21 06:09:30
@@ -40829,6 +40974,21 @@
 
 
 ## 游戏多媒体引擎(gme) 版本：2018-07-11
+
+### 第 23 次发布
+
+发布时间：2022-09-06 06:33:02
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeUserInAndOutTime](https://cloud.tencent.com/document/api/607/50480)
+
+	* 新增入参：UserIdStr, RoomIdStr
+
 
 ### 第 22 次发布
 
@@ -52564,6 +52724,44 @@
 
 
 ## 云监控(monitor) 版本：2018-07-24
+
+### 第 58 次发布
+
+发布时间：2022-09-06 06:42:23
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateGrafanaNotificationChannel](https://cloud.tencent.com/document/api/248/79217)
+
+	* 新增出参：ChannelId
+
+* [CreateSSOAccount](https://cloud.tencent.com/document/api/248/79216)
+
+	* 新增出参：UserId
+
+* [DescribeInstalledPlugins](https://cloud.tencent.com/document/api/248/79204)
+
+	* 新增入参：PluginId
+
+* [DescribeSSOAccount](https://cloud.tencent.com/document/api/248/79202)
+
+	* 新增入参：UserId
+
+* [InstallPlugins](https://cloud.tencent.com/document/api/248/79198)
+
+	* 新增出参：PluginIds
+
+
+修改数据结构：
+
+* [GrafanaNotificationChannel](https://cloud.tencent.com/document/api/248/30354#GrafanaNotificationChannel)
+
+	* 新增成员：OrgId, ExtraOrgIds, OrgIds
+
 
 ### 第 57 次发布
 
@@ -73020,12 +73218,12 @@
 
 新增数据结构：
 
-* [[DropPageConfig](https://cloud.tencent.com/document/api/1552/73155#DropPageConfig)](https://cloud.tencent.com/document/api/1552/73155#[DropPageConfig](https://cloud.tencent.com/document/api/1552/73155#DropPageConfig))
-* [[DropPageDetail](https://cloud.tencent.com/document/api/1552/73155#DropPageDetail)](https://cloud.tencent.com/document/api/1552/73155#[DropPageDetail](https://cloud.tencent.com/document/api/1552/73155#DropPageDetail))
-* [[ExceptConfig](https://cloud.tencent.com/document/api/1552/73155#ExceptConfig)](https://cloud.tencent.com/document/api/1552/73155#[ExceptConfig](https://cloud.tencent.com/document/api/1552/73155#ExceptConfig))
-* [[ExceptUserRule](https://cloud.tencent.com/document/api/1552/73155#ExceptUserRule)](https://cloud.tencent.com/document/api/1552/73155#[ExceptUserRule](https://cloud.tencent.com/document/api/1552/73155#ExceptUserRule))
-* [[ExceptUserRuleCondition](https://cloud.tencent.com/document/api/1552/73155#ExceptUserRuleCondition)](https://cloud.tencent.com/document/api/1552/73155#[ExceptUserRuleCondition](https://cloud.tencent.com/document/api/1552/73155#ExceptUserRuleCondition))
-* [[ExceptUserRuleScope](https://cloud.tencent.com/document/api/1552/73155#ExceptUserRuleScope)](https://cloud.tencent.com/document/api/1552/73155#[ExceptUserRuleScope](https://cloud.tencent.com/document/api/1552/73155#ExceptUserRuleScope))
+* [DropPageConfig](https://cloud.tencent.com/document/api/1552/73155#DropPageConfig)
+* [DropPageDetail](https://cloud.tencent.com/document/api/1552/73155#DropPageDetail)
+* [ExceptConfig](https://cloud.tencent.com/document/api/1552/73155#ExceptConfig)
+* [ExceptUserRule](https://cloud.tencent.com/document/api/1552/73155#ExceptUserRule)
+* [ExceptUserRuleCondition](https://cloud.tencent.com/document/api/1552/73155#ExceptUserRuleCondition)
+* [ExceptUserRuleScope](https://cloud.tencent.com/document/api/1552/73155#ExceptUserRuleScope)
 
 修改数据结构：
 
@@ -85963,11 +86161,11 @@
 
 新增接口：
 
-* [[DescribeTrafficPackages](https://cloud.tencent.com/document/api/215/80090)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeTrafficPackages](https://cloud.tencent.com/document/api/215/80090)
 
 新增数据结构：
 
-* [[TrafficPackage](https://cloud.tencent.com/document/api/215/15824#TrafficPackage)](https://cloud.tencent.com/document/api/215/15824#[TrafficPackage](https://cloud.tencent.com/document/api/215/15824#TrafficPackage))
+* [TrafficPackage](https://cloud.tencent.com/document/api/215/15824#TrafficPackage)
 
 ### 第 122 次发布
 

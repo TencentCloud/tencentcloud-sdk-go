@@ -434,7 +434,7 @@ type ClusterSetting struct {
 	// 实例登录配置。
 	LoginSettings *LoginSettings `json:"LoginSettings,omitempty" name:"LoginSettings"`
 
-	// 实例标签。
+	// 实例标签，示例：["{\"TagKey\":\"test-tag1\",\"TagValue\":\"001\"}","{\"TagKey\":\"test-tag2\",\"TagValue\":\"002\"}"]。
 	TagSpecification []*string `json:"TagSpecification,omitempty" name:"TagSpecification"`
 
 	// 元数据库配置。
@@ -880,6 +880,12 @@ type DescribeClusterNodesRequestParams struct {
 
 	// 支持搜索的字段
 	SearchFields []*SearchItem `json:"SearchFields,omitempty" name:"SearchFields"`
+
+	// 无
+	OrderField *string `json:"OrderField,omitempty" name:"OrderField"`
+
+	// 无
+	Asc *int64 `json:"Asc,omitempty" name:"Asc"`
 }
 
 type DescribeClusterNodesRequest struct {
@@ -912,6 +918,12 @@ type DescribeClusterNodesRequest struct {
 
 	// 支持搜索的字段
 	SearchFields []*SearchItem `json:"SearchFields,omitempty" name:"SearchFields"`
+
+	// 无
+	OrderField *string `json:"OrderField,omitempty" name:"OrderField"`
+
+	// 无
+	Asc *int64 `json:"Asc,omitempty" name:"Asc"`
 }
 
 func (r *DescribeClusterNodesRequest) ToJsonString() string {
@@ -932,6 +944,8 @@ func (r *DescribeClusterNodesRequest) FromJsonString(s string) error {
 	delete(f, "Limit")
 	delete(f, "HardwareResourceType")
 	delete(f, "SearchFields")
+	delete(f, "OrderField")
+	delete(f, "Asc")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeClusterNodesRequest has unknown keys!", "")
 	}
@@ -2746,6 +2760,10 @@ type JobResult struct {
 	// “JobFlowStepStatusSucceed”，任务步骤执行成功。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	JobState *string `json:"JobState,omitempty" name:"JobState"`
+
+	// YARN任务ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApplicationId *string `json:"ApplicationId,omitempty" name:"ApplicationId"`
 }
 
 type LoginSettings struct {
@@ -3224,6 +3242,22 @@ type NodeHardwareInfo struct {
 	// 客户端
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Clients *string `json:"Clients,omitempty" name:"Clients"`
+
+	// 系统当前时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CurrentTime *string `json:"CurrentTime,omitempty" name:"CurrentTime"`
+
+	// 是否用于联邦
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsFederation *int64 `json:"IsFederation,omitempty" name:"IsFederation"`
+
+	// 设备名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeviceName *string `json:"DeviceName,omitempty" name:"DeviceName"`
+
+	// 服务
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ServiceClient *string `json:"ServiceClient,omitempty" name:"ServiceClient"`
 }
 
 type OutterResource struct {
@@ -4148,8 +4182,7 @@ type Step struct {
 
 	// 执行失败策略。
 	// 1. TERMINATE_CLUSTER 执行失败时退出并销毁集群。
-	// 2. CANCEL_AND_WAIT 执行失败时阻塞等待。
-	// 3. CONTINUE 执行失败时跳过并执行后续步骤。
+	// 2. CONTINUE 执行失败时跳过并执行后续步骤。
 	ActionOnFailure *string `json:"ActionOnFailure,omitempty" name:"ActionOnFailure"`
 
 	// 指定执行Step时的用户名，非必须，默认为hadoop。

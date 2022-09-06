@@ -1078,6 +1078,12 @@ type DescribeUserInAndOutTimeRequestParams struct {
 
 	// 用户ID
 	UserId *int64 `json:"UserId,omitempty" name:"UserId"`
+
+	// 字符串类型用户ID
+	UserIdStr *string `json:"UserIdStr,omitempty" name:"UserIdStr"`
+
+	// 字符串类型房间ID
+	RoomIdStr *string `json:"RoomIdStr,omitempty" name:"RoomIdStr"`
 }
 
 type DescribeUserInAndOutTimeRequest struct {
@@ -1091,6 +1097,12 @@ type DescribeUserInAndOutTimeRequest struct {
 
 	// 用户ID
 	UserId *int64 `json:"UserId,omitempty" name:"UserId"`
+
+	// 字符串类型用户ID
+	UserIdStr *string `json:"UserIdStr,omitempty" name:"UserIdStr"`
+
+	// 字符串类型房间ID
+	RoomIdStr *string `json:"RoomIdStr,omitempty" name:"RoomIdStr"`
 }
 
 func (r *DescribeUserInAndOutTimeRequest) ToJsonString() string {
@@ -1108,6 +1120,8 @@ func (r *DescribeUserInAndOutTimeRequest) FromJsonString(s string) error {
 	delete(f, "BizId")
 	delete(f, "RoomId")
 	delete(f, "UserId")
+	delete(f, "UserIdStr")
+	delete(f, "RoomIdStr")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeUserInAndOutTimeRequest has unknown keys!", "")
 	}

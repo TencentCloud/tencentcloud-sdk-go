@@ -998,6 +998,7 @@ func NewDeleteFirmwareResponse() (response *DeleteFirmwareResponse) {
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_FIRMWARENOTEXIST = "ResourceNotFound.FirmwareNotExist"
 func (c *Client) DeleteFirmware(request *DeleteFirmwareRequest) (response *DeleteFirmwareResponse, err error) {
     return c.DeleteFirmwareWithContext(context.Background(), request)
 }
@@ -1009,6 +1010,7 @@ func (c *Client) DeleteFirmware(request *DeleteFirmwareRequest) (response *Delet
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_FIRMWARENOTEXIST = "ResourceNotFound.FirmwareNotExist"
 func (c *Client) DeleteFirmwareWithContext(ctx context.Context, request *DeleteFirmwareRequest) (response *DeleteFirmwareResponse, err error) {
     if request == nil {
         request = NewDeleteFirmwareRequest()

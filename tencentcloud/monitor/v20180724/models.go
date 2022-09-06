@@ -1520,6 +1520,10 @@ func (r *CreateGrafanaNotificationChannelRequest) FromJsonString(s string) error
 
 // Predefined struct for user
 type CreateGrafanaNotificationChannelResponseParams struct {
+	// 通道 ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ChannelId *string `json:"ChannelId,omitempty" name:"ChannelId"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }
@@ -2090,6 +2094,9 @@ func (r *CreateSSOAccountRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateSSOAccountResponseParams struct {
+	// 已添加的用户 UIN
+	UserId *string `json:"UserId,omitempty" name:"UserId"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }
@@ -5373,6 +5380,9 @@ func (r *DescribeGrafanaWhiteListResponse) FromJsonString(s string) error {
 type DescribeInstalledPluginsRequestParams struct {
 	// 实例 ID
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 按插件 ID 过滤
+	PluginId *string `json:"PluginId,omitempty" name:"PluginId"`
 }
 
 type DescribeInstalledPluginsRequest struct {
@@ -5380,6 +5390,9 @@ type DescribeInstalledPluginsRequest struct {
 	
 	// 实例 ID
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 按插件 ID 过滤
+	PluginId *string `json:"PluginId,omitempty" name:"PluginId"`
 }
 
 func (r *DescribeInstalledPluginsRequest) ToJsonString() string {
@@ -5395,6 +5408,7 @@ func (r *DescribeInstalledPluginsRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "InstanceId")
+	delete(f, "PluginId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeInstalledPluginsRequest has unknown keys!", "")
 	}
@@ -7112,6 +7126,9 @@ func (r *DescribeRecordingRulesResponse) FromJsonString(s string) error {
 type DescribeSSOAccountRequestParams struct {
 	// 实例ID
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 按账号 UIN 进行过滤
+	UserId *string `json:"UserId,omitempty" name:"UserId"`
 }
 
 type DescribeSSOAccountRequest struct {
@@ -7119,6 +7136,9 @@ type DescribeSSOAccountRequest struct {
 	
 	// 实例ID
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 按账号 UIN 进行过滤
+	UserId *string `json:"UserId,omitempty" name:"UserId"`
 }
 
 func (r *DescribeSSOAccountRequest) ToJsonString() string {
@@ -7134,6 +7154,7 @@ func (r *DescribeSSOAccountRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "InstanceId")
+	delete(f, "UserId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSSOAccountRequest has unknown keys!", "")
 	}
@@ -7952,6 +7973,17 @@ type GrafanaNotificationChannel struct {
 
 	// 更新时间
 	UpdatedAt *string `json:"UpdatedAt,omitempty" name:"UpdatedAt"`
+
+	// 默认生效组织
+	OrgId *string `json:"OrgId,omitempty" name:"OrgId"`
+
+	// 额外生效组织
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExtraOrgIds []*string `json:"ExtraOrgIds,omitempty" name:"ExtraOrgIds"`
+
+	// 生效组织
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OrgIds *string `json:"OrgIds,omitempty" name:"OrgIds"`
 }
 
 type GrafanaPlugin struct {
@@ -8004,6 +8036,10 @@ func (r *InstallPluginsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type InstallPluginsResponseParams struct {
+	// 已安装插件 ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PluginIds []*string `json:"PluginIds,omitempty" name:"PluginIds"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }

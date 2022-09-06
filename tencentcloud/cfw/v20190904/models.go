@@ -90,7 +90,7 @@ type AddAcRuleRequestParams struct {
 	// 当SourceType为net时，SourceContent为源IP地址或者CIDR地址。
 	// 例如：1.1.1.0/24
 	// 
-	// 当SourceType为template时，SourceContent为源地址模板名称。
+	// 当SourceType为template时，SourceContent为源地址模板id。
 	// 
 	// 当SourceType为location时，SourceContent为源区域。
 	// 例如["BJ11", "ZB"]
@@ -115,7 +115,7 @@ type AddAcRuleRequestParams struct {
 	// 当DestType为net时，DestContent为源IP地址或者CIDR地址。
 	// 例如：1.1.1.0/24
 	// 
-	// 当DestType为template时，DestContent为源地址模板名称。
+	// 当DestType为template时，DestContent为源地址模板id。
 	// 
 	// 当DestType为location时，DestContent为源区域。
 	// 例如["BJ11", "ZB"]
@@ -180,7 +180,7 @@ type AddAcRuleRequest struct {
 	// 当SourceType为net时，SourceContent为源IP地址或者CIDR地址。
 	// 例如：1.1.1.0/24
 	// 
-	// 当SourceType为template时，SourceContent为源地址模板名称。
+	// 当SourceType为template时，SourceContent为源地址模板id。
 	// 
 	// 当SourceType为location时，SourceContent为源区域。
 	// 例如["BJ11", "ZB"]
@@ -205,7 +205,7 @@ type AddAcRuleRequest struct {
 	// 当DestType为net时，DestContent为源IP地址或者CIDR地址。
 	// 例如：1.1.1.0/24
 	// 
-	// 当DestType为template时，DestContent为源地址模板名称。
+	// 当DestType为template时，DestContent为源地址模板id。
 	// 
 	// 当DestType为location时，DestContent为源区域。
 	// 例如["BJ11", "ZB"]
@@ -5405,74 +5405,6 @@ func (r *ModifyTableStatusResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyTableStatusResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type ModifyVPCSwitchStatusRequestParams struct {
-	// 公网IP
-	FirewallVpcId *string `json:"FirewallVpcId,omitempty" name:"FirewallVpcId"`
-
-	// 状态值，0: 关闭 ,1:开启
-	Status *int64 `json:"Status,omitempty" name:"Status"`
-}
-
-type ModifyVPCSwitchStatusRequest struct {
-	*tchttp.BaseRequest
-	
-	// 公网IP
-	FirewallVpcId *string `json:"FirewallVpcId,omitempty" name:"FirewallVpcId"`
-
-	// 状态值，0: 关闭 ,1:开启
-	Status *int64 `json:"Status,omitempty" name:"Status"`
-}
-
-func (r *ModifyVPCSwitchStatusRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *ModifyVPCSwitchStatusRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "FirewallVpcId")
-	delete(f, "Status")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyVPCSwitchStatusRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type ModifyVPCSwitchStatusResponseParams struct {
-	// 接口返回信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	ReturnMsg *string `json:"ReturnMsg,omitempty" name:"ReturnMsg"`
-
-	// 接口返回错误码，0请求成功  非0失败
-	ReturnCode *int64 `json:"ReturnCode,omitempty" name:"ReturnCode"`
-
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-}
-
-type ModifyVPCSwitchStatusResponse struct {
-	*tchttp.BaseResponse
-	Response *ModifyVPCSwitchStatusResponseParams `json:"Response"`
-}
-
-func (r *ModifyVPCSwitchStatusResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *ModifyVPCSwitchStatusResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

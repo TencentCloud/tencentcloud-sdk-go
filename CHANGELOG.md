@@ -1,3 +1,168 @@
+# Release v1.0.492
+
+## DDoS 防护(antiddos) 版本：2020-03-09
+
+### 第 41 次发布
+
+发布时间：2022-09-06 06:07:26
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除接口**：</font>
+
+* ModifyL7RulesEdge
+
+
+
+## 人体分析(bda) 版本：2020-03-24
+
+### 第 9 次发布
+
+发布时间：2022-09-06 06:10:38
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [SegmentPortraitPic](https://cloud.tencent.com/document/api/1208/42970)
+
+	* 新增入参：RspImgType
+
+	* 新增出参：HasForeground, ResultImageUrl, ResultMaskUrl
+
+
+
+
+## 云呼叫中心(ccc) 版本：2020-02-10
+
+### 第 30 次发布
+
+发布时间：2022-09-06 06:13:56
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [AutoCalloutTaskCalleeInfo](https://cloud.tencent.com/document/api/679/47715#AutoCalloutTaskCalleeInfo)
+
+	* 新增成员：Sessions
+
+
+
+
+## 云防火墙(cfw) 版本：2019-09-04
+
+### 第 22 次发布
+
+发布时间：2022-09-06 06:16:40
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除接口**：</font>
+
+* ModifyVPCSwitchStatus
+
+
+
+## 弹性 MapReduce(emr) 版本：2019-01-03
+
+### 第 37 次发布
+
+发布时间：2022-09-06 06:30:34
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeClusterNodes](https://cloud.tencent.com/document/api/589/41707)
+
+	* 新增入参：OrderField, Asc
+
+
+修改数据结构：
+
+* [JobResult](https://cloud.tencent.com/document/api/589/33981#JobResult)
+
+	* 新增成员：ApplicationId
+
+* [NodeHardwareInfo](https://cloud.tencent.com/document/api/589/33981#NodeHardwareInfo)
+
+	* 新增成员：CurrentTime, IsFederation, DeviceName, ServiceClient
+
+
+
+
+## 游戏多媒体引擎(gme) 版本：2018-07-11
+
+### 第 23 次发布
+
+发布时间：2022-09-06 06:33:02
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeUserInAndOutTime](https://cloud.tencent.com/document/api/607/50480)
+
+	* 新增入参：UserIdStr, RoomIdStr
+
+
+
+
+## 云监控(monitor) 版本：2018-07-24
+
+### 第 58 次发布
+
+发布时间：2022-09-06 06:42:23
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateGrafanaNotificationChannel](https://cloud.tencent.com/document/api/248/79217)
+
+	* 新增出参：ChannelId
+
+* [CreateSSOAccount](https://cloud.tencent.com/document/api/248/79216)
+
+	* 新增出参：UserId
+
+* [DescribeInstalledPlugins](https://cloud.tencent.com/document/api/248/79204)
+
+	* 新增入参：PluginId
+
+* [DescribeSSOAccount](https://cloud.tencent.com/document/api/248/79202)
+
+	* 新增入参：UserId
+
+* [InstallPlugins](https://cloud.tencent.com/document/api/248/79198)
+
+	* 新增出参：PluginIds
+
+
+修改数据结构：
+
+* [GrafanaNotificationChannel](https://cloud.tencent.com/document/api/248/30354#GrafanaNotificationChannel)
+
+	* 新增成员：OrgId, ExtraOrgIds, OrgIds
+
+
+
+
 # Release v1.0.491
 
 ## 品牌经营管家(bma) 版本：2021-06-24

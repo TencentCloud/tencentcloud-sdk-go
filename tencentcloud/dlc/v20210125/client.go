@@ -2343,6 +2343,7 @@ func NewDescribeTablesResponse() (response *DescribeTablesResponse) {
 // 本接口（DescribeTables）用于查询数据表列表。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND_DATASOURCENOTFOUND = "ResourceNotFound.DatasourceNotFound"
@@ -2354,6 +2355,7 @@ func (c *Client) DescribeTables(request *DescribeTablesRequest) (response *Descr
 // 本接口（DescribeTables）用于查询数据表列表。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND_DATASOURCENOTFOUND = "ResourceNotFound.DatasourceNotFound"
@@ -2565,6 +2567,7 @@ func NewDescribeViewsResponse() (response *DescribeViewsResponse) {
 // 本接口（DescribeViews）用于查询数据视图列表。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND_DATASOURCENOTFOUND = "ResourceNotFound.DatasourceNotFound"
@@ -2576,6 +2579,7 @@ func (c *Client) DescribeViews(request *DescribeViewsRequest) (response *Describ
 // 本接口（DescribeViews）用于查询数据视图列表。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND_DATASOURCENOTFOUND = "ResourceNotFound.DatasourceNotFound"
