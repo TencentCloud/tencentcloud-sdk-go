@@ -2,7 +2,10 @@ package common
 
 import (
 	"bytes"
+	"compress/flate"
 	"compress/gzip"
+	"github.com/andybalholm/brotli"
+	"io"
 	"io/ioutil"
 	"net/http"
 	"time"
@@ -52,21 +55,38 @@ func (c *Client) sendWithRateLimitRetry(req *http.Request, retryable bool) (resp
 }
 
 func shadowRead(resp *http.Response) ([]byte, error) {
-	var reader = resp.Body
+	var reader io.ReadCloser
 	var err error
-	if resp.Header.Get("Content-Encoding") == "gzip" {
+	var val []byte
+
+	switch resp.Header.Get("Content-Encoding") {
+	case "":
+		reader = resp.Body
+	case "br":
+		reader = ioutil.NopCloser(brotli.NewReader(resp.Body))
+	case "deflate":
+		reader = flate.NewReader(resp.Body)
+	case "gzip":
 		reader, err = gzip.NewReader(resp.Body)
 		if err != nil {
 			return nil, err
 		}
 	}
 
-	val, err := ioutil.ReadAll(reader)
+	val, err = ioutil.ReadAll(reader)
 	if err != nil {
 		return nil, err
 	}
+
+	err = resp.Body.Close()
+	if err != nil {
+		return nil, err
+	}
+
 	resp.Body = ioutil.NopCloser(bytes.NewReader(val))
+
 	// delete the header in case the caller mistake the body being encoded
 	delete(resp.Header, "Content-Encoding")
+
 	return val, nil
 }
