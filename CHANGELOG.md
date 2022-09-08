@@ -1,3 +1,508 @@
+# Release v1.0.493
+
+## 品牌经营管家(bma) 版本：2021-06-24
+
+### 第 7 次发布
+
+发布时间：2022-09-07 06:10:17
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateCRWork](https://cloud.tencent.com/document/api/1296/78029)
+
+	* 新增入参：MonitorEndTime
+
+
+
+
+## 云硬盘(cbs) 版本：2017-03-12
+
+### 第 44 次发布
+
+发布时间：2022-09-08 06:11:23
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [ApplyDiskBackup](https://cloud.tencent.com/document/api/362/80280)
+* [DeleteDiskBackups](https://cloud.tencent.com/document/api/362/80279)
+* [DescribeDiskBackups](https://cloud.tencent.com/document/api/362/80278)
+* [InquirePriceModifyDiskBackupQuota](https://cloud.tencent.com/document/api/362/80277)
+* [ModifyDiskBackupQuota](https://cloud.tencent.com/document/api/362/80276)
+
+新增数据结构：
+
+* [DiskBackup](https://cloud.tencent.com/document/api/362/15669#DiskBackup)
+
+
+
+## 云数据库 MySQL(cdb) 版本：2017-03-20
+
+### 第 99 次发布
+
+发布时间：2022-09-08 06:12:00
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeCdbZoneConfig](https://cloud.tencent.com/document/api/236/80281)
+
+新增数据结构：
+
+* [CdbRegionSellConf](https://cloud.tencent.com/document/api/236/15878#CdbRegionSellConf)
+* [CdbSellConfig](https://cloud.tencent.com/document/api/236/15878#CdbSellConfig)
+* [CdbSellType](https://cloud.tencent.com/document/api/236/15878#CdbSellType)
+* [CdbZoneDataResult](https://cloud.tencent.com/document/api/236/15878#CdbZoneDataResult)
+* [CdbZoneSellConf](https://cloud.tencent.com/document/api/236/15878#CdbZoneSellConf)
+
+### 第 98 次发布
+
+发布时间：2022-09-07 06:13:01
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeDBPrice](https://cloud.tencent.com/document/api/236/18566)
+
+	* 新增入参：Ladder
+
+	* 新增出参：Currency
+
+
+修改数据结构：
+
+* [InstanceInfo](https://cloud.tencent.com/document/api/236/15878#InstanceInfo)
+
+	* 新增成员：EngineType, MaxDelayTime
+
+
+
+
+## 文件存储(cfs) 版本：2019-07-19
+
+### 第 11 次发布
+
+发布时间：2022-09-07 06:15:13
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [BindAutoSnapshotPolicy](https://cloud.tencent.com/document/api/582/80211)
+* [CreateAutoSnapshotPolicy](https://cloud.tencent.com/document/api/582/80210)
+* [CreateCfsSnapshot](https://cloud.tencent.com/document/api/582/80200)
+* [DeleteAutoSnapshotPolicy](https://cloud.tencent.com/document/api/582/80209)
+* [DeleteCfsSnapshot](https://cloud.tencent.com/document/api/582/80199)
+* [DescribeAutoSnapshotPolicies](https://cloud.tencent.com/document/api/582/80208)
+* [DescribeCfsSnapshotOverview](https://cloud.tencent.com/document/api/582/80207)
+* [DescribeCfsSnapshots](https://cloud.tencent.com/document/api/582/80206)
+* [DescribeSnapshotOperationLogs](https://cloud.tencent.com/document/api/582/80205)
+* [UnbindAutoSnapshotPolicy](https://cloud.tencent.com/document/api/582/80204)
+* [UpdateAutoSnapshotPolicy](https://cloud.tencent.com/document/api/582/80203)
+* [UpdateCfsSnapshotAttribute](https://cloud.tencent.com/document/api/582/80202)
+
+新增数据结构：
+
+* [AutoSnapshotPolicyInfo](https://cloud.tencent.com/document/api/582/38175#AutoSnapshotPolicyInfo)
+* [FileSystemByPolicy](https://cloud.tencent.com/document/api/582/38175#FileSystemByPolicy)
+* [Filter](https://cloud.tencent.com/document/api/582/38175#Filter)
+* [SnapshotInfo](https://cloud.tencent.com/document/api/582/38175#SnapshotInfo)
+* [SnapshotOperateLog](https://cloud.tencent.com/document/api/582/38175#SnapshotOperateLog)
+* [SnapshotStatistics](https://cloud.tencent.com/document/api/582/38175#SnapshotStatistics)
+
+
+
+## 云防火墙(cfw) 版本：2019-09-04
+
+### 第 23 次发布
+
+发布时间：2022-09-08 06:13:55
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [NatInstanceInfo](https://cloud.tencent.com/document/api/1132/49071#NatInstanceInfo)
+
+	* 新增成员：RegionDetail, ZoneZh, ZoneZhBak
+
+
+
+
+## 主机安全(cwp) 版本：2018-02-28
+
+### 第 51 次发布
+
+发布时间：2022-09-07 06:21:27
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeGeneralStat](https://cloud.tencent.com/document/api/296/53132)
+
+	* 新增出参：AddedOnTheFifteen
+
+
+修改数据结构：
+
+* [Machine](https://cloud.tencent.com/document/api/296/19867#Machine)
+
+	* 新增成员：IsAddedOnTheFifteen
+
+* [MalWareList](https://cloud.tencent.com/document/api/296/19867#MalWareList)
+
+	* 新增成员：Quuid, MD5
+
+
+
+
+## 云原生数据库 TDSQL-C(cynosdb) 版本：2019-01-07
+
+### 第 26 次发布
+
+发布时间：2022-09-08 06:19:30
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [ModifyClusterStorage](https://cloud.tencent.com/document/api/1003/80282)
+
+### 第 25 次发布
+
+发布时间：2022-09-07 06:23:00
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateBackup](https://cloud.tencent.com/document/api/1003/80212)
+
+新增数据结构：
+
+* [DatabaseTables](https://cloud.tencent.com/document/api/1003/48097#DatabaseTables)
+
+
+
+## 数据库智能管家 DBbrain(dbbrain) 版本：2021-05-27
+
+### 第 10 次发布
+
+发布时间：2022-09-07 06:24:27
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeRedisTopKeyPrefixList](https://cloud.tencent.com/document/api/1130/80213)
+
+新增数据结构：
+
+* [RedisPreKeySpaceData](https://cloud.tencent.com/document/api/1130/57812#RedisPreKeySpaceData)
+
+
+
+## 数据库智能管家 DBbrain(dbbrain) 版本：2019-10-16
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
+
+### 第 29 次发布
+
+发布时间：2022-09-07 06:29:24
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeTemplates](https://cloud.tencent.com/document/api/1420/61521)
+
+	* 新增入参：QueryAllComponents, TemplateName
+
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
+
+
+
+## 云监控(monitor) 版本：2018-07-24
+
+### 第 60 次发布
+
+发布时间：2022-09-08 06:32:23
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateGrafanaNotificationChannel](https://cloud.tencent.com/document/api/248/79217)
+
+	* 新增入参：OrganizationIds
+
+* [UpdateGrafanaNotificationChannel](https://cloud.tencent.com/document/api/248/79190)
+
+	* 新增入参：OrganizationIds
+
+
+修改数据结构：
+
+* [GrafanaNotificationChannel](https://cloud.tencent.com/document/api/248/30354#GrafanaNotificationChannel)
+
+	* 新增成员：OrganizationIds
+
+
+### 第 59 次发布
+
+发布时间：2022-09-07 06:39:04
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateGrafanaIntegration](https://cloud.tencent.com/document/api/248/79218)
+
+	* 新增出参：IntegrationId
+
+
+
+
+## 证书(ssl) 版本：2019-12-05
+
+### 第 18 次发布
+
+发布时间：2022-09-08 06:38:47
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeCertificateDetail](https://cloud.tencent.com/document/api/400/41673)
+
+	* 新增出参：EncryptAlgorithm
+
+
+修改数据结构：
+
+* [Certificates](https://cloud.tencent.com/document/api/400/41679#Certificates)
+
+	* 新增成员：EncryptAlgorithm
+
+
+
+
+## 容器安全服务(tcss) 版本：2020-11-01
+
+### 第 26 次发布
+
+发布时间：2022-09-08 06:41:25
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ComplianceAffectedAsset](https://cloud.tencent.com/document/api/1285/65614#ComplianceAffectedAsset)
+
+	* 新增成员：VerifyInfo
+
+* [ComplianceAssetPolicyItem](https://cloud.tencent.com/document/api/1285/65614#ComplianceAssetPolicyItem)
+
+	* 新增成员：VerifyInfo
+
+
+
+
+## 弹性微服务(tem) 版本：2021-07-01
+
+### 第 29 次发布
+
+发布时间：2022-09-07 06:51:54
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DeployApplication](https://cloud.tencent.com/document/api/1371/60158)
+
+	* 新增入参：TcrInstanceId, RepoServer, RepoType
+
+
+
+
+## 弹性微服务(tem) 版本：2020-12-21
+
+
+
+## 腾讯云 TI 平台 TI-ONE(tione) 版本：2021-11-11
+
+### 第 5 次发布
+
+发布时间：2022-09-06 13:11:30
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateBatchTask](https://cloud.tencent.com/document/api/851/80182)
+* [DeleteBatchTask](https://cloud.tencent.com/document/api/851/80181)
+* [DescribeBatchTask](https://cloud.tencent.com/document/api/851/80180)
+* [DescribeBatchTaskInstances](https://cloud.tencent.com/document/api/851/80179)
+* [DescribeBatchTasks](https://cloud.tencent.com/document/api/851/80178)
+* [DescribeBillingSpecs](https://cloud.tencent.com/document/api/851/80175)
+* [StopBatchTask](https://cloud.tencent.com/document/api/851/80177)
+
+修改接口：
+
+* [CreateTrainingModel](https://cloud.tencent.com/document/api/851/75074)
+
+	* 新增入参：AutoClean, MaxReservedModels, ModelCleanPeriod
+
+
+新增数据结构：
+
+* [BatchTaskDetail](https://cloud.tencent.com/document/api/851/75051#BatchTaskDetail)
+* [BatchTaskInstance](https://cloud.tencent.com/document/api/851/75051#BatchTaskInstance)
+* [BatchTaskSetItem](https://cloud.tencent.com/document/api/851/75051#BatchTaskSetItem)
+* [CronInfo](https://cloud.tencent.com/document/api/851/75051#CronInfo)
+* [ModelInfo](https://cloud.tencent.com/document/api/851/75051#ModelInfo)
+* [Spec](https://cloud.tencent.com/document/api/851/75051#Spec)
+
+修改数据结构：
+
+* [TrainingModelVersionDTO](https://cloud.tencent.com/document/api/851/75051#TrainingModelVersionDTO)
+
+	* 新增成员：VersionType, GPUType, AutoClean, ModelCleanPeriod, MaxReservedModels, ModelHotUpdatePath
+
+
+
+
+## 腾讯云 TI 平台 TI-ONE(tione) 版本：2019-10-22
+
+
+
+## 容器服务(tke) 版本：2018-05-25
+
+### 第 121 次发布
+
+发布时间：2022-09-08 06:45:00
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [UpdateTKEEdgeCluster](https://cloud.tencent.com/document/api/457/74855)
+
+	* 新增入参：AutoUpgradeClusterLevel
+
+
+
+
+## 视频内容安全(vm) 版本：2021-09-22
+
+### 第 2 次发布
+
+发布时间：2022-09-08 06:47:59
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [RecognitionResult](https://cloud.tencent.com/document/api/1265/80019#RecognitionResult)
+* [Tag](https://cloud.tencent.com/document/api/1265/80019#Tag)
+
+修改数据结构：
+
+* [AudioResult](https://cloud.tencent.com/document/api/1265/80019#AudioResult)
+
+	* 新增成员：SubLabel, RecognitionResults
+
+* [AudioResultDetailMoanResult](https://cloud.tencent.com/document/api/1265/80019#AudioResultDetailMoanResult)
+
+	* 新增成员：SubLabel, Suggestion
+
+
+
+
+## 视频内容安全(vm) 版本：2020-12-29
+
+
+
+## 视频内容安全(vm) 版本：2020-07-09
+
+
+
+## 云点播(vod) 版本：2018-07-17
+
+### 第 119 次发布
+
+发布时间：2022-09-08 06:48:08
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [ReviewAudioVideo](https://cloud.tencent.com/document/api/266/80283)
+
+新增数据结构：
+
+* [ReviewAudioVideoTaskInput](https://cloud.tencent.com/document/api/266/31773#ReviewAudioVideoTaskInput)
+
+修改数据结构：
+
+* [ReviewAudioVideoTask](https://cloud.tencent.com/document/api/266/31773#ReviewAudioVideoTask)
+
+	* 新增成员：Input
+
+
+
+
 # Release v1.0.492
 
 ## DDoS 防护(antiddos) 版本：2020-03-09

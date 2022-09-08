@@ -80,6 +80,9 @@ const (
 	// 更新 ingress 失败。
 	INTERNALERROR_UPDATEINGRESSERROR = "InternalError.UpdateIngressError"
 
+	// APM 没有与当前环境绑定。
+	INVALIDPARAMETERVALUE_APMNOTBIND = "InvalidParameterValue.ApmNotBind"
+
 	// 只支持绑定一种弹性伸缩。
 	INVALIDPARAMETERVALUE_AUTOSCALERLARGERTHANONE = "InvalidParameterValue.AutoScalerLargerThanOne"
 
@@ -110,8 +113,17 @@ const (
 	// 版本号格式非法。
 	INVALIDPARAMETERVALUE_INVALIDDEPLOYVERSION = "InvalidParameterValue.InvalidDeployVersion"
 
+	// 环境变量名非法，要求有由字母、数字，"."，"_" 和 "-" 组成，不能由数字开头。
+	INVALIDPARAMETERVALUE_INVALIDENVNAME = "InvalidParameterValue.InvalidEnvName"
+
+	// 挂载路径不合法，不能为 /app。
+	INVALIDPARAMETERVALUE_INVALIDMOUNTPATH = "InvalidParameterValue.InvalidMountPath"
+
 	// 应用名格式非法。
 	INVALIDPARAMETERVALUE_INVALIDSERVICENAME = "InvalidParameterValue.InvalidServiceName"
+
+	// JDK 版本不能为空。
+	INVALIDPARAMETERVALUE_JDKVERSIONREQUIRED = "InvalidParameterValue.JdkVersionRequired"
 
 	// 环境重复。
 	INVALIDPARAMETERVALUE_NAMESPACEDUPLICATEERROR = "InvalidParameterValue.NamespaceDuplicateError"
@@ -128,8 +140,14 @@ const (
 	// 环境资源创建失败，达到上限。
 	INVALIDPARAMETERVALUE_NAMESPACERESOURCEREACHMAXIMUM = "InvalidParameterValue.NamespaceResourceReachMaximum"
 
+	// 操作系统不支持。
+	INVALIDPARAMETERVALUE_OSNOTSUPPORT = "InvalidParameterValue.OsNotSupport"
+
 	// 公有镜像参数错误。
 	INVALIDPARAMETERVALUE_PUBLICREPOTYPEPARAMETERERROR = "InvalidParameterValue.PublicRepoTypeParameterError"
+
+	// 注册中心没有与当前环境绑定。
+	INVALIDPARAMETERVALUE_REGISTRYNOTBIND = "InvalidParameterValue.RegistryNotBind"
 
 	// 弹性伸缩名称已存在。
 	INVALIDPARAMETERVALUE_SCALERNAMEDUPLICATED = "InvalidParameterValue.ScalerNameDuplicated"
@@ -158,14 +176,23 @@ const (
 	// 非 JAVA 应用不支持链路追踪特性。
 	INVALIDPARAMETERVALUE_TRAITSTRACINGNOTSUPPORTED = "InvalidParameterValue.TraitsTracingNotSupported"
 
+	// version 不能超过128位。
+	INVALIDPARAMETERVALUE_VERSIONLENGTHLIMIT = "InvalidParameterValue.VersionLengthLimit"
+
 	// 版本必须小写。
 	INVALIDPARAMETERVALUE_VERSIONLOWERCASE = "InvalidParameterValue.VersionLowerCase"
 
 	// 版本的路由流量不为0。
 	INVALIDPARAMETERVALUE_VERSIONROUTERATENOTZERO = "InvalidParameterValue.VersionRouteRateNotZero"
 
+	// 部署方式不能为空。
+	MISSINGPARAMETER_DEPLOYMODENULL = "MissingParameter.DeployModeNull"
+
 	// 部署版本不能为空。
 	MISSINGPARAMETER_DEPLOYVERSIONNULL = "MissingParameter.DeployVersionNull"
+
+	// logset 和 topic 不能为空。
+	MISSINGPARAMETER_LOGSETORTOPICNULL = "MissingParameter.LogsetOrTopicNull"
 
 	// 环境ID不能为空。
 	MISSINGPARAMETER_NAMESPACEIDNULL = "MissingParameter.NamespaceIdNull"
@@ -217,6 +244,9 @@ const (
 
 	// 等待组件安装。
 	RESOURCEUNAVAILABLE_WAITFORKRUISE = "ResourceUnavailable.WaitForKruise"
+
+	// 缺少容器服务的 CLS 日志角色，请打开控制台授权。
+	UNAUTHORIZEDOPERATION_MISSINGEKSLOGROLE = "UnauthorizedOperation.MissingEksLogRole"
 
 	// 未授权。
 	UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"

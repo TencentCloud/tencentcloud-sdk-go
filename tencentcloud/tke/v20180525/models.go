@@ -15314,6 +15314,9 @@ type UpdateTKEEdgeClusterRequestParams struct {
 
 	// 边缘计算集群的GridDaemon部署信息
 	GridDaemon *string `json:"GridDaemon,omitempty" name:"GridDaemon"`
+
+	// 边缘集群开启自动升配
+	AutoUpgradeClusterLevel *bool `json:"AutoUpgradeClusterLevel,omitempty" name:"AutoUpgradeClusterLevel"`
 }
 
 type UpdateTKEEdgeClusterRequest struct {
@@ -15351,6 +15354,9 @@ type UpdateTKEEdgeClusterRequest struct {
 
 	// 边缘计算集群的GridDaemon部署信息
 	GridDaemon *string `json:"GridDaemon,omitempty" name:"GridDaemon"`
+
+	// 边缘集群开启自动升配
+	AutoUpgradeClusterLevel *bool `json:"AutoUpgradeClusterLevel,omitempty" name:"AutoUpgradeClusterLevel"`
 }
 
 func (r *UpdateTKEEdgeClusterRequest) ToJsonString() string {
@@ -15376,6 +15382,7 @@ func (r *UpdateTKEEdgeClusterRequest) FromJsonString(s string) error {
 	delete(f, "HealthRegion")
 	delete(f, "Health")
 	delete(f, "GridDaemon")
+	delete(f, "AutoUpgradeClusterLevel")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateTKEEdgeClusterRequest has unknown keys!", "")
 	}

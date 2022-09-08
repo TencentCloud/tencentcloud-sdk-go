@@ -20,6 +20,206 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+type BatchTaskDetail struct {
+	// 跑批任务ID
+	BatchTaskId *string `json:"BatchTaskId,omitempty" name:"BatchTaskId"`
+
+	// 跑批任务名称
+	BatchTaskName *string `json:"BatchTaskName,omitempty" name:"BatchTaskName"`
+
+	// 主账号uin
+	Uin *string `json:"Uin,omitempty" name:"Uin"`
+
+	// 子账号uin
+	SubUin *string `json:"SubUin,omitempty" name:"SubUin"`
+
+	// 地域
+	Region *string `json:"Region,omitempty" name:"Region"`
+
+	// 计费模式
+	ChargeType *string `json:"ChargeType,omitempty" name:"ChargeType"`
+
+	// 预付费专用资源组id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" name:"ResourceGroupId"`
+
+	// 预付费专用资源组名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceGroupName *string `json:"ResourceGroupName,omitempty" name:"ResourceGroupName"`
+
+	// 资源配置
+	ResourceConfigInfo *ResourceConfigInfo `json:"ResourceConfigInfo,omitempty" name:"ResourceConfigInfo"`
+
+	// 标签
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
+
+	// 服务对应的模型信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ModelInfo *ModelInfo `json:"ModelInfo,omitempty" name:"ModelInfo"`
+
+	// 自定义镜像信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ImageInfo *ImageInfo `json:"ImageInfo,omitempty" name:"ImageInfo"`
+
+	// 代码包
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CodePackagePath *CosPathInfo `json:"CodePackagePath,omitempty" name:"CodePackagePath"`
+
+	// 启动命令
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StartCmd *string `json:"StartCmd,omitempty" name:"StartCmd"`
+
+	// 输入数据配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DataConfigs []*DataConfig `json:"DataConfigs,omitempty" name:"DataConfigs"`
+
+	// 输出数据配置
+	Outputs []*DataConfig `json:"Outputs,omitempty" name:"Outputs"`
+
+	// 是否上报日志
+	LogEnable *bool `json:"LogEnable,omitempty" name:"LogEnable"`
+
+	// 日志配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LogConfig *LogConfig `json:"LogConfig,omitempty" name:"LogConfig"`
+
+	// vpc id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 子网id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+
+	// 任务状态
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 运行时长
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuntimeInSeconds *uint64 `json:"RuntimeInSeconds,omitempty" name:"RuntimeInSeconds"`
+
+	// 创建时间
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 更新时间
+	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+
+	// 任务开始时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 任务结束时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 计费状态，eg：BILLING计费中，ARREARS_STOP欠费停止，NOT_BILLING不在计费中
+	ChargeStatus *string `json:"ChargeStatus,omitempty" name:"ChargeStatus"`
+
+	// 最近一次实例ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LatestInstanceId *string `json:"LatestInstanceId,omitempty" name:"LatestInstanceId"`
+
+	// 备注
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 失败原因
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FailureReason *string `json:"FailureReason,omitempty" name:"FailureReason"`
+
+	// 计费金额信息，eg：2.00元/小时 (for后付费)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BillingInfo *string `json:"BillingInfo,omitempty" name:"BillingInfo"`
+}
+
+type BatchTaskInstance struct {
+	// 任务实例id
+	BatchTaskInstanceId *string `json:"BatchTaskInstanceId,omitempty" name:"BatchTaskInstanceId"`
+
+	// 开始时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 任务状态
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 运行时长
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuntimeInSeconds *uint64 `json:"RuntimeInSeconds,omitempty" name:"RuntimeInSeconds"`
+}
+
+type BatchTaskSetItem struct {
+	// 跑批任务ID
+	BatchTaskId *string `json:"BatchTaskId,omitempty" name:"BatchTaskId"`
+
+	// 跑批任务名称
+	BatchTaskName *string `json:"BatchTaskName,omitempty" name:"BatchTaskName"`
+
+	// 模型信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ModelInfo *ModelInfo `json:"ModelInfo,omitempty" name:"ModelInfo"`
+
+	// 镜像信息
+	ImageInfo *ImageInfo `json:"ImageInfo,omitempty" name:"ImageInfo"`
+
+	// 计费模式
+	ChargeType *string `json:"ChargeType,omitempty" name:"ChargeType"`
+
+	// 计费状态，eg：BILLING计费中，ARREARS_STOP欠费停止，NOT_BILLING不在计费中
+	ChargeStatus *string `json:"ChargeStatus,omitempty" name:"ChargeStatus"`
+
+	// 预付费专用资源组
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" name:"ResourceGroupId"`
+
+	// 资源配置
+	ResourceConfigInfo *ResourceConfigInfo `json:"ResourceConfigInfo,omitempty" name:"ResourceConfigInfo"`
+
+	// 标签配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
+
+	// 任务状态
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 运行时长
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuntimeInSeconds *uint64 `json:"RuntimeInSeconds,omitempty" name:"RuntimeInSeconds"`
+
+	// 创建时间
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 开始时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 更新时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+
+	// 输出
+	Outputs []*DataConfig `json:"Outputs,omitempty" name:"Outputs"`
+
+	// 预付费专用资源组名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceGroupName *string `json:"ResourceGroupName,omitempty" name:"ResourceGroupName"`
+
+	// 失败原因
+	FailureReason *string `json:"FailureReason,omitempty" name:"FailureReason"`
+
+	// 计费金额信息，eg：2.00元/小时 (for后付费)
+	BillingInfo *string `json:"BillingInfo,omitempty" name:"BillingInfo"`
+}
+
 type CFSConfig struct {
 	// cfs的实例的ID
 	Id *string `json:"Id,omitempty" name:"Id"`
@@ -40,6 +240,182 @@ type CosPathInfo struct {
 	// 路径列表，目前只支持单个
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Paths []*string `json:"Paths,omitempty" name:"Paths"`
+}
+
+// Predefined struct for user
+type CreateBatchTaskRequestParams struct {
+	// 跑批任务名称，不超过60个字符，仅支持中英文、数字、下划线"_"、短横"-"，只能以中英文、数字开头
+	BatchTaskName *string `json:"BatchTaskName,omitempty" name:"BatchTaskName"`
+
+	// 计费模式，eg：PREPAID预付费，即包年包月；POSTPAID_BY_HOUR按小时后付费
+	ChargeType *string `json:"ChargeType,omitempty" name:"ChargeType"`
+
+	// 资源配置
+	ResourceConfigInfo *ResourceConfigInfo `json:"ResourceConfigInfo,omitempty" name:"ResourceConfigInfo"`
+
+	// 结果输出
+	Outputs []*DataConfig `json:"Outputs,omitempty" name:"Outputs"`
+
+	// 是否上报日志
+	LogEnable *bool `json:"LogEnable,omitempty" name:"LogEnable"`
+
+	// 工作类型 1:单次 2:周期
+	JobType *uint64 `json:"JobType,omitempty" name:"JobType"`
+
+	// 任务周期描述
+	CronInfo *CronInfo `json:"CronInfo,omitempty" name:"CronInfo"`
+
+	// 预付费专用资源组
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" name:"ResourceGroupId"`
+
+	// 标签配置
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
+
+	// 服务对应的模型信息，有模型文件时需要填写
+	ModelInfo *ModelInfo `json:"ModelInfo,omitempty" name:"ModelInfo"`
+
+	// 自定义镜像信息
+	ImageInfo *ImageInfo `json:"ImageInfo,omitempty" name:"ImageInfo"`
+
+	// 代码包
+	CodePackage *CosPathInfo `json:"CodePackage,omitempty" name:"CodePackage"`
+
+	// 启动命令
+	StartCmd *string `json:"StartCmd,omitempty" name:"StartCmd"`
+
+	// 数据配置
+	DataConfigs []*DataConfig `json:"DataConfigs,omitempty" name:"DataConfigs"`
+
+	// 日志配置
+	LogConfig *LogConfig `json:"LogConfig,omitempty" name:"LogConfig"`
+
+	// VPC Id
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 子网Id
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+
+	// 备注
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+}
+
+type CreateBatchTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// 跑批任务名称，不超过60个字符，仅支持中英文、数字、下划线"_"、短横"-"，只能以中英文、数字开头
+	BatchTaskName *string `json:"BatchTaskName,omitempty" name:"BatchTaskName"`
+
+	// 计费模式，eg：PREPAID预付费，即包年包月；POSTPAID_BY_HOUR按小时后付费
+	ChargeType *string `json:"ChargeType,omitempty" name:"ChargeType"`
+
+	// 资源配置
+	ResourceConfigInfo *ResourceConfigInfo `json:"ResourceConfigInfo,omitempty" name:"ResourceConfigInfo"`
+
+	// 结果输出
+	Outputs []*DataConfig `json:"Outputs,omitempty" name:"Outputs"`
+
+	// 是否上报日志
+	LogEnable *bool `json:"LogEnable,omitempty" name:"LogEnable"`
+
+	// 工作类型 1:单次 2:周期
+	JobType *uint64 `json:"JobType,omitempty" name:"JobType"`
+
+	// 任务周期描述
+	CronInfo *CronInfo `json:"CronInfo,omitempty" name:"CronInfo"`
+
+	// 预付费专用资源组
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" name:"ResourceGroupId"`
+
+	// 标签配置
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
+
+	// 服务对应的模型信息，有模型文件时需要填写
+	ModelInfo *ModelInfo `json:"ModelInfo,omitempty" name:"ModelInfo"`
+
+	// 自定义镜像信息
+	ImageInfo *ImageInfo `json:"ImageInfo,omitempty" name:"ImageInfo"`
+
+	// 代码包
+	CodePackage *CosPathInfo `json:"CodePackage,omitempty" name:"CodePackage"`
+
+	// 启动命令
+	StartCmd *string `json:"StartCmd,omitempty" name:"StartCmd"`
+
+	// 数据配置
+	DataConfigs []*DataConfig `json:"DataConfigs,omitempty" name:"DataConfigs"`
+
+	// 日志配置
+	LogConfig *LogConfig `json:"LogConfig,omitempty" name:"LogConfig"`
+
+	// VPC Id
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 子网Id
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+
+	// 备注
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+}
+
+func (r *CreateBatchTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateBatchTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "BatchTaskName")
+	delete(f, "ChargeType")
+	delete(f, "ResourceConfigInfo")
+	delete(f, "Outputs")
+	delete(f, "LogEnable")
+	delete(f, "JobType")
+	delete(f, "CronInfo")
+	delete(f, "ResourceGroupId")
+	delete(f, "Tags")
+	delete(f, "ModelInfo")
+	delete(f, "ImageInfo")
+	delete(f, "CodePackage")
+	delete(f, "StartCmd")
+	delete(f, "DataConfigs")
+	delete(f, "LogConfig")
+	delete(f, "VpcId")
+	delete(f, "SubnetId")
+	delete(f, "Remark")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateBatchTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateBatchTaskResponseParams struct {
+	// 跑批任务ID
+	BatchTaskId *string `json:"BatchTaskId,omitempty" name:"BatchTaskId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateBatchTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateBatchTaskResponseParams `json:"Response"`
+}
+
+func (r *CreateBatchTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateBatchTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user
@@ -193,7 +569,10 @@ func (r *CreateDatasetResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateTrainingModelRequestParams struct {
-	// 导入方式（MODEL/VERSION）
+	// 导入方式
+	// MODEL：导入新模型
+	// VERSION：导入新版本
+	// EXIST：导入现有版本
 	ImportMethod *string `json:"ImportMethod,omitempty" name:"ImportMethod"`
 
 	// 模型来源cos目录，以/结尾
@@ -260,12 +639,24 @@ type CreateTrainingModelRequestParams struct {
 
 	// 推理镜像ID
 	ReasoningEnvironmentId *string `json:"ReasoningEnvironmentId,omitempty" name:"ReasoningEnvironmentId"`
+
+	// 模型自动清理开关(true/false)，当前版本仅支持SAVED_MODEL格式模型
+	AutoClean *string `json:"AutoClean,omitempty" name:"AutoClean"`
+
+	// 模型数量保留上限(默认值为24个，上限为24，下限为1，步长为1)
+	MaxReservedModels *uint64 `json:"MaxReservedModels,omitempty" name:"MaxReservedModels"`
+
+	// 模型清理周期(默认值为1分钟，上限为1440，下限为1分钟，步长为1)
+	ModelCleanPeriod *uint64 `json:"ModelCleanPeriod,omitempty" name:"ModelCleanPeriod"`
 }
 
 type CreateTrainingModelRequest struct {
 	*tchttp.BaseRequest
 	
-	// 导入方式（MODEL/VERSION）
+	// 导入方式
+	// MODEL：导入新模型
+	// VERSION：导入新版本
+	// EXIST：导入现有版本
 	ImportMethod *string `json:"ImportMethod,omitempty" name:"ImportMethod"`
 
 	// 模型来源cos目录，以/结尾
@@ -332,6 +723,15 @@ type CreateTrainingModelRequest struct {
 
 	// 推理镜像ID
 	ReasoningEnvironmentId *string `json:"ReasoningEnvironmentId,omitempty" name:"ReasoningEnvironmentId"`
+
+	// 模型自动清理开关(true/false)，当前版本仅支持SAVED_MODEL格式模型
+	AutoClean *string `json:"AutoClean,omitempty" name:"AutoClean"`
+
+	// 模型数量保留上限(默认值为24个，上限为24，下限为1，步长为1)
+	MaxReservedModels *uint64 `json:"MaxReservedModels,omitempty" name:"MaxReservedModels"`
+
+	// 模型清理周期(默认值为1分钟，上限为1440，下限为1分钟，步长为1)
+	ModelCleanPeriod *uint64 `json:"ModelCleanPeriod,omitempty" name:"ModelCleanPeriod"`
 }
 
 func (r *CreateTrainingModelRequest) ToJsonString() string {
@@ -368,6 +768,9 @@ func (r *CreateTrainingModelRequest) FromJsonString(s string) error {
 	delete(f, "ModelVersionType")
 	delete(f, "ModelFormat")
 	delete(f, "ReasoningEnvironmentId")
+	delete(f, "AutoClean")
+	delete(f, "MaxReservedModels")
+	delete(f, "ModelCleanPeriod")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateTrainingModelRequest has unknown keys!", "")
 	}
@@ -592,6 +995,19 @@ func (r *CreateTrainingTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type CronInfo struct {
+	// cron配置
+	CronConfig *string `json:"CronConfig,omitempty" name:"CronConfig"`
+
+	// 周期开始时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 周期结束时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+}
+
 type CustomTrainingData struct {
 	// 指标名
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -623,7 +1039,7 @@ type DataConfig struct {
 	// 映射路径
 	MappingPath *string `json:"MappingPath,omitempty" name:"MappingPath"`
 
-	// DATASET、COS、CFS、HDFS
+	// DATASET、COS、CFS、HDFS、WEDATA_HDFS
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DataSourceType *string `json:"DataSourceType,omitempty" name:"DataSourceType"`
 
@@ -839,6 +1255,60 @@ type DatasetInfo struct {
 	// 数据集范围
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DatasetScope *string `json:"DatasetScope,omitempty" name:"DatasetScope"`
+}
+
+// Predefined struct for user
+type DeleteBatchTaskRequestParams struct {
+	// 跑批任务ID
+	BatchTaskId *string `json:"BatchTaskId,omitempty" name:"BatchTaskId"`
+}
+
+type DeleteBatchTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// 跑批任务ID
+	BatchTaskId *string `json:"BatchTaskId,omitempty" name:"BatchTaskId"`
+}
+
+func (r *DeleteBatchTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteBatchTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "BatchTaskId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteBatchTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteBatchTaskResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DeleteBatchTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteBatchTaskResponseParams `json:"Response"`
+}
+
+func (r *DeleteBatchTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteBatchTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user
@@ -1089,6 +1559,232 @@ func (r *DeleteTrainingTaskResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeBatchTaskInstancesRequestParams struct {
+	// 跑批任务id
+	BatchTaskId *string `json:"BatchTaskId,omitempty" name:"BatchTaskId"`
+}
+
+type DescribeBatchTaskInstancesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 跑批任务id
+	BatchTaskId *string `json:"BatchTaskId,omitempty" name:"BatchTaskId"`
+}
+
+func (r *DescribeBatchTaskInstancesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBatchTaskInstancesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "BatchTaskId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBatchTaskInstancesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeBatchTaskInstancesResponseParams struct {
+	// 实例集
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BatchInstances []*BatchTaskInstance `json:"BatchInstances,omitempty" name:"BatchInstances"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeBatchTaskInstancesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeBatchTaskInstancesResponseParams `json:"Response"`
+}
+
+func (r *DescribeBatchTaskInstancesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBatchTaskInstancesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeBatchTaskRequestParams struct {
+	// 跑批任务ID
+	BatchTaskId *string `json:"BatchTaskId,omitempty" name:"BatchTaskId"`
+}
+
+type DescribeBatchTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// 跑批任务ID
+	BatchTaskId *string `json:"BatchTaskId,omitempty" name:"BatchTaskId"`
+}
+
+func (r *DescribeBatchTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBatchTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "BatchTaskId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBatchTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeBatchTaskResponseParams struct {
+	// 跑批任务详情
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BatchTaskDetail *BatchTaskDetail `json:"BatchTaskDetail,omitempty" name:"BatchTaskDetail"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeBatchTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeBatchTaskResponseParams `json:"Response"`
+}
+
+func (r *DescribeBatchTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBatchTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeBatchTasksRequestParams struct {
+	// 过滤器，eg：[{ "Name": "Id", "Values": ["train-23091792777383936"] }]
+	// 
+	// 取值范围：
+	// Name（名称）：task1
+	// Id（task ID）：train-23091792777383936
+	// Status（状态）：STARTING / RUNNING / STOPPING / STOPPED / FAILED / SUCCEED / SUBMIT_FAILED
+	// ChargeType（计费类型）：PREPAID（预付费）/ POSTPAID_BY_HOUR（后付费）
+	// CHARGE_STATUS（计费状态）：NOT_BILLING（未开始计费）/ BILLING（计费中）/ ARREARS_STOP（欠费停止）
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 标签过滤器，eg：[{ "TagKey": "TagKeyA", "TagValue": ["TagValueA"] }]
+	TagFilters []*TagFilter `json:"TagFilters,omitempty" name:"TagFilters"`
+
+	// 偏移量，默认为0
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回数量，默认为10，最大为50
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 输出列表的排列顺序。取值范围：ASC（升序排列）/ DESC（降序排列），默认为DESC
+	Order *string `json:"Order,omitempty" name:"Order"`
+
+	// 排序的依据字段， 取值范围 "CreateTime" "UpdateTime"
+	OrderField *string `json:"OrderField,omitempty" name:"OrderField"`
+}
+
+type DescribeBatchTasksRequest struct {
+	*tchttp.BaseRequest
+	
+	// 过滤器，eg：[{ "Name": "Id", "Values": ["train-23091792777383936"] }]
+	// 
+	// 取值范围：
+	// Name（名称）：task1
+	// Id（task ID）：train-23091792777383936
+	// Status（状态）：STARTING / RUNNING / STOPPING / STOPPED / FAILED / SUCCEED / SUBMIT_FAILED
+	// ChargeType（计费类型）：PREPAID（预付费）/ POSTPAID_BY_HOUR（后付费）
+	// CHARGE_STATUS（计费状态）：NOT_BILLING（未开始计费）/ BILLING（计费中）/ ARREARS_STOP（欠费停止）
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 标签过滤器，eg：[{ "TagKey": "TagKeyA", "TagValue": ["TagValueA"] }]
+	TagFilters []*TagFilter `json:"TagFilters,omitempty" name:"TagFilters"`
+
+	// 偏移量，默认为0
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回数量，默认为10，最大为50
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 输出列表的排列顺序。取值范围：ASC（升序排列）/ DESC（降序排列），默认为DESC
+	Order *string `json:"Order,omitempty" name:"Order"`
+
+	// 排序的依据字段， 取值范围 "CreateTime" "UpdateTime"
+	OrderField *string `json:"OrderField,omitempty" name:"OrderField"`
+}
+
+func (r *DescribeBatchTasksRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBatchTasksRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Filters")
+	delete(f, "TagFilters")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Order")
+	delete(f, "OrderField")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBatchTasksRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeBatchTasksResponseParams struct {
+	// 数量
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 任务集
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BatchTaskSet []*BatchTaskSetItem `json:"BatchTaskSet,omitempty" name:"BatchTaskSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeBatchTasksResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeBatchTasksResponseParams `json:"Response"`
+}
+
+func (r *DescribeBatchTasksResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBatchTasksResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeBillingResourceGroupsRequestParams struct {
 	// 资源组类型; 枚举值 TRAIN:训练 INFERENCE:推理
 	Type *string `json:"Type,omitempty" name:"Type"`
@@ -1257,6 +1953,77 @@ func (r *DescribeBillingSpecsPriceResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeBillingSpecsPriceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeBillingSpecsRequestParams struct {
+	// 枚举值：TRAIN、NOTEBOOK、INFERENCE
+	TaskType *string `json:"TaskType,omitempty" name:"TaskType"`
+
+	// 付费模式：POSTPAID_BY_HOUR后付费、PREPAID预付费
+	ChargeType *string `json:"ChargeType,omitempty" name:"ChargeType"`
+
+	// 资源类型：CALC 计算资源、CPU CPU资源、GPU GPU资源、CBS云硬盘
+	ResourceType *string `json:"ResourceType,omitempty" name:"ResourceType"`
+}
+
+type DescribeBillingSpecsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 枚举值：TRAIN、NOTEBOOK、INFERENCE
+	TaskType *string `json:"TaskType,omitempty" name:"TaskType"`
+
+	// 付费模式：POSTPAID_BY_HOUR后付费、PREPAID预付费
+	ChargeType *string `json:"ChargeType,omitempty" name:"ChargeType"`
+
+	// 资源类型：CALC 计算资源、CPU CPU资源、GPU GPU资源、CBS云硬盘
+	ResourceType *string `json:"ResourceType,omitempty" name:"ResourceType"`
+}
+
+func (r *DescribeBillingSpecsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBillingSpecsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskType")
+	delete(f, "ChargeType")
+	delete(f, "ResourceType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBillingSpecsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeBillingSpecsResponseParams struct {
+	// 计费项列表
+	Specs []*Spec `json:"Specs,omitempty" name:"Specs"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeBillingSpecsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeBillingSpecsResponseParams `json:"Response"`
+}
+
+func (r *DescribeBillingSpecsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBillingSpecsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2691,6 +3458,35 @@ type MetricData struct {
 	Points []*DataPoint `json:"Points,omitempty" name:"Points"`
 }
 
+type ModelInfo struct {
+	// 模型版本id, DescribeTrainingModelVersion查询模型接口时的id
+	// 自动学习类型的模型填写自动学习的任务id
+	ModelVersionId *string `json:"ModelVersionId,omitempty" name:"ModelVersionId"`
+
+	// 模型id
+	ModelId *string `json:"ModelId,omitempty" name:"ModelId"`
+
+	// 模型名
+	ModelName *string `json:"ModelName,omitempty" name:"ModelName"`
+
+	// 模型版本
+	ModelVersion *string `json:"ModelVersion,omitempty" name:"ModelVersion"`
+
+	// 模型来源
+	ModelSource *string `json:"ModelSource,omitempty" name:"ModelSource"`
+
+	// cos路径信息
+	CosPathInfo *CosPathInfo `json:"CosPathInfo,omitempty" name:"CosPathInfo"`
+
+	// 模型对应的算法框架，预留
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AlgorithmFramework *string `json:"AlgorithmFramework,omitempty" name:"AlgorithmFramework"`
+
+	// 默认为 NORMAL, 已加速模型: ACCELERATE, 自动学习模型 AUTO_ML
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ModelType *string `json:"ModelType,omitempty" name:"ModelType"`
+}
+
 type OcrLabelInfo struct {
 	// 坐标点围起来的框
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -2948,6 +3744,17 @@ type SegmentationInfo struct {
 	Color *string `json:"Color,omitempty" name:"Color"`
 }
 
+type Spec struct {
+	// 计费项标签
+	SpecId *string `json:"SpecId,omitempty" name:"SpecId"`
+
+	// 计费项名称
+	SpecName *string `json:"SpecName,omitempty" name:"SpecName"`
+
+	// 计费项显示名称
+	SpecAlias *string `json:"SpecAlias,omitempty" name:"SpecAlias"`
+}
+
 type SpecPrice struct {
 	// 计费项名称
 	SpecName *string `json:"SpecName,omitempty" name:"SpecName"`
@@ -3029,6 +3836,60 @@ func (r *StartTrainingTaskResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *StartTrainingTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type StopBatchTaskRequestParams struct {
+	// 跑批任务ID
+	BatchTaskId *string `json:"BatchTaskId,omitempty" name:"BatchTaskId"`
+}
+
+type StopBatchTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// 跑批任务ID
+	BatchTaskId *string `json:"BatchTaskId,omitempty" name:"BatchTaskId"`
+}
+
+func (r *StopBatchTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *StopBatchTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "BatchTaskId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StopBatchTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type StopBatchTaskResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type StopBatchTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *StopBatchTaskResponseParams `json:"Response"`
+}
+
+func (r *StopBatchTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *StopBatchTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -3209,6 +4070,30 @@ type TrainingModelVersionDTO struct {
 	// 模型格式
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TrainingModelFormat *string `json:"TrainingModelFormat,omitempty" name:"TrainingModelFormat"`
+
+	// 模型版本类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VersionType *string `json:"VersionType,omitempty" name:"VersionType"`
+
+	// GPU类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GPUType *string `json:"GPUType,omitempty" name:"GPUType"`
+
+	// 模型自动清理开关
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AutoClean *string `json:"AutoClean,omitempty" name:"AutoClean"`
+
+	// 模型清理周期
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ModelCleanPeriod *uint64 `json:"ModelCleanPeriod,omitempty" name:"ModelCleanPeriod"`
+
+	// 模型数量保留上限
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MaxReservedModels *uint64 `json:"MaxReservedModels,omitempty" name:"MaxReservedModels"`
+
+	// 模型热更新目录
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ModelHotUpdatePath *CosPathInfo `json:"ModelHotUpdatePath,omitempty" name:"ModelHotUpdatePath"`
 }
 
 type TrainingTaskDetail struct {

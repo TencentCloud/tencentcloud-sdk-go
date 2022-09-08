@@ -138,7 +138,13 @@ const (
 	RESOURCEINSUFFICIENT_OVERREFUNDQUOTA = "ResourceInsufficient.OverRefundQuota"
 
 	// 资源不存在。
+	RESOURCENOTFOUND = "ResourceNotFound"
+
+	// 资源不存在。
 	RESOURCENOTFOUND_NOTFOUND = "ResourceNotFound.NotFound"
+
+	// 资源不可用。
+	RESOURCEUNAVAILABLE = "ResourceUnavailable"
 
 	// 云硬盘已挂载至其他云服务器上。
 	RESOURCEUNAVAILABLE_ATTACHED = "ResourceUnavailable.Attached"

@@ -9019,6 +9019,10 @@ type DescribeGeneralStatResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProtectDays *uint64 `json:"ProtectDays,omitempty" name:"ProtectDays"`
 
+	// 15天内新增的主机数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AddedOnTheFifteen *uint64 `json:"AddedOnTheFifteen,omitempty" name:"AddedOnTheFifteen"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }
@@ -10217,6 +10221,7 @@ type DescribeMachinesRequestParams struct {
 	// <li>Os -String 是否必填: 否 - 操作系统( DescribeMachineOsList 接口 值 )
 	// 每个过滤条件只支持一个值，暂不支持多个值“或”关系查询
 	// <li>Quuid - String - 是否必填: 否 - 云服务器uuid  最大100条.</li>
+	// <li>AddedOnTheFifteen- String 是否必填: 否 - 是否只查询15天内新增的主机( 1：是) </li>
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 机器所属业务ID列表
@@ -10251,6 +10256,7 @@ type DescribeMachinesRequest struct {
 	// <li>Os -String 是否必填: 否 - 操作系统( DescribeMachineOsList 接口 值 )
 	// 每个过滤条件只支持一个值，暂不支持多个值“或”关系查询
 	// <li>Quuid - String - 是否必填: 否 - 云服务器uuid  最大100条.</li>
+	// <li>AddedOnTheFifteen- String 是否必填: 否 - 是否只查询15天内新增的主机( 1：是) </li>
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 机器所属业务ID列表
@@ -16961,6 +16967,10 @@ type Machine struct {
 	// 云标签信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CloudTags []*Tags `json:"CloudTags,omitempty" name:"CloudTags"`
+
+	// 是否15天内新增的主机 0：非15天内新增的主机，1：15天内增加的主机
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsAddedOnTheFifteen *uint64 `json:"IsAddedOnTheFifteen,omitempty" name:"IsAddedOnTheFifteen"`
 }
 
 type MachineTag struct {
@@ -17026,6 +17036,12 @@ type MalWareList struct {
 
 	// 木马文件是否存在 0:不存在，1:存在
 	FileExists *uint64 `json:"FileExists,omitempty" name:"FileExists"`
+
+	// cvm quuid
+	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
+
+	// 木马样本md5
+	MD5 *string `json:"MD5,omitempty" name:"MD5"`
 }
 
 type MaliciousRequestWhiteListInfo struct {

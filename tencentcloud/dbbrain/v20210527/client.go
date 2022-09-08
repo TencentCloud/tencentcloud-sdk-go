@@ -1913,6 +1913,78 @@ func (c *Client) DescribeRedisTopBigKeysWithContext(ctx context.Context, request
     return
 }
 
+func NewDescribeRedisTopKeyPrefixListRequest() (request *DescribeRedisTopKeyPrefixListRequest) {
+    request = &DescribeRedisTopKeyPrefixListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dbbrain", APIVersion, "DescribeRedisTopKeyPrefixList")
+    
+    
+    return
+}
+
+func NewDescribeRedisTopKeyPrefixListResponse() (response *DescribeRedisTopKeyPrefixListResponse) {
+    response = &DescribeRedisTopKeyPrefixListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeRedisTopKeyPrefixList
+// 查询redis实例top key前缀列表。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeRedisTopKeyPrefixList(request *DescribeRedisTopKeyPrefixListRequest) (response *DescribeRedisTopKeyPrefixListResponse, err error) {
+    return c.DescribeRedisTopKeyPrefixListWithContext(context.Background(), request)
+}
+
+// DescribeRedisTopKeyPrefixList
+// 查询redis实例top key前缀列表。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeRedisTopKeyPrefixListWithContext(ctx context.Context, request *DescribeRedisTopKeyPrefixListRequest) (response *DescribeRedisTopKeyPrefixListResponse, err error) {
+    if request == nil {
+        request = NewDescribeRedisTopKeyPrefixListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRedisTopKeyPrefixList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeRedisTopKeyPrefixListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeSecurityAuditLogDownloadUrlsRequest() (request *DescribeSecurityAuditLogDownloadUrlsRequest) {
     request = &DescribeSecurityAuditLogDownloadUrlsRequest{
         BaseRequest: &tchttp.BaseRequest{},

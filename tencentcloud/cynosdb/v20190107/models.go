@@ -570,6 +570,91 @@ func (r *CreateAccountsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateBackupRequestParams struct {
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 备份类型, 可选值：logic，逻辑备份；snapshot，物理备份
+	BackupType *string `json:"BackupType,omitempty" name:"BackupType"`
+
+	// 备份的库, 只在 BackupType 为 logic 时有效
+	BackupDatabases []*string `json:"BackupDatabases,omitempty" name:"BackupDatabases"`
+
+	// 备份的表, 只在 BackupType 为 logic 时有效
+	BackupTables []*DatabaseTables `json:"BackupTables,omitempty" name:"BackupTables"`
+
+	// 备注名
+	BackupName *string `json:"BackupName,omitempty" name:"BackupName"`
+}
+
+type CreateBackupRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 备份类型, 可选值：logic，逻辑备份；snapshot，物理备份
+	BackupType *string `json:"BackupType,omitempty" name:"BackupType"`
+
+	// 备份的库, 只在 BackupType 为 logic 时有效
+	BackupDatabases []*string `json:"BackupDatabases,omitempty" name:"BackupDatabases"`
+
+	// 备份的表, 只在 BackupType 为 logic 时有效
+	BackupTables []*DatabaseTables `json:"BackupTables,omitempty" name:"BackupTables"`
+
+	// 备注名
+	BackupName *string `json:"BackupName,omitempty" name:"BackupName"`
+}
+
+func (r *CreateBackupRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateBackupRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "BackupType")
+	delete(f, "BackupDatabases")
+	delete(f, "BackupTables")
+	delete(f, "BackupName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateBackupRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateBackupResponseParams struct {
+	// 异步任务流ID
+	FlowId *int64 `json:"FlowId,omitempty" name:"FlowId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateBackupResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateBackupResponseParams `json:"Response"`
+}
+
+func (r *CreateBackupResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateBackupResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateClustersRequestParams struct {
 	// 可用区
 	Zone *string `json:"Zone,omitempty" name:"Zone"`
@@ -1441,6 +1526,16 @@ type DatabasePrivileges struct {
 
 	// 权限列表
 	Privileges []*string `json:"Privileges,omitempty" name:"Privileges"`
+}
+
+type DatabaseTables struct {
+	// 数据库名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Database *string `json:"Database,omitempty" name:"Database"`
+
+	// 表名称列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tables []*string `json:"Tables,omitempty" name:"Tables"`
 }
 
 type DbTable struct {
@@ -4271,6 +4366,93 @@ func (r *ModifyClusterSlaveZoneResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyClusterSlaveZoneResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyClusterStorageRequestParams struct {
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 集群新存储大小（单位G）
+	NewStorageLimit *int64 `json:"NewStorageLimit,omitempty" name:"NewStorageLimit"`
+
+	// 集群原存储大小（单位G）
+	OldStorageLimit *int64 `json:"OldStorageLimit,omitempty" name:"OldStorageLimit"`
+
+	// 交易模式 0-下单并支付 1-下单
+	DealMode *int64 `json:"DealMode,omitempty" name:"DealMode"`
+}
+
+type ModifyClusterStorageRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 集群新存储大小（单位G）
+	NewStorageLimit *int64 `json:"NewStorageLimit,omitempty" name:"NewStorageLimit"`
+
+	// 集群原存储大小（单位G）
+	OldStorageLimit *int64 `json:"OldStorageLimit,omitempty" name:"OldStorageLimit"`
+
+	// 交易模式 0-下单并支付 1-下单
+	DealMode *int64 `json:"DealMode,omitempty" name:"DealMode"`
+}
+
+func (r *ModifyClusterStorageRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyClusterStorageRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "NewStorageLimit")
+	delete(f, "OldStorageLimit")
+	delete(f, "DealMode")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyClusterStorageRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyClusterStorageResponseParams struct {
+	// 冻结流水ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TranId *string `json:"TranId,omitempty" name:"TranId"`
+
+	// 大订单号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BigDealIds []*string `json:"BigDealIds,omitempty" name:"BigDealIds"`
+
+	// 订单号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DealNames []*string `json:"DealNames,omitempty" name:"DealNames"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ModifyClusterStorageResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyClusterStorageResponseParams `json:"Response"`
+}
+
+func (r *ModifyClusterStorageResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyClusterStorageResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

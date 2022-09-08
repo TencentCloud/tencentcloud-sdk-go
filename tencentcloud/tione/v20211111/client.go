@@ -45,6 +45,74 @@ func NewClient(credential common.CredentialIface, region string, clientProfile *
 }
 
 
+func NewCreateBatchTaskRequest() (request *CreateBatchTaskRequest) {
+    request = &CreateBatchTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tione", APIVersion, "CreateBatchTask")
+    
+    
+    return
+}
+
+func NewCreateBatchTaskResponse() (response *CreateBatchTaskResponse) {
+    response = &CreateBatchTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateBatchTask
+// 创建跑批任务
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_CAMEXCEPTION = "AuthFailure.CamException"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_EXECTAGFAIL = "FailedOperation.ExecTagFail"
+//  FAILEDOPERATION_QUERYTAGFAIL = "FailedOperation.QueryTagFail"
+//  FAILEDOPERATION_UNMARSHALDATA = "FailedOperation.UnmarshalData"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED_BALANCEINSUFFICIENT = "OperationDenied.BalanceInsufficient"
+//  OPERATIONDENIED_WHITELISTQUOTAEXCEED = "OperationDenied.WhitelistQuotaExceed"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) CreateBatchTask(request *CreateBatchTaskRequest) (response *CreateBatchTaskResponse, err error) {
+    return c.CreateBatchTaskWithContext(context.Background(), request)
+}
+
+// CreateBatchTask
+// 创建跑批任务
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_CAMEXCEPTION = "AuthFailure.CamException"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_EXECTAGFAIL = "FailedOperation.ExecTagFail"
+//  FAILEDOPERATION_QUERYTAGFAIL = "FailedOperation.QueryTagFail"
+//  FAILEDOPERATION_UNMARSHALDATA = "FailedOperation.UnmarshalData"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED_BALANCEINSUFFICIENT = "OperationDenied.BalanceInsufficient"
+//  OPERATIONDENIED_WHITELISTQUOTAEXCEED = "OperationDenied.WhitelistQuotaExceed"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) CreateBatchTaskWithContext(ctx context.Context, request *CreateBatchTaskRequest) (response *CreateBatchTaskResponse, err error) {
+    if request == nil {
+        request = NewCreateBatchTaskRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateBatchTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateBatchTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateDatasetRequest() (request *CreateDatasetRequest) {
     request = &CreateDatasetRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -289,6 +357,72 @@ func (c *Client) CreateTrainingTaskWithContext(ctx context.Context, request *Cre
     request.SetContext(ctx)
     
     response = NewCreateTrainingTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteBatchTaskRequest() (request *DeleteBatchTaskRequest) {
+    request = &DeleteBatchTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tione", APIVersion, "DeleteBatchTask")
+    
+    
+    return
+}
+
+func NewDeleteBatchTaskResponse() (response *DeleteBatchTaskResponse) {
+    response = &DeleteBatchTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteBatchTask
+// 删除跑批任务
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_CAMEXCEPTION = "AuthFailure.CamException"
+//  AUTHFAILURE_NOPERMISSION = "AuthFailure.NoPermission"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_EXECTAGFAIL = "FailedOperation.ExecTagFail"
+//  FAILEDOPERATION_QUERYTAGFAIL = "FailedOperation.QueryTagFail"
+//  FAILEDOPERATION_UNMARSHALDATA = "FailedOperation.UnmarshalData"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DeleteBatchTask(request *DeleteBatchTaskRequest) (response *DeleteBatchTaskResponse, err error) {
+    return c.DeleteBatchTaskWithContext(context.Background(), request)
+}
+
+// DeleteBatchTask
+// 删除跑批任务
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_CAMEXCEPTION = "AuthFailure.CamException"
+//  AUTHFAILURE_NOPERMISSION = "AuthFailure.NoPermission"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_EXECTAGFAIL = "FailedOperation.ExecTagFail"
+//  FAILEDOPERATION_QUERYTAGFAIL = "FailedOperation.QueryTagFail"
+//  FAILEDOPERATION_UNMARSHALDATA = "FailedOperation.UnmarshalData"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DeleteBatchTaskWithContext(ctx context.Context, request *DeleteBatchTaskRequest) (response *DeleteBatchTaskResponse, err error) {
+    if request == nil {
+        request = NewDeleteBatchTaskRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteBatchTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteBatchTaskResponse()
     err = c.Send(request, response)
     return
 }
@@ -579,6 +713,196 @@ func (c *Client) DeleteTrainingTaskWithContext(ctx context.Context, request *Del
     return
 }
 
+func NewDescribeBatchTaskRequest() (request *DescribeBatchTaskRequest) {
+    request = &DescribeBatchTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tione", APIVersion, "DescribeBatchTask")
+    
+    
+    return
+}
+
+func NewDescribeBatchTaskResponse() (response *DescribeBatchTaskResponse) {
+    response = &DescribeBatchTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeBatchTask
+// 查询跑批任务
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_CAMEXCEPTION = "AuthFailure.CamException"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_EXECTAGFAIL = "FailedOperation.ExecTagFail"
+//  FAILEDOPERATION_QUERYTAGFAIL = "FailedOperation.QueryTagFail"
+//  FAILEDOPERATION_UNMARSHALDATA = "FailedOperation.UnmarshalData"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeBatchTask(request *DescribeBatchTaskRequest) (response *DescribeBatchTaskResponse, err error) {
+    return c.DescribeBatchTaskWithContext(context.Background(), request)
+}
+
+// DescribeBatchTask
+// 查询跑批任务
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_CAMEXCEPTION = "AuthFailure.CamException"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_EXECTAGFAIL = "FailedOperation.ExecTagFail"
+//  FAILEDOPERATION_QUERYTAGFAIL = "FailedOperation.QueryTagFail"
+//  FAILEDOPERATION_UNMARSHALDATA = "FailedOperation.UnmarshalData"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeBatchTaskWithContext(ctx context.Context, request *DescribeBatchTaskRequest) (response *DescribeBatchTaskResponse, err error) {
+    if request == nil {
+        request = NewDescribeBatchTaskRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBatchTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeBatchTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeBatchTaskInstancesRequest() (request *DescribeBatchTaskInstancesRequest) {
+    request = &DescribeBatchTaskInstancesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tione", APIVersion, "DescribeBatchTaskInstances")
+    
+    
+    return
+}
+
+func NewDescribeBatchTaskInstancesResponse() (response *DescribeBatchTaskInstancesResponse) {
+    response = &DescribeBatchTaskInstancesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeBatchTaskInstances
+// 查询跑批实例列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_CAMEXCEPTION = "AuthFailure.CamException"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_EXECTAGFAIL = "FailedOperation.ExecTagFail"
+//  FAILEDOPERATION_QUERYTAGFAIL = "FailedOperation.QueryTagFail"
+//  FAILEDOPERATION_UNMARSHALDATA = "FailedOperation.UnmarshalData"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeBatchTaskInstances(request *DescribeBatchTaskInstancesRequest) (response *DescribeBatchTaskInstancesResponse, err error) {
+    return c.DescribeBatchTaskInstancesWithContext(context.Background(), request)
+}
+
+// DescribeBatchTaskInstances
+// 查询跑批实例列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_CAMEXCEPTION = "AuthFailure.CamException"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_EXECTAGFAIL = "FailedOperation.ExecTagFail"
+//  FAILEDOPERATION_QUERYTAGFAIL = "FailedOperation.QueryTagFail"
+//  FAILEDOPERATION_UNMARSHALDATA = "FailedOperation.UnmarshalData"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeBatchTaskInstancesWithContext(ctx context.Context, request *DescribeBatchTaskInstancesRequest) (response *DescribeBatchTaskInstancesResponse, err error) {
+    if request == nil {
+        request = NewDescribeBatchTaskInstancesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBatchTaskInstances require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeBatchTaskInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeBatchTasksRequest() (request *DescribeBatchTasksRequest) {
+    request = &DescribeBatchTasksRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tione", APIVersion, "DescribeBatchTasks")
+    
+    
+    return
+}
+
+func NewDescribeBatchTasksResponse() (response *DescribeBatchTasksResponse) {
+    response = &DescribeBatchTasksResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeBatchTasks
+// 批量预测任务列表信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_CAMEXCEPTION = "AuthFailure.CamException"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_EXECTAGFAIL = "FailedOperation.ExecTagFail"
+//  FAILEDOPERATION_QUERYTAGFAIL = "FailedOperation.QueryTagFail"
+//  FAILEDOPERATION_UNMARSHALDATA = "FailedOperation.UnmarshalData"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeBatchTasks(request *DescribeBatchTasksRequest) (response *DescribeBatchTasksResponse, err error) {
+    return c.DescribeBatchTasksWithContext(context.Background(), request)
+}
+
+// DescribeBatchTasks
+// 批量预测任务列表信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_CAMEXCEPTION = "AuthFailure.CamException"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_EXECTAGFAIL = "FailedOperation.ExecTagFail"
+//  FAILEDOPERATION_QUERYTAGFAIL = "FailedOperation.QueryTagFail"
+//  FAILEDOPERATION_UNMARSHALDATA = "FailedOperation.UnmarshalData"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeBatchTasksWithContext(ctx context.Context, request *DescribeBatchTasksRequest) (response *DescribeBatchTasksResponse, err error) {
+    if request == nil {
+        request = NewDescribeBatchTasksRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBatchTasks require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeBatchTasksResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeBillingResourceGroupsRequest() (request *DescribeBillingResourceGroupsRequest) {
     request = &DescribeBillingResourceGroupsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -651,6 +975,66 @@ func (c *Client) DescribeBillingResourceGroupsWithContext(ctx context.Context, r
     request.SetContext(ctx)
     
     response = NewDescribeBillingResourceGroupsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeBillingSpecsRequest() (request *DescribeBillingSpecsRequest) {
+    request = &DescribeBillingSpecsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tione", APIVersion, "DescribeBillingSpecs")
+    
+    
+    return
+}
+
+func NewDescribeBillingSpecsResponse() (response *DescribeBillingSpecsResponse) {
+    response = &DescribeBillingSpecsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeBillingSpecs
+// 本接口(DescribeBillingSpecs)用于查询计费项列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_QUERYSPECSFAILED = "FailedOperation.QuerySpecsFailed"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeBillingSpecs(request *DescribeBillingSpecsRequest) (response *DescribeBillingSpecsResponse, err error) {
+    return c.DescribeBillingSpecsWithContext(context.Background(), request)
+}
+
+// DescribeBillingSpecs
+// 本接口(DescribeBillingSpecs)用于查询计费项列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_QUERYSPECSFAILED = "FailedOperation.QuerySpecsFailed"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeBillingSpecsWithContext(ctx context.Context, request *DescribeBillingSpecsRequest) (response *DescribeBillingSpecsResponse, err error) {
+    if request == nil {
+        request = NewDescribeBillingSpecsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBillingSpecs require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeBillingSpecsResponse()
     err = c.Send(request, response)
     return
 }
@@ -1803,6 +2187,74 @@ func (c *Client) StartTrainingTaskWithContext(ctx context.Context, request *Star
     request.SetContext(ctx)
     
     response = NewStartTrainingTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewStopBatchTaskRequest() (request *StopBatchTaskRequest) {
+    request = &StopBatchTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tione", APIVersion, "StopBatchTask")
+    
+    
+    return
+}
+
+func NewStopBatchTaskResponse() (response *StopBatchTaskResponse) {
+    response = &StopBatchTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// StopBatchTask
+// 停止跑批任务
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_CAMEXCEPTION = "AuthFailure.CamException"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_EXECTAGFAIL = "FailedOperation.ExecTagFail"
+//  FAILEDOPERATION_QUERYTAGFAIL = "FailedOperation.QueryTagFail"
+//  FAILEDOPERATION_UNMARSHALDATA = "FailedOperation.UnmarshalData"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+func (c *Client) StopBatchTask(request *StopBatchTaskRequest) (response *StopBatchTaskResponse, err error) {
+    return c.StopBatchTaskWithContext(context.Background(), request)
+}
+
+// StopBatchTask
+// 停止跑批任务
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_CAMEXCEPTION = "AuthFailure.CamException"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_EXECTAGFAIL = "FailedOperation.ExecTagFail"
+//  FAILEDOPERATION_QUERYTAGFAIL = "FailedOperation.QueryTagFail"
+//  FAILEDOPERATION_UNMARSHALDATA = "FailedOperation.UnmarshalData"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+func (c *Client) StopBatchTaskWithContext(ctx context.Context, request *StopBatchTaskRequest) (response *StopBatchTaskResponse, err error) {
+    if request == nil {
+        request = NewStopBatchTaskRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("StopBatchTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewStopBatchTaskResponse()
     err = c.Send(request, response)
     return
 }

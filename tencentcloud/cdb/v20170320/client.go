@@ -3033,6 +3033,60 @@ func (c *Client) DescribeCDBProxyWithContext(ctx context.Context, request *Descr
     return
 }
 
+func NewDescribeCdbZoneConfigRequest() (request *DescribeCdbZoneConfigRequest) {
+    request = &DescribeCdbZoneConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cdb", APIVersion, "DescribeCdbZoneConfig")
+    
+    
+    return
+}
+
+func NewDescribeCdbZoneConfigResponse() (response *DescribeCdbZoneConfigResponse) {
+    response = &DescribeCdbZoneConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeCdbZoneConfig
+// 本接口(DescribeCdbZoneConfig)用于查询云数据库各地域可售卖的规格配置。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DESCRIBEPROXYGROUPERROR = "FailedOperation.DescribeProxyGroupError"
+//  INTERNALERROR_DBRECORDNOTEXISTERROR = "InternalError.DBRecordNotExistError"
+//  INTERNALERROR_INTERNALHTTPSERVERERROR = "InternalError.InternalHttpServerError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+func (c *Client) DescribeCdbZoneConfig(request *DescribeCdbZoneConfigRequest) (response *DescribeCdbZoneConfigResponse, err error) {
+    return c.DescribeCdbZoneConfigWithContext(context.Background(), request)
+}
+
+// DescribeCdbZoneConfig
+// 本接口(DescribeCdbZoneConfig)用于查询云数据库各地域可售卖的规格配置。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DESCRIBEPROXYGROUPERROR = "FailedOperation.DescribeProxyGroupError"
+//  INTERNALERROR_DBRECORDNOTEXISTERROR = "InternalError.DBRecordNotExistError"
+//  INTERNALERROR_INTERNALHTTPSERVERERROR = "InternalError.InternalHttpServerError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+func (c *Client) DescribeCdbZoneConfigWithContext(ctx context.Context, request *DescribeCdbZoneConfigRequest) (response *DescribeCdbZoneConfigResponse, err error) {
+    if request == nil {
+        request = NewDescribeCdbZoneConfigRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCdbZoneConfig require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCdbZoneConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeCloneListRequest() (request *DescribeCloneListRequest) {
     request = &DescribeCloneListRequest{
         BaseRequest: &tchttp.BaseRequest{},

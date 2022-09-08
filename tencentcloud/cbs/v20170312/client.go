@@ -45,6 +45,84 @@ func NewClient(credential common.CredentialIface, region string, clientProfile *
 }
 
 
+func NewApplyDiskBackupRequest() (request *ApplyDiskBackupRequest) {
+    request = &ApplyDiskBackupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cbs", APIVersion, "ApplyDiskBackup")
+    
+    
+    return
+}
+
+func NewApplyDiskBackupResponse() (response *ApplyDiskBackupResponse) {
+    response = &ApplyDiskBackupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ApplyDiskBackup
+// 本接口（ApplyDiskBackup）用于回滚备份点到原云硬盘。
+//
+// 
+//
+// * 仅支持回滚到原云硬盘上。对于数据盘备份点，如果您需要复制备份点数据到其它云硬盘上，请先使用 CreateSnapshot 将备份点转换为快照，然后使用 CreateDisks 接口创建新的弹性云硬盘，将快照数据复制到新购云硬盘上。
+//
+// * 用于回滚的备份点必须处于NORMAL状态。备份点状态可以通过DescribeDiskBackups接口查询，见输出参数中BackupState字段解释。
+//
+// * 如果是弹性云硬盘，则云硬盘必须处于未挂载状态，云硬盘挂载状态可以通过DescribeDisks接口查询，见Attached字段解释；如果是随实例一起购买的非弹性云硬盘，则实例必须处于关机状态，实例状态可以通过DescribeInstancesStatus接口查询。
+//
+// 可能返回的错误码:
+//  INVALIDDISK_BUSY = "InvalidDisk.Busy"
+//  INVALIDDISK_NOTSUPPORTED = "InvalidDisk.NotSupported"
+//  INVALIDDISKID_NOTFOUND = "InvalidDiskId.NotFound"
+//  INVALIDINSTANCE_NOTSUPPORTED = "InvalidInstance.NotSupported"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_NOTFOUND = "ResourceNotFound.NotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCEUNAVAILABLE_NOTSUPPORTED = "ResourceUnavailable.NotSupported"
+func (c *Client) ApplyDiskBackup(request *ApplyDiskBackupRequest) (response *ApplyDiskBackupResponse, err error) {
+    return c.ApplyDiskBackupWithContext(context.Background(), request)
+}
+
+// ApplyDiskBackup
+// 本接口（ApplyDiskBackup）用于回滚备份点到原云硬盘。
+//
+// 
+//
+// * 仅支持回滚到原云硬盘上。对于数据盘备份点，如果您需要复制备份点数据到其它云硬盘上，请先使用 CreateSnapshot 将备份点转换为快照，然后使用 CreateDisks 接口创建新的弹性云硬盘，将快照数据复制到新购云硬盘上。
+//
+// * 用于回滚的备份点必须处于NORMAL状态。备份点状态可以通过DescribeDiskBackups接口查询，见输出参数中BackupState字段解释。
+//
+// * 如果是弹性云硬盘，则云硬盘必须处于未挂载状态，云硬盘挂载状态可以通过DescribeDisks接口查询，见Attached字段解释；如果是随实例一起购买的非弹性云硬盘，则实例必须处于关机状态，实例状态可以通过DescribeInstancesStatus接口查询。
+//
+// 可能返回的错误码:
+//  INVALIDDISK_BUSY = "InvalidDisk.Busy"
+//  INVALIDDISK_NOTSUPPORTED = "InvalidDisk.NotSupported"
+//  INVALIDDISKID_NOTFOUND = "InvalidDiskId.NotFound"
+//  INVALIDINSTANCE_NOTSUPPORTED = "InvalidInstance.NotSupported"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_NOTFOUND = "ResourceNotFound.NotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCEUNAVAILABLE_NOTSUPPORTED = "ResourceUnavailable.NotSupported"
+func (c *Client) ApplyDiskBackupWithContext(ctx context.Context, request *ApplyDiskBackupRequest) (response *ApplyDiskBackupResponse, err error) {
+    if request == nil {
+        request = NewApplyDiskBackupRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ApplyDiskBackup require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewApplyDiskBackupResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewApplySnapshotRequest() (request *ApplySnapshotRequest) {
     request = &ApplySnapshotRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -719,6 +797,58 @@ func (c *Client) DeleteAutoSnapshotPoliciesWithContext(ctx context.Context, requ
     return
 }
 
+func NewDeleteDiskBackupsRequest() (request *DeleteDiskBackupsRequest) {
+    request = &DeleteDiskBackupsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cbs", APIVersion, "DeleteDiskBackups")
+    
+    
+    return
+}
+
+func NewDeleteDiskBackupsResponse() (response *DeleteDiskBackupsResponse) {
+    response = &DeleteDiskBackupsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteDiskBackups
+// 批量删除指定的云硬盘备份点。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_NOTFOUND = "ResourceNotFound.NotFound"
+func (c *Client) DeleteDiskBackups(request *DeleteDiskBackupsRequest) (response *DeleteDiskBackupsResponse, err error) {
+    return c.DeleteDiskBackupsWithContext(context.Background(), request)
+}
+
+// DeleteDiskBackups
+// 批量删除指定的云硬盘备份点。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_NOTFOUND = "ResourceNotFound.NotFound"
+func (c *Client) DeleteDiskBackupsWithContext(ctx context.Context, request *DeleteDiskBackupsRequest) (response *DeleteDiskBackupsResponse, err error) {
+    if request == nil {
+        request = NewDeleteDiskBackupsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteDiskBackups require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteDiskBackupsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteSnapshotsRequest() (request *DeleteSnapshotsRequest) {
     request = &DeleteSnapshotsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -909,6 +1039,68 @@ func (c *Client) DescribeDiskAssociatedAutoSnapshotPolicyWithContext(ctx context
     request.SetContext(ctx)
     
     response = NewDescribeDiskAssociatedAutoSnapshotPolicyResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDiskBackupsRequest() (request *DescribeDiskBackupsRequest) {
+    request = &DescribeDiskBackupsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cbs", APIVersion, "DescribeDiskBackups")
+    
+    
+    return
+}
+
+func NewDescribeDiskBackupsResponse() (response *DescribeDiskBackupsResponse) {
+    response = &DescribeDiskBackupsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeDiskBackups
+// 本接口（DescribeDiskBackups）用于查询备份点的详细信息。
+//
+// 
+//
+// 根据备份点ID、创建备份点的云硬盘ID、创建备份点的云硬盘类型等对结果进行过滤，不同条件之间为与(AND)的关系，过滤信息详细请见过滤器Filter。
+//
+// 如果参数为空，返回当前用户一定数量（Limit所指定的数量，默认为20）的备份点列表。
+//
+// 可能返回的错误码:
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeDiskBackups(request *DescribeDiskBackupsRequest) (response *DescribeDiskBackupsResponse, err error) {
+    return c.DescribeDiskBackupsWithContext(context.Background(), request)
+}
+
+// DescribeDiskBackups
+// 本接口（DescribeDiskBackups）用于查询备份点的详细信息。
+//
+// 
+//
+// 根据备份点ID、创建备份点的云硬盘ID、创建备份点的云硬盘类型等对结果进行过滤，不同条件之间为与(AND)的关系，过滤信息详细请见过滤器Filter。
+//
+// 如果参数为空，返回当前用户一定数量（Limit所指定的数量，默认为20）的备份点列表。
+//
+// 可能返回的错误码:
+//  INVALIDFILTER = "InvalidFilter"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeDiskBackupsWithContext(ctx context.Context, request *DescribeDiskBackupsRequest) (response *DescribeDiskBackupsResponse, err error) {
+    if request == nil {
+        request = NewDescribeDiskBackupsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDiskBackups require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDiskBackupsResponse()
     err = c.Send(request, response)
     return
 }
@@ -1609,6 +1801,60 @@ func (c *Client) InitializeDisksWithContext(ctx context.Context, request *Initia
     return
 }
 
+func NewInquirePriceModifyDiskBackupQuotaRequest() (request *InquirePriceModifyDiskBackupQuotaRequest) {
+    request = &InquirePriceModifyDiskBackupQuotaRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cbs", APIVersion, "InquirePriceModifyDiskBackupQuota")
+    
+    
+    return
+}
+
+func NewInquirePriceModifyDiskBackupQuotaResponse() (response *InquirePriceModifyDiskBackupQuotaResponse) {
+    response = &InquirePriceModifyDiskBackupQuotaResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// InquirePriceModifyDiskBackupQuota
+// 本接口（InquirePricePriceModifyDiskBackupQuota）用于修改云硬盘备份点配额询价。
+//
+// 可能返回的错误码:
+//  INVALIDDISK_BUSY = "InvalidDisk.Busy"
+//  INVALIDDISK_NOTSUPPORTED = "InvalidDisk.NotSupported"
+//  INVALIDDISKID_NOTFOUND = "InvalidDiskId.NotFound"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) InquirePriceModifyDiskBackupQuota(request *InquirePriceModifyDiskBackupQuotaRequest) (response *InquirePriceModifyDiskBackupQuotaResponse, err error) {
+    return c.InquirePriceModifyDiskBackupQuotaWithContext(context.Background(), request)
+}
+
+// InquirePriceModifyDiskBackupQuota
+// 本接口（InquirePricePriceModifyDiskBackupQuota）用于修改云硬盘备份点配额询价。
+//
+// 可能返回的错误码:
+//  INVALIDDISK_BUSY = "InvalidDisk.Busy"
+//  INVALIDDISK_NOTSUPPORTED = "InvalidDisk.NotSupported"
+//  INVALIDDISKID_NOTFOUND = "InvalidDiskId.NotFound"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) InquirePriceModifyDiskBackupQuotaWithContext(ctx context.Context, request *InquirePriceModifyDiskBackupQuotaRequest) (response *InquirePriceModifyDiskBackupQuotaResponse, err error) {
+    if request == nil {
+        request = NewInquirePriceModifyDiskBackupQuotaRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("InquirePriceModifyDiskBackupQuota require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewInquirePriceModifyDiskBackupQuotaResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewInquirePriceModifyDiskExtraPerformanceRequest() (request *InquirePriceModifyDiskExtraPerformanceRequest) {
     request = &InquirePriceModifyDiskExtraPerformanceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2009,6 +2255,60 @@ func (c *Client) ModifyDiskAttributesWithContext(ctx context.Context, request *M
     request.SetContext(ctx)
     
     response = NewModifyDiskAttributesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyDiskBackupQuotaRequest() (request *ModifyDiskBackupQuotaRequest) {
+    request = &ModifyDiskBackupQuotaRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cbs", APIVersion, "ModifyDiskBackupQuota")
+    
+    
+    return
+}
+
+func NewModifyDiskBackupQuotaResponse() (response *ModifyDiskBackupQuotaResponse) {
+    response = &ModifyDiskBackupQuotaResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyDiskBackupQuota
+// 此接口 (ModifyDiskBackupQuota) 用于修改云硬盘备份点配额。
+//
+// 可能返回的错误码:
+//  INVALIDACCOUNT_INSUFFICIENTBALANCE = "InvalidAccount.InsufficientBalance"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEUNAVAILABLE_NOTSUPPORTED = "ResourceUnavailable.NotSupported"
+//  UNAUTHORIZEDOPERATION_NOTHAVEPAYMENTRIGHT = "UnauthorizedOperation.NotHavePaymentRight"
+func (c *Client) ModifyDiskBackupQuota(request *ModifyDiskBackupQuotaRequest) (response *ModifyDiskBackupQuotaResponse, err error) {
+    return c.ModifyDiskBackupQuotaWithContext(context.Background(), request)
+}
+
+// ModifyDiskBackupQuota
+// 此接口 (ModifyDiskBackupQuota) 用于修改云硬盘备份点配额。
+//
+// 可能返回的错误码:
+//  INVALIDACCOUNT_INSUFFICIENTBALANCE = "InvalidAccount.InsufficientBalance"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCEUNAVAILABLE_NOTSUPPORTED = "ResourceUnavailable.NotSupported"
+//  UNAUTHORIZEDOPERATION_NOTHAVEPAYMENTRIGHT = "UnauthorizedOperation.NotHavePaymentRight"
+func (c *Client) ModifyDiskBackupQuotaWithContext(ctx context.Context, request *ModifyDiskBackupQuotaRequest) (response *ModifyDiskBackupQuotaResponse, err error) {
+    if request == nil {
+        request = NewModifyDiskBackupQuotaRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyDiskBackupQuota require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyDiskBackupQuotaResponse()
     err = c.Send(request, response)
     return
 }

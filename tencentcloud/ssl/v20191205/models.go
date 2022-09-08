@@ -378,6 +378,10 @@ type Certificates struct {
 	// 是否国密证书
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsSM *bool `json:"IsSM,omitempty" name:"IsSM"`
+
+	// 证书算法
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EncryptAlgorithm *string `json:"EncryptAlgorithm,omitempty" name:"EncryptAlgorithm"`
 }
 
 // Predefined struct for user
@@ -975,6 +979,10 @@ type DescribeCertificateDetailResponseParams struct {
 	// 加密证书 SHA1指纹 （国密证书特有）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EncryptCertFingerprint *string `json:"EncryptCertFingerprint,omitempty" name:"EncryptCertFingerprint"`
+
+	// 证书算法
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EncryptAlgorithm *string `json:"EncryptAlgorithm,omitempty" name:"EncryptAlgorithm"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`

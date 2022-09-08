@@ -2275,6 +2275,87 @@ func (r *DescribeRedisTopBigKeysResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeRedisTopKeyPrefixListRequestParams struct {
+	// 实例ID。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 查询日期，如2021-05-27，最早可为前30天的日期。
+	Date *string `json:"Date,omitempty" name:"Date"`
+
+	// 服务产品类型，支持值包括 "redis" - 云数据库 Redis。
+	Product *string `json:"Product,omitempty" name:"Product"`
+
+	// 查询数目，默认为20，最大值为100。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+type DescribeRedisTopKeyPrefixListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 查询日期，如2021-05-27，最早可为前30天的日期。
+	Date *string `json:"Date,omitempty" name:"Date"`
+
+	// 服务产品类型，支持值包括 "redis" - 云数据库 Redis。
+	Product *string `json:"Product,omitempty" name:"Product"`
+
+	// 查询数目，默认为20，最大值为100。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribeRedisTopKeyPrefixListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRedisTopKeyPrefixListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "Date")
+	delete(f, "Product")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRedisTopKeyPrefixListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRedisTopKeyPrefixListResponseParams struct {
+	// top key前缀列表。
+	Items []*RedisPreKeySpaceData `json:"Items,omitempty" name:"Items"`
+
+	// 采集时间戳（秒）。
+	Timestamp *int64 `json:"Timestamp,omitempty" name:"Timestamp"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeRedisTopKeyPrefixListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeRedisTopKeyPrefixListResponseParams `json:"Response"`
+}
+
+func (r *DescribeRedisTopKeyPrefixListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRedisTopKeyPrefixListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeSecurityAuditLogDownloadUrlsRequestParams struct {
 	// 安全审计组Id。
 	SecAuditGroupId *string `json:"SecAuditGroupId,omitempty" name:"SecAuditGroupId"`
@@ -3949,6 +4030,26 @@ type RedisKeySpaceData struct {
 
 	// 元素个数。
 	ItemCount *int64 `json:"ItemCount,omitempty" name:"ItemCount"`
+
+	// 最大元素长度。
+	MaxElementSize *int64 `json:"MaxElementSize,omitempty" name:"MaxElementSize"`
+}
+
+type RedisPreKeySpaceData struct {
+	// 平均元素长度。
+	AveElementSize *int64 `json:"AveElementSize,omitempty" name:"AveElementSize"`
+
+	// 总占用内存（Byte）。
+	Length *int64 `json:"Length,omitempty" name:"Length"`
+
+	// key前缀。
+	KeyPreIndex *string `json:"KeyPreIndex,omitempty" name:"KeyPreIndex"`
+
+	// 元素数量。
+	ItemCount *int64 `json:"ItemCount,omitempty" name:"ItemCount"`
+
+	// key个数。
+	Count *int64 `json:"Count,omitempty" name:"Count"`
 
 	// 最大元素长度。
 	MaxElementSize *int64 `json:"MaxElementSize,omitempty" name:"MaxElementSize"`

@@ -1127,6 +1127,9 @@ type CreateCRWorkRequestParams struct {
 
 	// x
 	Content *string `json:"Content,omitempty" name:"Content"`
+
+	// x
+	MonitorEndTime *string `json:"MonitorEndTime,omitempty" name:"MonitorEndTime"`
 }
 
 type CreateCRWorkRequest struct {
@@ -1215,6 +1218,9 @@ type CreateCRWorkRequest struct {
 
 	// x
 	Content *string `json:"Content,omitempty" name:"Content"`
+
+	// x
+	MonitorEndTime *string `json:"MonitorEndTime,omitempty" name:"MonitorEndTime"`
 }
 
 func (r *CreateCRWorkRequest) ToJsonString() string {
@@ -1257,6 +1263,7 @@ func (r *CreateCRWorkRequest) FromJsonString(s string) error {
 	delete(f, "AuthorizationEndTime")
 	delete(f, "ContentType")
 	delete(f, "Content")
+	delete(f, "MonitorEndTime")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCRWorkRequest has unknown keys!", "")
 	}

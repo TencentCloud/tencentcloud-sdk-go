@@ -1264,6 +1264,10 @@ type ComplianceAffectedAsset struct {
 	// 镜像的tag
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ImageTag *string `json:"ImageTag,omitempty" name:"ImageTag"`
+
+	// 检查项验证信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VerifyInfo *string `json:"VerifyInfo,omitempty" name:"VerifyInfo"`
 }
 
 type ComplianceAssetDetailInfo struct {
@@ -1414,6 +1418,10 @@ type ComplianceAssetPolicyItem struct {
 	// 最近检测的时间。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LastCheckTime *string `json:"LastCheckTime,omitempty" name:"LastCheckTime"`
+
+	// 验证信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VerifyInfo *string `json:"VerifyInfo,omitempty" name:"VerifyInfo"`
 }
 
 type ComplianceAssetSummary struct {

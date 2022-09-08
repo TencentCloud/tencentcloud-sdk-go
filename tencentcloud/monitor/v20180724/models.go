@@ -1438,6 +1438,10 @@ func (r *CreateGrafanaIntegrationRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateGrafanaIntegrationResponseParams struct {
+	// 集成 ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IntegrationId *string `json:"IntegrationId,omitempty" name:"IntegrationId"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }
@@ -1466,14 +1470,17 @@ type CreateGrafanaNotificationChannelRequestParams struct {
 	// 渠道名
 	ChannelName *string `json:"ChannelName,omitempty" name:"ChannelName"`
 
-	// 组织 ID
+	// 默认为1，已废弃，请使用 OrganizationIds
 	OrgId *int64 `json:"OrgId,omitempty" name:"OrgId"`
 
 	// 接受告警通道 ID 数组
 	Receivers []*string `json:"Receivers,omitempty" name:"Receivers"`
 
-	// 额外组织 ID 数组
+	// 额外组织 ID 数组，已废弃，请使用 OrganizationIds
 	ExtraOrgIds []*string `json:"ExtraOrgIds,omitempty" name:"ExtraOrgIds"`
+
+	// 生效的所有组织 ID 数组，默认为 ["1"]
+	OrganizationIds []*string `json:"OrganizationIds,omitempty" name:"OrganizationIds"`
 }
 
 type CreateGrafanaNotificationChannelRequest struct {
@@ -1485,14 +1492,17 @@ type CreateGrafanaNotificationChannelRequest struct {
 	// 渠道名
 	ChannelName *string `json:"ChannelName,omitempty" name:"ChannelName"`
 
-	// 组织 ID
+	// 默认为1，已废弃，请使用 OrganizationIds
 	OrgId *int64 `json:"OrgId,omitempty" name:"OrgId"`
 
 	// 接受告警通道 ID 数组
 	Receivers []*string `json:"Receivers,omitempty" name:"Receivers"`
 
-	// 额外组织 ID 数组
+	// 额外组织 ID 数组，已废弃，请使用 OrganizationIds
 	ExtraOrgIds []*string `json:"ExtraOrgIds,omitempty" name:"ExtraOrgIds"`
+
+	// 生效的所有组织 ID 数组，默认为 ["1"]
+	OrganizationIds []*string `json:"OrganizationIds,omitempty" name:"OrganizationIds"`
 }
 
 func (r *CreateGrafanaNotificationChannelRequest) ToJsonString() string {
@@ -1512,6 +1522,7 @@ func (r *CreateGrafanaNotificationChannelRequest) FromJsonString(s string) error
 	delete(f, "OrgId")
 	delete(f, "Receivers")
 	delete(f, "ExtraOrgIds")
+	delete(f, "OrganizationIds")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateGrafanaNotificationChannelRequest has unknown keys!", "")
 	}
@@ -7974,16 +7985,20 @@ type GrafanaNotificationChannel struct {
 	// 更新时间
 	UpdatedAt *string `json:"UpdatedAt,omitempty" name:"UpdatedAt"`
 
-	// 默认生效组织
+	// 默认生效组织，已废弃，请使用 OrganizationIds
 	OrgId *string `json:"OrgId,omitempty" name:"OrgId"`
 
-	// 额外生效组织
+	// 额外生效组织，已废弃，请使用 OrganizationIds
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExtraOrgIds []*string `json:"ExtraOrgIds,omitempty" name:"ExtraOrgIds"`
 
-	// 生效组织
+	// 生效组织，已废弃，请使用 OrganizationIds
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OrgIds *string `json:"OrgIds,omitempty" name:"OrgIds"`
+
+	// 告警渠道的所有生效组织
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OrganizationIds *string `json:"OrganizationIds,omitempty" name:"OrganizationIds"`
 }
 
 type GrafanaPlugin struct {
@@ -10964,8 +10979,11 @@ type UpdateGrafanaNotificationChannelRequestParams struct {
 	// 接受告警通道 ID 数组
 	Receivers []*string `json:"Receivers,omitempty" name:"Receivers"`
 
-	// 额外组织 ID 数组
+	// 已废弃，请使用 OrganizationIds
 	ExtraOrgIds []*string `json:"ExtraOrgIds,omitempty" name:"ExtraOrgIds"`
+
+	// 生效的组织 ID 数组
+	OrganizationIds []*string `json:"OrganizationIds,omitempty" name:"OrganizationIds"`
 }
 
 type UpdateGrafanaNotificationChannelRequest struct {
@@ -10983,8 +11001,11 @@ type UpdateGrafanaNotificationChannelRequest struct {
 	// 接受告警通道 ID 数组
 	Receivers []*string `json:"Receivers,omitempty" name:"Receivers"`
 
-	// 额外组织 ID 数组
+	// 已废弃，请使用 OrganizationIds
 	ExtraOrgIds []*string `json:"ExtraOrgIds,omitempty" name:"ExtraOrgIds"`
+
+	// 生效的组织 ID 数组
+	OrganizationIds []*string `json:"OrganizationIds,omitempty" name:"OrganizationIds"`
 }
 
 func (r *UpdateGrafanaNotificationChannelRequest) ToJsonString() string {
@@ -11004,6 +11025,7 @@ func (r *UpdateGrafanaNotificationChannelRequest) FromJsonString(s string) error
 	delete(f, "ChannelName")
 	delete(f, "Receivers")
 	delete(f, "ExtraOrgIds")
+	delete(f, "OrganizationIds")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateGrafanaNotificationChannelRequest has unknown keys!", "")
 	}

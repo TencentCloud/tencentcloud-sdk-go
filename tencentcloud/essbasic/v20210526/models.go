@@ -1529,6 +1529,12 @@ type DescribeTemplatesRequestParams struct {
 
 	// 操作者的信息
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
+	// 是否返回所有组件信息
+	QueryAllComponents *bool `json:"QueryAllComponents,omitempty" name:"QueryAllComponents"`
+
+	// 模糊搜索模版名称
+	TemplateName *string `json:"TemplateName,omitempty" name:"TemplateName"`
 }
 
 type DescribeTemplatesRequest struct {
@@ -1551,6 +1557,12 @@ type DescribeTemplatesRequest struct {
 
 	// 操作者的信息
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
+	// 是否返回所有组件信息
+	QueryAllComponents *bool `json:"QueryAllComponents,omitempty" name:"QueryAllComponents"`
+
+	// 模糊搜索模版名称
+	TemplateName *string `json:"TemplateName,omitempty" name:"TemplateName"`
 }
 
 func (r *DescribeTemplatesRequest) ToJsonString() string {
@@ -1571,6 +1583,8 @@ func (r *DescribeTemplatesRequest) FromJsonString(s string) error {
 	delete(f, "Limit")
 	delete(f, "Offset")
 	delete(f, "Operator")
+	delete(f, "QueryAllComponents")
+	delete(f, "TemplateName")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTemplatesRequest has unknown keys!", "")
 	}

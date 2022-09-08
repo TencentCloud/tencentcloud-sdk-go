@@ -20,6 +20,47 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+type AutoSnapshotPolicyInfo struct {
+	// 快照策略ID
+	AutoSnapshotPolicyId *string `json:"AutoSnapshotPolicyId,omitempty" name:"AutoSnapshotPolicyId"`
+
+	// 快照策略ID
+	PolicyName *string `json:"PolicyName,omitempty" name:"PolicyName"`
+
+	// 快照策略创建时间
+	CreationTime *string `json:"CreationTime,omitempty" name:"CreationTime"`
+
+	// 关联的文件系统个数
+	FileSystemNums *uint64 `json:"FileSystemNums,omitempty" name:"FileSystemNums"`
+
+	// 快照定期备份在一星期哪一天
+	DayOfWeek *string `json:"DayOfWeek,omitempty" name:"DayOfWeek"`
+
+	// 快照定期备份在一天的哪一小时
+	Hour *string `json:"Hour,omitempty" name:"Hour"`
+
+	// 是否激活定期快照功能
+	IsActivated *uint64 `json:"IsActivated,omitempty" name:"IsActivated"`
+
+	// 下一次触发快照时间
+	NextActiveTime *string `json:"NextActiveTime,omitempty" name:"NextActiveTime"`
+
+	// 快照策略状态
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 帐号ID
+	AppId *uint64 `json:"AppId,omitempty" name:"AppId"`
+
+	// 保留时间
+	AliveDays *uint64 `json:"AliveDays,omitempty" name:"AliveDays"`
+
+	// 地域
+	RegionName *string `json:"RegionName,omitempty" name:"RegionName"`
+
+	// 文件系统信息
+	FileSystems []*FileSystemByPolicy `json:"FileSystems,omitempty" name:"FileSystems"`
+}
+
 type AvailableProtoStatus struct {
 	// 售卖状态。可选值有 sale_out 售罄、saling可售、no_saling不可销售
 	SaleStatus *string `json:"SaleStatus,omitempty" name:"SaleStatus"`
@@ -71,6 +112,148 @@ type AvailableZone struct {
 
 	// 可用区中英文名称
 	ZoneName *string `json:"ZoneName,omitempty" name:"ZoneName"`
+}
+
+// Predefined struct for user
+type BindAutoSnapshotPolicyRequestParams struct {
+	// 快照策略ID
+	AutoSnapshotPolicyId *string `json:"AutoSnapshotPolicyId,omitempty" name:"AutoSnapshotPolicyId"`
+
+	// 文件系统列表
+	FileSystemIds *string `json:"FileSystemIds,omitempty" name:"FileSystemIds"`
+}
+
+type BindAutoSnapshotPolicyRequest struct {
+	*tchttp.BaseRequest
+	
+	// 快照策略ID
+	AutoSnapshotPolicyId *string `json:"AutoSnapshotPolicyId,omitempty" name:"AutoSnapshotPolicyId"`
+
+	// 文件系统列表
+	FileSystemIds *string `json:"FileSystemIds,omitempty" name:"FileSystemIds"`
+}
+
+func (r *BindAutoSnapshotPolicyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BindAutoSnapshotPolicyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AutoSnapshotPolicyId")
+	delete(f, "FileSystemIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BindAutoSnapshotPolicyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type BindAutoSnapshotPolicyResponseParams struct {
+	// 快照策略ID
+	AutoSnapshotPolicyId *string `json:"AutoSnapshotPolicyId,omitempty" name:"AutoSnapshotPolicyId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type BindAutoSnapshotPolicyResponse struct {
+	*tchttp.BaseResponse
+	Response *BindAutoSnapshotPolicyResponseParams `json:"Response"`
+}
+
+func (r *BindAutoSnapshotPolicyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BindAutoSnapshotPolicyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateAutoSnapshotPolicyRequestParams struct {
+	// 快照重复日期，星期一到星期日
+	DayOfWeek *string `json:"DayOfWeek,omitempty" name:"DayOfWeek"`
+
+	// 快照重复时间点
+	Hour *string `json:"Hour,omitempty" name:"Hour"`
+
+	// 策略名称
+	PolicyName *string `json:"PolicyName,omitempty" name:"PolicyName"`
+
+	// 快照保留时长
+	AliveDays *uint64 `json:"AliveDays,omitempty" name:"AliveDays"`
+}
+
+type CreateAutoSnapshotPolicyRequest struct {
+	*tchttp.BaseRequest
+	
+	// 快照重复日期，星期一到星期日
+	DayOfWeek *string `json:"DayOfWeek,omitempty" name:"DayOfWeek"`
+
+	// 快照重复时间点
+	Hour *string `json:"Hour,omitempty" name:"Hour"`
+
+	// 策略名称
+	PolicyName *string `json:"PolicyName,omitempty" name:"PolicyName"`
+
+	// 快照保留时长
+	AliveDays *uint64 `json:"AliveDays,omitempty" name:"AliveDays"`
+}
+
+func (r *CreateAutoSnapshotPolicyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAutoSnapshotPolicyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DayOfWeek")
+	delete(f, "Hour")
+	delete(f, "PolicyName")
+	delete(f, "AliveDays")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAutoSnapshotPolicyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateAutoSnapshotPolicyResponseParams struct {
+	// 快照策略ID
+	AutoSnapshotPolicyId *string `json:"AutoSnapshotPolicyId,omitempty" name:"AutoSnapshotPolicyId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateAutoSnapshotPolicyResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateAutoSnapshotPolicyResponseParams `json:"Response"`
+}
+
+func (r *CreateAutoSnapshotPolicyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAutoSnapshotPolicyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user
@@ -419,6 +602,134 @@ func (r *CreateCfsRuleResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateCfsSnapshotRequestParams struct {
+	// 文件系统id
+	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
+
+	// 快照名称
+	SnapshotName *string `json:"SnapshotName,omitempty" name:"SnapshotName"`
+
+	// 快照标签
+	ResourceTags []*TagInfo `json:"ResourceTags,omitempty" name:"ResourceTags"`
+}
+
+type CreateCfsSnapshotRequest struct {
+	*tchttp.BaseRequest
+	
+	// 文件系统id
+	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
+
+	// 快照名称
+	SnapshotName *string `json:"SnapshotName,omitempty" name:"SnapshotName"`
+
+	// 快照标签
+	ResourceTags []*TagInfo `json:"ResourceTags,omitempty" name:"ResourceTags"`
+}
+
+func (r *CreateCfsSnapshotRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateCfsSnapshotRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FileSystemId")
+	delete(f, "SnapshotName")
+	delete(f, "ResourceTags")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCfsSnapshotRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateCfsSnapshotResponseParams struct {
+	// 文件系统快照id
+	SnapshotId *string `json:"SnapshotId,omitempty" name:"SnapshotId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateCfsSnapshotResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateCfsSnapshotResponseParams `json:"Response"`
+}
+
+func (r *CreateCfsSnapshotResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateCfsSnapshotResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteAutoSnapshotPolicyRequestParams struct {
+	// 快照策略ID
+	AutoSnapshotPolicyId *string `json:"AutoSnapshotPolicyId,omitempty" name:"AutoSnapshotPolicyId"`
+}
+
+type DeleteAutoSnapshotPolicyRequest struct {
+	*tchttp.BaseRequest
+	
+	// 快照策略ID
+	AutoSnapshotPolicyId *string `json:"AutoSnapshotPolicyId,omitempty" name:"AutoSnapshotPolicyId"`
+}
+
+func (r *DeleteAutoSnapshotPolicyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteAutoSnapshotPolicyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AutoSnapshotPolicyId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteAutoSnapshotPolicyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteAutoSnapshotPolicyResponseParams struct {
+	// 快照策略ID
+	AutoSnapshotPolicyId *string `json:"AutoSnapshotPolicyId,omitempty" name:"AutoSnapshotPolicyId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DeleteAutoSnapshotPolicyResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteAutoSnapshotPolicyResponseParams `json:"Response"`
+}
+
+func (r *DeleteAutoSnapshotPolicyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteAutoSnapshotPolicyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DeleteCfsFileSystemRequestParams struct {
 	// 文件系统 ID。说明，进行删除文件系统操作前需要先调用 DeleteMountTarget 接口删除该文件系统的挂载点，否则会删除失败。
 	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
@@ -600,6 +911,63 @@ func (r *DeleteCfsRuleResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DeleteCfsSnapshotRequestParams struct {
+	// 文件系统快照id
+	SnapshotId *string `json:"SnapshotId,omitempty" name:"SnapshotId"`
+}
+
+type DeleteCfsSnapshotRequest struct {
+	*tchttp.BaseRequest
+	
+	// 文件系统快照id
+	SnapshotId *string `json:"SnapshotId,omitempty" name:"SnapshotId"`
+}
+
+func (r *DeleteCfsSnapshotRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteCfsSnapshotRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SnapshotId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteCfsSnapshotRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteCfsSnapshotResponseParams struct {
+	// 文件系统ID
+	SnapshotId *string `json:"SnapshotId,omitempty" name:"SnapshotId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DeleteCfsSnapshotResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteCfsSnapshotResponseParams `json:"Response"`
+}
+
+func (r *DeleteCfsSnapshotResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteCfsSnapshotResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DeleteMountTargetRequestParams struct {
 	// 文件系统 ID
 	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
@@ -657,6 +1025,101 @@ func (r *DeleteMountTargetResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteMountTargetResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAutoSnapshotPoliciesRequestParams struct {
+	// 快照策略ID
+	AutoSnapshotPolicyId *string `json:"AutoSnapshotPolicyId,omitempty" name:"AutoSnapshotPolicyId"`
+
+	// 分页码
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 页面长
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 过滤条件
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 升序，降序
+	Order *string `json:"Order,omitempty" name:"Order"`
+
+	// 排序字段
+	OrderField *string `json:"OrderField,omitempty" name:"OrderField"`
+}
+
+type DescribeAutoSnapshotPoliciesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 快照策略ID
+	AutoSnapshotPolicyId *string `json:"AutoSnapshotPolicyId,omitempty" name:"AutoSnapshotPolicyId"`
+
+	// 分页码
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 页面长
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 过滤条件
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 升序，降序
+	Order *string `json:"Order,omitempty" name:"Order"`
+
+	// 排序字段
+	OrderField *string `json:"OrderField,omitempty" name:"OrderField"`
+}
+
+func (r *DescribeAutoSnapshotPoliciesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAutoSnapshotPoliciesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AutoSnapshotPolicyId")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Filters")
+	delete(f, "Order")
+	delete(f, "OrderField")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAutoSnapshotPoliciesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAutoSnapshotPoliciesResponseParams struct {
+	// 快照策略总个数
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 快照策略信息
+	AutoSnapshotPolicies []*AutoSnapshotPolicyInfo `json:"AutoSnapshotPolicies,omitempty" name:"AutoSnapshotPolicies"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeAutoSnapshotPoliciesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAutoSnapshotPoliciesResponseParams `json:"Response"`
+}
+
+func (r *DescribeAutoSnapshotPoliciesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAutoSnapshotPoliciesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1011,6 +1474,165 @@ func (r *DescribeCfsServiceStatusResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeCfsSnapshotOverviewRequestParams struct {
+
+}
+
+type DescribeCfsSnapshotOverviewRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DescribeCfsSnapshotOverviewRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCfsSnapshotOverviewRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCfsSnapshotOverviewRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCfsSnapshotOverviewResponseParams struct {
+	// 统计信息
+	StatisticsList []*SnapshotStatistics `json:"StatisticsList,omitempty" name:"StatisticsList"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeCfsSnapshotOverviewResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeCfsSnapshotOverviewResponseParams `json:"Response"`
+}
+
+func (r *DescribeCfsSnapshotOverviewResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCfsSnapshotOverviewResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCfsSnapshotsRequestParams struct {
+	// 文件系统ID
+	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
+
+	// 快照ID
+	SnapshotId *string `json:"SnapshotId,omitempty" name:"SnapshotId"`
+
+	// 分页起始位置
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 页面长度
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 过滤条件
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 排序取值
+	OrderField *string `json:"OrderField,omitempty" name:"OrderField"`
+
+	// 排序 升序或者降序
+	Order *string `json:"Order,omitempty" name:"Order"`
+}
+
+type DescribeCfsSnapshotsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 文件系统ID
+	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
+
+	// 快照ID
+	SnapshotId *string `json:"SnapshotId,omitempty" name:"SnapshotId"`
+
+	// 分页起始位置
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 页面长度
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 过滤条件
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 排序取值
+	OrderField *string `json:"OrderField,omitempty" name:"OrderField"`
+
+	// 排序 升序或者降序
+	Order *string `json:"Order,omitempty" name:"Order"`
+}
+
+func (r *DescribeCfsSnapshotsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCfsSnapshotsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FileSystemId")
+	delete(f, "SnapshotId")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Filters")
+	delete(f, "OrderField")
+	delete(f, "Order")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCfsSnapshotsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCfsSnapshotsResponseParams struct {
+	// 总个数
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 快照信息描述
+	Snapshots []*SnapshotInfo `json:"Snapshots,omitempty" name:"Snapshots"`
+
+	// 快照列表快照汇总
+	TotalSize *uint64 `json:"TotalSize,omitempty" name:"TotalSize"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeCfsSnapshotsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeCfsSnapshotsResponseParams `json:"Response"`
+}
+
+func (r *DescribeCfsSnapshotsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCfsSnapshotsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeMountTargetsRequestParams struct {
 	// 文件系统 ID
 	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
@@ -1068,6 +1690,103 @@ func (r *DescribeMountTargetsResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *DescribeMountTargetsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeSnapshotOperationLogsRequestParams struct {
+	// 文件系统快照ID
+	SnapshotId *string `json:"SnapshotId,omitempty" name:"SnapshotId"`
+
+	// 起始时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+}
+
+type DescribeSnapshotOperationLogsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 文件系统快照ID
+	SnapshotId *string `json:"SnapshotId,omitempty" name:"SnapshotId"`
+
+	// 起始时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+}
+
+func (r *DescribeSnapshotOperationLogsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSnapshotOperationLogsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SnapshotId")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSnapshotOperationLogsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeSnapshotOperationLogsResponseParams struct {
+	// 快照ID
+	SnapshotId *string `json:"SnapshotId,omitempty" name:"SnapshotId"`
+
+	// 操作日志
+	SnapshotOperates []*SnapshotOperateLog `json:"SnapshotOperates,omitempty" name:"SnapshotOperates"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeSnapshotOperationLogsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeSnapshotOperationLogsResponseParams `json:"Response"`
+}
+
+func (r *DescribeSnapshotOperationLogsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSnapshotOperationLogsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type FileSystemByPolicy struct {
+	// 文件系统名称
+	CreationToken *string `json:"CreationToken,omitempty" name:"CreationToken"`
+
+	// 文件系统ID
+	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
+
+	// 文件系统大小
+	SizeByte *uint64 `json:"SizeByte,omitempty" name:"SizeByte"`
+
+	// 存储类型
+	StorageType *string `json:"StorageType,omitempty" name:"StorageType"`
+
+	// 快照总大小
+	TotalSnapshotSize *uint64 `json:"TotalSnapshotSize,omitempty" name:"TotalSnapshotSize"`
+
+	// 文件系统创建时间
+	CreationTime *string `json:"CreationTime,omitempty" name:"CreationTime"`
+
+	// 文件系统所在区ID
+	ZoneId *uint64 `json:"ZoneId,omitempty" name:"ZoneId"`
 }
 
 type FileSystemClient struct {
@@ -1150,6 +1869,14 @@ type FileSystemInfo struct {
 
 	// 文件系统标签列表
 	Tags []*TagInfo `json:"Tags,omitempty" name:"Tags"`
+}
+
+type Filter struct {
+	// 值
+	Values []*string `json:"Values,omitempty" name:"Values"`
+
+	// 名称
+	Name *string `json:"Name,omitempty" name:"Name"`
 }
 
 type MountInfo struct {
@@ -1286,12 +2013,237 @@ func (r *SignUpCfsServiceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type SnapshotInfo struct {
+	// 创建快照时间
+	CreationTime *string `json:"CreationTime,omitempty" name:"CreationTime"`
+
+	// 快照名称
+	SnapshotName *string `json:"SnapshotName,omitempty" name:"SnapshotName"`
+
+	// 快照ID
+	SnapshotId *string `json:"SnapshotId,omitempty" name:"SnapshotId"`
+
+	// 快照状态
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 地域名称
+	RegionName *string `json:"RegionName,omitempty" name:"RegionName"`
+
+	// 文件系统ID
+	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
+
+	// 快照大小
+	Size *uint64 `json:"Size,omitempty" name:"Size"`
+
+	// 保留时长天
+	AliveDay *uint64 `json:"AliveDay,omitempty" name:"AliveDay"`
+
+	// 快照进度
+	Percent *uint64 `json:"Percent,omitempty" name:"Percent"`
+
+	// 帐号ID
+	AppId *uint64 `json:"AppId,omitempty" name:"AppId"`
+
+	// 快照删除时间
+	DeleteTime *string `json:"DeleteTime,omitempty" name:"DeleteTime"`
+
+	// 文件系统名称
+	FsName *string `json:"FsName,omitempty" name:"FsName"`
+
+	// 快照标签
+	Tags []*TagInfo `json:"Tags,omitempty" name:"Tags"`
+}
+
+type SnapshotOperateLog struct {
+	// 操作类型
+	Action *string `json:"Action,omitempty" name:"Action"`
+
+	// 操作时间
+	ActionTime *string `json:"ActionTime,omitempty" name:"ActionTime"`
+
+	// 操作名称
+	ActionName *string `json:"ActionName,omitempty" name:"ActionName"`
+
+	// 操作者
+	Operator *string `json:"Operator,omitempty" name:"Operator"`
+
+	// 结果
+	Result *uint64 `json:"Result,omitempty" name:"Result"`
+}
+
+type SnapshotStatistics struct {
+	// 地域
+	Region *string `json:"Region,omitempty" name:"Region"`
+
+	// 快照总个数
+	SnapshotNumber *uint64 `json:"SnapshotNumber,omitempty" name:"SnapshotNumber"`
+
+	// 快照总容量
+	SnapshotSize *uint64 `json:"SnapshotSize,omitempty" name:"SnapshotSize"`
+}
+
 type TagInfo struct {
 	// 标签键
 	TagKey *string `json:"TagKey,omitempty" name:"TagKey"`
 
 	// 标签值
 	TagValue *string `json:"TagValue,omitempty" name:"TagValue"`
+}
+
+// Predefined struct for user
+type UnbindAutoSnapshotPolicyRequestParams struct {
+	// 需要解绑的文件系统ID列表，用"," 分割
+	FileSystemIds *string `json:"FileSystemIds,omitempty" name:"FileSystemIds"`
+
+	// 解绑的快照ID
+	AutoSnapshotPolicyId *string `json:"AutoSnapshotPolicyId,omitempty" name:"AutoSnapshotPolicyId"`
+}
+
+type UnbindAutoSnapshotPolicyRequest struct {
+	*tchttp.BaseRequest
+	
+	// 需要解绑的文件系统ID列表，用"," 分割
+	FileSystemIds *string `json:"FileSystemIds,omitempty" name:"FileSystemIds"`
+
+	// 解绑的快照ID
+	AutoSnapshotPolicyId *string `json:"AutoSnapshotPolicyId,omitempty" name:"AutoSnapshotPolicyId"`
+}
+
+func (r *UnbindAutoSnapshotPolicyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UnbindAutoSnapshotPolicyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FileSystemIds")
+	delete(f, "AutoSnapshotPolicyId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UnbindAutoSnapshotPolicyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UnbindAutoSnapshotPolicyResponseParams struct {
+	// 快照策略ID
+	AutoSnapshotPolicyId *string `json:"AutoSnapshotPolicyId,omitempty" name:"AutoSnapshotPolicyId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type UnbindAutoSnapshotPolicyResponse struct {
+	*tchttp.BaseResponse
+	Response *UnbindAutoSnapshotPolicyResponseParams `json:"Response"`
+}
+
+func (r *UnbindAutoSnapshotPolicyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UnbindAutoSnapshotPolicyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateAutoSnapshotPolicyRequestParams struct {
+	// 快照策略ID
+	AutoSnapshotPolicyId *string `json:"AutoSnapshotPolicyId,omitempty" name:"AutoSnapshotPolicyId"`
+
+	// 快照策略名称
+	PolicyName *string `json:"PolicyName,omitempty" name:"PolicyName"`
+
+	// 快照定期备份在一星期哪一天
+	DayOfWeek *string `json:"DayOfWeek,omitempty" name:"DayOfWeek"`
+
+	// 快照定期备份在一天的哪一小时
+	Hour *string `json:"Hour,omitempty" name:"Hour"`
+
+	// 快照保留日期
+	AliveDays *uint64 `json:"AliveDays,omitempty" name:"AliveDays"`
+
+	// 是否激活定期快照功能
+	IsActivated *uint64 `json:"IsActivated,omitempty" name:"IsActivated"`
+}
+
+type UpdateAutoSnapshotPolicyRequest struct {
+	*tchttp.BaseRequest
+	
+	// 快照策略ID
+	AutoSnapshotPolicyId *string `json:"AutoSnapshotPolicyId,omitempty" name:"AutoSnapshotPolicyId"`
+
+	// 快照策略名称
+	PolicyName *string `json:"PolicyName,omitempty" name:"PolicyName"`
+
+	// 快照定期备份在一星期哪一天
+	DayOfWeek *string `json:"DayOfWeek,omitempty" name:"DayOfWeek"`
+
+	// 快照定期备份在一天的哪一小时
+	Hour *string `json:"Hour,omitempty" name:"Hour"`
+
+	// 快照保留日期
+	AliveDays *uint64 `json:"AliveDays,omitempty" name:"AliveDays"`
+
+	// 是否激活定期快照功能
+	IsActivated *uint64 `json:"IsActivated,omitempty" name:"IsActivated"`
+}
+
+func (r *UpdateAutoSnapshotPolicyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateAutoSnapshotPolicyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AutoSnapshotPolicyId")
+	delete(f, "PolicyName")
+	delete(f, "DayOfWeek")
+	delete(f, "Hour")
+	delete(f, "AliveDays")
+	delete(f, "IsActivated")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateAutoSnapshotPolicyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateAutoSnapshotPolicyResponseParams struct {
+	// 快照策略ID
+	AutoSnapshotPolicyId *string `json:"AutoSnapshotPolicyId,omitempty" name:"AutoSnapshotPolicyId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type UpdateAutoSnapshotPolicyResponse struct {
+	*tchttp.BaseResponse
+	Response *UpdateAutoSnapshotPolicyResponseParams `json:"Response"`
+}
+
+func (r *UpdateAutoSnapshotPolicyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateAutoSnapshotPolicyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user
@@ -1673,5 +2625,76 @@ func (r *UpdateCfsRuleResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *UpdateCfsRuleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateCfsSnapshotAttributeRequestParams struct {
+	// 文件系统快照ID
+	SnapshotId *string `json:"SnapshotId,omitempty" name:"SnapshotId"`
+
+	// 文件系统快照名称
+	SnapshotName *string `json:"SnapshotName,omitempty" name:"SnapshotName"`
+
+	// 文件系统快照保留天数
+	AliveDays *uint64 `json:"AliveDays,omitempty" name:"AliveDays"`
+}
+
+type UpdateCfsSnapshotAttributeRequest struct {
+	*tchttp.BaseRequest
+	
+	// 文件系统快照ID
+	SnapshotId *string `json:"SnapshotId,omitempty" name:"SnapshotId"`
+
+	// 文件系统快照名称
+	SnapshotName *string `json:"SnapshotName,omitempty" name:"SnapshotName"`
+
+	// 文件系统快照保留天数
+	AliveDays *uint64 `json:"AliveDays,omitempty" name:"AliveDays"`
+}
+
+func (r *UpdateCfsSnapshotAttributeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateCfsSnapshotAttributeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SnapshotId")
+	delete(f, "SnapshotName")
+	delete(f, "AliveDays")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateCfsSnapshotAttributeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateCfsSnapshotAttributeResponseParams struct {
+	// 文件系统快照ID
+	SnapshotId *string `json:"SnapshotId,omitempty" name:"SnapshotId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type UpdateCfsSnapshotAttributeResponse struct {
+	*tchttp.BaseResponse
+	Response *UpdateCfsSnapshotAttributeResponseParams `json:"Response"`
+}
+
+func (r *UpdateCfsSnapshotAttributeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateCfsSnapshotAttributeResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }

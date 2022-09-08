@@ -5493,6 +5493,18 @@ type NatInstanceInfo struct {
 	// 0 :正常 1：正在初始化
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *int64 `json:"Status,omitempty" name:"Status"`
+
+	// 地域区域信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RegionDetail *string `json:"RegionDetail,omitempty" name:"RegionDetail"`
+
+	// 实例所在可用区
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ZoneZh *string `json:"ZoneZh,omitempty" name:"ZoneZh"`
+
+	// 实例所在可用区
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ZoneZhBak *string `json:"ZoneZhBak,omitempty" name:"ZoneZhBak"`
 }
 
 type NewModeItems struct {

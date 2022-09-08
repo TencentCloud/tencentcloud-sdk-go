@@ -116,6 +116,9 @@ const (
 	// 查询计费价格失败。
 	FAILEDOPERATION_QUERYPRICEFAILED = "FailedOperation.QueryPriceFailed"
 
+	// 查询计费项失败。
+	FAILEDOPERATION_QUERYSPECSFAILED = "FailedOperation.QuerySpecsFailed"
+
 	// 查询标签服务失败。
 	FAILEDOPERATION_QUERYTAGFAIL = "FailedOperation.QueryTagFail"
 
@@ -211,6 +214,12 @@ const (
 
 	// 没有该模型。
 	RESOURCENOTFOUND_NOMODEL = "ResourceNotFound.NoModel"
+
+	// 未授权操作。
+	UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+
+	// 资源不属于当前登陆用户主账号，无权限访问。
+	UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
 
 	// 未知参数错误。
 	UNKNOWNPARAMETER = "UnknownParameter"

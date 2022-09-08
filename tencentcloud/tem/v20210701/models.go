@@ -1225,6 +1225,15 @@ type DeployApplicationRequestParams struct {
 	// 1：开始自动metrics采集（open-telemetry）；
 	// 0：关闭metrics采集；
 	EnableMetrics *int64 `json:"EnableMetrics,omitempty" name:"EnableMetrics"`
+
+	// 镜像部署时，选择的tcr实例id
+	TcrInstanceId *string `json:"TcrInstanceId,omitempty" name:"TcrInstanceId"`
+
+	// 镜像部署时，选择的镜像服务器地址
+	RepoServer *string `json:"RepoServer,omitempty" name:"RepoServer"`
+
+	// 镜像部署时，仓库类型：0：个人仓库；1：企业版；2：公共仓库；3：tem托管仓库；4：demo仓库
+	RepoType *int64 `json:"RepoType,omitempty" name:"RepoType"`
 }
 
 type DeployApplicationRequest struct {
@@ -1371,6 +1380,15 @@ type DeployApplicationRequest struct {
 	// 1：开始自动metrics采集（open-telemetry）；
 	// 0：关闭metrics采集；
 	EnableMetrics *int64 `json:"EnableMetrics,omitempty" name:"EnableMetrics"`
+
+	// 镜像部署时，选择的tcr实例id
+	TcrInstanceId *string `json:"TcrInstanceId,omitempty" name:"TcrInstanceId"`
+
+	// 镜像部署时，选择的镜像服务器地址
+	RepoServer *string `json:"RepoServer,omitempty" name:"RepoServer"`
+
+	// 镜像部署时，仓库类型：0：个人仓库；1：企业版；2：公共仓库；3：tem托管仓库；4：demo仓库
+	RepoType *int64 `json:"RepoType,omitempty" name:"RepoType"`
 }
 
 func (r *DeployApplicationRequest) ToJsonString() string {
@@ -1427,6 +1445,9 @@ func (r *DeployApplicationRequest) FromJsonString(s string) error {
 	delete(f, "EnablePrometheusConf")
 	delete(f, "EnableTracing")
 	delete(f, "EnableMetrics")
+	delete(f, "TcrInstanceId")
+	delete(f, "RepoServer")
+	delete(f, "RepoType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeployApplicationRequest has unknown keys!", "")
 	}
