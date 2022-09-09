@@ -2,6 +2,9 @@ package common
 
 import (
 	"bytes"
+	"compress/flate"
+	"compress/gzip"
+	"fmt"
 	"io"
 	"io/ioutil"
 	"net/http"
@@ -28,7 +31,10 @@ func (c *Client) sendWithRateLimitRetry(req *http.Request, retryable bool) (resp
 			return
 		}
 
-		resp.Body, shadow = shadowRead(resp.Body)
+		shadow, err = shadowRead(resp)
+		if err != nil {
+			return resp, err
+		}
 
 		err = tchttp.ParseErrorFromHTTPResponse(shadow)
 		// should not sleep on last request
@@ -48,10 +54,40 @@ func (c *Client) sendWithRateLimitRetry(req *http.Request, retryable bool) (resp
 	return resp, err
 }
 
-func shadowRead(reader io.ReadCloser) (io.ReadCloser, []byte) {
-	val, err := ioutil.ReadAll(reader)
-	if err != nil {
-		return reader, nil
+func shadowRead(resp *http.Response) ([]byte, error) {
+	var reader io.ReadCloser
+	var err error
+	var val []byte
+
+	enc := resp.Header.Get("Content-Encoding")
+	switch enc {
+	case "":
+		reader = resp.Body
+	case "deflate":
+		reader = flate.NewReader(resp.Body)
+	case "gzip":
+		reader, err = gzip.NewReader(resp.Body)
+		if err != nil {
+			return nil, err
+		}
+	default:
+		return nil, fmt.Errorf("Content-Encoding not support: %s", enc)
 	}
-	return ioutil.NopCloser(bytes.NewBuffer(val)), val
+
+	val, err = ioutil.ReadAll(reader)
+	if err != nil {
+		return nil, err
+	}
+
+	err = resp.Body.Close()
+	if err != nil {
+		return nil, err
+	}
+
+	resp.Body = ioutil.NopCloser(bytes.NewReader(val))
+
+	// delete the header in case the caller mistake the body being encoded
+	delete(resp.Header, "Content-Encoding")
+
+	return val, nil
 }
