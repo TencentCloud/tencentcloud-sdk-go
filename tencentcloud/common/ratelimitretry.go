@@ -4,7 +4,7 @@ import (
 	"bytes"
 	"compress/flate"
 	"compress/gzip"
-	"github.com/andybalholm/brotli"
+	"fmt"
 	"io"
 	"io/ioutil"
 	"net/http"
@@ -59,11 +59,10 @@ func shadowRead(resp *http.Response) ([]byte, error) {
 	var err error
 	var val []byte
 
-	switch resp.Header.Get("Content-Encoding") {
+	enc := resp.Header.Get("Content-Encoding")
+	switch enc {
 	case "":
 		reader = resp.Body
-	case "br":
-		reader = ioutil.NopCloser(brotli.NewReader(resp.Body))
 	case "deflate":
 		reader = flate.NewReader(resp.Body)
 	case "gzip":
@@ -71,6 +70,8 @@ func shadowRead(resp *http.Response) ([]byte, error) {
 		if err != nil {
 			return nil, err
 		}
+	default:
+		return nil, fmt.Errorf("Content-Encoding not support: %s", enc)
 	}
 
 	val, err = ioutil.ReadAll(reader)
