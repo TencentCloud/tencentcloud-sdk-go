@@ -96,7 +96,7 @@ type CreateCloudRecordingRequestParams struct {
 	// TRTC的[RoomId](https://cloud.tencent.com/document/product/647/46351#roomid)，录制的TRTC房间所对应的RoomId。
 	RoomId *string `json:"RoomId,omitempty" name:"RoomId"`
 
-	// 录制机器人用于进入TRTC房间拉流的[UserId](https://cloud.tencent.com/document/product/647/46351#userid)，注意这个UserId不能与其他TRTC功能或者录制服务等已经使用的UserId重复，建议可以把房间ID作为userId的标识的一部分。
+	// 录制机器人用于进入TRTC房间拉流的[UserId](https://cloud.tencent.com/document/product/647/46351#userid)，注意这个UserId不能与其他TRTC房间内的主播或者其他录制任务等已经使用的UserId重复，建议可以把房间ID作为userId的标识的一部分，即录制机器人进入房间的userid应保证独立且唯一。
 	UserId *string `json:"UserId,omitempty" name:"UserId"`
 
 	// 录制机器人用于进入TRTC房间拉流的用户签名，当前 UserId 对应的验证签名，相当于登录密码，具体计算方法请参考TRTC计算[UserSig](https://cloud.tencent.com/document/product/647/45910#UserSig)的方案。
@@ -110,7 +110,7 @@ type CreateCloudRecordingRequestParams struct {
 
 	// TRTC房间号的类型，必须和录制的房间所对应的RoomId类型相同:
 	// 0: 字符串类型的RoomId
-	// 1: 32位整型的RoomId
+	// 1: 32位整型的RoomId（默认）
 	RoomIdType *uint64 `json:"RoomIdType,omitempty" name:"RoomIdType"`
 
 	// 混流的转码参数，录制模式为混流的时候可以设置。
@@ -135,7 +135,7 @@ type CreateCloudRecordingRequest struct {
 	// TRTC的[RoomId](https://cloud.tencent.com/document/product/647/46351#roomid)，录制的TRTC房间所对应的RoomId。
 	RoomId *string `json:"RoomId,omitempty" name:"RoomId"`
 
-	// 录制机器人用于进入TRTC房间拉流的[UserId](https://cloud.tencent.com/document/product/647/46351#userid)，注意这个UserId不能与其他TRTC功能或者录制服务等已经使用的UserId重复，建议可以把房间ID作为userId的标识的一部分。
+	// 录制机器人用于进入TRTC房间拉流的[UserId](https://cloud.tencent.com/document/product/647/46351#userid)，注意这个UserId不能与其他TRTC房间内的主播或者其他录制任务等已经使用的UserId重复，建议可以把房间ID作为userId的标识的一部分，即录制机器人进入房间的userid应保证独立且唯一。
 	UserId *string `json:"UserId,omitempty" name:"UserId"`
 
 	// 录制机器人用于进入TRTC房间拉流的用户签名，当前 UserId 对应的验证签名，相当于登录密码，具体计算方法请参考TRTC计算[UserSig](https://cloud.tencent.com/document/product/647/45910#UserSig)的方案。
@@ -149,7 +149,7 @@ type CreateCloudRecordingRequest struct {
 
 	// TRTC房间号的类型，必须和录制的房间所对应的RoomId类型相同:
 	// 0: 字符串类型的RoomId
-	// 1: 32位整型的RoomId
+	// 1: 32位整型的RoomId（默认）
 	RoomIdType *uint64 `json:"RoomIdType,omitempty" name:"RoomIdType"`
 
 	// 混流的转码参数，录制模式为混流的时候可以设置。

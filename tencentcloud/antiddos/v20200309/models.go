@@ -423,6 +423,9 @@ type BGPInstance struct {
 
 	// 新版本1ip高防包
 	IpCountNewFlag *uint64 `json:"IpCountNewFlag,omitempty" name:"IpCountNewFlag"`
+
+	// 攻击封堵套餐标记
+	VitalityVersion *uint64 `json:"VitalityVersion,omitempty" name:"VitalityVersion"`
 }
 
 type BGPInstanceSpecification struct {

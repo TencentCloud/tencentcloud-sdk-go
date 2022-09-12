@@ -247,6 +247,50 @@ type BackupFile struct {
 	CrossBackupAddr []*CrossBackupAddr `json:"CrossBackupAddr,omitempty" name:"CrossBackupAddr"`
 }
 
+type BusinessIntelligenceFile struct {
+	// 文件名称
+	FileName *string `json:"FileName,omitempty" name:"FileName"`
+
+	// 文件类型
+	FileType *string `json:"FileType,omitempty" name:"FileType"`
+
+	// 文件的COS_URL
+	FileURL *string `json:"FileURL,omitempty" name:"FileURL"`
+
+	// 文件在服务器上的路径
+	FilePath *string `json:"FilePath,omitempty" name:"FilePath"`
+
+	// 文件大小，单位时Byte
+	FileSize *int64 `json:"FileSize,omitempty" name:"FileSize"`
+
+	// 文件md5值
+	FileMd5 *string `json:"FileMd5,omitempty" name:"FileMd5"`
+
+	// 部署文件状态 1-初始化待部署 2-部署中 3-部署成功 4-部署失败
+	Status *int64 `json:"Status,omitempty" name:"Status"`
+
+	// 备注信息
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 文件创建时间
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 文件部署开始时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 文件部署结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 报错信息返回
+	Message *string `json:"Message,omitempty" name:"Message"`
+
+	// 商业智能实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 动作相关信息
+	Action *FileAction `json:"Action,omitempty" name:"Action"`
+}
+
 // Predefined struct for user
 type CloneDBRequestParams struct {
 	// 实例ID，形如mssql-j8kv137v
@@ -308,6 +352,63 @@ func (r *CloneDBResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CloneDBResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CloseInterCommunicationRequestParams struct {
+	// 关闭互通的实例ID集合
+	InstanceIdSet []*string `json:"InstanceIdSet,omitempty" name:"InstanceIdSet"`
+}
+
+type CloseInterCommunicationRequest struct {
+	*tchttp.BaseRequest
+	
+	// 关闭互通的实例ID集合
+	InstanceIdSet []*string `json:"InstanceIdSet,omitempty" name:"InstanceIdSet"`
+}
+
+func (r *CloseInterCommunicationRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CloseInterCommunicationRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceIdSet")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CloseInterCommunicationRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CloseInterCommunicationResponseParams struct {
+	// 实例和异步流程ID
+	InterInstanceFlowSet []*InterInstanceFlow `json:"InterInstanceFlowSet,omitempty" name:"InterInstanceFlowSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CloseInterCommunicationResponse struct {
+	*tchttp.BaseResponse
+	Response *CloseInterCommunicationResponseParams `json:"Response"`
+}
+
+func (r *CloseInterCommunicationResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CloseInterCommunicationResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -861,6 +962,239 @@ func (r *CreateBasicDBInstancesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateBasicDBInstancesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateBusinessDBInstancesRequestParams struct {
+	// 实例可用区，类似ap-guangzhou-1（广州一区）；实例可售卖区域可以通过接口DescribeZones获取
+	Zone *string `json:"Zone,omitempty" name:"Zone"`
+
+	// 实例内存大小，单位GB
+	Memory *int64 `json:"Memory,omitempty" name:"Memory"`
+
+	// 实例磁盘大小，单位GB
+	Storage *int64 `json:"Storage,omitempty" name:"Storage"`
+
+	// 预购买实例的CPU核心数
+	Cpu *int64 `json:"Cpu,omitempty" name:"Cpu"`
+
+	// 购买实例的宿主机类型，CLOUD_PREMIUM-虚拟机高性能云盘，CLOUD_SSD-虚拟机SSD云盘
+	MachineType *string `json:"MachineType,omitempty" name:"MachineType"`
+
+	// 项目ID
+	ProjectId *int64 `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 本次购买几个实例，默认值为1
+	GoodsNum *int64 `json:"GoodsNum,omitempty" name:"GoodsNum"`
+
+	// VPC子网ID，形如subnet-bdoe83fa；SubnetId和VpcId需同时设置或者同时不设置
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+
+	// VPC网络ID，形如vpc-dsp338hz；SubnetId和VpcId需同时设置或者同时不设置
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 商业智能服务器版本，目前只支持：201603（SQL Server 2016 Integration Services），201703（SQL Server 2017 Integration Services），201903（SQL Server 2019 Integration Services）版本。每个地域支持售卖的版本不同，可通过DescribeProductConfig接口来拉取每个地域可售卖的版本信息。不填，默认为版本201903。
+	DBVersion *string `json:"DBVersion,omitempty" name:"DBVersion"`
+
+	// 安全组列表，填写形如sg-xxx的安全组ID
+	SecurityGroupList []*string `json:"SecurityGroupList,omitempty" name:"SecurityGroupList"`
+
+	// 可维护时间窗配置，以周为单位，表示周几允许维护，1-7分别代表周一到周末
+	Weekly []*int64 `json:"Weekly,omitempty" name:"Weekly"`
+
+	// 可维护时间窗配置，每天可维护的开始时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 可维护时间窗配置，持续时间，单位：小时
+	Span *int64 `json:"Span,omitempty" name:"Span"`
+
+	// 新建实例绑定的标签集合
+	ResourceTags []*ResourceTag `json:"ResourceTags,omitempty" name:"ResourceTags"`
+}
+
+type CreateBusinessDBInstancesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例可用区，类似ap-guangzhou-1（广州一区）；实例可售卖区域可以通过接口DescribeZones获取
+	Zone *string `json:"Zone,omitempty" name:"Zone"`
+
+	// 实例内存大小，单位GB
+	Memory *int64 `json:"Memory,omitempty" name:"Memory"`
+
+	// 实例磁盘大小，单位GB
+	Storage *int64 `json:"Storage,omitempty" name:"Storage"`
+
+	// 预购买实例的CPU核心数
+	Cpu *int64 `json:"Cpu,omitempty" name:"Cpu"`
+
+	// 购买实例的宿主机类型，CLOUD_PREMIUM-虚拟机高性能云盘，CLOUD_SSD-虚拟机SSD云盘
+	MachineType *string `json:"MachineType,omitempty" name:"MachineType"`
+
+	// 项目ID
+	ProjectId *int64 `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 本次购买几个实例，默认值为1
+	GoodsNum *int64 `json:"GoodsNum,omitempty" name:"GoodsNum"`
+
+	// VPC子网ID，形如subnet-bdoe83fa；SubnetId和VpcId需同时设置或者同时不设置
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+
+	// VPC网络ID，形如vpc-dsp338hz；SubnetId和VpcId需同时设置或者同时不设置
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 商业智能服务器版本，目前只支持：201603（SQL Server 2016 Integration Services），201703（SQL Server 2017 Integration Services），201903（SQL Server 2019 Integration Services）版本。每个地域支持售卖的版本不同，可通过DescribeProductConfig接口来拉取每个地域可售卖的版本信息。不填，默认为版本201903。
+	DBVersion *string `json:"DBVersion,omitempty" name:"DBVersion"`
+
+	// 安全组列表，填写形如sg-xxx的安全组ID
+	SecurityGroupList []*string `json:"SecurityGroupList,omitempty" name:"SecurityGroupList"`
+
+	// 可维护时间窗配置，以周为单位，表示周几允许维护，1-7分别代表周一到周末
+	Weekly []*int64 `json:"Weekly,omitempty" name:"Weekly"`
+
+	// 可维护时间窗配置，每天可维护的开始时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 可维护时间窗配置，持续时间，单位：小时
+	Span *int64 `json:"Span,omitempty" name:"Span"`
+
+	// 新建实例绑定的标签集合
+	ResourceTags []*ResourceTag `json:"ResourceTags,omitempty" name:"ResourceTags"`
+}
+
+func (r *CreateBusinessDBInstancesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateBusinessDBInstancesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Zone")
+	delete(f, "Memory")
+	delete(f, "Storage")
+	delete(f, "Cpu")
+	delete(f, "MachineType")
+	delete(f, "ProjectId")
+	delete(f, "GoodsNum")
+	delete(f, "SubnetId")
+	delete(f, "VpcId")
+	delete(f, "DBVersion")
+	delete(f, "SecurityGroupList")
+	delete(f, "Weekly")
+	delete(f, "StartTime")
+	delete(f, "Span")
+	delete(f, "ResourceTags")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateBusinessDBInstancesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateBusinessDBInstancesResponseParams struct {
+	// 订单名称
+	DealName *string `json:"DealName,omitempty" name:"DealName"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateBusinessDBInstancesResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateBusinessDBInstancesResponseParams `json:"Response"`
+}
+
+func (r *CreateBusinessDBInstancesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateBusinessDBInstancesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateBusinessIntelligenceFileRequestParams struct {
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// COS_URL
+	FileURL *string `json:"FileURL,omitempty" name:"FileURL"`
+
+	// 文件类型 FLAT-作为数据源的平面文件， SSIS-ssis项目包
+	FileType *string `json:"FileType,omitempty" name:"FileType"`
+
+	// 备注
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+}
+
+type CreateBusinessIntelligenceFileRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// COS_URL
+	FileURL *string `json:"FileURL,omitempty" name:"FileURL"`
+
+	// 文件类型 FLAT-作为数据源的平面文件， SSIS-ssis项目包
+	FileType *string `json:"FileType,omitempty" name:"FileType"`
+
+	// 备注
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+}
+
+func (r *CreateBusinessIntelligenceFileRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateBusinessIntelligenceFileRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "FileURL")
+	delete(f, "FileType")
+	delete(f, "Remark")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateBusinessIntelligenceFileRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateBusinessIntelligenceFileResponseParams struct {
+	// 文件名称
+	FileTaskId *string `json:"FileTaskId,omitempty" name:"FileTaskId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateBusinessIntelligenceFileResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateBusinessIntelligenceFileResponseParams `json:"Response"`
+}
+
+func (r *CreateBusinessIntelligenceFileResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateBusinessIntelligenceFileResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2068,6 +2402,67 @@ func (r *DeleteBackupMigrationResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DeleteBusinessIntelligenceFileRequestParams struct {
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 文件名称集合
+	FileNameSet []*string `json:"FileNameSet,omitempty" name:"FileNameSet"`
+}
+
+type DeleteBusinessIntelligenceFileRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 文件名称集合
+	FileNameSet []*string `json:"FileNameSet,omitempty" name:"FileNameSet"`
+}
+
+func (r *DeleteBusinessIntelligenceFileRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteBusinessIntelligenceFileRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "FileNameSet")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteBusinessIntelligenceFileRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteBusinessIntelligenceFileResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DeleteBusinessIntelligenceFileResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteBusinessIntelligenceFileResponseParams `json:"Response"`
+}
+
+func (r *DeleteBusinessIntelligenceFileResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteBusinessIntelligenceFileResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DeleteDBInstanceRequestParams struct {
 	// 实例ID，格式如：mssql-3l3fgqn7 或 mssqlro-3l3fgqn7
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
@@ -3064,6 +3459,115 @@ func (r *DescribeBackupsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeBusinessIntelligenceFileRequestParams struct {
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 文件名称
+	FileName *string `json:"FileName,omitempty" name:"FileName"`
+
+	// 迁移任务状态集合,1-初始化待部署 2-部署中 3-部署成功 4-部署失败
+	StatusSet []*int64 `json:"StatusSet,omitempty" name:"StatusSet"`
+
+	// 文件类型 FLAT-平面文件，SSIS商业智能服务项目文件
+	FileType *string `json:"FileType,omitempty" name:"FileType"`
+
+	// 分页，页大小，范围1-100
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 分页,页数，默认0
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 排序字段，可选值file_name,create_time,start_time
+	OrderBy *string `json:"OrderBy,omitempty" name:"OrderBy"`
+
+	// 排序方式，desc,asc
+	OrderByType *string `json:"OrderByType,omitempty" name:"OrderByType"`
+}
+
+type DescribeBusinessIntelligenceFileRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 文件名称
+	FileName *string `json:"FileName,omitempty" name:"FileName"`
+
+	// 迁移任务状态集合,1-初始化待部署 2-部署中 3-部署成功 4-部署失败
+	StatusSet []*int64 `json:"StatusSet,omitempty" name:"StatusSet"`
+
+	// 文件类型 FLAT-平面文件，SSIS商业智能服务项目文件
+	FileType *string `json:"FileType,omitempty" name:"FileType"`
+
+	// 分页，页大小，范围1-100
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 分页,页数，默认0
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 排序字段，可选值file_name,create_time,start_time
+	OrderBy *string `json:"OrderBy,omitempty" name:"OrderBy"`
+
+	// 排序方式，desc,asc
+	OrderByType *string `json:"OrderByType,omitempty" name:"OrderByType"`
+}
+
+func (r *DescribeBusinessIntelligenceFileRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBusinessIntelligenceFileRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "FileName")
+	delete(f, "StatusSet")
+	delete(f, "FileType")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "OrderBy")
+	delete(f, "OrderByType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBusinessIntelligenceFileRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeBusinessIntelligenceFileResponseParams struct {
+	// 文件部署任务总数
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 文件部署任务集合
+	BackupMigrationSet []*BusinessIntelligenceFile `json:"BackupMigrationSet,omitempty" name:"BackupMigrationSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeBusinessIntelligenceFileResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeBusinessIntelligenceFileResponseParams `json:"Response"`
+}
+
+func (r *DescribeBusinessIntelligenceFileResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBusinessIntelligenceFileResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeCrossRegionZoneRequestParams struct {
 	// 实例ID，格式如：mssql-3l3fgqn7
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
@@ -3177,6 +3681,101 @@ func (r *DescribeDBCharsetsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeDBCharsetsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDBInstanceInterRequestParams struct {
+	// 分页，页大小，范围是1-100
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 按照实例ID筛选
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 按照状态筛选 1-互通ip prot打开中；2-互通ip prot已经打开；3-加入到互通组中；4-已加入到互通组；5-互通ip prot回收中；6-互通ip prot已回收；7-从互通组移除中；8-已从互通组中移除
+	Status *int64 `json:"Status,omitempty" name:"Status"`
+
+	// 实例版本代号列表
+	VersionSet []*string `json:"VersionSet,omitempty" name:"VersionSet"`
+
+	// 实例所在可用区，格式如：ap-guangzhou-2
+	Zone *string `json:"Zone,omitempty" name:"Zone"`
+
+	// 分页，页数，默认是0
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+}
+
+type DescribeDBInstanceInterRequest struct {
+	*tchttp.BaseRequest
+	
+	// 分页，页大小，范围是1-100
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 按照实例ID筛选
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 按照状态筛选 1-互通ip prot打开中；2-互通ip prot已经打开；3-加入到互通组中；4-已加入到互通组；5-互通ip prot回收中；6-互通ip prot已回收；7-从互通组移除中；8-已从互通组中移除
+	Status *int64 `json:"Status,omitempty" name:"Status"`
+
+	// 实例版本代号列表
+	VersionSet []*string `json:"VersionSet,omitempty" name:"VersionSet"`
+
+	// 实例所在可用区，格式如：ap-guangzhou-2
+	Zone *string `json:"Zone,omitempty" name:"Zone"`
+
+	// 分页，页数，默认是0
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+}
+
+func (r *DescribeDBInstanceInterRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDBInstanceInterRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Limit")
+	delete(f, "InstanceId")
+	delete(f, "Status")
+	delete(f, "VersionSet")
+	delete(f, "Zone")
+	delete(f, "Offset")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDBInstanceInterRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDBInstanceInterResponseParams struct {
+	// 互通组内总条数
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 互通组内实例信息详情
+	InterInstanceSet []*InterInstance `json:"InterInstanceSet,omitempty" name:"InterInstanceSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeDBInstanceInterResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDBInstanceInterResponseParams `json:"Response"`
+}
+
+func (r *DescribeDBInstanceInterResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDBInstanceInterResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -5253,6 +5852,14 @@ func (r *DisassociateSecurityGroupsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type FileAction struct {
+	// 支持的所有操作，值包括：view(查看列表) remark(修改备注)，deploy(部署)，delete(删除文件)
+	AllAction []*string `json:"AllAction,omitempty" name:"AllAction"`
+
+	// 当前状态允许的操作，AllAction的子集,为空表示禁止所有操作
+	AllowedAction []*string `json:"AllowedAction,omitempty" name:"AllowedAction"`
+}
+
 // Predefined struct for user
 type InquiryPriceCreateDBInstancesRequestParams struct {
 	// 可用区ID。该参数可以通过调用 DescribeZones 接口的返回值中的Zone字段来获取。
@@ -5545,6 +6152,49 @@ type InstanceRenewInfo struct {
 
 	// 实例续费标记。0：正常续费，1：自动续费，2：到期不续
 	RenewFlag *int64 `json:"RenewFlag,omitempty" name:"RenewFlag"`
+}
+
+type InterInstance struct {
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 实例互通IP，用于加入互通组后访问
+	InterVip *string `json:"InterVip,omitempty" name:"InterVip"`
+
+	// 实例互通端口，用于加入互通组后访问
+	InterPort *int64 `json:"InterPort,omitempty" name:"InterPort"`
+
+	// 实例互通状态，1 -互通ipprot打开中 2 -互通ipprot已经打开 3 -已经打开互通ip的实例加入到互通组中 4 -已经打开互通ip的实例已加入到互通组 5 -互通ipprot回收中 6 -互通ipprot已回收 7 -已回收的实例从互通组中移除中 8 -已回收的实例从互通组中已经移除
+	Status *int64 `json:"Status,omitempty" name:"Status"`
+
+	// 实例所在地域名称，如 ap-guangzhou
+	Region *string `json:"Region,omitempty" name:"Region"`
+
+	// 实例所在可用区名称，如 ap-guangzhou-1
+	Zone *string `json:"Zone,omitempty" name:"Zone"`
+
+	// 实例版本代号
+	Version *string `json:"Version,omitempty" name:"Version"`
+
+	// 实例版本
+	VersionName *string `json:"VersionName,omitempty" name:"VersionName"`
+
+	// 实例名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 实例访问IP
+	Vip *string `json:"Vip,omitempty" name:"Vip"`
+
+	// 实例访问端口
+	Vport *int64 `json:"Vport,omitempty" name:"Vport"`
+}
+
+type InterInstanceFlow struct {
+	// 实例ID，例如：mssql-sdf32n1d
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 实例开通或者关闭互通组的流程ID，FlowId小于0-开通或者关闭失败，反之则成功。
+	FlowId *int64 `json:"FlowId,omitempty" name:"FlowId"`
 }
 
 type MigrateDB struct {
@@ -7297,6 +7947,63 @@ func (r *ModifyReadOnlyGroupDetailsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyReadOnlyGroupDetailsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type OpenInterCommunicationRequestParams struct {
+	// 打开互通组的实例ID集合
+	InstanceIdSet []*string `json:"InstanceIdSet,omitempty" name:"InstanceIdSet"`
+}
+
+type OpenInterCommunicationRequest struct {
+	*tchttp.BaseRequest
+	
+	// 打开互通组的实例ID集合
+	InstanceIdSet []*string `json:"InstanceIdSet,omitempty" name:"InstanceIdSet"`
+}
+
+func (r *OpenInterCommunicationRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *OpenInterCommunicationRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceIdSet")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "OpenInterCommunicationRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type OpenInterCommunicationResponseParams struct {
+	// 实例和异步流程ID
+	InterInstanceFlowSet []*InterInstanceFlow `json:"InterInstanceFlowSet,omitempty" name:"InterInstanceFlowSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type OpenInterCommunicationResponse struct {
+	*tchttp.BaseResponse
+	Response *OpenInterCommunicationResponseParams `json:"Response"`
+}
+
+func (r *OpenInterCommunicationResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *OpenInterCommunicationResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

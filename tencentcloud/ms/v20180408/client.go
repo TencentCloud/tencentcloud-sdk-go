@@ -493,6 +493,70 @@ func (c *Client) DeleteShieldInstancesWithContext(ctx context.Context, request *
     return
 }
 
+func NewDescribeApkDetectionResultRequest() (request *DescribeApkDetectionResultRequest) {
+    request = &DescribeApkDetectionResultRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ms", APIVersion, "DescribeApkDetectionResult")
+    
+    
+    return
+}
+
+func NewDescribeApkDetectionResultResponse() (response *DescribeApkDetectionResultResponse) {
+    response = &DescribeApkDetectionResultResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeApkDetectionResult
+// 该接口采用同步模式请求腾讯APK云检测服务，即时返回检测数据，需要用户用轮询的方式调用本接口来进行样本送检并获取检测结果(每隔60s发送一次请求，传相同的参数，重试30次)，一般情况下0.5h内会出检测结果，最长时间是3h。当Result为ok并且ResultList数组非空有值时，代表检测完毕，若长时间获取不到检测结果，请联系客服。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_APKSERVERERROR = "InternalError.ApkServerError"
+//  INTERNALERROR_SERVERERROR = "InternalError.ServerError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAMETERERROR = "InvalidParameter.ParameterError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNAUTHORIZEDOPERATION_NOTWHITEUSER = "UnauthorizedOperation.NotWhiteUser"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeApkDetectionResult(request *DescribeApkDetectionResultRequest) (response *DescribeApkDetectionResultResponse, err error) {
+    return c.DescribeApkDetectionResultWithContext(context.Background(), request)
+}
+
+// DescribeApkDetectionResult
+// 该接口采用同步模式请求腾讯APK云检测服务，即时返回检测数据，需要用户用轮询的方式调用本接口来进行样本送检并获取检测结果(每隔60s发送一次请求，传相同的参数，重试30次)，一般情况下0.5h内会出检测结果，最长时间是3h。当Result为ok并且ResultList数组非空有值时，代表检测完毕，若长时间获取不到检测结果，请联系客服。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_APKSERVERERROR = "InternalError.ApkServerError"
+//  INTERNALERROR_SERVERERROR = "InternalError.ServerError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAMETERERROR = "InvalidParameter.ParameterError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNAUTHORIZEDOPERATION_NOTWHITEUSER = "UnauthorizedOperation.NotWhiteUser"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeApkDetectionResultWithContext(ctx context.Context, request *DescribeApkDetectionResultRequest) (response *DescribeApkDetectionResultResponse, err error) {
+    if request == nil {
+        request = NewDescribeApkDetectionResultRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeApkDetectionResult require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeApkDetectionResultResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeResourceInstancesRequest() (request *DescribeResourceInstancesRequest) {
     request = &DescribeResourceInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},

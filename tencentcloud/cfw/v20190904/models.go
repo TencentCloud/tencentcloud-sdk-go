@@ -2084,6 +2084,78 @@ func (r *DescribeCfwEipsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeDefenseSwitchRequestParams struct {
+
+}
+
+type DescribeDefenseSwitchRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DescribeDefenseSwitchRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDefenseSwitchRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDefenseSwitchRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDefenseSwitchResponseParams struct {
+	// 基础防御开关
+	BasicRuleSwitch *int64 `json:"BasicRuleSwitch,omitempty" name:"BasicRuleSwitch"`
+
+	// 安全基线开关
+	BaselineAllSwitch *int64 `json:"BaselineAllSwitch,omitempty" name:"BaselineAllSwitch"`
+
+	// 威胁情报开关
+	TiSwitch *int64 `json:"TiSwitch,omitempty" name:"TiSwitch"`
+
+	// 虚拟补丁开关
+	VirtualPatchSwitch *int64 `json:"VirtualPatchSwitch,omitempty" name:"VirtualPatchSwitch"`
+
+	// 是否历史开启
+	HistoryOpen *int64 `json:"HistoryOpen,omitempty" name:"HistoryOpen"`
+
+	// 状态值，0：查询成功，非0：查询失败
+	ReturnCode *int64 `json:"ReturnCode,omitempty" name:"ReturnCode"`
+
+	// 状态信息，success：查询成功，fail：查询失败
+	ReturnMsg *string `json:"ReturnMsg,omitempty" name:"ReturnMsg"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeDefenseSwitchResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDefenseSwitchResponseParams `json:"Response"`
+}
+
+func (r *DescribeDefenseSwitchResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDefenseSwitchResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeEnterpriseSecurityGroupRuleRequestParams struct {
 	// 分页查询时，显示的当前页的页码。
 	// 
@@ -5722,13 +5794,13 @@ type ScanInfo struct {
 }
 
 type ScanResultInfo struct {
-	// 暴漏漏洞数量
+	// 暴露漏洞数量
 	LeakNum *uint64 `json:"LeakNum,omitempty" name:"LeakNum"`
 
 	// 防护ip数量
 	IPNum *uint64 `json:"IPNum,omitempty" name:"IPNum"`
 
-	// 暴漏端口数量
+	// 暴露端口数量
 	PortNum *uint64 `json:"PortNum,omitempty" name:"PortNum"`
 
 	// 是否开启防护

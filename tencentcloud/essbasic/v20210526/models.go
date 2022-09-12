@@ -65,6 +65,77 @@ type CcInfo struct {
 }
 
 // Predefined struct for user
+type ChannelBatchCancelFlowsRequestParams struct {
+	// 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+
+	// 签署流程Id数组，最多100个，超过100不处理
+	FlowIds []*string `json:"FlowIds,omitempty" name:"FlowIds"`
+
+	// 操作人信息
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+}
+
+type ChannelBatchCancelFlowsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+
+	// 签署流程Id数组，最多100个，超过100不处理
+	FlowIds []*string `json:"FlowIds,omitempty" name:"FlowIds"`
+
+	// 操作人信息
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+}
+
+func (r *ChannelBatchCancelFlowsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ChannelBatchCancelFlowsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Agent")
+	delete(f, "FlowIds")
+	delete(f, "Operator")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ChannelBatchCancelFlowsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ChannelBatchCancelFlowsResponseParams struct {
+	// 签署流程批量撤销失败原因，错误信息与流程Id一一对应，如果部分流程不可撤销，不会返回错误信息，只会撤销可撤销流程
+	FailMessages []*string `json:"FailMessages,omitempty" name:"FailMessages"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ChannelBatchCancelFlowsResponse struct {
+	*tchttp.BaseResponse
+	Response *ChannelBatchCancelFlowsResponseParams `json:"Response"`
+}
+
+func (r *ChannelBatchCancelFlowsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ChannelBatchCancelFlowsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ChannelCancelMultiFlowSignQRCodeRequestParams struct {
 	// 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
@@ -447,6 +518,89 @@ func (r *ChannelCreateFlowByFilesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ChannelCreateFlowByFilesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ChannelCreateFlowGroupByFilesRequestParams struct {
+	// 每个子合同的发起所需的信息，数量限制2-100
+	FlowFileInfos []*FlowFileInfo `json:"FlowFileInfos,omitempty" name:"FlowFileInfos"`
+
+	// 合同组名称，长度不超过200个字符
+	FlowGroupName *string `json:"FlowGroupName,omitempty" name:"FlowGroupName"`
+
+	// 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+
+	// 操作者的信息
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+}
+
+type ChannelCreateFlowGroupByFilesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 每个子合同的发起所需的信息，数量限制2-100
+	FlowFileInfos []*FlowFileInfo `json:"FlowFileInfos,omitempty" name:"FlowFileInfos"`
+
+	// 合同组名称，长度不超过200个字符
+	FlowGroupName *string `json:"FlowGroupName,omitempty" name:"FlowGroupName"`
+
+	// 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+
+	// 操作者的信息
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+}
+
+func (r *ChannelCreateFlowGroupByFilesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ChannelCreateFlowGroupByFilesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FlowFileInfos")
+	delete(f, "FlowGroupName")
+	delete(f, "Agent")
+	delete(f, "Operator")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ChannelCreateFlowGroupByFilesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ChannelCreateFlowGroupByFilesResponseParams struct {
+	// 合同组ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FlowGroupId *string `json:"FlowGroupId,omitempty" name:"FlowGroupId"`
+
+	// 子合同ID列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FlowIds []*string `json:"FlowIds,omitempty" name:"FlowIds"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ChannelCreateFlowGroupByFilesResponse struct {
+	*tchttp.BaseResponse
+	Response *ChannelCreateFlowGroupByFilesResponseParams `json:"Response"`
+}
+
+func (r *ChannelCreateFlowGroupByFilesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ChannelCreateFlowGroupByFilesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1211,7 +1365,7 @@ type CreateSignUrlsRequestParams struct {
 	// 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
-	// 签署流程编号数组，最多支持100个。
+	// 签署流程编号数组，最多支持100个。(备注：该参数和合同组编号必须二选一)
 	FlowIds []*string `json:"FlowIds,omitempty" name:"FlowIds"`
 
 	// 签署链接类型：“WEIXINAPP”-直接跳小程序；“CHANNEL”-跳转H5页面；“APP”-第三方APP或小程序跳转电子签小程序；默认“WEIXINAPP”类型，即跳转至小程序；
@@ -1249,6 +1403,9 @@ type CreateSignUrlsRequestParams struct {
 
 	// 操作者的信息
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
+	// 合同组编号(备注：该参数和合同(流程)编号数组必须二选一)
+	FlowGroupId *string `json:"FlowGroupId,omitempty" name:"FlowGroupId"`
 }
 
 type CreateSignUrlsRequest struct {
@@ -1257,7 +1414,7 @@ type CreateSignUrlsRequest struct {
 	// 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
-	// 签署流程编号数组，最多支持100个。
+	// 签署流程编号数组，最多支持100个。(备注：该参数和合同组编号必须二选一)
 	FlowIds []*string `json:"FlowIds,omitempty" name:"FlowIds"`
 
 	// 签署链接类型：“WEIXINAPP”-直接跳小程序；“CHANNEL”-跳转H5页面；“APP”-第三方APP或小程序跳转电子签小程序；默认“WEIXINAPP”类型，即跳转至小程序；
@@ -1295,6 +1452,9 @@ type CreateSignUrlsRequest struct {
 
 	// 操作者的信息
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
+	// 合同组编号(备注：该参数和合同(流程)编号数组必须二选一)
+	FlowGroupId *string `json:"FlowGroupId,omitempty" name:"FlowGroupId"`
 }
 
 func (r *CreateSignUrlsRequest) ToJsonString() string {
@@ -1321,6 +1481,7 @@ func (r *CreateSignUrlsRequest) FromJsonString(s string) error {
 	delete(f, "AutoJumpBack")
 	delete(f, "JumpUrl")
 	delete(f, "Operator")
+	delete(f, "FlowGroupId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateSignUrlsRequest has unknown keys!", "")
 	}
@@ -1361,10 +1522,14 @@ type DescribeFlowDetailInfoRequestParams struct {
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
 	// 合同(流程)编号数组，最多支持100个。
+	// （备注：该参数和合同组编号必须二选一）
 	FlowIds []*string `json:"FlowIds,omitempty" name:"FlowIds"`
 
 	// 操作者的信息
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
+	// 合同组编号（备注：该参数和合同(流程)编号数组必须二选一）
+	FlowGroupId *string `json:"FlowGroupId,omitempty" name:"FlowGroupId"`
 }
 
 type DescribeFlowDetailInfoRequest struct {
@@ -1374,10 +1539,14 @@ type DescribeFlowDetailInfoRequest struct {
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
 	// 合同(流程)编号数组，最多支持100个。
+	// （备注：该参数和合同组编号必须二选一）
 	FlowIds []*string `json:"FlowIds,omitempty" name:"FlowIds"`
 
 	// 操作者的信息
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
+	// 合同组编号（备注：该参数和合同(流程)编号数组必须二选一）
+	FlowGroupId *string `json:"FlowGroupId,omitempty" name:"FlowGroupId"`
 }
 
 func (r *DescribeFlowDetailInfoRequest) ToJsonString() string {
@@ -1395,6 +1564,7 @@ func (r *DescribeFlowDetailInfoRequest) FromJsonString(s string) error {
 	delete(f, "Agent")
 	delete(f, "FlowIds")
 	delete(f, "Operator")
+	delete(f, "FlowGroupId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeFlowDetailInfoRequest has unknown keys!", "")
 	}
@@ -1412,6 +1582,14 @@ type DescribeFlowDetailInfoResponseParams struct {
 	// 合同(签署流程)的具体详细描述信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FlowInfo []*FlowDetailInfo `json:"FlowInfo,omitempty" name:"FlowInfo"`
+
+	// 合同组编号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FlowGroupId *string `json:"FlowGroupId,omitempty" name:"FlowGroupId"`
+
+	// 合同组名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FlowGroupName *string `json:"FlowGroupName,omitempty" name:"FlowGroupName"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1867,6 +2045,41 @@ type FlowDetailInfo struct {
 
 	// 合同(流程)的签署人数组
 	FlowApproverInfos []*FlowApproverDetail `json:"FlowApproverInfos,omitempty" name:"FlowApproverInfos"`
+}
+
+type FlowFileInfo struct {
+	// 签署文件资源Id列表，目前仅支持单个文件
+	FileIds []*string `json:"FileIds,omitempty" name:"FileIds"`
+
+	// 签署流程名称，长度不超过200个字符
+	FlowName *string `json:"FlowName,omitempty" name:"FlowName"`
+
+	// 签署流程签约方列表，最多不超过5个参与方
+	FlowApprovers []*FlowApproverInfo `json:"FlowApprovers,omitempty" name:"FlowApprovers"`
+
+	// 签署流程截止时间，十位数时间戳，最大值为33162419560，即3020年
+	Deadline *int64 `json:"Deadline,omitempty" name:"Deadline"`
+
+	// 签署流程的描述，长度不超过1000个字符
+	FlowDescription *string `json:"FlowDescription,omitempty" name:"FlowDescription"`
+
+	// 签署流程的类型，长度不超过255个字符
+	FlowType *string `json:"FlowType,omitempty" name:"FlowType"`
+
+	// 签署流程回调地址，长度不超过255个字符
+	CallbackUrl *string `json:"CallbackUrl,omitempty" name:"CallbackUrl"`
+
+	// 渠道的业务信息，最大长度1000个字符。发起自动签署时，需设置对应自动签署场景，目前仅支持场景：处方单-E_PRESCRIPTION_AUTO_SIGN
+	CustomerData *string `json:"CustomerData,omitempty" name:"CustomerData"`
+
+	// 合同签署顺序类型(无序签,顺序签)，默认为false，即有序签署
+	Unordered *bool `json:"Unordered,omitempty" name:"Unordered"`
+
+	// 合同显示的页卡模板，说明：只支持{合同名称}, {发起方企业}, {发起方姓名}, {签署方N企业}, {签署方N姓名}，且N不能超过签署人的数量，N从1开始
+	CustomShowMap *string `json:"CustomShowMap,omitempty" name:"CustomShowMap"`
+
+	// 本企业(发起方企业)是否需要签署审批
+	NeedSignReview *bool `json:"NeedSignReview,omitempty" name:"NeedSignReview"`
 }
 
 type FlowInfo struct {
@@ -2354,6 +2567,10 @@ type SignUrlInfo struct {
 	// 企业经办人 用户在渠道的编号
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OpenId *string `json:"OpenId,omitempty" name:"OpenId"`
+
+	// 合同组签署链接对应的合同组id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FlowGroupId *string `json:"FlowGroupId,omitempty" name:"FlowGroupId"`
 }
 
 type SyncFailReason struct {

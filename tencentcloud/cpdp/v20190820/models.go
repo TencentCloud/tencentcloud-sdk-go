@@ -8352,6 +8352,14 @@ type CreateOpenBankOrderPaymentResult struct {
 
 	// 外部商户订单号，只能是数字、大小写字母，且在同一个接入平台下唯一。
 	OutOrderId *string `json:"OutOrderId,omitempty" name:"OutOrderId"`
+
+	// 渠道扩展支付信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PayInfo *string `json:"PayInfo,omitempty" name:"PayInfo"`
+
+	// 渠道扩展支付信息类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PayInfoType *string `json:"PayInfoType,omitempty" name:"PayInfoType"`
 }
 
 type CreateOpenBankOrderRechargeResult struct {
@@ -22236,6 +22244,10 @@ type QueryOpenBankPaymentOrderResult struct {
 	// 分账信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProfitShareRespInfoList []*OpenBankProfitShareRespInfo `json:"ProfitShareRespInfoList,omitempty" name:"ProfitShareRespInfoList"`
+
+	// 支付完成时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TimeFinish *string `json:"TimeFinish,omitempty" name:"TimeFinish"`
 }
 
 // Predefined struct for user

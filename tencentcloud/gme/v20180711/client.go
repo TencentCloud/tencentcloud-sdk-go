@@ -349,6 +349,62 @@ func (c *Client) DeleteCustomizationWithContext(ctx context.Context, request *De
     return
 }
 
+func NewDeleteRoomMemberRequest() (request *DeleteRoomMemberRequest) {
+    request = &DeleteRoomMemberRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("gme", APIVersion, "DeleteRoomMember")
+    
+    
+    return
+}
+
+func NewDeleteRoomMemberResponse() (response *DeleteRoomMemberResponse) {
+    response = &DeleteRoomMemberResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteRoomMember
+// 本接口(DeleteRoomMember)用户删除房间或者剔除房间内用户
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteRoomMember(request *DeleteRoomMemberRequest) (response *DeleteRoomMemberResponse, err error) {
+    return c.DeleteRoomMemberWithContext(context.Background(), request)
+}
+
+// DeleteRoomMember
+// 本接口(DeleteRoomMember)用户删除房间或者剔除房间内用户
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteRoomMemberWithContext(ctx context.Context, request *DeleteRoomMemberRequest) (response *DeleteRoomMemberResponse, err error) {
+    if request == nil {
+        request = NewDeleteRoomMemberRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteRoomMember require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteRoomMemberResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteScanUserRequest() (request *DeleteScanUserRequest) {
     request = &DeleteScanUserRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -371,7 +427,11 @@ func NewDeleteScanUserResponse() (response *DeleteScanUserResponse) {
 // 删除自定义送检用户
 //
 // 可能返回的错误码:
-//  LIMITEXCEEDED = "LimitExceeded"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteScanUser(request *DeleteScanUserRequest) (response *DeleteScanUserResponse, err error) {
     return c.DeleteScanUserWithContext(context.Background(), request)
 }
@@ -380,7 +440,11 @@ func (c *Client) DeleteScanUser(request *DeleteScanUserRequest) (response *Delet
 // 删除自定义送检用户
 //
 // 可能返回的错误码:
-//  LIMITEXCEEDED = "LimitExceeded"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteScanUserWithContext(ctx context.Context, request *DeleteScanUserRequest) (response *DeleteScanUserResponse, err error) {
     if request == nil {
         request = NewDeleteScanUserRequest()

@@ -761,6 +761,76 @@ func (r *DeleteShieldInstancesResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeApkDetectionResultRequestParams struct {
+	// 软件包的下载链接
+	ApkUrl *string `json:"ApkUrl,omitempty" name:"ApkUrl"`
+
+	// 软件包的md5值，具有唯一性。腾讯APK云检测服务会根据md5值来判断该包是否为库中已收集的样本，已存在，则返回检测结果，反之，需要一定时间检测该样本。
+	ApkMd5 *string `json:"ApkMd5,omitempty" name:"ApkMd5"`
+}
+
+type DescribeApkDetectionResultRequest struct {
+	*tchttp.BaseRequest
+	
+	// 软件包的下载链接
+	ApkUrl *string `json:"ApkUrl,omitempty" name:"ApkUrl"`
+
+	// 软件包的md5值，具有唯一性。腾讯APK云检测服务会根据md5值来判断该包是否为库中已收集的样本，已存在，则返回检测结果，反之，需要一定时间检测该样本。
+	ApkMd5 *string `json:"ApkMd5,omitempty" name:"ApkMd5"`
+}
+
+func (r *DescribeApkDetectionResultRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeApkDetectionResultRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ApkUrl")
+	delete(f, "ApkMd5")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeApkDetectionResultRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeApkDetectionResultResponseParams struct {
+	// 响应结果，ok表示正常，error表示错误
+	Result *string `json:"Result,omitempty" name:"Result"`
+
+	// Result为error错误时的原因说明
+	Reason *string `json:"Reason,omitempty" name:"Reason"`
+
+	// APK检测结果数组
+	ResultList []*ResultListItem `json:"ResultList,omitempty" name:"ResultList"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeApkDetectionResultResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeApkDetectionResultResponseParams `json:"Response"`
+}
+
+func (r *DescribeApkDetectionResultResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeApkDetectionResultResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeResourceInstancesRequestParams struct {
 	// 支持CreateTime、ExpireTime、AppName、AppPkgName、BindValue、IsBind过滤
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
@@ -1412,6 +1482,17 @@ type Filter struct {
 	Value *string `json:"Value,omitempty" name:"Value"`
 }
 
+type OptPluginListItem struct {
+	// 非广告类型
+	PluginType *string `json:"PluginType,omitempty" name:"PluginType"`
+
+	// 非广告插件名称
+	PluginName *string `json:"PluginName,omitempty" name:"PluginName"`
+
+	// 非广告插件描述
+	PluginDesc *string `json:"PluginDesc,omitempty" name:"PluginDesc"`
+}
+
 type PlanDetailInfo struct {
 	// 默认策略，1为默认，0为非默认
 	IsDefault *uint64 `json:"IsDefault,omitempty" name:"IsDefault"`
@@ -1487,6 +1568,17 @@ type PluginInfo struct {
 	PluginDesc *string `json:"PluginDesc,omitempty" name:"PluginDesc"`
 }
 
+type PluginListItem struct {
+	// 数字类型，分别为 1-通知栏广告，2-积分墙广告，3-banner广告，4- 悬浮窗图标广告，5-精品推荐列表广告, 6-插播广告
+	PluginType *string `json:"PluginType,omitempty" name:"PluginType"`
+
+	// 广告插件名称
+	PluginName *string `json:"PluginName,omitempty" name:"PluginName"`
+
+	// 广告插件描述
+	PluginDesc *string `json:"PluginDesc,omitempty" name:"PluginDesc"`
+}
+
 type ResourceInfo struct {
 	// 用户购买的资源id，全局唯一
 	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
@@ -1519,6 +1611,84 @@ type ResourceServiceInfo struct {
 
 	// 资源名称，如应用加固，源码混淆
 	ResourceName *string `json:"ResourceName,omitempty" name:"ResourceName"`
+}
+
+type ResultListItem struct {
+	// banner广告软件标记，分别为-1-不确定，0-否，1-是
+	Banner *string `json:"Banner,omitempty" name:"Banner"`
+
+	// 精品推荐列表广告标记，分别为-1-不确定，0-否，1-是
+	BoutiqueRecommand *string `json:"BoutiqueRecommand,omitempty" name:"BoutiqueRecommand"`
+
+	// 悬浮窗图标广告标记,分别为-1-不确定，0-否，1-是
+	FloatWindows *string `json:"FloatWindows,omitempty" name:"FloatWindows"`
+
+	// 积分墙广告软件标记，分别为 -1 -不确定，0-否，1-是
+	IntegralWall *string `json:"IntegralWall,omitempty" name:"IntegralWall"`
+
+	// 安装包的md5
+	Md5 *string `json:"Md5,omitempty" name:"Md5"`
+
+	// 通知栏广告软件标记，分别为-1-不确定，0-否，1-是
+	NotifyBar *string `json:"NotifyBar,omitempty" name:"NotifyBar"`
+
+	// 1表示官方，0表示非官方
+	Official *string `json:"Official,omitempty" name:"Official"`
+
+	// 广告插件结果列表
+	PluginList []*PluginListItem `json:"PluginList,omitempty" name:"PluginList"`
+
+	// 非广告插件结果列表(SDK、风险插件等)
+	OptPluginList []*OptPluginListItem `json:"OptPluginList,omitempty" name:"OptPluginList"`
+
+	// 数字类型，分别为0-未知， 1-安全软件，2-风险软件，3-病毒软件
+	SafeType *string `json:"SafeType,omitempty" name:"SafeType"`
+
+	// Session id，合作方可以用来区分回调数据，需要唯一。
+	Sid *string `json:"Sid,omitempty" name:"Sid"`
+
+	// 安装包名称
+	SoftName *string `json:"SoftName,omitempty" name:"SoftName"`
+
+	// 插播广告软件标记，取值：-1 不确定，0否， 1 是
+	Spot *string `json:"Spot,omitempty" name:"Spot"`
+
+	// 病毒名称，utf8编码
+	VirusName *string `json:"VirusName,omitempty" name:"VirusName"`
+
+	// 病毒描述，utf8编码
+	VirusDesc *string `json:"VirusDesc,omitempty" name:"VirusDesc"`
+
+	// 二次打包状态：0-表示默认；1-表示二次
+	RepackageStatus *string `json:"RepackageStatus,omitempty" name:"RepackageStatus"`
+
+	// 应用错误码：0、1-表示正常；                  
+	// 
+	// 2表示System Error(engine analysis error).
+	// 
+	// 3表示App analysis error, please confirm it.
+	// 
+	// 4表示App have not cert, please confirm it.
+	// 
+	// 5表示App size is zero, please confirm it.
+	// 
+	// 6表示App have not package name, please confirm it.
+	// 
+	// 7表示App build time is empty, please confirm it.
+	// 
+	// 8表示App have not valid cert, please confirm it.
+	// 
+	// 99表示Other error.
+	// 
+	// 1000表示App downloadlink download fail, please confirm it.
+	// 
+	// 1001表示APP md5 different between real md5, please confirm it.
+	// 
+	// 1002表示App md5 uncollect, please offer downloadlink.
+	Errno *string `json:"Errno,omitempty" name:"Errno"`
+
+	// 对应errno的错误信息描述
+	ErrMsg *string `json:"ErrMsg,omitempty" name:"ErrMsg"`
 }
 
 type ScanInfo struct {

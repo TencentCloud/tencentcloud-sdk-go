@@ -45,6 +45,62 @@ func NewClient(credential common.CredentialIface, region string, clientProfile *
 }
 
 
+func NewChannelBatchCancelFlowsRequest() (request *ChannelBatchCancelFlowsRequest) {
+    request = &ChannelBatchCancelFlowsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("essbasic", APIVersion, "ChannelBatchCancelFlows")
+    
+    
+    return
+}
+
+func NewChannelBatchCancelFlowsResponse() (response *ChannelBatchCancelFlowsResponse) {
+    response = &ChannelBatchCancelFlowsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ChannelBatchCancelFlows
+// 指定需要批量撤销的签署流程Id，批量撤销合同
+//
+// 客户指定需要撤销的签署流程Id，最多100个，超过100不处理；接口失败后返回错误信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ChannelBatchCancelFlows(request *ChannelBatchCancelFlowsRequest) (response *ChannelBatchCancelFlowsResponse, err error) {
+    return c.ChannelBatchCancelFlowsWithContext(context.Background(), request)
+}
+
+// ChannelBatchCancelFlows
+// 指定需要批量撤销的签署流程Id，批量撤销合同
+//
+// 客户指定需要撤销的签署流程Id，最多100个，超过100不处理；接口失败后返回错误信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ChannelBatchCancelFlowsWithContext(ctx context.Context, request *ChannelBatchCancelFlowsRequest) (response *ChannelBatchCancelFlowsResponse, err error) {
+    if request == nil {
+        request = NewChannelBatchCancelFlowsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ChannelBatchCancelFlows require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewChannelBatchCancelFlowsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewChannelCancelMultiFlowSignQRCodeRequest() (request *ChannelCancelMultiFlowSignQRCodeRequest) {
     request = &ChannelCancelMultiFlowSignQRCodeRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -266,6 +322,7 @@ func NewChannelCreateFlowByFilesResponse() (response *ChannelCreateFlowByFilesRe
 //  MISSINGPARAMETER = "MissingParameter"
 //  MISSINGPARAMETER_MISSCOMPONENTNAME = "MissingParameter.MissComponentName"
 //  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_BYFILESSERVERSIGNFORBID = "OperationDenied.ByFilesServerSignForbid"
 //  OPERATIONDENIED_ERRNORESOURCEACCESS = "OperationDenied.ErrNoResourceAccess"
 //  OPERATIONDENIED_NOIDENTITYVERIFY = "OperationDenied.NoIdentityVerify"
 //  OPERATIONDENIED_NOQUOTA = "OperationDenied.NoQuota"
@@ -316,6 +373,7 @@ func (c *Client) ChannelCreateFlowByFiles(request *ChannelCreateFlowByFilesReque
 //  MISSINGPARAMETER = "MissingParameter"
 //  MISSINGPARAMETER_MISSCOMPONENTNAME = "MissingParameter.MissComponentName"
 //  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_BYFILESSERVERSIGNFORBID = "OperationDenied.ByFilesServerSignForbid"
 //  OPERATIONDENIED_ERRNORESOURCEACCESS = "OperationDenied.ErrNoResourceAccess"
 //  OPERATIONDENIED_NOIDENTITYVERIFY = "OperationDenied.NoIdentityVerify"
 //  OPERATIONDENIED_NOQUOTA = "OperationDenied.NoQuota"
@@ -335,6 +393,136 @@ func (c *Client) ChannelCreateFlowByFilesWithContext(ctx context.Context, reques
     request.SetContext(ctx)
     
     response = NewChannelCreateFlowByFilesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewChannelCreateFlowGroupByFilesRequest() (request *ChannelCreateFlowGroupByFilesRequest) {
+    request = &ChannelCreateFlowGroupByFilesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("essbasic", APIVersion, "ChannelCreateFlowGroupByFiles")
+    
+    
+    return
+}
+
+func NewChannelCreateFlowGroupByFilesResponse() (response *ChannelCreateFlowGroupByFilesResponse) {
+    response = &ChannelCreateFlowGroupByFilesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ChannelCreateFlowGroupByFiles
+// 接口（ChannelCreateFlowGroupByFiles）用于通过多文件创建合同组签署流程。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_AGENOTACHIEVENORMALLEGAL = "FailedOperation.AgeNotAchieveNormalLegal"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_DBCONNECTION = "InternalError.DbConnection"
+//  INTERNALERROR_DECRYPTION = "InternalError.Decryption"
+//  INTERNALERROR_ENCRYPTION = "InternalError.Encryption"
+//  INTERNALERROR_GENERATEID = "InternalError.GenerateId"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INTERNALERROR_THIRDPARTY = "InternalError.ThirdParty"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_APPLICATION = "InvalidParameter.Application"
+//  INVALIDPARAMETER_APPROVERTYPE = "InvalidParameter.ApproverType"
+//  INVALIDPARAMETER_BIZAPPROVERALREADYEXISTS = "InvalidParameter.BizApproverAlreadyExists"
+//  INVALIDPARAMETER_CARDTYPE = "InvalidParameter.CardType"
+//  INVALIDPARAMETER_CUSTOMSHOWMAP = "InvalidParameter.CustomShowMap"
+//  INVALIDPARAMETER_CUSTOMERDATA = "InvalidParameter.CustomerData"
+//  INVALIDPARAMETER_DATANOTFOUND = "InvalidParameter.DataNotFound"
+//  INVALIDPARAMETER_FLOWAPPROVERINFOS = "InvalidParameter.FlowApproverInfos"
+//  INVALIDPARAMETER_FLOWAPPROVERS = "InvalidParameter.FlowApprovers"
+//  INVALIDPARAMETER_FLOWCALLBACKURL = "InvalidParameter.FlowCallbackUrl"
+//  INVALIDPARAMETER_FLOWDEADLINE = "InvalidParameter.FlowDeadLine"
+//  INVALIDPARAMETER_FLOWDESCRIPTION = "InvalidParameter.FlowDescription"
+//  INVALIDPARAMETER_FLOWFILEIDS = "InvalidParameter.FlowFileIds"
+//  INVALIDPARAMETER_FLOWNAME = "InvalidParameter.FlowName"
+//  INVALIDPARAMETER_FLOWTYPE = "InvalidParameter.FlowType"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETER_SIGNCOMPONENTTYPE = "InvalidParameter.SignComponentType"
+//  INVALIDPARAMETER_UNORDERED = "InvalidParameter.Unordered"
+//  INVALIDPARAMETER_UNSUPPORTEDCOMPONENTTYPE = "InvalidParameter.UnsupportedComponentType"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_MISSCOMPONENTNAME = "MissingParameter.MissComponentName"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ERRNORESOURCEACCESS = "OperationDenied.ErrNoResourceAccess"
+//  OPERATIONDENIED_NOIDENTITYVERIFY = "OperationDenied.NoIdentityVerify"
+//  OPERATIONDENIED_NOQUOTA = "OperationDenied.NoQuota"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_APPLICATION = "ResourceNotFound.Application"
+//  RESOURCENOTFOUND_RESOURCE = "ResourceNotFound.Resource"
+//  RESOURCENOTFOUND_SEAL = "ResourceNotFound.Seal"
+func (c *Client) ChannelCreateFlowGroupByFiles(request *ChannelCreateFlowGroupByFilesRequest) (response *ChannelCreateFlowGroupByFilesResponse, err error) {
+    return c.ChannelCreateFlowGroupByFilesWithContext(context.Background(), request)
+}
+
+// ChannelCreateFlowGroupByFiles
+// 接口（ChannelCreateFlowGroupByFiles）用于通过多文件创建合同组签署流程。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_AGENOTACHIEVENORMALLEGAL = "FailedOperation.AgeNotAchieveNormalLegal"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_DBCONNECTION = "InternalError.DbConnection"
+//  INTERNALERROR_DECRYPTION = "InternalError.Decryption"
+//  INTERNALERROR_ENCRYPTION = "InternalError.Encryption"
+//  INTERNALERROR_GENERATEID = "InternalError.GenerateId"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INTERNALERROR_THIRDPARTY = "InternalError.ThirdParty"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_APPLICATION = "InvalidParameter.Application"
+//  INVALIDPARAMETER_APPROVERTYPE = "InvalidParameter.ApproverType"
+//  INVALIDPARAMETER_BIZAPPROVERALREADYEXISTS = "InvalidParameter.BizApproverAlreadyExists"
+//  INVALIDPARAMETER_CARDTYPE = "InvalidParameter.CardType"
+//  INVALIDPARAMETER_CUSTOMSHOWMAP = "InvalidParameter.CustomShowMap"
+//  INVALIDPARAMETER_CUSTOMERDATA = "InvalidParameter.CustomerData"
+//  INVALIDPARAMETER_DATANOTFOUND = "InvalidParameter.DataNotFound"
+//  INVALIDPARAMETER_FLOWAPPROVERINFOS = "InvalidParameter.FlowApproverInfos"
+//  INVALIDPARAMETER_FLOWAPPROVERS = "InvalidParameter.FlowApprovers"
+//  INVALIDPARAMETER_FLOWCALLBACKURL = "InvalidParameter.FlowCallbackUrl"
+//  INVALIDPARAMETER_FLOWDEADLINE = "InvalidParameter.FlowDeadLine"
+//  INVALIDPARAMETER_FLOWDESCRIPTION = "InvalidParameter.FlowDescription"
+//  INVALIDPARAMETER_FLOWFILEIDS = "InvalidParameter.FlowFileIds"
+//  INVALIDPARAMETER_FLOWNAME = "InvalidParameter.FlowName"
+//  INVALIDPARAMETER_FLOWTYPE = "InvalidParameter.FlowType"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETER_SIGNCOMPONENTTYPE = "InvalidParameter.SignComponentType"
+//  INVALIDPARAMETER_UNORDERED = "InvalidParameter.Unordered"
+//  INVALIDPARAMETER_UNSUPPORTEDCOMPONENTTYPE = "InvalidParameter.UnsupportedComponentType"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_MISSCOMPONENTNAME = "MissingParameter.MissComponentName"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ERRNORESOURCEACCESS = "OperationDenied.ErrNoResourceAccess"
+//  OPERATIONDENIED_NOIDENTITYVERIFY = "OperationDenied.NoIdentityVerify"
+//  OPERATIONDENIED_NOQUOTA = "OperationDenied.NoQuota"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_APPLICATION = "ResourceNotFound.Application"
+//  RESOURCENOTFOUND_RESOURCE = "ResourceNotFound.Resource"
+//  RESOURCENOTFOUND_SEAL = "ResourceNotFound.Seal"
+func (c *Client) ChannelCreateFlowGroupByFilesWithContext(ctx context.Context, request *ChannelCreateFlowGroupByFilesRequest) (response *ChannelCreateFlowGroupByFilesResponse, err error) {
+    if request == nil {
+        request = NewChannelCreateFlowGroupByFilesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ChannelCreateFlowGroupByFiles require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewChannelCreateFlowGroupByFilesResponse()
     err = c.Send(request, response)
     return
 }
@@ -556,7 +744,9 @@ func NewCreateChannelFlowEvidenceReportResponse() (response *CreateChannelFlowEv
 }
 
 // CreateChannelFlowEvidenceReport
-// 创建出证报告，返回报告 URL
+// 【描述】：创建出证报告，返回报告 URL
+//
+// 【注意】：此接口需要通过添加白名单获取调用权限，请联系运营人员加白
 //
 // 可能返回的错误码:
 //  INTERNALERROR_SYSTEM = "InternalError.System"
@@ -572,7 +762,9 @@ func (c *Client) CreateChannelFlowEvidenceReport(request *CreateChannelFlowEvide
 }
 
 // CreateChannelFlowEvidenceReport
-// 创建出证报告，返回报告 URL
+// 【描述】：创建出证报告，返回报告 URL
+//
+// 【注意】：此接口需要通过添加白名单获取调用权限，请联系运营人员加白
 //
 // 可能返回的错误码:
 //  INTERNALERROR_SYSTEM = "InternalError.System"

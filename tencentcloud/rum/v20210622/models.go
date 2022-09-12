@@ -6048,6 +6048,15 @@ type RumAreaInfo struct {
 
 	// 片区Key
 	AreaKey *string `json:"AreaKey,omitempty" name:"AreaKey"`
+
+	// 地域码表 id
+	AreaRegionID *string `json:"AreaRegionID,omitempty" name:"AreaRegionID"`
+
+	// 地域码表 code 如 ap-xxx（xxx 为地域词）
+	AreaRegionCode *string `json:"AreaRegionCode,omitempty" name:"AreaRegionCode"`
+
+	// 地域缩写
+	AreaAbbr *string `json:"AreaAbbr,omitempty" name:"AreaAbbr"`
 }
 
 type RumInstanceInfo struct {

@@ -32,17 +32,17 @@ type AssetAppBaseInfo struct {
 	// 主机内网IP
 	MachineIp *string `json:"MachineIp,omitempty" name:"MachineIp"`
 
+	// 主机名称
+	MachineName *string `json:"MachineName,omitempty" name:"MachineName"`
+
 	// 主机外网IP
 	MachineWanIp *string `json:"MachineWanIp,omitempty" name:"MachineWanIp"`
-
-	// 主机Quuid
-	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
 
 	// 主机Uuid
 	Uuid *string `json:"Uuid,omitempty" name:"Uuid"`
 
-	// 操作系统信息
-	OsInfo *string `json:"OsInfo,omitempty" name:"OsInfo"`
+	// 主机Quuid
+	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
 
 	// 主机业务组ID
 	ProjectId *uint64 `json:"ProjectId,omitempty" name:"ProjectId"`
@@ -68,8 +68,8 @@ type AssetAppBaseInfo struct {
 	// 二进制路径
 	BinPath *string `json:"BinPath,omitempty" name:"BinPath"`
 
-	// 配置文件路径
-	ConfigPath *string `json:"ConfigPath,omitempty" name:"ConfigPath"`
+	// 操作系统信息
+	OsInfo *string `json:"OsInfo,omitempty" name:"OsInfo"`
 
 	// 关联进程数
 	ProcessCount *uint64 `json:"ProcessCount,omitempty" name:"ProcessCount"`
@@ -80,9 +80,19 @@ type AssetAppBaseInfo struct {
 	// 版本号
 	Version *string `json:"Version,omitempty" name:"Version"`
 
+	// 配置文件路径
+	ConfigPath *string `json:"ConfigPath,omitempty" name:"ConfigPath"`
+
+	// 首次采集时间
+	FirstTime *string `json:"FirstTime,omitempty" name:"FirstTime"`
+
 	// 数据更新时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+
+	// 是否新增[0:否|1:是]
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsNew *int64 `json:"IsNew,omitempty" name:"IsNew"`
 }
 
 type AssetAppProcessInfo struct {
@@ -148,6 +158,15 @@ type AssetCoreModuleBaseInfo struct {
 	// 数据更新时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+
+	// 首次采集时间
+	FirstTime *string `json:"FirstTime,omitempty" name:"FirstTime"`
+
+	// 是否新增[0:否|1:是]
+	IsNew *int64 `json:"IsNew,omitempty" name:"IsNew"`
+
+	// 服务器外网IP
+	MachineWanIp *string `json:"MachineWanIp,omitempty" name:"MachineWanIp"`
 }
 
 type AssetCoreModuleDetail struct {
@@ -260,6 +279,15 @@ type AssetDatabaseBaseInfo struct {
 	// 数据更新时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+
+	// 首次采集时间
+	FirstTime *string `json:"FirstTime,omitempty" name:"FirstTime"`
+
+	// 是否新增[0:否|1:是]
+	IsNew *int64 `json:"IsNew,omitempty" name:"IsNew"`
+
+	// 主机名称
+	MachineName *string `json:"MachineName,omitempty" name:"MachineName"`
 }
 
 type AssetDatabaseDetail struct {
@@ -378,6 +406,15 @@ type AssetEnvBaseInfo struct {
 	// 数据更新时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+
+	// 首次采集时间
+	FirstTime *string `json:"FirstTime,omitempty" name:"FirstTime"`
+
+	// 是否新增[0:否|1:是]
+	IsNew *int64 `json:"IsNew,omitempty" name:"IsNew"`
+
+	// 服务器外网IP
+	MachineWanIp *string `json:"MachineWanIp,omitempty" name:"MachineWanIp"`
 }
 
 type AssetFilters struct {
@@ -438,6 +475,15 @@ type AssetInitServiceBaseInfo struct {
 
 	// 数据更新时间
 	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+
+	// 首次采集时间
+	FirstTime *string `json:"FirstTime,omitempty" name:"FirstTime"`
+
+	// 是否新增[0:否|1:是]
+	IsNew *int64 `json:"IsNew,omitempty" name:"IsNew"`
+
+	// 服务器外网IP
+	MachineWanIp *string `json:"MachineWanIp,omitempty" name:"MachineWanIp"`
 }
 
 type AssetJarBaseInfo struct {
@@ -480,6 +526,15 @@ type AssetJarBaseInfo struct {
 	// 数据更新时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+
+	// 首次采集时间
+	FirstTime *string `json:"FirstTime,omitempty" name:"FirstTime"`
+
+	// 是否新增[0:否|1:是]
+	IsNew *int64 `json:"IsNew,omitempty" name:"IsNew"`
+
+	// 服务器外网IP
+	MachineWanIp *string `json:"MachineWanIp,omitempty" name:"MachineWanIp"`
 }
 
 type AssetJarDetail struct {
@@ -530,6 +585,10 @@ type AssetKeyVal struct {
 	// 描述信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Desc *string `json:"Desc,omitempty" name:"Desc"`
+
+	// 今日新增数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NewCount *int64 `json:"NewCount,omitempty" name:"NewCount"`
 }
 
 type AssetMachineBaseInfo struct {
@@ -585,6 +644,12 @@ type AssetMachineBaseInfo struct {
 	// 数据更新时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+
+	// 是否新增[0:否|1:是]
+	IsNew *int64 `json:"IsNew,omitempty" name:"IsNew"`
+
+	// 首次采集时间
+	FirstTime *string `json:"FirstTime,omitempty" name:"FirstTime"`
 }
 
 type AssetMachineDetail struct {
@@ -751,6 +816,15 @@ type AssetPlanTask struct {
 	// 数据更新时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+
+	// 首次采集时间
+	FirstTime *string `json:"FirstTime,omitempty" name:"FirstTime"`
+
+	// 是否新增[0:否|1:是]
+	IsNew *int64 `json:"IsNew,omitempty" name:"IsNew"`
+
+	// 服务器外网IP
+	MachineWanIp *string `json:"MachineWanIp,omitempty" name:"MachineWanIp"`
 }
 
 type AssetPortBaseInfo struct {
@@ -827,6 +901,12 @@ type AssetPortBaseInfo struct {
 	// 数据更新时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+
+	// 首次采集时间
+	FirstTime *string `json:"FirstTime,omitempty" name:"FirstTime"`
+
+	// 是否新增[0:否|1:是]
+	IsNew *int64 `json:"IsNew,omitempty" name:"IsNew"`
 }
 
 type AssetProcessBaseInfo struct {
@@ -909,6 +989,12 @@ type AssetProcessBaseInfo struct {
 	// 数据更新时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+
+	// 首次采集时间
+	FirstTime *string `json:"FirstTime,omitempty" name:"FirstTime"`
+
+	// 是否新增[0:否|1:是]
+	IsNew *int64 `json:"IsNew,omitempty" name:"IsNew"`
 }
 
 type AssetSystemPackageInfo struct {
@@ -939,6 +1025,12 @@ type AssetSystemPackageInfo struct {
 	// 数据更新时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+
+	// 首次采集时间
+	FirstTime *string `json:"FirstTime,omitempty" name:"FirstTime"`
+
+	// 是否新增[0:否|1:是]
+	IsNew *int64 `json:"IsNew,omitempty" name:"IsNew"`
 }
 
 type AssetUserBaseInfo struct {
@@ -1020,6 +1112,12 @@ type AssetUserBaseInfo struct {
 	// 更新时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+
+	// 首次采集时间
+	FirstTime *string `json:"FirstTime,omitempty" name:"FirstTime"`
+
+	// 是否新增[0:否|1:是]
+	IsNew *int64 `json:"IsNew,omitempty" name:"IsNew"`
 }
 
 type AssetUserDetail struct {
@@ -1180,6 +1278,12 @@ type AssetWebAppBaseInfo struct {
 	// 数据更新时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+
+	// 首次采集时间
+	FirstTime *string `json:"FirstTime,omitempty" name:"FirstTime"`
+
+	// 是否新增[0:否|1:是]
+	IsNew *int64 `json:"IsNew,omitempty" name:"IsNew"`
 }
 
 type AssetWebAppPluginInfo struct {
@@ -1237,6 +1341,12 @@ type AssetWebFrameBaseInfo struct {
 	// 数据更新时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+
+	// 首次采集时间
+	FirstTime *string `json:"FirstTime,omitempty" name:"FirstTime"`
+
+	// 是否新增[0:否|1:是]
+	IsNew *int64 `json:"IsNew,omitempty" name:"IsNew"`
 }
 
 type AssetWebLocationBaseInfo struct {
@@ -1297,6 +1407,13 @@ type AssetWebLocationBaseInfo struct {
 	// 数据更新时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+
+	// 首次采集时间
+	FirstTime *string `json:"FirstTime,omitempty" name:"FirstTime"`
+
+	// 是否新增[0:否|1:是]
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsNew *int64 `json:"IsNew,omitempty" name:"IsNew"`
 }
 
 type AssetWebLocationInfo struct {
@@ -1388,6 +1505,12 @@ type AssetWebServiceBaseInfo struct {
 	// 数据更新时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+
+	// 首次采集时间
+	FirstTime *string `json:"FirstTime,omitempty" name:"FirstTime"`
+
+	// 是否新增[0:否|1:是]
+	IsNew *int64 `json:"IsNew,omitempty" name:"IsNew"`
 }
 
 type BanWhiteListDetail struct {
@@ -2245,6 +2368,130 @@ func (r *CreateEmergencyVulScanResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateLicenseOrderRequestParams struct {
+	// 标签数组, 空则表示不需要绑定标签
+	Tags []*Tags `json:"Tags,omitempty" name:"Tags"`
+
+	// 授权类型, 0 专业版-按量计费, 1专业版-包年包月 , 2 旗舰版-包年包月
+	// 默认为0
+	LicenseType *uint64 `json:"LicenseType,omitempty" name:"LicenseType"`
+
+	// 授权数量 , 需要购买的数量.
+	// 默认为1
+	LicenseNum *uint64 `json:"LicenseNum,omitempty" name:"LicenseNum"`
+
+	// 购买订单地域,这里仅支持 1 广州,9 新加坡. 推荐选择广州. 新加坡地域为白名单用户购买.
+	// 默认为1
+	RegionId *uint64 `json:"RegionId,omitempty" name:"RegionId"`
+
+	// 项目ID .
+	// 默认为0
+	ProjectId *uint64 `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 购买时间长度,默认1 , 可选值为1,2,3,4,5,6,7,8,9,10,11,12,24,36
+	// 该参数仅包年包月生效
+	TimeSpan *uint64 `json:"TimeSpan,omitempty" name:"TimeSpan"`
+
+	// 是否自动续费, 默认不自动续费.
+	// 该参数仅包年包月生效
+	AutoRenewFlag *bool `json:"AutoRenewFlag,omitempty" name:"AutoRenewFlag"`
+
+	// 自动防护授权配置值, 不空则表示开启
+	AutoProtectOpenConfig *string `json:"AutoProtectOpenConfig,omitempty" name:"AutoProtectOpenConfig"`
+}
+
+type CreateLicenseOrderRequest struct {
+	*tchttp.BaseRequest
+	
+	// 标签数组, 空则表示不需要绑定标签
+	Tags []*Tags `json:"Tags,omitempty" name:"Tags"`
+
+	// 授权类型, 0 专业版-按量计费, 1专业版-包年包月 , 2 旗舰版-包年包月
+	// 默认为0
+	LicenseType *uint64 `json:"LicenseType,omitempty" name:"LicenseType"`
+
+	// 授权数量 , 需要购买的数量.
+	// 默认为1
+	LicenseNum *uint64 `json:"LicenseNum,omitempty" name:"LicenseNum"`
+
+	// 购买订单地域,这里仅支持 1 广州,9 新加坡. 推荐选择广州. 新加坡地域为白名单用户购买.
+	// 默认为1
+	RegionId *uint64 `json:"RegionId,omitempty" name:"RegionId"`
+
+	// 项目ID .
+	// 默认为0
+	ProjectId *uint64 `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 购买时间长度,默认1 , 可选值为1,2,3,4,5,6,7,8,9,10,11,12,24,36
+	// 该参数仅包年包月生效
+	TimeSpan *uint64 `json:"TimeSpan,omitempty" name:"TimeSpan"`
+
+	// 是否自动续费, 默认不自动续费.
+	// 该参数仅包年包月生效
+	AutoRenewFlag *bool `json:"AutoRenewFlag,omitempty" name:"AutoRenewFlag"`
+
+	// 自动防护授权配置值, 不空则表示开启
+	AutoProtectOpenConfig *string `json:"AutoProtectOpenConfig,omitempty" name:"AutoProtectOpenConfig"`
+}
+
+func (r *CreateLicenseOrderRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateLicenseOrderRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Tags")
+	delete(f, "LicenseType")
+	delete(f, "LicenseNum")
+	delete(f, "RegionId")
+	delete(f, "ProjectId")
+	delete(f, "TimeSpan")
+	delete(f, "AutoRenewFlag")
+	delete(f, "AutoProtectOpenConfig")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateLicenseOrderRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateLicenseOrderResponseParams struct {
+	// 订单号列表
+	DealNames []*string `json:"DealNames,omitempty" name:"DealNames"`
+
+	// 资源ID列表,预付费订单该字段空值
+	ResourceIds []*string `json:"ResourceIds,omitempty" name:"ResourceIds"`
+
+	// 大订单号 , 后付费该字段空值
+	BigDealId *string `json:"BigDealId,omitempty" name:"BigDealId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateLicenseOrderResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateLicenseOrderResponseParams `json:"Response"`
+}
+
+func (r *CreateLicenseOrderResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateLicenseOrderResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateProtectServerRequestParams struct {
 	// 防护目录地址
 	ProtectDir *string `json:"ProtectDir,omitempty" name:"ProtectDir"`
@@ -2812,6 +3059,74 @@ func (r *DeleteBruteAttacksResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteBruteAttacksResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteLicenseRecordRequestParams struct {
+	// 授权ID ,可以用授权订单列表获取.
+	LicenseId *uint64 `json:"LicenseId,omitempty" name:"LicenseId"`
+
+	// 授权类型
+	LicenseType *uint64 `json:"LicenseType,omitempty" name:"LicenseType"`
+
+	// 资源ID
+	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
+}
+
+type DeleteLicenseRecordRequest struct {
+	*tchttp.BaseRequest
+	
+	// 授权ID ,可以用授权订单列表获取.
+	LicenseId *uint64 `json:"LicenseId,omitempty" name:"LicenseId"`
+
+	// 授权类型
+	LicenseType *uint64 `json:"LicenseType,omitempty" name:"LicenseType"`
+
+	// 资源ID
+	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
+}
+
+func (r *DeleteLicenseRecordRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteLicenseRecordRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "LicenseId")
+	delete(f, "LicenseType")
+	delete(f, "ResourceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteLicenseRecordRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteLicenseRecordResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DeleteLicenseRecordResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteLicenseRecordResponseParams `json:"Response"`
+}
+
+func (r *DeleteLicenseRecordResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteLicenseRecordResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -3721,11 +4036,8 @@ func (r *DescribeAccountStatisticsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeAssetAppListRequestParams struct {
-	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
-
-	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	// 查询指定Quuid主机的信息
+	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
 
 	// 过滤条件。
 	// <li>AppName- string - 是否必填：否 - 应用名搜索</li>
@@ -3744,24 +4056,24 @@ type DescribeAssetAppListRequestParams struct {
 	// <li>Os -String 是否必填: 否 - 操作系统( DescribeMachineOsList 接口 值 )</li>
 	Filters []*AssetFilters `json:"Filters,omitempty" name:"Filters"`
 
-	// 排序方式：ProcessCount
-	By *string `json:"By,omitempty" name:"By"`
+	// 需要返回的数量，默认为10，最大值为100
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
 	// 排序方式，asc升序 或 desc降序
 	Order *string `json:"Order,omitempty" name:"Order"`
 
-	// 查询指定Quuid主机的信息
-	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
+	// 排序方式：[FirstTime|ProcessCount]
+	By *string `json:"By,omitempty" name:"By"`
 }
 
 type DescribeAssetAppListRequest struct {
 	*tchttp.BaseRequest
 	
-	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
-
-	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	// 查询指定Quuid主机的信息
+	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
 
 	// 过滤条件。
 	// <li>AppName- string - 是否必填：否 - 应用名搜索</li>
@@ -3780,14 +4092,17 @@ type DescribeAssetAppListRequest struct {
 	// <li>Os -String 是否必填: 否 - 操作系统( DescribeMachineOsList 接口 值 )</li>
 	Filters []*AssetFilters `json:"Filters,omitempty" name:"Filters"`
 
-	// 排序方式：ProcessCount
-	By *string `json:"By,omitempty" name:"By"`
+	// 需要返回的数量，默认为10，最大值为100
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
 	// 排序方式，asc升序 或 desc降序
 	Order *string `json:"Order,omitempty" name:"Order"`
 
-	// 查询指定Quuid主机的信息
-	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
+	// 排序方式：[FirstTime|ProcessCount]
+	By *string `json:"By,omitempty" name:"By"`
 }
 
 func (r *DescribeAssetAppListRequest) ToJsonString() string {
@@ -3802,12 +4117,12 @@ func (r *DescribeAssetAppListRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "Quuid")
+	delete(f, "Filters")
 	delete(f, "Limit")
 	delete(f, "Offset")
-	delete(f, "Filters")
-	delete(f, "By")
 	delete(f, "Order")
-	delete(f, "Quuid")
+	delete(f, "By")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAssetAppListRequest has unknown keys!", "")
 	}
@@ -4005,11 +4320,11 @@ func (r *DescribeAssetCoreModuleInfoResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeAssetCoreModuleListRequestParams struct {
-	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	// 服务器Uuid
+	Uuid *string `json:"Uuid,omitempty" name:"Uuid"`
 
-	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	// 服务器Quuid
+	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
 
 	// 过滤条件。
 	// <li>IpOrAlias - String - 是否必填：否 - 主机ip或别名筛选</li>
@@ -4017,27 +4332,27 @@ type DescribeAssetCoreModuleListRequestParams struct {
 	// <li>User- string - 是否必填：否 - 用户</li>
 	Filters []*AssetFilters `json:"Filters,omitempty" name:"Filters"`
 
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 需要返回的数量，默认为10，最大值为100
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
 	// 排序方式，asc升序 或 desc降序
 	Order *string `json:"Order,omitempty" name:"Order"`
 
-	// 排序依据:Size,ProcessCount,ModuleCount
+	// 排序依据[Size|FirstTime|ProcessCount|ModuleCount]
 	By *string `json:"By,omitempty" name:"By"`
-
-	// 服务器Uuid
-	Uuid *string `json:"Uuid,omitempty" name:"Uuid"`
-
-	// 服务器Quuid
-	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
 }
 
 type DescribeAssetCoreModuleListRequest struct {
 	*tchttp.BaseRequest
 	
-	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	// 服务器Uuid
+	Uuid *string `json:"Uuid,omitempty" name:"Uuid"`
 
-	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	// 服务器Quuid
+	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
 
 	// 过滤条件。
 	// <li>IpOrAlias - String - 是否必填：否 - 主机ip或别名筛选</li>
@@ -4045,17 +4360,17 @@ type DescribeAssetCoreModuleListRequest struct {
 	// <li>User- string - 是否必填：否 - 用户</li>
 	Filters []*AssetFilters `json:"Filters,omitempty" name:"Filters"`
 
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 需要返回的数量，默认为10，最大值为100
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
 	// 排序方式，asc升序 或 desc降序
 	Order *string `json:"Order,omitempty" name:"Order"`
 
-	// 排序依据:Size,ProcessCount,ModuleCount
+	// 排序依据[Size|FirstTime|ProcessCount|ModuleCount]
 	By *string `json:"By,omitempty" name:"By"`
-
-	// 服务器Uuid
-	Uuid *string `json:"Uuid,omitempty" name:"Uuid"`
-
-	// 服务器Quuid
-	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
 }
 
 func (r *DescribeAssetCoreModuleListRequest) ToJsonString() string {
@@ -4070,13 +4385,13 @@ func (r *DescribeAssetCoreModuleListRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	delete(f, "Limit")
-	delete(f, "Offset")
-	delete(f, "Filters")
-	delete(f, "Order")
-	delete(f, "By")
 	delete(f, "Uuid")
 	delete(f, "Quuid")
+	delete(f, "Filters")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Order")
+	delete(f, "By")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAssetCoreModuleListRequest has unknown keys!", "")
 	}
@@ -4185,11 +4500,8 @@ func (r *DescribeAssetDatabaseInfoResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeAssetDatabaseListRequestParams struct {
-	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
-
-	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	// 查询指定Quuid主机的信息
+	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
 
 	// 过滤条件。
 	// <li>IpOrAlias - String - 是否必填：否 - 主机ip或别名筛选</li>
@@ -4213,18 +4525,24 @@ type DescribeAssetDatabaseListRequestParams struct {
 	// <li>Os -String 是否必填: 否 - 操作系统( DescribeMachineOsList 接口 值 )</li>
 	Filters []*AssetFilters `json:"Filters,omitempty" name:"Filters"`
 
-	// 查询指定Quuid主机的信息
-	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 需要返回的数量，默认为10，最大值为100
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 排序方式，asc升序 或 desc降序
+	Order *string `json:"Order,omitempty" name:"Order"`
+
+	// 排序方式：[FirstTime]
+	By *string `json:"By,omitempty" name:"By"`
 }
 
 type DescribeAssetDatabaseListRequest struct {
 	*tchttp.BaseRequest
 	
-	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
-
-	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	// 查询指定Quuid主机的信息
+	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
 
 	// 过滤条件。
 	// <li>IpOrAlias - String - 是否必填：否 - 主机ip或别名筛选</li>
@@ -4248,8 +4566,17 @@ type DescribeAssetDatabaseListRequest struct {
 	// <li>Os -String 是否必填: 否 - 操作系统( DescribeMachineOsList 接口 值 )</li>
 	Filters []*AssetFilters `json:"Filters,omitempty" name:"Filters"`
 
-	// 查询指定Quuid主机的信息
-	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 需要返回的数量，默认为10，最大值为100
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 排序方式，asc升序 或 desc降序
+	Order *string `json:"Order,omitempty" name:"Order"`
+
+	// 排序方式：[FirstTime]
+	By *string `json:"By,omitempty" name:"By"`
 }
 
 func (r *DescribeAssetDatabaseListRequest) ToJsonString() string {
@@ -4264,10 +4591,12 @@ func (r *DescribeAssetDatabaseListRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	delete(f, "Limit")
-	delete(f, "Offset")
-	delete(f, "Filters")
 	delete(f, "Quuid")
+	delete(f, "Filters")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Order")
+	delete(f, "By")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAssetDatabaseListRequest has unknown keys!", "")
 	}
@@ -4305,11 +4634,11 @@ func (r *DescribeAssetDatabaseListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeAssetEnvListRequestParams struct {
-	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	// 服务器Uuid
+	Uuid *string `json:"Uuid,omitempty" name:"Uuid"`
 
-	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	// 服务器Quuid
+	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
 
 	// 该字段已废弃，由Filters代替
 	Type *uint64 `json:"Type,omitempty" name:"Type"`
@@ -4320,21 +4649,27 @@ type DescribeAssetEnvListRequestParams struct {
 	// <li>Type- int - 是否必填：否 - 类型：0用户变量，1系统变量</li>
 	Filters []*AssetFilters `json:"Filters,omitempty" name:"Filters"`
 
-	// 服务器Uuid
-	Uuid *string `json:"Uuid,omitempty" name:"Uuid"`
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 服务器Quuid
-	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
+	// 需要返回的数量，默认为10，最大值为100
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 排序方式，asc升序 或 desc降序
+	Order *string `json:"Order,omitempty" name:"Order"`
+
+	// 排序方式：[FirstTime]
+	By *string `json:"By,omitempty" name:"By"`
 }
 
 type DescribeAssetEnvListRequest struct {
 	*tchttp.BaseRequest
 	
-	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	// 服务器Uuid
+	Uuid *string `json:"Uuid,omitempty" name:"Uuid"`
 
-	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	// 服务器Quuid
+	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
 
 	// 该字段已废弃，由Filters代替
 	Type *uint64 `json:"Type,omitempty" name:"Type"`
@@ -4345,11 +4680,17 @@ type DescribeAssetEnvListRequest struct {
 	// <li>Type- int - 是否必填：否 - 类型：0用户变量，1系统变量</li>
 	Filters []*AssetFilters `json:"Filters,omitempty" name:"Filters"`
 
-	// 服务器Uuid
-	Uuid *string `json:"Uuid,omitempty" name:"Uuid"`
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 服务器Quuid
-	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
+	// 需要返回的数量，默认为10，最大值为100
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 排序方式，asc升序 或 desc降序
+	Order *string `json:"Order,omitempty" name:"Order"`
+
+	// 排序方式：[FirstTime]
+	By *string `json:"By,omitempty" name:"By"`
 }
 
 func (r *DescribeAssetEnvListRequest) ToJsonString() string {
@@ -4364,12 +4705,14 @@ func (r *DescribeAssetEnvListRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	delete(f, "Limit")
-	delete(f, "Offset")
-	delete(f, "Type")
-	delete(f, "Filters")
 	delete(f, "Uuid")
 	delete(f, "Quuid")
+	delete(f, "Type")
+	delete(f, "Filters")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Order")
+	delete(f, "By")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAssetEnvListRequest has unknown keys!", "")
 	}
@@ -4466,6 +4809,36 @@ type DescribeAssetInfoResponseParams struct {
 	// Web站点数
 	WebLocationCount *uint64 `json:"WebLocationCount,omitempty" name:"WebLocationCount"`
 
+	// 账号今日新增
+	AccountNewCount *int64 `json:"AccountNewCount,omitempty" name:"AccountNewCount"`
+
+	// 端口今日新增
+	PortNewCount *int64 `json:"PortNewCount,omitempty" name:"PortNewCount"`
+
+	// 进程今日新增
+	ProcessNewCount *int64 `json:"ProcessNewCount,omitempty" name:"ProcessNewCount"`
+
+	// 软件今日新增
+	SoftwareNewCount *int64 `json:"SoftwareNewCount,omitempty" name:"SoftwareNewCount"`
+
+	// 数据库今日新增
+	DatabaseNewCount *int64 `json:"DatabaseNewCount,omitempty" name:"DatabaseNewCount"`
+
+	// Web应用今日新增
+	WebAppNewCount *int64 `json:"WebAppNewCount,omitempty" name:"WebAppNewCount"`
+
+	// Web框架今日新增
+	WebFrameNewCount *int64 `json:"WebFrameNewCount,omitempty" name:"WebFrameNewCount"`
+
+	// Web服务今日新增
+	WebServiceNewCount *int64 `json:"WebServiceNewCount,omitempty" name:"WebServiceNewCount"`
+
+	// Web站点今日新增
+	WebLocationNewCount *int64 `json:"WebLocationNewCount,omitempty" name:"WebLocationNewCount"`
+
+	// 主机今日新增
+	MachineNewCount *int64 `json:"MachineNewCount,omitempty" name:"MachineNewCount"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }
@@ -4488,11 +4861,11 @@ func (r *DescribeAssetInfoResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeAssetInitServiceListRequestParams struct {
-	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	// 服务器Uuid
+	Uuid *string `json:"Uuid,omitempty" name:"Uuid"`
 
-	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	// 服务器Quuid
+	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
 
 	// 过滤条件。
 	// <li>IpOrAlias - String - 是否必填：否 - 主机ip或别名筛选</li>
@@ -4516,21 +4889,27 @@ type DescribeAssetInitServiceListRequestParams struct {
 	// 14:登录</li>
 	Filters []*AssetFilters `json:"Filters,omitempty" name:"Filters"`
 
-	// 服务器Uuid
-	Uuid *string `json:"Uuid,omitempty" name:"Uuid"`
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 服务器Quuid
-	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
+	// 需要返回的数量，默认为10，最大值为100
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 排序方式，asc升序 或 desc降序
+	Order *string `json:"Order,omitempty" name:"Order"`
+
+	// 排序方式：[FirstTime]
+	By *string `json:"By,omitempty" name:"By"`
 }
 
 type DescribeAssetInitServiceListRequest struct {
 	*tchttp.BaseRequest
 	
-	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	// 服务器Uuid
+	Uuid *string `json:"Uuid,omitempty" name:"Uuid"`
 
-	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	// 服务器Quuid
+	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
 
 	// 过滤条件。
 	// <li>IpOrAlias - String - 是否必填：否 - 主机ip或别名筛选</li>
@@ -4554,11 +4933,17 @@ type DescribeAssetInitServiceListRequest struct {
 	// 14:登录</li>
 	Filters []*AssetFilters `json:"Filters,omitempty" name:"Filters"`
 
-	// 服务器Uuid
-	Uuid *string `json:"Uuid,omitempty" name:"Uuid"`
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 服务器Quuid
-	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
+	// 需要返回的数量，默认为10，最大值为100
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 排序方式，asc升序 或 desc降序
+	Order *string `json:"Order,omitempty" name:"Order"`
+
+	// 排序方式：[FirstTime]
+	By *string `json:"By,omitempty" name:"By"`
 }
 
 func (r *DescribeAssetInitServiceListRequest) ToJsonString() string {
@@ -4573,11 +4958,13 @@ func (r *DescribeAssetInitServiceListRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	delete(f, "Limit")
-	delete(f, "Offset")
-	delete(f, "Filters")
 	delete(f, "Uuid")
 	delete(f, "Quuid")
+	delete(f, "Filters")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Order")
+	delete(f, "By")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAssetInitServiceListRequest has unknown keys!", "")
 	}
@@ -4686,11 +5073,11 @@ func (r *DescribeAssetJarInfoResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeAssetJarListRequestParams struct {
-	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	// 服务器Uuid
+	Uuid *string `json:"Uuid,omitempty" name:"Uuid"`
 
-	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	// 服务器Quuid
+	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
 
 	// 过滤条件。
 	// <li>IpOrAlias - String - 是否必填：否 - 主机ip或别名筛选</li>
@@ -4703,21 +5090,27 @@ type DescribeAssetJarListRequestParams struct {
 	// <li>Status- string - 是否必填：否 - 是否可执行：0否，1是</li>
 	Filters []*AssetFilters `json:"Filters,omitempty" name:"Filters"`
 
-	// 服务器Uuid
-	Uuid *string `json:"Uuid,omitempty" name:"Uuid"`
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 服务器Quuid
-	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
+	// 需要返回的数量，默认为10，最大值为100
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 排序方式，asc升序 或 desc降序
+	Order *string `json:"Order,omitempty" name:"Order"`
+
+	// 排序方式：[FirstTime]
+	By *string `json:"By,omitempty" name:"By"`
 }
 
 type DescribeAssetJarListRequest struct {
 	*tchttp.BaseRequest
 	
-	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	// 服务器Uuid
+	Uuid *string `json:"Uuid,omitempty" name:"Uuid"`
 
-	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	// 服务器Quuid
+	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
 
 	// 过滤条件。
 	// <li>IpOrAlias - String - 是否必填：否 - 主机ip或别名筛选</li>
@@ -4730,11 +5123,17 @@ type DescribeAssetJarListRequest struct {
 	// <li>Status- string - 是否必填：否 - 是否可执行：0否，1是</li>
 	Filters []*AssetFilters `json:"Filters,omitempty" name:"Filters"`
 
-	// 服务器Uuid
-	Uuid *string `json:"Uuid,omitempty" name:"Uuid"`
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 服务器Quuid
-	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
+	// 需要返回的数量，默认为10，最大值为100
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 排序方式，asc升序 或 desc降序
+	Order *string `json:"Order,omitempty" name:"Order"`
+
+	// 排序方式：[FirstTime]
+	By *string `json:"By,omitempty" name:"By"`
 }
 
 func (r *DescribeAssetJarListRequest) ToJsonString() string {
@@ -4749,11 +5148,13 @@ func (r *DescribeAssetJarListRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	delete(f, "Limit")
-	delete(f, "Offset")
-	delete(f, "Filters")
 	delete(f, "Uuid")
 	delete(f, "Quuid")
+	delete(f, "Filters")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Order")
+	delete(f, "By")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAssetJarListRequest has unknown keys!", "")
 	}
@@ -4855,12 +5256,6 @@ func (r *DescribeAssetMachineDetailResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeAssetMachineListRequestParams struct {
-	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
-
-	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
-
 	// 过滤条件。
 	// <li>IpOrAlias - String - 是否必填：否 - 主机ip或别名筛选</li>
 	// <li>OsType - String - 是否必填：否 - windows或linux</li>
@@ -4879,22 +5274,22 @@ type DescribeAssetMachineListRequestParams struct {
 	// <li>Os -String 是否必填: 否 - 操作系统( DescribeMachineOsList 接口 值 )</li>
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
-	// 可选排序：PartitionCount
-	By *string `json:"By,omitempty" name:"By"`
+	// 需要返回的数量，默认为10，最大值为100
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
 	// 排序方式，asc升序 或 desc降序
 	Order *string `json:"Order,omitempty" name:"Order"`
+
+	// 可选排序[FirstTime|PartitionCount]
+	By *string `json:"By,omitempty" name:"By"`
 }
 
 type DescribeAssetMachineListRequest struct {
 	*tchttp.BaseRequest
 	
-	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
-
-	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
-
 	// 过滤条件。
 	// <li>IpOrAlias - String - 是否必填：否 - 主机ip或别名筛选</li>
 	// <li>OsType - String - 是否必填：否 - windows或linux</li>
@@ -4913,11 +5308,17 @@ type DescribeAssetMachineListRequest struct {
 	// <li>Os -String 是否必填: 否 - 操作系统( DescribeMachineOsList 接口 值 )</li>
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
-	// 可选排序：PartitionCount
-	By *string `json:"By,omitempty" name:"By"`
+	// 需要返回的数量，默认为10，最大值为100
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
 	// 排序方式，asc升序 或 desc降序
 	Order *string `json:"Order,omitempty" name:"Order"`
+
+	// 可选排序[FirstTime|PartitionCount]
+	By *string `json:"By,omitempty" name:"By"`
 }
 
 func (r *DescribeAssetMachineListRequest) ToJsonString() string {
@@ -4932,11 +5333,11 @@ func (r *DescribeAssetMachineListRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "Filters")
 	delete(f, "Limit")
 	delete(f, "Offset")
-	delete(f, "Filters")
-	delete(f, "By")
 	delete(f, "Order")
+	delete(f, "By")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAssetMachineListRequest has unknown keys!", "")
 	}
@@ -4974,11 +5375,11 @@ func (r *DescribeAssetMachineListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeAssetPlanTaskListRequestParams struct {
-	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	// 服务器Uuid
+	Uuid *string `json:"Uuid,omitempty" name:"Uuid"`
 
-	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	// 服务器Quuid
+	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
 
 	// 过滤条件。
 	// <li>IpOrAlias - String - 是否必填：否 - 主机ip或别名筛选</li>
@@ -4986,21 +5387,27 @@ type DescribeAssetPlanTaskListRequestParams struct {
 	// <li>Status- int - 是否必填：否 - 默认启用状态：0未启用， 1启用 </li>
 	Filters []*AssetFilters `json:"Filters,omitempty" name:"Filters"`
 
-	// 服务器Uuid
-	Uuid *string `json:"Uuid,omitempty" name:"Uuid"`
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 服务器Quuid
-	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
+	// 需要返回的数量，默认为10，最大值为100
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 排序方式，asc升序 或 desc降序
+	Order *string `json:"Order,omitempty" name:"Order"`
+
+	// 排序方式：[FirstTime]
+	By *string `json:"By,omitempty" name:"By"`
 }
 
 type DescribeAssetPlanTaskListRequest struct {
 	*tchttp.BaseRequest
 	
-	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	// 服务器Uuid
+	Uuid *string `json:"Uuid,omitempty" name:"Uuid"`
 
-	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	// 服务器Quuid
+	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
 
 	// 过滤条件。
 	// <li>IpOrAlias - String - 是否必填：否 - 主机ip或别名筛选</li>
@@ -5008,11 +5415,17 @@ type DescribeAssetPlanTaskListRequest struct {
 	// <li>Status- int - 是否必填：否 - 默认启用状态：0未启用， 1启用 </li>
 	Filters []*AssetFilters `json:"Filters,omitempty" name:"Filters"`
 
-	// 服务器Uuid
-	Uuid *string `json:"Uuid,omitempty" name:"Uuid"`
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 服务器Quuid
-	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
+	// 需要返回的数量，默认为10，最大值为100
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 排序方式，asc升序 或 desc降序
+	Order *string `json:"Order,omitempty" name:"Order"`
+
+	// 排序方式：[FirstTime]
+	By *string `json:"By,omitempty" name:"By"`
 }
 
 func (r *DescribeAssetPlanTaskListRequest) ToJsonString() string {
@@ -5027,11 +5440,13 @@ func (r *DescribeAssetPlanTaskListRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	delete(f, "Limit")
-	delete(f, "Offset")
-	delete(f, "Filters")
 	delete(f, "Uuid")
 	delete(f, "Quuid")
+	delete(f, "Filters")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Order")
+	delete(f, "By")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAssetPlanTaskListRequest has unknown keys!", "")
 	}
@@ -5069,11 +5484,8 @@ func (r *DescribeAssetPlanTaskListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeAssetPortInfoListRequestParams struct {
-	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
-
-	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	// 查询指定Quuid主机的信息
+	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
 
 	// 过滤条件。
 	// <li>Port - uint64 - 是否必填：否 - 端口</li>
@@ -5090,24 +5502,24 @@ type DescribeAssetPortInfoListRequestParams struct {
 	// <li>Os -String 是否必填: 否 - 操作系统( DescribeMachineOsList 接口 值 )</li>
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
+	// 需要返回的数量，默认为10，最大值为100
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
 	// 排序方式，asc升序 或 desc降序
 	Order *string `json:"Order,omitempty" name:"Order"`
 
-	// 排序方式：StartTime
+	// 排序方式：[FirstTime|StartTime]
 	By *string `json:"By,omitempty" name:"By"`
-
-	// 查询指定Quuid主机的信息
-	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
 }
 
 type DescribeAssetPortInfoListRequest struct {
 	*tchttp.BaseRequest
 	
-	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
-
-	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	// 查询指定Quuid主机的信息
+	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
 
 	// 过滤条件。
 	// <li>Port - uint64 - 是否必填：否 - 端口</li>
@@ -5124,14 +5536,17 @@ type DescribeAssetPortInfoListRequest struct {
 	// <li>Os -String 是否必填: 否 - 操作系统( DescribeMachineOsList 接口 值 )</li>
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
+	// 需要返回的数量，默认为10，最大值为100
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
 	// 排序方式，asc升序 或 desc降序
 	Order *string `json:"Order,omitempty" name:"Order"`
 
-	// 排序方式：StartTime
+	// 排序方式：[FirstTime|StartTime]
 	By *string `json:"By,omitempty" name:"By"`
-
-	// 查询指定Quuid主机的信息
-	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
 }
 
 func (r *DescribeAssetPortInfoListRequest) ToJsonString() string {
@@ -5146,12 +5561,12 @@ func (r *DescribeAssetPortInfoListRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "Quuid")
+	delete(f, "Filters")
 	delete(f, "Limit")
 	delete(f, "Offset")
-	delete(f, "Filters")
 	delete(f, "Order")
 	delete(f, "By")
-	delete(f, "Quuid")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAssetPortInfoListRequest has unknown keys!", "")
 	}
@@ -5189,11 +5604,8 @@ func (r *DescribeAssetPortInfoListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeAssetProcessInfoListRequestParams struct {
-	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
-
-	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	// 查询指定Quuid主机的信息
+	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
 
 	// 过滤条件。
 	// <li>IpOrAlias - String - 是否必填：否 - 主机ip或别名筛选</li>
@@ -5216,24 +5628,24 @@ type DescribeAssetProcessInfoListRequestParams struct {
 	// <li>Os -String 是否必填: 否 - 操作系统( DescribeMachineOsList 接口 值 )</li>
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
-	// 查询指定Quuid主机的信息
-	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
+	// 需要返回的数量，默认为10，最大值为100
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
 	// 排序方式，asc升序 或 desc降序
 	Order *string `json:"Order,omitempty" name:"Order"`
 
-	// 排序方式：StartTime
+	// 排序方式：[FirstTime|StartTime]
 	By *string `json:"By,omitempty" name:"By"`
 }
 
 type DescribeAssetProcessInfoListRequest struct {
 	*tchttp.BaseRequest
 	
-	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
-
-	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	// 查询指定Quuid主机的信息
+	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
 
 	// 过滤条件。
 	// <li>IpOrAlias - String - 是否必填：否 - 主机ip或别名筛选</li>
@@ -5256,13 +5668,16 @@ type DescribeAssetProcessInfoListRequest struct {
 	// <li>Os -String 是否必填: 否 - 操作系统( DescribeMachineOsList 接口 值 )</li>
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
-	// 查询指定Quuid主机的信息
-	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
+	// 需要返回的数量，默认为10，最大值为100
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
 	// 排序方式，asc升序 或 desc降序
 	Order *string `json:"Order,omitempty" name:"Order"`
 
-	// 排序方式：StartTime
+	// 排序方式：[FirstTime|StartTime]
 	By *string `json:"By,omitempty" name:"By"`
 }
 
@@ -5278,10 +5693,10 @@ func (r *DescribeAssetProcessInfoListRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "Quuid")
+	delete(f, "Filters")
 	delete(f, "Limit")
 	delete(f, "Offset")
-	delete(f, "Filters")
-	delete(f, "Quuid")
 	delete(f, "Order")
 	delete(f, "By")
 	if len(f) > 0 {
@@ -5404,12 +5819,6 @@ type DescribeAssetSystemPackageListRequestParams struct {
 	// 主机Quuid
 	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
 
-	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
-
-	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
-
 	// 过滤条件。
 	// <li>Name - String - 是否必填：否 - 包 名</li>
 	// <li>StartTime - String - 是否必填：否 - 安装开始时间</li>
@@ -5421,10 +5830,16 @@ type DescribeAssetSystemPackageListRequestParams struct {
 	// 4:system</li>
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 需要返回的数量，默认为10，最大值为100
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
 	// 排序方式，asc-升序 或 desc-降序。默认：desc-降序
 	Order *string `json:"Order,omitempty" name:"Order"`
 
-	// 排序方式可选：InstallTime 安装时间
+	// 排序方式可选：[FistTime|InstallTime:安装时间]
 	By *string `json:"By,omitempty" name:"By"`
 }
 
@@ -5437,12 +5852,6 @@ type DescribeAssetSystemPackageListRequest struct {
 	// 主机Quuid
 	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
 
-	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
-
-	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
-
 	// 过滤条件。
 	// <li>Name - String - 是否必填：否 - 包 名</li>
 	// <li>StartTime - String - 是否必填：否 - 安装开始时间</li>
@@ -5454,10 +5863,16 @@ type DescribeAssetSystemPackageListRequest struct {
 	// 4:system</li>
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 需要返回的数量，默认为10，最大值为100
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
 	// 排序方式，asc-升序 或 desc-降序。默认：desc-降序
 	Order *string `json:"Order,omitempty" name:"Order"`
 
-	// 排序方式可选：InstallTime 安装时间
+	// 排序方式可选：[FistTime|InstallTime:安装时间]
 	By *string `json:"By,omitempty" name:"By"`
 }
 
@@ -5475,9 +5890,9 @@ func (r *DescribeAssetSystemPackageListRequest) FromJsonString(s string) error {
 	}
 	delete(f, "Uuid")
 	delete(f, "Quuid")
-	delete(f, "Limit")
-	delete(f, "Offset")
 	delete(f, "Filters")
+	delete(f, "Offset")
+	delete(f, "Limit")
 	delete(f, "Order")
 	delete(f, "By")
 	if len(f) > 0 {
@@ -5588,11 +6003,8 @@ func (r *DescribeAssetUserInfoResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeAssetUserListRequestParams struct {
-	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
-
-	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	// 查询指定Quuid主机的信息
+	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
 
 	// 过滤条件。
 	// <li>IpOrAlias - String - 是否必填：否 - 主机ip或别名筛选</li>
@@ -5615,28 +6027,25 @@ type DescribeAssetUserListRequestParams struct {
 	// <li>Os -String 是否必填: 否 - 操作系统( DescribeMachineOsList 接口 值 )</li>
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
+	// 需要返回的数量，默认为10，最大值为100
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
 	// 排序方式，asc升序 或 desc降序
 	Order *string `json:"Order,omitempty" name:"Order"`
 
-	// 可选排序：
-	// LoginTime
-	// PasswordChangeTime
-	// PasswordDuaTime
+	// 可选排序：[FirstTime|LoginTime|PasswordChangeTime|PasswordDuaTime]
 	// PasswordLockDays
 	By *string `json:"By,omitempty" name:"By"`
-
-	// 查询指定Quuid主机的信息
-	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
 }
 
 type DescribeAssetUserListRequest struct {
 	*tchttp.BaseRequest
 	
-	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
-
-	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	// 查询指定Quuid主机的信息
+	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
 
 	// 过滤条件。
 	// <li>IpOrAlias - String - 是否必填：否 - 主机ip或别名筛选</li>
@@ -5659,18 +6068,18 @@ type DescribeAssetUserListRequest struct {
 	// <li>Os -String 是否必填: 否 - 操作系统( DescribeMachineOsList 接口 值 )</li>
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
+	// 需要返回的数量，默认为10，最大值为100
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
 	// 排序方式，asc升序 或 desc降序
 	Order *string `json:"Order,omitempty" name:"Order"`
 
-	// 可选排序：
-	// LoginTime
-	// PasswordChangeTime
-	// PasswordDuaTime
+	// 可选排序：[FirstTime|LoginTime|PasswordChangeTime|PasswordDuaTime]
 	// PasswordLockDays
 	By *string `json:"By,omitempty" name:"By"`
-
-	// 查询指定Quuid主机的信息
-	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
 }
 
 func (r *DescribeAssetUserListRequest) ToJsonString() string {
@@ -5685,12 +6094,12 @@ func (r *DescribeAssetUserListRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "Quuid")
+	delete(f, "Filters")
 	delete(f, "Limit")
 	delete(f, "Offset")
-	delete(f, "Filters")
 	delete(f, "Order")
 	delete(f, "By")
-	delete(f, "Quuid")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAssetUserListRequest has unknown keys!", "")
 	}
@@ -5728,11 +6137,8 @@ func (r *DescribeAssetUserListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeAssetWebAppListRequestParams struct {
-	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
-
-	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	// 查询指定Quuid主机的信息
+	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
 
 	// 过滤条件。
 	// <li>IpOrAlias - String - 是否必填：否 - 主机ip或别名筛选</li>
@@ -5753,24 +6159,24 @@ type DescribeAssetWebAppListRequestParams struct {
 	// <li>Os -String 是否必填: 否 - 操作系统( DescribeMachineOsList 接口 值 )</li>
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 需要返回的数量，默认为10，最大值为100
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
 	// 排序方式，asc升序 或 desc降序
 	Order *string `json:"Order,omitempty" name:"Order"`
 
-	// 可选排序：PluginCount
+	// 可选排序：[FirstTime|PluginCount]
 	By *string `json:"By,omitempty" name:"By"`
-
-	// 查询指定Quuid主机的信息
-	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
 }
 
 type DescribeAssetWebAppListRequest struct {
 	*tchttp.BaseRequest
 	
-	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
-
-	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	// 查询指定Quuid主机的信息
+	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
 
 	// 过滤条件。
 	// <li>IpOrAlias - String - 是否必填：否 - 主机ip或别名筛选</li>
@@ -5791,14 +6197,17 @@ type DescribeAssetWebAppListRequest struct {
 	// <li>Os -String 是否必填: 否 - 操作系统( DescribeMachineOsList 接口 值 )</li>
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 需要返回的数量，默认为10，最大值为100
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
 	// 排序方式，asc升序 或 desc降序
 	Order *string `json:"Order,omitempty" name:"Order"`
 
-	// 可选排序：PluginCount
+	// 可选排序：[FirstTime|PluginCount]
 	By *string `json:"By,omitempty" name:"By"`
-
-	// 查询指定Quuid主机的信息
-	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
 }
 
 func (r *DescribeAssetWebAppListRequest) ToJsonString() string {
@@ -5813,12 +6222,12 @@ func (r *DescribeAssetWebAppListRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	delete(f, "Limit")
-	delete(f, "Offset")
+	delete(f, "Quuid")
 	delete(f, "Filters")
+	delete(f, "Offset")
+	delete(f, "Limit")
 	delete(f, "Order")
 	delete(f, "By")
-	delete(f, "Quuid")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAssetWebAppListRequest has unknown keys!", "")
 	}
@@ -5945,11 +6354,8 @@ func (r *DescribeAssetWebAppPluginListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeAssetWebFrameListRequestParams struct {
-	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
-
-	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	// 查询指定Quuid主机的信息
+	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
 
 	// 过滤条件。
 	// <li>IpOrAlias - String - 是否必填：否 - 主机ip或别名筛选</li>
@@ -5972,24 +6378,24 @@ type DescribeAssetWebFrameListRequestParams struct {
 	// <li>Os -String 是否必填: 否 - 操作系统( DescribeMachineOsList 接口 值 )</li>
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 需要返回的数量，默认为10，最大值为100
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
 	// 排序方式，asc升序 或 desc降序
 	Order *string `json:"Order,omitempty" name:"Order"`
 
-	// 可选排序：JarCount
+	// 可选排序：[FirstTime|JarCount]
 	By *string `json:"By,omitempty" name:"By"`
-
-	// 查询指定Quuid主机的信息
-	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
 }
 
 type DescribeAssetWebFrameListRequest struct {
 	*tchttp.BaseRequest
 	
-	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
-
-	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	// 查询指定Quuid主机的信息
+	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
 
 	// 过滤条件。
 	// <li>IpOrAlias - String - 是否必填：否 - 主机ip或别名筛选</li>
@@ -6012,14 +6418,17 @@ type DescribeAssetWebFrameListRequest struct {
 	// <li>Os -String 是否必填: 否 - 操作系统( DescribeMachineOsList 接口 值 )</li>
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 需要返回的数量，默认为10，最大值为100
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
 	// 排序方式，asc升序 或 desc降序
 	Order *string `json:"Order,omitempty" name:"Order"`
 
-	// 可选排序：JarCount
+	// 可选排序：[FirstTime|JarCount]
 	By *string `json:"By,omitempty" name:"By"`
-
-	// 查询指定Quuid主机的信息
-	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
 }
 
 func (r *DescribeAssetWebFrameListRequest) ToJsonString() string {
@@ -6034,12 +6443,12 @@ func (r *DescribeAssetWebFrameListRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	delete(f, "Limit")
-	delete(f, "Offset")
+	delete(f, "Quuid")
 	delete(f, "Filters")
+	delete(f, "Offset")
+	delete(f, "Limit")
 	delete(f, "Order")
 	delete(f, "By")
-	delete(f, "Quuid")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAssetWebFrameListRequest has unknown keys!", "")
 	}
@@ -6149,11 +6558,8 @@ func (r *DescribeAssetWebLocationInfoResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeAssetWebLocationListRequestParams struct {
-	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
-
-	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	// 查询指定Quuid主机的信息
+	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
 
 	// 过滤条件。
 	// <li>IpOrAlias - String - 是否必填：否 - 主机ip或别名筛选</li>
@@ -6176,24 +6582,24 @@ type DescribeAssetWebLocationListRequestParams struct {
 	// <li>Os -String 是否必填: 否 - 操作系统( DescribeMachineOsList 接口 值 )</li>
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 需要返回的数量，默认为10，最大值为100
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
 	// 排序方式，asc升序 或 desc降序
 	Order *string `json:"Order,omitempty" name:"Order"`
 
-	// 可选排序：PathCount
+	// 可选排序：[FirstTime|PathCount]
 	By *string `json:"By,omitempty" name:"By"`
-
-	// 查询指定Quuid主机的信息
-	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
 }
 
 type DescribeAssetWebLocationListRequest struct {
 	*tchttp.BaseRequest
 	
-	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
-
-	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	// 查询指定Quuid主机的信息
+	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
 
 	// 过滤条件。
 	// <li>IpOrAlias - String - 是否必填：否 - 主机ip或别名筛选</li>
@@ -6216,14 +6622,17 @@ type DescribeAssetWebLocationListRequest struct {
 	// <li>Os -String 是否必填: 否 - 操作系统( DescribeMachineOsList 接口 值 )</li>
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 需要返回的数量，默认为10，最大值为100
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
 	// 排序方式，asc升序 或 desc降序
 	Order *string `json:"Order,omitempty" name:"Order"`
 
-	// 可选排序：PathCount
+	// 可选排序：[FirstTime|PathCount]
 	By *string `json:"By,omitempty" name:"By"`
-
-	// 查询指定Quuid主机的信息
-	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
 }
 
 func (r *DescribeAssetWebLocationListRequest) ToJsonString() string {
@@ -6238,12 +6647,12 @@ func (r *DescribeAssetWebLocationListRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	delete(f, "Limit")
-	delete(f, "Offset")
+	delete(f, "Quuid")
 	delete(f, "Filters")
+	delete(f, "Offset")
+	delete(f, "Limit")
 	delete(f, "Order")
 	delete(f, "By")
-	delete(f, "Quuid")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAssetWebLocationListRequest has unknown keys!", "")
 	}
@@ -6281,12 +6690,8 @@ func (r *DescribeAssetWebLocationListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeAssetWebServiceInfoListRequestParams struct {
-	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
-
-	// 偏移量，默认为0。
-	// <li>IpOrAlias - String - 是否必填：否 - 主机ip或别名筛选</li>
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	// 查询指定Quuid主机的信息
+	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
 
 	// 过滤条件。
 	// <li>User- string - 是否必填：否 - 运行用户</li>
@@ -6305,25 +6710,25 @@ type DescribeAssetWebServiceInfoListRequestParams struct {
 	// <li>Os -String 是否必填: 否 - 操作系统( DescribeMachineOsList 接口 值 )</li>
 	Filters []*AssetFilters `json:"Filters,omitempty" name:"Filters"`
 
+	// 偏移量，默认为0。
+	// <li>IpOrAlias - String - 是否必填：否 - 主机ip或别名筛选</li>
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 需要返回的数量，默认为10，最大值为100
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
 	// 排序方式，asc升序 或 desc降序
 	Order *string `json:"Order,omitempty" name:"Order"`
 
-	// 可选排序：ProcessCount
+	// 可选排序：[FirstTime|ProcessCount]
 	By *string `json:"By,omitempty" name:"By"`
-
-	// 查询指定Quuid主机的信息
-	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
 }
 
 type DescribeAssetWebServiceInfoListRequest struct {
 	*tchttp.BaseRequest
 	
-	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
-
-	// 偏移量，默认为0。
-	// <li>IpOrAlias - String - 是否必填：否 - 主机ip或别名筛选</li>
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	// 查询指定Quuid主机的信息
+	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
 
 	// 过滤条件。
 	// <li>User- string - 是否必填：否 - 运行用户</li>
@@ -6342,14 +6747,18 @@ type DescribeAssetWebServiceInfoListRequest struct {
 	// <li>Os -String 是否必填: 否 - 操作系统( DescribeMachineOsList 接口 值 )</li>
 	Filters []*AssetFilters `json:"Filters,omitempty" name:"Filters"`
 
+	// 偏移量，默认为0。
+	// <li>IpOrAlias - String - 是否必填：否 - 主机ip或别名筛选</li>
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 需要返回的数量，默认为10，最大值为100
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
 	// 排序方式，asc升序 或 desc降序
 	Order *string `json:"Order,omitempty" name:"Order"`
 
-	// 可选排序：ProcessCount
+	// 可选排序：[FirstTime|ProcessCount]
 	By *string `json:"By,omitempty" name:"By"`
-
-	// 查询指定Quuid主机的信息
-	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
 }
 
 func (r *DescribeAssetWebServiceInfoListRequest) ToJsonString() string {
@@ -6364,12 +6773,12 @@ func (r *DescribeAssetWebServiceInfoListRequest) FromJsonString(s string) error 
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	delete(f, "Limit")
-	delete(f, "Offset")
+	delete(f, "Quuid")
 	delete(f, "Filters")
+	delete(f, "Offset")
+	delete(f, "Limit")
 	delete(f, "Order")
 	delete(f, "By")
-	delete(f, "Quuid")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAssetWebServiceInfoListRequest has unknown keys!", "")
 	}
@@ -9608,6 +10017,380 @@ func (r *DescribeIndexListResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeIndexListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeLicenseBindListRequestParams struct {
+	// 授权ID
+	LicenseId *uint64 `json:"LicenseId,omitempty" name:"LicenseId"`
+
+	// 授权类型
+	LicenseType *uint64 `json:"LicenseType,omitempty" name:"LicenseType"`
+
+	// 资源ID
+	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
+
+	// <li>Keywords 机器别名/公私IP 模糊查询</li>
+	Filters []*Filters `json:"Filters,omitempty" name:"Filters"`
+
+	// 限制条数,默认10.
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移量,默认0.
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+}
+
+type DescribeLicenseBindListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 授权ID
+	LicenseId *uint64 `json:"LicenseId,omitempty" name:"LicenseId"`
+
+	// 授权类型
+	LicenseType *uint64 `json:"LicenseType,omitempty" name:"LicenseType"`
+
+	// 资源ID
+	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
+
+	// <li>Keywords 机器别名/公私IP 模糊查询</li>
+	Filters []*Filters `json:"Filters,omitempty" name:"Filters"`
+
+	// 限制条数,默认10.
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移量,默认0.
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+}
+
+func (r *DescribeLicenseBindListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLicenseBindListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "LicenseId")
+	delete(f, "LicenseType")
+	delete(f, "ResourceId")
+	delete(f, "Filters")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLicenseBindListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeLicenseBindListResponseParams struct {
+	// 总条数
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 绑定机器列表信息
+	List []*LicenseBindDetail `json:"List,omitempty" name:"List"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeLicenseBindListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeLicenseBindListResponseParams `json:"Response"`
+}
+
+func (r *DescribeLicenseBindListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLicenseBindListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeLicenseBindScheduleRequestParams struct {
+	// 任务ID
+	TaskId *uint64 `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 限制条数,默认10.
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移量,默认0
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 过滤参数
+	// Status 绑定进度状态 0 进行中 1 已完成 2 失败
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+}
+
+type DescribeLicenseBindScheduleRequest struct {
+	*tchttp.BaseRequest
+	
+	// 任务ID
+	TaskId *uint64 `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 限制条数,默认10.
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移量,默认0
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 过滤参数
+	// Status 绑定进度状态 0 进行中 1 已完成 2 失败
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+}
+
+func (r *DescribeLicenseBindScheduleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLicenseBindScheduleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLicenseBindScheduleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeLicenseBindScheduleResponseParams struct {
+	// 进度
+	Schedule *uint64 `json:"Schedule,omitempty" name:"Schedule"`
+
+	// 绑定任务详情
+	List []*LicenseBindTaskDetail `json:"List,omitempty" name:"List"`
+
+	// 总条数
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeLicenseBindScheduleResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeLicenseBindScheduleResponseParams `json:"Response"`
+}
+
+func (r *DescribeLicenseBindScheduleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLicenseBindScheduleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeLicenseGeneralRequestParams struct {
+
+}
+
+type DescribeLicenseGeneralRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DescribeLicenseGeneralRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLicenseGeneralRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLicenseGeneralRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeLicenseGeneralResponseParams struct {
+	// 总授权数 (包含隔离,过期等不可用状态)
+	LicenseCnt *uint64 `json:"LicenseCnt,omitempty" name:"LicenseCnt"`
+
+	// 可用授权数
+	AvailableLicenseCnt *uint64 `json:"AvailableLicenseCnt,omitempty" name:"AvailableLicenseCnt"`
+
+	// 可用专业版授权数(包含后付费).
+	AvailableProVersionLicenseCnt *uint64 `json:"AvailableProVersionLicenseCnt,omitempty" name:"AvailableProVersionLicenseCnt"`
+
+	// 可用旗舰版授权数
+	AvailableFlagshipVersionLicenseCnt *uint64 `json:"AvailableFlagshipVersionLicenseCnt,omitempty" name:"AvailableFlagshipVersionLicenseCnt"`
+
+	// 即将到期授权数 (15天内到期的)
+	NearExpiryLicenseCnt *uint64 `json:"NearExpiryLicenseCnt,omitempty" name:"NearExpiryLicenseCnt"`
+
+	// 已到期授权数(不包含已删除的记录)
+	ExpireLicenseCnt *uint64 `json:"ExpireLicenseCnt,omitempty" name:"ExpireLicenseCnt"`
+
+	// 自动升级开关状态,默认 false,  ture 开启, false 关闭
+	AutoOpenStatus *bool `json:"AutoOpenStatus,omitempty" name:"AutoOpenStatus"`
+
+	// PROVERSION_POSTPAY 专业版-后付费, PROVERSION_PREPAY 专业版-预付费, FLAGSHIP_PREPAY 旗舰版-预付费
+	ProtectType *string `json:"ProtectType,omitempty" name:"ProtectType"`
+
+	// 历史是否开通过自动升级开关
+	IsOpenStatusHistory *bool `json:"IsOpenStatusHistory,omitempty" name:"IsOpenStatusHistory"`
+
+	// 已使用授权数
+	UsedLicenseCnt *uint64 `json:"UsedLicenseCnt,omitempty" name:"UsedLicenseCnt"`
+
+	// 未到期授权数
+	NotExpiredLicenseCnt *uint64 `json:"NotExpiredLicenseCnt,omitempty" name:"NotExpiredLicenseCnt"`
+
+	// 旗舰版总授权数(有效订单)
+	FlagshipVersionLicenseCnt *uint64 `json:"FlagshipVersionLicenseCnt,omitempty" name:"FlagshipVersionLicenseCnt"`
+
+	// 专业版总授权数(有效订单)
+	ProVersionLicenseCnt *uint64 `json:"ProVersionLicenseCnt,omitempty" name:"ProVersionLicenseCnt"`
+
+	// 普惠版总授权数(有效订单的授权数)
+	CwpVersionLicenseCnt *uint64 `json:"CwpVersionLicenseCnt,omitempty" name:"CwpVersionLicenseCnt"`
+
+	// 可用惠普版授权数
+	AvailableLHLicenseCnt *uint64 `json:"AvailableLHLicenseCnt,omitempty" name:"AvailableLHLicenseCnt"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeLicenseGeneralResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeLicenseGeneralResponseParams `json:"Response"`
+}
+
+func (r *DescribeLicenseGeneralResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLicenseGeneralResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeLicenseListRequestParams struct {
+	// 多个条件筛选时 LicenseStatus,DeadlineStatus,ResourceId,Keywords 取交集
+	// <li> LicenseStatus 授权状态信息,0 未使用,1 部分使用, 2 已用完, 3 不可用  4 可使用</li>
+	// <li> BuyTime 购买时间</li>
+	// <li> LicenseType  授权类型, 0 专业版-按量计费, 1专业版-包年包月 , 2 旗舰版-包年包月</li>
+	// <li>DeadlineStatus 到期状态 NotExpired 未过期, Expire 已过期(包含已销毁) NearExpiry 即将到期</li>
+	// <li>ResourceId 资源ID</li>
+	// <li>Keywords IP筛选</li>
+	// <li>PayMode 付费模式 0 按量计费 , 1 包年包月</li>
+	// <li>OrderStatus 订单状态 1 正常 2 隔离 3 销毁</li>
+	Filters []*Filters `json:"Filters,omitempty" name:"Filters"`
+
+	// 限制条数,默认10.
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移量,默认0.
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 标签筛选,平台标签能力,这里传入 标签键,标签值作为一个对象
+	Tags []*Tags `json:"Tags,omitempty" name:"Tags"`
+}
+
+type DescribeLicenseListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 多个条件筛选时 LicenseStatus,DeadlineStatus,ResourceId,Keywords 取交集
+	// <li> LicenseStatus 授权状态信息,0 未使用,1 部分使用, 2 已用完, 3 不可用  4 可使用</li>
+	// <li> BuyTime 购买时间</li>
+	// <li> LicenseType  授权类型, 0 专业版-按量计费, 1专业版-包年包月 , 2 旗舰版-包年包月</li>
+	// <li>DeadlineStatus 到期状态 NotExpired 未过期, Expire 已过期(包含已销毁) NearExpiry 即将到期</li>
+	// <li>ResourceId 资源ID</li>
+	// <li>Keywords IP筛选</li>
+	// <li>PayMode 付费模式 0 按量计费 , 1 包年包月</li>
+	// <li>OrderStatus 订单状态 1 正常 2 隔离 3 销毁</li>
+	Filters []*Filters `json:"Filters,omitempty" name:"Filters"`
+
+	// 限制条数,默认10.
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移量,默认0.
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 标签筛选,平台标签能力,这里传入 标签键,标签值作为一个对象
+	Tags []*Tags `json:"Tags,omitempty" name:"Tags"`
+}
+
+func (r *DescribeLicenseListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLicenseListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Filters")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "Tags")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeLicenseListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeLicenseListResponseParams struct {
+	// 总条数
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 授权数列表信息
+	List []*LicenseDetail `json:"List,omitempty" name:"List"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeLicenseListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeLicenseListResponseParams `json:"Response"`
+}
+
+func (r *DescribeLicenseListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeLicenseListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -14548,6 +15331,67 @@ func (r *DescribeWebPageServiceInfoResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DestroyOrderRequestParams struct {
+	// 资源ID
+	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
+
+	// 授权类型 0 专业版-按量计费, 1专业版-包年包月 , 2 旗舰版-包年包月
+	LicenseType *uint64 `json:"LicenseType,omitempty" name:"LicenseType"`
+}
+
+type DestroyOrderRequest struct {
+	*tchttp.BaseRequest
+	
+	// 资源ID
+	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
+
+	// 授权类型 0 专业版-按量计费, 1专业版-包年包月 , 2 旗舰版-包年包月
+	LicenseType *uint64 `json:"LicenseType,omitempty" name:"LicenseType"`
+}
+
+func (r *DestroyOrderRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DestroyOrderRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ResourceId")
+	delete(f, "LicenseType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DestroyOrderRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DestroyOrderResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DestroyOrderResponse struct {
+	*tchttp.BaseResponse
+	Response *DestroyOrderResponseParams `json:"Response"`
+}
+
+func (r *DestroyOrderResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DestroyOrderResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type EditBashRulesRequestParams struct {
 	// 规则ID（新增时不填）
 	Id *uint64 `json:"Id,omitempty" name:"Id"`
@@ -14877,6 +15721,12 @@ type ExpertServiceOrderInfo struct {
 
 // Predefined struct for user
 type ExportAssetCoreModuleListRequestParams struct {
+	// 服务器Uuid
+	Uuid *string `json:"Uuid,omitempty" name:"Uuid"`
+
+	// 服务器Quuid
+	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
+
 	// 过滤条件。
 	// <li>Name- string - 是否必填：否 - 包名</li>
 	// <li>User- string - 是否必填：否 - 用户</li>
@@ -14885,19 +15735,19 @@ type ExportAssetCoreModuleListRequestParams struct {
 	// 排序方式，asc升序 或 desc降序
 	Order *string `json:"Order,omitempty" name:"Order"`
 
-	// 排序依据:Size,ProcessCount,ModuleCount
+	// 排序依据[FirstTime|Size|ProcessCount|ModuleCount]
 	By *string `json:"By,omitempty" name:"By"`
-
-	// 服务器Uuid
-	Uuid *string `json:"Uuid,omitempty" name:"Uuid"`
-
-	// 服务器Quuid
-	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
 }
 
 type ExportAssetCoreModuleListRequest struct {
 	*tchttp.BaseRequest
 	
+	// 服务器Uuid
+	Uuid *string `json:"Uuid,omitempty" name:"Uuid"`
+
+	// 服务器Quuid
+	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
+
 	// 过滤条件。
 	// <li>Name- string - 是否必填：否 - 包名</li>
 	// <li>User- string - 是否必填：否 - 用户</li>
@@ -14906,14 +15756,8 @@ type ExportAssetCoreModuleListRequest struct {
 	// 排序方式，asc升序 或 desc降序
 	Order *string `json:"Order,omitempty" name:"Order"`
 
-	// 排序依据:Size,ProcessCount,ModuleCount
+	// 排序依据[FirstTime|Size|ProcessCount|ModuleCount]
 	By *string `json:"By,omitempty" name:"By"`
-
-	// 服务器Uuid
-	Uuid *string `json:"Uuid,omitempty" name:"Uuid"`
-
-	// 服务器Quuid
-	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
 }
 
 func (r *ExportAssetCoreModuleListRequest) ToJsonString() string {
@@ -14928,11 +15772,11 @@ func (r *ExportAssetCoreModuleListRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "Uuid")
+	delete(f, "Quuid")
 	delete(f, "Filters")
 	delete(f, "Order")
 	delete(f, "By")
-	delete(f, "Uuid")
-	delete(f, "Quuid")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ExportAssetCoreModuleListRequest has unknown keys!", "")
 	}
@@ -14966,6 +15810,9 @@ func (r *ExportAssetCoreModuleListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ExportAssetWebServiceInfoListRequestParams struct {
+	// 查询指定Quuid主机的信息
+	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
+
 	// 过滤条件。
 	// <li>User- string - 是否必填：否 - 运行用户</li>
 	// <li>Name- string - 是否必填：否 - Web服务名：
@@ -14985,16 +15832,16 @@ type ExportAssetWebServiceInfoListRequestParams struct {
 	// 排序方式，asc升序 或 desc降序
 	Order *string `json:"Order,omitempty" name:"Order"`
 
-	// 可选排序：ProcessCount
+	// 可选排序：[FirstTime|ProcessCount]
 	By *string `json:"By,omitempty" name:"By"`
-
-	// 查询指定Quuid主机的信息
-	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
 }
 
 type ExportAssetWebServiceInfoListRequest struct {
 	*tchttp.BaseRequest
 	
+	// 查询指定Quuid主机的信息
+	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
+
 	// 过滤条件。
 	// <li>User- string - 是否必填：否 - 运行用户</li>
 	// <li>Name- string - 是否必填：否 - Web服务名：
@@ -15014,11 +15861,8 @@ type ExportAssetWebServiceInfoListRequest struct {
 	// 排序方式，asc升序 或 desc降序
 	Order *string `json:"Order,omitempty" name:"Order"`
 
-	// 可选排序：ProcessCount
+	// 可选排序：[FirstTime|ProcessCount]
 	By *string `json:"By,omitempty" name:"By"`
-
-	// 查询指定Quuid主机的信息
-	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
 }
 
 func (r *ExportAssetWebServiceInfoListRequest) ToJsonString() string {
@@ -15033,10 +15877,10 @@ func (r *ExportAssetWebServiceInfoListRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "Quuid")
 	delete(f, "Filters")
 	delete(f, "Order")
 	delete(f, "By")
-	delete(f, "Quuid")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ExportAssetWebServiceInfoListRequest has unknown keys!", "")
 	}
@@ -15571,6 +16415,91 @@ func (r *ExportIgnoreRuleEffectHostListResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ExportIgnoreRuleEffectHostListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ExportLicenseDetailRequestParams struct {
+	// 多个条件筛选时 LicenseStatus,DeadlineStatus,ResourceId,Keywords 取交集
+	// <li> LicenseType  授权类型, 0 专业版-按量计费, 1专业版-包年包月 , 2 旗舰版-包年包月</li>
+	// <li>ResourceId 资源ID</li>
+	Filters []*Filters `json:"Filters,omitempty" name:"Filters"`
+
+	// 是否导出全部授权详情
+	IsHistory *bool `json:"IsHistory,omitempty" name:"IsHistory"`
+
+	// 标签筛选,平台标签能力,这里传入 标签键,标签值作为一个对象
+	Tags []*Tags `json:"Tags,omitempty" name:"Tags"`
+
+	// 导出月份, 该参数仅在IsHistory 时可选.
+	ExportMonth *string `json:"ExportMonth,omitempty" name:"ExportMonth"`
+}
+
+type ExportLicenseDetailRequest struct {
+	*tchttp.BaseRequest
+	
+	// 多个条件筛选时 LicenseStatus,DeadlineStatus,ResourceId,Keywords 取交集
+	// <li> LicenseType  授权类型, 0 专业版-按量计费, 1专业版-包年包月 , 2 旗舰版-包年包月</li>
+	// <li>ResourceId 资源ID</li>
+	Filters []*Filters `json:"Filters,omitempty" name:"Filters"`
+
+	// 是否导出全部授权详情
+	IsHistory *bool `json:"IsHistory,omitempty" name:"IsHistory"`
+
+	// 标签筛选,平台标签能力,这里传入 标签键,标签值作为一个对象
+	Tags []*Tags `json:"Tags,omitempty" name:"Tags"`
+
+	// 导出月份, 该参数仅在IsHistory 时可选.
+	ExportMonth *string `json:"ExportMonth,omitempty" name:"ExportMonth"`
+}
+
+func (r *ExportLicenseDetailRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ExportLicenseDetailRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Filters")
+	delete(f, "IsHistory")
+	delete(f, "Tags")
+	delete(f, "ExportMonth")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ExportLicenseDetailRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ExportLicenseDetailResponseParams struct {
+	// 下载地址,该字段废弃
+	DownloadUrl *string `json:"DownloadUrl,omitempty" name:"DownloadUrl"`
+
+	// 任务ID,可通过任务ID去查下载任务
+	TaskId *uint64 `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ExportLicenseDetailResponse struct {
+	*tchttp.BaseResponse
+	Response *ExportLicenseDetailResponseParams `json:"Response"`
+}
+
+func (r *ExportLicenseDetailResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ExportLicenseDetailResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -16780,6 +17709,95 @@ type IgnoreRuleEffectHostInfo struct {
 	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
 }
 
+type LicenseBindDetail struct {
+	// 机器别名
+	MachineName *string `json:"MachineName,omitempty" name:"MachineName"`
+
+	// 机器公网IP
+	MachineWanIp *string `json:"MachineWanIp,omitempty" name:"MachineWanIp"`
+
+	// 机器内网IP
+	MachineIp *string `json:"MachineIp,omitempty" name:"MachineIp"`
+
+	// 云服务器UUID
+	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
+
+	// 云镜客户端UUID
+	Uuid *string `json:"Uuid,omitempty" name:"Uuid"`
+
+	// 标签信息
+	Tags []*string `json:"Tags,omitempty" name:"Tags"`
+
+	// 云镜客户端状态,OFFLINE 离线,ONLINE 在线,UNINSTALL 未安装
+	AgentStatus *string `json:"AgentStatus,omitempty" name:"AgentStatus"`
+
+	// 是否允许解绑,false 不允许解绑
+	IsUnBind *bool `json:"IsUnBind,omitempty" name:"IsUnBind"`
+
+	// 是否允许换绑,false 不允许换绑
+	IsSwitchBind *bool `json:"IsSwitchBind,omitempty" name:"IsSwitchBind"`
+}
+
+type LicenseBindTaskDetail struct {
+	// 云服务器UUID
+	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
+
+	// 错误信息
+	ErrMsg *string `json:"ErrMsg,omitempty" name:"ErrMsg"`
+
+	// 0 执行中, 1 成功,2失败
+	Status *uint64 `json:"Status,omitempty" name:"Status"`
+}
+
+type LicenseDetail struct {
+	// 授权ID
+	LicenseId *uint64 `json:"LicenseId,omitempty" name:"LicenseId"`
+
+	// 授权类型,0 专业版-按量计费, 1专业版-包年包月 , 2 旗舰版-包年包月
+	LicenseType *uint64 `json:"LicenseType,omitempty" name:"LicenseType"`
+
+	// 授权状态 0 未使用,1 部分使用, 2 已用完, 3 不可用
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LicenseStatus *uint64 `json:"LicenseStatus,omitempty" name:"LicenseStatus"`
+
+	// 总授权数
+	LicenseCnt *uint64 `json:"LicenseCnt,omitempty" name:"LicenseCnt"`
+
+	// 已使用授权数
+	UsedLicenseCnt *uint64 `json:"UsedLicenseCnt,omitempty" name:"UsedLicenseCnt"`
+
+	// 订单状态 1 正常 2隔离, 3销毁
+	OrderStatus *uint64 `json:"OrderStatus,omitempty" name:"OrderStatus"`
+
+	// 截止日期
+	Deadline *string `json:"Deadline,omitempty" name:"Deadline"`
+
+	// 订单资源ID
+	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
+
+	// 0 初始化,1 自动续费,2 不自动续费
+	AutoRenewFlag *uint64 `json:"AutoRenewFlag,omitempty" name:"AutoRenewFlag"`
+
+	// 项目ID
+	ProjectId *uint64 `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 任务ID ,默认0 ,查询绑定进度用
+	TaskId *uint64 `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 购买时间
+	BuyTime *string `json:"BuyTime,omitempty" name:"BuyTime"`
+
+	// 是否试用订单.
+	SourceType *uint64 `json:"SourceType,omitempty" name:"SourceType"`
+
+	// 资源别名
+	Alias *string `json:"Alias,omitempty" name:"Alias"`
+
+	// 平台标签
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tags []*Tags `json:"Tags,omitempty" name:"Tags"`
+}
+
 type LicenseOrder struct {
 	// 授权ID
 	LicenseId *uint64 `json:"LicenseId,omitempty" name:"LicenseId"`
@@ -16795,6 +17813,14 @@ type LicenseOrder struct {
 
 	// 资源ID
 	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
+}
+
+type LicenseUnBindRsp struct {
+	// QUUID 云服务器uuid,轻量服务器uuid,边缘计算 uuid
+	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
+
+	// 失败原因
+	ErrMsg *string `json:"ErrMsg,omitempty" name:"ErrMsg"`
 }
 
 type LoginWhiteCombinedInfo struct {
@@ -17403,6 +18429,165 @@ func (r *ModifyBruteAttackRulesResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyLicenseBindsRequestParams struct {
+	// 资源ID
+	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
+
+	// 授权类型
+	LicenseType *uint64 `json:"LicenseType,omitempty" name:"LicenseType"`
+
+	// 是否全部机器(当全部机器数大于当前订单可用授权数时,多余机器会被跳过)
+	IsAll *bool `json:"IsAll,omitempty" name:"IsAll"`
+
+	// 需要绑定的机器quuid列表, 当IsAll = false 时必填,反之忽略该参数. 最大长度=2000
+	QuuidList []*string `json:"QuuidList,omitempty" name:"QuuidList"`
+}
+
+type ModifyLicenseBindsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 资源ID
+	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
+
+	// 授权类型
+	LicenseType *uint64 `json:"LicenseType,omitempty" name:"LicenseType"`
+
+	// 是否全部机器(当全部机器数大于当前订单可用授权数时,多余机器会被跳过)
+	IsAll *bool `json:"IsAll,omitempty" name:"IsAll"`
+
+	// 需要绑定的机器quuid列表, 当IsAll = false 时必填,反之忽略该参数. 最大长度=2000
+	QuuidList []*string `json:"QuuidList,omitempty" name:"QuuidList"`
+}
+
+func (r *ModifyLicenseBindsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyLicenseBindsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ResourceId")
+	delete(f, "LicenseType")
+	delete(f, "IsAll")
+	delete(f, "QuuidList")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyLicenseBindsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyLicenseBindsResponseParams struct {
+	// 任务ID
+	TaskId *uint64 `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ModifyLicenseBindsResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyLicenseBindsResponseParams `json:"Response"`
+}
+
+func (r *ModifyLicenseBindsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyLicenseBindsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyLicenseUnBindsRequestParams struct {
+	// 资源ID
+	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
+
+	// 授权类型
+	LicenseType *uint64 `json:"LicenseType,omitempty" name:"LicenseType"`
+
+	// 是否全部机器(当全部机器数大于当前订单可用授权数时,多余机器会被跳过)
+	IsAll *bool `json:"IsAll,omitempty" name:"IsAll"`
+
+	// 需要绑定的机器quuid列表, 当IsAll = false 时必填,反之忽略该参数.
+	// 最大长度=100
+	QuuidList []*string `json:"QuuidList,omitempty" name:"QuuidList"`
+}
+
+type ModifyLicenseUnBindsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 资源ID
+	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
+
+	// 授权类型
+	LicenseType *uint64 `json:"LicenseType,omitempty" name:"LicenseType"`
+
+	// 是否全部机器(当全部机器数大于当前订单可用授权数时,多余机器会被跳过)
+	IsAll *bool `json:"IsAll,omitempty" name:"IsAll"`
+
+	// 需要绑定的机器quuid列表, 当IsAll = false 时必填,反之忽略该参数.
+	// 最大长度=100
+	QuuidList []*string `json:"QuuidList,omitempty" name:"QuuidList"`
+}
+
+func (r *ModifyLicenseUnBindsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyLicenseUnBindsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ResourceId")
+	delete(f, "LicenseType")
+	delete(f, "IsAll")
+	delete(f, "QuuidList")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyLicenseUnBindsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyLicenseUnBindsResponseParams struct {
+	// 只有解绑失败的才有该值.
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrMsg []*LicenseUnBindRsp `json:"ErrMsg,omitempty" name:"ErrMsg"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ModifyLicenseUnBindsResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyLicenseUnBindsResponseParams `json:"Response"`
+}
+
+func (r *ModifyLicenseUnBindsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyLicenseUnBindsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyMalwareTimingScanSettingsRequestParams struct {
 	// 检测模式 0 全盘检测  1快速检测
 	CheckPattern *uint64 `json:"CheckPattern,omitempty" name:"CheckPattern"`
@@ -17530,6 +18715,81 @@ func (r *ModifyMalwareTimingScanSettingsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyMalwareTimingScanSettingsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyOrderAttributeRequestParams struct {
+	// 授权类型 0 专业版-按量计费, 1专业版-包年包月 , 2 旗舰版-包年包月
+	LicenseType *uint64 `json:"LicenseType,omitempty" name:"LicenseType"`
+
+	// 资源ID
+	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
+
+	// 可编辑的属性名称 ,当前支持的有: alias 资源别名
+	AttrName *string `json:"AttrName,omitempty" name:"AttrName"`
+
+	// 属性值
+	AttrValue *string `json:"AttrValue,omitempty" name:"AttrValue"`
+}
+
+type ModifyOrderAttributeRequest struct {
+	*tchttp.BaseRequest
+	
+	// 授权类型 0 专业版-按量计费, 1专业版-包年包月 , 2 旗舰版-包年包月
+	LicenseType *uint64 `json:"LicenseType,omitempty" name:"LicenseType"`
+
+	// 资源ID
+	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
+
+	// 可编辑的属性名称 ,当前支持的有: alias 资源别名
+	AttrName *string `json:"AttrName,omitempty" name:"AttrName"`
+
+	// 属性值
+	AttrValue *string `json:"AttrValue,omitempty" name:"AttrValue"`
+}
+
+func (r *ModifyOrderAttributeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyOrderAttributeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "LicenseType")
+	delete(f, "ResourceId")
+	delete(f, "AttrName")
+	delete(f, "AttrValue")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyOrderAttributeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyOrderAttributeResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ModifyOrderAttributeResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyOrderAttributeResponseParams `json:"Response"`
+}
+
+func (r *ModifyOrderAttributeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyOrderAttributeResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

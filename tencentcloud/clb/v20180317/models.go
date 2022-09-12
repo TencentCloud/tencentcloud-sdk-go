@@ -1684,6 +1684,9 @@ type CreateTopicRequestParams struct {
 
 	// 日志集的保存周期，单位：天，默认30天。
 	Period *uint64 `json:"Period,omitempty" name:"Period"`
+
+	// 日志主题的存储类型，可选值 HOT（标准存储），COLD（低频存储）；默认为HOT。
+	StorageType *string `json:"StorageType,omitempty" name:"StorageType"`
 }
 
 type CreateTopicRequest struct {
@@ -1700,6 +1703,9 @@ type CreateTopicRequest struct {
 
 	// 日志集的保存周期，单位：天，默认30天。
 	Period *uint64 `json:"Period,omitempty" name:"Period"`
+
+	// 日志主题的存储类型，可选值 HOT（标准存储），COLD（低频存储）；默认为HOT。
+	StorageType *string `json:"StorageType,omitempty" name:"StorageType"`
 }
 
 func (r *CreateTopicRequest) ToJsonString() string {
@@ -1718,6 +1724,7 @@ func (r *CreateTopicRequest) FromJsonString(s string) error {
 	delete(f, "PartitionCount")
 	delete(f, "TopicType")
 	delete(f, "Period")
+	delete(f, "StorageType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateTopicRequest has unknown keys!", "")
 	}

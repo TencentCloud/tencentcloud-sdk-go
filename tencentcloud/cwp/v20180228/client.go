@@ -351,6 +351,76 @@ func (c *Client) CreateEmergencyVulScanWithContext(ctx context.Context, request 
     return
 }
 
+func NewCreateLicenseOrderRequest() (request *CreateLicenseOrderRequest) {
+    request = &CreateLicenseOrderRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cwp", APIVersion, "CreateLicenseOrder")
+    
+    
+    return
+}
+
+func NewCreateLicenseOrderResponse() (response *CreateLicenseOrderResponse) {
+    response = &CreateLicenseOrderResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateLicenseOrder
+// CreateLicenseOrder 该接口可以创建专业版/旗舰版订单
+//
+// 支持预付费后付费创建
+//
+// 后付费订单直接闯将成功
+//
+// 预付费订单仅下单不支付,需要调用计费支付接口进行支付
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) CreateLicenseOrder(request *CreateLicenseOrderRequest) (response *CreateLicenseOrderResponse, err error) {
+    return c.CreateLicenseOrderWithContext(context.Background(), request)
+}
+
+// CreateLicenseOrder
+// CreateLicenseOrder 该接口可以创建专业版/旗舰版订单
+//
+// 支持预付费后付费创建
+//
+// 后付费订单直接闯将成功
+//
+// 预付费订单仅下单不支付,需要调用计费支付接口进行支付
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) CreateLicenseOrderWithContext(ctx context.Context, request *CreateLicenseOrderRequest) (response *CreateLicenseOrderResponse, err error) {
+    if request == nil {
+        request = NewCreateLicenseOrderRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateLicenseOrder require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateLicenseOrderResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateProtectServerRequest() (request *CreateProtectServerRequest) {
     request = &CreateProtectServerRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -907,6 +977,64 @@ func (c *Client) DeleteBruteAttacksWithContext(ctx context.Context, request *Del
     request.SetContext(ctx)
     
     response = NewDeleteBruteAttacksResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteLicenseRecordRequest() (request *DeleteLicenseRecordRequest) {
+    request = &DeleteLicenseRecordRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cwp", APIVersion, "DeleteLicenseRecord")
+    
+    
+    return
+}
+
+func NewDeleteLicenseRecordResponse() (response *DeleteLicenseRecordResponse) {
+    response = &DeleteLicenseRecordResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteLicenseRecord
+// 对授权管理-订单列表内已过期的订单进行删除.(删除后的订单不在统计范畴内)
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DeleteLicenseRecord(request *DeleteLicenseRecordRequest) (response *DeleteLicenseRecordResponse, err error) {
+    return c.DeleteLicenseRecordWithContext(context.Background(), request)
+}
+
+// DeleteLicenseRecord
+// 对授权管理-订单列表内已过期的订单进行删除.(删除后的订单不在统计范畴内)
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DeleteLicenseRecordWithContext(ctx context.Context, request *DeleteLicenseRecordRequest) (response *DeleteLicenseRecordResponse, err error) {
+    if request == nil {
+        request = NewDeleteLicenseRecordRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteLicenseRecord require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteLicenseRecordResponse()
     err = c.Send(request, response)
     return
 }
@@ -5699,6 +5827,214 @@ func (c *Client) DescribeIndexListWithContext(ctx context.Context, request *Desc
     return
 }
 
+func NewDescribeLicenseBindListRequest() (request *DescribeLicenseBindListRequest) {
+    request = &DescribeLicenseBindListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cwp", APIVersion, "DescribeLicenseBindList")
+    
+    
+    return
+}
+
+func NewDescribeLicenseBindListResponse() (response *DescribeLicenseBindListResponse) {
+    response = &DescribeLicenseBindListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeLicenseBindList
+// 该接口可以获取设置中心-授权管理,某个授权下已绑定的授权机器列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeLicenseBindList(request *DescribeLicenseBindListRequest) (response *DescribeLicenseBindListResponse, err error) {
+    return c.DescribeLicenseBindListWithContext(context.Background(), request)
+}
+
+// DescribeLicenseBindList
+// 该接口可以获取设置中心-授权管理,某个授权下已绑定的授权机器列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeLicenseBindListWithContext(ctx context.Context, request *DescribeLicenseBindListRequest) (response *DescribeLicenseBindListResponse, err error) {
+    if request == nil {
+        request = NewDescribeLicenseBindListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeLicenseBindList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeLicenseBindListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeLicenseBindScheduleRequest() (request *DescribeLicenseBindScheduleRequest) {
+    request = &DescribeLicenseBindScheduleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cwp", APIVersion, "DescribeLicenseBindSchedule")
+    
+    
+    return
+}
+
+func NewDescribeLicenseBindScheduleResponse() (response *DescribeLicenseBindScheduleResponse) {
+    response = &DescribeLicenseBindScheduleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeLicenseBindSchedule
+// 查询授权绑定任务的进度
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeLicenseBindSchedule(request *DescribeLicenseBindScheduleRequest) (response *DescribeLicenseBindScheduleResponse, err error) {
+    return c.DescribeLicenseBindScheduleWithContext(context.Background(), request)
+}
+
+// DescribeLicenseBindSchedule
+// 查询授权绑定任务的进度
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeLicenseBindScheduleWithContext(ctx context.Context, request *DescribeLicenseBindScheduleRequest) (response *DescribeLicenseBindScheduleResponse, err error) {
+    if request == nil {
+        request = NewDescribeLicenseBindScheduleRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeLicenseBindSchedule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeLicenseBindScheduleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeLicenseGeneralRequest() (request *DescribeLicenseGeneralRequest) {
+    request = &DescribeLicenseGeneralRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cwp", APIVersion, "DescribeLicenseGeneral")
+    
+    
+    return
+}
+
+func NewDescribeLicenseGeneralResponse() (response *DescribeLicenseGeneralResponse) {
+    response = &DescribeLicenseGeneralResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeLicenseGeneral
+// 授权管理-授权概览信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) DescribeLicenseGeneral(request *DescribeLicenseGeneralRequest) (response *DescribeLicenseGeneralResponse, err error) {
+    return c.DescribeLicenseGeneralWithContext(context.Background(), request)
+}
+
+// DescribeLicenseGeneral
+// 授权管理-授权概览信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) DescribeLicenseGeneralWithContext(ctx context.Context, request *DescribeLicenseGeneralRequest) (response *DescribeLicenseGeneralResponse, err error) {
+    if request == nil {
+        request = NewDescribeLicenseGeneralRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeLicenseGeneral require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeLicenseGeneralResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeLicenseListRequest() (request *DescribeLicenseListRequest) {
+    request = &DescribeLicenseListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cwp", APIVersion, "DescribeLicenseList")
+    
+    
+    return
+}
+
+func NewDescribeLicenseListResponse() (response *DescribeLicenseListResponse) {
+    response = &DescribeLicenseListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeLicenseList
+// 获取用户所有授权订单信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DescribeLicenseList(request *DescribeLicenseListRequest) (response *DescribeLicenseListResponse, err error) {
+    return c.DescribeLicenseListWithContext(context.Background(), request)
+}
+
+// DescribeLicenseList
+// 获取用户所有授权订单信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DescribeLicenseListWithContext(ctx context.Context, request *DescribeLicenseListRequest) (response *DescribeLicenseListResponse, err error) {
+    if request == nil {
+        request = NewDescribeLicenseListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeLicenseList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeLicenseListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeLogStorageStatisticRequest() (request *DescribeLogStorageStatisticRequest) {
     request = &DescribeLogStorageStatisticRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -9275,6 +9611,54 @@ func (c *Client) DescribeWebPageServiceInfoWithContext(ctx context.Context, requ
     return
 }
 
+func NewDestroyOrderRequest() (request *DestroyOrderRequest) {
+    request = &DestroyOrderRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cwp", APIVersion, "DestroyOrder")
+    
+    
+    return
+}
+
+func NewDestroyOrderResponse() (response *DestroyOrderResponse) {
+    response = &DestroyOrderResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DestroyOrder
+// DestroyOrder  该接口可以对资源销毁.
+//
+// 可能返回的错误码:
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) DestroyOrder(request *DestroyOrderRequest) (response *DestroyOrderResponse, err error) {
+    return c.DestroyOrderWithContext(context.Background(), request)
+}
+
+// DestroyOrder
+// DestroyOrder  该接口可以对资源销毁.
+//
+// 可能返回的错误码:
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) DestroyOrderWithContext(ctx context.Context, request *DestroyOrderRequest) (response *DestroyOrderResponse, err error) {
+    if request == nil {
+        request = NewDestroyOrderRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DestroyOrder require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDestroyOrderResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewEditBashRulesRequest() (request *EditBashRulesRequest) {
     request = &EditBashRulesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -9927,6 +10311,54 @@ func (c *Client) ExportIgnoreRuleEffectHostListWithContext(ctx context.Context, 
     request.SetContext(ctx)
     
     response = NewExportIgnoreRuleEffectHostListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewExportLicenseDetailRequest() (request *ExportLicenseDetailRequest) {
+    request = &ExportLicenseDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cwp", APIVersion, "ExportLicenseDetail")
+    
+    
+    return
+}
+
+func NewExportLicenseDetailResponse() (response *ExportLicenseDetailResponse) {
+    response = &ExportLicenseDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ExportLicenseDetail
+// 导出授权列表对应的绑定信息
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ExportLicenseDetail(request *ExportLicenseDetailRequest) (response *ExportLicenseDetailResponse, err error) {
+    return c.ExportLicenseDetailWithContext(context.Background(), request)
+}
+
+// ExportLicenseDetail
+// 导出授权列表对应的绑定信息
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ExportLicenseDetailWithContext(ctx context.Context, request *ExportLicenseDetailRequest) (response *ExportLicenseDetailResponse, err error) {
+    if request == nil {
+        request = NewExportLicenseDetailRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ExportLicenseDetail require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewExportLicenseDetailResponse()
     err = c.Send(request, response)
     return
 }
@@ -11015,6 +11447,124 @@ func (c *Client) ModifyBruteAttackRulesWithContext(ctx context.Context, request 
     return
 }
 
+func NewModifyLicenseBindsRequest() (request *ModifyLicenseBindsRequest) {
+    request = &ModifyLicenseBindsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cwp", APIVersion, "ModifyLicenseBinds")
+    
+    
+    return
+}
+
+func NewModifyLicenseBindsResponse() (response *ModifyLicenseBindsResponse) {
+    response = &ModifyLicenseBindsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyLicenseBinds
+// 设置中心-授权管理 对某个授权批量绑定机器
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyLicenseBinds(request *ModifyLicenseBindsRequest) (response *ModifyLicenseBindsResponse, err error) {
+    return c.ModifyLicenseBindsWithContext(context.Background(), request)
+}
+
+// ModifyLicenseBinds
+// 设置中心-授权管理 对某个授权批量绑定机器
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyLicenseBindsWithContext(ctx context.Context, request *ModifyLicenseBindsRequest) (response *ModifyLicenseBindsResponse, err error) {
+    if request == nil {
+        request = NewModifyLicenseBindsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyLicenseBinds require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyLicenseBindsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyLicenseUnBindsRequest() (request *ModifyLicenseUnBindsRequest) {
+    request = &ModifyLicenseUnBindsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cwp", APIVersion, "ModifyLicenseUnBinds")
+    
+    
+    return
+}
+
+func NewModifyLicenseUnBindsResponse() (response *ModifyLicenseUnBindsResponse) {
+    response = &ModifyLicenseUnBindsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyLicenseUnBinds
+// 设置中心-授权管理 对某个授权批量解绑机器
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyLicenseUnBinds(request *ModifyLicenseUnBindsRequest) (response *ModifyLicenseUnBindsResponse, err error) {
+    return c.ModifyLicenseUnBindsWithContext(context.Background(), request)
+}
+
+// ModifyLicenseUnBinds
+// 设置中心-授权管理 对某个授权批量解绑机器
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyLicenseUnBindsWithContext(ctx context.Context, request *ModifyLicenseUnBindsRequest) (response *ModifyLicenseUnBindsResponse, err error) {
+    if request == nil {
+        request = NewModifyLicenseUnBindsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyLicenseUnBinds require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyLicenseUnBindsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyMalwareTimingScanSettingsRequest() (request *ModifyMalwareTimingScanSettingsRequest) {
     request = &ModifyMalwareTimingScanSettingsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -11081,6 +11631,64 @@ func (c *Client) ModifyMalwareTimingScanSettingsWithContext(ctx context.Context,
     request.SetContext(ctx)
     
     response = NewModifyMalwareTimingScanSettingsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyOrderAttributeRequest() (request *ModifyOrderAttributeRequest) {
+    request = &ModifyOrderAttributeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cwp", APIVersion, "ModifyOrderAttribute")
+    
+    
+    return
+}
+
+func NewModifyOrderAttributeResponse() (response *ModifyOrderAttributeResponse) {
+    response = &ModifyOrderAttributeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyOrderAttribute
+// 对订单属性编辑
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyOrderAttribute(request *ModifyOrderAttributeRequest) (response *ModifyOrderAttributeResponse, err error) {
+    return c.ModifyOrderAttributeWithContext(context.Background(), request)
+}
+
+// ModifyOrderAttribute
+// 对订单属性编辑
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyOrderAttributeWithContext(ctx context.Context, request *ModifyOrderAttributeRequest) (response *ModifyOrderAttributeResponse, err error) {
+    if request == nil {
+        request = NewModifyOrderAttributeRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyOrderAttribute require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyOrderAttributeResponse()
     err = c.Send(request, response)
     return
 }

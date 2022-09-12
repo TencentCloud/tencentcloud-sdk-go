@@ -513,6 +513,7 @@ func NewCreateFlowResponse() (response *CreateFlowResponse) {
 //  OPERATIONDENIED_CCFORBID = "OperationDenied.CcForbid"
 //  OPERATIONDENIED_CCUSERREPEAT = "OperationDenied.CcUserRepeat"
 //  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
+//  OPERATIONDENIED_INVALIDAPPROVERAGE = "OperationDenied.InvalidApproverAge"
 //  OPERATIONDENIED_NOIDENTITYVERIFY = "OperationDenied.NoIdentityVerify"
 //  OPERATIONDENIED_NOLOGIN = "OperationDenied.NoLogin"
 //  OPERATIONDENIED_NOOPENSERVERSIGN = "OperationDenied.NoOpenServerSign"
@@ -593,6 +594,7 @@ func (c *Client) CreateFlow(request *CreateFlowRequest) (response *CreateFlowRes
 //  OPERATIONDENIED_CCFORBID = "OperationDenied.CcForbid"
 //  OPERATIONDENIED_CCUSERREPEAT = "OperationDenied.CcUserRepeat"
 //  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
+//  OPERATIONDENIED_INVALIDAPPROVERAGE = "OperationDenied.InvalidApproverAge"
 //  OPERATIONDENIED_NOIDENTITYVERIFY = "OperationDenied.NoIdentityVerify"
 //  OPERATIONDENIED_NOLOGIN = "OperationDenied.NoLogin"
 //  OPERATIONDENIED_NOOPENSERVERSIGN = "OperationDenied.NoOpenServerSign"
@@ -1142,7 +1144,9 @@ func NewCreateFlowEvidenceReportResponse() (response *CreateFlowEvidenceReportRe
 }
 
 // CreateFlowEvidenceReport
-// 创建出证报告，返回报告 URL
+// 【描述】：创建出证报告，返回报告 URL
+//
+// 【注意】：此接口需要通过添加白名单获取调用权限，请联系运营人员加白
 //
 // 可能返回的错误码:
 //  INTERNALERROR_SYSTEM = "InternalError.System"
@@ -1158,7 +1162,9 @@ func (c *Client) CreateFlowEvidenceReport(request *CreateFlowEvidenceReportReque
 }
 
 // CreateFlowEvidenceReport
-// 创建出证报告，返回报告 URL
+// 【描述】：创建出证报告，返回报告 URL
+//
+// 【注意】：此接口需要通过添加白名单获取调用权限，请联系运营人员加白
 //
 // 可能返回的错误码:
 //  INTERNALERROR_SYSTEM = "InternalError.System"

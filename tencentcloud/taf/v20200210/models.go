@@ -154,29 +154,6 @@ type InputRecognizeTargetAudience struct {
 	DeviceList []*Device `json:"DeviceList,omitempty" name:"DeviceList"`
 }
 
-type InputSendTrafficSecuritySmsMsg struct {
-	// 投放任务ID
-	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
-
-	// 手机号码列表（号码量<=200）
-	Mobiles []*string `json:"Mobiles,omitempty" name:"Mobiles"`
-
-	// 是否授权，1：已授权
-	IsAuthorized *int64 `json:"IsAuthorized,omitempty" name:"IsAuthorized"`
-
-	// 加密方式，0：AES加密；1：DES加密
-	EncryptMethod *int64 `json:"EncryptMethod,omitempty" name:"EncryptMethod"`
-
-	// 加密算法中的块处理模式，0：ECB模式；1：CBC模式；2：CTR模式；3：CFB模式；4：OFB模式；
-	EncryptMode *int64 `json:"EncryptMode,omitempty" name:"EncryptMode"`
-
-	// 填充模式，0：ZeroPadding；1：PKCS5Padding；2：PKCS7Padding；
-	PaddingType *int64 `json:"PaddingType,omitempty" name:"PaddingType"`
-
-	// 加密数据
-	EncryptData *string `json:"EncryptData,omitempty" name:"EncryptData"`
-}
-
 type OutputRecognizeTargetAudience struct {
 	// 返回码（0，成功，其他失败）
 	Code *int64 `json:"Code,omitempty" name:"Code"`
@@ -202,19 +179,6 @@ type OutputRecognizeTargetAudienceValue struct {
 	// 返回分值
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Score *float64 `json:"Score,omitempty" name:"Score"`
-}
-
-type OutputSendTrafficSecuritySmsMsg struct {
-	// 返回码（0：接口调用成功 非0：接口调用失败）
-	Code *int64 `json:"Code,omitempty" name:"Code"`
-
-	// 返回码对应的信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Message *string `json:"Message,omitempty" name:"Message"`
-
-	// 发送失败的号码列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Value []*string `json:"Value,omitempty" name:"Value"`
 }
 
 // Predefined struct for user
@@ -395,63 +359,5 @@ func (r *RecognizeTargetAudienceResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *RecognizeTargetAudienceResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type SendTrafficSecuritySmsMessageRequestParams struct {
-	// 业务入参
-	BspData *InputSendTrafficSecuritySmsMsg `json:"BspData,omitempty" name:"BspData"`
-}
-
-type SendTrafficSecuritySmsMessageRequest struct {
-	*tchttp.BaseRequest
-	
-	// 业务入参
-	BspData *InputSendTrafficSecuritySmsMsg `json:"BspData,omitempty" name:"BspData"`
-}
-
-func (r *SendTrafficSecuritySmsMessageRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *SendTrafficSecuritySmsMessageRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "BspData")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SendTrafficSecuritySmsMessageRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type SendTrafficSecuritySmsMessageResponseParams struct {
-	// 返回结果
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Data *OutputSendTrafficSecuritySmsMsg `json:"Data,omitempty" name:"Data"`
-
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-}
-
-type SendTrafficSecuritySmsMessageResponse struct {
-	*tchttp.BaseResponse
-	Response *SendTrafficSecuritySmsMessageResponseParams `json:"Response"`
-}
-
-func (r *SendTrafficSecuritySmsMessageResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *SendTrafficSecuritySmsMessageResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }

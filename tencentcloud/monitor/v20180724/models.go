@@ -4956,6 +4956,98 @@ func (r *DescribeExporterIntegrationsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeGrafanaChannelsRequestParams struct {
+	// 实例 ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 偏移量
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 查询数量
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 渠道名
+	ChannelName *string `json:"ChannelName,omitempty" name:"ChannelName"`
+
+	// 渠道 ID
+	ChannelIds []*string `json:"ChannelIds,omitempty" name:"ChannelIds"`
+
+	// 状态
+	ChannelState *int64 `json:"ChannelState,omitempty" name:"ChannelState"`
+}
+
+type DescribeGrafanaChannelsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例 ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 偏移量
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 查询数量
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 渠道名
+	ChannelName *string `json:"ChannelName,omitempty" name:"ChannelName"`
+
+	// 渠道 ID
+	ChannelIds []*string `json:"ChannelIds,omitempty" name:"ChannelIds"`
+
+	// 状态
+	ChannelState *int64 `json:"ChannelState,omitempty" name:"ChannelState"`
+}
+
+func (r *DescribeGrafanaChannelsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeGrafanaChannelsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "ChannelName")
+	delete(f, "ChannelIds")
+	delete(f, "ChannelState")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeGrafanaChannelsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeGrafanaChannelsResponseParams struct {
+	// 告警通道数组
+	NotificationChannelSet []*GrafanaChannel `json:"NotificationChannelSet,omitempty" name:"NotificationChannelSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeGrafanaChannelsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeGrafanaChannelsResponseParams `json:"Response"`
+}
+
+func (r *DescribeGrafanaChannelsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeGrafanaChannelsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeGrafanaConfigRequestParams struct {
 	// 实例 ID
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
@@ -7885,6 +7977,13 @@ type GrafanaAccountInfo struct {
 
 	// 创建时间
 	CreateAt *string `json:"CreateAt,omitempty" name:"CreateAt"`
+
+	// 实例 ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 用户主账号 UIN
+	Uin *string `json:"Uin,omitempty" name:"Uin"`
 }
 
 type GrafanaAccountRole struct {
@@ -7893,6 +7992,27 @@ type GrafanaAccountRole struct {
 
 	// 权限
 	Role *string `json:"Role,omitempty" name:"Role"`
+}
+
+type GrafanaChannel struct {
+	// 渠道 ID
+	ChannelId *string `json:"ChannelId,omitempty" name:"ChannelId"`
+
+	// 渠道名
+	ChannelName *string `json:"ChannelName,omitempty" name:"ChannelName"`
+
+	// 告警通道模板 ID 数组
+	Receivers []*string `json:"Receivers,omitempty" name:"Receivers"`
+
+	// 创建时间
+	CreatedAt *string `json:"CreatedAt,omitempty" name:"CreatedAt"`
+
+	// 更新时间
+	UpdatedAt *string `json:"UpdatedAt,omitempty" name:"UpdatedAt"`
+
+	// 告警渠道的所有生效组织
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OrganizationIds []*string `json:"OrganizationIds,omitempty" name:"OrganizationIds"`
 }
 
 type GrafanaInstanceInfo struct {
@@ -7967,6 +8087,10 @@ type GrafanaIntegrationConfig struct {
 
 	// 集成描述
 	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// Grafana 跳转地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GrafanaURL *string `json:"GrafanaURL,omitempty" name:"GrafanaURL"`
 }
 
 type GrafanaNotificationChannel struct {
@@ -9673,7 +9797,7 @@ type RecordingRuleSet struct {
 	// 规则状态码
 	RuleState *int64 `json:"RuleState,omitempty" name:"RuleState"`
 
-	// 规则名称
+	// 分组名称
 	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 规则内容组
@@ -9687,6 +9811,10 @@ type RecordingRuleSet struct {
 
 	// 规则最近更新时间
 	UpdatedAt *string `json:"UpdatedAt,omitempty" name:"UpdatedAt"`
+
+	// 规则名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleName *string `json:"RuleName,omitempty" name:"RuleName"`
 }
 
 // Predefined struct for user

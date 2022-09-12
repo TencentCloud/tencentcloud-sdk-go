@@ -1401,6 +1401,62 @@ func (c *Client) DescribeCfwEipsWithContext(ctx context.Context, request *Descri
     return
 }
 
+func NewDescribeDefenseSwitchRequest() (request *DescribeDefenseSwitchRequest) {
+    request = &DescribeDefenseSwitchRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfw", APIVersion, "DescribeDefenseSwitch")
+    
+    
+    return
+}
+
+func NewDescribeDefenseSwitchResponse() (response *DescribeDefenseSwitchResponse) {
+    response = &DescribeDefenseSwitchResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeDefenseSwitch
+// 获取入侵防御按钮列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeDefenseSwitch(request *DescribeDefenseSwitchRequest) (response *DescribeDefenseSwitchResponse, err error) {
+    return c.DescribeDefenseSwitchWithContext(context.Background(), request)
+}
+
+// DescribeDefenseSwitch
+// 获取入侵防御按钮列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeDefenseSwitchWithContext(ctx context.Context, request *DescribeDefenseSwitchRequest) (response *DescribeDefenseSwitchResponse, err error) {
+    if request == nil {
+        request = NewDescribeDefenseSwitchRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDefenseSwitch require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDefenseSwitchResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeEnterpriseSecurityGroupRuleRequest() (request *DescribeEnterpriseSecurityGroupRuleRequest) {
     request = &DescribeEnterpriseSecurityGroupRuleRequest{
         BaseRequest: &tchttp.BaseRequest{},

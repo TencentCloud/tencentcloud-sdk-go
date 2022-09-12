@@ -195,6 +195,60 @@ func (c *Client) CloneDBWithContext(ctx context.Context, request *CloneDBRequest
     return
 }
 
+func NewCloseInterCommunicationRequest() (request *CloseInterCommunicationRequest) {
+    request = &CloseInterCommunicationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("sqlserver", APIVersion, "CloseInterCommunication")
+    
+    
+    return
+}
+
+func NewCloseInterCommunicationResponse() (response *CloseInterCommunicationResponse) {
+    response = &CloseInterCommunicationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CloseInterCommunication
+// 本接口（CloseInterCommunication）用于关闭实例互通。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETER_INPUTILLEGAL = "InvalidParameter.InputIllegal"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSINVALID = "ResourceUnavailable.InstanceStatusInvalid"
+func (c *Client) CloseInterCommunication(request *CloseInterCommunicationRequest) (response *CloseInterCommunicationResponse, err error) {
+    return c.CloseInterCommunicationWithContext(context.Background(), request)
+}
+
+// CloseInterCommunication
+// 本接口（CloseInterCommunication）用于关闭实例互通。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETER_INPUTILLEGAL = "InvalidParameter.InputIllegal"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSINVALID = "ResourceUnavailable.InstanceStatusInvalid"
+func (c *Client) CloseInterCommunicationWithContext(ctx context.Context, request *CloseInterCommunicationRequest) (response *CloseInterCommunicationResponse, err error) {
+    if request == nil {
+        request = NewCloseInterCommunicationRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CloseInterCommunication require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCloseInterCommunicationResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCompleteExpansionRequest() (request *CompleteExpansionRequest) {
     request = &CompleteExpansionRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -603,6 +657,136 @@ func (c *Client) CreateBasicDBInstancesWithContext(ctx context.Context, request 
     request.SetContext(ctx)
     
     response = NewCreateBasicDBInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateBusinessDBInstancesRequest() (request *CreateBusinessDBInstancesRequest) {
+    request = &CreateBusinessDBInstancesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("sqlserver", APIVersion, "CreateBusinessDBInstances")
+    
+    
+    return
+}
+
+func NewCreateBusinessDBInstancesResponse() (response *CreateBusinessDBInstancesResponse) {
+    response = &CreateBusinessDBInstancesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateBusinessDBInstances
+// 本接口（CreateBusinessDBInstances）用于创建商业智能服务实例。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CREATEORDERFAILED = "FailedOperation.CreateOrderFailed"
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
+//  FAILEDOPERATION_GETVPCFAILED = "FailedOperation.GetVpcFailed"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETER_INPUTILLEGAL = "InvalidParameter.InputIllegal"
+//  INVALIDPARAMETER_PARAMSASSERTFAILED = "InvalidParameter.ParamsAssertFailed"
+//  INVALIDPARAMETER_PAYORDERFAILED = "InvalidParameter.PayOrderFailed"
+//  INVALIDPARAMETERVALUE_ILLEGALREGION = "InvalidParameterValue.IllegalRegion"
+//  INVALIDPARAMETERVALUE_ILLEGALSPEC = "InvalidParameterValue.IllegalSpec"
+//  INVALIDPARAMETERVALUE_ILLEGALZONE = "InvalidParameterValue.IllegalZone"
+//  INVALIDPARAMETERVALUE_SECURITYGROUPIDISILLEGAL = "InvalidParameterValue.SecurityGroupIdIsIllegal"
+//  RESOURCENOTFOUND_VPCNOTEXIST = "ResourceNotFound.VpcNotExist"
+//  RESOURCEUNAVAILABLE_VPCNOTEXIST = "ResourceUnavailable.VpcNotExist"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) CreateBusinessDBInstances(request *CreateBusinessDBInstancesRequest) (response *CreateBusinessDBInstancesResponse, err error) {
+    return c.CreateBusinessDBInstancesWithContext(context.Background(), request)
+}
+
+// CreateBusinessDBInstances
+// 本接口（CreateBusinessDBInstances）用于创建商业智能服务实例。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CREATEORDERFAILED = "FailedOperation.CreateOrderFailed"
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
+//  FAILEDOPERATION_GETVPCFAILED = "FailedOperation.GetVpcFailed"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETER_INPUTILLEGAL = "InvalidParameter.InputIllegal"
+//  INVALIDPARAMETER_PARAMSASSERTFAILED = "InvalidParameter.ParamsAssertFailed"
+//  INVALIDPARAMETER_PAYORDERFAILED = "InvalidParameter.PayOrderFailed"
+//  INVALIDPARAMETERVALUE_ILLEGALREGION = "InvalidParameterValue.IllegalRegion"
+//  INVALIDPARAMETERVALUE_ILLEGALSPEC = "InvalidParameterValue.IllegalSpec"
+//  INVALIDPARAMETERVALUE_ILLEGALZONE = "InvalidParameterValue.IllegalZone"
+//  INVALIDPARAMETERVALUE_SECURITYGROUPIDISILLEGAL = "InvalidParameterValue.SecurityGroupIdIsIllegal"
+//  RESOURCENOTFOUND_VPCNOTEXIST = "ResourceNotFound.VpcNotExist"
+//  RESOURCEUNAVAILABLE_VPCNOTEXIST = "ResourceUnavailable.VpcNotExist"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) CreateBusinessDBInstancesWithContext(ctx context.Context, request *CreateBusinessDBInstancesRequest) (response *CreateBusinessDBInstancesResponse, err error) {
+    if request == nil {
+        request = NewCreateBusinessDBInstancesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateBusinessDBInstances require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateBusinessDBInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateBusinessIntelligenceFileRequest() (request *CreateBusinessIntelligenceFileRequest) {
+    request = &CreateBusinessIntelligenceFileRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("sqlserver", APIVersion, "CreateBusinessIntelligenceFile")
+    
+    
+    return
+}
+
+func NewCreateBusinessIntelligenceFileResponse() (response *CreateBusinessIntelligenceFileResponse) {
+    response = &CreateBusinessIntelligenceFileResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateBusinessIntelligenceFile
+// 本接口（CreateBusinessIntelligenceFile）用于添加商业智能服务文件。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETER_INPUTILLEGAL = "InvalidParameter.InputIllegal"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+func (c *Client) CreateBusinessIntelligenceFile(request *CreateBusinessIntelligenceFileRequest) (response *CreateBusinessIntelligenceFileResponse, err error) {
+    return c.CreateBusinessIntelligenceFileWithContext(context.Background(), request)
+}
+
+// CreateBusinessIntelligenceFile
+// 本接口（CreateBusinessIntelligenceFile）用于添加商业智能服务文件。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETER_INPUTILLEGAL = "InvalidParameter.InputIllegal"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+func (c *Client) CreateBusinessIntelligenceFileWithContext(ctx context.Context, request *CreateBusinessIntelligenceFileRequest) (response *CreateBusinessIntelligenceFileResponse, err error) {
+    if request == nil {
+        request = NewCreateBusinessIntelligenceFileRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateBusinessIntelligenceFile require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateBusinessIntelligenceFileResponse()
     err = c.Send(request, response)
     return
 }
@@ -1175,6 +1359,60 @@ func (c *Client) DeleteBackupMigrationWithContext(ctx context.Context, request *
     request.SetContext(ctx)
     
     response = NewDeleteBackupMigrationResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteBusinessIntelligenceFileRequest() (request *DeleteBusinessIntelligenceFileRequest) {
+    request = &DeleteBusinessIntelligenceFileRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("sqlserver", APIVersion, "DeleteBusinessIntelligenceFile")
+    
+    
+    return
+}
+
+func NewDeleteBusinessIntelligenceFileResponse() (response *DeleteBusinessIntelligenceFileResponse) {
+    response = &DeleteBusinessIntelligenceFileResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteBusinessIntelligenceFile
+// 本接口（DeleteBusinessIntelligenceFile）用于删除商业智能文件。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETER_INPUTILLEGAL = "InvalidParameter.InputIllegal"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+func (c *Client) DeleteBusinessIntelligenceFile(request *DeleteBusinessIntelligenceFileRequest) (response *DeleteBusinessIntelligenceFileResponse, err error) {
+    return c.DeleteBusinessIntelligenceFileWithContext(context.Background(), request)
+}
+
+// DeleteBusinessIntelligenceFile
+// 本接口（DeleteBusinessIntelligenceFile）用于删除商业智能文件。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETER_INPUTILLEGAL = "InvalidParameter.InputIllegal"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+func (c *Client) DeleteBusinessIntelligenceFileWithContext(ctx context.Context, request *DeleteBusinessIntelligenceFileRequest) (response *DeleteBusinessIntelligenceFileResponse, err error) {
+    if request == nil {
+        request = NewDeleteBusinessIntelligenceFileRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteBusinessIntelligenceFile require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteBusinessIntelligenceFileResponse()
     err = c.Send(request, response)
     return
 }
@@ -1901,6 +2139,60 @@ func (c *Client) DescribeBackupsWithContext(ctx context.Context, request *Descri
     return
 }
 
+func NewDescribeBusinessIntelligenceFileRequest() (request *DescribeBusinessIntelligenceFileRequest) {
+    request = &DescribeBusinessIntelligenceFileRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("sqlserver", APIVersion, "DescribeBusinessIntelligenceFile")
+    
+    
+    return
+}
+
+func NewDescribeBusinessIntelligenceFileResponse() (response *DescribeBusinessIntelligenceFileResponse) {
+    response = &DescribeBusinessIntelligenceFileResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeBusinessIntelligenceFile
+// 本接口（DescribeBusinessIntelligenceFile）用于查询商业智能服务需要的文件。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETER_INPUTILLEGAL = "InvalidParameter.InputIllegal"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+func (c *Client) DescribeBusinessIntelligenceFile(request *DescribeBusinessIntelligenceFileRequest) (response *DescribeBusinessIntelligenceFileResponse, err error) {
+    return c.DescribeBusinessIntelligenceFileWithContext(context.Background(), request)
+}
+
+// DescribeBusinessIntelligenceFile
+// 本接口（DescribeBusinessIntelligenceFile）用于查询商业智能服务需要的文件。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETER_INPUTILLEGAL = "InvalidParameter.InputIllegal"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+func (c *Client) DescribeBusinessIntelligenceFileWithContext(ctx context.Context, request *DescribeBusinessIntelligenceFileRequest) (response *DescribeBusinessIntelligenceFileResponse, err error) {
+    if request == nil {
+        request = NewDescribeBusinessIntelligenceFileRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBusinessIntelligenceFile require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeBusinessIntelligenceFileResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeCrossRegionZoneRequest() (request *DescribeCrossRegionZoneRequest) {
     request = &DescribeCrossRegionZoneRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2027,6 +2319,58 @@ func (c *Client) DescribeDBCharsetsWithContext(ctx context.Context, request *Des
     request.SetContext(ctx)
     
     response = NewDescribeDBCharsetsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDBInstanceInterRequest() (request *DescribeDBInstanceInterRequest) {
+    request = &DescribeDBInstanceInterRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("sqlserver", APIVersion, "DescribeDBInstanceInter")
+    
+    
+    return
+}
+
+func NewDescribeDBInstanceInterResponse() (response *DescribeDBInstanceInterResponse) {
+    response = &DescribeDBInstanceInterResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeDBInstanceInter
+// 本接口（DescribeDBInstanceInter）用于查询互通实例的信息。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETER_INPUTILLEGAL = "InvalidParameter.InputIllegal"
+func (c *Client) DescribeDBInstanceInter(request *DescribeDBInstanceInterRequest) (response *DescribeDBInstanceInterResponse, err error) {
+    return c.DescribeDBInstanceInterWithContext(context.Background(), request)
+}
+
+// DescribeDBInstanceInter
+// 本接口（DescribeDBInstanceInter）用于查询互通实例的信息。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETER_INPUTILLEGAL = "InvalidParameter.InputIllegal"
+func (c *Client) DescribeDBInstanceInterWithContext(ctx context.Context, request *DescribeDBInstanceInterRequest) (response *DescribeDBInstanceInterResponse, err error) {
+    if request == nil {
+        request = NewDescribeDBInstanceInterRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDBInstanceInter require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDBInstanceInterResponse()
     err = c.Send(request, response)
     return
 }
@@ -5187,6 +5531,60 @@ func (c *Client) ModifyReadOnlyGroupDetailsWithContext(ctx context.Context, requ
     request.SetContext(ctx)
     
     response = NewModifyReadOnlyGroupDetailsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewOpenInterCommunicationRequest() (request *OpenInterCommunicationRequest) {
+    request = &OpenInterCommunicationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("sqlserver", APIVersion, "OpenInterCommunication")
+    
+    
+    return
+}
+
+func NewOpenInterCommunicationResponse() (response *OpenInterCommunicationResponse) {
+    response = &OpenInterCommunicationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// OpenInterCommunication
+// 本接口（OpenInterCommunication）用于打开实例的互通，实例互通可以实现商业智能服务相互联通。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETER_INPUTILLEGAL = "InvalidParameter.InputIllegal"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSINVALID = "ResourceUnavailable.InstanceStatusInvalid"
+func (c *Client) OpenInterCommunication(request *OpenInterCommunicationRequest) (response *OpenInterCommunicationResponse, err error) {
+    return c.OpenInterCommunicationWithContext(context.Background(), request)
+}
+
+// OpenInterCommunication
+// 本接口（OpenInterCommunication）用于打开实例的互通，实例互通可以实现商业智能服务相互联通。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETER_INPUTILLEGAL = "InvalidParameter.InputIllegal"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSINVALID = "ResourceUnavailable.InstanceStatusInvalid"
+func (c *Client) OpenInterCommunicationWithContext(ctx context.Context, request *OpenInterCommunicationRequest) (response *OpenInterCommunicationResponse, err error) {
+    if request == nil {
+        request = NewOpenInterCommunicationRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("OpenInterCommunication require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewOpenInterCommunicationResponse()
     err = c.Send(request, response)
     return
 }
