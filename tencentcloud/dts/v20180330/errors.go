@@ -110,6 +110,9 @@ const (
 	// 数据迁移服务不支持当前迁移类型。
 	OPERATIONDENIED_MIGRATESERVICESUPPORTERROR = "OperationDenied.MigrateServiceSupportError"
 
+	// 用户余额不足。
+	OPERATIONDENIED_NOTENOUGHMONEYERROR = "OperationDenied.NotEnoughMoneyError"
+
 	// 该操作不能执行。
 	OPERATIONDENIED_OPERATIONDENIED = "OperationDenied.OperationDenied"
 

@@ -640,6 +640,7 @@ func NewCreateInstanceAccountResponse() (response *CreateInstanceAccountResponse
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
+//  FAILEDOPERATION_UNSUPPORTERROR = "FailedOperation.UnSupportError"
 //  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
 //  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
 //  UNAUTHORIZEDOPERATION_NOCAMAUTHED = "UnauthorizedOperation.NoCAMAuthed"
@@ -653,6 +654,7 @@ func (c *Client) CreateInstanceAccount(request *CreateInstanceAccountRequest) (r
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
+//  FAILEDOPERATION_UNSUPPORTERROR = "FailedOperation.UnSupportError"
 //  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
 //  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
 //  UNAUTHORIZEDOPERATION_NOCAMAUTHED = "UnauthorizedOperation.NoCAMAuthed"

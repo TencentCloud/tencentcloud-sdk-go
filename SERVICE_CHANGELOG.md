@@ -1,475 +1,5 @@
 # 本版本更新包含以下内容：
 
-## DDoS 防护(antiddos) 版本：2020-03-09
-
-### 第 42 次发布
-
-发布时间：2022-09-12 06:07:03
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [BGPInstance](https://cloud.tencent.com/document/api/1021/57582#BGPInstance)
-
-	* 新增成员：VitalityVersion
-
-
-
-
-## 云防火墙(cfw) 版本：2019-09-04
-
-### 第 24 次发布
-
-发布时间：2022-09-09 06:13:35
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DescribeDefenseSwitch](https://cloud.tencent.com/document/api/1132/80322)
-
-
-
-## 负载均衡(clb) 版本：2018-03-17
-
-### 第 72 次发布
-
-发布时间：2022-09-09 06:14:53
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CreateTopic](https://cloud.tencent.com/document/api/214/46802)
-
-	* 新增入参：StorageType
-
-
-
-
-## 企业收付平台(cpdp) 版本：2019-08-20
-
-### 第 85 次发布
-
-发布时间：2022-09-09 06:16:31
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [CreateOpenBankOrderPaymentResult](https://cloud.tencent.com/document/api/1122/40683#CreateOpenBankOrderPaymentResult)
-
-	* 新增成员：PayInfo, PayInfoType
-
-* [QueryOpenBankPaymentOrderResult](https://cloud.tencent.com/document/api/1122/40683#QueryOpenBankPaymentOrderResult)
-
-	* 新增成员：TimeFinish
-
-
-
-
-## 主机安全(cwp) 版本：2018-02-28
-
-### 第 53 次发布
-
-发布时间：2022-09-12 06:18:20
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [CreateLicenseOrder](https://cloud.tencent.com/document/api/296/80402)
-* [DeleteLicenseRecord](https://cloud.tencent.com/document/api/296/80401)
-* [DescribeLicenseBindList](https://cloud.tencent.com/document/api/296/80400)
-* [DescribeLicenseBindSchedule](https://cloud.tencent.com/document/api/296/80399)
-* [DescribeLicenseGeneral](https://cloud.tencent.com/document/api/296/80398)
-* [DescribeLicenseList](https://cloud.tencent.com/document/api/296/80397)
-* [DestroyOrder](https://cloud.tencent.com/document/api/296/80396)
-* [ExportLicenseDetail](https://cloud.tencent.com/document/api/296/80395)
-* [ModifyLicenseBinds](https://cloud.tencent.com/document/api/296/80394)
-* [ModifyLicenseUnBinds](https://cloud.tencent.com/document/api/296/80393)
-* [ModifyOrderAttribute](https://cloud.tencent.com/document/api/296/80392)
-
-新增数据结构：
-
-* [LicenseBindDetail](https://cloud.tencent.com/document/api/296/19867#LicenseBindDetail)
-* [LicenseBindTaskDetail](https://cloud.tencent.com/document/api/296/19867#LicenseBindTaskDetail)
-* [LicenseDetail](https://cloud.tencent.com/document/api/296/19867#LicenseDetail)
-* [LicenseUnBindRsp](https://cloud.tencent.com/document/api/296/19867#LicenseUnBindRsp)
-
-### 第 52 次发布
-
-发布时间：2022-09-09 06:18:24
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [DescribeAssetDatabaseList](https://cloud.tencent.com/document/api/296/61942)
-
-	* 新增入参：Order, By
-
-* [DescribeAssetEnvList](https://cloud.tencent.com/document/api/296/61948)
-
-	* 新增入参：Order, By
-
-* [DescribeAssetInfo](https://cloud.tencent.com/document/api/296/57282)
-
-	* 新增出参：AccountNewCount, PortNewCount, ProcessNewCount, SoftwareNewCount, DatabaseNewCount, WebAppNewCount, WebFrameNewCount, WebServiceNewCount, WebLocationNewCount, MachineNewCount
-
-* [DescribeAssetInitServiceList](https://cloud.tencent.com/document/api/296/61941)
-
-	* 新增入参：Order, By
-
-* [DescribeAssetJarList](https://cloud.tencent.com/document/api/296/61939)
-
-	* 新增入参：Order, By
-
-* [DescribeAssetPlanTaskList](https://cloud.tencent.com/document/api/296/61936)
-
-	* 新增入参：Order, By
-
-
-修改数据结构：
-
-* [AssetAppBaseInfo](https://cloud.tencent.com/document/api/296/19867#AssetAppBaseInfo)
-
-	* 新增成员：MachineName, FirstTime, IsNew
-
-* [AssetCoreModuleBaseInfo](https://cloud.tencent.com/document/api/296/19867#AssetCoreModuleBaseInfo)
-
-	* 新增成员：FirstTime, IsNew, MachineWanIp
-
-* [AssetDatabaseBaseInfo](https://cloud.tencent.com/document/api/296/19867#AssetDatabaseBaseInfo)
-
-	* 新增成员：FirstTime, IsNew, MachineName
-
-* [AssetEnvBaseInfo](https://cloud.tencent.com/document/api/296/19867#AssetEnvBaseInfo)
-
-	* 新增成员：FirstTime, IsNew, MachineWanIp
-
-* [AssetInitServiceBaseInfo](https://cloud.tencent.com/document/api/296/19867#AssetInitServiceBaseInfo)
-
-	* 新增成员：FirstTime, IsNew, MachineWanIp
-
-* [AssetJarBaseInfo](https://cloud.tencent.com/document/api/296/19867#AssetJarBaseInfo)
-
-	* 新增成员：FirstTime, IsNew, MachineWanIp
-
-* [AssetKeyVal](https://cloud.tencent.com/document/api/296/19867#AssetKeyVal)
-
-	* 新增成员：NewCount
-
-* [AssetMachineBaseInfo](https://cloud.tencent.com/document/api/296/19867#AssetMachineBaseInfo)
-
-	* 新增成员：IsNew, FirstTime
-
-* [AssetPlanTask](https://cloud.tencent.com/document/api/296/19867#AssetPlanTask)
-
-	* 新增成员：FirstTime, IsNew, MachineWanIp
-
-* [AssetPortBaseInfo](https://cloud.tencent.com/document/api/296/19867#AssetPortBaseInfo)
-
-	* 新增成员：FirstTime, IsNew
-
-* [AssetProcessBaseInfo](https://cloud.tencent.com/document/api/296/19867#AssetProcessBaseInfo)
-
-	* 新增成员：FirstTime, IsNew
-
-* [AssetSystemPackageInfo](https://cloud.tencent.com/document/api/296/19867#AssetSystemPackageInfo)
-
-	* 新增成员：FirstTime, IsNew
-
-* [AssetUserBaseInfo](https://cloud.tencent.com/document/api/296/19867#AssetUserBaseInfo)
-
-	* 新增成员：FirstTime, IsNew
-
-* [AssetWebAppBaseInfo](https://cloud.tencent.com/document/api/296/19867#AssetWebAppBaseInfo)
-
-	* 新增成员：FirstTime, IsNew
-
-* [AssetWebFrameBaseInfo](https://cloud.tencent.com/document/api/296/19867#AssetWebFrameBaseInfo)
-
-	* 新增成员：FirstTime, IsNew
-
-* [AssetWebLocationBaseInfo](https://cloud.tencent.com/document/api/296/19867#AssetWebLocationBaseInfo)
-
-	* 新增成员：FirstTime, IsNew
-
-* [AssetWebServiceBaseInfo](https://cloud.tencent.com/document/api/296/19867#AssetWebServiceBaseInfo)
-
-	* 新增成员：FirstTime, IsNew
-
-
-
-
-## 边缘计算机器(ecm) 版本：2019-07-19
-
-### 第 62 次发布
-
-发布时间：2022-09-09 06:24:10
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [DescribePriceRunInstance](https://cloud.tencent.com/document/api/1108/64437)
-
-	* 新增入参：InstanceChargeType
-
-
-
-
-## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
-
-### 第 30 次发布
-
-发布时间：2022-09-09 18:16:42
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [ChannelBatchCancelFlows](https://cloud.tencent.com/document/api/1420/80391)
-* [ChannelCreateFlowGroupByFiles](https://cloud.tencent.com/document/api/1420/80390)
-
-修改接口：
-
-* [CreateSignUrls](https://cloud.tencent.com/document/api/1420/61522)
-
-	* 新增入参：FlowGroupId
-
-	* <font color="#dd0000">**修改入参**：</font>FlowIds
-
-* [DescribeFlowDetailInfo](https://cloud.tencent.com/document/api/1420/66683)
-
-	* 新增入参：FlowGroupId
-
-	* <font color="#dd0000">**修改入参**：</font>FlowIds
-
-	* 新增出参：FlowGroupId, FlowGroupName
-
-
-新增数据结构：
-
-* [FlowFileInfo](https://cloud.tencent.com/document/api/1420/61525#FlowFileInfo)
-
-修改数据结构：
-
-* [SignUrlInfo](https://cloud.tencent.com/document/api/1420/61525#SignUrlInfo)
-
-	* 新增成员：FlowGroupId
-
-
-
-
-## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
-
-
-
-## 游戏多媒体引擎(gme) 版本：2018-07-11
-
-### 第 24 次发布
-
-发布时间：2022-09-12 06:26:19
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DeleteRoomMember](https://cloud.tencent.com/document/api/607/80403)
-
-新增数据结构：
-
-* [DeleteResult](https://cloud.tencent.com/document/api/607/35375#DeleteResult)
-
-
-
-## 云监控(monitor) 版本：2018-07-24
-
-### 第 61 次发布
-
-发布时间：2022-09-09 06:33:40
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DescribeGrafanaChannels](https://cloud.tencent.com/document/api/248/80324)
-
-新增数据结构：
-
-* [GrafanaChannel](https://cloud.tencent.com/document/api/248/30354#GrafanaChannel)
-
-修改数据结构：
-
-* [GrafanaAccountInfo](https://cloud.tencent.com/document/api/248/30354#GrafanaAccountInfo)
-
-	* 新增成员：InstanceId, Uin
-
-* [GrafanaIntegrationConfig](https://cloud.tencent.com/document/api/248/30354#GrafanaIntegrationConfig)
-
-	* 新增成员：GrafanaURL
-
-* [RecordingRuleSet](https://cloud.tencent.com/document/api/248/30354#RecordingRuleSet)
-
-	* 新增成员：RuleName
-
-
-
-
-## 移动应用安全(ms) 版本：2018-04-08
-
-### 第 10 次发布
-
-发布时间：2022-09-09 06:35:15
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DescribeApkDetectionResult](https://cloud.tencent.com/document/api/283/80325)
-
-新增数据结构：
-
-* [OptPluginListItem](https://cloud.tencent.com/document/api/283/17759#OptPluginListItem)
-* [PluginListItem](https://cloud.tencent.com/document/api/283/17759#PluginListItem)
-* [ResultListItem](https://cloud.tencent.com/document/api/283/17759#ResultListItem)
-
-
-
-## 文字识别(ocr) 版本：2018-11-19
-
-### 第 77 次发布
-
-发布时间：2022-09-09 06:35:53
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [RecognizeMedicalInvoiceOCR](https://cloud.tencent.com/document/api/866/80326)
-
-新增数据结构：
-
-* [MedicalInvoiceInfo](https://cloud.tencent.com/document/api/866/33527#MedicalInvoiceInfo)
-* [MedicalInvoiceItem](https://cloud.tencent.com/document/api/866/33527#MedicalInvoiceItem)
-
-
-
-## 前端性能监控(rum) 版本：2021-06-22
-
-### 第 15 次发布
-
-发布时间：2022-09-09 06:38:13
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [RumAreaInfo](https://cloud.tencent.com/document/api/1464/61476#RumAreaInfo)
-
-	* 新增成员：AreaRegionID, AreaRegionCode, AreaAbbr
-
-
-
-
-## 云数据库 SQL Server(sqlserver) 版本：2018-03-28
-
-### 第 37 次发布
-
-发布时间：2022-09-09 06:39:25
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [CloseInterCommunication](https://cloud.tencent.com/document/api/238/80333)
-* [CreateBusinessDBInstances](https://cloud.tencent.com/document/api/238/80332)
-* [CreateBusinessIntelligenceFile](https://cloud.tencent.com/document/api/238/80331)
-* [DeleteBusinessIntelligenceFile](https://cloud.tencent.com/document/api/238/80330)
-* [DescribeBusinessIntelligenceFile](https://cloud.tencent.com/document/api/238/80329)
-* [DescribeDBInstanceInter](https://cloud.tencent.com/document/api/238/80328)
-* [OpenInterCommunication](https://cloud.tencent.com/document/api/238/80327)
-
-新增数据结构：
-
-* [BusinessIntelligenceFile](https://cloud.tencent.com/document/api/238/19976#BusinessIntelligenceFile)
-* [FileAction](https://cloud.tencent.com/document/api/238/19976#FileAction)
-* [InterInstance](https://cloud.tencent.com/document/api/238/19976#InterInstance)
-* [InterInstanceFlow](https://cloud.tencent.com/document/api/238/19976#InterInstanceFlow)
-
-
-
-## 流量反欺诈(taf) 版本：2020-02-10
-
-### 第 16 次发布
-
-发布时间：2022-09-12 06:39:19
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-<font color="#dd0000">**删除接口**：</font>
-
-* SendTrafficSecuritySmsMessage
-
-<font color="#dd0000">**删除数据结构**：</font>
-
-* InputSendTrafficSecuritySmsMsg
-* OutputSendTrafficSecuritySmsMsg
-
-
-
-## 边缘安全加速平台(teo) 版本：2022-01-06
-
-### 第 25 次发布
-
-发布时间：2022-09-12 06:43:25
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [ServerCertInfo](https://cloud.tencent.com/document/api/1552/73155#ServerCertInfo)
-
-	* 新增成员：SignAlgo
-
-
-
-
 # 历次版本更新如下：
 
 ## 活动防刷(aa) 版本：2020-02-24
@@ -16885,7 +16415,7 @@
 
 新增接口：
 
-* [[DescribeDefenseSwitch](https://cloud.tencent.com/document/api/1132/80322)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeDefenseSwitch](https://cloud.tencent.com/document/api/1132/80322)
 
 ### 第 23 次发布
 
@@ -27566,24 +27096,24 @@
 
 新增接口：
 
-* [[CreateLicenseOrder](https://cloud.tencent.com/document/api/296/80402)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteLicenseRecord](https://cloud.tencent.com/document/api/296/80401)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeLicenseBindList](https://cloud.tencent.com/document/api/296/80400)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeLicenseBindSchedule](https://cloud.tencent.com/document/api/296/80399)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeLicenseGeneral](https://cloud.tencent.com/document/api/296/80398)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeLicenseList](https://cloud.tencent.com/document/api/296/80397)](https://cloud.tencent.com/document/api/#/#)
-* [[DestroyOrder](https://cloud.tencent.com/document/api/296/80396)](https://cloud.tencent.com/document/api/#/#)
-* [[ExportLicenseDetail](https://cloud.tencent.com/document/api/296/80395)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyLicenseBinds](https://cloud.tencent.com/document/api/296/80394)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyLicenseUnBinds](https://cloud.tencent.com/document/api/296/80393)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyOrderAttribute](https://cloud.tencent.com/document/api/296/80392)](https://cloud.tencent.com/document/api/#/#)
+* [CreateLicenseOrder](https://cloud.tencent.com/document/api/296/80402)
+* [DeleteLicenseRecord](https://cloud.tencent.com/document/api/296/80401)
+* [DescribeLicenseBindList](https://cloud.tencent.com/document/api/296/80400)
+* [DescribeLicenseBindSchedule](https://cloud.tencent.com/document/api/296/80399)
+* [DescribeLicenseGeneral](https://cloud.tencent.com/document/api/296/80398)
+* [DescribeLicenseList](https://cloud.tencent.com/document/api/296/80397)
+* [DestroyOrder](https://cloud.tencent.com/document/api/296/80396)
+* [ExportLicenseDetail](https://cloud.tencent.com/document/api/296/80395)
+* [ModifyLicenseBinds](https://cloud.tencent.com/document/api/296/80394)
+* [ModifyLicenseUnBinds](https://cloud.tencent.com/document/api/296/80393)
+* [ModifyOrderAttribute](https://cloud.tencent.com/document/api/296/80392)
 
 新增数据结构：
 
-* [[LicenseBindDetail](https://cloud.tencent.com/document/api/296/19867#LicenseBindDetail)](https://cloud.tencent.com/document/api/296/19867#[LicenseBindDetail](https://cloud.tencent.com/document/api/296/19867#LicenseBindDetail))
-* [[LicenseBindTaskDetail](https://cloud.tencent.com/document/api/296/19867#LicenseBindTaskDetail)](https://cloud.tencent.com/document/api/296/19867#[LicenseBindTaskDetail](https://cloud.tencent.com/document/api/296/19867#LicenseBindTaskDetail))
-* [[LicenseDetail](https://cloud.tencent.com/document/api/296/19867#LicenseDetail)](https://cloud.tencent.com/document/api/296/19867#[LicenseDetail](https://cloud.tencent.com/document/api/296/19867#LicenseDetail))
-* [[LicenseUnBindRsp](https://cloud.tencent.com/document/api/296/19867#LicenseUnBindRsp)](https://cloud.tencent.com/document/api/296/19867#[LicenseUnBindRsp](https://cloud.tencent.com/document/api/296/19867#LicenseUnBindRsp))
+* [LicenseBindDetail](https://cloud.tencent.com/document/api/296/19867#LicenseBindDetail)
+* [LicenseBindTaskDetail](https://cloud.tencent.com/document/api/296/19867#LicenseBindTaskDetail)
+* [LicenseDetail](https://cloud.tencent.com/document/api/296/19867#LicenseDetail)
+* [LicenseUnBindRsp](https://cloud.tencent.com/document/api/296/19867#LicenseUnBindRsp)
 
 ### 第 52 次发布
 
@@ -38939,8 +38469,8 @@
 
 新增接口：
 
-* [[ChannelBatchCancelFlows](https://cloud.tencent.com/document/api/1420/80391)](https://cloud.tencent.com/document/api/#/#)
-* [[ChannelCreateFlowGroupByFiles](https://cloud.tencent.com/document/api/1420/80390)](https://cloud.tencent.com/document/api/#/#)
+* [ChannelBatchCancelFlows](https://cloud.tencent.com/document/api/1420/80391)
+* [ChannelCreateFlowGroupByFiles](https://cloud.tencent.com/document/api/1420/80390)
 
 修改接口：
 
@@ -38961,7 +38491,7 @@
 
 新增数据结构：
 
-* [[FlowFileInfo](https://cloud.tencent.com/document/api/1420/61525#FlowFileInfo)](https://cloud.tencent.com/document/api/1420/61525#[FlowFileInfo](https://cloud.tencent.com/document/api/1420/61525#FlowFileInfo))
+* [FlowFileInfo](https://cloud.tencent.com/document/api/1420/61525#FlowFileInfo)
 
 修改数据结构：
 
@@ -41755,11 +41285,11 @@
 
 新增接口：
 
-* [[DeleteRoomMember](https://cloud.tencent.com/document/api/607/80403)](https://cloud.tencent.com/document/api/#/#)
+* [DeleteRoomMember](https://cloud.tencent.com/document/api/607/80403)
 
 新增数据结构：
 
-* [[DeleteResult](https://cloud.tencent.com/document/api/607/35375#DeleteResult)](https://cloud.tencent.com/document/api/607/35375#[DeleteResult](https://cloud.tencent.com/document/api/607/35375#DeleteResult))
+* [DeleteResult](https://cloud.tencent.com/document/api/607/35375#DeleteResult)
 
 ### 第 23 次发布
 
@@ -53521,11 +53051,11 @@
 
 新增接口：
 
-* [[DescribeGrafanaChannels](https://cloud.tencent.com/document/api/248/80324)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeGrafanaChannels](https://cloud.tencent.com/document/api/248/80324)
 
 新增数据结构：
 
-* [[GrafanaChannel](https://cloud.tencent.com/document/api/248/30354#GrafanaChannel)](https://cloud.tencent.com/document/api/248/30354#[GrafanaChannel](https://cloud.tencent.com/document/api/248/30354#GrafanaChannel))
+* [GrafanaChannel](https://cloud.tencent.com/document/api/248/30354#GrafanaChannel)
 
 修改数据结构：
 
@@ -56574,13 +56104,13 @@
 
 新增接口：
 
-* [[DescribeApkDetectionResult](https://cloud.tencent.com/document/api/283/80325)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeApkDetectionResult](https://cloud.tencent.com/document/api/283/80325)
 
 新增数据结构：
 
-* [[OptPluginListItem](https://cloud.tencent.com/document/api/283/17759#OptPluginListItem)](https://cloud.tencent.com/document/api/283/17759#[OptPluginListItem](https://cloud.tencent.com/document/api/283/17759#OptPluginListItem))
-* [[PluginListItem](https://cloud.tencent.com/document/api/283/17759#PluginListItem)](https://cloud.tencent.com/document/api/283/17759#[PluginListItem](https://cloud.tencent.com/document/api/283/17759#PluginListItem))
-* [[ResultListItem](https://cloud.tencent.com/document/api/283/17759#ResultListItem)](https://cloud.tencent.com/document/api/283/17759#[ResultListItem](https://cloud.tencent.com/document/api/283/17759#ResultListItem))
+* [OptPluginListItem](https://cloud.tencent.com/document/api/283/17759#OptPluginListItem)
+* [PluginListItem](https://cloud.tencent.com/document/api/283/17759#PluginListItem)
+* [ResultListItem](https://cloud.tencent.com/document/api/283/17759#ResultListItem)
 
 ### 第 9 次发布
 
@@ -57699,12 +57229,12 @@
 
 新增接口：
 
-* [[RecognizeMedicalInvoiceOCR](https://cloud.tencent.com/document/api/866/80326)](https://cloud.tencent.com/document/api/#/#)
+* [RecognizeMedicalInvoiceOCR](https://cloud.tencent.com/document/api/866/80326)
 
 新增数据结构：
 
-* [[MedicalInvoiceInfo](https://cloud.tencent.com/document/api/866/33527#MedicalInvoiceInfo)](https://cloud.tencent.com/document/api/866/33527#[MedicalInvoiceInfo](https://cloud.tencent.com/document/api/866/33527#MedicalInvoiceInfo))
-* [[MedicalInvoiceItem](https://cloud.tencent.com/document/api/866/33527#MedicalInvoiceItem)](https://cloud.tencent.com/document/api/866/33527#[MedicalInvoiceItem](https://cloud.tencent.com/document/api/866/33527#MedicalInvoiceItem))
+* [MedicalInvoiceInfo](https://cloud.tencent.com/document/api/866/33527#MedicalInvoiceInfo)
+* [MedicalInvoiceItem](https://cloud.tencent.com/document/api/866/33527#MedicalInvoiceItem)
 
 ### 第 76 次发布
 
@@ -64430,20 +63960,20 @@
 
 新增接口：
 
-* [[CloseInterCommunication](https://cloud.tencent.com/document/api/238/80333)](https://cloud.tencent.com/document/api/#/#)
-* [[CreateBusinessDBInstances](https://cloud.tencent.com/document/api/238/80332)](https://cloud.tencent.com/document/api/#/#)
-* [[CreateBusinessIntelligenceFile](https://cloud.tencent.com/document/api/238/80331)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteBusinessIntelligenceFile](https://cloud.tencent.com/document/api/238/80330)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeBusinessIntelligenceFile](https://cloud.tencent.com/document/api/238/80329)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeDBInstanceInter](https://cloud.tencent.com/document/api/238/80328)](https://cloud.tencent.com/document/api/#/#)
-* [[OpenInterCommunication](https://cloud.tencent.com/document/api/238/80327)](https://cloud.tencent.com/document/api/#/#)
+* [CloseInterCommunication](https://cloud.tencent.com/document/api/238/80333)
+* [CreateBusinessDBInstances](https://cloud.tencent.com/document/api/238/80332)
+* [CreateBusinessIntelligenceFile](https://cloud.tencent.com/document/api/238/80331)
+* [DeleteBusinessIntelligenceFile](https://cloud.tencent.com/document/api/238/80330)
+* [DescribeBusinessIntelligenceFile](https://cloud.tencent.com/document/api/238/80329)
+* [DescribeDBInstanceInter](https://cloud.tencent.com/document/api/238/80328)
+* [OpenInterCommunication](https://cloud.tencent.com/document/api/238/80327)
 
 新增数据结构：
 
-* [[BusinessIntelligenceFile](https://cloud.tencent.com/document/api/238/19976#BusinessIntelligenceFile)](https://cloud.tencent.com/document/api/238/19976#[BusinessIntelligenceFile](https://cloud.tencent.com/document/api/238/19976#BusinessIntelligenceFile))
-* [[FileAction](https://cloud.tencent.com/document/api/238/19976#FileAction)](https://cloud.tencent.com/document/api/238/19976#[FileAction](https://cloud.tencent.com/document/api/238/19976#FileAction))
-* [[InterInstance](https://cloud.tencent.com/document/api/238/19976#InterInstance)](https://cloud.tencent.com/document/api/238/19976#[InterInstance](https://cloud.tencent.com/document/api/238/19976#InterInstance))
-* [[InterInstanceFlow](https://cloud.tencent.com/document/api/238/19976#InterInstanceFlow)](https://cloud.tencent.com/document/api/238/19976#[InterInstanceFlow](https://cloud.tencent.com/document/api/238/19976#InterInstanceFlow))
+* [BusinessIntelligenceFile](https://cloud.tencent.com/document/api/238/19976#BusinessIntelligenceFile)
+* [FileAction](https://cloud.tencent.com/document/api/238/19976#FileAction)
+* [InterInstance](https://cloud.tencent.com/document/api/238/19976#InterInstance)
+* [InterInstanceFlow](https://cloud.tencent.com/document/api/238/19976#InterInstanceFlow)
 
 ### 第 36 次发布
 

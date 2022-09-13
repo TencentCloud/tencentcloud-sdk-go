@@ -176,6 +176,9 @@ const (
 	// 参数错误。
 	INVALIDPARAMETER_INVALIDMASTERDISKTYPE = "InvalidParameter.InvalidMasterDiskType"
 
+	// 无效的元数据库URL。
+	INVALIDPARAMETER_INVALIDMETADATAJDBCURL = "InvalidParameter.InvalidMetaDataJdbcUrl"
+
 	// 无效的元数据表类型。
 	INVALIDPARAMETER_INVALIDMETATYPE = "InvalidParameter.InvalidMetaType"
 
@@ -310,6 +313,9 @@ const (
 
 	// 不支持或售罄的节点规格。
 	RESOURCEINSUFFICIENT_INSTANCEINSUFFICIENT = "ResourceInsufficient.InstanceInsufficient"
+
+	// 资源不存在。
+	RESOURCENOTFOUND_CDBINFONOTFOUND = "ResourceNotFound.CDBInfoNotFound"
 
 	// 无法找到该实例。
 	RESOURCENOTFOUND_CLUSTERNOTFOUND = "ResourceNotFound.ClusterNotFound"

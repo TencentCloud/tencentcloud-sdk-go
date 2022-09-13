@@ -194,6 +194,9 @@ const (
 	// logset 和 topic 不能为空。
 	MISSINGPARAMETER_LOGSETORTOPICNULL = "MissingParameter.LogsetOrTopicNull"
 
+	// 弹性伸缩配置最大值/最小值不能为空。
+	MISSINGPARAMETER_MINMAXNUMNULL = "MissingParameter.MinMaxNumNull"
+
 	// 环境ID不能为空。
 	MISSINGPARAMETER_NAMESPACEIDNULL = "MissingParameter.NamespaceIdNull"
 

@@ -606,6 +606,7 @@ func NewCreateCmqQueueResponse() (response *CreateCmqQueueResponse) {
 //  RESOURCENOTFOUND_ENVIRONMENT = "ResourceNotFound.Environment"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  RESOURCEUNAVAILABLE_CREATEFAILED = "ResourceUnavailable.CreateFailed"
+//  RESOURCEUNAVAILABLE_FUNDREQUIRED = "ResourceUnavailable.FundRequired"
 func (c *Client) CreateCmqQueue(request *CreateCmqQueueRequest) (response *CreateCmqQueueResponse, err error) {
     return c.CreateCmqQueueWithContext(context.Background(), request)
 }
@@ -625,6 +626,7 @@ func (c *Client) CreateCmqQueue(request *CreateCmqQueueRequest) (response *Creat
 //  RESOURCENOTFOUND_ENVIRONMENT = "ResourceNotFound.Environment"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  RESOURCEUNAVAILABLE_CREATEFAILED = "ResourceUnavailable.CreateFailed"
+//  RESOURCEUNAVAILABLE_FUNDREQUIRED = "ResourceUnavailable.FundRequired"
 func (c *Client) CreateCmqQueueWithContext(ctx context.Context, request *CreateCmqQueueRequest) (response *CreateCmqQueueResponse, err error) {
     if request == nil {
         request = NewCreateCmqQueueRequest()

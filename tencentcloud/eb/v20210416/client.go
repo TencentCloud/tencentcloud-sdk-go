@@ -1214,6 +1214,7 @@ func NewListRulesResponse() (response *ListRulesResponse) {
 //  INVALIDPARAMETERVALUE_EVENTBUSID = "InvalidParameterValue.EventBusId"
 //  INVALIDPARAMETERVALUE_FILTERS = "InvalidParameterValue.Filters"
 //  INVALIDPARAMETERVALUE_LIMIT = "InvalidParameterValue.Limit"
+//  INVALIDPARAMETERVALUE_ORDER = "InvalidParameterValue.Order"
 //  RESOURCENOTFOUND_EVENTBUS = "ResourceNotFound.EventBus"
 func (c *Client) ListRules(request *ListRulesRequest) (response *ListRulesResponse, err error) {
     return c.ListRulesWithContext(context.Background(), request)
@@ -1226,6 +1227,7 @@ func (c *Client) ListRules(request *ListRulesRequest) (response *ListRulesRespon
 //  INVALIDPARAMETERVALUE_EVENTBUSID = "InvalidParameterValue.EventBusId"
 //  INVALIDPARAMETERVALUE_FILTERS = "InvalidParameterValue.Filters"
 //  INVALIDPARAMETERVALUE_LIMIT = "InvalidParameterValue.Limit"
+//  INVALIDPARAMETERVALUE_ORDER = "InvalidParameterValue.Order"
 //  RESOURCENOTFOUND_EVENTBUS = "ResourceNotFound.EventBus"
 func (c *Client) ListRulesWithContext(ctx context.Context, request *ListRulesRequest) (response *ListRulesResponse, err error) {
     if request == nil {

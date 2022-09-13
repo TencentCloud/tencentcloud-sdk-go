@@ -3083,18 +3083,7 @@ func NewDescribeGrafanaChannelsResponse() (response *DescribeGrafanaChannelsResp
 // 列出 Grafana 所有告警通道
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
 //  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_ACCESSTKEFAIL = "FailedOperation.AccessTKEFail"
-//  FAILEDOPERATION_AGENTNOTALLOWED = "FailedOperation.AgentNotAllowed"
-//  FAILEDOPERATION_DBQUERYFAILED = "FailedOperation.DbQueryFailed"
-//  FAILEDOPERATION_RESOURCEEXIST = "FailedOperation.ResourceExist"
-//  FAILEDOPERATION_RESOURCENOTFOUND = "FailedOperation.ResourceNotFound"
-//  FAILEDOPERATION_TKERESOURCECONFLICT = "FailedOperation.TKEResourceConflict"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeGrafanaChannels(request *DescribeGrafanaChannelsRequest) (response *DescribeGrafanaChannelsResponse, err error) {
     return c.DescribeGrafanaChannelsWithContext(context.Background(), request)
 }
@@ -3103,18 +3092,7 @@ func (c *Client) DescribeGrafanaChannels(request *DescribeGrafanaChannelsRequest
 // 列出 Grafana 所有告警通道
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
 //  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_ACCESSTKEFAIL = "FailedOperation.AccessTKEFail"
-//  FAILEDOPERATION_AGENTNOTALLOWED = "FailedOperation.AgentNotAllowed"
-//  FAILEDOPERATION_DBQUERYFAILED = "FailedOperation.DbQueryFailed"
-//  FAILEDOPERATION_RESOURCEEXIST = "FailedOperation.ResourceExist"
-//  FAILEDOPERATION_RESOURCENOTFOUND = "FailedOperation.ResourceNotFound"
-//  FAILEDOPERATION_TKERESOURCECONFLICT = "FailedOperation.TKEResourceConflict"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeGrafanaChannelsWithContext(ctx context.Context, request *DescribeGrafanaChannelsRequest) (response *DescribeGrafanaChannelsResponse, err error) {
     if request == nil {
         request = NewDescribeGrafanaChannelsRequest()
@@ -3251,6 +3229,7 @@ func NewDescribeGrafanaInstancesResponse() (response *DescribeGrafanaInstancesRe
 // 可能返回的错误码:
 //  AUTHFAILURE_ACCESSCAMFAIL = "AuthFailure.AccessCAMFail"
 //  FAILEDOPERATION_ACCESSTAGFAIL = "FailedOperation.AccessTagFail"
+//  FAILEDOPERATION_DBQUERYFAILED = "FailedOperation.DbQueryFailed"
 //  FAILEDOPERATION_INTERNALERROR = "FailedOperation.InternalError"
 //  FAILEDOPERATION_SENDREQUEST = "FailedOperation.SendRequest"
 func (c *Client) DescribeGrafanaInstances(request *DescribeGrafanaInstancesRequest) (response *DescribeGrafanaInstancesResponse, err error) {
@@ -3263,6 +3242,7 @@ func (c *Client) DescribeGrafanaInstances(request *DescribeGrafanaInstancesReque
 // 可能返回的错误码:
 //  AUTHFAILURE_ACCESSCAMFAIL = "AuthFailure.AccessCAMFail"
 //  FAILEDOPERATION_ACCESSTAGFAIL = "FailedOperation.AccessTagFail"
+//  FAILEDOPERATION_DBQUERYFAILED = "FailedOperation.DbQueryFailed"
 //  FAILEDOPERATION_INTERNALERROR = "FailedOperation.InternalError"
 //  FAILEDOPERATION_SENDREQUEST = "FailedOperation.SendRequest"
 func (c *Client) DescribeGrafanaInstancesWithContext(ctx context.Context, request *DescribeGrafanaInstancesRequest) (response *DescribeGrafanaInstancesResponse, err error) {

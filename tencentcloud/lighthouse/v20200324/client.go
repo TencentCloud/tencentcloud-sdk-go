@@ -3910,6 +3910,7 @@ func NewModifyFirewallRulesResponse() (response *ModifyFirewallRulesResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_FIREWALLRULESOPERATIONFAILED = "FailedOperation.FirewallRulesOperationFailed"
+//  INTERNALERROR_REQUESTERROR = "InternalError.RequestError"
 //  INVALIDPARAMETER_FIREWALLRULESDUPLICATED = "InvalidParameter.FirewallRulesDuplicated"
 //  INVALIDPARAMETERVALUE_DUPLICATED = "InvalidParameterValue.Duplicated"
 //  INVALIDPARAMETERVALUE_FIREWALLRULEDESCRIPTIONTOOLONG = "InvalidParameterValue.FirewallRuleDescriptionTooLong"
@@ -3951,6 +3952,7 @@ func (c *Client) ModifyFirewallRules(request *ModifyFirewallRulesRequest) (respo
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_FIREWALLRULESOPERATIONFAILED = "FailedOperation.FirewallRulesOperationFailed"
+//  INTERNALERROR_REQUESTERROR = "InternalError.RequestError"
 //  INVALIDPARAMETER_FIREWALLRULESDUPLICATED = "InvalidParameter.FirewallRulesDuplicated"
 //  INVALIDPARAMETERVALUE_DUPLICATED = "InvalidParameterValue.Duplicated"
 //  INVALIDPARAMETERVALUE_FIREWALLRULEDESCRIPTIONTOOLONG = "InvalidParameterValue.FirewallRuleDescriptionTooLong"

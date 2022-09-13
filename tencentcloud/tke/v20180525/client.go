@@ -1262,6 +1262,7 @@ func NewCreateClusterRouteTableResponse() (response *CreateClusterRouteTableResp
 //  INVALIDPARAMETER_CIDRCONFLICTWITHOTHERROUTE = "InvalidParameter.CidrConflictWithOtherRoute"
 //  INVALIDPARAMETER_CIDRCONFLICTWITHVPCCIDR = "InvalidParameter.CidrConflictWithVpcCidr"
 //  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  RESOURCEINUSE_RESOURCEEXISTALREADY = "ResourceInUse.ResourceExistAlready"
 func (c *Client) CreateClusterRouteTable(request *CreateClusterRouteTableRequest) (response *CreateClusterRouteTableResponse, err error) {
     return c.CreateClusterRouteTableWithContext(context.Background(), request)
 }
@@ -1285,6 +1286,7 @@ func (c *Client) CreateClusterRouteTable(request *CreateClusterRouteTableRequest
 //  INVALIDPARAMETER_CIDRCONFLICTWITHOTHERROUTE = "InvalidParameter.CidrConflictWithOtherRoute"
 //  INVALIDPARAMETER_CIDRCONFLICTWITHVPCCIDR = "InvalidParameter.CidrConflictWithVpcCidr"
 //  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  RESOURCEINUSE_RESOURCEEXISTALREADY = "ResourceInUse.ResourceExistAlready"
 func (c *Client) CreateClusterRouteTableWithContext(ctx context.Context, request *CreateClusterRouteTableRequest) (response *CreateClusterRouteTableResponse, err error) {
     if request == nil {
         request = NewCreateClusterRouteTableRequest()
@@ -1814,6 +1816,7 @@ func NewCreatePrometheusClusterAgentResponse() (response *CreatePrometheusCluste
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_COMPONENTCLIENTCOMMON = "FailedOperation.ComponentClientCommon"
+//  FAILEDOPERATION_COMPONENTCLIENTHTTP = "FailedOperation.ComponentClientHttp"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DB = "InternalError.Db"
 //  INTERNALERROR_DBRECORDNOTFOUND = "InternalError.DbRecordNotFound"
@@ -1830,6 +1833,7 @@ func (c *Client) CreatePrometheusClusterAgent(request *CreatePrometheusClusterAg
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_COMPONENTCLIENTCOMMON = "FailedOperation.ComponentClientCommon"
+//  FAILEDOPERATION_COMPONENTCLIENTHTTP = "FailedOperation.ComponentClientHttp"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DB = "InternalError.Db"
 //  INTERNALERROR_DBRECORDNOTFOUND = "InternalError.DbRecordNotFound"
@@ -3631,6 +3635,7 @@ func NewDeletePrometheusTempSyncResponse() (response *DeletePrometheusTempSyncRe
 // 解除模板同步，这将会删除目标中该模板所生产的配置，针对V2版本实例
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_COMPONENTCLIENTCOMMON = "FailedOperation.ComponentClientCommon"
 //  FAILEDOPERATION_COMPONENTCLIENTHTTP = "FailedOperation.ComponentClientHttp"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DB = "InternalError.Db"
@@ -3647,6 +3652,7 @@ func (c *Client) DeletePrometheusTempSync(request *DeletePrometheusTempSyncReque
 // 解除模板同步，这将会删除目标中该模板所生产的配置，针对V2版本实例
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_COMPONENTCLIENTCOMMON = "FailedOperation.ComponentClientCommon"
 //  FAILEDOPERATION_COMPONENTCLIENTHTTP = "FailedOperation.ComponentClientHttp"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DB = "InternalError.Db"
@@ -3756,6 +3762,7 @@ func NewDeletePrometheusTemplateSyncResponse() (response *DeletePrometheusTempla
 //  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
 //  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
 //  INVALIDPARAMETER_RESOURCENOTFOUND = "InvalidParameter.ResourceNotFound"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DeletePrometheusTemplateSync(request *DeletePrometheusTemplateSyncRequest) (response *DeletePrometheusTemplateSyncResponse, err error) {
     return c.DeletePrometheusTemplateSyncWithContext(context.Background(), request)
 }
@@ -3771,6 +3778,7 @@ func (c *Client) DeletePrometheusTemplateSync(request *DeletePrometheusTemplateS
 //  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
 //  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
 //  INVALIDPARAMETER_RESOURCENOTFOUND = "InvalidParameter.ResourceNotFound"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DeletePrometheusTemplateSyncWithContext(ctx context.Context, request *DeletePrometheusTemplateSyncRequest) (response *DeletePrometheusTemplateSyncResponse, err error) {
     if request == nil {
         request = NewDeletePrometheusTemplateSyncRequest()
@@ -7093,6 +7101,7 @@ func NewDescribePrometheusInstanceInitStatusResponse() (response *DescribePromet
 // 获取2.0实例初始化任务状态
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_COMPONENTCLIENTCOMMON = "FailedOperation.ComponentClientCommon"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DB = "InternalError.Db"
 //  INTERNALERROR_DBRECORDNOTFOUND = "InternalError.DbRecordNotFound"
@@ -7108,6 +7117,7 @@ func (c *Client) DescribePrometheusInstanceInitStatus(request *DescribePrometheu
 // 获取2.0实例初始化任务状态
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_COMPONENTCLIENTCOMMON = "FailedOperation.ComponentClientCommon"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DB = "InternalError.Db"
 //  INTERNALERROR_DBRECORDNOTFOUND = "InternalError.DbRecordNotFound"
@@ -7517,6 +7527,7 @@ func NewDescribePrometheusTemplateSyncResponse() (response *DescribePrometheusTe
 //  INTERNALERROR_DB = "InternalError.Db"
 //  INTERNALERROR_PARAM = "InternalError.Param"
 //  INVALIDPARAMETER_RESOURCENOTFOUND = "InvalidParameter.ResourceNotFound"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribePrometheusTemplateSync(request *DescribePrometheusTemplateSyncRequest) (response *DescribePrometheusTemplateSyncResponse, err error) {
     return c.DescribePrometheusTemplateSyncWithContext(context.Background(), request)
 }
@@ -7529,6 +7540,7 @@ func (c *Client) DescribePrometheusTemplateSync(request *DescribePrometheusTempl
 //  INTERNALERROR_DB = "InternalError.Db"
 //  INTERNALERROR_PARAM = "InternalError.Param"
 //  INVALIDPARAMETER_RESOURCENOTFOUND = "InvalidParameter.ResourceNotFound"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribePrometheusTemplateSyncWithContext(ctx context.Context, request *DescribePrometheusTemplateSyncRequest) (response *DescribePrometheusTemplateSyncResponse, err error) {
     if request == nil {
         request = NewDescribePrometheusTemplateSyncRequest()
@@ -9933,6 +9945,8 @@ func NewModifyPrometheusAlertPolicyResponse() (response *ModifyPrometheusAlertPo
 // 修改2.0实例告警策略
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_COMPONENTCLIENTCOMMON = "FailedOperation.ComponentClientCommon"
+//  FAILEDOPERATION_COMPONENTCLIENTHTTP = "FailedOperation.ComponentClientHttp"
 //  FAILEDOPERATION_COMPONENTCLIENTUNPACK = "FailedOperation.ComponentClientUnpack"
 //  FAILEDOPERATION_KUBECOMMON = "FailedOperation.KubeCommon"
 //  INTERNALERROR = "InternalError"
@@ -9948,6 +9962,8 @@ func (c *Client) ModifyPrometheusAlertPolicy(request *ModifyPrometheusAlertPolic
 // 修改2.0实例告警策略
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_COMPONENTCLIENTCOMMON = "FailedOperation.ComponentClientCommon"
+//  FAILEDOPERATION_COMPONENTCLIENTHTTP = "FailedOperation.ComponentClientHttp"
 //  FAILEDOPERATION_COMPONENTCLIENTUNPACK = "FailedOperation.ComponentClientUnpack"
 //  FAILEDOPERATION_KUBECOMMON = "FailedOperation.KubeCommon"
 //  INTERNALERROR = "InternalError"
@@ -10055,6 +10071,7 @@ func NewModifyPrometheusConfigResponse() (response *ModifyPrometheusConfigRespon
 // 修改prometheus配置，如果配置项不存在，则会新增
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_KUBECOMMON = "FailedOperation.KubeCommon"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_PARAM = "InternalError.Param"
 //  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
@@ -10070,6 +10087,7 @@ func (c *Client) ModifyPrometheusConfig(request *ModifyPrometheusConfigRequest) 
 // 修改prometheus配置，如果配置项不存在，则会新增
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_KUBECOMMON = "FailedOperation.KubeCommon"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_PARAM = "InternalError.Param"
 //  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
@@ -10115,6 +10133,7 @@ func NewModifyPrometheusGlobalNotificationResponse() (response *ModifyPrometheus
 // 修改全局告警通知渠道
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_COMPONENTCLIENTCOMMON = "FailedOperation.ComponentClientCommon"
 //  FAILEDOPERATION_KUBECOMMON = "FailedOperation.KubeCommon"
 //  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
 //  INVALIDPARAMETER_PROMINSTANCENOTFOUND = "InvalidParameter.PromInstanceNotFound"
@@ -10126,6 +10145,7 @@ func (c *Client) ModifyPrometheusGlobalNotification(request *ModifyPrometheusGlo
 // 修改全局告警通知渠道
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_COMPONENTCLIENTCOMMON = "FailedOperation.ComponentClientCommon"
 //  FAILEDOPERATION_KUBECOMMON = "FailedOperation.KubeCommon"
 //  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
 //  INVALIDPARAMETER_PROMINSTANCENOTFOUND = "InvalidParameter.PromInstanceNotFound"

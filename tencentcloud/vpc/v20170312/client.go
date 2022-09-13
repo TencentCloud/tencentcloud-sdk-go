@@ -3958,6 +3958,7 @@ func NewCreateRouteTableResponse() (response *CreateRouteTableResponse) {
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_DUPLICATE = "InvalidParameterValue.Duplicate"
 //  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
 //  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
@@ -3978,6 +3979,7 @@ func (c *Client) CreateRouteTable(request *CreateRouteTableRequest) (response *C
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_DUPLICATE = "InvalidParameterValue.Duplicate"
 //  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
 //  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
@@ -9110,6 +9112,7 @@ func NewDescribeHaVipsResponse() (response *DescribeHaVipsResponse) {
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_COEXIST = "InvalidParameter.Coexist"
+//  INVALIDPARAMETER_FILTERINVALIDKEY = "InvalidParameter.FilterInvalidKey"
 //  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
 //  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
@@ -9123,6 +9126,7 @@ func (c *Client) DescribeHaVips(request *DescribeHaVipsRequest) (response *Descr
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_COEXIST = "InvalidParameter.Coexist"
+//  INVALIDPARAMETER_FILTERINVALIDKEY = "InvalidParameter.FilterInvalidKey"
 //  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
 //  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
@@ -17596,6 +17600,7 @@ func NewResetRoutesResponse() (response *ResetRoutesResponse) {
 //  INVALIDPARAMETERVALUE_DUPLICATE = "InvalidParameterValue.Duplicate"
 //  INVALIDPARAMETERVALUE_VPCCIDRCONFLICT = "InvalidParameterValue.VpcCidrConflict"
 //  LIMITEXCEEDED = "LimitExceeded"
+//  UNKNOWNPARAMETER_WITHGUESS = "UnknownParameter.WithGuess"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 //  UNSUPPORTEDOPERATION_ECMP = "UnsupportedOperation.Ecmp"
 //  UNSUPPORTEDOPERATION_SYSTEMROUTE = "UnsupportedOperation.SystemRoute"
@@ -17614,6 +17619,7 @@ func (c *Client) ResetRoutes(request *ResetRoutesRequest) (response *ResetRoutes
 //  INVALIDPARAMETERVALUE_DUPLICATE = "InvalidParameterValue.Duplicate"
 //  INVALIDPARAMETERVALUE_VPCCIDRCONFLICT = "InvalidParameterValue.VpcCidrConflict"
 //  LIMITEXCEEDED = "LimitExceeded"
+//  UNKNOWNPARAMETER_WITHGUESS = "UnknownParameter.WithGuess"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 //  UNSUPPORTEDOPERATION_ECMP = "UnsupportedOperation.Ecmp"
 //  UNSUPPORTEDOPERATION_SYSTEMROUTE = "UnsupportedOperation.SystemRoute"

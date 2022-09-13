@@ -856,6 +856,7 @@ func NewSearchWordItemsResponse() (response *SearchWordItemsResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE_EMPTYVALUEERROR = "InvalidParameterValue.EmptyValueError"
 //  INVALIDPARAMETERVALUE_VALUERANGEERROR = "InvalidParameterValue.ValueRangeError"
+//  RESOURCEUNAVAILABLE_SERVICENOTOPENEDERROR = "ResourceUnavailable.ServiceNotOpenedError"
 func (c *Client) SearchWordItems(request *SearchWordItemsRequest) (response *SearchWordItemsResponse, err error) {
     return c.SearchWordItemsWithContext(context.Background(), request)
 }
@@ -869,6 +870,7 @@ func (c *Client) SearchWordItems(request *SearchWordItemsRequest) (response *Sea
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE_EMPTYVALUEERROR = "InvalidParameterValue.EmptyValueError"
 //  INVALIDPARAMETERVALUE_VALUERANGEERROR = "InvalidParameterValue.ValueRangeError"
+//  RESOURCEUNAVAILABLE_SERVICENOTOPENEDERROR = "ResourceUnavailable.ServiceNotOpenedError"
 func (c *Client) SearchWordItemsWithContext(ctx context.Context, request *SearchWordItemsRequest) (response *SearchWordItemsResponse, err error) {
     if request == nil {
         request = NewSearchWordItemsRequest()

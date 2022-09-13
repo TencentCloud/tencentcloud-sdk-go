@@ -160,6 +160,7 @@ func NewCreateInstanceResponse() (response *CreateInstanceResponse) {
 //  INVALIDPARAMETER_INVALIDINSTANCENAME = "InvalidParameter.InvalidInstanceName"
 //  INVALIDPARAMETER_INVALIDINSTANCETYPE = "InvalidParameter.InvalidInstanceType"
 //  INVALIDPARAMETER_INVALIDLOGINSETTING = "InvalidParameter.InvalidLoginSetting"
+//  INVALIDPARAMETER_INVALIDMETADATAJDBCURL = "InvalidParameter.InvalidMetaDataJdbcUrl"
 //  INVALIDPARAMETER_INVALIDMETATYPE = "InvalidParameter.InvalidMetaType"
 //  INVALIDPARAMETER_INVALIDPASSWORD = "InvalidParameter.InvalidPassword"
 //  INVALIDPARAMETER_INVALIDPAYMODE = "InvalidParameter.InvalidPaymode"
@@ -240,6 +241,7 @@ func (c *Client) CreateInstance(request *CreateInstanceRequest) (response *Creat
 //  INVALIDPARAMETER_INVALIDINSTANCENAME = "InvalidParameter.InvalidInstanceName"
 //  INVALIDPARAMETER_INVALIDINSTANCETYPE = "InvalidParameter.InvalidInstanceType"
 //  INVALIDPARAMETER_INVALIDLOGINSETTING = "InvalidParameter.InvalidLoginSetting"
+//  INVALIDPARAMETER_INVALIDMETADATAJDBCURL = "InvalidParameter.InvalidMetaDataJdbcUrl"
 //  INVALIDPARAMETER_INVALIDMETATYPE = "InvalidParameter.InvalidMetaType"
 //  INVALIDPARAMETER_INVALIDPASSWORD = "InvalidParameter.InvalidPassword"
 //  INVALIDPARAMETER_INVALIDPAYMODE = "InvalidParameter.InvalidPaymode"
@@ -414,6 +416,7 @@ func NewDescribeCvmQuotaResponse() (response *DescribeCvmQuotaResponse) {
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CVMERROR = "InternalError.CvmError"
 func (c *Client) DescribeCvmQuota(request *DescribeCvmQuotaRequest) (response *DescribeCvmQuotaResponse, err error) {
     return c.DescribeCvmQuotaWithContext(context.Background(), request)
 }
@@ -423,6 +426,7 @@ func (c *Client) DescribeCvmQuota(request *DescribeCvmQuotaRequest) (response *D
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CVMERROR = "InternalError.CvmError"
 func (c *Client) DescribeCvmQuotaWithContext(ctx context.Context, request *DescribeCvmQuotaRequest) (response *DescribeCvmQuotaResponse, err error) {
     if request == nil {
         request = NewDescribeCvmQuotaRequest()
@@ -1694,6 +1698,7 @@ func NewRunJobFlowResponse() (response *RunJobFlowResponse) {
 //  LIMITEXCEEDED_BOOTSTRAPACTIONSNUMLIMITEXCEEDED = "LimitExceeded.BootstrapActionsNumLimitExceeded"
 //  RESOURCEINSUFFICIENT_DISKINSUFFICIENT = "ResourceInsufficient.DiskInsufficient"
 //  RESOURCEINSUFFICIENT_INSTANCEINSUFFICIENT = "ResourceInsufficient.InstanceInsufficient"
+//  RESOURCENOTFOUND_CDBINFONOTFOUND = "ResourceNotFound.CDBInfoNotFound"
 //  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
 //  RESOURCENOTFOUND_TAGSNOTFOUND = "ResourceNotFound.TagsNotFound"
 //  RESOURCESSOLDOUT_CVMSOLDOUT = "ResourcesSoldOut.CvmSoldOut"
@@ -1739,6 +1744,7 @@ func (c *Client) RunJobFlow(request *RunJobFlowRequest) (response *RunJobFlowRes
 //  LIMITEXCEEDED_BOOTSTRAPACTIONSNUMLIMITEXCEEDED = "LimitExceeded.BootstrapActionsNumLimitExceeded"
 //  RESOURCEINSUFFICIENT_DISKINSUFFICIENT = "ResourceInsufficient.DiskInsufficient"
 //  RESOURCEINSUFFICIENT_INSTANCEINSUFFICIENT = "ResourceInsufficient.InstanceInsufficient"
+//  RESOURCENOTFOUND_CDBINFONOTFOUND = "ResourceNotFound.CDBInfoNotFound"
 //  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
 //  RESOURCENOTFOUND_TAGSNOTFOUND = "ResourceNotFound.TagsNotFound"
 //  RESOURCESSOLDOUT_CVMSOLDOUT = "ResourcesSoldOut.CvmSoldOut"

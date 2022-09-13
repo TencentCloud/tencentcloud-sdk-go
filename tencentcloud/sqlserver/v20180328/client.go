@@ -221,6 +221,7 @@ func NewCloseInterCommunicationResponse() (response *CloseInterCommunicationResp
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
 //  INVALIDPARAMETER_INPUTILLEGAL = "InvalidParameter.InputIllegal"
 //  RESOURCEUNAVAILABLE_INSTANCESTATUSINVALID = "ResourceUnavailable.InstanceStatusInvalid"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) CloseInterCommunication(request *CloseInterCommunicationRequest) (response *CloseInterCommunicationResponse, err error) {
     return c.CloseInterCommunicationWithContext(context.Background(), request)
 }
@@ -233,6 +234,7 @@ func (c *Client) CloseInterCommunication(request *CloseInterCommunicationRequest
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
 //  INVALIDPARAMETER_INPUTILLEGAL = "InvalidParameter.InputIllegal"
 //  RESOURCEUNAVAILABLE_INSTANCESTATUSINVALID = "ResourceUnavailable.InstanceStatusInvalid"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) CloseInterCommunicationWithContext(ctx context.Context, request *CloseInterCommunicationRequest) (response *CloseInterCommunicationResponse, err error) {
     if request == nil {
         request = NewCloseInterCommunicationRequest()
@@ -763,6 +765,7 @@ func NewCreateBusinessIntelligenceFileResponse() (response *CreateBusinessIntell
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
 //  INVALIDPARAMETER_INPUTILLEGAL = "InvalidParameter.InputIllegal"
 //  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) CreateBusinessIntelligenceFile(request *CreateBusinessIntelligenceFileRequest) (response *CreateBusinessIntelligenceFileResponse, err error) {
     return c.CreateBusinessIntelligenceFileWithContext(context.Background(), request)
 }
@@ -775,6 +778,7 @@ func (c *Client) CreateBusinessIntelligenceFile(request *CreateBusinessIntellige
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
 //  INVALIDPARAMETER_INPUTILLEGAL = "InvalidParameter.InputIllegal"
 //  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) CreateBusinessIntelligenceFileWithContext(ctx context.Context, request *CreateBusinessIntelligenceFileRequest) (response *CreateBusinessIntelligenceFileResponse, err error) {
     if request == nil {
         request = NewCreateBusinessIntelligenceFileRequest()
@@ -1389,6 +1393,7 @@ func NewDeleteBusinessIntelligenceFileResponse() (response *DeleteBusinessIntell
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
 //  INVALIDPARAMETER_INPUTILLEGAL = "InvalidParameter.InputIllegal"
 //  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) DeleteBusinessIntelligenceFile(request *DeleteBusinessIntelligenceFileRequest) (response *DeleteBusinessIntelligenceFileResponse, err error) {
     return c.DeleteBusinessIntelligenceFileWithContext(context.Background(), request)
 }
@@ -1401,6 +1406,7 @@ func (c *Client) DeleteBusinessIntelligenceFile(request *DeleteBusinessIntellige
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
 //  INVALIDPARAMETER_INPUTILLEGAL = "InvalidParameter.InputIllegal"
 //  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) DeleteBusinessIntelligenceFileWithContext(ctx context.Context, request *DeleteBusinessIntelligenceFileRequest) (response *DeleteBusinessIntelligenceFileResponse, err error) {
     if request == nil {
         request = NewDeleteBusinessIntelligenceFileRequest()
@@ -2165,6 +2171,7 @@ func NewDescribeBusinessIntelligenceFileResponse() (response *DescribeBusinessIn
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
 //  INVALIDPARAMETER_INPUTILLEGAL = "InvalidParameter.InputIllegal"
 //  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) DescribeBusinessIntelligenceFile(request *DescribeBusinessIntelligenceFileRequest) (response *DescribeBusinessIntelligenceFileResponse, err error) {
     return c.DescribeBusinessIntelligenceFileWithContext(context.Background(), request)
 }
@@ -2177,6 +2184,7 @@ func (c *Client) DescribeBusinessIntelligenceFile(request *DescribeBusinessIntel
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
 //  INVALIDPARAMETER_INPUTILLEGAL = "InvalidParameter.InputIllegal"
 //  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) DescribeBusinessIntelligenceFileWithContext(ctx context.Context, request *DescribeBusinessIntelligenceFileRequest) (response *DescribeBusinessIntelligenceFileResponse, err error) {
     if request == nil {
         request = NewDescribeBusinessIntelligenceFileRequest()
@@ -2348,6 +2356,7 @@ func NewDescribeDBInstanceInterResponse() (response *DescribeDBInstanceInterResp
 //  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
 //  INVALIDPARAMETER_INPUTILLEGAL = "InvalidParameter.InputIllegal"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) DescribeDBInstanceInter(request *DescribeDBInstanceInterRequest) (response *DescribeDBInstanceInterResponse, err error) {
     return c.DescribeDBInstanceInterWithContext(context.Background(), request)
 }
@@ -2359,6 +2368,7 @@ func (c *Client) DescribeDBInstanceInter(request *DescribeDBInstanceInterRequest
 //  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
 //  INVALIDPARAMETER_INPUTILLEGAL = "InvalidParameter.InputIllegal"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) DescribeDBInstanceInterWithContext(ctx context.Context, request *DescribeDBInstanceInterRequest) (response *DescribeDBInstanceInterResponse, err error) {
     if request == nil {
         request = NewDescribeDBInstanceInterRequest()
@@ -5561,6 +5571,7 @@ func NewOpenInterCommunicationResponse() (response *OpenInterCommunicationRespon
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
 //  INVALIDPARAMETER_INPUTILLEGAL = "InvalidParameter.InputIllegal"
 //  RESOURCEUNAVAILABLE_INSTANCESTATUSINVALID = "ResourceUnavailable.InstanceStatusInvalid"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) OpenInterCommunication(request *OpenInterCommunicationRequest) (response *OpenInterCommunicationResponse, err error) {
     return c.OpenInterCommunicationWithContext(context.Background(), request)
 }
@@ -5573,6 +5584,7 @@ func (c *Client) OpenInterCommunication(request *OpenInterCommunicationRequest) 
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
 //  INVALIDPARAMETER_INPUTILLEGAL = "InvalidParameter.InputIllegal"
 //  RESOURCEUNAVAILABLE_INSTANCESTATUSINVALID = "ResourceUnavailable.InstanceStatusInvalid"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) OpenInterCommunicationWithContext(ctx context.Context, request *OpenInterCommunicationRequest) (response *OpenInterCommunicationResponse, err error) {
     if request == nil {
         request = NewOpenInterCommunicationRequest()

@@ -4154,6 +4154,7 @@ func NewRecognizeMedicalInvoiceOCRResponse() (response *RecognizeMedicalInvoiceO
 //  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) RecognizeMedicalInvoiceOCR(request *RecognizeMedicalInvoiceOCRRequest) (response *RecognizeMedicalInvoiceOCRResponse, err error) {
     return c.RecognizeMedicalInvoiceOCRWithContext(context.Background(), request)
 }
@@ -4171,6 +4172,7 @@ func (c *Client) RecognizeMedicalInvoiceOCR(request *RecognizeMedicalInvoiceOCRR
 //  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) RecognizeMedicalInvoiceOCRWithContext(ctx context.Context, request *RecognizeMedicalInvoiceOCRRequest) (response *RecognizeMedicalInvoiceOCRResponse, err error) {
     if request == nil {
         request = NewRecognizeMedicalInvoiceOCRRequest()

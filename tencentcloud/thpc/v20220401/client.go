@@ -194,9 +194,11 @@ func NewCreateClusterResponse() (response *CreateClusterResponse) {
 //  INTERNALERROR_CALLCVM = "InternalError.CallCvm"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_NOTSUPPORTED = "InvalidParameterValue.NotSupported"
+//  INVALIDPARAMETERVALUE_PARAMETERSNOTSUPPORTED = "InvalidParameterValue.ParametersNotSupported"
 //  INVALIDPARAMETERVALUE_TOOLARGE = "InvalidParameterValue.TooLarge"
 //  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
 //  INVALIDPARAMETERVALUE_TOOSMALL = "InvalidParameterValue.TooSmall"
+//  RESOURCENOTFOUND_IMAGEID = "ResourceNotFound.ImageId"
 func (c *Client) CreateCluster(request *CreateClusterRequest) (response *CreateClusterResponse, err error) {
     return c.CreateClusterWithContext(context.Background(), request)
 }
@@ -208,9 +210,11 @@ func (c *Client) CreateCluster(request *CreateClusterRequest) (response *CreateC
 //  INTERNALERROR_CALLCVM = "InternalError.CallCvm"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_NOTSUPPORTED = "InvalidParameterValue.NotSupported"
+//  INVALIDPARAMETERVALUE_PARAMETERSNOTSUPPORTED = "InvalidParameterValue.ParametersNotSupported"
 //  INVALIDPARAMETERVALUE_TOOLARGE = "InvalidParameterValue.TooLarge"
 //  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
 //  INVALIDPARAMETERVALUE_TOOSMALL = "InvalidParameterValue.TooSmall"
+//  RESOURCENOTFOUND_IMAGEID = "ResourceNotFound.ImageId"
 func (c *Client) CreateClusterWithContext(ctx context.Context, request *CreateClusterRequest) (response *CreateClusterResponse, err error) {
     if request == nil {
         request = NewCreateClusterRequest()

@@ -1403,6 +1403,7 @@ func NewGetTagValuesResponse() (response *GetTagValuesResponse) {
 // 用于查询已建立的标签列表中的标签值。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_PAGINATIONTOKENINVALID = "InvalidParameter.PaginationTokenInvalid"
 //  INVALIDPARAMETERVALUE_RESERVEDTAGKEY = "InvalidParameterValue.ReservedTagKey"
@@ -1416,6 +1417,7 @@ func (c *Client) GetTagValues(request *GetTagValuesRequest) (response *GetTagVal
 // 用于查询已建立的标签列表中的标签值。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_PAGINATIONTOKENINVALID = "InvalidParameter.PaginationTokenInvalid"
 //  INVALIDPARAMETERVALUE_RESERVEDTAGKEY = "InvalidParameterValue.ReservedTagKey"

@@ -1039,6 +1039,7 @@ func NewCreateNewL7RulesResponse() (response *CreateNewL7RulesResponse) {
 // 添加7层转发规则
 //
 // 可能返回的错误码:
+//  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateNewL7Rules(request *CreateNewL7RulesRequest) (response *CreateNewL7RulesResponse, err error) {
     return c.CreateNewL7RulesWithContext(context.Background(), request)
@@ -1048,6 +1049,7 @@ func (c *Client) CreateNewL7Rules(request *CreateNewL7RulesRequest) (response *C
 // 添加7层转发规则
 //
 // 可能返回的错误码:
+//  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateNewL7RulesWithContext(ctx context.Context, request *CreateNewL7RulesRequest) (response *CreateNewL7RulesResponse, err error) {
     if request == nil {
@@ -2282,6 +2284,7 @@ func NewDeleteWaterPrintKeyResponse() (response *DeleteWaterPrintKeyResponse) {
 //
 // 可能返回的错误码:
 //  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteWaterPrintKey(request *DeleteWaterPrintKeyRequest) (response *DeleteWaterPrintKeyResponse, err error) {
     return c.DeleteWaterPrintKeyWithContext(context.Background(), request)
@@ -2292,6 +2295,7 @@ func (c *Client) DeleteWaterPrintKey(request *DeleteWaterPrintKeyRequest) (respo
 //
 // 可能返回的错误码:
 //  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteWaterPrintKeyWithContext(ctx context.Context, request *DeleteWaterPrintKeyRequest) (response *DeleteWaterPrintKeyResponse, err error) {
     if request == nil {
@@ -2332,6 +2336,7 @@ func NewDescribeBasicDeviceStatusResponse() (response *DescribeBasicDeviceStatus
 //
 // 可能返回的错误码:
 //  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeBasicDeviceStatus(request *DescribeBasicDeviceStatusRequest) (response *DescribeBasicDeviceStatusResponse, err error) {
     return c.DescribeBasicDeviceStatusWithContext(context.Background(), request)
@@ -2342,6 +2347,7 @@ func (c *Client) DescribeBasicDeviceStatus(request *DescribeBasicDeviceStatusReq
 //
 // 可能返回的错误码:
 //  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeBasicDeviceStatusWithContext(ctx context.Context, request *DescribeBasicDeviceStatusRequest) (response *DescribeBasicDeviceStatusResponse, err error) {
     if request == nil {
@@ -2382,6 +2388,7 @@ func NewDescribeBgpBizTrendResponse() (response *DescribeBgpBizTrendResponse) {
 //
 // 可能返回的错误码:
 //  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeBgpBizTrend(request *DescribeBgpBizTrendRequest) (response *DescribeBgpBizTrendResponse, err error) {
     return c.DescribeBgpBizTrendWithContext(context.Background(), request)
@@ -2392,6 +2399,7 @@ func (c *Client) DescribeBgpBizTrend(request *DescribeBgpBizTrendRequest) (respo
 //
 // 可能返回的错误码:
 //  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeBgpBizTrendWithContext(ctx context.Context, request *DescribeBgpBizTrendRequest) (response *DescribeBgpBizTrendResponse, err error) {
     if request == nil {
@@ -3110,6 +3118,7 @@ func NewDescribeCcGeoIPBlockConfigListResponse() (response *DescribeCcGeoIPBlock
 //
 // 可能返回的错误码:
 //  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeCcGeoIPBlockConfigList(request *DescribeCcGeoIPBlockConfigListRequest) (response *DescribeCcGeoIPBlockConfigListResponse, err error) {
     return c.DescribeCcGeoIPBlockConfigListWithContext(context.Background(), request)
@@ -3120,6 +3129,7 @@ func (c *Client) DescribeCcGeoIPBlockConfigList(request *DescribeCcGeoIPBlockCon
 //
 // 可能返回的错误码:
 //  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeCcGeoIPBlockConfigListWithContext(ctx context.Context, request *DescribeCcGeoIPBlockConfigListRequest) (response *DescribeCcGeoIPBlockConfigListResponse, err error) {
     if request == nil {
@@ -5886,6 +5896,7 @@ func NewModifyPacketFilterConfigResponse() (response *ModifyPacketFilterConfigRe
 //
 // 可能返回的错误码:
 //  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ModifyPacketFilterConfig(request *ModifyPacketFilterConfigRequest) (response *ModifyPacketFilterConfigResponse, err error) {
     return c.ModifyPacketFilterConfigWithContext(context.Background(), request)
 }
@@ -5895,6 +5906,7 @@ func (c *Client) ModifyPacketFilterConfig(request *ModifyPacketFilterConfigReque
 //
 // 可能返回的错误码:
 //  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ModifyPacketFilterConfigWithContext(ctx context.Context, request *ModifyPacketFilterConfigRequest) (response *ModifyPacketFilterConfigResponse, err error) {
     if request == nil {
         request = NewModifyPacketFilterConfigRequest()
@@ -6017,6 +6029,7 @@ func NewSwitchWaterPrintConfigResponse() (response *SwitchWaterPrintConfigRespon
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) SwitchWaterPrintConfig(request *SwitchWaterPrintConfigRequest) (response *SwitchWaterPrintConfigResponse, err error) {
     return c.SwitchWaterPrintConfigWithContext(context.Background(), request)
@@ -6028,6 +6041,7 @@ func (c *Client) SwitchWaterPrintConfig(request *SwitchWaterPrintConfigRequest) 
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) SwitchWaterPrintConfigWithContext(ctx context.Context, request *SwitchWaterPrintConfigRequest) (response *SwitchWaterPrintConfigResponse, err error) {
     if request == nil {

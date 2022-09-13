@@ -175,6 +175,7 @@ func NewCreateApplicationProxyRuleResponse() (response *CreateApplicationProxyRu
 // 可能返回的错误码:
 //  INVALIDPARAMETER_PARAMETERERROR = "InvalidParameter.ParameterError"
 //  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) CreateApplicationProxyRule(request *CreateApplicationProxyRuleRequest) (response *CreateApplicationProxyRuleResponse, err error) {
     return c.CreateApplicationProxyRuleWithContext(context.Background(), request)
 }
@@ -185,6 +186,7 @@ func (c *Client) CreateApplicationProxyRule(request *CreateApplicationProxyRuleR
 // 可能返回的错误码:
 //  INVALIDPARAMETER_PARAMETERERROR = "InvalidParameter.ParameterError"
 //  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) CreateApplicationProxyRuleWithContext(ctx context.Context, request *CreateApplicationProxyRuleRequest) (response *CreateApplicationProxyRuleResponse, err error) {
     if request == nil {
         request = NewCreateApplicationProxyRuleRequest()
@@ -225,6 +227,7 @@ func NewCreateApplicationProxyRulesResponse() (response *CreateApplicationProxyR
 // 可能返回的错误码:
 //  INVALIDPARAMETER_PARAMETERERROR = "InvalidParameter.ParameterError"
 //  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) CreateApplicationProxyRules(request *CreateApplicationProxyRulesRequest) (response *CreateApplicationProxyRulesResponse, err error) {
     return c.CreateApplicationProxyRulesWithContext(context.Background(), request)
 }
@@ -235,6 +238,7 @@ func (c *Client) CreateApplicationProxyRules(request *CreateApplicationProxyRule
 // 可能返回的错误码:
 //  INVALIDPARAMETER_PARAMETERERROR = "InvalidParameter.ParameterError"
 //  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) CreateApplicationProxyRulesWithContext(ctx context.Context, request *CreateApplicationProxyRulesRequest) (response *CreateApplicationProxyRulesResponse, err error) {
     if request == nil {
         request = NewCreateApplicationProxyRulesRequest()
@@ -275,6 +279,7 @@ func NewCreateCustomErrorPageResponse() (response *CreateCustomErrorPageResponse
 // 可能返回的错误码:
 //  INVALIDPARAMETER_PARAMETERERROR = "InvalidParameter.ParameterError"
 //  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) CreateCustomErrorPage(request *CreateCustomErrorPageRequest) (response *CreateCustomErrorPageResponse, err error) {
     return c.CreateCustomErrorPageWithContext(context.Background(), request)
 }
@@ -285,6 +290,7 @@ func (c *Client) CreateCustomErrorPage(request *CreateCustomErrorPageRequest) (r
 // 可能返回的错误码:
 //  INVALIDPARAMETER_PARAMETERERROR = "InvalidParameter.ParameterError"
 //  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) CreateCustomErrorPageWithContext(ctx context.Context, request *CreateCustomErrorPageRequest) (response *CreateCustomErrorPageResponse, err error) {
     if request == nil {
         request = NewCreateCustomErrorPageRequest()
@@ -629,6 +635,7 @@ func NewCreatePurgeTaskResponse() (response *CreatePurgeTaskResponse) {
 //  INVALIDPARAMETER_UPLOADURL = "InvalidParameter.UploadUrl"
 //  LIMITEXCEEDED_BATCHQUOTA = "LimitExceeded.BatchQuota"
 //  LIMITEXCEEDED_DAILYQUOTA = "LimitExceeded.DailyQuota"
+//  OPERATIONDENIED = "OperationDenied"
 //  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
 func (c *Client) CreatePurgeTask(request *CreatePurgeTaskRequest) (response *CreatePurgeTaskResponse, err error) {
     return c.CreatePurgeTaskWithContext(context.Background(), request)
@@ -648,6 +655,7 @@ func (c *Client) CreatePurgeTask(request *CreatePurgeTaskRequest) (response *Cre
 //  INVALIDPARAMETER_UPLOADURL = "InvalidParameter.UploadUrl"
 //  LIMITEXCEEDED_BATCHQUOTA = "LimitExceeded.BatchQuota"
 //  LIMITEXCEEDED_DAILYQUOTA = "LimitExceeded.DailyQuota"
+//  OPERATIONDENIED = "OperationDenied"
 //  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
 func (c *Client) CreatePurgeTaskWithContext(ctx context.Context, request *CreatePurgeTaskRequest) (response *CreatePurgeTaskResponse, err error) {
     if request == nil {
@@ -801,12 +809,7 @@ func NewDeleteApplicationProxyResponse() (response *DeleteApplicationProxyRespon
 // 删除应用代理
 //
 // 可能返回的错误码:
-//  DRYRUNOPERATION = "DryRunOperation"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  OPERATIONDENIED = "OperationDenied"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINUSE_OTHERS = "ResourceInUse.Others"
-//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DeleteApplicationProxy(request *DeleteApplicationProxyRequest) (response *DeleteApplicationProxyResponse, err error) {
     return c.DeleteApplicationProxyWithContext(context.Background(), request)
 }
@@ -815,12 +818,7 @@ func (c *Client) DeleteApplicationProxy(request *DeleteApplicationProxyRequest) 
 // 删除应用代理
 //
 // 可能返回的错误码:
-//  DRYRUNOPERATION = "DryRunOperation"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  OPERATIONDENIED = "OperationDenied"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINUSE_OTHERS = "ResourceInUse.Others"
-//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DeleteApplicationProxyWithContext(ctx context.Context, request *DeleteApplicationProxyRequest) (response *DeleteApplicationProxyResponse, err error) {
     if request == nil {
         request = NewDeleteApplicationProxyRequest()
@@ -4039,7 +4037,7 @@ func NewModifyApplicationProxyStatusResponse() (response *ModifyApplicationProxy
 // 修改应用代理的状态
 //
 // 可能返回的错误码:
-//  INVALIDPARAMETER_PARAMETERERROR = "InvalidParameter.ParameterError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ModifyApplicationProxyStatus(request *ModifyApplicationProxyStatusRequest) (response *ModifyApplicationProxyStatusResponse, err error) {
     return c.ModifyApplicationProxyStatusWithContext(context.Background(), request)
 }
@@ -4048,7 +4046,7 @@ func (c *Client) ModifyApplicationProxyStatus(request *ModifyApplicationProxySta
 // 修改应用代理的状态
 //
 // 可能返回的错误码:
-//  INVALIDPARAMETER_PARAMETERERROR = "InvalidParameter.ParameterError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ModifyApplicationProxyStatusWithContext(ctx context.Context, request *ModifyApplicationProxyStatusRequest) (response *ModifyApplicationProxyStatusResponse, err error) {
     if request == nil {
         request = NewModifyApplicationProxyStatusRequest()
@@ -4239,6 +4237,7 @@ func NewModifyDnsRecordResponse() (response *ModifyDnsRecordResponse) {
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_INVALIDDNSCONTENT = "InvalidParameterValue.InvalidDNSContent"
 //  INVALIDPARAMETERVALUE_INVALIDDNSNAME = "InvalidParameterValue.InvalidDNSName"
+//  INVALIDPARAMETERVALUE_INVALIDPROXYNAME = "InvalidParameterValue.InvalidProxyName"
 //  INVALIDPARAMETERVALUE_RECORDALREADYEXISTS = "InvalidParameterValue.RecordAlreadyExists"
 //  INVALIDPARAMETERVALUE_RECORDNOTALLOWED = "InvalidParameterValue.RecordNotAllowed"
 //  OPERATIONDENIED = "OperationDenied"
@@ -4255,6 +4254,7 @@ func (c *Client) ModifyDnsRecord(request *ModifyDnsRecordRequest) (response *Mod
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_INVALIDDNSCONTENT = "InvalidParameterValue.InvalidDNSContent"
 //  INVALIDPARAMETERVALUE_INVALIDDNSNAME = "InvalidParameterValue.InvalidDNSName"
+//  INVALIDPARAMETERVALUE_INVALIDPROXYNAME = "InvalidParameterValue.InvalidProxyName"
 //  INVALIDPARAMETERVALUE_RECORDALREADYEXISTS = "InvalidParameterValue.RecordAlreadyExists"
 //  INVALIDPARAMETERVALUE_RECORDNOTALLOWED = "InvalidParameterValue.RecordNotAllowed"
 //  OPERATIONDENIED = "OperationDenied"
@@ -4947,8 +4947,7 @@ func NewReclaimZoneResponse() (response *ReclaimZoneResponse) {
 // 站点被其他用户接入后，验证了站点所有权之后，可以找回该站点
 //
 // 可能返回的错误码:
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  OPERATIONDENIED = "OperationDenied"
 func (c *Client) ReclaimZone(request *ReclaimZoneRequest) (response *ReclaimZoneResponse, err error) {
     return c.ReclaimZoneWithContext(context.Background(), request)
 }
@@ -4957,8 +4956,7 @@ func (c *Client) ReclaimZone(request *ReclaimZoneRequest) (response *ReclaimZone
 // 站点被其他用户接入后，验证了站点所有权之后，可以找回该站点
 //
 // 可能返回的错误码:
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  OPERATIONDENIED = "OperationDenied"
 func (c *Client) ReclaimZoneWithContext(ctx context.Context, request *ReclaimZoneRequest) (response *ReclaimZoneResponse, err error) {
     if request == nil {
         request = NewReclaimZoneRequest()
