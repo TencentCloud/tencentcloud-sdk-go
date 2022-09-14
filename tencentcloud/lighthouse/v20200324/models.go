@@ -326,6 +326,16 @@ type Blueprint struct {
 	// CVM镜像共享到轻量应用服务器轻量应用服务器后的CVM镜像ID。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ImageId *string `json:"ImageId,omitempty" name:"ImageId"`
+
+	// 官方网站Url。
+	CommunityUrl *string `json:"CommunityUrl,omitempty" name:"CommunityUrl"`
+
+	// 指导文章Url。
+	GuideUrl *string `json:"GuideUrl,omitempty" name:"GuideUrl"`
+
+	// 镜像关联使用场景Id列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SceneIdSet []*string `json:"SceneIdSet,omitempty" name:"SceneIdSet"`
 }
 
 type BlueprintInstance struct {
@@ -1185,6 +1195,9 @@ type DescribeBlueprintsRequestParams struct {
 	// <li>blueprint-state</li>按照【镜像状态】进行过滤。
 	// 类型：String
 	// 必选：否
+	// <li>scene-id</li>按照【使用场景Id】进行过滤。
+	// 类型：String
+	// 必选：否
 	// 
 	// 每次请求的 Filters 的上限为 10，Filter.Values 的上限为 5。参数不支持同时指定 BlueprintIds 和 Filters 。
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
@@ -1218,6 +1231,9 @@ type DescribeBlueprintsRequest struct {
 	// 类型：String
 	// 必选：否
 	// <li>blueprint-state</li>按照【镜像状态】进行过滤。
+	// 类型：String
+	// 必选：否
+	// <li>scene-id</li>按照【使用场景Id】进行过滤。
 	// 类型：String
 	// 必选：否
 	// 

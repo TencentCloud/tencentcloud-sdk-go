@@ -6041,6 +6041,10 @@ type TaskResponseInfo struct {
 	// 任务耗时，单位： ms
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalTime *int64 `json:"TotalTime,omitempty" name:"TotalTime"`
+
+	// spark app job执行task的程序入口参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CmdArgs *string `json:"CmdArgs,omitempty" name:"CmdArgs"`
 }
 
 type TaskResultInfo struct {

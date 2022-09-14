@@ -406,22 +406,22 @@ func (r *AssociateSecurityGroupsResponse) FromJsonString(s string) error {
 }
 
 type BackupFileInfo struct {
-	// 快照文件ID，用于回滚
+	// 快照文件ID，已废弃，请使用BackupId
 	SnapshotId *uint64 `json:"SnapshotId,omitempty" name:"SnapshotId"`
 
-	// 快照文件名
+	// 备份文件名
 	FileName *string `json:"FileName,omitempty" name:"FileName"`
 
-	// 快照文件大小
+	// 备份文件大小
 	FileSize *uint64 `json:"FileSize,omitempty" name:"FileSize"`
 
-	// 快照备份开始时间
+	// 备份开始时间
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
 
-	// 快照备份完成时间
+	// 备份完成时间
 	FinishTime *string `json:"FinishTime,omitempty" name:"FinishTime"`
 
-	// 备份类型：snapshot，快照备份；timepoint，时间点备份
+	// 备份类型：snapshot，快照备份；logic，逻辑备份
 	BackupType *string `json:"BackupType,omitempty" name:"BackupType"`
 
 	// 备份方式：auto，自动备份；manual，手动备份
@@ -432,6 +432,18 @@ type BackupFileInfo struct {
 
 	// 备份文件时间
 	SnapshotTime *string `json:"SnapshotTime,omitempty" name:"SnapshotTime"`
+
+	// 备份ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BackupId *int64 `json:"BackupId,omitempty" name:"BackupId"`
+
+	// 快照类型，可选值：full，全量；increment，增量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SnapShotType *string `json:"SnapShotType,omitempty" name:"SnapShotType"`
+
+	// 备份文件备注
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BackupName *string `json:"BackupName,omitempty" name:"BackupName"`
 }
 
 type BillingResourceInfo struct {
@@ -1836,15 +1848,39 @@ type DescribeBackupListRequestParams struct {
 	// 集群ID
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 
-	// 备份文件列表偏移
+	// 备份文件列表大小，取值范围(0,100]
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 备份文件列表起始
+	// 备份文件列表偏移，取值范围[0,INF)
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
 	// 数据库类型，取值范围: 
 	// <li> MYSQL </li>
 	DbType *string `json:"DbType,omitempty" name:"DbType"`
+
+	// 备份ID
+	BackupIds []*int64 `json:"BackupIds,omitempty" name:"BackupIds"`
+
+	// 备份类型，可选值：snapshot，快照备份； logic，逻辑备份
+	BackupType *string `json:"BackupType,omitempty" name:"BackupType"`
+
+	// 备份方式，可选值：auto，自动备份；manual，手动备
+	BackupMethod *string `json:"BackupMethod,omitempty" name:"BackupMethod"`
+
+	// 快照类型，可选值：full，全量；increment，增量
+	SnapShotType *string `json:"SnapShotType,omitempty" name:"SnapShotType"`
+
+	// 备份开始时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 备份结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 备份文件名，模糊查询
+	FileNames []*string `json:"FileNames,omitempty" name:"FileNames"`
+
+	// 备份备注名，模糊查询
+	BackupNames []*string `json:"BackupNames,omitempty" name:"BackupNames"`
 }
 
 type DescribeBackupListRequest struct {
@@ -1853,15 +1889,39 @@ type DescribeBackupListRequest struct {
 	// 集群ID
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 
-	// 备份文件列表偏移
+	// 备份文件列表大小，取值范围(0,100]
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 备份文件列表起始
+	// 备份文件列表偏移，取值范围[0,INF)
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
 	// 数据库类型，取值范围: 
 	// <li> MYSQL </li>
 	DbType *string `json:"DbType,omitempty" name:"DbType"`
+
+	// 备份ID
+	BackupIds []*int64 `json:"BackupIds,omitempty" name:"BackupIds"`
+
+	// 备份类型，可选值：snapshot，快照备份； logic，逻辑备份
+	BackupType *string `json:"BackupType,omitempty" name:"BackupType"`
+
+	// 备份方式，可选值：auto，自动备份；manual，手动备
+	BackupMethod *string `json:"BackupMethod,omitempty" name:"BackupMethod"`
+
+	// 快照类型，可选值：full，全量；increment，增量
+	SnapShotType *string `json:"SnapShotType,omitempty" name:"SnapShotType"`
+
+	// 备份开始时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 备份结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 备份文件名，模糊查询
+	FileNames []*string `json:"FileNames,omitempty" name:"FileNames"`
+
+	// 备份备注名，模糊查询
+	BackupNames []*string `json:"BackupNames,omitempty" name:"BackupNames"`
 }
 
 func (r *DescribeBackupListRequest) ToJsonString() string {
@@ -1880,6 +1940,14 @@ func (r *DescribeBackupListRequest) FromJsonString(s string) error {
 	delete(f, "Limit")
 	delete(f, "Offset")
 	delete(f, "DbType")
+	delete(f, "BackupIds")
+	delete(f, "BackupType")
+	delete(f, "BackupMethod")
+	delete(f, "SnapShotType")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "FileNames")
+	delete(f, "BackupNames")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBackupListRequest has unknown keys!", "")
 	}

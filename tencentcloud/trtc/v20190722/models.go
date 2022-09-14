@@ -2056,8 +2056,11 @@ type RecordParams struct {
 	// 指定订阅流白名单或者黑名单。
 	SubscribeStreamUserIds *SubscribeStreamUserIds `json:"SubscribeStreamUserIds,omitempty" name:"SubscribeStreamUserIds"`
 
-	// 输出文件的格式，上传到云点播时此参数无效。0：(默认)输出文件为hls格式。1：输出文件格式为hls+mp4（hls录制完成后转mp4文件）
+	// 输出文件的格式，上传到云点播时此参数无效，存储到云点播时请关注TencentVod内的MediaType参数。0：(默认)输出文件为hls格式。1：输出文件格式为hls+mp4（hls录制完成后转mp4文件）。
 	OutputFormat *uint64 `json:"OutputFormat,omitempty" name:"OutputFormat"`
+
+	// 单流录制模式下，用户的音视频是否合并，0：单流音视频不合并（默认）。1：单流音视频合并成一个ts。混流录制此参数无需设置，默认音视频合并。
+	AvMerge *uint64 `json:"AvMerge,omitempty" name:"AvMerge"`
 }
 
 type RecordUsage struct {
@@ -2669,6 +2672,9 @@ type TencentVod struct {
 
 	// 上传上下文，上传完成回调时透传。
 	SourceContext *string `json:"SourceContext,omitempty" name:"SourceContext"`
+
+	// 上传到vod平台的录制文件格式类型，0：mp4(默认), 1: hls。
+	MediaType *uint64 `json:"MediaType,omitempty" name:"MediaType"`
 }
 
 type TimeValue struct {

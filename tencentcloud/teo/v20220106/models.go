@@ -5352,69 +5352,95 @@ func (r *DescribeOriginGroupResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeOverviewL7DataRequestParams struct {
-	// RFC3339格式，客户端时间
+	// 开始时间。
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
 
-	// RFC3339格式，客户端时间
+	// 结束时间。
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
-	// 指标列表，支持的指标
-	// l7Flow_outFlux: 访问流量
-	// l7Flow_request: 访问请求数
-	// l7Flow_outBandwidth: 访问带宽
-	//  l7Flow_hit_outFlux: 缓存命中流量
+	// 查询的指标，取值有：
+	// <li>l7Flow_outFlux: 访问流量；</li>
+	// <li>l7Flow_request: 访问请求数；</li>
+	// <li>l7Flow_outBandwidth: 访问带宽；</li>
+	// <li>l7Flow_hit_outFlux: 缓存命中流量。</li>
 	MetricNames []*string `json:"MetricNames,omitempty" name:"MetricNames"`
 
-	// 时间间隔，选填{min, 5min, hour, day, week}
+	// 查询时间粒度，取值有：
+	// <li>min ：1分钟 ；</li>
+	// <li>5min ：5分钟 ；</li>
+	// <li>hour ：1小时 ；</li>
+	// <li>day ：1天 。</li>
 	Interval *string `json:"Interval,omitempty" name:"Interval"`
 
-	// ZoneId列表，仅在zone/domain维度下查询时该参数有效
+	// 查询的站点集合，不填默认查询所有站点。
 	ZoneIds []*string `json:"ZoneIds,omitempty" name:"ZoneIds"`
 
-	// Domain列表，仅在domain维度下查询时该参数有效
+	// 查询的域名集合，不填默认查询所有子域名。
 	Domains []*string `json:"Domains,omitempty" name:"Domains"`
 
-	// 协议类型， 选填{http,http2,https,all}
+	// 查询的协议类型，取值有：
+	// <li>http: http协议；</li>
+	// <li>https: https协议；</li>
+	// <li>http2: http2协议；</li>
+	// <li>all:  所有协议。</li>不填默认为: all，表示查询所有协议。
 	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
 
 	// 加速区域，取值有：
 	// <li>mainland：中国大陆境内;</li>
 	// <li>overseas：全球（不含中国大陆）。</li>
 	Area *string `json:"Area,omitempty" name:"Area"`
+
+	// 过滤条件，Filters.Values的上限为20。详细的过滤条件如下：
+	// <li>tagKey<br>   按照【<strong>标签Key</strong>】进行过滤。<br>   类型：String<br>   必选：否
+	// <li>tagValue<br>   按照【<strong>标签Value</strong>】进行过滤。<br>   类型：String<br>   必选：否
+	Filters []*QueryCondition `json:"Filters,omitempty" name:"Filters"`
 }
 
 type DescribeOverviewL7DataRequest struct {
 	*tchttp.BaseRequest
 	
-	// RFC3339格式，客户端时间
+	// 开始时间。
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
 
-	// RFC3339格式，客户端时间
+	// 结束时间。
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
-	// 指标列表，支持的指标
-	// l7Flow_outFlux: 访问流量
-	// l7Flow_request: 访问请求数
-	// l7Flow_outBandwidth: 访问带宽
-	//  l7Flow_hit_outFlux: 缓存命中流量
+	// 查询的指标，取值有：
+	// <li>l7Flow_outFlux: 访问流量；</li>
+	// <li>l7Flow_request: 访问请求数；</li>
+	// <li>l7Flow_outBandwidth: 访问带宽；</li>
+	// <li>l7Flow_hit_outFlux: 缓存命中流量。</li>
 	MetricNames []*string `json:"MetricNames,omitempty" name:"MetricNames"`
 
-	// 时间间隔，选填{min, 5min, hour, day, week}
+	// 查询时间粒度，取值有：
+	// <li>min ：1分钟 ；</li>
+	// <li>5min ：5分钟 ；</li>
+	// <li>hour ：1小时 ；</li>
+	// <li>day ：1天 。</li>
 	Interval *string `json:"Interval,omitempty" name:"Interval"`
 
-	// ZoneId列表，仅在zone/domain维度下查询时该参数有效
+	// 查询的站点集合，不填默认查询所有站点。
 	ZoneIds []*string `json:"ZoneIds,omitempty" name:"ZoneIds"`
 
-	// Domain列表，仅在domain维度下查询时该参数有效
+	// 查询的域名集合，不填默认查询所有子域名。
 	Domains []*string `json:"Domains,omitempty" name:"Domains"`
 
-	// 协议类型， 选填{http,http2,https,all}
+	// 查询的协议类型，取值有：
+	// <li>http: http协议；</li>
+	// <li>https: https协议；</li>
+	// <li>http2: http2协议；</li>
+	// <li>all:  所有协议。</li>不填默认为: all，表示查询所有协议。
 	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
 
 	// 加速区域，取值有：
 	// <li>mainland：中国大陆境内;</li>
 	// <li>overseas：全球（不含中国大陆）。</li>
 	Area *string `json:"Area,omitempty" name:"Area"`
+
+	// 过滤条件，Filters.Values的上限为20。详细的过滤条件如下：
+	// <li>tagKey<br>   按照【<strong>标签Key</strong>】进行过滤。<br>   类型：String<br>   必选：否
+	// <li>tagValue<br>   按照【<strong>标签Value</strong>】进行过滤。<br>   类型：String<br>   必选：否
+	Filters []*QueryCondition `json:"Filters,omitempty" name:"Filters"`
 }
 
 func (r *DescribeOverviewL7DataRequest) ToJsonString() string {
@@ -5437,6 +5463,7 @@ func (r *DescribeOverviewL7DataRequest) FromJsonString(s string) error {
 	delete(f, "Domains")
 	delete(f, "Protocol")
 	delete(f, "Area")
+	delete(f, "Filters")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeOverviewL7DataRequest has unknown keys!", "")
 	}
@@ -5445,13 +5472,13 @@ func (r *DescribeOverviewL7DataRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeOverviewL7DataResponseParams struct {
-	// 查询维度
+	// 查询维度。
 	Type *string `json:"Type,omitempty" name:"Type"`
 
-	// 时间间隔
+	// 查询时间间隔。
 	Interval *string `json:"Interval,omitempty" name:"Interval"`
 
-	// 详细数据
+	// 七层监控类时序流量数据列表。
 	Data []*TimingDataRecord `json:"Data,omitempty" name:"Data"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -11132,13 +11159,21 @@ type PostMaxSize struct {
 }
 
 type QueryCondition struct {
-	// 维度
+	// 筛选条件的key。
 	Key *string `json:"Key,omitempty" name:"Key"`
 
-	// 操作符
+	// 查询条件操作符，操作类型有：
+	// <li>equals: 等于；</li>
+	// <li>notEquals: 不等于；</li>
+	// <li>include: 包含；</li>
+	// <li>notInclude: 不包含; </li>
+	// <li>startWith: 开始于；</li>
+	// <li>notStartWith: 不开始于；</li>
+	// <li>endWith: 结尾是；</li>
+	// <li>notEndWith: 不结尾是。</li>
 	Operator *string `json:"Operator,omitempty" name:"Operator"`
 
-	// 维度值
+	// 筛选条件的值。
 	Value []*string `json:"Value,omitempty" name:"Value"`
 }
 

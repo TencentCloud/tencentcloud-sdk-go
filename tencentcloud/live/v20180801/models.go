@@ -8722,6 +8722,77 @@ func (r *DescribeTopClientIpSumInfoListResponse) FromJsonString(s string) error 
 }
 
 // Predefined struct for user
+type DescribeTranscodeTaskNumRequestParams struct {
+	// 起始时间，格式：yyyy-mm-dd HH:MM:SS。
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间，格式：yyyy-mm-dd HH:MM:SS。
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 推流域名列表，不填表示总体数据。
+	PushDomains []*string `json:"PushDomains,omitempty" name:"PushDomains"`
+}
+
+type DescribeTranscodeTaskNumRequest struct {
+	*tchttp.BaseRequest
+	
+	// 起始时间，格式：yyyy-mm-dd HH:MM:SS。
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间，格式：yyyy-mm-dd HH:MM:SS。
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 推流域名列表，不填表示总体数据。
+	PushDomains []*string `json:"PushDomains,omitempty" name:"PushDomains"`
+}
+
+func (r *DescribeTranscodeTaskNumRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTranscodeTaskNumRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "PushDomains")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTranscodeTaskNumRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeTranscodeTaskNumResponseParams struct {
+	// 任务数列表。
+	DataInfoList []*TranscodeTaskNum `json:"DataInfoList,omitempty" name:"DataInfoList"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeTranscodeTaskNumResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeTranscodeTaskNumResponseParams `json:"Response"`
+}
+
+func (r *DescribeTranscodeTaskNumResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTranscodeTaskNumResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeUploadStreamNumsRequestParams struct {
 	// 起始时间点，格式为yyyy-mm-dd HH:MM:SS。
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
@@ -12237,6 +12308,17 @@ type TranscodeDetailInfo struct {
 
 	// 分辨率。
 	Resolution *string `json:"Resolution,omitempty" name:"Resolution"`
+}
+
+type TranscodeTaskNum struct {
+	// 时间点。
+	Time *string `json:"Time,omitempty" name:"Time"`
+
+	// 码率。
+	CodeRate *uint64 `json:"CodeRate,omitempty" name:"CodeRate"`
+
+	// 任务数。
+	Num *uint64 `json:"Num,omitempty" name:"Num"`
 }
 
 type TranscodeTotalInfo struct {

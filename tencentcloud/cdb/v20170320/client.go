@@ -3759,60 +3759,6 @@ func (c *Client) DescribeDBSwitchRecordsWithContext(ctx context.Context, request
     return
 }
 
-func NewDescribeDBZoneConfigRequest() (request *DescribeDBZoneConfigRequest) {
-    request = &DescribeDBZoneConfigRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("cdb", APIVersion, "DescribeDBZoneConfig")
-    
-    
-    return
-}
-
-func NewDescribeDBZoneConfigResponse() (response *DescribeDBZoneConfigResponse) {
-    response = &DescribeDBZoneConfigResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// DescribeDBZoneConfig
-// 本接口(DescribeDBZoneConfig)用于查询可创建的云数据库各地域可售卖的规格配置。
-//
-// 可能返回的错误码:
-//  CDBERROR = "CdbError"
-//  INTERNALERROR_CAUTHERROR = "InternalError.CauthError"
-//  INTERNALERROR_UNDEFINEDERROR = "InternalError.UndefinedError"
-//  INVALIDPARAMETER = "InvalidParameter"
-func (c *Client) DescribeDBZoneConfig(request *DescribeDBZoneConfigRequest) (response *DescribeDBZoneConfigResponse, err error) {
-    return c.DescribeDBZoneConfigWithContext(context.Background(), request)
-}
-
-// DescribeDBZoneConfig
-// 本接口(DescribeDBZoneConfig)用于查询可创建的云数据库各地域可售卖的规格配置。
-//
-// 可能返回的错误码:
-//  CDBERROR = "CdbError"
-//  INTERNALERROR_CAUTHERROR = "InternalError.CauthError"
-//  INTERNALERROR_UNDEFINEDERROR = "InternalError.UndefinedError"
-//  INVALIDPARAMETER = "InvalidParameter"
-func (c *Client) DescribeDBZoneConfigWithContext(ctx context.Context, request *DescribeDBZoneConfigRequest) (response *DescribeDBZoneConfigResponse, err error) {
-    if request == nil {
-        request = NewDescribeDBZoneConfigRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeDBZoneConfig require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeDBZoneConfigResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewDescribeDataBackupOverviewRequest() (request *DescribeDataBackupOverviewRequest) {
     request = &DescribeDataBackupOverviewRequest{
         BaseRequest: &tchttp.BaseRequest{},

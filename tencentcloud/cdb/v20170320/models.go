@@ -4376,11 +4376,17 @@ func (r *DescribeBinlogBackupOverviewRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeBinlogBackupOverviewResponseParams struct {
-	// 总的日志备份容量（单位为字节）。
+	// 总的日志备份容量，包含异地日志备份（单位为字节）。
 	BinlogBackupVolume *int64 `json:"BinlogBackupVolume,omitempty" name:"BinlogBackupVolume"`
 
-	// 总的日志备份个数。
+	// 总的日志备份个数，包含异地日志备份。
 	BinlogBackupCount *int64 `json:"BinlogBackupCount,omitempty" name:"BinlogBackupCount"`
+
+	// 异地日志备份容量（单位为字节）。
+	RemoteBinlogVolume *int64 `json:"RemoteBinlogVolume,omitempty" name:"RemoteBinlogVolume"`
+
+	// 异地日志备份个数。
+	RemoteBinlogCount *int64 `json:"RemoteBinlogCount,omitempty" name:"RemoteBinlogCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -5667,63 +5673,6 @@ func (r *DescribeDBSwitchRecordsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
-type DescribeDBZoneConfigRequestParams struct {
-
-}
-
-type DescribeDBZoneConfigRequest struct {
-	*tchttp.BaseRequest
-	
-}
-
-func (r *DescribeDBZoneConfigRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeDBZoneConfigRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDBZoneConfigRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DescribeDBZoneConfigResponseParams struct {
-	// 可售卖地域配置数量
-	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-	// 可售卖地域配置详情
-	Items []*RegionSellConf `json:"Items,omitempty" name:"Items"`
-
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-}
-
-type DescribeDBZoneConfigResponse struct {
-	*tchttp.BaseResponse
-	Response *DescribeDBZoneConfigResponseParams `json:"Response"`
-}
-
-func (r *DescribeDBZoneConfigResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeDBZoneConfigResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
 type DescribeDataBackupOverviewRequestParams struct {
 	// 需要查询的云数据库产品类型，目前仅支持 "mysql"。
 	Product *string `json:"Product,omitempty" name:"Product"`
@@ -5774,6 +5723,12 @@ type DescribeDataBackupOverviewResponseParams struct {
 
 	// 当前地域的手动备份总个数。
 	ManualBackupCount *int64 `json:"ManualBackupCount,omitempty" name:"ManualBackupCount"`
+
+	// 当前地域异地备份总容量。
+	RemoteBackupVolume *int64 `json:"RemoteBackupVolume,omitempty" name:"RemoteBackupVolume"`
+
+	// 当前地域异地备份总个数。
+	RemoteBackupCount *int64 `json:"RemoteBackupCount,omitempty" name:"RemoteBackupCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -11140,23 +11095,6 @@ type RWInstanceInfo struct {
 
 }
 
-type RegionSellConf struct {
-	// 地域中文名称
-	RegionName *string `json:"RegionName,omitempty" name:"RegionName"`
-
-	// 所属大区
-	Area *string `json:"Area,omitempty" name:"Area"`
-
-	// 是否为默认地域
-	IsDefaultRegion *int64 `json:"IsDefaultRegion,omitempty" name:"IsDefaultRegion"`
-
-	// 地域名称
-	Region *string `json:"Region,omitempty" name:"Region"`
-
-	// 可用区售卖配置
-	ZonesConf []*ZoneSellConf `json:"ZonesConf,omitempty" name:"ZonesConf"`
-}
-
 // Predefined struct for user
 type ReleaseIsolatedDBInstancesRequestParams struct {
 	// 实例 ID 数组，单个实例 ID 格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同，可使用 [查询实例列表](https://cloud.tencent.com/document/api/236/15872) 接口获取，其值为输出参数中字段 InstanceId 的值。
@@ -11746,73 +11684,6 @@ type SecurityGroup struct {
 
 	// 安全组备注
 	SecurityGroupRemark *string `json:"SecurityGroupRemark,omitempty" name:"SecurityGroupRemark"`
-}
-
-type SellConfig struct {
-	// 设备类型（废弃）
-	Device *string `json:"Device,omitempty" name:"Device"`
-
-	// 售卖规格描述（废弃）
-	Type *string `json:"Type,omitempty" name:"Type"`
-
-	// 实例类型（废弃）
-	CdbType *string `json:"CdbType,omitempty" name:"CdbType"`
-
-	// 内存大小，单位为MB
-	Memory *int64 `json:"Memory,omitempty" name:"Memory"`
-
-	// CPU核心数
-	Cpu *int64 `json:"Cpu,omitempty" name:"Cpu"`
-
-	// 磁盘最小规格，单位为GB
-	VolumeMin *int64 `json:"VolumeMin,omitempty" name:"VolumeMin"`
-
-	// 磁盘最大规格，单位为GB
-	VolumeMax *int64 `json:"VolumeMax,omitempty" name:"VolumeMax"`
-
-	// 磁盘步长，单位为GB
-	VolumeStep *int64 `json:"VolumeStep,omitempty" name:"VolumeStep"`
-
-	// 链接数
-	Connection *int64 `json:"Connection,omitempty" name:"Connection"`
-
-	// 每秒查询数量
-	Qps *int64 `json:"Qps,omitempty" name:"Qps"`
-
-	// 每秒IO数量
-	Iops *int64 `json:"Iops,omitempty" name:"Iops"`
-
-	// 应用场景描述
-	Info *string `json:"Info,omitempty" name:"Info"`
-
-	// 状态值，0 表示该规格对外售卖
-	Status *int64 `json:"Status,omitempty" name:"Status"`
-
-	// 标签值（废弃）
-	Tag *int64 `json:"Tag,omitempty" name:"Tag"`
-
-	// 实例类型，可能的取值范围有：UNIVERSAL (通用型), EXCLUSIVE (独享型), BASIC (基础型)
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	DeviceType *string `json:"DeviceType,omitempty" name:"DeviceType"`
-
-	// 实例类型描述，可能的取值范围有：通用型， 独享型， 基础型
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	DeviceTypeName *string `json:"DeviceTypeName,omitempty" name:"DeviceTypeName"`
-
-	// 引擎类型描述，可能的取值范围有：Innodb，RocksDB
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	EngineType *string `json:"EngineType,omitempty" name:"EngineType"`
-}
-
-type SellType struct {
-	// 售卖实例名称
-	TypeName *string `json:"TypeName,omitempty" name:"TypeName"`
-
-	// 内核版本号
-	EngineVersion []*string `json:"EngineVersion,omitempty" name:"EngineVersion"`
-
-	// 售卖规格详细配置
-	Configs []*SellConfig `json:"Configs,omitempty" name:"Configs"`
 }
 
 type SlaveConfig struct {
@@ -13098,66 +12969,4 @@ type ZoneConf struct {
 
 	// 实例为多可用区部署时，备库2所在的可用区
 	BackupZone []*string `json:"BackupZone,omitempty" name:"BackupZone"`
-}
-
-type ZoneSellConf struct {
-	// 可用区状态。可能的返回值为：1-上线；3-停售；4-不展示
-	Status *int64 `json:"Status,omitempty" name:"Status"`
-
-	// 可用区中文名称
-	ZoneName *string `json:"ZoneName,omitempty" name:"ZoneName"`
-
-	// 实例类型是否为自定义类型
-	IsCustom *bool `json:"IsCustom,omitempty" name:"IsCustom"`
-
-	// 是否支持灾备
-	IsSupportDr *bool `json:"IsSupportDr,omitempty" name:"IsSupportDr"`
-
-	// 是否支持私有网络
-	IsSupportVpc *bool `json:"IsSupportVpc,omitempty" name:"IsSupportVpc"`
-
-	// 小时计费实例最大售卖数量
-	HourInstanceSaleMaxNum *int64 `json:"HourInstanceSaleMaxNum,omitempty" name:"HourInstanceSaleMaxNum"`
-
-	// 是否为默认可用区
-	IsDefaultZone *bool `json:"IsDefaultZone,omitempty" name:"IsDefaultZone"`
-
-	// 是否为黑石区
-	IsBm *bool `json:"IsBm,omitempty" name:"IsBm"`
-
-	// 支持的付费类型。可能的返回值为：0-包年包月；1-小时计费；2-后付费
-	PayType []*string `json:"PayType,omitempty" name:"PayType"`
-
-	// 数据复制类型。0-异步复制；1-半同步复制；2-强同步复制
-	ProtectMode []*string `json:"ProtectMode,omitempty" name:"ProtectMode"`
-
-	// 可用区名称
-	Zone *string `json:"Zone,omitempty" name:"Zone"`
-
-	// 售卖实例类型数组
-	SellType []*SellType `json:"SellType,omitempty" name:"SellType"`
-
-	// 多可用区信息
-	ZoneConf *ZoneConf `json:"ZoneConf,omitempty" name:"ZoneConf"`
-
-	// 可支持的灾备可用区信息
-	DrZone []*string `json:"DrZone,omitempty" name:"DrZone"`
-
-	// 是否支持跨可用区只读
-	IsSupportRemoteRo *bool `json:"IsSupportRemoteRo,omitempty" name:"IsSupportRemoteRo"`
-
-	// 可支持的跨可用区只读区信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	RemoteRoZone []*string `json:"RemoteRoZone,omitempty" name:"RemoteRoZone"`
-
-	// 独享型可用区状态。可能的返回值为：1-上线；3-停售；4-不展示
-	ExClusterStatus *int64 `json:"ExClusterStatus,omitempty" name:"ExClusterStatus"`
-
-	// 独享型可支持的跨可用区只读区信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	ExClusterRemoteRoZone []*string `json:"ExClusterRemoteRoZone,omitempty" name:"ExClusterRemoteRoZone"`
-
-	// 独享型多可用区信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	ExClusterZoneConf *ZoneConf `json:"ExClusterZoneConf,omitempty" name:"ExClusterZoneConf"`
 }

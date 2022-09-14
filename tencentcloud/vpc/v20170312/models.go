@@ -20374,6 +20374,10 @@ type NatGateway struct {
 	// 独享型NAT所在的网关集群的带宽(单位:Mbps)，当IsExclusive为false时无此字段。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExclusiveGatewayBandwidth *uint64 `json:"ExclusiveGatewayBandwidth,omitempty" name:"ExclusiveGatewayBandwidth"`
+
+	// NAT网关是否被封禁。“NORMAL”：未被封禁，“RESTRICTED”：已被封禁。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RestrictState *string `json:"RestrictState,omitempty" name:"RestrictState"`
 }
 
 type NatGatewayAddress struct {
@@ -22055,7 +22059,6 @@ type Route struct {
 	GatewayType *string `json:"GatewayType,omitempty" name:"GatewayType"`
 
 	// 下一跳地址，这里只需要指定不同下一跳类型的网关ID，系统会自动匹配到下一跳地址。
-	// 特别注意：当 GatewayType 为 EIP 时，GatewayId 固定值 '0'
 	GatewayId *string `json:"GatewayId,omitempty" name:"GatewayId"`
 
 	// 路由策略ID。IPv4路由策略ID是有意义的值，IPv6路由策略是无意义的值0。后续建议完全使用字符串唯一ID `RouteItemId`操作路由策略。

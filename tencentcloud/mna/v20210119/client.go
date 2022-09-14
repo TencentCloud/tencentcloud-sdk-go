@@ -45,6 +45,58 @@ func NewClient(credential common.CredentialIface, region string, clientProfile *
 }
 
 
+func NewAddDeviceRequest() (request *AddDeviceRequest) {
+    request = &AddDeviceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mna", APIVersion, "AddDevice")
+    
+    
+    return
+}
+
+func NewAddDeviceResponse() (response *AddDeviceResponse) {
+    response = &AddDeviceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// AddDevice
+// 新建设备记录
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CONTROLREQUESTERROR = "InternalError.ControlRequestError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) AddDevice(request *AddDeviceRequest) (response *AddDeviceResponse, err error) {
+    return c.AddDeviceWithContext(context.Background(), request)
+}
+
+// AddDevice
+// 新建设备记录
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CONTROLREQUESTERROR = "InternalError.ControlRequestError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) AddDeviceWithContext(ctx context.Context, request *AddDeviceRequest) (response *AddDeviceResponse, err error) {
+    if request == nil {
+        request = NewAddDeviceRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AddDevice require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewAddDeviceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateQosRequest() (request *CreateQosRequest) {
     request = &CreateQosRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -117,6 +169,58 @@ func (c *Client) CreateQosWithContext(ctx context.Context, request *CreateQosReq
     request.SetContext(ctx)
     
     response = NewCreateQosResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteDeviceRequest() (request *DeleteDeviceRequest) {
+    request = &DeleteDeviceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mna", APIVersion, "DeleteDevice")
+    
+    
+    return
+}
+
+func NewDeleteDeviceResponse() (response *DeleteDeviceResponse) {
+    response = &DeleteDeviceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteDevice
+// 删除设备信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CONTROLREQUESTERROR = "InternalError.ControlRequestError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DeleteDevice(request *DeleteDeviceRequest) (response *DeleteDeviceResponse, err error) {
+    return c.DeleteDeviceWithContext(context.Background(), request)
+}
+
+// DeleteDevice
+// 删除设备信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CONTROLREQUESTERROR = "InternalError.ControlRequestError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DeleteDeviceWithContext(ctx context.Context, request *DeleteDeviceRequest) (response *DeleteDeviceResponse, err error) {
+    if request == nil {
+        request = NewDeleteDeviceRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteDevice require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteDeviceResponse()
     err = c.Send(request, response)
     return
 }
@@ -235,6 +339,218 @@ func (c *Client) DescribeQosWithContext(ctx context.Context, request *DescribeQo
     request.SetContext(ctx)
     
     response = NewDescribeQosResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewGetDeviceRequest() (request *GetDeviceRequest) {
+    request = &GetDeviceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mna", APIVersion, "GetDevice")
+    
+    
+    return
+}
+
+func NewGetDeviceResponse() (response *GetDeviceResponse) {
+    response = &GetDeviceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// GetDevice
+// 通过指定设备的ID查找设备详细信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CONTROLREQUESTERROR = "InternalError.ControlRequestError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) GetDevice(request *GetDeviceRequest) (response *GetDeviceResponse, err error) {
+    return c.GetDeviceWithContext(context.Background(), request)
+}
+
+// GetDevice
+// 通过指定设备的ID查找设备详细信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CONTROLREQUESTERROR = "InternalError.ControlRequestError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) GetDeviceWithContext(ctx context.Context, request *GetDeviceRequest) (response *GetDeviceResponse, err error) {
+    if request == nil {
+        request = NewGetDeviceRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetDevice require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetDeviceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewGetDevicesRequest() (request *GetDevicesRequest) {
+    request = &GetDevicesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mna", APIVersion, "GetDevices")
+    
+    
+    return
+}
+
+func NewGetDevicesResponse() (response *GetDevicesResponse) {
+    response = &GetDevicesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// GetDevices
+// 获取设备信息列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CONTROLREQUESTERROR = "InternalError.ControlRequestError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) GetDevices(request *GetDevicesRequest) (response *GetDevicesResponse, err error) {
+    return c.GetDevicesWithContext(context.Background(), request)
+}
+
+// GetDevices
+// 获取设备信息列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CONTROLREQUESTERROR = "InternalError.ControlRequestError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) GetDevicesWithContext(ctx context.Context, request *GetDevicesRequest) (response *GetDevicesResponse, err error) {
+    if request == nil {
+        request = NewGetDevicesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetDevices require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetDevicesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewGetStatisticDataRequest() (request *GetStatisticDataRequest) {
+    request = &GetStatisticDataRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mna", APIVersion, "GetStatisticData")
+    
+    
+    return
+}
+
+func NewGetStatisticDataResponse() (response *GetStatisticDataResponse) {
+    response = &GetStatisticDataResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// GetStatisticData
+// 在用量统计页面下载流量数据
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CONTROLREQUESTERROR = "InternalError.ControlRequestError"
+//  INTERNALERROR_FILEIOERROR = "InternalError.FileIOError"
+//  INTERNALERROR_NETWORKINFOREQUESTERROR = "InternalError.NetworkInfoRequestError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) GetStatisticData(request *GetStatisticDataRequest) (response *GetStatisticDataResponse, err error) {
+    return c.GetStatisticDataWithContext(context.Background(), request)
+}
+
+// GetStatisticData
+// 在用量统计页面下载流量数据
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CONTROLREQUESTERROR = "InternalError.ControlRequestError"
+//  INTERNALERROR_FILEIOERROR = "InternalError.FileIOError"
+//  INTERNALERROR_NETWORKINFOREQUESTERROR = "InternalError.NetworkInfoRequestError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) GetStatisticDataWithContext(ctx context.Context, request *GetStatisticDataRequest) (response *GetStatisticDataResponse, err error) {
+    if request == nil {
+        request = NewGetStatisticDataRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetStatisticData require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetStatisticDataResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdateDeviceRequest() (request *UpdateDeviceRequest) {
+    request = &UpdateDeviceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mna", APIVersion, "UpdateDevice")
+    
+    
+    return
+}
+
+func NewUpdateDeviceResponse() (response *UpdateDeviceResponse) {
+    response = &UpdateDeviceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// UpdateDevice
+// 更新设备信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CONTROLREQUESTERROR = "InternalError.ControlRequestError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) UpdateDevice(request *UpdateDeviceRequest) (response *UpdateDeviceResponse, err error) {
+    return c.UpdateDeviceWithContext(context.Background(), request)
+}
+
+// UpdateDevice
+// 更新设备信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CONTROLREQUESTERROR = "InternalError.ControlRequestError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) UpdateDeviceWithContext(ctx context.Context, request *UpdateDeviceRequest) (response *UpdateDeviceResponse, err error) {
+    if request == nil {
+        request = NewUpdateDeviceRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateDevice require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpdateDeviceResponse()
     err = c.Send(request, response)
     return
 }

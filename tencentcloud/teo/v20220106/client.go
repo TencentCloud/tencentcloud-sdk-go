@@ -2362,7 +2362,7 @@ func NewDescribeOverviewL7DataResponse() (response *DescribeOverviewL7DataRespon
 }
 
 // DescribeOverviewL7Data
-// 查询七层监控类时序流量数据
+// 本接口（DescribeOverviewL7Data）用于查询七层监控类时序流量数据。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_ROUTEERROR = "InternalError.RouteError"
@@ -2373,7 +2373,7 @@ func (c *Client) DescribeOverviewL7Data(request *DescribeOverviewL7DataRequest) 
 }
 
 // DescribeOverviewL7Data
-// 查询七层监控类时序流量数据
+// 本接口（DescribeOverviewL7Data）用于查询七层监控类时序流量数据。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_ROUTEERROR = "InternalError.RouteError"

@@ -260,7 +260,7 @@ const (
 	// 不支持同时指定密钥登陆和保持镜像登陆方式。
 	INVALIDPARAMETER_PARAMETERCONFLICT = "InvalidParameter.ParameterConflict"
 
-	// 不支持设置登陆密码。
+	// 不支持设置登录密码。
 	INVALIDPARAMETER_PASSWORDNOTSUPPORTED = "InvalidParameter.PasswordNotSupported"
 
 	// 指定的快照不存在。

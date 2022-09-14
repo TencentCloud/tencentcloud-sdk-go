@@ -2079,7 +2079,7 @@ type ApplyOpenBankSubMerchantSignOnlineResult struct {
 	// 处理状态
 	//   SUCCESS：签约成功
 	//   FAILED：签约失败
-	//   PROCESSING“签约中
+	//   PROCESSING：签约中
 	SignStatus *string `json:"SignStatus,omitempty" name:"SignStatus"`
 
 	// 上传返回描述，例如失败原因等
@@ -22819,7 +22819,7 @@ type QueryOpenBankSubMerchantSignOnlineResult struct {
 	// 处理状态
 	//   SUCCESS：签约成功
 	//   FAILED：签约失败
-	//   PROCESSING“签约中
+	//   PROCESSING：签约中
 	SignStatus *string `json:"SignStatus,omitempty" name:"SignStatus"`
 
 	// 上传返回描述，例如失败原因等

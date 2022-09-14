@@ -1,5 +1,290 @@
 # 本版本更新包含以下内容：
 
+## 品牌经营管家(bma) 版本：2021-06-24
+
+### 第 8 次发布
+
+发布时间：2022-09-14 06:08:57
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeCRWorkInfo](https://cloud.tencent.com/document/api/1296/77821)
+
+	* 新增出参：EvidenceStatus, WorkCategory, IsOriginal, IsRelease, ProducerName, ProduceTime, WhiteLists, WorkDesc, Authorization, AuthorizationStartTime, AuthorizationEndTime, Commission, CommissionStartTime, CommissionEndTime, EvidenceUrl, EvidenceStartTime, EvidenceEndTime
+
+
+
+
+## 云数据库 MySQL(cdb) 版本：2017-03-20
+
+### 第 100 次发布
+
+发布时间：2022-09-14 06:11:05
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除接口**：</font>
+
+* DescribeDBZoneConfig
+
+修改接口：
+
+* [DescribeBinlogBackupOverview](https://cloud.tencent.com/document/api/236/41227)
+
+	* 新增出参：RemoteBinlogVolume, RemoteBinlogCount
+
+* [DescribeDataBackupOverview](https://cloud.tencent.com/document/api/236/41226)
+
+	* 新增出参：RemoteBackupVolume, RemoteBackupCount
+
+
+<font color="#dd0000">**删除数据结构**：</font>
+
+* RegionSellConf
+* SellConfig
+* SellType
+* ZoneSellConf
+
+
+
+## 云原生数据库 TDSQL-C(cynosdb) 版本：2019-01-07
+
+### 第 27 次发布
+
+发布时间：2022-09-14 06:18:19
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeBackupList](https://cloud.tencent.com/document/api/1003/48093)
+
+	* 新增入参：BackupIds, BackupType, BackupMethod, SnapShotType, StartTime, EndTime, FileNames, BackupNames
+
+	* <font color="#dd0000">**修改入参**：</font>Limit, Offset
+
+
+修改数据结构：
+
+* [BackupFileInfo](https://cloud.tencent.com/document/api/1003/48097#BackupFileInfo)
+
+	* 新增成员：BackupId, SnapShotType, BackupName
+
+
+
+
+## 数据湖计算(dlc) 版本：2021-01-25
+
+### 第 32 次发布
+
+发布时间：2022-09-14 06:20:02
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [TaskResponseInfo](https://cloud.tencent.com/document/api/1342/53778#TaskResponseInfo)
+
+	* 新增成员：CmdArgs
+
+
+
+
+## 轻量应用服务器(lighthouse) 版本：2020-03-24
+
+### 第 34 次发布
+
+发布时间：2022-09-14 06:27:13
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Blueprint](https://cloud.tencent.com/document/api/1207/47576#Blueprint)
+
+	* 新增成员：CommunityUrl, GuideUrl, SceneIdSet
+
+
+
+
+## 云直播(live) 版本：2018-08-01
+
+### 第 87 次发布
+
+发布时间：2022-09-14 06:27:40
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeTranscodeTaskNum](https://cloud.tencent.com/document/api/267/80463)
+
+新增数据结构：
+
+* [TranscodeTaskNum](https://cloud.tencent.com/document/api/267/20474#TranscodeTaskNum)
+
+
+
+## 移动网络加速(mna) 版本：2021-01-19
+
+### 第 6 次发布
+
+发布时间：2022-09-14 15:06:36
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [AddDevice](https://cloud.tencent.com/document/api/1385/80483)
+* [DeleteDevice](https://cloud.tencent.com/document/api/1385/80482)
+* [GetDevice](https://cloud.tencent.com/document/api/1385/80481)
+* [GetDevices](https://cloud.tencent.com/document/api/1385/80480)
+* [GetStatisticData](https://cloud.tencent.com/document/api/1385/80479)
+* [UpdateDevice](https://cloud.tencent.com/document/api/1385/80478)
+
+新增数据结构：
+
+* [DeviceBaseInfo](https://cloud.tencent.com/document/api/1385/55846#DeviceBaseInfo)
+* [DeviceDetails](https://cloud.tencent.com/document/api/1385/55846#DeviceDetails)
+* [DeviceNetInfo](https://cloud.tencent.com/document/api/1385/55846#DeviceNetInfo)
+* [UpdateNetInfo](https://cloud.tencent.com/document/api/1385/55846#UpdateNetInfo)
+
+
+
+## 文字识别(ocr) 版本：2018-11-19
+
+### 第 78 次发布
+
+发布时间：2022-09-14 06:29:31
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [RecognizeHealthCodeOCR](https://cloud.tencent.com/document/api/866/68580)
+
+	* 新增出参：SpotName
+
+
+
+
+## 边缘安全加速平台(teo) 版本：2022-01-06
+
+### 第 26 次发布
+
+发布时间：2022-09-14 06:37:50
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeOverviewL7Data](https://cloud.tencent.com/document/api/1552/75656)
+
+	* 新增入参：Filters
+
+
+
+
+## 实时音视频(trtc) 版本：2019-07-22
+
+### 第 38 次发布
+
+发布时间：2022-09-14 06:40:34
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [RecordParams](https://cloud.tencent.com/document/api/647/44055#RecordParams)
+
+	* 新增成员：AvMerge
+
+* [TencentVod](https://cloud.tencent.com/document/api/647/44055#TencentVod)
+
+	* 新增成员：MediaType
+
+
+
+
+## 视频内容安全(vm) 版本：2021-09-22
+
+### 第 3 次发布
+
+发布时间：2022-09-14 06:42:07
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeTaskDetail](https://cloud.tencent.com/document/api/1265/80016)
+
+	* 新增出参：Label, AudioText, Asrs
+
+
+新增数据结构：
+
+* [RcbAsr](https://cloud.tencent.com/document/api/1265/80019#RcbAsr)
+
+修改数据结构：
+
+* [MediaInfo](https://cloud.tencent.com/document/api/1265/80019#MediaInfo)
+
+	* 新增成员：Thumbnail
+
+
+
+
+## 视频内容安全(vm) 版本：2020-12-29
+
+
+
+## 视频内容安全(vm) 版本：2020-07-09
+
+
+
+## 私有网络(vpc) 版本：2017-03-12
+
+### 第 124 次发布
+
+发布时间：2022-09-14 06:43:15
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [NatGateway](https://cloud.tencent.com/document/api/215/15824#NatGateway)
+
+	* 新增成员：RestrictState
+
+
+
+
 # 历次版本更新如下：
 
 ## 活动防刷(aa) 版本：2020-02-24
@@ -7723,6 +8008,21 @@
 
 ## 品牌经营管家(bma) 版本：2021-06-24
 
+### 第 8 次发布
+
+发布时间：2022-09-14 06:08:57
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeCRWorkInfo](https://cloud.tencent.com/document/api/1296/77821)
+
+	* 新增出参：EvidenceStatus, WorkCategory, IsOriginal, IsRelease, ProducerName, ProduceTime, WhiteLists, WorkDesc, Authorization, AuthorizationStartTime, AuthorizationEndTime, Commission, CommissionStartTime, CommissionEndTime, EvidenceUrl, EvidenceStartTime, EvidenceEndTime
+
+
 ### 第 7 次发布
 
 发布时间：2022-09-07 06:10:17
@@ -11422,6 +11722,36 @@
 
 
 ## 云数据库 MySQL(cdb) 版本：2017-03-20
+
+### 第 100 次发布
+
+发布时间：2022-09-14 06:11:05
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除接口**：</font>
+
+* DescribeDBZoneConfig
+
+修改接口：
+
+* [DescribeBinlogBackupOverview](https://cloud.tencent.com/document/api/236/41227)
+
+	* 新增出参：RemoteBinlogVolume, RemoteBinlogCount
+
+* [DescribeDataBackupOverview](https://cloud.tencent.com/document/api/236/41226)
+
+	* 新增出参：RemoteBackupVolume, RemoteBackupCount
+
+
+<font color="#dd0000">**删除数据结构**：</font>
+
+* RegionSellConf
+* SellConfig
+* SellType
+* ZoneSellConf
 
 ### 第 99 次发布
 
@@ -28940,6 +29270,30 @@
 
 ## 云原生数据库 TDSQL-C(cynosdb) 版本：2019-01-07
 
+### 第 27 次发布
+
+发布时间：2022-09-14 06:18:19
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeBackupList](https://cloud.tencent.com/document/api/1003/48093)
+
+	* 新增入参：BackupIds, BackupType, BackupMethod, SnapShotType, StartTime, EndTime, FileNames, BackupNames
+
+	* <font color="#dd0000">**修改入参**：</font>Limit, Offset
+
+
+修改数据结构：
+
+* [BackupFileInfo](https://cloud.tencent.com/document/api/1003/48097#BackupFileInfo)
+
+	* 新增成员：BackupId, SnapShotType, BackupName
+
+
 ### 第 26 次发布
 
 发布时间：2022-09-08 06:19:30
@@ -32050,6 +32404,21 @@
 
 
 ## 数据湖计算(dlc) 版本：2021-01-25
+
+### 第 32 次发布
+
+发布时间：2022-09-14 06:20:02
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [TaskResponseInfo](https://cloud.tencent.com/document/api/1342/53778#TaskResponseInfo)
+
+	* 新增成员：CmdArgs
+
 
 ### 第 31 次发布
 
@@ -48736,6 +49105,21 @@
 
 ## 轻量应用服务器(lighthouse) 版本：2020-03-24
 
+### 第 34 次发布
+
+发布时间：2022-09-14 06:27:13
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Blueprint](https://cloud.tencent.com/document/api/1207/47576#Blueprint)
+
+	* 新增成员：CommunityUrl, GuideUrl, SceneIdSet
+
+
 ### 第 33 次发布
 
 发布时间：2022-08-11 06:38:25
@@ -49396,6 +49780,22 @@
 
 
 ## 云直播(live) 版本：2018-08-01
+
+### 第 87 次发布
+
+发布时间：2022-09-14 06:27:40
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeTranscodeTaskNum](https://cloud.tencent.com/document/api/267/80463)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[TranscodeTaskNum](https://cloud.tencent.com/document/api/267/20474#TranscodeTaskNum)](https://cloud.tencent.com/document/api/267/20474#[TranscodeTaskNum](https://cloud.tencent.com/document/api/267/20474#TranscodeTaskNum))
 
 ### 第 86 次发布
 
@@ -52434,6 +52834,30 @@
 
 
 ## 移动网络加速(mna) 版本：2021-01-19
+
+### 第 6 次发布
+
+发布时间：2022-09-14 15:06:36
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[AddDevice](https://cloud.tencent.com/document/api/1385/80483)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteDevice](https://cloud.tencent.com/document/api/1385/80482)](https://cloud.tencent.com/document/api/#/#)
+* [[GetDevice](https://cloud.tencent.com/document/api/1385/80481)](https://cloud.tencent.com/document/api/#/#)
+* [[GetDevices](https://cloud.tencent.com/document/api/1385/80480)](https://cloud.tencent.com/document/api/#/#)
+* [[GetStatisticData](https://cloud.tencent.com/document/api/1385/80479)](https://cloud.tencent.com/document/api/#/#)
+* [[UpdateDevice](https://cloud.tencent.com/document/api/1385/80478)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[DeviceBaseInfo](https://cloud.tencent.com/document/api/1385/55846#DeviceBaseInfo)](https://cloud.tencent.com/document/api/1385/55846#[DeviceBaseInfo](https://cloud.tencent.com/document/api/1385/55846#DeviceBaseInfo))
+* [[DeviceDetails](https://cloud.tencent.com/document/api/1385/55846#DeviceDetails)](https://cloud.tencent.com/document/api/1385/55846#[DeviceDetails](https://cloud.tencent.com/document/api/1385/55846#DeviceDetails))
+* [[DeviceNetInfo](https://cloud.tencent.com/document/api/1385/55846#DeviceNetInfo)](https://cloud.tencent.com/document/api/1385/55846#[DeviceNetInfo](https://cloud.tencent.com/document/api/1385/55846#DeviceNetInfo))
+* [[UpdateNetInfo](https://cloud.tencent.com/document/api/1385/55846#UpdateNetInfo)](https://cloud.tencent.com/document/api/1385/55846#[UpdateNetInfo](https://cloud.tencent.com/document/api/1385/55846#UpdateNetInfo))
 
 ### 第 5 次发布
 
@@ -57218,6 +57642,21 @@
 
 
 ## 文字识别(ocr) 版本：2018-11-19
+
+### 第 78 次发布
+
+发布时间：2022-09-14 06:29:31
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [RecognizeHealthCodeOCR](https://cloud.tencent.com/document/api/866/68580)
+
+	* 新增出参：SpotName
+
 
 ### 第 77 次发布
 
@@ -73744,6 +74183,21 @@
 
 ## 边缘安全加速平台(teo) 版本：2022-01-06
 
+### 第 26 次发布
+
+发布时间：2022-09-14 06:37:50
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeOverviewL7Data](https://cloud.tencent.com/document/api/1552/75656)
+
+	* 新增入参：Filters
+
+
 ### 第 25 次发布
 
 发布时间：2022-09-12 06:43:25
@@ -79750,6 +80204,25 @@
 
 ## 实时音视频(trtc) 版本：2019-07-22
 
+### 第 38 次发布
+
+发布时间：2022-09-14 06:40:34
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [RecordParams](https://cloud.tencent.com/document/api/647/44055#RecordParams)
+
+	* 新增成员：AvMerge
+
+* [TencentVod](https://cloud.tencent.com/document/api/647/44055#TencentVod)
+
+	* 新增成员：MediaType
+
+
 ### 第 37 次发布
 
 发布时间：2022-08-08 06:44:27
@@ -83483,6 +83956,32 @@
 
 ## 视频内容安全(vm) 版本：2021-09-22
 
+### 第 3 次发布
+
+发布时间：2022-09-14 06:42:07
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeTaskDetail](https://cloud.tencent.com/document/api/1265/80016)
+
+	* 新增出参：Label, AudioText, Asrs
+
+
+新增数据结构：
+
+* [[RcbAsr](https://cloud.tencent.com/document/api/1265/80019#RcbAsr)](https://cloud.tencent.com/document/api/1265/80019#[RcbAsr](https://cloud.tencent.com/document/api/1265/80019#RcbAsr))
+
+修改数据结构：
+
+* [MediaInfo](https://cloud.tencent.com/document/api/1265/80019#MediaInfo)
+
+	* 新增成员：Thumbnail
+
+
 ### 第 2 次发布
 
 发布时间：2022-09-08 06:47:59
@@ -86804,6 +87303,21 @@
 
 
 ## 私有网络(vpc) 版本：2017-03-12
+
+### 第 124 次发布
+
+发布时间：2022-09-14 06:43:15
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [NatGateway](https://cloud.tencent.com/document/api/215/15824#NatGateway)
+
+	* 新增成员：RestrictState
+
 
 ### 第 123 次发布
 

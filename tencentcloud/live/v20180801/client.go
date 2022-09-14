@@ -7245,6 +7245,60 @@ func (c *Client) DescribeTopClientIpSumInfoListWithContext(ctx context.Context, 
     return
 }
 
+func NewDescribeTranscodeTaskNumRequest() (request *DescribeTranscodeTaskNumRequest) {
+    request = &DescribeTranscodeTaskNumRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("live", APIVersion, "DescribeTranscodeTaskNum")
+    
+    
+    return
+}
+
+func NewDescribeTranscodeTaskNumResponse() (response *DescribeTranscodeTaskNumResponse) {
+    response = &DescribeTranscodeTaskNumResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeTranscodeTaskNum
+// 查询转码任务数。
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+func (c *Client) DescribeTranscodeTaskNum(request *DescribeTranscodeTaskNumRequest) (response *DescribeTranscodeTaskNumResponse, err error) {
+    return c.DescribeTranscodeTaskNumWithContext(context.Background(), request)
+}
+
+// DescribeTranscodeTaskNum
+// 查询转码任务数。
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+func (c *Client) DescribeTranscodeTaskNumWithContext(ctx context.Context, request *DescribeTranscodeTaskNumRequest) (response *DescribeTranscodeTaskNumResponse, err error) {
+    if request == nil {
+        request = NewDescribeTranscodeTaskNumRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTranscodeTaskNum require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTranscodeTaskNumResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeUploadStreamNumsRequest() (request *DescribeUploadStreamNumsRequest) {
     request = &DescribeUploadStreamNumsRequest{
         BaseRequest: &tchttp.BaseRequest{},

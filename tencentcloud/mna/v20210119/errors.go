@@ -23,6 +23,15 @@ const (
 	// 内部错误。
 	INTERNALERROR = "InternalError"
 
+	// 请求控制器发生错误。
+	INTERNALERROR_CONTROLREQUESTERROR = "InternalError.ControlRequestError"
+
+	// 文件读写异常。
+	INTERNALERROR_FILEIOERROR = "InternalError.FileIOError"
+
+	// 智研流量数据请求错误。
+	INTERNALERROR_NETWORKINFOREQUESTERROR = "InternalError.NetworkInfoRequestError"
+
 	// 参数错误。
 	INVALIDPARAMETER = "InvalidParameter"
 

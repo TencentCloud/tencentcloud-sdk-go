@@ -1804,6 +1804,57 @@ type DescribeCRWorkInfoResponseParams struct {
 	// x
 	IsProducer *int64 `json:"IsProducer,omitempty" name:"IsProducer"`
 
+	// xxx
+	EvidenceStatus *int64 `json:"EvidenceStatus,omitempty" name:"EvidenceStatus"`
+
+	// xxx
+	WorkCategory *string `json:"WorkCategory,omitempty" name:"WorkCategory"`
+
+	// xxx
+	IsOriginal *string `json:"IsOriginal,omitempty" name:"IsOriginal"`
+
+	// xxx
+	IsRelease *string `json:"IsRelease,omitempty" name:"IsRelease"`
+
+	// xxx
+	ProducerName *string `json:"ProducerName,omitempty" name:"ProducerName"`
+
+	// xxx
+	ProduceTime *string `json:"ProduceTime,omitempty" name:"ProduceTime"`
+
+	// xxx
+	WhiteLists []*string `json:"WhiteLists,omitempty" name:"WhiteLists"`
+
+	// xxx
+	WorkDesc *string `json:"WorkDesc,omitempty" name:"WorkDesc"`
+
+	// xxx
+	Authorization *string `json:"Authorization,omitempty" name:"Authorization"`
+
+	// xxx
+	AuthorizationStartTime *string `json:"AuthorizationStartTime,omitempty" name:"AuthorizationStartTime"`
+
+	// xxx
+	AuthorizationEndTime *string `json:"AuthorizationEndTime,omitempty" name:"AuthorizationEndTime"`
+
+	// xxx
+	Commission *string `json:"Commission,omitempty" name:"Commission"`
+
+	// xxx
+	CommissionStartTime *string `json:"CommissionStartTime,omitempty" name:"CommissionStartTime"`
+
+	// xxx
+	CommissionEndTime *string `json:"CommissionEndTime,omitempty" name:"CommissionEndTime"`
+
+	// xxx
+	EvidenceUrl *string `json:"EvidenceUrl,omitempty" name:"EvidenceUrl"`
+
+	// xxx
+	EvidenceStartTime *string `json:"EvidenceStartTime,omitempty" name:"EvidenceStartTime"`
+
+	// xxx
+	EvidenceEndTime *string `json:"EvidenceEndTime,omitempty" name:"EvidenceEndTime"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }
