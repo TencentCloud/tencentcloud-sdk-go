@@ -92,6 +92,9 @@ type CLS struct {
 
 	// 日志主题
 	Topic *string `json:"Topic,omitempty" name:"Topic"`
+
+	// 是否删除
+	NeedDelete *bool `json:"NeedDelete,omitempty" name:"NeedDelete"`
 }
 
 type Cluster struct {
@@ -459,6 +462,18 @@ type IstioConfig struct {
 	// 禁用策略检查功能
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DisablePolicyChecks *bool `json:"DisablePolicyChecks,omitempty" name:"DisablePolicyChecks"`
+
+	// 支持HTTP1.0协议
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EnablePilotHTTP *bool `json:"EnablePilotHTTP,omitempty" name:"EnablePilotHTTP"`
+
+	// 禁用HTTP重试策略
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DisableHTTPRetry *bool `json:"DisableHTTPRetry,omitempty" name:"DisableHTTPRetry"`
+
+	// SmartDNS策略
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SmartDNS *SmartDNSConfig `json:"SmartDNS,omitempty" name:"SmartDNS"`
 }
 
 type IstiodConfig struct {
@@ -738,6 +753,16 @@ type Service struct {
 
 	// 服务是否希望将外部流量路由到节点本地或集群范围的端点。 有两个可用选项：Cluster（默认）和 Local。Cluster 隐藏了客户端源 IP，可能导致第二跳到另一个节点；Local 保留客户端源 IP 并避免 LoadBalancer 和 NodePort 类型服务的第二跳。
 	ExternalTrafficPolicy *string `json:"ExternalTrafficPolicy,omitempty" name:"ExternalTrafficPolicy"`
+}
+
+type SmartDNSConfig struct {
+	// 开启DNS代理
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IstioMetaDNSCapture *bool `json:"IstioMetaDNSCapture,omitempty" name:"IstioMetaDNSCapture"`
+
+	// 开启自动地址分配
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IstioMetaDNSAutoAllocate *bool `json:"IstioMetaDNSAutoAllocate,omitempty" name:"IstioMetaDNSAutoAllocate"`
 }
 
 type Tag struct {

@@ -509,60 +509,6 @@ func (c *Client) CreateNatFwInstanceWithDomainWithContext(ctx context.Context, r
     return
 }
 
-func NewCreateSecurityGroupApiRulesRequest() (request *CreateSecurityGroupApiRulesRequest) {
-    request = &CreateSecurityGroupApiRulesRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("cfw", APIVersion, "CreateSecurityGroupApiRules")
-    
-    
-    return
-}
-
-func NewCreateSecurityGroupApiRulesResponse() (response *CreateSecurityGroupApiRulesResponse) {
-    response = &CreateSecurityGroupApiRulesResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// CreateSecurityGroupApiRules
-// 创建安全组API规则
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-func (c *Client) CreateSecurityGroupApiRules(request *CreateSecurityGroupApiRulesRequest) (response *CreateSecurityGroupApiRulesResponse, err error) {
-    return c.CreateSecurityGroupApiRulesWithContext(context.Background(), request)
-}
-
-// CreateSecurityGroupApiRules
-// 创建安全组API规则
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-func (c *Client) CreateSecurityGroupApiRulesWithContext(ctx context.Context, request *CreateSecurityGroupApiRulesRequest) (response *CreateSecurityGroupApiRulesResponse, err error) {
-    if request == nil {
-        request = NewCreateSecurityGroupApiRulesRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("CreateSecurityGroupApiRules require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewCreateSecurityGroupApiRulesResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewCreateSecurityGroupRulesRequest() (request *CreateSecurityGroupRulesRequest) {
     request = &CreateSecurityGroupRulesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1047,56 +993,6 @@ func (c *Client) DescribeAcListsWithContext(ctx context.Context, request *Descri
     request.SetContext(ctx)
     
     response = NewDescribeAcListsResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewDescribeAddrTemplateListRequest() (request *DescribeAddrTemplateListRequest) {
-    request = &DescribeAddrTemplateListRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("cfw", APIVersion, "DescribeAddrTemplateList")
-    
-    
-    return
-}
-
-func NewDescribeAddrTemplateListResponse() (response *DescribeAddrTemplateListResponse) {
-    response = &DescribeAddrTemplateListResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// DescribeAddrTemplateList
-// 获取地址模板列表
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INVALIDPARAMETER = "InvalidParameter"
-func (c *Client) DescribeAddrTemplateList(request *DescribeAddrTemplateListRequest) (response *DescribeAddrTemplateListResponse, err error) {
-    return c.DescribeAddrTemplateListWithContext(context.Background(), request)
-}
-
-// DescribeAddrTemplateList
-// 获取地址模板列表
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INVALIDPARAMETER = "InvalidParameter"
-func (c *Client) DescribeAddrTemplateListWithContext(ctx context.Context, request *DescribeAddrTemplateListRequest) (response *DescribeAddrTemplateListResponse, err error) {
-    if request == nil {
-        request = NewDescribeAddrTemplateListRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeAddrTemplateList require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeAddrTemplateListResponse()
     err = c.Send(request, response)
     return
 }
@@ -2453,60 +2349,6 @@ func (c *Client) DescribeSwitchListsWithContext(ctx context.Context, request *De
     return
 }
 
-func NewDescribeSyncAssetStatusRequest() (request *DescribeSyncAssetStatusRequest) {
-    request = &DescribeSyncAssetStatusRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("cfw", APIVersion, "DescribeSyncAssetStatus")
-    
-    
-    return
-}
-
-func NewDescribeSyncAssetStatusResponse() (response *DescribeSyncAssetStatusResponse) {
-    response = &DescribeSyncAssetStatusResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// DescribeSyncAssetStatus
-// 同步资产状态查询-互联网&VPC
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-func (c *Client) DescribeSyncAssetStatus(request *DescribeSyncAssetStatusRequest) (response *DescribeSyncAssetStatusResponse, err error) {
-    return c.DescribeSyncAssetStatusWithContext(context.Background(), request)
-}
-
-// DescribeSyncAssetStatus
-// 同步资产状态查询-互联网&VPC
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-func (c *Client) DescribeSyncAssetStatusWithContext(ctx context.Context, request *DescribeSyncAssetStatusRequest) (response *DescribeSyncAssetStatusResponse, err error) {
-    if request == nil {
-        request = NewDescribeSyncAssetStatusRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeSyncAssetStatus require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeSyncAssetStatusResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewDescribeTLogInfoRequest() (request *DescribeTLogInfoRequest) {
     request = &DescribeTLogInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3103,58 +2945,6 @@ func (c *Client) ModifyAllRuleStatusWithContext(ctx context.Context, request *Mo
     return
 }
 
-func NewModifyAllSwitchStatusRequest() (request *ModifyAllSwitchStatusRequest) {
-    request = &ModifyAllSwitchStatusRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("cfw", APIVersion, "ModifyAllSwitchStatus")
-    
-    
-    return
-}
-
-func NewModifyAllSwitchStatusResponse() (response *ModifyAllSwitchStatusResponse) {
-    response = &ModifyAllSwitchStatusResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// ModifyAllSwitchStatus
-// 一键开启和关闭
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  LIMITEXCEEDED = "LimitExceeded"
-func (c *Client) ModifyAllSwitchStatus(request *ModifyAllSwitchStatusRequest) (response *ModifyAllSwitchStatusResponse, err error) {
-    return c.ModifyAllSwitchStatusWithContext(context.Background(), request)
-}
-
-// ModifyAllSwitchStatus
-// 一键开启和关闭
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  LIMITEXCEEDED = "LimitExceeded"
-func (c *Client) ModifyAllSwitchStatusWithContext(ctx context.Context, request *ModifyAllSwitchStatusRequest) (response *ModifyAllSwitchStatusResponse, err error) {
-    if request == nil {
-        request = NewModifyAllSwitchStatusRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("ModifyAllSwitchStatus require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewModifyAllSwitchStatusResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewModifyAllVPCSwitchStatusRequest() (request *ModifyAllVPCSwitchStatusRequest) {
     request = &ModifyAllVPCSwitchStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3403,54 +3193,6 @@ func (c *Client) ModifyBlockTopWithContext(ctx context.Context, request *ModifyB
     request.SetContext(ctx)
     
     response = NewModifyBlockTopResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewModifyItemSwitchStatusRequest() (request *ModifyItemSwitchStatusRequest) {
-    request = &ModifyItemSwitchStatusRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("cfw", APIVersion, "ModifyItemSwitchStatus")
-    
-    
-    return
-}
-
-func NewModifyItemSwitchStatusResponse() (response *ModifyItemSwitchStatusResponse) {
-    response = &ModifyItemSwitchStatusResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// ModifyItemSwitchStatus
-// 修改单个防火墙开关
-//
-// 可能返回的错误码:
-//  LIMITEXCEEDED = "LimitExceeded"
-func (c *Client) ModifyItemSwitchStatus(request *ModifyItemSwitchStatusRequest) (response *ModifyItemSwitchStatusResponse, err error) {
-    return c.ModifyItemSwitchStatusWithContext(context.Background(), request)
-}
-
-// ModifyItemSwitchStatus
-// 修改单个防火墙开关
-//
-// 可能返回的错误码:
-//  LIMITEXCEEDED = "LimitExceeded"
-func (c *Client) ModifyItemSwitchStatusWithContext(ctx context.Context, request *ModifyItemSwitchStatusRequest) (response *ModifyItemSwitchStatusResponse, err error) {
-    if request == nil {
-        request = NewModifyItemSwitchStatusRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("ModifyItemSwitchStatus require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewModifyItemSwitchStatusResponse()
     err = c.Send(request, response)
     return
 }
@@ -3879,60 +3621,6 @@ func (c *Client) ModifyRunSyncAssetWithContext(ctx context.Context, request *Mod
     request.SetContext(ctx)
     
     response = NewModifyRunSyncAssetResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewModifySecurityGroupAllRuleStatusRequest() (request *ModifySecurityGroupAllRuleStatusRequest) {
-    request = &ModifySecurityGroupAllRuleStatusRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("cfw", APIVersion, "ModifySecurityGroupAllRuleStatus")
-    
-    
-    return
-}
-
-func NewModifySecurityGroupAllRuleStatusResponse() (response *ModifySecurityGroupAllRuleStatusResponse) {
-    response = &ModifySecurityGroupAllRuleStatusResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// ModifySecurityGroupAllRuleStatus
-// 启用停用全部规则
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-func (c *Client) ModifySecurityGroupAllRuleStatus(request *ModifySecurityGroupAllRuleStatusRequest) (response *ModifySecurityGroupAllRuleStatusResponse, err error) {
-    return c.ModifySecurityGroupAllRuleStatusWithContext(context.Background(), request)
-}
-
-// ModifySecurityGroupAllRuleStatus
-// 启用停用全部规则
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-func (c *Client) ModifySecurityGroupAllRuleStatusWithContext(ctx context.Context, request *ModifySecurityGroupAllRuleStatusRequest) (response *ModifySecurityGroupAllRuleStatusResponse, err error) {
-    if request == nil {
-        request = NewModifySecurityGroupAllRuleStatusRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("ModifySecurityGroupAllRuleStatus require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewModifySecurityGroupAllRuleStatusResponse()
     err = c.Send(request, response)
     return
 }

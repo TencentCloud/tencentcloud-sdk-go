@@ -447,6 +447,58 @@ func (c *Client) GetDevicesWithContext(ctx context.Context, request *GetDevicesR
     return
 }
 
+func NewGetFlowStatisticRequest() (request *GetFlowStatisticRequest) {
+    request = &GetFlowStatisticRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mna", APIVersion, "GetFlowStatistic")
+    
+    
+    return
+}
+
+func NewGetFlowStatisticResponse() (response *GetFlowStatisticResponse) {
+    response = &GetFlowStatisticResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// GetFlowStatistic
+// 获取指定设备Id，指定时间点数据流量使用情况
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_NETWORKINFOREQUESTERROR = "InternalError.NetworkInfoRequestError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) GetFlowStatistic(request *GetFlowStatisticRequest) (response *GetFlowStatisticResponse, err error) {
+    return c.GetFlowStatisticWithContext(context.Background(), request)
+}
+
+// GetFlowStatistic
+// 获取指定设备Id，指定时间点数据流量使用情况
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_NETWORKINFOREQUESTERROR = "InternalError.NetworkInfoRequestError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) GetFlowStatisticWithContext(ctx context.Context, request *GetFlowStatisticRequest) (response *GetFlowStatisticResponse, err error) {
+    if request == nil {
+        request = NewGetFlowStatisticRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetFlowStatistic require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetFlowStatisticResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewGetStatisticDataRequest() (request *GetStatisticDataRequest) {
     request = &GetStatisticDataRequest{
         BaseRequest: &tchttp.BaseRequest{},

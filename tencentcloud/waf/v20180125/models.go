@@ -427,6 +427,18 @@ type AddSpartaProtectionRequestParams struct {
 
 	// src权重
 	Weights []*int64 `json:"Weights,omitempty" name:"Weights"`
+
+	// 是否开启主动健康检测，1表示开启，0表示不开启
+	ActiveCheck *int64 `json:"ActiveCheck,omitempty" name:"ActiveCheck"`
+
+	// TLS版本信息
+	TLSVersion *int64 `json:"TLSVersion,omitempty" name:"TLSVersion"`
+
+	// 加密套件信息
+	Ciphers []*int64 `json:"Ciphers,omitempty" name:"Ciphers"`
+
+	// 0:不支持选择：默认模版  1:通用型模版 2:安全型模版 3:自定义模版
+	CipherTemplate *int64 `json:"CipherTemplate,omitempty" name:"CipherTemplate"`
 }
 
 type AddSpartaProtectionRequest struct {
@@ -503,6 +515,18 @@ type AddSpartaProtectionRequest struct {
 
 	// src权重
 	Weights []*int64 `json:"Weights,omitempty" name:"Weights"`
+
+	// 是否开启主动健康检测，1表示开启，0表示不开启
+	ActiveCheck *int64 `json:"ActiveCheck,omitempty" name:"ActiveCheck"`
+
+	// TLS版本信息
+	TLSVersion *int64 `json:"TLSVersion,omitempty" name:"TLSVersion"`
+
+	// 加密套件信息
+	Ciphers []*int64 `json:"Ciphers,omitempty" name:"Ciphers"`
+
+	// 0:不支持选择：默认模版  1:通用型模版 2:安全型模版 3:自定义模版
+	CipherTemplate *int64 `json:"CipherTemplate,omitempty" name:"CipherTemplate"`
 }
 
 func (r *AddSpartaProtectionRequest) ToJsonString() string {
@@ -541,6 +565,10 @@ func (r *AddSpartaProtectionRequest) FromJsonString(s string) error {
 	delete(f, "InstanceID")
 	delete(f, "Anycast")
 	delete(f, "Weights")
+	delete(f, "ActiveCheck")
+	delete(f, "TLSVersion")
+	delete(f, "Ciphers")
+	delete(f, "CipherTemplate")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AddSpartaProtectionRequest has unknown keys!", "")
 	}
@@ -1015,6 +1043,9 @@ type DeleteIpAccessControlRequestParams struct {
 
 	// 删除对应的域名下的所有黑/白IP名额单
 	DeleteAll *bool `json:"DeleteAll,omitempty" name:"DeleteAll"`
+
+	// 是否为多域名黑白名单
+	SourceType *string `json:"SourceType,omitempty" name:"SourceType"`
 }
 
 type DeleteIpAccessControlRequest struct {
@@ -1028,6 +1059,9 @@ type DeleteIpAccessControlRequest struct {
 
 	// 删除对应的域名下的所有黑/白IP名额单
 	DeleteAll *bool `json:"DeleteAll,omitempty" name:"DeleteAll"`
+
+	// 是否为多域名黑白名单
+	SourceType *string `json:"SourceType,omitempty" name:"SourceType"`
 }
 
 func (r *DeleteIpAccessControlRequest) ToJsonString() string {
@@ -1045,6 +1079,7 @@ func (r *DeleteIpAccessControlRequest) FromJsonString(s string) error {
 	delete(f, "Domain")
 	delete(f, "Items")
 	delete(f, "DeleteAll")
+	delete(f, "SourceType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteIpAccessControlRequest has unknown keys!", "")
 	}
@@ -2632,6 +2667,10 @@ type InstanceInfo struct {
 	// bot的qps详情
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BotQPS *BotQPS `json:"BotQPS,omitempty" name:"BotQPS"`
+
+	// qps弹性计费上限
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ElasticBilling *uint64 `json:"ElasticBilling,omitempty" name:"ElasticBilling"`
 }
 
 type IpAccessControlData struct {
@@ -3417,6 +3456,9 @@ type UpsertIpAccessControlRequestParams struct {
 
 	// clb-waf或者sparta-waf
 	Edition *string `json:"Edition,omitempty" name:"Edition"`
+
+	// 是否为多域名黑白名单
+	SourceType *string `json:"SourceType,omitempty" name:"SourceType"`
 }
 
 type UpsertIpAccessControlRequest struct {
@@ -3430,6 +3472,9 @@ type UpsertIpAccessControlRequest struct {
 
 	// clb-waf或者sparta-waf
 	Edition *string `json:"Edition,omitempty" name:"Edition"`
+
+	// 是否为多域名黑白名单
+	SourceType *string `json:"SourceType,omitempty" name:"SourceType"`
 }
 
 func (r *UpsertIpAccessControlRequest) ToJsonString() string {
@@ -3447,6 +3492,7 @@ func (r *UpsertIpAccessControlRequest) FromJsonString(s string) error {
 	delete(f, "Domain")
 	delete(f, "Items")
 	delete(f, "Edition")
+	delete(f, "SourceType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpsertIpAccessControlRequest has unknown keys!", "")
 	}

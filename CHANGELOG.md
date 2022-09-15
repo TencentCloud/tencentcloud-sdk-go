@@ -1,3 +1,176 @@
+# Release v1.0.497
+
+## 云防火墙(cfw) 版本：2019-09-04
+
+### 第 25 次发布
+
+发布时间：2022-09-15 06:13:28
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除接口**：</font>
+
+* CreateSecurityGroupApiRules
+* DescribeAddrTemplateList
+* DescribeSyncAssetStatus
+* ModifyAllSwitchStatus
+* ModifyItemSwitchStatus
+* ModifySecurityGroupAllRuleStatus
+
+<font color="#dd0000">**删除数据结构**：</font>
+
+* SecurityGroupApiRuleData
+* TemplateListInfo
+
+
+
+## 移动网络加速(mna) 版本：2021-01-19
+
+### 第 7 次发布
+
+发布时间：2022-09-14 20:21:28
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [GetFlowStatistic](https://cloud.tencent.com/document/api/1385/80486)
+
+新增数据结构：
+
+* [NetDetails](https://cloud.tencent.com/document/api/1385/55846#NetDetails)
+
+
+
+## 云监控(monitor) 版本：2018-07-24
+
+### 第 62 次发布
+
+发布时间：2022-09-15 06:31:40
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeConditionsTemplateList](https://cloud.tencent.com/document/api/248/70250)
+
+	* 新增入参：PolicyCountOrder
+
+
+修改数据结构：
+
+* [Condition](https://cloud.tencent.com/document/api/248/30354#Condition)
+
+	* 新增成员：IsAdvanced, IsOpen, ProductId
+
+
+
+
+## 视频处理(mps) 版本：2019-06-12
+
+### 第 41 次发布
+
+发布时间：2022-09-15 06:32:33
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [EditMediaOutputConfig](https://cloud.tencent.com/document/api/862/37615#EditMediaOutputConfig)
+
+	* 新增成员：Type
+
+
+
+
+## 服务网格(tcm) 版本：2021-04-13
+
+### 第 11 次发布
+
+发布时间：2022-09-15 06:39:35
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [SmartDNSConfig](https://cloud.tencent.com/document/api/1261/63843#SmartDNSConfig)
+
+修改数据结构：
+
+* [CLS](https://cloud.tencent.com/document/api/1261/63843#CLS)
+
+	* 新增成员：NeedDelete
+
+* [IstioConfig](https://cloud.tencent.com/document/api/1261/63843#IstioConfig)
+
+	* 新增成员：EnablePilotHTTP, DisableHTTPRetry, SmartDNS
+
+
+
+
+## 容器服务(tke) 版本：2018-05-25
+
+### 第 122 次发布
+
+发布时间：2022-09-15 06:43:33
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [UpdateTKEEdgeCluster](https://cloud.tencent.com/document/api/457/74855)
+
+	* 新增入参：ClusterLevel
+
+
+
+
+## Web 应用防火墙(waf) 版本：2018-01-25
+
+### 第 17 次发布
+
+发布时间：2022-09-15 06:49:04
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [AddSpartaProtection](https://cloud.tencent.com/document/api/627/72689)
+
+	* 新增入参：ActiveCheck, TLSVersion, Ciphers, CipherTemplate
+
+* [DeleteIpAccessControl](https://cloud.tencent.com/document/api/627/72648)
+
+	* 新增入参：SourceType
+
+* [UpsertIpAccessControl](https://cloud.tencent.com/document/api/627/72636)
+
+	* 新增入参：SourceType
+
+
+修改数据结构：
+
+* [InstanceInfo](https://cloud.tencent.com/document/api/627/53609#InstanceInfo)
+
+	* 新增成员：ElasticBilling
+
+
+
+
 # Release v1.0.496
 
 ## 品牌经营管家(bma) 版本：2021-06-24

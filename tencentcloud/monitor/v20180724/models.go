@@ -801,7 +801,7 @@ type Condition struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CalcValue *string `json:"CalcValue,omitempty" name:"CalcValue"`
 
-	// 持续时间
+	// 持续时间，单位秒
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ContinueTime *string `json:"ContinueTime,omitempty" name:"ContinueTime"`
 
@@ -819,6 +819,16 @@ type Condition struct {
 
 	// 指标单位
 	Unit *string `json:"Unit,omitempty" name:"Unit"`
+
+	// 是否为高级指标，0：否；1：是
+	IsAdvanced *int64 `json:"IsAdvanced,omitempty" name:"IsAdvanced"`
+
+	// 是否开通高级指标，0：否；1：是
+	IsOpen *int64 `json:"IsOpen,omitempty" name:"IsOpen"`
+
+	// 产品ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
 }
 
 type ConditionsTemp struct {
@@ -4726,6 +4736,9 @@ type DescribeConditionsTemplateListRequestParams struct {
 
 	// 指定按更新时间的排序方式，asc=升序, desc=降序
 	UpdateTimeOrder *string `json:"UpdateTimeOrder,omitempty" name:"UpdateTimeOrder"`
+
+	// 指定按绑定策略数目的排序方式，asc=升序, desc=降序
+	PolicyCountOrder *string `json:"PolicyCountOrder,omitempty" name:"PolicyCountOrder"`
 }
 
 type DescribeConditionsTemplateListRequest struct {
@@ -4751,6 +4764,9 @@ type DescribeConditionsTemplateListRequest struct {
 
 	// 指定按更新时间的排序方式，asc=升序, desc=降序
 	UpdateTimeOrder *string `json:"UpdateTimeOrder,omitempty" name:"UpdateTimeOrder"`
+
+	// 指定按绑定策略数目的排序方式，asc=升序, desc=降序
+	PolicyCountOrder *string `json:"PolicyCountOrder,omitempty" name:"PolicyCountOrder"`
 }
 
 func (r *DescribeConditionsTemplateListRequest) ToJsonString() string {
@@ -4772,6 +4788,7 @@ func (r *DescribeConditionsTemplateListRequest) FromJsonString(s string) error {
 	delete(f, "Limit")
 	delete(f, "Offset")
 	delete(f, "UpdateTimeOrder")
+	delete(f, "PolicyCountOrder")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeConditionsTemplateListRequest has unknown keys!", "")
 	}
