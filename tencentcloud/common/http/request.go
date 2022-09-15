@@ -256,7 +256,7 @@ func GetServiceDomain(service string) (domain string) {
 	return
 }
 
-func CompleteCommonParams(request Request, region string) {
+func CompleteCommonParams(request Request, region string, requestClient string) {
 	params := request.GetParams()
 	params["Region"] = region
 	if request.GetVersion() != "" {
@@ -266,6 +266,9 @@ func CompleteCommonParams(request Request, region string) {
 	params["Timestamp"] = strconv.FormatInt(time.Now().Unix(), 10)
 	params["Nonce"] = strconv.Itoa(rand.Int())
 	params["RequestClient"] = "SDK_GO_1.0.497"
+	if requestClient != "" {
+		params["RequestClient"] += ": " + requestClient
+	}
 }
 
 func ConstructParams(req Request) (err error) {

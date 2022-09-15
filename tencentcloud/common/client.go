@@ -9,6 +9,7 @@ import (
 	"net/http/httputil"
 	"net/url"
 	"os"
+	"regexp"
 	"strconv"
 	"strings"
 	"time"
@@ -33,6 +34,7 @@ type Client struct {
 	debug           bool
 	rb              *circuitBreaker
 	logger          *log.Logger
+	requestClient   string
 }
 
 func (c *Client) Send(request tchttp.Request, response tchttp.Response) (err error) {
@@ -56,7 +58,7 @@ func (c *Client) Send(request tchttp.Request, response tchttp.Response) (err err
 		request.SetHttpMethod(c.httpProfile.ReqMethod)
 	}
 
-	tchttp.CompleteCommonParams(request, c.GetRegion())
+	tchttp.CompleteCommonParams(request, c.GetRegion(), c.requestClient)
 
 	// reflect to inject client if field ClientToken exists and retry feature is enabled
 	if c.profile.NetworkFailureMaxRetries > 0 || c.profile.RateLimitExceededMaxRetries > 0 {
@@ -457,6 +459,25 @@ func (c *Client) WithSecretId(secretId, secretKey string) *Client {
 
 func (c *Client) WithCredential(cred CredentialIface) *Client {
 	c.credential = cred
+	return c
+}
+
+func (c *Client) WithRequestClient(rc string) *Client {
+	const reRequestClient = "^[0-9a-zA-Z-_ ,;]+$"
+
+	if len(rc) > 128 {
+		panic("the length of RequestClient should be within 128 characters")
+	}
+
+	match, err := regexp.MatchString(reRequestClient, rc)
+	if err != nil {
+		panic(err)
+	}
+	if !match {
+		panic("RequestClient should match the regexp: " + reRequestClient)
+	}
+
+	c.requestClient = rc
 	return c
 }
 
