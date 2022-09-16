@@ -329,6 +329,58 @@ func (c *Client) AddLiveWatermarkWithContext(ctx context.Context, request *AddLi
     return
 }
 
+func NewAuthenticateDomainOwnerRequest() (request *AuthenticateDomainOwnerRequest) {
+    request = &AuthenticateDomainOwnerRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("live", APIVersion, "AuthenticateDomainOwner")
+    
+    
+    return
+}
+
+func NewAuthenticateDomainOwnerResponse() (response *AuthenticateDomainOwnerResponse) {
+    response = &AuthenticateDomainOwnerResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// AuthenticateDomainOwner
+// 验证用户是否拥有特定直播域名。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DOMAINFORMATERROR = "InvalidParameter.DomainFormatError"
+func (c *Client) AuthenticateDomainOwner(request *AuthenticateDomainOwnerRequest) (response *AuthenticateDomainOwnerResponse, err error) {
+    return c.AuthenticateDomainOwnerWithContext(context.Background(), request)
+}
+
+// AuthenticateDomainOwner
+// 验证用户是否拥有特定直播域名。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DOMAINFORMATERROR = "InvalidParameter.DomainFormatError"
+func (c *Client) AuthenticateDomainOwnerWithContext(ctx context.Context, request *AuthenticateDomainOwnerRequest) (response *AuthenticateDomainOwnerResponse, err error) {
+    if request == nil {
+        request = NewAuthenticateDomainOwnerRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AuthenticateDomainOwner require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewAuthenticateDomainOwnerResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCancelCommonMixStreamRequest() (request *CancelCommonMixStreamRequest) {
     request = &CancelCommonMixStreamRequest{
         BaseRequest: &tchttp.BaseRequest{},

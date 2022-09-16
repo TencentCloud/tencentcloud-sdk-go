@@ -53,6 +53,9 @@ const (
 	// 超出图库限制。
 	FAILEDOPERATION_IMAGENUMEXCEED = "FailedOperation.ImageNumExceed"
 
+	// 图片分辨率过大。
+	FAILEDOPERATION_IMAGERESOLUTIONEXCEED = "FailedOperation.ImageResolutionExceed"
+
 	// 未查询到结果。
 	FAILEDOPERATION_IMAGESEARCHINVALID = "FailedOperation.ImageSearchInvalid"
 
@@ -100,6 +103,9 @@ const (
 
 	// 未知错误。
 	FAILEDOPERATION_UNKNOWN = "FailedOperation.Unknown"
+
+	// 不支持的图片格式。
+	INVALIDPARAMETER_IMAGEFORMATNOTSUPPORT = "InvalidParameter.ImageFormatNotSupport"
 
 	// 参数取值错误。
 	INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"

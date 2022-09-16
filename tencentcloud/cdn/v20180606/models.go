@@ -7520,7 +7520,6 @@ type Https struct {
 	// http2 配置开关
 	// on：开启
 	// off：关闭
-	// 初次启用 https 加速会默认开启 http2 配置
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Http2 *string `json:"Http2,omitempty" name:"Http2"`
 

@@ -221,6 +221,9 @@ const (
 	// 验证码不正确。
 	INVALIDPARAMETER_INVALIDVERIFYCODE = "InvalidParameter.InvalidVerifyCode"
 
+	// 缺少必填控件的值。
+	INVALIDPARAMETER_MISSINGREQUIREDCOMPONENTVALUE = "InvalidParameter.MissingRequiredComponentValue"
+
 	// 不合法的手机号，请检查后重试。
 	INVALIDPARAMETER_MOBILE = "InvalidParameter.Mobile"
 

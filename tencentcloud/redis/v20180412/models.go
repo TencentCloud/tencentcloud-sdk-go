@@ -5055,10 +5055,10 @@ type InstanceNode struct {
 }
 
 type InstanceParam struct {
-	// 设置参数的名字
+	// 设置参数的名称。例如timeout。
 	Key *string `json:"Key,omitempty" name:"Key"`
 
-	// 设置参数的值
+	// 设置参数名称对应的运行值。例如timeout对应运行值可设置为120， 单位为秒（s）。指当客户端连接闲置时间达到120 s时，将关闭连接。
 	Value *string `json:"Value,omitempty" name:"Value"`
 }
 
@@ -5943,20 +5943,20 @@ func (r *ModifyInstanceAccountResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyInstanceParamsRequestParams struct {
-	// 实例ID
+	// 实例ID。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 实例修改的参数列表
+	// 实例修改的参数列表。
 	InstanceParams []*InstanceParam `json:"InstanceParams,omitempty" name:"InstanceParams"`
 }
 
 type ModifyInstanceParamsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID
+	// 实例ID。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 实例修改的参数列表
+	// 实例修改的参数列表。
 	InstanceParams []*InstanceParam `json:"InstanceParams,omitempty" name:"InstanceParams"`
 }
 
@@ -5982,10 +5982,10 @@ func (r *ModifyInstanceParamsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyInstanceParamsResponseParams struct {
-	// 修改是否成功。
+	// 修改是否成功。修改成功为true，失败为false。
 	Changed *bool `json:"Changed,omitempty" name:"Changed"`
 
-	// 任务ID
+	// 任务ID。
 	TaskId *int64 `json:"TaskId,omitempty" name:"TaskId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。

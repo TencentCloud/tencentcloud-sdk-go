@@ -4096,7 +4096,7 @@ func NewModifyInstanceParamsResponse() (response *ModifyInstanceParamsResponse) 
 }
 
 // ModifyInstanceParams
-// 本接口(ModifyInstanceParams)用于修改实例参数。
+// 本接口(ModifyInstanceParams)用于修改Redis实例的参数配置。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_UNSUPPORTERROR = "FailedOperation.UnSupportError"
@@ -4117,7 +4117,7 @@ func (c *Client) ModifyInstanceParams(request *ModifyInstanceParamsRequest) (res
 }
 
 // ModifyInstanceParams
-// 本接口(ModifyInstanceParams)用于修改实例参数。
+// 本接口(ModifyInstanceParams)用于修改Redis实例的参数配置。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_UNSUPPORTERROR = "FailedOperation.UnSupportError"

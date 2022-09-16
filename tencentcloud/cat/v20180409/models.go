@@ -54,7 +54,7 @@ type CreateProbeTasksRequestParams struct {
 	// 插件类型
 	PluginSource *string `json:"PluginSource,omitempty" name:"PluginSource"`
 
-	// 客户度ID
+	// 客户端ID
 	ClientNum *string `json:"ClientNum,omitempty" name:"ClientNum"`
 }
 
@@ -93,7 +93,7 @@ type CreateProbeTasksRequest struct {
 	// 插件类型
 	PluginSource *string `json:"PluginSource,omitempty" name:"PluginSource"`
 
-	// 客户度ID
+	// 客户端ID
 	ClientNum *string `json:"ClientNum,omitempty" name:"ClientNum"`
 }
 

@@ -555,6 +555,9 @@ type CreateLogstashInstanceRequestParams struct {
 
 	// 标签信息列表
 	TagList []*TagInfo `json:"TagList,omitempty" name:"TagList"`
+
+	// 可维护时间段
+	OperationDuration *OperationDuration `json:"OperationDuration,omitempty" name:"OperationDuration"`
 }
 
 type CreateLogstashInstanceRequest struct {
@@ -610,6 +613,9 @@ type CreateLogstashInstanceRequest struct {
 
 	// 标签信息列表
 	TagList []*TagInfo `json:"TagList,omitempty" name:"TagList"`
+
+	// 可维护时间段
+	OperationDuration *OperationDuration `json:"OperationDuration,omitempty" name:"OperationDuration"`
 }
 
 func (r *CreateLogstashInstanceRequest) ToJsonString() string {
@@ -641,6 +647,7 @@ func (r *CreateLogstashInstanceRequest) FromJsonString(s string) error {
 	delete(f, "DiskSize")
 	delete(f, "LicenseType")
 	delete(f, "TagList")
+	delete(f, "OperationDuration")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateLogstashInstanceRequest has unknown keys!", "")
 	}
@@ -2692,6 +2699,10 @@ type LogstashInstanceInfo struct {
 	// 扩展文件列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExtendedFiles []*LogstashExtendedFile `json:"ExtendedFiles,omitempty" name:"ExtendedFiles"`
+
+	// 可维护时间段
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OperationDuration *OperationDuration `json:"OperationDuration,omitempty" name:"OperationDuration"`
 }
 
 type LogstashNodeInfo struct {
@@ -4117,6 +4128,9 @@ type UpdateLogstashInstanceRequestParams struct {
 
 	// 节点磁盘容量
 	DiskSize *uint64 `json:"DiskSize,omitempty" name:"DiskSize"`
+
+	// 可维护时间段
+	OperationDuration *OperationDurationUpdated `json:"OperationDuration,omitempty" name:"OperationDuration"`
 }
 
 type UpdateLogstashInstanceRequest struct {
@@ -4145,6 +4159,9 @@ type UpdateLogstashInstanceRequest struct {
 
 	// 节点磁盘容量
 	DiskSize *uint64 `json:"DiskSize,omitempty" name:"DiskSize"`
+
+	// 可维护时间段
+	OperationDuration *OperationDurationUpdated `json:"OperationDuration,omitempty" name:"OperationDuration"`
 }
 
 func (r *UpdateLogstashInstanceRequest) ToJsonString() string {
@@ -4167,6 +4184,7 @@ func (r *UpdateLogstashInstanceRequest) FromJsonString(s string) error {
 	delete(f, "ExtendedFiles")
 	delete(f, "NodeType")
 	delete(f, "DiskSize")
+	delete(f, "OperationDuration")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateLogstashInstanceRequest has unknown keys!", "")
 	}

@@ -148,19 +148,19 @@ func NewCreateGroupResponse() (response *CreateGroupResponse) {
 }
 
 // CreateGroup
-// 用于创建一个空的图片库，如果图片库已存在则返回错误。不同类型图库对应不同的图像搜索服务，根据输入参数GroupType区分。
+// 本接口用于创建一个空的图片库，图片库主要用于存储在创建图片时提取的图片特征数据，如果图片库已存在则返回错误。不同的图片库类型对应不同的图像搜索服务类型，根据输入参数GroupType区分。
 //
 // 
 //
-// | 服务类型 | GroupType参数值 |功能描述 |
+// | 服务类型 | GroupType入参 |功能描述 |
 //
-// |  :------  | :----- |:-----------------  |
+// |  :----------  | :----- |:-----------------  |
 //
-// | 相同图像搜索<img width=30/>    | 4 |在自建图库中搜索相同原图，可支持裁剪、翻转、调色、加水印后的图片搜索，适用于图片版权保护、原图查询等场景。|
+// | 相同图像搜索<div style="width: 70pt"> | 4 |在自建图片库中搜索相同原图或高相似图，并给出相似度打分，可支持裁剪、翻转、调色、加水印等二次编辑后的图片搜索。适用于图片版权保护、原图查询等场景。|
 //
-// | 商品图像搜索<img width=30/>   | 5 |在自建图库中搜索相同或相似的商品图片，适用于商品分类、检索、推荐等电商场景。|
+// | 商品图像搜索<div style="width: 70pt"> | 5 |在自建图库中搜索同款商品，并给出相似度打分。对于服饰类商品可支持识别服饰类别、属性等信息。适用于商品分类、检索、推荐等电商场景。|
 //
-// | 相似图像搜索<img width=30/>   | 6 |在自建图片库中搜索与输入图片高度相似的图片，适用于相似图案、logo、纹理等图像元素的搜索。|
+// | 相似图像搜索<div style="width: 70pt"> | 6 |在自建图库中搜索相似的图案、logo、纹理等图像元素或主体，并给出相似度打分。|
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_INVALIDAUTHORIZATION = "AuthFailure.InvalidAuthorization"
@@ -187,19 +187,19 @@ func (c *Client) CreateGroup(request *CreateGroupRequest) (response *CreateGroup
 }
 
 // CreateGroup
-// 用于创建一个空的图片库，如果图片库已存在则返回错误。不同类型图库对应不同的图像搜索服务，根据输入参数GroupType区分。
+// 本接口用于创建一个空的图片库，图片库主要用于存储在创建图片时提取的图片特征数据，如果图片库已存在则返回错误。不同的图片库类型对应不同的图像搜索服务类型，根据输入参数GroupType区分。
 //
 // 
 //
-// | 服务类型 | GroupType参数值 |功能描述 |
+// | 服务类型 | GroupType入参 |功能描述 |
 //
-// |  :------  | :----- |:-----------------  |
+// |  :----------  | :----- |:-----------------  |
 //
-// | 相同图像搜索<img width=30/>    | 4 |在自建图库中搜索相同原图，可支持裁剪、翻转、调色、加水印后的图片搜索，适用于图片版权保护、原图查询等场景。|
+// | 相同图像搜索<div style="width: 70pt"> | 4 |在自建图片库中搜索相同原图或高相似图，并给出相似度打分，可支持裁剪、翻转、调色、加水印等二次编辑后的图片搜索。适用于图片版权保护、原图查询等场景。|
 //
-// | 商品图像搜索<img width=30/>   | 5 |在自建图库中搜索相同或相似的商品图片，适用于商品分类、检索、推荐等电商场景。|
+// | 商品图像搜索<div style="width: 70pt"> | 5 |在自建图库中搜索同款商品，并给出相似度打分。对于服饰类商品可支持识别服饰类别、属性等信息。适用于商品分类、检索、推荐等电商场景。|
 //
-// | 相似图像搜索<img width=30/>   | 6 |在自建图片库中搜索与输入图片高度相似的图片，适用于相似图案、logo、纹理等图像元素的搜索。|
+// | 相似图像搜索<div style="width: 70pt"> | 6 |在自建图库中搜索相似的图案、logo、纹理等图像元素或主体，并给出相似度打分。|
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_INVALIDAUTHORIZATION = "AuthFailure.InvalidAuthorization"
@@ -256,7 +256,7 @@ func NewCreateImageResponse() (response *CreateImageResponse) {
 }
 
 // CreateImage
-// 创建图片，并添加对应图片的自定义信息。
+// 创建图片，并添加对应图片的自定义信息。模型将在创建图片时自动提取图像特征并存储到指定的图片库中。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownloadError"
@@ -267,6 +267,7 @@ func NewCreateImageResponse() (response *CreateImageResponse) {
 //  FAILEDOPERATION_IMAGENOTFOUNDINFO = "FailedOperation.ImageNotFoundInfo"
 //  FAILEDOPERATION_IMAGENOTSUPPORTED = "FailedOperation.ImageNotSupported"
 //  FAILEDOPERATION_IMAGENUMEXCEED = "FailedOperation.ImageNumExceed"
+//  FAILEDOPERATION_IMAGERESOLUTIONEXCEED = "FailedOperation.ImageResolutionExceed"
 //  FAILEDOPERATION_IMAGESIZEEXCEED = "FailedOperation.ImageSizeExceed"
 //  FAILEDOPERATION_IMAGEURLINVALID = "FailedOperation.ImageUrlInvalid"
 //  FAILEDOPERATION_INNERERROR = "FailedOperation.InnerError"
@@ -274,6 +275,7 @@ func NewCreateImageResponse() (response *CreateImageResponse) {
 //  FAILEDOPERATION_REQUESTTIMEOUT = "FailedOperation.RequestTimeout"
 //  FAILEDOPERATION_RPCFAIL = "FailedOperation.RpcFail"
 //  FAILEDOPERATION_SERVERERROR = "FailedOperation.ServerError"
+//  INVALIDPARAMETER_IMAGEFORMATNOTSUPPORT = "InvalidParameter.ImageFormatNotSupport"
 //  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
 //  INVALIDPARAMETERVALUE_CUSTOMCONTENTTOOLONG = "InvalidParameterValue.CustomContentTooLong"
 //  INVALIDPARAMETERVALUE_ENTITYIDEMPTY = "InvalidParameterValue.EntityIdEmpty"
@@ -295,7 +297,7 @@ func (c *Client) CreateImage(request *CreateImageRequest) (response *CreateImage
 }
 
 // CreateImage
-// 创建图片，并添加对应图片的自定义信息。
+// 创建图片，并添加对应图片的自定义信息。模型将在创建图片时自动提取图像特征并存储到指定的图片库中。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownloadError"
@@ -306,6 +308,7 @@ func (c *Client) CreateImage(request *CreateImageRequest) (response *CreateImage
 //  FAILEDOPERATION_IMAGENOTFOUNDINFO = "FailedOperation.ImageNotFoundInfo"
 //  FAILEDOPERATION_IMAGENOTSUPPORTED = "FailedOperation.ImageNotSupported"
 //  FAILEDOPERATION_IMAGENUMEXCEED = "FailedOperation.ImageNumExceed"
+//  FAILEDOPERATION_IMAGERESOLUTIONEXCEED = "FailedOperation.ImageResolutionExceed"
 //  FAILEDOPERATION_IMAGESIZEEXCEED = "FailedOperation.ImageSizeExceed"
 //  FAILEDOPERATION_IMAGEURLINVALID = "FailedOperation.ImageUrlInvalid"
 //  FAILEDOPERATION_INNERERROR = "FailedOperation.InnerError"
@@ -313,6 +316,7 @@ func (c *Client) CreateImage(request *CreateImageRequest) (response *CreateImage
 //  FAILEDOPERATION_REQUESTTIMEOUT = "FailedOperation.RequestTimeout"
 //  FAILEDOPERATION_RPCFAIL = "FailedOperation.RpcFail"
 //  FAILEDOPERATION_SERVERERROR = "FailedOperation.ServerError"
+//  INVALIDPARAMETER_IMAGEFORMATNOTSUPPORT = "InvalidParameter.ImageFormatNotSupport"
 //  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
 //  INVALIDPARAMETERVALUE_CUSTOMCONTENTTOOLONG = "InvalidParameterValue.CustomContentTooLong"
 //  INVALIDPARAMETERVALUE_ENTITYIDEMPTY = "InvalidParameterValue.EntityIdEmpty"
@@ -1760,7 +1764,7 @@ func NewSearchImageResponse() (response *SearchImageResponse) {
 }
 
 // SearchImage
-// 本接口用于对一张待识别的商品图片，在指定图片库中检索出最相似的图片列表。
+// 本接口用于对一张图片，在指定图片库中检索出与之相似的图片列表。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_BALANCEINSUFFICIENT = "FailedOperation.BalanceInsufficient"
@@ -1769,6 +1773,7 @@ func NewSearchImageResponse() (response *SearchImageResponse) {
 //  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
 //  FAILEDOPERATION_IMAGEGROUPEMPTY = "FailedOperation.ImageGroupEmpty"
 //  FAILEDOPERATION_IMAGENOTSUPPORTED = "FailedOperation.ImageNotSupported"
+//  FAILEDOPERATION_IMAGERESOLUTIONEXCEED = "FailedOperation.ImageResolutionExceed"
 //  FAILEDOPERATION_IMAGESEARCHINVALID = "FailedOperation.ImageSearchInvalid"
 //  FAILEDOPERATION_IMAGESIZEEXCEED = "FailedOperation.ImageSizeExceed"
 //  FAILEDOPERATION_IMAGEURLINVALID = "FailedOperation.ImageUrlInvalid"
@@ -1777,6 +1782,7 @@ func NewSearchImageResponse() (response *SearchImageResponse) {
 //  FAILEDOPERATION_REQUESTTIMEOUT = "FailedOperation.RequestTimeout"
 //  FAILEDOPERATION_RPCFAIL = "FailedOperation.RpcFail"
 //  FAILEDOPERATION_SERVERERROR = "FailedOperation.ServerError"
+//  INVALIDPARAMETER_IMAGEFORMATNOTSUPPORT = "InvalidParameter.ImageFormatNotSupport"
 //  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
 //  INVALIDPARAMETERVALUE_ENTITYIDTOOLONG = "InvalidParameterValue.EntityIdTooLong"
 //  INVALIDPARAMETERVALUE_FILTERINVALID = "InvalidParameterValue.FilterInvalid"
@@ -1793,7 +1799,7 @@ func (c *Client) SearchImage(request *SearchImageRequest) (response *SearchImage
 }
 
 // SearchImage
-// 本接口用于对一张待识别的商品图片，在指定图片库中检索出最相似的图片列表。
+// 本接口用于对一张图片，在指定图片库中检索出与之相似的图片列表。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_BALANCEINSUFFICIENT = "FailedOperation.BalanceInsufficient"
@@ -1802,6 +1808,7 @@ func (c *Client) SearchImage(request *SearchImageRequest) (response *SearchImage
 //  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
 //  FAILEDOPERATION_IMAGEGROUPEMPTY = "FailedOperation.ImageGroupEmpty"
 //  FAILEDOPERATION_IMAGENOTSUPPORTED = "FailedOperation.ImageNotSupported"
+//  FAILEDOPERATION_IMAGERESOLUTIONEXCEED = "FailedOperation.ImageResolutionExceed"
 //  FAILEDOPERATION_IMAGESEARCHINVALID = "FailedOperation.ImageSearchInvalid"
 //  FAILEDOPERATION_IMAGESIZEEXCEED = "FailedOperation.ImageSizeExceed"
 //  FAILEDOPERATION_IMAGEURLINVALID = "FailedOperation.ImageUrlInvalid"
@@ -1810,6 +1817,7 @@ func (c *Client) SearchImage(request *SearchImageRequest) (response *SearchImage
 //  FAILEDOPERATION_REQUESTTIMEOUT = "FailedOperation.RequestTimeout"
 //  FAILEDOPERATION_RPCFAIL = "FailedOperation.RpcFail"
 //  FAILEDOPERATION_SERVERERROR = "FailedOperation.ServerError"
+//  INVALIDPARAMETER_IMAGEFORMATNOTSUPPORT = "InvalidParameter.ImageFormatNotSupport"
 //  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
 //  INVALIDPARAMETERVALUE_ENTITYIDTOOLONG = "InvalidParameterValue.EntityIdTooLong"
 //  INVALIDPARAMETERVALUE_FILTERINVALID = "InvalidParameterValue.FilterInvalid"

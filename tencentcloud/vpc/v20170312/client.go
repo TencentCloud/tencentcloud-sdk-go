@@ -8599,6 +8599,66 @@ func (c *Client) DescribeCrossBorderComplianceWithContext(ctx context.Context, r
     return
 }
 
+func NewDescribeCrossBorderFlowMonitorRequest() (request *DescribeCrossBorderFlowMonitorRequest) {
+    request = &DescribeCrossBorderFlowMonitorRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vpc", APIVersion, "DescribeCrossBorderFlowMonitor")
+    
+    
+    return
+}
+
+func NewDescribeCrossBorderFlowMonitorResponse() (response *DescribeCrossBorderFlowMonitorResponse) {
+    response = &DescribeCrossBorderFlowMonitorResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeCrossBorderFlowMonitor
+// 查询跨境带宽监控数据，该接口特提供给联通使用
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_FILTERINVALIDKEY = "InvalidParameter.FilterInvalidKey"
+//  INVALIDPARAMETER_FILTERNOTDICT = "InvalidParameter.FilterNotDict"
+//  INVALIDPARAMETER_FILTERVALUESNOTLIST = "InvalidParameter.FilterValuesNotList"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_UINNOTFOUND = "UnsupportedOperation.UinNotFound"
+func (c *Client) DescribeCrossBorderFlowMonitor(request *DescribeCrossBorderFlowMonitorRequest) (response *DescribeCrossBorderFlowMonitorResponse, err error) {
+    return c.DescribeCrossBorderFlowMonitorWithContext(context.Background(), request)
+}
+
+// DescribeCrossBorderFlowMonitor
+// 查询跨境带宽监控数据，该接口特提供给联通使用
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_FILTERINVALIDKEY = "InvalidParameter.FilterInvalidKey"
+//  INVALIDPARAMETER_FILTERNOTDICT = "InvalidParameter.FilterNotDict"
+//  INVALIDPARAMETER_FILTERVALUESNOTLIST = "InvalidParameter.FilterValuesNotList"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_UINNOTFOUND = "UnsupportedOperation.UinNotFound"
+func (c *Client) DescribeCrossBorderFlowMonitorWithContext(ctx context.Context, request *DescribeCrossBorderFlowMonitorRequest) (response *DescribeCrossBorderFlowMonitorResponse, err error) {
+    if request == nil {
+        request = NewDescribeCrossBorderFlowMonitorRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCrossBorderFlowMonitor require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCrossBorderFlowMonitorResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeCustomerGatewayVendorsRequest() (request *DescribeCustomerGatewayVendorsRequest) {
     request = &DescribeCustomerGatewayVendorsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -8622,8 +8682,12 @@ func NewDescribeCustomerGatewayVendorsResponse() (response *DescribeCustomerGate
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE_EMPTY = "InvalidParameterValue.Empty"
-//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
+//  INVALIDPARAMETER_FILTERINVALIDKEY = "InvalidParameter.FilterInvalidKey"
+//  INVALIDPARAMETER_FILTERNOTDICT = "InvalidParameter.FilterNotDict"
+//  INVALIDPARAMETER_FILTERVALUESNOTLIST = "InvalidParameter.FilterValuesNotList"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_UINNOTFOUND = "UnsupportedOperation.UinNotFound"
 func (c *Client) DescribeCustomerGatewayVendors(request *DescribeCustomerGatewayVendorsRequest) (response *DescribeCustomerGatewayVendorsResponse, err error) {
     return c.DescribeCustomerGatewayVendorsWithContext(context.Background(), request)
 }
@@ -8633,8 +8697,12 @@ func (c *Client) DescribeCustomerGatewayVendors(request *DescribeCustomerGateway
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE_EMPTY = "InvalidParameterValue.Empty"
-//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
+//  INVALIDPARAMETER_FILTERINVALIDKEY = "InvalidParameter.FilterInvalidKey"
+//  INVALIDPARAMETER_FILTERNOTDICT = "InvalidParameter.FilterNotDict"
+//  INVALIDPARAMETER_FILTERVALUESNOTLIST = "InvalidParameter.FilterValuesNotList"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_UINNOTFOUND = "UnsupportedOperation.UinNotFound"
 func (c *Client) DescribeCustomerGatewayVendorsWithContext(ctx context.Context, request *DescribeCustomerGatewayVendorsRequest) (response *DescribeCustomerGatewayVendorsResponse, err error) {
     if request == nil {
         request = NewDescribeCustomerGatewayVendorsRequest()
