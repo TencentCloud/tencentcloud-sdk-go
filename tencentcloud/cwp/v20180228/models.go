@@ -10250,7 +10250,7 @@ type DescribeLicenseGeneralResponseParams struct {
 	// 已到期授权数(不包含已删除的记录)
 	ExpireLicenseCnt *uint64 `json:"ExpireLicenseCnt,omitempty" name:"ExpireLicenseCnt"`
 
-	// 自动升级开关状态,默认 false,  ture 开启, false 关闭
+	// 自动升级开关状态,默认 false,  true 开启, false 关闭
 	AutoOpenStatus *bool `json:"AutoOpenStatus,omitempty" name:"AutoOpenStatus"`
 
 	// PROVERSION_POSTPAY 专业版-后付费, PROVERSION_PREPAY 专业版-预付费, FLAGSHIP_PREPAY 旗舰版-预付费

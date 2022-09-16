@@ -207,6 +207,66 @@ func (c *Client) DescribeKTVMatchMusicsWithContext(ctx context.Context, request 
     return
 }
 
+func NewDescribeKTVMusicsByTagRequest() (request *DescribeKTVMusicsByTagRequest) {
+    request = &DescribeKTVMusicsByTagRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("yinsuda", APIVersion, "DescribeKTVMusicsByTag")
+    
+    
+    return
+}
+
+func NewDescribeKTVMusicsByTagResponse() (response *DescribeKTVMusicsByTagResponse) {
+    response = &DescribeKTVMusicsByTagResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeKTVMusicsByTag
+// 通过标签过滤歌曲列表。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) DescribeKTVMusicsByTag(request *DescribeKTVMusicsByTagRequest) (response *DescribeKTVMusicsByTagResponse, err error) {
+    return c.DescribeKTVMusicsByTagWithContext(context.Background(), request)
+}
+
+// DescribeKTVMusicsByTag
+// 通过标签过滤歌曲列表。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) DescribeKTVMusicsByTagWithContext(ctx context.Context, request *DescribeKTVMusicsByTagRequest) (response *DescribeKTVMusicsByTagResponse, err error) {
+    if request == nil {
+        request = NewDescribeKTVMusicsByTagRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeKTVMusicsByTag require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeKTVMusicsByTagResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeKTVPlaylistDetailRequest() (request *DescribeKTVPlaylistDetailRequest) {
     request = &DescribeKTVPlaylistDetailRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -419,6 +479,66 @@ func (c *Client) DescribeKTVSuggestionsWithContext(ctx context.Context, request 
     request.SetContext(ctx)
     
     response = NewDescribeKTVSuggestionsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeKTVTagsRequest() (request *DescribeKTVTagsRequest) {
+    request = &DescribeKTVTagsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("yinsuda", APIVersion, "DescribeKTVTags")
+    
+    
+    return
+}
+
+func NewDescribeKTVTagsResponse() (response *DescribeKTVTagsResponse) {
+    response = &DescribeKTVTagsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeKTVTags
+// 获取标签分组及分组下的标签列表信息。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) DescribeKTVTags(request *DescribeKTVTagsRequest) (response *DescribeKTVTagsResponse, err error) {
+    return c.DescribeKTVTagsWithContext(context.Background(), request)
+}
+
+// DescribeKTVTags
+// 获取标签分组及分组下的标签列表信息。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) DescribeKTVTagsWithContext(ctx context.Context, request *DescribeKTVTagsRequest) (response *DescribeKTVTagsResponse, err error) {
+    if request == nil {
+        request = NewDescribeKTVTagsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeKTVTags require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeKTVTagsResponse()
     err = c.Send(request, response)
     return
 }

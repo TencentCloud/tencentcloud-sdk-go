@@ -1373,6 +1373,60 @@ func (r *DescribeDomainAnalyticsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeDomainGroupListRequestParams struct {
+
+}
+
+type DescribeDomainGroupListRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DescribeDomainGroupListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDomainGroupListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDomainGroupListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDomainGroupListResponseParams struct {
+	// 分组列表
+	GroupList []*GroupInfo `json:"GroupList,omitempty" name:"GroupList"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeDomainGroupListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDomainGroupListResponseParams `json:"Response"`
+}
+
+func (r *DescribeDomainGroupListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDomainGroupListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeDomainListRequestParams struct {
 	// 域名分组类型，默认为ALL。可取值为ALL，MINE，SHARE，ISMARK，PAUSE，VIP，RECENT，SHARE_OUT。
 	Type *string `json:"Type,omitempty" name:"Type"`
@@ -2487,6 +2541,20 @@ type DomainShareInfo struct {
 
 	// 共享状态“enabled”：共享成功。“pending”：共享到的账号不存在, 等待注册
 	Status *string `json:"Status,omitempty" name:"Status"`
+}
+
+type GroupInfo struct {
+	// 分组ID
+	GroupId *int64 `json:"GroupId,omitempty" name:"GroupId"`
+
+	// 分组名称
+	GroupName *string `json:"GroupName,omitempty" name:"GroupName"`
+
+	// 分组类型
+	GroupType *string `json:"GroupType,omitempty" name:"GroupType"`
+
+	// 该分组中域名个数
+	Size *int64 `json:"Size,omitempty" name:"Size"`
 }
 
 type LineGroupInfo struct {

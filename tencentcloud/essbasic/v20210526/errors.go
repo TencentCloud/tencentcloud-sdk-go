@@ -248,6 +248,9 @@ const (
 	// 缺少流程id，请检查后重试。
 	MISSINGPARAMETER_FLOWIDS = "MissingParameter.FlowIds"
 
+	// 请传入需要查询的合同或合同组的ID。
+	MISSINGPARAMETER_FLOWIDSORFLOWGROUPID = "MissingParameter.FlowIdsOrFlowGroupId"
+
 	// 未指定流程合同信息。
 	MISSINGPARAMETER_FLOWINFO = "MissingParameter.FlowInfo"
 

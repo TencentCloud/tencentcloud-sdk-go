@@ -734,6 +734,7 @@ func NewDescribeDedicatedSupportedZonesResponse() (response *DescribeDedicatedSu
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_INVALIDVALUEREGION = "InvalidParameterValue.InvalidValueRegion"
+//  INVALIDPARAMETERVALUE_REGION = "InvalidParameterValue.Region"
 //  INVALIDPARAMETERVALUE_ZONEMISMATCHREGION = "InvalidParameterValue.ZoneMismatchRegion"
 func (c *Client) DescribeDedicatedSupportedZones(request *DescribeDedicatedSupportedZonesRequest) (response *DescribeDedicatedSupportedZonesResponse, err error) {
     return c.DescribeDedicatedSupportedZonesWithContext(context.Background(), request)
@@ -744,6 +745,7 @@ func (c *Client) DescribeDedicatedSupportedZones(request *DescribeDedicatedSuppo
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_INVALIDVALUEREGION = "InvalidParameterValue.InvalidValueRegion"
+//  INVALIDPARAMETERVALUE_REGION = "InvalidParameterValue.Region"
 //  INVALIDPARAMETERVALUE_ZONEMISMATCHREGION = "InvalidParameterValue.ZoneMismatchRegion"
 func (c *Client) DescribeDedicatedSupportedZonesWithContext(ctx context.Context, request *DescribeDedicatedSupportedZonesRequest) (response *DescribeDedicatedSupportedZonesResponse, err error) {
     if request == nil {
@@ -784,6 +786,7 @@ func NewDescribeSitesResponse() (response *DescribeSitesResponse) {
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_INVALIDVALUEREGION = "InvalidParameterValue.InvalidValueRegion"
+//  INVALIDPARAMETERVALUE_REGION = "InvalidParameterValue.Region"
 //  INVALIDPARAMETERVALUE_ZONEMISMATCHREGION = "InvalidParameterValue.ZoneMismatchRegion"
 func (c *Client) DescribeSites(request *DescribeSitesRequest) (response *DescribeSitesResponse, err error) {
     return c.DescribeSitesWithContext(context.Background(), request)
@@ -794,6 +797,7 @@ func (c *Client) DescribeSites(request *DescribeSitesRequest) (response *Describ
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_INVALIDVALUEREGION = "InvalidParameterValue.InvalidValueRegion"
+//  INVALIDPARAMETERVALUE_REGION = "InvalidParameterValue.Region"
 //  INVALIDPARAMETERVALUE_ZONEMISMATCHREGION = "InvalidParameterValue.ZoneMismatchRegion"
 func (c *Client) DescribeSitesWithContext(ctx context.Context, request *DescribeSitesRequest) (response *DescribeSitesResponse, err error) {
     if request == nil {

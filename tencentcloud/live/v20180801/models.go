@@ -136,6 +136,14 @@ type AddLiveDomainRequestParams struct {
 	// 1 ：小程序直播 。
 	// 默认值： 0。
 	IsMiniProgramLive *int64 `json:"IsMiniProgramLive,omitempty" name:"IsMiniProgramLive"`
+
+	// 域名归属校验类型。
+	// 可取值（与 AuthenticateDomainOwner 接口的 VerifyType 参数一致。）：
+	// dnsCheck ：立即验证配置 dns 的解析记录是否与待验证内容一致，成功则保存记录。
+	// fileCheck ：立即验证 web 文件是否与待验证内容一致，成功则保存记录。
+	// dbCheck :  检查是否已经验证成功过。
+	// 若不传默认为 dbCheck 。
+	VerifyOwnerType *string `json:"VerifyOwnerType,omitempty" name:"VerifyOwnerType"`
 }
 
 type AddLiveDomainRequest struct {
@@ -167,6 +175,14 @@ type AddLiveDomainRequest struct {
 	// 1 ：小程序直播 。
 	// 默认值： 0。
 	IsMiniProgramLive *int64 `json:"IsMiniProgramLive,omitempty" name:"IsMiniProgramLive"`
+
+	// 域名归属校验类型。
+	// 可取值（与 AuthenticateDomainOwner 接口的 VerifyType 参数一致。）：
+	// dnsCheck ：立即验证配置 dns 的解析记录是否与待验证内容一致，成功则保存记录。
+	// fileCheck ：立即验证 web 文件是否与待验证内容一致，成功则保存记录。
+	// dbCheck :  检查是否已经验证成功过。
+	// 若不传默认为 dbCheck 。
+	VerifyOwnerType *string `json:"VerifyOwnerType,omitempty" name:"VerifyOwnerType"`
 }
 
 func (r *AddLiveDomainRequest) ToJsonString() string {
@@ -186,6 +202,7 @@ func (r *AddLiveDomainRequest) FromJsonString(s string) error {
 	delete(f, "PlayType")
 	delete(f, "IsDelayLive")
 	delete(f, "IsMiniProgramLive")
+	delete(f, "VerifyOwnerType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AddLiveDomainRequest has unknown keys!", "")
 	}
@@ -309,6 +326,87 @@ func (r *AddLiveWatermarkResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *AddLiveWatermarkResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type AuthenticateDomainOwnerRequestParams struct {
+	// 要验证的域名。
+	DomainName *string `json:"DomainName,omitempty" name:"DomainName"`
+
+	// 验证类型。可取值：
+	// dnsCheck ：立即验证配置 dns 的解析记录是否与待验证内容一致，成功则保存记录。
+	// fileCheck ：立即验证 web 文件是否与待验证内容一致，成功则保存记录。
+	// dbCheck :  检查是否已经验证成功过。
+	VerifyType *string `json:"VerifyType,omitempty" name:"VerifyType"`
+}
+
+type AuthenticateDomainOwnerRequest struct {
+	*tchttp.BaseRequest
+	
+	// 要验证的域名。
+	DomainName *string `json:"DomainName,omitempty" name:"DomainName"`
+
+	// 验证类型。可取值：
+	// dnsCheck ：立即验证配置 dns 的解析记录是否与待验证内容一致，成功则保存记录。
+	// fileCheck ：立即验证 web 文件是否与待验证内容一致，成功则保存记录。
+	// dbCheck :  检查是否已经验证成功过。
+	VerifyType *string `json:"VerifyType,omitempty" name:"VerifyType"`
+}
+
+func (r *AuthenticateDomainOwnerRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AuthenticateDomainOwnerRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DomainName")
+	delete(f, "VerifyType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AuthenticateDomainOwnerRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type AuthenticateDomainOwnerResponseParams struct {
+	// 验证内容。
+	// VerifyType 传 dnsCheck 时，为要配的 TXT 记录值。
+	// VerifyType 传 fileCheck 时，为文件内容。
+	Content *string `json:"Content,omitempty" name:"Content"`
+
+	// 域名验证状态。
+	// >=0 为已验证归属。
+	// <0 未验证归属权。
+	Status *int64 `json:"Status,omitempty" name:"Status"`
+
+	// DomainName 对应的主域名。
+	// 同一主域名下的所有域名只需成功验证一次，后续均无需再验证。
+	MainDomain *string `json:"MainDomain,omitempty" name:"MainDomain"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type AuthenticateDomainOwnerResponse struct {
+	*tchttp.BaseResponse
+	Response *AuthenticateDomainOwnerResponseParams `json:"Response"`
+}
+
+func (r *AuthenticateDomainOwnerResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AuthenticateDomainOwnerResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

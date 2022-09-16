@@ -141,6 +141,11 @@ type AdaptiveDynamicStreamingInfoItem struct {
 	// <li>当媒体文件为 DASH 时，大小是 mpd 和分片文件大小的总和；</li>
 	// <li><font color=red>注意</font>：在 2022-01-10T16:00:00Z 前处理生成的自适应码流文件此字段为0。</li>
 	Size *int64 `json:"Size,omitempty" name:"Size"`
+
+	// 数字水印类型。可选值：
+	// <li>Trace 表示经过溯源水印处理；</li>
+	// <li>None 表示没有经过数字水印处理。</li>
+	DigitalWatermarkType *string `json:"DigitalWatermarkType,omitempty" name:"DigitalWatermarkType"`
 }
 
 type AdaptiveDynamicStreamingTaskInput struct {
@@ -9417,6 +9422,7 @@ type DescribeTaskDetailResponseParams struct {
 	// <li>FastClipMedia：快速剪辑任务；</li>
 	// <li>RemoveWatermarkTask：智能去除水印任务；</li>
 	// <li> ReviewAudioVideo：音视频审核任务。</li>
+	// <li> ReduceMediaBitrate：降码率任务。</li>
 	TaskType *string `json:"TaskType,omitempty" name:"TaskType"`
 
 	// 任务状态，取值：
@@ -9486,9 +9492,17 @@ type DescribeTaskDetailResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RemoveWatermarkTask *RemoveWatermarkTask `json:"RemoveWatermarkTask,omitempty" name:"RemoveWatermarkTask"`
 
+	// 提取溯源水印任务信息，仅当 TaskType 为 ExtractTraceWatermark，该字段有值。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExtractTraceWatermarkTask *ExtractTraceWatermarkTask `json:"ExtractTraceWatermarkTask,omitempty" name:"ExtractTraceWatermarkTask"`
+
 	// 音视频审核任务信息，仅当 TaskType 为 ReviewAudioVideo，该字段有值。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReviewAudioVideoTask *ReviewAudioVideoTask `json:"ReviewAudioVideoTask,omitempty" name:"ReviewAudioVideoTask"`
+
+	// 降码率任务信息，仅当 TaskType 为 ReduceMediaBitrate，该字段有值。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReduceMediaBitrateTask *ReduceMediaBitrateTask `json:"ReduceMediaBitrateTask,omitempty" name:"ReduceMediaBitrateTask"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -10391,6 +10405,7 @@ type EventContent struct {
 	// <li>WechatMiniProgramPublishComplete：微信小程序发布完成。</li>
 	// <li>FastClipMediaComplete：快速剪辑完成；</li>
 	// <li>ReviewAudioVideoComplete：音视频审核完成。</li>
+	// <li>ExtractTraceWatermarkComplete：提取溯源水印完成。</li>
 	// <b>兼容 2017 版的事件类型：</b>
 	// <li>TranscodeComplete：视频转码完成；</li>
 	// <li>ConcatComplete：视频拼接完成；</li>
@@ -10463,9 +10478,17 @@ type EventContent struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RestoreMediaCompleteEvent *RestoreMediaTask `json:"RestoreMediaCompleteEvent,omitempty" name:"RestoreMediaCompleteEvent"`
 
+	// 溯源水印提取完成事件，当事件类型为ExtractTraceWatermarkComplete 时有效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExtractTraceWatermarkCompleteEvent *ExtractTraceWatermarkTask `json:"ExtractTraceWatermarkCompleteEvent,omitempty" name:"ExtractTraceWatermarkCompleteEvent"`
+
 	// 音视频审核完成事件，当事件类型为 ReviewAudioVideoComplete 时有效。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReviewAudioVideoCompleteEvent *ReviewAudioVideoTask `json:"ReviewAudioVideoCompleteEvent,omitempty" name:"ReviewAudioVideoCompleteEvent"`
+
+	// 降码率完成事件，当事件类型为 ReduceMediaBitrateComplete 时有效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReduceMediaBitrateCompleteEvent *ReduceMediaBitrateTask `json:"ReduceMediaBitrateCompleteEvent,omitempty" name:"ReduceMediaBitrateCompleteEvent"`
 }
 
 // Predefined struct for user
@@ -10558,6 +10581,145 @@ func (r *ExecuteFunctionResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *ExecuteFunctionResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ExtractTraceWatermarkRequestParams struct {
+	// 需要提取水印的媒体 URL。
+	Url *string `json:"Url,omitempty" name:"Url"`
+
+	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+
+	// 标识来源上下文，用于透传用户请求信息，在ExtractTraceWatermarkComplete回调和任务流状态变更回调将返回该字段值，最长 1000个字符。
+	SessionContext *string `json:"SessionContext,omitempty" name:"SessionContext"`
+
+	// 用于任务去重的识别码，如果三天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
+	SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
+
+	// 任务的优先级，数值越大优先级越高，取值范围是 -10 到 10，不填代表 0。
+	TasksPriority *int64 `json:"TasksPriority,omitempty" name:"TasksPriority"`
+
+	// 保留字段，特殊用途时使用。
+	ExtInfo *string `json:"ExtInfo,omitempty" name:"ExtInfo"`
+}
+
+type ExtractTraceWatermarkRequest struct {
+	*tchttp.BaseRequest
+	
+	// 需要提取水印的媒体 URL。
+	Url *string `json:"Url,omitempty" name:"Url"`
+
+	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	SubAppId *uint64 `json:"SubAppId,omitempty" name:"SubAppId"`
+
+	// 标识来源上下文，用于透传用户请求信息，在ExtractTraceWatermarkComplete回调和任务流状态变更回调将返回该字段值，最长 1000个字符。
+	SessionContext *string `json:"SessionContext,omitempty" name:"SessionContext"`
+
+	// 用于任务去重的识别码，如果三天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
+	SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
+
+	// 任务的优先级，数值越大优先级越高，取值范围是 -10 到 10，不填代表 0。
+	TasksPriority *int64 `json:"TasksPriority,omitempty" name:"TasksPriority"`
+
+	// 保留字段，特殊用途时使用。
+	ExtInfo *string `json:"ExtInfo,omitempty" name:"ExtInfo"`
+}
+
+func (r *ExtractTraceWatermarkRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ExtractTraceWatermarkRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Url")
+	delete(f, "SubAppId")
+	delete(f, "SessionContext")
+	delete(f, "SessionId")
+	delete(f, "TasksPriority")
+	delete(f, "ExtInfo")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ExtractTraceWatermarkRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ExtractTraceWatermarkResponseParams struct {
+	// 任务 ID。
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ExtractTraceWatermarkResponse struct {
+	*tchttp.BaseResponse
+	Response *ExtractTraceWatermarkResponseParams `json:"Response"`
+}
+
+func (r *ExtractTraceWatermarkResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ExtractTraceWatermarkResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ExtractTraceWatermarkTask struct {
+	// 任务 ID。
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 任务状态，取值：
+	// <li>PROCESSING：处理中；</li>
+	// <li>FINISH：已完成。</li>
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 错误码，0 表示成功，其他值表示失败：
+	// <li>40000：输入参数不合法，请检查输入参数；</li>
+	// <li>60000：源文件错误（如视频数据损坏），请确认源文件是否正常；</li>
+	// <li>70000：内部服务错误，建议重试。</li>
+	ErrCode *int64 `json:"ErrCode,omitempty" name:"ErrCode"`
+
+	// 错误信息。
+	Message *string `json:"Message,omitempty" name:"Message"`
+
+	// 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/266/50368#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+	ErrCodeExt *string `json:"ErrCodeExt,omitempty" name:"ErrCodeExt"`
+
+	// 提取溯源水印任务输入信息。
+	Input *ExtractTraceWatermarkTaskInput `json:"Input,omitempty" name:"Input"`
+
+	// 提取溯源水印任务输出信息。
+	Output *ExtractTraceWatermarkTaskOutput `json:"Output,omitempty" name:"Output"`
+
+	// 用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
+	SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
+
+	// 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。
+	SessionContext *string `json:"SessionContext,omitempty" name:"SessionContext"`
+}
+
+type ExtractTraceWatermarkTaskInput struct {
+	// 需要提取水印的媒体 URL。
+	Url *string `json:"Url,omitempty" name:"Url"`
+}
+
+type ExtractTraceWatermarkTaskOutput struct {
+	// 播放者的 ID，以十六进制表示，共6位，该参数用于 [溯源水印](https://cloud.tencent.com/document/product/266/75789) 使用场景。
+	Uv *string `json:"Uv,omitempty" name:"Uv"`
+
+	// 该字段已废弃。
+	Uid *string `json:"Uid,omitempty" name:"Uid"`
 }
 
 type FaceConfigureInfo struct {
@@ -12283,6 +12445,11 @@ type MediaTranscodeItem struct {
 
 	// 音频流信息。
 	AudioStreamSet []*MediaAudioStreamItem `json:"AudioStreamSet,omitempty" name:"AudioStreamSet"`
+
+	// 数字水印类型。可选值：
+	// <li>Trace 表示经过溯源水印处理；</li>
+	// <li>None 表示没有经过数字水印处理。</li>
+	DigitalWatermarkType *string `json:"DigitalWatermarkType,omitempty" name:"DigitalWatermarkType"`
 }
 
 type MediaTransitionItem struct {
@@ -16467,6 +16634,105 @@ func (r *PushUrlCacheResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type ReduceMediaBitrateAdaptiveDynamicStreamingResult struct {
+	// 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/266/50368#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+	ErrCodeExt *string `json:"ErrCodeExt,omitempty" name:"ErrCodeExt"`
+
+	// 错误信息。
+	Message *string `json:"Message,omitempty" name:"Message"`
+
+	// 对视频转自适应码流任务的输入。
+	Input *AdaptiveDynamicStreamingTaskInput `json:"Input,omitempty" name:"Input"`
+
+	// 对视频转自适应码流任务的输出。
+	Output *AdaptiveDynamicStreamingInfoItem `json:"Output,omitempty" name:"Output"`
+}
+
+type ReduceMediaBitrateMediaProcessTaskResult struct {
+	// 任务的类型，可以取的值有：
+	// <li>Transcode：转码</li>
+	// <li>AdaptiveDynamicStreaming：自适应码流</li>
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 降码率任务中视频转码任务的查询结果，当任务类型为 Transcode 时有效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TranscodeTask *ReduceMediaBitrateTranscodeResult `json:"TranscodeTask,omitempty" name:"TranscodeTask"`
+
+	// 降码率任务中对视频转自适应码流任务的查询结果，当任务类型为 AdaptiveDynamicStreaming 时有效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AdaptiveDynamicStreamingTask *ReduceMediaBitrateAdaptiveDynamicStreamingResult `json:"AdaptiveDynamicStreamingTask,omitempty" name:"AdaptiveDynamicStreamingTask"`
+}
+
+type ReduceMediaBitrateTask struct {
+	// 视频处理任务 ID。
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 任务流状态，取值：
+	// <li>PROCESSING：处理中；</li>
+	// <li>FINISH：已完成。</li>
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 媒体文件 ID。
+	FileId *string `json:"FileId,omitempty" name:"FileId"`
+
+	// 媒体文件名称。
+	FileName *string `json:"FileName,omitempty" name:"FileName"`
+
+	// 媒体文件地址。
+	FileUrl *string `json:"FileUrl,omitempty" name:"FileUrl"`
+
+	// 原始视频的元信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MetaData *MediaMetaData `json:"MetaData,omitempty" name:"MetaData"`
+
+	// 降码率任务执行状态与结果。
+	MediaProcessResultSet []*ReduceMediaBitrateMediaProcessTaskResult `json:"MediaProcessResultSet,omitempty" name:"MediaProcessResultSet"`
+
+	// 任务流的优先级，取值范围为 [-10, 10]。
+	TasksPriority *int64 `json:"TasksPriority,omitempty" name:"TasksPriority"`
+
+	// 任务流状态变更通知模式。
+	// <li>Finish：只有当任务流全部执行完毕时，才发起一次事件通知；</li>
+	// <li>None：不接受该任务流回调。</li>
+	TasksNotifyMode *string `json:"TasksNotifyMode,omitempty" name:"TasksNotifyMode"`
+
+	// 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。
+	SessionContext *string `json:"SessionContext,omitempty" name:"SessionContext"`
+
+	// 用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
+	SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
+}
+
+type ReduceMediaBitrateTranscodeResult struct {
+	// 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 错误码，空字符串表示成功，其他值表示失败，取值请参考 [视频处理类错误码](https://cloud.tencent.com/document/product/266/50368#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+	ErrCodeExt *string `json:"ErrCodeExt,omitempty" name:"ErrCodeExt"`
+
+	// 错误信息。
+	Message *string `json:"Message,omitempty" name:"Message"`
+
+	// 转码任务的输入。
+	Input *TranscodeTaskInput `json:"Input,omitempty" name:"Input"`
+
+	// 转码任务的输出。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Output *MediaTranscodeItem `json:"Output,omitempty" name:"Output"`
+
+	// 转码进度，取值范围 [0-100] 。
+	Progress *int64 `json:"Progress,omitempty" name:"Progress"`
+
+	// 转码任务开始执行的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+	BeginProcessTime *string `json:"BeginProcessTime,omitempty" name:"BeginProcessTime"`
+
+	// 转码任务执行完毕的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+	FinishTime *string `json:"FinishTime,omitempty" name:"FinishTime"`
+}
+
 type RefererAuthPolicy struct {
 	// [Referer 防盗链](https://cloud.tencent.com/document/product/266/14046)设置状态，可选值：
 	// <li>Enabled: 启用；</li>
@@ -18409,6 +18675,7 @@ type TaskSimpleInfo struct {
 	// 任务类型，取值：
 	// <li>Procedure：视频处理任务；</li>
 	// <li>EditMedia：视频编辑任务</li>
+	// <li>ReduceMediaBitrate：降码率任务</li>
 	// <li>WechatDistribute：微信发布任务。</li>
 	// 兼容 2017 版的任务类型：
 	// <li>Transcode：视频转码任务；</li>
@@ -18694,7 +18961,12 @@ type TimeRange struct {
 }
 
 type TraceWatermarkInput struct {
-	// 水印模板 ID。
+	// 溯源水印任务开关，此字段必填，可选值：
+	// <li>ON：开启溯源水印；</li>
+	// <li>OFF：关闭溯源水印。</li>
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
+
+	// 该字段已废弃，请勿使用。
 	Definition *uint64 `json:"Definition,omitempty" name:"Definition"`
 }
 

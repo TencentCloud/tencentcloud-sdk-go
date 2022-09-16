@@ -1365,6 +1365,66 @@ func (c *Client) DescribeDomainAnalyticsWithContext(ctx context.Context, request
     return
 }
 
+func NewDescribeDomainGroupListRequest() (request *DescribeDomainGroupListRequest) {
+    request = &DescribeDomainGroupListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dnspod", APIVersion, "DescribeDomainGroupList")
+    
+    
+    return
+}
+
+func NewDescribeDomainGroupListResponse() (response *DescribeDomainGroupListResponse) {
+    response = &DescribeDomainGroupListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeDomainGroupList
+// 获取域名分组列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_NOTREALNAMEDUSER = "FailedOperation.NotRealNamedUser"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnknowError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeDomainGroupList(request *DescribeDomainGroupListRequest) (response *DescribeDomainGroupListResponse, err error) {
+    return c.DescribeDomainGroupListWithContext(context.Background(), request)
+}
+
+// DescribeDomainGroupList
+// 获取域名分组列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_NOTREALNAMEDUSER = "FailedOperation.NotRealNamedUser"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnknowError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeDomainGroupListWithContext(ctx context.Context, request *DescribeDomainGroupListRequest) (response *DescribeDomainGroupListResponse, err error) {
+    if request == nil {
+        request = NewDescribeDomainGroupListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDomainGroupList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDomainGroupListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDomainListRequest() (request *DescribeDomainListRequest) {
     request = &DescribeDomainListRequest{
         BaseRequest: &tchttp.BaseRequest{},

@@ -122,33 +122,38 @@ type AudioResultDetailMoanResult struct {
 }
 
 type AudioResultDetailTextResult struct {
-	// 标签
+	// 该字段用于返回检测结果所对应的恶意标签。<br>返回值：**Normal**：正常，**Porn**：色情，**Abuse**：谩骂，**Ad**：广告，**Custom**：自定义违规；以及其他令人反感、不安全或不适宜的内容类型。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Label *string `json:"Label,omitempty" name:"Label"`
 
-	// 命中的关键词
+	// 该字段用于返回ASR识别出的文本内容命中的关键词信息，用于标注内容违规的具体原因（如：加我微信）。该参数可能会有多个返回值，代表命中的多个关键词；若返回值为空，Score不为空，则代表识别结果所对应的恶意标签（Label）来自于语义模型判断的返回值。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Keywords []*string `json:"Keywords,omitempty" name:"Keywords"`
 
-	// 命中的LibId
+	// 该字段**仅当Label为Custom：自定义关键词时该参数有效**,用于返回自定义库的ID，以方便自定义库管理和配置。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LibId *string `json:"LibId,omitempty" name:"LibId"`
 
-	// 命中的LibName
+	// 该字段**仅当Label为Custom：自定义关键词时该参数有效**,用于返回自定义库的名称,以方便自定义库管理和配置。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LibName *string `json:"LibName,omitempty" name:"LibName"`
 
-	// 得分
+	// 该字段用于返回当前标签下的置信度，取值范围：0（**置信度最低**）-100（**置信度最高**），越高代表文本越有可能属于当前返回的标签；如：*色情 99*，则表明该文本非常有可能属于色情内容。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Score *int64 `json:"Score,omitempty" name:"Score"`
 
-	// 词库类型 1 黑白库 2 自定义库
+	// 该字段用于返回自定义关键词对应的词库类型，取值为**1**（黑白库）和**2**（自定义关键词库），若未配置自定义关键词库,则默认值为1（黑白库匹配）。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LibType *int64 `json:"LibType,omitempty" name:"LibType"`
 
-	// 审核建议
+	// 该字段用于返回后续操作建议。当您获取到判定结果后，返回值表示具体的后续建议操作。<br>
+	// 返回值：**Block**：建议屏蔽，**Review** ：建议人工复审，**Pass**：建议通过
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Suggestion *string `json:"Suggestion,omitempty" name:"Suggestion"`
+
+	// 该字段用于返回当前标签（Lable）下的二级标签。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubLabel *string `json:"SubLabel,omitempty" name:"SubLabel"`
 }
 
 type AudioSegments struct {

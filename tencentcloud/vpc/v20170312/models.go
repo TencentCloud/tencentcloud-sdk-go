@@ -5939,6 +5939,20 @@ type CrossBorderCompliance struct {
 	CreatedTime *string `json:"CreatedTime,omitempty" name:"CreatedTime"`
 }
 
+type CrossBorderFlowMonitorData struct {
+	// 入带宽
+	InBandwidth []*int64 `json:"InBandwidth,omitempty" name:"InBandwidth"`
+
+	// 出带宽
+	OutBandwidth []*int64 `json:"OutBandwidth,omitempty" name:"OutBandwidth"`
+
+	// 入包
+	InPkg []*int64 `json:"InPkg,omitempty" name:"InPkg"`
+
+	// 出包
+	OutPkg []*int64 `json:"OutPkg,omitempty" name:"OutPkg"`
+}
+
 type CustomerGateway struct {
 	// 用户网关唯一ID
 	CustomerGatewayId *string `json:"CustomerGatewayId,omitempty" name:"CustomerGatewayId"`
@@ -9543,6 +9557,106 @@ func (r *DescribeCrossBorderComplianceResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeCrossBorderComplianceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCrossBorderFlowMonitorRequestParams struct {
+	// 源地域
+	SourceRegion *string `json:"SourceRegion,omitempty" name:"SourceRegion"`
+
+	// 目的地域
+	DestinationRegion *string `json:"DestinationRegion,omitempty" name:"DestinationRegion"`
+
+	// 云联网Id
+	CcnId *string `json:"CcnId,omitempty" name:"CcnId"`
+
+	// 云联网所属账号
+	CcnUin *string `json:"CcnUin,omitempty" name:"CcnUin"`
+
+	// 时间粒度
+	Period *int64 `json:"Period,omitempty" name:"Period"`
+
+	// 开始时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+}
+
+type DescribeCrossBorderFlowMonitorRequest struct {
+	*tchttp.BaseRequest
+	
+	// 源地域
+	SourceRegion *string `json:"SourceRegion,omitempty" name:"SourceRegion"`
+
+	// 目的地域
+	DestinationRegion *string `json:"DestinationRegion,omitempty" name:"DestinationRegion"`
+
+	// 云联网Id
+	CcnId *string `json:"CcnId,omitempty" name:"CcnId"`
+
+	// 云联网所属账号
+	CcnUin *string `json:"CcnUin,omitempty" name:"CcnUin"`
+
+	// 时间粒度
+	Period *int64 `json:"Period,omitempty" name:"Period"`
+
+	// 开始时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+}
+
+func (r *DescribeCrossBorderFlowMonitorRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCrossBorderFlowMonitorRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SourceRegion")
+	delete(f, "DestinationRegion")
+	delete(f, "CcnId")
+	delete(f, "CcnUin")
+	delete(f, "Period")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCrossBorderFlowMonitorRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCrossBorderFlowMonitorResponseParams struct {
+	// 云联网跨境带宽监控数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CrossBorderFlowMonitorData []*CrossBorderFlowMonitorData `json:"CrossBorderFlowMonitorData,omitempty" name:"CrossBorderFlowMonitorData"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeCrossBorderFlowMonitorResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeCrossBorderFlowMonitorResponseParams `json:"Response"`
+}
+
+func (r *DescribeCrossBorderFlowMonitorResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCrossBorderFlowMonitorResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

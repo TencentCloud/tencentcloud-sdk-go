@@ -41,6 +41,9 @@ const (
 	// 超出大小限制。
 	INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
 
+	// 无效Region ID 。
+	INVALIDPARAMETERVALUE_REGION = "InvalidParameterValue.Region"
+
 	// 参数名过长。
 	INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
 

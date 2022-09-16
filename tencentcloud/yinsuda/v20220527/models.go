@@ -264,6 +264,105 @@ func (r *DescribeKTVMatchMusicsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeKTVMusicsByTagRequestParams struct {
+	// 应用名称。
+	AppName *string `json:"AppName,omitempty" name:"AppName"`
+
+	// 用户标识。
+	UserId *string `json:"UserId,omitempty" name:"UserId"`
+
+	// 标签 Id。
+	TagId *string `json:"TagId,omitempty" name:"TagId"`
+
+	// 滚动标记。
+	ScrollToken *string `json:"ScrollToken,omitempty" name:"ScrollToken"`
+
+	// 返回条数限制，默认 20，最大 50。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 权益过滤，取值有：
+	// <li>Play：可播；</li>
+	// <li>Sing：可唱。</li>
+	RightFilters []*string `json:"RightFilters,omitempty" name:"RightFilters"`
+}
+
+type DescribeKTVMusicsByTagRequest struct {
+	*tchttp.BaseRequest
+	
+	// 应用名称。
+	AppName *string `json:"AppName,omitempty" name:"AppName"`
+
+	// 用户标识。
+	UserId *string `json:"UserId,omitempty" name:"UserId"`
+
+	// 标签 Id。
+	TagId *string `json:"TagId,omitempty" name:"TagId"`
+
+	// 滚动标记。
+	ScrollToken *string `json:"ScrollToken,omitempty" name:"ScrollToken"`
+
+	// 返回条数限制，默认 20，最大 50。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 权益过滤，取值有：
+	// <li>Play：可播；</li>
+	// <li>Sing：可唱。</li>
+	RightFilters []*string `json:"RightFilters,omitempty" name:"RightFilters"`
+}
+
+func (r *DescribeKTVMusicsByTagRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeKTVMusicsByTagRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AppName")
+	delete(f, "UserId")
+	delete(f, "TagId")
+	delete(f, "ScrollToken")
+	delete(f, "Limit")
+	delete(f, "RightFilters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeKTVMusicsByTagRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeKTVMusicsByTagResponseParams struct {
+	// 歌曲信息列表。
+	KTVMusicInfoSet []*KTVMusicBaseInfo `json:"KTVMusicInfoSet,omitempty" name:"KTVMusicInfoSet"`
+
+	// 滚动标记，用于设置下次请求的 ScrollToken 参数。
+	ScrollToken *string `json:"ScrollToken,omitempty" name:"ScrollToken"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeKTVMusicsByTagResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeKTVMusicsByTagResponseParams `json:"Response"`
+}
+
+func (r *DescribeKTVMusicsByTagResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeKTVMusicsByTagResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeKTVPlaylistDetailRequestParams struct {
 	// 应用名称。
 	AppName *string `json:"AppName,omitempty" name:"AppName"`
@@ -619,6 +718,70 @@ func (r *DescribeKTVSuggestionsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeKTVTagsRequestParams struct {
+	// 应用名称。
+	AppName *string `json:"AppName,omitempty" name:"AppName"`
+
+	// 用户标识。
+	UserId *string `json:"UserId,omitempty" name:"UserId"`
+}
+
+type DescribeKTVTagsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 应用名称。
+	AppName *string `json:"AppName,omitempty" name:"AppName"`
+
+	// 用户标识。
+	UserId *string `json:"UserId,omitempty" name:"UserId"`
+}
+
+func (r *DescribeKTVTagsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeKTVTagsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AppName")
+	delete(f, "UserId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeKTVTagsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeKTVTagsResponseParams struct {
+	// 标签分组列表。
+	TagGroupInfoSet []*KTVTagGroupInfo `json:"TagGroupInfoSet,omitempty" name:"TagGroupInfoSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeKTVTagsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeKTVTagsResponseParams `json:"Response"`
+}
+
+func (r *DescribeKTVTagsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeKTVTagsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DestroyKTVRobotRequestParams struct {
 	// 应用名称。
 	AppName *string `json:"AppName,omitempty" name:"AppName"`
@@ -689,6 +852,18 @@ func (r *DestroyKTVRobotResponse) FromJsonString(s string) error {
 type JoinRoomInput struct {
 	// TRTC进房参数
 	TRTCJoinRoomInput *TRTCJoinRoomInput `json:"TRTCJoinRoomInput,omitempty" name:"TRTCJoinRoomInput"`
+}
+
+type KTVBPMInfo struct {
+	// 节拍类型，取值有：
+	// <li>Slow：慢；</li>
+	// <li>Middle：中等；</li>
+	// <li>Fast：快；</li>
+	// <li>Unknown：未知。</li>
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// BPM 值。
+	Value *int64 `json:"Value,omitempty" name:"Value"`
 }
 
 type KTVMatchMusic struct {
@@ -768,6 +943,10 @@ type KTVMusicDetailInfo struct {
 
 	// 歌曲流派列表。
 	GenreSet []*string `json:"GenreSet,omitempty" name:"GenreSet"`
+
+	// 节拍信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BPMInfo *KTVBPMInfo `json:"BPMInfo,omitempty" name:"BPMInfo"`
 }
 
 type KTVPlaylistBaseInfo struct {
@@ -818,6 +997,25 @@ type KTVRobotInfo struct {
 type KTVSuggestionInfo struct {
 	// 联想词。
 	Suggestion *string `json:"Suggestion,omitempty" name:"Suggestion"`
+}
+
+type KTVTagGroupInfo struct {
+	// 分组 Id。
+	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
+
+	// 分组名。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 标签列表。
+	TagInfoSet []*KTVTagInfo `json:"TagInfoSet,omitempty" name:"TagInfoSet"`
+}
+
+type KTVTagInfo struct {
+	// 标签 Id。
+	TagId *string `json:"TagId,omitempty" name:"TagId"`
+
+	// 标签名称。
+	Name *string `json:"Name,omitempty" name:"Name"`
 }
 
 type MusicAlbumCoverInfo struct {

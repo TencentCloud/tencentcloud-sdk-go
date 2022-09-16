@@ -247,17 +247,17 @@ type CreateGroupRequestParams struct {
 	// 图库可容纳的最大图片数量。
 	MaxCapacity *uint64 `json:"MaxCapacity,omitempty" name:"MaxCapacity"`
 
-	// 简介。
+	// 图库简介。
 	Brief *string `json:"Brief,omitempty" name:"Brief"`
 
 	// 访问限制默认为10qps，如需扩容请联系[在线客服](https://cloud.tencent.com/online-service)申请。
 	MaxQps *uint64 `json:"MaxQps,omitempty" name:"MaxQps"`
 
-	// 图库类型，对应不同服务类型，默认为4。1～3为历史版本，不推荐。
-	// 参数值：
-	// 4：在自建图库中搜索相同原图，可支持裁剪、翻转、调色、加水印后的图片搜索，适用于图片版权保护、原图查询等场景。
-	// 5：在自建图库中搜索相同或相似的商品图片，适用于商品分类、检索、推荐等电商场景。
-	// 6：在自建图片库中搜索与输入图片高度相似的图片，适用于相似图案、logo、纹理等图像元素的搜索。
+	// 图库类型，对应不同的图像搜索服务类型，默认为4。1～3为历史版本，不推荐。
+	// 参数取值：
+	// 4：相同图像搜索。
+	// 5：商品图像搜索。
+	// 6：相似图像搜索。
 	GroupType *uint64 `json:"GroupType,omitempty" name:"GroupType"`
 }
 
@@ -273,17 +273,17 @@ type CreateGroupRequest struct {
 	// 图库可容纳的最大图片数量。
 	MaxCapacity *uint64 `json:"MaxCapacity,omitempty" name:"MaxCapacity"`
 
-	// 简介。
+	// 图库简介。
 	Brief *string `json:"Brief,omitempty" name:"Brief"`
 
 	// 访问限制默认为10qps，如需扩容请联系[在线客服](https://cloud.tencent.com/online-service)申请。
 	MaxQps *uint64 `json:"MaxQps,omitempty" name:"MaxQps"`
 
-	// 图库类型，对应不同服务类型，默认为4。1～3为历史版本，不推荐。
-	// 参数值：
-	// 4：在自建图库中搜索相同原图，可支持裁剪、翻转、调色、加水印后的图片搜索，适用于图片版权保护、原图查询等场景。
-	// 5：在自建图库中搜索相同或相似的商品图片，适用于商品分类、检索、推荐等电商场景。
-	// 6：在自建图片库中搜索与输入图片高度相似的图片，适用于相似图案、logo、纹理等图像元素的搜索。
+	// 图库类型，对应不同的图像搜索服务类型，默认为4。1～3为历史版本，不推荐。
+	// 参数取值：
+	// 4：相同图像搜索。
+	// 5：商品图像搜索。
+	// 6：相似图像搜索。
 	GroupType *uint64 `json:"GroupType,omitempty" name:"GroupType"`
 }
 
@@ -339,50 +339,52 @@ type CreateImageRequestParams struct {
 	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
 
 	// 物品ID，最多支持64个字符。 
-	// 若EntityId已存在，则对其追加图片。
+	// 一个物品ID可以包含多张图片，若EntityId已存在，则对其追加图片。同一个EntityId，最大支持10张图。
 	EntityId *string `json:"EntityId,omitempty" name:"EntityId"`
 
 	// 图片名称，最多支持64个字符， 
-	// 同一个EntityId，最大支持10张图。
+	// PicName唯一确定一张图片，具有唯一性。
 	PicName *string `json:"PicName,omitempty" name:"PicName"`
 
 	// 图片的 Url 。对应图片 base64 编码后大小不可超过5M。  
-	// Url、Image必须提供一个，如果都提供，只使用 Url。 
-	// 图片分辨率不超过4096\*4096。
-	// 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
-	// 非腾讯云存储的Url速度和稳定性可能受一定影响。 
-	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
-	// 注意：开启主体识别分辨率不超过2000\*2000，图片长宽比小于10（长/短 < 10）。
+	// ImageUrl和ImageBase64必须提供一个，如果都提供，只使用ImageUrl。
+	// 图片限制：
+	// • 图片格式：支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+	// • 图片大小：对应图片 base64 编码后大小不可超过5M。图片分辨率不超过4096\*4096。
+	// • 如果在商品图像搜索中开启主体识别，分辨率不超过2000\*2000，图片长宽比小于10。
+	// 建议：
+	// • 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的Url速度和稳定性可能受一定影响。
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
 
-	// 用户自定义的内容，最多支持4096个字符，查询时原样带回。
+	// 图片自定义备注内容，最多支持4096个字符，查询时原样带回。
 	CustomContent *string `json:"CustomContent,omitempty" name:"CustomContent"`
 
 	// 图片 base64 数据，base64 编码后大小不可超过5M。 
-	// 图片分辨率不超过4096\*4096。 
-	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
-	// 注意：开启主体识别分辨率不超过2000\*2000，图片长宽比小于10（长/短 < 10）。
+	// 图片限制：
+	// • 图片格式：支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+	// • 图片大小：base64 编码后大小不可超过5M。图片分辨率不超过4096\*4096。
+	// • 如果在商品图像搜索中开启主体识别，分辨率不超过2000\*2000，图片长宽比小于10。
 	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
 
 	// 图片自定义标签，最多不超过10个，格式为JSON。
 	Tags *string `json:"Tags,omitempty" name:"Tags"`
 
 	// 是否需要启用主体识别，默认为**TRUE**。
-	// 1.  为**TRUE**时，启用主体识别，返回主体信息。若没有指定**ImageRect**，自动提取最大面积主体创建图片并进行主体识别。主体识别结果可在**Response**中获取。
-	// 2. 为**FALSE**时，不启用主体识别，不返回主体信息。若没有指定**ImageRect**，以整张图创建图片。
-	// 注意：服务类型为商品图像搜索时生效。
+	// • 为**TRUE**时，启用主体识别，返回主体信息。若没有指定**ImageRect**，自动提取最大面积主体创建图片并进行主体识别。主体识别结果可在**Response**中获取。
+	// • 为**FALSE**时，不启用主体识别，不返回主体信息。若没有指定**ImageRect**，以整张图创建图片。
+	// **<font color=#1E90FF>注意：仅服务类型为商品图像搜索时才生效。</font>**
 	EnableDetect *bool `json:"EnableDetect,omitempty" name:"EnableDetect"`
 
 	// 图像类目ID。
-	// 若设置类目ID，提取对应类目的主体创建图片。
-	// 注意：服务类型为商品图像搜索时生效。
-	// 类目信息：
+	// 若设置类目ID，提取以下类目的主体创建图片。
+	// 类目取值说明：
 	// 0：上衣。
 	// 1：裙装。
 	// 2：下装。
 	// 3：包。
 	// 4：鞋。
 	// 5：配饰。
+	// **<font color=#1E90FF>注意：仅服务类型为商品图像搜索时才生效。</font>**
 	CategoryId *int64 `json:"CategoryId,omitempty" name:"CategoryId"`
 
 	// 图像主体区域。
@@ -397,50 +399,52 @@ type CreateImageRequest struct {
 	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
 
 	// 物品ID，最多支持64个字符。 
-	// 若EntityId已存在，则对其追加图片。
+	// 一个物品ID可以包含多张图片，若EntityId已存在，则对其追加图片。同一个EntityId，最大支持10张图。
 	EntityId *string `json:"EntityId,omitempty" name:"EntityId"`
 
 	// 图片名称，最多支持64个字符， 
-	// 同一个EntityId，最大支持10张图。
+	// PicName唯一确定一张图片，具有唯一性。
 	PicName *string `json:"PicName,omitempty" name:"PicName"`
 
 	// 图片的 Url 。对应图片 base64 编码后大小不可超过5M。  
-	// Url、Image必须提供一个，如果都提供，只使用 Url。 
-	// 图片分辨率不超过4096\*4096。
-	// 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
-	// 非腾讯云存储的Url速度和稳定性可能受一定影响。 
-	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
-	// 注意：开启主体识别分辨率不超过2000\*2000，图片长宽比小于10（长/短 < 10）。
+	// ImageUrl和ImageBase64必须提供一个，如果都提供，只使用ImageUrl。
+	// 图片限制：
+	// • 图片格式：支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+	// • 图片大小：对应图片 base64 编码后大小不可超过5M。图片分辨率不超过4096\*4096。
+	// • 如果在商品图像搜索中开启主体识别，分辨率不超过2000\*2000，图片长宽比小于10。
+	// 建议：
+	// • 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的Url速度和稳定性可能受一定影响。
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
 
-	// 用户自定义的内容，最多支持4096个字符，查询时原样带回。
+	// 图片自定义备注内容，最多支持4096个字符，查询时原样带回。
 	CustomContent *string `json:"CustomContent,omitempty" name:"CustomContent"`
 
 	// 图片 base64 数据，base64 编码后大小不可超过5M。 
-	// 图片分辨率不超过4096\*4096。 
-	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
-	// 注意：开启主体识别分辨率不超过2000\*2000，图片长宽比小于10（长/短 < 10）。
+	// 图片限制：
+	// • 图片格式：支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+	// • 图片大小：base64 编码后大小不可超过5M。图片分辨率不超过4096\*4096。
+	// • 如果在商品图像搜索中开启主体识别，分辨率不超过2000\*2000，图片长宽比小于10。
 	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
 
 	// 图片自定义标签，最多不超过10个，格式为JSON。
 	Tags *string `json:"Tags,omitempty" name:"Tags"`
 
 	// 是否需要启用主体识别，默认为**TRUE**。
-	// 1.  为**TRUE**时，启用主体识别，返回主体信息。若没有指定**ImageRect**，自动提取最大面积主体创建图片并进行主体识别。主体识别结果可在**Response**中获取。
-	// 2. 为**FALSE**时，不启用主体识别，不返回主体信息。若没有指定**ImageRect**，以整张图创建图片。
-	// 注意：服务类型为商品图像搜索时生效。
+	// • 为**TRUE**时，启用主体识别，返回主体信息。若没有指定**ImageRect**，自动提取最大面积主体创建图片并进行主体识别。主体识别结果可在**Response**中获取。
+	// • 为**FALSE**时，不启用主体识别，不返回主体信息。若没有指定**ImageRect**，以整张图创建图片。
+	// **<font color=#1E90FF>注意：仅服务类型为商品图像搜索时才生效。</font>**
 	EnableDetect *bool `json:"EnableDetect,omitempty" name:"EnableDetect"`
 
 	// 图像类目ID。
-	// 若设置类目ID，提取对应类目的主体创建图片。
-	// 注意：服务类型为商品图像搜索时生效。
-	// 类目信息：
+	// 若设置类目ID，提取以下类目的主体创建图片。
+	// 类目取值说明：
 	// 0：上衣。
 	// 1：裙装。
 	// 2：下装。
 	// 3：包。
 	// 4：鞋。
 	// 5：配饰。
+	// **<font color=#1E90FF>注意：仅服务类型为商品图像搜索时才生效。</font>**
 	CategoryId *int64 `json:"CategoryId,omitempty" name:"CategoryId"`
 
 	// 图像主体区域。
@@ -480,7 +484,7 @@ func (r *CreateImageRequest) FromJsonString(s string) error {
 type CreateImageResponseParams struct {
 	// 输入图的主体信息。
 	// 若启用主体识别且在请求中指定了类目ID或主体区域，以指定的主体为准。若启用主体识别且没有指定，以最大面积主体为准。
-	// 注意：此字段可能返回 null，表示取不到有效值。服务类型为商品图像搜索时生效。
+	// **<font color=#1E90FF>注意：仅服务类型为商品图像搜索时才生效。</font>**
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Object *ObjectInfo `json:"Object,omitempty" name:"Object"`
 
@@ -2067,31 +2071,44 @@ type SearchImageRequestParams struct {
 	// 图库名称。
 	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
 
-	// 图片的 Url 。对应图片 base64 编码后大小不可超过5M。 
-	// 图片分辨率不超4096\*4096。 
-	// Url、Image必须提供一个，如果都提供，只使用 Url。 
-	// 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
-	// 非腾讯云存储的Url速度和稳定性可能受一定影响。 
-	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
-	// 注意：开启主体识别分辨率不超过2000\*2000，图片长宽比小于10（长/短 < 10）。
+	// 图片的 Url 。
+	// ImageUrl和ImageBase64必须提供一个，如果都提供，只使用ImageUrl。
+	// 图片限制：
+	// • 图片格式：支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+	// • 图片大小：对应图片 base64 编码后大小不可超过5M。图片分辨率不超过4096\*4096。
+	// • 如果在商品图像搜索中开启主体识别，分辨率不超过2000\*2000，图片长宽比小于10。
+	// 建议：
+	// • 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的Url速度和稳定性可能受一定影响。
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
 
-	// 图片 base64 数据，base64 编码后大小不可超过5M。 
-	// 图片分辨率不超过4096\*4096。 
-	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
-	// 注意：开启主体识别分辨率不超过2000\*2000，图片长宽比小于10（长/短 < 10）。
+	// 图片 base64 数据。
+	// ImageUrl和ImageBase64必须提供一个，如果都提供，只使用ImageUrl。
+	// 图片限制：
+	// • 图片格式：支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+	// • 图片大小：base64 编码后大小不可超过5M。图片分辨率不超过4096\*4096。
+	// • 如果在商品图像搜索中开启主体识别，分辨率不超过2000\*2000，图片长宽比小于10。
 	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
 
-	// 返回数量，默认值为10，最大值为100。
+	// 返回结果的数量，默认值为10，最大值为100。
+	// 按照相似度分数由高到低排序。
+	// **<font color=#1E90FF>注意：服务类型为相似图像搜索时返回数量限制为1，即返回top1的结果。</font>**
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 起始序号，默认值为0。
+	// 返回结果的起始序号，默认值为0。
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 出参Score中，只有超过**MatchThreshold**值的结果才会返回。默认为0
+	// 匹配阈值。
+	// 只有图片相似度分数超过MatchThreshold值的结果才会返回。
+	// 默认值：
+	// • 相同图像搜索：50。
+	// • 商品图像搜索：28。
+	// • 相似图像搜索：56。
+	// 建议：
+	// 可以手动调整MatchThreshold值来控制输出结果的范围。入股发现无检索结果，建议调整为较低的阈值。
 	MatchThreshold *int64 `json:"MatchThreshold,omitempty" name:"MatchThreshold"`
 
-	// 针对入库时提交的Tags信息进行条件过滤。支持>、>=、 <、 <=、=，!=，多个条件之间支持AND和OR进行连接。
+	// 标签过滤条件。
+	// 针对创建图片时提交的Tags信息进行条件过滤。支持>、>=、 <、 <=、=，!=，多个条件之间支持AND和OR进行连接。
 	Filter *string `json:"Filter,omitempty" name:"Filter"`
 
 	// 图像主体区域。
@@ -2099,21 +2116,21 @@ type SearchImageRequestParams struct {
 	ImageRect *ImageRect `json:"ImageRect,omitempty" name:"ImageRect"`
 
 	// 是否需要启用主体识别，默认为**TRUE** 。
-	// 1. 为**TRUE**时，启用主体识别，返回主体信息。若没有指定**ImageRect**，自动提取最大面积主体进行检索并进行主体识别。主体识别结果可在**Response中**获取。
-	// 2. 为**FALSE**时，不启用主体识别，不返回主体信息。若没有指定**ImageRect**，以整张图检索图片。
-	// 注意：服务类型为商品图像搜索时生效。
+	// • 为**TRUE**时，启用主体识别，返回主体信息。若没有指定**ImageRect**，自动提取最大面积主体进行检索并进行主体识别。主体识别结果可在**Response中**获取。
+	// • 为**FALSE**时，不启用主体识别，不返回主体信息。若没有指定**ImageRect**，以整张图检索图片。
+	// **<font color=#1E90FF>注意：仅服务类型为商品图像搜索时才生效。</font>**
 	EnableDetect *bool `json:"EnableDetect,omitempty" name:"EnableDetect"`
 
 	// 图像类目ID。
-	// 若设置类目ID，提取对应类目的主体进行检索。
-	// 注意：服务类型为商品图像搜索时生效。
-	// 类目信息：
+	// 若设置类目ID，提取以下类目的主体进行检索。
+	// 类目取值说明：
 	// 0：上衣。
 	// 1：裙装。
 	// 2：下装。
 	// 3：包。
 	// 4：鞋。
 	// 5：配饰。
+	// **<font color=#1E90FF>注意：仅服务类型为商品图像搜索时才生效。</font>**
 	CategoryId *int64 `json:"CategoryId,omitempty" name:"CategoryId"`
 }
 
@@ -2123,31 +2140,44 @@ type SearchImageRequest struct {
 	// 图库名称。
 	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
 
-	// 图片的 Url 。对应图片 base64 编码后大小不可超过5M。 
-	// 图片分辨率不超4096\*4096。 
-	// Url、Image必须提供一个，如果都提供，只使用 Url。 
-	// 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
-	// 非腾讯云存储的Url速度和稳定性可能受一定影响。 
-	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
-	// 注意：开启主体识别分辨率不超过2000\*2000，图片长宽比小于10（长/短 < 10）。
+	// 图片的 Url 。
+	// ImageUrl和ImageBase64必须提供一个，如果都提供，只使用ImageUrl。
+	// 图片限制：
+	// • 图片格式：支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+	// • 图片大小：对应图片 base64 编码后大小不可超过5M。图片分辨率不超过4096\*4096。
+	// • 如果在商品图像搜索中开启主体识别，分辨率不超过2000\*2000，图片长宽比小于10。
+	// 建议：
+	// • 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的Url速度和稳定性可能受一定影响。
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
 
-	// 图片 base64 数据，base64 编码后大小不可超过5M。 
-	// 图片分辨率不超过4096\*4096。 
-	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
-	// 注意：开启主体识别分辨率不超过2000\*2000，图片长宽比小于10（长/短 < 10）。
+	// 图片 base64 数据。
+	// ImageUrl和ImageBase64必须提供一个，如果都提供，只使用ImageUrl。
+	// 图片限制：
+	// • 图片格式：支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+	// • 图片大小：base64 编码后大小不可超过5M。图片分辨率不超过4096\*4096。
+	// • 如果在商品图像搜索中开启主体识别，分辨率不超过2000\*2000，图片长宽比小于10。
 	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
 
-	// 返回数量，默认值为10，最大值为100。
+	// 返回结果的数量，默认值为10，最大值为100。
+	// 按照相似度分数由高到低排序。
+	// **<font color=#1E90FF>注意：服务类型为相似图像搜索时返回数量限制为1，即返回top1的结果。</font>**
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 起始序号，默认值为0。
+	// 返回结果的起始序号，默认值为0。
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 出参Score中，只有超过**MatchThreshold**值的结果才会返回。默认为0
+	// 匹配阈值。
+	// 只有图片相似度分数超过MatchThreshold值的结果才会返回。
+	// 默认值：
+	// • 相同图像搜索：50。
+	// • 商品图像搜索：28。
+	// • 相似图像搜索：56。
+	// 建议：
+	// 可以手动调整MatchThreshold值来控制输出结果的范围。入股发现无检索结果，建议调整为较低的阈值。
 	MatchThreshold *int64 `json:"MatchThreshold,omitempty" name:"MatchThreshold"`
 
-	// 针对入库时提交的Tags信息进行条件过滤。支持>、>=、 <、 <=、=，!=，多个条件之间支持AND和OR进行连接。
+	// 标签过滤条件。
+	// 针对创建图片时提交的Tags信息进行条件过滤。支持>、>=、 <、 <=、=，!=，多个条件之间支持AND和OR进行连接。
 	Filter *string `json:"Filter,omitempty" name:"Filter"`
 
 	// 图像主体区域。
@@ -2155,21 +2185,21 @@ type SearchImageRequest struct {
 	ImageRect *ImageRect `json:"ImageRect,omitempty" name:"ImageRect"`
 
 	// 是否需要启用主体识别，默认为**TRUE** 。
-	// 1. 为**TRUE**时，启用主体识别，返回主体信息。若没有指定**ImageRect**，自动提取最大面积主体进行检索并进行主体识别。主体识别结果可在**Response中**获取。
-	// 2. 为**FALSE**时，不启用主体识别，不返回主体信息。若没有指定**ImageRect**，以整张图检索图片。
-	// 注意：服务类型为商品图像搜索时生效。
+	// • 为**TRUE**时，启用主体识别，返回主体信息。若没有指定**ImageRect**，自动提取最大面积主体进行检索并进行主体识别。主体识别结果可在**Response中**获取。
+	// • 为**FALSE**时，不启用主体识别，不返回主体信息。若没有指定**ImageRect**，以整张图检索图片。
+	// **<font color=#1E90FF>注意：仅服务类型为商品图像搜索时才生效。</font>**
 	EnableDetect *bool `json:"EnableDetect,omitempty" name:"EnableDetect"`
 
 	// 图像类目ID。
-	// 若设置类目ID，提取对应类目的主体进行检索。
-	// 注意：服务类型为商品图像搜索时生效。
-	// 类目信息：
+	// 若设置类目ID，提取以下类目的主体进行检索。
+	// 类目取值说明：
 	// 0：上衣。
 	// 1：裙装。
 	// 2：下装。
 	// 3：包。
 	// 4：鞋。
 	// 5：配饰。
+	// **<font color=#1E90FF>注意：仅服务类型为商品图像搜索时才生效。</font>**
 	CategoryId *int64 `json:"CategoryId,omitempty" name:"CategoryId"`
 }
 
@@ -2212,7 +2242,7 @@ type SearchImageResponseParams struct {
 
 	// 输入图的主体信息。
 	// 若启用主体识别且在请求中指定了类目ID或主体区域，以指定的主体为准。若启用主体识别且没有指定，以最大面积主体为准。
-	// 注意：此字段可能返回 null，表示取不到有效值。服务类型为商品图像搜索时生效。
+	// **<font color=#1E90FF>注意：仅服务类型为商品图像搜索时才生效。</font>**
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Object *ObjectInfo `json:"Object,omitempty" name:"Object"`
 
