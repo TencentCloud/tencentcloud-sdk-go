@@ -466,15 +466,18 @@ func (c *Client) WithRequestClient(rc string) *Client {
 	const reRequestClient = "^[0-9a-zA-Z-_ ,;]+$"
 
 	if len(rc) > 128 {
-		panic("the length of RequestClient should be within 128 characters")
+		c.logger.Println("the length of RequestClient should be within 128 characters, it will be truncated")
+		rc = rc[:128]
 	}
 
 	match, err := regexp.MatchString(reRequestClient, rc)
 	if err != nil {
-		panic(err)
+		c.logger.Println("regexp is wrong", reRequestClient)
+		return c
 	}
 	if !match {
-		panic("RequestClient should match the regexp: " + reRequestClient)
+		c.logger.Printf("RequestClient not match the regexp: %s, ignored", reRequestClient)
+		return c
 	}
 
 	c.requestClient = rc
