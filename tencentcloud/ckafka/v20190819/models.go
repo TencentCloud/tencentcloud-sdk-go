@@ -2286,6 +2286,66 @@ func (r *CreateUserResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type CtsdbConnectParam struct {
+	// Ctsdb的连接port
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Port *int64 `json:"Port,omitempty" name:"Port"`
+
+	// Ctsdb连接源的实例vip
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ServiceVip *string `json:"ServiceVip,omitempty" name:"ServiceVip"`
+
+	// Ctsdb连接源的vpcId
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UniqVpcId *string `json:"UniqVpcId,omitempty" name:"UniqVpcId"`
+
+	// Ctsdb连接源的用户名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserName *string `json:"UserName,omitempty" name:"UserName"`
+
+	// Ctsdb连接源的密码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Password *string `json:"Password,omitempty" name:"Password"`
+
+	// Ctsdb连接源的实例资源
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Resource *string `json:"Resource,omitempty" name:"Resource"`
+}
+
+type CtsdbModifyConnectParam struct {
+	// Ctsdb的连接port
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Port *int64 `json:"Port,omitempty" name:"Port"`
+
+	// Ctsdb连接源的实例vip
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ServiceVip *string `json:"ServiceVip,omitempty" name:"ServiceVip"`
+
+	// Ctsdb连接源的vpcId
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UniqVpcId *string `json:"UniqVpcId,omitempty" name:"UniqVpcId"`
+
+	// Ctsdb连接源的用户名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserName *string `json:"UserName,omitempty" name:"UserName"`
+
+	// Ctsdb连接源的密码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Password *string `json:"Password,omitempty" name:"Password"`
+
+	// Ctsdb连接源的实例资源
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Resource *string `json:"Resource,omitempty" name:"Resource"`
+}
+
+type CtsdbParam struct {
+	// 连接管理实例资源
+	Resource *string `json:"Resource,omitempty" name:"Resource"`
+
+	// Ctsdb的metric
+	CtsdbMetric *string `json:"CtsdbMetric,omitempty" name:"CtsdbMetric"`
+}
+
 type DatahubResource struct {
 	// 资源类型
 	Type *string `json:"Type,omitempty" name:"Type"`
@@ -2345,6 +2405,10 @@ type DatahubResource struct {
 	// SQLServer配置，Type为SQLSERVER时必填
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SQLServerParam *SQLServerParam `json:"SQLServerParam,omitempty" name:"SQLServerParam"`
+
+	// Ctsdb配置，Type为CTSDB时必填
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CtsdbParam *CtsdbParam `json:"CtsdbParam,omitempty" name:"CtsdbParam"`
 }
 
 type DatahubTaskIdRes struct {
@@ -3465,13 +3529,25 @@ type DescribeConnectResource struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClickHouseConnectParam *ClickHouseConnectParam `json:"ClickHouseConnectParam,omitempty" name:"ClickHouseConnectParam"`
 
-	// MySQL配置，Type为MYSQL时必填
+	// MySQL配置，Type为MYSQL或TDSQL_C_MYSQL时返回
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MySQLConnectParam *MySQLConnectParam `json:"MySQLConnectParam,omitempty" name:"MySQLConnectParam"`
 
-	// PostgreSQL配置，Type为POSTGRESQL或TDSQL_C_POSTGRESQL时必填
+	// PostgreSQL配置，Type为POSTGRESQL或TDSQL_C_POSTGRESQL时返回
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PostgreSQLConnectParam *PostgreSQLConnectParam `json:"PostgreSQLConnectParam,omitempty" name:"PostgreSQLConnectParam"`
+
+	// MariaDB配置，Type为MARIADB时返回
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MariaDBConnectParam *MariaDBConnectParam `json:"MariaDBConnectParam,omitempty" name:"MariaDBConnectParam"`
+
+	// SQLServer配置，Type为SQLSERVER时返回
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SQLServerConnectParam *SQLServerConnectParam `json:"SQLServerConnectParam,omitempty" name:"SQLServerConnectParam"`
+
+	// Ctsdb配置，Type为CTSDB时返回
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CtsdbConnectParam *CtsdbConnectParam `json:"CtsdbConnectParam,omitempty" name:"CtsdbConnectParam"`
 }
 
 // Predefined struct for user
@@ -3543,7 +3619,7 @@ type DescribeConnectResourceResp struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	StepList []*string `json:"StepList,omitempty" name:"StepList"`
 
-	// MySQL配置，Type为MYSQL时返回
+	// MySQL配置，Type为MYSQL或TDSQL_C_MYSQL时返回
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MySQLConnectParam *MySQLConnectParam `json:"MySQLConnectParam,omitempty" name:"MySQLConnectParam"`
 
@@ -3566,6 +3642,18 @@ type DescribeConnectResourceResp struct {
 	// ClickHouse配置，Type为CLICKHOUSE时返回
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClickHouseConnectParam *ClickHouseConnectParam `json:"ClickHouseConnectParam,omitempty" name:"ClickHouseConnectParam"`
+
+	// MariaDB配置，Type为MARIADB时返回
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MariaDBConnectParam *MariaDBConnectParam `json:"MariaDBConnectParam,omitempty" name:"MariaDBConnectParam"`
+
+	// SQLServer配置，Type为SQLSERVER时返回
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SQLServerConnectParam *SQLServerConnectParam `json:"SQLServerConnectParam,omitempty" name:"SQLServerConnectParam"`
+
+	// Ctsdb配置，Type为CTSDB时返回
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CtsdbConnectParam *CtsdbConnectParam `json:"CtsdbConnectParam,omitempty" name:"CtsdbConnectParam"`
 }
 
 // Predefined struct for user
@@ -6266,6 +6354,18 @@ type JgwOperateResponse struct {
 	Data *OperateResponseData `json:"Data,omitempty" name:"Data"`
 }
 
+type KVParam struct {
+	// 分隔符
+	Delimiter *string `json:"Delimiter,omitempty" name:"Delimiter"`
+
+	// key-value二次解析分隔符
+	Regex *string `json:"Regex,omitempty" name:"Regex"`
+
+	// 保留源Key，默认为false不保留
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	KeepOriginalKey *string `json:"KeepOriginalKey,omitempty" name:"KeepOriginalKey"`
+}
+
 type KafkaParam struct {
 	// 是否为自建集群
 	SelfBuilt *bool `json:"SelfBuilt,omitempty" name:"SelfBuilt"`
@@ -6400,6 +6500,24 @@ type MariaDBParam struct {
 
 	// 复制存量信息(schema_only不复制, initial全量)，默认位initial
 	SnapshotMode *string `json:"SnapshotMode,omitempty" name:"SnapshotMode"`
+
+	// 格式：库1.表1:字段1,字段2;库2.表2:字段2，表之间;（分号）隔开，字段之间,（逗号）隔开。不指定的表默认取表的主键
+	KeyColumns *string `json:"KeyColumns,omitempty" name:"KeyColumns"`
+
+	// 当Table输入的是前缀时，该项值为true，否则为false
+	IsTablePrefix *bool `json:"IsTablePrefix,omitempty" name:"IsTablePrefix"`
+
+	// 输出格式，DEFAULT、CANAL_1、CANAL_2
+	OutputFormat *string `json:"OutputFormat,omitempty" name:"OutputFormat"`
+
+	// 如果该值为all，则DDL数据以及DML数据也会写入到选中的topic；若该值为dml，则只有DML数据写入到选中的topic
+	IncludeContentChanges *string `json:"IncludeContentChanges,omitempty" name:"IncludeContentChanges"`
+
+	// 如果该值为true，且MySQL中"binlog_rows_query_log_events"配置项的值为"ON"，则流入到topic的数据包含原SQL语句；若该值为false，流入到topic的数据不包含原SQL语句
+	IncludeQuery *bool `json:"IncludeQuery,omitempty" name:"IncludeQuery"`
+
+	// 如果该值为 true，则消息中会携带消息结构体对应的schema，如果该值为false则不会携带
+	RecordWithSchema *bool `json:"RecordWithSchema,omitempty" name:"RecordWithSchema"`
 }
 
 // Predefined struct for user
@@ -6439,6 +6557,9 @@ type ModifyConnectResourceRequestParams struct {
 
 	// SQLServer配置，Type为SQLSERVER时必填
 	SQLServerConnectParam *SQLServerModifyConnectParam `json:"SQLServerConnectParam,omitempty" name:"SQLServerConnectParam"`
+
+	// Ctsdb配置，Type为CTSDB
+	CtsdbConnectParam *CtsdbModifyConnectParam `json:"CtsdbConnectParam,omitempty" name:"CtsdbConnectParam"`
 }
 
 type ModifyConnectResourceRequest struct {
@@ -6479,6 +6600,9 @@ type ModifyConnectResourceRequest struct {
 
 	// SQLServer配置，Type为SQLSERVER时必填
 	SQLServerConnectParam *SQLServerModifyConnectParam `json:"SQLServerConnectParam,omitempty" name:"SQLServerConnectParam"`
+
+	// Ctsdb配置，Type为CTSDB
+	CtsdbConnectParam *CtsdbModifyConnectParam `json:"CtsdbConnectParam,omitempty" name:"CtsdbConnectParam"`
 }
 
 func (r *ModifyConnectResourceRequest) ToJsonString() string {
@@ -6505,6 +6629,7 @@ func (r *ModifyConnectResourceRequest) FromJsonString(s string) error {
 	delete(f, "PostgreSQLConnectParam")
 	delete(f, "MariaDBConnectParam")
 	delete(f, "SQLServerConnectParam")
+	delete(f, "CtsdbConnectParam")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyConnectResourceRequest has unknown keys!", "")
 	}
@@ -7551,6 +7676,15 @@ type PostgreSQLParam struct {
 
 	// 是否抛弃解析失败的消息，默认为true
 	DropInvalidMessage *bool `json:"DropInvalidMessage,omitempty" name:"DropInvalidMessage"`
+
+	// 输入的table是否为正则表达式
+	IsTableRegular *bool `json:"IsTableRegular,omitempty" name:"IsTableRegular"`
+
+	// 格式：库1.表1:字段1,字段2;库2.表2:字段2，表之间;（分号）隔开，字段之间,（逗号）隔开。不指定的表默认取表的主键
+	KeyColumns *string `json:"KeyColumns,omitempty" name:"KeyColumns"`
+
+	// 如果该值为 true，则消息中会携带消息结构体对应的schema，如果该值为false则不会携带
+	RecordWithSchema *bool `json:"RecordWithSchema,omitempty" name:"RecordWithSchema"`
 }
 
 type Price struct {
@@ -7880,6 +8014,11 @@ func (r *SendMessageResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *SendMessageResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type SplitParam struct {
+	// 分隔符
+	Regex *string `json:"Regex,omitempty" name:"Regex"`
 }
 
 type SubscribedInfo struct {
@@ -8232,6 +8371,10 @@ type TransformsParam struct {
 	// 输出格式为ROW必填
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RowParam *RowParam `json:"RowParam,omitempty" name:"RowParam"`
+
+	// 是否保留数据源Topic元数据信息（源Topic、Partition、Offset），默认为false
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	KeepMetadata *bool `json:"KeepMetadata,omitempty" name:"KeepMetadata"`
 }
 
 type User struct {
@@ -8258,7 +8401,7 @@ type UserResponse struct {
 }
 
 type ValueParam struct {
-	// 处理模式，REPLACE替换，SUBSTR截取，DATE日期转换，TRIM去除前后空格，REGEX_REPLACE正则替换
+	// 处理模式，REPLACE替换，SUBSTR截取，DATE日期转换，TRIM去除前后空格，REGEX_REPLACE正则替换，URL_DECODE，LOWERCASE转换为小写
 	Type *string `json:"Type,omitempty" name:"Type"`
 
 	// 替换，TYPE=REPLACE时必传
@@ -8276,6 +8419,18 @@ type ValueParam struct {
 	// 正则替换，TYPE=REGEX_REPLACE时必传
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RegexReplace *RegexReplaceParam `json:"RegexReplace,omitempty" name:"RegexReplace"`
+
+	// 值支持一拆多，TYPE=SPLIT时必传
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Split *SplitParam `json:"Split,omitempty" name:"Split"`
+
+	// key-value二次解析，TYPE=KV时必传
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	KV *KVParam `json:"KV,omitempty" name:"KV"`
+
+	// 处理结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Result *string `json:"Result,omitempty" name:"Result"`
 }
 
 type VipEntity struct {

@@ -7432,6 +7432,14 @@ type GuetzliAdapter struct {
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
 }
 
+type HTTPHeader struct {
+	// 请求头名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 请求头值
+	Value *string `json:"Value,omitempty" name:"Value"`
+}
+
 type HeaderKey struct {
 	// 是否组成Cachekey
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -9959,6 +9967,9 @@ type PushUrlsCacheRequestParams struct {
 	// 此功能灰度发布中，敬请期待
 	DisableRange *bool `json:"DisableRange,omitempty" name:"DisableRange"`
 
+	// 自定义 HTTP 请求头。最多定义 20 个，Name 长度不超过 128 字节，Value 长度不超过 1024 字节
+	Headers []*HTTPHeader `json:"Headers,omitempty" name:"Headers"`
+
 	// 是否对URL进行编码
 	UrlEncode *bool `json:"UrlEncode,omitempty" name:"UrlEncode"`
 }
@@ -9996,6 +10007,9 @@ type PushUrlsCacheRequest struct {
 	// 此功能灰度发布中，敬请期待
 	DisableRange *bool `json:"DisableRange,omitempty" name:"DisableRange"`
 
+	// 自定义 HTTP 请求头。最多定义 20 个，Name 长度不超过 128 字节，Value 长度不超过 1024 字节
+	Headers []*HTTPHeader `json:"Headers,omitempty" name:"Headers"`
+
 	// 是否对URL进行编码
 	UrlEncode *bool `json:"UrlEncode,omitempty" name:"UrlEncode"`
 }
@@ -10018,6 +10032,7 @@ func (r *PushUrlsCacheRequest) FromJsonString(s string) error {
 	delete(f, "Layer")
 	delete(f, "ParseM3U8")
 	delete(f, "DisableRange")
+	delete(f, "Headers")
 	delete(f, "UrlEncode")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "PushUrlsCacheRequest has unknown keys!", "")

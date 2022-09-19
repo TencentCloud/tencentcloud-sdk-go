@@ -85,11 +85,12 @@ func (r *AssignProjectResponse) FromJsonString(s string) error {
 }
 
 type Auth struct {
-	// *表示所有数据库,db.name表示特定的name数据库。
-	NameSpace *string `json:"NameSpace,omitempty" name:"NameSpace"`
-
-	// 用于控制权限,0无权限，1只读，2只写，3读写。
+	// 当前账号具有的权限信息。<ul><li>0：无权限。</li><li>1：只读。</li><li>2：只写。</li><li>3：读写。</li></ul>
 	Mask *int64 `json:"Mask,omitempty" name:"Mask"`
+
+	// 指具有当前账号权限的数据库名。
+	// <ul><li>* ：表示所有数据库。</li><li>db.name：表示特定name的数据库。</li></ul>
+	NameSpace *string `json:"NameSpace,omitempty" name:"NameSpace"`
 }
 
 type BackupDownloadTask struct {

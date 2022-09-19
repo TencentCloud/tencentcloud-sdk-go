@@ -1,49 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 云服务器(cvm) 版本：2017-03-12
+## 应用合规平台(acp) 版本：2022-01-05
 
-### 第 94 次发布
+### 第 5 次发布
 
-发布时间：2022-09-16 06:17:50
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [ModifyInstancesAttribute](https://cloud.tencent.com/document/api/213/15739)
-
-	* 新增入参：HostName
-
-
-
-
-## DNSPod(dnspod) 版本：2021-03-23
-
-### 第 8 次发布
-
-发布时间：2022-09-16 06:21:57
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DescribeDomainGroupList](https://cloud.tencent.com/document/api/1427/80523)
-
-新增数据结构：
-
-* [GroupInfo](https://cloud.tencent.com/document/api/1427/56185#GroupInfo)
-
-
-
-## Elasticsearch Service(es) 版本：2018-04-16
-
-### 第 35 次发布
-
-发布时间：2022-09-16 06:24:23
+发布时间：2022-09-19 11:21:50
 
 本次发布包含了以下内容：
 
@@ -51,195 +12,13 @@
 
 修改接口：
 
-* [CreateLogstashInstance](https://cloud.tencent.com/document/api/845/77244)
+* [CreateAppScanTask](https://cloud.tencent.com/document/api/1553/75166)
 
-	* 新增入参：OperationDuration
+	* 新增入参：AppSha1, PrivacyTextMD5
 
-* [UpdateLogstashInstance](https://cloud.tencent.com/document/api/845/77233)
+* [CreateAppScanTaskRepeat](https://cloud.tencent.com/document/api/1553/75165)
 
-	* 新增入参：OperationDuration
-
-
-修改数据结构：
-
-* [LogstashInstanceInfo](https://cloud.tencent.com/document/api/845/30634#LogstashInstanceInfo)
-
-	* 新增成员：OperationDuration
-
-
-
-
-## 电子签服务(ess) 版本：2020-11-11
-
-### 第 17 次发布
-
-发布时间：2022-09-16 06:24:43
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增数据结构：
-
-* [RegisterInfo](https://cloud.tencent.com/document/api/1323/70369#RegisterInfo)
-
-修改数据结构：
-
-* [FlowCreateApprover](https://cloud.tencent.com/document/api/1323/70369#FlowCreateApprover)
-
-	* 新增成员：RegisterInfo
-
-
-
-
-## 云直播(live) 版本：2018-08-01
-
-### 第 88 次发布
-
-发布时间：2022-09-16 06:31:07
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [AuthenticateDomainOwner](https://cloud.tencent.com/document/api/267/80524)
-
-修改接口：
-
-* [AddLiveDomain](https://cloud.tencent.com/document/api/267/33862)
-
-	* 新增入参：VerifyOwnerType
-
-
-
-
-## 视频内容安全(vm) 版本：2021-09-22
-
-### 第 4 次发布
-
-发布时间：2022-09-16 06:48:14
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [AudioResultDetailTextResult](https://cloud.tencent.com/document/api/1265/80019#AudioResultDetailTextResult)
-
-	* 新增成员：SubLabel
-
-
-
-
-## 视频内容安全(vm) 版本：2020-12-29
-
-
-
-## 视频内容安全(vm) 版本：2020-07-09
-
-
-
-## 云点播(vod) 版本：2018-07-17
-
-### 第 120 次发布
-
-发布时间：2022-09-16 06:48:25
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [ExtractTraceWatermark](https://cloud.tencent.com/document/api/266/80525)
-
-修改接口：
-
-* [DescribeTaskDetail](https://cloud.tencent.com/document/api/266/33431)
-
-	* 新增出参：ExtractTraceWatermarkTask, ReduceMediaBitrateTask
-
-
-新增数据结构：
-
-* [ExtractTraceWatermarkTask](https://cloud.tencent.com/document/api/266/31773#ExtractTraceWatermarkTask)
-* [ExtractTraceWatermarkTaskInput](https://cloud.tencent.com/document/api/266/31773#ExtractTraceWatermarkTaskInput)
-* [ExtractTraceWatermarkTaskOutput](https://cloud.tencent.com/document/api/266/31773#ExtractTraceWatermarkTaskOutput)
-* [ReduceMediaBitrateAdaptiveDynamicStreamingResult](https://cloud.tencent.com/document/api/266/31773#ReduceMediaBitrateAdaptiveDynamicStreamingResult)
-* [ReduceMediaBitrateMediaProcessTaskResult](https://cloud.tencent.com/document/api/266/31773#ReduceMediaBitrateMediaProcessTaskResult)
-* [ReduceMediaBitrateTask](https://cloud.tencent.com/document/api/266/31773#ReduceMediaBitrateTask)
-* [ReduceMediaBitrateTranscodeResult](https://cloud.tencent.com/document/api/266/31773#ReduceMediaBitrateTranscodeResult)
-
-修改数据结构：
-
-* [AdaptiveDynamicStreamingInfoItem](https://cloud.tencent.com/document/api/266/31773#AdaptiveDynamicStreamingInfoItem)
-
-	* 新增成员：DigitalWatermarkType
-
-* [EventContent](https://cloud.tencent.com/document/api/266/31773#EventContent)
-
-	* 新增成员：ExtractTraceWatermarkCompleteEvent, ReduceMediaBitrateCompleteEvent
-
-* [MediaTranscodeItem](https://cloud.tencent.com/document/api/266/31773#MediaTranscodeItem)
-
-	* 新增成员：DigitalWatermarkType
-
-* [TraceWatermarkInput](https://cloud.tencent.com/document/api/266/31773#TraceWatermarkInput)
-
-	* 新增成员：Switch
-
-
-
-
-## 私有网络(vpc) 版本：2017-03-12
-
-### 第 125 次发布
-
-发布时间：2022-09-16 06:49:40
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DescribeCrossBorderFlowMonitor](https://cloud.tencent.com/document/api/215/80526)
-
-新增数据结构：
-
-* [CrossBorderFlowMonitorData](https://cloud.tencent.com/document/api/215/15824#CrossBorderFlowMonitorData)
-
-
-
-## 音速达直播音乐版权引擎(yinsuda) 版本：2022-05-27
-
-### 第 7 次发布
-
-发布时间：2022-09-16 06:52:09
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DescribeKTVMusicsByTag](https://cloud.tencent.com/document/api/1592/80528)
-* [DescribeKTVTags](https://cloud.tencent.com/document/api/1592/80527)
-
-新增数据结构：
-
-* [KTVBPMInfo](https://cloud.tencent.com/document/api/1592/76191#KTVBPMInfo)
-* [KTVTagGroupInfo](https://cloud.tencent.com/document/api/1592/76191#KTVTagGroupInfo)
-* [KTVTagInfo](https://cloud.tencent.com/document/api/1592/76191#KTVTagInfo)
-
-修改数据结构：
-
-* [KTVMusicDetailInfo](https://cloud.tencent.com/document/api/1592/76191#KTVMusicDetailInfo)
-
-	* 新增成员：BPMInfo
+	* 新增入参：AppSha1, PrivacyTextMD5
 
 
 
@@ -494,6 +273,25 @@
 
 
 ## 应用合规平台(acp) 版本：2022-01-05
+
+### 第 5 次发布
+
+发布时间：2022-09-19 11:21:50
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateAppScanTask](https://cloud.tencent.com/document/api/1553/75166)
+
+	* 新增入参：AppSha1, PrivacyTextMD5
+
+* [CreateAppScanTaskRepeat](https://cloud.tencent.com/document/api/1553/75165)
+
+	* 新增入参：AppSha1, PrivacyTextMD5
+
 
 ### 第 4 次发布
 
@@ -13850,6 +13648,25 @@
 
 ## 内容分发网络(cdn) 版本：2018-06-06
 
+### 第 111 次发布
+
+发布时间：2022-09-19 06:14:28
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [PushUrlsCache](https://cloud.tencent.com/document/api/228/37869)
+
+	* 新增入参：Headers
+
+
+新增数据结构：
+
+* [HTTPHeader](https://cloud.tencent.com/document/api/228/30987#HTTPHeader)
+
 ### 第 110 次发布
 
 发布时间：2022-08-04 06:14:18
@@ -17922,6 +17739,60 @@
 
 ## 消息队列 Ckafka(ckafka) 版本：2019-08-19
 
+### 第 57 次发布
+
+发布时间：2022-09-19 06:16:48
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ModifyConnectResource](https://cloud.tencent.com/document/api/597/77794)
+
+	* 新增入参：CtsdbConnectParam
+
+
+新增数据结构：
+
+* [CtsdbConnectParam](https://cloud.tencent.com/document/api/597/40861#CtsdbConnectParam)
+* [CtsdbModifyConnectParam](https://cloud.tencent.com/document/api/597/40861#CtsdbModifyConnectParam)
+* [CtsdbParam](https://cloud.tencent.com/document/api/597/40861#CtsdbParam)
+* [KVParam](https://cloud.tencent.com/document/api/597/40861#KVParam)
+* [SplitParam](https://cloud.tencent.com/document/api/597/40861#SplitParam)
+
+修改数据结构：
+
+* [DatahubResource](https://cloud.tencent.com/document/api/597/40861#DatahubResource)
+
+	* 新增成员：CtsdbParam
+
+* [DescribeConnectResource](https://cloud.tencent.com/document/api/597/40861#DescribeConnectResource)
+
+	* 新增成员：MariaDBConnectParam, SQLServerConnectParam, CtsdbConnectParam
+
+* [DescribeConnectResourceResp](https://cloud.tencent.com/document/api/597/40861#DescribeConnectResourceResp)
+
+	* 新增成员：MariaDBConnectParam, SQLServerConnectParam, CtsdbConnectParam
+
+* [MariaDBParam](https://cloud.tencent.com/document/api/597/40861#MariaDBParam)
+
+	* 新增成员：KeyColumns, IsTablePrefix, OutputFormat, IncludeContentChanges, IncludeQuery, RecordWithSchema
+
+* [PostgreSQLParam](https://cloud.tencent.com/document/api/597/40861#PostgreSQLParam)
+
+	* 新增成员：IsTableRegular, KeyColumns, RecordWithSchema
+
+* [TransformsParam](https://cloud.tencent.com/document/api/597/40861#TransformsParam)
+
+	* 新增成员：KeepMetadata
+
+* [ValueParam](https://cloud.tencent.com/document/api/597/40861#ValueParam)
+
+	* 新增成员：Split, KV, Result
+
+
 ### 第 56 次发布
 
 发布时间：2022-08-30 06:16:47
@@ -20970,6 +20841,59 @@
 * [UsgPolicy](https://cloud.tencent.com/document/api/639/41450#UsgPolicy)
 * [UsgRuleDetail](https://cloud.tencent.com/document/api/639/41450#UsgRuleDetail)
 * [Vpc](https://cloud.tencent.com/document/api/639/41450#Vpc)
+
+
+
+
+## 云端 IDE(cloudstudio) 版本：2021-05-24
+
+### 第 1 次发布
+
+发布时间：2022-09-16 10:03:09
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateCustomizeTemplates](https://cloud.tencent.com/document/api/1039/80553)
+* [CreateWorkspaceByAgent](https://cloud.tencent.com/document/api/1039/80542)
+* [CreateWorkspaceByTemplate](https://cloud.tencent.com/document/api/1039/80552)
+* [CreateWorkspaceByVersionControl](https://cloud.tencent.com/document/api/1039/80541)
+* [DeleteCustomizeTemplatesById](https://cloud.tencent.com/document/api/1039/80551)
+* [DescribeCustomizeTemplates](https://cloud.tencent.com/document/api/1039/80550)
+* [DescribeCustomizeTemplatesById](https://cloud.tencent.com/document/api/1039/80549)
+* [DescribeCustomizeTemplatesPresets](https://cloud.tencent.com/document/api/1039/80548)
+* [DescribeWorkspaceEnvList](https://cloud.tencent.com/document/api/1039/80540)
+* [DescribeWorkspaceNameExist](https://cloud.tencent.com/document/api/1039/80539)
+* [DescribeWorkspaceStatus](https://cloud.tencent.com/document/api/1039/80538)
+* [DescribeWorkspaceStatusList](https://cloud.tencent.com/document/api/1039/80537)
+* [ModifyCustomizeTemplateVersionControl](https://cloud.tencent.com/document/api/1039/80547)
+* [ModifyCustomizeTemplatesFullById](https://cloud.tencent.com/document/api/1039/80546)
+* [ModifyCustomizeTemplatesPartById](https://cloud.tencent.com/document/api/1039/80545)
+* [ModifyWorkspaceAttributes](https://cloud.tencent.com/document/api/1039/80544)
+* [RecoverWorkspace](https://cloud.tencent.com/document/api/1039/80536)
+* [RemoveWorkspace](https://cloud.tencent.com/document/api/1039/80535)
+* [RunWorkspace](https://cloud.tencent.com/document/api/1039/80534)
+* [StopWorkspace](https://cloud.tencent.com/document/api/1039/80533)
+
+新增数据结构：
+
+* [AgentSpaceDTO](https://cloud.tencent.com/document/api/1039/80554#AgentSpaceDTO)
+* [CustomizeTemplatesPresetsInfo](https://cloud.tencent.com/document/api/1039/80554#CustomizeTemplatesPresetsInfo)
+* [ImageUserDTO](https://cloud.tencent.com/document/api/1039/80554#ImageUserDTO)
+* [UserDefinedTemplateParams](https://cloud.tencent.com/document/api/1039/80554#UserDefinedTemplateParams)
+* [UserDefinedTemplatePatchedParams](https://cloud.tencent.com/document/api/1039/80554#UserDefinedTemplatePatchedParams)
+* [UserInfoRsp](https://cloud.tencent.com/document/api/1039/80554#UserInfoRsp)
+* [UserSubInfo](https://cloud.tencent.com/document/api/1039/80554#UserSubInfo)
+* [WorkspaceDTO](https://cloud.tencent.com/document/api/1039/80554#WorkspaceDTO)
+* [WorkspaceInfo](https://cloud.tencent.com/document/api/1039/80554#WorkspaceInfo)
+* [WorkspaceInfoDTO](https://cloud.tencent.com/document/api/1039/80554#WorkspaceInfoDTO)
+* [WorkspaceResourceDTO](https://cloud.tencent.com/document/api/1039/80554#WorkspaceResourceDTO)
+* [WorkspaceShareInfo](https://cloud.tencent.com/document/api/1039/80554#WorkspaceShareInfo)
+* [WorkspaceStatusInfo](https://cloud.tencent.com/document/api/1039/80554#WorkspaceStatusInfo)
+* [WorkspaceTemplateInfo](https://cloud.tencent.com/document/api/1039/80554#WorkspaceTemplateInfo)
 
 
 
@@ -33197,11 +33121,11 @@
 
 新增接口：
 
-* [[DescribeDomainGroupList](https://cloud.tencent.com/document/api/1427/80523)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeDomainGroupList](https://cloud.tencent.com/document/api/1427/80523)
 
 新增数据结构：
 
-* [[GroupInfo](https://cloud.tencent.com/document/api/1427/56185#GroupInfo)](https://cloud.tencent.com/document/api/1427/56185#[GroupInfo](https://cloud.tencent.com/document/api/1427/56185#GroupInfo))
+* [GroupInfo](https://cloud.tencent.com/document/api/1427/56185#GroupInfo)
 
 ### 第 7 次发布
 
@@ -38463,7 +38387,7 @@
 
 新增数据结构：
 
-* [[RegisterInfo](https://cloud.tencent.com/document/api/1323/70369#RegisterInfo)](https://cloud.tencent.com/document/api/1323/70369#[RegisterInfo](https://cloud.tencent.com/document/api/1323/70369#RegisterInfo))
+* [RegisterInfo](https://cloud.tencent.com/document/api/1323/70369#RegisterInfo)
 
 修改数据结构：
 
@@ -49848,7 +49772,7 @@
 
 新增接口：
 
-* [[AuthenticateDomainOwner](https://cloud.tencent.com/document/api/267/80524)](https://cloud.tencent.com/document/api/#/#)
+* [AuthenticateDomainOwner](https://cloud.tencent.com/document/api/267/80524)
 
 修改接口：
 
@@ -60639,6 +60563,21 @@
 
 ## 私有域解析 Private DNS(privatedns) 版本：2020-10-28
 
+### 第 10 次发布
+
+发布时间：2022-09-19 06:43:11
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [MetricData](https://cloud.tencent.com/document/api/1338/55947#MetricData)
+
+	* 新增成员：MetricCount
+
+
 ### 第 9 次发布
 
 发布时间：2022-08-15 06:34:53
@@ -60836,6 +60775,49 @@
 
 
 ## 云压测(pts) 版本：2021-07-28
+
+### 第 4 次发布
+
+发布时间：2022-09-19 06:43:24
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [NotificationHook](https://cloud.tencent.com/document/api/1484/78100#NotificationHook)
+
+修改数据结构：
+
+* [AlertChannelRecord](https://cloud.tencent.com/document/api/1484/78100#AlertChannelRecord)
+
+	* 新增成员：AppId, Uin, SubAccountUin
+
+* [AlertRecord](https://cloud.tencent.com/document/api/1484/78100#AlertRecord)
+
+	* 新增成员：AppId, Uin, SubAccountUin, ScenarioName, Target, JobSLAId, JobSLADescription
+
+* [CronJob](https://cloud.tencent.com/document/api/1484/78100#CronJob)
+
+	* 新增成员：AppId, Uin, SubAccountUin
+
+* [File](https://cloud.tencent.com/document/api/1484/78100#File)
+
+	* 新增成员：CreatedAt, ProjectId
+
+* [Job](https://cloud.tencent.com/document/api/1484/78100#Job)
+
+	* 新增成员：Type, DomainNameConfig, Debug, AbortReason, CreatedAt, ProjectId, NotificationHooks
+
+* [RequestSummary](https://cloud.tencent.com/document/api/1484/78100#RequestSummary)
+
+	* 新增成员：P99, Status, Result
+
+* [Scenario](https://cloud.tencent.com/document/api/1484/78100#Scenario)
+
+	* 新增成员：NotificationHooks
+
 
 ### 第 3 次发布
 
@@ -84277,7 +84259,7 @@
 
 新增接口：
 
-* [[ExtractTraceWatermark](https://cloud.tencent.com/document/api/266/80525)](https://cloud.tencent.com/document/api/#/#)
+* [ExtractTraceWatermark](https://cloud.tencent.com/document/api/266/80525)
 
 修改接口：
 
@@ -84288,13 +84270,13 @@
 
 新增数据结构：
 
-* [[ExtractTraceWatermarkTask](https://cloud.tencent.com/document/api/266/31773#ExtractTraceWatermarkTask)](https://cloud.tencent.com/document/api/266/31773#[ExtractTraceWatermarkTask](https://cloud.tencent.com/document/api/266/31773#ExtractTraceWatermarkTask))
-* [[ExtractTraceWatermarkTaskInput](https://cloud.tencent.com/document/api/266/31773#ExtractTraceWatermarkTaskInput)](https://cloud.tencent.com/document/api/266/31773#[ExtractTraceWatermarkTaskInput](https://cloud.tencent.com/document/api/266/31773#ExtractTraceWatermarkTaskInput))
-* [[ExtractTraceWatermarkTaskOutput](https://cloud.tencent.com/document/api/266/31773#ExtractTraceWatermarkTaskOutput)](https://cloud.tencent.com/document/api/266/31773#[ExtractTraceWatermarkTaskOutput](https://cloud.tencent.com/document/api/266/31773#ExtractTraceWatermarkTaskOutput))
-* [[ReduceMediaBitrateAdaptiveDynamicStreamingResult](https://cloud.tencent.com/document/api/266/31773#ReduceMediaBitrateAdaptiveDynamicStreamingResult)](https://cloud.tencent.com/document/api/266/31773#[ReduceMediaBitrateAdaptiveDynamicStreamingResult](https://cloud.tencent.com/document/api/266/31773#ReduceMediaBitrateAdaptiveDynamicStreamingResult))
-* [[ReduceMediaBitrateMediaProcessTaskResult](https://cloud.tencent.com/document/api/266/31773#ReduceMediaBitrateMediaProcessTaskResult)](https://cloud.tencent.com/document/api/266/31773#[ReduceMediaBitrateMediaProcessTaskResult](https://cloud.tencent.com/document/api/266/31773#ReduceMediaBitrateMediaProcessTaskResult))
-* [[ReduceMediaBitrateTask](https://cloud.tencent.com/document/api/266/31773#ReduceMediaBitrateTask)](https://cloud.tencent.com/document/api/266/31773#[ReduceMediaBitrateTask](https://cloud.tencent.com/document/api/266/31773#ReduceMediaBitrateTask))
-* [[ReduceMediaBitrateTranscodeResult](https://cloud.tencent.com/document/api/266/31773#ReduceMediaBitrateTranscodeResult)](https://cloud.tencent.com/document/api/266/31773#[ReduceMediaBitrateTranscodeResult](https://cloud.tencent.com/document/api/266/31773#ReduceMediaBitrateTranscodeResult))
+* [ExtractTraceWatermarkTask](https://cloud.tencent.com/document/api/266/31773#ExtractTraceWatermarkTask)
+* [ExtractTraceWatermarkTaskInput](https://cloud.tencent.com/document/api/266/31773#ExtractTraceWatermarkTaskInput)
+* [ExtractTraceWatermarkTaskOutput](https://cloud.tencent.com/document/api/266/31773#ExtractTraceWatermarkTaskOutput)
+* [ReduceMediaBitrateAdaptiveDynamicStreamingResult](https://cloud.tencent.com/document/api/266/31773#ReduceMediaBitrateAdaptiveDynamicStreamingResult)
+* [ReduceMediaBitrateMediaProcessTaskResult](https://cloud.tencent.com/document/api/266/31773#ReduceMediaBitrateMediaProcessTaskResult)
+* [ReduceMediaBitrateTask](https://cloud.tencent.com/document/api/266/31773#ReduceMediaBitrateTask)
+* [ReduceMediaBitrateTranscodeResult](https://cloud.tencent.com/document/api/266/31773#ReduceMediaBitrateTranscodeResult)
 
 修改数据结构：
 
@@ -87544,11 +87526,11 @@
 
 新增接口：
 
-* [[DescribeCrossBorderFlowMonitor](https://cloud.tencent.com/document/api/215/80526)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeCrossBorderFlowMonitor](https://cloud.tencent.com/document/api/215/80526)
 
 新增数据结构：
 
-* [[CrossBorderFlowMonitorData](https://cloud.tencent.com/document/api/215/15824#CrossBorderFlowMonitorData)](https://cloud.tencent.com/document/api/215/15824#[CrossBorderFlowMonitorData](https://cloud.tencent.com/document/api/215/15824#CrossBorderFlowMonitorData))
+* [CrossBorderFlowMonitorData](https://cloud.tencent.com/document/api/215/15824#CrossBorderFlowMonitorData)
 
 ### 第 124 次发布
 
@@ -91173,14 +91155,14 @@
 
 新增接口：
 
-* [[DescribeKTVMusicsByTag](https://cloud.tencent.com/document/api/1592/80528)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeKTVTags](https://cloud.tencent.com/document/api/1592/80527)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeKTVMusicsByTag](https://cloud.tencent.com/document/api/1592/80528)
+* [DescribeKTVTags](https://cloud.tencent.com/document/api/1592/80527)
 
 新增数据结构：
 
-* [[KTVBPMInfo](https://cloud.tencent.com/document/api/1592/76191#KTVBPMInfo)](https://cloud.tencent.com/document/api/1592/76191#[KTVBPMInfo](https://cloud.tencent.com/document/api/1592/76191#KTVBPMInfo))
-* [[KTVTagGroupInfo](https://cloud.tencent.com/document/api/1592/76191#KTVTagGroupInfo)](https://cloud.tencent.com/document/api/1592/76191#[KTVTagGroupInfo](https://cloud.tencent.com/document/api/1592/76191#KTVTagGroupInfo))
-* [[KTVTagInfo](https://cloud.tencent.com/document/api/1592/76191#KTVTagInfo)](https://cloud.tencent.com/document/api/1592/76191#[KTVTagInfo](https://cloud.tencent.com/document/api/1592/76191#KTVTagInfo))
+* [KTVBPMInfo](https://cloud.tencent.com/document/api/1592/76191#KTVBPMInfo)
+* [KTVTagGroupInfo](https://cloud.tencent.com/document/api/1592/76191#KTVTagGroupInfo)
+* [KTVTagInfo](https://cloud.tencent.com/document/api/1592/76191#KTVTagInfo)
 
 修改数据结构：
 

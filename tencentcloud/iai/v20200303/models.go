@@ -4055,7 +4055,7 @@ type VerifyFaceResponseParams struct {
 	// 2.0版本误识率千分之一对应分数为70分，误识率万分之一对应分数为80分，误识率十万分之一对应分数为90分。 一般超过80分则可认定为同一人。
 	Score *float64 `json:"Score,omitempty" name:"Score"`
 
-	// 是否为同一人的判断。
+	// 是否为同一人判断，固定阈值分数为60分，若想更灵活地调整阈值可取Score参数返回进行判断
 	IsMatch *bool `json:"IsMatch,omitempty" name:"IsMatch"`
 
 	// 人脸识别所用的算法模型版本，是该 Person 所在的人员库的算法模型版本。在创建人员库时设置，详情可参考[算法模型版本](https://cloud.tencent.com/document/product/867/40042)

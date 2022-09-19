@@ -1089,7 +1089,7 @@ type CreateCRWorkRequestParams struct {
 	// 是否启用监测 0：不启用 1：启用 默认为0
 	IsMonitor *string `json:"IsMonitor,omitempty" name:"IsMonitor"`
 
-	// 是否启用存证0：不启用 1：启用 默认为1
+	// 是否启用存证0：不存证  2：存证 默认为0
 	IsCert *string `json:"IsCert,omitempty" name:"IsCert"`
 
 	// 存证回调地址
@@ -1101,34 +1101,34 @@ type CreateCRWorkRequestParams struct {
 	// 创作性质（原创,改编,翻译,汇编,注释,整理,其他)
 	ProduceType *string `json:"ProduceType,omitempty" name:"ProduceType"`
 
-	// xxx
+	// 白名单
 	WhiteLists []*string `json:"WhiteLists,omitempty" name:"WhiteLists"`
 
-	// x
+	// 作品ID
 	WorkId *int64 `json:"WorkId,omitempty" name:"WorkId"`
 
-	// xx
+	// 著作权人姓名
 	ProducerName *string `json:"ProducerName,omitempty" name:"ProducerName"`
 
-	// xx
+	// 作者
 	Nickname *string `json:"Nickname,omitempty" name:"Nickname"`
 
-	// x
+	// 授权书
 	Authorization *string `json:"Authorization,omitempty" name:"Authorization"`
 
-	// x
+	// 授权书开始时间
 	AuthorizationStartTime *string `json:"AuthorizationStartTime,omitempty" name:"AuthorizationStartTime"`
 
-	// x
+	// 授权书结束时间
 	AuthorizationEndTime *string `json:"AuthorizationEndTime,omitempty" name:"AuthorizationEndTime"`
 
-	// x
+	// 内容格式
 	ContentType *string `json:"ContentType,omitempty" name:"ContentType"`
 
-	// x
+	// 文件内容
 	Content *string `json:"Content,omitempty" name:"Content"`
 
-	// x
+	// 监测结束时间
 	MonitorEndTime *string `json:"MonitorEndTime,omitempty" name:"MonitorEndTime"`
 }
 
@@ -1180,7 +1180,7 @@ type CreateCRWorkRequest struct {
 	// 是否启用监测 0：不启用 1：启用 默认为0
 	IsMonitor *string `json:"IsMonitor,omitempty" name:"IsMonitor"`
 
-	// 是否启用存证0：不启用 1：启用 默认为1
+	// 是否启用存证0：不存证  2：存证 默认为0
 	IsCert *string `json:"IsCert,omitempty" name:"IsCert"`
 
 	// 存证回调地址
@@ -1192,34 +1192,34 @@ type CreateCRWorkRequest struct {
 	// 创作性质（原创,改编,翻译,汇编,注释,整理,其他)
 	ProduceType *string `json:"ProduceType,omitempty" name:"ProduceType"`
 
-	// xxx
+	// 白名单
 	WhiteLists []*string `json:"WhiteLists,omitempty" name:"WhiteLists"`
 
-	// x
+	// 作品ID
 	WorkId *int64 `json:"WorkId,omitempty" name:"WorkId"`
 
-	// xx
+	// 著作权人姓名
 	ProducerName *string `json:"ProducerName,omitempty" name:"ProducerName"`
 
-	// xx
+	// 作者
 	Nickname *string `json:"Nickname,omitempty" name:"Nickname"`
 
-	// x
+	// 授权书
 	Authorization *string `json:"Authorization,omitempty" name:"Authorization"`
 
-	// x
+	// 授权书开始时间
 	AuthorizationStartTime *string `json:"AuthorizationStartTime,omitempty" name:"AuthorizationStartTime"`
 
-	// x
+	// 授权书结束时间
 	AuthorizationEndTime *string `json:"AuthorizationEndTime,omitempty" name:"AuthorizationEndTime"`
 
-	// x
+	// 内容格式
 	ContentType *string `json:"ContentType,omitempty" name:"ContentType"`
 
-	// x
+	// 文件内容
 	Content *string `json:"Content,omitempty" name:"Content"`
 
-	// x
+	// 监测结束时间
 	MonitorEndTime *string `json:"MonitorEndTime,omitempty" name:"MonitorEndTime"`
 }
 

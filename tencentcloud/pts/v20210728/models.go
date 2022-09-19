@@ -262,6 +262,18 @@ type AlertChannelRecord struct {
 	// 更新时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdatedAt *string `json:"UpdatedAt,omitempty" name:"UpdatedAt"`
+
+	// App ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AppId *int64 `json:"AppId,omitempty" name:"AppId"`
+
+	// 主账号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Uin *string `json:"Uin,omitempty" name:"Uin"`
+
+	// 子账号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubAccountUin *string `json:"SubAccountUin,omitempty" name:"SubAccountUin"`
 }
 
 type AlertRecord struct {
@@ -292,6 +304,34 @@ type AlertRecord struct {
 	// 任务 ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	JobId *string `json:"JobId,omitempty" name:"JobId"`
+
+	// App ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AppId *int64 `json:"AppId,omitempty" name:"AppId"`
+
+	// 主账号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Uin *string `json:"Uin,omitempty" name:"Uin"`
+
+	// 子账号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubAccountUin *string `json:"SubAccountUin,omitempty" name:"SubAccountUin"`
+
+	// 场景名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ScenarioName *string `json:"ScenarioName,omitempty" name:"ScenarioName"`
+
+	// 告警对象
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Target *string `json:"Target,omitempty" name:"Target"`
+
+	// 告警规则 ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	JobSLAId *string `json:"JobSLAId,omitempty" name:"JobSLAId"`
+
+	// 告警规则描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	JobSLADescription *string `json:"JobSLADescription,omitempty" name:"JobSLADescription"`
 }
 
 type AlertRecordStatus struct {
@@ -1051,6 +1091,18 @@ type CronJob struct {
 	// tom
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	JobOwner *string `json:"JobOwner,omitempty" name:"JobOwner"`
+
+	// App ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AppId *int64 `json:"AppId,omitempty" name:"AppId"`
+
+	// 主账号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Uin *string `json:"Uin,omitempty" name:"Uin"`
+
+	// 子账号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubAccountUin *string `json:"SubAccountUin,omitempty" name:"SubAccountUin"`
 }
 
 type CustomSample struct {
@@ -2292,6 +2344,7 @@ func (r *DescribeMetricLabelWithValuesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeMetricLabelWithValuesResponseParams struct {
 	// 指标所有的label和values数组
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	MetricLabelWithValuesSet []*MetricLabelWithValues `json:"MetricLabelWithValuesSet,omitempty" name:"MetricLabelWithValuesSet"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -3505,6 +3558,14 @@ type File struct {
 	// 文件状态
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *int64 `json:"Status,omitempty" name:"Status"`
+
+	// 创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreatedAt *string `json:"CreatedAt,omitempty" name:"CreatedAt"`
+
+	// 项目 ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
 }
 
 type FileInfo struct {
@@ -3774,6 +3835,34 @@ type Job struct {
 	// 定时任务ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CronId *string `json:"CronId,omitempty" name:"CronId"`
+
+	// 场景类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 域名绑定配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DomainNameConfig *DomainNameConfig `json:"DomainNameConfig,omitempty" name:"DomainNameConfig"`
+
+	// false
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Debug *bool `json:"Debug,omitempty" name:"Debug"`
+
+	// 中断原因
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AbortReason *int64 `json:"AbortReason,omitempty" name:"AbortReason"`
+
+	// 任务的创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreatedAt *string `json:"CreatedAt,omitempty" name:"CreatedAt"`
+
+	// 项目ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 通知事件回调
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NotificationHooks []*NotificationHook `json:"NotificationHooks,omitempty" name:"NotificationHooks"`
 }
 
 type Label struct {
@@ -3885,6 +3974,16 @@ type Notification struct {
 	Events []*string `json:"Events,omitempty" name:"Events"`
 
 	// webhook的网址
+	URL *string `json:"URL,omitempty" name:"URL"`
+}
+
+type NotificationHook struct {
+	// 通知事件
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Events []*string `json:"Events,omitempty" name:"Events"`
+
+	// 回调 URL
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	URL *string `json:"URL,omitempty" name:"URL"`
 }
 
@@ -4005,6 +4104,15 @@ type RequestSummary struct {
 
 	// 请求错误率
 	ErrorPercentage *float64 `json:"ErrorPercentage,omitempty" name:"ErrorPercentage"`
+
+	// 请求p99耗时，单位秒
+	P99 *float64 `json:"P99,omitempty" name:"P99"`
+
+	// 响应状态码
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 响应详情
+	Result *string `json:"Result,omitempty" name:"Result"`
 }
 
 type RequestsPerSecond struct {
@@ -4271,6 +4379,10 @@ type Scenario struct {
 	// 域名解析配置
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DomainNameConfig *DomainNameConfig `json:"DomainNameConfig,omitempty" name:"DomainNameConfig"`
+
+	// 通知事件回调
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NotificationHooks []*NotificationHook `json:"NotificationHooks,omitempty" name:"NotificationHooks"`
 }
 
 type ScenarioRelatedJobsParams struct {

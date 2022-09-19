@@ -66,6 +66,7 @@ import (
 	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/clb"
 	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cloudaudit"
 	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cloudhsm"
+	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cloudstudio"
 	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cls"
 	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cme"
 	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cmq"

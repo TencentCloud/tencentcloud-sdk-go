@@ -1265,6 +1265,10 @@ type MetricData struct {
 
 	// 表数据
 	DataSet []*DatePoint `json:"DataSet,omitempty" name:"DataSet"`
+
+	// 查询范围内的请求总量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MetricCount *int64 `json:"MetricCount,omitempty" name:"MetricCount"`
 }
 
 // Predefined struct for user

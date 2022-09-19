@@ -1367,7 +1367,10 @@ type CreateSignUrlsRequestParams struct {
 	// 签署流程编号数组，最多支持100个。(备注：该参数和合同组编号必须二选一)
 	FlowIds []*string `json:"FlowIds,omitempty" name:"FlowIds"`
 
-	// 签署链接类型：“WEIXINAPP”-直接跳小程序；“CHANNEL”-跳转H5页面；“APP”-第三方APP或小程序跳转电子签小程序；默认“WEIXINAPP”类型，即跳转至小程序；
+	// 合同组编号(备注：该参数和合同(流程)编号数组必须二选一)
+	FlowGroupId *string `json:"FlowGroupId,omitempty" name:"FlowGroupId"`
+
+	// 签署链接类型：“WEIXINAPP”-短链直接跳小程序；“CHANNEL”-跳转H5页面；“APP”-第三方APP或小程序跳转电子签小程序；"LONGURL2WEIXINAPP"-长链接跳转小程序；默认“WEIXINAPP”类型，即跳转至小程序；
 	Endpoint *string `json:"Endpoint,omitempty" name:"Endpoint"`
 
 	// 签署链接生成类型，默认是 "ALL"；
@@ -1402,9 +1405,6 @@ type CreateSignUrlsRequestParams struct {
 
 	// 操作者的信息
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
-
-	// 合同组编号(备注：该参数和合同(流程)编号数组必须二选一)
-	FlowGroupId *string `json:"FlowGroupId,omitempty" name:"FlowGroupId"`
 }
 
 type CreateSignUrlsRequest struct {
@@ -1416,7 +1416,10 @@ type CreateSignUrlsRequest struct {
 	// 签署流程编号数组，最多支持100个。(备注：该参数和合同组编号必须二选一)
 	FlowIds []*string `json:"FlowIds,omitempty" name:"FlowIds"`
 
-	// 签署链接类型：“WEIXINAPP”-直接跳小程序；“CHANNEL”-跳转H5页面；“APP”-第三方APP或小程序跳转电子签小程序；默认“WEIXINAPP”类型，即跳转至小程序；
+	// 合同组编号(备注：该参数和合同(流程)编号数组必须二选一)
+	FlowGroupId *string `json:"FlowGroupId,omitempty" name:"FlowGroupId"`
+
+	// 签署链接类型：“WEIXINAPP”-短链直接跳小程序；“CHANNEL”-跳转H5页面；“APP”-第三方APP或小程序跳转电子签小程序；"LONGURL2WEIXINAPP"-长链接跳转小程序；默认“WEIXINAPP”类型，即跳转至小程序；
 	Endpoint *string `json:"Endpoint,omitempty" name:"Endpoint"`
 
 	// 签署链接生成类型，默认是 "ALL"；
@@ -1451,9 +1454,6 @@ type CreateSignUrlsRequest struct {
 
 	// 操作者的信息
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
-
-	// 合同组编号(备注：该参数和合同(流程)编号数组必须二选一)
-	FlowGroupId *string `json:"FlowGroupId,omitempty" name:"FlowGroupId"`
 }
 
 func (r *CreateSignUrlsRequest) ToJsonString() string {
@@ -1470,6 +1470,7 @@ func (r *CreateSignUrlsRequest) FromJsonString(s string) error {
 	}
 	delete(f, "Agent")
 	delete(f, "FlowIds")
+	delete(f, "FlowGroupId")
 	delete(f, "Endpoint")
 	delete(f, "GenerateType")
 	delete(f, "OrganizationName")
@@ -1480,7 +1481,6 @@ func (r *CreateSignUrlsRequest) FromJsonString(s string) error {
 	delete(f, "AutoJumpBack")
 	delete(f, "JumpUrl")
 	delete(f, "Operator")
-	delete(f, "FlowGroupId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateSignUrlsRequest has unknown keys!", "")
 	}
@@ -1698,10 +1698,10 @@ type DescribeTemplatesRequestParams struct {
 	// 查询内容：0-模板列表及详情（默认），1-仅模板列表
 	ContentType *int64 `json:"ContentType,omitempty" name:"ContentType"`
 
-	// 查询个数，默认20，最大100
+	// 查询个数，默认20，最大100；在查询列表的时候有效
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 查询偏移位置，默认0
+	// 查询偏移位置，默认0；在查询列表的时候有效
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
 	// 操作者的信息
@@ -1710,7 +1710,7 @@ type DescribeTemplatesRequestParams struct {
 	// 是否返回所有组件信息
 	QueryAllComponents *bool `json:"QueryAllComponents,omitempty" name:"QueryAllComponents"`
 
-	// 模糊搜索模版名称
+	// 模糊搜索模板名称
 	TemplateName *string `json:"TemplateName,omitempty" name:"TemplateName"`
 }
 
@@ -1726,10 +1726,10 @@ type DescribeTemplatesRequest struct {
 	// 查询内容：0-模板列表及详情（默认），1-仅模板列表
 	ContentType *int64 `json:"ContentType,omitempty" name:"ContentType"`
 
-	// 查询个数，默认20，最大100
+	// 查询个数，默认20，最大100；在查询列表的时候有效
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 查询偏移位置，默认0
+	// 查询偏移位置，默认0；在查询列表的时候有效
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
 	// 操作者的信息
@@ -1738,7 +1738,7 @@ type DescribeTemplatesRequest struct {
 	// 是否返回所有组件信息
 	QueryAllComponents *bool `json:"QueryAllComponents,omitempty" name:"QueryAllComponents"`
 
-	// 模糊搜索模版名称
+	// 模糊搜索模板名称
 	TemplateName *string `json:"TemplateName,omitempty" name:"TemplateName"`
 }
 

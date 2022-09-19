@@ -5055,10 +5055,10 @@ type InstanceNode struct {
 }
 
 type InstanceParam struct {
-	// 设置参数的名称。例如timeout。
+	// 设置参数的名称。例如timeout。当前支持自定义的参数，请参见<a href="https://cloud.tencent.com/document/product/239/49925">参数配置</a>。
 	Key *string `json:"Key,omitempty" name:"Key"`
 
-	// 设置参数名称对应的运行值。例如timeout对应运行值可设置为120， 单位为秒（s）。指当客户端连接闲置时间达到120 s时，将关闭连接。
+	// 设置参数名称对应的运行值。例如timeout对应运行值可设置为120， 单位为秒（s）。指当客户端连接闲置时间达到120 s时，将关闭连接。更多参数取值信息，请参见<a href="https://cloud.tencent.com/document/product/239/49925">参数配置</a>。
 	Value *string `json:"Value,omitempty" name:"Value"`
 }
 
@@ -5982,7 +5982,7 @@ func (r *ModifyInstanceParamsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyInstanceParamsResponseParams struct {
-	// 修改是否成功。修改成功为true，失败为false。
+	// 说明修改参数配置是否成功。<br><li>true：指修改成功；<br><li>false：指修改失败。<br>
 	Changed *bool `json:"Changed,omitempty" name:"Changed"`
 
 	// 任务ID。

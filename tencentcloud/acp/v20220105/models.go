@@ -130,6 +130,12 @@ type CreateAppScanTaskRepeatRequestParams struct {
 
 	// 隐私申明文件名称
 	PrivacyTextName *string `json:"PrivacyTextName,omitempty" name:"PrivacyTextName"`
+
+	// 软件Sha1值(PrivacyTextMD5不为空时必填)
+	AppSha1 *string `json:"AppSha1,omitempty" name:"AppSha1"`
+
+	// 隐私申明文本md5(AppSha1不为空时必填)
+	PrivacyTextMD5 *string `json:"PrivacyTextMD5,omitempty" name:"PrivacyTextMD5"`
 }
 
 type CreateAppScanTaskRepeatRequest struct {
@@ -164,6 +170,12 @@ type CreateAppScanTaskRepeatRequest struct {
 
 	// 隐私申明文件名称
 	PrivacyTextName *string `json:"PrivacyTextName,omitempty" name:"PrivacyTextName"`
+
+	// 软件Sha1值(PrivacyTextMD5不为空时必填)
+	AppSha1 *string `json:"AppSha1,omitempty" name:"AppSha1"`
+
+	// 隐私申明文本md5(AppSha1不为空时必填)
+	PrivacyTextMD5 *string `json:"PrivacyTextMD5,omitempty" name:"PrivacyTextMD5"`
 }
 
 func (r *CreateAppScanTaskRepeatRequest) ToJsonString() string {
@@ -188,6 +200,8 @@ func (r *CreateAppScanTaskRepeatRequest) FromJsonString(s string) error {
 	delete(f, "PrivacyTextUrl")
 	delete(f, "AppName")
 	delete(f, "PrivacyTextName")
+	delete(f, "AppSha1")
+	delete(f, "PrivacyTextMD5")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAppScanTaskRepeatRequest has unknown keys!", "")
 	}
@@ -236,7 +250,7 @@ type CreateAppScanTaskRequestParams struct {
 	// App包名
 	AppPackage *string `json:"AppPackage,omitempty" name:"AppPackage"`
 
-	// App名称
+	// App名称(任务来源为2时必填)
 	AppName *string `json:"AppName,omitempty" name:"AppName"`
 
 	// App版本
@@ -274,6 +288,12 @@ type CreateAppScanTaskRequestParams struct {
 
 	// 隐私申明文件名称
 	PrivacyTextName *string `json:"PrivacyTextName,omitempty" name:"PrivacyTextName"`
+
+	// 软件Sha1值(PrivacyTextMD5不为空时必填)
+	AppSha1 *string `json:"AppSha1,omitempty" name:"AppSha1"`
+
+	// 隐私申明文本md5(AppSha1不为空时必填)
+	PrivacyTextMD5 *string `json:"PrivacyTextMD5,omitempty" name:"PrivacyTextMD5"`
 }
 
 type CreateAppScanTaskRequest struct {
@@ -291,7 +311,7 @@ type CreateAppScanTaskRequest struct {
 	// App包名
 	AppPackage *string `json:"AppPackage,omitempty" name:"AppPackage"`
 
-	// App名称
+	// App名称(任务来源为2时必填)
 	AppName *string `json:"AppName,omitempty" name:"AppName"`
 
 	// App版本
@@ -329,6 +349,12 @@ type CreateAppScanTaskRequest struct {
 
 	// 隐私申明文件名称
 	PrivacyTextName *string `json:"PrivacyTextName,omitempty" name:"PrivacyTextName"`
+
+	// 软件Sha1值(PrivacyTextMD5不为空时必填)
+	AppSha1 *string `json:"AppSha1,omitempty" name:"AppSha1"`
+
+	// 隐私申明文本md5(AppSha1不为空时必填)
+	PrivacyTextMD5 *string `json:"PrivacyTextMD5,omitempty" name:"PrivacyTextMD5"`
 }
 
 func (r *CreateAppScanTaskRequest) ToJsonString() string {
@@ -360,6 +386,8 @@ func (r *CreateAppScanTaskRequest) FromJsonString(s string) error {
 	delete(f, "Remark")
 	delete(f, "IsAgreePrivacy")
 	delete(f, "PrivacyTextName")
+	delete(f, "AppSha1")
+	delete(f, "PrivacyTextMD5")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAppScanTaskRequest has unknown keys!", "")
 	}
