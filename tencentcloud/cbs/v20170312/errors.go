@@ -149,6 +149,9 @@ const (
 	// 云硬盘已挂载至其他云服务器上。
 	RESOURCEUNAVAILABLE_ATTACHED = "ResourceUnavailable.Attached"
 
+	// 云硬盘快照链长度过长，拒绝创建快照。
+	RESOURCEUNAVAILABLE_DISKSNAPSHOTCHAINTOOLARGE = "ResourceUnavailable.DiskSnapshotChainTooLarge"
+
 	// 云硬盘已过期。
 	RESOURCEUNAVAILABLE_EXPIRE = "ResourceUnavailable.Expire"
 

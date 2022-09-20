@@ -1385,6 +1385,7 @@ func NewRevokeCertificateResponse() (response *RevokeCertificateResponse) {
 //  FAILEDOPERATION_REVOKEFAILED = "FailedOperation.RevokeFailed"
 //  FAILEDOPERATION_REVOKERESOURCEFAILED = "FailedOperation.RevokeResourceFailed"
 //  INTERNALERROR = "InternalError"
+//  LIMITEXCEEDED_RATELIMITEXCEEDED = "LimitExceeded.RateLimitExceeded"
 func (c *Client) RevokeCertificate(request *RevokeCertificateRequest) (response *RevokeCertificateResponse, err error) {
     return c.RevokeCertificateWithContext(context.Background(), request)
 }
@@ -1401,6 +1402,7 @@ func (c *Client) RevokeCertificate(request *RevokeCertificateRequest) (response 
 //  FAILEDOPERATION_REVOKEFAILED = "FailedOperation.RevokeFailed"
 //  FAILEDOPERATION_REVOKERESOURCEFAILED = "FailedOperation.RevokeResourceFailed"
 //  INTERNALERROR = "InternalError"
+//  LIMITEXCEEDED_RATELIMITEXCEEDED = "LimitExceeded.RateLimitExceeded"
 func (c *Client) RevokeCertificateWithContext(ctx context.Context, request *RevokeCertificateRequest) (response *RevokeCertificateResponse, err error) {
     if request == nil {
         request = NewRevokeCertificateRequest()

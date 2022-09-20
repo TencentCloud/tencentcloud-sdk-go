@@ -4011,6 +4011,7 @@ func NewDescribeBusinessLogConfigsResponse() (response *DescribeBusinessLogConfi
 // 可能返回的错误码:
 //  FAILEDOPERATION_TSFAPMBUSILOGCFGWRITEERROR = "FailedOperation.TsfApmBusiLogCfgWriteError"
 //  FAILEDOPERATION_TSFPRIVILEGEERROR = "FailedOperation.TsfPrivilegeError"
+//  FAILEDOPERATION_UNHANDLEDEXCEPTION = "FailedOperation.UnhandledException"
 //  INTERNALERROR_UNHANDLEDEXCEPTION = "InternalError.UnhandledException"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  INVALIDPARAMETER_TSFAPMBUSILOGCFGLIMITPARAMERROR = "InvalidParameter.TsfApmBusiLogCfgLimitParamError"
@@ -4027,6 +4028,7 @@ func (c *Client) DescribeBusinessLogConfigs(request *DescribeBusinessLogConfigsR
 // 可能返回的错误码:
 //  FAILEDOPERATION_TSFAPMBUSILOGCFGWRITEERROR = "FailedOperation.TsfApmBusiLogCfgWriteError"
 //  FAILEDOPERATION_TSFPRIVILEGEERROR = "FailedOperation.TsfPrivilegeError"
+//  FAILEDOPERATION_UNHANDLEDEXCEPTION = "FailedOperation.UnhandledException"
 //  INTERNALERROR_UNHANDLEDEXCEPTION = "InternalError.UnhandledException"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  INVALIDPARAMETER_TSFAPMBUSILOGCFGLIMITPARAMERROR = "InvalidParameter.TsfApmBusiLogCfgLimitParamError"

@@ -242,6 +242,9 @@ const (
 	// 找不到版本对应的应用。
 	RESOURCENOTFOUND_VERSIONSERVICENOTFOUND = "ResourceNotFound.VersionServiceNotFound"
 
+	// 有资源依赖，无法直接删除应用。
+	RESOURCEUNAVAILABLE_APPLICATIONNOTDELETABLE = "ResourceUnavailable.ApplicationNotDeletable"
+
 	// 应用已停止。
 	RESOURCEUNAVAILABLE_APPLICATIONSTOPPED = "ResourceUnavailable.ApplicationStopped"
 

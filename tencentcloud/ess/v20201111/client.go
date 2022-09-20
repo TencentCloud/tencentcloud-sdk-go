@@ -1756,6 +1756,7 @@ func NewDescribeFlowInfoResponse() (response *DescribeFlowInfoResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeFlowInfo(request *DescribeFlowInfoRequest) (response *DescribeFlowInfoResponse, err error) {
     return c.DescribeFlowInfoWithContext(context.Background(), request)
@@ -1768,6 +1769,7 @@ func (c *Client) DescribeFlowInfo(request *DescribeFlowInfoRequest) (response *D
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeFlowInfoWithContext(ctx context.Context, request *DescribeFlowInfoRequest) (response *DescribeFlowInfoResponse, err error) {
     if request == nil {

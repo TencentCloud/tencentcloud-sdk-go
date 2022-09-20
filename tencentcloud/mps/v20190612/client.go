@@ -2326,7 +2326,7 @@ func NewDescribeTasksResponse() (response *DescribeTasksResponse) {
 //
 // * 当列表数据比较多时，单次接口调用无法拉取整个列表，可通过 ScrollToken 参数，分批拉取；
 //
-// * 只能查询到最近三天（72 小时）内的任务。
+// * 只能查询到最近七天（168小时）内的任务。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
@@ -2342,7 +2342,7 @@ func (c *Client) DescribeTasks(request *DescribeTasksRequest) (response *Describ
 //
 // * 当列表数据比较多时，单次接口调用无法拉取整个列表，可通过 ScrollToken 参数，分批拉取；
 //
-// * 只能查询到最近三天（72 小时）内的任务。
+// * 只能查询到最近七天（168小时）内的任务。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"

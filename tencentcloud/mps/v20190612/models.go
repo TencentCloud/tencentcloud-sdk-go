@@ -9989,6 +9989,9 @@ type TaskSimpleInfo struct {
 
 	// 任务结束时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。若任务尚未完成，该字段为：0000-00-00T00:00:00Z。
 	FinishTime *string `json:"FinishTime,omitempty" name:"FinishTime"`
+
+	// 子任务类型。
+	SubTaskTypes []*string `json:"SubTaskTypes,omitempty" name:"SubTaskTypes"`
 }
 
 type TerrorismConfigureInfo struct {

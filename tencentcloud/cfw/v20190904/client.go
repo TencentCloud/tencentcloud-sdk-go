@@ -2649,60 +2649,6 @@ func (c *Client) DescribeUnHandleEventTabListWithContext(ctx context.Context, re
     return
 }
 
-func NewDescribeVpcRuleOverviewRequest() (request *DescribeVpcRuleOverviewRequest) {
-    request = &DescribeVpcRuleOverviewRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("cfw", APIVersion, "DescribeVpcRuleOverview")
-    
-    
-    return
-}
-
-func NewDescribeVpcRuleOverviewResponse() (response *DescribeVpcRuleOverviewResponse) {
-    response = &DescribeVpcRuleOverviewResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// DescribeVpcRuleOverview
-// vpc规则列表概况
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-func (c *Client) DescribeVpcRuleOverview(request *DescribeVpcRuleOverviewRequest) (response *DescribeVpcRuleOverviewResponse, err error) {
-    return c.DescribeVpcRuleOverviewWithContext(context.Background(), request)
-}
-
-// DescribeVpcRuleOverview
-// vpc规则列表概况
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-func (c *Client) DescribeVpcRuleOverviewWithContext(ctx context.Context, request *DescribeVpcRuleOverviewRequest) (response *DescribeVpcRuleOverviewResponse, err error) {
-    if request == nil {
-        request = NewDescribeVpcRuleOverviewRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeVpcRuleOverview require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeVpcRuleOverviewResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewExpandCfwVerticalRequest() (request *ExpandCfwVerticalRequest) {
     request = &ExpandCfwVerticalRequest{
         BaseRequest: &tchttp.BaseRequest{},

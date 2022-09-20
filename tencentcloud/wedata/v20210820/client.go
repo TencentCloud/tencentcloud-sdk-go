@@ -189,6 +189,58 @@ func (c *Client) BatchStopTasksNewWithContext(ctx context.Context, request *Batc
     return
 }
 
+func NewCreateDataSourceRequest() (request *CreateDataSourceRequest) {
+    request = &CreateDataSourceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "CreateDataSource")
+    
+    
+    return
+}
+
+func NewCreateDataSourceResponse() (response *CreateDataSourceResponse) {
+    response = &CreateDataSourceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateDataSource
+// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
+//
+// 创建数据源
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) CreateDataSource(request *CreateDataSourceRequest) (response *CreateDataSourceResponse, err error) {
+    return c.CreateDataSourceWithContext(context.Background(), request)
+}
+
+// CreateDataSource
+// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
+//
+// 创建数据源
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) CreateDataSourceWithContext(ctx context.Context, request *CreateDataSourceRequest) (response *CreateDataSourceResponse, err error) {
+    if request == nil {
+        request = NewCreateDataSourceRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateDataSource require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateDataSourceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateFolderRequest() (request *CreateFolderRequest) {
     request = &CreateFolderRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -345,6 +397,58 @@ func (c *Client) CreateWorkflowWithContext(ctx context.Context, request *CreateW
     return
 }
 
+func NewDeleteDataSourcesRequest() (request *DeleteDataSourcesRequest) {
+    request = &DeleteDataSourcesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "DeleteDataSources")
+    
+    
+    return
+}
+
+func NewDeleteDataSourcesResponse() (response *DeleteDataSourcesResponse) {
+    response = &DeleteDataSourcesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteDataSources
+// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
+//
+// 删除数据源
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DeleteDataSources(request *DeleteDataSourcesRequest) (response *DeleteDataSourcesResponse, err error) {
+    return c.DeleteDataSourcesWithContext(context.Background(), request)
+}
+
+// DeleteDataSources
+// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
+//
+// 删除数据源
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DeleteDataSourcesWithContext(ctx context.Context, request *DeleteDataSourcesRequest) (response *DeleteDataSourcesResponse, err error) {
+    if request == nil {
+        request = NewDeleteDataSourcesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteDataSources require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteDataSourcesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteFolderRequest() (request *DeleteFolderRequest) {
     request = &DeleteFolderRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -445,6 +549,58 @@ func (c *Client) DeleteWorkflowNewWithContext(ctx context.Context, request *Dele
     request.SetContext(ctx)
     
     response = NewDeleteWorkflowNewResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDatasourceRequest() (request *DescribeDatasourceRequest) {
+    request = &DescribeDatasourceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "DescribeDatasource")
+    
+    
+    return
+}
+
+func NewDescribeDatasourceResponse() (response *DescribeDatasourceResponse) {
+    response = &DescribeDatasourceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeDatasource
+// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
+//
+// 数据源详情
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeDatasource(request *DescribeDatasourceRequest) (response *DescribeDatasourceResponse, err error) {
+    return c.DescribeDatasourceWithContext(context.Background(), request)
+}
+
+// DescribeDatasource
+// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
+//
+// 数据源详情
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeDatasourceWithContext(ctx context.Context, request *DescribeDatasourceRequest) (response *DescribeDatasourceResponse, err error) {
+    if request == nil {
+        request = NewDescribeDatasourceRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDatasource require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDatasourceResponse()
     err = c.Send(request, response)
     return
 }
@@ -1275,6 +1431,58 @@ func (c *Client) MakeUpWorkflowNewWithContext(ctx context.Context, request *Make
     request.SetContext(ctx)
     
     response = NewMakeUpWorkflowNewResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyDataSourceRequest() (request *ModifyDataSourceRequest) {
+    request = &ModifyDataSourceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "ModifyDataSource")
+    
+    
+    return
+}
+
+func NewModifyDataSourceResponse() (response *ModifyDataSourceResponse) {
+    response = &ModifyDataSourceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyDataSource
+// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
+//
+// 修改数据源
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) ModifyDataSource(request *ModifyDataSourceRequest) (response *ModifyDataSourceResponse, err error) {
+    return c.ModifyDataSourceWithContext(context.Background(), request)
+}
+
+// ModifyDataSource
+// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
+//
+// 修改数据源
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) ModifyDataSourceWithContext(ctx context.Context, request *ModifyDataSourceRequest) (response *ModifyDataSourceResponse, err error) {
+    if request == nil {
+        request = NewModifyDataSourceRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyDataSource require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyDataSourceResponse()
     err = c.Send(request, response)
     return
 }

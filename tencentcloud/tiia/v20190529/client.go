@@ -164,6 +164,7 @@ func NewCreateGroupResponse() (response *CreateGroupResponse) {
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_INVALIDAUTHORIZATION = "AuthFailure.InvalidAuthorization"
+//  FAILEDOPERATION_INNERERROR = "FailedOperation.InnerError"
 //  FAILEDOPERATION_PARAMETEREMPTY = "FailedOperation.ParameterEmpty"
 //  FAILEDOPERATION_REQUESTERROR = "FailedOperation.RequestError"
 //  FAILEDOPERATION_REQUESTTIMEOUT = "FailedOperation.RequestTimeout"
@@ -203,6 +204,7 @@ func (c *Client) CreateGroup(request *CreateGroupRequest) (response *CreateGroup
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_INVALIDAUTHORIZATION = "AuthFailure.InvalidAuthorization"
+//  FAILEDOPERATION_INNERERROR = "FailedOperation.InnerError"
 //  FAILEDOPERATION_PARAMETEREMPTY = "FailedOperation.ParameterEmpty"
 //  FAILEDOPERATION_REQUESTERROR = "FailedOperation.RequestError"
 //  FAILEDOPERATION_REQUESTTIMEOUT = "FailedOperation.RequestTimeout"

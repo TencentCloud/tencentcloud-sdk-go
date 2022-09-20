@@ -767,6 +767,9 @@ const (
 	// 请求不支持正在隔离状态的实例。
 	UNSUPPORTEDOPERATION_INSTANCESTATEISOLATING = "UnsupportedOperation.InstanceStateIsolating"
 
+	// 不支持操作创建失败的实例。
+	UNSUPPORTEDOPERATION_INSTANCESTATELAUNCHFAILED = "UnsupportedOperation.InstanceStateLaunchFailed"
+
 	// 请求不支持创建未完成的实例
 	UNSUPPORTEDOPERATION_INSTANCESTATEPENDING = "UnsupportedOperation.InstanceStatePending"
 

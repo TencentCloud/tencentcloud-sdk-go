@@ -5422,7 +5422,7 @@ type DescribeDBPriceRequestParams struct {
 	// 询价实例的CPU核心数目，单位：核，为保证传入 CPU 值有效，请使用 [获取云数据库可售卖规格](https://cloud.tencent.com/document/product/236/17229) 接口获取可售卖的核心数目，当未指定该值时，将按照 Memory 大小补全一个默认值。
 	Cpu *int64 `json:"Cpu,omitempty" name:"Cpu"`
 
-	// 续费询价实例ID。如需查询实例续费价格，填写InstanceId和Period即可。
+	// 询价续费实例ID。如需查询实例续费价格，填写InstanceId和Period即可。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
 	// 按量计费阶梯。仅PayType=HOUR_PAID有效，支持值包括：1，2，3。阶梯时长见https://cloud.tencent.com/document/product/236/18335。
@@ -5465,7 +5465,7 @@ type DescribeDBPriceRequest struct {
 	// 询价实例的CPU核心数目，单位：核，为保证传入 CPU 值有效，请使用 [获取云数据库可售卖规格](https://cloud.tencent.com/document/product/236/17229) 接口获取可售卖的核心数目，当未指定该值时，将按照 Memory 大小补全一个默认值。
 	Cpu *int64 `json:"Cpu,omitempty" name:"Cpu"`
 
-	// 续费询价实例ID。如需查询实例续费价格，填写InstanceId和Period即可。
+	// 询价续费实例ID。如需查询实例续费价格，填写InstanceId和Period即可。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
 	// 按量计费阶梯。仅PayType=HOUR_PAID有效，支持值包括：1，2，3。阶梯时长见https://cloud.tencent.com/document/product/236/18335。
