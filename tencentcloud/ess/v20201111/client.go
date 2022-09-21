@@ -2182,3 +2182,55 @@ func (c *Client) UploadFilesWithContext(ctx context.Context, request *UploadFile
     err = c.Send(request, response)
     return
 }
+
+func NewVerifyPdfRequest() (request *VerifyPdfRequest) {
+    request = &VerifyPdfRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ess", APIVersion, "VerifyPdf")
+    
+    
+    return
+}
+
+func NewVerifyPdfResponse() (response *VerifyPdfResponse) {
+    response = &VerifyPdfResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// VerifyPdf
+// 验证合同文件
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  OPERATIONDENIED_NOFLOWPERMISSION = "OperationDenied.NoFlowPermission"
+func (c *Client) VerifyPdf(request *VerifyPdfRequest) (response *VerifyPdfResponse, err error) {
+    return c.VerifyPdfWithContext(context.Background(), request)
+}
+
+// VerifyPdf
+// 验证合同文件
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  OPERATIONDENIED_NOFLOWPERMISSION = "OperationDenied.NoFlowPermission"
+func (c *Client) VerifyPdfWithContext(ctx context.Context, request *VerifyPdfRequest) (response *VerifyPdfResponse, err error) {
+    if request == nil {
+        request = NewVerifyPdfRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("VerifyPdf require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewVerifyPdfResponse()
+    err = c.Send(request, response)
+    return
+}

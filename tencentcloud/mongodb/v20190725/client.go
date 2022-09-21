@@ -375,6 +375,56 @@ func (c *Client) CreateDBInstanceHourWithContext(ctx context.Context, request *C
     return
 }
 
+func NewDescribeAccountUsersRequest() (request *DescribeAccountUsersRequest) {
+    request = &DescribeAccountUsersRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mongodb", APIVersion, "DescribeAccountUsers")
+    
+    
+    return
+}
+
+func NewDescribeAccountUsersResponse() (response *DescribeAccountUsersResponse) {
+    response = &DescribeAccountUsersResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeAccountUsers
+// 本接口(DescribeAccountUsers)用于获取当前实例的全部账号列表。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CHECKAPPIDFAILED = "InternalError.CheckAppIdFailed"
+func (c *Client) DescribeAccountUsers(request *DescribeAccountUsersRequest) (response *DescribeAccountUsersResponse, err error) {
+    return c.DescribeAccountUsersWithContext(context.Background(), request)
+}
+
+// DescribeAccountUsers
+// 本接口(DescribeAccountUsers)用于获取当前实例的全部账号列表。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CHECKAPPIDFAILED = "InternalError.CheckAppIdFailed"
+func (c *Client) DescribeAccountUsersWithContext(ctx context.Context, request *DescribeAccountUsersRequest) (response *DescribeAccountUsersResponse, err error) {
+    if request == nil {
+        request = NewDescribeAccountUsersRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAccountUsers require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAccountUsersResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAsyncRequestInfoRequest() (request *DescribeAsyncRequestInfoRequest) {
     request = &DescribeAsyncRequestInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},

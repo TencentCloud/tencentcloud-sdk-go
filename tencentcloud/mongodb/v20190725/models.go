@@ -830,6 +830,63 @@ type DBInstancePrice struct {
 }
 
 // Predefined struct for user
+type DescribeAccountUsersRequestParams struct {
+	// 实例ID。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+}
+
+type DescribeAccountUsersRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+}
+
+func (r *DescribeAccountUsersRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAccountUsersRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAccountUsersRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAccountUsersResponseParams struct {
+	// 实例账号列表。
+	Users []*UserInfo `json:"Users,omitempty" name:"Users"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeAccountUsersResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAccountUsersResponseParams `json:"Response"`
+}
+
+func (r *DescribeAccountUsersResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAccountUsersResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeAsyncRequestInfoRequestParams struct {
 	// 异步请求Id，涉及到异步流程的接口返回，如CreateBackupDBInstance
 	AsyncRequestId *string `json:"AsyncRequestId,omitempty" name:"AsyncRequestId"`
@@ -3384,4 +3441,21 @@ func (r *TerminateDBInstancesResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *TerminateDBInstancesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type UserInfo struct {
+	// 账号名。
+	UserName *string `json:"UserName,omitempty" name:"UserName"`
+
+	// 账号权限详情。
+	AuthRole []*Auth `json:"AuthRole,omitempty" name:"AuthRole"`
+
+	// 账号创建时间。
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 账号更新时间。
+	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+
+	// 备注信息。
+	UserDesc *string `json:"UserDesc,omitempty" name:"UserDesc"`
 }

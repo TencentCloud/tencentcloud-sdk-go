@@ -3027,6 +3027,127 @@ func (r *IDCardOCRResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ImageEnhancementRequestParams struct {
+	// 图片的 Base64 值。
+	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+	// 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
+	// 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
+
+	// 图片的 Url 地址。
+	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+	// 支持的图片大小：所下载图片经 Base64 编码后不超过 7M。图片下载时间不超过 3 秒。
+	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
+	// 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
+
+	// 默认为空，ReturnImage的取值以及含义如下：
+	// “preprocess”: 返回预处理后的图片数据
+	// “origin”：返回原图片数据
+	// " ":不返回图片数据
+	ReturnImage *string `json:"ReturnImage,omitempty" name:"ReturnImage"`
+
+	// 默认值为1，指定图像增强方法：
+	// 1：切边增强
+	// 2：弯曲矫正
+	// 202：黑白模式
+	// 204：提亮模式
+	// 205：灰度模式
+	// 207：省墨模式
+	// 208：文字锐化（适合非彩色图片）
+	// 301：去摩尔纹
+	// 302：去除阴影
+	TaskType *int64 `json:"TaskType,omitempty" name:"TaskType"`
+}
+
+type ImageEnhancementRequest struct {
+	*tchttp.BaseRequest
+	
+	// 图片的 Base64 值。
+	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+	// 支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
+	// 图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
+
+	// 图片的 Url 地址。
+	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
+	// 支持的图片大小：所下载图片经 Base64 编码后不超过 7M。图片下载时间不超过 3 秒。
+	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
+	// 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
+
+	// 默认为空，ReturnImage的取值以及含义如下：
+	// “preprocess”: 返回预处理后的图片数据
+	// “origin”：返回原图片数据
+	// " ":不返回图片数据
+	ReturnImage *string `json:"ReturnImage,omitempty" name:"ReturnImage"`
+
+	// 默认值为1，指定图像增强方法：
+	// 1：切边增强
+	// 2：弯曲矫正
+	// 202：黑白模式
+	// 204：提亮模式
+	// 205：灰度模式
+	// 207：省墨模式
+	// 208：文字锐化（适合非彩色图片）
+	// 301：去摩尔纹
+	// 302：去除阴影
+	TaskType *int64 `json:"TaskType,omitempty" name:"TaskType"`
+}
+
+func (r *ImageEnhancementRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ImageEnhancementRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageBase64")
+	delete(f, "ImageUrl")
+	delete(f, "ReturnImage")
+	delete(f, "TaskType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ImageEnhancementRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ImageEnhancementResponseParams struct {
+	// 图片数据标识：
+	// “origin”：原图
+	// “preprocess”:预处理后的图
+	ImageTag *string `json:"ImageTag,omitempty" name:"ImageTag"`
+
+	// 图片数据，返回预处理后图像或原图像base64字符
+	Image *string `json:"Image,omitempty" name:"Image"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ImageEnhancementResponse struct {
+	*tchttp.BaseResponse
+	Response *ImageEnhancementResponseParams `json:"Response"`
+}
+
+func (r *ImageEnhancementResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ImageEnhancementResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type InstitutionOCRRequestParams struct {
 	// 图片的 Base64 值。
 	// 支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。

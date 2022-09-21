@@ -2520,6 +2520,9 @@ type CreateParamTemplateRequestParams struct {
 
 	// 默认参数模板类型。支持值包括："HIGH_STABILITY" - 高稳定模板，"HIGH_PERFORMANCE" - 高性能模板。
 	TemplateType *string `json:"TemplateType,omitempty" name:"TemplateType"`
+
+	// 实例引擎类型，默认为"InnoDB"，支持值包括："InnoDB"，"RocksDB"。
+	EngineType *string `json:"EngineType,omitempty" name:"EngineType"`
 }
 
 type CreateParamTemplateRequest struct {
@@ -2542,6 +2545,9 @@ type CreateParamTemplateRequest struct {
 
 	// 默认参数模板类型。支持值包括："HIGH_STABILITY" - 高稳定模板，"HIGH_PERFORMANCE" - 高性能模板。
 	TemplateType *string `json:"TemplateType,omitempty" name:"TemplateType"`
+
+	// 实例引擎类型，默认为"InnoDB"，支持值包括："InnoDB"，"RocksDB"。
+	EngineType *string `json:"EngineType,omitempty" name:"EngineType"`
 }
 
 func (r *CreateParamTemplateRequest) ToJsonString() string {
@@ -2562,6 +2568,7 @@ func (r *CreateParamTemplateRequest) FromJsonString(s string) error {
 	delete(f, "TemplateId")
 	delete(f, "ParamList")
 	delete(f, "TemplateType")
+	delete(f, "EngineType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateParamTemplateRequest has unknown keys!", "")
 	}
@@ -5364,7 +5371,7 @@ type DescribeDBInstancesResponseParams struct {
 	// 符合查询条件的实例总数。
 	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
-	// 实例详细信息。
+	// 实例详细信息列表。
 	Items []*InstanceInfo `json:"Items,omitempty" name:"Items"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。

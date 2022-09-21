@@ -910,6 +910,81 @@ func (r *ChannelGetTaskResultApiResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ChannelVerifyPdfRequestParams struct {
+	// 合同Id，流程Id
+	FlowId *string `json:"FlowId,omitempty" name:"FlowId"`
+
+	// 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+
+	// 操作者的信息
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+}
+
+type ChannelVerifyPdfRequest struct {
+	*tchttp.BaseRequest
+	
+	// 合同Id，流程Id
+	FlowId *string `json:"FlowId,omitempty" name:"FlowId"`
+
+	// 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+
+	// 操作者的信息
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+}
+
+func (r *ChannelVerifyPdfRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ChannelVerifyPdfRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FlowId")
+	delete(f, "Agent")
+	delete(f, "Operator")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ChannelVerifyPdfRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ChannelVerifyPdfResponseParams struct {
+	// 验签结果，1-文件未被篡改，全部签名在腾讯电子签完成； 2-文件未被篡改，部分签名在腾讯电子签完成；3-文件被篡改；4-异常：文件内没有签名域；5-异常：文件签名格式错误
+	VerifyResult *int64 `json:"VerifyResult,omitempty" name:"VerifyResult"`
+
+	// 验签结果详情,内部状态1-验签成功，在电子签签署；2-验签成功，在其他平台签署；3-验签失败；4-pdf文件没有签名域
+	// ；5-文件签名格式错误
+	PdfVerifyResults []*PdfVerifyResult `json:"PdfVerifyResults,omitempty" name:"PdfVerifyResults"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ChannelVerifyPdfResponse struct {
+	*tchttp.BaseResponse
+	Response *ChannelVerifyPdfResponseParams `json:"Response"`
+}
+
+func (r *ChannelVerifyPdfResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ChannelVerifyPdfResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type Component struct {
 	// 控件编号
 	// 
@@ -2351,6 +2426,50 @@ type OrganizationInfo struct {
 
 	// 用户渠道
 	Channel *string `json:"Channel,omitempty" name:"Channel"`
+}
+
+type PdfVerifyResult struct {
+	// 验签结果
+	VerifyResult *int64 `json:"VerifyResult,omitempty" name:"VerifyResult"`
+
+	// 签署平台
+	SignPlatform *string `json:"SignPlatform,omitempty" name:"SignPlatform"`
+
+	// 签署人名称
+	SignerName *string `json:"SignerName,omitempty" name:"SignerName"`
+
+	// 签署时间
+	SignTime *int64 `json:"SignTime,omitempty" name:"SignTime"`
+
+	// 签名算法
+	SignAlgorithm *string `json:"SignAlgorithm,omitempty" name:"SignAlgorithm"`
+
+	// 签名证书序列号
+	CertSn *string `json:"CertSn,omitempty" name:"CertSn"`
+
+	// 证书起始时间
+	CertNotBefore *int64 `json:"CertNotBefore,omitempty" name:"CertNotBefore"`
+
+	// 证书过期时间
+	CertNotAfter *int64 `json:"CertNotAfter,omitempty" name:"CertNotAfter"`
+
+	// 签名类型
+	SignType *int64 `json:"SignType,omitempty" name:"SignType"`
+
+	// 签名域横坐标
+	ComponentPosX *float64 `json:"ComponentPosX,omitempty" name:"ComponentPosX"`
+
+	// 签名域纵坐标
+	ComponentPosY *float64 `json:"ComponentPosY,omitempty" name:"ComponentPosY"`
+
+	// 签名域宽度
+	ComponentWidth *float64 `json:"ComponentWidth,omitempty" name:"ComponentWidth"`
+
+	// 签名域高度
+	ComponentHeight *float64 `json:"ComponentHeight,omitempty" name:"ComponentHeight"`
+
+	// 签名域所在页码
+	ComponentPage *int64 `json:"ComponentPage,omitempty" name:"ComponentPage"`
 }
 
 // Predefined struct for user

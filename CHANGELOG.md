@@ -1,3 +1,198 @@
+# Release v1.0.501
+
+## 云数据库 MySQL(cdb) 版本：2017-03-20
+
+### 第 101 次发布
+
+发布时间：2022-09-21 06:12:53
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateParamTemplate](https://cloud.tencent.com/document/api/236/32663)
+
+	* 新增入参：EngineType
+
+
+
+
+## 电子签服务(ess) 版本：2020-11-11
+
+### 第 18 次发布
+
+发布时间：2022-09-20 21:03:08
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [VerifyPdf](https://cloud.tencent.com/document/api/1323/80797)
+
+新增数据结构：
+
+* [PdfVerifyResult](https://cloud.tencent.com/document/api/1323/70369#PdfVerifyResult)
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
+
+### 第 31 次发布
+
+发布时间：2022-09-20 21:03:25
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [ChannelVerifyPdf](https://cloud.tencent.com/document/api/1420/80799)
+
+新增数据结构：
+
+* [PdfVerifyResult](https://cloud.tencent.com/document/api/1420/61525#PdfVerifyResult)
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
+
+
+
+## 物联网智能视频服务(iotvideo) 版本：2021-11-25
+
+### 第 7 次发布
+
+发布时间：2022-09-21 06:33:00
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateProduct](https://cloud.tencent.com/document/api/1131/77008)
+
+	* 新增入参：CategoryId
+
+
+修改数据结构：
+
+* [VideoProduct](https://cloud.tencent.com/document/api/1131/76635#VideoProduct)
+
+	* 新增成员：ProductVaildYears
+
+
+
+
+## 物联网智能视频服务(iotvideo) 版本：2020-12-15
+
+
+
+## 物联网智能视频服务(iotvideo) 版本：2019-11-26
+
+
+
+## 视频智能标签(ivld) 版本：2021-09-03
+
+### 第 7 次发布
+
+发布时间：2022-09-20 19:36:34
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeTaskDetail](https://cloud.tencent.com/document/api/1509/65055)
+
+	* 新增出参：ImageTaskData, AudioTaskData, TextTaskData
+
+* [ImportMedia](https://cloud.tencent.com/document/api/1509/65059)
+
+	* 新增入参：MediaType
+
+
+新增数据结构：
+
+* [AudioData](https://cloud.tencent.com/document/api/1509/65063#AudioData)
+* [AudioMetadata](https://cloud.tencent.com/document/api/1509/65063#AudioMetadata)
+* [ImageData](https://cloud.tencent.com/document/api/1509/65063#ImageData)
+* [ImageLogo](https://cloud.tencent.com/document/api/1509/65063#ImageLogo)
+* [ImageMetadata](https://cloud.tencent.com/document/api/1509/65063#ImageMetadata)
+* [ImageOcr](https://cloud.tencent.com/document/api/1509/65063#ImageOcr)
+* [MultiLevelPersonInfo](https://cloud.tencent.com/document/api/1509/65063#MultiLevelPersonInfo)
+* [Rectf](https://cloud.tencent.com/document/api/1509/65063#Rectf)
+* [TextData](https://cloud.tencent.com/document/api/1509/65063#TextData)
+* [TextMetadata](https://cloud.tencent.com/document/api/1509/65063#TextMetadata)
+* [UnknownPerson](https://cloud.tencent.com/document/api/1509/65063#UnknownPerson)
+
+修改数据结构：
+
+* [MediaFilter](https://cloud.tencent.com/document/api/1509/65063#MediaFilter)
+
+	* 新增成员：MediaType
+
+* [MediaInfo](https://cloud.tencent.com/document/api/1509/65063#MediaInfo)
+
+	* 新增成员：MediaType, AudioMetadata, ImageMetadata, TextMetadata
+
+* [ShowInfo](https://cloud.tencent.com/document/api/1509/65063#ShowInfo)
+
+	* 新增成员：UnknownPersonSet, MultiLevelPersonInfoSet
+
+* [TaskInfo](https://cloud.tencent.com/document/api/1509/65063#TaskInfo)
+
+	* 新增成员：AudioMetadata, ImageMetadata, TextMetadata, Metadata
+
+
+
+
+## 云数据库 MongoDB(mongodb) 版本：2019-07-25
+
+### 第 24 次发布
+
+发布时间：2022-09-21 06:37:03
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeAccountUsers](https://cloud.tencent.com/document/api/240/80800)
+
+新增数据结构：
+
+* [UserInfo](https://cloud.tencent.com/document/api/240/38576#UserInfo)
+
+
+
+## 云数据库 MongoDB(mongodb) 版本：2018-04-08
+
+
+
+## 文字识别(ocr) 版本：2018-11-19
+
+### 第 79 次发布
+
+发布时间：2022-09-21 06:39:36
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [ImageEnhancement](https://cloud.tencent.com/document/api/866/80801)
+
+
+
 # Release v1.0.500
 
 ## 云防火墙(cfw) 版本：2019-09-04

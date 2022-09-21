@@ -116,6 +116,15 @@ type AppearInfo struct {
 	VideoAppearSet []*VideoAppearInfo `json:"VideoAppearSet,omitempty" name:"VideoAppearSet"`
 }
 
+type AudioData struct {
+	// 音频识别文本结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AudioInfoSet []*AudioInfo `json:"AudioInfoSet,omitempty" name:"AudioInfoSet"`
+
+	// 音频识别标签数据
+	TextTagSet *MultiLevelTag `json:"TextTagSet,omitempty" name:"TextTagSet"`
+}
+
 type AudioInfo struct {
 	// ASR提取的文字信息
 	Content *string `json:"Content,omitempty" name:"Content"`
@@ -128,6 +137,32 @@ type AudioInfo struct {
 
 	// ASR提取的音频标签
 	Tag *string `json:"Tag,omitempty" name:"Tag"`
+}
+
+type AudioMetadata struct {
+	// 媒资音频文件大小，单位为Byte
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FileSize *int64 `json:"FileSize,omitempty" name:"FileSize"`
+
+	// 媒资音频文件MD5
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MD5 *string `json:"MD5,omitempty" name:"MD5"`
+
+	// 媒资音频时长，单位为秒
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Duration *float64 `json:"Duration,omitempty" name:"Duration"`
+
+	// 媒资音频采样率，单位为khz
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SampleRate *float64 `json:"SampleRate,omitempty" name:"SampleRate"`
+
+	// 媒资音频码率，单位为kbps
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BitRate *int64 `json:"BitRate,omitempty" name:"BitRate"`
+
+	// 媒资音频文件格式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Format *string `json:"Format,omitempty" name:"Format"`
 }
 
 type ClassifiedPersonInfo struct {
@@ -1263,8 +1298,21 @@ type DescribeTaskDetailResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskInfo *TaskInfo `json:"TaskInfo,omitempty" name:"TaskInfo"`
 
-	// 任务结果数据，只在任务结束时返回
+	// 视频任务结果数据，只在视频任务结束时返回
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskData *Data `json:"TaskData,omitempty" name:"TaskData"`
+
+	// 图片任务结果数据，只在图片任务结束时返回
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ImageTaskData *ImageData `json:"ImageTaskData,omitempty" name:"ImageTaskData"`
+
+	// 音频任务结果数据，只在音频任务结束时返回
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AudioTaskData *AudioData `json:"AudioTaskData,omitempty" name:"AudioTaskData"`
+
+	// 文本任务结果数据，只在文本任务结束时返回
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TextTaskData *TextData `json:"TextTaskData,omitempty" name:"TextTaskData"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1426,6 +1474,70 @@ func (r *DescribeTasksResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type ImageData struct {
+	// 图片中出现的可视文本识别结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OcrSet []*ImageOcr `json:"OcrSet,omitempty" name:"OcrSet"`
+
+	// 图片中出现的帧标签识别结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FrameTagSet *MultiLevelTag `json:"FrameTagSet,omitempty" name:"FrameTagSet"`
+
+	// 图片中出现的层级人物识别结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MultiLevelPersonInfoSet []*MultiLevelPersonInfo `json:"MultiLevelPersonInfoSet,omitempty" name:"MultiLevelPersonInfoSet"`
+
+	// 图片中出现的台标识别结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TvLogo *ImageLogo `json:"TvLogo,omitempty" name:"TvLogo"`
+
+	// 图片中出现的来源信息识别结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SourceLogo *ImageLogo `json:"SourceLogo,omitempty" name:"SourceLogo"`
+}
+
+type ImageLogo struct {
+	// 图片中出现的Logo识别结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Logo *string `json:"Logo,omitempty" name:"Logo"`
+
+	// Logo在图片中出现的位置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AppearRect *Rectf `json:"AppearRect,omitempty" name:"AppearRect"`
+}
+
+type ImageMetadata struct {
+	// 媒资图片文件大小，单位为Byte
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FileSize *int64 `json:"FileSize,omitempty" name:"FileSize"`
+
+	// 媒资图片文件MD5
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MD5 *string `json:"MD5,omitempty" name:"MD5"`
+
+	// 媒资图片文件宽度
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Width *int64 `json:"Width,omitempty" name:"Width"`
+
+	// 媒资图片文件高度
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Height *int64 `json:"Height,omitempty" name:"Height"`
+
+	// 媒资图片文件格式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Format *string `json:"Format,omitempty" name:"Format"`
+}
+
+type ImageOcr struct {
+	// 图片中可视文本识别结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Content *string `json:"Content,omitempty" name:"Content"`
+
+	// 可视文本在图片中的位置信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AppearRect *Rectf `json:"AppearRect,omitempty" name:"AppearRect"`
+}
+
 // Predefined struct for user
 type ImportMediaRequestParams struct {
 	// 待分析视频的URL，目前只支持*不带签名的*COS地址，长度最长1KB
@@ -1434,7 +1546,7 @@ type ImportMediaRequestParams struct {
 	// 待分析视频的MD5，为空时不做校验，否则会做MD5校验，长度必须为32B
 	MD5 *string `json:"MD5,omitempty" name:"MD5"`
 
-	// 待分析视频的名称，指定后可支持筛选，最多100个中文字符
+	// 待分析视频的名称，指定后可支持筛选，最多64B
 	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 当非本人外部视频地址导入时，该字段为转存的cos桶地址且不可为空; 示例：https://${Bucket}-${AppId}.cos.${Region}.myqcloud.com/${PathPrefix}/  (注意，cos路径需要以/分隔符结尾)。
@@ -1446,6 +1558,10 @@ type ImportMediaRequestParams struct {
 
 	// 媒资导入完成的回调地址，该设置优先级高于控制台全局的设置；
 	CallbackURL *string `json:"CallbackURL,omitempty" name:"CallbackURL"`
+
+	// 媒资文件类型，详细定义参见[MediaPreknownInfo.MediaType](https://cloud.tencent.com/document/product/1509/65063#MediaPreknownInfo)
+	// 默认为2(视频)
+	MediaType *int64 `json:"MediaType,omitempty" name:"MediaType"`
 }
 
 type ImportMediaRequest struct {
@@ -1457,7 +1573,7 @@ type ImportMediaRequest struct {
 	// 待分析视频的MD5，为空时不做校验，否则会做MD5校验，长度必须为32B
 	MD5 *string `json:"MD5,omitempty" name:"MD5"`
 
-	// 待分析视频的名称，指定后可支持筛选，最多100个中文字符
+	// 待分析视频的名称，指定后可支持筛选，最多64B
 	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 当非本人外部视频地址导入时，该字段为转存的cos桶地址且不可为空; 示例：https://${Bucket}-${AppId}.cos.${Region}.myqcloud.com/${PathPrefix}/  (注意，cos路径需要以/分隔符结尾)。
@@ -1469,6 +1585,10 @@ type ImportMediaRequest struct {
 
 	// 媒资导入完成的回调地址，该设置优先级高于控制台全局的设置；
 	CallbackURL *string `json:"CallbackURL,omitempty" name:"CallbackURL"`
+
+	// 媒资文件类型，详细定义参见[MediaPreknownInfo.MediaType](https://cloud.tencent.com/document/product/1509/65063#MediaPreknownInfo)
+	// 默认为2(视频)
+	MediaType *int64 `json:"MediaType,omitempty" name:"MediaType"`
 }
 
 func (r *ImportMediaRequest) ToJsonString() string {
@@ -1489,6 +1609,7 @@ func (r *ImportMediaRequest) FromJsonString(s string) error {
 	delete(f, "WriteBackCosPath")
 	delete(f, "Label")
 	delete(f, "CallbackURL")
+	delete(f, "MediaType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ImportMediaRequest has unknown keys!", "")
 	}
@@ -1583,6 +1704,10 @@ type MediaFilter struct {
 	// 媒资自定义标签数组
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LabelSet []*string `json:"LabelSet,omitempty" name:"LabelSet"`
+
+	// 媒资文件类型，定义参见[MediaPreknownInfo.MediaType](https://cloud.tencent.com/document/product/1509/65063#MediaPreknownInfo)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MediaType *int64 `json:"MediaType,omitempty" name:"MediaType"`
 }
 
 type MediaInfo struct {
@@ -1605,7 +1730,7 @@ type MediaInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FailedReason *string `json:"FailedReason,omitempty" name:"FailedReason"`
 
-	// 媒资视频元信息
+	// 媒资视频元信息，仅在MediaType=VIDEO时有效
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Metadata *MediaMetadata `json:"Metadata,omitempty" name:"Metadata"`
 
@@ -1620,10 +1745,26 @@ type MediaInfo struct {
 	// 媒资导入完成后的回调地址
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CallbackURL *string `json:"CallbackURL,omitempty" name:"CallbackURL"`
+
+	// 媒资文件类型，具体参看[MediaPreknownInfo](https://cloud.tencent.com/document/product/1509/65063#MediaPreknownInfo)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MediaType *int64 `json:"MediaType,omitempty" name:"MediaType"`
+
+	// 媒资音频元信息，仅在MediaType=Audio时有效
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AudioMetadata *AudioMetadata `json:"AudioMetadata,omitempty" name:"AudioMetadata"`
+
+	// 媒资图片文件元信息，仅在MediaType=Image时有效
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ImageMetadata *ImageMetadata `json:"ImageMetadata,omitempty" name:"ImageMetadata"`
+
+	// 媒资文本文件元信息，仅在MediaType=Text时有效
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TextMetadata *TextMetadata `json:"TextMetadata,omitempty" name:"TextMetadata"`
 }
 
 type MediaMetadata struct {
-	// 媒资视频文件大小
+	// 媒资视频文件大小，单位为字节
 	FileSize *int64 `json:"FileSize,omitempty" name:"FileSize"`
 
 	// 媒资视频文件MD5
@@ -1731,6 +1872,20 @@ func (r *ModifyCallbackResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type MultiLevelPersonInfo struct {
+	// 一级分类名称(分类信息参见自定义人物类型)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	L1ClassifyName *string `json:"L1ClassifyName,omitempty" name:"L1ClassifyName"`
+
+	// 已分类人物信息数组(所有分类类型为二级分类)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	L2ClassifiedPersonInfoSet []*ClassifiedPersonInfo `json:"L2ClassifiedPersonInfoSet,omitempty" name:"L2ClassifiedPersonInfoSet"`
+
+	// 检测结果来源
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Source *uint64 `json:"Source,omitempty" name:"Source"`
+}
+
 type MultiLevelTag struct {
 	// 树状标签信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -1826,6 +1981,24 @@ func (r *QueryCallbackResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type Rectf struct {
+	// 矩形框左上角水平座标
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	X *float64 `json:"X,omitempty" name:"X"`
+
+	// 矩形框左上角竖直座标
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Y *float64 `json:"Y,omitempty" name:"Y"`
+
+	// 矩形框宽度
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Width *float64 `json:"Width,omitempty" name:"Width"`
+
+	// 矩形框长度
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Height *float64 `json:"Height,omitempty" name:"Height"`
+}
+
 type ShowInfo struct {
 	// 节目日期(只在新闻有效)
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -1886,6 +2059,14 @@ type ShowInfo struct {
 	// 概要标签信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SummaryTagSet []*string `json:"SummaryTagSet,omitempty" name:"SummaryTagSet"`
+
+	// 未知人物信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UnknownPersonSet []*UnknownPerson `json:"UnknownPersonSet,omitempty" name:"UnknownPersonSet"`
+
+	// 树状已分类人物信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MultiLevelPersonInfoSet []*MultiLevelPersonInfo `json:"MultiLevelPersonInfoSet,omitempty" name:"MultiLevelPersonInfoSet"`
 }
 
 type SortBy struct {
@@ -1969,6 +2150,22 @@ type TaskInfo struct {
 	// 任务分析完成后的后调地址
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CallbackURL *string `json:"CallbackURL,omitempty" name:"CallbackURL"`
+
+	// 任务对应的媒资文件元信息，仅在MediaType为Audio时有效
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AudioMetadata *AudioMetadata `json:"AudioMetadata,omitempty" name:"AudioMetadata"`
+
+	// 任务对应的媒资文件元信息，仅在MediaType为Audio时有效
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ImageMetadata *ImageMetadata `json:"ImageMetadata,omitempty" name:"ImageMetadata"`
+
+	// 任务对应的媒资文件元信息，仅在MediaType为Text时有效
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TextMetadata *TextMetadata `json:"TextMetadata,omitempty" name:"TextMetadata"`
+
+	// 任务对应的媒资文件元信息，仅在MediaType为Video时有效
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Metadata *MediaMetadata `json:"Metadata,omitempty" name:"Metadata"`
 }
 
 type TextAppearInfo struct {
@@ -1980,6 +2177,20 @@ type TextAppearInfo struct {
 
 	// 关键词在文本中出现的结束偏移量(不包含)
 	EndPosition *int64 `json:"EndPosition,omitempty" name:"EndPosition"`
+}
+
+type TextData struct {
+	// 文本内容信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Content *string `json:"Content,omitempty" name:"Content"`
+
+	// 文本概要信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Summary *string `json:"Summary,omitempty" name:"Summary"`
+
+	// 文本标签信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TextTagSet *MultiLevelTag `json:"TextTagSet,omitempty" name:"TextTagSet"`
 }
 
 type TextInfo struct {
@@ -1994,6 +2205,34 @@ type TextInfo struct {
 
 	// OCR标签信息
 	Tag *string `json:"Tag,omitempty" name:"Tag"`
+}
+
+type TextMetadata struct {
+	// 媒资文本文件大小，单位为字节
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FileSize *int64 `json:"FileSize,omitempty" name:"FileSize"`
+
+	// 媒资文本文件MD5
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MD5 *string `json:"MD5,omitempty" name:"MD5"`
+
+	// 媒资文本文件字符数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Length *int64 `json:"Length,omitempty" name:"Length"`
+
+	// 媒资文本文件格式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Format *string `json:"Format,omitempty" name:"Format"`
+}
+
+type UnknownPerson struct {
+	// 视觉出现信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VideoAppearSet []*VideoAppearInfo `json:"VideoAppearSet,omitempty" name:"VideoAppearSet"`
+
+	// 未知人物是否可以入库(只有当未知人物人脸小图质量分符合要求时才可入库)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PutLibraryAllowed *bool `json:"PutLibraryAllowed,omitempty" name:"PutLibraryAllowed"`
 }
 
 // Predefined struct for user

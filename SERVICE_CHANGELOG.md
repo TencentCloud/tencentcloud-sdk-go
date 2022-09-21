@@ -1,68 +1,29 @@
 # 本版本更新包含以下内容：
 
-## 云防火墙(cfw) 版本：2019-09-04
+## 云数据库 MySQL(cdb) 版本：2017-03-20
 
-### 第 26 次发布
+### 第 101 次发布
 
-发布时间：2022-09-20 06:15:17
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-<font color="#dd0000">**删除接口**：</font>
-
-* DescribeVpcRuleOverview
-
-
-
-## 人脸核身(faceid) 版本：2018-03-01
-
-### 第 47 次发布
-
-发布时间：2022-09-20 06:29:06
+发布时间：2022-09-21 06:12:53
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-修改数据结构：
+修改接口：
 
-* [DetectDetail](https://cloud.tencent.com/document/api/1007/41958#DetectDetail)
+* [CreateParamTemplate](https://cloud.tencent.com/document/api/236/32663)
 
-	* 新增成员：LivenessMode
-
-* [DetectInfoText](https://cloud.tencent.com/document/api/1007/41958#DetectInfoText)
-
-	* 新增成员：LivenessMode
+	* 新增入参：EngineType
 
 
 
 
-## 视频处理(mps) 版本：2019-06-12
+## 电子签服务(ess) 版本：2020-11-11
 
-### 第 42 次发布
+### 第 18 次发布
 
-发布时间：2022-09-20 06:38:58
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [TaskSimpleInfo](https://cloud.tencent.com/document/api/862/37615#TaskSimpleInfo)
-
-	* 新增成员：SubTaskTypes
-
-
-
-
-## 边缘安全加速平台(teo) 版本：2022-09-01
-
-### 第 1 次发布
-
-发布时间：2022-09-20 06:52:09
+发布时间：2022-09-20 21:03:08
 
 本次发布包含了以下内容：
 
@@ -70,300 +31,19 @@
 
 新增接口：
 
-* [CheckCertificate](https://cloud.tencent.com/document/api/1552/80604)
-* [CreateApplicationProxy](https://cloud.tencent.com/document/api/1552/80694)
-* [CreateApplicationProxyRule](https://cloud.tencent.com/document/api/1552/80693)
-* [CreateCredential](https://cloud.tencent.com/document/api/1552/80623)
-* [CreateCustomErrorPage](https://cloud.tencent.com/document/api/1552/80684)
-* [CreateDnsRecord](https://cloud.tencent.com/document/api/1552/80720)
-* [CreateIpTableList](https://cloud.tencent.com/document/api/1552/80683)
-* [CreateLoadBalancing](https://cloud.tencent.com/document/api/1552/80599)
-* [CreateLogSet](https://cloud.tencent.com/document/api/1552/80633)
-* [CreateLogTopicTask](https://cloud.tencent.com/document/api/1552/80632)
-* [CreateOriginGroup](https://cloud.tencent.com/document/api/1552/80598)
-* [CreatePlanForZone](https://cloud.tencent.com/document/api/1552/80607)
-* [CreatePrefetchTask](https://cloud.tencent.com/document/api/1552/80704)
-* [CreatePurgeTask](https://cloud.tencent.com/document/api/1552/80703)
-* [CreateReplayTask](https://cloud.tencent.com/document/api/1552/80702)
-* [CreateRule](https://cloud.tencent.com/document/api/1552/80622)
-* [CreateSecurityDropPage](https://cloud.tencent.com/document/api/1552/80682)
-* [CreateSpeedTesting](https://cloud.tencent.com/document/api/1552/80612)
-* [CreateZone](https://cloud.tencent.com/document/api/1552/80719)
-* [DeleteApplicationProxy](https://cloud.tencent.com/document/api/1552/80692)
-* [DeleteApplicationProxyRule](https://cloud.tencent.com/document/api/1552/80691)
-* [DeleteDnsRecords](https://cloud.tencent.com/document/api/1552/80718)
-* [DeleteLoadBalancing](https://cloud.tencent.com/document/api/1552/80597)
-* [DeleteLogTopicTask](https://cloud.tencent.com/document/api/1552/80631)
-* [DeleteOriginGroup](https://cloud.tencent.com/document/api/1552/80596)
-* [DeleteRules](https://cloud.tencent.com/document/api/1552/80621)
-* [DeleteZone](https://cloud.tencent.com/document/api/1552/80717)
-* [DescribeAddableEntityList](https://cloud.tencent.com/document/api/1552/80630)
-* [DescribeApplicationProxies](https://cloud.tencent.com/document/api/1552/80690)
-* [DescribeAvailablePlans](https://cloud.tencent.com/document/api/1552/80606)
-* [DescribeBillingData](https://cloud.tencent.com/document/api/1552/80765)
-* [DescribeBotClientIpList](https://cloud.tencent.com/document/api/1552/80666)
-* [DescribeBotData](https://cloud.tencent.com/document/api/1552/80665)
-* [DescribeBotHitRuleDetail](https://cloud.tencent.com/document/api/1552/80664)
-* [DescribeBotLog](https://cloud.tencent.com/document/api/1552/80663)
-* [DescribeBotManagedRules](https://cloud.tencent.com/document/api/1552/80681)
-* [DescribeBotTopData](https://cloud.tencent.com/document/api/1552/80662)
-* [DescribeClientRuleList](https://cloud.tencent.com/document/api/1552/80661)
-* [DescribeContentQuota](https://cloud.tencent.com/document/api/1552/80701)
-* [DescribeDDoSAttackData](https://cloud.tencent.com/document/api/1552/80660)
-* [DescribeDDoSAttackEvent](https://cloud.tencent.com/document/api/1552/80659)
-* [DescribeDDoSAttackEventDetail](https://cloud.tencent.com/document/api/1552/80658)
-* [DescribeDDoSAttackSourceEvent](https://cloud.tencent.com/document/api/1552/80657)
-* [DescribeDDoSAttackTopData](https://cloud.tencent.com/document/api/1552/80656)
-* [DescribeDDoSBlockList](https://cloud.tencent.com/document/api/1552/80655)
-* [DescribeDDoSMajorAttackEvent](https://cloud.tencent.com/document/api/1552/80654)
-* [DescribeDDoSPolicy](https://cloud.tencent.com/document/api/1552/80680)
-* [DescribeDefaultCertificates](https://cloud.tencent.com/document/api/1552/80603)
-* [DescribeDnsData](https://cloud.tencent.com/document/api/1552/80652)
-* [DescribeDnsRecords](https://cloud.tencent.com/document/api/1552/80716)
-* [DescribeDnssec](https://cloud.tencent.com/document/api/1552/80715)
-* [DescribeHostCertificates](https://cloud.tencent.com/document/api/1552/80602)
-* [DescribeHostsSetting](https://cloud.tencent.com/document/api/1552/80620)
-* [DescribeIdentifications](https://cloud.tencent.com/document/api/1552/80714)
-* [DescribeLoadBalancing](https://cloud.tencent.com/document/api/1552/80595)
-* [DescribeLogSets](https://cloud.tencent.com/document/api/1552/80629)
-* [DescribeLogTopicTaskDetail](https://cloud.tencent.com/document/api/1552/80628)
-* [DescribeLogTopicTasks](https://cloud.tencent.com/document/api/1552/80627)
-* [DescribeOriginGroup](https://cloud.tencent.com/document/api/1552/80594)
-* [DescribeOverviewL7Data](https://cloud.tencent.com/document/api/1552/80651)
-* [DescribePrefetchTasks](https://cloud.tencent.com/document/api/1552/80700)
-* [DescribePurgeTasks](https://cloud.tencent.com/document/api/1552/80699)
-* [DescribeRateLimitIntelligenceRule](https://cloud.tencent.com/document/api/1552/80679)
-* [DescribeRules](https://cloud.tencent.com/document/api/1552/80619)
-* [DescribeRulesSetting](https://cloud.tencent.com/document/api/1552/80618)
-* [DescribeSecurityGroupManagedRules](https://cloud.tencent.com/document/api/1552/80678)
-* [DescribeSecurityPolicy](https://cloud.tencent.com/document/api/1552/80677)
-* [DescribeSecurityPolicyList](https://cloud.tencent.com/document/api/1552/80676)
-* [DescribeSecurityPolicyRegions](https://cloud.tencent.com/document/api/1552/80675)
-* [DescribeSecurityPortraitRules](https://cloud.tencent.com/document/api/1552/80674)
-* [DescribeSecurityRuleId](https://cloud.tencent.com/document/api/1552/80673)
-* [DescribeSingleL7AnalysisData](https://cloud.tencent.com/document/api/1552/80650)
-* [DescribeSpeedTestingDetails](https://cloud.tencent.com/document/api/1552/80611)
-* [DescribeSpeedTestingMetricData](https://cloud.tencent.com/document/api/1552/80610)
-* [DescribeSpeedTestingQuota](https://cloud.tencent.com/document/api/1552/80609)
-* [DescribeTimingL4Data](https://cloud.tencent.com/document/api/1552/80649)
-* [DescribeTimingL7AnalysisData](https://cloud.tencent.com/document/api/1552/80648)
-* [DescribeTimingL7CacheData](https://cloud.tencent.com/document/api/1552/80647)
-* [DescribeTopL7AnalysisData](https://cloud.tencent.com/document/api/1552/80646)
-* [DescribeTopL7CacheData](https://cloud.tencent.com/document/api/1552/80645)
-* [DescribeWebManagedRulesData](https://cloud.tencent.com/document/api/1552/80644)
-* [DescribeWebManagedRulesHitRuleDetail](https://cloud.tencent.com/document/api/1552/80643)
-* [DescribeWebManagedRulesLog](https://cloud.tencent.com/document/api/1552/80642)
-* [DescribeWebProtectionAttackEvents](https://cloud.tencent.com/document/api/1552/80641)
-* [DescribeWebProtectionClientIpList](https://cloud.tencent.com/document/api/1552/80640)
-* [DescribeWebProtectionData](https://cloud.tencent.com/document/api/1552/80639)
-* [DescribeWebProtectionHitRuleDetail](https://cloud.tencent.com/document/api/1552/80638)
-* [DescribeWebProtectionTopData](https://cloud.tencent.com/document/api/1552/80637)
-* [DescribeZoneDDoSPolicy](https://cloud.tencent.com/document/api/1552/80672)
-* [DescribeZoneSetting](https://cloud.tencent.com/document/api/1552/80617)
-* [DescribeZones](https://cloud.tencent.com/document/api/1552/80713)
-* [DownloadL4Logs](https://cloud.tencent.com/document/api/1552/80636)
-* [DownloadL7Logs](https://cloud.tencent.com/document/api/1552/80635)
-* [IdentifyZone](https://cloud.tencent.com/document/api/1552/80712)
-* [ModifyAlarmConfig](https://cloud.tencent.com/document/api/1552/80697)
-* [ModifyAlarmDefaultThreshold](https://cloud.tencent.com/document/api/1552/80696)
-* [ModifyApplicationProxy](https://cloud.tencent.com/document/api/1552/80689)
-* [ModifyApplicationProxyRule](https://cloud.tencent.com/document/api/1552/80688)
-* [ModifyApplicationProxyRuleStatus](https://cloud.tencent.com/document/api/1552/80687)
-* [ModifyApplicationProxyStatus](https://cloud.tencent.com/document/api/1552/80686)
-* [ModifyDDoSPolicy](https://cloud.tencent.com/document/api/1552/80671)
-* [ModifyDDoSPolicyHost](https://cloud.tencent.com/document/api/1552/80670)
-* [ModifyDefaultCertificate](https://cloud.tencent.com/document/api/1552/80601)
-* [ModifyDnsRecord](https://cloud.tencent.com/document/api/1552/80711)
-* [ModifyDnssec](https://cloud.tencent.com/document/api/1552/80710)
-* [ModifyHostsCertificate](https://cloud.tencent.com/document/api/1552/80764)
-* [ModifyLoadBalancing](https://cloud.tencent.com/document/api/1552/80763)
-* [ModifyLoadBalancingStatus](https://cloud.tencent.com/document/api/1552/80593)
-* [ModifyLogTopicTask](https://cloud.tencent.com/document/api/1552/80626)
-* [ModifyOriginGroup](https://cloud.tencent.com/document/api/1552/80592)
-* [ModifyRule](https://cloud.tencent.com/document/api/1552/80616)
-* [ModifyRulePriority](https://cloud.tencent.com/document/api/1552/80615)
-* [ModifySecurityPolicy](https://cloud.tencent.com/document/api/1552/80669)
-* [ModifySecurityWafGroupPolicy](https://cloud.tencent.com/document/api/1552/80668)
-* [ModifyZone](https://cloud.tencent.com/document/api/1552/80709)
-* [ModifyZoneCnameSpeedUp](https://cloud.tencent.com/document/api/1552/80708)
-* [ModifyZoneSetting](https://cloud.tencent.com/document/api/1552/80614)
-* [ModifyZoneStatus](https://cloud.tencent.com/document/api/1552/80707)
-* [ReclaimZone](https://cloud.tencent.com/document/api/1552/80706)
-* [SwitchLogTopicTask](https://cloud.tencent.com/document/api/1552/80625)
+* [VerifyPdf](https://cloud.tencent.com/document/api/1323/80797)
 
 新增数据结构：
 
-* [AccelerateType](https://cloud.tencent.com/document/api/1552/80721#AccelerateType)
-* [AclCondition](https://cloud.tencent.com/document/api/1552/80721#AclCondition)
-* [AclConfig](https://cloud.tencent.com/document/api/1552/80721#AclConfig)
-* [AclUserRule](https://cloud.tencent.com/document/api/1552/80721#AclUserRule)
-* [Action](https://cloud.tencent.com/document/api/1552/80721#Action)
-* [AdvancedFilter](https://cloud.tencent.com/document/api/1552/80721#AdvancedFilter)
-* [AiRule](https://cloud.tencent.com/document/api/1552/80721#AiRule)
-* [ApplicationProxy](https://cloud.tencent.com/document/api/1552/80721#ApplicationProxy)
-* [ApplicationProxyRule](https://cloud.tencent.com/document/api/1552/80721#ApplicationProxyRule)
-* [AscriptionInfo](https://cloud.tencent.com/document/api/1552/80721#AscriptionInfo)
-* [BillingDataFilter](https://cloud.tencent.com/document/api/1552/80721#BillingDataFilter)
-* [BotConfig](https://cloud.tencent.com/document/api/1552/80721#BotConfig)
-* [BotLog](https://cloud.tencent.com/document/api/1552/80721#BotLog)
-* [BotManagedRule](https://cloud.tencent.com/document/api/1552/80721#BotManagedRule)
-* [BotManagedRuleDetail](https://cloud.tencent.com/document/api/1552/80721#BotManagedRuleDetail)
-* [BotPortraitRule](https://cloud.tencent.com/document/api/1552/80721#BotPortraitRule)
-* [CC](https://cloud.tencent.com/document/api/1552/80721#CC)
-* [CCInterceptEvent](https://cloud.tencent.com/document/api/1552/80721#CCInterceptEvent)
-* [Cache](https://cloud.tencent.com/document/api/1552/80721#Cache)
-* [CacheConfig](https://cloud.tencent.com/document/api/1552/80721#CacheConfig)
-* [CacheKey](https://cloud.tencent.com/document/api/1552/80721#CacheKey)
-* [CachePrefresh](https://cloud.tencent.com/document/api/1552/80721#CachePrefresh)
-* [ClientIpHeader](https://cloud.tencent.com/document/api/1552/80721#ClientIpHeader)
-* [ClientRule](https://cloud.tencent.com/document/api/1552/80721#ClientRule)
-* [ClsLogTopicInfo](https://cloud.tencent.com/document/api/1552/80721#ClsLogTopicInfo)
-* [CodeAction](https://cloud.tencent.com/document/api/1552/80721#CodeAction)
-* [Compression](https://cloud.tencent.com/document/api/1552/80721#Compression)
-* [DDoS](https://cloud.tencent.com/document/api/1552/80721#DDoS)
-* [DDoSAcl](https://cloud.tencent.com/document/api/1552/80721#DDoSAcl)
-* [DDoSAclRule](https://cloud.tencent.com/document/api/1552/80721#DDoSAclRule)
-* [DDoSAllowBlock](https://cloud.tencent.com/document/api/1552/80721#DDoSAllowBlock)
-* [DDoSAllowBlockRule](https://cloud.tencent.com/document/api/1552/80721#DDoSAllowBlockRule)
-* [DDoSAntiPly](https://cloud.tencent.com/document/api/1552/80721#DDoSAntiPly)
-* [DDoSAttackEvent](https://cloud.tencent.com/document/api/1552/80721#DDoSAttackEvent)
-* [DDoSAttackEventDetailData](https://cloud.tencent.com/document/api/1552/80721#DDoSAttackEventDetailData)
-* [DDoSAttackSourceEvent](https://cloud.tencent.com/document/api/1552/80721#DDoSAttackSourceEvent)
-* [DDoSBlockData](https://cloud.tencent.com/document/api/1552/80721#DDoSBlockData)
-* [DDoSFeaturesFilter](https://cloud.tencent.com/document/api/1552/80721#DDoSFeaturesFilter)
-* [DDoSGeoIp](https://cloud.tencent.com/document/api/1552/80721#DDoSGeoIp)
-* [DDoSHost](https://cloud.tencent.com/document/api/1552/80721#DDoSHost)
-* [DDoSMajorAttackEvent](https://cloud.tencent.com/document/api/1552/80721#DDoSMajorAttackEvent)
-* [DDoSPacketFilter](https://cloud.tencent.com/document/api/1552/80721#DDoSPacketFilter)
-* [DDoSRule](https://cloud.tencent.com/document/api/1552/80721#DDoSRule)
-* [DDoSSpeedLimit](https://cloud.tencent.com/document/api/1552/80721#DDoSSpeedLimit)
-* [DDoSStatusInfo](https://cloud.tencent.com/document/api/1552/80721#DDoSStatusInfo)
-* [DefaultServerCertInfo](https://cloud.tencent.com/document/api/1552/80721#DefaultServerCertInfo)
-* [DetailHost](https://cloud.tencent.com/document/api/1552/80721#DetailHost)
-* [DistrictStatistics](https://cloud.tencent.com/document/api/1552/80721#DistrictStatistics)
-* [DnsData](https://cloud.tencent.com/document/api/1552/80721#DnsData)
-* [DnsRecord](https://cloud.tencent.com/document/api/1552/80721#DnsRecord)
-* [DnssecInfo](https://cloud.tencent.com/document/api/1552/80721#DnssecInfo)
-* [DropPageConfig](https://cloud.tencent.com/document/api/1552/80721#DropPageConfig)
-* [DropPageDetail](https://cloud.tencent.com/document/api/1552/80721#DropPageDetail)
-* [ExceptConfig](https://cloud.tencent.com/document/api/1552/80721#ExceptConfig)
-* [ExceptUserRule](https://cloud.tencent.com/document/api/1552/80721#ExceptUserRule)
-* [ExceptUserRuleCondition](https://cloud.tencent.com/document/api/1552/80721#ExceptUserRuleCondition)
-* [ExceptUserRuleScope](https://cloud.tencent.com/document/api/1552/80721#ExceptUserRuleScope)
-* [FailReason](https://cloud.tencent.com/document/api/1552/80721#FailReason)
-* [Filter](https://cloud.tencent.com/document/api/1552/80721#Filter)
-* [FollowOrigin](https://cloud.tencent.com/document/api/1552/80721#FollowOrigin)
-* [ForceRedirect](https://cloud.tencent.com/document/api/1552/80721#ForceRedirect)
-* [GeoIp](https://cloud.tencent.com/document/api/1552/80721#GeoIp)
-* [Header](https://cloud.tencent.com/document/api/1552/80721#Header)
-* [HostCertInfo](https://cloud.tencent.com/document/api/1552/80721#HostCertInfo)
-* [HostsCertificate](https://cloud.tencent.com/document/api/1552/80721#HostsCertificate)
-* [Hsts](https://cloud.tencent.com/document/api/1552/80721#Hsts)
-* [Https](https://cloud.tencent.com/document/api/1552/80721#Https)
-* [Identification](https://cloud.tencent.com/document/api/1552/80721#Identification)
-* [IntelligenceRule](https://cloud.tencent.com/document/api/1552/80721#IntelligenceRule)
-* [IntelligenceRuleItem](https://cloud.tencent.com/document/api/1552/80721#IntelligenceRuleItem)
-* [IpTableConfig](https://cloud.tencent.com/document/api/1552/80721#IpTableConfig)
-* [IpTableRule](https://cloud.tencent.com/document/api/1552/80721#IpTableRule)
-* [Ipv6](https://cloud.tencent.com/document/api/1552/80721#Ipv6)
-* [L4OfflineLog](https://cloud.tencent.com/document/api/1552/80721#L4OfflineLog)
-* [L7OfflineLog](https://cloud.tencent.com/document/api/1552/80721#L7OfflineLog)
-* [LoadBalancing](https://cloud.tencent.com/document/api/1552/80721#LoadBalancing)
-* [LogSetInfo](https://cloud.tencent.com/document/api/1552/80721#LogSetInfo)
-* [LogTopicDetailInfo](https://cloud.tencent.com/document/api/1552/80721#LogTopicDetailInfo)
-* [MaxAge](https://cloud.tencent.com/document/api/1552/80721#MaxAge)
-* [NoCache](https://cloud.tencent.com/document/api/1552/80721#NoCache)
-* [NormalAction](https://cloud.tencent.com/document/api/1552/80721#NormalAction)
-* [OfflineCache](https://cloud.tencent.com/document/api/1552/80721#OfflineCache)
-* [OptimizeAction](https://cloud.tencent.com/document/api/1552/80721#OptimizeAction)
-* [Origin](https://cloud.tencent.com/document/api/1552/80721#Origin)
-* [OriginGroup](https://cloud.tencent.com/document/api/1552/80721#OriginGroup)
-* [OriginRecord](https://cloud.tencent.com/document/api/1552/80721#OriginRecord)
-* [PlanInfo](https://cloud.tencent.com/document/api/1552/80721#PlanInfo)
-* [PortraitManagedRuleDetail](https://cloud.tencent.com/document/api/1552/80721#PortraitManagedRuleDetail)
-* [PostMaxSize](https://cloud.tencent.com/document/api/1552/80721#PostMaxSize)
-* [PrivateParameter](https://cloud.tencent.com/document/api/1552/80721#PrivateParameter)
-* [QueryCondition](https://cloud.tencent.com/document/api/1552/80721#QueryCondition)
-* [QueryString](https://cloud.tencent.com/document/api/1552/80721#QueryString)
-* [Quic](https://cloud.tencent.com/document/api/1552/80721#Quic)
-* [Quota](https://cloud.tencent.com/document/api/1552/80721#Quota)
-* [RateLimitConfig](https://cloud.tencent.com/document/api/1552/80721#RateLimitConfig)
-* [RateLimitIntelligence](https://cloud.tencent.com/document/api/1552/80721#RateLimitIntelligence)
-* [RateLimitIntelligenceRuleDetail](https://cloud.tencent.com/document/api/1552/80721#RateLimitIntelligenceRuleDetail)
-* [RateLimitTemplate](https://cloud.tencent.com/document/api/1552/80721#RateLimitTemplate)
-* [RateLimitTemplateDetail](https://cloud.tencent.com/document/api/1552/80721#RateLimitTemplateDetail)
-* [RateLimitUserRule](https://cloud.tencent.com/document/api/1552/80721#RateLimitUserRule)
-* [Resource](https://cloud.tencent.com/document/api/1552/80721#Resource)
-* [RewriteAction](https://cloud.tencent.com/document/api/1552/80721#RewriteAction)
-* [Rule](https://cloud.tencent.com/document/api/1552/80721#Rule)
-* [RuleAndConditions](https://cloud.tencent.com/document/api/1552/80721#RuleAndConditions)
-* [RuleChoicePropertiesItem](https://cloud.tencent.com/document/api/1552/80721#RuleChoicePropertiesItem)
-* [RuleCodeActionParams](https://cloud.tencent.com/document/api/1552/80721#RuleCodeActionParams)
-* [RuleCondition](https://cloud.tencent.com/document/api/1552/80721#RuleCondition)
-* [RuleExtraParameter](https://cloud.tencent.com/document/api/1552/80721#RuleExtraParameter)
-* [RuleItem](https://cloud.tencent.com/document/api/1552/80721#RuleItem)
-* [RuleNormalActionParams](https://cloud.tencent.com/document/api/1552/80721#RuleNormalActionParams)
-* [RuleRewriteActionParams](https://cloud.tencent.com/document/api/1552/80721#RuleRewriteActionParams)
-* [RulesProperties](https://cloud.tencent.com/document/api/1552/80721#RulesProperties)
-* [RulesSettingAction](https://cloud.tencent.com/document/api/1552/80721#RulesSettingAction)
-* [SecClientIp](https://cloud.tencent.com/document/api/1552/80721#SecClientIp)
-* [SecEntry](https://cloud.tencent.com/document/api/1552/80721#SecEntry)
-* [SecEntryValue](https://cloud.tencent.com/document/api/1552/80721#SecEntryValue)
-* [SecHitRuleInfo](https://cloud.tencent.com/document/api/1552/80721#SecHitRuleInfo)
-* [SecRuleRelatedInfo](https://cloud.tencent.com/document/api/1552/80721#SecRuleRelatedInfo)
-* [SecurityConfig](https://cloud.tencent.com/document/api/1552/80721#SecurityConfig)
-* [SecurityEntity](https://cloud.tencent.com/document/api/1552/80721#SecurityEntity)
-* [SecurityType](https://cloud.tencent.com/document/api/1552/80721#SecurityType)
-* [ServerCertInfo](https://cloud.tencent.com/document/api/1552/80721#ServerCertInfo)
-* [ShieldArea](https://cloud.tencent.com/document/api/1552/80721#ShieldArea)
-* [SingleDataRecord](https://cloud.tencent.com/document/api/1552/80721#SingleDataRecord)
-* [SingleTypeValue](https://cloud.tencent.com/document/api/1552/80721#SingleTypeValue)
-* [SmartRouting](https://cloud.tencent.com/document/api/1552/80721#SmartRouting)
-* [Sort](https://cloud.tencent.com/document/api/1552/80721#Sort)
-* [SpeedTestingConfig](https://cloud.tencent.com/document/api/1552/80721#SpeedTestingConfig)
-* [SpeedTestingDetailData](https://cloud.tencent.com/document/api/1552/80721#SpeedTestingDetailData)
-* [SpeedTestingInfo](https://cloud.tencent.com/document/api/1552/80721#SpeedTestingInfo)
-* [SpeedTestingMetricData](https://cloud.tencent.com/document/api/1552/80721#SpeedTestingMetricData)
-* [SpeedTestingQuota](https://cloud.tencent.com/document/api/1552/80721#SpeedTestingQuota)
-* [SpeedTestingStatistics](https://cloud.tencent.com/document/api/1552/80721#SpeedTestingStatistics)
-* [SpeedTestingStatus](https://cloud.tencent.com/document/api/1552/80721#SpeedTestingStatus)
-* [Sv](https://cloud.tencent.com/document/api/1552/80721#Sv)
-* [SwitchConfig](https://cloud.tencent.com/document/api/1552/80721#SwitchConfig)
-* [Tag](https://cloud.tencent.com/document/api/1552/80721#Tag)
-* [Task](https://cloud.tencent.com/document/api/1552/80721#Task)
-* [TimingDataItem](https://cloud.tencent.com/document/api/1552/80721#TimingDataItem)
-* [TimingDataRecord](https://cloud.tencent.com/document/api/1552/80721#TimingDataRecord)
-* [TimingTypeValue](https://cloud.tencent.com/document/api/1552/80721#TimingTypeValue)
-* [TopDataRecord](https://cloud.tencent.com/document/api/1552/80721#TopDataRecord)
-* [TopDetailData](https://cloud.tencent.com/document/api/1552/80721#TopDetailData)
-* [TopEntry](https://cloud.tencent.com/document/api/1552/80721#TopEntry)
-* [TopEntryValue](https://cloud.tencent.com/document/api/1552/80721#TopEntryValue)
-* [UpstreamHttp2](https://cloud.tencent.com/document/api/1552/80721#UpstreamHttp2)
-* [VanityNameServers](https://cloud.tencent.com/document/api/1552/80721#VanityNameServers)
-* [VanityNameServersIps](https://cloud.tencent.com/document/api/1552/80721#VanityNameServersIps)
-* [Waf](https://cloud.tencent.com/document/api/1552/80721#Waf)
-* [WafConfig](https://cloud.tencent.com/document/api/1552/80721#WafConfig)
-* [WafGroup](https://cloud.tencent.com/document/api/1552/80721#WafGroup)
-* [WafGroupDetail](https://cloud.tencent.com/document/api/1552/80721#WafGroupDetail)
-* [WafGroupInfo](https://cloud.tencent.com/document/api/1552/80721#WafGroupInfo)
-* [WafGroupRule](https://cloud.tencent.com/document/api/1552/80721#WafGroupRule)
-* [WafRule](https://cloud.tencent.com/document/api/1552/80721#WafRule)
-* [WebLogs](https://cloud.tencent.com/document/api/1552/80721#WebLogs)
-* [WebSocket](https://cloud.tencent.com/document/api/1552/80721#WebSocket)
-* [Zone](https://cloud.tencent.com/document/api/1552/80721#Zone)
-* [ZoneSetting](https://cloud.tencent.com/document/api/1552/80721#ZoneSetting)
+* [PdfVerifyResult](https://cloud.tencent.com/document/api/1323/70369#PdfVerifyResult)
 
 
 
-## 边缘安全加速平台(teo) 版本：2022-01-06
+## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
 
+### 第 31 次发布
 
-
-## 数据开发治理平台 WeData(wedata) 版本：2021-08-20
-
-### 第 5 次发布
-
-发布时间：2022-09-19 21:02:53
+发布时间：2022-09-20 21:03:25
 
 本次发布包含了以下内容：
 
@@ -371,25 +51,145 @@
 
 新增接口：
 
-* [CreateDataSource](https://cloud.tencent.com/document/api/1267/80762)
-* [DeleteDataSources](https://cloud.tencent.com/document/api/1267/80761)
-* [ModifyDataSource](https://cloud.tencent.com/document/api/1267/80760)
-
-### 第 4 次发布
-
-发布时间：2022-09-19 19:36:37
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DescribeDatasource](https://cloud.tencent.com/document/api/1267/80759)
+* [ChannelVerifyPdf](https://cloud.tencent.com/document/api/1420/80799)
 
 新增数据结构：
 
-* [DataSourceInfo](https://cloud.tencent.com/document/api/1267/76336#DataSourceInfo)
+* [PdfVerifyResult](https://cloud.tencent.com/document/api/1420/61525#PdfVerifyResult)
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
+
+
+
+## 物联网智能视频服务(iotvideo) 版本：2021-11-25
+
+### 第 7 次发布
+
+发布时间：2022-09-21 06:33:00
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateProduct](https://cloud.tencent.com/document/api/1131/77008)
+
+	* 新增入参：CategoryId
+
+
+修改数据结构：
+
+* [VideoProduct](https://cloud.tencent.com/document/api/1131/76635#VideoProduct)
+
+	* 新增成员：ProductVaildYears
+
+
+
+
+## 物联网智能视频服务(iotvideo) 版本：2020-12-15
+
+
+
+## 物联网智能视频服务(iotvideo) 版本：2019-11-26
+
+
+
+## 视频智能标签(ivld) 版本：2021-09-03
+
+### 第 7 次发布
+
+发布时间：2022-09-20 19:36:34
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeTaskDetail](https://cloud.tencent.com/document/api/1509/65055)
+
+	* 新增出参：ImageTaskData, AudioTaskData, TextTaskData
+
+* [ImportMedia](https://cloud.tencent.com/document/api/1509/65059)
+
+	* 新增入参：MediaType
+
+
+新增数据结构：
+
+* [AudioData](https://cloud.tencent.com/document/api/1509/65063#AudioData)
+* [AudioMetadata](https://cloud.tencent.com/document/api/1509/65063#AudioMetadata)
+* [ImageData](https://cloud.tencent.com/document/api/1509/65063#ImageData)
+* [ImageLogo](https://cloud.tencent.com/document/api/1509/65063#ImageLogo)
+* [ImageMetadata](https://cloud.tencent.com/document/api/1509/65063#ImageMetadata)
+* [ImageOcr](https://cloud.tencent.com/document/api/1509/65063#ImageOcr)
+* [MultiLevelPersonInfo](https://cloud.tencent.com/document/api/1509/65063#MultiLevelPersonInfo)
+* [Rectf](https://cloud.tencent.com/document/api/1509/65063#Rectf)
+* [TextData](https://cloud.tencent.com/document/api/1509/65063#TextData)
+* [TextMetadata](https://cloud.tencent.com/document/api/1509/65063#TextMetadata)
+* [UnknownPerson](https://cloud.tencent.com/document/api/1509/65063#UnknownPerson)
+
+修改数据结构：
+
+* [MediaFilter](https://cloud.tencent.com/document/api/1509/65063#MediaFilter)
+
+	* 新增成员：MediaType
+
+* [MediaInfo](https://cloud.tencent.com/document/api/1509/65063#MediaInfo)
+
+	* 新增成员：MediaType, AudioMetadata, ImageMetadata, TextMetadata
+
+* [ShowInfo](https://cloud.tencent.com/document/api/1509/65063#ShowInfo)
+
+	* 新增成员：UnknownPersonSet, MultiLevelPersonInfoSet
+
+* [TaskInfo](https://cloud.tencent.com/document/api/1509/65063#TaskInfo)
+
+	* 新增成员：AudioMetadata, ImageMetadata, TextMetadata, Metadata
+
+
+
+
+## 云数据库 MongoDB(mongodb) 版本：2019-07-25
+
+### 第 24 次发布
+
+发布时间：2022-09-21 06:37:03
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeAccountUsers](https://cloud.tencent.com/document/api/240/80800)
+
+新增数据结构：
+
+* [UserInfo](https://cloud.tencent.com/document/api/240/38576#UserInfo)
+
+
+
+## 云数据库 MongoDB(mongodb) 版本：2018-04-08
+
+
+
+## 文字识别(ocr) 版本：2018-11-19
+
+### 第 79 次发布
+
+发布时间：2022-09-21 06:39:36
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [ImageEnhancement](https://cloud.tencent.com/document/api/866/80801)
 
 
 
@@ -11849,6 +11649,21 @@
 
 
 ## 云数据库 MySQL(cdb) 版本：2017-03-20
+
+### 第 101 次发布
+
+发布时间：2022-09-21 06:12:53
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateParamTemplate](https://cloud.tencent.com/document/api/236/32663)
+
+	* 新增入参：EngineType
+
 
 ### 第 100 次发布
 
@@ -38759,6 +38574,22 @@
 
 ## 电子签服务(ess) 版本：2020-11-11
 
+### 第 18 次发布
+
+发布时间：2022-09-20 21:03:08
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[VerifyPdf](https://cloud.tencent.com/document/api/1323/80797)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[PdfVerifyResult](https://cloud.tencent.com/document/api/1323/70369#PdfVerifyResult)](https://cloud.tencent.com/document/api/1323/70369#[PdfVerifyResult](https://cloud.tencent.com/document/api/1323/70369#PdfVerifyResult))
+
 ### 第 17 次发布
 
 发布时间：2022-09-16 06:24:43
@@ -39190,6 +39021,22 @@
 
 
 ## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
+
+### 第 31 次发布
+
+发布时间：2022-09-20 21:03:25
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[ChannelVerifyPdf](https://cloud.tencent.com/document/api/1420/80799)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[PdfVerifyResult](https://cloud.tencent.com/document/api/1420/61525#PdfVerifyResult)](https://cloud.tencent.com/document/api/1420/61525#[PdfVerifyResult](https://cloud.tencent.com/document/api/1420/61525#PdfVerifyResult))
 
 ### 第 30 次发布
 
@@ -48164,6 +48011,28 @@
 
 ## 物联网智能视频服务(iotvideo) 版本：2021-11-25
 
+### 第 7 次发布
+
+发布时间：2022-09-21 06:33:00
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateProduct](https://cloud.tencent.com/document/api/1131/77008)
+
+	* 新增入参：CategoryId
+
+
+修改数据结构：
+
+* [VideoProduct](https://cloud.tencent.com/document/api/1131/76635#VideoProduct)
+
+	* 新增成员：ProductVaildYears
+
+
 ### 第 6 次发布
 
 发布时间：2022-08-30 06:36:25
@@ -48928,6 +48797,58 @@
 
 
 ## 视频智能标签(ivld) 版本：2021-09-03
+
+### 第 7 次发布
+
+发布时间：2022-09-20 19:36:34
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeTaskDetail](https://cloud.tencent.com/document/api/1509/65055)
+
+	* 新增出参：ImageTaskData, AudioTaskData, TextTaskData
+
+* [ImportMedia](https://cloud.tencent.com/document/api/1509/65059)
+
+	* 新增入参：MediaType
+
+
+新增数据结构：
+
+* [[AudioData](https://cloud.tencent.com/document/api/1509/65063#AudioData)](https://cloud.tencent.com/document/api/1509/65063#[AudioData](https://cloud.tencent.com/document/api/1509/65063#AudioData))
+* [[AudioMetadata](https://cloud.tencent.com/document/api/1509/65063#AudioMetadata)](https://cloud.tencent.com/document/api/1509/65063#[AudioMetadata](https://cloud.tencent.com/document/api/1509/65063#AudioMetadata))
+* [[ImageData](https://cloud.tencent.com/document/api/1509/65063#ImageData)](https://cloud.tencent.com/document/api/1509/65063#[ImageData](https://cloud.tencent.com/document/api/1509/65063#ImageData))
+* [[ImageLogo](https://cloud.tencent.com/document/api/1509/65063#ImageLogo)](https://cloud.tencent.com/document/api/1509/65063#[ImageLogo](https://cloud.tencent.com/document/api/1509/65063#ImageLogo))
+* [[ImageMetadata](https://cloud.tencent.com/document/api/1509/65063#ImageMetadata)](https://cloud.tencent.com/document/api/1509/65063#[ImageMetadata](https://cloud.tencent.com/document/api/1509/65063#ImageMetadata))
+* [[ImageOcr](https://cloud.tencent.com/document/api/1509/65063#ImageOcr)](https://cloud.tencent.com/document/api/1509/65063#[ImageOcr](https://cloud.tencent.com/document/api/1509/65063#ImageOcr))
+* [[MultiLevelPersonInfo](https://cloud.tencent.com/document/api/1509/65063#MultiLevelPersonInfo)](https://cloud.tencent.com/document/api/1509/65063#[MultiLevelPersonInfo](https://cloud.tencent.com/document/api/1509/65063#MultiLevelPersonInfo))
+* [[Rectf](https://cloud.tencent.com/document/api/1509/65063#Rectf)](https://cloud.tencent.com/document/api/1509/65063#[Rectf](https://cloud.tencent.com/document/api/1509/65063#Rectf))
+* [[TextData](https://cloud.tencent.com/document/api/1509/65063#TextData)](https://cloud.tencent.com/document/api/1509/65063#[TextData](https://cloud.tencent.com/document/api/1509/65063#TextData))
+* [[TextMetadata](https://cloud.tencent.com/document/api/1509/65063#TextMetadata)](https://cloud.tencent.com/document/api/1509/65063#[TextMetadata](https://cloud.tencent.com/document/api/1509/65063#TextMetadata))
+* [[UnknownPerson](https://cloud.tencent.com/document/api/1509/65063#UnknownPerson)](https://cloud.tencent.com/document/api/1509/65063#[UnknownPerson](https://cloud.tencent.com/document/api/1509/65063#UnknownPerson))
+
+修改数据结构：
+
+* [MediaFilter](https://cloud.tencent.com/document/api/1509/65063#MediaFilter)
+
+	* 新增成员：MediaType
+
+* [MediaInfo](https://cloud.tencent.com/document/api/1509/65063#MediaInfo)
+
+	* 新增成员：MediaType, AudioMetadata, ImageMetadata, TextMetadata
+
+* [ShowInfo](https://cloud.tencent.com/document/api/1509/65063#ShowInfo)
+
+	* 新增成员：UnknownPersonSet, MultiLevelPersonInfoSet
+
+* [TaskInfo](https://cloud.tencent.com/document/api/1509/65063#TaskInfo)
+
+	* 新增成员：AudioMetadata, ImageMetadata, TextMetadata, Metadata
+
 
 ### 第 6 次发布
 
@@ -53462,6 +53383,22 @@
 
 
 ## 云数据库 MongoDB(mongodb) 版本：2019-07-25
+
+### 第 24 次发布
+
+发布时间：2022-09-21 06:37:03
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeAccountUsers](https://cloud.tencent.com/document/api/240/80800)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[UserInfo](https://cloud.tencent.com/document/api/240/38576#UserInfo)](https://cloud.tencent.com/document/api/240/38576#[UserInfo](https://cloud.tencent.com/document/api/240/38576#UserInfo))
 
 ### 第 23 次发布
 
@@ -58111,6 +58048,18 @@
 
 
 ## 文字识别(ocr) 版本：2018-11-19
+
+### 第 79 次发布
+
+发布时间：2022-09-21 06:39:36
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[ImageEnhancement](https://cloud.tencent.com/document/api/866/80801)](https://cloud.tencent.com/document/api/#/#)
 
 ### 第 78 次发布
 
@@ -75630,288 +75579,288 @@
 
 新增接口：
 
-* [[CheckCertificate](https://cloud.tencent.com/document/api/1552/80604)](https://cloud.tencent.com/document/api/#/#)
-* [[CreateApplicationProxy](https://cloud.tencent.com/document/api/1552/80694)](https://cloud.tencent.com/document/api/#/#)
-* [[CreateApplicationProxyRule](https://cloud.tencent.com/document/api/1552/80693)](https://cloud.tencent.com/document/api/#/#)
-* [[CreateCredential](https://cloud.tencent.com/document/api/1552/80623)](https://cloud.tencent.com/document/api/#/#)
-* [[CreateCustomErrorPage](https://cloud.tencent.com/document/api/1552/80684)](https://cloud.tencent.com/document/api/#/#)
-* [[CreateDnsRecord](https://cloud.tencent.com/document/api/1552/80720)](https://cloud.tencent.com/document/api/#/#)
-* [[CreateIpTableList](https://cloud.tencent.com/document/api/1552/80683)](https://cloud.tencent.com/document/api/#/#)
-* [[CreateLoadBalancing](https://cloud.tencent.com/document/api/1552/80599)](https://cloud.tencent.com/document/api/#/#)
-* [[CreateLogSet](https://cloud.tencent.com/document/api/1552/80633)](https://cloud.tencent.com/document/api/#/#)
-* [[CreateLogTopicTask](https://cloud.tencent.com/document/api/1552/80632)](https://cloud.tencent.com/document/api/#/#)
-* [[CreateOriginGroup](https://cloud.tencent.com/document/api/1552/80598)](https://cloud.tencent.com/document/api/#/#)
-* [[CreatePlanForZone](https://cloud.tencent.com/document/api/1552/80607)](https://cloud.tencent.com/document/api/#/#)
-* [[CreatePrefetchTask](https://cloud.tencent.com/document/api/1552/80704)](https://cloud.tencent.com/document/api/#/#)
-* [[CreatePurgeTask](https://cloud.tencent.com/document/api/1552/80703)](https://cloud.tencent.com/document/api/#/#)
-* [[CreateReplayTask](https://cloud.tencent.com/document/api/1552/80702)](https://cloud.tencent.com/document/api/#/#)
-* [[CreateRule](https://cloud.tencent.com/document/api/1552/80622)](https://cloud.tencent.com/document/api/#/#)
-* [[CreateSecurityDropPage](https://cloud.tencent.com/document/api/1552/80682)](https://cloud.tencent.com/document/api/#/#)
-* [[CreateSpeedTesting](https://cloud.tencent.com/document/api/1552/80612)](https://cloud.tencent.com/document/api/#/#)
-* [[CreateZone](https://cloud.tencent.com/document/api/1552/80719)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteApplicationProxy](https://cloud.tencent.com/document/api/1552/80692)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteApplicationProxyRule](https://cloud.tencent.com/document/api/1552/80691)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteDnsRecords](https://cloud.tencent.com/document/api/1552/80718)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteLoadBalancing](https://cloud.tencent.com/document/api/1552/80597)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteLogTopicTask](https://cloud.tencent.com/document/api/1552/80631)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteOriginGroup](https://cloud.tencent.com/document/api/1552/80596)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteRules](https://cloud.tencent.com/document/api/1552/80621)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteZone](https://cloud.tencent.com/document/api/1552/80717)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeAddableEntityList](https://cloud.tencent.com/document/api/1552/80630)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeApplicationProxies](https://cloud.tencent.com/document/api/1552/80690)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeAvailablePlans](https://cloud.tencent.com/document/api/1552/80606)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeBillingData](https://cloud.tencent.com/document/api/1552/80765)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeBotClientIpList](https://cloud.tencent.com/document/api/1552/80666)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeBotData](https://cloud.tencent.com/document/api/1552/80665)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeBotHitRuleDetail](https://cloud.tencent.com/document/api/1552/80664)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeBotLog](https://cloud.tencent.com/document/api/1552/80663)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeBotManagedRules](https://cloud.tencent.com/document/api/1552/80681)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeBotTopData](https://cloud.tencent.com/document/api/1552/80662)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeClientRuleList](https://cloud.tencent.com/document/api/1552/80661)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeContentQuota](https://cloud.tencent.com/document/api/1552/80701)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeDDoSAttackData](https://cloud.tencent.com/document/api/1552/80660)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeDDoSAttackEvent](https://cloud.tencent.com/document/api/1552/80659)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeDDoSAttackEventDetail](https://cloud.tencent.com/document/api/1552/80658)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeDDoSAttackSourceEvent](https://cloud.tencent.com/document/api/1552/80657)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeDDoSAttackTopData](https://cloud.tencent.com/document/api/1552/80656)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeDDoSBlockList](https://cloud.tencent.com/document/api/1552/80655)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeDDoSMajorAttackEvent](https://cloud.tencent.com/document/api/1552/80654)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeDDoSPolicy](https://cloud.tencent.com/document/api/1552/80680)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeDefaultCertificates](https://cloud.tencent.com/document/api/1552/80603)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeDnsData](https://cloud.tencent.com/document/api/1552/80652)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeDnsRecords](https://cloud.tencent.com/document/api/1552/80716)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeDnssec](https://cloud.tencent.com/document/api/1552/80715)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeHostCertificates](https://cloud.tencent.com/document/api/1552/80602)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeHostsSetting](https://cloud.tencent.com/document/api/1552/80620)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeIdentifications](https://cloud.tencent.com/document/api/1552/80714)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeLoadBalancing](https://cloud.tencent.com/document/api/1552/80595)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeLogSets](https://cloud.tencent.com/document/api/1552/80629)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeLogTopicTaskDetail](https://cloud.tencent.com/document/api/1552/80628)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeLogTopicTasks](https://cloud.tencent.com/document/api/1552/80627)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeOriginGroup](https://cloud.tencent.com/document/api/1552/80594)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeOverviewL7Data](https://cloud.tencent.com/document/api/1552/80651)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribePrefetchTasks](https://cloud.tencent.com/document/api/1552/80700)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribePurgeTasks](https://cloud.tencent.com/document/api/1552/80699)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeRateLimitIntelligenceRule](https://cloud.tencent.com/document/api/1552/80679)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeRules](https://cloud.tencent.com/document/api/1552/80619)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeRulesSetting](https://cloud.tencent.com/document/api/1552/80618)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeSecurityGroupManagedRules](https://cloud.tencent.com/document/api/1552/80678)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeSecurityPolicy](https://cloud.tencent.com/document/api/1552/80677)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeSecurityPolicyList](https://cloud.tencent.com/document/api/1552/80676)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeSecurityPolicyRegions](https://cloud.tencent.com/document/api/1552/80675)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeSecurityPortraitRules](https://cloud.tencent.com/document/api/1552/80674)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeSecurityRuleId](https://cloud.tencent.com/document/api/1552/80673)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeSingleL7AnalysisData](https://cloud.tencent.com/document/api/1552/80650)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeSpeedTestingDetails](https://cloud.tencent.com/document/api/1552/80611)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeSpeedTestingMetricData](https://cloud.tencent.com/document/api/1552/80610)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeSpeedTestingQuota](https://cloud.tencent.com/document/api/1552/80609)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeTimingL4Data](https://cloud.tencent.com/document/api/1552/80649)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeTimingL7AnalysisData](https://cloud.tencent.com/document/api/1552/80648)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeTimingL7CacheData](https://cloud.tencent.com/document/api/1552/80647)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeTopL7AnalysisData](https://cloud.tencent.com/document/api/1552/80646)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeTopL7CacheData](https://cloud.tencent.com/document/api/1552/80645)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeWebManagedRulesData](https://cloud.tencent.com/document/api/1552/80644)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeWebManagedRulesHitRuleDetail](https://cloud.tencent.com/document/api/1552/80643)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeWebManagedRulesLog](https://cloud.tencent.com/document/api/1552/80642)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeWebProtectionAttackEvents](https://cloud.tencent.com/document/api/1552/80641)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeWebProtectionClientIpList](https://cloud.tencent.com/document/api/1552/80640)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeWebProtectionData](https://cloud.tencent.com/document/api/1552/80639)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeWebProtectionHitRuleDetail](https://cloud.tencent.com/document/api/1552/80638)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeWebProtectionTopData](https://cloud.tencent.com/document/api/1552/80637)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeZoneDDoSPolicy](https://cloud.tencent.com/document/api/1552/80672)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeZoneSetting](https://cloud.tencent.com/document/api/1552/80617)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeZones](https://cloud.tencent.com/document/api/1552/80713)](https://cloud.tencent.com/document/api/#/#)
-* [[DownloadL4Logs](https://cloud.tencent.com/document/api/1552/80636)](https://cloud.tencent.com/document/api/#/#)
-* [[DownloadL7Logs](https://cloud.tencent.com/document/api/1552/80635)](https://cloud.tencent.com/document/api/#/#)
-* [[IdentifyZone](https://cloud.tencent.com/document/api/1552/80712)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyAlarmConfig](https://cloud.tencent.com/document/api/1552/80697)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyAlarmDefaultThreshold](https://cloud.tencent.com/document/api/1552/80696)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyApplicationProxy](https://cloud.tencent.com/document/api/1552/80689)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyApplicationProxyRule](https://cloud.tencent.com/document/api/1552/80688)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyApplicationProxyRuleStatus](https://cloud.tencent.com/document/api/1552/80687)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyApplicationProxyStatus](https://cloud.tencent.com/document/api/1552/80686)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyDDoSPolicy](https://cloud.tencent.com/document/api/1552/80671)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyDDoSPolicyHost](https://cloud.tencent.com/document/api/1552/80670)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyDefaultCertificate](https://cloud.tencent.com/document/api/1552/80601)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyDnsRecord](https://cloud.tencent.com/document/api/1552/80711)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyDnssec](https://cloud.tencent.com/document/api/1552/80710)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyHostsCertificate](https://cloud.tencent.com/document/api/1552/80764)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyLoadBalancing](https://cloud.tencent.com/document/api/1552/80763)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyLoadBalancingStatus](https://cloud.tencent.com/document/api/1552/80593)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyLogTopicTask](https://cloud.tencent.com/document/api/1552/80626)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyOriginGroup](https://cloud.tencent.com/document/api/1552/80592)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyRule](https://cloud.tencent.com/document/api/1552/80616)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyRulePriority](https://cloud.tencent.com/document/api/1552/80615)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifySecurityPolicy](https://cloud.tencent.com/document/api/1552/80669)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifySecurityWafGroupPolicy](https://cloud.tencent.com/document/api/1552/80668)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyZone](https://cloud.tencent.com/document/api/1552/80709)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyZoneCnameSpeedUp](https://cloud.tencent.com/document/api/1552/80708)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyZoneSetting](https://cloud.tencent.com/document/api/1552/80614)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyZoneStatus](https://cloud.tencent.com/document/api/1552/80707)](https://cloud.tencent.com/document/api/#/#)
-* [[ReclaimZone](https://cloud.tencent.com/document/api/1552/80706)](https://cloud.tencent.com/document/api/#/#)
-* [[SwitchLogTopicTask](https://cloud.tencent.com/document/api/1552/80625)](https://cloud.tencent.com/document/api/#/#)
+* [CheckCertificate](https://cloud.tencent.com/document/api/1552/80604)
+* [CreateApplicationProxy](https://cloud.tencent.com/document/api/1552/80694)
+* [CreateApplicationProxyRule](https://cloud.tencent.com/document/api/1552/80693)
+* [CreateCredential](https://cloud.tencent.com/document/api/1552/80623)
+* [CreateCustomErrorPage](https://cloud.tencent.com/document/api/1552/80684)
+* [CreateDnsRecord](https://cloud.tencent.com/document/api/1552/80720)
+* [CreateIpTableList](https://cloud.tencent.com/document/api/1552/80683)
+* [CreateLoadBalancing](https://cloud.tencent.com/document/api/1552/80599)
+* [CreateLogSet](https://cloud.tencent.com/document/api/1552/80633)
+* [CreateLogTopicTask](https://cloud.tencent.com/document/api/1552/80632)
+* [CreateOriginGroup](https://cloud.tencent.com/document/api/1552/80598)
+* [CreatePlanForZone](https://cloud.tencent.com/document/api/1552/80607)
+* [CreatePrefetchTask](https://cloud.tencent.com/document/api/1552/80704)
+* [CreatePurgeTask](https://cloud.tencent.com/document/api/1552/80703)
+* [CreateReplayTask](https://cloud.tencent.com/document/api/1552/80702)
+* [CreateRule](https://cloud.tencent.com/document/api/1552/80622)
+* [CreateSecurityDropPage](https://cloud.tencent.com/document/api/1552/80682)
+* [CreateSpeedTesting](https://cloud.tencent.com/document/api/1552/80612)
+* [CreateZone](https://cloud.tencent.com/document/api/1552/80719)
+* [DeleteApplicationProxy](https://cloud.tencent.com/document/api/1552/80692)
+* [DeleteApplicationProxyRule](https://cloud.tencent.com/document/api/1552/80691)
+* [DeleteDnsRecords](https://cloud.tencent.com/document/api/1552/80718)
+* [DeleteLoadBalancing](https://cloud.tencent.com/document/api/1552/80597)
+* [DeleteLogTopicTask](https://cloud.tencent.com/document/api/1552/80631)
+* [DeleteOriginGroup](https://cloud.tencent.com/document/api/1552/80596)
+* [DeleteRules](https://cloud.tencent.com/document/api/1552/80621)
+* [DeleteZone](https://cloud.tencent.com/document/api/1552/80717)
+* [DescribeAddableEntityList](https://cloud.tencent.com/document/api/1552/80630)
+* [DescribeApplicationProxies](https://cloud.tencent.com/document/api/1552/80690)
+* [DescribeAvailablePlans](https://cloud.tencent.com/document/api/1552/80606)
+* [DescribeBillingData](https://cloud.tencent.com/document/api/1552/80765)
+* [DescribeBotClientIpList](https://cloud.tencent.com/document/api/1552/80666)
+* [DescribeBotData](https://cloud.tencent.com/document/api/1552/80665)
+* [DescribeBotHitRuleDetail](https://cloud.tencent.com/document/api/1552/80664)
+* [DescribeBotLog](https://cloud.tencent.com/document/api/1552/80663)
+* [DescribeBotManagedRules](https://cloud.tencent.com/document/api/1552/80681)
+* [DescribeBotTopData](https://cloud.tencent.com/document/api/1552/80662)
+* [DescribeClientRuleList](https://cloud.tencent.com/document/api/1552/80661)
+* [DescribeContentQuota](https://cloud.tencent.com/document/api/1552/80701)
+* [DescribeDDoSAttackData](https://cloud.tencent.com/document/api/1552/80660)
+* [DescribeDDoSAttackEvent](https://cloud.tencent.com/document/api/1552/80659)
+* [DescribeDDoSAttackEventDetail](https://cloud.tencent.com/document/api/1552/80658)
+* [DescribeDDoSAttackSourceEvent](https://cloud.tencent.com/document/api/1552/80657)
+* [DescribeDDoSAttackTopData](https://cloud.tencent.com/document/api/1552/80656)
+* [DescribeDDoSBlockList](https://cloud.tencent.com/document/api/1552/80655)
+* [DescribeDDoSMajorAttackEvent](https://cloud.tencent.com/document/api/1552/80654)
+* [DescribeDDoSPolicy](https://cloud.tencent.com/document/api/1552/80680)
+* [DescribeDefaultCertificates](https://cloud.tencent.com/document/api/1552/80603)
+* [DescribeDnsData](https://cloud.tencent.com/document/api/1552/80652)
+* [DescribeDnsRecords](https://cloud.tencent.com/document/api/1552/80716)
+* [DescribeDnssec](https://cloud.tencent.com/document/api/1552/80715)
+* [DescribeHostCertificates](https://cloud.tencent.com/document/api/1552/80602)
+* [DescribeHostsSetting](https://cloud.tencent.com/document/api/1552/80620)
+* [DescribeIdentifications](https://cloud.tencent.com/document/api/1552/80714)
+* [DescribeLoadBalancing](https://cloud.tencent.com/document/api/1552/80595)
+* [DescribeLogSets](https://cloud.tencent.com/document/api/1552/80629)
+* [DescribeLogTopicTaskDetail](https://cloud.tencent.com/document/api/1552/80628)
+* [DescribeLogTopicTasks](https://cloud.tencent.com/document/api/1552/80627)
+* [DescribeOriginGroup](https://cloud.tencent.com/document/api/1552/80594)
+* [DescribeOverviewL7Data](https://cloud.tencent.com/document/api/1552/80651)
+* [DescribePrefetchTasks](https://cloud.tencent.com/document/api/1552/80700)
+* [DescribePurgeTasks](https://cloud.tencent.com/document/api/1552/80699)
+* [DescribeRateLimitIntelligenceRule](https://cloud.tencent.com/document/api/1552/80679)
+* [DescribeRules](https://cloud.tencent.com/document/api/1552/80619)
+* [DescribeRulesSetting](https://cloud.tencent.com/document/api/1552/80618)
+* [DescribeSecurityGroupManagedRules](https://cloud.tencent.com/document/api/1552/80678)
+* [DescribeSecurityPolicy](https://cloud.tencent.com/document/api/1552/80677)
+* [DescribeSecurityPolicyList](https://cloud.tencent.com/document/api/1552/80676)
+* [DescribeSecurityPolicyRegions](https://cloud.tencent.com/document/api/1552/80675)
+* [DescribeSecurityPortraitRules](https://cloud.tencent.com/document/api/1552/80674)
+* [DescribeSecurityRuleId](https://cloud.tencent.com/document/api/1552/80673)
+* [DescribeSingleL7AnalysisData](https://cloud.tencent.com/document/api/1552/80650)
+* [DescribeSpeedTestingDetails](https://cloud.tencent.com/document/api/1552/80611)
+* [DescribeSpeedTestingMetricData](https://cloud.tencent.com/document/api/1552/80610)
+* [DescribeSpeedTestingQuota](https://cloud.tencent.com/document/api/1552/80609)
+* [DescribeTimingL4Data](https://cloud.tencent.com/document/api/1552/80649)
+* [DescribeTimingL7AnalysisData](https://cloud.tencent.com/document/api/1552/80648)
+* [DescribeTimingL7CacheData](https://cloud.tencent.com/document/api/1552/80647)
+* [DescribeTopL7AnalysisData](https://cloud.tencent.com/document/api/1552/80646)
+* [DescribeTopL7CacheData](https://cloud.tencent.com/document/api/1552/80645)
+* [DescribeWebManagedRulesData](https://cloud.tencent.com/document/api/1552/80644)
+* [DescribeWebManagedRulesHitRuleDetail](https://cloud.tencent.com/document/api/1552/80643)
+* [DescribeWebManagedRulesLog](https://cloud.tencent.com/document/api/1552/80642)
+* [DescribeWebProtectionAttackEvents](https://cloud.tencent.com/document/api/1552/80641)
+* [DescribeWebProtectionClientIpList](https://cloud.tencent.com/document/api/1552/80640)
+* [DescribeWebProtectionData](https://cloud.tencent.com/document/api/1552/80639)
+* [DescribeWebProtectionHitRuleDetail](https://cloud.tencent.com/document/api/1552/80638)
+* [DescribeWebProtectionTopData](https://cloud.tencent.com/document/api/1552/80637)
+* [DescribeZoneDDoSPolicy](https://cloud.tencent.com/document/api/1552/80672)
+* [DescribeZoneSetting](https://cloud.tencent.com/document/api/1552/80617)
+* [DescribeZones](https://cloud.tencent.com/document/api/1552/80713)
+* [DownloadL4Logs](https://cloud.tencent.com/document/api/1552/80636)
+* [DownloadL7Logs](https://cloud.tencent.com/document/api/1552/80635)
+* [IdentifyZone](https://cloud.tencent.com/document/api/1552/80712)
+* [ModifyAlarmConfig](https://cloud.tencent.com/document/api/1552/80697)
+* [ModifyAlarmDefaultThreshold](https://cloud.tencent.com/document/api/1552/80696)
+* [ModifyApplicationProxy](https://cloud.tencent.com/document/api/1552/80689)
+* [ModifyApplicationProxyRule](https://cloud.tencent.com/document/api/1552/80688)
+* [ModifyApplicationProxyRuleStatus](https://cloud.tencent.com/document/api/1552/80687)
+* [ModifyApplicationProxyStatus](https://cloud.tencent.com/document/api/1552/80686)
+* [ModifyDDoSPolicy](https://cloud.tencent.com/document/api/1552/80671)
+* [ModifyDDoSPolicyHost](https://cloud.tencent.com/document/api/1552/80670)
+* [ModifyDefaultCertificate](https://cloud.tencent.com/document/api/1552/80601)
+* [ModifyDnsRecord](https://cloud.tencent.com/document/api/1552/80711)
+* [ModifyDnssec](https://cloud.tencent.com/document/api/1552/80710)
+* [ModifyHostsCertificate](https://cloud.tencent.com/document/api/1552/80764)
+* [ModifyLoadBalancing](https://cloud.tencent.com/document/api/1552/80763)
+* [ModifyLoadBalancingStatus](https://cloud.tencent.com/document/api/1552/80593)
+* [ModifyLogTopicTask](https://cloud.tencent.com/document/api/1552/80626)
+* [ModifyOriginGroup](https://cloud.tencent.com/document/api/1552/80592)
+* [ModifyRule](https://cloud.tencent.com/document/api/1552/80616)
+* [ModifyRulePriority](https://cloud.tencent.com/document/api/1552/80615)
+* [ModifySecurityPolicy](https://cloud.tencent.com/document/api/1552/80669)
+* [ModifySecurityWafGroupPolicy](https://cloud.tencent.com/document/api/1552/80668)
+* [ModifyZone](https://cloud.tencent.com/document/api/1552/80709)
+* [ModifyZoneCnameSpeedUp](https://cloud.tencent.com/document/api/1552/80708)
+* [ModifyZoneSetting](https://cloud.tencent.com/document/api/1552/80614)
+* [ModifyZoneStatus](https://cloud.tencent.com/document/api/1552/80707)
+* [ReclaimZone](https://cloud.tencent.com/document/api/1552/80706)
+* [SwitchLogTopicTask](https://cloud.tencent.com/document/api/1552/80625)
 
 新增数据结构：
 
-* [[AccelerateType](https://cloud.tencent.com/document/api/1552/80721#AccelerateType)](https://cloud.tencent.com/document/api/1552/80721#[AccelerateType](https://cloud.tencent.com/document/api/1552/80721#AccelerateType))
-* [[AclCondition](https://cloud.tencent.com/document/api/1552/80721#AclCondition)](https://cloud.tencent.com/document/api/1552/80721#[AclCondition](https://cloud.tencent.com/document/api/1552/80721#AclCondition))
-* [[AclConfig](https://cloud.tencent.com/document/api/1552/80721#AclConfig)](https://cloud.tencent.com/document/api/1552/80721#[AclConfig](https://cloud.tencent.com/document/api/1552/80721#AclConfig))
-* [[AclUserRule](https://cloud.tencent.com/document/api/1552/80721#AclUserRule)](https://cloud.tencent.com/document/api/1552/80721#[AclUserRule](https://cloud.tencent.com/document/api/1552/80721#AclUserRule))
-* [[Action](https://cloud.tencent.com/document/api/1552/80721#Action)](https://cloud.tencent.com/document/api/1552/80721#[Action](https://cloud.tencent.com/document/api/1552/80721#Action))
-* [[AdvancedFilter](https://cloud.tencent.com/document/api/1552/80721#AdvancedFilter)](https://cloud.tencent.com/document/api/1552/80721#[AdvancedFilter](https://cloud.tencent.com/document/api/1552/80721#AdvancedFilter))
-* [[AiRule](https://cloud.tencent.com/document/api/1552/80721#AiRule)](https://cloud.tencent.com/document/api/1552/80721#[AiRule](https://cloud.tencent.com/document/api/1552/80721#AiRule))
-* [[ApplicationProxy](https://cloud.tencent.com/document/api/1552/80721#ApplicationProxy)](https://cloud.tencent.com/document/api/1552/80721#[ApplicationProxy](https://cloud.tencent.com/document/api/1552/80721#ApplicationProxy))
-* [[ApplicationProxyRule](https://cloud.tencent.com/document/api/1552/80721#ApplicationProxyRule)](https://cloud.tencent.com/document/api/1552/80721#[ApplicationProxyRule](https://cloud.tencent.com/document/api/1552/80721#ApplicationProxyRule))
-* [[AscriptionInfo](https://cloud.tencent.com/document/api/1552/80721#AscriptionInfo)](https://cloud.tencent.com/document/api/1552/80721#[AscriptionInfo](https://cloud.tencent.com/document/api/1552/80721#AscriptionInfo))
-* [[BillingDataFilter](https://cloud.tencent.com/document/api/1552/80721#BillingDataFilter)](https://cloud.tencent.com/document/api/1552/80721#[BillingDataFilter](https://cloud.tencent.com/document/api/1552/80721#BillingDataFilter))
-* [[BotConfig](https://cloud.tencent.com/document/api/1552/80721#BotConfig)](https://cloud.tencent.com/document/api/1552/80721#[BotConfig](https://cloud.tencent.com/document/api/1552/80721#BotConfig))
-* [[BotLog](https://cloud.tencent.com/document/api/1552/80721#BotLog)](https://cloud.tencent.com/document/api/1552/80721#[BotLog](https://cloud.tencent.com/document/api/1552/80721#BotLog))
-* [[BotManagedRule](https://cloud.tencent.com/document/api/1552/80721#BotManagedRule)](https://cloud.tencent.com/document/api/1552/80721#[BotManagedRule](https://cloud.tencent.com/document/api/1552/80721#BotManagedRule))
-* [[BotManagedRuleDetail](https://cloud.tencent.com/document/api/1552/80721#BotManagedRuleDetail)](https://cloud.tencent.com/document/api/1552/80721#[BotManagedRuleDetail](https://cloud.tencent.com/document/api/1552/80721#BotManagedRuleDetail))
-* [[BotPortraitRule](https://cloud.tencent.com/document/api/1552/80721#BotPortraitRule)](https://cloud.tencent.com/document/api/1552/80721#[BotPortraitRule](https://cloud.tencent.com/document/api/1552/80721#BotPortraitRule))
-* [[CC](https://cloud.tencent.com/document/api/1552/80721#CC)](https://cloud.tencent.com/document/api/1552/80721#[CC](https://cloud.tencent.com/document/api/1552/80721#CC))
-* [[CCInterceptEvent](https://cloud.tencent.com/document/api/1552/80721#CCInterceptEvent)](https://cloud.tencent.com/document/api/1552/80721#[CCInterceptEvent](https://cloud.tencent.com/document/api/1552/80721#CCInterceptEvent))
-* [[Cache](https://cloud.tencent.com/document/api/1552/80721#Cache)](https://cloud.tencent.com/document/api/1552/80721#[Cache](https://cloud.tencent.com/document/api/1552/80721#Cache))
-* [[CacheConfig](https://cloud.tencent.com/document/api/1552/80721#CacheConfig)](https://cloud.tencent.com/document/api/1552/80721#[CacheConfig](https://cloud.tencent.com/document/api/1552/80721#CacheConfig))
-* [[CacheKey](https://cloud.tencent.com/document/api/1552/80721#CacheKey)](https://cloud.tencent.com/document/api/1552/80721#[CacheKey](https://cloud.tencent.com/document/api/1552/80721#CacheKey))
-* [[CachePrefresh](https://cloud.tencent.com/document/api/1552/80721#CachePrefresh)](https://cloud.tencent.com/document/api/1552/80721#[CachePrefresh](https://cloud.tencent.com/document/api/1552/80721#CachePrefresh))
-* [[ClientIpHeader](https://cloud.tencent.com/document/api/1552/80721#ClientIpHeader)](https://cloud.tencent.com/document/api/1552/80721#[ClientIpHeader](https://cloud.tencent.com/document/api/1552/80721#ClientIpHeader))
-* [[ClientRule](https://cloud.tencent.com/document/api/1552/80721#ClientRule)](https://cloud.tencent.com/document/api/1552/80721#[ClientRule](https://cloud.tencent.com/document/api/1552/80721#ClientRule))
-* [[ClsLogTopicInfo](https://cloud.tencent.com/document/api/1552/80721#ClsLogTopicInfo)](https://cloud.tencent.com/document/api/1552/80721#[ClsLogTopicInfo](https://cloud.tencent.com/document/api/1552/80721#ClsLogTopicInfo))
-* [[CodeAction](https://cloud.tencent.com/document/api/1552/80721#CodeAction)](https://cloud.tencent.com/document/api/1552/80721#[CodeAction](https://cloud.tencent.com/document/api/1552/80721#CodeAction))
-* [[Compression](https://cloud.tencent.com/document/api/1552/80721#Compression)](https://cloud.tencent.com/document/api/1552/80721#[Compression](https://cloud.tencent.com/document/api/1552/80721#Compression))
-* [[DDoS](https://cloud.tencent.com/document/api/1552/80721#DDoS)](https://cloud.tencent.com/document/api/1552/80721#[DDoS](https://cloud.tencent.com/document/api/1552/80721#DDoS))
-* [[DDoSAcl](https://cloud.tencent.com/document/api/1552/80721#DDoSAcl)](https://cloud.tencent.com/document/api/1552/80721#[DDoSAcl](https://cloud.tencent.com/document/api/1552/80721#DDoSAcl))
-* [[DDoSAclRule](https://cloud.tencent.com/document/api/1552/80721#DDoSAclRule)](https://cloud.tencent.com/document/api/1552/80721#[DDoSAclRule](https://cloud.tencent.com/document/api/1552/80721#DDoSAclRule))
-* [[DDoSAllowBlock](https://cloud.tencent.com/document/api/1552/80721#DDoSAllowBlock)](https://cloud.tencent.com/document/api/1552/80721#[DDoSAllowBlock](https://cloud.tencent.com/document/api/1552/80721#DDoSAllowBlock))
-* [[DDoSAllowBlockRule](https://cloud.tencent.com/document/api/1552/80721#DDoSAllowBlockRule)](https://cloud.tencent.com/document/api/1552/80721#[DDoSAllowBlockRule](https://cloud.tencent.com/document/api/1552/80721#DDoSAllowBlockRule))
-* [[DDoSAntiPly](https://cloud.tencent.com/document/api/1552/80721#DDoSAntiPly)](https://cloud.tencent.com/document/api/1552/80721#[DDoSAntiPly](https://cloud.tencent.com/document/api/1552/80721#DDoSAntiPly))
-* [[DDoSAttackEvent](https://cloud.tencent.com/document/api/1552/80721#DDoSAttackEvent)](https://cloud.tencent.com/document/api/1552/80721#[DDoSAttackEvent](https://cloud.tencent.com/document/api/1552/80721#DDoSAttackEvent))
-* [[DDoSAttackEventDetailData](https://cloud.tencent.com/document/api/1552/80721#DDoSAttackEventDetailData)](https://cloud.tencent.com/document/api/1552/80721#[DDoSAttackEventDetailData](https://cloud.tencent.com/document/api/1552/80721#DDoSAttackEventDetailData))
-* [[DDoSAttackSourceEvent](https://cloud.tencent.com/document/api/1552/80721#DDoSAttackSourceEvent)](https://cloud.tencent.com/document/api/1552/80721#[DDoSAttackSourceEvent](https://cloud.tencent.com/document/api/1552/80721#DDoSAttackSourceEvent))
-* [[DDoSBlockData](https://cloud.tencent.com/document/api/1552/80721#DDoSBlockData)](https://cloud.tencent.com/document/api/1552/80721#[DDoSBlockData](https://cloud.tencent.com/document/api/1552/80721#DDoSBlockData))
-* [[DDoSFeaturesFilter](https://cloud.tencent.com/document/api/1552/80721#DDoSFeaturesFilter)](https://cloud.tencent.com/document/api/1552/80721#[DDoSFeaturesFilter](https://cloud.tencent.com/document/api/1552/80721#DDoSFeaturesFilter))
-* [[DDoSGeoIp](https://cloud.tencent.com/document/api/1552/80721#DDoSGeoIp)](https://cloud.tencent.com/document/api/1552/80721#[DDoSGeoIp](https://cloud.tencent.com/document/api/1552/80721#DDoSGeoIp))
-* [[DDoSHost](https://cloud.tencent.com/document/api/1552/80721#DDoSHost)](https://cloud.tencent.com/document/api/1552/80721#[DDoSHost](https://cloud.tencent.com/document/api/1552/80721#DDoSHost))
-* [[DDoSMajorAttackEvent](https://cloud.tencent.com/document/api/1552/80721#DDoSMajorAttackEvent)](https://cloud.tencent.com/document/api/1552/80721#[DDoSMajorAttackEvent](https://cloud.tencent.com/document/api/1552/80721#DDoSMajorAttackEvent))
-* [[DDoSPacketFilter](https://cloud.tencent.com/document/api/1552/80721#DDoSPacketFilter)](https://cloud.tencent.com/document/api/1552/80721#[DDoSPacketFilter](https://cloud.tencent.com/document/api/1552/80721#DDoSPacketFilter))
-* [[DDoSRule](https://cloud.tencent.com/document/api/1552/80721#DDoSRule)](https://cloud.tencent.com/document/api/1552/80721#[DDoSRule](https://cloud.tencent.com/document/api/1552/80721#DDoSRule))
-* [[DDoSSpeedLimit](https://cloud.tencent.com/document/api/1552/80721#DDoSSpeedLimit)](https://cloud.tencent.com/document/api/1552/80721#[DDoSSpeedLimit](https://cloud.tencent.com/document/api/1552/80721#DDoSSpeedLimit))
-* [[DDoSStatusInfo](https://cloud.tencent.com/document/api/1552/80721#DDoSStatusInfo)](https://cloud.tencent.com/document/api/1552/80721#[DDoSStatusInfo](https://cloud.tencent.com/document/api/1552/80721#DDoSStatusInfo))
-* [[DefaultServerCertInfo](https://cloud.tencent.com/document/api/1552/80721#DefaultServerCertInfo)](https://cloud.tencent.com/document/api/1552/80721#[DefaultServerCertInfo](https://cloud.tencent.com/document/api/1552/80721#DefaultServerCertInfo))
-* [[DetailHost](https://cloud.tencent.com/document/api/1552/80721#DetailHost)](https://cloud.tencent.com/document/api/1552/80721#[DetailHost](https://cloud.tencent.com/document/api/1552/80721#DetailHost))
-* [[DistrictStatistics](https://cloud.tencent.com/document/api/1552/80721#DistrictStatistics)](https://cloud.tencent.com/document/api/1552/80721#[DistrictStatistics](https://cloud.tencent.com/document/api/1552/80721#DistrictStatistics))
-* [[DnsData](https://cloud.tencent.com/document/api/1552/80721#DnsData)](https://cloud.tencent.com/document/api/1552/80721#[DnsData](https://cloud.tencent.com/document/api/1552/80721#DnsData))
-* [[DnsRecord](https://cloud.tencent.com/document/api/1552/80721#DnsRecord)](https://cloud.tencent.com/document/api/1552/80721#[DnsRecord](https://cloud.tencent.com/document/api/1552/80721#DnsRecord))
-* [[DnssecInfo](https://cloud.tencent.com/document/api/1552/80721#DnssecInfo)](https://cloud.tencent.com/document/api/1552/80721#[DnssecInfo](https://cloud.tencent.com/document/api/1552/80721#DnssecInfo))
-* [[DropPageConfig](https://cloud.tencent.com/document/api/1552/80721#DropPageConfig)](https://cloud.tencent.com/document/api/1552/80721#[DropPageConfig](https://cloud.tencent.com/document/api/1552/80721#DropPageConfig))
-* [[DropPageDetail](https://cloud.tencent.com/document/api/1552/80721#DropPageDetail)](https://cloud.tencent.com/document/api/1552/80721#[DropPageDetail](https://cloud.tencent.com/document/api/1552/80721#DropPageDetail))
-* [[ExceptConfig](https://cloud.tencent.com/document/api/1552/80721#ExceptConfig)](https://cloud.tencent.com/document/api/1552/80721#[ExceptConfig](https://cloud.tencent.com/document/api/1552/80721#ExceptConfig))
-* [[ExceptUserRule](https://cloud.tencent.com/document/api/1552/80721#ExceptUserRule)](https://cloud.tencent.com/document/api/1552/80721#[ExceptUserRule](https://cloud.tencent.com/document/api/1552/80721#ExceptUserRule))
-* [[ExceptUserRuleCondition](https://cloud.tencent.com/document/api/1552/80721#ExceptUserRuleCondition)](https://cloud.tencent.com/document/api/1552/80721#[ExceptUserRuleCondition](https://cloud.tencent.com/document/api/1552/80721#ExceptUserRuleCondition))
-* [[ExceptUserRuleScope](https://cloud.tencent.com/document/api/1552/80721#ExceptUserRuleScope)](https://cloud.tencent.com/document/api/1552/80721#[ExceptUserRuleScope](https://cloud.tencent.com/document/api/1552/80721#ExceptUserRuleScope))
-* [[FailReason](https://cloud.tencent.com/document/api/1552/80721#FailReason)](https://cloud.tencent.com/document/api/1552/80721#[FailReason](https://cloud.tencent.com/document/api/1552/80721#FailReason))
-* [[Filter](https://cloud.tencent.com/document/api/1552/80721#Filter)](https://cloud.tencent.com/document/api/1552/80721#[Filter](https://cloud.tencent.com/document/api/1552/80721#Filter))
-* [[FollowOrigin](https://cloud.tencent.com/document/api/1552/80721#FollowOrigin)](https://cloud.tencent.com/document/api/1552/80721#[FollowOrigin](https://cloud.tencent.com/document/api/1552/80721#FollowOrigin))
-* [[ForceRedirect](https://cloud.tencent.com/document/api/1552/80721#ForceRedirect)](https://cloud.tencent.com/document/api/1552/80721#[ForceRedirect](https://cloud.tencent.com/document/api/1552/80721#ForceRedirect))
-* [[GeoIp](https://cloud.tencent.com/document/api/1552/80721#GeoIp)](https://cloud.tencent.com/document/api/1552/80721#[GeoIp](https://cloud.tencent.com/document/api/1552/80721#GeoIp))
-* [[Header](https://cloud.tencent.com/document/api/1552/80721#Header)](https://cloud.tencent.com/document/api/1552/80721#[Header](https://cloud.tencent.com/document/api/1552/80721#Header))
-* [[HostCertInfo](https://cloud.tencent.com/document/api/1552/80721#HostCertInfo)](https://cloud.tencent.com/document/api/1552/80721#[HostCertInfo](https://cloud.tencent.com/document/api/1552/80721#HostCertInfo))
-* [[HostsCertificate](https://cloud.tencent.com/document/api/1552/80721#HostsCertificate)](https://cloud.tencent.com/document/api/1552/80721#[HostsCertificate](https://cloud.tencent.com/document/api/1552/80721#HostsCertificate))
-* [[Hsts](https://cloud.tencent.com/document/api/1552/80721#Hsts)](https://cloud.tencent.com/document/api/1552/80721#[Hsts](https://cloud.tencent.com/document/api/1552/80721#Hsts))
-* [[Https](https://cloud.tencent.com/document/api/1552/80721#Https)](https://cloud.tencent.com/document/api/1552/80721#[Https](https://cloud.tencent.com/document/api/1552/80721#Https))
-* [[Identification](https://cloud.tencent.com/document/api/1552/80721#Identification)](https://cloud.tencent.com/document/api/1552/80721#[Identification](https://cloud.tencent.com/document/api/1552/80721#Identification))
-* [[IntelligenceRule](https://cloud.tencent.com/document/api/1552/80721#IntelligenceRule)](https://cloud.tencent.com/document/api/1552/80721#[IntelligenceRule](https://cloud.tencent.com/document/api/1552/80721#IntelligenceRule))
-* [[IntelligenceRuleItem](https://cloud.tencent.com/document/api/1552/80721#IntelligenceRuleItem)](https://cloud.tencent.com/document/api/1552/80721#[IntelligenceRuleItem](https://cloud.tencent.com/document/api/1552/80721#IntelligenceRuleItem))
-* [[IpTableConfig](https://cloud.tencent.com/document/api/1552/80721#IpTableConfig)](https://cloud.tencent.com/document/api/1552/80721#[IpTableConfig](https://cloud.tencent.com/document/api/1552/80721#IpTableConfig))
-* [[IpTableRule](https://cloud.tencent.com/document/api/1552/80721#IpTableRule)](https://cloud.tencent.com/document/api/1552/80721#[IpTableRule](https://cloud.tencent.com/document/api/1552/80721#IpTableRule))
-* [[Ipv6](https://cloud.tencent.com/document/api/1552/80721#Ipv6)](https://cloud.tencent.com/document/api/1552/80721#[Ipv6](https://cloud.tencent.com/document/api/1552/80721#Ipv6))
-* [[L4OfflineLog](https://cloud.tencent.com/document/api/1552/80721#L4OfflineLog)](https://cloud.tencent.com/document/api/1552/80721#[L4OfflineLog](https://cloud.tencent.com/document/api/1552/80721#L4OfflineLog))
-* [[L7OfflineLog](https://cloud.tencent.com/document/api/1552/80721#L7OfflineLog)](https://cloud.tencent.com/document/api/1552/80721#[L7OfflineLog](https://cloud.tencent.com/document/api/1552/80721#L7OfflineLog))
-* [[LoadBalancing](https://cloud.tencent.com/document/api/1552/80721#LoadBalancing)](https://cloud.tencent.com/document/api/1552/80721#[LoadBalancing](https://cloud.tencent.com/document/api/1552/80721#LoadBalancing))
-* [[LogSetInfo](https://cloud.tencent.com/document/api/1552/80721#LogSetInfo)](https://cloud.tencent.com/document/api/1552/80721#[LogSetInfo](https://cloud.tencent.com/document/api/1552/80721#LogSetInfo))
-* [[LogTopicDetailInfo](https://cloud.tencent.com/document/api/1552/80721#LogTopicDetailInfo)](https://cloud.tencent.com/document/api/1552/80721#[LogTopicDetailInfo](https://cloud.tencent.com/document/api/1552/80721#LogTopicDetailInfo))
-* [[MaxAge](https://cloud.tencent.com/document/api/1552/80721#MaxAge)](https://cloud.tencent.com/document/api/1552/80721#[MaxAge](https://cloud.tencent.com/document/api/1552/80721#MaxAge))
-* [[NoCache](https://cloud.tencent.com/document/api/1552/80721#NoCache)](https://cloud.tencent.com/document/api/1552/80721#[NoCache](https://cloud.tencent.com/document/api/1552/80721#NoCache))
-* [[NormalAction](https://cloud.tencent.com/document/api/1552/80721#NormalAction)](https://cloud.tencent.com/document/api/1552/80721#[NormalAction](https://cloud.tencent.com/document/api/1552/80721#NormalAction))
-* [[OfflineCache](https://cloud.tencent.com/document/api/1552/80721#OfflineCache)](https://cloud.tencent.com/document/api/1552/80721#[OfflineCache](https://cloud.tencent.com/document/api/1552/80721#OfflineCache))
-* [[OptimizeAction](https://cloud.tencent.com/document/api/1552/80721#OptimizeAction)](https://cloud.tencent.com/document/api/1552/80721#[OptimizeAction](https://cloud.tencent.com/document/api/1552/80721#OptimizeAction))
-* [[Origin](https://cloud.tencent.com/document/api/1552/80721#Origin)](https://cloud.tencent.com/document/api/1552/80721#[Origin](https://cloud.tencent.com/document/api/1552/80721#Origin))
-* [[OriginGroup](https://cloud.tencent.com/document/api/1552/80721#OriginGroup)](https://cloud.tencent.com/document/api/1552/80721#[OriginGroup](https://cloud.tencent.com/document/api/1552/80721#OriginGroup))
-* [[OriginRecord](https://cloud.tencent.com/document/api/1552/80721#OriginRecord)](https://cloud.tencent.com/document/api/1552/80721#[OriginRecord](https://cloud.tencent.com/document/api/1552/80721#OriginRecord))
-* [[PlanInfo](https://cloud.tencent.com/document/api/1552/80721#PlanInfo)](https://cloud.tencent.com/document/api/1552/80721#[PlanInfo](https://cloud.tencent.com/document/api/1552/80721#PlanInfo))
-* [[PortraitManagedRuleDetail](https://cloud.tencent.com/document/api/1552/80721#PortraitManagedRuleDetail)](https://cloud.tencent.com/document/api/1552/80721#[PortraitManagedRuleDetail](https://cloud.tencent.com/document/api/1552/80721#PortraitManagedRuleDetail))
-* [[PostMaxSize](https://cloud.tencent.com/document/api/1552/80721#PostMaxSize)](https://cloud.tencent.com/document/api/1552/80721#[PostMaxSize](https://cloud.tencent.com/document/api/1552/80721#PostMaxSize))
-* [[PrivateParameter](https://cloud.tencent.com/document/api/1552/80721#PrivateParameter)](https://cloud.tencent.com/document/api/1552/80721#[PrivateParameter](https://cloud.tencent.com/document/api/1552/80721#PrivateParameter))
-* [[QueryCondition](https://cloud.tencent.com/document/api/1552/80721#QueryCondition)](https://cloud.tencent.com/document/api/1552/80721#[QueryCondition](https://cloud.tencent.com/document/api/1552/80721#QueryCondition))
-* [[QueryString](https://cloud.tencent.com/document/api/1552/80721#QueryString)](https://cloud.tencent.com/document/api/1552/80721#[QueryString](https://cloud.tencent.com/document/api/1552/80721#QueryString))
-* [[Quic](https://cloud.tencent.com/document/api/1552/80721#Quic)](https://cloud.tencent.com/document/api/1552/80721#[Quic](https://cloud.tencent.com/document/api/1552/80721#Quic))
-* [[Quota](https://cloud.tencent.com/document/api/1552/80721#Quota)](https://cloud.tencent.com/document/api/1552/80721#[Quota](https://cloud.tencent.com/document/api/1552/80721#Quota))
-* [[RateLimitConfig](https://cloud.tencent.com/document/api/1552/80721#RateLimitConfig)](https://cloud.tencent.com/document/api/1552/80721#[RateLimitConfig](https://cloud.tencent.com/document/api/1552/80721#RateLimitConfig))
-* [[RateLimitIntelligence](https://cloud.tencent.com/document/api/1552/80721#RateLimitIntelligence)](https://cloud.tencent.com/document/api/1552/80721#[RateLimitIntelligence](https://cloud.tencent.com/document/api/1552/80721#RateLimitIntelligence))
-* [[RateLimitIntelligenceRuleDetail](https://cloud.tencent.com/document/api/1552/80721#RateLimitIntelligenceRuleDetail)](https://cloud.tencent.com/document/api/1552/80721#[RateLimitIntelligenceRuleDetail](https://cloud.tencent.com/document/api/1552/80721#RateLimitIntelligenceRuleDetail))
-* [[RateLimitTemplate](https://cloud.tencent.com/document/api/1552/80721#RateLimitTemplate)](https://cloud.tencent.com/document/api/1552/80721#[RateLimitTemplate](https://cloud.tencent.com/document/api/1552/80721#RateLimitTemplate))
-* [[RateLimitTemplateDetail](https://cloud.tencent.com/document/api/1552/80721#RateLimitTemplateDetail)](https://cloud.tencent.com/document/api/1552/80721#[RateLimitTemplateDetail](https://cloud.tencent.com/document/api/1552/80721#RateLimitTemplateDetail))
-* [[RateLimitUserRule](https://cloud.tencent.com/document/api/1552/80721#RateLimitUserRule)](https://cloud.tencent.com/document/api/1552/80721#[RateLimitUserRule](https://cloud.tencent.com/document/api/1552/80721#RateLimitUserRule))
-* [[Resource](https://cloud.tencent.com/document/api/1552/80721#Resource)](https://cloud.tencent.com/document/api/1552/80721#[Resource](https://cloud.tencent.com/document/api/1552/80721#Resource))
-* [[RewriteAction](https://cloud.tencent.com/document/api/1552/80721#RewriteAction)](https://cloud.tencent.com/document/api/1552/80721#[RewriteAction](https://cloud.tencent.com/document/api/1552/80721#RewriteAction))
-* [[Rule](https://cloud.tencent.com/document/api/1552/80721#Rule)](https://cloud.tencent.com/document/api/1552/80721#[Rule](https://cloud.tencent.com/document/api/1552/80721#Rule))
-* [[RuleAndConditions](https://cloud.tencent.com/document/api/1552/80721#RuleAndConditions)](https://cloud.tencent.com/document/api/1552/80721#[RuleAndConditions](https://cloud.tencent.com/document/api/1552/80721#RuleAndConditions))
-* [[RuleChoicePropertiesItem](https://cloud.tencent.com/document/api/1552/80721#RuleChoicePropertiesItem)](https://cloud.tencent.com/document/api/1552/80721#[RuleChoicePropertiesItem](https://cloud.tencent.com/document/api/1552/80721#RuleChoicePropertiesItem))
-* [[RuleCodeActionParams](https://cloud.tencent.com/document/api/1552/80721#RuleCodeActionParams)](https://cloud.tencent.com/document/api/1552/80721#[RuleCodeActionParams](https://cloud.tencent.com/document/api/1552/80721#RuleCodeActionParams))
-* [[RuleCondition](https://cloud.tencent.com/document/api/1552/80721#RuleCondition)](https://cloud.tencent.com/document/api/1552/80721#[RuleCondition](https://cloud.tencent.com/document/api/1552/80721#RuleCondition))
-* [[RuleExtraParameter](https://cloud.tencent.com/document/api/1552/80721#RuleExtraParameter)](https://cloud.tencent.com/document/api/1552/80721#[RuleExtraParameter](https://cloud.tencent.com/document/api/1552/80721#RuleExtraParameter))
-* [[RuleItem](https://cloud.tencent.com/document/api/1552/80721#RuleItem)](https://cloud.tencent.com/document/api/1552/80721#[RuleItem](https://cloud.tencent.com/document/api/1552/80721#RuleItem))
-* [[RuleNormalActionParams](https://cloud.tencent.com/document/api/1552/80721#RuleNormalActionParams)](https://cloud.tencent.com/document/api/1552/80721#[RuleNormalActionParams](https://cloud.tencent.com/document/api/1552/80721#RuleNormalActionParams))
-* [[RuleRewriteActionParams](https://cloud.tencent.com/document/api/1552/80721#RuleRewriteActionParams)](https://cloud.tencent.com/document/api/1552/80721#[RuleRewriteActionParams](https://cloud.tencent.com/document/api/1552/80721#RuleRewriteActionParams))
-* [[RulesProperties](https://cloud.tencent.com/document/api/1552/80721#RulesProperties)](https://cloud.tencent.com/document/api/1552/80721#[RulesProperties](https://cloud.tencent.com/document/api/1552/80721#RulesProperties))
-* [[RulesSettingAction](https://cloud.tencent.com/document/api/1552/80721#RulesSettingAction)](https://cloud.tencent.com/document/api/1552/80721#[RulesSettingAction](https://cloud.tencent.com/document/api/1552/80721#RulesSettingAction))
-* [[SecClientIp](https://cloud.tencent.com/document/api/1552/80721#SecClientIp)](https://cloud.tencent.com/document/api/1552/80721#[SecClientIp](https://cloud.tencent.com/document/api/1552/80721#SecClientIp))
-* [[SecEntry](https://cloud.tencent.com/document/api/1552/80721#SecEntry)](https://cloud.tencent.com/document/api/1552/80721#[SecEntry](https://cloud.tencent.com/document/api/1552/80721#SecEntry))
-* [[SecEntryValue](https://cloud.tencent.com/document/api/1552/80721#SecEntryValue)](https://cloud.tencent.com/document/api/1552/80721#[SecEntryValue](https://cloud.tencent.com/document/api/1552/80721#SecEntryValue))
-* [[SecHitRuleInfo](https://cloud.tencent.com/document/api/1552/80721#SecHitRuleInfo)](https://cloud.tencent.com/document/api/1552/80721#[SecHitRuleInfo](https://cloud.tencent.com/document/api/1552/80721#SecHitRuleInfo))
-* [[SecRuleRelatedInfo](https://cloud.tencent.com/document/api/1552/80721#SecRuleRelatedInfo)](https://cloud.tencent.com/document/api/1552/80721#[SecRuleRelatedInfo](https://cloud.tencent.com/document/api/1552/80721#SecRuleRelatedInfo))
-* [[SecurityConfig](https://cloud.tencent.com/document/api/1552/80721#SecurityConfig)](https://cloud.tencent.com/document/api/1552/80721#[SecurityConfig](https://cloud.tencent.com/document/api/1552/80721#SecurityConfig))
-* [[SecurityEntity](https://cloud.tencent.com/document/api/1552/80721#SecurityEntity)](https://cloud.tencent.com/document/api/1552/80721#[SecurityEntity](https://cloud.tencent.com/document/api/1552/80721#SecurityEntity))
-* [[SecurityType](https://cloud.tencent.com/document/api/1552/80721#SecurityType)](https://cloud.tencent.com/document/api/1552/80721#[SecurityType](https://cloud.tencent.com/document/api/1552/80721#SecurityType))
-* [[ServerCertInfo](https://cloud.tencent.com/document/api/1552/80721#ServerCertInfo)](https://cloud.tencent.com/document/api/1552/80721#[ServerCertInfo](https://cloud.tencent.com/document/api/1552/80721#ServerCertInfo))
-* [[ShieldArea](https://cloud.tencent.com/document/api/1552/80721#ShieldArea)](https://cloud.tencent.com/document/api/1552/80721#[ShieldArea](https://cloud.tencent.com/document/api/1552/80721#ShieldArea))
-* [[SingleDataRecord](https://cloud.tencent.com/document/api/1552/80721#SingleDataRecord)](https://cloud.tencent.com/document/api/1552/80721#[SingleDataRecord](https://cloud.tencent.com/document/api/1552/80721#SingleDataRecord))
-* [[SingleTypeValue](https://cloud.tencent.com/document/api/1552/80721#SingleTypeValue)](https://cloud.tencent.com/document/api/1552/80721#[SingleTypeValue](https://cloud.tencent.com/document/api/1552/80721#SingleTypeValue))
-* [[SmartRouting](https://cloud.tencent.com/document/api/1552/80721#SmartRouting)](https://cloud.tencent.com/document/api/1552/80721#[SmartRouting](https://cloud.tencent.com/document/api/1552/80721#SmartRouting))
-* [[Sort](https://cloud.tencent.com/document/api/1552/80721#Sort)](https://cloud.tencent.com/document/api/1552/80721#[Sort](https://cloud.tencent.com/document/api/1552/80721#Sort))
-* [[SpeedTestingConfig](https://cloud.tencent.com/document/api/1552/80721#SpeedTestingConfig)](https://cloud.tencent.com/document/api/1552/80721#[SpeedTestingConfig](https://cloud.tencent.com/document/api/1552/80721#SpeedTestingConfig))
-* [[SpeedTestingDetailData](https://cloud.tencent.com/document/api/1552/80721#SpeedTestingDetailData)](https://cloud.tencent.com/document/api/1552/80721#[SpeedTestingDetailData](https://cloud.tencent.com/document/api/1552/80721#SpeedTestingDetailData))
-* [[SpeedTestingInfo](https://cloud.tencent.com/document/api/1552/80721#SpeedTestingInfo)](https://cloud.tencent.com/document/api/1552/80721#[SpeedTestingInfo](https://cloud.tencent.com/document/api/1552/80721#SpeedTestingInfo))
-* [[SpeedTestingMetricData](https://cloud.tencent.com/document/api/1552/80721#SpeedTestingMetricData)](https://cloud.tencent.com/document/api/1552/80721#[SpeedTestingMetricData](https://cloud.tencent.com/document/api/1552/80721#SpeedTestingMetricData))
-* [[SpeedTestingQuota](https://cloud.tencent.com/document/api/1552/80721#SpeedTestingQuota)](https://cloud.tencent.com/document/api/1552/80721#[SpeedTestingQuota](https://cloud.tencent.com/document/api/1552/80721#SpeedTestingQuota))
-* [[SpeedTestingStatistics](https://cloud.tencent.com/document/api/1552/80721#SpeedTestingStatistics)](https://cloud.tencent.com/document/api/1552/80721#[SpeedTestingStatistics](https://cloud.tencent.com/document/api/1552/80721#SpeedTestingStatistics))
-* [[SpeedTestingStatus](https://cloud.tencent.com/document/api/1552/80721#SpeedTestingStatus)](https://cloud.tencent.com/document/api/1552/80721#[SpeedTestingStatus](https://cloud.tencent.com/document/api/1552/80721#SpeedTestingStatus))
-* [[Sv](https://cloud.tencent.com/document/api/1552/80721#Sv)](https://cloud.tencent.com/document/api/1552/80721#[Sv](https://cloud.tencent.com/document/api/1552/80721#Sv))
-* [[SwitchConfig](https://cloud.tencent.com/document/api/1552/80721#SwitchConfig)](https://cloud.tencent.com/document/api/1552/80721#[SwitchConfig](https://cloud.tencent.com/document/api/1552/80721#SwitchConfig))
-* [[Tag](https://cloud.tencent.com/document/api/1552/80721#Tag)](https://cloud.tencent.com/document/api/1552/80721#[Tag](https://cloud.tencent.com/document/api/1552/80721#Tag))
-* [[Task](https://cloud.tencent.com/document/api/1552/80721#Task)](https://cloud.tencent.com/document/api/1552/80721#[Task](https://cloud.tencent.com/document/api/1552/80721#Task))
-* [[TimingDataItem](https://cloud.tencent.com/document/api/1552/80721#TimingDataItem)](https://cloud.tencent.com/document/api/1552/80721#[TimingDataItem](https://cloud.tencent.com/document/api/1552/80721#TimingDataItem))
-* [[TimingDataRecord](https://cloud.tencent.com/document/api/1552/80721#TimingDataRecord)](https://cloud.tencent.com/document/api/1552/80721#[TimingDataRecord](https://cloud.tencent.com/document/api/1552/80721#TimingDataRecord))
-* [[TimingTypeValue](https://cloud.tencent.com/document/api/1552/80721#TimingTypeValue)](https://cloud.tencent.com/document/api/1552/80721#[TimingTypeValue](https://cloud.tencent.com/document/api/1552/80721#TimingTypeValue))
-* [[TopDataRecord](https://cloud.tencent.com/document/api/1552/80721#TopDataRecord)](https://cloud.tencent.com/document/api/1552/80721#[TopDataRecord](https://cloud.tencent.com/document/api/1552/80721#TopDataRecord))
-* [[TopDetailData](https://cloud.tencent.com/document/api/1552/80721#TopDetailData)](https://cloud.tencent.com/document/api/1552/80721#[TopDetailData](https://cloud.tencent.com/document/api/1552/80721#TopDetailData))
-* [[TopEntry](https://cloud.tencent.com/document/api/1552/80721#TopEntry)](https://cloud.tencent.com/document/api/1552/80721#[TopEntry](https://cloud.tencent.com/document/api/1552/80721#TopEntry))
-* [[TopEntryValue](https://cloud.tencent.com/document/api/1552/80721#TopEntryValue)](https://cloud.tencent.com/document/api/1552/80721#[TopEntryValue](https://cloud.tencent.com/document/api/1552/80721#TopEntryValue))
-* [[UpstreamHttp2](https://cloud.tencent.com/document/api/1552/80721#UpstreamHttp2)](https://cloud.tencent.com/document/api/1552/80721#[UpstreamHttp2](https://cloud.tencent.com/document/api/1552/80721#UpstreamHttp2))
-* [[VanityNameServers](https://cloud.tencent.com/document/api/1552/80721#VanityNameServers)](https://cloud.tencent.com/document/api/1552/80721#[VanityNameServers](https://cloud.tencent.com/document/api/1552/80721#VanityNameServers))
-* [[VanityNameServersIps](https://cloud.tencent.com/document/api/1552/80721#VanityNameServersIps)](https://cloud.tencent.com/document/api/1552/80721#[VanityNameServersIps](https://cloud.tencent.com/document/api/1552/80721#VanityNameServersIps))
-* [[Waf](https://cloud.tencent.com/document/api/1552/80721#Waf)](https://cloud.tencent.com/document/api/1552/80721#[Waf](https://cloud.tencent.com/document/api/1552/80721#Waf))
-* [[WafConfig](https://cloud.tencent.com/document/api/1552/80721#WafConfig)](https://cloud.tencent.com/document/api/1552/80721#[WafConfig](https://cloud.tencent.com/document/api/1552/80721#WafConfig))
-* [[WafGroup](https://cloud.tencent.com/document/api/1552/80721#WafGroup)](https://cloud.tencent.com/document/api/1552/80721#[WafGroup](https://cloud.tencent.com/document/api/1552/80721#WafGroup))
-* [[WafGroupDetail](https://cloud.tencent.com/document/api/1552/80721#WafGroupDetail)](https://cloud.tencent.com/document/api/1552/80721#[WafGroupDetail](https://cloud.tencent.com/document/api/1552/80721#WafGroupDetail))
-* [[WafGroupInfo](https://cloud.tencent.com/document/api/1552/80721#WafGroupInfo)](https://cloud.tencent.com/document/api/1552/80721#[WafGroupInfo](https://cloud.tencent.com/document/api/1552/80721#WafGroupInfo))
-* [[WafGroupRule](https://cloud.tencent.com/document/api/1552/80721#WafGroupRule)](https://cloud.tencent.com/document/api/1552/80721#[WafGroupRule](https://cloud.tencent.com/document/api/1552/80721#WafGroupRule))
-* [[WafRule](https://cloud.tencent.com/document/api/1552/80721#WafRule)](https://cloud.tencent.com/document/api/1552/80721#[WafRule](https://cloud.tencent.com/document/api/1552/80721#WafRule))
-* [[WebLogs](https://cloud.tencent.com/document/api/1552/80721#WebLogs)](https://cloud.tencent.com/document/api/1552/80721#[WebLogs](https://cloud.tencent.com/document/api/1552/80721#WebLogs))
-* [[WebSocket](https://cloud.tencent.com/document/api/1552/80721#WebSocket)](https://cloud.tencent.com/document/api/1552/80721#[WebSocket](https://cloud.tencent.com/document/api/1552/80721#WebSocket))
-* [[Zone](https://cloud.tencent.com/document/api/1552/80721#Zone)](https://cloud.tencent.com/document/api/1552/80721#[Zone](https://cloud.tencent.com/document/api/1552/80721#Zone))
-* [[ZoneSetting](https://cloud.tencent.com/document/api/1552/80721#ZoneSetting)](https://cloud.tencent.com/document/api/1552/80721#[ZoneSetting](https://cloud.tencent.com/document/api/1552/80721#ZoneSetting))
+* [AccelerateType](https://cloud.tencent.com/document/api/1552/80721#AccelerateType)
+* [AclCondition](https://cloud.tencent.com/document/api/1552/80721#AclCondition)
+* [AclConfig](https://cloud.tencent.com/document/api/1552/80721#AclConfig)
+* [AclUserRule](https://cloud.tencent.com/document/api/1552/80721#AclUserRule)
+* [Action](https://cloud.tencent.com/document/api/1552/80721#Action)
+* [AdvancedFilter](https://cloud.tencent.com/document/api/1552/80721#AdvancedFilter)
+* [AiRule](https://cloud.tencent.com/document/api/1552/80721#AiRule)
+* [ApplicationProxy](https://cloud.tencent.com/document/api/1552/80721#ApplicationProxy)
+* [ApplicationProxyRule](https://cloud.tencent.com/document/api/1552/80721#ApplicationProxyRule)
+* [AscriptionInfo](https://cloud.tencent.com/document/api/1552/80721#AscriptionInfo)
+* [BillingDataFilter](https://cloud.tencent.com/document/api/1552/80721#BillingDataFilter)
+* [BotConfig](https://cloud.tencent.com/document/api/1552/80721#BotConfig)
+* [BotLog](https://cloud.tencent.com/document/api/1552/80721#BotLog)
+* [BotManagedRule](https://cloud.tencent.com/document/api/1552/80721#BotManagedRule)
+* [BotManagedRuleDetail](https://cloud.tencent.com/document/api/1552/80721#BotManagedRuleDetail)
+* [BotPortraitRule](https://cloud.tencent.com/document/api/1552/80721#BotPortraitRule)
+* [CC](https://cloud.tencent.com/document/api/1552/80721#CC)
+* [CCInterceptEvent](https://cloud.tencent.com/document/api/1552/80721#CCInterceptEvent)
+* [Cache](https://cloud.tencent.com/document/api/1552/80721#Cache)
+* [CacheConfig](https://cloud.tencent.com/document/api/1552/80721#CacheConfig)
+* [CacheKey](https://cloud.tencent.com/document/api/1552/80721#CacheKey)
+* [CachePrefresh](https://cloud.tencent.com/document/api/1552/80721#CachePrefresh)
+* [ClientIpHeader](https://cloud.tencent.com/document/api/1552/80721#ClientIpHeader)
+* [ClientRule](https://cloud.tencent.com/document/api/1552/80721#ClientRule)
+* [ClsLogTopicInfo](https://cloud.tencent.com/document/api/1552/80721#ClsLogTopicInfo)
+* [CodeAction](https://cloud.tencent.com/document/api/1552/80721#CodeAction)
+* [Compression](https://cloud.tencent.com/document/api/1552/80721#Compression)
+* [DDoS](https://cloud.tencent.com/document/api/1552/80721#DDoS)
+* [DDoSAcl](https://cloud.tencent.com/document/api/1552/80721#DDoSAcl)
+* [DDoSAclRule](https://cloud.tencent.com/document/api/1552/80721#DDoSAclRule)
+* [DDoSAllowBlock](https://cloud.tencent.com/document/api/1552/80721#DDoSAllowBlock)
+* [DDoSAllowBlockRule](https://cloud.tencent.com/document/api/1552/80721#DDoSAllowBlockRule)
+* [DDoSAntiPly](https://cloud.tencent.com/document/api/1552/80721#DDoSAntiPly)
+* [DDoSAttackEvent](https://cloud.tencent.com/document/api/1552/80721#DDoSAttackEvent)
+* [DDoSAttackEventDetailData](https://cloud.tencent.com/document/api/1552/80721#DDoSAttackEventDetailData)
+* [DDoSAttackSourceEvent](https://cloud.tencent.com/document/api/1552/80721#DDoSAttackSourceEvent)
+* [DDoSBlockData](https://cloud.tencent.com/document/api/1552/80721#DDoSBlockData)
+* [DDoSFeaturesFilter](https://cloud.tencent.com/document/api/1552/80721#DDoSFeaturesFilter)
+* [DDoSGeoIp](https://cloud.tencent.com/document/api/1552/80721#DDoSGeoIp)
+* [DDoSHost](https://cloud.tencent.com/document/api/1552/80721#DDoSHost)
+* [DDoSMajorAttackEvent](https://cloud.tencent.com/document/api/1552/80721#DDoSMajorAttackEvent)
+* [DDoSPacketFilter](https://cloud.tencent.com/document/api/1552/80721#DDoSPacketFilter)
+* [DDoSRule](https://cloud.tencent.com/document/api/1552/80721#DDoSRule)
+* [DDoSSpeedLimit](https://cloud.tencent.com/document/api/1552/80721#DDoSSpeedLimit)
+* [DDoSStatusInfo](https://cloud.tencent.com/document/api/1552/80721#DDoSStatusInfo)
+* [DefaultServerCertInfo](https://cloud.tencent.com/document/api/1552/80721#DefaultServerCertInfo)
+* [DetailHost](https://cloud.tencent.com/document/api/1552/80721#DetailHost)
+* [DistrictStatistics](https://cloud.tencent.com/document/api/1552/80721#DistrictStatistics)
+* [DnsData](https://cloud.tencent.com/document/api/1552/80721#DnsData)
+* [DnsRecord](https://cloud.tencent.com/document/api/1552/80721#DnsRecord)
+* [DnssecInfo](https://cloud.tencent.com/document/api/1552/80721#DnssecInfo)
+* [DropPageConfig](https://cloud.tencent.com/document/api/1552/80721#DropPageConfig)
+* [DropPageDetail](https://cloud.tencent.com/document/api/1552/80721#DropPageDetail)
+* [ExceptConfig](https://cloud.tencent.com/document/api/1552/80721#ExceptConfig)
+* [ExceptUserRule](https://cloud.tencent.com/document/api/1552/80721#ExceptUserRule)
+* [ExceptUserRuleCondition](https://cloud.tencent.com/document/api/1552/80721#ExceptUserRuleCondition)
+* [ExceptUserRuleScope](https://cloud.tencent.com/document/api/1552/80721#ExceptUserRuleScope)
+* [FailReason](https://cloud.tencent.com/document/api/1552/80721#FailReason)
+* [Filter](https://cloud.tencent.com/document/api/1552/80721#Filter)
+* [FollowOrigin](https://cloud.tencent.com/document/api/1552/80721#FollowOrigin)
+* [ForceRedirect](https://cloud.tencent.com/document/api/1552/80721#ForceRedirect)
+* [GeoIp](https://cloud.tencent.com/document/api/1552/80721#GeoIp)
+* [Header](https://cloud.tencent.com/document/api/1552/80721#Header)
+* [HostCertInfo](https://cloud.tencent.com/document/api/1552/80721#HostCertInfo)
+* [HostsCertificate](https://cloud.tencent.com/document/api/1552/80721#HostsCertificate)
+* [Hsts](https://cloud.tencent.com/document/api/1552/80721#Hsts)
+* [Https](https://cloud.tencent.com/document/api/1552/80721#Https)
+* [Identification](https://cloud.tencent.com/document/api/1552/80721#Identification)
+* [IntelligenceRule](https://cloud.tencent.com/document/api/1552/80721#IntelligenceRule)
+* [IntelligenceRuleItem](https://cloud.tencent.com/document/api/1552/80721#IntelligenceRuleItem)
+* [IpTableConfig](https://cloud.tencent.com/document/api/1552/80721#IpTableConfig)
+* [IpTableRule](https://cloud.tencent.com/document/api/1552/80721#IpTableRule)
+* [Ipv6](https://cloud.tencent.com/document/api/1552/80721#Ipv6)
+* [L4OfflineLog](https://cloud.tencent.com/document/api/1552/80721#L4OfflineLog)
+* [L7OfflineLog](https://cloud.tencent.com/document/api/1552/80721#L7OfflineLog)
+* [LoadBalancing](https://cloud.tencent.com/document/api/1552/80721#LoadBalancing)
+* [LogSetInfo](https://cloud.tencent.com/document/api/1552/80721#LogSetInfo)
+* [LogTopicDetailInfo](https://cloud.tencent.com/document/api/1552/80721#LogTopicDetailInfo)
+* [MaxAge](https://cloud.tencent.com/document/api/1552/80721#MaxAge)
+* [NoCache](https://cloud.tencent.com/document/api/1552/80721#NoCache)
+* [NormalAction](https://cloud.tencent.com/document/api/1552/80721#NormalAction)
+* [OfflineCache](https://cloud.tencent.com/document/api/1552/80721#OfflineCache)
+* [OptimizeAction](https://cloud.tencent.com/document/api/1552/80721#OptimizeAction)
+* [Origin](https://cloud.tencent.com/document/api/1552/80721#Origin)
+* [OriginGroup](https://cloud.tencent.com/document/api/1552/80721#OriginGroup)
+* [OriginRecord](https://cloud.tencent.com/document/api/1552/80721#OriginRecord)
+* [PlanInfo](https://cloud.tencent.com/document/api/1552/80721#PlanInfo)
+* [PortraitManagedRuleDetail](https://cloud.tencent.com/document/api/1552/80721#PortraitManagedRuleDetail)
+* [PostMaxSize](https://cloud.tencent.com/document/api/1552/80721#PostMaxSize)
+* [PrivateParameter](https://cloud.tencent.com/document/api/1552/80721#PrivateParameter)
+* [QueryCondition](https://cloud.tencent.com/document/api/1552/80721#QueryCondition)
+* [QueryString](https://cloud.tencent.com/document/api/1552/80721#QueryString)
+* [Quic](https://cloud.tencent.com/document/api/1552/80721#Quic)
+* [Quota](https://cloud.tencent.com/document/api/1552/80721#Quota)
+* [RateLimitConfig](https://cloud.tencent.com/document/api/1552/80721#RateLimitConfig)
+* [RateLimitIntelligence](https://cloud.tencent.com/document/api/1552/80721#RateLimitIntelligence)
+* [RateLimitIntelligenceRuleDetail](https://cloud.tencent.com/document/api/1552/80721#RateLimitIntelligenceRuleDetail)
+* [RateLimitTemplate](https://cloud.tencent.com/document/api/1552/80721#RateLimitTemplate)
+* [RateLimitTemplateDetail](https://cloud.tencent.com/document/api/1552/80721#RateLimitTemplateDetail)
+* [RateLimitUserRule](https://cloud.tencent.com/document/api/1552/80721#RateLimitUserRule)
+* [Resource](https://cloud.tencent.com/document/api/1552/80721#Resource)
+* [RewriteAction](https://cloud.tencent.com/document/api/1552/80721#RewriteAction)
+* [Rule](https://cloud.tencent.com/document/api/1552/80721#Rule)
+* [RuleAndConditions](https://cloud.tencent.com/document/api/1552/80721#RuleAndConditions)
+* [RuleChoicePropertiesItem](https://cloud.tencent.com/document/api/1552/80721#RuleChoicePropertiesItem)
+* [RuleCodeActionParams](https://cloud.tencent.com/document/api/1552/80721#RuleCodeActionParams)
+* [RuleCondition](https://cloud.tencent.com/document/api/1552/80721#RuleCondition)
+* [RuleExtraParameter](https://cloud.tencent.com/document/api/1552/80721#RuleExtraParameter)
+* [RuleItem](https://cloud.tencent.com/document/api/1552/80721#RuleItem)
+* [RuleNormalActionParams](https://cloud.tencent.com/document/api/1552/80721#RuleNormalActionParams)
+* [RuleRewriteActionParams](https://cloud.tencent.com/document/api/1552/80721#RuleRewriteActionParams)
+* [RulesProperties](https://cloud.tencent.com/document/api/1552/80721#RulesProperties)
+* [RulesSettingAction](https://cloud.tencent.com/document/api/1552/80721#RulesSettingAction)
+* [SecClientIp](https://cloud.tencent.com/document/api/1552/80721#SecClientIp)
+* [SecEntry](https://cloud.tencent.com/document/api/1552/80721#SecEntry)
+* [SecEntryValue](https://cloud.tencent.com/document/api/1552/80721#SecEntryValue)
+* [SecHitRuleInfo](https://cloud.tencent.com/document/api/1552/80721#SecHitRuleInfo)
+* [SecRuleRelatedInfo](https://cloud.tencent.com/document/api/1552/80721#SecRuleRelatedInfo)
+* [SecurityConfig](https://cloud.tencent.com/document/api/1552/80721#SecurityConfig)
+* [SecurityEntity](https://cloud.tencent.com/document/api/1552/80721#SecurityEntity)
+* [SecurityType](https://cloud.tencent.com/document/api/1552/80721#SecurityType)
+* [ServerCertInfo](https://cloud.tencent.com/document/api/1552/80721#ServerCertInfo)
+* [ShieldArea](https://cloud.tencent.com/document/api/1552/80721#ShieldArea)
+* [SingleDataRecord](https://cloud.tencent.com/document/api/1552/80721#SingleDataRecord)
+* [SingleTypeValue](https://cloud.tencent.com/document/api/1552/80721#SingleTypeValue)
+* [SmartRouting](https://cloud.tencent.com/document/api/1552/80721#SmartRouting)
+* [Sort](https://cloud.tencent.com/document/api/1552/80721#Sort)
+* [SpeedTestingConfig](https://cloud.tencent.com/document/api/1552/80721#SpeedTestingConfig)
+* [SpeedTestingDetailData](https://cloud.tencent.com/document/api/1552/80721#SpeedTestingDetailData)
+* [SpeedTestingInfo](https://cloud.tencent.com/document/api/1552/80721#SpeedTestingInfo)
+* [SpeedTestingMetricData](https://cloud.tencent.com/document/api/1552/80721#SpeedTestingMetricData)
+* [SpeedTestingQuota](https://cloud.tencent.com/document/api/1552/80721#SpeedTestingQuota)
+* [SpeedTestingStatistics](https://cloud.tencent.com/document/api/1552/80721#SpeedTestingStatistics)
+* [SpeedTestingStatus](https://cloud.tencent.com/document/api/1552/80721#SpeedTestingStatus)
+* [Sv](https://cloud.tencent.com/document/api/1552/80721#Sv)
+* [SwitchConfig](https://cloud.tencent.com/document/api/1552/80721#SwitchConfig)
+* [Tag](https://cloud.tencent.com/document/api/1552/80721#Tag)
+* [Task](https://cloud.tencent.com/document/api/1552/80721#Task)
+* [TimingDataItem](https://cloud.tencent.com/document/api/1552/80721#TimingDataItem)
+* [TimingDataRecord](https://cloud.tencent.com/document/api/1552/80721#TimingDataRecord)
+* [TimingTypeValue](https://cloud.tencent.com/document/api/1552/80721#TimingTypeValue)
+* [TopDataRecord](https://cloud.tencent.com/document/api/1552/80721#TopDataRecord)
+* [TopDetailData](https://cloud.tencent.com/document/api/1552/80721#TopDetailData)
+* [TopEntry](https://cloud.tencent.com/document/api/1552/80721#TopEntry)
+* [TopEntryValue](https://cloud.tencent.com/document/api/1552/80721#TopEntryValue)
+* [UpstreamHttp2](https://cloud.tencent.com/document/api/1552/80721#UpstreamHttp2)
+* [VanityNameServers](https://cloud.tencent.com/document/api/1552/80721#VanityNameServers)
+* [VanityNameServersIps](https://cloud.tencent.com/document/api/1552/80721#VanityNameServersIps)
+* [Waf](https://cloud.tencent.com/document/api/1552/80721#Waf)
+* [WafConfig](https://cloud.tencent.com/document/api/1552/80721#WafConfig)
+* [WafGroup](https://cloud.tencent.com/document/api/1552/80721#WafGroup)
+* [WafGroupDetail](https://cloud.tencent.com/document/api/1552/80721#WafGroupDetail)
+* [WafGroupInfo](https://cloud.tencent.com/document/api/1552/80721#WafGroupInfo)
+* [WafGroupRule](https://cloud.tencent.com/document/api/1552/80721#WafGroupRule)
+* [WafRule](https://cloud.tencent.com/document/api/1552/80721#WafRule)
+* [WebLogs](https://cloud.tencent.com/document/api/1552/80721#WebLogs)
+* [WebSocket](https://cloud.tencent.com/document/api/1552/80721#WebSocket)
+* [Zone](https://cloud.tencent.com/document/api/1552/80721#Zone)
+* [ZoneSetting](https://cloud.tencent.com/document/api/1552/80721#ZoneSetting)
 
 
 
@@ -91728,9 +91677,9 @@
 
 新增接口：
 
-* [[CreateDataSource](https://cloud.tencent.com/document/api/1267/80762)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteDataSources](https://cloud.tencent.com/document/api/1267/80761)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyDataSource](https://cloud.tencent.com/document/api/1267/80760)](https://cloud.tencent.com/document/api/#/#)
+* [CreateDataSource](https://cloud.tencent.com/document/api/1267/80762)
+* [DeleteDataSources](https://cloud.tencent.com/document/api/1267/80761)
+* [ModifyDataSource](https://cloud.tencent.com/document/api/1267/80760)
 
 ### 第 4 次发布
 
@@ -91742,11 +91691,11 @@
 
 新增接口：
 
-* [[DescribeDatasource](https://cloud.tencent.com/document/api/1267/80759)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeDatasource](https://cloud.tencent.com/document/api/1267/80759)
 
 新增数据结构：
 
-* [[DataSourceInfo](https://cloud.tencent.com/document/api/1267/76336#DataSourceInfo)](https://cloud.tencent.com/document/api/1267/76336#[DataSourceInfo](https://cloud.tencent.com/document/api/1267/76336#DataSourceInfo))
+* [DataSourceInfo](https://cloud.tencent.com/document/api/1267/76336#DataSourceInfo)
 
 ### 第 3 次发布
 

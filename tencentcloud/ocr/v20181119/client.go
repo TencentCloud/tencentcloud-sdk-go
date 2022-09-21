@@ -2865,6 +2865,68 @@ func (c *Client) IDCardOCRWithContext(ctx context.Context, request *IDCardOCRReq
     return
 }
 
+func NewImageEnhancementRequest() (request *ImageEnhancementRequest) {
+    request = &ImageEnhancementRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ocr", APIVersion, "ImageEnhancement")
+    
+    
+    return
+}
+
+func NewImageEnhancementResponse() (response *ImageEnhancementResponse) {
+    response = &ImageEnhancementResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ImageEnhancement
+// 图像增强
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
+//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
+//  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
+//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
+//  INVALIDPARAMETER_ENGINEIMAGEDECODEFAILED = "InvalidParameter.EngineImageDecodeFailed"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
+//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
+func (c *Client) ImageEnhancement(request *ImageEnhancementRequest) (response *ImageEnhancementResponse, err error) {
+    return c.ImageEnhancementWithContext(context.Background(), request)
+}
+
+// ImageEnhancement
+// 图像增强
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
+//  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
+//  FAILEDOPERATION_OCRFAILED = "FailedOperation.OcrFailed"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnKnowError"
+//  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
+//  INVALIDPARAMETER_ENGINEIMAGEDECODEFAILED = "InvalidParameter.EngineImageDecodeFailed"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
+//  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
+func (c *Client) ImageEnhancementWithContext(ctx context.Context, request *ImageEnhancementRequest) (response *ImageEnhancementResponse, err error) {
+    if request == nil {
+        request = NewImageEnhancementRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ImageEnhancement require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewImageEnhancementResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewInstitutionOCRRequest() (request *InstitutionOCRRequest) {
     request = &InstitutionOCRRequest{
         BaseRequest: &tchttp.BaseRequest{},

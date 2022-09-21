@@ -1455,10 +1455,8 @@ type CreateProductRequestParams struct {
 	ProductVaildYears *uint64 `json:"ProductVaildYears,omitempty" name:"ProductVaildYears"`
 
 	// 设备功能码 ypsxth音频双向通话 spdxth视频单向通话 sxysp双向音视频
+	// 注意：此字段只支持创建'摄像头'和'儿童手表'，摄像头传["ypsxth","spdxth"]，儿童手表传["ypsxth","spdxth","sxysp"]，创建其它品类的产品需要传递CategoryId字段，通过云api调用此接口时，如果传了CategoryId字段，将忽略Features字段,但Features仍需传值(可传任意字符串数组)
 	Features []*string `json:"Features,omitempty" name:"Features"`
-
-	// 设备操作系统，通用设备填default
-	ChipOs *string `json:"ChipOs,omitempty" name:"ChipOs"`
 
 	// 芯片厂商id，通用设备填default
 	ChipManufactureId *string `json:"ChipManufactureId,omitempty" name:"ChipManufactureId"`
@@ -1469,8 +1467,15 @@ type CreateProductRequestParams struct {
 	// 产品描述信息
 	ProductDescription *string `json:"ProductDescription,omitempty" name:"ProductDescription"`
 
+	// 设备操作系统，通用设备填default
+	ChipOs *string `json:"ChipOs,omitempty" name:"ChipOs"`
+
 	// 认证方式 只支持取值为2 psk认证
 	EncryptionType *uint64 `json:"EncryptionType,omitempty" name:"EncryptionType"`
+
+	// 产品品类id,113:摄像头,567:儿童手表,595:可视对讲门锁
+	// 注意：通过云api调用此接口时，如果传了CategoryId字段，将忽略Features字段,但Features仍需传值(可传任意字符串数组)
+	CategoryId *uint64 `json:"CategoryId,omitempty" name:"CategoryId"`
 
 	// 连接类型，wifi表示WIFI连接，cellular表示4G连接
 	NetType *string `json:"NetType,omitempty" name:"NetType"`
@@ -1489,10 +1494,8 @@ type CreateProductRequest struct {
 	ProductVaildYears *uint64 `json:"ProductVaildYears,omitempty" name:"ProductVaildYears"`
 
 	// 设备功能码 ypsxth音频双向通话 spdxth视频单向通话 sxysp双向音视频
+	// 注意：此字段只支持创建'摄像头'和'儿童手表'，摄像头传["ypsxth","spdxth"]，儿童手表传["ypsxth","spdxth","sxysp"]，创建其它品类的产品需要传递CategoryId字段，通过云api调用此接口时，如果传了CategoryId字段，将忽略Features字段,但Features仍需传值(可传任意字符串数组)
 	Features []*string `json:"Features,omitempty" name:"Features"`
-
-	// 设备操作系统，通用设备填default
-	ChipOs *string `json:"ChipOs,omitempty" name:"ChipOs"`
 
 	// 芯片厂商id，通用设备填default
 	ChipManufactureId *string `json:"ChipManufactureId,omitempty" name:"ChipManufactureId"`
@@ -1503,8 +1506,15 @@ type CreateProductRequest struct {
 	// 产品描述信息
 	ProductDescription *string `json:"ProductDescription,omitempty" name:"ProductDescription"`
 
+	// 设备操作系统，通用设备填default
+	ChipOs *string `json:"ChipOs,omitempty" name:"ChipOs"`
+
 	// 认证方式 只支持取值为2 psk认证
 	EncryptionType *uint64 `json:"EncryptionType,omitempty" name:"EncryptionType"`
+
+	// 产品品类id,113:摄像头,567:儿童手表,595:可视对讲门锁
+	// 注意：通过云api调用此接口时，如果传了CategoryId字段，将忽略Features字段,但Features仍需传值(可传任意字符串数组)
+	CategoryId *uint64 `json:"CategoryId,omitempty" name:"CategoryId"`
 
 	// 连接类型，wifi表示WIFI连接，cellular表示4G连接
 	NetType *string `json:"NetType,omitempty" name:"NetType"`
@@ -1526,11 +1536,12 @@ func (r *CreateProductRequest) FromJsonString(s string) error {
 	delete(f, "DeviceType")
 	delete(f, "ProductVaildYears")
 	delete(f, "Features")
-	delete(f, "ChipOs")
 	delete(f, "ChipManufactureId")
 	delete(f, "ChipId")
 	delete(f, "ProductDescription")
+	delete(f, "ChipOs")
 	delete(f, "EncryptionType")
+	delete(f, "CategoryId")
 	delete(f, "NetType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateProductRequest has unknown keys!", "")
@@ -7893,6 +7904,10 @@ type VideoProduct struct {
 	// 产品品类,113:摄像头,567:儿童手表,595:可视对讲门锁
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CategoryId *uint64 `json:"CategoryId,omitempty" name:"CategoryId"`
+
+	// 产品有效年限
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProductVaildYears *uint64 `json:"ProductVaildYears,omitempty" name:"ProductVaildYears"`
 }
 
 // Predefined struct for user

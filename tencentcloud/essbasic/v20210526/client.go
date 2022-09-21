@@ -68,6 +68,10 @@ func NewChannelBatchCancelFlowsResponse() (response *ChannelBatchCancelFlowsResp
 //
 // 客户指定需要撤销的签署流程Id，最多100个，超过100不处理；接口失败后返回错误信息
 //
+// 注意:
+//
+// 能撤回合同的只能是合同的发起人或者发起企业的超管、法人
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  OPERATIONDENIED = "OperationDenied"
@@ -80,6 +84,10 @@ func (c *Client) ChannelBatchCancelFlows(request *ChannelBatchCancelFlowsRequest
 // 指定需要批量撤销的签署流程Id，批量撤销合同
 //
 // 客户指定需要撤销的签署流程Id，最多100个，超过100不处理；接口失败后返回错误信息
+//
+// 注意:
+//
+// 能撤回合同的只能是合同的发起人或者发起企业的超管、法人
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -180,7 +188,13 @@ func NewChannelCreateBatchCancelFlowUrlResponse() (response *ChannelCreateBatchC
 // ChannelCreateBatchCancelFlowUrl
 // 指定需要批量撤销的签署流程Id，获取批量撤销链接
 //
-// 客户指定需要撤销的签署流程Id，最多100个，超过100不处理；接口调用成功返回批量撤销合同的链接，通过链接跳转到电子签小程序完成批量撤销
+// 客户指定需要撤销的签署流程Id，最多100个，超过100不处理；
+//
+// 接口调用成功返回批量撤销合同的链接，通过链接跳转到电子签小程序完成批量撤销;
+//
+// 注意:
+//
+// 能撤回合同的只能是合同的发起人或者发起企业的超管、法人
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -193,7 +207,13 @@ func (c *Client) ChannelCreateBatchCancelFlowUrl(request *ChannelCreateBatchCanc
 // ChannelCreateBatchCancelFlowUrl
 // 指定需要批量撤销的签署流程Id，获取批量撤销链接
 //
-// 客户指定需要撤销的签署流程Id，最多100个，超过100不处理；接口调用成功返回批量撤销合同的链接，通过链接跳转到电子签小程序完成批量撤销
+// 客户指定需要撤销的签署流程Id，最多100个，超过100不处理；
+//
+// 接口调用成功返回批量撤销合同的链接，通过链接跳转到电子签小程序完成批量撤销;
+//
+// 注意:
+//
+// 能撤回合同的只能是合同的发起人或者发起企业的超管、法人
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -721,6 +741,58 @@ func (c *Client) ChannelGetTaskResultApiWithContext(ctx context.Context, request
     request.SetContext(ctx)
     
     response = NewChannelGetTaskResultApiResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewChannelVerifyPdfRequest() (request *ChannelVerifyPdfRequest) {
+    request = &ChannelVerifyPdfRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("essbasic", APIVersion, "ChannelVerifyPdf")
+    
+    
+    return
+}
+
+func NewChannelVerifyPdfResponse() (response *ChannelVerifyPdfResponse) {
+    response = &ChannelVerifyPdfResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ChannelVerifyPdf
+// 合同文件验签
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  OPERATIONDENIED_ERRNORESOURCEACCESS = "OperationDenied.ErrNoResourceAccess"
+func (c *Client) ChannelVerifyPdf(request *ChannelVerifyPdfRequest) (response *ChannelVerifyPdfResponse, err error) {
+    return c.ChannelVerifyPdfWithContext(context.Background(), request)
+}
+
+// ChannelVerifyPdf
+// 合同文件验签
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  OPERATIONDENIED_ERRNORESOURCEACCESS = "OperationDenied.ErrNoResourceAccess"
+func (c *Client) ChannelVerifyPdfWithContext(ctx context.Context, request *ChannelVerifyPdfRequest) (response *ChannelVerifyPdfResponse, err error) {
+    if request == nil {
+        request = NewChannelVerifyPdfRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ChannelVerifyPdf require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewChannelVerifyPdfResponse()
     err = c.Send(request, response)
     return
 }

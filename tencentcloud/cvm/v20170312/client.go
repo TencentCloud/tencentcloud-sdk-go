@@ -7669,6 +7669,7 @@ func NewSyncImagesResponse() (response *SyncImagesResponse) {
 // * 单个帐号在每个地域最多支持存在10个自定义镜像。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDIMAGESTATE = "FailedOperation.InvalidImageState"
 //  IMAGEQUOTALIMITEXCEEDED = "ImageQuotaLimitExceeded"
 //  INVALIDIMAGEID_INCORRECTSTATE = "InvalidImageId.IncorrectState"
 //  INVALIDIMAGEID_MALFORMED = "InvalidImageId.Malformed"
@@ -7682,6 +7683,7 @@ func NewSyncImagesResponse() (response *SyncImagesResponse) {
 //  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
 //  INVALIDREGION_NOTFOUND = "InvalidRegion.NotFound"
 //  INVALIDREGION_UNAVAILABLE = "InvalidRegion.Unavailable"
+//  UNSUPPORTEDOPERATION_ENCRYPTEDIMAGESNOTSUPPORTED = "UnsupportedOperation.EncryptedImagesNotSupported"
 //  UNSUPPORTEDOPERATION_REGION = "UnsupportedOperation.Region"
 func (c *Client) SyncImages(request *SyncImagesRequest) (response *SyncImagesResponse, err error) {
     return c.SyncImagesWithContext(context.Background(), request)
@@ -7699,6 +7701,7 @@ func (c *Client) SyncImages(request *SyncImagesRequest) (response *SyncImagesRes
 // * 单个帐号在每个地域最多支持存在10个自定义镜像。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDIMAGESTATE = "FailedOperation.InvalidImageState"
 //  IMAGEQUOTALIMITEXCEEDED = "ImageQuotaLimitExceeded"
 //  INVALIDIMAGEID_INCORRECTSTATE = "InvalidImageId.IncorrectState"
 //  INVALIDIMAGEID_MALFORMED = "InvalidImageId.Malformed"
@@ -7712,6 +7715,7 @@ func (c *Client) SyncImages(request *SyncImagesRequest) (response *SyncImagesRes
 //  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
 //  INVALIDREGION_NOTFOUND = "InvalidRegion.NotFound"
 //  INVALIDREGION_UNAVAILABLE = "InvalidRegion.Unavailable"
+//  UNSUPPORTEDOPERATION_ENCRYPTEDIMAGESNOTSUPPORTED = "UnsupportedOperation.EncryptedImagesNotSupported"
 //  UNSUPPORTEDOPERATION_REGION = "UnsupportedOperation.Region"
 func (c *Client) SyncImagesWithContext(ctx context.Context, request *SyncImagesRequest) (response *SyncImagesResponse, err error) {
     if request == nil {

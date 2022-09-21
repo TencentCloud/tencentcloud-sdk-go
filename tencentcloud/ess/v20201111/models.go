@@ -940,7 +940,7 @@ type CreateFlowRequestParams struct {
 	ClientToken *string `json:"ClientToken,omitempty" name:"ClientToken"`
 
 	// 暂未开放
-	CallbackUrl *string `json:"CallbackUrl,omitempty" name:"CallbackUrl"`
+	RelatedFlowId *string `json:"RelatedFlowId,omitempty" name:"RelatedFlowId"`
 
 	// 签署流程的签署截止时间。
 	// 值为unix时间戳,精确到秒,不传默认为当前时间一年后
@@ -968,7 +968,7 @@ type CreateFlowRequestParams struct {
 	NeedSignReview *bool `json:"NeedSignReview,omitempty" name:"NeedSignReview"`
 
 	// 暂未开放
-	RelatedFlowId *string `json:"RelatedFlowId,omitempty" name:"RelatedFlowId"`
+	CallbackUrl *string `json:"CallbackUrl,omitempty" name:"CallbackUrl"`
 
 	// 应用相关信息
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
@@ -993,7 +993,7 @@ type CreateFlowRequest struct {
 	ClientToken *string `json:"ClientToken,omitempty" name:"ClientToken"`
 
 	// 暂未开放
-	CallbackUrl *string `json:"CallbackUrl,omitempty" name:"CallbackUrl"`
+	RelatedFlowId *string `json:"RelatedFlowId,omitempty" name:"RelatedFlowId"`
 
 	// 签署流程的签署截止时间。
 	// 值为unix时间戳,精确到秒,不传默认为当前时间一年后
@@ -1021,7 +1021,7 @@ type CreateFlowRequest struct {
 	NeedSignReview *bool `json:"NeedSignReview,omitempty" name:"NeedSignReview"`
 
 	// 暂未开放
-	RelatedFlowId *string `json:"RelatedFlowId,omitempty" name:"RelatedFlowId"`
+	CallbackUrl *string `json:"CallbackUrl,omitempty" name:"CallbackUrl"`
 
 	// 应用相关信息
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
@@ -1044,14 +1044,14 @@ func (r *CreateFlowRequest) FromJsonString(s string) error {
 	delete(f, "Approvers")
 	delete(f, "FlowType")
 	delete(f, "ClientToken")
-	delete(f, "CallbackUrl")
+	delete(f, "RelatedFlowId")
 	delete(f, "DeadLine")
 	delete(f, "UserData")
 	delete(f, "FlowDescription")
 	delete(f, "Unordered")
 	delete(f, "CustomShowMap")
 	delete(f, "NeedSignReview")
-	delete(f, "RelatedFlowId")
+	delete(f, "CallbackUrl")
 	delete(f, "Agent")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateFlowRequest has unknown keys!", "")
@@ -2211,6 +2211,47 @@ type OrganizationInfo struct {
 	ProxyIp *string `json:"ProxyIp,omitempty" name:"ProxyIp"`
 }
 
+type PdfVerifyResult struct {
+	// 验签结果
+	VerifyResult *int64 `json:"VerifyResult,omitempty" name:"VerifyResult"`
+
+	// 签署平台
+	SignPlatform *string `json:"SignPlatform,omitempty" name:"SignPlatform"`
+
+	// 签署人名称
+	SignerName *string `json:"SignerName,omitempty" name:"SignerName"`
+
+	// 签署时间
+	SignTime *int64 `json:"SignTime,omitempty" name:"SignTime"`
+
+	// 签名算法
+	SignAlgorithm *string `json:"SignAlgorithm,omitempty" name:"SignAlgorithm"`
+
+	// 签名证书序列号
+	CertSn *string `json:"CertSn,omitempty" name:"CertSn"`
+
+	// 证书起始时间
+	CertNotBefore *int64 `json:"CertNotBefore,omitempty" name:"CertNotBefore"`
+
+	// 证书过期时间
+	CertNotAfter *int64 `json:"CertNotAfter,omitempty" name:"CertNotAfter"`
+
+	// 签名域横坐标
+	ComponentPosX *float64 `json:"ComponentPosX,omitempty" name:"ComponentPosX"`
+
+	// 签名域纵坐标
+	ComponentPosY *float64 `json:"ComponentPosY,omitempty" name:"ComponentPosY"`
+
+	// 签名域宽度
+	ComponentWidth *float64 `json:"ComponentWidth,omitempty" name:"ComponentWidth"`
+
+	// 签名域高度
+	ComponentHeight *float64 `json:"ComponentHeight,omitempty" name:"ComponentHeight"`
+
+	// 签名域所在页码
+	ComponentPage *int64 `json:"ComponentPage,omitempty" name:"ComponentPage"`
+}
+
 type Recipient struct {
 	// 签署参与者ID
 	RecipientId *string `json:"RecipientId,omitempty" name:"RecipientId"`
@@ -2541,4 +2582,72 @@ type UserInfo struct {
 
 	// 用户代理IP
 	ProxyIp *string `json:"ProxyIp,omitempty" name:"ProxyIp"`
+}
+
+// Predefined struct for user
+type VerifyPdfRequestParams struct {
+	// 合同Id，流程Id
+	FlowId *string `json:"FlowId,omitempty" name:"FlowId"`
+
+	// 调用方用户信息，userId 必填
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+}
+
+type VerifyPdfRequest struct {
+	*tchttp.BaseRequest
+	
+	// 合同Id，流程Id
+	FlowId *string `json:"FlowId,omitempty" name:"FlowId"`
+
+	// 调用方用户信息，userId 必填
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+}
+
+func (r *VerifyPdfRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *VerifyPdfRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FlowId")
+	delete(f, "Operator")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "VerifyPdfRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type VerifyPdfResponseParams struct {
+	// 验签结果，1-文件未被篡改，全部签名在腾讯电子签完成； 2-文件未被篡改，部分签名在腾讯电子签完成；3-文件被篡改；4-异常：文件内没有签名域；5-异常：文件签名格式错误
+	VerifyResult *int64 `json:"VerifyResult,omitempty" name:"VerifyResult"`
+
+	// 验签结果详情,内部状态1-验签成功，在电子签签署；2-验签成功，在其他平台签署；3-验签失败；4-pdf文件没有签名域
+	// ；5-文件签名格式错误
+	PdfVerifyResults []*PdfVerifyResult `json:"PdfVerifyResults,omitempty" name:"PdfVerifyResults"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type VerifyPdfResponse struct {
+	*tchttp.BaseResponse
+	Response *VerifyPdfResponseParams `json:"Response"`
+}
+
+func (r *VerifyPdfResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *VerifyPdfResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
