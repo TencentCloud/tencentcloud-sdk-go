@@ -3391,14 +3391,14 @@ type TagInfo struct {
 
 // Predefined struct for user
 type TerminateDBInstancesRequestParams struct {
-	// 实例Id列表
+	// 指定预隔离实例ID。格式如：cmgo-p8vnipr5。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 }
 
 type TerminateDBInstancesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例Id列表
+	// 指定预隔离实例ID。格式如：cmgo-p8vnipr5。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 }
 

@@ -1257,6 +1257,58 @@ func (c *Client) DescribeTelSessionWithContext(ctx context.Context, request *Des
     return
 }
 
+func NewDisableCCCPhoneNumberRequest() (request *DisableCCCPhoneNumberRequest) {
+    request = &DisableCCCPhoneNumberRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ccc", APIVersion, "DisableCCCPhoneNumber")
+    
+    
+    return
+}
+
+func NewDisableCCCPhoneNumberResponse() (response *DisableCCCPhoneNumberResponse) {
+    response = &DisableCCCPhoneNumberResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DisableCCCPhoneNumber
+// 停用号码
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CURSTATENOTALLOWMODIFY = "FailedOperation.CurStateNotAllowModify"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DisableCCCPhoneNumber(request *DisableCCCPhoneNumberRequest) (response *DisableCCCPhoneNumberResponse, err error) {
+    return c.DisableCCCPhoneNumberWithContext(context.Background(), request)
+}
+
+// DisableCCCPhoneNumber
+// 停用号码
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CURSTATENOTALLOWMODIFY = "FailedOperation.CurStateNotAllowModify"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DisableCCCPhoneNumberWithContext(ctx context.Context, request *DisableCCCPhoneNumberRequest) (response *DisableCCCPhoneNumberResponse, err error) {
+    if request == nil {
+        request = NewDisableCCCPhoneNumberRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DisableCCCPhoneNumber require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDisableCCCPhoneNumberResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyStaffRequest() (request *ModifyStaffRequest) {
     request = &ModifyStaffRequest{
         BaseRequest: &tchttp.BaseRequest{},

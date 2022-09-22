@@ -1906,7 +1906,7 @@ func NewTerminateDBInstancesResponse() (response *TerminateDBInstancesResponse) 
 }
 
 // TerminateDBInstances
-// 包年包月实例隔离接口
+// 本接口（TerminateDBInstances）可将包年包月实例退还隔离。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -1922,7 +1922,7 @@ func (c *Client) TerminateDBInstances(request *TerminateDBInstancesRequest) (res
 }
 
 // TerminateDBInstances
-// 包年包月实例隔离接口
+// 本接口（TerminateDBInstances）可将包年包月实例退还隔离。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"

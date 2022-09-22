@@ -1,3 +1,94 @@
+# Release v1.0.502
+
+## 云呼叫中心(ccc) 版本：2020-02-10
+
+### 第 31 次发布
+
+发布时间：2022-09-22 06:12:48
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DisableCCCPhoneNumber](https://cloud.tencent.com/document/api/679/80901)
+
+
+
+## 消息队列 Ckafka(ckafka) 版本：2019-08-19
+
+### 第 58 次发布
+
+发布时间：2022-09-22 06:16:02
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateDatahubTask](https://cloud.tencent.com/document/api/597/77736)
+
+	* 新增入参：Tags
+
+
+新增数据结构：
+
+* [JsonPathReplaceParam](https://cloud.tencent.com/document/api/597/40861#JsonPathReplaceParam)
+
+修改数据结构：
+
+* [DescribeDatahubTaskRes](https://cloud.tencent.com/document/api/597/40861#DescribeDatahubTaskRes)
+
+	* 新增成员：Tags
+
+* [ValueParam](https://cloud.tencent.com/document/api/597/40861#ValueParam)
+
+	* 新增成员：JsonPathReplace
+
+
+
+
+## 日志服务(cls) 版本：2020-10-16
+
+### 第 30 次发布
+
+发布时间：2022-09-22 06:17:52
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ExtractRuleInfo](https://cloud.tencent.com/document/api/614/56471#ExtractRuleInfo)
+
+	* 新增成员：Protocol, Address, ParseProtocol
+
+
+
+
+## 分布式消息队列(tdmq) 版本：2020-02-17
+
+### 第 37 次发布
+
+发布时间：2022-09-22 06:48:45
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeRocketMQVipInstances](https://cloud.tencent.com/document/api/1179/80903)
+
+新增数据结构：
+
+* [RocketMQVipInstance](https://cloud.tencent.com/document/api/1179/46089#RocketMQVipInstance)
+
+
+
 # Release v1.0.501
 
 ## 云数据库 MySQL(cdb) 版本：2017-03-20

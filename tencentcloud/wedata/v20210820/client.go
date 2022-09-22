@@ -553,6 +553,112 @@ func (c *Client) DeleteWorkflowNewWithContext(ctx context.Context, request *Dele
     return
 }
 
+func NewDescribeDataSourceListRequest() (request *DescribeDataSourceListRequest) {
+    request = &DescribeDataSourceListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "DescribeDataSourceList")
+    
+    
+    return
+}
+
+func NewDescribeDataSourceListResponse() (response *DescribeDataSourceListResponse) {
+    response = &DescribeDataSourceListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeDataSourceList
+// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
+//
+// 数据源详情
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  OPERATIONDENIED_USERNOTINWHITELISTERROR = "OperationDenied.UserNotInWhitelistError"
+func (c *Client) DescribeDataSourceList(request *DescribeDataSourceListRequest) (response *DescribeDataSourceListResponse, err error) {
+    return c.DescribeDataSourceListWithContext(context.Background(), request)
+}
+
+// DescribeDataSourceList
+// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
+//
+// 数据源详情
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  OPERATIONDENIED_USERNOTINWHITELISTERROR = "OperationDenied.UserNotInWhitelistError"
+func (c *Client) DescribeDataSourceListWithContext(ctx context.Context, request *DescribeDataSourceListRequest) (response *DescribeDataSourceListResponse, err error) {
+    if request == nil {
+        request = NewDescribeDataSourceListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDataSourceList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDataSourceListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDataSourceWithoutInfoRequest() (request *DescribeDataSourceWithoutInfoRequest) {
+    request = &DescribeDataSourceWithoutInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "DescribeDataSourceWithoutInfo")
+    
+    
+    return
+}
+
+func NewDescribeDataSourceWithoutInfoResponse() (response *DescribeDataSourceWithoutInfoResponse) {
+    response = &DescribeDataSourceWithoutInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeDataSourceWithoutInfo
+// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
+//
+// 数据源列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeDataSourceWithoutInfo(request *DescribeDataSourceWithoutInfoRequest) (response *DescribeDataSourceWithoutInfoResponse, err error) {
+    return c.DescribeDataSourceWithoutInfoWithContext(context.Background(), request)
+}
+
+// DescribeDataSourceWithoutInfo
+// <p style="color:red;">[注意：该Beta版本只满足广州区部分白名单客户使用]</p>
+//
+// 数据源列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeDataSourceWithoutInfoWithContext(ctx context.Context, request *DescribeDataSourceWithoutInfoRequest) (response *DescribeDataSourceWithoutInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeDataSourceWithoutInfoRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDataSourceWithoutInfo require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDataSourceWithoutInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDatasourceRequest() (request *DescribeDatasourceRequest) {
     request = &DescribeDatasourceRequest{
         BaseRequest: &tchttp.BaseRequest{},

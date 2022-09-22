@@ -1410,7 +1410,7 @@ func NewDescribeDataFetchProjectResponse() (response *DescribeDataFetchProjectRe
 }
 
 // DescribeDataFetchProject
-// 获取DescribeDataFetchProject信息
+// 获取DescribeDataFetchProject信息。已下线，请使用DescribeDataFetchUrl
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -1440,7 +1440,7 @@ func (c *Client) DescribeDataFetchProject(request *DescribeDataFetchProjectReque
 }
 
 // DescribeDataFetchProject
-// 获取DescribeDataFetchProject信息
+// 获取DescribeDataFetchProject信息。已下线，请使用DescribeDataFetchUrl
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"

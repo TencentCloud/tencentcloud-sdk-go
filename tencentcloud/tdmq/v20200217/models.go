@@ -6282,6 +6282,80 @@ func (r *DescribeRocketMQTopicsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeRocketMQVipInstancesRequestParams struct {
+	// 查询条件过滤器
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 查询数目上限，默认20
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 查询起始位置
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+}
+
+type DescribeRocketMQVipInstancesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 查询条件过滤器
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 查询数目上限，默认20
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 查询起始位置
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+}
+
+func (r *DescribeRocketMQVipInstancesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRocketMQVipInstancesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Filters")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRocketMQVipInstancesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRocketMQVipInstancesResponseParams struct {
+	// 未分页的总数目
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 实例信息列表
+	Instances []*RocketMQVipInstance `json:"Instances,omitempty" name:"Instances"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeRocketMQVipInstancesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeRocketMQVipInstancesResponseParams `json:"Response"`
+}
+
+func (r *DescribeRocketMQVipInstancesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRocketMQVipInstancesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeRolesRequestParams struct {
 	// 角色名称，模糊查询
 	RoleName *string `json:"RoleName,omitempty" name:"RoleName"`
@@ -8815,6 +8889,52 @@ type RocketMQTopic struct {
 
 	// 创建时间，以毫秒为单位
 	UpdateTime *uint64 `json:"UpdateTime,omitempty" name:"UpdateTime"`
+}
+
+type RocketMQVipInstance struct {
+	// 实例id
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 实例名称
+	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
+
+	// 实例版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceVersion *string `json:"InstanceVersion,omitempty" name:"InstanceVersion"`
+
+	// 实例状态，0表示创建中，1表示正常，2表示隔离中，3表示已销毁，4 - 异常
+	Status *uint64 `json:"Status,omitempty" name:"Status"`
+
+	// 节点数量
+	NodeCount *uint64 `json:"NodeCount,omitempty" name:"NodeCount"`
+
+	// 实例配置规格名称
+	ConfigDisplay *string `json:"ConfigDisplay,omitempty" name:"ConfigDisplay"`
+
+	// 峰值TPS
+	MaxTps *uint64 `json:"MaxTps,omitempty" name:"MaxTps"`
+
+	// 峰值带宽，Mbps为单位
+	MaxBandWidth *uint64 `json:"MaxBandWidth,omitempty" name:"MaxBandWidth"`
+
+	// 存储容量，GB为单位
+	MaxStorage *uint64 `json:"MaxStorage,omitempty" name:"MaxStorage"`
+
+	// 实例到期时间，毫秒为单位
+	ExpireTime *uint64 `json:"ExpireTime,omitempty" name:"ExpireTime"`
+
+	// 自动续费标记，0表示默认状态(用户未设置，即初始状态即手动续费)， 1表示自动续费，2表示明确不自动续费(用户设置)
+	AutoRenewFlag *uint64 `json:"AutoRenewFlag,omitempty" name:"AutoRenewFlag"`
+
+	// 0-后付费，1-预付费
+	PayMode *uint64 `json:"PayMode,omitempty" name:"PayMode"`
+
+	// 备注信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 实例配置ID
+	SpecName *string `json:"SpecName,omitempty" name:"SpecName"`
 }
 
 type Role struct {

@@ -1419,6 +1419,9 @@ type CreateDatahubTaskRequestParams struct {
 
 	// 任务ID
 	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 标签列表
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 }
 
 type CreateDatahubTaskRequest struct {
@@ -1450,6 +1453,9 @@ type CreateDatahubTaskRequest struct {
 
 	// 任务ID
 	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 标签列表
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 }
 
 func (r *CreateDatahubTaskRequest) ToJsonString() string {
@@ -1473,6 +1479,7 @@ func (r *CreateDatahubTaskRequest) FromJsonString(s string) error {
 	delete(f, "SchemaId")
 	delete(f, "TransformsParam")
 	delete(f, "TaskId")
+	delete(f, "Tags")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDatahubTaskRequest has unknown keys!", "")
 	}
@@ -4023,6 +4030,10 @@ type DescribeDatahubTaskRes struct {
 	// 异常信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrorMessage *string `json:"ErrorMessage,omitempty" name:"ErrorMessage"`
+
+	// 任务标签列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 }
 
 // Predefined struct for user
@@ -6354,6 +6365,14 @@ type JgwOperateResponse struct {
 	Data *OperateResponseData `json:"Data,omitempty" name:"Data"`
 }
 
+type JsonPathReplaceParam struct {
+	// 被替换值，Jsonpath表达式
+	OldValue *string `json:"OldValue,omitempty" name:"OldValue"`
+
+	// 替换值，Jsonpath表达式或字符串
+	NewValue *string `json:"NewValue,omitempty" name:"NewValue"`
+}
+
 type KVParam struct {
 	// 分隔符
 	Delimiter *string `json:"Delimiter,omitempty" name:"Delimiter"`
@@ -8431,6 +8450,10 @@ type ValueParam struct {
 	// 处理结果
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *string `json:"Result,omitempty" name:"Result"`
+
+	// JsonPath替换，TYPE=JSON_PATH_REPLACE时必传
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	JsonPathReplace *JsonPathReplaceParam `json:"JsonPathReplace,omitempty" name:"JsonPathReplace"`
 }
 
 type VipEntity struct {

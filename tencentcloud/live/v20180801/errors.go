@@ -509,9 +509,6 @@ const (
 	// 账号停服，请先冲正开通服务后再操作。
 	RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
 
-	// 非活跃流。
-	RESOURCENOTFOUND_STREAMNOTALIVE = "ResourceNotFound.StreamNotAlive"
-
 	// TaskId 不存在。
 	RESOURCENOTFOUND_TASKID = "ResourceNotFound.TaskId"
 

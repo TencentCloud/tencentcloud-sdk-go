@@ -1936,6 +1936,74 @@ func (r *DescribeTelSessionResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DisableCCCPhoneNumberRequestParams struct {
+	// TCCC 实例应用 ID
+	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 号码列表，0086开头
+	PhoneNumbers []*string `json:"PhoneNumbers,omitempty" name:"PhoneNumbers"`
+
+	// 停用开关，0启用 1停用
+	Disabled *int64 `json:"Disabled,omitempty" name:"Disabled"`
+}
+
+type DisableCCCPhoneNumberRequest struct {
+	*tchttp.BaseRequest
+	
+	// TCCC 实例应用 ID
+	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 号码列表，0086开头
+	PhoneNumbers []*string `json:"PhoneNumbers,omitempty" name:"PhoneNumbers"`
+
+	// 停用开关，0启用 1停用
+	Disabled *int64 `json:"Disabled,omitempty" name:"Disabled"`
+}
+
+func (r *DisableCCCPhoneNumberRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DisableCCCPhoneNumberRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SdkAppId")
+	delete(f, "PhoneNumbers")
+	delete(f, "Disabled")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DisableCCCPhoneNumberRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DisableCCCPhoneNumberResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DisableCCCPhoneNumberResponse struct {
+	*tchttp.BaseResponse
+	Response *DisableCCCPhoneNumberResponseParams `json:"Response"`
+}
+
+func (r *DisableCCCPhoneNumberResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DisableCCCPhoneNumberResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type ErrStaffItem struct {
 	// 坐席邮箱地址
 	StaffEmail *string `json:"StaffEmail,omitempty" name:"StaffEmail"`

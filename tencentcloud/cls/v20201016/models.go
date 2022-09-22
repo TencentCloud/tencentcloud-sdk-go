@@ -4080,6 +4080,23 @@ type ExtractRuleInfo struct {
 	// 是否为标准json.   0: 否, 1: 是
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	JsonStandard *int64 `json:"JsonStandard,omitempty" name:"JsonStandard"`
+
+	// syslog传输协议，取值为tcp或者udp。
+	// 该接口适用于：创建采集规则配置、修改采集规则配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
+
+	// syslog系统日志采集指定采集器监听的地址和端口 ，形式：[ip]:[port]。举例：127.0.0.1:9000
+	// 该接口适用于：创建采集规则配置、修改采集规则配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Address *string `json:"Address,omitempty" name:"Address"`
+
+	// rfc3164：指定系统日志采集使用RFC3164协议解析日志。
+	// rfc5424：指定系统日志采集使用RFC5424协议解析日志。
+	// auto：自动匹配rfc3164或者rfc5424其中一种协议
+	// 该接口适用于：创建采集规则配置、修改采集规则配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ParseProtocol *string `json:"ParseProtocol,omitempty" name:"ParseProtocol"`
 }
 
 type Filter struct {

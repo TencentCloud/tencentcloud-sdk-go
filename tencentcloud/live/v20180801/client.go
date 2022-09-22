@@ -7514,7 +7514,6 @@ func NewDropLiveStreamResponse() (response *DropLiveStreamResponse) {
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
 //  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
-//  RESOURCENOTFOUND_STREAMNOTALIVE = "ResourceNotFound.StreamNotAlive"
 //  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 //  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
 func (c *Client) DropLiveStream(request *DropLiveStreamRequest) (response *DropLiveStreamResponse, err error) {
@@ -7544,7 +7543,6 @@ func (c *Client) DropLiveStream(request *DropLiveStreamRequest) (response *DropL
 //  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
 //  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
 //  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
-//  RESOURCENOTFOUND_STREAMNOTALIVE = "ResourceNotFound.StreamNotAlive"
 //  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
 //  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
 func (c *Client) DropLiveStreamWithContext(ctx context.Context, request *DropLiveStreamRequest) (response *DropLiveStreamResponse, err error) {

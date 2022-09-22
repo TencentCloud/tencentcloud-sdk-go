@@ -845,6 +845,28 @@ type DataSourceInfo struct {
 	BizParamsString *string `json:"BizParamsString,omitempty" name:"BizParamsString"`
 }
 
+type DataSourceInfoPage struct {
+	// 分页页码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PageNumber *uint64 `json:"PageNumber,omitempty" name:"PageNumber"`
+
+	// 分页大小
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PageSize *uint64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// 数据源列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Rows []*DataSourceInfo `json:"Rows,omitempty" name:"Rows"`
+
+	// 总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 总分页页码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalPageNumber *uint64 `json:"TotalPageNumber,omitempty" name:"TotalPageNumber"`
+}
+
 // Predefined struct for user
 type DeleteDataSourcesRequestParams struct {
 	// id列表
@@ -1067,6 +1089,150 @@ type DependencyConfig struct {
 	// 子任务信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SonTask *TaskInnerInfo `json:"SonTask,omitempty" name:"SonTask"`
+}
+
+// Predefined struct for user
+type DescribeDataSourceListRequestParams struct {
+	// 页码
+	PageNumber *uint64 `json:"PageNumber,omitempty" name:"PageNumber"`
+
+	// 返回数量
+	PageSize *uint64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// 排序配置
+	OrderFields []*OrderField `json:"OrderFields,omitempty" name:"OrderFields"`
+
+	// 可选过滤条件，Filter可选配置(参考): "Name": { "type": "string", "description": "数据源名称" }, "Type": { "type": "string", "description": "类型" }, "ClusterId": { "type": "string", "description": "集群id" }, "CategoryId": { "type": "string", "description": "分类，项目或空间id" }
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+}
+
+type DescribeDataSourceListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 页码
+	PageNumber *uint64 `json:"PageNumber,omitempty" name:"PageNumber"`
+
+	// 返回数量
+	PageSize *uint64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// 排序配置
+	OrderFields []*OrderField `json:"OrderFields,omitempty" name:"OrderFields"`
+
+	// 可选过滤条件，Filter可选配置(参考): "Name": { "type": "string", "description": "数据源名称" }, "Type": { "type": "string", "description": "类型" }, "ClusterId": { "type": "string", "description": "集群id" }, "CategoryId": { "type": "string", "description": "分类，项目或空间id" }
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+}
+
+func (r *DescribeDataSourceListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDataSourceListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PageNumber")
+	delete(f, "PageSize")
+	delete(f, "OrderFields")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDataSourceListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDataSourceListResponseParams struct {
+	// 数据源列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *DataSourceInfoPage `json:"Data,omitempty" name:"Data"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeDataSourceListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDataSourceListResponseParams `json:"Response"`
+}
+
+func (r *DescribeDataSourceListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDataSourceListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDataSourceWithoutInfoRequestParams struct {
+	// 1
+	OrderFields []*OrderField `json:"OrderFields,omitempty" name:"OrderFields"`
+
+	// 1
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+}
+
+type DescribeDataSourceWithoutInfoRequest struct {
+	*tchttp.BaseRequest
+	
+	// 1
+	OrderFields []*OrderField `json:"OrderFields,omitempty" name:"OrderFields"`
+
+	// 1
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+}
+
+func (r *DescribeDataSourceWithoutInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDataSourceWithoutInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "OrderFields")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDataSourceWithoutInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDataSourceWithoutInfoResponseParams struct {
+	// 1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data []*DataSourceInfo `json:"Data,omitempty" name:"Data"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeDataSourceWithoutInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDataSourceWithoutInfoResponseParams `json:"Response"`
+}
+
+func (r *DescribeDataSourceWithoutInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDataSourceWithoutInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user
@@ -2055,6 +2221,14 @@ func (r *DescribeTasksByPageResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *DescribeTasksByPageResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type Filter struct {
+	// 过滤字段名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 过滤值列表
+	Values []*string `json:"Values,omitempty" name:"Values"`
 }
 
 type Folder struct {

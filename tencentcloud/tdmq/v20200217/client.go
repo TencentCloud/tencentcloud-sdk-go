@@ -4043,6 +4043,62 @@ func (c *Client) DescribeRocketMQTopicsWithContext(ctx context.Context, request 
     return
 }
 
+func NewDescribeRocketMQVipInstancesRequest() (request *DescribeRocketMQVipInstancesRequest) {
+    request = &DescribeRocketMQVipInstancesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tdmq", APIVersion, "DescribeRocketMQVipInstances")
+    
+    
+    return
+}
+
+func NewDescribeRocketMQVipInstancesResponse() (response *DescribeRocketMQVipInstancesResponse) {
+    response = &DescribeRocketMQVipInstancesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeRocketMQVipInstances
+// 查询用户已购的RocketMQ专享实例列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ILLEGALMESSAGE = "InternalError.IllegalMessage"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeRocketMQVipInstances(request *DescribeRocketMQVipInstancesRequest) (response *DescribeRocketMQVipInstancesResponse, err error) {
+    return c.DescribeRocketMQVipInstancesWithContext(context.Background(), request)
+}
+
+// DescribeRocketMQVipInstances
+// 查询用户已购的RocketMQ专享实例列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ILLEGALMESSAGE = "InternalError.IllegalMessage"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeRocketMQVipInstancesWithContext(ctx context.Context, request *DescribeRocketMQVipInstancesRequest) (response *DescribeRocketMQVipInstancesResponse, err error) {
+    if request == nil {
+        request = NewDescribeRocketMQVipInstancesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRocketMQVipInstances require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeRocketMQVipInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeRolesRequest() (request *DescribeRolesRequest) {
     request = &DescribeRolesRequest{
         BaseRequest: &tchttp.BaseRequest{},

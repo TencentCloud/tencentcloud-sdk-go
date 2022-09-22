@@ -1,49 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 云数据库 MySQL(cdb) 版本：2017-03-20
-
-### 第 101 次发布
-
-发布时间：2022-09-21 06:12:53
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CreateParamTemplate](https://cloud.tencent.com/document/api/236/32663)
-
-	* 新增入参：EngineType
-
-
-
-
-## 电子签服务(ess) 版本：2020-11-11
-
-### 第 18 次发布
-
-发布时间：2022-09-20 21:03:08
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [VerifyPdf](https://cloud.tencent.com/document/api/1323/80797)
-
-新增数据结构：
-
-* [PdfVerifyResult](https://cloud.tencent.com/document/api/1323/70369#PdfVerifyResult)
-
-
-
-## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
+## 云呼叫中心(ccc) 版本：2020-02-10
 
 ### 第 31 次发布
 
-发布时间：2022-09-20 21:03:25
+发布时间：2022-09-22 06:12:48
 
 本次发布包含了以下内容：
 
@@ -51,23 +12,15 @@
 
 新增接口：
 
-* [ChannelVerifyPdf](https://cloud.tencent.com/document/api/1420/80799)
-
-新增数据结构：
-
-* [PdfVerifyResult](https://cloud.tencent.com/document/api/1420/61525#PdfVerifyResult)
+* [DisableCCCPhoneNumber](https://cloud.tencent.com/document/api/679/80901)
 
 
 
-## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
+## 消息队列 Ckafka(ckafka) 版本：2019-08-19
 
+### 第 58 次发布
 
-
-## 物联网智能视频服务(iotvideo) 版本：2021-11-25
-
-### 第 7 次发布
-
-发布时间：2022-09-21 06:33:00
+发布时间：2022-09-22 06:16:02
 
 本次发布包含了以下内容：
 
@@ -75,89 +28,52 @@
 
 修改接口：
 
-* [CreateProduct](https://cloud.tencent.com/document/api/1131/77008)
+* [CreateDatahubTask](https://cloud.tencent.com/document/api/597/77736)
 
-	* 新增入参：CategoryId
+	* 新增入参：Tags
 
+
+新增数据结构：
+
+* [JsonPathReplaceParam](https://cloud.tencent.com/document/api/597/40861#JsonPathReplaceParam)
 
 修改数据结构：
 
-* [VideoProduct](https://cloud.tencent.com/document/api/1131/76635#VideoProduct)
+* [DescribeDatahubTaskRes](https://cloud.tencent.com/document/api/597/40861#DescribeDatahubTaskRes)
 
-	* 新增成员：ProductVaildYears
+	* 新增成员：Tags
 
+* [ValueParam](https://cloud.tencent.com/document/api/597/40861#ValueParam)
 
-
-
-## 物联网智能视频服务(iotvideo) 版本：2020-12-15
-
-
-
-## 物联网智能视频服务(iotvideo) 版本：2019-11-26
+	* 新增成员：JsonPathReplace
 
 
 
-## 视频智能标签(ivld) 版本：2021-09-03
 
-### 第 7 次发布
+## 日志服务(cls) 版本：2020-10-16
 
-发布时间：2022-09-20 19:36:34
+### 第 30 次发布
+
+发布时间：2022-09-22 06:17:52
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-修改接口：
-
-* [DescribeTaskDetail](https://cloud.tencent.com/document/api/1509/65055)
-
-	* 新增出参：ImageTaskData, AudioTaskData, TextTaskData
-
-* [ImportMedia](https://cloud.tencent.com/document/api/1509/65059)
-
-	* 新增入参：MediaType
-
-
-新增数据结构：
-
-* [AudioData](https://cloud.tencent.com/document/api/1509/65063#AudioData)
-* [AudioMetadata](https://cloud.tencent.com/document/api/1509/65063#AudioMetadata)
-* [ImageData](https://cloud.tencent.com/document/api/1509/65063#ImageData)
-* [ImageLogo](https://cloud.tencent.com/document/api/1509/65063#ImageLogo)
-* [ImageMetadata](https://cloud.tencent.com/document/api/1509/65063#ImageMetadata)
-* [ImageOcr](https://cloud.tencent.com/document/api/1509/65063#ImageOcr)
-* [MultiLevelPersonInfo](https://cloud.tencent.com/document/api/1509/65063#MultiLevelPersonInfo)
-* [Rectf](https://cloud.tencent.com/document/api/1509/65063#Rectf)
-* [TextData](https://cloud.tencent.com/document/api/1509/65063#TextData)
-* [TextMetadata](https://cloud.tencent.com/document/api/1509/65063#TextMetadata)
-* [UnknownPerson](https://cloud.tencent.com/document/api/1509/65063#UnknownPerson)
-
 修改数据结构：
 
-* [MediaFilter](https://cloud.tencent.com/document/api/1509/65063#MediaFilter)
+* [ExtractRuleInfo](https://cloud.tencent.com/document/api/614/56471#ExtractRuleInfo)
 
-	* 新增成员：MediaType
-
-* [MediaInfo](https://cloud.tencent.com/document/api/1509/65063#MediaInfo)
-
-	* 新增成员：MediaType, AudioMetadata, ImageMetadata, TextMetadata
-
-* [ShowInfo](https://cloud.tencent.com/document/api/1509/65063#ShowInfo)
-
-	* 新增成员：UnknownPersonSet, MultiLevelPersonInfoSet
-
-* [TaskInfo](https://cloud.tencent.com/document/api/1509/65063#TaskInfo)
-
-	* 新增成员：AudioMetadata, ImageMetadata, TextMetadata, Metadata
+	* 新增成员：Protocol, Address, ParseProtocol
 
 
 
 
-## 云数据库 MongoDB(mongodb) 版本：2019-07-25
+## 分布式消息队列(tdmq) 版本：2020-02-17
 
-### 第 24 次发布
+### 第 37 次发布
 
-发布时间：2022-09-21 06:37:03
+发布时间：2022-09-22 06:48:45
 
 本次发布包含了以下内容：
 
@@ -165,31 +81,11 @@
 
 新增接口：
 
-* [DescribeAccountUsers](https://cloud.tencent.com/document/api/240/80800)
+* [DescribeRocketMQVipInstances](https://cloud.tencent.com/document/api/1179/80903)
 
 新增数据结构：
 
-* [UserInfo](https://cloud.tencent.com/document/api/240/38576#UserInfo)
-
-
-
-## 云数据库 MongoDB(mongodb) 版本：2018-04-08
-
-
-
-## 文字识别(ocr) 版本：2018-11-19
-
-### 第 79 次发布
-
-发布时间：2022-09-21 06:39:36
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [ImageEnhancement](https://cloud.tencent.com/document/api/866/80801)
+* [RocketMQVipInstance](https://cloud.tencent.com/document/api/1179/46089#RocketMQVipInstance)
 
 
 
@@ -11094,6 +10990,18 @@
 
 ## 云呼叫中心(ccc) 版本：2020-02-10
 
+### 第 31 次发布
+
+发布时间：2022-09-22 06:12:48
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DisableCCCPhoneNumber](https://cloud.tencent.com/document/api/679/80901)](https://cloud.tencent.com/document/api/#/#)
+
 ### 第 30 次发布
 
 发布时间：2022-09-06 06:13:56
@@ -17936,6 +17844,36 @@
 
 ## 消息队列 Ckafka(ckafka) 版本：2019-08-19
 
+### 第 58 次发布
+
+发布时间：2022-09-22 06:16:02
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateDatahubTask](https://cloud.tencent.com/document/api/597/77736)
+
+	* 新增入参：Tags
+
+
+新增数据结构：
+
+* [[JsonPathReplaceParam](https://cloud.tencent.com/document/api/597/40861#JsonPathReplaceParam)](https://cloud.tencent.com/document/api/597/40861#[JsonPathReplaceParam](https://cloud.tencent.com/document/api/597/40861#JsonPathReplaceParam))
+
+修改数据结构：
+
+* [DescribeDatahubTaskRes](https://cloud.tencent.com/document/api/597/40861#DescribeDatahubTaskRes)
+
+	* 新增成员：Tags
+
+* [ValueParam](https://cloud.tencent.com/document/api/597/40861#ValueParam)
+
+	* 新增成员：JsonPathReplace
+
+
 ### 第 57 次发布
 
 发布时间：2022-09-19 06:16:48
@@ -21096,6 +21034,21 @@
 
 
 ## 日志服务(cls) 版本：2020-10-16
+
+### 第 30 次发布
+
+发布时间：2022-09-22 06:17:52
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ExtractRuleInfo](https://cloud.tencent.com/document/api/614/56471#ExtractRuleInfo)
+
+	* 新增成员：Protocol, Address, ParseProtocol
+
 
 ### 第 29 次发布
 
@@ -38584,11 +38537,11 @@
 
 新增接口：
 
-* [[VerifyPdf](https://cloud.tencent.com/document/api/1323/80797)](https://cloud.tencent.com/document/api/#/#)
+* [VerifyPdf](https://cloud.tencent.com/document/api/1323/80797)
 
 新增数据结构：
 
-* [[PdfVerifyResult](https://cloud.tencent.com/document/api/1323/70369#PdfVerifyResult)](https://cloud.tencent.com/document/api/1323/70369#[PdfVerifyResult](https://cloud.tencent.com/document/api/1323/70369#PdfVerifyResult))
+* [PdfVerifyResult](https://cloud.tencent.com/document/api/1323/70369#PdfVerifyResult)
 
 ### 第 17 次发布
 
@@ -39032,11 +38985,11 @@
 
 新增接口：
 
-* [[ChannelVerifyPdf](https://cloud.tencent.com/document/api/1420/80799)](https://cloud.tencent.com/document/api/#/#)
+* [ChannelVerifyPdf](https://cloud.tencent.com/document/api/1420/80799)
 
 新增数据结构：
 
-* [[PdfVerifyResult](https://cloud.tencent.com/document/api/1420/61525#PdfVerifyResult)](https://cloud.tencent.com/document/api/1420/61525#[PdfVerifyResult](https://cloud.tencent.com/document/api/1420/61525#PdfVerifyResult))
+* [PdfVerifyResult](https://cloud.tencent.com/document/api/1420/61525#PdfVerifyResult)
 
 ### 第 30 次发布
 
@@ -48819,17 +48772,17 @@
 
 新增数据结构：
 
-* [[AudioData](https://cloud.tencent.com/document/api/1509/65063#AudioData)](https://cloud.tencent.com/document/api/1509/65063#[AudioData](https://cloud.tencent.com/document/api/1509/65063#AudioData))
-* [[AudioMetadata](https://cloud.tencent.com/document/api/1509/65063#AudioMetadata)](https://cloud.tencent.com/document/api/1509/65063#[AudioMetadata](https://cloud.tencent.com/document/api/1509/65063#AudioMetadata))
-* [[ImageData](https://cloud.tencent.com/document/api/1509/65063#ImageData)](https://cloud.tencent.com/document/api/1509/65063#[ImageData](https://cloud.tencent.com/document/api/1509/65063#ImageData))
-* [[ImageLogo](https://cloud.tencent.com/document/api/1509/65063#ImageLogo)](https://cloud.tencent.com/document/api/1509/65063#[ImageLogo](https://cloud.tencent.com/document/api/1509/65063#ImageLogo))
-* [[ImageMetadata](https://cloud.tencent.com/document/api/1509/65063#ImageMetadata)](https://cloud.tencent.com/document/api/1509/65063#[ImageMetadata](https://cloud.tencent.com/document/api/1509/65063#ImageMetadata))
-* [[ImageOcr](https://cloud.tencent.com/document/api/1509/65063#ImageOcr)](https://cloud.tencent.com/document/api/1509/65063#[ImageOcr](https://cloud.tencent.com/document/api/1509/65063#ImageOcr))
-* [[MultiLevelPersonInfo](https://cloud.tencent.com/document/api/1509/65063#MultiLevelPersonInfo)](https://cloud.tencent.com/document/api/1509/65063#[MultiLevelPersonInfo](https://cloud.tencent.com/document/api/1509/65063#MultiLevelPersonInfo))
-* [[Rectf](https://cloud.tencent.com/document/api/1509/65063#Rectf)](https://cloud.tencent.com/document/api/1509/65063#[Rectf](https://cloud.tencent.com/document/api/1509/65063#Rectf))
-* [[TextData](https://cloud.tencent.com/document/api/1509/65063#TextData)](https://cloud.tencent.com/document/api/1509/65063#[TextData](https://cloud.tencent.com/document/api/1509/65063#TextData))
-* [[TextMetadata](https://cloud.tencent.com/document/api/1509/65063#TextMetadata)](https://cloud.tencent.com/document/api/1509/65063#[TextMetadata](https://cloud.tencent.com/document/api/1509/65063#TextMetadata))
-* [[UnknownPerson](https://cloud.tencent.com/document/api/1509/65063#UnknownPerson)](https://cloud.tencent.com/document/api/1509/65063#[UnknownPerson](https://cloud.tencent.com/document/api/1509/65063#UnknownPerson))
+* [AudioData](https://cloud.tencent.com/document/api/1509/65063#AudioData)
+* [AudioMetadata](https://cloud.tencent.com/document/api/1509/65063#AudioMetadata)
+* [ImageData](https://cloud.tencent.com/document/api/1509/65063#ImageData)
+* [ImageLogo](https://cloud.tencent.com/document/api/1509/65063#ImageLogo)
+* [ImageMetadata](https://cloud.tencent.com/document/api/1509/65063#ImageMetadata)
+* [ImageOcr](https://cloud.tencent.com/document/api/1509/65063#ImageOcr)
+* [MultiLevelPersonInfo](https://cloud.tencent.com/document/api/1509/65063#MultiLevelPersonInfo)
+* [Rectf](https://cloud.tencent.com/document/api/1509/65063#Rectf)
+* [TextData](https://cloud.tencent.com/document/api/1509/65063#TextData)
+* [TextMetadata](https://cloud.tencent.com/document/api/1509/65063#TextMetadata)
+* [UnknownPerson](https://cloud.tencent.com/document/api/1509/65063#UnknownPerson)
 
 修改数据结构：
 
@@ -53394,11 +53347,11 @@
 
 新增接口：
 
-* [[DescribeAccountUsers](https://cloud.tencent.com/document/api/240/80800)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeAccountUsers](https://cloud.tencent.com/document/api/240/80800)
 
 新增数据结构：
 
-* [[UserInfo](https://cloud.tencent.com/document/api/240/38576#UserInfo)](https://cloud.tencent.com/document/api/240/38576#[UserInfo](https://cloud.tencent.com/document/api/240/38576#UserInfo))
+* [UserInfo](https://cloud.tencent.com/document/api/240/38576#UserInfo)
 
 ### 第 23 次发布
 
@@ -58059,7 +58012,7 @@
 
 新增接口：
 
-* [[ImageEnhancement](https://cloud.tencent.com/document/api/866/80801)](https://cloud.tencent.com/document/api/#/#)
+* [ImageEnhancement](https://cloud.tencent.com/document/api/866/80801)
 
 ### 第 78 次发布
 
@@ -72986,6 +72939,22 @@
 
 
 ## 分布式消息队列(tdmq) 版本：2020-02-17
+
+### 第 37 次发布
+
+发布时间：2022-09-22 06:48:45
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeRocketMQVipInstances](https://cloud.tencent.com/document/api/1179/80903)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[RocketMQVipInstance](https://cloud.tencent.com/document/api/1179/46089#RocketMQVipInstance)](https://cloud.tencent.com/document/api/1179/46089#[RocketMQVipInstance](https://cloud.tencent.com/document/api/1179/46089#RocketMQVipInstance))
 
 ### 第 36 次发布
 
@@ -91666,6 +91635,24 @@
 
 
 ## 数据开发治理平台 WeData(wedata) 版本：2021-08-20
+
+### 第 6 次发布
+
+发布时间：2022-09-21 17:26:55
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeDataSourceList](https://cloud.tencent.com/document/api/1267/80897)
+* [DescribeDataSourceWithoutInfo](https://cloud.tencent.com/document/api/1267/80896)
+
+新增数据结构：
+
+* [DataSourceInfoPage](https://cloud.tencent.com/document/api/1267/76336#DataSourceInfoPage)
+* [Filter](https://cloud.tencent.com/document/api/1267/76336#Filter)
 
 ### 第 5 次发布
 

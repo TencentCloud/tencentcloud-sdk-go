@@ -3846,7 +3846,7 @@ func (r *DescribeLoadBalancersDetailResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeLoadBalancersRequestParams struct {
-	// 负载均衡实例ID。
+	// 负载均衡实例ID。实例ID数量上限为20个。
 	LoadBalancerIds []*string `json:"LoadBalancerIds,omitempty" name:"LoadBalancerIds"`
 
 	// 负载均衡实例的网络类型：
@@ -3918,7 +3918,7 @@ type DescribeLoadBalancersRequestParams struct {
 type DescribeLoadBalancersRequest struct {
 	*tchttp.BaseRequest
 	
-	// 负载均衡实例ID。
+	// 负载均衡实例ID。实例ID数量上限为20个。
 	LoadBalancerIds []*string `json:"LoadBalancerIds,omitempty" name:"LoadBalancerIds"`
 
 	// 负载均衡实例的网络类型：

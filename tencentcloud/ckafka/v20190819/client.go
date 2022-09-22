@@ -670,7 +670,7 @@ func NewCreateDatahubTaskResponse() (response *CreateDatahubTaskResponse) {
 }
 
 // CreateDatahubTask
-// 创建Datahub转储任务
+// 创建DIP转储任务
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -687,7 +687,7 @@ func (c *Client) CreateDatahubTask(request *CreateDatahubTaskRequest) (response 
 }
 
 // CreateDatahubTask
-// 创建Datahub转储任务
+// 创建DIP转储任务
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
