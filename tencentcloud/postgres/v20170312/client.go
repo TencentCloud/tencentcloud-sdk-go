@@ -566,6 +566,7 @@ func NewCreateDBInstancesResponse() (response *CreateDBInstancesResponse) {
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
 //  INTERNALERROR_DFWERROR = "InternalError.DfwError"
 //  INTERNALERROR_FLOWERROR = "InternalError.FlowError"
+//  INTERNALERROR_INTERNALHTTPSERVERERROR = "InternalError.InternalHttpServerError"
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INTERNALERROR_VPCERROR = "InternalError.VpcError"
@@ -643,6 +644,7 @@ func (c *Client) CreateDBInstances(request *CreateDBInstancesRequest) (response 
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
 //  INTERNALERROR_DFWERROR = "InternalError.DfwError"
 //  INTERNALERROR_FLOWERROR = "InternalError.FlowError"
+//  INTERNALERROR_INTERNALHTTPSERVERERROR = "InternalError.InternalHttpServerError"
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INTERNALERROR_VPCERROR = "InternalError.VpcError"
@@ -750,6 +752,7 @@ func NewCreateInstancesResponse() (response *CreateInstancesResponse) {
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
 //  INTERNALERROR_DFWERROR = "InternalError.DfwError"
 //  INTERNALERROR_FLOWERROR = "InternalError.FlowError"
+//  INTERNALERROR_INTERNALHTTPSERVERERROR = "InternalError.InternalHttpServerError"
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INTERNALERROR_VPCERROR = "InternalError.VpcError"
@@ -831,6 +834,7 @@ func (c *Client) CreateInstances(request *CreateInstancesRequest) (response *Cre
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
 //  INTERNALERROR_DFWERROR = "InternalError.DfwError"
 //  INTERNALERROR_FLOWERROR = "InternalError.FlowError"
+//  INTERNALERROR_INTERNALHTTPSERVERERROR = "InternalError.InternalHttpServerError"
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INTERNALERROR_VPCERROR = "InternalError.VpcError"
@@ -3862,7 +3866,7 @@ func NewInquiryPriceUpgradeDBInstanceResponse() (response *InquiryPriceUpgradeDB
 }
 
 // InquiryPriceUpgradeDBInstance
-// 本接口（InquiryPriceUpgradeDBInstance）用于查询升级实例的价格。
+// 本接口（InquiryPriceUpgradeDBInstance）用于查询升级实例的价格。只支持按量计费实例。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
@@ -3895,7 +3899,7 @@ func (c *Client) InquiryPriceUpgradeDBInstance(request *InquiryPriceUpgradeDBIns
 }
 
 // InquiryPriceUpgradeDBInstance
-// 本接口（InquiryPriceUpgradeDBInstance）用于查询升级实例的价格。
+// 本接口（InquiryPriceUpgradeDBInstance）用于查询升级实例的价格。只支持按量计费实例。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"

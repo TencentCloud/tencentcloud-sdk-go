@@ -1,3 +1,182 @@
+# Release v1.0.503
+
+## 商业流程服务(bpaas) 版本：2018-12-17
+
+### 第 1 次发布
+
+发布时间：2022-09-22 11:16:45
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [GetBpaasApproveDetail](https://cloud.tencent.com/document/api/1083/80916)
+* [OutApproveBpaasApplication](https://cloud.tencent.com/document/api/1083/80915)
+
+新增数据结构：
+
+* [ApplyParam](https://cloud.tencent.com/document/api/1083/80917#ApplyParam)
+* [ApproveOpinion](https://cloud.tencent.com/document/api/1083/80917#ApproveOpinion)
+* [ApproveUser](https://cloud.tencent.com/document/api/1083/80917#ApproveUser)
+* [StatusNode](https://cloud.tencent.com/document/api/1083/80917#StatusNode)
+
+
+
+## 消息队列 Ckafka(ckafka) 版本：2019-08-19
+
+### 第 59 次发布
+
+发布时间：2022-09-23 06:16:36
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateConnectResource](https://cloud.tencent.com/document/api/597/77737)
+
+	* 新增入参：DorisConnectParam
+
+
+新增数据结构：
+
+* [DorisConnectParam](https://cloud.tencent.com/document/api/597/40861#DorisConnectParam)
+
+修改数据结构：
+
+* [DescribeConnectResource](https://cloud.tencent.com/document/api/597/40861#DescribeConnectResource)
+
+	* 新增成员：DorisConnectParam
+
+* [DescribeConnectResourceResp](https://cloud.tencent.com/document/api/597/40861#DescribeConnectResourceResp)
+
+	* 新增成员：DorisConnectParam
+
+
+
+
+## 低代码互动课堂(lcic) 版本：2022-08-17
+
+### 第 2 次发布
+
+发布时间：2022-09-22 10:11:52
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateRoom](https://cloud.tencent.com/document/api/1639/80942)
+* [CreateSupervisor](https://cloud.tencent.com/document/api/1639/80944)
+* [DescribeRoom](https://cloud.tencent.com/document/api/1639/80941)
+* [DescribeUser](https://cloud.tencent.com/document/api/1639/80936)
+* [LoginOriginId](https://cloud.tencent.com/document/api/1639/80939)
+* [RegisterUser](https://cloud.tencent.com/document/api/1639/80935)
+
+### 第 1 次发布
+
+发布时间：2022-09-22 10:03:08
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [LoginUser](https://cloud.tencent.com/document/api/1639/80938)
+
+
+
+## 云直播(live) 版本：2018-08-01
+
+### 第 89 次发布
+
+发布时间：2022-09-23 06:36:42
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ModifyLiveSnapshotTemplate](https://cloud.tencent.com/document/api/267/32618)
+
+	* <font color="#dd0000">**修改入参**：</font>CosAppId, CosBucket, CosRegion
+
+
+
+
+## 企业组织(organization) 版本：2021-03-31
+
+### 第 11 次发布
+
+发布时间：2022-09-23 06:41:45
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeOrganization](https://cloud.tencent.com/document/api/850/67059)
+
+	* 新增出参：IsAuthManager
+
+
+
+
+## 企业组织(organization) 版本：2018-12-25
+
+
+
+## 云数据库 PostgreSQL(postgres) 版本：2017-03-12
+
+### 第 29 次发布
+
+发布时间：2022-09-23 06:42:05
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CloneDBInstance](https://cloud.tencent.com/document/api/409/68071)
+
+	* 新增出参：DBInstanceId
+
+* [CreateInstances](https://cloud.tencent.com/document/api/409/56107)
+
+	* 新增入参：DBEngine, DBEngineConfig
+
+* [CreateReadOnlyDBInstance](https://cloud.tencent.com/document/api/409/52602)
+
+	* <font color="#dd0000">**修改入参**：</font>DBVersion
+
+* [DescribeProductConfig](https://cloud.tencent.com/document/api/409/16776)
+
+	* 新增入参：DBEngine
+
+* [InquiryPriceCreateDBInstances](https://cloud.tencent.com/document/api/409/16777)
+
+	* 新增入参：InstanceType, DBEngine
+
+	* <font color="#dd0000">**修改入参**：</font>Pid
+
+
+修改数据结构：
+
+* [DBInstance](https://cloud.tencent.com/document/api/409/16778#DBInstance)
+
+	* 新增成员：DBEngine, DBEngineConfig
+
+
+
+
 # Release v1.0.502
 
 ## 云呼叫中心(ccc) 版本：2020-02-10

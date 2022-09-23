@@ -1,10 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 云呼叫中心(ccc) 版本：2020-02-10
+## 商业流程服务(bpaas) 版本：2018-12-17
 
-### 第 31 次发布
+### 第 1 次发布
 
-发布时间：2022-09-22 06:12:48
+发布时间：2022-09-22 11:16:45
 
 本次发布包含了以下内容：
 
@@ -12,15 +12,23 @@
 
 新增接口：
 
-* [DisableCCCPhoneNumber](https://cloud.tencent.com/document/api/679/80901)
+* [GetBpaasApproveDetail](https://cloud.tencent.com/document/api/1083/80916)
+* [OutApproveBpaasApplication](https://cloud.tencent.com/document/api/1083/80915)
+
+新增数据结构：
+
+* [ApplyParam](https://cloud.tencent.com/document/api/1083/80917#ApplyParam)
+* [ApproveOpinion](https://cloud.tencent.com/document/api/1083/80917#ApproveOpinion)
+* [ApproveUser](https://cloud.tencent.com/document/api/1083/80917#ApproveUser)
+* [StatusNode](https://cloud.tencent.com/document/api/1083/80917#StatusNode)
 
 
 
 ## 消息队列 Ckafka(ckafka) 版本：2019-08-19
 
-### 第 58 次发布
+### 第 59 次发布
 
-发布时间：2022-09-22 06:16:02
+发布时间：2022-09-23 06:16:36
 
 本次发布包含了以下内容：
 
@@ -28,52 +36,33 @@
 
 修改接口：
 
-* [CreateDatahubTask](https://cloud.tencent.com/document/api/597/77736)
+* [CreateConnectResource](https://cloud.tencent.com/document/api/597/77737)
 
-	* 新增入参：Tags
+	* 新增入参：DorisConnectParam
 
 
 新增数据结构：
 
-* [JsonPathReplaceParam](https://cloud.tencent.com/document/api/597/40861#JsonPathReplaceParam)
+* [DorisConnectParam](https://cloud.tencent.com/document/api/597/40861#DorisConnectParam)
 
 修改数据结构：
 
-* [DescribeDatahubTaskRes](https://cloud.tencent.com/document/api/597/40861#DescribeDatahubTaskRes)
+* [DescribeConnectResource](https://cloud.tencent.com/document/api/597/40861#DescribeConnectResource)
 
-	* 新增成员：Tags
+	* 新增成员：DorisConnectParam
 
-* [ValueParam](https://cloud.tencent.com/document/api/597/40861#ValueParam)
+* [DescribeConnectResourceResp](https://cloud.tencent.com/document/api/597/40861#DescribeConnectResourceResp)
 
-	* 新增成员：JsonPathReplace
-
-
-
-
-## 日志服务(cls) 版本：2020-10-16
-
-### 第 30 次发布
-
-发布时间：2022-09-22 06:17:52
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [ExtractRuleInfo](https://cloud.tencent.com/document/api/614/56471#ExtractRuleInfo)
-
-	* 新增成员：Protocol, Address, ParseProtocol
+	* 新增成员：DorisConnectParam
 
 
 
 
-## 分布式消息队列(tdmq) 版本：2020-02-17
+## 低代码互动课堂(lcic) 版本：2022-08-17
 
-### 第 37 次发布
+### 第 2 次发布
 
-发布时间：2022-09-22 06:48:45
+发布时间：2022-09-22 10:11:52
 
 本次发布包含了以下内容：
 
@@ -81,11 +70,110 @@
 
 新增接口：
 
-* [DescribeRocketMQVipInstances](https://cloud.tencent.com/document/api/1179/80903)
+* [CreateRoom](https://cloud.tencent.com/document/api/1639/80942)
+* [CreateSupervisor](https://cloud.tencent.com/document/api/1639/80944)
+* [DescribeRoom](https://cloud.tencent.com/document/api/1639/80941)
+* [DescribeUser](https://cloud.tencent.com/document/api/1639/80936)
+* [LoginOriginId](https://cloud.tencent.com/document/api/1639/80939)
+* [RegisterUser](https://cloud.tencent.com/document/api/1639/80935)
 
-新增数据结构：
+### 第 1 次发布
 
-* [RocketMQVipInstance](https://cloud.tencent.com/document/api/1179/46089#RocketMQVipInstance)
+发布时间：2022-09-22 10:03:08
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [LoginUser](https://cloud.tencent.com/document/api/1639/80938)
+
+
+
+## 云直播(live) 版本：2018-08-01
+
+### 第 89 次发布
+
+发布时间：2022-09-23 06:36:42
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ModifyLiveSnapshotTemplate](https://cloud.tencent.com/document/api/267/32618)
+
+	* <font color="#dd0000">**修改入参**：</font>CosAppId, CosBucket, CosRegion
+
+
+
+
+## 企业组织(organization) 版本：2021-03-31
+
+### 第 11 次发布
+
+发布时间：2022-09-23 06:41:45
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeOrganization](https://cloud.tencent.com/document/api/850/67059)
+
+	* 新增出参：IsAuthManager
+
+
+
+
+## 企业组织(organization) 版本：2018-12-25
+
+
+
+## 云数据库 PostgreSQL(postgres) 版本：2017-03-12
+
+### 第 29 次发布
+
+发布时间：2022-09-23 06:42:05
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CloneDBInstance](https://cloud.tencent.com/document/api/409/68071)
+
+	* 新增出参：DBInstanceId
+
+* [CreateInstances](https://cloud.tencent.com/document/api/409/56107)
+
+	* 新增入参：DBEngine, DBEngineConfig
+
+* [CreateReadOnlyDBInstance](https://cloud.tencent.com/document/api/409/52602)
+
+	* <font color="#dd0000">**修改入参**：</font>DBVersion
+
+* [DescribeProductConfig](https://cloud.tencent.com/document/api/409/16776)
+
+	* 新增入参：DBEngine
+
+* [InquiryPriceCreateDBInstances](https://cloud.tencent.com/document/api/409/16777)
+
+	* 新增入参：InstanceType, DBEngine
+
+	* <font color="#dd0000">**修改入参**：</font>Pid
+
+
+修改数据结构：
+
+* [DBInstance](https://cloud.tencent.com/document/api/409/16778#DBInstance)
+
+	* 新增成员：DBEngine, DBEngineConfig
+
 
 
 
@@ -8494,6 +8582,31 @@
 
 
 
+## 商业流程服务(bpaas) 版本：2018-12-17
+
+### 第 1 次发布
+
+发布时间：2022-09-22 11:16:45
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[GetBpaasApproveDetail](https://cloud.tencent.com/document/api/1083/80916)](https://cloud.tencent.com/document/api/#/#)
+* [[OutApproveBpaasApplication](https://cloud.tencent.com/document/api/1083/80915)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[ApplyParam](https://cloud.tencent.com/document/api/1083/80917#ApplyParam)](https://cloud.tencent.com/document/api/1083/80917#[ApplyParam](https://cloud.tencent.com/document/api/1083/80917#ApplyParam))
+* [[ApproveOpinion](https://cloud.tencent.com/document/api/1083/80917#ApproveOpinion)](https://cloud.tencent.com/document/api/1083/80917#[ApproveOpinion](https://cloud.tencent.com/document/api/1083/80917#ApproveOpinion))
+* [[ApproveUser](https://cloud.tencent.com/document/api/1083/80917#ApproveUser)](https://cloud.tencent.com/document/api/1083/80917#[ApproveUser](https://cloud.tencent.com/document/api/1083/80917#ApproveUser))
+* [[StatusNode](https://cloud.tencent.com/document/api/1083/80917#StatusNode)](https://cloud.tencent.com/document/api/1083/80917#[StatusNode](https://cloud.tencent.com/document/api/1083/80917#StatusNode))
+
+
+
+
 ## 业务风险情报(bri) 版本：2019-03-28
 
 ### 第 3 次发布
@@ -11000,7 +11113,7 @@
 
 新增接口：
 
-* [[DisableCCCPhoneNumber](https://cloud.tencent.com/document/api/679/80901)](https://cloud.tencent.com/document/api/#/#)
+* [DisableCCCPhoneNumber](https://cloud.tencent.com/document/api/679/80901)
 
 ### 第 30 次发布
 
@@ -17844,6 +17957,36 @@
 
 ## 消息队列 Ckafka(ckafka) 版本：2019-08-19
 
+### 第 59 次发布
+
+发布时间：2022-09-23 06:16:36
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateConnectResource](https://cloud.tencent.com/document/api/597/77737)
+
+	* 新增入参：DorisConnectParam
+
+
+新增数据结构：
+
+* [[DorisConnectParam](https://cloud.tencent.com/document/api/597/40861#DorisConnectParam)](https://cloud.tencent.com/document/api/597/40861#[DorisConnectParam](https://cloud.tencent.com/document/api/597/40861#DorisConnectParam))
+
+修改数据结构：
+
+* [DescribeConnectResource](https://cloud.tencent.com/document/api/597/40861#DescribeConnectResource)
+
+	* 新增成员：DorisConnectParam
+
+* [DescribeConnectResourceResp](https://cloud.tencent.com/document/api/597/40861#DescribeConnectResourceResp)
+
+	* 新增成员：DorisConnectParam
+
+
 ### 第 58 次发布
 
 发布时间：2022-09-22 06:16:02
@@ -17861,7 +18004,7 @@
 
 新增数据结构：
 
-* [[JsonPathReplaceParam](https://cloud.tencent.com/document/api/597/40861#JsonPathReplaceParam)](https://cloud.tencent.com/document/api/597/40861#[JsonPathReplaceParam](https://cloud.tencent.com/document/api/597/40861#JsonPathReplaceParam))
+* [JsonPathReplaceParam](https://cloud.tencent.com/document/api/597/40861#JsonPathReplaceParam)
 
 修改数据结构：
 
@@ -49359,6 +49502,40 @@
 
 
 
+## 低代码互动课堂(lcic) 版本：2022-08-17
+
+### 第 2 次发布
+
+发布时间：2022-09-22 10:11:52
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateRoom](https://cloud.tencent.com/document/api/1639/80942)](https://cloud.tencent.com/document/api/#/#)
+* [[CreateSupervisor](https://cloud.tencent.com/document/api/1639/80944)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeRoom](https://cloud.tencent.com/document/api/1639/80941)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeUser](https://cloud.tencent.com/document/api/1639/80936)](https://cloud.tencent.com/document/api/#/#)
+* [[LoginOriginId](https://cloud.tencent.com/document/api/1639/80939)](https://cloud.tencent.com/document/api/#/#)
+* [[RegisterUser](https://cloud.tencent.com/document/api/1639/80935)](https://cloud.tencent.com/document/api/#/#)
+
+### 第 1 次发布
+
+发布时间：2022-09-22 10:03:08
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[LoginUser](https://cloud.tencent.com/document/api/1639/80938)](https://cloud.tencent.com/document/api/#/#)
+
+
+
+
 ## 轻量应用服务器(lighthouse) 版本：2020-03-24
 
 ### 第 34 次发布
@@ -50036,6 +50213,21 @@
 
 
 ## 云直播(live) 版本：2018-08-01
+
+### 第 89 次发布
+
+发布时间：2022-09-23 06:36:42
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ModifyLiveSnapshotTemplate](https://cloud.tencent.com/document/api/267/32618)
+
+	* <font color="#dd0000">**修改入参**：</font>CosAppId, CosBucket, CosRegion
+
 
 ### 第 88 次发布
 
@@ -59564,6 +59756,21 @@
 
 ## 企业组织(organization) 版本：2021-03-31
 
+### 第 11 次发布
+
+发布时间：2022-09-23 06:41:45
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeOrganization](https://cloud.tencent.com/document/api/850/67059)
+
+	* 新增出参：IsAuthManager
+
+
 ### 第 10 次发布
 
 发布时间：2022-07-21 06:14:50
@@ -60214,6 +60421,46 @@
 
 
 ## 云数据库 PostgreSQL(postgres) 版本：2017-03-12
+
+### 第 29 次发布
+
+发布时间：2022-09-23 06:42:05
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CloneDBInstance](https://cloud.tencent.com/document/api/409/68071)
+
+	* 新增出参：DBInstanceId
+
+* [CreateInstances](https://cloud.tencent.com/document/api/409/56107)
+
+	* 新增入参：DBEngine, DBEngineConfig
+
+* [CreateReadOnlyDBInstance](https://cloud.tencent.com/document/api/409/52602)
+
+	* <font color="#dd0000">**修改入参**：</font>DBVersion
+
+* [DescribeProductConfig](https://cloud.tencent.com/document/api/409/16776)
+
+	* 新增入参：DBEngine
+
+* [InquiryPriceCreateDBInstances](https://cloud.tencent.com/document/api/409/16777)
+
+	* 新增入参：InstanceType, DBEngine
+
+	* <font color="#dd0000">**修改入参**：</font>Pid
+
+
+修改数据结构：
+
+* [DBInstance](https://cloud.tencent.com/document/api/409/16778#DBInstance)
+
+	* 新增成员：DBEngine, DBEngineConfig
+
 
 ### 第 28 次发布
 
@@ -72950,11 +73197,11 @@
 
 新增接口：
 
-* [[DescribeRocketMQVipInstances](https://cloud.tencent.com/document/api/1179/80903)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeRocketMQVipInstances](https://cloud.tencent.com/document/api/1179/80903)
 
 新增数据结构：
 
-* [[RocketMQVipInstance](https://cloud.tencent.com/document/api/1179/46089#RocketMQVipInstance)](https://cloud.tencent.com/document/api/1179/46089#[RocketMQVipInstance](https://cloud.tencent.com/document/api/1179/46089#RocketMQVipInstance))
+* [RocketMQVipInstance](https://cloud.tencent.com/document/api/1179/46089#RocketMQVipInstance)
 
 ### 第 36 次发布
 

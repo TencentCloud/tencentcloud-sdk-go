@@ -32,6 +32,7 @@ require (
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/bmeip v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/bmlb v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/bmvpc v0.0.0
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/bpaas v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/bri v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/bsca v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/btoe v0.0.0
@@ -63,7 +64,7 @@ require (
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cme v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cmq v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cms v0.0.0
-	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common v1.0.502
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common v1.0.503
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cpdp v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cr v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cvm v0.0.0
@@ -121,6 +122,7 @@ require (
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/irp v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ivld v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/kms v0.0.0
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/lcic v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/lighthouse v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/live v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/lowcode v0.0.0
@@ -253,6 +255,7 @@ replace (
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/bmeip => ../tencentcloud/bmeip
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/bmlb => ../tencentcloud/bmlb
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/bmvpc => ../tencentcloud/bmvpc
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/bpaas => ../tencentcloud/bpaas
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/bri => ../tencentcloud/bri
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/bsca => ../tencentcloud/bsca
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/btoe => ../tencentcloud/btoe
@@ -342,6 +345,7 @@ replace (
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/irp => ../tencentcloud/irp
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ivld => ../tencentcloud/ivld
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/kms => ../tencentcloud/kms
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/lcic => ../tencentcloud/lcic
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/lighthouse => ../tencentcloud/lighthouse
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/live => ../tencentcloud/live
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/lowcode => ../tencentcloud/lowcode

@@ -2018,7 +2018,7 @@ type FlowCreateApprover struct {
 	// 签署意愿确认渠道,WEIXINAPP:人脸识别
 	VerifyChannel []*string `json:"VerifyChannel,omitempty" name:"VerifyChannel"`
 
-	// 是否发送短信，sms--短信通知，none--不通知，默认为sms
+	// 是否发送短信，sms--短信通知，none--不通知，默认为sms；发起方=签署方时不发送短信
 	NotifyType *string `json:"NotifyType,omitempty" name:"NotifyType"`
 
 	// 签署前置条件：是否需要阅读全文，默认为不需要

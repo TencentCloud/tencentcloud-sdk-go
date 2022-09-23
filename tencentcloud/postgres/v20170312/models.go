@@ -320,6 +320,10 @@ type CloneDBInstanceResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BillId *string `json:"BillId,omitempty" name:"BillId"`
 
+	// 克隆出的新实例ID，当前只支持后付费返回该值。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DBInstanceId *string `json:"DBInstanceId,omitempty" name:"DBInstanceId"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }
@@ -829,6 +833,24 @@ type CreateInstancesRequestParams struct {
 
 	// 使用KMS服务的地域，KMSRegion为空默认使用本地域的KMS，本地域不支持的情况下需自选其他KMS支持的地域。
 	KMSRegion *string `json:"KMSRegion,omitempty" name:"KMSRegion"`
+
+	// 数据库引擎，支持：
+	// 1、postgresql（云数据库PostgreSQL）；
+	// 2、mssql_compatible（MSSQL兼容-云数据库PostgreSQL）；
+	// 如不指定默认使用postgresql。
+	DBEngine *string `json:"DBEngine,omitempty" name:"DBEngine"`
+
+	// 数据库引擎的配置信息，配置格式如下：
+	// {"$key1":"$value1", "$key2":"$value2"}
+	// 
+	// 各引擎支持如下：
+	// 1、mssql_compatible引擎：
+	// migrationMode：数据库模式，可选参数，可取值：single-db（单数据库模式），multi-db（多数据库模式）。默认为single-db。
+	// defaultLocale：排序区域规则，可选参数，在初始化后不可修改，默认为en_US，可选值如下：
+	// "af_ZA", "sq_AL", "ar_DZ", "ar_BH", "ar_EG", "ar_IQ", "ar_JO", "ar_KW", "ar_LB", "ar_LY", "ar_MA", "ar_OM", "ar_QA", "ar_SA", "ar_SY", "ar_TN", "ar_AE", "ar_YE", "hy_AM", "az_Cyrl_AZ", "az_Latn_AZ", "eu_ES", "be_BY", "bg_BG", "ca_ES", "zh_HK", "zh_MO", "zh_CN", "zh_SG", "zh_TW", "hr_HR", "cs_CZ", "da_DK", "nl_BE", "nl_NL", "en_AU", "en_BZ", "en_CA", "en_IE", "en_JM", "en_NZ", "en_PH", "en_ZA", "en_TT", "en_GB", "en_US", "en_ZW", "et_EE", "fo_FO", "fa_IR", "fi_FI", "fr_BE", "fr_CA", "fr_FR", "fr_LU", "fr_MC", "fr_CH", "mk_MK", "ka_GE", "de_AT", "de_DE", "de_LI", "de_LU", "de_CH", "el_GR", "gu_IN", "he_IL", "hi_IN", "hu_HU", "is_IS", "id_ID", "it_IT", "it_CH", "ja_JP", "kn_IN", "kok_IN", "ko_KR", "ky_KG", "lv_LV", "lt_LT", "ms_BN", "ms_MY", "mr_IN", "mn_MN", "nb_NO", "nn_NO", "pl_PL", "pt_BR", "pt_PT", "pa_IN", "ro_RO", "ru_RU", "sa_IN", "sr_Cyrl_RS", "sr_Latn_RS", "sk_SK", "sl_SI", "es_AR", "es_BO", "es_CL", "es_CO", "es_CR", "es_DO", "es_EC", "es_SV", "es_GT", "es_HN", "es_MX", "es_NI", "es_PA", "es_PY","es_PE", "es_PR", "es_ES", "es_TRADITIONAL", "es_UY", "es_VE", "sw_KE", "sv_FI", "sv_SE", "tt_RU", "te_IN", "th_TH", "tr_TR", "uk_UA", "ur_IN", "ur_PK", "uz_Cyrl_UZ", "uz_Latn_UZ", "vi_VN"。
+	// serverCollationName：排序规则名称，可选参数，在初始化后不可修改，默认为sql_latin1_general_cp1_ci_as，可选值如下：
+	// "bbf_unicode_general_ci_as", "bbf_unicode_cp1_ci_as", "bbf_unicode_CP1250_ci_as", "bbf_unicode_CP1251_ci_as", "bbf_unicode_cp1253_ci_as", "bbf_unicode_cp1254_ci_as", "bbf_unicode_cp1255_ci_as", "bbf_unicode_cp1256_ci_as", "bbf_unicode_cp1257_ci_as", "bbf_unicode_cp1258_ci_as", "bbf_unicode_cp874_ci_as", "sql_latin1_general_cp1250_ci_as", "sql_latin1_general_cp1251_ci_as", "sql_latin1_general_cp1_ci_as", "sql_latin1_general_cp1253_ci_as", "sql_latin1_general_cp1254_ci_as", "sql_latin1_general_cp1255_ci_as","sql_latin1_general_cp1256_ci_as", "sql_latin1_general_cp1257_ci_as", "sql_latin1_general_cp1258_ci_as", "chinese_prc_ci_as", "cyrillic_general_ci_as", "finnish_swedish_ci_as", "french_ci_as", "japanese_ci_as", "korean_wansung_ci_as", "latin1_general_ci_as", "modern_spanish_ci_as", "polish_ci_as", "thai_ci_as", "traditional_spanish_ci_as", "turkish_ci_as", "ukrainian_ci_as", "vietnamese_ci_as"。
+	DBEngineConfig *string `json:"DBEngineConfig,omitempty" name:"DBEngineConfig"`
 }
 
 type CreateInstancesRequest struct {
@@ -914,6 +936,24 @@ type CreateInstancesRequest struct {
 
 	// 使用KMS服务的地域，KMSRegion为空默认使用本地域的KMS，本地域不支持的情况下需自选其他KMS支持的地域。
 	KMSRegion *string `json:"KMSRegion,omitempty" name:"KMSRegion"`
+
+	// 数据库引擎，支持：
+	// 1、postgresql（云数据库PostgreSQL）；
+	// 2、mssql_compatible（MSSQL兼容-云数据库PostgreSQL）；
+	// 如不指定默认使用postgresql。
+	DBEngine *string `json:"DBEngine,omitempty" name:"DBEngine"`
+
+	// 数据库引擎的配置信息，配置格式如下：
+	// {"$key1":"$value1", "$key2":"$value2"}
+	// 
+	// 各引擎支持如下：
+	// 1、mssql_compatible引擎：
+	// migrationMode：数据库模式，可选参数，可取值：single-db（单数据库模式），multi-db（多数据库模式）。默认为single-db。
+	// defaultLocale：排序区域规则，可选参数，在初始化后不可修改，默认为en_US，可选值如下：
+	// "af_ZA", "sq_AL", "ar_DZ", "ar_BH", "ar_EG", "ar_IQ", "ar_JO", "ar_KW", "ar_LB", "ar_LY", "ar_MA", "ar_OM", "ar_QA", "ar_SA", "ar_SY", "ar_TN", "ar_AE", "ar_YE", "hy_AM", "az_Cyrl_AZ", "az_Latn_AZ", "eu_ES", "be_BY", "bg_BG", "ca_ES", "zh_HK", "zh_MO", "zh_CN", "zh_SG", "zh_TW", "hr_HR", "cs_CZ", "da_DK", "nl_BE", "nl_NL", "en_AU", "en_BZ", "en_CA", "en_IE", "en_JM", "en_NZ", "en_PH", "en_ZA", "en_TT", "en_GB", "en_US", "en_ZW", "et_EE", "fo_FO", "fa_IR", "fi_FI", "fr_BE", "fr_CA", "fr_FR", "fr_LU", "fr_MC", "fr_CH", "mk_MK", "ka_GE", "de_AT", "de_DE", "de_LI", "de_LU", "de_CH", "el_GR", "gu_IN", "he_IL", "hi_IN", "hu_HU", "is_IS", "id_ID", "it_IT", "it_CH", "ja_JP", "kn_IN", "kok_IN", "ko_KR", "ky_KG", "lv_LV", "lt_LT", "ms_BN", "ms_MY", "mr_IN", "mn_MN", "nb_NO", "nn_NO", "pl_PL", "pt_BR", "pt_PT", "pa_IN", "ro_RO", "ru_RU", "sa_IN", "sr_Cyrl_RS", "sr_Latn_RS", "sk_SK", "sl_SI", "es_AR", "es_BO", "es_CL", "es_CO", "es_CR", "es_DO", "es_EC", "es_SV", "es_GT", "es_HN", "es_MX", "es_NI", "es_PA", "es_PY","es_PE", "es_PR", "es_ES", "es_TRADITIONAL", "es_UY", "es_VE", "sw_KE", "sv_FI", "sv_SE", "tt_RU", "te_IN", "th_TH", "tr_TR", "uk_UA", "ur_IN", "ur_PK", "uz_Cyrl_UZ", "uz_Latn_UZ", "vi_VN"。
+	// serverCollationName：排序规则名称，可选参数，在初始化后不可修改，默认为sql_latin1_general_cp1_ci_as，可选值如下：
+	// "bbf_unicode_general_ci_as", "bbf_unicode_cp1_ci_as", "bbf_unicode_CP1250_ci_as", "bbf_unicode_CP1251_ci_as", "bbf_unicode_cp1253_ci_as", "bbf_unicode_cp1254_ci_as", "bbf_unicode_cp1255_ci_as", "bbf_unicode_cp1256_ci_as", "bbf_unicode_cp1257_ci_as", "bbf_unicode_cp1258_ci_as", "bbf_unicode_cp874_ci_as", "sql_latin1_general_cp1250_ci_as", "sql_latin1_general_cp1251_ci_as", "sql_latin1_general_cp1_ci_as", "sql_latin1_general_cp1253_ci_as", "sql_latin1_general_cp1254_ci_as", "sql_latin1_general_cp1255_ci_as","sql_latin1_general_cp1256_ci_as", "sql_latin1_general_cp1257_ci_as", "sql_latin1_general_cp1258_ci_as", "chinese_prc_ci_as", "cyrillic_general_ci_as", "finnish_swedish_ci_as", "french_ci_as", "japanese_ci_as", "korean_wansung_ci_as", "latin1_general_ci_as", "modern_spanish_ci_as", "polish_ci_as", "thai_ci_as", "traditional_spanish_ci_as", "turkish_ci_as", "ukrainian_ci_as", "vietnamese_ci_as"。
+	DBEngineConfig *string `json:"DBEngineConfig,omitempty" name:"DBEngineConfig"`
 }
 
 func (r *CreateInstancesRequest) ToJsonString() string {
@@ -955,6 +995,8 @@ func (r *CreateInstancesRequest) FromJsonString(s string) error {
 	delete(f, "NeedSupportTDE")
 	delete(f, "KMSKeyId")
 	delete(f, "KMSRegion")
+	delete(f, "DBEngine")
+	delete(f, "DBEngineConfig")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateInstancesRequest has unknown keys!", "")
 	}
@@ -997,9 +1039,6 @@ type CreateReadOnlyDBInstanceRequestParams struct {
 	// 售卖规格ID。该参数可以通过调用DescribeProductConfig的返回值中的SpecCode字段来获取。
 	SpecCode *string `json:"SpecCode,omitempty" name:"SpecCode"`
 
-	// PostgreSQL内核版本，目前强制和主实例保持一致
-	DBVersion *string `json:"DBVersion,omitempty" name:"DBVersion"`
-
 	// 实例容量大小，单位：GB。
 	Storage *uint64 `json:"Storage,omitempty" name:"Storage"`
 
@@ -1018,7 +1057,10 @@ type CreateReadOnlyDBInstanceRequestParams struct {
 	// 项目ID。
 	ProjectId *uint64 `json:"ProjectId,omitempty" name:"ProjectId"`
 
-	// 实例计费类型。目前支持：PREPAID（预付费，即包年包月），POSTPAID_BY_HOUR（后付费，即按量计费）。
+	// 【废弃】不再需要指定，内核版本号与主实例保持一致
+	DBVersion *string `json:"DBVersion,omitempty" name:"DBVersion"`
+
+	// 实例计费类型。目前支持：PREPAID（预付费，即包年包月），POSTPAID_BY_HOUR（后付费，即按量计费）。如果主实例为后付费，只读实例必须也为后付费。
 	InstanceChargeType *string `json:"InstanceChargeType,omitempty" name:"InstanceChargeType"`
 
 	// 是否自动使用代金券。1（是），0（否），默认不使用。
@@ -1061,9 +1103,6 @@ type CreateReadOnlyDBInstanceRequest struct {
 	// 售卖规格ID。该参数可以通过调用DescribeProductConfig的返回值中的SpecCode字段来获取。
 	SpecCode *string `json:"SpecCode,omitempty" name:"SpecCode"`
 
-	// PostgreSQL内核版本，目前强制和主实例保持一致
-	DBVersion *string `json:"DBVersion,omitempty" name:"DBVersion"`
-
 	// 实例容量大小，单位：GB。
 	Storage *uint64 `json:"Storage,omitempty" name:"Storage"`
 
@@ -1082,7 +1121,10 @@ type CreateReadOnlyDBInstanceRequest struct {
 	// 项目ID。
 	ProjectId *uint64 `json:"ProjectId,omitempty" name:"ProjectId"`
 
-	// 实例计费类型。目前支持：PREPAID（预付费，即包年包月），POSTPAID_BY_HOUR（后付费，即按量计费）。
+	// 【废弃】不再需要指定，内核版本号与主实例保持一致
+	DBVersion *string `json:"DBVersion,omitempty" name:"DBVersion"`
+
+	// 实例计费类型。目前支持：PREPAID（预付费，即包年包月），POSTPAID_BY_HOUR（后付费，即按量计费）。如果主实例为后付费，只读实例必须也为后付费。
 	InstanceChargeType *string `json:"InstanceChargeType,omitempty" name:"InstanceChargeType"`
 
 	// 是否自动使用代金券。1（是），0（否），默认不使用。
@@ -1132,13 +1174,13 @@ func (r *CreateReadOnlyDBInstanceRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "SpecCode")
-	delete(f, "DBVersion")
 	delete(f, "Storage")
 	delete(f, "InstanceCount")
 	delete(f, "Period")
 	delete(f, "MasterDBInstanceId")
 	delete(f, "Zone")
 	delete(f, "ProjectId")
+	delete(f, "DBVersion")
 	delete(f, "InstanceChargeType")
 	delete(f, "AutoVoucher")
 	delete(f, "VoucherIds")
@@ -1671,6 +1713,16 @@ type DBInstance struct {
 	// 实例是否支持TDE数据加密  0：不支持，1：支持
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsSupportTDE *int64 `json:"IsSupportTDE,omitempty" name:"IsSupportTDE"`
+
+	// 数据库引擎，支持：
+	// 1、postgresql（云数据库PostgreSQL）；
+	// 2、mssql_compatible（MSSQL兼容-云数据库PostgreSQL）；
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DBEngine *string `json:"DBEngine,omitempty" name:"DBEngine"`
+
+	// 数据库引擎的配置信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DBEngineConfig *string `json:"DBEngineConfig,omitempty" name:"DBEngineConfig"`
 }
 
 type DBInstanceNetInfo struct {
@@ -3119,6 +3171,12 @@ func (r *DescribeParamsEventResponse) FromJsonString(s string) error {
 type DescribeProductConfigRequestParams struct {
 	// 可用区名称
 	Zone *string `json:"Zone,omitempty" name:"Zone"`
+
+	// 数据库引擎，支持：
+	// 1、postgresql（云数据库PostgreSQL）；
+	// 2、mssql_compatible（MSSQL兼容-云数据库PostgreSQL）；
+	// 如不指定默认使用postgresql。
+	DBEngine *string `json:"DBEngine,omitempty" name:"DBEngine"`
 }
 
 type DescribeProductConfigRequest struct {
@@ -3126,6 +3184,12 @@ type DescribeProductConfigRequest struct {
 	
 	// 可用区名称
 	Zone *string `json:"Zone,omitempty" name:"Zone"`
+
+	// 数据库引擎，支持：
+	// 1、postgresql（云数据库PostgreSQL）；
+	// 2、mssql_compatible（MSSQL兼容-云数据库PostgreSQL）；
+	// 如不指定默认使用postgresql。
+	DBEngine *string `json:"DBEngine,omitempty" name:"DBEngine"`
 }
 
 func (r *DescribeProductConfigRequest) ToJsonString() string {
@@ -3141,6 +3205,7 @@ func (r *DescribeProductConfigRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "Zone")
+	delete(f, "DBEngine")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeProductConfigRequest has unknown keys!", "")
 	}
@@ -4023,11 +4088,21 @@ type InquiryPriceCreateDBInstancesRequestParams struct {
 	// 购买时长，单位：月。目前只支持1,2,3,4,5,6,7,8,9,10,11,12,24,36这些值。
 	Period *uint64 `json:"Period,omitempty" name:"Period"`
 
-	// 计费ID。该参数可以通过调用DescribeProductConfig接口的返回值中的Pid字段来获取。
+	// 【弃字段，不再生效】，计费ID。该参数可以通过调用DescribeProductConfig接口的返回值中的Pid字段来获取。
 	Pid *uint64 `json:"Pid,omitempty" name:"Pid"`
 
 	// 实例计费类型。目前只支持：PREPAID（预付费，即包年包月）。
 	InstanceChargeType *string `json:"InstanceChargeType,omitempty" name:"InstanceChargeType"`
+
+	// 实例类型，默认primary，支持如下：
+	// primary（双机高可用（一主一从））
+	// readonly（只读实例）
+	InstanceType *string `json:"InstanceType,omitempty" name:"InstanceType"`
+
+	// DB引擎，默认postgresql，支持如下：
+	// postgresql（云数据库PostgreSQL）
+	// mssql_compatible（MSSQL兼容-云数据库PostgreSQL）
+	DBEngine *string `json:"DBEngine,omitempty" name:"DBEngine"`
 }
 
 type InquiryPriceCreateDBInstancesRequest struct {
@@ -4048,11 +4123,21 @@ type InquiryPriceCreateDBInstancesRequest struct {
 	// 购买时长，单位：月。目前只支持1,2,3,4,5,6,7,8,9,10,11,12,24,36这些值。
 	Period *uint64 `json:"Period,omitempty" name:"Period"`
 
-	// 计费ID。该参数可以通过调用DescribeProductConfig接口的返回值中的Pid字段来获取。
+	// 【弃字段，不再生效】，计费ID。该参数可以通过调用DescribeProductConfig接口的返回值中的Pid字段来获取。
 	Pid *uint64 `json:"Pid,omitempty" name:"Pid"`
 
 	// 实例计费类型。目前只支持：PREPAID（预付费，即包年包月）。
 	InstanceChargeType *string `json:"InstanceChargeType,omitempty" name:"InstanceChargeType"`
+
+	// 实例类型，默认primary，支持如下：
+	// primary（双机高可用（一主一从））
+	// readonly（只读实例）
+	InstanceType *string `json:"InstanceType,omitempty" name:"InstanceType"`
+
+	// DB引擎，默认postgresql，支持如下：
+	// postgresql（云数据库PostgreSQL）
+	// mssql_compatible（MSSQL兼容-云数据库PostgreSQL）
+	DBEngine *string `json:"DBEngine,omitempty" name:"DBEngine"`
 }
 
 func (r *InquiryPriceCreateDBInstancesRequest) ToJsonString() string {
@@ -4074,6 +4159,8 @@ func (r *InquiryPriceCreateDBInstancesRequest) FromJsonString(s string) error {
 	delete(f, "Period")
 	delete(f, "Pid")
 	delete(f, "InstanceChargeType")
+	delete(f, "InstanceType")
+	delete(f, "DBEngine")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "InquiryPriceCreateDBInstancesRequest has unknown keys!", "")
 	}
@@ -4082,10 +4169,10 @@ func (r *InquiryPriceCreateDBInstancesRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type InquiryPriceCreateDBInstancesResponseParams struct {
-	// 原始价格，单位：分
+	// 刊例价，单位：分
 	OriginalPrice *uint64 `json:"OriginalPrice,omitempty" name:"OriginalPrice"`
 
-	// 折后价格，单位：分
+	// 折后实际付款金额，单位：分
 	Price *uint64 `json:"Price,omitempty" name:"Price"`
 
 	// 币种。例如，CNY：人民币。
@@ -4192,7 +4279,7 @@ type InquiryPriceUpgradeDBInstanceRequestParams struct {
 	// 实例ID，形如postgres-hez4fh0v
 	DBInstanceId *string `json:"DBInstanceId,omitempty" name:"DBInstanceId"`
 
-	// 实例计费类型，预付费或者后付费。PREPAID-预付费。目前只支持预付费。
+	// 【废弃参数，不再生效】，实例计费类型。
 	InstanceChargeType *string `json:"InstanceChargeType,omitempty" name:"InstanceChargeType"`
 }
 
@@ -4208,7 +4295,7 @@ type InquiryPriceUpgradeDBInstanceRequest struct {
 	// 实例ID，形如postgres-hez4fh0v
 	DBInstanceId *string `json:"DBInstanceId,omitempty" name:"DBInstanceId"`
 
-	// 实例计费类型，预付费或者后付费。PREPAID-预付费。目前只支持预付费。
+	// 【废弃参数，不再生效】，实例计费类型。
 	InstanceChargeType *string `json:"InstanceChargeType,omitempty" name:"InstanceChargeType"`
 }
 
@@ -6038,7 +6125,7 @@ type SpecItemInfo struct {
 	// 该规格的预估QPS
 	Qps *uint64 `json:"Qps,omitempty" name:"Qps"`
 
-	// 该规格对应的计费ID
+	// 【该字段废弃】
 	Pid *uint64 `json:"Pid,omitempty" name:"Pid"`
 
 	// 机器类型

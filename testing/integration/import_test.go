@@ -49,6 +49,7 @@ import (
 	bmeipv20180625 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/bmeip/v20180625"
 	bmlbv20180625 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/bmlb/v20180625"
 	bmvpcv20180625 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/bmvpc/v20180625"
+	bpaasv20181217 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/bpaas/v20181217"
 	briv20190328 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/bri/v20190328"
 	bscav20210811 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/bsca/v20210811"
 	btoev20210303 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/btoe/v20210303"
@@ -149,6 +150,7 @@ import (
 	irpv20220805 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/irp/v20220805"
 	ivldv20210903 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ivld/v20210903"
 	kmsv20190118 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/kms/v20190118"
+	lcicv20220817 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/lcic/v20220817"
 	lighthousev20200324 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/lighthouse/v20200324"
 	livev20180801 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/live/v20180801"
 	lowcodev20210108 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/lowcode/v20210108"
@@ -639,6 +641,19 @@ func TestBmvpcv20180625Import(t *testing.T) {
         profile.NewClientProfile())
     if err != nil || client == nil {
         t.Errorf("fail to init bmvpc_v20180625 client: %v", err)
+    }
+}
+
+func TestBpaasv20181217Import(t *testing.T) {
+    credential := common.NewCredential(
+        os.Getenv("TENCENTCLOUD_SECRET_ID"),
+        os.Getenv("TENCENTCLOUD_SECRET_KEY"))
+    client, err := bpaasv20181217.NewClient(
+        credential,
+        regions.Guangzhou,
+        profile.NewClientProfile())
+    if err != nil || client == nil {
+        t.Errorf("fail to init bpaas_v20181217 client: %v", err)
     }
 }
 
@@ -1939,6 +1954,19 @@ func TestKmsv20190118Import(t *testing.T) {
         profile.NewClientProfile())
     if err != nil || client == nil {
         t.Errorf("fail to init kms_v20190118 client: %v", err)
+    }
+}
+
+func TestLcicv20220817Import(t *testing.T) {
+    credential := common.NewCredential(
+        os.Getenv("TENCENTCLOUD_SECRET_ID"),
+        os.Getenv("TENCENTCLOUD_SECRET_KEY"))
+    client, err := lcicv20220817.NewClient(
+        credential,
+        regions.Guangzhou,
+        profile.NewClientProfile())
+    if err != nil || client == nil {
+        t.Errorf("fail to init lcic_v20220817 client: %v", err)
     }
 }
 

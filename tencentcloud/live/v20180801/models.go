@@ -10572,6 +10572,19 @@ type ModifyLiveSnapshotTemplateRequestParams struct {
 	// 模板 ID。
 	TemplateId *int64 `json:"TemplateId,omitempty" name:"TemplateId"`
 
+	// Cos 应用 ID。
+	// **注：此参数现在须必选。**
+	CosAppId *int64 `json:"CosAppId,omitempty" name:"CosAppId"`
+
+	// Cos Bucket名称。
+	// 注：CosBucket参数值不能包含-[appid] 部分。
+	// **注：此参数现在须必选。**
+	CosBucket *string `json:"CosBucket,omitempty" name:"CosBucket"`
+
+	// Cos 地域。
+	// **注：此参数现在须必选。**
+	CosRegion *string `json:"CosRegion,omitempty" name:"CosRegion"`
+
 	// 模板名称。
 	// 长度上限：255字节。
 	TemplateName *string `json:"TemplateName,omitempty" name:"TemplateName"`
@@ -10594,16 +10607,6 @@ type ModifyLiveSnapshotTemplateRequestParams struct {
 	// 0：不开启。
 	// 1：开启。
 	PornFlag *int64 `json:"PornFlag,omitempty" name:"PornFlag"`
-
-	// Cos 应用 ID。
-	CosAppId *int64 `json:"CosAppId,omitempty" name:"CosAppId"`
-
-	// Cos Bucket名称。
-	// 注：CosBucket参数值不能包含-[appid] 部分。
-	CosBucket *string `json:"CosBucket,omitempty" name:"CosBucket"`
-
-	// Cos 地域。
-	CosRegion *string `json:"CosRegion,omitempty" name:"CosRegion"`
 
 	// Cos Bucket文件夹前缀。
 	CosPrefix *string `json:"CosPrefix,omitempty" name:"CosPrefix"`
@@ -10618,6 +10621,19 @@ type ModifyLiveSnapshotTemplateRequest struct {
 	// 模板 ID。
 	TemplateId *int64 `json:"TemplateId,omitempty" name:"TemplateId"`
 
+	// Cos 应用 ID。
+	// **注：此参数现在须必选。**
+	CosAppId *int64 `json:"CosAppId,omitempty" name:"CosAppId"`
+
+	// Cos Bucket名称。
+	// 注：CosBucket参数值不能包含-[appid] 部分。
+	// **注：此参数现在须必选。**
+	CosBucket *string `json:"CosBucket,omitempty" name:"CosBucket"`
+
+	// Cos 地域。
+	// **注：此参数现在须必选。**
+	CosRegion *string `json:"CosRegion,omitempty" name:"CosRegion"`
+
 	// 模板名称。
 	// 长度上限：255字节。
 	TemplateName *string `json:"TemplateName,omitempty" name:"TemplateName"`
@@ -10640,16 +10656,6 @@ type ModifyLiveSnapshotTemplateRequest struct {
 	// 0：不开启。
 	// 1：开启。
 	PornFlag *int64 `json:"PornFlag,omitempty" name:"PornFlag"`
-
-	// Cos 应用 ID。
-	CosAppId *int64 `json:"CosAppId,omitempty" name:"CosAppId"`
-
-	// Cos Bucket名称。
-	// 注：CosBucket参数值不能包含-[appid] 部分。
-	CosBucket *string `json:"CosBucket,omitempty" name:"CosBucket"`
-
-	// Cos 地域。
-	CosRegion *string `json:"CosRegion,omitempty" name:"CosRegion"`
 
 	// Cos Bucket文件夹前缀。
 	CosPrefix *string `json:"CosPrefix,omitempty" name:"CosPrefix"`
@@ -10671,15 +10677,15 @@ func (r *ModifyLiveSnapshotTemplateRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "TemplateId")
+	delete(f, "CosAppId")
+	delete(f, "CosBucket")
+	delete(f, "CosRegion")
 	delete(f, "TemplateName")
 	delete(f, "Description")
 	delete(f, "SnapshotInterval")
 	delete(f, "Width")
 	delete(f, "Height")
 	delete(f, "PornFlag")
-	delete(f, "CosAppId")
-	delete(f, "CosBucket")
-	delete(f, "CosRegion")
 	delete(f, "CosPrefix")
 	delete(f, "CosFileName")
 	if len(f) > 0 {

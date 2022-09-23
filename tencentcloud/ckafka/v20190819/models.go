@@ -1220,6 +1220,9 @@ type CreateConnectResourceRequestParams struct {
 
 	// SQLServer配置，Type为SQLSERVER时必填
 	SQLServerConnectParam *SQLServerConnectParam `json:"SQLServerConnectParam,omitempty" name:"SQLServerConnectParam"`
+
+	// Doris 配置，Type为 DORIS 时必填
+	DorisConnectParam *DorisConnectParam `json:"DorisConnectParam,omitempty" name:"DorisConnectParam"`
 }
 
 type CreateConnectResourceRequest struct {
@@ -1257,6 +1260,9 @@ type CreateConnectResourceRequest struct {
 
 	// SQLServer配置，Type为SQLSERVER时必填
 	SQLServerConnectParam *SQLServerConnectParam `json:"SQLServerConnectParam,omitempty" name:"SQLServerConnectParam"`
+
+	// Doris 配置，Type为 DORIS 时必填
+	DorisConnectParam *DorisConnectParam `json:"DorisConnectParam,omitempty" name:"DorisConnectParam"`
 }
 
 func (r *CreateConnectResourceRequest) ToJsonString() string {
@@ -1282,6 +1288,7 @@ func (r *CreateConnectResourceRequest) FromJsonString(s string) error {
 	delete(f, "PostgreSQLConnectParam")
 	delete(f, "MariaDBConnectParam")
 	delete(f, "SQLServerConnectParam")
+	delete(f, "DorisConnectParam")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateConnectResourceRequest has unknown keys!", "")
 	}
@@ -3555,6 +3562,10 @@ type DescribeConnectResource struct {
 	// Ctsdb配置，Type为CTSDB时返回
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CtsdbConnectParam *CtsdbConnectParam `json:"CtsdbConnectParam,omitempty" name:"CtsdbConnectParam"`
+
+	// Doris 配置，Type 为 DORIS 时返回
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DorisConnectParam *DorisConnectParam `json:"DorisConnectParam,omitempty" name:"DorisConnectParam"`
 }
 
 // Predefined struct for user
@@ -3661,6 +3672,10 @@ type DescribeConnectResourceResp struct {
 	// Ctsdb配置，Type为CTSDB时返回
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CtsdbConnectParam *CtsdbConnectParam `json:"CtsdbConnectParam,omitempty" name:"CtsdbConnectParam"`
+
+	// Doris 配置，Type 为 DORIS 时返回
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DorisConnectParam *DorisConnectParam `json:"DorisConnectParam,omitempty" name:"DorisConnectParam"`
 }
 
 // Predefined struct for user
@@ -5291,6 +5306,44 @@ func (r *DescribeUserResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *DescribeUserResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type DorisConnectParam struct {
+	// Doris jdbc 负载均衡连接 port，通常映射到 fe 的 9030 端口
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Port *int64 `json:"Port,omitempty" name:"Port"`
+
+	// Doris 连接源的用户名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserName *string `json:"UserName,omitempty" name:"UserName"`
+
+	// Doris 连接源的密码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Password *string `json:"Password,omitempty" name:"Password"`
+
+	// Doris 连接源的实例资源
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Resource *string `json:"Resource,omitempty" name:"Resource"`
+
+	// Doris 连接源的实例vip，当为腾讯云实例时，必填
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ServiceVip *string `json:"ServiceVip,omitempty" name:"ServiceVip"`
+
+	// Doris 连接源的vpcId，当为腾讯云实例时，必填
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UniqVpcId *string `json:"UniqVpcId,omitempty" name:"UniqVpcId"`
+
+	// 是否更新到关联的Datahub任务
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsUpdate *bool `json:"IsUpdate,omitempty" name:"IsUpdate"`
+
+	// Doris 连接源是否为自建集群
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SelfBuilt *bool `json:"SelfBuilt,omitempty" name:"SelfBuilt"`
+
+	// Doris 的 http 负载均衡连接 port，通常映射到 be 的 8040 端口
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BePort *int64 `json:"BePort,omitempty" name:"BePort"`
 }
 
 type DropCls struct {

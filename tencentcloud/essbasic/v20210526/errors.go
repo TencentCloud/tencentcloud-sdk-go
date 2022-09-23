@@ -305,6 +305,9 @@ const (
 	// 禁止操作。
 	OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
 
+	// 签署人未达到合法年龄。
+	OPERATIONDENIED_INVALIDAPPROVERAGE = "OperationDenied.InvalidApproverAge"
+
 	// 没有API权限。
 	OPERATIONDENIED_NOAPIAUTH = "OperationDenied.NoApiAuth"
 

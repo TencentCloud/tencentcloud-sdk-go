@@ -381,7 +381,7 @@ type DescribeOrganizationRequestParams struct {
 	// 国际站：en，国内站：zh
 	Lang *string `json:"Lang,omitempty" name:"Lang"`
 
-	// 产品简称（查询是否集团服务委派管理员必须）
+	// 产品简称（查询是否集团服务委派管理员必填）
 	Product *string `json:"Product,omitempty" name:"Product"`
 }
 
@@ -391,7 +391,7 @@ type DescribeOrganizationRequest struct {
 	// 国际站：en，国内站：zh
 	Lang *string `json:"Lang,omitempty" name:"Lang"`
 
-	// 产品简称（查询是否集团服务委派管理员必须）
+	// 产品简称（查询是否集团服务委派管理员必填）
 	Product *string `json:"Product,omitempty" name:"Product"`
 }
 
@@ -476,6 +476,10 @@ type DescribeOrganizationResponseParams struct {
 	// 是否集团服务委派管理员 true-是、false-否
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsAssignManager *bool `json:"IsAssignManager,omitempty" name:"IsAssignManager"`
+
+	// 是否主体管理员 true-是、false-否
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsAuthManager *bool `json:"IsAuthManager,omitempty" name:"IsAuthManager"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
