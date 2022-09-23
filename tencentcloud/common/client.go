@@ -444,7 +444,13 @@ func (c *Client) GetRegion() string {
 }
 
 func (c *Client) Init(region string) *Client {
-	c.httpClient = &http.Client{Transport: http.DefaultTransport.(*http.Transport).Clone()}
+	// try not to modify http.DefaultTransport if possible
+	transport := http.DefaultTransport
+	if ht, ok := transport.(*http.Transport); ok {
+		transport = ht.Clone()
+	}
+
+	c.httpClient = &http.Client{Transport: transport}
 	c.region = region
 	c.signMethod = "TC3-HMAC-SHA256"
 	c.debug = false
@@ -503,7 +509,16 @@ func (c *Client) WithProfile(clientProfile *profile.ClientProfile) *Client {
 		if err != nil {
 			panic(err)
 		}
-		c.httpClient.Transport.(*http.Transport).Proxy = http.ProxyURL(u)
+
+		if c.httpClient.Transport == nil {
+			c.logger.Println("trying to set proxy when httpClient.Transport is nil")
+		}
+
+		if _, ok := c.httpClient.Transport.(*http.Transport); ok {
+			c.httpClient.Transport.(*http.Transport).Proxy = http.ProxyURL(u)
+		} else {
+			c.logger.Println("setting proxy while httpClient.Transport is not a http.Transport is not supported")
+		}
 	}
 	return c
 }
