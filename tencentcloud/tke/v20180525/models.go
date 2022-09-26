@@ -2131,7 +2131,7 @@ func (r *CreateECMInstancesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateEKSClusterRequestParams struct {
-	// k8s版本号。可为1.14.4, 1.12.8。
+	// k8s版本号。可为1.18.4 1.20.6。
 	K8SVersion *string `json:"K8SVersion,omitempty" name:"K8SVersion"`
 
 	// vpc 的Id
@@ -2146,7 +2146,7 @@ type CreateEKSClusterRequestParams struct {
 	// 集群描述信息
 	ClusterDesc *string `json:"ClusterDesc,omitempty" name:"ClusterDesc"`
 
-	// Serivce 所在子网Id
+	// Service CIDR 或 Serivce 所在子网Id
 	ServiceSubnetId *string `json:"ServiceSubnetId,omitempty" name:"ServiceSubnetId"`
 
 	// 集群自定义的Dns服务器信息
@@ -2168,7 +2168,7 @@ type CreateEKSClusterRequestParams struct {
 type CreateEKSClusterRequest struct {
 	*tchttp.BaseRequest
 	
-	// k8s版本号。可为1.14.4, 1.12.8。
+	// k8s版本号。可为1.18.4 1.20.6。
 	K8SVersion *string `json:"K8SVersion,omitempty" name:"K8SVersion"`
 
 	// vpc 的Id
@@ -2183,7 +2183,7 @@ type CreateEKSClusterRequest struct {
 	// 集群描述信息
 	ClusterDesc *string `json:"ClusterDesc,omitempty" name:"ClusterDesc"`
 
-	// Serivce 所在子网Id
+	// Service CIDR 或 Serivce 所在子网Id
 	ServiceSubnetId *string `json:"ServiceSubnetId,omitempty" name:"ServiceSubnetId"`
 
 	// 集群自定义的Dns服务器信息

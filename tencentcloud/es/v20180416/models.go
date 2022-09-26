@@ -3486,6 +3486,10 @@ type TaskDetail struct {
 
 	// 子任务
 	SubTasks []*SubTaskDetail `json:"SubTasks,omitempty" name:"SubTasks"`
+
+	// 任务花费时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ElapsedTime *int64 `json:"ElapsedTime,omitempty" name:"ElapsedTime"`
 }
 
 // Predefined struct for user

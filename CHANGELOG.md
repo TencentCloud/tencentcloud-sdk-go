@@ -1,3 +1,144 @@
+# Release v1.0.504
+
+## 混沌演练平台(cfg) 版本：2021-08-20
+
+### 第 4 次发布
+
+发布时间：2022-09-26 06:16:02
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [TaskListItem](https://cloud.tencent.com/document/api/1500/71784#TaskListItem)
+
+	* 新增成员：TaskPreCheckStatus, TaskPreCheckSuccess
+
+
+
+
+## Elasticsearch Service(es) 版本：2018-04-16
+
+### 第 36 次发布
+
+发布时间：2022-09-26 06:30:30
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [TaskDetail](https://cloud.tencent.com/document/api/845/30634#TaskDetail)
+
+	* 新增成员：ElapsedTime
+
+
+
+
+## 云监控(monitor) 版本：2018-07-24
+
+### 第 63 次发布
+
+发布时间：2022-09-26 06:41:40
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateAlarmNotice](https://cloud.tencent.com/document/api/248/51288)
+
+	* 新增入参：Tags
+
+* [CreateAlarmPolicy](https://cloud.tencent.com/document/api/248/51287)
+
+	* 新增入参：Tags, LogAlarmReqInfo
+
+* [DescribeAlarmNotices](https://cloud.tencent.com/document/api/248/51280)
+
+	* 新增入参：Tags
+
+* [DescribeAlarmPolicies](https://cloud.tencent.com/document/api/248/51279)
+
+	* 新增入参：NotBindAll, NotInstanceGroup, Tags
+
+* [ModifyAlarmPolicyCondition](https://cloud.tencent.com/document/api/248/51276)
+
+	* 新增入参：LogAlarmReqInfo
+
+
+新增数据结构：
+
+* [LogAlarmReq](https://cloud.tencent.com/document/api/248/30354#LogAlarmReq)
+* [LogFilterInfo](https://cloud.tencent.com/document/api/248/30354#LogFilterInfo)
+* [Tag](https://cloud.tencent.com/document/api/248/30354#Tag)
+
+修改数据结构：
+
+* [AlarmNotice](https://cloud.tencent.com/document/api/248/30354#AlarmNotice)
+
+	* 新增成员：Tags
+
+* [AlarmPolicy](https://cloud.tencent.com/document/api/248/30354#AlarmPolicy)
+
+	* 新增成员：IsBindAll, Tags
+
+* [AlarmPolicyRule](https://cloud.tencent.com/document/api/248/30354#AlarmPolicyRule)
+
+	* 新增成员：ValueMax, ValueMin
+
+
+
+
+## 服务网格(tcm) 版本：2021-04-13
+
+### 第 12 次发布
+
+发布时间：2022-09-26 06:52:58
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [CrossRegionConfig](https://cloud.tencent.com/document/api/1261/63843#CrossRegionConfig)
+
+修改数据结构：
+
+* [LoadBalancer](https://cloud.tencent.com/document/api/1261/63843#LoadBalancer)
+
+	* 新增成员：CrossRegionConfig
+
+
+
+
+## 设备安全(tds) 版本：2022-08-01
+
+### 第 1 次发布
+
+发布时间：2022-09-23 17:56:43
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeFraudBase](https://cloud.tencent.com/document/api/1628/81019)
+* [DescribeFraudPremium](https://cloud.tencent.com/document/api/1628/81018)
+* [DescribeTrustedID](https://cloud.tencent.com/document/api/1628/81017)
+
+新增数据结构：
+
+* [RiskInfo](https://cloud.tencent.com/document/api/1628/81020#RiskInfo)
+
+
+
 # Release v1.0.503
 
 ## 商业流程服务(bpaas) 版本：2018-12-17

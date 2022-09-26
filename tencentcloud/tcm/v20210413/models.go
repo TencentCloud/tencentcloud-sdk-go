@@ -174,6 +174,10 @@ type ClusterStatus struct {
 	LinkErrorDetail *string `json:"LinkErrorDetail,omitempty" name:"LinkErrorDetail"`
 }
 
+type CrossRegionConfig struct {
+
+}
+
 type CustomPromConfig struct {
 	// Prometheus 访问地址
 	Url *string `json:"Url,omitempty" name:"Url"`
@@ -519,6 +523,10 @@ type LoadBalancer struct {
 	// 内网独占集群配置列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExtensiveClusters *ExtensiveClusters `json:"ExtensiveClusters,omitempty" name:"ExtensiveClusters"`
+
+	// 负载均衡跨地域配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CrossRegionConfig *CrossRegionConfig `json:"CrossRegionConfig,omitempty" name:"CrossRegionConfig"`
 }
 
 type LoadBalancerStatus struct {

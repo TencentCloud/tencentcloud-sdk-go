@@ -209,6 +209,7 @@ import (
 	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tdcpg"
 	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tdid"
 	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tdmq"
+	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tds"
 	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tem"
 	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tem"
 	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/teo"
