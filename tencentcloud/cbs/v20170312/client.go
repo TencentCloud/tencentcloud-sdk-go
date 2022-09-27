@@ -1770,6 +1770,7 @@ func NewInitializeDisksResponse() (response *InitializeDisksResponse) {
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  RESOURCEBUSY = "ResourceBusy"
 func (c *Client) InitializeDisks(request *InitializeDisksRequest) (response *InitializeDisksResponse, err error) {
     return c.InitializeDisksWithContext(context.Background(), request)
 }
@@ -1787,6 +1788,7 @@ func (c *Client) InitializeDisks(request *InitializeDisksRequest) (response *Ini
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  RESOURCEBUSY = "ResourceBusy"
 func (c *Client) InitializeDisksWithContext(ctx context.Context, request *InitializeDisksRequest) (response *InitializeDisksResponse, err error) {
     if request == nil {
         request = NewInitializeDisksRequest()

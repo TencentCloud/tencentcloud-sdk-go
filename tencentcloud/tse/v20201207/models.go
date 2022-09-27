@@ -377,11 +377,14 @@ type DescribeCloudNativeAPIGatewayNodesRequestParams struct {
 	// 云原生API网关实例ID。
 	GatewayId *string `json:"GatewayId,omitempty" name:"GatewayId"`
 
-	// 翻页从第几个开始获取
-	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+	// 实例分组id
+	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
 
 	// 翻页获取多少个
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 翻页从第几个开始获取
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 }
 
 type DescribeCloudNativeAPIGatewayNodesRequest struct {
@@ -390,11 +393,14 @@ type DescribeCloudNativeAPIGatewayNodesRequest struct {
 	// 云原生API网关实例ID。
 	GatewayId *string `json:"GatewayId,omitempty" name:"GatewayId"`
 
-	// 翻页从第几个开始获取
-	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+	// 实例分组id
+	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
 
 	// 翻页获取多少个
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 翻页从第几个开始获取
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 }
 
 func (r *DescribeCloudNativeAPIGatewayNodesRequest) ToJsonString() string {
@@ -410,8 +416,9 @@ func (r *DescribeCloudNativeAPIGatewayNodesRequest) FromJsonString(s string) err
 		return err
 	}
 	delete(f, "GatewayId")
-	delete(f, "Offset")
+	delete(f, "GroupId")
 	delete(f, "Limit")
+	delete(f, "Offset")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCloudNativeAPIGatewayNodesRequest has unknown keys!", "")
 	}

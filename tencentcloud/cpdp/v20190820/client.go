@@ -7339,6 +7339,58 @@ func (c *Client) QueryExchangeRateWithContext(ctx context.Context, request *Quer
     return
 }
 
+func NewQueryFinancialDataUrlRequest() (request *QueryFinancialDataUrlRequest) {
+    request = &QueryFinancialDataUrlRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cpdp", APIVersion, "QueryFinancialDataUrl")
+    
+    
+    return
+}
+
+func NewQueryFinancialDataUrlResponse() (response *QueryFinancialDataUrlResponse) {
+    response = &QueryFinancialDataUrlResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// QueryFinancialDataUrl
+// 财税-查询金融数据文件下载链接
+//
+// 可能返回的错误码:
+//  INTERNALERROR_PARAMETERERROR = "InternalError.ParameterError"
+//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
+//  RESOURCENOTFOUND_MERCHANTINFONOTFOUND = "ResourceNotFound.MerchantInfoNotFound"
+func (c *Client) QueryFinancialDataUrl(request *QueryFinancialDataUrlRequest) (response *QueryFinancialDataUrlResponse, err error) {
+    return c.QueryFinancialDataUrlWithContext(context.Background(), request)
+}
+
+// QueryFinancialDataUrl
+// 财税-查询金融数据文件下载链接
+//
+// 可能返回的错误码:
+//  INTERNALERROR_PARAMETERERROR = "InternalError.ParameterError"
+//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
+//  RESOURCENOTFOUND_MERCHANTINFONOTFOUND = "ResourceNotFound.MerchantInfoNotFound"
+func (c *Client) QueryFinancialDataUrlWithContext(ctx context.Context, request *QueryFinancialDataUrlRequest) (response *QueryFinancialDataUrlResponse, err error) {
+    if request == nil {
+        request = NewQueryFinancialDataUrlRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryFinancialDataUrl require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewQueryFinancialDataUrlResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewQueryFlexAmountBeforeTaxRequest() (request *QueryFlexAmountBeforeTaxRequest) {
     request = &QueryFlexAmountBeforeTaxRequest{
         BaseRequest: &tchttp.BaseRequest{},

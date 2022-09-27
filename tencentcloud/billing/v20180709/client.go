@@ -957,6 +957,7 @@ func NewDescribeVoucherInfoResponse() (response *DescribeVoucherInfoResponse) {
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_GATEWAYERROR = "InternalError.GatewayError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION_CAMNOAUTH = "UnauthorizedOperation.CamNoAuth"
 func (c *Client) DescribeVoucherInfo(request *DescribeVoucherInfoRequest) (response *DescribeVoucherInfoResponse, err error) {
     return c.DescribeVoucherInfoWithContext(context.Background(), request)
 }
@@ -969,6 +970,7 @@ func (c *Client) DescribeVoucherInfo(request *DescribeVoucherInfoRequest) (respo
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_GATEWAYERROR = "InternalError.GatewayError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION_CAMNOAUTH = "UnauthorizedOperation.CamNoAuth"
 func (c *Client) DescribeVoucherInfoWithContext(ctx context.Context, request *DescribeVoucherInfoRequest) (response *DescribeVoucherInfoResponse, err error) {
     if request == nil {
         request = NewDescribeVoucherInfoRequest()

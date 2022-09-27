@@ -15017,6 +15017,10 @@ type PaymentOrderResult struct {
 
 	// 外部用户ID
 	OutUserId *string `json:"OutUserId,omitempty" name:"OutUserId"`
+
+	// 渠道支付订单号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ChannelOrderId *string `json:"ChannelOrderId,omitempty" name:"ChannelOrderId"`
 }
 
 type PaymentOrderStatusResult struct {
@@ -18067,6 +18071,82 @@ type QueryExternalAccountBookResult struct {
 	// 电子记账本对外收款的账户信息。为JSON格式字符串（成功状态下返回）。详情见附录-复杂类型。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CollectMoneyAccountInfo *string `json:"CollectMoneyAccountInfo,omitempty" name:"CollectMoneyAccountInfo"`
+}
+
+// Predefined struct for user
+type QueryFinancialDataUrlRequestParams struct {
+	// 数据查询范围:结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 数据查询范围:开始时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 数据类型：ADDED_INVOICE_REPORT  增值税开票数据，NATURAL_FINANCE_REPORT 自然人金融数据
+	DataType *string `json:"DataType,omitempty" name:"DataType"`
+}
+
+type QueryFinancialDataUrlRequest struct {
+	*tchttp.BaseRequest
+	
+	// 数据查询范围:结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 数据查询范围:开始时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 数据类型：ADDED_INVOICE_REPORT  增值税开票数据，NATURAL_FINANCE_REPORT 自然人金融数据
+	DataType *string `json:"DataType,omitempty" name:"DataType"`
+}
+
+func (r *QueryFinancialDataUrlRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryFinancialDataUrlRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EndTime")
+	delete(f, "StartTime")
+	delete(f, "DataType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryFinancialDataUrlRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type QueryFinancialDataUrlResponseParams struct {
+	// 下载链接
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CosUrl *string `json:"CosUrl,omitempty" name:"CosUrl"`
+
+	// 过期时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExpireTime *string `json:"ExpireTime,omitempty" name:"ExpireTime"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type QueryFinancialDataUrlResponse struct {
+	*tchttp.BaseResponse
+	Response *QueryFinancialDataUrlResponseParams `json:"Response"`
+}
+
+func (r *QueryFinancialDataUrlResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryFinancialDataUrlResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user

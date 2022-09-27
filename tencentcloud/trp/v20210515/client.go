@@ -587,9 +587,7 @@ func NewDeleteTraceDataResponse() (response *DeleteTraceDataResponse) {
 // 删除溯源信息，如果已经上链则不可删除
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
-//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DeleteTraceData(request *DeleteTraceDataRequest) (response *DeleteTraceDataResponse, err error) {
     return c.DeleteTraceDataWithContext(context.Background(), request)
 }
@@ -598,9 +596,7 @@ func (c *Client) DeleteTraceData(request *DeleteTraceDataRequest) (response *Del
 // 删除溯源信息，如果已经上链则不可删除
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
-//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DeleteTraceDataWithContext(ctx context.Context, request *DeleteTraceDataRequest) (response *DeleteTraceDataResponse, err error) {
     if request == nil {
         request = NewDeleteTraceDataRequest()

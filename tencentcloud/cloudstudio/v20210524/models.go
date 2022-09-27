@@ -30,13 +30,13 @@ type AgentSpaceDTO struct {
 	// 镜像名称
 	ImageName *string `json:"ImageName,omitempty" name:"ImageName"`
 
-	// 云主机登录名称
+	// 云服务器登录名称
 	RemoteUser *string `json:"RemoteUser,omitempty" name:"RemoteUser"`
 
-	// 云主机登录地址
+	// 云服务器登录地址
 	RemoteHost *string `json:"RemoteHost,omitempty" name:"RemoteHost"`
 
-	// 云主机登录端口
+	// 云服务器登录端口
 	RemotePort *string `json:"RemotePort,omitempty" name:"RemotePort"`
 
 	// 工作空间类型
@@ -187,7 +187,7 @@ type CreateWorkspaceByTemplateRequestParams struct {
 	// 用户所属组
 	CloudStudioSessionTeam *string `json:"CloudStudioSessionTeam,omitempty" name:"CloudStudioSessionTeam"`
 
-	// 模版ID
+	// 模板ID
 	TemplateId *int64 `json:"TemplateId,omitempty" name:"TemplateId"`
 }
 
@@ -197,7 +197,7 @@ type CreateWorkspaceByTemplateRequest struct {
 	// 用户所属组
 	CloudStudioSessionTeam *string `json:"CloudStudioSessionTeam,omitempty" name:"CloudStudioSessionTeam"`
 
-	// 模版ID
+	// 模板ID
 	TemplateId *int64 `json:"TemplateId,omitempty" name:"TemplateId"`
 }
 
@@ -860,7 +860,7 @@ type ModifyCustomizeTemplateVersionControlRequestParams struct {
 	// 用户所属组
 	CloudStudioSessionTeam *string `json:"CloudStudioSessionTeam,omitempty" name:"CloudStudioSessionTeam"`
 
-	// 模版ID
+	// 模板ID
 	TemplateId *int64 `json:"TemplateId,omitempty" name:"TemplateId"`
 
 	// 仓库地址
@@ -879,7 +879,7 @@ type ModifyCustomizeTemplateVersionControlRequest struct {
 	// 用户所属组
 	CloudStudioSessionTeam *string `json:"CloudStudioSessionTeam,omitempty" name:"CloudStudioSessionTeam"`
 
-	// 模版ID
+	// 模板ID
 	TemplateId *int64 `json:"TemplateId,omitempty" name:"TemplateId"`
 
 	// 仓库地址

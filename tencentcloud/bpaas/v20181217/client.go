@@ -123,6 +123,7 @@ func NewOutApproveBpaasApplicationResponse() (response *OutApproveBpaasApplicati
 //  INTERNALERROR_DBERROR = "InternalError.DbError"
 //  INVALIDPARAMETER_HASBEENAPPROVED = "InvalidParameter.HasBeenApproved"
 //  INVALIDPARAMETER_ILLEGALNODE = "InvalidParameter.IllegalNode"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) OutApproveBpaasApplication(request *OutApproveBpaasApplicationRequest) (response *OutApproveBpaasApplicationResponse, err error) {
     return c.OutApproveBpaasApplicationWithContext(context.Background(), request)
 }
@@ -135,6 +136,7 @@ func (c *Client) OutApproveBpaasApplication(request *OutApproveBpaasApplicationR
 //  INTERNALERROR_DBERROR = "InternalError.DbError"
 //  INVALIDPARAMETER_HASBEENAPPROVED = "InvalidParameter.HasBeenApproved"
 //  INVALIDPARAMETER_ILLEGALNODE = "InvalidParameter.IllegalNode"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) OutApproveBpaasApplicationWithContext(ctx context.Context, request *OutApproveBpaasApplicationRequest) (response *OutApproveBpaasApplicationResponse, err error) {
     if request == nil {
         request = NewOutApproveBpaasApplicationRequest()

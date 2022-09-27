@@ -80,8 +80,35 @@ const (
 	// 更新 ingress 失败。
 	INTERNALERROR_UPDATEINGRESSERROR = "InternalError.UpdateIngressError"
 
+	// 应用访问配置服务数量达到上限。
+	INVALIDPARAMETER_APPLICATIONACCESSSERVICEREACHMAXIMUM = "InvalidParameter.ApplicationAccessServiceReachMaximum"
+
+	// LB类型服务不能同时支持TCP和UDP。
+	INVALIDPARAMETER_LBSERVICECANNOTSUPPORTTCPUDPSAMETIME = "InvalidParameter.LBServiceCannotSupportTcpUdpSameTime"
+
+	// 必须提供PortMapping规则。
+	INVALIDPARAMETER_MUSTPROVIDEPORTMAPPINGRULES = "InvalidParameter.MustProvidePortMappingRules"
+
+	// 服务名不符合规范。
+	INVALIDPARAMETER_SERVICENAMENOTVALID = "InvalidParameter.ServiceNameNotValid"
+
+	// 服务名使用了保留后缀。
+	INVALIDPARAMETER_SERVICEUSERESERVESUFFIX = "InvalidParameter.ServiceUseReserveSuffix"
+
+	// PortMapping规则数量超过限制。
+	INVALIDPARAMETER_TOOMANYPORTMAPPINGRULES = "InvalidParameter.TooManyPortMappingRules"
+
 	// APM 没有与当前环境绑定。
 	INVALIDPARAMETERVALUE_APMNOTBIND = "InvalidParameterValue.ApmNotBind"
+
+	// 应用访问配置服务数量达到上限。
+	INVALIDPARAMETERVALUE_APPLICATIONACCESSSERVICEREACHMAXIMUM = "InvalidParameterValue.ApplicationAccessServiceReachMaximum"
+
+	// 已存在同名访问方式。
+	INVALIDPARAMETERVALUE_APPLICATIONSERVICEALREADYEXIST = "InvalidParameterValue.ApplicationServiceAlreadyExist"
+
+	// 没有找到该访问方式。
+	INVALIDPARAMETERVALUE_APPLICATIONSERVICENOTFOUND = "InvalidParameterValue.ApplicationServiceNotFound"
 
 	// 只支持绑定一种弹性伸缩。
 	INVALIDPARAMETERVALUE_AUTOSCALERLARGERTHANONE = "InvalidParameterValue.AutoScalerLargerThanOne"
@@ -113,6 +140,9 @@ const (
 	// 版本号格式非法。
 	INVALIDPARAMETERVALUE_INVALIDDEPLOYVERSION = "InvalidParameterValue.InvalidDeployVersion"
 
+	// 访问类型不支持。
+	INVALIDPARAMETERVALUE_INVALIDEKSSERVICETYPE = "InvalidParameterValue.InvalidEksServiceType"
+
 	// 环境变量名非法，要求有由字母、数字，"."，"_" 和 "-" 组成，不能由数字开头。
 	INVALIDPARAMETERVALUE_INVALIDENVNAME = "InvalidParameterValue.InvalidEnvName"
 
@@ -124,6 +154,9 @@ const (
 
 	// JDK 版本不能为空。
 	INVALIDPARAMETERVALUE_JDKVERSIONREQUIRED = "InvalidParameterValue.JdkVersionRequired"
+
+	// 必须提供PortMapping规则。
+	INVALIDPARAMETERVALUE_MUSTPROVIDEPORTMAPPINGRULES = "InvalidParameterValue.MustProvidePortMappingRules"
 
 	// 环境重复。
 	INVALIDPARAMETERVALUE_NAMESPACEDUPLICATEERROR = "InvalidParameterValue.NamespaceDuplicateError"
@@ -142,6 +175,12 @@ const (
 
 	// 操作系统不支持。
 	INVALIDPARAMETERVALUE_OSNOTSUPPORT = "InvalidParameterValue.OsNotSupport"
+
+	// 服务端口映射重复。
+	INVALIDPARAMETERVALUE_PORTDUPLICATEERROR = "InvalidParameterValue.PortDuplicateError"
+
+	// 服务端口是保留端口。
+	INVALIDPARAMETERVALUE_PORTISRESERVED = "InvalidParameterValue.PortIsReserved"
 
 	// 公有镜像参数错误。
 	INVALIDPARAMETERVALUE_PUBLICREPOTYPEPARAMETERERROR = "InvalidParameterValue.PublicRepoTypeParameterError"
@@ -212,6 +251,9 @@ const (
 	// 镜像仓库还未就绪。
 	MISSINGPARAMETER_SVCREPONOTREADY = "MissingParameter.SvcRepoNotReady"
 
+	// vpc内访问类型子网ID不能为空。
+	MISSINGPARAMETER_VPCSERVICESUBNETNULL = "MissingParameter.VpcServiceSubnetNull"
+
 	// 账户余额不足。
 	OPERATIONDENIED_BALANCENOTENOUGH = "OperationDenied.BalanceNotEnough"
 
@@ -223,6 +265,9 @@ const (
 
 	// 资源已绑定。
 	RESOURCEINUSE_RESOURCEALREADYUSED = "ResourceInUse.ResourceAlreadyUsed"
+
+	// 未提供该接口。
+	RESOURCENOTFOUND_INTERFACENOTFOUND = "ResourceNotFound.InterfaceNotFound"
 
 	// 目标微服务已离线。
 	RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"

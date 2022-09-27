@@ -238,6 +238,10 @@ type Cluster struct {
 	// 0 后付费,1 预付费
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PayMode *int64 `json:"PayMode,omitempty" name:"PayMode"`
+
+	// 前端区分 集群是否需要2CU逻辑 因为历史集群 变配不需要, default 1  新集群都需要
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsNeedManageNode *int64 `json:"IsNeedManageNode,omitempty" name:"IsNeedManageNode"`
 }
 
 type ClusterVersion struct {

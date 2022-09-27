@@ -173,6 +173,7 @@ func NewCreateCustomCategoryResponse() (response *CreateCustomCategoryResponse) 
 //  INTERNALERROR_INNERERROR = "InternalError.InnerError"
 //  INVALIDPARAMETER_INVALIDL1CATEGORY = "InvalidParameter.InvalidL1Category"
 //  INVALIDPARAMETER_INVALIDL2CATEGORY = "InvalidParameter.InvalidL2Category"
+//  INVALIDPARAMETER_INVALIDPARAM = "InvalidParameter.InvalidParam"
 //  RESOURCENOTFOUND_CUSTOMCATEGORYNOTFOUND = "ResourceNotFound.CustomCategoryNotFound"
 //  UNAUTHORIZEDOPERATION_UNAUTHORIZEDPRODUCT = "UnauthorizedOperation.UnauthorizedProduct"
 func (c *Client) CreateCustomCategory(request *CreateCustomCategoryRequest) (response *CreateCustomCategoryResponse, err error) {
@@ -197,6 +198,7 @@ func (c *Client) CreateCustomCategory(request *CreateCustomCategoryRequest) (res
 //  INTERNALERROR_INNERERROR = "InternalError.InnerError"
 //  INVALIDPARAMETER_INVALIDL1CATEGORY = "InvalidParameter.InvalidL1Category"
 //  INVALIDPARAMETER_INVALIDL2CATEGORY = "InvalidParameter.InvalidL2Category"
+//  INVALIDPARAMETER_INVALIDPARAM = "InvalidParameter.InvalidParam"
 //  RESOURCENOTFOUND_CUSTOMCATEGORYNOTFOUND = "ResourceNotFound.CustomCategoryNotFound"
 //  UNAUTHORIZEDOPERATION_UNAUTHORIZEDPRODUCT = "UnauthorizedOperation.UnauthorizedProduct"
 func (c *Client) CreateCustomCategoryWithContext(ctx context.Context, request *CreateCustomCategoryRequest) (response *CreateCustomCategoryResponse, err error) {
@@ -826,6 +828,7 @@ func NewDeleteMediaResponse() (response *DeleteMediaResponse) {
 //  INVALIDPARAMETER_INVALIDMEDIAID = "InvalidParameter.InvalidMediaId"
 //  INVALIDPARAMETER_INVALIDMEDIASTATUS = "InvalidParameter.InvalidMediaStatus"
 //  RESOURCENOTFOUND_MEDIANOTFOUND = "ResourceNotFound.MediaNotFound"
+//  RESOURCENOTFOUND_RECORDNOTFOUND = "ResourceNotFound.RecordNotFound"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNAUTHORIZEDOPERATION_UNAUTHORIZEDPRODUCT = "UnauthorizedOperation.UnauthorizedProduct"
 //  UNSUPPORTEDOPERATION_MEDIANOTACCESSIBLE = "UnsupportedOperation.MediaNotAccessible"
@@ -850,6 +853,7 @@ func (c *Client) DeleteMedia(request *DeleteMediaRequest) (response *DeleteMedia
 //  INVALIDPARAMETER_INVALIDMEDIAID = "InvalidParameter.InvalidMediaId"
 //  INVALIDPARAMETER_INVALIDMEDIASTATUS = "InvalidParameter.InvalidMediaStatus"
 //  RESOURCENOTFOUND_MEDIANOTFOUND = "ResourceNotFound.MediaNotFound"
+//  RESOURCENOTFOUND_RECORDNOTFOUND = "ResourceNotFound.RecordNotFound"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNAUTHORIZEDOPERATION_UNAUTHORIZEDPRODUCT = "UnauthorizedOperation.UnauthorizedProduct"
 //  UNSUPPORTEDOPERATION_MEDIANOTACCESSIBLE = "UnsupportedOperation.MediaNotAccessible"
@@ -1558,6 +1562,7 @@ func NewDescribeTasksResponse() (response *DescribeTasksResponse) {
 //  INTERNALERROR_INNERERROR = "InternalError.InnerError"
 //  INVALIDPARAMETER_INVALIDPAGENUMBER = "InvalidParameter.InvalidPageNumber"
 //  INVALIDPARAMETER_INVALIDPAGESIZE = "InvalidParameter.InvalidPageSize"
+//  INVALIDPARAMETER_INVALIDPARAM = "InvalidParameter.InvalidParam"
 //  INVALIDPARAMETER_INVALIDSORTBY = "InvalidParameter.InvalidSortBy"
 //  INVALIDPARAMETER_INVALIDTASKID = "InvalidParameter.InvalidTaskId"
 //  INVALIDPARAMETER_INVALIDTASKNAME = "InvalidParameter.InvalidTaskName"
@@ -1583,6 +1588,7 @@ func (c *Client) DescribeTasks(request *DescribeTasksRequest) (response *Describ
 //  INTERNALERROR_INNERERROR = "InternalError.InnerError"
 //  INVALIDPARAMETER_INVALIDPAGENUMBER = "InvalidParameter.InvalidPageNumber"
 //  INVALIDPARAMETER_INVALIDPAGESIZE = "InvalidParameter.InvalidPageSize"
+//  INVALIDPARAMETER_INVALIDPARAM = "InvalidParameter.InvalidParam"
 //  INVALIDPARAMETER_INVALIDSORTBY = "InvalidParameter.InvalidSortBy"
 //  INVALIDPARAMETER_INVALIDTASKID = "InvalidParameter.InvalidTaskId"
 //  INVALIDPARAMETER_INVALIDTASKNAME = "InvalidParameter.InvalidTaskName"
@@ -2168,6 +2174,7 @@ func NewUpdateCustomCategoryResponse() (response *UpdateCustomCategoryResponse) 
 //  INVALIDPARAMETER_INVALIDCATEGORYID = "InvalidParameter.InvalidCategoryId"
 //  INVALIDPARAMETER_INVALIDL1CATEGORY = "InvalidParameter.InvalidL1Category"
 //  INVALIDPARAMETER_INVALIDL2CATEGORY = "InvalidParameter.InvalidL2Category"
+//  INVALIDPARAMETER_INVALIDPARAM = "InvalidParameter.InvalidParam"
 //  RESOURCENOTFOUND_CUSTOMCATEGORYNOTFOUND = "ResourceNotFound.CustomCategoryNotFound"
 //  UNAUTHORIZEDOPERATION_UNAUTHORIZEDPRODUCT = "UnauthorizedOperation.UnauthorizedProduct"
 func (c *Client) UpdateCustomCategory(request *UpdateCustomCategoryRequest) (response *UpdateCustomCategoryResponse, err error) {
@@ -2195,6 +2202,7 @@ func (c *Client) UpdateCustomCategory(request *UpdateCustomCategoryRequest) (res
 //  INVALIDPARAMETER_INVALIDCATEGORYID = "InvalidParameter.InvalidCategoryId"
 //  INVALIDPARAMETER_INVALIDL1CATEGORY = "InvalidParameter.InvalidL1Category"
 //  INVALIDPARAMETER_INVALIDL2CATEGORY = "InvalidParameter.InvalidL2Category"
+//  INVALIDPARAMETER_INVALIDPARAM = "InvalidParameter.InvalidParam"
 //  RESOURCENOTFOUND_CUSTOMCATEGORYNOTFOUND = "ResourceNotFound.CustomCategoryNotFound"
 //  UNAUTHORIZEDOPERATION_UNAUTHORIZEDPRODUCT = "UnauthorizedOperation.UnauthorizedProduct"
 func (c *Client) UpdateCustomCategoryWithContext(ctx context.Context, request *UpdateCustomCategoryRequest) (response *UpdateCustomCategoryResponse, err error) {

@@ -1,3 +1,135 @@
+# Release v1.0.505
+
+## 账号风控平台(ciam) 版本：2022-03-31
+
+### 第 8 次发布
+
+发布时间：2022-09-27 06:14:52
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateUser](https://cloud.tencent.com/document/api/1441/75642)
+
+	* 新增入参：IndexedAttribute1, IndexedAttribute2, IndexedAttribute3, IndexedAttribute4, IndexedAttribute5
+
+* [DescribeUser](https://cloud.tencent.com/document/api/1441/77525)
+
+	* 新增入参：Sort
+
+* [UpdateUser](https://cloud.tencent.com/document/api/1441/75635)
+
+	* 新增入参：IndexedAttribute1, IndexedAttribute2, IndexedAttribute3, IndexedAttribute4, IndexedAttribute5
+
+
+新增数据结构：
+
+* [Sort](https://cloud.tencent.com/document/api/1441/75643#Sort)
+
+修改数据结构：
+
+* [ImportUser](https://cloud.tencent.com/document/api/1441/75643#ImportUser)
+
+	* 新增成员：IndexedAttribute1, IndexedAttribute2, IndexedAttribute3, IndexedAttribute4, IndexedAttribute5
+
+* [QueryUserFilter](https://cloud.tencent.com/document/api/1441/75643#QueryUserFilter)
+
+	* 新增成员：OperateLogic
+
+* [User](https://cloud.tencent.com/document/api/1441/75643#User)
+
+	* 新增成员：IndexedAttribute1, IndexedAttribute2, IndexedAttribute3, IndexedAttribute4, IndexedAttribute5
+
+
+
+
+## 企业收付平台(cpdp) 版本：2019-08-20
+
+### 第 86 次发布
+
+发布时间：2022-09-27 06:17:24
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [QueryFinancialDataUrl](https://cloud.tencent.com/document/api/1122/81046)
+
+修改数据结构：
+
+* [PaymentOrderResult](https://cloud.tencent.com/document/api/1122/40683#PaymentOrderResult)
+
+	* 新增成员：ChannelOrderId
+
+
+
+
+## 流计算 Oceanus(oceanus) 版本：2019-04-22
+
+### 第 26 次发布
+
+发布时间：2022-09-27 06:36:12
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Cluster](https://cloud.tencent.com/document/api/849/52010#Cluster)
+
+	* 新增成员：IsNeedManageNode
+
+
+
+
+## 弹性微服务(tem) 版本：2021-07-01
+
+### 第 30 次发布
+
+发布时间：2022-09-27 06:45:31
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateApplicationService](https://cloud.tencent.com/document/api/1371/81051)
+* [DeleteApplicationService](https://cloud.tencent.com/document/api/1371/81050)
+* [DescribeApplicationServiceList](https://cloud.tencent.com/document/api/1371/81049)
+* [ModifyApplicationService](https://cloud.tencent.com/document/api/1371/81048)
+
+
+
+## 弹性微服务(tem) 版本：2020-12-21
+
+
+
+## 腾讯云微服务引擎(tse) 版本：2020-12-07
+
+### 第 27 次发布
+
+发布时间：2022-09-27 06:48:42
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeCloudNativeAPIGatewayNodes](https://cloud.tencent.com/document/api/1364/78800)
+
+	* 新增入参：GroupId
+
+
+
+
 # Release v1.0.504
 
 ## 混沌演练平台(cfg) 版本：2021-08-20

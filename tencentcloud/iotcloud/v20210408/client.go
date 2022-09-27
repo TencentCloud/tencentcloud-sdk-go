@@ -1388,6 +1388,7 @@ func NewDescribeFirmwareResponse() (response *DescribeFirmwareResponse) {
 //
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_FIRMWARENOTEXIST = "ResourceNotFound.FirmwareNotExist"
+//  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
 func (c *Client) DescribeFirmware(request *DescribeFirmwareRequest) (response *DescribeFirmwareResponse, err error) {
     return c.DescribeFirmwareWithContext(context.Background(), request)
 }
@@ -1397,6 +1398,7 @@ func (c *Client) DescribeFirmware(request *DescribeFirmwareRequest) (response *D
 //
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_FIRMWARENOTEXIST = "ResourceNotFound.FirmwareNotExist"
+//  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
 func (c *Client) DescribeFirmwareWithContext(ctx context.Context, request *DescribeFirmwareRequest) (response *DescribeFirmwareResponse, err error) {
     if request == nil {
         request = NewDescribeFirmwareRequest()

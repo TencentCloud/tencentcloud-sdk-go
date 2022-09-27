@@ -1163,12 +1163,7 @@ func NewDescribeCronJobsResponse() (response *DescribeCronJobsResponse) {
 // 列出定时任务，非必填数组为空就默认全选
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_RESOURCENOTFOUND = "FailedOperation.ResourceNotFound"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  FAILEDOPERATION_DBQUERYFAILED = "FailedOperation.DbQueryFailed"
 func (c *Client) DescribeCronJobs(request *DescribeCronJobsRequest) (response *DescribeCronJobsResponse, err error) {
     return c.DescribeCronJobsWithContext(context.Background(), request)
 }
@@ -1177,12 +1172,7 @@ func (c *Client) DescribeCronJobs(request *DescribeCronJobsRequest) (response *D
 // 列出定时任务，非必填数组为空就默认全选
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_RESOURCENOTFOUND = "FailedOperation.ResourceNotFound"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  FAILEDOPERATION_DBQUERYFAILED = "FailedOperation.DbQueryFailed"
 func (c *Client) DescribeCronJobsWithContext(ctx context.Context, request *DescribeCronJobsRequest) (response *DescribeCronJobsResponse, err error) {
     if request == nil {
         request = NewDescribeCronJobsRequest()
@@ -1221,12 +1211,7 @@ func NewDescribeFilesResponse() (response *DescribeFilesResponse) {
 // 查询文件列表
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_RESOURCENOTFOUND = "FailedOperation.ResourceNotFound"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  FAILEDOPERATION_DBQUERYFAILED = "FailedOperation.DbQueryFailed"
 func (c *Client) DescribeFiles(request *DescribeFilesRequest) (response *DescribeFilesResponse, err error) {
     return c.DescribeFilesWithContext(context.Background(), request)
 }
@@ -1235,12 +1220,7 @@ func (c *Client) DescribeFiles(request *DescribeFilesRequest) (response *Describ
 // 查询文件列表
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_RESOURCENOTFOUND = "FailedOperation.ResourceNotFound"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  FAILEDOPERATION_DBQUERYFAILED = "FailedOperation.DbQueryFailed"
 func (c *Client) DescribeFilesWithContext(ctx context.Context, request *DescribeFilesRequest) (response *DescribeFilesResponse, err error) {
     if request == nil {
         request = NewDescribeFilesRequest()

@@ -121,6 +121,7 @@ func NewAddUserGroupMembersResponse() (response *AddUserGroupMembersResponse) {
 // 添加用户组成员
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DUPLICATEDATA = "FailedOperation.DuplicateData"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -132,6 +133,7 @@ func (c *Client) AddUserGroupMembers(request *AddUserGroupMembersRequest) (respo
 // 添加用户组成员
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DUPLICATEDATA = "FailedOperation.DuplicateData"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -175,6 +177,7 @@ func NewBindDeviceResourceResponse() (response *BindDeviceResourceResponse) {
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DATANOTFOUND = "FailedOperation.DataNotFound"
 //  FAILEDOPERATION_DUPLICATEDATA = "FailedOperation.DuplicateData"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -202,6 +205,7 @@ func (c *Client) BindDeviceResource(request *BindDeviceResourceRequest) (respons
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DATANOTFOUND = "FailedOperation.DataNotFound"
 //  FAILEDOPERATION_DUPLICATEDATA = "FailedOperation.DuplicateData"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -1415,6 +1419,7 @@ func NewModifyUserResponse() (response *ModifyUserResponse) {
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DATANOTFOUND = "FailedOperation.DataNotFound"
 //  FAILEDOPERATION_DUPLICATEDATA = "FailedOperation.DuplicateData"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -1442,6 +1447,7 @@ func (c *Client) ModifyUser(request *ModifyUserRequest) (response *ModifyUserRes
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DATANOTFOUND = "FailedOperation.DataNotFound"
 //  FAILEDOPERATION_DUPLICATEDATA = "FailedOperation.DuplicateData"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"

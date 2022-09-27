@@ -179,6 +179,86 @@ func (c *Client) CreateApplicationAutoscalerWithContext(ctx context.Context, req
     return
 }
 
+func NewCreateApplicationServiceRequest() (request *CreateApplicationServiceRequest) {
+    request = &CreateApplicationServiceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tem", APIVersion, "CreateApplicationService")
+    
+    
+    return
+}
+
+func NewCreateApplicationServiceResponse() (response *CreateApplicationServiceResponse) {
+    response = &CreateApplicationServiceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateApplicationService
+// 新增访问方式
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DEFAULTINTERNALERROR = "InternalError.DefaultInternalError"
+//  INVALIDPARAMETER_APPLICATIONACCESSSERVICEREACHMAXIMUM = "InvalidParameter.ApplicationAccessServiceReachMaximum"
+//  INVALIDPARAMETER_LBSERVICECANNOTSUPPORTTCPUDPSAMETIME = "InvalidParameter.LBServiceCannotSupportTcpUdpSameTime"
+//  INVALIDPARAMETER_MUSTPROVIDEPORTMAPPINGRULES = "InvalidParameter.MustProvidePortMappingRules"
+//  INVALIDPARAMETER_SERVICENAMENOTVALID = "InvalidParameter.ServiceNameNotValid"
+//  INVALIDPARAMETER_SERVICEUSERESERVESUFFIX = "InvalidParameter.ServiceUseReserveSuffix"
+//  INVALIDPARAMETER_TOOMANYPORTMAPPINGRULES = "InvalidParameter.TooManyPortMappingRules"
+//  INVALIDPARAMETERVALUE_APPLICATIONACCESSSERVICEREACHMAXIMUM = "InvalidParameterValue.ApplicationAccessServiceReachMaximum"
+//  INVALIDPARAMETERVALUE_APPLICATIONSERVICEALREADYEXIST = "InvalidParameterValue.ApplicationServiceAlreadyExist"
+//  INVALIDPARAMETERVALUE_APPLICATIONSERVICENOTFOUND = "InvalidParameterValue.ApplicationServiceNotFound"
+//  INVALIDPARAMETERVALUE_CANNOTOVERWRITEOTHERAPPLICATIONSERVICE = "InvalidParameterValue.CannotOverWriteOtherApplicationService"
+//  INVALIDPARAMETERVALUE_INVALIDEKSSERVICETYPE = "InvalidParameterValue.InvalidEksServiceType"
+//  INVALIDPARAMETERVALUE_PORTDUPLICATEERROR = "InvalidParameterValue.PortDuplicateError"
+//  INVALIDPARAMETERVALUE_PORTISRESERVED = "InvalidParameterValue.PortIsReserved"
+//  RESOURCENOTFOUND_SERVICENOTFOUND = "ResourceNotFound.ServiceNotFound"
+//  RESOURCENOTFOUND_SERVICERUNNINGVERSIONNOTFOUND = "ResourceNotFound.ServiceRunningVersionNotFound"
+//  UNSUPPORTEDOPERATION_UNSUPPORTACTION = "UnsupportedOperation.UnsupportAction"
+func (c *Client) CreateApplicationService(request *CreateApplicationServiceRequest) (response *CreateApplicationServiceResponse, err error) {
+    return c.CreateApplicationServiceWithContext(context.Background(), request)
+}
+
+// CreateApplicationService
+// 新增访问方式
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DEFAULTINTERNALERROR = "InternalError.DefaultInternalError"
+//  INVALIDPARAMETER_APPLICATIONACCESSSERVICEREACHMAXIMUM = "InvalidParameter.ApplicationAccessServiceReachMaximum"
+//  INVALIDPARAMETER_LBSERVICECANNOTSUPPORTTCPUDPSAMETIME = "InvalidParameter.LBServiceCannotSupportTcpUdpSameTime"
+//  INVALIDPARAMETER_MUSTPROVIDEPORTMAPPINGRULES = "InvalidParameter.MustProvidePortMappingRules"
+//  INVALIDPARAMETER_SERVICENAMENOTVALID = "InvalidParameter.ServiceNameNotValid"
+//  INVALIDPARAMETER_SERVICEUSERESERVESUFFIX = "InvalidParameter.ServiceUseReserveSuffix"
+//  INVALIDPARAMETER_TOOMANYPORTMAPPINGRULES = "InvalidParameter.TooManyPortMappingRules"
+//  INVALIDPARAMETERVALUE_APPLICATIONACCESSSERVICEREACHMAXIMUM = "InvalidParameterValue.ApplicationAccessServiceReachMaximum"
+//  INVALIDPARAMETERVALUE_APPLICATIONSERVICEALREADYEXIST = "InvalidParameterValue.ApplicationServiceAlreadyExist"
+//  INVALIDPARAMETERVALUE_APPLICATIONSERVICENOTFOUND = "InvalidParameterValue.ApplicationServiceNotFound"
+//  INVALIDPARAMETERVALUE_CANNOTOVERWRITEOTHERAPPLICATIONSERVICE = "InvalidParameterValue.CannotOverWriteOtherApplicationService"
+//  INVALIDPARAMETERVALUE_INVALIDEKSSERVICETYPE = "InvalidParameterValue.InvalidEksServiceType"
+//  INVALIDPARAMETERVALUE_PORTDUPLICATEERROR = "InvalidParameterValue.PortDuplicateError"
+//  INVALIDPARAMETERVALUE_PORTISRESERVED = "InvalidParameterValue.PortIsReserved"
+//  RESOURCENOTFOUND_SERVICENOTFOUND = "ResourceNotFound.ServiceNotFound"
+//  RESOURCENOTFOUND_SERVICERUNNINGVERSIONNOTFOUND = "ResourceNotFound.ServiceRunningVersionNotFound"
+//  UNSUPPORTEDOPERATION_UNSUPPORTACTION = "UnsupportedOperation.UnsupportAction"
+func (c *Client) CreateApplicationServiceWithContext(ctx context.Context, request *CreateApplicationServiceRequest) (response *CreateApplicationServiceResponse, err error) {
+    if request == nil {
+        request = NewCreateApplicationServiceRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateApplicationService require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateApplicationServiceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateConfigDataRequest() (request *CreateConfigDataRequest) {
     request = &CreateConfigDataRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -597,6 +677,64 @@ func (c *Client) DeleteApplicationAutoscalerWithContext(ctx context.Context, req
     return
 }
 
+func NewDeleteApplicationServiceRequest() (request *DeleteApplicationServiceRequest) {
+    request = &DeleteApplicationServiceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tem", APIVersion, "DeleteApplicationService")
+    
+    
+    return
+}
+
+func NewDeleteApplicationServiceResponse() (response *DeleteApplicationServiceResponse) {
+    response = &DeleteApplicationServiceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteApplicationService
+// 删除一条访问方式
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DEFAULTINTERNALERROR = "InternalError.DefaultInternalError"
+//  INVALIDPARAMETERVALUE_APPLICATIONSERVICENOTFOUND = "InvalidParameterValue.ApplicationServiceNotFound"
+//  INVALIDPARAMETERVALUE_INVALIDEKSSERVICETYPE = "InvalidParameterValue.InvalidEksServiceType"
+//  INVALIDPARAMETERVALUE_PORTISRESERVED = "InvalidParameterValue.PortIsReserved"
+//  RESOURCENOTFOUND_SERVICENOTFOUND = "ResourceNotFound.ServiceNotFound"
+//  RESOURCENOTFOUND_SERVICERUNNINGVERSIONNOTFOUND = "ResourceNotFound.ServiceRunningVersionNotFound"
+func (c *Client) DeleteApplicationService(request *DeleteApplicationServiceRequest) (response *DeleteApplicationServiceResponse, err error) {
+    return c.DeleteApplicationServiceWithContext(context.Background(), request)
+}
+
+// DeleteApplicationService
+// 删除一条访问方式
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DEFAULTINTERNALERROR = "InternalError.DefaultInternalError"
+//  INVALIDPARAMETERVALUE_APPLICATIONSERVICENOTFOUND = "InvalidParameterValue.ApplicationServiceNotFound"
+//  INVALIDPARAMETERVALUE_INVALIDEKSSERVICETYPE = "InvalidParameterValue.InvalidEksServiceType"
+//  INVALIDPARAMETERVALUE_PORTISRESERVED = "InvalidParameterValue.PortIsReserved"
+//  RESOURCENOTFOUND_SERVICENOTFOUND = "ResourceNotFound.ServiceNotFound"
+//  RESOURCENOTFOUND_SERVICERUNNINGVERSIONNOTFOUND = "ResourceNotFound.ServiceRunningVersionNotFound"
+func (c *Client) DeleteApplicationServiceWithContext(ctx context.Context, request *DeleteApplicationServiceRequest) (response *DeleteApplicationServiceResponse, err error) {
+    if request == nil {
+        request = NewDeleteApplicationServiceRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteApplicationService require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteApplicationServiceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteIngressRequest() (request *DeleteIngressRequest) {
     request = &DeleteIngressRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -681,6 +819,7 @@ func NewDeployApplicationResponse() (response *DeployApplicationResponse) {
 //  INVALIDPARAMETERVALUE_INVALIDENVNAME = "InvalidParameterValue.InvalidEnvName"
 //  INVALIDPARAMETERVALUE_INVALIDMOUNTPATH = "InvalidParameterValue.InvalidMountPath"
 //  INVALIDPARAMETERVALUE_JDKVERSIONREQUIRED = "InvalidParameterValue.JdkVersionRequired"
+//  INVALIDPARAMETERVALUE_MUSTPROVIDEPORTMAPPINGRULES = "InvalidParameterValue.MustProvidePortMappingRules"
 //  INVALIDPARAMETERVALUE_NAMESPACENOTBELONGTOAPPID = "InvalidParameterValue.NamespaceNotBelongToAppid"
 //  INVALIDPARAMETERVALUE_OSNOTSUPPORT = "InvalidParameterValue.OsNotSupport"
 //  INVALIDPARAMETERVALUE_REGISTRYNOTBIND = "InvalidParameterValue.RegistryNotBind"
@@ -697,6 +836,7 @@ func NewDeployApplicationResponse() (response *DeployApplicationResponse) {
 //  MISSINGPARAMETER_PKGNAMENULL = "MissingParameter.PkgNameNull"
 //  MISSINGPARAMETER_SERVICEIDNULL = "MissingParameter.ServiceIdNull"
 //  MISSINGPARAMETER_SVCREPONOTREADY = "MissingParameter.SvcRepoNotReady"
+//  MISSINGPARAMETER_VPCSERVICESUBNETNULL = "MissingParameter.VpcServiceSubnetNull"
 //  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
 //  RESOURCENOTFOUND_SERVICENOTFOUND = "ResourceNotFound.ServiceNotFound"
 //  RESOURCENOTFOUND_VERSIONNAMESPACENOTFOUND = "ResourceNotFound.VersionNamespaceNotFound"
@@ -720,6 +860,7 @@ func (c *Client) DeployApplication(request *DeployApplicationRequest) (response 
 //  INVALIDPARAMETERVALUE_INVALIDENVNAME = "InvalidParameterValue.InvalidEnvName"
 //  INVALIDPARAMETERVALUE_INVALIDMOUNTPATH = "InvalidParameterValue.InvalidMountPath"
 //  INVALIDPARAMETERVALUE_JDKVERSIONREQUIRED = "InvalidParameterValue.JdkVersionRequired"
+//  INVALIDPARAMETERVALUE_MUSTPROVIDEPORTMAPPINGRULES = "InvalidParameterValue.MustProvidePortMappingRules"
 //  INVALIDPARAMETERVALUE_NAMESPACENOTBELONGTOAPPID = "InvalidParameterValue.NamespaceNotBelongToAppid"
 //  INVALIDPARAMETERVALUE_OSNOTSUPPORT = "InvalidParameterValue.OsNotSupport"
 //  INVALIDPARAMETERVALUE_REGISTRYNOTBIND = "InvalidParameterValue.RegistryNotBind"
@@ -736,6 +877,7 @@ func (c *Client) DeployApplication(request *DeployApplicationRequest) (response 
 //  MISSINGPARAMETER_PKGNAMENULL = "MissingParameter.PkgNameNull"
 //  MISSINGPARAMETER_SERVICEIDNULL = "MissingParameter.ServiceIdNull"
 //  MISSINGPARAMETER_SVCREPONOTREADY = "MissingParameter.SvcRepoNotReady"
+//  MISSINGPARAMETER_VPCSERVICESUBNETNULL = "MissingParameter.VpcServiceSubnetNull"
 //  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
 //  RESOURCENOTFOUND_SERVICENOTFOUND = "ResourceNotFound.ServiceNotFound"
 //  RESOURCENOTFOUND_VERSIONNAMESPACENOTFOUND = "ResourceNotFound.VersionNamespaceNotFound"
@@ -937,6 +1079,62 @@ func (c *Client) DescribeApplicationPodsWithContext(ctx context.Context, request
     request.SetContext(ctx)
     
     response = NewDescribeApplicationPodsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeApplicationServiceListRequest() (request *DescribeApplicationServiceListRequest) {
+    request = &DescribeApplicationServiceListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tem", APIVersion, "DescribeApplicationServiceList")
+    
+    
+    return
+}
+
+func NewDescribeApplicationServiceListResponse() (response *DescribeApplicationServiceListResponse) {
+    response = &DescribeApplicationServiceListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeApplicationServiceList
+// 查询应用访问方式列表
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_INTERFACENOTFOUND = "ResourceNotFound.InterfaceNotFound"
+//  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
+//  RESOURCENOTFOUND_SERVICENOTFOUND = "ResourceNotFound.ServiceNotFound"
+//  RESOURCENOTFOUND_VERSIONNAMESPACENOTFOUND = "ResourceNotFound.VersionNamespaceNotFound"
+//  UNSUPPORTEDOPERATION_UNSUPPORTACTION = "UnsupportedOperation.UnsupportAction"
+func (c *Client) DescribeApplicationServiceList(request *DescribeApplicationServiceListRequest) (response *DescribeApplicationServiceListResponse, err error) {
+    return c.DescribeApplicationServiceListWithContext(context.Background(), request)
+}
+
+// DescribeApplicationServiceList
+// 查询应用访问方式列表
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_INTERFACENOTFOUND = "ResourceNotFound.InterfaceNotFound"
+//  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
+//  RESOURCENOTFOUND_SERVICENOTFOUND = "ResourceNotFound.ServiceNotFound"
+//  RESOURCENOTFOUND_VERSIONNAMESPACENOTFOUND = "ResourceNotFound.VersionNamespaceNotFound"
+//  UNSUPPORTEDOPERATION_UNSUPPORTACTION = "UnsupportedOperation.UnsupportAction"
+func (c *Client) DescribeApplicationServiceListWithContext(ctx context.Context, request *DescribeApplicationServiceListRequest) (response *DescribeApplicationServiceListResponse, err error) {
+    if request == nil {
+        request = NewDescribeApplicationServiceListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeApplicationServiceList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeApplicationServiceListResponse()
     err = c.Send(request, response)
     return
 }
@@ -2101,6 +2299,74 @@ func (c *Client) ModifyApplicationReplicasWithContext(ctx context.Context, reque
     request.SetContext(ctx)
     
     response = NewModifyApplicationReplicasResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyApplicationServiceRequest() (request *ModifyApplicationServiceRequest) {
+    request = &ModifyApplicationServiceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tem", APIVersion, "ModifyApplicationService")
+    
+    
+    return
+}
+
+func NewModifyApplicationServiceResponse() (response *ModifyApplicationServiceResponse) {
+    response = &ModifyApplicationServiceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyApplicationService
+// 修改服务访问方式列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DEFAULTINTERNALERROR = "InternalError.DefaultInternalError"
+//  INVALIDPARAMETER_APPLICATIONACCESSSERVICEREACHMAXIMUM = "InvalidParameter.ApplicationAccessServiceReachMaximum"
+//  INVALIDPARAMETER_LBSERVICECANNOTSUPPORTTCPUDPSAMETIME = "InvalidParameter.LBServiceCannotSupportTcpUdpSameTime"
+//  INVALIDPARAMETER_MUSTPROVIDEPORTMAPPINGRULES = "InvalidParameter.MustProvidePortMappingRules"
+//  INVALIDPARAMETER_SERVICENAMENOTVALID = "InvalidParameter.ServiceNameNotValid"
+//  INVALIDPARAMETER_SERVICEUSERESERVESUFFIX = "InvalidParameter.ServiceUseReserveSuffix"
+//  INVALIDPARAMETER_TOOMANYPORTMAPPINGRULES = "InvalidParameter.TooManyPortMappingRules"
+//  INVALIDPARAMETERVALUE_INVALIDEKSSERVICETYPE = "InvalidParameterValue.InvalidEksServiceType"
+//  INVALIDPARAMETERVALUE_PORTISRESERVED = "InvalidParameterValue.PortIsReserved"
+//  RESOURCENOTFOUND_SERVICENOTFOUND = "ResourceNotFound.ServiceNotFound"
+//  RESOURCENOTFOUND_SERVICERUNNINGVERSIONNOTFOUND = "ResourceNotFound.ServiceRunningVersionNotFound"
+func (c *Client) ModifyApplicationService(request *ModifyApplicationServiceRequest) (response *ModifyApplicationServiceResponse, err error) {
+    return c.ModifyApplicationServiceWithContext(context.Background(), request)
+}
+
+// ModifyApplicationService
+// 修改服务访问方式列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DEFAULTINTERNALERROR = "InternalError.DefaultInternalError"
+//  INVALIDPARAMETER_APPLICATIONACCESSSERVICEREACHMAXIMUM = "InvalidParameter.ApplicationAccessServiceReachMaximum"
+//  INVALIDPARAMETER_LBSERVICECANNOTSUPPORTTCPUDPSAMETIME = "InvalidParameter.LBServiceCannotSupportTcpUdpSameTime"
+//  INVALIDPARAMETER_MUSTPROVIDEPORTMAPPINGRULES = "InvalidParameter.MustProvidePortMappingRules"
+//  INVALIDPARAMETER_SERVICENAMENOTVALID = "InvalidParameter.ServiceNameNotValid"
+//  INVALIDPARAMETER_SERVICEUSERESERVESUFFIX = "InvalidParameter.ServiceUseReserveSuffix"
+//  INVALIDPARAMETER_TOOMANYPORTMAPPINGRULES = "InvalidParameter.TooManyPortMappingRules"
+//  INVALIDPARAMETERVALUE_INVALIDEKSSERVICETYPE = "InvalidParameterValue.InvalidEksServiceType"
+//  INVALIDPARAMETERVALUE_PORTISRESERVED = "InvalidParameterValue.PortIsReserved"
+//  RESOURCENOTFOUND_SERVICENOTFOUND = "ResourceNotFound.ServiceNotFound"
+//  RESOURCENOTFOUND_SERVICERUNNINGVERSIONNOTFOUND = "ResourceNotFound.ServiceRunningVersionNotFound"
+func (c *Client) ModifyApplicationServiceWithContext(ctx context.Context, request *ModifyApplicationServiceRequest) (response *ModifyApplicationServiceResponse, err error) {
+    if request == nil {
+        request = NewModifyApplicationServiceRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyApplicationService require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyApplicationServiceResponse()
     err = c.Send(request, response)
     return
 }

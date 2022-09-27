@@ -4992,7 +4992,7 @@ type DescribeTopicRequestParams struct {
 	// 偏移量，不填默认为0
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 返回数量，不填则默认为10，最大值为50
+	// 返回数量，不填则默认为20，最大值为50
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
 	// Acl预设策略名称
@@ -5011,7 +5011,7 @@ type DescribeTopicRequest struct {
 	// 偏移量，不填默认为0
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 返回数量，不填则默认为10，最大值为50
+	// 返回数量，不填则默认为20，最大值为50
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
 	// Acl预设策略名称

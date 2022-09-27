@@ -91,7 +91,6 @@ type CreateFileExportUserJobRequestParams struct {
 
 	// 导出的数据类型
 	// 
-	// <li> **JSON** </li>  JSON
 	// <li> **NDJSON** </li>  New-line Delimited JSON
 	// <li> **CSV** </li>  Comma-Separated Values
 	Format *string `json:"Format,omitempty" name:"Format"`
@@ -114,7 +113,6 @@ type CreateFileExportUserJobRequest struct {
 
 	// 导出的数据类型
 	// 
-	// <li> **JSON** </li>  JSON
 	// <li> **NDJSON** </li>  New-line Delimited JSON
 	// <li> **CSV** </li>  Comma-Separated Values
 	Format *string `json:"Format,omitempty" name:"Format"`
@@ -207,6 +205,21 @@ type CreateUserRequestParams struct {
 
 	// 自定义属性
 	CustomizationAttributes []*MemberMap `json:"CustomizationAttributes,omitempty" name:"CustomizationAttributes"`
+
+	// 索引字段1
+	IndexedAttribute1 *string `json:"IndexedAttribute1,omitempty" name:"IndexedAttribute1"`
+
+	// 索引字段2
+	IndexedAttribute2 *string `json:"IndexedAttribute2,omitempty" name:"IndexedAttribute2"`
+
+	// 索引字段3
+	IndexedAttribute3 *string `json:"IndexedAttribute3,omitempty" name:"IndexedAttribute3"`
+
+	// 索引字段4
+	IndexedAttribute4 *string `json:"IndexedAttribute4,omitempty" name:"IndexedAttribute4"`
+
+	// 索引字段5
+	IndexedAttribute5 *string `json:"IndexedAttribute5,omitempty" name:"IndexedAttribute5"`
 }
 
 type CreateUserRequest struct {
@@ -241,6 +254,21 @@ type CreateUserRequest struct {
 
 	// 自定义属性
 	CustomizationAttributes []*MemberMap `json:"CustomizationAttributes,omitempty" name:"CustomizationAttributes"`
+
+	// 索引字段1
+	IndexedAttribute1 *string `json:"IndexedAttribute1,omitempty" name:"IndexedAttribute1"`
+
+	// 索引字段2
+	IndexedAttribute2 *string `json:"IndexedAttribute2,omitempty" name:"IndexedAttribute2"`
+
+	// 索引字段3
+	IndexedAttribute3 *string `json:"IndexedAttribute3,omitempty" name:"IndexedAttribute3"`
+
+	// 索引字段4
+	IndexedAttribute4 *string `json:"IndexedAttribute4,omitempty" name:"IndexedAttribute4"`
+
+	// 索引字段5
+	IndexedAttribute5 *string `json:"IndexedAttribute5,omitempty" name:"IndexedAttribute5"`
 }
 
 func (r *CreateUserRequest) ToJsonString() string {
@@ -265,6 +293,11 @@ func (r *CreateUserRequest) FromJsonString(s string) error {
 	delete(f, "UserGroup")
 	delete(f, "Birthdate")
 	delete(f, "CustomizationAttributes")
+	delete(f, "IndexedAttribute1")
+	delete(f, "IndexedAttribute2")
+	delete(f, "IndexedAttribute3")
+	delete(f, "IndexedAttribute4")
+	delete(f, "IndexedAttribute5")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateUserRequest has unknown keys!", "")
 	}
@@ -449,6 +482,9 @@ type DescribeUserRequestParams struct {
 
 	// 是否返回明文
 	Original *bool `json:"Original,omitempty" name:"Original"`
+
+	// 排序设置
+	Sort *Sort `json:"Sort,omitempty" name:"Sort"`
 }
 
 type DescribeUserRequest struct {
@@ -465,6 +501,9 @@ type DescribeUserRequest struct {
 
 	// 是否返回明文
 	Original *bool `json:"Original,omitempty" name:"Original"`
+
+	// 排序设置
+	Sort *Sort `json:"Sort,omitempty" name:"Sort"`
 }
 
 func (r *DescribeUserRequest) ToJsonString() string {
@@ -483,6 +522,7 @@ func (r *DescribeUserRequest) FromJsonString(s string) error {
 	delete(f, "Pageable")
 	delete(f, "Filters")
 	delete(f, "Original")
+	delete(f, "Sort")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeUserRequest has unknown keys!", "")
 	}
@@ -639,6 +679,21 @@ type ImportUser struct {
 
 	// 密码加密方式（SHA1;BCRYPT）
 	PasswordEncryptTypeEnum *string `json:"PasswordEncryptTypeEnum,omitempty" name:"PasswordEncryptTypeEnum"`
+
+	// 索引字段1
+	IndexedAttribute1 *string `json:"IndexedAttribute1,omitempty" name:"IndexedAttribute1"`
+
+	// 索引字段2
+	IndexedAttribute2 *string `json:"IndexedAttribute2,omitempty" name:"IndexedAttribute2"`
+
+	// 索引字段3
+	IndexedAttribute3 *string `json:"IndexedAttribute3,omitempty" name:"IndexedAttribute3"`
+
+	// 索引字段4
+	IndexedAttribute4 *string `json:"IndexedAttribute4,omitempty" name:"IndexedAttribute4"`
+
+	// 索引字段5
+	IndexedAttribute5 *string `json:"IndexedAttribute5,omitempty" name:"IndexedAttribute5"`
 }
 
 type Job struct {
@@ -664,7 +719,6 @@ type Job struct {
 
 	// 任务的数据类型
 	// 
-	// <li> **JSON** </li>  JSON
 	// <li> **NDJSON** </li>  New-line Delimited JSON
 	// <li> **CSV** </li>  Comma-Separated Values
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -1197,6 +1251,9 @@ type QueryUserFilter struct {
 
 	// 逻辑值，等于true，不等于false
 	Logic *bool `json:"Logic,omitempty" name:"Logic"`
+
+	// 操作逻辑符（支持> < = >= <=  != between）
+	OperateLogic *string `json:"OperateLogic,omitempty" name:"OperateLogic"`
 }
 
 // Predefined struct for user
@@ -1352,6 +1409,14 @@ func (r *SetPasswordResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type Sort struct {
+	// 排序字段的key，参考自定义属性
+	PropertyKey *string `json:"PropertyKey,omitempty" name:"PropertyKey"`
+
+	// 升序或者降序，ASC/DESC
+	Order *string `json:"Order,omitempty" name:"Order"`
+}
+
 // Predefined struct for user
 type UpdateUserRequestParams struct {
 	// 用户ID
@@ -1383,6 +1448,21 @@ type UpdateUserRequestParams struct {
 
 	// 自定义属性
 	CustomizationAttributes []*MemberMap `json:"CustomizationAttributes,omitempty" name:"CustomizationAttributes"`
+
+	// 索引字段1
+	IndexedAttribute1 *string `json:"IndexedAttribute1,omitempty" name:"IndexedAttribute1"`
+
+	// 索引字段2
+	IndexedAttribute2 *string `json:"IndexedAttribute2,omitempty" name:"IndexedAttribute2"`
+
+	// 索引字段3
+	IndexedAttribute3 *string `json:"IndexedAttribute3,omitempty" name:"IndexedAttribute3"`
+
+	// 索引字段4
+	IndexedAttribute4 *string `json:"IndexedAttribute4,omitempty" name:"IndexedAttribute4"`
+
+	// 索引字段5
+	IndexedAttribute5 *string `json:"IndexedAttribute5,omitempty" name:"IndexedAttribute5"`
 }
 
 type UpdateUserRequest struct {
@@ -1417,6 +1497,21 @@ type UpdateUserRequest struct {
 
 	// 自定义属性
 	CustomizationAttributes []*MemberMap `json:"CustomizationAttributes,omitempty" name:"CustomizationAttributes"`
+
+	// 索引字段1
+	IndexedAttribute1 *string `json:"IndexedAttribute1,omitempty" name:"IndexedAttribute1"`
+
+	// 索引字段2
+	IndexedAttribute2 *string `json:"IndexedAttribute2,omitempty" name:"IndexedAttribute2"`
+
+	// 索引字段3
+	IndexedAttribute3 *string `json:"IndexedAttribute3,omitempty" name:"IndexedAttribute3"`
+
+	// 索引字段4
+	IndexedAttribute4 *string `json:"IndexedAttribute4,omitempty" name:"IndexedAttribute4"`
+
+	// 索引字段5
+	IndexedAttribute5 *string `json:"IndexedAttribute5,omitempty" name:"IndexedAttribute5"`
 }
 
 func (r *UpdateUserRequest) ToJsonString() string {
@@ -1441,6 +1536,11 @@ func (r *UpdateUserRequest) FromJsonString(s string) error {
 	delete(f, "UserGroup")
 	delete(f, "Birthdate")
 	delete(f, "CustomizationAttributes")
+	delete(f, "IndexedAttribute1")
+	delete(f, "IndexedAttribute2")
+	delete(f, "IndexedAttribute3")
+	delete(f, "IndexedAttribute4")
+	delete(f, "IndexedAttribute5")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateUserRequest has unknown keys!", "")
 	}
@@ -1689,4 +1789,24 @@ type User struct {
 	// 锁定时间点
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LockTime *int64 `json:"LockTime,omitempty" name:"LockTime"`
+
+	// 索引字段1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IndexedAttribute1 *string `json:"IndexedAttribute1,omitempty" name:"IndexedAttribute1"`
+
+	// 索引字段2
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IndexedAttribute2 *string `json:"IndexedAttribute2,omitempty" name:"IndexedAttribute2"`
+
+	// 索引字段3
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IndexedAttribute3 *string `json:"IndexedAttribute3,omitempty" name:"IndexedAttribute3"`
+
+	// 索引字段4
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IndexedAttribute4 *string `json:"IndexedAttribute4,omitempty" name:"IndexedAttribute4"`
+
+	// 索引字段5
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IndexedAttribute5 *string `json:"IndexedAttribute5,omitempty" name:"IndexedAttribute5"`
 }

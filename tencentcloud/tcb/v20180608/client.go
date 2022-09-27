@@ -408,6 +408,7 @@ func NewCreateCloudBaseRunServerVersionResponse() (response *CreateCloudBaseRunS
 //  INVALIDPARAMETER_SERVICENOTEXIST = "InvalidParameter.ServiceNotExist"
 //  LIMITEXCEEDED_ERRNAMESPACEMAXLIMIT = "LimitExceeded.ErrNamespaceMaxLimit"
 //  LIMITEXCEEDED_ERRREPOMAXLIMIT = "LimitExceeded.ErrRepoMaxLimit"
+//  RESOURCEINUSE = "ResourceInUse"
 func (c *Client) CreateCloudBaseRunServerVersion(request *CreateCloudBaseRunServerVersionRequest) (response *CreateCloudBaseRunServerVersionResponse, err error) {
     return c.CreateCloudBaseRunServerVersionWithContext(context.Background(), request)
 }
@@ -421,6 +422,7 @@ func (c *Client) CreateCloudBaseRunServerVersion(request *CreateCloudBaseRunServ
 //  INVALIDPARAMETER_SERVICENOTEXIST = "InvalidParameter.ServiceNotExist"
 //  LIMITEXCEEDED_ERRNAMESPACEMAXLIMIT = "LimitExceeded.ErrNamespaceMaxLimit"
 //  LIMITEXCEEDED_ERRREPOMAXLIMIT = "LimitExceeded.ErrRepoMaxLimit"
+//  RESOURCEINUSE = "ResourceInUse"
 func (c *Client) CreateCloudBaseRunServerVersionWithContext(ctx context.Context, request *CreateCloudBaseRunServerVersionRequest) (response *CreateCloudBaseRunServerVersionResponse, err error) {
     if request == nil {
         request = NewCreateCloudBaseRunServerVersionRequest()
@@ -1685,6 +1687,7 @@ func NewDescribeCloudBaseRunResourceResponse() (response *DescribeCloudBaseRunRe
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeCloudBaseRunResource(request *DescribeCloudBaseRunResourceRequest) (response *DescribeCloudBaseRunResourceResponse, err error) {
     return c.DescribeCloudBaseRunResourceWithContext(context.Background(), request)
 }
@@ -1695,6 +1698,7 @@ func (c *Client) DescribeCloudBaseRunResource(request *DescribeCloudBaseRunResou
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeCloudBaseRunResourceWithContext(ctx context.Context, request *DescribeCloudBaseRunResourceRequest) (response *DescribeCloudBaseRunResourceResponse, err error) {
     if request == nil {
         request = NewDescribeCloudBaseRunResourceRequest()

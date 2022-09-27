@@ -106,13 +106,13 @@ func NewCreateWorkspaceByAgentResponse() (response *CreateWorkspaceByAgentRespon
 }
 
 // CreateWorkspaceByAgent
-// 云主机方式创建工作空间
+// 云服务器方式创建工作空间
 func (c *Client) CreateWorkspaceByAgent(request *CreateWorkspaceByAgentRequest) (response *CreateWorkspaceByAgentResponse, err error) {
     return c.CreateWorkspaceByAgentWithContext(context.Background(), request)
 }
 
 // CreateWorkspaceByAgent
-// 云主机方式创建工作空间
+// 云服务器方式创建工作空间
 func (c *Client) CreateWorkspaceByAgentWithContext(ctx context.Context, request *CreateWorkspaceByAgentRequest) (response *CreateWorkspaceByAgentResponse, err error) {
     if request == nil {
         request = NewCreateWorkspaceByAgentRequest()
@@ -148,13 +148,13 @@ func NewCreateWorkspaceByTemplateResponse() (response *CreateWorkspaceByTemplate
 }
 
 // CreateWorkspaceByTemplate
-// 快速开始, 基于模版创建工作空间
+// 快速开始, 基于模板创建工作空间
 func (c *Client) CreateWorkspaceByTemplate(request *CreateWorkspaceByTemplateRequest) (response *CreateWorkspaceByTemplateResponse, err error) {
     return c.CreateWorkspaceByTemplateWithContext(context.Background(), request)
 }
 
 // CreateWorkspaceByTemplate
-// 快速开始, 基于模版创建工作空间
+// 快速开始, 基于模板创建工作空间
 func (c *Client) CreateWorkspaceByTemplateWithContext(ctx context.Context, request *CreateWorkspaceByTemplateRequest) (response *CreateWorkspaceByTemplateResponse, err error) {
     if request == nil {
         request = NewCreateWorkspaceByTemplateRequest()
@@ -274,13 +274,13 @@ func NewDescribeCustomizeTemplatesResponse() (response *DescribeCustomizeTemplat
 }
 
 // DescribeCustomizeTemplates
-// 获取所有模版列表
+// 获取所有模板列表
 func (c *Client) DescribeCustomizeTemplates(request *DescribeCustomizeTemplatesRequest) (response *DescribeCustomizeTemplatesResponse, err error) {
     return c.DescribeCustomizeTemplatesWithContext(context.Background(), request)
 }
 
 // DescribeCustomizeTemplates
-// 获取所有模版列表
+// 获取所有模板列表
 func (c *Client) DescribeCustomizeTemplatesWithContext(ctx context.Context, request *DescribeCustomizeTemplatesRequest) (response *DescribeCustomizeTemplatesResponse, err error) {
     if request == nil {
         request = NewDescribeCustomizeTemplatesRequest()
@@ -568,13 +568,13 @@ func NewModifyCustomizeTemplateVersionControlResponse() (response *ModifyCustomi
 }
 
 // ModifyCustomizeTemplateVersionControl
-// 修改模版默认代码仓库
+// 修改模板默认代码仓库
 func (c *Client) ModifyCustomizeTemplateVersionControl(request *ModifyCustomizeTemplateVersionControlRequest) (response *ModifyCustomizeTemplateVersionControlResponse, err error) {
     return c.ModifyCustomizeTemplateVersionControlWithContext(context.Background(), request)
 }
 
 // ModifyCustomizeTemplateVersionControl
-// 修改模版默认代码仓库
+// 修改模板默认代码仓库
 func (c *Client) ModifyCustomizeTemplateVersionControlWithContext(ctx context.Context, request *ModifyCustomizeTemplateVersionControlRequest) (response *ModifyCustomizeTemplateVersionControlResponse, err error) {
     if request == nil {
         request = NewModifyCustomizeTemplateVersionControlRequest()

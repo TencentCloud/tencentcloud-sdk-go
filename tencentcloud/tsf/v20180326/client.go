@@ -198,6 +198,7 @@ func NewAssociateBusinessLogConfigResponse() (response *AssociateBusinessLogConf
 //  INTERNALERROR_TSFAPMBUSILOGCFGAPPRELATIONMASTERERROR = "InternalError.TsfApmBusiLogCfgAppRelationMasterError"
 //  INTERNALERROR_TSFAPMCOMMONERROR = "InternalError.TsfApmCommonError"
 //  INVALIDPARAMETER_TSFAPMBUSILOGCFGAPPRELATIONPARAMERROR = "InvalidParameter.TsfApmBusiLogCfgAppRelationParamError"
+//  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
 //  UNAUTHORIZEDOPERATION_NOLICENSE = "UnauthorizedOperation.NoLicense"
 //  UNAUTHORIZEDOPERATION_NOPRIVILEGE = "UnauthorizedOperation.NoPrivilege"
 func (c *Client) AssociateBusinessLogConfig(request *AssociateBusinessLogConfigRequest) (response *AssociateBusinessLogConfigResponse, err error) {
@@ -213,6 +214,7 @@ func (c *Client) AssociateBusinessLogConfig(request *AssociateBusinessLogConfigR
 //  INTERNALERROR_TSFAPMBUSILOGCFGAPPRELATIONMASTERERROR = "InternalError.TsfApmBusiLogCfgAppRelationMasterError"
 //  INTERNALERROR_TSFAPMCOMMONERROR = "InternalError.TsfApmCommonError"
 //  INVALIDPARAMETER_TSFAPMBUSILOGCFGAPPRELATIONPARAMERROR = "InvalidParameter.TsfApmBusiLogCfgAppRelationParamError"
+//  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
 //  UNAUTHORIZEDOPERATION_NOLICENSE = "UnauthorizedOperation.NoLicense"
 //  UNAUTHORIZEDOPERATION_NOPRIVILEGE = "UnauthorizedOperation.NoPrivilege"
 func (c *Client) AssociateBusinessLogConfigWithContext(ctx context.Context, request *AssociateBusinessLogConfigRequest) (response *AssociateBusinessLogConfigResponse, err error) {
@@ -5273,6 +5275,7 @@ func NewDescribeGroupResponse() (response *DescribeGroupResponse) {
 //  FAILEDOPERATION_GROUPQUERYFAILD = "FailedOperation.GroupQueryFaild"
 //  FAILEDOPERATION_NAMESPACEQUERYFAILED = "FailedOperation.NamespaceQueryFailed"
 //  INTERNALERROR_GROUPCOMMONERROR = "InternalError.GroupCommonError"
+//  INTERNALERROR_INSTANCECOMMONERROR = "InternalError.InstanceCommonError"
 //  INTERNALERROR_UNHANDLEDEXCEPTION = "InternalError.UnhandledException"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  INVALIDPARAMETER_REPOPACKAGEPARAMERROR = "InvalidParameter.RepoPackageParamError"
@@ -5292,6 +5295,7 @@ func (c *Client) DescribeGroup(request *DescribeGroupRequest) (response *Describ
 //  FAILEDOPERATION_GROUPQUERYFAILD = "FailedOperation.GroupQueryFaild"
 //  FAILEDOPERATION_NAMESPACEQUERYFAILED = "FailedOperation.NamespaceQueryFailed"
 //  INTERNALERROR_GROUPCOMMONERROR = "InternalError.GroupCommonError"
+//  INTERNALERROR_INSTANCECOMMONERROR = "InternalError.InstanceCommonError"
 //  INTERNALERROR_UNHANDLEDEXCEPTION = "InternalError.UnhandledException"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  INVALIDPARAMETER_REPOPACKAGEPARAMERROR = "InvalidParameter.RepoPackageParamError"
@@ -10962,6 +10966,7 @@ func NewStartContainerGroupResponse() (response *StartContainerGroupResponse) {
 //  INTERNALERROR_CONTAINERGROUPKUBERNETEAPIINVOKEERROR = "InternalError.ContainergroupKuberneteApiInvokeError"
 //  INTERNALERROR_UNHANDLEDEXCEPTION = "InternalError.UnhandledException"
 //  INVALIDPARAMETER_KUBERNETESPARAMERROR = "InvalidParameter.KubernetesParamError"
+//  INVALIDPARAMETERVALUE_CONTAINERGROUPYAMLUSERCONTAINERNOTFOUND = "InvalidParameterValue.ContainergroupYamlUserContainerNotFound"
 //  RESOURCENOTFOUND_CONTAINERGROUPGROUPNOTFOUND = "ResourceNotFound.ContainergroupGroupNotFound"
 //  UNAUTHORIZEDOPERATION_NOPRIVILEGE = "UnauthorizedOperation.NoPrivilege"
 func (c *Client) StartContainerGroup(request *StartContainerGroupRequest) (response *StartContainerGroupResponse, err error) {
@@ -10977,6 +10982,7 @@ func (c *Client) StartContainerGroup(request *StartContainerGroupRequest) (respo
 //  INTERNALERROR_CONTAINERGROUPKUBERNETEAPIINVOKEERROR = "InternalError.ContainergroupKuberneteApiInvokeError"
 //  INTERNALERROR_UNHANDLEDEXCEPTION = "InternalError.UnhandledException"
 //  INVALIDPARAMETER_KUBERNETESPARAMERROR = "InvalidParameter.KubernetesParamError"
+//  INVALIDPARAMETERVALUE_CONTAINERGROUPYAMLUSERCONTAINERNOTFOUND = "InvalidParameterValue.ContainergroupYamlUserContainerNotFound"
 //  RESOURCENOTFOUND_CONTAINERGROUPGROUPNOTFOUND = "ResourceNotFound.ContainergroupGroupNotFound"
 //  UNAUTHORIZEDOPERATION_NOPRIVILEGE = "UnauthorizedOperation.NoPrivilege"
 func (c *Client) StartContainerGroupWithContext(ctx context.Context, request *StartContainerGroupRequest) (response *StartContainerGroupResponse, err error) {

@@ -83,6 +83,9 @@ const (
 	// RPC请求失败，一般为算法微服务故障。
 	FAILEDOPERATION_RPCFAIL = "FailedOperation.RpcFail"
 
+	// 任务不存在。
+	FAILEDOPERATION_TASKNOTEXIST = "FailedOperation.TaskNotExist"
+
 	// 内部错误。
 	INTERNALERROR = "InternalError"
 
