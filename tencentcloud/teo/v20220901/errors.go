@@ -71,6 +71,9 @@ const (
 	// 参数错误。
 	INVALIDPARAMETER = "InvalidParameter"
 
+	// 操作频繁，请稍后重试。
+	INVALIDPARAMETER_ACTIONINPROGRESS = "InvalidParameter.ActionInProgress"
+
 	// 域名不存在或不属于该账号。
 	INVALIDPARAMETER_DOMAINNOTFOUND = "InvalidParameter.DomainNotFound"
 
@@ -83,9 +86,6 @@ const (
 	// 无效的客户端IP请求头。
 	INVALIDPARAMETER_INVALIDCLIENTIPHEADERNAME = "InvalidParameter.InvalidClientIpHeaderName"
 
-	// 不合法的过滤字段。
-	INVALIDPARAMETER_INVALIDFILTERNAME = "InvalidParameter.InvalidFilterName"
-
 	// 无效的源站。
 	INVALIDPARAMETER_INVALIDORIGIN = "InvalidParameter.InvalidOrigin"
 
@@ -97,6 +97,18 @@ const (
 
 	// 无套餐包。
 	INVALIDPARAMETER_INVALIDRESOURCEIDBILLING = "InvalidParameter.InvalidResourceIdBilling"
+
+	// 无效的规则引擎操作。
+	INVALIDPARAMETER_INVALIDRULEENGINEACTION = "InvalidParameter.InvalidRuleEngineAction"
+
+	// 无效的规则引擎条件。
+	INVALIDPARAMETER_INVALIDRULEENGINETARGET = "InvalidParameter.InvalidRuleEngineTarget"
+
+	// 无效的规则引擎文件后缀条件。
+	INVALIDPARAMETER_INVALIDRULEENGINETARGETSEXTENSION = "InvalidParameter.InvalidRuleEngineTargetsExtension"
+
+	// 无效的规则引擎URL条件。
+	INVALIDPARAMETER_INVALIDRULEENGINETARGETSURL = "InvalidParameter.InvalidRuleEngineTargetsUrl"
 
 	// URL重写的目标URL无效。
 	INVALIDPARAMETER_INVALIDURLREDIRECTURL = "InvalidParameter.InvalidUrlRedirectUrl"

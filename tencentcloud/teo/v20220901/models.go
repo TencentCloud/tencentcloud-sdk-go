@@ -191,6 +191,17 @@ type AdvancedFilter struct {
 	Fuzzy *bool `json:"Fuzzy,omitempty" name:"Fuzzy"`
 }
 
+type AdvancedOriginGroup struct {
+	// 高级回源配置的匹配条件。其中相同的Target只能出现一次。
+	OriginGroupConditions []*OriginGroupCondition `json:"OriginGroupConditions,omitempty" name:"OriginGroupConditions"`
+
+	// 主源站组ID。
+	OriginGroupId *string `json:"OriginGroupId,omitempty" name:"OriginGroupId"`
+
+	// 备用源站组ID。
+	BackupOriginGroupId *string `json:"BackupOriginGroupId,omitempty" name:"BackupOriginGroupId"`
+}
+
 type AiRule struct {
 	// AI规则引擎状态，取值有：
 	// <li> smart_status_close：关闭；</li>
@@ -647,6 +658,17 @@ func (r *CheckCertificateResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type ClientIpCountry struct {
+	// 配置开关，取值有：
+	// <li>on：开启；</li>
+	// <li>off：关闭。</li>
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
+
+	// 存放客户端IP所属地域信息的请求头名称，当Switch=on时有效。
+	// 为空则使用默认值：EO-Client-IPCountry。
+	HeaderName *string `json:"HeaderName,omitempty" name:"HeaderName"`
+}
+
 type ClientIpHeader struct {
 	// 配置开关，取值有：
 	// <li>on：开启；</li>
@@ -731,6 +753,11 @@ type ClsLogTopicInfo struct {
 	// <li>mainland：中国大陆境内;</li>
 	// <li>overseas：全球（不含中国大陆）。</li>
 	Area *string `json:"Area,omitempty" name:"Area"`
+
+	// 推送任务类型，取值有：
+	// <li>cls：推送到cls；</li>
+	// <li>custom_endpoint：推送到自定义接口。</li>
+	LogSetType *string `json:"LogSetType,omitempty" name:"LogSetType"`
 }
 
 type CodeAction struct {
@@ -1369,6 +1396,14 @@ type CreateLoadBalancingRequestParams struct {
 	// 当Type=dns_only时，指解析记录在DNS服务器缓存的生存时间。
 	// 取值范围60-86400，单位：秒，不填写使用默认值：600。
 	TTL *uint64 `json:"TTL,omitempty" name:"TTL"`
+
+	// 回源类型，取值有：
+	// <li>normal：主备回源；</li>
+	// <li>advanced：高级回源配置（仅当Type=proxied时可以使用）。</li>为空表示使用主备回源。
+	OriginType *string `json:"OriginType,omitempty" name:"OriginType"`
+
+	// 高级回源配置，当OriginType=advanced时有效。
+	AdvancedOriginGroups []*AdvancedOriginGroup `json:"AdvancedOriginGroups,omitempty" name:"AdvancedOriginGroups"`
 }
 
 type CreateLoadBalancingRequest struct {
@@ -1394,6 +1429,14 @@ type CreateLoadBalancingRequest struct {
 	// 当Type=dns_only时，指解析记录在DNS服务器缓存的生存时间。
 	// 取值范围60-86400，单位：秒，不填写使用默认值：600。
 	TTL *uint64 `json:"TTL,omitempty" name:"TTL"`
+
+	// 回源类型，取值有：
+	// <li>normal：主备回源；</li>
+	// <li>advanced：高级回源配置（仅当Type=proxied时可以使用）。</li>为空表示使用主备回源。
+	OriginType *string `json:"OriginType,omitempty" name:"OriginType"`
+
+	// 高级回源配置，当OriginType=advanced时有效。
+	AdvancedOriginGroups []*AdvancedOriginGroup `json:"AdvancedOriginGroups,omitempty" name:"AdvancedOriginGroups"`
 }
 
 func (r *CreateLoadBalancingRequest) ToJsonString() string {
@@ -1414,6 +1457,8 @@ func (r *CreateLoadBalancingRequest) FromJsonString(s string) error {
 	delete(f, "OriginGroupId")
 	delete(f, "BackupOriginGroupId")
 	delete(f, "TTL")
+	delete(f, "OriginType")
+	delete(f, "AdvancedOriginGroups")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateLoadBalancingRequest has unknown keys!", "")
 	}
@@ -1667,6 +1712,9 @@ type CreateOriginGroupRequestParams struct {
 
 	// 源站记录信息。
 	OriginRecords []*OriginRecord `json:"OriginRecords,omitempty" name:"OriginRecords"`
+
+	// 回源Host，仅当OriginType=self时可以设置。
+	HostHeader *string `json:"HostHeader,omitempty" name:"HostHeader"`
 }
 
 type CreateOriginGroupRequest struct {
@@ -1692,6 +1740,9 @@ type CreateOriginGroupRequest struct {
 
 	// 源站记录信息。
 	OriginRecords []*OriginRecord `json:"OriginRecords,omitempty" name:"OriginRecords"`
+
+	// 回源Host，仅当OriginType=self时可以设置。
+	HostHeader *string `json:"HostHeader,omitempty" name:"HostHeader"`
 }
 
 func (r *CreateOriginGroupRequest) ToJsonString() string {
@@ -1711,6 +1762,7 @@ func (r *CreateOriginGroupRequest) FromJsonString(s string) error {
 	delete(f, "OriginGroupName")
 	delete(f, "ConfigurationType")
 	delete(f, "OriginRecords")
+	delete(f, "HostHeader")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateOriginGroupRequest has unknown keys!", "")
 	}
@@ -2834,14 +2886,19 @@ type DefaultServerCertInfo struct {
 	SubjectAltName []*string `json:"SubjectAltName,omitempty" name:"SubjectAltName"`
 
 	// 部署状态，取值有：
-	// <li>processing: 部署中;</li>
-	// <li>deployed: 已部署。</li>
+	// <li>processing: 部署中；</li>
+	// <li>deployed: 已部署；</li>
+	// <li>failed: 部署失败。</li>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *string `json:"Status,omitempty" name:"Status"`
 
 	// Status为失败时,此字段返回失败原因。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Message *string `json:"Message,omitempty" name:"Message"`
+
+	// 证书算法。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SignAlgo *string `json:"SignAlgo,omitempty" name:"SignAlgo"`
 }
 
 // Predefined struct for user
@@ -3100,7 +3157,7 @@ type DeleteLogTopicTaskRequestParams struct {
 	// 待删除的推送任务ID。
 	TopicId *string `json:"TopicId,omitempty" name:"TopicId"`
 
-	// 推送任务所属日志集地域。
+	// 推送任务所属日志集地域，此字段仅用于CLS推送任务。
 	LogSetRegion *string `json:"LogSetRegion,omitempty" name:"LogSetRegion"`
 }
 
@@ -3110,7 +3167,7 @@ type DeleteLogTopicTaskRequest struct {
 	// 待删除的推送任务ID。
 	TopicId *string `json:"TopicId,omitempty" name:"TopicId"`
 
-	// 推送任务所属日志集地域。
+	// 推送任务所属日志集地域，此字段仅用于CLS推送任务。
 	LogSetRegion *string `json:"LogSetRegion,omitempty" name:"LogSetRegion"`
 }
 
@@ -3420,7 +3477,7 @@ type DescribeApplicationProxiesRequestParams struct {
 	// 分页查询限制数目。默认值：20，最大值：1000。
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 过滤条件，Filters.Values的上限为20。详细的过滤条件如下：<li>proxy-id<br>   按照【<strong>代理ID</strong>】进行过滤。代理ID形如：proxy-ev2sawbwfd。<br>   类型：String<br>   必选：否<li>zone-id<br>   按照【<strong>站点ID</strong>】进行过滤。站点ID形如：zone-vawer2vadg。<br>   类型：String<br>   必选：否
+	// 过滤条件，Filters.Values的上限为20。详细的过滤条件如下：<li>proxy-id<br>   按照【<strong>代理ID</strong>】进行过滤。代理ID形如：proxy-ev2sawbwfd。<br>   类型：String<br>   必选：否</li><li>zone-id<br>   按照【<strong>站点ID</strong>】进行过滤。站点ID形如：zone-vawer2vadg。<br>   类型：String<br>   必选：否</li>
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 }
 
@@ -3433,7 +3490,7 @@ type DescribeApplicationProxiesRequest struct {
 	// 分页查询限制数目。默认值：20，最大值：1000。
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 过滤条件，Filters.Values的上限为20。详细的过滤条件如下：<li>proxy-id<br>   按照【<strong>代理ID</strong>】进行过滤。代理ID形如：proxy-ev2sawbwfd。<br>   类型：String<br>   必选：否<li>zone-id<br>   按照【<strong>站点ID</strong>】进行过滤。站点ID形如：zone-vawer2vadg。<br>   类型：String<br>   必选：否
+	// 过滤条件，Filters.Values的上限为20。详细的过滤条件如下：<li>proxy-id<br>   按照【<strong>代理ID</strong>】进行过滤。代理ID形如：proxy-ev2sawbwfd。<br>   类型：String<br>   必选：否</li><li>zone-id<br>   按照【<strong>站点ID</strong>】进行过滤。站点ID形如：zone-vawer2vadg。<br>   类型：String<br>   必选：否</li>
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 }
 
@@ -5896,96 +5953,6 @@ func (r *DescribeDnssecResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
-type DescribeHostCertificatesRequestParams struct {
-	// 过滤条件，Filters.Values的上限为20。详细的过滤条件如下：
-	// <li>zone-id<br>   按照【<strong>站点ID</strong>】进行过滤。站点ID形如：zone-xxx。<br>   类型：String<br>   必选：是<li>host<br>   按照【<strong>域名名称</strong>】进行过滤。<br>   类型：String<br>   必选：否<li>cert-id<br>   按照【<strong>证书ID</strong>】进行过滤。<br>   类型：String<br>   必选：否<li>cert-alias<br>   按照【<strong>证书名称</strong>】进行过滤。<br>   类型：String<br>   必选：否<li>cert-type<br>   按照【<strong>证书类型</strong>】进行过滤。<br>   类型：String<br>   必选：否
-	Filters []*AdvancedFilter `json:"Filters,omitempty" name:"Filters"`
-
-	// 分页查询偏移量，默认为 0。
-	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
-
-	// 分页查询限制数目，默认为 100，最大可设置为 1000。
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
-
-	// 排序方式。详细排序条件如下：
-	// <li>create-time：域名创建时间；</li>
-	// <li>cert-expire-time：证书过期时间；</li>
-	// <li>cert-deploy-time：证书部署时间。</li>
-	Sort *Sort `json:"Sort,omitempty" name:"Sort"`
-}
-
-type DescribeHostCertificatesRequest struct {
-	*tchttp.BaseRequest
-	
-	// 过滤条件，Filters.Values的上限为20。详细的过滤条件如下：
-	// <li>zone-id<br>   按照【<strong>站点ID</strong>】进行过滤。站点ID形如：zone-xxx。<br>   类型：String<br>   必选：是<li>host<br>   按照【<strong>域名名称</strong>】进行过滤。<br>   类型：String<br>   必选：否<li>cert-id<br>   按照【<strong>证书ID</strong>】进行过滤。<br>   类型：String<br>   必选：否<li>cert-alias<br>   按照【<strong>证书名称</strong>】进行过滤。<br>   类型：String<br>   必选：否<li>cert-type<br>   按照【<strong>证书类型</strong>】进行过滤。<br>   类型：String<br>   必选：否
-	Filters []*AdvancedFilter `json:"Filters,omitempty" name:"Filters"`
-
-	// 分页查询偏移量，默认为 0。
-	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
-
-	// 分页查询限制数目，默认为 100，最大可设置为 1000。
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
-
-	// 排序方式。详细排序条件如下：
-	// <li>create-time：域名创建时间；</li>
-	// <li>cert-expire-time：证书过期时间；</li>
-	// <li>cert-deploy-time：证书部署时间。</li>
-	Sort *Sort `json:"Sort,omitempty" name:"Sort"`
-}
-
-func (r *DescribeHostCertificatesRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeHostCertificatesRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "Filters")
-	delete(f, "Offset")
-	delete(f, "Limit")
-	delete(f, "Sort")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeHostCertificatesRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DescribeHostCertificatesResponseParams struct {
-	// 总数，用于分页查询。
-	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-	// 域名证书配置列表。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	HostCertificates []*HostsCertificate `json:"HostCertificates,omitempty" name:"HostCertificates"`
-
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-}
-
-type DescribeHostCertificatesResponse struct {
-	*tchttp.BaseResponse
-	Response *DescribeHostCertificatesResponseParams `json:"Response"`
-}
-
-func (r *DescribeHostCertificatesResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeHostCertificatesResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
 type DescribeHostsSettingRequestParams struct {
 	// 站点ID。
 	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
@@ -5997,7 +5964,7 @@ type DescribeHostsSettingRequestParams struct {
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 过滤条件，Filters.Values的上限为20。详细的过滤条件如下：
-	// <li>host<br>   按照【<strong>域名</strong>】进行过滤。<br>   类型：string<br>   必选：否
+	// <li>host<br>   按照【<strong>域名</strong>】进行过滤。<br>   类型：string<br>   必选：否</li>
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 }
 
@@ -6014,7 +5981,7 @@ type DescribeHostsSettingRequest struct {
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 过滤条件，Filters.Values的上限为20。详细的过滤条件如下：
-	// <li>host<br>   按照【<strong>域名</strong>】进行过滤。<br>   类型：string<br>   必选：否
+	// <li>host<br>   按照【<strong>域名</strong>】进行过滤。<br>   类型：string<br>   必选：否</li>
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 }
 
@@ -6071,7 +6038,7 @@ func (r *DescribeHostsSettingResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeIdentificationsRequestParams struct {
 	// 过滤条件，Filters.Values的上限为20。详细的过滤条件如下：
-	// <li>zone-name<br>   按照【<strong>站点名称</strong>】进行过滤。<br>   类型：String<br>   必选：是
+	// <li>zone-name<br>   按照【<strong>站点名称</strong>】进行过滤。<br>   类型：String<br>   必选：是</li>
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 分页查询偏移量。默认值：0。
@@ -6085,7 +6052,7 @@ type DescribeIdentificationsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 过滤条件，Filters.Values的上限为20。详细的过滤条件如下：
-	// <li>zone-name<br>   按照【<strong>站点名称</strong>】进行过滤。<br>   类型：String<br>   必选：是
+	// <li>zone-name<br>   按照【<strong>站点名称</strong>】进行过滤。<br>   类型：String<br>   必选：是</li>
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 分页查询偏移量。默认值：0。
@@ -6679,7 +6646,7 @@ type DescribePrefetchTasksRequestParams struct {
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 过滤条件，Filters.Values的上限为20。详细的过滤条件如下：
-	// <li>zone-id<br>   按照【<strong>站点 ID</strong>】进行过滤。zone-id形如：zone-1379afjk91u32h，暂不支持多值。<br>   类型：String<br>   必选：否。<br>   模糊查询：不支持。<li>job-id<br>   按照【<strong>任务ID</strong>】进行过滤。job-id形如：1379afjk91u32h，暂不支持多值。<br>   类型：String<br>   必选：否。<br>   模糊查询：不支持。<li>target<br>   按照【<strong>目标资源信息</strong>】进行过滤。target形如：http://www.qq.com/1.txt，暂不支持多值。<br>   类型：String<br>   必选：否。<br>   模糊查询：不支持。<li>domains<br>   按照【<strong>域名</strong>】进行过滤。domains形如：www.qq.com。<br>   类型：String<br>   必选：否。<br>   模糊查询：不支持。<li>statuses<br>   按照【<strong>任务状态</strong>】进行过滤。<br>   必选：否<br>   模糊查询：不支持。<br>   可选项：<br>   processing：处理中<br>   success：成功<br>   failed：失败<br>   timeout：超时
+	// <li>zone-id<br>   按照【<strong>站点 ID</strong>】进行过滤。zone-id形如：zone-1379afjk91u32h，暂不支持多值。<br>   类型：String<br>   必选：否。<br>   模糊查询：不支持。</li><li>job-id<br>   按照【<strong>任务ID</strong>】进行过滤。job-id形如：1379afjk91u32h，暂不支持多值。<br>   类型：String<br>   必选：否。<br>   模糊查询：不支持。</li><li>target<br>   按照【<strong>目标资源信息</strong>】进行过滤。target形如：http://www.qq.com/1.txt，暂不支持多值。<br>   类型：String<br>   必选：否。<br>   模糊查询：不支持。</li><li>domains<br>   按照【<strong>域名</strong>】进行过滤。domains形如：www.qq.com。<br>   类型：String<br>   必选：否。<br>   模糊查询：不支持。</li><li>statuses<br>   按照【<strong>任务状态</strong>】进行过滤。<br>   必选：否<br>   模糊查询：不支持。<br>   可选项：<br>   processing：处理中<br>   success：成功<br>   failed：失败<br>   timeout：超时</li>
 	Filters []*AdvancedFilter `json:"Filters,omitempty" name:"Filters"`
 }
 
@@ -6699,7 +6666,7 @@ type DescribePrefetchTasksRequest struct {
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 过滤条件，Filters.Values的上限为20。详细的过滤条件如下：
-	// <li>zone-id<br>   按照【<strong>站点 ID</strong>】进行过滤。zone-id形如：zone-1379afjk91u32h，暂不支持多值。<br>   类型：String<br>   必选：否。<br>   模糊查询：不支持。<li>job-id<br>   按照【<strong>任务ID</strong>】进行过滤。job-id形如：1379afjk91u32h，暂不支持多值。<br>   类型：String<br>   必选：否。<br>   模糊查询：不支持。<li>target<br>   按照【<strong>目标资源信息</strong>】进行过滤。target形如：http://www.qq.com/1.txt，暂不支持多值。<br>   类型：String<br>   必选：否。<br>   模糊查询：不支持。<li>domains<br>   按照【<strong>域名</strong>】进行过滤。domains形如：www.qq.com。<br>   类型：String<br>   必选：否。<br>   模糊查询：不支持。<li>statuses<br>   按照【<strong>任务状态</strong>】进行过滤。<br>   必选：否<br>   模糊查询：不支持。<br>   可选项：<br>   processing：处理中<br>   success：成功<br>   failed：失败<br>   timeout：超时
+	// <li>zone-id<br>   按照【<strong>站点 ID</strong>】进行过滤。zone-id形如：zone-1379afjk91u32h，暂不支持多值。<br>   类型：String<br>   必选：否。<br>   模糊查询：不支持。</li><li>job-id<br>   按照【<strong>任务ID</strong>】进行过滤。job-id形如：1379afjk91u32h，暂不支持多值。<br>   类型：String<br>   必选：否。<br>   模糊查询：不支持。</li><li>target<br>   按照【<strong>目标资源信息</strong>】进行过滤。target形如：http://www.qq.com/1.txt，暂不支持多值。<br>   类型：String<br>   必选：否。<br>   模糊查询：不支持。</li><li>domains<br>   按照【<strong>域名</strong>】进行过滤。domains形如：www.qq.com。<br>   类型：String<br>   必选：否。<br>   模糊查询：不支持。</li><li>statuses<br>   按照【<strong>任务状态</strong>】进行过滤。<br>   必选：否<br>   模糊查询：不支持。<br>   可选项：<br>   processing：处理中<br>   success：成功<br>   failed：失败<br>   timeout：超时</li>
 	Filters []*AdvancedFilter `json:"Filters,omitempty" name:"Filters"`
 }
 
@@ -6772,7 +6739,7 @@ type DescribePurgeTasksRequestParams struct {
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 过滤条件，Filters.Values的上限为20。详细的过滤条件如下：
-	// <li>job-id<br>   按照【<strong>任务ID</strong>】进行过滤。job-id形如：1379afjk91u32h，暂不支持多值。<br>   类型：String<br>   必选：否<br>   模糊查询：不支持。<li>target<br>   按照【<strong>目标资源信息</strong>】进行过滤。target形如：http://www.qq.com/1.txt，暂不支持多值。<br>   类型：String<br>   必选：否<br>   模糊查询：不支持。<li>domains<br>   按照【<strong>域名</strong>】进行过滤。domains形如：www.qq.com。<br>   类型：String<br>   必选：否<br>   模糊查询：不支持。<li>statuses<br>   按照【<strong>任务状态</strong>】进行过滤。<br>   必选：否<br>   模糊查询：不支持。<br>   可选项：<br>   processing：处理中<br>   success：成功<br>   failed：失败<br>   timeout：超时<li>type<br>   按照【<strong>清除缓存类型</strong>】进行过滤，暂不支持多值。<br>   类型：String<br>   必选：否<br>   模糊查询：不支持。<br>   可选项：<br>   purge_url：URL<br>   purge_prefix：前缀<br>   purge_all：全部缓存内容<br>   purge_host：Hostname
+	// <li>job-id<br>   按照【<strong>任务ID</strong>】进行过滤。job-id形如：1379afjk91u32h，暂不支持多值。<br>   类型：String<br>   必选：否<br>   模糊查询：不支持。</li><li>target<br>   按照【<strong>目标资源信息</strong>】进行过滤。target形如：http://www.qq.com/1.txt，暂不支持多值。<br>   类型：String<br>   必选：否<br>   模糊查询：不支持。</li><li>domains<br>   按照【<strong>域名</strong>】进行过滤。domains形如：www.qq.com。<br>   类型：String<br>   必选：否<br>   模糊查询：不支持。</li><li>statuses<br>   按照【<strong>任务状态</strong>】进行过滤。<br>   必选：否<br>   模糊查询：不支持。<br>   可选项：<br>   processing：处理中<br>   success：成功<br>   failed：失败<br>   timeout：超时</li><li>type<br>   按照【<strong>清除缓存类型</strong>】进行过滤，暂不支持多值。<br>   类型：String<br>   必选：否<br>   模糊查询：不支持。<br>   可选项：<br>   purge_url：URL<br>   purge_prefix：前缀<br>   purge_all：全部缓存内容<br>   purge_host：Hostname</li>
 	Filters []*AdvancedFilter `json:"Filters,omitempty" name:"Filters"`
 }
 
@@ -6795,7 +6762,7 @@ type DescribePurgeTasksRequest struct {
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 过滤条件，Filters.Values的上限为20。详细的过滤条件如下：
-	// <li>job-id<br>   按照【<strong>任务ID</strong>】进行过滤。job-id形如：1379afjk91u32h，暂不支持多值。<br>   类型：String<br>   必选：否<br>   模糊查询：不支持。<li>target<br>   按照【<strong>目标资源信息</strong>】进行过滤。target形如：http://www.qq.com/1.txt，暂不支持多值。<br>   类型：String<br>   必选：否<br>   模糊查询：不支持。<li>domains<br>   按照【<strong>域名</strong>】进行过滤。domains形如：www.qq.com。<br>   类型：String<br>   必选：否<br>   模糊查询：不支持。<li>statuses<br>   按照【<strong>任务状态</strong>】进行过滤。<br>   必选：否<br>   模糊查询：不支持。<br>   可选项：<br>   processing：处理中<br>   success：成功<br>   failed：失败<br>   timeout：超时<li>type<br>   按照【<strong>清除缓存类型</strong>】进行过滤，暂不支持多值。<br>   类型：String<br>   必选：否<br>   模糊查询：不支持。<br>   可选项：<br>   purge_url：URL<br>   purge_prefix：前缀<br>   purge_all：全部缓存内容<br>   purge_host：Hostname
+	// <li>job-id<br>   按照【<strong>任务ID</strong>】进行过滤。job-id形如：1379afjk91u32h，暂不支持多值。<br>   类型：String<br>   必选：否<br>   模糊查询：不支持。</li><li>target<br>   按照【<strong>目标资源信息</strong>】进行过滤。target形如：http://www.qq.com/1.txt，暂不支持多值。<br>   类型：String<br>   必选：否<br>   模糊查询：不支持。</li><li>domains<br>   按照【<strong>域名</strong>】进行过滤。domains形如：www.qq.com。<br>   类型：String<br>   必选：否<br>   模糊查询：不支持。</li><li>statuses<br>   按照【<strong>任务状态</strong>】进行过滤。<br>   必选：否<br>   模糊查询：不支持。<br>   可选项：<br>   processing：处理中<br>   success：成功<br>   failed：失败<br>   timeout：超时</li><li>type<br>   按照【<strong>清除缓存类型</strong>】进行过滤，暂不支持多值。<br>   类型：String<br>   必选：否<br>   模糊查询：不支持。<br>   可选项：<br>   purge_url：URL<br>   purge_prefix：前缀<br>   purge_all：全部缓存内容<br>   purge_host：Hostname</li>
 	Filters []*AdvancedFilter `json:"Filters,omitempty" name:"Filters"`
 }
 
@@ -9647,7 +9614,7 @@ type DescribeZonesRequestParams struct {
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 过滤条件，Filters.Values的上限为20。详细的过滤条件如下：
-	// <li>zone-name<br>   按照【<strong>站点名称</strong>】进行过滤。<br>   类型：String<br>   必选：否<li>zone-id<br>   按照【<strong>站点ID</strong>】进行过滤。站点ID形如：zone-xxx。<br>   类型：String<br>   必选：否<li>status<br>   按照【<strong>站点状态</strong>】进行过滤。<br>   类型：String<br>   必选：否<li>tag-key<br>   按照【<strong>标签键</strong>】进行过滤。<br>   类型：String<br>   必选：否<li>tag-value<br>   按照【<strong>标签值</strong>】进行过滤。<br>   类型：String<br>   必选：否<li>Fuzzy<br>   按照【<strong>是否模糊查询</strong>】进行过滤。仅支持过滤字段名为zone-name。模糊查询时，Values长度最小为1。<br>   类型：Boolean<br>   必选：否<br>   默认值：false
+	// <li>zone-name<br>   按照【<strong>站点名称</strong>】进行过滤。<br>   类型：String<br>   必选：否</li><li>zone-id<br>   按照【<strong>站点ID</strong>】进行过滤。站点ID形如：zone-xxx。<br>   类型：String<br>   必选：否</li><li>status<br>   按照【<strong>站点状态</strong>】进行过滤。<br>   类型：String<br>   必选：否</li><li>tag-key<br>   按照【<strong>标签键</strong>】进行过滤。<br>   类型：String<br>   必选：否</li><li>tag-value<br>   按照【<strong>标签值</strong>】进行过滤。<br>   类型：String<br>   必选：否</li><li>Fuzzy<br>   按照【<strong>是否模糊查询</strong>】进行过滤。仅支持过滤字段名为zone-name。模糊查询时，Values长度最小为1。<br>   类型：Boolean<br>   必选：否<br>   默认值：false</li>
 	Filters []*AdvancedFilter `json:"Filters,omitempty" name:"Filters"`
 }
 
@@ -9661,7 +9628,7 @@ type DescribeZonesRequest struct {
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 过滤条件，Filters.Values的上限为20。详细的过滤条件如下：
-	// <li>zone-name<br>   按照【<strong>站点名称</strong>】进行过滤。<br>   类型：String<br>   必选：否<li>zone-id<br>   按照【<strong>站点ID</strong>】进行过滤。站点ID形如：zone-xxx。<br>   类型：String<br>   必选：否<li>status<br>   按照【<strong>站点状态</strong>】进行过滤。<br>   类型：String<br>   必选：否<li>tag-key<br>   按照【<strong>标签键</strong>】进行过滤。<br>   类型：String<br>   必选：否<li>tag-value<br>   按照【<strong>标签值</strong>】进行过滤。<br>   类型：String<br>   必选：否<li>Fuzzy<br>   按照【<strong>是否模糊查询</strong>】进行过滤。仅支持过滤字段名为zone-name。模糊查询时，Values长度最小为1。<br>   类型：Boolean<br>   必选：否<br>   默认值：false
+	// <li>zone-name<br>   按照【<strong>站点名称</strong>】进行过滤。<br>   类型：String<br>   必选：否</li><li>zone-id<br>   按照【<strong>站点ID</strong>】进行过滤。站点ID形如：zone-xxx。<br>   类型：String<br>   必选：否</li><li>status<br>   按照【<strong>站点状态</strong>】进行过滤。<br>   类型：String<br>   必选：否</li><li>tag-key<br>   按照【<strong>标签键</strong>】进行过滤。<br>   类型：String<br>   必选：否</li><li>tag-value<br>   按照【<strong>标签值</strong>】进行过滤。<br>   类型：String<br>   必选：否</li><li>Fuzzy<br>   按照【<strong>是否模糊查询</strong>】进行过滤。仅支持过滤字段名为zone-name。模糊查询时，Values长度最小为1。<br>   类型：Boolean<br>   必选：否<br>   默认值：false</li>
 	Filters []*AdvancedFilter `json:"Filters,omitempty" name:"Filters"`
 }
 
@@ -9798,6 +9765,10 @@ type DetailHost struct {
 	// Ipv6访问配置项。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Ipv6 *Ipv6 `json:"Ipv6,omitempty" name:"Ipv6"`
+
+	// 回源时是否携带客户端IP所属地域信息的配置。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClientIpCountry *ClientIpCountry `json:"ClientIpCountry,omitempty" name:"ClientIpCountry"`
 }
 
 type DistrictStatistics struct {
@@ -10144,25 +10115,21 @@ type ExceptConfig struct {
 }
 
 type ExceptUserRule struct {
-	// 规则名称。
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 规则名称，不可使用中文。
 	RuleName *string `json:"RuleName,omitempty" name:"RuleName"`
 
 	// 规则的处置方式，当前仅支持skip：跳过全部托管规则。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Action *string `json:"Action,omitempty" name:"Action"`
 
 	// 规则生效状态，取值有：
 	// <li>on：生效；</li>
 	// <li>off：失效。</li>
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	RuleStatus *string `json:"RuleStatus,omitempty" name:"RuleStatus"`
 
-	// 规则ID。仅出参使用。
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 规则ID。仅出参使用。默认由底层生成。
 	RuleID *int64 `json:"RuleID,omitempty" name:"RuleID"`
 
-	// 更新时间。仅出参使用
+	// 更新时间，如果为null，默认由底层按当前时间生成。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
 
@@ -10174,8 +10141,7 @@ type ExceptUserRule struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExceptUserRuleScope *ExceptUserRuleScope `json:"ExceptUserRuleScope,omitempty" name:"ExceptUserRuleScope"`
 
-	// 优先级，取值范围0-100。
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 优先级，取值范围0-100。如果为null，默认由底层设置为0。
 	RulePriority *int64 `json:"RulePriority,omitempty" name:"RulePriority"`
 }
 
@@ -10192,10 +10158,9 @@ type ExceptUserRuleCondition struct {
 	// <li>method：请求方式；</li>
 	// <li>header：请求头部；</li>
 	// <li>sip_proto：网络层协议。</li>
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MatchFrom *string `json:"MatchFrom,omitempty" name:"MatchFrom"`
 
-	// 匹配项的参数。当 MatchFrom 为 header 时，可以填入 header 的 key 作为参数。
+	// 匹配项的参数。仅当 MatchFrom 为 header 时，可以使用本参数，值可填入 header 的 key 作为参数。
 	MatchParam *string `json:"MatchParam,omitempty" name:"MatchParam"`
 
 	// 匹配操作符，取值有：
@@ -10215,18 +10180,32 @@ type ExceptUserRuleCondition struct {
 	// <li>match_prefix：前缀匹配；</li>
 	// <li>match_suffix：后缀匹配；</li>
 	// <li>wildcard：通配符。</li>
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	Operator *string `json:"Operator,omitempty" name:"Operator"`
 
 	// 匹配值。
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	MatchContent *string `json:"MatchContent,omitempty" name:"MatchContent"`
 }
 
 type ExceptUserRuleScope struct {
-	// 生效的模块。当前仅支持waf：托管规则。
+	// 例外规则类型。其中complete模式代表全量数据进行例外，partial模式代表可选择指定模块指定字段进行例外，该字段取值有：
+	// <li>complete：完全跳过模式；</li>
+	// <li>partial：部分跳过模式。</li>
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 生效的模块，该字段取值有：
+	// <li>waf：托管规则；</li>
+	// <li>cc：速率限制规则；</li>
+	// <li>bot：Bot防护。</li>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Modules []*string `json:"Modules,omitempty" name:"Modules"`
+
+	// 跳过部分规则ID的例外规则详情。如果为null，默认使用历史配置。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PartialModules []*PartialModule `json:"PartialModules,omitempty" name:"PartialModules"`
+
+	// 跳过具体字段不去扫描的例外规则详情。如果为null，默认使用历史配置。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SkipConditions []*SkipCondition `json:"SkipConditions,omitempty" name:"SkipConditions"`
 }
 
 type FailReason struct {
@@ -10235,6 +10214,14 @@ type FailReason struct {
 
 	// 处理失败的资源列表，该列表元素来源于输入参数中的Targets，因此格式和入参中的Targets保持一致。
 	Targets []*string `json:"Targets,omitempty" name:"Targets"`
+}
+
+type FileAscriptionInfo struct {
+	// 文件校验目录。
+	IdentifyPath *string `json:"IdentifyPath,omitempty" name:"IdentifyPath"`
+
+	// 文件校验内容。
+	IdentifyContent *string `json:"IdentifyContent,omitempty" name:"IdentifyContent"`
 }
 
 type Filter struct {
@@ -10280,56 +10267,11 @@ type GeoIp struct {
 }
 
 type Header struct {
-	// HTTP头部。
+	// HTTP头部名称。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// HTTP头部值。
 	Value *string `json:"Value,omitempty" name:"Value"`
-}
-
-type HostCertInfo struct {
-	// 服务器证书 ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	CertId *string `json:"CertId,omitempty" name:"CertId"`
-
-	// 证书备注名。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Alias *string `json:"Alias,omitempty" name:"Alias"`
-
-	// 证书类型，取值有：
-	// <li>default：默认证书；</lil>
-	// <li>upload：用户上传；</li>
-	// <li>managed:腾讯云托管。</li>
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Type *string `json:"Type,omitempty" name:"Type"`
-
-	// 证书过期时间。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	ExpireTime *string `json:"ExpireTime,omitempty" name:"ExpireTime"`
-
-	// 证书部署时间。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	DeployTime *string `json:"DeployTime,omitempty" name:"DeployTime"`
-
-	// 签名算法。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	SignAlgo *string `json:"SignAlgo,omitempty" name:"SignAlgo"`
-
-	// 证书状态，取值有：
-	// <li>deployed：已部署;</li>
-	// <li>process：部署中。</li>
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Status *string `json:"Status,omitempty" name:"Status"`
-}
-
-type HostsCertificate struct {
-	// 域名。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Host *string `json:"Host,omitempty" name:"Host"`
-
-	// 服务端证书配置。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	HostCertInfo *HostCertInfo `json:"HostCertInfo,omitempty" name:"HostCertInfo"`
 }
 
 type Hsts struct {
@@ -10394,12 +10336,15 @@ type Identification struct {
 	// <li> finished：验证完成。</li>
 	Status *string `json:"Status,omitempty" name:"Status"`
 
-	// 站点归属信息。
+	// 站点归属权校验：Dns校验信息。
 	Ascription *AscriptionInfo `json:"Ascription,omitempty" name:"Ascription"`
 
 	// 域名当前的 NS 记录。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OriginalNameServers []*string `json:"OriginalNameServers,omitempty" name:"OriginalNameServers"`
+
+	// 站点归属权校验：文件校验信息。
+	FileAscription *FileAscriptionInfo `json:"FileAscription,omitempty" name:"FileAscription"`
 }
 
 // Predefined struct for user
@@ -10436,8 +10381,11 @@ func (r *IdentifyZoneRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type IdentifyZoneResponseParams struct {
-	// 站点归属信息。
+	// 站点归属校验：Dns校验信息。
 	Ascription *AscriptionInfo `json:"Ascription,omitempty" name:"Ascription"`
+
+	// 站点归属权校验：文件校验信息。
+	FileAscription *FileAscriptionInfo `json:"FileAscription,omitempty" name:"FileAscription"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -10608,6 +10556,15 @@ type LoadBalancing struct {
 
 	// 更新时间。
 	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+
+	// 回源类型，取值有：
+	// <li>normal：主备回源；</li>
+	// <li>advanced：高级回源配置。</li>
+	OriginType *string `json:"OriginType,omitempty" name:"OriginType"`
+
+	// 高级回源配置，当OriginType=advanced时有效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AdvancedOriginGroups []*AdvancedOriginGroup `json:"AdvancedOriginGroups,omitempty" name:"AdvancedOriginGroups"`
 }
 
 type LogSetInfo struct {
@@ -11753,6 +11710,15 @@ type ModifyLoadBalancingRequestParams struct {
 	// 当Type=dns_only时，指解析记录在DNS服务器缓存的生存时间。
 	// 取值范围60-86400，单位：秒，不填写使用默认值：600。
 	TTL *uint64 `json:"TTL,omitempty" name:"TTL"`
+
+	// 回源类型，取值有：
+	// <li>normal：主备回源；</li>
+	// <li>advanced：高级回源配置（仅当Type=proxied时可以使用）。</li>不填写表示使用主备回源。
+	OriginType *string `json:"OriginType,omitempty" name:"OriginType"`
+
+	// 高级回源配置，当OriginType=advanced时有效。
+	// 不填写表示不使用高级回源配置。
+	AdvancedOriginGroups []*AdvancedOriginGroup `json:"AdvancedOriginGroups,omitempty" name:"AdvancedOriginGroups"`
 }
 
 type ModifyLoadBalancingRequest struct {
@@ -11778,6 +11744,15 @@ type ModifyLoadBalancingRequest struct {
 	// 当Type=dns_only时，指解析记录在DNS服务器缓存的生存时间。
 	// 取值范围60-86400，单位：秒，不填写使用默认值：600。
 	TTL *uint64 `json:"TTL,omitempty" name:"TTL"`
+
+	// 回源类型，取值有：
+	// <li>normal：主备回源；</li>
+	// <li>advanced：高级回源配置（仅当Type=proxied时可以使用）。</li>不填写表示使用主备回源。
+	OriginType *string `json:"OriginType,omitempty" name:"OriginType"`
+
+	// 高级回源配置，当OriginType=advanced时有效。
+	// 不填写表示不使用高级回源配置。
+	AdvancedOriginGroups []*AdvancedOriginGroup `json:"AdvancedOriginGroups,omitempty" name:"AdvancedOriginGroups"`
 }
 
 func (r *ModifyLoadBalancingRequest) ToJsonString() string {
@@ -11798,6 +11773,8 @@ func (r *ModifyLoadBalancingRequest) FromJsonString(s string) error {
 	delete(f, "OriginGroupId")
 	delete(f, "BackupOriginGroupId")
 	delete(f, "TTL")
+	delete(f, "OriginType")
+	delete(f, "AdvancedOriginGroups")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyLoadBalancingRequest has unknown keys!", "")
 	}
@@ -12059,6 +12036,10 @@ type ModifyOriginGroupRequestParams struct {
 
 	// 源站记录信息。
 	OriginRecords []*OriginRecord `json:"OriginRecords,omitempty" name:"OriginRecords"`
+
+	// 回源Host，仅当OriginType=self时可以设置。
+	// 不填写，表示使用已有配置。
+	HostHeader *string `json:"HostHeader,omitempty" name:"HostHeader"`
 }
 
 type ModifyOriginGroupRequest struct {
@@ -12087,6 +12068,10 @@ type ModifyOriginGroupRequest struct {
 
 	// 源站记录信息。
 	OriginRecords []*OriginRecord `json:"OriginRecords,omitempty" name:"OriginRecords"`
+
+	// 回源Host，仅当OriginType=self时可以设置。
+	// 不填写，表示使用已有配置。
+	HostHeader *string `json:"HostHeader,omitempty" name:"HostHeader"`
 }
 
 func (r *ModifyOriginGroupRequest) ToJsonString() string {
@@ -12107,6 +12092,7 @@ func (r *ModifyOriginGroupRequest) FromJsonString(s string) error {
 	delete(f, "OriginGroupName")
 	delete(f, "ConfigurationType")
 	delete(f, "OriginRecords")
+	delete(f, "HostHeader")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyOriginGroupRequest has unknown keys!", "")
 	}
@@ -12679,6 +12665,10 @@ type ModifyZoneSettingRequestParams struct {
 	// Ipv6访问配置。
 	// 不填写表示保持原有配置。
 	Ipv6 *Ipv6 `json:"Ipv6,omitempty" name:"Ipv6"`
+
+	// 回源时是否携带客户端IP所属地域信息的配置。
+	// 不填写表示保持原有配置。
+	ClientIpCountry *ClientIpCountry `json:"ClientIpCountry,omitempty" name:"ClientIpCountry"`
 }
 
 type ModifyZoneSettingRequest struct {
@@ -12750,6 +12740,10 @@ type ModifyZoneSettingRequest struct {
 	// Ipv6访问配置。
 	// 不填写表示保持原有配置。
 	Ipv6 *Ipv6 `json:"Ipv6,omitempty" name:"Ipv6"`
+
+	// 回源时是否携带客户端IP所属地域信息的配置。
+	// 不填写表示保持原有配置。
+	ClientIpCountry *ClientIpCountry `json:"ClientIpCountry,omitempty" name:"ClientIpCountry"`
 }
 
 func (r *ModifyZoneSettingRequest) ToJsonString() string {
@@ -12781,6 +12775,7 @@ func (r *ModifyZoneSettingRequest) FromJsonString(s string) error {
 	delete(f, "ClientIpHeader")
 	delete(f, "CachePrefresh")
 	delete(f, "Ipv6")
+	delete(f, "ClientIpCountry")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyZoneSettingRequest has unknown keys!", "")
 	}
@@ -12964,6 +12959,24 @@ type OriginGroup struct {
 
 	// 源站组更新时间。
 	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+
+	// 当OriginType=self时，表示回源Host。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HostHeader *string `json:"HostHeader,omitempty" name:"HostHeader"`
+}
+
+type OriginGroupCondition struct {
+	// 匹配类型，取值有：
+	// <li>url：当前站点下匹配URL路径的请求，例如：/example 或 /example/foo.jpg。支持*表示通配符，支持?表示匹配一个字符。
+	// </li>
+	Target *string `json:"Target,omitempty" name:"Target"`
+
+	// 运算符，取值有：
+	// <li>equal：等于。</li>
+	Operator *string `json:"Operator,omitempty" name:"Operator"`
+
+	// 对应匹配类型的取值。
+	Values []*string `json:"Values,omitempty" name:"Values"`
 }
 
 type OriginRecord struct {
@@ -13005,6 +13018,16 @@ type OriginRecord struct {
 
 	// 当源站类型Private=true时有效，表示私有鉴权使用参数。
 	PrivateParameters []*PrivateParameter `json:"PrivateParameters,omitempty" name:"PrivateParameters"`
+}
+
+type PartialModule struct {
+	// 模块名称，取值为：
+	// <li>waf：托管规则。</li>
+	Module *string `json:"Module,omitempty" name:"Module"`
+
+	// 模块下的需要例外的具体规则ID列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Include []*int64 `json:"Include,omitempty" name:"Include"`
 }
 
 type PlanInfo struct {
@@ -13102,10 +13125,10 @@ type QueryCondition struct {
 	// <li>notEquals: 不等于；</li>
 	// <li>include: 包含；</li>
 	// <li>notInclude: 不包含; </li>
-	// <li>startWith: 开始于；</li>
-	// <li>notStartWith: 不开始于；</li>
-	// <li>endWith: 结尾是；</li>
-	// <li>notEndWith: 不结尾是。</li>
+	// <li>startWith: 开始的值是value；</li>
+	// <li>notStartWith: 不以value的值开始；</li>
+	// <li>endWith: 结尾是value值；</li>
+	// <li>notEndWith: 不以value的值结尾。</li>
 	Operator *string `json:"Operator,omitempty" name:"Operator"`
 
 	// 筛选条件的值。
@@ -13842,22 +13865,50 @@ type SingleTypeValue struct {
 	DetailData *int64 `json:"DetailData,omitempty" name:"DetailData"`
 }
 
+type SkipCondition struct {
+	// 例外跳过类型，取值为：
+	// <li>header_fields：HTTP请求Header；</li>
+	// <li>cookie：HTTP请求Cookie；</li>
+	// <li>query_string：HTTP请求URL中的Query参数；</li>
+	// <li>uri：HTTP请求URI；</li>
+	// <li>body_raw：HTTP请求Body；</li>
+	// <li>body_json： JSON格式的HTTP Body。</li>
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 选择跳过的字段，取值为：
+	// <li>args：uri 下选择 query 参数: ?name1=jack&age=12；</li>
+	// <li>path：uri 下选择部分路径：/path/to/resource.jpg；</li>
+	// <li>full：uri 下选择完整路径：example.com/path/to/resource.jpg?name1=jack&age=12；</li>
+	// <li>upload_filename：分段文件名，即分段传输文件时；</li>
+	// <li>keys：所有的Key；</li>
+	// <li>values：匹配Key对应的值；</li>
+	// <li>key_value：匹配Key及匹配Value。</li>
+	Selector *string `json:"Selector,omitempty" name:"Selector"`
+
+	// 匹配Key所使用的匹配方式，取值为：
+	// <li>equal：精准匹配，等于；</li>
+	// <li>wildcard：通配符匹配，支持 * 通配。</li>
+	MatchFromType *string `json:"MatchFromType,omitempty" name:"MatchFromType"`
+
+	// 匹配Key的值。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MatchFrom []*string `json:"MatchFrom,omitempty" name:"MatchFrom"`
+
+	// 匹配Content所使用的匹配方式，取值为：
+	// <li>equal：精准匹配，等于；</li>
+	// <li>wildcard：通配符匹配，支持 * 通配。</li>
+	MatchContentType *string `json:"MatchContentType,omitempty" name:"MatchContentType"`
+
+	// 匹配Value的值。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MatchContent []*string `json:"MatchContent,omitempty" name:"MatchContent"`
+}
+
 type SmartRouting struct {
 	// 智能加速配置开关，取值有：
 	// <li>on：开启；</li>
 	// <li>off：关闭。</li>
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
-}
-
-type Sort struct {
-	// 排序字段，当前支持：
-	// createTime，域名创建时间
-	// certExpireTime，证书过期时间
-	// certDeployTime,  证书部署时间
-	Key *string `json:"Key,omitempty" name:"Key"`
-
-	// asc/desc，默认desc。
-	Sequence *string `json:"Sequence,omitempty" name:"Sequence"`
 }
 
 type SpeedTestingConfig struct {
@@ -14443,12 +14494,12 @@ type Zone struct {
 	// 站点是否关闭。
 	Paused *bool `json:"Paused,omitempty" name:"Paused"`
 
-	// 是否开启cname加速，取值有：
+	// 是否开启 CNAME 加速，取值有：
 	// <li> enabled：开启；</li>
 	// <li> disabled：关闭。</li>
 	CnameSpeedUp *string `json:"CnameSpeedUp,omitempty" name:"CnameSpeedUp"`
 
-	// cname 接入状态，取值有：
+	// CNAME 接入状态，取值有：
 	// <li> finished：站点已验证；</li>
 	// <li> pending：站点验证中。</li>
 	CnameStatus *string `json:"CnameStatus,omitempty" name:"CnameStatus"`
@@ -14552,4 +14603,8 @@ type ZoneSetting struct {
 	// Https 加速配置。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Https *Https `json:"Https,omitempty" name:"Https"`
+
+	// 回源时是否携带客户端IP所属地域信息的配置。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClientIpCountry *ClientIpCountry `json:"ClientIpCountry,omitempty" name:"ClientIpCountry"`
 }

@@ -55,7 +55,7 @@
 | clb | [负载均衡](https://cloud.tencent.com/document/product/214) | 2022-09-22 06:16:46 |
 | cloudaudit | [云审计](https://cloud.tencent.com/document/product/629) | 2022-07-08 06:05:30 |
 | cloudhsm | [云加密机](https://cloud.tencent.com/document/product/639) | 2022-06-22 06:04:38 |
-| cloudstudio | [云端 IDE](https://cloud.tencent.com/document/product/1039) | 2022-09-26 15:11:40 |
+| cloudstudio | [云端 IDE](https://cloud.tencent.com/document/product/1039) | 2022-09-28 17:57:07 |
 | cls | [日志服务](https://cloud.tencent.com/document/product/614) | 2022-09-22 06:17:52 |
 | cme | [多媒体创作引擎](https://cloud.tencent.com/document/product/1156) | 2022-08-24 06:19:05 |
 | cmq | [消息队列 CMQ](https://cloud.tencent.com/document/product/406) | 2022-04-04 06:23:04 |
@@ -185,7 +185,7 @@
 | tdmq | [分布式消息队列](https://cloud.tencent.com/document/product/1179) | 2022-09-22 06:48:45 |
 | tds | [设备安全](https://cloud.tencent.com/document/product/1628) | 2022-09-23 17:56:43 |
 | tem | [弹性微服务](https://cloud.tencent.com/document/product/1371) | 2022-09-28 06:54:52 |
-| teo | [边缘安全加速平台](https://cloud.tencent.com/document/product/1552) | 2022-09-20 06:52:09 |
+| teo | [边缘安全加速平台](https://cloud.tencent.com/document/product/1552) | 2022-09-28 19:21:32 |
 | thpc | [高性能计算平台](https://cloud.tencent.com/document/product/1527) | 2022-06-02 06:15:03 |
 | tia | [智能钛机器学习](https://cloud.tencent.com/document/product/851) | 2021-10-21 11:12:52 |
 | tic | [腾讯云IaC平台](https://cloud.tencent.com/document/product/1213) | 2022-04-04 07:16:52 |
