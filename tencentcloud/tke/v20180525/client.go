@@ -3946,7 +3946,7 @@ func NewDescribeAvailableTKEEdgeVersionResponse() (response *DescribeAvailableTK
 }
 
 // DescribeAvailableTKEEdgeVersion
-// 边缘计算支持的k8s版本
+// 边缘计算支持版本和k8s版本
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -3964,7 +3964,7 @@ func (c *Client) DescribeAvailableTKEEdgeVersion(request *DescribeAvailableTKEEd
 }
 
 // DescribeAvailableTKEEdgeVersion
-// 边缘计算支持的k8s版本
+// 边缘计算支持版本和k8s版本
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

@@ -3852,6 +3852,9 @@ type UpdateInstanceRequestParams struct {
 
 	// 可维护时间段
 	OperationDuration *OperationDurationUpdated `json:"OperationDuration,omitempty" name:"OperationDuration"`
+
+	// 是否开启Altering 外网告警输出
+	KibanaAlteringPublicAccess *string `json:"KibanaAlteringPublicAccess,omitempty" name:"KibanaAlteringPublicAccess"`
 }
 
 type UpdateInstanceRequest struct {
@@ -3955,6 +3958,9 @@ type UpdateInstanceRequest struct {
 
 	// 可维护时间段
 	OperationDuration *OperationDurationUpdated `json:"OperationDuration,omitempty" name:"OperationDuration"`
+
+	// 是否开启Altering 外网告警输出
+	KibanaAlteringPublicAccess *string `json:"KibanaAlteringPublicAccess,omitempty" name:"KibanaAlteringPublicAccess"`
 }
 
 func (r *UpdateInstanceRequest) ToJsonString() string {
@@ -4000,6 +4006,7 @@ func (r *UpdateInstanceRequest) FromJsonString(s string) error {
 	delete(f, "CerebroPrivateAccess")
 	delete(f, "EsConfigSet")
 	delete(f, "OperationDuration")
+	delete(f, "KibanaAlteringPublicAccess")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateInstanceRequest has unknown keys!", "")
 	}
@@ -4457,6 +4464,9 @@ type UpgradeInstanceRequestParams struct {
 
 	// 升级版本前是否对集群进行备份，默认不备份
 	CosBackup *bool `json:"CosBackup,omitempty" name:"CosBackup"`
+
+	// 滚动模式时，是否跳过检查，进行强制重启。默认值为false
+	SkipCheckForceRestart *bool `json:"SkipCheckForceRestart,omitempty" name:"SkipCheckForceRestart"`
 }
 
 type UpgradeInstanceRequest struct {
@@ -4482,6 +4492,9 @@ type UpgradeInstanceRequest struct {
 
 	// 升级版本前是否对集群进行备份，默认不备份
 	CosBackup *bool `json:"CosBackup,omitempty" name:"CosBackup"`
+
+	// 滚动模式时，是否跳过检查，进行强制重启。默认值为false
+	SkipCheckForceRestart *bool `json:"SkipCheckForceRestart,omitempty" name:"SkipCheckForceRestart"`
 }
 
 func (r *UpgradeInstanceRequest) ToJsonString() string {
@@ -4503,6 +4516,7 @@ func (r *UpgradeInstanceRequest) FromJsonString(s string) error {
 	delete(f, "BasicSecurityType")
 	delete(f, "UpgradeMode")
 	delete(f, "CosBackup")
+	delete(f, "SkipCheckForceRestart")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpgradeInstanceRequest has unknown keys!", "")
 	}

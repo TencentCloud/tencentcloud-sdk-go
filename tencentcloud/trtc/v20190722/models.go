@@ -2630,10 +2630,10 @@ type StorageFile struct {
 }
 
 type StorageParams struct {
-	// 第三方云存储的账号信息（暂不支持）。
+	// 第三方云存储的账号信息（CloudStorage参数暂不可用，请使用CloudVod参数存储至云点播）。
 	CloudStorage *CloudStorage `json:"CloudStorage,omitempty" name:"CloudStorage"`
 
-	// 腾讯云云点播的账号信息（必填，目前仅支持存储至腾讯云云点播）。
+	// 【必填】腾讯云云点播的账号信息，目前仅支持存储至腾讯云点播VOD。
 	CloudVod *CloudVod `json:"CloudVod,omitempty" name:"CloudVod"`
 }
 

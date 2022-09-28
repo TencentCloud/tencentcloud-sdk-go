@@ -1,10 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 账号风控平台(ciam) 版本：2022-03-31
+## 品牌经营管家(bma) 版本：2021-06-24
 
-### 第 8 次发布
+### 第 9 次发布
 
-发布时间：2022-09-27 06:14:52
+发布时间：2022-09-28 06:10:28
 
 本次发布包含了以下内容：
 
@@ -12,98 +12,91 @@
 
 修改接口：
 
-* [CreateUser](https://cloud.tencent.com/document/api/1441/75642)
+* [CreateCRBlock](https://cloud.tencent.com/document/api/1296/77824)
 
-	* 新增入参：IndexedAttribute1, IndexedAttribute2, IndexedAttribute3, IndexedAttribute4, IndexedAttribute5
+	* 新增入参：EvidenceFileUrl, EvidenceValidStartDate, EvidenceValidEndDate
 
-* [DescribeUser](https://cloud.tencent.com/document/api/1441/77525)
+* [CreateCRRight](https://cloud.tencent.com/document/api/1296/77822)
 
-	* 新增入参：Sort
+	* 新增入参：EvidenceFileUrl, EvidenceValidStartDate, EvidenceValidEndDate
 
-* [UpdateUser](https://cloud.tencent.com/document/api/1441/75635)
+* [CreateCRWork](https://cloud.tencent.com/document/api/1296/78029)
 
-	* 新增入参：IndexedAttribute1, IndexedAttribute2, IndexedAttribute3, IndexedAttribute4, IndexedAttribute5
+	* 新增入参：ApplierId, ApplierName
 
-
-新增数据结构：
-
-* [Sort](https://cloud.tencent.com/document/api/1441/75643#Sort)
 
 修改数据结构：
 
-* [ImportUser](https://cloud.tencent.com/document/api/1441/75643#ImportUser)
+* [MonitorTort](https://cloud.tencent.com/document/api/1296/78030#MonitorTort)
 
-	* 新增成员：IndexedAttribute1, IndexedAttribute2, IndexedAttribute3, IndexedAttribute4, IndexedAttribute5
-
-* [QueryUserFilter](https://cloud.tencent.com/document/api/1441/75643#QueryUserFilter)
-
-	* 新增成员：OperateLogic
-
-* [User](https://cloud.tencent.com/document/api/1441/75643#User)
-
-	* 新增成员：IndexedAttribute1, IndexedAttribute2, IndexedAttribute3, IndexedAttribute4, IndexedAttribute5
+	* 新增成员：TortSite, ICP, RightNote, ObtainType, BlockNote, WorkId, WorkName, AuthStatus, CommStatus, EvidenceStatus, IsProducer, IsOverseas
 
 
 
 
-## 企业收付平台(cpdp) 版本：2019-08-20
+## 主机安全(cwp) 版本：2018-02-28
 
-### 第 86 次发布
+### 第 54 次发布
 
-发布时间：2022-09-27 06:17:24
+发布时间：2022-09-28 06:22:44
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-新增接口：
+<font color="#dd0000">**删除接口**：</font>
 
-* [QueryFinancialDataUrl](https://cloud.tencent.com/document/api/1122/81046)
-
-修改数据结构：
-
-* [PaymentOrderResult](https://cloud.tencent.com/document/api/1122/40683#PaymentOrderResult)
-
-	* 新增成员：ChannelOrderId
+* DescribeESHits
 
 
 
+## Elasticsearch Service(es) 版本：2018-04-16
 
-## 流计算 Oceanus(oceanus) 版本：2019-04-22
+### 第 37 次发布
 
-### 第 26 次发布
-
-发布时间：2022-09-27 06:36:12
+发布时间：2022-09-28 06:30:23
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-修改数据结构：
+修改接口：
 
-* [Cluster](https://cloud.tencent.com/document/api/849/52010#Cluster)
+* [UpdateInstance](https://cloud.tencent.com/document/api/845/30629)
 
-	* 新增成员：IsNeedManageNode
+	* 新增入参：KibanaAlteringPublicAccess
+
+* [UpgradeInstance](https://cloud.tencent.com/document/api/845/36270)
+
+	* 新增入参：SkipCheckForceRestart
 
 
 
 
 ## 弹性微服务(tem) 版本：2021-07-01
 
-### 第 30 次发布
+### 第 31 次发布
 
-发布时间：2022-09-27 06:45:31
+发布时间：2022-09-28 06:54:52
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-新增接口：
+新增数据结构：
 
-* [CreateApplicationService](https://cloud.tencent.com/document/api/1371/81051)
-* [DeleteApplicationService](https://cloud.tencent.com/document/api/1371/81050)
-* [DescribeApplicationServiceList](https://cloud.tencent.com/document/api/1371/81049)
-* [ModifyApplicationService](https://cloud.tencent.com/document/api/1371/81048)
+* [Tag](https://cloud.tencent.com/document/api/1371/60171#Tag)
+
+修改数据结构：
+
+* [NamespacePage](https://cloud.tencent.com/document/api/1371/60171#NamespacePage)
+
+	* 新增成员：Current
+
+* [TemNamespaceInfo](https://cloud.tencent.com/document/api/1371/60171#TemNamespaceInfo)
+
+	* 新增成员：AppId, Uin, SubAccountUin, ClusterId, Tags
+
 
 
 
@@ -111,11 +104,11 @@
 
 
 
-## 腾讯云微服务引擎(tse) 版本：2020-12-07
+## 容器服务(tke) 版本：2018-05-25
 
-### 第 27 次发布
+### 第 123 次发布
 
-发布时间：2022-09-27 06:48:42
+发布时间：2022-09-28 06:56:37
 
 本次发布包含了以下内容：
 
@@ -123,9 +116,15 @@
 
 修改接口：
 
-* [DescribeCloudNativeAPIGatewayNodes](https://cloud.tencent.com/document/api/1364/78800)
+* [CreateTKEEdgeCluster](https://cloud.tencent.com/document/api/457/74868)
 
-	* 新增入参：GroupId
+	* 新增入参：EdgeVersion, RegistryPrefix
+
+* [DescribeAvailableTKEEdgeVersion](https://cloud.tencent.com/document/api/457/74863)
+
+	* 新增入参：ClusterId
+
+	* 新增出参：EdgeVersionLatest, EdgeVersionCurrent
 
 
 
@@ -7871,6 +7870,36 @@
 
 
 ## 品牌经营管家(bma) 版本：2021-06-24
+
+### 第 9 次发布
+
+发布时间：2022-09-28 06:10:28
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateCRBlock](https://cloud.tencent.com/document/api/1296/77824)
+
+	* 新增入参：EvidenceFileUrl, EvidenceValidStartDate, EvidenceValidEndDate
+
+* [CreateCRRight](https://cloud.tencent.com/document/api/1296/77822)
+
+	* 新增入参：EvidenceFileUrl, EvidenceValidStartDate, EvidenceValidEndDate
+
+* [CreateCRWork](https://cloud.tencent.com/document/api/1296/78029)
+
+	* 新增入参：ApplierId, ApplierName
+
+
+修改数据结构：
+
+* [MonitorTort](https://cloud.tencent.com/document/api/1296/78030#MonitorTort)
+
+	* 新增成员：TortSite, ICP, RightNote, ObtainType, BlockNote, WorkId, WorkName, AuthStatus, CommStatus, EvidenceStatus, IsProducer, IsOverseas
+
 
 ### 第 8 次发布
 
@@ -17466,7 +17495,7 @@
 
 新增数据结构：
 
-* [[Sort](https://cloud.tencent.com/document/api/1441/75643#Sort)](https://cloud.tencent.com/document/api/1441/75643#[Sort](https://cloud.tencent.com/document/api/1441/75643#Sort))
+* [Sort](https://cloud.tencent.com/document/api/1441/75643#Sort)
 
 修改数据结构：
 
@@ -23443,7 +23472,7 @@
 
 新增接口：
 
-* [[QueryFinancialDataUrl](https://cloud.tencent.com/document/api/1122/81046)](https://cloud.tencent.com/document/api/#/#)
+* [QueryFinancialDataUrl](https://cloud.tencent.com/document/api/1122/81046)
 
 修改数据结构：
 
@@ -27657,6 +27686,18 @@
 
 
 ## 主机安全(cwp) 版本：2018-02-28
+
+### 第 54 次发布
+
+发布时间：2022-09-28 06:22:44
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除接口**：</font>
+
+* DescribeESHits
 
 ### 第 53 次发布
 
@@ -37872,6 +37913,25 @@
 
 
 ## Elasticsearch Service(es) 版本：2018-04-16
+
+### 第 37 次发布
+
+发布时间：2022-09-28 06:30:23
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [UpdateInstance](https://cloud.tencent.com/document/api/845/30629)
+
+	* 新增入参：KibanaAlteringPublicAccess
+
+* [UpgradeInstance](https://cloud.tencent.com/document/api/845/36270)
+
+	* 新增入参：SkipCheckForceRestart
+
 
 ### 第 36 次发布
 
@@ -74474,6 +74534,29 @@
 
 ## 弹性微服务(tem) 版本：2021-07-01
 
+### 第 31 次发布
+
+发布时间：2022-09-28 06:54:52
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [[Tag](https://cloud.tencent.com/document/api/1371/60171#Tag)](https://cloud.tencent.com/document/api/1371/60171#[Tag](https://cloud.tencent.com/document/api/1371/60171#Tag))
+
+修改数据结构：
+
+* [NamespacePage](https://cloud.tencent.com/document/api/1371/60171#NamespacePage)
+
+	* 新增成员：Current
+
+* [TemNamespaceInfo](https://cloud.tencent.com/document/api/1371/60171#TemNamespaceInfo)
+
+	* 新增成员：AppId, Uin, SubAccountUin, ClusterId, Tags
+
+
 ### 第 30 次发布
 
 发布时间：2022-09-27 06:45:31
@@ -74484,10 +74567,10 @@
 
 新增接口：
 
-* [[CreateApplicationService](https://cloud.tencent.com/document/api/1371/81051)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteApplicationService](https://cloud.tencent.com/document/api/1371/81050)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeApplicationServiceList](https://cloud.tencent.com/document/api/1371/81049)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyApplicationService](https://cloud.tencent.com/document/api/1371/81048)](https://cloud.tencent.com/document/api/#/#)
+* [CreateApplicationService](https://cloud.tencent.com/document/api/1371/81051)
+* [DeleteApplicationService](https://cloud.tencent.com/document/api/1371/81050)
+* [DescribeApplicationServiceList](https://cloud.tencent.com/document/api/1371/81049)
+* [ModifyApplicationService](https://cloud.tencent.com/document/api/1371/81048)
 
 ### 第 29 次发布
 
@@ -78470,6 +78553,27 @@
 
 
 ## 容器服务(tke) 版本：2018-05-25
+
+### 第 123 次发布
+
+发布时间：2022-09-28 06:56:37
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateTKEEdgeCluster](https://cloud.tencent.com/document/api/457/74868)
+
+	* 新增入参：EdgeVersion, RegistryPrefix
+
+* [DescribeAvailableTKEEdgeVersion](https://cloud.tencent.com/document/api/457/74863)
+
+	* 新增入参：ClusterId
+
+	* 新增出参：EdgeVersionLatest, EdgeVersionCurrent
+
 
 ### 第 122 次发布
 

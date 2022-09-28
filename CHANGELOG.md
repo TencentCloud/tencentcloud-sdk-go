@@ -1,3 +1,134 @@
+# Release v1.0.506
+
+## 品牌经营管家(bma) 版本：2021-06-24
+
+### 第 9 次发布
+
+发布时间：2022-09-28 06:10:28
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateCRBlock](https://cloud.tencent.com/document/api/1296/77824)
+
+	* 新增入参：EvidenceFileUrl, EvidenceValidStartDate, EvidenceValidEndDate
+
+* [CreateCRRight](https://cloud.tencent.com/document/api/1296/77822)
+
+	* 新增入参：EvidenceFileUrl, EvidenceValidStartDate, EvidenceValidEndDate
+
+* [CreateCRWork](https://cloud.tencent.com/document/api/1296/78029)
+
+	* 新增入参：ApplierId, ApplierName
+
+
+修改数据结构：
+
+* [MonitorTort](https://cloud.tencent.com/document/api/1296/78030#MonitorTort)
+
+	* 新增成员：TortSite, ICP, RightNote, ObtainType, BlockNote, WorkId, WorkName, AuthStatus, CommStatus, EvidenceStatus, IsProducer, IsOverseas
+
+
+
+
+## 主机安全(cwp) 版本：2018-02-28
+
+### 第 54 次发布
+
+发布时间：2022-09-28 06:22:44
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除接口**：</font>
+
+* DescribeESHits
+
+
+
+## Elasticsearch Service(es) 版本：2018-04-16
+
+### 第 37 次发布
+
+发布时间：2022-09-28 06:30:23
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [UpdateInstance](https://cloud.tencent.com/document/api/845/30629)
+
+	* 新增入参：KibanaAlteringPublicAccess
+
+* [UpgradeInstance](https://cloud.tencent.com/document/api/845/36270)
+
+	* 新增入参：SkipCheckForceRestart
+
+
+
+
+## 弹性微服务(tem) 版本：2021-07-01
+
+### 第 31 次发布
+
+发布时间：2022-09-28 06:54:52
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [Tag](https://cloud.tencent.com/document/api/1371/60171#Tag)
+
+修改数据结构：
+
+* [NamespacePage](https://cloud.tencent.com/document/api/1371/60171#NamespacePage)
+
+	* 新增成员：Current
+
+* [TemNamespaceInfo](https://cloud.tencent.com/document/api/1371/60171#TemNamespaceInfo)
+
+	* 新增成员：AppId, Uin, SubAccountUin, ClusterId, Tags
+
+
+
+
+## 弹性微服务(tem) 版本：2020-12-21
+
+
+
+## 容器服务(tke) 版本：2018-05-25
+
+### 第 123 次发布
+
+发布时间：2022-09-28 06:56:37
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateTKEEdgeCluster](https://cloud.tencent.com/document/api/457/74868)
+
+	* 新增入参：EdgeVersion, RegistryPrefix
+
+* [DescribeAvailableTKEEdgeVersion](https://cloud.tencent.com/document/api/457/74863)
+
+	* 新增入参：ClusterId
+
+	* 新增出参：EdgeVersionLatest, EdgeVersionCurrent
+
+
+
+
 # Release v1.0.505
 
 ## 账号风控平台(ciam) 版本：2022-03-31

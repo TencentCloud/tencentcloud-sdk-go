@@ -423,6 +423,15 @@ type CreateCRBlockRequestParams struct {
 
 	// x
 	IsProducer *string `json:"IsProducer,omitempty" name:"IsProducer"`
+
+	// x
+	EvidenceFileUrl *string `json:"EvidenceFileUrl,omitempty" name:"EvidenceFileUrl"`
+
+	// x
+	EvidenceValidStartDate *string `json:"EvidenceValidStartDate,omitempty" name:"EvidenceValidStartDate"`
+
+	// x
+	EvidenceValidEndDate *string `json:"EvidenceValidEndDate,omitempty" name:"EvidenceValidEndDate"`
 }
 
 type CreateCRBlockRequest struct {
@@ -466,6 +475,15 @@ type CreateCRBlockRequest struct {
 
 	// x
 	IsProducer *string `json:"IsProducer,omitempty" name:"IsProducer"`
+
+	// x
+	EvidenceFileUrl *string `json:"EvidenceFileUrl,omitempty" name:"EvidenceFileUrl"`
+
+	// x
+	EvidenceValidStartDate *string `json:"EvidenceValidStartDate,omitempty" name:"EvidenceValidStartDate"`
+
+	// x
+	EvidenceValidEndDate *string `json:"EvidenceValidEndDate,omitempty" name:"EvidenceValidEndDate"`
 }
 
 func (r *CreateCRBlockRequest) ToJsonString() string {
@@ -493,6 +511,9 @@ func (r *CreateCRBlockRequest) FromJsonString(s string) error {
 	delete(f, "CommValidStartDate")
 	delete(f, "CommValidEndDate")
 	delete(f, "IsProducer")
+	delete(f, "EvidenceFileUrl")
+	delete(f, "EvidenceValidStartDate")
+	delete(f, "EvidenceValidEndDate")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCRBlockRequest has unknown keys!", "")
 	}
@@ -746,6 +767,15 @@ type CreateCRRightRequestParams struct {
 
 	// x
 	IsProducer *string `json:"IsProducer,omitempty" name:"IsProducer"`
+
+	// x
+	EvidenceFileUrl *string `json:"EvidenceFileUrl,omitempty" name:"EvidenceFileUrl"`
+
+	// x
+	EvidenceValidStartDate *string `json:"EvidenceValidStartDate,omitempty" name:"EvidenceValidStartDate"`
+
+	// x
+	EvidenceValidEndDate *string `json:"EvidenceValidEndDate,omitempty" name:"EvidenceValidEndDate"`
 }
 
 type CreateCRRightRequest struct {
@@ -795,6 +825,15 @@ type CreateCRRightRequest struct {
 
 	// x
 	IsProducer *string `json:"IsProducer,omitempty" name:"IsProducer"`
+
+	// x
+	EvidenceFileUrl *string `json:"EvidenceFileUrl,omitempty" name:"EvidenceFileUrl"`
+
+	// x
+	EvidenceValidStartDate *string `json:"EvidenceValidStartDate,omitempty" name:"EvidenceValidStartDate"`
+
+	// x
+	EvidenceValidEndDate *string `json:"EvidenceValidEndDate,omitempty" name:"EvidenceValidEndDate"`
 }
 
 func (r *CreateCRRightRequest) ToJsonString() string {
@@ -824,6 +863,9 @@ func (r *CreateCRRightRequest) FromJsonString(s string) error {
 	delete(f, "HomeValidStartDate")
 	delete(f, "HomeValidEndDate")
 	delete(f, "IsProducer")
+	delete(f, "EvidenceFileUrl")
+	delete(f, "EvidenceValidStartDate")
+	delete(f, "EvidenceValidEndDate")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCRRightRequest has unknown keys!", "")
 	}
@@ -1130,6 +1172,12 @@ type CreateCRWorkRequestParams struct {
 
 	// 监测结束时间
 	MonitorEndTime *string `json:"MonitorEndTime,omitempty" name:"MonitorEndTime"`
+
+	// 申请人ID
+	ApplierId *string `json:"ApplierId,omitempty" name:"ApplierId"`
+
+	// 申请人姓名
+	ApplierName *string `json:"ApplierName,omitempty" name:"ApplierName"`
 }
 
 type CreateCRWorkRequest struct {
@@ -1221,6 +1269,12 @@ type CreateCRWorkRequest struct {
 
 	// 监测结束时间
 	MonitorEndTime *string `json:"MonitorEndTime,omitempty" name:"MonitorEndTime"`
+
+	// 申请人ID
+	ApplierId *string `json:"ApplierId,omitempty" name:"ApplierId"`
+
+	// 申请人姓名
+	ApplierName *string `json:"ApplierName,omitempty" name:"ApplierName"`
 }
 
 func (r *CreateCRWorkRequest) ToJsonString() string {
@@ -1264,6 +1318,8 @@ func (r *CreateCRWorkRequest) FromJsonString(s string) error {
 	delete(f, "ContentType")
 	delete(f, "Content")
 	delete(f, "MonitorEndTime")
+	delete(f, "ApplierId")
+	delete(f, "ApplierName")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCRWorkRequest has unknown keys!", "")
 	}
@@ -2457,6 +2513,42 @@ type MonitorTort struct {
 
 	// 1
 	WorkTitle *string `json:"WorkTitle,omitempty" name:"WorkTitle"`
+
+	// 1
+	TortSite *string `json:"TortSite,omitempty" name:"TortSite"`
+
+	// 1
+	ICP *string `json:"ICP,omitempty" name:"ICP"`
+
+	// 1
+	RightNote *string `json:"RightNote,omitempty" name:"RightNote"`
+
+	// 1
+	ObtainType *int64 `json:"ObtainType,omitempty" name:"ObtainType"`
+
+	// 1
+	BlockNote *string `json:"BlockNote,omitempty" name:"BlockNote"`
+
+	// 1
+	WorkId *int64 `json:"WorkId,omitempty" name:"WorkId"`
+
+	// 1
+	WorkName *string `json:"WorkName,omitempty" name:"WorkName"`
+
+	// 1
+	AuthStatus *int64 `json:"AuthStatus,omitempty" name:"AuthStatus"`
+
+	// 1
+	CommStatus *int64 `json:"CommStatus,omitempty" name:"CommStatus"`
+
+	// 1
+	EvidenceStatus *int64 `json:"EvidenceStatus,omitempty" name:"EvidenceStatus"`
+
+	// 1
+	IsProducer *int64 `json:"IsProducer,omitempty" name:"IsProducer"`
+
+	// 1
+	IsOverseas *int64 `json:"IsOverseas,omitempty" name:"IsOverseas"`
 }
 
 type ProtectURLInfo struct {

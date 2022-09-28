@@ -4483,6 +4483,10 @@ type NamespacePage struct {
 
 	// 页数
 	Pages *int64 `json:"Pages,omitempty" name:"Pages"`
+
+	// 当前条目
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Current *int64 `json:"Current,omitempty" name:"Current"`
 }
 
 type NamespaceStatusInfo struct {
@@ -5232,6 +5236,16 @@ type StorageMountConf struct {
 	MountPath *string `json:"MountPath,omitempty" name:"MountPath"`
 }
 
+type Tag struct {
+	// 标签键
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TagKey *string `json:"TagKey,omitempty" name:"TagKey"`
+
+	// 标签值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TagValue *string `json:"TagValue,omitempty" name:"TagValue"`
+}
+
 type TemDeployApplicationDetailInfo struct {
 	// 分批发布策略
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -5362,6 +5376,26 @@ type TemNamespaceInfo struct {
 
 	// 环境锁，1为上锁，0则为上锁
 	Locked *int64 `json:"Locked,omitempty" name:"Locked"`
+
+	// 用户AppId
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AppId *string `json:"AppId,omitempty" name:"AppId"`
+
+	// 用户Uin
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Uin *string `json:"Uin,omitempty" name:"Uin"`
+
+	// 用户SubAccountUin
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubAccountUin *string `json:"SubAccountUin,omitempty" name:"SubAccountUin"`
+
+	// 集群ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 标签
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 }
 
 type TemService struct {

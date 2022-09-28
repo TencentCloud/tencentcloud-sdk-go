@@ -3389,6 +3389,12 @@ type CreateTKEEdgeClusterRequestParams struct {
 
 	// 集群计费方式
 	ChargeType *string `json:"ChargeType,omitempty" name:"ChargeType"`
+
+	// 边缘集群版本，此版本区别于k8s版本，是整个集群各组件版本集合
+	EdgeVersion *string `json:"EdgeVersion,omitempty" name:"EdgeVersion"`
+
+	// 边缘组件镜像仓库前缀
+	RegistryPrefix *string `json:"RegistryPrefix,omitempty" name:"RegistryPrefix"`
 }
 
 type CreateTKEEdgeClusterRequest struct {
@@ -3429,6 +3435,12 @@ type CreateTKEEdgeClusterRequest struct {
 
 	// 集群计费方式
 	ChargeType *string `json:"ChargeType,omitempty" name:"ChargeType"`
+
+	// 边缘集群版本，此版本区别于k8s版本，是整个集群各组件版本集合
+	EdgeVersion *string `json:"EdgeVersion,omitempty" name:"EdgeVersion"`
+
+	// 边缘组件镜像仓库前缀
+	RegistryPrefix *string `json:"RegistryPrefix,omitempty" name:"RegistryPrefix"`
 }
 
 func (r *CreateTKEEdgeClusterRequest) ToJsonString() string {
@@ -3455,6 +3467,8 @@ func (r *CreateTKEEdgeClusterRequest) FromJsonString(s string) error {
 	delete(f, "ClusterLevel")
 	delete(f, "AutoUpgradeClusterLevel")
 	delete(f, "ChargeType")
+	delete(f, "EdgeVersion")
+	delete(f, "RegistryPrefix")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateTKEEdgeClusterRequest has unknown keys!", "")
 	}
@@ -5117,12 +5131,15 @@ func (r *DescribeAvailableClusterVersionResponse) FromJsonString(s string) error
 
 // Predefined struct for user
 type DescribeAvailableTKEEdgeVersionRequestParams struct {
-
+	// 填写ClusterId获取当前集群各个组件版本和最新版本
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 }
 
 type DescribeAvailableTKEEdgeVersionRequest struct {
 	*tchttp.BaseRequest
 	
+	// 填写ClusterId获取当前集群各个组件版本和最新版本
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 }
 
 func (r *DescribeAvailableTKEEdgeVersionRequest) ToJsonString() string {
@@ -5137,7 +5154,7 @@ func (r *DescribeAvailableTKEEdgeVersionRequest) FromJsonString(s string) error 
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "ClusterId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAvailableTKEEdgeVersionRequest has unknown keys!", "")
 	}
@@ -5148,6 +5165,14 @@ func (r *DescribeAvailableTKEEdgeVersionRequest) FromJsonString(s string) error 
 type DescribeAvailableTKEEdgeVersionResponseParams struct {
 	// 版本列表
 	Versions []*string `json:"Versions,omitempty" name:"Versions"`
+
+	// 边缘集群最新版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EdgeVersionLatest *string `json:"EdgeVersionLatest,omitempty" name:"EdgeVersionLatest"`
+
+	// 边缘集群当前版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EdgeVersionCurrent *string `json:"EdgeVersionCurrent,omitempty" name:"EdgeVersionCurrent"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`

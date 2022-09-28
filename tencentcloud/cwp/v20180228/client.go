@@ -374,7 +374,7 @@ func NewCreateLicenseOrderResponse() (response *CreateLicenseOrderResponse) {
 //
 // 支持预付费后付费创建
 //
-// 后付费订单直接闯将成功
+// 后付费订单直接创建成功
 //
 // 预付费订单仅下单不支付,需要调用计费支付接口进行支付
 //
@@ -394,7 +394,7 @@ func (c *Client) CreateLicenseOrder(request *CreateLicenseOrderRequest) (respons
 //
 // 支持预付费后付费创建
 //
-// 后付费订单直接闯将成功
+// 后付费订单直接创建成功
 //
 // 预付费订单仅下单不支付,需要调用计费支付接口进行支付
 //
@@ -5035,64 +5035,6 @@ func (c *Client) DescribeESAggregationsWithContext(ctx context.Context, request 
     request.SetContext(ctx)
     
     response = NewDescribeESAggregationsResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewDescribeESHitsRequest() (request *DescribeESHitsRequest) {
-    request = &DescribeESHitsRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("cwp", APIVersion, "DescribeESHits")
-    
-    
-    return
-}
-
-func NewDescribeESHitsResponse() (response *DescribeESHitsResponse) {
-    response = &DescribeESHitsResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// DescribeESHits
-// 获取ES查询文档列表
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION_APISERVERFAIL = "FailedOperation.APIServerFail"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  MISSINGPARAMETER = "MissingParameter"
-func (c *Client) DescribeESHits(request *DescribeESHitsRequest) (response *DescribeESHitsResponse, err error) {
-    return c.DescribeESHitsWithContext(context.Background(), request)
-}
-
-// DescribeESHits
-// 获取ES查询文档列表
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION_APISERVERFAIL = "FailedOperation.APIServerFail"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  MISSINGPARAMETER = "MissingParameter"
-func (c *Client) DescribeESHitsWithContext(ctx context.Context, request *DescribeESHitsRequest) (response *DescribeESHitsResponse, err error) {
-    if request == nil {
-        request = NewDescribeESHitsRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeESHits require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeESHitsResponse()
     err = c.Send(request, response)
     return
 }
