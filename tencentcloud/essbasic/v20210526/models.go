@@ -808,6 +808,102 @@ func (r *ChannelCreateMultiFlowSignQRCodeResponse) FromJsonString(s string) erro
 }
 
 // Predefined struct for user
+type ChannelDescribeEmployeesRequestParams struct {
+	// 返回最大数量，最大为20
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+
+	// 操作者的信息
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
+	// 查询过滤实名用户，key为Status，Values为["IsVerified"]
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 偏移量，默认为0，最大为20000
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+}
+
+type ChannelDescribeEmployeesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 返回最大数量，最大为20
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+
+	// 操作者的信息
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
+	// 查询过滤实名用户，key为Status，Values为["IsVerified"]
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 偏移量，默认为0，最大为20000
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+}
+
+func (r *ChannelDescribeEmployeesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ChannelDescribeEmployeesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Limit")
+	delete(f, "Agent")
+	delete(f, "Operator")
+	delete(f, "Filters")
+	delete(f, "Offset")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ChannelDescribeEmployeesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ChannelDescribeEmployeesResponseParams struct {
+	// 员工数据列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Employees []*Staff `json:"Employees,omitempty" name:"Employees"`
+
+	// 偏移量，默认为0，最大为20000
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回最大数量，最大为20
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 符合条件的员工数量
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ChannelDescribeEmployeesResponse struct {
+	*tchttp.BaseResponse
+	Response *ChannelDescribeEmployeesResponseParams `json:"Response"`
+}
+
+func (r *ChannelDescribeEmployeesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ChannelDescribeEmployeesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ChannelGetTaskResultApiRequestParams struct {
 	// 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
@@ -1590,6 +1686,16 @@ func (r *CreateSignUrlsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type Department struct {
+	// 部门id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DepartmentId *string `json:"DepartmentId,omitempty" name:"DepartmentId"`
+
+	// 部门名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DepartmentName *string `json:"DepartmentName,omitempty" name:"DepartmentName"`
+}
+
 // Predefined struct for user
 type DescribeFlowDetailInfoRequestParams struct {
 	// 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
@@ -1992,6 +2098,14 @@ type DownloadFlowInfo struct {
 
 	// 签署流程的标识数组
 	FlowIdList []*string `json:"FlowIdList,omitempty" name:"FlowIdList"`
+}
+
+type Filter struct {
+	// 查询过滤条件的Key
+	Key *string `json:"Key,omitempty" name:"Key"`
+
+	// 查询过滤条件的Value列表
+	Values []*string `json:"Values,omitempty" name:"Values"`
 }
 
 type FlowApproverDetail struct {
@@ -2689,6 +2803,52 @@ type SignUrlInfo struct {
 	// 合同组签署链接对应的合同组id
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FlowGroupId *string `json:"FlowGroupId,omitempty" name:"FlowGroupId"`
+}
+
+type Staff struct {
+	// 员工在电子签平台的id
+	UserId *string `json:"UserId,omitempty" name:"UserId"`
+
+	// 显示的员工名
+	DisplayName *string `json:"DisplayName,omitempty" name:"DisplayName"`
+
+	// 员工手机号
+	Mobile *string `json:"Mobile,omitempty" name:"Mobile"`
+
+	// 员工邮箱
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Email *string `json:"Email,omitempty" name:"Email"`
+
+	// 员工在第三方平台id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OpenId *string `json:"OpenId,omitempty" name:"OpenId"`
+
+	// 员工角色
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Roles []*StaffRole `json:"Roles,omitempty" name:"Roles"`
+
+	// 员工部门
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Department *Department `json:"Department,omitempty" name:"Department"`
+
+	// 员工是否实名
+	Verified *bool `json:"Verified,omitempty" name:"Verified"`
+
+	// 员工创建时间戳
+	CreatedOn *int64 `json:"CreatedOn,omitempty" name:"CreatedOn"`
+
+	// 员工实名时间戳
+	VerifiedOn *int64 `json:"VerifiedOn,omitempty" name:"VerifiedOn"`
+}
+
+type StaffRole struct {
+	// 角色id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RoleId *string `json:"RoleId,omitempty" name:"RoleId"`
+
+	// 角色名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RoleName *string `json:"RoleName,omitempty" name:"RoleName"`
 }
 
 type SyncFailReason struct {

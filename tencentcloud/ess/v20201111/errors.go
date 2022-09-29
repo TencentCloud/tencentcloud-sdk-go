@@ -191,11 +191,17 @@ const (
 	// id类型参数不合法，请检查后重试。
 	INVALIDPARAMETER_INVALIDID = "InvalidParameter.InvalidId"
 
+	// 参数Limit不正确。
+	INVALIDPARAMETER_INVALIDLIMIT = "InvalidParameter.InvalidLimit"
+
 	// 手机号码不正确。
 	INVALIDPARAMETER_INVALIDMOBILE = "InvalidParameter.InvalidMobile"
 
 	// 姓名不正确。
 	INVALIDPARAMETER_INVALIDNAME = "InvalidParameter.InvalidName"
+
+	// 参数Offset不正确。
+	INVALIDPARAMETER_INVALIDOFFSET = "InvalidParameter.InvalidOffset"
 
 	// OpenId不正确。
 	INVALIDPARAMETER_INVALIDOPENID = "InvalidParameter.InvalidOpenId"

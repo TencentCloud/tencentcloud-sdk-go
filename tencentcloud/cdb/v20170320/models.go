@@ -9936,6 +9936,12 @@ type ModifyInstanceParamRequestParams struct {
 
 	// 执行参数调整任务的方式，默认为 0。支持值包括：0 - 立刻执行，1 - 时间窗执行；当该值为 1 时，每次只能传一个实例（InstanceIds数量为1）
 	WaitSwitch *int64 `json:"WaitSwitch,omitempty" name:"WaitSwitch"`
+
+	// 参数是否同步到主实例下的只读实例。true 为不同步，false 为同步。默认为 false。
+	NotSyncRo *bool `json:"NotSyncRo,omitempty" name:"NotSyncRo"`
+
+	// 参数是否同步到主实例下的灾备实例。true 为不同步，false 为同步。默认为 false。
+	NotSyncDr *bool `json:"NotSyncDr,omitempty" name:"NotSyncDr"`
 }
 
 type ModifyInstanceParamRequest struct {
@@ -9952,6 +9958,12 @@ type ModifyInstanceParamRequest struct {
 
 	// 执行参数调整任务的方式，默认为 0。支持值包括：0 - 立刻执行，1 - 时间窗执行；当该值为 1 时，每次只能传一个实例（InstanceIds数量为1）
 	WaitSwitch *int64 `json:"WaitSwitch,omitempty" name:"WaitSwitch"`
+
+	// 参数是否同步到主实例下的只读实例。true 为不同步，false 为同步。默认为 false。
+	NotSyncRo *bool `json:"NotSyncRo,omitempty" name:"NotSyncRo"`
+
+	// 参数是否同步到主实例下的灾备实例。true 为不同步，false 为同步。默认为 false。
+	NotSyncDr *bool `json:"NotSyncDr,omitempty" name:"NotSyncDr"`
 }
 
 func (r *ModifyInstanceParamRequest) ToJsonString() string {
@@ -9970,6 +9982,8 @@ func (r *ModifyInstanceParamRequest) FromJsonString(s string) error {
 	delete(f, "ParamList")
 	delete(f, "TemplateId")
 	delete(f, "WaitSwitch")
+	delete(f, "NotSyncRo")
+	delete(f, "NotSyncDr")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyInstanceParamRequest has unknown keys!", "")
 	}

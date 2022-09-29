@@ -1,3 +1,116 @@
+# Release v1.0.508
+
+## 二进制软件成分分析(bsca) 版本：2021-08-11
+
+### 第 3 次发布
+
+发布时间：2022-09-29 06:12:03
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [MatchKBPURLList](https://cloud.tencent.com/document/api/1483/75192)
+
+	* 新增出参：Hit
+
+
+
+
+## 云数据库 MySQL(cdb) 版本：2017-03-20
+
+### 第 102 次发布
+
+发布时间：2022-09-29 06:13:46
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ModifyInstanceParam](https://cloud.tencent.com/document/api/236/15860)
+
+	* 新增入参：NotSyncRo, NotSyncDr
+
+
+
+
+## 电子签服务(ess) 版本：2020-11-11
+
+### 第 19 次发布
+
+发布时间：2022-09-29 06:30:30
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateIntegrationEmployees](https://cloud.tencent.com/document/api/1323/81117)
+* [DeleteIntegrationEmployees](https://cloud.tencent.com/document/api/1323/81116)
+* [DescribeIntegrationEmployees](https://cloud.tencent.com/document/api/1323/81115)
+
+新增数据结构：
+
+* [CreateStaffResult](https://cloud.tencent.com/document/api/1323/70369#CreateStaffResult)
+* [DeleteStaffsResult](https://cloud.tencent.com/document/api/1323/70369#DeleteStaffsResult)
+* [Department](https://cloud.tencent.com/document/api/1323/70369#Department)
+* [FailedCreateStaffData](https://cloud.tencent.com/document/api/1323/70369#FailedCreateStaffData)
+* [FailedDeleteStaffData](https://cloud.tencent.com/document/api/1323/70369#FailedDeleteStaffData)
+* [Staff](https://cloud.tencent.com/document/api/1323/70369#Staff)
+* [StaffRole](https://cloud.tencent.com/document/api/1323/70369#StaffRole)
+* [SuccessCreateStaffData](https://cloud.tencent.com/document/api/1323/70369#SuccessCreateStaffData)
+* [SuccessDeleteStaffData](https://cloud.tencent.com/document/api/1323/70369#SuccessDeleteStaffData)
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
+
+### 第 32 次发布
+
+发布时间：2022-09-29 06:30:52
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [ChannelDescribeEmployees](https://cloud.tencent.com/document/api/1420/81119)
+
+新增数据结构：
+
+* [Department](https://cloud.tencent.com/document/api/1420/61525#Department)
+* [Filter](https://cloud.tencent.com/document/api/1420/61525#Filter)
+* [Staff](https://cloud.tencent.com/document/api/1420/61525#Staff)
+* [StaffRole](https://cloud.tencent.com/document/api/1420/61525#StaffRole)
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
+
+
+
+## 私有网络(vpc) 版本：2017-03-12
+
+### 第 126 次发布
+
+发布时间：2022-09-29 07:02:19
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [SetVpnGatewaysRenewFlag](https://cloud.tencent.com/document/api/215/81120)
+
+
+
 # Release v1.0.507
 
 ## 边缘安全加速平台(teo) 版本：2022-09-01

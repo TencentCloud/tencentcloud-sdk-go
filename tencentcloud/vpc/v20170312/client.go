@@ -17875,6 +17875,62 @@ func (c *Client) SetCcnRegionBandwidthLimitsWithContext(ctx context.Context, req
     return
 }
 
+func NewSetVpnGatewaysRenewFlagRequest() (request *SetVpnGatewaysRenewFlagRequest) {
+    request = &SetVpnGatewaysRenewFlagRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vpc", APIVersion, "SetVpnGatewaysRenewFlag")
+    
+    
+    return
+}
+
+func NewSetVpnGatewaysRenewFlagResponse() (response *SetVpnGatewaysRenewFlagResponse) {
+    response = &SetVpnGatewaysRenewFlagResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// SetVpnGatewaysRenewFlag
+// 设置VPNGW续费标记
+//
+// 可能返回的错误码:
+//  INTERNALSERVERERROR = "InternalServerError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) SetVpnGatewaysRenewFlag(request *SetVpnGatewaysRenewFlagRequest) (response *SetVpnGatewaysRenewFlagResponse, err error) {
+    return c.SetVpnGatewaysRenewFlagWithContext(context.Background(), request)
+}
+
+// SetVpnGatewaysRenewFlag
+// 设置VPNGW续费标记
+//
+// 可能返回的错误码:
+//  INTERNALSERVERERROR = "InternalServerError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) SetVpnGatewaysRenewFlagWithContext(ctx context.Context, request *SetVpnGatewaysRenewFlagRequest) (response *SetVpnGatewaysRenewFlagResponse, err error) {
+    if request == nil {
+        request = NewSetVpnGatewaysRenewFlagRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SetVpnGatewaysRenewFlag require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewSetVpnGatewaysRenewFlagResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewTransformAddressRequest() (request *TransformAddressRequest) {
     request = &TransformAddressRequest{
         BaseRequest: &tchttp.BaseRequest{},

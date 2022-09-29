@@ -1293,6 +1293,66 @@ func (c *Client) CreateFlowSignReviewWithContext(ctx context.Context, request *C
     return
 }
 
+func NewCreateIntegrationEmployeesRequest() (request *CreateIntegrationEmployeesRequest) {
+    request = &CreateIntegrationEmployeesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ess", APIVersion, "CreateIntegrationEmployees")
+    
+    
+    return
+}
+
+func NewCreateIntegrationEmployeesResponse() (response *CreateIntegrationEmployeesResponse) {
+    response = &CreateIntegrationEmployeesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateIntegrationEmployees
+// 创建员工
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDCHANNEL = "InvalidParameter.InvalidChannel"
+//  INVALIDPARAMETER_INVALIDOPERATORID = "InvalidParameter.InvalidOperatorId"
+//  INVALIDPARAMETER_INVALIDORGANIZATIONID = "InvalidParameter.InvalidOrganizationId"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) CreateIntegrationEmployees(request *CreateIntegrationEmployeesRequest) (response *CreateIntegrationEmployeesResponse, err error) {
+    return c.CreateIntegrationEmployeesWithContext(context.Background(), request)
+}
+
+// CreateIntegrationEmployees
+// 创建员工
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDCHANNEL = "InvalidParameter.InvalidChannel"
+//  INVALIDPARAMETER_INVALIDOPERATORID = "InvalidParameter.InvalidOperatorId"
+//  INVALIDPARAMETER_INVALIDORGANIZATIONID = "InvalidParameter.InvalidOrganizationId"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) CreateIntegrationEmployeesWithContext(ctx context.Context, request *CreateIntegrationEmployeesRequest) (response *CreateIntegrationEmployeesResponse, err error) {
+    if request == nil {
+        request = NewCreateIntegrationEmployeesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateIntegrationEmployees require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateIntegrationEmployeesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateMultiFlowSignQRCodeRequest() (request *CreateMultiFlowSignQRCodeRequest) {
     request = &CreateMultiFlowSignQRCodeRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1507,6 +1567,66 @@ func (c *Client) CreateSchemeUrlWithContext(ctx context.Context, request *Create
     request.SetContext(ctx)
     
     response = NewCreateSchemeUrlResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteIntegrationEmployeesRequest() (request *DeleteIntegrationEmployeesRequest) {
+    request = &DeleteIntegrationEmployeesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ess", APIVersion, "DeleteIntegrationEmployees")
+    
+    
+    return
+}
+
+func NewDeleteIntegrationEmployeesResponse() (response *DeleteIntegrationEmployeesResponse) {
+    response = &DeleteIntegrationEmployeesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteIntegrationEmployees
+// 移除员工
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDCHANNEL = "InvalidParameter.InvalidChannel"
+//  INVALIDPARAMETER_INVALIDOPERATORID = "InvalidParameter.InvalidOperatorId"
+//  INVALIDPARAMETER_INVALIDORGANIZATIONID = "InvalidParameter.InvalidOrganizationId"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DeleteIntegrationEmployees(request *DeleteIntegrationEmployeesRequest) (response *DeleteIntegrationEmployeesResponse, err error) {
+    return c.DeleteIntegrationEmployeesWithContext(context.Background(), request)
+}
+
+// DeleteIntegrationEmployees
+// 移除员工
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDCHANNEL = "InvalidParameter.InvalidChannel"
+//  INVALIDPARAMETER_INVALIDOPERATORID = "InvalidParameter.InvalidOperatorId"
+//  INVALIDPARAMETER_INVALIDORGANIZATIONID = "InvalidParameter.InvalidOrganizationId"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DeleteIntegrationEmployeesWithContext(ctx context.Context, request *DeleteIntegrationEmployeesRequest) (response *DeleteIntegrationEmployeesResponse, err error) {
+    if request == nil {
+        request = NewDeleteIntegrationEmployeesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteIntegrationEmployees require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteIntegrationEmployeesResponse()
     err = c.Send(request, response)
     return
 }
@@ -1867,6 +1987,68 @@ func (c *Client) DescribeFlowTemplatesWithContext(ctx context.Context, request *
     request.SetContext(ctx)
     
     response = NewDescribeFlowTemplatesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeIntegrationEmployeesRequest() (request *DescribeIntegrationEmployeesRequest) {
+    request = &DescribeIntegrationEmployeesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ess", APIVersion, "DescribeIntegrationEmployees")
+    
+    
+    return
+}
+
+func NewDescribeIntegrationEmployeesResponse() (response *DescribeIntegrationEmployeesResponse) {
+    response = &DescribeIntegrationEmployeesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeIntegrationEmployees
+// 查询员工信息，每次返回的数据量最大为20
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETER_INVALIDCHANNEL = "InvalidParameter.InvalidChannel"
+//  INVALIDPARAMETER_INVALIDLIMIT = "InvalidParameter.InvalidLimit"
+//  INVALIDPARAMETER_INVALIDOFFSET = "InvalidParameter.InvalidOffset"
+//  INVALIDPARAMETER_INVALIDOPERATORID = "InvalidParameter.InvalidOperatorId"
+//  INVALIDPARAMETER_INVALIDORGANIZATIONID = "InvalidParameter.InvalidOrganizationId"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeIntegrationEmployees(request *DescribeIntegrationEmployeesRequest) (response *DescribeIntegrationEmployeesResponse, err error) {
+    return c.DescribeIntegrationEmployeesWithContext(context.Background(), request)
+}
+
+// DescribeIntegrationEmployees
+// 查询员工信息，每次返回的数据量最大为20
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETER_INVALIDCHANNEL = "InvalidParameter.InvalidChannel"
+//  INVALIDPARAMETER_INVALIDLIMIT = "InvalidParameter.InvalidLimit"
+//  INVALIDPARAMETER_INVALIDOFFSET = "InvalidParameter.InvalidOffset"
+//  INVALIDPARAMETER_INVALIDOPERATORID = "InvalidParameter.InvalidOperatorId"
+//  INVALIDPARAMETER_INVALIDORGANIZATIONID = "InvalidParameter.InvalidOrganizationId"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeIntegrationEmployeesWithContext(ctx context.Context, request *DescribeIntegrationEmployeesRequest) (response *DescribeIntegrationEmployeesResponse, err error) {
+    if request == nil {
+        request = NewDescribeIntegrationEmployeesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeIntegrationEmployees require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeIntegrationEmployeesResponse()
     err = c.Send(request, response)
     return
 }

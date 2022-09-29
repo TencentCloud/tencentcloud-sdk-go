@@ -513,6 +513,9 @@ type MatchKBPURLListResponseParams struct {
 	// 组件列表。
 	PURLList []*PURL `json:"PURLList,omitempty" name:"PURLList"`
 
+	// 是否命中数据库。
+	Hit *bool `json:"Hit,omitempty" name:"Hit"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }

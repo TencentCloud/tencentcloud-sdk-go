@@ -1310,7 +1310,7 @@ type CreateClusterEndpointRequestParams struct {
 	// 设置域名
 	Domain *string `json:"Domain,omitempty" name:"Domain"`
 
-	// 使用的安全组，只有外网访问需要传递
+	// 使用的安全组，只有外网访问需要传递（开启外网访问时必传）
 	SecurityGroup *string `json:"SecurityGroup,omitempty" name:"SecurityGroup"`
 
 	// 创建lb参数，只有外网访问需要设置
@@ -1332,7 +1332,7 @@ type CreateClusterEndpointRequest struct {
 	// 设置域名
 	Domain *string `json:"Domain,omitempty" name:"Domain"`
 
-	// 使用的安全组，只有外网访问需要传递
+	// 使用的安全组，只有外网访问需要传递（开启外网访问时必传）
 	SecurityGroup *string `json:"SecurityGroup,omitempty" name:"SecurityGroup"`
 
 	// 创建lb参数，只有外网访问需要设置

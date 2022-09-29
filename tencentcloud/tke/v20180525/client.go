@@ -752,7 +752,7 @@ func NewCreateClusterEndpointResponse() (response *CreateClusterEndpointResponse
 }
 
 // CreateClusterEndpoint
-// 创建集群访问端口(独立集群开启内网/外网访问，托管集群支持开启内网访问)
+// 创建集群访问端口
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -781,7 +781,7 @@ func (c *Client) CreateClusterEndpoint(request *CreateClusterEndpointRequest) (r
 }
 
 // CreateClusterEndpoint
-// 创建集群访问端口(独立集群开启内网/外网访问，托管集群支持开启内网访问)
+// 创建集群访问端口
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -2466,7 +2466,7 @@ func NewDeleteClusterEndpointResponse() (response *DeleteClusterEndpointResponse
 }
 
 // DeleteClusterEndpoint
-// 删除集群访问端口(独立集群开启内网/外网访问，托管集群支持开启内网访问)
+// 删除集群访问端口
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -2496,7 +2496,7 @@ func (c *Client) DeleteClusterEndpoint(request *DeleteClusterEndpointRequest) (r
 }
 
 // DeleteClusterEndpoint
-// 删除集群访问端口(独立集群开启内网/外网访问，托管集群支持开启内网访问)
+// 删除集群访问端口
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

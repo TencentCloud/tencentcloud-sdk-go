@@ -502,7 +502,7 @@ func NewApplyOpenBankSettleOrderResponse() (response *ApplyOpenBankSettleOrderRe
 }
 
 // ApplyOpenBankSettleOrder
-// 云企付结算申请接口
+// 云企付-结算申请接口
 //
 // 可能返回的错误码:
 //  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
@@ -511,7 +511,7 @@ func (c *Client) ApplyOpenBankSettleOrder(request *ApplyOpenBankSettleOrderReque
 }
 
 // ApplyOpenBankSettleOrder
-// 云企付结算申请接口
+// 云企付-结算申请接口
 //
 // 可能返回的错误码:
 //  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
@@ -9274,7 +9274,7 @@ func NewQueryOpenBankSettleOrderResponse() (response *QueryOpenBankSettleOrderRe
 }
 
 // QueryOpenBankSettleOrder
-// 云企付结算单查询结果
+// 云企付-结算单查询结果
 //
 // 可能返回的错误码:
 //  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
@@ -9283,7 +9283,7 @@ func (c *Client) QueryOpenBankSettleOrder(request *QueryOpenBankSettleOrderReque
 }
 
 // QueryOpenBankSettleOrder
-// 云企付结算单查询结果
+// 云企付-结算单查询结果
 //
 // 可能返回的错误码:
 //  INTERNALERROR_UNKNOWN = "InternalError.Unknown"

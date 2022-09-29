@@ -119,6 +119,7 @@ func NewOutApproveBpaasApplicationResponse() (response *OutApproveBpaasApplicati
 // 外部审批申请单
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_SENDTOCKAFKA = "FailedOperation.SendToCkafka"
 //  INTERNALERROR_CAUTHERROR = "InternalError.CauthError"
 //  INTERNALERROR_DBERROR = "InternalError.DbError"
 //  INVALIDPARAMETER_HASBEENAPPROVED = "InvalidParameter.HasBeenApproved"
@@ -132,6 +133,7 @@ func (c *Client) OutApproveBpaasApplication(request *OutApproveBpaasApplicationR
 // 外部审批申请单
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_SENDTOCKAFKA = "FailedOperation.SendToCkafka"
 //  INTERNALERROR_CAUTHERROR = "InternalError.CauthError"
 //  INTERNALERROR_DBERROR = "InternalError.DbError"
 //  INVALIDPARAMETER_HASBEENAPPROVED = "InvalidParameter.HasBeenApproved"

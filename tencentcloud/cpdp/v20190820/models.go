@@ -22174,10 +22174,10 @@ type QueryOpenBankPaymentOrderRequestParams struct {
 	// 渠道商户号。外部接入平台入驻云企付平台下发。
 	ChannelMerchantId *string `json:"ChannelMerchantId,omitempty" name:"ChannelMerchantId"`
 
-	// 外部商户订单号。与ChannelOrderId不能同时为空。
+	// 外部商户订单号。与ChannelOrderId不能同时为空。若传空串即表示忽略该参数。
 	OutOrderId *string `json:"OutOrderId,omitempty" name:"OutOrderId"`
 
-	// 云平台订单号。与OutOrderId不能同时为空。
+	// 云平台订单号。与OutOrderId不能同时为空。若调用下单接口时，发生异常，无法取到ChannelOrderId，传空串即可
 	ChannelOrderId *string `json:"ChannelOrderId,omitempty" name:"ChannelOrderId"`
 
 	// 接入环境。沙箱环境填 sandbox。缺省默认调用生产环境。
@@ -22190,10 +22190,10 @@ type QueryOpenBankPaymentOrderRequest struct {
 	// 渠道商户号。外部接入平台入驻云企付平台下发。
 	ChannelMerchantId *string `json:"ChannelMerchantId,omitempty" name:"ChannelMerchantId"`
 
-	// 外部商户订单号。与ChannelOrderId不能同时为空。
+	// 外部商户订单号。与ChannelOrderId不能同时为空。若传空串即表示忽略该参数。
 	OutOrderId *string `json:"OutOrderId,omitempty" name:"OutOrderId"`
 
-	// 云平台订单号。与OutOrderId不能同时为空。
+	// 云平台订单号。与OutOrderId不能同时为空。若调用下单接口时，发生异常，无法取到ChannelOrderId，传空串即可
 	ChannelOrderId *string `json:"ChannelOrderId,omitempty" name:"ChannelOrderId"`
 
 	// 接入环境。沙箱环境填 sandbox。缺省默认调用生产环境。

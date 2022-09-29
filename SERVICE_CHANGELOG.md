@@ -1,103 +1,113 @@
 # 本版本更新包含以下内容：
 
-## 边缘安全加速平台(teo) 版本：2022-09-01
+## 二进制软件成分分析(bsca) 版本：2021-08-11
 
-### 第 2 次发布
+### 第 3 次发布
 
-发布时间：2022-09-28 19:21:32
+发布时间：2022-09-29 06:12:03
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-<font color="#dd0000">**删除接口**：</font>
+修改接口：
 
-* DescribeHostCertificates
+* [MatchKBPURLList](https://cloud.tencent.com/document/api/1483/75192)
+
+	* 新增出参：Hit
+
+
+
+
+## 云数据库 MySQL(cdb) 版本：2017-03-20
+
+### 第 102 次发布
+
+发布时间：2022-09-29 06:13:46
+
+本次发布包含了以下内容：
+
+改善已有的文档。
 
 修改接口：
 
-* [CreateLoadBalancing](https://cloud.tencent.com/document/api/1552/80599)
+* [ModifyInstanceParam](https://cloud.tencent.com/document/api/236/15860)
 
-	* 新增入参：OriginType, AdvancedOriginGroups
+	* 新增入参：NotSyncRo, NotSyncDr
 
-* [CreateOriginGroup](https://cloud.tencent.com/document/api/1552/80598)
 
-	* 新增入参：HostHeader
 
-* [DeleteLogTopicTask](https://cloud.tencent.com/document/api/1552/80631)
 
-	* <font color="#dd0000">**修改入参**：</font>LogSetRegion
+## 电子签服务(ess) 版本：2020-11-11
 
-* [IdentifyZone](https://cloud.tencent.com/document/api/1552/80712)
+### 第 19 次发布
 
-	* 新增出参：FileAscription
+发布时间：2022-09-29 06:30:30
 
-* [ModifyLoadBalancing](https://cloud.tencent.com/document/api/1552/80763)
+本次发布包含了以下内容：
 
-	* 新增入参：OriginType, AdvancedOriginGroups
+改善已有的文档。
 
-* [ModifyOriginGroup](https://cloud.tencent.com/document/api/1552/80592)
+新增接口：
 
-	* 新增入参：HostHeader
-
-* [ModifyZoneSetting](https://cloud.tencent.com/document/api/1552/80614)
-
-	* 新增入参：ClientIpCountry
-
+* [CreateIntegrationEmployees](https://cloud.tencent.com/document/api/1323/81117)
+* [DeleteIntegrationEmployees](https://cloud.tencent.com/document/api/1323/81116)
+* [DescribeIntegrationEmployees](https://cloud.tencent.com/document/api/1323/81115)
 
 新增数据结构：
 
-* [AdvancedOriginGroup](https://cloud.tencent.com/document/api/1552/80721#AdvancedOriginGroup)
-* [ClientIpCountry](https://cloud.tencent.com/document/api/1552/80721#ClientIpCountry)
-* [FileAscriptionInfo](https://cloud.tencent.com/document/api/1552/80721#FileAscriptionInfo)
-* [OriginGroupCondition](https://cloud.tencent.com/document/api/1552/80721#OriginGroupCondition)
-* [PartialModule](https://cloud.tencent.com/document/api/1552/80721#PartialModule)
-* [SkipCondition](https://cloud.tencent.com/document/api/1552/80721#SkipCondition)
-
-<font color="#dd0000">**删除数据结构**：</font>
-
-* HostCertInfo
-* HostsCertificate
-* Sort
-
-修改数据结构：
-
-* [ClsLogTopicInfo](https://cloud.tencent.com/document/api/1552/80721#ClsLogTopicInfo)
-
-	* 新增成员：LogSetType
-
-* [DefaultServerCertInfo](https://cloud.tencent.com/document/api/1552/80721#DefaultServerCertInfo)
-
-	* 新增成员：SignAlgo
-
-* [DetailHost](https://cloud.tencent.com/document/api/1552/80721#DetailHost)
-
-	* 新增成员：ClientIpCountry
-
-* [ExceptUserRuleScope](https://cloud.tencent.com/document/api/1552/80721#ExceptUserRuleScope)
-
-	* 新增成员：Type, PartialModules, SkipConditions
-
-* [Identification](https://cloud.tencent.com/document/api/1552/80721#Identification)
-
-	* 新增成员：FileAscription
-
-* [LoadBalancing](https://cloud.tencent.com/document/api/1552/80721#LoadBalancing)
-
-	* 新增成员：OriginType, AdvancedOriginGroups
-
-* [OriginGroup](https://cloud.tencent.com/document/api/1552/80721#OriginGroup)
-
-	* 新增成员：HostHeader
-
-* [ZoneSetting](https://cloud.tencent.com/document/api/1552/80721#ZoneSetting)
-
-	* 新增成员：ClientIpCountry
+* [CreateStaffResult](https://cloud.tencent.com/document/api/1323/70369#CreateStaffResult)
+* [DeleteStaffsResult](https://cloud.tencent.com/document/api/1323/70369#DeleteStaffsResult)
+* [Department](https://cloud.tencent.com/document/api/1323/70369#Department)
+* [FailedCreateStaffData](https://cloud.tencent.com/document/api/1323/70369#FailedCreateStaffData)
+* [FailedDeleteStaffData](https://cloud.tencent.com/document/api/1323/70369#FailedDeleteStaffData)
+* [Staff](https://cloud.tencent.com/document/api/1323/70369#Staff)
+* [StaffRole](https://cloud.tencent.com/document/api/1323/70369#StaffRole)
+* [SuccessCreateStaffData](https://cloud.tencent.com/document/api/1323/70369#SuccessCreateStaffData)
+* [SuccessDeleteStaffData](https://cloud.tencent.com/document/api/1323/70369#SuccessDeleteStaffData)
 
 
 
+## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
 
-## 边缘安全加速平台(teo) 版本：2022-01-06
+### 第 32 次发布
+
+发布时间：2022-09-29 06:30:52
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [ChannelDescribeEmployees](https://cloud.tencent.com/document/api/1420/81119)
+
+新增数据结构：
+
+* [Department](https://cloud.tencent.com/document/api/1420/61525#Department)
+* [Filter](https://cloud.tencent.com/document/api/1420/61525#Filter)
+* [Staff](https://cloud.tencent.com/document/api/1420/61525#Staff)
+* [StaffRole](https://cloud.tencent.com/document/api/1420/61525#StaffRole)
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
+
+
+
+## 私有网络(vpc) 版本：2017-03-12
+
+### 第 126 次发布
+
+发布时间：2022-09-29 07:02:19
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [SetVpnGatewaysRenewFlag](https://cloud.tencent.com/document/api/215/81120)
 
 
 
@@ -8615,6 +8625,21 @@
 
 ## 二进制软件成分分析(bsca) 版本：2021-08-11
 
+### 第 3 次发布
+
+发布时间：2022-09-29 06:12:03
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [MatchKBPURLList](https://cloud.tencent.com/document/api/1483/75192)
+
+	* 新增出参：Hit
+
+
 ### 第 2 次发布
 
 发布时间：2022-06-09 06:06:39
@@ -11624,6 +11649,21 @@
 
 
 ## 云数据库 MySQL(cdb) 版本：2017-03-20
+
+### 第 102 次发布
+
+发布时间：2022-09-29 06:13:46
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ModifyInstanceParam](https://cloud.tencent.com/document/api/236/15860)
+
+	* 新增入参：NotSyncRo, NotSyncDr
+
 
 ### 第 101 次发布
 
@@ -38746,6 +38786,32 @@
 
 ## 电子签服务(ess) 版本：2020-11-11
 
+### 第 19 次发布
+
+发布时间：2022-09-29 06:30:30
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateIntegrationEmployees](https://cloud.tencent.com/document/api/1323/81117)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteIntegrationEmployees](https://cloud.tencent.com/document/api/1323/81116)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeIntegrationEmployees](https://cloud.tencent.com/document/api/1323/81115)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[CreateStaffResult](https://cloud.tencent.com/document/api/1323/70369#CreateStaffResult)](https://cloud.tencent.com/document/api/1323/70369#[CreateStaffResult](https://cloud.tencent.com/document/api/1323/70369#CreateStaffResult))
+* [[DeleteStaffsResult](https://cloud.tencent.com/document/api/1323/70369#DeleteStaffsResult)](https://cloud.tencent.com/document/api/1323/70369#[DeleteStaffsResult](https://cloud.tencent.com/document/api/1323/70369#DeleteStaffsResult))
+* [[Department](https://cloud.tencent.com/document/api/1323/70369#Department)](https://cloud.tencent.com/document/api/1323/70369#[Department](https://cloud.tencent.com/document/api/1323/70369#Department))
+* [[FailedCreateStaffData](https://cloud.tencent.com/document/api/1323/70369#FailedCreateStaffData)](https://cloud.tencent.com/document/api/1323/70369#[FailedCreateStaffData](https://cloud.tencent.com/document/api/1323/70369#FailedCreateStaffData))
+* [[FailedDeleteStaffData](https://cloud.tencent.com/document/api/1323/70369#FailedDeleteStaffData)](https://cloud.tencent.com/document/api/1323/70369#[FailedDeleteStaffData](https://cloud.tencent.com/document/api/1323/70369#FailedDeleteStaffData))
+* [[Staff](https://cloud.tencent.com/document/api/1323/70369#Staff)](https://cloud.tencent.com/document/api/1323/70369#[Staff](https://cloud.tencent.com/document/api/1323/70369#Staff))
+* [[StaffRole](https://cloud.tencent.com/document/api/1323/70369#StaffRole)](https://cloud.tencent.com/document/api/1323/70369#[StaffRole](https://cloud.tencent.com/document/api/1323/70369#StaffRole))
+* [[SuccessCreateStaffData](https://cloud.tencent.com/document/api/1323/70369#SuccessCreateStaffData)](https://cloud.tencent.com/document/api/1323/70369#[SuccessCreateStaffData](https://cloud.tencent.com/document/api/1323/70369#SuccessCreateStaffData))
+* [[SuccessDeleteStaffData](https://cloud.tencent.com/document/api/1323/70369#SuccessDeleteStaffData)](https://cloud.tencent.com/document/api/1323/70369#[SuccessDeleteStaffData](https://cloud.tencent.com/document/api/1323/70369#SuccessDeleteStaffData))
+
 ### 第 18 次发布
 
 发布时间：2022-09-20 21:03:08
@@ -39193,6 +39259,25 @@
 
 
 ## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
+
+### 第 32 次发布
+
+发布时间：2022-09-29 06:30:52
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[ChannelDescribeEmployees](https://cloud.tencent.com/document/api/1420/81119)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[Department](https://cloud.tencent.com/document/api/1420/61525#Department)](https://cloud.tencent.com/document/api/1420/61525#[Department](https://cloud.tencent.com/document/api/1420/61525#Department))
+* [[Filter](https://cloud.tencent.com/document/api/1420/61525#Filter)](https://cloud.tencent.com/document/api/1420/61525#[Filter](https://cloud.tencent.com/document/api/1420/61525#Filter))
+* [[Staff](https://cloud.tencent.com/document/api/1420/61525#Staff)](https://cloud.tencent.com/document/api/1420/61525#[Staff](https://cloud.tencent.com/document/api/1420/61525#Staff))
+* [[StaffRole](https://cloud.tencent.com/document/api/1420/61525#StaffRole)](https://cloud.tencent.com/document/api/1420/61525#[StaffRole](https://cloud.tencent.com/document/api/1420/61525#StaffRole))
 
 ### 第 31 次发布
 
@@ -45111,7 +45196,7 @@
 
 
 
-## 图片内容检测(ims) 版本：2020-07-13
+## 图片内容安全(ims) 版本：2020-07-13
 
 ### 第 4 次发布
 
@@ -45193,7 +45278,7 @@
 
 
 
-## 图片内容检测(ims) 版本：2020-12-29
+## 图片内容安全(ims) 版本：2020-12-29
 
 ### 第 3 次发布
 
@@ -76053,12 +76138,12 @@
 
 新增数据结构：
 
-* [[AdvancedOriginGroup](https://cloud.tencent.com/document/api/1552/80721#AdvancedOriginGroup)](https://cloud.tencent.com/document/api/1552/80721#[AdvancedOriginGroup](https://cloud.tencent.com/document/api/1552/80721#AdvancedOriginGroup))
-* [[ClientIpCountry](https://cloud.tencent.com/document/api/1552/80721#ClientIpCountry)](https://cloud.tencent.com/document/api/1552/80721#[ClientIpCountry](https://cloud.tencent.com/document/api/1552/80721#ClientIpCountry))
-* [[FileAscriptionInfo](https://cloud.tencent.com/document/api/1552/80721#FileAscriptionInfo)](https://cloud.tencent.com/document/api/1552/80721#[FileAscriptionInfo](https://cloud.tencent.com/document/api/1552/80721#FileAscriptionInfo))
-* [[OriginGroupCondition](https://cloud.tencent.com/document/api/1552/80721#OriginGroupCondition)](https://cloud.tencent.com/document/api/1552/80721#[OriginGroupCondition](https://cloud.tencent.com/document/api/1552/80721#OriginGroupCondition))
-* [[PartialModule](https://cloud.tencent.com/document/api/1552/80721#PartialModule)](https://cloud.tencent.com/document/api/1552/80721#[PartialModule](https://cloud.tencent.com/document/api/1552/80721#PartialModule))
-* [[SkipCondition](https://cloud.tencent.com/document/api/1552/80721#SkipCondition)](https://cloud.tencent.com/document/api/1552/80721#[SkipCondition](https://cloud.tencent.com/document/api/1552/80721#SkipCondition))
+* [AdvancedOriginGroup](https://cloud.tencent.com/document/api/1552/80721#AdvancedOriginGroup)
+* [ClientIpCountry](https://cloud.tencent.com/document/api/1552/80721#ClientIpCountry)
+* [FileAscriptionInfo](https://cloud.tencent.com/document/api/1552/80721#FileAscriptionInfo)
+* [OriginGroupCondition](https://cloud.tencent.com/document/api/1552/80721#OriginGroupCondition)
+* [PartialModule](https://cloud.tencent.com/document/api/1552/80721#PartialModule)
+* [SkipCondition](https://cloud.tencent.com/document/api/1552/80721#SkipCondition)
 
 <font color="#dd0000">**删除数据结构**：</font>
 
@@ -88745,6 +88830,18 @@
 
 
 ## 私有网络(vpc) 版本：2017-03-12
+
+### 第 126 次发布
+
+发布时间：2022-09-29 07:02:19
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[SetVpnGatewaysRenewFlag](https://cloud.tencent.com/document/api/215/81120)](https://cloud.tencent.com/document/api/#/#)
 
 ### 第 125 次发布
 

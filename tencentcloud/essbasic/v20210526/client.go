@@ -705,6 +705,74 @@ func (c *Client) ChannelCreateMultiFlowSignQRCodeWithContext(ctx context.Context
     return
 }
 
+func NewChannelDescribeEmployeesRequest() (request *ChannelDescribeEmployeesRequest) {
+    request = &ChannelDescribeEmployeesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("essbasic", APIVersion, "ChannelDescribeEmployees")
+    
+    
+    return
+}
+
+func NewChannelDescribeEmployeesResponse() (response *ChannelDescribeEmployeesResponse) {
+    response = &ChannelDescribeEmployeesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ChannelDescribeEmployees
+// 查询企业员工
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_DBCONNECTION = "InternalError.DbConnection"
+//  INTERNALERROR_DBREAD = "InternalError.DbRead"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_APPLICATION = "InvalidParameter.Application"
+//  INVALIDPARAMETER_ORGANIZATIONID = "InvalidParameter.OrganizationId"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) ChannelDescribeEmployees(request *ChannelDescribeEmployeesRequest) (response *ChannelDescribeEmployeesResponse, err error) {
+    return c.ChannelDescribeEmployeesWithContext(context.Background(), request)
+}
+
+// ChannelDescribeEmployees
+// 查询企业员工
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_DBCONNECTION = "InternalError.DbConnection"
+//  INTERNALERROR_DBREAD = "InternalError.DbRead"
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_APPLICATION = "InvalidParameter.Application"
+//  INVALIDPARAMETER_ORGANIZATIONID = "InvalidParameter.OrganizationId"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) ChannelDescribeEmployeesWithContext(ctx context.Context, request *ChannelDescribeEmployeesRequest) (response *ChannelDescribeEmployeesResponse, err error) {
+    if request == nil {
+        request = NewChannelDescribeEmployeesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ChannelDescribeEmployees require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewChannelDescribeEmployeesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewChannelGetTaskResultApiRequest() (request *ChannelGetTaskResultApiRequest) {
     request = &ChannelGetTaskResultApiRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -824,9 +892,7 @@ func NewCreateChannelFlowEvidenceReportResponse() (response *CreateChannelFlowEv
 }
 
 // CreateChannelFlowEvidenceReport
-// 【描述】：创建出证报告，返回报告 URL
-//
-// 【注意】：此接口需要通过添加白名单获取调用权限，请联系运营人员加白
+// 创建出证报告，返回报告 URL。此接口暂为开放，有问题请联系运营人员。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_SYSTEM = "InternalError.System"
@@ -842,9 +908,7 @@ func (c *Client) CreateChannelFlowEvidenceReport(request *CreateChannelFlowEvide
 }
 
 // CreateChannelFlowEvidenceReport
-// 【描述】：创建出证报告，返回报告 URL
-//
-// 【注意】：此接口需要通过添加白名单获取调用权限，请联系运营人员加白
+// 创建出证报告，返回报告 URL。此接口暂为开放，有问题请联系运营人员。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_SYSTEM = "InternalError.System"

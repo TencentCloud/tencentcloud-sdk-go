@@ -22502,6 +22502,76 @@ func (r *SetCcnRegionBandwidthLimitsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type SetVpnGatewaysRenewFlagRequestParams struct {
+	// VPNGW字符型ID列表
+	VpnGatewayIds []*string `json:"VpnGatewayIds,omitempty" name:"VpnGatewayIds"`
+
+	// 自动续费标记[0, 1, 2]
+	// 0表示默认状态(初始状态)， 1表示自动续费，2表示明确不自动续费
+	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitempty" name:"AutoRenewFlag"`
+
+	// VPNGW类型['IPSEC', 'SSL']
+	Type *string `json:"Type,omitempty" name:"Type"`
+}
+
+type SetVpnGatewaysRenewFlagRequest struct {
+	*tchttp.BaseRequest
+	
+	// VPNGW字符型ID列表
+	VpnGatewayIds []*string `json:"VpnGatewayIds,omitempty" name:"VpnGatewayIds"`
+
+	// 自动续费标记[0, 1, 2]
+	// 0表示默认状态(初始状态)， 1表示自动续费，2表示明确不自动续费
+	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitempty" name:"AutoRenewFlag"`
+
+	// VPNGW类型['IPSEC', 'SSL']
+	Type *string `json:"Type,omitempty" name:"Type"`
+}
+
+func (r *SetVpnGatewaysRenewFlagRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SetVpnGatewaysRenewFlagRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "VpnGatewayIds")
+	delete(f, "AutoRenewFlag")
+	delete(f, "Type")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SetVpnGatewaysRenewFlagRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SetVpnGatewaysRenewFlagResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type SetVpnGatewaysRenewFlagResponse struct {
+	*tchttp.BaseResponse
+	Response *SetVpnGatewaysRenewFlagResponseParams `json:"Response"`
+}
+
+func (r *SetVpnGatewaysRenewFlagResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SetVpnGatewaysRenewFlagResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type SourceIpTranslationNatRule struct {
 	// 资源ID
 	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`

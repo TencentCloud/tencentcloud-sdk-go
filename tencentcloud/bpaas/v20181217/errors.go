@@ -17,6 +17,9 @@ package v20181217
 const (
 	// 此产品的特有错误码
 
+	// 数据上报失败。
+	FAILEDOPERATION_SENDTOCKAFKA = "FailedOperation.SendToCkafka"
+
 	// 鉴权失败。
 	INTERNALERROR_CAUTHERROR = "InternalError.CauthError"
 
