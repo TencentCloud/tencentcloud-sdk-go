@@ -57,6 +57,10 @@ type ApproveUser struct {
 	// 用户昵称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Nick *string `json:"Nick,omitempty" name:"Nick"`
+
+	// 动态获取Scf
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Scf *Scf `json:"Scf,omitempty" name:"Scf"`
 }
 
 // Predefined struct for user
@@ -219,6 +223,37 @@ func (r *OutApproveBpaasApplicationResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *OutApproveBpaasApplicationResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type Scf struct {
+	// Scf函数地域id
+	ScfRegion *string `json:"ScfRegion,omitempty" name:"ScfRegion"`
+
+	// Scf函数地域
+	ScfRegionName *string `json:"ScfRegionName,omitempty" name:"ScfRegionName"`
+
+	// Scf函数名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ScfName *string `json:"ScfName,omitempty" name:"ScfName"`
+
+	// Scf函数入参
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Params []*ScfParam `json:"Params,omitempty" name:"Params"`
+}
+
+type ScfParam struct {
+	// 参数Key
+	Key *string `json:"Key,omitempty" name:"Key"`
+
+	// 参数类型 1用户输入 2预设参数 3表单参数
+	Type *uint64 `json:"Type,omitempty" name:"Type"`
+
+	// 参数值
+	Values []*string `json:"Values,omitempty" name:"Values"`
+
+	// 参数描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitempty" name:"Name"`
 }
 
 type StatusNode struct {

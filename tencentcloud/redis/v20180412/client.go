@@ -2868,7 +2868,7 @@ func NewDescribeSlowLogResponse() (response *DescribeSlowLogResponse) {
 }
 
 // DescribeSlowLog
-// 查询实例慢查询记录
+// 本接口（DescribeSlowLog）查询实例慢查询记录。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"
@@ -2883,7 +2883,7 @@ func (c *Client) DescribeSlowLog(request *DescribeSlowLogRequest) (response *Des
 }
 
 // DescribeSlowLog
-// 查询实例慢查询记录
+// 本接口（DescribeSlowLog）查询实例慢查询记录。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SYSTEMERROR = "FailedOperation.SystemError"

@@ -463,6 +463,9 @@ type CreateDatasetRequestParams struct {
 
 	// 数据是否存在表头
 	IsSchemaExisted *bool `json:"IsSchemaExisted,omitempty" name:"IsSchemaExisted"`
+
+	// 导入文件粒度，按行或者按文件
+	ContentType *string `json:"ContentType,omitempty" name:"ContentType"`
 }
 
 type CreateDatasetRequest struct {
@@ -511,6 +514,9 @@ type CreateDatasetRequest struct {
 
 	// 数据是否存在表头
 	IsSchemaExisted *bool `json:"IsSchemaExisted,omitempty" name:"IsSchemaExisted"`
+
+	// 导入文件粒度，按行或者按文件
+	ContentType *string `json:"ContentType,omitempty" name:"ContentType"`
 }
 
 func (r *CreateDatasetRequest) ToJsonString() string {
@@ -535,6 +541,7 @@ func (r *CreateDatasetRequest) FromJsonString(s string) error {
 	delete(f, "AnnotationFormat")
 	delete(f, "SchemaInfos")
 	delete(f, "IsSchemaExisted")
+	delete(f, "ContentType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDatasetRequest has unknown keys!", "")
 	}
@@ -2134,6 +2141,9 @@ type DescribeDatasetDetailUnstructuredRequestParams struct {
 
 	// 数据集ID列表
 	DatasetIds []*string `json:"DatasetIds,omitempty" name:"DatasetIds"`
+
+	// 要筛选的文本分类场景标签信息
+	TextClassificationLabels []*TextLabelDistributionInfo `json:"TextClassificationLabels,omitempty" name:"TextClassificationLabels"`
 }
 
 type DescribeDatasetDetailUnstructuredRequest struct {
@@ -2160,6 +2170,9 @@ type DescribeDatasetDetailUnstructuredRequest struct {
 
 	// 数据集ID列表
 	DatasetIds []*string `json:"DatasetIds,omitempty" name:"DatasetIds"`
+
+	// 要筛选的文本分类场景标签信息
+	TextClassificationLabels []*TextLabelDistributionInfo `json:"TextClassificationLabels,omitempty" name:"TextClassificationLabels"`
 }
 
 func (r *DescribeDatasetDetailUnstructuredRequest) ToJsonString() string {
@@ -2180,6 +2193,7 @@ func (r *DescribeDatasetDetailUnstructuredRequest) FromJsonString(s string) erro
 	delete(f, "LabelList")
 	delete(f, "AnnotationStatus")
 	delete(f, "DatasetIds")
+	delete(f, "TextClassificationLabels")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDatasetDetailUnstructuredRequest has unknown keys!", "")
 	}
@@ -2203,6 +2217,10 @@ type DescribeDatasetDetailUnstructuredResponseParams struct {
 	// 过滤数据详情
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FilterLabelList []*FilterLabelInfo `json:"FilterLabelList,omitempty" name:"FilterLabelList"`
+
+	// 数据文本行，默认返回前1000行
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RowTexts []*string `json:"RowTexts,omitempty" name:"RowTexts"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -3254,6 +3272,22 @@ type FilterLabelInfo struct {
 	// OCR场景标签列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OcrLabels []*OcrLabelInfo `json:"OcrLabels,omitempty" name:"OcrLabels"`
+
+	// OCR场景标签信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OcrLabelInfo *string `json:"OcrLabelInfo,omitempty" name:"OcrLabelInfo"`
+
+	// 文本分类场景标签结果，内容是json结构
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TextClassificationLabelList *string `json:"TextClassificationLabelList,omitempty" name:"TextClassificationLabelList"`
+
+	// 文本内容，返回50字符
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RowText *string `json:"RowText,omitempty" name:"RowText"`
+
+	// 文本内容是否完全返回
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ContentOmit *bool `json:"ContentOmit,omitempty" name:"ContentOmit"`
 }
 
 type FrameworkInfo struct {
@@ -3963,6 +3997,102 @@ type TagFilter struct {
 
 	// 多个标签值
 	TagValues []*string `json:"TagValues,omitempty" name:"TagValues"`
+}
+
+type TextLabelDistributionDetailInfoFifthClass struct {
+	// 标签名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LabelValue *string `json:"LabelValue,omitempty" name:"LabelValue"`
+
+	// 标签个数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LabelCount *uint64 `json:"LabelCount,omitempty" name:"LabelCount"`
+
+	// 标签占比
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LabelPercentage *float64 `json:"LabelPercentage,omitempty" name:"LabelPercentage"`
+}
+
+type TextLabelDistributionDetailInfoFirstClass struct {
+	// 标签名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LabelValue *string `json:"LabelValue,omitempty" name:"LabelValue"`
+
+	// 标签个数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LabelCount *uint64 `json:"LabelCount,omitempty" name:"LabelCount"`
+
+	// 标签占比
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LabelPercentage *float64 `json:"LabelPercentage,omitempty" name:"LabelPercentage"`
+
+	// 子标签分布
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ChildLabelList []*TextLabelDistributionDetailInfoSecondClass `json:"ChildLabelList,omitempty" name:"ChildLabelList"`
+}
+
+type TextLabelDistributionDetailInfoFourthClass struct {
+	// 标签名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LabelValue *string `json:"LabelValue,omitempty" name:"LabelValue"`
+
+	// 标签个数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LabelCount *uint64 `json:"LabelCount,omitempty" name:"LabelCount"`
+
+	// 标签占比
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LabelPercentage *float64 `json:"LabelPercentage,omitempty" name:"LabelPercentage"`
+
+	// 子标签分布
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ChildLabelList []*TextLabelDistributionDetailInfoFifthClass `json:"ChildLabelList,omitempty" name:"ChildLabelList"`
+}
+
+type TextLabelDistributionDetailInfoSecondClass struct {
+	// 标签名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LabelValue *string `json:"LabelValue,omitempty" name:"LabelValue"`
+
+	// 标签个数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LabelCount *uint64 `json:"LabelCount,omitempty" name:"LabelCount"`
+
+	// 标签占比
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LabelPercentage *float64 `json:"LabelPercentage,omitempty" name:"LabelPercentage"`
+
+	// 子标签分布
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ChildLabelList []*TextLabelDistributionDetailInfoThirdClass `json:"ChildLabelList,omitempty" name:"ChildLabelList"`
+}
+
+type TextLabelDistributionDetailInfoThirdClass struct {
+	// 标签名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LabelValue *string `json:"LabelValue,omitempty" name:"LabelValue"`
+
+	// 标签个数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LabelCount *uint64 `json:"LabelCount,omitempty" name:"LabelCount"`
+
+	// 标签占比
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LabelPercentage *float64 `json:"LabelPercentage,omitempty" name:"LabelPercentage"`
+
+	// 子标签分布
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ChildLabelList []*TextLabelDistributionDetailInfoFourthClass `json:"ChildLabelList,omitempty" name:"ChildLabelList"`
+}
+
+type TextLabelDistributionInfo struct {
+	// 文本分类题目名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Theme *string `json:"Theme,omitempty" name:"Theme"`
+
+	// 一级标签分布
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClassLabelList []*TextLabelDistributionDetailInfoFirstClass `json:"ClassLabelList,omitempty" name:"ClassLabelList"`
 }
 
 type TrainingDataPoint struct {

@@ -179,6 +179,9 @@ const (
 	// 操作被拒绝。
 	OPERATIONDENIED = "OperationDenied"
 
+	// 域名被封禁，暂时无法操作。
+	OPERATIONDENIED_DOMAINISBLOCKED = "OperationDenied.DomainIsBlocked"
+
 	// 域名尚未备案。
 	OPERATIONDENIED_DOMAINNOICP = "OperationDenied.DomainNoICP"
 
@@ -188,8 +191,38 @@ const (
 	// 资源被占用。
 	RESOURCEINUSE = "ResourceInUse"
 
+	// 资源被本账号别称域名占用。
+	RESOURCEINUSE_ALIASDOMAIN = "ResourceInUse.AliasDomain"
+
+	// 资源被本账号Cname接入占用。
+	RESOURCEINUSE_CNAME = "ResourceInUse.Cname"
+
+	// Dns资源被占用。
+	RESOURCEINUSE_DNS = "ResourceInUse.Dns"
+
+	// 资源被本账号的子域名占用。
+	RESOURCEINUSE_HOST = "ResourceInUse.Host"
+
+	// 资源被本账号NS接入占用。
+	RESOURCEINUSE_NS = "ResourceInUse.NS"
+
 	// 资源被其他用户接入。
 	RESOURCEINUSE_OTHERS = "ResourceInUse.Others"
+
+	// 资源被其他账号别称域名占用。
+	RESOURCEINUSE_OTHERSALIASDOMAIN = "ResourceInUse.OthersAliasDomain"
+
+	// 资源被其他账号Cname接入占用。
+	RESOURCEINUSE_OTHERSCNAME = "ResourceInUse.OthersCname"
+
+	// 资源被其他账号的子域名占用。
+	RESOURCEINUSE_OTHERSHOST = "ResourceInUse.OthersHost"
+
+	// 资源被其他账号NS接入占用。
+	RESOURCEINUSE_OTHERSNS = "ResourceInUse.OthersNS"
+
+	// 资源被本账号和其他账号同时Cname接入占用。
+	RESOURCEINUSE_SELFANDOTHERSCNAME = "ResourceInUse.SelfAndOthersCname"
 
 	// 资源不足。
 	RESOURCEINSUFFICIENT = "ResourceInsufficient"

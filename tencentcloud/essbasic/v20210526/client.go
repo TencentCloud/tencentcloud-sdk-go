@@ -892,7 +892,7 @@ func NewCreateChannelFlowEvidenceReportResponse() (response *CreateChannelFlowEv
 }
 
 // CreateChannelFlowEvidenceReport
-// 创建出证报告，返回报告 URL。此接口暂为开放，有问题请联系运营人员。
+// 创建出证报告，返回报告 URL。此接口暂未开放，有问题请联系运营人员。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_SYSTEM = "InternalError.System"
@@ -908,7 +908,7 @@ func (c *Client) CreateChannelFlowEvidenceReport(request *CreateChannelFlowEvide
 }
 
 // CreateChannelFlowEvidenceReport
-// 创建出证报告，返回报告 URL。此接口暂为开放，有问题请联系运营人员。
+// 创建出证报告，返回报告 URL。此接口暂未开放，有问题请联系运营人员。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_SYSTEM = "InternalError.System"

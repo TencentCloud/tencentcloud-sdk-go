@@ -368,6 +368,9 @@ const (
 	// 电子文档不可用，请稍后重试。
 	OPERATIONDENIED_DOCUMENTNOAVAILABLE = "OperationDenied.DocumentNoAvailable"
 
+	// 此企业无该资源使用权限。
+	OPERATIONDENIED_ERRNORESOURCEACCESS = "OperationDenied.ErrNoResourceAccess"
+
 	// 个人签署方不支持设置企业名称，请确认签署人类型后重试。
 	OPERATIONDENIED_ERRNOSUPPORTINDIVIDUALHASORGANIZATIONNAME = "OperationDenied.ErrNoSupportIndividualHasOrganizationName"
 

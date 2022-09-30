@@ -842,6 +842,9 @@ const (
 	// 从市场镜像创建的自定义镜像不支持导出。
 	UNSUPPORTEDOPERATION_MARKETIMAGEEXPORTUNSUPPORTED = "UnsupportedOperation.MarketImageExportUnsupported"
 
+	// 不支持修改系统盘的加密属性，比如使用非加密镜像重装加密系统盘。
+	UNSUPPORTEDOPERATION_MODIFYENCRYPTIONNOTSUPPORTED = "UnsupportedOperation.ModifyEncryptionNotSupported"
+
 	// 绑定负载均衡的实例，不支持修改vpc属性。
 	UNSUPPORTEDOPERATION_MODIFYVPCWITHCLB = "UnsupportedOperation.ModifyVPCWithCLB"
 
@@ -871,6 +874,12 @@ const (
 
 	// 当前镜像不支持对该实例的重装操作。
 	UNSUPPORTEDOPERATION_RAWLOCALDISKINSREINSTALLTOQCOW2 = "UnsupportedOperation.RawLocalDiskInsReinstalltoQcow2"
+
+	// 实例使用商业操作系统，不支持退还。
+	UNSUPPORTEDOPERATION_REDHATINSTANCETERMINATEUNSUPPORTED = "UnsupportedOperation.RedHatInstanceTerminateUnsupported"
+
+	// 请求不支持操作系统为RedHat的实例。
+	UNSUPPORTEDOPERATION_REDHATINSTANCEUNSUPPORTED = "UnsupportedOperation.RedHatInstanceUnsupported"
 
 	// 不支持该地域
 	UNSUPPORTEDOPERATION_REGION = "UnsupportedOperation.Region"

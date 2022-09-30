@@ -1146,9 +1146,7 @@ func NewCreateFlowEvidenceReportResponse() (response *CreateFlowEvidenceReportRe
 }
 
 // CreateFlowEvidenceReport
-// 【描述】：创建出证报告，返回报告 URL
-//
-// 【注意】：此接口需要通过添加白名单获取调用权限，请联系运营人员加白
+// 创建出证报告，返回报告 URL。此接口暂未开放，有问题请联系运营人员。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_SYSTEM = "InternalError.System"
@@ -1164,9 +1162,7 @@ func (c *Client) CreateFlowEvidenceReport(request *CreateFlowEvidenceReportReque
 }
 
 // CreateFlowEvidenceReport
-// 【描述】：创建出证报告，返回报告 URL
-//
-// 【注意】：此接口需要通过添加白名单获取调用权限，请联系运营人员加白
+// 创建出证报告，返回报告 URL。此接口暂未开放，有问题请联系运营人员。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_SYSTEM = "InternalError.System"
@@ -2389,6 +2385,7 @@ func NewVerifyPdfResponse() (response *VerifyPdfResponse) {
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  OPERATIONDENIED_ERRNORESOURCEACCESS = "OperationDenied.ErrNoResourceAccess"
 //  OPERATIONDENIED_NOFLOWPERMISSION = "OperationDenied.NoFlowPermission"
 func (c *Client) VerifyPdf(request *VerifyPdfRequest) (response *VerifyPdfResponse, err error) {
     return c.VerifyPdfWithContext(context.Background(), request)
@@ -2400,6 +2397,7 @@ func (c *Client) VerifyPdf(request *VerifyPdfRequest) (response *VerifyPdfRespon
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  OPERATIONDENIED_ERRNORESOURCEACCESS = "OperationDenied.ErrNoResourceAccess"
 //  OPERATIONDENIED_NOFLOWPERMISSION = "OperationDenied.NoFlowPermission"
 func (c *Client) VerifyPdfWithContext(ctx context.Context, request *VerifyPdfRequest) (response *VerifyPdfResponse, err error) {
     if request == nil {

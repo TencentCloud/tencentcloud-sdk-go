@@ -1,3 +1,146 @@
+# Release v1.0.509
+
+## 商业流程服务(bpaas) 版本：2018-12-17
+
+### 第 2 次发布
+
+发布时间：2022-09-30 06:12:23
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [Scf](https://cloud.tencent.com/document/api/1083/80917#Scf)
+* [ScfParam](https://cloud.tencent.com/document/api/1083/80917#ScfParam)
+
+修改数据结构：
+
+* [ApproveUser](https://cloud.tencent.com/document/api/1083/80917#ApproveUser)
+
+	* 新增成员：Scf
+
+
+
+
+## 云服务器(cvm) 版本：2017-03-12
+
+### 第 95 次发布
+
+发布时间：2022-09-30 06:22:32
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Instance](https://cloud.tencent.com/document/api/213/15753#Instance)
+
+	* 新增成员：DisableApiTermination
+
+
+
+
+## 云数据库 Redis(redis) 版本：2018-04-12
+
+### 第 54 次发布
+
+发布时间：2022-09-30 06:48:02
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeSlowLog](https://cloud.tencent.com/document/api/239/37984)
+
+	* 新增入参：Role
+
+
+
+
+## 边缘安全加速平台(teo) 版本：2022-09-01
+
+### 第 3 次发布
+
+发布时间：2022-09-30 06:58:07
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateZone](https://cloud.tencent.com/document/api/1552/80719)
+
+	* 新增入参：AllowDuplicates
+
+* [ModifyHostsCertificate](https://cloud.tencent.com/document/api/1552/80764)
+
+	* 新增入参：ApplyType
+
+
+修改数据结构：
+
+* [RuleCondition](https://cloud.tencent.com/document/api/1552/80721#RuleCondition)
+
+	* 新增成员：IgnoreCase
+
+
+
+
+## 边缘安全加速平台(teo) 版本：2022-01-06
+
+
+
+## 腾讯云 TI 平台 TI-ONE(tione) 版本：2021-11-11
+
+### 第 6 次发布
+
+发布时间：2022-09-30 07:00:21
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateDataset](https://cloud.tencent.com/document/api/851/75050)
+
+	* 新增入参：ContentType
+
+* [DescribeDatasetDetailUnstructured](https://cloud.tencent.com/document/api/851/75078)
+
+	* 新增入参：TextClassificationLabels
+
+	* 新增出参：RowTexts
+
+
+新增数据结构：
+
+* [TextLabelDistributionDetailInfoFifthClass](https://cloud.tencent.com/document/api/851/75051#TextLabelDistributionDetailInfoFifthClass)
+* [TextLabelDistributionDetailInfoFirstClass](https://cloud.tencent.com/document/api/851/75051#TextLabelDistributionDetailInfoFirstClass)
+* [TextLabelDistributionDetailInfoFourthClass](https://cloud.tencent.com/document/api/851/75051#TextLabelDistributionDetailInfoFourthClass)
+* [TextLabelDistributionDetailInfoSecondClass](https://cloud.tencent.com/document/api/851/75051#TextLabelDistributionDetailInfoSecondClass)
+* [TextLabelDistributionDetailInfoThirdClass](https://cloud.tencent.com/document/api/851/75051#TextLabelDistributionDetailInfoThirdClass)
+* [TextLabelDistributionInfo](https://cloud.tencent.com/document/api/851/75051#TextLabelDistributionInfo)
+
+修改数据结构：
+
+* [FilterLabelInfo](https://cloud.tencent.com/document/api/851/75051#FilterLabelInfo)
+
+	* 新增成员：OcrLabelInfo, TextClassificationLabelList, RowText, ContentOmit
+
+
+
+
+## 腾讯云 TI 平台 TI-ONE(tione) 版本：2019-10-22
+
+
+
 # Release v1.0.508
 
 ## 二进制软件成分分析(bsca) 版本：2021-08-11

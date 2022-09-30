@@ -3848,45 +3848,51 @@ func (r *DescribeReplicationGroupResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeSlowLogRequestParams struct {
-	// 实例Id
+	// 实例Id。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 开始时间
+	// 开始时间。
 	BeginTime *string `json:"BeginTime,omitempty" name:"BeginTime"`
 
-	// 结束时间
+	// 结束时间。
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
-	// 慢查询阈值（单位：微秒）
+	// 慢查询平均执行时间阈值（单位：微秒）。
 	MinQueryTime *int64 `json:"MinQueryTime,omitempty" name:"MinQueryTime"`
 
-	// 页面大小
+	// 每个页面展示的慢查询条数，默认值为20。
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 偏移量，取Limit整数倍
+	// 慢查询条数的偏移量，取Limit整数倍。
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 节点所属角色。<ul><li>master：主节点。</li><li>slave：从节点。</li></ul>
+	Role *string `json:"Role,omitempty" name:"Role"`
 }
 
 type DescribeSlowLogRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例Id
+	// 实例Id。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 开始时间
+	// 开始时间。
 	BeginTime *string `json:"BeginTime,omitempty" name:"BeginTime"`
 
-	// 结束时间
+	// 结束时间。
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
-	// 慢查询阈值（单位：微秒）
+	// 慢查询平均执行时间阈值（单位：微秒）。
 	MinQueryTime *int64 `json:"MinQueryTime,omitempty" name:"MinQueryTime"`
 
-	// 页面大小
+	// 每个页面展示的慢查询条数，默认值为20。
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 偏移量，取Limit整数倍
+	// 慢查询条数的偏移量，取Limit整数倍。
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 节点所属角色。<ul><li>master：主节点。</li><li>slave：从节点。</li></ul>
+	Role *string `json:"Role,omitempty" name:"Role"`
 }
 
 func (r *DescribeSlowLogRequest) ToJsonString() string {
@@ -3907,6 +3913,7 @@ func (r *DescribeSlowLogRequest) FromJsonString(s string) error {
 	delete(f, "MinQueryTime")
 	delete(f, "Limit")
 	delete(f, "Offset")
+	delete(f, "Role")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSlowLogRequest has unknown keys!", "")
 	}
@@ -3915,10 +3922,10 @@ func (r *DescribeSlowLogRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeSlowLogResponseParams struct {
-	// 慢查询总数
+	// 慢查询总数。
 	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
-	// 慢查询详情
+	// 慢查询详情。
 	InstanceSlowlogDetail []*InstanceSlowlogDetail `json:"InstanceSlowlogDetail,omitempty" name:"InstanceSlowlogDetail"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
