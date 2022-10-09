@@ -65,12 +65,18 @@ func NewCheckSavepointResponse() (response *CheckSavepointResponse) {
 
 // CheckSavepoint
 // 检查快照是否可用
+//
+// 可能返回的错误码:
+//  UNSUPPORTEDOPERATION_NOPERMISSIONACCESS = "UnsupportedOperation.NoPermissionAccess"
 func (c *Client) CheckSavepoint(request *CheckSavepointRequest) (response *CheckSavepointResponse, err error) {
     return c.CheckSavepointWithContext(context.Background(), request)
 }
 
 // CheckSavepoint
 // 检查快照是否可用
+//
+// 可能返回的错误码:
+//  UNSUPPORTEDOPERATION_NOPERMISSIONACCESS = "UnsupportedOperation.NoPermissionAccess"
 func (c *Client) CheckSavepointWithContext(ctx context.Context, request *CheckSavepointRequest) (response *CheckSavepointResponse, err error) {
     if request == nil {
         request = NewCheckSavepointRequest()

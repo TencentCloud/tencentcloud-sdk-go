@@ -320,6 +320,7 @@ func NewCreateMultiDevicesTaskResponse() (response *CreateMultiDevicesTaskRespon
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE_PRODUCTTYPENOTSUPPORT = "InvalidParameterValue.ProductTypeNotSupport"
 //  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
+//  UNAUTHORIZEDOPERATION_PRODUCTISFORBIDDEN = "UnauthorizedOperation.ProductIsForbidden"
 func (c *Client) CreateMultiDevicesTask(request *CreateMultiDevicesTaskRequest) (response *CreateMultiDevicesTaskResponse, err error) {
     return c.CreateMultiDevicesTaskWithContext(context.Background(), request)
 }
@@ -333,6 +334,7 @@ func (c *Client) CreateMultiDevicesTask(request *CreateMultiDevicesTaskRequest) 
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE_PRODUCTTYPENOTSUPPORT = "InvalidParameterValue.ProductTypeNotSupport"
 //  RESOURCENOTFOUND_PRODUCTNOTEXIST = "ResourceNotFound.ProductNotExist"
+//  UNAUTHORIZEDOPERATION_PRODUCTISFORBIDDEN = "UnauthorizedOperation.ProductIsForbidden"
 func (c *Client) CreateMultiDevicesTaskWithContext(ctx context.Context, request *CreateMultiDevicesTaskRequest) (response *CreateMultiDevicesTaskResponse, err error) {
     if request == nil {
         request = NewCreateMultiDevicesTaskRequest()

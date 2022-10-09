@@ -8906,7 +8906,7 @@ type DescribeCcnAttachedInstancesRequestParams struct {
 	// 排序字段。支持：`CcnId` `InstanceType` `InstanceId` `InstanceName` `InstanceRegion` `AttachedTime` `State`。
 	OrderField *string `json:"OrderField,omitempty" name:"OrderField"`
 
-	// 排序方法。顺序：`ASC`，倒序：`DESC`。
+	// 排序方法。升序：`ASC`，倒序：`DESC`。
 	OrderDirection *string `json:"OrderDirection,omitempty" name:"OrderDirection"`
 }
 
@@ -8932,7 +8932,7 @@ type DescribeCcnAttachedInstancesRequest struct {
 	// 排序字段。支持：`CcnId` `InstanceType` `InstanceId` `InstanceName` `InstanceRegion` `AttachedTime` `State`。
 	OrderField *string `json:"OrderField,omitempty" name:"OrderField"`
 
-	// 排序方法。顺序：`ASC`，倒序：`DESC`。
+	// 排序方法。升序：`ASC`，倒序：`DESC`。
 	OrderDirection *string `json:"OrderDirection,omitempty" name:"OrderDirection"`
 }
 
@@ -9168,7 +9168,7 @@ type DescribeCcnsRequestParams struct {
 	// 排序字段。支持：`CcnId` `CcnName` `CreateTime` `State` `QosLevel`
 	OrderField *string `json:"OrderField,omitempty" name:"OrderField"`
 
-	// 排序方法。顺序：`ASC`，倒序：`DESC`。
+	// 排序方法。升序：`ASC`，倒序：`DESC`。
 	OrderDirection *string `json:"OrderDirection,omitempty" name:"OrderDirection"`
 }
 
@@ -9196,7 +9196,7 @@ type DescribeCcnsRequest struct {
 	// 排序字段。支持：`CcnId` `CcnName` `CreateTime` `State` `QosLevel`
 	OrderField *string `json:"OrderField,omitempty" name:"OrderField"`
 
-	// 排序方法。顺序：`ASC`，倒序：`DESC`。
+	// 排序方法。升序：`ASC`，倒序：`DESC`。
 	OrderDirection *string `json:"OrderDirection,omitempty" name:"OrderDirection"`
 }
 

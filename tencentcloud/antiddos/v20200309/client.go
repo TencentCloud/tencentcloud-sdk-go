@@ -646,6 +646,7 @@ func NewCreateDDoSBlackWhiteIpListResponse() (response *CreateDDoSBlackWhiteIpLi
 //
 // 可能返回的错误码:
 //  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateDDoSBlackWhiteIpList(request *CreateDDoSBlackWhiteIpListRequest) (response *CreateDDoSBlackWhiteIpListResponse, err error) {
@@ -657,6 +658,7 @@ func (c *Client) CreateDDoSBlackWhiteIpList(request *CreateDDoSBlackWhiteIpListR
 //
 // 可能返回的错误码:
 //  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateDDoSBlackWhiteIpListWithContext(ctx context.Context, request *CreateDDoSBlackWhiteIpListRequest) (response *CreateDDoSBlackWhiteIpListResponse, err error) {

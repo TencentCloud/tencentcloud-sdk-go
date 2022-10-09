@@ -32,6 +32,9 @@ const (
 	// 角色获取错误。
 	INTERNALERROR_GETROLEERROR = "InternalError.GetRoleError"
 
+	// 内部服务调用异常。
+	INTERNALERROR_IOERROR = "InternalError.IOError"
+
 	// 服务内部错误。
 	INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
 

@@ -2028,6 +2028,9 @@ type DescribeDataFetchUrlRequestParams struct {
 
 	// retcode
 	Ret *string `json:"Ret,omitempty" name:"Ret"`
+
+	// 网络状态
+	NetStatus *string `json:"NetStatus,omitempty" name:"NetStatus"`
 }
 
 type DescribeDataFetchUrlRequest struct {
@@ -2107,6 +2110,9 @@ type DescribeDataFetchUrlRequest struct {
 
 	// retcode
 	Ret *string `json:"Ret,omitempty" name:"Ret"`
+
+	// 网络状态
+	NetStatus *string `json:"NetStatus,omitempty" name:"NetStatus"`
 }
 
 func (r *DescribeDataFetchUrlRequest) ToJsonString() string {
@@ -2146,6 +2152,7 @@ func (r *DescribeDataFetchUrlRequest) FromJsonString(s string) error {
 	delete(f, "Env")
 	delete(f, "Status")
 	delete(f, "Ret")
+	delete(f, "NetStatus")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDataFetchUrlRequest has unknown keys!", "")
 	}
@@ -2512,6 +2519,9 @@ type DescribeDataPerformancePageRequestParams struct {
 
 	// 环境变量
 	Env *string `json:"Env,omitempty" name:"Env"`
+
+	// 网络状态
+	NetStatus *string `json:"NetStatus,omitempty" name:"NetStatus"`
 }
 
 type DescribeDataPerformancePageRequest struct {
@@ -2582,6 +2592,9 @@ type DescribeDataPerformancePageRequest struct {
 
 	// 环境变量
 	Env *string `json:"Env,omitempty" name:"Env"`
+
+	// 网络状态
+	NetStatus *string `json:"NetStatus,omitempty" name:"NetStatus"`
 }
 
 func (r *DescribeDataPerformancePageRequest) ToJsonString() string {
@@ -2618,6 +2631,7 @@ func (r *DescribeDataPerformancePageRequest) FromJsonString(s string) error {
 	delete(f, "From")
 	delete(f, "CostType")
 	delete(f, "Env")
+	delete(f, "NetStatus")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDataPerformancePageRequest has unknown keys!", "")
 	}
@@ -4573,56 +4587,56 @@ func (r *DescribeLogExportsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeLogListRequestParams struct {
-	// 排序方式  desc  asc
+	// 排序方式  desc  asc（必填）
 	Sort *string `json:"Sort,omitempty" name:"Sort"`
 
-	// searchlog  histogram
+	// searchlog  histogram（必填）
 	ActionType *string `json:"ActionType,omitempty" name:"ActionType"`
 
-	// 项目ID
+	// 项目ID（必填）
 	ID *int64 `json:"ID,omitempty" name:"ID"`
 
-	// 开始时间
+	// 开始时间（必填）
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
 
-	// 单次查询返回的原始日志条数，最大值为100
+	// 单次查询返回的原始日志条数，最大值为100（必填）
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 上下文，加载更多日志时使用，透传上次返回的 Context 值，获取后续的日志内容，总计最多可获取1万条原始日志。过期时间1小时
 	Context *string `json:"Context,omitempty" name:"Context"`
 
-	// 查询语句，参考控制台请求参数，语句长度最大为4096
+	// 查询语句，参考控制台请求参数，语句长度最大为4096（必填）
 	Query *string `json:"Query,omitempty" name:"Query"`
 
-	// 结束时间
+	// 结束时间（必填）
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 }
 
 type DescribeLogListRequest struct {
 	*tchttp.BaseRequest
 	
-	// 排序方式  desc  asc
+	// 排序方式  desc  asc（必填）
 	Sort *string `json:"Sort,omitempty" name:"Sort"`
 
-	// searchlog  histogram
+	// searchlog  histogram（必填）
 	ActionType *string `json:"ActionType,omitempty" name:"ActionType"`
 
-	// 项目ID
+	// 项目ID（必填）
 	ID *int64 `json:"ID,omitempty" name:"ID"`
 
-	// 开始时间
+	// 开始时间（必填）
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
 
-	// 单次查询返回的原始日志条数，最大值为100
+	// 单次查询返回的原始日志条数，最大值为100（必填）
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 上下文，加载更多日志时使用，透传上次返回的 Context 值，获取后续的日志内容，总计最多可获取1万条原始日志。过期时间1小时
 	Context *string `json:"Context,omitempty" name:"Context"`
 
-	// 查询语句，参考控制台请求参数，语句长度最大为4096
+	// 查询语句，参考控制台请求参数，语句长度最大为4096（必填）
 	Query *string `json:"Query,omitempty" name:"Query"`
 
-	// 结束时间
+	// 结束时间（必填）
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 }
 

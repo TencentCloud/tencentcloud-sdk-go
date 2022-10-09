@@ -257,6 +257,9 @@ const (
 	// 系统错误。出现这种错误时，请联系客服支持。
 	INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
 
+	// 开启事务失败。
+	INTERNALERROR_TRANSACTIOBEGINERROR = "InternalError.TransactioBeginError"
+
 	// 其他未知错误。出现这种错误时，请联系客服支持。
 	INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 

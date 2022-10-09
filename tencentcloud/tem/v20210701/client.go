@@ -2226,6 +2226,7 @@ func NewModifyApplicationInfoResponse() (response *ModifyApplicationInfoResponse
 //  INTERNALERROR_CREATEAPMRESOURCEERROR = "InternalError.CreateApmResourceError"
 //  INTERNALERROR_CREATESERVICEERROR = "InternalError.CreateServiceError"
 //  INVALIDPARAMETERVALUE_TEMIDINVALID = "InvalidParameterValue.TemIdInvalid"
+//  RESOURCENOTFOUND_SERVICENOTFOUND = "ResourceNotFound.ServiceNotFound"
 func (c *Client) ModifyApplicationInfo(request *ModifyApplicationInfoRequest) (response *ModifyApplicationInfoResponse, err error) {
     return c.ModifyApplicationInfoWithContext(context.Background(), request)
 }
@@ -2237,6 +2238,7 @@ func (c *Client) ModifyApplicationInfo(request *ModifyApplicationInfoRequest) (r
 //  INTERNALERROR_CREATEAPMRESOURCEERROR = "InternalError.CreateApmResourceError"
 //  INTERNALERROR_CREATESERVICEERROR = "InternalError.CreateServiceError"
 //  INVALIDPARAMETERVALUE_TEMIDINVALID = "InvalidParameterValue.TemIdInvalid"
+//  RESOURCENOTFOUND_SERVICENOTFOUND = "ResourceNotFound.ServiceNotFound"
 func (c *Client) ModifyApplicationInfoWithContext(ctx context.Context, request *ModifyApplicationInfoRequest) (response *ModifyApplicationInfoResponse, err error) {
     if request == nil {
         request = NewModifyApplicationInfoRequest()
@@ -2336,6 +2338,7 @@ func NewModifyApplicationServiceResponse() (response *ModifyApplicationServiceRe
 //  INVALIDPARAMETERVALUE_PORTISRESERVED = "InvalidParameterValue.PortIsReserved"
 //  RESOURCENOTFOUND_SERVICENOTFOUND = "ResourceNotFound.ServiceNotFound"
 //  RESOURCENOTFOUND_SERVICERUNNINGVERSIONNOTFOUND = "ResourceNotFound.ServiceRunningVersionNotFound"
+//  RESOURCENOTFOUND_VERSIONNAMESPACENOTFOUND = "ResourceNotFound.VersionNamespaceNotFound"
 func (c *Client) ModifyApplicationService(request *ModifyApplicationServiceRequest) (response *ModifyApplicationServiceResponse, err error) {
     return c.ModifyApplicationServiceWithContext(context.Background(), request)
 }
@@ -2355,6 +2358,7 @@ func (c *Client) ModifyApplicationService(request *ModifyApplicationServiceReque
 //  INVALIDPARAMETERVALUE_PORTISRESERVED = "InvalidParameterValue.PortIsReserved"
 //  RESOURCENOTFOUND_SERVICENOTFOUND = "ResourceNotFound.ServiceNotFound"
 //  RESOURCENOTFOUND_SERVICERUNNINGVERSIONNOTFOUND = "ResourceNotFound.ServiceRunningVersionNotFound"
+//  RESOURCENOTFOUND_VERSIONNAMESPACENOTFOUND = "ResourceNotFound.VersionNamespaceNotFound"
 func (c *Client) ModifyApplicationServiceWithContext(ctx context.Context, request *ModifyApplicationServiceRequest) (response *ModifyApplicationServiceResponse, err error) {
     if request == nil {
         request = NewModifyApplicationServiceRequest()
@@ -2445,6 +2449,7 @@ func NewModifyEnvironmentResponse() (response *ModifyEnvironmentResponse) {
 // 可能返回的错误码:
 //  INTERNALERROR_ADDNEWNODEERROR = "InternalError.AddNewNodeError"
 //  INTERNALERROR_DEFAULTINTERNALERROR = "InternalError.DefaultInternalError"
+//  INVALIDPARAMETERVALUE_ENVIRONMENTNAMEIMMUTABLE = "InvalidParameterValue.EnvironmentNameImmutable"
 //  INVALIDPARAMETERVALUE_TEMIDINVALID = "InvalidParameterValue.TemIdInvalid"
 //  OPERATIONDENIED_RESOURCEISOLATED = "OperationDenied.ResourceIsolated"
 func (c *Client) ModifyEnvironment(request *ModifyEnvironmentRequest) (response *ModifyEnvironmentResponse, err error) {
@@ -2457,6 +2462,7 @@ func (c *Client) ModifyEnvironment(request *ModifyEnvironmentRequest) (response 
 // 可能返回的错误码:
 //  INTERNALERROR_ADDNEWNODEERROR = "InternalError.AddNewNodeError"
 //  INTERNALERROR_DEFAULTINTERNALERROR = "InternalError.DefaultInternalError"
+//  INVALIDPARAMETERVALUE_ENVIRONMENTNAMEIMMUTABLE = "InvalidParameterValue.EnvironmentNameImmutable"
 //  INVALIDPARAMETERVALUE_TEMIDINVALID = "InvalidParameterValue.TemIdInvalid"
 //  OPERATIONDENIED_RESOURCEISOLATED = "OperationDenied.ResourceIsolated"
 func (c *Client) ModifyEnvironmentWithContext(ctx context.Context, request *ModifyEnvironmentRequest) (response *ModifyEnvironmentResponse, err error) {

@@ -7386,6 +7386,87 @@ func (r *DescribeEdgeClusterInstancesResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeEdgeClusterUpgradeInfoRequestParams struct {
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 要升级到的TKEEdge版本
+	EdgeVersion *string `json:"EdgeVersion,omitempty" name:"EdgeVersion"`
+}
+
+type DescribeEdgeClusterUpgradeInfoRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 要升级到的TKEEdge版本
+	EdgeVersion *string `json:"EdgeVersion,omitempty" name:"EdgeVersion"`
+}
+
+func (r *DescribeEdgeClusterUpgradeInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeEdgeClusterUpgradeInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "EdgeVersion")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeEdgeClusterUpgradeInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeEdgeClusterUpgradeInfoResponseParams struct {
+	// 可升级的集群组件和
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ComponentVersion *string `json:"ComponentVersion,omitempty" name:"ComponentVersion"`
+
+	// 边缘集群当前版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EdgeVersionCurrent *string `json:"EdgeVersionCurrent,omitempty" name:"EdgeVersionCurrent"`
+
+	// 边缘组件镜像仓库地址前缀，包含域名和命名空间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RegistryPrefix *string `json:"RegistryPrefix,omitempty" name:"RegistryPrefix"`
+
+	// 集群升级状态，可能值：running、updating、failed
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterUpgradeStatus *string `json:"ClusterUpgradeStatus,omitempty" name:"ClusterUpgradeStatus"`
+
+	// 集群升级中状态或者失败原因
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterUpgradeStatusReason *string `json:"ClusterUpgradeStatusReason,omitempty" name:"ClusterUpgradeStatusReason"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeEdgeClusterUpgradeInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeEdgeClusterUpgradeInfoResponseParams `json:"Response"`
+}
+
+func (r *DescribeEdgeClusterUpgradeInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeEdgeClusterUpgradeInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeEdgeLogSwitchesRequestParams struct {
 	// 集群ID列表
 	ClusterIds []*string `json:"ClusterIds,omitempty" name:"ClusterIds"`
@@ -15241,6 +15322,81 @@ func (r *UpdateEKSContainerInstanceResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *UpdateEKSContainerInstanceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateEdgeClusterVersionRequestParams struct {
+	// 集群 Id
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 需要升级到的版本
+	EdgeVersion *string `json:"EdgeVersion,omitempty" name:"EdgeVersion"`
+
+	// 自定义边缘组件镜像仓库前缀
+	RegistryPrefix *string `json:"RegistryPrefix,omitempty" name:"RegistryPrefix"`
+
+	// 是否跳过预检查阶段
+	SkipPreCheck *bool `json:"SkipPreCheck,omitempty" name:"SkipPreCheck"`
+}
+
+type UpdateEdgeClusterVersionRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群 Id
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 需要升级到的版本
+	EdgeVersion *string `json:"EdgeVersion,omitempty" name:"EdgeVersion"`
+
+	// 自定义边缘组件镜像仓库前缀
+	RegistryPrefix *string `json:"RegistryPrefix,omitempty" name:"RegistryPrefix"`
+
+	// 是否跳过预检查阶段
+	SkipPreCheck *bool `json:"SkipPreCheck,omitempty" name:"SkipPreCheck"`
+}
+
+func (r *UpdateEdgeClusterVersionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateEdgeClusterVersionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "EdgeVersion")
+	delete(f, "RegistryPrefix")
+	delete(f, "SkipPreCheck")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateEdgeClusterVersionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateEdgeClusterVersionResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type UpdateEdgeClusterVersionResponse struct {
+	*tchttp.BaseResponse
+	Response *UpdateEdgeClusterVersionResponseParams `json:"Response"`
+}
+
+func (r *UpdateEdgeClusterVersionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateEdgeClusterVersionResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

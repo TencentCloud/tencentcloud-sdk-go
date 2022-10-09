@@ -642,6 +642,7 @@ func NewDeleteLogExportResponse() (response *DeleteLogExportResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DeleteLogExport(request *DeleteLogExportRequest) (response *DeleteLogExportResponse, err error) {
     return c.DeleteLogExportWithContext(context.Background(), request)
 }
@@ -659,6 +660,7 @@ func (c *Client) DeleteLogExport(request *DeleteLogExportRequest) (response *Del
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DeleteLogExportWithContext(ctx context.Context, request *DeleteLogExportRequest) (response *DeleteLogExportResponse, err error) {
     if request == nil {
         request = NewDeleteLogExportRequest()

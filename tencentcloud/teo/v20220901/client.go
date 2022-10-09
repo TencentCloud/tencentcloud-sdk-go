@@ -95,6 +95,72 @@ func (c *Client) CheckCertificateWithContext(ctx context.Context, request *Check
     return
 }
 
+func NewCreateAliasDomainRequest() (request *CreateAliasDomainRequest) {
+    request = &CreateAliasDomainRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("teo", APIVersion, "CreateAliasDomain")
+    
+    
+    return
+}
+
+func NewCreateAliasDomainResponse() (response *CreateAliasDomainResponse) {
+    response = &CreateAliasDomainResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateAliasDomain
+// 创建别称域名。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_CERTNOTMATCHDOMAIN = "InvalidParameter.CertNotMatchDomain"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_DOMAINNOICP = "OperationDenied.DomainNoICP"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINUSE_OTHERS = "ResourceInUse.Others"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) CreateAliasDomain(request *CreateAliasDomainRequest) (response *CreateAliasDomainResponse, err error) {
+    return c.CreateAliasDomainWithContext(context.Background(), request)
+}
+
+// CreateAliasDomain
+// 创建别称域名。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_CERTNOTMATCHDOMAIN = "InvalidParameter.CertNotMatchDomain"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_DOMAINNOICP = "OperationDenied.DomainNoICP"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINUSE_OTHERS = "ResourceInUse.Others"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) CreateAliasDomainWithContext(ctx context.Context, request *CreateAliasDomainRequest) (response *CreateAliasDomainResponse, err error) {
+    if request == nil {
+        request = NewCreateAliasDomainRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateAliasDomain require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateAliasDomainResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateApplicationProxyRequest() (request *CreateApplicationProxyRequest) {
     request = &CreateApplicationProxyRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -904,6 +970,8 @@ func NewCreateRuleResponse() (response *CreateRuleResponse) {
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_ACTIONINPROGRESS = "InvalidParameter.ActionInProgress"
+//  INVALIDPARAMETER_INVALIDAUTHENTICATIONTYPESIGNPARAM = "InvalidParameter.InvalidAuthenticationTypeSignParam"
+//  INVALIDPARAMETER_INVALIDERRORPAGEREDIRECTURL = "InvalidParameter.InvalidErrorPageRedirectUrl"
 //  INVALIDPARAMETER_INVALIDREQUESTHEADERNAME = "InvalidParameter.InvalidRequestHeaderName"
 //  INVALIDPARAMETER_INVALIDRULEENGINEACTION = "InvalidParameter.InvalidRuleEngineAction"
 //  INVALIDPARAMETER_INVALIDRULEENGINETARGET = "InvalidParameter.InvalidRuleEngineTarget"
@@ -919,6 +987,8 @@ func (c *Client) CreateRule(request *CreateRuleRequest) (response *CreateRuleRes
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_ACTIONINPROGRESS = "InvalidParameter.ActionInProgress"
+//  INVALIDPARAMETER_INVALIDAUTHENTICATIONTYPESIGNPARAM = "InvalidParameter.InvalidAuthenticationTypeSignParam"
+//  INVALIDPARAMETER_INVALIDERRORPAGEREDIRECTURL = "InvalidParameter.InvalidErrorPageRedirectUrl"
 //  INVALIDPARAMETER_INVALIDREQUESTHEADERNAME = "InvalidParameter.InvalidRequestHeaderName"
 //  INVALIDPARAMETER_INVALIDRULEENGINEACTION = "InvalidParameter.InvalidRuleEngineAction"
 //  INVALIDPARAMETER_INVALIDRULEENGINETARGET = "InvalidParameter.InvalidRuleEngineTarget"
@@ -964,6 +1034,8 @@ func NewCreateSecurityDropPageResponse() (response *CreateSecurityDropPageRespon
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_ACTIONINPROGRESS = "InvalidParameter.ActionInProgress"
+//  INVALIDPARAMETER_INVALIDAUTHENTICATIONTYPESIGNPARAM = "InvalidParameter.InvalidAuthenticationTypeSignParam"
+//  INVALIDPARAMETER_INVALIDERRORPAGEREDIRECTURL = "InvalidParameter.InvalidErrorPageRedirectUrl"
 //  INVALIDPARAMETER_INVALIDREQUESTHEADERNAME = "InvalidParameter.InvalidRequestHeaderName"
 //  INVALIDPARAMETER_INVALIDRULEENGINEACTION = "InvalidParameter.InvalidRuleEngineAction"
 //  INVALIDPARAMETER_INVALIDRULEENGINETARGET = "InvalidParameter.InvalidRuleEngineTarget"
@@ -979,6 +1051,8 @@ func (c *Client) CreateSecurityDropPage(request *CreateSecurityDropPageRequest) 
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_ACTIONINPROGRESS = "InvalidParameter.ActionInProgress"
+//  INVALIDPARAMETER_INVALIDAUTHENTICATIONTYPESIGNPARAM = "InvalidParameter.InvalidAuthenticationTypeSignParam"
+//  INVALIDPARAMETER_INVALIDERRORPAGEREDIRECTURL = "InvalidParameter.InvalidErrorPageRedirectUrl"
 //  INVALIDPARAMETER_INVALIDREQUESTHEADERNAME = "InvalidParameter.InvalidRequestHeaderName"
 //  INVALIDPARAMETER_INVALIDRULEENGINEACTION = "InvalidParameter.InvalidRuleEngineAction"
 //  INVALIDPARAMETER_INVALIDRULEENGINETARGET = "InvalidParameter.InvalidRuleEngineTarget"
@@ -1133,6 +1207,58 @@ func (c *Client) CreateZoneWithContext(ctx context.Context, request *CreateZoneR
     return
 }
 
+func NewDeleteAliasDomainRequest() (request *DeleteAliasDomainRequest) {
+    request = &DeleteAliasDomainRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("teo", APIVersion, "DeleteAliasDomain")
+    
+    
+    return
+}
+
+func NewDeleteAliasDomainResponse() (response *DeleteAliasDomainResponse) {
+    response = &DeleteAliasDomainResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteAliasDomain
+// 删除别称域名。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DeleteAliasDomain(request *DeleteAliasDomainRequest) (response *DeleteAliasDomainResponse, err error) {
+    return c.DeleteAliasDomainWithContext(context.Background(), request)
+}
+
+// DeleteAliasDomain
+// 删除别称域名。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DeleteAliasDomainWithContext(ctx context.Context, request *DeleteAliasDomainRequest) (response *DeleteAliasDomainResponse, err error) {
+    if request == nil {
+        request = NewDeleteAliasDomainRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteAliasDomain require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteAliasDomainResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteApplicationProxyRequest() (request *DeleteApplicationProxyRequest) {
     request = &DeleteApplicationProxyRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1155,22 +1281,9 @@ func NewDeleteApplicationProxyResponse() (response *DeleteApplicationProxyRespon
 // 删除应用代理
 //
 // 可能返回的错误码:
-//  DRYRUNOPERATION = "DryRunOperation"
+//  INTERNALERROR = "InternalError"
 //  OPERATIONDENIED = "OperationDenied"
-//  OPERATIONDENIED_DOMAINISBLOCKED = "OperationDenied.DomainIsBlocked"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINUSE_ALIASDOMAIN = "ResourceInUse.AliasDomain"
-//  RESOURCEINUSE_CNAME = "ResourceInUse.Cname"
-//  RESOURCEINUSE_DNS = "ResourceInUse.Dns"
-//  RESOURCEINUSE_HOST = "ResourceInUse.Host"
-//  RESOURCEINUSE_NS = "ResourceInUse.NS"
-//  RESOURCEINUSE_OTHERS = "ResourceInUse.Others"
-//  RESOURCEINUSE_OTHERSALIASDOMAIN = "ResourceInUse.OthersAliasDomain"
-//  RESOURCEINUSE_OTHERSCNAME = "ResourceInUse.OthersCname"
-//  RESOURCEINUSE_OTHERSHOST = "ResourceInUse.OthersHost"
-//  RESOURCEINUSE_OTHERSNS = "ResourceInUse.OthersNS"
-//  RESOURCEINUSE_SELFANDOTHERSCNAME = "ResourceInUse.SelfAndOthersCname"
-//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DeleteApplicationProxy(request *DeleteApplicationProxyRequest) (response *DeleteApplicationProxyResponse, err error) {
     return c.DeleteApplicationProxyWithContext(context.Background(), request)
 }
@@ -1179,22 +1292,9 @@ func (c *Client) DeleteApplicationProxy(request *DeleteApplicationProxyRequest) 
 // 删除应用代理
 //
 // 可能返回的错误码:
-//  DRYRUNOPERATION = "DryRunOperation"
+//  INTERNALERROR = "InternalError"
 //  OPERATIONDENIED = "OperationDenied"
-//  OPERATIONDENIED_DOMAINISBLOCKED = "OperationDenied.DomainIsBlocked"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINUSE_ALIASDOMAIN = "ResourceInUse.AliasDomain"
-//  RESOURCEINUSE_CNAME = "ResourceInUse.Cname"
-//  RESOURCEINUSE_DNS = "ResourceInUse.Dns"
-//  RESOURCEINUSE_HOST = "ResourceInUse.Host"
-//  RESOURCEINUSE_NS = "ResourceInUse.NS"
-//  RESOURCEINUSE_OTHERS = "ResourceInUse.Others"
-//  RESOURCEINUSE_OTHERSALIASDOMAIN = "ResourceInUse.OthersAliasDomain"
-//  RESOURCEINUSE_OTHERSCNAME = "ResourceInUse.OthersCname"
-//  RESOURCEINUSE_OTHERSHOST = "ResourceInUse.OthersHost"
-//  RESOURCEINUSE_OTHERSNS = "ResourceInUse.OthersNS"
-//  RESOURCEINUSE_SELFANDOTHERSCNAME = "ResourceInUse.SelfAndOthersCname"
-//  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DeleteApplicationProxyWithContext(ctx context.Context, request *DeleteApplicationProxyRequest) (response *DeleteApplicationProxyResponse, err error) {
     if request == nil {
         request = NewDeleteApplicationProxyRequest()
@@ -1429,6 +1529,7 @@ func NewDeleteOriginGroupResponse() (response *DeleteOriginGroupResponse) {
 // 删除源站组
 //
 // 可能返回的错误码:
+//  OPERATIONDENIED = "OperationDenied"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DeleteOriginGroup(request *DeleteOriginGroupRequest) (response *DeleteOriginGroupResponse, err error) {
     return c.DeleteOriginGroupWithContext(context.Background(), request)
@@ -1438,6 +1539,7 @@ func (c *Client) DeleteOriginGroup(request *DeleteOriginGroupRequest) (response 
 // 删除源站组
 //
 // 可能返回的错误码:
+//  OPERATIONDENIED = "OperationDenied"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DeleteOriginGroupWithContext(ctx context.Context, request *DeleteOriginGroupRequest) (response *DeleteOriginGroupResponse, err error) {
     if request == nil {
@@ -1477,6 +1579,7 @@ func NewDeleteRulesResponse() (response *DeleteRulesResponse) {
 // 批量删除规则引擎规则。
 //
 // 可能返回的错误码:
+//  OPERATIONDENIED = "OperationDenied"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DeleteRules(request *DeleteRulesRequest) (response *DeleteRulesResponse, err error) {
     return c.DeleteRulesWithContext(context.Background(), request)
@@ -1486,6 +1589,7 @@ func (c *Client) DeleteRules(request *DeleteRulesRequest) (response *DeleteRules
 // 批量删除规则引擎规则。
 //
 // 可能返回的错误码:
+//  OPERATIONDENIED = "OperationDenied"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DeleteRulesWithContext(ctx context.Context, request *DeleteRulesRequest) (response *DeleteRulesResponse, err error) {
     if request == nil {
@@ -1525,6 +1629,7 @@ func NewDeleteZoneResponse() (response *DeleteZoneResponse) {
 // 删除站点。
 //
 // 可能返回的错误码:
+//  OPERATIONDENIED = "OperationDenied"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DeleteZone(request *DeleteZoneRequest) (response *DeleteZoneResponse, err error) {
     return c.DeleteZoneWithContext(context.Background(), request)
@@ -1534,6 +1639,7 @@ func (c *Client) DeleteZone(request *DeleteZoneRequest) (response *DeleteZoneRes
 // 删除站点。
 //
 // 可能返回的错误码:
+//  OPERATIONDENIED = "OperationDenied"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DeleteZoneWithContext(ctx context.Context, request *DeleteZoneRequest) (response *DeleteZoneResponse, err error) {
     if request == nil {
@@ -1595,6 +1701,54 @@ func (c *Client) DescribeAddableEntityListWithContext(ctx context.Context, reque
     request.SetContext(ctx)
     
     response = NewDescribeAddableEntityListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAliasDomainsRequest() (request *DescribeAliasDomainsRequest) {
+    request = &DescribeAliasDomainsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("teo", APIVersion, "DescribeAliasDomains")
+    
+    
+    return
+}
+
+func NewDescribeAliasDomainsResponse() (response *DescribeAliasDomainsResponse) {
+    response = &DescribeAliasDomainsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeAliasDomains
+// 查询别称域名信息列表。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) DescribeAliasDomains(request *DescribeAliasDomainsRequest) (response *DescribeAliasDomainsResponse, err error) {
+    return c.DescribeAliasDomainsWithContext(context.Background(), request)
+}
+
+// DescribeAliasDomains
+// 查询别称域名信息列表。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) DescribeAliasDomainsWithContext(ctx context.Context, request *DescribeAliasDomainsRequest) (response *DescribeAliasDomainsResponse, err error) {
+    if request == nil {
+        request = NewDescribeAliasDomainsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAliasDomains require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAliasDomainsResponse()
     err = c.Send(request, response)
     return
 }
@@ -2571,6 +2725,7 @@ func NewDescribeDefaultCertificatesResponse() (response *DescribeDefaultCertific
 // 可能返回的错误码:
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
 //  INTERNALERROR_ROUTEERROR = "InternalError.RouteError"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
 //  OPERATIONDENIED = "OperationDenied"
 //  RESOURCEUNAVAILABLE_ZONENOTFOUND = "ResourceUnavailable.ZoneNotFound"
 //  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
@@ -2585,6 +2740,7 @@ func (c *Client) DescribeDefaultCertificates(request *DescribeDefaultCertificate
 // 可能返回的错误码:
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
 //  INTERNALERROR_ROUTEERROR = "InternalError.RouteError"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
 //  OPERATIONDENIED = "OperationDenied"
 //  RESOURCEUNAVAILABLE_ZONENOTFOUND = "ResourceUnavailable.ZoneNotFound"
 //  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
@@ -2777,6 +2933,7 @@ func NewDescribeHostsSettingResponse() (response *DescribeHostsSettingResponse) 
 // 用于查询域名配置信息
 //
 // 可能返回的错误码:
+//  INTERNALERROR_ROUTEERROR = "InternalError.RouteError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  OPERATIONDENIED = "OperationDenied"
 //  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
@@ -2789,6 +2946,7 @@ func (c *Client) DescribeHostsSetting(request *DescribeHostsSettingRequest) (res
 // 用于查询域名配置信息
 //
 // 可能返回的错误码:
+//  INTERNALERROR_ROUTEERROR = "InternalError.RouteError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  OPERATIONDENIED = "OperationDenied"
 //  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
@@ -3845,6 +4003,7 @@ func NewDescribeSpeedTestingMetricDataResponse() (response *DescribeSpeedTesting
 // 查询站点拨测结果
 //
 // 可能返回的错误码:
+//  INTERNALERROR_ROUTEERROR = "InternalError.RouteError"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeSpeedTestingMetricData(request *DescribeSpeedTestingMetricDataRequest) (response *DescribeSpeedTestingMetricDataResponse, err error) {
     return c.DescribeSpeedTestingMetricDataWithContext(context.Background(), request)
@@ -3854,6 +4013,7 @@ func (c *Client) DescribeSpeedTestingMetricData(request *DescribeSpeedTestingMet
 // 查询站点拨测结果
 //
 // 可能返回的错误码:
+//  INTERNALERROR_ROUTEERROR = "InternalError.RouteError"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeSpeedTestingMetricDataWithContext(ctx context.Context, request *DescribeSpeedTestingMetricDataRequest) (response *DescribeSpeedTestingMetricDataResponse, err error) {
     if request == nil {
@@ -3893,6 +4053,7 @@ func NewDescribeSpeedTestingQuotaResponse() (response *DescribeSpeedTestingQuota
 // 查询站点拨测配额
 //
 // 可能返回的错误码:
+//  INTERNALERROR_ROUTEERROR = "InternalError.RouteError"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeSpeedTestingQuota(request *DescribeSpeedTestingQuotaRequest) (response *DescribeSpeedTestingQuotaResponse, err error) {
     return c.DescribeSpeedTestingQuotaWithContext(context.Background(), request)
@@ -3902,6 +4063,7 @@ func (c *Client) DescribeSpeedTestingQuota(request *DescribeSpeedTestingQuotaReq
 // 查询站点拨测配额
 //
 // 可能返回的错误码:
+//  INTERNALERROR_ROUTEERROR = "InternalError.RouteError"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeSpeedTestingQuotaWithContext(ctx context.Context, request *DescribeSpeedTestingQuotaRequest) (response *DescribeSpeedTestingQuotaResponse, err error) {
     if request == nil {
@@ -4989,6 +5151,110 @@ func (c *Client) ModifyAlarmDefaultThresholdWithContext(ctx context.Context, req
     return
 }
 
+func NewModifyAliasDomainRequest() (request *ModifyAliasDomainRequest) {
+    request = &ModifyAliasDomainRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("teo", APIVersion, "ModifyAliasDomain")
+    
+    
+    return
+}
+
+func NewModifyAliasDomainResponse() (response *ModifyAliasDomainResponse) {
+    response = &ModifyAliasDomainResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyAliasDomain
+// 修改别称域名。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_CERTNOTMATCHDOMAIN = "InvalidParameter.CertNotMatchDomain"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) ModifyAliasDomain(request *ModifyAliasDomainRequest) (response *ModifyAliasDomainResponse, err error) {
+    return c.ModifyAliasDomainWithContext(context.Background(), request)
+}
+
+// ModifyAliasDomain
+// 修改别称域名。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_CERTNOTMATCHDOMAIN = "InvalidParameter.CertNotMatchDomain"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) ModifyAliasDomainWithContext(ctx context.Context, request *ModifyAliasDomainRequest) (response *ModifyAliasDomainResponse, err error) {
+    if request == nil {
+        request = NewModifyAliasDomainRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyAliasDomain require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyAliasDomainResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyAliasDomainStatusRequest() (request *ModifyAliasDomainStatusRequest) {
+    request = &ModifyAliasDomainStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("teo", APIVersion, "ModifyAliasDomainStatus")
+    
+    
+    return
+}
+
+func NewModifyAliasDomainStatusResponse() (response *ModifyAliasDomainStatusResponse) {
+    response = &ModifyAliasDomainStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyAliasDomainStatus
+// 修改别称域名状态。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) ModifyAliasDomainStatus(request *ModifyAliasDomainStatusRequest) (response *ModifyAliasDomainStatusResponse, err error) {
+    return c.ModifyAliasDomainStatusWithContext(context.Background(), request)
+}
+
+// ModifyAliasDomainStatus
+// 修改别称域名状态。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) ModifyAliasDomainStatusWithContext(ctx context.Context, request *ModifyAliasDomainStatusRequest) (response *ModifyAliasDomainStatusResponse, err error) {
+    if request == nil {
+        request = NewModifyAliasDomainStatusRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyAliasDomainStatus require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyAliasDomainStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyApplicationProxyRequest() (request *ModifyApplicationProxyRequest) {
     request = &ModifyApplicationProxyRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -5735,8 +6001,12 @@ func NewModifyRuleResponse() (response *ModifyRuleResponse) {
 // 修改规则引擎规则。
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETER_HOSTNOTFOUND = "InvalidParameter.HostNotFound"
+//  INVALIDPARAMETER_INVALIDCLIENTIPHEADERNAME = "InvalidParameter.InvalidClientIpHeaderName"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
 //  INVALIDPARAMETER_INVALIDREQUESTHEADERNAME = "InvalidParameter.InvalidRequestHeaderName"
 //  INVALIDPARAMETER_INVALIDRULEENGINEACTION = "InvalidParameter.InvalidRuleEngineAction"
+//  INVALIDPARAMETER_INVALIDRULEENGINENOTFOUND = "InvalidParameter.InvalidRuleEngineNotFound"
 //  INVALIDPARAMETER_INVALIDRULEENGINETARGET = "InvalidParameter.InvalidRuleEngineTarget"
 //  INVALIDPARAMETER_INVALIDRULEENGINETARGETSEXTENSION = "InvalidParameter.InvalidRuleEngineTargetsExtension"
 //  INVALIDPARAMETER_INVALIDRULEENGINETARGETSURL = "InvalidParameter.InvalidRuleEngineTargetsUrl"
@@ -5749,8 +6019,12 @@ func (c *Client) ModifyRule(request *ModifyRuleRequest) (response *ModifyRuleRes
 // 修改规则引擎规则。
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETER_HOSTNOTFOUND = "InvalidParameter.HostNotFound"
+//  INVALIDPARAMETER_INVALIDCLIENTIPHEADERNAME = "InvalidParameter.InvalidClientIpHeaderName"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
 //  INVALIDPARAMETER_INVALIDREQUESTHEADERNAME = "InvalidParameter.InvalidRequestHeaderName"
 //  INVALIDPARAMETER_INVALIDRULEENGINEACTION = "InvalidParameter.InvalidRuleEngineAction"
+//  INVALIDPARAMETER_INVALIDRULEENGINENOTFOUND = "InvalidParameter.InvalidRuleEngineNotFound"
 //  INVALIDPARAMETER_INVALIDRULEENGINETARGET = "InvalidParameter.InvalidRuleEngineTarget"
 //  INVALIDPARAMETER_INVALIDRULEENGINETARGETSEXTENSION = "InvalidParameter.InvalidRuleEngineTargetsExtension"
 //  INVALIDPARAMETER_INVALIDRULEENGINETARGETSURL = "InvalidParameter.InvalidRuleEngineTargetsUrl"
@@ -5793,8 +6067,12 @@ func NewModifyRulePriorityResponse() (response *ModifyRulePriorityResponse) {
 // 修改规则引擎规则优先级
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETER_HOSTNOTFOUND = "InvalidParameter.HostNotFound"
+//  INVALIDPARAMETER_INVALIDCLIENTIPHEADERNAME = "InvalidParameter.InvalidClientIpHeaderName"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
 //  INVALIDPARAMETER_INVALIDREQUESTHEADERNAME = "InvalidParameter.InvalidRequestHeaderName"
 //  INVALIDPARAMETER_INVALIDRULEENGINEACTION = "InvalidParameter.InvalidRuleEngineAction"
+//  INVALIDPARAMETER_INVALIDRULEENGINENOTFOUND = "InvalidParameter.InvalidRuleEngineNotFound"
 //  INVALIDPARAMETER_INVALIDRULEENGINETARGET = "InvalidParameter.InvalidRuleEngineTarget"
 //  INVALIDPARAMETER_INVALIDRULEENGINETARGETSEXTENSION = "InvalidParameter.InvalidRuleEngineTargetsExtension"
 //  INVALIDPARAMETER_INVALIDRULEENGINETARGETSURL = "InvalidParameter.InvalidRuleEngineTargetsUrl"
@@ -5807,8 +6085,12 @@ func (c *Client) ModifyRulePriority(request *ModifyRulePriorityRequest) (respons
 // 修改规则引擎规则优先级
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETER_HOSTNOTFOUND = "InvalidParameter.HostNotFound"
+//  INVALIDPARAMETER_INVALIDCLIENTIPHEADERNAME = "InvalidParameter.InvalidClientIpHeaderName"
+//  INVALIDPARAMETER_INVALIDPARAMETER = "InvalidParameter.InvalidParameter"
 //  INVALIDPARAMETER_INVALIDREQUESTHEADERNAME = "InvalidParameter.InvalidRequestHeaderName"
 //  INVALIDPARAMETER_INVALIDRULEENGINEACTION = "InvalidParameter.InvalidRuleEngineAction"
+//  INVALIDPARAMETER_INVALIDRULEENGINENOTFOUND = "InvalidParameter.InvalidRuleEngineNotFound"
 //  INVALIDPARAMETER_INVALIDRULEENGINETARGET = "InvalidParameter.InvalidRuleEngineTarget"
 //  INVALIDPARAMETER_INVALIDRULEENGINETARGETSEXTENSION = "InvalidParameter.InvalidRuleEngineTargetsExtension"
 //  INVALIDPARAMETER_INVALIDRULEENGINETARGETSURL = "InvalidParameter.InvalidRuleEngineTargetsUrl"
@@ -5954,6 +6236,7 @@ func NewModifyZoneResponse() (response *ModifyZoneResponse) {
 //
 // 可能返回的错误码:
 //  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_MULTIPLECNAMEZONE = "OperationDenied.MultipleCnameZone"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) ModifyZone(request *ModifyZoneRequest) (response *ModifyZoneResponse, err error) {
@@ -5965,6 +6248,7 @@ func (c *Client) ModifyZone(request *ModifyZoneRequest) (response *ModifyZoneRes
 //
 // 可能返回的错误码:
 //  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_MULTIPLECNAMEZONE = "OperationDenied.MultipleCnameZone"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) ModifyZoneWithContext(ctx context.Context, request *ModifyZoneRequest) (response *ModifyZoneResponse, err error) {
@@ -6155,6 +6439,58 @@ func (c *Client) ModifyZoneStatusWithContext(ctx context.Context, request *Modif
     return
 }
 
+func NewReclaimAliasDomainRequest() (request *ReclaimAliasDomainRequest) {
+    request = &ReclaimAliasDomainRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("teo", APIVersion, "ReclaimAliasDomain")
+    
+    
+    return
+}
+
+func NewReclaimAliasDomainResponse() (response *ReclaimAliasDomainResponse) {
+    response = &ReclaimAliasDomainResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ReclaimAliasDomain
+// 当客户取回站定的同时会取回此站点下关联的别称域名，此时入参为ZoneId；当客户接入站点发现已被别称域名接入时通过验证之后可取回域名，此时入参为ZoneName。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ReclaimAliasDomain(request *ReclaimAliasDomainRequest) (response *ReclaimAliasDomainResponse, err error) {
+    return c.ReclaimAliasDomainWithContext(context.Background(), request)
+}
+
+// ReclaimAliasDomain
+// 当客户取回站定的同时会取回此站点下关联的别称域名，此时入参为ZoneId；当客户接入站点发现已被别称域名接入时通过验证之后可取回域名，此时入参为ZoneName。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ReclaimAliasDomainWithContext(ctx context.Context, request *ReclaimAliasDomainRequest) (response *ReclaimAliasDomainResponse, err error) {
+    if request == nil {
+        request = NewReclaimAliasDomainRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ReclaimAliasDomain require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewReclaimAliasDomainResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewReclaimZoneRequest() (request *ReclaimZoneRequest) {
     request = &ReclaimZoneRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -6177,8 +6513,9 @@ func NewReclaimZoneResponse() (response *ReclaimZoneResponse) {
 // 站点被其他用户接入后，验证了站点所有权之后，可以找回该站点。
 //
 // 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  OPERATIONDENIED = "OperationDenied"
 //  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) ReclaimZone(request *ReclaimZoneRequest) (response *ReclaimZoneResponse, err error) {
     return c.ReclaimZoneWithContext(context.Background(), request)
 }
@@ -6187,8 +6524,9 @@ func (c *Client) ReclaimZone(request *ReclaimZoneRequest) (response *ReclaimZone
 // 站点被其他用户接入后，验证了站点所有权之后，可以找回该站点。
 //
 // 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  OPERATIONDENIED = "OperationDenied"
 //  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) ReclaimZoneWithContext(ctx context.Context, request *ReclaimZoneRequest) (response *ReclaimZoneResponse, err error) {
     if request == nil {
         request = NewReclaimZoneRequest()
@@ -6227,8 +6565,7 @@ func NewSwitchLogTopicTaskResponse() (response *SwitchLogTopicTaskResponse) {
 // 本接口（SwitchLogTopicTask）用于开启/关闭推送任务。
 //
 // 可能返回的错误码:
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  FAILEDOPERATION = "FailedOperation"
 func (c *Client) SwitchLogTopicTask(request *SwitchLogTopicTaskRequest) (response *SwitchLogTopicTaskResponse, err error) {
     return c.SwitchLogTopicTaskWithContext(context.Background(), request)
 }
@@ -6237,8 +6574,7 @@ func (c *Client) SwitchLogTopicTask(request *SwitchLogTopicTaskRequest) (respons
 // 本接口（SwitchLogTopicTask）用于开启/关闭推送任务。
 //
 // 可能返回的错误码:
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  FAILEDOPERATION = "FailedOperation"
 func (c *Client) SwitchLogTopicTaskWithContext(ctx context.Context, request *SwitchLogTopicTaskRequest) (response *SwitchLogTopicTaskResponse, err error) {
     if request == nil {
         request = NewSwitchLogTopicTaskRequest()

@@ -369,8 +369,14 @@ type DescribeCaptchaDataSumResponseParams struct {
 	// 成功返回0  其它失败
 	CaptchaCode *int64 `json:"CaptchaCode,omitempty" name:"CaptchaCode"`
 
-	// 票据校验量
+	// 票据校验总量
 	CheckTicketSum *int64 `json:"CheckTicketSum,omitempty" name:"CheckTicketSum"`
+
+	// 票据验证通过量
+	TicketThroughputSum *int64 `json:"TicketThroughputSum,omitempty" name:"TicketThroughputSum"`
+
+	// 票据验证拦截量
+	TicketInterceptSum *int64 `json:"TicketInterceptSum,omitempty" name:"TicketInterceptSum"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`

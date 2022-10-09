@@ -1150,6 +1150,7 @@ func NewCreateFlowEvidenceReportResponse() (response *CreateFlowEvidenceReportRe
 //
 // 可能返回的错误码:
 //  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  MISSINGPARAMETER_FLOWID = "MissingParameter.FlowId"
 //  OPERATIONDENIED_FLOWSTATUSFORBID = "OperationDenied.FlowStatusForbid"
 //  OPERATIONDENIED_NOTBELONGSUPERADMINORLEGALPERSON = "OperationDenied.NotBelongSuperAdminOrLegalPerson"
@@ -1166,6 +1167,7 @@ func (c *Client) CreateFlowEvidenceReport(request *CreateFlowEvidenceReportReque
 //
 // 可能返回的错误码:
 //  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  MISSINGPARAMETER_FLOWID = "MissingParameter.FlowId"
 //  OPERATIONDENIED_FLOWSTATUSFORBID = "OperationDenied.FlowStatusForbid"
 //  OPERATIONDENIED_NOTBELONGSUPERADMINORLEGALPERSON = "OperationDenied.NotBelongSuperAdminOrLegalPerson"
@@ -1317,6 +1319,7 @@ func NewCreateIntegrationEmployeesResponse() (response *CreateIntegrationEmploye
 //  INVALIDPARAMETER_INVALIDCHANNEL = "InvalidParameter.InvalidChannel"
 //  INVALIDPARAMETER_INVALIDOPERATORID = "InvalidParameter.InvalidOperatorId"
 //  INVALIDPARAMETER_INVALIDORGANIZATIONID = "InvalidParameter.InvalidOrganizationId"
+//  OPERATIONDENIED_NOIDENTITYVERIFY = "OperationDenied.NoIdentityVerify"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) CreateIntegrationEmployees(request *CreateIntegrationEmployeesRequest) (response *CreateIntegrationEmployeesResponse, err error) {
     return c.CreateIntegrationEmployeesWithContext(context.Background(), request)
@@ -1332,6 +1335,7 @@ func (c *Client) CreateIntegrationEmployees(request *CreateIntegrationEmployeesR
 //  INVALIDPARAMETER_INVALIDCHANNEL = "InvalidParameter.InvalidChannel"
 //  INVALIDPARAMETER_INVALIDOPERATORID = "InvalidParameter.InvalidOperatorId"
 //  INVALIDPARAMETER_INVALIDORGANIZATIONID = "InvalidParameter.InvalidOrganizationId"
+//  OPERATIONDENIED_NOIDENTITYVERIFY = "OperationDenied.NoIdentityVerify"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) CreateIntegrationEmployeesWithContext(ctx context.Context, request *CreateIntegrationEmployeesRequest) (response *CreateIntegrationEmployeesResponse, err error) {
     if request == nil {
@@ -2016,6 +2020,8 @@ func NewDescribeIntegrationEmployeesResponse() (response *DescribeIntegrationEmp
 //  INVALIDPARAMETER_INVALIDOFFSET = "InvalidParameter.InvalidOffset"
 //  INVALIDPARAMETER_INVALIDOPERATORID = "InvalidParameter.InvalidOperatorId"
 //  INVALIDPARAMETER_INVALIDORGANIZATIONID = "InvalidParameter.InvalidOrganizationId"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  OPERATIONDENIED_NOIDENTITYVERIFY = "OperationDenied.NoIdentityVerify"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeIntegrationEmployees(request *DescribeIntegrationEmployeesRequest) (response *DescribeIntegrationEmployeesResponse, err error) {
     return c.DescribeIntegrationEmployeesWithContext(context.Background(), request)
@@ -2032,6 +2038,8 @@ func (c *Client) DescribeIntegrationEmployees(request *DescribeIntegrationEmploy
 //  INVALIDPARAMETER_INVALIDOFFSET = "InvalidParameter.InvalidOffset"
 //  INVALIDPARAMETER_INVALIDOPERATORID = "InvalidParameter.InvalidOperatorId"
 //  INVALIDPARAMETER_INVALIDORGANIZATIONID = "InvalidParameter.InvalidOrganizationId"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  OPERATIONDENIED_NOIDENTITYVERIFY = "OperationDenied.NoIdentityVerify"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) DescribeIntegrationEmployeesWithContext(ctx context.Context, request *DescribeIntegrationEmployeesRequest) (response *DescribeIntegrationEmployeesResponse, err error) {
     if request == nil {

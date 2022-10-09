@@ -5951,6 +5951,58 @@ func (c *Client) DescribeEdgeClusterInstancesWithContext(ctx context.Context, re
     return
 }
 
+func NewDescribeEdgeClusterUpgradeInfoRequest() (request *DescribeEdgeClusterUpgradeInfoRequest) {
+    request = &DescribeEdgeClusterUpgradeInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tke", APIVersion, "DescribeEdgeClusterUpgradeInfo")
+    
+    
+    return
+}
+
+func NewDescribeEdgeClusterUpgradeInfoResponse() (response *DescribeEdgeClusterUpgradeInfoResponse) {
+    response = &DescribeEdgeClusterUpgradeInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeEdgeClusterUpgradeInfo
+// 可以查询边缘集群升级信息，包含可以升级的组件，当前升级状态和升级错误信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeEdgeClusterUpgradeInfo(request *DescribeEdgeClusterUpgradeInfoRequest) (response *DescribeEdgeClusterUpgradeInfoResponse, err error) {
+    return c.DescribeEdgeClusterUpgradeInfoWithContext(context.Background(), request)
+}
+
+// DescribeEdgeClusterUpgradeInfo
+// 可以查询边缘集群升级信息，包含可以升级的组件，当前升级状态和升级错误信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeEdgeClusterUpgradeInfoWithContext(ctx context.Context, request *DescribeEdgeClusterUpgradeInfoRequest) (response *DescribeEdgeClusterUpgradeInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeEdgeClusterUpgradeInfoRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeEdgeClusterUpgradeInfo require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeEdgeClusterUpgradeInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeEdgeLogSwitchesRequest() (request *DescribeEdgeLogSwitchesRequest) {
     request = &DescribeEdgeLogSwitchesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -10773,6 +10825,7 @@ func NewSyncPrometheusTemplateResponse() (response *SyncPrometheusTemplateRespon
 //  INVALIDPARAMETER_PROMCLUSTERNOTFOUND = "InvalidParameter.PromClusterNotFound"
 //  INVALIDPARAMETER_PROMINSTANCENOTFOUND = "InvalidParameter.PromInstanceNotFound"
 //  INVALIDPARAMETER_RESOURCENOTFOUND = "InvalidParameter.ResourceNotFound"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) SyncPrometheusTemplate(request *SyncPrometheusTemplateRequest) (response *SyncPrometheusTemplateResponse, err error) {
     return c.SyncPrometheusTemplateWithContext(context.Background(), request)
 }
@@ -10791,6 +10844,7 @@ func (c *Client) SyncPrometheusTemplate(request *SyncPrometheusTemplateRequest) 
 //  INVALIDPARAMETER_PROMCLUSTERNOTFOUND = "InvalidParameter.PromClusterNotFound"
 //  INVALIDPARAMETER_PROMINSTANCENOTFOUND = "InvalidParameter.PromInstanceNotFound"
 //  INVALIDPARAMETER_RESOURCENOTFOUND = "InvalidParameter.ResourceNotFound"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) SyncPrometheusTemplateWithContext(ctx context.Context, request *SyncPrometheusTemplateRequest) (response *SyncPrometheusTemplateResponse, err error) {
     if request == nil {
         request = NewSyncPrometheusTemplateRequest()
@@ -11101,6 +11155,70 @@ func (c *Client) UpdateEKSContainerInstanceWithContext(ctx context.Context, requ
     request.SetContext(ctx)
     
     response = NewUpdateEKSContainerInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdateEdgeClusterVersionRequest() (request *UpdateEdgeClusterVersionRequest) {
+    request = &UpdateEdgeClusterVersionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tke", APIVersion, "UpdateEdgeClusterVersion")
+    
+    
+    return
+}
+
+func NewUpdateEdgeClusterVersionResponse() (response *UpdateEdgeClusterVersionResponse) {
+    response = &UpdateEdgeClusterVersionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// UpdateEdgeClusterVersion
+// 升级边缘集群组件到指定版本，此版本为TKEEdge专用版本。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CLUSTERUPGRADENODEVERSION = "FailedOperation.ClusterUpgradeNodeVersion"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CLUSTERUPGRADENODEVERSION = "InternalError.ClusterUpgradeNodeVersion"
+//  INTERNALERROR_PARAM = "InternalError.Param"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE_CLUSTERSTATE = "ResourceUnavailable.ClusterState"
+func (c *Client) UpdateEdgeClusterVersion(request *UpdateEdgeClusterVersionRequest) (response *UpdateEdgeClusterVersionResponse, err error) {
+    return c.UpdateEdgeClusterVersionWithContext(context.Background(), request)
+}
+
+// UpdateEdgeClusterVersion
+// 升级边缘集群组件到指定版本，此版本为TKEEdge专用版本。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CLUSTERUPGRADENODEVERSION = "FailedOperation.ClusterUpgradeNodeVersion"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CLUSTERUPGRADENODEVERSION = "InternalError.ClusterUpgradeNodeVersion"
+//  INTERNALERROR_PARAM = "InternalError.Param"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE_CLUSTERSTATE = "ResourceUnavailable.ClusterState"
+func (c *Client) UpdateEdgeClusterVersionWithContext(ctx context.Context, request *UpdateEdgeClusterVersionRequest) (response *UpdateEdgeClusterVersionResponse, err error) {
+    if request == nil {
+        request = NewUpdateEdgeClusterVersionRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateEdgeClusterVersion require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpdateEdgeClusterVersionResponse()
     err = c.Send(request, response)
     return
 }

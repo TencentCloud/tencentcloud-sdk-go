@@ -48,26 +48,26 @@ type Account struct {
 
 // Predefined struct for user
 type AddReplicationInstanceRequestParams struct {
-	// 复制组ID
+	// 复制组ID。
 	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
 
-	// 实例ID
+	// 实例ID。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 实例角色，rw可读写，r只读
+	// 给复制组添加的实例分配角色。<ul><li>rw：可读写。</li><li>r：只读。</li></ul>
 	InstanceRole *string `json:"InstanceRole,omitempty" name:"InstanceRole"`
 }
 
 type AddReplicationInstanceRequest struct {
 	*tchttp.BaseRequest
 	
-	// 复制组ID
+	// 复制组ID。
 	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
 
-	// 实例ID
+	// 实例ID。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 实例角色，rw可读写，r只读
+	// 给复制组添加的实例分配角色。<ul><li>rw：可读写。</li><li>r：只读。</li></ul>
 	InstanceRole *string `json:"InstanceRole,omitempty" name:"InstanceRole"`
 }
 
@@ -94,7 +94,7 @@ func (r *AddReplicationInstanceRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type AddReplicationInstanceResponseParams struct {
-	// 异步流程ID
+	// 异步流程ID。
 	TaskId *int64 `json:"TaskId,omitempty" name:"TaskId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -674,6 +674,63 @@ func (r *ClearInstanceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type CloseSSLRequestParams struct {
+	// 实例ID。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+}
+
+type CloseSSLRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+}
+
+func (r *CloseSSLRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CloseSSLRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CloseSSLRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CloseSSLResponseParams struct {
+	// 任务ID。
+	TaskId *int64 `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CloseSSLResponse struct {
+	*tchttp.BaseResponse
+	Response *CloseSSLResponseParams `json:"Response"`
+}
+
+func (r *CloseSSLResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CloseSSLResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type CommandTake struct {
 	// 命令
 	Cmd *string `json:"Cmd,omitempty" name:"Cmd"`
@@ -1107,26 +1164,26 @@ func (r *CreateParamTemplateResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateReplicationGroupRequestParams struct {
-	// 实例ID
+	// 指定复制组中的主实例ID。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 复制组名称
+	// 复制组名称。
 	GroupName *string `json:"GroupName,omitempty" name:"GroupName"`
 
-	// 备注信息
+	// 备注信息。
 	Remark *string `json:"Remark,omitempty" name:"Remark"`
 }
 
 type CreateReplicationGroupRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID
+	// 指定复制组中的主实例ID。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 复制组名称
+	// 复制组名称。
 	GroupName *string `json:"GroupName,omitempty" name:"GroupName"`
 
-	// 备注信息
+	// 备注信息。
 	Remark *string `json:"Remark,omitempty" name:"Remark"`
 }
 
@@ -1153,7 +1210,7 @@ func (r *CreateReplicationGroupRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateReplicationGroupResponseParams struct {
-	// 异步流程ID
+	// 异步流程ID。
 	TaskId *int64 `json:"TaskId,omitempty" name:"TaskId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -6429,6 +6486,63 @@ func (r *ModifyParamTemplateResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type OpenSSLRequestParams struct {
+	// 实例ID。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+}
+
+type OpenSSLRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+}
+
+func (r *OpenSSLRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *OpenSSLRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "OpenSSLRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type OpenSSLResponseParams struct {
+	// 任务ID。
+	TaskId *int64 `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type OpenSSLResponse struct {
+	*tchttp.BaseResponse
+	Response *OpenSSLResponseParams `json:"Response"`
+}
+
+func (r *OpenSSLResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *OpenSSLResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type Outbound struct {
 	// 策略，ACCEPT或者DROP。
 	Action *string `json:"Action,omitempty" name:"Action"`
@@ -7674,20 +7788,22 @@ func (r *UpgradeSmallVersionResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type UpgradeVersionToMultiAvailabilityZonesRequestParams struct {
-	// 实例ID
+	// 实例ID。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 是否升级proxy和redis内核版本，升级后可支持就近接入
+	// 升级多可用区之后是否支持就近访问功能。
+	// <ul><li>true：支持就近访问功能。升级过程，需同时升级 Proxy 版本和 Redis 内核小版本，涉及数据搬迁，可能会长达数小时。</li><li>false：无需支持就近访问功能。升级多可用区仅涉及管理元数据迁移，对服务没有影响，升级过程通常在3分钟内完成。</li></ul>
 	UpgradeProxyAndRedisServer *bool `json:"UpgradeProxyAndRedisServer,omitempty" name:"UpgradeProxyAndRedisServer"`
 }
 
 type UpgradeVersionToMultiAvailabilityZonesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例ID
+	// 实例ID。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// 是否升级proxy和redis内核版本，升级后可支持就近接入
+	// 升级多可用区之后是否支持就近访问功能。
+	// <ul><li>true：支持就近访问功能。升级过程，需同时升级 Proxy 版本和 Redis 内核小版本，涉及数据搬迁，可能会长达数小时。</li><li>false：无需支持就近访问功能。升级多可用区仅涉及管理元数据迁移，对服务没有影响，升级过程通常在3分钟内完成。</li></ul>
 	UpgradeProxyAndRedisServer *bool `json:"UpgradeProxyAndRedisServer,omitempty" name:"UpgradeProxyAndRedisServer"`
 }
 

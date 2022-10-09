@@ -1166,7 +1166,7 @@ func NewInquirePriceCreateDBInstancesResponse() (response *InquirePriceCreateDBI
 }
 
 // InquirePriceCreateDBInstances
-// 本接口用于创建数据库实例询价。本接口参数中必须传入region参数，否则无法通过校验。本接口仅允许针对购买限制范围内的实例配置进行询价。
+// 本接口（InquirePriceCreateDBInstances）用于创建数据库实例询价。本接口参数中必须传入region参数，否则无法通过校验。本接口仅允许针对购买限制范围内的实例配置进行询价。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -1183,7 +1183,7 @@ func (c *Client) InquirePriceCreateDBInstances(request *InquirePriceCreateDBInst
 }
 
 // InquirePriceCreateDBInstances
-// 本接口用于创建数据库实例询价。本接口参数中必须传入region参数，否则无法通过校验。本接口仅允许针对购买限制范围内的实例配置进行询价。
+// 本接口（InquirePriceCreateDBInstances）用于创建数据库实例询价。本接口参数中必须传入region参数，否则无法通过校验。本接口仅允许针对购买限制范围内的实例配置进行询价。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"

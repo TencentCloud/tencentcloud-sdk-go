@@ -9701,6 +9701,10 @@ type PrometheusInstancesItem struct {
 	// 预聚合规则限制
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RecordingRuleLimit *int64 `json:"RecordingRuleLimit,omitempty" name:"RecordingRuleLimit"`
+
+	// 迁移状态，0-不在迁移中，1-迁移中、原实例，2-迁移中、目标实例
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MigrationType *int64 `json:"MigrationType,omitempty" name:"MigrationType"`
 }
 
 type PrometheusRuleKV struct {

@@ -3407,6 +3407,7 @@ func NewDescribeWxCloudBaseRunEnvsResponse() (response *DescribeWxCloudBaseRunEn
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 //  MISSINGPARAMETER_PARAM = "MissingParameter.Param"
+//  RESOURCEINUSE = "ResourceInUse"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) DescribeWxCloudBaseRunEnvs(request *DescribeWxCloudBaseRunEnvsRequest) (response *DescribeWxCloudBaseRunEnvsResponse, err error) {
     return c.DescribeWxCloudBaseRunEnvsWithContext(context.Background(), request)
@@ -3424,6 +3425,7 @@ func (c *Client) DescribeWxCloudBaseRunEnvs(request *DescribeWxCloudBaseRunEnvsR
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 //  MISSINGPARAMETER_PARAM = "MissingParameter.Param"
+//  RESOURCEINUSE = "ResourceInUse"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) DescribeWxCloudBaseRunEnvsWithContext(ctx context.Context, request *DescribeWxCloudBaseRunEnvsRequest) (response *DescribeWxCloudBaseRunEnvsResponse, err error) {
     if request == nil {

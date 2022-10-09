@@ -7361,9 +7361,7 @@ func NewQueryFinancialDataUrlResponse() (response *QueryFinancialDataUrlResponse
 // 财税-查询金融数据文件下载链接
 //
 // 可能返回的错误码:
-//  INTERNALERROR_PARAMETERERROR = "InternalError.ParameterError"
-//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
-//  RESOURCENOTFOUND_MERCHANTINFONOTFOUND = "ResourceNotFound.MerchantInfoNotFound"
+//  FAILEDOPERATION_MOUNTNOTFOUND = "FailedOperation.MountNotFound"
 func (c *Client) QueryFinancialDataUrl(request *QueryFinancialDataUrlRequest) (response *QueryFinancialDataUrlResponse, err error) {
     return c.QueryFinancialDataUrlWithContext(context.Background(), request)
 }
@@ -7372,9 +7370,7 @@ func (c *Client) QueryFinancialDataUrl(request *QueryFinancialDataUrlRequest) (r
 // 财税-查询金融数据文件下载链接
 //
 // 可能返回的错误码:
-//  INTERNALERROR_PARAMETERERROR = "InternalError.ParameterError"
-//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
-//  RESOURCENOTFOUND_MERCHANTINFONOTFOUND = "ResourceNotFound.MerchantInfoNotFound"
+//  FAILEDOPERATION_MOUNTNOTFOUND = "FailedOperation.MountNotFound"
 func (c *Client) QueryFinancialDataUrlWithContext(ctx context.Context, request *QueryFinancialDataUrlRequest) (response *QueryFinancialDataUrlResponse, err error) {
     if request == nil {
         request = NewQueryFinancialDataUrlRequest()
@@ -7413,9 +7409,7 @@ func NewQueryFlexAmountBeforeTaxResponse() (response *QueryFlexAmountBeforeTaxRe
 // 灵云V2-查询税前金额
 //
 // 可能返回的错误码:
-//  INTERNALERROR_PARAMETERERROR = "InternalError.ParameterError"
-//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
-//  RESOURCENOTFOUND_MERCHANTINFONOTFOUND = "ResourceNotFound.MerchantInfoNotFound"
+//  FAILEDOPERATION_MOUNTNOTFOUND = "FailedOperation.MountNotFound"
 func (c *Client) QueryFlexAmountBeforeTax(request *QueryFlexAmountBeforeTaxRequest) (response *QueryFlexAmountBeforeTaxResponse, err error) {
     return c.QueryFlexAmountBeforeTaxWithContext(context.Background(), request)
 }
@@ -7424,9 +7418,7 @@ func (c *Client) QueryFlexAmountBeforeTax(request *QueryFlexAmountBeforeTaxReque
 // 灵云V2-查询税前金额
 //
 // 可能返回的错误码:
-//  INTERNALERROR_PARAMETERERROR = "InternalError.ParameterError"
-//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
-//  RESOURCENOTFOUND_MERCHANTINFONOTFOUND = "ResourceNotFound.MerchantInfoNotFound"
+//  FAILEDOPERATION_MOUNTNOTFOUND = "FailedOperation.MountNotFound"
 func (c *Client) QueryFlexAmountBeforeTaxWithContext(ctx context.Context, request *QueryFlexAmountBeforeTaxRequest) (response *QueryFlexAmountBeforeTaxResponse, err error) {
     if request == nil {
         request = NewQueryFlexAmountBeforeTaxRequest()
@@ -7465,9 +7457,7 @@ func NewQueryFlexBillDownloadUrlResponse() (response *QueryFlexBillDownloadUrlRe
 // 灵云V2-查询对账单文件下载链接
 //
 // 可能返回的错误码:
-//  INTERNALERROR_PARAMETERERROR = "InternalError.ParameterError"
-//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
-//  RESOURCENOTFOUND_MERCHANTINFONOTFOUND = "ResourceNotFound.MerchantInfoNotFound"
+//  FAILEDOPERATION_MOUNTNOTFOUND = "FailedOperation.MountNotFound"
 func (c *Client) QueryFlexBillDownloadUrl(request *QueryFlexBillDownloadUrlRequest) (response *QueryFlexBillDownloadUrlResponse, err error) {
     return c.QueryFlexBillDownloadUrlWithContext(context.Background(), request)
 }
@@ -7476,9 +7466,7 @@ func (c *Client) QueryFlexBillDownloadUrl(request *QueryFlexBillDownloadUrlReque
 // 灵云V2-查询对账单文件下载链接
 //
 // 可能返回的错误码:
-//  INTERNALERROR_PARAMETERERROR = "InternalError.ParameterError"
-//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
-//  RESOURCENOTFOUND_MERCHANTINFONOTFOUND = "ResourceNotFound.MerchantInfoNotFound"
+//  FAILEDOPERATION_MOUNTNOTFOUND = "FailedOperation.MountNotFound"
 func (c *Client) QueryFlexBillDownloadUrlWithContext(ctx context.Context, request *QueryFlexBillDownloadUrlRequest) (response *QueryFlexBillDownloadUrlResponse, err error) {
     if request == nil {
         request = NewQueryFlexBillDownloadUrlRequest()
@@ -7517,9 +7505,7 @@ func NewQueryFlexFreezeOrderListResponse() (response *QueryFlexFreezeOrderListRe
 // 灵云V2-查询冻结订单列表
 //
 // 可能返回的错误码:
-//  INTERNALERROR_PARAMETERERROR = "InternalError.ParameterError"
-//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
-//  RESOURCENOTFOUND_MERCHANTINFONOTFOUND = "ResourceNotFound.MerchantInfoNotFound"
+//  FAILEDOPERATION_MOUNTNOTFOUND = "FailedOperation.MountNotFound"
 func (c *Client) QueryFlexFreezeOrderList(request *QueryFlexFreezeOrderListRequest) (response *QueryFlexFreezeOrderListResponse, err error) {
     return c.QueryFlexFreezeOrderListWithContext(context.Background(), request)
 }
@@ -7528,9 +7514,7 @@ func (c *Client) QueryFlexFreezeOrderList(request *QueryFlexFreezeOrderListReque
 // 灵云V2-查询冻结订单列表
 //
 // 可能返回的错误码:
-//  INTERNALERROR_PARAMETERERROR = "InternalError.ParameterError"
-//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
-//  RESOURCENOTFOUND_MERCHANTINFONOTFOUND = "ResourceNotFound.MerchantInfoNotFound"
+//  FAILEDOPERATION_MOUNTNOTFOUND = "FailedOperation.MountNotFound"
 func (c *Client) QueryFlexFreezeOrderListWithContext(ctx context.Context, request *QueryFlexFreezeOrderListRequest) (response *QueryFlexFreezeOrderListResponse, err error) {
     if request == nil {
         request = NewQueryFlexFreezeOrderListRequest()

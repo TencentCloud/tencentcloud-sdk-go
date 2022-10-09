@@ -97,6 +97,7 @@ func NewCreateAuditResponse() (response *CreateAuditResponse) {
 //  RESOURCEINUSE_ALREADYEXISTSSAMEAUDITCMQCONFIG = "ResourceInUse.AlreadyExistsSameAuditCmqConfig"
 //  RESOURCEINUSE_ALREADYEXISTSSAMEAUDITCOSCONFIG = "ResourceInUse.AlreadyExistsSameAuditCosConfig"
 //  RESOURCEINUSE_COSBUCKETEXISTS = "ResourceInUse.CosBucketExists"
+//  RESOURCENOTFOUND_ROLENOTEXIST = "ResourceNotFound.RoleNotExist"
 func (c *Client) CreateAudit(request *CreateAuditRequest) (response *CreateAuditResponse, err error) {
     return c.CreateAuditWithContext(context.Background(), request)
 }
@@ -135,6 +136,7 @@ func (c *Client) CreateAudit(request *CreateAuditRequest) (response *CreateAudit
 //  RESOURCEINUSE_ALREADYEXISTSSAMEAUDITCMQCONFIG = "ResourceInUse.AlreadyExistsSameAuditCmqConfig"
 //  RESOURCEINUSE_ALREADYEXISTSSAMEAUDITCOSCONFIG = "ResourceInUse.AlreadyExistsSameAuditCosConfig"
 //  RESOURCEINUSE_COSBUCKETEXISTS = "ResourceInUse.CosBucketExists"
+//  RESOURCENOTFOUND_ROLENOTEXIST = "ResourceNotFound.RoleNotExist"
 func (c *Client) CreateAuditWithContext(ctx context.Context, request *CreateAuditRequest) (response *CreateAuditResponse, err error) {
     if request == nil {
         request = NewCreateAuditRequest()

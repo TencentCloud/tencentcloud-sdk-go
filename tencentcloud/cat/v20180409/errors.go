@@ -71,6 +71,9 @@ const (
 	// json解析失败。
 	FAILEDOPERATION_UNMARSHALRESPONSE = "FailedOperation.UnmarshalResponse"
 
+	// 鉴权失败。
+	FAILEDOPERATION_USERNOPROMISSIONS = "FailedOperation.UserNoPromissions"
+
 	// 内部错误。
 	INTERNALERROR = "InternalError"
 

@@ -1,53 +1,106 @@
 # 本版本更新包含以下内容：
 
-## 商业流程服务(bpaas) 版本：2018-12-17
+## 验证码(captcha) 版本：2019-07-22
 
-### 第 2 次发布
+### 第 10 次发布
 
-发布时间：2022-09-30 06:12:23
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增数据结构：
-
-* [Scf](https://cloud.tencent.com/document/api/1083/80917#Scf)
-* [ScfParam](https://cloud.tencent.com/document/api/1083/80917#ScfParam)
-
-修改数据结构：
-
-* [ApproveUser](https://cloud.tencent.com/document/api/1083/80917#ApproveUser)
-
-	* 新增成员：Scf
-
-
-
-
-## 云服务器(cvm) 版本：2017-03-12
-
-### 第 95 次发布
-
-发布时间：2022-09-30 06:22:32
+发布时间：2022-10-10 06:11:02
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
+修改接口：
+
+* [DescribeCaptchaDataSum](https://cloud.tencent.com/document/api/1110/40478)
+
+	* 新增出参：TicketThroughputSum, TicketInterceptSum
+
+
+
+
+## 主机安全(cwp) 版本：2018-02-28
+
+### 第 55 次发布
+
+发布时间：2022-10-10 06:18:10
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeAssetHostTotalCount](https://cloud.tencent.com/document/api/296/81238)
+
+
+
+## 云数据库 MongoDB(mongodb) 版本：2019-07-25
+
+### 第 25 次发布
+
+发布时间：2022-10-10 06:31:49
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [InquirePriceCreateDBInstances](https://cloud.tencent.com/document/api/240/43666)
+
+	* 新增入参：InstanceChargeType, MongosCpu, MongosMemory, MongosNum, ConfigServerCpu, ConfigServerMemory, ConfigServerVolume
+
+	* <font color="#dd0000">**修改入参**：</font>Period
+
+
+
+
+## 云数据库 MongoDB(mongodb) 版本：2018-04-08
+
+
+
+## 云监控(monitor) 版本：2018-07-24
+
+### 第 64 次发布
+
+发布时间：2022-10-10 06:32:08
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
 修改数据结构：
 
-* [Instance](https://cloud.tencent.com/document/api/213/15753#Instance)
+* [PrometheusInstancesItem](https://cloud.tencent.com/document/api/248/30354#PrometheusInstancesItem)
 
-	* 新增成员：DisableApiTermination
+	* 新增成员：MigrationType
 
 
 
 
 ## 云数据库 Redis(redis) 版本：2018-04-12
 
-### 第 54 次发布
+### 第 55 次发布
 
-发布时间：2022-09-30 06:48:02
+发布时间：2022-10-10 06:35:50
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CloseSSL](https://cloud.tencent.com/document/api/239/81240)
+* [OpenSSL](https://cloud.tencent.com/document/api/239/81239)
+
+
+
+## 前端性能监控(rum) 版本：2021-06-22
+
+### 第 16 次发布
+
+发布时间：2022-10-10 06:36:43
 
 本次发布包含了以下内容：
 
@@ -55,39 +108,45 @@
 
 修改接口：
 
-* [DescribeSlowLog](https://cloud.tencent.com/document/api/239/37984)
+* [DescribeDataFetchUrl](https://cloud.tencent.com/document/api/1464/68355)
 
-	* 新增入参：Role
+	* 新增入参：NetStatus
+
+* [DescribeDataPerformancePage](https://cloud.tencent.com/document/api/1464/59944)
+
+	* 新增入参：NetStatus
 
 
 
 
 ## 边缘安全加速平台(teo) 版本：2022-09-01
 
-### 第 3 次发布
+### 第 4 次发布
 
-发布时间：2022-09-30 06:58:07
+发布时间：2022-10-10 06:43:20
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-修改接口：
+新增接口：
 
-* [CreateZone](https://cloud.tencent.com/document/api/1552/80719)
+* [CreateAliasDomain](https://cloud.tencent.com/document/api/1552/81247)
+* [DeleteAliasDomain](https://cloud.tencent.com/document/api/1552/81246)
+* [DescribeAliasDomains](https://cloud.tencent.com/document/api/1552/81245)
+* [ModifyAliasDomain](https://cloud.tencent.com/document/api/1552/81244)
+* [ModifyAliasDomainStatus](https://cloud.tencent.com/document/api/1552/81243)
+* [ReclaimAliasDomain](https://cloud.tencent.com/document/api/1552/81242)
 
-	* 新增入参：AllowDuplicates
+新增数据结构：
 
-* [ModifyHostsCertificate](https://cloud.tencent.com/document/api/1552/80764)
-
-	* 新增入参：ApplyType
-
+* [AliasDomain](https://cloud.tencent.com/document/api/1552/80721#AliasDomain)
 
 修改数据结构：
 
-* [RuleCondition](https://cloud.tencent.com/document/api/1552/80721#RuleCondition)
+* [RateLimitTemplate](https://cloud.tencent.com/document/api/1552/80721#RateLimitTemplate)
 
-	* 新增成员：IgnoreCase
+	* 新增成员：Action
 
 
 
@@ -96,48 +155,20 @@
 
 
 
-## 腾讯云 TI 平台 TI-ONE(tione) 版本：2021-11-11
+## 容器服务(tke) 版本：2018-05-25
 
-### 第 6 次发布
+### 第 124 次发布
 
-发布时间：2022-09-30 07:00:21
+发布时间：2022-10-10 06:45:41
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-修改接口：
+新增接口：
 
-* [CreateDataset](https://cloud.tencent.com/document/api/851/75050)
-
-	* 新增入参：ContentType
-
-* [DescribeDatasetDetailUnstructured](https://cloud.tencent.com/document/api/851/75078)
-
-	* 新增入参：TextClassificationLabels
-
-	* 新增出参：RowTexts
-
-
-新增数据结构：
-
-* [TextLabelDistributionDetailInfoFifthClass](https://cloud.tencent.com/document/api/851/75051#TextLabelDistributionDetailInfoFifthClass)
-* [TextLabelDistributionDetailInfoFirstClass](https://cloud.tencent.com/document/api/851/75051#TextLabelDistributionDetailInfoFirstClass)
-* [TextLabelDistributionDetailInfoFourthClass](https://cloud.tencent.com/document/api/851/75051#TextLabelDistributionDetailInfoFourthClass)
-* [TextLabelDistributionDetailInfoSecondClass](https://cloud.tencent.com/document/api/851/75051#TextLabelDistributionDetailInfoSecondClass)
-* [TextLabelDistributionDetailInfoThirdClass](https://cloud.tencent.com/document/api/851/75051#TextLabelDistributionDetailInfoThirdClass)
-* [TextLabelDistributionInfo](https://cloud.tencent.com/document/api/851/75051#TextLabelDistributionInfo)
-
-修改数据结构：
-
-* [FilterLabelInfo](https://cloud.tencent.com/document/api/851/75051#FilterLabelInfo)
-
-	* 新增成员：OcrLabelInfo, TextClassificationLabelList, RowText, ContentOmit
-
-
-
-
-## 腾讯云 TI 平台 TI-ONE(tione) 版本：2019-10-22
+* [DescribeEdgeClusterUpgradeInfo](https://cloud.tencent.com/document/api/457/81249)
+* [UpdateEdgeClusterVersion](https://cloud.tencent.com/document/api/457/81248)
 
 
 
@@ -8588,8 +8619,8 @@
 
 新增数据结构：
 
-* [[Scf](https://cloud.tencent.com/document/api/1083/80917#Scf)](https://cloud.tencent.com/document/api/1083/80917#[Scf](https://cloud.tencent.com/document/api/1083/80917#Scf))
-* [[ScfParam](https://cloud.tencent.com/document/api/1083/80917#ScfParam)](https://cloud.tencent.com/document/api/1083/80917#[ScfParam](https://cloud.tencent.com/document/api/1083/80917#ScfParam))
+* [Scf](https://cloud.tencent.com/document/api/1083/80917#Scf)
+* [ScfParam](https://cloud.tencent.com/document/api/1083/80917#ScfParam)
 
 修改数据结构：
 
@@ -9704,6 +9735,21 @@
 
 
 ## 验证码(captcha) 版本：2019-07-22
+
+### 第 10 次发布
+
+发布时间：2022-10-10 06:11:02
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeCaptchaDataSum](https://cloud.tencent.com/document/api/1110/40478)
+
+	* 新增出参：TicketThroughputSum, TicketInterceptSum
+
 
 ### 第 9 次发布
 
@@ -27763,6 +27809,18 @@
 
 
 ## 主机安全(cwp) 版本：2018-02-28
+
+### 第 55 次发布
+
+发布时间：2022-10-10 06:18:10
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeAssetHostTotalCount](https://cloud.tencent.com/document/api/296/81238)](https://cloud.tencent.com/document/api/#/#)
 
 ### 第 54 次发布
 
@@ -53755,6 +53813,23 @@
 
 ## 云数据库 MongoDB(mongodb) 版本：2019-07-25
 
+### 第 25 次发布
+
+发布时间：2022-10-10 06:31:49
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [InquirePriceCreateDBInstances](https://cloud.tencent.com/document/api/240/43666)
+
+	* 新增入参：InstanceChargeType, MongosCpu, MongosMemory, MongosNum, ConfigServerCpu, ConfigServerMemory, ConfigServerVolume
+
+	* <font color="#dd0000">**修改入参**：</font>Period
+
+
 ### 第 24 次发布
 
 发布时间：2022-09-21 06:37:03
@@ -54189,6 +54264,21 @@
 
 
 ## 云监控(monitor) 版本：2018-07-24
+
+### 第 64 次发布
+
+发布时间：2022-10-10 06:32:08
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [PrometheusInstancesItem](https://cloud.tencent.com/document/api/248/30354#PrometheusInstancesItem)
+
+	* 新增成员：MigrationType
+
 
 ### 第 63 次发布
 
@@ -61964,6 +62054,19 @@
 
 ## 云数据库 Redis(redis) 版本：2018-04-12
 
+### 第 55 次发布
+
+发布时间：2022-10-10 06:35:50
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CloseSSL](https://cloud.tencent.com/document/api/239/81240)](https://cloud.tencent.com/document/api/#/#)
+* [[OpenSSL](https://cloud.tencent.com/document/api/239/81239)](https://cloud.tencent.com/document/api/#/#)
+
 ### 第 54 次发布
 
 发布时间：2022-09-30 06:48:02
@@ -63112,6 +63215,25 @@
 
 
 ## 前端性能监控(rum) 版本：2021-06-22
+
+### 第 16 次发布
+
+发布时间：2022-10-10 06:36:43
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeDataFetchUrl](https://cloud.tencent.com/document/api/1464/68355)
+
+	* 新增入参：NetStatus
+
+* [DescribeDataPerformancePage](https://cloud.tencent.com/document/api/1464/59944)
+
+	* 新增入参：NetStatus
+
 
 ### 第 15 次发布
 
@@ -76173,6 +76295,34 @@
 
 ## 边缘安全加速平台(teo) 版本：2022-09-01
 
+### 第 4 次发布
+
+发布时间：2022-10-10 06:43:20
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateAliasDomain](https://cloud.tencent.com/document/api/1552/81247)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteAliasDomain](https://cloud.tencent.com/document/api/1552/81246)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeAliasDomains](https://cloud.tencent.com/document/api/1552/81245)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyAliasDomain](https://cloud.tencent.com/document/api/1552/81244)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyAliasDomainStatus](https://cloud.tencent.com/document/api/1552/81243)](https://cloud.tencent.com/document/api/#/#)
+* [[ReclaimAliasDomain](https://cloud.tencent.com/document/api/1552/81242)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[AliasDomain](https://cloud.tencent.com/document/api/1552/80721#AliasDomain)](https://cloud.tencent.com/document/api/1552/80721#[AliasDomain](https://cloud.tencent.com/document/api/1552/80721#AliasDomain))
+
+修改数据结构：
+
+* [RateLimitTemplate](https://cloud.tencent.com/document/api/1552/80721#RateLimitTemplate)
+
+	* 新增成员：Action
+
+
 ### 第 3 次发布
 
 发布时间：2022-09-30 06:58:07
@@ -78163,12 +78313,12 @@
 
 新增数据结构：
 
-* [[TextLabelDistributionDetailInfoFifthClass](https://cloud.tencent.com/document/api/851/75051#TextLabelDistributionDetailInfoFifthClass)](https://cloud.tencent.com/document/api/851/75051#[TextLabelDistributionDetailInfoFifthClass](https://cloud.tencent.com/document/api/851/75051#TextLabelDistributionDetailInfoFifthClass))
-* [[TextLabelDistributionDetailInfoFirstClass](https://cloud.tencent.com/document/api/851/75051#TextLabelDistributionDetailInfoFirstClass)](https://cloud.tencent.com/document/api/851/75051#[TextLabelDistributionDetailInfoFirstClass](https://cloud.tencent.com/document/api/851/75051#TextLabelDistributionDetailInfoFirstClass))
-* [[TextLabelDistributionDetailInfoFourthClass](https://cloud.tencent.com/document/api/851/75051#TextLabelDistributionDetailInfoFourthClass)](https://cloud.tencent.com/document/api/851/75051#[TextLabelDistributionDetailInfoFourthClass](https://cloud.tencent.com/document/api/851/75051#TextLabelDistributionDetailInfoFourthClass))
-* [[TextLabelDistributionDetailInfoSecondClass](https://cloud.tencent.com/document/api/851/75051#TextLabelDistributionDetailInfoSecondClass)](https://cloud.tencent.com/document/api/851/75051#[TextLabelDistributionDetailInfoSecondClass](https://cloud.tencent.com/document/api/851/75051#TextLabelDistributionDetailInfoSecondClass))
-* [[TextLabelDistributionDetailInfoThirdClass](https://cloud.tencent.com/document/api/851/75051#TextLabelDistributionDetailInfoThirdClass)](https://cloud.tencent.com/document/api/851/75051#[TextLabelDistributionDetailInfoThirdClass](https://cloud.tencent.com/document/api/851/75051#TextLabelDistributionDetailInfoThirdClass))
-* [[TextLabelDistributionInfo](https://cloud.tencent.com/document/api/851/75051#TextLabelDistributionInfo)](https://cloud.tencent.com/document/api/851/75051#[TextLabelDistributionInfo](https://cloud.tencent.com/document/api/851/75051#TextLabelDistributionInfo))
+* [TextLabelDistributionDetailInfoFifthClass](https://cloud.tencent.com/document/api/851/75051#TextLabelDistributionDetailInfoFifthClass)
+* [TextLabelDistributionDetailInfoFirstClass](https://cloud.tencent.com/document/api/851/75051#TextLabelDistributionDetailInfoFirstClass)
+* [TextLabelDistributionDetailInfoFourthClass](https://cloud.tencent.com/document/api/851/75051#TextLabelDistributionDetailInfoFourthClass)
+* [TextLabelDistributionDetailInfoSecondClass](https://cloud.tencent.com/document/api/851/75051#TextLabelDistributionDetailInfoSecondClass)
+* [TextLabelDistributionDetailInfoThirdClass](https://cloud.tencent.com/document/api/851/75051#TextLabelDistributionDetailInfoThirdClass)
+* [TextLabelDistributionInfo](https://cloud.tencent.com/document/api/851/75051#TextLabelDistributionInfo)
 
 修改数据结构：
 
@@ -78846,6 +78996,19 @@
 
 
 ## 容器服务(tke) 版本：2018-05-25
+
+### 第 124 次发布
+
+发布时间：2022-10-10 06:45:41
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeEdgeClusterUpgradeInfo](https://cloud.tencent.com/document/api/457/81249)](https://cloud.tencent.com/document/api/#/#)
+* [[UpdateEdgeClusterVersion](https://cloud.tencent.com/document/api/457/81248)](https://cloud.tencent.com/document/api/#/#)
 
 ### 第 123 次发布
 

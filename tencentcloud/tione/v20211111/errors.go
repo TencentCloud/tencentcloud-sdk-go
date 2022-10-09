@@ -206,6 +206,9 @@ const (
 	// 觅影资源包余额不足，请先充值。
 	OPERATIONDENIED_MIYINGBALANCEINSUFFICIENT = "OperationDenied.MIYINGBalanceInsufficient"
 
+	// 网段不合法。
+	OPERATIONDENIED_NETWORKCIDRILLEGAL = "OperationDenied.NetworkCidrIllegal"
+
 	// 白名单免费配额不足。
 	OPERATIONDENIED_WHITELISTQUOTAEXCEED = "OperationDenied.WhitelistQuotaExceed"
 

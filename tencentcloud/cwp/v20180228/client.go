@@ -2447,6 +2447,60 @@ func (c *Client) DescribeAssetEnvListWithContext(ctx context.Context, request *D
     return
 }
 
+func NewDescribeAssetHostTotalCountRequest() (request *DescribeAssetHostTotalCountRequest) {
+    request = &DescribeAssetHostTotalCountRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cwp", APIVersion, "DescribeAssetHostTotalCount")
+    
+    
+    return
+}
+
+func NewDescribeAssetHostTotalCountResponse() (response *DescribeAssetHostTotalCountResponse) {
+    response = &DescribeAssetHostTotalCountResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeAssetHostTotalCount
+// 获取主机所有资源数量
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeAssetHostTotalCount(request *DescribeAssetHostTotalCountRequest) (response *DescribeAssetHostTotalCountResponse, err error) {
+    return c.DescribeAssetHostTotalCountWithContext(context.Background(), request)
+}
+
+// DescribeAssetHostTotalCount
+// 获取主机所有资源数量
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeAssetHostTotalCountWithContext(ctx context.Context, request *DescribeAssetHostTotalCountRequest) (response *DescribeAssetHostTotalCountResponse, err error) {
+    if request == nil {
+        request = NewDescribeAssetHostTotalCountRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAssetHostTotalCount require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAssetHostTotalCountResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAssetInfoRequest() (request *DescribeAssetInfoRequest) {
     request = &DescribeAssetInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},

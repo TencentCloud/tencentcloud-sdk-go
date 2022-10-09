@@ -1347,6 +1347,7 @@ func NewModifyAclResponse() (response *ModifyAclResponse) {
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DATANOTFOUND = "FailedOperation.DataNotFound"
 //  FAILEDOPERATION_DUPLICATEDATA = "FailedOperation.DuplicateData"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -1358,6 +1359,7 @@ func NewModifyAclResponse() (response *ModifyAclResponse) {
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ModifyAcl(request *ModifyAclRequest) (response *ModifyAclResponse, err error) {
     return c.ModifyAclWithContext(context.Background(), request)
 }
@@ -1368,6 +1370,7 @@ func (c *Client) ModifyAcl(request *ModifyAclRequest) (response *ModifyAclRespon
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DATANOTFOUND = "FailedOperation.DataNotFound"
 //  FAILEDOPERATION_DUPLICATEDATA = "FailedOperation.DuplicateData"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -1379,6 +1382,7 @@ func (c *Client) ModifyAcl(request *ModifyAclRequest) (response *ModifyAclRespon
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ModifyAclWithContext(ctx context.Context, request *ModifyAclRequest) (response *ModifyAclResponse, err error) {
     if request == nil {
         request = NewModifyAclRequest()

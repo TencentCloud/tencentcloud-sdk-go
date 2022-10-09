@@ -260,6 +260,9 @@ const (
 	// 集群类型不同的IP不可在同一请求中。
 	INVALIDPARAMETERVALUE_MIXEDADDRESSIPSETTYPE = "InvalidParameterValue.MixedAddressIpSetType"
 
+	// NAT网关的DNAT转换规则已存在。
+	INVALIDPARAMETERVALUE_NATGATEWAYDNATRULEEXISTED = "InvalidParameterValue.NatGatewayDnatRuleExisted"
+
 	// NAT网关的DNAT转换规则不存在。
 	INVALIDPARAMETERVALUE_NATGATEWAYDNATRULENOTEXISTS = "InvalidParameterValue.NatGatewayDnatRuleNotExists"
 

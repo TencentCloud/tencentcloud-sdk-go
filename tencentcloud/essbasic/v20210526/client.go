@@ -737,6 +737,7 @@ func NewChannelDescribeEmployeesResponse() (response *ChannelDescribeEmployeesRe
 //  INVALIDPARAMETER_APPLICATION = "InvalidParameter.Application"
 //  INVALIDPARAMETER_ORGANIZATIONID = "InvalidParameter.OrganizationId"
 //  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) ChannelDescribeEmployees(request *ChannelDescribeEmployeesRequest) (response *ChannelDescribeEmployeesResponse, err error) {
     return c.ChannelDescribeEmployeesWithContext(context.Background(), request)
@@ -756,6 +757,7 @@ func (c *Client) ChannelDescribeEmployees(request *ChannelDescribeEmployeesReque
 //  INVALIDPARAMETER_APPLICATION = "InvalidParameter.Application"
 //  INVALIDPARAMETER_ORGANIZATIONID = "InvalidParameter.OrganizationId"
 //  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) ChannelDescribeEmployeesWithContext(ctx context.Context, request *ChannelDescribeEmployeesRequest) (response *ChannelDescribeEmployeesResponse, err error) {
     if request == nil {

@@ -2913,6 +2913,7 @@ func NewPutReservedConcurrencyConfigResponse() (response *PutReservedConcurrency
 // 设置函数最大独占配额
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_DEBUGMODESTATUS = "FailedOperation.DebugModeStatus"
 //  FAILEDOPERATION_FUNCTIONVERSIONSTATUSNOTACTIVE = "FailedOperation.FunctionVersionStatusNotActive"
 //  FAILEDOPERATION_INSUFFICIENTBALANCE = "FailedOperation.InsufficientBalance"
@@ -2935,6 +2936,7 @@ func (c *Client) PutReservedConcurrencyConfig(request *PutReservedConcurrencyCon
 // 设置函数最大独占配额
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_DEBUGMODESTATUS = "FailedOperation.DebugModeStatus"
 //  FAILEDOPERATION_FUNCTIONVERSIONSTATUSNOTACTIVE = "FailedOperation.FunctionVersionStatusNotActive"
 //  FAILEDOPERATION_INSUFFICIENTBALANCE = "FailedOperation.InsufficientBalance"

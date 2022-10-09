@@ -4749,6 +4749,85 @@ func (r *DescribeAssetEnvListResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeAssetHostTotalCountRequestParams struct {
+	// 主机Uuid
+	Uuid *string `json:"Uuid,omitempty" name:"Uuid"`
+
+	// 主机Quuid
+	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
+}
+
+type DescribeAssetHostTotalCountRequest struct {
+	*tchttp.BaseRequest
+	
+	// 主机Uuid
+	Uuid *string `json:"Uuid,omitempty" name:"Uuid"`
+
+	// 主机Quuid
+	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
+}
+
+func (r *DescribeAssetHostTotalCountRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAssetHostTotalCountRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Uuid")
+	delete(f, "Quuid")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAssetHostTotalCountRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAssetHostTotalCountResponseParams struct {
+	// 各项资源数量
+	// system : 资源监控
+	// account: 账号
+	// port: 端口
+	// process: 进程
+	// app: 应用软件
+	// database:数据库
+	// webapp: Web应用
+	// webframe: Web框架
+	// webservice: Web服务
+	// weblocation: Web站点
+	// systempackage: 系统安装包
+	// jar: jar包
+	// initservice:启动服务
+	// env: 环境变量
+	// coremodule: 内核模块
+	Types []*AssetKeyVal `json:"Types,omitempty" name:"Types"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeAssetHostTotalCountResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAssetHostTotalCountResponseParams `json:"Response"`
+}
+
+func (r *DescribeAssetHostTotalCountResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAssetHostTotalCountResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeAssetInfoRequestParams struct {
 
 }

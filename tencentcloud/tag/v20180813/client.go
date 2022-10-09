@@ -488,6 +488,7 @@ func NewDeleteTagsResponse() (response *DeleteTagsResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TAGATTACHEDQUOTA = "FailedOperation.TagAttachedQuota"
 //  FAILEDOPERATION_TAGATTACHEDRESOURCE = "FailedOperation.TagAttachedResource"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_RESERVEDTAGKEY = "InvalidParameter.ReservedTagKey"
@@ -507,6 +508,7 @@ func (c *Client) DeleteTags(request *DeleteTagsRequest) (response *DeleteTagsRes
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TAGATTACHEDQUOTA = "FailedOperation.TagAttachedQuota"
 //  FAILEDOPERATION_TAGATTACHEDRESOURCE = "FailedOperation.TagAttachedResource"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_RESERVEDTAGKEY = "InvalidParameter.ReservedTagKey"
