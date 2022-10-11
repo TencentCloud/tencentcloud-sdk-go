@@ -7967,6 +7967,9 @@ type GetMonitorDataResponseParams struct {
 	// 结束时间
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
+	// 返回信息
+	Msg *string `json:"Msg,omitempty" name:"Msg"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }

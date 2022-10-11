@@ -1,3 +1,172 @@
+# Release v1.0.511
+
+## 云数据库 MySQL(cdb) 版本：2017-03-20
+
+### 第 103 次发布
+
+发布时间：2022-10-11 06:14:09
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeBackupConfig](https://cloud.tencent.com/document/api/236/15837)
+
+	* 新增出参：EnableBackupArchive, BackupArchiveDays, EnableBinlogArchive, BinlogArchiveDays
+
+* [DescribeBackupOverview](https://cloud.tencent.com/document/api/236/41229)
+
+	* 新增出参：RemoteBackupVolume, BackupArchiveVolume
+
+* [DescribeBinlogBackupOverview](https://cloud.tencent.com/document/api/236/41227)
+
+	* 新增出参：BinlogArchiveVolume, BinlogArchiveCount
+
+* [DescribeDataBackupOverview](https://cloud.tencent.com/document/api/236/41226)
+
+	* 新增出参：DataBackupArchiveVolume, DataBackupArchiveCount
+
+* [ModifyBackupConfig](https://cloud.tencent.com/document/api/236/15839)
+
+	* 新增入参：EnableBackupArchive, BackupArchiveDays, BinlogArchiveDays, EnableBinlogArchive
+
+
+新增数据结构：
+
+* [RemoteBackupInfo](https://cloud.tencent.com/document/api/236/15878#RemoteBackupInfo)
+
+修改数据结构：
+
+* [BackupInfo](https://cloud.tencent.com/document/api/236/15878#BackupInfo)
+
+	* 新增成员：Region, RemoteInfo, CosStorageType, InstanceId
+
+* [BinlogInfo](https://cloud.tencent.com/document/api/236/15878#BinlogInfo)
+
+	* 新增成员：Region, Status, RemoteInfo, CosStorageType, InstanceId
+
+
+
+
+## 企业收付平台(cpdp) 版本：2019-08-20
+
+### 第 87 次发布
+
+发布时间：2022-10-11 06:20:53
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [QueryCompanyTitle](https://cloud.tencent.com/document/api/1122/81311)
+
+新增数据结构：
+
+* [CompanyTitleResult](https://cloud.tencent.com/document/api/1122/40683#CompanyTitleResult)
+
+
+
+## 云监控(monitor) 版本：2018-07-24
+
+### 第 65 次发布
+
+发布时间：2022-10-11 06:43:21
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [GetMonitorData](https://cloud.tencent.com/document/api/248/31014)
+
+	* 新增出参：Msg
+
+
+
+
+## 服务网格(tcm) 版本：2021-04-13
+
+### 第 13 次发布
+
+发布时间：2022-10-11 06:54:36
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateMesh](https://cloud.tencent.com/document/api/1261/81314)
+* [DeleteMesh](https://cloud.tencent.com/document/api/1261/81313)
+* [ModifyMesh](https://cloud.tencent.com/document/api/1261/81312)
+
+
+
+## 边缘安全加速平台(teo) 版本：2022-09-01
+
+### 第 5 次发布
+
+发布时间：2022-10-11 06:58:18
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [RuleCondition](https://cloud.tencent.com/document/api/1552/80721#RuleCondition)
+
+	* 新增成员：Name
+
+	* <font color="#dd0000">**修改成员**：</font>Values
+
+
+
+
+## 边缘安全加速平台(teo) 版本：2022-01-06
+
+
+
+## 腾讯微服务平台 TSF(tsf) 版本：2018-03-26
+
+### 第 79 次发布
+
+发布时间：2022-10-11 07:02:55
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DeployContainerGroup](https://cloud.tencent.com/document/api/649/36071)
+
+	* 新增入参：AgentProfileList, WarmupSetting
+
+* [DeployGroup](https://cloud.tencent.com/document/api/649/36070)
+
+	* 新增入参：AgentProfileList, WarmupSetting
+
+
+新增数据结构：
+
+* [AgentProfile](https://cloud.tencent.com/document/api/649/36099#AgentProfile)
+* [WarmupSetting](https://cloud.tencent.com/document/api/649/36099#WarmupSetting)
+
+修改数据结构：
+
+* [VmGroup](https://cloud.tencent.com/document/api/649/36099#VmGroup)
+
+	* 新增成员：AgentProfileList, WarmupSetting
+
+
+
+
 # Release v1.0.510
 
 ## 验证码(captcha) 版本：2019-07-22

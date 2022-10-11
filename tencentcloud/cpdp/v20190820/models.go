@@ -5000,6 +5000,32 @@ type CloudSubRefundItem struct {
 	ChannelSubRefundId *string `json:"ChannelSubRefundId,omitempty" name:"ChannelSubRefundId"`
 }
 
+type CompanyTitleResult struct {
+	// 公司银行账号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CompanyBankAccount *string `json:"CompanyBankAccount,omitempty" name:"CompanyBankAccount"`
+
+	// 公司地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CompanyAddress *string `json:"CompanyAddress,omitempty" name:"CompanyAddress"`
+
+	// 公司税号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CompanyTaxpayerNum *string `json:"CompanyTaxpayerNum,omitempty" name:"CompanyTaxpayerNum"`
+
+	// 公司名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CompanyName *string `json:"CompanyName,omitempty" name:"CompanyName"`
+
+	// 公司银行名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CompanyBankName *string `json:"CompanyBankName,omitempty" name:"CompanyBankName"`
+
+	// 公司电话
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CompanyPhone *string `json:"CompanyPhone,omitempty" name:"CompanyPhone"`
+}
+
 // Predefined struct for user
 type ConfirmOrderRequestParams struct {
 	// 分配给商户的AppId
@@ -17114,6 +17140,91 @@ func (r *QueryCommonTransferRechargeResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *QueryCommonTransferRechargeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type QueryCompanyTitleRequestParams struct {
+	// 公司抬头关键字
+	CompanyTitleKeyword *string `json:"CompanyTitleKeyword,omitempty" name:"CompanyTitleKeyword"`
+
+	// 开票平台ID。0：高灯，1：票易通
+	InvoicePlatformId *int64 `json:"InvoicePlatformId,omitempty" name:"InvoicePlatformId"`
+
+	// 销方纳税人识别号
+	SellerTaxpayerNum *string `json:"SellerTaxpayerNum,omitempty" name:"SellerTaxpayerNum"`
+
+	// 接入环境。沙箱环境填sandbox。
+	Profile *string `json:"Profile,omitempty" name:"Profile"`
+}
+
+type QueryCompanyTitleRequest struct {
+	*tchttp.BaseRequest
+	
+	// 公司抬头关键字
+	CompanyTitleKeyword *string `json:"CompanyTitleKeyword,omitempty" name:"CompanyTitleKeyword"`
+
+	// 开票平台ID。0：高灯，1：票易通
+	InvoicePlatformId *int64 `json:"InvoicePlatformId,omitempty" name:"InvoicePlatformId"`
+
+	// 销方纳税人识别号
+	SellerTaxpayerNum *string `json:"SellerTaxpayerNum,omitempty" name:"SellerTaxpayerNum"`
+
+	// 接入环境。沙箱环境填sandbox。
+	Profile *string `json:"Profile,omitempty" name:"Profile"`
+}
+
+func (r *QueryCompanyTitleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryCompanyTitleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CompanyTitleKeyword")
+	delete(f, "InvoicePlatformId")
+	delete(f, "SellerTaxpayerNum")
+	delete(f, "Profile")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryCompanyTitleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type QueryCompanyTitleResponseParams struct {
+	// 错误码
+	ErrCode *string `json:"ErrCode,omitempty" name:"ErrCode"`
+
+	// 错误消息
+	ErrMessage *string `json:"ErrMessage,omitempty" name:"ErrMessage"`
+
+	// 公司抬头结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Result []*CompanyTitleResult `json:"Result,omitempty" name:"Result"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type QueryCompanyTitleResponse struct {
+	*tchttp.BaseResponse
+	Response *QueryCompanyTitleResponseParams `json:"Response"`
+}
+
+func (r *QueryCompanyTitleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryCompanyTitleResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

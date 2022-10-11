@@ -557,6 +557,18 @@ type BackupInfo struct {
 
 	// 备份保留类型，save_mode_regular - 常规保存备份，save_mode_period - 定期保存备份
 	SaveMode *string `json:"SaveMode,omitempty" name:"SaveMode"`
+
+	// 本地备份所在地域
+	Region *string `json:"Region,omitempty" name:"Region"`
+
+	// 异地备份详细信息
+	RemoteInfo []*RemoteBackupInfo `json:"RemoteInfo,omitempty" name:"RemoteInfo"`
+
+	// 存储方式，0-常规存储，1-归档存储，默认为0
+	CosStorageType *int64 `json:"CosStorageType,omitempty" name:"CosStorageType"`
+
+	// 实例 ID，格式如：cdb-c1nl9rpv。与云数据库控制台页面中显示的实例 ID 相同。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 }
 
 type BackupItem struct {
@@ -719,6 +731,21 @@ type BinlogInfo struct {
 
 	// binlog 文件截止时间
 	BinlogFinishTime *string `json:"BinlogFinishTime,omitempty" name:"BinlogFinishTime"`
+
+	// 本地binlog文件所在地域
+	Region *string `json:"Region,omitempty" name:"Region"`
+
+	// 备份任务状态。可能的值有 "SUCCESS": 备份成功， "FAILED": 备份失败， "RUNNING": 备份进行中。
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// binlog异地备份详细信息
+	RemoteInfo []*RemoteBackupInfo `json:"RemoteInfo,omitempty" name:"RemoteInfo"`
+
+	// 存储方式，0-常规存储，1-归档存储，默认为0
+	CosStorageType *int64 `json:"CosStorageType,omitempty" name:"CosStorageType"`
+
+	// 实例 ID，格式如：cdb-c1nl9rpv。与云数据库控制台页面中显示的实例 ID 相同。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 }
 
 type CdbRegionSellConf struct {
@@ -3852,6 +3879,18 @@ type DescribeBackupConfigResponseParams struct {
 	// 定期保留策略周期起始日期，格式：YYYY-MM-dd HH:mm:ss
 	StartBackupPeriodSaveDate *string `json:"StartBackupPeriodSaveDate,omitempty" name:"StartBackupPeriodSaveDate"`
 
+	// 是否开启数据备份归档策略，off-关闭，on-打开，默认为off
+	EnableBackupArchive *string `json:"EnableBackupArchive,omitempty" name:"EnableBackupArchive"`
+
+	// 数据备份归档起始天数，数据备份达到归档起始天数时进行归档，最小为180天，不得大于数据备份保留天数
+	BackupArchiveDays *int64 `json:"BackupArchiveDays,omitempty" name:"BackupArchiveDays"`
+
+	// 是否开启日志备份归档策略，off-关闭，on-打开，默认为off
+	EnableBinlogArchive *string `json:"EnableBinlogArchive,omitempty" name:"EnableBinlogArchive"`
+
+	// 日志备份归档起始天数，日志备份达到归档起始天数时进行归档，最小为180天，不得大于日志备份保留天数
+	BinlogArchiveDays *int64 `json:"BinlogArchiveDays,omitempty" name:"BinlogArchiveDays"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }
@@ -4071,6 +4110,14 @@ type DescribeBackupOverviewResponseParams struct {
 
 	// 用户在当前地域获得的赠送备份容量。
 	FreeVolume *int64 `json:"FreeVolume,omitempty" name:"FreeVolume"`
+
+	// 用户在当前地域的异地备份总容量。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RemoteBackupVolume *int64 `json:"RemoteBackupVolume,omitempty" name:"RemoteBackupVolume"`
+
+	// 归档备份容量，包含数据备份以及日志备份。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BackupArchiveVolume *int64 `json:"BackupArchiveVolume,omitempty" name:"BackupArchiveVolume"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -4394,6 +4441,12 @@ type DescribeBinlogBackupOverviewResponseParams struct {
 
 	// 异地日志备份个数。
 	RemoteBinlogCount *int64 `json:"RemoteBinlogCount,omitempty" name:"RemoteBinlogCount"`
+
+	// 归档日志备份容量（单位为字节）。
+	BinlogArchiveVolume *int64 `json:"BinlogArchiveVolume,omitempty" name:"BinlogArchiveVolume"`
+
+	// 归档日志备份个数。
+	BinlogArchiveCount *int64 `json:"BinlogArchiveCount,omitempty" name:"BinlogArchiveCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -5731,11 +5784,17 @@ type DescribeDataBackupOverviewResponseParams struct {
 	// 当前地域的手动备份总个数。
 	ManualBackupCount *int64 `json:"ManualBackupCount,omitempty" name:"ManualBackupCount"`
 
-	// 当前地域异地备份总容量。
+	// 异地备份总容量。
 	RemoteBackupVolume *int64 `json:"RemoteBackupVolume,omitempty" name:"RemoteBackupVolume"`
 
-	// 当前地域异地备份总个数。
+	// 异地备份总个数。
 	RemoteBackupCount *int64 `json:"RemoteBackupCount,omitempty" name:"RemoteBackupCount"`
+
+	// 当前地域归档备份总容量。
+	DataBackupArchiveVolume *int64 `json:"DataBackupArchiveVolume,omitempty" name:"DataBackupArchiveVolume"`
+
+	// 当前地域归档备份总个数。
+	DataBackupArchiveCount *int64 `json:"DataBackupArchiveCount,omitempty" name:"DataBackupArchiveCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -9121,6 +9180,18 @@ type ModifyBackupConfigRequestParams struct {
 
 	// 定期保留策略周期起始日期，格式：YYYY-MM-dd HH:mm:ss
 	StartBackupPeriodSaveDate *string `json:"StartBackupPeriodSaveDate,omitempty" name:"StartBackupPeriodSaveDate"`
+
+	// 是否开启数据备份归档策略，off-关闭，on-打开，默认为off
+	EnableBackupArchive *string `json:"EnableBackupArchive,omitempty" name:"EnableBackupArchive"`
+
+	// 数据备份归档起始天数，数据备份达到归档起始天数时进行归档，最小为180天，不得大于数据备份保留天数
+	BackupArchiveDays *int64 `json:"BackupArchiveDays,omitempty" name:"BackupArchiveDays"`
+
+	// 日志备份归档起始天数，日志备份达到归档起始天数时进行归档，最小为180天，不得大于日志备份保留天数
+	BinlogArchiveDays *int64 `json:"BinlogArchiveDays,omitempty" name:"BinlogArchiveDays"`
+
+	// 是否开启日志备份归档策略，off-关闭，on-打开，默认为off
+	EnableBinlogArchive *string `json:"EnableBinlogArchive,omitempty" name:"EnableBinlogArchive"`
 }
 
 type ModifyBackupConfigRequest struct {
@@ -9161,6 +9232,18 @@ type ModifyBackupConfigRequest struct {
 
 	// 定期保留策略周期起始日期，格式：YYYY-MM-dd HH:mm:ss
 	StartBackupPeriodSaveDate *string `json:"StartBackupPeriodSaveDate,omitempty" name:"StartBackupPeriodSaveDate"`
+
+	// 是否开启数据备份归档策略，off-关闭，on-打开，默认为off
+	EnableBackupArchive *string `json:"EnableBackupArchive,omitempty" name:"EnableBackupArchive"`
+
+	// 数据备份归档起始天数，数据备份达到归档起始天数时进行归档，最小为180天，不得大于数据备份保留天数
+	BackupArchiveDays *int64 `json:"BackupArchiveDays,omitempty" name:"BackupArchiveDays"`
+
+	// 日志备份归档起始天数，日志备份达到归档起始天数时进行归档，最小为180天，不得大于日志备份保留天数
+	BinlogArchiveDays *int64 `json:"BinlogArchiveDays,omitempty" name:"BinlogArchiveDays"`
+
+	// 是否开启日志备份归档策略，off-关闭，on-打开，默认为off
+	EnableBinlogArchive *string `json:"EnableBinlogArchive,omitempty" name:"EnableBinlogArchive"`
 }
 
 func (r *ModifyBackupConfigRequest) ToJsonString() string {
@@ -9187,6 +9270,10 @@ func (r *ModifyBackupConfigRequest) FromJsonString(s string) error {
 	delete(f, "BackupPeriodSaveInterval")
 	delete(f, "BackupPeriodSaveCount")
 	delete(f, "StartBackupPeriodSaveDate")
+	delete(f, "EnableBackupArchive")
+	delete(f, "BackupArchiveDays")
+	delete(f, "BinlogArchiveDays")
+	delete(f, "EnableBinlogArchive")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyBackupConfigRequest has unknown keys!", "")
 	}
@@ -11236,6 +11323,26 @@ func (r *ReloadBalanceProxyNodeResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *ReloadBalanceProxyNodeResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type RemoteBackupInfo struct {
+	// 异地备份子任务的ID
+	SubBackupId []*int64 `json:"SubBackupId,omitempty" name:"SubBackupId"`
+
+	// 异地备份所在地域
+	Region *string `json:"Region,omitempty" name:"Region"`
+
+	// 备份任务状态。可能的值有 "SUCCESS": 备份成功， "FAILED": 备份失败， "RUNNING": 备份进行中。
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 异地备份任务的开始时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 异地备份任务的结束时间
+	FinishTime *string `json:"FinishTime,omitempty" name:"FinishTime"`
+
+	// 下载地址
+	Url *string `json:"Url,omitempty" name:"Url"`
 }
 
 // Predefined struct for user

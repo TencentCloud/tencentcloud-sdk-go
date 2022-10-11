@@ -10248,6 +10248,7 @@ func NewModifyPrometheusRecordRuleYamlResponse() (response *ModifyPrometheusReco
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_COMPONENTCLIENTHTTP = "FailedOperation.ComponentClientHttp"
+//  FAILEDOPERATION_COMPONENTCLIENTUNPACK = "FailedOperation.ComponentClientUnpack"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_PARAM = "InternalError.Param"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -10262,6 +10263,7 @@ func (c *Client) ModifyPrometheusRecordRuleYaml(request *ModifyPrometheusRecordR
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_COMPONENTCLIENTHTTP = "FailedOperation.ComponentClientHttp"
+//  FAILEDOPERATION_COMPONENTCLIENTUNPACK = "FailedOperation.ComponentClientUnpack"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_PARAM = "InternalError.Param"
 //  INVALIDPARAMETER = "InvalidParameter"

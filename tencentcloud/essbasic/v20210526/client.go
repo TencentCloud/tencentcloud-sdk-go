@@ -354,6 +354,7 @@ func NewChannelCreateFlowByFilesResponse() (response *ChannelCreateFlowByFilesRe
 //  RESOURCENOTFOUND_APPLICATION = "ResourceNotFound.Application"
 //  RESOURCENOTFOUND_RESOURCE = "ResourceNotFound.Resource"
 //  RESOURCENOTFOUND_SEAL = "ResourceNotFound.Seal"
+//  RESOURCENOTFOUND_USER = "ResourceNotFound.User"
 func (c *Client) ChannelCreateFlowByFiles(request *ChannelCreateFlowByFilesRequest) (response *ChannelCreateFlowByFilesResponse, err error) {
     return c.ChannelCreateFlowByFilesWithContext(context.Background(), request)
 }
@@ -409,6 +410,7 @@ func (c *Client) ChannelCreateFlowByFiles(request *ChannelCreateFlowByFilesReque
 //  RESOURCENOTFOUND_APPLICATION = "ResourceNotFound.Application"
 //  RESOURCENOTFOUND_RESOURCE = "ResourceNotFound.Resource"
 //  RESOURCENOTFOUND_SEAL = "ResourceNotFound.Seal"
+//  RESOURCENOTFOUND_USER = "ResourceNotFound.User"
 func (c *Client) ChannelCreateFlowByFilesWithContext(ctx context.Context, request *ChannelCreateFlowByFilesRequest) (response *ChannelCreateFlowByFilesResponse, err error) {
     if request == nil {
         request = NewChannelCreateFlowByFilesRequest()

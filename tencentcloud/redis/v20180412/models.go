@@ -243,7 +243,7 @@ func (r *ApplyParamsTemplateResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type AssociateSecurityGroupsRequestParams struct {
-	// 数据库引擎名称：mariadb,cdb,cynosdb,dcdb,redis,mongodb 等。
+	// 数据库引擎名称，本接口取值：redis。
 	Product *string `json:"Product,omitempty" name:"Product"`
 
 	// 要绑定的安全组ID，类似sg-efil73jd。
@@ -256,7 +256,7 @@ type AssociateSecurityGroupsRequestParams struct {
 type AssociateSecurityGroupsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 数据库引擎名称：mariadb,cdb,cynosdb,dcdb,redis,mongodb 等。
+	// 数据库引擎名称，本接口取值：redis。
 	Product *string `json:"Product,omitempty" name:"Product"`
 
 	// 要绑定的安全组ID，类似sg-efil73jd。
@@ -1768,13 +1768,13 @@ func (r *DescribeDBSecurityGroupsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDBSecurityGroupsResponseParams struct {
-	// 安全组规则
+	// 安全组规则。
 	Groups []*SecurityGroup `json:"Groups,omitempty" name:"Groups"`
 
-	// 安全组生效内网地址
+	// 安全组生效内网地址。
 	VIP *string `json:"VIP,omitempty" name:"VIP"`
 
-	// 安全组生效内网端口
+	// 安全组生效内网端口。
 	VPort *string `json:"VPort,omitempty" name:"VPort"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -4480,26 +4480,26 @@ func (r *DisableReplicaReadonlyResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DisassociateSecurityGroupsRequestParams struct {
-	// 数据库引擎名称：mariadb,cdb,cynosdb,dcdb,redis,mongodb 等。
+	// 数据库引擎名称，本接口取值：redis。
 	Product *string `json:"Product,omitempty" name:"Product"`
 
-	// 安全组Id。
+	// 安全组 ID。
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" name:"SecurityGroupId"`
 
-	// 实例ID列表，一个或者多个实例Id组成的数组。
+	// 实例ID列表，一个或者多个实例 ID 组成的数组。
 	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
 }
 
 type DisassociateSecurityGroupsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 数据库引擎名称：mariadb,cdb,cynosdb,dcdb,redis,mongodb 等。
+	// 数据库引擎名称，本接口取值：redis。
 	Product *string `json:"Product,omitempty" name:"Product"`
 
-	// 安全组Id。
+	// 安全组 ID。
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" name:"SecurityGroupId"`
 
-	// 实例ID列表，一个或者多个实例Id组成的数组。
+	// 实例ID列表，一个或者多个实例 ID 组成的数组。
 	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
 }
 
@@ -5840,26 +5840,26 @@ func (r *ModifyConnectionConfigResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyDBInstanceSecurityGroupsRequestParams struct {
-	// 数据库引擎名称：mariadb,cdb,cynosdb,dcdb,redis,mongodb 等。
+	// 数据库引擎名称，本接口取值：redis。
 	Product *string `json:"Product,omitempty" name:"Product"`
 
-	// 要修改的安全组ID列表，一个或者多个安全组Id组成的数组。
+	// 要修改的安全组 ID 列表，一个或者多个安全组 ID 组成的数组。
 	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" name:"SecurityGroupIds"`
 
-	// 实例ID，格式如：cdb-c1nl9rpv或者cdbro-c1nl9rpv，与云数据库控制台页面中显示的实例ID相同
+	// 实例 ID，格式如：cdb-c1nl9rpv或者cdbro-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 }
 
 type ModifyDBInstanceSecurityGroupsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 数据库引擎名称：mariadb,cdb,cynosdb,dcdb,redis,mongodb 等。
+	// 数据库引擎名称，本接口取值：redis。
 	Product *string `json:"Product,omitempty" name:"Product"`
 
-	// 要修改的安全组ID列表，一个或者多个安全组Id组成的数组。
+	// 要修改的安全组 ID 列表，一个或者多个安全组 ID 组成的数组。
 	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" name:"SecurityGroupIds"`
 
-	// 实例ID，格式如：cdb-c1nl9rpv或者cdbro-c1nl9rpv，与云数据库控制台页面中显示的实例ID相同
+	// 实例 ID，格式如：cdb-c1nl9rpv或者cdbro-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 }
 

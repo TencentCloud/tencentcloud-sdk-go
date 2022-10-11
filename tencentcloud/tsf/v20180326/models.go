@@ -285,6 +285,14 @@ type AdvanceSettings struct {
 	SubTaskConcurrency *int64 `json:"SubTaskConcurrency,omitempty" name:"SubTaskConcurrency"`
 }
 
+type AgentProfile struct {
+	// Agent类型
+	AgentType *string `json:"AgentType,omitempty" name:"AgentType"`
+
+	// Agent版本号
+	AgentVersion *string `json:"AgentVersion,omitempty" name:"AgentVersion"`
+}
+
 type ApiDefinitionDescr struct {
 	// 对象名称
 	Name *string `json:"Name,omitempty" name:"Name"`
@@ -5264,6 +5272,12 @@ type DeployContainerGroupRequestParams struct {
 
 	// 是否清除数据卷信息，默认false
 	VolumeClean *bool `json:"VolumeClean,omitempty" name:"VolumeClean"`
+
+	// javaagent信息: SERVICE_AGENT/OT_AGENT
+	AgentProfileList []*AgentProfile `json:"AgentProfileList,omitempty" name:"AgentProfileList"`
+
+	// 预热配置信息
+	WarmupSetting *WarmupSetting `json:"WarmupSetting,omitempty" name:"WarmupSetting"`
 }
 
 type DeployContainerGroupRequest struct {
@@ -5376,6 +5390,12 @@ type DeployContainerGroupRequest struct {
 
 	// 是否清除数据卷信息，默认false
 	VolumeClean *bool `json:"VolumeClean,omitempty" name:"VolumeClean"`
+
+	// javaagent信息: SERVICE_AGENT/OT_AGENT
+	AgentProfileList []*AgentProfile `json:"AgentProfileList,omitempty" name:"AgentProfileList"`
+
+	// 预热配置信息
+	WarmupSetting *WarmupSetting `json:"WarmupSetting,omitempty" name:"WarmupSetting"`
 }
 
 func (r *DeployContainerGroupRequest) ToJsonString() string {
@@ -5426,6 +5446,8 @@ func (r *DeployContainerGroupRequest) FromJsonString(s string) error {
 	delete(f, "VolumeInfoList")
 	delete(f, "VolumeMountInfoList")
 	delete(f, "VolumeClean")
+	delete(f, "AgentProfileList")
+	delete(f, "WarmupSetting")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeployContainerGroupRequest has unknown keys!", "")
 	}
@@ -5437,6 +5459,7 @@ type DeployContainerGroupResponseParams struct {
 	// 部署容器应用是否成功。
 	// true：成功。
 	// false：失败。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *bool `json:"Result,omitempty" name:"Result"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -5511,6 +5534,12 @@ type DeployGroupRequestParams struct {
 
 	// JDK版本: 8或11 (openJDK只支持8)
 	JdkVersion *string `json:"JdkVersion,omitempty" name:"JdkVersion"`
+
+	// 部署agent的类型、版本
+	AgentProfileList []*AgentProfile `json:"AgentProfileList,omitempty" name:"AgentProfileList"`
+
+	// 预热参数配置
+	WarmupSetting *WarmupSetting `json:"WarmupSetting,omitempty" name:"WarmupSetting"`
 }
 
 type DeployGroupRequest struct {
@@ -5566,6 +5595,12 @@ type DeployGroupRequest struct {
 
 	// JDK版本: 8或11 (openJDK只支持8)
 	JdkVersion *string `json:"JdkVersion,omitempty" name:"JdkVersion"`
+
+	// 部署agent的类型、版本
+	AgentProfileList []*AgentProfile `json:"AgentProfileList,omitempty" name:"AgentProfileList"`
+
+	// 预热参数配置
+	WarmupSetting *WarmupSetting `json:"WarmupSetting,omitempty" name:"WarmupSetting"`
 }
 
 func (r *DeployGroupRequest) ToJsonString() string {
@@ -5597,6 +5632,8 @@ func (r *DeployGroupRequest) FromJsonString(s string) error {
 	delete(f, "IncrementalDeployment")
 	delete(f, "JdkName")
 	delete(f, "JdkVersion")
+	delete(f, "AgentProfileList")
+	delete(f, "WarmupSetting")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeployGroupRequest has unknown keys!", "")
 	}
@@ -19874,6 +19911,14 @@ type VmGroup struct {
 	// 部署组备注
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Alias *string `json:"Alias,omitempty" name:"Alias"`
+
+	// javaagent信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AgentProfileList []*AgentProfile `json:"AgentProfileList,omitempty" name:"AgentProfileList"`
+
+	// 预热属性配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WarmupSetting *WarmupSetting `json:"WarmupSetting,omitempty" name:"WarmupSetting"`
 }
 
 type VmGroupOther struct {
@@ -20011,4 +20056,18 @@ type VolumeMountInfo struct {
 
 	// 读写，1：读 2：读写
 	ReadOrWrite *string `json:"ReadOrWrite,omitempty" name:"ReadOrWrite"`
+}
+
+type WarmupSetting struct {
+	// 是否开启预热
+	Enabled *bool `json:"Enabled,omitempty" name:"Enabled"`
+
+	// 预热时间
+	WarmupTime *uint64 `json:"WarmupTime,omitempty" name:"WarmupTime"`
+
+	// 预热曲率，取值 1~5
+	Curvature *uint64 `json:"Curvature,omitempty" name:"Curvature"`
+
+	// 是否开启预热保护，在开启保护的情况下，超过 50% 的节点处于预热中，则会中止预热
+	EnabledProtection *bool `json:"EnabledProtection,omitempty" name:"EnabledProtection"`
 }

@@ -307,6 +307,7 @@ func NewDescribeScanTaskReportUrlResponse() (response *DescribeScanTaskReportUrl
 // 获取App合规诊断任务报告url
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeScanTaskReportUrl(request *DescribeScanTaskReportUrlRequest) (response *DescribeScanTaskReportUrlResponse, err error) {
     return c.DescribeScanTaskReportUrlWithContext(context.Background(), request)
@@ -316,6 +317,7 @@ func (c *Client) DescribeScanTaskReportUrl(request *DescribeScanTaskReportUrlReq
 // 获取App合规诊断任务报告url
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeScanTaskReportUrlWithContext(ctx context.Context, request *DescribeScanTaskReportUrlRequest) (response *DescribeScanTaskReportUrlResponse, err error) {
     if request == nil {
@@ -355,6 +357,7 @@ func NewDescribeScanTaskStatusResponse() (response *DescribeScanTaskStatusRespon
 // 查询App隐私合规诊断任务状态
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeScanTaskStatus(request *DescribeScanTaskStatusRequest) (response *DescribeScanTaskStatusResponse, err error) {
     return c.DescribeScanTaskStatusWithContext(context.Background(), request)
@@ -364,6 +367,7 @@ func (c *Client) DescribeScanTaskStatus(request *DescribeScanTaskStatusRequest) 
 // 查询App隐私合规诊断任务状态
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeScanTaskStatusWithContext(ctx context.Context, request *DescribeScanTaskStatusRequest) (response *DescribeScanTaskStatusResponse, err error) {
     if request == nil {

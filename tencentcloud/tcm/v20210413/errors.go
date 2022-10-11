@@ -20,6 +20,9 @@ const (
 	// 操作失败。
 	FAILEDOPERATION = "FailedOperation"
 
+	// Cluster RBAC权限限制。
+	FAILEDOPERATION_RBACFORBIDDEN = "FailedOperation.RBACForbidden"
+
 	// 内部错误。
 	INTERNALERROR = "InternalError"
 
@@ -28,6 +31,9 @@ const (
 
 	// 参数取值错误。
 	INVALIDPARAMETERVALUE = "InvalidParameterValue"
+
+	// 超过配额限制。
+	LIMITEXCEEDED = "LimitExceeded"
 
 	// 资源不存在。
 	RESOURCENOTFOUND = "ResourceNotFound"

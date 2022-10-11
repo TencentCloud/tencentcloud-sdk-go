@@ -77,6 +77,7 @@ func NewAcceptAttachCcnInstancesResponse() (response *AcceptAttachCcnInstancesRe
 //  UNSUPPORTEDOPERATION_INVALIDINSTANCESTATE = "UnsupportedOperation.InvalidInstanceState"
 //  UNSUPPORTEDOPERATION_ISNOTFINANCEACCOUNT = "UnsupportedOperation.IsNotFinanceAccount"
 //  UNSUPPORTEDOPERATION_NOTPENDINGCCNINSTANCE = "UnsupportedOperation.NotPendingCcnInstance"
+//  UNSUPPORTEDOPERATION_UNABLECROSSBORDER = "UnsupportedOperation.UnableCrossBorder"
 //  UNSUPPORTEDOPERATION_UNABLECROSSFINANCE = "UnsupportedOperation.UnableCrossFinance"
 func (c *Client) AcceptAttachCcnInstances(request *AcceptAttachCcnInstancesRequest) (response *AcceptAttachCcnInstancesResponse, err error) {
     return c.AcceptAttachCcnInstancesWithContext(context.Background(), request)
@@ -96,6 +97,7 @@ func (c *Client) AcceptAttachCcnInstances(request *AcceptAttachCcnInstancesReque
 //  UNSUPPORTEDOPERATION_INVALIDINSTANCESTATE = "UnsupportedOperation.InvalidInstanceState"
 //  UNSUPPORTEDOPERATION_ISNOTFINANCEACCOUNT = "UnsupportedOperation.IsNotFinanceAccount"
 //  UNSUPPORTEDOPERATION_NOTPENDINGCCNINSTANCE = "UnsupportedOperation.NotPendingCcnInstance"
+//  UNSUPPORTEDOPERATION_UNABLECROSSBORDER = "UnsupportedOperation.UnableCrossBorder"
 //  UNSUPPORTEDOPERATION_UNABLECROSSFINANCE = "UnsupportedOperation.UnableCrossFinance"
 func (c *Client) AcceptAttachCcnInstancesWithContext(ctx context.Context, request *AcceptAttachCcnInstancesRequest) (response *AcceptAttachCcnInstancesResponse, err error) {
     if request == nil {
@@ -3573,6 +3575,7 @@ func NewCreateNetworkAclResponse() (response *CreateNetworkAclResponse) {
 //  LIMITEXCEEDED_TAGTAGSEXCEEDED = "LimitExceeded.TagTagsExceeded"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNKNOWNPARAMETER_WITHGUESS = "UnknownParameter.WithGuess"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 //  UNSUPPORTEDOPERATION_APPIDMISMATCH = "UnsupportedOperation.AppIdMismatch"
 //  UNSUPPORTEDOPERATION_TAGALLOCATE = "UnsupportedOperation.TagAllocate"
 //  UNSUPPORTEDOPERATION_TAGFREE = "UnsupportedOperation.TagFree"
@@ -3612,6 +3615,7 @@ func (c *Client) CreateNetworkAcl(request *CreateNetworkAclRequest) (response *C
 //  LIMITEXCEEDED_TAGTAGSEXCEEDED = "LimitExceeded.TagTagsExceeded"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNKNOWNPARAMETER_WITHGUESS = "UnknownParameter.WithGuess"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 //  UNSUPPORTEDOPERATION_APPIDMISMATCH = "UnsupportedOperation.AppIdMismatch"
 //  UNSUPPORTEDOPERATION_TAGALLOCATE = "UnsupportedOperation.TagAllocate"
 //  UNSUPPORTEDOPERATION_TAGFREE = "UnsupportedOperation.TagFree"
@@ -6334,7 +6338,9 @@ func NewDeleteNatGatewaySourceIpTranslationNatRuleResponse() (response *DeleteNa
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
 //  INVALIDPARAMETERVALUE_NATGATEWAYSNATRULENOTEXISTS = "InvalidParameterValue.NatGatewaySnatRuleNotExists"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DeleteNatGatewaySourceIpTranslationNatRule(request *DeleteNatGatewaySourceIpTranslationNatRuleRequest) (response *DeleteNatGatewaySourceIpTranslationNatRuleResponse, err error) {
     return c.DeleteNatGatewaySourceIpTranslationNatRuleWithContext(context.Background(), request)
 }
@@ -6346,7 +6352,9 @@ func (c *Client) DeleteNatGatewaySourceIpTranslationNatRule(request *DeleteNatGa
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
 //  INVALIDPARAMETERVALUE_NATGATEWAYSNATRULENOTEXISTS = "InvalidParameterValue.NatGatewaySnatRuleNotExists"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DeleteNatGatewaySourceIpTranslationNatRuleWithContext(ctx context.Context, request *DeleteNatGatewaySourceIpTranslationNatRuleRequest) (response *DeleteNatGatewaySourceIpTranslationNatRuleResponse, err error) {
     if request == nil {
         request = NewDeleteNatGatewaySourceIpTranslationNatRuleRequest()

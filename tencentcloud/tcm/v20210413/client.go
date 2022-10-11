@@ -45,6 +45,124 @@ func NewClient(credential common.CredentialIface, region string, clientProfile *
 }
 
 
+func NewCreateMeshRequest() (request *CreateMeshRequest) {
+    request = &CreateMeshRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcm", APIVersion, "CreateMesh")
+    
+    
+    return
+}
+
+func NewCreateMeshResponse() (response *CreateMeshResponse) {
+    response = &CreateMeshResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateMesh
+// 创建网格
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_RBACFORBIDDEN = "FailedOperation.RBACForbidden"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) CreateMesh(request *CreateMeshRequest) (response *CreateMeshResponse, err error) {
+    return c.CreateMeshWithContext(context.Background(), request)
+}
+
+// CreateMesh
+// 创建网格
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_RBACFORBIDDEN = "FailedOperation.RBACForbidden"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) CreateMeshWithContext(ctx context.Context, request *CreateMeshRequest) (response *CreateMeshResponse, err error) {
+    if request == nil {
+        request = NewCreateMeshRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateMesh require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateMeshResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteMeshRequest() (request *DeleteMeshRequest) {
+    request = &DeleteMeshRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcm", APIVersion, "DeleteMesh")
+    
+    
+    return
+}
+
+func NewDeleteMeshResponse() (response *DeleteMeshResponse) {
+    response = &DeleteMeshResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteMesh
+// 删除网格
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_RBACFORBIDDEN = "FailedOperation.RBACForbidden"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DeleteMesh(request *DeleteMeshRequest) (response *DeleteMeshResponse, err error) {
+    return c.DeleteMeshWithContext(context.Background(), request)
+}
+
+// DeleteMesh
+// 删除网格
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_RBACFORBIDDEN = "FailedOperation.RBACForbidden"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DeleteMeshWithContext(ctx context.Context, request *DeleteMeshRequest) (response *DeleteMeshResponse, err error) {
+    if request == nil {
+        request = NewDeleteMeshRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteMesh require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteMeshResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeMeshRequest() (request *DescribeMeshRequest) {
     request = &DescribeMeshRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -151,6 +269,64 @@ func (c *Client) DescribeMeshListWithContext(ctx context.Context, request *Descr
     request.SetContext(ctx)
     
     response = NewDescribeMeshListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyMeshRequest() (request *ModifyMeshRequest) {
+    request = &ModifyMeshRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcm", APIVersion, "ModifyMesh")
+    
+    
+    return
+}
+
+func NewModifyMeshResponse() (response *ModifyMeshResponse) {
+    response = &ModifyMeshResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyMesh
+// 修改网格
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_RBACFORBIDDEN = "FailedOperation.RBACForbidden"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyMesh(request *ModifyMeshRequest) (response *ModifyMeshResponse, err error) {
+    return c.ModifyMeshWithContext(context.Background(), request)
+}
+
+// ModifyMesh
+// 修改网格
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_RBACFORBIDDEN = "FailedOperation.RBACForbidden"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyMeshWithContext(ctx context.Context, request *ModifyMeshRequest) (response *ModifyMeshResponse, err error) {
+    if request == nil {
+        request = NewModifyMeshRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyMesh require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyMeshResponse()
     err = c.Send(request, response)
     return
 }

@@ -425,6 +425,7 @@ func NewCreateTawInstanceResponse() (response *CreateTawInstanceResponse) {
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) CreateTawInstance(request *CreateTawInstanceRequest) (response *CreateTawInstanceResponse, err error) {
     return c.CreateTawInstanceWithContext(context.Background(), request)
 }
@@ -437,6 +438,7 @@ func (c *Client) CreateTawInstance(request *CreateTawInstanceRequest) (response 
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) CreateTawInstanceWithContext(ctx context.Context, request *CreateTawInstanceRequest) (response *CreateTawInstanceResponse, err error) {
     if request == nil {
         request = NewCreateTawInstanceRequest()

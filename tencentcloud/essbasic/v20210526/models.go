@@ -395,7 +395,7 @@ type ChannelCreateFlowByFilesRequestParams struct {
 	// 签署流程回调地址，长度不超过255个字符
 	CallbackUrl *string `json:"CallbackUrl,omitempty" name:"CallbackUrl"`
 
-	// 合同签署顺序类型(无序签,顺序签)，默认为false，即有序签署
+	// 合同签署顺序类型(无序签,顺序签)，默认为false，即有序签署。有序签署时以传入FlowApprovers数组的顺序作为签署顺序
 	Unordered *bool `json:"Unordered,omitempty" name:"Unordered"`
 
 	// 签署流程的类型，长度不超过255个字符
@@ -441,7 +441,7 @@ type ChannelCreateFlowByFilesRequest struct {
 	// 签署流程回调地址，长度不超过255个字符
 	CallbackUrl *string `json:"CallbackUrl,omitempty" name:"CallbackUrl"`
 
-	// 合同签署顺序类型(无序签,顺序签)，默认为false，即有序签署
+	// 合同签署顺序类型(无序签,顺序签)，默认为false，即有序签署。有序签署时以传入FlowApprovers数组的顺序作为签署顺序
 	Unordered *bool `json:"Unordered,omitempty" name:"Unordered"`
 
 	// 签署流程的类型，长度不超过255个字符

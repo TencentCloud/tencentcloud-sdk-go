@@ -161,6 +161,9 @@ const (
 	// 无效的TCR请求。
 	INVALIDPARAMETER_ERRORTCRINVALIDPARAMETER = "InvalidParameter.ErrorTcrInvalidParameter"
 
+	// 复制实例已存在。
+	INVALIDPARAMETER_REPLICATIONEXISTS = "InvalidParameter.ReplicationExists"
+
 	// 该地域不支持创建实例。
 	INVALIDPARAMETER_UNSUPPORTEDREGION = "InvalidParameter.UnsupportedRegion"
 

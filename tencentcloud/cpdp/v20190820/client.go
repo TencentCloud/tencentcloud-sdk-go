@@ -1618,6 +1618,7 @@ func NewCloseOrderResponse() (response *CloseOrderResponse) {
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_SECRETKEYNOTFOUND = "AuthFailure.SecretKeyNotFound"
+//  AUTHFAILURE_VERIFYERROR = "AuthFailure.VerifyError"
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_APPDENY = "FailedOperation.AppDeny"
 //  FAILEDOPERATION_NORECORD = "FailedOperation.NoRecord"
@@ -1632,6 +1633,7 @@ func (c *Client) CloseOrder(request *CloseOrderRequest) (response *CloseOrderRes
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_SECRETKEYNOTFOUND = "AuthFailure.SecretKeyNotFound"
+//  AUTHFAILURE_VERIFYERROR = "AuthFailure.VerifyError"
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_APPDENY = "FailedOperation.AppDeny"
 //  FAILEDOPERATION_NORECORD = "FailedOperation.NoRecord"
@@ -6639,6 +6641,70 @@ func (c *Client) QueryCommonTransferRechargeWithContext(ctx context.Context, req
     request.SetContext(ctx)
     
     response = NewQueryCommonTransferRechargeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewQueryCompanyTitleRequest() (request *QueryCompanyTitleRequest) {
+    request = &QueryCompanyTitleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cpdp", APIVersion, "QueryCompanyTitle")
+    
+    
+    return
+}
+
+func NewQueryCompanyTitleResponse() (response *QueryCompanyTitleResponse) {
+    response = &QueryCompanyTitleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// QueryCompanyTitle
+// 智慧零售-查询公司抬头
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_BACKENDERROR = "FailedOperation.BackendError"
+//  INTERNALERROR_BACKENDERROR = "InternalError.BackendError"
+//  INTERNALERROR_DBACCESSERROR = "InternalError.DBAccessError"
+//  INTERNALERROR_FUNDSUMMARYACCTNOINCONSISTENTERROR = "InternalError.FundSummaryAcctNoInconsistentError"
+//  INTERNALERROR_PARAMETERERROR = "InternalError.ParameterError"
+//  INTERNALERROR_SAVEDBERROR = "InternalError.SaveDBError"
+//  INTERNALERROR_SUBACCOUNTNOTFOUNDERROR = "InternalError.SubAccountNotFoundError"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
+func (c *Client) QueryCompanyTitle(request *QueryCompanyTitleRequest) (response *QueryCompanyTitleResponse, err error) {
+    return c.QueryCompanyTitleWithContext(context.Background(), request)
+}
+
+// QueryCompanyTitle
+// 智慧零售-查询公司抬头
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_BACKENDERROR = "FailedOperation.BackendError"
+//  INTERNALERROR_BACKENDERROR = "InternalError.BackendError"
+//  INTERNALERROR_DBACCESSERROR = "InternalError.DBAccessError"
+//  INTERNALERROR_FUNDSUMMARYACCTNOINCONSISTENTERROR = "InternalError.FundSummaryAcctNoInconsistentError"
+//  INTERNALERROR_PARAMETERERROR = "InternalError.ParameterError"
+//  INTERNALERROR_SAVEDBERROR = "InternalError.SaveDBError"
+//  INTERNALERROR_SUBACCOUNTNOTFOUNDERROR = "InternalError.SubAccountNotFoundError"
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
+func (c *Client) QueryCompanyTitleWithContext(ctx context.Context, request *QueryCompanyTitleRequest) (response *QueryCompanyTitleResponse, err error) {
+    if request == nil {
+        request = NewQueryCompanyTitleRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryCompanyTitle require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewQueryCompanyTitleResponse()
     err = c.Send(request, response)
     return
 }

@@ -174,6 +174,100 @@ type ClusterStatus struct {
 	LinkErrorDetail *string `json:"LinkErrorDetail,omitempty" name:"LinkErrorDetail"`
 }
 
+// Predefined struct for user
+type CreateMeshRequestParams struct {
+	// Mesh名称
+	DisplayName *string `json:"DisplayName,omitempty" name:"DisplayName"`
+
+	// Mesh版本
+	MeshVersion *string `json:"MeshVersion,omitempty" name:"MeshVersion"`
+
+	// Mesh类型，取值范围：
+	// - HOSTED：托管网格
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// Mesh配置
+	Config *MeshConfig `json:"Config,omitempty" name:"Config"`
+
+	// 关联集群
+	ClusterList []*Cluster `json:"ClusterList,omitempty" name:"ClusterList"`
+
+	// 标签列表
+	TagList []*Tag `json:"TagList,omitempty" name:"TagList"`
+}
+
+type CreateMeshRequest struct {
+	*tchttp.BaseRequest
+	
+	// Mesh名称
+	DisplayName *string `json:"DisplayName,omitempty" name:"DisplayName"`
+
+	// Mesh版本
+	MeshVersion *string `json:"MeshVersion,omitempty" name:"MeshVersion"`
+
+	// Mesh类型，取值范围：
+	// - HOSTED：托管网格
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// Mesh配置
+	Config *MeshConfig `json:"Config,omitempty" name:"Config"`
+
+	// 关联集群
+	ClusterList []*Cluster `json:"ClusterList,omitempty" name:"ClusterList"`
+
+	// 标签列表
+	TagList []*Tag `json:"TagList,omitempty" name:"TagList"`
+}
+
+func (r *CreateMeshRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateMeshRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DisplayName")
+	delete(f, "MeshVersion")
+	delete(f, "Type")
+	delete(f, "Config")
+	delete(f, "ClusterList")
+	delete(f, "TagList")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateMeshRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateMeshResponseParams struct {
+	// 创建的Mesh的Id
+	MeshId *string `json:"MeshId,omitempty" name:"MeshId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateMeshResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateMeshResponseParams `json:"Response"`
+}
+
+func (r *CreateMeshResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateMeshResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type CrossRegionConfig struct {
 
 }
@@ -196,6 +290,88 @@ type CustomPromConfig struct {
 
 	// Prometheus 密码（用于 basic 认证方式）
 	Password *string `json:"Password,omitempty" name:"Password"`
+}
+
+// Predefined struct for user
+type DeleteMeshRequestParams struct {
+	// 需要删除的MeshId
+	MeshId *string `json:"MeshId,omitempty" name:"MeshId"`
+
+	// CLS组件是否被删除
+	NeedDeleteCLS *bool `json:"NeedDeleteCLS,omitempty" name:"NeedDeleteCLS"`
+
+	// TMP组件是否被删除
+	NeedDeleteTMP *bool `json:"NeedDeleteTMP,omitempty" name:"NeedDeleteTMP"`
+
+	// APM组件是否被删除
+	NeedDeleteAPM *bool `json:"NeedDeleteAPM,omitempty" name:"NeedDeleteAPM"`
+
+	// Grafana组件是否被删除
+	NeedDeleteGrafana *bool `json:"NeedDeleteGrafana,omitempty" name:"NeedDeleteGrafana"`
+}
+
+type DeleteMeshRequest struct {
+	*tchttp.BaseRequest
+	
+	// 需要删除的MeshId
+	MeshId *string `json:"MeshId,omitempty" name:"MeshId"`
+
+	// CLS组件是否被删除
+	NeedDeleteCLS *bool `json:"NeedDeleteCLS,omitempty" name:"NeedDeleteCLS"`
+
+	// TMP组件是否被删除
+	NeedDeleteTMP *bool `json:"NeedDeleteTMP,omitempty" name:"NeedDeleteTMP"`
+
+	// APM组件是否被删除
+	NeedDeleteAPM *bool `json:"NeedDeleteAPM,omitempty" name:"NeedDeleteAPM"`
+
+	// Grafana组件是否被删除
+	NeedDeleteGrafana *bool `json:"NeedDeleteGrafana,omitempty" name:"NeedDeleteGrafana"`
+}
+
+func (r *DeleteMeshRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteMeshRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MeshId")
+	delete(f, "NeedDeleteCLS")
+	delete(f, "NeedDeleteTMP")
+	delete(f, "NeedDeleteAPM")
+	delete(f, "NeedDeleteGrafana")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteMeshRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteMeshResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DeleteMeshResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteMeshResponseParams `json:"Response"`
+}
+
+func (r *DeleteMeshResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteMeshResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type DeployConfig struct {
@@ -647,6 +823,81 @@ type MetricSpec struct {
 
 	// 使用资源指标扩进行自动扩缩容
 	Resource *ResourceMetricSource `json:"Resource,omitempty" name:"Resource"`
+}
+
+// Predefined struct for user
+type ModifyMeshRequestParams struct {
+	// 需要修改的网格Id
+	MeshId *string `json:"MeshId,omitempty" name:"MeshId"`
+
+	// 修改的网格名称
+	DisplayName *string `json:"DisplayName,omitempty" name:"DisplayName"`
+
+	// 修改的网格配置
+	Config *MeshConfig `json:"Config,omitempty" name:"Config"`
+
+	// 修改的集群配置
+	ClusterList []*Cluster `json:"ClusterList,omitempty" name:"ClusterList"`
+}
+
+type ModifyMeshRequest struct {
+	*tchttp.BaseRequest
+	
+	// 需要修改的网格Id
+	MeshId *string `json:"MeshId,omitempty" name:"MeshId"`
+
+	// 修改的网格名称
+	DisplayName *string `json:"DisplayName,omitempty" name:"DisplayName"`
+
+	// 修改的网格配置
+	Config *MeshConfig `json:"Config,omitempty" name:"Config"`
+
+	// 修改的集群配置
+	ClusterList []*Cluster `json:"ClusterList,omitempty" name:"ClusterList"`
+}
+
+func (r *ModifyMeshRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyMeshRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MeshId")
+	delete(f, "DisplayName")
+	delete(f, "Config")
+	delete(f, "ClusterList")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyMeshRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyMeshResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ModifyMeshResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyMeshResponseParams `json:"Response"`
+}
+
+func (r *ModifyMeshResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyMeshResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type PodsMetricSource struct {

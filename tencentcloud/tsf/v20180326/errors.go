@@ -500,9 +500,6 @@ const (
 	// 集群 CPU 资源不足。
 	INVALIDPARAMETERVALUE_CONTAINERGROUPCPULIMITOVER = "InvalidParameterValue.ContainergroupCpulimitOver"
 
-	// 容器 Env 的 Value 和 ValueFrom 至少要有一个。
-	INVALIDPARAMETERVALUE_CONTAINERGROUPENVVALUENOTSET = "InvalidParameterValue.ContainergroupEnvValueNotSet"
-
 	// 部署组ID不能为空。
 	INVALIDPARAMETERVALUE_CONTAINERGROUPGROUPIDNULL = "InvalidParameterValue.ContainergroupGroupidNull"
 
