@@ -3038,7 +3038,7 @@ func NewDescribeRegionsResponse() (response *DescribeRegionsResponse) {
 }
 
 // DescribeRegions
-// 本接口(DescribeRegions)用于查询地域信息。因平台策略原因，该接口暂时停止更新，为确保您正常调用，可切换至新链接：https://cloud.tencent.com/document/product/1278/55255。
+// 本接口(DescribeRegions)用于查询地域信息。因平台策略原因，该接口暂时停止更新，为确保您正常调用，可切换至新链接：https://cloud.tencent.com/document/product/1596/77929。
 //
 // 可能返回的错误码:
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
@@ -3047,7 +3047,7 @@ func (c *Client) DescribeRegions(request *DescribeRegionsRequest) (response *Des
 }
 
 // DescribeRegions
-// 本接口(DescribeRegions)用于查询地域信息。因平台策略原因，该接口暂时停止更新，为确保您正常调用，可切换至新链接：https://cloud.tencent.com/document/product/1278/55255。
+// 本接口(DescribeRegions)用于查询地域信息。因平台策略原因，该接口暂时停止更新，为确保您正常调用，可切换至新链接：https://cloud.tencent.com/document/product/1596/77929。
 //
 // 可能返回的错误码:
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"

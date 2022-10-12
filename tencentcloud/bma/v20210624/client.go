@@ -484,7 +484,7 @@ func NewCreateCRBlockResponse() (response *CreateCRBlockResponse) {
 }
 
 // CreateCRBlock
-// 版权保护-新建拦截接口
+// 新建拦截
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -511,7 +511,7 @@ func (c *Client) CreateCRBlock(request *CreateCRBlockRequest) (response *CreateC
 }
 
 // CreateCRBlock
-// 版权保护-新建拦截接口
+// 新建拦截
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -568,7 +568,7 @@ func NewCreateCRCompanyVerifyResponse() (response *CreateCRCompanyVerifyResponse
 }
 
 // CreateCRCompanyVerify
-// 品牌经营管家-版权保护模块企业认证接口
+// 本接口用于企业认证，新接入用户必须认证后才可以进行后续操作（个人认证和企业认证二选一），只需认证一次即可
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -595,7 +595,7 @@ func (c *Client) CreateCRCompanyVerify(request *CreateCRCompanyVerifyRequest) (r
 }
 
 // CreateCRCompanyVerify
-// 品牌经营管家-版权保护模块企业认证接口
+// 本接口用于企业认证，新接入用户必须认证后才可以进行后续操作（个人认证和企业认证二选一），只需认证一次即可
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -736,7 +736,7 @@ func NewCreateCRRightFileResponse() (response *CreateCRRightFileResponse) {
 }
 
 // CreateCRRightFile
-// 新增权属文件
+// 权属文件添加
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -763,7 +763,7 @@ func (c *Client) CreateCRRightFile(request *CreateCRRightFileRequest) (response 
 }
 
 // CreateCRRightFile
-// 新增权属文件
+// 权属文件添加
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -904,7 +904,7 @@ func NewCreateCRUserVerifyResponse() (response *CreateCRUserVerifyResponse) {
 }
 
 // CreateCRUserVerify
-// 品牌经营管家-版权保护个人认证接口
+// 本接口用于个人认证，新接入用户必须认证后才可以进行后续操作（个人认证和企业认证二选一），只需认证一次即可
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -931,7 +931,7 @@ func (c *Client) CreateCRUserVerify(request *CreateCRUserVerifyRequest) (respons
 }
 
 // CreateCRUserVerify
-// 品牌经营管家-版权保护个人认证接口
+// 本接口用于个人认证，新接入用户必须认证后才可以进行后续操作（个人认证和企业认证二选一），只需认证一次即可
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -988,7 +988,7 @@ func NewCreateCRWorkResponse() (response *CreateCRWorkResponse) {
 }
 
 // CreateCRWork
-// 版权保护-添加作品接口
+// 新建作品
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -1015,7 +1015,7 @@ func (c *Client) CreateCRWork(request *CreateCRWorkRequest) (response *CreateCRW
 }
 
 // CreateCRWork
-// 版权保护-添加作品接口
+// 新建作品
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -1744,7 +1744,7 @@ func NewModifyCRBlockStatusResponse() (response *ModifyCRBlockStatusResponse) {
 }
 
 // ModifyCRBlockStatus
-// 版权保护-拦截申请接口
+// 拦截申请
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -1771,7 +1771,7 @@ func (c *Client) ModifyCRBlockStatus(request *ModifyCRBlockStatusRequest) (respo
 }
 
 // ModifyCRBlockStatus
-// 版权保护-拦截申请接口
+// 拦截申请
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -1828,7 +1828,7 @@ func NewModifyCRMonitorResponse() (response *ModifyCRMonitorResponse) {
 }
 
 // ModifyCRMonitor
-// 版权保护-修改监测状态接口
+// 开启/关闭监测
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -1855,7 +1855,7 @@ func (c *Client) ModifyCRMonitor(request *ModifyCRMonitorRequest) (response *Mod
 }
 
 // ModifyCRMonitor
-// 版权保护-修改监测状态接口
+// 开启/关闭监测
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -1912,7 +1912,7 @@ func NewModifyCRObtainStatusResponse() (response *ModifyCRObtainStatusResponse) 
 }
 
 // ModifyCRObtainStatus
-// 申请取证
+// 取证申请
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -1939,7 +1939,7 @@ func (c *Client) ModifyCRObtainStatus(request *ModifyCRObtainStatusRequest) (res
 }
 
 // ModifyCRObtainStatus
-// 申请取证
+// 取证申请
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -1996,7 +1996,7 @@ func NewModifyCRRightStatusResponse() (response *ModifyCRRightStatusResponse) {
 }
 
 // ModifyCRRightStatus
-// 版权保护-维权申请接口
+// 发函申请
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -2023,7 +2023,7 @@ func (c *Client) ModifyCRRightStatus(request *ModifyCRRightStatusRequest) (respo
 }
 
 // ModifyCRRightStatus
-// 版权保护-维权申请接口
+// 发函申请
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -2080,7 +2080,7 @@ func NewModifyCRWhiteListResponse() (response *ModifyCRWhiteListResponse) {
 }
 
 // ModifyCRWhiteList
-// 版权保护-白名单修改接口
+// 修改白名单列表
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -2107,7 +2107,7 @@ func (c *Client) ModifyCRWhiteList(request *ModifyCRWhiteListRequest) (response 
 }
 
 // ModifyCRWhiteList
-// 版权保护-白名单修改接口
+// 修改白名单列表
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"

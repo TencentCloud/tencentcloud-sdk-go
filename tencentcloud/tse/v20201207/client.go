@@ -568,3 +568,59 @@ func (c *Client) DescribeZookeeperServerInterfacesWithContext(ctx context.Contex
     err = c.Send(request, response)
     return
 }
+
+func NewUpdateEngineInternetAccessRequest() (request *UpdateEngineInternetAccessRequest) {
+    request = &UpdateEngineInternetAccessRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tse", APIVersion, "UpdateEngineInternetAccess")
+    
+    
+    return
+}
+
+func NewUpdateEngineInternetAccessResponse() (response *UpdateEngineInternetAccessResponse) {
+    response = &UpdateEngineInternetAccessResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// UpdateEngineInternetAccess
+// 修改引擎公网访问配置
+//
+// 可能返回的错误码:
+//  INTERNALERROR_OPERATIONFAILED = "InternalError.OperationFailed"
+//  INVALIDPARAMETERVALUE_OPERATIONFAILED = "InvalidParameterValue.OperationFailed"
+//  MISSINGPARAMETER_UPDATEERROR = "MissingParameter.UpdateError"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) UpdateEngineInternetAccess(request *UpdateEngineInternetAccessRequest) (response *UpdateEngineInternetAccessResponse, err error) {
+    return c.UpdateEngineInternetAccessWithContext(context.Background(), request)
+}
+
+// UpdateEngineInternetAccess
+// 修改引擎公网访问配置
+//
+// 可能返回的错误码:
+//  INTERNALERROR_OPERATIONFAILED = "InternalError.OperationFailed"
+//  INVALIDPARAMETERVALUE_OPERATIONFAILED = "InvalidParameterValue.OperationFailed"
+//  MISSINGPARAMETER_UPDATEERROR = "MissingParameter.UpdateError"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) UpdateEngineInternetAccessWithContext(ctx context.Context, request *UpdateEngineInternetAccessRequest) (response *UpdateEngineInternetAccessResponse, err error) {
+    if request == nil {
+        request = NewUpdateEngineInternetAccessRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateEngineInternetAccess require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpdateEngineInternetAccessResponse()
+    err = c.Send(request, response)
+    return
+}

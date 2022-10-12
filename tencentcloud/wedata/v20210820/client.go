@@ -189,6 +189,54 @@ func (c *Client) BatchStopTasksNewWithContext(ctx context.Context, request *Batc
     return
 }
 
+func NewCreateCustomFunctionRequest() (request *CreateCustomFunctionRequest) {
+    request = &CreateCustomFunctionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "CreateCustomFunction")
+    
+    
+    return
+}
+
+func NewCreateCustomFunctionResponse() (response *CreateCustomFunctionResponse) {
+    response = &CreateCustomFunctionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateCustomFunction
+//  创建用户自定义函数
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) CreateCustomFunction(request *CreateCustomFunctionRequest) (response *CreateCustomFunctionResponse, err error) {
+    return c.CreateCustomFunctionWithContext(context.Background(), request)
+}
+
+// CreateCustomFunction
+//  创建用户自定义函数
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) CreateCustomFunctionWithContext(ctx context.Context, request *CreateCustomFunctionRequest) (response *CreateCustomFunctionResponse, err error) {
+    if request == nil {
+        request = NewCreateCustomFunctionRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateCustomFunction require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateCustomFunctionResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateDataSourceRequest() (request *CreateDataSourceRequest) {
     request = &CreateDataSourceRequest{
         BaseRequest: &tchttp.BaseRequest{},

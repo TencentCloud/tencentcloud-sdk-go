@@ -1581,6 +1581,20 @@ type BaselineDetail struct {
 	Name *string `json:"Name,omitempty" name:"Name"`
 }
 
+type BaselineDetectParam struct {
+	// 检测的策略集合
+	PolicyIds []*int64 `json:"PolicyIds,omitempty" name:"PolicyIds"`
+
+	// 检测的规则集合
+	RuleIds []*int64 `json:"RuleIds,omitempty" name:"RuleIds"`
+
+	// 检测项集合
+	ItemIds []*int64 `json:"ItemIds,omitempty" name:"ItemIds"`
+
+	// 检测的主机ID集合
+	HostIds []*string `json:"HostIds,omitempty" name:"HostIds"`
+}
+
 type BaselineEffectHost struct {
 	// 通过项
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -1687,6 +1701,128 @@ type BaselineInfo struct {
 	// 基线风险项
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BaselineFailCount *uint64 `json:"BaselineFailCount,omitempty" name:"BaselineFailCount"`
+}
+
+type BaselineItem struct {
+	// 项Id
+	ItemId *int64 `json:"ItemId,omitempty" name:"ItemId"`
+
+	// 项名称
+	ItemName *string `json:"ItemName,omitempty" name:"ItemName"`
+
+	// 检测项分类
+	CategoryId *int64 `json:"CategoryId,omitempty" name:"CategoryId"`
+
+	// 项描述
+	ItemDesc *string `json:"ItemDesc,omitempty" name:"ItemDesc"`
+
+	// 修复方法
+	FixMethod *string `json:"FixMethod,omitempty" name:"FixMethod"`
+
+	// 所属规则
+	RuleName *string `json:"RuleName,omitempty" name:"RuleName"`
+
+	// 检测结果描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DetectResultDesc *string `json:"DetectResultDesc,omitempty" name:"DetectResultDesc"`
+
+	// 危险等级
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Level *int64 `json:"Level,omitempty" name:"Level"`
+
+	// 检测状态：0 未通过，1：忽略，3：通过，5：检测中
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DetectStatus *int64 `json:"DetectStatus,omitempty" name:"DetectStatus"`
+
+	// 主机ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HostId *string `json:"HostId,omitempty" name:"HostId"`
+
+	// 主机名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HostName *string `json:"HostName,omitempty" name:"HostName"`
+
+	// 主机IP
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HostIp *string `json:"HostIp,omitempty" name:"HostIp"`
+
+	// 外网IP
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WanIp *string `json:"WanIp,omitempty" name:"WanIp"`
+
+	// 第一次出现时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FirstTime *string `json:"FirstTime,omitempty" name:"FirstTime"`
+
+	// 最近出现时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LastTime *string `json:"LastTime,omitempty" name:"LastTime"`
+
+	// 是否可以修复
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CanBeFixed *int64 `json:"CanBeFixed,omitempty" name:"CanBeFixed"`
+
+	// 主机安全uuid
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Uuid *string `json:"Uuid,omitempty" name:"Uuid"`
+}
+
+type BaselineItemDetect struct {
+	// 项Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ItemId *int64 `json:"ItemId,omitempty" name:"ItemId"`
+
+	// 项名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ItemName *string `json:"ItemName,omitempty" name:"ItemName"`
+
+	// 项描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ItemDesc *string `json:"ItemDesc,omitempty" name:"ItemDesc"`
+
+	// 修复方法
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FixMethod *string `json:"FixMethod,omitempty" name:"FixMethod"`
+
+	// 所属规则
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleName *string `json:"RuleName,omitempty" name:"RuleName"`
+
+	// 0:未通过 1:忽略 3:通过 5:检测中
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DetectStatus *int64 `json:"DetectStatus,omitempty" name:"DetectStatus"`
+
+	// 风险等级
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Level *int64 `json:"Level,omitempty" name:"Level"`
+
+	// 影响服务器数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HostCount *int64 `json:"HostCount,omitempty" name:"HostCount"`
+
+	// 首次检测时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FirstTime *string `json:"FirstTime,omitempty" name:"FirstTime"`
+
+	// 最后检测时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LastTime *string `json:"LastTime,omitempty" name:"LastTime"`
+
+	// 检测结果,Json字符串
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DetectResult *string `json:"DetectResult,omitempty" name:"DetectResult"`
+
+	// 所属规则ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleId *int64 `json:"RuleId,omitempty" name:"RuleId"`
+
+	// 通过的服务器数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PassedHostCount *int64 `json:"PassedHostCount,omitempty" name:"PassedHostCount"`
+
+	// 未通过的服务器数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NotPassedHostCount *int64 `json:"NotPassedHostCount,omitempty" name:"NotPassedHostCount"`
 }
 
 type BaselineRuleInfo struct {
@@ -7910,6 +8046,216 @@ func (r *DescribeBaselineHostTopResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeBaselineHostTopResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeBaselineItemDetectListRequestParams struct {
+	// <li>HostId - string - 是否必填：否 - 主机Id</li>
+	// <li>RuleId - int64 - 是否必填：否 - 规则Id</li>
+	// <li>PolicyId - int64 - 是否必填：否 - 规则Id</li>
+	// <li>ItemName - string - 是否必填：否 - 项名称</li>
+	// <li>DetectStatus - int - 是否必填：否 - 检测状态</li>
+	// <li>Level - int - 是否必填：否 - 风险等级</li>
+	// <li>StartTime - string - 是否必填：否 - 开时时间</li>
+	// <li>EndTime - string - 是否必填：否 - 结束时间</li>
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 限制条数,默认10,最大100
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移量,默认0
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 排序方式: [ASC:升序|DESC:降序]
+	Order *string `json:"Order,omitempty" name:"Order"`
+
+	// 可选排序列: [HostCount|FirstTime|LastTime]
+	By *string `json:"By,omitempty" name:"By"`
+}
+
+type DescribeBaselineItemDetectListRequest struct {
+	*tchttp.BaseRequest
+	
+	// <li>HostId - string - 是否必填：否 - 主机Id</li>
+	// <li>RuleId - int64 - 是否必填：否 - 规则Id</li>
+	// <li>PolicyId - int64 - 是否必填：否 - 规则Id</li>
+	// <li>ItemName - string - 是否必填：否 - 项名称</li>
+	// <li>DetectStatus - int - 是否必填：否 - 检测状态</li>
+	// <li>Level - int - 是否必填：否 - 风险等级</li>
+	// <li>StartTime - string - 是否必填：否 - 开时时间</li>
+	// <li>EndTime - string - 是否必填：否 - 结束时间</li>
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 限制条数,默认10,最大100
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移量,默认0
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 排序方式: [ASC:升序|DESC:降序]
+	Order *string `json:"Order,omitempty" name:"Order"`
+
+	// 可选排序列: [HostCount|FirstTime|LastTime]
+	By *string `json:"By,omitempty" name:"By"`
+}
+
+func (r *DescribeBaselineItemDetectListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBaselineItemDetectListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Filters")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "Order")
+	delete(f, "By")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBaselineItemDetectListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeBaselineItemDetectListResponseParams struct {
+	// 总数
+	Total *int64 `json:"Total,omitempty" name:"Total"`
+
+	// 无
+	List []*BaselineItemDetect `json:"List,omitempty" name:"List"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeBaselineItemDetectListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeBaselineItemDetectListResponseParams `json:"Response"`
+}
+
+func (r *DescribeBaselineItemDetectListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBaselineItemDetectListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeBaselineItemListRequestParams struct {
+	// <li>PolicyId - int64 - 是否必填：否 - 策略Id</li>
+	// <li>RuleId - int64 - 是否必填：否 - 规则Id</li>
+	// <li>HostId - string - 是否必填：否 - 主机Id</li>
+	// <li>HostName - string - 是否必填：否 - 主机名</li>
+	// <li>HostIp - string - 是否必填：否 - 主机IP</li>
+	// <li>ItemId - String - 是否必填：否 - 检测项Id</li>
+	// <li>ItemName - String - 是否必填：否 - 项名称</li>
+	// <li>DetectStatus - int - 是否必填：否 - 检测状态[0:未通过|3:通过|5:检测中]</li>
+	// <li>Level - int - 是否必填：否 - 风险等级</li>
+	// <li>StartTime - string - 是否必填：否 - 开时时间</li>
+	// <li>EndTime - string - 是否必填：否 - 结束时间</li>
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 限制条数,默认10,最大100
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移量,默认0
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 排序方式: [ASC:升序|DESC:降序]
+	Order *string `json:"Order,omitempty" name:"Order"`
+
+	// 可选排序列
+	By *string `json:"By,omitempty" name:"By"`
+}
+
+type DescribeBaselineItemListRequest struct {
+	*tchttp.BaseRequest
+	
+	// <li>PolicyId - int64 - 是否必填：否 - 策略Id</li>
+	// <li>RuleId - int64 - 是否必填：否 - 规则Id</li>
+	// <li>HostId - string - 是否必填：否 - 主机Id</li>
+	// <li>HostName - string - 是否必填：否 - 主机名</li>
+	// <li>HostIp - string - 是否必填：否 - 主机IP</li>
+	// <li>ItemId - String - 是否必填：否 - 检测项Id</li>
+	// <li>ItemName - String - 是否必填：否 - 项名称</li>
+	// <li>DetectStatus - int - 是否必填：否 - 检测状态[0:未通过|3:通过|5:检测中]</li>
+	// <li>Level - int - 是否必填：否 - 风险等级</li>
+	// <li>StartTime - string - 是否必填：否 - 开时时间</li>
+	// <li>EndTime - string - 是否必填：否 - 结束时间</li>
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 限制条数,默认10,最大100
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移量,默认0
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 排序方式: [ASC:升序|DESC:降序]
+	Order *string `json:"Order,omitempty" name:"Order"`
+
+	// 可选排序列
+	By *string `json:"By,omitempty" name:"By"`
+}
+
+func (r *DescribeBaselineItemListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBaselineItemListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Filters")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "Order")
+	delete(f, "By")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBaselineItemListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeBaselineItemListResponseParams struct {
+	// 无
+	List []*BaselineItem `json:"List,omitempty" name:"List"`
+
+	// 总数
+	Total *int64 `json:"Total,omitempty" name:"Total"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeBaselineItemListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeBaselineItemListResponseParams `json:"Response"`
+}
+
+func (r *DescribeBaselineItemListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBaselineItemListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -20222,6 +20568,63 @@ type StandardModeConfig struct {
 }
 
 // Predefined struct for user
+type StartBaselineDetectRequestParams struct {
+	// 基线检测参数
+	Param *BaselineDetectParam `json:"Param,omitempty" name:"Param"`
+}
+
+type StartBaselineDetectRequest struct {
+	*tchttp.BaseRequest
+	
+	// 基线检测参数
+	Param *BaselineDetectParam `json:"Param,omitempty" name:"Param"`
+}
+
+func (r *StartBaselineDetectRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *StartBaselineDetectRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Param")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StartBaselineDetectRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type StartBaselineDetectResponseParams struct {
+	// 扫描任务ID
+	TaskId *int64 `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type StartBaselineDetectResponse struct {
+	*tchttp.BaseResponse
+	Response *StartBaselineDetectResponseParams `json:"Response"`
+}
+
+func (r *StartBaselineDetectResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *StartBaselineDetectResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type StopNoticeBanTipsRequestParams struct {
 
 }
@@ -20439,6 +20842,81 @@ func (r *SyncAssetScanResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *SyncAssetScanResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SyncBaselineDetectSummaryRequestParams struct {
+
+}
+
+type SyncBaselineDetectSummaryRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *SyncBaselineDetectSummaryRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SyncBaselineDetectSummaryRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SyncBaselineDetectSummaryRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SyncBaselineDetectSummaryResponseParams struct {
+	// 处理进度
+	ProgressRate *int64 `json:"ProgressRate,omitempty" name:"ProgressRate"`
+
+	// 未通过策略总数
+	NotPassPolicyCount *int64 `json:"NotPassPolicyCount,omitempty" name:"NotPassPolicyCount"`
+
+	// 主机总数
+	HostCount *int64 `json:"HostCount,omitempty" name:"HostCount"`
+
+	// 开始时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 1:即将进行首次扫描   0:已经扫描过了
+	WillFirstScan *int64 `json:"WillFirstScan,omitempty" name:"WillFirstScan"`
+
+	// 正在检测的任务ID
+	DetectingTaskIds []*int64 `json:"DetectingTaskIds,omitempty" name:"DetectingTaskIds"`
+
+	// 扫描中剩余时间(分钟)
+	LeftMins *int64 `json:"LeftMins,omitempty" name:"LeftMins"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type SyncBaselineDetectSummaryResponse struct {
+	*tchttp.BaseResponse
+	Response *SyncBaselineDetectSummaryResponseParams `json:"Response"`
+}
+
+func (r *SyncBaselineDetectSummaryResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SyncBaselineDetectSummaryResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

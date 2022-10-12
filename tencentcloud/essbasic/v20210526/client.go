@@ -343,6 +343,7 @@ func NewChannelCreateFlowByFilesResponse() (response *ChannelCreateFlowByFilesRe
 //  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
 //  MISSINGPARAMETER_MISSCOMPONENTNAME = "MissingParameter.MissComponentName"
+//  MISSINGPARAMETER_SEALID = "MissingParameter.SealId"
 //  MISSINGPARAMETER_SIGNCOMPONENTS = "MissingParameter.SignComponents"
 //  OPERATIONDENIED = "OperationDenied"
 //  OPERATIONDENIED_BYFILESSERVERSIGNFORBID = "OperationDenied.ByFilesServerSignForbid"
@@ -399,6 +400,7 @@ func (c *Client) ChannelCreateFlowByFiles(request *ChannelCreateFlowByFilesReque
 //  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
 //  MISSINGPARAMETER_MISSCOMPONENTNAME = "MissingParameter.MissComponentName"
+//  MISSINGPARAMETER_SEALID = "MissingParameter.SealId"
 //  MISSINGPARAMETER_SIGNCOMPONENTS = "MissingParameter.SignComponents"
 //  OPERATIONDENIED = "OperationDenied"
 //  OPERATIONDENIED_BYFILESSERVERSIGNFORBID = "OperationDenied.ByFilesServerSignForbid"
@@ -585,6 +587,7 @@ func NewChannelCreateFlowSignReviewResponse() (response *ChannelCreateFlowSignRe
 // 若签署流程状态正常，且本企业存在签署方未签署，同一签署流程可以多次提交签署审批结果，签署时的最后一个“审批结果”有效。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_NOTAVAILABLESIGNREVIEW = "FailedOperation.NotAvailableSignReview"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DB = "InternalError.Db"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -609,6 +612,7 @@ func (c *Client) ChannelCreateFlowSignReview(request *ChannelCreateFlowSignRevie
 // 若签署流程状态正常，且本企业存在签署方未签署，同一签署流程可以多次提交签署审批结果，签署时的最后一个“审批结果”有效。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_NOTAVAILABLESIGNREVIEW = "FailedOperation.NotAvailableSignReview"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DB = "InternalError.Db"
 //  INVALIDPARAMETER = "InvalidParameter"

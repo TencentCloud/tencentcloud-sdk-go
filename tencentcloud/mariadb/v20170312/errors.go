@@ -56,9 +56,6 @@ const (
 	// 修改账号权限失败。
 	FAILEDOPERATION_MODIFYRIGHTFAILED = "FailedOperation.ModifyRightFailed"
 
-	// 消息队列操作失败。
-	FAILEDOPERATION_MSGQUEUEOPERATIONFAILED = "FailedOperation.MsgQueueOperationFailed"
-
 	// 请求后端接口失败。
 	FAILEDOPERATION_OSSOPERATIONFAILED = "FailedOperation.OssOperationFailed"
 

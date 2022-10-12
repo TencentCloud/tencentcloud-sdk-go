@@ -1,3 +1,146 @@
+# Release v1.0.512
+
+## 品牌经营管家(bma) 版本：2021-06-24
+
+### 第 10 次发布
+
+发布时间：2022-10-12 06:11:10
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateCRUserVerify](https://cloud.tencent.com/document/api/1296/79150)
+
+	* <font color="#dd0000">**修改入参**：</font>VerificationCode
+
+
+
+
+## 主机安全(cwp) 版本：2018-02-28
+
+### 第 56 次发布
+
+发布时间：2022-10-12 06:24:06
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeBaselineItemDetectList](https://cloud.tencent.com/document/api/296/81351)
+* [DescribeBaselineItemList](https://cloud.tencent.com/document/api/296/81350)
+* [StartBaselineDetect](https://cloud.tencent.com/document/api/296/81349)
+* [SyncBaselineDetectSummary](https://cloud.tencent.com/document/api/296/81348)
+
+新增数据结构：
+
+* [BaselineDetectParam](https://cloud.tencent.com/document/api/296/19867#BaselineDetectParam)
+* [BaselineItem](https://cloud.tencent.com/document/api/296/19867#BaselineItem)
+* [BaselineItemDetect](https://cloud.tencent.com/document/api/296/19867#BaselineItemDetect)
+
+
+
+## 云数据库 MariaDB(mariadb) 版本：2017-03-12
+
+### 第 41 次发布
+
+发布时间：2022-10-12 06:43:12
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除接口**：</font>
+
+* DescribeDBPerformance
+* DescribeDBPerformanceDetails
+* DescribeSqlLogs
+
+<font color="#dd0000">**删除数据结构**：</font>
+
+* PerformanceMonitorSet
+* SqlLogItem
+
+
+
+## 腾讯云微服务引擎(tse) 版本：2020-12-07
+
+### 第 28 次发布
+
+发布时间：2022-10-12 07:03:55
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [UpdateEngineInternetAccess](https://cloud.tencent.com/document/api/1364/81352)
+
+
+
+## 云点播(vod) 版本：2018-07-17
+
+### 第 121 次发布
+
+发布时间：2022-10-12 07:06:19
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [VideoTemplateInfo](https://cloud.tencent.com/document/api/266/31773#VideoTemplateInfo)
+
+	* 新增成员：CodecTag
+
+* [VideoTemplateInfoForUpdate](https://cloud.tencent.com/document/api/266/31773#VideoTemplateInfoForUpdate)
+
+	* 新增成员：CodecTag
+
+
+
+
+## 企业微信汽车行业版(wav) 版本：2021-01-29
+
+### 第 11 次发布
+
+发布时间：2022-10-12 07:10:28
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ClueInfoDetail](https://cloud.tencent.com/document/api/1318/56791#ClueInfoDetail)
+
+	* 新增成员：UserName
+
+
+
+
+## 数据开发治理平台 WeData(wedata) 版本：2021-08-20
+
+### 第 7 次发布
+
+发布时间：2022-10-12 07:10:44
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateCustomFunction](https://cloud.tencent.com/document/api/1267/81354)
+
+
+
 # Release v1.0.511
 
 ## 云数据库 MySQL(cdb) 版本：2017-03-20

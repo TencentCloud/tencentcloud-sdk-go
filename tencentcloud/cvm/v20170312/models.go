@@ -3391,10 +3391,10 @@ func (r *DescribeRegionsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeRegionsResponseParams struct {
-	// 地域数量
+	// 地域数量。
 	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
-	// 地域列表信息
+	// 地域列表信息。
 	RegionSet []*RegionInfo `json:"RegionSet,omitempty" name:"RegionSet"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。

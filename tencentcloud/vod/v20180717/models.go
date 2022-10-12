@@ -19368,6 +19368,12 @@ type VideoTemplateInfo struct {
 	// <li>OFF: 无论原始文件是 HDR 还是 SDR，转码输出均为 SDR。</li>
 	// 默认值：OFF。
 	PreserveHDRSwitch *string `json:"PreserveHDRSwitch,omitempty" name:"PreserveHDRSwitch"`
+
+	// 编码标签，仅当视频流的编码格式为 H.265 编码时有效，可选值：
+	// <li>hvc1 表示 hvc1 标签；</li>
+	// <li>hev1 表示 hev1 标签。 </li>
+	// 默认值：hvc1。
+	CodecTag *string `json:"CodecTag,omitempty" name:"CodecTag"`
 }
 
 type VideoTemplateInfoForUpdate struct {
@@ -19427,6 +19433,12 @@ type VideoTemplateInfoForUpdate struct {
 	// <li>ON: 如果原始文件是 HDR，则转码输出保持 HDR；否则转码输出为 SDR （Standard Dynamic Range）。</li>
 	// <li>OFF: 无论原始文件是 HDR 还是 SDR，转码输出均为 SDR。</li>
 	PreserveHDRSwitch *string `json:"PreserveHDRSwitch,omitempty" name:"PreserveHDRSwitch"`
+
+	// 编码标签，仅当视频流的编码格式为 H.265 编码时有效，可选值：
+	// <li>hvc1 表示 hvc1 标签；</li>
+	// <li>hev1 表示 hev1 标签。 </li>
+	// 默认值：hvc1。
+	CodecTag *string `json:"CodecTag,omitempty" name:"CodecTag"`
 }
 
 type VideoTrackItem struct {

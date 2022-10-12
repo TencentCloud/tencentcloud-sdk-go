@@ -71,6 +71,9 @@ const (
 	// 无效的参数值。
 	INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
 
+	// 无效请求参数导致操作失败。
+	INVALIDPARAMETERVALUE_OPERATIONFAILED = "InvalidParameterValue.OperationFailed"
+
 	// 无效请求参数，查询失败。
 	INVALIDPARAMETERVALUE_QUERYERROR = "InvalidParameterValue.QueryError"
 
@@ -82,6 +85,9 @@ const (
 
 	// 缺失参数导致创建失败。
 	MISSINGPARAMETER_CREATEERROR = "MissingParameter.CreateError"
+
+	// 缺失参数导致更新失败。
+	MISSINGPARAMETER_UPDATEERROR = "MissingParameter.UpdateError"
 
 	// 操作被拒绝。
 	OPERATIONDENIED = "OperationDenied"

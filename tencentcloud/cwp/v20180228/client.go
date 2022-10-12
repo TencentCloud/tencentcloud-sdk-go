@@ -4381,6 +4381,106 @@ func (c *Client) DescribeBaselineHostTopWithContext(ctx context.Context, request
     return
 }
 
+func NewDescribeBaselineItemDetectListRequest() (request *DescribeBaselineItemDetectListRequest) {
+    request = &DescribeBaselineItemDetectListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cwp", APIVersion, "DescribeBaselineItemDetectList")
+    
+    
+    return
+}
+
+func NewDescribeBaselineItemDetectListResponse() (response *DescribeBaselineItemDetectListResponse) {
+    response = &DescribeBaselineItemDetectListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeBaselineItemDetectList
+// 获取基线检测项的列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeBaselineItemDetectList(request *DescribeBaselineItemDetectListRequest) (response *DescribeBaselineItemDetectListResponse, err error) {
+    return c.DescribeBaselineItemDetectListWithContext(context.Background(), request)
+}
+
+// DescribeBaselineItemDetectList
+// 获取基线检测项的列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeBaselineItemDetectListWithContext(ctx context.Context, request *DescribeBaselineItemDetectListRequest) (response *DescribeBaselineItemDetectListResponse, err error) {
+    if request == nil {
+        request = NewDescribeBaselineItemDetectListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBaselineItemDetectList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeBaselineItemDetectListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeBaselineItemListRequest() (request *DescribeBaselineItemListRequest) {
+    request = &DescribeBaselineItemListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cwp", APIVersion, "DescribeBaselineItemList")
+    
+    
+    return
+}
+
+func NewDescribeBaselineItemListResponse() (response *DescribeBaselineItemListResponse) {
+    response = &DescribeBaselineItemListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeBaselineItemList
+// 获取基线项检测结果列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeBaselineItemList(request *DescribeBaselineItemListRequest) (response *DescribeBaselineItemListResponse, err error) {
+    return c.DescribeBaselineItemListWithContext(context.Background(), request)
+}
+
+// DescribeBaselineItemList
+// 获取基线项检测结果列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeBaselineItemListWithContext(ctx context.Context, request *DescribeBaselineItemListRequest) (response *DescribeBaselineItemListResponse, err error) {
+    if request == nil {
+        request = NewDescribeBaselineItemListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBaselineItemList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeBaselineItemListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeBaselineListRequest() (request *DescribeBaselineListRequest) {
     request = &DescribeBaselineListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -12401,6 +12501,56 @@ func (c *Client) SetBashEventsStatusWithContext(ctx context.Context, request *Se
     return
 }
 
+func NewStartBaselineDetectRequest() (request *StartBaselineDetectRequest) {
+    request = &StartBaselineDetectRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cwp", APIVersion, "StartBaselineDetect")
+    
+    
+    return
+}
+
+func NewStartBaselineDetectResponse() (response *StartBaselineDetectResponse) {
+    response = &StartBaselineDetectResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// StartBaselineDetect
+// 检测基线
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) StartBaselineDetect(request *StartBaselineDetectRequest) (response *StartBaselineDetectResponse, err error) {
+    return c.StartBaselineDetectWithContext(context.Background(), request)
+}
+
+// StartBaselineDetect
+// 检测基线
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) StartBaselineDetectWithContext(ctx context.Context, request *StartBaselineDetectRequest) (response *StartBaselineDetectResponse, err error) {
+    if request == nil {
+        request = NewStartBaselineDetectRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("StartBaselineDetect require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewStartBaselineDetectResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewStopNoticeBanTipsRequest() (request *StopNoticeBanTipsRequest) {
     request = &StopNoticeBanTipsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -12573,6 +12723,54 @@ func (c *Client) SyncAssetScanWithContext(ctx context.Context, request *SyncAsse
     request.SetContext(ctx)
     
     response = NewSyncAssetScanResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSyncBaselineDetectSummaryRequest() (request *SyncBaselineDetectSummaryRequest) {
+    request = &SyncBaselineDetectSummaryRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cwp", APIVersion, "SyncBaselineDetectSummary")
+    
+    
+    return
+}
+
+func NewSyncBaselineDetectSummaryResponse() (response *SyncBaselineDetectSummaryResponse) {
+    response = &SyncBaselineDetectSummaryResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// SyncBaselineDetectSummary
+// 同步基线检测进度概要
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) SyncBaselineDetectSummary(request *SyncBaselineDetectSummaryRequest) (response *SyncBaselineDetectSummaryResponse, err error) {
+    return c.SyncBaselineDetectSummaryWithContext(context.Background(), request)
+}
+
+// SyncBaselineDetectSummary
+// 同步基线检测进度概要
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) SyncBaselineDetectSummaryWithContext(ctx context.Context, request *SyncBaselineDetectSummaryRequest) (response *SyncBaselineDetectSummaryResponse, err error) {
+    if request == nil {
+        request = NewSyncBaselineDetectSummaryRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SyncBaselineDetectSummary require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewSyncBaselineDetectSummaryResponse()
     err = c.Send(request, response)
     return
 }

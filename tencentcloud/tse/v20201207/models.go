@@ -1233,6 +1233,74 @@ type ServiceGovernanceInfo struct {
 	PgwVpcInfos []*VpcInfo `json:"PgwVpcInfos,omitempty" name:"PgwVpcInfos"`
 }
 
+// Predefined struct for user
+type UpdateEngineInternetAccessRequestParams struct {
+	// 引擎ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 引擎类型
+	EngineType *string `json:"EngineType,omitempty" name:"EngineType"`
+
+	// 是否开启客户端公网访问，true开 false关
+	EnableClientInternetAccess *bool `json:"EnableClientInternetAccess,omitempty" name:"EnableClientInternetAccess"`
+}
+
+type UpdateEngineInternetAccessRequest struct {
+	*tchttp.BaseRequest
+	
+	// 引擎ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 引擎类型
+	EngineType *string `json:"EngineType,omitempty" name:"EngineType"`
+
+	// 是否开启客户端公网访问，true开 false关
+	EnableClientInternetAccess *bool `json:"EnableClientInternetAccess,omitempty" name:"EnableClientInternetAccess"`
+}
+
+func (r *UpdateEngineInternetAccessRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateEngineInternetAccessRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "EngineType")
+	delete(f, "EnableClientInternetAccess")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateEngineInternetAccessRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateEngineInternetAccessResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type UpdateEngineInternetAccessResponse struct {
+	*tchttp.BaseResponse
+	Response *UpdateEngineInternetAccessResponseParams `json:"Response"`
+}
+
+func (r *UpdateEngineInternetAccessResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateEngineInternetAccessResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type VpcInfo struct {
 	// Vpc Id
 	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
