@@ -12477,6 +12477,9 @@ type MediaVideoStreamItem struct {
 
 	// 帧率，单位：hz。
 	Fps *int64 `json:"Fps,omitempty" name:"Fps"`
+
+	// 编码标签，仅当 Codec 为 hevc 时有效。
+	CodecTag *string `json:"CodecTag,omitempty" name:"CodecTag"`
 }
 
 // Predefined struct for user

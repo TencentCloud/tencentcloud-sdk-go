@@ -116,7 +116,7 @@ func NewCreateCodePackResponse() (response *CreateCodePackResponse) {
 }
 
 // CreateCodePack
-// 生成码包
+// 生成普通码包
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -127,7 +127,7 @@ func (c *Client) CreateCodePack(request *CreateCodePackRequest) (response *Creat
 }
 
 // CreateCodePack
-// 生成码包
+// 生成普通码包
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"

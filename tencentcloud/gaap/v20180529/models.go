@@ -6768,6 +6768,14 @@ type HTTPListener struct {
 	// 3表示源站调整中；
 	// 4表示配置变更中。
 	ListenerStatus *uint64 `json:"ListenerStatus,omitempty" name:"ListenerStatus"`
+
+	// 监听器的通道ID，如果监听器属于通道组，则为null
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProxyId *string `json:"ProxyId,omitempty" name:"ProxyId"`
+
+	// 监听器的通道组ID，如果监听器属于通道，则为null
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
 }
 
 type HTTPSListener struct {
@@ -6828,6 +6836,14 @@ type HTTPSListener struct {
 	// 注意：如果支持了Http3的功能，那么该监听器会占用对应的UDP接入端口，不可再创建相同端口的UDP监听器。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Http3Supported *int64 `json:"Http3Supported,omitempty" name:"Http3Supported"`
+
+	// 监听器的通道ID，如果监听器属于通道组，则为null
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProxyId *string `json:"ProxyId,omitempty" name:"ProxyId"`
+
+	// 监听器的通道组ID，如果监听器属于通道，则为null
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
 }
 
 type HttpHeaderParam struct {
@@ -9639,6 +9655,14 @@ type TCPListener struct {
 	// 是否开启会话保持选项：0关闭， 非0开启，非0值为会话保持时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SessionPersist *uint64 `json:"SessionPersist,omitempty" name:"SessionPersist"`
+
+	// 监听器的通道ID，如果监听器属于通道组，则为null
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProxyId *string `json:"ProxyId,omitempty" name:"ProxyId"`
+
+	// 监听器的通道组ID，如果监听器属于通道，则为null
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
 }
 
 type TagPair struct {
@@ -9747,4 +9771,12 @@ type UDPListener struct {
 	// UDP源站健康检查端口探测接收报文。仅在健康检查类型为PORT时使用。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RecvContext *string `json:"RecvContext,omitempty" name:"RecvContext"`
+
+	// 监听器的通道ID，如果监听器属于通道组，则为null
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProxyId *string `json:"ProxyId,omitempty" name:"ProxyId"`
+
+	// 监听器的通道组ID，如果监听器属于通道，则为null
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
 }

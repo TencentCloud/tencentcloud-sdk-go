@@ -1598,7 +1598,7 @@ type CreateTopicRequestParams struct {
 	// 日志主题的存储类型，可选值 hot（标准存储），cold（低频存储）；默认为hot。
 	StorageType *string `json:"StorageType,omitempty" name:"StorageType"`
 
-	// 生命周期，单位天，标准存储取值范围1~3600，低频存储取值范围7~3600天。取值为3640时代表永久保存
+	// 生命周期，单位天，标准存储取值范围1\~3600，低频存储取值范围7\~3600天。取值为3640时代表永久保存
 	Period *int64 `json:"Period,omitempty" name:"Period"`
 }
 
@@ -1626,7 +1626,7 @@ type CreateTopicRequest struct {
 	// 日志主题的存储类型，可选值 hot（标准存储），cold（低频存储）；默认为hot。
 	StorageType *string `json:"StorageType,omitempty" name:"StorageType"`
 
-	// 生命周期，单位天，标准存储取值范围1~3600，低频存储取值范围7~3600天。取值为3640时代表永久保存
+	// 生命周期，单位天，标准存储取值范围1\~3600，低频存储取值范围7\~3600天。取值为3640时代表永久保存
 	Period *int64 `json:"Period,omitempty" name:"Period"`
 }
 

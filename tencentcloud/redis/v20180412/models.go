@@ -3641,38 +3641,38 @@ func (r *DescribeProjectSecurityGroupResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeProjectSecurityGroupsRequestParams struct {
-	// 数据库引擎名称：mariadb,cdb,cynosdb,dcdb,redis,mongodb
+	// 数据库引擎名称，本接口取值：redis。
 	Product *string `json:"Product,omitempty" name:"Product"`
 
-	// 项目Id。
+	// 项目 ID。
 	ProjectId *uint64 `json:"ProjectId,omitempty" name:"ProjectId"`
 
-	// 偏移量。
+	// 偏移量，取值为Limit的整数倍。
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 拉取数量限制，默认20
+	// 拉取数量限制，默认 20。
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 搜索条件，支持安全组id或者安全组名称。
+	// 搜索条件，支持安全组 ID 或者安全组名称。
 	SearchKey *string `json:"SearchKey,omitempty" name:"SearchKey"`
 }
 
 type DescribeProjectSecurityGroupsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 数据库引擎名称：mariadb,cdb,cynosdb,dcdb,redis,mongodb
+	// 数据库引擎名称，本接口取值：redis。
 	Product *string `json:"Product,omitempty" name:"Product"`
 
-	// 项目Id。
+	// 项目 ID。
 	ProjectId *uint64 `json:"ProjectId,omitempty" name:"ProjectId"`
 
-	// 偏移量。
+	// 偏移量，取值为Limit的整数倍。
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 拉取数量限制，默认20
+	// 拉取数量限制，默认 20。
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 搜索条件，支持安全组id或者安全组名称。
+	// 搜索条件，支持安全组 ID 或者安全组名称。
 	SearchKey *string `json:"SearchKey,omitempty" name:"SearchKey"`
 }
 

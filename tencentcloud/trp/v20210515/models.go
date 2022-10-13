@@ -98,6 +98,10 @@ type CodeBatch struct {
 	// 模板名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TplName *string `json:"TplName,omitempty" name:"TplName"`
+
+	// 调度任务
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Job *Job `json:"Job,omitempty" name:"Job"`
 }
 
 type CodeItem struct {
@@ -327,6 +331,12 @@ type CreateMerchantRequestParams struct {
 
 	// 企业ID
 	CorpId *uint64 `json:"CorpId,omitempty" name:"CorpId"`
+
+	// 码包来源 0:自建, 1:第三发
+	CodeType *int64 `json:"CodeType,omitempty" name:"CodeType"`
+
+	// 码包前缀地址 第三方码包时必填
+	CodeUrl *string `json:"CodeUrl,omitempty" name:"CodeUrl"`
 }
 
 type CreateMerchantRequest struct {
@@ -340,6 +350,12 @@ type CreateMerchantRequest struct {
 
 	// 企业ID
 	CorpId *uint64 `json:"CorpId,omitempty" name:"CorpId"`
+
+	// 码包来源 0:自建, 1:第三发
+	CodeType *int64 `json:"CodeType,omitempty" name:"CodeType"`
+
+	// 码包前缀地址 第三方码包时必填
+	CodeUrl *string `json:"CodeUrl,omitempty" name:"CodeUrl"`
 }
 
 func (r *CreateMerchantRequest) ToJsonString() string {
@@ -357,6 +373,8 @@ func (r *CreateMerchantRequest) FromJsonString(s string) error {
 	delete(f, "Name")
 	delete(f, "Remark")
 	delete(f, "CorpId")
+	delete(f, "CodeType")
+	delete(f, "CodeUrl")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateMerchantRequest has unknown keys!", "")
 	}
@@ -1409,6 +1427,9 @@ type DescribeMerchantsRequestParams struct {
 
 	// 企业ID
 	CorpId *uint64 `json:"CorpId,omitempty" name:"CorpId"`
+
+	// 码来源类型 0:自建, 1:第三方
+	CodeType *int64 `json:"CodeType,omitempty" name:"CodeType"`
 }
 
 type DescribeMerchantsRequest struct {
@@ -1425,6 +1446,9 @@ type DescribeMerchantsRequest struct {
 
 	// 企业ID
 	CorpId *uint64 `json:"CorpId,omitempty" name:"CorpId"`
+
+	// 码来源类型 0:自建, 1:第三方
+	CodeType *int64 `json:"CodeType,omitempty" name:"CodeType"`
 }
 
 func (r *DescribeMerchantsRequest) ToJsonString() string {
@@ -1443,6 +1467,7 @@ func (r *DescribeMerchantsRequest) FromJsonString(s string) error {
 	delete(f, "PageSize")
 	delete(f, "PageNumber")
 	delete(f, "CorpId")
+	delete(f, "CodeType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeMerchantsRequest has unknown keys!", "")
 	}
@@ -1894,6 +1919,14 @@ type Ext struct {
 
 }
 
+type Job struct {
+	// 调度ID
+	JobId *int64 `json:"JobId,omitempty" name:"JobId"`
+
+	// 执行状态 init:初始化, pending: 执行中, done: 执行成功, error: 执行失败
+	Status *string `json:"Status,omitempty" name:"Status"`
+}
+
 type Merchant struct {
 	// 商户标识码
 	MerchantId *string `json:"MerchantId,omitempty" name:"MerchantId"`
@@ -1916,6 +1949,13 @@ type Merchant struct {
 
 	// 商户码规则
 	CodeRule *string `json:"CodeRule,omitempty" name:"CodeRule"`
+
+	// 码来源类型 0: 安心平台 1: 第三方码
+	CodeType *int64 `json:"CodeType,omitempty" name:"CodeType"`
+
+	// 第三方码域名前缀
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CodeUrl *string `json:"CodeUrl,omitempty" name:"CodeUrl"`
 }
 
 // Predefined struct for user
@@ -2030,6 +2070,12 @@ type ModifyMerchantRequestParams struct {
 
 	// 企业ID
 	CorpId *uint64 `json:"CorpId,omitempty" name:"CorpId"`
+
+	// 码包来源 0:自建, 1:第三码包，暂不支持修改
+	CodeType *int64 `json:"CodeType,omitempty" name:"CodeType"`
+
+	// 码包前缀地址 第三方码包时必填
+	CodeUrl *string `json:"CodeUrl,omitempty" name:"CodeUrl"`
 }
 
 type ModifyMerchantRequest struct {
@@ -2046,6 +2092,12 @@ type ModifyMerchantRequest struct {
 
 	// 企业ID
 	CorpId *uint64 `json:"CorpId,omitempty" name:"CorpId"`
+
+	// 码包来源 0:自建, 1:第三码包，暂不支持修改
+	CodeType *int64 `json:"CodeType,omitempty" name:"CodeType"`
+
+	// 码包前缀地址 第三方码包时必填
+	CodeUrl *string `json:"CodeUrl,omitempty" name:"CodeUrl"`
 }
 
 func (r *ModifyMerchantRequest) ToJsonString() string {
@@ -2064,6 +2116,8 @@ func (r *ModifyMerchantRequest) FromJsonString(s string) error {
 	delete(f, "MerchantId")
 	delete(f, "Remark")
 	delete(f, "CorpId")
+	delete(f, "CodeType")
+	delete(f, "CodeUrl")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyMerchantRequest has unknown keys!", "")
 	}
@@ -2521,6 +2575,10 @@ type PackSpec struct {
 
 	// 数量
 	Amount *uint64 `json:"Amount,omitempty" name:"Amount"`
+
+	// 码规则ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CustomId *string `json:"CustomId,omitempty" name:"CustomId"`
 }
 
 type PhaseData struct {
@@ -2702,4 +2760,8 @@ type TraceItem struct {
 	// 类型标识
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Key *string `json:"Key,omitempty" name:"Key"`
+
+	// 扩展字段
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Ext *string `json:"Ext,omitempty" name:"Ext"`
 }

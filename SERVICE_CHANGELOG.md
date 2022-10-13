@@ -1,54 +1,41 @@
 # 本版本更新包含以下内容：
 
-## 品牌经营管家(bma) 版本：2021-06-24
+## 全球应用加速(gaap) 版本：2018-05-29
 
-### 第 10 次发布
+### 第 37 次发布
 
-发布时间：2022-10-12 06:11:10
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CreateCRUserVerify](https://cloud.tencent.com/document/api/1296/79150)
-
-	* <font color="#dd0000">**修改入参**：</font>VerificationCode
-
-
-
-
-## 主机安全(cwp) 版本：2018-02-28
-
-### 第 56 次发布
-
-发布时间：2022-10-12 06:24:06
+发布时间：2022-10-13 06:28:02
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-新增接口：
+修改数据结构：
 
-* [DescribeBaselineItemDetectList](https://cloud.tencent.com/document/api/296/81351)
-* [DescribeBaselineItemList](https://cloud.tencent.com/document/api/296/81350)
-* [StartBaselineDetect](https://cloud.tencent.com/document/api/296/81349)
-* [SyncBaselineDetectSummary](https://cloud.tencent.com/document/api/296/81348)
+* [HTTPListener](https://cloud.tencent.com/document/api/608/37023#HTTPListener)
 
-新增数据结构：
+	* 新增成员：ProxyId, GroupId
 
-* [BaselineDetectParam](https://cloud.tencent.com/document/api/296/19867#BaselineDetectParam)
-* [BaselineItem](https://cloud.tencent.com/document/api/296/19867#BaselineItem)
-* [BaselineItemDetect](https://cloud.tencent.com/document/api/296/19867#BaselineItemDetect)
+* [HTTPSListener](https://cloud.tencent.com/document/api/608/37023#HTTPSListener)
+
+	* 新增成员：ProxyId, GroupId
+
+* [TCPListener](https://cloud.tencent.com/document/api/608/37023#TCPListener)
+
+	* 新增成员：ProxyId, GroupId
+
+* [UDPListener](https://cloud.tencent.com/document/api/608/37023#UDPListener)
+
+	* 新增成员：ProxyId, GroupId
+
 
 
 
 ## 云数据库 MariaDB(mariadb) 版本：2017-03-12
 
-### 第 41 次发布
+### 第 42 次发布
 
-发布时间：2022-10-12 06:43:12
+发布时间：2022-10-13 06:35:29
 
 本次发布包含了以下内容：
 
@@ -56,61 +43,71 @@
 
 <font color="#dd0000">**删除接口**：</font>
 
-* DescribeDBPerformance
-* DescribeDBPerformanceDetails
-* DescribeSqlLogs
+* DescribeDBResourceUsage
+* DescribeDBResourceUsageDetails
 
 <font color="#dd0000">**删除数据结构**：</font>
 
-* PerformanceMonitorSet
-* SqlLogItem
+* MonitorData
+* ResourceUsageMonitorSet
 
 
 
-## 腾讯云微服务引擎(tse) 版本：2020-12-07
+## T-Sec-安心平台(RP)(trp) 版本：2021-05-15
 
-### 第 28 次发布
+### 第 5 次发布
 
-发布时间：2022-10-12 07:03:55
+发布时间：2022-10-12 19:31:50
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-新增接口：
+修改接口：
 
-* [UpdateEngineInternetAccess](https://cloud.tencent.com/document/api/1364/81352)
+* [CreateMerchant](https://cloud.tencent.com/document/api/1458/75027)
+
+	* 新增入参：CodeType, CodeUrl
+
+* [DescribeMerchants](https://cloud.tencent.com/document/api/1458/75013)
+
+	* 新增入参：CodeType
+
+* [ModifyMerchant](https://cloud.tencent.com/document/api/1458/75006)
+
+	* 新增入参：CodeType, CodeUrl
+
+
+新增数据结构：
+
+* [Job](https://cloud.tencent.com/document/api/1458/75030#Job)
+
+修改数据结构：
+
+* [CodeBatch](https://cloud.tencent.com/document/api/1458/75030#CodeBatch)
+
+	* 新增成员：Job
+
+* [Merchant](https://cloud.tencent.com/document/api/1458/75030#Merchant)
+
+	* 新增成员：CodeType, CodeUrl
+
+* [PackSpec](https://cloud.tencent.com/document/api/1458/75030#PackSpec)
+
+	* 新增成员：CustomId
+
+* [TraceItem](https://cloud.tencent.com/document/api/1458/75030#TraceItem)
+
+	* 新增成员：Ext
+
 
 
 
 ## 云点播(vod) 版本：2018-07-17
 
-### 第 121 次发布
+### 第 122 次发布
 
-发布时间：2022-10-12 07:06:19
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [VideoTemplateInfo](https://cloud.tencent.com/document/api/266/31773#VideoTemplateInfo)
-
-	* 新增成员：CodecTag
-
-* [VideoTemplateInfoForUpdate](https://cloud.tencent.com/document/api/266/31773#VideoTemplateInfoForUpdate)
-
-	* 新增成员：CodecTag
-
-
-
-
-## 企业微信汽车行业版(wav) 版本：2021-01-29
-
-### 第 11 次发布
-
-发布时间：2022-10-12 07:10:28
+发布时间：2022-10-13 06:54:26
 
 本次发布包含了以下内容：
 
@@ -118,26 +115,10 @@
 
 修改数据结构：
 
-* [ClueInfoDetail](https://cloud.tencent.com/document/api/1318/56791#ClueInfoDetail)
+* [MediaVideoStreamItem](https://cloud.tencent.com/document/api/266/31773#MediaVideoStreamItem)
 
-	* 新增成员：UserName
+	* 新增成员：CodecTag
 
-
-
-
-## 数据开发治理平台 WeData(wedata) 版本：2021-08-20
-
-### 第 7 次发布
-
-发布时间：2022-10-12 07:10:44
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [CreateCustomFunction](https://cloud.tencent.com/document/api/1267/81354)
 
 
 
@@ -27866,16 +27847,16 @@
 
 新增接口：
 
-* [[DescribeBaselineItemDetectList](https://cloud.tencent.com/document/api/296/81351)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeBaselineItemList](https://cloud.tencent.com/document/api/296/81350)](https://cloud.tencent.com/document/api/#/#)
-* [[StartBaselineDetect](https://cloud.tencent.com/document/api/296/81349)](https://cloud.tencent.com/document/api/#/#)
-* [[SyncBaselineDetectSummary](https://cloud.tencent.com/document/api/296/81348)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeBaselineItemDetectList](https://cloud.tencent.com/document/api/296/81351)
+* [DescribeBaselineItemList](https://cloud.tencent.com/document/api/296/81350)
+* [StartBaselineDetect](https://cloud.tencent.com/document/api/296/81349)
+* [SyncBaselineDetectSummary](https://cloud.tencent.com/document/api/296/81348)
 
 新增数据结构：
 
-* [[BaselineDetectParam](https://cloud.tencent.com/document/api/296/19867#BaselineDetectParam)](https://cloud.tencent.com/document/api/296/19867#[BaselineDetectParam](https://cloud.tencent.com/document/api/296/19867#BaselineDetectParam))
-* [[BaselineItem](https://cloud.tencent.com/document/api/296/19867#BaselineItem)](https://cloud.tencent.com/document/api/296/19867#[BaselineItem](https://cloud.tencent.com/document/api/296/19867#BaselineItem))
-* [[BaselineItemDetect](https://cloud.tencent.com/document/api/296/19867#BaselineItemDetect)](https://cloud.tencent.com/document/api/296/19867#[BaselineItemDetect](https://cloud.tencent.com/document/api/296/19867#BaselineItemDetect))
+* [BaselineDetectParam](https://cloud.tencent.com/document/api/296/19867#BaselineDetectParam)
+* [BaselineItem](https://cloud.tencent.com/document/api/296/19867#BaselineItem)
+* [BaselineItemDetect](https://cloud.tencent.com/document/api/296/19867#BaselineItemDetect)
 
 ### 第 55 次发布
 
@@ -41241,6 +41222,33 @@
 
 ## 全球应用加速(gaap) 版本：2018-05-29
 
+### 第 37 次发布
+
+发布时间：2022-10-13 06:28:02
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [HTTPListener](https://cloud.tencent.com/document/api/608/37023#HTTPListener)
+
+	* 新增成员：ProxyId, GroupId
+
+* [HTTPSListener](https://cloud.tencent.com/document/api/608/37023#HTTPSListener)
+
+	* 新增成员：ProxyId, GroupId
+
+* [TCPListener](https://cloud.tencent.com/document/api/608/37023#TCPListener)
+
+	* 新增成员：ProxyId, GroupId
+
+* [UDPListener](https://cloud.tencent.com/document/api/608/37023#UDPListener)
+
+	* 新增成员：ProxyId, GroupId
+
+
 ### 第 36 次发布
 
 发布时间：2022-09-01 06:29:26
@@ -52446,6 +52454,24 @@
 
 
 ## 云数据库 MariaDB(mariadb) 版本：2017-03-12
+
+### 第 42 次发布
+
+发布时间：2022-10-13 06:35:29
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除接口**：</font>
+
+* DescribeDBResourceUsage
+* DescribeDBResourceUsageDetails
+
+<font color="#dd0000">**删除数据结构**：</font>
+
+* MonitorData
+* ResourceUsageMonitorSet
 
 ### 第 41 次发布
 
@@ -81970,6 +81996,52 @@
 
 ## T-Sec-安心平台(RP)(trp) 版本：2021-05-15
 
+### 第 5 次发布
+
+发布时间：2022-10-12 19:31:50
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateMerchant](https://cloud.tencent.com/document/api/1458/75027)
+
+	* 新增入参：CodeType, CodeUrl
+
+* [DescribeMerchants](https://cloud.tencent.com/document/api/1458/75013)
+
+	* 新增入参：CodeType
+
+* [ModifyMerchant](https://cloud.tencent.com/document/api/1458/75006)
+
+	* 新增入参：CodeType, CodeUrl
+
+
+新增数据结构：
+
+* [[Job](https://cloud.tencent.com/document/api/1458/75030#Job)](https://cloud.tencent.com/document/api/1458/75030#[Job](https://cloud.tencent.com/document/api/1458/75030#Job))
+
+修改数据结构：
+
+* [CodeBatch](https://cloud.tencent.com/document/api/1458/75030#CodeBatch)
+
+	* 新增成员：Job
+
+* [Merchant](https://cloud.tencent.com/document/api/1458/75030#Merchant)
+
+	* 新增成员：CodeType, CodeUrl
+
+* [PackSpec](https://cloud.tencent.com/document/api/1458/75030#PackSpec)
+
+	* 新增成员：CustomId
+
+* [TraceItem](https://cloud.tencent.com/document/api/1458/75030#TraceItem)
+
+	* 新增成员：Ext
+
+
 ### 第 4 次发布
 
 发布时间：2022-09-02 07:00:24
@@ -82796,7 +82868,7 @@
 
 新增接口：
 
-* [[UpdateEngineInternetAccess](https://cloud.tencent.com/document/api/1364/81352)](https://cloud.tencent.com/document/api/#/#)
+* [UpdateEngineInternetAccess](https://cloud.tencent.com/document/api/1364/81352)
 
 ### 第 27 次发布
 
@@ -86044,6 +86116,21 @@
 
 
 ## 云点播(vod) 版本：2018-07-17
+
+### 第 122 次发布
+
+发布时间：2022-10-13 06:54:26
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [MediaVideoStreamItem](https://cloud.tencent.com/document/api/266/31773#MediaVideoStreamItem)
+
+	* 新增成员：CodecTag
+
 
 ### 第 121 次发布
 
@@ -92857,7 +92944,7 @@
 
 新增接口：
 
-* [[CreateCustomFunction](https://cloud.tencent.com/document/api/1267/81354)](https://cloud.tencent.com/document/api/#/#)
+* [CreateCustomFunction](https://cloud.tencent.com/document/api/1267/81354)
 
 ### 第 6 次发布
 

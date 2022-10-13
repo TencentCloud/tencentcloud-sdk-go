@@ -1,3 +1,127 @@
+# Release v1.0.513
+
+## 全球应用加速(gaap) 版本：2018-05-29
+
+### 第 37 次发布
+
+发布时间：2022-10-13 06:28:02
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [HTTPListener](https://cloud.tencent.com/document/api/608/37023#HTTPListener)
+
+	* 新增成员：ProxyId, GroupId
+
+* [HTTPSListener](https://cloud.tencent.com/document/api/608/37023#HTTPSListener)
+
+	* 新增成员：ProxyId, GroupId
+
+* [TCPListener](https://cloud.tencent.com/document/api/608/37023#TCPListener)
+
+	* 新增成员：ProxyId, GroupId
+
+* [UDPListener](https://cloud.tencent.com/document/api/608/37023#UDPListener)
+
+	* 新增成员：ProxyId, GroupId
+
+
+
+
+## 云数据库 MariaDB(mariadb) 版本：2017-03-12
+
+### 第 42 次发布
+
+发布时间：2022-10-13 06:35:29
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除接口**：</font>
+
+* DescribeDBResourceUsage
+* DescribeDBResourceUsageDetails
+
+<font color="#dd0000">**删除数据结构**：</font>
+
+* MonitorData
+* ResourceUsageMonitorSet
+
+
+
+## T-Sec-安心平台(RP)(trp) 版本：2021-05-15
+
+### 第 5 次发布
+
+发布时间：2022-10-12 19:31:50
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateMerchant](https://cloud.tencent.com/document/api/1458/75027)
+
+	* 新增入参：CodeType, CodeUrl
+
+* [DescribeMerchants](https://cloud.tencent.com/document/api/1458/75013)
+
+	* 新增入参：CodeType
+
+* [ModifyMerchant](https://cloud.tencent.com/document/api/1458/75006)
+
+	* 新增入参：CodeType, CodeUrl
+
+
+新增数据结构：
+
+* [Job](https://cloud.tencent.com/document/api/1458/75030#Job)
+
+修改数据结构：
+
+* [CodeBatch](https://cloud.tencent.com/document/api/1458/75030#CodeBatch)
+
+	* 新增成员：Job
+
+* [Merchant](https://cloud.tencent.com/document/api/1458/75030#Merchant)
+
+	* 新增成员：CodeType, CodeUrl
+
+* [PackSpec](https://cloud.tencent.com/document/api/1458/75030#PackSpec)
+
+	* 新增成员：CustomId
+
+* [TraceItem](https://cloud.tencent.com/document/api/1458/75030#TraceItem)
+
+	* 新增成员：Ext
+
+
+
+
+## 云点播(vod) 版本：2018-07-17
+
+### 第 122 次发布
+
+发布时间：2022-10-13 06:54:26
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [MediaVideoStreamItem](https://cloud.tencent.com/document/api/266/31773#MediaVideoStreamItem)
+
+	* 新增成员：CodecTag
+
+
+
+
 # Release v1.0.512
 
 ## 品牌经营管家(bma) 版本：2021-06-24
