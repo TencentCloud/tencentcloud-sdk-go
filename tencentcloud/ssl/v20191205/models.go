@@ -57,6 +57,9 @@ type ApplyCertificateRequestParams struct {
 
 	// 原证书 ID，用于重新申请。
 	OldCertificateId *string `json:"OldCertificateId,omitempty" name:"OldCertificateId"`
+
+	// 权益包ID，用于免费证书扩容包使用
+	PackageId *string `json:"PackageId,omitempty" name:"PackageId"`
 }
 
 type ApplyCertificateRequest struct {
@@ -97,6 +100,9 @@ type ApplyCertificateRequest struct {
 
 	// 原证书 ID，用于重新申请。
 	OldCertificateId *string `json:"OldCertificateId,omitempty" name:"OldCertificateId"`
+
+	// 权益包ID，用于免费证书扩容包使用
+	PackageId *string `json:"PackageId,omitempty" name:"PackageId"`
 }
 
 func (r *ApplyCertificateRequest) ToJsonString() string {
@@ -123,6 +129,7 @@ func (r *ApplyCertificateRequest) FromJsonString(s string) error {
 	delete(f, "CsrKeyPassword")
 	delete(f, "Alias")
 	delete(f, "OldCertificateId")
+	delete(f, "PackageId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ApplyCertificateRequest has unknown keys!", "")
 	}

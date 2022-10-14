@@ -605,6 +605,74 @@ func (c *Client) DescribeExternalTrtcMeasureWithContext(ctx context.Context, req
     return
 }
 
+func NewDescribeMixTranscodingUsageRequest() (request *DescribeMixTranscodingUsageRequest) {
+    request = &DescribeMixTranscodingUsageRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trtc", APIVersion, "DescribeMixTranscodingUsage")
+    
+    
+    return
+}
+
+func NewDescribeMixTranscodingUsageResponse() (response *DescribeMixTranscodingUsageResponse) {
+    response = &DescribeMixTranscodingUsageResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeMixTranscodingUsage
+// 获取TRTC混流转码的用量明细。
+//
+// - 查询时间小于等于1天时，返回每5分钟粒度的数据；查询时间大于1天时，返回按天汇总的数据。
+//
+// - 单次查询统计区间最多不能超过31天。
+//
+// - 若查询当天用量，由于统计延迟等原因，返回数据可能不够准确。
+//
+// - 该接口只用于历史用量数据统计或核对数据使用，关键业务逻辑不能使用。
+//
+// - 默认接口请求频率限制：5次/秒。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+func (c *Client) DescribeMixTranscodingUsage(request *DescribeMixTranscodingUsageRequest) (response *DescribeMixTranscodingUsageResponse, err error) {
+    return c.DescribeMixTranscodingUsageWithContext(context.Background(), request)
+}
+
+// DescribeMixTranscodingUsage
+// 获取TRTC混流转码的用量明细。
+//
+// - 查询时间小于等于1天时，返回每5分钟粒度的数据；查询时间大于1天时，返回按天汇总的数据。
+//
+// - 单次查询统计区间最多不能超过31天。
+//
+// - 若查询当天用量，由于统计延迟等原因，返回数据可能不够准确。
+//
+// - 该接口只用于历史用量数据统计或核对数据使用，关键业务逻辑不能使用。
+//
+// - 默认接口请求频率限制：5次/秒。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+func (c *Client) DescribeMixTranscodingUsageWithContext(ctx context.Context, request *DescribeMixTranscodingUsageRequest) (response *DescribeMixTranscodingUsageResponse, err error) {
+    if request == nil {
+        request = NewDescribeMixTranscodingUsageRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeMixTranscodingUsage require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeMixTranscodingUsageResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribePictureRequest() (request *DescribePictureRequest) {
     request = &DescribePictureRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -737,6 +805,162 @@ func (c *Client) DescribeRecordStatisticWithContext(ctx context.Context, request
     request.SetContext(ctx)
     
     response = NewDescribeRecordStatisticResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeRecordingUsageRequest() (request *DescribeRecordingUsageRequest) {
+    request = &DescribeRecordingUsageRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trtc", APIVersion, "DescribeRecordingUsage")
+    
+    
+    return
+}
+
+func NewDescribeRecordingUsageResponse() (response *DescribeRecordingUsageResponse) {
+    response = &DescribeRecordingUsageResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeRecordingUsage
+// 获取TRTC录制的用量明细。
+//
+// - 查询时间小于等于1天时，返回每5分钟粒度的数据；查询时间大于1天时，返回按天汇总的数据。
+//
+// - 单次查询统计区间最多不能超过31天。
+//
+// - 若查询当天用量，由于统计延迟等原因，返回数据可能不够准确。
+//
+// - 该接口只用于历史用量数据统计或核对数据使用，关键业务逻辑不能使用。
+//
+// - 默认接口请求频率限制：5次/秒。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNREALNAMEAUTHENTICATED = "AuthFailure.UnRealNameAuthenticated"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_APPID = "InvalidParameter.AppId"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+func (c *Client) DescribeRecordingUsage(request *DescribeRecordingUsageRequest) (response *DescribeRecordingUsageResponse, err error) {
+    return c.DescribeRecordingUsageWithContext(context.Background(), request)
+}
+
+// DescribeRecordingUsage
+// 获取TRTC录制的用量明细。
+//
+// - 查询时间小于等于1天时，返回每5分钟粒度的数据；查询时间大于1天时，返回按天汇总的数据。
+//
+// - 单次查询统计区间最多不能超过31天。
+//
+// - 若查询当天用量，由于统计延迟等原因，返回数据可能不够准确。
+//
+// - 该接口只用于历史用量数据统计或核对数据使用，关键业务逻辑不能使用。
+//
+// - 默认接口请求频率限制：5次/秒。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNREALNAMEAUTHENTICATED = "AuthFailure.UnRealNameAuthenticated"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_APPID = "InvalidParameter.AppId"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+func (c *Client) DescribeRecordingUsageWithContext(ctx context.Context, request *DescribeRecordingUsageRequest) (response *DescribeRecordingUsageResponse, err error) {
+    if request == nil {
+        request = NewDescribeRecordingUsageRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRecordingUsage require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeRecordingUsageResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeRelayUsageRequest() (request *DescribeRelayUsageRequest) {
+    request = &DescribeRelayUsageRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trtc", APIVersion, "DescribeRelayUsage")
+    
+    
+    return
+}
+
+func NewDescribeRelayUsageResponse() (response *DescribeRelayUsageResponse) {
+    response = &DescribeRelayUsageResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeRelayUsage
+// 获取TRTC旁路转推的用量明细。
+//
+// - 查询时间小于等于1天时，返回每5分钟粒度的数据；查询时间大于1天时，返回按天汇总的数据。
+//
+// - 单次查询统计区间最多不能超过31天。
+//
+// - 若查询当天用量，由于统计延迟等原因，返回数据可能不够准确。
+//
+// - 该接口只用于历史用量数据统计或核对数据使用，关键业务逻辑不能使用。
+//
+// - 默认接口请求频率限制：5次/秒。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNREALNAMEAUTHENTICATED = "AuthFailure.UnRealNameAuthenticated"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_APPID = "InvalidParameter.AppId"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+func (c *Client) DescribeRelayUsage(request *DescribeRelayUsageRequest) (response *DescribeRelayUsageResponse, err error) {
+    return c.DescribeRelayUsageWithContext(context.Background(), request)
+}
+
+// DescribeRelayUsage
+// 获取TRTC旁路转推的用量明细。
+//
+// - 查询时间小于等于1天时，返回每5分钟粒度的数据；查询时间大于1天时，返回按天汇总的数据。
+//
+// - 单次查询统计区间最多不能超过31天。
+//
+// - 若查询当天用量，由于统计延迟等原因，返回数据可能不够准确。
+//
+// - 该接口只用于历史用量数据统计或核对数据使用，关键业务逻辑不能使用。
+//
+// - 默认接口请求频率限制：5次/秒。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNREALNAMEAUTHENTICATED = "AuthFailure.UnRealNameAuthenticated"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_APPID = "InvalidParameter.AppId"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+func (c *Client) DescribeRelayUsageWithContext(ctx context.Context, request *DescribeRelayUsageRequest) (response *DescribeRelayUsageResponse, err error) {
+    if request == nil {
+        request = NewDescribeRelayUsageRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRelayUsage require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeRelayUsageResponse()
     err = c.Send(request, response)
     return
 }
@@ -983,6 +1207,80 @@ func (c *Client) DescribeTrtcMcuTranscodeTimeWithContext(ctx context.Context, re
     request.SetContext(ctx)
     
     response = NewDescribeTrtcMcuTranscodeTimeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeTrtcUsageRequest() (request *DescribeTrtcUsageRequest) {
+    request = &DescribeTrtcUsageRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trtc", APIVersion, "DescribeTrtcUsage")
+    
+    
+    return
+}
+
+func NewDescribeTrtcUsageResponse() (response *DescribeTrtcUsageResponse) {
+    response = &DescribeTrtcUsageResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeTrtcUsage
+// 获取TRTC音视频互动的用量明细。
+//
+// - 查询时间小于等于1天时，返回每5分钟粒度的数据；查询时间大于1天时，返回按天汇总的数据。
+//
+// - 单次查询统计区间最多不能超过31天。
+//
+// - 若查询当天用量，由于统计延迟等原因，返回数据可能不够准确。
+//
+// - 该接口只用于历史用量数据统计或核对数据使用，关键业务逻辑不能使用。
+//
+// - 默认接口请求频率限制：5次/秒。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+func (c *Client) DescribeTrtcUsage(request *DescribeTrtcUsageRequest) (response *DescribeTrtcUsageResponse, err error) {
+    return c.DescribeTrtcUsageWithContext(context.Background(), request)
+}
+
+// DescribeTrtcUsage
+// 获取TRTC音视频互动的用量明细。
+//
+// - 查询时间小于等于1天时，返回每5分钟粒度的数据；查询时间大于1天时，返回按天汇总的数据。
+//
+// - 单次查询统计区间最多不能超过31天。
+//
+// - 若查询当天用量，由于统计延迟等原因，返回数据可能不够准确。
+//
+// - 该接口只用于历史用量数据统计或核对数据使用，关键业务逻辑不能使用。
+//
+// - 默认接口请求频率限制：5次/秒。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+func (c *Client) DescribeTrtcUsageWithContext(ctx context.Context, request *DescribeTrtcUsageRequest) (response *DescribeTrtcUsageResponse, err error) {
+    if request == nil {
+        request = NewDescribeTrtcUsageRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTrtcUsage require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTrtcUsageResponse()
     err = c.Send(request, response)
     return
 }

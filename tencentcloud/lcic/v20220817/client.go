@@ -45,6 +45,58 @@ func NewClient(credential common.CredentialIface, region string, clientProfile *
 }
 
 
+func NewCreateDocumentRequest() (request *CreateDocumentRequest) {
+    request = &CreateDocumentRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lcic", APIVersion, "CreateDocument")
+    
+    
+    return
+}
+
+func NewCreateDocumentResponse() (response *CreateDocumentResponse) {
+    response = &CreateDocumentResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateDocument
+// 创建房间内可以使用的文档。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+//  RESOURCENOTFOUND_USER = "ResourceNotFound.User"
+func (c *Client) CreateDocument(request *CreateDocumentRequest) (response *CreateDocumentResponse, err error) {
+    return c.CreateDocumentWithContext(context.Background(), request)
+}
+
+// CreateDocument
+// 创建房间内可以使用的文档。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+//  RESOURCENOTFOUND_USER = "ResourceNotFound.User"
+func (c *Client) CreateDocumentWithContext(ctx context.Context, request *CreateDocumentRequest) (response *CreateDocumentResponse, err error) {
+    if request == nil {
+        request = NewCreateDocumentRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateDocument require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateDocumentResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateRoomRequest() (request *CreateRoomRequest) {
     request = &CreateRoomRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -413,6 +465,58 @@ func (c *Client) RegisterUserWithContext(ctx context.Context, request *RegisterU
     request.SetContext(ctx)
     
     response = NewRegisterUserResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSetAppCustomContentRequest() (request *SetAppCustomContentRequest) {
+    request = &SetAppCustomContentRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lcic", APIVersion, "SetAppCustomContent")
+    
+    
+    return
+}
+
+func NewSetAppCustomContentResponse() (response *SetAppCustomContentResponse) {
+    response = &SetAppCustomContentResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// SetAppCustomContent
+// 设置应用的自定义内容，包括应用图标，自定义的代码等。如果已存在，则为更新。更新js、css内容后，要生效也需要调用该接口
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+func (c *Client) SetAppCustomContent(request *SetAppCustomContentRequest) (response *SetAppCustomContentResponse, err error) {
+    return c.SetAppCustomContentWithContext(context.Background(), request)
+}
+
+// SetAppCustomContent
+// 设置应用的自定义内容，包括应用图标，自定义的代码等。如果已存在，则为更新。更新js、css内容后，要生效也需要调用该接口
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+func (c *Client) SetAppCustomContentWithContext(ctx context.Context, request *SetAppCustomContentRequest) (response *SetAppCustomContentResponse, err error) {
+    if request == nil {
+        request = NewSetAppCustomContentRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SetAppCustomContent require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewSetAppCustomContentResponse()
     err = c.Send(request, response)
     return
 }

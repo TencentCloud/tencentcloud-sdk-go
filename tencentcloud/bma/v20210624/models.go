@@ -21,56 +21,56 @@ import (
 )
 
 type BrandData struct {
-	// xxx
+	// 商标名称
 	BrandName *string `json:"BrandName,omitempty" name:"BrandName"`
 
-	// xxx
+	// 商标证明
 	BrandCertificateName *string `json:"BrandCertificateName,omitempty" name:"BrandCertificateName"`
 
-	// xxx
+	// 商标审核状态 1-审核中 2-审核未通过 3-审核通过
 	BrandStatus *int64 `json:"BrandStatus,omitempty" name:"BrandStatus"`
 
-	// xxx
+	// 审核说明
 	BrandNote *string `json:"BrandNote,omitempty" name:"BrandNote"`
 
-	// xxx
+	// 商标转让证明
 	TransferName *string `json:"TransferName,omitempty" name:"TransferName"`
 
-	// xxx
+	// 商标转让证明审核状态
 	TransferStatus *int64 `json:"TransferStatus,omitempty" name:"TransferStatus"`
 
-	// xxx
+	// 审核说明 1-审核中 2-审核未通过 3-审核通过
 	TransferNote *string `json:"TransferNote,omitempty" name:"TransferNote"`
 }
 
 // Predefined struct for user
 type CreateBPFakeURLRequestParams struct {
-	// xxx
+	// 保护网址ID
 	ProtectURLId *int64 `json:"ProtectURLId,omitempty" name:"ProtectURLId"`
 
-	// xxx
+	// 仿冒网址
 	FakeURL *string `json:"FakeURL,omitempty" name:"FakeURL"`
 
-	// xxx
+	// 截图
 	SnapshotNames []*string `json:"SnapshotNames,omitempty" name:"SnapshotNames"`
 
-	// xxx
+	// 举报说明
 	Note *string `json:"Note,omitempty" name:"Note"`
 }
 
 type CreateBPFakeURLRequest struct {
 	*tchttp.BaseRequest
 	
-	// xxx
+	// 保护网址ID
 	ProtectURLId *int64 `json:"ProtectURLId,omitempty" name:"ProtectURLId"`
 
-	// xxx
+	// 仿冒网址
 	FakeURL *string `json:"FakeURL,omitempty" name:"FakeURL"`
 
-	// xxx
+	// 截图
 	SnapshotNames []*string `json:"SnapshotNames,omitempty" name:"SnapshotNames"`
 
-	// xxx
+	// 举报说明
 	Note *string `json:"Note,omitempty" name:"Note"`
 }
 
@@ -120,14 +120,14 @@ func (r *CreateBPFakeURLResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateBPFalseTicketRequestParams struct {
-	// xxx
+	// 仿冒网址
 	FakeURL *string `json:"FakeURL,omitempty" name:"FakeURL"`
 }
 
 type CreateBPFalseTicketRequest struct {
 	*tchttp.BaseRequest
 	
-	// xxx
+	// 仿冒网址
 	FakeURL *string `json:"FakeURL,omitempty" name:"FakeURL"`
 }
 
@@ -174,32 +174,32 @@ func (r *CreateBPFalseTicketResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateBPOfflineAttachmentRequestParams struct {
-	// xxx
+	// 品牌名字
 	BrandName *string `json:"BrandName,omitempty" name:"BrandName"`
 
-	// xx
+	// 商标证明
 	BrandCertificateName *string `json:"BrandCertificateName,omitempty" name:"BrandCertificateName"`
 
-	// xx
+	// 商标转让证明
 	TransferName *string `json:"TransferName,omitempty" name:"TransferName"`
 
-	// xx
+	// 授权书
 	AuthorizationName *string `json:"AuthorizationName,omitempty" name:"AuthorizationName"`
 }
 
 type CreateBPOfflineAttachmentRequest struct {
 	*tchttp.BaseRequest
 	
-	// xxx
+	// 品牌名字
 	BrandName *string `json:"BrandName,omitempty" name:"BrandName"`
 
-	// xx
+	// 商标证明
 	BrandCertificateName *string `json:"BrandCertificateName,omitempty" name:"BrandCertificateName"`
 
-	// xx
+	// 商标转让证明
 	TransferName *string `json:"TransferName,omitempty" name:"TransferName"`
 
-	// xx
+	// 授权书
 	AuthorizationName *string `json:"AuthorizationName,omitempty" name:"AuthorizationName"`
 }
 
@@ -249,14 +249,14 @@ func (r *CreateBPOfflineAttachmentResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateBPOfflineTicketRequestParams struct {
-	// xxx
+	// 仿冒网址ID
 	FakeURLId *int64 `json:"FakeURLId,omitempty" name:"FakeURLId"`
 }
 
 type CreateBPOfflineTicketRequest struct {
 	*tchttp.BaseRequest
 	
-	// xxx
+	// 仿冒网址ID
 	FakeURLId *int64 `json:"FakeURLId,omitempty" name:"FakeURLId"`
 }
 
@@ -303,38 +303,38 @@ func (r *CreateBPOfflineTicketResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateBPProtectURLsRequestParams struct {
-	// xxx
+	// 企业名称
 	CompanyName *string `json:"CompanyName,omitempty" name:"CompanyName"`
 
-	// xxx
+	// 电话号码
 	Phone *string `json:"Phone,omitempty" name:"Phone"`
 
-	// xxx
+	// 营业执照
 	LicenseName *string `json:"LicenseName,omitempty" name:"LicenseName"`
 
-	// xxx
+	// 保护网站
 	ProtectURLs []*string `json:"ProtectURLs,omitempty" name:"ProtectURLs"`
 
-	// xxx
+	// 网站名称
 	ProtectWebs []*string `json:"ProtectWebs,omitempty" name:"ProtectWebs"`
 }
 
 type CreateBPProtectURLsRequest struct {
 	*tchttp.BaseRequest
 	
-	// xxx
+	// 企业名称
 	CompanyName *string `json:"CompanyName,omitempty" name:"CompanyName"`
 
-	// xxx
+	// 电话号码
 	Phone *string `json:"Phone,omitempty" name:"Phone"`
 
-	// xxx
+	// 营业执照
 	LicenseName *string `json:"LicenseName,omitempty" name:"LicenseName"`
 
-	// xxx
+	// 保护网站
 	ProtectURLs []*string `json:"ProtectURLs,omitempty" name:"ProtectURLs"`
 
-	// xxx
+	// 网站名称
 	ProtectWebs []*string `json:"ProtectWebs,omitempty" name:"ProtectWebs"`
 }
 
@@ -1385,34 +1385,34 @@ func (r *DescribeBPCompanyInfoRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeBPCompanyInfoResponseParams struct {
-	// xx
+	// 企业名称
 	CompanyName *string `json:"CompanyName,omitempty" name:"CompanyName"`
 
-	// xx
+	// 电话号码
 	Phone *string `json:"Phone,omitempty" name:"Phone"`
 
-	// xx
+	// 营业执照
 	LicenseName *string `json:"LicenseName,omitempty" name:"LicenseName"`
 
-	// xx
+	// 营业执照审核状态 1-审核中 2-审核未通过，3、审核通过
 	LicenseStatus *int64 `json:"LicenseStatus,omitempty" name:"LicenseStatus"`
 
-	// xx
+	// 营业执照备注
 	LicenseNote *string `json:"LicenseNote,omitempty" name:"LicenseNote"`
 
-	// xx
+	// 授权书
 	AuthorizationName *string `json:"AuthorizationName,omitempty" name:"AuthorizationName"`
 
-	// xx
+	// 授权书审核状态
 	AuthorizationStatus *int64 `json:"AuthorizationStatus,omitempty" name:"AuthorizationStatus"`
 
-	// xx
+	// 授权书备注
 	AuthorizationNote *string `json:"AuthorizationNote,omitempty" name:"AuthorizationNote"`
 
-	// xx
+	// 品牌信息
 	BrandDatas []*BrandData `json:"BrandDatas,omitempty" name:"BrandDatas"`
 
-	// xx
+	// 企业ID
 	CompanyId *int64 `json:"CompanyId,omitempty" name:"CompanyId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1437,26 +1437,26 @@ func (r *DescribeBPCompanyInfoResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeBPFakeURLsRequestParams struct {
-	// xxx
+	// 过滤条件
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
-	// xxx
+	// 页数
 	PageSize *int64 `json:"PageSize,omitempty" name:"PageSize"`
 
-	// xxx
+	// 页码
 	PageNumber *int64 `json:"PageNumber,omitempty" name:"PageNumber"`
 }
 
 type DescribeBPFakeURLsRequest struct {
 	*tchttp.BaseRequest
 	
-	// xxx
+	// 过滤条件
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
-	// xxx
+	// 页数
 	PageSize *int64 `json:"PageSize,omitempty" name:"PageSize"`
 
-	// xxx
+	// 页码
 	PageNumber *int64 `json:"PageNumber,omitempty" name:"PageNumber"`
 }
 
@@ -1514,20 +1514,20 @@ func (r *DescribeBPFakeURLsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeBPProtectURLsRequestParams struct {
-	// xxx
+	// 页数
 	PageSize *int64 `json:"PageSize,omitempty" name:"PageSize"`
 
-	// xxx
+	// 页码
 	PageNumber *int64 `json:"PageNumber,omitempty" name:"PageNumber"`
 }
 
 type DescribeBPProtectURLsRequest struct {
 	*tchttp.BaseRequest
 	
-	// xxx
+	// 页数
 	PageSize *int64 `json:"PageSize,omitempty" name:"PageSize"`
 
-	// xxx
+	// 页码
 	PageNumber *int64 `json:"PageNumber,omitempty" name:"PageNumber"`
 }
 
@@ -1581,26 +1581,26 @@ func (r *DescribeBPProtectURLsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeBPReportFakeURLsRequestParams struct {
-	// xxx
+	// 过滤条件
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
-	// xxx
+	// 页数
 	PageSize *int64 `json:"PageSize,omitempty" name:"PageSize"`
 
-	// xxx
+	// 页码
 	PageNumber *int64 `json:"PageNumber,omitempty" name:"PageNumber"`
 }
 
 type DescribeBPReportFakeURLsRequest struct {
 	*tchttp.BaseRequest
 	
-	// xxx
+	// 过滤条件
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
-	// xxx
+	// 页数
 	PageSize *int64 `json:"PageSize,omitempty" name:"PageSize"`
 
-	// xxx
+	// 页码
 	PageNumber *int64 `json:"PageNumber,omitempty" name:"PageNumber"`
 }
 
@@ -1932,66 +1932,66 @@ func (r *DescribeCRWorkInfoResponse) FromJsonString(s string) error {
 }
 
 type FakeURLInfo struct {
-	// xxx
+	// 仿冒网址ID
 	FakeURLId *int64 `json:"FakeURLId,omitempty" name:"FakeURLId"`
 
-	// xxx
+	// 保护网站
 	ProtectWeb *string `json:"ProtectWeb,omitempty" name:"ProtectWeb"`
 
-	// xxx
+	// 检测时间
 	DetectTime *string `json:"DetectTime,omitempty" name:"DetectTime"`
 
-	// xxx
+	// 仿冒网址
 	FakeURL *string `json:"FakeURL,omitempty" name:"FakeURL"`
 
-	// xxx
+	// 截图
 	Snapshot *string `json:"Snapshot,omitempty" name:"Snapshot"`
 
-	// xxx
+	// IP地址
 	IP *string `json:"IP,omitempty" name:"IP"`
 
-	// xxx
+	// IP地理位置
 	IPLoc *string `json:"IPLoc,omitempty" name:"IPLoc"`
 
-	// xxx
+	// 热度
 	Heat *int64 `json:"Heat,omitempty" name:"Heat"`
 
-	// xxx
+	// 网址状态
 	Status *int64 `json:"Status,omitempty" name:"Status"`
 
-	// xxx
+	// 备注
 	Note *string `json:"Note,omitempty" name:"Note"`
 
-	// xxx
+	// 仿冒网站所属单位
 	FakeURLCompany *string `json:"FakeURLCompany,omitempty" name:"FakeURLCompany"`
 
-	// xxx
+	// 仿冒网站性质
 	FakeURLAttr *string `json:"FakeURLAttr,omitempty" name:"FakeURLAttr"`
 
-	// xxx
+	// 仿冒网站名称
 	FakeURLName *string `json:"FakeURLName,omitempty" name:"FakeURLName"`
 
-	// xxx
+	// 仿冒网站备案号
 	FakeURLICP *string `json:"FakeURLICP,omitempty" name:"FakeURLICP"`
 
-	// xxx
+	// 仿冒网站创建时间
 	FakeURLCreateTime *string `json:"FakeURLCreateTime,omitempty" name:"FakeURLCreateTime"`
 
-	// xxx
+	// 仿冒网站过期时间
 	FakeURLExpireTime *string `json:"FakeURLExpireTime,omitempty" name:"FakeURLExpireTime"`
 }
 
 type File struct {
-	// xxx
+	// 文件下载地址
 	FileUrl *string `json:"FileUrl,omitempty" name:"FileUrl"`
 
-	// xxx
+	// 文件类型 1-委托书 2-授权书 5-存证证书 11-营业执照
 	FileType *int64 `json:"FileType,omitempty" name:"FileType"`
 
-	// xxx
+	// 文件有效开始日期
 	ValidStartDate *string `json:"ValidStartDate,omitempty" name:"ValidStartDate"`
 
-	// xxx
+	// 文件有效截止日期
 	ValidEndDate *string `json:"ValidEndDate,omitempty" name:"ValidEndDate"`
 }
 
@@ -2001,38 +2001,38 @@ type Filter struct {
 
 // Predefined struct for user
 type ModifyBPOfflineAttachmentRequestParams struct {
-	// xx
+	// 营业执照
 	LicenseName *string `json:"LicenseName,omitempty" name:"LicenseName"`
 
-	// xx
+	// 授权书
 	AuthorizationName *string `json:"AuthorizationName,omitempty" name:"AuthorizationName"`
 
-	// xx
+	// 商标名称
 	BrandName *string `json:"BrandName,omitempty" name:"BrandName"`
 
-	// xx
+	// 商标证明
 	BrandCertificateName *string `json:"BrandCertificateName,omitempty" name:"BrandCertificateName"`
 
-	// xx
+	// 商标转让证明
 	TransferName *string `json:"TransferName,omitempty" name:"TransferName"`
 }
 
 type ModifyBPOfflineAttachmentRequest struct {
 	*tchttp.BaseRequest
 	
-	// xx
+	// 营业执照
 	LicenseName *string `json:"LicenseName,omitempty" name:"LicenseName"`
 
-	// xx
+	// 授权书
 	AuthorizationName *string `json:"AuthorizationName,omitempty" name:"AuthorizationName"`
 
-	// xx
+	// 商标名称
 	BrandName *string `json:"BrandName,omitempty" name:"BrandName"`
 
-	// xx
+	// 商标证明
 	BrandCertificateName *string `json:"BrandCertificateName,omitempty" name:"BrandCertificateName"`
 
-	// xx
+	// 商标转让证明
 	TransferName *string `json:"TransferName,omitempty" name:"TransferName"`
 }
 
@@ -2221,7 +2221,7 @@ type ModifyCRObtainStatusRequestParams struct {
 	// 过程取证的取证时长，单位分钟，范围0-120
 	ObtainDuration *int64 `json:"ObtainDuration,omitempty" name:"ObtainDuration"`
 
-	// 结果回调地址
+	// 取证结果回调地址
 	ObtainUrl *string `json:"ObtainUrl,omitempty" name:"ObtainUrl"`
 }
 
@@ -2237,7 +2237,7 @@ type ModifyCRObtainStatusRequest struct {
 	// 过程取证的取证时长，单位分钟，范围0-120
 	ObtainDuration *int64 `json:"ObtainDuration,omitempty" name:"ObtainDuration"`
 
-	// 结果回调地址
+	// 取证结果回调地址
 	ObtainUrl *string `json:"ObtainUrl,omitempty" name:"ObtainUrl"`
 }
 
@@ -2547,83 +2547,83 @@ type MonitorTort struct {
 	// 是否著作权人
 	IsProducer *int64 `json:"IsProducer,omitempty" name:"IsProducer"`
 
-	// 是否海外网址
+	// 是否境外网址
 	IsOverseas *int64 `json:"IsOverseas,omitempty" name:"IsOverseas"`
 }
 
 type ProtectURLInfo struct {
-	// xxx
+	// 保护网站ID
 	ProtectURLId *int64 `json:"ProtectURLId,omitempty" name:"ProtectURLId"`
 
-	// xxx
+	// 保护网站
 	ProtectURL *string `json:"ProtectURL,omitempty" name:"ProtectURL"`
 
-	// xxx
+	// 保护网站名称
 	ProtectWeb *string `json:"ProtectWeb,omitempty" name:"ProtectWeb"`
 
-	// xxx
+	// 保护网站审核状态 1-审核中 2-审核不通过 3-审核通过
 	ProtectURLStatus *int64 `json:"ProtectURLStatus,omitempty" name:"ProtectURLStatus"`
 
-	// xxx
+	// 网站审核不通过原因
 	ProtectURLNote *string `json:"ProtectURLNote,omitempty" name:"ProtectURLNote"`
 
-	// xxx
+	// 创建时间
 	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
 }
 
 type ReportFakeURLInfo struct {
-	// xxx
+	// 仿冒网址ID
 	FakeURLId *int64 `json:"FakeURLId,omitempty" name:"FakeURLId"`
 
-	// xxx
+	// 检测时间
 	DetectTime *string `json:"DetectTime,omitempty" name:"DetectTime"`
 
-	// xxx
+	// 保护网站
 	ProtectURL *string `json:"ProtectURL,omitempty" name:"ProtectURL"`
 
-	// xxx
+	// 保护网站名称
 	ProtectWeb *string `json:"ProtectWeb,omitempty" name:"ProtectWeb"`
 
-	// xxx
+	// 仿冒网址
 	FakeURL *string `json:"FakeURL,omitempty" name:"FakeURL"`
 
-	// xxx
+	// 截图
 	Snapshot *string `json:"Snapshot,omitempty" name:"Snapshot"`
 
-	// xxx
+	// IP地址
 	IP *string `json:"IP,omitempty" name:"IP"`
 
-	// xxx
+	// IP地理位置
 	IPLoc *string `json:"IPLoc,omitempty" name:"IPLoc"`
 
-	// xxx
+	// 热度
 	Heat *int64 `json:"Heat,omitempty" name:"Heat"`
 
-	// xxx
+	// 网站状态
 	Status *int64 `json:"Status,omitempty" name:"Status"`
 
-	// xxx
+	// 网站不处理原因
 	Note *string `json:"Note,omitempty" name:"Note"`
 
-	// xxx
+	// 仿冒网站的企业名称
 	FakeURLCompany *string `json:"FakeURLCompany,omitempty" name:"FakeURLCompany"`
 
-	// xxx
+	// 仿冒网站的网站性质
 	FakeURLAttr *string `json:"FakeURLAttr,omitempty" name:"FakeURLAttr"`
 
-	// xxx
+	// 仿冒网站的网站名称
 	FakeURLName *string `json:"FakeURLName,omitempty" name:"FakeURLName"`
 
-	// xxx
+	// 仿冒网站的备案
 	FakeURLICP *string `json:"FakeURLICP,omitempty" name:"FakeURLICP"`
 
-	// xxx
+	// 仿冒网站创建时间
 	FakeURLCreateTime *string `json:"FakeURLCreateTime,omitempty" name:"FakeURLCreateTime"`
 
-	// xxx
+	// 仿冒网站过期时间
 	FakeURLExpireTime *string `json:"FakeURLExpireTime,omitempty" name:"FakeURLExpireTime"`
 
-	// xxx
+	// 协查处置时间
 	BlockTime *string `json:"BlockTime,omitempty" name:"BlockTime"`
 }
 
@@ -2632,7 +2632,7 @@ type UpdateCRWorkRequestParams struct {
 	// 作品ID
 	WorkId *int64 `json:"WorkId,omitempty" name:"WorkId"`
 
-	// 文件的扩展名，比如txt，docx
+	// 文件的扩展名，例如txt，docx
 	ContentType *string `json:"ContentType,omitempty" name:"ContentType"`
 
 	// 内容的base64编码
@@ -2648,7 +2648,7 @@ type UpdateCRWorkRequest struct {
 	// 作品ID
 	WorkId *int64 `json:"WorkId,omitempty" name:"WorkId"`
 
-	// 文件的扩展名，比如txt，docx
+	// 文件的扩展名，例如txt，docx
 	ContentType *string `json:"ContentType,omitempty" name:"ContentType"`
 
 	// 内容的base64编码

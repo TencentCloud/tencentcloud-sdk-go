@@ -747,6 +747,82 @@ func (r *DescribeExternalTrtcMeasureResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeMixTranscodingUsageRequestParams struct {
+	// 查询开始时间，格式为YYYY-MM-DD。
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 查询结束时间，格式为YYYY-MM-DD。
+	// 单次查询统计区间最多不能超过31天。
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// TRTC的SdkAppId，和房间所对应的SdkAppId相同。如果没有这个参数，返回用户下全部实时音视频应用的汇总。
+	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+}
+
+type DescribeMixTranscodingUsageRequest struct {
+	*tchttp.BaseRequest
+	
+	// 查询开始时间，格式为YYYY-MM-DD。
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 查询结束时间，格式为YYYY-MM-DD。
+	// 单次查询统计区间最多不能超过31天。
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// TRTC的SdkAppId，和房间所对应的SdkAppId相同。如果没有这个参数，返回用户下全部实时音视频应用的汇总。
+	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+}
+
+func (r *DescribeMixTranscodingUsageRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeMixTranscodingUsageRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "SdkAppId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeMixTranscodingUsageRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeMixTranscodingUsageResponseParams struct {
+	// 用量类型，与UsageValue中各个位置的值对应。
+	UsageKey []*string `json:"UsageKey,omitempty" name:"UsageKey"`
+
+	// 各个时间点用量明细。
+	UsageList []*TrtcUsage `json:"UsageList,omitempty" name:"UsageList"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeMixTranscodingUsageResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeMixTranscodingUsageResponseParams `json:"Response"`
+}
+
+func (r *DescribeMixTranscodingUsageResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeMixTranscodingUsageResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribePictureRequestParams struct {
 	// 应用ID
 	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
@@ -897,6 +973,165 @@ func (r *DescribeRecordStatisticResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeRecordStatisticResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRecordingUsageRequestParams struct {
+	// 查询开始时间，格式为YYYY-MM-DD。
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 查询结束时间，格式为YYYY-MM-DD。
+	// 单次查询统计区间最多不能超过31天。
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 查询单流录制或合流录制，值为"single"或"multi"。
+	MixType *string `json:"MixType,omitempty" name:"MixType"`
+
+	// TRTC的SdkAppId，和房间所对应的SdkAppId相同。如果没有这个参数，返回用户下全部实时音视频应用的汇总。
+	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+}
+
+type DescribeRecordingUsageRequest struct {
+	*tchttp.BaseRequest
+	
+	// 查询开始时间，格式为YYYY-MM-DD。
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 查询结束时间，格式为YYYY-MM-DD。
+	// 单次查询统计区间最多不能超过31天。
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 查询单流录制或合流录制，值为"single"或"multi"。
+	MixType *string `json:"MixType,omitempty" name:"MixType"`
+
+	// TRTC的SdkAppId，和房间所对应的SdkAppId相同。如果没有这个参数，返回用户下全部实时音视频应用的汇总。
+	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+}
+
+func (r *DescribeRecordingUsageRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRecordingUsageRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "MixType")
+	delete(f, "SdkAppId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRecordingUsageRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRecordingUsageResponseParams struct {
+	// 用量类型，与UsageValue中各个位置的值对应。
+	UsageKey []*string `json:"UsageKey,omitempty" name:"UsageKey"`
+
+	// 各个时间点用量明细。
+	UsageList []*TrtcUsage `json:"UsageList,omitempty" name:"UsageList"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeRecordingUsageResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeRecordingUsageResponseParams `json:"Response"`
+}
+
+func (r *DescribeRecordingUsageResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRecordingUsageResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRelayUsageRequestParams struct {
+	// 查询开始时间，格式为YYYY-MM-DD。
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 查询结束时间，格式为YYYY-MM-DD。
+	// 单次查询统计区间最多不能超过31天。
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// TRTC的SdkAppId，和房间所对应的SdkAppId相同。如果没有这个参数，返回用户下全部实时音视频应用的汇总。
+	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+}
+
+type DescribeRelayUsageRequest struct {
+	*tchttp.BaseRequest
+	
+	// 查询开始时间，格式为YYYY-MM-DD。
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 查询结束时间，格式为YYYY-MM-DD。
+	// 单次查询统计区间最多不能超过31天。
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// TRTC的SdkAppId，和房间所对应的SdkAppId相同。如果没有这个参数，返回用户下全部实时音视频应用的汇总。
+	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+}
+
+func (r *DescribeRelayUsageRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRelayUsageRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "SdkAppId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRelayUsageRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRelayUsageResponseParams struct {
+	// 用量类型，与UsageValue中各个位置的值对应。
+	UsageKey []*string `json:"UsageKey,omitempty" name:"UsageKey"`
+
+	// 各个时间点用量明细。
+	UsageList []*TrtcUsage `json:"UsageList,omitempty" name:"UsageList"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeRelayUsageResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeRelayUsageResponseParams `json:"Response"`
+}
+
+func (r *DescribeRelayUsageResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRelayUsageResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1152,6 +1387,82 @@ func (r *DescribeTrtcMcuTranscodeTimeResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeTrtcMcuTranscodeTimeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeTrtcUsageRequestParams struct {
+	// 查询开始时间，格式为YYYY-MM-DD。
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 查询结束时间，格式为YYYY-MM-DD。
+	// 单次查询统计区间最多不能超过31天。
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// TRTC的SdkAppId，和房间所对应的SdkAppId相同。如果没有这个参数，返回用户下全部实时音视频应用的汇总。
+	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+}
+
+type DescribeTrtcUsageRequest struct {
+	*tchttp.BaseRequest
+	
+	// 查询开始时间，格式为YYYY-MM-DD。
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 查询结束时间，格式为YYYY-MM-DD。
+	// 单次查询统计区间最多不能超过31天。
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// TRTC的SdkAppId，和房间所对应的SdkAppId相同。如果没有这个参数，返回用户下全部实时音视频应用的汇总。
+	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+}
+
+func (r *DescribeTrtcUsageRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTrtcUsageRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "SdkAppId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTrtcUsageRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeTrtcUsageResponseParams struct {
+	// 用量类型，与UsageValue中各个位置的值对应。
+	UsageKey []*string `json:"UsageKey,omitempty" name:"UsageKey"`
+
+	// 各个时间点用量明细。
+	UsageList []*TrtcUsage `json:"UsageList,omitempty" name:"UsageList"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeTrtcUsageResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeTrtcUsageResponseParams `json:"Response"`
+}
+
+func (r *DescribeTrtcUsageResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTrtcUsageResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2288,6 +2599,9 @@ type SdkAppIdTrtcMcuTranscodeTimeUsage struct {
 
 	// 视频时长-全高清FHD，单位：秒。
 	VideoTimeFhd *uint64 `json:"VideoTimeFhd,omitempty" name:"VideoTimeFhd"`
+
+	// 带宽，单位：Mbps。
+	Flux *float64 `json:"Flux,omitempty" name:"Flux"`
 }
 
 type SmallVideoLayoutParams struct {
@@ -2716,6 +3030,14 @@ type TrtcTimeNewUsage struct {
 
 	// 4k视频通话收费时长。单位：秒。
 	Video4KTime *uint64 `json:"Video4KTime,omitempty" name:"Video4KTime"`
+}
+
+type TrtcUsage struct {
+	// 时间点，格式为YYYY-MM-DD HH:mm:ss。多天查询时，HH:mm:ss为00:00:00。
+	TimeKey *string `json:"TimeKey,omitempty" name:"TimeKey"`
+
+	// 用量数组。每个数值含义与UsageKey对应。单位：分钟。
+	UsageValue []*float64 `json:"UsageValue,omitempty" name:"UsageValue"`
 }
 
 type UserInformation struct {

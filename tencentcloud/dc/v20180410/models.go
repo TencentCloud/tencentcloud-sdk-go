@@ -1693,6 +1693,10 @@ type DirectConnectTunnelExtra struct {
 	// 专用通道是否支持巨帧。1 支持，0 不支持
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	JumboEnable *int64 `json:"JumboEnable,omitempty" name:"JumboEnable"`
+
+	// 专用通道是否支持高精度BFD。1支持，0不支持
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HighPrecisionBFDEnable *int64 `json:"HighPrecisionBFDEnable,omitempty" name:"HighPrecisionBFDEnable"`
 }
 
 type DirectConnectTunnelRoute struct {

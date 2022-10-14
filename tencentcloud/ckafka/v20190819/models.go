@@ -5346,6 +5346,44 @@ type DorisConnectParam struct {
 	BePort *int64 `json:"BePort,omitempty" name:"BePort"`
 }
 
+type DorisModifyConnectParam struct {
+	// Doris 连接源的实例资源
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Resource *string `json:"Resource,omitempty" name:"Resource"`
+
+	// Doris jdbc 负载均衡连接 port，通常映射到 fe 的 9030 端口
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Port *int64 `json:"Port,omitempty" name:"Port"`
+
+	// Doris 连接源的实例vip，当为腾讯云实例时，必填
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ServiceVip *string `json:"ServiceVip,omitempty" name:"ServiceVip"`
+
+	// Doris 连接源的vpcId，当为腾讯云实例时，必填
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UniqVpcId *string `json:"UniqVpcId,omitempty" name:"UniqVpcId"`
+
+	// Doris 连接源的用户名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserName *string `json:"UserName,omitempty" name:"UserName"`
+
+	// Doris 连接源的密码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Password *string `json:"Password,omitempty" name:"Password"`
+
+	// 是否更新到关联的Datahub任务
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsUpdate *bool `json:"IsUpdate,omitempty" name:"IsUpdate"`
+
+	// Doris 连接源是否为自建集群
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SelfBuilt *bool `json:"SelfBuilt,omitempty" name:"SelfBuilt"`
+
+	// Doris 的 http 负载均衡连接 port，通常映射到 be 的 8040 端口
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BePort *int64 `json:"BePort,omitempty" name:"BePort"`
+}
+
 type DropCls struct {
 	// 是否投递到cls
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -6632,6 +6670,9 @@ type ModifyConnectResourceRequestParams struct {
 
 	// Ctsdb配置，Type为CTSDB
 	CtsdbConnectParam *CtsdbModifyConnectParam `json:"CtsdbConnectParam,omitempty" name:"CtsdbConnectParam"`
+
+	// Doris配置，Type为DORIS
+	DorisConnectParam *DorisModifyConnectParam `json:"DorisConnectParam,omitempty" name:"DorisConnectParam"`
 }
 
 type ModifyConnectResourceRequest struct {
@@ -6675,6 +6716,9 @@ type ModifyConnectResourceRequest struct {
 
 	// Ctsdb配置，Type为CTSDB
 	CtsdbConnectParam *CtsdbModifyConnectParam `json:"CtsdbConnectParam,omitempty" name:"CtsdbConnectParam"`
+
+	// Doris配置，Type为DORIS
+	DorisConnectParam *DorisModifyConnectParam `json:"DorisConnectParam,omitempty" name:"DorisConnectParam"`
 }
 
 func (r *ModifyConnectResourceRequest) ToJsonString() string {
@@ -6702,6 +6746,7 @@ func (r *ModifyConnectResourceRequest) FromJsonString(s string) error {
 	delete(f, "MariaDBConnectParam")
 	delete(f, "SQLServerConnectParam")
 	delete(f, "CtsdbConnectParam")
+	delete(f, "DorisConnectParam")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyConnectResourceRequest has unknown keys!", "")
 	}

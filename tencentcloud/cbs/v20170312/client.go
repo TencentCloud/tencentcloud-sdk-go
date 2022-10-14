@@ -2713,12 +2713,15 @@ func NewRenewDiskResponse() (response *RenewDiskResponse) {
 // * 支持与挂载实例一起续费的场景，需要在[DiskChargePrepaid](/document/product/362/15669#DiskChargePrepaid)参数中指定CurInstanceDeadline，此时会按对齐到子机续费后的到期时间来续费。
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
 //  INTERNALERROR_COMPONENTERROR = "InternalError.ComponentError"
 //  INVALIDACCOUNT_INSUFFICIENTBALANCE = "InvalidAccount.InsufficientBalance"
 //  INVALIDDISK_BUSY = "InvalidDisk.Busy"
 //  INVALIDDISK_NOTPORTABLE = "InvalidDisk.NotPortable"
 //  INVALIDDISK_NOTSUPPORTED = "InvalidDisk.NotSupported"
 //  INVALIDDISKID_NOTFOUND = "InvalidDiskId.NotFound"
+//  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCEUNAVAILABLE_NOTPORTABLE = "ResourceUnavailable.NotPortable"
@@ -2738,12 +2741,15 @@ func (c *Client) RenewDisk(request *RenewDiskRequest) (response *RenewDiskRespon
 // * 支持与挂载实例一起续费的场景，需要在[DiskChargePrepaid](/document/product/362/15669#DiskChargePrepaid)参数中指定CurInstanceDeadline，此时会按对齐到子机续费后的到期时间来续费。
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
 //  INTERNALERROR_COMPONENTERROR = "InternalError.ComponentError"
 //  INVALIDACCOUNT_INSUFFICIENTBALANCE = "InvalidAccount.InsufficientBalance"
 //  INVALIDDISK_BUSY = "InvalidDisk.Busy"
 //  INVALIDDISK_NOTPORTABLE = "InvalidDisk.NotPortable"
 //  INVALIDDISK_NOTSUPPORTED = "InvalidDisk.NotSupported"
 //  INVALIDDISKID_NOTFOUND = "InvalidDiskId.NotFound"
+//  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCEUNAVAILABLE_NOTPORTABLE = "ResourceUnavailable.NotPortable"

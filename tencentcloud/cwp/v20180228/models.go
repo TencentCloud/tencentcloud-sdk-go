@@ -8057,7 +8057,7 @@ type DescribeBaselineItemDetectListRequestParams struct {
 	// <li>ItemName - string - 是否必填：否 - 项名称</li>
 	// <li>DetectStatus - int - 是否必填：否 - 检测状态</li>
 	// <li>Level - int - 是否必填：否 - 风险等级</li>
-	// <li>StartTime - string - 是否必填：否 - 开时时间</li>
+	// <li>StartTime - string - 是否必填：否 - 开始时间</li>
 	// <li>EndTime - string - 是否必填：否 - 结束时间</li>
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
@@ -8083,7 +8083,7 @@ type DescribeBaselineItemDetectListRequest struct {
 	// <li>ItemName - string - 是否必填：否 - 项名称</li>
 	// <li>DetectStatus - int - 是否必填：否 - 检测状态</li>
 	// <li>Level - int - 是否必填：否 - 风险等级</li>
-	// <li>StartTime - string - 是否必填：否 - 开时时间</li>
+	// <li>StartTime - string - 是否必填：否 - 开始时间</li>
 	// <li>EndTime - string - 是否必填：否 - 结束时间</li>
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
@@ -8162,7 +8162,7 @@ type DescribeBaselineItemListRequestParams struct {
 	// <li>ItemName - String - 是否必填：否 - 项名称</li>
 	// <li>DetectStatus - int - 是否必填：否 - 检测状态[0:未通过|3:通过|5:检测中]</li>
 	// <li>Level - int - 是否必填：否 - 风险等级</li>
-	// <li>StartTime - string - 是否必填：否 - 开时时间</li>
+	// <li>StartTime - string - 是否必填：否 - 开始时间</li>
 	// <li>EndTime - string - 是否必填：否 - 结束时间</li>
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
@@ -8191,7 +8191,7 @@ type DescribeBaselineItemListRequest struct {
 	// <li>ItemName - String - 是否必填：否 - 项名称</li>
 	// <li>DetectStatus - int - 是否必填：否 - 检测状态[0:未通过|3:通过|5:检测中]</li>
 	// <li>Level - int - 是否必填：否 - 风险等级</li>
-	// <li>StartTime - string - 是否必填：否 - 开时时间</li>
+	// <li>StartTime - string - 是否必填：否 - 开始时间</li>
 	// <li>EndTime - string - 是否必填：否 - 结束时间</li>
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 

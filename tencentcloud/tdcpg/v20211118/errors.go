@@ -47,6 +47,9 @@ const (
 	// 状态异常，不允许操作。
 	FAILEDOPERATION_STATUSERROR = "FailedOperation.StatusError"
 
+	// 当前存储的付费模式不支持此操作。
+	FAILEDOPERATION_STORAGEPAYMODEINVALID = "FailedOperation.StoragePayModeInvalid"
+
 	// 任务冲突，请稍后重试。如果持续不成功，请联系客服。
 	FAILEDOPERATION_TASKCONFLICT = "FailedOperation.TaskConflict"
 

@@ -20,6 +20,141 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+type AppCustomContent struct {
+	// 场景参数，一个应用下可以设置多个不同场景。
+	Scene *string `json:"Scene,omitempty" name:"Scene"`
+
+	// logo地址。
+	LogoUrl *string `json:"LogoUrl,omitempty" name:"LogoUrl"`
+
+	// 主页地址，可设置用于跳转。
+	HomeUrl *string `json:"HomeUrl,omitempty" name:"HomeUrl"`
+
+	// 自定义的js。
+	JsUrl *string `json:"JsUrl,omitempty" name:"JsUrl"`
+
+	// 自定义的css。
+	CssUrl *string `json:"CssUrl,omitempty" name:"CssUrl"`
+}
+
+// Predefined struct for user
+type CreateDocumentRequestParams struct {
+	// 低代码互动课堂的SdkAppId。
+	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 文档地址。
+	DocumentUrl *string `json:"DocumentUrl,omitempty" name:"DocumentUrl"`
+
+	// 文档名称。
+	DocumentName *string `json:"DocumentName,omitempty" name:"DocumentName"`
+
+	// 文档所有者的Id
+	Owner *string `json:"Owner,omitempty" name:"Owner"`
+
+	// 转码类型，可以有如下取值：
+	// 0 无需转码（默认）
+	// 1 需要转码的文档，ppt，pptx，pdf，doc，docx
+	// 2 需要转码的视频，mp4，3pg，mpeg，avi，flv，wmv，rm，h264等
+	// 2 需要转码的音频，mp3，wav，wma，aac，flac，opus
+	TranscodeType *uint64 `json:"TranscodeType,omitempty" name:"TranscodeType"`
+
+	// 权限，可以有如下取值：
+	// 0 私有文档（默认）
+	// 1 公共文档
+	Permission *uint64 `json:"Permission,omitempty" name:"Permission"`
+
+	// 文档后缀名。
+	DocumentType *string `json:"DocumentType,omitempty" name:"DocumentType"`
+
+	// 文档大小，单位 字节
+	DocumentSize *uint64 `json:"DocumentSize,omitempty" name:"DocumentSize"`
+}
+
+type CreateDocumentRequest struct {
+	*tchttp.BaseRequest
+	
+	// 低代码互动课堂的SdkAppId。
+	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 文档地址。
+	DocumentUrl *string `json:"DocumentUrl,omitempty" name:"DocumentUrl"`
+
+	// 文档名称。
+	DocumentName *string `json:"DocumentName,omitempty" name:"DocumentName"`
+
+	// 文档所有者的Id
+	Owner *string `json:"Owner,omitempty" name:"Owner"`
+
+	// 转码类型，可以有如下取值：
+	// 0 无需转码（默认）
+	// 1 需要转码的文档，ppt，pptx，pdf，doc，docx
+	// 2 需要转码的视频，mp4，3pg，mpeg，avi，flv，wmv，rm，h264等
+	// 2 需要转码的音频，mp3，wav，wma，aac，flac，opus
+	TranscodeType *uint64 `json:"TranscodeType,omitempty" name:"TranscodeType"`
+
+	// 权限，可以有如下取值：
+	// 0 私有文档（默认）
+	// 1 公共文档
+	Permission *uint64 `json:"Permission,omitempty" name:"Permission"`
+
+	// 文档后缀名。
+	DocumentType *string `json:"DocumentType,omitempty" name:"DocumentType"`
+
+	// 文档大小，单位 字节
+	DocumentSize *uint64 `json:"DocumentSize,omitempty" name:"DocumentSize"`
+}
+
+func (r *CreateDocumentRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateDocumentRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SdkAppId")
+	delete(f, "DocumentUrl")
+	delete(f, "DocumentName")
+	delete(f, "Owner")
+	delete(f, "TranscodeType")
+	delete(f, "Permission")
+	delete(f, "DocumentType")
+	delete(f, "DocumentSize")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDocumentRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateDocumentResponseParams struct {
+	// 文档ID。
+	DocumentId *string `json:"DocumentId,omitempty" name:"DocumentId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateDocumentResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateDocumentResponseParams `json:"Response"`
+}
+
+func (r *CreateDocumentResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateDocumentResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 // Predefined struct for user
 type CreateRoomRequestParams struct {
 	// 房间名称。
@@ -610,5 +745,66 @@ func (r *RegisterUserResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *RegisterUserResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SetAppCustomContentRequestParams struct {
+	// 自定义内容。
+	CustomContent []*AppCustomContent `json:"CustomContent,omitempty" name:"CustomContent"`
+
+	// 应用ID。
+	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+}
+
+type SetAppCustomContentRequest struct {
+	*tchttp.BaseRequest
+	
+	// 自定义内容。
+	CustomContent []*AppCustomContent `json:"CustomContent,omitempty" name:"CustomContent"`
+
+	// 应用ID。
+	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+}
+
+func (r *SetAppCustomContentRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SetAppCustomContentRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CustomContent")
+	delete(f, "SdkAppId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SetAppCustomContentRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SetAppCustomContentResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type SetAppCustomContentResponse struct {
+	*tchttp.BaseResponse
+	Response *SetAppCustomContentResponseParams `json:"Response"`
+}
+
+func (r *SetAppCustomContentResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SetAppCustomContentResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }

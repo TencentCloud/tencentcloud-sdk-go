@@ -8402,6 +8402,18 @@ type CreateOpenBankOrderRechargeResult struct {
 
 	// 外部商户订单号，只能是数字、大小写字母，且在同一个接入平台下唯一。
 	OutOrderId *string `json:"OutOrderId,omitempty" name:"OutOrderId"`
+
+	// 充值状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DealStatus *string `json:"DealStatus,omitempty" name:"DealStatus"`
+
+	// 充值返回描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DealMessage *string `json:"DealMessage,omitempty" name:"DealMessage"`
+
+	// PC web端跳转链接
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PcWebUrl *string `json:"PcWebUrl,omitempty" name:"PcWebUrl"`
 }
 
 // Predefined struct for user
@@ -10203,6 +10215,14 @@ func (r *CreateRedInvoiceV2Response) FromJsonString(s string) error {
 type CreateSinglePaymentData struct {
 	// 平台交易流水号，唯一
 	TradeSerialNo *string `json:"TradeSerialNo,omitempty" name:"TradeSerialNo"`
+
+	// 代理商ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AgentId *string `json:"AgentId,omitempty" name:"AgentId"`
+
+	// 代理商名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AgentName *string `json:"AgentName,omitempty" name:"AgentName"`
 }
 
 // Predefined struct for user

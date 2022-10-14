@@ -300,6 +300,12 @@ type Cluster struct {
 
 	// TDSQL-C PostgreSQL 内核版本号
 	DBKernelVersion *string `json:"DBKernelVersion,omitempty" name:"DBKernelVersion"`
+
+	// 存储付费模式
+	//  - PREPAID：预付费，即包年包月
+	//  - POSTPAID_BY_HOUR：按小时后付费
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StoragePayMode *string `json:"StoragePayMode,omitempty" name:"StoragePayMode"`
 }
 
 // Predefined struct for user
@@ -407,7 +413,7 @@ type CreateClusterRequestParams struct {
 	// 已配置的私有网络中的子网ID
 	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
 
-	// 集群付费模式
+	// 实例付费模式
 	//  - PREPAID：预付费，即包年包月
 	//  - POSTPAID_BY_HOUR：按小时后付费
 	PayMode *string `json:"PayMode,omitempty" name:"PayMode"`
@@ -445,6 +451,15 @@ type CreateClusterRequestParams struct {
 	// 支持入参值为：v10.17_r1.4。当输入该参数时，会创建此版本号对应的数据库内核。
 	// 注：该参数和DBVersion、DBMajorVersion只能传递一个，且需要传递一个。
 	DBKernelVersion *string `json:"DBKernelVersion,omitempty" name:"DBKernelVersion"`
+
+	// 存储付费模式
+	//  - PREPAID：预付费，即包年包月
+	//  - POSTPAID_BY_HOUR：按小时后付费
+	// 默认为POSTPAID_BY_HOUR，实例付费模式为按小时付费时，存储付费模式不支持包年包月
+	StoragePayMode *string `json:"StoragePayMode,omitempty" name:"StoragePayMode"`
+
+	// 存储最大使用量，单位GB。取值参考文档【购买指南】。存储使用预付费模式时必须设置，存储使用按小时后付费时不可设置
+	Storage *uint64 `json:"Storage,omitempty" name:"Storage"`
 }
 
 type CreateClusterRequest struct {
@@ -468,7 +483,7 @@ type CreateClusterRequest struct {
 	// 已配置的私有网络中的子网ID
 	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
 
-	// 集群付费模式
+	// 实例付费模式
 	//  - PREPAID：预付费，即包年包月
 	//  - POSTPAID_BY_HOUR：按小时后付费
 	PayMode *string `json:"PayMode,omitempty" name:"PayMode"`
@@ -506,6 +521,15 @@ type CreateClusterRequest struct {
 	// 支持入参值为：v10.17_r1.4。当输入该参数时，会创建此版本号对应的数据库内核。
 	// 注：该参数和DBVersion、DBMajorVersion只能传递一个，且需要传递一个。
 	DBKernelVersion *string `json:"DBKernelVersion,omitempty" name:"DBKernelVersion"`
+
+	// 存储付费模式
+	//  - PREPAID：预付费，即包年包月
+	//  - POSTPAID_BY_HOUR：按小时后付费
+	// 默认为POSTPAID_BY_HOUR，实例付费模式为按小时付费时，存储付费模式不支持包年包月
+	StoragePayMode *string `json:"StoragePayMode,omitempty" name:"StoragePayMode"`
+
+	// 存储最大使用量，单位GB。取值参考文档【购买指南】。存储使用预付费模式时必须设置，存储使用按小时后付费时不可设置
+	Storage *uint64 `json:"Storage,omitempty" name:"Storage"`
 }
 
 func (r *CreateClusterRequest) ToJsonString() string {
@@ -536,6 +560,8 @@ func (r *CreateClusterRequest) FromJsonString(s string) error {
 	delete(f, "AutoRenewFlag")
 	delete(f, "DBMajorVersion")
 	delete(f, "DBKernelVersion")
+	delete(f, "StoragePayMode")
+	delete(f, "Storage")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateClusterRequest has unknown keys!", "")
 	}

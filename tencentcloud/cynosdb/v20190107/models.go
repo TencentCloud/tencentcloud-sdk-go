@@ -5082,6 +5082,9 @@ type QueryFilter struct {
 
 	// 搜索字段
 	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 操作符
+	Operator *string `json:"Operator,omitempty" name:"Operator"`
 }
 
 // Predefined struct for user

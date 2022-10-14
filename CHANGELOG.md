@@ -1,3 +1,204 @@
+# Release v1.0.514
+
+## 消息队列 Ckafka(ckafka) 版本：2019-08-19
+
+### 第 60 次发布
+
+发布时间：2022-10-14 06:17:04
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ModifyConnectResource](https://cloud.tencent.com/document/api/597/77794)
+
+	* 新增入参：DorisConnectParam
+
+
+新增数据结构：
+
+* [DorisModifyConnectParam](https://cloud.tencent.com/document/api/597/40861#DorisModifyConnectParam)
+
+
+
+## 企业收付平台(cpdp) 版本：2019-08-20
+
+### 第 88 次发布
+
+发布时间：2022-10-14 06:19:40
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [CreateOpenBankOrderRechargeResult](https://cloud.tencent.com/document/api/1122/40683#CreateOpenBankOrderRechargeResult)
+
+	* 新增成员：DealStatus, DealMessage, PcWebUrl
+
+* [CreateSinglePaymentData](https://cloud.tencent.com/document/api/1122/40683#CreateSinglePaymentData)
+
+	* 新增成员：AgentId, AgentName
+
+
+
+
+## 云原生数据库 TDSQL-C(cynosdb) 版本：2019-01-07
+
+### 第 28 次发布
+
+发布时间：2022-10-14 06:23:27
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [QueryFilter](https://cloud.tencent.com/document/api/1003/48097#QueryFilter)
+
+	* 新增成员：Operator
+
+
+
+
+## 专线接入(dc) 版本：2018-04-10
+
+### 第 24 次发布
+
+发布时间：2022-10-14 06:25:18
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [DirectConnectTunnelExtra](https://cloud.tencent.com/document/api/216/18418#DirectConnectTunnelExtra)
+
+	* 新增成员：HighPrecisionBFDEnable
+
+
+
+
+## 低代码互动课堂(lcic) 版本：2022-08-17
+
+### 第 3 次发布
+
+发布时间：2022-10-14 06:37:15
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateDocument](https://cloud.tencent.com/document/api/1639/81421)
+* [SetAppCustomContent](https://cloud.tencent.com/document/api/1639/81422)
+
+新增数据结构：
+
+* [AppCustomContent](https://cloud.tencent.com/document/api/1639/81423#AppCustomContent)
+
+
+
+## 云数据库 Redis(redis) 版本：2018-04-12
+
+### 第 56 次发布
+
+发布时间：2022-10-14 06:44:02
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [InstanceSet](https://cloud.tencent.com/document/api/239/20022#InstanceSet)
+
+	* 新增成员：WanAddress, PolarisServer, CurrentProxyVersion, CurrentRedisVersion, UpgradeProxyVersion, UpgradeRedisVersion
+
+
+
+
+## 证书(ssl) 版本：2019-12-05
+
+### 第 19 次发布
+
+发布时间：2022-10-14 06:47:12
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ApplyCertificate](https://cloud.tencent.com/document/api/400/41678)
+
+	* 新增入参：PackageId
+
+
+
+
+## TDSQL-C PostgreSQL 版(tdcpg) 版本：2021-11-18
+
+### 第 3 次发布
+
+发布时间：2022-10-14 06:51:40
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateCluster](https://cloud.tencent.com/document/api/1556/70670)
+
+	* 新增入参：StoragePayMode, Storage
+
+
+修改数据结构：
+
+* [Cluster](https://cloud.tencent.com/document/api/1556/70695#Cluster)
+
+	* 新增成员：StoragePayMode
+
+
+
+
+## 实时音视频(trtc) 版本：2019-07-22
+
+### 第 39 次发布
+
+发布时间：2022-10-14 06:56:44
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeMixTranscodingUsage](https://cloud.tencent.com/document/api/647/81428)
+* [DescribeRecordingUsage](https://cloud.tencent.com/document/api/647/81427)
+* [DescribeRelayUsage](https://cloud.tencent.com/document/api/647/81426)
+* [DescribeTrtcUsage](https://cloud.tencent.com/document/api/647/81425)
+
+新增数据结构：
+
+* [TrtcUsage](https://cloud.tencent.com/document/api/647/44055#TrtcUsage)
+
+修改数据结构：
+
+* [SdkAppIdTrtcMcuTranscodeTimeUsage](https://cloud.tencent.com/document/api/647/44055#SdkAppIdTrtcMcuTranscodeTimeUsage)
+
+	* 新增成员：Flux
+
+
+
+
 # Release v1.0.513
 
 ## 全球应用加速(gaap) 版本：2018-05-29
