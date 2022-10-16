@@ -445,6 +445,54 @@ func (c *Client) CreateWorkflowWithContext(ctx context.Context, request *CreateW
     return
 }
 
+func NewDeleteCustomFunctionRequest() (request *DeleteCustomFunctionRequest) {
+    request = &DeleteCustomFunctionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "DeleteCustomFunction")
+    
+    
+    return
+}
+
+func NewDeleteCustomFunctionResponse() (response *DeleteCustomFunctionResponse) {
+    response = &DeleteCustomFunctionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteCustomFunction
+// 删除用户自定义函数
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DeleteCustomFunction(request *DeleteCustomFunctionRequest) (response *DeleteCustomFunctionResponse, err error) {
+    return c.DeleteCustomFunctionWithContext(context.Background(), request)
+}
+
+// DeleteCustomFunction
+// 删除用户自定义函数
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DeleteCustomFunctionWithContext(ctx context.Context, request *DeleteCustomFunctionRequest) (response *DeleteCustomFunctionResponse, err error) {
+    if request == nil {
+        request = NewDeleteCustomFunctionRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteCustomFunction require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteCustomFunctionResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteDataSourcesRequest() (request *DeleteDataSourcesRequest) {
     request = &DeleteDataSourcesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -915,6 +963,102 @@ func (c *Client) DescribeFolderWorkflowListWithContext(ctx context.Context, requ
     return
 }
 
+func NewDescribeFunctionKindsRequest() (request *DescribeFunctionKindsRequest) {
+    request = &DescribeFunctionKindsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "DescribeFunctionKinds")
+    
+    
+    return
+}
+
+func NewDescribeFunctionKindsResponse() (response *DescribeFunctionKindsResponse) {
+    response = &DescribeFunctionKindsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeFunctionKinds
+// 查询函数分类
+//
+// 可能返回的错误码:
+//  OPERATIONDENIED_USERNOTINWHITELISTERROR = "OperationDenied.UserNotInWhitelistError"
+func (c *Client) DescribeFunctionKinds(request *DescribeFunctionKindsRequest) (response *DescribeFunctionKindsResponse, err error) {
+    return c.DescribeFunctionKindsWithContext(context.Background(), request)
+}
+
+// DescribeFunctionKinds
+// 查询函数分类
+//
+// 可能返回的错误码:
+//  OPERATIONDENIED_USERNOTINWHITELISTERROR = "OperationDenied.UserNotInWhitelistError"
+func (c *Client) DescribeFunctionKindsWithContext(ctx context.Context, request *DescribeFunctionKindsRequest) (response *DescribeFunctionKindsResponse, err error) {
+    if request == nil {
+        request = NewDescribeFunctionKindsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeFunctionKinds require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeFunctionKindsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeFunctionTypesRequest() (request *DescribeFunctionTypesRequest) {
+    request = &DescribeFunctionTypesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "DescribeFunctionTypes")
+    
+    
+    return
+}
+
+func NewDescribeFunctionTypesResponse() (response *DescribeFunctionTypesResponse) {
+    response = &DescribeFunctionTypesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeFunctionTypes
+// 查询函数类型
+//
+// 可能返回的错误码:
+//  OPERATIONDENIED_USERNOTINWHITELISTERROR = "OperationDenied.UserNotInWhitelistError"
+func (c *Client) DescribeFunctionTypes(request *DescribeFunctionTypesRequest) (response *DescribeFunctionTypesResponse, err error) {
+    return c.DescribeFunctionTypesWithContext(context.Background(), request)
+}
+
+// DescribeFunctionTypes
+// 查询函数类型
+//
+// 可能返回的错误码:
+//  OPERATIONDENIED_USERNOTINWHITELISTERROR = "OperationDenied.UserNotInWhitelistError"
+func (c *Client) DescribeFunctionTypesWithContext(ctx context.Context, request *DescribeFunctionTypesRequest) (response *DescribeFunctionTypesResponse, err error) {
+    if request == nil {
+        request = NewDescribeFunctionTypesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeFunctionTypes require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeFunctionTypesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeInstanceLogsRequest() (request *DescribeInstanceLogsRequest) {
     request = &DescribeInstanceLogsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -963,6 +1107,54 @@ func (c *Client) DescribeInstanceLogsWithContext(ctx context.Context, request *D
     request.SetContext(ctx)
     
     response = NewDescribeInstanceLogsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeOrganizationalFunctionsRequest() (request *DescribeOrganizationalFunctionsRequest) {
+    request = &DescribeOrganizationalFunctionsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "DescribeOrganizationalFunctions")
+    
+    
+    return
+}
+
+func NewDescribeOrganizationalFunctionsResponse() (response *DescribeOrganizationalFunctionsResponse) {
+    response = &DescribeOrganizationalFunctionsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeOrganizationalFunctions
+// 查询全量函数
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeOrganizationalFunctions(request *DescribeOrganizationalFunctionsRequest) (response *DescribeOrganizationalFunctionsResponse, err error) {
+    return c.DescribeOrganizationalFunctionsWithContext(context.Background(), request)
+}
+
+// DescribeOrganizationalFunctions
+// 查询全量函数
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeOrganizationalFunctionsWithContext(ctx context.Context, request *DescribeOrganizationalFunctionsRequest) (response *DescribeOrganizationalFunctionsResponse, err error) {
+    if request == nil {
+        request = NewDescribeOrganizationalFunctionsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeOrganizationalFunctions require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeOrganizationalFunctionsResponse()
     err = c.Send(request, response)
     return
 }
@@ -2161,6 +2353,54 @@ func (c *Client) RunTaskWithContext(ctx context.Context, request *RunTaskRequest
     return
 }
 
+func NewSaveCustomFunctionRequest() (request *SaveCustomFunctionRequest) {
+    request = &SaveCustomFunctionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "SaveCustomFunction")
+    
+    
+    return
+}
+
+func NewSaveCustomFunctionResponse() (response *SaveCustomFunctionResponse) {
+    response = &SaveCustomFunctionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// SaveCustomFunction
+// 保存用户自定义函数
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) SaveCustomFunction(request *SaveCustomFunctionRequest) (response *SaveCustomFunctionResponse, err error) {
+    return c.SaveCustomFunctionWithContext(context.Background(), request)
+}
+
+// SaveCustomFunction
+// 保存用户自定义函数
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) SaveCustomFunctionWithContext(ctx context.Context, request *SaveCustomFunctionRequest) (response *SaveCustomFunctionResponse, err error) {
+    if request == nil {
+        request = NewSaveCustomFunctionRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SaveCustomFunction require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewSaveCustomFunctionResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewSetTaskAlarmNewRequest() (request *SetTaskAlarmNewRequest) {
     request = &SetTaskAlarmNewRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2209,6 +2449,54 @@ func (c *Client) SetTaskAlarmNewWithContext(ctx context.Context, request *SetTas
     request.SetContext(ctx)
     
     response = NewSetTaskAlarmNewResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSubmitCustomFunctionRequest() (request *SubmitCustomFunctionRequest) {
+    request = &SubmitCustomFunctionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "SubmitCustomFunction")
+    
+    
+    return
+}
+
+func NewSubmitCustomFunctionResponse() (response *SubmitCustomFunctionResponse) {
+    response = &SubmitCustomFunctionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// SubmitCustomFunction
+// 提交自定义函数
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) SubmitCustomFunction(request *SubmitCustomFunctionRequest) (response *SubmitCustomFunctionResponse, err error) {
+    return c.SubmitCustomFunctionWithContext(context.Background(), request)
+}
+
+// SubmitCustomFunction
+// 提交自定义函数
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) SubmitCustomFunctionWithContext(ctx context.Context, request *SubmitCustomFunctionRequest) (response *SubmitCustomFunctionResponse, err error) {
+    if request == nil {
+        request = NewSubmitCustomFunctionRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SubmitCustomFunction require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewSubmitCustomFunctionResponse()
     err = c.Send(request, response)
     return
 }

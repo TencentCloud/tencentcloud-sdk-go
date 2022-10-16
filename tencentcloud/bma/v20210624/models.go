@@ -658,6 +658,122 @@ func (r *CreateCRCompanyVerifyResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateCRObtainRequestParams struct {
+	// 已存证的作品ID
+	WorkId *int64 `json:"WorkId,omitempty" name:"WorkId"`
+
+	// 侵权链接
+	TortUrl *string `json:"TortUrl,omitempty" name:"TortUrl"`
+
+	// 取证类型 1-网页取证 2-过程取证
+	ObtainType *int64 `json:"ObtainType,omitempty" name:"ObtainType"`
+
+	// 侵权标题
+	WorkTitle *string `json:"WorkTitle,omitempty" name:"WorkTitle"`
+
+	// 侵权平台
+	TortPlat *string `json:"TortPlat,omitempty" name:"TortPlat"`
+
+	// 过程取证的取证时长 6-300分钟
+	ObtainDuration *int64 `json:"ObtainDuration,omitempty" name:"ObtainDuration"`
+
+	// 取证回调地址
+	ObtainUrl *string `json:"ObtainUrl,omitempty" name:"ObtainUrl"`
+
+	// xxx
+	WorkCategory *string `json:"WorkCategory,omitempty" name:"WorkCategory"`
+
+	// xxx
+	WorkType *string `json:"WorkType,omitempty" name:"WorkType"`
+}
+
+type CreateCRObtainRequest struct {
+	*tchttp.BaseRequest
+	
+	// 已存证的作品ID
+	WorkId *int64 `json:"WorkId,omitempty" name:"WorkId"`
+
+	// 侵权链接
+	TortUrl *string `json:"TortUrl,omitempty" name:"TortUrl"`
+
+	// 取证类型 1-网页取证 2-过程取证
+	ObtainType *int64 `json:"ObtainType,omitempty" name:"ObtainType"`
+
+	// 侵权标题
+	WorkTitle *string `json:"WorkTitle,omitempty" name:"WorkTitle"`
+
+	// 侵权平台
+	TortPlat *string `json:"TortPlat,omitempty" name:"TortPlat"`
+
+	// 过程取证的取证时长 6-300分钟
+	ObtainDuration *int64 `json:"ObtainDuration,omitempty" name:"ObtainDuration"`
+
+	// 取证回调地址
+	ObtainUrl *string `json:"ObtainUrl,omitempty" name:"ObtainUrl"`
+
+	// xxx
+	WorkCategory *string `json:"WorkCategory,omitempty" name:"WorkCategory"`
+
+	// xxx
+	WorkType *string `json:"WorkType,omitempty" name:"WorkType"`
+}
+
+func (r *CreateCRObtainRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateCRObtainRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "WorkId")
+	delete(f, "TortUrl")
+	delete(f, "ObtainType")
+	delete(f, "WorkTitle")
+	delete(f, "TortPlat")
+	delete(f, "ObtainDuration")
+	delete(f, "ObtainUrl")
+	delete(f, "WorkCategory")
+	delete(f, "WorkType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCRObtainRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateCRObtainResponseParams struct {
+	// 侵权ID
+	TortId *int64 `json:"TortId,omitempty" name:"TortId"`
+
+	// xxx
+	TortNum *string `json:"TortNum,omitempty" name:"TortNum"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateCRObtainResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateCRObtainResponseParams `json:"Response"`
+}
+
+func (r *CreateCRObtainResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateCRObtainResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateCRRightFileRequestParams struct {
 	// 作品ID
 	WorkId *int64 `json:"WorkId,omitempty" name:"WorkId"`
@@ -1483,13 +1599,13 @@ func (r *DescribeBPFakeURLsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeBPFakeURLsResponseParams struct {
-	// xxx
+	// 仿冒网址列表
 	FakeURLInfos []*FakeURLInfo `json:"FakeURLInfos,omitempty" name:"FakeURLInfos"`
 
-	// xxx
+	// 总量
 	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
-	// xxx
+	// 导出量
 	ExportURL *string `json:"ExportURL,omitempty" name:"ExportURL"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1553,10 +1669,10 @@ func (r *DescribeBPProtectURLsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeBPProtectURLsResponseParams struct {
-	// xxx
+	// 保护网址列表
 	ProtectURLInfos []*ProtectURLInfo `json:"ProtectURLInfos,omitempty" name:"ProtectURLInfos"`
 
-	// xxx
+	// 总量
 	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1627,10 +1743,10 @@ func (r *DescribeBPReportFakeURLsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeBPReportFakeURLsResponseParams struct {
-	// xxx
+	// 举报网站列表
 	ReportFakeURLInfos []*ReportFakeURLInfo `json:"ReportFakeURLInfos,omitempty" name:"ReportFakeURLInfos"`
 
-	// xxx
+	// 总量
 	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。

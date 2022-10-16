@@ -314,9 +314,6 @@ const (
 	// 文件已删除。
 	OPERATIONDENIED_FILEDELETED = "OperationDenied.FileDeleted"
 
-	// 签署流程状态不正确，请检查后重试。
-	OPERATIONDENIED_FLOWSTATUSFORBID = "OperationDenied.FlowStatusForbid"
-
 	// 禁止操作。
 	OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
 
@@ -332,9 +329,6 @@ const (
 	// 流程配额不足。
 	OPERATIONDENIED_NOQUOTA = "OperationDenied.NoQuota"
 
-	// 不属于企业超管或者法人。
-	OPERATIONDENIED_NOTBELONGSUPERADMINORLEGALPERSON = "OperationDenied.NotBelongSuperAdminOrLegalPerson"
-
 	// 操作类型不支持。
 	OPERATIONDENIED_OPERATETYPE = "OperationDenied.OperateType"
 
@@ -343,9 +337,6 @@ const (
 
 	// 用户不归属于当前企业，无法操作，请检查后重试。
 	OPERATIONDENIED_USERNOTINORGANIZATION = "OperationDenied.UserNotInOrganization"
-
-	// 未开通功能白名单，请联系客服处理。
-	OPERATIONDENIED_WHITELISTFORBID = "OperationDenied.WhiteListForbid"
 
 	// 资源不存在。
 	RESOURCENOTFOUND = "ResourceNotFound"
@@ -365,9 +356,6 @@ const (
 	// 未找到对应流程。
 	RESOURCENOTFOUND_FLOW = "ResourceNotFound.Flow"
 
-	// 签署流程的签署人不存在，请检查后重试。
-	RESOURCENOTFOUND_FLOWAPPROVER = "ResourceNotFound.FlowApprover"
-
 	// 签署人信息不存在，请检查后重试。
 	RESOURCENOTFOUND_FLOWAPPROVERS = "ResourceNotFound.FlowApprovers"
 
@@ -385,9 +373,6 @@ const (
 
 	// 模板不存在。
 	RESOURCENOTFOUND_TEMPLATE = "ResourceNotFound.Template"
-
-	// Url不存在。
-	RESOURCENOTFOUND_URL = "ResourceNotFound.URL"
 
 	// 用户信息不存在。
 	RESOURCENOTFOUND_USER = "ResourceNotFound.User"

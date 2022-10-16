@@ -1,3 +1,207 @@
+# Release v1.0.515
+
+## 品牌经营管家(bma) 版本：2021-06-24
+
+### 第 11 次发布
+
+发布时间：2022-10-17 06:09:59
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateCRObtain](https://cloud.tencent.com/document/api/1296/81467)
+
+
+
+## 云原生数据库 TDSQL-C(cynosdb) 版本：2019-01-07
+
+### 第 29 次发布
+
+发布时间：2022-10-14 14:46:49
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateAuditLogFile](https://cloud.tencent.com/document/api/1003/81440)
+* [DeleteAuditLogFile](https://cloud.tencent.com/document/api/1003/81439)
+* [DescribeAuditLogFiles](https://cloud.tencent.com/document/api/1003/81438)
+* [DescribeAuditLogs](https://cloud.tencent.com/document/api/1003/81437)
+
+新增数据结构：
+
+* [AuditLog](https://cloud.tencent.com/document/api/1003/48097#AuditLog)
+* [AuditLogFile](https://cloud.tencent.com/document/api/1003/48097#AuditLogFile)
+* [AuditLogFilter](https://cloud.tencent.com/document/api/1003/48097#AuditLogFilter)
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
+
+### 第 33 次发布
+
+发布时间：2022-10-14 10:03:19
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除接口**：</font>
+
+* CreateChannelFlowEvidenceReport
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
+
+
+
+## 人脸核身(faceid) 版本：2018-03-01
+
+### 第 48 次发布
+
+发布时间：2022-10-17 06:26:28
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [ApplyLivenessToken](https://cloud.tencent.com/document/api/1007/81469)
+* [ApplySdkVerificationToken](https://cloud.tencent.com/document/api/1007/81474)
+* [ApplyWebVerificationToken](https://cloud.tencent.com/document/api/1007/81473)
+* [CreateUploadUrl](https://cloud.tencent.com/document/api/1007/81468)
+* [DetectReflectLivenessAndCompare](https://cloud.tencent.com/document/api/1007/66076)
+* [GenerateReflectSequence](https://cloud.tencent.com/document/api/1007/81476)
+* [GetLivenessResult](https://cloud.tencent.com/document/api/1007/81472)
+* [GetSdkVerificationResult](https://cloud.tencent.com/document/api/1007/81471)
+* [GetWebVerificationResult](https://cloud.tencent.com/document/api/1007/81470)
+* [VideoLivenessCompare](https://cloud.tencent.com/document/api/1007/81475)
+
+新增数据结构：
+
+* [CardVerifyResult](https://cloud.tencent.com/document/api/1007/41958#CardVerifyResult)
+* [CompareResult](https://cloud.tencent.com/document/api/1007/41958#CompareResult)
+* [FileInfo](https://cloud.tencent.com/document/api/1007/41958#FileInfo)
+* [VerificationDetail](https://cloud.tencent.com/document/api/1007/41958#VerificationDetail)
+
+
+
+## T-Sec-安心平台(RP)(trp) 版本：2021-05-15
+
+### 第 7 次发布
+
+发布时间：2022-10-14 20:26:32
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateCustomPack](https://cloud.tencent.com/document/api/1458/81464)
+* [CreateCustomRule](https://cloud.tencent.com/document/api/1458/81463)
+* [CreateTraceCodesAsync](https://cloud.tencent.com/document/api/1458/81462)
+* [DescribeCustomRuleById](https://cloud.tencent.com/document/api/1458/81461)
+* [DescribeCustomRules](https://cloud.tencent.com/document/api/1458/81460)
+* [ModifyCustomRule](https://cloud.tencent.com/document/api/1458/81459)
+* [ModifyCustomRuleStatus](https://cloud.tencent.com/document/api/1458/81458)
+
+新增数据结构：
+
+* [CodePart](https://cloud.tencent.com/document/api/1458/75030#CodePart)
+* [CustomRule](https://cloud.tencent.com/document/api/1458/75030#CustomRule)
+
+### 第 6 次发布
+
+发布时间：2022-10-14 20:11:39
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeCodePackStatus](https://cloud.tencent.com/document/api/1458/81457)
+* [DescribeCodePackUrl](https://cloud.tencent.com/document/api/1458/81456)
+* [DescribeJobFileUrl](https://cloud.tencent.com/document/api/1458/81455)
+
+
+
+## 实时音视频(trtc) 版本：2019-07-22
+
+### 第 40 次发布
+
+发布时间：2022-10-17 06:50:00
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [StartPublishCdnStream](https://cloud.tencent.com/document/api/647/81479)
+* [StopPublishCdnStream](https://cloud.tencent.com/document/api/647/81478)
+* [UpdatePublishCdnStream](https://cloud.tencent.com/document/api/647/81477)
+
+新增数据结构：
+
+* [AgentParams](https://cloud.tencent.com/document/api/647/44055#AgentParams)
+* [AudioEncode](https://cloud.tencent.com/document/api/647/44055#AudioEncode)
+* [MaxVideoUser](https://cloud.tencent.com/document/api/647/44055#MaxVideoUser)
+* [McuAudioParams](https://cloud.tencent.com/document/api/647/44055#McuAudioParams)
+* [McuCustomCrop](https://cloud.tencent.com/document/api/647/44055#McuCustomCrop)
+* [McuLayout](https://cloud.tencent.com/document/api/647/44055#McuLayout)
+* [McuLayoutParams](https://cloud.tencent.com/document/api/647/44055#McuLayoutParams)
+* [McuLayoutVolume](https://cloud.tencent.com/document/api/647/44055#McuLayoutVolume)
+* [McuPassThrough](https://cloud.tencent.com/document/api/647/44055#McuPassThrough)
+* [McuPublishCdnParam](https://cloud.tencent.com/document/api/647/44055#McuPublishCdnParam)
+* [McuSeiParams](https://cloud.tencent.com/document/api/647/44055#McuSeiParams)
+* [McuUserInfoParams](https://cloud.tencent.com/document/api/647/44055#McuUserInfoParams)
+* [McuVideoParams](https://cloud.tencent.com/document/api/647/44055#McuVideoParams)
+* [McuWaterMarkImage](https://cloud.tencent.com/document/api/647/44055#McuWaterMarkImage)
+* [McuWaterMarkParams](https://cloud.tencent.com/document/api/647/44055#McuWaterMarkParams)
+* [MixUserInfo](https://cloud.tencent.com/document/api/647/44055#MixUserInfo)
+* [SingleSubscribeParams](https://cloud.tencent.com/document/api/647/44055#SingleSubscribeParams)
+* [UserMediaStream](https://cloud.tencent.com/document/api/647/44055#UserMediaStream)
+* [VideoEncode](https://cloud.tencent.com/document/api/647/44055#VideoEncode)
+
+
+
+## 数据开发治理平台 WeData(wedata) 版本：2021-08-20
+
+### 第 8 次发布
+
+发布时间：2022-10-17 06:55:30
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DeleteCustomFunction](https://cloud.tencent.com/document/api/1267/81485)
+* [DescribeFunctionKinds](https://cloud.tencent.com/document/api/1267/81484)
+* [DescribeFunctionTypes](https://cloud.tencent.com/document/api/1267/81483)
+* [DescribeOrganizationalFunctions](https://cloud.tencent.com/document/api/1267/81482)
+* [SaveCustomFunction](https://cloud.tencent.com/document/api/1267/81481)
+* [SubmitCustomFunction](https://cloud.tencent.com/document/api/1267/81480)
+
+新增数据结构：
+
+* [FunctionResource](https://cloud.tencent.com/document/api/1267/76336#FunctionResource)
+* [FunctionTypeOrKind](https://cloud.tencent.com/document/api/1267/76336#FunctionTypeOrKind)
+* [FunctionVersion](https://cloud.tencent.com/document/api/1267/76336#FunctionVersion)
+* [OrganizationalFunction](https://cloud.tencent.com/document/api/1267/76336#OrganizationalFunction)
+
+
+
 # Release v1.0.514
 
 ## 消息队列 Ckafka(ckafka) 版本：2019-08-19

@@ -881,68 +881,6 @@ func (c *Client) ChannelVerifyPdfWithContext(ctx context.Context, request *Chann
     return
 }
 
-func NewCreateChannelFlowEvidenceReportRequest() (request *CreateChannelFlowEvidenceReportRequest) {
-    request = &CreateChannelFlowEvidenceReportRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("essbasic", APIVersion, "CreateChannelFlowEvidenceReport")
-    
-    
-    return
-}
-
-func NewCreateChannelFlowEvidenceReportResponse() (response *CreateChannelFlowEvidenceReportResponse) {
-    response = &CreateChannelFlowEvidenceReportResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// CreateChannelFlowEvidenceReport
-// 创建出证报告，返回报告 URL。此接口暂未开放，有问题请联系运营人员。
-//
-// 可能返回的错误码:
-//  INTERNALERROR_SYSTEM = "InternalError.System"
-//  MISSINGPARAMETER_FLOWID = "MissingParameter.FlowId"
-//  OPERATIONDENIED_FLOWSTATUSFORBID = "OperationDenied.FlowStatusForbid"
-//  OPERATIONDENIED_NOTBELONGSUPERADMINORLEGALPERSON = "OperationDenied.NotBelongSuperAdminOrLegalPerson"
-//  OPERATIONDENIED_WHITELISTFORBID = "OperationDenied.WhiteListForbid"
-//  RESOURCENOTFOUND_FLOW = "ResourceNotFound.Flow"
-//  RESOURCENOTFOUND_FLOWAPPROVER = "ResourceNotFound.FlowApprover"
-//  RESOURCENOTFOUND_URL = "ResourceNotFound.URL"
-func (c *Client) CreateChannelFlowEvidenceReport(request *CreateChannelFlowEvidenceReportRequest) (response *CreateChannelFlowEvidenceReportResponse, err error) {
-    return c.CreateChannelFlowEvidenceReportWithContext(context.Background(), request)
-}
-
-// CreateChannelFlowEvidenceReport
-// 创建出证报告，返回报告 URL。此接口暂未开放，有问题请联系运营人员。
-//
-// 可能返回的错误码:
-//  INTERNALERROR_SYSTEM = "InternalError.System"
-//  MISSINGPARAMETER_FLOWID = "MissingParameter.FlowId"
-//  OPERATIONDENIED_FLOWSTATUSFORBID = "OperationDenied.FlowStatusForbid"
-//  OPERATIONDENIED_NOTBELONGSUPERADMINORLEGALPERSON = "OperationDenied.NotBelongSuperAdminOrLegalPerson"
-//  OPERATIONDENIED_WHITELISTFORBID = "OperationDenied.WhiteListForbid"
-//  RESOURCENOTFOUND_FLOW = "ResourceNotFound.Flow"
-//  RESOURCENOTFOUND_FLOWAPPROVER = "ResourceNotFound.FlowApprover"
-//  RESOURCENOTFOUND_URL = "ResourceNotFound.URL"
-func (c *Client) CreateChannelFlowEvidenceReportWithContext(ctx context.Context, request *CreateChannelFlowEvidenceReportRequest) (response *CreateChannelFlowEvidenceReportResponse, err error) {
-    if request == nil {
-        request = NewCreateChannelFlowEvidenceReportRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("CreateChannelFlowEvidenceReport require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewCreateChannelFlowEvidenceReportResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewCreateConsoleLoginUrlRequest() (request *CreateConsoleLoginUrlRequest) {
     request = &CreateConsoleLoginUrlRequest{
         BaseRequest: &tchttp.BaseRequest{},

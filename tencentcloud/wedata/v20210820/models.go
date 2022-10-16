@@ -965,6 +965,75 @@ type DataSourceInfoPage struct {
 }
 
 // Predefined struct for user
+type DeleteCustomFunctionRequestParams struct {
+	// 集群实例 ID
+	ClusterIdentifier *string `json:"ClusterIdentifier,omitempty" name:"ClusterIdentifier"`
+
+	// 函数 ID
+	FunctionId *string `json:"FunctionId,omitempty" name:"FunctionId"`
+}
+
+type DeleteCustomFunctionRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群实例 ID
+	ClusterIdentifier *string `json:"ClusterIdentifier,omitempty" name:"ClusterIdentifier"`
+
+	// 函数 ID
+	FunctionId *string `json:"FunctionId,omitempty" name:"FunctionId"`
+}
+
+func (r *DeleteCustomFunctionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteCustomFunctionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterIdentifier")
+	delete(f, "FunctionId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteCustomFunctionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteCustomFunctionResponseParams struct {
+	// 函数 ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FunctionId *string `json:"FunctionId,omitempty" name:"FunctionId"`
+
+	// 无
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrorMessage *string `json:"ErrorMessage,omitempty" name:"ErrorMessage"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DeleteCustomFunctionResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteCustomFunctionResponseParams `json:"Response"`
+}
+
+func (r *DeleteCustomFunctionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteCustomFunctionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DeleteDataSourcesRequestParams struct {
 	// id列表
 	Ids []*uint64 `json:"Ids,omitempty" name:"Ids"`
@@ -1676,6 +1745,124 @@ func (r *DescribeFolderWorkflowListResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeFunctionKindsRequestParams struct {
+
+}
+
+type DescribeFunctionKindsRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DescribeFunctionKindsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeFunctionKindsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeFunctionKindsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeFunctionKindsResponseParams struct {
+	// 无
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Kinds []*FunctionTypeOrKind `json:"Kinds,omitempty" name:"Kinds"`
+
+	// 无
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrorMessage *string `json:"ErrorMessage,omitempty" name:"ErrorMessage"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeFunctionKindsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeFunctionKindsResponseParams `json:"Response"`
+}
+
+func (r *DescribeFunctionKindsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeFunctionKindsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeFunctionTypesRequestParams struct {
+
+}
+
+type DescribeFunctionTypesRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DescribeFunctionTypesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeFunctionTypesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeFunctionTypesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeFunctionTypesResponseParams struct {
+	// 无
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Types []*FunctionTypeOrKind `json:"Types,omitempty" name:"Types"`
+
+	// 无
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrorMessage *string `json:"ErrorMessage,omitempty" name:"ErrorMessage"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeFunctionTypesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeFunctionTypesResponseParams `json:"Response"`
+}
+
+func (r *DescribeFunctionTypesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeFunctionTypesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeInstanceLogsRequestParams struct {
 	// 项目Id
 	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
@@ -1744,6 +1931,89 @@ func (r *DescribeInstanceLogsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeInstanceLogsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeOrganizationalFunctionsRequestParams struct {
+	// 场景类型：开发、使用
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 项目 ID
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 函数名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 展示名称
+	DisplayName *string `json:"DisplayName,omitempty" name:"DisplayName"`
+}
+
+type DescribeOrganizationalFunctionsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 场景类型：开发、使用
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 项目 ID
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 函数名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 展示名称
+	DisplayName *string `json:"DisplayName,omitempty" name:"DisplayName"`
+}
+
+func (r *DescribeOrganizationalFunctionsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeOrganizationalFunctionsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Type")
+	delete(f, "ProjectId")
+	delete(f, "Name")
+	delete(f, "DisplayName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeOrganizationalFunctionsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeOrganizationalFunctionsResponseParams struct {
+	// 无
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Content []*OrganizationalFunction `json:"Content,omitempty" name:"Content"`
+
+	// 无
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrorMessage *string `json:"ErrorMessage,omitempty" name:"ErrorMessage"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeOrganizationalFunctionsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeOrganizationalFunctionsResponseParams `json:"Response"`
+}
+
+func (r *DescribeOrganizationalFunctionsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeOrganizationalFunctionsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2528,6 +2798,63 @@ func (r *FreezeTasksResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *FreezeTasksResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type FunctionResource struct {
+	// 资源路径
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Path *string `json:"Path,omitempty" name:"Path"`
+
+	// 无
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 资源唯一标识
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 资源 MD5 值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Md5 *string `json:"Md5,omitempty" name:"Md5"`
+
+	// 默认是 hdfs
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *string `json:"Type,omitempty" name:"Type"`
+}
+
+type FunctionTypeOrKind struct {
+	// 无
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 无
+	ZhName *string `json:"ZhName,omitempty" name:"ZhName"`
+
+	// 无
+	EnName *string `json:"EnName,omitempty" name:"EnName"`
+}
+
+type FunctionVersion struct {
+	// 版本号：V0 V1 V2
+	Tag *string `json:"Tag,omitempty" name:"Tag"`
+
+	// 提交人 ID
+	UserId *string `json:"UserId,omitempty" name:"UserId"`
+
+	// 变更类型：ADD、MODIFY
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 备注
+	Comment *string `json:"Comment,omitempty" name:"Comment"`
+
+	// 提交时间: UTC 秒数
+	Timestamp *string `json:"Timestamp,omitempty" name:"Timestamp"`
+
+	// 提交人名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserName *string `json:"UserName,omitempty" name:"UserName"`
+
+	// 版本内容：json string 格式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Content *string `json:"Content,omitempty" name:"Content"`
 }
 
 type GeneralTaskParam struct {
@@ -3873,6 +4200,88 @@ type OrderField struct {
 	Direction *string `json:"Direction,omitempty" name:"Direction"`
 }
 
+type OrganizationalFunction struct {
+	// 名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 展示名称
+	DisplayName *string `json:"DisplayName,omitempty" name:"DisplayName"`
+
+	// 层级路径
+	LayerPath *string `json:"LayerPath,omitempty" name:"LayerPath"`
+
+	// 上级层级路径
+	ParentLayerPath *string `json:"ParentLayerPath,omitempty" name:"ParentLayerPath"`
+
+	// 函数类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 函数分类：窗口函数、聚合函数、日期函数......
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Kind *string `json:"Kind,omitempty" name:"Kind"`
+
+	// 函数种类：系统函数、自定义函数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Category *string `json:"Category,omitempty" name:"Category"`
+
+	// 函数状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 函数说明
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 函数用法
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Usage *string `json:"Usage,omitempty" name:"Usage"`
+
+	// 函数参数说明
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ParamDesc *string `json:"ParamDesc,omitempty" name:"ParamDesc"`
+
+	// 函数返回值说明
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReturnDesc *string `json:"ReturnDesc,omitempty" name:"ReturnDesc"`
+
+	// 函数示例
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Example *string `json:"Example,omitempty" name:"Example"`
+
+	// 集群实例引擎 ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterIdentifier *string `json:"ClusterIdentifier,omitempty" name:"ClusterIdentifier"`
+
+	// 函数 ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FuncId *string `json:"FuncId,omitempty" name:"FuncId"`
+
+	// 函数类名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClassName *string `json:"ClassName,omitempty" name:"ClassName"`
+
+	// 函数资源列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceList []*FunctionVersion `json:"ResourceList,omitempty" name:"ResourceList"`
+
+	// 操作人 ID 列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OperatorUserIds []*int64 `json:"OperatorUserIds,omitempty" name:"OperatorUserIds"`
+
+	// 公有云 Owner ID 列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OwnerUserIds []*int64 `json:"OwnerUserIds,omitempty" name:"OwnerUserIds"`
+
+	// 数据库名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DbName *string `json:"DbName,omitempty" name:"DbName"`
+
+	// 提交失败错误信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubmitErrorMsg *string `json:"SubmitErrorMsg,omitempty" name:"SubmitErrorMsg"`
+}
+
 type ParamInfo struct {
 	// 参数名
 	ParamKey *string `json:"ParamKey,omitempty" name:"ParamKey"`
@@ -4260,6 +4669,131 @@ func (r *RunTaskResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type SaveCustomFunctionRequestParams struct {
+	// 函数唯一标识
+	FunctionId *string `json:"FunctionId,omitempty" name:"FunctionId"`
+
+	// 分类：窗口函数、聚合函数、日期函数......
+	Kind *string `json:"Kind,omitempty" name:"Kind"`
+
+	// 集群引擎实例
+	ClusterIdentifier *string `json:"ClusterIdentifier,omitempty" name:"ClusterIdentifier"`
+
+	// 类名
+	ClassName *string `json:"ClassName,omitempty" name:"ClassName"`
+
+	// 资源列表
+	ResourceList []*FunctionResource `json:"ResourceList,omitempty" name:"ResourceList"`
+
+	// 函数说明
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 用法
+	Usage *string `json:"Usage,omitempty" name:"Usage"`
+
+	// 参数说明
+	ParamDesc *string `json:"ParamDesc,omitempty" name:"ParamDesc"`
+
+	// 返回值说明
+	ReturnDesc *string `json:"ReturnDesc,omitempty" name:"ReturnDesc"`
+
+	// 示例
+	Example *string `json:"Example,omitempty" name:"Example"`
+}
+
+type SaveCustomFunctionRequest struct {
+	*tchttp.BaseRequest
+	
+	// 函数唯一标识
+	FunctionId *string `json:"FunctionId,omitempty" name:"FunctionId"`
+
+	// 分类：窗口函数、聚合函数、日期函数......
+	Kind *string `json:"Kind,omitempty" name:"Kind"`
+
+	// 集群引擎实例
+	ClusterIdentifier *string `json:"ClusterIdentifier,omitempty" name:"ClusterIdentifier"`
+
+	// 类名
+	ClassName *string `json:"ClassName,omitempty" name:"ClassName"`
+
+	// 资源列表
+	ResourceList []*FunctionResource `json:"ResourceList,omitempty" name:"ResourceList"`
+
+	// 函数说明
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 用法
+	Usage *string `json:"Usage,omitempty" name:"Usage"`
+
+	// 参数说明
+	ParamDesc *string `json:"ParamDesc,omitempty" name:"ParamDesc"`
+
+	// 返回值说明
+	ReturnDesc *string `json:"ReturnDesc,omitempty" name:"ReturnDesc"`
+
+	// 示例
+	Example *string `json:"Example,omitempty" name:"Example"`
+}
+
+func (r *SaveCustomFunctionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SaveCustomFunctionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FunctionId")
+	delete(f, "Kind")
+	delete(f, "ClusterIdentifier")
+	delete(f, "ClassName")
+	delete(f, "ResourceList")
+	delete(f, "Description")
+	delete(f, "Usage")
+	delete(f, "ParamDesc")
+	delete(f, "ReturnDesc")
+	delete(f, "Example")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SaveCustomFunctionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SaveCustomFunctionResponseParams struct {
+	// 函数唯一标识
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FunctionId *string `json:"FunctionId,omitempty" name:"FunctionId"`
+
+	// 无
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrorMessage *string `json:"ErrorMessage,omitempty" name:"ErrorMessage"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type SaveCustomFunctionResponse struct {
+	*tchttp.BaseResponse
+	Response *SaveCustomFunctionResponseParams `json:"Response"`
+}
+
+func (r *SaveCustomFunctionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SaveCustomFunctionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type SetTaskAlarmNewRequestParams struct {
 	// 设置任务超时告警和失败告警信息
 	AlarmInfoList []*AlarmInfo `json:"AlarmInfoList,omitempty" name:"AlarmInfoList"`
@@ -4329,6 +4863,82 @@ type SimpleTaskInfo struct {
 
 	// 任务名
 	TaskName *string `json:"TaskName,omitempty" name:"TaskName"`
+}
+
+// Predefined struct for user
+type SubmitCustomFunctionRequestParams struct {
+	// 函数唯一标识
+	FunctionId *string `json:"FunctionId,omitempty" name:"FunctionId"`
+
+	// 集群实例 ID
+	ClusterIdentifier *string `json:"ClusterIdentifier,omitempty" name:"ClusterIdentifier"`
+
+	// 备注信息
+	Comment *string `json:"Comment,omitempty" name:"Comment"`
+}
+
+type SubmitCustomFunctionRequest struct {
+	*tchttp.BaseRequest
+	
+	// 函数唯一标识
+	FunctionId *string `json:"FunctionId,omitempty" name:"FunctionId"`
+
+	// 集群实例 ID
+	ClusterIdentifier *string `json:"ClusterIdentifier,omitempty" name:"ClusterIdentifier"`
+
+	// 备注信息
+	Comment *string `json:"Comment,omitempty" name:"Comment"`
+}
+
+func (r *SubmitCustomFunctionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SubmitCustomFunctionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FunctionId")
+	delete(f, "ClusterIdentifier")
+	delete(f, "Comment")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SubmitCustomFunctionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SubmitCustomFunctionResponseParams struct {
+	// 函数唯一标识
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FunctionId *string `json:"FunctionId,omitempty" name:"FunctionId"`
+
+	// 无
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrorMessage *string `json:"ErrorMessage,omitempty" name:"ErrorMessage"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type SubmitCustomFunctionResponse struct {
+	*tchttp.BaseResponse
+	Response *SubmitCustomFunctionResponseParams `json:"Response"`
+}
+
+func (r *SubmitCustomFunctionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SubmitCustomFunctionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user

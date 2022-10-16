@@ -149,6 +149,110 @@ func (c *Client) CreateCodePackWithContext(ctx context.Context, request *CreateC
     return
 }
 
+func NewCreateCustomPackRequest() (request *CreateCustomPackRequest) {
+    request = &CreateCustomPackRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trp", APIVersion, "CreateCustomPack")
+    
+    
+    return
+}
+
+func NewCreateCustomPackResponse() (response *CreateCustomPackResponse) {
+    response = &CreateCustomPackResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateCustomPack
+// 生成自定义码包
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) CreateCustomPack(request *CreateCustomPackRequest) (response *CreateCustomPackResponse, err error) {
+    return c.CreateCustomPackWithContext(context.Background(), request)
+}
+
+// CreateCustomPack
+// 生成自定义码包
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) CreateCustomPackWithContext(ctx context.Context, request *CreateCustomPackRequest) (response *CreateCustomPackResponse, err error) {
+    if request == nil {
+        request = NewCreateCustomPackRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateCustomPack require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateCustomPackResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateCustomRuleRequest() (request *CreateCustomRuleRequest) {
+    request = &CreateCustomRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trp", APIVersion, "CreateCustomRule")
+    
+    
+    return
+}
+
+func NewCreateCustomRuleResponse() (response *CreateCustomRuleResponse) {
+    response = &CreateCustomRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateCustomRule
+// 新建自定义码规则
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) CreateCustomRule(request *CreateCustomRuleRequest) (response *CreateCustomRuleResponse, err error) {
+    return c.CreateCustomRuleWithContext(context.Background(), request)
+}
+
+// CreateCustomRule
+// 新建自定义码规则
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) CreateCustomRuleWithContext(ctx context.Context, request *CreateCustomRuleRequest) (response *CreateCustomRuleResponse, err error) {
+    if request == nil {
+        request = NewCreateCustomRuleRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateCustomRule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateCustomRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateMerchantRequest() (request *CreateMerchantRequest) {
     request = &CreateMerchantRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -353,6 +457,58 @@ func (c *Client) CreateTraceCodesWithContext(ctx context.Context, request *Creat
     request.SetContext(ctx)
     
     response = NewCreateTraceCodesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateTraceCodesAsyncRequest() (request *CreateTraceCodesAsyncRequest) {
+    request = &CreateTraceCodesAsyncRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trp", APIVersion, "CreateTraceCodesAsync")
+    
+    
+    return
+}
+
+func NewCreateTraceCodesAsyncResponse() (response *CreateTraceCodesAsyncResponse) {
+    response = &CreateTraceCodesAsyncResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateTraceCodesAsync
+// 异步导入激活码包，如果是第三方码包，需要域名跟配置的匹配
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) CreateTraceCodesAsync(request *CreateTraceCodesAsyncRequest) (response *CreateTraceCodesAsyncResponse, err error) {
+    return c.CreateTraceCodesAsyncWithContext(context.Background(), request)
+}
+
+// CreateTraceCodesAsync
+// 异步导入激活码包，如果是第三方码包，需要域名跟配置的匹配
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) CreateTraceCodesAsyncWithContext(ctx context.Context, request *CreateTraceCodesAsyncRequest) (response *CreateTraceCodesAsyncResponse, err error) {
+    if request == nil {
+        request = NewCreateTraceCodesAsyncRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateTraceCodesAsync require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateTraceCodesAsyncResponse()
     err = c.Send(request, response)
     return
 }
@@ -719,6 +875,106 @@ func (c *Client) DescribeCodeBatchsWithContext(ctx context.Context, request *Des
     return
 }
 
+func NewDescribeCodePackStatusRequest() (request *DescribeCodePackStatusRequest) {
+    request = &DescribeCodePackStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trp", APIVersion, "DescribeCodePackStatus")
+    
+    
+    return
+}
+
+func NewDescribeCodePackStatusResponse() (response *DescribeCodePackStatusResponse) {
+    response = &DescribeCodePackStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeCodePackStatus
+// 查询码包状态
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeCodePackStatus(request *DescribeCodePackStatusRequest) (response *DescribeCodePackStatusResponse, err error) {
+    return c.DescribeCodePackStatusWithContext(context.Background(), request)
+}
+
+// DescribeCodePackStatus
+// 查询码包状态
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeCodePackStatusWithContext(ctx context.Context, request *DescribeCodePackStatusRequest) (response *DescribeCodePackStatusResponse, err error) {
+    if request == nil {
+        request = NewDescribeCodePackStatusRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCodePackStatus require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCodePackStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeCodePackUrlRequest() (request *DescribeCodePackUrlRequest) {
+    request = &DescribeCodePackUrlRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trp", APIVersion, "DescribeCodePackUrl")
+    
+    
+    return
+}
+
+func NewDescribeCodePackUrlResponse() (response *DescribeCodePackUrlResponse) {
+    response = &DescribeCodePackUrlResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeCodePackUrl
+// 查询码包地址
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeCodePackUrl(request *DescribeCodePackUrlRequest) (response *DescribeCodePackUrlResponse, err error) {
+    return c.DescribeCodePackUrlWithContext(context.Background(), request)
+}
+
+// DescribeCodePackUrl
+// 查询码包地址
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeCodePackUrlWithContext(ctx context.Context, request *DescribeCodePackUrlRequest) (response *DescribeCodePackUrlResponse, err error) {
+    if request == nil {
+        request = NewDescribeCodePackUrlRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCodePackUrl require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCodePackUrlResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeCodePacksRequest() (request *DescribeCodePacksRequest) {
     request = &DescribeCodePacksRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -819,6 +1075,164 @@ func (c *Client) DescribeCodesByPackWithContext(ctx context.Context, request *De
     request.SetContext(ctx)
     
     response = NewDescribeCodesByPackResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeCustomRuleByIdRequest() (request *DescribeCustomRuleByIdRequest) {
+    request = &DescribeCustomRuleByIdRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trp", APIVersion, "DescribeCustomRuleById")
+    
+    
+    return
+}
+
+func NewDescribeCustomRuleByIdResponse() (response *DescribeCustomRuleByIdResponse) {
+    response = &DescribeCustomRuleByIdResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeCustomRuleById
+// 查自定义码规则
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_CORPEXPIRED = "AuthFailure.CorpExpired"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeCustomRuleById(request *DescribeCustomRuleByIdRequest) (response *DescribeCustomRuleByIdResponse, err error) {
+    return c.DescribeCustomRuleByIdWithContext(context.Background(), request)
+}
+
+// DescribeCustomRuleById
+// 查自定义码规则
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_CORPEXPIRED = "AuthFailure.CorpExpired"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeCustomRuleByIdWithContext(ctx context.Context, request *DescribeCustomRuleByIdRequest) (response *DescribeCustomRuleByIdResponse, err error) {
+    if request == nil {
+        request = NewDescribeCustomRuleByIdRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCustomRuleById require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCustomRuleByIdResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeCustomRulesRequest() (request *DescribeCustomRulesRequest) {
+    request = &DescribeCustomRulesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trp", APIVersion, "DescribeCustomRules")
+    
+    
+    return
+}
+
+func NewDescribeCustomRulesResponse() (response *DescribeCustomRulesResponse) {
+    response = &DescribeCustomRulesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeCustomRules
+// 查自定义码规则列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_CORPEXPIRED = "AuthFailure.CorpExpired"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeCustomRules(request *DescribeCustomRulesRequest) (response *DescribeCustomRulesResponse, err error) {
+    return c.DescribeCustomRulesWithContext(context.Background(), request)
+}
+
+// DescribeCustomRules
+// 查自定义码规则列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_CORPEXPIRED = "AuthFailure.CorpExpired"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeCustomRulesWithContext(ctx context.Context, request *DescribeCustomRulesRequest) (response *DescribeCustomRulesResponse, err error) {
+    if request == nil {
+        request = NewDescribeCustomRulesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCustomRules require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCustomRulesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeJobFileUrlRequest() (request *DescribeJobFileUrlRequest) {
+    request = &DescribeJobFileUrlRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trp", APIVersion, "DescribeJobFileUrl")
+    
+    
+    return
+}
+
+func NewDescribeJobFileUrlResponse() (response *DescribeJobFileUrlResponse) {
+    response = &DescribeJobFileUrlResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeJobFileUrl
+// 获取异步任务的输出地址
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeJobFileUrl(request *DescribeJobFileUrlRequest) (response *DescribeJobFileUrlResponse, err error) {
+    return c.DescribeJobFileUrlWithContext(context.Background(), request)
+}
+
+// DescribeJobFileUrl
+// 获取异步任务的输出地址
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeJobFileUrlWithContext(ctx context.Context, request *DescribeJobFileUrlRequest) (response *DescribeJobFileUrlResponse, err error) {
+    if request == nil {
+        request = NewDescribeJobFileUrlRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeJobFileUrl require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeJobFileUrlResponse()
     err = c.Send(request, response)
     return
 }
@@ -1237,6 +1651,110 @@ func (c *Client) ModifyCodeBatchWithContext(ctx context.Context, request *Modify
     request.SetContext(ctx)
     
     response = NewModifyCodeBatchResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyCustomRuleRequest() (request *ModifyCustomRuleRequest) {
+    request = &ModifyCustomRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trp", APIVersion, "ModifyCustomRule")
+    
+    
+    return
+}
+
+func NewModifyCustomRuleResponse() (response *ModifyCustomRuleResponse) {
+    response = &ModifyCustomRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyCustomRule
+// 修改自定义码规则
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) ModifyCustomRule(request *ModifyCustomRuleRequest) (response *ModifyCustomRuleResponse, err error) {
+    return c.ModifyCustomRuleWithContext(context.Background(), request)
+}
+
+// ModifyCustomRule
+// 修改自定义码规则
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) ModifyCustomRuleWithContext(ctx context.Context, request *ModifyCustomRuleRequest) (response *ModifyCustomRuleResponse, err error) {
+    if request == nil {
+        request = NewModifyCustomRuleRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyCustomRule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyCustomRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyCustomRuleStatusRequest() (request *ModifyCustomRuleStatusRequest) {
+    request = &ModifyCustomRuleStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trp", APIVersion, "ModifyCustomRuleStatus")
+    
+    
+    return
+}
+
+func NewModifyCustomRuleStatusResponse() (response *ModifyCustomRuleStatusResponse) {
+    response = &ModifyCustomRuleStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyCustomRuleStatus
+// 更新自定义码规则状态
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) ModifyCustomRuleStatus(request *ModifyCustomRuleStatusRequest) (response *ModifyCustomRuleStatusResponse, err error) {
+    return c.ModifyCustomRuleStatusWithContext(context.Background(), request)
+}
+
+// ModifyCustomRuleStatus
+// 更新自定义码规则状态
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) ModifyCustomRuleStatusWithContext(ctx context.Context, request *ModifyCustomRuleStatusRequest) (response *ModifyCustomRuleStatusResponse, err error) {
+    if request == nil {
+        request = NewModifyCustomRuleStatusRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyCustomRuleStatus require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyCustomRuleStatusResponse()
     err = c.Send(request, response)
     return
 }
