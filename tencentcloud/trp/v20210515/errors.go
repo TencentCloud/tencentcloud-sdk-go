@@ -20,6 +20,9 @@ const (
 	// CAM签名/鉴权错误。
 	AUTHFAILURE = "AuthFailure"
 
+	// 当前没有创建任何企业。
+	AUTHFAILURE_CORPEMPTY = "AuthFailure.CorpEmpty"
+
 	// 企业服务时间已到期。
 	AUTHFAILURE_CORPEXPIRED = "AuthFailure.CorpExpired"
 

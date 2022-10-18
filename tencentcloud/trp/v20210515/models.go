@@ -43,7 +43,7 @@ type CodeBatch struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CorpId *int64 `json:"CorpId,omitempty" name:"CorpId"`
 
-	// 码
+	// 批次编码(未使用)
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BatchCode *string `json:"BatchCode,omitempty" name:"BatchCode"`
 
@@ -71,7 +71,7 @@ type CodeBatch struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MpTpl *string `json:"MpTpl,omitempty" name:"MpTpl"`
 
-	// 状态
+	// 批次状态 0: 未激活 1: 已激活 -1: 已冻结
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *int64 `json:"Status,omitempty" name:"Status"`
 
@@ -107,6 +107,88 @@ type CodeBatch struct {
 type CodeItem struct {
 	// 无
 	Code *string `json:"Code,omitempty" name:"Code"`
+}
+
+type CodePack struct {
+	// 码id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PackId *string `json:"PackId,omitempty" name:"PackId"`
+
+	// 企业id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CorpId *int64 `json:"CorpId,omitempty" name:"CorpId"`
+
+	// 商户id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MerchantId *string `json:"MerchantId,omitempty" name:"MerchantId"`
+
+	// 创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 更新时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+
+	// 状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 记录
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Log *string `json:"Log,omitempty" name:"Log"`
+
+	// 创建人
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateUser *string `json:"CreateUser,omitempty" name:"CreateUser"`
+
+	// 码数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Amount *int64 `json:"Amount,omitempty" name:"Amount"`
+
+	// 码长度
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CodeLength *int64 `json:"CodeLength,omitempty" name:"CodeLength"`
+
+	// 码类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CodeType *string `json:"CodeType,omitempty" name:"CodeType"`
+
+	// 是否暗码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Cipher *int64 `json:"Cipher,omitempty" name:"Cipher"`
+
+	// 文字码地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TextUrl *string `json:"TextUrl,omitempty" name:"TextUrl"`
+
+	// 二维码地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PackUrl *string `json:"PackUrl,omitempty" name:"PackUrl"`
+
+	// 商户名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MerchantName *string `json:"MerchantName,omitempty" name:"MerchantName"`
+
+	// 码规则类型 0: 默认, 1: 自定义
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleType *int64 `json:"RuleType,omitempty" name:"RuleType"`
+
+	// 自定义码规则ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CustomId *string `json:"CustomId,omitempty" name:"CustomId"`
+
+	// 码包类型 0: 普通码包 1: 层级码包
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PackType *int64 `json:"PackType,omitempty" name:"PackType"`
+
+	// 生码层级
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PackLevel *uint64 `json:"PackLevel,omitempty" name:"PackLevel"`
+
+	// 层级码配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PackSpec []*PackSpec `json:"PackSpec,omitempty" name:"PackSpec"`
 }
 
 type CodePart struct {
@@ -359,11 +441,14 @@ type CreateCustomPackRequestParams struct {
 	// 码包层级
 	PackLevel *uint64 `json:"PackLevel,omitempty" name:"PackLevel"`
 
-	// 层级码包规则 [{ Level, Rate, Amount, CustomId }]
+	// 层级码包规则
 	PackSpec []*PackSpec `json:"PackSpec,omitempty" name:"PackSpec"`
 
-	// 码规则ID,  普通码包时必填
+	// 码规则ID,  和CodeParts二选一必填
 	CustomId *string `json:"CustomId,omitempty" name:"CustomId"`
+
+	// 码段配置，和CustomId二选一必填
+	CodeParts []*CodePart `json:"CodeParts,omitempty" name:"CodeParts"`
 }
 
 type CreateCustomPackRequest struct {
@@ -384,11 +469,14 @@ type CreateCustomPackRequest struct {
 	// 码包层级
 	PackLevel *uint64 `json:"PackLevel,omitempty" name:"PackLevel"`
 
-	// 层级码包规则 [{ Level, Rate, Amount, CustomId }]
+	// 层级码包规则
 	PackSpec []*PackSpec `json:"PackSpec,omitempty" name:"PackSpec"`
 
-	// 码规则ID,  普通码包时必填
+	// 码规则ID,  和CodeParts二选一必填
 	CustomId *string `json:"CustomId,omitempty" name:"CustomId"`
+
+	// 码段配置，和CustomId二选一必填
+	CodeParts []*CodePart `json:"CodeParts,omitempty" name:"CodeParts"`
 }
 
 func (r *CreateCustomPackRequest) ToJsonString() string {
@@ -410,6 +498,7 @@ func (r *CreateCustomPackRequest) FromJsonString(s string) error {
 	delete(f, "PackLevel")
 	delete(f, "PackSpec")
 	delete(f, "CustomId")
+	delete(f, "CodeParts")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCustomPackRequest has unknown keys!", "")
 	}
@@ -1560,6 +1649,10 @@ func (r *DescribeCodePackStatusRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeCodePackStatusResponseParams struct {
+	// 码包状态 init: 初始化, pending: 执行中, done: 完成, error: 失败
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *string `json:"Status,omitempty" name:"Status"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }
@@ -1624,6 +1717,14 @@ type DescribeCodePackUrlResponseParams struct {
 	// 文字码包地址
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Url *string `json:"Url,omitempty" name:"Url"`
+
+	// 图片码包地址，可能为空
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ImgUrl *string `json:"ImgUrl,omitempty" name:"ImgUrl"`
+
+	// 文字码包Key，用于上传导入
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FileKey *string `json:"FileKey,omitempty" name:"FileKey"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1700,6 +1801,14 @@ func (r *DescribeCodePacksRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeCodePacksResponseParams struct {
+	// 码列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CodePacks []*CodePack `json:"CodePacks,omitempty" name:"CodePacks"`
+
+	// 总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }
@@ -1988,6 +2097,10 @@ func (r *DescribeJobFileUrlRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeJobFileUrlResponseParams struct {
+	// 码包地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Url *string `json:"Url,omitempty" name:"Url"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }
@@ -2315,6 +2428,64 @@ func (r *DescribeProductsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeProductsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeTmpTokenRequestParams struct {
+	// 企业ID
+	CorpId *uint64 `json:"CorpId,omitempty" name:"CorpId"`
+}
+
+type DescribeTmpTokenRequest struct {
+	*tchttp.BaseRequest
+	
+	// 企业ID
+	CorpId *uint64 `json:"CorpId,omitempty" name:"CorpId"`
+}
+
+func (r *DescribeTmpTokenRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTmpTokenRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CorpId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTmpTokenRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeTmpTokenResponseParams struct {
+	// 临时token
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Token *string `json:"Token,omitempty" name:"Token"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeTmpTokenResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeTmpTokenResponseParams `json:"Response"`
+}
+
+func (r *DescribeTmpTokenResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTmpTokenResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -3389,6 +3560,10 @@ type PackSpec struct {
 	// 码规则ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CustomId *string `json:"CustomId,omitempty" name:"CustomId"`
+
+	// 码段配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CodeParts []*CodePart `json:"CodeParts,omitempty" name:"CodeParts"`
 }
 
 type PhaseData struct {
@@ -3497,15 +3672,15 @@ type TraceData struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CorpId *uint64 `json:"CorpId,omitempty" name:"CorpId"`
 
-	// 0
+	// 码类型 0: 批次, 1: 码, 2: 生产任务
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Type *uint64 `json:"Type,omitempty" name:"Type"`
 
-	// 码
+	// 码值，跟码类型一一对应
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Code *string `json:"Code,omitempty" name:"Code"`
 
-	// 排序
+	// 排序，在Phase相同情况下，值越小排名靠前
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Rank *uint64 `json:"Rank,omitempty" name:"Rank"`
 
@@ -3537,9 +3712,17 @@ type TraceData struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ChainTime *string `json:"ChainTime,omitempty" name:"ChainTime"`
 
-	// 无
+	// 上链数据
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ChainData *ChainData `json:"ChainData,omitempty" name:"ChainData"`
+
+	// 溯源阶段配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PhaseData *PhaseData `json:"PhaseData,omitempty" name:"PhaseData"`
+
+	// 溯源阶段状态 0: 无效, 1: 有效
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *int64 `json:"Status,omitempty" name:"Status"`
 }
 
 type TraceItem struct {

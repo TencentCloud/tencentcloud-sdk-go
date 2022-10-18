@@ -1722,6 +1722,111 @@ func (r *DescribeManagersResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribePackagesRequestParams struct {
+	// 偏移量，默认0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 限制数目，默认20。
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 按状态筛选。
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 按过期时间升序或降序排列。
+	ExpireTime *string `json:"ExpireTime,omitempty" name:"ExpireTime"`
+
+	// 按权益包ID搜索。
+	PackageId *string `json:"PackageId,omitempty" name:"PackageId"`
+
+	// 按权益包类型搜索。
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 子产品编号
+	Pid *int64 `json:"Pid,omitempty" name:"Pid"`
+}
+
+type DescribePackagesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 偏移量，默认0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 限制数目，默认20。
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 按状态筛选。
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 按过期时间升序或降序排列。
+	ExpireTime *string `json:"ExpireTime,omitempty" name:"ExpireTime"`
+
+	// 按权益包ID搜索。
+	PackageId *string `json:"PackageId,omitempty" name:"PackageId"`
+
+	// 按权益包类型搜索。
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 子产品编号
+	Pid *int64 `json:"Pid,omitempty" name:"Pid"`
+}
+
+func (r *DescribePackagesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePackagesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Status")
+	delete(f, "ExpireTime")
+	delete(f, "PackageId")
+	delete(f, "Type")
+	delete(f, "Pid")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePackagesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribePackagesResponseParams struct {
+	// 权益包列表。
+	Packages []*PackageInfo `json:"Packages,omitempty" name:"Packages"`
+
+	// 总条数。
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 权益点总余额。
+	TotalBalance *uint64 `json:"TotalBalance,omitempty" name:"TotalBalance"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribePackagesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribePackagesResponseParams `json:"Response"`
+}
+
+func (r *DescribePackagesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePackagesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DownloadCertificateRequestParams struct {
 	// 证书 ID。
 	CertificateId *string `json:"CertificateId,omitempty" name:"CertificateId"`
@@ -2094,6 +2199,78 @@ type OperationLog struct {
 
 	// 操作时间。
 	CreatedOn *string `json:"CreatedOn,omitempty" name:"CreatedOn"`
+}
+
+type PackageInfo struct {
+	// 权益包ID。
+	PackageId *string `json:"PackageId,omitempty" name:"PackageId"`
+
+	// 权益包内权益点总量。
+	Total *uint64 `json:"Total,omitempty" name:"Total"`
+
+	// 权益包内权益点余量。
+	Balance *uint64 `json:"Balance,omitempty" name:"Balance"`
+
+	// 权益包名称。
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 权益点是转入时，来源信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SourceUin *uint64 `json:"SourceUin,omitempty" name:"SourceUin"`
+
+	// 权益点状态。
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 过期时间。
+	ExpireTime *string `json:"ExpireTime,omitempty" name:"ExpireTime"`
+
+	// 更新时间。
+	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+
+	// 生成时间。
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 来源类型。
+	SourceType *string `json:"SourceType,omitempty" name:"SourceType"`
+
+	// 转移信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TransferOutInfos []*PackageTransferOutInfo `json:"TransferOutInfos,omitempty" name:"TransferOutInfos"`
+}
+
+type PackageTransferOutInfo struct {
+	// 权益包ID。
+	PackageId *string `json:"PackageId,omitempty" name:"PackageId"`
+
+	// 转移码。
+	TransferCode *string `json:"TransferCode,omitempty" name:"TransferCode"`
+
+	// 本次转移点数。
+	TransferCount *uint64 `json:"TransferCount,omitempty" name:"TransferCount"`
+
+	// 转入的PackageID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReceivePackageId *string `json:"ReceivePackageId,omitempty" name:"ReceivePackageId"`
+
+	// 本次转移过期时间。
+	ExpireTime *string `json:"ExpireTime,omitempty" name:"ExpireTime"`
+
+	// 本次转移生成时间。
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 本次转移更新时间。
+	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+
+	// 转移状态。
+	TransferStatus *string `json:"TransferStatus,omitempty" name:"TransferStatus"`
+
+	// 接收者uin。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReceiverUin *uint64 `json:"ReceiverUin,omitempty" name:"ReceiverUin"`
+
+	// 接收时间。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReceiveTime *string `json:"ReceiveTime,omitempty" name:"ReceiveTime"`
 }
 
 type ProjectInfo struct {

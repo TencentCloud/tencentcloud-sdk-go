@@ -1019,6 +1019,56 @@ func (c *Client) DescribeManagersWithContext(ctx context.Context, request *Descr
     return
 }
 
+func NewDescribePackagesRequest() (request *DescribePackagesRequest) {
+    request = &DescribePackagesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ssl", APIVersion, "DescribePackages")
+    
+    
+    return
+}
+
+func NewDescribePackagesResponse() (response *DescribePackagesResponse) {
+    response = &DescribePackagesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribePackages
+// 获得权益包列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  LIMITEXCEEDED_RATELIMITEXCEEDED = "LimitExceeded.RateLimitExceeded"
+func (c *Client) DescribePackages(request *DescribePackagesRequest) (response *DescribePackagesResponse, err error) {
+    return c.DescribePackagesWithContext(context.Background(), request)
+}
+
+// DescribePackages
+// 获得权益包列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  LIMITEXCEEDED_RATELIMITEXCEEDED = "LimitExceeded.RateLimitExceeded"
+func (c *Client) DescribePackagesWithContext(ctx context.Context, request *DescribePackagesRequest) (response *DescribePackagesResponse, err error) {
+    if request == nil {
+        request = NewDescribePackagesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribePackages require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribePackagesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDownloadCertificateRequest() (request *DownloadCertificateRequest) {
     request = &DownloadCertificateRequest{
         BaseRequest: &tchttp.BaseRequest{},

@@ -1068,6 +1068,7 @@ func NewModifyCustomizationResponse() (response *ModifyCustomizationResponse) {
 //
 // 可能返回的错误码:
 //  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ModifyCustomization(request *ModifyCustomizationRequest) (response *ModifyCustomizationResponse, err error) {
     return c.ModifyCustomizationWithContext(context.Background(), request)
 }
@@ -1077,6 +1078,7 @@ func (c *Client) ModifyCustomization(request *ModifyCustomizationRequest) (respo
 //
 // 可能返回的错误码:
 //  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ModifyCustomizationWithContext(ctx context.Context, request *ModifyCustomizationRequest) (response *ModifyCustomizationResponse, err error) {
     if request == nil {
         request = NewModifyCustomizationRequest()
@@ -1116,6 +1118,7 @@ func NewModifyCustomizationStateResponse() (response *ModifyCustomizationStateRe
 //
 // 可能返回的错误码:
 //  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ModifyCustomizationState(request *ModifyCustomizationStateRequest) (response *ModifyCustomizationStateResponse, err error) {
     return c.ModifyCustomizationStateWithContext(context.Background(), request)
 }
@@ -1125,6 +1128,7 @@ func (c *Client) ModifyCustomizationState(request *ModifyCustomizationStateReque
 //
 // 可能返回的错误码:
 //  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ModifyCustomizationStateWithContext(ctx context.Context, request *ModifyCustomizationStateRequest) (response *ModifyCustomizationStateResponse, err error) {
     if request == nil {
         request = NewModifyCustomizationStateRequest()

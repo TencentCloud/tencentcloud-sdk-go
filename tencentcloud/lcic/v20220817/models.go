@@ -372,6 +372,60 @@ func (r *CreateSupervisorResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DeleteRoomRequestParams struct {
+	// 房间ID。
+	RoomId *uint64 `json:"RoomId,omitempty" name:"RoomId"`
+}
+
+type DeleteRoomRequest struct {
+	*tchttp.BaseRequest
+	
+	// 房间ID。
+	RoomId *uint64 `json:"RoomId,omitempty" name:"RoomId"`
+}
+
+func (r *DeleteRoomRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteRoomRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RoomId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteRoomRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteRoomResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DeleteRoomResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteRoomResponseParams `json:"Response"`
+}
+
+func (r *DeleteRoomResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteRoomResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeRoomRequestParams struct {
 	// 房间Id。
 	RoomId *uint64 `json:"RoomId,omitempty" name:"RoomId"`

@@ -17,6 +17,9 @@ package v20210811
 const (
 	// 此产品的特有错误码
 
+	// 账户流量余额不足。
+	FAILEDOPERATION_ACCOUNTNOTENOUGH = "FailedOperation.AccountNotEnough"
+
 	// 内部错误。
 	INTERNALERROR = "InternalError"
 

@@ -53,6 +53,9 @@ const (
 	// 环境ID非法。
 	INVALIDPARAMETER_ENVID = "InvalidParameter.EnvId"
 
+	// 路径已存在。
+	INVALIDPARAMETER_PATHEXIST = "InvalidParameter.PathExist"
+
 	// 对应资源不存在。
 	INVALIDPARAMETER_RESOURCENOTEXISTS = "InvalidParameter.ResourceNotExists"
 

@@ -310,6 +310,7 @@ func NewDeleteNodesResponse() (response *DeleteNodesResponse) {
 //  RESOURCENOTFOUND_NODEID = "ResourceNotFound.NodeId"
 //  UNSUPPORTEDOPERATION_CLUSTERSTATUSNOTSUPPORT = "UnsupportedOperation.ClusterStatusNotSupport"
 //  UNSUPPORTEDOPERATION_INVALIDNODEROLE = "UnsupportedOperation.InvalidNodeRole"
+//  UNSUPPORTEDOPERATION_NODESTATUSNOTSUPPORT = "UnsupportedOperation.NodeStatusNotSupport"
 func (c *Client) DeleteNodes(request *DeleteNodesRequest) (response *DeleteNodesResponse, err error) {
     return c.DeleteNodesWithContext(context.Background(), request)
 }
@@ -323,6 +324,7 @@ func (c *Client) DeleteNodes(request *DeleteNodesRequest) (response *DeleteNodes
 //  RESOURCENOTFOUND_NODEID = "ResourceNotFound.NodeId"
 //  UNSUPPORTEDOPERATION_CLUSTERSTATUSNOTSUPPORT = "UnsupportedOperation.ClusterStatusNotSupport"
 //  UNSUPPORTEDOPERATION_INVALIDNODEROLE = "UnsupportedOperation.InvalidNodeRole"
+//  UNSUPPORTEDOPERATION_NODESTATUSNOTSUPPORT = "UnsupportedOperation.NodeStatusNotSupport"
 func (c *Client) DeleteNodesWithContext(ctx context.Context, request *DeleteNodesRequest) (response *DeleteNodesResponse, err error) {
     if request == nil {
         request = NewDeleteNodesRequest()

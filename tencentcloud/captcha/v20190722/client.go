@@ -693,6 +693,60 @@ func (c *Client) DescribeCaptchaUserAllAppIdWithContext(ctx context.Context, req
     return
 }
 
+func NewGetTotalTicketStatisticsRequest() (request *GetTotalTicketStatisticsRequest) {
+    request = &GetTotalTicketStatisticsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("captcha", APIVersion, "GetTotalTicketStatistics")
+    
+    
+    return
+}
+
+func NewGetTotalTicketStatisticsResponse() (response *GetTotalTicketStatisticsResponse) {
+    response = &GetTotalTicketStatisticsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// GetTotalTicketStatistics
+// 查询所有验证的统计数据，包括：总票据校验量、总票据校验通过量、总票据校验拦截量。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION_ERRAUTH = "UnauthorizedOperation.ErrAuth"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZED = "UnauthorizedOperation.Unauthorized"
+func (c *Client) GetTotalTicketStatistics(request *GetTotalTicketStatisticsRequest) (response *GetTotalTicketStatisticsResponse, err error) {
+    return c.GetTotalTicketStatisticsWithContext(context.Background(), request)
+}
+
+// GetTotalTicketStatistics
+// 查询所有验证的统计数据，包括：总票据校验量、总票据校验通过量、总票据校验拦截量。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION_ERRAUTH = "UnauthorizedOperation.ErrAuth"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZED = "UnauthorizedOperation.Unauthorized"
+func (c *Client) GetTotalTicketStatisticsWithContext(ctx context.Context, request *GetTotalTicketStatisticsRequest) (response *GetTotalTicketStatisticsResponse, err error) {
+    if request == nil {
+        request = NewGetTotalTicketStatisticsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetTotalTicketStatistics require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetTotalTicketStatisticsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewUpdateCaptchaAppIdInfoRequest() (request *UpdateCaptchaAppIdInfoRequest) {
     request = &UpdateCaptchaAppIdInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},

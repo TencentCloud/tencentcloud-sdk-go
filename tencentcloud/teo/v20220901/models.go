@@ -3748,7 +3748,7 @@ func (r *DescribeAliasDomainsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeApplicationProxiesRequestParams struct {
-	// 分页查询偏移量，默认为0。
+	// 分页查询偏移量。默认为0。
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
 	// 分页查询限制数目。默认值：20，最大值：1000。
@@ -3761,7 +3761,7 @@ type DescribeApplicationProxiesRequestParams struct {
 type DescribeApplicationProxiesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 分页查询偏移量，默认为0。
+	// 分页查询偏移量。默认为0。
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
 	// 分页查询限制数目。默认值：20，最大值：1000。

@@ -67,6 +67,7 @@ func NewDescribeKBComponentResponse() (response *DescribeKBComponentResponse) {
 // 本接口(DescribeKBComponent)用于在知识库中查询开源组件信息。本接口根据用户输入的PURL在知识库中寻找对应的开源组件，其中Name为必填字段。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_ACCOUNTNOTENOUGH = "FailedOperation.AccountNotEnough"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND = "ResourceNotFound"
@@ -78,6 +79,7 @@ func (c *Client) DescribeKBComponent(request *DescribeKBComponentRequest) (respo
 // 本接口(DescribeKBComponent)用于在知识库中查询开源组件信息。本接口根据用户输入的PURL在知识库中寻找对应的开源组件，其中Name为必填字段。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_ACCOUNTNOTENOUGH = "FailedOperation.AccountNotEnough"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND = "ResourceNotFound"
@@ -119,6 +121,7 @@ func NewDescribeKBComponentVulnerabilityResponse() (response *DescribeKBComponen
 // 本接口(DescribeKBComponentVulnerability)用于在知识库中查询开源组件的漏洞信息。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_ACCOUNTNOTENOUGH = "FailedOperation.AccountNotEnough"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -131,6 +134,7 @@ func (c *Client) DescribeKBComponentVulnerability(request *DescribeKBComponentVu
 // 本接口(DescribeKBComponentVulnerability)用于在知识库中查询开源组件的漏洞信息。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_ACCOUNTNOTENOUGH = "FailedOperation.AccountNotEnough"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -173,6 +177,7 @@ func NewDescribeKBLicenseResponse() (response *DescribeKBLicenseResponse) {
 // 本接口(DescribeKBLicense)用于在知识库中查询许可证信息。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_ACCOUNTNOTENOUGH = "FailedOperation.AccountNotEnough"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -186,6 +191,7 @@ func (c *Client) DescribeKBLicense(request *DescribeKBLicenseRequest) (response 
 // 本接口(DescribeKBLicense)用于在知识库中查询许可证信息。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_ACCOUNTNOTENOUGH = "FailedOperation.AccountNotEnough"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -229,6 +235,7 @@ func NewDescribeKBVulnerabilityResponse() (response *DescribeKBVulnerabilityResp
 // 本接口(DescribeKBVulnerability)用于在知识库中查询漏洞详细信息，支持根据CVE ID查询或者根据Vul ID查询。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_ACCOUNTNOTENOUGH = "FailedOperation.AccountNotEnough"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -241,6 +248,7 @@ func (c *Client) DescribeKBVulnerability(request *DescribeKBVulnerabilityRequest
 // 本接口(DescribeKBVulnerability)用于在知识库中查询漏洞详细信息，支持根据CVE ID查询或者根据Vul ID查询。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_ACCOUNTNOTENOUGH = "FailedOperation.AccountNotEnough"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"

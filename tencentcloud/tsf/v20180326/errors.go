@@ -383,6 +383,9 @@ const (
 	// 仓库中存在软件包，请先删除软件包。
 	INVALIDPARAMETER_REPOSITORYNOTEMPTY = "InvalidParameter.RepositoryNotEmpty"
 
+	// TSF应用性能管理业务日志应用标识参数错误。
+	INVALIDPARAMETER_TSFAPMBUSILOGCFGAPPPARAMERROR = "InvalidParameter.TsfApmBusiLogCfgAppParamError"
+
 	// TSF应用性能管理业务日志配置与应用关联参数错误。
 	INVALIDPARAMETER_TSFAPMBUSILOGCFGAPPRELATIONPARAMERROR = "InvalidParameter.TsfApmBusiLogCfgAppRelationParamError"
 

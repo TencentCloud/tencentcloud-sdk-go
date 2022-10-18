@@ -5465,6 +5465,7 @@ func NewDescribeGroupBusinessLogConfigsResponse() (response *DescribeGroupBusine
 // 可能返回的错误码:
 //  FAILEDOPERATION_TSFPRIVILEGEERROR = "FailedOperation.TsfPrivilegeError"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETER_TSFAPMBUSILOGCFGAPPPARAMERROR = "InvalidParameter.TsfApmBusiLogCfgAppParamError"
 //  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
 func (c *Client) DescribeGroupBusinessLogConfigs(request *DescribeGroupBusinessLogConfigsRequest) (response *DescribeGroupBusinessLogConfigsResponse, err error) {
     return c.DescribeGroupBusinessLogConfigsWithContext(context.Background(), request)
@@ -5476,6 +5477,7 @@ func (c *Client) DescribeGroupBusinessLogConfigs(request *DescribeGroupBusinessL
 // 可能返回的错误码:
 //  FAILEDOPERATION_TSFPRIVILEGEERROR = "FailedOperation.TsfPrivilegeError"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETER_TSFAPMBUSILOGCFGAPPPARAMERROR = "InvalidParameter.TsfApmBusiLogCfgAppParamError"
 //  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
 func (c *Client) DescribeGroupBusinessLogConfigsWithContext(ctx context.Context, request *DescribeGroupBusinessLogConfigsRequest) (response *DescribeGroupBusinessLogConfigsResponse, err error) {
     if request == nil {
@@ -10689,6 +10691,7 @@ func NewRollbackConfigResponse() (response *RollbackConfigResponse) {
 //  INVALIDPARAMETERVALUE_CONFIGALREADYRELEASED = "InvalidParameterValue.ConfigAlreadyReleased"
 //  INVALIDPARAMETERVALUE_CONFIGNOTEXISTSORPERMISSIONDENIED = "InvalidParameterValue.ConfigNotExistsOrPermissionDenied"
 //  INVALIDPARAMETERVALUE_GROUPNOTEXISTS = "InvalidParameterValue.GroupNotExists"
+//  INVALIDPARAMETERVALUE_RESOURCEPERMISSIONDENIED = "InvalidParameterValue.ResourcePermissionDenied"
 func (c *Client) RollbackConfig(request *RollbackConfigRequest) (response *RollbackConfigResponse, err error) {
     return c.RollbackConfigWithContext(context.Background(), request)
 }
@@ -10701,6 +10704,7 @@ func (c *Client) RollbackConfig(request *RollbackConfigRequest) (response *Rollb
 //  INVALIDPARAMETERVALUE_CONFIGALREADYRELEASED = "InvalidParameterValue.ConfigAlreadyReleased"
 //  INVALIDPARAMETERVALUE_CONFIGNOTEXISTSORPERMISSIONDENIED = "InvalidParameterValue.ConfigNotExistsOrPermissionDenied"
 //  INVALIDPARAMETERVALUE_GROUPNOTEXISTS = "InvalidParameterValue.GroupNotExists"
+//  INVALIDPARAMETERVALUE_RESOURCEPERMISSIONDENIED = "InvalidParameterValue.ResourcePermissionDenied"
 func (c *Client) RollbackConfigWithContext(ctx context.Context, request *RollbackConfigRequest) (response *RollbackConfigResponse, err error) {
     if request == nil {
         request = NewRollbackConfigRequest()

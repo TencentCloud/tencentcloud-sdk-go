@@ -1,3 +1,158 @@
+# Release v1.0.516
+
+## 验证码(captcha) 版本：2019-07-22
+
+### 第 11 次发布
+
+发布时间：2022-10-18 06:13:00
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [GetTotalTicketStatistics](https://cloud.tencent.com/document/api/1110/81517)
+
+
+
+## 低代码互动课堂(lcic) 版本：2022-08-17
+
+### 第 4 次发布
+
+发布时间：2022-10-18 06:36:52
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DeleteRoom](https://cloud.tencent.com/document/api/1639/81518)
+
+
+
+## 云数据库 Redis(redis) 版本：2018-04-12
+
+### 第 57 次发布
+
+发布时间：2022-10-18 06:44:04
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeInstances](https://cloud.tencent.com/document/api/239/20018)
+
+	* 新增入参：AzMode
+
+
+
+
+## 证书(ssl) 版本：2019-12-05
+
+### 第 20 次发布
+
+发布时间：2022-10-18 06:47:25
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribePackages](https://cloud.tencent.com/document/api/400/81519)
+
+新增数据结构：
+
+* [PackageInfo](https://cloud.tencent.com/document/api/400/41679#PackageInfo)
+* [PackageTransferOutInfo](https://cloud.tencent.com/document/api/400/41679#PackageTransferOutInfo)
+
+
+
+## 容器服务(tke) 版本：2018-05-25
+
+### 第 125 次发布
+
+发布时间：2022-10-18 06:55:58
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeClusterAuthenticationOptions](https://cloud.tencent.com/document/api/457/62278)
+
+	* 新增出参：OIDCConfig
+
+* [ModifyClusterAuthenticationOptions](https://cloud.tencent.com/document/api/457/62277)
+
+	* 新增入参：OIDCConfig
+
+
+新增数据结构：
+
+* [OIDCConfigAuthenticationOptions](https://cloud.tencent.com/document/api/457/31866#OIDCConfigAuthenticationOptions)
+
+
+
+## T-Sec-安心平台(RP)(trp) 版本：2021-05-15
+
+### 第 8 次发布
+
+发布时间：2022-10-17 22:02:42
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeTmpToken](https://cloud.tencent.com/document/api/1458/81515)
+
+修改接口：
+
+* [CreateCustomPack](https://cloud.tencent.com/document/api/1458/81464)
+
+	* 新增入参：CodeParts
+
+* [DescribeCodePackStatus](https://cloud.tencent.com/document/api/1458/81457)
+
+	* 新增出参：Status
+
+* [DescribeCodePackUrl](https://cloud.tencent.com/document/api/1458/81456)
+
+	* 新增出参：ImgUrl, FileKey
+
+* [DescribeCodePacks](https://cloud.tencent.com/document/api/1458/75016)
+
+	* 新增出参：CodePacks, TotalCount
+
+* [DescribeJobFileUrl](https://cloud.tencent.com/document/api/1458/81455)
+
+	* 新增出参：Url
+
+
+新增数据结构：
+
+* [CodePack](https://cloud.tencent.com/document/api/1458/75030#CodePack)
+
+修改数据结构：
+
+* [PackSpec](https://cloud.tencent.com/document/api/1458/75030#PackSpec)
+
+	* 新增成员：CodeParts
+
+* [TraceData](https://cloud.tencent.com/document/api/1458/75030#TraceData)
+
+	* 新增成员：PhaseData, Status
+
+
+
+
 # Release v1.0.515
 
 ## 品牌经营管家(bma) 版本：2021-06-24

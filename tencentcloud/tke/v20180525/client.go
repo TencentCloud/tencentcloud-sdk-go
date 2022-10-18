@@ -11183,6 +11183,7 @@ func NewUpdateEdgeClusterVersionResponse() (response *UpdateEdgeClusterVersionRe
 // 升级边缘集群组件到指定版本，此版本为TKEEdge专用版本。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_CLUSTERUPGRADENODEVERSION = "FailedOperation.ClusterUpgradeNodeVersion"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_CLUSTERUPGRADENODEVERSION = "InternalError.ClusterUpgradeNodeVersion"
@@ -11200,6 +11201,7 @@ func (c *Client) UpdateEdgeClusterVersion(request *UpdateEdgeClusterVersionReque
 // 升级边缘集群组件到指定版本，此版本为TKEEdge专用版本。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_CLUSTERUPGRADENODEVERSION = "FailedOperation.ClusterUpgradeNodeVersion"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_CLUSTERUPGRADENODEVERSION = "InternalError.ClusterUpgradeNodeVersion"

@@ -1447,6 +1447,62 @@ func (c *Client) DescribeProductsWithContext(ctx context.Context, request *Descr
     return
 }
 
+func NewDescribeTmpTokenRequest() (request *DescribeTmpTokenRequest) {
+    request = &DescribeTmpTokenRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trp", APIVersion, "DescribeTmpToken")
+    
+    
+    return
+}
+
+func NewDescribeTmpTokenResponse() (response *DescribeTmpTokenResponse) {
+    response = &DescribeTmpTokenResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeTmpToken
+// 查询临时Token，主要用于上传接口
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_CORPEMPTY = "AuthFailure.CorpEmpty"
+//  AUTHFAILURE_CORPEXPIRED = "AuthFailure.CorpExpired"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeTmpToken(request *DescribeTmpTokenRequest) (response *DescribeTmpTokenResponse, err error) {
+    return c.DescribeTmpTokenWithContext(context.Background(), request)
+}
+
+// DescribeTmpToken
+// 查询临时Token，主要用于上传接口
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_CORPEMPTY = "AuthFailure.CorpEmpty"
+//  AUTHFAILURE_CORPEXPIRED = "AuthFailure.CorpExpired"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeTmpTokenWithContext(ctx context.Context, request *DescribeTmpTokenRequest) (response *DescribeTmpTokenResponse, err error) {
+    if request == nil {
+        request = NewDescribeTmpTokenRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTmpToken require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTmpTokenResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeTraceCodeByIdRequest() (request *DescribeTraceCodeByIdRequest) {
     request = &DescribeTraceCodeByIdRequest{
         BaseRequest: &tchttp.BaseRequest{},

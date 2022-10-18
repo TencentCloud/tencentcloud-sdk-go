@@ -5375,6 +5375,10 @@ type DescribeClusterAuthenticationOptionsResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LatestOperationState *string `json:"LatestOperationState,omitempty" name:"LatestOperationState"`
 
+	// OIDC认证配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OIDCConfig *OIDCConfigAuthenticationOptions `json:"OIDCConfig,omitempty" name:"OIDCConfig"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }
@@ -12350,6 +12354,9 @@ type ModifyClusterAuthenticationOptionsRequestParams struct {
 
 	// ServiceAccount认证配置
 	ServiceAccounts *ServiceAccountAuthenticationOptions `json:"ServiceAccounts,omitempty" name:"ServiceAccounts"`
+
+	// OIDC认证配置
+	OIDCConfig *OIDCConfigAuthenticationOptions `json:"OIDCConfig,omitempty" name:"OIDCConfig"`
 }
 
 type ModifyClusterAuthenticationOptionsRequest struct {
@@ -12360,6 +12367,9 @@ type ModifyClusterAuthenticationOptionsRequest struct {
 
 	// ServiceAccount认证配置
 	ServiceAccounts *ServiceAccountAuthenticationOptions `json:"ServiceAccounts,omitempty" name:"ServiceAccounts"`
+
+	// OIDC认证配置
+	OIDCConfig *OIDCConfigAuthenticationOptions `json:"OIDCConfig,omitempty" name:"OIDCConfig"`
 }
 
 func (r *ModifyClusterAuthenticationOptionsRequest) ToJsonString() string {
@@ -12376,6 +12386,7 @@ func (r *ModifyClusterAuthenticationOptionsRequest) FromJsonString(s string) err
 	}
 	delete(f, "ClusterId")
 	delete(f, "ServiceAccounts")
+	delete(f, "OIDCConfig")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyClusterAuthenticationOptionsRequest has unknown keys!", "")
 	}
@@ -13389,6 +13400,20 @@ type NodePoolOption struct {
 
 	// 是否继承节点池相关配置
 	InheritConfigurationFromNodePool *bool `json:"InheritConfigurationFromNodePool,omitempty" name:"InheritConfigurationFromNodePool"`
+}
+
+type OIDCConfigAuthenticationOptions struct {
+	// 创建身份提供商
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AutoCreateOIDCConfig *bool `json:"AutoCreateOIDCConfig,omitempty" name:"AutoCreateOIDCConfig"`
+
+	// 创建身份提供商的ClientId
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AutoCreateClientId []*string `json:"AutoCreateClientId,omitempty" name:"AutoCreateClientId"`
+
+	// 创建PodIdentityWebhook组件
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AutoInstallPodIdentityWebhookAddon *bool `json:"AutoInstallPodIdentityWebhookAddon,omitempty" name:"AutoInstallPodIdentityWebhookAddon"`
 }
 
 type PodLimitsByType struct {

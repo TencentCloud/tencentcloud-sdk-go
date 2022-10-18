@@ -71,6 +71,9 @@ const (
 	// 无效的容错策略。
 	INVALIDPARAMETER_INVALIDFAILURETOLERANCE = "InvalidParameter.InvalidFailureTolerance"
 
+	// 无效的过滤条件。
+	INVALIDPARAMETER_INVALIDFILTERKEY = "InvalidParameter.InvalidFilterKey"
+
 	// 无效的工作组Id。
 	INVALIDPARAMETER_INVALIDGROUPID = "InvalidParameter.InvalidGroupId"
 

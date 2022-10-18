@@ -215,6 +215,56 @@ func (c *Client) CreateSupervisorWithContext(ctx context.Context, request *Creat
     return
 }
 
+func NewDeleteRoomRequest() (request *DeleteRoomRequest) {
+    request = &DeleteRoomRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lcic", APIVersion, "DeleteRoom")
+    
+    
+    return
+}
+
+func NewDeleteRoomResponse() (response *DeleteRoomResponse) {
+    response = &DeleteRoomResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteRoom
+// 删除房间
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  RESOURCENOTFOUND_ROOM = "ResourceNotFound.Room"
+func (c *Client) DeleteRoom(request *DeleteRoomRequest) (response *DeleteRoomResponse, err error) {
+    return c.DeleteRoomWithContext(context.Background(), request)
+}
+
+// DeleteRoom
+// 删除房间
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  RESOURCENOTFOUND_ROOM = "ResourceNotFound.Room"
+func (c *Client) DeleteRoomWithContext(ctx context.Context, request *DeleteRoomRequest) (response *DeleteRoomResponse, err error) {
+    if request == nil {
+        request = NewDeleteRoomRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteRoom require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteRoomResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeRoomRequest() (request *DescribeRoomRequest) {
     request = &DescribeRoomRequest{
         BaseRequest: &tchttp.BaseRequest{},
