@@ -815,14 +815,14 @@ type ChannelDescribeEmployeesRequestParams struct {
 	// 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
-	// 操作者的信息
-	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
-
 	// 查询过滤实名用户，key为Status，Values为["IsVerified"]
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 偏移量，默认为0，最大为20000
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 操作者的信息
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 }
 
 type ChannelDescribeEmployeesRequest struct {
@@ -834,14 +834,14 @@ type ChannelDescribeEmployeesRequest struct {
 	// 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
-	// 操作者的信息
-	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
-
 	// 查询过滤实名用户，key为Status，Values为["IsVerified"]
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 偏移量，默认为0，最大为20000
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 操作者的信息
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 }
 
 func (r *ChannelDescribeEmployeesRequest) ToJsonString() string {
@@ -858,9 +858,9 @@ func (r *ChannelDescribeEmployeesRequest) FromJsonString(s string) error {
 	}
 	delete(f, "Limit")
 	delete(f, "Agent")
-	delete(f, "Operator")
 	delete(f, "Filters")
 	delete(f, "Offset")
+	delete(f, "Operator")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ChannelDescribeEmployeesRequest has unknown keys!", "")
 	}
@@ -1117,6 +1117,9 @@ type Component struct {
 
 	// 定义控件是否为必填项，默认为false
 	ComponentRequired *bool `json:"ComponentRequired,omitempty" name:"ComponentRequired"`
+
+	// 控件关联的签署方id
+	ComponentRecipientId *string `json:"ComponentRecipientId,omitempty" name:"ComponentRecipientId"`
 
 	// 控件所属文件的序号 (文档中文件的排列序号，从0开始)
 	FileIndex *int64 `json:"FileIndex,omitempty" name:"FileIndex"`
@@ -1802,7 +1805,7 @@ type DescribeTemplatesRequestParams struct {
 	// 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
-	// 模板唯一标识
+	// 模板唯一标识，查询单个模版时使用
 	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
 
 	// 查询内容：0-模板列表及详情（默认），1-仅模板列表
@@ -1814,14 +1817,14 @@ type DescribeTemplatesRequestParams struct {
 	// 查询偏移位置，默认0；在查询列表的时候有效
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 操作者的信息
-	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
-
 	// 是否返回所有组件信息。默认false，只返回发起方控件；true，返回所有签署方控件
 	QueryAllComponents *bool `json:"QueryAllComponents,omitempty" name:"QueryAllComponents"`
 
 	// 模糊搜索模板名称，最大长度200
 	TemplateName *string `json:"TemplateName,omitempty" name:"TemplateName"`
+
+	// 操作者的信息
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 }
 
 type DescribeTemplatesRequest struct {
@@ -1830,7 +1833,7 @@ type DescribeTemplatesRequest struct {
 	// 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
-	// 模板唯一标识
+	// 模板唯一标识，查询单个模版时使用
 	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
 
 	// 查询内容：0-模板列表及详情（默认），1-仅模板列表
@@ -1842,14 +1845,14 @@ type DescribeTemplatesRequest struct {
 	// 查询偏移位置，默认0；在查询列表的时候有效
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 操作者的信息
-	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
-
 	// 是否返回所有组件信息。默认false，只返回发起方控件；true，返回所有签署方控件
 	QueryAllComponents *bool `json:"QueryAllComponents,omitempty" name:"QueryAllComponents"`
 
 	// 模糊搜索模板名称，最大长度200
 	TemplateName *string `json:"TemplateName,omitempty" name:"TemplateName"`
+
+	// 操作者的信息
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 }
 
 func (r *DescribeTemplatesRequest) ToJsonString() string {
@@ -1869,9 +1872,9 @@ func (r *DescribeTemplatesRequest) FromJsonString(s string) error {
 	delete(f, "ContentType")
 	delete(f, "Limit")
 	delete(f, "Offset")
-	delete(f, "Operator")
 	delete(f, "QueryAllComponents")
 	delete(f, "TemplateName")
+	delete(f, "Operator")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTemplatesRequest has unknown keys!", "")
 	}
@@ -2991,7 +2994,7 @@ type TemplateInfo struct {
 	// 模板类型：1-静默签；3-普通模板
 	TemplateType *int64 `json:"TemplateType,omitempty" name:"TemplateType"`
 
-	// 是否是发起人
+	// 是否是发起人 ,已弃用
 	IsPromoter *bool `json:"IsPromoter,omitempty" name:"IsPromoter"`
 
 	// 模板的创建者信息
@@ -3068,7 +3071,7 @@ func (r *UploadFilesRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type UploadFilesResponseParams struct {
-	// 文件id数组，有效期一个小时
+	// 文件id数组，有效期一个小时；有效期内此文件id可以反复使用
 	FileIds []*string `json:"FileIds,omitempty" name:"FileIds"`
 
 	// 上传成功文件数量

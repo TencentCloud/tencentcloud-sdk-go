@@ -1,3 +1,171 @@
+# Release v1.0.517
+
+## 品牌经营管家(bma) 版本：2021-06-24
+
+### 第 12 次发布
+
+发布时间：2022-10-19 06:10:00
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeCRObtainDetail](https://cloud.tencent.com/document/api/1296/81541)
+
+
+
+## 验证码(captcha) 版本：2019-07-22
+
+### 第 12 次发布
+
+发布时间：2022-10-19 06:11:45
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [GetTotalTicketStatistics](https://cloud.tencent.com/document/api/1110/81517)
+
+	* 新增入参：StartTimeStr, EndTimeStr, Dimension
+
+	* 新增出参：Data, CaptchaCode, CaptchaMsg
+
+
+新增数据结构：
+
+* [CaptchaStatisticObj](https://cloud.tencent.com/document/api/1110/40481#CaptchaStatisticObj)
+* [InterceptPerTrendObj](https://cloud.tencent.com/document/api/1110/40481#InterceptPerTrendObj)
+* [RequestTrendObj](https://cloud.tencent.com/document/api/1110/40481#RequestTrendObj)
+* [TicketCheckTrendObj](https://cloud.tencent.com/document/api/1110/40481#TicketCheckTrendObj)
+
+
+
+## 企业收付平台(cpdp) 版本：2019-08-20
+
+### 第 89 次发布
+
+发布时间：2022-10-19 06:17:23
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateOpenBankGlobalPaymentOrder](https://cloud.tencent.com/document/api/1122/81542)
+
+新增数据结构：
+
+* [CreateOpenBankUnifiedOrderPaymentResult](https://cloud.tencent.com/document/api/1122/40683#CreateOpenBankUnifiedOrderPaymentResult)
+* [OpenBankBillingInfo](https://cloud.tencent.com/document/api/1122/40683#OpenBankBillingInfo)
+* [OpenBankOrderRedirectInfo](https://cloud.tencent.com/document/api/1122/40683#OpenBankOrderRedirectInfo)
+* [OpenBankShippingInfo](https://cloud.tencent.com/document/api/1122/40683#OpenBankShippingInfo)
+
+修改数据结构：
+
+* [OpenBankGoodsInfo](https://cloud.tencent.com/document/api/1122/40683#OpenBankGoodsInfo)
+
+	* 新增成员：Sku, Price, Quantity, ProductImage, ProductUrl
+
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
+
+### 第 34 次发布
+
+发布时间：2022-10-18 16:02:52
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Component](https://cloud.tencent.com/document/api/1420/61525#Component)
+
+	* 新增成员：ComponentRecipientId
+
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
+
+
+
+## 低代码互动课堂(lcic) 版本：2022-08-17
+
+### 第 5 次发布
+
+发布时间：2022-10-19 06:31:50
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [BindDocumentToRoom](https://cloud.tencent.com/document/api/1639/81544)
+* [DescribeRoomStatistics](https://cloud.tencent.com/document/api/1639/81545)
+* [ModifyApp](https://cloud.tencent.com/document/api/1639/81546)
+* [UnbindDocumentFromRoom](https://cloud.tencent.com/document/api/1639/81543)
+
+修改接口：
+
+* [DescribeRoom](https://cloud.tencent.com/document/api/1639/80941)
+
+	* 新增出参：RecordUrl
+
+
+新增数据结构：
+
+* [MemberRecord](https://cloud.tencent.com/document/api/1639/81423#MemberRecord)
+
+
+
+## 云监控(monitor) 版本：2018-07-24
+
+### 第 66 次发布
+
+发布时间：2022-10-19 06:34:09
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [AlarmHierarchicalValue](https://cloud.tencent.com/document/api/248/30354#AlarmHierarchicalValue)
+
+修改数据结构：
+
+* [AlarmPolicyRule](https://cloud.tencent.com/document/api/248/30354#AlarmPolicyRule)
+
+	* 新增成员：HierarchicalValue
+
+
+
+
+## 云开发 CloudBase(tcb) 版本：2018-06-08
+
+### 第 87 次发布
+
+发布时间：2022-10-19 06:42:09
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [ModifyClsTopic](https://cloud.tencent.com/document/api/876/81547)
+
+
+
 # Release v1.0.516
 
 ## 验证码(captcha) 版本：2019-07-22

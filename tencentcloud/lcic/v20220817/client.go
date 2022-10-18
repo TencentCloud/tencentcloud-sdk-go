@@ -45,6 +45,62 @@ func NewClient(credential common.CredentialIface, region string, clientProfile *
 }
 
 
+func NewBindDocumentToRoomRequest() (request *BindDocumentToRoomRequest) {
+    request = &BindDocumentToRoomRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lcic", APIVersion, "BindDocumentToRoom")
+    
+    
+    return
+}
+
+func NewBindDocumentToRoomResponse() (response *BindDocumentToRoomResponse) {
+    response = &BindDocumentToRoomResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// BindDocumentToRoom
+// 绑定文档到房间
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+//  RESOURCENOTFOUND_DOCUMENT = "ResourceNotFound.Document"
+//  RESOURCENOTFOUND_ROOM = "ResourceNotFound.Room"
+func (c *Client) BindDocumentToRoom(request *BindDocumentToRoomRequest) (response *BindDocumentToRoomResponse, err error) {
+    return c.BindDocumentToRoomWithContext(context.Background(), request)
+}
+
+// BindDocumentToRoom
+// 绑定文档到房间
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+//  RESOURCENOTFOUND_DOCUMENT = "ResourceNotFound.Document"
+//  RESOURCENOTFOUND_ROOM = "ResourceNotFound.Room"
+func (c *Client) BindDocumentToRoomWithContext(ctx context.Context, request *BindDocumentToRoomRequest) (response *BindDocumentToRoomResponse, err error) {
+    if request == nil {
+        request = NewBindDocumentToRoomRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("BindDocumentToRoom require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewBindDocumentToRoomResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateDocumentRequest() (request *CreateDocumentRequest) {
     request = &CreateDocumentRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -315,6 +371,60 @@ func (c *Client) DescribeRoomWithContext(ctx context.Context, request *DescribeR
     return
 }
 
+func NewDescribeRoomStatisticsRequest() (request *DescribeRoomStatisticsRequest) {
+    request = &DescribeRoomStatisticsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lcic", APIVersion, "DescribeRoomStatistics")
+    
+    
+    return
+}
+
+func NewDescribeRoomStatisticsResponse() (response *DescribeRoomStatisticsResponse) {
+    response = &DescribeRoomStatisticsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeRoomStatistics
+// 获取房间统计信息，仅可在房间结束后调用。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ROOMNOTEND = "FailedOperation.RoomNotEnd"
+//  INTERNALERROR = "InternalError"
+//  RESOURCENOTFOUND_ROOM = "ResourceNotFound.Room"
+//  RESOURCEUNAVAILABLE_ROOMSTATISTICS = "ResourceUnavailable.RoomStatistics"
+func (c *Client) DescribeRoomStatistics(request *DescribeRoomStatisticsRequest) (response *DescribeRoomStatisticsResponse, err error) {
+    return c.DescribeRoomStatisticsWithContext(context.Background(), request)
+}
+
+// DescribeRoomStatistics
+// 获取房间统计信息，仅可在房间结束后调用。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_ROOMNOTEND = "FailedOperation.RoomNotEnd"
+//  INTERNALERROR = "InternalError"
+//  RESOURCENOTFOUND_ROOM = "ResourceNotFound.Room"
+//  RESOURCEUNAVAILABLE_ROOMSTATISTICS = "ResourceUnavailable.RoomStatistics"
+func (c *Client) DescribeRoomStatisticsWithContext(ctx context.Context, request *DescribeRoomStatisticsRequest) (response *DescribeRoomStatisticsResponse, err error) {
+    if request == nil {
+        request = NewDescribeRoomStatisticsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRoomStatistics require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeRoomStatisticsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeUserRequest() (request *DescribeUserRequest) {
     request = &DescribeUserRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -467,6 +577,56 @@ func (c *Client) LoginUserWithContext(ctx context.Context, request *LoginUserReq
     return
 }
 
+func NewModifyAppRequest() (request *ModifyAppRequest) {
+    request = &ModifyAppRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lcic", APIVersion, "ModifyApp")
+    
+    
+    return
+}
+
+func NewModifyAppResponse() (response *ModifyAppResponse) {
+    response = &ModifyAppResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyApp
+// 修改应用
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+func (c *Client) ModifyApp(request *ModifyAppRequest) (response *ModifyAppResponse, err error) {
+    return c.ModifyAppWithContext(context.Background(), request)
+}
+
+// ModifyApp
+// 修改应用
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+func (c *Client) ModifyAppWithContext(ctx context.Context, request *ModifyAppRequest) (response *ModifyAppResponse, err error) {
+    if request == nil {
+        request = NewModifyAppRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyApp require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyAppResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewRegisterUserRequest() (request *RegisterUserRequest) {
     request = &RegisterUserRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -567,6 +727,58 @@ func (c *Client) SetAppCustomContentWithContext(ctx context.Context, request *Se
     request.SetContext(ctx)
     
     response = NewSetAppCustomContentResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUnbindDocumentFromRoomRequest() (request *UnbindDocumentFromRoomRequest) {
+    request = &UnbindDocumentFromRoomRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lcic", APIVersion, "UnbindDocumentFromRoom")
+    
+    
+    return
+}
+
+func NewUnbindDocumentFromRoomResponse() (response *UnbindDocumentFromRoomResponse) {
+    response = &UnbindDocumentFromRoomResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// UnbindDocumentFromRoom
+// 文档从房间解绑
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+func (c *Client) UnbindDocumentFromRoom(request *UnbindDocumentFromRoomRequest) (response *UnbindDocumentFromRoomResponse, err error) {
+    return c.UnbindDocumentFromRoomWithContext(context.Background(), request)
+}
+
+// UnbindDocumentFromRoom
+// 文档从房间解绑
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+func (c *Client) UnbindDocumentFromRoomWithContext(ctx context.Context, request *UnbindDocumentFromRoomRequest) (response *UnbindDocumentFromRoomResponse, err error) {
+    if request == nil {
+        request = NewUnbindDocumentFromRoomRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UnbindDocumentFromRoom require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUnbindDocumentFromRoomResponse()
     err = c.Send(request, response)
     return
 }

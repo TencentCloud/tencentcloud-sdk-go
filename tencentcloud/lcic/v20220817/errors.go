@@ -23,6 +23,9 @@ const (
 	// 源账号已存在。
 	FAILEDOPERATION_ORIGINIDEXISTS = "FailedOperation.OriginIdExists"
 
+	// 房间暂未结束。
+	FAILEDOPERATION_ROOMNOTEND = "FailedOperation.RoomNotEnd"
+
 	// 内部错误。
 	INTERNALERROR = "InternalError"
 
@@ -47,9 +50,15 @@ const (
 	// 打开课堂失败，请前往控制台查看用量情况。
 	RESOURCEINSUFFICIENT_ROOM = "ResourceInsufficient.Room"
 
+	// 文档不存在。
+	RESOURCENOTFOUND_DOCUMENT = "ResourceNotFound.Document"
+
 	// 房间不存在。
 	RESOURCENOTFOUND_ROOM = "ResourceNotFound.Room"
 
 	// 用户不存在。
 	RESOURCENOTFOUND_USER = "ResourceNotFound.User"
+
+	// 房间统计结果计算中，请稍候。
+	RESOURCEUNAVAILABLE_ROOMSTATISTICS = "ResourceUnavailable.RoomStatistics"
 )

@@ -38,6 +38,74 @@ type AppCustomContent struct {
 }
 
 // Predefined struct for user
+type BindDocumentToRoomRequestParams struct {
+	// 房间ID。
+	RoomId *uint64 `json:"RoomId,omitempty" name:"RoomId"`
+
+	// 文档ID。
+	DocumentId *string `json:"DocumentId,omitempty" name:"DocumentId"`
+
+	// 绑定类型。后台可透传到客户端，默认为0。客户端可以根据这个字段实现业务逻辑。
+	BindType *uint64 `json:"BindType,omitempty" name:"BindType"`
+}
+
+type BindDocumentToRoomRequest struct {
+	*tchttp.BaseRequest
+	
+	// 房间ID。
+	RoomId *uint64 `json:"RoomId,omitempty" name:"RoomId"`
+
+	// 文档ID。
+	DocumentId *string `json:"DocumentId,omitempty" name:"DocumentId"`
+
+	// 绑定类型。后台可透传到客户端，默认为0。客户端可以根据这个字段实现业务逻辑。
+	BindType *uint64 `json:"BindType,omitempty" name:"BindType"`
+}
+
+func (r *BindDocumentToRoomRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BindDocumentToRoomRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RoomId")
+	delete(f, "DocumentId")
+	delete(f, "BindType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BindDocumentToRoomRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type BindDocumentToRoomResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type BindDocumentToRoomResponse struct {
+	*tchttp.BaseResponse
+	Response *BindDocumentToRoomResponseParams `json:"Response"`
+}
+
+func (r *BindDocumentToRoomResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BindDocumentToRoomResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateDocumentRequestParams struct {
 	// 低代码互动课堂的SdkAppId。
 	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
@@ -508,6 +576,10 @@ type DescribeRoomResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Assistants []*string `json:"Assistants,omitempty" name:"Assistants"`
 
+	// 录制地址。仅在房间结束后存在。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RecordUrl *string `json:"RecordUrl,omitempty" name:"RecordUrl"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }
@@ -525,6 +597,86 @@ func (r *DescribeRoomResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeRoomResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRoomStatisticsRequestParams struct {
+	// 房间Id。
+	RoomId *uint64 `json:"RoomId,omitempty" name:"RoomId"`
+
+	// 分页查询当前页数，从1开始递增。
+	Page *uint64 `json:"Page,omitempty" name:"Page"`
+
+	// 每页数据量，最大1000。
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+type DescribeRoomStatisticsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 房间Id。
+	RoomId *uint64 `json:"RoomId,omitempty" name:"RoomId"`
+
+	// 分页查询当前页数，从1开始递增。
+	Page *uint64 `json:"Page,omitempty" name:"Page"`
+
+	// 每页数据量，最大1000。
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribeRoomStatisticsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRoomStatisticsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RoomId")
+	delete(f, "Page")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRoomStatisticsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRoomStatisticsResponseParams struct {
+	// 峰值在线成员人数。
+	PeakMemberNumber *uint64 `json:"PeakMemberNumber,omitempty" name:"PeakMemberNumber"`
+
+	// 累计在线人数。
+	MemberNumber *uint64 `json:"MemberNumber,omitempty" name:"MemberNumber"`
+
+	// 记录总数。包含进入房间或者应到未到的。
+	Total *uint64 `json:"Total,omitempty" name:"Total"`
+
+	// 成员记录列表。
+	MemberRecords []*MemberRecord `json:"MemberRecords,omitempty" name:"MemberRecords"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeRoomStatisticsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeRoomStatisticsResponseParams `json:"Response"`
+}
+
+func (r *DescribeRoomStatisticsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRoomStatisticsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -721,6 +873,102 @@ func (r *LoginUserResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type MemberRecord struct {
+	// 用户ID。
+	UserId *string `json:"UserId,omitempty" name:"UserId"`
+
+	// 用户名称。
+	UserName *string `json:"UserName,omitempty" name:"UserName"`
+
+	// 在线时长，单位秒。
+	PresentTime *uint64 `json:"PresentTime,omitempty" name:"PresentTime"`
+
+	// 是否开启摄像头。
+	Camera *uint64 `json:"Camera,omitempty" name:"Camera"`
+
+	// 是否开启麦克风。
+	Mic *uint64 `json:"Mic,omitempty" name:"Mic"`
+
+	// 是否禁言。
+	Silence *uint64 `json:"Silence,omitempty" name:"Silence"`
+
+	// 回答问题数量。
+	AnswerQuestions *uint64 `json:"AnswerQuestions,omitempty" name:"AnswerQuestions"`
+
+	// 举手数量。
+	HandUps *uint64 `json:"HandUps,omitempty" name:"HandUps"`
+
+	// 首次进入房间的unix时间戳。
+	FirstJoinTimestamp *uint64 `json:"FirstJoinTimestamp,omitempty" name:"FirstJoinTimestamp"`
+
+	// 最后一次退出房间的unix时间戳。
+	LastQuitTimestamp *uint64 `json:"LastQuitTimestamp,omitempty" name:"LastQuitTimestamp"`
+
+	// 奖励次数。
+	Rewords *uint64 `json:"Rewords,omitempty" name:"Rewords"`
+}
+
+// Predefined struct for user
+type ModifyAppRequestParams struct {
+	// 低代码互动课堂的SdkAppId。
+	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 回调地址。
+	Callback *string `json:"Callback,omitempty" name:"Callback"`
+}
+
+type ModifyAppRequest struct {
+	*tchttp.BaseRequest
+	
+	// 低代码互动课堂的SdkAppId。
+	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 回调地址。
+	Callback *string `json:"Callback,omitempty" name:"Callback"`
+}
+
+func (r *ModifyAppRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyAppRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SdkAppId")
+	delete(f, "Callback")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyAppRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyAppResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ModifyAppResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyAppResponseParams `json:"Response"`
+}
+
+func (r *ModifyAppResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyAppResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 // Predefined struct for user
 type RegisterUserRequestParams struct {
 	// 低代码互动课堂的SdkAppId。
@@ -860,5 +1108,66 @@ func (r *SetAppCustomContentResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *SetAppCustomContentResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UnbindDocumentFromRoomRequestParams struct {
+	// 房间ID。
+	RoomId *uint64 `json:"RoomId,omitempty" name:"RoomId"`
+
+	// 文档ID。
+	DocumentId *string `json:"DocumentId,omitempty" name:"DocumentId"`
+}
+
+type UnbindDocumentFromRoomRequest struct {
+	*tchttp.BaseRequest
+	
+	// 房间ID。
+	RoomId *uint64 `json:"RoomId,omitempty" name:"RoomId"`
+
+	// 文档ID。
+	DocumentId *string `json:"DocumentId,omitempty" name:"DocumentId"`
+}
+
+func (r *UnbindDocumentFromRoomRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UnbindDocumentFromRoomRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RoomId")
+	delete(f, "DocumentId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UnbindDocumentFromRoomRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UnbindDocumentFromRoomResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type UnbindDocumentFromRoomResponse struct {
+	*tchttp.BaseResponse
+	Response *UnbindDocumentFromRoomResponseParams `json:"Response"`
+}
+
+func (r *UnbindDocumentFromRoomResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UnbindDocumentFromRoomResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }

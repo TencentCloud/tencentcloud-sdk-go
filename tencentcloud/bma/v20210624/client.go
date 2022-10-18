@@ -484,7 +484,7 @@ func NewCreateCRBlockResponse() (response *CreateCRBlockResponse) {
 }
 
 // CreateCRBlock
-// 新建拦截
+// 新建协查处置
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -511,7 +511,7 @@ func (c *Client) CreateCRBlock(request *CreateCRBlockRequest) (response *CreateC
 }
 
 // CreateCRBlock
-// 新建拦截
+// 新建协查处置
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -1641,6 +1641,90 @@ func (c *Client) DescribeCRMonitorsWithContext(ctx context.Context, request *Des
     return
 }
 
+func NewDescribeCRObtainDetailRequest() (request *DescribeCRObtainDetailRequest) {
+    request = &DescribeCRObtainDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("bma", APIVersion, "DescribeCRObtainDetail")
+    
+    
+    return
+}
+
+func NewDescribeCRObtainDetailResponse() (response *DescribeCRObtainDetailResponse) {
+    response = &DescribeCRObtainDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeCRObtainDetail
+// 查询取证详情
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDACTION = "InvalidAction"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  NOSUCHVERSION = "NoSuchVersion"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeCRObtainDetail(request *DescribeCRObtainDetailRequest) (response *DescribeCRObtainDetailResponse, err error) {
+    return c.DescribeCRObtainDetailWithContext(context.Background(), request)
+}
+
+// DescribeCRObtainDetail
+// 查询取证详情
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDACTION = "InvalidAction"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  NOSUCHVERSION = "NoSuchVersion"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeCRObtainDetailWithContext(ctx context.Context, request *DescribeCRObtainDetailRequest) (response *DescribeCRObtainDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeCRObtainDetailRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCRObtainDetail require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCRObtainDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeCRWorkInfoRequest() (request *DescribeCRWorkInfoRequest) {
     request = &DescribeCRWorkInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1828,7 +1912,7 @@ func NewModifyCRBlockStatusResponse() (response *ModifyCRBlockStatusResponse) {
 }
 
 // ModifyCRBlockStatus
-// 拦截申请
+// 协查处置申请
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -1855,7 +1939,7 @@ func (c *Client) ModifyCRBlockStatus(request *ModifyCRBlockStatusRequest) (respo
 }
 
 // ModifyCRBlockStatus
-// 拦截申请
+// 协查处置申请
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"

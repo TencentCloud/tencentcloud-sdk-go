@@ -736,7 +736,7 @@ func NewChannelDescribeEmployeesResponse() (response *ChannelDescribeEmployeesRe
 }
 
 // ChannelDescribeEmployees
-// 查询企业员工
+// 查询企业员工列表
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -757,7 +757,7 @@ func (c *Client) ChannelDescribeEmployees(request *ChannelDescribeEmployeesReque
 }
 
 // ChannelDescribeEmployees
-// 查询企业员工
+// 查询企业员工列表
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -1444,7 +1444,7 @@ func NewDescribeTemplatesResponse() (response *DescribeTemplatesResponse) {
 }
 
 // DescribeTemplates
-// 通过此接口（DescribeTemplates）查询该企业在电子签渠道版中配置的有效模板列表
+// 通过此接口（DescribeTemplates）查询该子客企业在电子签拥有的的有效模板，不包括渠道模版
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -1473,7 +1473,7 @@ func (c *Client) DescribeTemplates(request *DescribeTemplatesRequest) (response 
 }
 
 // DescribeTemplates
-// 通过此接口（DescribeTemplates）查询该企业在电子签渠道版中配置的有效模板列表
+// 通过此接口（DescribeTemplates）查询该子客企业在电子签拥有的的有效模板，不包括渠道模版
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -1714,15 +1714,15 @@ func NewOperateChannelTemplateResponse() (response *OperateChannelTemplateRespon
 }
 
 // OperateChannelTemplate
-// 此接口（OperateChannelTemplate）用于渠道侧将模板库中的模板对合作企业进行查询和设置, 其中包括可见性的修改以及对合作企业的设置.
+// 此接口（OperateChannelTemplate）用于针对渠道模板库中的模板对子客企业可见性的查询和设置，不会直接分配渠道模板给子客企业。
 //
-// 1、同步标识=select时：
+// 1、OperateType=select时：
 //
-// 返回渠道侧模板库当前模板的属性.
+// 查询渠道模板库
 //
-// 2、同步标识=update或者delete时：
+// 2、OperateType=update或者delete时：
 //
-// 对渠道子客进行模板库中模板授权,修改操作
+// 对子客企业进行模板库中模板可见性的修改、删除操作。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1760,15 +1760,15 @@ func (c *Client) OperateChannelTemplate(request *OperateChannelTemplateRequest) 
 }
 
 // OperateChannelTemplate
-// 此接口（OperateChannelTemplate）用于渠道侧将模板库中的模板对合作企业进行查询和设置, 其中包括可见性的修改以及对合作企业的设置.
+// 此接口（OperateChannelTemplate）用于针对渠道模板库中的模板对子客企业可见性的查询和设置，不会直接分配渠道模板给子客企业。
 //
-// 1、同步标识=select时：
+// 1、OperateType=select时：
 //
-// 返回渠道侧模板库当前模板的属性.
+// 查询渠道模板库
 //
-// 2、同步标识=update或者delete时：
+// 2、OperateType=update或者delete时：
 //
-// 对渠道子客进行模板库中模板授权,修改操作
+// 对子客企业进行模板库中模板可见性的修改、删除操作。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -2110,7 +2110,13 @@ func NewUploadFilesResponse() (response *UploadFilesResponse) {
 // UploadFiles
 // 此接口（UploadFiles）用于文件上传。
 //
-// 调用时需要设置Domain 为 file.ess.tencent.cn
+// 调用时需要设置Domain, 正式环境为 file.ess.tencent.cn。
+//
+// 代码示例：
+//
+// HttpProfile httpProfile = new HttpProfile();
+//
+// httpProfile.setEndpoint("file.test.ess.tencent.cn");
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -2126,7 +2132,13 @@ func (c *Client) UploadFiles(request *UploadFilesRequest) (response *UploadFiles
 // UploadFiles
 // 此接口（UploadFiles）用于文件上传。
 //
-// 调用时需要设置Domain 为 file.ess.tencent.cn
+// 调用时需要设置Domain, 正式环境为 file.ess.tencent.cn。
+//
+// 代码示例：
+//
+// HttpProfile httpProfile = new HttpProfile();
+//
+// httpProfile.setEndpoint("file.test.ess.tencent.cn");
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"

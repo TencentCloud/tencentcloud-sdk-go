@@ -130,11 +130,11 @@ type CodePack struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
 
-	// 状态
+	// 制码状态 init: 初始化, pending: 执行中, done: 完成, error: 失败
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *string `json:"Status,omitempty" name:"Status"`
 
-	// 记录
+	// 执行日志
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Log *string `json:"Log,omitempty" name:"Log"`
 
@@ -158,11 +158,11 @@ type CodePack struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Cipher *int64 `json:"Cipher,omitempty" name:"Cipher"`
 
-	// 文字码地址
+	// [弃用] 文字码地址，通过另一个接口查
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TextUrl *string `json:"TextUrl,omitempty" name:"TextUrl"`
 
-	// 二维码地址
+	// [弃用] 二维码地址，通过另一个接口查
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PackUrl *string `json:"PackUrl,omitempty" name:"PackUrl"`
 
@@ -3629,13 +3629,13 @@ type Product struct {
 }
 
 type TraceCode struct {
-	// 码
+	// 二维码
 	Code *string `json:"Code,omitempty" name:"Code"`
 
 	// 企业ID
 	CorpId *uint64 `json:"CorpId,omitempty" name:"CorpId"`
 
-	// 包ID
+	// 码包ID
 	PackId *string `json:"PackId,omitempty" name:"PackId"`
 
 	// 批次ID
@@ -3647,7 +3647,7 @@ type TraceCode struct {
 	// 产品ID
 	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
 
-	// 状态
+	// 码状态 0: 冻结 1: 激活
 	Status *uint64 `json:"Status,omitempty" name:"Status"`
 
 	// 创建时间

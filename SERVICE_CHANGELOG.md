@@ -1,10 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 验证码(captcha) 版本：2019-07-22
+## 品牌经营管家(bma) 版本：2021-06-24
 
-### 第 11 次发布
+### 第 12 次发布
 
-发布时间：2022-10-18 06:13:00
+发布时间：2022-10-19 06:10:00
 
 本次发布包含了以下内容：
 
@@ -12,50 +12,96 @@
 
 新增接口：
 
+* [DescribeCRObtainDetail](https://cloud.tencent.com/document/api/1296/81541)
+
+
+
+## 验证码(captcha) 版本：2019-07-22
+
+### 第 12 次发布
+
+发布时间：2022-10-19 06:11:45
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
 * [GetTotalTicketStatistics](https://cloud.tencent.com/document/api/1110/81517)
+
+	* 新增入参：StartTimeStr, EndTimeStr, Dimension
+
+	* 新增出参：Data, CaptchaCode, CaptchaMsg
+
+
+新增数据结构：
+
+* [CaptchaStatisticObj](https://cloud.tencent.com/document/api/1110/40481#CaptchaStatisticObj)
+* [InterceptPerTrendObj](https://cloud.tencent.com/document/api/1110/40481#InterceptPerTrendObj)
+* [RequestTrendObj](https://cloud.tencent.com/document/api/1110/40481#RequestTrendObj)
+* [TicketCheckTrendObj](https://cloud.tencent.com/document/api/1110/40481#TicketCheckTrendObj)
+
+
+
+## 企业收付平台(cpdp) 版本：2019-08-20
+
+### 第 89 次发布
+
+发布时间：2022-10-19 06:17:23
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateOpenBankGlobalPaymentOrder](https://cloud.tencent.com/document/api/1122/81542)
+
+新增数据结构：
+
+* [CreateOpenBankUnifiedOrderPaymentResult](https://cloud.tencent.com/document/api/1122/40683#CreateOpenBankUnifiedOrderPaymentResult)
+* [OpenBankBillingInfo](https://cloud.tencent.com/document/api/1122/40683#OpenBankBillingInfo)
+* [OpenBankOrderRedirectInfo](https://cloud.tencent.com/document/api/1122/40683#OpenBankOrderRedirectInfo)
+* [OpenBankShippingInfo](https://cloud.tencent.com/document/api/1122/40683#OpenBankShippingInfo)
+
+修改数据结构：
+
+* [OpenBankGoodsInfo](https://cloud.tencent.com/document/api/1122/40683#OpenBankGoodsInfo)
+
+	* 新增成员：Sku, Price, Quantity, ProductImage, ProductUrl
+
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
+
+### 第 34 次发布
+
+发布时间：2022-10-18 16:02:52
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Component](https://cloud.tencent.com/document/api/1420/61525#Component)
+
+	* 新增成员：ComponentRecipientId
+
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
 
 
 
 ## 低代码互动课堂(lcic) 版本：2022-08-17
 
-### 第 4 次发布
+### 第 5 次发布
 
-发布时间：2022-10-18 06:36:52
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DeleteRoom](https://cloud.tencent.com/document/api/1639/81518)
-
-
-
-## 云数据库 Redis(redis) 版本：2018-04-12
-
-### 第 57 次发布
-
-发布时间：2022-10-18 06:44:04
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [DescribeInstances](https://cloud.tencent.com/document/api/239/20018)
-
-	* 新增入参：AzMode
-
-
-
-
-## 证书(ssl) 版本：2019-12-05
-
-### 第 20 次发布
-
-发布时间：2022-10-18 06:47:25
+发布时间：2022-10-19 06:31:50
 
 本次发布包含了以下内容：
 
@@ -63,93 +109,60 @@
 
 新增接口：
 
-* [DescribePackages](https://cloud.tencent.com/document/api/400/81519)
+* [BindDocumentToRoom](https://cloud.tencent.com/document/api/1639/81544)
+* [DescribeRoomStatistics](https://cloud.tencent.com/document/api/1639/81545)
+* [ModifyApp](https://cloud.tencent.com/document/api/1639/81546)
+* [UnbindDocumentFromRoom](https://cloud.tencent.com/document/api/1639/81543)
+
+修改接口：
+
+* [DescribeRoom](https://cloud.tencent.com/document/api/1639/80941)
+
+	* 新增出参：RecordUrl
+
 
 新增数据结构：
 
-* [PackageInfo](https://cloud.tencent.com/document/api/400/41679#PackageInfo)
-* [PackageTransferOutInfo](https://cloud.tencent.com/document/api/400/41679#PackageTransferOutInfo)
+* [MemberRecord](https://cloud.tencent.com/document/api/1639/81423#MemberRecord)
 
 
 
-## 容器服务(tke) 版本：2018-05-25
+## 云监控(monitor) 版本：2018-07-24
 
-### 第 125 次发布
+### 第 66 次发布
 
-发布时间：2022-10-18 06:55:58
+发布时间：2022-10-19 06:34:09
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-修改接口：
-
-* [DescribeClusterAuthenticationOptions](https://cloud.tencent.com/document/api/457/62278)
-
-	* 新增出参：OIDCConfig
-
-* [ModifyClusterAuthenticationOptions](https://cloud.tencent.com/document/api/457/62277)
-
-	* 新增入参：OIDCConfig
-
-
 新增数据结构：
 
-* [OIDCConfigAuthenticationOptions](https://cloud.tencent.com/document/api/457/31866#OIDCConfigAuthenticationOptions)
-
-
-
-## T-Sec-安心平台(RP)(trp) 版本：2021-05-15
-
-### 第 8 次发布
-
-发布时间：2022-10-17 22:02:42
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DescribeTmpToken](https://cloud.tencent.com/document/api/1458/81515)
-
-修改接口：
-
-* [CreateCustomPack](https://cloud.tencent.com/document/api/1458/81464)
-
-	* 新增入参：CodeParts
-
-* [DescribeCodePackStatus](https://cloud.tencent.com/document/api/1458/81457)
-
-	* 新增出参：Status
-
-* [DescribeCodePackUrl](https://cloud.tencent.com/document/api/1458/81456)
-
-	* 新增出参：ImgUrl, FileKey
-
-* [DescribeCodePacks](https://cloud.tencent.com/document/api/1458/75016)
-
-	* 新增出参：CodePacks, TotalCount
-
-* [DescribeJobFileUrl](https://cloud.tencent.com/document/api/1458/81455)
-
-	* 新增出参：Url
-
-
-新增数据结构：
-
-* [CodePack](https://cloud.tencent.com/document/api/1458/75030#CodePack)
+* [AlarmHierarchicalValue](https://cloud.tencent.com/document/api/248/30354#AlarmHierarchicalValue)
 
 修改数据结构：
 
-* [PackSpec](https://cloud.tencent.com/document/api/1458/75030#PackSpec)
+* [AlarmPolicyRule](https://cloud.tencent.com/document/api/248/30354#AlarmPolicyRule)
 
-	* 新增成员：CodeParts
+	* 新增成员：HierarchicalValue
 
-* [TraceData](https://cloud.tencent.com/document/api/1458/75030#TraceData)
 
-	* 新增成员：PhaseData, Status
 
+
+## 云开发 CloudBase(tcb) 版本：2018-06-08
+
+### 第 87 次发布
+
+发布时间：2022-10-19 06:42:09
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [ModifyClsTopic](https://cloud.tencent.com/document/api/876/81547)
 
 
 
@@ -7895,6 +7908,18 @@
 
 ## 品牌经营管家(bma) 版本：2021-06-24
 
+### 第 12 次发布
+
+发布时间：2022-10-19 06:10:00
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeCRObtainDetail](https://cloud.tencent.com/document/api/1296/81541)](https://cloud.tencent.com/document/api/#/#)
+
 ### 第 11 次发布
 
 发布时间：2022-10-17 06:09:59
@@ -9744,6 +9769,30 @@
 
 ## 验证码(captcha) 版本：2019-07-22
 
+### 第 12 次发布
+
+发布时间：2022-10-19 06:11:45
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [GetTotalTicketStatistics](https://cloud.tencent.com/document/api/1110/81517)
+
+	* 新增入参：StartTimeStr, EndTimeStr, Dimension
+
+	* 新增出参：Data, CaptchaCode, CaptchaMsg
+
+
+新增数据结构：
+
+* [[CaptchaStatisticObj](https://cloud.tencent.com/document/api/1110/40481#CaptchaStatisticObj)](https://cloud.tencent.com/document/api/1110/40481#[CaptchaStatisticObj](https://cloud.tencent.com/document/api/1110/40481#CaptchaStatisticObj))
+* [[InterceptPerTrendObj](https://cloud.tencent.com/document/api/1110/40481#InterceptPerTrendObj)](https://cloud.tencent.com/document/api/1110/40481#[InterceptPerTrendObj](https://cloud.tencent.com/document/api/1110/40481#InterceptPerTrendObj))
+* [[RequestTrendObj](https://cloud.tencent.com/document/api/1110/40481#RequestTrendObj)](https://cloud.tencent.com/document/api/1110/40481#[RequestTrendObj](https://cloud.tencent.com/document/api/1110/40481#RequestTrendObj))
+* [[TicketCheckTrendObj](https://cloud.tencent.com/document/api/1110/40481#TicketCheckTrendObj)](https://cloud.tencent.com/document/api/1110/40481#[TicketCheckTrendObj](https://cloud.tencent.com/document/api/1110/40481#TicketCheckTrendObj))
+
 ### 第 11 次发布
 
 发布时间：2022-10-18 06:13:00
@@ -9754,7 +9803,7 @@
 
 新增接口：
 
-* [[GetTotalTicketStatistics](https://cloud.tencent.com/document/api/1110/81517)](https://cloud.tencent.com/document/api/#/#)
+* [GetTotalTicketStatistics](https://cloud.tencent.com/document/api/1110/81517)
 
 ### 第 10 次发布
 
@@ -23654,6 +23703,32 @@
 
 
 ## 企业收付平台(cpdp) 版本：2019-08-20
+
+### 第 89 次发布
+
+发布时间：2022-10-19 06:17:23
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateOpenBankGlobalPaymentOrder](https://cloud.tencent.com/document/api/1122/81542)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[CreateOpenBankUnifiedOrderPaymentResult](https://cloud.tencent.com/document/api/1122/40683#CreateOpenBankUnifiedOrderPaymentResult)](https://cloud.tencent.com/document/api/1122/40683#[CreateOpenBankUnifiedOrderPaymentResult](https://cloud.tencent.com/document/api/1122/40683#CreateOpenBankUnifiedOrderPaymentResult))
+* [[OpenBankBillingInfo](https://cloud.tencent.com/document/api/1122/40683#OpenBankBillingInfo)](https://cloud.tencent.com/document/api/1122/40683#[OpenBankBillingInfo](https://cloud.tencent.com/document/api/1122/40683#OpenBankBillingInfo))
+* [[OpenBankOrderRedirectInfo](https://cloud.tencent.com/document/api/1122/40683#OpenBankOrderRedirectInfo)](https://cloud.tencent.com/document/api/1122/40683#[OpenBankOrderRedirectInfo](https://cloud.tencent.com/document/api/1122/40683#OpenBankOrderRedirectInfo))
+* [[OpenBankShippingInfo](https://cloud.tencent.com/document/api/1122/40683#OpenBankShippingInfo)](https://cloud.tencent.com/document/api/1122/40683#[OpenBankShippingInfo](https://cloud.tencent.com/document/api/1122/40683#OpenBankShippingInfo))
+
+修改数据结构：
+
+* [OpenBankGoodsInfo](https://cloud.tencent.com/document/api/1122/40683#OpenBankGoodsInfo)
+
+	* 新增成员：Sku, Price, Quantity, ProductImage, ProductUrl
+
 
 ### 第 88 次发布
 
@@ -39575,6 +39650,21 @@
 
 ## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
 
+### 第 34 次发布
+
+发布时间：2022-10-18 16:02:52
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Component](https://cloud.tencent.com/document/api/1420/61525#Component)
+
+	* 新增成员：ComponentRecipientId
+
+
 ### 第 33 次发布
 
 发布时间：2022-10-14 10:03:19
@@ -50047,6 +50137,32 @@
 
 ## 低代码互动课堂(lcic) 版本：2022-08-17
 
+### 第 5 次发布
+
+发布时间：2022-10-19 06:31:50
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[BindDocumentToRoom](https://cloud.tencent.com/document/api/1639/81544)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeRoomStatistics](https://cloud.tencent.com/document/api/1639/81545)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyApp](https://cloud.tencent.com/document/api/1639/81546)](https://cloud.tencent.com/document/api/#/#)
+* [[UnbindDocumentFromRoom](https://cloud.tencent.com/document/api/1639/81543)](https://cloud.tencent.com/document/api/#/#)
+
+修改接口：
+
+* [DescribeRoom](https://cloud.tencent.com/document/api/1639/80941)
+
+	* 新增出参：RecordUrl
+
+
+新增数据结构：
+
+* [[MemberRecord](https://cloud.tencent.com/document/api/1639/81423#MemberRecord)](https://cloud.tencent.com/document/api/1639/81423#[MemberRecord](https://cloud.tencent.com/document/api/1639/81423#MemberRecord))
+
 ### 第 4 次发布
 
 发布时间：2022-10-18 06:36:52
@@ -50057,7 +50173,7 @@
 
 新增接口：
 
-* [[DeleteRoom](https://cloud.tencent.com/document/api/1639/81518)](https://cloud.tencent.com/document/api/#/#)
+* [DeleteRoom](https://cloud.tencent.com/document/api/1639/81518)
 
 ### 第 3 次发布
 
@@ -54589,6 +54705,25 @@
 
 
 ## 云监控(monitor) 版本：2018-07-24
+
+### 第 66 次发布
+
+发布时间：2022-10-19 06:34:09
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [[AlarmHierarchicalValue](https://cloud.tencent.com/document/api/248/30354#AlarmHierarchicalValue)](https://cloud.tencent.com/document/api/248/30354#[AlarmHierarchicalValue](https://cloud.tencent.com/document/api/248/30354#AlarmHierarchicalValue))
+
+修改数据结构：
+
+* [AlarmPolicyRule](https://cloud.tencent.com/document/api/248/30354#AlarmPolicyRule)
+
+	* 新增成员：HierarchicalValue
+
 
 ### 第 65 次发布
 
@@ -67065,12 +67200,12 @@
 
 新增接口：
 
-* [[DescribePackages](https://cloud.tencent.com/document/api/400/81519)](https://cloud.tencent.com/document/api/#/#)
+* [DescribePackages](https://cloud.tencent.com/document/api/400/81519)
 
 新增数据结构：
 
-* [[PackageInfo](https://cloud.tencent.com/document/api/400/41679#PackageInfo)](https://cloud.tencent.com/document/api/400/41679#[PackageInfo](https://cloud.tencent.com/document/api/400/41679#PackageInfo))
-* [[PackageTransferOutInfo](https://cloud.tencent.com/document/api/400/41679#PackageTransferOutInfo)](https://cloud.tencent.com/document/api/400/41679#[PackageTransferOutInfo](https://cloud.tencent.com/document/api/400/41679#PackageTransferOutInfo))
+* [PackageInfo](https://cloud.tencent.com/document/api/400/41679#PackageInfo)
+* [PackageTransferOutInfo](https://cloud.tencent.com/document/api/400/41679#PackageTransferOutInfo)
 
 ### 第 19 次发布
 
@@ -69782,6 +69917,18 @@
 
 
 ## 云开发 CloudBase(tcb) 版本：2018-06-08
+
+### 第 87 次发布
+
+发布时间：2022-10-19 06:42:09
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[ModifyClsTopic](https://cloud.tencent.com/document/api/876/81547)](https://cloud.tencent.com/document/api/#/#)
 
 ### 第 86 次发布
 
@@ -79473,7 +79620,7 @@
 
 新增数据结构：
 
-* [[OIDCConfigAuthenticationOptions](https://cloud.tencent.com/document/api/457/31866#OIDCConfigAuthenticationOptions)](https://cloud.tencent.com/document/api/457/31866#[OIDCConfigAuthenticationOptions](https://cloud.tencent.com/document/api/457/31866#OIDCConfigAuthenticationOptions))
+* [OIDCConfigAuthenticationOptions](https://cloud.tencent.com/document/api/457/31866#OIDCConfigAuthenticationOptions)
 
 ### 第 124 次发布
 
@@ -82326,7 +82473,7 @@
 
 新增接口：
 
-* [[DescribeTmpToken](https://cloud.tencent.com/document/api/1458/81515)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeTmpToken](https://cloud.tencent.com/document/api/1458/81515)
 
 修改接口：
 
@@ -82353,7 +82500,7 @@
 
 新增数据结构：
 
-* [[CodePack](https://cloud.tencent.com/document/api/1458/75030#CodePack)](https://cloud.tencent.com/document/api/1458/75030#[CodePack](https://cloud.tencent.com/document/api/1458/75030#CodePack))
+* [CodePack](https://cloud.tencent.com/document/api/1458/75030#CodePack)
 
 修改数据结构：
 

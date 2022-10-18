@@ -2699,6 +2699,54 @@ func (c *Client) CreateOpenBankExternalSubMerchantRegistrationWithContext(ctx co
     return
 }
 
+func NewCreateOpenBankGlobalPaymentOrderRequest() (request *CreateOpenBankGlobalPaymentOrderRequest) {
+    request = &CreateOpenBankGlobalPaymentOrderRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cpdp", APIVersion, "CreateOpenBankGlobalPaymentOrder")
+    
+    
+    return
+}
+
+func NewCreateOpenBankGlobalPaymentOrderResponse() (response *CreateOpenBankGlobalPaymentOrderResponse) {
+    response = &CreateOpenBankGlobalPaymentOrderResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateOpenBankGlobalPaymentOrder
+// 云企付-跨境支付下单
+//
+// 可能返回的错误码:
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+func (c *Client) CreateOpenBankGlobalPaymentOrder(request *CreateOpenBankGlobalPaymentOrderRequest) (response *CreateOpenBankGlobalPaymentOrderResponse, err error) {
+    return c.CreateOpenBankGlobalPaymentOrderWithContext(context.Background(), request)
+}
+
+// CreateOpenBankGlobalPaymentOrder
+// 云企付-跨境支付下单
+//
+// 可能返回的错误码:
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+func (c *Client) CreateOpenBankGlobalPaymentOrderWithContext(ctx context.Context, request *CreateOpenBankGlobalPaymentOrderRequest) (response *CreateOpenBankGlobalPaymentOrderResponse, err error) {
+    if request == nil {
+        request = NewCreateOpenBankGlobalPaymentOrderRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateOpenBankGlobalPaymentOrder require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateOpenBankGlobalPaymentOrderResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateOpenBankMerchantRequest() (request *CreateOpenBankMerchantRequest) {
     request = &CreateOpenBankMerchantRequest{
         BaseRequest: &tchttp.BaseRequest{},

@@ -1928,6 +1928,105 @@ func (r *DescribeCRMonitorsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeCRObtainDetailRequestParams struct {
+	// 侵权ID
+	TortId *int64 `json:"TortId,omitempty" name:"TortId"`
+}
+
+type DescribeCRObtainDetailRequest struct {
+	*tchttp.BaseRequest
+	
+	// 侵权ID
+	TortId *int64 `json:"TortId,omitempty" name:"TortId"`
+}
+
+func (r *DescribeCRObtainDetailRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCRObtainDetailRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TortId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCRObtainDetailRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCRObtainDetailResponseParams struct {
+	// 作品名称
+	WorkName *string `json:"WorkName,omitempty" name:"WorkName"`
+
+	// 侵权链接
+	TortURL *string `json:"TortURL,omitempty" name:"TortURL"`
+
+	// 取证时间
+	ObtainTime *string `json:"ObtainTime,omitempty" name:"ObtainTime"`
+
+	// 取证类型
+	ObtainType *string `json:"ObtainType,omitempty" name:"ObtainType"`
+
+	// 取证号
+	ObtainNum *string `json:"ObtainNum,omitempty" name:"ObtainNum"`
+
+	// 证据地址
+	DepositFile *string `json:"DepositFile,omitempty" name:"DepositFile"`
+
+	// 公证信息地址
+	DepositCert *string `json:"DepositCert,omitempty" name:"DepositCert"`
+
+	// 内容类型
+	WorkType *string `json:"WorkType,omitempty" name:"WorkType"`
+
+	// 作品类型
+	WorkCategory *string `json:"WorkCategory,omitempty" name:"WorkCategory"`
+
+	// 侵权ID
+	TortId *int64 `json:"TortId,omitempty" name:"TortId"`
+
+	// 侵权编号
+	TortNum *string `json:"TortNum,omitempty" name:"TortNum"`
+
+	// 取证状态
+	ObtainStatus *int64 `json:"ObtainStatus,omitempty" name:"ObtainStatus"`
+
+	// 取证状态说明
+	ObtainNote *string `json:"ObtainNote,omitempty" name:"ObtainNote"`
+
+	// 取证时长
+	ObtainDuration *string `json:"ObtainDuration,omitempty" name:"ObtainDuration"`
+
+	// 取证名称
+	ObtainName *string `json:"ObtainName,omitempty" name:"ObtainName"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeCRObtainDetailResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeCRObtainDetailResponseParams `json:"Response"`
+}
+
+func (r *DescribeCRObtainDetailResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCRObtainDetailResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeCRWorkInfoRequestParams struct {
 	// 作品ID
 	WorkId *int64 `json:"WorkId,omitempty" name:"WorkId"`
@@ -2331,7 +2430,7 @@ type ModifyCRObtainStatusRequestParams struct {
 	// 侵权ID
 	TortId *int64 `json:"TortId,omitempty" name:"TortId"`
 
-	// 取证类型：1-网页取证 2-过程取证
+	// 取证类型：1-网页取证 2-过程取证(暂不提供)
 	ObtainType *int64 `json:"ObtainType,omitempty" name:"ObtainType"`
 
 	// 过程取证的取证时长，单位分钟，范围0-120
@@ -2347,7 +2446,7 @@ type ModifyCRObtainStatusRequest struct {
 	// 侵权ID
 	TortId *int64 `json:"TortId,omitempty" name:"TortId"`
 
-	// 取证类型：1-网页取证 2-过程取证
+	// 取证类型：1-网页取证 2-过程取证(暂不提供)
 	ObtainType *int64 `json:"ObtainType,omitempty" name:"ObtainType"`
 
 	// 过程取证的取证时长，单位分钟，范围0-120

@@ -7277,6 +7277,67 @@ func (r *ModifyCloudBaseRunServerVersionResponse) FromJsonString(s string) error
 }
 
 // Predefined struct for user
+type ModifyClsTopicRequestParams struct {
+	// 环境ID
+	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
+
+	// 日志生命周期，单位天，可取值范围1~3600，取值为3640时代表永久保存
+	Period *int64 `json:"Period,omitempty" name:"Period"`
+}
+
+type ModifyClsTopicRequest struct {
+	*tchttp.BaseRequest
+	
+	// 环境ID
+	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
+
+	// 日志生命周期，单位天，可取值范围1~3600，取值为3640时代表永久保存
+	Period *int64 `json:"Period,omitempty" name:"Period"`
+}
+
+func (r *ModifyClsTopicRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyClsTopicRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EnvId")
+	delete(f, "Period")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyClsTopicRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyClsTopicResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ModifyClsTopicResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyClsTopicResponseParams `json:"Response"`
+}
+
+func (r *ModifyClsTopicResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyClsTopicResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyDatabaseACLRequestParams struct {
 	// 环境ID
 	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`

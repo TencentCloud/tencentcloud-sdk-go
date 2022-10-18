@@ -3961,6 +3961,70 @@ func (c *Client) ModifyCloudBaseRunServerVersionWithContext(ctx context.Context,
     return
 }
 
+func NewModifyClsTopicRequest() (request *ModifyClsTopicRequest) {
+    request = &ModifyClsTopicRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcb", APIVersion, "ModifyClsTopic")
+    
+    
+    return
+}
+
+func NewModifyClsTopicResponse() (response *ModifyClsTopicResponse) {
+    response = &ModifyClsTopicResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyClsTopic
+// 修改日志主题
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ENVID = "InvalidParameter.EnvId"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  LIMITEXCEEDED_CONCURRENT = "LimitExceeded.Concurrent"
+//  LIMITEXCEEDED_REQUEST = "LimitExceeded.Request"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyClsTopic(request *ModifyClsTopicRequest) (response *ModifyClsTopicResponse, err error) {
+    return c.ModifyClsTopicWithContext(context.Background(), request)
+}
+
+// ModifyClsTopic
+// 修改日志主题
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ENVID = "InvalidParameter.EnvId"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  LIMITEXCEEDED_CONCURRENT = "LimitExceeded.Concurrent"
+//  LIMITEXCEEDED_REQUEST = "LimitExceeded.Request"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyClsTopicWithContext(ctx context.Context, request *ModifyClsTopicRequest) (response *ModifyClsTopicResponse, err error) {
+    if request == nil {
+        request = NewModifyClsTopicRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyClsTopic require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyClsTopicResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyDatabaseACLRequest() (request *ModifyDatabaseACLRequest) {
     request = &ModifyDatabaseACLRequest{
         BaseRequest: &tchttp.BaseRequest{},

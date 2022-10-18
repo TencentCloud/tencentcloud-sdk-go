@@ -31,6 +31,20 @@ type AlarmEvent struct {
 	Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
 }
 
+type AlarmHierarchicalValue struct {
+	// 提醒等级阈值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Remind *string `json:"Remind,omitempty" name:"Remind"`
+
+	// 警告等级阈值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Warn *string `json:"Warn,omitempty" name:"Warn"`
+
+	// 严重等级阈值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Serious *string `json:"Serious,omitempty" name:"Serious"`
+}
+
 type AlarmHistory struct {
 	// 告警历史Id
 	AlarmId *string `json:"AlarmId,omitempty" name:"AlarmId"`
@@ -431,6 +445,10 @@ type AlarmPolicyRule struct {
 	// 最小值
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ValueMin *float64 `json:"ValueMin,omitempty" name:"ValueMin"`
+
+	// 告警分级阈值配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HierarchicalValue *AlarmHierarchicalValue `json:"HierarchicalValue,omitempty" name:"HierarchicalValue"`
 }
 
 type AlarmPolicyTriggerTask struct {

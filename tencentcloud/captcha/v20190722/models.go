@@ -90,6 +90,41 @@ type CaptchaQueryData struct {
 	Date *string `json:"Date,omitempty" name:"Date"`
 }
 
+type CaptchaStatisticObj struct {
+	// 请求总量
+	ActionTotal *int64 `json:"ActionTotal,omitempty" name:"ActionTotal"`
+
+	// 验证总量
+	VerifyTotal *int64 `json:"VerifyTotal,omitempty" name:"VerifyTotal"`
+
+	// 验证通过总量
+	VerifyThroughTotal *int64 `json:"VerifyThroughTotal,omitempty" name:"VerifyThroughTotal"`
+
+	// 验证拦截总量
+	VerifyInterceptTotal *int64 `json:"VerifyInterceptTotal,omitempty" name:"VerifyInterceptTotal"`
+
+	// 票据校验总量
+	TicketTotal *int64 `json:"TicketTotal,omitempty" name:"TicketTotal"`
+
+	// 票据通过总量
+	TicketThroughTotal *int64 `json:"TicketThroughTotal,omitempty" name:"TicketThroughTotal"`
+
+	// 票据拦截总量
+	TicketInterceptTotal *int64 `json:"TicketInterceptTotal,omitempty" name:"TicketInterceptTotal"`
+
+	// 请求趋势图
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RequestTrend []*RequestTrendObj `json:"RequestTrend,omitempty" name:"RequestTrend"`
+
+	// 拦截率趋势图
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InterceptPerTrend []*InterceptPerTrendObj `json:"InterceptPerTrend,omitempty" name:"InterceptPerTrend"`
+
+	// 票据校验趋势图
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TicketCheckTrend []*TicketCheckTrendObj `json:"TicketCheckTrend,omitempty" name:"TicketCheckTrend"`
+}
+
 type CaptchaTicketDataRes struct {
 	// 票据验证总量返回
 	TicketAmountArray []*TicketAmountUnit `json:"TicketAmountArray,omitempty" name:"TicketAmountArray"`
@@ -1323,12 +1358,33 @@ func (r *DescribeCaptchaUserAllAppIdResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type GetTotalTicketStatisticsRequestParams struct {
+	// 开始时间
+	StartTimeStr *string `json:"StartTimeStr,omitempty" name:"StartTimeStr"`
 
+	// 结束时间
+	EndTimeStr *string `json:"EndTimeStr,omitempty" name:"EndTimeStr"`
+
+	// 查询粒度
+	// 分钟：“1”
+	// 小时：“2”
+	// 天：“3”
+	Dimension *string `json:"Dimension,omitempty" name:"Dimension"`
 }
 
 type GetTotalTicketStatisticsRequest struct {
 	*tchttp.BaseRequest
 	
+	// 开始时间
+	StartTimeStr *string `json:"StartTimeStr,omitempty" name:"StartTimeStr"`
+
+	// 结束时间
+	EndTimeStr *string `json:"EndTimeStr,omitempty" name:"EndTimeStr"`
+
+	// 查询粒度
+	// 分钟：“1”
+	// 小时：“2”
+	// 天：“3”
+	Dimension *string `json:"Dimension,omitempty" name:"Dimension"`
 }
 
 func (r *GetTotalTicketStatisticsRequest) ToJsonString() string {
@@ -1343,7 +1399,9 @@ func (r *GetTotalTicketStatisticsRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "StartTimeStr")
+	delete(f, "EndTimeStr")
+	delete(f, "Dimension")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetTotalTicketStatisticsRequest has unknown keys!", "")
 	}
@@ -1352,6 +1410,16 @@ func (r *GetTotalTicketStatisticsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type GetTotalTicketStatisticsResponseParams struct {
+	// 返回数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *CaptchaStatisticObj `json:"Data,omitempty" name:"Data"`
+
+	// 返回码
+	CaptchaCode *int64 `json:"CaptchaCode,omitempty" name:"CaptchaCode"`
+
+	// 返回信息
+	CaptchaMsg *string `json:"CaptchaMsg,omitempty" name:"CaptchaMsg"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }
@@ -1370,6 +1438,20 @@ func (r *GetTotalTicketStatisticsResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *GetTotalTicketStatisticsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type InterceptPerTrendObj struct {
+	// 时间参数
+	Ftime *string `json:"Ftime,omitempty" name:"Ftime"`
+
+	// 拦截率
+	RequestInterceptPer *float64 `json:"RequestInterceptPer,omitempty" name:"RequestInterceptPer"`
+
+	// 答案拦截率
+	AnswerInterceptPer *float64 `json:"AnswerInterceptPer,omitempty" name:"AnswerInterceptPer"`
+
+	// 策略拦截率
+	PolicyInterceptPer *float64 `json:"PolicyInterceptPer,omitempty" name:"PolicyInterceptPer"`
 }
 
 type OutputManageMarketingRiskValue struct {
@@ -1429,12 +1511,43 @@ type OutputManageMarketingRiskValue struct {
 	RiskType []*int64 `json:"RiskType,omitempty" name:"RiskType"`
 }
 
+type RequestTrendObj struct {
+	// 时间参数
+	Ftime *string `json:"Ftime,omitempty" name:"Ftime"`
+
+	// 请求量
+	RequestAction *int64 `json:"RequestAction,omitempty" name:"RequestAction"`
+
+	// 验证量
+	RequestVerify *int64 `json:"RequestVerify,omitempty" name:"RequestVerify"`
+
+	// 通过量
+	RequestThroughput *int64 `json:"RequestThroughput,omitempty" name:"RequestThroughput"`
+
+	// 拦截量
+	RequestIntercept *uint64 `json:"RequestIntercept,omitempty" name:"RequestIntercept"`
+}
+
 type TicketAmountUnit struct {
 	// 时间
 	DateKey *string `json:"DateKey,omitempty" name:"DateKey"`
 
 	// 票据验证总量
 	Amount *int64 `json:"Amount,omitempty" name:"Amount"`
+}
+
+type TicketCheckTrendObj struct {
+	// 时间参数
+	Ftime *string `json:"Ftime,omitempty" name:"Ftime"`
+
+	// 票据校验量
+	TicketCount *int64 `json:"TicketCount,omitempty" name:"TicketCount"`
+
+	// 票据通过量
+	TicketThroughput *int64 `json:"TicketThroughput,omitempty" name:"TicketThroughput"`
+
+	// 票据拦截量
+	TicketIntercept *int64 `json:"TicketIntercept,omitempty" name:"TicketIntercept"`
 }
 
 type TicketInterceptUnit struct {

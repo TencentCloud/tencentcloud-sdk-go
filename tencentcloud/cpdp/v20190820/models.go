@@ -8239,6 +8239,169 @@ type CreateOpenBankExternalSubMerchantRegistrationResult struct {
 }
 
 // Predefined struct for user
+type CreateOpenBankGlobalPaymentOrderRequestParams struct {
+	// 渠道商户号
+	ChannelMerchantId *string `json:"ChannelMerchantId,omitempty" name:"ChannelMerchantId"`
+
+	// 渠道名称
+	ChannelName *string `json:"ChannelName,omitempty" name:"ChannelName"`
+
+	// 付款方式
+	PayType *string `json:"PayType,omitempty" name:"PayType"`
+
+	// 外部商户订单号,只能是数字、大小写字母，且在同一个接入平台下唯一
+	OutOrderId *string `json:"OutOrderId,omitempty" name:"OutOrderId"`
+
+	// 付款金额，单位分
+	TotalAmount *int64 `json:"TotalAmount,omitempty" name:"TotalAmount"`
+
+	// 支付币种，参考附录：货币代码
+	Currency *string `json:"Currency,omitempty" name:"Currency"`
+
+	// 渠道子商户号
+	ChannelSubMerchantId *string `json:"ChannelSubMerchantId,omitempty" name:"ChannelSubMerchantId"`
+
+	// 支付成功回调地址。
+	NotifyUrl *string `json:"NotifyUrl,omitempty" name:"NotifyUrl"`
+
+	// 前端跳转地址。通联支付成功后，支付网关跳回商户的地址
+	FrontUrl *string `json:"FrontUrl,omitempty" name:"FrontUrl"`
+
+	// 网站语言。收银台显示语言，见附录网站语言
+	FrontLanguage *string `json:"FrontLanguage,omitempty" name:"FrontLanguage"`
+
+	// 付款备注
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 第三方拓展信息信息
+	ExternalPaymentData *string `json:"ExternalPaymentData,omitempty" name:"ExternalPaymentData"`
+
+	// 商品信息
+	GoodsInfos []*OpenBankGoodsInfo `json:"GoodsInfos,omitempty" name:"GoodsInfos"`
+
+	// 邮寄信息
+	ShippingInfo *OpenBankShippingInfo `json:"ShippingInfo,omitempty" name:"ShippingInfo"`
+
+	// 账单信息
+	BillingInfo *OpenBankBillingInfo `json:"BillingInfo,omitempty" name:"BillingInfo"`
+}
+
+type CreateOpenBankGlobalPaymentOrderRequest struct {
+	*tchttp.BaseRequest
+	
+	// 渠道商户号
+	ChannelMerchantId *string `json:"ChannelMerchantId,omitempty" name:"ChannelMerchantId"`
+
+	// 渠道名称
+	ChannelName *string `json:"ChannelName,omitempty" name:"ChannelName"`
+
+	// 付款方式
+	PayType *string `json:"PayType,omitempty" name:"PayType"`
+
+	// 外部商户订单号,只能是数字、大小写字母，且在同一个接入平台下唯一
+	OutOrderId *string `json:"OutOrderId,omitempty" name:"OutOrderId"`
+
+	// 付款金额，单位分
+	TotalAmount *int64 `json:"TotalAmount,omitempty" name:"TotalAmount"`
+
+	// 支付币种，参考附录：货币代码
+	Currency *string `json:"Currency,omitempty" name:"Currency"`
+
+	// 渠道子商户号
+	ChannelSubMerchantId *string `json:"ChannelSubMerchantId,omitempty" name:"ChannelSubMerchantId"`
+
+	// 支付成功回调地址。
+	NotifyUrl *string `json:"NotifyUrl,omitempty" name:"NotifyUrl"`
+
+	// 前端跳转地址。通联支付成功后，支付网关跳回商户的地址
+	FrontUrl *string `json:"FrontUrl,omitempty" name:"FrontUrl"`
+
+	// 网站语言。收银台显示语言，见附录网站语言
+	FrontLanguage *string `json:"FrontLanguage,omitempty" name:"FrontLanguage"`
+
+	// 付款备注
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 第三方拓展信息信息
+	ExternalPaymentData *string `json:"ExternalPaymentData,omitempty" name:"ExternalPaymentData"`
+
+	// 商品信息
+	GoodsInfos []*OpenBankGoodsInfo `json:"GoodsInfos,omitempty" name:"GoodsInfos"`
+
+	// 邮寄信息
+	ShippingInfo *OpenBankShippingInfo `json:"ShippingInfo,omitempty" name:"ShippingInfo"`
+
+	// 账单信息
+	BillingInfo *OpenBankBillingInfo `json:"BillingInfo,omitempty" name:"BillingInfo"`
+}
+
+func (r *CreateOpenBankGlobalPaymentOrderRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateOpenBankGlobalPaymentOrderRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ChannelMerchantId")
+	delete(f, "ChannelName")
+	delete(f, "PayType")
+	delete(f, "OutOrderId")
+	delete(f, "TotalAmount")
+	delete(f, "Currency")
+	delete(f, "ChannelSubMerchantId")
+	delete(f, "NotifyUrl")
+	delete(f, "FrontUrl")
+	delete(f, "FrontLanguage")
+	delete(f, "Remark")
+	delete(f, "ExternalPaymentData")
+	delete(f, "GoodsInfos")
+	delete(f, "ShippingInfo")
+	delete(f, "BillingInfo")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateOpenBankGlobalPaymentOrderRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateOpenBankGlobalPaymentOrderResponseParams struct {
+	// 业务系统返回码，SUCCESS表示成功，其他表示失败。
+	ErrCode *string `json:"ErrCode,omitempty" name:"ErrCode"`
+
+	// 业务系统返回消息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrMessage *string `json:"ErrMessage,omitempty" name:"ErrMessage"`
+
+	// 统一下单响应对象。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Result *CreateOpenBankUnifiedOrderPaymentResult `json:"Result,omitempty" name:"Result"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateOpenBankGlobalPaymentOrderResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateOpenBankGlobalPaymentOrderResponseParams `json:"Response"`
+}
+
+func (r *CreateOpenBankGlobalPaymentOrderResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateOpenBankGlobalPaymentOrderResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateOpenBankMerchantRequestParams struct {
 	// 外部商户ID。
 	OutMerchantId *string `json:"OutMerchantId,omitempty" name:"OutMerchantId"`
@@ -9039,6 +9202,31 @@ type CreateOpenBankSubMerchantRateConfigureResult struct {
 
 	// 渠道产品费率序列号
 	ChannelProductFeeNo *string `json:"ChannelProductFeeNo,omitempty" name:"ChannelProductFeeNo"`
+}
+
+type CreateOpenBankUnifiedOrderPaymentResult struct {
+	// 云企付平台订单号。
+	ChannelOrderId *string `json:"ChannelOrderId,omitempty" name:"ChannelOrderId"`
+
+	// 第三方支付平台返回支付订单号。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ThirdPayOrderId *string `json:"ThirdPayOrderId,omitempty" name:"ThirdPayOrderId"`
+
+	// 跳转参数
+	// 渠道为TENPAY，付款方式为EBANK_PAYMENT时必选。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RedirectInfo *OpenBankOrderRedirectInfo `json:"RedirectInfo,omitempty" name:"RedirectInfo"`
+
+	// 外部商户订单号，只能是数字、大小写字母，且在同一个接入平台下唯一。
+	OutOrderId *string `json:"OutOrderId,omitempty" name:"OutOrderId"`
+
+	// 渠道扩展支付信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PayInfo *string `json:"PayInfo,omitempty" name:"PayInfo"`
+
+	// 渠道扩展支付信息类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PayInfoType *string `json:"PayInfoType,omitempty" name:"PayInfoType"`
 }
 
 // Predefined struct for user
@@ -14179,6 +14367,35 @@ type OpenBankApprovalGuideInfo struct {
 	MobileGuideUrl *string `json:"MobileGuideUrl,omitempty" name:"MobileGuideUrl"`
 }
 
+type OpenBankBillingInfo struct {
+	// 账单人名字
+	FirstName *string `json:"FirstName,omitempty" name:"FirstName"`
+
+	// 账单人姓氏
+	LastName *string `json:"LastName,omitempty" name:"LastName"`
+
+	// 账单地址1
+	AddressOne *string `json:"AddressOne,omitempty" name:"AddressOne"`
+
+	// 账单地址1
+	AddressTwo *string `json:"AddressTwo,omitempty" name:"AddressTwo"`
+
+	// 账单地址所在城市
+	City *string `json:"City,omitempty" name:"City"`
+
+	// 账单地址所在州/省，当国家是美国或加拿大时，使用ISO-3166-2:US或ISO -3166-2:CA 中该国家地区编 码标准中的两位字母编码。
+	State *string `json:"State,omitempty" name:"State"`
+
+	// 账单地址所在国家，使用ISO-3166-1标准中的两位字母编码。
+	Country *string `json:"Country,omitempty" name:"Country"`
+
+	// 账单地址邮编
+	ZipCode *string `json:"ZipCode,omitempty" name:"ZipCode"`
+
+	// 账单人手机号
+	Phone *string `json:"Phone,omitempty" name:"Phone"`
+}
+
 type OpenBankFormInfo struct {
 	// 网银页面提交html
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -14201,6 +14418,55 @@ type OpenBankGoodsInfo struct {
 
 	// 业务类型。汇付渠道必填，汇付渠道传入固定值100099。
 	GoodsBizType *string `json:"GoodsBizType,omitempty" name:"GoodsBizType"`
+
+	// 商品编号。
+	Sku *string `json:"Sku,omitempty" name:"Sku"`
+
+	// 商品单价。
+	Price *string `json:"Price,omitempty" name:"Price"`
+
+	// 商品数量
+	Quantity *string `json:"Quantity,omitempty" name:"Quantity"`
+
+	// 商品图片url
+	ProductImage *string `json:"ProductImage,omitempty" name:"ProductImage"`
+
+	// 商品链接url
+	ProductUrl *string `json:"ProductUrl,omitempty" name:"ProductUrl"`
+}
+
+type OpenBankOrderRedirectInfo struct {
+	// 生成二维码，引导用户扫码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	QRCodeUrl *string `json:"QRCodeUrl,omitempty" name:"QRCodeUrl"`
+
+	// 二维码凭证
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	QRCodeKey *string `json:"QRCodeKey,omitempty" name:"QRCodeKey"`
+
+	// 跳转 URL,用于客户端跳转，订单未支付时返回该参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Url *string `json:"Url,omitempty" name:"Url"`
+
+	// 跳转凭证过期时间,yyyy-MM-dd HH:mm:ss
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExpireTime *string `json:"ExpireTime,omitempty" name:"ExpireTime"`
+
+	// 小程序 appid
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MpAppId *string `json:"MpAppId,omitempty" name:"MpAppId"`
+
+	// 小程序路径
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MpPath *string `json:"MpPath,omitempty" name:"MpPath"`
+
+	// 小程序原始 id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MpUserName *string `json:"MpUserName,omitempty" name:"MpUserName"`
+
+	// 网银支付提交页面信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FormInfo *OpenBankFormInfo `json:"FormInfo,omitempty" name:"FormInfo"`
 }
 
 type OpenBankPayLimitInfo struct {
@@ -14458,6 +14724,36 @@ type OpenBankSettlementRulesInfo struct {
 	// MULTI：多次退款
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RefundRule *string `json:"RefundRule,omitempty" name:"RefundRule"`
+}
+
+type OpenBankShippingInfo struct {
+	// 收货人名字
+	FirstName *string `json:"FirstName,omitempty" name:"FirstName"`
+
+	// 收货人姓氏
+	LastName *string `json:"LastName,omitempty" name:"LastName"`
+
+	// 收货地址1
+	AddressOne *string `json:"AddressOne,omitempty" name:"AddressOne"`
+
+	// 收货地址2
+	AddressTwo *string `json:"AddressTwo,omitempty" name:"AddressTwo"`
+
+	// 收货地址所在城市
+	City *string `json:"City,omitempty" name:"City"`
+
+	// 收货地址所在州，当国家是美国或加拿大时，使用ISO-3166-2:US或ISO -3166-2:CA 中该
+	// 国家地区编码标准中的两位字母编码
+	State *string `json:"State,omitempty" name:"State"`
+
+	// 使用ISO-3166-1标准中的两位字母编码
+	Country *string `json:"Country,omitempty" name:"Country"`
+
+	// 收货地址邮编
+	ZipCode *string `json:"ZipCode,omitempty" name:"ZipCode"`
+
+	// 收货联系电话
+	Phone *string `json:"Phone,omitempty" name:"Phone"`
 }
 
 type OpenBankStoreInfo struct {
