@@ -706,16 +706,19 @@ type ChannelCreateMultiFlowSignQRCodeRequestParams struct {
 	// 二维码有效天数 默认7天 最高设置不超过90天
 	QrEffectiveDay *int64 `json:"QrEffectiveDay,omitempty" name:"QrEffectiveDay"`
 
+	// 限制二维码用户条件
+	Restrictions []*ApproverRestriction `json:"Restrictions,omitempty" name:"Restrictions"`
+
 	// 回调地址，最大长度1000个字符
 	// 不传默认使用渠道应用号配置的回调地址
 	// 回调时机:用户通过签署二维码发起合同时，企业额度不足导致失败
 	CallbackUrl *string `json:"CallbackUrl,omitempty" name:"CallbackUrl"`
 
-	// 限制二维码用户条件
-	ApproverRestrictions *ApproverRestriction `json:"ApproverRestrictions,omitempty" name:"ApproverRestrictions"`
-
 	// 用户信息
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
+	// 限制二维码用户条件（已弃用）
+	ApproverRestrictions *ApproverRestriction `json:"ApproverRestrictions,omitempty" name:"ApproverRestrictions"`
 }
 
 type ChannelCreateMultiFlowSignQRCodeRequest struct {
@@ -740,16 +743,19 @@ type ChannelCreateMultiFlowSignQRCodeRequest struct {
 	// 二维码有效天数 默认7天 最高设置不超过90天
 	QrEffectiveDay *int64 `json:"QrEffectiveDay,omitempty" name:"QrEffectiveDay"`
 
+	// 限制二维码用户条件
+	Restrictions []*ApproverRestriction `json:"Restrictions,omitempty" name:"Restrictions"`
+
 	// 回调地址，最大长度1000个字符
 	// 不传默认使用渠道应用号配置的回调地址
 	// 回调时机:用户通过签署二维码发起合同时，企业额度不足导致失败
 	CallbackUrl *string `json:"CallbackUrl,omitempty" name:"CallbackUrl"`
 
-	// 限制二维码用户条件
-	ApproverRestrictions *ApproverRestriction `json:"ApproverRestrictions,omitempty" name:"ApproverRestrictions"`
-
 	// 用户信息
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
+	// 限制二维码用户条件（已弃用）
+	ApproverRestrictions *ApproverRestriction `json:"ApproverRestrictions,omitempty" name:"ApproverRestrictions"`
 }
 
 func (r *ChannelCreateMultiFlowSignQRCodeRequest) ToJsonString() string {
@@ -770,9 +776,10 @@ func (r *ChannelCreateMultiFlowSignQRCodeRequest) FromJsonString(s string) error
 	delete(f, "MaxFlowNum")
 	delete(f, "FlowEffectiveDay")
 	delete(f, "QrEffectiveDay")
+	delete(f, "Restrictions")
 	delete(f, "CallbackUrl")
-	delete(f, "ApproverRestrictions")
 	delete(f, "Operator")
+	delete(f, "ApproverRestrictions")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ChannelCreateMultiFlowSignQRCodeRequest has unknown keys!", "")
 	}
@@ -1149,7 +1156,10 @@ type Component struct {
 
 	// 参数控件样式，json格式表述
 	// 不同类型的控件会有部分非通用参数
-	// TEXT控件可以指定字体
+	// TEXT/MULTI_LINE_TEXT控件可以指定
+	// 1 Font：目前只支持黑体、宋体
+	// 2 FontSize： 范围12-72
+	// 3 FontAlign： Left/Right/Center，左对齐/居中/右对齐
 	// 例如：{"FontSize":12}
 	ComponentExtra *string `json:"ComponentExtra,omitempty" name:"ComponentExtra"`
 
@@ -1265,10 +1275,12 @@ func (r *CreateConsoleLoginUrlRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateConsoleLoginUrlResponseParams struct {
-	// 子客Web控制台url，此链接5分钟内有效，且只能访问一次
+	// 子客Web控制台url，此链接5分钟内有效，且只能访问一次。同时需要注意：
+	// 1. 此链接仅单次有效，使用后需要再次创建新的链接（部分聊天软件，如企业微信默认会对链接进行解析，此时需要使用类似“代码片段”的方式或者放到txt文件里发送链接）；
+	// 2. 创建的链接应避免被转义，如：&被转义为\u0026；如使用Postman请求后，请选择响应类型为 JSON，否则链接将被转义
 	ConsoleUrl *string `json:"ConsoleUrl,omitempty" name:"ConsoleUrl"`
 
-	// 渠道子客企业是否已开通腾讯电子签。
+	// 渠道子客企业是否已开通腾讯电子签
 	IsActivated *bool `json:"IsActivated,omitempty" name:"IsActivated"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -1299,7 +1311,7 @@ type CreateFlowsByTemplatesRequestParams struct {
 	// 多个合同（签署流程）信息，最多支持20个
 	FlowInfos []*FlowInfo `json:"FlowInfos,omitempty" name:"FlowInfos"`
 
-	// 是否为预览模式；默认为false，即非预览模式，此时发起合同并返回FlowIds；若为预览模式，则返回PreviewUrls；
+	// 是否为预览模式；默认为false，即非预览模式，此时发起合同并返回FlowIds；若为预览模式，不会发起合同，会返回PreviewUrls（此Url返回的是PDF文件流 ）；
 	// 预览链接有效期300秒；
 	NeedPreview *bool `json:"NeedPreview,omitempty" name:"NeedPreview"`
 
@@ -1316,7 +1328,7 @@ type CreateFlowsByTemplatesRequest struct {
 	// 多个合同（签署流程）信息，最多支持20个
 	FlowInfos []*FlowInfo `json:"FlowInfos,omitempty" name:"FlowInfos"`
 
-	// 是否为预览模式；默认为false，即非预览模式，此时发起合同并返回FlowIds；若为预览模式，则返回PreviewUrls；
+	// 是否为预览模式；默认为false，即非预览模式，此时发起合同并返回FlowIds；若为预览模式，不会发起合同，会返回PreviewUrls（此Url返回的是PDF文件流 ）；
 	// 预览链接有效期300秒；
 	NeedPreview *bool `json:"NeedPreview,omitempty" name:"NeedPreview"`
 
@@ -1477,7 +1489,7 @@ type CreateSignUrlsRequestParams struct {
 	Endpoint *string `json:"Endpoint,omitempty" name:"Endpoint"`
 
 	// 签署链接生成类型，默认是 "ALL"；
-	// "ALL"：全部签署方签署链接；
+	// "ALL"：全部签署方签署链接，此时不会给自动签署的签署方创建签署链接；
 	// "CHANNEL"：渠道合作企业；
 	// "NOT_CHANNEL"：非渠道合作企业；
 	// "PERSON"：个人；
@@ -1526,7 +1538,7 @@ type CreateSignUrlsRequest struct {
 	Endpoint *string `json:"Endpoint,omitempty" name:"Endpoint"`
 
 	// 签署链接生成类型，默认是 "ALL"；
-	// "ALL"：全部签署方签署链接；
+	// "ALL"：全部签署方签署链接，此时不会给自动签署的签署方创建签署链接；
 	// "CHANNEL"：渠道合作企业；
 	// "NOT_CHANNEL"：非渠道合作企业；
 	// "PERSON"：个人；
@@ -1729,7 +1741,7 @@ type DescribeResourceUrlsByFlowsRequestParams struct {
 	// 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
-	// 查询资源所对应的签署流程Id，最多支持50个。
+	// 查询资源所对应的签署流程Id，最多支持50个
 	FlowIds []*string `json:"FlowIds,omitempty" name:"FlowIds"`
 
 	// 操作者的信息
@@ -1743,7 +1755,7 @@ type DescribeResourceUrlsByFlowsRequest struct {
 	// 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
-	// 查询资源所对应的签署流程Id，最多支持50个。
+	// 查询资源所对应的签署流程Id，最多支持50个
 	FlowIds []*string `json:"FlowIds,omitempty" name:"FlowIds"`
 
 	// 操作者的信息

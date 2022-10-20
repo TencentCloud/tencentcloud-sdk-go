@@ -318,6 +318,7 @@ type Component struct {
 	// FILL_IMAGE、ATTACHMENT - 附件的FileId，需要通过UploadFiles接口上传获取
 	// SELECTOR - 选项值
 	// DYNAMIC_TABLE - 传入json格式的表格内容，具体见数据结构FlowInfo：https://cloud.tencent.com/document/api/1420/61525#FlowInfo
+	// SIGN_SEAL - 印章Id，于控制台查询获取
 	ComponentValue *string `json:"ComponentValue,omitempty" name:"ComponentValue"`
 
 	// 是否是表单域类型，默认不存在
@@ -1238,22 +1239,14 @@ func (r *CreateIntegrationEmployeesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateMultiFlowSignQRCodeRequestParams struct {
+	// 用户信息
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
 	// 模板ID
 	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
 
 	// 签署流程名称，最大长度不超过200字符
 	FlowName *string `json:"FlowName,omitempty" name:"FlowName"`
-
-	// 用户信息
-	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
-
-	// 应用信息
-	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
-
-	// 回调地址,最大长度1000字符串
-	// 回调时机：
-	// 用户通过签署二维码发起签署流程时，企业额度不足导致失败
-	CallbackUrl *string `json:"CallbackUrl,omitempty" name:"CallbackUrl"`
 
 	// 最大可发起签署流程份数，默认5份 
 	// 发起流程数量超过此上限后二维码自动失效
@@ -1266,28 +1259,31 @@ type CreateMultiFlowSignQRCodeRequestParams struct {
 	QrEffectiveDay *int64 `json:"QrEffectiveDay,omitempty" name:"QrEffectiveDay"`
 
 	// 限制二维码用户条件
+	Restrictions []*ApproverRestriction `json:"Restrictions,omitempty" name:"Restrictions"`
+
+	// 回调地址,最大长度1000字符串
+	// 回调时机：
+	// 用户通过签署二维码发起签署流程时，企业额度不足导致失败
+	CallbackUrl *string `json:"CallbackUrl,omitempty" name:"CallbackUrl"`
+
+	// 应用信息
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+
+	// 限制二维码用户条件（已弃用）
 	ApproverRestrictions *ApproverRestriction `json:"ApproverRestrictions,omitempty" name:"ApproverRestrictions"`
 }
 
 type CreateMultiFlowSignQRCodeRequest struct {
 	*tchttp.BaseRequest
 	
+	// 用户信息
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
 	// 模板ID
 	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
 
 	// 签署流程名称，最大长度不超过200字符
 	FlowName *string `json:"FlowName,omitempty" name:"FlowName"`
-
-	// 用户信息
-	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
-
-	// 应用信息
-	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
-
-	// 回调地址,最大长度1000字符串
-	// 回调时机：
-	// 用户通过签署二维码发起签署流程时，企业额度不足导致失败
-	CallbackUrl *string `json:"CallbackUrl,omitempty" name:"CallbackUrl"`
 
 	// 最大可发起签署流程份数，默认5份 
 	// 发起流程数量超过此上限后二维码自动失效
@@ -1300,6 +1296,17 @@ type CreateMultiFlowSignQRCodeRequest struct {
 	QrEffectiveDay *int64 `json:"QrEffectiveDay,omitempty" name:"QrEffectiveDay"`
 
 	// 限制二维码用户条件
+	Restrictions []*ApproverRestriction `json:"Restrictions,omitempty" name:"Restrictions"`
+
+	// 回调地址,最大长度1000字符串
+	// 回调时机：
+	// 用户通过签署二维码发起签署流程时，企业额度不足导致失败
+	CallbackUrl *string `json:"CallbackUrl,omitempty" name:"CallbackUrl"`
+
+	// 应用信息
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+
+	// 限制二维码用户条件（已弃用）
 	ApproverRestrictions *ApproverRestriction `json:"ApproverRestrictions,omitempty" name:"ApproverRestrictions"`
 }
 
@@ -1315,14 +1322,15 @@ func (r *CreateMultiFlowSignQRCodeRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "Operator")
 	delete(f, "TemplateId")
 	delete(f, "FlowName")
-	delete(f, "Operator")
-	delete(f, "Agent")
-	delete(f, "CallbackUrl")
 	delete(f, "MaxFlowNum")
 	delete(f, "FlowEffectiveDay")
 	delete(f, "QrEffectiveDay")
+	delete(f, "Restrictions")
+	delete(f, "CallbackUrl")
+	delete(f, "Agent")
 	delete(f, "ApproverRestrictions")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateMultiFlowSignQRCodeRequest has unknown keys!", "")

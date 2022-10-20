@@ -633,6 +633,90 @@ func (c *Client) CreateCRCompanyVerifyWithContext(ctx context.Context, request *
     return
 }
 
+func NewCreateCRDesktopCodeRequest() (request *CreateCRDesktopCodeRequest) {
+    request = &CreateCRDesktopCodeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("bma", APIVersion, "CreateCRDesktopCode")
+    
+    
+    return
+}
+
+func NewCreateCRDesktopCodeResponse() (response *CreateCRDesktopCodeResponse) {
+    response = &CreateCRDesktopCodeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateCRDesktopCode
+// 新建过程取证码
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDACTION = "InvalidAction"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  NOSUCHVERSION = "NoSuchVersion"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateCRDesktopCode(request *CreateCRDesktopCodeRequest) (response *CreateCRDesktopCodeResponse, err error) {
+    return c.CreateCRDesktopCodeWithContext(context.Background(), request)
+}
+
+// CreateCRDesktopCode
+// 新建过程取证码
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDACTION = "InvalidAction"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  NOSUCHVERSION = "NoSuchVersion"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateCRDesktopCodeWithContext(ctx context.Context, request *CreateCRDesktopCodeRequest) (response *CreateCRDesktopCodeResponse, err error) {
+    if request == nil {
+        request = NewCreateCRDesktopCodeRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateCRDesktopCode require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateCRDesktopCodeResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateCRObtainRequest() (request *CreateCRObtainRequest) {
     request = &CreateCRObtainRequest{
         BaseRequest: &tchttp.BaseRequest{},

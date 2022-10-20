@@ -341,6 +341,54 @@ func (c *Client) CreateFolderWithContext(ctx context.Context, request *CreateFol
     return
 }
 
+func NewCreateOrUpdateResourceRequest() (request *CreateOrUpdateResourceRequest) {
+    request = &CreateOrUpdateResourceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "CreateOrUpdateResource")
+    
+    
+    return
+}
+
+func NewCreateOrUpdateResourceResponse() (response *CreateOrUpdateResourceResponse) {
+    response = &CreateOrUpdateResourceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateOrUpdateResource
+// 资源管理需要先将资源上传到cos中，然后调用该接口，将cos资源绑定到wedata
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) CreateOrUpdateResource(request *CreateOrUpdateResourceRequest) (response *CreateOrUpdateResourceResponse, err error) {
+    return c.CreateOrUpdateResourceWithContext(context.Background(), request)
+}
+
+// CreateOrUpdateResource
+// 资源管理需要先将资源上传到cos中，然后调用该接口，将cos资源绑定到wedata
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) CreateOrUpdateResourceWithContext(ctx context.Context, request *CreateOrUpdateResourceRequest) (response *CreateOrUpdateResourceResponse, err error) {
+    if request == nil {
+        request = NewCreateOrUpdateResourceRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateOrUpdateResource require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateOrUpdateResourceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateTaskRequest() (request *CreateTaskRequest) {
     request = &CreateTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -593,6 +641,54 @@ func (c *Client) DeleteFolderWithContext(ctx context.Context, request *DeleteFol
     request.SetContext(ctx)
     
     response = NewDeleteFolderResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteResourceRequest() (request *DeleteResourceRequest) {
+    request = &DeleteResourceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "DeleteResource")
+    
+    
+    return
+}
+
+func NewDeleteResourceResponse() (response *DeleteResourceResponse) {
+    response = &DeleteResourceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteResource
+// 资源管理删除资源
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DeleteResource(request *DeleteResourceRequest) (response *DeleteResourceResponse, err error) {
+    return c.DeleteResourceWithContext(context.Background(), request)
+}
+
+// DeleteResource
+// 资源管理删除资源
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DeleteResourceWithContext(ctx context.Context, request *DeleteResourceRequest) (response *DeleteResourceResponse, err error) {
+    if request == nil {
+        request = NewDeleteResourceRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteResource require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteResourceResponse()
     err = c.Send(request, response)
     return
 }
@@ -1253,6 +1349,54 @@ func (c *Client) DescribeRelatedInstancesWithContext(ctx context.Context, reques
     request.SetContext(ctx)
     
     response = NewDescribeRelatedInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeResourceManagePathTreesRequest() (request *DescribeResourceManagePathTreesRequest) {
+    request = &DescribeResourceManagePathTreesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "DescribeResourceManagePathTrees")
+    
+    
+    return
+}
+
+func NewDescribeResourceManagePathTreesResponse() (response *DescribeResourceManagePathTreesResponse) {
+    response = &DescribeResourceManagePathTreesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeResourceManagePathTrees
+// 获取资源管理目录树
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeResourceManagePathTrees(request *DescribeResourceManagePathTreesRequest) (response *DescribeResourceManagePathTreesResponse, err error) {
+    return c.DescribeResourceManagePathTreesWithContext(context.Background(), request)
+}
+
+// DescribeResourceManagePathTrees
+// 获取资源管理目录树
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeResourceManagePathTreesWithContext(ctx context.Context, request *DescribeResourceManagePathTreesRequest) (response *DescribeResourceManagePathTreesResponse, err error) {
+    if request == nil {
+        request = NewDescribeResourceManagePathTreesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeResourceManagePathTrees require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeResourceManagePathTreesResponse()
     err = c.Send(request, response)
     return
 }

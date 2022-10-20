@@ -10524,7 +10524,7 @@ func NewRunPrometheusInstanceResponse() (response *RunPrometheusInstanceResponse
 }
 
 // RunPrometheusInstance
-// 初始化与云监控融合的2.0版本实例，开启集成中心时调用
+// 初始化TMP实例，开启集成中心时调用
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_COMPONENTCLIENTCOMMON = "FailedOperation.ComponentClientCommon"
@@ -10535,7 +10535,7 @@ func (c *Client) RunPrometheusInstance(request *RunPrometheusInstanceRequest) (r
 }
 
 // RunPrometheusInstance
-// 初始化与云监控融合的2.0版本实例，开启集成中心时调用
+// 初始化TMP实例，开启集成中心时调用
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_COMPONENTCLIENTCOMMON = "FailedOperation.ComponentClientCommon"

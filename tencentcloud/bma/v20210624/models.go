@@ -658,6 +658,67 @@ func (r *CreateCRCompanyVerifyResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateCRDesktopCodeRequestParams struct {
+	// xxx
+	TortId *int64 `json:"TortId,omitempty" name:"TortId"`
+
+	// xxx
+	DesktopCode *string `json:"DesktopCode,omitempty" name:"DesktopCode"`
+}
+
+type CreateCRDesktopCodeRequest struct {
+	*tchttp.BaseRequest
+	
+	// xxx
+	TortId *int64 `json:"TortId,omitempty" name:"TortId"`
+
+	// xxx
+	DesktopCode *string `json:"DesktopCode,omitempty" name:"DesktopCode"`
+}
+
+func (r *CreateCRDesktopCodeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateCRDesktopCodeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TortId")
+	delete(f, "DesktopCode")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCRDesktopCodeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateCRDesktopCodeResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateCRDesktopCodeResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateCRDesktopCodeResponseParams `json:"Response"`
+}
+
+func (r *CreateCRDesktopCodeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateCRDesktopCodeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateCRObtainRequestParams struct {
 	// 已存证的作品ID
 	WorkId *int64 `json:"WorkId,omitempty" name:"WorkId"`

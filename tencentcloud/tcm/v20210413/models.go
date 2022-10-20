@@ -661,6 +661,67 @@ type IstiodConfig struct {
 	Workload *WorkloadConfig `json:"Workload,omitempty" name:"Workload"`
 }
 
+// Predefined struct for user
+type LinkClusterListRequestParams struct {
+	// 网格Id
+	MeshId *string `json:"MeshId,omitempty" name:"MeshId"`
+
+	// 关联集群
+	ClusterList []*Cluster `json:"ClusterList,omitempty" name:"ClusterList"`
+}
+
+type LinkClusterListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 网格Id
+	MeshId *string `json:"MeshId,omitempty" name:"MeshId"`
+
+	// 关联集群
+	ClusterList []*Cluster `json:"ClusterList,omitempty" name:"ClusterList"`
+}
+
+func (r *LinkClusterListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *LinkClusterListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MeshId")
+	delete(f, "ClusterList")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "LinkClusterListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type LinkClusterListResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type LinkClusterListResponse struct {
+	*tchttp.BaseResponse
+	Response *LinkClusterListResponseParams `json:"Response"`
+}
+
+func (r *LinkClusterListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *LinkClusterListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type LoadBalancer struct {
 	// 负载均衡实例的网络类型：
 	// OPEN：公网属性， INTERNAL：内网属性。
@@ -1052,6 +1113,67 @@ type TracingConfig struct {
 type TracingZipkin struct {
 	// Zipkin调用地址
 	Address *string `json:"Address,omitempty" name:"Address"`
+}
+
+// Predefined struct for user
+type UnlinkClusterRequestParams struct {
+	// 网格Id
+	MeshId *string `json:"MeshId,omitempty" name:"MeshId"`
+
+	// 取消关联的集群Id
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+}
+
+type UnlinkClusterRequest struct {
+	*tchttp.BaseRequest
+	
+	// 网格Id
+	MeshId *string `json:"MeshId,omitempty" name:"MeshId"`
+
+	// 取消关联的集群Id
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+}
+
+func (r *UnlinkClusterRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UnlinkClusterRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MeshId")
+	delete(f, "ClusterId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UnlinkClusterRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UnlinkClusterResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type UnlinkClusterResponse struct {
+	*tchttp.BaseResponse
+	Response *UnlinkClusterResponseParams `json:"Response"`
+}
+
+func (r *UnlinkClusterResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UnlinkClusterResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type WorkloadConfig struct {

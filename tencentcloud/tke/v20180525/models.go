@@ -8721,12 +8721,15 @@ func (r *DescribePrometheusGlobalNotificationResponse) FromJsonString(s string) 
 
 // Predefined struct for user
 type DescribePrometheusInstanceInitStatusRequestParams struct {
-
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 }
 
 type DescribePrometheusInstanceInitStatusRequest struct {
 	*tchttp.BaseRequest
 	
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 }
 
 func (r *DescribePrometheusInstanceInitStatusRequest) ToJsonString() string {
@@ -8741,7 +8744,7 @@ func (r *DescribePrometheusInstanceInitStatusRequest) FromJsonString(s string) e
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "InstanceId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePrometheusInstanceInitStatusRequest has unknown keys!", "")
 	}
@@ -8750,6 +8753,21 @@ func (r *DescribePrometheusInstanceInitStatusRequest) FromJsonString(s string) e
 
 // Predefined struct for user
 type DescribePrometheusInstanceInitStatusResponseParams struct {
+	// 实例初始化状态，取值：
+	// uninitialized 未初始化 
+	// initializing 初始化中
+	// running 初始化完成，运行中
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 初始化任务步骤
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Steps []*TaskStepInfo `json:"Steps,omitempty" name:"Steps"`
+
+	// 实例eks集群ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EksClusterId *string `json:"EksClusterId,omitempty" name:"EksClusterId"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }
@@ -14415,12 +14433,21 @@ type RunMonitorServiceEnabled struct {
 
 // Predefined struct for user
 type RunPrometheusInstanceRequestParams struct {
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
+	// 子网ID，默认使用实例所用子网初始化，也可通过该参数传递新的子网ID初始化
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
 }
 
 type RunPrometheusInstanceRequest struct {
 	*tchttp.BaseRequest
 	
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 子网ID，默认使用实例所用子网初始化，也可通过该参数传递新的子网ID初始化
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
 }
 
 func (r *RunPrometheusInstanceRequest) ToJsonString() string {
@@ -14435,7 +14462,8 @@ func (r *RunPrometheusInstanceRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "InstanceId")
+	delete(f, "SubnetId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RunPrometheusInstanceRequest has unknown keys!", "")
 	}

@@ -667,6 +667,106 @@ func (r *CreateFolderResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateOrUpdateResourceRequestParams struct {
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 文件名
+	Files []*string `json:"Files,omitempty" name:"Files"`
+
+	// 文件所属路径，资源管理根路径为 /datastudio/resouce
+	FilePath *string `json:"FilePath,omitempty" name:"FilePath"`
+
+	// cos存储桶名字
+	CosBucketName *string `json:"CosBucketName,omitempty" name:"CosBucketName"`
+
+	// cos所属地域
+	CosRegion *string `json:"CosRegion,omitempty" name:"CosRegion"`
+
+	// 是否为新文件，新增为 true，更新为 false
+	NewFile *bool `json:"NewFile,omitempty" name:"NewFile"`
+
+	// 文件大小
+	FilesSize []*string `json:"FilesSize,omitempty" name:"FilesSize"`
+}
+
+type CreateOrUpdateResourceRequest struct {
+	*tchttp.BaseRequest
+	
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 文件名
+	Files []*string `json:"Files,omitempty" name:"Files"`
+
+	// 文件所属路径，资源管理根路径为 /datastudio/resouce
+	FilePath *string `json:"FilePath,omitempty" name:"FilePath"`
+
+	// cos存储桶名字
+	CosBucketName *string `json:"CosBucketName,omitempty" name:"CosBucketName"`
+
+	// cos所属地域
+	CosRegion *string `json:"CosRegion,omitempty" name:"CosRegion"`
+
+	// 是否为新文件，新增为 true，更新为 false
+	NewFile *bool `json:"NewFile,omitempty" name:"NewFile"`
+
+	// 文件大小
+	FilesSize []*string `json:"FilesSize,omitempty" name:"FilesSize"`
+}
+
+func (r *CreateOrUpdateResourceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateOrUpdateResourceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProjectId")
+	delete(f, "Files")
+	delete(f, "FilePath")
+	delete(f, "CosBucketName")
+	delete(f, "CosRegion")
+	delete(f, "NewFile")
+	delete(f, "FilesSize")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateOrUpdateResourceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateOrUpdateResourceResponseParams struct {
+	// 响应数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data []*UserFileDTO `json:"Data,omitempty" name:"Data"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateOrUpdateResourceResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateOrUpdateResourceResponseParams `json:"Response"`
+}
+
+func (r *CreateOrUpdateResourceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateOrUpdateResourceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateTaskRequestParams struct {
 	// 项目Id
 	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
@@ -1152,6 +1252,71 @@ func (r *DeleteFolderResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteFolderResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteResourceRequestParams struct {
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 资源ID
+	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
+}
+
+type DeleteResourceRequest struct {
+	*tchttp.BaseRequest
+	
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 资源ID
+	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
+}
+
+func (r *DeleteResourceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteResourceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProjectId")
+	delete(f, "ResourceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteResourceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteResourceResponseParams struct {
+	// 是否成功
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *bool `json:"Data,omitempty" name:"Data"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DeleteResourceResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteResourceResponseParams `json:"Response"`
+}
+
+func (r *DeleteResourceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteResourceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2202,6 +2367,92 @@ func (r *DescribeRelatedInstancesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeRelatedInstancesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeResourceManagePathTreesRequestParams struct {
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 名字，供搜索
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 文件类型
+	FileType *string `json:"FileType,omitempty" name:"FileType"`
+
+	// 文件路径
+	FilePath *string `json:"FilePath,omitempty" name:"FilePath"`
+
+	// 文件夹类型
+	DirType *string `json:"DirType,omitempty" name:"DirType"`
+}
+
+type DescribeResourceManagePathTreesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 名字，供搜索
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 文件类型
+	FileType *string `json:"FileType,omitempty" name:"FileType"`
+
+	// 文件路径
+	FilePath *string `json:"FilePath,omitempty" name:"FilePath"`
+
+	// 文件夹类型
+	DirType *string `json:"DirType,omitempty" name:"DirType"`
+}
+
+func (r *DescribeResourceManagePathTreesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeResourceManagePathTreesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProjectId")
+	delete(f, "Name")
+	delete(f, "FileType")
+	delete(f, "FilePath")
+	delete(f, "DirType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeResourceManagePathTreesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeResourceManagePathTreesResponseParams struct {
+	// 响应数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data []*ResourcePathTree `json:"Data,omitempty" name:"Data"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeResourceManagePathTreesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeResourceManagePathTreesResponseParams `json:"Response"`
+}
+
+func (r *DescribeResourceManagePathTreesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeResourceManagePathTreesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -4604,6 +4855,72 @@ func (r *RerunInstancesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type ResourcePathTree struct {
+	// 资源名字
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 是否为叶子节点
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsLeaf *bool `json:"IsLeaf,omitempty" name:"IsLeaf"`
+
+	// 资源ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
+
+	// 本地路径
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LocalPath *string `json:"LocalPath,omitempty" name:"LocalPath"`
+
+	// 远程路径
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RemotePath *string `json:"RemotePath,omitempty" name:"RemotePath"`
+
+	// 文件类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FileExtensionType *string `json:"FileExtensionType,omitempty" name:"FileExtensionType"`
+
+	// 文件大小
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Size *int64 `json:"Size,omitempty" name:"Size"`
+
+	// 文件MD5值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Md5Value *string `json:"Md5Value,omitempty" name:"Md5Value"`
+
+	// 文件拥有者名字
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OwnerName *string `json:"OwnerName,omitempty" name:"OwnerName"`
+
+	// 更新人
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateUser *string `json:"UpdateUser,omitempty" name:"UpdateUser"`
+
+	// 文件更新人uin
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateUserId *string `json:"UpdateUserId,omitempty" name:"UpdateUserId"`
+
+	// 创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *uint64 `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 更新时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateTime *uint64 `json:"UpdateTime,omitempty" name:"UpdateTime"`
+
+	// Cos存储桶名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CosBucket *string `json:"CosBucket,omitempty" name:"CosBucket"`
+
+	// Cos地域
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CosRegion *string `json:"CosRegion,omitempty" name:"CosRegion"`
+
+	// 额外信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExtraInfo *string `json:"ExtraInfo,omitempty" name:"ExtraInfo"`
+}
+
 // Predefined struct for user
 type RunTaskRequestParams struct {
 	// 项目Id
@@ -5715,6 +6032,84 @@ func (r *TriggerEventResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *TriggerEventResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type UserFileDTO struct {
+	// 资源ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
+
+	// 文件名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FileName *string `json:"FileName,omitempty" name:"FileName"`
+
+	// 文件类型，如 jar zip 等
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FileExtensionType *string `json:"FileExtensionType,omitempty" name:"FileExtensionType"`
+
+	// 文件上传类型，资源管理为 resource
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FileUploadType *string `json:"FileUploadType,omitempty" name:"FileUploadType"`
+
+	// 文件MD5值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Md5Value *string `json:"Md5Value,omitempty" name:"Md5Value"`
+
+	// 创建时间，秒级别的时间戳
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *uint64 `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 更新时间，秒级别的时间戳
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateTime *uint64 `json:"UpdateTime,omitempty" name:"UpdateTime"`
+
+	// 文件大小，单位为字节
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Size *uint64 `json:"Size,omitempty" name:"Size"`
+
+	// 本地路径
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LocalPath *string `json:"LocalPath,omitempty" name:"LocalPath"`
+
+	// 本地临时路径
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LocalTmpPath *string `json:"LocalTmpPath,omitempty" name:"LocalTmpPath"`
+
+	// 远程路径
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RemotePath *string `json:"RemotePath,omitempty" name:"RemotePath"`
+
+	// 文件拥有者名字
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OwnerName *string `json:"OwnerName,omitempty" name:"OwnerName"`
+
+	// 文件拥有者uin
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Owner *string `json:"Owner,omitempty" name:"Owner"`
+
+	// 文件深度
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PathDepth *string `json:"PathDepth,omitempty" name:"PathDepth"`
+
+	// 项目ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 附加信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExtraInfo *string `json:"ExtraInfo,omitempty" name:"ExtraInfo"`
+
+	// 本地临时压缩文件绝对路径
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ZipPath *string `json:"ZipPath,omitempty" name:"ZipPath"`
+
+	// 文件所属存储桶
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Bucket *string `json:"Bucket,omitempty" name:"Bucket"`
+
+	// 文件所属存储桶的地域
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Region *string `json:"Region,omitempty" name:"Region"`
 }
 
 type Workflow struct {

@@ -395,6 +395,10 @@ type Concurrency struct {
 	// 最大RPS
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxRequestsPerSecond *int64 `json:"MaxRequestsPerSecond,omitempty" name:"MaxRequestsPerSecond"`
+
+	// 优雅终止任务的等待时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GracefulStopSeconds *int64 `json:"GracefulStopSeconds,omitempty" name:"GracefulStopSeconds"`
 }
 
 // Predefined struct for user
@@ -1125,6 +1129,10 @@ type CustomSample struct {
 
 	// 指标对应的单位，当前单位有：s,bytes,bytes/s,reqs,reqs/s,checks,checks/s,iters,iters/s,VUs, %
 	Unit *string `json:"Unit,omitempty" name:"Unit"`
+
+	// 指标序列名字
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitempty" name:"Name"`
 }
 
 type CustomSampleMatrix struct {
@@ -3566,6 +3574,18 @@ type File struct {
 	// 项目 ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 用户账号的 App ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AppID *int64 `json:"AppID,omitempty" name:"AppID"`
+
+	// 用户主账号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Uin *string `json:"Uin,omitempty" name:"Uin"`
+
+	// 用户子账号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubAccountUin *string `json:"SubAccountUin,omitempty" name:"SubAccountUin"`
 }
 
 type FileInfo struct {
@@ -4139,6 +4159,10 @@ type RequestsPerSecond struct {
 	// 目标RPS，入参无效
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TargetRequestsPerSecond *int64 `json:"TargetRequestsPerSecond,omitempty" name:"TargetRequestsPerSecond"`
+
+	// 优雅关停的等待时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GracefulStopSeconds *int64 `json:"GracefulStopSeconds,omitempty" name:"GracefulStopSeconds"`
 }
 
 // Predefined struct for user

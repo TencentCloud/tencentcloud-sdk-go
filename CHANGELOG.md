@@ -1,3 +1,494 @@
+# Release v1.0.518
+
+## 品牌经营管家(bma) 版本：2021-06-24
+
+### 第 13 次发布
+
+发布时间：2022-10-19 11:41:42
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateCRDesktopCode](https://cloud.tencent.com/document/api/1296/81572)
+
+
+
+## 消息队列 Ckafka(ckafka) 版本：2019-08-19
+
+### 第 61 次发布
+
+发布时间：2022-10-20 06:14:29
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [MySQLParam](https://cloud.tencent.com/document/api/597/40861#MySQLParam)
+
+	* 新增成员：SignalDatabase
+
+
+
+
+## 企业收付平台(cpdp) 版本：2019-08-20
+
+### 第 90 次发布
+
+发布时间：2022-10-20 06:16:38
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateOpenBankGlobalPaymentOrder](https://cloud.tencent.com/document/api/1122/81542)
+
+	* 新增入参：Environment
+
+
+
+
+## 电子签服务(ess) 版本：2020-11-11
+
+### 第 20 次发布
+
+发布时间：2022-10-20 06:24:19
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateMultiFlowSignQRCode](https://cloud.tencent.com/document/api/1323/75450)
+
+	* 新增入参：Restrictions
+
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
+
+### 第 35 次发布
+
+发布时间：2022-10-19 20:26:32
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ChannelCreateMultiFlowSignQRCode](https://cloud.tencent.com/document/api/1420/75452)
+
+	* 新增入参：Restrictions
+
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
+
+
+
+## 云压测(pts) 版本：2021-07-28
+
+### 第 5 次发布
+
+发布时间：2022-10-20 06:35:28
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Concurrency](https://cloud.tencent.com/document/api/1484/78100#Concurrency)
+
+	* 新增成员：GracefulStopSeconds
+
+* [CustomSample](https://cloud.tencent.com/document/api/1484/78100#CustomSample)
+
+	* 新增成员：Name
+
+* [File](https://cloud.tencent.com/document/api/1484/78100#File)
+
+	* 新增成员：AppID, Uin, SubAccountUin
+
+* [RequestsPerSecond](https://cloud.tencent.com/document/api/1484/78100#RequestsPerSecond)
+
+	* 新增成员：GracefulStopSeconds
+
+
+
+
+## 服务网格(tcm) 版本：2021-04-13
+
+### 第 14 次发布
+
+发布时间：2022-10-20 06:40:11
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [LinkClusterList](https://cloud.tencent.com/document/api/1261/81603)
+* [UnlinkCluster](https://cloud.tencent.com/document/api/1261/81602)
+
+
+
+## 容器安全服务(tcss) 版本：2020-11-01
+
+### 第 27 次发布
+
+发布时间：2022-10-20 06:40:56
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [AddAndPublishNetworkFirewallPolicyDetail](https://cloud.tencent.com/document/api/1285/81716)
+* [AddAndPublishNetworkFirewallPolicyYamlDetail](https://cloud.tencent.com/document/api/1285/81715)
+* [AddEditImageAutoAuthorizedRule](https://cloud.tencent.com/document/api/1285/81638)
+* [AddEscapeWhiteList](https://cloud.tencent.com/document/api/1285/81667)
+* [AddIgnoreVul](https://cloud.tencent.com/document/api/1285/81637)
+* [AddNetworkFirewallPolicyDetail](https://cloud.tencent.com/document/api/1285/81714)
+* [AddNetworkFirewallPolicyYamlDetail](https://cloud.tencent.com/document/api/1285/81713)
+* [CheckNetworkFirewallPolicyYaml](https://cloud.tencent.com/document/api/1285/81712)
+* [ConfirmNetworkFirewallPolicy](https://cloud.tencent.com/document/api/1285/81711)
+* [CreateAssetImageVirusExportJob](https://cloud.tencent.com/document/api/1285/81689)
+* [CreateComponentExportJob](https://cloud.tencent.com/document/api/1285/81636)
+* [CreateDefenceVulExportJob](https://cloud.tencent.com/document/api/1285/81666)
+* [CreateEmergencyVulExportJob](https://cloud.tencent.com/document/api/1285/81665)
+* [CreateEscapeEventsExportJob](https://cloud.tencent.com/document/api/1285/81664)
+* [CreateEscapeWhiteListExportJob](https://cloud.tencent.com/document/api/1285/81663)
+* [CreateHostExportJob](https://cloud.tencent.com/document/api/1285/81688)
+* [CreateImageExportJob](https://cloud.tencent.com/document/api/1285/81635)
+* [CreateNetworkFirewallClusterRefresh](https://cloud.tencent.com/document/api/1285/81710)
+* [CreateNetworkFirewallPolicyDiscover](https://cloud.tencent.com/document/api/1285/81709)
+* [CreateNetworkFirewallPublish](https://cloud.tencent.com/document/api/1285/81708)
+* [CreateNetworkFirewallUndoPublish](https://cloud.tencent.com/document/api/1285/81707)
+* [CreateProcessEventsExportJob](https://cloud.tencent.com/document/api/1285/81662)
+* [CreateSearchTemplate](https://cloud.tencent.com/document/api/1285/81744)
+* [CreateSystemVulExportJob](https://cloud.tencent.com/document/api/1285/81661)
+* [CreateVulContainerExportJob](https://cloud.tencent.com/document/api/1285/81660)
+* [CreateVulDefenceEventExportJob](https://cloud.tencent.com/document/api/1285/81634)
+* [CreateVulDefenceHostExportJob](https://cloud.tencent.com/document/api/1285/81633)
+* [CreateVulExportJob](https://cloud.tencent.com/document/api/1285/81632)
+* [CreateVulImageExportJob](https://cloud.tencent.com/document/api/1285/81659)
+* [CreateVulScanTask](https://cloud.tencent.com/document/api/1285/81658)
+* [CreateWebVulExportJob](https://cloud.tencent.com/document/api/1285/81657)
+* [DeleteEscapeWhiteList](https://cloud.tencent.com/document/api/1285/81656)
+* [DeleteIgnoreVul](https://cloud.tencent.com/document/api/1285/81631)
+* [DeleteMachine](https://cloud.tencent.com/document/api/1285/81687)
+* [DeleteNetworkFirewallPolicyDetail](https://cloud.tencent.com/document/api/1285/81706)
+* [DeleteReverseShellEvents](https://cloud.tencent.com/document/api/1285/81655)
+* [DeleteRiskSyscallEvents](https://cloud.tencent.com/document/api/1285/81668)
+* [DeleteSearchTemplate](https://cloud.tencent.com/document/api/1285/81743)
+* [DescribeABTestConfig](https://cloud.tencent.com/document/api/1285/81686)
+* [DescribeAbnormalProcessEventTendency](https://cloud.tencent.com/document/api/1285/81654)
+* [DescribeAbnormalProcessLevelSummary](https://cloud.tencent.com/document/api/1285/81653)
+* [DescribeAgentDaemonSetCmd](https://cloud.tencent.com/document/api/1285/81685)
+* [DescribeAgentInstallCommand](https://cloud.tencent.com/document/api/1285/81684)
+* [DescribeAssetSyncLastTime](https://cloud.tencent.com/document/api/1285/81683)
+* [DescribeAutoAuthorizedRuleHost](https://cloud.tencent.com/document/api/1285/81630)
+* [DescribeESAggregations](https://cloud.tencent.com/document/api/1285/81742)
+* [DescribeESHits](https://cloud.tencent.com/document/api/1285/81741)
+* [DescribeEmergencyVulList](https://cloud.tencent.com/document/api/1285/81652)
+* [DescribeEscapeEventTendency](https://cloud.tencent.com/document/api/1285/81651)
+* [DescribeEscapeEventTypeSummary](https://cloud.tencent.com/document/api/1285/81650)
+* [DescribeEscapeWhiteList](https://cloud.tencent.com/document/api/1285/81649)
+* [DescribeImageAutoAuthorizedLogList](https://cloud.tencent.com/document/api/1285/81629)
+* [DescribeImageAutoAuthorizedRule](https://cloud.tencent.com/document/api/1285/81628)
+* [DescribeImageAutoAuthorizedTaskList](https://cloud.tencent.com/document/api/1285/81627)
+* [DescribeImageComponentList](https://cloud.tencent.com/document/api/1285/81626)
+* [DescribeIndexList](https://cloud.tencent.com/document/api/1285/81740)
+* [DescribeInspectionReport](https://cloud.tencent.com/document/api/1285/81682)
+* [DescribeLogStorageStatistic](https://cloud.tencent.com/document/api/1285/81739)
+* [DescribeNetworkFirewallAuditRecord](https://cloud.tencent.com/document/api/1285/81705)
+* [DescribeNetworkFirewallClusterList](https://cloud.tencent.com/document/api/1285/81704)
+* [DescribeNetworkFirewallClusterRefreshStatus](https://cloud.tencent.com/document/api/1285/81703)
+* [DescribeNetworkFirewallNamespaceLabelList](https://cloud.tencent.com/document/api/1285/81702)
+* [DescribeNetworkFirewallNamespaceList](https://cloud.tencent.com/document/api/1285/81701)
+* [DescribeNetworkFirewallPodLabelsList](https://cloud.tencent.com/document/api/1285/81700)
+* [DescribeNetworkFirewallPolicyDetail](https://cloud.tencent.com/document/api/1285/81699)
+* [DescribeNetworkFirewallPolicyDiscover](https://cloud.tencent.com/document/api/1285/81698)
+* [DescribeNetworkFirewallPolicyList](https://cloud.tencent.com/document/api/1285/81697)
+* [DescribeNetworkFirewallPolicyStatus](https://cloud.tencent.com/document/api/1285/81696)
+* [DescribeNetworkFirewallPolicyYamlDetail](https://cloud.tencent.com/document/api/1285/81695)
+* [DescribeNewestVul](https://cloud.tencent.com/document/api/1285/81625)
+* [DescribePromotionActivity](https://cloud.tencent.com/document/api/1285/81681)
+* [DescribePublicKey](https://cloud.tencent.com/document/api/1285/81738)
+* [DescribeScanIgnoreVulList](https://cloud.tencent.com/document/api/1285/81624)
+* [DescribeSearchExportList](https://cloud.tencent.com/document/api/1285/81737)
+* [DescribeSearchLogs](https://cloud.tencent.com/document/api/1285/81736)
+* [DescribeSearchTemplates](https://cloud.tencent.com/document/api/1285/81735)
+* [DescribeSecLogAlertMsg](https://cloud.tencent.com/document/api/1285/81734)
+* [DescribeSecLogCleanSettingInfo](https://cloud.tencent.com/document/api/1285/81733)
+* [DescribeSecLogDeliveryClsOptions](https://cloud.tencent.com/document/api/1285/81732)
+* [DescribeSecLogDeliveryClsSetting](https://cloud.tencent.com/document/api/1285/81731)
+* [DescribeSecLogDeliveryKafkaOptions](https://cloud.tencent.com/document/api/1285/81730)
+* [DescribeSecLogDeliveryKafkaSetting](https://cloud.tencent.com/document/api/1285/81729)
+* [DescribeSecLogJoinObjectList](https://cloud.tencent.com/document/api/1285/81728)
+* [DescribeSecLogJoinTypeList](https://cloud.tencent.com/document/api/1285/81727)
+* [DescribeSecLogKafkaUIN](https://cloud.tencent.com/document/api/1285/81726)
+* [DescribeSecLogVasInfo](https://cloud.tencent.com/document/api/1285/81725)
+* [DescribeSupportDefenceVul](https://cloud.tencent.com/document/api/1285/81648)
+* [DescribeSystemVulList](https://cloud.tencent.com/document/api/1285/81623)
+* [DescribeTcssSummary](https://cloud.tencent.com/document/api/1285/81680)
+* [DescribeUnauthorizedCoresTendency](https://cloud.tencent.com/document/api/1285/81679)
+* [DescribeVirusAutoIsolateSampleDetail](https://cloud.tencent.com/document/api/1285/81677)
+* [DescribeVirusAutoIsolateSampleDownloadURL](https://cloud.tencent.com/document/api/1285/81676)
+* [DescribeVirusAutoIsolateSampleList](https://cloud.tencent.com/document/api/1285/81675)
+* [DescribeVirusAutoIsolateSetting](https://cloud.tencent.com/document/api/1285/81674)
+* [DescribeVirusEventTendency](https://cloud.tencent.com/document/api/1285/81673)
+* [DescribeVirusManualScanEstimateTimeout](https://cloud.tencent.com/document/api/1285/81672)
+* [DescribeVirusSampleDownloadUrl](https://cloud.tencent.com/document/api/1285/81671)
+* [DescribeVulContainerList](https://cloud.tencent.com/document/api/1285/81647)
+* [DescribeVulDefenceEvent](https://cloud.tencent.com/document/api/1285/81622)
+* [DescribeVulDefenceEventDetail](https://cloud.tencent.com/document/api/1285/81621)
+* [DescribeVulDefenceEventTendency](https://cloud.tencent.com/document/api/1285/81620)
+* [DescribeVulDefenceHost](https://cloud.tencent.com/document/api/1285/81619)
+* [DescribeVulDefencePlugin](https://cloud.tencent.com/document/api/1285/81618)
+* [DescribeVulDefenceSetting](https://cloud.tencent.com/document/api/1285/81617)
+* [DescribeVulDetail](https://cloud.tencent.com/document/api/1285/81646)
+* [DescribeVulIgnoreLocalImageList](https://cloud.tencent.com/document/api/1285/81616)
+* [DescribeVulIgnoreRegistryImageList](https://cloud.tencent.com/document/api/1285/81615)
+* [DescribeVulImageList](https://cloud.tencent.com/document/api/1285/81645)
+* [DescribeVulImageSummary](https://cloud.tencent.com/document/api/1285/81614)
+* [DescribeVulLevelImageSummary](https://cloud.tencent.com/document/api/1285/81613)
+* [DescribeVulLevelSummary](https://cloud.tencent.com/document/api/1285/81612)
+* [DescribeVulScanAuthorizedImageSummary](https://cloud.tencent.com/document/api/1285/81611)
+* [DescribeVulScanInfo](https://cloud.tencent.com/document/api/1285/81644)
+* [DescribeVulScanLocalImageList](https://cloud.tencent.com/document/api/1285/81643)
+* [DescribeVulSummary](https://cloud.tencent.com/document/api/1285/81610)
+* [DescribeVulTendency](https://cloud.tencent.com/document/api/1285/81609)
+* [DescribeVulTopRanking](https://cloud.tencent.com/document/api/1285/81608)
+* [DescribeWebVulList](https://cloud.tencent.com/document/api/1285/81642)
+* [ModifyContainerNetStatus](https://cloud.tencent.com/document/api/1285/81678)
+* [ModifyEscapeWhiteList](https://cloud.tencent.com/document/api/1285/81641)
+* [ModifyImageAuthorized](https://cloud.tencent.com/document/api/1285/81607)
+* [ModifySecLogCleanSettingInfo](https://cloud.tencent.com/document/api/1285/81724)
+* [ModifySecLogDeliveryClsSetting](https://cloud.tencent.com/document/api/1285/81723)
+* [ModifySecLogDeliveryKafkaSetting](https://cloud.tencent.com/document/api/1285/81722)
+* [ModifySecLogJoinObjects](https://cloud.tencent.com/document/api/1285/81721)
+* [ModifySecLogJoinState](https://cloud.tencent.com/document/api/1285/81720)
+* [ModifySecLogKafkaUIN](https://cloud.tencent.com/document/api/1285/81719)
+* [ModifyVirusAutoIsolateExampleSwitch](https://cloud.tencent.com/document/api/1285/81670)
+* [ModifyVirusAutoIsolateSetting](https://cloud.tencent.com/document/api/1285/81669)
+* [ModifyVulDefenceEventStatus](https://cloud.tencent.com/document/api/1285/81606)
+* [ModifyVulDefenceSetting](https://cloud.tencent.com/document/api/1285/81605)
+* [OpenTcssTrial](https://cloud.tencent.com/document/api/1285/81640)
+* [ResetSecLogTopicConfig](https://cloud.tencent.com/document/api/1285/81718)
+* [StopVulScanTask](https://cloud.tencent.com/document/api/1285/81639)
+* [SwitchImageAutoAuthorizedRule](https://cloud.tencent.com/document/api/1285/81604)
+* [UpdateAndPublishNetworkFirewallPolicyDetail](https://cloud.tencent.com/document/api/1285/81694)
+* [UpdateAndPublishNetworkFirewallPolicyYamlDetail](https://cloud.tencent.com/document/api/1285/81693)
+* [UpdateNetworkFirewallPolicyDetail](https://cloud.tencent.com/document/api/1285/81692)
+* [UpdateNetworkFirewallPolicyYamlDetail](https://cloud.tencent.com/document/api/1285/81691)
+
+新增数据结构：
+
+* [ABTestConfig](https://cloud.tencent.com/document/api/1285/65614#ABTestConfig)
+* [AbnormalProcessEventTendencyInfo](https://cloud.tencent.com/document/api/1285/65614#AbnormalProcessEventTendencyInfo)
+* [AutoAuthorizedImageInfo](https://cloud.tencent.com/document/api/1285/65614#AutoAuthorizedImageInfo)
+* [AutoAuthorizedRuleHostInfo](https://cloud.tencent.com/document/api/1285/65614#AutoAuthorizedRuleHostInfo)
+* [CKafkaInstanceInfo](https://cloud.tencent.com/document/api/1285/65614#CKafkaInstanceInfo)
+* [CKafkaTopicInfo](https://cloud.tencent.com/document/api/1285/65614#CKafkaTopicInfo)
+* [CkafkaRouteInfo](https://cloud.tencent.com/document/api/1285/65614#CkafkaRouteInfo)
+* [ClsLogsetInfo](https://cloud.tencent.com/document/api/1285/65614#ClsLogsetInfo)
+* [ClsTopicInfo](https://cloud.tencent.com/document/api/1285/65614#ClsTopicInfo)
+* [EmergencyVulInfo](https://cloud.tencent.com/document/api/1285/65614#EmergencyVulInfo)
+* [EscapeEventTendencyInfo](https://cloud.tencent.com/document/api/1285/65614#EscapeEventTendencyInfo)
+* [EscapeWhiteListInfo](https://cloud.tencent.com/document/api/1285/65614#EscapeWhiteListInfo)
+* [ImageAutoAuthorizedTask](https://cloud.tencent.com/document/api/1285/65614#ImageAutoAuthorizedTask)
+* [ImageComponent](https://cloud.tencent.com/document/api/1285/65614#ImageComponent)
+* [ModifyIgnoreVul](https://cloud.tencent.com/document/api/1285/65614#ModifyIgnoreVul)
+* [NetworkAuditRecord](https://cloud.tencent.com/document/api/1285/65614#NetworkAuditRecord)
+* [NetworkClusterInfoItem](https://cloud.tencent.com/document/api/1285/65614#NetworkClusterInfoItem)
+* [NetworkClusterNamespaceInfo](https://cloud.tencent.com/document/api/1285/65614#NetworkClusterNamespaceInfo)
+* [NetworkClusterNamespaceLabelInfo](https://cloud.tencent.com/document/api/1285/65614#NetworkClusterNamespaceLabelInfo)
+* [NetworkClusterPodInfo](https://cloud.tencent.com/document/api/1285/65614#NetworkClusterPodInfo)
+* [NetworkCustomPolicy](https://cloud.tencent.com/document/api/1285/65614#NetworkCustomPolicy)
+* [NetworkPeer](https://cloud.tencent.com/document/api/1285/65614#NetworkPeer)
+* [NetworkPolicyInfoItem](https://cloud.tencent.com/document/api/1285/65614#NetworkPolicyInfoItem)
+* [NetworkPorts](https://cloud.tencent.com/document/api/1285/65614#NetworkPorts)
+* [PromotionActivityContent](https://cloud.tencent.com/document/api/1285/65614#PromotionActivityContent)
+* [RegionInfo](https://cloud.tencent.com/document/api/1285/65614#RegionInfo)
+* [ScanIgnoreVul](https://cloud.tencent.com/document/api/1285/65614#ScanIgnoreVul)
+* [SearchTemplate](https://cloud.tencent.com/document/api/1285/65614#SearchTemplate)
+* [SecLogAlertMsgInfo](https://cloud.tencent.com/document/api/1285/65614#SecLogAlertMsgInfo)
+* [SecLogDeliveryClsSettingInfo](https://cloud.tencent.com/document/api/1285/65614#SecLogDeliveryClsSettingInfo)
+* [SecLogDeliveryKafkaSettingInfo](https://cloud.tencent.com/document/api/1285/65614#SecLogDeliveryKafkaSettingInfo)
+* [SecLogJoinInfo](https://cloud.tencent.com/document/api/1285/65614#SecLogJoinInfo)
+* [SecLogJoinObjectInfo](https://cloud.tencent.com/document/api/1285/65614#SecLogJoinObjectInfo)
+* [SupportDefenceVul](https://cloud.tencent.com/document/api/1285/65614#SupportDefenceVul)
+* [UnauthorizedCoresTendency](https://cloud.tencent.com/document/api/1285/65614#UnauthorizedCoresTendency)
+* [VirusAutoIsolateSampleInfo](https://cloud.tencent.com/document/api/1285/65614#VirusAutoIsolateSampleInfo)
+* [VirusTendencyInfo](https://cloud.tencent.com/document/api/1285/65614#VirusTendencyInfo)
+* [VulAffectedComponentInfo](https://cloud.tencent.com/document/api/1285/65614#VulAffectedComponentInfo)
+* [VulAffectedContainerInfo](https://cloud.tencent.com/document/api/1285/65614#VulAffectedContainerInfo)
+* [VulAffectedImageComponentInfo](https://cloud.tencent.com/document/api/1285/65614#VulAffectedImageComponentInfo)
+* [VulAffectedImageInfo](https://cloud.tencent.com/document/api/1285/65614#VulAffectedImageInfo)
+* [VulDefenceEvent](https://cloud.tencent.com/document/api/1285/65614#VulDefenceEvent)
+* [VulDefenceEventDetail](https://cloud.tencent.com/document/api/1285/65614#VulDefenceEventDetail)
+* [VulDefenceEventTendency](https://cloud.tencent.com/document/api/1285/65614#VulDefenceEventTendency)
+* [VulDefenceHost](https://cloud.tencent.com/document/api/1285/65614#VulDefenceHost)
+* [VulDefencePlugin](https://cloud.tencent.com/document/api/1285/65614#VulDefencePlugin)
+* [VulDetailInfo](https://cloud.tencent.com/document/api/1285/65614#VulDetailInfo)
+* [VulIgnoreLocalImage](https://cloud.tencent.com/document/api/1285/65614#VulIgnoreLocalImage)
+* [VulIgnoreRegistryImage](https://cloud.tencent.com/document/api/1285/65614#VulIgnoreRegistryImage)
+* [VulInfo](https://cloud.tencent.com/document/api/1285/65614#VulInfo)
+* [VulScanImageInfo](https://cloud.tencent.com/document/api/1285/65614#VulScanImageInfo)
+* [VulTendencyInfo](https://cloud.tencent.com/document/api/1285/65614#VulTendencyInfo)
+* [VulTopRankingInfo](https://cloud.tencent.com/document/api/1285/65614#VulTopRankingInfo)
+
+
+
+## 边缘安全加速平台(teo) 版本：2022-09-01
+
+### 第 6 次发布
+
+发布时间：2022-10-20 06:52:24
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateRule](https://cloud.tencent.com/document/api/1552/80622)
+
+	* 新增入参：Tags
+
+* [ModifyRule](https://cloud.tencent.com/document/api/1552/80616)
+
+	* 新增入参：Tags
+
+
+新增数据结构：
+
+* [SubRule](https://cloud.tencent.com/document/api/1552/80721#SubRule)
+* [SubRuleItem](https://cloud.tencent.com/document/api/1552/80721#SubRuleItem)
+
+修改数据结构：
+
+* [FollowOrigin](https://cloud.tencent.com/document/api/1552/80721#FollowOrigin)
+
+	* 新增成员：DefaultCacheTime, DefaultCache
+
+* [Rule](https://cloud.tencent.com/document/api/1552/80721#Rule)
+
+	* 新增成员：SubRules
+
+* [RuleItem](https://cloud.tencent.com/document/api/1552/80721#RuleItem)
+
+	* 新增成员：Tags
+
+
+
+
+## 边缘安全加速平台(teo) 版本：2022-01-06
+
+
+
+## 容器服务(tke) 版本：2018-05-25
+
+### 第 126 次发布
+
+发布时间：2022-10-20 06:54:45
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribePrometheusInstanceInitStatus](https://cloud.tencent.com/document/api/457/76244)
+
+	* 新增入参：InstanceId
+
+	* 新增出参：Status, Steps, EksClusterId
+
+* [RunPrometheusInstance](https://cloud.tencent.com/document/api/457/76242)
+
+	* 新增入参：InstanceId, SubnetId
+
+
+
+
+## 实时音视频(trtc) 版本：2019-07-22
+
+### 第 41 次发布
+
+发布时间：2022-10-19 15:31:57
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除接口**：</font>
+
+* StartPublishCdnStream
+* StopPublishCdnStream
+* UpdatePublishCdnStream
+
+<font color="#dd0000">**删除数据结构**：</font>
+
+* AgentParams
+* AudioEncode
+* MaxVideoUser
+* McuAudioParams
+* McuCustomCrop
+* McuLayout
+* McuLayoutParams
+* McuLayoutVolume
+* McuPassThrough
+* McuPublishCdnParam
+* McuSeiParams
+* McuUserInfoParams
+* McuVideoParams
+* McuWaterMarkImage
+* McuWaterMarkParams
+* MixUserInfo
+* SingleSubscribeParams
+* UserMediaStream
+* VideoEncode
+
+
+
+## 数据开发治理平台 WeData(wedata) 版本：2021-08-20
+
+### 第 9 次发布
+
+发布时间：2022-10-20 07:01:15
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateOrUpdateResource](https://cloud.tencent.com/document/api/1267/81750)
+* [DeleteResource](https://cloud.tencent.com/document/api/1267/81749)
+* [DescribeResourceManagePathTrees](https://cloud.tencent.com/document/api/1267/81748)
+
+新增数据结构：
+
+* [ResourcePathTree](https://cloud.tencent.com/document/api/1267/76336#ResourcePathTree)
+* [UserFileDTO](https://cloud.tencent.com/document/api/1267/76336#UserFileDTO)
+
+
+
 # Release v1.0.517
 
 ## 品牌经营管家(bma) 版本：2021-06-24

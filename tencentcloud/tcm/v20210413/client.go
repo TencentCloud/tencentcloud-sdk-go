@@ -273,6 +273,66 @@ func (c *Client) DescribeMeshListWithContext(ctx context.Context, request *Descr
     return
 }
 
+func NewLinkClusterListRequest() (request *LinkClusterListRequest) {
+    request = &LinkClusterListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcm", APIVersion, "LinkClusterList")
+    
+    
+    return
+}
+
+func NewLinkClusterListResponse() (response *LinkClusterListResponse) {
+    response = &LinkClusterListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// LinkClusterList
+// 关联集群
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_RBACFORBIDDEN = "FailedOperation.RBACForbidden"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) LinkClusterList(request *LinkClusterListRequest) (response *LinkClusterListResponse, err error) {
+    return c.LinkClusterListWithContext(context.Background(), request)
+}
+
+// LinkClusterList
+// 关联集群
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_RBACFORBIDDEN = "FailedOperation.RBACForbidden"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) LinkClusterListWithContext(ctx context.Context, request *LinkClusterListRequest) (response *LinkClusterListResponse, err error) {
+    if request == nil {
+        request = NewLinkClusterListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("LinkClusterList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewLinkClusterListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyMeshRequest() (request *ModifyMeshRequest) {
     request = &ModifyMeshRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -327,6 +387,64 @@ func (c *Client) ModifyMeshWithContext(ctx context.Context, request *ModifyMeshR
     request.SetContext(ctx)
     
     response = NewModifyMeshResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUnlinkClusterRequest() (request *UnlinkClusterRequest) {
+    request = &UnlinkClusterRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcm", APIVersion, "UnlinkCluster")
+    
+    
+    return
+}
+
+func NewUnlinkClusterResponse() (response *UnlinkClusterResponse) {
+    response = &UnlinkClusterResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// UnlinkCluster
+// 解关联集群
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_RBACFORBIDDEN = "FailedOperation.RBACForbidden"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) UnlinkCluster(request *UnlinkClusterRequest) (response *UnlinkClusterResponse, err error) {
+    return c.UnlinkClusterWithContext(context.Background(), request)
+}
+
+// UnlinkCluster
+// 解关联集群
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_RBACFORBIDDEN = "FailedOperation.RBACForbidden"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) UnlinkClusterWithContext(ctx context.Context, request *UnlinkClusterRequest) (response *UnlinkClusterResponse, err error) {
+    if request == nil {
+        request = NewUnlinkClusterRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UnlinkCluster require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUnlinkClusterResponse()
     err = c.Send(request, response)
     return
 }

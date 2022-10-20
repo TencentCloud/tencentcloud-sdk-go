@@ -8284,6 +8284,12 @@ type CreateOpenBankGlobalPaymentOrderRequestParams struct {
 
 	// 账单信息
 	BillingInfo *OpenBankBillingInfo `json:"BillingInfo,omitempty" name:"BillingInfo"`
+
+	// 环境类型
+	// __release__:生产环境
+	// __sandbox__:沙箱环境
+	// 缺省默认为生产环境
+	Environment *string `json:"Environment,omitempty" name:"Environment"`
 }
 
 type CreateOpenBankGlobalPaymentOrderRequest struct {
@@ -8333,6 +8339,12 @@ type CreateOpenBankGlobalPaymentOrderRequest struct {
 
 	// 账单信息
 	BillingInfo *OpenBankBillingInfo `json:"BillingInfo,omitempty" name:"BillingInfo"`
+
+	// 环境类型
+	// __release__:生产环境
+	// __sandbox__:沙箱环境
+	// 缺省默认为生产环境
+	Environment *string `json:"Environment,omitempty" name:"Environment"`
 }
 
 func (r *CreateOpenBankGlobalPaymentOrderRequest) ToJsonString() string {
@@ -8362,6 +8374,7 @@ func (r *CreateOpenBankGlobalPaymentOrderRequest) FromJsonString(s string) error
 	delete(f, "GoodsInfos")
 	delete(f, "ShippingInfo")
 	delete(f, "BillingInfo")
+	delete(f, "Environment")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateOpenBankGlobalPaymentOrderRequest has unknown keys!", "")
 	}

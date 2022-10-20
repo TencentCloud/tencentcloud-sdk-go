@@ -1033,7 +1033,7 @@ type CreateTraceDataRequestParams struct {
 	// 任务ID
 	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
 
-	// 溯源阶段 0:商品 1:通用 2:内部溯源 3:外部溯源
+	// 溯源阶段 0:商品 1:通用 2:生产溯源 3:销售溯源
 	Phase *uint64 `json:"Phase,omitempty" name:"Phase"`
 
 	// 溯源阶段名称
@@ -1070,7 +1070,7 @@ type CreateTraceDataRequest struct {
 	// 任务ID
 	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
 
-	// 溯源阶段 0:商品 1:通用 2:内部溯源 3:外部溯源
+	// 溯源阶段 0:商品 1:通用 2:生产溯源 3:销售溯源
 	Phase *uint64 `json:"Phase,omitempty" name:"Phase"`
 
 	// 溯源阶段名称
@@ -3404,7 +3404,7 @@ type ModifyTraceDataRequestParams struct {
 	// [无效] 排序
 	Rank *uint64 `json:"Rank,omitempty" name:"Rank"`
 
-	// [无效] 溯源阶段 0:商品 1:通用 2:物流
+	// [无效] 溯源阶段 0:商品 1:通用 2:生产溯源 3:销售溯源
 	Phase *uint64 `json:"Phase,omitempty" name:"Phase"`
 
 	// [无效] 溯源时间
@@ -3459,7 +3459,7 @@ type ModifyTraceDataRequest struct {
 	// [无效] 排序
 	Rank *uint64 `json:"Rank,omitempty" name:"Rank"`
 
-	// [无效] 溯源阶段 0:商品 1:通用 2:物流
+	// [无效] 溯源阶段 0:商品 1:通用 2:生产溯源 3:销售溯源
 	Phase *uint64 `json:"Phase,omitempty" name:"Phase"`
 
 	// [无效] 溯源时间
@@ -3684,15 +3684,15 @@ type TraceData struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Rank *uint64 `json:"Rank,omitempty" name:"Rank"`
 
-	// 溯源阶段 0:商品 1:通用 2:物流
+	// 溯源阶段 0:商品 1:通用 2:生产溯源 3:销售溯源
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Phase *uint64 `json:"Phase,omitempty" name:"Phase"`
 
-	// 环节名称
+	// 溯源环节名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PhaseName *string `json:"PhaseName,omitempty" name:"PhaseName"`
 
-	// 时间
+	// 溯源时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TraceTime *string `json:"TraceTime,omitempty" name:"TraceTime"`
 

@@ -162,8 +162,9 @@ type Action struct {
 	// <li> Hsts；</li>
 	// <li> ClientIpHeader；</li>
 	// <li> TlsVersion；</li>
-	// <li> OcspStapling。</li>
-	// <li> HTTP/2 访问（Http2）。</li>
+	// <li> OcspStapling；</li>
+	// <li> HTTP/2 访问（Http2）；</li>
+	// <li> 回源跟随重定向(UpstreamFollowRedirect)。</li>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	NormalAction *NormalAction `json:"NormalAction,omitempty" name:"NormalAction"`
 
@@ -2264,6 +2265,9 @@ type CreateRuleRequestParams struct {
 
 	// 规则内容。
 	Rules []*Rule `json:"Rules,omitempty" name:"Rules"`
+
+	// 规则标签。
+	Tags []*string `json:"Tags,omitempty" name:"Tags"`
 }
 
 type CreateRuleRequest struct {
@@ -2282,6 +2286,9 @@ type CreateRuleRequest struct {
 
 	// 规则内容。
 	Rules []*Rule `json:"Rules,omitempty" name:"Rules"`
+
+	// 规则标签。
+	Tags []*string `json:"Tags,omitempty" name:"Tags"`
 }
 
 func (r *CreateRuleRequest) ToJsonString() string {
@@ -2300,6 +2307,7 @@ func (r *CreateRuleRequest) FromJsonString(s string) error {
 	delete(f, "RuleName")
 	delete(f, "Status")
 	delete(f, "Rules")
+	delete(f, "Tags")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateRuleRequest has unknown keys!", "")
 	}
@@ -10514,6 +10522,14 @@ type FollowOrigin struct {
 	// <li>on：开启；</li>
 	// <li>off：关闭。</li>
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
+
+	// 源站未返回 Cache-Control 头时, 设置默认的缓存时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DefaultCacheTime *int64 `json:"DefaultCacheTime,omitempty" name:"DefaultCacheTime"`
+
+	// 源站未返回 Cache-Control 头时, 设置缓存/不缓存
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DefaultCache *string `json:"DefaultCache,omitempty" name:"DefaultCache"`
 }
 
 type ForceRedirect struct {
@@ -12650,6 +12666,9 @@ type ModifyRuleRequestParams struct {
 	// <li> enable: 启用； </li>
 	// <li> disable: 未启用。</li>
 	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 规则标签。
+	Tags []*string `json:"Tags,omitempty" name:"Tags"`
 }
 
 type ModifyRuleRequest struct {
@@ -12671,6 +12690,9 @@ type ModifyRuleRequest struct {
 	// <li> enable: 启用； </li>
 	// <li> disable: 未启用。</li>
 	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 规则标签。
+	Tags []*string `json:"Tags,omitempty" name:"Tags"`
 }
 
 func (r *ModifyRuleRequest) ToJsonString() string {
@@ -12690,6 +12712,7 @@ func (r *ModifyRuleRequest) FromJsonString(s string) error {
 	delete(f, "Rules")
 	delete(f, "RuleId")
 	delete(f, "Status")
+	delete(f, "Tags")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyRuleRequest has unknown keys!", "")
 	}
@@ -13946,12 +13969,15 @@ type RewriteAction struct {
 }
 
 type Rule struct {
+	// 执行的功能。
+	Actions []*Action `json:"Actions,omitempty" name:"Actions"`
+
 	// 执行功能判断条件。
 	// 注意：满足该数组内任意一项条件，功能即可执行。
 	Conditions []*RuleAndConditions `json:"Conditions,omitempty" name:"Conditions"`
 
-	// 执行的功能。
-	Actions []*Action `json:"Actions,omitempty" name:"Actions"`
+	// 嵌套规则。
+	SubRules []*SubRuleItem `json:"SubRules,omitempty" name:"SubRules"`
 }
 
 type RuleAndConditions struct {
@@ -14077,6 +14103,9 @@ type RuleItem struct {
 
 	// 规则优先级, 值越大优先级越高，最小为 1。
 	RulePriority *int64 `json:"RulePriority,omitempty" name:"RulePriority"`
+
+	// 规则标签。
+	Tags []*string `json:"Tags,omitempty" name:"Tags"`
 }
 
 type RuleNormalActionParams struct {
@@ -14604,6 +14633,23 @@ type SpeedTestingStatus struct {
 	// <li> false：不超时。</li>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TimedOut *bool `json:"TimedOut,omitempty" name:"TimedOut"`
+}
+
+type SubRule struct {
+	// 执行功能判断条件。
+	// 注意：满足该数组内任意一项条件，功能即可执行。
+	Conditions []*RuleAndConditions `json:"Conditions,omitempty" name:"Conditions"`
+
+	// 执行的功能。
+	Actions []*Action `json:"Actions,omitempty" name:"Actions"`
+}
+
+type SubRuleItem struct {
+	// 嵌套规则信息。
+	Rules []*SubRule `json:"Rules,omitempty" name:"Rules"`
+
+	// 规则标签。
+	Tags []*string `json:"Tags,omitempty" name:"Tags"`
 }
 
 type Sv struct {

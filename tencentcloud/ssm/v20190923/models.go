@@ -302,7 +302,7 @@ func (r *CreateSSHKeyPairSecretResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateSecretRequestParams struct {
-	// 凭据名称，同一region内不可重复，最长128字节，使用字母、数字或者 - _ 的组合，第一个字符必须为字母或者数字。
+	// 凭据名称，同一region内不可重复，最长128字节，使用字母、数字或者 - _ 的组合，第一个字符必须为字母或者数字。一旦创建不可修改。
 	SecretName *string `json:"SecretName,omitempty" name:"SecretName"`
 
 	// 凭据版本，查询凭据信息时需要根据SecretName 和 VersionId进行查询，最长64 字节，使用字母、数字或者 - _ . 的组合并且以字母或数字开头。
@@ -327,7 +327,7 @@ type CreateSecretRequestParams struct {
 type CreateSecretRequest struct {
 	*tchttp.BaseRequest
 	
-	// 凭据名称，同一region内不可重复，最长128字节，使用字母、数字或者 - _ 的组合，第一个字符必须为字母或者数字。
+	// 凭据名称，同一region内不可重复，最长128字节，使用字母、数字或者 - _ 的组合，第一个字符必须为字母或者数字。一旦创建不可修改。
 	SecretName *string `json:"SecretName,omitempty" name:"SecretName"`
 
 	// 凭据版本，查询凭据信息时需要根据SecretName 和 VersionId进行查询，最长64 字节，使用字母、数字或者 - _ . 的组合并且以字母或数字开头。
