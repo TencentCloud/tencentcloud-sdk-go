@@ -2121,6 +2121,11 @@ type CreateWxCloudBaseRunServerDBClusterRequestParams struct {
 
 	// mysql内核版本，支持5.7,8.0
 	DbVersion *string `json:"DbVersion,omitempty" name:"DbVersion"`
+
+	// 0: 非大小写敏感
+	// 1: 大小写敏感
+	// 默认 0
+	LowerCaseTableName *string `json:"LowerCaseTableName,omitempty" name:"LowerCaseTableName"`
 }
 
 type CreateWxCloudBaseRunServerDBClusterRequest struct {
@@ -2137,6 +2142,11 @@ type CreateWxCloudBaseRunServerDBClusterRequest struct {
 
 	// mysql内核版本，支持5.7,8.0
 	DbVersion *string `json:"DbVersion,omitempty" name:"DbVersion"`
+
+	// 0: 非大小写敏感
+	// 1: 大小写敏感
+	// 默认 0
+	LowerCaseTableName *string `json:"LowerCaseTableName,omitempty" name:"LowerCaseTableName"`
 }
 
 func (r *CreateWxCloudBaseRunServerDBClusterRequest) ToJsonString() string {
@@ -2155,6 +2165,7 @@ func (r *CreateWxCloudBaseRunServerDBClusterRequest) FromJsonString(s string) er
 	delete(f, "EnvId")
 	delete(f, "WxAppId")
 	delete(f, "DbVersion")
+	delete(f, "LowerCaseTableName")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateWxCloudBaseRunServerDBClusterRequest has unknown keys!", "")
 	}

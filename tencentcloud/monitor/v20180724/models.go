@@ -31,6 +31,16 @@ type AlarmEvent struct {
 	Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
 }
 
+type AlarmHierarchicalNotice struct {
+	// 通知模板ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NoticeId *string `json:"NoticeId,omitempty" name:"NoticeId"`
+
+	// 通知等级列表，["Remind","Serious"]表示该通知模板仅接收提醒和严重类别的告警
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Classification []*string `json:"Classification,omitempty" name:"Classification"`
+}
+
 type AlarmHierarchicalValue struct {
 	// 提醒等级阈值
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -1038,6 +1048,12 @@ type CreateAlarmPolicyRequestParams struct {
 
 	// 日志告警信息
 	LogAlarmReqInfo *LogAlarmReq `json:"LogAlarmReqInfo,omitempty" name:"LogAlarmReqInfo"`
+
+	// 告警分级通知规则配置
+	HierarchicalNotices []*AlarmHierarchicalNotice `json:"HierarchicalNotices,omitempty" name:"HierarchicalNotices"`
+
+	// 迁移策略专用字段，0-走鉴权逻辑，1-跳过鉴权逻辑
+	MigrateFlag *int64 `json:"MigrateFlag,omitempty" name:"MigrateFlag"`
 }
 
 type CreateAlarmPolicyRequest struct {
@@ -1090,6 +1106,12 @@ type CreateAlarmPolicyRequest struct {
 
 	// 日志告警信息
 	LogAlarmReqInfo *LogAlarmReq `json:"LogAlarmReqInfo,omitempty" name:"LogAlarmReqInfo"`
+
+	// 告警分级通知规则配置
+	HierarchicalNotices []*AlarmHierarchicalNotice `json:"HierarchicalNotices,omitempty" name:"HierarchicalNotices"`
+
+	// 迁移策略专用字段，0-走鉴权逻辑，1-跳过鉴权逻辑
+	MigrateFlag *int64 `json:"MigrateFlag,omitempty" name:"MigrateFlag"`
 }
 
 func (r *CreateAlarmPolicyRequest) ToJsonString() string {
@@ -1120,6 +1142,8 @@ func (r *CreateAlarmPolicyRequest) FromJsonString(s string) error {
 	delete(f, "GroupBy")
 	delete(f, "Tags")
 	delete(f, "LogAlarmReqInfo")
+	delete(f, "HierarchicalNotices")
+	delete(f, "MigrateFlag")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAlarmPolicyRequest has unknown keys!", "")
 	}

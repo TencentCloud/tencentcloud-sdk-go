@@ -10512,6 +10512,10 @@ type EdgeCluster struct {
 	// 集群高级设置
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClusterAdvancedSettings *EdgeClusterAdvancedSettings `json:"ClusterAdvancedSettings,omitempty" name:"ClusterAdvancedSettings"`
+
+	// 边缘容器集群级别
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Level *string `json:"Level,omitempty" name:"Level"`
 }
 
 type EdgeClusterAdvancedSettings struct {
@@ -13519,6 +13523,18 @@ type PrometheusAgentOverview struct {
 	// 本集群的所有指标都会带上这几个label
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExternalLabels []*Label `json:"ExternalLabels,omitempty" name:"ExternalLabels"`
+
+	// 集群所在地域
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Region *string `json:"Region,omitempty" name:"Region"`
+
+	// 集群所在VPC ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 记录关联等操作的失败信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FailedReason *string `json:"FailedReason,omitempty" name:"FailedReason"`
 }
 
 type PrometheusAlertHistoryItem struct {

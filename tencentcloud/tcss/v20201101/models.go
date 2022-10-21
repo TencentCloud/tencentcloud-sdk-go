@@ -808,6 +808,121 @@ func (r *AddAssetImageRegistryRegistryDetailResponse) FromJsonString(s string) e
 }
 
 // Predefined struct for user
+type AddComplianceAssetPolicySetToWhitelistRequestParams struct {
+	// 资产ID+检查项IDs. 列表
+	AssetPolicySetList []*ComplianceAssetPolicySetItem `json:"AssetPolicySetList,omitempty" name:"AssetPolicySetList"`
+}
+
+type AddComplianceAssetPolicySetToWhitelistRequest struct {
+	*tchttp.BaseRequest
+	
+	// 资产ID+检查项IDs. 列表
+	AssetPolicySetList []*ComplianceAssetPolicySetItem `json:"AssetPolicySetList,omitempty" name:"AssetPolicySetList"`
+}
+
+func (r *AddComplianceAssetPolicySetToWhitelistRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AddComplianceAssetPolicySetToWhitelistRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AssetPolicySetList")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AddComplianceAssetPolicySetToWhitelistRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type AddComplianceAssetPolicySetToWhitelistResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type AddComplianceAssetPolicySetToWhitelistResponse struct {
+	*tchttp.BaseResponse
+	Response *AddComplianceAssetPolicySetToWhitelistResponseParams `json:"Response"`
+}
+
+func (r *AddComplianceAssetPolicySetToWhitelistResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AddComplianceAssetPolicySetToWhitelistResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type AddCompliancePolicyAssetSetToWhitelistRequestParams struct {
+	// 检查项ID
+	CustomerPolicyItemId *uint64 `json:"CustomerPolicyItemId,omitempty" name:"CustomerPolicyItemId"`
+
+	// 需要忽略指定检查项内的资产ID列表
+	CustomerAssetItemIdSet []*uint64 `json:"CustomerAssetItemIdSet,omitempty" name:"CustomerAssetItemIdSet"`
+}
+
+type AddCompliancePolicyAssetSetToWhitelistRequest struct {
+	*tchttp.BaseRequest
+	
+	// 检查项ID
+	CustomerPolicyItemId *uint64 `json:"CustomerPolicyItemId,omitempty" name:"CustomerPolicyItemId"`
+
+	// 需要忽略指定检查项内的资产ID列表
+	CustomerAssetItemIdSet []*uint64 `json:"CustomerAssetItemIdSet,omitempty" name:"CustomerAssetItemIdSet"`
+}
+
+func (r *AddCompliancePolicyAssetSetToWhitelistRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AddCompliancePolicyAssetSetToWhitelistRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CustomerPolicyItemId")
+	delete(f, "CustomerAssetItemIdSet")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AddCompliancePolicyAssetSetToWhitelistRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type AddCompliancePolicyAssetSetToWhitelistResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type AddCompliancePolicyAssetSetToWhitelistResponse struct {
+	*tchttp.BaseResponse
+	Response *AddCompliancePolicyAssetSetToWhitelistResponseParams `json:"Response"`
+}
+
+func (r *AddCompliancePolicyAssetSetToWhitelistResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AddCompliancePolicyAssetSetToWhitelistResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type AddCompliancePolicyItemToWhitelistRequestParams struct {
 	// 要忽略的检测项的ID的列表
 	CustomerPolicyItemIdSet []*uint64 `json:"CustomerPolicyItemIdSet,omitempty" name:"CustomerPolicyItemIdSet"`
@@ -2325,6 +2440,14 @@ type ComplianceAssetPolicyItem struct {
 	VerifyInfo *string `json:"VerifyInfo,omitempty" name:"VerifyInfo"`
 }
 
+type ComplianceAssetPolicySetItem struct {
+	// 资产ID
+	CustomerAssetItemId *uint64 `json:"CustomerAssetItemId,omitempty" name:"CustomerAssetItemId"`
+
+	// 需要忽略指定资产内的检查项ID列表，为空表示所有
+	CustomerPolicyItemIdSet []*uint64 `json:"CustomerPolicyItemIdSet,omitempty" name:"CustomerPolicyItemIdSet"`
+}
+
 type ComplianceAssetSummary struct {
 	// 资产类别。
 	AssetType *string `json:"AssetType,omitempty" name:"AssetType"`
@@ -2517,6 +2640,14 @@ type CompliancePeriodTaskRule struct {
 	// 是否开启
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Enable *bool `json:"Enable,omitempty" name:"Enable"`
+}
+
+type CompliancePolicyAssetSetItem struct {
+	// 检查项ID
+	CustomerPolicyItemId *uint64 `json:"CustomerPolicyItemId,omitempty" name:"CustomerPolicyItemId"`
+
+	// 需要忽略指定检查项内的资产ID列表，为空表示所有
+	CustomerAssetItemIdSet []*uint64 `json:"CustomerAssetItemIdSet,omitempty" name:"CustomerAssetItemIdSet"`
 }
 
 type CompliancePolicyItemSummary struct {
@@ -5874,6 +6005,121 @@ func (r *DeleteAccessControlRulesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteAccessControlRulesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteComplianceAssetPolicySetFromWhitelistRequestParams struct {
+	// 资产ID
+	AssetItemId *uint64 `json:"AssetItemId,omitempty" name:"AssetItemId"`
+
+	// 需要忽略指定资产内的检查项ID列表
+	CustomerPolicyItemIdSet []*uint64 `json:"CustomerPolicyItemIdSet,omitempty" name:"CustomerPolicyItemIdSet"`
+}
+
+type DeleteComplianceAssetPolicySetFromWhitelistRequest struct {
+	*tchttp.BaseRequest
+	
+	// 资产ID
+	AssetItemId *uint64 `json:"AssetItemId,omitempty" name:"AssetItemId"`
+
+	// 需要忽略指定资产内的检查项ID列表
+	CustomerPolicyItemIdSet []*uint64 `json:"CustomerPolicyItemIdSet,omitempty" name:"CustomerPolicyItemIdSet"`
+}
+
+func (r *DeleteComplianceAssetPolicySetFromWhitelistRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteComplianceAssetPolicySetFromWhitelistRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AssetItemId")
+	delete(f, "CustomerPolicyItemIdSet")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteComplianceAssetPolicySetFromWhitelistRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteComplianceAssetPolicySetFromWhitelistResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DeleteComplianceAssetPolicySetFromWhitelistResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteComplianceAssetPolicySetFromWhitelistResponseParams `json:"Response"`
+}
+
+func (r *DeleteComplianceAssetPolicySetFromWhitelistResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteComplianceAssetPolicySetFromWhitelistResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteCompliancePolicyAssetSetFromWhitelistRequestParams struct {
+	// （检查项ID+资产ID列表）的列表
+	PolicyAssetSetList []*CompliancePolicyAssetSetItem `json:"PolicyAssetSetList,omitempty" name:"PolicyAssetSetList"`
+}
+
+type DeleteCompliancePolicyAssetSetFromWhitelistRequest struct {
+	*tchttp.BaseRequest
+	
+	// （检查项ID+资产ID列表）的列表
+	PolicyAssetSetList []*CompliancePolicyAssetSetItem `json:"PolicyAssetSetList,omitempty" name:"PolicyAssetSetList"`
+}
+
+func (r *DeleteCompliancePolicyAssetSetFromWhitelistRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteCompliancePolicyAssetSetFromWhitelistRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PolicyAssetSetList")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteCompliancePolicyAssetSetFromWhitelistRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteCompliancePolicyAssetSetFromWhitelistResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DeleteCompliancePolicyAssetSetFromWhitelistResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteCompliancePolicyAssetSetFromWhitelistResponseParams `json:"Response"`
+}
+
+func (r *DeleteCompliancePolicyAssetSetFromWhitelistResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteCompliancePolicyAssetSetFromWhitelistResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -14540,6 +14786,80 @@ func (r *DescribeImageComponentListResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeImageComponentListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeImageRegistryNamespaceListRequestParams struct {
+	// 本次查询的起始偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 本次查询的数据量，默认为10，最大值为100。
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 查询的过滤条件。Name字段可取值"Namespace"。
+	Filters []*AssetFilters `json:"Filters,omitempty" name:"Filters"`
+}
+
+type DescribeImageRegistryNamespaceListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 本次查询的起始偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 本次查询的数据量，默认为10，最大值为100。
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 查询的过滤条件。Name字段可取值"Namespace"。
+	Filters []*AssetFilters `json:"Filters,omitempty" name:"Filters"`
+}
+
+func (r *DescribeImageRegistryNamespaceListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeImageRegistryNamespaceListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeImageRegistryNamespaceListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeImageRegistryNamespaceListResponseParams struct {
+	// 可返回的项目空间的总量。
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 返回的项目空间列表
+	NamespaceList []*string `json:"NamespaceList,omitempty" name:"NamespaceList"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeImageRegistryNamespaceListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeImageRegistryNamespaceListResponseParams `json:"Response"`
+}
+
+func (r *DescribeImageRegistryNamespaceListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeImageRegistryNamespaceListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

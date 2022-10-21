@@ -729,6 +729,70 @@ func (c *Client) DeleteAttackLogsWithContext(ctx context.Context, request *Delet
     return
 }
 
+func NewDeleteBaselinePolicyRequest() (request *DeleteBaselinePolicyRequest) {
+    request = &DeleteBaselinePolicyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cwp", APIVersion, "DeleteBaselinePolicy")
+    
+    
+    return
+}
+
+func NewDeleteBaselinePolicyResponse() (response *DeleteBaselinePolicyResponse) {
+    response = &DeleteBaselinePolicyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteBaselinePolicy
+// 删除基线策略配置
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ILLEGALREQUEST = "InvalidParameter.IllegalRequest"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_AREAQUOTA = "LimitExceeded.AreaQuota"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DeleteBaselinePolicy(request *DeleteBaselinePolicyRequest) (response *DeleteBaselinePolicyResponse, err error) {
+    return c.DeleteBaselinePolicyWithContext(context.Background(), request)
+}
+
+// DeleteBaselinePolicy
+// 删除基线策略配置
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ILLEGALREQUEST = "InvalidParameter.IllegalRequest"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED_AREAQUOTA = "LimitExceeded.AreaQuota"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DeleteBaselinePolicyWithContext(ctx context.Context, request *DeleteBaselinePolicyRequest) (response *DeleteBaselinePolicyResponse, err error) {
+    if request == nil {
+        request = NewDeleteBaselinePolicyRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteBaselinePolicy require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteBaselinePolicyResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteBaselineStrategyRequest() (request *DeleteBaselineStrategyRequest) {
     request = &DeleteBaselineStrategyRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1803,6 +1867,74 @@ func (c *Client) DeleteReverseShellRulesWithContext(ctx context.Context, request
     request.SetContext(ctx)
     
     response = NewDeleteReverseShellRulesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteScanTaskRequest() (request *DeleteScanTaskRequest) {
+    request = &DeleteScanTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cwp", APIVersion, "DeleteScanTask")
+    
+    
+    return
+}
+
+func NewDeleteScanTaskResponse() (response *DeleteScanTaskResponse) {
+    response = &DeleteScanTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteScanTask
+// DeleteScanTask 该接口可以对指定类型的扫描任务进行停止扫描;
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_APISERVERFAIL = "FailedOperation.APIServerFail"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ILLEGALREQUEST = "InvalidParameter.IllegalRequest"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DeleteScanTask(request *DeleteScanTaskRequest) (response *DeleteScanTaskResponse, err error) {
+    return c.DeleteScanTaskWithContext(context.Background(), request)
+}
+
+// DeleteScanTask
+// DeleteScanTask 该接口可以对指定类型的扫描任务进行停止扫描;
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_APISERVERFAIL = "FailedOperation.APIServerFail"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ILLEGALREQUEST = "InvalidParameter.IllegalRequest"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DeleteScanTaskWithContext(ctx context.Context, request *DeleteScanTaskRequest) (response *DeleteScanTaskResponse, err error) {
+    if request == nil {
+        request = NewDeleteScanTaskRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteScanTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteScanTaskResponse()
     err = c.Send(request, response)
     return
 }
@@ -4321,6 +4453,56 @@ func (c *Client) DescribeBaselineEffectHostListWithContext(ctx context.Context, 
     return
 }
 
+func NewDescribeBaselineHostDetectListRequest() (request *DescribeBaselineHostDetectListRequest) {
+    request = &DescribeBaselineHostDetectListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cwp", APIVersion, "DescribeBaselineHostDetectList")
+    
+    
+    return
+}
+
+func NewDescribeBaselineHostDetectListResponse() (response *DescribeBaselineHostDetectListResponse) {
+    response = &DescribeBaselineHostDetectListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeBaselineHostDetectList
+// 获取基线检测主机列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeBaselineHostDetectList(request *DescribeBaselineHostDetectListRequest) (response *DescribeBaselineHostDetectListResponse, err error) {
+    return c.DescribeBaselineHostDetectListWithContext(context.Background(), request)
+}
+
+// DescribeBaselineHostDetectList
+// 获取基线检测主机列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeBaselineHostDetectListWithContext(ctx context.Context, request *DescribeBaselineHostDetectListRequest) (response *DescribeBaselineHostDetectListResponse, err error) {
+    if request == nil {
+        request = NewDescribeBaselineHostDetectListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBaselineHostDetectList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeBaselineHostDetectListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeBaselineHostTopRequest() (request *DescribeBaselineHostTopRequest) {
     request = &DescribeBaselineHostTopRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -5919,6 +6101,66 @@ func (c *Client) DescribeIndexListWithContext(ctx context.Context, request *Desc
     request.SetContext(ctx)
     
     response = NewDescribeIndexListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeJavaMemShellListRequest() (request *DescribeJavaMemShellListRequest) {
+    request = &DescribeJavaMemShellListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cwp", APIVersion, "DescribeJavaMemShellList")
+    
+    
+    return
+}
+
+func NewDescribeJavaMemShellListResponse() (response *DescribeJavaMemShellListResponse) {
+    response = &DescribeJavaMemShellListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeJavaMemShellList
+// 查询java内存马事件列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeJavaMemShellList(request *DescribeJavaMemShellListRequest) (response *DescribeJavaMemShellListResponse, err error) {
+    return c.DescribeJavaMemShellListWithContext(context.Background(), request)
+}
+
+// DescribeJavaMemShellList
+// 查询java内存马事件列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeJavaMemShellListWithContext(ctx context.Context, request *DescribeJavaMemShellListRequest) (response *DescribeJavaMemShellListResponse, err error) {
+    if request == nil {
+        request = NewDescribeJavaMemShellListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeJavaMemShellList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeJavaMemShellListResponse()
     err = c.Send(request, response)
     return
 }
@@ -11483,6 +11725,56 @@ func (c *Client) ModifyBanStatusWithContext(ctx context.Context, request *Modify
     return
 }
 
+func NewModifyBaselinePolicyRequest() (request *ModifyBaselinePolicyRequest) {
+    request = &ModifyBaselinePolicyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cwp", APIVersion, "ModifyBaselinePolicy")
+    
+    
+    return
+}
+
+func NewModifyBaselinePolicyResponse() (response *ModifyBaselinePolicyResponse) {
+    response = &ModifyBaselinePolicyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyBaselinePolicy
+// 更改基线策略设置
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) ModifyBaselinePolicy(request *ModifyBaselinePolicyRequest) (response *ModifyBaselinePolicyResponse, err error) {
+    return c.ModifyBaselinePolicyWithContext(context.Background(), request)
+}
+
+// ModifyBaselinePolicy
+// 更改基线策略设置
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) ModifyBaselinePolicyWithContext(ctx context.Context, request *ModifyBaselinePolicyRequest) (response *ModifyBaselinePolicyResponse, err error) {
+    if request == nil {
+        request = NewModifyBaselinePolicyRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyBaselinePolicy require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyBaselinePolicyResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyBruteAttackRulesRequest() (request *ModifyBruteAttackRulesRequest) {
     request = &ModifyBruteAttackRulesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -12547,6 +12839,56 @@ func (c *Client) StartBaselineDetectWithContext(ctx context.Context, request *St
     request.SetContext(ctx)
     
     response = NewStartBaselineDetectResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewStopBaselineDetectRequest() (request *StopBaselineDetectRequest) {
+    request = &StopBaselineDetectRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cwp", APIVersion, "StopBaselineDetect")
+    
+    
+    return
+}
+
+func NewStopBaselineDetectResponse() (response *StopBaselineDetectResponse) {
+    response = &StopBaselineDetectResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// StopBaselineDetect
+// 停止基线检测
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) StopBaselineDetect(request *StopBaselineDetectRequest) (response *StopBaselineDetectResponse, err error) {
+    return c.StopBaselineDetectWithContext(context.Background(), request)
+}
+
+// StopBaselineDetect
+// 停止基线检测
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) StopBaselineDetectWithContext(ctx context.Context, request *StopBaselineDetectRequest) (response *StopBaselineDetectResponse, err error) {
+    if request == nil {
+        request = NewStopBaselineDetectRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("StopBaselineDetect require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewStopBaselineDetectResponse()
     err = c.Send(request, response)
     return
 }

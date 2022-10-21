@@ -229,6 +229,134 @@ func (c *Client) AddAssetImageRegistryRegistryDetailWithContext(ctx context.Cont
     return
 }
 
+func NewAddComplianceAssetPolicySetToWhitelistRequest() (request *AddComplianceAssetPolicySetToWhitelistRequest) {
+    request = &AddComplianceAssetPolicySetToWhitelistRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcss", APIVersion, "AddComplianceAssetPolicySetToWhitelist")
+    
+    
+    return
+}
+
+func NewAddComplianceAssetPolicySetToWhitelistResponse() (response *AddComplianceAssetPolicySetToWhitelistResponse) {
+    response = &AddComplianceAssetPolicySetToWhitelistResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// AddComplianceAssetPolicySetToWhitelist
+// 新增安全合规忽略(资产+检测项列表)列表，不显示指定的检查项包含的资产内容
+//
+// 参考的AddCompliancePolicyItemToWhitelist，除输入字段外，其它应该是一致的，如果有不同可能是定义的不对
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+func (c *Client) AddComplianceAssetPolicySetToWhitelist(request *AddComplianceAssetPolicySetToWhitelistRequest) (response *AddComplianceAssetPolicySetToWhitelistResponse, err error) {
+    return c.AddComplianceAssetPolicySetToWhitelistWithContext(context.Background(), request)
+}
+
+// AddComplianceAssetPolicySetToWhitelist
+// 新增安全合规忽略(资产+检测项列表)列表，不显示指定的检查项包含的资产内容
+//
+// 参考的AddCompliancePolicyItemToWhitelist，除输入字段外，其它应该是一致的，如果有不同可能是定义的不对
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+func (c *Client) AddComplianceAssetPolicySetToWhitelistWithContext(ctx context.Context, request *AddComplianceAssetPolicySetToWhitelistRequest) (response *AddComplianceAssetPolicySetToWhitelistResponse, err error) {
+    if request == nil {
+        request = NewAddComplianceAssetPolicySetToWhitelistRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AddComplianceAssetPolicySetToWhitelist require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewAddComplianceAssetPolicySetToWhitelistResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewAddCompliancePolicyAssetSetToWhitelistRequest() (request *AddCompliancePolicyAssetSetToWhitelistRequest) {
+    request = &AddCompliancePolicyAssetSetToWhitelistRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcss", APIVersion, "AddCompliancePolicyAssetSetToWhitelist")
+    
+    
+    return
+}
+
+func NewAddCompliancePolicyAssetSetToWhitelistResponse() (response *AddCompliancePolicyAssetSetToWhitelistResponse) {
+    response = &AddCompliancePolicyAssetSetToWhitelistResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// AddCompliancePolicyAssetSetToWhitelist
+// 新增安全合规忽略(检测项+资产)列表，不显示指定的检查项包含的资产内容
+//
+// 参考的AddCompliancePolicyItemToWhitelist，除输入字段外，其它应该是一致的，如果有不同可能是定义的不对
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+func (c *Client) AddCompliancePolicyAssetSetToWhitelist(request *AddCompliancePolicyAssetSetToWhitelistRequest) (response *AddCompliancePolicyAssetSetToWhitelistResponse, err error) {
+    return c.AddCompliancePolicyAssetSetToWhitelistWithContext(context.Background(), request)
+}
+
+// AddCompliancePolicyAssetSetToWhitelist
+// 新增安全合规忽略(检测项+资产)列表，不显示指定的检查项包含的资产内容
+//
+// 参考的AddCompliancePolicyItemToWhitelist，除输入字段外，其它应该是一致的，如果有不同可能是定义的不对
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+func (c *Client) AddCompliancePolicyAssetSetToWhitelistWithContext(ctx context.Context, request *AddCompliancePolicyAssetSetToWhitelistRequest) (response *AddCompliancePolicyAssetSetToWhitelistResponse, err error) {
+    if request == nil {
+        request = NewAddCompliancePolicyAssetSetToWhitelistRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AddCompliancePolicyAssetSetToWhitelist require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewAddCompliancePolicyAssetSetToWhitelistResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewAddCompliancePolicyItemToWhitelistRequest() (request *AddCompliancePolicyItemToWhitelistRequest) {
     request = &AddCompliancePolicyItemToWhitelistRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3313,6 +3441,130 @@ func (c *Client) DeleteAccessControlRulesWithContext(ctx context.Context, reques
     request.SetContext(ctx)
     
     response = NewDeleteAccessControlRulesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteComplianceAssetPolicySetFromWhitelistRequest() (request *DeleteComplianceAssetPolicySetFromWhitelistRequest) {
+    request = &DeleteComplianceAssetPolicySetFromWhitelistRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcss", APIVersion, "DeleteComplianceAssetPolicySetFromWhitelist")
+    
+    
+    return
+}
+
+func NewDeleteComplianceAssetPolicySetFromWhitelistResponse() (response *DeleteComplianceAssetPolicySetFromWhitelistResponse) {
+    response = &DeleteComplianceAssetPolicySetFromWhitelistResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteComplianceAssetPolicySetFromWhitelist
+// 移除安全合规忽略(资产+检测项)列表，不显示指定的检查项包含的资产内容
+//
+// 参考的AddCompliancePolicyAssetSetToWhitelist，除输入字段外，其它应该是一致的，如果有不同可能是定义的不对
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+func (c *Client) DeleteComplianceAssetPolicySetFromWhitelist(request *DeleteComplianceAssetPolicySetFromWhitelistRequest) (response *DeleteComplianceAssetPolicySetFromWhitelistResponse, err error) {
+    return c.DeleteComplianceAssetPolicySetFromWhitelistWithContext(context.Background(), request)
+}
+
+// DeleteComplianceAssetPolicySetFromWhitelist
+// 移除安全合规忽略(资产+检测项)列表，不显示指定的检查项包含的资产内容
+//
+// 参考的AddCompliancePolicyAssetSetToWhitelist，除输入字段外，其它应该是一致的，如果有不同可能是定义的不对
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+func (c *Client) DeleteComplianceAssetPolicySetFromWhitelistWithContext(ctx context.Context, request *DeleteComplianceAssetPolicySetFromWhitelistRequest) (response *DeleteComplianceAssetPolicySetFromWhitelistResponse, err error) {
+    if request == nil {
+        request = NewDeleteComplianceAssetPolicySetFromWhitelistRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteComplianceAssetPolicySetFromWhitelist require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteComplianceAssetPolicySetFromWhitelistResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteCompliancePolicyAssetSetFromWhitelistRequest() (request *DeleteCompliancePolicyAssetSetFromWhitelistRequest) {
+    request = &DeleteCompliancePolicyAssetSetFromWhitelistRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcss", APIVersion, "DeleteCompliancePolicyAssetSetFromWhitelist")
+    
+    
+    return
+}
+
+func NewDeleteCompliancePolicyAssetSetFromWhitelistResponse() (response *DeleteCompliancePolicyAssetSetFromWhitelistResponse) {
+    response = &DeleteCompliancePolicyAssetSetFromWhitelistResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteCompliancePolicyAssetSetFromWhitelist
+// 新增安全合规忽略(检测项+资产)列表，不显示指定的检查项包含的资产内容
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+func (c *Client) DeleteCompliancePolicyAssetSetFromWhitelist(request *DeleteCompliancePolicyAssetSetFromWhitelistRequest) (response *DeleteCompliancePolicyAssetSetFromWhitelistResponse, err error) {
+    return c.DeleteCompliancePolicyAssetSetFromWhitelistWithContext(context.Background(), request)
+}
+
+// DeleteCompliancePolicyAssetSetFromWhitelist
+// 新增安全合规忽略(检测项+资产)列表，不显示指定的检查项包含的资产内容
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+func (c *Client) DeleteCompliancePolicyAssetSetFromWhitelistWithContext(ctx context.Context, request *DeleteCompliancePolicyAssetSetFromWhitelistRequest) (response *DeleteCompliancePolicyAssetSetFromWhitelistResponse, err error) {
+    if request == nil {
+        request = NewDeleteCompliancePolicyAssetSetFromWhitelistRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteCompliancePolicyAssetSetFromWhitelist require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteCompliancePolicyAssetSetFromWhitelistResponse()
     err = c.Send(request, response)
     return
 }
@@ -9231,6 +9483,72 @@ func (c *Client) DescribeImageComponentListWithContext(ctx context.Context, requ
     request.SetContext(ctx)
     
     response = NewDescribeImageComponentListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeImageRegistryNamespaceListRequest() (request *DescribeImageRegistryNamespaceListRequest) {
+    request = &DescribeImageRegistryNamespaceListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcss", APIVersion, "DescribeImageRegistryNamespaceList")
+    
+    
+    return
+}
+
+func NewDescribeImageRegistryNamespaceListResponse() (response *DescribeImageRegistryNamespaceListResponse) {
+    response = &DescribeImageRegistryNamespaceListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeImageRegistryNamespaceList
+// 查询用户镜像仓库下的项目名称列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_MAINDBFAIL = "InternalError.MainDBFail"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeImageRegistryNamespaceList(request *DescribeImageRegistryNamespaceListRequest) (response *DescribeImageRegistryNamespaceListResponse, err error) {
+    return c.DescribeImageRegistryNamespaceListWithContext(context.Background(), request)
+}
+
+// DescribeImageRegistryNamespaceList
+// 查询用户镜像仓库下的项目名称列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_MAINDBFAIL = "InternalError.MainDBFail"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeImageRegistryNamespaceListWithContext(ctx context.Context, request *DescribeImageRegistryNamespaceListRequest) (response *DescribeImageRegistryNamespaceListResponse, err error) {
+    if request == nil {
+        request = NewDescribeImageRegistryNamespaceListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeImageRegistryNamespaceList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeImageRegistryNamespaceListResponse()
     err = c.Send(request, response)
     return
 }

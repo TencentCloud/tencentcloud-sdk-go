@@ -6832,7 +6832,7 @@ func NewDescribePrometheusClusterAgentsResponse() (response *DescribePrometheusC
 }
 
 // DescribePrometheusClusterAgents
-// 获取2.0实例关联集群列表
+// 获取TMP实例关联集群列表
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_COMPONENTCLIENTCOMMON = "FailedOperation.ComponentClientCommon"
@@ -6846,7 +6846,7 @@ func (c *Client) DescribePrometheusClusterAgents(request *DescribePrometheusClus
 }
 
 // DescribePrometheusClusterAgents
-// 获取2.0实例关联集群列表
+// 获取TMP实例关联集群列表
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_COMPONENTCLIENTCOMMON = "FailedOperation.ComponentClientCommon"

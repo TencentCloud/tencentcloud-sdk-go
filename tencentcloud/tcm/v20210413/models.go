@@ -525,6 +525,20 @@ type EgressGateway struct {
 
 	// 工作负载配置
 	Workload *WorkloadConfig `json:"Workload,omitempty" name:"Workload"`
+
+	// 工作负载的状态
+	Status *EgressGatewayStatus `json:"Status,omitempty" name:"Status"`
+}
+
+type EgressGatewayStatus struct {
+	// egress gateway的当前版本
+	CurrentVersion *string `json:"CurrentVersion,omitempty" name:"CurrentVersion"`
+
+	// egress gateway的目标版本
+	DesiredVersion *string `json:"DesiredVersion,omitempty" name:"DesiredVersion"`
+
+	// egress gateway的状态，取值：running，upgrading，rollbacking
+	State *string `json:"State,omitempty" name:"State"`
 }
 
 type ExtensiveCluster struct {
@@ -616,6 +630,15 @@ type IngressGateway struct {
 type IngressGatewayStatus struct {
 	// 负载均衡实例状态
 	LoadBalancer *LoadBalancerStatus `json:"LoadBalancer,omitempty" name:"LoadBalancer"`
+
+	// ingress gateway 当前的版本
+	CurrentVersion *string `json:"CurrentVersion,omitempty" name:"CurrentVersion"`
+
+	// ingress gateway 目标的版本
+	DesiredVersion *string `json:"DesiredVersion,omitempty" name:"DesiredVersion"`
+
+	// ingress gateway的状态，取值running, upgrading, rollbacking
+	State *string `json:"State,omitempty" name:"State"`
 }
 
 type InjectConfig struct {
@@ -825,6 +848,9 @@ type Mesh struct {
 
 	// Mesh详细状态
 	Status *MeshStatus `json:"Status,omitempty" name:"Status"`
+
+	// 标签列表
+	TagList []*Tag `json:"TagList,omitempty" name:"TagList"`
 }
 
 type MeshConfig struct {

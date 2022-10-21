@@ -2694,11 +2694,11 @@ type SignUrl struct {
 }
 
 type SignUrlInfo struct {
-	// 签署链接
+	// 签署链接，过期时间为30天
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SignUrl *string `json:"SignUrl,omitempty" name:"SignUrl"`
 
-	// 链接失效时间,默认30分钟
+	// 合同过期时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Deadline *int64 `json:"Deadline,omitempty" name:"Deadline"`
 

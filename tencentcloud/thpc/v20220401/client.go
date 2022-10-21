@@ -388,3 +388,51 @@ func (c *Client) DescribeClustersWithContext(ctx context.Context, request *Descr
     err = c.Send(request, response)
     return
 }
+
+func NewSetAutoScalingConfigurationRequest() (request *SetAutoScalingConfigurationRequest) {
+    request = &SetAutoScalingConfigurationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("thpc", APIVersion, "SetAutoScalingConfiguration")
+    
+    
+    return
+}
+
+func NewSetAutoScalingConfigurationResponse() (response *SetAutoScalingConfigurationResponse) {
+    response = &SetAutoScalingConfigurationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// SetAutoScalingConfiguration
+// 本接口(SetAutoScalingConfiguration)用于为集群设置集群弹性伸缩配置信息。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CALLCVM = "InternalError.CallCvm"
+func (c *Client) SetAutoScalingConfiguration(request *SetAutoScalingConfigurationRequest) (response *SetAutoScalingConfigurationResponse, err error) {
+    return c.SetAutoScalingConfigurationWithContext(context.Background(), request)
+}
+
+// SetAutoScalingConfiguration
+// 本接口(SetAutoScalingConfiguration)用于为集群设置集群弹性伸缩配置信息。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_CALLCVM = "InternalError.CallCvm"
+func (c *Client) SetAutoScalingConfigurationWithContext(ctx context.Context, request *SetAutoScalingConfigurationRequest) (response *SetAutoScalingConfigurationResponse, err error) {
+    if request == nil {
+        request = NewSetAutoScalingConfigurationRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SetAutoScalingConfiguration require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewSetAutoScalingConfigurationResponse()
+    err = c.Send(request, response)
+    return
+}
