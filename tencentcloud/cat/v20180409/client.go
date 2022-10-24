@@ -84,7 +84,7 @@ func NewCreateProbeTasksResponse() (response *CreateProbeTasksResponse) {
 //  FAILEDOPERATION_TASKTYPENOTSAME = "FailedOperation.TaskTypeNotSame"
 //  FAILEDOPERATION_TRIALTASKEXCEED = "FailedOperation.TrialTaskExceed"
 //  FAILEDOPERATION_UNMARSHALRESPONSE = "FailedOperation.UnmarshalResponse"
-//  FAILEDOPERATION_USERNOPROMISSIONS = "FailedOperation.UserNoPromissions"
+//  FAILEDOPERATION_USERNOQCLOUDTAGFULLACCESS = "FailedOperation.UserNoQcloudTAGFullAccess"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) CreateProbeTasks(request *CreateProbeTasksRequest) (response *CreateProbeTasksResponse, err error) {
@@ -112,7 +112,7 @@ func (c *Client) CreateProbeTasks(request *CreateProbeTasksRequest) (response *C
 //  FAILEDOPERATION_TASKTYPENOTSAME = "FailedOperation.TaskTypeNotSame"
 //  FAILEDOPERATION_TRIALTASKEXCEED = "FailedOperation.TrialTaskExceed"
 //  FAILEDOPERATION_UNMARSHALRESPONSE = "FailedOperation.UnmarshalResponse"
-//  FAILEDOPERATION_USERNOPROMISSIONS = "FailedOperation.UserNoPromissions"
+//  FAILEDOPERATION_USERNOQCLOUDTAGFULLACCESS = "FailedOperation.UserNoQcloudTAGFullAccess"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) CreateProbeTasksWithContext(ctx context.Context, request *CreateProbeTasksRequest) (response *CreateProbeTasksResponse, err error) {

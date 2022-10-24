@@ -63,7 +63,7 @@
 | cpdp | [企业收付平台](https://cloud.tencent.com/document/product/1122) | 2022-10-20 06:16:38 |
 | cr | [金融联络机器人](https://cloud.tencent.com/document/product/656) | 2021-02-24 08:03:24 |
 | cvm | [云服务器](https://cloud.tencent.com/document/product/213) | 2022-10-12 06:23:14 |
-| cwp | [主机安全](https://cloud.tencent.com/document/product/296) | 2022-10-21 06:19:41 |
+| cwp | [主机安全](https://cloud.tencent.com/document/product/296) | 2022-10-24 06:23:41 |
 | cws | [漏洞扫描服务](https://cloud.tencent.com/document/product) | 2019-11-22 12:16:15 |
 | cynosdb | [云原生数据库 TDSQL-C](https://cloud.tencent.com/document/product/1003) | 2022-10-17 13:57:08 |
 | dasb | [堡垒机](https://cloud.tencent.com/document/product/1025) | 2022-08-16 06:19:02 |

@@ -8651,6 +8651,94 @@ func (r *DescribeBaselineListResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeBaselinePolicyListRequestParams struct {
+	// <li>PolicyName - String - 是否必填：否 - 策略名称</li>
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 限制条数,默认10,最大100
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移量,默认0
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 排序方式: [ASC:升序|DESC:降序]
+	Order *string `json:"Order,omitempty" name:"Order"`
+
+	// 可选排序列: [RuleCount|ItemCount|HostCount]
+	By *string `json:"By,omitempty" name:"By"`
+}
+
+type DescribeBaselinePolicyListRequest struct {
+	*tchttp.BaseRequest
+	
+	// <li>PolicyName - String - 是否必填：否 - 策略名称</li>
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 限制条数,默认10,最大100
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移量,默认0
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 排序方式: [ASC:升序|DESC:降序]
+	Order *string `json:"Order,omitempty" name:"Order"`
+
+	// 可选排序列: [RuleCount|ItemCount|HostCount]
+	By *string `json:"By,omitempty" name:"By"`
+}
+
+func (r *DescribeBaselinePolicyListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBaselinePolicyListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Filters")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "Order")
+	delete(f, "By")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBaselinePolicyListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeBaselinePolicyListResponseParams struct {
+	// 无
+	List []*BaselinePolicy `json:"List,omitempty" name:"List"`
+
+	// 总数
+	Total *int64 `json:"Total,omitempty" name:"Total"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeBaselinePolicyListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeBaselinePolicyListResponseParams `json:"Response"`
+}
+
+func (r *DescribeBaselinePolicyListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBaselinePolicyListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeBaselineRuleRequestParams struct {
 	// 基线id
 	BaselineId *uint64 `json:"BaselineId,omitempty" name:"BaselineId"`

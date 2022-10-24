@@ -4723,6 +4723,56 @@ func (c *Client) DescribeBaselineListWithContext(ctx context.Context, request *D
     return
 }
 
+func NewDescribeBaselinePolicyListRequest() (request *DescribeBaselinePolicyListRequest) {
+    request = &DescribeBaselinePolicyListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cwp", APIVersion, "DescribeBaselinePolicyList")
+    
+    
+    return
+}
+
+func NewDescribeBaselinePolicyListResponse() (response *DescribeBaselinePolicyListResponse) {
+    response = &DescribeBaselinePolicyListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeBaselinePolicyList
+// 获取基线策略列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeBaselinePolicyList(request *DescribeBaselinePolicyListRequest) (response *DescribeBaselinePolicyListResponse, err error) {
+    return c.DescribeBaselinePolicyListWithContext(context.Background(), request)
+}
+
+// DescribeBaselinePolicyList
+// 获取基线策略列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeBaselinePolicyListWithContext(ctx context.Context, request *DescribeBaselinePolicyListRequest) (response *DescribeBaselinePolicyListResponse, err error) {
+    if request == nil {
+        request = NewDescribeBaselinePolicyListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBaselinePolicyList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeBaselinePolicyListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeBaselineRuleRequest() (request *DescribeBaselineRuleRequest) {
     request = &DescribeBaselineRuleRequest{
         BaseRequest: &tchttp.BaseRequest{},

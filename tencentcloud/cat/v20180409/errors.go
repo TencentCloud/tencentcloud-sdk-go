@@ -72,7 +72,7 @@ const (
 	FAILEDOPERATION_UNMARSHALRESPONSE = "FailedOperation.UnmarshalResponse"
 
 	// 鉴权失败。
-	FAILEDOPERATION_USERNOPROMISSIONS = "FailedOperation.UserNoPromissions"
+	FAILEDOPERATION_USERNOQCLOUDTAGFULLACCESS = "FailedOperation.UserNoQcloudTAGFullAccess"
 
 	// 内部错误。
 	INTERNALERROR = "InternalError"

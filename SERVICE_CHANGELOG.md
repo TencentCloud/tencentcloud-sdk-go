@@ -2,109 +2,9 @@
 
 ## 主机安全(cwp) 版本：2018-02-28
 
-### 第 57 次发布
+### 第 58 次发布
 
-发布时间：2022-10-21 06:19:41
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DeleteBaselinePolicy](https://cloud.tencent.com/document/api/296/81788)
-* [DeleteScanTask](https://cloud.tencent.com/document/api/296/81789)
-* [DescribeBaselineHostDetectList](https://cloud.tencent.com/document/api/296/81787)
-* [DescribeJavaMemShellList](https://cloud.tencent.com/document/api/296/81790)
-* [ModifyBaselinePolicy](https://cloud.tencent.com/document/api/296/81786)
-* [StopBaselineDetect](https://cloud.tencent.com/document/api/296/81785)
-
-新增数据结构：
-
-* [BaselineHostDetect](https://cloud.tencent.com/document/api/296/19867#BaselineHostDetect)
-* [BaselinePolicy](https://cloud.tencent.com/document/api/296/19867#BaselinePolicy)
-* [JavaMemShellInfo](https://cloud.tencent.com/document/api/296/19867#JavaMemShellInfo)
-
-
-
-## 云监控(monitor) 版本：2018-07-24
-
-### 第 67 次发布
-
-发布时间：2022-10-21 06:35:12
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CreateAlarmPolicy](https://cloud.tencent.com/document/api/248/51287)
-
-	* 新增入参：HierarchicalNotices, MigrateFlag
-
-
-新增数据结构：
-
-* [AlarmHierarchicalNotice](https://cloud.tencent.com/document/api/248/30354#AlarmHierarchicalNotice)
-
-
-
-## 云开发 CloudBase(tcb) 版本：2018-06-08
-
-### 第 88 次发布
-
-发布时间：2022-10-21 06:43:29
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CreateWxCloudBaseRunServerDBCluster](https://cloud.tencent.com/document/api/876/55636)
-
-	* 新增入参：LowerCaseTableName
-
-
-
-
-## 服务网格(tcm) 版本：2021-04-13
-
-### 第 15 次发布
-
-发布时间：2022-10-21 06:44:08
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增数据结构：
-
-* [EgressGatewayStatus](https://cloud.tencent.com/document/api/1261/63843#EgressGatewayStatus)
-
-修改数据结构：
-
-* [EgressGateway](https://cloud.tencent.com/document/api/1261/63843#EgressGateway)
-
-	* 新增成员：Status
-
-* [IngressGatewayStatus](https://cloud.tencent.com/document/api/1261/63843#IngressGatewayStatus)
-
-	* 新增成员：CurrentVersion, DesiredVersion, State
-
-* [Mesh](https://cloud.tencent.com/document/api/1261/63843#Mesh)
-
-	* 新增成员：TagList
-
-
-
-
-## 容器安全服务(tcss) 版本：2020-11-01
-
-### 第 28 次发布
-
-发布时间：2022-10-21 06:44:56
+发布时间：2022-10-24 06:23:41
 
 本次发布包含了以下内容：
 
@@ -112,83 +12,7 @@
 
 新增接口：
 
-* [AddComplianceAssetPolicySetToWhitelist](https://cloud.tencent.com/document/api/1285/81795)
-* [AddCompliancePolicyAssetSetToWhitelist](https://cloud.tencent.com/document/api/1285/81794)
-* [DeleteComplianceAssetPolicySetFromWhitelist](https://cloud.tencent.com/document/api/1285/81793)
-* [DeleteCompliancePolicyAssetSetFromWhitelist](https://cloud.tencent.com/document/api/1285/81792)
-* [DescribeImageRegistryNamespaceList](https://cloud.tencent.com/document/api/1285/81791)
-
-新增数据结构：
-
-* [ComplianceAssetPolicySetItem](https://cloud.tencent.com/document/api/1285/65614#ComplianceAssetPolicySetItem)
-* [CompliancePolicyAssetSetItem](https://cloud.tencent.com/document/api/1285/65614#CompliancePolicyAssetSetItem)
-
-
-
-## TDSQL-C PostgreSQL 版(tdcpg) 版本：2021-11-18
-
-### 第 4 次发布
-
-发布时间：2022-10-21 06:47:14
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CloneClusterToPointInTime](https://cloud.tencent.com/document/api/1556/70694)
-
-	* 新增入参：StoragePayMode, Storage
-
-
-
-
-## 高性能计算平台(thpc) 版本：2022-04-01
-
-### 第 3 次发布
-
-发布时间：2022-10-21 06:49:31
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [SetAutoScalingConfiguration](https://cloud.tencent.com/document/api/1527/81796)
-
-新增数据结构：
-
-* [ExpansionNodeConfig](https://cloud.tencent.com/document/api/1527/72108#ExpansionNodeConfig)
-* [QueueConfig](https://cloud.tencent.com/document/api/1527/72108#QueueConfig)
-
-
-
-## 高性能计算平台(thpc) 版本：2021-11-09
-
-
-
-## 容器服务(tke) 版本：2018-05-25
-
-### 第 127 次发布
-
-发布时间：2022-10-21 06:50:37
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [EdgeCluster](https://cloud.tencent.com/document/api/457/31866#EdgeCluster)
-
-	* 新增成员：Level
-
-* [PrometheusAgentOverview](https://cloud.tencent.com/document/api/457/31866#PrometheusAgentOverview)
-
-	* 新增成员：Region, VpcId, FailedReason
-
+* [DescribeBaselinePolicyList](https://cloud.tencent.com/document/api/296/81834)
 
 
 
@@ -28073,6 +27897,18 @@
 
 ## 主机安全(cwp) 版本：2018-02-28
 
+### 第 58 次发布
+
+发布时间：2022-10-24 06:23:41
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeBaselinePolicyList](https://cloud.tencent.com/document/api/296/81834)](https://cloud.tencent.com/document/api/#/#)
+
 ### 第 57 次发布
 
 发布时间：2022-10-21 06:19:41
@@ -28083,18 +27919,18 @@
 
 新增接口：
 
-* [[DeleteBaselinePolicy](https://cloud.tencent.com/document/api/296/81788)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteScanTask](https://cloud.tencent.com/document/api/296/81789)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeBaselineHostDetectList](https://cloud.tencent.com/document/api/296/81787)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeJavaMemShellList](https://cloud.tencent.com/document/api/296/81790)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyBaselinePolicy](https://cloud.tencent.com/document/api/296/81786)](https://cloud.tencent.com/document/api/#/#)
-* [[StopBaselineDetect](https://cloud.tencent.com/document/api/296/81785)](https://cloud.tencent.com/document/api/#/#)
+* [DeleteBaselinePolicy](https://cloud.tencent.com/document/api/296/81788)
+* [DeleteScanTask](https://cloud.tencent.com/document/api/296/81789)
+* [DescribeBaselineHostDetectList](https://cloud.tencent.com/document/api/296/81787)
+* [DescribeJavaMemShellList](https://cloud.tencent.com/document/api/296/81790)
+* [ModifyBaselinePolicy](https://cloud.tencent.com/document/api/296/81786)
+* [StopBaselineDetect](https://cloud.tencent.com/document/api/296/81785)
 
 新增数据结构：
 
-* [[BaselineHostDetect](https://cloud.tencent.com/document/api/296/19867#BaselineHostDetect)](https://cloud.tencent.com/document/api/296/19867#[BaselineHostDetect](https://cloud.tencent.com/document/api/296/19867#BaselineHostDetect))
-* [[BaselinePolicy](https://cloud.tencent.com/document/api/296/19867#BaselinePolicy)](https://cloud.tencent.com/document/api/296/19867#[BaselinePolicy](https://cloud.tencent.com/document/api/296/19867#BaselinePolicy))
-* [[JavaMemShellInfo](https://cloud.tencent.com/document/api/296/19867#JavaMemShellInfo)](https://cloud.tencent.com/document/api/296/19867#[JavaMemShellInfo](https://cloud.tencent.com/document/api/296/19867#JavaMemShellInfo))
+* [BaselineHostDetect](https://cloud.tencent.com/document/api/296/19867#BaselineHostDetect)
+* [BaselinePolicy](https://cloud.tencent.com/document/api/296/19867#BaselinePolicy)
+* [JavaMemShellInfo](https://cloud.tencent.com/document/api/296/19867#JavaMemShellInfo)
 
 ### 第 56 次发布
 
@@ -54844,7 +54680,7 @@
 
 新增数据结构：
 
-* [[AlarmHierarchicalNotice](https://cloud.tencent.com/document/api/248/30354#AlarmHierarchicalNotice)](https://cloud.tencent.com/document/api/248/30354#[AlarmHierarchicalNotice](https://cloud.tencent.com/document/api/248/30354#AlarmHierarchicalNotice))
+* [AlarmHierarchicalNotice](https://cloud.tencent.com/document/api/248/30354#AlarmHierarchicalNotice)
 
 ### 第 66 次发布
 
@@ -72175,7 +72011,7 @@
 
 新增数据结构：
 
-* [[EgressGatewayStatus](https://cloud.tencent.com/document/api/1261/63843#EgressGatewayStatus)](https://cloud.tencent.com/document/api/1261/63843#[EgressGatewayStatus](https://cloud.tencent.com/document/api/1261/63843#EgressGatewayStatus))
+* [EgressGatewayStatus](https://cloud.tencent.com/document/api/1261/63843#EgressGatewayStatus)
 
 修改数据结构：
 
@@ -73367,16 +73203,16 @@
 
 新增接口：
 
-* [[AddComplianceAssetPolicySetToWhitelist](https://cloud.tencent.com/document/api/1285/81795)](https://cloud.tencent.com/document/api/#/#)
-* [[AddCompliancePolicyAssetSetToWhitelist](https://cloud.tencent.com/document/api/1285/81794)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteComplianceAssetPolicySetFromWhitelist](https://cloud.tencent.com/document/api/1285/81793)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteCompliancePolicyAssetSetFromWhitelist](https://cloud.tencent.com/document/api/1285/81792)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeImageRegistryNamespaceList](https://cloud.tencent.com/document/api/1285/81791)](https://cloud.tencent.com/document/api/#/#)
+* [AddComplianceAssetPolicySetToWhitelist](https://cloud.tencent.com/document/api/1285/81795)
+* [AddCompliancePolicyAssetSetToWhitelist](https://cloud.tencent.com/document/api/1285/81794)
+* [DeleteComplianceAssetPolicySetFromWhitelist](https://cloud.tencent.com/document/api/1285/81793)
+* [DeleteCompliancePolicyAssetSetFromWhitelist](https://cloud.tencent.com/document/api/1285/81792)
+* [DescribeImageRegistryNamespaceList](https://cloud.tencent.com/document/api/1285/81791)
 
 新增数据结构：
 
-* [[ComplianceAssetPolicySetItem](https://cloud.tencent.com/document/api/1285/65614#ComplianceAssetPolicySetItem)](https://cloud.tencent.com/document/api/1285/65614#[ComplianceAssetPolicySetItem](https://cloud.tencent.com/document/api/1285/65614#ComplianceAssetPolicySetItem))
-* [[CompliancePolicyAssetSetItem](https://cloud.tencent.com/document/api/1285/65614#CompliancePolicyAssetSetItem)](https://cloud.tencent.com/document/api/1285/65614#[CompliancePolicyAssetSetItem](https://cloud.tencent.com/document/api/1285/65614#CompliancePolicyAssetSetItem))
+* [ComplianceAssetPolicySetItem](https://cloud.tencent.com/document/api/1285/65614#ComplianceAssetPolicySetItem)
+* [CompliancePolicyAssetSetItem](https://cloud.tencent.com/document/api/1285/65614#CompliancePolicyAssetSetItem)
 
 ### 第 27 次发布
 
@@ -78024,12 +77860,12 @@
 
 新增接口：
 
-* [[SetAutoScalingConfiguration](https://cloud.tencent.com/document/api/1527/81796)](https://cloud.tencent.com/document/api/#/#)
+* [SetAutoScalingConfiguration](https://cloud.tencent.com/document/api/1527/81796)
 
 新增数据结构：
 
-* [[ExpansionNodeConfig](https://cloud.tencent.com/document/api/1527/72108#ExpansionNodeConfig)](https://cloud.tencent.com/document/api/1527/72108#[ExpansionNodeConfig](https://cloud.tencent.com/document/api/1527/72108#ExpansionNodeConfig))
-* [[QueueConfig](https://cloud.tencent.com/document/api/1527/72108#QueueConfig)](https://cloud.tencent.com/document/api/1527/72108#[QueueConfig](https://cloud.tencent.com/document/api/1527/72108#QueueConfig))
+* [ExpansionNodeConfig](https://cloud.tencent.com/document/api/1527/72108#ExpansionNodeConfig)
+* [QueueConfig](https://cloud.tencent.com/document/api/1527/72108#QueueConfig)
 
 ### 第 2 次发布
 
