@@ -9603,6 +9603,7 @@ func NewModifyClusterAuthenticationOptionsResponse() (response *ModifyClusterAut
 // 修改集群认证配置
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_KUBECOMMON = "FailedOperation.KubeCommon"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
@@ -9616,6 +9617,7 @@ func (c *Client) ModifyClusterAuthenticationOptions(request *ModifyClusterAuthen
 // 修改集群认证配置
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_KUBECOMMON = "FailedOperation.KubeCommon"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"

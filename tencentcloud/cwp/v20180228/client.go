@@ -13089,6 +13089,7 @@ func NewSyncAssetScanResponse() (response *SyncAssetScanResponse) {
 //  INTERNALERROR_MAINDBFAIL = "InternalError.MainDBFail"
 //  INVALIDPARAMETER_ILLEGALREQUEST = "InvalidParameter.IllegalRequest"
 //  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) SyncAssetScan(request *SyncAssetScanRequest) (response *SyncAssetScanResponse, err error) {
     return c.SyncAssetScanWithContext(context.Background(), request)
 }
@@ -13103,6 +13104,7 @@ func (c *Client) SyncAssetScan(request *SyncAssetScanRequest) (response *SyncAss
 //  INTERNALERROR_MAINDBFAIL = "InternalError.MainDBFail"
 //  INVALIDPARAMETER_ILLEGALREQUEST = "InvalidParameter.IllegalRequest"
 //  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) SyncAssetScanWithContext(ctx context.Context, request *SyncAssetScanRequest) (response *SyncAssetScanResponse, err error) {
     if request == nil {
         request = NewSyncAssetScanRequest()

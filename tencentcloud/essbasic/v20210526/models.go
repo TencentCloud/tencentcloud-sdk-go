@@ -72,6 +72,16 @@ type ChannelBatchCancelFlowsRequestParams struct {
 	// 签署流程Id数组，最多100个，超过100不处理
 	FlowIds []*string `json:"FlowIds,omitempty" name:"FlowIds"`
 
+	// 撤销理由
+	CancelMessage *string `json:"CancelMessage,omitempty" name:"CancelMessage"`
+
+	// 撤销理由自定义格式；选项：
+	// 0 默认格式
+	// 1 只保留身份信息：展示为【发起方】
+	// 2 保留身份信息+企业名称：展示为【发起方xxx公司】
+	// 3 保留身份信息+企业名称+经办人名称：展示为【发起方xxxx公司-经办人姓名】
+	CancelMessageFormat *int64 `json:"CancelMessageFormat,omitempty" name:"CancelMessageFormat"`
+
 	// 操作人信息
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 }
@@ -84,6 +94,16 @@ type ChannelBatchCancelFlowsRequest struct {
 
 	// 签署流程Id数组，最多100个，超过100不处理
 	FlowIds []*string `json:"FlowIds,omitempty" name:"FlowIds"`
+
+	// 撤销理由
+	CancelMessage *string `json:"CancelMessage,omitempty" name:"CancelMessage"`
+
+	// 撤销理由自定义格式；选项：
+	// 0 默认格式
+	// 1 只保留身份信息：展示为【发起方】
+	// 2 保留身份信息+企业名称：展示为【发起方xxx公司】
+	// 3 保留身份信息+企业名称+经办人名称：展示为【发起方xxxx公司-经办人姓名】
+	CancelMessageFormat *int64 `json:"CancelMessageFormat,omitempty" name:"CancelMessageFormat"`
 
 	// 操作人信息
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
@@ -103,6 +123,8 @@ func (r *ChannelBatchCancelFlowsRequest) FromJsonString(s string) error {
 	}
 	delete(f, "Agent")
 	delete(f, "FlowIds")
+	delete(f, "CancelMessage")
+	delete(f, "CancelMessageFormat")
 	delete(f, "Operator")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ChannelBatchCancelFlowsRequest has unknown keys!", "")
@@ -132,6 +154,96 @@ func (r *ChannelBatchCancelFlowsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ChannelBatchCancelFlowsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ChannelCancelFlowRequestParams struct {
+	// 签署流程编号
+	FlowId *string `json:"FlowId,omitempty" name:"FlowId"`
+
+	// 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+
+	// 撤回原因，最大不超过200字符
+	CancelMessage *string `json:"CancelMessage,omitempty" name:"CancelMessage"`
+
+	// 操作者的信息
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
+	// 撤销理由自定义格式；选项：
+	// 0 默认格式
+	// 1 只保留身份信息：展示为【发起方】
+	// 2 保留身份信息+企业名称：展示为【发起方xxx公司】
+	// 3 保留身份信息+企业名称+经办人名称：展示为【发起方xxxx公司-经办人姓名】
+	CancelMessageFormat *int64 `json:"CancelMessageFormat,omitempty" name:"CancelMessageFormat"`
+}
+
+type ChannelCancelFlowRequest struct {
+	*tchttp.BaseRequest
+	
+	// 签署流程编号
+	FlowId *string `json:"FlowId,omitempty" name:"FlowId"`
+
+	// 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+
+	// 撤回原因，最大不超过200字符
+	CancelMessage *string `json:"CancelMessage,omitempty" name:"CancelMessage"`
+
+	// 操作者的信息
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
+	// 撤销理由自定义格式；选项：
+	// 0 默认格式
+	// 1 只保留身份信息：展示为【发起方】
+	// 2 保留身份信息+企业名称：展示为【发起方xxx公司】
+	// 3 保留身份信息+企业名称+经办人名称：展示为【发起方xxxx公司-经办人姓名】
+	CancelMessageFormat *int64 `json:"CancelMessageFormat,omitempty" name:"CancelMessageFormat"`
+}
+
+func (r *ChannelCancelFlowRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ChannelCancelFlowRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FlowId")
+	delete(f, "Agent")
+	delete(f, "CancelMessage")
+	delete(f, "Operator")
+	delete(f, "CancelMessageFormat")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ChannelCancelFlowRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ChannelCancelFlowResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ChannelCancelFlowResponse struct {
+	*tchttp.BaseResponse
+	Response *ChannelCancelFlowResponseParams `json:"Response"`
+}
+
+func (r *ChannelCancelFlowResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ChannelCancelFlowResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1817,7 +1929,7 @@ type DescribeTemplatesRequestParams struct {
 	// 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
-	// 模板唯一标识，查询单个模版时使用
+	// 模板唯一标识，查询单个模板时使用
 	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
 
 	// 查询内容：0-模板列表及详情（默认），1-仅模板列表
@@ -1845,7 +1957,7 @@ type DescribeTemplatesRequest struct {
 	// 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
-	// 模板唯一标识，查询单个模版时使用
+	// 模板唯一标识，查询单个模板时使用
 	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
 
 	// 查询内容：0-模板列表及详情（默认），1-仅模板列表

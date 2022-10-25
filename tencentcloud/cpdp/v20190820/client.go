@@ -1075,6 +1075,62 @@ func (c *Client) BindOpenBankExternalSubMerchantBankAccountWithContext(ctx conte
     return
 }
 
+func NewBindOpenBankProfitSharePayeeRequest() (request *BindOpenBankProfitSharePayeeRequest) {
+    request = &BindOpenBankProfitSharePayeeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cpdp", APIVersion, "BindOpenBankProfitSharePayee")
+    
+    
+    return
+}
+
+func NewBindOpenBankProfitSharePayeeResponse() (response *BindOpenBankProfitSharePayeeResponse) {
+    response = &BindOpenBankProfitSharePayeeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// BindOpenBankProfitSharePayee
+// 云企付-绑定分账收款方
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_BANKFAILED = "FailedOperation.BankFailed"
+//  FAILEDOPERATION_SERVICEERROR = "FailedOperation.ServiceError"
+//  FAILEDOPERATION_UNKNOWN = "FailedOperation.Unknown"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER_ = "MissingParameter."
+func (c *Client) BindOpenBankProfitSharePayee(request *BindOpenBankProfitSharePayeeRequest) (response *BindOpenBankProfitSharePayeeResponse, err error) {
+    return c.BindOpenBankProfitSharePayeeWithContext(context.Background(), request)
+}
+
+// BindOpenBankProfitSharePayee
+// 云企付-绑定分账收款方
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_BANKFAILED = "FailedOperation.BankFailed"
+//  FAILEDOPERATION_SERVICEERROR = "FailedOperation.ServiceError"
+//  FAILEDOPERATION_UNKNOWN = "FailedOperation.Unknown"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER_ = "MissingParameter."
+func (c *Client) BindOpenBankProfitSharePayeeWithContext(ctx context.Context, request *BindOpenBankProfitSharePayeeRequest) (response *BindOpenBankProfitSharePayeeResponse, err error) {
+    if request == nil {
+        request = NewBindOpenBankProfitSharePayeeRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("BindOpenBankProfitSharePayee require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewBindOpenBankProfitSharePayeeResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewBindRelateAccReUnionPayRequest() (request *BindRelateAccReUnionPayRequest) {
     request = &BindRelateAccReUnionPayRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -9301,6 +9357,54 @@ func (c *Client) QueryOpenBankPaymentOrderWithContext(ctx context.Context, reque
     request.SetContext(ctx)
     
     response = NewQueryOpenBankPaymentOrderResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewQueryOpenBankProfitSharePayeeRequest() (request *QueryOpenBankProfitSharePayeeRequest) {
+    request = &QueryOpenBankProfitSharePayeeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cpdp", APIVersion, "QueryOpenBankProfitSharePayee")
+    
+    
+    return
+}
+
+func NewQueryOpenBankProfitSharePayeeResponse() (response *QueryOpenBankProfitSharePayeeResponse) {
+    response = &QueryOpenBankProfitSharePayeeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// QueryOpenBankProfitSharePayee
+// 云企付-绑定分账收款方查询
+//
+// 可能返回的错误码:
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+func (c *Client) QueryOpenBankProfitSharePayee(request *QueryOpenBankProfitSharePayeeRequest) (response *QueryOpenBankProfitSharePayeeResponse, err error) {
+    return c.QueryOpenBankProfitSharePayeeWithContext(context.Background(), request)
+}
+
+// QueryOpenBankProfitSharePayee
+// 云企付-绑定分账收款方查询
+//
+// 可能返回的错误码:
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
+func (c *Client) QueryOpenBankProfitSharePayeeWithContext(ctx context.Context, request *QueryOpenBankProfitSharePayeeRequest) (response *QueryOpenBankProfitSharePayeeResponse, err error) {
+    if request == nil {
+        request = NewQueryOpenBankProfitSharePayeeRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryOpenBankProfitSharePayee require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewQueryOpenBankProfitSharePayeeResponse()
     err = c.Send(request, response)
     return
 }

@@ -182,6 +182,10 @@ type BindProductInfo struct {
 	// 状态
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DevStatus *string `json:"DevStatus,omitempty" name:"DevStatus"`
+
+	// 产品拥有者名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProductOwnerName *string `json:"ProductOwnerName,omitempty" name:"ProductOwnerName"`
 }
 
 // Predefined struct for user
@@ -2201,6 +2205,9 @@ type DescribeBindedProductsRequestParams struct {
 
 	// 分页大小
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 是否跨账号绑定产品
+	ProductSource *int64 `json:"ProductSource,omitempty" name:"ProductSource"`
 }
 
 type DescribeBindedProductsRequest struct {
@@ -2214,6 +2221,9 @@ type DescribeBindedProductsRequest struct {
 
 	// 分页大小
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 是否跨账号绑定产品
+	ProductSource *int64 `json:"ProductSource,omitempty" name:"ProductSource"`
 }
 
 func (r *DescribeBindedProductsRequest) ToJsonString() string {
@@ -2231,6 +2241,7 @@ func (r *DescribeBindedProductsRequest) FromJsonString(s string) error {
 	delete(f, "GatewayProductId")
 	delete(f, "Offset")
 	delete(f, "Limit")
+	delete(f, "ProductSource")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBindedProductsRequest has unknown keys!", "")
 	}
@@ -2317,6 +2328,14 @@ type DescribeDeviceBindGatewayResponseParams struct {
 	// 网关产品名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	GatewayName *string `json:"GatewayName,omitempty" name:"GatewayName"`
+
+	// 设备对应产品所属的主账号名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GatewayProductOwnerName *string `json:"GatewayProductOwnerName,omitempty" name:"GatewayProductOwnerName"`
+
+	// 设备对应产品所属的主账号 UIN
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GatewayProductOwnerUin *string `json:"GatewayProductOwnerUin,omitempty" name:"GatewayProductOwnerUin"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -3136,6 +3155,9 @@ type DescribeGatewaySubProductsRequestParams struct {
 
 	// 项目Id
 	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 是否跨账号产品
+	ProductSource *int64 `json:"ProductSource,omitempty" name:"ProductSource"`
 }
 
 type DescribeGatewaySubProductsRequest struct {
@@ -3152,6 +3174,9 @@ type DescribeGatewaySubProductsRequest struct {
 
 	// 项目Id
 	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 是否跨账号产品
+	ProductSource *int64 `json:"ProductSource,omitempty" name:"ProductSource"`
 }
 
 func (r *DescribeGatewaySubProductsRequest) ToJsonString() string {
@@ -3170,6 +3195,7 @@ func (r *DescribeGatewaySubProductsRequest) FromJsonString(s string) error {
 	delete(f, "Offset")
 	delete(f, "Limit")
 	delete(f, "ProjectId")
+	delete(f, "ProductSource")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeGatewaySubProductsRequest has unknown keys!", "")
 	}

@@ -2001,6 +2001,7 @@ func NewListUsersInUserGroupResponse() (response *ListUsersInUserGroupResponse) 
 //  FAILEDOPERATION_LISTUSERSINUSERGROUPERROR = "FailedOperation.ListUsersInUserGroupError"
 //  FAILEDOPERATION_OPERATIONERROR = "FailedOperation.OperationError"
 //  INVALIDPARAMETER_PARAMETERLLLEGAL = "InvalidParameter.Parameterlllegal"
+//  INVALIDPARAMETER_SEARCHCRITERIAILLEGAL = "InvalidParameter.SearchCriteriaIllegal"
 //  INVALIDPARAMETERVALUE_PARAMETERILLEGAL = "InvalidParameterValue.ParameterIllegal"
 func (c *Client) ListUsersInUserGroup(request *ListUsersInUserGroupRequest) (response *ListUsersInUserGroupResponse, err error) {
     return c.ListUsersInUserGroupWithContext(context.Background(), request)
@@ -2014,6 +2015,7 @@ func (c *Client) ListUsersInUserGroup(request *ListUsersInUserGroupRequest) (res
 //  FAILEDOPERATION_LISTUSERSINUSERGROUPERROR = "FailedOperation.ListUsersInUserGroupError"
 //  FAILEDOPERATION_OPERATIONERROR = "FailedOperation.OperationError"
 //  INVALIDPARAMETER_PARAMETERLLLEGAL = "InvalidParameter.Parameterlllegal"
+//  INVALIDPARAMETER_SEARCHCRITERIAILLEGAL = "InvalidParameter.SearchCriteriaIllegal"
 //  INVALIDPARAMETERVALUE_PARAMETERILLEGAL = "InvalidParameterValue.ParameterIllegal"
 func (c *Client) ListUsersInUserGroupWithContext(ctx context.Context, request *ListUsersInUserGroupRequest) (response *ListUsersInUserGroupResponse, err error) {
     if request == nil {

@@ -80,11 +80,23 @@ const (
 	// 域名不存在或不属于该账号。
 	INVALIDPARAMETER_DOMAINNOTFOUND = "InvalidParameter.DomainNotFound"
 
+	// 非法操作-非法参数。
+	INVALIDPARAMETER_ERRINVALIDACTIONPARAM = "InvalidParameter.ErrInvalidActionParam"
+
+	// 非法操作-非法参数-参数值数量超出限制。
+	INVALIDPARAMETER_ERRINVALIDACTIONPARAMTOOMANYVALUES = "InvalidParameter.ErrInvalidActionParamTooManyValues"
+
+	// 非法条件-非法参数值-参数值长度超出限制。
+	INVALIDPARAMETER_ERRINVALIDCONDITIONVALUETOOLONGVALUE = "InvalidParameter.ErrInvalidConditionValueTooLongValue"
+
 	// 域名不存在。
 	INVALIDPARAMETER_HOSTNOTFOUND = "InvalidParameter.HostNotFound"
 
 	// 无效的token鉴权参数。
 	INVALIDPARAMETER_INVALIDAUTHENTICATIONTYPESIGNPARAM = "InvalidParameter.InvalidAuthenticationTypeSignParam"
+
+	// 无效的查询字符串。
+	INVALIDPARAMETER_INVALIDCACHEKEYQUERYSTRINGVALUE = "InvalidParameter.InvalidCacheKeyQueryStringValue"
 
 	// 无效的节点缓存。
 	INVALIDPARAMETER_INVALIDCACHEONLYONSWITCH = "InvalidParameter.InvalidCacheOnlyOnSwitch"
@@ -100,6 +112,9 @@ const (
 
 	// 无效的自定义错误页面。
 	INVALIDPARAMETER_INVALIDERRORPAGEREDIRECTURL = "InvalidParameter.InvalidErrorPageRedirectUrl"
+
+	// 无效的HTTPS TLS版本。
+	INVALIDPARAMETER_INVALIDHTTPSTLSVERSION = "InvalidParameter.InvalidHttpsTlsVersion"
 
 	// 无效的源站。
 	INVALIDPARAMETER_INVALIDORIGIN = "InvalidParameter.InvalidOrigin"
@@ -203,6 +218,9 @@ const (
 	// 当天提交的资源数超过上限。
 	LIMITEXCEEDED_DAILYQUOTA = "LimitExceeded.DailyQuota"
 
+	// 单位时间内接口请求频率达到限制。
+	LIMITEXCEEDED_RATELIMITEXCEEDED = "LimitExceeded.RateLimitExceeded"
+
 	// 操作被拒绝。
 	OPERATIONDENIED = "OperationDenied"
 
@@ -230,6 +248,9 @@ const (
 	// Dns资源被占用。
 	RESOURCEINUSE_DNS = "ResourceInUse.Dns"
 
+	// 已存在相同的别称域名。
+	RESOURCEINUSE_DUPLICATENAME = "ResourceInUse.DuplicateName"
+
 	// 资源被本账号的子域名占用。
 	RESOURCEINUSE_HOST = "ResourceInUse.Host"
 
@@ -253,6 +274,9 @@ const (
 
 	// 资源被本账号和其他账号同时Cname接入占用。
 	RESOURCEINUSE_SELFANDOTHERSCNAME = "ResourceInUse.SelfAndOthersCname"
+
+	// 别称域名已站点接入。
+	RESOURCEINUSE_ZONE = "ResourceInUse.Zone"
 
 	// 资源不足。
 	RESOURCEINSUFFICIENT = "ResourceInsufficient"

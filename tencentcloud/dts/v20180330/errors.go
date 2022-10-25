@@ -23,6 +23,9 @@ const (
 	// 禁止该操作。
 	FAILEDOPERATION_NOTALLOWOPERATION = "FailedOperation.NotAllowOperation"
 
+	// 代理出错。
+	FAILEDOPERATION_PROXYERROR = "FailedOperation.ProxyError"
+
 	// 任务开始失败。
 	FAILEDOPERATION_STARTJOBFAILED = "FailedOperation.StartJobFailed"
 

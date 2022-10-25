@@ -2710,6 +2710,10 @@ type CompliancePolicyItemSummary struct {
 
 	// 所属的合规标准的ID
 	BenchmarkStandardId *uint64 `json:"BenchmarkStandardId,omitempty" name:"BenchmarkStandardId"`
+
+	// 检测项适用的版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApplicableVersion *string `json:"ApplicableVersion,omitempty" name:"ApplicableVersion"`
 }
 
 type ComplianceScanFailedAsset struct {
@@ -4297,9 +4301,6 @@ func (r *CreateHostExportJobResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateImageExportJobRequestParams struct {
-	// 导出字段
-	ExportField []*string `json:"ExportField,omitempty" name:"ExportField"`
-
 	// 过滤条件。
 	// <li>ImageName- String - 是否必填：否 - 镜像名称筛选，</li>
 	// <li>ScanStatus - String - 是否必填：否 - 镜像扫描状态notScan，scanning，scanned，scanErr</li>
@@ -4318,14 +4319,14 @@ type CreateImageExportJobRequestParams struct {
 
 	// 排序方式 asc,desc
 	Order *string `json:"Order,omitempty" name:"Order"`
+
+	// 导出字段
+	ExportField []*string `json:"ExportField,omitempty" name:"ExportField"`
 }
 
 type CreateImageExportJobRequest struct {
 	*tchttp.BaseRequest
 	
-	// 导出字段
-	ExportField []*string `json:"ExportField,omitempty" name:"ExportField"`
-
 	// 过滤条件。
 	// <li>ImageName- String - 是否必填：否 - 镜像名称筛选，</li>
 	// <li>ScanStatus - String - 是否必填：否 - 镜像扫描状态notScan，scanning，scanned，scanErr</li>
@@ -4344,6 +4345,9 @@ type CreateImageExportJobRequest struct {
 
 	// 排序方式 asc,desc
 	Order *string `json:"Order,omitempty" name:"Order"`
+
+	// 导出字段
+	ExportField []*string `json:"ExportField,omitempty" name:"ExportField"`
 }
 
 func (r *CreateImageExportJobRequest) ToJsonString() string {
@@ -4358,12 +4362,12 @@ func (r *CreateImageExportJobRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	delete(f, "ExportField")
 	delete(f, "Filters")
 	delete(f, "Offset")
 	delete(f, "Limit")
 	delete(f, "By")
 	delete(f, "Order")
+	delete(f, "ExportField")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateImageExportJobRequest has unknown keys!", "")
 	}
@@ -14299,6 +14303,159 @@ func (r *DescribeEscapeWhiteListResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeExportJobDownloadURLRequestParams struct {
+	// 任务ID
+	JobID *string `json:"JobID,omitempty" name:"JobID"`
+}
+
+type DescribeExportJobDownloadURLRequest struct {
+	*tchttp.BaseRequest
+	
+	// 任务ID
+	JobID *string `json:"JobID,omitempty" name:"JobID"`
+}
+
+func (r *DescribeExportJobDownloadURLRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeExportJobDownloadURLRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "JobID")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeExportJobDownloadURLRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeExportJobDownloadURLResponseParams struct {
+	// 下载链接
+	DownloadURL *string `json:"DownloadURL,omitempty" name:"DownloadURL"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeExportJobDownloadURLResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeExportJobDownloadURLResponseParams `json:"Response"`
+}
+
+func (r *DescribeExportJobDownloadURLResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeExportJobDownloadURLResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeExportJobManageListRequestParams struct {
+	// 过滤条件。
+	// <li>ExportStatus- string -是否必填: 否 - 导出状态 RUNNING: 导出中 SUCCESS:导出完成 FAILURE:失败
+	// <li>ExportSource- string -是否必填: 否 - 导出来源 LocalImage: 本地镜像
+	// </li>
+	Filters []*RunTimeFilters `json:"Filters,omitempty" name:"Filters"`
+
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 需要返回的数量，默认为10，最大值为100
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 排序方式
+	Order *string `json:"Order,omitempty" name:"Order"`
+
+	// 排序字段
+	// InsertTime: 创建时间
+	By *string `json:"By,omitempty" name:"By"`
+}
+
+type DescribeExportJobManageListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 过滤条件。
+	// <li>ExportStatus- string -是否必填: 否 - 导出状态 RUNNING: 导出中 SUCCESS:导出完成 FAILURE:失败
+	// <li>ExportSource- string -是否必填: 否 - 导出来源 LocalImage: 本地镜像
+	// </li>
+	Filters []*RunTimeFilters `json:"Filters,omitempty" name:"Filters"`
+
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 需要返回的数量，默认为10，最大值为100
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 排序方式
+	Order *string `json:"Order,omitempty" name:"Order"`
+
+	// 排序字段
+	// InsertTime: 创建时间
+	By *string `json:"By,omitempty" name:"By"`
+}
+
+func (r *DescribeExportJobManageListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeExportJobManageListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Filters")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Order")
+	delete(f, "By")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeExportJobManageListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeExportJobManageListResponseParams struct {
+	// 总数
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 任务列表
+	List []*ExportJobInfo `json:"List,omitempty" name:"List"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeExportJobManageListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeExportJobManageListResponseParams `json:"Response"`
+}
+
+func (r *DescribeExportJobManageListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeExportJobManageListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeExportJobResultRequestParams struct {
 	// CreateExportComplianceStatusListJob返回的JobId字段的值
 	JobId *string `json:"JobId,omitempty" name:"JobId"`
@@ -18249,12 +18406,15 @@ func (r *DescribeSecLogDeliveryClsSettingResponse) FromJsonString(s string) erro
 
 // Predefined struct for user
 type DescribeSecLogDeliveryKafkaOptionsRequestParams struct {
-
+	// 地域，若为空则返回所有可选地域
+	RegionID *string `json:"RegionID,omitempty" name:"RegionID"`
 }
 
 type DescribeSecLogDeliveryKafkaOptionsRequest struct {
 	*tchttp.BaseRequest
 	
+	// 地域，若为空则返回所有可选地域
+	RegionID *string `json:"RegionID,omitempty" name:"RegionID"`
 }
 
 func (r *DescribeSecLogDeliveryKafkaOptionsRequest) ToJsonString() string {
@@ -18269,7 +18429,7 @@ func (r *DescribeSecLogDeliveryKafkaOptionsRequest) FromJsonString(s string) err
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "RegionID")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSecLogDeliveryKafkaOptionsRequest has unknown keys!", "")
 	}
@@ -18280,6 +18440,9 @@ func (r *DescribeSecLogDeliveryKafkaOptionsRequest) FromJsonString(s string) err
 type DescribeSecLogDeliveryKafkaOptionsResponseParams struct {
 	// 实例列表
 	InstanceList []*CKafkaInstanceInfo `json:"InstanceList,omitempty" name:"InstanceList"`
+
+	// 地域列表
+	RegionList []*RegionInfo `json:"RegionList,omitempty" name:"RegionList"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -18351,6 +18514,10 @@ type DescribeSecLogDeliveryKafkaSettingResponseParams struct {
 	// 用户名
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	User *string `json:"User,omitempty" name:"User"`
+
+	// 地域ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RegionID *string `json:"RegionID,omitempty" name:"RegionID"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -22705,6 +22872,32 @@ type EscapeWhiteListInfo struct {
 	ImageSize *int64 `json:"ImageSize,omitempty" name:"ImageSize"`
 }
 
+type ExportJobInfo struct {
+	// 任务ID
+	JobID *string `json:"JobID,omitempty" name:"JobID"`
+
+	// 任务名称
+	JobName *string `json:"JobName,omitempty" name:"JobName"`
+
+	// 来源
+	Source *string `json:"Source,omitempty" name:"Source"`
+
+	// 导出状态
+	ExportStatus *string `json:"ExportStatus,omitempty" name:"ExportStatus"`
+
+	// 导出进度
+	ExportProgress *int64 `json:"ExportProgress,omitempty" name:"ExportProgress"`
+
+	// 失败原因
+	FailureMsg *string `json:"FailureMsg,omitempty" name:"FailureMsg"`
+
+	// 超时时间
+	Timeout *string `json:"Timeout,omitempty" name:"Timeout"`
+
+	// 插入时间
+	InsertTime *string `json:"InsertTime,omitempty" name:"InsertTime"`
+}
+
 // Predefined struct for user
 type ExportVirusListRequestParams struct {
 	// 过滤条件。
@@ -22829,6 +23022,12 @@ type FileAttributeInfo struct {
 
 	// 最近被篡改文件创建时间
 	LatestTamperedFileMTime *string `json:"LatestTamperedFileMTime,omitempty" name:"LatestTamperedFileMTime"`
+
+	// 新文件内容
+	NewFile *string `json:"NewFile,omitempty" name:"NewFile"`
+
+	// 新旧文件的差异
+	FileDiff *string `json:"FileDiff,omitempty" name:"FileDiff"`
 }
 
 type HostInfo struct {
@@ -24968,6 +25167,9 @@ type ModifySecLogDeliveryKafkaSettingRequestParams struct {
 
 	// kafka版本号
 	KafkaVersion *string `json:"KafkaVersion,omitempty" name:"KafkaVersion"`
+
+	// 地域ID
+	RegionID *string `json:"RegionID,omitempty" name:"RegionID"`
 }
 
 type ModifySecLogDeliveryKafkaSettingRequest struct {
@@ -24996,6 +25198,9 @@ type ModifySecLogDeliveryKafkaSettingRequest struct {
 
 	// kafka版本号
 	KafkaVersion *string `json:"KafkaVersion,omitempty" name:"KafkaVersion"`
+
+	// 地域ID
+	RegionID *string `json:"RegionID,omitempty" name:"RegionID"`
 }
 
 func (r *ModifySecLogDeliveryKafkaSettingRequest) ToJsonString() string {
@@ -25018,6 +25223,7 @@ func (r *ModifySecLogDeliveryKafkaSettingRequest) FromJsonString(s string) error
 	delete(f, "LogTypeList")
 	delete(f, "AccessType")
 	delete(f, "KafkaVersion")
+	delete(f, "RegionID")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifySecLogDeliveryKafkaSettingRequest has unknown keys!", "")
 	}

@@ -231,6 +231,9 @@ type CreateApplicationRequestParams struct {
 
 	// 使用默认镜像服务额外参数
 	UseDefaultImageServiceParameters *UseDefaultRepoParameters `json:"UseDefaultImageServiceParameters,omitempty" name:"UseDefaultImageServiceParameters"`
+
+	// 标签
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 }
 
 type CreateApplicationRequest struct {
@@ -279,6 +282,9 @@ type CreateApplicationRequest struct {
 
 	// 使用默认镜像服务额外参数
 	UseDefaultImageServiceParameters *UseDefaultRepoParameters `json:"UseDefaultImageServiceParameters,omitempty" name:"UseDefaultImageServiceParameters"`
+
+	// 标签
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 }
 
 func (r *CreateApplicationRequest) ToJsonString() string {
@@ -306,6 +312,7 @@ func (r *CreateApplicationRequest) FromJsonString(s string) error {
 	delete(f, "DeployMode")
 	delete(f, "EnableTracing")
 	delete(f, "UseDefaultImageServiceParameters")
+	delete(f, "Tags")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateApplicationRequest has unknown keys!", "")
 	}
@@ -602,6 +609,9 @@ type CreateEnvironmentRequestParams struct {
 
 	// 是否开启tsw服务
 	EnableTswTraceService *bool `json:"EnableTswTraceService,omitempty" name:"EnableTswTraceService"`
+
+	// 标签
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 }
 
 type CreateEnvironmentRequest struct {
@@ -627,6 +637,9 @@ type CreateEnvironmentRequest struct {
 
 	// 是否开启tsw服务
 	EnableTswTraceService *bool `json:"EnableTswTraceService,omitempty" name:"EnableTswTraceService"`
+
+	// 标签
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 }
 
 func (r *CreateEnvironmentRequest) ToJsonString() string {
@@ -648,6 +661,7 @@ func (r *CreateEnvironmentRequest) FromJsonString(s string) error {
 	delete(f, "K8sVersion")
 	delete(f, "SourceChannel")
 	delete(f, "EnableTswTraceService")
+	delete(f, "Tags")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateEnvironmentRequest has unknown keys!", "")
 	}
@@ -1695,6 +1709,10 @@ type DeployServicePodDetail struct {
 	// webshell地址
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Webshell *string `json:"Webshell,omitempty" name:"Webshell"`
+
+	// 状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *string `json:"Status,omitempty" name:"Status"`
 }
 
 type DeployStrategyConf struct {
@@ -2055,6 +2073,9 @@ type DescribeApplicationsRequestParams struct {
 
 	// 搜索关键字
 	Keyword *string `json:"Keyword,omitempty" name:"Keyword"`
+
+	// 查询过滤器
+	Filters []*QueryFilter `json:"Filters,omitempty" name:"Filters"`
 }
 
 type DescribeApplicationsRequest struct {
@@ -2077,6 +2098,9 @@ type DescribeApplicationsRequest struct {
 
 	// 搜索关键字
 	Keyword *string `json:"Keyword,omitempty" name:"Keyword"`
+
+	// 查询过滤器
+	Filters []*QueryFilter `json:"Filters,omitempty" name:"Filters"`
 }
 
 func (r *DescribeApplicationsRequest) ToJsonString() string {
@@ -2097,6 +2121,7 @@ func (r *DescribeApplicationsRequest) FromJsonString(s string) error {
 	delete(f, "SourceChannel")
 	delete(f, "ApplicationId")
 	delete(f, "Keyword")
+	delete(f, "Filters")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeApplicationsRequest has unknown keys!", "")
 	}
@@ -2563,6 +2588,9 @@ type DescribeEnvironmentsRequestParams struct {
 
 	// 来源source
 	SourceChannel *int64 `json:"SourceChannel,omitempty" name:"SourceChannel"`
+
+	// 查询过滤器
+	Filters []*QueryFilter `json:"Filters,omitempty" name:"Filters"`
 }
 
 type DescribeEnvironmentsRequest struct {
@@ -2576,6 +2604,9 @@ type DescribeEnvironmentsRequest struct {
 
 	// 来源source
 	SourceChannel *int64 `json:"SourceChannel,omitempty" name:"SourceChannel"`
+
+	// 查询过滤器
+	Filters []*QueryFilter `json:"Filters,omitempty" name:"Filters"`
 }
 
 func (r *DescribeEnvironmentsRequest) ToJsonString() string {
@@ -2593,6 +2624,7 @@ func (r *DescribeEnvironmentsRequest) FromJsonString(s string) error {
 	delete(f, "Limit")
 	delete(f, "Offset")
 	delete(f, "SourceChannel")
+	delete(f, "Filters")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeEnvironmentsRequest has unknown keys!", "")
 	}
@@ -4002,6 +4034,10 @@ func (r *ModifyApplicationReplicasRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyApplicationReplicasResponseParams struct {
+	// 是否成功
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Result *bool `json:"Result,omitempty" name:"Result"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }
@@ -4469,6 +4505,10 @@ type NamespaceInfo struct {
 	// 环境是否上锁，1为上锁，0则未上锁
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Locked *int64 `json:"Locked,omitempty" name:"Locked"`
+
+	// 标签
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 }
 
 type NamespacePage struct {
@@ -4564,6 +4604,14 @@ type PortMapping struct {
 
 	// k8s service名称
 	ServiceName *string `json:"ServiceName,omitempty" name:"ServiceName"`
+}
+
+type QueryFilter struct {
+	// 查询字段名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 查询字段值
+	Value []*string `json:"Value,omitempty" name:"Value"`
 }
 
 // Predefined struct for user
@@ -5020,6 +5068,30 @@ type RunVersionPod struct {
 	// 容器状态
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ContainerState *string `json:"ContainerState,omitempty" name:"ContainerState"`
+
+	// 实例所在节点信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NodeInfo *NodeInfo `json:"NodeInfo,omitempty" name:"NodeInfo"`
+
+	// 启动时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 是否健康
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Unhealthy *bool `json:"Unhealthy,omitempty" name:"Unhealthy"`
+
+	// 不健康时的提示信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UnhealthyWarningMsg *string `json:"UnhealthyWarningMsg,omitempty" name:"UnhealthyWarningMsg"`
+
+	// 版本ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VersionId *string `json:"VersionId,omitempty" name:"VersionId"`
+
+	// 应用名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApplicationName *string `json:"ApplicationName,omitempty" name:"ApplicationName"`
 }
 
 type ServicePage struct {
@@ -5034,6 +5106,10 @@ type ServicePage struct {
 
 	// 页数
 	Pages *int64 `json:"Pages,omitempty" name:"Pages"`
+
+	// 当前条数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Current *int64 `json:"Current,omitempty" name:"Current"`
 }
 
 type ServicePortMapping struct {
@@ -5143,6 +5219,30 @@ type ServiceVersionBrief struct {
 	// 是否正在发布中
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UnderDeploying *bool `json:"UnderDeploying,omitempty" name:"UnderDeploying"`
+
+	// 分批次部署状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BatchDeployStatus *string `json:"BatchDeployStatus,omitempty" name:"BatchDeployStatus"`
+
+	// 可用区
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Zones []*string `json:"Zones,omitempty" name:"Zones"`
+
+	// 节点信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NodeInfos []*NodeInfo `json:"NodeInfos,omitempty" name:"NodeInfos"`
+
+	// 实例信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PodList *DescribeRunPodPage `json:"PodList,omitempty" name:"PodList"`
+
+	// 工作负载信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WorkloadInfo *WorkloadInfo `json:"WorkloadInfo,omitempty" name:"WorkloadInfo"`
+
+	// 创建日期
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateDate *string `json:"CreateDate,omitempty" name:"CreateDate"`
 }
 
 // Predefined struct for user
@@ -5462,6 +5562,10 @@ type TemService struct {
 	// 是否启用链路追踪
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EnableTracing *uint64 `json:"EnableTracing,omitempty" name:"EnableTracing"`
+
+	// 标签
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 }
 
 type TemServiceVersionInfo struct {
@@ -5738,6 +5842,58 @@ type TemServiceVersionInfo struct {
 	// 0：关闭metrics采集；
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EnableMetrics *int64 `json:"EnableMetrics,omitempty" name:"EnableMetrics"`
+
+	// 用户AppId
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AppId *string `json:"AppId,omitempty" name:"AppId"`
+
+	// 用户SubAccountUin
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubAccountUin *string `json:"SubAccountUin,omitempty" name:"SubAccountUin"`
+
+	// 用户Uin
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Uin *string `json:"Uin,omitempty" name:"Uin"`
+
+	// 地域
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Region *string `json:"Region,omitempty" name:"Region"`
+
+	// 应用分组ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
+
+	// 是否启用注册中心
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EnableRegistry *int64 `json:"EnableRegistry,omitempty" name:"EnableRegistry"`
+
+	// 弹性伸缩数组
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AutoscalerList []*Autoscaler `json:"AutoscalerList,omitempty" name:"AutoscalerList"`
+
+	// 修改人
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Modifier *string `json:"Modifier,omitempty" name:"Modifier"`
+
+	// 创建人
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Creator *string `json:"Creator,omitempty" name:"Creator"`
+
+	// 部署策略
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeployStrategyConf *DeployStrategyConf `json:"DeployStrategyConf,omitempty" name:"DeployStrategyConf"`
+
+	// 实例列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PodList *DescribeRunPodPage `json:"PodList,omitempty" name:"PodList"`
+
+	// 发布时配置是否有修改
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConfEdited *bool `json:"ConfEdited,omitempty" name:"ConfEdited"`
+
+	// 标签
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 }
 
 type UseDefaultRepoParameters struct {
@@ -5762,4 +5918,32 @@ type WorkloadInfo struct {
 	// 应用名
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ApplicationName *string `json:"ApplicationName,omitempty" name:"ApplicationName"`
+
+	// 版本名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VersionName *string `json:"VersionName,omitempty" name:"VersionName"`
+
+	// Ready实例数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReadyReplicas *int64 `json:"ReadyReplicas,omitempty" name:"ReadyReplicas"`
+
+	// 实例数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Replicas *int64 `json:"Replicas,omitempty" name:"Replicas"`
+
+	// Updated实例数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdatedReplicas *int64 `json:"UpdatedReplicas,omitempty" name:"UpdatedReplicas"`
+
+	// UpdatedReady实例数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdatedReadyReplicas *int64 `json:"UpdatedReadyReplicas,omitempty" name:"UpdatedReadyReplicas"`
+
+	// 更新版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateRevision *string `json:"UpdateRevision,omitempty" name:"UpdateRevision"`
+
+	// 当前版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CurrentRevision *string `json:"CurrentRevision,omitempty" name:"CurrentRevision"`
 }

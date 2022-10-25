@@ -9129,6 +9129,106 @@ func (c *Client) DescribeEscapeWhiteListWithContext(ctx context.Context, request
     return
 }
 
+func NewDescribeExportJobDownloadURLRequest() (request *DescribeExportJobDownloadURLRequest) {
+    request = &DescribeExportJobDownloadURLRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcss", APIVersion, "DescribeExportJobDownloadURL")
+    
+    
+    return
+}
+
+func NewDescribeExportJobDownloadURLResponse() (response *DescribeExportJobDownloadURLResponse) {
+    response = &DescribeExportJobDownloadURLResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeExportJobDownloadURL
+// 查询导出任务下载URL
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeExportJobDownloadURL(request *DescribeExportJobDownloadURLRequest) (response *DescribeExportJobDownloadURLResponse, err error) {
+    return c.DescribeExportJobDownloadURLWithContext(context.Background(), request)
+}
+
+// DescribeExportJobDownloadURL
+// 查询导出任务下载URL
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeExportJobDownloadURLWithContext(ctx context.Context, request *DescribeExportJobDownloadURLRequest) (response *DescribeExportJobDownloadURLResponse, err error) {
+    if request == nil {
+        request = NewDescribeExportJobDownloadURLRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeExportJobDownloadURL require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeExportJobDownloadURLResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeExportJobManageListRequest() (request *DescribeExportJobManageListRequest) {
+    request = &DescribeExportJobManageListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcss", APIVersion, "DescribeExportJobManageList")
+    
+    
+    return
+}
+
+func NewDescribeExportJobManageListResponse() (response *DescribeExportJobManageListResponse) {
+    response = &DescribeExportJobManageListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeExportJobManageList
+// 查询导出任务管理列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeExportJobManageList(request *DescribeExportJobManageListRequest) (response *DescribeExportJobManageListResponse, err error) {
+    return c.DescribeExportJobManageListWithContext(context.Background(), request)
+}
+
+// DescribeExportJobManageList
+// 查询导出任务管理列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeExportJobManageListWithContext(ctx context.Context, request *DescribeExportJobManageListRequest) (response *DescribeExportJobManageListResponse, err error) {
+    if request == nil {
+        request = NewDescribeExportJobManageListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeExportJobManageList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeExportJobManageListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeExportJobResultRequest() (request *DescribeExportJobResultRequest) {
     request = &DescribeExportJobResultRequest{
         BaseRequest: &tchttp.BaseRequest{},

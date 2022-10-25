@@ -1171,6 +1171,12 @@ type AuthenticationTypeD struct {
 	BackupSecretKey *string `json:"BackupSecretKey,omitempty" name:"BackupSecretKey"`
 }
 
+type AvifAdapter struct {
+	// 开关，"on/off"
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
+}
+
 type AwsPrivateAccess struct {
 	// 开关，on/off。
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
@@ -3302,8 +3308,8 @@ type DescribeCdnDomainLogsRequestParams struct {
 	// 不指定时默认为 mainland
 	Area *string `json:"Area,omitempty" name:"Area"`
 
-	// 指定下载日志的类型。
-	// access：获取访问日志
+	// 指定下载日志的类型，目前仅支持访问日志（access）。
+	// access：访问日志
 	LogType *string `json:"LogType,omitempty" name:"LogType"`
 }
 
@@ -3332,8 +3338,8 @@ type DescribeCdnDomainLogsRequest struct {
 	// 不指定时默认为 mainland
 	Area *string `json:"Area,omitempty" name:"Area"`
 
-	// 指定下载日志的类型。
-	// access：获取访问日志
+	// 指定下载日志的类型，目前仅支持访问日志（access）。
+	// access：访问日志
 	LogType *string `json:"LogType,omitempty" name:"LogType"`
 }
 
@@ -3364,7 +3370,8 @@ func (r *DescribeCdnDomainLogsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeCdnDomainLogsResponseParams struct {
-	// 日志包下载链接
+	// 日志包下载链接。
+	// 下载内容是gz后缀的压缩包，解压后是无扩展名的文本文件。
 	DomainLogs []*DomainLog `json:"DomainLogs,omitempty" name:"DomainLogs"`
 
 	// 查询到的总条数
@@ -4217,6 +4224,10 @@ type DescribeImageConfigResponseParams struct {
 	// GuetzliAdapter配置
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	GuetzliAdapter *GuetzliAdapter `json:"GuetzliAdapter,omitempty" name:"GuetzliAdapter"`
+
+	// AvifAdapter配置项
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AvifAdapter *AvifAdapter `json:"AvifAdapter,omitempty" name:"AvifAdapter"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -7606,6 +7617,10 @@ type ImageOptimization struct {
 	// GuetzliAdapter配置
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	GuetzliAdapter *GuetzliAdapter `json:"GuetzliAdapter,omitempty" name:"GuetzliAdapter"`
+
+	// AvifAdapter配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AvifAdapter *AvifAdapter `json:"AvifAdapter,omitempty" name:"AvifAdapter"`
 }
 
 type IpFilter struct {
@@ -9249,6 +9264,19 @@ type MaxAge struct {
 	// MaxAge 规则
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxAgeRules []*MaxAgeRule `json:"MaxAgeRules,omitempty" name:"MaxAgeRules"`
+
+	// MaxAge 状态码相关规则
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MaxAgeCodeRule *MaxAgeCodeRule `json:"MaxAgeCodeRule,omitempty" name:"MaxAgeCodeRule"`
+}
+
+type MaxAgeCodeRule struct {
+	// 处理动作
+	// clear：清除 cache-control 头部
+	Action *string `json:"Action,omitempty" name:"Action"`
+
+	// 指定HTTP状态码生效，当前仅支持填写"400-599"
+	StatusCodes []*string `json:"StatusCodes,omitempty" name:"StatusCodes"`
 }
 
 type MaxAgeRule struct {
@@ -11959,6 +11987,9 @@ type UpdateImageConfigRequestParams struct {
 
 	// GuetzliAdapter配置项
 	GuetzliAdapter *GuetzliAdapter `json:"GuetzliAdapter,omitempty" name:"GuetzliAdapter"`
+
+	// AvifAdapter配置项
+	AvifAdapter *AvifAdapter `json:"AvifAdapter,omitempty" name:"AvifAdapter"`
 }
 
 type UpdateImageConfigRequest struct {
@@ -11975,6 +12006,9 @@ type UpdateImageConfigRequest struct {
 
 	// GuetzliAdapter配置项
 	GuetzliAdapter *GuetzliAdapter `json:"GuetzliAdapter,omitempty" name:"GuetzliAdapter"`
+
+	// AvifAdapter配置项
+	AvifAdapter *AvifAdapter `json:"AvifAdapter,omitempty" name:"AvifAdapter"`
 }
 
 func (r *UpdateImageConfigRequest) ToJsonString() string {
@@ -11993,6 +12027,7 @@ func (r *UpdateImageConfigRequest) FromJsonString(s string) error {
 	delete(f, "WebpAdapter")
 	delete(f, "TpgAdapter")
 	delete(f, "GuetzliAdapter")
+	delete(f, "AvifAdapter")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateImageConfigRequest has unknown keys!", "")
 	}

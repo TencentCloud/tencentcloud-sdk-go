@@ -314,6 +314,9 @@ type CreateInstanceRequestParams struct {
 
 	// 是否开启存算分离
 	EnableHybridStorage *bool `json:"EnableHybridStorage,omitempty" name:"EnableHybridStorage"`
+
+	// 是否开启essd 增强型云盘
+	DiskEnhance *uint64 `json:"DiskEnhance,omitempty" name:"DiskEnhance"`
 }
 
 type CreateInstanceRequest struct {
@@ -422,6 +425,9 @@ type CreateInstanceRequest struct {
 
 	// 是否开启存算分离
 	EnableHybridStorage *bool `json:"EnableHybridStorage,omitempty" name:"EnableHybridStorage"`
+
+	// 是否开启essd 增强型云盘
+	DiskEnhance *uint64 `json:"DiskEnhance,omitempty" name:"DiskEnhance"`
 }
 
 func (r *CreateInstanceRequest) ToJsonString() string {
@@ -468,6 +474,7 @@ func (r *CreateInstanceRequest) FromJsonString(s string) error {
 	delete(f, "Protocol")
 	delete(f, "OperationDuration")
 	delete(f, "EnableHybridStorage")
+	delete(f, "DiskEnhance")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateInstanceRequest has unknown keys!", "")
 	}
@@ -2262,7 +2269,7 @@ type InstanceInfo struct {
 	// 实例所属子网的UID
 	SubnetUid *string `json:"SubnetUid,omitempty" name:"SubnetUid"`
 
-	// 实例状态，0:处理中,1:正常,-1停止,-2:销毁中,-3:已销毁
+	// 实例状态，0:处理中,1:正常,-1停止,-2:销毁中,-3:已销毁, 2:创建集群时初始化中
 	Status *int64 `json:"Status,omitempty" name:"Status"`
 
 	// 自动续费标识。取值范围：
@@ -2522,6 +2529,14 @@ type InstanceInfo struct {
 	// 是否支持存储计算分离
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EnableHybridStorage *bool `json:"EnableHybridStorage,omitempty" name:"EnableHybridStorage"`
+
+	// 流程进度
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProcessPercent *float64 `json:"ProcessPercent,omitempty" name:"ProcessPercent"`
+
+	// Kibana的altering外网告警策略<li>OPEN：开启</li><li>CLOSE：关闭
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	KibanaAlteringPublicAccess *string `json:"KibanaAlteringPublicAccess,omitempty" name:"KibanaAlteringPublicAccess"`
 }
 
 type InstanceLog struct {
@@ -2851,6 +2866,10 @@ type NodeInfo struct {
 	// 内存大小，单位GB
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MemSize *int64 `json:"MemSize,omitempty" name:"MemSize"`
+
+	// /
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DiskEnhance *int64 `json:"DiskEnhance,omitempty" name:"DiskEnhance"`
 }
 
 type NodeView struct {

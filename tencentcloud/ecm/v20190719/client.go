@@ -318,6 +318,7 @@ func NewAssociateAddressResponse() (response *AssociateAddressResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_INTERNALOPERATIONFAILURE = "FailedOperation.InternalOperationFailure"
+//  FAILEDOPERATION_INVALIDSTATUS = "FailedOperation.InvalidStatus"
 //  FAILEDOPERATION_OPERATIONNOTALLOW = "FailedOperation.OperationNotAllow"
 //  FAILEDOPERATION_PRIVATEIPADDRESSUNAVAILABLE = "FailedOperation.PrivateIpAddressUnavailable"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -359,6 +360,7 @@ func (c *Client) AssociateAddress(request *AssociateAddressRequest) (response *A
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_INTERNALOPERATIONFAILURE = "FailedOperation.InternalOperationFailure"
+//  FAILEDOPERATION_INVALIDSTATUS = "FailedOperation.InvalidStatus"
 //  FAILEDOPERATION_OPERATIONNOTALLOW = "FailedOperation.OperationNotAllow"
 //  FAILEDOPERATION_PRIVATEIPADDRESSUNAVAILABLE = "FailedOperation.PrivateIpAddressUnavailable"
 //  INVALIDPARAMETER = "InvalidParameter"

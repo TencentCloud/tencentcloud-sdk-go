@@ -1626,6 +1626,8 @@ func NewCreatePullStreamConfigResponse() (response *CreatePullStreamConfigRespon
 // CreatePullStreamConfig
 // 创建临时拉流转推任务，目前限制添加10条任务。
 //
+// 该接口已下线,请使用新接口 CreateLivePullStreamTask。
+//
 // 
 //
 // 注意：该接口用于创建临时拉流转推任务，
@@ -1654,6 +1656,8 @@ func (c *Client) CreatePullStreamConfig(request *CreatePullStreamConfigRequest) 
 
 // CreatePullStreamConfig
 // 创建临时拉流转推任务，目前限制添加10条任务。
+//
+// 该接口已下线,请使用新接口 CreateLivePullStreamTask。
 //
 // 
 //

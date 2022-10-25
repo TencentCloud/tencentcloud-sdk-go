@@ -18421,6 +18421,12 @@ type HostLoginList struct {
 	// 主机quuid
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
+
+	// 高危信息说明：
+	// ABROAD - 海外IP；
+	// XTI - 威胁情报
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Desc *string `json:"Desc,omitempty" name:"Desc"`
 }
 
 type IgnoreBaselineRule struct {

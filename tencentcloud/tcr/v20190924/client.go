@@ -1067,6 +1067,7 @@ func NewCreateReplicationInstanceResponse() (response *CreateReplicationInstance
 // 创建从实例
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DBERROR = "InternalError.DbError"
 //  INTERNALERROR_ERRCONFLICT = "InternalError.ErrConflict"
@@ -1089,6 +1090,7 @@ func (c *Client) CreateReplicationInstance(request *CreateReplicationInstanceReq
 // 创建从实例
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DBERROR = "InternalError.DbError"
 //  INTERNALERROR_ERRCONFLICT = "InternalError.ErrConflict"

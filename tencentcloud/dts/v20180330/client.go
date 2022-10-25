@@ -218,6 +218,7 @@ func NewCreateMigrateCheckJobResponse() (response *CreateMigrateCheckJobResponse
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_NOTALLOWOPERATION = "FailedOperation.NotAllowOperation"
+//  FAILEDOPERATION_PROXYERROR = "FailedOperation.ProxyError"
 //  INTERNALERROR_ADDTASKERROR = "InternalError.AddTaskError"
 //  INTERNALERROR_CELERYERROR = "InternalError.CeleryError"
 //  INTERNALERROR_CGWSYSTEMERROR = "InternalError.CgwSystemError"
@@ -253,6 +254,7 @@ func (c *Client) CreateMigrateCheckJob(request *CreateMigrateCheckJobRequest) (r
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_NOTALLOWOPERATION = "FailedOperation.NotAllowOperation"
+//  FAILEDOPERATION_PROXYERROR = "FailedOperation.ProxyError"
 //  INTERNALERROR_ADDTASKERROR = "InternalError.AddTaskError"
 //  INTERNALERROR_CELERYERROR = "InternalError.CeleryError"
 //  INTERNALERROR_CGWSYSTEMERROR = "InternalError.CgwSystemError"

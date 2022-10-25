@@ -109,6 +109,80 @@ func (c *Client) ChannelBatchCancelFlowsWithContext(ctx context.Context, request
     return
 }
 
+func NewChannelCancelFlowRequest() (request *ChannelCancelFlowRequest) {
+    request = &ChannelCancelFlowRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("essbasic", APIVersion, "ChannelCancelFlow")
+    
+    
+    return
+}
+
+func NewChannelCancelFlowResponse() (response *ChannelCancelFlowResponse) {
+    response = &ChannelCancelFlowResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ChannelCancelFlow
+// 渠道版撤销签署流程接口
+//
+// 注意:
+//
+// 能撤回合同的只能是合同的发起人或者发起企业的超管、法人
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_STATUS = "InvalidParameter.Status"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_FLOW = "ResourceNotFound.Flow"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ChannelCancelFlow(request *ChannelCancelFlowRequest) (response *ChannelCancelFlowResponse, err error) {
+    return c.ChannelCancelFlowWithContext(context.Background(), request)
+}
+
+// ChannelCancelFlow
+// 渠道版撤销签署流程接口
+//
+// 注意:
+//
+// 能撤回合同的只能是合同的发起人或者发起企业的超管、法人
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_STATUS = "InvalidParameter.Status"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_FLOW = "ResourceNotFound.Flow"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ChannelCancelFlowWithContext(ctx context.Context, request *ChannelCancelFlowRequest) (response *ChannelCancelFlowResponse, err error) {
+    if request == nil {
+        request = NewChannelCancelFlowRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ChannelCancelFlow require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewChannelCancelFlowResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewChannelCancelMultiFlowSignQRCodeRequest() (request *ChannelCancelMultiFlowSignQRCodeRequest) {
     request = &ChannelCancelMultiFlowSignQRCodeRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -748,9 +822,11 @@ func NewChannelDescribeEmployeesResponse() (response *ChannelDescribeEmployeesRe
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_APPLICATION = "InvalidParameter.Application"
 //  INVALIDPARAMETER_ORGANIZATIONID = "InvalidParameter.OrganizationId"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_APPLICATION = "ResourceNotFound.Application"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) ChannelDescribeEmployees(request *ChannelDescribeEmployeesRequest) (response *ChannelDescribeEmployeesResponse, err error) {
     return c.ChannelDescribeEmployeesWithContext(context.Background(), request)
@@ -769,9 +845,11 @@ func (c *Client) ChannelDescribeEmployees(request *ChannelDescribeEmployeesReque
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_APPLICATION = "InvalidParameter.Application"
 //  INVALIDPARAMETER_ORGANIZATIONID = "InvalidParameter.OrganizationId"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_APPLICATION = "ResourceNotFound.Application"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) ChannelDescribeEmployeesWithContext(ctx context.Context, request *ChannelDescribeEmployeesRequest) (response *ChannelDescribeEmployeesResponse, err error) {
     if request == nil {
@@ -1520,7 +1598,7 @@ func NewDescribeTemplatesResponse() (response *DescribeTemplatesResponse) {
 }
 
 // DescribeTemplates
-// 通过此接口（DescribeTemplates）查询该子客企业在电子签拥有的的有效模板，不包括渠道模版
+// 通过此接口（DescribeTemplates）查询该子客企业在电子签拥有的有效模板，不包括渠道模板
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -1549,7 +1627,7 @@ func (c *Client) DescribeTemplates(request *DescribeTemplatesRequest) (response 
 }
 
 // DescribeTemplates
-// 通过此接口（DescribeTemplates）查询该子客企业在电子签拥有的的有效模板，不包括渠道模版
+// 通过此接口（DescribeTemplates）查询该子客企业在电子签拥有的有效模板，不包括渠道模板
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"

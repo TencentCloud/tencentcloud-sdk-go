@@ -412,6 +412,8 @@ func NewSetAutoScalingConfigurationResponse() (response *SetAutoScalingConfigura
 //
 // 可能返回的错误码:
 //  INTERNALERROR_CALLCVM = "InternalError.CallCvm"
+//  RESOURCENOTFOUND_CLUSTERID = "ResourceNotFound.ClusterId"
+//  UNSUPPORTEDOPERATION_CLUSTERSTATUSNOTSUPPORT = "UnsupportedOperation.ClusterStatusNotSupport"
 func (c *Client) SetAutoScalingConfiguration(request *SetAutoScalingConfigurationRequest) (response *SetAutoScalingConfigurationResponse, err error) {
     return c.SetAutoScalingConfigurationWithContext(context.Background(), request)
 }
@@ -421,6 +423,8 @@ func (c *Client) SetAutoScalingConfiguration(request *SetAutoScalingConfiguratio
 //
 // 可能返回的错误码:
 //  INTERNALERROR_CALLCVM = "InternalError.CallCvm"
+//  RESOURCENOTFOUND_CLUSTERID = "ResourceNotFound.ClusterId"
+//  UNSUPPORTEDOPERATION_CLUSTERSTATUSNOTSUPPORT = "UnsupportedOperation.ClusterStatusNotSupport"
 func (c *Client) SetAutoScalingConfigurationWithContext(ctx context.Context, request *SetAutoScalingConfigurationRequest) (response *SetAutoScalingConfigurationResponse, err error) {
     if request == nil {
         request = NewSetAutoScalingConfigurationRequest()

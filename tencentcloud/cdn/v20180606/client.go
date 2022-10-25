@@ -2252,7 +2252,7 @@ func NewDescribeImageConfigResponse() (response *DescribeImageConfigResponse) {
 }
 
 // DescribeImageConfig
-// DescribeImageConfig 用于获取域名图片优化的当前配置，支持Webp、TPG 和 Guetzli。 
+// DescribeImageConfig 用于获取域名图片优化的当前配置，支持Webp、TPG、 Guetzli 和 Avif。 
 //
 // 可能返回的错误码:
 //  INTERNALERROR_CDNCONFIGERROR = "InternalError.CdnConfigError"
@@ -2269,7 +2269,7 @@ func (c *Client) DescribeImageConfig(request *DescribeImageConfigRequest) (respo
 }
 
 // DescribeImageConfig
-// DescribeImageConfig 用于获取域名图片优化的当前配置，支持Webp、TPG 和 Guetzli。 
+// DescribeImageConfig 用于获取域名图片优化的当前配置，支持Webp、TPG、 Guetzli 和 Avif。 
 //
 // 可能返回的错误码:
 //  INTERNALERROR_CDNCONFIGERROR = "InternalError.CdnConfigError"
@@ -6482,7 +6482,7 @@ func NewUpdateImageConfigResponse() (response *UpdateImageConfigResponse) {
 }
 
 // UpdateImageConfig
-// UpdateImageConfig 用于更新控制台图片优化的相关配置，支持Webp、TPG 和 Guetzli。 
+// UpdateImageConfig 用于更新控制台图片优化的相关配置，支持Webp、TPG、 Guetzli 和 Avif。 
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CDNCONFIGERROR = "FailedOperation.CdnConfigError"
@@ -6504,7 +6504,7 @@ func (c *Client) UpdateImageConfig(request *UpdateImageConfigRequest) (response 
 }
 
 // UpdateImageConfig
-// UpdateImageConfig 用于更新控制台图片优化的相关配置，支持Webp、TPG 和 Guetzli。 
+// UpdateImageConfig 用于更新控制台图片优化的相关配置，支持Webp、TPG、 Guetzli 和 Avif。 
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CDNCONFIGERROR = "FailedOperation.CdnConfigError"

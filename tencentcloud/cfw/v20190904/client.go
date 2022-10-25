@@ -206,7 +206,7 @@ func NewCreateAcRulesResponse() (response *CreateAcRulesResponse) {
 }
 
 // CreateAcRules
-// 创建规则
+// 创建访问控制规则
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -217,7 +217,7 @@ func (c *Client) CreateAcRules(request *CreateAcRulesRequest) (response *CreateA
 }
 
 // CreateAcRules
-// 创建规则
+// 创建访问控制规则
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

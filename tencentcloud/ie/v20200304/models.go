@@ -386,6 +386,9 @@ type CreateMediaQualityRestorationTaskRequestParams struct {
 
 	// 任务结果回调地址信息。
 	CallbackInfo *CallbackInfo `json:"CallbackInfo,omitempty" name:"CallbackInfo"`
+
+	// 极速高清体验馆渠道标志。
+	TopSpeedCodecChannel *uint64 `json:"TopSpeedCodecChannel,omitempty" name:"TopSpeedCodecChannel"`
 }
 
 type CreateMediaQualityRestorationTaskRequest struct {
@@ -402,6 +405,9 @@ type CreateMediaQualityRestorationTaskRequest struct {
 
 	// 任务结果回调地址信息。
 	CallbackInfo *CallbackInfo `json:"CallbackInfo,omitempty" name:"CallbackInfo"`
+
+	// 极速高清体验馆渠道标志。
+	TopSpeedCodecChannel *uint64 `json:"TopSpeedCodecChannel,omitempty" name:"TopSpeedCodecChannel"`
 }
 
 func (r *CreateMediaQualityRestorationTaskRequest) ToJsonString() string {
@@ -420,6 +426,7 @@ func (r *CreateMediaQualityRestorationTaskRequest) FromJsonString(s string) erro
 	delete(f, "TransInfo")
 	delete(f, "SaveInfo")
 	delete(f, "CallbackInfo")
+	delete(f, "TopSpeedCodecChannel")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateMediaQualityRestorationTaskRequest has unknown keys!", "")
 	}

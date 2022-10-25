@@ -640,7 +640,7 @@ type DescribeSREInstanceAccessAddressRequestParams struct {
 	// 子网ID
 	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
 
-	// 引擎其他组件名称（pushgateway）
+	// 引擎其他组件名称（pushgateway、polaris-limiter）
 	Workload *string `json:"Workload,omitempty" name:"Workload"`
 
 	// 部署地域
@@ -659,7 +659,7 @@ type DescribeSREInstanceAccessAddressRequest struct {
 	// 子网ID
 	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
 
-	// 引擎其他组件名称（pushgateway）
+	// 引擎其他组件名称（pushgateway、polaris-limiter）
 	Workload *string `json:"Workload,omitempty" name:"Workload"`
 
 	// 部署地域
@@ -715,6 +715,10 @@ type DescribeSREInstanceAccessAddressResponseParams struct {
 	// 控制台公网带宽
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ConsoleInternetBandWidth *int64 `json:"ConsoleInternetBandWidth,omitempty" name:"ConsoleInternetBandWidth"`
+
+	// 北极星限流server节点接入IP
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LimiterAddressInfos []*PolarisLimiterAddress `json:"LimiterAddressInfos,omitempty" name:"LimiterAddressInfos"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1096,6 +1100,12 @@ type NacosServerInterface struct {
 	Interface *string `json:"Interface,omitempty" name:"Interface"`
 }
 
+type PolarisLimiterAddress struct {
+	// VPC接入IP列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IntranetAddress *string `json:"IntranetAddress,omitempty" name:"IntranetAddress"`
+}
+
 type SREInstance struct {
 	// 实例ID
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
@@ -1231,6 +1241,9 @@ type ServiceGovernanceInfo struct {
 
 	// 服务治理pushgateway引擎绑定的网络信息
 	PgwVpcInfos []*VpcInfo `json:"PgwVpcInfos,omitempty" name:"PgwVpcInfos"`
+
+	// 服务治理限流server引擎绑定的网络信息
+	LimiterVpcInfos []*VpcInfo `json:"LimiterVpcInfos,omitempty" name:"LimiterVpcInfos"`
 }
 
 // Predefined struct for user

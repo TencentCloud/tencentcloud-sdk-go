@@ -226,12 +226,20 @@ type AliasDomain struct {
 
 	// 别称域名状态，取值有：
 	// <li> active：已生效； </li>
-	// <li> pending：未生效；</li>
-	// <li> not_filed：未备案；</li>
+	// <li> pending：部署中；</li>
 	// <li> conflict：被找回。 </li>
 	// <li> stop：已停用；</li>
 	// <li> deleted：已删除。 </li>
 	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 封禁模式，取值有：
+	// <li> 0：未封禁； </li>
+	// <li> 11：合规封禁；</li>
+	// <li> 14：未备案封禁。</li>
+	ForbidMode *int64 `json:"ForbidMode,omitempty" name:"ForbidMode"`
+
+	// 目标域名是否被封禁。
+	TargetForbid *bool `json:"TargetForbid,omitempty" name:"TargetForbid"`
 
 	// 别称域名创建时间。
 	CreatedOn *string `json:"CreatedOn,omitempty" name:"CreatedOn"`
@@ -3679,11 +3687,11 @@ type DescribeAliasDomainsRequestParams struct {
 	// 分页查询偏移量。默认值：0。
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 分页查询限制数目。默认值：20，最大值：100。
+	// 分页查询限制数目。默认值：20，最大值：1000。
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 过滤条件，Filters.Values的上限为20。详细的过滤条件如下：
-	// <li>target-name<br>   按照【<strong>目标域名名称</strong>】进行过滤。<br>   类型：String<br>   必选：否</li><li>alias-id<br>   按照【<strong>别称域名ID</strong>】进行过滤。<br>   类型：String<br>   必选：否</li><li>alias-name<br>   按照【<strong>别称域名名称</strong>】进行过滤。<br>   类型：String<br>   必选：否</li><li>Fuzzy<br>   按照【<strong>是否模糊查询</strong>】进行过滤。仅支持过滤字段名为alias-name。模糊查询时，Values长度最小为1。<br>   类型：Boolean<br>   必选：否<br>   默认值：false</li>
+	// <li>target-name<br>   按照【<strong>目标域名名称</strong>】进行过滤。<br>   类型：String<br>   必选：否</li><li>alias-id<br>   按照【<strong>别称域名ID</strong>】进行过滤。<br>   类型：String<br>   必选：否</li><li>alias-name<br>   按照【<strong>别称域名名称</strong>】进行过滤。<br>   类型：String<br>   必选：否</li>模糊查询时仅支持过滤字段名为alias-name。
 	Filters []*AdvancedFilter `json:"Filters,omitempty" name:"Filters"`
 }
 
@@ -3696,11 +3704,11 @@ type DescribeAliasDomainsRequest struct {
 	// 分页查询偏移量。默认值：0。
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 分页查询限制数目。默认值：20，最大值：100。
+	// 分页查询限制数目。默认值：20，最大值：1000。
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 过滤条件，Filters.Values的上限为20。详细的过滤条件如下：
-	// <li>target-name<br>   按照【<strong>目标域名名称</strong>】进行过滤。<br>   类型：String<br>   必选：否</li><li>alias-id<br>   按照【<strong>别称域名ID</strong>】进行过滤。<br>   类型：String<br>   必选：否</li><li>alias-name<br>   按照【<strong>别称域名名称</strong>】进行过滤。<br>   类型：String<br>   必选：否</li><li>Fuzzy<br>   按照【<strong>是否模糊查询</strong>】进行过滤。仅支持过滤字段名为alias-name。模糊查询时，Values长度最小为1。<br>   类型：Boolean<br>   必选：否<br>   默认值：false</li>
+	// <li>target-name<br>   按照【<strong>目标域名名称</strong>】进行过滤。<br>   类型：String<br>   必选：否</li><li>alias-id<br>   按照【<strong>别称域名ID</strong>】进行过滤。<br>   类型：String<br>   必选：否</li><li>alias-name<br>   按照【<strong>别称域名名称</strong>】进行过滤。<br>   类型：String<br>   必选：否</li>模糊查询时仅支持过滤字段名为alias-name。
 	Filters []*AdvancedFilter `json:"Filters,omitempty" name:"Filters"`
 }
 
@@ -9899,7 +9907,7 @@ type DescribeZonesRequestParams struct {
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 过滤条件，Filters.Values的上限为20。详细的过滤条件如下：
-	// <li>zone-name<br>   按照【<strong>站点名称</strong>】进行过滤。<br>   类型：String<br>   必选：否</li><li>zone-id<br>   按照【<strong>站点ID</strong>】进行过滤。站点ID形如：zone-xxx。<br>   类型：String<br>   必选：否</li><li>status<br>   按照【<strong>站点状态</strong>】进行过滤。<br>   类型：String<br>   必选：否</li><li>tag-key<br>   按照【<strong>标签键</strong>】进行过滤。<br>   类型：String<br>   必选：否</li><li>tag-value<br>   按照【<strong>标签值</strong>】进行过滤。<br>   类型：String<br>   必选：否</li><li>Fuzzy<br>   按照【<strong>是否模糊查询</strong>】进行过滤。仅支持过滤字段名为zone-name。模糊查询时，Values长度最小为1。<br>   类型：Boolean<br>   必选：否<br>   默认值：false</li>
+	// <li>zone-name<br>   按照【<strong>站点名称</strong>】进行过滤。<br>   类型：String<br>   必选：否</li><li>zone-id<br>   按照【<strong>站点ID</strong>】进行过滤。站点ID形如：zone-xxx。<br>   类型：String<br>   必选：否</li><li>status<br>   按照【<strong>站点状态</strong>】进行过滤。<br>   类型：String<br>   必选：否</li><li>tag-key<br>   按照【<strong>标签键</strong>】进行过滤。<br>   类型：String<br>   必选：否</li><li>tag-value<br>   按照【<strong>标签值</strong>】进行过滤。<br>   类型：String<br>   必选：否</li>模糊查询时仅支持过滤字段名为zone-name。
 	Filters []*AdvancedFilter `json:"Filters,omitempty" name:"Filters"`
 }
 
@@ -9913,7 +9921,7 @@ type DescribeZonesRequest struct {
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 过滤条件，Filters.Values的上限为20。详细的过滤条件如下：
-	// <li>zone-name<br>   按照【<strong>站点名称</strong>】进行过滤。<br>   类型：String<br>   必选：否</li><li>zone-id<br>   按照【<strong>站点ID</strong>】进行过滤。站点ID形如：zone-xxx。<br>   类型：String<br>   必选：否</li><li>status<br>   按照【<strong>站点状态</strong>】进行过滤。<br>   类型：String<br>   必选：否</li><li>tag-key<br>   按照【<strong>标签键</strong>】进行过滤。<br>   类型：String<br>   必选：否</li><li>tag-value<br>   按照【<strong>标签值</strong>】进行过滤。<br>   类型：String<br>   必选：否</li><li>Fuzzy<br>   按照【<strong>是否模糊查询</strong>】进行过滤。仅支持过滤字段名为zone-name。模糊查询时，Values长度最小为1。<br>   类型：Boolean<br>   必选：否<br>   默认值：false</li>
+	// <li>zone-name<br>   按照【<strong>站点名称</strong>】进行过滤。<br>   类型：String<br>   必选：否</li><li>zone-id<br>   按照【<strong>站点ID</strong>】进行过滤。站点ID形如：zone-xxx。<br>   类型：String<br>   必选：否</li><li>status<br>   按照【<strong>站点状态</strong>】进行过滤。<br>   类型：String<br>   必选：否</li><li>tag-key<br>   按照【<strong>标签键</strong>】进行过滤。<br>   类型：String<br>   必选：否</li><li>tag-value<br>   按照【<strong>标签值</strong>】进行过滤。<br>   类型：String<br>   必选：否</li>模糊查询时仅支持过滤字段名为zone-name。
 	Filters []*AdvancedFilter `json:"Filters,omitempty" name:"Filters"`
 }
 
@@ -10618,6 +10626,12 @@ type Https struct {
 	// 证书配置。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CertInfo []*ServerCertInfo `json:"CertInfo,omitempty" name:"CertInfo"`
+
+	// 申请类型，取值有：
+	// <li>apply：托管EdgeOne；</li>
+	// <li>none：不托管EdgeOne。</li>不填，默认取值为none。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApplyType *string `json:"ApplyType,omitempty" name:"ApplyType"`
 }
 
 type Identification struct {
@@ -14381,6 +14395,10 @@ type ServerCertInfo struct {
 	// 签名算法。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SignAlgo *string `json:"SignAlgo,omitempty" name:"SignAlgo"`
+
+	// 证书归属域名名称。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CommonName *string `json:"CommonName,omitempty" name:"CommonName"`
 }
 
 type ShieldArea struct {

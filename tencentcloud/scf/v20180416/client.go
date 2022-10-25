@@ -2348,6 +2348,7 @@ func NewListLayerVersionsResponse() (response *ListLayerVersionsResponse) {
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_SYSTEM = "InternalError.System"
 //  INVALIDPARAMETERVALUE_NAME = "InvalidParameterValue.Name"
+//  INVALIDPARAMETERVALUE_RUNTIME = "InvalidParameterValue.Runtime"
 //  RESOURCENOTFOUND_LAYER = "ResourceNotFound.Layer"
 //  UNAUTHORIZEDOPERATION_CAM = "UnauthorizedOperation.CAM"
 func (c *Client) ListLayerVersions(request *ListLayerVersionsRequest) (response *ListLayerVersionsResponse, err error) {
@@ -2361,6 +2362,7 @@ func (c *Client) ListLayerVersions(request *ListLayerVersionsRequest) (response 
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_SYSTEM = "InternalError.System"
 //  INVALIDPARAMETERVALUE_NAME = "InvalidParameterValue.Name"
+//  INVALIDPARAMETERVALUE_RUNTIME = "InvalidParameterValue.Runtime"
 //  RESOURCENOTFOUND_LAYER = "ResourceNotFound.Layer"
 //  UNAUTHORIZEDOPERATION_CAM = "UnauthorizedOperation.CAM"
 func (c *Client) ListLayerVersionsWithContext(ctx context.Context, request *ListLayerVersionsRequest) (response *ListLayerVersionsResponse, err error) {

@@ -149,12 +149,18 @@ func NewDescribeTrustedIDResponse() (response *DescribeTrustedIDResponse) {
 
 // DescribeTrustedID
 // 查询设备标识
+//
+// 可能返回的错误码:
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 func (c *Client) DescribeTrustedID(request *DescribeTrustedIDRequest) (response *DescribeTrustedIDResponse, err error) {
     return c.DescribeTrustedIDWithContext(context.Background(), request)
 }
 
 // DescribeTrustedID
 // 查询设备标识
+//
+// 可能返回的错误码:
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 func (c *Client) DescribeTrustedIDWithContext(ctx context.Context, request *DescribeTrustedIDRequest) (response *DescribeTrustedIDResponse, err error) {
     if request == nil {
         request = NewDescribeTrustedIDRequest()
