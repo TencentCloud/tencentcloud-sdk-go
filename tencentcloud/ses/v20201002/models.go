@@ -554,6 +554,9 @@ type CycleEmailParam struct {
 
 	// 任务周期 小时维度
 	IntervalTime *uint64 `json:"IntervalTime,omitempty" name:"IntervalTime"`
+
+	// 是否终止周期，用于任务更新 0否1是
+	TermCycle *uint64 `json:"TermCycle,omitempty" name:"TermCycle"`
 }
 
 type DNSAttributes struct {

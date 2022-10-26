@@ -1797,6 +1797,70 @@ func (c *Client) ModifyPrivateZoneVpcWithContext(ctx context.Context, request *M
     return
 }
 
+func NewModifyRecordsStatusRequest() (request *ModifyRecordsStatusRequest) {
+    request = &ModifyRecordsStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("privatedns", APIVersion, "ModifyRecordsStatus")
+    
+    
+    return
+}
+
+func NewModifyRecordsStatusResponse() (response *ModifyRecordsStatusResponse) {
+    response = &ModifyRecordsStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyRecordsStatus
+// 修改解析记录状态
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_MODIFYRECORDFAILED = "FailedOperation.ModifyRecordFailed"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_UNDEFIENDERROR = "InternalError.UndefiendError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RECORDNOTEXIST = "InvalidParameter.RecordNotExist"
+//  INVALIDPARAMETER_ZONENOTEXISTS = "InvalidParameter.ZoneNotExists"
+//  LIMITEXCEEDED_TLDOUTOFLIMIT = "LimitExceeded.TldOutOfLimit"
+//  LIMITEXCEEDED_TLDOUTOFRANGE = "LimitExceeded.TldOutOfRange"
+//  RESOURCEUNAVAILABLE_TLDPACKAGEEXPIRED = "ResourceUnavailable.TldPackageExpired"
+func (c *Client) ModifyRecordsStatus(request *ModifyRecordsStatusRequest) (response *ModifyRecordsStatusResponse, err error) {
+    return c.ModifyRecordsStatusWithContext(context.Background(), request)
+}
+
+// ModifyRecordsStatus
+// 修改解析记录状态
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_MODIFYRECORDFAILED = "FailedOperation.ModifyRecordFailed"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_UNDEFIENDERROR = "InternalError.UndefiendError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RECORDNOTEXIST = "InvalidParameter.RecordNotExist"
+//  INVALIDPARAMETER_ZONENOTEXISTS = "InvalidParameter.ZoneNotExists"
+//  LIMITEXCEEDED_TLDOUTOFLIMIT = "LimitExceeded.TldOutOfLimit"
+//  LIMITEXCEEDED_TLDOUTOFRANGE = "LimitExceeded.TldOutOfRange"
+//  RESOURCEUNAVAILABLE_TLDPACKAGEEXPIRED = "ResourceUnavailable.TldPackageExpired"
+func (c *Client) ModifyRecordsStatusWithContext(ctx context.Context, request *ModifyRecordsStatusRequest) (response *ModifyRecordsStatusResponse, err error) {
+    if request == nil {
+        request = NewModifyRecordsStatusRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyRecordsStatus require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyRecordsStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewSubscribePrivateZoneServiceRequest() (request *SubscribePrivateZoneServiceRequest) {
     request = &SubscribePrivateZoneServiceRequest{
         BaseRequest: &tchttp.BaseRequest{},

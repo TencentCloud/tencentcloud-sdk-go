@@ -211,6 +211,9 @@ type CreateAutoCalloutTaskRequestParams struct {
 
 	// 最大尝试次数
 	Tries *uint64 `json:"Tries,omitempty" name:"Tries"`
+
+	// 自定义变量（仅高级版支持）
+	Variables []*Variable `json:"Variables,omitempty" name:"Variables"`
 }
 
 type CreateAutoCalloutTaskRequest struct {
@@ -242,6 +245,9 @@ type CreateAutoCalloutTaskRequest struct {
 
 	// 最大尝试次数
 	Tries *uint64 `json:"Tries,omitempty" name:"Tries"`
+
+	// 自定义变量（仅高级版支持）
+	Variables []*Variable `json:"Variables,omitempty" name:"Variables"`
 }
 
 func (r *CreateAutoCalloutTaskRequest) ToJsonString() string {
@@ -265,6 +271,7 @@ func (r *CreateAutoCalloutTaskRequest) FromJsonString(s string) error {
 	delete(f, "Description")
 	delete(f, "NotAfter")
 	delete(f, "Tries")
+	delete(f, "Variables")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAutoCalloutTaskRequest has unknown keys!", "")
 	}
@@ -2849,4 +2856,12 @@ func (r *UnbindStaffSkillGroupListResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *UnbindStaffSkillGroupListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type Variable struct {
+	// 变量名
+	Key *string `json:"Key,omitempty" name:"Key"`
+
+	// 变量值
+	Value *string `json:"Value,omitempty" name:"Value"`
 }

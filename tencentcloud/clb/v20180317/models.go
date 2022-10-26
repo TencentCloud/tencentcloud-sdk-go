@@ -3865,10 +3865,10 @@ type DescribeLoadBalancersRequestParams struct {
 	// 负载均衡实例的 VIP 地址，支持多个。
 	LoadBalancerVips []*string `json:"LoadBalancerVips,omitempty" name:"LoadBalancerVips"`
 
-	// 负载均衡绑定的后端服务的外网 IP。
+	// 负载均衡绑定的后端服务的外网 IP，只支持查询云服务器的公网 IP。
 	BackendPublicIps []*string `json:"BackendPublicIps,omitempty" name:"BackendPublicIps"`
 
-	// 负载均衡绑定的后端服务的内网 IP。
+	// 负载均衡绑定的后端服务的内网 IP，只支持查询云服务器的内网 IP。
 	BackendPrivateIps []*string `json:"BackendPrivateIps,omitempty" name:"BackendPrivateIps"`
 
 	// 数据偏移量，默认为0。
@@ -3937,10 +3937,10 @@ type DescribeLoadBalancersRequest struct {
 	// 负载均衡实例的 VIP 地址，支持多个。
 	LoadBalancerVips []*string `json:"LoadBalancerVips,omitempty" name:"LoadBalancerVips"`
 
-	// 负载均衡绑定的后端服务的外网 IP。
+	// 负载均衡绑定的后端服务的外网 IP，只支持查询云服务器的公网 IP。
 	BackendPublicIps []*string `json:"BackendPublicIps,omitempty" name:"BackendPublicIps"`
 
-	// 负载均衡绑定的后端服务的内网 IP。
+	// 负载均衡绑定的后端服务的内网 IP，只支持查询云服务器的内网 IP。
 	BackendPrivateIps []*string `json:"BackendPrivateIps,omitempty" name:"BackendPrivateIps"`
 
 	// 数据偏移量，默认为0。

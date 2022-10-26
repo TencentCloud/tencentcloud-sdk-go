@@ -4938,6 +4938,12 @@ type DescribeListBGPInstancesRequestParams struct {
 	// 企业版搜索
 	FilterEnterpriseFlag *uint64 `json:"FilterEnterpriseFlag,omitempty" name:"FilterEnterpriseFlag"`
 
+	// 轻量版搜索
+	FilterLightFlag *uint64 `json:"FilterLightFlag,omitempty" name:"FilterLightFlag"`
+
+	// 定制版搜索
+	FilterChannelFlag *uint64 `json:"FilterChannelFlag,omitempty" name:"FilterChannelFlag"`
+
 	// 标签搜索
 	FilterTag *TagFilter `json:"FilterTag,omitempty" name:"FilterTag"`
 }
@@ -4978,6 +4984,12 @@ type DescribeListBGPInstancesRequest struct {
 	// 企业版搜索
 	FilterEnterpriseFlag *uint64 `json:"FilterEnterpriseFlag,omitempty" name:"FilterEnterpriseFlag"`
 
+	// 轻量版搜索
+	FilterLightFlag *uint64 `json:"FilterLightFlag,omitempty" name:"FilterLightFlag"`
+
+	// 定制版搜索
+	FilterChannelFlag *uint64 `json:"FilterChannelFlag,omitempty" name:"FilterChannelFlag"`
+
 	// 标签搜索
 	FilterTag *TagFilter `json:"FilterTag,omitempty" name:"FilterTag"`
 }
@@ -5005,6 +5017,8 @@ func (r *DescribeListBGPInstancesRequest) FromJsonString(s string) error {
 	delete(f, "FilterBoundStatus")
 	delete(f, "FilterInstanceIdList")
 	delete(f, "FilterEnterpriseFlag")
+	delete(f, "FilterLightFlag")
+	delete(f, "FilterChannelFlag")
 	delete(f, "FilterTag")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeListBGPInstancesRequest has unknown keys!", "")

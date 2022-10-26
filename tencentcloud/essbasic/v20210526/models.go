@@ -37,6 +37,11 @@ type Agent struct {
 	ProxyOrganizationId *string `json:"ProxyOrganizationId,omitempty" name:"ProxyOrganizationId"`
 }
 
+type ApproverOption struct {
+	// 是否隐藏一键签署 false-不隐藏,默认 true-隐藏
+	HideOneKeySign *bool `json:"HideOneKeySign,omitempty" name:"HideOneKeySign"`
+}
+
 type ApproverRestriction struct {
 	// 指定签署人名字
 	Name *string `json:"Name,omitempty" name:"Name"`
@@ -2237,7 +2242,7 @@ type FlowApproverInfo struct {
 	// PERSON_AUTO_SIGN-个人自动签；
 	// ORGANIZATION-企业；
 	// ENTERPRISESERVER-企业静默签;
-	// 注：ENTERPRISESERVER 类型仅用于使用文件创建签署流程（ChannelCreateFlowByFiles）接口；并且仅能指定发起方企业签署方为静默签署；
+	// 注：ENTERPRISESERVER 类型仅用于使用文件创建签署流程（ChannelCreateFlowByFiles）接口；
 	ApproverType *string `json:"ApproverType,omitempty" name:"ApproverType"`
 
 	// 签署流程签署人在模板中对应的签署人Id；在非单方签署、以及非B2C签署的场景下必传，用于指定当前签署方在签署流程中的位置；
@@ -2260,6 +2265,12 @@ type FlowApproverInfo struct {
 
 	// 签署完前端跳转的url，暂未使用
 	JumpUrl *string `json:"JumpUrl,omitempty" name:"JumpUrl"`
+
+	// 签署人个性化能力值
+	ApproverOption *ApproverOption `json:"ApproverOption,omitempty" name:"ApproverOption"`
+
+	// 当前签署方进行签署操作是否需要企业内部审批，true 则为需要
+	ApproverNeedSignReview *bool `json:"ApproverNeedSignReview,omitempty" name:"ApproverNeedSignReview"`
 }
 
 type FlowDetailInfo struct {

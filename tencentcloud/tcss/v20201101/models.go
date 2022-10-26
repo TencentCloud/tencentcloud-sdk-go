@@ -18554,10 +18554,10 @@ type DescribeSecLogJoinObjectListRequestParams struct {
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
 	// 过滤条件。
-	// <li>Status- String - 是否必填：否 - 主机状态 /li>
-	// <li>HostIP- String - 是否必填：否 - 主机内网IP /li>
-	// <li>PublicIP- String - 是否必填：否 - 主机外网IP /li>
-	// <li>HostName- String - 是否必填：否 - 主机名称 /li>
+	// <li>Status- String - 是否必填：否 - 主机状态 </li>
+	// <li>HostIP- String - 是否必填：否 - 主机内网IP </li>
+	// <li>PublicIP- String - 是否必填：否 - 主机外网IP </li>
+	// <li>HostName- String - 是否必填：否 - 主机名称 </li>
 	Filters []*RunTimeFilters `json:"Filters,omitempty" name:"Filters"`
 
 	// 排序字段
@@ -18583,10 +18583,10 @@ type DescribeSecLogJoinObjectListRequest struct {
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
 	// 过滤条件。
-	// <li>Status- String - 是否必填：否 - 主机状态 /li>
-	// <li>HostIP- String - 是否必填：否 - 主机内网IP /li>
-	// <li>PublicIP- String - 是否必填：否 - 主机外网IP /li>
-	// <li>HostName- String - 是否必填：否 - 主机名称 /li>
+	// <li>Status- String - 是否必填：否 - 主机状态 </li>
+	// <li>HostIP- String - 是否必填：否 - 主机内网IP </li>
+	// <li>PublicIP- String - 是否必填：否 - 主机外网IP </li>
+	// <li>HostName- String - 是否必填：否 - 主机名称 </li>
 	Filters []*RunTimeFilters `json:"Filters,omitempty" name:"Filters"`
 
 	// 排序字段
@@ -19645,9 +19645,9 @@ type DescribeVirusAutoIsolateSampleListRequestParams struct {
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
 	// 过滤条件。
-	// <li>MD5- String - 是否必填：否 - md5 /li>
-	// <li>AutoIsolateSwitch- String - 是否必填：否 - 自动隔离开关 /li>
-	// <li>VirusName- String - 是否必填：否 - 病毒名 /li>
+	// <li>MD5- String - 是否必填：否 - md5 </li>
+	// <li>AutoIsolateSwitch- String - 是否必填：否 - 自动隔离开关 </li>
+	// <li>VirusName- String - 是否必填：否 - 病毒名 </li>
 	Filters []*RunTimeFilters `json:"Filters,omitempty" name:"Filters"`
 
 	// 排序字段
@@ -19667,9 +19667,9 @@ type DescribeVirusAutoIsolateSampleListRequest struct {
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
 	// 过滤条件。
-	// <li>MD5- String - 是否必填：否 - md5 /li>
-	// <li>AutoIsolateSwitch- String - 是否必填：否 - 自动隔离开关 /li>
-	// <li>VirusName- String - 是否必填：否 - 病毒名 /li>
+	// <li>MD5- String - 是否必填：否 - md5 </li>
+	// <li>AutoIsolateSwitch- String - 是否必填：否 - 自动隔离开关 </li>
+	// <li>VirusName- String - 是否必填：否 - 病毒名 </li>
 	Filters []*RunTimeFilters `json:"Filters,omitempty" name:"Filters"`
 
 	// 排序字段

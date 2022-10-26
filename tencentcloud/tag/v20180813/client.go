@@ -45,6 +45,60 @@ func NewClient(credential common.CredentialIface, region string, clientProfile *
 }
 
 
+func NewAddProjectRequest() (request *AddProjectRequest) {
+    request = &AddProjectRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tag", APIVersion, "AddProject")
+    
+    
+    return
+}
+
+func NewAddProjectResponse() (response *AddProjectResponse) {
+    response = &AddProjectResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// AddProject
+// 创建项目
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_PROJECTNUMEXCEED = "FailedOperation.ProjectNumExceed"
+//  INVALIDPARAMETER_PROJECTNAMEEXISTED = "InvalidParameter.ProjectNameExisted"
+//  RESOURCENOTFOUND_RECORDNOTFOUND = "ResourceNotFound.RecordNotFound"
+func (c *Client) AddProject(request *AddProjectRequest) (response *AddProjectResponse, err error) {
+    return c.AddProjectWithContext(context.Background(), request)
+}
+
+// AddProject
+// 创建项目
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_PROJECTNUMEXCEED = "FailedOperation.ProjectNumExceed"
+//  INVALIDPARAMETER_PROJECTNAMEEXISTED = "InvalidParameter.ProjectNameExisted"
+//  RESOURCENOTFOUND_RECORDNOTFOUND = "ResourceNotFound.RecordNotFound"
+func (c *Client) AddProjectWithContext(ctx context.Context, request *AddProjectRequest) (response *AddProjectResponse, err error) {
+    if request == nil {
+        request = NewAddProjectRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AddProject require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewAddProjectResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewAddResourceTagRequest() (request *AddResourceTagRequest) {
     request = &AddResourceTagRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1805,6 +1859,60 @@ func (c *Client) UnTagResourcesWithContext(ctx context.Context, request *UnTagRe
     request.SetContext(ctx)
     
     response = NewUnTagResourcesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdateProjectRequest() (request *UpdateProjectRequest) {
+    request = &UpdateProjectRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tag", APIVersion, "UpdateProject")
+    
+    
+    return
+}
+
+func NewUpdateProjectResponse() (response *UpdateProjectResponse) {
+    response = &UpdateProjectResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// UpdateProject
+// 修改项目
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_PROJECTDISABLED = "FailedOperation.ProjectDisabled"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PROJECTNAMEEXISTED = "InvalidParameter.ProjectNameExisted"
+//  RESOURCENOTFOUND_RECORDNOTFOUND = "ResourceNotFound.RecordNotFound"
+func (c *Client) UpdateProject(request *UpdateProjectRequest) (response *UpdateProjectResponse, err error) {
+    return c.UpdateProjectWithContext(context.Background(), request)
+}
+
+// UpdateProject
+// 修改项目
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_PROJECTDISABLED = "FailedOperation.ProjectDisabled"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PROJECTNAMEEXISTED = "InvalidParameter.ProjectNameExisted"
+//  RESOURCENOTFOUND_RECORDNOTFOUND = "ResourceNotFound.RecordNotFound"
+func (c *Client) UpdateProjectWithContext(ctx context.Context, request *UpdateProjectRequest) (response *UpdateProjectResponse, err error) {
+    if request == nil {
+        request = NewUpdateProjectRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateProject require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpdateProjectResponse()
     err = c.Send(request, response)
     return
 }

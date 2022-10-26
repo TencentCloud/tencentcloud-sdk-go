@@ -75,6 +75,14 @@ type ApproverInfo struct {
 	CustomApproverTag *string `json:"CustomApproverTag,omitempty" name:"CustomApproverTag"`
 }
 
+type ApproverOption struct {
+	// 是否可以拒签 false-可以拒签,默认 true-不可以拒签
+	NoRefuse *bool `json:"NoRefuse,omitempty" name:"NoRefuse"`
+
+	// 是否可以转发 false-可以转发,默认 true-不可以转发
+	NoTransfer *bool `json:"NoTransfer,omitempty" name:"NoTransfer"`
+}
+
 type ApproverRestriction struct {
 	// 指定签署人名字
 	Name *string `json:"Name,omitempty" name:"Name"`
@@ -2318,6 +2326,9 @@ type FlowCreateApprover struct {
 
 	// 快速注册相关信息，目前暂未开放！
 	RegisterInfo *RegisterInfo `json:"RegisterInfo,omitempty" name:"RegisterInfo"`
+
+	// 签署人个性化能力值
+	ApproverOption *ApproverOption `json:"ApproverOption,omitempty" name:"ApproverOption"`
 }
 
 type FlowDetailInfo struct {

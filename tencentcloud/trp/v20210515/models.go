@@ -232,10 +232,10 @@ type CreateCodeBatchRequestParams struct {
 	// 备注
 	Remark *string `json:"Remark,omitempty" name:"Remark"`
 
-	// 活动ID
+	// 模版ID，或者活动ID
 	MpTpl *string `json:"MpTpl,omitempty" name:"MpTpl"`
 
-	// 克隆批次ID
+	// 克隆批次ID，同时会复制溯源信息
 	CloneId *string `json:"CloneId,omitempty" name:"CloneId"`
 }
 
@@ -260,10 +260,10 @@ type CreateCodeBatchRequest struct {
 	// 备注
 	Remark *string `json:"Remark,omitempty" name:"Remark"`
 
-	// 活动ID
+	// 模版ID，或者活动ID
 	MpTpl *string `json:"MpTpl,omitempty" name:"MpTpl"`
 
-	// 克隆批次ID
+	// 克隆批次ID，同时会复制溯源信息
 	CloneId *string `json:"CloneId,omitempty" name:"CloneId"`
 }
 
@@ -2799,7 +2799,7 @@ type ModifyCodeBatchRequestParams struct {
 	// 状态 0: 未激活 1: 已激活 -1: 已冻结
 	Status *int64 `json:"Status,omitempty" name:"Status"`
 
-	// 模板ID
+	// 模版ID，或者活动ID
 	MpTpl *string `json:"MpTpl,omitempty" name:"MpTpl"`
 
 	// 商户ID
@@ -2824,7 +2824,7 @@ type ModifyCodeBatchRequest struct {
 	// 状态 0: 未激活 1: 已激活 -1: 已冻结
 	Status *int64 `json:"Status,omitempty" name:"Status"`
 
-	// 模板ID
+	// 模版ID，或者活动ID
 	MpTpl *string `json:"MpTpl,omitempty" name:"MpTpl"`
 
 	// 商户ID

@@ -1526,6 +1526,83 @@ func (r *ModifyPrivateZoneVpcResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifyRecordsStatusRequestParams struct {
+	// 私有域ID
+	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
+
+	// 解析记录ID列表
+	RecordIds []*int64 `json:"RecordIds,omitempty" name:"RecordIds"`
+
+	// enabled：生效，disabled：失效
+	Status *string `json:"Status,omitempty" name:"Status"`
+}
+
+type ModifyRecordsStatusRequest struct {
+	*tchttp.BaseRequest
+	
+	// 私有域ID
+	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
+
+	// 解析记录ID列表
+	RecordIds []*int64 `json:"RecordIds,omitempty" name:"RecordIds"`
+
+	// enabled：生效，disabled：失效
+	Status *string `json:"Status,omitempty" name:"Status"`
+}
+
+func (r *ModifyRecordsStatusRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyRecordsStatusRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ZoneId")
+	delete(f, "RecordIds")
+	delete(f, "Status")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyRecordsStatusRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyRecordsStatusResponseParams struct {
+	// 私有域ID
+	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
+
+	// 解析记录ID列表
+	RecordIds []*int64 `json:"RecordIds,omitempty" name:"RecordIds"`
+
+	// enabled：生效，disabled：失效
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ModifyRecordsStatusResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyRecordsStatusResponseParams `json:"Response"`
+}
+
+func (r *ModifyRecordsStatusResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyRecordsStatusResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type PrivateDNSAccount struct {
 	// 主账号Uin
 	Uin *string `json:"Uin,omitempty" name:"Uin"`

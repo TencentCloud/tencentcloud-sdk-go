@@ -4820,6 +4820,14 @@ type CloudClientInfo struct {
 	PackageName *string `json:"PackageName,omitempty" name:"PackageName"`
 }
 
+type CloudExternalAttachmentData struct {
+	// 渠道名
+	ChannelName *string `json:"ChannelName,omitempty" name:"ChannelName"`
+
+	// 渠道透传字段，由各个渠道自行定义
+	AttachmentData *string `json:"AttachmentData,omitempty" name:"AttachmentData"`
+}
+
 type CloudExternalChannelData struct {
 	// 第三方渠道数据名。
 	// PAYMENT_ORDER_EXTERNAL_REQUEST_DATA: 支付下单请求数据
@@ -5060,6 +5068,9 @@ type CloudSubOrder struct {
 	// 例如溢价信息、抵扣信息、积分信息、补贴信息
 	// 通过该字段可以实现渠道方的优惠抵扣补贴等营销功能。
 	AttachmentInfoList []*CloudAttachmentInfo `json:"AttachmentInfoList,omitempty" name:"AttachmentInfoList"`
+
+	// 渠道透传数据列表。
+	ExternalAttachmentDataList []*CloudExternalAttachmentData `json:"ExternalAttachmentDataList,omitempty" name:"ExternalAttachmentDataList"`
 }
 
 type CloudSubOrderRefund struct {
@@ -30287,6 +30298,9 @@ type UnifiedCloudOrderRequestParams struct {
 
 	// 渠道方用户信息列表
 	ExternalUserInfoList []*CloudExternalUserInfo `json:"ExternalUserInfoList,omitempty" name:"ExternalUserInfoList"`
+
+	// 渠道透传数据列表
+	ExternalAttachmentDataList []*CloudExternalAttachmentData `json:"ExternalAttachmentDataList,omitempty" name:"ExternalAttachmentDataList"`
 }
 
 type UnifiedCloudOrderRequest struct {
@@ -30473,6 +30487,9 @@ type UnifiedCloudOrderRequest struct {
 
 	// 渠道方用户信息列表
 	ExternalUserInfoList []*CloudExternalUserInfo `json:"ExternalUserInfoList,omitempty" name:"ExternalUserInfoList"`
+
+	// 渠道透传数据列表
+	ExternalAttachmentDataList []*CloudExternalAttachmentData `json:"ExternalAttachmentDataList,omitempty" name:"ExternalAttachmentDataList"`
 }
 
 func (r *UnifiedCloudOrderRequest) ToJsonString() string {
@@ -30526,6 +30543,7 @@ func (r *UnifiedCloudOrderRequest) FromJsonString(s string) error {
 	delete(f, "ExternalPromptGroupList")
 	delete(f, "OrderReceiveMode")
 	delete(f, "ExternalUserInfoList")
+	delete(f, "ExternalAttachmentDataList")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UnifiedCloudOrderRequest has unknown keys!", "")
 	}

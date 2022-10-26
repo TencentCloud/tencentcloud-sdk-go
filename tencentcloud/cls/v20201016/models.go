@@ -5848,6 +5848,13 @@ type SearchLogRequestParams struct {
 	// 为false时代表使用老的检索结果返回方式, 输出AnalysisResults和ColNames有效
 	// 两种返回方式在编码格式上有少量区别，建议使用true
 	UseNewAnalysis *bool `json:"UseNewAnalysis,omitempty" name:"UseNewAnalysis"`
+
+	// 执行统计分析（Query中包含SQL）时，是否对原始日志先进行采样，再进行统计分析。
+	// 0：自动采样;
+	// 0～1：按指定采样率采样，例如0.02;
+	// 1：不采样，即精确分析
+	// 默认值为1
+	SamplingRate *float64 `json:"SamplingRate,omitempty" name:"SamplingRate"`
 }
 
 type SearchLogRequest struct {
@@ -5889,6 +5896,13 @@ type SearchLogRequest struct {
 	// 为false时代表使用老的检索结果返回方式, 输出AnalysisResults和ColNames有效
 	// 两种返回方式在编码格式上有少量区别，建议使用true
 	UseNewAnalysis *bool `json:"UseNewAnalysis,omitempty" name:"UseNewAnalysis"`
+
+	// 执行统计分析（Query中包含SQL）时，是否对原始日志先进行采样，再进行统计分析。
+	// 0：自动采样;
+	// 0～1：按指定采样率采样，例如0.02;
+	// 1：不采样，即精确分析
+	// 默认值为1
+	SamplingRate *float64 `json:"SamplingRate,omitempty" name:"SamplingRate"`
 }
 
 func (r *SearchLogRequest) ToJsonString() string {
@@ -5911,6 +5925,7 @@ func (r *SearchLogRequest) FromJsonString(s string) error {
 	delete(f, "Context")
 	delete(f, "Sort")
 	delete(f, "UseNewAnalysis")
+	delete(f, "SamplingRate")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SearchLogRequest has unknown keys!", "")
 	}
