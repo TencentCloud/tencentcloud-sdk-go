@@ -1095,13 +1095,13 @@ type DescribeAgentDealsByCacheRequestParams struct {
 	// 偏移量
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 限制数目
+	// 限制数目 最大200
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 下单时间范围起始点
+	// 下单时间范围起始点【请保持时间范围最大90天】
 	CreatTimeRangeStart *string `json:"CreatTimeRangeStart,omitempty" name:"CreatTimeRangeStart"`
 
-	// 下单时间范围终止点
+	// 下单时间范围终止点【请保持时间范围最大90天】
 	CreatTimeRangeEnd *string `json:"CreatTimeRangeEnd,omitempty" name:"CreatTimeRangeEnd"`
 
 	// 0:下单时间降序；其他：下单时间升序
@@ -1129,13 +1129,13 @@ type DescribeAgentDealsByCacheRequest struct {
 	// 偏移量
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 限制数目
+	// 限制数目 最大200
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 下单时间范围起始点
+	// 下单时间范围起始点【请保持时间范围最大90天】
 	CreatTimeRangeStart *string `json:"CreatTimeRangeStart,omitempty" name:"CreatTimeRangeStart"`
 
-	// 下单时间范围终止点
+	// 下单时间范围终止点【请保持时间范围最大90天】
 	CreatTimeRangeEnd *string `json:"CreatTimeRangeEnd,omitempty" name:"CreatTimeRangeEnd"`
 
 	// 0:下单时间降序；其他：下单时间升序
@@ -1218,13 +1218,13 @@ type DescribeAgentDealsCacheRequestParams struct {
 	// 偏移量
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 限制数目
+	// 限制数目 最大200
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 下单时间范围起始点
+	// 下单时间范围起始点【请保持时间范围最大90天】
 	CreatTimeRangeStart *string `json:"CreatTimeRangeStart,omitempty" name:"CreatTimeRangeStart"`
 
-	// 下单时间范围终止点
+	// 下单时间范围终止点【请保持时间范围最大90天】
 	CreatTimeRangeEnd *string `json:"CreatTimeRangeEnd,omitempty" name:"CreatTimeRangeEnd"`
 
 	// 0:下单时间降序；其他：下单时间升序
@@ -1249,13 +1249,13 @@ type DescribeAgentDealsCacheRequest struct {
 	// 偏移量
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 限制数目
+	// 限制数目 最大200
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 下单时间范围起始点
+	// 下单时间范围起始点【请保持时间范围最大90天】
 	CreatTimeRangeStart *string `json:"CreatTimeRangeStart,omitempty" name:"CreatTimeRangeStart"`
 
-	// 下单时间范围终止点
+	// 下单时间范围终止点【请保持时间范围最大90天】
 	CreatTimeRangeEnd *string `json:"CreatTimeRangeEnd,omitempty" name:"CreatTimeRangeEnd"`
 
 	// 0:下单时间降序；其他：下单时间升序
@@ -1334,7 +1334,7 @@ type DescribeAgentPayDealsRequestParams struct {
 	// 偏移量
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 限制数目
+	// 限制数目 最大100
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 下单时间范围起始点(不传时会默认查15天内订单，传值时需要传15天内的起始时间)
@@ -1362,7 +1362,7 @@ type DescribeAgentPayDealsRequest struct {
 	// 偏移量
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 限制数目
+	// 限制数目 最大100
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 下单时间范围起始点(不传时会默认查15天内订单，传值时需要传15天内的起始时间)
@@ -1443,7 +1443,7 @@ type DescribeAgentPayDealsV2RequestParams struct {
 	// 偏移量
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 限制数目
+	// 限制数目 最大100
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 下单时间范围起始点(不传时会默认查15天内订单，传值时需要传15天内的起始时间)
@@ -1474,7 +1474,7 @@ type DescribeAgentPayDealsV2Request struct {
 	// 偏移量
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 限制数目
+	// 限制数目 最大100
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 下单时间范围起始点(不传时会默认查15天内订单，传值时需要传15天内的起始时间)
@@ -1562,7 +1562,7 @@ type DescribeAgentSelfPayDealsRequestParams struct {
 	// 偏移量
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 限制数目
+	// 限制数目 最大100
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 下单时间范围起始点(不传时会默认查15天内订单，传值时需要传15天内的起始时间)
@@ -1590,7 +1590,7 @@ type DescribeAgentSelfPayDealsRequest struct {
 	// 偏移量
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 限制数目
+	// 限制数目 最大100
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 下单时间范围起始点(不传时会默认查15天内订单，传值时需要传15天内的起始时间)
@@ -1671,7 +1671,7 @@ type DescribeAgentSelfPayDealsV2RequestParams struct {
 	// 偏移量
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 限制数目
+	// 限制数目 最大100
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 下单时间范围起始点(不传时会默认查15天内订单，传值时需要传15天内的起始时间)
@@ -1702,7 +1702,7 @@ type DescribeAgentSelfPayDealsV2Request struct {
 	// 偏移量
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 限制数目
+	// 限制数目 最大100
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 下单时间范围起始点(不传时会默认查15天内订单，传值时需要传15天内的起始时间)

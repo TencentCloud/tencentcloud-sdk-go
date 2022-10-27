@@ -1,227 +1,36 @@
 # 本版本更新包含以下内容：
 
-## DDoS 防护(antiddos) 版本：2020-03-09
-
-### 第 43 次发布
-
-发布时间：2022-10-26 06:07:49
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [DescribeListBGPInstances](https://cloud.tencent.com/document/api/1021/57521)
-
-	* 新增入参：FilterLightFlag, FilterChannelFlag
-
-
-
-
-## 云呼叫中心(ccc) 版本：2020-02-10
-
-### 第 32 次发布
-
-发布时间：2022-10-26 06:15:12
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CreateAutoCalloutTask](https://cloud.tencent.com/document/api/679/69194)
-
-	* 新增入参：Variables
-
-
-新增数据结构：
-
-* [Variable](https://cloud.tencent.com/document/api/679/47715#Variable)
-
-
-
-## 日志服务(cls) 版本：2020-10-16
-
-### 第 31 次发布
-
-发布时间：2022-10-26 06:21:36
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [SearchLog](https://cloud.tencent.com/document/api/614/56447)
-
-	* 新增入参：SamplingRate
-
-
-
-
-## 企业收付平台(cpdp) 版本：2019-08-20
-
-### 第 92 次发布
-
-发布时间：2022-10-26 06:23:03
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [UnifiedCloudOrder](https://cloud.tencent.com/document/api/1122/72599)
-
-	* 新增入参：ExternalAttachmentDataList
-
-
-新增数据结构：
-
-* [CloudExternalAttachmentData](https://cloud.tencent.com/document/api/1122/40683#CloudExternalAttachmentData)
-
-修改数据结构：
-
-* [CloudSubOrder](https://cloud.tencent.com/document/api/1122/40683#CloudSubOrder)
-
-	* 新增成员：ExternalAttachmentDataList
-
-
-
-
-## 主机安全(cwp) 版本：2018-02-28
-
-### 第 60 次发布
-
-发布时间：2022-10-26 06:25:43
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [DescribeMalwareTimingScanSetting](https://cloud.tencent.com/document/api/296/58240)
-
-	* 新增出参：EnableInspiredEngine
-
-* [ModifyMalwareTimingScanSettings](https://cloud.tencent.com/document/api/296/52509)
-
-	* 新增入参：EnableInspiredEngine
-
-
-
-
-## 电子签服务(ess) 版本：2020-11-11
-
-### 第 21 次发布
-
-发布时间：2022-10-26 06:35:22
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增数据结构：
-
-* [ApproverOption](https://cloud.tencent.com/document/api/1323/70369#ApproverOption)
-
-修改数据结构：
-
-* [FlowCreateApprover](https://cloud.tencent.com/document/api/1323/70369#FlowCreateApprover)
-
-	* 新增成员：ApproverOption
-
-
-
-
-## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
+## 弹性 MapReduce(emr) 版本：2019-01-03
 
 ### 第 38 次发布
 
-发布时间：2022-10-26 06:35:40
+发布时间：2022-10-27 06:31:19
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-新增数据结构：
+修改接口：
 
-* [ApproverOption](https://cloud.tencent.com/document/api/1420/61525#ApproverOption)
+* [ScaleOutInstance](https://cloud.tencent.com/document/api/589/34264)
+
+	* 新增入参：AutoRenew
+
 
 修改数据结构：
 
-* [FlowApproverInfo](https://cloud.tencent.com/document/api/1420/61525#FlowApproverInfo)
+* [EmrListInstance](https://cloud.tencent.com/document/api/589/33981#EmrListInstance)
 
-	* 新增成员：ApproverOption, ApproverNeedSignReview
-
-
-
-
-## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
-
-
-
-## 媒体智能标签(ivld) 版本：2021-09-03
-
-### 第 8 次发布
-
-发布时间：2022-10-25 19:11:18
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [PersonInfo](https://cloud.tencent.com/document/api/1509/65063#PersonInfo)
-
-	* 新增成员：AppearRect
+	* 新增成员：IsHandsCluster
 
 
 
 
-## 云数据库 MariaDB(mariadb) 版本：2017-03-12
+## 流计算 Oceanus(oceanus) 版本：2019-04-22
 
-### 第 43 次发布
+### 第 27 次发布
 
-发布时间：2022-10-26 06:46:25
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [ModifyInstanceNetwork](https://cloud.tencent.com/document/api/237/81949)
-* [ModifyInstanceVip](https://cloud.tencent.com/document/api/237/81948)
-* [ModifyInstanceVport](https://cloud.tencent.com/document/api/237/81947)
-
-
-
-## 私有域解析 Private DNS(privatedns) 版本：2020-10-28
-
-### 第 11 次发布
-
-发布时间：2022-10-26 06:52:45
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [ModifyRecordsStatus](https://cloud.tencent.com/document/api/1338/81950)
-
-
-
-## 邮件推送(ses) 版本：2020-10-02
-
-### 第 15 次发布
-
-发布时间：2022-10-26 06:55:19
+发布时间：2022-10-27 06:45:50
 
 本次发布包含了以下内容：
 
@@ -229,27 +38,54 @@
 
 修改数据结构：
 
-* [CycleEmailParam](https://cloud.tencent.com/document/api/1288/51053#CycleEmailParam)
+* [WorkSpaceClusterItem](https://cloud.tencent.com/document/api/849/52010#WorkSpaceClusterItem)
 
-	* 新增成员：TermCycle
-
-
+	* 新增成员：ProjectId, ProjectIdStr
 
 
-## 标签(tag) 版本：2018-08-13
 
-### 第 12 次发布
 
-发布时间：2022-10-26 06:58:19
+## 高性能计算平台(thpc) 版本：2022-04-01
+
+### 第 4 次发布
+
+发布时间：2022-10-27 07:00:42
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-新增接口：
+修改数据结构：
 
-* [AddProject](https://cloud.tencent.com/document/api/651/81952)
-* [UpdateProject](https://cloud.tencent.com/document/api/651/81951)
+* [ClusterOverview](https://cloud.tencent.com/document/api/1527/72108#ClusterOverview)
+
+	* 新增成员：VpcId
+
+
+
+
+## 高性能计算平台(thpc) 版本：2021-11-09
+
+
+
+## 私有网络(vpc) 版本：2017-03-12
+
+### 第 127 次发布
+
+发布时间：2022-10-27 07:09:19
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [NetworkInterface](https://cloud.tencent.com/document/api/215/15824#NetworkInterface)
+
+	* 新增成员：ResourceId
+
+	* <font color="#dd0000">**修改成员**：</font>NetworkInterfaceId, NetworkInterfaceName, SubnetId, VpcId, MacAddress, State, PrivateIpAddressSet, Ipv6AddressSet, TagSet, EniType, Business, CdcId, AttachType
+
 
 
 
@@ -11378,7 +11214,7 @@
 
 新增数据结构：
 
-* [[Variable](https://cloud.tencent.com/document/api/679/47715#Variable)](https://cloud.tencent.com/document/api/679/47715#[Variable](https://cloud.tencent.com/document/api/679/47715#Variable))
+* [Variable](https://cloud.tencent.com/document/api/679/47715#Variable)
 
 ### 第 31 次发布
 
@@ -23942,7 +23778,7 @@
 
 新增数据结构：
 
-* [[CloudExternalAttachmentData](https://cloud.tencent.com/document/api/1122/40683#CloudExternalAttachmentData)](https://cloud.tencent.com/document/api/1122/40683#[CloudExternalAttachmentData](https://cloud.tencent.com/document/api/1122/40683#CloudExternalAttachmentData))
+* [CloudExternalAttachmentData](https://cloud.tencent.com/document/api/1122/40683#CloudExternalAttachmentData)
 
 修改数据结构：
 
@@ -37785,6 +37621,28 @@
 
 ## 弹性 MapReduce(emr) 版本：2019-01-03
 
+### 第 38 次发布
+
+发布时间：2022-10-27 06:31:19
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ScaleOutInstance](https://cloud.tencent.com/document/api/589/34264)
+
+	* 新增入参：AutoRenew
+
+
+修改数据结构：
+
+* [EmrListInstance](https://cloud.tencent.com/document/api/589/33981#EmrListInstance)
+
+	* 新增成员：IsHandsCluster
+
+
 ### 第 37 次发布
 
 发布时间：2022-09-06 06:30:34
@@ -39607,7 +39465,7 @@
 
 新增数据结构：
 
-* [[ApproverOption](https://cloud.tencent.com/document/api/1323/70369#ApproverOption)](https://cloud.tencent.com/document/api/1323/70369#[ApproverOption](https://cloud.tencent.com/document/api/1323/70369#ApproverOption))
+* [ApproverOption](https://cloud.tencent.com/document/api/1323/70369#ApproverOption)
 
 修改数据结构：
 
@@ -40115,7 +39973,7 @@
 
 新增数据结构：
 
-* [[ApproverOption](https://cloud.tencent.com/document/api/1420/61525#ApproverOption)](https://cloud.tencent.com/document/api/1420/61525#[ApproverOption](https://cloud.tencent.com/document/api/1420/61525#ApproverOption))
+* [ApproverOption](https://cloud.tencent.com/document/api/1420/61525#ApproverOption)
 
 修改数据结构：
 
@@ -53370,9 +53228,9 @@
 
 新增接口：
 
-* [[ModifyInstanceNetwork](https://cloud.tencent.com/document/api/237/81949)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyInstanceVip](https://cloud.tencent.com/document/api/237/81948)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyInstanceVport](https://cloud.tencent.com/document/api/237/81947)](https://cloud.tencent.com/document/api/#/#)
+* [ModifyInstanceNetwork](https://cloud.tencent.com/document/api/237/81949)
+* [ModifyInstanceVip](https://cloud.tencent.com/document/api/237/81948)
+* [ModifyInstanceVport](https://cloud.tencent.com/document/api/237/81947)
 
 ### 第 42 次发布
 
@@ -59128,6 +58986,21 @@
 
 ## 流计算 Oceanus(oceanus) 版本：2019-04-22
 
+### 第 27 次发布
+
+发布时间：2022-10-27 06:45:50
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [WorkSpaceClusterItem](https://cloud.tencent.com/document/api/849/52010#WorkSpaceClusterItem)
+
+	* 新增成员：ProjectId, ProjectIdStr
+
+
 ### 第 26 次发布
 
 发布时间：2022-09-27 06:36:12
@@ -62605,7 +62478,7 @@
 
 新增接口：
 
-* [[ModifyRecordsStatus](https://cloud.tencent.com/document/api/1338/81950)](https://cloud.tencent.com/document/api/#/#)
+* [ModifyRecordsStatus](https://cloud.tencent.com/document/api/1338/81950)
 
 ### 第 10 次发布
 
@@ -68977,8 +68850,8 @@
 
 新增接口：
 
-* [[AddProject](https://cloud.tencent.com/document/api/651/81952)](https://cloud.tencent.com/document/api/#/#)
-* [[UpdateProject](https://cloud.tencent.com/document/api/651/81951)](https://cloud.tencent.com/document/api/#/#)
+* [AddProject](https://cloud.tencent.com/document/api/651/81952)
+* [UpdateProject](https://cloud.tencent.com/document/api/651/81951)
 
 ### 第 11 次发布
 
@@ -78664,6 +78537,21 @@
 
 
 ## 高性能计算平台(thpc) 版本：2022-04-01
+
+### 第 4 次发布
+
+发布时间：2022-10-27 07:00:42
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ClusterOverview](https://cloud.tencent.com/document/api/1527/72108#ClusterOverview)
+
+	* 新增成员：VpcId
+
 
 ### 第 3 次发布
 
@@ -91306,6 +91194,23 @@
 
 
 ## 私有网络(vpc) 版本：2017-03-12
+
+### 第 127 次发布
+
+发布时间：2022-10-27 07:09:19
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [NetworkInterface](https://cloud.tencent.com/document/api/215/15824#NetworkInterface)
+
+	* 新增成员：ResourceId
+
+	* <font color="#dd0000">**修改成员**：</font>NetworkInterfaceId, NetworkInterfaceName, SubnetId, VpcId, MacAddress, State, PrivateIpAddressSet, Ipv6AddressSet, TagSet, EniType, Business, CdcId, AttachType
+
 
 ### 第 126 次发布
 

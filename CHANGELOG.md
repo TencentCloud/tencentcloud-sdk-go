@@ -1,3 +1,94 @@
+# Release v1.0.523
+
+## 弹性 MapReduce(emr) 版本：2019-01-03
+
+### 第 38 次发布
+
+发布时间：2022-10-27 06:31:19
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ScaleOutInstance](https://cloud.tencent.com/document/api/589/34264)
+
+	* 新增入参：AutoRenew
+
+
+修改数据结构：
+
+* [EmrListInstance](https://cloud.tencent.com/document/api/589/33981#EmrListInstance)
+
+	* 新增成员：IsHandsCluster
+
+
+
+
+## 流计算 Oceanus(oceanus) 版本：2019-04-22
+
+### 第 27 次发布
+
+发布时间：2022-10-27 06:45:50
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [WorkSpaceClusterItem](https://cloud.tencent.com/document/api/849/52010#WorkSpaceClusterItem)
+
+	* 新增成员：ProjectId, ProjectIdStr
+
+
+
+
+## 高性能计算平台(thpc) 版本：2022-04-01
+
+### 第 4 次发布
+
+发布时间：2022-10-27 07:00:42
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ClusterOverview](https://cloud.tencent.com/document/api/1527/72108#ClusterOverview)
+
+	* 新增成员：VpcId
+
+
+
+
+## 高性能计算平台(thpc) 版本：2021-11-09
+
+
+
+## 私有网络(vpc) 版本：2017-03-12
+
+### 第 127 次发布
+
+发布时间：2022-10-27 07:09:19
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [NetworkInterface](https://cloud.tencent.com/document/api/215/15824#NetworkInterface)
+
+	* 新增成员：ResourceId
+
+	* <font color="#dd0000">**修改成员**：</font>NetworkInterfaceId, NetworkInterfaceName, SubnetId, VpcId, MacAddress, State, PrivateIpAddressSet, Ipv6AddressSet, TagSet, EniType, Business, CdcId, AttachType
+
+
+
+
 # Release v1.0.522
 
 ## DDoS 防护(antiddos) 版本：2020-03-09

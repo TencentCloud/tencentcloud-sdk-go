@@ -20789,6 +20789,10 @@ type NetworkInterface struct {
 	// 弹性网卡类型：0:标准型/1:扩展型。默认值为0。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AttachType *uint64 `json:"AttachType,omitempty" name:"AttachType"`
+
+	// 用于保留网卡主IP的资源ID用于保留网卡主IP的资源ID。用于删除网卡时作为入参数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
 }
 
 type NetworkInterfaceAttachment struct {

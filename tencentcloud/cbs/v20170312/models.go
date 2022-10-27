@@ -3438,21 +3438,21 @@ func (r *RenewDiskResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ResizeDiskRequestParams struct {
-	// 云硬盘ID， 通过[DescribeDisks](/document/product/362/16315)接口查询。
-	DiskId *string `json:"DiskId,omitempty" name:"DiskId"`
-
 	// 云硬盘扩容后的大小，单位为GB，必须大于当前云硬盘大小。云盘大小取值范围参见云硬盘[产品分类](/document/product/362/2353)的说明。
 	DiskSize *uint64 `json:"DiskSize,omitempty" name:"DiskSize"`
+
+	// 云硬盘ID， 通过[DescribeDisks](/document/product/362/16315)接口查询。
+	DiskId *string `json:"DiskId,omitempty" name:"DiskId"`
 }
 
 type ResizeDiskRequest struct {
 	*tchttp.BaseRequest
 	
-	// 云硬盘ID， 通过[DescribeDisks](/document/product/362/16315)接口查询。
-	DiskId *string `json:"DiskId,omitempty" name:"DiskId"`
-
 	// 云硬盘扩容后的大小，单位为GB，必须大于当前云硬盘大小。云盘大小取值范围参见云硬盘[产品分类](/document/product/362/2353)的说明。
 	DiskSize *uint64 `json:"DiskSize,omitempty" name:"DiskSize"`
+
+	// 云硬盘ID， 通过[DescribeDisks](/document/product/362/16315)接口查询。
+	DiskId *string `json:"DiskId,omitempty" name:"DiskId"`
 }
 
 func (r *ResizeDiskRequest) ToJsonString() string {
@@ -3467,8 +3467,8 @@ func (r *ResizeDiskRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	delete(f, "DiskId")
 	delete(f, "DiskSize")
+	delete(f, "DiskId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ResizeDiskRequest has unknown keys!", "")
 	}

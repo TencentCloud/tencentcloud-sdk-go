@@ -376,6 +376,9 @@ type ClusterOverview struct {
 
 	// 登录节点数量。
 	LoginNodeCount *int64 `json:"LoginNodeCount,omitempty" name:"LoginNodeCount"`
+
+	// 集群所属私有网络ID。
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
 }
 
 type ComputeNode struct {

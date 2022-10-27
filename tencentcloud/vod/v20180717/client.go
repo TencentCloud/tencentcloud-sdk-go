@@ -1472,6 +1472,8 @@ func NewCreateSuperPlayerConfigResponse() (response *CreateSuperPlayerConfigResp
 }
 
 // CreateSuperPlayerConfig
+// 该 API 已经<font color='red'>不再维护</font>，新版播放器签名不再使用播放器配置模板，详细请参考 [播放器签名](https://cloud.tencent.com/document/product/266/45554)。
+//
 // 创建播放器配置，数量上限：100。
 //
 // 可能返回的错误码:
@@ -1486,6 +1488,8 @@ func (c *Client) CreateSuperPlayerConfig(request *CreateSuperPlayerConfigRequest
 }
 
 // CreateSuperPlayerConfig
+// 该 API 已经<font color='red'>不再维护</font>，新版播放器签名不再使用播放器配置模板，详细请参考 [播放器签名](https://cloud.tencent.com/document/product/266/45554)。
+//
 // 创建播放器配置，数量上限：100。
 //
 // 可能返回的错误码:
@@ -2638,6 +2642,8 @@ func NewDeleteSuperPlayerConfigResponse() (response *DeleteSuperPlayerConfigResp
 }
 
 // DeleteSuperPlayerConfig
+// 该 API 已经<font color='red'>不再维护</font>，新版播放器签名不再使用播放器配置模板，详细请参考 [播放器签名](https://cloud.tencent.com/document/product/266/45554)。
+//
 // 删除播放器配置。  
 //
 // *注：系统预置播放器配置不允许删除。*
@@ -2653,6 +2659,8 @@ func (c *Client) DeleteSuperPlayerConfig(request *DeleteSuperPlayerConfigRequest
 }
 
 // DeleteSuperPlayerConfig
+// 该 API 已经<font color='red'>不再维护</font>，新版播放器签名不再使用播放器配置模板，详细请参考 [播放器签名](https://cloud.tencent.com/document/product/266/45554)。
+//
 // 删除播放器配置。  
 //
 // *注：系统预置播放器配置不允许删除。*
@@ -5208,6 +5216,8 @@ func NewDescribeSuperPlayerConfigsResponse() (response *DescribeSuperPlayerConfi
 }
 
 // DescribeSuperPlayerConfigs
+// 该 API 已经<font color='red'>不再维护</font>，新版播放器签名不再使用播放器配置模板，详细请参考 [播放器签名](https://cloud.tencent.com/document/product/266/45554)。
+//
 // 查询播放器配置，支持根据条件，分页查询。
 //
 // 可能返回的错误码:
@@ -5221,6 +5231,8 @@ func (c *Client) DescribeSuperPlayerConfigs(request *DescribeSuperPlayerConfigsR
 }
 
 // DescribeSuperPlayerConfigs
+// 该 API 已经<font color='red'>不再维护</font>，新版播放器签名不再使用播放器配置模板，详细请参考 [播放器签名](https://cloud.tencent.com/document/product/266/45554)。
+//
 // 查询播放器配置，支持根据条件，分页查询。
 //
 // 可能返回的错误码:
@@ -7388,6 +7400,8 @@ func NewModifySuperPlayerConfigResponse() (response *ModifySuperPlayerConfigResp
 }
 
 // ModifySuperPlayerConfig
+// 该 API 已经<font color='red'>不再维护</font>，新版播放器签名不再使用播放器配置模板，详细请参考 [播放器签名](https://cloud.tencent.com/document/product/266/45554)。
+//
 // 修改播放器配置。
 //
 // 可能返回的错误码:
@@ -7401,6 +7415,8 @@ func (c *Client) ModifySuperPlayerConfig(request *ModifySuperPlayerConfigRequest
 }
 
 // ModifySuperPlayerConfig
+// 该 API 已经<font color='red'>不再维护</font>，新版播放器签名不再使用播放器配置模板，详细请参考 [播放器签名](https://cloud.tencent.com/document/product/266/45554)。
+//
 // 修改播放器配置。
 //
 // 可能返回的错误码:

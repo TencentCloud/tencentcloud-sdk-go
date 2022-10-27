@@ -1844,6 +1844,10 @@ type EmrListInstance struct {
 	// 是否为跨AZ集群
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsMultiZoneCluster *bool `json:"IsMultiZoneCluster,omitempty" name:"IsMultiZoneCluster"`
+
+	// 是否手戳集群
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsHandsCluster *bool `json:"IsHandsCluster,omitempty" name:"IsHandsCluster"`
 }
 
 type EmrProductConfigOutter struct {
@@ -3979,6 +3983,9 @@ type ScaleOutInstanceRequestParams struct {
 
 	// 预设配置组
 	ScaleOutServiceConfAssign *string `json:"ScaleOutServiceConfAssign,omitempty" name:"ScaleOutServiceConfAssign"`
+
+	// 0表示关闭自动续费，1表示开启自动续费
+	AutoRenew *int64 `json:"AutoRenew,omitempty" name:"AutoRenew"`
 }
 
 type ScaleOutInstanceRequest struct {
@@ -4069,6 +4076,9 @@ type ScaleOutInstanceRequest struct {
 
 	// 预设配置组
 	ScaleOutServiceConfAssign *string `json:"ScaleOutServiceConfAssign,omitempty" name:"ScaleOutServiceConfAssign"`
+
+	// 0表示关闭自动续费，1表示开启自动续费
+	AutoRenew *int64 `json:"AutoRenew,omitempty" name:"AutoRenew"`
 }
 
 func (r *ScaleOutInstanceRequest) ToJsonString() string {
@@ -4108,6 +4118,7 @@ func (r *ScaleOutInstanceRequest) FromJsonString(s string) error {
 	delete(f, "ZoneId")
 	delete(f, "SubnetId")
 	delete(f, "ScaleOutServiceConfAssign")
+	delete(f, "AutoRenew")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ScaleOutInstanceRequest has unknown keys!", "")
 	}

@@ -532,7 +532,7 @@ func NewDescribeAgentDealsCacheResponse() (response *DescribeAgentDealsCacheResp
 }
 
 // DescribeAgentDealsCache
-// 【该接口将逐步下线，请切换使用升级版本DescribeAgentDealsByCache】代理商拉取缓存的全量客户订单
+// 【该接口已下线，请使用升级版本DescribeAgentDealsByCache】代理商拉取缓存的全量客户订单
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -544,7 +544,7 @@ func (c *Client) DescribeAgentDealsCache(request *DescribeAgentDealsCacheRequest
 }
 
 // DescribeAgentDealsCache
-// 【该接口将逐步下线，请切换使用升级版本DescribeAgentDealsByCache】代理商拉取缓存的全量客户订单
+// 【该接口已下线，请使用升级版本DescribeAgentDealsByCache】代理商拉取缓存的全量客户订单
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -586,7 +586,7 @@ func NewDescribeAgentPayDealsResponse() (response *DescribeAgentPayDealsResponse
 }
 
 // DescribeAgentPayDeals
-// 【该接口将逐步下线，请切换使用升级版本DescribeAgentPayDealsV2】可以查询代理商代付的所有订单
+// 【该接口已下线，请切换使用升级版本DescribeAgentPayDealsV2】可以查询代理商代付的所有订单
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -598,7 +598,7 @@ func (c *Client) DescribeAgentPayDeals(request *DescribeAgentPayDealsRequest) (r
 }
 
 // DescribeAgentPayDeals
-// 【该接口将逐步下线，请切换使用升级版本DescribeAgentPayDealsV2】可以查询代理商代付的所有订单
+// 【该接口已下线，请切换使用升级版本DescribeAgentPayDealsV2】可以查询代理商代付的所有订单
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -694,7 +694,7 @@ func NewDescribeAgentSelfPayDealsResponse() (response *DescribeAgentSelfPayDeals
 }
 
 // DescribeAgentSelfPayDeals
-// 【该接口将逐步下线，请切换使用升级版本DescribeAgentSelfPayDealsV2】可以查询代理商下指定客户的自付订单
+// 【该接口已下线，请切换使用升级版本DescribeAgentSelfPayDealsV2】可以查询代理商下指定客户的自付订单
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -706,7 +706,7 @@ func (c *Client) DescribeAgentSelfPayDeals(request *DescribeAgentSelfPayDealsReq
 }
 
 // DescribeAgentSelfPayDeals
-// 【该接口将逐步下线，请切换使用升级版本DescribeAgentSelfPayDealsV2】可以查询代理商下指定客户的自付订单
+// 【该接口已下线，请切换使用升级版本DescribeAgentSelfPayDealsV2】可以查询代理商下指定客户的自付订单
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -908,7 +908,7 @@ func NewDescribeRebateInfosResponse() (response *DescribeRebateInfosResponse) {
 }
 
 // DescribeRebateInfos
-// 代理商可查询自己名下全部返佣信息
+// 【该接口已下线，请切换使用升级版本DescribeRebateInfosNew】代理商可查询自己名下全部返佣信息
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -918,7 +918,7 @@ func (c *Client) DescribeRebateInfos(request *DescribeRebateInfosRequest) (respo
 }
 
 // DescribeRebateInfos
-// 代理商可查询自己名下全部返佣信息
+// 【该接口已下线，请切换使用升级版本DescribeRebateInfosNew】代理商可查询自己名下全部返佣信息
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"

@@ -2811,4 +2811,11 @@ type WorkSpaceClusterItem struct {
 
 	// 绑定状态  2 绑定 1  解除绑定
 	Status *int64 `json:"Status,omitempty" name:"Status"`
+
+	// 项目ID
+	ProjectId *int64 `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 项目ID string类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProjectIdStr *string `json:"ProjectIdStr,omitempty" name:"ProjectIdStr"`
 }
