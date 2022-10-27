@@ -1,3 +1,22 @@
+# Release v1.0.524
+
+## 数据湖计算(dlc) 版本：2021-01-25
+
+### 第 33 次发布
+
+发布时间：2022-10-27 14:41:42
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateResultDownload](https://cloud.tencent.com/document/api/1342/82008)
+* [DescribeResultDownload](https://cloud.tencent.com/document/api/1342/82007)
+
+
+
 # Release v1.0.523
 
 ## 弹性 MapReduce(emr) 版本：2019-01-03

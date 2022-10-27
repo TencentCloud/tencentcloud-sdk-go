@@ -875,6 +875,60 @@ func (c *Client) CreateImportTaskWithContext(ctx context.Context, request *Creat
     return
 }
 
+func NewCreateResultDownloadRequest() (request *CreateResultDownloadRequest) {
+    request = &CreateResultDownloadRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "CreateResultDownload")
+    
+    
+    return
+}
+
+func NewCreateResultDownloadResponse() (response *CreateResultDownloadResponse) {
+    response = &CreateResultDownloadResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateResultDownload
+// 创建查询结果下载任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) CreateResultDownload(request *CreateResultDownloadRequest) (response *CreateResultDownloadResponse, err error) {
+    return c.CreateResultDownloadWithContext(context.Background(), request)
+}
+
+// CreateResultDownload
+// 创建查询结果下载任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) CreateResultDownloadWithContext(ctx context.Context, request *CreateResultDownloadRequest) (response *CreateResultDownloadResponse, err error) {
+    if request == nil {
+        request = NewCreateResultDownloadRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateResultDownload require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateResultDownloadResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateScriptRequest() (request *CreateScriptRequest) {
     request = &CreateScriptRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2007,6 +2061,62 @@ func (c *Client) DescribeDatabasesWithContext(ctx context.Context, request *Desc
     request.SetContext(ctx)
     
     response = NewDescribeDatabasesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeResultDownloadRequest() (request *DescribeResultDownloadRequest) {
+    request = &DescribeResultDownloadRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "DescribeResultDownload")
+    
+    
+    return
+}
+
+func NewDescribeResultDownloadResponse() (response *DescribeResultDownloadResponse) {
+    response = &DescribeResultDownloadResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeResultDownload
+// 查询结果下载任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_DATASOURCENOTFOUND = "ResourceNotFound.DatasourceNotFound"
+func (c *Client) DescribeResultDownload(request *DescribeResultDownloadRequest) (response *DescribeResultDownloadResponse, err error) {
+    return c.DescribeResultDownloadWithContext(context.Background(), request)
+}
+
+// DescribeResultDownload
+// 查询结果下载任务
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_DATASOURCENOTFOUND = "ResourceNotFound.DatasourceNotFound"
+func (c *Client) DescribeResultDownloadWithContext(ctx context.Context, request *DescribeResultDownloadRequest) (response *DescribeResultDownloadResponse, err error) {
+    if request == nil {
+        request = NewDescribeResultDownloadRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeResultDownload require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeResultDownloadResponse()
     err = c.Send(request, response)
     return
 }

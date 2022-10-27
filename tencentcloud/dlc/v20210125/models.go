@@ -1339,6 +1339,77 @@ func (r *CreateImportTaskResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateResultDownloadRequestParams struct {
+	// 查询结果任务Id
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 下载格式
+	Format *string `json:"Format,omitempty" name:"Format"`
+
+	// 是否重新生成下载文件，仅当之前任务为 Timout | Error 时有效
+	Force *bool `json:"Force,omitempty" name:"Force"`
+}
+
+type CreateResultDownloadRequest struct {
+	*tchttp.BaseRequest
+	
+	// 查询结果任务Id
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 下载格式
+	Format *string `json:"Format,omitempty" name:"Format"`
+
+	// 是否重新生成下载文件，仅当之前任务为 Timout | Error 时有效
+	Force *bool `json:"Force,omitempty" name:"Force"`
+}
+
+func (r *CreateResultDownloadRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateResultDownloadRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	delete(f, "Format")
+	delete(f, "Force")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateResultDownloadRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateResultDownloadResponseParams struct {
+	// 下载任务Id
+	DownloadId *string `json:"DownloadId,omitempty" name:"DownloadId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateResultDownloadResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateResultDownloadResponseParams `json:"Response"`
+}
+
+func (r *CreateResultDownloadResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateResultDownloadResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateScriptRequestParams struct {
 	// 脚本名称，最大不能超过255个字符。
 	ScriptName *string `json:"ScriptName,omitempty" name:"ScriptName"`
@@ -3395,6 +3466,83 @@ func (r *DescribeDatabasesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeDatabasesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeResultDownloadRequestParams struct {
+	// 查询任务Id
+	DownloadId *string `json:"DownloadId,omitempty" name:"DownloadId"`
+}
+
+type DescribeResultDownloadRequest struct {
+	*tchttp.BaseRequest
+	
+	// 查询任务Id
+	DownloadId *string `json:"DownloadId,omitempty" name:"DownloadId"`
+}
+
+func (r *DescribeResultDownloadRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeResultDownloadRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DownloadId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeResultDownloadRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeResultDownloadResponseParams struct {
+	// 下载文件路径
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Path *string `json:"Path,omitempty" name:"Path"`
+
+	// 任务状态 init | queue | format | compress | success|  timeout | error
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 任务异常原因
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Reason *string `json:"Reason,omitempty" name:"Reason"`
+
+	// 临时AK
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SecretId *string `json:"SecretId,omitempty" name:"SecretId"`
+
+	// 临时SK
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SecretKey *string `json:"SecretKey,omitempty" name:"SecretKey"`
+
+	// 临时Token
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Token *string `json:"Token,omitempty" name:"Token"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeResultDownloadResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeResultDownloadResponseParams `json:"Response"`
+}
+
+func (r *DescribeResultDownloadResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeResultDownloadResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

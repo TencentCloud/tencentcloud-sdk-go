@@ -73,7 +73,7 @@
 | dbdc | [云数据库独享集群](https://cloud.tencent.com/document/product/1322) | 2022-07-27 06:08:38 |
 | dc | [专线接入](https://cloud.tencent.com/document/product/216) | 2022-10-26 06:29:47 |
 | dcdb | [分布式数据库 TDSQL](https://cloud.tencent.com/document/product/557) | 2022-08-31 06:24:58 |
-| dlc | [数据湖计算](https://cloud.tencent.com/document/product/1342) | 2022-09-14 06:20:02 |
+| dlc | [数据湖计算](https://cloud.tencent.com/document/product/1342) | 2022-10-27 14:41:42 |
 | dnspod | [DNSPod](https://cloud.tencent.com/document/product/1427) | 2022-09-16 06:21:57 |
 | domain | [域名注册](https://cloud.tencent.com/document/product/242) | 2022-05-24 06:11:36 |
 | drm | [数字版权管理](https://cloud.tencent.com/document/product/1000) | 2022-04-04 06:38:48 |
