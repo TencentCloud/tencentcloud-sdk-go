@@ -57,6 +57,22 @@ type AppStatisticsItem struct {
 
 	// 统计时间
 	Date *string `json:"Date,omitempty" name:"Date"`
+
+	// 录音转文本用量统计数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AudioTextStatisticsItem *AudioTextStatisticsItem `json:"AudioTextStatisticsItem,omitempty" name:"AudioTextStatisticsItem"`
+
+	// 流式转文本用量数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StreamTextStatisticsItem *StreamTextStatisticsItem `json:"StreamTextStatisticsItem,omitempty" name:"StreamTextStatisticsItem"`
+
+	// 海外转文本用量数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OverseaTextStatisticsItem *OverseaTextStatisticsItem `json:"OverseaTextStatisticsItem,omitempty" name:"OverseaTextStatisticsItem"`
+
+	// 实时语音转文本用量数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RealtimeTextStatisticsItem *RealtimeTextStatisticsItem `json:"RealtimeTextStatisticsItem,omitempty" name:"RealtimeTextStatisticsItem"`
 }
 
 type ApplicationDataStatistics struct {
@@ -98,6 +114,12 @@ type ApplicationDataStatistics struct {
 
 	// 大陆和海外地区Pcu统计数据汇总，单位人
 	PcuDataSum []*StatisticsItem `json:"PcuDataSum,omitempty" name:"PcuDataSum"`
+}
+
+type AudioTextStatisticsItem struct {
+	// 统计值，单位：秒
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *float64 `json:"Data,omitempty" name:"Data"`
 }
 
 // Predefined struct for user
@@ -742,7 +764,7 @@ type DescribeAppStatisticsRequestParams struct {
 	// 数据结束时间，东八区时间，格式: 年-月-日，如: 2018-07-13
 	EndDate *string `json:"EndDate,omitempty" name:"EndDate"`
 
-	// 要查询的服务列表，取值：RealTimeSpeech/VoiceMessage/VoiceFilter
+	// 要查询的服务列表，取值：RealTimeSpeech/VoiceMessage/VoiceFilter/SpeechToText
 	Services []*string `json:"Services,omitempty" name:"Services"`
 }
 
@@ -758,7 +780,7 @@ type DescribeAppStatisticsRequest struct {
 	// 数据结束时间，东八区时间，格式: 年-月-日，如: 2018-07-13
 	EndDate *string `json:"EndDate,omitempty" name:"EndDate"`
 
-	// 要查询的服务列表，取值：RealTimeSpeech/VoiceMessage/VoiceFilter
+	// 要查询的服务列表，取值：RealTimeSpeech/VoiceMessage/VoiceFilter/SpeechToText
 	Services []*string `json:"Services,omitempty" name:"Services"`
 }
 
@@ -1682,6 +1704,12 @@ func (r *ModifyUserMicStatusResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type OverseaTextStatisticsItem struct {
+	// 统计值，单位：秒
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *float64 `json:"Data,omitempty" name:"Data"`
+}
+
 type RealTimeSpeechStatisticsItem struct {
 	// 大陆地区DAU
 	MainLandDau *uint64 `json:"MainLandDau,omitempty" name:"MainLandDau"`
@@ -1708,6 +1736,12 @@ type RealtimeSpeechConf struct {
 
 	// 实时语音音质类型，取值：high-高音质
 	Quality *string `json:"Quality,omitempty" name:"Quality"`
+}
+
+type RealtimeTextStatisticsItem struct {
+	// 统计值，单位：秒
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *float64 `json:"Data,omitempty" name:"Data"`
 }
 
 type RoomUser struct {
@@ -1893,6 +1927,12 @@ type StatisticsItem struct {
 	Data *uint64 `json:"Data,omitempty" name:"Data"`
 }
 
+type StreamTextStatisticsItem struct {
+	// 统计值，单位：秒
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *float64 `json:"Data,omitempty" name:"Data"`
+}
+
 type Tag struct {
 	// 标签键
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -2074,7 +2114,7 @@ type VoiceFilterConf struct {
 }
 
 type VoiceFilterStatisticsItem struct {
-	// 语音过滤总时长
+	// 语音过滤总时长，单位为min
 	Duration *uint64 `json:"Duration,omitempty" name:"Duration"`
 }
 

@@ -3215,6 +3215,206 @@ func (c *Client) ModifyDBSyncModeWithContext(ctx context.Context, request *Modif
     return
 }
 
+func NewModifyInstanceNetworkRequest() (request *ModifyInstanceNetworkRequest) {
+    request = &ModifyInstanceNetworkRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dcdb", APIVersion, "ModifyInstanceNetwork")
+    
+    
+    return
+}
+
+func NewModifyInstanceNetworkResponse() (response *ModifyInstanceNetworkResponse) {
+    response = &ModifyInstanceNetworkResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyInstanceNetwork
+// 本接口（ModifyInstanceNetwork）用于修改实例所属网络。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_APPLYVIPFAILED = "FailedOperation.ApplyVipFailed"
+//  FAILEDOPERATION_WANSTATUSABNORMAL = "FailedOperation.WanStatusAbnormal"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INTERNALERROR_GETSUBNETFAILED = "InternalError.GetSubnetFailed"
+//  INTERNALERROR_GETVPCFAILED = "InternalError.GetVpcFailed"
+//  INTERNALERROR_VPCOPERATIONFAILED = "InternalError.VpcOperationFailed"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  INVALIDPARAMETER_SUBNETUNAVAILABLE = "InvalidParameter.SubnetUnavailable"
+//  INVALIDPARAMETER_VIPNOTINSUBNET = "InvalidParameter.VipNotInSubnet"
+//  INVALIDPARAMETER_VIPUSED = "InvalidParameter.VipUsed"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSABNORMAL = "ResourceUnavailable.InstanceStatusAbnormal"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) ModifyInstanceNetwork(request *ModifyInstanceNetworkRequest) (response *ModifyInstanceNetworkResponse, err error) {
+    return c.ModifyInstanceNetworkWithContext(context.Background(), request)
+}
+
+// ModifyInstanceNetwork
+// 本接口（ModifyInstanceNetwork）用于修改实例所属网络。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_APPLYVIPFAILED = "FailedOperation.ApplyVipFailed"
+//  FAILEDOPERATION_WANSTATUSABNORMAL = "FailedOperation.WanStatusAbnormal"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INTERNALERROR_GETSUBNETFAILED = "InternalError.GetSubnetFailed"
+//  INTERNALERROR_GETVPCFAILED = "InternalError.GetVpcFailed"
+//  INTERNALERROR_VPCOPERATIONFAILED = "InternalError.VpcOperationFailed"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  INVALIDPARAMETER_SUBNETUNAVAILABLE = "InvalidParameter.SubnetUnavailable"
+//  INVALIDPARAMETER_VIPNOTINSUBNET = "InvalidParameter.VipNotInSubnet"
+//  INVALIDPARAMETER_VIPUSED = "InvalidParameter.VipUsed"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSABNORMAL = "ResourceUnavailable.InstanceStatusAbnormal"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) ModifyInstanceNetworkWithContext(ctx context.Context, request *ModifyInstanceNetworkRequest) (response *ModifyInstanceNetworkResponse, err error) {
+    if request == nil {
+        request = NewModifyInstanceNetworkRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyInstanceNetwork require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyInstanceNetworkResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyInstanceVipRequest() (request *ModifyInstanceVipRequest) {
+    request = &ModifyInstanceVipRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dcdb", APIVersion, "ModifyInstanceVip")
+    
+    
+    return
+}
+
+func NewModifyInstanceVipResponse() (response *ModifyInstanceVipResponse) {
+    response = &ModifyInstanceVipResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyInstanceVip
+// 本接口（ModifyInstanceVip）用于修改实例Vip
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_APPLYVIPFAILED = "FailedOperation.ApplyVipFailed"
+//  FAILEDOPERATION_VIPNOTCHANGE = "FailedOperation.VipNotChange"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INTERNALERROR_INNERSYSTEMERROR = "InternalError.InnerSystemError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_VIPNOTINSUBNET = "InvalidParameter.VipNotInSubnet"
+//  INVALIDPARAMETER_VIPUSED = "InvalidParameter.VipUsed"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSABNORMAL = "ResourceUnavailable.InstanceStatusAbnormal"
+func (c *Client) ModifyInstanceVip(request *ModifyInstanceVipRequest) (response *ModifyInstanceVipResponse, err error) {
+    return c.ModifyInstanceVipWithContext(context.Background(), request)
+}
+
+// ModifyInstanceVip
+// 本接口（ModifyInstanceVip）用于修改实例Vip
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_APPLYVIPFAILED = "FailedOperation.ApplyVipFailed"
+//  FAILEDOPERATION_VIPNOTCHANGE = "FailedOperation.VipNotChange"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INTERNALERROR_INNERSYSTEMERROR = "InternalError.InnerSystemError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_VIPNOTINSUBNET = "InvalidParameter.VipNotInSubnet"
+//  INVALIDPARAMETER_VIPUSED = "InvalidParameter.VipUsed"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSABNORMAL = "ResourceUnavailable.InstanceStatusAbnormal"
+func (c *Client) ModifyInstanceVipWithContext(ctx context.Context, request *ModifyInstanceVipRequest) (response *ModifyInstanceVipResponse, err error) {
+    if request == nil {
+        request = NewModifyInstanceVipRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyInstanceVip require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyInstanceVipResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyInstanceVportRequest() (request *ModifyInstanceVportRequest) {
+    request = &ModifyInstanceVportRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dcdb", APIVersion, "ModifyInstanceVport")
+    
+    
+    return
+}
+
+func NewModifyInstanceVportResponse() (response *ModifyInstanceVportResponse) {
+    response = &ModifyInstanceVportResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyInstanceVport
+// 本接口（ModifyInstanceVport）用于修改实例VPORT
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_SGCHANGEVIP = "FailedOperation.SGChangeVip"
+//  FAILEDOPERATION_VPCADDSERVICEFAILED = "FailedOperation.VpcAddServiceFailed"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INTERNALERROR_INNERSYSTEMERROR = "InternalError.InnerSystemError"
+//  INTERNALERROR_OPERATEDATABASEFAILED = "InternalError.OperateDatabaseFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  INVALIDPARAMETER_VIPUSED = "InvalidParameter.VipUsed"
+//  INVALIDPARAMETER_VPORTUSED = "InvalidParameter.VportUsed"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSABNORMAL = "ResourceUnavailable.InstanceStatusAbnormal"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) ModifyInstanceVport(request *ModifyInstanceVportRequest) (response *ModifyInstanceVportResponse, err error) {
+    return c.ModifyInstanceVportWithContext(context.Background(), request)
+}
+
+// ModifyInstanceVport
+// 本接口（ModifyInstanceVport）用于修改实例VPORT
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_SGCHANGEVIP = "FailedOperation.SGChangeVip"
+//  FAILEDOPERATION_VPCADDSERVICEFAILED = "FailedOperation.VpcAddServiceFailed"
+//  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
+//  INTERNALERROR_INNERSYSTEMERROR = "InternalError.InnerSystemError"
+//  INTERNALERROR_OPERATEDATABASEFAILED = "InternalError.OperateDatabaseFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  INVALIDPARAMETER_VIPUSED = "InvalidParameter.VipUsed"
+//  INVALIDPARAMETER_VPORTUSED = "InvalidParameter.VportUsed"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSABNORMAL = "ResourceUnavailable.InstanceStatusAbnormal"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) ModifyInstanceVportWithContext(ctx context.Context, request *ModifyInstanceVportRequest) (response *ModifyInstanceVportResponse, err error) {
+    if request == nil {
+        request = NewModifyInstanceVportRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyInstanceVport require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyInstanceVportResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyRealServerAccessStrategyRequest() (request *ModifyRealServerAccessStrategyRequest) {
     request = &ModifyRealServerAccessStrategyRequest{
         BaseRequest: &tchttp.BaseRequest{},

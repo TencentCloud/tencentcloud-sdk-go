@@ -1,10 +1,29 @@
 # 本版本更新包含以下内容：
 
-## 数据湖计算(dlc) 版本：2021-01-25
+## 日志服务(cls) 版本：2020-10-16
 
-### 第 33 次发布
+### 第 32 次发布
 
-发布时间：2022-10-27 14:41:42
+发布时间：2022-10-28 06:17:28
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ConfigInfo](https://cloud.tencent.com/document/api/614/56471#ConfigInfo)
+
+	* 新增成员：Name
+
+
+
+
+## 分布式数据库 TDSQL(dcdb) 版本：2018-04-11
+
+### 第 46 次发布
+
+发布时间：2022-10-28 06:24:03
 
 本次发布包含了以下内容：
 
@@ -12,8 +31,265 @@
 
 新增接口：
 
-* [CreateResultDownload](https://cloud.tencent.com/document/api/1342/82008)
-* [DescribeResultDownload](https://cloud.tencent.com/document/api/1342/82007)
+* [ModifyInstanceNetwork](https://cloud.tencent.com/document/api/557/82021)
+* [ModifyInstanceVip](https://cloud.tencent.com/document/api/557/82020)
+* [ModifyInstanceVport](https://cloud.tencent.com/document/api/557/82019)
+
+
+
+## 游戏多媒体引擎(gme) 版本：2018-07-11
+
+### 第 25 次发布
+
+发布时间：2022-10-28 06:29:04
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [AudioTextStatisticsItem](https://cloud.tencent.com/document/api/607/35375#AudioTextStatisticsItem)
+* [OverseaTextStatisticsItem](https://cloud.tencent.com/document/api/607/35375#OverseaTextStatisticsItem)
+* [RealtimeTextStatisticsItem](https://cloud.tencent.com/document/api/607/35375#RealtimeTextStatisticsItem)
+* [StreamTextStatisticsItem](https://cloud.tencent.com/document/api/607/35375#StreamTextStatisticsItem)
+
+修改数据结构：
+
+* [AppStatisticsItem](https://cloud.tencent.com/document/api/607/35375#AppStatisticsItem)
+
+	* 新增成员：AudioTextStatisticsItem, StreamTextStatisticsItem, OverseaTextStatisticsItem, RealtimeTextStatisticsItem
+
+
+
+
+## 云直播(live) 版本：2018-08-01
+
+### 第 90 次发布
+
+发布时间：2022-10-28 06:35:04
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [TranscodeDetailInfo](https://cloud.tencent.com/document/api/267/20474#TranscodeDetailInfo)
+
+	* 新增成员：MainlandOrOversea
+
+
+
+
+## 云数据库 MongoDB(mongodb) 版本：2019-07-25
+
+### 第 26 次发布
+
+发布时间：2022-10-28 06:36:39
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeDBInstanceNodeProperty](https://cloud.tencent.com/document/api/240/82022)
+
+新增数据结构：
+
+* [NodeProperty](https://cloud.tencent.com/document/api/240/38576#NodeProperty)
+* [NodeTag](https://cloud.tencent.com/document/api/240/38576#NodeTag)
+* [ReplicateSetInfo](https://cloud.tencent.com/document/api/240/38576#ReplicateSetInfo)
+
+
+
+## 云数据库 MongoDB(mongodb) 版本：2018-04-08
+
+
+
+## 文字识别(ocr) 版本：2018-11-19
+
+### 第 80 次发布
+
+发布时间：2022-10-28 06:39:14
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [BankSlipOCR](https://cloud.tencent.com/document/api/866/57674)
+
+	* 新增入参：IsPdf, PdfPageNumber
+
+* [BusInvoiceOCR](https://cloud.tencent.com/document/api/866/37838)
+
+	* 新增入参：IsPdf, PdfPageNumber
+
+* [CarInvoiceOCR](https://cloud.tencent.com/document/api/866/37076)
+
+	* 新增入参：IsPdf, PdfPageNumber
+
+* [DutyPaidProofOCR](https://cloud.tencent.com/document/api/866/37839)
+
+	* 新增入参：IsPdf, PdfPageNumber
+
+* [FlightInvoiceOCR](https://cloud.tencent.com/document/api/866/37075)
+
+	* 新增入参：IsPdf, PdfPageNumber
+
+* [InvoiceGeneralOCR](https://cloud.tencent.com/document/api/866/37837)
+
+	* 新增入参：IsPdf, PdfPageNumber
+
+* [MixedInvoiceDetect](https://cloud.tencent.com/document/api/866/37836)
+
+	* 新增入参：IsPdf, PdfPageNumber
+
+* [MixedInvoiceOCR](https://cloud.tencent.com/document/api/866/37835)
+
+	* 新增入参：IsPdf, PdfPageNumber
+
+* [QuotaInvoiceOCR](https://cloud.tencent.com/document/api/866/37073)
+
+	* 新增入参：IsPdf, PdfPageNumber
+
+* [RecognizeMedicalInvoiceOCR](https://cloud.tencent.com/document/api/866/80326)
+
+	* 新增入参：IsPdf, PdfPageNumber
+
+* [ShipInvoiceOCR](https://cloud.tencent.com/document/api/866/37834)
+
+	* 新增入参：IsPdf, PdfPageNumber
+
+* [TaxiInvoiceOCR](https://cloud.tencent.com/document/api/866/37072)
+
+	* 新增入参：IsPdf, PdfPageNumber
+
+* [TollInvoiceOCR](https://cloud.tencent.com/document/api/866/37833)
+
+	* 新增入参：IsPdf, PdfPageNumber
+
+* [TrainTicketOCR](https://cloud.tencent.com/document/api/866/37071)
+
+	* 新增入参：IsPdf, PdfPageNumber
+
+* [VatRollInvoiceOCR](https://cloud.tencent.com/document/api/866/37832)
+
+	* 新增入参：IsPdf, PdfPageNumber
+
+* [WaybillOCR](https://cloud.tencent.com/document/api/866/34934)
+
+	* 新增入参：IsPdf, PdfPageNumber
+
+
+
+
+## 渠道合作伙伴(partners) 版本：2018-03-21
+
+### 第 25 次发布
+
+发布时间：2022-10-28 06:40:32
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeRebateInfosNew](https://cloud.tencent.com/document/api/563/82023)
+
+新增数据结构：
+
+* [RebateInfoElemNew](https://cloud.tencent.com/document/api/563/16047#RebateInfoElemNew)
+
+
+
+## 云点播(vod) 版本：2018-07-17
+
+### 第 123 次发布
+
+发布时间：2022-10-28 06:58:26
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateAdaptiveDynamicStreamingTemplate](https://cloud.tencent.com/document/api/266/43068)
+
+	* 新增入参：SegmentType
+
+* [CreateTranscodeTemplate](https://cloud.tencent.com/document/api/266/33773)
+
+	* 新增入参：SegmentType
+
+* [ModifyAdaptiveDynamicStreamingTemplate](https://cloud.tencent.com/document/api/266/43063)
+
+	* 新增入参：SegmentType
+
+* [ModifyTranscodeTemplate](https://cloud.tencent.com/document/api/266/33767)
+
+	* 新增入参：SegmentType
+
+
+修改数据结构：
+
+* [AdaptiveDynamicStreamingTemplate](https://cloud.tencent.com/document/api/266/31773#AdaptiveDynamicStreamingTemplate)
+
+	* 新增成员：SegmentType
+
+* [TranscodeTemplate](https://cloud.tencent.com/document/api/266/31773#TranscodeTemplate)
+
+	* 新增成员：SegmentType
+
+
+
+
+## 数据开发治理平台 WeData(wedata) 版本：2021-08-20
+
+### 第 10 次发布
+
+发布时间：2022-10-28 07:02:18
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DeleteCustomFunction](https://cloud.tencent.com/document/api/1267/81485)
+
+	* 新增入参：ProjectId
+
+* [SubmitCustomFunction](https://cloud.tencent.com/document/api/1267/81480)
+
+	* 新增入参：ProjectId
+
+
+
+
+## 音速达直播音乐版权引擎(yinsuda) 版本：2022-05-27
+
+### 第 8 次发布
+
+发布时间：2022-10-28 07:02:46
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeKTVPlaylists](https://cloud.tencent.com/document/api/1592/76188)
+
+	* 新增入参：Offset, Limit
+
+	* 新增出参：TotalCount
+
 
 
 
@@ -21429,6 +21705,21 @@
 
 ## 日志服务(cls) 版本：2020-10-16
 
+### 第 32 次发布
+
+发布时间：2022-10-28 06:17:28
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ConfigInfo](https://cloud.tencent.com/document/api/614/56471#ConfigInfo)
+
+	* 新增成员：Name
+
+
 ### 第 31 次发布
 
 发布时间：2022-10-26 06:21:36
@@ -32384,6 +32675,20 @@
 
 ## 分布式数据库 TDSQL(dcdb) 版本：2018-04-11
 
+### 第 46 次发布
+
+发布时间：2022-10-28 06:24:03
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[ModifyInstanceNetwork](https://cloud.tencent.com/document/api/557/82021)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyInstanceVip](https://cloud.tencent.com/document/api/557/82020)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyInstanceVport](https://cloud.tencent.com/document/api/557/82019)](https://cloud.tencent.com/document/api/#/#)
+
 ### 第 45 次发布
 
 发布时间：2022-08-31 06:24:58
@@ -33259,8 +33564,8 @@
 
 新增接口：
 
-* [[CreateResultDownload](https://cloud.tencent.com/document/api/1342/82008)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeResultDownload](https://cloud.tencent.com/document/api/1342/82007)](https://cloud.tencent.com/document/api/#/#)
+* [CreateResultDownload](https://cloud.tencent.com/document/api/1342/82008)
+* [DescribeResultDownload](https://cloud.tencent.com/document/api/1342/82007)
 
 ### 第 32 次发布
 
@@ -42917,6 +43222,28 @@
 
 ## 游戏多媒体引擎(gme) 版本：2018-07-11
 
+### 第 25 次发布
+
+发布时间：2022-10-28 06:29:04
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [[AudioTextStatisticsItem](https://cloud.tencent.com/document/api/607/35375#AudioTextStatisticsItem)](https://cloud.tencent.com/document/api/607/35375#[AudioTextStatisticsItem](https://cloud.tencent.com/document/api/607/35375#AudioTextStatisticsItem))
+* [[OverseaTextStatisticsItem](https://cloud.tencent.com/document/api/607/35375#OverseaTextStatisticsItem)](https://cloud.tencent.com/document/api/607/35375#[OverseaTextStatisticsItem](https://cloud.tencent.com/document/api/607/35375#OverseaTextStatisticsItem))
+* [[RealtimeTextStatisticsItem](https://cloud.tencent.com/document/api/607/35375#RealtimeTextStatisticsItem)](https://cloud.tencent.com/document/api/607/35375#[RealtimeTextStatisticsItem](https://cloud.tencent.com/document/api/607/35375#RealtimeTextStatisticsItem))
+* [[StreamTextStatisticsItem](https://cloud.tencent.com/document/api/607/35375#StreamTextStatisticsItem)](https://cloud.tencent.com/document/api/607/35375#[StreamTextStatisticsItem](https://cloud.tencent.com/document/api/607/35375#StreamTextStatisticsItem))
+
+修改数据结构：
+
+* [AppStatisticsItem](https://cloud.tencent.com/document/api/607/35375#AppStatisticsItem)
+
+	* 新增成员：AudioTextStatisticsItem, StreamTextStatisticsItem, OverseaTextStatisticsItem, RealtimeTextStatisticsItem
+
+
 ### 第 24 次发布
 
 发布时间：2022-09-12 06:26:19
@@ -51277,6 +51604,21 @@
 
 ## 云直播(live) 版本：2018-08-01
 
+### 第 90 次发布
+
+发布时间：2022-10-28 06:35:04
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [TranscodeDetailInfo](https://cloud.tencent.com/document/api/267/20474#TranscodeDetailInfo)
+
+	* 新增成员：MainlandOrOversea
+
+
 ### 第 89 次发布
 
 发布时间：2022-09-23 06:36:42
@@ -54642,6 +54984,24 @@
 
 
 ## 云数据库 MongoDB(mongodb) 版本：2019-07-25
+
+### 第 26 次发布
+
+发布时间：2022-10-28 06:36:39
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeDBInstanceNodeProperty](https://cloud.tencent.com/document/api/240/82022)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[NodeProperty](https://cloud.tencent.com/document/api/240/38576#NodeProperty)](https://cloud.tencent.com/document/api/240/38576#[NodeProperty](https://cloud.tencent.com/document/api/240/38576#NodeProperty))
+* [[NodeTag](https://cloud.tencent.com/document/api/240/38576#NodeTag)](https://cloud.tencent.com/document/api/240/38576#[NodeTag](https://cloud.tencent.com/document/api/240/38576#NodeTag))
+* [[ReplicateSetInfo](https://cloud.tencent.com/document/api/240/38576#ReplicateSetInfo)](https://cloud.tencent.com/document/api/240/38576#[ReplicateSetInfo](https://cloud.tencent.com/document/api/240/38576#ReplicateSetInfo))
 
 ### 第 25 次发布
 
@@ -59475,6 +59835,81 @@
 
 ## 文字识别(ocr) 版本：2018-11-19
 
+### 第 80 次发布
+
+发布时间：2022-10-28 06:39:14
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [BankSlipOCR](https://cloud.tencent.com/document/api/866/57674)
+
+	* 新增入参：IsPdf, PdfPageNumber
+
+* [BusInvoiceOCR](https://cloud.tencent.com/document/api/866/37838)
+
+	* 新增入参：IsPdf, PdfPageNumber
+
+* [CarInvoiceOCR](https://cloud.tencent.com/document/api/866/37076)
+
+	* 新增入参：IsPdf, PdfPageNumber
+
+* [DutyPaidProofOCR](https://cloud.tencent.com/document/api/866/37839)
+
+	* 新增入参：IsPdf, PdfPageNumber
+
+* [FlightInvoiceOCR](https://cloud.tencent.com/document/api/866/37075)
+
+	* 新增入参：IsPdf, PdfPageNumber
+
+* [InvoiceGeneralOCR](https://cloud.tencent.com/document/api/866/37837)
+
+	* 新增入参：IsPdf, PdfPageNumber
+
+* [MixedInvoiceDetect](https://cloud.tencent.com/document/api/866/37836)
+
+	* 新增入参：IsPdf, PdfPageNumber
+
+* [MixedInvoiceOCR](https://cloud.tencent.com/document/api/866/37835)
+
+	* 新增入参：IsPdf, PdfPageNumber
+
+* [QuotaInvoiceOCR](https://cloud.tencent.com/document/api/866/37073)
+
+	* 新增入参：IsPdf, PdfPageNumber
+
+* [RecognizeMedicalInvoiceOCR](https://cloud.tencent.com/document/api/866/80326)
+
+	* 新增入参：IsPdf, PdfPageNumber
+
+* [ShipInvoiceOCR](https://cloud.tencent.com/document/api/866/37834)
+
+	* 新增入参：IsPdf, PdfPageNumber
+
+* [TaxiInvoiceOCR](https://cloud.tencent.com/document/api/866/37072)
+
+	* 新增入参：IsPdf, PdfPageNumber
+
+* [TollInvoiceOCR](https://cloud.tencent.com/document/api/866/37833)
+
+	* 新增入参：IsPdf, PdfPageNumber
+
+* [TrainTicketOCR](https://cloud.tencent.com/document/api/866/37071)
+
+	* 新增入参：IsPdf, PdfPageNumber
+
+* [VatRollInvoiceOCR](https://cloud.tencent.com/document/api/866/37832)
+
+	* 新增入参：IsPdf, PdfPageNumber
+
+* [WaybillOCR](https://cloud.tencent.com/document/api/866/34934)
+
+	* 新增入参：IsPdf, PdfPageNumber
+
+
 ### 第 79 次发布
 
 发布时间：2022-09-21 06:39:36
@@ -61218,6 +61653,22 @@
 
 
 ## 渠道合作伙伴(partners) 版本：2018-03-21
+
+### 第 25 次发布
+
+发布时间：2022-10-28 06:40:32
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeRebateInfosNew](https://cloud.tencent.com/document/api/563/82023)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[RebateInfoElemNew](https://cloud.tencent.com/document/api/563/16047#RebateInfoElemNew)](https://cloud.tencent.com/document/api/563/16047#[RebateInfoElemNew](https://cloud.tencent.com/document/api/563/16047#RebateInfoElemNew))
 
 ### 第 24 次发布
 
@@ -87835,6 +88286,44 @@
 
 ## 云点播(vod) 版本：2018-07-17
 
+### 第 123 次发布
+
+发布时间：2022-10-28 06:58:26
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateAdaptiveDynamicStreamingTemplate](https://cloud.tencent.com/document/api/266/43068)
+
+	* 新增入参：SegmentType
+
+* [CreateTranscodeTemplate](https://cloud.tencent.com/document/api/266/33773)
+
+	* 新增入参：SegmentType
+
+* [ModifyAdaptiveDynamicStreamingTemplate](https://cloud.tencent.com/document/api/266/43063)
+
+	* 新增入参：SegmentType
+
+* [ModifyTranscodeTemplate](https://cloud.tencent.com/document/api/266/33767)
+
+	* 新增入参：SegmentType
+
+
+修改数据结构：
+
+* [AdaptiveDynamicStreamingTemplate](https://cloud.tencent.com/document/api/266/31773#AdaptiveDynamicStreamingTemplate)
+
+	* 新增成员：SegmentType
+
+* [TranscodeTemplate](https://cloud.tencent.com/document/api/266/31773#TranscodeTemplate)
+
+	* 新增成员：SegmentType
+
+
 ### 第 122 次发布
 
 发布时间：2022-10-13 06:54:26
@@ -94669,6 +95158,25 @@
 
 ## 数据开发治理平台 WeData(wedata) 版本：2021-08-20
 
+### 第 10 次发布
+
+发布时间：2022-10-28 07:02:18
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DeleteCustomFunction](https://cloud.tencent.com/document/api/1267/81485)
+
+	* 新增入参：ProjectId
+
+* [SubmitCustomFunction](https://cloud.tencent.com/document/api/1267/81480)
+
+	* 新增入参：ProjectId
+
+
 ### 第 9 次发布
 
 发布时间：2022-10-20 07:01:15
@@ -94911,6 +95419,23 @@
 
 
 ## 音速达直播音乐版权引擎(yinsuda) 版本：2022-05-27
+
+### 第 8 次发布
+
+发布时间：2022-10-28 07:02:46
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeKTVPlaylists](https://cloud.tencent.com/document/api/1592/76188)
+
+	* 新增入参：Offset, Limit
+
+	* 新增出参：TotalCount
+
 
 ### 第 7 次发布
 

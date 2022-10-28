@@ -1406,6 +1406,113 @@ func (r *DescribeDBInstanceDealResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeDBInstanceNodePropertyRequestParams struct {
+	// 实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 节点ID。
+	NodeIds []*string `json:"NodeIds,omitempty" name:"NodeIds"`
+
+	// 节点角色。可选值包括：
+	// <ul><li>PRIMARY：主节点。</li><li>SECONDARY：从节点。</li><li>READONLY：只读节点。</li><li>ARBITER：仲裁节点。</li></ul>
+	Roles []*string `json:"Roles,omitempty" name:"Roles"`
+
+	// 该参数指定节点是否为Hidden节点，默认为false。
+	OnlyHidden *bool `json:"OnlyHidden,omitempty" name:"OnlyHidden"`
+
+	// 该参数指定选举新主节点的优先级。其取值范围为[0,100]，数值越高，优先级越高。
+	Priority *int64 `json:"Priority,omitempty" name:"Priority"`
+
+	// 该参数指定节点投票权。
+	// <ul><li>1：具有投票权。</li><li>0：无投票权。</li></ul>
+	Votes *int64 `json:"Votes,omitempty" name:"Votes"`
+
+	// 节点标签。
+	Tags []*NodeTag `json:"Tags,omitempty" name:"Tags"`
+}
+
+type DescribeDBInstanceNodePropertyRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 节点ID。
+	NodeIds []*string `json:"NodeIds,omitempty" name:"NodeIds"`
+
+	// 节点角色。可选值包括：
+	// <ul><li>PRIMARY：主节点。</li><li>SECONDARY：从节点。</li><li>READONLY：只读节点。</li><li>ARBITER：仲裁节点。</li></ul>
+	Roles []*string `json:"Roles,omitempty" name:"Roles"`
+
+	// 该参数指定节点是否为Hidden节点，默认为false。
+	OnlyHidden *bool `json:"OnlyHidden,omitempty" name:"OnlyHidden"`
+
+	// 该参数指定选举新主节点的优先级。其取值范围为[0,100]，数值越高，优先级越高。
+	Priority *int64 `json:"Priority,omitempty" name:"Priority"`
+
+	// 该参数指定节点投票权。
+	// <ul><li>1：具有投票权。</li><li>0：无投票权。</li></ul>
+	Votes *int64 `json:"Votes,omitempty" name:"Votes"`
+
+	// 节点标签。
+	Tags []*NodeTag `json:"Tags,omitempty" name:"Tags"`
+}
+
+func (r *DescribeDBInstanceNodePropertyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDBInstanceNodePropertyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "NodeIds")
+	delete(f, "Roles")
+	delete(f, "OnlyHidden")
+	delete(f, "Priority")
+	delete(f, "Votes")
+	delete(f, "Tags")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDBInstanceNodePropertyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDBInstanceNodePropertyResponseParams struct {
+	// Mongos节点属性。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Mongos []*NodeProperty `json:"Mongos,omitempty" name:"Mongos"`
+
+	// 副本集节点信息。
+	ReplicateSets []*ReplicateSetInfo `json:"ReplicateSets,omitempty" name:"ReplicateSets"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeDBInstanceNodePropertyResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDBInstanceNodePropertyResponseParams `json:"Response"`
+}
+
+func (r *DescribeDBInstanceNodePropertyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDBInstanceNodePropertyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeDBInstancesRequestParams struct {
 	// 实例ID列表，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
 	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
@@ -2925,6 +3032,62 @@ type ModifyNetworkAddress struct {
 	OldIpAddress *string `json:"OldIpAddress,omitempty" name:"OldIpAddress"`
 }
 
+type NodeProperty struct {
+	// 节点所在的可用区。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Zone *string `json:"Zone,omitempty" name:"Zone"`
+
+	// 节点名称。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NodeName *string `json:"NodeName,omitempty" name:"NodeName"`
+
+	// 节点访问地址。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Address *string `json:"Address,omitempty" name:"Address"`
+
+	// 角色。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Role *string `json:"Role,omitempty" name:"Role"`
+
+	// 是否为Hidden节点
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Hidden *bool `json:"Hidden,omitempty" name:"Hidden"`
+
+	// 节点状态，包括：ORMAL/STARTUP/RECOVERING/STARTUP2/UNKNOWN/DOWN/ROLLBACK/REMOVED等。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 主从延迟，单位秒。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SlaveDelay *int64 `json:"SlaveDelay,omitempty" name:"SlaveDelay"`
+
+	// 节点优先级。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Priority *int64 `json:"Priority,omitempty" name:"Priority"`
+
+	// 节点投票权。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Votes *int64 `json:"Votes,omitempty" name:"Votes"`
+
+	// 节点标签。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tags []*NodeTag `json:"Tags,omitempty" name:"Tags"`
+
+	// 副本集Id。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReplicateSetId *string `json:"ReplicateSetId,omitempty" name:"ReplicateSetId"`
+}
+
+type NodeTag struct {
+	// 节点Tag key
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TagKey *string `json:"TagKey,omitempty" name:"TagKey"`
+
+	// 节点Tag Value
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TagValue *string `json:"TagValue,omitempty" name:"TagValue"`
+}
+
 // Predefined struct for user
 type OfflineIsolatedDBInstanceRequestParams struct {
 	// 实例ID，格式如：cmgo-p8vnipr5。与云数据库控制台页面中显示的实例ID相同
@@ -3118,6 +3281,12 @@ func (r *RenewDBInstancesResponse) FromJsonString(s string) error {
 type ReplicaSetInfo struct {
 	// 副本集ID
 	ReplicaSetId *string `json:"ReplicaSetId,omitempty" name:"ReplicaSetId"`
+}
+
+type ReplicateSetInfo struct {
+	// 节点属性
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Nodes []*NodeProperty `json:"Nodes,omitempty" name:"Nodes"`
 }
 
 // Predefined struct for user

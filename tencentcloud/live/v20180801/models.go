@@ -12406,7 +12406,7 @@ type TranscodeDetailInfo struct {
 	// 码率。
 	Bitrate *uint64 `json:"Bitrate,omitempty" name:"Bitrate"`
 
-	// 类型，包含：转码（Transcode），混流（MixStream），水印（WaterMark）。
+	// 类型，包含：转码（Transcode），混流（MixStream），水印（WaterMark），快直播（Webrtc）。
 	Type *string `json:"Type,omitempty" name:"Type"`
 
 	// 推流域名。
@@ -12414,6 +12414,11 @@ type TranscodeDetailInfo struct {
 
 	// 分辨率。
 	Resolution *string `json:"Resolution,omitempty" name:"Resolution"`
+
+	// 地域：
+	// Mainland：国内。
+	// Overseas：海外。
+	MainlandOrOversea *string `json:"MainlandOrOversea,omitempty" name:"MainlandOrOversea"`
 }
 
 type TranscodeTaskNum struct {

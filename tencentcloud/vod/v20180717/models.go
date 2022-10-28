@@ -212,6 +212,9 @@ type AdaptiveDynamicStreamingTemplate struct {
 
 	// 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
 	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+
+	// 切片类型，仅当 Format 为 HLS 时有效。
+	SegmentType *string `json:"SegmentType,omitempty" name:"SegmentType"`
 }
 
 type AdaptiveStreamTemplate struct {
@@ -2990,6 +2993,12 @@ type CreateAdaptiveDynamicStreamingTemplateRequestParams struct {
 
 	// 模板描述信息，长度限制：256 个字符。
 	Comment *string `json:"Comment,omitempty" name:"Comment"`
+
+	// 切片类型，当 Format 为 HLS 时有效，可选值：
+	// <li>ts：ts 切片；</li>
+	// <li>fmp4：fmp4 切片。</li>
+	// 默认值：ts。
+	SegmentType *string `json:"SegmentType,omitempty" name:"SegmentType"`
 }
 
 type CreateAdaptiveDynamicStreamingTemplateRequest struct {
@@ -3037,6 +3046,12 @@ type CreateAdaptiveDynamicStreamingTemplateRequest struct {
 
 	// 模板描述信息，长度限制：256 个字符。
 	Comment *string `json:"Comment,omitempty" name:"Comment"`
+
+	// 切片类型，当 Format 为 HLS 时有效，可选值：
+	// <li>ts：ts 切片；</li>
+	// <li>fmp4：fmp4 切片。</li>
+	// 默认值：ts。
+	SegmentType *string `json:"SegmentType,omitempty" name:"SegmentType"`
 }
 
 func (r *CreateAdaptiveDynamicStreamingTemplateRequest) ToJsonString() string {
@@ -3060,6 +3075,7 @@ func (r *CreateAdaptiveDynamicStreamingTemplateRequest) FromJsonString(s string)
 	delete(f, "DisableHigherVideoBitrate")
 	delete(f, "DisableHigherVideoResolution")
 	delete(f, "Comment")
+	delete(f, "SegmentType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAdaptiveDynamicStreamingTemplateRequest has unknown keys!", "")
 	}
@@ -4651,6 +4667,12 @@ type CreateTranscodeTemplateRequestParams struct {
 
 	// 极速高清转码参数。
 	TEHDConfig *TEHDConfig `json:"TEHDConfig,omitempty" name:"TEHDConfig"`
+
+	// 切片类型，当 Container 为 hls 时有效，可选值：
+	// <li>ts：ts 切片；</li>
+	// <li>fmp4：fmp4 切片。</li>
+	// 默认值：ts。
+	SegmentType *string `json:"SegmentType,omitempty" name:"SegmentType"`
 }
 
 type CreateTranscodeTemplateRequest struct {
@@ -4688,6 +4710,12 @@ type CreateTranscodeTemplateRequest struct {
 
 	// 极速高清转码参数。
 	TEHDConfig *TEHDConfig `json:"TEHDConfig,omitempty" name:"TEHDConfig"`
+
+	// 切片类型，当 Container 为 hls 时有效，可选值：
+	// <li>ts：ts 切片；</li>
+	// <li>fmp4：fmp4 切片。</li>
+	// 默认值：ts。
+	SegmentType *string `json:"SegmentType,omitempty" name:"SegmentType"`
 }
 
 func (r *CreateTranscodeTemplateRequest) ToJsonString() string {
@@ -4711,6 +4739,7 @@ func (r *CreateTranscodeTemplateRequest) FromJsonString(s string) error {
 	delete(f, "VideoTemplate")
 	delete(f, "AudioTemplate")
 	delete(f, "TEHDConfig")
+	delete(f, "SegmentType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateTranscodeTemplateRequest has unknown keys!", "")
 	}
@@ -12762,6 +12791,11 @@ type ModifyAdaptiveDynamicStreamingTemplateRequestParams struct {
 
 	// 模板描述信息，长度限制：256 个字符。
 	Comment *string `json:"Comment,omitempty" name:"Comment"`
+
+	// 切片类型，当 Format 为 HLS 时有效，可选值：
+	// <li>ts：ts 切片；</li>
+	// <li>fmp4：fmp4 切片。</li>
+	SegmentType *string `json:"SegmentType,omitempty" name:"SegmentType"`
 }
 
 type ModifyAdaptiveDynamicStreamingTemplateRequest struct {
@@ -12797,6 +12831,11 @@ type ModifyAdaptiveDynamicStreamingTemplateRequest struct {
 
 	// 模板描述信息，长度限制：256 个字符。
 	Comment *string `json:"Comment,omitempty" name:"Comment"`
+
+	// 切片类型，当 Format 为 HLS 时有效，可选值：
+	// <li>ts：ts 切片；</li>
+	// <li>fmp4：fmp4 切片。</li>
+	SegmentType *string `json:"SegmentType,omitempty" name:"SegmentType"`
 }
 
 func (r *ModifyAdaptiveDynamicStreamingTemplateRequest) ToJsonString() string {
@@ -12819,6 +12858,7 @@ func (r *ModifyAdaptiveDynamicStreamingTemplateRequest) FromJsonString(s string)
 	delete(f, "DisableHigherVideoResolution")
 	delete(f, "StreamInfos")
 	delete(f, "Comment")
+	delete(f, "SegmentType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyAdaptiveDynamicStreamingTemplateRequest has unknown keys!", "")
 	}
@@ -14607,6 +14647,11 @@ type ModifyTranscodeTemplateRequestParams struct {
 
 	// 极速高清转码参数。
 	TEHDConfig *TEHDConfigForUpdate `json:"TEHDConfig,omitempty" name:"TEHDConfig"`
+
+	// 切片类型，当 Container 为 hls 时有效，可选值：
+	// <li>ts：ts 切片；</li>
+	// <li>fmp4：fmp4 切片。</li>
+	SegmentType *string `json:"SegmentType,omitempty" name:"SegmentType"`
 }
 
 type ModifyTranscodeTemplateRequest struct {
@@ -14645,6 +14690,11 @@ type ModifyTranscodeTemplateRequest struct {
 
 	// 极速高清转码参数。
 	TEHDConfig *TEHDConfigForUpdate `json:"TEHDConfig,omitempty" name:"TEHDConfig"`
+
+	// 切片类型，当 Container 为 hls 时有效，可选值：
+	// <li>ts：ts 切片；</li>
+	// <li>fmp4：fmp4 切片。</li>
+	SegmentType *string `json:"SegmentType,omitempty" name:"SegmentType"`
 }
 
 func (r *ModifyTranscodeTemplateRequest) ToJsonString() string {
@@ -14669,6 +14719,7 @@ func (r *ModifyTranscodeTemplateRequest) FromJsonString(s string) error {
 	delete(f, "VideoTemplate")
 	delete(f, "AudioTemplate")
 	delete(f, "TEHDConfig")
+	delete(f, "SegmentType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyTranscodeTemplateRequest has unknown keys!", "")
 	}
@@ -18445,6 +18496,7 @@ type StatDataItem struct {
 	// <li>转码时长的数据，单位是秒。</li>
 	// <li>流量数据，单位是字节。</li>
 	// <li>带宽数据，单位是比特每秒。</li>
+	// <li>直播剪辑数据，单位是秒。</li>
 	Value *int64 `json:"Value,omitempty" name:"Value"`
 }
 
@@ -19100,6 +19152,9 @@ type TranscodeTemplate struct {
 
 	// 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
 	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+
+	// 切片类型，仅当 Container 为 hls 时有效。
+	SegmentType *string `json:"SegmentType,omitempty" name:"SegmentType"`
 }
 
 type TransitionOpertion struct {

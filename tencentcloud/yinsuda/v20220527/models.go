@@ -472,7 +472,14 @@ type DescribeKTVPlaylistsRequestParams struct {
 	// 类型列表，取值有：
 	// <li>OfficialRec：官方推荐；</li>
 	// <li>Customize：自定义。</li>
+	// 默认值为 OfficialRec。
 	Types []*string `json:"Types,omitempty" name:"Types"`
+
+	// 分页返回的起始偏移量，默认值：0。将返回第 Offset 到第 Offset+Limit-1 条。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 分页返回的记录条数，默认值：20，最大值：50。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 }
 
 type DescribeKTVPlaylistsRequest struct {
@@ -487,7 +494,14 @@ type DescribeKTVPlaylistsRequest struct {
 	// 类型列表，取值有：
 	// <li>OfficialRec：官方推荐；</li>
 	// <li>Customize：自定义。</li>
+	// 默认值为 OfficialRec。
 	Types []*string `json:"Types,omitempty" name:"Types"`
+
+	// 分页返回的起始偏移量，默认值：0。将返回第 Offset 到第 Offset+Limit-1 条。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 分页返回的记录条数，默认值：20，最大值：50。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 }
 
 func (r *DescribeKTVPlaylistsRequest) ToJsonString() string {
@@ -505,6 +519,8 @@ func (r *DescribeKTVPlaylistsRequest) FromJsonString(s string) error {
 	delete(f, "AppName")
 	delete(f, "UserId")
 	delete(f, "Types")
+	delete(f, "Offset")
+	delete(f, "Limit")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeKTVPlaylistsRequest has unknown keys!", "")
 	}
@@ -515,6 +531,9 @@ func (r *DescribeKTVPlaylistsRequest) FromJsonString(s string) error {
 type DescribeKTVPlaylistsResponseParams struct {
 	// 歌单基础信息。
 	PlaylistBaseInfoSet []*KTVPlaylistBaseInfo `json:"PlaylistBaseInfoSet,omitempty" name:"PlaylistBaseInfoSet"`
+
+	// 歌单总数。
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`

@@ -395,6 +395,12 @@ type BankSlipOCRRequestParams struct {
 	// 图片的 Url 地址。要求图片经Base64编码后不超过 7M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。
 	// 建议图片存储于腾讯云，可保障更高的下载速度和稳定性。
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
+
+	// 是否开启PDF识别，默认值为true，开启后可同时支持图片和PDF的识别。
+	IsPdf *bool `json:"IsPdf,omitempty" name:"IsPdf"`
+
+	// 需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
+	PdfPageNumber *int64 `json:"PdfPageNumber,omitempty" name:"PdfPageNumber"`
 }
 
 type BankSlipOCRRequest struct {
@@ -407,6 +413,12 @@ type BankSlipOCRRequest struct {
 	// 图片的 Url 地址。要求图片经Base64编码后不超过 7M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。
 	// 建议图片存储于腾讯云，可保障更高的下载速度和稳定性。
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
+
+	// 是否开启PDF识别，默认值为true，开启后可同时支持图片和PDF的识别。
+	IsPdf *bool `json:"IsPdf,omitempty" name:"IsPdf"`
+
+	// 需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
+	PdfPageNumber *int64 `json:"PdfPageNumber,omitempty" name:"PdfPageNumber"`
 }
 
 func (r *BankSlipOCRRequest) ToJsonString() string {
@@ -423,6 +435,8 @@ func (r *BankSlipOCRRequest) FromJsonString(s string) error {
 	}
 	delete(f, "ImageBase64")
 	delete(f, "ImageUrl")
+	delete(f, "IsPdf")
+	delete(f, "PdfPageNumber")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BankSlipOCRRequest has unknown keys!", "")
 	}
@@ -616,6 +630,12 @@ type BusInvoiceOCRRequestParams struct {
 	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
 	// 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
+
+	// 是否开启PDF识别，默认值为true，开启后可同时支持图片和PDF的识别。
+	IsPdf *bool `json:"IsPdf,omitempty" name:"IsPdf"`
+
+	// 需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
+	PdfPageNumber *int64 `json:"PdfPageNumber,omitempty" name:"PdfPageNumber"`
 }
 
 type BusInvoiceOCRRequest struct {
@@ -633,6 +653,12 @@ type BusInvoiceOCRRequest struct {
 	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
 	// 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
+
+	// 是否开启PDF识别，默认值为true，开启后可同时支持图片和PDF的识别。
+	IsPdf *bool `json:"IsPdf,omitempty" name:"IsPdf"`
+
+	// 需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
+	PdfPageNumber *int64 `json:"PdfPageNumber,omitempty" name:"PdfPageNumber"`
 }
 
 func (r *BusInvoiceOCRRequest) ToJsonString() string {
@@ -649,6 +675,8 @@ func (r *BusInvoiceOCRRequest) FromJsonString(s string) error {
 	}
 	delete(f, "ImageBase64")
 	delete(f, "ImageUrl")
+	delete(f, "IsPdf")
+	delete(f, "PdfPageNumber")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BusInvoiceOCRRequest has unknown keys!", "")
 	}
@@ -838,6 +866,12 @@ type CarInvoiceOCRRequestParams struct {
 	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
 	// 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
+
+	// 是否开启PDF识别，默认值为true，开启后可同时支持图片和PDF的识别。
+	IsPdf *bool `json:"IsPdf,omitempty" name:"IsPdf"`
+
+	// 需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
+	PdfPageNumber *int64 `json:"PdfPageNumber,omitempty" name:"PdfPageNumber"`
 }
 
 type CarInvoiceOCRRequest struct {
@@ -855,6 +889,12 @@ type CarInvoiceOCRRequest struct {
 	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
 	// 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
+
+	// 是否开启PDF识别，默认值为true，开启后可同时支持图片和PDF的识别。
+	IsPdf *bool `json:"IsPdf,omitempty" name:"IsPdf"`
+
+	// 需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
+	PdfPageNumber *int64 `json:"PdfPageNumber,omitempty" name:"PdfPageNumber"`
 }
 
 func (r *CarInvoiceOCRRequest) ToJsonString() string {
@@ -871,6 +911,8 @@ func (r *CarInvoiceOCRRequest) FromJsonString(s string) error {
 	}
 	delete(f, "ImageBase64")
 	delete(f, "ImageUrl")
+	delete(f, "IsPdf")
+	delete(f, "PdfPageNumber")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CarInvoiceOCRRequest has unknown keys!", "")
 	}
@@ -1235,6 +1277,12 @@ type DutyPaidProofOCRRequestParams struct {
 	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
 	// 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
+
+	// 是否开启PDF识别，默认值为true，开启后可同时支持图片和PDF的识别。
+	IsPdf *bool `json:"IsPdf,omitempty" name:"IsPdf"`
+
+	// 需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
+	PdfPageNumber *int64 `json:"PdfPageNumber,omitempty" name:"PdfPageNumber"`
 }
 
 type DutyPaidProofOCRRequest struct {
@@ -1252,6 +1300,12 @@ type DutyPaidProofOCRRequest struct {
 	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
 	// 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
+
+	// 是否开启PDF识别，默认值为true，开启后可同时支持图片和PDF的识别。
+	IsPdf *bool `json:"IsPdf,omitempty" name:"IsPdf"`
+
+	// 需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
+	PdfPageNumber *int64 `json:"PdfPageNumber,omitempty" name:"PdfPageNumber"`
 }
 
 func (r *DutyPaidProofOCRRequest) ToJsonString() string {
@@ -1268,6 +1322,8 @@ func (r *DutyPaidProofOCRRequest) FromJsonString(s string) error {
 	}
 	delete(f, "ImageBase64")
 	delete(f, "ImageUrl")
+	delete(f, "IsPdf")
+	delete(f, "PdfPageNumber")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DutyPaidProofOCRRequest has unknown keys!", "")
 	}
@@ -1917,6 +1973,12 @@ type FlightInvoiceOCRRequestParams struct {
 	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
 	// 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
+
+	// 是否开启PDF识别，默认值为true，开启后可同时支持图片和PDF的识别。
+	IsPdf *bool `json:"IsPdf,omitempty" name:"IsPdf"`
+
+	// 需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
+	PdfPageNumber *int64 `json:"PdfPageNumber,omitempty" name:"PdfPageNumber"`
 }
 
 type FlightInvoiceOCRRequest struct {
@@ -1934,6 +1996,12 @@ type FlightInvoiceOCRRequest struct {
 	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
 	// 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
+
+	// 是否开启PDF识别，默认值为true，开启后可同时支持图片和PDF的识别。
+	IsPdf *bool `json:"IsPdf,omitempty" name:"IsPdf"`
+
+	// 需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
+	PdfPageNumber *int64 `json:"PdfPageNumber,omitempty" name:"PdfPageNumber"`
 }
 
 func (r *FlightInvoiceOCRRequest) ToJsonString() string {
@@ -1950,6 +2018,8 @@ func (r *FlightInvoiceOCRRequest) FromJsonString(s string) error {
 	}
 	delete(f, "ImageBase64")
 	delete(f, "ImageUrl")
+	delete(f, "IsPdf")
+	delete(f, "PdfPageNumber")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "FlightInvoiceOCRRequest has unknown keys!", "")
 	}
@@ -3387,6 +3457,12 @@ type InvoiceGeneralOCRRequestParams struct {
 	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
 	// 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
+
+	// 是否开启PDF识别，默认值为true，开启后可同时支持图片和PDF的识别。
+	IsPdf *bool `json:"IsPdf,omitempty" name:"IsPdf"`
+
+	// 需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
+	PdfPageNumber *int64 `json:"PdfPageNumber,omitempty" name:"PdfPageNumber"`
 }
 
 type InvoiceGeneralOCRRequest struct {
@@ -3404,6 +3480,12 @@ type InvoiceGeneralOCRRequest struct {
 	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
 	// 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
+
+	// 是否开启PDF识别，默认值为true，开启后可同时支持图片和PDF的识别。
+	IsPdf *bool `json:"IsPdf,omitempty" name:"IsPdf"`
+
+	// 需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
+	PdfPageNumber *int64 `json:"PdfPageNumber,omitempty" name:"PdfPageNumber"`
 }
 
 func (r *InvoiceGeneralOCRRequest) ToJsonString() string {
@@ -3420,6 +3502,8 @@ func (r *InvoiceGeneralOCRRequest) FromJsonString(s string) error {
 	}
 	delete(f, "ImageBase64")
 	delete(f, "ImageUrl")
+	delete(f, "IsPdf")
+	delete(f, "PdfPageNumber")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "InvoiceGeneralOCRRequest has unknown keys!", "")
 	}
@@ -3958,6 +4042,12 @@ type MixedInvoiceDetectRequestParams struct {
 	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
 	// 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
+
+	// 是否开启PDF识别，默认值为true，开启后可同时支持图片和PDF的识别。
+	IsPdf *bool `json:"IsPdf,omitempty" name:"IsPdf"`
+
+	// 需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
+	PdfPageNumber *int64 `json:"PdfPageNumber,omitempty" name:"PdfPageNumber"`
 }
 
 type MixedInvoiceDetectRequest struct {
@@ -3978,6 +4068,12 @@ type MixedInvoiceDetectRequest struct {
 	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
 	// 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
+
+	// 是否开启PDF识别，默认值为true，开启后可同时支持图片和PDF的识别。
+	IsPdf *bool `json:"IsPdf,omitempty" name:"IsPdf"`
+
+	// 需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
+	PdfPageNumber *int64 `json:"PdfPageNumber,omitempty" name:"PdfPageNumber"`
 }
 
 func (r *MixedInvoiceDetectRequest) ToJsonString() string {
@@ -3995,6 +4091,8 @@ func (r *MixedInvoiceDetectRequest) FromJsonString(s string) error {
 	delete(f, "ReturnImage")
 	delete(f, "ImageBase64")
 	delete(f, "ImageUrl")
+	delete(f, "IsPdf")
+	delete(f, "PdfPageNumber")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "MixedInvoiceDetectRequest has unknown keys!", "")
 	}
@@ -4089,12 +4187,20 @@ type MixedInvoiceOCRRequestParams struct {
 	// 13：过路过桥费发票
 	// 15：非税发票
 	// 16：全电发票
+	// ----------------------
+	// -1：其他发票,（仅返回，本参数不支持传入-1，请在ReturnOther中控制是否返回）
 	Types []*int64 `json:"Types,omitempty" name:"Types"`
 
 	// 是否识别其他类型发票，默认为Yes
 	// Yes：识别其他类型发票
 	// No：不识别其他类型发票
 	ReturnOther *string `json:"ReturnOther,omitempty" name:"ReturnOther"`
+
+	// 是否开启PDF识别，默认值为true，开启后可同时支持图片和PDF的识别。
+	IsPdf *bool `json:"IsPdf,omitempty" name:"IsPdf"`
+
+	// 需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
+	PdfPageNumber *int64 `json:"PdfPageNumber,omitempty" name:"PdfPageNumber"`
 }
 
 type MixedInvoiceOCRRequest struct {
@@ -4127,12 +4233,20 @@ type MixedInvoiceOCRRequest struct {
 	// 13：过路过桥费发票
 	// 15：非税发票
 	// 16：全电发票
+	// ----------------------
+	// -1：其他发票,（仅返回，本参数不支持传入-1，请在ReturnOther中控制是否返回）
 	Types []*int64 `json:"Types,omitempty" name:"Types"`
 
 	// 是否识别其他类型发票，默认为Yes
 	// Yes：识别其他类型发票
 	// No：不识别其他类型发票
 	ReturnOther *string `json:"ReturnOther,omitempty" name:"ReturnOther"`
+
+	// 是否开启PDF识别，默认值为true，开启后可同时支持图片和PDF的识别。
+	IsPdf *bool `json:"IsPdf,omitempty" name:"IsPdf"`
+
+	// 需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
+	PdfPageNumber *int64 `json:"PdfPageNumber,omitempty" name:"PdfPageNumber"`
 }
 
 func (r *MixedInvoiceOCRRequest) ToJsonString() string {
@@ -4151,6 +4265,8 @@ func (r *MixedInvoiceOCRRequest) FromJsonString(s string) error {
 	delete(f, "ImageUrl")
 	delete(f, "Types")
 	delete(f, "ReturnOther")
+	delete(f, "IsPdf")
+	delete(f, "PdfPageNumber")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "MixedInvoiceOCRRequest has unknown keys!", "")
 	}
@@ -4895,6 +5011,12 @@ type QuotaInvoiceOCRRequestParams struct {
 	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
 	// 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
+
+	// 是否开启PDF识别，默认值为true，开启后可同时支持图片和PDF的识别。
+	IsPdf *bool `json:"IsPdf,omitempty" name:"IsPdf"`
+
+	// 需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
+	PdfPageNumber *int64 `json:"PdfPageNumber,omitempty" name:"PdfPageNumber"`
 }
 
 type QuotaInvoiceOCRRequest struct {
@@ -4912,6 +5034,12 @@ type QuotaInvoiceOCRRequest struct {
 	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
 	// 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
+
+	// 是否开启PDF识别，默认值为true，开启后可同时支持图片和PDF的识别。
+	IsPdf *bool `json:"IsPdf,omitempty" name:"IsPdf"`
+
+	// 需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
+	PdfPageNumber *int64 `json:"PdfPageNumber,omitempty" name:"PdfPageNumber"`
 }
 
 func (r *QuotaInvoiceOCRRequest) ToJsonString() string {
@@ -4928,6 +5056,8 @@ func (r *QuotaInvoiceOCRRequest) FromJsonString(s string) error {
 	}
 	delete(f, "ImageBase64")
 	delete(f, "ImageUrl")
+	delete(f, "IsPdf")
+	delete(f, "PdfPageNumber")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QuotaInvoiceOCRRequest has unknown keys!", "")
 	}
@@ -5367,6 +5497,12 @@ type RecognizeMedicalInvoiceOCRRequestParams struct {
 
 	// 是否需要返回识别出的文本行在旋转纠正之后的图像中的四点坐标，默认不返回
 	ReturnCoord *bool `json:"ReturnCoord,omitempty" name:"ReturnCoord"`
+
+	// 是否开启PDF识别，默认值为true，开启后可同时支持图片和PDF的识别。
+	IsPdf *bool `json:"IsPdf,omitempty" name:"IsPdf"`
+
+	// 需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
+	PdfPageNumber *int64 `json:"PdfPageNumber,omitempty" name:"PdfPageNumber"`
 }
 
 type RecognizeMedicalInvoiceOCRRequest struct {
@@ -5390,6 +5526,12 @@ type RecognizeMedicalInvoiceOCRRequest struct {
 
 	// 是否需要返回识别出的文本行在旋转纠正之后的图像中的四点坐标，默认不返回
 	ReturnCoord *bool `json:"ReturnCoord,omitempty" name:"ReturnCoord"`
+
+	// 是否开启PDF识别，默认值为true，开启后可同时支持图片和PDF的识别。
+	IsPdf *bool `json:"IsPdf,omitempty" name:"IsPdf"`
+
+	// 需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
+	PdfPageNumber *int64 `json:"PdfPageNumber,omitempty" name:"PdfPageNumber"`
 }
 
 func (r *RecognizeMedicalInvoiceOCRRequest) ToJsonString() string {
@@ -5408,6 +5550,8 @@ func (r *RecognizeMedicalInvoiceOCRRequest) FromJsonString(s string) error {
 	delete(f, "ImageUrl")
 	delete(f, "ReturnVertex")
 	delete(f, "ReturnCoord")
+	delete(f, "IsPdf")
+	delete(f, "PdfPageNumber")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RecognizeMedicalInvoiceOCRRequest has unknown keys!", "")
 	}
@@ -6492,6 +6636,12 @@ type ShipInvoiceOCRRequestParams struct {
 	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
 	// 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
+
+	// 是否开启PDF识别，默认值为true，开启后可同时支持图片和PDF的识别。
+	IsPdf *bool `json:"IsPdf,omitempty" name:"IsPdf"`
+
+	// 需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
+	PdfPageNumber *int64 `json:"PdfPageNumber,omitempty" name:"PdfPageNumber"`
 }
 
 type ShipInvoiceOCRRequest struct {
@@ -6509,6 +6659,12 @@ type ShipInvoiceOCRRequest struct {
 	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
 	// 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
+
+	// 是否开启PDF识别，默认值为true，开启后可同时支持图片和PDF的识别。
+	IsPdf *bool `json:"IsPdf,omitempty" name:"IsPdf"`
+
+	// 需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
+	PdfPageNumber *int64 `json:"PdfPageNumber,omitempty" name:"PdfPageNumber"`
 }
 
 func (r *ShipInvoiceOCRRequest) ToJsonString() string {
@@ -6525,6 +6681,8 @@ func (r *ShipInvoiceOCRRequest) FromJsonString(s string) error {
 	}
 	delete(f, "ImageBase64")
 	delete(f, "ImageUrl")
+	delete(f, "IsPdf")
+	delete(f, "PdfPageNumber")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ShipInvoiceOCRRequest has unknown keys!", "")
 	}
@@ -6854,6 +7012,12 @@ type TaxiInvoiceOCRRequestParams struct {
 	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
 	// 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
+
+	// 是否开启PDF识别，默认值为true，开启后可同时支持图片和PDF的识别。
+	IsPdf *bool `json:"IsPdf,omitempty" name:"IsPdf"`
+
+	// 需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
+	PdfPageNumber *int64 `json:"PdfPageNumber,omitempty" name:"PdfPageNumber"`
 }
 
 type TaxiInvoiceOCRRequest struct {
@@ -6871,6 +7035,12 @@ type TaxiInvoiceOCRRequest struct {
 	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
 	// 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
+
+	// 是否开启PDF识别，默认值为true，开启后可同时支持图片和PDF的识别。
+	IsPdf *bool `json:"IsPdf,omitempty" name:"IsPdf"`
+
+	// 需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
+	PdfPageNumber *int64 `json:"PdfPageNumber,omitempty" name:"PdfPageNumber"`
 }
 
 func (r *TaxiInvoiceOCRRequest) ToJsonString() string {
@@ -6887,6 +7057,8 @@ func (r *TaxiInvoiceOCRRequest) FromJsonString(s string) error {
 	}
 	delete(f, "ImageBase64")
 	delete(f, "ImageUrl")
+	delete(f, "IsPdf")
+	delete(f, "PdfPageNumber")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "TaxiInvoiceOCRRequest has unknown keys!", "")
 	}
@@ -7342,6 +7514,12 @@ type TollInvoiceOCRRequestParams struct {
 	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
 	// 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
+
+	// 是否开启PDF识别，默认值为true，开启后可同时支持图片和PDF的识别。
+	IsPdf *bool `json:"IsPdf,omitempty" name:"IsPdf"`
+
+	// 需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
+	PdfPageNumber *int64 `json:"PdfPageNumber,omitempty" name:"PdfPageNumber"`
 }
 
 type TollInvoiceOCRRequest struct {
@@ -7359,6 +7537,12 @@ type TollInvoiceOCRRequest struct {
 	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
 	// 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
+
+	// 是否开启PDF识别，默认值为true，开启后可同时支持图片和PDF的识别。
+	IsPdf *bool `json:"IsPdf,omitempty" name:"IsPdf"`
+
+	// 需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
+	PdfPageNumber *int64 `json:"PdfPageNumber,omitempty" name:"PdfPageNumber"`
 }
 
 func (r *TollInvoiceOCRRequest) ToJsonString() string {
@@ -7375,6 +7559,8 @@ func (r *TollInvoiceOCRRequest) FromJsonString(s string) error {
 	}
 	delete(f, "ImageBase64")
 	delete(f, "ImageUrl")
+	delete(f, "IsPdf")
+	delete(f, "PdfPageNumber")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "TollInvoiceOCRRequest has unknown keys!", "")
 	}
@@ -7423,6 +7609,12 @@ type TrainTicketOCRRequestParams struct {
 	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
 	// 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
+
+	// 是否开启PDF识别，默认值为true，开启后可同时支持图片和PDF的识别。
+	IsPdf *bool `json:"IsPdf,omitempty" name:"IsPdf"`
+
+	// 需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
+	PdfPageNumber *int64 `json:"PdfPageNumber,omitempty" name:"PdfPageNumber"`
 }
 
 type TrainTicketOCRRequest struct {
@@ -7440,6 +7632,12 @@ type TrainTicketOCRRequest struct {
 	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
 	// 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
+
+	// 是否开启PDF识别，默认值为true，开启后可同时支持图片和PDF的识别。
+	IsPdf *bool `json:"IsPdf,omitempty" name:"IsPdf"`
+
+	// 需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
+	PdfPageNumber *int64 `json:"PdfPageNumber,omitempty" name:"PdfPageNumber"`
 }
 
 func (r *TrainTicketOCRRequest) ToJsonString() string {
@@ -7456,6 +7654,8 @@ func (r *TrainTicketOCRRequest) FromJsonString(s string) error {
 	}
 	delete(f, "ImageBase64")
 	delete(f, "ImageUrl")
+	delete(f, "IsPdf")
+	delete(f, "PdfPageNumber")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "TrainTicketOCRRequest has unknown keys!", "")
 	}
@@ -8118,6 +8318,12 @@ type VatRollInvoiceOCRRequestParams struct {
 	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
 	// 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
+
+	// 是否开启PDF识别，默认值为true，开启后可同时支持图片和PDF的识别。
+	IsPdf *bool `json:"IsPdf,omitempty" name:"IsPdf"`
+
+	// 需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
+	PdfPageNumber *int64 `json:"PdfPageNumber,omitempty" name:"PdfPageNumber"`
 }
 
 type VatRollInvoiceOCRRequest struct {
@@ -8135,6 +8341,12 @@ type VatRollInvoiceOCRRequest struct {
 	// 图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
 	// 非腾讯云存储的 Url 速度和稳定性可能受一定影响。
 	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
+
+	// 是否开启PDF识别，默认值为true，开启后可同时支持图片和PDF的识别。
+	IsPdf *bool `json:"IsPdf,omitempty" name:"IsPdf"`
+
+	// 需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
+	PdfPageNumber *int64 `json:"PdfPageNumber,omitempty" name:"PdfPageNumber"`
 }
 
 func (r *VatRollInvoiceOCRRequest) ToJsonString() string {
@@ -8151,6 +8363,8 @@ func (r *VatRollInvoiceOCRRequest) FromJsonString(s string) error {
 	}
 	delete(f, "ImageBase64")
 	delete(f, "ImageUrl")
+	delete(f, "IsPdf")
+	delete(f, "PdfPageNumber")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "VatRollInvoiceOCRRequest has unknown keys!", "")
 	}
@@ -9123,6 +9337,12 @@ type WaybillOCRRequestParams struct {
 
 	// 预检测开关，当待识别运单占整个输入图像的比例较小时，建议打开预检测开关。默认值为false。
 	EnablePreDetect *bool `json:"EnablePreDetect,omitempty" name:"EnablePreDetect"`
+
+	// 是否开启PDF识别，默认值为true，开启后可同时支持图片和PDF的识别。
+	IsPdf *bool `json:"IsPdf,omitempty" name:"IsPdf"`
+
+	// 需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
+	PdfPageNumber *int64 `json:"PdfPageNumber,omitempty" name:"PdfPageNumber"`
 }
 
 type WaybillOCRRequest struct {
@@ -9143,6 +9363,12 @@ type WaybillOCRRequest struct {
 
 	// 预检测开关，当待识别运单占整个输入图像的比例较小时，建议打开预检测开关。默认值为false。
 	EnablePreDetect *bool `json:"EnablePreDetect,omitempty" name:"EnablePreDetect"`
+
+	// 是否开启PDF识别，默认值为true，开启后可同时支持图片和PDF的识别。
+	IsPdf *bool `json:"IsPdf,omitempty" name:"IsPdf"`
+
+	// 需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
+	PdfPageNumber *int64 `json:"PdfPageNumber,omitempty" name:"PdfPageNumber"`
 }
 
 func (r *WaybillOCRRequest) ToJsonString() string {
@@ -9160,6 +9386,8 @@ func (r *WaybillOCRRequest) FromJsonString(s string) error {
 	delete(f, "ImageBase64")
 	delete(f, "ImageUrl")
 	delete(f, "EnablePreDetect")
+	delete(f, "IsPdf")
+	delete(f, "PdfPageNumber")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "WaybillOCRRequest has unknown keys!", "")
 	}

@@ -1900,6 +1900,80 @@ func (r *DescribeClientBalanceResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeRebateInfosNewRequestParams struct {
+	// 返佣月份，如2018-02
+	RebateMonth *string `json:"RebateMonth,omitempty" name:"RebateMonth"`
+
+	// 偏移量
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 限制数目
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+type DescribeRebateInfosNewRequest struct {
+	*tchttp.BaseRequest
+	
+	// 返佣月份，如2018-02
+	RebateMonth *string `json:"RebateMonth,omitempty" name:"RebateMonth"`
+
+	// 偏移量
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 限制数目
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribeRebateInfosNewRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRebateInfosNewRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RebateMonth")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRebateInfosNewRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRebateInfosNewResponseParams struct {
+	// 返佣信息列表
+	RebateInfoSet []*RebateInfoElemNew `json:"RebateInfoSet,omitempty" name:"RebateInfoSet"`
+
+	// 符合查询条件返佣信息数目
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeRebateInfosNewResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeRebateInfosNewResponseParams `json:"Response"`
+}
+
+func (r *DescribeRebateInfosNewResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRebateInfosNewResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeRebateInfosRequestParams struct {
 	// 返佣月份，如2018-02
 	RebateMonth *string `json:"RebateMonth,omitempty" name:"RebateMonth"`
@@ -2247,6 +2321,26 @@ type RebateInfoElem struct {
 
 	// 季度业绩，单位分
 	QuarterSales *uint64 `json:"QuarterSales,omitempty" name:"QuarterSales"`
+
+	// NORMAL(正常)/HAS_OVERDUE_BILL(欠费)/NO_CONTRACT(缺合同)
+	ExceptionFlag *string `json:"ExceptionFlag,omitempty" name:"ExceptionFlag"`
+}
+
+type RebateInfoElemNew struct {
+	// 代理商账号ID
+	Uin *string `json:"Uin,omitempty" name:"Uin"`
+
+	// 返佣月份，如2018-02
+	RebateMonth *string `json:"RebateMonth,omitempty" name:"RebateMonth"`
+
+	// 返佣金额，单位分
+	Amt *int64 `json:"Amt,omitempty" name:"Amt"`
+
+	// 月度业绩，单位分
+	MonthSales *int64 `json:"MonthSales,omitempty" name:"MonthSales"`
+
+	// 季度业绩，单位分
+	QuarterSales *int64 `json:"QuarterSales,omitempty" name:"QuarterSales"`
 
 	// NORMAL(正常)/HAS_OVERDUE_BILL(欠费)/NO_CONTRACT(缺合同)
 	ExceptionFlag *string `json:"ExceptionFlag,omitempty" name:"ExceptionFlag"`

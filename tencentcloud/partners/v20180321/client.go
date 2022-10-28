@@ -939,6 +939,56 @@ func (c *Client) DescribeRebateInfosWithContext(ctx context.Context, request *De
     return
 }
 
+func NewDescribeRebateInfosNewRequest() (request *DescribeRebateInfosNewRequest) {
+    request = &DescribeRebateInfosNewRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("partners", APIVersion, "DescribeRebateInfosNew")
+    
+    
+    return
+}
+
+func NewDescribeRebateInfosNewResponse() (response *DescribeRebateInfosNewResponse) {
+    response = &DescribeRebateInfosNewResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeRebateInfosNew
+// 代理商可查询自己名下全部返佣信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeRebateInfosNew(request *DescribeRebateInfosNewRequest) (response *DescribeRebateInfosNewResponse, err error) {
+    return c.DescribeRebateInfosNewWithContext(context.Background(), request)
+}
+
+// DescribeRebateInfosNew
+// 代理商可查询自己名下全部返佣信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeRebateInfosNewWithContext(ctx context.Context, request *DescribeRebateInfosNewRequest) (response *DescribeRebateInfosNewResponse, err error) {
+    if request == nil {
+        request = NewDescribeRebateInfosNewRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRebateInfosNew require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeRebateInfosNewResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeSalesmansRequest() (request *DescribeSalesmansRequest) {
     request = &DescribeSalesmansRequest{
         BaseRequest: &tchttp.BaseRequest{},

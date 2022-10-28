@@ -808,6 +808,7 @@ type DescribeCaptchaMiniResultResponseParams struct {
 	// 21     ticket error     票据验证错误
 	// 25     invalid ticket     无效票据
 	// 26     system internal error     系统内部错误
+	// 31 	   UnauthorizedOperation.Unauthorized	无有效套餐包/账户已欠费
 	// 100   param err     参数校验错误
 	CaptchaCode *int64 `json:"CaptchaCode,omitempty" name:"CaptchaCode"`
 

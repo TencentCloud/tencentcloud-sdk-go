@@ -541,7 +541,7 @@ func (r *DeleteTagsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeProjectsRequestParams struct {
-	// 传1拉取所有项目（包括隐藏项目），不传或传0拉取显示项目
+	// 传1拉取所有项目（包括隐藏项目），传0拉取显示项目
 	AllList *uint64 `json:"AllList,omitempty" name:"AllList"`
 
 	// 分页条数，固定值1000。
@@ -554,7 +554,7 @@ type DescribeProjectsRequestParams struct {
 type DescribeProjectsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 传1拉取所有项目（包括隐藏项目），不传或传0拉取显示项目
+	// 传1拉取所有项目（包括隐藏项目），传0拉取显示项目
 	AllList *uint64 `json:"AllList,omitempty" name:"AllList"`
 
 	// 分页条数，固定值1000。

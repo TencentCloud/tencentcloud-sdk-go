@@ -1071,6 +1071,9 @@ type DeleteCustomFunctionRequestParams struct {
 
 	// 函数 ID
 	FunctionId *string `json:"FunctionId,omitempty" name:"FunctionId"`
+
+	// 项目ID，必须填
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
 }
 
 type DeleteCustomFunctionRequest struct {
@@ -1081,6 +1084,9 @@ type DeleteCustomFunctionRequest struct {
 
 	// 函数 ID
 	FunctionId *string `json:"FunctionId,omitempty" name:"FunctionId"`
+
+	// 项目ID，必须填
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
 }
 
 func (r *DeleteCustomFunctionRequest) ToJsonString() string {
@@ -1097,6 +1103,7 @@ func (r *DeleteCustomFunctionRequest) FromJsonString(s string) error {
 	}
 	delete(f, "ClusterIdentifier")
 	delete(f, "FunctionId")
+	delete(f, "ProjectId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteCustomFunctionRequest has unknown keys!", "")
 	}
@@ -5192,6 +5199,9 @@ type SubmitCustomFunctionRequestParams struct {
 
 	// 备注信息
 	Comment *string `json:"Comment,omitempty" name:"Comment"`
+
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
 }
 
 type SubmitCustomFunctionRequest struct {
@@ -5205,6 +5215,9 @@ type SubmitCustomFunctionRequest struct {
 
 	// 备注信息
 	Comment *string `json:"Comment,omitempty" name:"Comment"`
+
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
 }
 
 func (r *SubmitCustomFunctionRequest) ToJsonString() string {
@@ -5222,6 +5235,7 @@ func (r *SubmitCustomFunctionRequest) FromJsonString(s string) error {
 	delete(f, "FunctionId")
 	delete(f, "ClusterIdentifier")
 	delete(f, "Comment")
+	delete(f, "ProjectId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SubmitCustomFunctionRequest has unknown keys!", "")
 	}
