@@ -384,8 +384,18 @@ import "crypto/tls"
     provider := common.DefaultCvmRoleProvider()
     credentail, err := provider.GetCredential()
     ```
+   
+5. TKE OIDC凭证
 
-5. 凭证提供链
+   有关 TKE OIDC 凭证的相关示例请参阅：[Pod 使用 CAM 对数据库身份验证](https://cloud.tencent.com/document/product/457/81989)
+
+   示例代码请参考 examples/ssm/v20190923/get_secret_value.go
+   ```go
+   provider, err := common.DefaultTkeOIDCRoleArnProvider()
+   credential, err := provider.GetCredential()
+   ```
+
+6. 凭证提供链
 
     腾讯云 GO SDK 提供了 凭证提供链，它会默认以 `环境变量->配置文件->实例角色` 的顺序尝试获取凭证，并返回第一个获取到的凭证。相关代码如下：
 
