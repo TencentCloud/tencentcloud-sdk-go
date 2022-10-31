@@ -88,6 +88,9 @@ type InitOralProcessRequestParams struct {
 	// 1：[音素结构](https://cloud.tencent.com/document/product/884/33698)文本
 	// 2：音素注册模式（提工单注册需要使用音素的单词）。
 	TextMode *int64 `json:"TextMode,omitempty" name:"TextMode"`
+
+	// 主题词和关键词
+	Keyword *string `json:"Keyword,omitempty" name:"Keyword"`
 }
 
 type InitOralProcessRequest struct {
@@ -159,6 +162,9 @@ type InitOralProcessRequest struct {
 	// 1：[音素结构](https://cloud.tencent.com/document/product/884/33698)文本
 	// 2：音素注册模式（提工单注册需要使用音素的单词）。
 	TextMode *int64 `json:"TextMode,omitempty" name:"TextMode"`
+
+	// 主题词和关键词
+	Keyword *string `json:"Keyword,omitempty" name:"Keyword"`
 }
 
 func (r *InitOralProcessRequest) ToJsonString() string {
@@ -185,6 +191,7 @@ func (r *InitOralProcessRequest) FromJsonString(s string) error {
 	delete(f, "ServerType")
 	delete(f, "IsAsync")
 	delete(f, "TextMode")
+	delete(f, "Keyword")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "InitOralProcessRequest has unknown keys!", "")
 	}
@@ -432,6 +439,18 @@ type SentenceInfo struct {
 
 	// 建议评分，取值范围[0,100]，评分方式为建议评分 = 准确度（PronAccuracyfloat）* 完整度（PronCompletionfloat）*（2 - 完整度（PronCompletionfloat）），如若评分策略不符合请参考Words数组中的详细分数自定义评分逻辑。
 	SuggestedScore *float64 `json:"SuggestedScore,omitempty" name:"SuggestedScore"`
+
+	// 匹配候选文本的序号，在句子多分支、情景对 话、段落模式下表示匹配到的文本序号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RefTextId *int64 `json:"RefTextId,omitempty" name:"RefTextId"`
+
+	// 主题词命中标志，0表示没命中，1表示命中
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	KeyWordHits []*float64 `json:"KeyWordHits,omitempty" name:"KeyWordHits"`
+
+	// 负向主题词命中标志，0表示没命中，1表示命中
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UnKeyWordHits []*float64 `json:"UnKeyWordHits,omitempty" name:"UnKeyWordHits"`
 }
 
 // Predefined struct for user
@@ -565,6 +584,18 @@ type TransmitOralProcessResponseParams struct {
 	// 建议评分，取值范围[0,100]，评分方式为建议评分 = 准确度（PronAccuracy）× 完整度（PronCompletion）×（2 - 完整度（PronCompletion）），如若评分策略不符合请参考Words数组中的详细分数自定义评分逻辑。
 	SuggestedScore *float64 `json:"SuggestedScore,omitempty" name:"SuggestedScore"`
 
+	// 匹配候选文本的序号，在句子多分支、情景对 话、段落模式下表示匹配到的文本序号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RefTextId *int64 `json:"RefTextId,omitempty" name:"RefTextId"`
+
+	// 主题词命中标志，0表示没命中，1表示命中
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	KeyWordHits []*float64 `json:"KeyWordHits,omitempty" name:"KeyWordHits"`
+
+	// 负向主题词命中标志，0表示没命中，1表示命中
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UnKeyWordHits []*float64 `json:"UnKeyWordHits,omitempty" name:"UnKeyWordHits"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }
@@ -675,6 +706,9 @@ type TransmitOralProcessWithInitRequestParams struct {
 	// 1：[音素结构](https://cloud.tencent.com/document/product/884/33698)文本
 	// 2：音素注册模式（提工单注册需要使用音素的单词）。
 	TextMode *int64 `json:"TextMode,omitempty" name:"TextMode"`
+
+	// 主题词和关键词
+	Keyword *string `json:"Keyword,omitempty" name:"Keyword"`
 }
 
 type TransmitOralProcessWithInitRequest struct {
@@ -768,6 +802,9 @@ type TransmitOralProcessWithInitRequest struct {
 	// 1：[音素结构](https://cloud.tencent.com/document/product/884/33698)文本
 	// 2：音素注册模式（提工单注册需要使用音素的单词）。
 	TextMode *int64 `json:"TextMode,omitempty" name:"TextMode"`
+
+	// 主题词和关键词
+	Keyword *string `json:"Keyword,omitempty" name:"Keyword"`
 }
 
 func (r *TransmitOralProcessWithInitRequest) ToJsonString() string {
@@ -799,6 +836,7 @@ func (r *TransmitOralProcessWithInitRequest) FromJsonString(s string) error {
 	delete(f, "IsAsync")
 	delete(f, "IsQuery")
 	delete(f, "TextMode")
+	delete(f, "Keyword")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "TransmitOralProcessWithInitRequest has unknown keys!", "")
 	}
@@ -833,6 +871,18 @@ type TransmitOralProcessWithInitResponseParams struct {
 
 	// 建议评分，取值范围[0,100]，评分方式为建议评分 = 准确度（PronAccuracy）× 完整度（PronCompletion）×（2 - 完整度（PronCompletion）），如若评分策略不符合请参考Words数组中的详细分数自定义评分逻辑。
 	SuggestedScore *float64 `json:"SuggestedScore,omitempty" name:"SuggestedScore"`
+
+	// 匹配候选文本的序号，在句子多分支、情景对 话、段落模式下表示匹配到的文本序号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RefTextId *int64 `json:"RefTextId,omitempty" name:"RefTextId"`
+
+	// 主题词命中标志，0表示没命中，1表示命中
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	KeyWordHits []*float64 `json:"KeyWordHits,omitempty" name:"KeyWordHits"`
+
+	// 负向主题词命中标志，0表示没命中，1表示命中
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UnKeyWordHits []*float64 `json:"UnKeyWordHits,omitempty" name:"UnKeyWordHits"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -878,4 +928,8 @@ type WordRsp struct {
 
 	// 参考词，目前为保留字段。
 	ReferenceWord *string `json:"ReferenceWord,omitempty" name:"ReferenceWord"`
+
+	// 主题词命中标志，0表示没命中，1表示命中
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	KeywordTag *int64 `json:"KeywordTag,omitempty" name:"KeywordTag"`
 }

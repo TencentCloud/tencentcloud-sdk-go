@@ -273,6 +273,72 @@ func (c *Client) CreateCallOutSessionWithContext(ctx context.Context, request *C
     return
 }
 
+func NewCreateExtensionRequest() (request *CreateExtensionRequest) {
+    request = &CreateExtensionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ccc", APIVersion, "CreateExtension")
+    
+    
+    return
+}
+
+func NewCreateExtensionResponse() (response *CreateExtensionResponse) {
+    response = &CreateExtensionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateExtension
+// 创建话机账号
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CALLOUTFAILED = "FailedOperation.CallOutFailed"
+//  FAILEDOPERATION_CALLEEISLIMITED = "FailedOperation.CalleeIsLimited"
+//  FAILEDOPERATION_CALLEROVERFREQUENCY = "FailedOperation.CallerOverFrequency"
+//  FAILEDOPERATION_NOCALLOUTNUMBER = "FailedOperation.NoCallOutNumber"
+//  FAILEDOPERATION_SEATSTATUSBUSY = "FailedOperation.SeatStatusBusy"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER_INSTANCENOTEXIST = "InvalidParameter.InstanceNotExist"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED_NOTINWHITELIST = "OperationDenied.NotInWhiteList"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateExtension(request *CreateExtensionRequest) (response *CreateExtensionResponse, err error) {
+    return c.CreateExtensionWithContext(context.Background(), request)
+}
+
+// CreateExtension
+// 创建话机账号
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CALLOUTFAILED = "FailedOperation.CallOutFailed"
+//  FAILEDOPERATION_CALLEEISLIMITED = "FailedOperation.CalleeIsLimited"
+//  FAILEDOPERATION_CALLEROVERFREQUENCY = "FailedOperation.CallerOverFrequency"
+//  FAILEDOPERATION_NOCALLOUTNUMBER = "FailedOperation.NoCallOutNumber"
+//  FAILEDOPERATION_SEATSTATUSBUSY = "FailedOperation.SeatStatusBusy"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER_INSTANCENOTEXIST = "InvalidParameter.InstanceNotExist"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED_NOTINWHITELIST = "OperationDenied.NotInWhiteList"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateExtensionWithContext(ctx context.Context, request *CreateExtensionRequest) (response *CreateExtensionResponse, err error) {
+    if request == nil {
+        request = NewCreateExtensionRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateExtension require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateExtensionResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateSDKLoginTokenRequest() (request *CreateSDKLoginTokenRequest) {
     request = &CreateSDKLoginTokenRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -439,6 +505,60 @@ func (c *Client) CreateUserSigWithContext(ctx context.Context, request *CreateUs
     request.SetContext(ctx)
     
     response = NewCreateUserSigResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteExtensionRequest() (request *DeleteExtensionRequest) {
+    request = &DeleteExtensionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ccc", APIVersion, "DeleteExtension")
+    
+    
+    return
+}
+
+func NewDeleteExtensionResponse() (response *DeleteExtensionResponse) {
+    response = &DeleteExtensionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteExtension
+// 删除话机账号
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
+func (c *Client) DeleteExtension(request *DeleteExtensionRequest) (response *DeleteExtensionResponse, err error) {
+    return c.DeleteExtensionWithContext(context.Background(), request)
+}
+
+// DeleteExtension
+// 删除话机账号
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
+func (c *Client) DeleteExtensionWithContext(ctx context.Context, request *DeleteExtensionRequest) (response *DeleteExtensionResponse, err error) {
+    if request == nil {
+        request = NewDeleteExtensionRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteExtension require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteExtensionResponse()
     err = c.Send(request, response)
     return
 }
@@ -763,6 +883,118 @@ func (c *Client) DescribeChatMessagesWithContext(ctx context.Context, request *D
     request.SetContext(ctx)
     
     response = NewDescribeChatMessagesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeExtensionRequest() (request *DescribeExtensionRequest) {
+    request = &DescribeExtensionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ccc", APIVersion, "DescribeExtension")
+    
+    
+    return
+}
+
+func NewDescribeExtensionResponse() (response *DescribeExtensionResponse) {
+    response = &DescribeExtensionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeExtension
+// 获取话机信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
+//  INVALIDPARAMETERVALUE_RECORDNOTEXIST = "InvalidParameterValue.RecordNotExist"
+func (c *Client) DescribeExtension(request *DescribeExtensionRequest) (response *DescribeExtensionResponse, err error) {
+    return c.DescribeExtensionWithContext(context.Background(), request)
+}
+
+// DescribeExtension
+// 获取话机信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
+//  INVALIDPARAMETERVALUE_RECORDNOTEXIST = "InvalidParameterValue.RecordNotExist"
+func (c *Client) DescribeExtensionWithContext(ctx context.Context, request *DescribeExtensionRequest) (response *DescribeExtensionResponse, err error) {
+    if request == nil {
+        request = NewDescribeExtensionRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeExtension require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeExtensionResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeExtensionsRequest() (request *DescribeExtensionsRequest) {
+    request = &DescribeExtensionsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ccc", APIVersion, "DescribeExtensions")
+    
+    
+    return
+}
+
+func NewDescribeExtensionsResponse() (response *DescribeExtensionsResponse) {
+    response = &DescribeExtensionsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeExtensions
+// 查询话机列表信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
+//  INVALIDPARAMETERVALUE_RECORDNOTEXIST = "InvalidParameterValue.RecordNotExist"
+func (c *Client) DescribeExtensions(request *DescribeExtensionsRequest) (response *DescribeExtensionsResponse, err error) {
+    return c.DescribeExtensionsWithContext(context.Background(), request)
+}
+
+// DescribeExtensions
+// 查询话机列表信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
+//  INVALIDPARAMETERVALUE_RECORDNOTEXIST = "InvalidParameterValue.RecordNotExist"
+func (c *Client) DescribeExtensionsWithContext(ctx context.Context, request *DescribeExtensionsRequest) (response *DescribeExtensionsResponse, err error) {
+    if request == nil {
+        request = NewDescribeExtensionsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeExtensions require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeExtensionsResponse()
     err = c.Send(request, response)
     return
 }
@@ -1309,6 +1541,58 @@ func (c *Client) DisableCCCPhoneNumberWithContext(ctx context.Context, request *
     return
 }
 
+func NewModifyExtensionRequest() (request *ModifyExtensionRequest) {
+    request = &ModifyExtensionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ccc", APIVersion, "ModifyExtension")
+    
+    
+    return
+}
+
+func NewModifyExtensionResponse() (response *ModifyExtensionResponse) {
+    response = &ModifyExtensionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyExtension
+// 修改话机账号(绑定技能组、绑定坐席账号)
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CURSTATENOTALLOWMODIFY = "FailedOperation.CurStateNotAllowModify"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) ModifyExtension(request *ModifyExtensionRequest) (response *ModifyExtensionResponse, err error) {
+    return c.ModifyExtensionWithContext(context.Background(), request)
+}
+
+// ModifyExtension
+// 修改话机账号(绑定技能组、绑定坐席账号)
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CURSTATENOTALLOWMODIFY = "FailedOperation.CurStateNotAllowModify"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) ModifyExtensionWithContext(ctx context.Context, request *ModifyExtensionRequest) (response *ModifyExtensionResponse, err error) {
+    if request == nil {
+        request = NewModifyExtensionRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyExtension require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyExtensionResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyStaffRequest() (request *ModifyStaffRequest) {
     request = &ModifyStaffRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1365,6 +1649,66 @@ func (c *Client) ModifyStaffWithContext(ctx context.Context, request *ModifyStaf
     request.SetContext(ctx)
     
     response = NewModifyStaffResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewResetExtensionPasswordRequest() (request *ResetExtensionPasswordRequest) {
+    request = &ResetExtensionPasswordRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ccc", APIVersion, "ResetExtensionPassword")
+    
+    
+    return
+}
+
+func NewResetExtensionPasswordResponse() (response *ResetExtensionPasswordResponse) {
+    response = &ResetExtensionPasswordResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ResetExtensionPassword
+// 重置话机注册密码
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_ACCOUNTNOTEXIST = "InvalidParameterValue.AccountNotExist"
+//  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
+//  INVALIDPARAMETERVALUE_PHONENUMISBOUNDOTHERACCOUNT = "InvalidParameterValue.PhoneNumIsBoundOtherAccount"
+//  INVALIDPARAMETERVALUE_SKILLGROUPERROR = "InvalidParameterValue.SkillGroupError"
+func (c *Client) ResetExtensionPassword(request *ResetExtensionPasswordRequest) (response *ResetExtensionPasswordResponse, err error) {
+    return c.ResetExtensionPasswordWithContext(context.Background(), request)
+}
+
+// ResetExtensionPassword
+// 重置话机注册密码
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_ACCOUNTNOTEXIST = "InvalidParameterValue.AccountNotExist"
+//  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
+//  INVALIDPARAMETERVALUE_PHONENUMISBOUNDOTHERACCOUNT = "InvalidParameterValue.PhoneNumIsBoundOtherAccount"
+//  INVALIDPARAMETERVALUE_SKILLGROUPERROR = "InvalidParameterValue.SkillGroupError"
+func (c *Client) ResetExtensionPasswordWithContext(ctx context.Context, request *ResetExtensionPasswordRequest) (response *ResetExtensionPasswordResponse, err error) {
+    if request == nil {
+        request = NewResetExtensionPasswordRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ResetExtensionPassword require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewResetExtensionPasswordResponse()
     err = c.Send(request, response)
     return
 }

@@ -8516,6 +8516,12 @@ type TransformsParam struct {
 	KeepMetadata *bool `json:"KeepMetadata,omitempty" name:"KeepMetadata"`
 }
 
+type UrlDecodeParam struct {
+	// 编码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CharsetName *string `json:"CharsetName,omitempty" name:"CharsetName"`
+}
+
 type User struct {
 	// 用户id
 	UserId *int64 `json:"UserId,omitempty" name:"UserId"`
@@ -8574,6 +8580,10 @@ type ValueParam struct {
 	// JsonPath替换，TYPE=JSON_PATH_REPLACE时必传
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	JsonPathReplace *JsonPathReplaceParam `json:"JsonPathReplace,omitempty" name:"JsonPathReplace"`
+
+	// Url解析
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UrlDecode *UrlDecodeParam `json:"UrlDecode,omitempty" name:"UrlDecode"`
 }
 
 type VipEntity struct {

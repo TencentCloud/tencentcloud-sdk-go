@@ -93,6 +93,7 @@ import (
 	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ds"
 	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/dtf"
 	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/dts"
+	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/dts"
 	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/eb"
 	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ecc"
 	_ "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ecdn"

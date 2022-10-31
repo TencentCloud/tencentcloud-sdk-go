@@ -476,6 +476,74 @@ func (r *CreateCallOutSessionResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateExtensionRequestParams struct {
+	// TCCC 实例应用 ID
+	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 分机号
+	ExtensionId *string `json:"ExtensionId,omitempty" name:"ExtensionId"`
+
+	// 分机名称
+	ExtensionName *string `json:"ExtensionName,omitempty" name:"ExtensionName"`
+}
+
+type CreateExtensionRequest struct {
+	*tchttp.BaseRequest
+	
+	// TCCC 实例应用 ID
+	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 分机号
+	ExtensionId *string `json:"ExtensionId,omitempty" name:"ExtensionId"`
+
+	// 分机名称
+	ExtensionName *string `json:"ExtensionName,omitempty" name:"ExtensionName"`
+}
+
+func (r *CreateExtensionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateExtensionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SdkAppId")
+	delete(f, "ExtensionId")
+	delete(f, "ExtensionName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateExtensionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateExtensionResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateExtensionResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateExtensionResponseParams `json:"Response"`
+}
+
+func (r *CreateExtensionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateExtensionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateSDKLoginTokenRequestParams struct {
 	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
 	SdkAppId *int64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
@@ -685,6 +753,67 @@ func (r *CreateUserSigResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateUserSigResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteExtensionRequestParams struct {
+	// TCCC 实例应用 ID
+	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 分机号
+	ExtensionId *string `json:"ExtensionId,omitempty" name:"ExtensionId"`
+}
+
+type DeleteExtensionRequest struct {
+	*tchttp.BaseRequest
+	
+	// TCCC 实例应用 ID
+	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 分机号
+	ExtensionId *string `json:"ExtensionId,omitempty" name:"ExtensionId"`
+}
+
+func (r *DeleteExtensionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteExtensionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SdkAppId")
+	delete(f, "ExtensionId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteExtensionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteExtensionResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DeleteExtensionResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteExtensionResponseParams `json:"Response"`
+}
+
+func (r *DeleteExtensionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteExtensionResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1158,6 +1287,177 @@ func (r *DescribeChatMessagesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeChatMessagesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeExtensionRequestParams struct {
+	// TCCC 实例应用 ID
+	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 分机号
+	ExtensionId *string `json:"ExtensionId,omitempty" name:"ExtensionId"`
+}
+
+type DescribeExtensionRequest struct {
+	*tchttp.BaseRequest
+	
+	// TCCC 实例应用 ID
+	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 分机号
+	ExtensionId *string `json:"ExtensionId,omitempty" name:"ExtensionId"`
+}
+
+func (r *DescribeExtensionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeExtensionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SdkAppId")
+	delete(f, "ExtensionId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeExtensionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeExtensionResponseParams struct {
+	// 分机号
+	ExtensionId *string `json:"ExtensionId,omitempty" name:"ExtensionId"`
+
+	// 域名
+	ExtensionDomain *string `json:"ExtensionDomain,omitempty" name:"ExtensionDomain"`
+
+	// 注册密码
+	Password *string `json:"Password,omitempty" name:"Password"`
+
+	// 代理服务器地址
+	OutboundProxy *string `json:"OutboundProxy,omitempty" name:"OutboundProxy"`
+
+	// 传输协议
+	Transport *string `json:"Transport,omitempty" name:"Transport"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeExtensionResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeExtensionResponseParams `json:"Response"`
+}
+
+func (r *DescribeExtensionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeExtensionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeExtensionsRequestParams struct {
+	// TCCC 实例应用 ID
+	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 分页页号（从0开始）
+	PageNumber *int64 `json:"PageNumber,omitempty" name:"PageNumber"`
+
+	// 筛选分机号列表
+	ExtensionIds []*string `json:"ExtensionIds,omitempty" name:"ExtensionIds"`
+
+	// 分页大小
+	PageSize *int64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// 模糊查询字段（模糊查询分机号、分机名称、坐席邮箱、坐席名称）
+	FuzzingKeyWord *string `json:"FuzzingKeyWord,omitempty" name:"FuzzingKeyWord"`
+
+	// 是否需要返回话机当前状态
+	IsNeedStatus *bool `json:"IsNeedStatus,omitempty" name:"IsNeedStatus"`
+}
+
+type DescribeExtensionsRequest struct {
+	*tchttp.BaseRequest
+	
+	// TCCC 实例应用 ID
+	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 分页页号（从0开始）
+	PageNumber *int64 `json:"PageNumber,omitempty" name:"PageNumber"`
+
+	// 筛选分机号列表
+	ExtensionIds []*string `json:"ExtensionIds,omitempty" name:"ExtensionIds"`
+
+	// 分页大小
+	PageSize *int64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// 模糊查询字段（模糊查询分机号、分机名称、坐席邮箱、坐席名称）
+	FuzzingKeyWord *string `json:"FuzzingKeyWord,omitempty" name:"FuzzingKeyWord"`
+
+	// 是否需要返回话机当前状态
+	IsNeedStatus *bool `json:"IsNeedStatus,omitempty" name:"IsNeedStatus"`
+}
+
+func (r *DescribeExtensionsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeExtensionsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SdkAppId")
+	delete(f, "PageNumber")
+	delete(f, "ExtensionIds")
+	delete(f, "PageSize")
+	delete(f, "FuzzingKeyWord")
+	delete(f, "IsNeedStatus")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeExtensionsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeExtensionsResponseParams struct {
+	// 查询总数
+	Total *int64 `json:"Total,omitempty" name:"Total"`
+
+	// 话机信息列表
+	ExtensionList []*ExtensionInfo `json:"ExtensionList,omitempty" name:"ExtensionList"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeExtensionsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeExtensionsResponseParams `json:"Response"`
+}
+
+func (r *DescribeExtensionsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeExtensionsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2022,6 +2322,41 @@ type ErrStaffItem struct {
 	Message *string `json:"Message,omitempty" name:"Message"`
 }
 
+type ExtensionInfo struct {
+	// 实例ID
+	SdkAppId *int64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 分机全名
+	FullExtensionId *string `json:"FullExtensionId,omitempty" name:"FullExtensionId"`
+
+	// 分机号
+	ExtensionId *string `json:"ExtensionId,omitempty" name:"ExtensionId"`
+
+	// 所属技能组列表
+	SkillGroupId *string `json:"SkillGroupId,omitempty" name:"SkillGroupId"`
+
+	// 分机名称
+	ExtensionName *string `json:"ExtensionName,omitempty" name:"ExtensionName"`
+
+	// 创建时间
+	CreateTime *int64 `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 最后修改时间
+	ModifyTime *int64 `json:"ModifyTime,omitempty" name:"ModifyTime"`
+
+	// 话机状态(0 离线、100 空闲、200忙碌）
+	Status *int64 `json:"Status,omitempty" name:"Status"`
+
+	// 是否注册
+	Register *bool `json:"Register,omitempty" name:"Register"`
+
+	// 绑定坐席邮箱
+	Relation *string `json:"Relation,omitempty" name:"Relation"`
+
+	// 绑定坐席名称
+	RelationName *string `json:"RelationName,omitempty" name:"RelationName"`
+}
+
 type IMCdrInfo struct {
 	// 服务记录ID
 	Id *string `json:"Id,omitempty" name:"Id"`
@@ -2092,6 +2427,88 @@ type MessageBody struct {
 
 	// 消息列表
 	Messages []*Message `json:"Messages,omitempty" name:"Messages"`
+}
+
+// Predefined struct for user
+type ModifyExtensionRequestParams struct {
+	// TCCC 实例应用 ID
+	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 分机号
+	ExtensionId *string `json:"ExtensionId,omitempty" name:"ExtensionId"`
+
+	// 分机名称
+	ExtensionName *string `json:"ExtensionName,omitempty" name:"ExtensionName"`
+
+	// 所属技能组列表
+	SkillGroupIds []*int64 `json:"SkillGroupIds,omitempty" name:"SkillGroupIds"`
+
+	// 绑定坐席邮箱账号
+	Relation *string `json:"Relation,omitempty" name:"Relation"`
+}
+
+type ModifyExtensionRequest struct {
+	*tchttp.BaseRequest
+	
+	// TCCC 实例应用 ID
+	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 分机号
+	ExtensionId *string `json:"ExtensionId,omitempty" name:"ExtensionId"`
+
+	// 分机名称
+	ExtensionName *string `json:"ExtensionName,omitempty" name:"ExtensionName"`
+
+	// 所属技能组列表
+	SkillGroupIds []*int64 `json:"SkillGroupIds,omitempty" name:"SkillGroupIds"`
+
+	// 绑定坐席邮箱账号
+	Relation *string `json:"Relation,omitempty" name:"Relation"`
+}
+
+func (r *ModifyExtensionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyExtensionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SdkAppId")
+	delete(f, "ExtensionId")
+	delete(f, "ExtensionName")
+	delete(f, "SkillGroupIds")
+	delete(f, "Relation")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyExtensionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyExtensionResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ModifyExtensionResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyExtensionResponseParams `json:"Response"`
+}
+
+func (r *ModifyExtensionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyExtensionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user
@@ -2327,6 +2744,70 @@ type PhoneNumBuyInfo struct {
 
 	// 号码状态，1正常|2欠费停用|4管理员停用|5违规停用
 	State *int64 `json:"State,omitempty" name:"State"`
+}
+
+// Predefined struct for user
+type ResetExtensionPasswordRequestParams struct {
+	// TCCC 实例应用 ID
+	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 分机号
+	ExtensionId *string `json:"ExtensionId,omitempty" name:"ExtensionId"`
+}
+
+type ResetExtensionPasswordRequest struct {
+	*tchttp.BaseRequest
+	
+	// TCCC 实例应用 ID
+	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 分机号
+	ExtensionId *string `json:"ExtensionId,omitempty" name:"ExtensionId"`
+}
+
+func (r *ResetExtensionPasswordRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ResetExtensionPasswordRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SdkAppId")
+	delete(f, "ExtensionId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ResetExtensionPasswordRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ResetExtensionPasswordResponseParams struct {
+	// 重置后密码
+	Password *string `json:"Password,omitempty" name:"Password"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ResetExtensionPasswordResponse struct {
+	*tchttp.BaseResponse
+	Response *ResetExtensionPasswordResponseParams `json:"Response"`
+}
+
+func (r *ResetExtensionPasswordResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ResetExtensionPasswordResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type SdkAppIdBuyInfo struct {

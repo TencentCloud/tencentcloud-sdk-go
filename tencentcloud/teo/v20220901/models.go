@@ -330,8 +330,8 @@ type ApplicationProxyRule struct {
 	Proto *string `json:"Proto,omitempty" name:"Proto"`
 
 	// 端口，支持格式：
-	// 单个端口，如：80。
-	// 端口段，如：81-82。表示81，82两个端口。
+	// <li>单个端口，如：80。</li>
+	// <li>端口段，如：81-82。表示81，82两个端口。</li>
 	// 注意：一条规则最多可填写20个端口。
 	Port []*string `json:"Port,omitempty" name:"Port"`
 
@@ -341,11 +341,8 @@ type ApplicationProxyRule struct {
 	OriginType *string `json:"OriginType,omitempty" name:"OriginType"`
 
 	// 源站信息：
-	// 当OriginType=custom时，表示一个或多个源站，如：
-	// OriginValue=["8.8.8.8:80","9.9.9.9:80"]
-	// OriginValue=["test.com:80"]；
-	// 当OriginType=origins时，要求有且仅有一个元素，表示源站组ID，如：
-	// OriginValue=["origin-537f5b41-162a-11ed-abaa-525400c5da15"]。
+	// <li>当 OriginType 为 custom 时，表示一个或多个源站，如`["8.8.8.8","9.9.9.9"]` 或 `OriginValue=["test.com"]`；</li>
+	// <li>当 OriginType 为 origins 时，要求有且仅有一个元素，表示源站组ID，如`["origin-537f5b41-162a-11ed-abaa-525400c5da15"]`。</li>
 	OriginValue []*string `json:"OriginValue,omitempty" name:"OriginValue"`
 
 	// 规则ID。
@@ -370,6 +367,11 @@ type ApplicationProxyRule struct {
 	// <li>true：开启；</li>
 	// <li>false：关闭。</li>默认值：false。
 	SessionPersist *bool `json:"SessionPersist,omitempty" name:"SessionPersist"`
+
+	// 源站端口，支持格式：
+	// <li>单端口，如：80。</li>
+	// <li>端口段：81-82，表示81，82两个端口。</li>
+	OriginPort *string `json:"OriginPort,omitempty" name:"OriginPort"`
 }
 
 type AscriptionInfo struct {
@@ -1060,22 +1062,19 @@ type CreateApplicationProxyRuleRequestParams struct {
 	// <li>UDP：UDP协议。</li>
 	Proto *string `json:"Proto,omitempty" name:"Proto"`
 
+	// 端口，支持格式：
+	// <li>80：80端口；</li>
+	// <li>81-90：81至90端口。</li>
+	Port []*string `json:"Port,omitempty" name:"Port"`
+
 	// 源站类型，取值有：
 	// <li>custom：手动添加；</li>
 	// <li>origins：源站组。</li>
-	Port []*string `json:"Port,omitempty" name:"Port"`
-
-	// 源站类型，取值：
-	// custom：手动添加
-	// origins：源站组
 	OriginType *string `json:"OriginType,omitempty" name:"OriginType"`
 
 	// 源站信息：
-	// 当OriginType=custom时，表示一个或多个源站，如：
-	// OriginValue=["8.8.8.8:80","9.9.9.9:80"]
-	// OriginValue=["test.com:80"]；
-	// 当OriginType=origins时，要求有且仅有一个元素，表示源站组ID，如：
-	// OriginValue=["origin-537f5b41-162a-11ed-abaa-525400c5da15"]。
+	// <li>当 OriginType 为 custom 时，表示一个或多个源站，如`["8.8.8.8","9.9.9.9"]` 或 `OriginValue=["test.com"]`；</li>
+	// <li>当 OriginType 为 origins 时，要求有且仅有一个元素，表示源站组ID，如`["origin-537f5b41-162a-11ed-abaa-525400c5da15"]`。</li>
 	OriginValue []*string `json:"OriginValue,omitempty" name:"OriginValue"`
 
 	// 传递客户端IP，取值有：
@@ -1089,6 +1088,11 @@ type CreateApplicationProxyRuleRequestParams struct {
 	// <li>true：开启；</li>
 	// <li>false：关闭。</li>默认值：false。
 	SessionPersist *bool `json:"SessionPersist,omitempty" name:"SessionPersist"`
+
+	// 源站端口，支持格式：
+	// <li>单端口：80；</li>
+	// <li>端口段：81-90，81至90端口。</li>
+	OriginPort *string `json:"OriginPort,omitempty" name:"OriginPort"`
 }
 
 type CreateApplicationProxyRuleRequest struct {
@@ -1105,22 +1109,19 @@ type CreateApplicationProxyRuleRequest struct {
 	// <li>UDP：UDP协议。</li>
 	Proto *string `json:"Proto,omitempty" name:"Proto"`
 
+	// 端口，支持格式：
+	// <li>80：80端口；</li>
+	// <li>81-90：81至90端口。</li>
+	Port []*string `json:"Port,omitempty" name:"Port"`
+
 	// 源站类型，取值有：
 	// <li>custom：手动添加；</li>
 	// <li>origins：源站组。</li>
-	Port []*string `json:"Port,omitempty" name:"Port"`
-
-	// 源站类型，取值：
-	// custom：手动添加
-	// origins：源站组
 	OriginType *string `json:"OriginType,omitempty" name:"OriginType"`
 
 	// 源站信息：
-	// 当OriginType=custom时，表示一个或多个源站，如：
-	// OriginValue=["8.8.8.8:80","9.9.9.9:80"]
-	// OriginValue=["test.com:80"]；
-	// 当OriginType=origins时，要求有且仅有一个元素，表示源站组ID，如：
-	// OriginValue=["origin-537f5b41-162a-11ed-abaa-525400c5da15"]。
+	// <li>当 OriginType 为 custom 时，表示一个或多个源站，如`["8.8.8.8","9.9.9.9"]` 或 `OriginValue=["test.com"]`；</li>
+	// <li>当 OriginType 为 origins 时，要求有且仅有一个元素，表示源站组ID，如`["origin-537f5b41-162a-11ed-abaa-525400c5da15"]`。</li>
 	OriginValue []*string `json:"OriginValue,omitempty" name:"OriginValue"`
 
 	// 传递客户端IP，取值有：
@@ -1134,6 +1135,11 @@ type CreateApplicationProxyRuleRequest struct {
 	// <li>true：开启；</li>
 	// <li>false：关闭。</li>默认值：false。
 	SessionPersist *bool `json:"SessionPersist,omitempty" name:"SessionPersist"`
+
+	// 源站端口，支持格式：
+	// <li>单端口：80；</li>
+	// <li>端口段：81-90，81至90端口。</li>
+	OriginPort *string `json:"OriginPort,omitempty" name:"OriginPort"`
 }
 
 func (r *CreateApplicationProxyRuleRequest) ToJsonString() string {
@@ -1156,6 +1162,7 @@ func (r *CreateApplicationProxyRuleRequest) FromJsonString(s string) error {
 	delete(f, "OriginValue")
 	delete(f, "ForwardClientIp")
 	delete(f, "SessionPersist")
+	delete(f, "OriginPort")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateApplicationProxyRuleRequest has unknown keys!", "")
 	}
@@ -11391,8 +11398,8 @@ type ModifyApplicationProxyRuleRequestParams struct {
 	OriginType *string `json:"OriginType,omitempty" name:"OriginType"`
 
 	// 端口，支持格式：
-	// 80：80端口
-	// 81-90：81至90端口。不填保持原有值。
+	// <li>80：80端口；</li>
+	// <li>81-90：81至90端口。</li>
 	Port []*string `json:"Port,omitempty" name:"Port"`
 
 	// 协议，取值有：
@@ -11401,11 +11408,9 @@ type ModifyApplicationProxyRuleRequestParams struct {
 	Proto *string `json:"Proto,omitempty" name:"Proto"`
 
 	// 源站信息：
-	// 当OriginType=custom时，表示一个或多个源站，如：
-	// OriginValue=["8.8.8.8:80","9.9.9.9:80"]
-	// OriginValue=["test.com:80"]；
-	// 当OriginType=origins时，要求有且仅有一个元素，表示源站组ID，如：
-	// OriginValue=["origin-537f5b41-162a-11ed-abaa-525400c5da15"]。
+	// <li>当 OriginType 为 custom 时，表示一个或多个源站，如`["8.8.8.8","9.9.9.9"]` 或 `OriginValue=["test.com"]`；</li>
+	// <li>当 OriginType 为 origins 时，要求有且仅有一个元素，表示源站组ID，如`["origin-537f5b41-162a-11ed-abaa-525400c5da15"]`。</li>
+	// 
 	// 不填保持原有值。
 	OriginValue []*string `json:"OriginValue,omitempty" name:"OriginValue"`
 
@@ -11418,8 +11423,13 @@ type ModifyApplicationProxyRuleRequestParams struct {
 
 	// 是否开启会话保持，取值有：
 	// <li>true：开启；</li>
-	// <li>false：关闭。</li>不填保持原有值。
+	// <li>false：关闭。</li>不填为false。
 	SessionPersist *bool `json:"SessionPersist,omitempty" name:"SessionPersist"`
+
+	// 源站端口，支持格式：
+	// <li>单端口：80；</li>
+	// <li>端口段：81-90，81至90端口。</li>
+	OriginPort *string `json:"OriginPort,omitempty" name:"OriginPort"`
 }
 
 type ModifyApplicationProxyRuleRequest struct {
@@ -11440,8 +11450,8 @@ type ModifyApplicationProxyRuleRequest struct {
 	OriginType *string `json:"OriginType,omitempty" name:"OriginType"`
 
 	// 端口，支持格式：
-	// 80：80端口
-	// 81-90：81至90端口。不填保持原有值。
+	// <li>80：80端口；</li>
+	// <li>81-90：81至90端口。</li>
 	Port []*string `json:"Port,omitempty" name:"Port"`
 
 	// 协议，取值有：
@@ -11450,11 +11460,9 @@ type ModifyApplicationProxyRuleRequest struct {
 	Proto *string `json:"Proto,omitempty" name:"Proto"`
 
 	// 源站信息：
-	// 当OriginType=custom时，表示一个或多个源站，如：
-	// OriginValue=["8.8.8.8:80","9.9.9.9:80"]
-	// OriginValue=["test.com:80"]；
-	// 当OriginType=origins时，要求有且仅有一个元素，表示源站组ID，如：
-	// OriginValue=["origin-537f5b41-162a-11ed-abaa-525400c5da15"]。
+	// <li>当 OriginType 为 custom 时，表示一个或多个源站，如`["8.8.8.8","9.9.9.9"]` 或 `OriginValue=["test.com"]`；</li>
+	// <li>当 OriginType 为 origins 时，要求有且仅有一个元素，表示源站组ID，如`["origin-537f5b41-162a-11ed-abaa-525400c5da15"]`。</li>
+	// 
 	// 不填保持原有值。
 	OriginValue []*string `json:"OriginValue,omitempty" name:"OriginValue"`
 
@@ -11467,8 +11475,13 @@ type ModifyApplicationProxyRuleRequest struct {
 
 	// 是否开启会话保持，取值有：
 	// <li>true：开启；</li>
-	// <li>false：关闭。</li>不填保持原有值。
+	// <li>false：关闭。</li>不填为false。
 	SessionPersist *bool `json:"SessionPersist,omitempty" name:"SessionPersist"`
+
+	// 源站端口，支持格式：
+	// <li>单端口：80；</li>
+	// <li>端口段：81-90，81至90端口。</li>
+	OriginPort *string `json:"OriginPort,omitempty" name:"OriginPort"`
 }
 
 func (r *ModifyApplicationProxyRuleRequest) ToJsonString() string {
@@ -11492,6 +11505,7 @@ func (r *ModifyApplicationProxyRuleRequest) FromJsonString(s string) error {
 	delete(f, "OriginValue")
 	delete(f, "ForwardClientIp")
 	delete(f, "SessionPersist")
+	delete(f, "OriginPort")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyApplicationProxyRuleRequest has unknown keys!", "")
 	}
