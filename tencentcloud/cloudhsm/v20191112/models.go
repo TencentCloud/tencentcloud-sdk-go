@@ -142,10 +142,10 @@ func (r *DescribeHSMByVpcIdResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeSubnetRequestParams struct {
-	// 返回数量。
+	// 返回数量。Limit需要在[1, 100]之间。
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 偏移量。
+	// 偏移量。偏移量最小为0。
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
 	// 查询指定VpcId下的子网信息。
@@ -158,10 +158,10 @@ type DescribeSubnetRequestParams struct {
 type DescribeSubnetRequest struct {
 	*tchttp.BaseRequest
 	
-	// 返回数量。
+	// 返回数量。Limit需要在[1, 100]之间。
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 偏移量。
+	// 偏移量。偏移量最小为0。
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
 	// 查询指定VpcId下的子网信息。
@@ -419,10 +419,10 @@ func (r *DescribeUsgRuleResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeVpcRequestParams struct {
-	// 返回偏移量。
+	// 返回偏移量。Offset最小为0。
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 返回数量。
+	// 返回数量。Limit需要在[1, 100]之间。
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 搜索关键字
@@ -432,10 +432,10 @@ type DescribeVpcRequestParams struct {
 type DescribeVpcRequest struct {
 	*tchttp.BaseRequest
 	
-	// 返回偏移量。
+	// 返回偏移量。Offset最小为0。
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 返回数量。
+	// 返回数量。Limit需要在[1, 100]之间。
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 搜索关键字
@@ -556,7 +556,7 @@ type DescribeVsmAttributesResponseParams struct {
 	// 区域Id，返回腾讯云每个地域的可用区代码
 	ZoneId *int64 `json:"ZoneId,omitempty" name:"ZoneId"`
 
-	// 过期时间
+	// 资源过期时间，以时间戳形式展示。
 	ExpireTime *int64 `json:"ExpireTime,omitempty" name:"ExpireTime"`
 
 	// 安全组详情信息
@@ -991,7 +991,7 @@ type ResourceInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ZoneId *int64 `json:"ZoneId,omitempty" name:"ZoneId"`
 
-	// 过期时间
+	// 过期时间（Epoch Unix Timestamp）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExpireTime *int64 `json:"ExpireTime,omitempty" name:"ExpireTime"`
 

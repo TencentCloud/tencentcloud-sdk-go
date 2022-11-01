@@ -74,9 +74,6 @@ const (
 	// 操作频繁，请稍后重试。
 	INVALIDPARAMETER_ACTIONINPROGRESS = "InvalidParameter.ActionInProgress"
 
-	// HTTPS证书和域名不匹配。
-	INVALIDPARAMETER_CERTNOTMATCHDOMAIN = "InvalidParameter.CertNotMatchDomain"
-
 	// 域名不存在或不属于该账号。
 	INVALIDPARAMETER_DOMAINNOTFOUND = "InvalidParameter.DomainNotFound"
 
@@ -88,6 +85,12 @@ const (
 
 	// 非法操作-非法参数-参数值数量超出限制。
 	INVALIDPARAMETER_ERRINVALIDACTIONPARAMTOOMANYVALUES = "InvalidParameter.ErrInvalidActionParamTooManyValues"
+
+	// 非法条件-非法参数名称-匹配类型不支持参数名称。
+	INVALIDPARAMETER_ERRINVALIDCONDITIONNAMETARGETNOTSUPPORTNAME = "InvalidParameter.ErrInvalidConditionNameTargetNotSupportName"
+
+	// 非法条件-非法参数值-无效的参数值。
+	INVALIDPARAMETER_ERRINVALIDCONDITIONVALUEBADVALUE = "InvalidParameter.ErrInvalidConditionValueBadValue"
 
 	// 非法条件-非法参数值-参数值长度超出限制。
 	INVALIDPARAMETER_ERRINVALIDCONDITIONVALUETOOLONGVALUE = "InvalidParameter.ErrInvalidConditionValueTooLongValue"
@@ -119,6 +122,9 @@ const (
 	// 无效的HTTPS TLS版本。
 	INVALIDPARAMETER_INVALIDHTTPSTLSVERSION = "InvalidParameter.InvalidHttpsTlsVersion"
 
+	// 无效的Ipv6开关配置。
+	INVALIDPARAMETER_INVALIDIPV6SWITCH = "InvalidParameter.InvalidIpv6Switch"
+
 	// 无效的源站。
 	INVALIDPARAMETER_INVALIDORIGIN = "InvalidParameter.InvalidOrigin"
 
@@ -128,11 +134,17 @@ const (
 	// 套餐包不支持最大上传大小。
 	INVALIDPARAMETER_INVALIDPOSTMAXSIZEBILLING = "InvalidParameter.InvalidPostMaxSizeBilling"
 
+	// 无效的最大上传大小。
+	INVALIDPARAMETER_INVALIDPOSTSIZEVALUE = "InvalidParameter.InvalidPostSizeValue"
+
 	// 无效的请求头header。
 	INVALIDPARAMETER_INVALIDREQUESTHEADERNAME = "InvalidParameter.InvalidRequestHeaderName"
 
 	// 无套餐包。
 	INVALIDPARAMETER_INVALIDRESOURCEIDBILLING = "InvalidParameter.InvalidResourceIdBilling"
+
+	// 无效的规则引擎配置。
+	INVALIDPARAMETER_INVALIDRULEENGINE = "InvalidParameter.InvalidRuleEngine"
 
 	// 无效的规则引擎操作。
 	INVALIDPARAMETER_INVALIDRULEENGINEACTION = "InvalidParameter.InvalidRuleEngineAction"
@@ -158,6 +170,9 @@ const (
 	// 无效的WebSocket。
 	INVALIDPARAMETER_INVALIDWEBSOCKETTIMEOUT = "InvalidParameter.InvalidWebSocketTimeout"
 
+	// 无效的缓存键。
+	INVALIDPARAMETER_KEYRULESINVALIDQUERYSTRINGVALUE = "InvalidParameter.KeyRulesInvalidQueryStringValue"
+
 	// 参数错误。
 	INVALIDPARAMETER_PARAMETERERROR = "InvalidParameter.ParameterError"
 
@@ -178,9 +193,6 @@ const (
 
 	// 站点不存在。
 	INVALIDPARAMETER_ZONENOTFOUND = "InvalidParameter.ZoneNotFound"
-
-	// 参数取值错误。
-	INVALIDPARAMETERVALUE = "InvalidParameterValue"
 
 	// 与已经添加的记录冲突。
 	INVALIDPARAMETERVALUE_CONFLICTRECORD = "InvalidParameterValue.ConflictRecord"
@@ -239,6 +251,9 @@ const (
 	// 已存在多个Cname接入站点，不允许切换至NS。
 	OPERATIONDENIED_MULTIPLECNAMEZONE = "OperationDenied.MultipleCnameZone"
 
+	// NS接入模式不支持域名流量调度功能。
+	OPERATIONDENIED_NSNOTALLOWTRAFFICSTRATEGY = "OperationDenied.NSNotAllowTrafficStrategy"
+
 	// 资源被占用。
 	RESOURCEINUSE = "ResourceInUse"
 
@@ -250,9 +265,6 @@ const (
 
 	// Dns资源被占用。
 	RESOURCEINUSE_DNS = "ResourceInUse.Dns"
-
-	// 已存在相同的别称域名。
-	RESOURCEINUSE_DUPLICATENAME = "ResourceInUse.DuplicateName"
 
 	// 资源被本账号的子域名占用。
 	RESOURCEINUSE_HOST = "ResourceInUse.Host"
@@ -277,9 +289,6 @@ const (
 
 	// 资源被本账号和其他账号同时Cname接入占用。
 	RESOURCEINUSE_SELFANDOTHERSCNAME = "ResourceInUse.SelfAndOthersCname"
-
-	// 别称域名已站点接入。
-	RESOURCEINUSE_ZONE = "ResourceInUse.Zone"
 
 	// 资源不足。
 	RESOURCEINSUFFICIENT = "ResourceInsufficient"

@@ -1089,10 +1089,10 @@ func (r *DescribeWhiteBoxKeyDetailsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeWhiteBoxKeyDetailsResponseParams struct {
-	// 白盒密钥信息列表
+	// 白盒密钥信息列表。
 	KeyInfos []*WhiteboxKeyInfo `json:"KeyInfos,omitempty" name:"KeyInfos"`
 
-	// key总数量
+	// 白盒密钥总数。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
@@ -2376,7 +2376,7 @@ type GetServiceStatusResponseParams struct {
 	// 0-普通版，1-旗舰版
 	UserLevel *uint64 `json:"UserLevel,omitempty" name:"UserLevel"`
 
-	// 旗舰版到期时间
+	// 旗舰版到期时间（Epoch Unix Timestamp）。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ProExpireTime *uint64 `json:"ProExpireTime,omitempty" name:"ProExpireTime"`
 

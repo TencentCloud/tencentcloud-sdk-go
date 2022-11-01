@@ -237,6 +237,7 @@ func NewCreateCallOutSessionResponse() (response *CreateCallOutSessionResponse) 
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
 //  INVALIDPARAMETER_INSTANCENOTEXIST = "InvalidParameter.InstanceNotExist"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_ACCOUNTNOTEXIST = "InvalidParameterValue.AccountNotExist"
 //  OPERATIONDENIED_NOTINWHITELIST = "OperationDenied.NotInWhiteList"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateCallOutSession(request *CreateCallOutSessionRequest) (response *CreateCallOutSessionResponse, err error) {
@@ -255,6 +256,7 @@ func (c *Client) CreateCallOutSession(request *CreateCallOutSessionRequest) (res
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
 //  INVALIDPARAMETER_INSTANCENOTEXIST = "InvalidParameter.InstanceNotExist"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_ACCOUNTNOTEXIST = "InvalidParameterValue.AccountNotExist"
 //  OPERATIONDENIED_NOTINWHITELIST = "OperationDenied.NotInWhiteList"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateCallOutSessionWithContext(ctx context.Context, request *CreateCallOutSessionRequest) (response *CreateCallOutSessionResponse, err error) {
@@ -303,6 +305,7 @@ func NewCreateExtensionResponse() (response *CreateExtensionResponse) {
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
 //  INVALIDPARAMETER_INSTANCENOTEXIST = "InvalidParameter.InstanceNotExist"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_ACCOUNTNOTEXIST = "InvalidParameterValue.AccountNotExist"
 //  OPERATIONDENIED_NOTINWHITELIST = "OperationDenied.NotInWhiteList"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateExtension(request *CreateExtensionRequest) (response *CreateExtensionResponse, err error) {
@@ -321,6 +324,7 @@ func (c *Client) CreateExtension(request *CreateExtensionRequest) (response *Cre
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
 //  INVALIDPARAMETER_INSTANCENOTEXIST = "InvalidParameter.InstanceNotExist"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_ACCOUNTNOTEXIST = "InvalidParameterValue.AccountNotExist"
 //  OPERATIONDENIED_NOTINWHITELIST = "OperationDenied.NotInWhiteList"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateExtensionWithContext(ctx context.Context, request *CreateExtensionRequest) (response *CreateExtensionResponse, err error) {

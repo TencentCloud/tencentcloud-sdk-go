@@ -911,6 +911,7 @@ func NewDescribeRebateInfosResponse() (response *DescribeRebateInfosResponse) {
 // 【该接口已下线，请切换使用升级版本DescribeRebateInfosNew】代理商可查询自己名下全部返佣信息
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeRebateInfos(request *DescribeRebateInfosRequest) (response *DescribeRebateInfosResponse, err error) {
@@ -921,6 +922,7 @@ func (c *Client) DescribeRebateInfos(request *DescribeRebateInfosRequest) (respo
 // 【该接口已下线，请切换使用升级版本DescribeRebateInfosNew】代理商可查询自己名下全部返佣信息
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeRebateInfosWithContext(ctx context.Context, request *DescribeRebateInfosRequest) (response *DescribeRebateInfosResponse, err error) {

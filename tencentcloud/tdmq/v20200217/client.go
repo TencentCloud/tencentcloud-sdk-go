@@ -941,6 +941,7 @@ func NewCreateRocketMQClusterResponse() (response *CreateRocketMQClusterResponse
 //  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCEUNAVAILABLE_CREATEFAILED = "ResourceUnavailable.CreateFailed"
 //  RESOURCEUNAVAILABLE_FUNDREQUIRED = "ResourceUnavailable.FundRequired"
 func (c *Client) CreateRocketMQCluster(request *CreateRocketMQClusterRequest) (response *CreateRocketMQClusterResponse, err error) {
     return c.CreateRocketMQClusterWithContext(context.Background(), request)
@@ -960,6 +961,7 @@ func (c *Client) CreateRocketMQCluster(request *CreateRocketMQClusterRequest) (r
 //  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCEUNAVAILABLE_CREATEFAILED = "ResourceUnavailable.CreateFailed"
 //  RESOURCEUNAVAILABLE_FUNDREQUIRED = "ResourceUnavailable.FundRequired"
 func (c *Client) CreateRocketMQClusterWithContext(ctx context.Context, request *CreateRocketMQClusterRequest) (response *CreateRocketMQClusterResponse, err error) {
     if request == nil {
@@ -1744,6 +1746,7 @@ func NewDeleteCmqQueueResponse() (response *DeleteCmqQueueResponse) {
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_DELETECLUSTER = "FailedOperation.DeleteCluster"
 //  FAILEDOPERATION_DELETETOPICS = "FailedOperation.DeleteTopics"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DeleteCmqQueue(request *DeleteCmqQueueRequest) (response *DeleteCmqQueueResponse, err error) {
     return c.DeleteCmqQueueWithContext(context.Background(), request)
 }
@@ -1755,6 +1758,7 @@ func (c *Client) DeleteCmqQueue(request *DeleteCmqQueueRequest) (response *Delet
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_DELETECLUSTER = "FailedOperation.DeleteCluster"
 //  FAILEDOPERATION_DELETETOPICS = "FailedOperation.DeleteTopics"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DeleteCmqQueueWithContext(ctx context.Context, request *DeleteCmqQueueRequest) (response *DeleteCmqQueueResponse, err error) {
     if request == nil {
         request = NewDeleteCmqQueueRequest()
@@ -1796,6 +1800,7 @@ func NewDeleteCmqSubscribeResponse() (response *DeleteCmqSubscribeResponse) {
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_DELETESUBSCRIPTIONS = "FailedOperation.DeleteSubscriptions"
 //  FAILEDOPERATION_DELETETOPICS = "FailedOperation.DeleteTopics"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_TOPIC = "ResourceNotFound.Topic"
 func (c *Client) DeleteCmqSubscribe(request *DeleteCmqSubscribeRequest) (response *DeleteCmqSubscribeResponse, err error) {
     return c.DeleteCmqSubscribeWithContext(context.Background(), request)
@@ -1808,6 +1813,7 @@ func (c *Client) DeleteCmqSubscribe(request *DeleteCmqSubscribeRequest) (respons
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_DELETESUBSCRIPTIONS = "FailedOperation.DeleteSubscriptions"
 //  FAILEDOPERATION_DELETETOPICS = "FailedOperation.DeleteTopics"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_TOPIC = "ResourceNotFound.Topic"
 func (c *Client) DeleteCmqSubscribeWithContext(ctx context.Context, request *DeleteCmqSubscribeRequest) (response *DeleteCmqSubscribeResponse, err error) {
     if request == nil {
@@ -1849,6 +1855,7 @@ func NewDeleteCmqTopicResponse() (response *DeleteCmqTopicResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_DELETECLUSTER = "FailedOperation.DeleteCluster"
+//  RESOURCENOTFOUND_TOPIC = "ResourceNotFound.Topic"
 func (c *Client) DeleteCmqTopic(request *DeleteCmqTopicRequest) (response *DeleteCmqTopicResponse, err error) {
     return c.DeleteCmqTopicWithContext(context.Background(), request)
 }
@@ -1859,6 +1866,7 @@ func (c *Client) DeleteCmqTopic(request *DeleteCmqTopicRequest) (response *Delet
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_DELETECLUSTER = "FailedOperation.DeleteCluster"
+//  RESOURCENOTFOUND_TOPIC = "ResourceNotFound.Topic"
 func (c *Client) DeleteCmqTopicWithContext(ctx context.Context, request *DeleteCmqTopicRequest) (response *DeleteCmqTopicResponse, err error) {
     if request == nil {
         request = NewDeleteCmqTopicRequest()
@@ -3763,6 +3771,102 @@ func (c *Client) DescribePublishersWithContext(ctx context.Context, request *Des
     request.SetContext(ctx)
     
     response = NewDescribePublishersResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeRabbitMQNodeListRequest() (request *DescribeRabbitMQNodeListRequest) {
+    request = &DescribeRabbitMQNodeListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tdmq", APIVersion, "DescribeRabbitMQNodeList")
+    
+    
+    return
+}
+
+func NewDescribeRabbitMQNodeListResponse() (response *DescribeRabbitMQNodeListResponse) {
+    response = &DescribeRabbitMQNodeListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeRabbitMQNodeList
+// RabbitMQ专享版查询节点列表
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
+func (c *Client) DescribeRabbitMQNodeList(request *DescribeRabbitMQNodeListRequest) (response *DescribeRabbitMQNodeListResponse, err error) {
+    return c.DescribeRabbitMQNodeListWithContext(context.Background(), request)
+}
+
+// DescribeRabbitMQNodeList
+// RabbitMQ专享版查询节点列表
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
+func (c *Client) DescribeRabbitMQNodeListWithContext(ctx context.Context, request *DescribeRabbitMQNodeListRequest) (response *DescribeRabbitMQNodeListResponse, err error) {
+    if request == nil {
+        request = NewDescribeRabbitMQNodeListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRabbitMQNodeList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeRabbitMQNodeListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeRabbitMQVipInstancesRequest() (request *DescribeRabbitMQVipInstancesRequest) {
+    request = &DescribeRabbitMQVipInstancesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tdmq", APIVersion, "DescribeRabbitMQVipInstances")
+    
+    
+    return
+}
+
+func NewDescribeRabbitMQVipInstancesResponse() (response *DescribeRabbitMQVipInstancesResponse) {
+    response = &DescribeRabbitMQVipInstancesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeRabbitMQVipInstances
+// 查询用户已购的RabbitMQ专享实例列表
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
+func (c *Client) DescribeRabbitMQVipInstances(request *DescribeRabbitMQVipInstancesRequest) (response *DescribeRabbitMQVipInstancesResponse, err error) {
+    return c.DescribeRabbitMQVipInstancesWithContext(context.Background(), request)
+}
+
+// DescribeRabbitMQVipInstances
+// 查询用户已购的RabbitMQ专享实例列表
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
+func (c *Client) DescribeRabbitMQVipInstancesWithContext(ctx context.Context, request *DescribeRabbitMQVipInstancesRequest) (response *DescribeRabbitMQVipInstancesResponse, err error) {
+    if request == nil {
+        request = NewDescribeRabbitMQVipInstancesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRabbitMQVipInstances require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeRabbitMQVipInstancesResponse()
     err = c.Send(request, response)
     return
 }

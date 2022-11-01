@@ -602,6 +602,9 @@ const (
 	// 当前云联网有流日志，不支持删除。
 	UNSUPPORTEDOPERATION_CCNHASFLOWLOG = "UnsupportedOperation.CcnHasFlowLog"
 
+	// CCN实例所属账号未通过联通审批。
+	UNSUPPORTEDOPERATION_CCNINSTANCEACCOUNTNOTAPPROVEDBYUNICOM = "UnsupportedOperation.CcnInstanceAccountNotApprovedByUnicom"
+
 	// 实例未关联CCN。
 	UNSUPPORTEDOPERATION_CCNNOTATTACHED = "UnsupportedOperation.CcnNotAttached"
 
@@ -622,6 +625,12 @@ const (
 
 	// 与该VPC下的TKE容器的网段重叠。
 	UNSUPPORTEDOPERATION_CONFLICTWITHDOCKERROUTE = "UnsupportedOperation.ConflictWithDockerRoute"
+
+	// 当前账号非联通账号。
+	UNSUPPORTEDOPERATION_CURRENTACCOUNTISNOTUNICOMACCOUNT = "UnsupportedOperation.CurrentAccountIsNotUnicomAccount"
+
+	// 当前查询地域非跨境。
+	UNSUPPORTEDOPERATION_CURRENTQUERYREGIONISNOTCROSSBORDER = "UnsupportedOperation.CurrentQueryRegionIsNotCrossBorder"
 
 	// 该专线网关存在关联的NAT规则，不允许删除，请先删调所有的NAT规则。
 	UNSUPPORTEDOPERATION_DCGATEWAYNATRULEEXISTS = "UnsupportedOperation.DCGatewayNatRuleExists"

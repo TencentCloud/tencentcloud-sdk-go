@@ -408,6 +408,7 @@ func NewCreateTemplateResponse() (response *CreateTemplateResponse) {
 //  MISSINGPARAMETER_TEMPLATEIDISEXIST = "MissingParameter.TemplateIdIsExist"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_TEMPLATENOTFOUND = "ResourceNotFound.TemplateNotFound"
+//  UNSUPPORTEDOPERATION_ACCOUNTREALNAME = "UnsupportedOperation.AccountRealName"
 func (c *Client) CreateTemplate(request *CreateTemplateRequest) (response *CreateTemplateResponse, err error) {
     return c.CreateTemplateWithContext(context.Background(), request)
 }
@@ -445,6 +446,7 @@ func (c *Client) CreateTemplate(request *CreateTemplateRequest) (response *Creat
 //  MISSINGPARAMETER_TEMPLATEIDISEXIST = "MissingParameter.TemplateIdIsExist"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_TEMPLATENOTFOUND = "ResourceNotFound.TemplateNotFound"
+//  UNSUPPORTEDOPERATION_ACCOUNTREALNAME = "UnsupportedOperation.AccountRealName"
 func (c *Client) CreateTemplateWithContext(ctx context.Context, request *CreateTemplateRequest) (response *CreateTemplateResponse, err error) {
     if request == nil {
         request = NewCreateTemplateRequest()
@@ -1367,6 +1369,7 @@ func NewSetDomainAutoRenewResponse() (response *SetDomainAutoRenewResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION_ACCOUNTREALNAME = "UnsupportedOperation.AccountRealName"
 //  UNSUPPORTEDOPERATION_DOMAINNOTVERIFIED = "UnsupportedOperation.DomainNotVerified"
 func (c *Client) SetDomainAutoRenew(request *SetDomainAutoRenewRequest) (response *SetDomainAutoRenewResponse, err error) {
     return c.SetDomainAutoRenewWithContext(context.Background(), request)
@@ -1384,6 +1387,7 @@ func (c *Client) SetDomainAutoRenew(request *SetDomainAutoRenewRequest) (respons
 //  INVALIDPARAMETER = "InvalidParameter"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION_ACCOUNTREALNAME = "UnsupportedOperation.AccountRealName"
 //  UNSUPPORTEDOPERATION_DOMAINNOTVERIFIED = "UnsupportedOperation.DomainNotVerified"
 func (c *Client) SetDomainAutoRenewWithContext(ctx context.Context, request *SetDomainAutoRenewRequest) (response *SetDomainAutoRenewResponse, err error) {
     if request == nil {

@@ -5079,6 +5079,88 @@ func (c *Client) DescribeOverviewIndexWithContext(ctx context.Context, request *
     return
 }
 
+func NewDescribePendingRiskInfoRequest() (request *DescribePendingRiskInfoRequest) {
+    request = &DescribePendingRiskInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("antiddos", APIVersion, "DescribePendingRiskInfo")
+    
+    
+    return
+}
+
+func NewDescribePendingRiskInfoResponse() (response *DescribePendingRiskInfoResponse) {
+    response = &DescribePendingRiskInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribePendingRiskInfo
+// 查询账号维度待处理风险信息，包括是否为付费用户，查询攻击中、封堵中、过期资源数量等
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribePendingRiskInfo(request *DescribePendingRiskInfoRequest) (response *DescribePendingRiskInfoResponse, err error) {
+    return c.DescribePendingRiskInfoWithContext(context.Background(), request)
+}
+
+// DescribePendingRiskInfo
+// 查询账号维度待处理风险信息，包括是否为付费用户，查询攻击中、封堵中、过期资源数量等
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribePendingRiskInfoWithContext(ctx context.Context, request *DescribePendingRiskInfoRequest) (response *DescribePendingRiskInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribePendingRiskInfoRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribePendingRiskInfo require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribePendingRiskInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDisassociateDDoSEipAddressRequest() (request *DisassociateDDoSEipAddressRequest) {
     request = &DisassociateDDoSEipAddressRequest{
         BaseRequest: &tchttp.BaseRequest{},

@@ -780,6 +780,7 @@ func NewCreateBackupResponse() (response *CreateBackupResponse) {
 //  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
 //  INTERNALERROR_DESERROR = "InternalError.DesError"
 //  INTERNALERROR_HTTPERROR = "InternalError.HttpError"
+//  INTERNALERROR_OSSERROR = "InternalError.OssError"
 //  INTERNALERROR_UNDEFINEDERROR = "InternalError.UndefinedError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
@@ -802,6 +803,7 @@ func (c *Client) CreateBackup(request *CreateBackupRequest) (response *CreateBac
 //  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
 //  INTERNALERROR_DESERROR = "InternalError.DesError"
 //  INTERNALERROR_HTTPERROR = "InternalError.HttpError"
+//  INTERNALERROR_OSSERROR = "InternalError.OssError"
 //  INTERNALERROR_UNDEFINEDERROR = "InternalError.UndefinedError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
@@ -2651,6 +2653,7 @@ func NewDescribeBackupOverviewResponse() (response *DescribeBackupOverviewRespon
 // 可能返回的错误码:
 //  AUTHFAILURE_SUBACCOUNTDENIED = "AuthFailure.SubAccountDenied"
 //  INTERNALERROR_CDBERROR = "InternalError.CdbError"
+//  INTERNALERROR_INTERNALHTTPSERVERERROR = "InternalError.InternalHttpServerError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
 func (c *Client) DescribeBackupOverview(request *DescribeBackupOverviewRequest) (response *DescribeBackupOverviewResponse, err error) {
@@ -2663,6 +2666,7 @@ func (c *Client) DescribeBackupOverview(request *DescribeBackupOverviewRequest) 
 // 可能返回的错误码:
 //  AUTHFAILURE_SUBACCOUNTDENIED = "AuthFailure.SubAccountDenied"
 //  INTERNALERROR_CDBERROR = "InternalError.CdbError"
+//  INTERNALERROR_INTERNALHTTPSERVERERROR = "InternalError.InternalHttpServerError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
 func (c *Client) DescribeBackupOverviewWithContext(ctx context.Context, request *DescribeBackupOverviewRequest) (response *DescribeBackupOverviewResponse, err error) {
@@ -2831,6 +2835,7 @@ func NewDescribeBackupsResponse() (response *DescribeBackupsResponse) {
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  CDBERROR = "CdbError"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
 //  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
 //  INTERNALERROR_DESERROR = "InternalError.DesError"
 //  INTERNALERROR_FTPERROR = "InternalError.FtpError"
@@ -2851,6 +2856,7 @@ func (c *Client) DescribeBackups(request *DescribeBackupsRequest) (response *Des
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  CDBERROR = "CdbError"
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
 //  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
 //  INTERNALERROR_DESERROR = "InternalError.DesError"
 //  INTERNALERROR_FTPERROR = "InternalError.FtpError"
@@ -2954,6 +2960,7 @@ func NewDescribeBinlogsResponse() (response *DescribeBinlogsResponse) {
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR_CDBERROR = "InternalError.CdbError"
 //  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -2969,6 +2976,7 @@ func (c *Client) DescribeBinlogs(request *DescribeBinlogsRequest) (response *Des
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR_CDBERROR = "InternalError.CdbError"
 //  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETER = "InvalidParameter"

@@ -219,6 +219,7 @@ func NewAddExistedInstancesResponse() (response *AddExistedInstancesResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION_CLUSTERNOTFOUND = "FailedOperation.ClusterNotFound"
 //  FAILEDOPERATION_CLUSTERSTATE = "FailedOperation.ClusterState"
+//  FAILEDOPERATION_COMPONENTCLIENTHTTP = "FailedOperation.ComponentClientHttp"
 //  FAILEDOPERATION_CVMCOMMON = "FailedOperation.CvmCommon"
 //  FAILEDOPERATION_NETWORKSCALEERROR = "FailedOperation.NetworkScaleError"
 //  FAILEDOPERATION_PARAM = "FailedOperation.Param"
@@ -245,6 +246,7 @@ func (c *Client) AddExistedInstances(request *AddExistedInstancesRequest) (respo
 // 可能返回的错误码:
 //  FAILEDOPERATION_CLUSTERNOTFOUND = "FailedOperation.ClusterNotFound"
 //  FAILEDOPERATION_CLUSTERSTATE = "FailedOperation.ClusterState"
+//  FAILEDOPERATION_COMPONENTCLIENTHTTP = "FailedOperation.ComponentClientHttp"
 //  FAILEDOPERATION_CVMCOMMON = "FailedOperation.CvmCommon"
 //  FAILEDOPERATION_NETWORKSCALEERROR = "FailedOperation.NetworkScaleError"
 //  FAILEDOPERATION_PARAM = "FailedOperation.Param"
@@ -647,6 +649,7 @@ func NewCreateClusterResponse() (response *CreateClusterResponse) {
 //  INVALIDPARAMETER_CIDRINVALID = "InvalidParameter.CidrInvalid"
 //  INVALIDPARAMETER_INVALIDPRIVATENETWORKCIDR = "InvalidParameter.InvalidPrivateNetworkCIDR"
 //  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCEINSUFFICIENT_SPECIFIEDINSTANCETYPE = "ResourceInsufficient.SpecifiedInstanceType"
 func (c *Client) CreateCluster(request *CreateClusterRequest) (response *CreateClusterResponse, err error) {
     return c.CreateClusterWithContext(context.Background(), request)
 }
@@ -717,6 +720,7 @@ func (c *Client) CreateCluster(request *CreateClusterRequest) (response *CreateC
 //  INVALIDPARAMETER_CIDRINVALID = "InvalidParameter.CidrInvalid"
 //  INVALIDPARAMETER_INVALIDPRIVATENETWORKCIDR = "InvalidParameter.InvalidPrivateNetworkCIDR"
 //  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCEINSUFFICIENT_SPECIFIEDINSTANCETYPE = "ResourceInsufficient.SpecifiedInstanceType"
 func (c *Client) CreateClusterWithContext(ctx context.Context, request *CreateClusterRequest) (response *CreateClusterResponse, err error) {
     if request == nil {
         request = NewCreateClusterRequest()
@@ -961,6 +965,7 @@ func NewCreateClusterInstancesResponse() (response *CreateClusterInstancesRespon
 //  INVALIDPARAMETER = "InvalidParameter"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT_SPECIFIEDINSTANCETYPE = "ResourceInsufficient.SpecifiedInstanceType"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
@@ -1008,6 +1013,7 @@ func (c *Client) CreateClusterInstances(request *CreateClusterInstancesRequest) 
 //  INVALIDPARAMETER = "InvalidParameter"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT_SPECIFIEDINSTANCETYPE = "ResourceInsufficient.SpecifiedInstanceType"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
@@ -5074,6 +5080,7 @@ func NewDescribeClusterSecurityResponse() (response *DescribeClusterSecurityResp
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_COMPONENTCLIENTHTTP = "FailedOperation.ComponentClientHttp"
 //  FAILEDOPERATION_COMPONENTCLIENTUNPACK = "FailedOperation.ComponentClientUnpack"
+//  FAILEDOPERATION_DB = "FailedOperation.Db"
 //  FAILEDOPERATION_DBRECORDNOTFOUND = "FailedOperation.DbRecordNotFound"
 //  FAILEDOPERATION_KUBECOMMON = "FailedOperation.KubeCommon"
 //  FAILEDOPERATION_LBCOMMON = "FailedOperation.LbCommon"
@@ -5112,6 +5119,7 @@ func (c *Client) DescribeClusterSecurity(request *DescribeClusterSecurityRequest
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_COMPONENTCLIENTHTTP = "FailedOperation.ComponentClientHttp"
 //  FAILEDOPERATION_COMPONENTCLIENTUNPACK = "FailedOperation.ComponentClientUnpack"
+//  FAILEDOPERATION_DB = "FailedOperation.Db"
 //  FAILEDOPERATION_DBRECORDNOTFOUND = "FailedOperation.DbRecordNotFound"
 //  FAILEDOPERATION_KUBECOMMON = "FailedOperation.KubeCommon"
 //  FAILEDOPERATION_LBCOMMON = "FailedOperation.LbCommon"
@@ -7830,6 +7838,7 @@ func NewDescribeRouteTableConflictsResponse() (response *DescribeRouteTableConfl
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_PARAM = "FailedOperation.Param"
+//  FAILEDOPERATION_VPCRECODRNOTFOUND = "FailedOperation.VpcRecodrNotFound"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_CIDRMASKSIZEOUTOFRANGE = "InternalError.CidrMaskSizeOutOfRange"
 //  INTERNALERROR_INVALIDPRIVATENETWORKCIDR = "InternalError.InvalidPrivateNetworkCidr"
@@ -7846,6 +7855,7 @@ func (c *Client) DescribeRouteTableConflicts(request *DescribeRouteTableConflict
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_PARAM = "FailedOperation.Param"
+//  FAILEDOPERATION_VPCRECODRNOTFOUND = "FailedOperation.VpcRecodrNotFound"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_CIDRMASKSIZEOUTOFRANGE = "InternalError.CidrMaskSizeOutOfRange"
 //  INTERNALERROR_INVALIDPRIVATENETWORKCIDR = "InternalError.InvalidPrivateNetworkCidr"
@@ -8621,6 +8631,7 @@ func NewEnableClusterAuditResponse() (response *EnableClusterAuditResponse) {
 // 开启集群审计
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_COMPONENTCLIENTUNPACK = "FailedOperation.ComponentClientUnpack"
 //  FAILEDOPERATION_CREATECLSINDEX = "FailedOperation.CreateClsIndex"
 //  FAILEDOPERATION_CREATECLSMACHINEGROUP = "FailedOperation.CreateClsMachineGroup"
 //  FAILEDOPERATION_CREATECLSTOPIC = "FailedOperation.CreateClsTopic"
@@ -8642,6 +8653,7 @@ func (c *Client) EnableClusterAudit(request *EnableClusterAuditRequest) (respons
 // 开启集群审计
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_COMPONENTCLIENTUNPACK = "FailedOperation.ComponentClientUnpack"
 //  FAILEDOPERATION_CREATECLSINDEX = "FailedOperation.CreateClsIndex"
 //  FAILEDOPERATION_CREATECLSMACHINEGROUP = "FailedOperation.CreateClsMachineGroup"
 //  FAILEDOPERATION_CREATECLSTOPIC = "FailedOperation.CreateClsTopic"
@@ -8748,6 +8760,7 @@ func NewEnableEventPersistenceResponse() (response *EnableEventPersistenceRespon
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_CLUSTERNOTFOUND = "FailedOperation.ClusterNotFound"
 //  FAILEDOPERATION_COMPONENTCLIENTUNPACK = "FailedOperation.ComponentClientUnpack"
+//  FAILEDOPERATION_CREATECLSCLIENT = "FailedOperation.CreateClsClient"
 //  FAILEDOPERATION_CREATECLSCONFIG = "FailedOperation.CreateClsConfig"
 //  FAILEDOPERATION_CREATECLSINDEX = "FailedOperation.CreateClsIndex"
 //  FAILEDOPERATION_CREATECLSLOGSET = "FailedOperation.CreateClsLogSet"
@@ -8778,6 +8791,7 @@ func (c *Client) EnableEventPersistence(request *EnableEventPersistenceRequest) 
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_CLUSTERNOTFOUND = "FailedOperation.ClusterNotFound"
 //  FAILEDOPERATION_COMPONENTCLIENTUNPACK = "FailedOperation.ComponentClientUnpack"
+//  FAILEDOPERATION_CREATECLSCLIENT = "FailedOperation.CreateClsClient"
 //  FAILEDOPERATION_CREATECLSCONFIG = "FailedOperation.CreateClsConfig"
 //  FAILEDOPERATION_CREATECLSINDEX = "FailedOperation.CreateClsIndex"
 //  FAILEDOPERATION_CREATECLSLOGSET = "FailedOperation.CreateClsLogSet"
@@ -10532,6 +10546,7 @@ func NewRunPrometheusInstanceResponse() (response *RunPrometheusInstanceResponse
 //  FAILEDOPERATION_COMPONENTCLIENTCOMMON = "FailedOperation.ComponentClientCommon"
 //  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
 //  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  INVALIDPARAMETER_PROMINSTANCENOTFOUND = "InvalidParameter.PromInstanceNotFound"
 func (c *Client) RunPrometheusInstance(request *RunPrometheusInstanceRequest) (response *RunPrometheusInstanceResponse, err error) {
     return c.RunPrometheusInstanceWithContext(context.Background(), request)
 }
@@ -10543,6 +10558,7 @@ func (c *Client) RunPrometheusInstance(request *RunPrometheusInstanceRequest) (r
 //  FAILEDOPERATION_COMPONENTCLIENTCOMMON = "FailedOperation.ComponentClientCommon"
 //  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
 //  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+//  INVALIDPARAMETER_PROMINSTANCENOTFOUND = "InvalidParameter.PromInstanceNotFound"
 func (c *Client) RunPrometheusInstanceWithContext(ctx context.Context, request *RunPrometheusInstanceRequest) (response *RunPrometheusInstanceResponse, err error) {
     if request == nil {
         request = NewRunPrometheusInstanceRequest()

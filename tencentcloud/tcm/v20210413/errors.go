@@ -17,8 +17,14 @@ package v20210413
 const (
 	// 此产品的特有错误码
 
+	// CAM签名/鉴权错误。
+	AUTHFAILURE = "AuthFailure"
+
 	// 操作失败。
 	FAILEDOPERATION = "FailedOperation"
+
+	// 集群资源不足。
+	FAILEDOPERATION_CLUSTERNOENOUGHRESOURCE = "FailedOperation.ClusterNoEnoughResource"
 
 	// Cluster RBAC权限限制。
 	FAILEDOPERATION_RBACFORBIDDEN = "FailedOperation.RBACForbidden"
@@ -37,4 +43,7 @@ const (
 
 	// 资源不存在。
 	RESOURCENOTFOUND = "ResourceNotFound"
+
+	// 操作不支持。
+	UNSUPPORTEDOPERATION = "UnsupportedOperation"
 )

@@ -78,6 +78,7 @@ func NewCreateApplicationResponse() (response *CreateApplicationResponse) {
 //  INVALIDPARAMETERVALUE_TCRENTINSTANCENAMENOTVALID = "InvalidParameterValue.TcrEntInstanceNameNotValid"
 //  MISSINGPARAMETER_TCRENTINSTANCENAMENULL = "MissingParameter.TcrEntInstanceNameNull"
 //  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION_UNSUPPORTACTION = "UnsupportedOperation.UnsupportAction"
 func (c *Client) CreateApplication(request *CreateApplicationRequest) (response *CreateApplicationResponse, err error) {
     return c.CreateApplicationWithContext(context.Background(), request)
@@ -98,6 +99,7 @@ func (c *Client) CreateApplication(request *CreateApplicationRequest) (response 
 //  INVALIDPARAMETERVALUE_TCRENTINSTANCENAMENOTVALID = "InvalidParameterValue.TcrEntInstanceNameNotValid"
 //  MISSINGPARAMETER_TCRENTINSTANCENAMENULL = "MissingParameter.TcrEntInstanceNameNull"
 //  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION_UNSUPPORTACTION = "UnsupportedOperation.UnsupportAction"
 func (c *Client) CreateApplicationWithContext(ctx context.Context, request *CreateApplicationRequest) (response *CreateApplicationResponse, err error) {
     if request == nil {
@@ -149,6 +151,7 @@ func NewCreateApplicationAutoscalerResponse() (response *CreateApplicationAutosc
 //  RESOURCENOTFOUND_SERVICENOTFOUND = "ResourceNotFound.ServiceNotFound"
 //  RESOURCENOTFOUND_SERVICERUNNINGVERSIONNOTFOUND = "ResourceNotFound.ServiceRunningVersionNotFound"
 //  RESOURCEUNAVAILABLE_APPLICATIONSTOPPED = "ResourceUnavailable.ApplicationStopped"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
 func (c *Client) CreateApplicationAutoscaler(request *CreateApplicationAutoscalerRequest) (response *CreateApplicationAutoscalerResponse, err error) {
     return c.CreateApplicationAutoscalerWithContext(context.Background(), request)
 }
@@ -169,6 +172,7 @@ func (c *Client) CreateApplicationAutoscaler(request *CreateApplicationAutoscale
 //  RESOURCENOTFOUND_SERVICENOTFOUND = "ResourceNotFound.ServiceNotFound"
 //  RESOURCENOTFOUND_SERVICERUNNINGVERSIONNOTFOUND = "ResourceNotFound.ServiceRunningVersionNotFound"
 //  RESOURCEUNAVAILABLE_APPLICATIONSTOPPED = "ResourceUnavailable.ApplicationStopped"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
 func (c *Client) CreateApplicationAutoscalerWithContext(ctx context.Context, request *CreateApplicationAutoscalerRequest) (response *CreateApplicationAutoscalerResponse, err error) {
     if request == nil {
         request = NewCreateApplicationAutoscalerRequest()
@@ -293,6 +297,7 @@ func NewCreateConfigDataResponse() (response *CreateConfigDataResponse) {
 //  INVALIDPARAMETERVALUE_CONFIGDATAALREADYEXIST = "InvalidParameterValue.ConfigDataAlreadyExist"
 //  INVALIDPARAMETERVALUE_CONFIGDATAINVALID = "InvalidParameterValue.ConfigDataInvalid"
 //  INVALIDPARAMETERVALUE_NAMESPACENOTBELONGTOAPPID = "InvalidParameterValue.NamespaceNotBelongToAppid"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
 func (c *Client) CreateConfigData(request *CreateConfigDataRequest) (response *CreateConfigDataResponse, err error) {
     return c.CreateConfigDataWithContext(context.Background(), request)
 }
@@ -305,6 +310,7 @@ func (c *Client) CreateConfigData(request *CreateConfigDataRequest) (response *C
 //  INVALIDPARAMETERVALUE_CONFIGDATAALREADYEXIST = "InvalidParameterValue.ConfigDataAlreadyExist"
 //  INVALIDPARAMETERVALUE_CONFIGDATAINVALID = "InvalidParameterValue.ConfigDataInvalid"
 //  INVALIDPARAMETERVALUE_NAMESPACENOTBELONGTOAPPID = "InvalidParameterValue.NamespaceNotBelongToAppid"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
 func (c *Client) CreateConfigDataWithContext(ctx context.Context, request *CreateConfigDataRequest) (response *CreateConfigDataResponse, err error) {
     if request == nil {
         request = NewCreateConfigDataRequest()
@@ -346,6 +352,7 @@ func NewCreateCosTokenResponse() (response *CreateCosTokenResponse) {
 //  INTERNALERROR_ACTIONREADTIMEOUT = "InternalError.ActionReadTimeout"
 //  INTERNALERROR_DEFAULTINTERNALERROR = "InternalError.DefaultInternalError"
 //  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
 func (c *Client) CreateCosToken(request *CreateCosTokenRequest) (response *CreateCosTokenResponse, err error) {
     return c.CreateCosTokenWithContext(context.Background(), request)
 }
@@ -357,6 +364,7 @@ func (c *Client) CreateCosToken(request *CreateCosTokenRequest) (response *Creat
 //  INTERNALERROR_ACTIONREADTIMEOUT = "InternalError.ActionReadTimeout"
 //  INTERNALERROR_DEFAULTINTERNALERROR = "InternalError.DefaultInternalError"
 //  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
 func (c *Client) CreateCosTokenWithContext(ctx context.Context, request *CreateCosTokenRequest) (response *CreateCosTokenResponse, err error) {
     if request == nil {
         request = NewCreateCosTokenRequest()
@@ -402,6 +410,7 @@ func NewCreateEnvironmentResponse() (response *CreateEnvironmentResponse) {
 //  INVALIDPARAMETERVALUE_NAMESPACEREACHMAXIMUM = "InvalidParameterValue.NamespaceReachMaximum"
 //  MISSINGPARAMETER_ENVIRONMENTNAMENULL = "MissingParameter.EnvironmentNameNull"
 //  OPERATIONDENIED_BALANCENOTENOUGH = "OperationDenied.BalanceNotEnough"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
 func (c *Client) CreateEnvironment(request *CreateEnvironmentRequest) (response *CreateEnvironmentResponse, err error) {
     return c.CreateEnvironmentWithContext(context.Background(), request)
 }
@@ -417,6 +426,7 @@ func (c *Client) CreateEnvironment(request *CreateEnvironmentRequest) (response 
 //  INVALIDPARAMETERVALUE_NAMESPACEREACHMAXIMUM = "InvalidParameterValue.NamespaceReachMaximum"
 //  MISSINGPARAMETER_ENVIRONMENTNAMENULL = "MissingParameter.EnvironmentNameNull"
 //  OPERATIONDENIED_BALANCENOTENOUGH = "OperationDenied.BalanceNotEnough"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
 func (c *Client) CreateEnvironmentWithContext(ctx context.Context, request *CreateEnvironmentRequest) (response *CreateEnvironmentResponse, err error) {
     if request == nil {
         request = NewCreateEnvironmentRequest()
@@ -462,6 +472,7 @@ func NewCreateLogConfigResponse() (response *CreateLogConfigResponse) {
 //  INVALIDPARAMETERVALUE_NAMESPACENOTBELONGTOAPPID = "InvalidParameterValue.NamespaceNotBelongToAppid"
 //  INVALIDPARAMETERVALUE_TEMIDINVALID = "InvalidParameterValue.TemIdInvalid"
 //  MISSINGPARAMETER_NAMESPACEIDNULL = "MissingParameter.NamespaceIdNull"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
 func (c *Client) CreateLogConfig(request *CreateLogConfigRequest) (response *CreateLogConfigResponse, err error) {
     return c.CreateLogConfigWithContext(context.Background(), request)
 }
@@ -477,6 +488,7 @@ func (c *Client) CreateLogConfig(request *CreateLogConfigRequest) (response *Cre
 //  INVALIDPARAMETERVALUE_NAMESPACENOTBELONGTOAPPID = "InvalidParameterValue.NamespaceNotBelongToAppid"
 //  INVALIDPARAMETERVALUE_TEMIDINVALID = "InvalidParameterValue.TemIdInvalid"
 //  MISSINGPARAMETER_NAMESPACEIDNULL = "MissingParameter.NamespaceIdNull"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
 func (c *Client) CreateLogConfigWithContext(ctx context.Context, request *CreateLogConfigRequest) (response *CreateLogConfigResponse, err error) {
     if request == nil {
         request = NewCreateLogConfigRequest()
@@ -522,6 +534,7 @@ func NewCreateResourceResponse() (response *CreateResourceResponse) {
 //  RESOURCEINUSE_RESOURCEALREADYUSED = "ResourceInUse.ResourceAlreadyUsed"
 //  RESOURCENOTFOUND_NAMESPACENOTFOUND = "ResourceNotFound.NamespaceNotFound"
 //  RESOURCENOTFOUND_VERSIONNAMESPACENOTFOUND = "ResourceNotFound.VersionNamespaceNotFound"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
 func (c *Client) CreateResource(request *CreateResourceRequest) (response *CreateResourceResponse, err error) {
     return c.CreateResourceWithContext(context.Background(), request)
 }
@@ -537,6 +550,7 @@ func (c *Client) CreateResource(request *CreateResourceRequest) (response *Creat
 //  RESOURCEINUSE_RESOURCEALREADYUSED = "ResourceInUse.ResourceAlreadyUsed"
 //  RESOURCENOTFOUND_NAMESPACENOTFOUND = "ResourceNotFound.NamespaceNotFound"
 //  RESOURCENOTFOUND_VERSIONNAMESPACENOTFOUND = "ResourceNotFound.VersionNamespaceNotFound"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
 func (c *Client) CreateResourceWithContext(ctx context.Context, request *CreateResourceRequest) (response *CreateResourceResponse, err error) {
     if request == nil {
         request = NewCreateResourceRequest()
@@ -663,9 +677,11 @@ func NewDeleteApplicationAutoscalerResponse() (response *DeleteApplicationAutosc
 // 删除应用弹性策略组合
 //
 // 可能返回的错误码:
+//  INTERNALERROR_DEFAULTINTERNALERROR = "InternalError.DefaultInternalError"
 //  INVALIDPARAMETERVALUE_DISABLESCALERBEFOREDELETE = "InvalidParameterValue.DisableScalerBeforeDelete"
 //  MISSINGPARAMETER_SCALERIDNULL = "MissingParameter.ScalerIdNull"
 //  RESOURCEUNAVAILABLE_APPLICATIONSTOPPED = "ResourceUnavailable.ApplicationStopped"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
 func (c *Client) DeleteApplicationAutoscaler(request *DeleteApplicationAutoscalerRequest) (response *DeleteApplicationAutoscalerResponse, err error) {
     return c.DeleteApplicationAutoscalerWithContext(context.Background(), request)
 }
@@ -674,9 +690,11 @@ func (c *Client) DeleteApplicationAutoscaler(request *DeleteApplicationAutoscale
 // 删除应用弹性策略组合
 //
 // 可能返回的错误码:
+//  INTERNALERROR_DEFAULTINTERNALERROR = "InternalError.DefaultInternalError"
 //  INVALIDPARAMETERVALUE_DISABLESCALERBEFOREDELETE = "InvalidParameterValue.DisableScalerBeforeDelete"
 //  MISSINGPARAMETER_SCALERIDNULL = "MissingParameter.ScalerIdNull"
 //  RESOURCEUNAVAILABLE_APPLICATIONSTOPPED = "ResourceUnavailable.ApplicationStopped"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
 func (c *Client) DeleteApplicationAutoscalerWithContext(ctx context.Context, request *DeleteApplicationAutoscalerRequest) (response *DeleteApplicationAutoscalerResponse, err error) {
     if request == nil {
         request = NewDeleteApplicationAutoscalerRequest()
@@ -722,6 +740,7 @@ func NewDeleteApplicationServiceResponse() (response *DeleteApplicationServiceRe
 //  INVALIDPARAMETERVALUE_PORTISRESERVED = "InvalidParameterValue.PortIsReserved"
 //  RESOURCENOTFOUND_SERVICENOTFOUND = "ResourceNotFound.ServiceNotFound"
 //  RESOURCENOTFOUND_SERVICERUNNINGVERSIONNOTFOUND = "ResourceNotFound.ServiceRunningVersionNotFound"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
 func (c *Client) DeleteApplicationService(request *DeleteApplicationServiceRequest) (response *DeleteApplicationServiceResponse, err error) {
     return c.DeleteApplicationServiceWithContext(context.Background(), request)
 }
@@ -737,6 +756,7 @@ func (c *Client) DeleteApplicationService(request *DeleteApplicationServiceReque
 //  INVALIDPARAMETERVALUE_PORTISRESERVED = "InvalidParameterValue.PortIsReserved"
 //  RESOURCENOTFOUND_SERVICENOTFOUND = "ResourceNotFound.ServiceNotFound"
 //  RESOURCENOTFOUND_SERVICERUNNINGVERSIONNOTFOUND = "ResourceNotFound.ServiceRunningVersionNotFound"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
 func (c *Client) DeleteApplicationServiceWithContext(ctx context.Context, request *DeleteApplicationServiceRequest) (response *DeleteApplicationServiceResponse, err error) {
     if request == nil {
         request = NewDeleteApplicationServiceRequest()
@@ -778,6 +798,7 @@ func NewDeleteIngressResponse() (response *DeleteIngressResponse) {
 //  INTERNALERROR_DELETEINGRESSERROR = "InternalError.DeleteIngressError"
 //  INVALIDPARAMETERVALUE_TEMIDINVALID = "InvalidParameterValue.TemIdInvalid"
 //  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
 func (c *Client) DeleteIngress(request *DeleteIngressRequest) (response *DeleteIngressResponse, err error) {
     return c.DeleteIngressWithContext(context.Background(), request)
 }
@@ -789,6 +810,7 @@ func (c *Client) DeleteIngress(request *DeleteIngressRequest) (response *DeleteI
 //  INTERNALERROR_DELETEINGRESSERROR = "InternalError.DeleteIngressError"
 //  INVALIDPARAMETERVALUE_TEMIDINVALID = "InvalidParameterValue.TemIdInvalid"
 //  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
 func (c *Client) DeleteIngressWithContext(ctx context.Context, request *DeleteIngressRequest) (response *DeleteIngressResponse, err error) {
     if request == nil {
         request = NewDeleteIngressRequest()
@@ -835,6 +857,7 @@ func NewDeployApplicationResponse() (response *DeployApplicationResponse) {
 //  INVALIDPARAMETERVALUE_CANNOTOVERWRITEOTHERAPPLICATIONSERVICE = "InvalidParameterValue.CannotOverWriteOtherApplicationService"
 //  INVALIDPARAMETERVALUE_INVALIDDEPLOYVERSION = "InvalidParameterValue.InvalidDeployVersion"
 //  INVALIDPARAMETERVALUE_INVALIDENVNAME = "InvalidParameterValue.InvalidEnvName"
+//  INVALIDPARAMETERVALUE_INVALIDENVVALUE = "InvalidParameterValue.InvalidEnvValue"
 //  INVALIDPARAMETERVALUE_INVALIDMOUNTPATH = "InvalidParameterValue.InvalidMountPath"
 //  INVALIDPARAMETERVALUE_JDKVERSIONREQUIRED = "InvalidParameterValue.JdkVersionRequired"
 //  INVALIDPARAMETERVALUE_MUSTPROVIDEPORTMAPPINGRULES = "InvalidParameterValue.MustProvidePortMappingRules"
@@ -855,11 +878,13 @@ func NewDeployApplicationResponse() (response *DeployApplicationResponse) {
 //  MISSINGPARAMETER_SERVICEIDNULL = "MissingParameter.ServiceIdNull"
 //  MISSINGPARAMETER_SVCREPONOTREADY = "MissingParameter.SvcRepoNotReady"
 //  MISSINGPARAMETER_VPCSERVICESUBNETNULL = "MissingParameter.VpcServiceSubnetNull"
+//  RESOURCEINUSE_SERVICEDEPLOYING = "ResourceInUse.ServiceDeploying"
 //  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
 //  RESOURCENOTFOUND_SERVICENOTFOUND = "ResourceNotFound.ServiceNotFound"
 //  RESOURCENOTFOUND_VERSIONNAMESPACENOTFOUND = "ResourceNotFound.VersionNamespaceNotFound"
 //  RESOURCEUNAVAILABLE_WAITFORKRUISE = "ResourceUnavailable.WaitForKruise"
 //  UNAUTHORIZEDOPERATION_MISSINGEKSLOGROLE = "UnauthorizedOperation.MissingEksLogRole"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
 func (c *Client) DeployApplication(request *DeployApplicationRequest) (response *DeployApplicationResponse, err error) {
     return c.DeployApplicationWithContext(context.Background(), request)
 }
@@ -876,6 +901,7 @@ func (c *Client) DeployApplication(request *DeployApplicationRequest) (response 
 //  INVALIDPARAMETERVALUE_CANNOTOVERWRITEOTHERAPPLICATIONSERVICE = "InvalidParameterValue.CannotOverWriteOtherApplicationService"
 //  INVALIDPARAMETERVALUE_INVALIDDEPLOYVERSION = "InvalidParameterValue.InvalidDeployVersion"
 //  INVALIDPARAMETERVALUE_INVALIDENVNAME = "InvalidParameterValue.InvalidEnvName"
+//  INVALIDPARAMETERVALUE_INVALIDENVVALUE = "InvalidParameterValue.InvalidEnvValue"
 //  INVALIDPARAMETERVALUE_INVALIDMOUNTPATH = "InvalidParameterValue.InvalidMountPath"
 //  INVALIDPARAMETERVALUE_JDKVERSIONREQUIRED = "InvalidParameterValue.JdkVersionRequired"
 //  INVALIDPARAMETERVALUE_MUSTPROVIDEPORTMAPPINGRULES = "InvalidParameterValue.MustProvidePortMappingRules"
@@ -896,11 +922,13 @@ func (c *Client) DeployApplication(request *DeployApplicationRequest) (response 
 //  MISSINGPARAMETER_SERVICEIDNULL = "MissingParameter.ServiceIdNull"
 //  MISSINGPARAMETER_SVCREPONOTREADY = "MissingParameter.SvcRepoNotReady"
 //  MISSINGPARAMETER_VPCSERVICESUBNETNULL = "MissingParameter.VpcServiceSubnetNull"
+//  RESOURCEINUSE_SERVICEDEPLOYING = "ResourceInUse.ServiceDeploying"
 //  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
 //  RESOURCENOTFOUND_SERVICENOTFOUND = "ResourceNotFound.ServiceNotFound"
 //  RESOURCENOTFOUND_VERSIONNAMESPACENOTFOUND = "ResourceNotFound.VersionNamespaceNotFound"
 //  RESOURCEUNAVAILABLE_WAITFORKRUISE = "ResourceUnavailable.WaitForKruise"
 //  UNAUTHORIZEDOPERATION_MISSINGEKSLOGROLE = "UnauthorizedOperation.MissingEksLogRole"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
 func (c *Client) DeployApplicationWithContext(ctx context.Context, request *DeployApplicationRequest) (response *DeployApplicationResponse, err error) {
     if request == nil {
         request = NewDeployApplicationRequest()
@@ -943,6 +971,7 @@ func NewDescribeApplicationAutoscalerListResponse() (response *DescribeApplicati
 //  MISSINGPARAMETER_NAMESPACEIDNULL = "MissingParameter.NamespaceIdNull"
 //  RESOURCENOTFOUND_SERVICERUNNINGVERSIONNOTFOUND = "ResourceNotFound.ServiceRunningVersionNotFound"
 //  RESOURCENOTFOUND_VERSIONNAMESPACENOTFOUND = "ResourceNotFound.VersionNamespaceNotFound"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
 func (c *Client) DescribeApplicationAutoscalerList(request *DescribeApplicationAutoscalerListRequest) (response *DescribeApplicationAutoscalerListResponse, err error) {
     return c.DescribeApplicationAutoscalerListWithContext(context.Background(), request)
 }
@@ -955,6 +984,7 @@ func (c *Client) DescribeApplicationAutoscalerList(request *DescribeApplicationA
 //  MISSINGPARAMETER_NAMESPACEIDNULL = "MissingParameter.NamespaceIdNull"
 //  RESOURCENOTFOUND_SERVICERUNNINGVERSIONNOTFOUND = "ResourceNotFound.ServiceRunningVersionNotFound"
 //  RESOURCENOTFOUND_VERSIONNAMESPACENOTFOUND = "ResourceNotFound.VersionNamespaceNotFound"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
 func (c *Client) DescribeApplicationAutoscalerListWithContext(ctx context.Context, request *DescribeApplicationAutoscalerListRequest) (response *DescribeApplicationAutoscalerListResponse, err error) {
     if request == nil {
         request = NewDescribeApplicationAutoscalerListRequest()
@@ -1005,6 +1035,7 @@ func NewDescribeApplicationInfoResponse() (response *DescribeApplicationInfoResp
 //  RESOURCENOTFOUND_SERVICERUNNINGVERSIONNOTFOUND = "ResourceNotFound.ServiceRunningVersionNotFound"
 //  RESOURCENOTFOUND_VERSIONNAMESPACENOTFOUND = "ResourceNotFound.VersionNamespaceNotFound"
 //  RESOURCENOTFOUND_VERSIONSERVICENOTFOUND = "ResourceNotFound.VersionServiceNotFound"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
 func (c *Client) DescribeApplicationInfo(request *DescribeApplicationInfoRequest) (response *DescribeApplicationInfoResponse, err error) {
     return c.DescribeApplicationInfoWithContext(context.Background(), request)
 }
@@ -1025,6 +1056,7 @@ func (c *Client) DescribeApplicationInfo(request *DescribeApplicationInfoRequest
 //  RESOURCENOTFOUND_SERVICERUNNINGVERSIONNOTFOUND = "ResourceNotFound.ServiceRunningVersionNotFound"
 //  RESOURCENOTFOUND_VERSIONNAMESPACENOTFOUND = "ResourceNotFound.VersionNamespaceNotFound"
 //  RESOURCENOTFOUND_VERSIONSERVICENOTFOUND = "ResourceNotFound.VersionServiceNotFound"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
 func (c *Client) DescribeApplicationInfoWithContext(ctx context.Context, request *DescribeApplicationInfoRequest) (response *DescribeApplicationInfoResponse, err error) {
     if request == nil {
         request = NewDescribeApplicationInfoRequest()
@@ -1070,6 +1102,7 @@ func NewDescribeApplicationPodsResponse() (response *DescribeApplicationPodsResp
 //  RESOURCENOTFOUND_SERVICENOTFOUND = "ResourceNotFound.ServiceNotFound"
 //  RESOURCENOTFOUND_SERVICERUNNINGVERSIONNOTFOUND = "ResourceNotFound.ServiceRunningVersionNotFound"
 //  RESOURCENOTFOUND_VERSIONNAMESPACENOTFOUND = "ResourceNotFound.VersionNamespaceNotFound"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
 func (c *Client) DescribeApplicationPods(request *DescribeApplicationPodsRequest) (response *DescribeApplicationPodsResponse, err error) {
     return c.DescribeApplicationPodsWithContext(context.Background(), request)
 }
@@ -1085,6 +1118,7 @@ func (c *Client) DescribeApplicationPods(request *DescribeApplicationPodsRequest
 //  RESOURCENOTFOUND_SERVICENOTFOUND = "ResourceNotFound.ServiceNotFound"
 //  RESOURCENOTFOUND_SERVICERUNNINGVERSIONNOTFOUND = "ResourceNotFound.ServiceRunningVersionNotFound"
 //  RESOURCENOTFOUND_VERSIONNAMESPACENOTFOUND = "ResourceNotFound.VersionNamespaceNotFound"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
 func (c *Client) DescribeApplicationPodsWithContext(ctx context.Context, request *DescribeApplicationPodsRequest) (response *DescribeApplicationPodsResponse, err error) {
     if request == nil {
         request = NewDescribeApplicationPodsRequest()
@@ -1127,6 +1161,7 @@ func NewDescribeApplicationServiceListResponse() (response *DescribeApplicationS
 //  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
 //  RESOURCENOTFOUND_SERVICENOTFOUND = "ResourceNotFound.ServiceNotFound"
 //  RESOURCENOTFOUND_VERSIONNAMESPACENOTFOUND = "ResourceNotFound.VersionNamespaceNotFound"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION_UNSUPPORTACTION = "UnsupportedOperation.UnsupportAction"
 func (c *Client) DescribeApplicationServiceList(request *DescribeApplicationServiceListRequest) (response *DescribeApplicationServiceListResponse, err error) {
     return c.DescribeApplicationServiceListWithContext(context.Background(), request)
@@ -1140,6 +1175,7 @@ func (c *Client) DescribeApplicationServiceList(request *DescribeApplicationServ
 //  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
 //  RESOURCENOTFOUND_SERVICENOTFOUND = "ResourceNotFound.ServiceNotFound"
 //  RESOURCENOTFOUND_VERSIONNAMESPACENOTFOUND = "ResourceNotFound.VersionNamespaceNotFound"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION_UNSUPPORTACTION = "UnsupportedOperation.UnsupportAction"
 func (c *Client) DescribeApplicationServiceListWithContext(ctx context.Context, request *DescribeApplicationServiceListRequest) (response *DescribeApplicationServiceListResponse, err error) {
     if request == nil {
@@ -1233,6 +1269,7 @@ func NewDescribeApplicationsStatusResponse() (response *DescribeApplicationsStat
 // 可能返回的错误码:
 //  INTERNALERROR_DEFAULTINTERNALERROR = "InternalError.DefaultInternalError"
 //  RESOURCENOTFOUND_VERSIONNAMESPACENOTFOUND = "ResourceNotFound.VersionNamespaceNotFound"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
 func (c *Client) DescribeApplicationsStatus(request *DescribeApplicationsStatusRequest) (response *DescribeApplicationsStatusResponse, err error) {
     return c.DescribeApplicationsStatusWithContext(context.Background(), request)
 }
@@ -1243,6 +1280,7 @@ func (c *Client) DescribeApplicationsStatus(request *DescribeApplicationsStatusR
 // 可能返回的错误码:
 //  INTERNALERROR_DEFAULTINTERNALERROR = "InternalError.DefaultInternalError"
 //  RESOURCENOTFOUND_VERSIONNAMESPACENOTFOUND = "ResourceNotFound.VersionNamespaceNotFound"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
 func (c *Client) DescribeApplicationsStatusWithContext(ctx context.Context, request *DescribeApplicationsStatusRequest) (response *DescribeApplicationsStatusResponse, err error) {
     if request == nil {
         request = NewDescribeApplicationsStatusRequest()
@@ -1283,6 +1321,7 @@ func NewDescribeConfigDataResponse() (response *DescribeConfigDataResponse) {
 // 可能返回的错误码:
 //  INTERNALERROR_DESCRIBECONFIGDATAERROR = "InternalError.DescribeConfigDataError"
 //  INVALIDPARAMETERVALUE_TEMIDINVALID = "InvalidParameterValue.TemIdInvalid"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
 func (c *Client) DescribeConfigData(request *DescribeConfigDataRequest) (response *DescribeConfigDataResponse, err error) {
     return c.DescribeConfigDataWithContext(context.Background(), request)
 }
@@ -1293,6 +1332,7 @@ func (c *Client) DescribeConfigData(request *DescribeConfigDataRequest) (respons
 // 可能返回的错误码:
 //  INTERNALERROR_DESCRIBECONFIGDATAERROR = "InternalError.DescribeConfigDataError"
 //  INVALIDPARAMETERVALUE_TEMIDINVALID = "InvalidParameterValue.TemIdInvalid"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
 func (c *Client) DescribeConfigDataWithContext(ctx context.Context, request *DescribeConfigDataRequest) (response *DescribeConfigDataResponse, err error) {
     if request == nil {
         request = NewDescribeConfigDataRequest()
@@ -1336,6 +1376,7 @@ func NewDescribeConfigDataListResponse() (response *DescribeConfigDataListRespon
 //  INVALIDPARAMETERVALUE_NAMESPACENOTBELONGTOAPPID = "InvalidParameterValue.NamespaceNotBelongToAppid"
 //  INVALIDPARAMETERVALUE_TEMIDINVALID = "InvalidParameterValue.TemIdInvalid"
 //  RESOURCENOTFOUND_VERSIONNAMESPACENOTFOUND = "ResourceNotFound.VersionNamespaceNotFound"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
 func (c *Client) DescribeConfigDataList(request *DescribeConfigDataListRequest) (response *DescribeConfigDataListResponse, err error) {
     return c.DescribeConfigDataListWithContext(context.Background(), request)
 }
@@ -1349,6 +1390,7 @@ func (c *Client) DescribeConfigDataList(request *DescribeConfigDataListRequest) 
 //  INVALIDPARAMETERVALUE_NAMESPACENOTBELONGTOAPPID = "InvalidParameterValue.NamespaceNotBelongToAppid"
 //  INVALIDPARAMETERVALUE_TEMIDINVALID = "InvalidParameterValue.TemIdInvalid"
 //  RESOURCENOTFOUND_VERSIONNAMESPACENOTFOUND = "ResourceNotFound.VersionNamespaceNotFound"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
 func (c *Client) DescribeConfigDataListWithContext(ctx context.Context, request *DescribeConfigDataListRequest) (response *DescribeConfigDataListResponse, err error) {
     if request == nil {
         request = NewDescribeConfigDataListRequest()
@@ -1395,6 +1437,7 @@ func NewDescribeDeployApplicationDetailResponse() (response *DescribeDeployAppli
 //  RESOURCENOTFOUND_SERVICENOTFOUND = "ResourceNotFound.ServiceNotFound"
 //  RESOURCENOTFOUND_VERSIONNAMESPACENOTFOUND = "ResourceNotFound.VersionNamespaceNotFound"
 //  RESOURCENOTFOUND_VERSIONSERVICENOTFOUND = "ResourceNotFound.VersionServiceNotFound"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
 func (c *Client) DescribeDeployApplicationDetail(request *DescribeDeployApplicationDetailRequest) (response *DescribeDeployApplicationDetailResponse, err error) {
     return c.DescribeDeployApplicationDetailWithContext(context.Background(), request)
 }
@@ -1411,6 +1454,7 @@ func (c *Client) DescribeDeployApplicationDetail(request *DescribeDeployApplicat
 //  RESOURCENOTFOUND_SERVICENOTFOUND = "ResourceNotFound.ServiceNotFound"
 //  RESOURCENOTFOUND_VERSIONNAMESPACENOTFOUND = "ResourceNotFound.VersionNamespaceNotFound"
 //  RESOURCENOTFOUND_VERSIONSERVICENOTFOUND = "ResourceNotFound.VersionServiceNotFound"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
 func (c *Client) DescribeDeployApplicationDetailWithContext(ctx context.Context, request *DescribeDeployApplicationDetailRequest) (response *DescribeDeployApplicationDetailResponse, err error) {
     if request == nil {
         request = NewDescribeDeployApplicationDetailRequest()
@@ -1454,6 +1498,7 @@ func NewDescribeEnvironmentResponse() (response *DescribeEnvironmentResponse) {
 //  INVALIDPARAMETERVALUE_TEMIDINVALID = "InvalidParameterValue.TemIdInvalid"
 //  MISSINGPARAMETER_NAMESPACEIDNULL = "MissingParameter.NamespaceIdNull"
 //  RESOURCENOTFOUND_VERSIONNAMESPACENOTFOUND = "ResourceNotFound.VersionNamespaceNotFound"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
 func (c *Client) DescribeEnvironment(request *DescribeEnvironmentRequest) (response *DescribeEnvironmentResponse, err error) {
     return c.DescribeEnvironmentWithContext(context.Background(), request)
 }
@@ -1467,6 +1512,7 @@ func (c *Client) DescribeEnvironment(request *DescribeEnvironmentRequest) (respo
 //  INVALIDPARAMETERVALUE_TEMIDINVALID = "InvalidParameterValue.TemIdInvalid"
 //  MISSINGPARAMETER_NAMESPACEIDNULL = "MissingParameter.NamespaceIdNull"
 //  RESOURCENOTFOUND_VERSIONNAMESPACENOTFOUND = "ResourceNotFound.VersionNamespaceNotFound"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
 func (c *Client) DescribeEnvironmentWithContext(ctx context.Context, request *DescribeEnvironmentRequest) (response *DescribeEnvironmentResponse, err error) {
     if request == nil {
         request = NewDescribeEnvironmentRequest()
@@ -1509,6 +1555,7 @@ func NewDescribeEnvironmentStatusResponse() (response *DescribeEnvironmentStatus
 //  INTERNALERROR_DEFAULTINTERNALERROR = "InternalError.DefaultInternalError"
 //  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
 //  RESOURCENOTFOUND_NAMESPACENOTFOUND = "ResourceNotFound.NamespaceNotFound"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
 func (c *Client) DescribeEnvironmentStatus(request *DescribeEnvironmentStatusRequest) (response *DescribeEnvironmentStatusResponse, err error) {
     return c.DescribeEnvironmentStatusWithContext(context.Background(), request)
 }
@@ -1521,6 +1568,7 @@ func (c *Client) DescribeEnvironmentStatus(request *DescribeEnvironmentStatusReq
 //  INTERNALERROR_DEFAULTINTERNALERROR = "InternalError.DefaultInternalError"
 //  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
 //  RESOURCENOTFOUND_NAMESPACENOTFOUND = "ResourceNotFound.NamespaceNotFound"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
 func (c *Client) DescribeEnvironmentStatusWithContext(ctx context.Context, request *DescribeEnvironmentStatusRequest) (response *DescribeEnvironmentStatusResponse, err error) {
     if request == nil {
         request = NewDescribeEnvironmentStatusRequest()
@@ -1561,6 +1609,7 @@ func NewDescribeEnvironmentsResponse() (response *DescribeEnvironmentsResponse) 
 // 可能返回的错误码:
 //  INTERNALERROR_ACTIONREADTIMEOUT = "InternalError.ActionReadTimeout"
 //  INTERNALERROR_DEFAULTINTERNALERROR = "InternalError.DefaultInternalError"
+//  INVALIDPARAMETERVALUE_INVALIDTENANTINFO = "InvalidParameterValue.InvalidTenantInfo"
 //  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
 //  RESOURCENOTFOUND_NAMESPACENOTFOUND = "ResourceNotFound.NamespaceNotFound"
 func (c *Client) DescribeEnvironments(request *DescribeEnvironmentsRequest) (response *DescribeEnvironmentsResponse, err error) {
@@ -1573,6 +1622,7 @@ func (c *Client) DescribeEnvironments(request *DescribeEnvironmentsRequest) (res
 // 可能返回的错误码:
 //  INTERNALERROR_ACTIONREADTIMEOUT = "InternalError.ActionReadTimeout"
 //  INTERNALERROR_DEFAULTINTERNALERROR = "InternalError.DefaultInternalError"
+//  INVALIDPARAMETERVALUE_INVALIDTENANTINFO = "InvalidParameterValue.InvalidTenantInfo"
 //  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
 //  RESOURCENOTFOUND_NAMESPACENOTFOUND = "ResourceNotFound.NamespaceNotFound"
 func (c *Client) DescribeEnvironmentsWithContext(ctx context.Context, request *DescribeEnvironmentsRequest) (response *DescribeEnvironmentsResponse, err error) {
@@ -1616,6 +1666,7 @@ func NewDescribeIngressResponse() (response *DescribeIngressResponse) {
 //  INTERNALERROR_DESCRIBEINGRESSERROR = "InternalError.DescribeIngressError"
 //  INVALIDPARAMETERVALUE_TEMIDINVALID = "InvalidParameterValue.TemIdInvalid"
 //  RESOURCENOTFOUND_VERSIONNAMESPACENOTFOUND = "ResourceNotFound.VersionNamespaceNotFound"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
 func (c *Client) DescribeIngress(request *DescribeIngressRequest) (response *DescribeIngressResponse, err error) {
     return c.DescribeIngressWithContext(context.Background(), request)
 }
@@ -1627,6 +1678,7 @@ func (c *Client) DescribeIngress(request *DescribeIngressRequest) (response *Des
 //  INTERNALERROR_DESCRIBEINGRESSERROR = "InternalError.DescribeIngressError"
 //  INVALIDPARAMETERVALUE_TEMIDINVALID = "InvalidParameterValue.TemIdInvalid"
 //  RESOURCENOTFOUND_VERSIONNAMESPACENOTFOUND = "ResourceNotFound.VersionNamespaceNotFound"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
 func (c *Client) DescribeIngressWithContext(ctx context.Context, request *DescribeIngressRequest) (response *DescribeIngressResponse, err error) {
     if request == nil {
         request = NewDescribeIngressRequest()
@@ -1725,6 +1777,7 @@ func NewDescribeLogConfigResponse() (response *DescribeLogConfigResponse) {
 //  INTERNALERROR_DESCRIBELOGCONFIGERROR = "InternalError.DescribeLogConfigError"
 //  INVALIDPARAMETERVALUE_TEMIDINVALID = "InvalidParameterValue.TemIdInvalid"
 //  RESOURCENOTFOUND_SERVICENOTFOUND = "ResourceNotFound.ServiceNotFound"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
 func (c *Client) DescribeLogConfig(request *DescribeLogConfigRequest) (response *DescribeLogConfigResponse, err error) {
     return c.DescribeLogConfigWithContext(context.Background(), request)
 }
@@ -1737,6 +1790,7 @@ func (c *Client) DescribeLogConfig(request *DescribeLogConfigRequest) (response 
 //  INTERNALERROR_DESCRIBELOGCONFIGERROR = "InternalError.DescribeLogConfigError"
 //  INVALIDPARAMETERVALUE_TEMIDINVALID = "InvalidParameterValue.TemIdInvalid"
 //  RESOURCENOTFOUND_SERVICENOTFOUND = "ResourceNotFound.ServiceNotFound"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
 func (c *Client) DescribeLogConfigWithContext(ctx context.Context, request *DescribeLogConfigRequest) (response *DescribeLogConfigResponse, err error) {
     if request == nil {
         request = NewDescribeLogConfigRequest()
@@ -1781,6 +1835,7 @@ func NewDescribePagedLogConfigListResponse() (response *DescribePagedLogConfigLi
 //  INVALIDPARAMETERVALUE_NAMESPACENOTBELONGTOAPPID = "InvalidParameterValue.NamespaceNotBelongToAppid"
 //  INVALIDPARAMETERVALUE_TEMIDINVALID = "InvalidParameterValue.TemIdInvalid"
 //  RESOURCENOTFOUND_VERSIONNAMESPACENOTFOUND = "ResourceNotFound.VersionNamespaceNotFound"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
 func (c *Client) DescribePagedLogConfigList(request *DescribePagedLogConfigListRequest) (response *DescribePagedLogConfigListResponse, err error) {
     return c.DescribePagedLogConfigListWithContext(context.Background(), request)
 }
@@ -1795,6 +1850,7 @@ func (c *Client) DescribePagedLogConfigList(request *DescribePagedLogConfigListR
 //  INVALIDPARAMETERVALUE_NAMESPACENOTBELONGTOAPPID = "InvalidParameterValue.NamespaceNotBelongToAppid"
 //  INVALIDPARAMETERVALUE_TEMIDINVALID = "InvalidParameterValue.TemIdInvalid"
 //  RESOURCENOTFOUND_VERSIONNAMESPACENOTFOUND = "ResourceNotFound.VersionNamespaceNotFound"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
 func (c *Client) DescribePagedLogConfigListWithContext(ctx context.Context, request *DescribePagedLogConfigListRequest) (response *DescribePagedLogConfigListResponse, err error) {
     if request == nil {
         request = NewDescribePagedLogConfigListRequest()
@@ -1893,6 +1949,7 @@ func NewDestroyConfigDataResponse() (response *DestroyConfigDataResponse) {
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_TEMIDINVALID = "InvalidParameterValue.TemIdInvalid"
 //  RESOURCENOTFOUND_VERSIONNAMESPACENOTFOUND = "ResourceNotFound.VersionNamespaceNotFound"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
 func (c *Client) DestroyConfigData(request *DestroyConfigDataRequest) (response *DestroyConfigDataResponse, err error) {
     return c.DestroyConfigDataWithContext(context.Background(), request)
 }
@@ -1903,6 +1960,7 @@ func (c *Client) DestroyConfigData(request *DestroyConfigDataRequest) (response 
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_TEMIDINVALID = "InvalidParameterValue.TemIdInvalid"
 //  RESOURCENOTFOUND_VERSIONNAMESPACENOTFOUND = "ResourceNotFound.VersionNamespaceNotFound"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
 func (c *Client) DestroyConfigDataWithContext(ctx context.Context, request *DestroyConfigDataRequest) (response *DestroyConfigDataResponse, err error) {
     if request == nil {
         request = NewDestroyConfigDataRequest()
@@ -1999,6 +2057,7 @@ func NewDestroyLogConfigResponse() (response *DestroyLogConfigResponse) {
 //  INVALIDPARAMETERVALUE_TEMIDINVALID = "InvalidParameterValue.TemIdInvalid"
 //  RESOURCENOTFOUND_SERVICENOTFOUND = "ResourceNotFound.ServiceNotFound"
 //  RESOURCENOTFOUND_VERSIONNAMESPACENOTFOUND = "ResourceNotFound.VersionNamespaceNotFound"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
 func (c *Client) DestroyLogConfig(request *DestroyLogConfigRequest) (response *DestroyLogConfigResponse, err error) {
     return c.DestroyLogConfigWithContext(context.Background(), request)
 }
@@ -2011,6 +2070,7 @@ func (c *Client) DestroyLogConfig(request *DestroyLogConfigRequest) (response *D
 //  INVALIDPARAMETERVALUE_TEMIDINVALID = "InvalidParameterValue.TemIdInvalid"
 //  RESOURCENOTFOUND_SERVICENOTFOUND = "ResourceNotFound.ServiceNotFound"
 //  RESOURCENOTFOUND_VERSIONNAMESPACENOTFOUND = "ResourceNotFound.VersionNamespaceNotFound"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
 func (c *Client) DestroyLogConfigWithContext(ctx context.Context, request *DestroyLogConfigRequest) (response *DestroyLogConfigResponse, err error) {
     if request == nil {
         request = NewDestroyLogConfigRequest()
@@ -2050,6 +2110,7 @@ func NewDisableApplicationAutoscalerResponse() (response *DisableApplicationAuto
 //
 // 可能返回的错误码:
 //  RESOURCEUNAVAILABLE_APPLICATIONSTOPPED = "ResourceUnavailable.ApplicationStopped"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
 func (c *Client) DisableApplicationAutoscaler(request *DisableApplicationAutoscalerRequest) (response *DisableApplicationAutoscalerResponse, err error) {
     return c.DisableApplicationAutoscalerWithContext(context.Background(), request)
 }
@@ -2059,6 +2120,7 @@ func (c *Client) DisableApplicationAutoscaler(request *DisableApplicationAutosca
 //
 // 可能返回的错误码:
 //  RESOURCEUNAVAILABLE_APPLICATIONSTOPPED = "ResourceUnavailable.ApplicationStopped"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
 func (c *Client) DisableApplicationAutoscalerWithContext(ctx context.Context, request *DisableApplicationAutoscalerRequest) (response *DisableApplicationAutoscalerResponse, err error) {
     if request == nil {
         request = NewDisableApplicationAutoscalerRequest()
@@ -2097,7 +2159,9 @@ func NewEnableApplicationAutoscalerResponse() (response *EnableApplicationAutosc
 // 启用应用弹性策略组合
 //
 // 可能返回的错误码:
+//  INTERNALERROR_DEFAULTINTERNALERROR = "InternalError.DefaultInternalError"
 //  RESOURCEUNAVAILABLE_APPLICATIONSTOPPED = "ResourceUnavailable.ApplicationStopped"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
 func (c *Client) EnableApplicationAutoscaler(request *EnableApplicationAutoscalerRequest) (response *EnableApplicationAutoscalerResponse, err error) {
     return c.EnableApplicationAutoscalerWithContext(context.Background(), request)
 }
@@ -2106,7 +2170,9 @@ func (c *Client) EnableApplicationAutoscaler(request *EnableApplicationAutoscale
 // 启用应用弹性策略组合
 //
 // 可能返回的错误码:
+//  INTERNALERROR_DEFAULTINTERNALERROR = "InternalError.DefaultInternalError"
 //  RESOURCEUNAVAILABLE_APPLICATIONSTOPPED = "ResourceUnavailable.ApplicationStopped"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
 func (c *Client) EnableApplicationAutoscalerWithContext(ctx context.Context, request *EnableApplicationAutoscalerRequest) (response *EnableApplicationAutoscalerResponse, err error) {
     if request == nil {
         request = NewEnableApplicationAutoscalerRequest()
@@ -2145,7 +2211,7 @@ func NewGenerateApplicationPackageDownloadUrlResponse() (response *GenerateAppli
 // 生成应用程序包预签名下载链接
 //
 // 可能返回的错误码:
-//  RESOURCEUNAVAILABLE_APPLICATIONSTOPPED = "ResourceUnavailable.ApplicationStopped"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
 func (c *Client) GenerateApplicationPackageDownloadUrl(request *GenerateApplicationPackageDownloadUrlRequest) (response *GenerateApplicationPackageDownloadUrlResponse, err error) {
     return c.GenerateApplicationPackageDownloadUrlWithContext(context.Background(), request)
 }
@@ -2154,7 +2220,7 @@ func (c *Client) GenerateApplicationPackageDownloadUrl(request *GenerateApplicat
 // 生成应用程序包预签名下载链接
 //
 // 可能返回的错误码:
-//  RESOURCEUNAVAILABLE_APPLICATIONSTOPPED = "ResourceUnavailable.ApplicationStopped"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
 func (c *Client) GenerateApplicationPackageDownloadUrlWithContext(ctx context.Context, request *GenerateApplicationPackageDownloadUrlRequest) (response *GenerateApplicationPackageDownloadUrlResponse, err error) {
     if request == nil {
         request = NewGenerateApplicationPackageDownloadUrlRequest()
@@ -2195,10 +2261,12 @@ func NewModifyApplicationAutoscalerResponse() (response *ModifyApplicationAutosc
 // 可能返回的错误码:
 //  INTERNALERROR_DEFAULTINTERNALERROR = "InternalError.DefaultInternalError"
 //  INVALIDPARAMETERVALUE_ATLEASTONESCALERRULESHOULDBEAPPLIED = "InvalidParameterValue.AtLeastOneScalerRuleShouldBeApplied"
+//  INVALIDPARAMETERVALUE_AUTOSCALERLARGERTHANONE = "InvalidParameterValue.AutoScalerLargerThanOne"
 //  INVALIDPARAMETERVALUE_CRONHPAREPLICASINVALID = "InvalidParameterValue.CronHpaReplicasInvalid"
 //  INVALIDPARAMETERVALUE_HPAMINMAXINVALID = "InvalidParameterValue.HpaMinMaxInvalid"
 //  MISSINGPARAMETER_SCALERIDNULL = "MissingParameter.ScalerIdNull"
 //  RESOURCEUNAVAILABLE_APPLICATIONSTOPPED = "ResourceUnavailable.ApplicationStopped"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
 func (c *Client) ModifyApplicationAutoscaler(request *ModifyApplicationAutoscalerRequest) (response *ModifyApplicationAutoscalerResponse, err error) {
     return c.ModifyApplicationAutoscalerWithContext(context.Background(), request)
 }
@@ -2209,10 +2277,12 @@ func (c *Client) ModifyApplicationAutoscaler(request *ModifyApplicationAutoscale
 // 可能返回的错误码:
 //  INTERNALERROR_DEFAULTINTERNALERROR = "InternalError.DefaultInternalError"
 //  INVALIDPARAMETERVALUE_ATLEASTONESCALERRULESHOULDBEAPPLIED = "InvalidParameterValue.AtLeastOneScalerRuleShouldBeApplied"
+//  INVALIDPARAMETERVALUE_AUTOSCALERLARGERTHANONE = "InvalidParameterValue.AutoScalerLargerThanOne"
 //  INVALIDPARAMETERVALUE_CRONHPAREPLICASINVALID = "InvalidParameterValue.CronHpaReplicasInvalid"
 //  INVALIDPARAMETERVALUE_HPAMINMAXINVALID = "InvalidParameterValue.HpaMinMaxInvalid"
 //  MISSINGPARAMETER_SCALERIDNULL = "MissingParameter.ScalerIdNull"
 //  RESOURCEUNAVAILABLE_APPLICATIONSTOPPED = "ResourceUnavailable.ApplicationStopped"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
 func (c *Client) ModifyApplicationAutoscalerWithContext(ctx context.Context, request *ModifyApplicationAutoscalerRequest) (response *ModifyApplicationAutoscalerResponse, err error) {
     if request == nil {
         request = NewModifyApplicationAutoscalerRequest()
@@ -2255,6 +2325,7 @@ func NewModifyApplicationInfoResponse() (response *ModifyApplicationInfoResponse
 //  INTERNALERROR_CREATESERVICEERROR = "InternalError.CreateServiceError"
 //  INVALIDPARAMETERVALUE_TEMIDINVALID = "InvalidParameterValue.TemIdInvalid"
 //  RESOURCENOTFOUND_SERVICENOTFOUND = "ResourceNotFound.ServiceNotFound"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
 func (c *Client) ModifyApplicationInfo(request *ModifyApplicationInfoRequest) (response *ModifyApplicationInfoResponse, err error) {
     return c.ModifyApplicationInfoWithContext(context.Background(), request)
 }
@@ -2267,6 +2338,7 @@ func (c *Client) ModifyApplicationInfo(request *ModifyApplicationInfoRequest) (r
 //  INTERNALERROR_CREATESERVICEERROR = "InternalError.CreateServiceError"
 //  INVALIDPARAMETERVALUE_TEMIDINVALID = "InvalidParameterValue.TemIdInvalid"
 //  RESOURCENOTFOUND_SERVICENOTFOUND = "ResourceNotFound.ServiceNotFound"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
 func (c *Client) ModifyApplicationInfoWithContext(ctx context.Context, request *ModifyApplicationInfoRequest) (response *ModifyApplicationInfoResponse, err error) {
     if request == nil {
         request = NewModifyApplicationInfoRequest()
@@ -2307,6 +2379,7 @@ func NewModifyApplicationReplicasResponse() (response *ModifyApplicationReplicas
 // 可能返回的错误码:
 //  OPERATIONDENIED_RESOURCEISOLATED = "OperationDenied.ResourceIsolated"
 //  RESOURCENOTFOUND_SERVICERUNNINGVERSIONNOTFOUND = "ResourceNotFound.ServiceRunningVersionNotFound"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
 func (c *Client) ModifyApplicationReplicas(request *ModifyApplicationReplicasRequest) (response *ModifyApplicationReplicasResponse, err error) {
     return c.ModifyApplicationReplicasWithContext(context.Background(), request)
 }
@@ -2317,6 +2390,7 @@ func (c *Client) ModifyApplicationReplicas(request *ModifyApplicationReplicasReq
 // 可能返回的错误码:
 //  OPERATIONDENIED_RESOURCEISOLATED = "OperationDenied.ResourceIsolated"
 //  RESOURCENOTFOUND_SERVICERUNNINGVERSIONNOTFOUND = "ResourceNotFound.ServiceRunningVersionNotFound"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
 func (c *Client) ModifyApplicationReplicasWithContext(ctx context.Context, request *ModifyApplicationReplicasRequest) (response *ModifyApplicationReplicasResponse, err error) {
     if request == nil {
         request = NewModifyApplicationReplicasRequest()
@@ -2427,6 +2501,7 @@ func NewModifyConfigDataResponse() (response *ModifyConfigDataResponse) {
 // 可能返回的错误码:
 //  INTERNALERROR_MODIFYCONFIGDATAERROR = "InternalError.ModifyConfigDataError"
 //  INVALIDPARAMETERVALUE_CONFIGDATAINVALID = "InvalidParameterValue.ConfigDataInvalid"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
 func (c *Client) ModifyConfigData(request *ModifyConfigDataRequest) (response *ModifyConfigDataResponse, err error) {
     return c.ModifyConfigDataWithContext(context.Background(), request)
 }
@@ -2437,6 +2512,7 @@ func (c *Client) ModifyConfigData(request *ModifyConfigDataRequest) (response *M
 // 可能返回的错误码:
 //  INTERNALERROR_MODIFYCONFIGDATAERROR = "InternalError.ModifyConfigDataError"
 //  INVALIDPARAMETERVALUE_CONFIGDATAINVALID = "InvalidParameterValue.ConfigDataInvalid"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
 func (c *Client) ModifyConfigDataWithContext(ctx context.Context, request *ModifyConfigDataRequest) (response *ModifyConfigDataResponse, err error) {
     if request == nil {
         request = NewModifyConfigDataRequest()
@@ -2480,6 +2556,7 @@ func NewModifyEnvironmentResponse() (response *ModifyEnvironmentResponse) {
 //  INVALIDPARAMETERVALUE_ENVIRONMENTNAMEIMMUTABLE = "InvalidParameterValue.EnvironmentNameImmutable"
 //  INVALIDPARAMETERVALUE_TEMIDINVALID = "InvalidParameterValue.TemIdInvalid"
 //  OPERATIONDENIED_RESOURCEISOLATED = "OperationDenied.ResourceIsolated"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
 func (c *Client) ModifyEnvironment(request *ModifyEnvironmentRequest) (response *ModifyEnvironmentResponse, err error) {
     return c.ModifyEnvironmentWithContext(context.Background(), request)
 }
@@ -2493,6 +2570,7 @@ func (c *Client) ModifyEnvironment(request *ModifyEnvironmentRequest) (response 
 //  INVALIDPARAMETERVALUE_ENVIRONMENTNAMEIMMUTABLE = "InvalidParameterValue.EnvironmentNameImmutable"
 //  INVALIDPARAMETERVALUE_TEMIDINVALID = "InvalidParameterValue.TemIdInvalid"
 //  OPERATIONDENIED_RESOURCEISOLATED = "OperationDenied.ResourceIsolated"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
 func (c *Client) ModifyEnvironmentWithContext(ctx context.Context, request *ModifyEnvironmentRequest) (response *ModifyEnvironmentResponse, err error) {
     if request == nil {
         request = NewModifyEnvironmentRequest()
@@ -2534,6 +2612,7 @@ func NewModifyIngressResponse() (response *ModifyIngressResponse) {
 //  INTERNALERROR_UPDATEINGRESSERROR = "InternalError.UpdateIngressError"
 //  INVALIDPARAMETERVALUE_INGRESSREWRITEREQUIREDHTTPSENABLE = "InvalidParameterValue.IngressRewriteRequiredHttpsEnable"
 //  INVALIDPARAMETERVALUE_NAMESPACENOTBELONGTOAPPID = "InvalidParameterValue.NamespaceNotBelongToAppid"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
 func (c *Client) ModifyIngress(request *ModifyIngressRequest) (response *ModifyIngressResponse, err error) {
     return c.ModifyIngressWithContext(context.Background(), request)
 }
@@ -2545,6 +2624,7 @@ func (c *Client) ModifyIngress(request *ModifyIngressRequest) (response *ModifyI
 //  INTERNALERROR_UPDATEINGRESSERROR = "InternalError.UpdateIngressError"
 //  INVALIDPARAMETERVALUE_INGRESSREWRITEREQUIREDHTTPSENABLE = "InvalidParameterValue.IngressRewriteRequiredHttpsEnable"
 //  INVALIDPARAMETERVALUE_NAMESPACENOTBELONGTOAPPID = "InvalidParameterValue.NamespaceNotBelongToAppid"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
 func (c *Client) ModifyIngressWithContext(ctx context.Context, request *ModifyIngressRequest) (response *ModifyIngressResponse, err error) {
     if request == nil {
         request = NewModifyIngressRequest()
@@ -2585,6 +2665,7 @@ func NewModifyLogConfigResponse() (response *ModifyLogConfigResponse) {
 // 可能返回的错误码:
 //  INTERNALERROR_DEFAULTINTERNALERROR = "InternalError.DefaultInternalError"
 //  INTERNALERROR_MODIFYLOGCONFIGERROR = "InternalError.ModifyLogConfigError"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
 func (c *Client) ModifyLogConfig(request *ModifyLogConfigRequest) (response *ModifyLogConfigResponse, err error) {
     return c.ModifyLogConfigWithContext(context.Background(), request)
 }
@@ -2595,6 +2676,7 @@ func (c *Client) ModifyLogConfig(request *ModifyLogConfigRequest) (response *Mod
 // 可能返回的错误码:
 //  INTERNALERROR_DEFAULTINTERNALERROR = "InternalError.DefaultInternalError"
 //  INTERNALERROR_MODIFYLOGCONFIGERROR = "InternalError.ModifyLogConfigError"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
 func (c *Client) ModifyLogConfigWithContext(ctx context.Context, request *ModifyLogConfigRequest) (response *ModifyLogConfigResponse, err error) {
     if request == nil {
         request = NewModifyLogConfigRequest()
@@ -2638,6 +2720,7 @@ func NewRestartApplicationResponse() (response *RestartApplicationResponse) {
 //  OPERATIONDENIED_RESOURCEISOLATED = "OperationDenied.ResourceIsolated"
 //  RESOURCENOTFOUND_SERVICERUNNINGVERSIONNOTFOUND = "ResourceNotFound.ServiceRunningVersionNotFound"
 //  RESOURCENOTFOUND_VERSIONNAMESPACENOTFOUND = "ResourceNotFound.VersionNamespaceNotFound"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
 func (c *Client) RestartApplication(request *RestartApplicationRequest) (response *RestartApplicationResponse, err error) {
     return c.RestartApplicationWithContext(context.Background(), request)
 }
@@ -2651,6 +2734,7 @@ func (c *Client) RestartApplication(request *RestartApplicationRequest) (respons
 //  OPERATIONDENIED_RESOURCEISOLATED = "OperationDenied.ResourceIsolated"
 //  RESOURCENOTFOUND_SERVICERUNNINGVERSIONNOTFOUND = "ResourceNotFound.ServiceRunningVersionNotFound"
 //  RESOURCENOTFOUND_VERSIONNAMESPACENOTFOUND = "ResourceNotFound.VersionNamespaceNotFound"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
 func (c *Client) RestartApplicationWithContext(ctx context.Context, request *RestartApplicationRequest) (response *RestartApplicationResponse, err error) {
     if request == nil {
         request = NewRestartApplicationRequest()
@@ -2690,6 +2774,7 @@ func NewRestartApplicationPodResponse() (response *RestartApplicationPodResponse
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_TEMIDINVALID = "InvalidParameterValue.TemIdInvalid"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
 func (c *Client) RestartApplicationPod(request *RestartApplicationPodRequest) (response *RestartApplicationPodResponse, err error) {
     return c.RestartApplicationPodWithContext(context.Background(), request)
 }
@@ -2699,6 +2784,7 @@ func (c *Client) RestartApplicationPod(request *RestartApplicationPodRequest) (r
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_TEMIDINVALID = "InvalidParameterValue.TemIdInvalid"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
 func (c *Client) RestartApplicationPodWithContext(ctx context.Context, request *RestartApplicationPodRequest) (response *RestartApplicationPodResponse, err error) {
     if request == nil {
         request = NewRestartApplicationPodRequest()
@@ -2739,6 +2825,7 @@ func NewResumeDeployApplicationResponse() (response *ResumeDeployApplicationResp
 // 可能返回的错误码:
 //  MISSINGPARAMETER_NAMESPACEIDNULL = "MissingParameter.NamespaceIdNull"
 //  RESOURCENOTFOUND_VERSIONNAMESPACENOTFOUND = "ResourceNotFound.VersionNamespaceNotFound"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
 func (c *Client) ResumeDeployApplication(request *ResumeDeployApplicationRequest) (response *ResumeDeployApplicationResponse, err error) {
     return c.ResumeDeployApplicationWithContext(context.Background(), request)
 }
@@ -2749,6 +2836,7 @@ func (c *Client) ResumeDeployApplication(request *ResumeDeployApplicationRequest
 // 可能返回的错误码:
 //  MISSINGPARAMETER_NAMESPACEIDNULL = "MissingParameter.NamespaceIdNull"
 //  RESOURCENOTFOUND_VERSIONNAMESPACENOTFOUND = "ResourceNotFound.VersionNamespaceNotFound"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
 func (c *Client) ResumeDeployApplicationWithContext(ctx context.Context, request *ResumeDeployApplicationRequest) (response *ResumeDeployApplicationResponse, err error) {
     if request == nil {
         request = NewResumeDeployApplicationRequest()
@@ -2788,6 +2876,7 @@ func NewRevertDeployApplicationResponse() (response *RevertDeployApplicationResp
 //
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_VERSIONNAMESPACENOTFOUND = "ResourceNotFound.VersionNamespaceNotFound"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
 func (c *Client) RevertDeployApplication(request *RevertDeployApplicationRequest) (response *RevertDeployApplicationResponse, err error) {
     return c.RevertDeployApplicationWithContext(context.Background(), request)
 }
@@ -2797,6 +2886,7 @@ func (c *Client) RevertDeployApplication(request *RevertDeployApplicationRequest
 //
 // 可能返回的错误码:
 //  RESOURCENOTFOUND_VERSIONNAMESPACENOTFOUND = "ResourceNotFound.VersionNamespaceNotFound"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
 func (c *Client) RevertDeployApplicationWithContext(ctx context.Context, request *RevertDeployApplicationRequest) (response *RevertDeployApplicationResponse, err error) {
     if request == nil {
         request = NewRevertDeployApplicationRequest()
@@ -2853,10 +2943,12 @@ func NewRollingUpdateApplicationByVersionResponse() (response *RollingUpdateAppl
 //  MISSINGPARAMETER_DEPLOYMODENULL = "MissingParameter.DeployModeNull"
 //  MISSINGPARAMETER_LOGSETORTOPICNULL = "MissingParameter.LogsetOrTopicNull"
 //  MISSINGPARAMETER_NAMESPACEIDNULL = "MissingParameter.NamespaceIdNull"
+//  RESOURCEINUSE_SERVICEDEPLOYING = "ResourceInUse.ServiceDeploying"
 //  RESOURCENOTFOUND_SERVICENOTFOUND = "ResourceNotFound.ServiceNotFound"
 //  RESOURCENOTFOUND_VERSIONNAMESPACENOTFOUND = "ResourceNotFound.VersionNamespaceNotFound"
 //  RESOURCEUNAVAILABLE_WAITFORKRUISE = "ResourceUnavailable.WaitForKruise"
 //  UNAUTHORIZEDOPERATION_MISSINGEKSLOGROLE = "UnauthorizedOperation.MissingEksLogRole"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
 func (c *Client) RollingUpdateApplicationByVersion(request *RollingUpdateApplicationByVersionRequest) (response *RollingUpdateApplicationByVersionResponse, err error) {
     return c.RollingUpdateApplicationByVersionWithContext(context.Background(), request)
 }
@@ -2883,10 +2975,12 @@ func (c *Client) RollingUpdateApplicationByVersion(request *RollingUpdateApplica
 //  MISSINGPARAMETER_DEPLOYMODENULL = "MissingParameter.DeployModeNull"
 //  MISSINGPARAMETER_LOGSETORTOPICNULL = "MissingParameter.LogsetOrTopicNull"
 //  MISSINGPARAMETER_NAMESPACEIDNULL = "MissingParameter.NamespaceIdNull"
+//  RESOURCEINUSE_SERVICEDEPLOYING = "ResourceInUse.ServiceDeploying"
 //  RESOURCENOTFOUND_SERVICENOTFOUND = "ResourceNotFound.ServiceNotFound"
 //  RESOURCENOTFOUND_VERSIONNAMESPACENOTFOUND = "ResourceNotFound.VersionNamespaceNotFound"
 //  RESOURCEUNAVAILABLE_WAITFORKRUISE = "ResourceUnavailable.WaitForKruise"
 //  UNAUTHORIZEDOPERATION_MISSINGEKSLOGROLE = "UnauthorizedOperation.MissingEksLogRole"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
 func (c *Client) RollingUpdateApplicationByVersionWithContext(ctx context.Context, request *RollingUpdateApplicationByVersionRequest) (response *RollingUpdateApplicationByVersionResponse, err error) {
     if request == nil {
         request = NewRollingUpdateApplicationByVersionRequest()
@@ -2928,6 +3022,7 @@ func NewStopApplicationResponse() (response *StopApplicationResponse) {
 //  INTERNALERROR_STOPAPPLICATIONERROR = "InternalError.StopApplicationError"
 //  MISSINGPARAMETER_NAMESPACEIDNULL = "MissingParameter.NamespaceIdNull"
 //  RESOURCENOTFOUND_SERVICERUNNINGVERSIONNOTFOUND = "ResourceNotFound.ServiceRunningVersionNotFound"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
 func (c *Client) StopApplication(request *StopApplicationRequest) (response *StopApplicationResponse, err error) {
     return c.StopApplicationWithContext(context.Background(), request)
 }
@@ -2939,6 +3034,7 @@ func (c *Client) StopApplication(request *StopApplicationRequest) (response *Sto
 //  INTERNALERROR_STOPAPPLICATIONERROR = "InternalError.StopApplicationError"
 //  MISSINGPARAMETER_NAMESPACEIDNULL = "MissingParameter.NamespaceIdNull"
 //  RESOURCENOTFOUND_SERVICERUNNINGVERSIONNOTFOUND = "ResourceNotFound.ServiceRunningVersionNotFound"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
 func (c *Client) StopApplicationWithContext(ctx context.Context, request *StopApplicationRequest) (response *StopApplicationResponse, err error) {
     if request == nil {
         request = NewStopApplicationRequest()

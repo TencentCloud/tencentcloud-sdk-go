@@ -305,6 +305,7 @@ func NewCreateDomainResponse() (response *CreateDomainResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION_DOMAINEXISTS = "FailedOperation.DomainExists"
 //  FAILEDOPERATION_DOMAINOWNEDBYOTHERUSER = "FailedOperation.DomainOwnedByOtherUser"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnknowError"
 //  INVALIDPARAMETER_ACCOUNTISBANNED = "InvalidParameter.AccountIsBanned"
 //  INVALIDPARAMETER_DOMAININVALID = "InvalidParameter.DomainInvalid"
 //  INVALIDPARAMETER_DOMAINISALIASER = "InvalidParameter.DomainIsAliaser"
@@ -322,6 +323,7 @@ func (c *Client) CreateDomain(request *CreateDomainRequest) (response *CreateDom
 // 可能返回的错误码:
 //  FAILEDOPERATION_DOMAINEXISTS = "FailedOperation.DomainExists"
 //  FAILEDOPERATION_DOMAINOWNEDBYOTHERUSER = "FailedOperation.DomainOwnedByOtherUser"
+//  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnknowError"
 //  INVALIDPARAMETER_ACCOUNTISBANNED = "InvalidParameter.AccountIsBanned"
 //  INVALIDPARAMETER_DOMAININVALID = "InvalidParameter.DomainInvalid"
 //  INVALIDPARAMETER_DOMAINISALIASER = "InvalidParameter.DomainIsAliaser"

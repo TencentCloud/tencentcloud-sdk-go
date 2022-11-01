@@ -801,6 +801,7 @@ func NewCreateInternalEndpointDnsResponse() (response *CreateInternalEndpointDns
 //  INTERNALERROR_MODIFYPRIVATEZONEVPC = "InternalError.ModifyPrivateZoneVpc"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_MODIFYPRIVATEZONEVPC = "UnsupportedOperation.ModifyPrivateZoneVpc"
 func (c *Client) CreateInternalEndpointDns(request *CreateInternalEndpointDnsRequest) (response *CreateInternalEndpointDnsResponse, err error) {
     return c.CreateInternalEndpointDnsWithContext(context.Background(), request)
 }
@@ -821,6 +822,7 @@ func (c *Client) CreateInternalEndpointDns(request *CreateInternalEndpointDnsReq
 //  INTERNALERROR_MODIFYPRIVATEZONEVPC = "InternalError.ModifyPrivateZoneVpc"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_MODIFYPRIVATEZONEVPC = "UnsupportedOperation.ModifyPrivateZoneVpc"
 func (c *Client) CreateInternalEndpointDnsWithContext(ctx context.Context, request *CreateInternalEndpointDnsRequest) (response *CreateInternalEndpointDnsResponse, err error) {
     if request == nil {
         request = NewCreateInternalEndpointDnsRequest()

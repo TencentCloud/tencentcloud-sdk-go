@@ -76,4 +76,7 @@ const (
 
 	// 节点状态不支持此操作。
 	UNSUPPORTEDOPERATION_NODESTATUSNOTSUPPORT = "UnsupportedOperation.NodeStatusNotSupport"
+
+	// vpc冲突，不支持当前操作。
+	UNSUPPORTEDOPERATION_VPCIDCONFLICT = "UnsupportedOperation.VpcIdConflict"
 )

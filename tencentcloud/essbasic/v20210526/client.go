@@ -74,6 +74,7 @@ func NewChannelBatchCancelFlowsResponse() (response *ChannelBatchCancelFlowsResp
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER_DUPTASK = "InvalidParameter.DupTask"
 //  OPERATIONDENIED = "OperationDenied"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ChannelBatchCancelFlows(request *ChannelBatchCancelFlowsRequest) (response *ChannelBatchCancelFlowsResponse, err error) {
@@ -91,6 +92,7 @@ func (c *Client) ChannelBatchCancelFlows(request *ChannelBatchCancelFlowsRequest
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER_DUPTASK = "InvalidParameter.DupTask"
 //  OPERATIONDENIED = "OperationDenied"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ChannelBatchCancelFlowsWithContext(ctx context.Context, request *ChannelBatchCancelFlowsRequest) (response *ChannelBatchCancelFlowsResponse, err error) {
@@ -1527,6 +1529,7 @@ func NewDescribeResourceUrlsByFlowsResponse() (response *DescribeResourceUrlsByF
 //  MISSINGPARAMETER_USEROPENID = "MissingParameter.UserOpenId"
 //  OPERATIONDENIED = "OperationDenied"
 //  OPERATIONDENIED_OUTQUERYLIMIT = "OperationDenied.OutQueryLimit"
+//  OPERATIONDENIED_USERNOTINORGANIZATION = "OperationDenied.UserNotInOrganization"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_APPLICATION = "ResourceNotFound.Application"
 //  RESOURCENOTFOUND_ORGANIZATION = "ResourceNotFound.Organization"
@@ -1557,6 +1560,7 @@ func (c *Client) DescribeResourceUrlsByFlows(request *DescribeResourceUrlsByFlow
 //  MISSINGPARAMETER_USEROPENID = "MissingParameter.UserOpenId"
 //  OPERATIONDENIED = "OperationDenied"
 //  OPERATIONDENIED_OUTQUERYLIMIT = "OperationDenied.OutQueryLimit"
+//  OPERATIONDENIED_USERNOTINORGANIZATION = "OperationDenied.UserNotInOrganization"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_APPLICATION = "ResourceNotFound.Application"
 //  RESOURCENOTFOUND_ORGANIZATION = "ResourceNotFound.Organization"

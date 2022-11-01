@@ -1135,6 +1135,7 @@ func NewDescribeMigrationDetailResponse() (response *DescribeMigrationDetailResp
 //  DRYRUNOPERATION_DRYRUNOPERATIONERROR = "DryRunOperation.DryRunOperationError"
 //  FAILEDOPERATION_FAILEDOPERATIONERROR = "FailedOperation.FailedOperationError"
 //  INTERNALERROR_INTERNALERRORERROR = "InternalError.InternalErrorError"
+//  INVALIDPARAMETER_CONTROLLERNOTFOUNDERROR = "InvalidParameter.ControllerNotFoundError"
 //  INVALIDPARAMETER_INVALIDPARAMETERERROR = "InvalidParameter.InvalidParameterError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
 //  LIMITEXCEEDED_LIMITEXCEEDEDERROR = "LimitExceeded.LimitExceededError"
@@ -1161,6 +1162,7 @@ func (c *Client) DescribeMigrationDetail(request *DescribeMigrationDetailRequest
 //  DRYRUNOPERATION_DRYRUNOPERATIONERROR = "DryRunOperation.DryRunOperationError"
 //  FAILEDOPERATION_FAILEDOPERATIONERROR = "FailedOperation.FailedOperationError"
 //  INTERNALERROR_INTERNALERRORERROR = "InternalError.InternalErrorError"
+//  INVALIDPARAMETER_CONTROLLERNOTFOUNDERROR = "InvalidParameter.ControllerNotFoundError"
 //  INVALIDPARAMETER_INVALIDPARAMETERERROR = "InvalidParameter.InvalidParameterError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
 //  LIMITEXCEEDED_LIMITEXCEEDEDERROR = "LimitExceeded.LimitExceededError"
@@ -1217,6 +1219,7 @@ func NewDescribeMigrationJobsResponse() (response *DescribeMigrationJobsResponse
 //  DRYRUNOPERATION_DRYRUNOPERATIONERROR = "DryRunOperation.DryRunOperationError"
 //  FAILEDOPERATION_FAILEDOPERATIONERROR = "FailedOperation.FailedOperationError"
 //  INTERNALERROR_INTERNALERRORERROR = "InternalError.InternalErrorError"
+//  INVALIDPARAMETER_CONTROLLERNOTFOUNDERROR = "InvalidParameter.ControllerNotFoundError"
 //  INVALIDPARAMETER_INVALIDPARAMETERERROR = "InvalidParameter.InvalidParameterError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
 //  LIMITEXCEEDED_LIMITEXCEEDEDERROR = "LimitExceeded.LimitExceededError"
@@ -1243,6 +1246,7 @@ func (c *Client) DescribeMigrationJobs(request *DescribeMigrationJobsRequest) (r
 //  DRYRUNOPERATION_DRYRUNOPERATIONERROR = "DryRunOperation.DryRunOperationError"
 //  FAILEDOPERATION_FAILEDOPERATIONERROR = "FailedOperation.FailedOperationError"
 //  INTERNALERROR_INTERNALERRORERROR = "InternalError.InternalErrorError"
+//  INVALIDPARAMETER_CONTROLLERNOTFOUNDERROR = "InvalidParameter.ControllerNotFoundError"
 //  INVALIDPARAMETER_INVALIDPARAMETERERROR = "InvalidParameter.InvalidParameterError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
 //  LIMITEXCEEDED_LIMITEXCEEDEDERROR = "LimitExceeded.LimitExceededError"
@@ -1295,6 +1299,7 @@ func NewDescribeSyncJobsResponse() (response *DescribeSyncJobsResponse) {
 // 查询同步任务信息
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_AUTHFAILUREERROR = "AuthFailure.AuthFailureError"
 //  AUTHFAILURE_UNAUTHORIZEDOPERATIONERROR = "AuthFailure.UnauthorizedOperationError"
 //  FAILEDOPERATION_NOTALLOWOPERATION = "FailedOperation.NotAllowOperation"
 //  INTERNALERROR_DATABASEERROR = "InternalError.DatabaseError"
@@ -1308,6 +1313,7 @@ func (c *Client) DescribeSyncJobs(request *DescribeSyncJobsRequest) (response *D
 // 查询同步任务信息
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_AUTHFAILUREERROR = "AuthFailure.AuthFailureError"
 //  AUTHFAILURE_UNAUTHORIZEDOPERATIONERROR = "AuthFailure.UnauthorizedOperationError"
 //  FAILEDOPERATION_NOTALLOWOPERATION = "FailedOperation.NotAllowOperation"
 //  INTERNALERROR_DATABASEERROR = "InternalError.DatabaseError"
@@ -1945,6 +1951,7 @@ func NewModifyMigrationJobResponse() (response *ModifyMigrationJobResponse) {
 // 可能返回的错误码:
 //  AUTHFAILURE_AUTHFAILUREERROR = "AuthFailure.AuthFailureError"
 //  AUTHFAILURE_AUTHORIZEDOPERATIONDENYERROR = "AuthFailure.AuthorizedOperationDenyError"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATIONERROR = "AuthFailure.UnauthorizedOperationError"
 //  DRYRUNOPERATION_DRYRUNOPERATIONERROR = "DryRunOperation.DryRunOperationError"
 //  FAILEDOPERATION_FAILEDOPERATIONERROR = "FailedOperation.FailedOperationError"
 //  INTERNALERROR = "InternalError"
@@ -1975,6 +1982,7 @@ func (c *Client) ModifyMigrationJob(request *ModifyMigrationJobRequest) (respons
 // 可能返回的错误码:
 //  AUTHFAILURE_AUTHFAILUREERROR = "AuthFailure.AuthFailureError"
 //  AUTHFAILURE_AUTHORIZEDOPERATIONDENYERROR = "AuthFailure.AuthorizedOperationDenyError"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATIONERROR = "AuthFailure.UnauthorizedOperationError"
 //  DRYRUNOPERATION_DRYRUNOPERATIONERROR = "DryRunOperation.DryRunOperationError"
 //  FAILEDOPERATION_FAILEDOPERATIONERROR = "FailedOperation.FailedOperationError"
 //  INTERNALERROR = "InternalError"
@@ -2033,28 +2041,7 @@ func NewRecoverMigrateJobResponse() (response *RecoverMigrateJobResponse) {
 // 解除隔离数据迁移任务，用户手动发起隔离后的手动解隔离，只有任务状态为已隔离(手动操作)状态下才能触发此操作。调用此接口后可通过查询迁移服务列表接口`DescribeMigrationJobs`来查询当前任务状态。
 //
 // 可能返回的错误码:
-//  AUTHFAILURE_AUTHFAILUREERROR = "AuthFailure.AuthFailureError"
-//  AUTHFAILURE_AUTHORIZEDOPERATIONDENYERROR = "AuthFailure.AuthorizedOperationDenyError"
-//  DRYRUNOPERATION_DRYRUNOPERATIONERROR = "DryRunOperation.DryRunOperationError"
-//  FAILEDOPERATION_FAILEDOPERATIONERROR = "FailedOperation.FailedOperationError"
-//  INTERNALERROR = "InternalError"
-//  INTERNALERROR_INTERNALERRORERROR = "InternalError.InternalErrorError"
-//  INTERNALERROR_INTERNALHTTPSERVERERROR = "InternalError.InternalHttpServerError"
-//  INVALIDPARAMETER_INVALIDPARAMETERERROR = "InvalidParameter.InvalidParameterError"
-//  INVALIDPARAMETERVALUE_DATACONVERTERROR = "InvalidParameterValue.DataConvertError"
-//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
-//  LIMITEXCEEDED_LIMITEXCEEDEDERROR = "LimitExceeded.LimitExceededError"
-//  MISSINGPARAMETER_MISSINGPARAMETERERROR = "MissingParameter.MissingParameterError"
-//  OPERATIONDENIED_OPERATIONDENIEDERROR = "OperationDenied.OperationDeniedError"
-//  REQUESTLIMITEXCEEDED_REQUESTLIMITEXCEEDEDERROR = "RequestLimitExceeded.RequestLimitExceededError"
-//  RESOURCEINUSE_RESOURCEINUSEERROR = "ResourceInUse.ResourceInUseError"
-//  RESOURCEINSUFFICIENT_RESOURCEINSUFFICIENTERROR = "ResourceInsufficient.ResourceInsufficientError"
 //  RESOURCENOTFOUND_RESOURCENOTFOUNDERROR = "ResourceNotFound.ResourceNotFoundError"
-//  RESOURCEUNAVAILABLE_RESOURCEUNAVAILABLEERROR = "ResourceUnavailable.ResourceUnavailableError"
-//  RESOURCESSOLDOUT_RESOURCESSOLDOUTERROR = "ResourcesSoldOut.ResourcesSoldOutError"
-//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATIONERROR = "UnauthorizedOperation.UnauthorizedOperationError"
-//  UNKNOWNPARAMETER_UNKNOWNPARAMETERERROR = "UnknownParameter.UnknownParameterError"
-//  UNSUPPORTEDOPERATION_UNSUPPORTEDOPERATIONERROR = "UnsupportedOperation.UnsupportedOperationError"
 func (c *Client) RecoverMigrateJob(request *RecoverMigrateJobRequest) (response *RecoverMigrateJobResponse, err error) {
     return c.RecoverMigrateJobWithContext(context.Background(), request)
 }
@@ -2063,28 +2050,7 @@ func (c *Client) RecoverMigrateJob(request *RecoverMigrateJobRequest) (response 
 // 解除隔离数据迁移任务，用户手动发起隔离后的手动解隔离，只有任务状态为已隔离(手动操作)状态下才能触发此操作。调用此接口后可通过查询迁移服务列表接口`DescribeMigrationJobs`来查询当前任务状态。
 //
 // 可能返回的错误码:
-//  AUTHFAILURE_AUTHFAILUREERROR = "AuthFailure.AuthFailureError"
-//  AUTHFAILURE_AUTHORIZEDOPERATIONDENYERROR = "AuthFailure.AuthorizedOperationDenyError"
-//  DRYRUNOPERATION_DRYRUNOPERATIONERROR = "DryRunOperation.DryRunOperationError"
-//  FAILEDOPERATION_FAILEDOPERATIONERROR = "FailedOperation.FailedOperationError"
-//  INTERNALERROR = "InternalError"
-//  INTERNALERROR_INTERNALERRORERROR = "InternalError.InternalErrorError"
-//  INTERNALERROR_INTERNALHTTPSERVERERROR = "InternalError.InternalHttpServerError"
-//  INVALIDPARAMETER_INVALIDPARAMETERERROR = "InvalidParameter.InvalidParameterError"
-//  INVALIDPARAMETERVALUE_DATACONVERTERROR = "InvalidParameterValue.DataConvertError"
-//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
-//  LIMITEXCEEDED_LIMITEXCEEDEDERROR = "LimitExceeded.LimitExceededError"
-//  MISSINGPARAMETER_MISSINGPARAMETERERROR = "MissingParameter.MissingParameterError"
-//  OPERATIONDENIED_OPERATIONDENIEDERROR = "OperationDenied.OperationDeniedError"
-//  REQUESTLIMITEXCEEDED_REQUESTLIMITEXCEEDEDERROR = "RequestLimitExceeded.RequestLimitExceededError"
-//  RESOURCEINUSE_RESOURCEINUSEERROR = "ResourceInUse.ResourceInUseError"
-//  RESOURCEINSUFFICIENT_RESOURCEINSUFFICIENTERROR = "ResourceInsufficient.ResourceInsufficientError"
 //  RESOURCENOTFOUND_RESOURCENOTFOUNDERROR = "ResourceNotFound.ResourceNotFoundError"
-//  RESOURCEUNAVAILABLE_RESOURCEUNAVAILABLEERROR = "ResourceUnavailable.ResourceUnavailableError"
-//  RESOURCESSOLDOUT_RESOURCESSOLDOUTERROR = "ResourcesSoldOut.ResourcesSoldOutError"
-//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATIONERROR = "UnauthorizedOperation.UnauthorizedOperationError"
-//  UNKNOWNPARAMETER_UNKNOWNPARAMETERERROR = "UnknownParameter.UnknownParameterError"
-//  UNSUPPORTEDOPERATION_UNSUPPORTEDOPERATIONERROR = "UnsupportedOperation.UnsupportedOperationError"
 func (c *Client) RecoverMigrateJobWithContext(ctx context.Context, request *RecoverMigrateJobRequest) (response *RecoverMigrateJobResponse, err error) {
     if request == nil {
         request = NewRecoverMigrateJobRequest()
@@ -2267,6 +2233,7 @@ func NewResumeMigrateJobResponse() (response *ResumeMigrateJobResponse) {
 //  INTERNALERROR_DUPLICATEJOB = "InternalError.DuplicateJob"
 //  INTERNALERROR_INTERNALERRORERROR = "InternalError.InternalErrorError"
 //  INTERNALERROR_PROTOCOLERROR = "InternalError.ProtocolError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_INVALIDPARAMETERERROR = "InvalidParameter.InvalidParameterError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
@@ -2297,6 +2264,7 @@ func (c *Client) ResumeMigrateJob(request *ResumeMigrateJobRequest) (response *R
 //  INTERNALERROR_DUPLICATEJOB = "InternalError.DuplicateJob"
 //  INTERNALERROR_INTERNALERRORERROR = "InternalError.InternalErrorError"
 //  INTERNALERROR_PROTOCOLERROR = "InternalError.ProtocolError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_INVALIDPARAMETERERROR = "InvalidParameter.InvalidParameterError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"

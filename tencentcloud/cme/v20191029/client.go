@@ -2260,6 +2260,7 @@ func NewGrantResourceAuthorizationResponse() (response *GrantResourceAuthorizati
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_CLASSNOTEXIST = "InvalidParameterValue.ClassNotExist"
 //  INVALIDPARAMETERVALUE_PLATFORM = "InvalidParameterValue.Platform"
 //  OPERATIONDENIED_PERMISSIONDENY = "OperationDenied.PermissionDeny"
 //  RESOURCENOTFOUND = "ResourceNotFound"
@@ -2273,6 +2274,7 @@ func (c *Client) GrantResourceAuthorization(request *GrantResourceAuthorizationR
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_CLASSNOTEXIST = "InvalidParameterValue.ClassNotExist"
 //  INVALIDPARAMETERVALUE_PLATFORM = "InvalidParameterValue.Platform"
 //  OPERATIONDENIED_PERMISSIONDENY = "OperationDenied.PermissionDeny"
 //  RESOURCENOTFOUND = "ResourceNotFound"

@@ -419,7 +419,7 @@ type CreateRecTaskRequestParams struct {
 	// 回调 URL，用户自行搭建的用于接收识别结果的服务URL。如果用户使用轮询方式获取识别结果，则无需提交该参数。回调格式&内容详见：[录音识别回调说明](https://cloud.tencent.com/document/product/1093/52632)
 	CallbackUrl *string `json:"CallbackUrl,omitempty" name:"CallbackUrl"`
 
-	// 语音的URL地址，需要公网可下载。长度小于2048字节，当 SourceType 值为 0 时须填写该字段，为 1 时不需要填写。注意：请确保录音文件时长在5个小时之内，否则可能识别失败。请保证文件的下载速度，否则可能下载失败。
+	// 语音的URL地址，需要公网环境浏览器可下载。当 SourceType 值为 0 时须填写该字段，为 1 时不需要填写。注意：请确保录音文件时长在5个小时之内，否则可能识别失败。请保证文件的下载速度，否则可能下载失败。
 	Url *string `json:"Url,omitempty" name:"Url"`
 
 	// 语音数据base64编码，当SourceType 值为1时必须填写，为0可不写。音频数据要小于5MB。
@@ -489,7 +489,7 @@ type CreateRecTaskRequest struct {
 	// 回调 URL，用户自行搭建的用于接收识别结果的服务URL。如果用户使用轮询方式获取识别结果，则无需提交该参数。回调格式&内容详见：[录音识别回调说明](https://cloud.tencent.com/document/product/1093/52632)
 	CallbackUrl *string `json:"CallbackUrl,omitempty" name:"CallbackUrl"`
 
-	// 语音的URL地址，需要公网可下载。长度小于2048字节，当 SourceType 值为 0 时须填写该字段，为 1 时不需要填写。注意：请确保录音文件时长在5个小时之内，否则可能识别失败。请保证文件的下载速度，否则可能下载失败。
+	// 语音的URL地址，需要公网环境浏览器可下载。当 SourceType 值为 0 时须填写该字段，为 1 时不需要填写。注意：请确保录音文件时长在5个小时之内，否则可能识别失败。请保证文件的下载速度，否则可能下载失败。
 	Url *string `json:"Url,omitempty" name:"Url"`
 
 	// 语音数据base64编码，当SourceType 值为1时必须填写，为0可不写。音频数据要小于5MB。
@@ -1379,7 +1379,7 @@ type SentenceRecognitionRequestParams struct {
 	// 用户端对此任务的唯一标识。废弃参数，忽略即可。
 	UsrAudioKey *string `json:"UsrAudioKey,omitempty" name:"UsrAudioKey"`
 
-	// 语音 URL，公网可下载。当 SourceType 值为 0（语音 URL上传） 时须填写该字段，为 1 时不填；URL 的长度大于 0，小于 2048，需进行urlencode编码。音频时长不能超过60s，音频文件大小不能超过3MB。
+	// 语音的URL地址，需要公网环境浏览器可下载。当 SourceType 值为 0时须填写该字段，为 1 时不填。音频时长不能超过60s，音频文件大小不能超过3MB。
 	Url *string `json:"Url,omitempty" name:"Url"`
 
 	// 语音数据，当SourceType 值为1（本地语音数据上传）时必须填写，当SourceType 值为0（语音 URL上传）可不写。要使用base64编码(采用python语言时注意读取文件应该为string而不是byte，以byte格式读取后要decode()。编码后的数据不可带有回车换行符)。音频时长不能超过60s，音频文件大小不能超过3MB（Base64后）。
@@ -1440,7 +1440,7 @@ type SentenceRecognitionRequest struct {
 	// 用户端对此任务的唯一标识。废弃参数，忽略即可。
 	UsrAudioKey *string `json:"UsrAudioKey,omitempty" name:"UsrAudioKey"`
 
-	// 语音 URL，公网可下载。当 SourceType 值为 0（语音 URL上传） 时须填写该字段，为 1 时不填；URL 的长度大于 0，小于 2048，需进行urlencode编码。音频时长不能超过60s，音频文件大小不能超过3MB。
+	// 语音的URL地址，需要公网环境浏览器可下载。当 SourceType 值为 0时须填写该字段，为 1 时不填。音频时长不能超过60s，音频文件大小不能超过3MB。
 	Url *string `json:"Url,omitempty" name:"Url"`
 
 	// 语音数据，当SourceType 值为1（本地语音数据上传）时必须填写，当SourceType 值为0（语音 URL上传）可不写。要使用base64编码(采用python语言时注意读取文件应该为string而不是byte，以byte格式读取后要decode()。编码后的数据不可带有回车换行符)。音频时长不能超过60s，音频文件大小不能超过3MB（Base64后）。

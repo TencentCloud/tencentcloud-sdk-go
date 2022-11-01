@@ -2074,6 +2074,7 @@ func NewDescribeProjectSecurityGroupsResponse() (response *DescribeProjectSecuri
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR_GETUSERSGCOUNTFAILED = "InternalError.GetUserSGCountFailed"
 //  INVALIDPARAMETER_ILLEGALPARAMETERERROR = "InvalidParameter.IllegalParameterError"
 //  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
 func (c *Client) DescribeProjectSecurityGroups(request *DescribeProjectSecurityGroupsRequest) (response *DescribeProjectSecurityGroupsResponse, err error) {
@@ -2085,6 +2086,7 @@ func (c *Client) DescribeProjectSecurityGroups(request *DescribeProjectSecurityG
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR_GETUSERSGCOUNTFAILED = "InternalError.GetUserSGCountFailed"
 //  INVALIDPARAMETER_ILLEGALPARAMETERERROR = "InvalidParameter.IllegalParameterError"
 //  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
 func (c *Client) DescribeProjectSecurityGroupsWithContext(ctx context.Context, request *DescribeProjectSecurityGroupsRequest) (response *DescribeProjectSecurityGroupsResponse, err error) {

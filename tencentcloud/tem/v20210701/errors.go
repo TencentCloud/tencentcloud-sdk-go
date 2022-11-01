@@ -176,11 +176,17 @@ const (
 	// 环境变量名非法，要求有由字母、数字，"."，"_" 和 "-" 组成，不能由数字开头。
 	INVALIDPARAMETERVALUE_INVALIDENVNAME = "InvalidParameterValue.InvalidEnvName"
 
+	// 环境变量长度不能超过1000。
+	INVALIDPARAMETERVALUE_INVALIDENVVALUE = "InvalidParameterValue.InvalidEnvValue"
+
 	// 挂载路径不合法，不能为 /app。
 	INVALIDPARAMETERVALUE_INVALIDMOUNTPATH = "InvalidParameterValue.InvalidMountPath"
 
 	// 应用名格式非法。
 	INVALIDPARAMETERVALUE_INVALIDSERVICENAME = "InvalidParameterValue.InvalidServiceName"
+
+	// 无法识别租户信息。
+	INVALIDPARAMETERVALUE_INVALIDTENANTINFO = "InvalidParameterValue.InvalidTenantInfo"
 
 	// JDK 版本不能为空。
 	INVALIDPARAMETERVALUE_JDKVERSIONREQUIRED = "InvalidParameterValue.JdkVersionRequired"
@@ -310,6 +316,9 @@ const (
 
 	// 资源已绑定。
 	RESOURCEINUSE_RESOURCEALREADYUSED = "ResourceInUse.ResourceAlreadyUsed"
+
+	// 服务部署中。
+	RESOURCEINUSE_SERVICEDEPLOYING = "ResourceInUse.ServiceDeploying"
 
 	// 未提供该接口。
 	RESOURCENOTFOUND_INTERFACENOTFOUND = "ResourceNotFound.InterfaceNotFound"

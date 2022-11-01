@@ -498,6 +498,20 @@ type CertIdRelatedWithLoadBalancers struct {
 	LoadBalancers []*LoadBalancer `json:"LoadBalancers,omitempty" name:"LoadBalancers"`
 }
 
+type CertInfo struct {
+	// 证书 ID，如果不填写此项则必须上传证书内容，包括CertName, CertContent，若为服务端证书必须包含CertKey。
+	CertId *string `json:"CertId,omitempty" name:"CertId"`
+
+	// 上传证书的名称，如果没有 CertId，则此项必传。
+	CertName *string `json:"CertName,omitempty" name:"CertName"`
+
+	// 上传证书的公钥，如果没有 CertId，则此项必传。
+	CertContent *string `json:"CertContent,omitempty" name:"CertContent"`
+
+	// 上传服务端证书的私钥，如果没有 CertId，则此项必传。
+	CertKey *string `json:"CertKey,omitempty" name:"CertKey"`
+}
+
 type CertificateInput struct {
 	// 认证类型，UNIDIRECTIONAL：单向认证，MUTUAL：双向认证
 	SSLMode *string `json:"SSLMode,omitempty" name:"SSLMode"`
@@ -1079,7 +1093,7 @@ type CreateListenerRequestParams struct {
 	// 健康检查相关参数，此参数仅适用于TCP/UDP/TCP_SSL监听器。
 	HealthCheck *HealthCheck `json:"HealthCheck,omitempty" name:"HealthCheck"`
 
-	// 证书相关信息，此参数仅适用于TCP_SSL监听器和未开启SNI特性的HTTPS监听器。
+	// 证书相关信息，此参数仅适用于TCP_SSL监听器和未开启SNI特性的HTTPS监听器。此参数和MultiCertInfo不能同时传入。
 	Certificate *CertificateInput `json:"Certificate,omitempty" name:"Certificate"`
 
 	// 会话保持时间，单位：秒。可选值：30~3600，默认 0，表示不开启。此参数仅适用于TCP/UDP监听器。
@@ -1106,6 +1120,9 @@ type CreateListenerRequestParams struct {
 
 	// 解绑后端目标时，是否发RST给客户端，此参数仅适用于TCP监听器。
 	DeregisterTargetRst *bool `json:"DeregisterTargetRst,omitempty" name:"DeregisterTargetRst"`
+
+	// 证书信息，支持同时传入不同算法类型的多本服务端证书；此参数仅适用于未开启SNI特性的HTTPS监听器。此参数和Certificate不能同时传入。
+	MultiCertInfo *MultiCertInfo `json:"MultiCertInfo,omitempty" name:"MultiCertInfo"`
 }
 
 type CreateListenerRequest struct {
@@ -1126,7 +1143,7 @@ type CreateListenerRequest struct {
 	// 健康检查相关参数，此参数仅适用于TCP/UDP/TCP_SSL监听器。
 	HealthCheck *HealthCheck `json:"HealthCheck,omitempty" name:"HealthCheck"`
 
-	// 证书相关信息，此参数仅适用于TCP_SSL监听器和未开启SNI特性的HTTPS监听器。
+	// 证书相关信息，此参数仅适用于TCP_SSL监听器和未开启SNI特性的HTTPS监听器。此参数和MultiCertInfo不能同时传入。
 	Certificate *CertificateInput `json:"Certificate,omitempty" name:"Certificate"`
 
 	// 会话保持时间，单位：秒。可选值：30~3600，默认 0，表示不开启。此参数仅适用于TCP/UDP监听器。
@@ -1153,6 +1170,9 @@ type CreateListenerRequest struct {
 
 	// 解绑后端目标时，是否发RST给客户端，此参数仅适用于TCP监听器。
 	DeregisterTargetRst *bool `json:"DeregisterTargetRst,omitempty" name:"DeregisterTargetRst"`
+
+	// 证书信息，支持同时传入不同算法类型的多本服务端证书；此参数仅适用于未开启SNI特性的HTTPS监听器。此参数和Certificate不能同时传入。
+	MultiCertInfo *MultiCertInfo `json:"MultiCertInfo,omitempty" name:"MultiCertInfo"`
 }
 
 func (r *CreateListenerRequest) ToJsonString() string {
@@ -1181,6 +1201,7 @@ func (r *CreateListenerRequest) FromJsonString(s string) error {
 	delete(f, "KeepaliveEnable")
 	delete(f, "EndPort")
 	delete(f, "DeregisterTargetRst")
+	delete(f, "MultiCertInfo")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateListenerRequest has unknown keys!", "")
 	}
@@ -5720,7 +5741,7 @@ type ModifyDomainAttributesRequestParams struct {
 	// 要修改的新域名。NewDomain和NewDomains只能传一个。
 	NewDomain *string `json:"NewDomain,omitempty" name:"NewDomain"`
 
-	// 域名相关的证书信息，注意，仅对启用SNI的监听器适用。
+	// 域名相关的证书信息，注意，仅对启用SNI的监听器适用，不可和MultiCertInfo 同时传入。
 	Certificate *CertificateInput `json:"Certificate,omitempty" name:"Certificate"`
 
 	// 是否开启Http2，注意，只有HTTPS域名才能开启Http2。
@@ -5734,6 +5755,9 @@ type ModifyDomainAttributesRequestParams struct {
 
 	// 要修改的新域名列表。NewDomain和NewDomains只能传一个。
 	NewDomains []*string `json:"NewDomains,omitempty" name:"NewDomains"`
+
+	// 域名相关的证书信息，注意，仅对启用SNI的监听器适用；支持同时传入多本算法类型不同的服务器证书，不可和MultiCertInfo 同时传入。
+	MultiCertInfo *MultiCertInfo `json:"MultiCertInfo,omitempty" name:"MultiCertInfo"`
 }
 
 type ModifyDomainAttributesRequest struct {
@@ -5751,7 +5775,7 @@ type ModifyDomainAttributesRequest struct {
 	// 要修改的新域名。NewDomain和NewDomains只能传一个。
 	NewDomain *string `json:"NewDomain,omitempty" name:"NewDomain"`
 
-	// 域名相关的证书信息，注意，仅对启用SNI的监听器适用。
+	// 域名相关的证书信息，注意，仅对启用SNI的监听器适用，不可和MultiCertInfo 同时传入。
 	Certificate *CertificateInput `json:"Certificate,omitempty" name:"Certificate"`
 
 	// 是否开启Http2，注意，只有HTTPS域名才能开启Http2。
@@ -5765,6 +5789,9 @@ type ModifyDomainAttributesRequest struct {
 
 	// 要修改的新域名列表。NewDomain和NewDomains只能传一个。
 	NewDomains []*string `json:"NewDomains,omitempty" name:"NewDomains"`
+
+	// 域名相关的证书信息，注意，仅对启用SNI的监听器适用；支持同时传入多本算法类型不同的服务器证书，不可和MultiCertInfo 同时传入。
+	MultiCertInfo *MultiCertInfo `json:"MultiCertInfo,omitempty" name:"MultiCertInfo"`
 }
 
 func (r *ModifyDomainAttributesRequest) ToJsonString() string {
@@ -5788,6 +5815,7 @@ func (r *ModifyDomainAttributesRequest) FromJsonString(s string) error {
 	delete(f, "DefaultServer")
 	delete(f, "NewDefaultServerDomain")
 	delete(f, "NewDomains")
+	delete(f, "MultiCertInfo")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyDomainAttributesRequest has unknown keys!", "")
 	}
@@ -5908,7 +5936,7 @@ type ModifyListenerRequestParams struct {
 	// 健康检查相关参数，此参数仅适用于TCP/UDP/TCP_SSL监听器。
 	HealthCheck *HealthCheck `json:"HealthCheck,omitempty" name:"HealthCheck"`
 
-	// 证书相关信息，此参数仅适用于HTTPS/TCP_SSL监听器。
+	// 证书相关信息，此参数仅适用于HTTPS/TCP_SSL监听器；此参数和MultiCertInfo不能同时传入。
 	Certificate *CertificateInput `json:"Certificate,omitempty" name:"Certificate"`
 
 	// 监听器转发的方式。可选值：WRR、LEAST_CONN
@@ -5929,6 +5957,9 @@ type ModifyListenerRequestParams struct {
 
 	// 会话保持类型。NORMAL表示默认会话保持类型。QUIC_CID表示根据Quic Connection ID做会话保持。QUIC_CID只支持UDP协议。
 	SessionType *string `json:"SessionType,omitempty" name:"SessionType"`
+
+	// 证书信息，支持同时传入不同算法类型的多本服务端证书；此参数仅适用于未开启SNI特性的HTTPS监听器。此参数和Certificate不能同时传入。
+	MultiCertInfo *MultiCertInfo `json:"MultiCertInfo,omitempty" name:"MultiCertInfo"`
 }
 
 type ModifyListenerRequest struct {
@@ -5949,7 +5980,7 @@ type ModifyListenerRequest struct {
 	// 健康检查相关参数，此参数仅适用于TCP/UDP/TCP_SSL监听器。
 	HealthCheck *HealthCheck `json:"HealthCheck,omitempty" name:"HealthCheck"`
 
-	// 证书相关信息，此参数仅适用于HTTPS/TCP_SSL监听器。
+	// 证书相关信息，此参数仅适用于HTTPS/TCP_SSL监听器；此参数和MultiCertInfo不能同时传入。
 	Certificate *CertificateInput `json:"Certificate,omitempty" name:"Certificate"`
 
 	// 监听器转发的方式。可选值：WRR、LEAST_CONN
@@ -5970,6 +6001,9 @@ type ModifyListenerRequest struct {
 
 	// 会话保持类型。NORMAL表示默认会话保持类型。QUIC_CID表示根据Quic Connection ID做会话保持。QUIC_CID只支持UDP协议。
 	SessionType *string `json:"SessionType,omitempty" name:"SessionType"`
+
+	// 证书信息，支持同时传入不同算法类型的多本服务端证书；此参数仅适用于未开启SNI特性的HTTPS监听器。此参数和Certificate不能同时传入。
+	MultiCertInfo *MultiCertInfo `json:"MultiCertInfo,omitempty" name:"MultiCertInfo"`
 }
 
 func (r *ModifyListenerRequest) ToJsonString() string {
@@ -5996,6 +6030,7 @@ func (r *ModifyListenerRequest) FromJsonString(s string) error {
 	delete(f, "KeepaliveEnable")
 	delete(f, "DeregisterTargetRst")
 	delete(f, "SessionType")
+	delete(f, "MultiCertInfo")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyListenerRequest has unknown keys!", "")
 	}
@@ -6740,6 +6775,14 @@ func (r *ModifyTargetWeightResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type MultiCertInfo struct {
+	// 认证类型，UNIDIRECTIONAL：单向认证，MUTUAL：双向认证
+	SSLMode *string `json:"SSLMode,omitempty" name:"SSLMode"`
+
+	// 监听器或规则证书列表，单双向认证，多本服务端证书算法类型不能重复;若SSLMode为双向认证，证书列表必须包含一本ca证书。
+	CertList []*CertInfo `json:"CertList,omitempty" name:"CertList"`
+}
+
 type Quota struct {
 	// 配额名称，取值范围：
 	// <li> TOTAL_OPEN_CLB_QUOTA：用户当前地域下的公网CLB配额 </li>
@@ -7130,7 +7173,7 @@ type RuleInput struct {
 	// 健康检查信息。详情请参见：[健康检查](https://cloud.tencent.com/document/product/214/6097)
 	HealthCheck *HealthCheck `json:"HealthCheck,omitempty" name:"HealthCheck"`
 
-	// 证书信息
+	// 证书信息；此参数和MultiCertInfo不能同时传入。
 	Certificate *CertificateInput `json:"Certificate,omitempty" name:"Certificate"`
 
 	// 规则的请求转发方式，可选值：WRR、LEAST_CONN、IP_HASH
@@ -7160,6 +7203,9 @@ type RuleInput struct {
 
 	// 转发规则的域名列表。每个域名的长度限制为：1~80。Domain和Domains只需要传一个，单域名规则传Domain，多域名规则传Domains。
 	Domains []*string `json:"Domains,omitempty" name:"Domains"`
+
+	// 证书信息，支持同时传入不同算法类型的多本服务端证书；此参数和Certificate不能同时传入。
+	MultiCertInfo *MultiCertInfo `json:"MultiCertInfo,omitempty" name:"MultiCertInfo"`
 }
 
 type RuleOutput struct {

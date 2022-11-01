@@ -753,9 +753,8 @@ func NewUnbindDocumentFromRoomResponse() (response *UnbindDocumentFromRoomRespon
 // 文档从房间解绑
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+//  RESOURCENOTFOUND_DOCUMENT = "ResourceNotFound.Document"
+//  RESOURCENOTFOUND_ROOM = "ResourceNotFound.Room"
 func (c *Client) UnbindDocumentFromRoom(request *UnbindDocumentFromRoomRequest) (response *UnbindDocumentFromRoomResponse, err error) {
     return c.UnbindDocumentFromRoomWithContext(context.Background(), request)
 }
@@ -764,9 +763,8 @@ func (c *Client) UnbindDocumentFromRoom(request *UnbindDocumentFromRoomRequest) 
 // 文档从房间解绑
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+//  RESOURCENOTFOUND_DOCUMENT = "ResourceNotFound.Document"
+//  RESOURCENOTFOUND_ROOM = "ResourceNotFound.Room"
 func (c *Client) UnbindDocumentFromRoomWithContext(ctx context.Context, request *UnbindDocumentFromRoomRequest) (response *UnbindDocumentFromRoomResponse, err error) {
     if request == nil {
         request = NewUnbindDocumentFromRoomRequest()

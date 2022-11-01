@@ -329,6 +329,7 @@ func NewCreateMigrateJobResponse() (response *CreateMigrateJobResponse) {
 //  INVALIDPARAMETERVALUE_DATACONVERTERROR = "InvalidParameterValue.DataConvertError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
 //  LIMITEXCEEDED_MAXUNUSEDJOBS = "LimitExceeded.MaxUnusedJobs"
+//  OPERATIONDENIED = "OperationDenied"
 //  OPERATIONDENIED_NOTENOUGHMONEYERROR = "OperationDenied.NotEnoughMoneyError"
 //  UNAUTHORIZEDOPERATION_NOTENOUGHPRIVILEGES = "UnauthorizedOperation.NotEnoughPrivileges"
 func (c *Client) CreateMigrateJob(request *CreateMigrateJobRequest) (response *CreateMigrateJobResponse, err error) {
@@ -357,6 +358,7 @@ func (c *Client) CreateMigrateJob(request *CreateMigrateJobRequest) (response *C
 //  INVALIDPARAMETERVALUE_DATACONVERTERROR = "InvalidParameterValue.DataConvertError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
 //  LIMITEXCEEDED_MAXUNUSEDJOBS = "LimitExceeded.MaxUnusedJobs"
+//  OPERATIONDENIED = "OperationDenied"
 //  OPERATIONDENIED_NOTENOUGHMONEYERROR = "OperationDenied.NotEnoughMoneyError"
 //  UNAUTHORIZEDOPERATION_NOTENOUGHPRIVILEGES = "UnauthorizedOperation.NotEnoughPrivileges"
 func (c *Client) CreateMigrateJobWithContext(ctx context.Context, request *CreateMigrateJobRequest) (response *CreateMigrateJobResponse, err error) {
@@ -657,9 +659,11 @@ func NewDescribeMigrateJobsResponse() (response *DescribeMigrateJobsResponse) {
 // 如果是金融区链路, 请使用域名: https://dts.ap-shenzhen-fsi.tencentcloudapi.com
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_AUTHFAILUREERROR = "AuthFailure.AuthFailureError"
 //  AUTHFAILURE_UNAUTHORIZEDOPERATIONERROR = "AuthFailure.UnauthorizedOperationError"
 //  FAILEDOPERATION_NOTALLOWOPERATION = "FailedOperation.NotAllowOperation"
 //  INTERNALERROR_DATABASEERROR = "InternalError.DatabaseError"
+//  INTERNALERROR_INTERNALERRORERROR = "InternalError.InternalErrorError"
 //  INTERNALERROR_PROTOCOLERROR = "InternalError.ProtocolError"
 //  INTERNALERROR_UNDEFINEDERROR = "InternalError.UndefinedError"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
@@ -678,9 +682,11 @@ func (c *Client) DescribeMigrateJobs(request *DescribeMigrateJobsRequest) (respo
 // 如果是金融区链路, 请使用域名: https://dts.ap-shenzhen-fsi.tencentcloudapi.com
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_AUTHFAILUREERROR = "AuthFailure.AuthFailureError"
 //  AUTHFAILURE_UNAUTHORIZEDOPERATIONERROR = "AuthFailure.UnauthorizedOperationError"
 //  FAILEDOPERATION_NOTALLOWOPERATION = "FailedOperation.NotAllowOperation"
 //  INTERNALERROR_DATABASEERROR = "InternalError.DatabaseError"
+//  INTERNALERROR_INTERNALERRORERROR = "InternalError.InternalErrorError"
 //  INTERNALERROR_PROTOCOLERROR = "InternalError.ProtocolError"
 //  INTERNALERROR_UNDEFINEDERROR = "InternalError.UndefinedError"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
@@ -839,6 +845,7 @@ func NewDescribeSubscribesResponse() (response *DescribeSubscribesResponse) {
 // 本接口(DescribeSubscribes)获取数据订阅实例信息列表，默认分页，每次返回20条
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_AUTHFAILUREERROR = "AuthFailure.AuthFailureError"
 //  AUTHFAILURE_UNAUTHORIZEDOPERATIONERROR = "AuthFailure.UnauthorizedOperationError"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -851,6 +858,7 @@ func (c *Client) DescribeSubscribes(request *DescribeSubscribesRequest) (respons
 // 本接口(DescribeSubscribes)获取数据订阅实例信息列表，默认分页，每次返回20条
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_AUTHFAILUREERROR = "AuthFailure.AuthFailureError"
 //  AUTHFAILURE_UNAUTHORIZEDOPERATIONERROR = "AuthFailure.UnauthorizedOperationError"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -1303,6 +1311,7 @@ func NewOfflineIsolatedSubscribeResponse() (response *OfflineIsolatedSubscribeRe
 // 本接口（OfflineIsolatedSubscribe）用于下线已隔离的数据订阅实例
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_FAILEDOPERATIONERROR = "FailedOperation.FailedOperationError"
 //  FAILEDOPERATION_STATUSINCONFLICT = "FailedOperation.StatusInConflict"
 //  FAILEDOPERATION_STATUSINCONFLICTERROR = "FailedOperation.StatusInConflictError"
 //  INTERNALERROR = "InternalError"
@@ -1316,6 +1325,7 @@ func (c *Client) OfflineIsolatedSubscribe(request *OfflineIsolatedSubscribeReque
 // 本接口（OfflineIsolatedSubscribe）用于下线已隔离的数据订阅实例
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_FAILEDOPERATIONERROR = "FailedOperation.FailedOperationError"
 //  FAILEDOPERATION_STATUSINCONFLICT = "FailedOperation.StatusInConflict"
 //  FAILEDOPERATION_STATUSINCONFLICTERROR = "FailedOperation.StatusInConflictError"
 //  INTERNALERROR = "InternalError"
@@ -1423,6 +1433,7 @@ func NewStartMigrateJobResponse() (response *StartMigrateJobResponse) {
 //  INTERNALERROR_ADDTASKERROR = "InternalError.AddTaskError"
 //  INTERNALERROR_DATABASEERROR = "InternalError.DatabaseError"
 //  INTERNALERROR_DUPLICATEJOB = "InternalError.DuplicateJob"
+//  INTERNALERROR_INTERNALERRORERROR = "InternalError.InternalErrorError"
 //  INTERNALERROR_INTERNALINNERCOMMONERROR = "InternalError.InternalInnerCommonError"
 //  INTERNALERROR_LOCKERROR = "InternalError.LockError"
 //  INTERNALERROR_PROTOCOLERROR = "InternalError.ProtocolError"
@@ -1449,6 +1460,7 @@ func (c *Client) StartMigrateJob(request *StartMigrateJobRequest) (response *Sta
 //  INTERNALERROR_ADDTASKERROR = "InternalError.AddTaskError"
 //  INTERNALERROR_DATABASEERROR = "InternalError.DatabaseError"
 //  INTERNALERROR_DUPLICATEJOB = "InternalError.DuplicateJob"
+//  INTERNALERROR_INTERNALERRORERROR = "InternalError.InternalErrorError"
 //  INTERNALERROR_INTERNALINNERCOMMONERROR = "InternalError.InternalInnerCommonError"
 //  INTERNALERROR_LOCKERROR = "InternalError.LockError"
 //  INTERNALERROR_PROTOCOLERROR = "InternalError.ProtocolError"

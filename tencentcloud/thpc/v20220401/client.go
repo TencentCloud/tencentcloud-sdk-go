@@ -414,6 +414,7 @@ func NewSetAutoScalingConfigurationResponse() (response *SetAutoScalingConfigura
 //  INTERNALERROR_CALLCVM = "InternalError.CallCvm"
 //  RESOURCENOTFOUND_CLUSTERID = "ResourceNotFound.ClusterId"
 //  UNSUPPORTEDOPERATION_CLUSTERSTATUSNOTSUPPORT = "UnsupportedOperation.ClusterStatusNotSupport"
+//  UNSUPPORTEDOPERATION_VPCIDCONFLICT = "UnsupportedOperation.VpcIdConflict"
 func (c *Client) SetAutoScalingConfiguration(request *SetAutoScalingConfigurationRequest) (response *SetAutoScalingConfigurationResponse, err error) {
     return c.SetAutoScalingConfigurationWithContext(context.Background(), request)
 }
@@ -425,6 +426,7 @@ func (c *Client) SetAutoScalingConfiguration(request *SetAutoScalingConfiguratio
 //  INTERNALERROR_CALLCVM = "InternalError.CallCvm"
 //  RESOURCENOTFOUND_CLUSTERID = "ResourceNotFound.ClusterId"
 //  UNSUPPORTEDOPERATION_CLUSTERSTATUSNOTSUPPORT = "UnsupportedOperation.ClusterStatusNotSupport"
+//  UNSUPPORTEDOPERATION_VPCIDCONFLICT = "UnsupportedOperation.VpcIdConflict"
 func (c *Client) SetAutoScalingConfigurationWithContext(ctx context.Context, request *SetAutoScalingConfigurationRequest) (response *SetAutoScalingConfigurationResponse, err error) {
     if request == nil {
         request = NewSetAutoScalingConfigurationRequest()

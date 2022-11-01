@@ -209,6 +209,7 @@ func NewListDeployableRuntimesMCResponse() (response *ListDeployableRuntimesMCRe
 //  FAILEDOPERATION_UNSUPPORTEDOPERATIONTYPE = "FailedOperation.UnSupportedOperationType"
 //  INTERNALERROR_DATABASEERROR = "InternalError.DatabaseError"
 //  INTERNALERROR_RPCPILOTSERVERERROR = "InternalError.RpcPilotServerError"
+//  INVALIDPARAMETERVALUE_PILOTZONENOTSUPPORTED = "InvalidParameterValue.PilotZoneNotSupported"
 func (c *Client) ListDeployableRuntimesMC(request *ListDeployableRuntimesMCRequest) (response *ListDeployableRuntimesMCResponse, err error) {
     return c.ListDeployableRuntimesMCWithContext(context.Background(), request)
 }
@@ -221,6 +222,7 @@ func (c *Client) ListDeployableRuntimesMC(request *ListDeployableRuntimesMCReque
 //  FAILEDOPERATION_UNSUPPORTEDOPERATIONTYPE = "FailedOperation.UnSupportedOperationType"
 //  INTERNALERROR_DATABASEERROR = "InternalError.DatabaseError"
 //  INTERNALERROR_RPCPILOTSERVERERROR = "InternalError.RpcPilotServerError"
+//  INVALIDPARAMETERVALUE_PILOTZONENOTSUPPORTED = "InvalidParameterValue.PilotZoneNotSupported"
 func (c *Client) ListDeployableRuntimesMCWithContext(ctx context.Context, request *ListDeployableRuntimesMCRequest) (response *ListDeployableRuntimesMCResponse, err error) {
     if request == nil {
         request = NewListDeployableRuntimesMCRequest()
@@ -331,6 +333,7 @@ func NewListRuntimesMCResponse() (response *ListRuntimesMCResponse) {
 //  INTERNALERROR_LISTRUNTIMESFAILED = "InternalError.ListRuntimesFailed"
 //  INTERNALERROR_METACOMPILERERROR = "InternalError.MetaCompilerError"
 //  INTERNALERROR_RPCPILOTSERVERERROR = "InternalError.RpcPilotServerError"
+//  INVALIDPARAMETERVALUE_PILOTZONENOTSUPPORTED = "InvalidParameterValue.PilotZoneNotSupported"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) ListRuntimesMC(request *ListRuntimesMCRequest) (response *ListRuntimesMCResponse, err error) {
     return c.ListRuntimesMCWithContext(context.Background(), request)
@@ -348,6 +351,7 @@ func (c *Client) ListRuntimesMC(request *ListRuntimesMCRequest) (response *ListR
 //  INTERNALERROR_LISTRUNTIMESFAILED = "InternalError.ListRuntimesFailed"
 //  INTERNALERROR_METACOMPILERERROR = "InternalError.MetaCompilerError"
 //  INTERNALERROR_RPCPILOTSERVERERROR = "InternalError.RpcPilotServerError"
+//  INVALIDPARAMETERVALUE_PILOTZONENOTSUPPORTED = "InvalidParameterValue.PilotZoneNotSupported"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) ListRuntimesMCWithContext(ctx context.Context, request *ListRuntimesMCRequest) (response *ListRuntimesMCResponse, err error) {
     if request == nil {

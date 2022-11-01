@@ -1,3 +1,219 @@
+# Release v1.0.527
+
+## T-Sec-DDoS防护(Anti-DDoS)(antiddos) 版本：2020-03-09
+
+### 第 44 次发布
+
+发布时间：2022-11-01 06:06:58
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribePendingRiskInfo](https://cloud.tencent.com/document/api/1021/82200)
+
+
+
+## 负载均衡(clb) 版本：2018-03-17
+
+### 第 73 次发布
+
+发布时间：2022-11-01 06:15:44
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateListener](https://cloud.tencent.com/document/api/214/30693)
+
+	* 新增入参：MultiCertInfo
+
+* [ModifyDomainAttributes](https://cloud.tencent.com/document/api/214/38092)
+
+	* 新增入参：MultiCertInfo
+
+* [ModifyListener](https://cloud.tencent.com/document/api/214/30681)
+
+	* 新增入参：MultiCertInfo
+
+
+新增数据结构：
+
+* [CertInfo](https://cloud.tencent.com/document/api/214/30694#CertInfo)
+* [MultiCertInfo](https://cloud.tencent.com/document/api/214/30694#MultiCertInfo)
+
+修改数据结构：
+
+* [RuleInput](https://cloud.tencent.com/document/api/214/30694#RuleInput)
+
+	* 新增成员：MultiCertInfo
+
+
+
+
+## 日志服务(cls) 版本：2020-10-16
+
+### 第 33 次发布
+
+发布时间：2022-11-01 06:16:55
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [LogsetInfo](https://cloud.tencent.com/document/api/614/56471#LogsetInfo)
+
+	* 新增成员：AssumerName
+
+* [TopicInfo](https://cloud.tencent.com/document/api/614/56471#TopicInfo)
+
+	* 新增成员：AssumerName, SubAssumerName, Describes
+
+
+
+
+## TDSQL-C MySQL 版(cynosdb) 版本：2019-01-07
+
+### 第 30 次发布
+
+发布时间：2022-11-01 06:21:27
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DeleteBackup](https://cloud.tencent.com/document/api/1003/82201)
+
+
+
+## 服务网格(tcm) 版本：2021-04-13
+
+### 第 16 次发布
+
+发布时间：2022-11-01 06:43:32
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [LinkPrometheus](https://cloud.tencent.com/document/api/1261/82203)
+* [UnlinkPrometheus](https://cloud.tencent.com/document/api/1261/82202)
+
+
+
+## 容器安全服务(tcss) 版本：2020-11-01
+
+### 第 30 次发布
+
+发布时间：2022-11-01 06:44:24
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeContainerSecEventSummary](https://cloud.tencent.com/document/api/1285/65474)
+
+	* 新增出参：UnhandledMaliciousConnectionEventCnt, UnhandledK8sApiEventCnt
+
+
+新增数据结构：
+
+* [RaspInfo](https://cloud.tencent.com/document/api/1285/65614#RaspInfo)
+
+修改数据结构：
+
+* [VulDefenceEventDetail](https://cloud.tencent.com/document/api/1285/65614#VulDefenceEventDetail)
+
+	* 新增成员：RaspDetail
+
+
+
+
+## 消息队列 TDMQ(tdmq) 版本：2020-02-17
+
+### 第 38 次发布
+
+发布时间：2022-11-01 06:46:31
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeRabbitMQNodeList](https://cloud.tencent.com/document/api/1179/82204)
+* [DescribeRabbitMQVipInstances](https://cloud.tencent.com/document/api/1179/82205)
+
+新增数据结构：
+
+* [RabbitMQPrivateNode](https://cloud.tencent.com/document/api/1179/46089#RabbitMQPrivateNode)
+* [RabbitMQVipInstance](https://cloud.tencent.com/document/api/1179/46089#RabbitMQVipInstance)
+
+
+
+## 边缘安全加速平台(teo) 版本：2022-09-01
+
+### 第 9 次发布
+
+发布时间：2022-11-01 06:48:56
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除接口**：</font>
+
+* CreateAliasDomain
+* DeleteAliasDomain
+* DescribeAliasDomains
+* ModifyAliasDomain
+* ModifyAliasDomainStatus
+
+<font color="#dd0000">**删除数据结构**：</font>
+
+* AliasDomain
+
+
+
+## 边缘安全加速平台(teo) 版本：2022-01-06
+
+
+
+## 云点播(vod) 版本：2018-07-17
+
+### 第 124 次发布
+
+发布时间：2022-11-01 06:56:00
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [AudioTrackItem](https://cloud.tencent.com/document/api/266/31773#AudioTrackItem)
+
+	* 新增成员：TargetDuration
+
+* [VideoTrackItem](https://cloud.tencent.com/document/api/266/31773#VideoTrackItem)
+
+	* 新增成员：TargetDuration
+
+
+
+
 # Release v1.0.526
 
 ## 云呼叫中心(ccc) 版本：2020-02-10

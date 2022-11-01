@@ -1823,6 +1823,67 @@ func (r *DeleteAuditLogFileResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DeleteBackupRequestParams struct {
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 备份文件ID
+	SnapshotIdList []*int64 `json:"SnapshotIdList,omitempty" name:"SnapshotIdList"`
+}
+
+type DeleteBackupRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 备份文件ID
+	SnapshotIdList []*int64 `json:"SnapshotIdList,omitempty" name:"SnapshotIdList"`
+}
+
+func (r *DeleteBackupRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteBackupRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "SnapshotIdList")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteBackupRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteBackupResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DeleteBackupResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteBackupResponseParams `json:"Response"`
+}
+
+func (r *DeleteBackupResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteBackupResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeAccountAllGrantPrivilegesRequestParams struct {
 	// 集群id
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`

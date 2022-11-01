@@ -13464,6 +13464,13 @@ type DescribeContainerSecEventSummaryResponseParams struct {
 	// 未处理木马事件
 	UnhandledVirusEventCnt *uint64 `json:"UnhandledVirusEventCnt,omitempty" name:"UnhandledVirusEventCnt"`
 
+	// 未处理恶意外连事件
+	UnhandledMaliciousConnectionEventCnt *uint64 `json:"UnhandledMaliciousConnectionEventCnt,omitempty" name:"UnhandledMaliciousConnectionEventCnt"`
+
+	// 未处理k8sApi事件
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UnhandledK8sApiEventCnt *uint64 `json:"UnhandledK8sApiEventCnt,omitempty" name:"UnhandledK8sApiEventCnt"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }
@@ -26498,6 +26505,14 @@ type PromotionActivityContent struct {
 	ImageAuthorizationNum *uint64 `json:"ImageAuthorizationNum,omitempty" name:"ImageAuthorizationNum"`
 }
 
+type RaspInfo struct {
+	// rasp名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// rasp  描述
+	Value *string `json:"Value,omitempty" name:"Value"`
+}
+
 type RegionInfo struct {
 	// 地域标识
 	Region *string `json:"Region,omitempty" name:"Region"`
@@ -27525,6 +27540,8 @@ type SecTendencyEventInfo struct {
 	// ET_RISK_SYSCALL:高危系统调用
 	// ET_ABNORMAL_PROCESS: 异常进程
 	// ET_ACCESS_CONTROL 文件篡改
+	// ET_VIRUS 木马事件
+	// ET_MALICIOUS_CONNECTION 恶意外连事件
 	EventType *string `json:"EventType,omitempty" name:"EventType"`
 }
 
@@ -29111,6 +29128,10 @@ type VulDefenceEventDetail struct {
 	// 接口Url
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	JNDIUrl *string `json:"JNDIUrl,omitempty" name:"JNDIUrl"`
+
+	// rasp detail
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RaspDetail []*RaspInfo `json:"RaspDetail,omitempty" name:"RaspDetail"`
 }
 
 type VulDefenceEventTendency struct {

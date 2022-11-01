@@ -770,6 +770,7 @@ func NewCreateWxCloudBaseRunServerDBClusterResponse() (response *CreateWxCloudBa
 //  INVALIDPARAMETER_ENVID = "InvalidParameter.EnvId"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  LIMITEXCEEDED_REQUEST = "LimitExceeded.Request"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  UNSUPPORTEDOPERATION_TASKEXISTED = "UnsupportedOperation.TaskExisted"
 func (c *Client) CreateWxCloudBaseRunServerDBCluster(request *CreateWxCloudBaseRunServerDBClusterRequest) (response *CreateWxCloudBaseRunServerDBClusterResponse, err error) {
     return c.CreateWxCloudBaseRunServerDBClusterWithContext(context.Background(), request)
@@ -788,6 +789,7 @@ func (c *Client) CreateWxCloudBaseRunServerDBCluster(request *CreateWxCloudBaseR
 //  INVALIDPARAMETER_ENVID = "InvalidParameter.EnvId"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  LIMITEXCEEDED_REQUEST = "LimitExceeded.Request"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  UNSUPPORTEDOPERATION_TASKEXISTED = "UnsupportedOperation.TaskExisted"
 func (c *Client) CreateWxCloudBaseRunServerDBClusterWithContext(ctx context.Context, request *CreateWxCloudBaseRunServerDBClusterRequest) (response *CreateWxCloudBaseRunServerDBClusterResponse, err error) {
     if request == nil {

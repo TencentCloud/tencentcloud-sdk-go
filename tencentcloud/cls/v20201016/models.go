@@ -4384,6 +4384,10 @@ type LogsetInfo struct {
 	// 创建时间
 	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
 
+	// 云产品标识，日志集由其它云产品创建时，该字段会显示云产品名称，例如CDN、TKE
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AssumerName *string `json:"AssumerName,omitempty" name:"AssumerName"`
+
 	// 日志集绑定的标签
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
@@ -4391,7 +4395,7 @@ type LogsetInfo struct {
 	// 日志集下日志主题的数目
 	TopicCount *int64 `json:"TopicCount,omitempty" name:"TopicCount"`
 
-	// 若AssumerUin非空，则表示创建该日志集的服务方角色
+	// 若AssumerName非空，则表示创建该日志集的服务方角色
 	RoleName *string `json:"RoleName,omitempty" name:"RoleName"`
 }
 
@@ -6171,6 +6175,10 @@ type TopicInfo struct {
 	// 是否开启索引
 	Index *bool `json:"Index,omitempty" name:"Index"`
 
+	// 云产品标识，日志主题由其它云产品创建时，该字段会显示云产品名称，例如CDN、TKE
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AssumerName *string `json:"AssumerName,omitempty" name:"AssumerName"`
+
 	// 创建时间
 	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
 
@@ -6196,6 +6204,14 @@ type TopicInfo struct {
 	// 生命周期，单位天，可取值范围1~3600。取值为3640时代表永久保存
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Period *int64 `json:"Period,omitempty" name:"Period"`
+
+	// 云产品二级标识，日志主题由其它云产品创建时，该字段会显示云产品名称及其日志类型的二级分类，例如TKE-Audit、TKE-Event。部分云产品仅有云产品标识(AssumerName)，无该字段。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubAssumerName *string `json:"SubAssumerName,omitempty" name:"SubAssumerName"`
+
+	// 日志主题描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Describes *string `json:"Describes,omitempty" name:"Describes"`
 }
 
 // Predefined struct for user

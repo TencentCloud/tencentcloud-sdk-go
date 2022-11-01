@@ -1045,6 +1045,7 @@ func NewCreateUserSAMLConfigResponse() (response *CreateUserSAMLConfigResponse) 
 // 创建用户SAML配置
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETER_IDENTITYNAMEINUSE = "InvalidParameter.IdentityNameInUse"
 //  INVALIDPARAMETERVALUE_METADATAERROR = "InvalidParameterValue.MetadataError"
 func (c *Client) CreateUserSAMLConfig(request *CreateUserSAMLConfigRequest) (response *CreateUserSAMLConfigResponse, err error) {
     return c.CreateUserSAMLConfigWithContext(context.Background(), request)
@@ -1054,6 +1055,7 @@ func (c *Client) CreateUserSAMLConfig(request *CreateUserSAMLConfigRequest) (res
 // 创建用户SAML配置
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETER_IDENTITYNAMEINUSE = "InvalidParameter.IdentityNameInUse"
 //  INVALIDPARAMETERVALUE_METADATAERROR = "InvalidParameterValue.MetadataError"
 func (c *Client) CreateUserSAMLConfigWithContext(ctx context.Context, request *CreateUserSAMLConfigRequest) (response *CreateUserSAMLConfigResponse, err error) {
     if request == nil {

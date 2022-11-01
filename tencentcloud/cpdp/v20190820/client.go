@@ -1097,11 +1097,7 @@ func NewBindOpenBankProfitSharePayeeResponse() (response *BindOpenBankProfitShar
 // 云企付-绑定分账收款方
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_BANKFAILED = "FailedOperation.BankFailed"
-//  FAILEDOPERATION_SERVICEERROR = "FailedOperation.ServiceError"
-//  FAILEDOPERATION_UNKNOWN = "FailedOperation.Unknown"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  MISSINGPARAMETER_ = "MissingParameter."
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
 func (c *Client) BindOpenBankProfitSharePayee(request *BindOpenBankProfitSharePayeeRequest) (response *BindOpenBankProfitSharePayeeResponse, err error) {
     return c.BindOpenBankProfitSharePayeeWithContext(context.Background(), request)
 }
@@ -1110,11 +1106,7 @@ func (c *Client) BindOpenBankProfitSharePayee(request *BindOpenBankProfitSharePa
 // 云企付-绑定分账收款方
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_BANKFAILED = "FailedOperation.BankFailed"
-//  FAILEDOPERATION_SERVICEERROR = "FailedOperation.ServiceError"
-//  FAILEDOPERATION_UNKNOWN = "FailedOperation.Unknown"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  MISSINGPARAMETER_ = "MissingParameter."
+//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
 func (c *Client) BindOpenBankProfitSharePayeeWithContext(ctx context.Context, request *BindOpenBankProfitSharePayeeRequest) (response *BindOpenBankProfitSharePayeeResponse, err error) {
     if request == nil {
         request = NewBindOpenBankProfitSharePayeeRequest()
@@ -6771,15 +6763,7 @@ func NewQueryCompanyTitleResponse() (response *QueryCompanyTitleResponse) {
 // 智慧零售-查询公司抬头
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_BACKENDERROR = "FailedOperation.BackendError"
-//  INTERNALERROR_BACKENDERROR = "InternalError.BackendError"
-//  INTERNALERROR_DBACCESSERROR = "InternalError.DBAccessError"
-//  INTERNALERROR_FUNDSUMMARYACCTNOINCONSISTENTERROR = "InternalError.FundSummaryAcctNoInconsistentError"
-//  INTERNALERROR_PARAMETERERROR = "InternalError.ParameterError"
-//  INTERNALERROR_SAVEDBERROR = "InternalError.SaveDBError"
-//  INTERNALERROR_SUBACCOUNTNOTFOUNDERROR = "InternalError.SubAccountNotFoundError"
-//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
-//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
+//  RESOURCENOTFOUND_INVOICENOTFOUND = "ResourceNotFound.InvoiceNotFound"
 func (c *Client) QueryCompanyTitle(request *QueryCompanyTitleRequest) (response *QueryCompanyTitleResponse, err error) {
     return c.QueryCompanyTitleWithContext(context.Background(), request)
 }
@@ -6788,15 +6772,7 @@ func (c *Client) QueryCompanyTitle(request *QueryCompanyTitleRequest) (response 
 // 智慧零售-查询公司抬头
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_BACKENDERROR = "FailedOperation.BackendError"
-//  INTERNALERROR_BACKENDERROR = "InternalError.BackendError"
-//  INTERNALERROR_DBACCESSERROR = "InternalError.DBAccessError"
-//  INTERNALERROR_FUNDSUMMARYACCTNOINCONSISTENTERROR = "InternalError.FundSummaryAcctNoInconsistentError"
-//  INTERNALERROR_PARAMETERERROR = "InternalError.ParameterError"
-//  INTERNALERROR_SAVEDBERROR = "InternalError.SaveDBError"
-//  INTERNALERROR_SUBACCOUNTNOTFOUNDERROR = "InternalError.SubAccountNotFoundError"
-//  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
-//  INTERNALERROR_UNKOWNERROR = "InternalError.UnkownError"
+//  RESOURCENOTFOUND_INVOICENOTFOUND = "ResourceNotFound.InvoiceNotFound"
 func (c *Client) QueryCompanyTitleWithContext(ctx context.Context, request *QueryCompanyTitleRequest) (response *QueryCompanyTitleResponse, err error) {
     if request == nil {
         request = NewQueryCompanyTitleRequest()
@@ -12845,12 +12821,7 @@ func NewVerifyOpenBankAccountResponse() (response *VerifyOpenBankAccountResponse
 // 云企付-子商户银行卡打款验证，在接入TENPAY渠道EBANK_PAYMENT付款时，若客户期望接入担保支付，需在接入前先完成，收款商户绑定的银行卡进行打款验证。验证成功后，才可以调用CreateOpenBankPaymentOrder接口进行担保支付下单。
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_UPLOADTAXLIST = "FailedOperation.UploadTaxList"
-//  FAILEDOPERATION_UPLOADTAXPAYMENT = "FailedOperation.UploadTaxPayment"
 //  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
-//  MISSINGPARAMETER_ACTION = "MissingParameter.Action"
-//  MISSINGPARAMETER_APPID = "MissingParameter.AppId"
-//  RESOURCENOTFOUND_ACCOUNT = "ResourceNotFound.Account"
 func (c *Client) VerifyOpenBankAccount(request *VerifyOpenBankAccountRequest) (response *VerifyOpenBankAccountResponse, err error) {
     return c.VerifyOpenBankAccountWithContext(context.Background(), request)
 }
@@ -12859,12 +12830,7 @@ func (c *Client) VerifyOpenBankAccount(request *VerifyOpenBankAccountRequest) (r
 // 云企付-子商户银行卡打款验证，在接入TENPAY渠道EBANK_PAYMENT付款时，若客户期望接入担保支付，需在接入前先完成，收款商户绑定的银行卡进行打款验证。验证成功后，才可以调用CreateOpenBankPaymentOrder接口进行担保支付下单。
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_UPLOADTAXLIST = "FailedOperation.UploadTaxList"
-//  FAILEDOPERATION_UPLOADTAXPAYMENT = "FailedOperation.UploadTaxPayment"
 //  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
-//  MISSINGPARAMETER_ACTION = "MissingParameter.Action"
-//  MISSINGPARAMETER_APPID = "MissingParameter.AppId"
-//  RESOURCENOTFOUND_ACCOUNT = "ResourceNotFound.Account"
 func (c *Client) VerifyOpenBankAccountWithContext(ctx context.Context, request *VerifyOpenBankAccountRequest) (response *VerifyOpenBankAccountResponse, err error) {
     if request == nil {
         request = NewVerifyOpenBankAccountRequest()
@@ -12903,12 +12869,7 @@ func NewViewContractResponse() (response *ViewContractResponse) {
 // 云支付-查询合同明细接口
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_UPLOADTAXLIST = "FailedOperation.UploadTaxList"
-//  FAILEDOPERATION_UPLOADTAXPAYMENT = "FailedOperation.UploadTaxPayment"
 //  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
-//  MISSINGPARAMETER_ACTION = "MissingParameter.Action"
-//  MISSINGPARAMETER_APPID = "MissingParameter.AppId"
-//  RESOURCENOTFOUND_ACCOUNT = "ResourceNotFound.Account"
 func (c *Client) ViewContract(request *ViewContractRequest) (response *ViewContractResponse, err error) {
     return c.ViewContractWithContext(context.Background(), request)
 }
@@ -12917,12 +12878,7 @@ func (c *Client) ViewContract(request *ViewContractRequest) (response *ViewContr
 // 云支付-查询合同明细接口
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_UPLOADTAXLIST = "FailedOperation.UploadTaxList"
-//  FAILEDOPERATION_UPLOADTAXPAYMENT = "FailedOperation.UploadTaxPayment"
 //  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
-//  MISSINGPARAMETER_ACTION = "MissingParameter.Action"
-//  MISSINGPARAMETER_APPID = "MissingParameter.AppId"
-//  RESOURCENOTFOUND_ACCOUNT = "ResourceNotFound.Account"
 func (c *Client) ViewContractWithContext(ctx context.Context, request *ViewContractRequest) (response *ViewContractResponse, err error) {
     if request == nil {
         request = NewViewContractRequest()
@@ -12961,12 +12917,7 @@ func NewViewMerchantResponse() (response *ViewMerchantResponse) {
 // 云支付-查询商户明细接口
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_UPLOADTAXLIST = "FailedOperation.UploadTaxList"
-//  FAILEDOPERATION_UPLOADTAXPAYMENT = "FailedOperation.UploadTaxPayment"
 //  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
-//  MISSINGPARAMETER_ACTION = "MissingParameter.Action"
-//  MISSINGPARAMETER_APPID = "MissingParameter.AppId"
-//  RESOURCENOTFOUND_ACCOUNT = "ResourceNotFound.Account"
 func (c *Client) ViewMerchant(request *ViewMerchantRequest) (response *ViewMerchantResponse, err error) {
     return c.ViewMerchantWithContext(context.Background(), request)
 }
@@ -12975,12 +12926,7 @@ func (c *Client) ViewMerchant(request *ViewMerchantRequest) (response *ViewMerch
 // 云支付-查询商户明细接口
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_UPLOADTAXLIST = "FailedOperation.UploadTaxList"
-//  FAILEDOPERATION_UPLOADTAXPAYMENT = "FailedOperation.UploadTaxPayment"
 //  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
-//  MISSINGPARAMETER_ACTION = "MissingParameter.Action"
-//  MISSINGPARAMETER_APPID = "MissingParameter.AppId"
-//  RESOURCENOTFOUND_ACCOUNT = "ResourceNotFound.Account"
 func (c *Client) ViewMerchantWithContext(ctx context.Context, request *ViewMerchantRequest) (response *ViewMerchantResponse, err error) {
     if request == nil {
         request = NewViewMerchantRequest()
@@ -13019,12 +12965,7 @@ func NewViewShopResponse() (response *ViewShopResponse) {
 // 云支付-查询门店明细接口
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_UPLOADTAXLIST = "FailedOperation.UploadTaxList"
-//  FAILEDOPERATION_UPLOADTAXPAYMENT = "FailedOperation.UploadTaxPayment"
 //  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
-//  MISSINGPARAMETER_ACTION = "MissingParameter.Action"
-//  MISSINGPARAMETER_APPID = "MissingParameter.AppId"
-//  RESOURCENOTFOUND_ACCOUNT = "ResourceNotFound.Account"
 func (c *Client) ViewShop(request *ViewShopRequest) (response *ViewShopResponse, err error) {
     return c.ViewShopWithContext(context.Background(), request)
 }
@@ -13033,12 +12974,7 @@ func (c *Client) ViewShop(request *ViewShopRequest) (response *ViewShopResponse,
 // 云支付-查询门店明细接口
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_UPLOADTAXLIST = "FailedOperation.UploadTaxList"
-//  FAILEDOPERATION_UPLOADTAXPAYMENT = "FailedOperation.UploadTaxPayment"
 //  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
-//  MISSINGPARAMETER_ACTION = "MissingParameter.Action"
-//  MISSINGPARAMETER_APPID = "MissingParameter.AppId"
-//  RESOURCENOTFOUND_ACCOUNT = "ResourceNotFound.Account"
 func (c *Client) ViewShopWithContext(ctx context.Context, request *ViewShopRequest) (response *ViewShopResponse, err error) {
     if request == nil {
         request = NewViewShopRequest()

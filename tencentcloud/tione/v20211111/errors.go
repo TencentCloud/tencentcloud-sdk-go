@@ -101,6 +101,9 @@ const (
 	// 标签操作失败。
 	FAILEDOPERATION_EXECTAGFAIL = "FailedOperation.ExecTagFail"
 
+	// 白名单免费配额不足。
+	FAILEDOPERATION_INSUFFICIENTWHITELISTQUOTA = "FailedOperation.InsufficientWhitelistQuota"
+
 	// 移动模型目录失败。
 	FAILEDOPERATION_MOVEMODELDIRFAILED = "FailedOperation.MoveModelDirFailed"
 

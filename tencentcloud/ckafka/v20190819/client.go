@@ -175,6 +175,7 @@ func NewBatchModifyGroupOffsetsResponse() (response *BatchModifyGroupOffsetsResp
 // 批量修改消费组offset
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
@@ -188,6 +189,7 @@ func (c *Client) BatchModifyGroupOffsets(request *BatchModifyGroupOffsetsRequest
 // 批量修改消费组offset
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"

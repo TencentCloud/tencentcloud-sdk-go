@@ -6692,6 +6692,72 @@ func (r *DescribeOverviewIndexResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribePendingRiskInfoRequestParams struct {
+
+}
+
+type DescribePendingRiskInfoRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DescribePendingRiskInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePendingRiskInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePendingRiskInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribePendingRiskInfoResponseParams struct {
+	// 是否为付费用户
+	IsPaidUsr *bool `json:"IsPaidUsr,omitempty" name:"IsPaidUsr"`
+
+	// 攻击中的资源数量
+	AttackingCount *int64 `json:"AttackingCount,omitempty" name:"AttackingCount"`
+
+	// 封堵中的资源数量
+	BlockingCount *int64 `json:"BlockingCount,omitempty" name:"BlockingCount"`
+
+	// 已过期的资源数量
+	ExpiredCount *int64 `json:"ExpiredCount,omitempty" name:"ExpiredCount"`
+
+	// 所有待处理风险事件总数
+	Total *int64 `json:"Total,omitempty" name:"Total"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribePendingRiskInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribePendingRiskInfoResponseParams `json:"Response"`
+}
+
+func (r *DescribePendingRiskInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePendingRiskInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DisassociateDDoSEipAddressRequestParams struct {
 	// 资源实例ID，实例ID形如：bgpip-0000011x。只能填写高防IP实例。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`

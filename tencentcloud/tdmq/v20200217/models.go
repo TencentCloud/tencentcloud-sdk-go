@@ -5823,6 +5823,155 @@ func (r *DescribePublishersResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeRabbitMQNodeListRequestParams struct {
+	// 不适用，默认参数
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 偏移量
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 一页限制
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+type DescribeRabbitMQNodeListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 不适用，默认参数
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 偏移量
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 一页限制
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribeRabbitMQNodeListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRabbitMQNodeListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRabbitMQNodeListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRabbitMQNodeListResponseParams struct {
+	// 集群列表数量
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 集群列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NodeList []*RabbitMQPrivateNode `json:"NodeList,omitempty" name:"NodeList"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeRabbitMQNodeListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeRabbitMQNodeListResponseParams `json:"Response"`
+}
+
+func (r *DescribeRabbitMQNodeListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRabbitMQNodeListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRabbitMQVipInstancesRequestParams struct {
+	// 查询条件过滤器
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 查询数目上限，默认20
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 查询起始位置
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+}
+
+type DescribeRabbitMQVipInstancesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 查询条件过滤器
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 查询数目上限，默认20
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 查询起始位置
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+}
+
+func (r *DescribeRabbitMQVipInstancesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRabbitMQVipInstancesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Filters")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRabbitMQVipInstancesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRabbitMQVipInstancesResponseParams struct {
+	// 未分页的总数目
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 实例信息列表
+	Instances []*RabbitMQVipInstance `json:"Instances,omitempty" name:"Instances"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeRabbitMQVipInstancesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeRabbitMQVipInstancesResponseParams `json:"Response"`
+}
+
+func (r *DescribeRabbitMQVipInstancesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRabbitMQVipInstancesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeRocketMQClusterRequestParams struct {
 	// 集群ID
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
@@ -8356,6 +8505,58 @@ type Publisher struct {
 	// 生产者连接的主题分区号
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Partition *int64 `json:"Partition,omitempty" name:"Partition"`
+}
+
+type RabbitMQPrivateNode struct {
+	// 节点名字
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NodeName *string `json:"NodeName,omitempty" name:"NodeName"`
+}
+
+type RabbitMQVipInstance struct {
+	// 实例id
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 实例名称
+	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
+
+	// 实例版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceVersion *string `json:"InstanceVersion,omitempty" name:"InstanceVersion"`
+
+	// 实例状态，0表示创建中，1表示正常，2表示隔离中，3表示已销毁，4 - 异常, 5 - 发货失败
+	Status *uint64 `json:"Status,omitempty" name:"Status"`
+
+	// 节点数量
+	NodeCount *uint64 `json:"NodeCount,omitempty" name:"NodeCount"`
+
+	// 实例配置规格名称
+	ConfigDisplay *string `json:"ConfigDisplay,omitempty" name:"ConfigDisplay"`
+
+	// 峰值TPS
+	MaxTps *uint64 `json:"MaxTps,omitempty" name:"MaxTps"`
+
+	// 峰值带宽，Mbps为单位
+	MaxBandWidth *uint64 `json:"MaxBandWidth,omitempty" name:"MaxBandWidth"`
+
+	// 存储容量，GB为单位
+	MaxStorage *uint64 `json:"MaxStorage,omitempty" name:"MaxStorage"`
+
+	// 实例到期时间，毫秒为单位
+	ExpireTime *uint64 `json:"ExpireTime,omitempty" name:"ExpireTime"`
+
+	// 自动续费标记，0表示默认状态(用户未设置，即初始状态即手动续费)， 1表示自动续费，2表示明确不自动续费(用户设置)
+	AutoRenewFlag *uint64 `json:"AutoRenewFlag,omitempty" name:"AutoRenewFlag"`
+
+	// 0-后付费，1-预付费
+	PayMode *uint64 `json:"PayMode,omitempty" name:"PayMode"`
+
+	// 备注信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 实例配置ID
+	SpecName *string `json:"SpecName,omitempty" name:"SpecName"`
 }
 
 // Predefined struct for user

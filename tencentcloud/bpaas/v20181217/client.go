@@ -67,8 +67,10 @@ func NewGetBpaasApproveDetailResponse() (response *GetBpaasApproveDetailResponse
 // 查看审批详情
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR_CAUTHERROR = "InternalError.CauthError"
 //  INTERNALERROR_DBERROR = "InternalError.DbError"
+//  INVALIDPARAMETER_IDNOTEXIST = "InvalidParameter.IdNotExist"
 //  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) GetBpaasApproveDetail(request *GetBpaasApproveDetailRequest) (response *GetBpaasApproveDetailResponse, err error) {
     return c.GetBpaasApproveDetailWithContext(context.Background(), request)
@@ -78,8 +80,10 @@ func (c *Client) GetBpaasApproveDetail(request *GetBpaasApproveDetailRequest) (r
 // 查看审批详情
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR_CAUTHERROR = "InternalError.CauthError"
 //  INTERNALERROR_DBERROR = "InternalError.DbError"
+//  INVALIDPARAMETER_IDNOTEXIST = "InvalidParameter.IdNotExist"
 //  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) GetBpaasApproveDetailWithContext(ctx context.Context, request *GetBpaasApproveDetailRequest) (response *GetBpaasApproveDetailResponse, err error) {
     if request == nil {
