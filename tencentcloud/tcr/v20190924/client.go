@@ -4006,7 +4006,7 @@ func NewDescribeInstanceAllNamespacesResponse() (response *DescribeInstanceAllNa
 }
 
 // DescribeInstanceAllNamespaces
-// 查询所有有实例命名空间列表
+// 查询所有实例命名空间列表
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DEPENDENCEERROR = "FailedOperation.DependenceError"
@@ -4029,7 +4029,7 @@ func (c *Client) DescribeInstanceAllNamespaces(request *DescribeInstanceAllNames
 }
 
 // DescribeInstanceAllNamespaces
-// 查询所有有实例命名空间列表
+// 查询所有实例命名空间列表
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DEPENDENCEERROR = "FailedOperation.DependenceError"

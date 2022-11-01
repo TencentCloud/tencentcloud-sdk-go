@@ -725,6 +725,9 @@ type CreateLogConfigRequestParams struct {
 
 	// 收集文件名模式，当 InputType=container_file 时生效
 	FilePattern *string `json:"FilePattern,omitempty" name:"FilePattern"`
+
+	// 导出规则
+	ExtractRule *LogConfigExtractRule `json:"ExtractRule,omitempty" name:"ExtractRule"`
 }
 
 type CreateLogConfigRequest struct {
@@ -759,6 +762,9 @@ type CreateLogConfigRequest struct {
 
 	// 收集文件名模式，当 InputType=container_file 时生效
 	FilePattern *string `json:"FilePattern,omitempty" name:"FilePattern"`
+
+	// 导出规则
+	ExtractRule *LogConfigExtractRule `json:"ExtractRule,omitempty" name:"ExtractRule"`
 }
 
 func (r *CreateLogConfigRequest) ToJsonString() string {
@@ -783,6 +789,7 @@ func (r *CreateLogConfigRequest) FromJsonString(s string) error {
 	delete(f, "BeginningRegex")
 	delete(f, "LogPath")
 	delete(f, "FilePattern")
+	delete(f, "ExtractRule")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateLogConfigRequest has unknown keys!", "")
 	}
@@ -3755,10 +3762,10 @@ type LogConfig struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TopicId *string `json:"TopicId,omitempty" name:"TopicId"`
 
-	// 日志提取模式，minimalist_log 为单行全文；multiline_log 为多行全文；
+	// 日志提取模式，minimalist_log 为单行全文；multiline_log 为多行全文；  fullregex_log 为单行正则； multiline_fullregex_log 为多行正则； json_log 为 json；
 	LogType *string `json:"LogType,omitempty" name:"LogType"`
 
-	// 首行正则表达式，当LogType=multiline_log 时生效
+	// 首行正则表达式，当 LogType 为多行全文、多行正则时生效
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BeginningRegex *string `json:"BeginningRegex,omitempty" name:"BeginningRegex"`
 
@@ -3785,6 +3792,48 @@ type LogConfig struct {
 	// 应用名
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ApplicationName *string `json:"ApplicationName,omitempty" name:"ApplicationName"`
+
+	// 导出规则
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExtractRule *LogConfigExtractRule `json:"ExtractRule,omitempty" name:"ExtractRule"`
+}
+
+type LogConfigExtractRule struct {
+	// 首行正则表达式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BeginningRegex *string `json:"BeginningRegex,omitempty" name:"BeginningRegex"`
+
+	// 提取结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Keys []*string `json:"Keys,omitempty" name:"Keys"`
+
+	// 过滤键
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FilterKeys []*string `json:"FilterKeys,omitempty" name:"FilterKeys"`
+
+	// 过滤值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FilterRegex []*string `json:"FilterRegex,omitempty" name:"FilterRegex"`
+
+	// 日志正则表达式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LogRegex *string `json:"LogRegex,omitempty" name:"LogRegex"`
+
+	// 时间字段
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TimeKey *string `json:"TimeKey,omitempty" name:"TimeKey"`
+
+	// 时间格式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TimeFormat *string `json:"TimeFormat,omitempty" name:"TimeFormat"`
+
+	// 是否上传解析失败日志
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UnMatchUpload *string `json:"UnMatchUpload,omitempty" name:"UnMatchUpload"`
+
+	// 解析失败日志的键名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UnMatchedKey *string `json:"UnMatchedKey,omitempty" name:"UnMatchedKey"`
 }
 
 type LogConfigListPage struct {

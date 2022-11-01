@@ -2228,6 +2228,10 @@ type IndexPolicyField struct {
 	// frozen阶段转入时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FrozenMinAge *string `json:"FrozenMinAge,omitempty" name:"FrozenMinAge"`
+
+	// /
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ColdAction *string `json:"ColdAction,omitempty" name:"ColdAction"`
 }
 
 type IndexSettingsField struct {

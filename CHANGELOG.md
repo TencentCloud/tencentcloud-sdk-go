@@ -1,3 +1,313 @@
+# Release v1.0.528
+
+## 验证码(captcha) 版本：2019-07-22
+
+### 第 13 次发布
+
+发布时间：2022-11-02 06:08:36
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [GetTicketStatistics](https://cloud.tencent.com/document/api/1110/82276)
+
+
+
+## 云服务器(cvm) 版本：2017-03-12
+
+### 第 96 次发布
+
+发布时间：2022-11-02 06:16:11
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ResetInstance](https://cloud.tencent.com/document/api/213/15724)
+
+	* 新增入参：UserData
+
+
+
+
+## Elasticsearch Service(es) 版本：2018-04-16
+
+### 第 39 次发布
+
+发布时间：2022-11-02 06:23:18
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [IndexPolicyField](https://cloud.tencent.com/document/api/845/30634#IndexPolicyField)
+
+	* 新增成员：ColdAction
+
+
+
+
+## 腾讯电子签企业版(ess) 版本：2020-11-11
+
+### 第 23 次发布
+
+发布时间：2022-11-01 17:32:04
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateFlowByFiles](https://cloud.tencent.com/document/api/1323/70360)
+
+	* 新增入参：UserData
+
+
+### 第 22 次发布
+
+发布时间：2022-11-01 16:03:19
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ApproverInfo](https://cloud.tencent.com/document/api/1323/70369#ApproverInfo)
+
+	* 新增成员：ApproverOption
+
+
+
+
+## 文字识别(ocr) 版本：2018-11-19
+
+### 第 81 次发布
+
+发布时间：2022-11-02 06:33:46
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [VatInvoiceVerifyNew](https://cloud.tencent.com/document/api/866/73674)
+
+	* 新增入参：RegionCode, SellerTaxCode, EnableCommonElectronic
+
+
+
+
+## 集团账号管理(organization) 版本：2021-03-31
+
+### 第 12 次发布
+
+发布时间：2022-11-02 06:34:29
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateOrganizationMember](https://cloud.tencent.com/document/api/850/63310)
+
+	* 新增入参：AuthRelationId
+
+
+
+
+## 集团账号管理(organization) 版本：2018-12-25
+
+
+
+## SSL 证书(ssl) 版本：2019-12-05
+
+### 第 21 次发布
+
+发布时间：2022-11-02 06:38:26
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [ModifyCertificatesExpiringNotificationSwitch](https://cloud.tencent.com/document/api/400/82277)
+
+
+
+## 服务网格(tcm) 版本：2021-04-13
+
+### 第 17 次发布
+
+发布时间：2022-11-02 06:40:38
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [ModifyTracingConfig](https://cloud.tencent.com/document/api/1261/82278)
+
+
+
+## 容器镜像服务(tcr) 版本：2019-09-24
+
+### 第 44 次发布
+
+发布时间：2022-11-02 06:40:49
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeInstanceAllNamespaces](https://cloud.tencent.com/document/api/1141/79582)
+
+	* 新增入参：Limit, Offset
+
+
+
+
+## 容器安全服务(tcss) 版本：2020-11-01
+
+### 第 31 次发布
+
+发布时间：2022-11-02 06:41:34
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateRiskDnsEventExportJob](https://cloud.tencent.com/document/api/1285/82279)
+
+
+
+## 弹性微服务 TEM(tem) 版本：2021-07-01
+
+### 第 33 次发布
+
+发布时间：2022-11-02 06:44:20
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateLogConfig](https://cloud.tencent.com/document/api/1371/78465)
+
+	* 新增入参：ExtractRule
+
+
+新增数据结构：
+
+* [LogConfigExtractRule](https://cloud.tencent.com/document/api/1371/60171#LogConfigExtractRule)
+
+修改数据结构：
+
+* [LogConfig](https://cloud.tencent.com/document/api/1371/60171#LogConfig)
+
+	* 新增成员：ExtractRule
+
+
+
+
+## 弹性微服务 TEM(tem) 版本：2020-12-21
+
+
+
+## 腾讯云 TI 平台 TI-ONE(tione) 版本：2021-11-11
+
+### 第 7 次发布
+
+发布时间：2022-11-02 06:46:06
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateModelService](https://cloud.tencent.com/document/api/851/82291)
+* [DeleteModelService](https://cloud.tencent.com/document/api/851/82290)
+* [DeleteModelServiceGroup](https://cloud.tencent.com/document/api/851/82289)
+* [DescribeAPIConfigs](https://cloud.tencent.com/document/api/851/82288)
+* [DescribeModelService](https://cloud.tencent.com/document/api/851/82287)
+* [DescribeModelServiceCallInfo](https://cloud.tencent.com/document/api/851/82286)
+* [DescribeModelServiceGroup](https://cloud.tencent.com/document/api/851/82285)
+* [DescribeModelServiceGroups](https://cloud.tencent.com/document/api/851/82284)
+* [DescribeModelServiceHistory](https://cloud.tencent.com/document/api/851/82283)
+* [DescribeModelServiceHotUpdated](https://cloud.tencent.com/document/api/851/82282)
+* [DescribeModelServices](https://cloud.tencent.com/document/api/851/82281)
+* [ModifyServiceGroupWeights](https://cloud.tencent.com/document/api/851/82280)
+
+修改接口：
+
+* [CreateTrainingTask](https://cloud.tencent.com/document/api/851/75094)
+
+	* 新增入参：FrameworkEnvironment
+
+
+新增数据结构：
+
+* [APIConfigDetail](https://cloud.tencent.com/document/api/851/75051#APIConfigDetail)
+* [CronScaleJob](https://cloud.tencent.com/document/api/851/75051#CronScaleJob)
+* [EnvVar](https://cloud.tencent.com/document/api/851/75051#EnvVar)
+* [HorizontalPodAutoscaler](https://cloud.tencent.com/document/api/851/75051#HorizontalPodAutoscaler)
+* [InferGatewayCallInfo](https://cloud.tencent.com/document/api/851/75051#InferGatewayCallInfo)
+* [Option](https://cloud.tencent.com/document/api/851/75051#Option)
+* [ScheduledAction](https://cloud.tencent.com/document/api/851/75051#ScheduledAction)
+* [Service](https://cloud.tencent.com/document/api/851/75051#Service)
+* [ServiceCallInfo](https://cloud.tencent.com/document/api/851/75051#ServiceCallInfo)
+* [ServiceGroup](https://cloud.tencent.com/document/api/851/75051#ServiceGroup)
+* [ServiceHistory](https://cloud.tencent.com/document/api/851/75051#ServiceHistory)
+* [ServiceInfo](https://cloud.tencent.com/document/api/851/75051#ServiceInfo)
+* [ServiceLimit](https://cloud.tencent.com/document/api/851/75051#ServiceLimit)
+* [StatefulSetCondition](https://cloud.tencent.com/document/api/851/75051#StatefulSetCondition)
+* [VolumeMount](https://cloud.tencent.com/document/api/851/75051#VolumeMount)
+* [WeightEntry](https://cloud.tencent.com/document/api/851/75051#WeightEntry)
+* [WorkloadStatus](https://cloud.tencent.com/document/api/851/75051#WorkloadStatus)
+
+修改数据结构：
+
+* [FrameworkVersion](https://cloud.tencent.com/document/api/851/75051#FrameworkVersion)
+
+	* 新增成员：Environment
+
+* [ResourceInfo](https://cloud.tencent.com/document/api/851/75051#ResourceInfo)
+
+	* 新增成员：RealGpuDetailSet
+
+* [TrainingTaskDetail](https://cloud.tencent.com/document/api/851/75051#TrainingTaskDetail)
+
+	* 新增成员：FrameworkEnvironment
+
+* [TrainingTaskSetItem](https://cloud.tencent.com/document/api/851/75051#TrainingTaskSetItem)
+
+	* 新增成员：FrameworkEnvironment
+
+
+
+
+## 腾讯云 TI 平台 TI-ONE(tione) 版本：2019-10-22
+
+
+
 # Release v1.0.527
 
 ## T-Sec-DDoS防护(Anti-DDoS)(antiddos) 版本：2020-03-09

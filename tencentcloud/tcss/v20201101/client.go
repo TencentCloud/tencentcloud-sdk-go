@@ -2631,6 +2631,72 @@ func (c *Client) CreateRefreshTaskWithContext(ctx context.Context, request *Crea
     return
 }
 
+func NewCreateRiskDnsEventExportJobRequest() (request *CreateRiskDnsEventExportJobRequest) {
+    request = &CreateRiskDnsEventExportJobRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcss", APIVersion, "CreateRiskDnsEventExportJob")
+    
+    
+    return
+}
+
+func NewCreateRiskDnsEventExportJobResponse() (response *CreateRiskDnsEventExportJobResponse) {
+    response = &CreateRiskDnsEventExportJobResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateRiskDnsEventExportJob
+// 创建恶意请求事件导出任务
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) CreateRiskDnsEventExportJob(request *CreateRiskDnsEventExportJobRequest) (response *CreateRiskDnsEventExportJobResponse, err error) {
+    return c.CreateRiskDnsEventExportJobWithContext(context.Background(), request)
+}
+
+// CreateRiskDnsEventExportJob
+// 创建恶意请求事件导出任务
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) CreateRiskDnsEventExportJobWithContext(ctx context.Context, request *CreateRiskDnsEventExportJobRequest) (response *CreateRiskDnsEventExportJobResponse, err error) {
+    if request == nil {
+        request = NewCreateRiskDnsEventExportJobRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateRiskDnsEventExportJob require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateRiskDnsEventExportJobResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateSearchTemplateRequest() (request *CreateSearchTemplateRequest) {
     request = &CreateSearchTemplateRequest{
         BaseRequest: &tchttp.BaseRequest{},

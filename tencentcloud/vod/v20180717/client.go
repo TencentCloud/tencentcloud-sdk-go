@@ -8934,8 +8934,6 @@ func NewSearchMediaResponse() (response *SearchMediaResponse) {
 //
 // - 指定直播推流码集合 StreamIds（见输入参数）筛选直播录制的媒体。
 //
-// - 指定视频 ID 集合 Vids （见输入参数）筛选直播录制的媒体。
-//
 // - 指定媒体的创建时间范围筛选媒体。
 //
 // - 指定 TRTC 应用 ID 集合筛选媒体。
@@ -8947,8 +8945,6 @@ func NewSearchMediaResponse() (response *SearchMediaResponse) {
 // - （不推荐：应使用 SourceTypes 替代）指定单个媒体文件来源 SourceType 进行搜索。
 //
 // - （不推荐：应使用 StreamIds 替代）指定单个推流直播码 StreamId 进行搜索。
-//
-// - （不推荐：应使用 Vids 替代）指定单个视频 ID Vid 进行搜索。
 //
 // - （不推荐：应使用 CreateTime 替代）指定单个起始创建时间 StartTime 进行搜索。
 //
@@ -9036,8 +9032,6 @@ func (c *Client) SearchMedia(request *SearchMediaRequest) (response *SearchMedia
 //
 // - 指定直播推流码集合 StreamIds（见输入参数）筛选直播录制的媒体。
 //
-// - 指定视频 ID 集合 Vids （见输入参数）筛选直播录制的媒体。
-//
 // - 指定媒体的创建时间范围筛选媒体。
 //
 // - 指定 TRTC 应用 ID 集合筛选媒体。
@@ -9049,8 +9043,6 @@ func (c *Client) SearchMedia(request *SearchMediaRequest) (response *SearchMedia
 // - （不推荐：应使用 SourceTypes 替代）指定单个媒体文件来源 SourceType 进行搜索。
 //
 // - （不推荐：应使用 StreamIds 替代）指定单个推流直播码 StreamId 进行搜索。
-//
-// - （不推荐：应使用 Vids 替代）指定单个视频 ID Vid 进行搜索。
 //
 // - （不推荐：应使用 CreateTime 替代）指定单个起始创建时间 StartTime 进行搜索。
 //

@@ -20,6 +20,56 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+type APIConfigDetail struct {
+	// 接口id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 接口所属服务组id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ServiceGroupId *string `json:"ServiceGroupId,omitempty" name:"ServiceGroupId"`
+
+	// 接口描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 相对路径
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RelativeUrl *string `json:"RelativeUrl,omitempty" name:"RelativeUrl"`
+
+	// 服务类型 HTTP HTTPS
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ServiceType *string `json:"ServiceType,omitempty" name:"ServiceType"`
+
+	// GET POST
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HttpMethod *string `json:"HttpMethod,omitempty" name:"HttpMethod"`
+
+	// 请求示例
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HttpInputExample *string `json:"HttpInputExample,omitempty" name:"HttpInputExample"`
+
+	// 回包示例
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HttpOutputExample *string `json:"HttpOutputExample,omitempty" name:"HttpOutputExample"`
+
+	// 更新成员
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdatedBy *string `json:"UpdatedBy,omitempty" name:"UpdatedBy"`
+
+	// 更新时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdatedAt *string `json:"UpdatedAt,omitempty" name:"UpdatedAt"`
+
+	// 主账号uin
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Uin *string `json:"Uin,omitempty" name:"Uin"`
+
+	// 子账号subuin
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubUin *string `json:"SubUin,omitempty" name:"SubUin"`
+}
+
 type BatchTaskDetail struct {
 	// 跑批任务ID
 	BatchTaskId *string `json:"BatchTaskId,omitempty" name:"BatchTaskId"`
@@ -575,6 +625,285 @@ func (r *CreateDatasetResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateModelServiceRequestParams struct {
+	// 镜像信息，配置服务运行所需的镜像地址等信息
+	ImageInfo *ImageInfo `json:"ImageInfo,omitempty" name:"ImageInfo"`
+
+	// 新增版本时需要填写
+	ServiceGroupId *string `json:"ServiceGroupId,omitempty" name:"ServiceGroupId"`
+
+	// 不超过60个字，仅支持英文、数字、下划线"_"、短横"-"，只能以英文、数字开头
+	ServiceGroupName *string `json:"ServiceGroupName,omitempty" name:"ServiceGroupName"`
+
+	// 模型服务的描述
+	ServiceDescription *string `json:"ServiceDescription,omitempty" name:"ServiceDescription"`
+
+	// 付费模式,有 PREPAID 、 POSTPAID_BY_HOUR 和 HYBRID_PAID 三种
+	ChargeType *string `json:"ChargeType,omitempty" name:"ChargeType"`
+
+	// 预付费模式下所属的资源组id，同服务组下唯一
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" name:"ResourceGroupId"`
+
+	// 模型信息，需要挂载模型时填写
+	ModelInfo *ModelInfo `json:"ModelInfo,omitempty" name:"ModelInfo"`
+
+	// 环境变量，可选参数，用于配置容器中的环境变量
+	Env []*EnvVar `json:"Env,omitempty" name:"Env"`
+
+	// 资源描述，指定预付费模式下的cpu,mem,gpu等信息，后付费无需填写
+	Resources *ResourceInfo `json:"Resources,omitempty" name:"Resources"`
+
+	// 使用DescribeBillingSpecs接口返回的规格列表中的值，或者参考实例列表:
+	// TI.S.MEDIUM.POST	2C4G
+	// TI.S.LARGE.POST	4C8G
+	// TI.S.2XLARGE16.POST	8C16G
+	// TI.S.2XLARGE32.POST	8C32G
+	// TI.S.4XLARGE32.POST	16C32G
+	// TI.S.4XLARGE64.POST	16C64G
+	// TI.S.6XLARGE48.POST	24C48G
+	// TI.S.6XLARGE96.POST	24C96G
+	// TI.S.8XLARGE64.POST	32C64G
+	// TI.S.8XLARGE128.POST 32C128G
+	// TI.GN7.LARGE20.POST	4C20G T4*1/4
+	// TI.GN7.2XLARGE40.POST	10C40G T4*1/2
+	// TI.GN7.2XLARGE32.POST	8C32G T4*1
+	// TI.GN7.5XLARGE80.POST	20C80G T4*1
+	// TI.GN7.8XLARGE128.POST	32C128G T4*1
+	// TI.GN7.10XLARGE160.POST	40C160G T4*2
+	// TI.GN7.20XLARGE320.POST	80C320G T4*4
+	InstanceType *string `json:"InstanceType,omitempty" name:"InstanceType"`
+
+	// 扩缩容类型 支持：自动 - "AUTO", 手动 - "MANUAL",默认为MANUAL
+	ScaleMode *string `json:"ScaleMode,omitempty" name:"ScaleMode"`
+
+	// 实例数量, 不同计费模式和调节模式下对应关系如下
+	// PREPAID 和 POSTPAID_BY_HOUR:
+	// 手动调节模式下对应 实例数量
+	// 自动调节模式下对应 基于时间的默认策略的实例数量
+	// HYBRID_PAID:
+	// 后付费实例手动调节模式下对应 实例数量
+	// 后付费实例自动调节模式下对应 时间策略的默认策略的实例数量
+	Replicas *int64 `json:"Replicas,omitempty" name:"Replicas"`
+
+	// 自动伸缩信息
+	HorizontalPodAutoscaler *HorizontalPodAutoscaler `json:"HorizontalPodAutoscaler,omitempty" name:"HorizontalPodAutoscaler"`
+
+	// 是否开启日志投递，开启后需填写配置投递到指定cls
+	LogEnable *bool `json:"LogEnable,omitempty" name:"LogEnable"`
+
+	// 日志配置，需要投递服务日志到指定cls时填写
+	LogConfig *LogConfig `json:"LogConfig,omitempty" name:"LogConfig"`
+
+	// 是否开启接口鉴权，开启后自动生成token信息，访问需要token鉴权
+	AuthorizationEnable *bool `json:"AuthorizationEnable,omitempty" name:"AuthorizationEnable"`
+
+	// 腾讯云标签
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
+
+	// 是否新增版本
+	NewVersion *bool `json:"NewVersion,omitempty" name:"NewVersion"`
+
+	// 定时任务配置，使用定时策略时填写
+	CronScaleJobs []*CronScaleJob `json:"CronScaleJobs,omitempty" name:"CronScaleJobs"`
+
+	// 自动伸缩策略配置 HPA : 通过HPA进行弹性伸缩 CRON 通过定时任务进行伸缩
+	ScaleStrategy *string `json:"ScaleStrategy,omitempty" name:"ScaleStrategy"`
+
+	// 计费模式[HYBRID_PAID]时生效, 用于标识混合计费模式下的预付费实例数
+	HybridBillingPrepaidReplicas *int64 `json:"HybridBillingPrepaidReplicas,omitempty" name:"HybridBillingPrepaidReplicas"`
+
+	// [AUTO_ML 自动学习，自动学习正式发布 AUTO_ML_FORMAL, DEFAULT 默认]
+	CreateSource *string `json:"CreateSource,omitempty" name:"CreateSource"`
+
+	// 是否开启模型的热更新。默认不开启
+	ModelHotUpdateEnable *bool `json:"ModelHotUpdateEnable,omitempty" name:"ModelHotUpdateEnable"`
+
+	// 定时停止配置
+	ScheduledAction *ScheduledAction `json:"ScheduledAction,omitempty" name:"ScheduledAction"`
+
+	// 挂载配置，目前只支持CFS
+	VolumeMount *VolumeMount `json:"VolumeMount,omitempty" name:"VolumeMount"`
+
+	// 服务限速限流相关配置
+	ServiceLimit *ServiceLimit `json:"ServiceLimit,omitempty" name:"ServiceLimit"`
+}
+
+type CreateModelServiceRequest struct {
+	*tchttp.BaseRequest
+	
+	// 镜像信息，配置服务运行所需的镜像地址等信息
+	ImageInfo *ImageInfo `json:"ImageInfo,omitempty" name:"ImageInfo"`
+
+	// 新增版本时需要填写
+	ServiceGroupId *string `json:"ServiceGroupId,omitempty" name:"ServiceGroupId"`
+
+	// 不超过60个字，仅支持英文、数字、下划线"_"、短横"-"，只能以英文、数字开头
+	ServiceGroupName *string `json:"ServiceGroupName,omitempty" name:"ServiceGroupName"`
+
+	// 模型服务的描述
+	ServiceDescription *string `json:"ServiceDescription,omitempty" name:"ServiceDescription"`
+
+	// 付费模式,有 PREPAID 、 POSTPAID_BY_HOUR 和 HYBRID_PAID 三种
+	ChargeType *string `json:"ChargeType,omitempty" name:"ChargeType"`
+
+	// 预付费模式下所属的资源组id，同服务组下唯一
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" name:"ResourceGroupId"`
+
+	// 模型信息，需要挂载模型时填写
+	ModelInfo *ModelInfo `json:"ModelInfo,omitempty" name:"ModelInfo"`
+
+	// 环境变量，可选参数，用于配置容器中的环境变量
+	Env []*EnvVar `json:"Env,omitempty" name:"Env"`
+
+	// 资源描述，指定预付费模式下的cpu,mem,gpu等信息，后付费无需填写
+	Resources *ResourceInfo `json:"Resources,omitempty" name:"Resources"`
+
+	// 使用DescribeBillingSpecs接口返回的规格列表中的值，或者参考实例列表:
+	// TI.S.MEDIUM.POST	2C4G
+	// TI.S.LARGE.POST	4C8G
+	// TI.S.2XLARGE16.POST	8C16G
+	// TI.S.2XLARGE32.POST	8C32G
+	// TI.S.4XLARGE32.POST	16C32G
+	// TI.S.4XLARGE64.POST	16C64G
+	// TI.S.6XLARGE48.POST	24C48G
+	// TI.S.6XLARGE96.POST	24C96G
+	// TI.S.8XLARGE64.POST	32C64G
+	// TI.S.8XLARGE128.POST 32C128G
+	// TI.GN7.LARGE20.POST	4C20G T4*1/4
+	// TI.GN7.2XLARGE40.POST	10C40G T4*1/2
+	// TI.GN7.2XLARGE32.POST	8C32G T4*1
+	// TI.GN7.5XLARGE80.POST	20C80G T4*1
+	// TI.GN7.8XLARGE128.POST	32C128G T4*1
+	// TI.GN7.10XLARGE160.POST	40C160G T4*2
+	// TI.GN7.20XLARGE320.POST	80C320G T4*4
+	InstanceType *string `json:"InstanceType,omitempty" name:"InstanceType"`
+
+	// 扩缩容类型 支持：自动 - "AUTO", 手动 - "MANUAL",默认为MANUAL
+	ScaleMode *string `json:"ScaleMode,omitempty" name:"ScaleMode"`
+
+	// 实例数量, 不同计费模式和调节模式下对应关系如下
+	// PREPAID 和 POSTPAID_BY_HOUR:
+	// 手动调节模式下对应 实例数量
+	// 自动调节模式下对应 基于时间的默认策略的实例数量
+	// HYBRID_PAID:
+	// 后付费实例手动调节模式下对应 实例数量
+	// 后付费实例自动调节模式下对应 时间策略的默认策略的实例数量
+	Replicas *int64 `json:"Replicas,omitempty" name:"Replicas"`
+
+	// 自动伸缩信息
+	HorizontalPodAutoscaler *HorizontalPodAutoscaler `json:"HorizontalPodAutoscaler,omitempty" name:"HorizontalPodAutoscaler"`
+
+	// 是否开启日志投递，开启后需填写配置投递到指定cls
+	LogEnable *bool `json:"LogEnable,omitempty" name:"LogEnable"`
+
+	// 日志配置，需要投递服务日志到指定cls时填写
+	LogConfig *LogConfig `json:"LogConfig,omitempty" name:"LogConfig"`
+
+	// 是否开启接口鉴权，开启后自动生成token信息，访问需要token鉴权
+	AuthorizationEnable *bool `json:"AuthorizationEnable,omitempty" name:"AuthorizationEnable"`
+
+	// 腾讯云标签
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
+
+	// 是否新增版本
+	NewVersion *bool `json:"NewVersion,omitempty" name:"NewVersion"`
+
+	// 定时任务配置，使用定时策略时填写
+	CronScaleJobs []*CronScaleJob `json:"CronScaleJobs,omitempty" name:"CronScaleJobs"`
+
+	// 自动伸缩策略配置 HPA : 通过HPA进行弹性伸缩 CRON 通过定时任务进行伸缩
+	ScaleStrategy *string `json:"ScaleStrategy,omitempty" name:"ScaleStrategy"`
+
+	// 计费模式[HYBRID_PAID]时生效, 用于标识混合计费模式下的预付费实例数
+	HybridBillingPrepaidReplicas *int64 `json:"HybridBillingPrepaidReplicas,omitempty" name:"HybridBillingPrepaidReplicas"`
+
+	// [AUTO_ML 自动学习，自动学习正式发布 AUTO_ML_FORMAL, DEFAULT 默认]
+	CreateSource *string `json:"CreateSource,omitempty" name:"CreateSource"`
+
+	// 是否开启模型的热更新。默认不开启
+	ModelHotUpdateEnable *bool `json:"ModelHotUpdateEnable,omitempty" name:"ModelHotUpdateEnable"`
+
+	// 定时停止配置
+	ScheduledAction *ScheduledAction `json:"ScheduledAction,omitempty" name:"ScheduledAction"`
+
+	// 挂载配置，目前只支持CFS
+	VolumeMount *VolumeMount `json:"VolumeMount,omitempty" name:"VolumeMount"`
+
+	// 服务限速限流相关配置
+	ServiceLimit *ServiceLimit `json:"ServiceLimit,omitempty" name:"ServiceLimit"`
+}
+
+func (r *CreateModelServiceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateModelServiceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageInfo")
+	delete(f, "ServiceGroupId")
+	delete(f, "ServiceGroupName")
+	delete(f, "ServiceDescription")
+	delete(f, "ChargeType")
+	delete(f, "ResourceGroupId")
+	delete(f, "ModelInfo")
+	delete(f, "Env")
+	delete(f, "Resources")
+	delete(f, "InstanceType")
+	delete(f, "ScaleMode")
+	delete(f, "Replicas")
+	delete(f, "HorizontalPodAutoscaler")
+	delete(f, "LogEnable")
+	delete(f, "LogConfig")
+	delete(f, "AuthorizationEnable")
+	delete(f, "Tags")
+	delete(f, "NewVersion")
+	delete(f, "CronScaleJobs")
+	delete(f, "ScaleStrategy")
+	delete(f, "HybridBillingPrepaidReplicas")
+	delete(f, "CreateSource")
+	delete(f, "ModelHotUpdateEnable")
+	delete(f, "ScheduledAction")
+	delete(f, "VolumeMount")
+	delete(f, "ServiceLimit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateModelServiceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateModelServiceResponseParams struct {
+	// 生成的模型服务
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Service *Service `json:"Service,omitempty" name:"Service"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateModelServiceResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateModelServiceResponseParams `json:"Response"`
+}
+
+func (r *CreateModelServiceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateModelServiceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateTrainingModelRequestParams struct {
 	// 导入方式
 	// MODEL：导入新模型
@@ -817,9 +1146,6 @@ type CreateTrainingTaskRequestParams struct {
 	// 训练任务名称，不超过60个字符，仅支持中英文、数字、下划线"_"、短横"-"，只能以中英文、数字开头
 	Name *string `json:"Name,omitempty" name:"Name"`
 
-	// 训练模式，通过DescribeTrainingFrameworks接口查询，eg：PS_WORKER、DDP、MPI、HOROVOD
-	TrainingMode *string `json:"TrainingMode,omitempty" name:"TrainingMode"`
-
 	// 计费模式，eg：PREPAID预付费，即包年包月；POSTPAID_BY_HOUR按小时后付费
 	ChargeType *string `json:"ChargeType,omitempty" name:"ChargeType"`
 
@@ -828,6 +1154,9 @@ type CreateTrainingTaskRequestParams struct {
 
 	// COS代码包路径
 	CodePackagePath *CosPathInfo `json:"CodePackagePath,omitempty" name:"CodePackagePath"`
+
+	// 训练模式，通过DescribeTrainingFrameworks接口查询，eg：PS_WORKER、DDP、MPI、HOROVOD
+	TrainingMode *string `json:"TrainingMode,omitempty" name:"TrainingMode"`
 
 	// COS训练输出路径
 	Output *CosPathInfo `json:"Output,omitempty" name:"Output"`
@@ -838,8 +1167,11 @@ type CreateTrainingTaskRequestParams struct {
 	// 训练框架名称，通过DescribeTrainingFrameworks接口查询，eg：SPARK、PYSPARK、TENSORFLOW、PYTORCH
 	FrameworkName *string `json:"FrameworkName,omitempty" name:"FrameworkName"`
 
-	// 训练框架版本，通过DescribeTrainingFrameworks接口查询，eg：tf1.15-py3.7-cpu、torch1.9-py3.8-cuda11.1-gpu
+	// 训练框架版本，通过DescribeTrainingFrameworks接口查询，eg：1.15、1.9
 	FrameworkVersion *string `json:"FrameworkVersion,omitempty" name:"FrameworkVersion"`
+
+	// 训练框架环境，通过DescribeTrainingFrameworks接口查询，eg：tf1.15-py3.7-cpu、torch1.9-py3.8-cuda11.1-gpu
+	FrameworkEnvironment *string `json:"FrameworkEnvironment,omitempty" name:"FrameworkEnvironment"`
 
 	// 预付费专用资源组ID，通过DescribeBillingResourceGroups接口查询
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" name:"ResourceGroupId"`
@@ -852,9 +1184,6 @@ type CreateTrainingTaskRequestParams struct {
 
 	// 启动命令信息，默认为sh start.sh
 	StartCmdInfo *StartCmdInfo `json:"StartCmdInfo,omitempty" name:"StartCmdInfo"`
-
-	// 数据来源，eg：DATASET、COS、CFS、HDFS
-	DataSource *string `json:"DataSource,omitempty" name:"DataSource"`
 
 	// 数据配置
 	DataConfigs []*DataConfig `json:"DataConfigs,omitempty" name:"DataConfigs"`
@@ -873,6 +1202,9 @@ type CreateTrainingTaskRequestParams struct {
 
 	// 备注，最多500个字
 	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 数据来源，eg：DATASET、COS、CFS、HDFS
+	DataSource *string `json:"DataSource,omitempty" name:"DataSource"`
 }
 
 type CreateTrainingTaskRequest struct {
@@ -881,9 +1213,6 @@ type CreateTrainingTaskRequest struct {
 	// 训练任务名称，不超过60个字符，仅支持中英文、数字、下划线"_"、短横"-"，只能以中英文、数字开头
 	Name *string `json:"Name,omitempty" name:"Name"`
 
-	// 训练模式，通过DescribeTrainingFrameworks接口查询，eg：PS_WORKER、DDP、MPI、HOROVOD
-	TrainingMode *string `json:"TrainingMode,omitempty" name:"TrainingMode"`
-
 	// 计费模式，eg：PREPAID预付费，即包年包月；POSTPAID_BY_HOUR按小时后付费
 	ChargeType *string `json:"ChargeType,omitempty" name:"ChargeType"`
 
@@ -892,6 +1221,9 @@ type CreateTrainingTaskRequest struct {
 
 	// COS代码包路径
 	CodePackagePath *CosPathInfo `json:"CodePackagePath,omitempty" name:"CodePackagePath"`
+
+	// 训练模式，通过DescribeTrainingFrameworks接口查询，eg：PS_WORKER、DDP、MPI、HOROVOD
+	TrainingMode *string `json:"TrainingMode,omitempty" name:"TrainingMode"`
 
 	// COS训练输出路径
 	Output *CosPathInfo `json:"Output,omitempty" name:"Output"`
@@ -902,8 +1234,11 @@ type CreateTrainingTaskRequest struct {
 	// 训练框架名称，通过DescribeTrainingFrameworks接口查询，eg：SPARK、PYSPARK、TENSORFLOW、PYTORCH
 	FrameworkName *string `json:"FrameworkName,omitempty" name:"FrameworkName"`
 
-	// 训练框架版本，通过DescribeTrainingFrameworks接口查询，eg：tf1.15-py3.7-cpu、torch1.9-py3.8-cuda11.1-gpu
+	// 训练框架版本，通过DescribeTrainingFrameworks接口查询，eg：1.15、1.9
 	FrameworkVersion *string `json:"FrameworkVersion,omitempty" name:"FrameworkVersion"`
+
+	// 训练框架环境，通过DescribeTrainingFrameworks接口查询，eg：tf1.15-py3.7-cpu、torch1.9-py3.8-cuda11.1-gpu
+	FrameworkEnvironment *string `json:"FrameworkEnvironment,omitempty" name:"FrameworkEnvironment"`
 
 	// 预付费专用资源组ID，通过DescribeBillingResourceGroups接口查询
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" name:"ResourceGroupId"`
@@ -916,9 +1251,6 @@ type CreateTrainingTaskRequest struct {
 
 	// 启动命令信息，默认为sh start.sh
 	StartCmdInfo *StartCmdInfo `json:"StartCmdInfo,omitempty" name:"StartCmdInfo"`
-
-	// 数据来源，eg：DATASET、COS、CFS、HDFS
-	DataSource *string `json:"DataSource,omitempty" name:"DataSource"`
 
 	// 数据配置
 	DataConfigs []*DataConfig `json:"DataConfigs,omitempty" name:"DataConfigs"`
@@ -937,6 +1269,9 @@ type CreateTrainingTaskRequest struct {
 
 	// 备注，最多500个字
 	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 数据来源，eg：DATASET、COS、CFS、HDFS
+	DataSource *string `json:"DataSource,omitempty" name:"DataSource"`
 }
 
 func (r *CreateTrainingTaskRequest) ToJsonString() string {
@@ -952,25 +1287,26 @@ func (r *CreateTrainingTaskRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "Name")
-	delete(f, "TrainingMode")
 	delete(f, "ChargeType")
 	delete(f, "ResourceConfigInfos")
 	delete(f, "CodePackagePath")
+	delete(f, "TrainingMode")
 	delete(f, "Output")
 	delete(f, "LogEnable")
 	delete(f, "FrameworkName")
 	delete(f, "FrameworkVersion")
+	delete(f, "FrameworkEnvironment")
 	delete(f, "ResourceGroupId")
 	delete(f, "Tags")
 	delete(f, "ImageInfo")
 	delete(f, "StartCmdInfo")
-	delete(f, "DataSource")
 	delete(f, "DataConfigs")
 	delete(f, "VpcId")
 	delete(f, "SubnetId")
 	delete(f, "LogConfig")
 	delete(f, "TuningParameters")
 	delete(f, "Remark")
+	delete(f, "DataSource")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateTrainingTaskRequest has unknown keys!", "")
 	}
@@ -1013,6 +1349,31 @@ type CronInfo struct {
 	// 周期结束时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+}
+
+type CronScaleJob struct {
+	// Cron表达式，标识任务的执行时间，精确到分钟级
+	Schedule *string `json:"Schedule,omitempty" name:"Schedule"`
+
+	// 定时任务名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 目标实例数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TargetReplicas *int64 `json:"TargetReplicas,omitempty" name:"TargetReplicas"`
+
+	// 目标min
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MinReplicas *int64 `json:"MinReplicas,omitempty" name:"MinReplicas"`
+
+	// 目标max
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MaxReplicas *int64 `json:"MaxReplicas,omitempty" name:"MaxReplicas"`
+
+	// 例外时间，Cron表达式，在对应时间内不执行任务。最多支持3条。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExcludeDates []*string `json:"ExcludeDates,omitempty" name:"ExcludeDates"`
 }
 
 type CustomTrainingData struct {
@@ -1383,6 +1744,114 @@ func (r *DeleteDatasetResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DeleteModelServiceGroupRequestParams struct {
+	// 服务id
+	ServiceGroupId *string `json:"ServiceGroupId,omitempty" name:"ServiceGroupId"`
+}
+
+type DeleteModelServiceGroupRequest struct {
+	*tchttp.BaseRequest
+	
+	// 服务id
+	ServiceGroupId *string `json:"ServiceGroupId,omitempty" name:"ServiceGroupId"`
+}
+
+func (r *DeleteModelServiceGroupRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteModelServiceGroupRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ServiceGroupId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteModelServiceGroupRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteModelServiceGroupResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DeleteModelServiceGroupResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteModelServiceGroupResponseParams `json:"Response"`
+}
+
+func (r *DeleteModelServiceGroupResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteModelServiceGroupResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteModelServiceRequestParams struct {
+	// 服务id
+	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+}
+
+type DeleteModelServiceRequest struct {
+	*tchttp.BaseRequest
+	
+	// 服务id
+	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+}
+
+func (r *DeleteModelServiceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteModelServiceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ServiceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteModelServiceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteModelServiceResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DeleteModelServiceResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteModelServiceResponseParams `json:"Response"`
+}
+
+func (r *DeleteModelServiceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteModelServiceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DeleteTrainingModelRequestParams struct {
 	// 模型ID
 	TrainingModelId *string `json:"TrainingModelId,omitempty" name:"TrainingModelId"`
@@ -1562,6 +2031,98 @@ func (r *DeleteTrainingTaskResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteTrainingTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAPIConfigsRequestParams struct {
+	// 偏移量，默认为0
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回数量，默认为20，最大值为100
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 输出列表的排列顺序。取值范围：ASC：升序排列 DESC：降序排列
+	Order *string `json:"Order,omitempty" name:"Order"`
+
+	// 排序的依据字段， 取值范围 "CreateTime" "UpdateTime"
+	OrderField *string `json:"OrderField,omitempty" name:"OrderField"`
+
+	// 分页参数，支持的分页过滤Name包括：
+	// ["ClusterId", "ServiceId", "ServiceGroupName", "ServiceGroupId"]
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+}
+
+type DescribeAPIConfigsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 偏移量，默认为0
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回数量，默认为20，最大值为100
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 输出列表的排列顺序。取值范围：ASC：升序排列 DESC：降序排列
+	Order *string `json:"Order,omitempty" name:"Order"`
+
+	// 排序的依据字段， 取值范围 "CreateTime" "UpdateTime"
+	OrderField *string `json:"OrderField,omitempty" name:"OrderField"`
+
+	// 分页参数，支持的分页过滤Name包括：
+	// ["ClusterId", "ServiceId", "ServiceGroupName", "ServiceGroupId"]
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+}
+
+func (r *DescribeAPIConfigsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAPIConfigsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Order")
+	delete(f, "OrderField")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAPIConfigsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAPIConfigsResponseParams struct {
+	// 接口数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 接口详情
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Details []*APIConfigDetail `json:"Details,omitempty" name:"Details"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeAPIConfigsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAPIConfigsResponseParams `json:"Response"`
+}
+
+func (r *DescribeAPIConfigsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAPIConfigsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2598,6 +3159,511 @@ func (r *DescribeLogsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeModelServiceCallInfoRequestParams struct {
+	// 服务组id
+	ServiceGroupId *string `json:"ServiceGroupId,omitempty" name:"ServiceGroupId"`
+}
+
+type DescribeModelServiceCallInfoRequest struct {
+	*tchttp.BaseRequest
+	
+	// 服务组id
+	ServiceGroupId *string `json:"ServiceGroupId,omitempty" name:"ServiceGroupId"`
+}
+
+func (r *DescribeModelServiceCallInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeModelServiceCallInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ServiceGroupId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeModelServiceCallInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeModelServiceCallInfoResponseParams struct {
+	// 服务调用信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ServiceCallInfo *ServiceCallInfo `json:"ServiceCallInfo,omitempty" name:"ServiceCallInfo"`
+
+	// 升级网关调用信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InferGatewayCallInfo *InferGatewayCallInfo `json:"InferGatewayCallInfo,omitempty" name:"InferGatewayCallInfo"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeModelServiceCallInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeModelServiceCallInfoResponseParams `json:"Response"`
+}
+
+func (r *DescribeModelServiceCallInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeModelServiceCallInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeModelServiceGroupRequestParams struct {
+	// 无
+	ServiceGroupId *string `json:"ServiceGroupId,omitempty" name:"ServiceGroupId"`
+}
+
+type DescribeModelServiceGroupRequest struct {
+	*tchttp.BaseRequest
+	
+	// 无
+	ServiceGroupId *string `json:"ServiceGroupId,omitempty" name:"ServiceGroupId"`
+}
+
+func (r *DescribeModelServiceGroupRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeModelServiceGroupRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ServiceGroupId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeModelServiceGroupRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeModelServiceGroupResponseParams struct {
+	// 服务组信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ServiceGroup *ServiceGroup `json:"ServiceGroup,omitempty" name:"ServiceGroup"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeModelServiceGroupResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeModelServiceGroupResponseParams `json:"Response"`
+}
+
+func (r *DescribeModelServiceGroupResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeModelServiceGroupResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeModelServiceGroupsRequestParams struct {
+	// 偏移量，默认为0
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回数量，默认为20，最大值为100
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 输出列表的排列顺序。取值范围：ASC：升序排列 DESC：降序排列
+	Order *string `json:"Order,omitempty" name:"Order"`
+
+	// 排序的依据字段， 取值范围 "CreateTime" "UpdateTime"
+	OrderField *string `json:"OrderField,omitempty" name:"OrderField"`
+
+	// 分页参数，支持的分页过滤Name包括：
+	// ["ClusterId", "ServiceId", "ServiceGroupName", "ServiceGroupId","Status","CreatedBy","ModelVersionId"]
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 标签过滤参数
+	TagFilters []*TagFilter `json:"TagFilters,omitempty" name:"TagFilters"`
+}
+
+type DescribeModelServiceGroupsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 偏移量，默认为0
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回数量，默认为20，最大值为100
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 输出列表的排列顺序。取值范围：ASC：升序排列 DESC：降序排列
+	Order *string `json:"Order,omitempty" name:"Order"`
+
+	// 排序的依据字段， 取值范围 "CreateTime" "UpdateTime"
+	OrderField *string `json:"OrderField,omitempty" name:"OrderField"`
+
+	// 分页参数，支持的分页过滤Name包括：
+	// ["ClusterId", "ServiceId", "ServiceGroupName", "ServiceGroupId","Status","CreatedBy","ModelVersionId"]
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 标签过滤参数
+	TagFilters []*TagFilter `json:"TagFilters,omitempty" name:"TagFilters"`
+}
+
+func (r *DescribeModelServiceGroupsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeModelServiceGroupsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Order")
+	delete(f, "OrderField")
+	delete(f, "Filters")
+	delete(f, "TagFilters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeModelServiceGroupsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeModelServiceGroupsResponseParams struct {
+	// 推理服务组数量。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 服务组信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ServiceGroups []*ServiceGroup `json:"ServiceGroups,omitempty" name:"ServiceGroups"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeModelServiceGroupsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeModelServiceGroupsResponseParams `json:"Response"`
+}
+
+func (r *DescribeModelServiceGroupsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeModelServiceGroupsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeModelServiceHistoryRequestParams struct {
+	// 服务Id
+	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+}
+
+type DescribeModelServiceHistoryRequest struct {
+	*tchttp.BaseRequest
+	
+	// 服务Id
+	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+}
+
+func (r *DescribeModelServiceHistoryRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeModelServiceHistoryRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ServiceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeModelServiceHistoryRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeModelServiceHistoryResponseParams struct {
+	// 历史版本总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 服务版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ServiceHistory []*ServiceHistory `json:"ServiceHistory,omitempty" name:"ServiceHistory"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeModelServiceHistoryResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeModelServiceHistoryResponseParams `json:"Response"`
+}
+
+func (r *DescribeModelServiceHistoryResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeModelServiceHistoryResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeModelServiceHotUpdatedRequestParams struct {
+	// 镜像信息，配置服务运行所需的镜像地址等信息
+	ImageInfo *ImageInfo `json:"ImageInfo,omitempty" name:"ImageInfo"`
+
+	// 模型信息，需要挂载模型时填写
+	ModelInfo *ModelInfo `json:"ModelInfo,omitempty" name:"ModelInfo"`
+
+	// 挂载信息
+	VolumeMount *VolumeMount `json:"VolumeMount,omitempty" name:"VolumeMount"`
+}
+
+type DescribeModelServiceHotUpdatedRequest struct {
+	*tchttp.BaseRequest
+	
+	// 镜像信息，配置服务运行所需的镜像地址等信息
+	ImageInfo *ImageInfo `json:"ImageInfo,omitempty" name:"ImageInfo"`
+
+	// 模型信息，需要挂载模型时填写
+	ModelInfo *ModelInfo `json:"ModelInfo,omitempty" name:"ModelInfo"`
+
+	// 挂载信息
+	VolumeMount *VolumeMount `json:"VolumeMount,omitempty" name:"VolumeMount"`
+}
+
+func (r *DescribeModelServiceHotUpdatedRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeModelServiceHotUpdatedRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageInfo")
+	delete(f, "ModelInfo")
+	delete(f, "VolumeMount")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeModelServiceHotUpdatedRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeModelServiceHotUpdatedResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeModelServiceHotUpdatedResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeModelServiceHotUpdatedResponseParams `json:"Response"`
+}
+
+func (r *DescribeModelServiceHotUpdatedResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeModelServiceHotUpdatedResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeModelServiceRequestParams struct {
+	// 服务id
+	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+}
+
+type DescribeModelServiceRequest struct {
+	*tchttp.BaseRequest
+	
+	// 服务id
+	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+}
+
+func (r *DescribeModelServiceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeModelServiceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ServiceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeModelServiceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeModelServiceResponseParams struct {
+	// 服务信息
+	Service *Service `json:"Service,omitempty" name:"Service"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeModelServiceResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeModelServiceResponseParams `json:"Response"`
+}
+
+func (r *DescribeModelServiceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeModelServiceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeModelServicesRequestParams struct {
+	// 偏移量，默认为0
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回数量，默认为20，最大值为20
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 输出列表的排列顺序。取值范围：ASC：升序排列 DESC：降序排列
+	Order *string `json:"Order,omitempty" name:"Order"`
+
+	// 排序的依据字段， 取值范围 "CreateTime" "UpdateTime"
+	OrderField *string `json:"OrderField,omitempty" name:"OrderField"`
+
+	// 分页参数，支持的分页过滤Name包括：
+	// ["ClusterId", "ServiceId", "ServiceGroupName", "ServiceGroupId","Status","CreatedBy","ModelId"]
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 标签过滤参数
+	TagFilters []*TagFilter `json:"TagFilters,omitempty" name:"TagFilters"`
+}
+
+type DescribeModelServicesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 偏移量，默认为0
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回数量，默认为20，最大值为20
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 输出列表的排列顺序。取值范围：ASC：升序排列 DESC：降序排列
+	Order *string `json:"Order,omitempty" name:"Order"`
+
+	// 排序的依据字段， 取值范围 "CreateTime" "UpdateTime"
+	OrderField *string `json:"OrderField,omitempty" name:"OrderField"`
+
+	// 分页参数，支持的分页过滤Name包括：
+	// ["ClusterId", "ServiceId", "ServiceGroupName", "ServiceGroupId","Status","CreatedBy","ModelId"]
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 标签过滤参数
+	TagFilters []*TagFilter `json:"TagFilters,omitempty" name:"TagFilters"`
+}
+
+func (r *DescribeModelServicesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeModelServicesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Order")
+	delete(f, "OrderField")
+	delete(f, "Filters")
+	delete(f, "TagFilters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeModelServicesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeModelServicesResponseParams struct {
+	// 服务数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 无
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Services []*Service `json:"Services,omitempty" name:"Services"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeModelServicesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeModelServicesResponseParams `json:"Response"`
+}
+
+func (r *DescribeModelServicesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeModelServicesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeTrainingFrameworksRequestParams struct {
 
 }
@@ -3207,6 +4273,16 @@ type DetectionLabelInfo struct {
 	FrameType *string `json:"FrameType,omitempty" name:"FrameType"`
 }
 
+type EnvVar struct {
+	// 环境变量key
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 环境变量value
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Value *string `json:"Value,omitempty" name:"Value"`
+}
+
 type Filter struct {
 	// 过滤字段名称
 	Name *string `json:"Name,omitempty" name:"Name"`
@@ -3304,6 +4380,9 @@ type FrameworkVersion struct {
 
 	// 训练模式
 	TrainingModes []*string `json:"TrainingModes,omitempty" name:"TrainingModes"`
+
+	// 框架运行环境
+	Environment *string `json:"Environment,omitempty" name:"Environment"`
 }
 
 type GpuDetail struct {
@@ -3340,6 +4419,20 @@ type HDFSConfig struct {
 	Path *string `json:"Path,omitempty" name:"Path"`
 }
 
+type HorizontalPodAutoscaler struct {
+	// 最小实例数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MinReplicas *int64 `json:"MinReplicas,omitempty" name:"MinReplicas"`
+
+	// 最大实例数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MaxReplicas *int64 `json:"MaxReplicas,omitempty" name:"MaxReplicas"`
+
+	// 扩缩容指标
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HpaMetrics []*Option `json:"HpaMetrics,omitempty" name:"HpaMetrics"`
+}
+
 type ImageInfo struct {
 	// 镜像类型：TCR为腾讯云TCR镜像; CCR为腾讯云TCR个人版镜像，PreSet为平台预置镜像
 	ImageType *string `json:"ImageType,omitempty" name:"ImageType"`
@@ -3354,6 +4447,28 @@ type ImageInfo struct {
 	// TCR镜像对应的实例id
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
+}
+
+type InferGatewayCallInfo struct {
+	// 内网http调用地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VpcHttpAddr *string `json:"VpcHttpAddr,omitempty" name:"VpcHttpAddr"`
+
+	// 内网https调用地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VpcHttpsAddr *string `json:"VpcHttpsAddr,omitempty" name:"VpcHttpsAddr"`
+
+	// 内网grpc调用地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VpcGrpcTlsAddr *string `json:"VpcGrpcTlsAddr,omitempty" name:"VpcGrpcTlsAddr"`
+
+	// 可访问的vpcid
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 后端ip对应的子网
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
 }
 
 type InferTemplate struct {
@@ -3521,6 +4636,71 @@ type ModelInfo struct {
 	ModelType *string `json:"ModelType,omitempty" name:"ModelType"`
 }
 
+// Predefined struct for user
+type ModifyServiceGroupWeightsRequestParams struct {
+	// 服务组id
+	ServiceGroupId *string `json:"ServiceGroupId,omitempty" name:"ServiceGroupId"`
+
+	// 权重设置
+	Weights []*WeightEntry `json:"Weights,omitempty" name:"Weights"`
+}
+
+type ModifyServiceGroupWeightsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 服务组id
+	ServiceGroupId *string `json:"ServiceGroupId,omitempty" name:"ServiceGroupId"`
+
+	// 权重设置
+	Weights []*WeightEntry `json:"Weights,omitempty" name:"Weights"`
+}
+
+func (r *ModifyServiceGroupWeightsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyServiceGroupWeightsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ServiceGroupId")
+	delete(f, "Weights")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyServiceGroupWeightsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyServiceGroupWeightsResponseParams struct {
+	// 更新权重后的服务组信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ServiceGroup *ServiceGroup `json:"ServiceGroup,omitempty" name:"ServiceGroup"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ModifyServiceGroupWeightsResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyServiceGroupWeightsResponseParams `json:"Response"`
+}
+
+func (r *ModifyServiceGroupWeightsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyServiceGroupWeightsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type OcrLabelInfo struct {
 	// 坐标点围起来的框
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -3554,6 +4734,14 @@ type OcrLabelInfo struct {
 	// DIRECTION_HORIZONTAL
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Direction *string `json:"Direction,omitempty" name:"Direction"`
+}
+
+type Option struct {
+	// 指标名
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 指标值
+	Value *int64 `json:"Value,omitempty" name:"Value"`
 }
 
 type PointInfo struct {
@@ -3726,7 +4914,7 @@ type ResourceInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Gpu *uint64 `json:"Gpu,omitempty" name:"Gpu"`
 
-	// Gpu卡型号 T4或者V100
+	// Gpu卡型号 T4或者V100。仅展示当前 GPU 卡型号，若存在多类型同时使用，则参考 RealGpuDetailSet 的值。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	GpuType *string `json:"GpuType,omitempty" name:"GpuType"`
 
@@ -3735,6 +4923,10 @@ type ResourceInfo struct {
 	// RealGpu=100表示实际使用了一张gpu卡, 对应实际的实例机型, 有可能代表带有1/4卡的实例4个, 或者带有1/2卡的实例2个, 或者带有1卡的实力1个.
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RealGpu *uint64 `json:"RealGpu,omitempty" name:"RealGpu"`
+
+	// 创建或更新时无需填写，仅展示需要关注。详细的GPU使用信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RealGpuDetailSet []*GpuDetail `json:"RealGpuDetailSet,omitempty" name:"RealGpuDetailSet"`
 }
 
 type RowItem struct {
@@ -3750,6 +4942,14 @@ type RowValue struct {
 	// 列值
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Value *string `json:"Value,omitempty" name:"Value"`
+}
+
+type ScheduledAction struct {
+	// 是否要定时停止服务，true or false。true 则 ScheduleStopTime 必填， false 则 ScheduleStopTime 不生效
+	ScheduleStop *bool `json:"ScheduleStop,omitempty" name:"ScheduleStop"`
+
+	// 要执行定时停止的时间，格式：“2022-01-26 19:46:22”
+	ScheduleStopTime *string `json:"ScheduleStopTime,omitempty" name:"ScheduleStopTime"`
 }
 
 type SchemaInfo struct {
@@ -3776,6 +4976,327 @@ type SegmentationInfo struct {
 	// 颜色
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Color *string `json:"Color,omitempty" name:"Color"`
+}
+
+type Service struct {
+	// 服务组id
+	ServiceGroupId *string `json:"ServiceGroupId,omitempty" name:"ServiceGroupId"`
+
+	// 服务id
+	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+
+	// 服务组名
+	ServiceGroupName *string `json:"ServiceGroupName,omitempty" name:"ServiceGroupName"`
+
+	// 服务描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ServiceDescription *string `json:"ServiceDescription,omitempty" name:"ServiceDescription"`
+
+	// 集群id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 地域
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Region *string `json:"Region,omitempty" name:"Region"`
+
+	// 命名空间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
+
+	// 付费类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ChargeType *string `json:"ChargeType,omitempty" name:"ChargeType"`
+
+	// 后付费资源组id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" name:"ResourceGroupId"`
+
+	// 创建者
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreatedBy *string `json:"CreatedBy,omitempty" name:"CreatedBy"`
+
+	// 创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 更新时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+
+	// 主账号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Uin *string `json:"Uin,omitempty" name:"Uin"`
+
+	// 子账号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubUin *string `json:"SubUin,omitempty" name:"SubUin"`
+
+	// app_id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AppId *int64 `json:"AppId,omitempty" name:"AppId"`
+
+	// 版本号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Version *string `json:"Version,omitempty" name:"Version"`
+
+	// 服务组下服务的最高版本号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LatestVersion *string `json:"LatestVersion,omitempty" name:"LatestVersion"`
+
+	// 服务的详细信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ServiceInfo *ServiceInfo `json:"ServiceInfo,omitempty" name:"ServiceInfo"`
+
+	// 服务的业务状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BusinessStatus *string `json:"BusinessStatus,omitempty" name:"BusinessStatus"`
+
+	// 服务的创建来源 AUTO_ML,DEFAULT
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateSource *string `json:"CreateSource,omitempty" name:"CreateSource"`
+
+	// 费用信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BillingInfo *string `json:"BillingInfo,omitempty" name:"BillingInfo"`
+
+	// 服务状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 模型权重
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Weight *int64 `json:"Weight,omitempty" name:"Weight"`
+
+	// 服务所在的 ingress 的 name
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IngressName *string `json:"IngressName,omitempty" name:"IngressName"`
+
+	// 服务限速限流相关配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ServiceLimit *ServiceLimit `json:"ServiceLimit,omitempty" name:"ServiceLimit"`
+
+	// 定时停止的配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ScheduledAction *ScheduledAction `json:"ScheduledAction,omitempty" name:"ScheduledAction"`
+}
+
+type ServiceCallInfo struct {
+	// 服务组id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ServiceGroupId *string `json:"ServiceGroupId,omitempty" name:"ServiceGroupId"`
+
+	// 内网http调用地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InnerHttpAddr *string `json:"InnerHttpAddr,omitempty" name:"InnerHttpAddr"`
+
+	// 内网https调用地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InnerHttpsAddr *string `json:"InnerHttpsAddr,omitempty" name:"InnerHttpsAddr"`
+
+	// 内网http调用地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OuterHttpAddr *string `json:"OuterHttpAddr,omitempty" name:"OuterHttpAddr"`
+
+	// 内网https调用地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OuterHttpsAddr *string `json:"OuterHttpsAddr,omitempty" name:"OuterHttpsAddr"`
+
+	// 调用key
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AppKey *string `json:"AppKey,omitempty" name:"AppKey"`
+
+	// 调用secret
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AppSecret *string `json:"AppSecret,omitempty" name:"AppSecret"`
+}
+
+type ServiceGroup struct {
+	// 服务组id
+	ServiceGroupId *string `json:"ServiceGroupId,omitempty" name:"ServiceGroupId"`
+
+	// 服务组名
+	ServiceGroupName *string `json:"ServiceGroupName,omitempty" name:"ServiceGroupName"`
+
+	// 创建者
+	CreatedBy *string `json:"CreatedBy,omitempty" name:"CreatedBy"`
+
+	// 创建时间
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 更新时间
+	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+
+	// 主账号
+	Uin *string `json:"Uin,omitempty" name:"Uin"`
+
+	// 服务组下服务总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ServiceCount *uint64 `json:"ServiceCount,omitempty" name:"ServiceCount"`
+
+	// 服务组下在运行的服务数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RunningServiceCount *uint64 `json:"RunningServiceCount,omitempty" name:"RunningServiceCount"`
+
+	// 服务描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Services []*Service `json:"Services,omitempty" name:"Services"`
+
+	// 服务组状态，与服务一致
+	//  CREATING 创建中
+	//      CREATE_FAILED 创建失败
+	//      Normal	正常运行中
+	//      Stopped  已停止
+	//      Stopping 停止中
+	//      Abnormal 异常
+	//      Pending 启动中
+	//      Waiting 就绪中
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 服务组标签
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
+
+	// 服务组下最高版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LatestVersion *string `json:"LatestVersion,omitempty" name:"LatestVersion"`
+
+	// 服务的业务状态
+	// CREATING 创建中
+	//      CREATE_FAILED 创建失败
+	//      ARREARS_STOP 因欠费被强制停止
+	//      BILLING 计费中
+	//      WHITELIST_USING 白名单试用中
+	//      WHITELIST_STOP 白名单额度不足
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BusinessStatus *string `json:"BusinessStatus,omitempty" name:"BusinessStatus"`
+
+	// 服务的计费信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BillingInfo *string `json:"BillingInfo,omitempty" name:"BillingInfo"`
+
+	// 服务的创建来源
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateSource *string `json:"CreateSource,omitempty" name:"CreateSource"`
+
+	// 服务组的权重更新状态 
+	// UPDATING 更新中
+	//      UPDATED 更新成功
+	//      UPDATE_FAILED 更新失败
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WeightUpdateStatus *string `json:"WeightUpdateStatus,omitempty" name:"WeightUpdateStatus"`
+}
+
+type ServiceHistory struct {
+	// 版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Revision *string `json:"Revision,omitempty" name:"Revision"`
+
+	// 更新时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+
+	// 镜像
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Image *string `json:"Image,omitempty" name:"Image"`
+
+	// 模型文件
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ModelFile *string `json:"ModelFile,omitempty" name:"ModelFile"`
+
+	// 原始数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RawData *string `json:"RawData,omitempty" name:"RawData"`
+}
+
+type ServiceInfo struct {
+	// 期望运行的Pod数量，停止状态是0
+	// 不同计费模式和调节模式下对应关系如下
+	// PREPAID 和 POSTPAID_BY_HOUR:
+	// 手动调节模式下对应 实例数量
+	// 自动调节模式下对应 基于时间的默认策略的实例数量
+	// HYBRID_PAID:
+	// 后付费实例手动调节模式下对应 实例数量
+	// 后付费实例自动调节模式下对应 时间策略的默认策略的实例数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Replicas *int64 `json:"Replicas,omitempty" name:"Replicas"`
+
+	// 镜像信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ImageInfo *ImageInfo `json:"ImageInfo,omitempty" name:"ImageInfo"`
+
+	// 环境变量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Env []*EnvVar `json:"Env,omitempty" name:"Env"`
+
+	// 资源信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Resources *ResourceInfo `json:"Resources,omitempty" name:"Resources"`
+
+	// 后付费实例对应的机型规格
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceType *string `json:"InstanceType,omitempty" name:"InstanceType"`
+
+	// 模型信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ModelInfo *ModelInfo `json:"ModelInfo,omitempty" name:"ModelInfo"`
+
+	// 是否启用日志
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LogEnable *bool `json:"LogEnable,omitempty" name:"LogEnable"`
+
+	// 日志配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LogConfig *LogConfig `json:"LogConfig,omitempty" name:"LogConfig"`
+
+	// 是否开启鉴权
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AuthorizationEnable *bool `json:"AuthorizationEnable,omitempty" name:"AuthorizationEnable"`
+
+	// hpa配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HorizontalPodAutoscaler *HorizontalPodAutoscaler `json:"HorizontalPodAutoscaler,omitempty" name:"HorizontalPodAutoscaler"`
+
+	// 服务的状态描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *WorkloadStatus `json:"Status,omitempty" name:"Status"`
+
+	// 权重
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Weight *uint64 `json:"Weight,omitempty" name:"Weight"`
+
+	// 实例列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PodList []*string `json:"PodList,omitempty" name:"PodList"`
+
+	// 资源总量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceTotal *ResourceInfo `json:"ResourceTotal,omitempty" name:"ResourceTotal"`
+
+	// 历史实例数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OldReplicas *int64 `json:"OldReplicas,omitempty" name:"OldReplicas"`
+
+	// 计费模式[HYBRID_PAID]时生效, 用于标识混合计费模式下的预付费实例数, 若不填则默认为1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HybridBillingPrepaidReplicas *int64 `json:"HybridBillingPrepaidReplicas,omitempty" name:"HybridBillingPrepaidReplicas"`
+
+	// 历史 HYBRID_PAID 时的实例数，用户恢复服务
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OldHybridBillingPrepaidReplicas *int64 `json:"OldHybridBillingPrepaidReplicas,omitempty" name:"OldHybridBillingPrepaidReplicas"`
+
+	// 是否开启模型的热更新。默认不开启
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ModelHotUpdateEnable *bool `json:"ModelHotUpdateEnable,omitempty" name:"ModelHotUpdateEnable"`
+}
+
+type ServiceLimit struct {
+	// 是否开启实例层面限流限速，true or false。true 则 InstanceRpsLimit 必填， false 则 InstanceRpsLimit 不生效
+	EnableInstanceRpsLimit *bool `json:"EnableInstanceRpsLimit,omitempty" name:"EnableInstanceRpsLimit"`
+
+	// 每个服务实例的 request per second 限速, 0 为不限流
+	InstanceRpsLimit *int64 `json:"InstanceRpsLimit,omitempty" name:"InstanceRpsLimit"`
 }
 
 type Spec struct {
@@ -3871,6 +5392,28 @@ func (r *StartTrainingTaskResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *StartTrainingTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type StatefulSetCondition struct {
+	// 信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Message *string `json:"Message,omitempty" name:"Message"`
+
+	// 原因
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Reason *string `json:"Reason,omitempty" name:"Reason"`
+
+	// Status of the condition, one of True, False, Unknown.
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 上次更新的时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LastTransitionTime *string `json:"LastTransitionTime,omitempty" name:"LastTransitionTime"`
 }
 
 // Predefined struct for user
@@ -4250,9 +5793,9 @@ type TrainingTaskDetail struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FrameworkVersion *string `json:"FrameworkVersion,omitempty" name:"FrameworkVersion"`
 
-	// 训练模式，eg：PS_WORKER、DDP、MPI、HOROVOD
+	// 框架运行环境
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TrainingMode *string `json:"TrainingMode,omitempty" name:"TrainingMode"`
+	FrameworkEnvironment *string `json:"FrameworkEnvironment,omitempty" name:"FrameworkEnvironment"`
 
 	// 计费模式
 	ChargeType *string `json:"ChargeType,omitempty" name:"ChargeType"`
@@ -4268,9 +5811,9 @@ type TrainingTaskDetail struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 
-	// 自定义镜像信息
+	// 训练模式，eg：PS_WORKER、DDP、MPI、HOROVOD
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ImageInfo *ImageInfo `json:"ImageInfo,omitempty" name:"ImageInfo"`
+	TrainingMode *string `json:"TrainingMode,omitempty" name:"TrainingMode"`
 
 	// 代码包
 	CodePackagePath *CosPathInfo `json:"CodePackagePath,omitempty" name:"CodePackagePath"`
@@ -4308,8 +5851,9 @@ type TrainingTaskDetail struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
 
-	// 任务状态
-	Status *string `json:"Status,omitempty" name:"Status"`
+	// 自定义镜像信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ImageInfo *ImageInfo `json:"ImageInfo,omitempty" name:"ImageInfo"`
 
 	// 运行时长
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -4359,6 +5903,9 @@ type TrainingTaskDetail struct {
 	// 任务信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Message *string `json:"Message,omitempty" name:"Message"`
+
+	// 任务状态
+	Status *string `json:"Status,omitempty" name:"Status"`
 }
 
 type TrainingTaskSetItem struct {
@@ -4376,9 +5923,9 @@ type TrainingTaskSetItem struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FrameworkVersion *string `json:"FrameworkVersion,omitempty" name:"FrameworkVersion"`
 
-	// 训练模式eg：PS_WORKER、DDP、MPI、HOROVOD
+	// 框架运行环境
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TrainingMode *string `json:"TrainingMode,omitempty" name:"TrainingMode"`
+	FrameworkEnvironment *string `json:"FrameworkEnvironment,omitempty" name:"FrameworkEnvironment"`
 
 	// 计费模式
 	ChargeType *string `json:"ChargeType,omitempty" name:"ChargeType"`
@@ -4393,9 +5940,9 @@ type TrainingTaskSetItem struct {
 	// 资源配置
 	ResourceConfigInfos []*ResourceConfigInfo `json:"ResourceConfigInfos,omitempty" name:"ResourceConfigInfos"`
 
-	// 标签配置
+	// 训练模式eg：PS_WORKER、DDP、MPI、HOROVOD
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
+	TrainingMode *string `json:"TrainingMode,omitempty" name:"TrainingMode"`
 
 	// 任务状态
 	Status *string `json:"Status,omitempty" name:"Status"`
@@ -4438,4 +5985,52 @@ type TrainingTaskSetItem struct {
 	// 任务信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Message *string `json:"Message,omitempty" name:"Message"`
+
+	// 标签配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
+}
+
+type VolumeMount struct {
+	// cfs的配置信息
+	CFSConfig *CFSConfig `json:"CFSConfig,omitempty" name:"CFSConfig"`
+
+	// 挂载源类型
+	VolumeSourceType *string `json:"VolumeSourceType,omitempty" name:"VolumeSourceType"`
+}
+
+type WeightEntry struct {
+	// 服务id
+	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+
+	// 流量权重值，同 ServiceGroup 下 总和应为 100
+	Weight *uint64 `json:"Weight,omitempty" name:"Weight"`
+}
+
+type WorkloadStatus struct {
+	// 当前实例数
+	Replicas *int64 `json:"Replicas,omitempty" name:"Replicas"`
+
+	// 更新的实例数
+	UpdatedReplicas *int64 `json:"UpdatedReplicas,omitempty" name:"UpdatedReplicas"`
+
+	// 就绪的实例数
+	ReadyReplicas *int64 `json:"ReadyReplicas,omitempty" name:"ReadyReplicas"`
+
+	// 可用的实例数
+	AvailableReplicas *int64 `json:"AvailableReplicas,omitempty" name:"AvailableReplicas"`
+
+	// 不可用的实例数
+	UnavailableReplicas *int64 `json:"UnavailableReplicas,omitempty" name:"UnavailableReplicas"`
+
+	// Normal	正常运行中
+	// Abnormal	服务异常，例如容器启动失败等
+	// Waiting	服务等待中，例如容器下载镜像过程等
+	// Stopped   已停止 
+	// Pending 启动中
+	// Stopping 停止中
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 工作负载的状况信息
+	StatefulSetCondition []*StatefulSetCondition `json:"StatefulSetCondition,omitempty" name:"StatefulSetCondition"`
 }

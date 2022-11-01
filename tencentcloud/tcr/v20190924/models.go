@@ -4407,12 +4407,21 @@ func (r *DescribeImmutableTagRulesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeInstanceAllNamespacesRequestParams struct {
+	// 每页个数
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
+	// 起始偏移位置
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 }
 
 type DescribeInstanceAllNamespacesRequest struct {
 	*tchttp.BaseRequest
 	
+	// 每页个数
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 起始偏移位置
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 }
 
 func (r *DescribeInstanceAllNamespacesRequest) ToJsonString() string {
@@ -4427,7 +4436,8 @@ func (r *DescribeInstanceAllNamespacesRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "Limit")
+	delete(f, "Offset")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeInstanceAllNamespacesRequest has unknown keys!", "")
 	}

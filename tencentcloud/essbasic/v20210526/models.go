@@ -402,7 +402,7 @@ type ChannelCreateConvertTaskApiRequestParams struct {
 	// 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
-	// 资源类型 取值范围doc,docx,html之一
+	// 资源类型 取值范围doc,docx,html,excel之一
 	ResourceType *string `json:"ResourceType,omitempty" name:"ResourceType"`
 
 	// 资源名称，长度限制为256字符
@@ -424,7 +424,7 @@ type ChannelCreateConvertTaskApiRequest struct {
 	// 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
-	// 资源类型 取值范围doc,docx,html之一
+	// 资源类型 取值范围doc,docx,html,excel之一
 	ResourceType *string `json:"ResourceType,omitempty" name:"ResourceType"`
 
 	// 资源名称，长度限制为256字符
@@ -732,6 +732,7 @@ type ChannelCreateFlowSignReviewRequestParams struct {
 	// 企业内部审核结果
 	// PASS: 通过
 	// REJECT: 拒绝
+	// SIGN_REJECT:拒签(流程结束)
 	ReviewType *string `json:"ReviewType,omitempty" name:"ReviewType"`
 
 	// 审核原因 
@@ -751,6 +752,7 @@ type ChannelCreateFlowSignReviewRequest struct {
 	// 企业内部审核结果
 	// PASS: 通过
 	// REJECT: 拒绝
+	// SIGN_REJECT:拒签(流程结束)
 	ReviewType *string `json:"ReviewType,omitempty" name:"ReviewType"`
 
 	// 审核原因 
@@ -1209,6 +1211,8 @@ func (r *ChannelVerifyPdfResponse) FromJsonString(s string) error {
 
 type Component struct {
 	// 控件编号
+	// 
+	// CreateFlowByTemplates发起合同时优先以ComponentId（不为空）填充；否则以ComponentName填充
 	// 
 	// 注：
 	// 当GenerateMode=3时，通过"^"来决定是否使用关键字整词匹配能力。
@@ -3159,9 +3163,9 @@ type UploadFilesRequestParams struct {
 	// 应用相关信息，若是渠道版调用 appid 和proxyappid 必填
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
-	// 文件对应业务类型，用于区分文件存储路径：
-	// 1. TEMPLATE - 模板； 文件类型：.pdf .doc .docx .html
-	// 2. DOCUMENT - 签署过程及签署后的合同文档/图片控件 文件类型：.pdf/.jpg/.png
+	// 文件对应业务类型
+	// 1. TEMPLATE - 模板； 文件类型：.pdf/.doc/.docx/.html
+	// 2. DOCUMENT - 签署过程及签署后的合同文档/图片控件 文件类型：.pdf/.doc/.docx/.jpg/.png/.xls.xlsx/.html
 	BusinessType *string `json:"BusinessType,omitempty" name:"BusinessType"`
 
 	// 上传文件内容数组，最多支持20个文件
@@ -3177,9 +3181,9 @@ type UploadFilesRequest struct {
 	// 应用相关信息，若是渠道版调用 appid 和proxyappid 必填
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
-	// 文件对应业务类型，用于区分文件存储路径：
-	// 1. TEMPLATE - 模板； 文件类型：.pdf .doc .docx .html
-	// 2. DOCUMENT - 签署过程及签署后的合同文档/图片控件 文件类型：.pdf/.jpg/.png
+	// 文件对应业务类型
+	// 1. TEMPLATE - 模板； 文件类型：.pdf/.doc/.docx/.html
+	// 2. DOCUMENT - 签署过程及签署后的合同文档/图片控件 文件类型：.pdf/.doc/.docx/.jpg/.png/.xls.xlsx/.html
 	BusinessType *string `json:"BusinessType,omitempty" name:"BusinessType"`
 
 	// 上传文件内容数组，最多支持20个文件

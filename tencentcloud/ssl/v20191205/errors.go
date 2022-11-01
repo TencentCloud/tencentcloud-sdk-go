@@ -149,6 +149,9 @@ const (
 	// 查询的证书ID不能超过50个。
 	INVALIDPARAMETER_CERTIFICATEIDNUMBERLIMIT = "InvalidParameter.CertificateIdNumberLimit"
 
+	// 证书数量超出限制。
+	INVALIDPARAMETER_CERTIFICATESNUMBEREXCEEDED = "InvalidParameter.CertificatesNumberExceeded"
+
 	// 包含无效的证书ID。
 	INVALIDPARAMETER_CONTAINSINVALIDCERTIFICATEID = "InvalidParameter.ContainsInvalidCertificateId"
 

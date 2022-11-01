@@ -2193,6 +2193,70 @@ func (r *ModifyCertificateProjectResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifyCertificatesExpiringNotificationSwitchRequestParams struct {
+	// 证书ID列表。最多50个
+	CertificateIds []*string `json:"CertificateIds,omitempty" name:"CertificateIds"`
+
+	// 0:不忽略通知。1:忽略通知
+	SwitchStatus *uint64 `json:"SwitchStatus,omitempty" name:"SwitchStatus"`
+}
+
+type ModifyCertificatesExpiringNotificationSwitchRequest struct {
+	*tchttp.BaseRequest
+	
+	// 证书ID列表。最多50个
+	CertificateIds []*string `json:"CertificateIds,omitempty" name:"CertificateIds"`
+
+	// 0:不忽略通知。1:忽略通知
+	SwitchStatus *uint64 `json:"SwitchStatus,omitempty" name:"SwitchStatus"`
+}
+
+func (r *ModifyCertificatesExpiringNotificationSwitchRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyCertificatesExpiringNotificationSwitchRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CertificateIds")
+	delete(f, "SwitchStatus")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyCertificatesExpiringNotificationSwitchRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyCertificatesExpiringNotificationSwitchResponseParams struct {
+	// 证书ID列表
+	CertificateIds []*string `json:"CertificateIds,omitempty" name:"CertificateIds"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ModifyCertificatesExpiringNotificationSwitchResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyCertificatesExpiringNotificationSwitchResponseParams `json:"Response"`
+}
+
+func (r *ModifyCertificatesExpiringNotificationSwitchResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyCertificatesExpiringNotificationSwitchResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type OperationLog struct {
 	// 操作证书动作。
 	Action *string `json:"Action,omitempty" name:"Action"`

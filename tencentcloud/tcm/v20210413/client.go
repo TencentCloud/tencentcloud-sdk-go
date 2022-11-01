@@ -453,6 +453,64 @@ func (c *Client) ModifyMeshWithContext(ctx context.Context, request *ModifyMeshR
     return
 }
 
+func NewModifyTracingConfigRequest() (request *ModifyTracingConfigRequest) {
+    request = &ModifyTracingConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcm", APIVersion, "ModifyTracingConfig")
+    
+    
+    return
+}
+
+func NewModifyTracingConfigResponse() (response *ModifyTracingConfigResponse) {
+    response = &ModifyTracingConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyTracingConfig
+// 修改 Tracing 配置
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_RBACFORBIDDEN = "FailedOperation.RBACForbidden"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyTracingConfig(request *ModifyTracingConfigRequest) (response *ModifyTracingConfigResponse, err error) {
+    return c.ModifyTracingConfigWithContext(context.Background(), request)
+}
+
+// ModifyTracingConfig
+// 修改 Tracing 配置
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_RBACFORBIDDEN = "FailedOperation.RBACForbidden"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyTracingConfigWithContext(ctx context.Context, request *ModifyTracingConfigRequest) (response *ModifyTracingConfigResponse, err error) {
+    if request == nil {
+        request = NewModifyTracingConfigRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyTracingConfig require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyTracingConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewUnlinkClusterRequest() (request *UnlinkClusterRequest) {
     request = &UnlinkClusterRequest{
         BaseRequest: &tchttp.BaseRequest{},

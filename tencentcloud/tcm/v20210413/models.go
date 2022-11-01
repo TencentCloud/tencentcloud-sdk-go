@@ -1048,6 +1048,88 @@ func (r *ModifyMeshResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifyTracingConfigRequestParams struct {
+	// mesh名字
+	MeshId *string `json:"MeshId,omitempty" name:"MeshId"`
+
+	// 是否启用调用跟踪
+	Enable *bool `json:"Enable,omitempty" name:"Enable"`
+
+	// 腾讯云 APM 服务相关参数
+	APM *APM `json:"APM,omitempty" name:"APM"`
+
+	// 调用跟踪采样值
+	Sampling *float64 `json:"Sampling,omitempty" name:"Sampling"`
+
+	// 调用追踪Zipkin相关配置
+	Zipkin *TracingZipkin `json:"Zipkin,omitempty" name:"Zipkin"`
+}
+
+type ModifyTracingConfigRequest struct {
+	*tchttp.BaseRequest
+	
+	// mesh名字
+	MeshId *string `json:"MeshId,omitempty" name:"MeshId"`
+
+	// 是否启用调用跟踪
+	Enable *bool `json:"Enable,omitempty" name:"Enable"`
+
+	// 腾讯云 APM 服务相关参数
+	APM *APM `json:"APM,omitempty" name:"APM"`
+
+	// 调用跟踪采样值
+	Sampling *float64 `json:"Sampling,omitempty" name:"Sampling"`
+
+	// 调用追踪Zipkin相关配置
+	Zipkin *TracingZipkin `json:"Zipkin,omitempty" name:"Zipkin"`
+}
+
+func (r *ModifyTracingConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyTracingConfigRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MeshId")
+	delete(f, "Enable")
+	delete(f, "APM")
+	delete(f, "Sampling")
+	delete(f, "Zipkin")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyTracingConfigRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyTracingConfigResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ModifyTracingConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyTracingConfigResponseParams `json:"Response"`
+}
+
+func (r *ModifyTracingConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyTracingConfigResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type PodsMetricSource struct {
 	// 指标名
 	MetricName *string `json:"MetricName,omitempty" name:"MetricName"`

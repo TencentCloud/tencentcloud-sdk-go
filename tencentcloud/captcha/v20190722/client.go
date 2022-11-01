@@ -693,6 +693,60 @@ func (c *Client) DescribeCaptchaUserAllAppIdWithContext(ctx context.Context, req
     return
 }
 
+func NewGetTicketStatisticsRequest() (request *GetTicketStatisticsRequest) {
+    request = &GetTicketStatisticsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("captcha", APIVersion, "GetTicketStatistics")
+    
+    
+    return
+}
+
+func NewGetTicketStatisticsResponse() (response *GetTicketStatisticsResponse) {
+    response = &GetTicketStatisticsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// GetTicketStatistics
+// 查询单个验证的统计数据，包括：票据校验量、票据校验通过量、票据校验拦截量。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION_ERRAUTH = "UnauthorizedOperation.ErrAuth"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZED = "UnauthorizedOperation.Unauthorized"
+func (c *Client) GetTicketStatistics(request *GetTicketStatisticsRequest) (response *GetTicketStatisticsResponse, err error) {
+    return c.GetTicketStatisticsWithContext(context.Background(), request)
+}
+
+// GetTicketStatistics
+// 查询单个验证的统计数据，包括：票据校验量、票据校验通过量、票据校验拦截量。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION_ERRAUTH = "UnauthorizedOperation.ErrAuth"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZED = "UnauthorizedOperation.Unauthorized"
+func (c *Client) GetTicketStatisticsWithContext(ctx context.Context, request *GetTicketStatisticsRequest) (response *GetTicketStatisticsResponse, err error) {
+    if request == nil {
+        request = NewGetTicketStatisticsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetTicketStatistics require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetTicketStatisticsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewGetTotalTicketStatisticsRequest() (request *GetTotalTicketStatisticsRequest) {
     request = &GetTotalTicketStatisticsRequest{
         BaseRequest: &tchttp.BaseRequest{},

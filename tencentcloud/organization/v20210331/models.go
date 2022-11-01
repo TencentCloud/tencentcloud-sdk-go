@@ -195,6 +195,9 @@ type CreateOrganizationMemberRequestParams struct {
 
 	// 管理身份
 	IdentityRoleID []*uint64 `json:"IdentityRoleID,omitempty" name:"IdentityRoleID"`
+
+	// 主体关系ID
+	AuthRelationId *int64 `json:"AuthRelationId,omitempty" name:"AuthRelationId"`
 }
 
 type CreateOrganizationMemberRequest struct {
@@ -226,6 +229,9 @@ type CreateOrganizationMemberRequest struct {
 
 	// 管理身份
 	IdentityRoleID []*uint64 `json:"IdentityRoleID,omitempty" name:"IdentityRoleID"`
+
+	// 主体关系ID
+	AuthRelationId *int64 `json:"AuthRelationId,omitempty" name:"AuthRelationId"`
 }
 
 func (r *CreateOrganizationMemberRequest) ToJsonString() string {
@@ -249,6 +255,7 @@ func (r *CreateOrganizationMemberRequest) FromJsonString(s string) error {
 	delete(f, "RecordId")
 	delete(f, "PayUin")
 	delete(f, "IdentityRoleID")
+	delete(f, "AuthRelationId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateOrganizationMemberRequest has unknown keys!", "")
 	}

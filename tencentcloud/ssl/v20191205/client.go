@@ -1325,6 +1325,58 @@ func (c *Client) ModifyCertificateProjectWithContext(ctx context.Context, reques
     return
 }
 
+func NewModifyCertificatesExpiringNotificationSwitchRequest() (request *ModifyCertificatesExpiringNotificationSwitchRequest) {
+    request = &ModifyCertificatesExpiringNotificationSwitchRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ssl", APIVersion, "ModifyCertificatesExpiringNotificationSwitch")
+    
+    
+    return
+}
+
+func NewModifyCertificatesExpiringNotificationSwitchResponse() (response *ModifyCertificatesExpiringNotificationSwitchResponse) {
+    response = &ModifyCertificatesExpiringNotificationSwitchResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyCertificatesExpiringNotificationSwitch
+// 修改忽略证书到期通知。打开或关闭证书到期通知。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CERTIFICATENOTFOUND = "FailedOperation.CertificateNotFound"
+//  INVALIDPARAMETER_CERTIFICATESNUMBEREXCEEDED = "InvalidParameter.CertificatesNumberExceeded"
+func (c *Client) ModifyCertificatesExpiringNotificationSwitch(request *ModifyCertificatesExpiringNotificationSwitchRequest) (response *ModifyCertificatesExpiringNotificationSwitchResponse, err error) {
+    return c.ModifyCertificatesExpiringNotificationSwitchWithContext(context.Background(), request)
+}
+
+// ModifyCertificatesExpiringNotificationSwitch
+// 修改忽略证书到期通知。打开或关闭证书到期通知。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CERTIFICATENOTFOUND = "FailedOperation.CertificateNotFound"
+//  INVALIDPARAMETER_CERTIFICATESNUMBEREXCEEDED = "InvalidParameter.CertificatesNumberExceeded"
+func (c *Client) ModifyCertificatesExpiringNotificationSwitchWithContext(ctx context.Context, request *ModifyCertificatesExpiringNotificationSwitchRequest) (response *ModifyCertificatesExpiringNotificationSwitchResponse, err error) {
+    if request == nil {
+        request = NewModifyCertificatesExpiringNotificationSwitchRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyCertificatesExpiringNotificationSwitch require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyCertificatesExpiringNotificationSwitchResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewReplaceCertificateRequest() (request *ReplaceCertificateRequest) {
     request = &ReplaceCertificateRequest{
         BaseRequest: &tchttp.BaseRequest{},

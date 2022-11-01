@@ -4857,6 +4857,119 @@ func (r *CreateRefreshTaskResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateRiskDnsEventExportJobRequestParams struct {
+	// 过滤条件。
+	// <li>EventStatus- String - 是否必填：否 - 事件状态，待处理：EVENT_UNDEAL，EVENT_DEALED：已处理，已忽略：EVENT_IGNORE， EVENT_ADD_WHITE：已加白</li>
+	// <li>ContainerStatus- String - 是否必填：否 - 容器运行状态筛选，已创建：CREATED,正常运行：RUNNING, 暂定运行：PAUSED, 停止运行：	STOPPED，重启中：RESTARTING, 迁移中：REMOVING, 销毁：DESTROYED </li>
+	// <li>ContainerNetStatus- String -是否必填: 否 -  容器网络状态筛选 未隔离：NORMAL，已隔离：ISOLATED，隔离失败：ISOLATE_FAILED，解除隔离失败：RESTORE_FAILED，解除隔离中：RESTORING，隔离中：ISOLATING</li>
+	// <li>EventType - String -是否必填: 否 -  事件类型，恶意域名请求：DOMAIN，恶意IP请求：IP</li>
+	// <li>TimeRange- String -是否必填: 否 -  时间范围，第一个值表示开始时间，第二个值表示结束时间 </li>
+	// <li>RiskDns- string - 是否必填：否 - 恶意域名。</li>
+	// <li>RiskIP- string - 是否必填：否 - 恶意IP。</li>
+	// <li>ContainerName- string - 是否必填：否 - 容器名称。</li>
+	// <li>ContainerID- string - 是否必填：否 - 容器ID。</li>
+	// <li>ImageName- string - 是否必填：否 - 镜像名称。</li>
+	// <li>ImageID- string - 是否必填：否 - 镜像ID。</li>
+	// <li>HostName- string - 是否必填：否 - 主机名称。</li>
+	// <li>HostIP- string - 是否必填：否 - 内网IP。</li>
+	// <li>PublicIP- string - 是否必填：否 - 外网IP。</li>
+	Filters []*RunTimeFilters `json:"Filters,omitempty" name:"Filters"`
+
+	// 需要返回的数量，最大值为100000
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 排序方式：asc/desc
+	Order *string `json:"Order,omitempty" name:"Order"`
+
+	// 排序字段：事件数量：EventCount
+	By *string `json:"By,omitempty" name:"By"`
+}
+
+type CreateRiskDnsEventExportJobRequest struct {
+	*tchttp.BaseRequest
+	
+	// 过滤条件。
+	// <li>EventStatus- String - 是否必填：否 - 事件状态，待处理：EVENT_UNDEAL，EVENT_DEALED：已处理，已忽略：EVENT_IGNORE， EVENT_ADD_WHITE：已加白</li>
+	// <li>ContainerStatus- String - 是否必填：否 - 容器运行状态筛选，已创建：CREATED,正常运行：RUNNING, 暂定运行：PAUSED, 停止运行：	STOPPED，重启中：RESTARTING, 迁移中：REMOVING, 销毁：DESTROYED </li>
+	// <li>ContainerNetStatus- String -是否必填: 否 -  容器网络状态筛选 未隔离：NORMAL，已隔离：ISOLATED，隔离失败：ISOLATE_FAILED，解除隔离失败：RESTORE_FAILED，解除隔离中：RESTORING，隔离中：ISOLATING</li>
+	// <li>EventType - String -是否必填: 否 -  事件类型，恶意域名请求：DOMAIN，恶意IP请求：IP</li>
+	// <li>TimeRange- String -是否必填: 否 -  时间范围，第一个值表示开始时间，第二个值表示结束时间 </li>
+	// <li>RiskDns- string - 是否必填：否 - 恶意域名。</li>
+	// <li>RiskIP- string - 是否必填：否 - 恶意IP。</li>
+	// <li>ContainerName- string - 是否必填：否 - 容器名称。</li>
+	// <li>ContainerID- string - 是否必填：否 - 容器ID。</li>
+	// <li>ImageName- string - 是否必填：否 - 镜像名称。</li>
+	// <li>ImageID- string - 是否必填：否 - 镜像ID。</li>
+	// <li>HostName- string - 是否必填：否 - 主机名称。</li>
+	// <li>HostIP- string - 是否必填：否 - 内网IP。</li>
+	// <li>PublicIP- string - 是否必填：否 - 外网IP。</li>
+	Filters []*RunTimeFilters `json:"Filters,omitempty" name:"Filters"`
+
+	// 需要返回的数量，最大值为100000
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 排序方式：asc/desc
+	Order *string `json:"Order,omitempty" name:"Order"`
+
+	// 排序字段：事件数量：EventCount
+	By *string `json:"By,omitempty" name:"By"`
+}
+
+func (r *CreateRiskDnsEventExportJobRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateRiskDnsEventExportJobRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Filters")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "Order")
+	delete(f, "By")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateRiskDnsEventExportJobRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateRiskDnsEventExportJobResponseParams struct {
+	// 导出任务ID，前端拿着任务ID查询任务进度
+	JobId *string `json:"JobId,omitempty" name:"JobId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateRiskDnsEventExportJobResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateRiskDnsEventExportJobResponseParams `json:"Response"`
+}
+
+func (r *CreateRiskDnsEventExportJobResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateRiskDnsEventExportJobResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateSearchTemplateRequestParams struct {
 	// 搜索模板
 	SearchTemplate *SearchTemplate `json:"SearchTemplate,omitempty" name:"SearchTemplate"`

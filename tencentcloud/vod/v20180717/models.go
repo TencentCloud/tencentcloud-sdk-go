@@ -11866,8 +11866,9 @@ type MediaContentReviewSegmentItem struct {
 
 type MediaDeleteItem struct {
 	// 所指定的删除部分。如果未填写该字段则参数无效。可选值有：
-	// <li>OriginalFiles（删除原文件，删除后无法发起转码、微信发布等任何视频处理操作）。</li>
-	// <li>TranscodeFiles（删除转码文件）。</li>
+	// <li>OriginalFiles（删除原文件，删除后无法发起转码、微信发布等任何视频处理操作）；</li>
+	// <li>TranscodeFiles（删除转码文件）；</li>
+	// <li>AdaptiveDynamicStreamingFiles（删除转自适应码流文件）；</li>
 	// <li>WechatPublishFiles（删除微信发布文件）。</li>
 	Type *string `json:"Type,omitempty" name:"Type"`
 
@@ -17667,10 +17668,6 @@ type SearchMediaRequestParams struct {
 	// <li>数组长度限制：10。</li>
 	StreamIds []*string `json:"StreamIds,omitempty" name:"StreamIds"`
 
-	// 直播录制文件的唯一标识。匹配集合中的任意元素。
-	// <li>数组长度限制：10。</li>
-	Vids []*string `json:"Vids,omitempty" name:"Vids"`
-
 	// 匹配创建时间在此时间段内的文件。
 	// <li>包含所指定的头尾时间点。</li>
 	CreateTime *TimeRange `json:"CreateTime,omitempty" name:"CreateTime"`
@@ -17738,10 +17735,6 @@ type SearchMediaRequestParams struct {
 	// 推流直播码。
 	StreamId *string `json:"StreamId,omitempty" name:"StreamId"`
 
-	// （不推荐：应使用 Vids 替代）
-	// 直播录制文件的唯一标识。
-	Vid *string `json:"Vid,omitempty" name:"Vid"`
-
 	// （不推荐：应使用 CreateTime 替代）
 	// 创建时间的开始时间。
 	// <li>大于等于开始时间。</li>
@@ -17755,6 +17748,12 @@ type SearchMediaRequestParams struct {
 	// <li>当 CreateTime.Before 也存在时，将优先使用 CreateTime.Before。</li>
 	// <li>格式按照 ISO 8601标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。</li>
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 该字段已无效。
+	Vids []*string `json:"Vids,omitempty" name:"Vids"`
+
+	// 该字段已无效。
+	Vid *string `json:"Vid,omitempty" name:"Vid"`
 }
 
 type SearchMediaRequest struct {
@@ -17806,10 +17805,6 @@ type SearchMediaRequest struct {
 	// <li>数组长度限制：10。</li>
 	StreamIds []*string `json:"StreamIds,omitempty" name:"StreamIds"`
 
-	// 直播录制文件的唯一标识。匹配集合中的任意元素。
-	// <li>数组长度限制：10。</li>
-	Vids []*string `json:"Vids,omitempty" name:"Vids"`
-
 	// 匹配创建时间在此时间段内的文件。
 	// <li>包含所指定的头尾时间点。</li>
 	CreateTime *TimeRange `json:"CreateTime,omitempty" name:"CreateTime"`
@@ -17877,10 +17872,6 @@ type SearchMediaRequest struct {
 	// 推流直播码。
 	StreamId *string `json:"StreamId,omitempty" name:"StreamId"`
 
-	// （不推荐：应使用 Vids 替代）
-	// 直播录制文件的唯一标识。
-	Vid *string `json:"Vid,omitempty" name:"Vid"`
-
 	// （不推荐：应使用 CreateTime 替代）
 	// 创建时间的开始时间。
 	// <li>大于等于开始时间。</li>
@@ -17894,6 +17885,12 @@ type SearchMediaRequest struct {
 	// <li>当 CreateTime.Before 也存在时，将优先使用 CreateTime.Before。</li>
 	// <li>格式按照 ISO 8601标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。</li>
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 该字段已无效。
+	Vids []*string `json:"Vids,omitempty" name:"Vids"`
+
+	// 该字段已无效。
+	Vid *string `json:"Vid,omitempty" name:"Vid"`
 }
 
 func (r *SearchMediaRequest) ToJsonString() string {
@@ -17918,7 +17915,6 @@ func (r *SearchMediaRequest) FromJsonString(s string) error {
 	delete(f, "Categories")
 	delete(f, "SourceTypes")
 	delete(f, "StreamIds")
-	delete(f, "Vids")
 	delete(f, "CreateTime")
 	delete(f, "ExpireTime")
 	delete(f, "Sort")
@@ -17932,9 +17928,10 @@ func (r *SearchMediaRequest) FromJsonString(s string) error {
 	delete(f, "Text")
 	delete(f, "SourceType")
 	delete(f, "StreamId")
-	delete(f, "Vid")
 	delete(f, "StartTime")
 	delete(f, "EndTime")
+	delete(f, "Vids")
+	delete(f, "Vid")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SearchMediaRequest has unknown keys!", "")
 	}

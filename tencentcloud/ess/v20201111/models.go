@@ -73,6 +73,9 @@ type ApproverInfo struct {
 
 	// 客户自定义签署人标识，64位长度，保证唯一，非企微场景不使用此字段
 	CustomApproverTag *string `json:"CustomApproverTag,omitempty" name:"CustomApproverTag"`
+
+	// 签署人个性化能力值
+	ApproverOption *ApproverOption `json:"ApproverOption,omitempty" name:"ApproverOption"`
 }
 
 type ApproverOption struct {
@@ -424,7 +427,7 @@ func (r *CreateBatchCancelFlowUrlResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateConvertTaskApiRequestParams struct {
-	// 资源类型 取值范围doc,docx,html之一
+	// 资源类型 取值范围doc,docx,html,excel之一
 	ResourceType *string `json:"ResourceType,omitempty" name:"ResourceType"`
 
 	// 资源名称，长度限制为256字符
@@ -446,7 +449,7 @@ type CreateConvertTaskApiRequestParams struct {
 type CreateConvertTaskApiRequest struct {
 	*tchttp.BaseRequest
 	
-	// 资源类型 取值范围doc,docx,html之一
+	// 资源类型 取值范围doc,docx,html,excel之一
 	ResourceType *string `json:"ResourceType,omitempty" name:"ResourceType"`
 
 	// 资源名称，长度限制为256字符
@@ -746,6 +749,9 @@ type CreateFlowByFilesRequestParams struct {
 	// 注：企业可以通过此功能与企业内部的审批流程进行关联，支持手动、静默签署合同。
 	NeedSignReview *bool `json:"NeedSignReview,omitempty" name:"NeedSignReview"`
 
+	// 用户自定义字段，回调的时候会进行透传，长度需要小于20480
+	UserData *string `json:"UserData,omitempty" name:"UserData"`
+
 	// 应用号信息
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 }
@@ -803,6 +809,9 @@ type CreateFlowByFilesRequest struct {
 	// 注：企业可以通过此功能与企业内部的审批流程进行关联，支持手动、静默签署合同。
 	NeedSignReview *bool `json:"NeedSignReview,omitempty" name:"NeedSignReview"`
 
+	// 用户自定义字段，回调的时候会进行透传，长度需要小于20480
+	UserData *string `json:"UserData,omitempty" name:"UserData"`
+
 	// 应用号信息
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 }
@@ -832,6 +841,7 @@ func (r *CreateFlowByFilesRequest) FromJsonString(s string) error {
 	delete(f, "Unordered")
 	delete(f, "CustomShowMap")
 	delete(f, "NeedSignReview")
+	delete(f, "UserData")
 	delete(f, "Agent")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateFlowByFilesRequest has unknown keys!", "")
@@ -960,7 +970,7 @@ type CreateFlowRequestParams struct {
 	// 值为unix时间戳,精确到秒,不传默认为当前时间一年后
 	DeadLine *int64 `json:"DeadLine,omitempty" name:"DeadLine"`
 
-	// 用户自定义字段(需进行base64 encode),回调的时候会进行透传, 长度需要小于20480
+	// 用户自定义字段，回调的时候会进行透传，长度需要小于20480
 	UserData *string `json:"UserData,omitempty" name:"UserData"`
 
 	// 签署流程描述,最大长度1000个字符
@@ -1013,7 +1023,7 @@ type CreateFlowRequest struct {
 	// 值为unix时间戳,精确到秒,不传默认为当前时间一年后
 	DeadLine *int64 `json:"DeadLine,omitempty" name:"DeadLine"`
 
-	// 用户自定义字段(需进行base64 encode),回调的时候会进行透传, 长度需要小于20480
+	// 用户自定义字段，回调的时候会进行透传，长度需要小于20480
 	UserData *string `json:"UserData,omitempty" name:"UserData"`
 
 	// 签署流程描述,最大长度1000个字符
@@ -2819,9 +2829,9 @@ type UploadFile struct {
 
 // Predefined struct for user
 type UploadFilesRequestParams struct {
-	// 文件对应业务类型，用于区分文件存储路径：
-	// 1. TEMPLATE - 模板； 文件类型：.pdf .doc .docx .html
-	// 2. DOCUMENT - 签署过程及签署后的合同文档/图片控件 文件类型：.pdf/.jpg/.png
+	// 文件对应业务类型
+	// 1. TEMPLATE - 模板； 文件类型：.pdf/.doc/.docx/.html
+	// 2. DOCUMENT - 签署过程及签署后的合同文档/图片控件 文件类型：.pdf/.doc/.docx/.jpg/.png/.xls.xlsx/.html
 	// 3. SEAL - 印章； 文件类型：.jpg/.jpeg/.png
 	BusinessType *string `json:"BusinessType,omitempty" name:"BusinessType"`
 
@@ -2850,9 +2860,9 @@ type UploadFilesRequestParams struct {
 type UploadFilesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 文件对应业务类型，用于区分文件存储路径：
-	// 1. TEMPLATE - 模板； 文件类型：.pdf .doc .docx .html
-	// 2. DOCUMENT - 签署过程及签署后的合同文档/图片控件 文件类型：.pdf/.jpg/.png
+	// 文件对应业务类型
+	// 1. TEMPLATE - 模板； 文件类型：.pdf/.doc/.docx/.html
+	// 2. DOCUMENT - 签署过程及签署后的合同文档/图片控件 文件类型：.pdf/.doc/.docx/.jpg/.png/.xls.xlsx/.html
 	// 3. SEAL - 印章； 文件类型：.jpg/.jpeg/.png
 	BusinessType *string `json:"BusinessType,omitempty" name:"BusinessType"`
 
