@@ -1145,60 +1145,6 @@ func (c *Client) ModifyCustomizationStateWithContext(ctx context.Context, reques
     return
 }
 
-func NewModifyRoomInfoRequest() (request *ModifyRoomInfoRequest) {
-    request = &ModifyRoomInfoRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("gme", APIVersion, "ModifyRoomInfo")
-    
-    
-    return
-}
-
-func NewModifyRoomInfoResponse() (response *ModifyRoomInfoResponse) {
-    response = &ModifyRoomInfoResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// ModifyRoomInfo
-// 修改房间信息
-//
-// 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-func (c *Client) ModifyRoomInfo(request *ModifyRoomInfoRequest) (response *ModifyRoomInfoResponse, err error) {
-    return c.ModifyRoomInfoWithContext(context.Background(), request)
-}
-
-// ModifyRoomInfo
-// 修改房间信息
-//
-// 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-func (c *Client) ModifyRoomInfoWithContext(ctx context.Context, request *ModifyRoomInfoRequest) (response *ModifyRoomInfoResponse, err error) {
-    if request == nil {
-        request = NewModifyRoomInfoRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("ModifyRoomInfo require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewModifyRoomInfoResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewModifyUserMicStatusRequest() (request *ModifyUserMicStatusRequest) {
     request = &ModifyUserMicStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},

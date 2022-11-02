@@ -430,7 +430,7 @@ type CreateClusterRequestParams struct {
 	// 指定计算节点的数量。默认取值：0。
 	ComputeNodeCount *int64 `json:"ComputeNodeCount,omitempty" name:"ComputeNodeCount"`
 
-	// 调度器类型。<br><li>SGE：SGE调度器。<br><li>SLURM：SLURM调度器。
+	// 调度器类型。默认取值：SLURM。<br><li>SGE：SGE调度器。<br><li>SLURM：SLURM调度器。
 	SchedulerType *string `json:"SchedulerType,omitempty" name:"SchedulerType"`
 
 	// 指定有效的[镜像](https://cloud.tencent.com/document/product/213/4940)ID，格式形如`img-xxx`。目前仅支持公有镜像。
@@ -455,7 +455,7 @@ type CreateClusterRequestParams struct {
 	// false（默认）：发送正常请求，通过检查后直接创建实例
 	DryRun *bool `json:"DryRun,omitempty" name:"DryRun"`
 
-	// 域名字服务类型。默认值：NIS
+	// 域名字服务类型。默认取值：NIS。
 	// <li>NIS：NIS域名字服务。
 	AccountType *string `json:"AccountType,omitempty" name:"AccountType"`
 
@@ -493,7 +493,7 @@ type CreateClusterRequest struct {
 	// 指定计算节点的数量。默认取值：0。
 	ComputeNodeCount *int64 `json:"ComputeNodeCount,omitempty" name:"ComputeNodeCount"`
 
-	// 调度器类型。<br><li>SGE：SGE调度器。<br><li>SLURM：SLURM调度器。
+	// 调度器类型。默认取值：SLURM。<br><li>SGE：SGE调度器。<br><li>SLURM：SLURM调度器。
 	SchedulerType *string `json:"SchedulerType,omitempty" name:"SchedulerType"`
 
 	// 指定有效的[镜像](https://cloud.tencent.com/document/product/213/4940)ID，格式形如`img-xxx`。目前仅支持公有镜像。
@@ -518,7 +518,7 @@ type CreateClusterRequest struct {
 	// false（默认）：发送正常请求，通过检查后直接创建实例
 	DryRun *bool `json:"DryRun,omitempty" name:"DryRun"`
 
-	// 域名字服务类型。默认值：NIS
+	// 域名字服务类型。默认取值：NIS。
 	// <li>NIS：NIS域名字服务。
 	AccountType *string `json:"AccountType,omitempty" name:"AccountType"`
 

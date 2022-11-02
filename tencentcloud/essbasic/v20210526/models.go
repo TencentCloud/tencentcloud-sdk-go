@@ -1441,6 +1441,7 @@ type CreateFlowsByTemplatesRequestParams struct {
 
 	// 是否为预览模式；默认为false，即非预览模式，此时发起合同并返回FlowIds；若为预览模式，不会发起合同，会返回PreviewUrls（此Url返回的是PDF文件流 ）；
 	// 预览链接有效期300秒；
+	// 同时，如果预览的文件中指定了动态表格控件，需要进行异步合成；此时此接口返回的是合成前的文档预览链接，而合成完成后的文档预览链接会通过：回调通知的方式、或使用返回的TaskInfo中的TaskId通过ChannelGetTaskResultApi接口查询；
 	NeedPreview *bool `json:"NeedPreview,omitempty" name:"NeedPreview"`
 
 	// 操作者的信息
@@ -1458,6 +1459,7 @@ type CreateFlowsByTemplatesRequest struct {
 
 	// 是否为预览模式；默认为false，即非预览模式，此时发起合同并返回FlowIds；若为预览模式，不会发起合同，会返回PreviewUrls（此Url返回的是PDF文件流 ）；
 	// 预览链接有效期300秒；
+	// 同时，如果预览的文件中指定了动态表格控件，需要进行异步合成；此时此接口返回的是合成前的文档预览链接，而合成完成后的文档预览链接会通过：回调通知的方式、或使用返回的TaskInfo中的TaskId通过ChannelGetTaskResultApi接口查询；
 	NeedPreview *bool `json:"NeedPreview,omitempty" name:"NeedPreview"`
 
 	// 操作者的信息
@@ -1501,7 +1503,8 @@ type CreateFlowsByTemplatesResponseParams struct {
 	// 预览模式下返回的预览文件url数组
 	PreviewUrls []*string `json:"PreviewUrls,omitempty" name:"PreviewUrls"`
 
-	// 复杂文档合成任务的任务信息数组
+	// 复杂文档合成任务（如，包含动态表格的预览任务）的任务信息数组；
+	// 如果文档需要异步合成，此字段会返回该异步任务的任务信息，后续可以通过ChannelGetTaskResultApi接口查询任务详情；
 	TaskInfos []*TaskInfo `json:"TaskInfos,omitempty" name:"TaskInfos"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。

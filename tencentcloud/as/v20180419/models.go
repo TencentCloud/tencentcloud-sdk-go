@@ -3123,6 +3123,9 @@ type EnhancedService struct {
 
 	// 开启云监控服务。若不指定该参数，则默认开启云监控服务。
 	MonitorService *RunMonitorServiceEnabled `json:"MonitorService,omitempty" name:"MonitorService"`
+
+	// 开启自动化助手服务。若不指定该参数，则默认逻辑与CVM保持一致。注意：此字段可能返回 null，表示取不到有效值。
+	AutomationService []*RunAutomationServiceEnabled `json:"AutomationService,omitempty" name:"AutomationService"`
 }
 
 // Predefined struct for user
@@ -4794,6 +4797,12 @@ func (r *RemoveInstancesResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *RemoveInstancesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type RunAutomationServiceEnabled struct {
+	// 是否开启[自动化助手](https://cloud.tencent.com/document/product/1340)服务。取值范围：<br><li>TRUE：表示开启自动化助手服务<br><li>FALSE：表示不开启自动化助手服务
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Enabled *bool `json:"Enabled,omitempty" name:"Enabled"`
 }
 
 type RunMonitorServiceEnabled struct {

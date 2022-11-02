@@ -656,11 +656,11 @@ const (
 	// 分组操作，无有效机器。
 	INVALIDPARAMETERVALUE_GROUPVALIDINSTANCENULL = "InvalidParameterValue.GroupValidInstanceNull"
 
+	// 镜像仓库名不能为空。
+	INVALIDPARAMETERVALUE_IMAGEREPOREPONAMENULL = "InvalidParameterValue.ImagerepoRepoNameNull"
+
 	// 镜像仓库名不合法,示例:tsf-repo/nginx。
 	INVALIDPARAMETERVALUE_IMAGEREPOREPONAMEINVALID = "InvalidParameterValue.ImagerepoReponameInvalid"
-
-	// 镜像仓库名不能为空。
-	INVALIDPARAMETERVALUE_IMAGEREPOREPONAMENULL = "InvalidParameterValue.ImagerepoReponameNull"
 
 	// imageTags不能为空。
 	INVALIDPARAMETERVALUE_IMAGEREPOTAGNAMENULL = "InvalidParameterValue.ImagerepoTagnameNull"

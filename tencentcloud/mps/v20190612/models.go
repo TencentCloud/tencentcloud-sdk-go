@@ -483,6 +483,7 @@ type AiRecognitionResult struct {
 	// <li>OcrWordsRecognition：文本关键词识别，</li>
 	// <li>AsrFullTextRecognition：语音全文识别，</li>
 	// <li>OcrFullTextRecognition：文本全文识别。</li>
+	// <li>TransTextRecognition：语音翻译。</li>
 	Type *string `json:"Type,omitempty" name:"Type"`
 
 	// 人脸识别结果，当 Type 为 
@@ -509,6 +510,11 @@ type AiRecognitionResult struct {
 	//  OcrFullTextRecognition 时有效。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OcrFullTextTask *AiRecognitionTaskOcrFullTextResult `json:"OcrFullTextTask,omitempty" name:"OcrFullTextTask"`
+
+	// 翻译结果，当 Type 为
+	//  TransTextRecognition 时有效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TransTextTask *AiRecognitionTaskTransTextResult `json:"TransTextTask,omitempty" name:"TransTextTask"`
 }
 
 type AiRecognitionTaskAsrFullTextResult struct {
@@ -824,6 +830,60 @@ type AiRecognitionTaskOcrWordsSegmentItem struct {
 
 	// 识别结果的区域坐标。数组包含 4 个元素 [x1,y1,x2,y2]，依次表示区域左上点、右下点的横纵坐标。
 	AreaCoordSet []*int64 `json:"AreaCoordSet,omitempty" name:"AreaCoordSet"`
+}
+
+type AiRecognitionTaskTransTextResult struct {
+	// 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 错误码，空字符串表示成功，其他值表示失败，取值请参考 [媒体处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+	ErrCodeExt *string `json:"ErrCodeExt,omitempty" name:"ErrCodeExt"`
+
+	// 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
+	ErrCode *int64 `json:"ErrCode,omitempty" name:"ErrCode"`
+
+	// 错误信息。
+	Message *string `json:"Message,omitempty" name:"Message"`
+
+	// 翻译任务输入信息。
+	Input *AiRecognitionTaskTransTextResultInput `json:"Input,omitempty" name:"Input"`
+
+	// 翻译任务输出信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Output *AiRecognitionTaskTransTextResultOutput `json:"Output,omitempty" name:"Output"`
+}
+
+type AiRecognitionTaskTransTextResultInput struct {
+	// 翻译模板 ID。
+	Definition *int64 `json:"Definition,omitempty" name:"Definition"`
+}
+
+type AiRecognitionTaskTransTextResultOutput struct {
+	// 翻译片段列表。
+	SegmentSet []*AiRecognitionTaskTransTextSegmentItem `json:"SegmentSet,omitempty" name:"SegmentSet"`
+
+	// 字幕文件地址。
+	SubtitlePath *string `json:"SubtitlePath,omitempty" name:"SubtitlePath"`
+
+	// 字幕文件存储位置。
+	OutputStorage *TaskOutputStorage `json:"OutputStorage,omitempty" name:"OutputStorage"`
+}
+
+type AiRecognitionTaskTransTextSegmentItem struct {
+	// 识别片段置信度。取值：0~100。
+	Confidence *float64 `json:"Confidence,omitempty" name:"Confidence"`
+
+	// 识别片段起始的偏移时间，单位：秒。
+	StartTimeOffset *float64 `json:"StartTimeOffset,omitempty" name:"StartTimeOffset"`
+
+	// 识别片段终止的偏移时间，单位：秒。
+	EndTimeOffset *float64 `json:"EndTimeOffset,omitempty" name:"EndTimeOffset"`
+
+	// 识别文本。
+	Text *string `json:"Text,omitempty" name:"Text"`
+
+	// 翻译文本。
+	Trans *string `json:"Trans,omitempty" name:"Trans"`
 }
 
 type AiReviewPoliticalAsrTaskInput struct {
@@ -2264,6 +2324,9 @@ type CreateImageSpriteTemplateRequestParams struct {
 
 	// 模板描述信息，长度限制：256 个字符。
 	Comment *string `json:"Comment,omitempty" name:"Comment"`
+
+	// 图片格式，取值为 jpg、png、webp。默认为 jpg。
+	Format *string `json:"Format,omitempty" name:"Format"`
 }
 
 type CreateImageSpriteTemplateRequest struct {
@@ -2318,6 +2381,9 @@ type CreateImageSpriteTemplateRequest struct {
 
 	// 模板描述信息，长度限制：256 个字符。
 	Comment *string `json:"Comment,omitempty" name:"Comment"`
+
+	// 图片格式，取值为 jpg、png、webp。默认为 jpg。
+	Format *string `json:"Format,omitempty" name:"Format"`
 }
 
 func (r *CreateImageSpriteTemplateRequest) ToJsonString() string {
@@ -2342,6 +2408,7 @@ func (r *CreateImageSpriteTemplateRequest) FromJsonString(s string) error {
 	delete(f, "ResolutionAdaptive")
 	delete(f, "FillType")
 	delete(f, "Comment")
+	delete(f, "Format")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateImageSpriteTemplateRequest has unknown keys!", "")
 	}
@@ -2510,7 +2577,7 @@ type CreateSampleSnapshotTemplateRequestParams struct {
 	// 默认值：open。
 	ResolutionAdaptive *string `json:"ResolutionAdaptive,omitempty" name:"ResolutionAdaptive"`
 
-	// 图片格式，取值为 jpg 和 png。默认为 jpg。
+	// 图片格式，取值为 jpg、png、webp。默认为 jpg。
 	Format *string `json:"Format,omitempty" name:"Format"`
 
 	// 模板描述信息，长度限制：256 个字符。
@@ -2563,7 +2630,7 @@ type CreateSampleSnapshotTemplateRequest struct {
 	// 默认值：open。
 	ResolutionAdaptive *string `json:"ResolutionAdaptive,omitempty" name:"ResolutionAdaptive"`
 
-	// 图片格式，取值为 jpg 和 png。默认为 jpg。
+	// 图片格式，取值为 jpg、png、webp。默认为 jpg。
 	Format *string `json:"Format,omitempty" name:"Format"`
 
 	// 模板描述信息，长度限制：256 个字符。
@@ -2657,7 +2724,7 @@ type CreateSnapshotByTimeOffsetTemplateRequestParams struct {
 	// 默认值：open。
 	ResolutionAdaptive *string `json:"ResolutionAdaptive,omitempty" name:"ResolutionAdaptive"`
 
-	// 图片格式，取值可以为 jpg 和 png。默认为 jpg。
+	// 图片格式，取值可以为 jpg、png、webp。默认为 jpg。
 	Format *string `json:"Format,omitempty" name:"Format"`
 
 	// 模板描述信息，长度限制：256 个字符。
@@ -2700,7 +2767,7 @@ type CreateSnapshotByTimeOffsetTemplateRequest struct {
 	// 默认值：open。
 	ResolutionAdaptive *string `json:"ResolutionAdaptive,omitempty" name:"ResolutionAdaptive"`
 
-	// 图片格式，取值可以为 jpg 和 png。默认为 jpg。
+	// 图片格式，取值可以为 jpg、png、webp。默认为 jpg。
 	Format *string `json:"Format,omitempty" name:"Format"`
 
 	// 模板描述信息，长度限制：256 个字符。
@@ -5926,6 +5993,9 @@ type ImageSpriteTemplate struct {
 
 	// 模板描述信息。
 	Comment *string `json:"Comment,omitempty" name:"Comment"`
+
+	// 图片格式。
+	Format *string `json:"Format,omitempty" name:"Format"`
 }
 
 type ImageWatermarkInput struct {
@@ -6007,6 +6077,7 @@ type LiveStreamAiRecognitionResultItem struct {
 	// <li>OcrWordsRecognition：文本关键词识别，</li>
 	// <li>AsrFullTextRecognition：语音全文识别，</li>
 	// <li>OcrFullTextRecognition：文本全文识别。</li>
+	// <li>TransTextRecognition：语音翻译。</li>
 	Type *string `json:"Type,omitempty" name:"Type"`
 
 	// 人脸识别结果，当 Type 为
@@ -6028,6 +6099,9 @@ type LiveStreamAiRecognitionResultItem struct {
 	// 文本全文识别结果，当 Type 为
 	// OcrFullTextRecognition 时有效。
 	OcrFullTextRecognitionResultSet []*LiveStreamOcrFullTextRecognitionResult `json:"OcrFullTextRecognitionResultSet,omitempty" name:"OcrFullTextRecognitionResultSet"`
+
+	// 翻译结果，当Type 为 TransTextRecognition 时有效。
+	TransTextRecognitionResultSet []*LiveStreamTransTextRecognitionResult `json:"TransTextRecognitionResultSet,omitempty" name:"TransTextRecognitionResultSet"`
 }
 
 type LiveStreamAiReviewImagePoliticalResult struct {
@@ -6311,6 +6385,23 @@ type LiveStreamTaskNotifyConfig struct {
 
 	// HTTP回调地址，NotifyType为URL时必填。
 	NotifyUrl *string `json:"NotifyUrl,omitempty" name:"NotifyUrl"`
+}
+
+type LiveStreamTransTextRecognitionResult struct {
+	// 识别文本。
+	Text *string `json:"Text,omitempty" name:"Text"`
+
+	// 翻译片段起始的 PTS 时间，单位：秒。
+	StartPtsTime *float64 `json:"StartPtsTime,omitempty" name:"StartPtsTime"`
+
+	// 翻译片段终止的 PTS 时间，单位：秒。
+	EndPtsTime *float64 `json:"EndPtsTime,omitempty" name:"EndPtsTime"`
+
+	// 翻译片段置信度。取值：0~100。
+	Confidence *float64 `json:"Confidence,omitempty" name:"Confidence"`
+
+	// 翻译文本。
+	Trans *string `json:"Trans,omitempty" name:"Trans"`
 }
 
 type LowLightEnhanceConfig struct {
@@ -7609,6 +7700,9 @@ type ModifyImageSpriteTemplateRequestParams struct {
 
 	// 模板描述信息，长度限制：256 个字符。
 	Comment *string `json:"Comment,omitempty" name:"Comment"`
+
+	// 图片格式，取值可以为 jpg、png、webp。
+	Format *string `json:"Format,omitempty" name:"Format"`
 }
 
 type ModifyImageSpriteTemplateRequest struct {
@@ -7666,6 +7760,9 @@ type ModifyImageSpriteTemplateRequest struct {
 
 	// 模板描述信息，长度限制：256 个字符。
 	Comment *string `json:"Comment,omitempty" name:"Comment"`
+
+	// 图片格式，取值可以为 jpg、png、webp。
+	Format *string `json:"Format,omitempty" name:"Format"`
 }
 
 func (r *ModifyImageSpriteTemplateRequest) ToJsonString() string {
@@ -7691,6 +7788,7 @@ func (r *ModifyImageSpriteTemplateRequest) FromJsonString(s string) error {
 	delete(f, "ColumnCount")
 	delete(f, "FillType")
 	delete(f, "Comment")
+	delete(f, "Format")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyImageSpriteTemplateRequest has unknown keys!", "")
 	}
@@ -7861,7 +7959,7 @@ type ModifySampleSnapshotTemplateRequestParams struct {
 	// <li>当 SampleType 为 Time 时，指定采样间隔的时间，单位为秒。</li>
 	SampleInterval *uint64 `json:"SampleInterval,omitempty" name:"SampleInterval"`
 
-	// 图片格式，取值为 jpg 和 png。
+	// 图片格式，取值为 jpg、png、webp。
 	Format *string `json:"Format,omitempty" name:"Format"`
 
 	// 模板描述信息，长度限制：256 个字符。
@@ -7917,7 +8015,7 @@ type ModifySampleSnapshotTemplateRequest struct {
 	// <li>当 SampleType 为 Time 时，指定采样间隔的时间，单位为秒。</li>
 	SampleInterval *uint64 `json:"SampleInterval,omitempty" name:"SampleInterval"`
 
-	// 图片格式，取值为 jpg 和 png。
+	// 图片格式，取值为 jpg、png、webp。
 	Format *string `json:"Format,omitempty" name:"Format"`
 
 	// 模板描述信息，长度限制：256 个字符。
@@ -8012,7 +8110,7 @@ type ModifySnapshotByTimeOffsetTemplateRequestParams struct {
 	// 默认值：open。
 	ResolutionAdaptive *string `json:"ResolutionAdaptive,omitempty" name:"ResolutionAdaptive"`
 
-	// 图片格式，取值可以为 jpg 和 png。
+	// 图片格式，取值可以为 jpg、png、webp。
 	Format *string `json:"Format,omitempty" name:"Format"`
 
 	// 模板描述信息，长度限制：256 个字符。
@@ -8058,7 +8156,7 @@ type ModifySnapshotByTimeOffsetTemplateRequest struct {
 	// 默认值：open。
 	ResolutionAdaptive *string `json:"ResolutionAdaptive,omitempty" name:"ResolutionAdaptive"`
 
-	// 图片格式，取值可以为 jpg 和 png。
+	// 图片格式，取值可以为 jpg、png、webp。
 	Format *string `json:"Format,omitempty" name:"Format"`
 
 	// 模板描述信息，长度限制：256 个字符。
@@ -8574,6 +8672,9 @@ type OverrideTranscodeParameter struct {
 
 	// 极速高清转码参数。
 	TEHDConfig *TEHDConfigForUpdate `json:"TEHDConfig,omitempty" name:"TEHDConfig"`
+
+	// 字幕流配置参数。
+	SubtitleTemplate *SubtitleTemplate `json:"SubtitleTemplate,omitempty" name:"SubtitleTemplate"`
 }
 
 // Predefined struct for user
@@ -9113,8 +9214,11 @@ type ProcessMediaRequestParams struct {
 	SessionContext *string `json:"SessionContext,omitempty" name:"SessionContext"`
 
 	// 编排ID。
-	// 注意1：对于OutputStorage、OutputDir，如果编排任务里没有配置，将采用请求里对应参数。
-	// 注意2：对于TaskNotifyConfig，如果编排任务里没有配置，将采用请求里对应的参数。
+	// 注意1：对于OutputStorage、OutputDir参数：
+	// <li>当服务编排中子任务节点配置了OutputStorage、OutputDir时，该子任务节点中配置的输出作为子任务的输出。</li>
+	// <li>当服务编排中子任务节点没有配置OutputStorage、OutputDir时，若创建任务接口（ProcessMedia）有输出，将覆盖原有编排的默认输出。</li>
+	// 注意2：对于TaskNotifyConfig参数，若创建任务接口（ProcessMedia）有设置，将覆盖原有编排的默认回调。
+	// 
 	// 注意3：编排的 Trigger 只是用来自动化触发场景，在手动发起的请求中已经配置的 Trigger 无意义。
 	ScheduleId *int64 `json:"ScheduleId,omitempty" name:"ScheduleId"`
 }
@@ -9156,8 +9260,11 @@ type ProcessMediaRequest struct {
 	SessionContext *string `json:"SessionContext,omitempty" name:"SessionContext"`
 
 	// 编排ID。
-	// 注意1：对于OutputStorage、OutputDir，如果编排任务里没有配置，将采用请求里对应参数。
-	// 注意2：对于TaskNotifyConfig，如果编排任务里没有配置，将采用请求里对应的参数。
+	// 注意1：对于OutputStorage、OutputDir参数：
+	// <li>当服务编排中子任务节点配置了OutputStorage、OutputDir时，该子任务节点中配置的输出作为子任务的输出。</li>
+	// <li>当服务编排中子任务节点没有配置OutputStorage、OutputDir时，若创建任务接口（ProcessMedia）有输出，将覆盖原有编排的默认输出。</li>
+	// 注意2：对于TaskNotifyConfig参数，若创建任务接口（ProcessMedia）有设置，将覆盖原有编排的默认回调。
+	// 
 	// 注意3：编排的 Trigger 只是用来自动化触发场景，在手动发起的请求中已经配置的 Trigger 无意义。
 	ScheduleId *int64 `json:"ScheduleId,omitempty" name:"ScheduleId"`
 }
@@ -9828,6 +9935,10 @@ type SnapshotByTimeOffsetTemplate struct {
 	// <li>black：高斯模糊，保持视频宽高比不变，边缘剩余部分使用高斯模糊。</li>
 	// 默认值：black 。
 	FillType *string `json:"FillType,omitempty" name:"FillType"`
+}
+
+type SubtitleTemplate struct {
+
 }
 
 type SuperResolutionConfig struct {

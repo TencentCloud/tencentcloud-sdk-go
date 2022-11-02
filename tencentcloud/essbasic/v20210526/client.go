@@ -76,6 +76,7 @@ func NewChannelBatchCancelFlowsResponse() (response *ChannelBatchCancelFlowsResp
 //  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETER_DUPTASK = "InvalidParameter.DupTask"
 //  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_FLOWHASTERMINATED = "OperationDenied.FlowHasTerminated"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ChannelBatchCancelFlows(request *ChannelBatchCancelFlowsRequest) (response *ChannelBatchCancelFlowsResponse, err error) {
     return c.ChannelBatchCancelFlowsWithContext(context.Background(), request)
@@ -94,6 +95,7 @@ func (c *Client) ChannelBatchCancelFlows(request *ChannelBatchCancelFlowsRequest
 //  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETER_DUPTASK = "InvalidParameter.DupTask"
 //  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_FLOWHASTERMINATED = "OperationDenied.FlowHasTerminated"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ChannelBatchCancelFlowsWithContext(ctx context.Context, request *ChannelBatchCancelFlowsRequest) (response *ChannelBatchCancelFlowsResponse, err error) {
     if request == nil {
@@ -143,6 +145,7 @@ func NewChannelCancelFlowResponse() (response *ChannelCancelFlowResponse) {
 //  INVALIDPARAMETER_STATUS = "InvalidParameter.Status"
 //  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_FLOWHASTERMINATED = "OperationDenied.FlowHasTerminated"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_FLOW = "ResourceNotFound.Flow"
 //  UNKNOWNPARAMETER = "UnknownParameter"
@@ -165,6 +168,7 @@ func (c *Client) ChannelCancelFlow(request *ChannelCancelFlowRequest) (response 
 //  INVALIDPARAMETER_STATUS = "InvalidParameter.Status"
 //  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_FLOWHASTERMINATED = "OperationDenied.FlowHasTerminated"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_FLOW = "ResourceNotFound.Flow"
 //  UNKNOWNPARAMETER = "UnknownParameter"

@@ -869,6 +869,7 @@ func NewDescribeAclsResponse() (response *DescribeAclsResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeAcls(request *DescribeAclsRequest) (response *DescribeAclsResponse, err error) {
     return c.DescribeAclsWithContext(context.Background(), request)
 }
@@ -881,6 +882,7 @@ func (c *Client) DescribeAcls(request *DescribeAclsRequest) (response *DescribeA
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeAclsWithContext(ctx context.Context, request *DescribeAclsRequest) (response *DescribeAclsResponse, err error) {
     if request == nil {
         request = NewDescribeAclsRequest()
@@ -923,6 +925,7 @@ func NewDescribeDasbImageIdsResponse() (response *DescribeDasbImageIdsResponse) 
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeDasbImageIds(request *DescribeDasbImageIdsRequest) (response *DescribeDasbImageIdsResponse, err error) {
     return c.DescribeDasbImageIdsWithContext(context.Background(), request)
 }
@@ -935,6 +938,7 @@ func (c *Client) DescribeDasbImageIds(request *DescribeDasbImageIdsRequest) (res
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeDasbImageIdsWithContext(ctx context.Context, request *DescribeDasbImageIdsRequest) (response *DescribeDasbImageIdsResponse, err error) {
     if request == nil {
         request = NewDescribeDasbImageIdsRequest()
@@ -976,6 +980,7 @@ func NewDescribeDeviceGroupMembersResponse() (response *DescribeDeviceGroupMembe
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeDeviceGroupMembers(request *DescribeDeviceGroupMembersRequest) (response *DescribeDeviceGroupMembersResponse, err error) {
     return c.DescribeDeviceGroupMembersWithContext(context.Background(), request)
 }
@@ -987,6 +992,7 @@ func (c *Client) DescribeDeviceGroupMembers(request *DescribeDeviceGroupMembersR
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeDeviceGroupMembersWithContext(ctx context.Context, request *DescribeDeviceGroupMembersRequest) (response *DescribeDeviceGroupMembersResponse, err error) {
     if request == nil {
         request = NewDescribeDeviceGroupMembersRequest()
@@ -1029,6 +1035,7 @@ func NewDescribeDeviceGroupsResponse() (response *DescribeDeviceGroupsResponse) 
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeDeviceGroups(request *DescribeDeviceGroupsRequest) (response *DescribeDeviceGroupsResponse, err error) {
     return c.DescribeDeviceGroupsWithContext(context.Background(), request)
 }
@@ -1041,6 +1048,7 @@ func (c *Client) DescribeDeviceGroups(request *DescribeDeviceGroupsRequest) (res
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeDeviceGroupsWithContext(ctx context.Context, request *DescribeDeviceGroupsRequest) (response *DescribeDeviceGroupsResponse, err error) {
     if request == nil {
         request = NewDescribeDeviceGroupsRequest()
@@ -1188,6 +1196,7 @@ func NewDescribeUserGroupMembersResponse() (response *DescribeUserGroupMembersRe
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeUserGroupMembers(request *DescribeUserGroupMembersRequest) (response *DescribeUserGroupMembersResponse, err error) {
     return c.DescribeUserGroupMembersWithContext(context.Background(), request)
 }
@@ -1199,6 +1208,7 @@ func (c *Client) DescribeUserGroupMembers(request *DescribeUserGroupMembersReque
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeUserGroupMembersWithContext(ctx context.Context, request *DescribeUserGroupMembersRequest) (response *DescribeUserGroupMembersResponse, err error) {
     if request == nil {
         request = NewDescribeUserGroupMembersRequest()
@@ -1241,6 +1251,7 @@ func NewDescribeUserGroupsResponse() (response *DescribeUserGroupsResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeUserGroups(request *DescribeUserGroupsRequest) (response *DescribeUserGroupsResponse, err error) {
     return c.DescribeUserGroupsWithContext(context.Background(), request)
 }
@@ -1253,6 +1264,7 @@ func (c *Client) DescribeUserGroups(request *DescribeUserGroupsRequest) (respons
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeUserGroupsWithContext(ctx context.Context, request *DescribeUserGroupsRequest) (response *DescribeUserGroupsResponse, err error) {
     if request == nil {
         request = NewDescribeUserGroupsRequest()
@@ -1295,6 +1307,7 @@ func NewDescribeUsersResponse() (response *DescribeUsersResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeUsers(request *DescribeUsersRequest) (response *DescribeUsersResponse, err error) {
     return c.DescribeUsersWithContext(context.Background(), request)
 }
@@ -1307,6 +1320,7 @@ func (c *Client) DescribeUsers(request *DescribeUsersRequest) (response *Describ
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeUsersWithContext(ctx context.Context, request *DescribeUsersRequest) (response *DescribeUsersResponse, err error) {
     if request == nil {
         request = NewDescribeUsersRequest()

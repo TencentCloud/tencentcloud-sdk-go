@@ -149,6 +149,58 @@ func (c *Client) CreateCodePackWithContext(ctx context.Context, request *CreateC
     return
 }
 
+func NewCreateCorporationOrderRequest() (request *CreateCorporationOrderRequest) {
+    request = &CreateCorporationOrderRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trp", APIVersion, "CreateCorporationOrder")
+    
+    
+    return
+}
+
+func NewCreateCorporationOrderResponse() (response *CreateCorporationOrderResponse) {
+    response = &CreateCorporationOrderResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateCorporationOrder
+// 以订单方式新建企业信息/配额信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) CreateCorporationOrder(request *CreateCorporationOrderRequest) (response *CreateCorporationOrderResponse, err error) {
+    return c.CreateCorporationOrderWithContext(context.Background(), request)
+}
+
+// CreateCorporationOrder
+// 以订单方式新建企业信息/配额信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) CreateCorporationOrderWithContext(ctx context.Context, request *CreateCorporationOrderRequest) (response *CreateCorporationOrderResponse, err error) {
+    if request == nil {
+        request = NewCreateCorporationOrderRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateCorporationOrder require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateCorporationOrderResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateCustomPackRequest() (request *CreateCustomPackRequest) {
     request = &CreateCustomPackRequest{
         BaseRequest: &tchttp.BaseRequest{},

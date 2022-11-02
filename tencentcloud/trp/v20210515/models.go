@@ -425,6 +425,120 @@ func (r *CreateCodePackResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateCorporationOrderRequestParams struct {
+	// 企业名称
+	CorpName *string `json:"CorpName,omitempty" name:"CorpName"`
+
+	// 所有者ID
+	Owner *string `json:"Owner,omitempty" name:"Owner"`
+
+	// 溯源码额度
+	CodeQuota *uint64 `json:"CodeQuota,omitempty" name:"CodeQuota"`
+
+	// 额度过期时间
+	ExpireTime *string `json:"ExpireTime,omitempty" name:"ExpireTime"`
+
+	// 金额
+	Amount *int64 `json:"Amount,omitempty" name:"Amount"`
+
+	// 企业ID
+	CorpId *uint64 `json:"CorpId,omitempty" name:"CorpId"`
+
+	// 联系人
+	ContactPerson *string `json:"ContactPerson,omitempty" name:"ContactPerson"`
+
+	// 联系电话
+	ContactNumber *string `json:"ContactNumber,omitempty" name:"ContactNumber"`
+
+	// 备注
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+}
+
+type CreateCorporationOrderRequest struct {
+	*tchttp.BaseRequest
+	
+	// 企业名称
+	CorpName *string `json:"CorpName,omitempty" name:"CorpName"`
+
+	// 所有者ID
+	Owner *string `json:"Owner,omitempty" name:"Owner"`
+
+	// 溯源码额度
+	CodeQuota *uint64 `json:"CodeQuota,omitempty" name:"CodeQuota"`
+
+	// 额度过期时间
+	ExpireTime *string `json:"ExpireTime,omitempty" name:"ExpireTime"`
+
+	// 金额
+	Amount *int64 `json:"Amount,omitempty" name:"Amount"`
+
+	// 企业ID
+	CorpId *uint64 `json:"CorpId,omitempty" name:"CorpId"`
+
+	// 联系人
+	ContactPerson *string `json:"ContactPerson,omitempty" name:"ContactPerson"`
+
+	// 联系电话
+	ContactNumber *string `json:"ContactNumber,omitempty" name:"ContactNumber"`
+
+	// 备注
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+}
+
+func (r *CreateCorporationOrderRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateCorporationOrderRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CorpName")
+	delete(f, "Owner")
+	delete(f, "CodeQuota")
+	delete(f, "ExpireTime")
+	delete(f, "Amount")
+	delete(f, "CorpId")
+	delete(f, "ContactPerson")
+	delete(f, "ContactNumber")
+	delete(f, "Remark")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCorporationOrderRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateCorporationOrderResponseParams struct {
+	// 企业ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CorpId *uint64 `json:"CorpId,omitempty" name:"CorpId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateCorporationOrderResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateCorporationOrderResponseParams `json:"Response"`
+}
+
+func (r *CreateCorporationOrderResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateCorporationOrderResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateCustomPackRequestParams struct {
 	// 商户ID
 	MerchantId *string `json:"MerchantId,omitempty" name:"MerchantId"`

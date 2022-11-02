@@ -1326,6 +1326,9 @@ type DescribeDeviceGroupMembersRequestParams struct {
 
 	// 所属部门ID
 	DepartmentId *string `json:"DepartmentId,omitempty" name:"DepartmentId"`
+
+	// 过滤条件，可按照标签键、标签进行过滤。如果同时指定标签键和标签过滤条件，它们之间为“AND”的关系
+	TagFilters []*TagFilter `json:"TagFilters,omitempty" name:"TagFilters"`
 }
 
 type DescribeDeviceGroupMembersRequest struct {
@@ -1351,6 +1354,9 @@ type DescribeDeviceGroupMembersRequest struct {
 
 	// 所属部门ID
 	DepartmentId *string `json:"DepartmentId,omitempty" name:"DepartmentId"`
+
+	// 过滤条件，可按照标签键、标签进行过滤。如果同时指定标签键和标签过滤条件，它们之间为“AND”的关系
+	TagFilters []*TagFilter `json:"TagFilters,omitempty" name:"TagFilters"`
 }
 
 func (r *DescribeDeviceGroupMembersRequest) ToJsonString() string {
@@ -1372,6 +1378,7 @@ func (r *DescribeDeviceGroupMembersRequest) FromJsonString(s string) error {
 	delete(f, "Limit")
 	delete(f, "Kind")
 	delete(f, "DepartmentId")
+	delete(f, "TagFilters")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDeviceGroupMembersRequest has unknown keys!", "")
 	}
@@ -1528,6 +1535,9 @@ type DescribeDevicesRequestParams struct {
 
 	// 过滤条件，可按照部门ID进行过滤
 	DepartmentId *string `json:"DepartmentId,omitempty" name:"DepartmentId"`
+
+	// 过滤条件，可按照标签键、标签进行过滤。如果同时指定标签键和标签过滤条件，它们之间为“AND”的关系
+	TagFilters []*TagFilter `json:"TagFilters,omitempty" name:"TagFilters"`
 }
 
 type DescribeDevicesRequest struct {
@@ -1565,6 +1575,9 @@ type DescribeDevicesRequest struct {
 
 	// 过滤条件，可按照部门ID进行过滤
 	DepartmentId *string `json:"DepartmentId,omitempty" name:"DepartmentId"`
+
+	// 过滤条件，可按照标签键、标签进行过滤。如果同时指定标签键和标签过滤条件，它们之间为“AND”的关系
+	TagFilters []*TagFilter `json:"TagFilters,omitempty" name:"TagFilters"`
 }
 
 func (r *DescribeDevicesRequest) ToJsonString() string {
@@ -1590,6 +1603,7 @@ func (r *DescribeDevicesRequest) FromJsonString(s string) error {
 	delete(f, "ResourceIdSet")
 	delete(f, "KindSet")
 	delete(f, "DepartmentId")
+	delete(f, "TagFilters")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDevicesRequest has unknown keys!", "")
 	}
@@ -2495,6 +2509,14 @@ type Resource struct {
 
 	// 授权点数扩展包个数(50点)
 	PackageNode *uint64 `json:"PackageNode,omitempty" name:"PackageNode"`
+}
+
+type TagFilter struct {
+	// 标签键
+	TagKey *string `json:"TagKey,omitempty" name:"TagKey"`
+
+	// 标签值
+	TagValue []*string `json:"TagValue,omitempty" name:"TagValue"`
 }
 
 type User struct {

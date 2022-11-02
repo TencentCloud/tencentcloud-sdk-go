@@ -1,3 +1,184 @@
+# Release v1.0.529
+
+## 弹性伸缩(as) 版本：2018-04-19
+
+### 第 58 次发布
+
+发布时间：2022-11-03 06:08:22
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [RunAutomationServiceEnabled](https://cloud.tencent.com/document/api/377/20453#RunAutomationServiceEnabled)
+
+修改数据结构：
+
+* [EnhancedService](https://cloud.tencent.com/document/api/377/20453#EnhancedService)
+
+	* 新增成员：AutomationService
+
+
+
+
+## T-Sec-堡垒机（BH）(dasb) 版本：2019-10-18
+
+### 第 4 次发布
+
+发布时间：2022-11-03 06:19:23
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeDeviceGroupMembers](https://cloud.tencent.com/document/api/1025/74787)
+
+	* 新增入参：TagFilters
+
+* [DescribeDevices](https://cloud.tencent.com/document/api/1025/74415)
+
+	* 新增入参：TagFilters
+
+
+新增数据结构：
+
+* [TagFilter](https://cloud.tencent.com/document/api/1025/74416#TagFilter)
+
+
+
+## 游戏多媒体引擎(gme) 版本：2018-07-11
+
+### 第 26 次发布
+
+发布时间：2022-11-03 06:25:18
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除接口**：</font>
+
+* ModifyRoomInfo
+
+
+
+## 物联网智能视频服务(iotvideo) 版本：2021-11-25
+
+### 第 8 次发布
+
+发布时间：2022-11-03 06:28:16
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateCloudStorage](https://cloud.tencent.com/document/api/1131/77505)
+
+	* 新增入参：PackageQueue
+
+
+
+
+## 物联网智能视频服务(iotvideo) 版本：2020-12-15
+
+
+
+## 物联网智能视频服务(iotvideo) 版本：2019-11-26
+
+
+
+## 媒体处理(mps) 版本：2019-06-12
+
+### 第 43 次发布
+
+发布时间：2022-11-03 06:32:33
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateImageSpriteTemplate](https://cloud.tencent.com/document/api/862/37608)
+
+	* 新增入参：Format
+
+* [ModifyImageSpriteTemplate](https://cloud.tencent.com/document/api/862/37590)
+
+	* 新增入参：Format
+
+
+新增数据结构：
+
+* [AiRecognitionTaskTransTextResult](https://cloud.tencent.com/document/api/862/37615#AiRecognitionTaskTransTextResult)
+* [AiRecognitionTaskTransTextResultInput](https://cloud.tencent.com/document/api/862/37615#AiRecognitionTaskTransTextResultInput)
+* [AiRecognitionTaskTransTextResultOutput](https://cloud.tencent.com/document/api/862/37615#AiRecognitionTaskTransTextResultOutput)
+* [AiRecognitionTaskTransTextSegmentItem](https://cloud.tencent.com/document/api/862/37615#AiRecognitionTaskTransTextSegmentItem)
+* [LiveStreamTransTextRecognitionResult](https://cloud.tencent.com/document/api/862/37615#LiveStreamTransTextRecognitionResult)
+* [SubtitleTemplate](https://cloud.tencent.com/document/api/862/37615#SubtitleTemplate)
+
+修改数据结构：
+
+* [AiRecognitionResult](https://cloud.tencent.com/document/api/862/37615#AiRecognitionResult)
+
+	* 新增成员：TransTextTask
+
+* [ImageSpriteTemplate](https://cloud.tencent.com/document/api/862/37615#ImageSpriteTemplate)
+
+	* 新增成员：Format
+
+* [LiveStreamAiRecognitionResultItem](https://cloud.tencent.com/document/api/862/37615#LiveStreamAiRecognitionResultItem)
+
+	* 新增成员：TransTextRecognitionResultSet
+
+* [OverrideTranscodeParameter](https://cloud.tencent.com/document/api/862/37615#OverrideTranscodeParameter)
+
+	* 新增成员：SubtitleTemplate
+
+
+
+
+## 邮件推送(ses) 版本：2020-10-02
+
+### 第 16 次发布
+
+发布时间：2022-11-03 06:36:44
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [GetEmailTemplate](https://cloud.tencent.com/document/api/1288/51040)
+
+	* 新增出参：TemplateName
+
+
+
+
+## T-Sec-安心平台(RP)(trp) 版本：2021-05-15
+
+### 第 9 次发布
+
+发布时间：2022-11-02 10:37:26
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateCorporationOrder](https://cloud.tencent.com/document/api/1458/82298)
+
+
+
 # Release v1.0.528
 
 ## 验证码(captcha) 版本：2019-07-22

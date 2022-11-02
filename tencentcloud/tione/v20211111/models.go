@@ -4948,7 +4948,7 @@ type ScheduledAction struct {
 	// 是否要定时停止服务，true or false。true 则 ScheduleStopTime 必填， false 则 ScheduleStopTime 不生效
 	ScheduleStop *bool `json:"ScheduleStop,omitempty" name:"ScheduleStop"`
 
-	// 要执行定时停止的时间，格式：“2022-01-26 19:46:22”
+	// 要执行定时停止的时间，格式：“2022-01-26T19:46:22+08:00”
 	ScheduleStopTime *string `json:"ScheduleStopTime,omitempty" name:"ScheduleStopTime"`
 }
 
