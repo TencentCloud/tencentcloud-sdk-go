@@ -1125,6 +1125,402 @@ func (c *Client) DescribeScaleInfoWithContext(ctx context.Context, request *Desc
     return
 }
 
+func NewDescribeTRTCMarketQualityMetricDataRequest() (request *DescribeTRTCMarketQualityMetricDataRequest) {
+    request = &DescribeTRTCMarketQualityMetricDataRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trtc", APIVersion, "DescribeTRTCMarketQualityMetricData")
+    
+    
+    return
+}
+
+func NewDescribeTRTCMarketQualityMetricDataResponse() (response *DescribeTRTCMarketQualityMetricDataResponse) {
+    response = &DescribeTRTCMarketQualityMetricDataResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeTRTCMarketQualityMetricData
+// 查询TRTC监控仪表盘-数据大盘质量指标（包括下列指标）
+//
+// joinSuccessRate：加入频道成功率。
+//
+// joinSuccessIn5sRate：5s内加入频道成功率。
+//
+// audioFreezeRate：音频卡顿率。
+//
+// videoFreezeRate：视频卡顿率。
+//
+// networkDelay ：网络延迟率。
+//
+// 注意：
+//
+// 1.调用接口需开通监控仪表盘【基础版】和【进阶版】，监控仪表盘【免费版】不支持调用，监控仪表盘版本功能和计费说明：https://cloud.tencent.com/document/product/647/81331。
+//
+// 2、查询时间范围根据监控仪表盘功能版本而定，【基础版】可查近30天，【进阶版】可查近60天。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INTERNALERROR_HTTPPARASEFALIED = "InternalError.HttpParaseFalied"
+//  INTERNALERROR_INTERFACEERR = "InternalError.InterfaceErr"
+//  INTERNALERROR_METHODERR = "InternalError.MethodErr"
+//  INVALIDPARAMETER_BODYPARAMSERROR = "InvalidParameter.BodyParamsError"
+//  INVALIDPARAMETER_ENDTS = "InvalidParameter.EndTs"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+//  INVALIDPARAMETER_STARTTS = "InvalidParameter.StartTs"
+//  INVALIDPARAMETER_STARTTSOVERSIZE = "InvalidParameter.StartTsOversize"
+//  INVALIDPARAMETER_USERIDSMORETHANSIX = "InvalidParameter.UserIdsMorethanSix"
+//  MISSINGPARAMETER_ENDTS = "MissingParameter.EndTs"
+//  MISSINGPARAMETER_SDKAPPID = "MissingParameter.SdkAppId"
+//  MISSINGPARAMETER_STARTTS = "MissingParameter.StartTs"
+func (c *Client) DescribeTRTCMarketQualityMetricData(request *DescribeTRTCMarketQualityMetricDataRequest) (response *DescribeTRTCMarketQualityMetricDataResponse, err error) {
+    return c.DescribeTRTCMarketQualityMetricDataWithContext(context.Background(), request)
+}
+
+// DescribeTRTCMarketQualityMetricData
+// 查询TRTC监控仪表盘-数据大盘质量指标（包括下列指标）
+//
+// joinSuccessRate：加入频道成功率。
+//
+// joinSuccessIn5sRate：5s内加入频道成功率。
+//
+// audioFreezeRate：音频卡顿率。
+//
+// videoFreezeRate：视频卡顿率。
+//
+// networkDelay ：网络延迟率。
+//
+// 注意：
+//
+// 1.调用接口需开通监控仪表盘【基础版】和【进阶版】，监控仪表盘【免费版】不支持调用，监控仪表盘版本功能和计费说明：https://cloud.tencent.com/document/product/647/81331。
+//
+// 2、查询时间范围根据监控仪表盘功能版本而定，【基础版】可查近30天，【进阶版】可查近60天。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INTERNALERROR_HTTPPARASEFALIED = "InternalError.HttpParaseFalied"
+//  INTERNALERROR_INTERFACEERR = "InternalError.InterfaceErr"
+//  INTERNALERROR_METHODERR = "InternalError.MethodErr"
+//  INVALIDPARAMETER_BODYPARAMSERROR = "InvalidParameter.BodyParamsError"
+//  INVALIDPARAMETER_ENDTS = "InvalidParameter.EndTs"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+//  INVALIDPARAMETER_STARTTS = "InvalidParameter.StartTs"
+//  INVALIDPARAMETER_STARTTSOVERSIZE = "InvalidParameter.StartTsOversize"
+//  INVALIDPARAMETER_USERIDSMORETHANSIX = "InvalidParameter.UserIdsMorethanSix"
+//  MISSINGPARAMETER_ENDTS = "MissingParameter.EndTs"
+//  MISSINGPARAMETER_SDKAPPID = "MissingParameter.SdkAppId"
+//  MISSINGPARAMETER_STARTTS = "MissingParameter.StartTs"
+func (c *Client) DescribeTRTCMarketQualityMetricDataWithContext(ctx context.Context, request *DescribeTRTCMarketQualityMetricDataRequest) (response *DescribeTRTCMarketQualityMetricDataResponse, err error) {
+    if request == nil {
+        request = NewDescribeTRTCMarketQualityMetricDataRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTRTCMarketQualityMetricData require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTRTCMarketQualityMetricDataResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeTRTCMarketScaleMetricDataRequest() (request *DescribeTRTCMarketScaleMetricDataRequest) {
+    request = &DescribeTRTCMarketScaleMetricDataRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trtc", APIVersion, "DescribeTRTCMarketScaleMetricData")
+    
+    
+    return
+}
+
+func NewDescribeTRTCMarketScaleMetricDataResponse() (response *DescribeTRTCMarketScaleMetricDataResponse) {
+    response = &DescribeTRTCMarketScaleMetricDataResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeTRTCMarketScaleMetricData
+// 查询TRTC监控仪表盘-数据大盘规模指标（会返回通话人数，通话房间数，峰值同时在线人数，峰值同时在线频道数）
+//
+// userCount：通话人数，
+//
+// roomCount：通话房间数，从有用户加入频道到所有用户离开频道计为一个通话频道。
+//
+// peakCurrentChannels：峰值同时在线频道数。
+//
+// peakCurrentUsers：峰值同时在线人数。
+//
+// 注意：
+//
+// 1.调用接口需开通监控仪表盘【基础版】和【进阶版】，监控仪表盘【免费版】不支持调用，监控仪表盘版本功能和计费说明：https://cloud.tencent.com/document/product/647/81331。
+//
+// 2、查询时间范围根据监控仪表盘功能版本而定，【基础版】可查近30天，【进阶版】可查近60天。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INTERNALERROR_HTTPPARASEFALIED = "InternalError.HttpParaseFalied"
+//  INTERNALERROR_INTERFACEERR = "InternalError.InterfaceErr"
+//  INTERNALERROR_METHODERR = "InternalError.MethodErr"
+//  INVALIDPARAMETER_BODYPARAMSERROR = "InvalidParameter.BodyParamsError"
+//  INVALIDPARAMETER_ENDTS = "InvalidParameter.EndTs"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+//  INVALIDPARAMETER_STARTTS = "InvalidParameter.StartTs"
+//  INVALIDPARAMETER_STARTTSOVERSIZE = "InvalidParameter.StartTsOversize"
+//  INVALIDPARAMETER_USERIDSMORETHANSIX = "InvalidParameter.UserIdsMorethanSix"
+//  MISSINGPARAMETER_ENDTS = "MissingParameter.EndTs"
+//  MISSINGPARAMETER_SDKAPPID = "MissingParameter.SdkAppId"
+//  MISSINGPARAMETER_STARTTS = "MissingParameter.StartTs"
+func (c *Client) DescribeTRTCMarketScaleMetricData(request *DescribeTRTCMarketScaleMetricDataRequest) (response *DescribeTRTCMarketScaleMetricDataResponse, err error) {
+    return c.DescribeTRTCMarketScaleMetricDataWithContext(context.Background(), request)
+}
+
+// DescribeTRTCMarketScaleMetricData
+// 查询TRTC监控仪表盘-数据大盘规模指标（会返回通话人数，通话房间数，峰值同时在线人数，峰值同时在线频道数）
+//
+// userCount：通话人数，
+//
+// roomCount：通话房间数，从有用户加入频道到所有用户离开频道计为一个通话频道。
+//
+// peakCurrentChannels：峰值同时在线频道数。
+//
+// peakCurrentUsers：峰值同时在线人数。
+//
+// 注意：
+//
+// 1.调用接口需开通监控仪表盘【基础版】和【进阶版】，监控仪表盘【免费版】不支持调用，监控仪表盘版本功能和计费说明：https://cloud.tencent.com/document/product/647/81331。
+//
+// 2、查询时间范围根据监控仪表盘功能版本而定，【基础版】可查近30天，【进阶版】可查近60天。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INTERNALERROR_HTTPPARASEFALIED = "InternalError.HttpParaseFalied"
+//  INTERNALERROR_INTERFACEERR = "InternalError.InterfaceErr"
+//  INTERNALERROR_METHODERR = "InternalError.MethodErr"
+//  INVALIDPARAMETER_BODYPARAMSERROR = "InvalidParameter.BodyParamsError"
+//  INVALIDPARAMETER_ENDTS = "InvalidParameter.EndTs"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+//  INVALIDPARAMETER_STARTTS = "InvalidParameter.StartTs"
+//  INVALIDPARAMETER_STARTTSOVERSIZE = "InvalidParameter.StartTsOversize"
+//  INVALIDPARAMETER_USERIDSMORETHANSIX = "InvalidParameter.UserIdsMorethanSix"
+//  MISSINGPARAMETER_ENDTS = "MissingParameter.EndTs"
+//  MISSINGPARAMETER_SDKAPPID = "MissingParameter.SdkAppId"
+//  MISSINGPARAMETER_STARTTS = "MissingParameter.StartTs"
+func (c *Client) DescribeTRTCMarketScaleMetricDataWithContext(ctx context.Context, request *DescribeTRTCMarketScaleMetricDataRequest) (response *DescribeTRTCMarketScaleMetricDataResponse, err error) {
+    if request == nil {
+        request = NewDescribeTRTCMarketScaleMetricDataRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTRTCMarketScaleMetricData require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTRTCMarketScaleMetricDataResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeTRTCRealTimeQualityMetricDataRequest() (request *DescribeTRTCRealTimeQualityMetricDataRequest) {
+    request = &DescribeTRTCRealTimeQualityMetricDataRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trtc", APIVersion, "DescribeTRTCRealTimeQualityMetricData")
+    
+    
+    return
+}
+
+func NewDescribeTRTCRealTimeQualityMetricDataResponse() (response *DescribeTRTCRealTimeQualityMetricDataResponse) {
+    response = &DescribeTRTCRealTimeQualityMetricDataResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeTRTCRealTimeQualityMetricData
+// 查询TRTC监控仪表盘-实时监控质量指标（会返回下列指标）
+//
+// -视频卡顿率
+//
+// -音频卡顿率
+//
+// 注意：
+//
+// 1.调用接口需开通监控仪表盘【基础版】和【进阶版】，监控仪表盘【免费版】不支持调用，监控仪表盘版本功能和计费说明：https://cloud.tencent.com/document/product/647/81331。
+//
+// 2、查询时间范围根据监控仪表盘功能版本而定，基础版可查近3小时，进阶版可查近12小时。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INTERNALERROR_HTTPPARASEFALIED = "InternalError.HttpParaseFalied"
+//  INTERNALERROR_INTERFACEERR = "InternalError.InterfaceErr"
+//  INTERNALERROR_METHODERR = "InternalError.MethodErr"
+//  INVALIDPARAMETER_BODYPARAMSERROR = "InvalidParameter.BodyParamsError"
+//  INVALIDPARAMETER_ENDTS = "InvalidParameter.EndTs"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+//  INVALIDPARAMETER_STARTTS = "InvalidParameter.StartTs"
+//  INVALIDPARAMETER_STARTTSOVERSIZE = "InvalidParameter.StartTsOversize"
+//  INVALIDPARAMETER_USERIDSMORETHANSIX = "InvalidParameter.UserIdsMorethanSix"
+//  MISSINGPARAMETER_ENDTS = "MissingParameter.EndTs"
+//  MISSINGPARAMETER_SDKAPPID = "MissingParameter.SdkAppId"
+//  MISSINGPARAMETER_STARTTS = "MissingParameter.StartTs"
+func (c *Client) DescribeTRTCRealTimeQualityMetricData(request *DescribeTRTCRealTimeQualityMetricDataRequest) (response *DescribeTRTCRealTimeQualityMetricDataResponse, err error) {
+    return c.DescribeTRTCRealTimeQualityMetricDataWithContext(context.Background(), request)
+}
+
+// DescribeTRTCRealTimeQualityMetricData
+// 查询TRTC监控仪表盘-实时监控质量指标（会返回下列指标）
+//
+// -视频卡顿率
+//
+// -音频卡顿率
+//
+// 注意：
+//
+// 1.调用接口需开通监控仪表盘【基础版】和【进阶版】，监控仪表盘【免费版】不支持调用，监控仪表盘版本功能和计费说明：https://cloud.tencent.com/document/product/647/81331。
+//
+// 2、查询时间范围根据监控仪表盘功能版本而定，基础版可查近3小时，进阶版可查近12小时。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INTERNALERROR_HTTPPARASEFALIED = "InternalError.HttpParaseFalied"
+//  INTERNALERROR_INTERFACEERR = "InternalError.InterfaceErr"
+//  INTERNALERROR_METHODERR = "InternalError.MethodErr"
+//  INVALIDPARAMETER_BODYPARAMSERROR = "InvalidParameter.BodyParamsError"
+//  INVALIDPARAMETER_ENDTS = "InvalidParameter.EndTs"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+//  INVALIDPARAMETER_STARTTS = "InvalidParameter.StartTs"
+//  INVALIDPARAMETER_STARTTSOVERSIZE = "InvalidParameter.StartTsOversize"
+//  INVALIDPARAMETER_USERIDSMORETHANSIX = "InvalidParameter.UserIdsMorethanSix"
+//  MISSINGPARAMETER_ENDTS = "MissingParameter.EndTs"
+//  MISSINGPARAMETER_SDKAPPID = "MissingParameter.SdkAppId"
+//  MISSINGPARAMETER_STARTTS = "MissingParameter.StartTs"
+func (c *Client) DescribeTRTCRealTimeQualityMetricDataWithContext(ctx context.Context, request *DescribeTRTCRealTimeQualityMetricDataRequest) (response *DescribeTRTCRealTimeQualityMetricDataResponse, err error) {
+    if request == nil {
+        request = NewDescribeTRTCRealTimeQualityMetricDataRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTRTCRealTimeQualityMetricData require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTRTCRealTimeQualityMetricDataResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeTRTCRealTimeScaleMetricDataRequest() (request *DescribeTRTCRealTimeScaleMetricDataRequest) {
+    request = &DescribeTRTCRealTimeScaleMetricDataRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trtc", APIVersion, "DescribeTRTCRealTimeScaleMetricData")
+    
+    
+    return
+}
+
+func NewDescribeTRTCRealTimeScaleMetricDataResponse() (response *DescribeTRTCRealTimeScaleMetricDataResponse) {
+    response = &DescribeTRTCRealTimeScaleMetricDataResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeTRTCRealTimeScaleMetricData
+// 查询TRTC监控仪表盘-实时监控规模指标（会返回下列指标）
+//
+// -userCount（在线用户数）
+//
+// -roomCount（在线房间数）
+//
+// 注意：
+//
+// 1.调用接口需开通监控仪表盘【基础版】和【进阶版】，监控仪表盘【免费版】不支持调用，监控仪表盘版本功能和计费说明：https://cloud.tencent.com/document/product/647/81331。
+//
+// 2、查询时间范围根据监控仪表盘功能版本而定，基础版可查近3小时，进阶版可查近12小时。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INTERNALERROR_HTTPPARASEFALIED = "InternalError.HttpParaseFalied"
+//  INTERNALERROR_INTERFACEERR = "InternalError.InterfaceErr"
+//  INTERNALERROR_METHODERR = "InternalError.MethodErr"
+//  INVALIDPARAMETER_BODYPARAMSERROR = "InvalidParameter.BodyParamsError"
+//  INVALIDPARAMETER_ENDTS = "InvalidParameter.EndTs"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+//  INVALIDPARAMETER_STARTTS = "InvalidParameter.StartTs"
+//  INVALIDPARAMETER_STARTTSOVERSIZE = "InvalidParameter.StartTsOversize"
+//  INVALIDPARAMETER_USERIDSMORETHANSIX = "InvalidParameter.UserIdsMorethanSix"
+//  MISSINGPARAMETER_ENDTS = "MissingParameter.EndTs"
+//  MISSINGPARAMETER_SDKAPPID = "MissingParameter.SdkAppId"
+//  MISSINGPARAMETER_STARTTS = "MissingParameter.StartTs"
+func (c *Client) DescribeTRTCRealTimeScaleMetricData(request *DescribeTRTCRealTimeScaleMetricDataRequest) (response *DescribeTRTCRealTimeScaleMetricDataResponse, err error) {
+    return c.DescribeTRTCRealTimeScaleMetricDataWithContext(context.Background(), request)
+}
+
+// DescribeTRTCRealTimeScaleMetricData
+// 查询TRTC监控仪表盘-实时监控规模指标（会返回下列指标）
+//
+// -userCount（在线用户数）
+//
+// -roomCount（在线房间数）
+//
+// 注意：
+//
+// 1.调用接口需开通监控仪表盘【基础版】和【进阶版】，监控仪表盘【免费版】不支持调用，监控仪表盘版本功能和计费说明：https://cloud.tencent.com/document/product/647/81331。
+//
+// 2、查询时间范围根据监控仪表盘功能版本而定，基础版可查近3小时，进阶版可查近12小时。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INTERNALERROR_HTTPPARASEFALIED = "InternalError.HttpParaseFalied"
+//  INTERNALERROR_INTERFACEERR = "InternalError.InterfaceErr"
+//  INTERNALERROR_METHODERR = "InternalError.MethodErr"
+//  INVALIDPARAMETER_BODYPARAMSERROR = "InvalidParameter.BodyParamsError"
+//  INVALIDPARAMETER_ENDTS = "InvalidParameter.EndTs"
+//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
+//  INVALIDPARAMETER_STARTTS = "InvalidParameter.StartTs"
+//  INVALIDPARAMETER_STARTTSOVERSIZE = "InvalidParameter.StartTsOversize"
+//  INVALIDPARAMETER_USERIDSMORETHANSIX = "InvalidParameter.UserIdsMorethanSix"
+//  MISSINGPARAMETER_ENDTS = "MissingParameter.EndTs"
+//  MISSINGPARAMETER_SDKAPPID = "MissingParameter.SdkAppId"
+//  MISSINGPARAMETER_STARTTS = "MissingParameter.StartTs"
+func (c *Client) DescribeTRTCRealTimeScaleMetricDataWithContext(ctx context.Context, request *DescribeTRTCRealTimeScaleMetricDataRequest) (response *DescribeTRTCRealTimeScaleMetricDataResponse, err error) {
+    if request == nil {
+        request = NewDescribeTRTCRealTimeScaleMetricDataRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTRTCRealTimeScaleMetricData require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTRTCRealTimeScaleMetricDataResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeTrtcMcuTranscodeTimeRequest() (request *DescribeTrtcMcuTranscodeTimeRequest) {
     request = &DescribeTrtcMcuTranscodeTimeRequest{
         BaseRequest: &tchttp.BaseRequest{},

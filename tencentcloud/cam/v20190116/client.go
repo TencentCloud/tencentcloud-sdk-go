@@ -401,6 +401,66 @@ func (c *Client) ConsumeCustomMFATokenWithContext(ctx context.Context, request *
     return
 }
 
+func NewCreateAccessKeyRequest() (request *CreateAccessKeyRequest) {
+    request = &CreateAccessKeyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cam", APIVersion, "CreateAccessKey")
+    
+    
+    return
+}
+
+func NewCreateAccessKeyResponse() (response *CreateAccessKeyResponse) {
+    response = &CreateAccessKeyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateAccessKey
+// 为CAM用户创建访问密钥
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION_ACCESSKEY = "FailedOperation.Accesskey"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETER_USERNOTEXIST = "InvalidParameter.UserNotExist"
+//  OPERATIONDENIED_ACCESSKEYOVERLIMIT = "OperationDenied.AccessKeyOverLimit"
+//  OPERATIONDENIED_SUBUIN = "OperationDenied.SubUin"
+//  OPERATIONDENIED_UINNOTMATCH = "OperationDenied.UinNotMatch"
+func (c *Client) CreateAccessKey(request *CreateAccessKeyRequest) (response *CreateAccessKeyResponse, err error) {
+    return c.CreateAccessKeyWithContext(context.Background(), request)
+}
+
+// CreateAccessKey
+// 为CAM用户创建访问密钥
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION_ACCESSKEY = "FailedOperation.Accesskey"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETER_USERNOTEXIST = "InvalidParameter.UserNotExist"
+//  OPERATIONDENIED_ACCESSKEYOVERLIMIT = "OperationDenied.AccessKeyOverLimit"
+//  OPERATIONDENIED_SUBUIN = "OperationDenied.SubUin"
+//  OPERATIONDENIED_UINNOTMATCH = "OperationDenied.UinNotMatch"
+func (c *Client) CreateAccessKeyWithContext(ctx context.Context, request *CreateAccessKeyRequest) (response *CreateAccessKeyResponse, err error) {
+    if request == nil {
+        request = NewCreateAccessKeyRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateAccessKey require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateAccessKeyResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateGroupRequest() (request *CreateGroupRequest) {
     request = &CreateGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1069,6 +1129,70 @@ func (c *Client) CreateUserSAMLConfigWithContext(ctx context.Context, request *C
     request.SetContext(ctx)
     
     response = NewCreateUserSAMLConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteAccessKeyRequest() (request *DeleteAccessKeyRequest) {
+    request = &DeleteAccessKeyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cam", APIVersion, "DeleteAccessKey")
+    
+    
+    return
+}
+
+func NewDeleteAccessKeyResponse() (response *DeleteAccessKeyResponse) {
+    response = &DeleteAccessKeyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteAccessKey
+// 为CAM用户删除访问密钥。
+//
+// 此接口属于高风险操作，删除密钥后不可恢复，腾讯云将永久拒绝此密钥的所有请求，请谨慎使用。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION_ACCESSKEY = "FailedOperation.Accesskey"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETER_USERNOTEXIST = "InvalidParameter.UserNotExist"
+//  OPERATIONDENIED_ACCESSKEYOVERLIMIT = "OperationDenied.AccessKeyOverLimit"
+//  OPERATIONDENIED_SUBUIN = "OperationDenied.SubUin"
+//  OPERATIONDENIED_UINNOTMATCH = "OperationDenied.UinNotMatch"
+func (c *Client) DeleteAccessKey(request *DeleteAccessKeyRequest) (response *DeleteAccessKeyResponse, err error) {
+    return c.DeleteAccessKeyWithContext(context.Background(), request)
+}
+
+// DeleteAccessKey
+// 为CAM用户删除访问密钥。
+//
+// 此接口属于高风险操作，删除密钥后不可恢复，腾讯云将永久拒绝此密钥的所有请求，请谨慎使用。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION_ACCESSKEY = "FailedOperation.Accesskey"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETER_USERNOTEXIST = "InvalidParameter.UserNotExist"
+//  OPERATIONDENIED_ACCESSKEYOVERLIMIT = "OperationDenied.AccessKeyOverLimit"
+//  OPERATIONDENIED_SUBUIN = "OperationDenied.SubUin"
+//  OPERATIONDENIED_UINNOTMATCH = "OperationDenied.UinNotMatch"
+func (c *Client) DeleteAccessKeyWithContext(ctx context.Context, request *DeleteAccessKeyRequest) (response *DeleteAccessKeyResponse, err error) {
+    if request == nil {
+        request = NewDeleteAccessKeyRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteAccessKey require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteAccessKeyResponse()
     err = c.Send(request, response)
     return
 }
@@ -4281,6 +4405,66 @@ func (c *Client) UntagRoleWithContext(ctx context.Context, request *UntagRoleReq
     request.SetContext(ctx)
     
     response = NewUntagRoleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdateAccessKeyRequest() (request *UpdateAccessKeyRequest) {
+    request = &UpdateAccessKeyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cam", APIVersion, "UpdateAccessKey")
+    
+    
+    return
+}
+
+func NewUpdateAccessKeyResponse() (response *UpdateAccessKeyResponse) {
+    response = &UpdateAccessKeyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// UpdateAccessKey
+// 为CAM用户更新访问密钥
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION_ACCESSKEY = "FailedOperation.Accesskey"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETER_USERNOTEXIST = "InvalidParameter.UserNotExist"
+//  OPERATIONDENIED_ACCESSKEYOVERLIMIT = "OperationDenied.AccessKeyOverLimit"
+//  OPERATIONDENIED_SUBUIN = "OperationDenied.SubUin"
+//  OPERATIONDENIED_UINNOTMATCH = "OperationDenied.UinNotMatch"
+func (c *Client) UpdateAccessKey(request *UpdateAccessKeyRequest) (response *UpdateAccessKeyResponse, err error) {
+    return c.UpdateAccessKeyWithContext(context.Background(), request)
+}
+
+// UpdateAccessKey
+// 为CAM用户更新访问密钥
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION_ACCESSKEY = "FailedOperation.Accesskey"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETER_USERNOTEXIST = "InvalidParameter.UserNotExist"
+//  OPERATIONDENIED_ACCESSKEYOVERLIMIT = "OperationDenied.AccessKeyOverLimit"
+//  OPERATIONDENIED_SUBUIN = "OperationDenied.SubUin"
+//  OPERATIONDENIED_UINNOTMATCH = "OperationDenied.UinNotMatch"
+func (c *Client) UpdateAccessKeyWithContext(ctx context.Context, request *UpdateAccessKeyRequest) (response *UpdateAccessKeyResponse, err error) {
+    if request == nil {
+        request = NewUpdateAccessKeyRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateAccessKey require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpdateAccessKeyResponse()
     err = c.Send(request, response)
     return
 }

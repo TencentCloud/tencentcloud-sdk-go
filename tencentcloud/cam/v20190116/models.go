@@ -31,6 +31,20 @@ type AccessKey struct {
 	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
 }
 
+type AccessKeyDetail struct {
+	// 访问密钥标识
+	AccessKeyId *string `json:"AccessKeyId,omitempty" name:"AccessKeyId"`
+
+	// 访问密钥（密钥仅创建时可见，请妥善保存）
+	SecretAccessKey *string `json:"SecretAccessKey,omitempty" name:"SecretAccessKey"`
+
+	// 密钥状态，激活（Active）或未激活（Inactive）
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 创建时间
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+}
+
 // Predefined struct for user
 type AddUserRequestParams struct {
 	// 子用户用户名
@@ -596,6 +610,64 @@ func (r *ConsumeCustomMFATokenResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ConsumeCustomMFATokenResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateAccessKeyRequestParams struct {
+	// 指定用户Uin，不填默认为当前用户创建访问密钥
+	TargetUin *uint64 `json:"TargetUin,omitempty" name:"TargetUin"`
+}
+
+type CreateAccessKeyRequest struct {
+	*tchttp.BaseRequest
+	
+	// 指定用户Uin，不填默认为当前用户创建访问密钥
+	TargetUin *uint64 `json:"TargetUin,omitempty" name:"TargetUin"`
+}
+
+func (r *CreateAccessKeyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAccessKeyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TargetUin")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAccessKeyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateAccessKeyResponseParams struct {
+	// 访问密钥
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AccessKey *AccessKeyDetail `json:"AccessKey,omitempty" name:"AccessKey"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateAccessKeyResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateAccessKeyResponseParams `json:"Response"`
+}
+
+func (r *CreateAccessKeyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAccessKeyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1293,6 +1365,67 @@ func (r *CreateUserSAMLConfigResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateUserSAMLConfigResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteAccessKeyRequestParams struct {
+	// 指定需要删除的AccessKeyId
+	AccessKeyId *string `json:"AccessKeyId,omitempty" name:"AccessKeyId"`
+
+	// 指定用户Uin，不填默认为当前用户删除访问密钥
+	TargetUin *uint64 `json:"TargetUin,omitempty" name:"TargetUin"`
+}
+
+type DeleteAccessKeyRequest struct {
+	*tchttp.BaseRequest
+	
+	// 指定需要删除的AccessKeyId
+	AccessKeyId *string `json:"AccessKeyId,omitempty" name:"AccessKeyId"`
+
+	// 指定用户Uin，不填默认为当前用户删除访问密钥
+	TargetUin *uint64 `json:"TargetUin,omitempty" name:"TargetUin"`
+}
+
+func (r *DeleteAccessKeyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteAccessKeyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AccessKeyId")
+	delete(f, "TargetUin")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteAccessKeyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteAccessKeyResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DeleteAccessKeyResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteAccessKeyResponseParams `json:"Response"`
+}
+
+func (r *DeleteAccessKeyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteAccessKeyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -5565,6 +5698,74 @@ func (r *UntagRoleResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *UntagRoleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateAccessKeyRequestParams struct {
+	// 指定需要更新的AccessKeyId
+	AccessKeyId *string `json:"AccessKeyId,omitempty" name:"AccessKeyId"`
+
+	// 密钥状态，激活（Active）或未激活（Inactive）
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 指定用户Uin，不填默认为当前用户更新访问密钥
+	TargetUin *uint64 `json:"TargetUin,omitempty" name:"TargetUin"`
+}
+
+type UpdateAccessKeyRequest struct {
+	*tchttp.BaseRequest
+	
+	// 指定需要更新的AccessKeyId
+	AccessKeyId *string `json:"AccessKeyId,omitempty" name:"AccessKeyId"`
+
+	// 密钥状态，激活（Active）或未激活（Inactive）
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 指定用户Uin，不填默认为当前用户更新访问密钥
+	TargetUin *uint64 `json:"TargetUin,omitempty" name:"TargetUin"`
+}
+
+func (r *UpdateAccessKeyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateAccessKeyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AccessKeyId")
+	delete(f, "Status")
+	delete(f, "TargetUin")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateAccessKeyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateAccessKeyResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type UpdateAccessKeyResponse struct {
+	*tchttp.BaseResponse
+	Response *UpdateAccessKeyResponseParams `json:"Response"`
+}
+
+func (r *UpdateAccessKeyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateAccessKeyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

@@ -3898,7 +3898,7 @@ func NewProcessLiveStreamResponse() (response *ProcessLiveStreamResponse) {
 //
 // * 智能内容审核（画面鉴黄、敏感信息检测、声音鉴黄）；
 //
-// * 智能内容识别（人脸、文本全文、文本关键词、语音全文、语音关键词）。
+// * 智能内容识别（人脸、文本全文、文本关键词、语音全文、语音关键词、语音实时翻译）。
 //
 // 
 //
@@ -3922,7 +3922,7 @@ func (c *Client) ProcessLiveStream(request *ProcessLiveStreamRequest) (response 
 //
 // * 智能内容审核（画面鉴黄、敏感信息检测、声音鉴黄）；
 //
-// * 智能内容识别（人脸、文本全文、文本关键词、语音全文、语音关键词）。
+// * 智能内容识别（人脸、文本全文、文本关键词、语音全文、语音关键词、语音实时翻译）。
 //
 // 
 //
@@ -3970,9 +3970,9 @@ func NewProcessMediaResponse() (response *ProcessMediaResponse) {
 }
 
 // ProcessMedia
-// 对 COS 中的媒体文件发起处理任务，功能包括：
+// 对 URL视频链接 或 COS 中的媒体文件发起处理任务，功能包括：
 //
-// 1. 视频转码（带水印）；
+// 1. 视频转码（普通转码、极速高清转码、音视频增强）；
 //
 // 2. 视频转动图；
 //
@@ -3986,9 +3986,9 @@ func NewProcessMediaResponse() (response *ProcessMediaResponse) {
 //
 // 7. 智能内容审核（鉴黄、敏感信息检测）；
 //
-// 8. 智能内容分析（标签、分类、封面、按帧标签）；
+// 8. 智能内容分析（标签、分类、封面、按帧标签、拆条、集锦、片头片尾）；
 //
-// 9. 智能内容识别（人脸、文本全文、文本关键词、语音全文、语音关键词）。
+// 9. 智能内容识别（人脸、文本全文、文本关键词、语音全文、语音关键词、语音翻译、物体识别）。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"
@@ -4002,9 +4002,9 @@ func (c *Client) ProcessMedia(request *ProcessMediaRequest) (response *ProcessMe
 }
 
 // ProcessMedia
-// 对 COS 中的媒体文件发起处理任务，功能包括：
+// 对 URL视频链接 或 COS 中的媒体文件发起处理任务，功能包括：
 //
-// 1. 视频转码（带水印）；
+// 1. 视频转码（普通转码、极速高清转码、音视频增强）；
 //
 // 2. 视频转动图；
 //
@@ -4018,9 +4018,9 @@ func (c *Client) ProcessMedia(request *ProcessMediaRequest) (response *ProcessMe
 //
 // 7. 智能内容审核（鉴黄、敏感信息检测）；
 //
-// 8. 智能内容分析（标签、分类、封面、按帧标签）；
+// 8. 智能内容分析（标签、分类、封面、按帧标签、拆条、集锦、片头片尾）；
 //
-// 9. 智能内容识别（人脸、文本全文、文本关键词、语音全文、语音关键词）。
+// 9. 智能内容识别（人脸、文本全文、文本关键词、语音全文、语音关键词、语音翻译、物体识别）。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_INVALIDMPSUSER = "FailedOperation.InvalidMpsUser"

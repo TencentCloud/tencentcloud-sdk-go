@@ -71,7 +71,7 @@ const (
 	// 无权限访问 Cos bucket。
 	FAILEDOPERATION_COSBUCKETNOTPERMISSION = "FailedOperation.CosBucketNotPermission"
 
-	// Cos 角色不存在。
+	// Cos 角色不存在，请前往 控制台 -> 功能配置 -> 直播截图&鉴黄 页面进行授权。
 	FAILEDOPERATION_COSROLENOTEXISTS = "FailedOperation.CosRoleNotExists"
 
 	// 2天内有产生流量，域名处于锁定期间，2天内无流量产生才允许删除域名。

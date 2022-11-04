@@ -532,6 +532,12 @@ type ChannelCreateFlowByFilesRequestParams struct {
 
 	// 操作者的信息
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
+	// 签署人校验方式
+	// VerifyCheck: 人脸识别（默认）
+	// MobileCheck：手机号验证
+	// 参数说明：可选人脸识别或手机号验证两种方式，若选择后者，未实名个人签署方在签署合同时，无需经过实名认证和意愿确认两次人脸识别，该能力仅适用于个人签署方。
+	ApproverVerifyType *string `json:"ApproverVerifyType,omitempty" name:"ApproverVerifyType"`
 }
 
 type ChannelCreateFlowByFilesRequest struct {
@@ -578,6 +584,12 @@ type ChannelCreateFlowByFilesRequest struct {
 
 	// 操作者的信息
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
+	// 签署人校验方式
+	// VerifyCheck: 人脸识别（默认）
+	// MobileCheck：手机号验证
+	// 参数说明：可选人脸识别或手机号验证两种方式，若选择后者，未实名个人签署方在签署合同时，无需经过实名认证和意愿确认两次人脸识别，该能力仅适用于个人签署方。
+	ApproverVerifyType *string `json:"ApproverVerifyType,omitempty" name:"ApproverVerifyType"`
 }
 
 func (r *ChannelCreateFlowByFilesRequest) ToJsonString() string {
@@ -606,6 +618,7 @@ func (r *ChannelCreateFlowByFilesRequest) FromJsonString(s string) error {
 	delete(f, "CustomerData")
 	delete(f, "NeedSignReview")
 	delete(f, "Operator")
+	delete(f, "ApproverVerifyType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ChannelCreateFlowByFilesRequest has unknown keys!", "")
 	}

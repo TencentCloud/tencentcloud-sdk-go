@@ -540,7 +540,7 @@ func NewDeleteTagsResponse() (response *DeleteTagsResponse) {
 }
 
 // DeleteTags
-// 本接口用于删除一对标签键和标签值
+// 本接口用于批量删除标签键和标签值。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -560,7 +560,7 @@ func (c *Client) DeleteTags(request *DeleteTagsRequest) (response *DeleteTagsRes
 }
 
 // DeleteTags
-// 本接口用于删除一对标签键和标签值
+// 本接口用于批量删除标签键和标签值。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

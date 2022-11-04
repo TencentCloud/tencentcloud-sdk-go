@@ -473,6 +473,9 @@ type CreateClusterRequestParams struct {
 
 	// 创建集群时同时绑定的标签对说明。
 	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
+
+	// 弹性伸缩类型。<br><li>AS：集群自动扩缩容由[弹性伸缩](https://cloud.tencent.com/document/product/377/3154)产品实现。<br><li>THPC_AS：集群自动扩缩容由THPC产品内部实现。
+	AutoScalingType *string `json:"AutoScalingType,omitempty" name:"AutoScalingType"`
 }
 
 type CreateClusterRequest struct {
@@ -536,6 +539,9 @@ type CreateClusterRequest struct {
 
 	// 创建集群时同时绑定的标签对说明。
 	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
+
+	// 弹性伸缩类型。<br><li>AS：集群自动扩缩容由[弹性伸缩](https://cloud.tencent.com/document/product/377/3154)产品实现。<br><li>THPC_AS：集群自动扩缩容由THPC产品内部实现。
+	AutoScalingType *string `json:"AutoScalingType,omitempty" name:"AutoScalingType"`
 }
 
 func (r *CreateClusterRequest) ToJsonString() string {
@@ -568,6 +574,7 @@ func (r *CreateClusterRequest) FromJsonString(s string) error {
 	delete(f, "LoginNode")
 	delete(f, "LoginNodeCount")
 	delete(f, "Tags")
+	delete(f, "AutoScalingType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateClusterRequest has unknown keys!", "")
 	}

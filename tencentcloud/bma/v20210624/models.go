@@ -1894,6 +1894,9 @@ type DescribeCRMonitorDetailResponseParams struct {
 	// 监测状态
 	MonitorStatus *int64 `json:"MonitorStatus,omitempty" name:"MonitorStatus"`
 
+	// 导出地址
+	ExportURL *string `json:"ExportURL,omitempty" name:"ExportURL"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }
@@ -1967,6 +1970,9 @@ type DescribeCRMonitorsResponseParams struct {
 
 	// 记录总条数
 	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 导出地址
+	ExportURL *string `json:"ExportURL,omitempty" name:"ExportURL"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2066,6 +2072,9 @@ type DescribeCRObtainDetailResponseParams struct {
 
 	// 取证名称
 	ObtainName *string `json:"ObtainName,omitempty" name:"ObtainName"`
+
+	// 取证公证信息
+	DepositPdfCert *string `json:"DepositPdfCert,omitempty" name:"DepositPdfCert"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2748,6 +2757,18 @@ type Monitor struct {
 
 	// 监测状态说明
 	MonitorNote *string `json:"MonitorNote,omitempty" name:"MonitorNote"`
+
+	// 作品类型全部展示
+	WorkCategoryAll *string `json:"WorkCategoryAll,omitempty" name:"WorkCategoryAll"`
+
+	// 存证状态
+	EvidenceStatus *int64 `json:"EvidenceStatus,omitempty" name:"EvidenceStatus"`
+
+	// 存证状态说明
+	EvidenceNote *string `json:"EvidenceNote,omitempty" name:"EvidenceNote"`
+
+	// 侵权站点数量
+	TortSiteNum *int64 `json:"TortSiteNum,omitempty" name:"TortSiteNum"`
 }
 
 type MonitorTort struct {
@@ -2825,6 +2846,9 @@ type MonitorTort struct {
 
 	// 是否境外网址
 	IsOverseas *int64 `json:"IsOverseas,omitempty" name:"IsOverseas"`
+
+	// ip地理位置
+	IPLoc *string `json:"IPLoc,omitempty" name:"IPLoc"`
 }
 
 type ProtectURLInfo struct {

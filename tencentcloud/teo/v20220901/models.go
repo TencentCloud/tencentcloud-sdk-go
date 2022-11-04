@@ -211,6 +211,36 @@ type AiRule struct {
 	Mode *string `json:"Mode,omitempty" name:"Mode"`
 }
 
+type AliasDomain struct {
+	// 别称域名名称。
+	AliasName *string `json:"AliasName,omitempty" name:"AliasName"`
+
+	// 站点 ID。
+	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
+
+	// 目标域名名称。
+	TargetName *string `json:"TargetName,omitempty" name:"TargetName"`
+
+	// 别称域名状态，取值有：
+	// <li> active：已生效； </li>
+	// <li> pending：部署中；</li>
+	// <li> conflict：被找回。 </li>
+	// <li> stop：已停用；</li>
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 封禁模式，取值有：
+	// <li> 0：未封禁； </li>
+	// <li> 11：合规封禁；</li>
+	// <li> 14：未备案封禁。</li>
+	ForbidMode *int64 `json:"ForbidMode,omitempty" name:"ForbidMode"`
+
+	// 别称域名创建时间。
+	CreatedOn *string `json:"CreatedOn,omitempty" name:"CreatedOn"`
+
+	// 别称域名修改时间。
+	ModifiedOn *string `json:"ModifiedOn,omitempty" name:"ModifiedOn"`
+}
+
 type ApplicationProxy struct {
 	// 站点ID。
 	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
@@ -782,6 +812,94 @@ type Compression struct {
 	// <li>gzip：gzip算法。</li>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Algorithms []*string `json:"Algorithms,omitempty" name:"Algorithms"`
+}
+
+// Predefined struct for user
+type CreateAliasDomainRequestParams struct {
+	// 站点 ID。
+	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
+
+	// 别称域名名称。
+	AliasName *string `json:"AliasName,omitempty" name:"AliasName"`
+
+	// 目标域名名称。
+	TargetName *string `json:"TargetName,omitempty" name:"TargetName"`
+
+	// 证书配置，取值有：
+	// <li> none：不配置；</li>
+	// <li> hosting：SSL托管证书；</li>
+	// <li> apply：申请免费证书。</li>默认取值为 none。
+	CertType *string `json:"CertType,omitempty" name:"CertType"`
+
+	// 当 CertType 取值为 hosting 时需填入相应证书 ID。
+	CertId []*string `json:"CertId,omitempty" name:"CertId"`
+}
+
+type CreateAliasDomainRequest struct {
+	*tchttp.BaseRequest
+	
+	// 站点 ID。
+	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
+
+	// 别称域名名称。
+	AliasName *string `json:"AliasName,omitempty" name:"AliasName"`
+
+	// 目标域名名称。
+	TargetName *string `json:"TargetName,omitempty" name:"TargetName"`
+
+	// 证书配置，取值有：
+	// <li> none：不配置；</li>
+	// <li> hosting：SSL托管证书；</li>
+	// <li> apply：申请免费证书。</li>默认取值为 none。
+	CertType *string `json:"CertType,omitempty" name:"CertType"`
+
+	// 当 CertType 取值为 hosting 时需填入相应证书 ID。
+	CertId []*string `json:"CertId,omitempty" name:"CertId"`
+}
+
+func (r *CreateAliasDomainRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAliasDomainRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ZoneId")
+	delete(f, "AliasName")
+	delete(f, "TargetName")
+	delete(f, "CertType")
+	delete(f, "CertId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAliasDomainRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateAliasDomainResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateAliasDomainResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateAliasDomainResponseParams `json:"Response"`
+}
+
+func (r *CreateAliasDomainResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAliasDomainResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user
@@ -2928,6 +3046,67 @@ type DefaultServerCertInfo struct {
 }
 
 // Predefined struct for user
+type DeleteAliasDomainRequestParams struct {
+	// 站点 ID。
+	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
+
+	// 待删除别称域名名称。如果为空，则不执行删除操作。
+	AliasNames []*string `json:"AliasNames,omitempty" name:"AliasNames"`
+}
+
+type DeleteAliasDomainRequest struct {
+	*tchttp.BaseRequest
+	
+	// 站点 ID。
+	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
+
+	// 待删除别称域名名称。如果为空，则不执行删除操作。
+	AliasNames []*string `json:"AliasNames,omitempty" name:"AliasNames"`
+}
+
+func (r *DeleteAliasDomainRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteAliasDomainRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ZoneId")
+	delete(f, "AliasNames")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteAliasDomainRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteAliasDomainResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DeleteAliasDomainResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteAliasDomainResponseParams `json:"Response"`
+}
+
+func (r *DeleteAliasDomainResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteAliasDomainResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DeleteApplicationProxyRequestParams struct {
 	// 站点ID。
 	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
@@ -3492,6 +3671,89 @@ func (r *DescribeAddableEntityListResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeAddableEntityListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAliasDomainsRequestParams struct {
+	// 站点 ID。
+	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
+
+	// 分页查询偏移量。默认值：0。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 分页查询限制数目。默认值：20，最大值：1000。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 过滤条件，Filters.Values的上限为20。详细的过滤条件如下：
+	// <li>target-name<br>   按照【<strong>目标域名名称</strong>】进行过滤。<br>   类型：String<br>   必选：否</li><li>alias-name<br>   按照【<strong>别称域名名称</strong>】进行过滤。<br>   类型：String<br>   必选：否</li>模糊查询时仅支持过滤字段名为alias-name。
+	Filters []*AdvancedFilter `json:"Filters,omitempty" name:"Filters"`
+}
+
+type DescribeAliasDomainsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 站点 ID。
+	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
+
+	// 分页查询偏移量。默认值：0。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 分页查询限制数目。默认值：20，最大值：1000。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 过滤条件，Filters.Values的上限为20。详细的过滤条件如下：
+	// <li>target-name<br>   按照【<strong>目标域名名称</strong>】进行过滤。<br>   类型：String<br>   必选：否</li><li>alias-name<br>   按照【<strong>别称域名名称</strong>】进行过滤。<br>   类型：String<br>   必选：否</li>模糊查询时仅支持过滤字段名为alias-name。
+	Filters []*AdvancedFilter `json:"Filters,omitempty" name:"Filters"`
+}
+
+func (r *DescribeAliasDomainsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAliasDomainsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ZoneId")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAliasDomainsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAliasDomainsResponseParams struct {
+	// 符合条件的别称域名个数。
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 别称域名详细信息列表。
+	AliasDomains []*AliasDomain `json:"AliasDomains,omitempty" name:"AliasDomains"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeAliasDomainsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAliasDomainsResponseParams `json:"Response"`
+}
+
+func (r *DescribeAliasDomainsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAliasDomainsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -10845,6 +11107,166 @@ func (r *ModifyAlarmDefaultThresholdResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyAlarmDefaultThresholdResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyAliasDomainRequestParams struct {
+	// 站点 ID。
+	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
+
+	// 别称域名名称。
+	AliasName *string `json:"AliasName,omitempty" name:"AliasName"`
+
+	// 目标域名名称。
+	TargetName *string `json:"TargetName,omitempty" name:"TargetName"`
+
+	// 证书配置，取值有：
+	// <li> none：不配置；</li>
+	// <li> hosting：SSL托管证书；</li>
+	// <li> apply：申请免费证书。</li>不填写保持原有配置。
+	CertType *string `json:"CertType,omitempty" name:"CertType"`
+
+	// 当 CertType 取值为 hosting 时填入相应证书 ID。
+	CertId []*string `json:"CertId,omitempty" name:"CertId"`
+}
+
+type ModifyAliasDomainRequest struct {
+	*tchttp.BaseRequest
+	
+	// 站点 ID。
+	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
+
+	// 别称域名名称。
+	AliasName *string `json:"AliasName,omitempty" name:"AliasName"`
+
+	// 目标域名名称。
+	TargetName *string `json:"TargetName,omitempty" name:"TargetName"`
+
+	// 证书配置，取值有：
+	// <li> none：不配置；</li>
+	// <li> hosting：SSL托管证书；</li>
+	// <li> apply：申请免费证书。</li>不填写保持原有配置。
+	CertType *string `json:"CertType,omitempty" name:"CertType"`
+
+	// 当 CertType 取值为 hosting 时填入相应证书 ID。
+	CertId []*string `json:"CertId,omitempty" name:"CertId"`
+}
+
+func (r *ModifyAliasDomainRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyAliasDomainRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ZoneId")
+	delete(f, "AliasName")
+	delete(f, "TargetName")
+	delete(f, "CertType")
+	delete(f, "CertId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyAliasDomainRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyAliasDomainResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ModifyAliasDomainResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyAliasDomainResponseParams `json:"Response"`
+}
+
+func (r *ModifyAliasDomainResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyAliasDomainResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyAliasDomainStatusRequestParams struct {
+	// 站点 ID。
+	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
+
+	// 别称域名状态，取值有：
+	// <li> false：开启别称域名；</li>
+	// <li> true：关闭别称域名。</li>
+	Paused *bool `json:"Paused,omitempty" name:"Paused"`
+
+	// 待修改状态的别称域名名称。如果为空，则不执行修改状态操作。
+	AliasNames []*string `json:"AliasNames,omitempty" name:"AliasNames"`
+}
+
+type ModifyAliasDomainStatusRequest struct {
+	*tchttp.BaseRequest
+	
+	// 站点 ID。
+	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
+
+	// 别称域名状态，取值有：
+	// <li> false：开启别称域名；</li>
+	// <li> true：关闭别称域名。</li>
+	Paused *bool `json:"Paused,omitempty" name:"Paused"`
+
+	// 待修改状态的别称域名名称。如果为空，则不执行修改状态操作。
+	AliasNames []*string `json:"AliasNames,omitempty" name:"AliasNames"`
+}
+
+func (r *ModifyAliasDomainStatusRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyAliasDomainStatusRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ZoneId")
+	delete(f, "Paused")
+	delete(f, "AliasNames")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyAliasDomainStatusRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyAliasDomainStatusResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ModifyAliasDomainStatusResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyAliasDomainStatusResponseParams `json:"Response"`
+}
+
+func (r *ModifyAliasDomainStatusResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyAliasDomainStatusResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

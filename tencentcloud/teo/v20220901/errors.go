@@ -74,6 +74,48 @@ const (
 	// 操作频繁，请稍后重试。
 	INVALIDPARAMETER_ACTIONINPROGRESS = "InvalidParameter.ActionInProgress"
 
+	// HTTPS证书链错误。
+	INVALIDPARAMETER_CERTCHAINERROR = "InvalidParameter.CertChainError"
+
+	// 证书错误。
+	INVALIDPARAMETER_CERTCHECKERROR = "InvalidParameter.CertCheckError"
+
+	// 证书错误。
+	INVALIDPARAMETER_CERTCOMPLETEERROR = "InvalidParameter.CertCompleteError"
+
+	// 证书错误。
+	INVALIDPARAMETER_CERTFORMATERROR = "InvalidParameter.CertFormatError"
+
+	// HTTPS证书已过期。
+	INVALIDPARAMETER_CERTISEXPIRED = "InvalidParameter.CertIsExpired"
+
+	// 证书错误。
+	INVALIDPARAMETER_CERTNOCN = "InvalidParameter.CertNoCn"
+
+	// 无效的HTTPS证书。
+	INVALIDPARAMETER_CERTNOINFO = "InvalidParameter.CertNoInfo"
+
+	// HTTPS证书和域名不匹配。
+	INVALIDPARAMETER_CERTNOTMATCHDOMAIN = "InvalidParameter.CertNotMatchDomain"
+
+	// HTTPS证书和密钥不匹配。
+	INVALIDPARAMETER_CERTNOTMATCHKEY = "InvalidParameter.CertNotMatchKey"
+
+	// 证书错误。
+	INVALIDPARAMETER_CERTNOTPEM = "InvalidParameter.CertNotPem"
+
+	// 内部错误。
+	INVALIDPARAMETER_CERTSYSTEMERROR = "InvalidParameter.CertSystemError"
+
+	// HTTPS证书即将过期。
+	INVALIDPARAMETER_CERTTOEXPIRE = "InvalidParameter.CertToExpire"
+
+	// 证书错误。
+	INVALIDPARAMETER_CERTTOOSHORTKEYSIZE = "InvalidParameter.CertTooShortKeySize"
+
+	// 证书错误。
+	INVALIDPARAMETER_CERTUNSUPPORTEDTYPE = "InvalidParameter.CertUnsupportedType"
+
 	// 域名不存在或不属于该账号。
 	INVALIDPARAMETER_DOMAINNOTFOUND = "InvalidParameter.DomainNotFound"
 
@@ -194,6 +236,9 @@ const (
 	// 站点不存在。
 	INVALIDPARAMETER_ZONENOTFOUND = "InvalidParameter.ZoneNotFound"
 
+	// 参数取值错误。
+	INVALIDPARAMETERVALUE = "InvalidParameterValue"
+
 	// 与已经添加的记录冲突。
 	INVALIDPARAMETERVALUE_CONFLICTRECORD = "InvalidParameterValue.ConflictRecord"
 
@@ -266,6 +311,9 @@ const (
 	// Dns资源被占用。
 	RESOURCEINUSE_DNS = "ResourceInUse.Dns"
 
+	// 已存在相同的别称域名。
+	RESOURCEINUSE_DUPLICATENAME = "ResourceInUse.DuplicateName"
+
 	// 资源被本账号的子域名占用。
 	RESOURCEINUSE_HOST = "ResourceInUse.Host"
 
@@ -289,6 +337,9 @@ const (
 
 	// 资源被本账号和其他账号同时Cname接入占用。
 	RESOURCEINUSE_SELFANDOTHERSCNAME = "ResourceInUse.SelfAndOthersCname"
+
+	// 别称域名已站点接入。
+	RESOURCEINUSE_ZONE = "ResourceInUse.Zone"
 
 	// 资源不足。
 	RESOURCEINSUFFICIENT = "ResourceInsufficient"

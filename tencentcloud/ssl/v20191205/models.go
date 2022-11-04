@@ -1283,7 +1283,7 @@ type DescribeCertificatesRequestParams struct {
 	// 分页偏移量，从0开始。
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 每页数量，默认20。
+	// 每页数量，默认20。最大1000
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 搜索关键词，可搜索证书 ID、备注名称、域名。例如： a8xHcaIs。
@@ -1323,7 +1323,7 @@ type DescribeCertificatesRequest struct {
 	// 分页偏移量，从0开始。
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 每页数量，默认20。
+	// 每页数量，默认20。最大1000
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 搜索关键词，可搜索证书 ID、备注名称、域名。例如： a8xHcaIs。

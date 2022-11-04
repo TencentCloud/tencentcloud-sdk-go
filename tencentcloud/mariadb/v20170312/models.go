@@ -3911,6 +3911,60 @@ type InstanceSpec struct {
 }
 
 // Predefined struct for user
+type IsolateDedicatedDBInstanceRequestParams struct {
+	// 实例 Id，形如：tdsql-ow728lmc。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+}
+
+type IsolateDedicatedDBInstanceRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例 Id，形如：tdsql-ow728lmc。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+}
+
+func (r *IsolateDedicatedDBInstanceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *IsolateDedicatedDBInstanceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "IsolateDedicatedDBInstanceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type IsolateDedicatedDBInstanceResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type IsolateDedicatedDBInstanceResponse struct {
+	*tchttp.BaseResponse
+	Response *IsolateDedicatedDBInstanceResponseParams `json:"Response"`
+}
+
+func (r *IsolateDedicatedDBInstanceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *IsolateDedicatedDBInstanceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type IsolateHourDBInstanceRequestParams struct {
 	// 实例ID列表
 	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
@@ -5770,4 +5824,7 @@ type ZonesInfo struct {
 
 	// 可用区中文名
 	ZoneName *string `json:"ZoneName,omitempty" name:"ZoneName"`
+
+	// 是否在售
+	OnSale *bool `json:"OnSale,omitempty" name:"OnSale"`
 }

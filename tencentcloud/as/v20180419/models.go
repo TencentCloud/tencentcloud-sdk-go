@@ -3124,7 +3124,7 @@ type EnhancedService struct {
 	// 开启云监控服务。若不指定该参数，则默认开启云监控服务。
 	MonitorService *RunMonitorServiceEnabled `json:"MonitorService,omitempty" name:"MonitorService"`
 
-	// 开启自动化助手服务。若不指定该参数，则默认逻辑与CVM保持一致。注意：此字段可能返回 null，表示取不到有效值。
+	// 该参数已废弃，查询时会返回空值，请勿使用。
 	AutomationService []*RunAutomationServiceEnabled `json:"AutomationService,omitempty" name:"AutomationService"`
 }
 

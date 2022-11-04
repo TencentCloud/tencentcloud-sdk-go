@@ -2781,6 +2781,9 @@ type CreateScanMalwareSettingRequestParams struct {
 
 	// 1标准模式（只报严重、高危）、2增强模式（报严重、高危、中危）、3严格模式（报严重、高、中、低、提示）
 	EngineType *uint64 `json:"EngineType,omitempty" name:"EngineType"`
+
+	// 是否开启恶意进程查杀[0:未开启,1:开启]
+	EnableMemShellScan *int64 `json:"EnableMemShellScan,omitempty" name:"EnableMemShellScan"`
 }
 
 type CreateScanMalwareSettingRequest struct {
@@ -2800,6 +2803,9 @@ type CreateScanMalwareSettingRequest struct {
 
 	// 1标准模式（只报严重、高危）、2增强模式（报严重、高危、中危）、3严格模式（报严重、高、中、低、提示）
 	EngineType *uint64 `json:"EngineType,omitempty" name:"EngineType"`
+
+	// 是否开启恶意进程查杀[0:未开启,1:开启]
+	EnableMemShellScan *int64 `json:"EnableMemShellScan,omitempty" name:"EnableMemShellScan"`
 }
 
 func (r *CreateScanMalwareSettingRequest) ToJsonString() string {
@@ -2819,6 +2825,7 @@ func (r *CreateScanMalwareSettingRequest) FromJsonString(s string) error {
 	delete(f, "QuuidList")
 	delete(f, "TimeoutPeriod")
 	delete(f, "EngineType")
+	delete(f, "EnableMemShellScan")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateScanMalwareSettingRequest has unknown keys!", "")
 	}
@@ -12254,6 +12261,10 @@ type DescribeMalwareRiskWarningResponseParams struct {
 	// 是否弹出提示 true 弹出, false不弹
 	IsPop *bool `json:"IsPop,omitempty" name:"IsPop"`
 
+	// 异常进程列表信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProcessList []*MalwareRisk `json:"ProcessList,omitempty" name:"ProcessList"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }
@@ -12350,6 +12361,9 @@ type DescribeMalwareTimingScanSettingResponseParams struct {
 
 	// 启发引擎 0 关闭 1开启
 	EnableInspiredEngine *uint64 `json:"EnableInspiredEngine,omitempty" name:"EnableInspiredEngine"`
+
+	// 是否开启恶意进程查杀[0:未开启,1:开启]
+	EnableMemShellScan *uint64 `json:"EnableMemShellScan,omitempty" name:"EnableMemShellScan"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -18883,7 +18897,7 @@ type MalWareList struct {
 	// 描述
 	VirusName *string `json:"VirusName,omitempty" name:"VirusName"`
 
-	// 状态；4-:待处理，5-已信任，6-已隔离，8-文件已删除
+	// 状态；4-:待处理，5-已信任，6-已隔离，8-文件已删除, 14:已处理
 	Status *uint64 `json:"Status,omitempty" name:"Status"`
 
 	// 唯一ID
@@ -19559,6 +19573,9 @@ type ModifyMalwareTimingScanSettingsRequestParams struct {
 
 	// 启发引擎开关 0 关闭 1开启
 	EnableInspiredEngine *uint64 `json:"EnableInspiredEngine,omitempty" name:"EnableInspiredEngine"`
+
+	// 是否开启恶意进程查杀[0:未开启,1:开启]
+	EnableMemShellScan *uint64 `json:"EnableMemShellScan,omitempty" name:"EnableMemShellScan"`
 }
 
 type ModifyMalwareTimingScanSettingsRequest struct {
@@ -19602,6 +19619,9 @@ type ModifyMalwareTimingScanSettingsRequest struct {
 
 	// 启发引擎开关 0 关闭 1开启
 	EnableInspiredEngine *uint64 `json:"EnableInspiredEngine,omitempty" name:"EnableInspiredEngine"`
+
+	// 是否开启恶意进程查杀[0:未开启,1:开启]
+	EnableMemShellScan *uint64 `json:"EnableMemShellScan,omitempty" name:"EnableMemShellScan"`
 }
 
 func (r *ModifyMalwareTimingScanSettingsRequest) ToJsonString() string {
@@ -19629,6 +19649,7 @@ func (r *ModifyMalwareTimingScanSettingsRequest) FromJsonString(s string) error 
 	delete(f, "KillProcess")
 	delete(f, "EngineType")
 	delete(f, "EnableInspiredEngine")
+	delete(f, "EnableMemShellScan")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyMalwareTimingScanSettingsRequest has unknown keys!", "")
 	}

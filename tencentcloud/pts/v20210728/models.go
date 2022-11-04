@@ -3586,6 +3586,10 @@ type File struct {
 	// 用户子账号
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubAccountUin *string `json:"SubAccountUin,omitempty" name:"SubAccountUin"`
+
+	// 用户账号的 App ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AppId *int64 `json:"AppId,omitempty" name:"AppId"`
 }
 
 type FileInfo struct {
@@ -4461,6 +4465,10 @@ type ScriptInfo struct {
 	// 脚本权重，范围 1-100
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LoadWeight *int64 `json:"LoadWeight,omitempty" name:"LoadWeight"`
+
+	// 文件 ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FileId *string `json:"FileId,omitempty" name:"FileId"`
 }
 
 type ScriptOrigin struct {

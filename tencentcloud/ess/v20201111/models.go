@@ -754,6 +754,12 @@ type CreateFlowByFilesRequestParams struct {
 
 	// 应用号信息
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+
+	// 签署人校验方式
+	// VerifyCheck: 人脸识别（默认）
+	// MobileCheck：手机号验证
+	// 参数说明：可选人脸识别或手机号验证两种方式，若选择后者，未实名个人签署方在签署合同时，无需经过实名认证和意愿确认两次人脸识别，该能力仅适用于个人签署方。
+	ApproverVerifyType *string `json:"ApproverVerifyType,omitempty" name:"ApproverVerifyType"`
 }
 
 type CreateFlowByFilesRequest struct {
@@ -814,6 +820,12 @@ type CreateFlowByFilesRequest struct {
 
 	// 应用号信息
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+
+	// 签署人校验方式
+	// VerifyCheck: 人脸识别（默认）
+	// MobileCheck：手机号验证
+	// 参数说明：可选人脸识别或手机号验证两种方式，若选择后者，未实名个人签署方在签署合同时，无需经过实名认证和意愿确认两次人脸识别，该能力仅适用于个人签署方。
+	ApproverVerifyType *string `json:"ApproverVerifyType,omitempty" name:"ApproverVerifyType"`
 }
 
 func (r *CreateFlowByFilesRequest) ToJsonString() string {
@@ -843,6 +855,7 @@ func (r *CreateFlowByFilesRequest) FromJsonString(s string) error {
 	delete(f, "NeedSignReview")
 	delete(f, "UserData")
 	delete(f, "Agent")
+	delete(f, "ApproverVerifyType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateFlowByFilesRequest has unknown keys!", "")
 	}
@@ -1602,24 +1615,21 @@ type Department struct {
 
 // Predefined struct for user
 type DescribeFileUrlsRequestParams struct {
+	// 调用方用户信息，UserId 必填
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
 	// 文件对应的业务类型，目前支持：
+	// - 流程 "FLOW"，如需下载合同文件请选择此项
 	// - 模板 "TEMPLATE"
 	// - 文档 "DOCUMENT"
 	// - 印章  “SEAL”
-	// - 流程 "FLOW"
 	BusinessType *string `json:"BusinessType,omitempty" name:"BusinessType"`
 
-	// 业务编号的数组，如模板编号、文档编号、印章编号
+	// 业务编号的数组，如流程编号、模板编号、文档编号、印章编号。如需下载合同文件请传入FlowId
 	// 最大支持20个资源
 	BusinessIds []*string `json:"BusinessIds,omitempty" name:"BusinessIds"`
 
-	// 操作者信息
-	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
-
-	// 应用相关信息
-	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
-
-	// 下载后的文件命名，只有fileType为zip的时候生效
+	// 下载后的文件命名，只有FileType为zip的时候生效
 	FileName *string `json:"FileName,omitempty" name:"FileName"`
 
 	// 文件类型，"JPG", "PDF","ZIP"等
@@ -1635,33 +1645,33 @@ type DescribeFileUrlsRequestParams struct {
 	UrlTtl *int64 `json:"UrlTtl,omitempty" name:"UrlTtl"`
 
 	// 暂不开放
-	Scene *string `json:"Scene,omitempty" name:"Scene"`
+	CcToken *string `json:"CcToken,omitempty" name:"CcToken"`
 
 	// 暂不开放
-	CcToken *string `json:"CcToken,omitempty" name:"CcToken"`
+	Scene *string `json:"Scene,omitempty" name:"Scene"`
+
+	// 应用相关信息
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 }
 
 type DescribeFileUrlsRequest struct {
 	*tchttp.BaseRequest
 	
+	// 调用方用户信息，UserId 必填
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
 	// 文件对应的业务类型，目前支持：
+	// - 流程 "FLOW"，如需下载合同文件请选择此项
 	// - 模板 "TEMPLATE"
 	// - 文档 "DOCUMENT"
 	// - 印章  “SEAL”
-	// - 流程 "FLOW"
 	BusinessType *string `json:"BusinessType,omitempty" name:"BusinessType"`
 
-	// 业务编号的数组，如模板编号、文档编号、印章编号
+	// 业务编号的数组，如流程编号、模板编号、文档编号、印章编号。如需下载合同文件请传入FlowId
 	// 最大支持20个资源
 	BusinessIds []*string `json:"BusinessIds,omitempty" name:"BusinessIds"`
 
-	// 操作者信息
-	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
-
-	// 应用相关信息
-	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
-
-	// 下载后的文件命名，只有fileType为zip的时候生效
+	// 下载后的文件命名，只有FileType为zip的时候生效
 	FileName *string `json:"FileName,omitempty" name:"FileName"`
 
 	// 文件类型，"JPG", "PDF","ZIP"等
@@ -1677,10 +1687,13 @@ type DescribeFileUrlsRequest struct {
 	UrlTtl *int64 `json:"UrlTtl,omitempty" name:"UrlTtl"`
 
 	// 暂不开放
-	Scene *string `json:"Scene,omitempty" name:"Scene"`
+	CcToken *string `json:"CcToken,omitempty" name:"CcToken"`
 
 	// 暂不开放
-	CcToken *string `json:"CcToken,omitempty" name:"CcToken"`
+	Scene *string `json:"Scene,omitempty" name:"Scene"`
+
+	// 应用相关信息
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 }
 
 func (r *DescribeFileUrlsRequest) ToJsonString() string {
@@ -1695,17 +1708,17 @@ func (r *DescribeFileUrlsRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "Operator")
 	delete(f, "BusinessType")
 	delete(f, "BusinessIds")
-	delete(f, "Operator")
-	delete(f, "Agent")
 	delete(f, "FileName")
 	delete(f, "FileType")
 	delete(f, "Offset")
 	delete(f, "Limit")
 	delete(f, "UrlTtl")
-	delete(f, "Scene")
 	delete(f, "CcToken")
+	delete(f, "Scene")
+	delete(f, "Agent")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeFileUrlsRequest has unknown keys!", "")
 	}
