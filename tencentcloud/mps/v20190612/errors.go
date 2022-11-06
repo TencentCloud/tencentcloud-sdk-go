@@ -47,6 +47,66 @@ const (
 	// 参数错误。
 	INVALIDPARAMETER = "InvalidParameter"
 
+	// InvalidParameter.EndTime
+	INVALIDPARAMETER_ENDTIME = "InvalidParameter.EndTime"
+
+	// InvalidParameter.ExceededQuantityLimit
+	INVALIDPARAMETER_EXCEEDEDQUANTITYLIMIT = "InvalidParameter.ExceededQuantityLimit"
+
+	// InvalidParameter.Id
+	INVALIDPARAMETER_ID = "InvalidParameter.Id"
+
+	// InvalidParameter.Input
+	INVALIDPARAMETER_INPUT = "InvalidParameter.Input"
+
+	// InvalidParameter.InputOutputId
+	INVALIDPARAMETER_INPUTOUTPUTID = "InvalidParameter.InputOutputId"
+
+	// InvalidParameter.MaxBandwidth
+	INVALIDPARAMETER_MAXBANDWIDTH = "InvalidParameter.MaxBandwidth"
+
+	// InvalidParameter.Name
+	INVALIDPARAMETER_NAME = "InvalidParameter.Name"
+
+	// InvalidParameter.NotFound
+	INVALIDPARAMETER_NOTFOUND = "InvalidParameter.NotFound"
+
+	// InvalidParameter.Output
+	INVALIDPARAMETER_OUTPUT = "InvalidParameter.Output"
+
+	// InvalidParameter.OutputGroups
+	INVALIDPARAMETER_OUTPUTGROUPS = "InvalidParameter.OutputGroups"
+
+	// InvalidParameter.OutputId
+	INVALIDPARAMETER_OUTPUTID = "InvalidParameter.OutputId"
+
+	// InvalidParameter.PageNum
+	INVALIDPARAMETER_PAGENUM = "InvalidParameter.PageNum"
+
+	// InvalidParameter.PageSize
+	INVALIDPARAMETER_PAGESIZE = "InvalidParameter.PageSize"
+
+	// InvalidParameter.Period
+	INVALIDPARAMETER_PERIOD = "InvalidParameter.Period"
+
+	// InvalidParameter.Pipeline
+	INVALIDPARAMETER_PIPELINE = "InvalidParameter.Pipeline"
+
+	// InvalidParameter.Protocol
+	INVALIDPARAMETER_PROTOCOL = "InvalidParameter.Protocol"
+
+	// InvalidParameter.SortType
+	INVALIDPARAMETER_SORTTYPE = "InvalidParameter.SortType"
+
+	// InvalidParameter.StartTime
+	INVALIDPARAMETER_STARTTIME = "InvalidParameter.StartTime"
+
+	// InvalidParameter.State
+	INVALIDPARAMETER_STATE = "InvalidParameter.State"
+
+	// InvalidParameter.Type
+	INVALIDPARAMETER_TYPE = "InvalidParameter.Type"
+
 	// 参数取值错误。
 	INVALIDPARAMETERVALUE = "InvalidParameterValue"
 

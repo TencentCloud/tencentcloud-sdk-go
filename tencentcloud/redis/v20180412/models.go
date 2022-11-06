@@ -6688,9 +6688,13 @@ type ProductConf struct {
 }
 
 type ProxyNodes struct {
-	// 节点ID
+	// 节点 ID。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	NodeId *string `json:"NodeId,omitempty" name:"NodeId"`
+
+	// 可用区 ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ZoneId *int64 `json:"ZoneId,omitempty" name:"ZoneId"`
 }
 
 type RedisBackupSet struct {

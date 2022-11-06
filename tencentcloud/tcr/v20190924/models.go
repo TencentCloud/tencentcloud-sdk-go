@@ -900,6 +900,9 @@ type CreateInternalEndpointDnsRequestParams struct {
 
 	// 解析地域，需要保证和vpc处于同一地域，如果不填则默认为主实例地域
 	RegionName *string `json:"RegionName,omitempty" name:"RegionName"`
+
+	// 请求的地域ID，用于实例复制地域
+	RegionId *uint64 `json:"RegionId,omitempty" name:"RegionId"`
 }
 
 type CreateInternalEndpointDnsRequest struct {
@@ -921,6 +924,9 @@ type CreateInternalEndpointDnsRequest struct {
 
 	// 解析地域，需要保证和vpc处于同一地域，如果不填则默认为主实例地域
 	RegionName *string `json:"RegionName,omitempty" name:"RegionName"`
+
+	// 请求的地域ID，用于实例复制地域
+	RegionId *uint64 `json:"RegionId,omitempty" name:"RegionId"`
 }
 
 func (r *CreateInternalEndpointDnsRequest) ToJsonString() string {
@@ -940,6 +946,7 @@ func (r *CreateInternalEndpointDnsRequest) FromJsonString(s string) error {
 	delete(f, "EniLBIp")
 	delete(f, "UsePublicDomain")
 	delete(f, "RegionName")
+	delete(f, "RegionId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateInternalEndpointDnsRequest has unknown keys!", "")
 	}

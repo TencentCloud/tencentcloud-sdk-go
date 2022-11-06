@@ -14280,10 +14280,18 @@ type SecHitRuleInfo struct {
 
 	// 子域名。
 	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// Bot标签，取值有:
+	// <li>evil_bot：恶意Bot；</li>
+	// <li>suspect_bot：疑似Bot；</li>
+	// <li>good_bot：正常Bot；</li>
+	// <li>normal：正常请求；</li>
+	// <li>none：未分类。</li>
+	BotLabel *string `json:"BotLabel,omitempty" name:"BotLabel"`
 }
 
 type SecRuleRelatedInfo struct {
-	// 规则ID列表（99999为无效id）。
+	// 规则ID。
 	RuleId *int64 `json:"RuleId,omitempty" name:"RuleId"`
 
 	// 执行动作（处置方式），取值有：
@@ -14312,6 +14320,10 @@ type SecRuleRelatedInfo struct {
 
 	// 规则类型名称。
 	RuleTypeName *string `json:"RuleTypeName,omitempty" name:"RuleTypeName"`
+
+	// 攻击内容。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AttackContent *string `json:"AttackContent,omitempty" name:"AttackContent"`
 }
 
 type SecurityConfig struct {

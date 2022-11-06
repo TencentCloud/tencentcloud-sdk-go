@@ -2440,6 +2440,181 @@ func (r *CreateImageSpriteTemplateResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type CreateInput struct {
+	// 输入名称，可填大小写、数字和下划线，长度为[1, 32]。
+	InputName *string `json:"InputName,omitempty" name:"InputName"`
+
+	// 输入的协议，可选[SRT|RTP|RTMP|RTMP_PULL]。
+	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
+
+	// 输入描述，长度为[0, 255]。
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 输入的IP白名单，格式为CIDR。
+	AllowIpList []*string `json:"AllowIpList,omitempty" name:"AllowIpList"`
+
+	// 输入的SRT配置信息。
+	SRTSettings *CreateInputSRTSettings `json:"SRTSettings,omitempty" name:"SRTSettings"`
+
+	// 输入的RTP配置信息。
+	RTPSettings *CreateInputRTPSettings `json:"RTPSettings,omitempty" name:"RTPSettings"`
+
+	// 输入的主备开关，可选[OPEN|CLOSE]，默认为CLOSE。
+	FailOver *string `json:"FailOver,omitempty" name:"FailOver"`
+
+	// 输入的RTMP_PULL配置信息。
+	RTMPPullSettings *CreateInputRTMPPullSettings `json:"RTMPPullSettings,omitempty" name:"RTMPPullSettings"`
+
+	// 输入的RTSP_PULL配置信息。
+	RTSPPullSettings *CreateInputRTSPPullSettings `json:"RTSPPullSettings,omitempty" name:"RTSPPullSettings"`
+}
+
+type CreateInputRTMPPullSettings struct {
+	// RTMP源站的源站地址，有且只能有一个。
+	SourceAddresses []*RTMPPullSourceAddress `json:"SourceAddresses,omitempty" name:"SourceAddresses"`
+}
+
+type CreateInputRTPSettings struct {
+	// 默认为“none”，可选值['none']。
+	FEC *string `json:"FEC,omitempty" name:"FEC"`
+
+	// 空闲超时时间，默认5000，单位ms，范围为[1000, 10000]。
+	IdleTimeout *int64 `json:"IdleTimeout,omitempty" name:"IdleTimeout"`
+}
+
+type CreateInputRTSPPullSettings struct {
+	// RTSP源站的源站地址，有且只能有一个。
+	SourceAddresses []*RTSPPullSourceAddress `json:"SourceAddresses,omitempty" name:"SourceAddresses"`
+}
+
+type CreateInputSRTSettings struct {
+	// SRT模式，可选[LISTENER|CALLER]，默认为LISTENER。
+	Mode *string `json:"Mode,omitempty" name:"Mode"`
+
+	// 流Id，可选大小写字母、数字和特殊字符（.#!:&,=_-），长度为0~512。
+	StreamId *string `json:"StreamId,omitempty" name:"StreamId"`
+
+	// 延迟，默认0，单位ms，范围为[0, 3000]。
+	Latency *int64 `json:"Latency,omitempty" name:"Latency"`
+
+	// 接收延迟，默认120，单位ms，范围为[0, 3000]。
+	RecvLatency *int64 `json:"RecvLatency,omitempty" name:"RecvLatency"`
+
+	// 对端延迟，默认0，单位ms，范围为[0, 3000]。
+	PeerLatency *int64 `json:"PeerLatency,omitempty" name:"PeerLatency"`
+
+	// 对端超时时间，默认5000，单位ms，范围为[1000, 10000]。
+	PeerIdleTimeout *int64 `json:"PeerIdleTimeout,omitempty" name:"PeerIdleTimeout"`
+
+	// 解密密钥，默认为空，表示不加密。只可填ascii码值，长度为[10, 79]。
+	Passphrase *string `json:"Passphrase,omitempty" name:"Passphrase"`
+
+	// 密钥长度，默认为0，可选[0|16|24|32]。
+	PbKeyLen *int64 `json:"PbKeyLen,omitempty" name:"PbKeyLen"`
+
+	// SRT对端地址，当Mode为CALLER时必填，且只能填1组。
+	SourceAddresses []*SRTSourceAddressReq `json:"SourceAddresses,omitempty" name:"SourceAddresses"`
+}
+
+type CreateOutputInfo struct {
+	// 输出的名称。
+	OutputName *string `json:"OutputName,omitempty" name:"OutputName"`
+
+	// 输出描述。
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 输出协议，可选[SRT|RTP|RTMP|RTMP_PULL]。
+	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
+
+	// 输出地区。
+	OutputRegion *string `json:"OutputRegion,omitempty" name:"OutputRegion"`
+
+	// 输出的SRT的配置。
+	SRTSettings *CreateOutputSRTSettings `json:"SRTSettings,omitempty" name:"SRTSettings"`
+
+	// 输出的RTMP的配置。
+	RTMPSettings *CreateOutputRTMPSettings `json:"RTMPSettings,omitempty" name:"RTMPSettings"`
+
+	// 输出的RTP的配置。
+	RTPSettings *CreateOutputInfoRTPSettings `json:"RTPSettings,omitempty" name:"RTPSettings"`
+
+	// IP白名单列表，格式为CIDR，如0.0.0.0/0。
+	// 当Protocol为RTMP_PULL有效，为空代表不限制客户端IP。
+	AllowIpList []*string `json:"AllowIpList,omitempty" name:"AllowIpList"`
+}
+
+type CreateOutputInfoRTPSettings struct {
+	// 转推的目标地址，可填1~2个。
+	Destinations []*CreateOutputRTPSettingsDestinations `json:"Destinations,omitempty" name:"Destinations"`
+
+	// 只能填none。
+	FEC *string `json:"FEC,omitempty" name:"FEC"`
+
+	// 空闲超时时间，单位ms。
+	IdleTimeout *int64 `json:"IdleTimeout,omitempty" name:"IdleTimeout"`
+}
+
+type CreateOutputRTMPSettings struct {
+	// 转推的目标地址，可填1~2个。
+	Destinations []*CreateOutputRtmpSettingsDestinations `json:"Destinations,omitempty" name:"Destinations"`
+
+	// RTMP的Chunk大小，范围为[4096, 40960]。
+	ChunkSize *int64 `json:"ChunkSize,omitempty" name:"ChunkSize"`
+}
+
+type CreateOutputRTPSettingsDestinations struct {
+	// 转推的目标IP。
+	Ip *string `json:"Ip,omitempty" name:"Ip"`
+
+	// 转推的目标端口。
+	Port *int64 `json:"Port,omitempty" name:"Port"`
+}
+
+type CreateOutputRtmpSettingsDestinations struct {
+	// 转推的URL，格式如：rtmp://domain/live。
+	Url *string `json:"Url,omitempty" name:"Url"`
+
+	// 转推的StreamKey，格式如：stream?key=value。
+	StreamKey *string `json:"StreamKey,omitempty" name:"StreamKey"`
+}
+
+type CreateOutputSRTSettings struct {
+	// 转推的目标地址，当Mode为CALLER时必填，且只能填1组。
+	Destinations []*CreateOutputSRTSettingsDestinations `json:"Destinations,omitempty" name:"Destinations"`
+
+	// 转推SRT的流Id，可选大小写字母、数字和特殊字符（.#!:&,=_-），长度为0~512。
+	StreamId *string `json:"StreamId,omitempty" name:"StreamId"`
+
+	// 转推SRT的总延迟，默认0，单位ms，范围为[0, 3000]。
+	Latency *int64 `json:"Latency,omitempty" name:"Latency"`
+
+	// 转推SRT的接收延迟，默认120，单位ms，范围为[0, 3000]。
+	RecvLatency *int64 `json:"RecvLatency,omitempty" name:"RecvLatency"`
+
+	// 转推SRT的对端延迟，默认0，单位ms，范围为[0, 3000]。
+	PeerLatency *int64 `json:"PeerLatency,omitempty" name:"PeerLatency"`
+
+	// 转推SRT的对端空闲超时时间，默认5000，单位ms，范围为[1000, 10000]。
+	PeerIdleTimeout *int64 `json:"PeerIdleTimeout,omitempty" name:"PeerIdleTimeout"`
+
+	// 转推SRT的加密密钥，默认为空，表示不加密。只可填ascii码值，长度为[10, 79]。
+	Passphrase *string `json:"Passphrase,omitempty" name:"Passphrase"`
+
+	// 转推SRT的密钥长度，默认为0，可选[0|16|24|32]。
+	PbKeyLen *int64 `json:"PbKeyLen,omitempty" name:"PbKeyLen"`
+
+	// SRT模式，可选[LISTENER|CALLER]，默认为CALLER。
+	Mode *string `json:"Mode,omitempty" name:"Mode"`
+}
+
+type CreateOutputSRTSettingsDestinations struct {
+	// 输出的IP。
+	Ip *string `json:"Ip,omitempty" name:"Ip"`
+
+	// 输出的端口。
+	Port *int64 `json:"Port,omitempty" name:"Port"`
+}
+
 // Predefined struct for user
 type CreatePersonSampleRequestParams struct {
 	// 素材名称，长度限制：20 个字符。
@@ -2829,6 +3004,141 @@ func (r *CreateSnapshotByTimeOffsetTemplateResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateSnapshotByTimeOffsetTemplateResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateStreamLinkFlowRequestParams struct {
+	// 流名称。
+	FlowName *string `json:"FlowName,omitempty" name:"FlowName"`
+
+	// 最大带宽，单位bps，可选[10000000, 20000000, 50000000]。
+	MaxBandwidth *int64 `json:"MaxBandwidth,omitempty" name:"MaxBandwidth"`
+
+	// 流的输入组。
+	InputGroup []*CreateInput `json:"InputGroup,omitempty" name:"InputGroup"`
+}
+
+type CreateStreamLinkFlowRequest struct {
+	*tchttp.BaseRequest
+	
+	// 流名称。
+	FlowName *string `json:"FlowName,omitempty" name:"FlowName"`
+
+	// 最大带宽，单位bps，可选[10000000, 20000000, 50000000]。
+	MaxBandwidth *int64 `json:"MaxBandwidth,omitempty" name:"MaxBandwidth"`
+
+	// 流的输入组。
+	InputGroup []*CreateInput `json:"InputGroup,omitempty" name:"InputGroup"`
+}
+
+func (r *CreateStreamLinkFlowRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateStreamLinkFlowRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FlowName")
+	delete(f, "MaxBandwidth")
+	delete(f, "InputGroup")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateStreamLinkFlowRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateStreamLinkFlowResponseParams struct {
+	// 创建的Flow信息。
+	Info *DescribeFlow `json:"Info,omitempty" name:"Info"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateStreamLinkFlowResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateStreamLinkFlowResponseParams `json:"Response"`
+}
+
+func (r *CreateStreamLinkFlowResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateStreamLinkFlowResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateStreamLinkOutputInfoRequestParams struct {
+	// 传输流Id。
+	FlowId *string `json:"FlowId,omitempty" name:"FlowId"`
+
+	// 传输流的Output配置。
+	Output *CreateOutputInfo `json:"Output,omitempty" name:"Output"`
+}
+
+type CreateStreamLinkOutputInfoRequest struct {
+	*tchttp.BaseRequest
+	
+	// 传输流Id。
+	FlowId *string `json:"FlowId,omitempty" name:"FlowId"`
+
+	// 传输流的Output配置。
+	Output *CreateOutputInfo `json:"Output,omitempty" name:"Output"`
+}
+
+func (r *CreateStreamLinkOutputInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateStreamLinkOutputInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FlowId")
+	delete(f, "Output")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateStreamLinkOutputInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateStreamLinkOutputInfoResponseParams struct {
+	// 创建后的Output信息。
+	Info *DescribeOutput `json:"Info,omitempty" name:"Info"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateStreamLinkOutputInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateStreamLinkOutputInfoResponseParams `json:"Response"`
+}
+
+func (r *CreateStreamLinkOutputInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateStreamLinkOutputInfoResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -3785,6 +4095,121 @@ func (r *DeleteSnapshotByTimeOffsetTemplateResponse) FromJsonString(s string) er
 }
 
 // Predefined struct for user
+type DeleteStreamLinkFlowRequestParams struct {
+	// 传输流Id。
+	FlowId *string `json:"FlowId,omitempty" name:"FlowId"`
+}
+
+type DeleteStreamLinkFlowRequest struct {
+	*tchttp.BaseRequest
+	
+	// 传输流Id。
+	FlowId *string `json:"FlowId,omitempty" name:"FlowId"`
+}
+
+func (r *DeleteStreamLinkFlowRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteStreamLinkFlowRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FlowId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteStreamLinkFlowRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteStreamLinkFlowResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DeleteStreamLinkFlowResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteStreamLinkFlowResponseParams `json:"Response"`
+}
+
+func (r *DeleteStreamLinkFlowResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteStreamLinkFlowResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteStreamLinkOutputRequestParams struct {
+	// 流Id。
+	FlowId *string `json:"FlowId,omitempty" name:"FlowId"`
+
+	// 输出Id。
+	OutputId *string `json:"OutputId,omitempty" name:"OutputId"`
+}
+
+type DeleteStreamLinkOutputRequest struct {
+	*tchttp.BaseRequest
+	
+	// 流Id。
+	FlowId *string `json:"FlowId,omitempty" name:"FlowId"`
+
+	// 输出Id。
+	OutputId *string `json:"OutputId,omitempty" name:"OutputId"`
+}
+
+func (r *DeleteStreamLinkOutputRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteStreamLinkOutputRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FlowId")
+	delete(f, "OutputId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteStreamLinkOutputRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteStreamLinkOutputResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DeleteStreamLinkOutputResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteStreamLinkOutputResponseParams `json:"Response"`
+}
+
+func (r *DeleteStreamLinkOutputResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteStreamLinkOutputResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DeleteTranscodeTemplateRequestParams struct {
 	// 转码模板唯一标识。
 	Definition *int64 `json:"Definition,omitempty" name:"Definition"`
@@ -4425,6 +4850,27 @@ func (r *DescribeContentReviewTemplatesResponse) FromJsonString(s string) error 
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeFlow struct {
+	// 流Id。
+	FlowId *string `json:"FlowId,omitempty" name:"FlowId"`
+
+	// 流名称。
+	FlowName *string `json:"FlowName,omitempty" name:"FlowName"`
+
+	// 流状态，目前有IDLE/RUNNING。
+	State *string `json:"State,omitempty" name:"State"`
+
+	// 最大带宽值。
+	MaxBandwidth *int64 `json:"MaxBandwidth,omitempty" name:"MaxBandwidth"`
+
+	// 输入组。
+	InputGroup []*DescribeInput `json:"InputGroup,omitempty" name:"InputGroup"`
+
+	// 输出组。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OutputGroup []*DescribeOutput `json:"OutputGroup,omitempty" name:"OutputGroup"`
+}
+
 // Predefined struct for user
 type DescribeImageSpriteTemplatesRequestParams struct {
 	// 雪碧图模板唯一标识过滤条件，数组长度限制：100。
@@ -4510,6 +4956,112 @@ func (r *DescribeImageSpriteTemplatesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeInput struct {
+	// 输入Id。
+	InputId *string `json:"InputId,omitempty" name:"InputId"`
+
+	// 输入名称。
+	InputName *string `json:"InputName,omitempty" name:"InputName"`
+
+	// 输入描述。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 输入协议。
+	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
+
+	// 输入地址列表。
+	InputAddressList []*InputAddress `json:"InputAddressList,omitempty" name:"InputAddressList"`
+
+	// 输入IP白名单列表。
+	AllowIpList []*string `json:"AllowIpList,omitempty" name:"AllowIpList"`
+
+	// 输入的SRT配置信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SRTSettings *DescribeInputSRTSettings `json:"SRTSettings,omitempty" name:"SRTSettings"`
+
+	// 输入的RTP配置信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RTPSettings *DescribeInputRTPSettings `json:"RTPSettings,omitempty" name:"RTPSettings"`
+
+	// 输入的地区。
+	InputRegion *string `json:"InputRegion,omitempty" name:"InputRegion"`
+
+	// 输入的RTMP配置信息。
+	RTMPSettings *DescribeInputRTMPSettings `json:"RTMPSettings,omitempty" name:"RTMPSettings"`
+
+	// 输入的主备开关。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FailOver *string `json:"FailOver,omitempty" name:"FailOver"`
+
+	// 输入的RTMP_PULL配置信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RTMPPullSettings *DescribeInputRTMPPullSettings `json:"RTMPPullSettings,omitempty" name:"RTMPPullSettings"`
+
+	// 输入的RTSP_PULL配置信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RTSPPullSettings *DescribeInputRTSPPullSettings `json:"RTSPPullSettings,omitempty" name:"RTSPPullSettings"`
+}
+
+type DescribeInputRTMPPullSettings struct {
+	// RTMP源站地址信息。
+	SourceAddresses []*DescribeRTMPPullSourceAddress `json:"SourceAddresses,omitempty" name:"SourceAddresses"`
+}
+
+type DescribeInputRTMPSettings struct {
+	// RTMP的推流路径。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AppName *string `json:"AppName,omitempty" name:"AppName"`
+
+	// RTMP的推流StreamKey。
+	// RTMP的推流地址拼接规则为：rtmp://Ip:1935/AppName/StreamKey
+	StreamKey *string `json:"StreamKey,omitempty" name:"StreamKey"`
+}
+
+type DescribeInputRTPSettings struct {
+	// 是否FEC。
+	FEC *string `json:"FEC,omitempty" name:"FEC"`
+
+	// 空闲超时时间。
+	IdleTimeout *int64 `json:"IdleTimeout,omitempty" name:"IdleTimeout"`
+}
+
+type DescribeInputRTSPPullSettings struct {
+	// RTSP源站地址信息。
+	SourceAddresses []*DescribeRTSPPullSourceAddress `json:"SourceAddresses,omitempty" name:"SourceAddresses"`
+}
+
+type DescribeInputSRTSettings struct {
+	// SRT模式。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Mode *string `json:"Mode,omitempty" name:"Mode"`
+
+	// 流Id。
+	StreamId *string `json:"StreamId,omitempty" name:"StreamId"`
+
+	// 延迟。
+	Latency *int64 `json:"Latency,omitempty" name:"Latency"`
+
+	// 接收延迟。
+	RecvLatency *int64 `json:"RecvLatency,omitempty" name:"RecvLatency"`
+
+	// 对端延迟。
+	PeerLatency *int64 `json:"PeerLatency,omitempty" name:"PeerLatency"`
+
+	// 对端空闲超时时间。
+	PeerIdleTimeout *int64 `json:"PeerIdleTimeout,omitempty" name:"PeerIdleTimeout"`
+
+	// 解密密钥。
+	Passphrase *string `json:"Passphrase,omitempty" name:"Passphrase"`
+
+	// 密钥长度。
+	PbKeyLen *int64 `json:"PbKeyLen,omitempty" name:"PbKeyLen"`
+
+	// SRT对端地址。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SourceAddresses []*SRTSourceAddressResp `json:"SourceAddresses,omitempty" name:"SourceAddresses"`
+}
+
 // Predefined struct for user
 type DescribeMediaMetaDataRequestParams struct {
 	// 需要获取元信息的文件输入信息。
@@ -4565,6 +5117,151 @@ func (r *DescribeMediaMetaDataResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *DescribeMediaMetaDataResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeOutput struct {
+	// 输出Id。
+	OutputId *string `json:"OutputId,omitempty" name:"OutputId"`
+
+	// 输出名称。
+	OutputName *string `json:"OutputName,omitempty" name:"OutputName"`
+
+	// 输出类型。
+	OutputType *string `json:"OutputType,omitempty" name:"OutputType"`
+
+	// 输出描述。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 输出协议。
+	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
+
+	// 输出的出口地址信息列表。
+	OutputAddressList []*OutputAddress `json:"OutputAddressList,omitempty" name:"OutputAddressList"`
+
+	// 输出的地区。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OutputRegion *string `json:"OutputRegion,omitempty" name:"OutputRegion"`
+
+	// 输出的SRT配置信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SRTSettings *DescribeOutputSRTSettings `json:"SRTSettings,omitempty" name:"SRTSettings"`
+
+	// 输出的RTP配置信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RTPSettings *DescribeOutputRTPSettings `json:"RTPSettings,omitempty" name:"RTPSettings"`
+
+	// 输出的RTMP配置信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RTMPSettings *DescribeOutputRTMPSettings `json:"RTMPSettings,omitempty" name:"RTMPSettings"`
+
+	// 输出的RTMP拉流配置信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RTMPPullSettings *DescribeOutputRTMPPullSettings `json:"RTMPPullSettings,omitempty" name:"RTMPPullSettings"`
+
+	// CIDR白名单列表。
+	// 当Protocol为RTMP_PULL有效，为空代表不限制客户端IP。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AllowIpList []*string `json:"AllowIpList,omitempty" name:"AllowIpList"`
+
+	// 输出的RTSP拉流配置信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RTSPPullSettings *DescribeOutputRTSPPullSettings `json:"RTSPPullSettings,omitempty" name:"RTSPPullSettings"`
+}
+
+type DescribeOutputRTMPPullServerUrl struct {
+	// RTMP拉流地址的tcUrl。
+	TcUrl *string `json:"TcUrl,omitempty" name:"TcUrl"`
+
+	// RTMP拉流地址的流key。
+	StreamKey *string `json:"StreamKey,omitempty" name:"StreamKey"`
+}
+
+type DescribeOutputRTMPPullSettings struct {
+	// 拉流地址列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ServerUrls []*DescribeOutputRTMPPullServerUrl `json:"ServerUrls,omitempty" name:"ServerUrls"`
+}
+
+type DescribeOutputRTMPSettings struct {
+	// 空闲超时时间。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IdleTimeout *int64 `json:"IdleTimeout,omitempty" name:"IdleTimeout"`
+
+	// Chunk大小。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ChunkSize *int64 `json:"ChunkSize,omitempty" name:"ChunkSize"`
+
+	// 转推RTMP的目标地址信息列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Destinations []*RTMPAddressDestination `json:"Destinations,omitempty" name:"Destinations"`
+}
+
+type DescribeOutputRTPSettings struct {
+	// 转推RTP的目标地址信息列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Destinations []*RTPAddressDestination `json:"Destinations,omitempty" name:"Destinations"`
+
+	// 是否FEC。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FEC *string `json:"FEC,omitempty" name:"FEC"`
+
+	// 空闲超时时间。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IdleTimeout *int64 `json:"IdleTimeout,omitempty" name:"IdleTimeout"`
+}
+
+type DescribeOutputRTSPPullServerUrl struct {
+	// RTSP拉流地址的Url。
+	Url *string `json:"Url,omitempty" name:"Url"`
+}
+
+type DescribeOutputRTSPPullSettings struct {
+	// RTSP拉流地址列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ServerUrls []*DescribeOutputRTSPPullServerUrl `json:"ServerUrls,omitempty" name:"ServerUrls"`
+}
+
+type DescribeOutputSRTSettings struct {
+	// 转推的目标的地址信息列表，SRT模式为CALLER时使用。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Destinations []*SRTAddressDestination `json:"Destinations,omitempty" name:"Destinations"`
+
+	// 流Id。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StreamId *string `json:"StreamId,omitempty" name:"StreamId"`
+
+	// 延迟。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Latency *int64 `json:"Latency,omitempty" name:"Latency"`
+
+	// 接收延迟。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RecvLatency *int64 `json:"RecvLatency,omitempty" name:"RecvLatency"`
+
+	// 对端延迟。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PeerLatency *int64 `json:"PeerLatency,omitempty" name:"PeerLatency"`
+
+	// 对端空闲超时时间。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PeerIdleTimeout *int64 `json:"PeerIdleTimeout,omitempty" name:"PeerIdleTimeout"`
+
+	// 加密密钥。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Passphrase *string `json:"Passphrase,omitempty" name:"Passphrase"`
+
+	// 加密密钥长度。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PbKeyLen *int64 `json:"PbKeyLen,omitempty" name:"PbKeyLen"`
+
+	// SRT模式。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Mode *string `json:"Mode,omitempty" name:"Mode"`
+
+	// 服务器监听地址，SRT模式为LISTENER时使用。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SourceAddresses []*OutputSRTSourceAddressResp `json:"SourceAddresses,omitempty" name:"SourceAddresses"`
 }
 
 // Predefined struct for user
@@ -4670,6 +5367,22 @@ func (r *DescribePersonSamplesResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *DescribePersonSamplesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeRTMPPullSourceAddress struct {
+	// RTMP源站的TcUrl地址。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TcUrl *string `json:"TcUrl,omitempty" name:"TcUrl"`
+
+	// RTMP源站的StreamKey。
+	// RTMP源站地址拼接规则为：$TcUrl/$StreamKey。
+	StreamKey *string `json:"StreamKey,omitempty" name:"StreamKey"`
+}
+
+type DescribeRTSPPullSourceAddress struct {
+	// RTSP源站的Url地址。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Url *string `json:"Url,omitempty" name:"Url"`
 }
 
 // Predefined struct for user
@@ -4839,6 +5552,752 @@ func (r *DescribeSnapshotByTimeOffsetTemplatesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeSnapshotByTimeOffsetTemplatesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeStreamLinkActivateStateRequestParams struct {
+
+}
+
+type DescribeStreamLinkActivateStateRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DescribeStreamLinkActivateStateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeStreamLinkActivateStateRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeStreamLinkActivateStateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeStreamLinkActivateStateResponseParams struct {
+	// 用户已激活为0，否则为非0。
+	Status *int64 `json:"Status,omitempty" name:"Status"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeStreamLinkActivateStateResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeStreamLinkActivateStateResponseParams `json:"Response"`
+}
+
+func (r *DescribeStreamLinkActivateStateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeStreamLinkActivateStateResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeStreamLinkFlowLogsRequestParams struct {
+	// 传输流Id。
+	FlowId *string `json:"FlowId,omitempty" name:"FlowId"`
+
+	// 统计的开始时间，默认为前一小时，最多支持查询近7天。
+	// UTC时间，如'2020-01-01T12:00:00Z'。
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 统计的结束时间，默认为StartTime后一小时，最多支持查询24小时的数据。
+	// UTC时间，如'2020-01-01T12:00:00Z'。
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 输入或输出类型，可选[input|output]。
+	Type []*string `json:"Type,omitempty" name:"Type"`
+
+	// 主通道或备通道，可选[0|1]。
+	Pipeline []*string `json:"Pipeline,omitempty" name:"Pipeline"`
+
+	// 每页大小，默认100，范围为[1, 1000]。
+	PageSize *int64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// 按Timestamp升序或降序排序，默认降序，可选[desc|asc]。
+	SortType *string `json:"SortType,omitempty" name:"SortType"`
+
+	// 页码，默认1，范围为[1, 1000]。
+	PageNum *int64 `json:"PageNum,omitempty" name:"PageNum"`
+}
+
+type DescribeStreamLinkFlowLogsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 传输流Id。
+	FlowId *string `json:"FlowId,omitempty" name:"FlowId"`
+
+	// 统计的开始时间，默认为前一小时，最多支持查询近7天。
+	// UTC时间，如'2020-01-01T12:00:00Z'。
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 统计的结束时间，默认为StartTime后一小时，最多支持查询24小时的数据。
+	// UTC时间，如'2020-01-01T12:00:00Z'。
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 输入或输出类型，可选[input|output]。
+	Type []*string `json:"Type,omitempty" name:"Type"`
+
+	// 主通道或备通道，可选[0|1]。
+	Pipeline []*string `json:"Pipeline,omitempty" name:"Pipeline"`
+
+	// 每页大小，默认100，范围为[1, 1000]。
+	PageSize *int64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// 按Timestamp升序或降序排序，默认降序，可选[desc|asc]。
+	SortType *string `json:"SortType,omitempty" name:"SortType"`
+
+	// 页码，默认1，范围为[1, 1000]。
+	PageNum *int64 `json:"PageNum,omitempty" name:"PageNum"`
+}
+
+func (r *DescribeStreamLinkFlowLogsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeStreamLinkFlowLogsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FlowId")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "Type")
+	delete(f, "Pipeline")
+	delete(f, "PageSize")
+	delete(f, "SortType")
+	delete(f, "PageNum")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeStreamLinkFlowLogsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeStreamLinkFlowLogsResponseParams struct {
+	// 日志信息列表。
+	Infos []*FlowLogInfo `json:"Infos,omitempty" name:"Infos"`
+
+	// 当前页码。
+	PageNum *int64 `json:"PageNum,omitempty" name:"PageNum"`
+
+	// 每页大小。
+	PageSize *int64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// 总数量。
+	TotalNum *int64 `json:"TotalNum,omitempty" name:"TotalNum"`
+
+	// 总页数。
+	TotalPage *int64 `json:"TotalPage,omitempty" name:"TotalPage"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeStreamLinkFlowLogsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeStreamLinkFlowLogsResponseParams `json:"Response"`
+}
+
+func (r *DescribeStreamLinkFlowLogsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeStreamLinkFlowLogsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeStreamLinkFlowMediaStatisticsRequestParams struct {
+	// 传输流ID。
+	FlowId *string `json:"FlowId,omitempty" name:"FlowId"`
+
+	// 输入或输出类型，可选[input|output]。
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 输入或输出Id。
+	InputOutputId *string `json:"InputOutputId,omitempty" name:"InputOutputId"`
+
+	// 主通道或备通道，可选[0|1]。
+	Pipeline *string `json:"Pipeline,omitempty" name:"Pipeline"`
+
+	// 查询间隔，可选[5s|1min|5min|15min]。
+	Period *string `json:"Period,omitempty" name:"Period"`
+
+	// 统计的开始时间，默认为前一小时，最多支持查询近7天。
+	// UTC时间，如'2020-01-01T12:00:00Z'。
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 统计的结束时间，默认为StartTime后一小时，最多支持查询24小时的数据。
+	// UTC时间，如'2020-01-01T12:00:00Z'。
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+}
+
+type DescribeStreamLinkFlowMediaStatisticsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 传输流ID。
+	FlowId *string `json:"FlowId,omitempty" name:"FlowId"`
+
+	// 输入或输出类型，可选[input|output]。
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 输入或输出Id。
+	InputOutputId *string `json:"InputOutputId,omitempty" name:"InputOutputId"`
+
+	// 主通道或备通道，可选[0|1]。
+	Pipeline *string `json:"Pipeline,omitempty" name:"Pipeline"`
+
+	// 查询间隔，可选[5s|1min|5min|15min]。
+	Period *string `json:"Period,omitempty" name:"Period"`
+
+	// 统计的开始时间，默认为前一小时，最多支持查询近7天。
+	// UTC时间，如'2020-01-01T12:00:00Z'。
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 统计的结束时间，默认为StartTime后一小时，最多支持查询24小时的数据。
+	// UTC时间，如'2020-01-01T12:00:00Z'。
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+}
+
+func (r *DescribeStreamLinkFlowMediaStatisticsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeStreamLinkFlowMediaStatisticsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FlowId")
+	delete(f, "Type")
+	delete(f, "InputOutputId")
+	delete(f, "Pipeline")
+	delete(f, "Period")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeStreamLinkFlowMediaStatisticsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeStreamLinkFlowMediaStatisticsResponseParams struct {
+	// 传输流的媒体数据列表。
+	Infos []*FlowMediaInfo `json:"Infos,omitempty" name:"Infos"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeStreamLinkFlowMediaStatisticsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeStreamLinkFlowMediaStatisticsResponseParams `json:"Response"`
+}
+
+func (r *DescribeStreamLinkFlowMediaStatisticsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeStreamLinkFlowMediaStatisticsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeStreamLinkFlowRealtimeStatusRequestParams struct {
+	// 流ID。
+	FlowId *string `json:"FlowId,omitempty" name:"FlowId"`
+
+	// 输入id数组，如果输入输出数组都为空，则代表全量查询。
+	InputIds []*string `json:"InputIds,omitempty" name:"InputIds"`
+
+	// 输出id数组，如果输入输出数组都为空，则代表全量查询。
+	OutputIds []*string `json:"OutputIds,omitempty" name:"OutputIds"`
+}
+
+type DescribeStreamLinkFlowRealtimeStatusRequest struct {
+	*tchttp.BaseRequest
+	
+	// 流ID。
+	FlowId *string `json:"FlowId,omitempty" name:"FlowId"`
+
+	// 输入id数组，如果输入输出数组都为空，则代表全量查询。
+	InputIds []*string `json:"InputIds,omitempty" name:"InputIds"`
+
+	// 输出id数组，如果输入输出数组都为空，则代表全量查询。
+	OutputIds []*string `json:"OutputIds,omitempty" name:"OutputIds"`
+}
+
+func (r *DescribeStreamLinkFlowRealtimeStatusRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeStreamLinkFlowRealtimeStatusRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FlowId")
+	delete(f, "InputIds")
+	delete(f, "OutputIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeStreamLinkFlowRealtimeStatusRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeStreamLinkFlowRealtimeStatusResponseParams struct {
+	// 查询时间，单位s。
+	Timestamp *int64 `json:"Timestamp,omitempty" name:"Timestamp"`
+
+	// 实时数据信息列表。
+	Datas []*FlowRealtimeStatusItem `json:"Datas,omitempty" name:"Datas"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeStreamLinkFlowRealtimeStatusResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeStreamLinkFlowRealtimeStatusResponseParams `json:"Response"`
+}
+
+func (r *DescribeStreamLinkFlowRealtimeStatusResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeStreamLinkFlowRealtimeStatusResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeStreamLinkFlowRequestParams struct {
+	// 流Id。
+	FlowId *string `json:"FlowId,omitempty" name:"FlowId"`
+}
+
+type DescribeStreamLinkFlowRequest struct {
+	*tchttp.BaseRequest
+	
+	// 流Id。
+	FlowId *string `json:"FlowId,omitempty" name:"FlowId"`
+}
+
+func (r *DescribeStreamLinkFlowRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeStreamLinkFlowRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FlowId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeStreamLinkFlowRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeStreamLinkFlowResponseParams struct {
+	// 流的配置信息。
+	Info *DescribeFlow `json:"Info,omitempty" name:"Info"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeStreamLinkFlowResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeStreamLinkFlowResponseParams `json:"Response"`
+}
+
+func (r *DescribeStreamLinkFlowResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeStreamLinkFlowResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeStreamLinkFlowSRTStatisticsRequestParams struct {
+	// 传输流ID。
+	FlowId *string `json:"FlowId,omitempty" name:"FlowId"`
+
+	// 输入或输出类型，可选[input|output]。
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 输入或输出Id。
+	InputOutputId *string `json:"InputOutputId,omitempty" name:"InputOutputId"`
+
+	// 主通道或备通道，可选[0|1]。
+	Pipeline *string `json:"Pipeline,omitempty" name:"Pipeline"`
+
+	// 统计的开始时间，默认为前一小时，最多支持查询近7天。
+	// UTC时间，如'2020-01-01T12:00:00Z'。
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 统计的结束时间，默认为StartTime后一小时，最多支持查询24小时的数据。
+	// UTC时间，如'2020-01-01T12:00:00Z'。
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 查询间隔，可选[5s|1min|5min|15min]。
+	Period *string `json:"Period,omitempty" name:"Period"`
+}
+
+type DescribeStreamLinkFlowSRTStatisticsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 传输流ID。
+	FlowId *string `json:"FlowId,omitempty" name:"FlowId"`
+
+	// 输入或输出类型，可选[input|output]。
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 输入或输出Id。
+	InputOutputId *string `json:"InputOutputId,omitempty" name:"InputOutputId"`
+
+	// 主通道或备通道，可选[0|1]。
+	Pipeline *string `json:"Pipeline,omitempty" name:"Pipeline"`
+
+	// 统计的开始时间，默认为前一小时，最多支持查询近7天。
+	// UTC时间，如'2020-01-01T12:00:00Z'。
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 统计的结束时间，默认为StartTime后一小时，最多支持查询24小时的数据。
+	// UTC时间，如'2020-01-01T12:00:00Z'。
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 查询间隔，可选[5s|1min|5min|15min]。
+	Period *string `json:"Period,omitempty" name:"Period"`
+}
+
+func (r *DescribeStreamLinkFlowSRTStatisticsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeStreamLinkFlowSRTStatisticsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FlowId")
+	delete(f, "Type")
+	delete(f, "InputOutputId")
+	delete(f, "Pipeline")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "Period")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeStreamLinkFlowSRTStatisticsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeStreamLinkFlowSRTStatisticsResponseParams struct {
+	// 传输流的SRT质量数据列表。
+	Infos []*FlowSRTInfo `json:"Infos,omitempty" name:"Infos"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeStreamLinkFlowSRTStatisticsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeStreamLinkFlowSRTStatisticsResponseParams `json:"Response"`
+}
+
+func (r *DescribeStreamLinkFlowSRTStatisticsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeStreamLinkFlowSRTStatisticsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeStreamLinkFlowStatisticsRequestParams struct {
+	// 传输流ID。
+	FlowId *string `json:"FlowId,omitempty" name:"FlowId"`
+
+	// 输入或输出类型，可选[input|output]。
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 输入或输出Id。
+	InputOutputId *string `json:"InputOutputId,omitempty" name:"InputOutputId"`
+
+	// 主通道或备通道，可选[0|1]。
+	Pipeline *string `json:"Pipeline,omitempty" name:"Pipeline"`
+
+	// 查询间隔，可选[5s|1min|5min|15min]。
+	Period *string `json:"Period,omitempty" name:"Period"`
+
+	// 统计的开始时间，默认为前一小时，最多支持查询近7天。
+	// UTC时间，如'2020-01-01T12:00:00Z'。
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 统计的结束时间，默认为StartTime后一小时，最多支持查询24小时的数据。
+	// UTC时间，如'2020-01-01T12:00:00Z'。
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+}
+
+type DescribeStreamLinkFlowStatisticsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 传输流ID。
+	FlowId *string `json:"FlowId,omitempty" name:"FlowId"`
+
+	// 输入或输出类型，可选[input|output]。
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 输入或输出Id。
+	InputOutputId *string `json:"InputOutputId,omitempty" name:"InputOutputId"`
+
+	// 主通道或备通道，可选[0|1]。
+	Pipeline *string `json:"Pipeline,omitempty" name:"Pipeline"`
+
+	// 查询间隔，可选[5s|1min|5min|15min]。
+	Period *string `json:"Period,omitempty" name:"Period"`
+
+	// 统计的开始时间，默认为前一小时，最多支持查询近7天。
+	// UTC时间，如'2020-01-01T12:00:00Z'。
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 统计的结束时间，默认为StartTime后一小时，最多支持查询24小时的数据。
+	// UTC时间，如'2020-01-01T12:00:00Z'。
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+}
+
+func (r *DescribeStreamLinkFlowStatisticsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeStreamLinkFlowStatisticsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FlowId")
+	delete(f, "Type")
+	delete(f, "InputOutputId")
+	delete(f, "Pipeline")
+	delete(f, "Period")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeStreamLinkFlowStatisticsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeStreamLinkFlowStatisticsResponseParams struct {
+	// 传输流的媒体数据列表。
+	Infos []*FlowStatisticsArray `json:"Infos,omitempty" name:"Infos"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeStreamLinkFlowStatisticsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeStreamLinkFlowStatisticsResponseParams `json:"Response"`
+}
+
+func (r *DescribeStreamLinkFlowStatisticsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeStreamLinkFlowStatisticsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeStreamLinkFlowsRequestParams struct {
+	// 当前页数，默认1。
+	PageNum *int64 `json:"PageNum,omitempty" name:"PageNum"`
+
+	// 每页大小，默认10。
+	PageSize *int64 `json:"PageSize,omitempty" name:"PageSize"`
+}
+
+type DescribeStreamLinkFlowsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 当前页数，默认1。
+	PageNum *int64 `json:"PageNum,omitempty" name:"PageNum"`
+
+	// 每页大小，默认10。
+	PageSize *int64 `json:"PageSize,omitempty" name:"PageSize"`
+}
+
+func (r *DescribeStreamLinkFlowsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeStreamLinkFlowsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PageNum")
+	delete(f, "PageSize")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeStreamLinkFlowsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeStreamLinkFlowsResponseParams struct {
+	// 流的配置信息列表。
+	Infos []*DescribeFlow `json:"Infos,omitempty" name:"Infos"`
+
+	// 当前页数。
+	PageNum *int64 `json:"PageNum,omitempty" name:"PageNum"`
+
+	// 每页大小。
+	PageSize *int64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// 总数量。
+	TotalNum *int64 `json:"TotalNum,omitempty" name:"TotalNum"`
+
+	// 总页数。
+	TotalPage *int64 `json:"TotalPage,omitempty" name:"TotalPage"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeStreamLinkFlowsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeStreamLinkFlowsResponseParams `json:"Response"`
+}
+
+func (r *DescribeStreamLinkFlowsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeStreamLinkFlowsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeStreamLinkRegionsRequestParams struct {
+
+}
+
+type DescribeStreamLinkRegionsRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DescribeStreamLinkRegionsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeStreamLinkRegionsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeStreamLinkRegionsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeStreamLinkRegionsResponseParams struct {
+	// 媒体传输地区信息。
+	Info *StreamLinkRegionInfo `json:"Info,omitempty" name:"Info"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeStreamLinkRegionsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeStreamLinkRegionsResponseParams `json:"Response"`
+}
+
+func (r *DescribeStreamLinkRegionsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeStreamLinkRegionsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -5845,6 +7304,250 @@ type FaceEnhanceConfig struct {
 	Intensity *float64 `json:"Intensity,omitempty" name:"Intensity"`
 }
 
+type FlowAudio struct {
+	// 帧率。
+	Fps *int64 `json:"Fps,omitempty" name:"Fps"`
+
+	// 码率，单位是bps。
+	Rate *int64 `json:"Rate,omitempty" name:"Rate"`
+
+	// 音频Pid。
+	Pid *int64 `json:"Pid,omitempty" name:"Pid"`
+}
+
+type FlowLogInfo struct {
+	// 时间戳，单位为秒。
+	Timestamp *int64 `json:"Timestamp,omitempty" name:"Timestamp"`
+
+	// 输入输出类型（input/output）。
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 输入或输出Id。
+	InputOutputId *string `json:"InputOutputId,omitempty" name:"InputOutputId"`
+
+	// 协议。
+	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
+
+	// 事件代码。
+	EventCode *string `json:"EventCode,omitempty" name:"EventCode"`
+
+	// 事件信息。
+	EventMessage *string `json:"EventMessage,omitempty" name:"EventMessage"`
+
+	// 对端IP。
+	RemoteIp *string `json:"RemoteIp,omitempty" name:"RemoteIp"`
+
+	// 对端端口。
+	RemotePort *string `json:"RemotePort,omitempty" name:"RemotePort"`
+
+	// 主备通道，0为主通道，1为备通道。
+	Pipeline *string `json:"Pipeline,omitempty" name:"Pipeline"`
+
+	// 输入或输出的名称。
+	InputOutputName *string `json:"InputOutputName,omitempty" name:"InputOutputName"`
+}
+
+type FlowMediaAudio struct {
+	// 帧率。
+	Fps *int64 `json:"Fps,omitempty" name:"Fps"`
+
+	// 码率，单位是bps。
+	Rate *int64 `json:"Rate,omitempty" name:"Rate"`
+
+	// 音频Pid。
+	Pid *int64 `json:"Pid,omitempty" name:"Pid"`
+
+	// 标志同一次推流。
+	SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
+}
+
+type FlowMediaInfo struct {
+	// 时间戳，单位是秒。
+	Timestamp *int64 `json:"Timestamp,omitempty" name:"Timestamp"`
+
+	// 总带宽。
+	Network *int64 `json:"Network,omitempty" name:"Network"`
+
+	// 传输流的视频数据。
+	Video []*FlowMediaVideo `json:"Video,omitempty" name:"Video"`
+
+	// 传输流的音频数据。
+	Audio []*FlowMediaAudio `json:"Audio,omitempty" name:"Audio"`
+
+	// 标志同一次推流。
+	SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
+
+	// 客户端IP。
+	ClientIp *string `json:"ClientIp,omitempty" name:"ClientIp"`
+}
+
+type FlowMediaVideo struct {
+	// 帧率。
+	Fps *int64 `json:"Fps,omitempty" name:"Fps"`
+
+	// 码率，单位是bps。
+	Rate *int64 `json:"Rate,omitempty" name:"Rate"`
+
+	// 视频Pid。
+	Pid *int64 `json:"Pid,omitempty" name:"Pid"`
+
+	// 标志同一次推流。
+	SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
+}
+
+type FlowRealtimeStatusCommon struct {
+	// 当前连接状态，Connected|Waiting|Idle。
+	State *string `json:"State,omitempty" name:"State"`
+
+	// 连接模式，Listener|Caller。
+	Mode *string `json:"Mode,omitempty" name:"Mode"`
+
+	// 已连接时长，单位为ms。
+	ConnectedTime *int64 `json:"ConnectedTime,omitempty" name:"ConnectedTime"`
+
+	// 实时码率，单位为bps。
+	Bitrate *int64 `json:"Bitrate,omitempty" name:"Bitrate"`
+
+	// 重试次数。
+	Reconnections *int64 `json:"Reconnections,omitempty" name:"Reconnections"`
+}
+
+type FlowRealtimeStatusItem struct {
+	// 类型，Input|Output。
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 输入Id，如果Type为Input，此字段不为空。
+	InputId *string `json:"InputId,omitempty" name:"InputId"`
+
+	// 输出Id，如果Type为Output，此字段不为空。
+	OutputId *string `json:"OutputId,omitempty" name:"OutputId"`
+
+	// 流Id。
+	FlowId *string `json:"FlowId,omitempty" name:"FlowId"`
+
+	// 协议， SRT | RTMP。
+	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
+
+	// 共同状态信息。
+	CommonStatus *FlowRealtimeStatusCommon `json:"CommonStatus,omitempty" name:"CommonStatus"`
+
+	// 如果是SRT协议则有此字段。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SRTStatus *FlowRealtimeStatusSRT `json:"SRTStatus,omitempty" name:"SRTStatus"`
+
+	// 如果是RTMP协议则有此字段。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RTMPStatus *FlowRealtimeStatusRTMP `json:"RTMPStatus,omitempty" name:"RTMPStatus"`
+
+	// 服务器IP。
+	ConnectServerIP *string `json:"ConnectServerIP,omitempty" name:"ConnectServerIP"`
+
+	// 如果是RTP协议则有此字段。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RTPStatus *FlowRealtimeStatusRTP `json:"RTPStatus,omitempty" name:"RTPStatus"`
+}
+
+type FlowRealtimeStatusRTMP struct {
+	// 视频帧率。
+	VideoFPS *int64 `json:"VideoFPS,omitempty" name:"VideoFPS"`
+
+	// 音频帧率。
+	AudioFPS *int64 `json:"AudioFPS,omitempty" name:"AudioFPS"`
+}
+
+type FlowRealtimeStatusRTP struct {
+	// 传输的包个数
+	Packets *int64 `json:"Packets,omitempty" name:"Packets"`
+}
+
+type FlowRealtimeStatusSRT struct {
+	// 延迟，单位为ms。
+	Latency *int64 `json:"Latency,omitempty" name:"Latency"`
+
+	// RTT，单位为ms。
+	RTT *int64 `json:"RTT,omitempty" name:"RTT"`
+
+	// 实时发包数或者收包数。
+	Packets *int64 `json:"Packets,omitempty" name:"Packets"`
+
+	// 丢包率。
+	PacketLossRate *float64 `json:"PacketLossRate,omitempty" name:"PacketLossRate"`
+
+	// 重传率。
+	RetransmitRate *float64 `json:"RetransmitRate,omitempty" name:"RetransmitRate"`
+
+	// 实时丢包数。
+	DroppedPackets *int64 `json:"DroppedPackets,omitempty" name:"DroppedPackets"`
+
+	// 是否加密，On|Off。
+	Encryption *string `json:"Encryption,omitempty" name:"Encryption"`
+}
+
+type FlowSRTInfo struct {
+	// 时间戳，单位是秒。
+	Timestamp *int64 `json:"Timestamp,omitempty" name:"Timestamp"`
+
+	// 发送丢包率。
+	SendPacketLossRate *int64 `json:"SendPacketLossRate,omitempty" name:"SendPacketLossRate"`
+
+	// 发送重传率。
+	SendRetransmissionRate *int64 `json:"SendRetransmissionRate,omitempty" name:"SendRetransmissionRate"`
+
+	// 接收丢包率。
+	RecvPacketLossRate *int64 `json:"RecvPacketLossRate,omitempty" name:"RecvPacketLossRate"`
+
+	// 接收重传率。
+	RecvRetransmissionRate *int64 `json:"RecvRetransmissionRate,omitempty" name:"RecvRetransmissionRate"`
+
+	// 与对端的RTT时延。
+	RTT *int64 `json:"RTT,omitempty" name:"RTT"`
+
+	// 标志同一次推流。
+	SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
+
+	// 发送弃包数。
+	SendPacketDropNumber *int64 `json:"SendPacketDropNumber,omitempty" name:"SendPacketDropNumber"`
+
+	// 接收弃包数。
+	RecvPacketDropNumber *int64 `json:"RecvPacketDropNumber,omitempty" name:"RecvPacketDropNumber"`
+}
+
+type FlowStatistics struct {
+	// 会话Id。
+	SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
+
+	// 对端IP。
+	ClientIp *string `json:"ClientIp,omitempty" name:"ClientIp"`
+
+	// 总带宽。
+	Network *int64 `json:"Network,omitempty" name:"Network"`
+
+	// 视频数据。
+	Video []*FlowVideo `json:"Video,omitempty" name:"Video"`
+
+	// 音频数据。
+	Audio []*FlowAudio `json:"Audio,omitempty" name:"Audio"`
+}
+
+type FlowStatisticsArray struct {
+	// 时间戳。
+	Timestamp *int64 `json:"Timestamp,omitempty" name:"Timestamp"`
+
+	// 每个会话的统计数据。
+	FlowStatistics []*FlowStatistics `json:"FlowStatistics,omitempty" name:"FlowStatistics"`
+}
+
+type FlowVideo struct {
+	// 帧率。
+	Fps *int64 `json:"Fps,omitempty" name:"Fps"`
+
+	// 码率，单位是bps。
+	Rate *int64 `json:"Rate,omitempty" name:"Rate"`
+
+	// 音频Pid。
+	Pid *int64 `json:"Pid,omitempty" name:"Pid"`
+}
+
 type FrameRateConfig struct {
 	// 能力配置开关，可选值：
 	// <li>ON：开启；</li>
@@ -6063,6 +7766,14 @@ type ImageWatermarkTemplate struct {
 	// <li>repeat_last_frame：水印播放完后，停留在最后一帧；</li>
 	// <li>repeat：水印循环播放，直到视频结束。</li>
 	RepeatType *string `json:"RepeatType,omitempty" name:"RepeatType"`
+}
+
+type InputAddress struct {
+	// 输入地址的IP。
+	Ip *string `json:"Ip,omitempty" name:"Ip"`
+
+	// 输入地址的端口。
+	Port *int64 `json:"Port,omitempty" name:"Port"`
 }
 
 type LiveStreamAiRecognitionResultInfo struct {
@@ -7817,6 +9528,68 @@ func (r *ModifyImageSpriteTemplateResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type ModifyInput struct {
+	// 输入Id。
+	InputId *string `json:"InputId,omitempty" name:"InputId"`
+
+	// 输入名称。
+	InputName *string `json:"InputName,omitempty" name:"InputName"`
+
+	// 输入描述。
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 允许的推流的IP，CIDR格式。
+	AllowIpList []*string `json:"AllowIpList,omitempty" name:"AllowIpList"`
+
+	// SRT的配置信息。
+	SRTSettings *CreateInputSRTSettings `json:"SRTSettings,omitempty" name:"SRTSettings"`
+
+	// RTP的配置信息。
+	RTPSettings *CreateInputRTPSettings `json:"RTPSettings,omitempty" name:"RTPSettings"`
+
+	// 输入的协议，可选[SRT|RTP|RTMP]。
+	// 当输出包含RTP时，输入只能是RTP。
+	// 当输出包含RTMP时，输入可以是SRT/RTMP。
+	// 当输出包含SRT时，输入只能是SRT。
+	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
+
+	// 输入的主备开关，可选[OPEN|CLOSE]。
+	FailOver *string `json:"FailOver,omitempty" name:"FailOver"`
+
+	// RTMP_PULL的配置信息。
+	RTMPPullSettings *CreateInputRTMPPullSettings `json:"RTMPPullSettings,omitempty" name:"RTMPPullSettings"`
+
+	// RTSP_PULL的配置信息。
+	RTSPPullSettings *CreateInputRTSPPullSettings `json:"RTSPPullSettings,omitempty" name:"RTSPPullSettings"`
+}
+
+type ModifyOutputInfo struct {
+	// 需要修改的Output的Id。
+	OutputId *string `json:"OutputId,omitempty" name:"OutputId"`
+
+	// 输出的名称。
+	OutputName *string `json:"OutputName,omitempty" name:"OutputName"`
+
+	// 输出的描述。
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 输出的转推协议，支持SRT|RTP|RTMP。
+	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
+
+	// 转推SRT的配置。
+	SRTSettings *CreateOutputSRTSettings `json:"SRTSettings,omitempty" name:"SRTSettings"`
+
+	// 转推RTP的配置。
+	RTPSettings *CreateOutputInfoRTPSettings `json:"RTPSettings,omitempty" name:"RTPSettings"`
+
+	// 转推RTMP的配置。
+	RTMPSettings *CreateOutputRTMPSettings `json:"RTMPSettings,omitempty" name:"RTMPSettings"`
+
+	// IP白名单列表，格式为CIDR，如0.0.0.0/0。
+	// 当Protocol为RTMP_PULL有效，为空代表不限制客户端IP。
+	AllowIpList []*string `json:"AllowIpList,omitempty" name:"AllowIpList"`
+}
+
 // Predefined struct for user
 type ModifyPersonSampleRequestParams struct {
 	// 素材 ID。
@@ -8216,6 +9989,195 @@ func (r *ModifySnapshotByTimeOffsetTemplateResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifySnapshotByTimeOffsetTemplateResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyStreamLinkFlowRequestParams struct {
+	// 流Id。
+	FlowId *string `json:"FlowId,omitempty" name:"FlowId"`
+
+	// 需要修改的流名称。
+	FlowName *string `json:"FlowName,omitempty" name:"FlowName"`
+}
+
+type ModifyStreamLinkFlowRequest struct {
+	*tchttp.BaseRequest
+	
+	// 流Id。
+	FlowId *string `json:"FlowId,omitempty" name:"FlowId"`
+
+	// 需要修改的流名称。
+	FlowName *string `json:"FlowName,omitempty" name:"FlowName"`
+}
+
+func (r *ModifyStreamLinkFlowRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyStreamLinkFlowRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FlowId")
+	delete(f, "FlowName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyStreamLinkFlowRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyStreamLinkFlowResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ModifyStreamLinkFlowResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyStreamLinkFlowResponseParams `json:"Response"`
+}
+
+func (r *ModifyStreamLinkFlowResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyStreamLinkFlowResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyStreamLinkInputRequestParams struct {
+	// 流Id。
+	FlowId *string `json:"FlowId,omitempty" name:"FlowId"`
+
+	// 需要修改的Input信息。
+	Input *ModifyInput `json:"Input,omitempty" name:"Input"`
+}
+
+type ModifyStreamLinkInputRequest struct {
+	*tchttp.BaseRequest
+	
+	// 流Id。
+	FlowId *string `json:"FlowId,omitempty" name:"FlowId"`
+
+	// 需要修改的Input信息。
+	Input *ModifyInput `json:"Input,omitempty" name:"Input"`
+}
+
+func (r *ModifyStreamLinkInputRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyStreamLinkInputRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FlowId")
+	delete(f, "Input")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyStreamLinkInputRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyStreamLinkInputResponseParams struct {
+	// 修改后的Input信息。
+	Info *DescribeInput `json:"Info,omitempty" name:"Info"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ModifyStreamLinkInputResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyStreamLinkInputResponseParams `json:"Response"`
+}
+
+func (r *ModifyStreamLinkInputResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyStreamLinkInputResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyStreamLinkOutputInfoRequestParams struct {
+	// 流Id。
+	FlowId *string `json:"FlowId,omitempty" name:"FlowId"`
+
+	// 需要修改的Output配置。
+	Output *ModifyOutputInfo `json:"Output,omitempty" name:"Output"`
+}
+
+type ModifyStreamLinkOutputInfoRequest struct {
+	*tchttp.BaseRequest
+	
+	// 流Id。
+	FlowId *string `json:"FlowId,omitempty" name:"FlowId"`
+
+	// 需要修改的Output配置。
+	Output *ModifyOutputInfo `json:"Output,omitempty" name:"Output"`
+}
+
+func (r *ModifyStreamLinkOutputInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyStreamLinkOutputInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FlowId")
+	delete(f, "Output")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyStreamLinkOutputInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyStreamLinkOutputInfoResponseParams struct {
+	// 修改后的Output配置。
+	Info *DescribeOutput `json:"Info,omitempty" name:"Info"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ModifyStreamLinkOutputInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyStreamLinkOutputInfoResponseParams `json:"Response"`
+}
+
+func (r *ModifyStreamLinkOutputInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyStreamLinkOutputInfoResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -8648,6 +10610,19 @@ type OcrWordsConfigureInfoForUpdate struct {
 	// 关键词过滤标签，指定需要返回的关键词的标签。如果未填或者为空，则全部结果都返回。
 	// 标签个数最多 10 个，每个标签长度最多 16 个字符。
 	LabelSet []*string `json:"LabelSet,omitempty" name:"LabelSet"`
+}
+
+type OutputAddress struct {
+	// 出口IP。
+	Ip *string `json:"Ip,omitempty" name:"Ip"`
+}
+
+type OutputSRTSourceAddressResp struct {
+	// 监听IP。
+	Ip *string `json:"Ip,omitempty" name:"Ip"`
+
+	// 监听端口。
+	Port *int64 `json:"Port,omitempty" name:"Port"`
 }
 
 type OverrideTranscodeParameter struct {
@@ -9394,6 +11369,35 @@ type ProhibitedOcrReviewTemplateInfoForUpdate struct {
 	ReviewConfidence *int64 `json:"ReviewConfidence,omitempty" name:"ReviewConfidence"`
 }
 
+type RTMPAddressDestination struct {
+	// 转推RTMP的目标Url，格式如'rtmp://domain/live'。
+	Url *string `json:"Url,omitempty" name:"Url"`
+
+	// 转推RTMP的目标StreamKey，格式如'steamid?key=value'。
+	StreamKey *string `json:"StreamKey,omitempty" name:"StreamKey"`
+}
+
+type RTMPPullSourceAddress struct {
+	// RTMP源站的TcUrl地址。
+	TcUrl *string `json:"TcUrl,omitempty" name:"TcUrl"`
+
+	// RTMP源站的StreamKey信息。
+	StreamKey *string `json:"StreamKey,omitempty" name:"StreamKey"`
+}
+
+type RTPAddressDestination struct {
+	// 转推的目标地址的IP。
+	Ip *string `json:"Ip,omitempty" name:"Ip"`
+
+	// 转推的目标地址的端口。
+	Port *int64 `json:"Port,omitempty" name:"Port"`
+}
+
+type RTSPPullSourceAddress struct {
+	// RTSP源站的Url地址。
+	Url *string `json:"Url,omitempty" name:"Url"`
+}
+
 type RawImageWatermarkInput struct {
 	// 水印图片的输入内容。支持 jpeg、png 图片格式。
 	ImageContent *MediaInputInfo `json:"ImageContent,omitempty" name:"ImageContent"`
@@ -9540,6 +11544,11 @@ func (r *RecognizeMediaForZhiXueResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type RegionInfo struct {
+	// 地区名称。
+	Name *string `json:"Name,omitempty" name:"Name"`
+}
+
 // Predefined struct for user
 type ResetWorkflowRequestParams struct {
 	// 工作流 ID。
@@ -9662,6 +11671,30 @@ func (r *ResetWorkflowResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *ResetWorkflowResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type SRTAddressDestination struct {
+	// 目标地址的IP。
+	Ip *string `json:"Ip,omitempty" name:"Ip"`
+
+	// 目标地址的端口。
+	Port *int64 `json:"Port,omitempty" name:"Port"`
+}
+
+type SRTSourceAddressReq struct {
+	// 对端IP。
+	Ip *string `json:"Ip,omitempty" name:"Ip"`
+
+	// 对端端口。
+	Port *int64 `json:"Port,omitempty" name:"Port"`
+}
+
+type SRTSourceAddressResp struct {
+	// 对端IP。
+	Ip *string `json:"Ip,omitempty" name:"Ip"`
+
+	// 对端端口。
+	Port *int64 `json:"Port,omitempty" name:"Port"`
 }
 
 type SampleSnapshotTaskInput struct {
@@ -9935,6 +11968,119 @@ type SnapshotByTimeOffsetTemplate struct {
 	// <li>black：高斯模糊，保持视频宽高比不变，边缘剩余部分使用高斯模糊。</li>
 	// 默认值：black 。
 	FillType *string `json:"FillType,omitempty" name:"FillType"`
+}
+
+// Predefined struct for user
+type StartStreamLinkFlowRequestParams struct {
+	// 流Id。
+	FlowId *string `json:"FlowId,omitempty" name:"FlowId"`
+}
+
+type StartStreamLinkFlowRequest struct {
+	*tchttp.BaseRequest
+	
+	// 流Id。
+	FlowId *string `json:"FlowId,omitempty" name:"FlowId"`
+}
+
+func (r *StartStreamLinkFlowRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *StartStreamLinkFlowRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FlowId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StartStreamLinkFlowRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type StartStreamLinkFlowResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type StartStreamLinkFlowResponse struct {
+	*tchttp.BaseResponse
+	Response *StartStreamLinkFlowResponseParams `json:"Response"`
+}
+
+func (r *StartStreamLinkFlowResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *StartStreamLinkFlowResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type StopStreamLinkFlowRequestParams struct {
+	// 流Id。
+	FlowId *string `json:"FlowId,omitempty" name:"FlowId"`
+}
+
+type StopStreamLinkFlowRequest struct {
+	*tchttp.BaseRequest
+	
+	// 流Id。
+	FlowId *string `json:"FlowId,omitempty" name:"FlowId"`
+}
+
+func (r *StopStreamLinkFlowRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *StopStreamLinkFlowRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FlowId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StopStreamLinkFlowRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type StopStreamLinkFlowResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type StopStreamLinkFlowResponse struct {
+	*tchttp.BaseResponse
+	Response *StopStreamLinkFlowResponseParams `json:"Response"`
+}
+
+func (r *StopStreamLinkFlowResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *StopStreamLinkFlowResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type StreamLinkRegionInfo struct {
+	// 媒体直传输的地区信息列表。
+	Regions []*RegionInfo `json:"Regions,omitempty" name:"Regions"`
 }
 
 type SubtitleTemplate struct {

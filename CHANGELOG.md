@@ -1,3 +1,234 @@
+# Release v1.0.531
+
+## 日志服务(cls) 版本：2020-10-16
+
+### 第 34 次发布
+
+发布时间：2022-11-07 06:12:05
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [AddMachineGroupInfo](https://cloud.tencent.com/document/api/614/82425)
+* [DeleteMachineGroupInfo](https://cloud.tencent.com/document/api/614/82424)
+
+
+
+## 云数据库 MariaDB(mariadb) 版本：2017-03-12
+
+### 第 45 次发布
+
+发布时间：2022-11-07 06:26:59
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [IsolateDBInstance](https://cloud.tencent.com/document/api/237/82426)
+
+
+
+## 媒体处理(mps) 版本：2019-06-12
+
+### 第 44 次发布
+
+发布时间：2022-11-07 06:28:34
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateStreamLinkFlow](https://cloud.tencent.com/document/api/862/82445)
+* [CreateStreamLinkOutputInfo](https://cloud.tencent.com/document/api/862/82444)
+* [DeleteStreamLinkFlow](https://cloud.tencent.com/document/api/862/82443)
+* [DeleteStreamLinkOutput](https://cloud.tencent.com/document/api/862/82442)
+* [DescribeStreamLinkActivateState](https://cloud.tencent.com/document/api/862/82441)
+* [DescribeStreamLinkFlow](https://cloud.tencent.com/document/api/862/82440)
+* [DescribeStreamLinkFlowLogs](https://cloud.tencent.com/document/api/862/82439)
+* [DescribeStreamLinkFlowMediaStatistics](https://cloud.tencent.com/document/api/862/82438)
+* [DescribeStreamLinkFlowRealtimeStatus](https://cloud.tencent.com/document/api/862/82437)
+* [DescribeStreamLinkFlowSRTStatistics](https://cloud.tencent.com/document/api/862/82436)
+* [DescribeStreamLinkFlowStatistics](https://cloud.tencent.com/document/api/862/82435)
+* [DescribeStreamLinkFlows](https://cloud.tencent.com/document/api/862/82434)
+* [DescribeStreamLinkRegions](https://cloud.tencent.com/document/api/862/82433)
+* [ModifyStreamLinkFlow](https://cloud.tencent.com/document/api/862/82432)
+* [ModifyStreamLinkInput](https://cloud.tencent.com/document/api/862/82431)
+* [ModifyStreamLinkOutputInfo](https://cloud.tencent.com/document/api/862/82430)
+* [StartStreamLinkFlow](https://cloud.tencent.com/document/api/862/82429)
+* [StopStreamLinkFlow](https://cloud.tencent.com/document/api/862/82428)
+
+新增数据结构：
+
+* [CreateInput](https://cloud.tencent.com/document/api/862/37615#CreateInput)
+* [CreateInputRTMPPullSettings](https://cloud.tencent.com/document/api/862/37615#CreateInputRTMPPullSettings)
+* [CreateInputRTPSettings](https://cloud.tencent.com/document/api/862/37615#CreateInputRTPSettings)
+* [CreateInputRTSPPullSettings](https://cloud.tencent.com/document/api/862/37615#CreateInputRTSPPullSettings)
+* [CreateInputSRTSettings](https://cloud.tencent.com/document/api/862/37615#CreateInputSRTSettings)
+* [CreateOutputInfo](https://cloud.tencent.com/document/api/862/37615#CreateOutputInfo)
+* [CreateOutputInfoRTPSettings](https://cloud.tencent.com/document/api/862/37615#CreateOutputInfoRTPSettings)
+* [CreateOutputRTMPSettings](https://cloud.tencent.com/document/api/862/37615#CreateOutputRTMPSettings)
+* [CreateOutputRTPSettingsDestinations](https://cloud.tencent.com/document/api/862/37615#CreateOutputRTPSettingsDestinations)
+* [CreateOutputRtmpSettingsDestinations](https://cloud.tencent.com/document/api/862/37615#CreateOutputRtmpSettingsDestinations)
+* [CreateOutputSRTSettings](https://cloud.tencent.com/document/api/862/37615#CreateOutputSRTSettings)
+* [CreateOutputSRTSettingsDestinations](https://cloud.tencent.com/document/api/862/37615#CreateOutputSRTSettingsDestinations)
+* [DescribeFlow](https://cloud.tencent.com/document/api/862/37615#DescribeFlow)
+* [DescribeInput](https://cloud.tencent.com/document/api/862/37615#DescribeInput)
+* [DescribeInputRTMPPullSettings](https://cloud.tencent.com/document/api/862/37615#DescribeInputRTMPPullSettings)
+* [DescribeInputRTMPSettings](https://cloud.tencent.com/document/api/862/37615#DescribeInputRTMPSettings)
+* [DescribeInputRTPSettings](https://cloud.tencent.com/document/api/862/37615#DescribeInputRTPSettings)
+* [DescribeInputRTSPPullSettings](https://cloud.tencent.com/document/api/862/37615#DescribeInputRTSPPullSettings)
+* [DescribeInputSRTSettings](https://cloud.tencent.com/document/api/862/37615#DescribeInputSRTSettings)
+* [DescribeOutput](https://cloud.tencent.com/document/api/862/37615#DescribeOutput)
+* [DescribeOutputRTMPPullServerUrl](https://cloud.tencent.com/document/api/862/37615#DescribeOutputRTMPPullServerUrl)
+* [DescribeOutputRTMPPullSettings](https://cloud.tencent.com/document/api/862/37615#DescribeOutputRTMPPullSettings)
+* [DescribeOutputRTMPSettings](https://cloud.tencent.com/document/api/862/37615#DescribeOutputRTMPSettings)
+* [DescribeOutputRTPSettings](https://cloud.tencent.com/document/api/862/37615#DescribeOutputRTPSettings)
+* [DescribeOutputRTSPPullServerUrl](https://cloud.tencent.com/document/api/862/37615#DescribeOutputRTSPPullServerUrl)
+* [DescribeOutputRTSPPullSettings](https://cloud.tencent.com/document/api/862/37615#DescribeOutputRTSPPullSettings)
+* [DescribeOutputSRTSettings](https://cloud.tencent.com/document/api/862/37615#DescribeOutputSRTSettings)
+* [DescribeRTMPPullSourceAddress](https://cloud.tencent.com/document/api/862/37615#DescribeRTMPPullSourceAddress)
+* [DescribeRTSPPullSourceAddress](https://cloud.tencent.com/document/api/862/37615#DescribeRTSPPullSourceAddress)
+* [FlowAudio](https://cloud.tencent.com/document/api/862/37615#FlowAudio)
+* [FlowLogInfo](https://cloud.tencent.com/document/api/862/37615#FlowLogInfo)
+* [FlowMediaAudio](https://cloud.tencent.com/document/api/862/37615#FlowMediaAudio)
+* [FlowMediaInfo](https://cloud.tencent.com/document/api/862/37615#FlowMediaInfo)
+* [FlowMediaVideo](https://cloud.tencent.com/document/api/862/37615#FlowMediaVideo)
+* [FlowRealtimeStatusCommon](https://cloud.tencent.com/document/api/862/37615#FlowRealtimeStatusCommon)
+* [FlowRealtimeStatusItem](https://cloud.tencent.com/document/api/862/37615#FlowRealtimeStatusItem)
+* [FlowRealtimeStatusRTMP](https://cloud.tencent.com/document/api/862/37615#FlowRealtimeStatusRTMP)
+* [FlowRealtimeStatusRTP](https://cloud.tencent.com/document/api/862/37615#FlowRealtimeStatusRTP)
+* [FlowRealtimeStatusSRT](https://cloud.tencent.com/document/api/862/37615#FlowRealtimeStatusSRT)
+* [FlowSRTInfo](https://cloud.tencent.com/document/api/862/37615#FlowSRTInfo)
+* [FlowStatistics](https://cloud.tencent.com/document/api/862/37615#FlowStatistics)
+* [FlowStatisticsArray](https://cloud.tencent.com/document/api/862/37615#FlowStatisticsArray)
+* [FlowVideo](https://cloud.tencent.com/document/api/862/37615#FlowVideo)
+* [InputAddress](https://cloud.tencent.com/document/api/862/37615#InputAddress)
+* [ModifyInput](https://cloud.tencent.com/document/api/862/37615#ModifyInput)
+* [ModifyOutputInfo](https://cloud.tencent.com/document/api/862/37615#ModifyOutputInfo)
+* [OutputAddress](https://cloud.tencent.com/document/api/862/37615#OutputAddress)
+* [OutputSRTSourceAddressResp](https://cloud.tencent.com/document/api/862/37615#OutputSRTSourceAddressResp)
+* [RTMPAddressDestination](https://cloud.tencent.com/document/api/862/37615#RTMPAddressDestination)
+* [RTMPPullSourceAddress](https://cloud.tencent.com/document/api/862/37615#RTMPPullSourceAddress)
+* [RTPAddressDestination](https://cloud.tencent.com/document/api/862/37615#RTPAddressDestination)
+* [RTSPPullSourceAddress](https://cloud.tencent.com/document/api/862/37615#RTSPPullSourceAddress)
+* [RegionInfo](https://cloud.tencent.com/document/api/862/37615#RegionInfo)
+* [SRTAddressDestination](https://cloud.tencent.com/document/api/862/37615#SRTAddressDestination)
+* [SRTSourceAddressReq](https://cloud.tencent.com/document/api/862/37615#SRTSourceAddressReq)
+* [SRTSourceAddressResp](https://cloud.tencent.com/document/api/862/37615#SRTSourceAddressResp)
+* [StreamLinkRegionInfo](https://cloud.tencent.com/document/api/862/37615#StreamLinkRegionInfo)
+
+
+
+## 云数据库Redis(redis) 版本：2018-04-12
+
+### 第 58 次发布
+
+发布时间：2022-11-07 06:32:04
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ProxyNodes](https://cloud.tencent.com/document/api/239/20022#ProxyNodes)
+
+	* 新增成员：ZoneId
+
+
+
+
+## 容器镜像服务(tcr) 版本：2019-09-24
+
+### 第 45 次发布
+
+发布时间：2022-11-07 06:36:31
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateInternalEndpointDns](https://cloud.tencent.com/document/api/1141/53131)
+
+	* 新增入参：RegionId
+
+
+
+
+## 消息队列 TDMQ(tdmq) 版本：2020-02-17
+
+### 第 39 次发布
+
+发布时间：2022-11-07 06:38:51
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [CmqTopic](https://cloud.tencent.com/document/api/1179/46089#CmqTopic)
+
+	* 新增成员：BrokerType
+
+
+
+
+## 边缘安全加速平台(teo) 版本：2022-09-01
+
+### 第 11 次发布
+
+发布时间：2022-11-07 06:39:45
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [SecHitRuleInfo](https://cloud.tencent.com/document/api/1552/80721#SecHitRuleInfo)
+
+	* 新增成员：BotLabel
+
+* [SecRuleRelatedInfo](https://cloud.tencent.com/document/api/1552/80721#SecRuleRelatedInfo)
+
+	* 新增成员：AttackContent
+
+
+
+
+## 边缘安全加速平台(teo) 版本：2022-01-06
+
+
+
+## 云点播(vod) 版本：2018-07-17
+
+### 第 125 次发布
+
+发布时间：2022-11-07 06:44:29
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [MediaProcessTaskAdaptiveDynamicStreamingResult](https://cloud.tencent.com/document/api/266/31773#MediaProcessTaskAdaptiveDynamicStreamingResult)
+
+	* 新增成员：Progress
+
+
+
+
 # Release v1.0.530
 
 # Release v1.0.529

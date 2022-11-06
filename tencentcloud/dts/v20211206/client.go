@@ -226,7 +226,7 @@ func NewCreateCheckSyncJobResponse() (response *CreateCheckSyncJobResponse) {
 }
 
 // CreateCheckSyncJob
-// 校验同步任务，检查必要参数和周边
+// 校验同步任务，检查必要参数和周边配置。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
@@ -238,7 +238,7 @@ func (c *Client) CreateCheckSyncJob(request *CreateCheckSyncJobRequest) (respons
 }
 
 // CreateCheckSyncJob
-// 校验同步任务，检查必要参数和周边
+// 校验同步任务，检查必要参数和周边配置。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
@@ -932,7 +932,7 @@ func NewDescribeMigrateDBInstancesResponse() (response *DescribeMigrateDBInstanc
 }
 
 // DescribeMigrateDBInstances
-// 本接口用于查询支持迁移的是云数据库实例
+// 本接口用于查询支持迁移的云数据库实例
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -970,7 +970,7 @@ func (c *Client) DescribeMigrateDBInstances(request *DescribeMigrateDBInstancesR
 }
 
 // DescribeMigrateDBInstances
-// 本接口用于查询支持迁移的是云数据库实例
+// 本接口用于查询支持迁移的云数据库实例
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -1354,7 +1354,7 @@ func NewDestroyMigrateJobResponse() (response *DestroyMigrateJobResponse) {
 }
 
 // DestroyMigrateJob
-// 下线删除数据迁移任务。计费任务必须先调用隔离(IsolateMigrateJob)接口，且只有是**已隔离**状态下，才能调用此接口销毁任务。对于不计费任务，调用隔离(IsolateMigrateJob)接口删除任务操作。
+// 下线数据迁移任务。计费任务必须先调用隔离(IsolateMigrateJob)接口，且只有是**已隔离**状态下，才能调用此接口销毁任务。对于不计费任务，调用隔离(IsolateMigrateJob)接口删除任务操作。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_AUTHFAILUREERROR = "AuthFailure.AuthFailureError"
@@ -1380,7 +1380,7 @@ func (c *Client) DestroyMigrateJob(request *DestroyMigrateJobRequest) (response 
 }
 
 // DestroyMigrateJob
-// 下线删除数据迁移任务。计费任务必须先调用隔离(IsolateMigrateJob)接口，且只有是**已隔离**状态下，才能调用此接口销毁任务。对于不计费任务，调用隔离(IsolateMigrateJob)接口删除任务操作。
+// 下线数据迁移任务。计费任务必须先调用隔离(IsolateMigrateJob)接口，且只有是**已隔离**状态下，才能调用此接口销毁任务。对于不计费任务，调用隔离(IsolateMigrateJob)接口删除任务操作。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_AUTHFAILUREERROR = "AuthFailure.AuthFailureError"
@@ -2222,7 +2222,7 @@ func NewResumeMigrateJobResponse() (response *ResumeMigrateJobResponse) {
 }
 
 // ResumeMigrateJob
-// 重试数据迁移任务，针对redis在迁移在失败情况下的重试操作，注意：此操作跳过校验阶段，直接重新发起任务，相当于从StartMigrationJob开始执行。调用此接口后可通过查询迁移服务列表接口`DescribeMigrationJobs`来查询当前任务状态。
+// 重试数据迁移任务，针对异常情况可进行重试，对于redis在失败时也可重试。注意：此操作跳过校验阶段，直接重新发起任务，相当于从StartMigrationJob开始执行。调用此接口后可通过查询迁移服务列表接口`DescribeMigrationJobs`来查询当前任务状态。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_AUTHFAILUREERROR = "AuthFailure.AuthFailureError"
@@ -2253,7 +2253,7 @@ func (c *Client) ResumeMigrateJob(request *ResumeMigrateJobRequest) (response *R
 }
 
 // ResumeMigrateJob
-// 重试数据迁移任务，针对redis在迁移在失败情况下的重试操作，注意：此操作跳过校验阶段，直接重新发起任务，相当于从StartMigrationJob开始执行。调用此接口后可通过查询迁移服务列表接口`DescribeMigrationJobs`来查询当前任务状态。
+// 重试数据迁移任务，针对异常情况可进行重试，对于redis在失败时也可重试。注意：此操作跳过校验阶段，直接重新发起任务，相当于从StartMigrationJob开始执行。调用此接口后可通过查询迁移服务列表接口`DescribeMigrationJobs`来查询当前任务状态。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_AUTHFAILUREERROR = "AuthFailure.AuthFailureError"

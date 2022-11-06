@@ -45,6 +45,48 @@ func NewClient(credential common.CredentialIface, region string, clientProfile *
 }
 
 
+func NewAddMachineGroupInfoRequest() (request *AddMachineGroupInfoRequest) {
+    request = &AddMachineGroupInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cls", APIVersion, "AddMachineGroupInfo")
+    
+    
+    return
+}
+
+func NewAddMachineGroupInfoResponse() (response *AddMachineGroupInfoResponse) {
+    response = &AddMachineGroupInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// AddMachineGroupInfo
+// 用于添加机器组信息
+func (c *Client) AddMachineGroupInfo(request *AddMachineGroupInfoRequest) (response *AddMachineGroupInfoResponse, err error) {
+    return c.AddMachineGroupInfoWithContext(context.Background(), request)
+}
+
+// AddMachineGroupInfo
+// 用于添加机器组信息
+func (c *Client) AddMachineGroupInfoWithContext(ctx context.Context, request *AddMachineGroupInfoRequest) (response *AddMachineGroupInfoResponse, err error) {
+    if request == nil {
+        request = NewAddMachineGroupInfoRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AddMachineGroupInfo require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewAddMachineGroupInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewApplyConfigToMachineGroupRequest() (request *ApplyConfigToMachineGroupRequest) {
     request = &ApplyConfigToMachineGroupRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1613,6 +1655,74 @@ func (c *Client) DeleteMachineGroupWithContext(ctx context.Context, request *Del
     request.SetContext(ctx)
     
     response = NewDeleteMachineGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteMachineGroupInfoRequest() (request *DeleteMachineGroupInfoRequest) {
+    request = &DeleteMachineGroupInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cls", APIVersion, "DeleteMachineGroupInfo")
+    
+    
+    return
+}
+
+func NewDeleteMachineGroupInfoResponse() (response *DeleteMachineGroupInfoResponse) {
+    response = &DeleteMachineGroupInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteMachineGroupInfo
+// 用于删除机器组信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_MACHINEGROUPNOTEXIST = "ResourceNotFound.MachineGroupNotExist"
+func (c *Client) DeleteMachineGroupInfo(request *DeleteMachineGroupInfoRequest) (response *DeleteMachineGroupInfoResponse, err error) {
+    return c.DeleteMachineGroupInfoWithContext(context.Background(), request)
+}
+
+// DeleteMachineGroupInfo
+// 用于删除机器组信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_MACHINEGROUPNOTEXIST = "ResourceNotFound.MachineGroupNotExist"
+func (c *Client) DeleteMachineGroupInfoWithContext(ctx context.Context, request *DeleteMachineGroupInfoRequest) (response *DeleteMachineGroupInfoResponse, err error) {
+    if request == nil {
+        request = NewDeleteMachineGroupInfoRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteMachineGroupInfo require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteMachineGroupInfoResponse()
     err = c.Send(request, response)
     return
 }

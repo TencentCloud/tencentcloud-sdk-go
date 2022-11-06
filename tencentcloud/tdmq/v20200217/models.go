@@ -814,6 +814,10 @@ type CmqTopic struct {
 	// 集群状态，0:创建中，1:正常，2:销毁中，3:已删除，4: 隔离中，5:创建失败，6: 删除失败
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *int64 `json:"Status,omitempty" name:"Status"`
+
+	// 0表示pulsar，1表示rocketmq
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BrokerType *int64 `json:"BrokerType,omitempty" name:"BrokerType"`
 }
 
 type CmqTransactionPolicy struct {

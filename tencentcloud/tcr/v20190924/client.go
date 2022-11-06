@@ -801,6 +801,11 @@ func NewCreateInternalEndpointDnsResponse() (response *CreateInternalEndpointDns
 //  INTERNALERROR_MODIFYPRIVATEZONEVPC = "InternalError.ModifyPrivateZoneVpc"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_CREATEPRIVATEZONE = "UnsupportedOperation.CreatePrivateZone"
+//  UNSUPPORTEDOPERATION_CREATEPRIVATEZONERECORD = "UnsupportedOperation.CreatePrivateZoneRecord"
+//  UNSUPPORTEDOPERATION_DESCRIBEPRIVATEZONELIST = "UnsupportedOperation.DescribePrivateZoneList"
+//  UNSUPPORTEDOPERATION_DESCRIBEPRIVATEZONERECORDLIST = "UnsupportedOperation.DescribePrivateZoneRecordList"
+//  UNSUPPORTEDOPERATION_MODIFYPRIVATEZONERECORD = "UnsupportedOperation.ModifyPrivateZoneRecord"
 //  UNSUPPORTEDOPERATION_MODIFYPRIVATEZONEVPC = "UnsupportedOperation.ModifyPrivateZoneVpc"
 func (c *Client) CreateInternalEndpointDns(request *CreateInternalEndpointDnsRequest) (response *CreateInternalEndpointDnsResponse, err error) {
     return c.CreateInternalEndpointDnsWithContext(context.Background(), request)
@@ -822,6 +827,11 @@ func (c *Client) CreateInternalEndpointDns(request *CreateInternalEndpointDnsReq
 //  INTERNALERROR_MODIFYPRIVATEZONEVPC = "InternalError.ModifyPrivateZoneVpc"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_CREATEPRIVATEZONE = "UnsupportedOperation.CreatePrivateZone"
+//  UNSUPPORTEDOPERATION_CREATEPRIVATEZONERECORD = "UnsupportedOperation.CreatePrivateZoneRecord"
+//  UNSUPPORTEDOPERATION_DESCRIBEPRIVATEZONELIST = "UnsupportedOperation.DescribePrivateZoneList"
+//  UNSUPPORTEDOPERATION_DESCRIBEPRIVATEZONERECORDLIST = "UnsupportedOperation.DescribePrivateZoneRecordList"
+//  UNSUPPORTEDOPERATION_MODIFYPRIVATEZONERECORD = "UnsupportedOperation.ModifyPrivateZoneRecord"
 //  UNSUPPORTEDOPERATION_MODIFYPRIVATEZONEVPC = "UnsupportedOperation.ModifyPrivateZoneVpc"
 func (c *Client) CreateInternalEndpointDnsWithContext(ctx context.Context, request *CreateInternalEndpointDnsRequest) (response *CreateInternalEndpointDnsResponse, err error) {
     if request == nil {
@@ -1017,6 +1027,7 @@ func NewCreateNamespacePersonalResponse() (response *CreateNamespacePersonalResp
 //  LIMITEXCEEDED_ERRNAMESPACEMAXLIMIT = "LimitExceeded.ErrNamespaceMaxLimit"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_ERRNOUSER = "ResourceNotFound.ErrNoUser"
+//  UNSUPPORTEDOPERATION_ERRNOUSERINITIALIZED = "UnsupportedOperation.ErrNoUserInitialized"
 func (c *Client) CreateNamespacePersonal(request *CreateNamespacePersonalRequest) (response *CreateNamespacePersonalResponse, err error) {
     return c.CreateNamespacePersonalWithContext(context.Background(), request)
 }
@@ -1031,6 +1042,7 @@ func (c *Client) CreateNamespacePersonal(request *CreateNamespacePersonalRequest
 //  LIMITEXCEEDED_ERRNAMESPACEMAXLIMIT = "LimitExceeded.ErrNamespaceMaxLimit"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_ERRNOUSER = "ResourceNotFound.ErrNoUser"
+//  UNSUPPORTEDOPERATION_ERRNOUSERINITIALIZED = "UnsupportedOperation.ErrNoUserInitialized"
 func (c *Client) CreateNamespacePersonalWithContext(ctx context.Context, request *CreateNamespacePersonalRequest) (response *CreateNamespacePersonalResponse, err error) {
     if request == nil {
         request = NewCreateNamespacePersonalRequest()
@@ -2360,6 +2372,9 @@ func NewDeleteInternalEndpointDnsResponse() (response *DeleteInternalEndpointDns
 //  INTERNALERROR_DESCRIBEPRIVATEZONESERVICELIST = "InternalError.DescribePrivateZoneServiceList"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_DELETEPRIVATEZONERECORD = "UnsupportedOperation.DeletePrivateZoneRecord"
+//  UNSUPPORTEDOPERATION_DESCRIBEPRIVATEZONELIST = "UnsupportedOperation.DescribePrivateZoneList"
+//  UNSUPPORTEDOPERATION_DESCRIBEPRIVATEZONERECORDLIST = "UnsupportedOperation.DescribePrivateZoneRecordList"
 func (c *Client) DeleteInternalEndpointDns(request *DeleteInternalEndpointDnsRequest) (response *DeleteInternalEndpointDnsResponse, err error) {
     return c.DeleteInternalEndpointDnsWithContext(context.Background(), request)
 }
@@ -2379,6 +2394,9 @@ func (c *Client) DeleteInternalEndpointDns(request *DeleteInternalEndpointDnsReq
 //  INTERNALERROR_DESCRIBEPRIVATEZONESERVICELIST = "InternalError.DescribePrivateZoneServiceList"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_DELETEPRIVATEZONERECORD = "UnsupportedOperation.DeletePrivateZoneRecord"
+//  UNSUPPORTEDOPERATION_DESCRIBEPRIVATEZONELIST = "UnsupportedOperation.DescribePrivateZoneList"
+//  UNSUPPORTEDOPERATION_DESCRIBEPRIVATEZONERECORDLIST = "UnsupportedOperation.DescribePrivateZoneRecordList"
 func (c *Client) DeleteInternalEndpointDnsWithContext(ctx context.Context, request *DeleteInternalEndpointDnsRequest) (response *DeleteInternalEndpointDnsResponse, err error) {
     if request == nil {
         request = NewDeleteInternalEndpointDnsRequest()

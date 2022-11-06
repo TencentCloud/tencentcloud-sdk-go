@@ -2709,6 +2709,70 @@ func (c *Client) InitDBInstancesWithContext(ctx context.Context, request *InitDB
     return
 }
 
+func NewIsolateDBInstanceRequest() (request *IsolateDBInstanceRequest) {
+    request = &IsolateDBInstanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mariadb", APIVersion, "IsolateDBInstance")
+    
+    
+    return
+}
+
+func NewIsolateDBInstanceResponse() (response *IsolateDBInstanceResponse) {
+    response = &IsolateDBInstanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// IsolateDBInstance
+// 本接口(IsolateDBInstance)用于隔离云数据库实例（包年包月），隔离后不能通过IP和端口访问数据库。隔离的实例可在回收站中进行开机。若为欠费隔离，请尽快进行充值。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_CREATEORDERFAILED = "FailedOperation.CreateOrderFailed"
+//  FAILEDOPERATION_INSTANCECANNOTRETURN = "FailedOperation.InstanceCanNotReturn"
+//  FAILEDOPERATION_INSTANCERETURNFAILED = "FailedOperation.InstanceReturnFailed"
+//  INTERNALERROR_OPERATEDATABASEFAILED = "InternalError.OperateDatabaseFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ACTIONNOTFOUND = "InvalidParameter.ActionNotFound"
+//  RESOURCEUNAVAILABLE_INSTANCEALREADYDELETED = "ResourceUnavailable.InstanceAlreadyDeleted"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSABNORMAL = "ResourceUnavailable.InstanceStatusAbnormal"
+func (c *Client) IsolateDBInstance(request *IsolateDBInstanceRequest) (response *IsolateDBInstanceResponse, err error) {
+    return c.IsolateDBInstanceWithContext(context.Background(), request)
+}
+
+// IsolateDBInstance
+// 本接口(IsolateDBInstance)用于隔离云数据库实例（包年包月），隔离后不能通过IP和端口访问数据库。隔离的实例可在回收站中进行开机。若为欠费隔离，请尽快进行充值。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_CREATEORDERFAILED = "FailedOperation.CreateOrderFailed"
+//  FAILEDOPERATION_INSTANCECANNOTRETURN = "FailedOperation.InstanceCanNotReturn"
+//  FAILEDOPERATION_INSTANCERETURNFAILED = "FailedOperation.InstanceReturnFailed"
+//  INTERNALERROR_OPERATEDATABASEFAILED = "InternalError.OperateDatabaseFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ACTIONNOTFOUND = "InvalidParameter.ActionNotFound"
+//  RESOURCEUNAVAILABLE_INSTANCEALREADYDELETED = "ResourceUnavailable.InstanceAlreadyDeleted"
+//  RESOURCEUNAVAILABLE_INSTANCESTATUSABNORMAL = "ResourceUnavailable.InstanceStatusAbnormal"
+func (c *Client) IsolateDBInstanceWithContext(ctx context.Context, request *IsolateDBInstanceRequest) (response *IsolateDBInstanceResponse, err error) {
+    if request == nil {
+        request = NewIsolateDBInstanceRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("IsolateDBInstance require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewIsolateDBInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewIsolateDedicatedDBInstanceRequest() (request *IsolateDedicatedDBInstanceRequest) {
     request = &IsolateDedicatedDBInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},

@@ -20,6 +20,69 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+// Predefined struct for user
+type AddMachineGroupInfoRequestParams struct {
+	// 机器组ID
+	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
+
+	// 机器组类型
+	// 目前type支持 ip 和 label
+	MachineGroupType *MachineGroupTypeInfo `json:"MachineGroupType,omitempty" name:"MachineGroupType"`
+}
+
+type AddMachineGroupInfoRequest struct {
+	*tchttp.BaseRequest
+	
+	// 机器组ID
+	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
+
+	// 机器组类型
+	// 目前type支持 ip 和 label
+	MachineGroupType *MachineGroupTypeInfo `json:"MachineGroupType,omitempty" name:"MachineGroupType"`
+}
+
+func (r *AddMachineGroupInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AddMachineGroupInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GroupId")
+	delete(f, "MachineGroupType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AddMachineGroupInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type AddMachineGroupInfoResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type AddMachineGroupInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *AddMachineGroupInfoResponseParams `json:"Response"`
+}
+
+func (r *AddMachineGroupInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AddMachineGroupInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type AlarmAnalysisConfig struct {
 	// 键
 	Key *string `json:"Key,omitempty" name:"Key"`
@@ -2193,6 +2256,69 @@ func (r *DeleteLogsetResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteLogsetResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteMachineGroupInfoRequestParams struct {
+	// 机器组ID
+	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
+
+	// 机器组类型
+	// 目前type支持 ip 和 label
+	MachineGroupType *MachineGroupTypeInfo `json:"MachineGroupType,omitempty" name:"MachineGroupType"`
+}
+
+type DeleteMachineGroupInfoRequest struct {
+	*tchttp.BaseRequest
+	
+	// 机器组ID
+	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
+
+	// 机器组类型
+	// 目前type支持 ip 和 label
+	MachineGroupType *MachineGroupTypeInfo `json:"MachineGroupType,omitempty" name:"MachineGroupType"`
+}
+
+func (r *DeleteMachineGroupInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteMachineGroupInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GroupId")
+	delete(f, "MachineGroupType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteMachineGroupInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteMachineGroupInfoResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DeleteMachineGroupInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteMachineGroupInfoResponseParams `json:"Response"`
+}
+
+func (r *DeleteMachineGroupInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteMachineGroupInfoResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

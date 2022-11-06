@@ -12079,6 +12079,9 @@ type MediaProcessTaskAdaptiveDynamicStreamingResult struct {
 	// 错误信息。
 	Message *string `json:"Message,omitempty" name:"Message"`
 
+	// 转自适应码流任务进度，取值范围 [0-100] 。
+	Progress *int64 `json:"Progress,omitempty" name:"Progress"`
+
 	// 对视频转自适应码流任务的输入。
 	Input *AdaptiveDynamicStreamingTaskInput `json:"Input,omitempty" name:"Input"`
 
