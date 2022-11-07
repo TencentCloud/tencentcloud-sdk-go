@@ -988,7 +988,7 @@ func NewDescribeAutoSnapshotPoliciesResponse() (response *DescribeAutoSnapshotPo
 }
 
 // DescribeAutoSnapshotPolicies
-// 查询文件系统快照d定期策略列表信息
+// 查询文件系统快照定期策略列表信息
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
@@ -1004,7 +1004,7 @@ func (c *Client) DescribeAutoSnapshotPolicies(request *DescribeAutoSnapshotPolic
 }
 
 // DescribeAutoSnapshotPolicies
-// 查询文件系统快照d定期策略列表信息
+// 查询文件系统快照定期策略列表信息
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"

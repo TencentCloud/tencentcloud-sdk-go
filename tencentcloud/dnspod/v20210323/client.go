@@ -303,6 +303,7 @@ func NewCreateDomainResponse() (response *CreateDomainResponse) {
 // 添加域名
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_DOMAINEXISTS = "FailedOperation.DomainExists"
 //  FAILEDOPERATION_DOMAINOWNEDBYOTHERUSER = "FailedOperation.DomainOwnedByOtherUser"
 //  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnknowError"
@@ -321,6 +322,7 @@ func (c *Client) CreateDomain(request *CreateDomainRequest) (response *CreateDom
 // 添加域名
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_DOMAINEXISTS = "FailedOperation.DomainExists"
 //  FAILEDOPERATION_DOMAINOWNEDBYOTHERUSER = "FailedOperation.DomainOwnedByOtherUser"
 //  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnknowError"

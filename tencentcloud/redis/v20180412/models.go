@@ -6897,21 +6897,27 @@ func (r *ReleaseWanAddressResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type RenewInstanceRequestParams struct {
-	// 购买时长，单位：月
+	// 购买时长，单位：月。
 	Period *uint64 `json:"Period,omitempty" name:"Period"`
 
-	// 实例ID
+	// 实例 ID。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 标识是否修改计费模式。<ul><li>当前实例计费模式为按量计费方式，预转换为包年包月而续费，请指定该参数为 <b>prepaid</b>。</li><li>当前实例计费模式为包年包月方式，可不设置该参数。</li></ul>
+	ModifyPayMode *string `json:"ModifyPayMode,omitempty" name:"ModifyPayMode"`
 }
 
 type RenewInstanceRequest struct {
 	*tchttp.BaseRequest
 	
-	// 购买时长，单位：月
+	// 购买时长，单位：月。
 	Period *uint64 `json:"Period,omitempty" name:"Period"`
 
-	// 实例ID
+	// 实例 ID。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 标识是否修改计费模式。<ul><li>当前实例计费模式为按量计费方式，预转换为包年包月而续费，请指定该参数为 <b>prepaid</b>。</li><li>当前实例计费模式为包年包月方式，可不设置该参数。</li></ul>
+	ModifyPayMode *string `json:"ModifyPayMode,omitempty" name:"ModifyPayMode"`
 }
 
 func (r *RenewInstanceRequest) ToJsonString() string {
@@ -6928,6 +6934,7 @@ func (r *RenewInstanceRequest) FromJsonString(s string) error {
 	}
 	delete(f, "Period")
 	delete(f, "InstanceId")
+	delete(f, "ModifyPayMode")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RenewInstanceRequest has unknown keys!", "")
 	}
@@ -6936,7 +6943,7 @@ func (r *RenewInstanceRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type RenewInstanceResponseParams struct {
-	// 交易ID
+	// 交易ID。
 	DealId *string `json:"DealId,omitempty" name:"DealId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。

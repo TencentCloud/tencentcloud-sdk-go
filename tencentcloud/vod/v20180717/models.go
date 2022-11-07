@@ -18555,10 +18555,10 @@ type StickerTrackItem struct {
 }
 
 type StorageRegionInfo struct {
-	// 存储地域
+	// 存储地域。
 	Region *string `json:"Region,omitempty" name:"Region"`
 
-	// 存储地域描述信息
+	// 存储地域描述信息。
 	Description *string `json:"Description,omitempty" name:"Description"`
 
 	// 状态，是否开通，取值有：
@@ -18566,8 +18566,13 @@ type StorageRegionInfo struct {
 	// <li>unopened：未开通。</li>
 	Status *string `json:"Status,omitempty" name:"Status"`
 
-	// 是否默认的存储地域，true：是；false：否
+	// 是否默认的存储地域，true：是；false：否。
 	IsDefault *bool `json:"IsDefault,omitempty" name:"IsDefault"`
+
+	// 存储区域，取值有：
+	// <li>Chinese Mainland：中国境内（不包含港澳台）。</li>
+	// <li>Outside Chinese Mainland：中国境外。</li>
+	Area *string `json:"Area,omitempty" name:"Area"`
 }
 
 type StorageStatData struct {

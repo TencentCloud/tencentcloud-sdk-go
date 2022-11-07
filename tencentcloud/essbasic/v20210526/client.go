@@ -875,6 +875,64 @@ func (c *Client) ChannelDescribeEmployeesWithContext(ctx context.Context, reques
     return
 }
 
+func NewChannelDescribeOrganizationSealsRequest() (request *ChannelDescribeOrganizationSealsRequest) {
+    request = &ChannelDescribeOrganizationSealsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("essbasic", APIVersion, "ChannelDescribeOrganizationSeals")
+    
+    
+    return
+}
+
+func NewChannelDescribeOrganizationSealsResponse() (response *ChannelDescribeOrganizationSealsResponse) {
+    response = &ChannelDescribeOrganizationSealsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ChannelDescribeOrganizationSeals
+// 查询渠道子客企业电子印章，需要操作者具有管理印章权限
+//
+// 客户指定需要获取的印章数量和偏移量，数量最多100，超过100按100处理；入参InfoType控制印章是否携带授权人信息，为1则携带，为0则返回的授权人信息为空数组。接口调用成功返回印章的信息列表还有企业印章的总数。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_OPERATORHASNOPERMISSION = "OperationDenied.OperatorHasNoPermission"
+func (c *Client) ChannelDescribeOrganizationSeals(request *ChannelDescribeOrganizationSealsRequest) (response *ChannelDescribeOrganizationSealsResponse, err error) {
+    return c.ChannelDescribeOrganizationSealsWithContext(context.Background(), request)
+}
+
+// ChannelDescribeOrganizationSeals
+// 查询渠道子客企业电子印章，需要操作者具有管理印章权限
+//
+// 客户指定需要获取的印章数量和偏移量，数量最多100，超过100按100处理；入参InfoType控制印章是否携带授权人信息，为1则携带，为0则返回的授权人信息为空数组。接口调用成功返回印章的信息列表还有企业印章的总数。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_OPERATORHASNOPERMISSION = "OperationDenied.OperatorHasNoPermission"
+func (c *Client) ChannelDescribeOrganizationSealsWithContext(ctx context.Context, request *ChannelDescribeOrganizationSealsRequest) (response *ChannelDescribeOrganizationSealsResponse, err error) {
+    if request == nil {
+        request = NewChannelDescribeOrganizationSealsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ChannelDescribeOrganizationSeals require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewChannelDescribeOrganizationSealsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewChannelGetTaskResultApiRequest() (request *ChannelGetTaskResultApiRequest) {
     request = &ChannelGetTaskResultApiRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1626,6 +1684,7 @@ func NewDescribeTemplatesResponse() (response *DescribeTemplatesResponse) {
 //  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
 //  OPERATIONDENIED_NOIDENTITYVERIFY = "OperationDenied.NoIdentityVerify"
+//  OPERATIONDENIED_USERNOTINORGANIZATION = "OperationDenied.UserNotInOrganization"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_APPLICATION = "ResourceNotFound.Application"
 //  RESOURCENOTFOUND_RESOURCE = "ResourceNotFound.Resource"
@@ -1655,6 +1714,7 @@ func (c *Client) DescribeTemplates(request *DescribeTemplatesRequest) (response 
 //  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
 //  OPERATIONDENIED_NOIDENTITYVERIFY = "OperationDenied.NoIdentityVerify"
+//  OPERATIONDENIED_USERNOTINORGANIZATION = "OperationDenied.UserNotInOrganization"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_APPLICATION = "ResourceNotFound.Application"
 //  RESOURCENOTFOUND_RESOURCE = "ResourceNotFound.Resource"

@@ -38,6 +38,9 @@ const (
 	// 任务状态不是运行中。
 	FAILEDOPERATION_JOBSTATUSNOTRUNNING = "FailedOperation.JobStatusNotRunning"
 
+	// 任务中没有task。
+	FAILEDOPERATION_NOTASKSINJOB = "FailedOperation.NoTasksInJob"
+
 	// 当前环境不支持。
 	FAILEDOPERATION_NOTSUPPORTEDINENV = "FailedOperation.NotSupportedInEnv"
 

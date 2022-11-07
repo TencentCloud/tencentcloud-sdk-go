@@ -67,6 +67,7 @@ func NewCreateDedicatedClusterResponse() (response *CreateDedicatedClusterRespon
 // 创建专用集群
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_CDCBINDVPCFAIL = "FailedOperation.CdcBindVpcFail"
 //  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
 //  INVALIDPARAMETERVALUE_ZONEMISMATCHREGION = "InvalidParameterValue.ZoneMismatchRegion"
 //  RESOURCENOTFOUND_INVALIDSITEID = "ResourceNotFound.InvalidSiteId"
@@ -78,6 +79,7 @@ func (c *Client) CreateDedicatedCluster(request *CreateDedicatedClusterRequest) 
 // 创建专用集群
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_CDCBINDVPCFAIL = "FailedOperation.CdcBindVpcFail"
 //  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
 //  INVALIDPARAMETERVALUE_ZONEMISMATCHREGION = "InvalidParameterValue.ZoneMismatchRegion"
 //  RESOURCENOTFOUND_INVALIDSITEID = "ResourceNotFound.InvalidSiteId"

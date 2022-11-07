@@ -64,6 +64,11 @@ type AuthFailMessage struct {
 	Message *string `json:"Message,omitempty" name:"Message"`
 }
 
+type AuthorizedUser struct {
+	// 用户openid
+	OpenId *string `json:"OpenId,omitempty" name:"OpenId"`
+}
+
 type CcInfo struct {
 	// 被抄送人手机号，大陆11位手机号
 	Mobile *string `json:"Mobile,omitempty" name:"Mobile"`
@@ -1041,6 +1046,94 @@ func (r *ChannelDescribeEmployeesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ChannelDescribeEmployeesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ChannelDescribeOrganizationSealsRequestParams struct {
+	// 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+
+	// 返回最大数量，最大为100
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移量，默认为0，最大为20000
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 查询信息类型，为0时不返回授权用户，为1时返回
+	InfoType *int64 `json:"InfoType,omitempty" name:"InfoType"`
+
+	// 印章id（没有输入返回所有）
+	SealId *string `json:"SealId,omitempty" name:"SealId"`
+}
+
+type ChannelDescribeOrganizationSealsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 均必填。
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+
+	// 返回最大数量，最大为100
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移量，默认为0，最大为20000
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 查询信息类型，为0时不返回授权用户，为1时返回
+	InfoType *int64 `json:"InfoType,omitempty" name:"InfoType"`
+
+	// 印章id（没有输入返回所有）
+	SealId *string `json:"SealId,omitempty" name:"SealId"`
+}
+
+func (r *ChannelDescribeOrganizationSealsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ChannelDescribeOrganizationSealsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Agent")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "InfoType")
+	delete(f, "SealId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ChannelDescribeOrganizationSealsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ChannelDescribeOrganizationSealsResponseParams struct {
+	// 在设置了SealId时返回0或1，没有设置时返回公司的总印章数量，可能比返回的印章数组数量多
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 查询到的印章结果数组
+	Seals []*OccupiedSeal `json:"Seals,omitempty" name:"Seals"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ChannelDescribeOrganizationSealsResponse struct {
+	*tchttp.BaseResponse
+	Response *ChannelDescribeOrganizationSealsResponseParams `json:"Response"`
+}
+
+func (r *ChannelDescribeOrganizationSealsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ChannelDescribeOrganizationSealsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2504,6 +2597,42 @@ func (r *GetDownloadFlowUrlResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *GetDownloadFlowUrlResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type OccupiedSeal struct {
+	// 电子印章编号
+	SealId *string `json:"SealId,omitempty" name:"SealId"`
+
+	// 电子印章名称
+	SealName *string `json:"SealName,omitempty" name:"SealName"`
+
+	// 电子印章授权时间戳
+	CreateOn *int64 `json:"CreateOn,omitempty" name:"CreateOn"`
+
+	// 电子印章授权人
+	Creator *string `json:"Creator,omitempty" name:"Creator"`
+
+	// 电子印章策略Id
+	SealPolicyId *string `json:"SealPolicyId,omitempty" name:"SealPolicyId"`
+
+	// 印章状态，有以下六种：CHECKING（审核中）SUCCESS（已启用）FAIL（审核拒绝）CHECKING-SADM（待超管审核）DISABLE（已停用）STOPPED（已终止）
+	SealStatus *string `json:"SealStatus,omitempty" name:"SealStatus"`
+
+	// 审核失败原因
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FailReason *string `json:"FailReason,omitempty" name:"FailReason"`
+
+	// 印章图片url，5分钟内有效
+	Url *string `json:"Url,omitempty" name:"Url"`
+
+	// 印章类型
+	SealType *string `json:"SealType,omitempty" name:"SealType"`
+
+	// 用印申请是否为永久授权
+	IsAllTime *bool `json:"IsAllTime,omitempty" name:"IsAllTime"`
+
+	// 授权人列表
+	AuthorizedUsers []*AuthorizedUser `json:"AuthorizedUsers,omitempty" name:"AuthorizedUsers"`
 }
 
 // Predefined struct for user

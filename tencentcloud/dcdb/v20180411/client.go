@@ -3299,6 +3299,7 @@ func NewModifyInstanceNetworkResponse() (response *ModifyInstanceNetworkResponse
 // 可能返回的错误码:
 //  FAILEDOPERATION_APPLYVIPFAILED = "FailedOperation.ApplyVipFailed"
 //  FAILEDOPERATION_WANSTATUSABNORMAL = "FailedOperation.WanStatusAbnormal"
+//  INTERNALERROR_CHECKVIPSTATUSFAILED = "InternalError.CheckVipStatusFailed"
 //  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
 //  INTERNALERROR_GETSUBNETFAILED = "InternalError.GetSubnetFailed"
 //  INTERNALERROR_GETVPCFAILED = "InternalError.GetVpcFailed"
@@ -3319,6 +3320,7 @@ func (c *Client) ModifyInstanceNetwork(request *ModifyInstanceNetworkRequest) (r
 // 可能返回的错误码:
 //  FAILEDOPERATION_APPLYVIPFAILED = "FailedOperation.ApplyVipFailed"
 //  FAILEDOPERATION_WANSTATUSABNORMAL = "FailedOperation.WanStatusAbnormal"
+//  INTERNALERROR_CHECKVIPSTATUSFAILED = "InternalError.CheckVipStatusFailed"
 //  INTERNALERROR_DBOPERATIONFAILED = "InternalError.DbOperationFailed"
 //  INTERNALERROR_GETSUBNETFAILED = "InternalError.GetSubnetFailed"
 //  INTERNALERROR_GETVPCFAILED = "InternalError.GetVpcFailed"
@@ -3375,6 +3377,7 @@ func NewModifyInstanceVipResponse() (response *ModifyInstanceVipResponse) {
 //  INVALIDPARAMETER_VIPNOTINSUBNET = "InvalidParameter.VipNotInSubnet"
 //  INVALIDPARAMETER_VIPUSED = "InvalidParameter.VipUsed"
 //  RESOURCEUNAVAILABLE_INSTANCESTATUSABNORMAL = "ResourceUnavailable.InstanceStatusAbnormal"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) ModifyInstanceVip(request *ModifyInstanceVipRequest) (response *ModifyInstanceVipResponse, err error) {
     return c.ModifyInstanceVipWithContext(context.Background(), request)
 }
@@ -3391,6 +3394,7 @@ func (c *Client) ModifyInstanceVip(request *ModifyInstanceVipRequest) (response 
 //  INVALIDPARAMETER_VIPNOTINSUBNET = "InvalidParameter.VipNotInSubnet"
 //  INVALIDPARAMETER_VIPUSED = "InvalidParameter.VipUsed"
 //  RESOURCEUNAVAILABLE_INSTANCESTATUSABNORMAL = "ResourceUnavailable.InstanceStatusAbnormal"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) ModifyInstanceVipWithContext(ctx context.Context, request *ModifyInstanceVipRequest) (response *ModifyInstanceVipResponse, err error) {
     if request == nil {
         request = NewModifyInstanceVipRequest()

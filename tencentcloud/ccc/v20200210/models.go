@@ -2398,6 +2398,20 @@ type IMCdrInfo struct {
 	// 技能组名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SkillGroupName *string `json:"SkillGroupName,omitempty" name:"SkillGroupName"`
+
+	// 满意度
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Satisfaction *IMSatisfaction `json:"Satisfaction,omitempty" name:"Satisfaction"`
+}
+
+type IMSatisfaction struct {
+	// 满意度值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Id *int64 `json:"Id,omitempty" name:"Id"`
+
+	// 满意度标签
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Label *string `json:"Label,omitempty" name:"Label"`
 }
 
 type IVRKeyPressedElement struct {

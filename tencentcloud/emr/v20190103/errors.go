@@ -59,6 +59,9 @@ const (
 	// 内部服务调用异常。
 	INTERNALERROR_CVMERROR = "InternalError.CvmError"
 
+	// 调用EKS报错。
+	INTERNALERROR_EKSERROR = "InternalError.EKSError"
+
 	// 内部服务调用异常。
 	INTERNALERROR_KMSERROR = "InternalError.KmsError"
 

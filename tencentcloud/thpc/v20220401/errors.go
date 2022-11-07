@@ -68,6 +68,9 @@ const (
 	// 该伸缩组已绑定集群，请更换伸缩组。
 	UNSUPPORTEDOPERATION_AUTOSCALINGGROUPALREADYBINDED = "UnsupportedOperation.AutoScalingGroupAlreadyBinded"
 
+	// 弹性伸缩类型不支持此操作。
+	UNSUPPORTEDOPERATION_AUTOSCALINGTYPE = "UnsupportedOperation.AutoScalingType"
+
 	// 该集群当前状态不支持该操作。
 	UNSUPPORTEDOPERATION_CLUSTERSTATUSNOTSUPPORT = "UnsupportedOperation.ClusterStatusNotSupport"
 

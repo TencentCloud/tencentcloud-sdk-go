@@ -11370,7 +11370,8 @@ type PullStreamTaskInfo struct {
 
 	// 拉流源的类型：
 	// PullLivePushLive -直播，
-	// PullVodPushLive -点播。
+	// PullVodPushLive -点播，
+	// PullPicPushLive -图片。
 	SourceType *string `json:"SourceType,omitempty" name:"SourceType"`
 
 	// 拉流源url列表。
@@ -11493,6 +11494,12 @@ type PullStreamTaskInfo struct {
 	// 水印信息列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	WatermarkList []*PullPushWatermarkInfo `json:"WatermarkList,omitempty" name:"WatermarkList"`
+
+	// 点播源是否启用本地推流模式，默认0，不启用。
+	// 0 - 不启用。
+	// 1 - 启用。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VodLocalMode *int64 `json:"VodLocalMode,omitempty" name:"VodLocalMode"`
 }
 
 type PushAuthKeyInfo struct {
@@ -11633,6 +11640,10 @@ type PushQualityData struct {
 
 	// 流量，单位MB。
 	Flux *float64 `json:"Flux,omitempty" name:"Flux"`
+
+	// 推流服务端 IP。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ServerIp *string `json:"ServerIp,omitempty" name:"ServerIp"`
 }
 
 type RecentPullInfo struct {

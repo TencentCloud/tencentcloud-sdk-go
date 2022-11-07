@@ -17,6 +17,9 @@ package v20201214
 const (
 	// 此产品的特有错误码
 
+	// CDC绑定VPC失败。
+	FAILEDOPERATION_CDCBINDVPCFAIL = "FailedOperation.CdcBindVpcFail"
+
 	// 删除site失败。
 	FAILEDOPERATION_FAILDELETESITE = "FailedOperation.FailDeleteSite"
 

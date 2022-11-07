@@ -161,6 +161,9 @@ const (
 	// 查询开始时间超过文档限制。
 	INVALIDPARAMETER_STARTTIMEEXPIRE = "InvalidParameter.StartTimeExpire"
 
+	// 查询起始时间超过当前监控仪表盘功能版本限制，详情请见:https://cloud.tencent.com/document/product/647/81331。
+	INVALIDPARAMETER_STARTTIMEOVERSIZE = "InvalidParameter.StartTimeOversize"
+
 	// StartTs参数错误。
 	INVALIDPARAMETER_STARTTS = "InvalidParameter.StartTs"
 

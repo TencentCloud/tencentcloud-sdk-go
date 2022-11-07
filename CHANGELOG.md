@@ -1,3 +1,366 @@
+# Release v1.0.532
+
+## 云呼叫中心(ccc) 版本：2020-02-10
+
+### 第 34 次发布
+
+发布时间：2022-11-08 06:12:05
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [IMSatisfaction](https://cloud.tencent.com/document/api/679/47715#IMSatisfaction)
+
+修改数据结构：
+
+* [IMCdrInfo](https://cloud.tencent.com/document/api/679/47715#IMCdrInfo)
+
+	* 新增成员：Satisfaction
+
+
+
+
+## 腾讯电子签企业版(ess) 版本：2020-11-11
+
+### 第 26 次发布
+
+发布时间：2022-11-08 06:25:11
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeOrganizationSeals](https://cloud.tencent.com/document/api/1323/82453)
+
+	* 新增入参：SealId
+
+
+### 第 25 次发布
+
+发布时间：2022-11-07 10:56:26
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeOrganizationSeals](https://cloud.tencent.com/document/api/1323/82453)
+
+新增数据结构：
+
+* [AuthorizedUser](https://cloud.tencent.com/document/api/1323/70369#AuthorizedUser)
+* [OccupiedSeal](https://cloud.tencent.com/document/api/1323/70369#OccupiedSeal)
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
+
+### 第 41 次发布
+
+发布时间：2022-11-08 06:25:25
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ChannelDescribeOrganizationSeals](https://cloud.tencent.com/document/api/1420/82455)
+
+	* 新增入参：SealId
+
+
+### 第 40 次发布
+
+发布时间：2022-11-07 10:56:44
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [ChannelDescribeOrganizationSeals](https://cloud.tencent.com/document/api/1420/82455)
+
+新增数据结构：
+
+* [AuthorizedUser](https://cloud.tencent.com/document/api/1420/61525#AuthorizedUser)
+* [OccupiedSeal](https://cloud.tencent.com/document/api/1420/61525#OccupiedSeal)
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
+
+
+
+## 云直播CSS(live) 版本：2018-08-01
+
+### 第 91 次发布
+
+发布时间：2022-11-08 06:31:20
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [PullStreamTaskInfo](https://cloud.tencent.com/document/api/267/20474#PullStreamTaskInfo)
+
+	* 新增成员：VodLocalMode
+
+* [PushQualityData](https://cloud.tencent.com/document/api/267/20474#PushQualityData)
+
+	* 新增成员：ServerIp
+
+
+
+
+## 云数据库 MariaDB(mariadb) 版本：2017-03-12
+
+### 第 46 次发布
+
+发布时间：2022-11-08 06:32:06
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [TerminateDedicatedDBInstance](https://cloud.tencent.com/document/api/237/82555)
+
+
+
+## 云数据库Redis(redis) 版本：2018-04-12
+
+### 第 59 次发布
+
+发布时间：2022-11-08 06:37:00
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [RenewInstance](https://cloud.tencent.com/document/api/239/20015)
+
+	* 新增入参：ModifyPayMode
+
+
+
+
+## 容器镜像服务(tcr) 版本：2019-09-24
+
+### 第 46 次发布
+
+发布时间：2022-11-08 06:41:24
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeImages](https://cloud.tencent.com/document/api/1141/42723)
+
+	* 新增入参：ExactMatch
+
+
+
+
+## 弹性微服务 TEM(tem) 版本：2021-07-01
+
+### 第 34 次发布
+
+发布时间：2022-11-08 06:44:33
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [TemNamespaceInfo](https://cloud.tencent.com/document/api/1371/60171#TemNamespaceInfo)
+
+	* 新增成员：HasAuthority
+
+* [TemService](https://cloud.tencent.com/document/api/1371/60171#TemService)
+
+	* 新增成员：HasAuthority
+
+
+
+
+## 弹性微服务 TEM(tem) 版本：2020-12-21
+
+
+
+## 云点播(vod) 版本：2018-07-17
+
+### 第 126 次发布
+
+发布时间：2022-11-08 06:50:59
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [StorageRegionInfo](https://cloud.tencent.com/document/api/266/31773#StorageRegionInfo)
+
+	* 新增成员：Area
+
+
+
+
+## 数据开发治理平台 WeData(wedata) 版本：2021-08-20
+
+### 第 11 次发布
+
+发布时间：2022-11-07 15:46:29
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [BatchCreateIntegrationTaskAlarms](https://cloud.tencent.com/document/api/1267/82541)
+* [BatchDeleteIntegrationTasks](https://cloud.tencent.com/document/api/1267/82540)
+* [BatchForceSuccessIntegrationTaskInstances](https://cloud.tencent.com/document/api/1267/82539)
+* [BatchKillIntegrationTaskInstances](https://cloud.tencent.com/document/api/1267/82538)
+* [BatchMakeUpIntegrationTasks](https://cloud.tencent.com/document/api/1267/82537)
+* [BatchRerunIntegrationTaskInstances](https://cloud.tencent.com/document/api/1267/82536)
+* [BatchResumeIntegrationTasks](https://cloud.tencent.com/document/api/1267/82535)
+* [BatchStartIntegrationTasks](https://cloud.tencent.com/document/api/1267/82534)
+* [BatchStopIntegrationTasks](https://cloud.tencent.com/document/api/1267/82533)
+* [BatchSuspendIntegrationTasks](https://cloud.tencent.com/document/api/1267/82532)
+* [BatchUpdateIntegrationTasks](https://cloud.tencent.com/document/api/1267/82531)
+* [CheckAlarmRegularNameExist](https://cloud.tencent.com/document/api/1267/82530)
+* [CheckIntegrationNodeNameExists](https://cloud.tencent.com/document/api/1267/82529)
+* [CheckIntegrationTaskNameExists](https://cloud.tencent.com/document/api/1267/82528)
+* [CheckTaskNameExist](https://cloud.tencent.com/document/api/1267/82527)
+* [CommitIntegrationTask](https://cloud.tencent.com/document/api/1267/82526)
+* [CreateHiveTable](https://cloud.tencent.com/document/api/1267/82525)
+* [CreateHiveTableByDDL](https://cloud.tencent.com/document/api/1267/82524)
+* [CreateInLongAgent](https://cloud.tencent.com/document/api/1267/82523)
+* [CreateIntegrationNode](https://cloud.tencent.com/document/api/1267/82522)
+* [CreateIntegrationTask](https://cloud.tencent.com/document/api/1267/82521)
+* [CreateOfflineTask](https://cloud.tencent.com/document/api/1267/82520)
+* [CreateTaskAlarmRegular](https://cloud.tencent.com/document/api/1267/82519)
+* [DeleteInLongAgent](https://cloud.tencent.com/document/api/1267/82518)
+* [DeleteIntegrationNode](https://cloud.tencent.com/document/api/1267/82517)
+* [DeleteIntegrationTask](https://cloud.tencent.com/document/api/1267/82516)
+* [DeleteOfflineTask](https://cloud.tencent.com/document/api/1267/82515)
+* [DeleteTaskAlarmRegular](https://cloud.tencent.com/document/api/1267/82514)
+* [DescribeAlarmEvents](https://cloud.tencent.com/document/api/1267/82513)
+* [DescribeAlarmReceiver](https://cloud.tencent.com/document/api/1267/82512)
+* [DescribeClusterNamespaceList](https://cloud.tencent.com/document/api/1267/82511)
+* [DescribeDataSourceInfoList](https://cloud.tencent.com/document/api/1267/82546)
+* [DescribeDataTypes](https://cloud.tencent.com/document/api/1267/82552)
+* [DescribeDatabaseInfoList](https://cloud.tencent.com/document/api/1267/82545)
+* [DescribeInLongAgentList](https://cloud.tencent.com/document/api/1267/82510)
+* [DescribeInLongAgentTaskList](https://cloud.tencent.com/document/api/1267/82509)
+* [DescribeInLongAgentVpcList](https://cloud.tencent.com/document/api/1267/82508)
+* [DescribeInLongTkeClusterList](https://cloud.tencent.com/document/api/1267/82507)
+* [DescribeInstanceLastLog](https://cloud.tencent.com/document/api/1267/82506)
+* [DescribeInstanceList](https://cloud.tencent.com/document/api/1267/82505)
+* [DescribeInstanceLog](https://cloud.tencent.com/document/api/1267/82504)
+* [DescribeInstanceLogList](https://cloud.tencent.com/document/api/1267/82503)
+* [DescribeIntegrationNode](https://cloud.tencent.com/document/api/1267/82502)
+* [DescribeIntegrationStatistics](https://cloud.tencent.com/document/api/1267/82501)
+* [DescribeIntegrationStatisticsAgentStatus](https://cloud.tencent.com/document/api/1267/82500)
+* [DescribeIntegrationStatisticsInstanceTrend](https://cloud.tencent.com/document/api/1267/82499)
+* [DescribeIntegrationStatisticsRecordsTrend](https://cloud.tencent.com/document/api/1267/82498)
+* [DescribeIntegrationStatisticsTaskStatus](https://cloud.tencent.com/document/api/1267/82497)
+* [DescribeIntegrationStatisticsTaskStatusTrend](https://cloud.tencent.com/document/api/1267/82496)
+* [DescribeIntegrationTask](https://cloud.tencent.com/document/api/1267/82495)
+* [DescribeIntegrationTasks](https://cloud.tencent.com/document/api/1267/82494)
+* [DescribeIntegrationVersionNodesInfo](https://cloud.tencent.com/document/api/1267/82493)
+* [DescribeKafkaTopicInfo](https://cloud.tencent.com/document/api/1267/82544)
+* [DescribeOfflineTaskToken](https://cloud.tencent.com/document/api/1267/82492)
+* [DescribeRealTimeTaskInstanceNodeInfo](https://cloud.tencent.com/document/api/1267/82491)
+* [DescribeRealTimeTaskMetricOverview](https://cloud.tencent.com/document/api/1267/82490)
+* [DescribeRealTimeTaskSpeed](https://cloud.tencent.com/document/api/1267/82489)
+* [DescribeStandardRuleDetailInfoList](https://cloud.tencent.com/document/api/1267/82488)
+* [DescribeStreamTaskLogList](https://cloud.tencent.com/document/api/1267/82487)
+* [DescribeTableInfoList](https://cloud.tencent.com/document/api/1267/82543)
+* [DescribeTableSchemaInfo](https://cloud.tencent.com/document/api/1267/82542)
+* [DescribeTaskAlarmRegulations](https://cloud.tencent.com/document/api/1267/82486)
+* [DescribeTaskInstance](https://cloud.tencent.com/document/api/1267/82548)
+* [DescribeTaskInstanceReportDetail](https://cloud.tencent.com/document/api/1267/82547)
+* [DescribeTaskLockStatus](https://cloud.tencent.com/document/api/1267/82485)
+* [DescribeTaskReport](https://cloud.tencent.com/document/api/1267/82550)
+* [DescribeTaskReportDetailList](https://cloud.tencent.com/document/api/1267/82549)
+* [DryRunDIOfflineTask](https://cloud.tencent.com/document/api/1267/82484)
+* [GenHiveTableDDLSql](https://cloud.tencent.com/document/api/1267/82483)
+* [GetIntegrationNodeColumnSchema](https://cloud.tencent.com/document/api/1267/82482)
+* [GetOfflineDIInstanceList](https://cloud.tencent.com/document/api/1267/82481)
+* [GetOfflineInstanceList](https://cloud.tencent.com/document/api/1267/82480)
+* [LockIntegrationTask](https://cloud.tencent.com/document/api/1267/82479)
+* [ModifyIntegrationNode](https://cloud.tencent.com/document/api/1267/82478)
+* [ModifyIntegrationTask](https://cloud.tencent.com/document/api/1267/82477)
+* [ModifyTaskAlarmRegular](https://cloud.tencent.com/document/api/1267/82476)
+* [ModifyTaskName](https://cloud.tencent.com/document/api/1267/82475)
+* [RestartInLongAgent](https://cloud.tencent.com/document/api/1267/82474)
+* [ResumeIntegrationTask](https://cloud.tencent.com/document/api/1267/82473)
+* [RobAndLockIntegrationTask](https://cloud.tencent.com/document/api/1267/82472)
+* [StartIntegrationTask](https://cloud.tencent.com/document/api/1267/82471)
+* [StopIntegrationTask](https://cloud.tencent.com/document/api/1267/82470)
+* [SuspendIntegrationTask](https://cloud.tencent.com/document/api/1267/82469)
+* [TaskLog](https://cloud.tencent.com/document/api/1267/82468)
+* [UnlockIntegrationTask](https://cloud.tencent.com/document/api/1267/82467)
+* [UpdateInLongAgent](https://cloud.tencent.com/document/api/1267/82466)
+
+新增数据结构：
+
+* [AlarmEventInfo](https://cloud.tencent.com/document/api/1267/76336#AlarmEventInfo)
+* [AlarmReceiverInfo](https://cloud.tencent.com/document/api/1267/76336#AlarmReceiverInfo)
+* [BytesSpeed](https://cloud.tencent.com/document/api/1267/76336#BytesSpeed)
+* [DatasourceBaseInfo](https://cloud.tencent.com/document/api/1267/76336#DatasourceBaseInfo)
+* [InLongAgentDetail](https://cloud.tencent.com/document/api/1267/76336#InLongAgentDetail)
+* [InLongAgentTask](https://cloud.tencent.com/document/api/1267/76336#InLongAgentTask)
+* [InLongTkeDetail](https://cloud.tencent.com/document/api/1267/76336#InLongTkeDetail)
+* [InstanceNodeInfo](https://cloud.tencent.com/document/api/1267/76336#InstanceNodeInfo)
+* [InstanceReportReadNode](https://cloud.tencent.com/document/api/1267/76336#InstanceReportReadNode)
+* [InstanceReportSummary](https://cloud.tencent.com/document/api/1267/76336#InstanceReportSummary)
+* [InstanceReportWriteNode](https://cloud.tencent.com/document/api/1267/76336#InstanceReportWriteNode)
+* [IntegrationNodeInfo](https://cloud.tencent.com/document/api/1267/76336#IntegrationNodeInfo)
+* [IntegrationStatisticsTrendResult](https://cloud.tencent.com/document/api/1267/76336#IntegrationStatisticsTrendResult)
+* [IntegrationTaskInfo](https://cloud.tencent.com/document/api/1267/76336#IntegrationTaskInfo)
+* [Label](https://cloud.tencent.com/document/api/1267/76336#Label)
+* [LogContent](https://cloud.tencent.com/document/api/1267/76336#LogContent)
+* [LogContentInfo](https://cloud.tencent.com/document/api/1267/76336#LogContentInfo)
+* [Namespace](https://cloud.tencent.com/document/api/1267/76336#Namespace)
+* [OfflineInstance](https://cloud.tencent.com/document/api/1267/76336#OfflineInstance)
+* [OfflineTaskAddParam](https://cloud.tencent.com/document/api/1267/76336#OfflineTaskAddParam)
+* [RealTimeTaskInstanceNodeInfo](https://cloud.tencent.com/document/api/1267/76336#RealTimeTaskInstanceNodeInfo)
+* [RecordsSpeed](https://cloud.tencent.com/document/api/1267/76336#RecordsSpeed)
+* [RobLockState](https://cloud.tencent.com/document/api/1267/76336#RobLockState)
+* [SchedulerTaskInstanceInfo](https://cloud.tencent.com/document/api/1267/76336#SchedulerTaskInstanceInfo)
+* [SchemaDetail](https://cloud.tencent.com/document/api/1267/76336#SchemaDetail)
+* [SearchCondition](https://cloud.tencent.com/document/api/1267/76336#SearchCondition)
+* [SearchConditionInstance](https://cloud.tencent.com/document/api/1267/76336#SearchConditionInstance)
+* [SearchConditionInstanceNew](https://cloud.tencent.com/document/api/1267/76336#SearchConditionInstanceNew)
+* [SearchConditionNew](https://cloud.tencent.com/document/api/1267/76336#SearchConditionNew)
+* [SpeedValue](https://cloud.tencent.com/document/api/1267/76336#SpeedValue)
+* [TableInfo](https://cloud.tencent.com/document/api/1267/76336#TableInfo)
+* [TaskAlarmInfo](https://cloud.tencent.com/document/api/1267/76336#TaskAlarmInfo)
+* [TaskInstanceDetail](https://cloud.tencent.com/document/api/1267/76336#TaskInstanceDetail)
+* [TaskLockStatus](https://cloud.tencent.com/document/api/1267/76336#TaskLockStatus)
+* [TaskReportDetail](https://cloud.tencent.com/document/api/1267/76336#TaskReportDetail)
+
+
+
 # Release v1.0.531
 
 ## 日志服务(cls) 版本：2020-10-16

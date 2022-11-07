@@ -2469,6 +2469,7 @@ func NewDescribeIdleLoadBalancersResponse() (response *DescribeIdleLoadBalancers
 //  INVALIDPARAMETER_LISTENERIDNOTFOUND = "InvalidParameter.ListenerIdNotFound"
 //  INVALIDPARAMETER_LOCATIONNOTFOUND = "InvalidParameter.LocationNotFound"
 //  INVALIDPARAMETER_PORTCHECKFAILED = "InvalidParameter.PortCheckFailed"
+//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
 func (c *Client) DescribeIdleLoadBalancers(request *DescribeIdleLoadBalancersRequest) (response *DescribeIdleLoadBalancersResponse, err error) {
     return c.DescribeIdleLoadBalancersWithContext(context.Background(), request)
 }
@@ -2489,6 +2490,7 @@ func (c *Client) DescribeIdleLoadBalancers(request *DescribeIdleLoadBalancersReq
 //  INVALIDPARAMETER_LISTENERIDNOTFOUND = "InvalidParameter.ListenerIdNotFound"
 //  INVALIDPARAMETER_LOCATIONNOTFOUND = "InvalidParameter.LocationNotFound"
 //  INVALIDPARAMETER_PORTCHECKFAILED = "InvalidParameter.PortCheckFailed"
+//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
 func (c *Client) DescribeIdleLoadBalancersWithContext(ctx context.Context, request *DescribeIdleLoadBalancersRequest) (response *DescribeIdleLoadBalancersResponse, err error) {
     if request == nil {
         request = NewDescribeIdleLoadBalancersRequest()

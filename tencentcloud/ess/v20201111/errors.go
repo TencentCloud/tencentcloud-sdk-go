@@ -437,6 +437,9 @@ const (
 	// 不属于企业超管或者法人。
 	OPERATIONDENIED_NOTBELONGSUPERADMINORLEGALPERSON = "OperationDenied.NotBelongSuperAdminOrLegalPerson"
 
+	// 操作者权限不足。
+	OPERATIONDENIED_OPERATORHASNOPERMISSION = "OperationDenied.OperatorHasNoPermission"
+
 	// 此社会信用编码未查询到结果，请检查后重试。
 	OPERATIONDENIED_ORGUNIFORMSOCIALCREDITCODEERR = "OperationDenied.OrgUniformSocialCreditCodeErr"
 

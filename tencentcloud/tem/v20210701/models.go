@@ -5545,6 +5545,10 @@ type TemNamespaceInfo struct {
 	// 标签
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
+
+	// 资源是否有权限
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HasAuthority *bool `json:"HasAuthority,omitempty" name:"HasAuthority"`
 }
 
 type TemService struct {
@@ -5615,6 +5619,10 @@ type TemService struct {
 	// 标签
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
+
+	// 是否有资源权限
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HasAuthority *bool `json:"HasAuthority,omitempty" name:"HasAuthority"`
 }
 
 type TemServiceVersionInfo struct {

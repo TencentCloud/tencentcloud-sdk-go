@@ -6235,6 +6235,7 @@ func NewDescribeAssetImageRegistryListResponse() (response *DescribeAssetImageRe
 // 镜像仓库镜像仓库列表
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeAssetImageRegistryList(request *DescribeAssetImageRegistryListRequest) (response *DescribeAssetImageRegistryListResponse, err error) {
@@ -6245,6 +6246,7 @@ func (c *Client) DescribeAssetImageRegistryList(request *DescribeAssetImageRegis
 // 镜像仓库镜像仓库列表
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeAssetImageRegistryListWithContext(ctx context.Context, request *DescribeAssetImageRegistryListRequest) (response *DescribeAssetImageRegistryListResponse, err error) {
@@ -6449,6 +6451,7 @@ func NewDescribeAssetImageRegistryRiskInfoListResponse() (response *DescribeAsse
 // 镜像仓库查询镜像高危行为列表
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
 //  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
@@ -6461,6 +6464,7 @@ func (c *Client) DescribeAssetImageRegistryRiskInfoList(request *DescribeAssetIm
 // 镜像仓库查询镜像高危行为列表
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
 //  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
@@ -6755,6 +6759,7 @@ func NewDescribeAssetImageRegistryVulListResponse() (response *DescribeAssetImag
 // 镜像仓库查询镜像漏洞列表
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeAssetImageRegistryVulList(request *DescribeAssetImageRegistryVulListRequest) (response *DescribeAssetImageRegistryVulListResponse, err error) {
@@ -6765,6 +6770,7 @@ func (c *Client) DescribeAssetImageRegistryVulList(request *DescribeAssetImageRe
 // 镜像仓库查询镜像漏洞列表
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeAssetImageRegistryVulListWithContext(ctx context.Context, request *DescribeAssetImageRegistryVulListRequest) (response *DescribeAssetImageRegistryVulListResponse, err error) {

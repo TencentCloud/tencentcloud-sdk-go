@@ -344,6 +344,9 @@ const (
 	// 操作类型不支持。
 	OPERATIONDENIED_OPERATETYPE = "OperationDenied.OperateType"
 
+	// 操作者权限不足。
+	OPERATIONDENIED_OPERATORHASNOPERMISSION = "OperationDenied.OperatorHasNoPermission"
+
 	// 超出查询上限。
 	OPERATIONDENIED_OUTQUERYLIMIT = "OperationDenied.OutQueryLimit"
 

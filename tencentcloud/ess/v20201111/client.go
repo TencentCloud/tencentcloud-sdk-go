@@ -934,6 +934,7 @@ func NewCreateFlowByFilesResponse() (response *CreateFlowByFilesResponse) {
 //  OPERATIONDENIED_FILENOMATCHRESOURCE = "OperationDenied.FileNoMatchResource"
 //  OPERATIONDENIED_FLOWSTATUSFORBID = "OperationDenied.FlowStatusForbid"
 //  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
+//  OPERATIONDENIED_INVALIDAPPROVERAGE = "OperationDenied.InvalidApproverAge"
 //  OPERATIONDENIED_MANYRESOURCEID = "OperationDenied.ManyResourceId"
 //  OPERATIONDENIED_NOIDENTITYVERIFY = "OperationDenied.NoIdentityVerify"
 //  OPERATIONDENIED_NOLOGIN = "OperationDenied.NoLogin"
@@ -1068,6 +1069,7 @@ func (c *Client) CreateFlowByFiles(request *CreateFlowByFilesRequest) (response 
 //  OPERATIONDENIED_FILENOMATCHRESOURCE = "OperationDenied.FileNoMatchResource"
 //  OPERATIONDENIED_FLOWSTATUSFORBID = "OperationDenied.FlowStatusForbid"
 //  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
+//  OPERATIONDENIED_INVALIDAPPROVERAGE = "OperationDenied.InvalidApproverAge"
 //  OPERATIONDENIED_MANYRESOURCEID = "OperationDenied.ManyResourceId"
 //  OPERATIONDENIED_NOIDENTITYVERIFY = "OperationDenied.NoIdentityVerify"
 //  OPERATIONDENIED_NOLOGIN = "OperationDenied.NoLogin"
@@ -2063,6 +2065,60 @@ func (c *Client) DescribeIntegrationEmployeesWithContext(ctx context.Context, re
     request.SetContext(ctx)
     
     response = NewDescribeIntegrationEmployeesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeOrganizationSealsRequest() (request *DescribeOrganizationSealsRequest) {
+    request = &DescribeOrganizationSealsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ess", APIVersion, "DescribeOrganizationSeals")
+    
+    
+    return
+}
+
+func NewDescribeOrganizationSealsResponse() (response *DescribeOrganizationSealsResponse) {
+    response = &DescribeOrganizationSealsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeOrganizationSeals
+// 查询企业印章的列表，需要操作者具有查询印章权限
+//
+// 客户指定需要获取的印章数量和偏移量，数量最多100，超过100按100处理；入参InfoType控制印章是否携带授权人信息，为1则携带，为0则返回的授权人信息为空数组。接口调用成功返回印章的信息列表还有企业印章的总数。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  OPERATIONDENIED_OPERATORHASNOPERMISSION = "OperationDenied.OperatorHasNoPermission"
+func (c *Client) DescribeOrganizationSeals(request *DescribeOrganizationSealsRequest) (response *DescribeOrganizationSealsResponse, err error) {
+    return c.DescribeOrganizationSealsWithContext(context.Background(), request)
+}
+
+// DescribeOrganizationSeals
+// 查询企业印章的列表，需要操作者具有查询印章权限
+//
+// 客户指定需要获取的印章数量和偏移量，数量最多100，超过100按100处理；入参InfoType控制印章是否携带授权人信息，为1则携带，为0则返回的授权人信息为空数组。接口调用成功返回印章的信息列表还有企业印章的总数。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  OPERATIONDENIED_OPERATORHASNOPERMISSION = "OperationDenied.OperatorHasNoPermission"
+func (c *Client) DescribeOrganizationSealsWithContext(ctx context.Context, request *DescribeOrganizationSealsRequest) (response *DescribeOrganizationSealsResponse, err error) {
+    if request == nil {
+        request = NewDescribeOrganizationSealsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeOrganizationSeals require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeOrganizationSealsResponse()
     err = c.Send(request, response)
     return
 }

@@ -20,6 +20,67 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+type AlarmEventInfo struct {
+	// 告警ID
+	AlarmId *string `json:"AlarmId,omitempty" name:"AlarmId"`
+
+	// 告警时间
+	AlarmTime *string `json:"AlarmTime,omitempty" name:"AlarmTime"`
+
+	// 任务ID
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 规则名称
+	RegularName *string `json:"RegularName,omitempty" name:"RegularName"`
+
+	// 告警级别,0表示普通，1表示重要，2表示紧急
+	AlarmLevel *uint64 `json:"AlarmLevel,omitempty" name:"AlarmLevel"`
+
+	// 告警指标,0表示任务失败，1表示任务运行超时，2表示任务停止，3表示任务暂停
+	AlarmIndicator *uint64 `json:"AlarmIndicator,omitempty" name:"AlarmIndicator"`
+
+	// 告警方式,多个用逗号隔开（1:邮件，2:短信，3:微信，4:语音，5:代表企业微信，6:http）
+	AlarmWay *uint64 `json:"AlarmWay,omitempty" name:"AlarmWay"`
+
+	// 告警接收人Id，多个用逗号隔开
+	AlarmRecipientId *string `json:"AlarmRecipientId,omitempty" name:"AlarmRecipientId"`
+
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 告警指标描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AlarmIndicatorDesc *string `json:"AlarmIndicatorDesc,omitempty" name:"AlarmIndicatorDesc"`
+
+	// 指标阈值，1表示离线任务第一次运行失败，2表示离线任务所有重试完成后失败
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TriggerType *uint64 `json:"TriggerType,omitempty" name:"TriggerType"`
+
+	// 预计的超时时间，分钟级别
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EstimatedTime *uint64 `json:"EstimatedTime,omitempty" name:"EstimatedTime"`
+
+	// 实例ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 任务名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskName *string `json:"TaskName,omitempty" name:"TaskName"`
+
+	// 0：部分成功，1：全部成功，2：全部失败
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsSendSuccess *uint64 `json:"IsSendSuccess,omitempty" name:"IsSendSuccess"`
+
+	// 消息ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MessageId *string `json:"MessageId,omitempty" name:"MessageId"`
+
+	// 阈值计算算子，1 : 大于 2 ：小于
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Operator *int64 `json:"Operator,omitempty" name:"Operator"`
+}
+
 type AlarmInfo struct {
 	// 关联任务id
 	TaskIds *string `json:"TaskIds,omitempty" name:"TaskIds"`
@@ -50,6 +111,192 @@ type AlarmInfo struct {
 
 	// 告警状态设置；1表示可用；0表示不可用，默认可用
 	Status *uint64 `json:"Status,omitempty" name:"Status"`
+}
+
+type AlarmReceiverInfo struct {
+	// 告警ID
+	AlarmId *string `json:"AlarmId,omitempty" name:"AlarmId"`
+
+	// 告警接收人ID
+	AlarmReceiver *string `json:"AlarmReceiver,omitempty" name:"AlarmReceiver"`
+
+	// 邮件，0：未设置，1：成功，2：失败
+	Email *uint64 `json:"Email,omitempty" name:"Email"`
+
+	// 短信，0：未设置，1：成功，2：失败
+	Sms *uint64 `json:"Sms,omitempty" name:"Sms"`
+
+	// 微信，0：未设置，1：成功，2：失败
+	Wechat *uint64 `json:"Wechat,omitempty" name:"Wechat"`
+
+	// 电话，0：未设置，1：成功，2：失败
+	Voice *uint64 `json:"Voice,omitempty" name:"Voice"`
+
+	// 企业微信，0：未设置，1：成功，2：失败
+	Wecom *uint64 `json:"Wecom,omitempty" name:"Wecom"`
+
+	// http，0：未设置，1：成功，2：失败
+	Http *uint64 `json:"Http,omitempty" name:"Http"`
+}
+
+// Predefined struct for user
+type BatchCreateIntegrationTaskAlarmsRequestParams struct {
+	// 任务id
+	TaskIds []*string `json:"TaskIds,omitempty" name:"TaskIds"`
+
+	// 告警配置信息
+	TaskAlarmInfo *TaskAlarmInfo `json:"TaskAlarmInfo,omitempty" name:"TaskAlarmInfo"`
+
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+}
+
+type BatchCreateIntegrationTaskAlarmsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 任务id
+	TaskIds []*string `json:"TaskIds,omitempty" name:"TaskIds"`
+
+	// 告警配置信息
+	TaskAlarmInfo *TaskAlarmInfo `json:"TaskAlarmInfo,omitempty" name:"TaskAlarmInfo"`
+
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+}
+
+func (r *BatchCreateIntegrationTaskAlarmsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BatchCreateIntegrationTaskAlarmsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskIds")
+	delete(f, "TaskAlarmInfo")
+	delete(f, "ProjectId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BatchCreateIntegrationTaskAlarmsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type BatchCreateIntegrationTaskAlarmsResponseParams struct {
+	// 操作成功的任务数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SuccessCount *int64 `json:"SuccessCount,omitempty" name:"SuccessCount"`
+
+	// 操作失败的任务数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FailedCount *int64 `json:"FailedCount,omitempty" name:"FailedCount"`
+
+	// 任务总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type BatchCreateIntegrationTaskAlarmsResponse struct {
+	*tchttp.BaseResponse
+	Response *BatchCreateIntegrationTaskAlarmsResponseParams `json:"Response"`
+}
+
+func (r *BatchCreateIntegrationTaskAlarmsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BatchCreateIntegrationTaskAlarmsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type BatchDeleteIntegrationTasksRequestParams struct {
+	// 任务id
+	TaskIds []*string `json:"TaskIds,omitempty" name:"TaskIds"`
+
+	// 任务类型
+	TaskType *int64 `json:"TaskType,omitempty" name:"TaskType"`
+
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+}
+
+type BatchDeleteIntegrationTasksRequest struct {
+	*tchttp.BaseRequest
+	
+	// 任务id
+	TaskIds []*string `json:"TaskIds,omitempty" name:"TaskIds"`
+
+	// 任务类型
+	TaskType *int64 `json:"TaskType,omitempty" name:"TaskType"`
+
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+}
+
+func (r *BatchDeleteIntegrationTasksRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BatchDeleteIntegrationTasksRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskIds")
+	delete(f, "TaskType")
+	delete(f, "ProjectId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BatchDeleteIntegrationTasksRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type BatchDeleteIntegrationTasksResponseParams struct {
+	// 操作成功的任务数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SuccessCount *int64 `json:"SuccessCount,omitempty" name:"SuccessCount"`
+
+	// 操作失败的任务数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FailedCount *int64 `json:"FailedCount,omitempty" name:"FailedCount"`
+
+	// 任务总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type BatchDeleteIntegrationTasksResponse struct {
+	*tchttp.BaseResponse
+	Response *BatchDeleteIntegrationTasksResponseParams `json:"Response"`
+}
+
+func (r *BatchDeleteIntegrationTasksResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BatchDeleteIntegrationTasksResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user
@@ -135,6 +382,237 @@ func (r *BatchDeleteTasksNewResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type BatchForceSuccessIntegrationTaskInstancesRequestParams struct {
+	// 实例信息
+	Instances []*SchedulerTaskInstanceInfo `json:"Instances,omitempty" name:"Instances"`
+
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+}
+
+type BatchForceSuccessIntegrationTaskInstancesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例信息
+	Instances []*SchedulerTaskInstanceInfo `json:"Instances,omitempty" name:"Instances"`
+
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+}
+
+func (r *BatchForceSuccessIntegrationTaskInstancesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BatchForceSuccessIntegrationTaskInstancesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Instances")
+	delete(f, "ProjectId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BatchForceSuccessIntegrationTaskInstancesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type BatchForceSuccessIntegrationTaskInstancesResponseParams struct {
+	// 操作成功的任务数
+	SuccessCount *int64 `json:"SuccessCount,omitempty" name:"SuccessCount"`
+
+	// 操作失败的任务数
+	FailedCount *int64 `json:"FailedCount,omitempty" name:"FailedCount"`
+
+	// 任务总数
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type BatchForceSuccessIntegrationTaskInstancesResponse struct {
+	*tchttp.BaseResponse
+	Response *BatchForceSuccessIntegrationTaskInstancesResponseParams `json:"Response"`
+}
+
+func (r *BatchForceSuccessIntegrationTaskInstancesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BatchForceSuccessIntegrationTaskInstancesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type BatchKillIntegrationTaskInstancesRequestParams struct {
+	// 实例信息
+	Instances []*SchedulerTaskInstanceInfo `json:"Instances,omitempty" name:"Instances"`
+
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+}
+
+type BatchKillIntegrationTaskInstancesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例信息
+	Instances []*SchedulerTaskInstanceInfo `json:"Instances,omitempty" name:"Instances"`
+
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+}
+
+func (r *BatchKillIntegrationTaskInstancesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BatchKillIntegrationTaskInstancesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Instances")
+	delete(f, "ProjectId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BatchKillIntegrationTaskInstancesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type BatchKillIntegrationTaskInstancesResponseParams struct {
+	// 操作成功的任务数
+	SuccessCount *int64 `json:"SuccessCount,omitempty" name:"SuccessCount"`
+
+	// 操作失败的任务数
+	FailedCount *int64 `json:"FailedCount,omitempty" name:"FailedCount"`
+
+	// 任务总数
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type BatchKillIntegrationTaskInstancesResponse struct {
+	*tchttp.BaseResponse
+	Response *BatchKillIntegrationTaskInstancesResponseParams `json:"Response"`
+}
+
+func (r *BatchKillIntegrationTaskInstancesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BatchKillIntegrationTaskInstancesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type BatchMakeUpIntegrationTasksRequestParams struct {
+	// 任务id
+	TaskIds []*string `json:"TaskIds,omitempty" name:"TaskIds"`
+
+	// 任务类型
+	TaskType *int64 `json:"TaskType,omitempty" name:"TaskType"`
+
+	// 补数据开始时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 补数据结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+}
+
+type BatchMakeUpIntegrationTasksRequest struct {
+	*tchttp.BaseRequest
+	
+	// 任务id
+	TaskIds []*string `json:"TaskIds,omitempty" name:"TaskIds"`
+
+	// 任务类型
+	TaskType *int64 `json:"TaskType,omitempty" name:"TaskType"`
+
+	// 补数据开始时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 补数据结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+}
+
+func (r *BatchMakeUpIntegrationTasksRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BatchMakeUpIntegrationTasksRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskIds")
+	delete(f, "TaskType")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "ProjectId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BatchMakeUpIntegrationTasksRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type BatchMakeUpIntegrationTasksResponseParams struct {
+	// 操作成功的任务数
+	SuccessCount *int64 `json:"SuccessCount,omitempty" name:"SuccessCount"`
+
+	// 操作失败的任务数
+	FailedCount *int64 `json:"FailedCount,omitempty" name:"FailedCount"`
+
+	// 任务总数
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type BatchMakeUpIntegrationTasksResponse struct {
+	*tchttp.BaseResponse
+	Response *BatchMakeUpIntegrationTasksResponseParams `json:"Response"`
+}
+
+func (r *BatchMakeUpIntegrationTasksResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BatchMakeUpIntegrationTasksResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type BatchModifyOwnersNewRequestParams struct {
 	// 需要更新责任人的TaskId数组
 	TaskIdList []*string `json:"TaskIdList,omitempty" name:"TaskIdList"`
@@ -216,6 +694,76 @@ type BatchOperateResult struct {
 	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 }
 
+// Predefined struct for user
+type BatchRerunIntegrationTaskInstancesRequestParams struct {
+	// 实例信息
+	Instances []*SchedulerTaskInstanceInfo `json:"Instances,omitempty" name:"Instances"`
+
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+}
+
+type BatchRerunIntegrationTaskInstancesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例信息
+	Instances []*SchedulerTaskInstanceInfo `json:"Instances,omitempty" name:"Instances"`
+
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+}
+
+func (r *BatchRerunIntegrationTaskInstancesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BatchRerunIntegrationTaskInstancesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Instances")
+	delete(f, "ProjectId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BatchRerunIntegrationTaskInstancesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type BatchRerunIntegrationTaskInstancesResponseParams struct {
+	// 操作成功的任务数
+	SuccessCount *int64 `json:"SuccessCount,omitempty" name:"SuccessCount"`
+
+	// 操作失败的任务数
+	FailedCount *int64 `json:"FailedCount,omitempty" name:"FailedCount"`
+
+	// 任务总数
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type BatchRerunIntegrationTaskInstancesResponse struct {
+	*tchttp.BaseResponse
+	Response *BatchRerunIntegrationTaskInstancesResponseParams `json:"Response"`
+}
+
+func (r *BatchRerunIntegrationTaskInstancesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BatchRerunIntegrationTaskInstancesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type BatchResult struct {
 	// 正在运行的任务数
 	Running *int64 `json:"Running,omitempty" name:"Running"`
@@ -230,6 +778,83 @@ type BatchResult struct {
 	Total *int64 `json:"Total,omitempty" name:"Total"`
 }
 
+// Predefined struct for user
+type BatchResumeIntegrationTasksRequestParams struct {
+	// 任务id
+	TaskIds []*string `json:"TaskIds,omitempty" name:"TaskIds"`
+
+	// 任务类型
+	TaskType *int64 `json:"TaskType,omitempty" name:"TaskType"`
+
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+}
+
+type BatchResumeIntegrationTasksRequest struct {
+	*tchttp.BaseRequest
+	
+	// 任务id
+	TaskIds []*string `json:"TaskIds,omitempty" name:"TaskIds"`
+
+	// 任务类型
+	TaskType *int64 `json:"TaskType,omitempty" name:"TaskType"`
+
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+}
+
+func (r *BatchResumeIntegrationTasksRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BatchResumeIntegrationTasksRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskIds")
+	delete(f, "TaskType")
+	delete(f, "ProjectId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BatchResumeIntegrationTasksRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type BatchResumeIntegrationTasksResponseParams struct {
+	// 操作成功的任务数
+	SuccessCount *int64 `json:"SuccessCount,omitempty" name:"SuccessCount"`
+
+	// 操作失败的任务数
+	FailedCount *int64 `json:"FailedCount,omitempty" name:"FailedCount"`
+
+	// 任务总数
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type BatchResumeIntegrationTasksResponse struct {
+	*tchttp.BaseResponse
+	Response *BatchResumeIntegrationTasksResponseParams `json:"Response"`
+}
+
+func (r *BatchResumeIntegrationTasksResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BatchResumeIntegrationTasksResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type BatchReturn struct {
 	// 执行结果
 	Result *bool `json:"Result,omitempty" name:"Result"`
@@ -241,6 +866,160 @@ type BatchReturn struct {
 	// 执行情况id
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrorId *string `json:"ErrorId,omitempty" name:"ErrorId"`
+}
+
+// Predefined struct for user
+type BatchStartIntegrationTasksRequestParams struct {
+	// 任务id
+	TaskIds []*string `json:"TaskIds,omitempty" name:"TaskIds"`
+
+	// 任务类型
+	TaskType *int64 `json:"TaskType,omitempty" name:"TaskType"`
+
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+}
+
+type BatchStartIntegrationTasksRequest struct {
+	*tchttp.BaseRequest
+	
+	// 任务id
+	TaskIds []*string `json:"TaskIds,omitempty" name:"TaskIds"`
+
+	// 任务类型
+	TaskType *int64 `json:"TaskType,omitempty" name:"TaskType"`
+
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+}
+
+func (r *BatchStartIntegrationTasksRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BatchStartIntegrationTasksRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskIds")
+	delete(f, "TaskType")
+	delete(f, "ProjectId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BatchStartIntegrationTasksRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type BatchStartIntegrationTasksResponseParams struct {
+	// 操作成功的任务数
+	SuccessCount *int64 `json:"SuccessCount,omitempty" name:"SuccessCount"`
+
+	// 操作失败的任务数
+	FailedCount *int64 `json:"FailedCount,omitempty" name:"FailedCount"`
+
+	// 任务总数
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type BatchStartIntegrationTasksResponse struct {
+	*tchttp.BaseResponse
+	Response *BatchStartIntegrationTasksResponseParams `json:"Response"`
+}
+
+func (r *BatchStartIntegrationTasksResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BatchStartIntegrationTasksResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type BatchStopIntegrationTasksRequestParams struct {
+	// 任务id
+	TaskIds []*string `json:"TaskIds,omitempty" name:"TaskIds"`
+
+	// 任务类型
+	TaskType *int64 `json:"TaskType,omitempty" name:"TaskType"`
+
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+}
+
+type BatchStopIntegrationTasksRequest struct {
+	*tchttp.BaseRequest
+	
+	// 任务id
+	TaskIds []*string `json:"TaskIds,omitempty" name:"TaskIds"`
+
+	// 任务类型
+	TaskType *int64 `json:"TaskType,omitempty" name:"TaskType"`
+
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+}
+
+func (r *BatchStopIntegrationTasksRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BatchStopIntegrationTasksRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskIds")
+	delete(f, "TaskType")
+	delete(f, "ProjectId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BatchStopIntegrationTasksRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type BatchStopIntegrationTasksResponseParams struct {
+	// 操作成功的任务数
+	SuccessCount *int64 `json:"SuccessCount,omitempty" name:"SuccessCount"`
+
+	// 操作失败的任务数
+	FailedCount *int64 `json:"FailedCount,omitempty" name:"FailedCount"`
+
+	// 任务总数
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type BatchStopIntegrationTasksResponse struct {
+	*tchttp.BaseResponse
+	Response *BatchStopIntegrationTasksResponseParams `json:"Response"`
+}
+
+func (r *BatchStopIntegrationTasksResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BatchStopIntegrationTasksResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user
@@ -307,12 +1086,573 @@ func (r *BatchStopTasksNewResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type BatchSuspendIntegrationTasksRequestParams struct {
+	// 任务id
+	TaskIds []*string `json:"TaskIds,omitempty" name:"TaskIds"`
+
+	// 任务类型
+	TaskType *int64 `json:"TaskType,omitempty" name:"TaskType"`
+
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+}
+
+type BatchSuspendIntegrationTasksRequest struct {
+	*tchttp.BaseRequest
+	
+	// 任务id
+	TaskIds []*string `json:"TaskIds,omitempty" name:"TaskIds"`
+
+	// 任务类型
+	TaskType *int64 `json:"TaskType,omitempty" name:"TaskType"`
+
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+}
+
+func (r *BatchSuspendIntegrationTasksRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BatchSuspendIntegrationTasksRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskIds")
+	delete(f, "TaskType")
+	delete(f, "ProjectId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BatchSuspendIntegrationTasksRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type BatchSuspendIntegrationTasksResponseParams struct {
+	// 操作成功的任务数
+	SuccessCount *int64 `json:"SuccessCount,omitempty" name:"SuccessCount"`
+
+	// 操作失败的任务数
+	FailedCount *int64 `json:"FailedCount,omitempty" name:"FailedCount"`
+
+	// 任务总数
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type BatchSuspendIntegrationTasksResponse struct {
+	*tchttp.BaseResponse
+	Response *BatchSuspendIntegrationTasksResponseParams `json:"Response"`
+}
+
+func (r *BatchSuspendIntegrationTasksResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BatchSuspendIntegrationTasksResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type BatchUpdateIntegrationTasksRequestParams struct {
+	// 任务id
+	TaskIds []*string `json:"TaskIds,omitempty" name:"TaskIds"`
+
+	// 责任人（多个责任人用小写分号隔开；离线任务传入的是账号名，实时任务传入的是账号id）
+	Incharge *string `json:"Incharge,omitempty" name:"Incharge"`
+
+	// 任务类型
+	TaskType *int64 `json:"TaskType,omitempty" name:"TaskType"`
+
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+}
+
+type BatchUpdateIntegrationTasksRequest struct {
+	*tchttp.BaseRequest
+	
+	// 任务id
+	TaskIds []*string `json:"TaskIds,omitempty" name:"TaskIds"`
+
+	// 责任人（多个责任人用小写分号隔开；离线任务传入的是账号名，实时任务传入的是账号id）
+	Incharge *string `json:"Incharge,omitempty" name:"Incharge"`
+
+	// 任务类型
+	TaskType *int64 `json:"TaskType,omitempty" name:"TaskType"`
+
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+}
+
+func (r *BatchUpdateIntegrationTasksRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BatchUpdateIntegrationTasksRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskIds")
+	delete(f, "Incharge")
+	delete(f, "TaskType")
+	delete(f, "ProjectId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BatchUpdateIntegrationTasksRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type BatchUpdateIntegrationTasksResponseParams struct {
+	// 操作成功的任务数
+	SuccessCount *int64 `json:"SuccessCount,omitempty" name:"SuccessCount"`
+
+	// 操作失败的任务数
+	FailedCount *int64 `json:"FailedCount,omitempty" name:"FailedCount"`
+
+	// 任务总数
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type BatchUpdateIntegrationTasksResponse struct {
+	*tchttp.BaseResponse
+	Response *BatchUpdateIntegrationTasksResponseParams `json:"Response"`
+}
+
+func (r *BatchUpdateIntegrationTasksResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BatchUpdateIntegrationTasksResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type BytesSpeed struct {
+	// 节点类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NodeType *string `json:"NodeType,omitempty" name:"NodeType"`
+
+	// 节点名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NodeName *string `json:"NodeName,omitempty" name:"NodeName"`
+
+	// 速度值列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Values []*SpeedValue `json:"Values,omitempty" name:"Values"`
+}
+
 type CanvasInfo struct {
 	// 画布任务信息
 	TasksList []*TaskCanvasInfo `json:"TasksList,omitempty" name:"TasksList"`
 
 	// 画布任务链接信息
 	LinksList []*TaskLinkInfo `json:"LinksList,omitempty" name:"LinksList"`
+}
+
+// Predefined struct for user
+type CheckAlarmRegularNameExistRequestParams struct {
+	// 项目名称
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 任务ID
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 规则名称
+	AlarmRegularName *string `json:"AlarmRegularName,omitempty" name:"AlarmRegularName"`
+
+	// 主键ID
+	Id *string `json:"Id,omitempty" name:"Id"`
+}
+
+type CheckAlarmRegularNameExistRequest struct {
+	*tchttp.BaseRequest
+	
+	// 项目名称
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 任务ID
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 规则名称
+	AlarmRegularName *string `json:"AlarmRegularName,omitempty" name:"AlarmRegularName"`
+
+	// 主键ID
+	Id *string `json:"Id,omitempty" name:"Id"`
+}
+
+func (r *CheckAlarmRegularNameExistRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CheckAlarmRegularNameExistRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProjectId")
+	delete(f, "TaskId")
+	delete(f, "AlarmRegularName")
+	delete(f, "Id")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CheckAlarmRegularNameExistRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CheckAlarmRegularNameExistResponseParams struct {
+	// 是否重名
+	Data *bool `json:"Data,omitempty" name:"Data"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CheckAlarmRegularNameExistResponse struct {
+	*tchttp.BaseResponse
+	Response *CheckAlarmRegularNameExistResponseParams `json:"Response"`
+}
+
+func (r *CheckAlarmRegularNameExistResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CheckAlarmRegularNameExistResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CheckIntegrationNodeNameExistsRequestParams struct {
+	// 任务ID
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 节点名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 节点ID
+	Id *int64 `json:"Id,omitempty" name:"Id"`
+}
+
+type CheckIntegrationNodeNameExistsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 任务ID
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 节点名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 节点ID
+	Id *int64 `json:"Id,omitempty" name:"Id"`
+}
+
+func (r *CheckIntegrationNodeNameExistsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CheckIntegrationNodeNameExistsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	delete(f, "Name")
+	delete(f, "ProjectId")
+	delete(f, "Id")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CheckIntegrationNodeNameExistsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CheckIntegrationNodeNameExistsResponseParams struct {
+	// 返回true代表存在，返回false代表不存在
+	Data *bool `json:"Data,omitempty" name:"Data"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CheckIntegrationNodeNameExistsResponse struct {
+	*tchttp.BaseResponse
+	Response *CheckIntegrationNodeNameExistsResponseParams `json:"Response"`
+}
+
+func (r *CheckIntegrationNodeNameExistsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CheckIntegrationNodeNameExistsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CheckIntegrationTaskNameExistsRequestParams struct {
+	// 任务名称
+	TaskName *string `json:"TaskName,omitempty" name:"TaskName"`
+
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 任务ID
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 同步类型1.单表同步，2.解决方案
+	SyncType *int64 `json:"SyncType,omitempty" name:"SyncType"`
+}
+
+type CheckIntegrationTaskNameExistsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 任务名称
+	TaskName *string `json:"TaskName,omitempty" name:"TaskName"`
+
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 任务ID
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 同步类型1.单表同步，2.解决方案
+	SyncType *int64 `json:"SyncType,omitempty" name:"SyncType"`
+}
+
+func (r *CheckIntegrationTaskNameExistsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CheckIntegrationTaskNameExistsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskName")
+	delete(f, "ProjectId")
+	delete(f, "TaskId")
+	delete(f, "SyncType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CheckIntegrationTaskNameExistsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CheckIntegrationTaskNameExistsResponseParams struct {
+	// true表示存在，false表示不存在
+	Data *bool `json:"Data,omitempty" name:"Data"`
+
+	// 任务名重复类型（0:未重复, 1:开发态重复, 2:生产态重复）
+	ExistsType *int64 `json:"ExistsType,omitempty" name:"ExistsType"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CheckIntegrationTaskNameExistsResponse struct {
+	*tchttp.BaseResponse
+	Response *CheckIntegrationTaskNameExistsResponseParams `json:"Response"`
+}
+
+func (r *CheckIntegrationTaskNameExistsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CheckIntegrationTaskNameExistsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CheckTaskNameExistRequestParams struct {
+	// 项目id/工作空间id
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 任务类型（跟调度传参保持一致27）
+	TypeId *int64 `json:"TypeId,omitempty" name:"TypeId"`
+
+	// 任务名
+	TaskName *string `json:"TaskName,omitempty" name:"TaskName"`
+}
+
+type CheckTaskNameExistRequest struct {
+	*tchttp.BaseRequest
+	
+	// 项目id/工作空间id
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 任务类型（跟调度传参保持一致27）
+	TypeId *int64 `json:"TypeId,omitempty" name:"TypeId"`
+
+	// 任务名
+	TaskName *string `json:"TaskName,omitempty" name:"TaskName"`
+}
+
+func (r *CheckTaskNameExistRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CheckTaskNameExistRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProjectId")
+	delete(f, "TypeId")
+	delete(f, "TaskName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CheckTaskNameExistRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CheckTaskNameExistResponseParams struct {
+	// 结果
+	Data *bool `json:"Data,omitempty" name:"Data"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CheckTaskNameExistResponse struct {
+	*tchttp.BaseResponse
+	Response *CheckTaskNameExistResponseParams `json:"Response"`
+}
+
+func (r *CheckTaskNameExistResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CheckTaskNameExistResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CommitIntegrationTaskRequestParams struct {
+	// 任务id
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 0.仅提交，1.立即启动，2.停止线上作业，丢弃作业状态数据，重新启动运行，3.暂停线上作业，保留作业状态数据，继续运行，4.保留作业状态数据，继续运行
+	CommitType *int64 `json:"CommitType,omitempty" name:"CommitType"`
+
+	// 实时任务 201   离线任务 202  默认实时任务
+	TaskType *uint64 `json:"TaskType,omitempty" name:"TaskType"`
+}
+
+type CommitIntegrationTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// 任务id
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 0.仅提交，1.立即启动，2.停止线上作业，丢弃作业状态数据，重新启动运行，3.暂停线上作业，保留作业状态数据，继续运行，4.保留作业状态数据，继续运行
+	CommitType *int64 `json:"CommitType,omitempty" name:"CommitType"`
+
+	// 实时任务 201   离线任务 202  默认实时任务
+	TaskType *uint64 `json:"TaskType,omitempty" name:"TaskType"`
+}
+
+func (r *CommitIntegrationTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CommitIntegrationTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	delete(f, "ProjectId")
+	delete(f, "CommitType")
+	delete(f, "TaskType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CommitIntegrationTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CommitIntegrationTaskResponseParams struct {
+	// 操作成功与否标识
+	Data *bool `json:"Data,omitempty" name:"Data"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CommitIntegrationTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *CommitIntegrationTaskResponseParams `json:"Response"`
+}
+
+func (r *CommitIntegrationTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CommitIntegrationTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type CommonContent struct {
@@ -667,6 +2007,548 @@ func (r *CreateFolderResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateHiveTableByDDLRequestParams struct {
+	// 数据源ID
+	DatasourceId *string `json:"DatasourceId,omitempty" name:"DatasourceId"`
+
+	// 数据库
+	Database *string `json:"Database,omitempty" name:"Database"`
+
+	// 建hive表ddl
+	DDLSql *string `json:"DDLSql,omitempty" name:"DDLSql"`
+
+	// 表权限 ，默认为0:项目共享;1:仅个人与管理员
+	Privilege *int64 `json:"Privilege,omitempty" name:"Privilege"`
+
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 目标表类型(HIVE或GBASE)
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 责任人
+	Incharge *string `json:"Incharge,omitempty" name:"Incharge"`
+}
+
+type CreateHiveTableByDDLRequest struct {
+	*tchttp.BaseRequest
+	
+	// 数据源ID
+	DatasourceId *string `json:"DatasourceId,omitempty" name:"DatasourceId"`
+
+	// 数据库
+	Database *string `json:"Database,omitempty" name:"Database"`
+
+	// 建hive表ddl
+	DDLSql *string `json:"DDLSql,omitempty" name:"DDLSql"`
+
+	// 表权限 ，默认为0:项目共享;1:仅个人与管理员
+	Privilege *int64 `json:"Privilege,omitempty" name:"Privilege"`
+
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 目标表类型(HIVE或GBASE)
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 责任人
+	Incharge *string `json:"Incharge,omitempty" name:"Incharge"`
+}
+
+func (r *CreateHiveTableByDDLRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateHiveTableByDDLRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DatasourceId")
+	delete(f, "Database")
+	delete(f, "DDLSql")
+	delete(f, "Privilege")
+	delete(f, "ProjectId")
+	delete(f, "Type")
+	delete(f, "Incharge")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateHiveTableByDDLRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateHiveTableByDDLResponseParams struct {
+	// 表名称
+	Data *string `json:"Data,omitempty" name:"Data"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateHiveTableByDDLResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateHiveTableByDDLResponseParams `json:"Response"`
+}
+
+func (r *CreateHiveTableByDDLResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateHiveTableByDDLResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateHiveTableRequestParams struct {
+	// 数据源id
+	DatasourceId *string `json:"DatasourceId,omitempty" name:"DatasourceId"`
+
+	// 数据库
+	Database *string `json:"Database,omitempty" name:"Database"`
+
+	// 建hive表ddl
+	DDLSql *string `json:"DDLSql,omitempty" name:"DDLSql"`
+
+	// 表权限 ，默认为0:项目共享;1:仅个人与管理员
+	Privilege *int64 `json:"Privilege,omitempty" name:"Privilege"`
+
+	// 项目Id
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 责任人
+	Incharge *string `json:"Incharge,omitempty" name:"Incharge"`
+}
+
+type CreateHiveTableRequest struct {
+	*tchttp.BaseRequest
+	
+	// 数据源id
+	DatasourceId *string `json:"DatasourceId,omitempty" name:"DatasourceId"`
+
+	// 数据库
+	Database *string `json:"Database,omitempty" name:"Database"`
+
+	// 建hive表ddl
+	DDLSql *string `json:"DDLSql,omitempty" name:"DDLSql"`
+
+	// 表权限 ，默认为0:项目共享;1:仅个人与管理员
+	Privilege *int64 `json:"Privilege,omitempty" name:"Privilege"`
+
+	// 项目Id
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 责任人
+	Incharge *string `json:"Incharge,omitempty" name:"Incharge"`
+}
+
+func (r *CreateHiveTableRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateHiveTableRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DatasourceId")
+	delete(f, "Database")
+	delete(f, "DDLSql")
+	delete(f, "Privilege")
+	delete(f, "ProjectId")
+	delete(f, "Incharge")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateHiveTableRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateHiveTableResponseParams struct {
+	// 建表是否成功
+	IsSuccess *bool `json:"IsSuccess,omitempty" name:"IsSuccess"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateHiveTableResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateHiveTableResponseParams `json:"Response"`
+}
+
+func (r *CreateHiveTableResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateHiveTableResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateInLongAgentRequestParams struct {
+	// 采集器类型，1：TKE Agent，2：BOSS SDK，默认：1
+	AgentType *uint64 `json:"AgentType,omitempty" name:"AgentType"`
+
+	// 采集器名称
+	AgentName *string `json:"AgentName,omitempty" name:"AgentName"`
+
+	// 集成资源组id
+	ExecutorGroupId *string `json:"ExecutorGroupId,omitempty" name:"ExecutorGroupId"`
+
+	// WeData项目ID
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// TKE集群的地域
+	TkeRegion *string `json:"TkeRegion,omitempty" name:"TkeRegion"`
+
+	// 当AgentType为1时，必填。当AgentType为2时，不用填
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+}
+
+type CreateInLongAgentRequest struct {
+	*tchttp.BaseRequest
+	
+	// 采集器类型，1：TKE Agent，2：BOSS SDK，默认：1
+	AgentType *uint64 `json:"AgentType,omitempty" name:"AgentType"`
+
+	// 采集器名称
+	AgentName *string `json:"AgentName,omitempty" name:"AgentName"`
+
+	// 集成资源组id
+	ExecutorGroupId *string `json:"ExecutorGroupId,omitempty" name:"ExecutorGroupId"`
+
+	// WeData项目ID
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// TKE集群的地域
+	TkeRegion *string `json:"TkeRegion,omitempty" name:"TkeRegion"`
+
+	// 当AgentType为1时，必填。当AgentType为2时，不用填
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+}
+
+func (r *CreateInLongAgentRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateInLongAgentRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AgentType")
+	delete(f, "AgentName")
+	delete(f, "ExecutorGroupId")
+	delete(f, "ProjectId")
+	delete(f, "TkeRegion")
+	delete(f, "ClusterId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateInLongAgentRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateInLongAgentResponseParams struct {
+	// 采集器ID
+	AgentId *string `json:"AgentId,omitempty" name:"AgentId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateInLongAgentResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateInLongAgentResponseParams `json:"Response"`
+}
+
+func (r *CreateInLongAgentResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateInLongAgentResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateIntegrationNodeRequestParams struct {
+	// 集成节点信息
+	NodeInfo *IntegrationNodeInfo `json:"NodeInfo,omitempty" name:"NodeInfo"`
+
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 任务类型
+	TaskType *uint64 `json:"TaskType,omitempty" name:"TaskType"`
+}
+
+type CreateIntegrationNodeRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集成节点信息
+	NodeInfo *IntegrationNodeInfo `json:"NodeInfo,omitempty" name:"NodeInfo"`
+
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 任务类型
+	TaskType *uint64 `json:"TaskType,omitempty" name:"TaskType"`
+}
+
+func (r *CreateIntegrationNodeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateIntegrationNodeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "NodeInfo")
+	delete(f, "ProjectId")
+	delete(f, "TaskType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateIntegrationNodeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateIntegrationNodeResponseParams struct {
+	// 节点
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 当前任务id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateIntegrationNodeResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateIntegrationNodeResponseParams `json:"Response"`
+}
+
+func (r *CreateIntegrationNodeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateIntegrationNodeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateIntegrationTaskRequestParams struct {
+	// 任务信息
+	TaskInfo *IntegrationTaskInfo `json:"TaskInfo,omitempty" name:"TaskInfo"`
+
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+}
+
+type CreateIntegrationTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// 任务信息
+	TaskInfo *IntegrationTaskInfo `json:"TaskInfo,omitempty" name:"TaskInfo"`
+
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+}
+
+func (r *CreateIntegrationTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateIntegrationTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskInfo")
+	delete(f, "ProjectId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateIntegrationTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateIntegrationTaskResponseParams struct {
+	// 任务id
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateIntegrationTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateIntegrationTaskResponseParams `json:"Response"`
+}
+
+func (r *CreateIntegrationTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateIntegrationTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateOfflineTaskRequestParams struct {
+	// 项目/工作
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 1
+	CycleStep *int64 `json:"CycleStep,omitempty" name:"CycleStep"`
+
+	// 0
+	DelayTime *int64 `json:"DelayTime,omitempty" name:"DelayTime"`
+
+	// 2099-12-31 00:00:00
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 备注
+	Notes *string `json:"Notes,omitempty" name:"Notes"`
+
+	// 当前日期
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 任务名称
+	TaskName *string `json:"TaskName,omitempty" name:"TaskName"`
+
+	// 跟之前调用调度接口保持一致27
+	TypeId *int64 `json:"TypeId,omitempty" name:"TypeId"`
+
+	// 默认 ""
+	TaskAction *string `json:"TaskAction,omitempty" name:"TaskAction"`
+
+	// 区分画布和表单
+	TaskMode *string `json:"TaskMode,omitempty" name:"TaskMode"`
+}
+
+type CreateOfflineTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// 项目/工作
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 1
+	CycleStep *int64 `json:"CycleStep,omitempty" name:"CycleStep"`
+
+	// 0
+	DelayTime *int64 `json:"DelayTime,omitempty" name:"DelayTime"`
+
+	// 2099-12-31 00:00:00
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 备注
+	Notes *string `json:"Notes,omitempty" name:"Notes"`
+
+	// 当前日期
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 任务名称
+	TaskName *string `json:"TaskName,omitempty" name:"TaskName"`
+
+	// 跟之前调用调度接口保持一致27
+	TypeId *int64 `json:"TypeId,omitempty" name:"TypeId"`
+
+	// 默认 ""
+	TaskAction *string `json:"TaskAction,omitempty" name:"TaskAction"`
+
+	// 区分画布和表单
+	TaskMode *string `json:"TaskMode,omitempty" name:"TaskMode"`
+}
+
+func (r *CreateOfflineTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateOfflineTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProjectId")
+	delete(f, "CycleStep")
+	delete(f, "DelayTime")
+	delete(f, "EndTime")
+	delete(f, "Notes")
+	delete(f, "StartTime")
+	delete(f, "TaskName")
+	delete(f, "TypeId")
+	delete(f, "TaskAction")
+	delete(f, "TaskMode")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateOfflineTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateOfflineTaskResponseParams struct {
+	// 结果
+	Data *string `json:"Data,omitempty" name:"Data"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateOfflineTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateOfflineTaskResponseParams `json:"Response"`
+}
+
+func (r *CreateOfflineTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateOfflineTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateOrUpdateResourceRequestParams struct {
 	// 项目ID
 	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
@@ -763,6 +2645,70 @@ func (r *CreateOrUpdateResourceResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateOrUpdateResourceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateTaskAlarmRegularRequestParams struct {
+	// 告警配置信息
+	TaskAlarmInfo *TaskAlarmInfo `json:"TaskAlarmInfo,omitempty" name:"TaskAlarmInfo"`
+
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+}
+
+type CreateTaskAlarmRegularRequest struct {
+	*tchttp.BaseRequest
+	
+	// 告警配置信息
+	TaskAlarmInfo *TaskAlarmInfo `json:"TaskAlarmInfo,omitempty" name:"TaskAlarmInfo"`
+
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+}
+
+func (r *CreateTaskAlarmRegularRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateTaskAlarmRegularRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskAlarmInfo")
+	delete(f, "ProjectId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateTaskAlarmRegularRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateTaskAlarmRegularResponseParams struct {
+	// 告警ID
+	AlarmId *int64 `json:"AlarmId,omitempty" name:"AlarmId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateTaskAlarmRegularResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateTaskAlarmRegularResponseParams `json:"Response"`
+}
+
+func (r *CreateTaskAlarmRegularResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateTaskAlarmRegularResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1064,6 +3010,38 @@ type DataSourceInfoPage struct {
 	TotalPageNumber *uint64 `json:"TotalPageNumber,omitempty" name:"TotalPageNumber"`
 }
 
+type DatasourceBaseInfo struct {
+	// 若数据源列表为绑定数据库，则为db名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DatabaseNames []*string `json:"DatabaseNames,omitempty" name:"DatabaseNames"`
+
+	// 数据源描述信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 数据源ID
+	ID *uint64 `json:"ID,omitempty" name:"ID"`
+
+	// 数据源引擎的实例ID，如CDB实例ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Instance *string `json:"Instance,omitempty" name:"Instance"`
+
+	// 数据源名称，在相同SpaceName下，数据源名称不能为空
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 数据源引擎所属区域
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Region *string `json:"Region,omitempty" name:"Region"`
+
+	// 数据源类型:枚举值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 数据源所属的集群id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+}
+
 // Predefined struct for user
 type DeleteCustomFunctionRequestParams struct {
 	// 集群实例 ID
@@ -1263,6 +3241,273 @@ func (r *DeleteFolderResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DeleteInLongAgentRequestParams struct {
+	// 采集器ID
+	AgentId *string `json:"AgentId,omitempty" name:"AgentId"`
+
+	// WeData项目ID
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+}
+
+type DeleteInLongAgentRequest struct {
+	*tchttp.BaseRequest
+	
+	// 采集器ID
+	AgentId *string `json:"AgentId,omitempty" name:"AgentId"`
+
+	// WeData项目ID
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+}
+
+func (r *DeleteInLongAgentRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteInLongAgentRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AgentId")
+	delete(f, "ProjectId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteInLongAgentRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteInLongAgentResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DeleteInLongAgentResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteInLongAgentResponseParams `json:"Response"`
+}
+
+func (r *DeleteInLongAgentResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteInLongAgentResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteIntegrationNodeRequestParams struct {
+	// 节点id
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+}
+
+type DeleteIntegrationNodeRequest struct {
+	*tchttp.BaseRequest
+	
+	// 节点id
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+}
+
+func (r *DeleteIntegrationNodeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteIntegrationNodeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Id")
+	delete(f, "ProjectId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteIntegrationNodeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteIntegrationNodeResponseParams struct {
+	// 删除返回是否成功标识
+	Data *bool `json:"Data,omitempty" name:"Data"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DeleteIntegrationNodeResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteIntegrationNodeResponseParams `json:"Response"`
+}
+
+func (r *DeleteIntegrationNodeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteIntegrationNodeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteIntegrationTaskRequestParams struct {
+	// 任务id
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+}
+
+type DeleteIntegrationTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// 任务id
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+}
+
+func (r *DeleteIntegrationTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteIntegrationTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	delete(f, "ProjectId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteIntegrationTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteIntegrationTaskResponseParams struct {
+	// 任务删除成功与否标识
+	Data *bool `json:"Data,omitempty" name:"Data"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DeleteIntegrationTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteIntegrationTaskResponseParams `json:"Response"`
+}
+
+func (r *DeleteIntegrationTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteIntegrationTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteOfflineTaskRequestParams struct {
+	// 操作者name
+	OperatorName *string `json:"OperatorName,omitempty" name:"OperatorName"`
+
+	// 项目/工作空间id
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 任务id
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 虚拟任务标记(跟之前调度接口保持一致默认false)
+	VirtualFlag *bool `json:"VirtualFlag,omitempty" name:"VirtualFlag"`
+}
+
+type DeleteOfflineTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// 操作者name
+	OperatorName *string `json:"OperatorName,omitempty" name:"OperatorName"`
+
+	// 项目/工作空间id
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 任务id
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 虚拟任务标记(跟之前调度接口保持一致默认false)
+	VirtualFlag *bool `json:"VirtualFlag,omitempty" name:"VirtualFlag"`
+}
+
+func (r *DeleteOfflineTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteOfflineTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "OperatorName")
+	delete(f, "ProjectId")
+	delete(f, "TaskId")
+	delete(f, "VirtualFlag")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteOfflineTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteOfflineTaskResponseParams struct {
+	// 结果
+	Data *bool `json:"Data,omitempty" name:"Data"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DeleteOfflineTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteOfflineTaskResponseParams `json:"Response"`
+}
+
+func (r *DeleteOfflineTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteOfflineTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DeleteResourceRequestParams struct {
 	// 项目ID
 	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
@@ -1324,6 +3569,85 @@ func (r *DeleteResourceResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteResourceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteTaskAlarmRegularRequestParams struct {
+	// 主键ID
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 任务ID
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 任务类型(201表示实时任务，202表示离线任务)
+	TaskType *int64 `json:"TaskType,omitempty" name:"TaskType"`
+}
+
+type DeleteTaskAlarmRegularRequest struct {
+	*tchttp.BaseRequest
+	
+	// 主键ID
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 任务ID
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 任务类型(201表示实时任务，202表示离线任务)
+	TaskType *int64 `json:"TaskType,omitempty" name:"TaskType"`
+}
+
+func (r *DeleteTaskAlarmRegularRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteTaskAlarmRegularRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Id")
+	delete(f, "ProjectId")
+	delete(f, "TaskId")
+	delete(f, "TaskType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteTaskAlarmRegularRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteTaskAlarmRegularResponseParams struct {
+	// 删除结果(true表示删除成功，false表示删除失败)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *bool `json:"Data,omitempty" name:"Data"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DeleteTaskAlarmRegularResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteTaskAlarmRegularResponseParams `json:"Response"`
+}
+
+func (r *DeleteTaskAlarmRegularResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteTaskAlarmRegularResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1427,6 +3751,400 @@ type DependencyConfig struct {
 	// 子任务信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SonTask *TaskInnerInfo `json:"SonTask,omitempty" name:"SonTask"`
+}
+
+// Predefined struct for user
+type DescribeAlarmEventsRequestParams struct {
+	// 过滤条件(key可以是：AlarmLevel,AlarmIndicator,KeyWord)
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 排序字段（AlarmTime）
+	OrderFields []*OrderField `json:"OrderFields,omitempty" name:"OrderFields"`
+
+	// 类型(201表示实时，202表示离线)
+	TaskType *uint64 `json:"TaskType,omitempty" name:"TaskType"`
+
+	// 开始时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 当前页
+	PageNumber *uint64 `json:"PageNumber,omitempty" name:"PageNumber"`
+
+	// 每页记录数
+	PageSize *uint64 `json:"PageSize,omitempty" name:"PageSize"`
+}
+
+type DescribeAlarmEventsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 过滤条件(key可以是：AlarmLevel,AlarmIndicator,KeyWord)
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 排序字段（AlarmTime）
+	OrderFields []*OrderField `json:"OrderFields,omitempty" name:"OrderFields"`
+
+	// 类型(201表示实时，202表示离线)
+	TaskType *uint64 `json:"TaskType,omitempty" name:"TaskType"`
+
+	// 开始时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 当前页
+	PageNumber *uint64 `json:"PageNumber,omitempty" name:"PageNumber"`
+
+	// 每页记录数
+	PageSize *uint64 `json:"PageSize,omitempty" name:"PageSize"`
+}
+
+func (r *DescribeAlarmEventsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAlarmEventsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Filters")
+	delete(f, "OrderFields")
+	delete(f, "TaskType")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "ProjectId")
+	delete(f, "PageNumber")
+	delete(f, "PageSize")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAlarmEventsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAlarmEventsResponseParams struct {
+	// 告警事件列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AlarmEventInfoList []*AlarmEventInfo `json:"AlarmEventInfoList,omitempty" name:"AlarmEventInfoList"`
+
+	// 总记录数
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeAlarmEventsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAlarmEventsResponseParams `json:"Response"`
+}
+
+func (r *DescribeAlarmEventsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAlarmEventsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAlarmReceiverRequestParams struct {
+	// 告警ID
+	AlarmId *string `json:"AlarmId,omitempty" name:"AlarmId"`
+
+	// 当前页
+	PageNumber *uint64 `json:"PageNumber,omitempty" name:"PageNumber"`
+
+	// 每页记录数
+	PageSize *uint64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 消息ID
+	MessageId *string `json:"MessageId,omitempty" name:"MessageId"`
+
+	// 类型
+	TaskType *uint64 `json:"TaskType,omitempty" name:"TaskType"`
+
+	// 告警接收人ID(逗号分隔)
+	AlarmRecipient *string `json:"AlarmRecipient,omitempty" name:"AlarmRecipient"`
+
+	// 告警接收人姓名(逗号分隔)
+	AlarmRecipientName *string `json:"AlarmRecipientName,omitempty" name:"AlarmRecipientName"`
+
+	// 告警时间
+	AlarmTime *string `json:"AlarmTime,omitempty" name:"AlarmTime"`
+}
+
+type DescribeAlarmReceiverRequest struct {
+	*tchttp.BaseRequest
+	
+	// 告警ID
+	AlarmId *string `json:"AlarmId,omitempty" name:"AlarmId"`
+
+	// 当前页
+	PageNumber *uint64 `json:"PageNumber,omitempty" name:"PageNumber"`
+
+	// 每页记录数
+	PageSize *uint64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 消息ID
+	MessageId *string `json:"MessageId,omitempty" name:"MessageId"`
+
+	// 类型
+	TaskType *uint64 `json:"TaskType,omitempty" name:"TaskType"`
+
+	// 告警接收人ID(逗号分隔)
+	AlarmRecipient *string `json:"AlarmRecipient,omitempty" name:"AlarmRecipient"`
+
+	// 告警接收人姓名(逗号分隔)
+	AlarmRecipientName *string `json:"AlarmRecipientName,omitempty" name:"AlarmRecipientName"`
+
+	// 告警时间
+	AlarmTime *string `json:"AlarmTime,omitempty" name:"AlarmTime"`
+}
+
+func (r *DescribeAlarmReceiverRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAlarmReceiverRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AlarmId")
+	delete(f, "PageNumber")
+	delete(f, "PageSize")
+	delete(f, "ProjectId")
+	delete(f, "MessageId")
+	delete(f, "TaskType")
+	delete(f, "AlarmRecipient")
+	delete(f, "AlarmRecipientName")
+	delete(f, "AlarmTime")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAlarmReceiverRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAlarmReceiverResponseParams struct {
+	// 告警接收人列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AlarmReceiverInfoList []*AlarmReceiverInfo `json:"AlarmReceiverInfoList,omitempty" name:"AlarmReceiverInfoList"`
+
+	// 总记录数
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeAlarmReceiverResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAlarmReceiverResponseParams `json:"Response"`
+}
+
+func (r *DescribeAlarmReceiverResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAlarmReceiverResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeClusterNamespaceListRequestParams struct {
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// WeData项目ID
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+}
+
+type DescribeClusterNamespaceListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// WeData项目ID
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+}
+
+func (r *DescribeClusterNamespaceListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeClusterNamespaceListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "ProjectId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeClusterNamespaceListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeClusterNamespaceListResponseParams struct {
+	// 命名空间
+	Namespaces []*Namespace `json:"Namespaces,omitempty" name:"Namespaces"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeClusterNamespaceListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeClusterNamespaceListResponseParams `json:"Response"`
+}
+
+func (r *DescribeClusterNamespaceListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeClusterNamespaceListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDataSourceInfoListRequestParams struct {
+	// 工作空间id
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 页码
+	PageNumber *uint64 `json:"PageNumber,omitempty" name:"PageNumber"`
+
+	// 页数
+	PageSize *uint64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// 可选过滤条件，Filter可选配置(参考): "Name": { "type": "string", "description": "数据源名称" }, "Type": { "type": "string", "description": "类型" }, "ClusterId": { "type": "string", "description": "集群id" }, "CategoryId": { "type": "string", "description": "分类，项目或空间id" }
+	Filters *Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 排序配置
+	OrderFields *OrderField `json:"OrderFields,omitempty" name:"OrderFields"`
+
+	// 数据源类型
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 数据源名称过滤用
+	DatasourceName *string `json:"DatasourceName,omitempty" name:"DatasourceName"`
+}
+
+type DescribeDataSourceInfoListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 工作空间id
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 页码
+	PageNumber *uint64 `json:"PageNumber,omitempty" name:"PageNumber"`
+
+	// 页数
+	PageSize *uint64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// 可选过滤条件，Filter可选配置(参考): "Name": { "type": "string", "description": "数据源名称" }, "Type": { "type": "string", "description": "类型" }, "ClusterId": { "type": "string", "description": "集群id" }, "CategoryId": { "type": "string", "description": "分类，项目或空间id" }
+	Filters *Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 排序配置
+	OrderFields *OrderField `json:"OrderFields,omitempty" name:"OrderFields"`
+
+	// 数据源类型
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 数据源名称过滤用
+	DatasourceName *string `json:"DatasourceName,omitempty" name:"DatasourceName"`
+}
+
+func (r *DescribeDataSourceInfoListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDataSourceInfoListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProjectId")
+	delete(f, "PageNumber")
+	delete(f, "PageSize")
+	delete(f, "Filters")
+	delete(f, "OrderFields")
+	delete(f, "Type")
+	delete(f, "DatasourceName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDataSourceInfoListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDataSourceInfoListResponseParams struct {
+	// 总条数。
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 数据源信息列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DatasourceSet []*DatasourceBaseInfo `json:"DatasourceSet,omitempty" name:"DatasourceSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeDataSourceInfoListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDataSourceInfoListResponseParams `json:"Response"`
+}
+
+func (r *DescribeDataSourceInfoListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDataSourceInfoListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user
@@ -1570,6 +4288,124 @@ func (r *DescribeDataSourceWithoutInfoResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeDataSourceWithoutInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDataTypesRequestParams struct {
+	// 数据源类型，MYSQL|KAFKA等
+	DatasourceType *string `json:"DatasourceType,omitempty" name:"DatasourceType"`
+
+	// 项目ID。
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+}
+
+type DescribeDataTypesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 数据源类型，MYSQL|KAFKA等
+	DatasourceType *string `json:"DatasourceType,omitempty" name:"DatasourceType"`
+
+	// 项目ID。
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+}
+
+func (r *DescribeDataTypesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDataTypesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DatasourceType")
+	delete(f, "ProjectId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDataTypesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDataTypesResponseParams struct {
+	// 字段类型列表。
+	TypeInfoSet []*Label `json:"TypeInfoSet,omitempty" name:"TypeInfoSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeDataTypesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDataTypesResponseParams `json:"Response"`
+}
+
+func (r *DescribeDataTypesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDataTypesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDatabaseInfoListRequestParams struct {
+	// 如果是hive这里写rpc，如果是其他类型不传
+	ConnectionType *string `json:"ConnectionType,omitempty" name:"ConnectionType"`
+}
+
+type DescribeDatabaseInfoListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 如果是hive这里写rpc，如果是其他类型不传
+	ConnectionType *string `json:"ConnectionType,omitempty" name:"ConnectionType"`
+}
+
+func (r *DescribeDatabaseInfoListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDatabaseInfoListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ConnectionType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDatabaseInfoListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDatabaseInfoListResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeDatabaseInfoListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDatabaseInfoListResponseParams `json:"Response"`
+}
+
+func (r *DescribeDatabaseInfoListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDatabaseInfoListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2035,6 +4871,709 @@ func (r *DescribeFunctionTypesResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeInLongAgentListRequestParams struct {
+	// WeData项目ID
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 采集器ID
+	AgentId *string `json:"AgentId,omitempty" name:"AgentId"`
+
+	// Agent Name
+	AgentName *string `json:"AgentName,omitempty" name:"AgentName"`
+
+	// 集群类型，1：TKE Agent，2：BOSS SDK，默认：1
+	AgentType *uint64 `json:"AgentType,omitempty" name:"AgentType"`
+
+	// Agent状态(running运行中，initializing 操作中，failed心跳异常)
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// Vpc Id
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 分页页码，从1开始，默认：1
+	PageIndex *uint64 `json:"PageIndex,omitempty" name:"PageIndex"`
+
+	// 分页每页记录数，默认10
+	PageSize *uint64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// 名称搜索是否开启模糊匹配，1：开启，0：不开启（精确匹配）
+	Like *uint64 `json:"Like,omitempty" name:"Like"`
+}
+
+type DescribeInLongAgentListRequest struct {
+	*tchttp.BaseRequest
+	
+	// WeData项目ID
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 采集器ID
+	AgentId *string `json:"AgentId,omitempty" name:"AgentId"`
+
+	// Agent Name
+	AgentName *string `json:"AgentName,omitempty" name:"AgentName"`
+
+	// 集群类型，1：TKE Agent，2：BOSS SDK，默认：1
+	AgentType *uint64 `json:"AgentType,omitempty" name:"AgentType"`
+
+	// Agent状态(running运行中，initializing 操作中，failed心跳异常)
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// Vpc Id
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 分页页码，从1开始，默认：1
+	PageIndex *uint64 `json:"PageIndex,omitempty" name:"PageIndex"`
+
+	// 分页每页记录数，默认10
+	PageSize *uint64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// 名称搜索是否开启模糊匹配，1：开启，0：不开启（精确匹配）
+	Like *uint64 `json:"Like,omitempty" name:"Like"`
+}
+
+func (r *DescribeInLongAgentListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeInLongAgentListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProjectId")
+	delete(f, "AgentId")
+	delete(f, "AgentName")
+	delete(f, "AgentType")
+	delete(f, "Status")
+	delete(f, "VpcId")
+	delete(f, "PageIndex")
+	delete(f, "PageSize")
+	delete(f, "Like")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeInLongAgentListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeInLongAgentListResponseParams struct {
+	// 采集器信息列表
+	Items []*InLongAgentDetail `json:"Items,omitempty" name:"Items"`
+
+	// 页码
+	PageIndex *uint64 `json:"PageIndex,omitempty" name:"PageIndex"`
+
+	// 每页记录数
+	PageSize *uint64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// 总记录数
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 总页数
+	TotalPage *uint64 `json:"TotalPage,omitempty" name:"TotalPage"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeInLongAgentListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeInLongAgentListResponseParams `json:"Response"`
+}
+
+func (r *DescribeInLongAgentListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeInLongAgentListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeInLongAgentTaskListRequestParams struct {
+	// 采集器ID
+	AgentId *string `json:"AgentId,omitempty" name:"AgentId"`
+
+	// WeData项目ID
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+}
+
+type DescribeInLongAgentTaskListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 采集器ID
+	AgentId *string `json:"AgentId,omitempty" name:"AgentId"`
+
+	// WeData项目ID
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+}
+
+func (r *DescribeInLongAgentTaskListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeInLongAgentTaskListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AgentId")
+	delete(f, "ProjectId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeInLongAgentTaskListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeInLongAgentTaskListResponseParams struct {
+	// 采集器关联的集成任务列表
+	Items []*InLongAgentTask `json:"Items,omitempty" name:"Items"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeInLongAgentTaskListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeInLongAgentTaskListResponseParams `json:"Response"`
+}
+
+func (r *DescribeInLongAgentTaskListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeInLongAgentTaskListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeInLongAgentVpcListRequestParams struct {
+	// WeData项目ID
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+}
+
+type DescribeInLongAgentVpcListRequest struct {
+	*tchttp.BaseRequest
+	
+	// WeData项目ID
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+}
+
+func (r *DescribeInLongAgentVpcListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeInLongAgentVpcListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProjectId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeInLongAgentVpcListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeInLongAgentVpcListResponseParams struct {
+	// VPC列表
+	VpcList []*string `json:"VpcList,omitempty" name:"VpcList"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeInLongAgentVpcListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeInLongAgentVpcListResponseParams `json:"Response"`
+}
+
+func (r *DescribeInLongAgentVpcListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeInLongAgentVpcListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeInLongTkeClusterListRequestParams struct {
+	// WeData项目ID
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// TKE集群地域
+	TkeRegion *string `json:"TkeRegion,omitempty" name:"TkeRegion"`
+
+	// 集群名称。
+	// 多个名称用逗号连接。
+	ClusterName *string `json:"ClusterName,omitempty" name:"ClusterName"`
+
+	// TKE集群状态 (Running 运行中 Creating 创建中 Initializing 创建中 Idling 闲置中 Abnormal 异常 Failed 异常 Terminating 删除中 Deleting 删除中 Scaling 规模调整中 Upgrading 升级中 Isolated 欠费隔离中 NodeUpgrading 节点升级中 Recovering 唤醒中 Activating 激活中 MasterScaling Master扩缩容中 Waiting 等待注册 ClusterLevelUpgrading 调整规格中 ResourceIsolate 隔离中 ResourceIsolated 已隔离 ResourceReverse 冲正中 Trading 集群开通中 ResourceReversal 集群冲正 ClusterLevelTrading 集群变配交易中)
+	// 多个状态用逗号连接。
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 是否安装Agent，true: 是，false: 否
+	HasAgent *bool `json:"HasAgent,omitempty" name:"HasAgent"`
+
+	// 集群类型，托管集群：MANAGED_CLUSTER，独立集群：INDEPENDENT_CLUSTER。
+	// 多个集群用逗号连接。
+	ClusterType *string `json:"ClusterType,omitempty" name:"ClusterType"`
+
+	// 分页页码，从1开始，默认：1
+	PageIndex *uint64 `json:"PageIndex,omitempty" name:"PageIndex"`
+
+	// 分页每页记录数，默认10
+	PageSize *uint64 `json:"PageSize,omitempty" name:"PageSize"`
+}
+
+type DescribeInLongTkeClusterListRequest struct {
+	*tchttp.BaseRequest
+	
+	// WeData项目ID
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// TKE集群地域
+	TkeRegion *string `json:"TkeRegion,omitempty" name:"TkeRegion"`
+
+	// 集群名称。
+	// 多个名称用逗号连接。
+	ClusterName *string `json:"ClusterName,omitempty" name:"ClusterName"`
+
+	// TKE集群状态 (Running 运行中 Creating 创建中 Initializing 创建中 Idling 闲置中 Abnormal 异常 Failed 异常 Terminating 删除中 Deleting 删除中 Scaling 规模调整中 Upgrading 升级中 Isolated 欠费隔离中 NodeUpgrading 节点升级中 Recovering 唤醒中 Activating 激活中 MasterScaling Master扩缩容中 Waiting 等待注册 ClusterLevelUpgrading 调整规格中 ResourceIsolate 隔离中 ResourceIsolated 已隔离 ResourceReverse 冲正中 Trading 集群开通中 ResourceReversal 集群冲正 ClusterLevelTrading 集群变配交易中)
+	// 多个状态用逗号连接。
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 是否安装Agent，true: 是，false: 否
+	HasAgent *bool `json:"HasAgent,omitempty" name:"HasAgent"`
+
+	// 集群类型，托管集群：MANAGED_CLUSTER，独立集群：INDEPENDENT_CLUSTER。
+	// 多个集群用逗号连接。
+	ClusterType *string `json:"ClusterType,omitempty" name:"ClusterType"`
+
+	// 分页页码，从1开始，默认：1
+	PageIndex *uint64 `json:"PageIndex,omitempty" name:"PageIndex"`
+
+	// 分页每页记录数，默认10
+	PageSize *uint64 `json:"PageSize,omitempty" name:"PageSize"`
+}
+
+func (r *DescribeInLongTkeClusterListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeInLongTkeClusterListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProjectId")
+	delete(f, "TkeRegion")
+	delete(f, "ClusterName")
+	delete(f, "Status")
+	delete(f, "HasAgent")
+	delete(f, "ClusterType")
+	delete(f, "PageIndex")
+	delete(f, "PageSize")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeInLongTkeClusterListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeInLongTkeClusterListResponseParams struct {
+	// TKE集群信息
+	Items []*InLongTkeDetail `json:"Items,omitempty" name:"Items"`
+
+	// 页码
+	PageIndex *uint64 `json:"PageIndex,omitempty" name:"PageIndex"`
+
+	// 每页记录数
+	PageSize *uint64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// 总记录数
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 总页数
+	TotalPage *uint64 `json:"TotalPage,omitempty" name:"TotalPage"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeInLongTkeClusterListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeInLongTkeClusterListResponseParams `json:"Response"`
+}
+
+func (r *DescribeInLongTkeClusterListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeInLongTkeClusterListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeInstanceLastLogRequestParams struct {
+	// 任务id
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 数据时间
+	CurRunDate *string `json:"CurRunDate,omitempty" name:"CurRunDate"`
+}
+
+type DescribeInstanceLastLogRequest struct {
+	*tchttp.BaseRequest
+	
+	// 任务id
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 数据时间
+	CurRunDate *string `json:"CurRunDate,omitempty" name:"CurRunDate"`
+}
+
+func (r *DescribeInstanceLastLogRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeInstanceLastLogRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	delete(f, "CurRunDate")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeInstanceLastLogRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeInstanceLastLogResponseParams struct {
+	// 日志
+	Data *string `json:"Data,omitempty" name:"Data"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeInstanceLastLogResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeInstanceLastLogResponseParams `json:"Response"`
+}
+
+func (r *DescribeInstanceLastLogResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeInstanceLastLogResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeInstanceListRequestParams struct {
+	// 项目/工作空间id
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 页码
+	PageIndex *int64 `json:"PageIndex,omitempty" name:"PageIndex"`
+
+	// 页大小
+	PageSize *int64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// 周期列表（如天，一次性），可选
+	CycleList []*string `json:"CycleList,omitempty" name:"CycleList"`
+
+	// 责任人
+	OwnerList []*string `json:"OwnerList,omitempty" name:"OwnerList"`
+
+	// 跟之前保持一致
+	InstanceType *string `json:"InstanceType,omitempty" name:"InstanceType"`
+
+	// 排序顺序（asc，desc）
+	Sort *string `json:"Sort,omitempty" name:"Sort"`
+
+	// 排序列（costTime 运行耗时，startTime 开始时间，state 实例状态，curRunDate 数据时间）
+	SortCol *string `json:"SortCol,omitempty" name:"SortCol"`
+
+	// 类型列表（如35 shell任务），可选
+	TaskTypeList []*int64 `json:"TaskTypeList,omitempty" name:"TaskTypeList"`
+
+	// 状态列表（如成功 2，正在执行 1），可选
+	StateList []*int64 `json:"StateList,omitempty" name:"StateList"`
+
+	// 任务名称
+	Keyword *string `json:"Keyword,omitempty" name:"Keyword"`
+}
+
+type DescribeInstanceListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 项目/工作空间id
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 页码
+	PageIndex *int64 `json:"PageIndex,omitempty" name:"PageIndex"`
+
+	// 页大小
+	PageSize *int64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// 周期列表（如天，一次性），可选
+	CycleList []*string `json:"CycleList,omitempty" name:"CycleList"`
+
+	// 责任人
+	OwnerList []*string `json:"OwnerList,omitempty" name:"OwnerList"`
+
+	// 跟之前保持一致
+	InstanceType *string `json:"InstanceType,omitempty" name:"InstanceType"`
+
+	// 排序顺序（asc，desc）
+	Sort *string `json:"Sort,omitempty" name:"Sort"`
+
+	// 排序列（costTime 运行耗时，startTime 开始时间，state 实例状态，curRunDate 数据时间）
+	SortCol *string `json:"SortCol,omitempty" name:"SortCol"`
+
+	// 类型列表（如35 shell任务），可选
+	TaskTypeList []*int64 `json:"TaskTypeList,omitempty" name:"TaskTypeList"`
+
+	// 状态列表（如成功 2，正在执行 1），可选
+	StateList []*int64 `json:"StateList,omitempty" name:"StateList"`
+
+	// 任务名称
+	Keyword *string `json:"Keyword,omitempty" name:"Keyword"`
+}
+
+func (r *DescribeInstanceListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeInstanceListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProjectId")
+	delete(f, "PageIndex")
+	delete(f, "PageSize")
+	delete(f, "CycleList")
+	delete(f, "OwnerList")
+	delete(f, "InstanceType")
+	delete(f, "Sort")
+	delete(f, "SortCol")
+	delete(f, "TaskTypeList")
+	delete(f, "StateList")
+	delete(f, "Keyword")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeInstanceListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeInstanceListResponseParams struct {
+	// 结果
+	Data *string `json:"Data,omitempty" name:"Data"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeInstanceListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeInstanceListResponseParams `json:"Response"`
+}
+
+func (r *DescribeInstanceListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeInstanceListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeInstanceLogListRequestParams struct {
+	// 任务id
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 数据时间
+	CurRunDate *string `json:"CurRunDate,omitempty" name:"CurRunDate"`
+}
+
+type DescribeInstanceLogListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 任务id
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 数据时间
+	CurRunDate *string `json:"CurRunDate,omitempty" name:"CurRunDate"`
+}
+
+func (r *DescribeInstanceLogListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeInstanceLogListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	delete(f, "CurRunDate")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeInstanceLogListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeInstanceLogListResponseParams struct {
+	// 日志列表
+	Data *string `json:"Data,omitempty" name:"Data"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeInstanceLogListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeInstanceLogListResponseParams `json:"Response"`
+}
+
+func (r *DescribeInstanceLogListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeInstanceLogListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeInstanceLogRequestParams struct {
+	// 任务id
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 数据时间
+	CurRunDate *string `json:"CurRunDate,omitempty" name:"CurRunDate"`
+
+	// 服务器Ip
+	BrokerIp *string `json:"BrokerIp,omitempty" name:"BrokerIp"`
+
+	// 文件Name
+	OriginFileName *string `json:"OriginFileName,omitempty" name:"OriginFileName"`
+}
+
+type DescribeInstanceLogRequest struct {
+	*tchttp.BaseRequest
+	
+	// 任务id
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 数据时间
+	CurRunDate *string `json:"CurRunDate,omitempty" name:"CurRunDate"`
+
+	// 服务器Ip
+	BrokerIp *string `json:"BrokerIp,omitempty" name:"BrokerIp"`
+
+	// 文件Name
+	OriginFileName *string `json:"OriginFileName,omitempty" name:"OriginFileName"`
+}
+
+func (r *DescribeInstanceLogRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeInstanceLogRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	delete(f, "CurRunDate")
+	delete(f, "BrokerIp")
+	delete(f, "OriginFileName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeInstanceLogRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeInstanceLogResponseParams struct {
+	// 返回结果
+	Data *string `json:"Data,omitempty" name:"Data"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeInstanceLogResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeInstanceLogResponseParams `json:"Response"`
+}
+
+func (r *DescribeInstanceLogResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeInstanceLogResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeInstanceLogsRequestParams struct {
 	// 项目Id
 	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
@@ -2103,6 +5642,966 @@ func (r *DescribeInstanceLogsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeInstanceLogsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeIntegrationNodeRequestParams struct {
+	// 节点id
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 任务类型
+	TaskType *uint64 `json:"TaskType,omitempty" name:"TaskType"`
+}
+
+type DescribeIntegrationNodeRequest struct {
+	*tchttp.BaseRequest
+	
+	// 节点id
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 任务类型
+	TaskType *uint64 `json:"TaskType,omitempty" name:"TaskType"`
+}
+
+func (r *DescribeIntegrationNodeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeIntegrationNodeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Id")
+	delete(f, "ProjectId")
+	delete(f, "TaskType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeIntegrationNodeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeIntegrationNodeResponseParams struct {
+	// 节点信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NodeInfo *IntegrationNodeInfo `json:"NodeInfo,omitempty" name:"NodeInfo"`
+
+	// 上游节点是否已经修改。true 已修改，需要提示；false 没有修改
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SourceCheckFlag *bool `json:"SourceCheckFlag,omitempty" name:"SourceCheckFlag"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeIntegrationNodeResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeIntegrationNodeResponseParams `json:"Response"`
+}
+
+func (r *DescribeIntegrationNodeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeIntegrationNodeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeIntegrationStatisticsAgentStatusRequestParams struct {
+	// 任务类型（实时：201，离线：202）
+	TaskType *int64 `json:"TaskType,omitempty" name:"TaskType"`
+
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 查询日期
+	QueryDate *string `json:"QueryDate,omitempty" name:"QueryDate"`
+
+	// 资源组id
+	ExecutorGroupId *string `json:"ExecutorGroupId,omitempty" name:"ExecutorGroupId"`
+}
+
+type DescribeIntegrationStatisticsAgentStatusRequest struct {
+	*tchttp.BaseRequest
+	
+	// 任务类型（实时：201，离线：202）
+	TaskType *int64 `json:"TaskType,omitempty" name:"TaskType"`
+
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 查询日期
+	QueryDate *string `json:"QueryDate,omitempty" name:"QueryDate"`
+
+	// 资源组id
+	ExecutorGroupId *string `json:"ExecutorGroupId,omitempty" name:"ExecutorGroupId"`
+}
+
+func (r *DescribeIntegrationStatisticsAgentStatusRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeIntegrationStatisticsAgentStatusRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskType")
+	delete(f, "ProjectId")
+	delete(f, "QueryDate")
+	delete(f, "ExecutorGroupId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeIntegrationStatisticsAgentStatusRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeIntegrationStatisticsAgentStatusResponseParams struct {
+	// 统计结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StatusData *string `json:"StatusData,omitempty" name:"StatusData"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeIntegrationStatisticsAgentStatusResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeIntegrationStatisticsAgentStatusResponseParams `json:"Response"`
+}
+
+func (r *DescribeIntegrationStatisticsAgentStatusResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeIntegrationStatisticsAgentStatusResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeIntegrationStatisticsInstanceTrendRequestParams struct {
+	// 任务类型（实时：201，离线：202）
+	TaskType *int64 `json:"TaskType,omitempty" name:"TaskType"`
+
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 查询日期
+	QueryDate *string `json:"QueryDate,omitempty" name:"QueryDate"`
+
+	// 资源组id
+	ExecutorGroupId *string `json:"ExecutorGroupId,omitempty" name:"ExecutorGroupId"`
+}
+
+type DescribeIntegrationStatisticsInstanceTrendRequest struct {
+	*tchttp.BaseRequest
+	
+	// 任务类型（实时：201，离线：202）
+	TaskType *int64 `json:"TaskType,omitempty" name:"TaskType"`
+
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 查询日期
+	QueryDate *string `json:"QueryDate,omitempty" name:"QueryDate"`
+
+	// 资源组id
+	ExecutorGroupId *string `json:"ExecutorGroupId,omitempty" name:"ExecutorGroupId"`
+}
+
+func (r *DescribeIntegrationStatisticsInstanceTrendRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeIntegrationStatisticsInstanceTrendRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskType")
+	delete(f, "ProjectId")
+	delete(f, "QueryDate")
+	delete(f, "ExecutorGroupId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeIntegrationStatisticsInstanceTrendRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeIntegrationStatisticsInstanceTrendResponseParams struct {
+	// 统计结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TrendsData []*IntegrationStatisticsTrendResult `json:"TrendsData,omitempty" name:"TrendsData"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeIntegrationStatisticsInstanceTrendResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeIntegrationStatisticsInstanceTrendResponseParams `json:"Response"`
+}
+
+func (r *DescribeIntegrationStatisticsInstanceTrendResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeIntegrationStatisticsInstanceTrendResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeIntegrationStatisticsRecordsTrendRequestParams struct {
+	// 任务类型（实时：201，离线：202）
+	TaskType *int64 `json:"TaskType,omitempty" name:"TaskType"`
+
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 查询日期
+	QueryDate *string `json:"QueryDate,omitempty" name:"QueryDate"`
+}
+
+type DescribeIntegrationStatisticsRecordsTrendRequest struct {
+	*tchttp.BaseRequest
+	
+	// 任务类型（实时：201，离线：202）
+	TaskType *int64 `json:"TaskType,omitempty" name:"TaskType"`
+
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 查询日期
+	QueryDate *string `json:"QueryDate,omitempty" name:"QueryDate"`
+}
+
+func (r *DescribeIntegrationStatisticsRecordsTrendRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeIntegrationStatisticsRecordsTrendRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskType")
+	delete(f, "ProjectId")
+	delete(f, "QueryDate")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeIntegrationStatisticsRecordsTrendRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeIntegrationStatisticsRecordsTrendResponseParams struct {
+	// 统计结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TrendsData []*IntegrationStatisticsTrendResult `json:"TrendsData,omitempty" name:"TrendsData"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeIntegrationStatisticsRecordsTrendResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeIntegrationStatisticsRecordsTrendResponseParams `json:"Response"`
+}
+
+func (r *DescribeIntegrationStatisticsRecordsTrendResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeIntegrationStatisticsRecordsTrendResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeIntegrationStatisticsRequestParams struct {
+	// 任务类型（实时：201，离线：202）
+	TaskType *int64 `json:"TaskType,omitempty" name:"TaskType"`
+
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 查询日期
+	QueryDate *string `json:"QueryDate,omitempty" name:"QueryDate"`
+}
+
+type DescribeIntegrationStatisticsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 任务类型（实时：201，离线：202）
+	TaskType *int64 `json:"TaskType,omitempty" name:"TaskType"`
+
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 查询日期
+	QueryDate *string `json:"QueryDate,omitempty" name:"QueryDate"`
+}
+
+func (r *DescribeIntegrationStatisticsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeIntegrationStatisticsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskType")
+	delete(f, "ProjectId")
+	delete(f, "QueryDate")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeIntegrationStatisticsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeIntegrationStatisticsResponseParams struct {
+	// 总任务数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalTask *int64 `json:"TotalTask,omitempty" name:"TotalTask"`
+
+	// 生产态任务数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProdTask *int64 `json:"ProdTask,omitempty" name:"ProdTask"`
+
+	// 开发态任务数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DevTask *int64 `json:"DevTask,omitempty" name:"DevTask"`
+
+	// 总读取条数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalReadRecords *int64 `json:"TotalReadRecords,omitempty" name:"TotalReadRecords"`
+
+	// 总写入条数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalWriteRecords *int64 `json:"TotalWriteRecords,omitempty" name:"TotalWriteRecords"`
+
+	// 总脏数据条数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalErrorRecords *int64 `json:"TotalErrorRecords,omitempty" name:"TotalErrorRecords"`
+
+	// 总告警事件数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalAlarmEvent *int64 `json:"TotalAlarmEvent,omitempty" name:"TotalAlarmEvent"`
+
+	// 当天读取增长条数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IncreaseReadRecords *int64 `json:"IncreaseReadRecords,omitempty" name:"IncreaseReadRecords"`
+
+	// 当天写入增长条数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IncreaseWriteRecords *int64 `json:"IncreaseWriteRecords,omitempty" name:"IncreaseWriteRecords"`
+
+	// 当天脏数据增长条数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IncreaseErrorRecords *int64 `json:"IncreaseErrorRecords,omitempty" name:"IncreaseErrorRecords"`
+
+	// 当天告警事件增长数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IncreaseAlarmEvent *int64 `json:"IncreaseAlarmEvent,omitempty" name:"IncreaseAlarmEvent"`
+
+	// 告警事件统计
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AlarmEvent *string `json:"AlarmEvent,omitempty" name:"AlarmEvent"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeIntegrationStatisticsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeIntegrationStatisticsResponseParams `json:"Response"`
+}
+
+func (r *DescribeIntegrationStatisticsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeIntegrationStatisticsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeIntegrationStatisticsTaskStatusRequestParams struct {
+	// 任务类型（实时：201，离线：202）
+	TaskType *int64 `json:"TaskType,omitempty" name:"TaskType"`
+
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 查询日期
+	QueryDate *string `json:"QueryDate,omitempty" name:"QueryDate"`
+
+	// 资源组id
+	ExecutorGroupId *string `json:"ExecutorGroupId,omitempty" name:"ExecutorGroupId"`
+}
+
+type DescribeIntegrationStatisticsTaskStatusRequest struct {
+	*tchttp.BaseRequest
+	
+	// 任务类型（实时：201，离线：202）
+	TaskType *int64 `json:"TaskType,omitempty" name:"TaskType"`
+
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 查询日期
+	QueryDate *string `json:"QueryDate,omitempty" name:"QueryDate"`
+
+	// 资源组id
+	ExecutorGroupId *string `json:"ExecutorGroupId,omitempty" name:"ExecutorGroupId"`
+}
+
+func (r *DescribeIntegrationStatisticsTaskStatusRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeIntegrationStatisticsTaskStatusRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskType")
+	delete(f, "ProjectId")
+	delete(f, "QueryDate")
+	delete(f, "ExecutorGroupId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeIntegrationStatisticsTaskStatusRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeIntegrationStatisticsTaskStatusResponseParams struct {
+	// 统计结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StatusData *string `json:"StatusData,omitempty" name:"StatusData"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeIntegrationStatisticsTaskStatusResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeIntegrationStatisticsTaskStatusResponseParams `json:"Response"`
+}
+
+func (r *DescribeIntegrationStatisticsTaskStatusResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeIntegrationStatisticsTaskStatusResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeIntegrationStatisticsTaskStatusTrendRequestParams struct {
+	// 任务类型（实时：201，离线：202）
+	TaskType *int64 `json:"TaskType,omitempty" name:"TaskType"`
+
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 查询日期
+	QueryDate *string `json:"QueryDate,omitempty" name:"QueryDate"`
+
+	// 资源组id
+	ExecutorGroupId *string `json:"ExecutorGroupId,omitempty" name:"ExecutorGroupId"`
+}
+
+type DescribeIntegrationStatisticsTaskStatusTrendRequest struct {
+	*tchttp.BaseRequest
+	
+	// 任务类型（实时：201，离线：202）
+	TaskType *int64 `json:"TaskType,omitempty" name:"TaskType"`
+
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 查询日期
+	QueryDate *string `json:"QueryDate,omitempty" name:"QueryDate"`
+
+	// 资源组id
+	ExecutorGroupId *string `json:"ExecutorGroupId,omitempty" name:"ExecutorGroupId"`
+}
+
+func (r *DescribeIntegrationStatisticsTaskStatusTrendRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeIntegrationStatisticsTaskStatusTrendRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskType")
+	delete(f, "ProjectId")
+	delete(f, "QueryDate")
+	delete(f, "ExecutorGroupId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeIntegrationStatisticsTaskStatusTrendRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeIntegrationStatisticsTaskStatusTrendResponseParams struct {
+	// 统计结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TrendsData []*IntegrationStatisticsTrendResult `json:"TrendsData,omitempty" name:"TrendsData"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeIntegrationStatisticsTaskStatusTrendResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeIntegrationStatisticsTaskStatusTrendResponseParams `json:"Response"`
+}
+
+func (r *DescribeIntegrationStatisticsTaskStatusTrendResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeIntegrationStatisticsTaskStatusTrendResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeIntegrationTaskRequestParams struct {
+	// 任务id
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 任务类型：201. stream,   202. offline
+	TaskType *uint64 `json:"TaskType,omitempty" name:"TaskType"`
+}
+
+type DescribeIntegrationTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// 任务id
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 任务类型：201. stream,   202. offline
+	TaskType *uint64 `json:"TaskType,omitempty" name:"TaskType"`
+}
+
+func (r *DescribeIntegrationTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeIntegrationTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	delete(f, "ProjectId")
+	delete(f, "TaskType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeIntegrationTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeIntegrationTaskResponseParams struct {
+	// 任务信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskInfo *IntegrationTaskInfo `json:"TaskInfo,omitempty" name:"TaskInfo"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeIntegrationTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeIntegrationTaskResponseParams `json:"Response"`
+}
+
+func (r *DescribeIntegrationTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeIntegrationTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeIntegrationTasksRequestParams struct {
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 分页第n页
+	PageNumber *int64 `json:"PageNumber,omitempty" name:"PageNumber"`
+
+	// 分页大小
+	PageSize *int64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// 查询filter
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 排序字段信息
+	OrderFields []*OrderField `json:"OrderFields,omitempty" name:"OrderFields"`
+
+	// 开始时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 201. stream, 202. offline 默认实时
+	TaskType *uint64 `json:"TaskType,omitempty" name:"TaskType"`
+}
+
+type DescribeIntegrationTasksRequest struct {
+	*tchttp.BaseRequest
+	
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 分页第n页
+	PageNumber *int64 `json:"PageNumber,omitempty" name:"PageNumber"`
+
+	// 分页大小
+	PageSize *int64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// 查询filter
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 排序字段信息
+	OrderFields []*OrderField `json:"OrderFields,omitempty" name:"OrderFields"`
+
+	// 开始时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 201. stream, 202. offline 默认实时
+	TaskType *uint64 `json:"TaskType,omitempty" name:"TaskType"`
+}
+
+func (r *DescribeIntegrationTasksRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeIntegrationTasksRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProjectId")
+	delete(f, "PageNumber")
+	delete(f, "PageSize")
+	delete(f, "Filters")
+	delete(f, "OrderFields")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "TaskType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeIntegrationTasksRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeIntegrationTasksResponseParams struct {
+	// 任务列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskInfoSet []*IntegrationTaskInfo `json:"TaskInfoSet,omitempty" name:"TaskInfoSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeIntegrationTasksResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeIntegrationTasksResponseParams `json:"Response"`
+}
+
+func (r *DescribeIntegrationTasksResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeIntegrationTasksResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeIntegrationVersionNodesInfoRequestParams struct {
+	// 任务id
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// task version path
+	TaskVersionPath *string `json:"TaskVersionPath,omitempty" name:"TaskVersionPath"`
+
+	// task version
+	TaskVersion *string `json:"TaskVersion,omitempty" name:"TaskVersion"`
+}
+
+type DescribeIntegrationVersionNodesInfoRequest struct {
+	*tchttp.BaseRequest
+	
+	// 任务id
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// task version path
+	TaskVersionPath *string `json:"TaskVersionPath,omitempty" name:"TaskVersionPath"`
+
+	// task version
+	TaskVersion *string `json:"TaskVersion,omitempty" name:"TaskVersion"`
+}
+
+func (r *DescribeIntegrationVersionNodesInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeIntegrationVersionNodesInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	delete(f, "ProjectId")
+	delete(f, "TaskVersionPath")
+	delete(f, "TaskVersion")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeIntegrationVersionNodesInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeIntegrationVersionNodesInfoResponseParams struct {
+	// 任务节点信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Nodes []*IntegrationNodeInfo `json:"Nodes,omitempty" name:"Nodes"`
+
+	// 任务映射信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Mappings []*IntegrationNodeMapping `json:"Mappings,omitempty" name:"Mappings"`
+
+	// 任务id
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeIntegrationVersionNodesInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeIntegrationVersionNodesInfoResponseParams `json:"Response"`
+}
+
+func (r *DescribeIntegrationVersionNodesInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeIntegrationVersionNodesInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeKafkaTopicInfoRequestParams struct {
+	// 数据源id
+	DatasourceId *string `json:"DatasourceId,omitempty" name:"DatasourceId"`
+
+	// 数据源类型
+	Type *string `json:"Type,omitempty" name:"Type"`
+}
+
+type DescribeKafkaTopicInfoRequest struct {
+	*tchttp.BaseRequest
+	
+	// 数据源id
+	DatasourceId *string `json:"DatasourceId,omitempty" name:"DatasourceId"`
+
+	// 数据源类型
+	Type *string `json:"Type,omitempty" name:"Type"`
+}
+
+func (r *DescribeKafkaTopicInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeKafkaTopicInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DatasourceId")
+	delete(f, "Type")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeKafkaTopicInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeKafkaTopicInfoResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeKafkaTopicInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeKafkaTopicInfoResponseParams `json:"Response"`
+}
+
+func (r *DescribeKafkaTopicInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeKafkaTopicInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeOfflineTaskTokenRequestParams struct {
+
+}
+
+type DescribeOfflineTaskTokenRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DescribeOfflineTaskTokenRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeOfflineTaskTokenRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeOfflineTaskTokenRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeOfflineTaskTokenResponseParams struct {
+	// 长连接临时token
+	Token *string `json:"Token,omitempty" name:"Token"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeOfflineTaskTokenResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeOfflineTaskTokenResponseParams `json:"Response"`
+}
+
+func (r *DescribeOfflineTaskTokenResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeOfflineTaskTokenResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2286,6 +6785,247 @@ func (r *DescribeProjectResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeRealTimeTaskInstanceNodeInfoRequestParams struct {
+	// 实时任务id
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 工程id
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+}
+
+type DescribeRealTimeTaskInstanceNodeInfoRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实时任务id
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 工程id
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+}
+
+func (r *DescribeRealTimeTaskInstanceNodeInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRealTimeTaskInstanceNodeInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	delete(f, "ProjectId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRealTimeTaskInstanceNodeInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRealTimeTaskInstanceNodeInfoResponseParams struct {
+	// 实时任务实例节点相关信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RealTimeTaskInstanceNodeInfo *RealTimeTaskInstanceNodeInfo `json:"RealTimeTaskInstanceNodeInfo,omitempty" name:"RealTimeTaskInstanceNodeInfo"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeRealTimeTaskInstanceNodeInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeRealTimeTaskInstanceNodeInfoResponseParams `json:"Response"`
+}
+
+func (r *DescribeRealTimeTaskInstanceNodeInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRealTimeTaskInstanceNodeInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRealTimeTaskMetricOverviewRequestParams struct {
+	// 无
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 无
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+}
+
+type DescribeRealTimeTaskMetricOverviewRequest struct {
+	*tchttp.BaseRequest
+	
+	// 无
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 无
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+}
+
+func (r *DescribeRealTimeTaskMetricOverviewRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRealTimeTaskMetricOverviewRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	delete(f, "ProjectId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRealTimeTaskMetricOverviewRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRealTimeTaskMetricOverviewResponseParams struct {
+	// 总读取记录数
+	TotalRecordNumOfRead *uint64 `json:"TotalRecordNumOfRead,omitempty" name:"TotalRecordNumOfRead"`
+
+	// 总读取字节数
+	TotalRecordByteNumOfRead *uint64 `json:"TotalRecordByteNumOfRead,omitempty" name:"TotalRecordByteNumOfRead"`
+
+	// 总写入记录数
+	TotalRecordNumOfWrite *uint64 `json:"TotalRecordNumOfWrite,omitempty" name:"TotalRecordNumOfWrite"`
+
+	// 总写入字节数 单位字节
+	TotalRecordByteNumOfWrite *uint64 `json:"TotalRecordByteNumOfWrite,omitempty" name:"TotalRecordByteNumOfWrite"`
+
+	// 总的脏记录数据
+	TotalDirtyRecordNum *uint64 `json:"TotalDirtyRecordNum,omitempty" name:"TotalDirtyRecordNum"`
+
+	// 总的脏字节数 单位字节
+	TotalDirtyRecordByte *uint64 `json:"TotalDirtyRecordByte,omitempty" name:"TotalDirtyRecordByte"`
+
+	// 运行时长 单位s
+	TotalDuration *uint64 `json:"TotalDuration,omitempty" name:"TotalDuration"`
+
+	// 开始运行时间
+	BeginRunTime *string `json:"BeginRunTime,omitempty" name:"BeginRunTime"`
+
+	// 目前运行到的时间
+	EndRunTime *string `json:"EndRunTime,omitempty" name:"EndRunTime"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeRealTimeTaskMetricOverviewResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeRealTimeTaskMetricOverviewResponseParams `json:"Response"`
+}
+
+func (r *DescribeRealTimeTaskMetricOverviewResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRealTimeTaskMetricOverviewResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRealTimeTaskSpeedRequestParams struct {
+	// 无
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 带毫秒的时间戳
+	StartTime *uint64 `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 带毫秒的时间戳
+	EndTime *uint64 `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 粒度，1或者5
+	Granularity *uint64 `json:"Granularity,omitempty" name:"Granularity"`
+
+	// 无
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+}
+
+type DescribeRealTimeTaskSpeedRequest struct {
+	*tchttp.BaseRequest
+	
+	// 无
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 带毫秒的时间戳
+	StartTime *uint64 `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 带毫秒的时间戳
+	EndTime *uint64 `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 粒度，1或者5
+	Granularity *uint64 `json:"Granularity,omitempty" name:"Granularity"`
+
+	// 无
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+}
+
+func (r *DescribeRealTimeTaskSpeedRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRealTimeTaskSpeedRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "Granularity")
+	delete(f, "ProjectId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRealTimeTaskSpeedRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRealTimeTaskSpeedResponseParams struct {
+	// 同步速度条/s列表
+	RecordsSpeedList []*RecordsSpeed `json:"RecordsSpeedList,omitempty" name:"RecordsSpeedList"`
+
+	// 同步速度字节/s列表
+	BytesSpeedList []*BytesSpeed `json:"BytesSpeedList,omitempty" name:"BytesSpeedList"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeRealTimeTaskSpeedResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeRealTimeTaskSpeedResponseParams `json:"Response"`
+}
+
+func (r *DescribeRealTimeTaskSpeedResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRealTimeTaskSpeedResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeRelatedInstancesRequestParams struct {
 	// 项目id
 	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
@@ -2464,6 +7204,458 @@ func (r *DescribeResourceManagePathTreesResponse) FromJsonString(s string) error
 }
 
 // Predefined struct for user
+type DescribeStandardRuleDetailInfoListRequestParams struct {
+	// 空间、项目id
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 标准分类11编码映射 12数据过滤 13字符串转换 14数据元定义 15正则表达 16术语词典
+	Type *int64 `json:"Type,omitempty" name:"Type"`
+}
+
+type DescribeStandardRuleDetailInfoListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 空间、项目id
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 标准分类11编码映射 12数据过滤 13字符串转换 14数据元定义 15正则表达 16术语词典
+	Type *int64 `json:"Type,omitempty" name:"Type"`
+}
+
+func (r *DescribeStandardRuleDetailInfoListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeStandardRuleDetailInfoListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProjectId")
+	delete(f, "Type")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeStandardRuleDetailInfoListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeStandardRuleDetailInfoListResponseParams struct {
+	// 返回值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StandardRuleDetailList *string `json:"StandardRuleDetailList,omitempty" name:"StandardRuleDetailList"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeStandardRuleDetailInfoListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeStandardRuleDetailInfoListResponseParams `json:"Response"`
+}
+
+func (r *DescribeStandardRuleDetailInfoListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeStandardRuleDetailInfoListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeStreamTaskLogListRequestParams struct {
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 任务ID
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 作业ID
+	JobId *string `json:"JobId,omitempty" name:"JobId"`
+
+	// 结束时间
+	EndTime *uint64 `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 开始时间
+	StartTime *uint64 `json:"StartTime,omitempty" name:"StartTime"`
+
+	// container名字
+	Container *string `json:"Container,omitempty" name:"Container"`
+
+	// 条数
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 排序类型 desc asc
+	OrderType *string `json:"OrderType,omitempty" name:"OrderType"`
+
+	// 作业运行的实例ID
+	RunningOrderId *uint64 `json:"RunningOrderId,omitempty" name:"RunningOrderId"`
+}
+
+type DescribeStreamTaskLogListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 任务ID
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 作业ID
+	JobId *string `json:"JobId,omitempty" name:"JobId"`
+
+	// 结束时间
+	EndTime *uint64 `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 开始时间
+	StartTime *uint64 `json:"StartTime,omitempty" name:"StartTime"`
+
+	// container名字
+	Container *string `json:"Container,omitempty" name:"Container"`
+
+	// 条数
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 排序类型 desc asc
+	OrderType *string `json:"OrderType,omitempty" name:"OrderType"`
+
+	// 作业运行的实例ID
+	RunningOrderId *uint64 `json:"RunningOrderId,omitempty" name:"RunningOrderId"`
+}
+
+func (r *DescribeStreamTaskLogListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeStreamTaskLogListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProjectId")
+	delete(f, "TaskId")
+	delete(f, "JobId")
+	delete(f, "EndTime")
+	delete(f, "StartTime")
+	delete(f, "Container")
+	delete(f, "Limit")
+	delete(f, "OrderType")
+	delete(f, "RunningOrderId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeStreamTaskLogListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeStreamTaskLogListResponseParams struct {
+	// 是否是全量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ListOver *bool `json:"ListOver,omitempty" name:"ListOver"`
+
+	// 日志集合
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LogContentList []*LogContentInfo `json:"LogContentList,omitempty" name:"LogContentList"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeStreamTaskLogListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeStreamTaskLogListResponseParams `json:"Response"`
+}
+
+func (r *DescribeStreamTaskLogListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeStreamTaskLogListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeTableInfoListRequestParams struct {
+	// 表名
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 如果是hive这里写rpc，如果是其他类型不传
+	ConnectionType *string `json:"ConnectionType,omitempty" name:"ConnectionType"`
+
+	// 数据库源类型
+	Catalog *string `json:"Catalog,omitempty" name:"Catalog"`
+}
+
+type DescribeTableInfoListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 表名
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 如果是hive这里写rpc，如果是其他类型不传
+	ConnectionType *string `json:"ConnectionType,omitempty" name:"ConnectionType"`
+
+	// 数据库源类型
+	Catalog *string `json:"Catalog,omitempty" name:"Catalog"`
+}
+
+func (r *DescribeTableInfoListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTableInfoListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Filters")
+	delete(f, "ConnectionType")
+	delete(f, "Catalog")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTableInfoListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeTableInfoListResponseParams struct {
+	// 表信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TableInfo []*TableInfo `json:"TableInfo,omitempty" name:"TableInfo"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeTableInfoListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeTableInfoListResponseParams `json:"Response"`
+}
+
+func (r *DescribeTableInfoListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTableInfoListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeTableSchemaInfoRequestParams struct {
+	// 表名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 数据库名称
+	DatabaseName *string `json:"DatabaseName,omitempty" name:"DatabaseName"`
+
+	// 表类型
+	MsType *string `json:"MsType,omitempty" name:"MsType"`
+
+	// 数据源id
+	DatasourceId *string `json:"DatasourceId,omitempty" name:"DatasourceId"`
+
+	// HIVE传rpc
+	ConnectionType *string `json:"ConnectionType,omitempty" name:"ConnectionType"`
+
+	// 元数据Database下的Schema名称
+	SchemaName *string `json:"SchemaName,omitempty" name:"SchemaName"`
+}
+
+type DescribeTableSchemaInfoRequest struct {
+	*tchttp.BaseRequest
+	
+	// 表名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 数据库名称
+	DatabaseName *string `json:"DatabaseName,omitempty" name:"DatabaseName"`
+
+	// 表类型
+	MsType *string `json:"MsType,omitempty" name:"MsType"`
+
+	// 数据源id
+	DatasourceId *string `json:"DatasourceId,omitempty" name:"DatasourceId"`
+
+	// HIVE传rpc
+	ConnectionType *string `json:"ConnectionType,omitempty" name:"ConnectionType"`
+
+	// 元数据Database下的Schema名称
+	SchemaName *string `json:"SchemaName,omitempty" name:"SchemaName"`
+}
+
+func (r *DescribeTableSchemaInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTableSchemaInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Name")
+	delete(f, "DatabaseName")
+	delete(f, "MsType")
+	delete(f, "DatasourceId")
+	delete(f, "ConnectionType")
+	delete(f, "SchemaName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTableSchemaInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeTableSchemaInfoResponseParams struct {
+	// 123
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SchemaInfoList []*SchemaDetail `json:"SchemaInfoList,omitempty" name:"SchemaInfoList"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeTableSchemaInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeTableSchemaInfoResponseParams `json:"Response"`
+}
+
+func (r *DescribeTableSchemaInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTableSchemaInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeTaskAlarmRegulationsRequestParams struct {
+	// 任务ID
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 任务类型(201代表实时任务，202代表离线任务)
+	TaskType *int64 `json:"TaskType,omitempty" name:"TaskType"`
+
+	// 当前页
+	PageNumber *int64 `json:"PageNumber,omitempty" name:"PageNumber"`
+
+	// 每页记录数
+	PageSize *int64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// 过滤条件(name有RegularStatus、AlarmLevel、AlarmIndicator、RegularName)
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 排序条件(RegularId)
+	OrderFields []*OrderField `json:"OrderFields,omitempty" name:"OrderFields"`
+}
+
+type DescribeTaskAlarmRegulationsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 任务ID
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 任务类型(201代表实时任务，202代表离线任务)
+	TaskType *int64 `json:"TaskType,omitempty" name:"TaskType"`
+
+	// 当前页
+	PageNumber *int64 `json:"PageNumber,omitempty" name:"PageNumber"`
+
+	// 每页记录数
+	PageSize *int64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// 过滤条件(name有RegularStatus、AlarmLevel、AlarmIndicator、RegularName)
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 排序条件(RegularId)
+	OrderFields []*OrderField `json:"OrderFields,omitempty" name:"OrderFields"`
+}
+
+func (r *DescribeTaskAlarmRegulationsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTaskAlarmRegulationsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	delete(f, "ProjectId")
+	delete(f, "TaskType")
+	delete(f, "PageNumber")
+	delete(f, "PageSize")
+	delete(f, "Filters")
+	delete(f, "OrderFields")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTaskAlarmRegulationsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeTaskAlarmRegulationsResponseParams struct {
+	// 任务告警规则信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskAlarmInfos []*TaskAlarmInfo `json:"TaskAlarmInfos,omitempty" name:"TaskAlarmInfos"`
+
+	// 总记录数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeTaskAlarmRegulationsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeTaskAlarmRegulationsResponseParams `json:"Response"`
+}
+
+func (r *DescribeTaskAlarmRegulationsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTaskAlarmRegulationsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeTaskDetailRequestParams struct {
 	// 项目Id
 	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
@@ -2532,6 +7724,168 @@ func (r *DescribeTaskDetailResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeTaskDetailResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeTaskInstanceReportDetailRequestParams struct {
+	// WeData项目ID
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 任务ID
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 任务实例数据时间
+	CurRunDate *string `json:"CurRunDate,omitempty" name:"CurRunDate"`
+
+	// 任务实例运行时间
+	IssueDate *string `json:"IssueDate,omitempty" name:"IssueDate"`
+}
+
+type DescribeTaskInstanceReportDetailRequest struct {
+	*tchttp.BaseRequest
+	
+	// WeData项目ID
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 任务ID
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 任务实例数据时间
+	CurRunDate *string `json:"CurRunDate,omitempty" name:"CurRunDate"`
+
+	// 任务实例运行时间
+	IssueDate *string `json:"IssueDate,omitempty" name:"IssueDate"`
+}
+
+func (r *DescribeTaskInstanceReportDetailRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTaskInstanceReportDetailRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProjectId")
+	delete(f, "TaskId")
+	delete(f, "CurRunDate")
+	delete(f, "IssueDate")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTaskInstanceReportDetailRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeTaskInstanceReportDetailResponseParams struct {
+	// 任务实例运行指标概览
+	Summary *InstanceReportSummary `json:"Summary,omitempty" name:"Summary"`
+
+	// 任务实例读取节点运行指标
+	ReadNode *InstanceReportReadNode `json:"ReadNode,omitempty" name:"ReadNode"`
+
+	// 任务实例写入节点运行指标
+	WriteNode *InstanceReportWriteNode `json:"WriteNode,omitempty" name:"WriteNode"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeTaskInstanceReportDetailResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeTaskInstanceReportDetailResponseParams `json:"Response"`
+}
+
+func (r *DescribeTaskInstanceReportDetailResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTaskInstanceReportDetailResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeTaskInstanceRequestParams struct {
+	// WeData项目ID
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 任务ID
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 任务实例数据时间
+	CurRunDate *string `json:"CurRunDate,omitempty" name:"CurRunDate"`
+
+	// 任务实例运行时间
+	IssueDate *string `json:"IssueDate,omitempty" name:"IssueDate"`
+}
+
+type DescribeTaskInstanceRequest struct {
+	*tchttp.BaseRequest
+	
+	// WeData项目ID
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 任务ID
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 任务实例数据时间
+	CurRunDate *string `json:"CurRunDate,omitempty" name:"CurRunDate"`
+
+	// 任务实例运行时间
+	IssueDate *string `json:"IssueDate,omitempty" name:"IssueDate"`
+}
+
+func (r *DescribeTaskInstanceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTaskInstanceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProjectId")
+	delete(f, "TaskId")
+	delete(f, "CurRunDate")
+	delete(f, "IssueDate")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTaskInstanceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeTaskInstanceResponseParams struct {
+	// 任务实例详情
+	TaskInstanceDetail *TaskInstanceDetail `json:"TaskInstanceDetail,omitempty" name:"TaskInstanceDetail"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeTaskInstanceResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeTaskInstanceResponseParams `json:"Response"`
+}
+
+func (r *DescribeTaskInstanceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTaskInstanceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2705,6 +8059,292 @@ func (r *DescribeTaskInstancesResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeTaskLockStatusRequestParams struct {
+	// 任务id
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 任务类型：201. stream,   202. offline
+	TaskType *uint64 `json:"TaskType,omitempty" name:"TaskType"`
+}
+
+type DescribeTaskLockStatusRequest struct {
+	*tchttp.BaseRequest
+	
+	// 任务id
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 任务类型：201. stream,   202. offline
+	TaskType *uint64 `json:"TaskType,omitempty" name:"TaskType"`
+}
+
+func (r *DescribeTaskLockStatusRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTaskLockStatusRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	delete(f, "ProjectId")
+	delete(f, "TaskType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTaskLockStatusRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeTaskLockStatusResponseParams struct {
+	// 任务锁状态信息
+	TaskLockStatus *TaskLockStatus `json:"TaskLockStatus,omitempty" name:"TaskLockStatus"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeTaskLockStatusResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeTaskLockStatusResponseParams `json:"Response"`
+}
+
+func (r *DescribeTaskLockStatusResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTaskLockStatusResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeTaskReportDetailListRequestParams struct {
+	// WeData项目id
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 任务Id
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 统计周期的开始日期，格式为 yyyy-MM-dd
+	BeginDate *string `json:"BeginDate,omitempty" name:"BeginDate"`
+
+	// 统计周期的结束日期，格式为 yyyy-MM-dd
+	EndDate *string `json:"EndDate,omitempty" name:"EndDate"`
+
+	// 任务状态，多个状态用逗号连接
+	StateList *string `json:"StateList,omitempty" name:"StateList"`
+
+	// 排序字段名
+	SortItem *string `json:"SortItem,omitempty" name:"SortItem"`
+
+	// 升序或降序，传ASC或DESC
+	SortType *string `json:"SortType,omitempty" name:"SortType"`
+
+	// 页数，从1开始
+	PageIndex *uint64 `json:"PageIndex,omitempty" name:"PageIndex"`
+
+	// 每页的记录条数，默认10条
+	PageSize *uint64 `json:"PageSize,omitempty" name:"PageSize"`
+}
+
+type DescribeTaskReportDetailListRequest struct {
+	*tchttp.BaseRequest
+	
+	// WeData项目id
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 任务Id
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 统计周期的开始日期，格式为 yyyy-MM-dd
+	BeginDate *string `json:"BeginDate,omitempty" name:"BeginDate"`
+
+	// 统计周期的结束日期，格式为 yyyy-MM-dd
+	EndDate *string `json:"EndDate,omitempty" name:"EndDate"`
+
+	// 任务状态，多个状态用逗号连接
+	StateList *string `json:"StateList,omitempty" name:"StateList"`
+
+	// 排序字段名
+	SortItem *string `json:"SortItem,omitempty" name:"SortItem"`
+
+	// 升序或降序，传ASC或DESC
+	SortType *string `json:"SortType,omitempty" name:"SortType"`
+
+	// 页数，从1开始
+	PageIndex *uint64 `json:"PageIndex,omitempty" name:"PageIndex"`
+
+	// 每页的记录条数，默认10条
+	PageSize *uint64 `json:"PageSize,omitempty" name:"PageSize"`
+}
+
+func (r *DescribeTaskReportDetailListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTaskReportDetailListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProjectId")
+	delete(f, "TaskId")
+	delete(f, "BeginDate")
+	delete(f, "EndDate")
+	delete(f, "StateList")
+	delete(f, "SortItem")
+	delete(f, "SortType")
+	delete(f, "PageIndex")
+	delete(f, "PageSize")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTaskReportDetailListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeTaskReportDetailListResponseParams struct {
+	// 页码，从1开始
+	PageIndex *uint64 `json:"PageIndex,omitempty" name:"PageIndex"`
+
+	// 每页的记录数
+	PageSize *uint64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// 总记录数
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 总页数
+	TotalPage *uint64 `json:"TotalPage,omitempty" name:"TotalPage"`
+
+	// 任务运行指标
+	Items []*TaskReportDetail `json:"Items,omitempty" name:"Items"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeTaskReportDetailListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeTaskReportDetailListResponseParams `json:"Response"`
+}
+
+func (r *DescribeTaskReportDetailListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTaskReportDetailListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeTaskReportRequestParams struct {
+	// 任务Id
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 统计周期的开始日期，格式为 yyyy-MM-dd
+	BeginDate *string `json:"BeginDate,omitempty" name:"BeginDate"`
+
+	// 统计周期的结束日期，格式为 yyyy-MM-dd
+	EndDate *string `json:"EndDate,omitempty" name:"EndDate"`
+
+	// WeData项目id
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+}
+
+type DescribeTaskReportRequest struct {
+	*tchttp.BaseRequest
+	
+	// 任务Id
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 统计周期的开始日期，格式为 yyyy-MM-dd
+	BeginDate *string `json:"BeginDate,omitempty" name:"BeginDate"`
+
+	// 统计周期的结束日期，格式为 yyyy-MM-dd
+	EndDate *string `json:"EndDate,omitempty" name:"EndDate"`
+
+	// WeData项目id
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+}
+
+func (r *DescribeTaskReportRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTaskReportRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	delete(f, "BeginDate")
+	delete(f, "EndDate")
+	delete(f, "ProjectId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTaskReportRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeTaskReportResponseParams struct {
+	// 总读取条数
+	TotalReadRecords *uint64 `json:"TotalReadRecords,omitempty" name:"TotalReadRecords"`
+
+	// 总读取字节数，单位为Byte
+	TotalReadBytes *uint64 `json:"TotalReadBytes,omitempty" name:"TotalReadBytes"`
+
+	// 总写入条数
+	TotalWriteRecords *uint64 `json:"TotalWriteRecords,omitempty" name:"TotalWriteRecords"`
+
+	// 总写入字节数，单位为Byte
+	TotalWriteBytes *uint64 `json:"TotalWriteBytes,omitempty" name:"TotalWriteBytes"`
+
+	// 总脏数据条数
+	TotalErrorRecords *uint64 `json:"TotalErrorRecords,omitempty" name:"TotalErrorRecords"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeTaskReportResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeTaskReportResponseParams `json:"Response"`
+}
+
+func (r *DescribeTaskReportResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTaskReportResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeTaskScriptRequestParams struct {
 	// 项目Id
 	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
@@ -2845,6 +8485,96 @@ func (r *DescribeTasksByPageResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeTasksByPageResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DryRunDIOfflineTaskRequestParams struct {
+	// 任务Id
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 项目Id
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 资源组Id
+	ResourceGroup *string `json:"ResourceGroup,omitempty" name:"ResourceGroup"`
+
+	// 默认 27
+	TaskTypeId *uint64 `json:"TaskTypeId,omitempty" name:"TaskTypeId"`
+}
+
+type DryRunDIOfflineTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// 任务Id
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 项目Id
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 资源组Id
+	ResourceGroup *string `json:"ResourceGroup,omitempty" name:"ResourceGroup"`
+
+	// 默认 27
+	TaskTypeId *uint64 `json:"TaskTypeId,omitempty" name:"TaskTypeId"`
+}
+
+func (r *DryRunDIOfflineTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DryRunDIOfflineTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	delete(f, "ProjectId")
+	delete(f, "ResourceGroup")
+	delete(f, "TaskTypeId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DryRunDIOfflineTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DryRunDIOfflineTaskResponseParams struct {
+	// 数据时间
+	CurrentRunDate *string `json:"CurrentRunDate,omitempty" name:"CurrentRunDate"`
+
+	// 项目Id
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 任务状态
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 任务Id
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 任务实例唯一key
+	TaskInstanceKey *string `json:"TaskInstanceKey,omitempty" name:"TaskInstanceKey"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DryRunDIOfflineTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *DryRunDIOfflineTaskResponseParams `json:"Response"`
+}
+
+func (r *DryRunDIOfflineTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DryRunDIOfflineTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -3115,6 +8845,119 @@ type FunctionVersion struct {
 	Content *string `json:"Content,omitempty" name:"Content"`
 }
 
+// Predefined struct for user
+type GenHiveTableDDLSqlRequestParams struct {
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 目标数据库
+	SinkDatabase *string `json:"SinkDatabase,omitempty" name:"SinkDatabase"`
+
+	// 节点id
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 元数据类型(MYSQL、ORACLE)
+	MsType *string `json:"MsType,omitempty" name:"MsType"`
+
+	// 数据源id
+	DatasourceId *string `json:"DatasourceId,omitempty" name:"DatasourceId"`
+
+	// 来源库
+	SourceDatabase *string `json:"SourceDatabase,omitempty" name:"SourceDatabase"`
+
+	// 来源表
+	TableName *string `json:"TableName,omitempty" name:"TableName"`
+
+	// 目标表元数据类型(HIVE、GBASE)
+	SinkType *string `json:"SinkType,omitempty" name:"SinkType"`
+
+	// schema名称
+	SchemaName *string `json:"SchemaName,omitempty" name:"SchemaName"`
+}
+
+type GenHiveTableDDLSqlRequest struct {
+	*tchttp.BaseRequest
+	
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 目标数据库
+	SinkDatabase *string `json:"SinkDatabase,omitempty" name:"SinkDatabase"`
+
+	// 节点id
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 元数据类型(MYSQL、ORACLE)
+	MsType *string `json:"MsType,omitempty" name:"MsType"`
+
+	// 数据源id
+	DatasourceId *string `json:"DatasourceId,omitempty" name:"DatasourceId"`
+
+	// 来源库
+	SourceDatabase *string `json:"SourceDatabase,omitempty" name:"SourceDatabase"`
+
+	// 来源表
+	TableName *string `json:"TableName,omitempty" name:"TableName"`
+
+	// 目标表元数据类型(HIVE、GBASE)
+	SinkType *string `json:"SinkType,omitempty" name:"SinkType"`
+
+	// schema名称
+	SchemaName *string `json:"SchemaName,omitempty" name:"SchemaName"`
+}
+
+func (r *GenHiveTableDDLSqlRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GenHiveTableDDLSqlRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProjectId")
+	delete(f, "SinkDatabase")
+	delete(f, "Id")
+	delete(f, "MsType")
+	delete(f, "DatasourceId")
+	delete(f, "SourceDatabase")
+	delete(f, "TableName")
+	delete(f, "SinkType")
+	delete(f, "SchemaName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GenHiveTableDDLSqlRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GenHiveTableDDLSqlResponseParams struct {
+	// 生成的ddl语句
+	DDLSql *string `json:"DDLSql,omitempty" name:"DDLSql"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type GenHiveTableDDLSqlResponse struct {
+	*tchttp.BaseResponse
+	Response *GenHiveTableDDLSqlResponseParams `json:"Response"`
+}
+
+func (r *GenHiveTableDDLSqlResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GenHiveTableDDLSqlResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type GeneralTaskParam struct {
 	// 通用任务参数类型,例：SPARK_SQL
 	Type *string `json:"Type,omitempty" name:"Type"`
@@ -3122,6 +8965,304 @@ type GeneralTaskParam struct {
 	// 通用任务参数内容,直接作用于任务的参数。不同参数用;
 	// 分割
 	Value *string `json:"Value,omitempty" name:"Value"`
+}
+
+// Predefined struct for user
+type GetIntegrationNodeColumnSchemaRequestParams struct {
+	// 字段示例（json格式）
+	ColumnContent *string `json:"ColumnContent,omitempty" name:"ColumnContent"`
+
+	// 数据源类型
+	DatasourceType *string `json:"DatasourceType,omitempty" name:"DatasourceType"`
+}
+
+type GetIntegrationNodeColumnSchemaRequest struct {
+	*tchttp.BaseRequest
+	
+	// 字段示例（json格式）
+	ColumnContent *string `json:"ColumnContent,omitempty" name:"ColumnContent"`
+
+	// 数据源类型
+	DatasourceType *string `json:"DatasourceType,omitempty" name:"DatasourceType"`
+}
+
+func (r *GetIntegrationNodeColumnSchemaRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetIntegrationNodeColumnSchemaRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ColumnContent")
+	delete(f, "DatasourceType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetIntegrationNodeColumnSchemaRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetIntegrationNodeColumnSchemaResponseParams struct {
+	// 字段列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Schemas []*IntegrationNodeSchema `json:"Schemas,omitempty" name:"Schemas"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type GetIntegrationNodeColumnSchemaResponse struct {
+	*tchttp.BaseResponse
+	Response *GetIntegrationNodeColumnSchemaResponseParams `json:"Response"`
+}
+
+func (r *GetIntegrationNodeColumnSchemaResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetIntegrationNodeColumnSchemaResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetOfflineDIInstanceListRequestParams struct {
+	// 第几页
+	PageIndex *uint64 `json:"PageIndex,omitempty" name:"PageIndex"`
+
+	// 每页几条
+	PageSize *uint64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// 项目Id
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 无
+	SearchCondition *SearchConditionNew `json:"SearchCondition,omitempty" name:"SearchCondition"`
+}
+
+type GetOfflineDIInstanceListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 第几页
+	PageIndex *uint64 `json:"PageIndex,omitempty" name:"PageIndex"`
+
+	// 每页几条
+	PageSize *uint64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// 项目Id
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 无
+	SearchCondition *SearchConditionNew `json:"SearchCondition,omitempty" name:"SearchCondition"`
+}
+
+func (r *GetOfflineDIInstanceListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetOfflineDIInstanceListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PageIndex")
+	delete(f, "PageSize")
+	delete(f, "ProjectId")
+	delete(f, "SearchCondition")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetOfflineDIInstanceListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetOfflineDIInstanceListResponseParams struct {
+	// 总条数
+	Total *uint64 `json:"Total,omitempty" name:"Total"`
+
+	// 实例详情
+	List []*OfflineInstance `json:"List,omitempty" name:"List"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type GetOfflineDIInstanceListResponse struct {
+	*tchttp.BaseResponse
+	Response *GetOfflineDIInstanceListResponseParams `json:"Response"`
+}
+
+func (r *GetOfflineDIInstanceListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetOfflineDIInstanceListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetOfflineInstanceListRequestParams struct {
+	// 第几页
+	PageIndex *string `json:"PageIndex,omitempty" name:"PageIndex"`
+
+	// 每页几条
+	PageSize *uint64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// 项目Id
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 无
+	SearchCondition *SearchCondition `json:"SearchCondition,omitempty" name:"SearchCondition"`
+}
+
+type GetOfflineInstanceListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 第几页
+	PageIndex *string `json:"PageIndex,omitempty" name:"PageIndex"`
+
+	// 每页几条
+	PageSize *uint64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// 项目Id
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 无
+	SearchCondition *SearchCondition `json:"SearchCondition,omitempty" name:"SearchCondition"`
+}
+
+func (r *GetOfflineInstanceListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetOfflineInstanceListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PageIndex")
+	delete(f, "PageSize")
+	delete(f, "ProjectId")
+	delete(f, "SearchCondition")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetOfflineInstanceListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetOfflineInstanceListResponseParams struct {
+	// 总条数
+	Total *uint64 `json:"Total,omitempty" name:"Total"`
+
+	// 实例详情
+	List []*OfflineInstance `json:"List,omitempty" name:"List"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type GetOfflineInstanceListResponse struct {
+	*tchttp.BaseResponse
+	Response *GetOfflineInstanceListResponseParams `json:"Response"`
+}
+
+func (r *GetOfflineInstanceListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetOfflineInstanceListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type InLongAgentDetail struct {
+	// Agent ID
+	AgentId *string `json:"AgentId,omitempty" name:"AgentId"`
+
+	// Agent Name
+	AgentName *string `json:"AgentName,omitempty" name:"AgentName"`
+
+	// Agent状态(running运行中，initializing 操作中，failed心跳异常)
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// Agent状态描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StatusDesc *string `json:"StatusDesc,omitempty" name:"StatusDesc"`
+
+	// 集群类型，1：TKE Agent，2：BOSS SDK，默认：1
+	AgentType *uint64 `json:"AgentType,omitempty" name:"AgentType"`
+
+	// 采集来源
+	Source *string `json:"Source,omitempty" name:"Source"`
+
+	// VPC
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 集成资源组Id
+	ExecutorGroupId *string `json:"ExecutorGroupId,omitempty" name:"ExecutorGroupId"`
+
+	// 集成资源组名称
+	ExecutorGroupName *string `json:"ExecutorGroupName,omitempty" name:"ExecutorGroupName"`
+
+	// 关联任务数
+	TaskCount *uint64 `json:"TaskCount,omitempty" name:"TaskCount"`
+}
+
+type InLongAgentTask struct {
+	// 集成任务ID
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 集成任务名称
+	TaskName *string `json:"TaskName,omitempty" name:"TaskName"`
+
+	// 集成任务状态
+	TaskStatus *string `json:"TaskStatus,omitempty" name:"TaskStatus"`
+}
+
+type InLongTkeDetail struct {
+	// 集群Id
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 集群名称
+	ClusterName *string `json:"ClusterName,omitempty" name:"ClusterName"`
+
+	// TKE集群状态 (Running 运行中 Creating 创建中 Idling 闲置中 Abnormal 异常)
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 是否安装Agent，true: 是，false: 否
+	HasAgent *bool `json:"HasAgent,omitempty" name:"HasAgent"`
+
+	// 采集器ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AgentId *string `json:"AgentId,omitempty" name:"AgentId"`
+
+	// VPC ID
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// TKE集群区域ID
+	TkeRegion *string `json:"TkeRegion,omitempty" name:"TkeRegion"`
+
+	// 集群类型，托管集群：MANAGED_CLUSTER，独立集群：INDEPENDENT_CLUSTER
+	ClusterType *string `json:"ClusterType,omitempty" name:"ClusterType"`
 }
 
 type InstanceInfo struct {
@@ -3163,6 +9304,101 @@ type InstanceLog struct {
 	CostTime *float64 `json:"CostTime,omitempty" name:"CostTime"`
 }
 
+type InstanceNodeInfo struct {
+	// 读取节点SOURCE 写入节点SINK
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NodeType *string `json:"NodeType,omitempty" name:"NodeType"`
+
+	// 节点id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NodeId *string `json:"NodeId,omitempty" name:"NodeId"`
+
+	// 节点名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NodeName *string `json:"NodeName,omitempty" name:"NodeName"`
+}
+
+type InstanceReportReadNode struct {
+	// 节点名称
+	NodeName *string `json:"NodeName,omitempty" name:"NodeName"`
+
+	// 数据来源
+	DataSource *string `json:"DataSource,omitempty" name:"DataSource"`
+
+	// 总条数
+	TotalReadRecords *uint64 `json:"TotalReadRecords,omitempty" name:"TotalReadRecords"`
+
+	// 总字节数
+	TotalReadBytes *uint64 `json:"TotalReadBytes,omitempty" name:"TotalReadBytes"`
+
+	// 速度（条/秒）
+	RecordSpeed *uint64 `json:"RecordSpeed,omitempty" name:"RecordSpeed"`
+
+	// 吞吐（Byte/秒）
+	ByteSpeed *float64 `json:"ByteSpeed,omitempty" name:"ByteSpeed"`
+
+	// 脏数据条数
+	TotalErrorRecords *uint64 `json:"TotalErrorRecords,omitempty" name:"TotalErrorRecords"`
+}
+
+type InstanceReportSummary struct {
+	// 总读取记录数
+	TotalReadRecords *uint64 `json:"TotalReadRecords,omitempty" name:"TotalReadRecords"`
+
+	// 总读取字节数
+	TotalReadBytes *uint64 `json:"TotalReadBytes,omitempty" name:"TotalReadBytes"`
+
+	// 总写入记录数
+	TotalWriteRecords *uint64 `json:"TotalWriteRecords,omitempty" name:"TotalWriteRecords"`
+
+	// 总写入字节数
+	TotalWriteBytes *uint64 `json:"TotalWriteBytes,omitempty" name:"TotalWriteBytes"`
+
+	// 速率（条/秒）
+	RecordSpeed *uint64 `json:"RecordSpeed,omitempty" name:"RecordSpeed"`
+
+	// 流量（Byte/秒）
+	ByteSpeed *float64 `json:"ByteSpeed,omitempty" name:"ByteSpeed"`
+
+	// 脏数据记录数
+	TotalErrorRecords *uint64 `json:"TotalErrorRecords,omitempty" name:"TotalErrorRecords"`
+
+	// 脏数据字节数
+	TotalErrorBytes *uint64 `json:"TotalErrorBytes,omitempty" name:"TotalErrorBytes"`
+
+	// 任务运行总时长
+	TotalRunDuration *uint64 `json:"TotalRunDuration,omitempty" name:"TotalRunDuration"`
+
+	// 任务开始运行时间
+	BeginRunTime *string `json:"BeginRunTime,omitempty" name:"BeginRunTime"`
+
+	// 任务结束运行时间
+	EndRunTime *string `json:"EndRunTime,omitempty" name:"EndRunTime"`
+}
+
+type InstanceReportWriteNode struct {
+	// 节点名称
+	NodeName *string `json:"NodeName,omitempty" name:"NodeName"`
+
+	// 数据来源
+	DataSource *string `json:"DataSource,omitempty" name:"DataSource"`
+
+	// 总条数
+	TotalWriteRecords *uint64 `json:"TotalWriteRecords,omitempty" name:"TotalWriteRecords"`
+
+	// 总字节数
+	TotalWriteBytes *uint64 `json:"TotalWriteBytes,omitempty" name:"TotalWriteBytes"`
+
+	// 速度（条/秒）
+	RecordSpeed *uint64 `json:"RecordSpeed,omitempty" name:"RecordSpeed"`
+
+	// 吞吐（Byte/秒）
+	ByteSpeed *float64 `json:"ByteSpeed,omitempty" name:"ByteSpeed"`
+
+	// 脏数据条数
+	TotalErrorRecords *uint64 `json:"TotalErrorRecords,omitempty" name:"TotalErrorRecords"`
+}
+
 type IntegrationNodeDetail struct {
 	// 集成节点名称
 	Name *string `json:"Name,omitempty" name:"Name"`
@@ -3199,6 +9435,73 @@ type IntegrationNodeDetail struct {
 
 	// owner uin
 	OwnerUin *string `json:"OwnerUin,omitempty" name:"OwnerUin"`
+}
+
+type IntegrationNodeInfo struct {
+	// 集成节点id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 集成节点所属任务id
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 集成节点名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 集成节点类型
+	NodeType *string `json:"NodeType,omitempty" name:"NodeType"`
+
+	// 节点数据源类型
+	DataSourceType *string `json:"DataSourceType,omitempty" name:"DataSourceType"`
+
+	// 节点描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 数据源id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DatasourceId *string `json:"DatasourceId,omitempty" name:"DatasourceId"`
+
+	// 节点配置信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Config []*RecordField `json:"Config,omitempty" name:"Config"`
+
+	// 节点扩展配置信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExtConfig []*RecordField `json:"ExtConfig,omitempty" name:"ExtConfig"`
+
+	// 节点schema
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Schema []*IntegrationNodeSchema `json:"Schema,omitempty" name:"Schema"`
+
+	// 节点映射
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NodeMapping *IntegrationNodeMapping `json:"NodeMapping,omitempty" name:"NodeMapping"`
+
+	// 应用id
+	AppId *string `json:"AppId,omitempty" name:"AppId"`
+
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 创建人uin
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreatorUin *string `json:"CreatorUin,omitempty" name:"CreatorUin"`
+
+	// 操作人uin
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OperatorUin *string `json:"OperatorUin,omitempty" name:"OperatorUin"`
+
+	// owner uin
+	OwnerUin *string `json:"OwnerUin,omitempty" name:"OwnerUin"`
+
+	// 创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 更新时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
 }
 
 type IntegrationNodeMapping struct {
@@ -3246,6 +9549,127 @@ type IntegrationNodeSchemaMapping struct {
 
 	// 目标schema id
 	SinkSchemaId *string `json:"SinkSchemaId,omitempty" name:"SinkSchemaId"`
+}
+
+type IntegrationStatisticsTrendResult struct {
+	// 统计属性名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StatisticName []*string `json:"StatisticName,omitempty" name:"StatisticName"`
+
+	// 统计值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StatisticValue []*int64 `json:"StatisticValue,omitempty" name:"StatisticValue"`
+
+	// 统计项目
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StatisticType *string `json:"StatisticType,omitempty" name:"StatisticType"`
+}
+
+type IntegrationTaskInfo struct {
+	// 任务名称
+	TaskName *string `json:"TaskName,omitempty" name:"TaskName"`
+
+	// 任务描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 同步类型1.解决方案(整库迁移),2.单表同步
+	SyncType *int64 `json:"SyncType,omitempty" name:"SyncType"`
+
+	// 201.实时,202.离线
+	TaskType *int64 `json:"TaskType,omitempty" name:"TaskType"`
+
+	// 任务所属工作流id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WorkflowId *string `json:"WorkflowId,omitempty" name:"WorkflowId"`
+
+	// 任务id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 任务调度id(oceanus or us等作业id)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ScheduleTaskId *string `json:"ScheduleTaskId,omitempty" name:"ScheduleTaskId"`
+
+	// 任务组id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskGroupId *string `json:"TaskGroupId,omitempty" name:"TaskGroupId"`
+
+	// 项目id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 创建人uin
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreatorUin *string `json:"CreatorUin,omitempty" name:"CreatorUin"`
+
+	// 操作人uin
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OperatorUin *string `json:"OperatorUin,omitempty" name:"OperatorUin"`
+
+	// owner uin
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OwnerUin *string `json:"OwnerUin,omitempty" name:"OwnerUin"`
+
+	// 应用id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AppId *string `json:"AppId,omitempty" name:"AppId"`
+
+	// 任务状态1.初始化,2.操作中,3.运行中,4.暂停,5.任务停止中,6.停止,7.执行失败,8.已删除,9.已锁定,10.配置过期,11.提交中,12.提交成功,13.提交失败
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *int64 `json:"Status,omitempty" name:"Status"`
+
+	// 节点列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Nodes []*IntegrationNodeInfo `json:"Nodes,omitempty" name:"Nodes"`
+
+	// 执行资源id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExecutorId *string `json:"ExecutorId,omitempty" name:"ExecutorId"`
+
+	// 任务配置信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Config []*RecordField `json:"Config,omitempty" name:"Config"`
+
+	// 任务扩展配置信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExtConfig []*RecordField `json:"ExtConfig,omitempty" name:"ExtConfig"`
+
+	// 任务执行context信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExecuteContext []*RecordField `json:"ExecuteContext,omitempty" name:"ExecuteContext"`
+
+	// 节点映射
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Mappings []*IntegrationNodeMapping `json:"Mappings,omitempty" name:"Mappings"`
+
+	// 任务模式：1.画布模式，2.flink jar
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskMode *string `json:"TaskMode,omitempty" name:"TaskMode"`
+
+	// 责任人
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Incharge *string `json:"Incharge,omitempty" name:"Incharge"`
+
+	// 离线新增参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OfflineTaskAddEntity *OfflineTaskAddParam `json:"OfflineTaskAddEntity,omitempty" name:"OfflineTaskAddEntity"`
+
+	// group name
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExecutorGroupName *string `json:"ExecutorGroupName,omitempty" name:"ExecutorGroupName"`
+
+	// url
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InLongManagerUrl *string `json:"InLongManagerUrl,omitempty" name:"InLongManagerUrl"`
+
+	// stream id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InLongStreamId *string `json:"InLongStreamId,omitempty" name:"InLongStreamId"`
+
+	// version
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InLongManagerVersion *string `json:"InLongManagerVersion,omitempty" name:"InLongManagerVersion"`
 }
 
 // Predefined struct for user
@@ -3310,6 +9734,113 @@ func (r *KillInstancesResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *KillInstancesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type Label struct {
+	// 类型值。
+	Value *string `json:"Value,omitempty" name:"Value"`
+
+	// 类型名称。
+	Text *string `json:"Text,omitempty" name:"Text"`
+}
+
+// Predefined struct for user
+type LockIntegrationTaskRequestParams struct {
+	// 任务id
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+}
+
+type LockIntegrationTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// 任务id
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+}
+
+func (r *LockIntegrationTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *LockIntegrationTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	delete(f, "ProjectId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "LockIntegrationTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type LockIntegrationTaskResponseParams struct {
+	// 操作成功与否标识
+	Data *bool `json:"Data,omitempty" name:"Data"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type LockIntegrationTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *LockIntegrationTaskResponseParams `json:"Response"`
+}
+
+func (r *LockIntegrationTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *LockIntegrationTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type LogContent struct {
+	// 日志时间戳，单位毫秒
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Time *uint64 `json:"Time,omitempty" name:"Time"`
+
+	// 日志包id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PkgId *string `json:"PkgId,omitempty" name:"PkgId"`
+
+	// 日志内容
+	Log *string `json:"Log,omitempty" name:"Log"`
+}
+
+type LogContentInfo struct {
+	// 日志内容
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Log *string `json:"Log,omitempty" name:"Log"`
+
+	// 日志组Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PkgId *string `json:"PkgId,omitempty" name:"PkgId"`
+
+	// 日志Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PkgLogId *string `json:"PkgLogId,omitempty" name:"PkgLogId"`
+
+	// 时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Time *uint64 `json:"Time,omitempty" name:"Time"`
+
+	// 日志所属的容器名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ContainerName *string `json:"ContainerName,omitempty" name:"ContainerName"`
 }
 
 // Predefined struct for user
@@ -3738,6 +10269,231 @@ func (r *ModifyFolderResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyIntegrationNodeRequestParams struct {
+	// 集成节点信息
+	NodeInfo *IntegrationNodeInfo `json:"NodeInfo,omitempty" name:"NodeInfo"`
+
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 任务类型
+	TaskType *uint64 `json:"TaskType,omitempty" name:"TaskType"`
+
+	// 区分画布模式和表单模式
+	TaskMode *uint64 `json:"TaskMode,omitempty" name:"TaskMode"`
+}
+
+type ModifyIntegrationNodeRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集成节点信息
+	NodeInfo *IntegrationNodeInfo `json:"NodeInfo,omitempty" name:"NodeInfo"`
+
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 任务类型
+	TaskType *uint64 `json:"TaskType,omitempty" name:"TaskType"`
+
+	// 区分画布模式和表单模式
+	TaskMode *uint64 `json:"TaskMode,omitempty" name:"TaskMode"`
+}
+
+func (r *ModifyIntegrationNodeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyIntegrationNodeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "NodeInfo")
+	delete(f, "ProjectId")
+	delete(f, "TaskType")
+	delete(f, "TaskMode")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyIntegrationNodeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyIntegrationNodeResponseParams struct {
+	// 节点id
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 任务id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ModifyIntegrationNodeResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyIntegrationNodeResponseParams `json:"Response"`
+}
+
+func (r *ModifyIntegrationNodeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyIntegrationNodeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyIntegrationTaskRequestParams struct {
+	// 任务信息
+	TaskInfo *IntegrationTaskInfo `json:"TaskInfo,omitempty" name:"TaskInfo"`
+
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 默认false . 为true时表示走回滚节点逻辑
+	RollbackFlag *bool `json:"RollbackFlag,omitempty" name:"RollbackFlag"`
+}
+
+type ModifyIntegrationTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// 任务信息
+	TaskInfo *IntegrationTaskInfo `json:"TaskInfo,omitempty" name:"TaskInfo"`
+
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 默认false . 为true时表示走回滚节点逻辑
+	RollbackFlag *bool `json:"RollbackFlag,omitempty" name:"RollbackFlag"`
+}
+
+func (r *ModifyIntegrationTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyIntegrationTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskInfo")
+	delete(f, "ProjectId")
+	delete(f, "RollbackFlag")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyIntegrationTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyIntegrationTaskResponseParams struct {
+	// 任务id
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ModifyIntegrationTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyIntegrationTaskResponseParams `json:"Response"`
+}
+
+func (r *ModifyIntegrationTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyIntegrationTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyTaskAlarmRegularRequestParams struct {
+	// 主键ID
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 规则信息
+	TaskAlarmInfo *TaskAlarmInfo `json:"TaskAlarmInfo,omitempty" name:"TaskAlarmInfo"`
+
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+}
+
+type ModifyTaskAlarmRegularRequest struct {
+	*tchttp.BaseRequest
+	
+	// 主键ID
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 规则信息
+	TaskAlarmInfo *TaskAlarmInfo `json:"TaskAlarmInfo,omitempty" name:"TaskAlarmInfo"`
+
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+}
+
+func (r *ModifyTaskAlarmRegularRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyTaskAlarmRegularRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Id")
+	delete(f, "TaskAlarmInfo")
+	delete(f, "ProjectId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyTaskAlarmRegularRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyTaskAlarmRegularResponseParams struct {
+	// 判断是否修改成功
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *bool `json:"Data,omitempty" name:"Data"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ModifyTaskAlarmRegularResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyTaskAlarmRegularResponseParams `json:"Response"`
+}
+
+func (r *ModifyTaskAlarmRegularResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyTaskAlarmRegularResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyTaskInfoRequestParams struct {
 	// 项目Id
 	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
@@ -4080,6 +10836,84 @@ func (r *ModifyTaskLinksResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyTaskLinksResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyTaskNameRequestParams struct {
+	// 名称
+	TaskName *string `json:"TaskName,omitempty" name:"TaskName"`
+
+	// id
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 项目/工作空间id
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 备注
+	Notes *string `json:"Notes,omitempty" name:"Notes"`
+}
+
+type ModifyTaskNameRequest struct {
+	*tchttp.BaseRequest
+	
+	// 名称
+	TaskName *string `json:"TaskName,omitempty" name:"TaskName"`
+
+	// id
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 项目/工作空间id
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 备注
+	Notes *string `json:"Notes,omitempty" name:"Notes"`
+}
+
+func (r *ModifyTaskNameRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyTaskNameRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskName")
+	delete(f, "TaskId")
+	delete(f, "ProjectId")
+	delete(f, "Notes")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyTaskNameRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyTaskNameResponseParams struct {
+	// 结果
+	Data *bool `json:"Data,omitempty" name:"Data"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ModifyTaskNameResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyTaskNameResponseParams `json:"Response"`
+}
+
+func (r *ModifyTaskNameResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyTaskNameResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -4437,6 +11271,141 @@ func (r *ModifyWorkflowScheduleResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type Namespace struct {
+	// 名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 当前状态
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 创建时间
+	CreatedAt *string `json:"CreatedAt,omitempty" name:"CreatedAt"`
+}
+
+type OfflineInstance struct {
+	// 创建账号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateUin *string `json:"CreateUin,omitempty" name:"CreateUin"`
+
+	// 操作账号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OperatorUin *string `json:"OperatorUin,omitempty" name:"OperatorUin"`
+
+	// 主账号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OwnerUin *string `json:"OwnerUin,omitempty" name:"OwnerUin"`
+
+	// 账号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AppId *string `json:"AppId,omitempty" name:"AppId"`
+
+	// 项目Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WorkspaceId *string `json:"WorkspaceId,omitempty" name:"WorkspaceId"`
+
+	// 任务Id
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 数据时间
+	CurRunDate *string `json:"CurRunDate,omitempty" name:"CurRunDate"`
+
+	// 下发时间
+	IssueId *string `json:"IssueId,omitempty" name:"IssueId"`
+
+	// 资源组id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InlongTaskId *string `json:"InlongTaskId,omitempty" name:"InlongTaskId"`
+
+	// 资源组
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceGroup *string `json:"ResourceGroup,omitempty" name:"ResourceGroup"`
+
+	// 实例类型
+	TaskRunType *uint64 `json:"TaskRunType,omitempty" name:"TaskRunType"`
+
+	// 实例状态
+	State *string `json:"State,omitempty" name:"State"`
+
+	// 开始时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 最后更新时间
+	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+
+	// 唯一key
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceKey *string `json:"InstanceKey,omitempty" name:"InstanceKey"`
+}
+
+type OfflineTaskAddParam struct {
+	// 名称
+	WorkflowName *string `json:"WorkflowName,omitempty" name:"WorkflowName"`
+
+	// 依赖
+	DependencyWorkflow *string `json:"DependencyWorkflow,omitempty" name:"DependencyWorkflow"`
+
+	// 开始时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 周期
+	CycleType *uint64 `json:"CycleType,omitempty" name:"CycleType"`
+
+	// 周期间隔
+	CycleStep *uint64 `json:"CycleStep,omitempty" name:"CycleStep"`
+
+	// 延迟时间
+	DelayTime *uint64 `json:"DelayTime,omitempty" name:"DelayTime"`
+
+	// crontab
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CrontabExpression *string `json:"CrontabExpression,omitempty" name:"CrontabExpression"`
+
+	// 重试等待
+	RetryWait *uint64 `json:"RetryWait,omitempty" name:"RetryWait"`
+
+	// 是否可以重试
+	Retriable *uint64 `json:"Retriable,omitempty" name:"Retriable"`
+
+	// 重试限制
+	TryLimit *uint64 `json:"TryLimit,omitempty" name:"TryLimit"`
+
+	// 优先级
+	RunPriority *uint64 `json:"RunPriority,omitempty" name:"RunPriority"`
+
+	// 产品名称
+	ProductName *string `json:"ProductName,omitempty" name:"ProductName"`
+
+	// 1 有序串行 一次一个，排队 orderly 
+	// 2 无序串行 一次一个，不排队 serial  
+	// 3 并行 一次多个 parallel
+	SelfDepend *uint64 `json:"SelfDepend,omitempty" name:"SelfDepend"`
+
+	// 周任务：1是周天，2是周1，7是周6 。
+	// 月任务：如具体1，3号则写 "1,3"，指定月末不可和具体号数一起输入，仅能为 "L"
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskAction *string `json:"TaskAction,omitempty" name:"TaskAction"`
+
+	// 调度执行结束时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExecutionEndTime *string `json:"ExecutionEndTime,omitempty" name:"ExecutionEndTime"`
+
+	// 调度执行开始时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExecutionStartTime *string `json:"ExecutionStartTime,omitempty" name:"ExecutionStartTime"`
+}
+
 type OperateResult struct {
 	// 操作结果；true表示成功；false表示失败
 	Result *bool `json:"Result,omitempty" name:"Result"`
@@ -4548,12 +11517,40 @@ type ParamInfo struct {
 	ParamValue *string `json:"ParamValue,omitempty" name:"ParamValue"`
 }
 
+type RealTimeTaskInstanceNodeInfo struct {
+	// 任务名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskName *string `json:"TaskName,omitempty" name:"TaskName"`
+
+	// 任务id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 实时任务实例节点信息列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceNodeInfoList []*InstanceNodeInfo `json:"InstanceNodeInfoList,omitempty" name:"InstanceNodeInfoList"`
+}
+
 type RecordField struct {
 	// 字段名称
 	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 字段值
 	Value *string `json:"Value,omitempty" name:"Value"`
+}
+
+type RecordsSpeed struct {
+	// 节点类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NodeType *string `json:"NodeType,omitempty" name:"NodeType"`
+
+	// 节点名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NodeName *string `json:"NodeName,omitempty" name:"NodeName"`
+
+	// 速度值列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Values []*SpeedValue `json:"Values,omitempty" name:"Values"`
 }
 
 // Predefined struct for user
@@ -4929,6 +11926,210 @@ type ResourcePathTree struct {
 }
 
 // Predefined struct for user
+type RestartInLongAgentRequestParams struct {
+	// 采集器ID
+	AgentId *string `json:"AgentId,omitempty" name:"AgentId"`
+
+	// WeData项目ID
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+}
+
+type RestartInLongAgentRequest struct {
+	*tchttp.BaseRequest
+	
+	// 采集器ID
+	AgentId *string `json:"AgentId,omitempty" name:"AgentId"`
+
+	// WeData项目ID
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+}
+
+func (r *RestartInLongAgentRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RestartInLongAgentRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AgentId")
+	delete(f, "ProjectId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RestartInLongAgentRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RestartInLongAgentResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type RestartInLongAgentResponse struct {
+	*tchttp.BaseResponse
+	Response *RestartInLongAgentResponseParams `json:"Response"`
+}
+
+func (r *RestartInLongAgentResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RestartInLongAgentResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ResumeIntegrationTaskRequestParams struct {
+	// 任务id
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+}
+
+type ResumeIntegrationTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// 任务id
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+}
+
+func (r *ResumeIntegrationTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ResumeIntegrationTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	delete(f, "ProjectId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ResumeIntegrationTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ResumeIntegrationTaskResponseParams struct {
+	// 操作成功与否标识
+	Data *bool `json:"Data,omitempty" name:"Data"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ResumeIntegrationTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *ResumeIntegrationTaskResponseParams `json:"Response"`
+}
+
+func (r *ResumeIntegrationTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ResumeIntegrationTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RobAndLockIntegrationTaskRequestParams struct {
+	// 任务id
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 任务类型：201. stream,   202. offline
+	TaskType *uint64 `json:"TaskType,omitempty" name:"TaskType"`
+}
+
+type RobAndLockIntegrationTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// 任务id
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 任务类型：201. stream,   202. offline
+	TaskType *uint64 `json:"TaskType,omitempty" name:"TaskType"`
+}
+
+func (r *RobAndLockIntegrationTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RobAndLockIntegrationTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	delete(f, "ProjectId")
+	delete(f, "TaskType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RobAndLockIntegrationTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RobAndLockIntegrationTaskResponseParams struct {
+	// 抢锁状态
+	RobLockState *RobLockState `json:"RobLockState,omitempty" name:"RobLockState"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type RobAndLockIntegrationTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *RobAndLockIntegrationTaskResponseParams `json:"Response"`
+}
+
+func (r *RobAndLockIntegrationTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RobAndLockIntegrationTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type RobLockState struct {
+	// 是否可以抢锁
+	IsRob *bool `json:"IsRob,omitempty" name:"IsRob"`
+
+	// 当前持锁人
+	Locker *string `json:"Locker,omitempty" name:"Locker"`
+}
+
+// Predefined struct for user
 type RunTaskRequestParams struct {
 	// 项目Id
 	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
@@ -5117,6 +12318,84 @@ func (r *SaveCustomFunctionResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type SchedulerTaskInstanceInfo struct {
+	// 任务id
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 实例运行时间
+	CurRunDate *string `json:"CurRunDate,omitempty" name:"CurRunDate"`
+}
+
+type SchemaDetail struct {
+	// 列
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ColumnKey *string `json:"ColumnKey,omitempty" name:"ColumnKey"`
+
+	// 描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *string `json:"Type,omitempty" name:"Type"`
+}
+
+type SearchCondition struct {
+	// 查询框架，必选
+	Instance *SearchConditionInstance `json:"Instance,omitempty" name:"Instance"`
+
+	// 查询关键字（任务Id精确匹配，任务名称模糊匹配），可选
+	Keyword *string `json:"Keyword,omitempty" name:"Keyword"`
+
+	// 排序顺序（asc，desc）
+	Sort *string `json:"Sort,omitempty" name:"Sort"`
+
+	// 排序列（costTime 运行耗时，startTime 开始时间，state 实例状态，curRunDate 数据时间）
+	SortCol *string `json:"SortCol,omitempty" name:"SortCol"`
+}
+
+type SearchConditionInstance struct {
+	// 执行空间 "DRY_RUN"
+	ExecutionSpace *uint64 `json:"ExecutionSpace,omitempty" name:"ExecutionSpace"`
+
+	// 产品名称，可选
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProductName *uint64 `json:"ProductName,omitempty" name:"ProductName"`
+
+	// 资源组
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceGroup *uint64 `json:"ResourceGroup,omitempty" name:"ResourceGroup"`
+}
+
+type SearchConditionInstanceNew struct {
+	// 执行空间 "DRY_RUN"
+	ExecutionSpace *string `json:"ExecutionSpace,omitempty" name:"ExecutionSpace"`
+
+	// 产品名称，可选
+	ProductName *string `json:"ProductName,omitempty" name:"ProductName"`
+
+	// 资源组
+	ResourceGroup *string `json:"ResourceGroup,omitempty" name:"ResourceGroup"`
+}
+
+type SearchConditionNew struct {
+	// 查询框架，必选
+	Instance *SearchConditionInstanceNew `json:"Instance,omitempty" name:"Instance"`
+
+	// 查询关键字（任务Id精确匹配，任务名称模糊匹配），可选
+	Keyword *string `json:"Keyword,omitempty" name:"Keyword"`
+
+	// 排序顺序（asc，desc）
+	Sort *string `json:"Sort,omitempty" name:"Sort"`
+
+	// 排序列（costTime 运行耗时，startTime 开始时间，state 实例状态，curRunDate 数据时间）
+	SortCol *string `json:"SortCol,omitempty" name:"SortCol"`
+}
+
 // Predefined struct for user
 type SetTaskAlarmNewRequestParams struct {
 	// 设置任务超时告警和失败告警信息
@@ -5187,6 +12466,144 @@ type SimpleTaskInfo struct {
 
 	// 任务名
 	TaskName *string `json:"TaskName,omitempty" name:"TaskName"`
+}
+
+type SpeedValue struct {
+	// 带毫秒的时间戳
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Time *uint64 `json:"Time,omitempty" name:"Time"`
+
+	// 无
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Speed *float64 `json:"Speed,omitempty" name:"Speed"`
+}
+
+// Predefined struct for user
+type StartIntegrationTaskRequestParams struct {
+	// 任务id
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+}
+
+type StartIntegrationTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// 任务id
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+}
+
+func (r *StartIntegrationTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *StartIntegrationTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	delete(f, "ProjectId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StartIntegrationTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type StartIntegrationTaskResponseParams struct {
+	// 操作成功与否标识
+	Data *bool `json:"Data,omitempty" name:"Data"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type StartIntegrationTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *StartIntegrationTaskResponseParams `json:"Response"`
+}
+
+func (r *StartIntegrationTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *StartIntegrationTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type StopIntegrationTaskRequestParams struct {
+	// 任务id
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+}
+
+type StopIntegrationTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// 任务id
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+}
+
+func (r *StopIntegrationTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *StopIntegrationTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	delete(f, "ProjectId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StopIntegrationTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type StopIntegrationTaskResponseParams struct {
+	// 操作成功与否标识
+	Data *bool `json:"Data,omitempty" name:"Data"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type StopIntegrationTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *StopIntegrationTaskResponseParams `json:"Response"`
+}
+
+func (r *StopIntegrationTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *StopIntegrationTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user
@@ -5443,6 +12860,150 @@ func (r *SubmitWorkflowResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *SubmitWorkflowResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SuspendIntegrationTaskRequestParams struct {
+	// 任务id
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+}
+
+type SuspendIntegrationTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// 任务id
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+}
+
+func (r *SuspendIntegrationTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SuspendIntegrationTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	delete(f, "ProjectId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SuspendIntegrationTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SuspendIntegrationTaskResponseParams struct {
+	// 操作成功与否标识
+	Data *bool `json:"Data,omitempty" name:"Data"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type SuspendIntegrationTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *SuspendIntegrationTaskResponseParams `json:"Response"`
+}
+
+func (r *SuspendIntegrationTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SuspendIntegrationTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type TableInfo struct {
+	// 表Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TableId *string `json:"TableId,omitempty" name:"TableId"`
+
+	// 表名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TableName *string `json:"TableName,omitempty" name:"TableName"`
+}
+
+type TaskAlarmInfo struct {
+	// 任务ID
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 规则名称
+	RegularName *string `json:"RegularName,omitempty" name:"RegularName"`
+
+	// 规则状态(0表示关闭，1表示打开)
+	RegularStatus *uint64 `json:"RegularStatus,omitempty" name:"RegularStatus"`
+
+	// 告警级别(0表示普通，1表示重要，2表示紧急)
+	AlarmLevel *uint64 `json:"AlarmLevel,omitempty" name:"AlarmLevel"`
+
+	// 告警指标,0表示任务失败，1表示任务运行超时，2表示任务停止，3表示任务暂停
+	// ，4写入速度，5读取速度，6读取吞吐，7写入吞吐, 8脏数据字节数，9脏数据条数
+	AlarmIndicator *uint64 `json:"AlarmIndicator,omitempty" name:"AlarmIndicator"`
+
+	// 告警方式,多个用逗号隔开（1:邮件，2:短信，3:微信，4:语音，5:代表企业微信，6:http）
+	AlarmWay *string `json:"AlarmWay,omitempty" name:"AlarmWay"`
+
+	// 告警接收人ID，多个用逗号隔开
+	AlarmRecipientId *string `json:"AlarmRecipientId,omitempty" name:"AlarmRecipientId"`
+
+	// 任务类型(201表示实时，202表示离线)
+	TaskType *uint64 `json:"TaskType,omitempty" name:"TaskType"`
+
+	// 告警接收人昵称，多个用逗号隔开
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AlarmRecipientName *string `json:"AlarmRecipientName,omitempty" name:"AlarmRecipientName"`
+
+	// 主键ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 规则ID
+	RegularId *string `json:"RegularId,omitempty" name:"RegularId"`
+
+	// 指标阈值(1表示离线任务第一次运行失败，2表示离线任务所有重试完成后失败)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TriggerType *uint64 `json:"TriggerType,omitempty" name:"TriggerType"`
+
+	// 预计的超时时间(分钟级别)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EstimatedTime *uint64 `json:"EstimatedTime,omitempty" name:"EstimatedTime"`
+
+	// 项目ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 创建人
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Creater *string `json:"Creater,omitempty" name:"Creater"`
+
+	// 告警指标描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AlarmIndicatorDesc *string `json:"AlarmIndicatorDesc,omitempty" name:"AlarmIndicatorDesc"`
+
+	// 实时任务告警需要的参数，1是大于2是小于
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Operator *uint64 `json:"Operator,omitempty" name:"Operator"`
+
+	// 节点id，多个逗号分隔
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NodeId *string `json:"NodeId,omitempty" name:"NodeId"`
+
+	// 节点名称，多个逗号分隔
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NodeName *string `json:"NodeName,omitempty" name:"NodeName"`
 }
 
 type TaskCanvasInfo struct {
@@ -5859,6 +13420,71 @@ type TaskInnerInfo struct {
 	RealWorkflowId *string `json:"RealWorkflowId,omitempty" name:"RealWorkflowId"`
 }
 
+type TaskInstanceDetail struct {
+	// 实例id
+	TaskRunId *string `json:"TaskRunId,omitempty" name:"TaskRunId"`
+
+	// 任务id
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 实例数据运行时间
+	CurRunDate *string `json:"CurRunDate,omitempty" name:"CurRunDate"`
+
+	// 实例实际运行时间
+	IssueDate *string `json:"IssueDate,omitempty" name:"IssueDate"`
+
+	// InLong任务Id
+	InlongTaskId *string `json:"InlongTaskId,omitempty" name:"InlongTaskId"`
+
+	// 执行资源组id
+	ExecutorGroupId *string `json:"ExecutorGroupId,omitempty" name:"ExecutorGroupId"`
+
+	// 任务类型(1 调试运行,2 调度执行)
+	TaskRunType *uint64 `json:"TaskRunType,omitempty" name:"TaskRunType"`
+
+	// 任务状态(1 正在执行,2 成功,3 失败,4 等待终止,5 正在终止,6 已终止,7 终止失败,9 等待执行)
+	State *uint64 `json:"State,omitempty" name:"State"`
+
+	// 实例开始运行时间，格式：yyyy-MM-dd HH:mm:ss
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 实例结束运行时间，格式：yyyy-MM-dd HH:mm:ss
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// Broker IP
+	BrokerIp *string `json:"BrokerIp,omitempty" name:"BrokerIp"`
+
+	// 运行实例的EKS Pod名称
+	PodName *string `json:"PodName,omitempty" name:"PodName"`
+
+	// 下一个调度周期的数据运行时间
+	NextRunDate *string `json:"NextRunDate,omitempty" name:"NextRunDate"`
+
+	// 创建者的账号Id
+	CreateUin *uint64 `json:"CreateUin,omitempty" name:"CreateUin"`
+
+	// 操作者的账号Id
+	OperatorUin *uint64 `json:"OperatorUin,omitempty" name:"OperatorUin"`
+
+	// 拥有者的账号Id
+	OwnerUin *uint64 `json:"OwnerUin,omitempty" name:"OwnerUin"`
+
+	// App Id
+	AppId *uint64 `json:"AppId,omitempty" name:"AppId"`
+
+	// WeData项目id
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 创建时间
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 更新时间
+	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+
+	// 任务名称
+	TaskName *string `json:"TaskName,omitempty" name:"TaskName"`
+}
+
 type TaskInstanceInfo struct {
 	// 任务Id
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -5963,6 +13589,157 @@ type TaskLinkInfo struct {
 	LinkId *string `json:"LinkId,omitempty" name:"LinkId"`
 }
 
+type TaskLockStatus struct {
+	// 任务id
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 持锁者
+	Locker *string `json:"Locker,omitempty" name:"Locker"`
+
+	// 当前操作用户是否为持锁者，1表示为持锁者，0表示为不为持锁者
+	IsLocker *int64 `json:"IsLocker,omitempty" name:"IsLocker"`
+
+	// 是否可以抢锁，1表示可以抢锁，0表示不可以抢锁
+	IsRob *int64 `json:"IsRob,omitempty" name:"IsRob"`
+}
+
+// Predefined struct for user
+type TaskLogRequestParams struct {
+	// 任务id
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 起始时间戳，单位毫秒
+	StartTime *uint64 `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间戳，单位毫秒
+	EndTime *uint64 `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 拉取日志数量，默认100
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 日志排序 desc 倒序 asc 顺序
+	OrderType *string `json:"OrderType,omitempty" name:"OrderType"`
+
+	// 实时任务 201   离线任务 202  默认实时任务
+	TaskType *uint64 `json:"TaskType,omitempty" name:"TaskType"`
+}
+
+type TaskLogRequest struct {
+	*tchttp.BaseRequest
+	
+	// 任务id
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 起始时间戳，单位毫秒
+	StartTime *uint64 `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间戳，单位毫秒
+	EndTime *uint64 `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 拉取日志数量，默认100
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 日志排序 desc 倒序 asc 顺序
+	OrderType *string `json:"OrderType,omitempty" name:"OrderType"`
+
+	// 实时任务 201   离线任务 202  默认实时任务
+	TaskType *uint64 `json:"TaskType,omitempty" name:"TaskType"`
+}
+
+func (r *TaskLogRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *TaskLogRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "ProjectId")
+	delete(f, "Limit")
+	delete(f, "OrderType")
+	delete(f, "TaskType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "TaskLogRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type TaskLogResponseParams struct {
+	// 详细日志
+	LogContentList []*LogContent `json:"LogContentList,omitempty" name:"LogContentList"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type TaskLogResponse struct {
+	*tchttp.BaseResponse
+	Response *TaskLogResponseParams `json:"Response"`
+}
+
+func (r *TaskLogResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *TaskLogResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type TaskReportDetail struct {
+	// 任务ID
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 任务实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 实例数据运行时间
+	CurRunDate *string `json:"CurRunDate,omitempty" name:"CurRunDate"`
+
+	// 实例实际下发时间
+	IssueDate *string `json:"IssueDate,omitempty" name:"IssueDate"`
+
+	// 任务状态码。1 正在执行,2 成功,3 失败,4 等待终止,5 正在终止,6 已终止,7 终止失败,9 等待执行。
+	TaskState *string `json:"TaskState,omitempty" name:"TaskState"`
+
+	// 总读取条数
+	TotalReadRecords *uint64 `json:"TotalReadRecords,omitempty" name:"TotalReadRecords"`
+
+	// 总读取字节数
+	TotalReadBytes *uint64 `json:"TotalReadBytes,omitempty" name:"TotalReadBytes"`
+
+	// 总写入条数
+	TotalWriteRecords *uint64 `json:"TotalWriteRecords,omitempty" name:"TotalWriteRecords"`
+
+	// 总写入字节数
+	TotalWriteBytes *uint64 `json:"TotalWriteBytes,omitempty" name:"TotalWriteBytes"`
+
+	// 写入速度（条/秒）
+	RecordSpeed *uint64 `json:"RecordSpeed,omitempty" name:"RecordSpeed"`
+
+	// 吞吐（Byte/秒）
+	ByteSpeed *float64 `json:"ByteSpeed,omitempty" name:"ByteSpeed"`
+
+	// 脏数据条数
+	TotalErrorRecords *uint64 `json:"TotalErrorRecords,omitempty" name:"TotalErrorRecords"`
+}
+
 type TaskScriptContent struct {
 	// 脚本内容 base64编码
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -6045,6 +13822,145 @@ func (r *TriggerEventResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *TriggerEventResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UnlockIntegrationTaskRequestParams struct {
+	// 任务id
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+}
+
+type UnlockIntegrationTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// 任务id
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+}
+
+func (r *UnlockIntegrationTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UnlockIntegrationTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	delete(f, "ProjectId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UnlockIntegrationTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UnlockIntegrationTaskResponseParams struct {
+	// 操作成功与否标识
+	Data *bool `json:"Data,omitempty" name:"Data"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type UnlockIntegrationTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *UnlockIntegrationTaskResponseParams `json:"Response"`
+}
+
+func (r *UnlockIntegrationTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UnlockIntegrationTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateInLongAgentRequestParams struct {
+	// 采集器ID
+	AgentId *string `json:"AgentId,omitempty" name:"AgentId"`
+
+	// WeData项目ID
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 采集器名称
+	AgentName *string `json:"AgentName,omitempty" name:"AgentName"`
+
+	// 集成资源组ID
+	ExecutorGroupId *string `json:"ExecutorGroupId,omitempty" name:"ExecutorGroupId"`
+}
+
+type UpdateInLongAgentRequest struct {
+	*tchttp.BaseRequest
+	
+	// 采集器ID
+	AgentId *string `json:"AgentId,omitempty" name:"AgentId"`
+
+	// WeData项目ID
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 采集器名称
+	AgentName *string `json:"AgentName,omitempty" name:"AgentName"`
+
+	// 集成资源组ID
+	ExecutorGroupId *string `json:"ExecutorGroupId,omitempty" name:"ExecutorGroupId"`
+}
+
+func (r *UpdateInLongAgentRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateInLongAgentRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AgentId")
+	delete(f, "ProjectId")
+	delete(f, "AgentName")
+	delete(f, "ExecutorGroupId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateInLongAgentRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateInLongAgentResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type UpdateInLongAgentResponse struct {
+	*tchttp.BaseResponse
+	Response *UpdateInLongAgentResponseParams `json:"Response"`
+}
+
+func (r *UpdateInLongAgentResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateInLongAgentResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

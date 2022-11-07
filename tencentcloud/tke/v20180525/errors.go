@@ -164,11 +164,17 @@ const (
 	// 子账户RBAC权限不足。
 	FAILEDOPERATION_RBACFORBIDDEN = "FailedOperation.RBACForbidden"
 
+	// 记录没有发现。
+	FAILEDOPERATION_RECORDNOTFOUND = "FailedOperation.RecordNotFound"
+
 	// 已有相同任务执行中。
 	FAILEDOPERATION_TASKALREADYRUNNING = "FailedOperation.TaskAlreadyRunning"
 
 	// 询价错误。
 	FAILEDOPERATION_TRADECOMMON = "FailedOperation.TradeCommon"
+
+	// 不可预知的错误。
+	FAILEDOPERATION_UNEXPECTEDERROR = "FailedOperation.UnexpectedError"
 
 	// VPC未知错误。
 	FAILEDOPERATION_VPCUNEXPECTEDERROR = "FailedOperation.VPCUnexpectedError"

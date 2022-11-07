@@ -4267,6 +4267,9 @@ type DescribeImagesRequestParams struct {
 
 	// 指定镜像 Digest 进行查找
 	Digest *string `json:"Digest,omitempty" name:"Digest"`
+
+	// 指定是否为精准匹配，true为精准匹配，不填为模糊匹配
+	ExactMatch *bool `json:"ExactMatch,omitempty" name:"ExactMatch"`
 }
 
 type DescribeImagesRequest struct {
@@ -4292,6 +4295,9 @@ type DescribeImagesRequest struct {
 
 	// 指定镜像 Digest 进行查找
 	Digest *string `json:"Digest,omitempty" name:"Digest"`
+
+	// 指定是否为精准匹配，true为精准匹配，不填为模糊匹配
+	ExactMatch *bool `json:"ExactMatch,omitempty" name:"ExactMatch"`
 }
 
 func (r *DescribeImagesRequest) ToJsonString() string {
@@ -4313,6 +4319,7 @@ func (r *DescribeImagesRequest) FromJsonString(s string) error {
 	delete(f, "Limit")
 	delete(f, "Offset")
 	delete(f, "Digest")
+	delete(f, "ExactMatch")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeImagesRequest has unknown keys!", "")
 	}
