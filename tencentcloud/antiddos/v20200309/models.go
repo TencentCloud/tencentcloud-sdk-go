@@ -7835,6 +7835,21 @@ type ModifyDDoSThresholdRequestParams struct {
 
 	// 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版）
 	Business *string `json:"Business,omitempty" name:"Business"`
+
+	// 配置其他阈值标志位，1表示配置其他阈值
+	OtherThresholdFlag *int64 `json:"OtherThresholdFlag,omitempty" name:"OtherThresholdFlag"`
+
+	// SYN FLOOD流量阈值
+	SynFloodThreshold *uint64 `json:"SynFloodThreshold,omitempty" name:"SynFloodThreshold"`
+
+	// SYN FLOOD包量阈值
+	SynFloodPktThreshold *uint64 `json:"SynFloodPktThreshold,omitempty" name:"SynFloodPktThreshold"`
+
+	// UDP FLOOD流量阈值
+	UdpFloodThreshold *uint64 `json:"UdpFloodThreshold,omitempty" name:"UdpFloodThreshold"`
+
+	// UDP FLOOD包量阈值
+	UdpFloodPktThreshold *uint64 `json:"UdpFloodPktThreshold,omitempty" name:"UdpFloodPktThreshold"`
 }
 
 type ModifyDDoSThresholdRequest struct {
@@ -7849,6 +7864,21 @@ type ModifyDDoSThresholdRequest struct {
 
 	// 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版）
 	Business *string `json:"Business,omitempty" name:"Business"`
+
+	// 配置其他阈值标志位，1表示配置其他阈值
+	OtherThresholdFlag *int64 `json:"OtherThresholdFlag,omitempty" name:"OtherThresholdFlag"`
+
+	// SYN FLOOD流量阈值
+	SynFloodThreshold *uint64 `json:"SynFloodThreshold,omitempty" name:"SynFloodThreshold"`
+
+	// SYN FLOOD包量阈值
+	SynFloodPktThreshold *uint64 `json:"SynFloodPktThreshold,omitempty" name:"SynFloodPktThreshold"`
+
+	// UDP FLOOD流量阈值
+	UdpFloodThreshold *uint64 `json:"UdpFloodThreshold,omitempty" name:"UdpFloodThreshold"`
+
+	// UDP FLOOD包量阈值
+	UdpFloodPktThreshold *uint64 `json:"UdpFloodPktThreshold,omitempty" name:"UdpFloodPktThreshold"`
 }
 
 func (r *ModifyDDoSThresholdRequest) ToJsonString() string {
@@ -7866,6 +7896,11 @@ func (r *ModifyDDoSThresholdRequest) FromJsonString(s string) error {
 	delete(f, "Threshold")
 	delete(f, "Id")
 	delete(f, "Business")
+	delete(f, "OtherThresholdFlag")
+	delete(f, "SynFloodThreshold")
+	delete(f, "SynFloodPktThreshold")
+	delete(f, "UdpFloodThreshold")
+	delete(f, "UdpFloodPktThreshold")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyDDoSThresholdRequest has unknown keys!", "")
 	}
@@ -8387,6 +8422,9 @@ type PacketFilterConfig struct {
 
 	// 特征过滤配置添加成功后自动生成的规则ID，当添加新特征过滤配置时，此字段不用填写；
 	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 大于报文长度，取值1+
+	PktLenGT *int64 `json:"PktLenGT,omitempty" name:"PktLenGT"`
 }
 
 type PacketFilterRelation struct {
@@ -8439,6 +8477,22 @@ type ProtectThresholdRelation struct {
 
 	// 域名与协议纬度的防护阈值
 	ListenerCcThresholdList []*ListenerCcThreholdConfig `json:"ListenerCcThresholdList,omitempty" name:"ListenerCcThresholdList"`
+
+	// SYN FLOOD流量阈值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SynFloodThreshold *uint64 `json:"SynFloodThreshold,omitempty" name:"SynFloodThreshold"`
+
+	// SYN FLOOD包量阈值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SynFloodPktThreshold *uint64 `json:"SynFloodPktThreshold,omitempty" name:"SynFloodPktThreshold"`
+
+	// UDP FLOOD流量阈值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UdpFloodThreshold *uint64 `json:"UdpFloodThreshold,omitempty" name:"UdpFloodThreshold"`
+
+	// UDP FLOOD包量阈值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UdpFloodPktThreshold *uint64 `json:"UdpFloodPktThreshold,omitempty" name:"UdpFloodPktThreshold"`
 }
 
 type ProtocolBlockConfig struct {
@@ -8456,6 +8510,12 @@ type ProtocolBlockConfig struct {
 
 	// 异常空连接防护，取值[0(防护关)，1(防护开)]
 	CheckExceptNullConnect *int64 `json:"CheckExceptNullConnect,omitempty" name:"CheckExceptNullConnect"`
+
+	// ping of death防护，取值[0(防护关)，1(防护开)]
+	PingOfDeath *int64 `json:"PingOfDeath,omitempty" name:"PingOfDeath"`
+
+	// tear drop防护，取值[0(防护关)，1(防护开)]
+	TearDrop *int64 `json:"TearDrop,omitempty" name:"TearDrop"`
 }
 
 type ProtocolBlockRelation struct {

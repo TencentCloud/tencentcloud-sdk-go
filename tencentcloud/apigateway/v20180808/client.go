@@ -3393,6 +3393,62 @@ func (c *Client) DescribePluginsWithContext(ctx context.Context, request *Descri
     return
 }
 
+func NewDescribePluginsByApiRequest() (request *DescribePluginsByApiRequest) {
+    request = &DescribePluginsByApiRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("apigateway", APIVersion, "DescribePluginsByApi")
+    
+    
+    return
+}
+
+func NewDescribePluginsByApiResponse() (response *DescribePluginsByApiResponse) {
+    response = &DescribePluginsByApiResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribePluginsByApi
+// 展示API上已绑定的插件列表。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
+//  RESOURCENOTFOUND_INVALIDAPI = "ResourceNotFound.InvalidApi"
+//  RESOURCENOTFOUND_INVALIDSERVICE = "ResourceNotFound.InvalidService"
+//  UNAUTHORIZEDOPERATION_ACCESSRESOURCE = "UnauthorizedOperation.AccessResource"
+//  UNSUPPORTEDOPERATION_INVALIDACTION = "UnsupportedOperation.InvalidAction"
+func (c *Client) DescribePluginsByApi(request *DescribePluginsByApiRequest) (response *DescribePluginsByApiResponse, err error) {
+    return c.DescribePluginsByApiWithContext(context.Background(), request)
+}
+
+// DescribePluginsByApi
+// 展示API上已绑定的插件列表。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
+//  RESOURCENOTFOUND_INVALIDAPI = "ResourceNotFound.InvalidApi"
+//  RESOURCENOTFOUND_INVALIDSERVICE = "ResourceNotFound.InvalidService"
+//  UNAUTHORIZEDOPERATION_ACCESSRESOURCE = "UnauthorizedOperation.AccessResource"
+//  UNSUPPORTEDOPERATION_INVALIDACTION = "UnsupportedOperation.InvalidAction"
+func (c *Client) DescribePluginsByApiWithContext(ctx context.Context, request *DescribePluginsByApiRequest) (response *DescribePluginsByApiResponse, err error) {
+    if request == nil {
+        request = NewDescribePluginsByApiRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribePluginsByApi require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribePluginsByApiResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeServiceRequest() (request *DescribeServiceRequest) {
     request = &DescribeServiceRequest{
         BaseRequest: &tchttp.BaseRequest{},

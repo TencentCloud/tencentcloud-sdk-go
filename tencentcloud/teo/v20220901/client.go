@@ -3798,7 +3798,7 @@ func NewDescribeSecurityPolicyResponse() (response *DescribeSecurityPolicyRespon
 }
 
 // DescribeSecurityPolicy
-// 查询安全防护配置详情
+// 查询安全防护配置详情。请求参数中ZoneId+Entity或TemplateId至少填一项。
 //
 // 可能返回的错误码:
 //  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
@@ -3807,7 +3807,7 @@ func (c *Client) DescribeSecurityPolicy(request *DescribeSecurityPolicyRequest) 
 }
 
 // DescribeSecurityPolicy
-// 查询安全防护配置详情
+// 查询安全防护配置详情。请求参数中ZoneId+Entity或TemplateId至少填一项。
 //
 // 可能返回的错误码:
 //  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
@@ -6326,7 +6326,7 @@ func NewModifySecurityPolicyResponse() (response *ModifySecurityPolicyResponse) 
 }
 
 // ModifySecurityPolicy
-// 修改Web&Bot安全配置
+// 修改Web&Bot安全配置。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_ROUTEERROR = "InternalError.RouteError"
@@ -6338,7 +6338,7 @@ func (c *Client) ModifySecurityPolicy(request *ModifySecurityPolicyRequest) (res
 }
 
 // ModifySecurityPolicy
-// 修改Web&Bot安全配置
+// 修改Web&Bot安全配置。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_ROUTEERROR = "InternalError.RouteError"

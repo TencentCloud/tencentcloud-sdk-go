@@ -1611,6 +1611,9 @@ type AudioTemplateInfoForUpdate struct {
 	// <li>6：立体声</li>
 	// 当媒体的封装格式是音频格式时（flac，ogg，mp3，m4a）时，声道数不允许设为立体声。
 	AudioChannel *int64 `json:"AudioChannel,omitempty" name:"AudioChannel"`
+
+	// 指定输出要保留的音频轨道。默认是全部保留源的。
+	StreamSelects []*int64 `json:"StreamSelects,omitempty" name:"StreamSelects"`
 }
 
 type ClassificationConfigureInfo struct {
@@ -12084,7 +12087,31 @@ type StreamLinkRegionInfo struct {
 }
 
 type SubtitleTemplate struct {
+	// 要压制到视频中的字幕文件地址。
+	Path *string `json:"Path,omitempty" name:"Path"`
 
+	// 指定要压制到视频中的字幕轨道，如果有指定Path，则Path 优先级更高。Path 和 StreamIndex 至少指定一个。
+	StreamIndex *int64 `json:"StreamIndex,omitempty" name:"StreamIndex"`
+
+	// 字体类型，
+	// <li>hei.ttf：黑体</li>
+	// <li>song.ttf：宋体</li>
+	// <li>simkai.ttf：楷体</li>
+	// <li>arial.ttf：仅支持英文</li>
+	// 默认hei.ttf
+	FontType *string `json:"FontType,omitempty" name:"FontType"`
+
+	// 字体大小，格式：Npx，N 为数值，不指定则以字幕文件中为准。
+	FontSize *string `json:"FontSize,omitempty" name:"FontSize"`
+
+	// 字体颜色，格式：0xRRGGBB，默认值：0xFFFFFF（白色）
+	FontColor *string `json:"FontColor,omitempty" name:"FontColor"`
+
+	// 文字透明度，取值范围：(0, 1]
+	// <li>0：完全透明</li>
+	// <li>1：完全不透明</li>
+	// 默认值：1。
+	FontAlpha *float64 `json:"FontAlpha,omitempty" name:"FontAlpha"`
 }
 
 type SuperResolutionConfig struct {

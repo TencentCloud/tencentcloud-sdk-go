@@ -1450,6 +1450,78 @@ func (r *DetectMisbehaviorResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DetectPetRequestParams struct {
+	// 图片的URL地址。图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
+	// 非腾讯云存储的Url速度和稳定性可能受一定影响。
+	// 图片大小的限制为4M，图片像素的限制为4k。
+	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
+
+	// 图片经过base64编码的内容。与ImageUrl同时存在时优先使用ImageUrl字段。 
+	// 图片大小的限制为4M，图片像素的限制为4k。
+	// **注意：图片需要base64编码，并且要去掉编码头部。**
+	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
+}
+
+type DetectPetRequest struct {
+	*tchttp.BaseRequest
+	
+	// 图片的URL地址。图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
+	// 非腾讯云存储的Url速度和稳定性可能受一定影响。
+	// 图片大小的限制为4M，图片像素的限制为4k。
+	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
+
+	// 图片经过base64编码的内容。与ImageUrl同时存在时优先使用ImageUrl字段。 
+	// 图片大小的限制为4M，图片像素的限制为4k。
+	// **注意：图片需要base64编码，并且要去掉编码头部。**
+	ImageBase64 *string `json:"ImageBase64,omitempty" name:"ImageBase64"`
+}
+
+func (r *DetectPetRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DetectPetRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ImageUrl")
+	delete(f, "ImageBase64")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DetectPetRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DetectPetResponseParams struct {
+	// 识别出图片中的宠物信息列表。
+	Pets []*Pet `json:"Pets,omitempty" name:"Pets"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DetectPetResponse struct {
+	*tchttp.BaseResponse
+	Response *DetectPetResponseParams `json:"Response"`
+}
+
+func (r *DetectPetResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DetectPetResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DetectProductBetaRequestParams struct {
 	// 图片限制：内测版仅支持jpg、jpeg，图片大小不超过1M，分辨率在25万到100万之间。 
 	// 建议先对图片进行压缩，以便提升处理速度。
@@ -1810,6 +1882,17 @@ type ObjectInfo struct {
 	// 图像的所有主体区域，置信度，以及主体区域类别ID。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AllBox []*Box `json:"AllBox,omitempty" name:"AllBox"`
+}
+
+type Pet struct {
+	// 识别出的宠物类型（猫或者狗，暂不支持识别猫狗品种）。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 识别服务给识别目标打出的置信度，范围在0-100之间。值越高，表示目标为相应结果的可能性越高。
+	Score *int64 `json:"Score,omitempty" name:"Score"`
+
+	// 识别目标在图片中的坐标。
+	Location *Rect `json:"Location,omitempty" name:"Location"`
 }
 
 type Product struct {

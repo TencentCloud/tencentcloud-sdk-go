@@ -64,25 +64,29 @@ func NewCreateBindInstanceResponse() (response *CreateBindInstanceResponse) {
 }
 
 // CreateBindInstance
-// 将应用和资源进行绑定
+// 将应用和资源进行绑定。（注意：根据国家互联网用户实名制相关要求，使用该产品前，需先完成实名认证。）
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_SERVERERROR = "InternalError.ServerError"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  RESOURCEUNAVAILABLE_NOTFOUND = "ResourceUnavailable.NotFound"
+//  UNAUTHORIZEDOPERATION_NOTWHITEUSER = "UnauthorizedOperation.NotWhiteUser"
 func (c *Client) CreateBindInstance(request *CreateBindInstanceRequest) (response *CreateBindInstanceResponse, err error) {
     return c.CreateBindInstanceWithContext(context.Background(), request)
 }
 
 // CreateBindInstance
-// 将应用和资源进行绑定
+// 将应用和资源进行绑定。（注意：根据国家互联网用户实名制相关要求，使用该产品前，需先完成实名认证。）
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_SERVERERROR = "InternalError.ServerError"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  RESOURCEUNAVAILABLE_NOTFOUND = "ResourceUnavailable.NotFound"
+//  UNAUTHORIZEDOPERATION_NOTWHITEUSER = "UnauthorizedOperation.NotWhiteUser"
 func (c *Client) CreateBindInstanceWithContext(ctx context.Context, request *CreateBindInstanceRequest) (response *CreateBindInstanceResponse, err error) {
     if request == nil {
         request = NewCreateBindInstanceRequest()
@@ -286,9 +290,10 @@ func NewCreateShieldInstanceResponse() (response *CreateShieldInstanceResponse) 
 }
 
 // CreateShieldInstance
-// 用户通过该接口提交应用进行应用加固，加固后需通过DescribeShieldResult接口查询加固结果
+// 用户通过该接口提交应用进行应用加固，加固后需通过DescribeShieldResult接口查询加固结果。（注意：根据国家互联网用户实名制相关要求，使用该产品前，需先完成实名认证。）
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
 //  INTERNALERROR_SERVERERROR = "InternalError.ServerError"
 //  INVALIDPARAMETER_MISSINGSERVICEINFO = "InvalidParameter.MissingServiceInfo"
 //  INVALIDPARAMETER_PLANIDNOTFOUND = "InvalidParameter.PlanIdNotFound"
@@ -298,14 +303,16 @@ func NewCreateShieldInstanceResponse() (response *CreateShieldInstanceResponse) 
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  RESOURCEUNAVAILABLE_NOTFOUND = "ResourceUnavailable.NotFound"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOTWHITEUSER = "UnauthorizedOperation.NotWhiteUser"
 func (c *Client) CreateShieldInstance(request *CreateShieldInstanceRequest) (response *CreateShieldInstanceResponse, err error) {
     return c.CreateShieldInstanceWithContext(context.Background(), request)
 }
 
 // CreateShieldInstance
-// 用户通过该接口提交应用进行应用加固，加固后需通过DescribeShieldResult接口查询加固结果
+// 用户通过该接口提交应用进行应用加固，加固后需通过DescribeShieldResult接口查询加固结果。（注意：根据国家互联网用户实名制相关要求，使用该产品前，需先完成实名认证。）
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
 //  INTERNALERROR_SERVERERROR = "InternalError.ServerError"
 //  INVALIDPARAMETER_MISSINGSERVICEINFO = "InvalidParameter.MissingServiceInfo"
 //  INVALIDPARAMETER_PLANIDNOTFOUND = "InvalidParameter.PlanIdNotFound"
@@ -315,6 +322,7 @@ func (c *Client) CreateShieldInstance(request *CreateShieldInstanceRequest) (res
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  RESOURCEUNAVAILABLE_NOTFOUND = "ResourceUnavailable.NotFound"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOTWHITEUSER = "UnauthorizedOperation.NotWhiteUser"
 func (c *Client) CreateShieldInstanceWithContext(ctx context.Context, request *CreateShieldInstanceRequest) (response *CreateShieldInstanceResponse, err error) {
     if request == nil {
         request = NewCreateShieldInstanceRequest()
@@ -350,27 +358,31 @@ func NewCreateShieldPlanInstanceResponse() (response *CreateShieldPlanInstanceRe
 }
 
 // CreateShieldPlanInstance
-// 对资源进行策略新增
+// 对资源进行策略新增。（注意：根据国家互联网用户实名制相关要求，使用该产品前，需先完成实名认证。）
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_SERVERERROR = "InternalError.ServerError"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  RESOURCEUNAVAILABLE_NOTFOUND = "ResourceUnavailable.NotFound"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOTWHITEUSER = "UnauthorizedOperation.NotWhiteUser"
 func (c *Client) CreateShieldPlanInstance(request *CreateShieldPlanInstanceRequest) (response *CreateShieldPlanInstanceResponse, err error) {
     return c.CreateShieldPlanInstanceWithContext(context.Background(), request)
 }
 
 // CreateShieldPlanInstance
-// 对资源进行策略新增
+// 对资源进行策略新增。（注意：根据国家互联网用户实名制相关要求，使用该产品前，需先完成实名认证。）
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_SERVERERROR = "InternalError.ServerError"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  RESOURCEUNAVAILABLE_NOTFOUND = "ResourceUnavailable.NotFound"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOTWHITEUSER = "UnauthorizedOperation.NotWhiteUser"
 func (c *Client) CreateShieldPlanInstanceWithContext(ctx context.Context, request *CreateShieldPlanInstanceRequest) (response *CreateShieldPlanInstanceResponse, err error) {
     if request == nil {
         request = NewCreateShieldPlanInstanceRequest()
@@ -458,25 +470,29 @@ func NewDeleteShieldInstancesResponse() (response *DeleteShieldInstancesResponse
 }
 
 // DeleteShieldInstances
-// 删除一个或者多个app加固信息
+// 删除一个或者多个app加固信息。（注意：根据国家互联网用户实名制相关要求，使用该产品前，需先完成实名认证。）
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
 //  INTERNALERROR_SERVERERROR = "InternalError.ServerError"
 //  INVALIDPARAMETERVALUE_INVALIDITEMIDS = "InvalidParameterValue.InvalidItemIds"
 //  MISSINGPARAMETER_MISSINGITEMIDS = "MissingParameter.MissingItemIds"
 //  RESOURCENOTFOUND_ITEMIDNOTFOUND = "ResourceNotFound.ItemIdNotFound"
+//  UNAUTHORIZEDOPERATION_NOTWHITEUSER = "UnauthorizedOperation.NotWhiteUser"
 func (c *Client) DeleteShieldInstances(request *DeleteShieldInstancesRequest) (response *DeleteShieldInstancesResponse, err error) {
     return c.DeleteShieldInstancesWithContext(context.Background(), request)
 }
 
 // DeleteShieldInstances
-// 删除一个或者多个app加固信息
+// 删除一个或者多个app加固信息。（注意：根据国家互联网用户实名制相关要求，使用该产品前，需先完成实名认证。）
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
 //  INTERNALERROR_SERVERERROR = "InternalError.ServerError"
 //  INVALIDPARAMETERVALUE_INVALIDITEMIDS = "InvalidParameterValue.InvalidItemIds"
 //  MISSINGPARAMETER_MISSINGITEMIDS = "MissingParameter.MissingItemIds"
 //  RESOURCENOTFOUND_ITEMIDNOTFOUND = "ResourceNotFound.ItemIdNotFound"
+//  UNAUTHORIZEDOPERATION_NOTWHITEUSER = "UnauthorizedOperation.NotWhiteUser"
 func (c *Client) DeleteShieldInstancesWithContext(ctx context.Context, request *DeleteShieldInstancesRequest) (response *DeleteShieldInstancesResponse, err error) {
     if request == nil {
         request = NewDeleteShieldInstancesRequest()
@@ -576,9 +592,10 @@ func NewDescribeResourceInstancesResponse() (response *DescribeResourceInstances
 }
 
 // DescribeResourceInstances
-// 获取某个用户的所有资源信息
+// 获取某个用户的所有资源信息。（注意：根据国家互联网用户实名制相关要求，使用该产品前，需先完成实名认证。）
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
 //  INTERNALERROR_SERVERERROR = "InternalError.ServerError"
 //  INVALIDPARAMETERVALUE_INVALIDFILTER = "InvalidParameterValue.InvalidFilter"
 //  INVALIDPARAMETERVALUE_INVALIDLIMIT = "InvalidParameterValue.InvalidLimit"
@@ -587,14 +604,16 @@ func NewDescribeResourceInstancesResponse() (response *DescribeResourceInstances
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  RESOURCEUNAVAILABLE_NOTFOUND = "ResourceUnavailable.NotFound"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOTWHITEUSER = "UnauthorizedOperation.NotWhiteUser"
 func (c *Client) DescribeResourceInstances(request *DescribeResourceInstancesRequest) (response *DescribeResourceInstancesResponse, err error) {
     return c.DescribeResourceInstancesWithContext(context.Background(), request)
 }
 
 // DescribeResourceInstances
-// 获取某个用户的所有资源信息
+// 获取某个用户的所有资源信息。（注意：根据国家互联网用户实名制相关要求，使用该产品前，需先完成实名认证。）
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
 //  INTERNALERROR_SERVERERROR = "InternalError.ServerError"
 //  INVALIDPARAMETERVALUE_INVALIDFILTER = "InvalidParameterValue.InvalidFilter"
 //  INVALIDPARAMETERVALUE_INVALIDLIMIT = "InvalidParameterValue.InvalidLimit"
@@ -603,6 +622,7 @@ func (c *Client) DescribeResourceInstances(request *DescribeResourceInstancesReq
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  RESOURCEUNAVAILABLE_NOTFOUND = "ResourceUnavailable.NotFound"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOTWHITEUSER = "UnauthorizedOperation.NotWhiteUser"
 func (c *Client) DescribeResourceInstancesWithContext(ctx context.Context, request *DescribeResourceInstancesRequest) (response *DescribeResourceInstancesResponse, err error) {
     if request == nil {
         request = NewDescribeResourceInstancesRequest()
@@ -760,9 +780,10 @@ func NewDescribeShieldInstancesResponse() (response *DescribeShieldInstancesResp
 // DescribeShieldInstances
 // 本接口用于查看app列表。
 //
-// 可以通过指定任务唯一标识ItemId来查询指定app的详细信息，或通过设定过滤器来查询满足过滤条件的app的详细信息。 指定偏移(Offset)和限制(Limit)来选择结果中的一部分，默认返回满足条件的前20个app信息。
+// 可以通过指定任务唯一标识ItemId来查询指定app的详细信息，或通过设定过滤器来查询满足过滤条件的app的详细信息。 指定偏移(Offset)和限制(Limit)来选择结果中的一部分，默认返回满足条件的前20个app信息。（注意：根据国家互联网用户实名制相关要求，使用该产品前，需先完成实名认证。）
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
 //  INTERNALERROR_SERVERERROR = "InternalError.ServerError"
 //  INVALIDPARAMETERVALUE_INVALIDCOEXISTITEMIDSFILTERS = "InvalidParameterValue.InvalidCoexistItemIdsFilters"
 //  INVALIDPARAMETERVALUE_INVALIDFILTER = "InvalidParameterValue.InvalidFilter"
@@ -771,6 +792,7 @@ func NewDescribeShieldInstancesResponse() (response *DescribeShieldInstancesResp
 //  INVALIDPARAMETERVALUE_INVALIDOFFSET = "InvalidParameterValue.InvalidOffset"
 //  INVALIDPARAMETERVALUE_INVALIDORDERDIRECTION = "InvalidParameterValue.InvalidOrderDirection"
 //  INVALIDPARAMETERVALUE_INVALIDORDERFIELD = "InvalidParameterValue.InvalidOrderField"
+//  UNAUTHORIZEDOPERATION_NOTWHITEUSER = "UnauthorizedOperation.NotWhiteUser"
 func (c *Client) DescribeShieldInstances(request *DescribeShieldInstancesRequest) (response *DescribeShieldInstancesResponse, err error) {
     return c.DescribeShieldInstancesWithContext(context.Background(), request)
 }
@@ -778,9 +800,10 @@ func (c *Client) DescribeShieldInstances(request *DescribeShieldInstancesRequest
 // DescribeShieldInstances
 // 本接口用于查看app列表。
 //
-// 可以通过指定任务唯一标识ItemId来查询指定app的详细信息，或通过设定过滤器来查询满足过滤条件的app的详细信息。 指定偏移(Offset)和限制(Limit)来选择结果中的一部分，默认返回满足条件的前20个app信息。
+// 可以通过指定任务唯一标识ItemId来查询指定app的详细信息，或通过设定过滤器来查询满足过滤条件的app的详细信息。 指定偏移(Offset)和限制(Limit)来选择结果中的一部分，默认返回满足条件的前20个app信息。（注意：根据国家互联网用户实名制相关要求，使用该产品前，需先完成实名认证。）
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
 //  INTERNALERROR_SERVERERROR = "InternalError.ServerError"
 //  INVALIDPARAMETERVALUE_INVALIDCOEXISTITEMIDSFILTERS = "InvalidParameterValue.InvalidCoexistItemIdsFilters"
 //  INVALIDPARAMETERVALUE_INVALIDFILTER = "InvalidParameterValue.InvalidFilter"
@@ -789,6 +812,7 @@ func (c *Client) DescribeShieldInstances(request *DescribeShieldInstancesRequest
 //  INVALIDPARAMETERVALUE_INVALIDOFFSET = "InvalidParameterValue.InvalidOffset"
 //  INVALIDPARAMETERVALUE_INVALIDORDERDIRECTION = "InvalidParameterValue.InvalidOrderDirection"
 //  INVALIDPARAMETERVALUE_INVALIDORDERFIELD = "InvalidParameterValue.InvalidOrderField"
+//  UNAUTHORIZEDOPERATION_NOTWHITEUSER = "UnauthorizedOperation.NotWhiteUser"
 func (c *Client) DescribeShieldInstancesWithContext(ctx context.Context, request *DescribeShieldInstancesRequest) (response *DescribeShieldInstancesResponse, err error) {
     if request == nil {
         request = NewDescribeShieldInstancesRequest()
@@ -824,25 +848,29 @@ func NewDescribeShieldPlanInstanceResponse() (response *DescribeShieldPlanInstan
 }
 
 // DescribeShieldPlanInstance
-// 查询加固策略
+// 查询加固策略。（注意：根据国家互联网用户实名制相关要求，使用该产品前，需先完成实名认证。）
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_SERVERERROR = "InternalError.ServerError"
 //  RESOURCEUNAVAILABLE_NOTBIND = "ResourceUnavailable.NotBind"
 //  RESOURCEUNAVAILABLE_NOTFOUND = "ResourceUnavailable.NotFound"
+//  UNAUTHORIZEDOPERATION_NOTWHITEUSER = "UnauthorizedOperation.NotWhiteUser"
 func (c *Client) DescribeShieldPlanInstance(request *DescribeShieldPlanInstanceRequest) (response *DescribeShieldPlanInstanceResponse, err error) {
     return c.DescribeShieldPlanInstanceWithContext(context.Background(), request)
 }
 
 // DescribeShieldPlanInstance
-// 查询加固策略
+// 查询加固策略。（注意：根据国家互联网用户实名制相关要求，使用该产品前，需先完成实名认证。）
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_SERVERERROR = "InternalError.ServerError"
 //  RESOURCEUNAVAILABLE_NOTBIND = "ResourceUnavailable.NotBind"
 //  RESOURCEUNAVAILABLE_NOTFOUND = "ResourceUnavailable.NotFound"
+//  UNAUTHORIZEDOPERATION_NOTWHITEUSER = "UnauthorizedOperation.NotWhiteUser"
 func (c *Client) DescribeShieldPlanInstanceWithContext(ctx context.Context, request *DescribeShieldPlanInstanceRequest) (response *DescribeShieldPlanInstanceResponse, err error) {
     if request == nil {
         request = NewDescribeShieldPlanInstanceRequest()
@@ -878,23 +906,29 @@ func NewDescribeShieldResultResponse() (response *DescribeShieldResultResponse) 
 }
 
 // DescribeShieldResult
-// 通过唯一标识获取加固的结果
+// 通过唯一标识获取加固的结果。（注意：根据国家互联网用户实名制相关要求，使用该产品前，需先完成实名认证。）
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
 //  INTERNALERROR_SERVERERROR = "InternalError.ServerError"
 //  MISSINGPARAMETER_MISSINGITEMID = "MissingParameter.MissingItemId"
 //  RESOURCENOTFOUND_ITEMIDNOTFOUND = "ResourceNotFound.ItemIdNotFound"
+//  UNAUTHORIZEDOPERATION_NOTWHITEUSER = "UnauthorizedOperation.NotWhiteUser"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeShieldResult(request *DescribeShieldResultRequest) (response *DescribeShieldResultResponse, err error) {
     return c.DescribeShieldResultWithContext(context.Background(), request)
 }
 
 // DescribeShieldResult
-// 通过唯一标识获取加固的结果
+// 通过唯一标识获取加固的结果。（注意：根据国家互联网用户实名制相关要求，使用该产品前，需先完成实名认证。）
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
 //  INTERNALERROR_SERVERERROR = "InternalError.ServerError"
 //  MISSINGPARAMETER_MISSINGITEMID = "MissingParameter.MissingItemId"
 //  RESOURCENOTFOUND_ITEMIDNOTFOUND = "ResourceNotFound.ItemIdNotFound"
+//  UNAUTHORIZEDOPERATION_NOTWHITEUSER = "UnauthorizedOperation.NotWhiteUser"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeShieldResultWithContext(ctx context.Context, request *DescribeShieldResultRequest) (response *DescribeShieldResultResponse, err error) {
     if request == nil {
         request = NewDescribeShieldResultRequest()

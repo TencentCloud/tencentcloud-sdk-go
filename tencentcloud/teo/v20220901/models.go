@@ -2096,10 +2096,11 @@ type CreatePurgeTaskRequestParams struct {
 	// <li>purge_url：URL；</li>
 	// <li>purge_prefix：前缀；</li>
 	// <li>purge_host：Hostname；</li>
-	// <li>purge_all：全部缓存。</li>
+	// <li>purge_all：全部缓存；</li>
+	// <li>purge_cache_tag：cache-tag刷新。</li>
 	Type *string `json:"Type,omitempty" name:"Type"`
 
-	// 要刷新的资源列表，每个元素格式依据Type而定：
+	// 要清除缓存的资源列表，每个元素格式依据Type而定：
 	// 1) Type = purge_host 时：
 	// 形如：www.example.com 或 foo.bar.example.com。
 	// 2) Type = purge_prefix 时：
@@ -2108,6 +2109,8 @@ type CreatePurgeTaskRequestParams struct {
 	// 形如：https://www.example.com/example.jpg。
 	// 4）Type = purge_all 时：
 	// Targets可为空，不需要填写。
+	// 5）Type = purge_cache_tag 时：
+	// 形如：tag1。
 	Targets []*string `json:"Targets,omitempty" name:"Targets"`
 
 	// 若有编码转换，仅清除编码转换后匹配的资源。
@@ -2125,10 +2128,11 @@ type CreatePurgeTaskRequest struct {
 	// <li>purge_url：URL；</li>
 	// <li>purge_prefix：前缀；</li>
 	// <li>purge_host：Hostname；</li>
-	// <li>purge_all：全部缓存。</li>
+	// <li>purge_all：全部缓存；</li>
+	// <li>purge_cache_tag：cache-tag刷新。</li>
 	Type *string `json:"Type,omitempty" name:"Type"`
 
-	// 要刷新的资源列表，每个元素格式依据Type而定：
+	// 要清除缓存的资源列表，每个元素格式依据Type而定：
 	// 1) Type = purge_host 时：
 	// 形如：www.example.com 或 foo.bar.example.com。
 	// 2) Type = purge_prefix 时：
@@ -2137,6 +2141,8 @@ type CreatePurgeTaskRequest struct {
 	// 形如：https://www.example.com/example.jpg。
 	// 4）Type = purge_all 时：
 	// Targets可为空，不需要填写。
+	// 5）Type = purge_cache_tag 时：
+	// 形如：tag1。
 	Targets []*string `json:"Targets,omitempty" name:"Targets"`
 
 	// 若有编码转换，仅清除编码转换后匹配的资源。
@@ -4544,45 +4550,51 @@ func (r *DescribeBotLogResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeBotManagedRulesRequestParams struct {
-	// 站点Id。
-	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
-
-	// 子域名。
-	Entity *string `json:"Entity,omitempty" name:"Entity"`
-
 	// 分页查询偏移量。默认值：0。
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
 	// 分页查询限制数目。默认值：20，最大值：1000。
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
+	// 站点Id。当使用ZoneId和Entity时可不填写TemplateId，否则必须填写TemplateId。
+	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
+
+	// 子域名/应用名。当使用ZoneId和Entity时可不填写TemplateId，否则必须填写TemplateId。
+	Entity *string `json:"Entity,omitempty" name:"Entity"`
+
 	// 规则类型，取值有：
 	// <li> idcid；</li>
 	// <li>sipbot；</li>
 	// <li>uabot。</li>传空或不传，即全部类型。
 	RuleType *string `json:"RuleType,omitempty" name:"RuleType"`
+
+	// 模板Id。当使用模板Id时可不填ZoneId和Entity，否则必须填写ZoneId和Entity。
+	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
 }
 
 type DescribeBotManagedRulesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 站点Id。
-	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
-
-	// 子域名。
-	Entity *string `json:"Entity,omitempty" name:"Entity"`
-
 	// 分页查询偏移量。默认值：0。
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
 	// 分页查询限制数目。默认值：20，最大值：1000。
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
+	// 站点Id。当使用ZoneId和Entity时可不填写TemplateId，否则必须填写TemplateId。
+	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
+
+	// 子域名/应用名。当使用ZoneId和Entity时可不填写TemplateId，否则必须填写TemplateId。
+	Entity *string `json:"Entity,omitempty" name:"Entity"`
+
 	// 规则类型，取值有：
 	// <li> idcid；</li>
 	// <li>sipbot；</li>
 	// <li>uabot。</li>传空或不传，即全部类型。
 	RuleType *string `json:"RuleType,omitempty" name:"RuleType"`
+
+	// 模板Id。当使用模板Id时可不填ZoneId和Entity，否则必须填写ZoneId和Entity。
+	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
 }
 
 func (r *DescribeBotManagedRulesRequest) ToJsonString() string {
@@ -4597,11 +4609,12 @@ func (r *DescribeBotManagedRulesRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	delete(f, "ZoneId")
-	delete(f, "Entity")
 	delete(f, "Offset")
 	delete(f, "Limit")
+	delete(f, "ZoneId")
+	delete(f, "Entity")
 	delete(f, "RuleType")
+	delete(f, "TemplateId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBotManagedRulesRequest has unknown keys!", "")
 	}
@@ -7011,7 +7024,7 @@ func (r *DescribePrefetchTasksResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribePurgeTasksRequestParams struct {
-	// 站点 ID。
+	// 字段已废弃，请使用Filters中的zone-id。
 	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
 
 	// 查询起始时间。
@@ -7026,15 +7039,14 @@ type DescribePurgeTasksRequestParams struct {
 	// 分页查限制数目，默认值：20，最大值：1000。
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 过滤条件，Filters.Values的上限为20。详细的过滤条件如下：
-	// <li>job-id<br>   按照【<strong>任务ID</strong>】进行过滤。job-id形如：1379afjk91u32h，暂不支持多值。<br>   类型：String<br>   必选：否<br>   模糊查询：不支持。</li><li>target<br>   按照【<strong>目标资源信息</strong>】进行过滤。target形如：http://www.qq.com/1.txt，暂不支持多值。<br>   类型：String<br>   必选：否<br>   模糊查询：不支持。</li><li>domains<br>   按照【<strong>域名</strong>】进行过滤。domains形如：www.qq.com。<br>   类型：String<br>   必选：否<br>   模糊查询：不支持。</li><li>statuses<br>   按照【<strong>任务状态</strong>】进行过滤。<br>   必选：否<br>   模糊查询：不支持。<br>   可选项：<br>   processing：处理中<br>   success：成功<br>   failed：失败<br>   timeout：超时</li><li>type<br>   按照【<strong>清除缓存类型</strong>】进行过滤，暂不支持多值。<br>   类型：String<br>   必选：否<br>   模糊查询：不支持。<br>   可选项：<br>   purge_url：URL<br>   purge_prefix：前缀<br>   purge_all：全部缓存内容<br>   purge_host：Hostname</li>
+	// 过滤条件，Filters.Values的上限为20。详细的过滤条件如下：<li>zone-id<br>   按照【<strong>站点 ID</strong>】进行过滤。zone-id形如：zone-xxx，暂不支持多值<br>   类型：String<br>   必选：否<br>   模糊查询：不支持</li><li>job-id<br>   按照【<strong>任务ID</strong>】进行过滤。job-id形如：1379afjk91u32h，暂不支持多值。<br>   类型：String<br>   必选：否<br>   模糊查询：不支持</li><li>target<br>   按照【<strong>目标资源信息</strong>】进行过滤，target形如：http://www.qq.com/1.txt或者tag1，暂不支持多值<br>   类型：String<br>   必选：否<br>   模糊查询：不支持</li><li>domains<br>   按照【<strong>域名</strong>】进行过滤，domains形如：www.qq.com<br>   类型：String<br>   必选：否<br>   模糊查询：不支持。</li><li>statuses<br>   按照【<strong>任务状态</strong>】进行过滤<br>   必选：否<br>   模糊查询：不支持。<br>   可选项：<br>   processing：处理中<br>   success：成功<br>   failed：失败<br>   timeout：超时</li><li>type<br>   按照【<strong>清除缓存类型</strong>】进行过滤，暂不支持多值。<br>   类型：String<br>   必选：否<br>   模糊查询：不支持<br>   可选项：<br>   purge_url：URL<br>   purge_prefix：前缀<br>   purge_all：全部缓存内容<br>   purge_host：Hostname<br>   purge_cache_tag：CacheTag</li>
 	Filters []*AdvancedFilter `json:"Filters,omitempty" name:"Filters"`
 }
 
 type DescribePurgeTasksRequest struct {
 	*tchttp.BaseRequest
 	
-	// 站点 ID。
+	// 字段已废弃，请使用Filters中的zone-id。
 	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
 
 	// 查询起始时间。
@@ -7049,8 +7061,7 @@ type DescribePurgeTasksRequest struct {
 	// 分页查限制数目，默认值：20，最大值：1000。
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 过滤条件，Filters.Values的上限为20。详细的过滤条件如下：
-	// <li>job-id<br>   按照【<strong>任务ID</strong>】进行过滤。job-id形如：1379afjk91u32h，暂不支持多值。<br>   类型：String<br>   必选：否<br>   模糊查询：不支持。</li><li>target<br>   按照【<strong>目标资源信息</strong>】进行过滤。target形如：http://www.qq.com/1.txt，暂不支持多值。<br>   类型：String<br>   必选：否<br>   模糊查询：不支持。</li><li>domains<br>   按照【<strong>域名</strong>】进行过滤。domains形如：www.qq.com。<br>   类型：String<br>   必选：否<br>   模糊查询：不支持。</li><li>statuses<br>   按照【<strong>任务状态</strong>】进行过滤。<br>   必选：否<br>   模糊查询：不支持。<br>   可选项：<br>   processing：处理中<br>   success：成功<br>   failed：失败<br>   timeout：超时</li><li>type<br>   按照【<strong>清除缓存类型</strong>】进行过滤，暂不支持多值。<br>   类型：String<br>   必选：否<br>   模糊查询：不支持。<br>   可选项：<br>   purge_url：URL<br>   purge_prefix：前缀<br>   purge_all：全部缓存内容<br>   purge_host：Hostname</li>
+	// 过滤条件，Filters.Values的上限为20。详细的过滤条件如下：<li>zone-id<br>   按照【<strong>站点 ID</strong>】进行过滤。zone-id形如：zone-xxx，暂不支持多值<br>   类型：String<br>   必选：否<br>   模糊查询：不支持</li><li>job-id<br>   按照【<strong>任务ID</strong>】进行过滤。job-id形如：1379afjk91u32h，暂不支持多值。<br>   类型：String<br>   必选：否<br>   模糊查询：不支持</li><li>target<br>   按照【<strong>目标资源信息</strong>】进行过滤，target形如：http://www.qq.com/1.txt或者tag1，暂不支持多值<br>   类型：String<br>   必选：否<br>   模糊查询：不支持</li><li>domains<br>   按照【<strong>域名</strong>】进行过滤，domains形如：www.qq.com<br>   类型：String<br>   必选：否<br>   模糊查询：不支持。</li><li>statuses<br>   按照【<strong>任务状态</strong>】进行过滤<br>   必选：否<br>   模糊查询：不支持。<br>   可选项：<br>   processing：处理中<br>   success：成功<br>   failed：失败<br>   timeout：超时</li><li>type<br>   按照【<strong>清除缓存类型</strong>】进行过滤，暂不支持多值。<br>   类型：String<br>   必选：否<br>   模糊查询：不支持<br>   可选项：<br>   purge_url：URL<br>   purge_prefix：前缀<br>   purge_all：全部缓存内容<br>   purge_host：Hostname<br>   purge_cache_tag：CacheTag</li>
 	Filters []*AdvancedFilter `json:"Filters,omitempty" name:"Filters"`
 }
 
@@ -7295,10 +7306,10 @@ func (r *DescribeRulesSettingResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeSecurityGroupManagedRulesRequestParams struct {
-	// 站点Id。
+	// 站点Id。当使用ZoneId和Entity时可不填写TemplateId，否则必须填写TemplateId。
 	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
 
-	// 子域名/应用名。
+	// 子域名/应用名。当使用ZoneId和Entity时可不填写TemplateId，否则必须填写TemplateId。
 	Entity *string `json:"Entity,omitempty" name:"Entity"`
 
 	// 分页查询偏移量。默认值：0。
@@ -7306,15 +7317,18 @@ type DescribeSecurityGroupManagedRulesRequestParams struct {
 
 	// 分页查询限制数目。默认值：20，最大值：1000。
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 模板Id。当使用模板Id时可不填ZoneId和Entity，否则必须填写ZoneId和Entity。
+	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
 }
 
 type DescribeSecurityGroupManagedRulesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 站点Id。
+	// 站点Id。当使用ZoneId和Entity时可不填写TemplateId，否则必须填写TemplateId。
 	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
 
-	// 子域名/应用名。
+	// 子域名/应用名。当使用ZoneId和Entity时可不填写TemplateId，否则必须填写TemplateId。
 	Entity *string `json:"Entity,omitempty" name:"Entity"`
 
 	// 分页查询偏移量。默认值：0。
@@ -7322,6 +7336,9 @@ type DescribeSecurityGroupManagedRulesRequest struct {
 
 	// 分页查询限制数目。默认值：20，最大值：1000。
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 模板Id。当使用模板Id时可不填ZoneId和Entity，否则必须填写ZoneId和Entity。
+	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
 }
 
 func (r *DescribeSecurityGroupManagedRulesRequest) ToJsonString() string {
@@ -7340,6 +7357,7 @@ func (r *DescribeSecurityGroupManagedRulesRequest) FromJsonString(s string) erro
 	delete(f, "Entity")
 	delete(f, "Offset")
 	delete(f, "Limit")
+	delete(f, "TemplateId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSecurityGroupManagedRulesRequest has unknown keys!", "")
 	}
@@ -7506,8 +7524,11 @@ type DescribeSecurityPolicyRequestParams struct {
 	// 站点Id。
 	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
 
-	// 子域名/应用名。
+	// 子域名/应用名。当使用Entity时可不填写TemplateId，否则必须填写TemplateId。
 	Entity *string `json:"Entity,omitempty" name:"Entity"`
+
+	// 模板策略id。当使用模板Id时可不填Entity，否则必须填写Entity。
+	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
 }
 
 type DescribeSecurityPolicyRequest struct {
@@ -7516,8 +7537,11 @@ type DescribeSecurityPolicyRequest struct {
 	// 站点Id。
 	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
 
-	// 子域名/应用名。
+	// 子域名/应用名。当使用Entity时可不填写TemplateId，否则必须填写TemplateId。
 	Entity *string `json:"Entity,omitempty" name:"Entity"`
+
+	// 模板策略id。当使用模板Id时可不填Entity，否则必须填写Entity。
+	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
 }
 
 func (r *DescribeSecurityPolicyRequest) ToJsonString() string {
@@ -7534,6 +7558,7 @@ func (r *DescribeSecurityPolicyRequest) FromJsonString(s string) error {
 	}
 	delete(f, "ZoneId")
 	delete(f, "Entity")
+	delete(f, "TemplateId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSecurityPolicyRequest has unknown keys!", "")
 	}
@@ -7568,21 +7593,27 @@ func (r *DescribeSecurityPolicyResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeSecurityPortraitRulesRequestParams struct {
-	// 站点Id。
+	// 站点Id。当使用ZoneId和Entity时可不填写TemplateId，否则必须填写TemplateId。
 	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
 
-	// 子域名/应用名。
+	// 子域名/应用名。当使用ZoneId和Entity时可不填写TemplateId，否则必须填写TemplateId。
 	Entity *string `json:"Entity,omitempty" name:"Entity"`
+
+	// 模板Id。当使用模板Id时可不填ZoneId和Entity，否则必须填写ZoneId和Entity。
+	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
 }
 
 type DescribeSecurityPortraitRulesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 站点Id。
+	// 站点Id。当使用ZoneId和Entity时可不填写TemplateId，否则必须填写TemplateId。
 	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
 
-	// 子域名/应用名。
+	// 子域名/应用名。当使用ZoneId和Entity时可不填写TemplateId，否则必须填写TemplateId。
 	Entity *string `json:"Entity,omitempty" name:"Entity"`
+
+	// 模板Id。当使用模板Id时可不填ZoneId和Entity，否则必须填写ZoneId和Entity。
+	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
 }
 
 func (r *DescribeSecurityPortraitRulesRequest) ToJsonString() string {
@@ -7599,6 +7630,7 @@ func (r *DescribeSecurityPortraitRulesRequest) FromJsonString(s string) error {
 	}
 	delete(f, "ZoneId")
 	delete(f, "Entity")
+	delete(f, "TemplateId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSecurityPortraitRulesRequest has unknown keys!", "")
 	}
@@ -10500,7 +10532,7 @@ type FailReason struct {
 	// 失败原因。
 	Reason *string `json:"Reason,omitempty" name:"Reason"`
 
-	// 处理失败的资源列表，该列表元素来源于输入参数中的Targets，因此格式和入参中的Targets保持一致。
+	// 处理失败的资源列表。
 	Targets []*string `json:"Targets,omitempty" name:"Targets"`
 }
 
@@ -10770,6 +10802,12 @@ type IpTableRule struct {
 
 	// 更新时间。仅出参使用。
 	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+
+	// 规则启用状态，当返回为null时，为启用。取值有：
+	// <li> on：启用；</li>
+	// <li> off：未启用。</li>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *string `json:"Status,omitempty" name:"Status"`
 }
 
 type Ipv6 struct {
@@ -12763,11 +12801,14 @@ type ModifySecurityPolicyRequestParams struct {
 	// 站点Id。
 	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
 
-	// 子域名/应用名。
-	Entity *string `json:"Entity,omitempty" name:"Entity"`
-
 	// 安全配置。
 	SecurityConfig *SecurityConfig `json:"SecurityConfig,omitempty" name:"SecurityConfig"`
+
+	// 子域名/应用名。当使用Entity时可不填写TemplateId，否则必须填写TemplateId。
+	Entity *string `json:"Entity,omitempty" name:"Entity"`
+
+	// 模板策略id。当使用模板Id时可不填Entity，否则必须填写Entity。
+	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
 }
 
 type ModifySecurityPolicyRequest struct {
@@ -12776,11 +12817,14 @@ type ModifySecurityPolicyRequest struct {
 	// 站点Id。
 	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
 
-	// 子域名/应用名。
-	Entity *string `json:"Entity,omitempty" name:"Entity"`
-
 	// 安全配置。
 	SecurityConfig *SecurityConfig `json:"SecurityConfig,omitempty" name:"SecurityConfig"`
+
+	// 子域名/应用名。当使用Entity时可不填写TemplateId，否则必须填写TemplateId。
+	Entity *string `json:"Entity,omitempty" name:"Entity"`
+
+	// 模板策略id。当使用模板Id时可不填Entity，否则必须填写Entity。
+	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
 }
 
 func (r *ModifySecurityPolicyRequest) ToJsonString() string {
@@ -12796,8 +12840,9 @@ func (r *ModifySecurityPolicyRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "ZoneId")
-	delete(f, "Entity")
 	delete(f, "SecurityConfig")
+	delete(f, "Entity")
+	delete(f, "TemplateId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifySecurityPolicyRequest has unknown keys!", "")
 	}
@@ -12828,10 +12873,10 @@ func (r *ModifySecurityPolicyResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifySecurityWafGroupPolicyRequestParams struct {
-	// 站点Id。
+	// 站点Id。当使用ZoneId和Entity时可不填写TemplateId，否则必须填写TemplateId。
 	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
 
-	// 子域名。
+	// 子域名。当使用ZoneId和Entity时可不填写TemplateId，否则必须填写TemplateId。
 	Entity *string `json:"Entity,omitempty" name:"Entity"`
 
 	// 总开关，取值有：
@@ -12860,15 +12905,18 @@ type ModifySecurityWafGroupPolicyRequestParams struct {
 
 	// 托管规则等级组。不填默认为上次的配置。
 	WafGroups []*WafGroup `json:"WafGroups,omitempty" name:"WafGroups"`
+
+	// 模板Id。当使用模板Id时可不填ZoneId和Entity，否则必须填写ZoneId和Entity。
+	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
 }
 
 type ModifySecurityWafGroupPolicyRequest struct {
 	*tchttp.BaseRequest
 	
-	// 站点Id。
+	// 站点Id。当使用ZoneId和Entity时可不填写TemplateId，否则必须填写TemplateId。
 	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
 
-	// 子域名。
+	// 子域名。当使用ZoneId和Entity时可不填写TemplateId，否则必须填写TemplateId。
 	Entity *string `json:"Entity,omitempty" name:"Entity"`
 
 	// 总开关，取值有：
@@ -12897,6 +12945,9 @@ type ModifySecurityWafGroupPolicyRequest struct {
 
 	// 托管规则等级组。不填默认为上次的配置。
 	WafGroups []*WafGroup `json:"WafGroups,omitempty" name:"WafGroups"`
+
+	// 模板Id。当使用模板Id时可不填ZoneId和Entity，否则必须填写ZoneId和Entity。
+	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
 }
 
 func (r *ModifySecurityWafGroupPolicyRequest) ToJsonString() string {
@@ -12919,6 +12970,7 @@ func (r *ModifySecurityWafGroupPolicyRequest) FromJsonString(s string) error {
 	delete(f, "WafRules")
 	delete(f, "AiRule")
 	delete(f, "WafGroups")
+	delete(f, "TemplateId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifySecurityWafGroupPolicyRequest has unknown keys!", "")
 	}
@@ -13658,11 +13710,12 @@ type Quota struct {
 	// 每日剩余的可提交配额。
 	DailyAvailable *int64 `json:"DailyAvailable,omitempty" name:"DailyAvailable"`
 
-	// 配额类型，取值有：
-	// <li> purge_prefix：前缀；</li>
-	// <li> purge_url：URL；</li>
-	// <li> purge_host：Hostname；</li>
-	// <li> purge_all：全部缓存内容。</li>
+	// 刷新预热缓存类型，取值有：
+	// <li> purge_prefix：按前缀刷新；</li>
+	// <li> purge_url：按URL刷新；</li>
+	// <li> purge_host：按Hostname刷新；</li>
+	// <li> purge_all：刷新全部缓存内容；</li>
+	// <li> purge_cache_tag：按CacheTag刷新；</li><li> prefetch_url：按URL预热。</li>
 	Type *string `json:"Type,omitempty" name:"Type"`
 }
 
@@ -13793,8 +13846,7 @@ type RateLimitUserRule struct {
 
 	// 规则状态，取值有：
 	// <li>on：生效；</li>
-	// <li>off：不生效。</li>
-	// <li>hour：小时。</li>默认on生效。
+	// <li>off：不生效。</li>默认on生效。
 	RuleStatus *string `json:"RuleStatus,omitempty" name:"RuleStatus"`
 
 	// 规则详情。
@@ -13808,7 +13860,6 @@ type RateLimitUserRule struct {
 	RuleID *int64 `json:"RuleID,omitempty" name:"RuleID"`
 
 	// 过滤词，取值有：
-	// <li>host：域名；</li>
 	// <li>sip：客户端ip。</li>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FreqFields []*string `json:"FreqFields,omitempty" name:"FreqFields"`
@@ -13816,6 +13867,12 @@ type RateLimitUserRule struct {
 	// 更新时间。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+
+	// 统计范围，字段为null时，代表source_to_eo。取值有：
+	// <li>source_to_eo：（响应）源站到EdgeOne。</li>
+	// <li>client_to_eo：（请求）客户端到EdgeOne；</li>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FreqScope []*string `json:"FreqScope,omitempty" name:"FreqScope"`
 }
 
 // Predefined struct for user
@@ -14358,6 +14415,10 @@ type SecurityConfig struct {
 	// 自定义拦截页面配置。如果为null，默认使用历史配置。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DropPageConfig *DropPageConfig `json:"DropPageConfig,omitempty" name:"DropPageConfig"`
+
+	// 模板配置。此处仅出参数使用。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TemplateConfig *TemplateConfig `json:"TemplateConfig,omitempty" name:"TemplateConfig"`
 }
 
 type SecurityEntity struct {
@@ -14790,6 +14851,14 @@ type Task struct {
 
 	// 任务完成时间。
 	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+}
+
+type TemplateConfig struct {
+	// 模板ID。
+	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
+
+	// 模板名称。
+	TemplateName *string `json:"TemplateName,omitempty" name:"TemplateName"`
 }
 
 type TimingDataItem struct {

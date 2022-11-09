@@ -1277,6 +1277,67 @@ type TaskResult struct {
 }
 
 // Predefined struct for user
+type UpdateProbeTaskAttributesRequestParams struct {
+	// 任务 ID
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 任务名
+	Name *string `json:"Name,omitempty" name:"Name"`
+}
+
+type UpdateProbeTaskAttributesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 任务 ID
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 任务名
+	Name *string `json:"Name,omitempty" name:"Name"`
+}
+
+func (r *UpdateProbeTaskAttributesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateProbeTaskAttributesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	delete(f, "Name")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateProbeTaskAttributesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateProbeTaskAttributesResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type UpdateProbeTaskAttributesResponse struct {
+	*tchttp.BaseResponse
+	Response *UpdateProbeTaskAttributesResponseParams `json:"Response"`
+}
+
+func (r *UpdateProbeTaskAttributesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateProbeTaskAttributesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type UpdateProbeTaskConfigurationListRequestParams struct {
 	// 任务 ID
 	TaskIds []*string `json:"TaskIds,omitempty" name:"TaskIds"`

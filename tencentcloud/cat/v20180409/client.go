@@ -619,6 +619,72 @@ func (c *Client) SuspendProbeTaskWithContext(ctx context.Context, request *Suspe
     return
 }
 
+func NewUpdateProbeTaskAttributesRequest() (request *UpdateProbeTaskAttributesRequest) {
+    request = &UpdateProbeTaskAttributesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cat", APIVersion, "UpdateProbeTaskAttributes")
+    
+    
+    return
+}
+
+func NewUpdateProbeTaskAttributesResponse() (response *UpdateProbeTaskAttributesResponse) {
+    response = &UpdateProbeTaskAttributesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// UpdateProbeTaskAttributes
+// 更新探测任务属性
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBQUERYFAILED = "FailedOperation.DbQueryFailed"
+//  FAILEDOPERATION_DBRECORDCREATEFAILED = "FailedOperation.DbRecordCreateFailed"
+//  FAILEDOPERATION_DBRECORDUPDATEFAILED = "FailedOperation.DbRecordUpdateFailed"
+//  FAILEDOPERATION_NOVALIDNODES = "FailedOperation.NoValidNodes"
+//  FAILEDOPERATION_RESOURCENOTFOUND = "FailedOperation.ResourceNotFound"
+//  FAILEDOPERATION_TASKNOTRUNNING = "FailedOperation.TaskNotRunning"
+//  FAILEDOPERATION_TASKNOTSUSPENDED = "FailedOperation.TaskNotSuspended"
+//  FAILEDOPERATION_TASKOPERATIONNOTALLOW = "FailedOperation.TaskOperationNotAllow"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) UpdateProbeTaskAttributes(request *UpdateProbeTaskAttributesRequest) (response *UpdateProbeTaskAttributesResponse, err error) {
+    return c.UpdateProbeTaskAttributesWithContext(context.Background(), request)
+}
+
+// UpdateProbeTaskAttributes
+// 更新探测任务属性
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBQUERYFAILED = "FailedOperation.DbQueryFailed"
+//  FAILEDOPERATION_DBRECORDCREATEFAILED = "FailedOperation.DbRecordCreateFailed"
+//  FAILEDOPERATION_DBRECORDUPDATEFAILED = "FailedOperation.DbRecordUpdateFailed"
+//  FAILEDOPERATION_NOVALIDNODES = "FailedOperation.NoValidNodes"
+//  FAILEDOPERATION_RESOURCENOTFOUND = "FailedOperation.ResourceNotFound"
+//  FAILEDOPERATION_TASKNOTRUNNING = "FailedOperation.TaskNotRunning"
+//  FAILEDOPERATION_TASKNOTSUSPENDED = "FailedOperation.TaskNotSuspended"
+//  FAILEDOPERATION_TASKOPERATIONNOTALLOW = "FailedOperation.TaskOperationNotAllow"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) UpdateProbeTaskAttributesWithContext(ctx context.Context, request *UpdateProbeTaskAttributesRequest) (response *UpdateProbeTaskAttributesResponse, err error) {
+    if request == nil {
+        request = NewUpdateProbeTaskAttributesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateProbeTaskAttributes require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpdateProbeTaskAttributesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewUpdateProbeTaskConfigurationListRequest() (request *UpdateProbeTaskConfigurationListRequest) {
     request = &UpdateProbeTaskConfigurationListRequest{
         BaseRequest: &tchttp.BaseRequest{},

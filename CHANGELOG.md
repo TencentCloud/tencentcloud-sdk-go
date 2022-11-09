@@ -1,3 +1,235 @@
+# Release v1.0.533
+
+## T-Sec-DDoS防护(Anti-DDoS)(antiddos) 版本：2020-03-09
+
+### 第 45 次发布
+
+发布时间：2022-11-09 06:08:09
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ModifyDDoSThreshold](https://cloud.tencent.com/document/api/1021/69190)
+
+	* 新增入参：OtherThresholdFlag, SynFloodThreshold, SynFloodPktThreshold, UdpFloodThreshold, UdpFloodPktThreshold
+
+
+修改数据结构：
+
+* [PacketFilterConfig](https://cloud.tencent.com/document/api/1021/57582#PacketFilterConfig)
+
+	* 新增成员：PktLenGT
+
+* [ProtectThresholdRelation](https://cloud.tencent.com/document/api/1021/57582#ProtectThresholdRelation)
+
+	* 新增成员：SynFloodThreshold, SynFloodPktThreshold, UdpFloodThreshold, UdpFloodPktThreshold
+
+* [ProtocolBlockConfig](https://cloud.tencent.com/document/api/1021/57582#ProtocolBlockConfig)
+
+	* 新增成员：PingOfDeath, TearDrop
+
+
+
+
+## API 网关(apigateway) 版本：2018-08-08
+
+### 第 33 次发布
+
+发布时间：2022-11-09 06:09:16
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribePluginsByApi](https://cloud.tencent.com/document/api/628/82587)
+
+新增数据结构：
+
+* [AttachedPluginInfo](https://cloud.tencent.com/document/api/628/45244#AttachedPluginInfo)
+* [AttachedPluginSummary](https://cloud.tencent.com/document/api/628/45244#AttachedPluginSummary)
+
+
+
+## 云拨测(cat) 版本：2018-04-09
+
+### 第 13 次发布
+
+发布时间：2022-11-09 06:14:16
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [UpdateProbeTaskAttributes](https://cloud.tencent.com/document/api/280/82588)
+
+
+
+## 主机安全(cwp) 版本：2018-02-28
+
+### 第 62 次发布
+
+发布时间：2022-11-09 06:23:04
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Machine](https://cloud.tencent.com/document/api/296/19867#Machine)
+
+	* 新增成员：IpList
+
+
+
+
+## 云直播CSS(live) 版本：2018-08-01
+
+### 第 92 次发布
+
+发布时间：2022-11-09 06:38:57
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateLivePullStreamTask](https://cloud.tencent.com/document/api/267/56245)
+
+	* 新增入参：VodLocalMode
+
+* [ModifyLivePullStreamTask](https://cloud.tencent.com/document/api/267/56242)
+
+	* 新增入参：VodLocalMode
+
+
+
+
+## 媒体处理(mps) 版本：2019-06-12
+
+### 第 45 次发布
+
+发布时间：2022-11-09 06:42:12
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [AudioTemplateInfoForUpdate](https://cloud.tencent.com/document/api/862/37615#AudioTemplateInfoForUpdate)
+
+	* 新增成员：StreamSelects
+
+* [SubtitleTemplate](https://cloud.tencent.com/document/api/862/37615#SubtitleTemplate)
+
+	* 新增成员：Path, StreamIndex, FontType, FontSize, FontColor, FontAlpha
+
+
+
+
+## 边缘安全加速平台(teo) 版本：2022-09-01
+
+### 第 12 次发布
+
+发布时间：2022-11-09 06:56:06
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeBotManagedRules](https://cloud.tencent.com/document/api/1552/80681)
+
+	* 新增入参：TemplateId
+
+	* <font color="#dd0000">**修改入参**：</font>ZoneId, Entity
+
+* [DescribeSecurityGroupManagedRules](https://cloud.tencent.com/document/api/1552/80678)
+
+	* 新增入参：TemplateId
+
+	* <font color="#dd0000">**修改入参**：</font>ZoneId, Entity
+
+* [DescribeSecurityPolicy](https://cloud.tencent.com/document/api/1552/80677)
+
+	* 新增入参：TemplateId
+
+	* <font color="#dd0000">**修改入参**：</font>ZoneId, Entity
+
+* [DescribeSecurityPortraitRules](https://cloud.tencent.com/document/api/1552/80674)
+
+	* 新增入参：TemplateId
+
+	* <font color="#dd0000">**修改入参**：</font>ZoneId, Entity
+
+* [ModifySecurityPolicy](https://cloud.tencent.com/document/api/1552/80669)
+
+	* 新增入参：TemplateId
+
+	* <font color="#dd0000">**修改入参**：</font>Entity
+
+* [ModifySecurityWafGroupPolicy](https://cloud.tencent.com/document/api/1552/80668)
+
+	* 新增入参：TemplateId
+
+	* <font color="#dd0000">**修改入参**：</font>ZoneId, Entity
+
+
+新增数据结构：
+
+* [TemplateConfig](https://cloud.tencent.com/document/api/1552/80721#TemplateConfig)
+
+修改数据结构：
+
+* [IpTableRule](https://cloud.tencent.com/document/api/1552/80721#IpTableRule)
+
+	* 新增成员：Status
+
+* [RateLimitUserRule](https://cloud.tencent.com/document/api/1552/80721#RateLimitUserRule)
+
+	* 新增成员：FreqScope
+
+* [SecurityConfig](https://cloud.tencent.com/document/api/1552/80721#SecurityConfig)
+
+	* 新增成员：TemplateConfig
+
+
+
+
+## 边缘安全加速平台(teo) 版本：2022-01-06
+
+
+
+## 图像分析(tiia) 版本：2019-05-29
+
+### 第 29 次发布
+
+发布时间：2022-11-09 06:57:46
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DetectPet](https://cloud.tencent.com/document/api/865/82589)
+
+新增数据结构：
+
+* [Pet](https://cloud.tencent.com/document/api/865/35474#Pet)
+
+
+
 # Release v1.0.532
 
 ## 云呼叫中心(ccc) 版本：2020-02-10

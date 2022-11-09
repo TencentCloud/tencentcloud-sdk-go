@@ -706,6 +706,37 @@ type AttachedApiSummary struct {
 	AttachedApis []*AttachedApiInfo `json:"AttachedApis,omitempty" name:"AttachedApis"`
 }
 
+type AttachedPluginInfo struct {
+	// 插件ID。
+	PluginId *string `json:"PluginId,omitempty" name:"PluginId"`
+
+	// 环境信息。
+	Environment *string `json:"Environment,omitempty" name:"Environment"`
+
+	// 绑定时间。
+	AttachedTime *string `json:"AttachedTime,omitempty" name:"AttachedTime"`
+
+	// 插件名称。
+	PluginName *string `json:"PluginName,omitempty" name:"PluginName"`
+
+	// 插件类型。
+	PluginType *string `json:"PluginType,omitempty" name:"PluginType"`
+
+	// 插件描述。
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 插件定义语句。
+	PluginData *string `json:"PluginData,omitempty" name:"PluginData"`
+}
+
+type AttachedPluginSummary struct {
+	// 已绑定的插件总数。
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 已绑定的插件信息。
+	PluginSummary []*AttachedPluginInfo `json:"PluginSummary,omitempty" name:"PluginSummary"`
+}
+
 type AvailableApiInfo struct {
 	// API ID。
 	ApiId *string `json:"ApiId,omitempty" name:"ApiId"`
@@ -5012,6 +5043,91 @@ func (r *DescribePluginResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribePluginResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribePluginsByApiRequestParams struct {
+	// 要查询的API ID。
+	ApiId *string `json:"ApiId,omitempty" name:"ApiId"`
+
+	// 要查询的服务ID。
+	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+
+	// 环境信息。
+	EnvironmentName *string `json:"EnvironmentName,omitempty" name:"EnvironmentName"`
+
+	// 返回数量，默认为 20，最大值为 100。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移量，默认为 0。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+}
+
+type DescribePluginsByApiRequest struct {
+	*tchttp.BaseRequest
+	
+	// 要查询的API ID。
+	ApiId *string `json:"ApiId,omitempty" name:"ApiId"`
+
+	// 要查询的服务ID。
+	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+
+	// 环境信息。
+	EnvironmentName *string `json:"EnvironmentName,omitempty" name:"EnvironmentName"`
+
+	// 返回数量，默认为 20，最大值为 100。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移量，默认为 0。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+}
+
+func (r *DescribePluginsByApiRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePluginsByApiRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ApiId")
+	delete(f, "ServiceId")
+	delete(f, "EnvironmentName")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePluginsByApiRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribePluginsByApiResponseParams struct {
+	// 插件可绑定的API列表信息。
+	Result *AttachedPluginSummary `json:"Result,omitempty" name:"Result"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribePluginsByApiResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribePluginsByApiResponseParams `json:"Response"`
+}
+
+func (r *DescribePluginsByApiResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePluginsByApiResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

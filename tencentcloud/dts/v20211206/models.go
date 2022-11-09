@@ -1102,11 +1102,11 @@ type DatabaseTableObject struct {
 }
 
 type DdlOption struct {
-	// ddl类型，如database,table,view等
+	// ddl类型，如Database,Table,View,Index等
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DdlObject *string `json:"DdlObject,omitempty" name:"DdlObject"`
 
-	// ddl具体值，如Create,Drop等
+	// ddl具体值，对于Database可取值[Create,Drop,Alter]<br>对于Table可取值[Create,Drop,Alter,Truncate,Rename]<br/>对于View可取值[Create,Drop]<br/>对于Index可取值[Create,Drop]
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DdlValue []*string `json:"DdlValue,omitempty" name:"DdlValue"`
 }
