@@ -1,44 +1,10 @@
 # 本版本更新包含以下内容：
 
-## T-Sec-DDoS防护(Anti-DDoS)(antiddos) 版本：2020-03-09
+## 腾讯云 TI 平台 TI-ONE(tione) 版本：2021-11-11
 
-### 第 45 次发布
+### 第 8 次发布
 
-发布时间：2022-11-09 06:08:09
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [ModifyDDoSThreshold](https://cloud.tencent.com/document/api/1021/69190)
-
-	* 新增入参：OtherThresholdFlag, SynFloodThreshold, SynFloodPktThreshold, UdpFloodThreshold, UdpFloodPktThreshold
-
-
-修改数据结构：
-
-* [PacketFilterConfig](https://cloud.tencent.com/document/api/1021/57582#PacketFilterConfig)
-
-	* 新增成员：PktLenGT
-
-* [ProtectThresholdRelation](https://cloud.tencent.com/document/api/1021/57582#ProtectThresholdRelation)
-
-	* 新增成员：SynFloodThreshold, SynFloodPktThreshold, UdpFloodThreshold, UdpFloodPktThreshold
-
-* [ProtocolBlockConfig](https://cloud.tencent.com/document/api/1021/57582#ProtocolBlockConfig)
-
-	* 新增成员：PingOfDeath, TearDrop
-
-
-
-
-## API 网关(apigateway) 版本：2018-08-08
-
-### 第 33 次发布
-
-发布时间：2022-11-09 06:09:16
+发布时间：2022-11-10 06:57:12
 
 本次发布包含了以下内容：
 
@@ -46,187 +12,27 @@
 
 新增接口：
 
-* [DescribePluginsByApi](https://cloud.tencent.com/document/api/628/82587)
+* [CreateBatchModelAccTasks](https://cloud.tencent.com/document/api/851/82610)
+* [CreateOptimizedModel](https://cloud.tencent.com/document/api/851/82609)
+* [DeleteModelAccelerateTask](https://cloud.tencent.com/document/api/851/82608)
+* [DescribeModelAccEngineVersions](https://cloud.tencent.com/document/api/851/82607)
+* [DescribeModelAccelerateTask](https://cloud.tencent.com/document/api/851/82606)
+* [DescribeModelAccelerateTasks](https://cloud.tencent.com/document/api/851/82605)
+* [RestartModelAccelerateTask](https://cloud.tencent.com/document/api/851/82604)
+* [StopModelAccelerateTask](https://cloud.tencent.com/document/api/851/82603)
 
 新增数据结构：
 
-* [AttachedPluginInfo](https://cloud.tencent.com/document/api/628/45244#AttachedPluginInfo)
-* [AttachedPluginSummary](https://cloud.tencent.com/document/api/628/45244#AttachedPluginSummary)
+* [BatchModelAccTask](https://cloud.tencent.com/document/api/851/75051#BatchModelAccTask)
+* [EngineVersion](https://cloud.tencent.com/document/api/851/75051#EngineVersion)
+* [HyperParameter](https://cloud.tencent.com/document/api/851/75051#HyperParameter)
+* [ModelAccEngineVersion](https://cloud.tencent.com/document/api/851/75051#ModelAccEngineVersion)
+* [ModelAccelerateTask](https://cloud.tencent.com/document/api/851/75051#ModelAccelerateTask)
+* [ModelInputInfo](https://cloud.tencent.com/document/api/851/75051#ModelInputInfo)
 
 
 
-## 云拨测(cat) 版本：2018-04-09
-
-### 第 13 次发布
-
-发布时间：2022-11-09 06:14:16
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [UpdateProbeTaskAttributes](https://cloud.tencent.com/document/api/280/82588)
-
-
-
-## 主机安全(cwp) 版本：2018-02-28
-
-### 第 62 次发布
-
-发布时间：2022-11-09 06:23:04
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [Machine](https://cloud.tencent.com/document/api/296/19867#Machine)
-
-	* 新增成员：IpList
-
-
-
-
-## 云直播CSS(live) 版本：2018-08-01
-
-### 第 92 次发布
-
-发布时间：2022-11-09 06:38:57
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CreateLivePullStreamTask](https://cloud.tencent.com/document/api/267/56245)
-
-	* 新增入参：VodLocalMode
-
-* [ModifyLivePullStreamTask](https://cloud.tencent.com/document/api/267/56242)
-
-	* 新增入参：VodLocalMode
-
-
-
-
-## 媒体处理(mps) 版本：2019-06-12
-
-### 第 45 次发布
-
-发布时间：2022-11-09 06:42:12
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [AudioTemplateInfoForUpdate](https://cloud.tencent.com/document/api/862/37615#AudioTemplateInfoForUpdate)
-
-	* 新增成员：StreamSelects
-
-* [SubtitleTemplate](https://cloud.tencent.com/document/api/862/37615#SubtitleTemplate)
-
-	* 新增成员：Path, StreamIndex, FontType, FontSize, FontColor, FontAlpha
-
-
-
-
-## 边缘安全加速平台(teo) 版本：2022-09-01
-
-### 第 12 次发布
-
-发布时间：2022-11-09 06:56:06
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [DescribeBotManagedRules](https://cloud.tencent.com/document/api/1552/80681)
-
-	* 新增入参：TemplateId
-
-	* <font color="#dd0000">**修改入参**：</font>ZoneId, Entity
-
-* [DescribeSecurityGroupManagedRules](https://cloud.tencent.com/document/api/1552/80678)
-
-	* 新增入参：TemplateId
-
-	* <font color="#dd0000">**修改入参**：</font>ZoneId, Entity
-
-* [DescribeSecurityPolicy](https://cloud.tencent.com/document/api/1552/80677)
-
-	* 新增入参：TemplateId
-
-	* <font color="#dd0000">**修改入参**：</font>ZoneId, Entity
-
-* [DescribeSecurityPortraitRules](https://cloud.tencent.com/document/api/1552/80674)
-
-	* 新增入参：TemplateId
-
-	* <font color="#dd0000">**修改入参**：</font>ZoneId, Entity
-
-* [ModifySecurityPolicy](https://cloud.tencent.com/document/api/1552/80669)
-
-	* 新增入参：TemplateId
-
-	* <font color="#dd0000">**修改入参**：</font>Entity
-
-* [ModifySecurityWafGroupPolicy](https://cloud.tencent.com/document/api/1552/80668)
-
-	* 新增入参：TemplateId
-
-	* <font color="#dd0000">**修改入参**：</font>ZoneId, Entity
-
-
-新增数据结构：
-
-* [TemplateConfig](https://cloud.tencent.com/document/api/1552/80721#TemplateConfig)
-
-修改数据结构：
-
-* [IpTableRule](https://cloud.tencent.com/document/api/1552/80721#IpTableRule)
-
-	* 新增成员：Status
-
-* [RateLimitUserRule](https://cloud.tencent.com/document/api/1552/80721#RateLimitUserRule)
-
-	* 新增成员：FreqScope
-
-* [SecurityConfig](https://cloud.tencent.com/document/api/1552/80721#SecurityConfig)
-
-	* 新增成员：TemplateConfig
-
-
-
-
-## 边缘安全加速平台(teo) 版本：2022-01-06
-
-
-
-## 图像分析(tiia) 版本：2019-05-29
-
-### 第 29 次发布
-
-发布时间：2022-11-09 06:57:46
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DetectPet](https://cloud.tencent.com/document/api/865/82589)
-
-新增数据结构：
-
-* [Pet](https://cloud.tencent.com/document/api/865/35474#Pet)
+## 腾讯云 TI 平台 TI-ONE(tione) 版本：2019-10-22
 
 
 
@@ -2893,12 +2699,12 @@
 
 新增接口：
 
-* [[DescribePluginsByApi](https://cloud.tencent.com/document/api/628/82587)](https://cloud.tencent.com/document/api/#/#)
+* [DescribePluginsByApi](https://cloud.tencent.com/document/api/628/82587)
 
 新增数据结构：
 
-* [[AttachedPluginInfo](https://cloud.tencent.com/document/api/628/45244#AttachedPluginInfo)](https://cloud.tencent.com/document/api/628/45244#[AttachedPluginInfo](https://cloud.tencent.com/document/api/628/45244#AttachedPluginInfo))
-* [[AttachedPluginSummary](https://cloud.tencent.com/document/api/628/45244#AttachedPluginSummary)](https://cloud.tencent.com/document/api/628/45244#[AttachedPluginSummary](https://cloud.tencent.com/document/api/628/45244#AttachedPluginSummary))
+* [AttachedPluginInfo](https://cloud.tencent.com/document/api/628/45244#AttachedPluginInfo)
+* [AttachedPluginSummary](https://cloud.tencent.com/document/api/628/45244#AttachedPluginSummary)
 
 ### 第 32 次发布
 
@@ -10289,7 +10095,7 @@
 
 新增接口：
 
-* [[UpdateProbeTaskAttributes](https://cloud.tencent.com/document/api/280/82588)](https://cloud.tencent.com/document/api/#/#)
+* [UpdateProbeTaskAttributes](https://cloud.tencent.com/document/api/280/82588)
 
 ### 第 12 次发布
 
@@ -79446,7 +79252,7 @@
 
 新增数据结构：
 
-* [[TemplateConfig](https://cloud.tencent.com/document/api/1552/80721#TemplateConfig)](https://cloud.tencent.com/document/api/1552/80721#[TemplateConfig](https://cloud.tencent.com/document/api/1552/80721#TemplateConfig))
+* [TemplateConfig](https://cloud.tencent.com/document/api/1552/80721#TemplateConfig)
 
 修改数据结构：
 
@@ -80856,11 +80662,11 @@
 
 新增接口：
 
-* [[DetectPet](https://cloud.tencent.com/document/api/865/82589)](https://cloud.tencent.com/document/api/#/#)
+* [DetectPet](https://cloud.tencent.com/document/api/865/82589)
 
 新增数据结构：
 
-* [[Pet](https://cloud.tencent.com/document/api/865/35474#Pet)](https://cloud.tencent.com/document/api/865/35474#[Pet](https://cloud.tencent.com/document/api/865/35474#Pet))
+* [Pet](https://cloud.tencent.com/document/api/865/35474#Pet)
 
 ### 第 28 次发布
 
@@ -81684,6 +81490,34 @@
 
 
 ## 腾讯云 TI 平台 TI-ONE(tione) 版本：2021-11-11
+
+### 第 8 次发布
+
+发布时间：2022-11-10 06:57:12
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateBatchModelAccTasks](https://cloud.tencent.com/document/api/851/82610)](https://cloud.tencent.com/document/api/#/#)
+* [[CreateOptimizedModel](https://cloud.tencent.com/document/api/851/82609)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteModelAccelerateTask](https://cloud.tencent.com/document/api/851/82608)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeModelAccEngineVersions](https://cloud.tencent.com/document/api/851/82607)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeModelAccelerateTask](https://cloud.tencent.com/document/api/851/82606)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeModelAccelerateTasks](https://cloud.tencent.com/document/api/851/82605)](https://cloud.tencent.com/document/api/#/#)
+* [[RestartModelAccelerateTask](https://cloud.tencent.com/document/api/851/82604)](https://cloud.tencent.com/document/api/#/#)
+* [[StopModelAccelerateTask](https://cloud.tencent.com/document/api/851/82603)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[BatchModelAccTask](https://cloud.tencent.com/document/api/851/75051#BatchModelAccTask)](https://cloud.tencent.com/document/api/851/75051#[BatchModelAccTask](https://cloud.tencent.com/document/api/851/75051#BatchModelAccTask))
+* [[EngineVersion](https://cloud.tencent.com/document/api/851/75051#EngineVersion)](https://cloud.tencent.com/document/api/851/75051#[EngineVersion](https://cloud.tencent.com/document/api/851/75051#EngineVersion))
+* [[HyperParameter](https://cloud.tencent.com/document/api/851/75051#HyperParameter)](https://cloud.tencent.com/document/api/851/75051#[HyperParameter](https://cloud.tencent.com/document/api/851/75051#HyperParameter))
+* [[ModelAccEngineVersion](https://cloud.tencent.com/document/api/851/75051#ModelAccEngineVersion)](https://cloud.tencent.com/document/api/851/75051#[ModelAccEngineVersion](https://cloud.tencent.com/document/api/851/75051#ModelAccEngineVersion))
+* [[ModelAccelerateTask](https://cloud.tencent.com/document/api/851/75051#ModelAccelerateTask)](https://cloud.tencent.com/document/api/851/75051#[ModelAccelerateTask](https://cloud.tencent.com/document/api/851/75051#ModelAccelerateTask))
+* [[ModelInputInfo](https://cloud.tencent.com/document/api/851/75051#ModelInputInfo)](https://cloud.tencent.com/document/api/851/75051#[ModelInputInfo](https://cloud.tencent.com/document/api/851/75051#ModelInputInfo))
 
 ### 第 7 次发布
 

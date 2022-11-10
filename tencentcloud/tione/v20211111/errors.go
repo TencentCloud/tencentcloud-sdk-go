@@ -146,6 +146,9 @@ const (
 	// 查询标签服务失败。
 	FAILEDOPERATION_QUERYTAGFAIL = "FailedOperation.QueryTagFail"
 
+	// 记录不存在。
+	FAILEDOPERATION_RECORDNOTFOUND = "FailedOperation.RecordNotFound"
+
 	// 存储库有绑定的实例，请先删除绑定的实例。
 	FAILEDOPERATION_REPOBINDBYINSTANCE = "FailedOperation.RepoBindByInstance"
 
@@ -181,6 +184,12 @@ const (
 
 	// 参数错误。
 	INVALIDPARAMETER = "InvalidParameter"
+
+	// 无效的接口。
+	INVALIDPARAMETER_TGWINVALIDINTERFACE = "InvalidParameter.TgwInvalidInterface"
+
+	// 无效的请求包体。
+	INVALIDPARAMETER_TGWINVALIDREQUESTBODY = "InvalidParameter.TgwInvalidRequestBody"
 
 	// 请求参数校验失败。
 	INVALIDPARAMETER_VALIDATEERROR = "InvalidParameter.ValidateError"

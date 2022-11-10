@@ -70,6 +70,35 @@ type APIConfigDetail struct {
 	SubUin *string `json:"SubUin,omitempty" name:"SubUin"`
 }
 
+type BatchModelAccTask struct {
+	// 模型ID
+	ModelId *string `json:"ModelId,omitempty" name:"ModelId"`
+
+	// 模型版本
+	ModelVersion *string `json:"ModelVersion,omitempty" name:"ModelVersion"`
+
+	// 模型来源(JOB/COS)
+	ModelSource *string `json:"ModelSource,omitempty" name:"ModelSource"`
+
+	// 模型格式(TORCH_SCRIPT/DETECTRON2/SAVED_MODEL/FROZEN_GRAPH/MMDETECTION/ONNX/HUGGING_FACE)
+	ModelFormat *string `json:"ModelFormat,omitempty" name:"ModelFormat"`
+
+	// 模型Tensor信息
+	TensorInfos []*string `json:"TensorInfos,omitempty" name:"TensorInfos"`
+
+	// 加速引擎版本
+	AccEngineVersion *string `json:"AccEngineVersion,omitempty" name:"AccEngineVersion"`
+
+	// 模型输入cos路径
+	ModelInputPath *CosPathInfo `json:"ModelInputPath,omitempty" name:"ModelInputPath"`
+
+	// 模型名称
+	ModelName *string `json:"ModelName,omitempty" name:"ModelName"`
+
+	// SavedModel保存时配置的签名
+	ModelSignature *string `json:"ModelSignature,omitempty" name:"ModelSignature"`
+}
+
 type BatchTaskDetail struct {
 	// 跑批任务ID
 	BatchTaskId *string `json:"BatchTaskId,omitempty" name:"BatchTaskId"`
@@ -290,6 +319,106 @@ type CosPathInfo struct {
 	// 路径列表，目前只支持单个
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Paths []*string `json:"Paths,omitempty" name:"Paths"`
+}
+
+// Predefined struct for user
+type CreateBatchModelAccTasksRequestParams struct {
+	// 模型加速任务名称
+	ModelAccTaskName *string `json:"ModelAccTaskName,omitempty" name:"ModelAccTaskName"`
+
+	// 批量模型加速任务
+	BatchModelAccTasks []*BatchModelAccTask `json:"BatchModelAccTasks,omitempty" name:"BatchModelAccTasks"`
+
+	// 模型加速保存路径
+	ModelOutputPath *CosPathInfo `json:"ModelOutputPath,omitempty" name:"ModelOutputPath"`
+
+	// 标签
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
+
+	// 优化级别(NO_LOSS/FP16)，默认FP16
+	OptimizationLevel *string `json:"OptimizationLevel,omitempty" name:"OptimizationLevel"`
+
+	// GPU卡类型(T4/V100)，默认T4
+	GPUType *string `json:"GPUType,omitempty" name:"GPUType"`
+
+	// 专业参数设置
+	HyperParameter *HyperParameter `json:"HyperParameter,omitempty" name:"HyperParameter"`
+}
+
+type CreateBatchModelAccTasksRequest struct {
+	*tchttp.BaseRequest
+	
+	// 模型加速任务名称
+	ModelAccTaskName *string `json:"ModelAccTaskName,omitempty" name:"ModelAccTaskName"`
+
+	// 批量模型加速任务
+	BatchModelAccTasks []*BatchModelAccTask `json:"BatchModelAccTasks,omitempty" name:"BatchModelAccTasks"`
+
+	// 模型加速保存路径
+	ModelOutputPath *CosPathInfo `json:"ModelOutputPath,omitempty" name:"ModelOutputPath"`
+
+	// 标签
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
+
+	// 优化级别(NO_LOSS/FP16)，默认FP16
+	OptimizationLevel *string `json:"OptimizationLevel,omitempty" name:"OptimizationLevel"`
+
+	// GPU卡类型(T4/V100)，默认T4
+	GPUType *string `json:"GPUType,omitempty" name:"GPUType"`
+
+	// 专业参数设置
+	HyperParameter *HyperParameter `json:"HyperParameter,omitempty" name:"HyperParameter"`
+}
+
+func (r *CreateBatchModelAccTasksRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateBatchModelAccTasksRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ModelAccTaskName")
+	delete(f, "BatchModelAccTasks")
+	delete(f, "ModelOutputPath")
+	delete(f, "Tags")
+	delete(f, "OptimizationLevel")
+	delete(f, "GPUType")
+	delete(f, "HyperParameter")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateBatchModelAccTasksRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateBatchModelAccTasksResponseParams struct {
+	// 模型优化任务ID列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ModelAccTaskIds []*string `json:"ModelAccTaskIds,omitempty" name:"ModelAccTaskIds"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateBatchModelAccTasksResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateBatchModelAccTasksResponseParams `json:"Response"`
+}
+
+func (r *CreateBatchModelAccTasksResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateBatchModelAccTasksResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user
@@ -900,6 +1029,75 @@ func (r *CreateModelServiceResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateModelServiceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateOptimizedModelRequestParams struct {
+	// 模型加速任务ID
+	ModelAccTaskId *string `json:"ModelAccTaskId,omitempty" name:"ModelAccTaskId"`
+
+	// 标签
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
+}
+
+type CreateOptimizedModelRequest struct {
+	*tchttp.BaseRequest
+	
+	// 模型加速任务ID
+	ModelAccTaskId *string `json:"ModelAccTaskId,omitempty" name:"ModelAccTaskId"`
+
+	// 标签
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
+}
+
+func (r *CreateOptimizedModelRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateOptimizedModelRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ModelAccTaskId")
+	delete(f, "Tags")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateOptimizedModelRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateOptimizedModelResponseParams struct {
+	// 模型ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ModelId *string `json:"ModelId,omitempty" name:"ModelId"`
+
+	// 模型版本ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ModelVersionId *string `json:"ModelVersionId,omitempty" name:"ModelVersionId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateOptimizedModelResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateOptimizedModelResponseParams `json:"Response"`
+}
+
+func (r *CreateOptimizedModelResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateOptimizedModelResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1740,6 +1938,60 @@ func (r *DeleteDatasetResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteDatasetResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteModelAccelerateTaskRequestParams struct {
+	// 模型加速任务ID
+	ModelAccTaskId *string `json:"ModelAccTaskId,omitempty" name:"ModelAccTaskId"`
+}
+
+type DeleteModelAccelerateTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// 模型加速任务ID
+	ModelAccTaskId *string `json:"ModelAccTaskId,omitempty" name:"ModelAccTaskId"`
+}
+
+func (r *DeleteModelAccelerateTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteModelAccelerateTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ModelAccTaskId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteModelAccelerateTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteModelAccelerateTaskResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DeleteModelAccelerateTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteModelAccelerateTaskResponseParams `json:"Response"`
+}
+
+func (r *DeleteModelAccelerateTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteModelAccelerateTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -3159,6 +3411,230 @@ func (r *DescribeLogsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeModelAccEngineVersionsRequestParams struct {
+
+}
+
+type DescribeModelAccEngineVersionsRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DescribeModelAccEngineVersionsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeModelAccEngineVersionsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeModelAccEngineVersionsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeModelAccEngineVersionsResponseParams struct {
+	// 模型加速版本列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ModelAccEngineVersions []*ModelAccEngineVersion `json:"ModelAccEngineVersions,omitempty" name:"ModelAccEngineVersions"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeModelAccEngineVersionsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeModelAccEngineVersionsResponseParams `json:"Response"`
+}
+
+func (r *DescribeModelAccEngineVersionsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeModelAccEngineVersionsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeModelAccelerateTaskRequestParams struct {
+	// 模型加速任务ID
+	ModelAccTaskId *string `json:"ModelAccTaskId,omitempty" name:"ModelAccTaskId"`
+}
+
+type DescribeModelAccelerateTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// 模型加速任务ID
+	ModelAccTaskId *string `json:"ModelAccTaskId,omitempty" name:"ModelAccTaskId"`
+}
+
+func (r *DescribeModelAccelerateTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeModelAccelerateTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ModelAccTaskId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeModelAccelerateTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeModelAccelerateTaskResponseParams struct {
+	// 模型加速任务详情
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ModelAccelerateTask *ModelAccelerateTask `json:"ModelAccelerateTask,omitempty" name:"ModelAccelerateTask"`
+
+	// 模型加速时长，单位s
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ModelAccRuntimeInSecond *uint64 `json:"ModelAccRuntimeInSecond,omitempty" name:"ModelAccRuntimeInSecond"`
+
+	// 模型加速任务开始时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ModelAccStartTime *string `json:"ModelAccStartTime,omitempty" name:"ModelAccStartTime"`
+
+	// 模型加速任务结束时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ModelAccEndTime *string `json:"ModelAccEndTime,omitempty" name:"ModelAccEndTime"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeModelAccelerateTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeModelAccelerateTaskResponseParams `json:"Response"`
+}
+
+func (r *DescribeModelAccelerateTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeModelAccelerateTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeModelAccelerateTasksRequestParams struct {
+	// 过滤器
+	// ModelAccTaskName 任务名称
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 排序字段，默认CreateTime
+	OrderField *string `json:"OrderField,omitempty" name:"OrderField"`
+
+	// 排序方式：ASC/DESC，默认DESC
+	Order *string `json:"Order,omitempty" name:"Order"`
+
+	// 偏移量
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回记录条数，默认20
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 标签过滤
+	TagFilters []*TagFilter `json:"TagFilters,omitempty" name:"TagFilters"`
+}
+
+type DescribeModelAccelerateTasksRequest struct {
+	*tchttp.BaseRequest
+	
+	// 过滤器
+	// ModelAccTaskName 任务名称
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 排序字段，默认CreateTime
+	OrderField *string `json:"OrderField,omitempty" name:"OrderField"`
+
+	// 排序方式：ASC/DESC，默认DESC
+	Order *string `json:"Order,omitempty" name:"Order"`
+
+	// 偏移量
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回记录条数，默认20
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 标签过滤
+	TagFilters []*TagFilter `json:"TagFilters,omitempty" name:"TagFilters"`
+}
+
+func (r *DescribeModelAccelerateTasksRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeModelAccelerateTasksRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Filters")
+	delete(f, "OrderField")
+	delete(f, "Order")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "TagFilters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeModelAccelerateTasksRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeModelAccelerateTasksResponseParams struct {
+	// 模型加速任务列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ModelAccelerateTasks []*ModelAccelerateTask `json:"ModelAccelerateTasks,omitempty" name:"ModelAccelerateTasks"`
+
+	// 任务总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeModelAccelerateTasksResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeModelAccelerateTasksResponseParams `json:"Response"`
+}
+
+func (r *DescribeModelAccelerateTasksResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeModelAccelerateTasksResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeModelServiceCallInfoRequestParams struct {
 	// 服务组id
 	ServiceGroupId *string `json:"ServiceGroupId,omitempty" name:"ServiceGroupId"`
@@ -4273,6 +4749,16 @@ type DetectionLabelInfo struct {
 	FrameType *string `json:"FrameType,omitempty" name:"FrameType"`
 }
 
+type EngineVersion struct {
+	// 引擎版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Version *string `json:"Version,omitempty" name:"Version"`
+
+	// 运行镜像
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Image *string `json:"Image,omitempty" name:"Image"`
+}
+
 type EnvVar struct {
 	// 环境变量key
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -4431,6 +4917,36 @@ type HorizontalPodAutoscaler struct {
 	// 扩缩容指标
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	HpaMetrics []*Option `json:"HpaMetrics,omitempty" name:"HpaMetrics"`
+}
+
+type HyperParameter struct {
+	// 最大nnz数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MaxNNZ *string `json:"MaxNNZ,omitempty" name:"MaxNNZ"`
+
+	// slot数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SlotNum *string `json:"SlotNum,omitempty" name:"SlotNum"`
+
+	// gpu cache 使用率
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CpuCachePercentage *string `json:"CpuCachePercentage,omitempty" name:"CpuCachePercentage"`
+
+	// cpu cache 使用率
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GpuCachePercentage *string `json:"GpuCachePercentage,omitempty" name:"GpuCachePercentage"`
+
+	// 是否开启分布式模式(true/false)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EnableDistributed *string `json:"EnableDistributed,omitempty" name:"EnableDistributed"`
+
+	// TORCH_SCRIPT、MMDETECTION、DETECTRON2、HUGGINGFACE格式在进行优化时切分子图的最小算子数目，一般无需进行改动，默认为3
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MinBlockSizePt *string `json:"MinBlockSizePt,omitempty" name:"MinBlockSizePt"`
+
+	// FROZEN_GRAPH、SAVED_MODEL格式在进行优化时切分子图的最小算子数目，一般无需进行改动，默认为10
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MinBlockSizeTf *string `json:"MinBlockSizeTf,omitempty" name:"MinBlockSizeTf"`
 }
 
 type ImageInfo struct {
@@ -4607,6 +5123,126 @@ type MetricData struct {
 	Points []*DataPoint `json:"Points,omitempty" name:"Points"`
 }
 
+type ModelAccEngineVersion struct {
+	// 模型格式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ModelFormat *string `json:"ModelFormat,omitempty" name:"ModelFormat"`
+
+	// 引擎版本信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EngineVersions []*EngineVersion `json:"EngineVersions,omitempty" name:"EngineVersions"`
+}
+
+type ModelAccelerateTask struct {
+	// 模型加速任务ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ModelAccTaskId *string `json:"ModelAccTaskId,omitempty" name:"ModelAccTaskId"`
+
+	// 模型加速任务名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ModelAccTaskName *string `json:"ModelAccTaskName,omitempty" name:"ModelAccTaskName"`
+
+	// 模型ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ModelId *string `json:"ModelId,omitempty" name:"ModelId"`
+
+	// 模型名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ModelName *string `json:"ModelName,omitempty" name:"ModelName"`
+
+	// 模型版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ModelVersion *string `json:"ModelVersion,omitempty" name:"ModelVersion"`
+
+	// 模型来源
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ModelSource *string `json:"ModelSource,omitempty" name:"ModelSource"`
+
+	// 优化级别
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OptimizationLevel *string `json:"OptimizationLevel,omitempty" name:"OptimizationLevel"`
+
+	// 任务状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskStatus *string `json:"TaskStatus,omitempty" name:"TaskStatus"`
+
+	// input节点个数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ModelInputNum *uint64 `json:"ModelInputNum,omitempty" name:"ModelInputNum"`
+
+	// input节点信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ModelInputInfos []*ModelInputInfo `json:"ModelInputInfos,omitempty" name:"ModelInputInfos"`
+
+	// GPU型号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GPUType *string `json:"GPUType,omitempty" name:"GPUType"`
+
+	// 计费模式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ChargeType *string `json:"ChargeType,omitempty" name:"ChargeType"`
+
+	// 加速比
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Speedup *string `json:"Speedup,omitempty" name:"Speedup"`
+
+	// 模型输入cos路径
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ModelInputPath *CosPathInfo `json:"ModelInputPath,omitempty" name:"ModelInputPath"`
+
+	// 模型输出cos路径
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ModelOutputPath *CosPathInfo `json:"ModelOutputPath,omitempty" name:"ModelOutputPath"`
+
+	// 错误信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrorMsg *string `json:"ErrorMsg,omitempty" name:"ErrorMsg"`
+
+	// 算法框架
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AlgorithmFramework *string `json:"AlgorithmFramework,omitempty" name:"AlgorithmFramework"`
+
+	// 排队个数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WaitNumber *uint64 `json:"WaitNumber,omitempty" name:"WaitNumber"`
+
+	// 创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 任务进度
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskProgress *uint64 `json:"TaskProgress,omitempty" name:"TaskProgress"`
+
+	// 模型格式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ModelFormat *string `json:"ModelFormat,omitempty" name:"ModelFormat"`
+
+	// 模型Tensor信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TensorInfos []*string `json:"TensorInfos,omitempty" name:"TensorInfos"`
+
+	// 模型专业参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HyperParameter *HyperParameter `json:"HyperParameter,omitempty" name:"HyperParameter"`
+
+	// 加速引擎版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AccEngineVersion *string `json:"AccEngineVersion,omitempty" name:"AccEngineVersion"`
+
+	// 标签
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
+
+	// 优化模型是否已保存到模型仓库
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsSaved *bool `json:"IsSaved,omitempty" name:"IsSaved"`
+
+	// SAVED_MODEL保存时配置的签名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ModelSignature *string `json:"ModelSignature,omitempty" name:"ModelSignature"`
+}
+
 type ModelInfo struct {
 	// 模型版本id, DescribeTrainingModelVersion查询模型接口时的id
 	// 自动学习类型的模型填写自动学习的任务id
@@ -4634,6 +5270,18 @@ type ModelInfo struct {
 	// 默认为 NORMAL, 已加速模型: ACCELERATE, 自动学习模型 AUTO_ML
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ModelType *string `json:"ModelType,omitempty" name:"ModelType"`
+}
+
+type ModelInputInfo struct {
+	// input数据类型
+	// FIXED：固定
+	// RANGE：浮动
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ModelInputType *string `json:"ModelInputType,omitempty" name:"ModelInputType"`
+
+	// input数据尺寸
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ModelInputDimension []*string `json:"ModelInputDimension,omitempty" name:"ModelInputDimension"`
 }
 
 // Predefined struct for user
@@ -4927,6 +5575,186 @@ type ResourceInfo struct {
 	// 创建或更新时无需填写，仅展示需要关注。详细的GPU使用信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RealGpuDetailSet []*GpuDetail `json:"RealGpuDetailSet,omitempty" name:"RealGpuDetailSet"`
+}
+
+// Predefined struct for user
+type RestartModelAccelerateTaskRequestParams struct {
+	// 模型加速任务ID
+	ModelAccTaskId *string `json:"ModelAccTaskId,omitempty" name:"ModelAccTaskId"`
+
+	// 模型加速任务名称
+	ModelAccTaskName *string `json:"ModelAccTaskName,omitempty" name:"ModelAccTaskName"`
+
+	// 模型来源（JOB/COS）
+	ModelSource *string `json:"ModelSource,omitempty" name:"ModelSource"`
+
+	// 算法框架（废弃）
+	AlgorithmFramework *string `json:"AlgorithmFramework,omitempty" name:"AlgorithmFramework"`
+
+	// 模型ID
+	ModelId *string `json:"ModelId,omitempty" name:"ModelId"`
+
+	// 模型名称
+	ModelName *string `json:"ModelName,omitempty" name:"ModelName"`
+
+	// 模型版本
+	ModelVersion *string `json:"ModelVersion,omitempty" name:"ModelVersion"`
+
+	// 模型输入cos路径
+	ModelInputPath *CosPathInfo `json:"ModelInputPath,omitempty" name:"ModelInputPath"`
+
+	// 优化级别（NO_LOSS/FP16），默认FP16
+	OptimizationLevel *string `json:"OptimizationLevel,omitempty" name:"OptimizationLevel"`
+
+	// input节点个数（废弃）
+	ModelInputNum *uint64 `json:"ModelInputNum,omitempty" name:"ModelInputNum"`
+
+	// input节点信息（废弃）
+	ModelInputInfos []*ModelInputInfo `json:"ModelInputInfos,omitempty" name:"ModelInputInfos"`
+
+	// 模型输出cos路径
+	ModelOutputPath *CosPathInfo `json:"ModelOutputPath,omitempty" name:"ModelOutputPath"`
+
+	// 模型格式（TORCH_SCRIPT/DETECTRON2/SAVED_MODEL/FROZEN_GRAPH/MMDETECTION/ONNX/HUGGING_FACE）
+	ModelFormat *string `json:"ModelFormat,omitempty" name:"ModelFormat"`
+
+	// 模型Tensor信息
+	TensorInfos []*string `json:"TensorInfos,omitempty" name:"TensorInfos"`
+
+	// GPU类型（T4/V100），默认T4
+	GPUType *string `json:"GPUType,omitempty" name:"GPUType"`
+
+	// 模型专业参数
+	HyperParameter *HyperParameter `json:"HyperParameter,omitempty" name:"HyperParameter"`
+
+	// 加速引擎版本
+	AccEngineVersion *string `json:"AccEngineVersion,omitempty" name:"AccEngineVersion"`
+
+	// 标签
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
+
+	// SavedModel保存时配置的签名
+	ModelSignature *string `json:"ModelSignature,omitempty" name:"ModelSignature"`
+}
+
+type RestartModelAccelerateTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// 模型加速任务ID
+	ModelAccTaskId *string `json:"ModelAccTaskId,omitempty" name:"ModelAccTaskId"`
+
+	// 模型加速任务名称
+	ModelAccTaskName *string `json:"ModelAccTaskName,omitempty" name:"ModelAccTaskName"`
+
+	// 模型来源（JOB/COS）
+	ModelSource *string `json:"ModelSource,omitempty" name:"ModelSource"`
+
+	// 算法框架（废弃）
+	AlgorithmFramework *string `json:"AlgorithmFramework,omitempty" name:"AlgorithmFramework"`
+
+	// 模型ID
+	ModelId *string `json:"ModelId,omitempty" name:"ModelId"`
+
+	// 模型名称
+	ModelName *string `json:"ModelName,omitempty" name:"ModelName"`
+
+	// 模型版本
+	ModelVersion *string `json:"ModelVersion,omitempty" name:"ModelVersion"`
+
+	// 模型输入cos路径
+	ModelInputPath *CosPathInfo `json:"ModelInputPath,omitempty" name:"ModelInputPath"`
+
+	// 优化级别（NO_LOSS/FP16），默认FP16
+	OptimizationLevel *string `json:"OptimizationLevel,omitempty" name:"OptimizationLevel"`
+
+	// input节点个数（废弃）
+	ModelInputNum *uint64 `json:"ModelInputNum,omitempty" name:"ModelInputNum"`
+
+	// input节点信息（废弃）
+	ModelInputInfos []*ModelInputInfo `json:"ModelInputInfos,omitempty" name:"ModelInputInfos"`
+
+	// 模型输出cos路径
+	ModelOutputPath *CosPathInfo `json:"ModelOutputPath,omitempty" name:"ModelOutputPath"`
+
+	// 模型格式（TORCH_SCRIPT/DETECTRON2/SAVED_MODEL/FROZEN_GRAPH/MMDETECTION/ONNX/HUGGING_FACE）
+	ModelFormat *string `json:"ModelFormat,omitempty" name:"ModelFormat"`
+
+	// 模型Tensor信息
+	TensorInfos []*string `json:"TensorInfos,omitempty" name:"TensorInfos"`
+
+	// GPU类型（T4/V100），默认T4
+	GPUType *string `json:"GPUType,omitempty" name:"GPUType"`
+
+	// 模型专业参数
+	HyperParameter *HyperParameter `json:"HyperParameter,omitempty" name:"HyperParameter"`
+
+	// 加速引擎版本
+	AccEngineVersion *string `json:"AccEngineVersion,omitempty" name:"AccEngineVersion"`
+
+	// 标签
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
+
+	// SavedModel保存时配置的签名
+	ModelSignature *string `json:"ModelSignature,omitempty" name:"ModelSignature"`
+}
+
+func (r *RestartModelAccelerateTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RestartModelAccelerateTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ModelAccTaskId")
+	delete(f, "ModelAccTaskName")
+	delete(f, "ModelSource")
+	delete(f, "AlgorithmFramework")
+	delete(f, "ModelId")
+	delete(f, "ModelName")
+	delete(f, "ModelVersion")
+	delete(f, "ModelInputPath")
+	delete(f, "OptimizationLevel")
+	delete(f, "ModelInputNum")
+	delete(f, "ModelInputInfos")
+	delete(f, "ModelOutputPath")
+	delete(f, "ModelFormat")
+	delete(f, "TensorInfos")
+	delete(f, "GPUType")
+	delete(f, "HyperParameter")
+	delete(f, "AccEngineVersion")
+	delete(f, "Tags")
+	delete(f, "ModelSignature")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RestartModelAccelerateTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RestartModelAccelerateTaskResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type RestartModelAccelerateTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *RestartModelAccelerateTaskResponseParams `json:"Response"`
+}
+
+func (r *RestartModelAccelerateTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RestartModelAccelerateTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type RowItem struct {
@@ -5467,6 +6295,68 @@ func (r *StopBatchTaskResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *StopBatchTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type StopModelAccelerateTaskRequestParams struct {
+	// 模型加速任务ID
+	ModelAccTaskId *string `json:"ModelAccTaskId,omitempty" name:"ModelAccTaskId"`
+}
+
+type StopModelAccelerateTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// 模型加速任务ID
+	ModelAccTaskId *string `json:"ModelAccTaskId,omitempty" name:"ModelAccTaskId"`
+}
+
+func (r *StopModelAccelerateTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *StopModelAccelerateTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ModelAccTaskId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StopModelAccelerateTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type StopModelAccelerateTaskResponseParams struct {
+	// 模型加速任务ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ModelAccTaskId *string `json:"ModelAccTaskId,omitempty" name:"ModelAccTaskId"`
+
+	// 异步任务ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AsyncTaskId *string `json:"AsyncTaskId,omitempty" name:"AsyncTaskId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type StopModelAccelerateTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *StopModelAccelerateTaskResponseParams `json:"Response"`
+}
+
+func (r *StopModelAccelerateTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *StopModelAccelerateTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

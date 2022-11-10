@@ -45,6 +45,76 @@ func NewClient(credential common.CredentialIface, region string, clientProfile *
 }
 
 
+func NewCreateBatchModelAccTasksRequest() (request *CreateBatchModelAccTasksRequest) {
+    request = &CreateBatchModelAccTasksRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tione", APIVersion, "CreateBatchModelAccTasks")
+    
+    
+    return
+}
+
+func NewCreateBatchModelAccTasksResponse() (response *CreateBatchModelAccTasksResponse) {
+    response = &CreateBatchModelAccTasksResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateBatchModelAccTasks
+// 批量创建模型加速任务
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_CAMEXCEPTION = "AuthFailure.CamException"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_EXECDATABASEFAIL = "FailedOperation.ExecDatabaseFail"
+//  FAILEDOPERATION_EXECTAGFAIL = "FailedOperation.ExecTagFail"
+//  FAILEDOPERATION_QUERYDATABASEFAIL = "FailedOperation.QueryDatabaseFail"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateBatchModelAccTasks(request *CreateBatchModelAccTasksRequest) (response *CreateBatchModelAccTasksResponse, err error) {
+    return c.CreateBatchModelAccTasksWithContext(context.Background(), request)
+}
+
+// CreateBatchModelAccTasks
+// 批量创建模型加速任务
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_CAMEXCEPTION = "AuthFailure.CamException"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_EXECDATABASEFAIL = "FailedOperation.ExecDatabaseFail"
+//  FAILEDOPERATION_EXECTAGFAIL = "FailedOperation.ExecTagFail"
+//  FAILEDOPERATION_QUERYDATABASEFAIL = "FailedOperation.QueryDatabaseFail"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateBatchModelAccTasksWithContext(ctx context.Context, request *CreateBatchModelAccTasksRequest) (response *CreateBatchModelAccTasksResponse, err error) {
+    if request == nil {
+        request = NewCreateBatchModelAccTasksRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateBatchModelAccTasks require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateBatchModelAccTasksResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateBatchTaskRequest() (request *CreateBatchTaskRequest) {
     request = &CreateBatchTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -303,6 +373,70 @@ func (c *Client) CreateModelServiceWithContext(ctx context.Context, request *Cre
     request.SetContext(ctx)
     
     response = NewCreateModelServiceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateOptimizedModelRequest() (request *CreateOptimizedModelRequest) {
+    request = &CreateOptimizedModelRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tione", APIVersion, "CreateOptimizedModel")
+    
+    
+    return
+}
+
+func NewCreateOptimizedModelResponse() (response *CreateOptimizedModelResponse) {
+    response = &CreateOptimizedModelResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateOptimizedModel
+// 保存优化模型
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_CAMEXCEPTION = "AuthFailure.CamException"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_EXECDATABASEFAIL = "FailedOperation.ExecDatabaseFail"
+//  FAILEDOPERATION_QUERYDATABASEFAIL = "FailedOperation.QueryDatabaseFail"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) CreateOptimizedModel(request *CreateOptimizedModelRequest) (response *CreateOptimizedModelResponse, err error) {
+    return c.CreateOptimizedModelWithContext(context.Background(), request)
+}
+
+// CreateOptimizedModel
+// 保存优化模型
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_CAMEXCEPTION = "AuthFailure.CamException"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_EXECDATABASEFAIL = "FailedOperation.ExecDatabaseFail"
+//  FAILEDOPERATION_QUERYDATABASEFAIL = "FailedOperation.QueryDatabaseFail"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) CreateOptimizedModelWithContext(ctx context.Context, request *CreateOptimizedModelRequest) (response *CreateOptimizedModelResponse, err error) {
+    if request == nil {
+        request = NewCreateOptimizedModelRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateOptimizedModel require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateOptimizedModelResponse()
     err = c.Send(request, response)
     return
 }
@@ -621,6 +755,66 @@ func (c *Client) DeleteDatasetWithContext(ctx context.Context, request *DeleteDa
     request.SetContext(ctx)
     
     response = NewDeleteDatasetResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteModelAccelerateTaskRequest() (request *DeleteModelAccelerateTaskRequest) {
+    request = &DeleteModelAccelerateTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tione", APIVersion, "DeleteModelAccelerateTask")
+    
+    
+    return
+}
+
+func NewDeleteModelAccelerateTaskResponse() (response *DeleteModelAccelerateTaskResponse) {
+    response = &DeleteModelAccelerateTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteModelAccelerateTask
+// 删除模型加速任务
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_CAMEXCEPTION = "AuthFailure.CamException"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_EXECDATABASEFAIL = "FailedOperation.ExecDatabaseFail"
+//  FAILEDOPERATION_QUERYDATABASEFAIL = "FailedOperation.QueryDatabaseFail"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DeleteModelAccelerateTask(request *DeleteModelAccelerateTaskRequest) (response *DeleteModelAccelerateTaskResponse, err error) {
+    return c.DeleteModelAccelerateTaskWithContext(context.Background(), request)
+}
+
+// DeleteModelAccelerateTask
+// 删除模型加速任务
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_CAMEXCEPTION = "AuthFailure.CamException"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_EXECDATABASEFAIL = "FailedOperation.ExecDatabaseFail"
+//  FAILEDOPERATION_QUERYDATABASEFAIL = "FailedOperation.QueryDatabaseFail"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DeleteModelAccelerateTaskWithContext(ctx context.Context, request *DeleteModelAccelerateTaskRequest) (response *DeleteModelAccelerateTaskResponse, err error) {
+    if request == nil {
+        request = NewDeleteModelAccelerateTaskRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteModelAccelerateTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteModelAccelerateTaskResponse()
     err = c.Send(request, response)
     return
 }
@@ -1969,6 +2163,188 @@ func (c *Client) DescribeLogsWithContext(ctx context.Context, request *DescribeL
     return
 }
 
+func NewDescribeModelAccEngineVersionsRequest() (request *DescribeModelAccEngineVersionsRequest) {
+    request = &DescribeModelAccEngineVersionsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tione", APIVersion, "DescribeModelAccEngineVersions")
+    
+    
+    return
+}
+
+func NewDescribeModelAccEngineVersionsResponse() (response *DescribeModelAccEngineVersionsResponse) {
+    response = &DescribeModelAccEngineVersionsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeModelAccEngineVersions
+// 查询模型加速引擎版本列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_CAMEXCEPTION = "AuthFailure.CamException"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_EXECDATABASEFAIL = "FailedOperation.ExecDatabaseFail"
+//  FAILEDOPERATION_QUERYDATABASEFAIL = "FailedOperation.QueryDatabaseFail"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_TGWINVALIDINTERFACE = "InvalidParameter.TgwInvalidInterface"
+//  INVALIDPARAMETER_TGWINVALIDREQUESTBODY = "InvalidParameter.TgwInvalidRequestBody"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeModelAccEngineVersions(request *DescribeModelAccEngineVersionsRequest) (response *DescribeModelAccEngineVersionsResponse, err error) {
+    return c.DescribeModelAccEngineVersionsWithContext(context.Background(), request)
+}
+
+// DescribeModelAccEngineVersions
+// 查询模型加速引擎版本列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_CAMEXCEPTION = "AuthFailure.CamException"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_EXECDATABASEFAIL = "FailedOperation.ExecDatabaseFail"
+//  FAILEDOPERATION_QUERYDATABASEFAIL = "FailedOperation.QueryDatabaseFail"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_TGWINVALIDINTERFACE = "InvalidParameter.TgwInvalidInterface"
+//  INVALIDPARAMETER_TGWINVALIDREQUESTBODY = "InvalidParameter.TgwInvalidRequestBody"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeModelAccEngineVersionsWithContext(ctx context.Context, request *DescribeModelAccEngineVersionsRequest) (response *DescribeModelAccEngineVersionsResponse, err error) {
+    if request == nil {
+        request = NewDescribeModelAccEngineVersionsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeModelAccEngineVersions require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeModelAccEngineVersionsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeModelAccelerateTaskRequest() (request *DescribeModelAccelerateTaskRequest) {
+    request = &DescribeModelAccelerateTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tione", APIVersion, "DescribeModelAccelerateTask")
+    
+    
+    return
+}
+
+func NewDescribeModelAccelerateTaskResponse() (response *DescribeModelAccelerateTaskResponse) {
+    response = &DescribeModelAccelerateTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeModelAccelerateTask
+// 查询模型优化任务详情
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_CAMEXCEPTION = "AuthFailure.CamException"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_EXECDATABASEFAIL = "FailedOperation.ExecDatabaseFail"
+//  FAILEDOPERATION_QUERYDATABASEFAIL = "FailedOperation.QueryDatabaseFail"
+//  FAILEDOPERATION_RECORDNOTFOUND = "FailedOperation.RecordNotFound"
+//  FAILEDOPERATION_UNMARSHALDATA = "FailedOperation.UnmarshalData"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeModelAccelerateTask(request *DescribeModelAccelerateTaskRequest) (response *DescribeModelAccelerateTaskResponse, err error) {
+    return c.DescribeModelAccelerateTaskWithContext(context.Background(), request)
+}
+
+// DescribeModelAccelerateTask
+// 查询模型优化任务详情
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_CAMEXCEPTION = "AuthFailure.CamException"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_EXECDATABASEFAIL = "FailedOperation.ExecDatabaseFail"
+//  FAILEDOPERATION_QUERYDATABASEFAIL = "FailedOperation.QueryDatabaseFail"
+//  FAILEDOPERATION_RECORDNOTFOUND = "FailedOperation.RecordNotFound"
+//  FAILEDOPERATION_UNMARSHALDATA = "FailedOperation.UnmarshalData"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeModelAccelerateTaskWithContext(ctx context.Context, request *DescribeModelAccelerateTaskRequest) (response *DescribeModelAccelerateTaskResponse, err error) {
+    if request == nil {
+        request = NewDescribeModelAccelerateTaskRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeModelAccelerateTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeModelAccelerateTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeModelAccelerateTasksRequest() (request *DescribeModelAccelerateTasksRequest) {
+    request = &DescribeModelAccelerateTasksRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tione", APIVersion, "DescribeModelAccelerateTasks")
+    
+    
+    return
+}
+
+func NewDescribeModelAccelerateTasksResponse() (response *DescribeModelAccelerateTasksResponse) {
+    response = &DescribeModelAccelerateTasksResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeModelAccelerateTasks
+// 查询模型加速任务列表
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeModelAccelerateTasks(request *DescribeModelAccelerateTasksRequest) (response *DescribeModelAccelerateTasksResponse, err error) {
+    return c.DescribeModelAccelerateTasksWithContext(context.Background(), request)
+}
+
+// DescribeModelAccelerateTasks
+// 查询模型加速任务列表
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeModelAccelerateTasksWithContext(ctx context.Context, request *DescribeModelAccelerateTasksRequest) (response *DescribeModelAccelerateTasksResponse, err error) {
+    if request == nil {
+        request = NewDescribeModelAccelerateTasksRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeModelAccelerateTasks require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeModelAccelerateTasksResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeModelServiceRequest() (request *DescribeModelServiceRequest) {
     request = &DescribeModelServiceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3243,6 +3619,66 @@ func (c *Client) PushTrainingMetricsWithContext(ctx context.Context, request *Pu
     return
 }
 
+func NewRestartModelAccelerateTaskRequest() (request *RestartModelAccelerateTaskRequest) {
+    request = &RestartModelAccelerateTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tione", APIVersion, "RestartModelAccelerateTask")
+    
+    
+    return
+}
+
+func NewRestartModelAccelerateTaskResponse() (response *RestartModelAccelerateTaskResponse) {
+    response = &RestartModelAccelerateTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// RestartModelAccelerateTask
+// 重启模型加速任务
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_CAMEXCEPTION = "AuthFailure.CamException"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_EXECDATABASEFAIL = "FailedOperation.ExecDatabaseFail"
+//  FAILEDOPERATION_QUERYDATABASEFAIL = "FailedOperation.QueryDatabaseFail"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) RestartModelAccelerateTask(request *RestartModelAccelerateTaskRequest) (response *RestartModelAccelerateTaskResponse, err error) {
+    return c.RestartModelAccelerateTaskWithContext(context.Background(), request)
+}
+
+// RestartModelAccelerateTask
+// 重启模型加速任务
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_CAMEXCEPTION = "AuthFailure.CamException"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_EXECDATABASEFAIL = "FailedOperation.ExecDatabaseFail"
+//  FAILEDOPERATION_QUERYDATABASEFAIL = "FailedOperation.QueryDatabaseFail"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) RestartModelAccelerateTaskWithContext(ctx context.Context, request *RestartModelAccelerateTaskRequest) (response *RestartModelAccelerateTaskResponse, err error) {
+    if request == nil {
+        request = NewRestartModelAccelerateTaskRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RestartModelAccelerateTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewRestartModelAccelerateTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewStartTrainingTaskRequest() (request *StartTrainingTaskRequest) {
     request = &StartTrainingTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3371,6 +3807,66 @@ func (c *Client) StopBatchTaskWithContext(ctx context.Context, request *StopBatc
     request.SetContext(ctx)
     
     response = NewStopBatchTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewStopModelAccelerateTaskRequest() (request *StopModelAccelerateTaskRequest) {
+    request = &StopModelAccelerateTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tione", APIVersion, "StopModelAccelerateTask")
+    
+    
+    return
+}
+
+func NewStopModelAccelerateTaskResponse() (response *StopModelAccelerateTaskResponse) {
+    response = &StopModelAccelerateTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// StopModelAccelerateTask
+// 停止模型加速任务
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_CAMEXCEPTION = "AuthFailure.CamException"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_EXECDATABASEFAIL = "FailedOperation.ExecDatabaseFail"
+//  FAILEDOPERATION_QUERYDATABASEFAIL = "FailedOperation.QueryDatabaseFail"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) StopModelAccelerateTask(request *StopModelAccelerateTaskRequest) (response *StopModelAccelerateTaskResponse, err error) {
+    return c.StopModelAccelerateTaskWithContext(context.Background(), request)
+}
+
+// StopModelAccelerateTask
+// 停止模型加速任务
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_CAMEXCEPTION = "AuthFailure.CamException"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_EXECDATABASEFAIL = "FailedOperation.ExecDatabaseFail"
+//  FAILEDOPERATION_QUERYDATABASEFAIL = "FailedOperation.QueryDatabaseFail"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) StopModelAccelerateTaskWithContext(ctx context.Context, request *StopModelAccelerateTaskRequest) (response *StopModelAccelerateTaskResponse, err error) {
+    if request == nil {
+        request = NewStopModelAccelerateTaskRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("StopModelAccelerateTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewStopModelAccelerateTaskResponse()
     err = c.Send(request, response)
     return
 }

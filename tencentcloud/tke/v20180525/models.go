@@ -908,7 +908,7 @@ type ClusterAsGroupOption struct {
 }
 
 type ClusterBasicSettings struct {
-	// 集群操作系统，支持设置公共镜像(字段传相应镜像ID)和自定义镜像(字段传相应镜像Name)，详情参考：https://cloud.tencent.com/document/product/457/68289
+	// 集群操作系统，支持设置公共镜像(字段传相应镜像Name)和自定义镜像(字段传相应镜像ID)，详情参考：https://cloud.tencent.com/document/product/457/68289
 	ClusterOs *string `json:"ClusterOs,omitempty" name:"ClusterOs"`
 
 	// 集群版本,默认值为1.10.5

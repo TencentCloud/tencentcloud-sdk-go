@@ -1,3 +1,41 @@
+# Release v1.0.534
+
+## 腾讯云 TI 平台 TI-ONE(tione) 版本：2021-11-11
+
+### 第 8 次发布
+
+发布时间：2022-11-10 06:57:12
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateBatchModelAccTasks](https://cloud.tencent.com/document/api/851/82610)
+* [CreateOptimizedModel](https://cloud.tencent.com/document/api/851/82609)
+* [DeleteModelAccelerateTask](https://cloud.tencent.com/document/api/851/82608)
+* [DescribeModelAccEngineVersions](https://cloud.tencent.com/document/api/851/82607)
+* [DescribeModelAccelerateTask](https://cloud.tencent.com/document/api/851/82606)
+* [DescribeModelAccelerateTasks](https://cloud.tencent.com/document/api/851/82605)
+* [RestartModelAccelerateTask](https://cloud.tencent.com/document/api/851/82604)
+* [StopModelAccelerateTask](https://cloud.tencent.com/document/api/851/82603)
+
+新增数据结构：
+
+* [BatchModelAccTask](https://cloud.tencent.com/document/api/851/75051#BatchModelAccTask)
+* [EngineVersion](https://cloud.tencent.com/document/api/851/75051#EngineVersion)
+* [HyperParameter](https://cloud.tencent.com/document/api/851/75051#HyperParameter)
+* [ModelAccEngineVersion](https://cloud.tencent.com/document/api/851/75051#ModelAccEngineVersion)
+* [ModelAccelerateTask](https://cloud.tencent.com/document/api/851/75051#ModelAccelerateTask)
+* [ModelInputInfo](https://cloud.tencent.com/document/api/851/75051#ModelInputInfo)
+
+
+
+## 腾讯云 TI 平台 TI-ONE(tione) 版本：2019-10-22
+
+
+
 # Release v1.0.533
 
 ## T-Sec-DDoS防护(Anti-DDoS)(antiddos) 版本：2020-03-09
