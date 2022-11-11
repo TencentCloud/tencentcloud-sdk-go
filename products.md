@@ -44,7 +44,7 @@
 | cdn | [内容分发网络 CDN](https://cloud.tencent.com/document/product/228) | 2022-10-31 06:15:07 |
 | cds | [T-Sec-数据安全审计（DSA）](https://cloud.tencent.com/document/product/856) | 2022-10-31 06:15:53 |
 | cfg | [混沌演练平台](https://cloud.tencent.com/document/product/1500) | 2022-09-26 06:16:02 |
-| cfs | [文件存储](https://cloud.tencent.com/document/product/582) | 2022-11-08 06:14:00 |
+| cfs | [文件存储](https://cloud.tencent.com/document/product/582) | 2022-11-11 06:15:57 |
 | cfw | [云防火墙](https://cloud.tencent.com/document/product/1132) | 2022-10-25 06:18:27 |
 | chdfs | [云 HDFS](https://cloud.tencent.com/document/product/1105) | 2022-07-04 06:04:36 |
 | ciam | [账号风控平台](https://cloud.tencent.com/document/product/1441) | 2022-09-27 06:14:52 |
@@ -91,7 +91,7 @@
 | ess | [腾讯电子签企业版](https://cloud.tencent.com/document/product/1323) | 2022-11-08 06:25:11 |
 | essbasic | [腾讯电子签（基础版）](https://cloud.tencent.com/document/product/1420) | 2022-11-08 06:25:25 |
 | facefusion | [人脸融合](https://cloud.tencent.com/document/product/670) | 2022-06-15 06:09:10 |
-| faceid | [人脸核身](https://cloud.tencent.com/document/product/1007) | 2022-10-17 06:26:28 |
+| faceid | [人脸核身](https://cloud.tencent.com/document/product/1007) | 2022-11-11 06:30:28 |
 | fmu | [人脸试妆](https://cloud.tencent.com/document/product/1172) | 2022-04-04 06:43:06 |
 | ft | [人像变换](https://cloud.tencent.com/document/product/1202) | 2022-04-04 06:43:12 |
 | gaap | [全球应用加速](https://cloud.tencent.com/document/product/608) | 2022-10-13 06:28:02 |
@@ -195,7 +195,7 @@
 | tiia | [图像分析](https://cloud.tencent.com/document/product/865) | 2022-11-09 06:57:46 |
 | tione | [腾讯云 TI 平台 TI-ONE](https://cloud.tencent.com/document/product/851) | 2022-11-10 06:57:12 |
 | tiw | [互动白板](https://cloud.tencent.com/document/product/1137) | 2022-05-17 06:17:19 |
-| tke | [容器服务](https://cloud.tencent.com/document/product/457) | 2022-11-10 06:58:09 |
+| tke | [容器服务](https://cloud.tencent.com/document/product/457) | 2022-11-11 06:58:11 |
 | tkgdq | [腾讯知识图谱数据查询](https://cloud.tencent.com/document/product) | 2020-03-10 00:51:44 |
 | tms | [文本内容安全](https://cloud.tencent.com/document/product/1124) | 2022-04-04 07:18:11 |
 | tmt | [机器翻译](https://cloud.tencent.com/document/product/551) | 2022-11-02 06:48:15 |

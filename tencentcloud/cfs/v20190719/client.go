@@ -969,6 +969,54 @@ func (c *Client) DeleteMountTargetWithContext(ctx context.Context, request *Dele
     return
 }
 
+func NewDeleteUserQuotaRequest() (request *DeleteUserQuotaRequest) {
+    request = &DeleteUserQuotaRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfs", APIVersion, "DeleteUserQuota")
+    
+    
+    return
+}
+
+func NewDeleteUserQuotaResponse() (response *DeleteUserQuotaResponse) {
+    response = &DeleteUserQuotaResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteUserQuota
+// 指定条件删除文件系统配额
+//
+// 可能返回的错误码:
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteUserQuota(request *DeleteUserQuotaRequest) (response *DeleteUserQuotaResponse, err error) {
+    return c.DeleteUserQuotaWithContext(context.Background(), request)
+}
+
+// DeleteUserQuota
+// 指定条件删除文件系统配额
+//
+// 可能返回的错误码:
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteUserQuotaWithContext(ctx context.Context, request *DeleteUserQuotaRequest) (response *DeleteUserQuotaResponse, err error) {
+    if request == nil {
+        request = NewDeleteUserQuotaRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteUserQuota require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteUserQuotaResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAutoSnapshotPoliciesRequest() (request *DescribeAutoSnapshotPoliciesRequest) {
     request = &DescribeAutoSnapshotPoliciesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1623,6 +1671,114 @@ func (c *Client) DescribeSnapshotOperationLogsWithContext(ctx context.Context, r
     request.SetContext(ctx)
     
     response = NewDescribeSnapshotOperationLogsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeUserQuotaRequest() (request *DescribeUserQuotaRequest) {
+    request = &DescribeUserQuotaRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfs", APIVersion, "DescribeUserQuota")
+    
+    
+    return
+}
+
+func NewDescribeUserQuotaResponse() (response *DescribeUserQuotaResponse) {
+    response = &DescribeUserQuotaResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeUserQuota
+// 查询文件系统配额
+//
+// 可能返回的错误码:
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeUserQuota(request *DescribeUserQuotaRequest) (response *DescribeUserQuotaResponse, err error) {
+    return c.DescribeUserQuotaWithContext(context.Background(), request)
+}
+
+// DescribeUserQuota
+// 查询文件系统配额
+//
+// 可能返回的错误码:
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeUserQuotaWithContext(ctx context.Context, request *DescribeUserQuotaRequest) (response *DescribeUserQuotaResponse, err error) {
+    if request == nil {
+        request = NewDescribeUserQuotaRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeUserQuota require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeUserQuotaResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSetUserQuotaRequest() (request *SetUserQuotaRequest) {
+    request = &SetUserQuotaRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfs", APIVersion, "SetUserQuota")
+    
+    
+    return
+}
+
+func NewSetUserQuotaResponse() (response *SetUserQuotaResponse) {
+    response = &SetUserQuotaResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// SetUserQuota
+// 设置文件系统配额，提供UID/GID的配额设置的接口
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_QUOTACAPLIMITERROR = "InvalidParameterValue.QuotaCapLimitError"
+//  INVALIDPARAMETERVALUE_QUOTAFILELIMITERROR = "InvalidParameterValue.QuotaFileLimitError"
+//  INVALIDPARAMETERVALUE_QUOTAUSERIDERROR = "InvalidParameterValue.QuotaUserIdError"
+//  INVALIDPARAMETERVALUE_QUOTAUSERTYPEERROR = "InvalidParameterValue.QuotaUserTypeError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) SetUserQuota(request *SetUserQuotaRequest) (response *SetUserQuotaResponse, err error) {
+    return c.SetUserQuotaWithContext(context.Background(), request)
+}
+
+// SetUserQuota
+// 设置文件系统配额，提供UID/GID的配额设置的接口
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_QUOTACAPLIMITERROR = "InvalidParameterValue.QuotaCapLimitError"
+//  INVALIDPARAMETERVALUE_QUOTAFILELIMITERROR = "InvalidParameterValue.QuotaFileLimitError"
+//  INVALIDPARAMETERVALUE_QUOTAUSERIDERROR = "InvalidParameterValue.QuotaUserIdError"
+//  INVALIDPARAMETERVALUE_QUOTAUSERTYPEERROR = "InvalidParameterValue.QuotaUserTypeError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) SetUserQuotaWithContext(ctx context.Context, request *SetUserQuotaRequest) (response *SetUserQuotaResponse, err error) {
+    if request == nil {
+        request = NewSetUserQuotaRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SetUserQuota require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewSetUserQuotaResponse()
     err = c.Send(request, response)
     return
 }

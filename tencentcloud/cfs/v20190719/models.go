@@ -1029,6 +1029,74 @@ func (r *DeleteMountTargetResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DeleteUserQuotaRequestParams struct {
+	// 文件系统 ID
+	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
+
+	// 指定配额类型，包括Uid、Gid
+	UserType *string `json:"UserType,omitempty" name:"UserType"`
+
+	// UID/GID信息
+	UserId *string `json:"UserId,omitempty" name:"UserId"`
+}
+
+type DeleteUserQuotaRequest struct {
+	*tchttp.BaseRequest
+	
+	// 文件系统 ID
+	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
+
+	// 指定配额类型，包括Uid、Gid
+	UserType *string `json:"UserType,omitempty" name:"UserType"`
+
+	// UID/GID信息
+	UserId *string `json:"UserId,omitempty" name:"UserId"`
+}
+
+func (r *DeleteUserQuotaRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteUserQuotaRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FileSystemId")
+	delete(f, "UserType")
+	delete(f, "UserId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteUserQuotaRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteUserQuotaResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DeleteUserQuotaResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteUserQuotaResponseParams `json:"Response"`
+}
+
+func (r *DeleteUserQuotaResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteUserQuotaResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeAutoSnapshotPoliciesRequestParams struct {
 	// 快照策略ID
 	AutoSnapshotPolicyId *string `json:"AutoSnapshotPolicyId,omitempty" name:"AutoSnapshotPolicyId"`
@@ -1766,6 +1834,91 @@ func (r *DescribeSnapshotOperationLogsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeUserQuotaRequestParams struct {
+	// 文件系统 ID
+	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
+
+	// 过滤条件。
+	// <br><li>UserType - Array of String - 是否必填：否 -（过滤条件）按配额类型过滤。(Uid| Gid )
+	// <br><li>UserId - Array of String - 是否必填：否 -（过滤条件）按UID/GID过滤。
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// Offset 分页码
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// Limit 页面大小
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+type DescribeUserQuotaRequest struct {
+	*tchttp.BaseRequest
+	
+	// 文件系统 ID
+	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
+
+	// 过滤条件。
+	// <br><li>UserType - Array of String - 是否必填：否 -（过滤条件）按配额类型过滤。(Uid| Gid )
+	// <br><li>UserId - Array of String - 是否必填：否 -（过滤条件）按UID/GID过滤。
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// Offset 分页码
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// Limit 页面大小
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribeUserQuotaRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeUserQuotaRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FileSystemId")
+	delete(f, "Filters")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeUserQuotaRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeUserQuotaResponseParams struct {
+	// UserQuota条目总数
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// UserQuota条目
+	UserQuotaInfo []*UserQuota `json:"UserQuotaInfo,omitempty" name:"UserQuotaInfo"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeUserQuotaResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeUserQuotaResponseParams `json:"Response"`
+}
+
+func (r *DescribeUserQuotaResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeUserQuotaResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type FileSystemByPolicy struct {
 	// 文件系统名称
 	CreationToken *string `json:"CreationToken,omitempty" name:"CreationToken"`
@@ -1957,6 +2110,88 @@ type PGroupRuleInfo struct {
 
 	// 规则优先级，1-100。 其中 1 为最高，100为最低
 	Priority *int64 `json:"Priority,omitempty" name:"Priority"`
+}
+
+// Predefined struct for user
+type SetUserQuotaRequestParams struct {
+	// 文件系统 ID
+	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
+
+	// 指定配额类型，包括Uid、Gid
+	UserType *string `json:"UserType,omitempty" name:"UserType"`
+
+	// UID/GID信息
+	UserId *string `json:"UserId,omitempty" name:"UserId"`
+
+	// 容量硬限制，单位GiB
+	CapacityHardLimit *uint64 `json:"CapacityHardLimit,omitempty" name:"CapacityHardLimit"`
+
+	// 文件硬限制，单位个
+	FileHardLimit *uint64 `json:"FileHardLimit,omitempty" name:"FileHardLimit"`
+}
+
+type SetUserQuotaRequest struct {
+	*tchttp.BaseRequest
+	
+	// 文件系统 ID
+	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
+
+	// 指定配额类型，包括Uid、Gid
+	UserType *string `json:"UserType,omitempty" name:"UserType"`
+
+	// UID/GID信息
+	UserId *string `json:"UserId,omitempty" name:"UserId"`
+
+	// 容量硬限制，单位GiB
+	CapacityHardLimit *uint64 `json:"CapacityHardLimit,omitempty" name:"CapacityHardLimit"`
+
+	// 文件硬限制，单位个
+	FileHardLimit *uint64 `json:"FileHardLimit,omitempty" name:"FileHardLimit"`
+}
+
+func (r *SetUserQuotaRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SetUserQuotaRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FileSystemId")
+	delete(f, "UserType")
+	delete(f, "UserId")
+	delete(f, "CapacityHardLimit")
+	delete(f, "FileHardLimit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SetUserQuotaRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SetUserQuotaResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type SetUserQuotaResponse struct {
+	*tchttp.BaseResponse
+	Response *SetUserQuotaResponseParams `json:"Response"`
+}
+
+func (r *SetUserQuotaResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SetUserQuotaResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user
@@ -2697,4 +2932,21 @@ func (r *UpdateCfsSnapshotAttributeResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *UpdateCfsSnapshotAttributeResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type UserQuota struct {
+	// 指定配额类型，包括Uid、Gid
+	UserType *string `json:"UserType,omitempty" name:"UserType"`
+
+	// UID/GID信息
+	UserId *string `json:"UserId,omitempty" name:"UserId"`
+
+	// 容量硬限制，单位GiB
+	CapacityHardLimit *uint64 `json:"CapacityHardLimit,omitempty" name:"CapacityHardLimit"`
+
+	// 文件硬限制，单位个
+	FileHardLimit *uint64 `json:"FileHardLimit,omitempty" name:"FileHardLimit"`
+
+	// 文件系统ID
+	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
 }

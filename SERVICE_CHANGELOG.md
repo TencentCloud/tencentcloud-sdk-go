@@ -1,10 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 腾讯云 TI 平台 TI-ONE(tione) 版本：2021-11-11
+## 文件存储(cfs) 版本：2019-07-19
 
-### 第 8 次发布
+### 第 12 次发布
 
-发布时间：2022-11-10 06:57:12
+发布时间：2022-11-11 06:15:57
 
 本次发布包含了以下内容：
 
@@ -12,27 +12,45 @@
 
 新增接口：
 
-* [CreateBatchModelAccTasks](https://cloud.tencent.com/document/api/851/82610)
-* [CreateOptimizedModel](https://cloud.tencent.com/document/api/851/82609)
-* [DeleteModelAccelerateTask](https://cloud.tencent.com/document/api/851/82608)
-* [DescribeModelAccEngineVersions](https://cloud.tencent.com/document/api/851/82607)
-* [DescribeModelAccelerateTask](https://cloud.tencent.com/document/api/851/82606)
-* [DescribeModelAccelerateTasks](https://cloud.tencent.com/document/api/851/82605)
-* [RestartModelAccelerateTask](https://cloud.tencent.com/document/api/851/82604)
-* [StopModelAccelerateTask](https://cloud.tencent.com/document/api/851/82603)
+* [DeleteUserQuota](https://cloud.tencent.com/document/api/582/82655)
+* [DescribeUserQuota](https://cloud.tencent.com/document/api/582/82654)
+* [SetUserQuota](https://cloud.tencent.com/document/api/582/82653)
 
 新增数据结构：
 
-* [BatchModelAccTask](https://cloud.tencent.com/document/api/851/75051#BatchModelAccTask)
-* [EngineVersion](https://cloud.tencent.com/document/api/851/75051#EngineVersion)
-* [HyperParameter](https://cloud.tencent.com/document/api/851/75051#HyperParameter)
-* [ModelAccEngineVersion](https://cloud.tencent.com/document/api/851/75051#ModelAccEngineVersion)
-* [ModelAccelerateTask](https://cloud.tencent.com/document/api/851/75051#ModelAccelerateTask)
-* [ModelInputInfo](https://cloud.tencent.com/document/api/851/75051#ModelInputInfo)
+* [UserQuota](https://cloud.tencent.com/document/api/582/38175#UserQuota)
 
 
 
-## 腾讯云 TI 平台 TI-ONE(tione) 版本：2019-10-22
+## 人脸核身(faceid) 版本：2018-03-01
+
+### 第 49 次发布
+
+发布时间：2022-11-11 06:30:28
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除接口**：</font>
+
+* ApplyLivenessToken
+* ApplySdkVerificationToken
+* ApplyWebVerificationToken
+* CreateUploadUrl
+* DetectReflectLivenessAndCompare
+* GenerateReflectSequence
+* GetLivenessResult
+* GetSdkVerificationResult
+* GetWebVerificationResult
+* VideoLivenessCompare
+
+<font color="#dd0000">**删除数据结构**：</font>
+
+* CardVerifyResult
+* CompareResult
+* FileInfo
+* VerificationDetail
 
 
 
@@ -16838,6 +16856,24 @@
 
 
 ## 文件存储(cfs) 版本：2019-07-19
+
+### 第 12 次发布
+
+发布时间：2022-11-11 06:15:57
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DeleteUserQuota](https://cloud.tencent.com/document/api/582/82655)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeUserQuota](https://cloud.tencent.com/document/api/582/82654)](https://cloud.tencent.com/document/api/#/#)
+* [[SetUserQuota](https://cloud.tencent.com/document/api/582/82653)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[UserQuota](https://cloud.tencent.com/document/api/582/38175#UserQuota)](https://cloud.tencent.com/document/api/582/38175#[UserQuota](https://cloud.tencent.com/document/api/582/38175#UserQuota))
 
 ### 第 11 次发布
 
@@ -41414,6 +41450,34 @@
 
 
 ## 人脸核身(faceid) 版本：2018-03-01
+
+### 第 49 次发布
+
+发布时间：2022-11-11 06:30:28
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除接口**：</font>
+
+* ApplyLivenessToken
+* ApplySdkVerificationToken
+* ApplyWebVerificationToken
+* CreateUploadUrl
+* DetectReflectLivenessAndCompare
+* GenerateReflectSequence
+* GetLivenessResult
+* GetSdkVerificationResult
+* GetWebVerificationResult
+* VideoLivenessCompare
+
+<font color="#dd0000">**删除数据结构**：</font>
+
+* CardVerifyResult
+* CompareResult
+* FileInfo
+* VerificationDetail
 
 ### 第 48 次发布
 
@@ -81501,23 +81565,23 @@
 
 新增接口：
 
-* [[CreateBatchModelAccTasks](https://cloud.tencent.com/document/api/851/82610)](https://cloud.tencent.com/document/api/#/#)
-* [[CreateOptimizedModel](https://cloud.tencent.com/document/api/851/82609)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteModelAccelerateTask](https://cloud.tencent.com/document/api/851/82608)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeModelAccEngineVersions](https://cloud.tencent.com/document/api/851/82607)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeModelAccelerateTask](https://cloud.tencent.com/document/api/851/82606)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeModelAccelerateTasks](https://cloud.tencent.com/document/api/851/82605)](https://cloud.tencent.com/document/api/#/#)
-* [[RestartModelAccelerateTask](https://cloud.tencent.com/document/api/851/82604)](https://cloud.tencent.com/document/api/#/#)
-* [[StopModelAccelerateTask](https://cloud.tencent.com/document/api/851/82603)](https://cloud.tencent.com/document/api/#/#)
+* [CreateBatchModelAccTasks](https://cloud.tencent.com/document/api/851/82610)
+* [CreateOptimizedModel](https://cloud.tencent.com/document/api/851/82609)
+* [DeleteModelAccelerateTask](https://cloud.tencent.com/document/api/851/82608)
+* [DescribeModelAccEngineVersions](https://cloud.tencent.com/document/api/851/82607)
+* [DescribeModelAccelerateTask](https://cloud.tencent.com/document/api/851/82606)
+* [DescribeModelAccelerateTasks](https://cloud.tencent.com/document/api/851/82605)
+* [RestartModelAccelerateTask](https://cloud.tencent.com/document/api/851/82604)
+* [StopModelAccelerateTask](https://cloud.tencent.com/document/api/851/82603)
 
 新增数据结构：
 
-* [[BatchModelAccTask](https://cloud.tencent.com/document/api/851/75051#BatchModelAccTask)](https://cloud.tencent.com/document/api/851/75051#[BatchModelAccTask](https://cloud.tencent.com/document/api/851/75051#BatchModelAccTask))
-* [[EngineVersion](https://cloud.tencent.com/document/api/851/75051#EngineVersion)](https://cloud.tencent.com/document/api/851/75051#[EngineVersion](https://cloud.tencent.com/document/api/851/75051#EngineVersion))
-* [[HyperParameter](https://cloud.tencent.com/document/api/851/75051#HyperParameter)](https://cloud.tencent.com/document/api/851/75051#[HyperParameter](https://cloud.tencent.com/document/api/851/75051#HyperParameter))
-* [[ModelAccEngineVersion](https://cloud.tencent.com/document/api/851/75051#ModelAccEngineVersion)](https://cloud.tencent.com/document/api/851/75051#[ModelAccEngineVersion](https://cloud.tencent.com/document/api/851/75051#ModelAccEngineVersion))
-* [[ModelAccelerateTask](https://cloud.tencent.com/document/api/851/75051#ModelAccelerateTask)](https://cloud.tencent.com/document/api/851/75051#[ModelAccelerateTask](https://cloud.tencent.com/document/api/851/75051#ModelAccelerateTask))
-* [[ModelInputInfo](https://cloud.tencent.com/document/api/851/75051#ModelInputInfo)](https://cloud.tencent.com/document/api/851/75051#[ModelInputInfo](https://cloud.tencent.com/document/api/851/75051#ModelInputInfo))
+* [BatchModelAccTask](https://cloud.tencent.com/document/api/851/75051#BatchModelAccTask)
+* [EngineVersion](https://cloud.tencent.com/document/api/851/75051#EngineVersion)
+* [HyperParameter](https://cloud.tencent.com/document/api/851/75051#HyperParameter)
+* [ModelAccEngineVersion](https://cloud.tencent.com/document/api/851/75051#ModelAccEngineVersion)
+* [ModelAccelerateTask](https://cloud.tencent.com/document/api/851/75051#ModelAccelerateTask)
+* [ModelInputInfo](https://cloud.tencent.com/document/api/851/75051#ModelInputInfo)
 
 ### 第 7 次发布
 

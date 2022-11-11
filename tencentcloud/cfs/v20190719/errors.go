@@ -239,6 +239,18 @@ const (
 	// 权限组名称长度超过限制（不能超过64字节）。
 	INVALIDPARAMETERVALUE_PGROUPNAMELIMITEXCEEDED = "InvalidParameterValue.PgroupNameLimitExceeded"
 
+	// 容量硬限制取值范围错误。
+	INVALIDPARAMETERVALUE_QUOTACAPLIMITERROR = "InvalidParameterValue.QuotaCapLimitError"
+
+	// 文件硬限制取值范围错误。
+	INVALIDPARAMETERVALUE_QUOTAFILELIMITERROR = "InvalidParameterValue.QuotaFileLimitError"
+
+	// USER ID类型错误。
+	INVALIDPARAMETERVALUE_QUOTAUSERIDERROR = "InvalidParameterValue.QuotaUserIdError"
+
+	// 配额类型错误。
+	INVALIDPARAMETERVALUE_QUOTAUSERTYPEERROR = "InvalidParameterValue.QuotaUserTypeError"
+
 	// 权限组规则和权限组不匹配。
 	INVALIDPARAMETERVALUE_RULENOTMATCHPGROUP = "InvalidParameterValue.RuleNotMatchPgroup"
 
