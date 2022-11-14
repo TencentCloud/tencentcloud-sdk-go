@@ -542,3 +542,86 @@ type SimpleKindRiskDetail struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RiskCodeValue *string `json:"RiskCodeValue,omitempty" name:"RiskCodeValue"`
 }
+
+type TransportGeneralInterfaceInput struct {
+	// 公证处请求接口名
+	InterfaceName *string `json:"InterfaceName,omitempty" name:"InterfaceName"`
+
+	// 公证处业务详情二层入参
+	NotarizationInput *string `json:"NotarizationInput,omitempty" name:"NotarizationInput"`
+
+	// 业务二层详情入参的哈希签名
+	NotarizationSign *string `json:"NotarizationSign,omitempty" name:"NotarizationSign"`
+}
+
+type TransportGeneralInterfaceOutput struct {
+	// 错误码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Code *string `json:"Code,omitempty" name:"Code"`
+
+	// 回包信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Message *string `json:"Message,omitempty" name:"Message"`
+
+	// 公证处业务回包
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NotarizationData *string `json:"NotarizationData,omitempty" name:"NotarizationData"`
+}
+
+// Predefined struct for user
+type TransportGeneralInterfaceRequestParams struct {
+	// 业务入参
+	BusinessSecurityData *TransportGeneralInterfaceInput `json:"BusinessSecurityData,omitempty" name:"BusinessSecurityData"`
+}
+
+type TransportGeneralInterfaceRequest struct {
+	*tchttp.BaseRequest
+	
+	// 业务入参
+	BusinessSecurityData *TransportGeneralInterfaceInput `json:"BusinessSecurityData,omitempty" name:"BusinessSecurityData"`
+}
+
+func (r *TransportGeneralInterfaceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *TransportGeneralInterfaceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "BusinessSecurityData")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "TransportGeneralInterfaceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type TransportGeneralInterfaceResponseParams struct {
+	// 业务出参
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *TransportGeneralInterfaceOutput `json:"Data,omitempty" name:"Data"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type TransportGeneralInterfaceResponse struct {
+	*tchttp.BaseResponse
+	Response *TransportGeneralInterfaceResponseParams `json:"Response"`
+}
+
+func (r *TransportGeneralInterfaceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *TransportGeneralInterfaceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}

@@ -5,7 +5,7 @@
 | acp | [应用合规平台](https://cloud.tencent.com/document/product/1553) | 2022-09-19 11:21:50 |
 | advisor | [云顾问](https://cloud.tencent.com/document/product/1264) | 2022-06-08 06:03:05 |
 | af | [借贷反欺诈](https://cloud.tencent.com/document/product/668) | 2022-05-23 06:01:54 |
-| afc | [定制建模](https://cloud.tencent.com/document/product/1029) | 2022-05-23 06:01:56 |
+| afc | [定制建模](https://cloud.tencent.com/document/product/1029) | 2022-11-14 06:09:18 |
 | ame | [正版曲库直通车](https://cloud.tencent.com/document/product/1155) | 2022-04-15 06:01:25 |
 | ams | [音频内容安全](https://cloud.tencent.com/document/product/1219) | 2022-10-31 06:07:18 |
 | antiddos | [T-Sec-DDoS防护(Anti-DDoS)](https://cloud.tencent.com/document/product/1021) | 2022-11-09 06:08:09 |

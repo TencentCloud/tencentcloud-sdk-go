@@ -1,10 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 文件存储(cfs) 版本：2019-07-19
+## 定制建模(afc) 版本：2020-02-26
 
-### 第 12 次发布
+### 第 3 次发布
 
-发布时间：2022-11-11 06:15:57
+发布时间：2022-11-14 06:09:18
 
 本次发布包含了以下内容：
 
@@ -12,45 +12,12 @@
 
 新增接口：
 
-* [DeleteUserQuota](https://cloud.tencent.com/document/api/582/82655)
-* [DescribeUserQuota](https://cloud.tencent.com/document/api/582/82654)
-* [SetUserQuota](https://cloud.tencent.com/document/api/582/82653)
+* [TransportGeneralInterface](https://cloud.tencent.com/document/api/1029/82738)
 
 新增数据结构：
 
-* [UserQuota](https://cloud.tencent.com/document/api/582/38175#UserQuota)
-
-
-
-## 人脸核身(faceid) 版本：2018-03-01
-
-### 第 49 次发布
-
-发布时间：2022-11-11 06:30:28
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-<font color="#dd0000">**删除接口**：</font>
-
-* ApplyLivenessToken
-* ApplySdkVerificationToken
-* ApplyWebVerificationToken
-* CreateUploadUrl
-* DetectReflectLivenessAndCompare
-* GenerateReflectSequence
-* GetLivenessResult
-* GetSdkVerificationResult
-* GetWebVerificationResult
-* VideoLivenessCompare
-
-<font color="#dd0000">**删除数据结构**：</font>
-
-* CardVerifyResult
-* CompareResult
-* FileInfo
-* VerificationDetail
+* [TransportGeneralInterfaceInput](https://cloud.tencent.com/document/api/1029/44018#TransportGeneralInterfaceInput)
+* [TransportGeneralInterfaceOutput](https://cloud.tencent.com/document/api/1029/44018#TransportGeneralInterfaceOutput)
 
 
 
@@ -572,6 +539,23 @@
 
 
 ## 定制建模(afc) 版本：2020-02-26
+
+### 第 3 次发布
+
+发布时间：2022-11-14 06:09:18
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[TransportGeneralInterface](https://cloud.tencent.com/document/api/1029/82738)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[TransportGeneralInterfaceInput](https://cloud.tencent.com/document/api/1029/44018#TransportGeneralInterfaceInput)](https://cloud.tencent.com/document/api/1029/44018#[TransportGeneralInterfaceInput](https://cloud.tencent.com/document/api/1029/44018#TransportGeneralInterfaceInput))
+* [[TransportGeneralInterfaceOutput](https://cloud.tencent.com/document/api/1029/44018#TransportGeneralInterfaceOutput)](https://cloud.tencent.com/document/api/1029/44018#[TransportGeneralInterfaceOutput](https://cloud.tencent.com/document/api/1029/44018#TransportGeneralInterfaceOutput))
 
 ### 第 2 次发布
 
@@ -16867,13 +16851,13 @@
 
 新增接口：
 
-* [[DeleteUserQuota](https://cloud.tencent.com/document/api/582/82655)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeUserQuota](https://cloud.tencent.com/document/api/582/82654)](https://cloud.tencent.com/document/api/#/#)
-* [[SetUserQuota](https://cloud.tencent.com/document/api/582/82653)](https://cloud.tencent.com/document/api/#/#)
+* [DeleteUserQuota](https://cloud.tencent.com/document/api/582/82655)
+* [DescribeUserQuota](https://cloud.tencent.com/document/api/582/82654)
+* [SetUserQuota](https://cloud.tencent.com/document/api/582/82653)
 
 新增数据结构：
 
-* [[UserQuota](https://cloud.tencent.com/document/api/582/38175#UserQuota)](https://cloud.tencent.com/document/api/582/38175#[UserQuota](https://cloud.tencent.com/document/api/582/38175#UserQuota))
+* [UserQuota](https://cloud.tencent.com/document/api/582/38175#UserQuota)
 
 ### 第 11 次发布
 
